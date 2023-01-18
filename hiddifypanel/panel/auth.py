@@ -1,7 +1,7 @@
 from flask_simplelogin import SimpleLogin
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from hiddifypanel.ext.database import db
+from hiddifypanel.panel.database import db
 from hiddifypanel.models import User
 
 

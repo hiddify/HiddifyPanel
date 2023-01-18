@@ -1,7 +1,7 @@
 import click
 
-from hiddifypanel.ext.auth import create_user
-from hiddifypanel.ext.database import db
+from hiddifypanel.panel.auth import create_user
+from hiddifypanel.panel.database import db
 from hiddifypanel.models import Product
 
 

@@ -2,8 +2,8 @@ import sys
 import pytest
 
 from hiddifypanel import create_app
-from hiddifypanel.ext.commands import populate_db
-from hiddifypanel.ext.database import db
+from hiddifypanel.panel.commands import populate_db
+from hiddifypanel.panel.database import db
 
 
 @pytest.fixture(scope="session")

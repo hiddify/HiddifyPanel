@@ -1,19 +1,19 @@
 [default]
-DEBUG = false
-FLASK_ADMIN_TEMPLATE_MODE = "bootstrap3"
+DEBUG = true
+FLASK_ADMIN_TEMPLATE_MODE = "bootstrap5"
 FLASK_ADMIN_SWATCH = 'cerulean'
 SQLALCHEMY_DATABASE_URI = 'sqlite:///development.db'
 TITLE = "hiddifypanel"
 SECRET_KEY = "Pl3453Ch4ng3"
 PASSWORD_SCHEMES = ['pbkdf2_sha512', 'md5_crypt']
 EXTENSIONS = [
-    "flask_bootstrap:Bootstrap",
-    "hiddifypanel.ext.database:init_app",
-    "hiddifypanel.ext.auth:init_app",
-    "hiddifypanel.ext.admin:init_app",
-    "hiddifypanel.ext.commands:init_app",
-    "hiddifypanel.ext.webui:init_app",
-    "hiddifypanel.ext.restapi:init_app",
+    "flask_bootstrap:Bootstrap5",
+    "hiddifypanel.panel.database:init_app",
+    "hiddifypanel.panel.auth:init_app",
+    "hiddifypanel.panel.admin:init_app",
+    "hiddifypanel.panel.commands:init_app",
+    "hiddifypanel.panel.webui:init_app",
+    "hiddifypanel.panel.restapi:init_app",
 ]
 
 [development]

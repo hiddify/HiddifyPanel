@@ -1,9 +1,11 @@
 from dynaconf import FlaskDynaconf
 from flask import Flask
+from flask_bootstrap import Bootstrap5, SwitchField
 
 
 def create_app(**config):
     app = Flask(__name__)
+
     FlaskDynaconf(app)  # config managed by Dynaconf
     app.config.load_extensions(
         "EXTENSIONS"

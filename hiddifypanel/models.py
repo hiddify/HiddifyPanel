@@ -1,6 +1,6 @@
 from sqlalchemy_serializer import SerializerMixin
 
-from hiddifypanel.ext.database import db
+from hiddifypanel.panel.database import db
 
 
 class Product(db.Model, SerializerMixin):

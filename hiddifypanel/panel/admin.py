@@ -4,7 +4,7 @@ from flask_admin.contrib import sqla
 from flask_simplelogin import login_required
 from werkzeug.security import generate_password_hash
 
-from hiddifypanel.ext.database import db
+from hiddifypanel.panel.database import db
 from hiddifypanel.models import Product, User
 
 # Proteck admin with login / Monkey Patch
