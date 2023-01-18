@@ -1,0 +1,11 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "local",
+            "database": "${workspaceFolder:HiddifyPanel}/instance/development.db"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}
