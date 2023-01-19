@@ -1,35 +1,45 @@
 from flask import abort, jsonify
 from flask_restful import Resource
 from flask_simplelogin import login_required
+import datetime
+from hiddifypanel.models import StrConfig,BoolConfig,User,Domain,get_hconfigs
 
-# from hiddifypanel.models import Product
 
-
-class ProductResource(Resource):
+class AllResource(Resource):
     def get(self):
-        products = Product.query.all() or abort(204)
+        products = User.query.all() or abort(204)
         return jsonify(
-            {"products": [product.to_dict() for product in products]}
-        )
-
-    @login_required(basic=True, username="admin")
-    def post(self):
-        """
-        Creates a new product.
-
-        Only admin user authenticated using basic auth can post
-        Basic takes base64 encripted username:password.
-
-        # curl -XPOST localhost:5000/api/v1/product/ \
-        #  -H "Authorization: Basic Y2h1Y2s6bm9ycmlz" \
-        #  -H "Content-Type: application/json"
-        """
-        return NotImplementedError(
-            "Someone please complete this example and send a PR :)"
+            {"users": [u.to_dict() for u in User.query.filter((User.monthly_usage_limit_GB>User.current_usage_GB)).filter(User.expiry_time>=datetime.date.today()).all()],
+            "domains": [u.to_dict() for u in Domain.query.all()],
+            "hconfigs": get_hconfigs()
+            }
         )
 
 
-class ProductItemResource(Resource):
-    def get(self, product_id):
-        product = Product.query.filter_by(id=product_id).first() or abort(404)
-        return jsonify(product.to_dict())
+class UserResource(Resource):
+    def get(self):
+        products = User.query.all() or abort(204)
+        return jsonify(
+            {"users": [product.to_dict() for product in products]}
+        )
+
+class DomainResource(Resource):
+    def get(self):
+        products = Domain.query.all() or abort(204)
+        return jsonify(
+            {"domains": [product.to_dict() for product in products]}
+        )
+
+class BoolConfigResource(Resource):
+    def get(self):
+        products = BoolConfig.query.all() or abort(204)
+        return jsonify(
+            {"bool_configs": [product.to_dict() for product in products]}
+        )
+
+class StrConfigResource(Resource):
+    def get(self):
+        products = StrConfig.query.all() or abort(204)
+        return jsonify(
+            {"str_configs": [product.to_dict() for product in products]}
+        )

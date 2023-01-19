@@ -2,7 +2,7 @@ import sys
 import pytest
 
 from hiddifypanel import create_app
-from hiddifypanel.panel.commands import populate_db
+from hiddifypanel.panel.commands import init_db
 from hiddifypanel.panel.database import db
 
 
@@ -18,7 +18,7 @@ def app():
 @pytest.fixture(scope="session")
 def products(app):
     with app.app_context():
-        return populate_db()
+        return init_db()
 
 
 # each test runs on cwd to its temp dir

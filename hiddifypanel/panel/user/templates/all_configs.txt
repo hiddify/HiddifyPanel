@@ -1,0 +1,83 @@
+% if hconfigs[ConfigEnum.fake_cdn_domain]!=''
+
+#WS Fake CDN:
+vless://{{(user.uuid)}}@{{hconfigs[ConfigEnum.fake_cdn_domain]}}:443?security=tls&sni={{hconfigs[ConfigEnum.fake_cdn_domain]}}&type=ws&host={{domain}}&path=/{{hconfigs[ConfigEnum.proxy_path]}}/vlessws#FakeCDNvless_ws_{{domain}}
+trojan://{{(user.uuid)}}@{{hconfigs[ConfigEnum.fake_cdn_domain]}}:443?security=tls&sni={{hconfigs[ConfigEnum.fake_cdn_domain]}}&type=ws&host={{domain}}&path=/{{hconfigs[ConfigEnum.proxy_path]}}/trojanws#FakeCDNtrojan_ws_{{domain}}
+% if hconfigs[ConfigEnum.vmess_enable]
+vmess://{"v":"2", "ps":"FakeCDNvmess_ws_{{domain}}", "add":"{{domain}}", "port":"443", "id":"{{(user.uuid)}}", "aid":"0", "scy":"auto", "net":"ws", "type":"none", "host":"{{domain}}", "path":"/{{hconfigs[ConfigEnum.proxy_path]}}/vmessws", "tls":"tls", "sni":"{{hconfigs[ConfigEnum.fake_cdn_domain]}}"})
+% endif
+
+#GRPC Fake CDN
+vless://{{(user.uuid)}}@{{hconfigs[ConfigEnum.fake_cdn_domain]}}:443?security=tls&sni={{domain}}&type=grpc&serviceName={{hconfigs[ConfigEnum.proxy_path]}}-vlgrpc&mode=multi#vless-grpc_{{domain}}
+trojan://{{(user.uuid)}}@{{hconfigs[ConfigEnum.fake_cdn_domain]}}:443?security=tls&sni={{domain}}&type=grpc&serviceName={{hconfigs[ConfigEnum.proxy_path]}}-trgrpc&mode=multi#trojan-grpc_{{domain}}
+% if hconfigs[ConfigEnum.vmess_enable]
+vmess://{"v":"2", "ps":"vmess_grpc_{{domain}}", "add":"{{hconfigs[ConfigEnum.fake_cdn_domain]}}", "port":"443", "id":"{{(user.uuid)}}", "aid":"0", "scy":"auto", "net":"grpc", "type":"multi", "host":"{{domain}}", "path":"{{hconfigs[ConfigEnum.proxy_path]}}-vmgrpc", "tls":"tls", "sni":"{{hconfigs[ConfigEnum.fake_cdn_domain]}}"}
+% endif
+
+#WS 80 Fake CDN:
+vless://{{(user.uuid)}}@{{hconfigs[ConfigEnum.fake_cdn_domain]}}:80?security=none&sni={{hconfigs[ConfigEnum.fake_cdn_domain]}}&type=ws&host={{domain}}&path=/{{hconfigs[ConfigEnum.proxy_path]}}/vlessws#FakeCDNvless_ws_{{domain}}
+% if hconfigs[ConfigEnum.vmess_enable]
+vmess://{"v":"2", "ps":"FakeCDNvmess_ws", "add":"{{hconfigs[ConfigEnum.fake_cdn_domain]}}", "port":"443", "id":"{{(user.uuid)}}", "aid":"0", "scy":"auto", "net":"ws", "type":"none", "host":"{{domain}}", "path":"/{{hconfigs[ConfigEnum.proxy_path]}}/vmessws" }
+% endif
+
+
+% endif
+
+
+#xtls:
+vless://{{(user.uuid)}}@{{direct_host}}:443?flow=xtls-rprx-direct&security=xtls&alpn=h2&sni={{domain}}&type=tcp#vless+xtls_{{domain}}
+
+#ws:
+vless://{{(user.uuid)}}@{{direct_host}}:443?security=tls&sni={{domain}}&type=ws&alpn=h2&path=/{{hconfigs[ConfigEnum.proxy_path]}}/vlessws#vless_ws_{{domain}}
+trojan://{{(user.uuid)}}@{{direct_host}}:443?security=tls&sni={{domain}}&type=ws&alpn=h2&path=/{{hconfigs[ConfigEnum.proxy_path]}}/trojanws#trojan_ws_{{domain}}
+% if hconfigs[ConfigEnum.vmess_enable]
+vmess://{"v":"2", "ps":"vmess_ws_{{domain}}", "add":"{{direct_host}}", "port":"443", "id":"{{(user.uuid)}}", "aid":"0", "scy":"auto", "net":"ws", "type":"none", "host":"", "path":"/{{hconfigs[ConfigEnum.proxy_path]}}/vmessws", "tls":"tls", "sni":"{{domain}}","alpn":"h2"}
+% endif
+
+#ws CDN:
+vless://{{(user.uuid)}}@{{domain}}:443?security=tls&sni={{domain}}&type=ws&path=/{{hconfigs[ConfigEnum.proxy_path]}}/vlessws#CDNvless_ws_{{domain}}
+trojan://{{(user.uuid)}}@{{domain}}:443?security=tls&sni={{domain}}&type=ws&path=/{{hconfigs[ConfigEnum.proxy_path]}}/trojanws#CDNtrojan_ws_{{domain}}
+
+
+% if hconfigs[ConfigEnum.vmess_enable]
+vmess://{"v":"2", "ps":"CDNvmess_ws_{{domain}}", "add":"{{domain}}", "port":"443", "id":"{{(user.uuid)}}", "aid":"0", "scy":"auto", "net":"ws", "type":"none", "host":"", "path":"/{{hconfigs[ConfigEnum.proxy_path]}}/vmessws", "tls":"tls", "sni":"{{domain}}"}
+% endif
+
+
+
+
+#grpc
+vless://{{(user.uuid)}}@{{direct_host}}:443?security=tls&alpn=h2&sni={{domain}}&type=grpc&serviceName={{hconfigs[ConfigEnum.proxy_path]}}-vlgrpc&mode=multi#vless-grpc_{{domain}}
+trojan://{{(user.uuid)}}@{{direct_host}}:443?security=tls&alpn=h2&sni={{domain}}&type=grpc&serviceName={{hconfigs[ConfigEnum.proxy_path]}}-trgrpc&mode=multi#trojan-grpc_{{domain}}
+% if hconfigs[ConfigEnum.vmess_enable]
+vmess://{"v":"2", "ps":"vmess_grpc_{{domain}}", "add":"{{direct_host}}", "port":"443", "id":"{{(user.uuid)}}", "aid":"0", "scy":"auto", "net":"grpc", "type":"multi", "host":"", "path":"{{hconfigs[ConfigEnum.proxy_path]}}-vmgrpc", "tls":"tls", "sni":"{{domain}}","alpn":"h2"}
+% endif
+
+#tls
+trojan://{{(user.uuid)}}@{{direct_host}}:443?security=tls&alpn=h2&sni={{domain}}&type=tcp#trojan+tls_{{domain}}
+vless://{{(user.uuid)}}@{{direct_host}}:443?security=tls&alpn=h2&sni={{domain}}&type=tcp#vless+tls_{{domain}}
+% if hconfigs[ConfigEnum.vmess_enable]
+vmess://{"v": "2", "ps": "vmess+tls_{{domain}}", "add": "{{direct_host}}", "port": "443", "id": "{{(user.uuid)}}", "aid": "0", "scy": "auto", "net": "tcp", "type":"http", "host": "", "path": "/{{hconfigs[ConfigEnum.proxy_path]}}/vmtc", "tls": "tls", "sni": "{{domain}}","alpn":"h2"}
+% endif
+
+
+#tls+http1.1
+#trojan://{{(user.uuid)}}@{{direct_host}}:443?security=tls&alpn=http/1.1&sni={{domain}}&alpn=h2&type=tcp&headerType=http&path=/{{hconfigs[ConfigEnum.proxy_path]}}/trtc#trojan+tls+http1.1_{{domain}}
+vless://{{(user.uuid)}}@{{direct_host}}:443?security=tls&alpn=http/1.1&sni={{domain}}&alpn=h2&type=tcp&headerType=http&path=/{{hconfigs[ConfigEnum.proxy_path]}}/vltc#vless+tls+http1.1_{{domain}}
+% if hconfigs[ConfigEnum.vmess_enable]
+vmess://{"v": "2", "ps": "vmess+tls+http1.1_{{domain}}", "add": "{{direct_host}}", "port": "443", "id": "{{(user.uuid)}}", "aid": "0", "scy": "auto", "net": "tcp", "type": "http", "host": "", "path": "/{{hconfigs[ConfigEnum.proxy_path]}}/vmtc", "tls": "tls", "sni": "{{domain}}","alpn": "http/1.1"}
+% endif
+
+
+
+
+
+% if hconfigs[ConfigEnum.ssfaketls_enable] 
+#old
+ss://chacha20-ietf-poly1305:{{hconfigs[ConfigEnum.ssfaketls_secret]}}@{{direct_host}}:443?plugin=v2ray-plugin%3Bmode%3Dwebsocket%3Bpath%3D/{{hconfigs[ConfigEnum.proxy_path]}}/v2ray/%3Bhost%3D{{domain}}%3Btls&amp;udp-over-tcp=true#old_v2ray_{{domain}}
+ss://chacha20-ietf-poly1305:{{hconfigs[ConfigEnum.ssfaketls_secret]}}@{{direct_host}}:443?plugin=obfs-local%3Bobfs%3Dtls%3Bobfs-host%3Dwww.google.com&amp;udp-over-tcp=true#old_ssfaketls_{{domain}}
+% endif
+% if False:
+# trojan-go://1@{{domain}}:443?host={{domain}}&path=/{{hconfigs[ConfigEnum.proxy_path]}}/trojan/&type=ws#old_trojan-go_{{domain}}
+#  vmess://{&quot;add&quot;:&quot;{{domain}}&quot;,&quot;aid&quot;:&quot;0&quot;,&quot;host&quot;:&quot;{{domain}}&quot;,&quot;id&quot;:&quot;{{(user.uuid)}}&quot;,&quot;net&quot;:&quot;ws&quot;,&quot;path&quot;:&quot;/{{hconfigs[ConfigEnum.proxy_path]}}/vmess/&quot;,&quot;port&quot;:&quot;443&quot;,&quot;ps&quot;:&quot;old_vmess_{{domain}}&quot;,&quot;scy&quot;:&quot;chacha20-poly1305&quot;,&quot;sni&quot;:&quot;{{domain}}&quot;,&quot;tls&quot;:&quot;tls&quot;,&quot;type&quot;:&quot;&quot;,&quot;v&quot;:&quot;2&quot;}
+% endif

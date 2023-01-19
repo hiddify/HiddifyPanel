@@ -1,0 +1,423 @@
+proxies:
+% if hconfigs[ConfigEnum.fake_cdn_domain]
+  % if hconfigs[ConfigEnum.vmess_enable]
+  - name: FakeCDN vmess_ws {{domain}}
+    type: vmess
+    server: {{hconfigs[ConfigEnum.fake_cdn_domain]}}
+    port: 443
+    uuid: {{(user.uuid)}}
+    alterId: 0
+    cipher: auto
+    udp: true
+    tls: true
+    skip-cert-verify: true
+    servername: {{hconfigs[ConfigEnum.fake_cdn_domain]}}
+    network: ws
+    ws-opts:
+      path: /{{hconfigs[ConfigEnum.proxy_path]}}/vmessws
+      headers:
+        Host: {{domain}}
+
+  - name: FakeCDN vmess_grpc {{domain}}
+    type: vmess
+    server: {{hconfigs[ConfigEnum.fake_cdn_domain]}}
+    port: 443
+    uuid: {{(user.uuid)}}
+    alterId: 0
+    cipher: auto
+    udp: true
+    tls: true
+    skip-cert-verify: true
+    servername: {{domain}}
+    network: grpc
+    grpc-opts:
+      grpc-service-name: {{hconfigs[ConfigEnum.proxy_path]}}-vmgrpc
+  % endif
+
+  - name: FakeCDN trojan_ws {{domain}}
+    type: trojan
+    password: {{(user.uuid)}}
+    server: {{hconfigs[ConfigEnum.fake_cdn_domain]}}
+    port: 443
+    udp: true
+    sni: {{hconfigs[ConfigEnum.fake_cdn_domain]}}
+    skip-cert-verify: true
+    network: ws
+    ws-opts:
+      path: /{{hconfigs[ConfigEnum.proxy_path]}}/trojanws
+      headers:
+        Host: {{domain}}
+
+  - name: trojan-grpc {{domain}}
+    type: trojan
+    password: {{(user.uuid)}}
+    server: {{hconfigs[ConfigEnum.fake_cdn_domain]}}
+    port: 443
+    udp: true
+    sni: {{domain}}
+    skip-cert-verify: true
+    #alpn:
+    #  - h2
+    network: grpc
+    grpc-opts:
+      grpc-service-name: {{hconfigs[ConfigEnum.proxy_path]}}-trgrpc
+  % if meta_or_normal=='meta'
+  - name: FakeCDN vless_ws {{domain}}
+    type: vless
+    uuid: {{(user.uuid)}}
+    server: {{hconfigs[ConfigEnum.fake_cdn_domain]}}
+    port: 443
+    udp: true
+    tls: true
+    servername: {{hconfigs[ConfigEnum.fake_cdn_domain]}}
+    skip-cert-verify: true
+    network: ws
+    ws-opts:
+      path: /{{hconfigs[ConfigEnum.proxy_path]}}/vlessws
+      headers:
+        Host: {{domain}}
+    
+
+  - name: FakeCDN vless-grpc {{domain}}
+    type: vless
+    uuid: {{(user.uuid)}}
+    server: {{hconfigs[ConfigEnum.fake_cdn_domain]}}
+    port: 443
+    udp: true
+    tls: true
+    servername: {{domain}}
+    skip-cert-verify: true
+    network: grpc
+    grpc-opts:
+      grpc-service-name: {{hconfigs[ConfigEnum.proxy_path]}}-vlgrpc
+    % endif
+% endif
+
+% if meta_or_normal=='meta'
+  - name: vless+xtls {{domain}}
+    type: vless
+    uuid: {{(user.uuid)}}
+    server: {{direct_host}}
+    port: 443
+    udp: true
+    tls: false
+    servername: {{domain}}
+    skip-cert-verify: true
+    flow: xtls-rprx-direct
+
+  - name: vless_ws {{domain}}
+    type: vless
+    uuid: {{(user.uuid)}}
+    server: {{direct_host}}
+    port: 443
+    udp: true
+    tls: true
+    servername: {{domain}}
+    skip-cert-verify: true
+    network: ws
+    ws-opts:
+      path: /{{hconfigs[ConfigEnum.proxy_path]}}/vlessws
+
+  % if is_cdn
+  - name: CDN vless_ws {{domain}}
+    type: vless
+    uuid: {{(user.uuid)}}
+    server: {{domain}}
+    port: 443
+    udp: true
+    tls: true
+    servername: {{domain}}
+    skip-cert-verify: true
+    network: ws
+    ws-opts:
+      path: /{{hconfigs[ConfigEnum.proxy_path]}}/vlessws
+  % endif
+
+  - name: vless-grpc {{domain}}
+    type: vless
+    uuid: {{(user.uuid)}}
+    server: {{direct_host}}
+    port: 443
+    udp: true
+    tls: true
+    servername: {{domain}}
+    skip-cert-verify: true
+    network: grpc
+    grpc-opts:
+      grpc-service-name: {{hconfigs[ConfigEnum.proxy_path]}}-vlgrpc
+  - name: vless+tls {{domain}}
+    type: vless
+    uuid: {{(user.uuid)}}
+    server: {{direct_host}}
+    port: 443
+    udp: true
+    tls: true
+    servername: {{domain}}
+    skip-cert-verify: true
+
+  - name: vless+tls+http1.1 {{domain}}
+    type: vless
+    uuid: {{(user.uuid)}}
+    server: {{direct_host}}
+    port: 443
+    udp: true
+    tls: true
+    servername: {{domain}}
+    skip-cert-verify: true
+% endif
+
+
+
+% if hconfigs[ConfigEnum.vmess_enable]
+  - name: vmess_ws {{domain}}
+    type: vmess
+    server: {{direct_host}}
+    port: 443
+    uuid: {{(user.uuid)}}
+    alterId: 0
+    cipher: auto
+    udp: true
+    tls: true
+    skip-cert-verify: true
+    servername: {{domain}}
+    network: ws
+    ws-opts:
+      path: /{{hconfigs[ConfigEnum.proxy_path]}}/vmessws
+
+  % if is_cdn
+  - name: CDN vmess_ws {{domain}}
+    type: vmess
+    server: {{domain}}
+    port: 443
+    uuid: {{(user.uuid)}}
+    alterId: 0
+    cipher: auto
+    udp: true
+    tls: true
+    skip-cert-verify: true
+    servername: {{domain}}
+    network: ws
+    ws-opts:
+      path: /{{hconfigs[ConfigEnum.proxy_path]}}/vmessws
+  % endif
+  - name: vmess_grpc {{domain}}
+    type: vmess
+    server: {{direct_host}}
+    port: 443
+    uuid: {{(user.uuid)}}
+    alterId: 0
+    cipher: auto
+    udp: true
+    tls: true
+    skip-cert-verify: true
+    servername: {{domain}}
+    network: grpc
+    grpc-opts:
+      grpc-service-name: {{hconfigs[ConfigEnum.proxy_path]}}-vmgrpc
+
+  - name: vmess+tls {{domain}}
+    type: vmess
+    server: {{direct_host}}
+    port: 443
+    uuid: {{(user.uuid)}}
+    alterId: 0
+    cipher: auto
+    udp: true
+    tls: true
+    skip-cert-verify: true
+    servername: {{domain}}
+    network: http
+    http-opts:
+      path:
+        - /{{hconfigs[ConfigEnum.proxy_path]}}/vmtc
+
+  - name: vmess+tls+http1.1 {{domain}}
+    type: vmess
+    server: {{direct_host}}
+    port: 443
+    uuid: {{(user.uuid)}}
+    alterId: 0
+    cipher: auto
+    udp: true
+    tls: true
+    skip-cert-verify: true
+    servername: {{domain}}
+    network: http
+    http-opts:
+      path:
+        - /{{hconfigs[ConfigEnum.proxy_path]}}/vmtc
+
+% if False
+  - name: old_vmess_{{domain}}_vmess_18831
+    type: vmess
+    server: {{direct_host}}
+    port: 443
+    uuid: {{(user.uuid)}}
+    alterId: 0
+    cipher: chacha20-poly1305
+    udp: true
+    tls: true
+    skip-cert-verify: true
+    servername: {{domain}}
+    network: ws
+    ws-opts:
+      path: /{{hconfigs[ConfigEnum.proxy_path]}}/vmess/
+  % if is_cdn:
+  - name: CDN old_vmess_{{domain}}_vmess_18831
+    type: vmess
+    server: {{domain}}
+    port: 443
+    uuid: {{(user.uuid)}}
+    alterId: 0
+    cipher: chacha20-poly1305
+    udp: true
+    tls: true
+    skip-cert-verify: true
+    servername: {{domain}}
+    network: ws
+    ws-opts:
+      path: /{{hconfigs[ConfigEnum.proxy_path]}}/vmess/
+  % endif
+% endif
+
+% endif
+  - name: trojan_ws {{domain}}
+    type: trojan
+    password: {{(user.uuid)}}
+    server: {{direct_host}}
+    port: 443
+    udp: true
+    sni: {{domain}}
+    skip-cert-verify: true
+#    alpn:
+#      - h2
+    network: ws
+    ws-opts:
+      path: /{{hconfigs[ConfigEnum.proxy_path]}}/trojanws
+
+  % if is_cdn
+  - name: CDN trojan_ws {{domain}}
+    type: trojan
+    password: {{(user.uuid)}}
+    server: {{domain}}
+    port: 443
+    udp: true
+    sni: {{domain}}
+    skip-cert-verify: true
+    # alpn:
+    #   - h2
+    network: ws
+    ws-opts:
+      path: /{{hconfigs[ConfigEnum.proxy_path]}}/trojanws
+  % endif
+  - name: trojan-grpc {{domain}}
+    type: trojan
+    password: {{(user.uuid)}}
+    server: {{direct_host}}
+    port: 443
+    udp: true
+    sni: {{domain}}
+    skip-cert-verify: true
+    #alpn:
+    #  - h2
+    network: grpc
+    grpc-opts:
+      grpc-service-name: {{hconfigs[ConfigEnum.proxy_path]}}-trgrpc
+
+  - name: trojan+tls {{domain}}
+    type: trojan
+    password: {{(user.uuid)}}
+    server: {{direct_host}}
+    port: 443
+    udp: true
+    sni: {{domain}}
+    skip-cert-verify: true
+#    alpn:
+#      - h2
+  # - name: trojan+tls+http1.1_{{domain}}_trojan_78009
+  #   type: trojan
+  #   password: {{(user.uuid)}}
+  #   server: {{direct_host}}
+  #   port: 443
+  #   udp: true
+  #   sni: {{domain}}
+  #   skip-cert-verify: true
+  #   alpn:
+  #     - http/1.1
+
+% if hconfigs[ConfigEnum.ssfaketls_enable] 
+  - name: old_ssfaketls {{domain}}
+    type: ss
+    cipher: chacha20-ietf-poly1305
+    password: {{hconfigs[ConfigEnum.ssfaketls_secret]}}
+    server: {{direct_host}}
+    port: 443
+    udp_over_tcp: true
+    plugin: obfs
+    plugin-opts:
+      mode: tls
+      host: www.google.com
+  - name: old_v2ray {{domain}}
+    type: ss
+    cipher: chacha20-ietf-poly1305
+    password: {{hconfigs[ConfigEnum.ssfaketls_secret]}}
+    server: {{direct_host}}
+    port: 443
+    udp_over_tcp: true
+    plugin: v2ray-plugin
+    plugin-opts:
+      mode: websocket
+      tls: true
+      skip-cert-verify: true
+      host: {{domain}}
+      path: /{{hconfigs[ConfigEnum.proxy_path]}}/v2ray/
+
+  % if is_cdn
+  - name: CDN old_v2ray {{domain}}
+    type: ss
+    cipher: chacha20-ietf-poly1305
+    password: {{hconfigs[ConfigEnum.ssfaketls_secret]}}
+    server: {{domain}}
+    port: 443
+    udp_over_tcp: true
+    plugin: v2ray-plugin
+    plugin-opts:
+      mode: websocket
+      tls: true
+      skip-cert-verify: true
+      host: {{domain}}
+      path: /{{hconfigs[ConfigEnum.proxy_path]}}/v2ray/
+  %endif
+
+% endif
+
+% if False
+  - name: old_trojan-go_{{domain}}_trojan-go_86355
+    type: trojan
+    password: 1
+    server: {{direct_host}}
+    port: 443
+    udp: true
+    sni: {{domain}}
+    skip-cert-verify: true
+    network: ws
+    ws-opts:
+      path: /{{hconfigs[ConfigEnum.proxy_path]}}/trojan/
+      
+
+  - name: CDN old_trojan-go_{{domain}}_trojan-go_86355
+    type: trojan
+    password: 1
+    server: {{domain}}
+    port: 443
+    udp: true
+    sni: {{domain}}
+    skip-cert-verify: true
+    network: ws
+    ws-opts:
+      path: /{{hconfigs[ConfigEnum.proxy_path]}}/trojan/
+
+% endif
+
+
+

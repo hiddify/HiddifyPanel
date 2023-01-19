@@ -7,6 +7,7 @@ def create_app(**config):
     app = Flask(__name__)
 
     FlaskDynaconf(app)  # config managed by Dynaconf
+    app.jinja_env.line_statement_prefix = '%'
     app.config.load_extensions(
         "EXTENSIONS"
     )  # Load extensions from settings.toml
