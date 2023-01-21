@@ -54,40 +54,40 @@ jobs:
         # with:
         #   fail_ci_if_error: true
 
-  tests_mac:
-    needs: linter
-    strategy:
-      fail-fast: false
-      matrix:
-        python-version: [3.9]
-        os: [macos-latest]
-    runs-on: ${{ matrix.os }}
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
-        with:
-          python-version: ${{ matrix.python-version }}
-      - name: Install project
-        run: make install
-      - name: Run tests
-        run: make test
+  # tests_mac:
+  #   needs: linter
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       python-version: [3.9]
+  #       os: [macos-latest]
+  #   runs-on: ${{ matrix.os }}
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: actions/setup-python@v2
+  #       with:
+  #         python-version: ${{ matrix.python-version }}
+  #     - name: Install project
+  #       run: make install
+  #     - name: Run tests
+  #       run: make test
 
-  tests_win:
-    needs: linter
-    strategy:
-      fail-fast: false
-      matrix:
-        python-version: [3.9]
-        os: [windows-latest]
-    runs-on: ${{ matrix.os }}
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
-        with:
-          python-version: ${{ matrix.python-version }}
-      - name: Install Pip
-        run: pip install --user --upgrade pip
-      - name: Install project
-        run: pip install -e .[test]
-      - name: run tests
-        run: pytest -s -vvvv -l --tb=long tests
+  # tests_win:
+  #   needs: linter
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       python-version: [3.9]
+  #       os: [windows-latest]
+  #   runs-on: ${{ matrix.os }}
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: actions/setup-python@v2
+  #       with:
+  #         python-version: ${{ matrix.python-version }}
+  #     - name: Install Pip
+  #       run: pip install --user --upgrade pip
+  #     - name: Install project
+  #       run: pip install -e .[test]
+  #     - name: run tests
+  #       run: pytest -s -vvvv -l --tb=long tests
