@@ -94,7 +94,7 @@ def hconfig(key):
         str_conf= StrConfig.query.filter(StrConfig.key==key).first()
         if str_conf:
             return str_conf.value
-        bool_conf=BoolConfig.query.filter(StrConfig.key==key).first()
+        bool_conf=BoolConfig.query.filter(BoolConfig.key==key).first()
         if bool_conf:
             return bool_conf.value
         if key == ConfigEnum.ssfaketls_fakedomain:

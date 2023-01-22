@@ -34,6 +34,7 @@ def init_db():
     
     db_version=hconfig(ConfigEnum.db_version)
     if db_version==None:
+        print(app.config['SQLALCHEMY_DATABASE_URI'] )
         db.create_all()
         next10year = datetime.date.today() + relativedelta.relativedelta(years=10)
         external_ip=urllib.request.urlopen('https://v4.ident.me/').read().decode('utf8')
