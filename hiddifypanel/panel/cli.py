@@ -34,7 +34,7 @@ def init_db():
     
     db_version=hconfig(ConfigEnum.db_version)
     if db_version==None:
-        print(app.config['SQLALCHEMY_DATABASE_URI'] )
+        
         db.create_all()
         next10year = datetime.date.today() + relativedelta.relativedelta(years=10)
         external_ip=urllib.request.urlopen('https://v4.ident.me/').read().decode('utf8')
@@ -83,6 +83,7 @@ def init_db():
 
 def init_app(app):
     # add multiple commands in a bulk
+    #print(app.config['SQLALCHEMY_DATABASE_URI'] )
     for command in [init_db, drop_db]:
         app.cli.add_command(app.cli.command()(command))
 
@@ -94,19 +95,19 @@ def init_app(app):
 
         data = [Domain(domain=domain,mode=DomainType.direct)]
         db.session.bulk_save_objects(data)
-        session.commit()
+        db.session.commit()
         return "success"
         
     @app.cli.command()
     @click.option("--admin_secret", "-a")
     def set_admin_secret(admin_secret):
         StrConfig.query.filter(StrConfig.key == ConfigEnum.admin_secret).update({'value': admin_secret})
-        session.commit()
+        db.session.commit()
         return "success"
 
     @app.cli.command()
-    @click.option("--import_config", "-i")
-    def import_config(file):
+    @click.option("--config", "-c")
+    def import_config(config):
         next10year = datetime.date.today() + relativedelta.relativedelta(years=10)
         data=[]
         if "USER_SECRET" in config:
@@ -168,7 +169,7 @@ def init_app(app):
                     })
         if len(data):
             db.session.bulk_save_objects(data)
-        session.commit()
+        db.session.commit()
 
 
 
