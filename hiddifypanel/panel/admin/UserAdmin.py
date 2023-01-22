@@ -4,6 +4,7 @@ from hiddifypanel.models import  User,Domain,DomainType,StrConfig,ConfigEnum,hco
 from flask import Markup
 from wtforms.validators import Regexp,ValidationError
 import re,uuid
+from hiddifypanel import xray_api
 class UserAdmin(sqla.ModelView):
     column_display_pk = True
     can_export = True
@@ -38,9 +39,19 @@ class UserAdmin(sqla.ModelView):
     column_formatters = {
         'UserLinks': _ul_formatter,
     }
+    def on_model_delete(self, model):
+        xray_api.remove_client(model.uuid)
+        
     def on_model_change(self, form, model, is_created):
         
         if not re.match("^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$", model.uuid):
             raise ValidationError('Invalid UUID e.g.,'+ str(uuid.uuid4()))
         else:
             super().on_model_change(form, model, is_created)
+        
+        
+        if model.current_usage_GB < model.monthly_usage_limit_GB:
+            xray_api.add_client(model.uuid)
+        else:
+            xray_api.remove_client(model.uuid)
+        
