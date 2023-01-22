@@ -19,6 +19,8 @@ class ConfigAdmin(sqla.ModelView):
         },
     }
     def on_model_change(self, form, model, is_created):
+        if model.key==ConfigEnum.db_version:
+            raise ValidationError('DB version can not be changed')
         if model.key==ConfigEnum.decoy_site:
             if not re.match("http(s|)://([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})/?", model.value):            
                 raise ValidationError('Invalid address: e.g., https://www.wikipedia.org/')

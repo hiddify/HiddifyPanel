@@ -11,7 +11,7 @@ EXTENSIONS = [
     "hiddifypanel.panel.database:init_app",
     "hiddifypanel.panel.user:init_app",
     "hiddifypanel.panel.admin:init_app",
-    "hiddifypanel.panel.commands:init_app",
+    "hiddifypanel.panel.cli:init_app",
     "hiddifypanel.panel.webui:init_app",
     "hiddifypanel.panel.restapi:init_app",
 ]

@@ -28,6 +28,7 @@ class ConfigEnum:
     ssfaketls_fakedomain="ssfaketls_fakedomain"
     vmess_enable="vmess_enable"
     fake_cdn_domain="fake_cdn_domain"
+    db_version="db_version"
 
     
 class DomainType(enum.Enum):
@@ -56,6 +57,7 @@ class User(db.Model, SerializerMixin):
     from dateutil import relativedelta
     next6month = datetime.date.today() + relativedelta.relativedelta(months=6)
     expiry_time=db.Column(db.Date, default=next6month) 
+    last_rest_time=db.Column(db.Date, default=datetime.date.today()) 
     
         
 
@@ -88,19 +90,22 @@ def get_hdomains():
 
 
 def hconfig(key):
-    str_conf= StrConfig.query.filter(StrConfig.key==key).first()
-    if str_conf:
-        return str_conf.value
-    bool_conf=BoolConfig.query.filter(StrConfig.key==key).first()
-    if bool_conf:
-        return bool_conf.value
-    if key == ConfigEnum.ssfaketls_fakedomain:
-        return hdomain(DomainType.ss_faketls)
-    if key == ConfigEnum.telegram_fakedomain:
-        return hdomain(DomainType.telegram_faketls)
-    if key == ConfigEnum.fake_cdn_domain:
-        return hdomain(DomainType.fake_cdn)
-
+    try:
+        str_conf= StrConfig.query.filter(StrConfig.key==key).first()
+        if str_conf:
+            return str_conf.value
+        bool_conf=BoolConfig.query.filter(StrConfig.key==key).first()
+        if bool_conf:
+            return bool_conf.value
+        if key == ConfigEnum.ssfaketls_fakedomain:
+            return hdomain(DomainType.ss_faketls)
+        if key == ConfigEnum.telegram_fakedomain:
+            return hdomain(DomainType.telegram_faketls)
+        if key == ConfigEnum.fake_cdn_domain:
+            return hdomain(DomainType.fake_cdn)
+    except:
+        print(f'{key} error!')
+    
     return None
 
 def get_hconfigs():
