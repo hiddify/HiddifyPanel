@@ -32,7 +32,7 @@ def read_requirements(path):
 setup(
     name="hiddifypanel",
     version=read("hiddifypanel", "VERSION"),
-    description="Awesome hiddifypanel created by hiddify",
+    description="hiddifypanel multi proxy panel",
     url="https://github.com/hiddify/HiddifyPanel/",
     long_description=read("README.md"),
     long_description_content_type="text/markdown",
