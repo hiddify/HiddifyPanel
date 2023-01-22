@@ -3,3 +3,5 @@ include HISTORY.md
 include Containerfile
 graft tests
 graft hiddifypanel
+graft hiddifypanel/static
+include hiddifypanel/static
