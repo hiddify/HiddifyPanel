@@ -1,4 +1,4 @@
-from flask import Blueprint,url_for
+from flask import Blueprint,url_for,request,jsonify,g
 from flask_admin import Admin
 from .UserAdmin import UserAdmin
 from .DomainAdmin import DomainAdmin
@@ -11,13 +11,20 @@ from .dashboard import Dashboard
 from .actions import Actions
 from flask_admin.menu import MenuLink
 from . import actions 
+import uuid
+from flask_adminlte3 import AdminLTE3
+# bp = Blueprint("admin", __name__, url_prefix=f"/<proxy_path>/<user_secret>/",template_folder="templates")
 
 
-bp = Blueprint("admin2", __name__, url_prefix=f"/admin/",template_folder="templates")
-admin = Admin(index_view=Dashboard())
+
 def init_app(app):
     # admin_secret=StrConfig.query.filter(StrConfig.key==ConfigEnum.admin_secret).first()
     # 
+    # return
+    # admin = Admin(endpoint="admin",index_view=Dashboard(),base_template='lte-master.html',static_url_path="/static/")    
+    AdminLTE3(app,)
+    admin = Admin(endpoint="admin",index_view=Dashboard(url=f"/admin/"),url=f"/<proxy_path>/<user_secret>/admin/",
+                base_template='lte-master.html')    
 
     admin.template_mode = app.config.FLASK_ADMIN_TEMPLATE_MODE
     # bp.add_url_rule("/actions/reverselog/<logfile>", view_func=actions.reverselog)
@@ -30,15 +37,18 @@ def init_app(app):
 
     
     admin.init_app(app)
-    app.register_blueprint(bp)
-    admin.add_view(UserAdmin(User, db.session))
     
+    admin.add_view(UserAdmin(User, db.session))
     admin.add_view(DomainAdmin(Domain, db.session))
     admin.add_view(ConfigAdmin(BoolConfig, db.session))
     admin.add_view(ConfigAdmin(StrConfig, db.session))
-    admin.add_view(Actions(name="actions",endpoint='customviews'))
-    admin.add_link(MenuLink(name='Apply Changes', category='', url="actions/apply_configs"))
+    # admin.add_view(Actions(name="Dashboard",endpoint="home",url="/<proxy_path>/<user_secret>/admin/",))
+    admin.add_view(Actions(name="Actions",endpoint="actions",))
+    
+    # admin.add_link(MenuLink(name='Apply Changes', category='', url=f"/{g.proxy_path}/{g.user_secret}/actions/apply_configs"))
     # admin.
+    # admin.init_app(bp)
+    # app.register_blueprint(bp)
+    print(app.url_map)    
     
     
-

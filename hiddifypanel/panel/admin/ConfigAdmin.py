@@ -4,8 +4,8 @@ from hiddifypanel.models import ConfigEnum
 from wtforms.validators import Regexp,ValidationError
 import re
 import uuid
-
-class ConfigAdmin(sqla.ModelView):
+from .adminlte import AdminLTEModelView
+class ConfigAdmin(AdminLTEModelView):
     can_export = True
     column_default_sort=('category',False)
     column_display_pk = True

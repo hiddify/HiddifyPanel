@@ -5,6 +5,7 @@ from hiddifypanel.panel.database import db
 from hiddifypanel.models import BoolConfig,StrConfig,ConfigEnum,hconfig
 from hiddifypanel.models import Domain,DomainType
 from hiddifypanel.models import User
+from hiddifypanel.panel import hiddify
 import random
 import uuid
 import urllib
@@ -80,11 +81,15 @@ def init_db():
 
     return BoolConfig.query.all()
 
+def all_configs():
+    print(hiddify.all_configs())    
 
+def update_usage():
+    print(hiddify.update_usage())
 def init_app(app):
     # add multiple commands in a bulk
     #print(app.config['SQLALCHEMY_DATABASE_URI'] )
-    for command in [init_db, drop_db]:
+    for command in [init_db, drop_db, all_configs,update_usage]:
         app.cli.add_command(app.cli.command()(command))
 
     @app.cli.command()

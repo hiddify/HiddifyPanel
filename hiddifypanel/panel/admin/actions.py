@@ -11,11 +11,15 @@ import subprocess
 import re
 
 from flask import current_app,render_template
-from flask_admin.base import AdminIndexView,expose
+from flask_admin.base import AdminIndexView,expose,BaseView
 
 class Actions(AdminIndexView):
-
+    @expose('/')
+    def index(self):
+        return self.render('index.html')
+    @expose('/reverselog/<logfile>')
     def reverselog(self,logfile):
+        config_dir=current_app.config.HIDDIFY_CONFIG_PATH
         with open(f'{config_dir}/log/system/{logfile}') as f:
             lines=[line for line in f]
             response.content_type = 'text/plain';
@@ -25,7 +29,7 @@ class Actions(AdminIndexView):
     def apply_configs(self):
         return self.reinstall(False)
 
-
+    @expose('/reinstall')
     def reinstall(self,complete_install=True):
         config=current_app.config
         file="install.sh" if complete_install else "apply_configs.sh"
@@ -53,7 +57,7 @@ class Actions(AdminIndexView):
         })
 
 
-
+    @expose('/status')
     def status(self):
         config=current_app.config
         # configs=read_configs()
@@ -73,6 +77,7 @@ class Actions(AdminIndexView):
 
 
 
+    @expose('/update')
     def update(self):
         config=current_app.config
         cwd = os.getcwd()

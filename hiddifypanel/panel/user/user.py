@@ -1,27 +1,28 @@
-from flask import abort, render_template,request,Response
+from flask import abort, render_template,request,Response,g
 from wtforms.validators import Regexp,ValidationError
 import urllib,uuid
 import datetime
 from hiddifypanel.models import User,Domain,BoolConfig,StrConfig,DomainType,ConfigEnum,get_hconfigs,get_hdomains
-
-def index(secret,lang="fa"):
-    c=get_common_data(secret)
+from hiddifypanel.panel.hiddify  import auth
+@auth
+def index(lang="fa"):
+    c=get_common_data(g.user_uuid)
     if lang=="fa":
         return render_template('index_fa.html',**c)
     return  render_template('index_en.html',**c)
 
 
 
-def clash_proxies(secret,meta_or_normal="normal"):
-    c=get_common_data(secret)
+def clash_proxies(meta_or_normal="normal"):
+    c=get_common_data(g.user_uuid)
     resp= Response(render_template('clash_proxies.yml',meta_or_normal=meta_or_normal,**c))
     resp.mimetype="text/plain"
     return resp
 
-def clash_config(secret,meta_or_normal="normal",mode="all.yml"):
+def clash_config(meta_or_normal="normal",mode="all.yml"):
     
     
-    c=get_common_data(secret)
+    c=get_common_data(g.user_uuid)
     
 
 
@@ -31,8 +32,8 @@ def clash_config(secret,meta_or_normal="normal",mode="all.yml"):
     return resp
 
 
-def all_configs(secret):
-    c=get_common_data(secret)
+def all_configs():
+    c=get_common_data(g.user_uuid)
     # response.content_type = 'text/plain';
     
     resp= render_template('all_configs.txt',**c,base64=do_base_64)
@@ -48,7 +49,7 @@ def do_base_64(str):
     resp=base64.b64encode(f'{str}'.encode("utf-8"))
     return resp.decode()
     
-def get_common_data(secret):
+def get_common_data(user_uuid):
     from urllib.parse import urlparse
     
     o = urlparse(request.base_url)
@@ -60,8 +61,8 @@ def get_common_data(secret):
         is_cdn=True
         
     direct_host= domain
-    uuid_secret=str(uuid.UUID(secret))
-    user=User.query.filter(User.uuid==uuid_secret).first()
+    # uuid_secret=str(uuid.UUID(user_secret))
+    user=User.query.filter(User.uuid==f'{user_uuid}').first()
     if user is None:
         raise ValidationError("Invalid User")
 

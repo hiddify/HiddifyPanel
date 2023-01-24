@@ -909,26 +909,18 @@ aria-hidden="true">
     </div>
 </div>
 </div>
-<script src="static/js/jquery-3.6.1.min.js"></script>
-<script src="static/js/qrcode.js"></script>
+
+
+</div>
+{% endblock %}
+
+
+
+{% block scripts %}
+{{ super() }}
 
 <script>
-// When the user scrolls down from the top of the document, show the button
-window.onscroll = function () {
-    if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
-        document.getElementById("scroll-to-top").style.display = "block";
-    } else {
-        document.getElementById("scroll-to-top").style.display = "none";
-    }
-}
-// scroll to top function
-function scrollToTop() {
-    window.scroll({
-        top: 0,
-        left: 0,
-        behavior: 'smooth'
-    });
-}
+
 function copy_click(e) {
     e.preventDefault();
     console.log(this); console.log(e);
@@ -997,6 +989,4 @@ function toggleOpenOneOnly(e) {
 }
 </script>
 
-
-</div>
 {% endblock %}

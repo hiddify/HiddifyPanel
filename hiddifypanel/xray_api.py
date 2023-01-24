@@ -1,15 +1,15 @@
 import xtlsapi
 
 def get_xray_client():
-    return XrayClient('127.0.0.1', 10085)
+    return xtlsapi.XrayClient('127.0.0.1', 10085)
     
 def get_inbound_tags():
     xray_client=get_xray_client()
     return [inb.name.split(">>>")[1] for inb in xray_client.stats_query('inbound')]
 
-def add_client(uuid,tags):
+def add_client(uuid):
     xray_client=get_xray_client()
-    tags=xray_api.get_inbound_tags()
+    tags=get_inbound_tags()
     for t in tags:
         try:
             alter_id=0 if 'vmess' in t else None
@@ -20,7 +20,7 @@ def add_client(uuid,tags):
 
 def remove_client(uuid):
     xray_client=get_xray_client()
-    tags=xray_api.get_inbound_tags()
+    tags=get_inbound_tags()
     for t in tags:
         try:
             xray_client.remove_client(t, f'{uuid}@hiddify.com')

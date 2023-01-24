@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -10,9 +11,9 @@
             <!-- Bootstrap CSS -->
             
             <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-            <link rel="stylesheet" href="static/css/bootstrap.rtl.min.css">
-            <link rel="stylesheet" href="static/css/custom.css" type="text/css">
-            <link rel="stylesheet" href="static/css/font-awesome.css" type="text/css">
+            <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.rtl.min.css')}}">
+            <link rel="stylesheet" href="{{url_for('static',filename='css/custom.css')}}" type="text/css">
+            <link rel="stylesheet" href="{{url_for('static',filename='css/font-awesome.css')}}" type="text/css">
         {% endblock %}
 
         <title>{% block title %} {% endblock %} | Hiddify</title>
@@ -25,9 +26,11 @@
         {% block scripts %}
             <!-- Optional JavaScript -->
             
-            <script src="static/js/jquery-3.6.1.min.js"></script>
-            <script src="static/js/popper.min.js"></script>
-            <script src="static/js/bootstrap.min.js"></script>
+            <script src="{{url_for('static',filename='js/jquery-3.6.1.min.js')}}"></script>
+            <script src="{{url_for('static',filename='js/popper.min.js')}}"></script>
+            <script src="{{url_for('static',filename='js/bootstrap.min.js')}}"></script>
+            <script src="{{url_for('static',filename='js/qrcode.js')}}"></script>
+            
         
         {% endblock %}
     </body>

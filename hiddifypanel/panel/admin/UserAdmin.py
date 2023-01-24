@@ -1,11 +1,12 @@
 from flask_admin.contrib import sqla
 from hiddifypanel.panel.database import db
 from hiddifypanel.models import  User,Domain,DomainType,StrConfig,ConfigEnum,hconfig
-from flask import Markup
+from flask import Markup,g
 from wtforms.validators import Regexp,ValidationError
 import re,uuid
 from hiddifypanel import xray_api
-class UserAdmin(sqla.ModelView):
+from .adminlte import AdminLTEModelView
+class UserAdmin(AdminLTEModelView):
     column_display_pk = True
     can_export = True
 
@@ -42,16 +43,19 @@ class UserAdmin(sqla.ModelView):
     def on_model_delete(self, model):
         xray_api.remove_client(model.uuid)
         
+    # def is_accessible(self):
+    #     return g.is_admin
+
     def on_model_change(self, form, model, is_created):
         
-        if not re.match("^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$", model.uuid):
+        if not re.match("^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$", model.uuid):
             raise ValidationError('Invalid UUID e.g.,'+ str(uuid.uuid4()))
         else:
             super().on_model_change(form, model, is_created)
         
         
-        if model.current_usage_GB < model.monthly_usage_limit_GB:
-            xray_api.add_client(model.uuid)
-        else:
-            xray_api.remove_client(model.uuid)
+        # if model.current_usage_GB < model.monthly_usage_limit_GB:
+        #     xray_api.add_client(model.uuid)
+        # else:
+        #     xray_api.remove_client(model.uuid)
         

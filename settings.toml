@@ -7,18 +7,20 @@ SQLALCHEMY_DATABASE_URI = 'sqlite:///development.db'
 SECRET_KEY = "Pl3453Ch4ng3"
 PASSWORD_SCHEMES = ['pbkdf2_sha512', 'md5_crypt']
 EXTENSIONS = [
+    
     "flask_bootstrap:Bootstrap4",
     "hiddifypanel.panel.database:init_app",
+    "hiddifypanel.panel.common:init_app",
     "hiddifypanel.panel.user:init_app",
     "hiddifypanel.panel.admin:init_app",
-    "hiddifypanel.panel.cli:init_app",
+    "hiddifypanel.panel.cli:init_app",    
     "hiddifypanel.panel.webui:init_app",
     "hiddifypanel.panel.restapi:init_app",
 ]
 
 [development]
 EXTENSIONS = [
-    "flask_debugtoolbar:DebugToolbarExtension",
+    #"flask_debugtoolbar:DebugToolbarExtension",
     "dynaconf_merge_unique"  # to reuse extensions list from [default]
 ]
 TEMPLATES_AUTO_RELOAD = true

@@ -3,7 +3,8 @@ from hiddifypanel.panel.database import db
 from wtforms.validators import Regexp
 from hiddifypanel.models import  User,Domain,DomainType,StrConfig,ConfigEnum
 from wtforms.validators import Regexp,ValidationError
-class DomainAdmin(sqla.ModelView):
+from .adminlte import AdminLTEModelView
+class DomainAdmin(AdminLTEModelView):
     can_export = True
     form_args = {
     'domain': {

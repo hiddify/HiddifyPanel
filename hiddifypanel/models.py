@@ -1,8 +1,9 @@
 from sqlalchemy_serializer import SerializerMixin
 from flask import Markup
-
+from dateutil import relativedelta
 from hiddifypanel.panel.database import db
-import enum,uuid,datetime
+import enum,datetime
+import uuid as uuid_mod
 from enum import auto
 class ConfigEnum:
     admin_secret="admin_secret"
@@ -47,17 +48,17 @@ class Domain(db.Model, SerializerMixin):
 class User(db.Model, SerializerMixin):
     
     id=db.Column(db.Integer, primary_key=True, autoincrement=True)
-    uuid = db.Column(db.String(36), default=lambda: str(uuid.uuid4()),nullable=False,unique=True)
+    uuid = db.Column(db.String(36), default=lambda: str(uuid_mod.uuid4()),nullable=False,unique=True)
     # uuid = db.Column(db.UUID(binary=False),default=uuid.uuid4,unique=True,nullable=False)
     name = db.Column(db.String(512),nullable=False)
     # monthly_usage_limit=db.Column(db.BigInteger,default=100,nullable=False)
     # current_usage=db.Column(db.BigInteger,default=0,nullable=False)
-    monthly_usage_limit_GB=db.Column(db.Numeric(6,9, asdecimal=False),default=100,nullable=False)
+    monthly_usage_limit_GB=db.Column(db.Numeric(6,9, asdecimal=False),default=1000,nullable=False)
     current_usage_GB=db.Column(db.Numeric(6,9, asdecimal=False),default=0,nullable=False)
-    from dateutil import relativedelta
+    
     next6month = datetime.date.today() + relativedelta.relativedelta(months=6)
     expiry_time=db.Column(db.Date, default=next6month) 
-    last_rest_time=db.Column(db.Date, default=datetime.date.today()) 
+    last_reset_time=db.Column(db.Date, default=datetime.date.today()) 
     
         
 
