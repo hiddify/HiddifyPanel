@@ -1,0 +1,52 @@
+<div class="card-deck">
+    
+
+        <div class="card small-box bg-info ">
+            <div class="card-body">
+            <div class="inner">
+                <h3>حجم مصرفی</h3>
+                <div class="info-box-content">
+                    <span class="info-box-text">{{user.current_usage_GB}}GB <b>از</b>
+                            {{user.monthly_usage_limit_GB}}GB</span>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped bg-warning"
+                            style="width: {{user.current_usage_GB*10000/user.monthly_usage_limit_GB}}%"></div>
+                    </div>
+                    <span class="progress-description">
+                        <i class="fa-solid fa-calendar-days fa-margin"></i> <b>انقضای سرویس:</b> {{expire_days}} روز
+                    </span>
+                </div>
+            </div>
+            <div class="icon">
+                <i class="fas fa-chart-pie"></i>
+            </div>
+        </div>
+            <a href="#" class="card-footer">
+                <i class="fas fa-arrow-circle-left"></i> جزییات مصرف
+            </a>
+        </div>
+
+
+
+
+
+        <div  class="card small-box bg-warning">
+            <div class="card-body">
+            <div class="inner">
+                <h3>QR code</h3>
+                <p>برای کپی یا به اشتراک گذاشتن لینک‌ها روی قسمت طوسی رنگ <i class="fa-solid fa-qrcode"></i> کلیک کنید تا QR Code
+                    آن نمایش داده شود.</p>
+            </div>
+            <div class="icon">
+                <i class="fa-solid fa-qrcode fa-margin"></i>
+            </div>
+        </div>
+            <a href="https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/"
+             class="card-footer share-link">
+                <i class="fas fa-qrcode"></i> مشاهده کد QR
+            </a>
+            
+        </div>
+    </div>
+
+

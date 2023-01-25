@@ -1,0 +1,122 @@
+ابتدا نرم‌افزار کلشClash را با توجه به سیستم عامل خود دانلود و نصب کنید.
+<br>
+
+<div class="btn-group">
+    <a class="btn btn-primary"
+        href="/{{hconfigs[ConfigEnum.proxy_path]}}/gh/Fndroid/clash_for_windows_pkg/releases/download/0.20.9/Clash.for.Windows.Setup.0.20.9.exe"><i
+            class="fa-brands fa-windows fa-margin"></i> Windows</a>
+    <a class="btn btn-secondary"
+        href="/{{hconfigs[ConfigEnum.proxy_path]}}/gh/Fndroid/clash_for_windows_pkg/releases/download/0.20.9/Clash.for.Windows-0.20.9.dmg"><i
+            class="fa-brands fa-apple fa-margin"></i> macOS</a>
+    <a class="btn btn-success"
+        href="/{{hconfigs[ConfigEnum.proxy_path]}}/gh/Fndroid/clash_for_windows_pkg/releases/download/0.20.9/Clash.for.Windows-0.20.9-x64-linux.tar.gz"><i
+            class="fa-brands fa-linux fa-margin"></i> Linux</a>
+
+</div>
+<br>
+
+حالا با توجه به نیازتان می‌توانید روی یکی از دکمه‌ها کلیک کنید. با مشاهده‌‌ی پنجره در
+مرورگرتان کافی است روی گزینه‌ی Open Clash for Windows کلیک کنید تا به صورت خودکار لینک
+سرور به کلش اضافه شود.
+
+<h2>لینک تنظیمات:</h2>
+حالا با توجه به نیازتان روی یکی از دکمه‌ها کلیک کنید:
+<div class="row">
+    <div class="col-md">
+        <div class="card card-success">
+            <div class="card-header">
+                گذرنده فقط برای سایت‌های فیلتر شده
+            </div>
+            <div class="card-body">
+                اگر فقط قصد دسترسی به سایت‌های فیلتر شده را دارید، از این لینک استفاده کنید. 
+                <div class="callout callout-success">
+                    در این حالت عملا هیچ افت سرعتی نخواهید داشت.
+                </div>
+                <div class="btn-group">
+                    <a href="clashmeta://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/meta/lite.yml&name=mlite_{{domain}}"
+                        class="btn btn-primary orig-link">نصب فقط برای سایت‌های فیلتر</a>
+                </div>
+                <details>
+                    <summary>لینک جایگزین برای کلش عادی</summary>
+                    <div class="btn-group">
+                        <a href="clash://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/lite.yml&name=lite_{{domain}}"
+                            class="btn btn-warning orig-link">لینک برای کلش اندروید</a>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </div>
+    <div class="col-md">
+        <div class="card card-warning">
+            <div class="card-header">
+                گذرنده فقط برای سایت‌های خارجی
+            </div>
+            <div class="card-body">
+
+                اگر فقط قصد دسترسی به سایت‌های خارجی را دارید، از این لینک استفاده کنید.
+                <div class="callout callout-warning">
+                    این حالت برای گذر از برخی از تحریم‌های سایت‌های خارجی مفید است.
+                </div>
+                
+                
+                <div class="btn-group">
+                    <a href="clashmeta://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/meta/normal.yml&name=mnormal_{{domain}}"
+                        class="btn btn-primary orig-link">نصب گذرنده برای سایت‌های خارجی</a>
+                </div>
+                <details>
+                    <summary>لینک جایگزین برای کلش عادی</summary>
+                    <div class="btn-group">
+                        <a href="clash://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/normal.yml&name=normal_{{domain}}"
+                            class="btn btn-warning orig-link">لینک برای کلش اندروید</a>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </div>
+    % if True or not hconfigs[ConfigEnum.block_iran_sites]:
+    <div class="col-md">
+        <div class="card card-danger">
+            <div class="card-header">
+                گذرنده همه سایت‌ها
+            </div>
+            <div class="card-body">
+    
+        اگر می‌خواهید برای همه سایت‌ها (چه فیلتر شده و چه غیر فیلتر) از پروکسی
+        استفاده
+        کنید.
+        <div class="callout callout-danger">
+            در این حالت سرعت سایت‌های داخلی شدیدا کاهش پیدا می‌کند.
+        </div>
+
+        <div class="btn-group">
+            <a href="clashmeta://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/meta/all.yml&name=mall_{{domain}}"
+                class="btn btn-primary orig-link">نصب گذرنده برای همه سایت‌ها</a>
+        </div>
+        <details>
+            <summary>لینک جایگزین برای کلش عادی</summary>
+            <div class="btn-group">
+                <a href="clash://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/all.yml&name=all_{{domain}}"
+                    class="btn btn-warning orig-link">لینک برای کلش اندروید</a>
+            </div>
+        </details>
+        </div>
+    </div>
+
+    % endif
+</div>
+<h2>
+    کار با کلش ویندوز، مک و لینوکس
+</h2>
+چنانچه بر روی دکمه "نصب با یک کلیک" کلیک کرده اید دیگر نیاز به انجام مرحله دوم را ندارید
+فقط
+مرحله اول کافی است
+ابندا یکی از لینک تنظیمات کلش را کپی کنید و در قسمت 1 تصویر دوم گیف قرار دهید و مراحل را
+مطابق گیف زیر انجام دهید
+
+<figure class="figure d-block text-center p-3">
+    <img src="images/clash_windows.gif" alt="How to use clash for windows and macOS"
+        class="figure-img img-fluid rounded" />
+    <figcaption class="figure-caption">
+        <p>How to use clash for windows and macOS</p>
+    </figcaption>
+</figure>

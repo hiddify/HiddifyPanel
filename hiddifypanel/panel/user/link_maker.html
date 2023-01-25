@@ -1,0 +1,5 @@
+{% macro proxy_btn(type) -%}
+<div class="btn-group">
+    <a href='{{link_maker.proxy_info(type)["url"]}}' class="btn btn-primary orig-link">{{type}}</a>
+</div>
+{%- endmacro -%}

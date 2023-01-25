@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>پنل مدیریت | عمومی</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap 4 -->
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="{{ url_for('static', filename="plugins/font-awesome/css/font-awesome.min.css" ) }}">
+  <link rel="stylesheet" href="{{url_for('static',filename='css/font-awesome.css')}}" type="text/css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{{ url_for('static', filename="css/adminlte.css" ) }}">
+
+  <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap4-rtl.min.css')}}">
+  <link rel="stylesheet" href="{{url_for('static',filename='css/adminlte.fa.css')}}">
+  <link rel="stylesheet" href="{{url_for('static',filename='plugins/datatables/dataTables.bootstrap4.css')}}">
+  
+
+</head>
+<body class="hold-transition sidebar-collapse">
+<div class="wrapper">
+  <!-- /.navbar -->
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">گذرنده <a href="https://github.com/hiddify/hiddify-config/wiki">هایدیفای</a></h1>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        {% block content %}
+        {% endblock %}
+        <div class="row1">
+          
+        </div>
+
+        
+        
+        <!-- END TYPOGRAPHY -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer d-flex flex-wrap justify-content-between align-items-center py-3 " dir="ltr">
+    <div class="col-md-4 d-flex align-items-center">
+      
+      <strong><span class="mb-3 mb-md-0 text-muted">© 2023 Hiddify <a
+        href="https://github.com/hiddify/hiddify-config/wiki">Source Code</a></span>
+        </strong>
+    </div>
+
+    <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+      <li class="ms-3"><a class="text-muted" href="https://twitter.com/intent/follow?screen_name=hiddify1">
+          Twitter </a></li>
+      <li class="ms-3"><a class="text-muted" href="https://t.me/hiddify">Telegram</a></li>
+    </ul>
+    
+  </footer>
+
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+{% block scripts %}
+<!-- jQuery -->
+<script src="{{ url_for('static', filename="plugins/jquery/jquery.min.js" ) }}"></script>
+<!-- Bootstrap 4 -->
+<script src="{{ url_for('static', filename="plugins/bootstrap/js/bootstrap.bundle.min.js" ) }}"></script>
+<!-- <script src="{{ url_for('static', filename="js/popper.min.js" ) }}"></script> -->
+
+<script src="{{ url_for('static', filename='plugins/datatables/jquery.dataTables.js' ) }}"></script>
+<script src="{{ url_for('static', filename='plugins/datatables/dataTables.bootstrap4.js' ) }}"></script>
+<!-- AdminLTE App -->
+<script src="{{ url_for('static', filename='js/adminlte.js' ) }}"></script>
+<script src="{{url_for('static',filename='js/qrcode.js')}}"></script>
+<script src="{{url_for('static',filename='js/demo.js')}}"></script>
+
+{% endblock %}
+</body>
+</html>

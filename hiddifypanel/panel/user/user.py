@@ -4,11 +4,12 @@ import urllib,uuid
 import datetime
 from hiddifypanel.models import User,Domain,BoolConfig,StrConfig,DomainType,ConfigEnum,get_hconfigs,get_hdomains
 from hiddifypanel.panel.hiddify  import auth
+from . import link_maker
 @auth
 def index(lang="fa"):
     c=get_common_data(g.user_uuid)
     if lang=="fa":
-        return render_template('index_fa.html',**c)
+        return render_template('fa/index.html',**c)
     return  render_template('index_en.html',**c)
 
 
@@ -65,7 +66,9 @@ def get_common_data(user_uuid):
     user=User.query.filter(User.uuid==f'{user_uuid}').first()
     if user is None:
         raise ValidationError("Invalid User")
-
+    g.domain=domain
+    g.direct_host=direct_host
+    g.is_cdn=is_cdn
     return {
         'direct_host':direct_host,
         'user':user,
@@ -78,5 +81,6 @@ def get_common_data(user_uuid):
         'hconfigs':get_hconfigs(),
         'hdomains':get_hdomains(),
         'ConfigEnum':ConfigEnum,
+        'link_maker':link_maker
     }
     

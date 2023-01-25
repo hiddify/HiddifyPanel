@@ -1,0 +1,363 @@
+{% extends "fa/base.html" %}
+{% block title %}گذرنده{% endblock %}
+
+
+
+{% block content %}
+
+
+
+
+
+
+
+
+{% include "fa/usage.html" %}
+
+
+<div class="row">
+    <div class="col-12">
+        <!-- Custom Tabs -->
+        <div class="card">
+            <div class="card-header d-flex p-0">
+                <h3 class="card-title p-1"> </h3>
+                <ul class="nav nav-pills ml-auto p-2">
+                    <li class="nav-item"><a class="nav-link" href="#telegram" data-toggle="tab"><i
+                                class="fa-brands fa-telegram fa-margin"></i> تلگرام</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#android" data-toggle="tab"><i
+                                class="fa-brands fa-android fa-margin"></i> اندروید</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#ios" data-toggle="tab"><i
+                                class="fa-brands fa-app-store-ios fa-margin"></i> آیفون</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#windows" data-toggle="tab"><i
+                                class="fa-brands fa-windows fa-margin"></i> <i
+                                class="fa-brands fa-apple fa-margin"></i> <i
+                                class="fa-brands fa-linux fa-margin"></i> لپ تاپ و رایانه</a></li>
+                    
+                </ul>
+            </div><!-- /.card-header -->
+            <div class="card-body">
+                <div class="tab-content">
+                    <div class="tab-pane active" id="default">
+                        لطفا نوع گوشی یا سیستم عامل خود را انتخاب کنید
+                    </div>
+                    <div class="tab-pane" id="telegram">
+                        {% include 'fa/telegram.html' %}
+
+
+                    </div>
+                    <div class="tab-pane" id="android">
+                        {% include 'fa/android.html' %}
+                    </div>
+                    <!-- /.tab-pane -->
+                    <div class="tab-pane" id="ios">
+                        {% include 'fa/ios.html' %}
+                    </div>
+                    <!-- /.tab-pane -->
+                    <div class="tab-pane" id="windows">
+                        {% include "fa/windows.html" %}
+                    </div>
+                    <!-- /.tab-pane -->
+                </div>
+                <!-- /.tab-content -->
+            </div><!-- /.card-body -->
+        </div>
+        <!-- ./card -->
+    </div>
+    <!-- /.col -->
+
+
+
+<div class="row">
+    <div class="col-12">
+        <!-- Custom Tabs -->
+        <div class="card">
+            <div class="card-header d-flex p-0">
+                <h3 class="card-title p-3">ابزارها</h3>
+                <ul class="nav nav-pills ml-auto p-2">
+                    <li class="nav-item"><a class="nav-link" href="#all_configs" data-toggle="tab"><i
+                                class="fa-solid fa-grip fa-margin"></i> همه کانفیگ‌ها</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#speedtest" data-toggle="tab"><i
+                                class="fa-solid fa-gauge-high fa-margin"></i> تست سرعت و شناسایی آی پی کثیف</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#doh" data-toggle="tab"><i
+                                class="fa-solid fa-sitemap fa-margin"></i> DNS over https</a></li>
+                </ul>
+            </div><!-- /.card-header -->
+            <div class="card-body">
+                <div class="tab-content">
+                    <div class="tab-pane active" id="default">
+                        لطفا گزینه مورد نظر خود را انتخاب کنید
+                    </div>
+                    <div class="tab-pane" id="all_configs">
+                        {% include 'fa/all-configs.html'%}
+                    </div>
+                    <div class="tab-pane" id="speedtest">
+                        {% include 'fa/speedtest.html' %}
+                    </div>
+                    <!-- /.tab-pane -->
+                    <div class="tab-pane" id="doh">
+                        {% include 'fa/doh.html' %}
+                    </div>
+
+                    <!-- /.tab-pane -->
+                </div>
+                <!-- /.tab-content -->
+            </div><!-- /.card-body -->
+        </div>
+        <!-- ./card -->
+    </div>
+    <!-- /.col -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+    .fa-margin {
+        margin-left: 10px;
+        margin-right: 5px;
+    }
+
+    .text-break {
+        word-wrap: break-word !important;
+        word-break: break-word !important;
+    }
+
+    .btn-group {
+        margin-bottom: 10px;
+    }
+
+    #qrcode2 img {
+        margin: auto;
+    }
+</style>
+
+<div class="modal fade" id="share-qr-code" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">لینک اشتراک برای شبکه های اجتماعی</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <center>
+                    <a id='qrcode-link' class="btn btn-primary copy-link" href="">کپی لینک</a>
+                    <a id="share-link-redirect" class="btn btn-success copy-link" href="">کپی لینک جهت اشتراک
+                        گذاری</a>
+                    <br />
+                    <div id="qrcode" style="margin:10px;"></div>
+                </center>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary close" data-dismiss="modal">بستن</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% block scripts %}
+{{ super() }}
+
+<script>
+
+    function copy_click(e) {
+        e.preventDefault();
+        console.log(this); console.log(e);
+        var link = this.href;
+        navigator.clipboard.writeText(link).then(function () {
+            alert('Link Copied to clipboard ' + link);
+        }, function (err) {
+            window.prompt("Copy to clipboard: Ctrl+C, Enter", link);
+        });
+    }
+    w = Math.min(window.innerWidth, window.innerHeight) * .75;
+    qrcode = new QRCode(document.getElementById("qrcode"), { width: w, height: w, correctLevel: 1 });
+    w = Math.min(window.innerWidth, window.innerHeight) * .75;
+    // qrcode2 = new QRCode(document.getElementById("qrcode2"), { width: w / 2, height: w / 2, correctLevel: 1 });
+    // qrcode2.clear()
+    // qrcode2.makeCode(document.location.href);
+    function share_click(e) {
+        e.preventDefault();
+        var link = this.href;
+        qrcode.clear()
+        qrcode.makeCode(link);
+        hrefshare = "https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/redirect/" + link.replaceAll('://', '%3A%2F%2F')
+        $('#qrcode-link')[0].href = link
+        $('#share-link-redirect')[0].href = hrefshare
+        if (link.startsWith("http"))
+            $('#share-link-redirect').hide()
+        else
+            $('#share-link-redirect').show()
+        $('#share-qr-code').modal('show');
+    }
+    $(document).ready(function () {
+        $('a.orig-link').each((i, p) => {
+            href = p.href
+            if (href.startsWith("clash://install-config?url=")) {
+                href = href.replaceAll('clash://install-config?url=', '');
+                href = href.replaceAll(".yml&", ".yml?")
+            }
+            if (href.startsWith("clashmeta://install-config?url=")) {
+                href = href.replaceAll('clashmeta://install-config?url=', '');
+                href = href.replaceAll(".yml&", ".yml?")
+            }
+
+            // ecopy = ' <a href="' + href + '" class="btn btn-success copy-link">کپی لینک</a>'
+            eshare = ' <a href="' + href + '" class="btn btn-secondary share-link"><i class="fa-solid fa-qrcode"></i></a>'
+            $(eshare).insertBefore(p);
+            // $(ecopy).insertAfter(p);
+        });
+        $('a.copy-link').click(copy_click)
+        $('a.share-link').click(share_click)
+        $('.close').click(() => $('.modal').modal('hide'))
+    });
+
+
+    const Main_Details = document.querySelectorAll('.main-details');
+
+    Main_Details.forEach(deet => {
+        deet.addEventListener('toggle', toggleOpenOneOnly)
+    })
+
+    function toggleOpenOneOnly(e) {
+        if (this.open) {
+            Main_Details.forEach(deet => {
+                if (deet != this && deet.open) deet.open = false
+            });
+        }
+    }
+</script>
+
+<script>
+    
+    
+    function replace_info(str) {
+    
+        if (str.includes('vmess://')) {
+            splt = str.split('vmess://')
+            return "vmess://" + btoa(splt[1])
+        }
+
+        if (str.includes('vmess%3A%2F%2F')) {
+            splt = str.split('vmess%3A%2F%2F')
+            return splt[0] + "vmess%3A%2F%2F" + btoa(splt[1])
+        }
+        return str;
+    }
+
+
+    codes = document.getElementsByTagName('code');
+    for (i = 0; i < codes.length; i++) {
+        codes[i].innerHTML = replace_info(codes[i].innerHTML);
+    }
+
+    as = $('a.orig-link');
+    for (i = 0; i < as.length; i++) {
+        console.log(as[i].href)
+        as[i].href = replace_info(as[i].href);
+        as[i].innerHTML = replace_info(as[i].innerHTML);
+    }
+
+    $(function () {
+    
+    $('#all-links').DataTable({
+        "language": {
+            "paginate": {
+                "next": "بعدی",
+                "previous" : "قبلی"
+            }
+        },
+      "info" : true,
+      "paging": false,
+      "lengthChange": true,
+      "searching": true,
+      "ordering": true,
+      "autoWidth": true,
+  
+"oLanguage": {
+   "sSearch": "جستجو: "
+ }
+    });
+  });
+</script>
+
+{% endblock %}
