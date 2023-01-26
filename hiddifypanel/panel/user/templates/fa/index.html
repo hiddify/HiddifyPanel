@@ -22,16 +22,16 @@
             <div class="card-header d-flex p-0">
                 <h3 class="card-title p-1"> </h3>
                 <ul class="nav nav-pills ml-auto p-2">
+                    % if hconfigs[ConfigEnum.telegram_enable]
                     <li class="nav-item"><a class="nav-link" href="#telegram" data-toggle="tab"><i
                                 class="fa-brands fa-telegram fa-margin"></i> تلگرام</a></li>
+                    % endif
                     <li class="nav-item"><a class="nav-link" href="#android" data-toggle="tab"><i
                                 class="fa-brands fa-android fa-margin"></i> اندروید</a></li>
                     <li class="nav-item"><a class="nav-link" href="#ios" data-toggle="tab"><i
                                 class="fa-brands fa-app-store-ios fa-margin"></i> آیفون</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#windows" data-toggle="tab"><i
-                                class="fa-brands fa-windows fa-margin"></i> <i
-                                class="fa-brands fa-apple fa-margin"></i> <i
-                                class="fa-brands fa-linux fa-margin"></i> لپ تاپ و رایانه</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#windows" data-toggle="tab">
+                        <i class="fa-brands fa-windows fa-margin1"></i> <i class="fa-brands fa-apple fa-margin1"></i> <i class="fa-brands fa-linux fa-margin1"></i> لپ تاپ و رایانه</a></li>
                     
                 </ul>
             </div><!-- /.card-header -->
@@ -42,8 +42,6 @@
                     </div>
                     <div class="tab-pane" id="telegram">
                         {% include 'fa/telegram.html' %}
-
-
                     </div>
                     <div class="tab-pane" id="android">
                         {% include 'fa/android.html' %}
@@ -64,7 +62,7 @@
         <!-- ./card -->
     </div>
     <!-- /.col -->
-
+</div>
 
 
 <div class="row">
@@ -72,7 +70,7 @@
         <!-- Custom Tabs -->
         <div class="card">
             <div class="card-header d-flex p-0">
-                <h3 class="card-title p-3">ابزارها</h3>
+                <h3 class="card-title p-0"></h3>
                 <ul class="nav nav-pills ml-auto p-2">
                     <li class="nav-item"><a class="nav-link" href="#all_configs" data-toggle="tab"><i
                                 class="fa-solid fa-grip fa-margin"></i> همه کانفیگ‌ها</a></li>
@@ -104,14 +102,31 @@
             </div><!-- /.card-body -->
         </div>
         <!-- ./card -->
-    </div>
     <!-- /.col -->
 
 
+<div class="card-deck d-sm-none">
+        <div  class="card small-box bg-warning">
+            <div class="card-body">
+            <div class="inner">
+                <h3>QR code</h3>
+                <p>برای کپی یا به اشتراک گذاشتن لینک‌ها روی قسمت طوسی رنگ <i class="fa-solid fa-qrcode"></i> کلیک کنید تا QR Code
+                    آن نمایش داده شود.</p>
+            </div>
+            <div class="icon">
+                <i class="fa-solid fa-qrcode fa-margin"></i>
+            </div>
+        </div>
+            <a href="https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/"
+             class="card-footer share-link">
+                <i class="fas fa-qrcode"></i> مشاهده کد QR
+            </a>
 
+        </div>
+    </div>
+</div>
 
-
-
+ </div>
 
 
 
@@ -181,8 +196,9 @@
         margin-bottom: 10px;
     }
 
-    #qrcode2 img {
+    #qrcode img {
         margin: auto;
+        width: 90%;
     }
 </style>
 
@@ -191,10 +207,11 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">لینک اشتراک برای شبکه های اجتماعی</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
+                <h5 class="modal-title" id="exampleModalLongTitle">لینک اشتراک برای شبکه های اجتماعی</h5>
+                
             </div>
             <div class="modal-body">
                 <center>
@@ -236,7 +253,6 @@
 
 {% block scripts %}
 {{ super() }}
-
 <script>
 
     function copy_click(e) {
@@ -340,6 +356,20 @@
     $(function () {
     
     $('#all-links').DataTable({
+// scrollY: 300,
+ responsive1: {
+            details: {
+                display: $.fn.dataTable.Responsive.display.modal( {
+                    header: function ( row ) {
+                        var data = row.data();
+                        return ''; //'Details for '+data[0]+' '+data[1];
+                    }
+                } ),
+                renderer: $.fn.dataTable.Responsive.renderer.tableAll( {
+                    tableClass: 'table'
+                } )
+            }
+        },
         "language": {
             "paginate": {
                 "next": "بعدی",

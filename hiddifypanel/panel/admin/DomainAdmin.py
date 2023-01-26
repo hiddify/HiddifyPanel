@@ -1,7 +1,7 @@
 from flask_admin.contrib import sqla
 from hiddifypanel.panel.database import db
 from wtforms.validators import Regexp
-from hiddifypanel.models import  User,Domain,DomainType,StrConfig,ConfigEnum
+from hiddifypanel.models import  User,Domain,DomainType,StrConfig,ConfigEnum,get_hconfigs
 from wtforms.validators import Regexp,ValidationError
 from .adminlte import AdminLTEModelView
 class DomainAdmin(AdminLTEModelView):
@@ -19,8 +19,14 @@ class DomainAdmin(AdminLTEModelView):
     #     model.password = generate_password_hash(model.password)
     def on_model_change(self, form, model, is_created):
         model.domain = model.domain.lower()
-        if model.mode in [DomainType.ss_faketls, DomainType.telegram_faketls]:
-            if len(Domain.query.filter(Domain.mode==model.mode and Domain.id!=model.id).all())>0:
-                ValidationError(f"another {model.mode} is exist")
+        configs=get_hconfigs()
+        for c in configs:
+            if "domain" in c:
+                if model.domain==configs[c]:
+                    raise ValidationError(f"another {model.mode} is exist")    
+    
+        # if model.mode in [DomainType.ss_faketls, DomainType.telegram_faketls]:
+        #     if len(Domain.query.filter(Domain.mode==model.mode and Domain.id!=model.id).all())>0:
+        #         ValidationError(f"another {model.mode} is exist")
 
     pass

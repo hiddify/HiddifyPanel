@@ -47,7 +47,7 @@ def init_db():
             StrConfig(category="admin",key=ConfigEnum.admin_secret,value=str(uuid.uuid4()),description="Admin Secret will be used for accessing admin panel"),
             StrConfig(category="ports",key=ConfigEnum.tls_ports,value="443",description="TCP port, Comma seperated. e.g., 80,90,443"),
             StrConfig(category="ports",key=ConfigEnum.http_ports,value="80",description="TCP port, Comma seperated. e.g., 80,90,443"),
-            StrConfig(category="ports",key=ConfigEnum.kcp_ports,value="443",description="UDP port for KCP, Comma seperated. e.g., 80,90,443"),
+            StrConfig(category="ports",key=ConfigEnum.kcp_ports,value="88",description="UDP port for KCP, Comma seperated. e.g., 80,90,443"),
             StrConfig(category="general",key=ConfigEnum.decoy_site,value="https://www.wikipedia.org/",description="Fake site: simulate a site when someone visit your domain. Please use a well known domain in your data center. For example, if you are in azure data center, microsoft.com is a good example"),
             StrConfig(category="general",key=ConfigEnum.proxy_path,value=get_random_string(),description="a radom path to secure proxies"),
             BoolConfig(category="general",key=ConfigEnum.firewall,value=False,description="Enable Firewall"),
@@ -65,11 +65,23 @@ def init_db():
             BoolConfig(category="telegram",key=ConfigEnum.telegram_enable,value=True),
             StrConfig(category="telegram",key=ConfigEnum.telegram_secret,value=uuid.uuid4().hex,description="UUID Secret for telegram."),
             StrConfig(category="telegram",key=ConfigEnum.telegram_adtag,value="",description="adtag for telegram."),
-            Domain(domain="www.wikipedia.org",mode=DomainType.telegram_faketls),
+            StrConfig(category="telegram",key=ConfigEnum.telegram_fakedomain, value="www.wikipedia.org",description="fake domain for telegram."),
 
             BoolConfig(category="ssfaketls",key=ConfigEnum.ssfaketls_enable,value=False),
             StrConfig(category="ssfaketls",key=ConfigEnum.ssfaketls_secret,value=str(uuid.uuid4()),description="UUID Secret for shadowsocks fake tls."),
-            Domain(domain="fa.wikipedia.org",mode=DomainType.ss_faketls),
+            StrConfig(category="ssfaketls",key=ConfigEnum.ssfaketls_fakedomain, value="fa.wikipedia.org",description="fake domain for shadowsocks."),
+
+            BoolConfig(category="shadowtls",key=ConfigEnum.shadowtls_enable,value=False),
+            StrConfig(category="shadowtls",key=ConfigEnum.shadowtls_secret,value=str(uuid.uuid4()),description="UUID Secret for shadowtls."),
+            StrConfig(category="shadowtls",key=ConfigEnum.shadowtls_fakedomain, value="en.wikipedia.org",description="fake domain for shadowtls."),
+
+            BoolConfig(category="ssr",key=ConfigEnum.ssr_enable,value=False),
+            StrConfig(category="ssr",key=ConfigEnum.ssr_secret,value=str(uuid.uuid4()),description="UUID Secret for SSR."),
+            StrConfig(category="ssr",key=ConfigEnum.ssr_fakedomain, value="en.wikipedia.org",description="fake domain for SSR."),
+
+            BoolConfig(category="tuic",key=ConfigEnum.tuic_enable,value=False),
+            StrConfig(category="tuic",key=ConfigEnum.tuic_port,value=3048),
+
         ]
     
         db.session.bulk_save_objects(data)
@@ -126,18 +138,11 @@ def init_app(app):
                 if not Domain.query.filter(Domain.domain==d).first():
                     data.append(Domain(domain=d,mode=DomainType.direct),)
         
-        if "FAKE_CDN_DOMAIN" in config:
-            d=config["FAKE_CDN_DOMAIN"]
-            data.append(Domain(domain=d,mode=DomainType.fake_cdn),)
-        if "TELEGRAM_FAKE_TLS_DOMAIN" in config:
-            d=config["TELEGRAM_FAKE_TLS_DOMAIN"]
-            data.append(Domain(domain=d,mode=DomainType.telegram_faketls),)
-        if "SS_FAKE_TLS_DOMAIN" in config:
-            d=config["SS_FAKE_TLS_DOMAIN"]
-            data.append(Domain(domain=d,mode=DomainType.ss_faketls),)
-        
         strmap={
+            "TELEGRAM_FAKE_TLS_DOMAIN": ConfigEnum.telegram_fakedomain,
             "TELEGRAM_SECRET":ConfigEnum.telegram_secret,
+            "SS_FAKE_TLS_DOMAIN":ConfigEnum.ssfaketls_fakedomain,
+            "FAKE_CDN_DOMAIN":ConfigEnum.fake_cdn_domain,
             "BASE_PROXY_PATH":ConfigEnum.proxy_path,
             "ADMIN_SECRET":ConfigEnum.admin_secret,
             "TELEGRAM_AD_TAG":ConfigEnum.telegram_adtag

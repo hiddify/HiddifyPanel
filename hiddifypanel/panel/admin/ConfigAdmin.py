@@ -38,7 +38,7 @@ class ConfigAdmin(AdminLTEModelView):
 
         if model.key in [ConfigEnum.tls_ports,ConfigEnum.kcp_ports,ConfigEnum.http_ports]:
             if not re.match("^(\d,?)*$", model.value):            
-                raise ValidationError('Invalid path. should be asci string')
+                raise ValidationError('Invalid path. should be comma seperated integer e.g., 80,81')
 
         if model.key==ConfigEnum.http_ports:
             if "80" not in model.value.split(","):
@@ -46,3 +46,9 @@ class ConfigAdmin(AdminLTEModelView):
         if model.key==ConfigEnum.tls_ports:
             if "443" not in model.value.split(","):
                 raise ValidationError('Port 443 should always be presented')
+
+        if "domain" in model.key:
+            if not re.match("^([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})$", model.value):            
+                raise ValidationError('Invalid domain: e.g., www.google.com')
+            if len(Domain.query.filter(Domain.domain==model.value).all())>0:
+                raise ValidationError(f"Domain model.value is exist in domains section. Use a fake domain")

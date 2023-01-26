@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+  {% block head %}
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>پنل مدیریت | عمومی</title>
+  <title>{% block title %} {% endblock %} | Hiddify</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Bootstrap 4 -->
-
+  {% block styles %}
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="{{ url_for('static', filename="plugins/font-awesome/css/font-awesome.min.css" ) }}">
   <link rel="stylesheet" href="{{url_for('static',filename='css/font-awesome.css')}}" type="text/css">
@@ -17,8 +18,9 @@
   <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap4-rtl.min.css')}}">
   <link rel="stylesheet" href="{{url_for('static',filename='css/adminlte.fa.css')}}">
   <link rel="stylesheet" href="{{url_for('static',filename='plugins/datatables/dataTables.bootstrap4.css')}}">
-  
-
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.bootstrap4.min.css">  
+  {% endblock %}
+  {% endblock %}
 </head>
 <body class="hold-transition sidebar-collapse">
 <div class="wrapper">
@@ -82,6 +84,8 @@
 
 <script src="{{ url_for('static', filename='plugins/datatables/jquery.dataTables.js' ) }}"></script>
 <script src="{{ url_for('static', filename='plugins/datatables/dataTables.bootstrap4.js' ) }}"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/responsive/2.4.0/js/responsive.bootstrap4.min.js"></script>
 <!-- AdminLTE App -->
 <script src="{{ url_for('static', filename='js/adminlte.js' ) }}"></script>
 <script src="{{url_for('static',filename='js/qrcode.js')}}"></script>

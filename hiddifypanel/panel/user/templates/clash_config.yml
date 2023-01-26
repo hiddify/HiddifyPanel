@@ -4,38 +4,51 @@ allow-lan: false
 log-level: info
 secret: 
 external-controller: 127.0.0.1:9090
-ipv6: false
+# ipv6: false
+ipv6: true
 mode: rule
 dns:
   enable: true
   use-hosts: true
-  ipv6: false
+  # ipv6: false
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
   listen: 127.0.0.1:6868
+  % if meta_or_normal=='meta'
+  prefer-h3: true #Enable DoH support for HTTP/3,
+  % endif
+  use-hosts: true
   fake-ip-filter:
      - '{{domain}}'
      - '{{hconfigs[ConfigEnum.telegram_fakedomain]}}'
   default-nameserver:
-% if meta_or_normal=='meta'
-    - https://1.1.1.1/dns-query#PROXY
-    - https://8.8.8.8/dns-query#PROXY
-    - https://1.0.0.1/dns-query#PROXY
-% endif
     - 1.1.1.1
     - 8.8.8.8
     - 1.0.0.1
   nameserver:
 #    - https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/dns/dns-query
 % if meta_or_normal=='meta'
+    - https://8.8.8.8/dns-query#h3=true
     - https://1.1.1.1/dns-query#PROXY
     - https://8.8.8.8/dns-query#PROXY
     - https://1.0.0.1/dns-query#PROXY
+    #- https://8.8.8.8/dns-query#PROXY&h3=true
+    
 % endif
     - 8.8.8.8
     - 1.1.1.1
+profile:
+  # Storing select records
+  store-selected: false
 
 proxy-groups:
+  - name: "tuic"
+    type: relay
+    proxies:
+      - vless
+      - tuic
+
+
   - name: auto_all
     use:
       - all_proxies

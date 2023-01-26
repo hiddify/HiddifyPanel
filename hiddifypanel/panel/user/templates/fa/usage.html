@@ -7,7 +7,7 @@
                 <h3>حجم مصرفی</h3>
                 <div class="info-box-content">
                     <span class="info-box-text">{{user.current_usage_GB}}GB <b>از</b>
-                            {{user.monthly_usage_limit_GB}}GB</span>
+                            {{user.monthly_usage_limit_GB}}GB  ماهیانه</span> 
                     <div class="progress">
                         <div class="progress-bar progress-bar-striped bg-warning"
                             style="width: {{user.current_usage_GB*10000/user.monthly_usage_limit_GB}}%"></div>
@@ -30,7 +30,7 @@
 
 
 
-        <div  class="card small-box bg-warning">
+        <div  class="card small-box bg-warning d-none d-sm-flex">
             <div class="card-body">
             <div class="inner">
                 <h3>QR code</h3>

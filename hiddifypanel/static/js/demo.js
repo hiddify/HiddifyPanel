@@ -213,8 +213,8 @@
     function ConvertNumberToPersion() {
           let persian = { 0: '۰', 1: '۱', 2: '۲', 3: '۳', 4: '۴', 5: '۵', 6: '۶', 7: '۷', 8: '۸', 9: '۹' };
           function traverse(el) {
-            console.log(el.tagName)
-            if (el.tagName=="PRE")return
+//            console.log(el.tagName)
+            if (el.tagName=="PRE" || el.tagName=="STYLE" || el.tagName=="SCRIPT")return
               if (el.nodeType == 3) {
                   var list = el.data.match(/[0-9]/g);
                   if (list != null && list.length != 0) {
@@ -232,26 +232,5 @@
   
     ConvertNumberToPersion();
   
-    $('.sidebar-mini .main-header .nav-item').click(function () {
-      let sidebar_mini = $('.sidebar-mini');
-      let class_name = sidebar_mini.attr('class');
-      class_name = class_name.replace('sidebar-mini sans ', '');
-      if (class_name == 'sidebar-open') {
-        setCookie('sidebar_class', 'sidebar-collapse', 100);
-      } else {
-        setCookie('sidebar_class', 'sidebar-open', 100);
-      }
-    });
-  
-    let _sidebar_class = checkCookie('sidebar_class') ? getCookie('sidebar_class') : 'sidebar-open';
-    let _main_header_color = checkCookie('main_header_color') ? getCookie('main_header_color') : 'navbar-dark bg-success';
-    let _main_header_border = checkCookie('main_header_border') ? getCookie('main_header_border') : 'border-bottom';
-    let _main_sidebar_color = checkCookie('main_sidebar_color') ? getCookie('main_sidebar_color') : 'sidebar-dark-info';
-    let _logo_color = checkCookie('logo_color') ? getCookie('logo_color') : 'bg-success';
-    if(_main_header_border == 'border-bottom') $('.control-sidebar input[type=checkbox]').attr('checked', true);
-    $('.main-header').addClass(_main_header_color).addClass(_main_header_border);
-    $('.main-sidebar').addClass(_main_sidebar_color);
-    $('.main-sidebar .brand-link').addClass(_logo_color);
-    $('.sidebar-mini').addClass(_sidebar_class);
   
   })(jQuery)

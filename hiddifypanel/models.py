@@ -20,13 +20,25 @@ class ConfigEnum:
     auto_update="auto_update"
     speed_test="speed_test"
     only_ipv4="only_ipv4"
+
     telegram_enable="telegram_enable"
     telegram_secret="telegram_secret"
     telegram_adtag="telegram_adtag"
     telegram_fakedomain="telegram_fakedomain"
+
     ssfaketls_enable="ssfaketls_enable"
     ssfaketls_secret="ssfaketls_secret"
     ssfaketls_fakedomain="ssfaketls_fakedomain"
+    
+    shadowtls_enable="shadowtls_enable"
+    shadowtls_fakedomain="shadowtls_fakedomain"
+
+    tuic_enabled="tuic_enabled"
+    tuic_port="tuic_port"
+
+    ssr_enable="ssr_enable"
+    ssr_fakedomain="ssr_fakedomain"
+
     vmess_enable="vmess_enable"
     fake_cdn_domain="fake_cdn_domain"
     db_version="db_version"
@@ -35,9 +47,9 @@ class ConfigEnum:
 class DomainType(enum.Enum):
     direct = "direct"
     cdn = "cdn"
-    fake_cdn = "fake_cdn"
-    telegram_faketls = "telegram_faketls"
-    ss_faketls = "ss_faketls"
+    # fake_cdn = "fake_cdn"
+    # telegram_faketls = "telegram_faketls"
+    # ss_faketls = "ss_faketls"
 
 class Domain(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -98,12 +110,12 @@ def hconfig(key):
         bool_conf=BoolConfig.query.filter(BoolConfig.key==key).first()
         if bool_conf:
             return bool_conf.value
-        if key == ConfigEnum.ssfaketls_fakedomain:
-            return hdomain(DomainType.ss_faketls)
-        if key == ConfigEnum.telegram_fakedomain:
-            return hdomain(DomainType.telegram_faketls)
-        if key == ConfigEnum.fake_cdn_domain:
-            return hdomain(DomainType.fake_cdn)
+        # if key == ConfigEnum.ssfaketls_fakedomain:
+        #     return hdomain(DomainType.ss_faketls)
+        # if key == ConfigEnum.telegram_fakedomain:
+        #     return hdomain(DomainType.telegram_faketls)
+        # if key == ConfigEnum.fake_cdn_domain:
+        #     return hdomain(DomainType.fake_cdn)
     except:
         print(f'{key} error!')
     
@@ -112,8 +124,8 @@ def hconfig(key):
 def get_hconfigs():
     return {**{u.key:u.value for u in BoolConfig.query.all()},
             **{u.key:u.value for u in StrConfig.query.all()},
-            ConfigEnum.telegram_fakedomain:hdomain(DomainType.telegram_faketls),
-            ConfigEnum.ssfaketls_fakedomain:hdomain(DomainType.ss_faketls),
-            ConfigEnum.fake_cdn_domain:hdomain(DomainType.fake_cdn)
+            # ConfigEnum.telegram_fakedomain:hdomain(DomainType.telegram_faketls),
+            # ConfigEnum.ssfaketls_fakedomain:hdomain(DomainType.ss_faketls),
+            # ConfigEnum.fake_cdn_domain:hdomain(DomainType.fake_cdn)
             }
     
