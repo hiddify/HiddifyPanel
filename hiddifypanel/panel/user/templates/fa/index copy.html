@@ -27,18 +27,18 @@
                                 class="fa-brands fa-telegram fa-margin"></i> {{_('telegram')}}</a></li>
                     % endif
                     <li class="nav-item"><a class="nav-link" href="#android" data-toggle="tab"><i
-                                class="fa-brands fa-android fa-margin"></i> {{_('android')}}</a></li>
+                                class="fa-brands fa-android fa-margin"></i> اندروید</a></li>
                     <li class="nav-item"><a class="nav-link" href="#ios" data-toggle="tab"><i
-                                class="fa-brands fa-app-store-ios fa-margin"></i> {{_('ios')}}</a></li>
+                                class="fa-brands fa-app-store-ios fa-margin"></i> آیفون</a></li>
                     <li class="nav-item"><a class="nav-link" href="#windows" data-toggle="tab">
-                        <i class="fa-brands fa-windows fa-margin1"></i> <i class="fa-brands fa-apple fa-margin1"></i> <i class="fa-brands fa-linux fa-margin1"></i> {{_('desktop')}}</a></li>
+                        <i class="fa-brands fa-windows fa-margin1"></i> <i class="fa-brands fa-apple fa-margin1"></i> <i class="fa-brands fa-linux fa-margin1"></i> لپ تاپ و رایانه</a></li>
                     
                 </ul>
             </div><!-- /.card-header -->
             <div class="card-body">
                 <div class="tab-content">
                     <div class="tab-pane active" id="default">
-                        {{_('user.home.select os')}}
+                        لطفا نوع گوشی یا سیستم عامل خود را انتخاب کنید
                     </div>
                     <div class="tab-pane" id="telegram">
                         {% include 'fa/telegram.html' %}
@@ -73,17 +73,17 @@
                 <h3 class="card-title p-0"></h3>
                 <ul class="nav nav-pills ml-auto p-2">
                     <li class="nav-item"><a class="nav-link" href="#all_configs" data-toggle="tab"><i
-                                class="fa-solid fa-grip fa-margin"></i> {{_('user.home.all_configs')}}</a></li>
+                                class="fa-solid fa-grip fa-margin"></i> همه کانفیگ‌ها</a></li>
                     <li class="nav-item"><a class="nav-link" href="#speedtest" data-toggle="tab"><i
-                                class="fa-solid fa-gauge-high fa-margin"></i> {{_('user.home.speedtest')}}</a></li>
+                                class="fa-solid fa-gauge-high fa-margin"></i> تست سرعت و شناسایی آی پی کثیف</a></li>
                     <li class="nav-item"><a class="nav-link" href="#doh" data-toggle="tab"><i
-                                class="fa-solid fa-sitemap fa-margin"></i> {{_('user.home.doh')}}</a></li>
+                                class="fa-solid fa-sitemap fa-margin"></i> DNS over https</a></li>
                 </ul>
             </div><!-- /.card-header -->
             <div class="card-body">
                 <div class="tab-content">
                     <div class="tab-pane active" id="default">
-                        {{_('user.home.select tool')}}
+                        لطفا گزینه مورد نظر خود را انتخاب کنید
                     </div>
                     <div class="tab-pane" id="all_configs">
                         {% include 'fa/all-configs.html'%}
@@ -109,8 +109,9 @@
         <div  class="card small-box bg-warning">
             <div class="card-body">
             <div class="inner">
-                <h3>{{_('QR code')}}</h3>
-                <p>{{_('user.home.qr-code.description')}}</p>
+                <h3>QR code</h3>
+                <p>To copy or share links, click on the gray <i class="fa-solid fa-qrcode"></i> field to scan the QR Code.
+                    It will be displayed.</p>
             </div>
             <div class="icon">
                 <i class="fa-solid fa-qrcode fa-margin"></i>
@@ -118,7 +119,7 @@
         </div>
             <a href="https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/"
              class="card-footer share-link">
-                <i class="fas fa-qrcode"></i> {{_('user.home.qr-code.display')}}
+                <i class="fas fa-qrcode"></i> مشاهده کد QR
             </a>
 
         </div>
@@ -209,19 +210,20 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h5 class="modal-title" id="exampleModalLongTitle">{{_('user.home.share-title')}}</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">لینک اشتراک برای شبکه های اجتماعی</h5>
                 
             </div>
             <div class="modal-body">
                 <center>
-                    <a id='qrcode-link' class="btn btn-primary copy-link" href="">{{_("copy")}}</a>
-                    <a id="share-link-redirect" class="btn btn-success copy-link" href="">{{_('clickable copy')}}</a>
+                    <a id='qrcode-link' class="btn btn-primary copy-link" href="">کپی لینک</a>
+                    <a id="share-link-redirect" class="btn btn-success copy-link" href="">کپی لینک جهت اشتراک
+                        گذاری</a>
                     <br />
                     <div id="qrcode" style="margin:10px;"></div>
                 </center>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary close" data-dismiss="modal">{{_('close')}}</button>
+                <button type="button" class="btn btn-secondary close" data-dismiss="modal">بستن</button>
             </div>
         </div>
     </div>
@@ -258,9 +260,9 @@
         console.log(this); console.log(e);
         var link = this.href;
         navigator.clipboard.writeText(link).then(function () {
-            alert('{{_('user.home.link.success-copy')}} ' + link);
+            alert('Link Copied to clipboard ' + link);
         }, function (err) {
-            window.prompt("{{_('user.home.link.manual-copy')}}: Ctrl+C, Enter", link);
+            window.prompt("Copy to clipboard: Ctrl+C, Enter", link);
         });
     }
     w = Math.min(window.innerWidth, window.innerHeight) * .75;
@@ -370,8 +372,8 @@
         },
         "language": {
             "paginate": {
-                "next": "{{_('next')}}",
-                "previous" : "{{_('previous')}}"
+                "next": "بعدی",
+                "previous" : "قبلی"
             }
         },
       "info" : true,
@@ -382,7 +384,7 @@
       "autoWidth": true,
   
 "oLanguage": {
-   "sSearch": "{{_('search')}}: "
+   "sSearch": "جستجو: "
  }
     });
   });

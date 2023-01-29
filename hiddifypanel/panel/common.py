@@ -4,6 +4,10 @@ import uuid
 from flask import g,send_from_directory,url_for
 
 def init_app(app):    
+    app.jinja_env.globals['ConfigEnum'] = ConfigEnum
+    app.jinja_env.globals['hconfig'] = hconfig
+
+    
 
     @app.url_defaults
     def add_proxy_path_user(endpoint, values):

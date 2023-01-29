@@ -4,6 +4,7 @@ from wtforms.validators import Regexp
 from hiddifypanel.models import  User,Domain,DomainType,StrConfig,ConfigEnum,get_hconfigs
 from wtforms.validators import Regexp,ValidationError
 from .adminlte import AdminLTEModelView
+from flask_babelex import lazy_gettext as _
 class DomainAdmin(AdminLTEModelView):
     can_export = True
     form_args = {
@@ -12,7 +13,14 @@ class DomainAdmin(AdminLTEModelView):
     }
     }
     column_editable_list=["domain","mode"]
-    column_searchable_list=["domain"]
+    column_filters=["domain","mode"]
+    column_searchable_list=["domain","mode"]
+    column_labels={
+        "domain":_("domain.domain"),
+        "mode": _("domain.mode"),
+        }
+    def search_placeholder(self):
+            return f"{_('search')} {_('domain.domain')} {_('domain.mode')}"
     # column_list = ["username"]
     # can_edit = False
     # def on_model_change(self, form, model, is_created):

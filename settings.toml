@@ -16,6 +16,7 @@ EXTENSIONS = [
     "hiddifypanel.panel.cli:init_app",    
     "hiddifypanel.panel.webui:init_app",
     "hiddifypanel.panel.restapi:init_app",
+    
 ]
 
 [development]

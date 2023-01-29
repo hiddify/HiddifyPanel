@@ -1,0 +1,692 @@
+# Persian translations for PROJECT.
+# Copyright (C) 2023 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2023-01-29 15:29+0100\n"
+"PO-Revision-Date: 2023-01-28 14:02+0330\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fa\n"
+"Language-Team: fa <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.11.0\n"
+
+#: hiddifypanel/panel/admin/DomainAdmin.py:19
+msgid "domain.domain"
+msgstr ""
+
+#: hiddifypanel/panel/admin/DomainAdmin.py:20
+msgid "domain.mode"
+msgstr ""
+
+#: hiddifypanel/panel/admin/FullConfigAdmin.py:35
+msgid "config.validation-success"
+msgstr ""
+
+#: hiddifypanel/panel/admin/FullConfigAdmin.py:37
+msgid "config.validation-error"
+msgstr ""
+
+#: hiddifypanel/panel/admin/FullConfigAdmin.py:96
+msgid "config.Invalid domain"
+msgstr ""
+
+#: hiddifypanel/panel/admin/FullConfigAdmin.py:97
+msgid "config.Domain already used"
+msgstr ""
+
+#: hiddifypanel/panel/admin/FullConfigAdmin.py:100
+msgid "config.Invalid decoy_site"
+msgstr ""
+
+#: hiddifypanel/panel/admin/FullConfigAdmin.py:103
+msgid "config.invalid uuid"
+msgstr ""
+
+#: hiddifypanel/panel/admin/FullConfigAdmin.py:106
+msgid "config.Invalid proxy path"
+msgstr ""
+
+#: hiddifypanel/panel/admin/FullConfigAdmin.py:109
+msgid "config.Invalid port"
+msgstr ""
+
+#: hiddifypanel/panel/admin/FullConfigAdmin.py:112
+msgid "config.port 80 is required"
+msgstr ""
+
+#: hiddifypanel/panel/admin/FullConfigAdmin.py:114
+msgid "config.port 443 is required"
+msgstr ""
+
+#: hiddifypanel/panel/admin/FullConfigAdmin.py:123
+msgid "Submit"
+msgstr ""
+
+#: hiddifypanel/panel/admin/UserAdmin.py:27
+msgid "user.UUID"
+msgstr ""
+
+#: hiddifypanel/panel/admin/UserAdmin.py:28
+msgid "user.name"
+msgstr ""
+
+#: hiddifypanel/panel/admin/UserAdmin.py:29
+msgid "user.monthly_usage_limit_GB"
+msgstr ""
+
+#: hiddifypanel/panel/admin/UserAdmin.py:30
+msgid "user.current_usage_GB"
+msgstr ""
+
+#: hiddifypanel/panel/admin/UserAdmin.py:31
+msgid "user.expiry_time"
+msgstr ""
+
+#: hiddifypanel/panel/admin/UserAdmin.py:32
+msgid "user.last_reset_time"
+msgstr ""
+
+#: hiddifypanel/panel/admin/UserAdmin.py:33
+msgid "user.user_links"
+msgstr ""
+
+#: hiddifypanel/panel/admin/UserAdmin.py:34
+msgid "actions"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/config.html:11
+msgid "admin.config.title"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:5
+msgid "domain.cdn"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.admin_secret.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.admin_secret.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.admin.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.admin.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.firewall.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.firewall.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.netdata.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.netdata.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.block_iran_sites.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.block_iran_sites.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.allow_invalid_sni.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.allow_invalid_sni.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.auto_update.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.auto_update.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.speed_test.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.speed_test.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.only_ipv4.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.only_ipv4.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.decoy_site.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.decoy_site.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.proxy_path.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.proxy_path.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.general.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.general.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.tls_ports.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.tls_ports.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.http_ports.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.http_ports.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.kcp_ports.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.kcp_ports.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.ports.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.ports.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.vmess_enable.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.vmess_enable.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.http_proxy.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.http_proxy.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.shared_secret.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.shared_secret.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.proxies.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.proxies.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.shadowtls_enable.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.shadowtls_enable.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.shadowtls_fakedomain.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.shadowtls_fakedomain.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.shadowtls.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.shadowtls.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.ssfaketls_enable.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.ssfaketls_enable.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.ssfaketls_fakedomain.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.ssfaketls_fakedomain.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.ssfaketls.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.ssfaketls.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.ssr_enable.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.ssr_enable.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.ssr_fakedomain.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.ssr_fakedomain.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.ssr.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.ssr.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.telegram_enable.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.telegram_enable.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.telegram_adtag.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.telegram_adtag.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.telegram_fakedomain.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.telegram_fakedomain.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.telegram.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.telegram.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.tuic_enable.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.tuic_enable.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.tuic_port.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.tuic_port.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.tuic.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.tuic.description"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/fa/base.html:36
+msgid "test"
+msgstr "تست"
+
+#: copy.html:2 hiddifypanel/panel/user/templates/fa/index
+#: hiddifypanel/panel/user/templates/fa/index.html:2
+msgid "user.home.title"
+msgstr ""
+
+#: copy.html:27 hiddifypanel/panel/user/templates/fa/index
+#: hiddifypanel/panel/user/templates/fa/index.html:27
+msgid "telegram"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/fa/index.html:30
+msgid "android"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/fa/index.html:32
+msgid "ios"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/fa/index.html:34
+msgid "desktop"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/fa/index.html:41
+msgid "user.home.select os"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/fa/index.html:76
+msgid "user.home.all_configs"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/fa/index.html:78
+msgid "user.home.speedtest"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/fa/index.html:80
+msgid "user.home.doh"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/fa/index.html:86
+msgid "user.home.select tool"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/fa/index.html:112
+#: hiddifypanel/panel/user/templates/fa/usage.html:35
+msgid "QR code"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/fa/index.html:113
+#: hiddifypanel/panel/user/templates/fa/usage.html:36
+msgid "user.home.qr-code.description"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/fa/index.html:121
+#: hiddifypanel/panel/user/templates/fa/usage.html:44
+msgid "user.home.qr-code.display"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/fa/index.html:212
+msgid "user.home.share-title"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/fa/index.html:217
+msgid "copy"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/fa/index.html:218
+msgid "clickable copy"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/fa/index.html:224
+msgid "close"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/fa/index.html:261
+msgid "user.home.link.success-copy"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/fa/index.html:263
+msgid "user.home.link.manual-copy"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/fa/index.html:373
+msgid "next"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/fa/index.html:374
+msgid "previous"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/fa/index.html:385
+msgid "search"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/fa/usage.html:7
+msgid "user.home.usage.title"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/fa/usage.html:9
+msgid "user.home.usage.from"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/fa/usage.html:10
+msgid "user.home.usage.monthly"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/fa/usage.html:16
+msgid "user.home.usage.expire"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/fa/usage.html:16
+msgid "days"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/fa/usage.html:24
+msgid "user.home.usage.details"
+msgstr ""
+
+#: hiddifypanel/templates/admin-layout.html:22
+#: hiddifypanel/templates/admin-layout.html:59
+msgid "admin.menu.home"
+msgstr ""
+
+#: hiddifypanel/templates/admin-layout.html:23
+#: hiddifypanel/templates/admin-layout.html:60
+msgid "admin.menu.domain"
+msgstr ""
+
+#: hiddifypanel/templates/admin-layout.html:24
+#: hiddifypanel/templates/admin-layout.html:61
+msgid "admin.menu.user"
+msgstr ""
+
+#: hiddifypanel/templates/admin-layout.html:25
+#: hiddifypanel/templates/admin-layout.html:62
+msgid "admin.menu.config"
+msgstr ""
+
+#: hiddifypanel/templates/admin-layout.html:29
+#: hiddifypanel/templates/admin-layout.html:66
+msgid "admin.menu.support"
+msgstr ""
+
+#: hiddifypanel/templates/admin-layout.html:45
+#: hiddifypanel/templates/master.html:6 hiddifypanel/templates/master.html:54
+msgid "master.page-title"
+msgstr ""
+
+#~ msgid "actionss"
+#~ msgstr ""
+
+#~ msgid "user.home.qr-code.descrition"
+#~ msgstr ""
+
+#~ msgid "user.home.usage.montly"
+#~ msgstr ""
+
+#~ msgid "Home"
+#~ msgstr ""
+
+#~ msgid "D"
+#~ msgstr ""
+
+#~ msgid "Contact us"
+#~ msgstr "تماس با ما"
+
+#~ msgid "config.admin_secret"
+#~ msgstr ""
+
+#~ msgid "config.firewall"
+#~ msgstr ""
+
+#~ msgid "config.netdata"
+#~ msgstr ""
+
+#~ msgid "config.block_iran_sites"
+#~ msgstr ""
+
+#~ msgid "config.allow_invalid_sni"
+#~ msgstr ""
+
+#~ msgid "config.auto_update"
+#~ msgstr ""
+
+#~ msgid "config.speed_test"
+#~ msgstr ""
+
+#~ msgid "config.only_ipv4"
+#~ msgstr ""
+
+#~ msgid "config.db_version"
+#~ msgstr ""
+
+#~ msgid "config.decoy_site"
+#~ msgstr ""
+
+#~ msgid "config.proxy_path"
+#~ msgstr ""
+
+#~ msgid "config.tls_ports"
+#~ msgstr ""
+
+#~ msgid "config.http_ports"
+#~ msgstr ""
+
+#~ msgid "config.kcp_ports"
+#~ msgstr ""
+
+#~ msgid "config.vmess_enable"
+#~ msgstr ""
+
+#~ msgid "config.http_proxy"
+#~ msgstr ""
+
+#~ msgid "config.shadowtls_enable"
+#~ msgstr ""
+
+#~ msgid "config.shadowtls_secret"
+#~ msgstr ""
+
+#~ msgid "config.shadowtls_fakedomain"
+#~ msgstr ""
+
+#~ msgid "config.ssfaketls_enable"
+#~ msgstr ""
+
+#~ msgid "config.ssfaketls_secret"
+#~ msgstr ""
+
+#~ msgid "config.ssfaketls_fakedomain"
+#~ msgstr ""
+
+#~ msgid "config.ssr_enable"
+#~ msgstr ""
+
+#~ msgid "config.ssr_secret"
+#~ msgstr ""
+
+#~ msgid "config.ssr_fakedomain"
+#~ msgstr ""
+
+#~ msgid "config.telegram_enable"
+#~ msgstr ""
+
+#~ msgid "config.telegram_secret"
+#~ msgstr ""
+
+#~ msgid "config.telegram_adtag"
+#~ msgstr ""
+
+#~ msgid "config.telegram_fakedomain"
+#~ msgstr ""
+
+#~ msgid "config.tuic_enable"
+#~ msgstr ""
+
+#~ msgid "config.tuic_port"
+#~ msgstr ""
+
+#~ msgid "config.db_version.label"
+#~ msgstr ""
+
+#~ msgid "config.db_version.description"
+#~ msgstr ""
+
+#~ msgid "config.shadowtls_secret.label"
+#~ msgstr ""
+
+#~ msgid "config.shadowtls_secret.description"
+#~ msgstr ""
+
+#~ msgid "config.ssfaketls_secret.label"
+#~ msgstr ""
+
+#~ msgid "config.ssfaketls_secret.description"
+#~ msgstr ""
+
+#~ msgid "config.ssr_secret.label"
+#~ msgstr ""
+
+#~ msgid "config.ssr_secret.description"
+#~ msgstr ""
+
+#~ msgid "config.telegram_secret.label"
+#~ msgstr ""
+
+#~ msgid "config.telegram_secret.description"
+#~ msgstr ""
+

@@ -6,21 +6,43 @@ from wtforms.validators import Regexp,ValidationError
 import re,uuid
 from hiddifypanel import xray_api
 from .adminlte import AdminLTEModelView
+# from gettext import gettext as _
+from flask_babelex import gettext as __
+from flask_babelex import lazy_gettext as _
 class UserAdmin(AdminLTEModelView):
     column_display_pk = True
     can_export = True
 
-    column_searchable_list=["uuid",'name']
+    
     # form_args = {
     # 'name': {
     #     'label': 'First Name',
     #     'validators': [required()]
     # }
     # }
+    # column_labels={'uuid':_("user.UUID")}
+    column_filters=["uuid","name","monthly_usage_limit_GB","current_usage_GB","expiry_time"]
+    
+    column_labels={
+        "uuid":_("user.UUID"),
+        "name": _("user.name"),
+        "monthly_usage_limit_GB":_("user.monthly_usage_limit_GB"),
+        "current_usage_GB":_("user.current_usage_GB"),
+        "expiry_time":_("user.expiry_time"),
+        "last_reset_time":_("user.last_reset_time"),
+        "UserLinks":_("user.user_links"),
+        "Actions":_("actions")
+     }
+    column_searchable_list=[("uuid"),"name"]
+    def search_placeholder(self):
+        return f"{_('search')} {_('user.UUID')} {_('user.name')}"
+    # def get_column_name(self,field):
+    #         return "x"
+    #  return column_labels[field]
     column_descriptions = dict(
-        name='just for remembering',
-        monthly_usage_limit_GB="in GB",
-        current_usage_GB="in GB"
+        # name=_'just for remembering',
+        # monthly_usage_limit_GB="in GB",
+        # current_usage_GB="in GB"
     )
     column_editable_list=["name","monthly_usage_limit_GB","current_usage_GB","expiry_time"]
     # form_extra_fields={
@@ -34,7 +56,7 @@ class UserAdmin(AdminLTEModelView):
     
     def _ul_formatter(view, context, model, name):
         proxy_path=hconfig(ConfigEnum.proxy_path)
-        return Markup(" ".join([f"<a href='https://{d.domain}/{proxy_path}/{model.uuid}/'>{'CDN: ' if d.mode==DomainType.cdn else ''}{d.domain}</a>" 
+        return Markup(" ".join([f"""<a target='_blank' href='https://{d.domain}/{proxy_path}/{model.uuid}/'>{f'<span class="badge badge-success" >{_("domain.cdn")}</span> ' if d.mode!=DomainType.cdn else ''}<span class='badge badge-info ltr'>{d.domain}</span></a>""" 
             for d in Domain.query.filter(Domain.mode == DomainType.cdn or Domain.mode == DomainType.direct).all()]))
 
     column_formatters = {

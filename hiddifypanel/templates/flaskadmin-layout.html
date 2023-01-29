@@ -1,0 +1,47 @@
+{% extends 'admin-layout.html' %}
+
+
+{% block styles %}
+{{super()}}
+{% if admin_view.extra_css %}
+{% for css_url in admin_view.extra_css %}
+  <link href="{{ css_url }}" rel="stylesheet">
+{% endfor %}
+<link rel="stylesheet" href="{{url_for('static',filename='plugins/bootstrap4-editable/css/bootstrap-editable.css')}}">
+<link rel="stylesheet" href="{{url_for('static',filename='plugins/select2/select2.css')}}">
+{% endif %}
+
+<style>
+    .col-domain, #domain{
+        direction:ltr
+    }
+    </style>
+{% endblock %}
+
+
+{% block tail_js %}
+{{super()}}
+<script src="{{ url_for('static', filename="plugins/bootstrap4-editable/js/bootstrap-editable.min.js" ) }}"></script>
+{% if admin_view.extra_js %}
+    {% for js_url in admin_view.extra_js %}
+        <script src1="{{ js_url }}" type="text/javascript"></script>
+    {% endfor %}
+{% endif %}
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+{% block body %}
+{# store the jinja2 context for form_rules rendering logic #}
+    {% set render_ctx = h.resolve_ctx() %}
+{% endblock %}
+
+

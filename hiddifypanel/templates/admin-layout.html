@@ -1,0 +1,77 @@
+{% extends 'master.html' %}
+{% from 'bootstrap4/nav.html' import render_nav_item, render_breadcrumb_item %}
+
+
+
+
+
+
+
+{% block nav_bar %}
+
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
+        <!-- Left navbar links -->
+        
+          
+
+        
+            <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
+          
+          <div class="d-none d-sm-flex">
+          {{ render_nav_item('admin.admin.index', _('admin.menu.home')) }}
+          {{ render_nav_item('admin.domain.index_view', _('admin.menu.domain')) }}
+          {{ render_nav_item('admin.user.index_view', _('admin.menu.user')) }}
+          {{ render_nav_item('admin.config', _('admin.menu.config')) }}
+          
+          
+          
+            <a href="https://github.com/hiddify/hiddify-config/issues" target="_blank" class="nav-link">{{_('admin.menu.support')}}</a>
+          </div>
+        
+    
+      </nav>
+      <!-- /.navbar -->
+    
+
+      
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="index3.html" class="brand-link">
+      <img src="{{url_for('static',filename='images/hiddify.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+           style="opacity: .8">
+      <span class="brand-text font-weight-light">{{_("master.page-title")}}</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div>
+        <!-- Sidebar user panel (optional) -->
+      
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+          <div class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <!-- Add icons to the links using the .nav-icon class
+                 with font-awesome or any other icon font library -->
+                 {{ render_nav_item('admin.admin.index', _('admin.menu.home')) }}
+                 {{ render_nav_item('admin.domain.index_view', _('admin.menu.domain')) }}
+                 {{ render_nav_item('admin.user.index_view', _('admin.menu.user')) }}
+                 {{ render_nav_item('admin.config', _('admin.menu.config')) }}
+                 
+                 
+                 
+                   <a href="https://github.com/hiddify/hiddify-config/issues" target="_blank" class="nav-link">{{_('admin.menu.support')}}</a>
+            </div>
+        </nav>
+        <!-- /.sidebar-menu -->
+      </div>
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+{% endblock %}
+
+

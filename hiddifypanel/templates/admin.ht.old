@@ -1,0 +1,216 @@
+{% extends 'master.html' %}
+
+  <!-- Bootstrap 4 -->
+  {% block styles %}
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="{{ url_for('static', filename="plugins/font-awesome/css/font-awesome.min.css" ) }}">
+  <link rel="stylesheet" href="{{url_for('static',filename='css/font-awesome.css')}}" type="text/css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{{ url_for('static', filename="css/adminlte.css" ) }}">
+
+  % if get_locale()=='fa'
+  <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap4-rtl.min.css')}}">
+  <link rel="stylesheet" href="{{url_for('static',filename='css/adminlte.fa.css')}}">
+  % endif
+
+  <link rel="stylesheet" href="{{url_for('static',filename='plugins/datatables/dataTables.bootstrap4.css')}}">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.bootstrap4.min.css">  
+{% if admin_view.extra_css %}
+{% for css_url in admin_view.extra_css %}
+  <link href="{{ css_url }}" rel="stylesheet">
+{% endfor %}
+{% endif %}
+<style>
+  .hide {
+      display: none;
+  }
+</style>
+{% endblock %}
+{% block head %}
+{% endblock %}
+{% block head_tail %}
+{% endblock %}
+
+</head>
+<body class="hold-transition sidebar-collapse">
+    {% block page_body %}
+<div class="wrapper">
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
+        <!-- Left navbar links -->
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
+          </li>
+          <li class="nav-item d-none d-sm-inline-block">
+            <a href="index3.html" class="nav-link">{{_('Home')}} {{ gettext("D")}}</a>
+          </li>
+          <li class="nav-item d-none d-sm-inline-block">
+            <a href="#" class="nav-link">{{_('Contact us')}}</a>
+          </li>
+        </ul>
+    
+      </nav>
+      <!-- /.navbar -->
+    
+
+      
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="index3.html" class="brand-link">
+      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+           style="opacity: .8">
+      <span class="brand-text font-weight-light">پنل مدیریت</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div>
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+          <div class="image">
+            <img src="https://www.gravatar.com/avatar/52f0fbcbedee04a121cba8dad1174462?s=200&d=mm&r=g" class="img-circle elevation-2" alt="User Image">
+          </div>
+          <div class="info">
+            <a href="#" class="d-block">حسام موسوی</a>
+          </div>
+        </div>
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <!-- Add icons to the links using the .nav-icon class
+                 with font-awesome or any other icon font library -->
+            <li class="nav-item has-treeview menu-open">
+              <a href="#" class="nav-link active">
+                <i class="nav-icon fa fa-dashboard"></i>
+                <p>
+                  صفحات شروع
+                  <i class="right fa fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="#" class="nav-link active">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>صفحه فعال</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>صفحه غیر فعال</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fa fa-th"></i>
+                <p>
+                  لینک ساده
+                  <span class="right badge badge-danger">جدید</span>
+                </p>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+      </div>
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+    
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">گذرنده <a href="https://github.com/hiddify/hiddify-config/wiki">هایدیفای</a></h1>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        {% block messages %}
+        {# layout.messages() #}
+    {% endblock %}
+
+    {# store the jinja2 context for form_rules rendering logic #}
+    {% set render_ctx = h.resolve_ctx() %}
+
+    {% block body %}{% endblock %}
+
+        
+        
+        <!-- END TYPOGRAPHY -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer d-flex flex-wrap justify-content-between align-items-center py-3 " dir="ltr">
+    <div class="col-md-4 d-flex align-items-center">
+      
+      <strong><span class="mb-3 mb-md-0 text-muted">© 2023 Hiddify <a
+        href="https://github.com/hiddify/hiddify-config/wiki">Source Code</a></span>
+        </strong>
+    </div>
+
+    <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+      <li class="ms-3"><a class="text-muted" href="https://twitter.com/intent/follow?screen_name=hiddify1">
+          Twitter </a></li>
+      <li class="ms-3"><a class="text-muted" href="https://t.me/hiddify">Telegram</a></li>
+    </ul>
+    
+  </footer>
+
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+{% endblock %}
+
+{% block tail_js %}
+
+<!-- jQuery -->
+<script src="{{ url_for('static', filename="plugins/jquery/jquery.min.js" ) }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet"/>
+<script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
+
+<!-- Bootstrap 4 -->
+<script src="{{ url_for('static', filename="plugins/bootstrap/js/bootstrap.bundle.min.js" ) }}"></script>
+<!-- <script src="{{ url_for('static', filename="js/popper.min.js" ) }}"></script> -->
+
+<script src="{{ url_for('static', filename='plugins/datatables/jquery.dataTables.js' ) }}"></script>
+<script src="{{ url_for('static', filename='plugins/datatables/dataTables.bootstrap4.js' ) }}"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/responsive/2.4.0/js/responsive.bootstrap4.min.js"></script>
+<!-- AdminLTE App -->
+<script src="{{ url_for('static', filename='js/adminlte.js' ) }}"></script>
+<script src="{{url_for('static',filename='js/qrcode.js')}}"></script>
+<!-- <script src="{{url_for('static',filename='js/demo.js')}}"></script> -->
+{% if admin_view.extra_js %}
+        {% for js_url in admin_view.extra_js %}
+            <script src="{{ js_url }}" type="text/javascript"></script>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
+
+{% block tail %}
+{% endblock %}
+</body>
+</html>
+

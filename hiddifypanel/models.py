@@ -1,4 +1,6 @@
 from sqlalchemy_serializer import SerializerMixin
+
+
 from flask import Markup
 from dateutil import relativedelta
 from hiddifypanel.panel.database import db
@@ -6,6 +8,7 @@ import enum,datetime
 import uuid as uuid_mod
 from enum import auto
 class ConfigEnum:
+    lang='lang'
     admin_secret="admin_secret"
     tls_ports="tls_ports"
     http_ports="http_ports"
@@ -21,6 +24,8 @@ class ConfigEnum:
     speed_test="speed_test"
     only_ipv4="only_ipv4"
 
+    shared_secret="shared_secret"
+
     telegram_enable="telegram_enable"
     telegram_secret="telegram_secret"
     telegram_adtag="telegram_adtag"
@@ -31,12 +36,14 @@ class ConfigEnum:
     ssfaketls_fakedomain="ssfaketls_fakedomain"
     
     shadowtls_enable="shadowtls_enable"
+    shadowtls_secret="shadowtls_secret"
     shadowtls_fakedomain="shadowtls_fakedomain"
 
-    tuic_enabled="tuic_enabled"
+    tuic_enable="tuic_enable"
     tuic_port="tuic_port"
 
     ssr_enable="ssr_enable"
+    ssr_secret="ssr_secret"
     ssr_fakedomain="ssr_fakedomain"
 
     vmess_enable="vmess_enable"
@@ -68,8 +75,8 @@ class User(db.Model, SerializerMixin):
     monthly_usage_limit_GB=db.Column(db.Numeric(6,9, asdecimal=False),default=1000,nullable=False)
     current_usage_GB=db.Column(db.Numeric(6,9, asdecimal=False),default=0,nullable=False)
     
-    next6month = datetime.date.today() + relativedelta.relativedelta(months=6)
-    expiry_time=db.Column(db.Date, default=next6month) 
+    
+    expiry_time=db.Column(db.Date, default= datetime.date.today() + relativedelta.relativedelta(months=6)) 
     last_reset_time=db.Column(db.Date, default=datetime.date.today()) 
     
         
