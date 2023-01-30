@@ -3,7 +3,7 @@ from hiddifypanel.panel.hiddify  import admin
 
 class Dashboard(AdminIndexView):
     @expose("/")
-    @expose(f"/<proxy_path>/<user_secret>/admin/")
+    
     # @admin
     def index(self):
         arg1 = 'Hello'

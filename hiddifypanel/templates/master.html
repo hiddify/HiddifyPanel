@@ -28,7 +28,6 @@
   % if get_locale()=='fa'
   <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap4-rtl.min.css')}}">
   <link rel="stylesheet" href="{{url_for('static',filename='css/adminlte.fa.css')}}">
-
   {% block rtl_styles %}
   {% endblock %}  
   % endif
@@ -38,7 +37,7 @@
 {% endblock %}
 
 </head>
-<body class="hold-transition sidebar-collapse">
+<body class="hold-transition layout-fixed {% block bodyclass %}sidebar-collapse{%endblock%}">
     {% block page_body %}
 <div class="wrapper">
     {% block nav_bar %}
@@ -137,6 +136,32 @@
 <script src="{{url_for('static',filename='js/qrcode.js')}}"></script>
 <!-- <script src="{{url_for('static',filename='js/demo.js')}}"></script> -->
 
+
+
+<script>
+  function copy_click(e) {
+    e.preventDefault();
+    console.log(this); console.log(e);
+    var link = this.getAttribute('data-copy')|| this.href;
+    try {
+      navigator.clipboard.writeText(link).then(function () {
+        alert('{{_('user.home.link.success - copy')}} ' + link);
+      }, function (err) {
+        window.prompt("{{_('user.home.link.manual-copy')}}: Ctrl+C, Enter", link);
+      });
+    } catch (error) {
+      window.prompt("{{_('user.home.link.manual-copy')}}: Ctrl+C, Enter", link);
+    }
+  }
+  $(document).ready(function () {
+  $('a.copy-link').click(copy_click)
+    $("input").each((i,e)=>{
+      if (e.getAttribute('title')){
+        e.parentNode.append
+      }
+    })
+  })
+</script>
 {% endblock %}
 
 {% block tail %}

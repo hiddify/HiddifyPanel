@@ -7,7 +7,8 @@ from hiddifypanel.panel.database import db
 import enum,datetime
 import uuid as uuid_mod
 from enum import auto
-class ConfigEnum:
+from strenum import StrEnum
+class ConfigEnum(StrEnum):
     lang='lang'
     admin_secret="admin_secret"
     tls_ports="tls_ports"

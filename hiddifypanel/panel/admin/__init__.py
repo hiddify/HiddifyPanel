@@ -26,7 +26,7 @@ def init_app(app):
     # return
     # admin = Admin(endpoint="admin",index_view=Dashboard(),base_template='lte-master.html',static_url_path="/static/")    
     
-    admin = Admin(endpoint="admin",base_template='admin-layout.html')    
+    admin = Admin(endpoint="admin",index_view=Dashboard(),base_template='flaskadmin-layout.html')    
 
     admin.template_mode = app.config.FLASK_ADMIN_TEMPLATE_MODE
     # bp.add_url_rule("/actions/reverselog/<logfile>", view_func=actions.reverselog)

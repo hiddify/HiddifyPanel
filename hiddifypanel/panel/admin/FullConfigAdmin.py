@@ -32,7 +32,24 @@ def index():
 def save():
     form=get_config_form()
     if form.validate_on_submit():
+        
+        boolconfigs=BoolConfig.query.all()
+        bool_types={c.key:'bool' for c in boolconfigs}
+        for cat,vs in form.data.items():#[c for c in ConfigEnum]:
+        
+            if type(vs) is dict:
+                for k,v in vs.items():
+        
+                    if k in [c for c in ConfigEnum]:
+                        if k in bool_types:
+                            BoolConfig.query.filter(BoolConfig.key==k).first().value=v
+                        else:
+                            StrConfig.query.filter(StrConfig.key==k).first().value=v
+                
+            # print(cat,vs)
+        db.session.commit()
         flash(_('config.validation-success'), 'success')
+
         return render_template('config.html', form=form)
     flash(_('config.validation-error'), 'danger')
     return render_template('config.html', form=form)
@@ -86,39 +103,51 @@ def get_config_form():
         if cat=='hidden':continue
 
         cat_configs=[c for c in configs if c.category==cat]
-        class CategoryForm(FlaskForm):pass
+        class CategoryForm(FlaskForm):
+            description_for_fieldset=wtf.fields.TextAreaField("",description=_(f'config.{cat}.description'),render_kw={"class":"d-none"})
         for c in cat_configs:
             if c.key in bool_types:
                 field= SwitchField(_(f'config.{c.key}.label'), default=c.value,description=_(f'config.{c.key}.description')) 
+            elif c.key==ConfigEnum.lang:
+                field=wtf.fields.SelectField(_("config.lang.label"),choices=[("en",_("lang.en")),("fa",_("lang.fa"))],description=_("config.lang.description"),default=hconfig(ConfigEnum.lang))
             else:
+                render_kw={'class':"ltr"}
                 validators=[]
                 if 'domain' in c.key:
                     validators.append(wtf.validators.Regexp("^([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})$",re.IGNORECASE,_("config.Invalid domain")))
                     validators.append(wtf.validators.NoneOf(db.session.query(Domain.domain).all(),_("config.Domain already used")))
+                    render_kw['required']=""
+        
 
                 if c.key==ConfigEnum.decoy_site:
                     validators.append(wtf.validators.Regexp("http(s|)://([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})/?",re.IGNORECASE,_("config.Invalid decoy_site")))
+                    render_kw['required']=""
 
                 if 'secret' in c.key:
-                    validators.append(wtf.validators.UUID(_('config.invalid uuid')))
+                    validators.append(wtf.validators.Regexp("^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",re.IGNORECASE,_('config.invalid uuid')))
+                    render_kw['required']=""
 
                 if c.key==ConfigEnum.proxy_path:
                     validators.append(wtf.validators.Regexp("^[a-zA-Z0-9]*$",re.IGNORECASE,_("config.Invalid proxy path")))
+                    render_kw['required']=""
 
                 if 'port' in c.key:
                     validators.append(wtf.validators.Regexp("^(\d,?)*$",re.IGNORECASE,_("config.Invalid port")))
 
-                if c.key==ConfigEnum.lang:
-                    validators.append(wtf.validators.AnyOf(["en","fa"]))
                 if c.key==ConfigEnum.http_ports:
                     validators.append(wtf.validators.Regexp("^(\d,?)*80(\d,?)*$",re.IGNORECASE,_("config.port 80 is required")))
+                    render_kw['required']=""
                 if c.key==ConfigEnum.tls_ports:
                     validators.append(wtf.validators.Regexp("^(\d,?)*443(\d,?)*$",re.IGNORECASE,_("config.port 443 is required")))
-
-                field= wtf.fields.StringField(_(f'config.{c.key}.label'), validators, default=c.value, description=_(f'config.{c.key}.description'),render_kw={'class':"ltr"}) 
+                    render_kw['required']=""
+                for val in validators:
+                    if hasattr(val,"regex"):
+                        render_kw['pattern']=val.regex.pattern
+                        render_kw['title']=val.message
+                field= wtf.fields.StringField(_(f'config.{c.key}.label'), validators, default=c.value, description=_(f'config.{c.key}.description'),render_kw=render_kw) 
             setattr(CategoryForm,c.key , field)    
 
-        multifield=wtf.fields.FormField(CategoryForm,_(f'config.{cat}.label'),description=_(f'config.{cat}.description'))
+        multifield=wtf.fields.FormField(CategoryForm,_(f'config.{cat}.label'))
             
         setattr(DynamicForm, cat,  multifield)    
 

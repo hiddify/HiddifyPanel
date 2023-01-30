@@ -1,11 +1,35 @@
 {% from 'bootstrap4/form.html' import render_form %}
 
+{% macro ip_btn(ip) -%}
+% if ip 
+<div class="btn-group">
+    <a href="#" data-copy="{{ip}}" class="btn btn-secondary copy-link"><i class="fa-regular fa-copy"></i></a>
+    
+    <a href="#" data-copy="{{ip}}" class="btn btn-primary copy-link">{{ip}}</a>
+</div>
+%else
+    -
+%endif
+{%- endmacro -%}
+
 {% extends 'admin-layout.html' %}
 
 {% block body %}
 {{super()}}
 
 
+<div class="card">
+    <div class="card-header">{{_("config.lang.label")}}</div>
+    <div class="card-body">
+
+        <div class="row">
+            <div class="col-12">
+                
+                {{render_form(lang_form)}}
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="card">
     <div class="card-header">{{_("admin.quicksetup.title")}}</div>
@@ -13,7 +37,7 @@
 
         <div class="row">
             <div class="col-12">
-                {{_('admin.quicksetup_intro')}}
+                {{_('admin.quicksetup_intro',ipv4=ip_btn(ipv4),ipv6=ip_btn(ipv6))}}
                 {{render_form(form,form_type="",extra_classes="card-columns1")}}
             </div>
         </div>

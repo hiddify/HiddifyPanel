@@ -3,6 +3,7 @@ to_gig_d = 1024*1024*1024
 import datetime
 from hiddifypanel.panel.database import db
 from hiddifypanel.models import StrConfig,BoolConfig,User,Domain,get_hconfigs
+import urllib
 def auth(function):
     def wrapper(*args,**kwargs):
         if g.user_uuid==None:
@@ -63,3 +64,11 @@ def all_configs():
         "hconfigs": get_hconfigs()
         }
     
+
+def get_ip(version,retry=3):
+    try:
+        return urllib.request.urlopen(f'https://v{version}.ident.me/').read().decode('utf8')
+    except:
+        if retry==0:
+            return None
+        return get_ip(version,retry=retry-1)

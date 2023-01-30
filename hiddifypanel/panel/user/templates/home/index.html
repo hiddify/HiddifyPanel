@@ -253,20 +253,7 @@
 {{ super() }}
 <script>
 
-    function copy_click(e) {
-        e.preventDefault();
-        console.log(this); console.log(e);
-        var link = this.href;
-        try{
-        navigator.clipboard.writeText(link).then(function () {
-            alert('{{_('user.home.link.success-copy')}} ' + link);
-        }, function (err) {
-            window.prompt("{{_('user.home.link.manual-copy')}}: Ctrl+C, Enter", link);
-        });
-    } catch (error) {
-        window.prompt("{{_('user.home.link.manual-copy')}}: Ctrl+C, Enter", link);
-    }
-    }
+    
     w = Math.min(window.innerWidth, window.innerHeight) * .75;
     qrcode = new QRCode(document.getElementById("qrcode"), { width: w, height: w, correctLevel: 1 });
     w = Math.min(window.innerWidth, window.innerHeight) * .75;

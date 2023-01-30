@@ -58,9 +58,11 @@ class UserAdmin(AdminLTEModelView):
         proxy_path=hconfig(ConfigEnum.proxy_path)
         return Markup(" ".join([f"""<a target='_blank' href='https://{d.domain}/{proxy_path}/{model.uuid}/'><span class='badge badge-info ltr'>{f'<span class="badge badge-success" >{_("domain.cdn")}</span> ' if d.mode!=DomainType.cdn else ''}{d.domain}</span></a>""" 
             for d in Domain.query.filter(Domain.mode == DomainType.cdn or Domain.mode == DomainType.direct).all()]))
-
+    def _uuid_formatter(view, context, model, name):
+        return Markup(f"<span>{model.uuid}</span>")
     column_formatters = {
         'UserLinks': _ul_formatter,
+        'uuid': _uuid_formatter,
     }
     def on_model_delete(self, model):
         xray_api.remove_client(model.uuid)

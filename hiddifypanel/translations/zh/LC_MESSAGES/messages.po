@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-01-29 21:38+0100\n"
+"POT-Creation-Date: 2023-01-31 00:12+0100\n"
 "PO-Revision-Date: 2023-01-28 14:59+0330\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Generated-By: Babel 2.11.0\n"
 
 #: hiddifypanel/panel/admin/DomainAdmin.py:19
-#: hiddifypanel/panel/admin/QuickSetup.py:33
+#: hiddifypanel/panel/admin/QuickSetup.py:66
 msgid "domain.domain"
 msgstr ""
 
@@ -27,74 +27,105 @@ msgstr ""
 msgid "domain.mode"
 msgstr ""
 
-#: hiddifypanel/panel/admin/FullConfigAdmin.py:35
-#: hiddifypanel/panel/admin/QuickSetup.py:26
+#: hiddifypanel/panel/admin/FullConfigAdmin.py:51
+#: hiddifypanel/panel/admin/QuickSetup.py:37
 msgid "config.validation-success"
 msgstr ""
 
-#: hiddifypanel/panel/admin/FullConfigAdmin.py:37
-#: hiddifypanel/panel/admin/QuickSetup.py:28
+#: hiddifypanel/panel/admin/FullConfigAdmin.py:54
+#: hiddifypanel/panel/admin/QuickSetup.py:45
 msgid "config.validation-error"
 msgstr ""
 
-#: hiddifypanel/panel/admin/FullConfigAdmin.py:96
-#: hiddifypanel/panel/admin/QuickSetup.py:32
+#: hiddifypanel/panel/admin/FullConfigAdmin.py:112
+#: hiddifypanel/panel/admin/QuickSetup.py:50
+#: hiddifypanel/panel/admin/templates/quick_setup.html:22
+msgid "config.lang.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/FullConfigAdmin.py:112
+#: hiddifypanel/panel/admin/QuickSetup.py:50
+msgid "lang.en"
+msgstr ""
+
+#: hiddifypanel/panel/admin/FullConfigAdmin.py:112
+#: hiddifypanel/panel/admin/QuickSetup.py:50
+msgid "lang.fa"
+msgstr ""
+
+#: hiddifypanel/panel/admin/FullConfigAdmin.py:112
+#: hiddifypanel/panel/admin/QuickSetup.py:50
+msgid "config.lang.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/FullConfigAdmin.py:117
+#: hiddifypanel/panel/admin/QuickSetup.py:64
 msgid "config.Invalid domain"
 msgstr ""
 
-#: hiddifypanel/panel/admin/FullConfigAdmin.py:97
+#: hiddifypanel/panel/admin/FullConfigAdmin.py:118
+#: hiddifypanel/panel/admin/QuickSetup.py:65
 msgid "config.Domain already used"
 msgstr ""
 
-#: hiddifypanel/panel/admin/FullConfigAdmin.py:100
+#: hiddifypanel/panel/admin/FullConfigAdmin.py:123
 msgid "config.Invalid decoy_site"
 msgstr ""
 
-#: hiddifypanel/panel/admin/FullConfigAdmin.py:103
+#: hiddifypanel/panel/admin/FullConfigAdmin.py:127
 msgid "config.invalid uuid"
 msgstr ""
 
-#: hiddifypanel/panel/admin/FullConfigAdmin.py:106
+#: hiddifypanel/panel/admin/FullConfigAdmin.py:131
 msgid "config.Invalid proxy path"
 msgstr ""
 
-#: hiddifypanel/panel/admin/FullConfigAdmin.py:109
+#: hiddifypanel/panel/admin/FullConfigAdmin.py:135
 msgid "config.Invalid port"
 msgstr ""
 
-#: hiddifypanel/panel/admin/FullConfigAdmin.py:114
+#: hiddifypanel/panel/admin/FullConfigAdmin.py:138
 msgid "config.port 80 is required"
 msgstr ""
 
-#: hiddifypanel/panel/admin/FullConfigAdmin.py:116
+#: hiddifypanel/panel/admin/FullConfigAdmin.py:141
 msgid "config.port 443 is required"
 msgstr ""
 
-#: hiddifypanel/panel/admin/FullConfigAdmin.py:125
-#: hiddifypanel/panel/admin/QuickSetup.py:36
+#: hiddifypanel/panel/admin/FullConfigAdmin.py:154
+#: hiddifypanel/panel/admin/QuickSetup.py:51
+#: hiddifypanel/panel/admin/QuickSetup.py:69
 msgid "Submit"
 msgstr ""
 
-#: hiddifypanel/panel/admin/QuickSetup.py:33
+#: hiddifypanel/panel/admin/QuickSetup.py:30
+msgid "quicksetup.setlang.success"
+msgstr ""
+
+#: hiddifypanel/panel/admin/QuickSetup.py:32
+msgid "quicksetup.setlang.error"
+msgstr ""
+
+#: hiddifypanel/panel/admin/QuickSetup.py:66
 msgid "domain.description"
 msgstr ""
 
-#: hiddifypanel/panel/admin/QuickSetup.py:34
+#: hiddifypanel/panel/admin/QuickSetup.py:67
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.telegram_enable.label"
 msgstr ""
 
-#: hiddifypanel/panel/admin/QuickSetup.py:34
+#: hiddifypanel/panel/admin/QuickSetup.py:67
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.telegram_enable.description"
 msgstr ""
 
-#: hiddifypanel/panel/admin/QuickSetup.py:35
+#: hiddifypanel/panel/admin/QuickSetup.py:68
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.vmess_enable.label"
 msgstr ""
 
-#: hiddifypanel/panel/admin/QuickSetup.py:35
+#: hiddifypanel/panel/admin/QuickSetup.py:68
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.vmess_enable.description"
 msgstr ""
@@ -411,11 +442,31 @@ msgstr ""
 msgid "config.tuic.description"
 msgstr ""
 
-#: hiddifypanel/panel/admin/templates/quick_setup.html:11
+#: hiddifypanel/panel/admin/templates/index.html:13
+msgid "admin.protocol_chart"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/index.html:44
+msgid "admin.user_chart"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/index.html:74
+msgid "admin.cpu_chart"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/index.html:105
+msgid "admin.ram_chart"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/index.html:136
+msgid "admin.network_chart"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/quick_setup.html:35
 msgid "admin.quicksetup.title"
 msgstr ""
 
-#: hiddifypanel/panel/admin/templates/quick_setup.html:16
+#: hiddifypanel/panel/admin/templates/quick_setup.html:40
 msgid "admin.quicksetup_intro"
 msgstr ""
 
@@ -623,23 +674,15 @@ msgstr ""
 msgid "close"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/index.html:261
-msgid "user.home.link.success-copy"
-msgstr ""
-
-#: hiddifypanel/panel/user/templates/home/index.html:263
-msgid "user.home.link.manual-copy"
-msgstr ""
-
-#: hiddifypanel/panel/user/templates/home/index.html:373
+#: hiddifypanel/panel/user/templates/home/index.html:364
 msgid "next"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/index.html:374
+#: hiddifypanel/panel/user/templates/home/index.html:365
 msgid "previous"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/index.html:385
+#: hiddifypanel/panel/user/templates/home/index.html:376
 msgid "search"
 msgstr ""
 
@@ -754,8 +797,17 @@ msgid "admin.menu.support"
 msgstr ""
 
 #: hiddifypanel/templates/admin-layout.html:45
-#: hiddifypanel/templates/master.html:6 hiddifypanel/templates/master.html:54
+#: hiddifypanel/templates/master.html:6 hiddifypanel/templates/master.html:53
 msgid "master.page-title"
+msgstr ""
+
+#: hiddifypanel/templates/master.html:148
+msgid "user.home.link.success - copy"
+msgstr ""
+
+#: hiddifypanel/templates/master.html:150
+#: hiddifypanel/templates/master.html:153
+msgid "user.home.link.manual-copy"
 msgstr ""
 
 #~ msgid "actionss"
@@ -900,5 +952,8 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "user.home.windows.desciption"
+#~ msgstr ""
+
+#~ msgid "user.home.link.success-copy"
 #~ msgstr ""
 

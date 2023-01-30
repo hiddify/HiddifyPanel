@@ -43,10 +43,13 @@ class Actions(AdminIndexView):
         # rc = subprocess.call(f"cd {config_dir};./{file} & disown",shell=True)
         subprocess.Popen(f"{config.HIDDIFY_CONFIG_PATH}/{file}",cwd=f"{config.HIDDIFY_CONFIG_PATH}",start_new_session=True)
         admin_secret=hconfig(ConfigEnum.admin_secret)
+        proxy_path=hconfig(ConfigEnum.proxy_path)
         admin_links="<h1>Admin Links</h1>"
-        admin_links+=f"<a href='http://{server_ip}/{admin_secret}/'>http://{server_ip}/{admin_secret}/</a><br>"
-        for d in Domain.query.filter(Domain.mode in [DomainType.cdn,DomainType.direct]):
-                admin_links+="<a href='https://{d.domain}/{admin_secret}/'>https://{d.domain}/{admin_secret}/</a><br>"
+        admin_links+=f"<a href='http://{server_ip}/{proxy_path}/{admin_secret}/'>http://{server_ip}/{proxy_path}/{admin_secret}/</a><br>"
+        domains=Domain.query.filter(Domain.mode in [DomainType.cdn,DomainType.direct]).all()
+        domains=[*domains,f'{server_ip}.sslip.io']
+        for d in domains:
+                admin_links+="<a href='https://{d.domain}/{proxy_path}/{admin_secret}/'>https://{d.domain}/{proxy_path}/{admin_secret}/</a><br>"
 
         return self.render("result.html",data={
                             "out-type":"success",
