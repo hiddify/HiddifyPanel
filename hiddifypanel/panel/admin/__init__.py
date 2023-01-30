@@ -4,6 +4,7 @@ from flask_admin import Admin
 from . import FullConfigAdmin 
 from .DomainAdmin import DomainAdmin
 from .ConfigAdmin import ConfigAdmin
+from . import QuickSetup
 from hiddifypanel.models import  StrConfig,ConfigEnum
 # from .resources import ProductItemResource, ProductResource
 from hiddifypanel.panel.database import db
@@ -51,9 +52,13 @@ def init_app(app):
     admin.init_app(bp)
     adminlte=AdminLTE3()
     adminlte.init_app(app)
+    bp.add_url_rule('/admin/config/getallbabel/',view_func=FullConfigAdmin.get_babel_string,methods=["GET"])
     bp.add_url_rule('/admin/config/',endpoint="config",view_func=FullConfigAdmin.index,methods=["GET"])
-    bp.add_url_rule('/admin/config/getallbabel',view_func=FullConfigAdmin.get_babel_string,methods=["GET"])
-    bp.add_url_rule('/admin/config',view_func=FullConfigAdmin.save,methods=["POST"])
+    bp.add_url_rule('/admin/config/',endpoint="config-save",view_func=FullConfigAdmin.save,methods=["POST"])
+
+    bp.add_url_rule('/admin/quicksetup/',endpoint="quicksetup",view_func=QuickSetup.index,methods=["GET"])
+    bp.add_url_rule('/admin/quicksetup/',endpoint="quicksetup-save", view_func=QuickSetup.save,methods=["POST"])
+
     import flask_babelex
     
     app.register_blueprint(bp)
@@ -61,5 +66,4 @@ def init_app(app):
     # app.add_url_rule("/<proxy_path>/<user_secret>/admin/static/<filename>",endpoint="admin.admin.static")# fix bug in admin with blueprint
     # app.add_url_rule("/<proxy_path>/<user_secret>/admin/static/<filename>",endpoint="adminlte.static")# fix bug in admin with blueprint
     print(app.url_map)    
-    
     

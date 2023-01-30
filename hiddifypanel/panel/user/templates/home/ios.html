@@ -1,0 +1,59 @@
+<div class="col">
+  <div class="card card-info card-outline">
+    <div class="card-header">
+      <h3 class="card-title" data-widget="collapse">
+        {{_("user.home.ios.stash.title")}}
+      </h3>
+
+      <div class="card-tools">
+        <button type="button" class="btn btn-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+        </button>
+      </div>
+      <!-- /.card-tools -->
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+      {{_("user.home.ios.stash.intro")}}
+      <br>
+      {% include "home/clash-links.html" %}
+    </div>
+    <!-- /.card-body -->
+  </div>
+  <!-- /.card -->
+</div>
+<!-- /.col -->
+
+
+<div class="col">
+  <div class="card card-info  card-outline">
+    <div class="card-header">
+      <h3 class="card-title" data-widget="collapse">
+        {{_("user.home.ios.others.title")}}
+      </h3>
+
+      <div class="card-tools">
+        <button type="button" class="btn btn-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+        </button>
+      </div>
+      <!-- /.card-tools -->
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+      {{_("user.home.ios.others.intro")}}
+      <br>
+      % for type in link_maker.all_proxies()
+      {% set pinfo=link_maker.proxy_info(type) %}
+      % if pinfo!=None
+      <div class="btn-group"><a href='{{pinfo["url"]}}' class="btn btn-primary orig-link">{{type}}</a></div>
+      % endif
+      % endfor
+
+
+
+
+    </div>
+    <!-- /.card-body -->
+  </div>
+  <!-- /.card -->
+</div>
+<!-- /.col -->

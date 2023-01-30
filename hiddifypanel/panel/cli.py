@@ -52,6 +52,7 @@ def init_db():
             StrConfig(category="general",key=ConfigEnum.proxy_path,value=get_random_string()),
             BoolConfig(category="general",key=ConfigEnum.firewall,value=False),
             BoolConfig(category="general",key=ConfigEnum.netdata,value=True),
+            StrConfig(category="general",key=ConfigEnum.lang,value='en'),
             
             BoolConfig(category="general",key=ConfigEnum.block_iran_sites,value=True),
             BoolConfig(category="general",key=ConfigEnum.allow_invalid_sni,value=True),

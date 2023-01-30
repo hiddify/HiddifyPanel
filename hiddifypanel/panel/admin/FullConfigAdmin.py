@@ -108,6 +108,8 @@ def get_config_form():
                 if 'port' in c.key:
                     validators.append(wtf.validators.Regexp("^(\d,?)*$",re.IGNORECASE,_("config.Invalid port")))
 
+                if c.key==ConfigEnum.lang:
+                    validators.append(wtf.validators.AnyOf(["en","fa"]))
                 if c.key==ConfigEnum.http_ports:
                     validators.append(wtf.validators.Regexp("^(\d,?)*80(\d,?)*$",re.IGNORECASE,_("config.port 80 is required")))
                 if c.key==ConfigEnum.tls_ports:

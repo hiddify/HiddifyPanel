@@ -1,0 +1,37 @@
+
+{% macro clash_dl_link() -%}
+<div class="btn-group">
+    <a class="btn btn-primary"
+        href="/{{hconfigs[ConfigEnum.proxy_path]}}/gh/Fndroid/clash_for_windows_pkg/releases/download/0.20.9/Clash.for.Windows.Setup.0.20.9.exe"><i
+            class="fa-brands fa-windows fa-margin"></i> {{_('Windows')}}</a>
+    <a class="btn btn-secondary"
+        href="/{{hconfigs[ConfigEnum.proxy_path]}}/gh/Fndroid/clash_for_windows_pkg/releases/download/0.20.9/Clash.for.Windows-0.20.9.dmg"><i
+            class="fa-brands fa-apple fa-margin"></i> {{_('macOS')}}</a>
+    <a class="btn btn-success"
+        href="/{{hconfigs[ConfigEnum.proxy_path]}}/gh/Fndroid/clash_for_windows_pkg/releases/download/0.20.9/Clash.for.Windows-0.20.9-x64-linux.tar.gz"><i
+            class="fa-brands fa-linux fa-margin"></i> {{_('Linux')}}</a>
+
+</div>
+{%- endmacro -%}
+
+
+{% macro HiddifyDesktop_dl_link() -%}
+<div class="btn-group">
+    <a class="btn btn-primary"
+        href="/{{hconfigs[ConfigEnum.proxy_path]}}/gh/Fndroid/clash_for_windows_pkg/releases/download/0.20.9/Clash.for.Windows.Setup.0.20.9.exe"><i
+            class="fa-brands fa-windows fa-margin"></i> {{_('Windows')}}</a>
+    <a class="btn btn-secondary"
+        href="/{{hconfigs[ConfigEnum.proxy_path]}}/gh/Fndroid/clash_for_windows_pkg/releases/download/0.20.9/Clash.for.Windows-0.20.9.dmg"><i
+            class="fa-brands fa-apple fa-margin"></i> {{_('macOS')}}</a>
+    <a class="btn btn-success"
+        href="/{{hconfigs[ConfigEnum.proxy_path]}}/gh/Fndroid/clash_for_windows_pkg/releases/download/0.20.9/Clash.for.Windows-0.20.9-x64-linux.tar.gz"><i
+            class="fa-brands fa-linux fa-margin"></i> {{_('Linux')}}</a>
+
+</div>
+{%- endmacro -%}
+
+{{_("user.home.windows.intro",hiddify_desktop_links=HiddifyDesktop_dl_link(),normal_clash_link=clash_dl_link())}}
+
+
+
+{% include "home/clash-links.html" %}

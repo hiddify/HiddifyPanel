@@ -1,0 +1,23 @@
+{% from 'bootstrap4/form.html' import render_form %}
+
+{% extends 'admin-layout.html' %}
+
+{% block body %}
+{{super()}}
+
+
+
+<div class="card">
+    <div class="card-header">{{_("admin.quicksetup.title")}}</div>
+    <div class="card-body">
+
+        <div class="row">
+            <div class="col-12">
+                {{_('admin.quicksetup_intro')}}
+                {{render_form(form,form_type="",extra_classes="card-columns1")}}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

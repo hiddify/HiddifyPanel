@@ -12,47 +12,47 @@
 
 
 
-{% include "fa/usage.html" %}
+{% include "home/usage.html" %}
 
 
-<div class="row">
+<div class="row" style="margin-top: 10px;">
     <div class="col-12">
         <!-- Custom Tabs -->
         <div class="card">
             <div class="card-header d-flex p-0">
                 <h3 class="card-title p-1"> </h3>
-                <ul class="nav nav-pills ml-auto p-2">
+                <ul class="nav nav-pills p-2">
                     % if hconfigs[ConfigEnum.telegram_enable]
                     <li class="nav-item"><a class="nav-link" href="#telegram" data-toggle="tab"><i
                                 class="fa-brands fa-telegram fa-margin"></i> {{_('telegram')}}</a></li>
                     % endif
                     <li class="nav-item"><a class="nav-link" href="#android" data-toggle="tab"><i
-                                class="fa-brands fa-android fa-margin"></i> اندروید</a></li>
+                                class="fa-brands fa-android fa-margin"></i> {{_('android')}}</a></li>
                     <li class="nav-item"><a class="nav-link" href="#ios" data-toggle="tab"><i
-                                class="fa-brands fa-app-store-ios fa-margin"></i> آیفون</a></li>
+                                class="fa-brands fa-app-store-ios fa-margin"></i> {{_('ios')}}</a></li>
                     <li class="nav-item"><a class="nav-link" href="#windows" data-toggle="tab">
-                        <i class="fa-brands fa-windows fa-margin1"></i> <i class="fa-brands fa-apple fa-margin1"></i> <i class="fa-brands fa-linux fa-margin1"></i> لپ تاپ و رایانه</a></li>
+                        <i class="fa-brands fa-windows fa-margin1"></i> <i class="fa-brands fa-apple fa-margin1"></i> <i class="fa-brands fa-linux fa-margin1"></i> {{_('desktop')}}</a></li>
                     
                 </ul>
             </div><!-- /.card-header -->
             <div class="card-body">
                 <div class="tab-content">
                     <div class="tab-pane active" id="default">
-                        لطفا نوع گوشی یا سیستم عامل خود را انتخاب کنید
+                        {{_('user.home.select os')}}
                     </div>
                     <div class="tab-pane" id="telegram">
-                        {% include 'fa/telegram.html' %}
+                        {% include 'home/telegram.html' %}
                     </div>
                     <div class="tab-pane" id="android">
-                        {% include 'fa/android.html' %}
+                        {% include 'home/android.html' %}
                     </div>
                     <!-- /.tab-pane -->
                     <div class="tab-pane" id="ios">
-                        {% include 'fa/ios.html' %}
+                        {% include 'home/ios.html' %}
                     </div>
                     <!-- /.tab-pane -->
                     <div class="tab-pane" id="windows">
-                        {% include "fa/windows.html" %}
+                        {% include "home/windows.html" %}
                     </div>
                     <!-- /.tab-pane -->
                 </div>
@@ -71,29 +71,29 @@
         <div class="card">
             <div class="card-header d-flex p-0">
                 <h3 class="card-title p-0"></h3>
-                <ul class="nav nav-pills ml-auto p-2">
+                <ul class="nav nav-pills p-2">
                     <li class="nav-item"><a class="nav-link" href="#all_configs" data-toggle="tab"><i
-                                class="fa-solid fa-grip fa-margin"></i> همه کانفیگ‌ها</a></li>
+                                class="fa-solid fa-grip fa-margin"></i> {{_('user.home.all_configs')}}</a></li>
                     <li class="nav-item"><a class="nav-link" href="#speedtest" data-toggle="tab"><i
-                                class="fa-solid fa-gauge-high fa-margin"></i> تست سرعت و شناسایی آی پی کثیف</a></li>
+                                class="fa-solid fa-gauge-high fa-margin"></i> {{_('user.home.speedtest')}}</a></li>
                     <li class="nav-item"><a class="nav-link" href="#doh" data-toggle="tab"><i
-                                class="fa-solid fa-sitemap fa-margin"></i> DNS over https</a></li>
+                                class="fa-solid fa-sitemap fa-margin"></i> {{_('user.home.doh')}}</a></li>
                 </ul>
             </div><!-- /.card-header -->
             <div class="card-body">
                 <div class="tab-content">
                     <div class="tab-pane active" id="default">
-                        لطفا گزینه مورد نظر خود را انتخاب کنید
+                        {{_('user.home.select tool')}}
                     </div>
                     <div class="tab-pane" id="all_configs">
-                        {% include 'fa/all-configs.html'%}
+                        {% include 'home/all-configs.html'%}
                     </div>
                     <div class="tab-pane" id="speedtest">
-                        {% include 'fa/speedtest.html' %}
+                        {% include 'home/speedtest.html' %}
                     </div>
                     <!-- /.tab-pane -->
                     <div class="tab-pane" id="doh">
-                        {% include 'fa/doh.html' %}
+                        {% include 'home/doh.html' %}
                     </div>
 
                     <!-- /.tab-pane -->
@@ -109,9 +109,8 @@
         <div  class="card small-box bg-warning">
             <div class="card-body">
             <div class="inner">
-                <h3>QR code</h3>
-                <p>To copy or share links, click on the gray <i class="fa-solid fa-qrcode"></i> field to scan the QR Code.
-                    It will be displayed.</p>
+                <h3>{{_('QR code')}}</h3>
+                <p>{{_('user.home.qr-code.description')}}</p>
             </div>
             <div class="icon">
                 <i class="fa-solid fa-qrcode fa-margin"></i>
@@ -119,7 +118,7 @@
         </div>
             <a href="https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/"
              class="card-footer share-link">
-                <i class="fas fa-qrcode"></i> مشاهده کد QR
+                <i class="fas fa-qrcode"></i> {{_('user.home.qr-code.display')}}
             </a>
 
         </div>
@@ -210,20 +209,19 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h5 class="modal-title" id="exampleModalLongTitle">لینک اشتراک برای شبکه های اجتماعی</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">{{_('user.home.share-title')}}</h5>
                 
             </div>
             <div class="modal-body">
                 <center>
-                    <a id='qrcode-link' class="btn btn-primary copy-link" href="">کپی لینک</a>
-                    <a id="share-link-redirect" class="btn btn-success copy-link" href="">کپی لینک جهت اشتراک
-                        گذاری</a>
+                    <a id='qrcode-link' class="btn btn-primary copy-link" href="">{{_("copy")}}</a>
+                    <a id="share-link-redirect" class="btn btn-success copy-link" href="">{{_('clickable copy')}}</a>
                     <br />
                     <div id="qrcode" style="margin:10px;"></div>
                 </center>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary close" data-dismiss="modal">بستن</button>
+                <button type="button" class="btn btn-secondary close" data-dismiss="modal">{{_('close')}}</button>
             </div>
         </div>
     </div>
@@ -251,7 +249,7 @@
 
 
 
-{% block scripts %}
+{% block tail_js %}
 {{ super() }}
 <script>
 
@@ -259,11 +257,15 @@
         e.preventDefault();
         console.log(this); console.log(e);
         var link = this.href;
+        try{
         navigator.clipboard.writeText(link).then(function () {
-            alert('Link Copied to clipboard ' + link);
+            alert('{{_('user.home.link.success-copy')}} ' + link);
         }, function (err) {
-            window.prompt("Copy to clipboard: Ctrl+C, Enter", link);
+            window.prompt("{{_('user.home.link.manual-copy')}}: Ctrl+C, Enter", link);
         });
+    } catch (error) {
+        window.prompt("{{_('user.home.link.manual-copy')}}: Ctrl+C, Enter", link);
+    }
     }
     w = Math.min(window.innerWidth, window.innerHeight) * .75;
     qrcode = new QRCode(document.getElementById("qrcode"), { width: w, height: w, correctLevel: 1 });
@@ -372,8 +374,8 @@
         },
         "language": {
             "paginate": {
-                "next": "بعدی",
-                "previous" : "قبلی"
+                "next": "{{_('next')}}",
+                "previous" : "{{_('previous')}}"
             }
         },
       "info" : true,
@@ -384,7 +386,7 @@
       "autoWidth": true,
   
 "oLanguage": {
-   "sSearch": "جستجو: "
+   "sSearch": "{{_('search')}}: "
  }
     });
   });

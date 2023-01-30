@@ -24,11 +24,11 @@
   <link rel="stylesheet" href="{{url_for('static',filename='plugins/datatables/extensions/Responsive/css/dataTables.responsive.css')}}">
   <link rel="stylesheet" href="{{url_for('static',filename='plugins/datatables/extensions/Responsive/css/responsive.bootstrap4.min.css')}}">
 
-  
+  <link rel="stylesheet" href="{{ url_for('static', filename="css/custom.css" ) }}">  
   % if get_locale()=='fa'
   <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap4-rtl.min.css')}}">
   <link rel="stylesheet" href="{{url_for('static',filename='css/adminlte.fa.css')}}">
-  <link rel="stylesheet" href="{{ url_for('static', filename="css/custom.css" ) }}">
+
   {% block rtl_styles %}
   {% endblock %}  
   % endif
@@ -117,7 +117,7 @@
 <!-- jQuery -->
 <script src="{{ url_for('static', filename="plugins/jquery/jquery.min.js" ) }}"></script>
 <script src="{{ url_for('static', filename="js/moment.min.js" ) }}"></script>
-<script src="{{ url_for('static', filename="plugins/select2/select2.min.js" ) }}"></script>
+{#<script src="{{ url_for('static', filename="plugins/select2/select2.min.js" ) }}"></script>#}
 
 
 
@@ -125,12 +125,12 @@
 
 <!-- Bootstrap 4 -->
 <script src="{{ url_for('static', filename="plugins/bootstrap/js/bootstrap.bundle.min.js" ) }}"></script>
-<!-- <script src="{{ url_for('static', filename="js/popper.min.js" ) }}"></script> -->
+<script src="{{ url_for('static', filename="js/popper.min.js" ) }}"></script> 
 
 <script src="{{ url_for('static', filename='plugins/datatables/jquery.dataTables.js' ) }}"></script>
 <script src="{{ url_for('static', filename='plugins/datatables/dataTables.bootstrap4.js' ) }}"></script>
-<script src="{{ url_for('static', filename='plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js' ) }}"></script>
-{# <script src="{{ url_for('static', filename='plugins/datatables/extensions/Responsive/js/responsive.bootstrap4.min.js' ) }}"></script>#}
+
+<script src="{{ url_for('static', filename='plugins/datatables/extensions/Responsive/js/responsive.bootstrap4.min.js' ) }}"></script>
 
 <!-- AdminLTE App -->
 <script src="{{ url_for('static', filename='js/adminlte.js' ) }}"></script>

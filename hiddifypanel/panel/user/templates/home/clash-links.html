@@ -1,0 +1,59 @@
+{{_("user.home.clash_configs.intro")}}
+
+<div class="card-deck">
+    <div class="card card-success">
+        <div class="card-header">{{_("user.home.clash_configs.only_for_blocked_sites.title")}}</div>
+        <div class="card-body">
+            {{_("user.home.clash_configs.only_for_blocked_sites.description")}}
+            <div class="btn-group">
+                <a href="clashmeta://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/meta/lite.yml&name=mlite_{{domain}}"
+                    class="btn btn-success orig-link">{{_("user.home.clash_configs.only_for_blocked_sites.btn")}}</a>
+            </div>
+            <details>
+                <summary>{{_("user.home.clash_configs.alternative_for_normal_clash")}}</summary>
+                <div class="btn-group">
+                    <a href="clash://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/lite.yml&name=lite_{{domain}}"
+                        class="btn btn-secondary orig-link">{{_("user.home.clash_configs.link_for_normal_clash")}}</a>
+                </div>
+            </details>
+        </div>
+    </div>
+
+    <div class="card card-warning">
+        <div class="card-header">{{_("user.home.clash_configs.foreign_sites.title")}}</div>
+        <div class="card-body">
+            {{_("user.home.clash_configs.foreign_sites.description")}}
+            <div class="btn-group">
+                <a href="clashmeta://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/meta/normal.yml&name=mnormal_{{domain}}"
+                    class="btn btn-warning orig-link">{{_("user.home.clash_configs.foreign_sites.btn")}}</a>
+            </div>
+            <details>
+                <summary>{{_("user.home.clash_configs.alternative_for_normal_clash")}}</summary>
+                <div class="btn-group">
+                    <a href="clash://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/normal.yml&name=normal_{{domain}}"
+                        class="btn btn-secondary orig-link">{{_("user.home.clash_configs.link_for_normal_clash")}}</a>
+                </div>
+            </details>
+        </div>
+    </div>
+
+    % if True or not hconfigs[ConfigEnum.block_iran_sites]:
+    <div class="card card-danger">
+        <div class="card-header">{{_("user.home.clash_configs.all_sites.title")}}</div>
+        <div class="card-body">
+            {{_("user.home.clash_configs.all_sites.description")}}
+            <div class="btn-group">
+                <a href="clashmeta://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/meta/all.yml&name=mall_{{domain}}"
+                    class="btn btn-danger orig-link">{{_("user.home.clash_configs.all_sites.btn")}}</a>
+            </div>
+            <details>
+                <summary>{{_("user.home.clash_configs.alternative_for_normal_clash")}}</summary>
+                <div class="btn-group">
+                    <a href="clash://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/all.yml&name=all_{{domain}}"
+                        class="btn btn-secondary orig-link">{{_("user.home.clash_configs.link_for_normal_clash")}}</a>
+                </div>
+            </details>
+        </div>
+    </div>
+    % endif
+</div>

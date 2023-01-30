@@ -23,7 +23,7 @@ def create_app(**config):
         # Put your logic here. Application can store locale in
         # user profile, cookie, session, etc.
         from hiddifypanel.models import ConfigEnum,hconfig
-        return hconfig(ConfigEnum.lang) or "en"
+        return "fa" or hconfig(ConfigEnum.lang) or "fa"
 
     from flask_wtf.csrf import CSRFProtect
 

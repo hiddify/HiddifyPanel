@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-01-29 15:29+0100\n"
+"POT-Creation-Date: 2023-01-29 21:38+0100\n"
 "PO-Revision-Date: 2023-01-28 14:59+0330\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh\n"
@@ -19,6 +19,7 @@ msgstr ""
 "Generated-By: Babel 2.11.0\n"
 
 #: hiddifypanel/panel/admin/DomainAdmin.py:19
+#: hiddifypanel/panel/admin/QuickSetup.py:33
 msgid "domain.domain"
 msgstr ""
 
@@ -27,14 +28,17 @@ msgid "domain.mode"
 msgstr ""
 
 #: hiddifypanel/panel/admin/FullConfigAdmin.py:35
+#: hiddifypanel/panel/admin/QuickSetup.py:26
 msgid "config.validation-success"
 msgstr ""
 
 #: hiddifypanel/panel/admin/FullConfigAdmin.py:37
+#: hiddifypanel/panel/admin/QuickSetup.py:28
 msgid "config.validation-error"
 msgstr ""
 
 #: hiddifypanel/panel/admin/FullConfigAdmin.py:96
+#: hiddifypanel/panel/admin/QuickSetup.py:32
 msgid "config.Invalid domain"
 msgstr ""
 
@@ -58,16 +62,41 @@ msgstr ""
 msgid "config.Invalid port"
 msgstr ""
 
-#: hiddifypanel/panel/admin/FullConfigAdmin.py:112
+#: hiddifypanel/panel/admin/FullConfigAdmin.py:114
 msgid "config.port 80 is required"
 msgstr ""
 
-#: hiddifypanel/panel/admin/FullConfigAdmin.py:114
+#: hiddifypanel/panel/admin/FullConfigAdmin.py:116
 msgid "config.port 443 is required"
 msgstr ""
 
-#: hiddifypanel/panel/admin/FullConfigAdmin.py:123
+#: hiddifypanel/panel/admin/FullConfigAdmin.py:125
+#: hiddifypanel/panel/admin/QuickSetup.py:36
 msgid "Submit"
+msgstr ""
+
+#: hiddifypanel/panel/admin/QuickSetup.py:33
+msgid "domain.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/QuickSetup.py:34
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.telegram_enable.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/QuickSetup.py:34
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.telegram_enable.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/QuickSetup.py:35
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.vmess_enable.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/QuickSetup.py:35
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.vmess_enable.description"
 msgstr ""
 
 #: hiddifypanel/panel/admin/UserAdmin.py:27
@@ -239,14 +268,6 @@ msgid "config.ports.description"
 msgstr ""
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.vmess_enable.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.vmess_enable.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.http_proxy.label"
 msgstr ""
 
@@ -343,14 +364,6 @@ msgid "config.ssr.description"
 msgstr ""
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.telegram_enable.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.telegram_enable.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.telegram_adtag.label"
 msgstr ""
 
@@ -398,125 +411,321 @@ msgstr ""
 msgid "config.tuic.description"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/fa/base.html:36
+#: hiddifypanel/panel/admin/templates/quick_setup.html:11
+msgid "admin.quicksetup.title"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/quick_setup.html:16
+msgid "admin.quicksetup_intro"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/home/all-configs.html:1
+msgid "user.home.tool.all-configs"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/home/all-configs.html:7
+msgid "user.home.allconfig.name"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/home/all-configs.html:8
+msgid "user.home.allconfig.type"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/home/all-configs.html:9
+msgid "user.home.allconfig.protocol"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/home/all-configs.html:10
+msgid "user.home.allconfig.transport"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/home/all-configs.html:11
+msgid "user.home.allconfig.security"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/home/all-configs.html:19
+msgid "user.home.allconfig.hiddify-configs"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/home/all-configs.html:22
+#: hiddifypanel/panel/user/templates/home/all-configs.html:23
+#: hiddifypanel/panel/user/templates/home/all-configs.html:24
+#: hiddifypanel/panel/user/templates/home/all-configs.html:25
+#: hiddifypanel/panel/user/templates/home/all-configs.html:34
+#: hiddifypanel/panel/user/templates/home/all-configs.html:36
+#: hiddifypanel/panel/user/templates/home/all-configs.html:37
+#: hiddifypanel/panel/user/templates/home/all-configs.html:46
+#: hiddifypanel/panel/user/templates/home/all-configs.html:47
+#: hiddifypanel/panel/user/templates/home/all-configs.html:48
+#: hiddifypanel/panel/user/templates/home/all-configs.html:49
+msgid "all"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/home/all-configs.html:31
+msgid "user.home.allconfig.clash-configs"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/home/all-configs.html:35
+msgid "user.home.allconfigs.expect_vless"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/home/all-configs.html:43
+msgid "user.home.allconfig.link-configs"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/home/android.html:4
+msgid "download"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/home/android.html:11
+msgid "install from google play"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/home/android.html:15
+msgid "user.home.android.intro"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/home/base.html:36
 msgid "test"
 msgstr "测试"
 
-#: copy.html:2 hiddifypanel/panel/user/templates/fa/index
-#: hiddifypanel/panel/user/templates/fa/index.html:2
-msgid "user.home.title"
+#: hiddifypanel/panel/user/templates/home/clash-links.html:1
+msgid "user.home.clash_configs.intro"
 msgstr ""
 
-#: copy.html:27 hiddifypanel/panel/user/templates/fa/index
-#: hiddifypanel/panel/user/templates/fa/index.html:27
-msgid "telegram"
+#: hiddifypanel/panel/user/templates/home/clash-links.html:5
+msgid "user.home.clash_configs.only_for_blocked_sites.title"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/fa/index.html:30
-msgid "android"
+#: hiddifypanel/panel/user/templates/home/clash-links.html:7
+msgid "user.home.clash_configs.only_for_blocked_sites.description"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/fa/index.html:32
-msgid "ios"
+#: hiddifypanel/panel/user/templates/home/clash-links.html:10
+msgid "user.home.clash_configs.only_for_blocked_sites.btn"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/fa/index.html:34
-msgid "desktop"
+#: hiddifypanel/panel/user/templates/home/clash-links.html:13
+#: hiddifypanel/panel/user/templates/home/clash-links.html:31
+#: hiddifypanel/panel/user/templates/home/clash-links.html:50
+msgid "user.home.clash_configs.alternative_for_normal_clash"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/fa/index.html:41
-msgid "user.home.select os"
+#: hiddifypanel/panel/user/templates/home/clash-links.html:16
+#: hiddifypanel/panel/user/templates/home/clash-links.html:34
+#: hiddifypanel/panel/user/templates/home/clash-links.html:53
+msgid "user.home.clash_configs.link_for_normal_clash"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/fa/index.html:76
-msgid "user.home.all_configs"
+#: hiddifypanel/panel/user/templates/home/clash-links.html:23
+msgid "user.home.clash_configs.foreign_sites.title"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/fa/index.html:78
-msgid "user.home.speedtest"
+#: hiddifypanel/panel/user/templates/home/clash-links.html:25
+msgid "user.home.clash_configs.foreign_sites.description"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/fa/index.html:80
-msgid "user.home.doh"
+#: hiddifypanel/panel/user/templates/home/clash-links.html:28
+msgid "user.home.clash_configs.foreign_sites.btn"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/fa/index.html:86
-msgid "user.home.select tool"
+#: hiddifypanel/panel/user/templates/home/clash-links.html:42
+msgid "user.home.clash_configs.all_sites.title"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/fa/index.html:112
-#: hiddifypanel/panel/user/templates/fa/usage.html:35
-msgid "QR code"
+#: hiddifypanel/panel/user/templates/home/clash-links.html:44
+msgid "user.home.clash_configs.all_sites.description"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/fa/index.html:113
-#: hiddifypanel/panel/user/templates/fa/usage.html:36
-msgid "user.home.qr-code.description"
+#: hiddifypanel/panel/user/templates/home/clash-links.html:47
+msgid "user.home.clash_configs.all_sites.btn"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/fa/index.html:121
-#: hiddifypanel/panel/user/templates/fa/usage.html:44
-msgid "user.home.qr-code.display"
+#: hiddifypanel/panel/user/templates/home/doh.html:1
+msgid "user.home.tool.doh"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/fa/index.html:212
-msgid "user.home.share-title"
-msgstr ""
-
-#: hiddifypanel/panel/user/templates/fa/index.html:217
+#: hiddifypanel/panel/user/templates/home/doh.html:8
+#: hiddifypanel/panel/user/templates/home/index.html:217
 msgid "copy"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/fa/index.html:218
+#: hiddifypanel/panel/user/templates/home/doh.html:13
+msgid "user.home.tool.doh.help"
+msgstr ""
+
+#: copy.html:2 hiddifypanel/panel/user/templates/home/index
+#: hiddifypanel/panel/user/templates/home/index.html:2
+msgid "user.home.title"
+msgstr ""
+
+#: copy.html:27 hiddifypanel/panel/user/templates/home/index
+#: hiddifypanel/panel/user/templates/home/index.html:27
+msgid "telegram"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/home/index.html:30
+msgid "android"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/home/index.html:32
+msgid "ios"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/home/index.html:34
+msgid "desktop"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/home/index.html:41
+msgid "user.home.select os"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/home/index.html:76
+msgid "user.home.all_configs"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/home/index.html:78
+msgid "user.home.speedtest"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/home/index.html:80
+msgid "user.home.doh"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/home/index.html:86
+msgid "user.home.select tool"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/home/index.html:112
+#: hiddifypanel/panel/user/templates/home/usage.html:35
+msgid "QR code"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/home/index.html:113
+#: hiddifypanel/panel/user/templates/home/usage.html:36
+msgid "user.home.qr-code.description"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/home/index.html:121
+#: hiddifypanel/panel/user/templates/home/usage.html:44
+msgid "user.home.qr-code.display"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/home/index.html:212
+msgid "user.home.share-title"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/home/index.html:218
 msgid "clickable copy"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/fa/index.html:224
+#: hiddifypanel/panel/user/templates/home/index.html:224
 msgid "close"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/fa/index.html:261
+#: hiddifypanel/panel/user/templates/home/index.html:261
 msgid "user.home.link.success-copy"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/fa/index.html:263
+#: hiddifypanel/panel/user/templates/home/index.html:263
 msgid "user.home.link.manual-copy"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/fa/index.html:373
+#: hiddifypanel/panel/user/templates/home/index.html:373
 msgid "next"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/fa/index.html:374
+#: hiddifypanel/panel/user/templates/home/index.html:374
 msgid "previous"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/fa/index.html:385
+#: hiddifypanel/panel/user/templates/home/index.html:385
 msgid "search"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/fa/usage.html:7
+#: copy.html:6 hiddifypanel/panel/user/templates/home/ios
+#: hiddifypanel/panel/user/templates/home/ios.html:5
+msgid "user.home.ios.stash.title"
+msgstr ""
+
+#: copy.html:17 hiddifypanel/panel/user/templates/home/ios
+#: hiddifypanel/panel/user/templates/home/ios.html:16
+msgid "user.home.ios.stash.intro"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/home/ios.html:31
+msgid "user.home.ios.others.title"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/home/ios.html:42
+msgid "user.home.ios.others.intro"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/home/speedtest.html:1
+msgid "user.home.speedtest.intro"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/home/speedtest.html:5
+msgid "user.home.speedtest.upload"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/home/speedtest.html:7
+msgid "user.home.speedtest.download"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/home/speedtest.html:9
+msgid "user.home.speedtest.two_ways"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/home/telegram.html:7
+msgid "user.home.telegram.clickbtn"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/home/telegram.html:12
+msgid "user.home.telegram.description"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/home/usage.html:7
 msgid "user.home.usage.title"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/fa/usage.html:9
+#: hiddifypanel/panel/user/templates/home/usage.html:9
 msgid "user.home.usage.from"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/fa/usage.html:10
+#: hiddifypanel/panel/user/templates/home/usage.html:10
 msgid "user.home.usage.monthly"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/fa/usage.html:16
+#: hiddifypanel/panel/user/templates/home/usage.html:16
 msgid "user.home.usage.expire"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/fa/usage.html:16
+#: hiddifypanel/panel/user/templates/home/usage.html:16
 msgid "days"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/fa/usage.html:24
+#: hiddifypanel/panel/user/templates/home/usage.html:24
 msgid "user.home.usage.details"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/home/windows.html:6
+#: hiddifypanel/panel/user/templates/home/windows.html:22
+msgid "Windows"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/home/windows.html:9
+#: hiddifypanel/panel/user/templates/home/windows.html:25
+msgid "macOS"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/home/windows.html:12
+#: hiddifypanel/panel/user/templates/home/windows.html:28
+msgid "Linux"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/home/windows.html:33
+msgid "user.home.windows.intro"
 msgstr ""
 
 #: hiddifypanel/templates/admin-layout.html:22
@@ -688,5 +897,8 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "config.telegram_secret.description"
+#~ msgstr ""
+
+#~ msgid "user.home.windows.desciption"
 #~ msgstr ""
 

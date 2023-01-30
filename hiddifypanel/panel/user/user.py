@@ -6,11 +6,11 @@ from hiddifypanel.models import User,Domain,BoolConfig,StrConfig,DomainType,Conf
 from hiddifypanel.panel.hiddify  import auth
 from . import link_maker
 @auth
-def index(lang="fa"):
+def index():
     c=get_common_data(g.user_uuid)
-    if lang=="fa":
-        return render_template('fa/index.html',**c)
-    return  render_template('index_en.html',**c)
+
+    return render_template('home/index.html',**c)
+    
 
 
 

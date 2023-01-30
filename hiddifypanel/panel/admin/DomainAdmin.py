@@ -12,7 +12,7 @@ class DomainAdmin(AdminLTEModelView):
         'validators': [Regexp(r'^([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})$',message="Should be a valid domain")]
     }
     }
-    column_editable_list=["domain","mode"]
+    column_editable_list=["domain"]
     column_filters=["domain","mode"]
     column_searchable_list=["domain","mode"]
     column_labels={

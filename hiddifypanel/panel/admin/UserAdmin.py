@@ -56,7 +56,7 @@ class UserAdmin(AdminLTEModelView):
     
     def _ul_formatter(view, context, model, name):
         proxy_path=hconfig(ConfigEnum.proxy_path)
-        return Markup(" ".join([f"""<a target='_blank' href='https://{d.domain}/{proxy_path}/{model.uuid}/'>{f'<span class="badge badge-success" >{_("domain.cdn")}</span> ' if d.mode!=DomainType.cdn else ''}<span class='badge badge-info ltr'>{d.domain}</span></a>""" 
+        return Markup(" ".join([f"""<a target='_blank' href='https://{d.domain}/{proxy_path}/{model.uuid}/'><span class='badge badge-info ltr'>{f'<span class="badge badge-success" >{_("domain.cdn")}</span> ' if d.mode!=DomainType.cdn else ''}{d.domain}</span></a>""" 
             for d in Domain.query.filter(Domain.mode == DomainType.cdn or Domain.mode == DomainType.direct).all()]))
 
     column_formatters = {
