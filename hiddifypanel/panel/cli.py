@@ -149,7 +149,7 @@ def init_app(app):
         
         strmap={
             "TELEGRAM_FAKE_TLS_DOMAIN": ConfigEnum.telegram_fakedomain,
-            "TELEGRAM_SECRET":ConfigEnum.telegram_secret,
+            "TELEGRAM_SECRET":ConfigEnum.shared_secret,
             "SS_FAKE_TLS_DOMAIN":ConfigEnum.ssfaketls_fakedomain,
             "FAKE_CDN_DOMAIN":ConfigEnum.fake_cdn_domain,
             "BASE_PROXY_PATH":ConfigEnum.proxy_path,

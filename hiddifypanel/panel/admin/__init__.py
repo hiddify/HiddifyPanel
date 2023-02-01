@@ -68,5 +68,5 @@ def init_app(app):
     app.add_url_rule("/<proxy_path>/<user_secret>/admin/static/<filename>/",endpoint="admin.static")# fix bug in admin with blueprint
     # app.add_url_rule("/<proxy_path>/<user_secret>/admin/static/<filename>",endpoint="admin.admin.static")# fix bug in admin with blueprint
     # app.add_url_rule("/<proxy_path>/<user_secret>/admin/static/<filename>",endpoint="adminlte.static")# fix bug in admin with blueprint
-    print(app.url_map)    
+    # print(app.url_map)    
     
