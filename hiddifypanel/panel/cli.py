@@ -103,7 +103,8 @@ def init_db():
     return BoolConfig.query.all()
 
 def all_configs():
-    print(hiddify.all_configs())    
+    import json
+    print(json.dumps(hiddify.all_configs()))
 
 def update_usage():
     print(hiddify.update_usage())
@@ -151,7 +152,7 @@ def init_app(app):
             "TELEGRAM_FAKE_TLS_DOMAIN": ConfigEnum.telegram_fakedomain,
             "TELEGRAM_SECRET":ConfigEnum.shared_secret,
             "SS_FAKE_TLS_DOMAIN":ConfigEnum.ssfaketls_fakedomain,
-            "FAKE_CDN_DOMAIN":ConfigEnum.fake_cdn_domain,
+            "FAKE_CDN_DOMAIN":ConfigEnum.domain_fronting_domain,
             "BASE_PROXY_PATH":ConfigEnum.proxy_path,
             "ADMIN_SECRET":ConfigEnum.admin_secret,
             "TELEGRAM_AD_TAG":ConfigEnum.telegram_adtag
