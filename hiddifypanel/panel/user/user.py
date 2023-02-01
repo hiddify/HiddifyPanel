@@ -60,7 +60,7 @@ def get_common_data(user_uuid):
     if db_domain and db_domain.mode==DomainType.cdn:
         direct_host=urllib.request.urlopen('https://v4.ident.me/').read().decode('utf8')
         is_cdn=True
-        
+    
     direct_host= domain
     # uuid_secret=str(uuid.UUID(user_secret))
     user=User.query.filter(User.uuid==f'{user_uuid}').first()

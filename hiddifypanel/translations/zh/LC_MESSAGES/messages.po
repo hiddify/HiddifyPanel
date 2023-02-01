@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-02-01 19:34+0100\n"
+"POT-Creation-Date: 2023-02-01 20:51+0100\n"
 "PO-Revision-Date: 2023-01-28 14:59+0330\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh\n"
@@ -28,19 +28,21 @@ msgid "domain.mode"
 msgstr ""
 
 #: hiddifypanel/panel/admin/FullConfigAdmin.py:51
-#: hiddifypanel/panel/admin/ProxyAdmin.py:96
+#: hiddifypanel/panel/admin/ProxyAdmin.py:99
+#: hiddifypanel/panel/admin/ProxyAdmin.py:118
 #: hiddifypanel/panel/admin/QuickSetup.py:41
 msgid "admin.config.apply_configs"
 msgstr ""
 
 #: hiddifypanel/panel/admin/FullConfigAdmin.py:52
-#: hiddifypanel/panel/admin/ProxyAdmin.py:97
+#: hiddifypanel/panel/admin/ProxyAdmin.py:100
+#: hiddifypanel/panel/admin/ProxyAdmin.py:119
 #: hiddifypanel/panel/admin/QuickSetup.py:42
 msgid "config.validation-success"
 msgstr ""
 
 #: hiddifypanel/panel/admin/FullConfigAdmin.py:55
-#: hiddifypanel/panel/admin/ProxyAdmin.py:100
+#: hiddifypanel/panel/admin/ProxyAdmin.py:122
 #: hiddifypanel/panel/admin/QuickSetup.py:44
 msgid "config.validation-error"
 msgstr ""
@@ -105,7 +107,7 @@ msgstr ""
 
 #: hiddifypanel/panel/admin/FullConfigAdmin.py:158
 #: hiddifypanel/panel/admin/ProxyAdmin.py:34
-#: hiddifypanel/panel/admin/ProxyAdmin.py:73
+#: hiddifypanel/panel/admin/ProxyAdmin.py:81
 #: hiddifypanel/panel/admin/QuickSetup.py:50
 #: hiddifypanel/panel/admin/QuickSetup.py:68
 msgid "Submit"
@@ -220,6 +222,38 @@ msgid "config.admin.description"
 msgstr ""
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.domain_fronting_tls_enable.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.domain_fronting_tls_enable.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.domain_fronting_http_enable.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.domain_fronting_http_enable.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.domain_fronting_domain.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.domain_fronting_domain.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.domain_fronting.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.domain_fronting.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.firewall.label"
 msgstr ""
 
@@ -233,22 +267,6 @@ msgstr ""
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.netdata.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.block_iran_sites.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.block_iran_sites.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.allow_invalid_sni.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.allow_invalid_sni.description"
 msgstr ""
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -284,14 +302,6 @@ msgid "config.decoy_site.description"
 msgstr ""
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.proxy_path.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.proxy_path.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.general.label"
 msgstr ""
 
@@ -300,19 +310,11 @@ msgid "config.general.description"
 msgstr ""
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.tls_ports.label"
+msgid "config.kcp_enable.label"
 msgstr ""
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.tls_ports.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.http_ports.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.http_ports.description"
+msgid "config.kcp_enable.description"
 msgstr ""
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -324,11 +326,11 @@ msgid "config.kcp_ports.description"
 msgstr ""
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.ports.label"
+msgid "config.kcp.label"
 msgstr ""
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.ports.description"
+msgid "config.kcp.description"
 msgstr ""
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -337,6 +339,54 @@ msgstr ""
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.http_proxy_enable.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.http_ports.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.http_ports.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.tls_ports.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.tls_ports.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.ports.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.ports.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.block_iran_sites.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.block_iran_sites.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.allow_invalid_sni.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.allow_invalid_sni.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.proxy_path.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.proxy_path.description"
 msgstr ""
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -473,30 +523,6 @@ msgstr ""
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.tuic.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.domain_fronting_domain.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.domain_fronting_domain.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.domain_fronting_http_enable.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.domain_fronting_http_enable.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.domain_fronting_tls_enable.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.domain_fronting_tls_enable.description"
 msgstr ""
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6

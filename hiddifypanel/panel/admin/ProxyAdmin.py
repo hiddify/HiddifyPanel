@@ -90,9 +90,12 @@ def save():
 
     if global_config_form.submit_global.data and global_config_form.validate_on_submit():
             
-            for k,vs in global_config_form.data.items():#[c for c in ConfigEnum]:
+            for k,vs in global_config_form.data.items():
                     if k in [c for c in ConfigEnum]:
                         BoolConfig.query.filter(BoolConfig.key==k).first().value=vs
+                        if vs and k in [ConfigEnum.domain_fronting_http_enable, ConfigEnum.domain_fronting_tls_enable]:
+                            flash(Markup(_('config.domain-fronting-notsetup-error')), 'danger')                
+
                 
             # print(cat,vs)
             db.session.commit()

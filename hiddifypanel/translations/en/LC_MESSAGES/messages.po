@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-01 19:34+0100\n"
-"PO-Revision-Date: 2023-01-31 12:45+0100\n"
+"POT-Creation-Date: 2023-02-01 20:51+0100\n"
+"PO-Revision-Date: 2023-02-01 20:51+0100\n"
 "Last-Translator: hidden u\n"
 "Language: en_US\n"
 "Language-Team: English (USA)\n"
@@ -27,7 +27,8 @@ msgstr "Mode"
 
 # | msgid "Apply Configs"
 #: hiddifypanel/panel/admin/FullConfigAdmin.py:51
-#: hiddifypanel/panel/admin/ProxyAdmin.py:96
+#: hiddifypanel/panel/admin/ProxyAdmin.py:99
+#: hiddifypanel/panel/admin/ProxyAdmin.py:118
 #: hiddifypanel/panel/admin/QuickSetup.py:41
 msgid "admin.config.apply_configs"
 msgstr "Apply Configs"
@@ -36,7 +37,8 @@ msgstr "Apply Configs"
 # | "Configs have changed successfully. Click %(link)s to apply the configs. "
 # | "It may takes 2 minutes to apply."
 #: hiddifypanel/panel/admin/FullConfigAdmin.py:52
-#: hiddifypanel/panel/admin/ProxyAdmin.py:97
+#: hiddifypanel/panel/admin/ProxyAdmin.py:100
+#: hiddifypanel/panel/admin/ProxyAdmin.py:119
 #: hiddifypanel/panel/admin/QuickSetup.py:42
 msgid "config.validation-success"
 msgstr ""
@@ -45,7 +47,7 @@ msgstr ""
 
 # | msgid "One of the fields has encountered with error"
 #: hiddifypanel/panel/admin/FullConfigAdmin.py:55
-#: hiddifypanel/panel/admin/ProxyAdmin.py:100
+#: hiddifypanel/panel/admin/ProxyAdmin.py:122
 #: hiddifypanel/panel/admin/QuickSetup.py:44
 msgid "config.validation-error"
 msgstr "One of the fields has encountered with error"
@@ -132,7 +134,7 @@ msgstr "Port 443 should always be presented. "
 
 #: hiddifypanel/panel/admin/FullConfigAdmin.py:158
 #: hiddifypanel/panel/admin/ProxyAdmin.py:34
-#: hiddifypanel/panel/admin/ProxyAdmin.py:73
+#: hiddifypanel/panel/admin/ProxyAdmin.py:81
 #: hiddifypanel/panel/admin/QuickSetup.py:50
 #: hiddifypanel/panel/admin/QuickSetup.py:68
 msgid "Submit"
@@ -140,25 +142,28 @@ msgstr "Submit"
 
 # | msgid "Name"
 #: hiddifypanel/panel/admin/ProxyAdmin1.py:16
-#, fuzzy
 msgid "proxy.name"
 msgstr "Name"
 
+# | msgid "Protocol"
 #: hiddifypanel/panel/admin/ProxyAdmin1.py:17
 msgid "proxy.protocol"
-msgstr ""
+msgstr "Protocol"
 
+# | msgid "Transport"
 #: hiddifypanel/panel/admin/ProxyAdmin1.py:18
 msgid "proxy.transport"
-msgstr ""
+msgstr "Transport"
 
+# | msgid "Outer Layer"
 #: hiddifypanel/panel/admin/ProxyAdmin1.py:19
 msgid "proxy.l3"
-msgstr ""
+msgstr "Outer Layer"
 
+# | msgid "CDN"
 #: hiddifypanel/panel/admin/ProxyAdmin1.py:20
 msgid "proxy.cdn"
-msgstr ""
+msgstr "CDN"
 
 # | msgid "Change language success"
 #: hiddifypanel/panel/admin/QuickSetup.py:30
@@ -282,6 +287,55 @@ msgstr "Admin Settings"
 msgid "config.admin.description"
 msgstr "Admin section is for configuring admin related settings"
 
+# | msgid "Enable TLS domain fronting"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.domain_fronting_tls_enable.label"
+msgstr "Enable TLS domain fronting"
+
+# | msgid "It will use port 443 to connect to CDN"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.domain_fronting_tls_enable.description"
+msgstr "It will use port 443 to connect to CDN"
+
+# | msgid "Enable HTTP domain fronting"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.domain_fronting_http_enable.label"
+msgstr "Enable HTTP domain fronting"
+
+# | msgid ""
+# | "Enabling HTTP domain fronting causes your domain to be block quickly."
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.domain_fronting_http_enable.description"
+msgstr "Enabling HTTP domain fronting causes your domain to be block quickly."
+
+# | msgid "Domain Fronting"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.domain_fronting_domain.label"
+msgstr "Domain Fronting"
+
+# | msgid ""
+# | "It is used to simulate another website instead of your website in SNI. "
+# | "Therefore, GTW can not filter your domain"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.domain_fronting_domain.description"
+msgstr ""
+"It is used to simulate another website instead of your website in SNI. "
+"Therefore, GTW can not filter your domain"
+
+# | msgid "Domain Fronting"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.domain_fronting.label"
+msgstr "Domain Fronting"
+
+# | msgid ""
+# | "It is used to simulate another website instead of your website in SNI. "
+# | "Therefore, GTW can not filter your domain"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.domain_fronting.description"
+msgstr ""
+"It is used to simulate another website instead of your website in SNI. "
+"Therefore, GTW can not filter your domain"
+
 # | msgid "Firewall"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.firewall.label"
@@ -306,35 +360,6 @@ msgstr "Netdata"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.netdata.description"
 msgstr "For displaying resources. May use your CPU but it is not too much."
-
-# | msgid "Block Iranian sites"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.block_iran_sites.label"
-msgstr "Block Iranian sites"
-
-# | msgid ""
-# | "Block Iranian sites to prevent detection by the government (experimental:
-# "
-# | "If there is a problem, please disable it and tell us.)"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.block_iran_sites.description"
-msgstr ""
-"Block Iranian sites to prevent detection by the government (experimental:"
-" If there is a problem, please disable it and tell us.)"
-
-# | msgid "Allow invalid SNI"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.allow_invalid_sni.label"
-msgstr "Allow invalid SNI"
-
-# | msgid ""
-# | "If you allow invalid SNI, you can use any domain rather than your "
-# | "original domain to access the proxy (not recommended)."
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.allow_invalid_sni.description"
-msgstr ""
-"If you allow invalid SNI, you can use any domain rather than your "
-"original domain to access the proxy (not recommended)."
 
 # | msgid "Auto Update"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -384,16 +409,6 @@ msgstr "Decoy Site"
 msgid "config.decoy_site.description"
 msgstr "Fake site: simulates a site when someone visits your domain"
 
-# | msgid "Secret Proxy Path"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.proxy_path.label"
-msgstr "Secret Proxy Path"
-
-# | msgid "We use secret proxy path to hide our proxies for the gouvernment."
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.proxy_path.description"
-msgstr "We use secret proxy path to hide our proxies for the gouvernment."
-
 # | msgid "General Settings"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.general.label"
@@ -404,19 +419,51 @@ msgstr "General Settings"
 msgid "config.general.description"
 msgstr "It is general system configurations."
 
-# | msgid "TLS Ports"
+# | msgid "Enable KCP"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.tls_ports.label"
-msgstr "TLS Ports"
+msgid "config.kcp_enable.label"
+msgstr "Enable KCP"
+
+# | msgid "It is a UDP based protocol "
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.kcp_enable.description"
+msgstr "It is a UDP based protocol "
+
+# | msgid "KCP ports"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.kcp_ports.label"
+msgstr "KCP ports"
 
 # | msgid ""
-# | "Comma separated integers indicating the ports to use as TLS connection "
-# | "(port 443 is required).\n"
+# | "Comma separated integers indicating the ports to use as KCP
+# connection.\n"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.tls_ports.description"
+msgid "config.kcp_ports.description"
+msgstr "Comma separated integers indicating the ports to use as KCP connection.\n"
+
+# | msgid "KCP"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.kcp.label"
+msgstr "KCP"
+
+# | msgid "Need to be complete"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.kcp.description"
+msgstr "Need to be complete"
+
+# | msgid "Allow HTTP connection"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.http_proxy_enable.label"
+msgstr "Allow HTTP connection"
+
+# | msgid ""
+# | "By allowing this, your users can connect to the system with unencrypted "
+# | "http port. (not recommended)"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.http_proxy_enable.description"
 msgstr ""
-"Comma separated integers indicating the ports to use as TLS connection "
-"(port 443 is required).\n"
+"By allowing this, your users can connect to the system with unencrypted "
+"http port. (not recommended)"
 
 # | msgid "HTTP ports"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -432,17 +479,19 @@ msgstr ""
 "Comma separated integers indicating the ports to use as unencrypted "
 "connections (port 80 is required).\n"
 
-# | msgid "KCP ports"
+# | msgid "TLS Ports"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.kcp_ports.label"
-msgstr "KCP ports"
+msgid "config.tls_ports.label"
+msgstr "TLS Ports"
 
 # | msgid ""
-# | "Comma separated integers indicating the ports to use as KCP
-# connection.\n"
+# | "Comma separated integers indicating the ports to use as TLS connection "
+# | "(port 443 is required).\n"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.kcp_ports.description"
-msgstr "Comma separated integers indicating the ports to use as KCP connection.\n"
+msgid "config.tls_ports.description"
+msgstr ""
+"Comma separated integers indicating the ports to use as TLS connection "
+"(port 443 is required).\n"
 
 # | msgid "Ports settings"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -454,19 +503,44 @@ msgstr "Ports settings"
 msgid "config.ports.description"
 msgstr "You can select different ports of the system in the section"
 
-# | msgid "Allow HTTP connection"
+# | msgid "Block Iranian sites"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.http_proxy_enable.label"
-msgstr "Allow HTTP connection"
+msgid "config.block_iran_sites.label"
+msgstr "Block Iranian sites"
 
 # | msgid ""
-# | "By allowing this, your users can connect to the system with unencrypted "
-# | "http port. (not recommended)"
+# | "Block Iranian sites to prevent detection by the government (experimental:
+# "
+# | "If there is a problem, please disable it and tell us.)"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.http_proxy_enable.description"
+msgid "config.block_iran_sites.description"
 msgstr ""
-"By allowing this, your users can connect to the system with unencrypted "
-"http port. (not recommended)"
+"Block Iranian sites to prevent detection by the government (experimental:"
+" If there is a problem, please disable it and tell us.)"
+
+# | msgid "Allow invalid SNI"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.allow_invalid_sni.label"
+msgstr "Allow invalid SNI"
+
+# | msgid ""
+# | "If you allow invalid SNI, you can use any domain rather than your "
+# | "original domain to access the proxy (not recommended)."
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.allow_invalid_sni.description"
+msgstr ""
+"If you allow invalid SNI, you can use any domain rather than your "
+"original domain to access the proxy (not recommended)."
+
+# | msgid "Secret Proxy Path"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.proxy_path.label"
+msgstr "Secret Proxy Path"
+
+# | msgid "We use secret proxy path to hide our proxies for the gouvernment."
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.proxy_path.description"
+msgstr "We use secret proxy path to hide our proxies for the gouvernment."
 
 # | msgid "Shared Secret"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -702,41 +776,6 @@ msgstr ""
 "\n"
 "TUIC's goal is to minimize the handshake latency as much as possible"
 
-# | msgid "Domain Fronting"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.domain_fronting_domain.label"
-msgstr "Domain Fronting"
-
-# | msgid ""
-# | "It is used to simulate another website instead of your website in SNI. "
-# | "Therefore, GTW can not filter your domain"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.domain_fronting_domain.description"
-msgstr ""
-"It is used to simulate another website instead of your website in SNI. "
-"Therefore, GTW can not filter your domain"
-
-# | msgid "Enable HTTP domain fronting"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.domain_fronting_http_enable.label"
-msgstr "Enable HTTP domain fronting"
-
-# | msgid ""
-# | "Enabling HTTP domain fronting causes your domain to be block quickly."
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.domain_fronting_http_enable.description"
-msgstr "Enabling HTTP domain fronting causes your domain to be block quickly."
-
-# | msgid "Enable TLS domain fronting"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.domain_fronting_tls_enable.label"
-msgstr "Enable TLS domain fronting"
-
-# | msgid "It will use port 443 to connect to CDN"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.domain_fronting_tls_enable.description"
-msgstr "It will use port 443 to connect to CDN"
-
 # | msgid "Admin Settings"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
@@ -774,17 +813,15 @@ msgstr "RAM Usage Chart"
 msgid "admin.network_chart"
 msgstr "Network Usage"
 
-# | msgid "Apply Configs"
+# | msgid "Global Configs"
 #: hiddifypanel/panel/admin/templates/proxy.html:11
-#, fuzzy
 msgid "admin.proxy.global_config"
-msgstr "Apply Configs"
+msgstr "Global Configs"
 
-# | msgid "Apply Configs"
+# | msgid "Detailed Configs"
 #: hiddifypanel/panel/admin/templates/proxy.html:21
-#, fuzzy
 msgid "admin.proxy.detailed_config"
-msgstr "Apply Configs"
+msgstr "Detailed Configs"
 
 # | msgid "QuickSetup"
 #: hiddifypanel/panel/admin/templates/quick_setup.html:35
@@ -1102,6 +1139,7 @@ msgstr "Copy"
 # | "    Some browsers might already have this setting enabled.\n"
 # | "    <h5>​​Mozilla Firefox</h5>\n"
 # | "    Select the <b>menu</b> button > <b>Settings</b>.In the General menu,
+# "
 # | "scroll down to access <b>Network Settings</b>. Select <b>Settings</b>. "
 # | "Select <b>Enable DNS over HTTPS</b>.\n"
 # | "    ​<h5>​Google Chrome</h5>\n"
@@ -1322,6 +1360,7 @@ msgstr ""
 # "
 # | "it means that this ip is so called dirty on your ISP.\n"
 # | "If the speed was low without a proxy, don't waste your time to test this
+# "
 # | "proxy.\n"
 # | "Otherwise, test with different proxies of this site and if the speed is "
 # | "similar to the speed without the proxy, then you have found the best "
@@ -1424,6 +1463,7 @@ msgstr "Linux"
 # | "    </div>\n"
 # | "    <div class=\"card-body\">\n"
 # | "        HiddifyDesktop is an open source fork of Clash that supports more
+# "
 # | "protocol.\n"
 # | "        <br>\n"
 # | "        Its source codes exist in\n"
@@ -1443,6 +1483,7 @@ msgstr "Linux"
 # | "</div>\n"
 # | "Now, according to your need, you can click on one of the buttons. By "
 # | "viewing the window in your browser, just click on the Open HiddifyDesktop
+# "
 # | "option to automatically add the server link to HiddifyDesktop.\n"
 #: hiddifypanel/panel/user/templates/home/windows.html:33
 msgid "user.home.windows.intro"
@@ -1503,12 +1544,11 @@ msgstr "Domains"
 msgid "admin.menu.user"
 msgstr "Users"
 
-# | msgid "Users"
+# | msgid "Proxies"
 #: hiddifypanel/templates/admin-layout.html:25
 #: hiddifypanel/templates/admin-layout.html:75
-#, fuzzy
 msgid "admin.menu.proxy"
-msgstr "Users"
+msgstr "Proxies"
 
 # | msgid "Settings"
 #: hiddifypanel/templates/admin-layout.html:26
@@ -1575,7 +1615,37 @@ msgstr "Link Copied to clipboard. "
 msgid "user.home.link.manual-copy"
 msgstr "Copy to clipboard:  Ctrl+C, Enter"
 
+# | msgid "Allow HTTP connection"
+#~ msgid "config.http_proxy.label"
+#~ msgstr "Allow HTTP connection"
+
+# | msgid ""
+# | "By allowing this, your users can connect to the system with unencrypted "
+# | "http port. (not recommended)"
+#~ msgid "config.http_proxy.description"
+#~ msgstr ""
+#~ "By allowing this, your users can "
+#~ "connect to the system with unencrypted"
+#~ " http port. (not recommended)"
+
 # | msgid "Link Copied to clipboard. "
 #~ msgid "user.home.link.success - copy"
 #~ msgstr "Link Copied to clipboard. "
+
+# | msgid "Enable HTTP domain fronting"
+#~ msgid "config.domain_fronting_http.label"
+#~ msgstr "Enable HTTP domain fronting"
+
+# | msgid ""
+# | "Enabling HTTP domain fronting causes your domain to be block quickly."
+#~ msgid "config.domain_fronting_http.description"
+#~ msgstr "Enabling HTTP domain fronting causes your domain to be block quickly."
+
+# | msgid "Enable TLS domain fronting"
+#~ msgid "config.domain_fronting_tls.label"
+#~ msgstr "Enable TLS domain fronting"
+
+# | msgid "It will use port 443 to connect to CDN"
+#~ msgid "config.domain_fronting_tls.description"
+#~ msgstr "It will use port 443 to connect to CDN"
 
