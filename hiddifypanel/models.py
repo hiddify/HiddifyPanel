@@ -28,27 +28,30 @@ class ConfigEnum(StrEnum):
     shared_secret="shared_secret"
 
     telegram_enable="telegram_enable"
-    telegram_secret="telegram_secret"
+    # telegram_secret="telegram_secret"
     telegram_adtag="telegram_adtag"
     telegram_fakedomain="telegram_fakedomain"
 
     ssfaketls_enable="ssfaketls_enable"
-    ssfaketls_secret="ssfaketls_secret"
+    # ssfaketls_secret="ssfaketls_secret"
     ssfaketls_fakedomain="ssfaketls_fakedomain"
     
     shadowtls_enable="shadowtls_enable"
-    shadowtls_secret="shadowtls_secret"
+    # shadowtls_secret="shadowtls_secret"
     shadowtls_fakedomain="shadowtls_fakedomain"
 
     tuic_enable="tuic_enable"
     tuic_port="tuic_port"
 
     ssr_enable="ssr_enable"
-    ssr_secret="ssr_secret"
+    # ssr_secret="ssr_secret"
     ssr_fakedomain="ssr_fakedomain"
 
     vmess_enable="vmess_enable"
-    fake_cdn_domain="fake_cdn_domain"
+    domain_fronting_domain="domain_fronting_domain"
+    domain_fronting_http="domain_fronting_http"
+    domain_fronting_tls="domain_fronting_tls"
+
     db_version="db_version"
 
     
@@ -64,6 +67,14 @@ class Domain(db.Model, SerializerMixin):
     domain = db.Column(db.String(200),nullable=False,unique=True)
     mode = db.Column(db.Enum(DomainType),nullable=False)
 
+class Proxy(db.Model, SerializerMixin):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    name = db.Column(db.String(200),nullable=False,unique=True)
+    enable = db.Column(db.Boolean,nullable=False)
+    proto = db.Column(db.String(200),nullable=False)
+    l3 = db.Column(db.String(200),nullable=False)
+    transport= db.Column(db.String(200),nullable=False)
+    cdn= db.Column(db.String(200),nullable=False)
 
 class User(db.Model, SerializerMixin):
     
@@ -110,7 +121,7 @@ def get_hdomains():
     return { mode: hdomains(mode) for mode in DomainType}    
 
 
-def hconfig(key):
+def hconfig(key:ConfigEnum):
     try:
         str_conf= StrConfig.query.filter(StrConfig.key==key).first()
         if str_conf:

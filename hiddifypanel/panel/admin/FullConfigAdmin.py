@@ -10,7 +10,7 @@ from flask_admin.base import expose
 
 
 import re
-from flask import render_template,current_app,flash, Markup
+from flask import render_template,current_app,flash, Markup,url_for
 from hiddifypanel.models import  User,Domain,DomainType,StrConfig,ConfigEnum,get_hconfigs
 from hiddifypanel.panel.database import db
 from wtforms.fields import *
@@ -48,7 +48,8 @@ def save():
                 
             # print(cat,vs)
         db.session.commit()
-        flash(_('config.validation-success'), 'success')
+        apply_btn=f"<a href='{url_for('admin.actions.apply_configs')}' class='btn btn-primary'>"+_("admin.config.apply_configs")+"</a>"
+        flash(Markup(_('config.validation-success',link=apply_btn)), 'success')
 
         return render_template('config.html', form=form)
     flash(_('config.validation-error'), 'danger')
@@ -83,7 +84,8 @@ def get_babel_string():
             
 
         res+=f'{{{{_("config.{cat}.label")}}}}{{{{_("config.{cat}.description")}}}}'
-
+    for c in ConfigEnum:
+        res+=f'{{{{_("config.{c}.label")}}}} {{{{_("config.{c}.description")}}}}'
     return res
     
 
@@ -113,7 +115,9 @@ def get_config_form():
             else:
                 render_kw={'class':"ltr"}
                 validators=[]
-                if 'domain' in c.key:
+                if c.key==ConfigEnum.fake_cdn_domain:
+                    validators.append(wtf.validators.Regexp("^([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})|$",re.IGNORECASE,_("config.Invalid domain")))
+                elif 'domain' in c.key:
                     validators.append(wtf.validators.Regexp("^([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})$",re.IGNORECASE,_("config.Invalid domain")))
                     validators.append(wtf.validators.NoneOf(db.session.query(Domain.domain).all(),_("config.Domain already used")))
                     render_kw['required']=""

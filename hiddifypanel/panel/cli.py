@@ -2,7 +2,7 @@ import click
 
 
 from hiddifypanel.panel.database import db
-from hiddifypanel.models import BoolConfig,StrConfig,ConfigEnum,hconfig
+from hiddifypanel.models import BoolConfig,StrConfig,ConfigEnum,hconfig,Proxy
 from hiddifypanel.models import Domain,DomainType
 from hiddifypanel.models import User
 from hiddifypanel.panel import hiddify
@@ -84,8 +84,13 @@ def init_db():
             BoolConfig(category="tuic",key=ConfigEnum.tuic_enable,value=False),
             StrConfig(category="tuic",key=ConfigEnum.tuic_port,value=3048),
 
+            BoolConfig(category="domain_fronting",key=ConfigEnum.domain_fronting_tls,value=False),
+            BoolConfig(category="domain_fronting",key=ConfigEnum.domain_fronting_http,value=False),
+            StrConfig(category="domain_fronting",key=ConfigEnum.domain_fronting_domain,value=""),
+            *get_proxy_rows()
         ]
-    
+
+        
         db.session.bulk_save_objects(data)
         db.session.commit()
         db_version=1
@@ -184,4 +189,43 @@ def init_app(app):
         db.session.commit()
 
 
+def get_proxy_rows():
+    cfgs=[   
+        'WS Fake vless',
+        'WS Fake trojan',
+        'WS Fake vmess',
+        # 'grpc Fake vless',
+        # 'grpc Fake trojan',
+        # 'grpc Fake vmess',
+        # "XTLS direct vless",
+        "XTLS direct trojan",
+        "WS direct vless",
+        "WS direct trojan",
+        "WS direct vmess",
+        "WS CDN vless",
+        "WS CDN trojan",
+        "WS CDN vmess",
+        "grpc CDN vless",
+        "grpc CDN trojan",
+        "grpc CDN vmess",
+        "tcp direct vless",
+        "tcp direct trojan",
+        "tcp direct vmess",
+        "h1 direct vless",
+        "h1 direct vmess",
+        "faketls direct ss",
+        "ws direct v2ray",
+        "shadowtls direct ss",
+        "tcp direct ssr",
+        "ws CDN v2ray"]
+    for l3 in ["tls", "http", "kcp"]:
+        for c in cfgs:
+            transport,cdn,proto=c.split(" ")
+            
+            if proto=="trojan" and l3!="tls":
+                continue
+            if transport in ["XTLS","faketls"] and l3=="http":
+                continue
 
+
+            yield Proxy(l3=l3,transport=transport,cdn=cdn,proto=proto,enable=True,name=f'{l3} {c}')

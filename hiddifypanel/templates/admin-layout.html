@@ -3,75 +3,101 @@
 
 {% block title%}Admin{% endblock %}
 {% block bodyclass %}{%endblock%}
-
+{% block body_header %}{%endblock%}
 
 
 
 {% block nav_bar %}
 
-    <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
-        <!-- Left navbar links -->
-        
-          
+<!-- Navbar -->
+<nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
+  <!-- Left navbar links -->
 
-        
-            <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
-          
-          <div class="d-none d-sm-flex">
+
+
+
+  <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
+
+  <div class="d-none d-sm-flex">
+    {{ render_nav_item('admin.admin.index', _('admin.menu.home')) }}
+    {{ render_nav_item('admin.domain.index_view', _('admin.menu.domain')) }}
+    {{ render_nav_item('admin.user.index_view', _('admin.menu.user')) }}
+    {{ render_nav_item('admin.proxy.index_view', _('admin.menu.proxy')) }}
+    {{ render_nav_item('admin.config', _('admin.menu.config')) }}
+    <div class="nav-item dropdown">
+      <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
+        class="nav-link dropdown-toggle">{{_('admin.actions.title')}}</a>
+      <ul class="dropdown-menu border-0 shadow">
+        {{ render_nav_item('admin.actions.status', _('admin.actions.status')) }}
+        {{ render_nav_item('admin.actions.apply_configs', _('admin.actions.apply_configs')) }}
+        {{ render_nav_item('admin.actions.reinstall', _('admin.actions.reinstall')) }}
+        {{ render_nav_item('admin.actions.reset', _('admin.actions.reset')) }}
+        {{ render_nav_item('admin.actions.update', _('admin.actions.update')) }}
+        {{ render_nav_item('admin.actions.viewlogs', _('admin.actions.viewlogs')) }}
+      </ul>
+    </div>
+
+
+    <a href="https://github.com/hiddify/hiddify-config/issues" target="_blank"
+      class="nav-link">{{_('admin.menu.support')}}</a>
+  </div>
+
+
+</nav>
+<!-- /.navbar -->
+
+
+
+
+<!-- Main Sidebar Container -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <!-- Brand Logo -->
+  <a href="https://github.com/hiddify/hiddify-config/wiki" class="brand-link">
+    <img src="{{url_for('static',filename='images/hiddify.png')}}" alt="AdminLTE Logo"
+      class="brand-image img-circle elevation-3" style="opacity: .8">
+    <span class="brand-text font-weight-light">{{_("master.page-title")}}</span>
+  </a>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div>
+      <!-- Sidebar user panel (optional) -->
+
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <div class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+                 with font-awesome or any other icon font library -->
           {{ render_nav_item('admin.admin.index', _('admin.menu.home')) }}
           {{ render_nav_item('admin.domain.index_view', _('admin.menu.domain')) }}
           {{ render_nav_item('admin.user.index_view', _('admin.menu.user')) }}
+          {{ render_nav_item('admin.proxy.index_view', _('admin.menu.proxy')) }}
           {{ render_nav_item('admin.config', _('admin.menu.config')) }}
-          
-          
-          
-            <a href="https://github.com/hiddify/hiddify-config/issues" target="_blank" class="nav-link">{{_('admin.menu.support')}}</a>
+
+
+
+          <a href="https://github.com/hiddify/hiddify-config/issues" target="_blank"
+            class="nav-link">{{_('admin.menu.support')}}</a>
+
+          <li class="nav-item">
+            <a id= href="#"
+              class="nav-link">{{_('admin.actions.title')}} <i class="right fas fa-angle-left"></i></a>
+            <ul class="nav nav-treeview">
+              {{ render_nav_item('admin.actions.status', _('admin.actions.status'), _use_li=True) }}
+              {{ render_nav_item('admin.actions.apply_configs', _('admin.actions.apply_configs'), _use_li=True) }}
+              {{ render_nav_item('admin.actions.reinstall', _('admin.actions.reinstall'), _use_li=True) }}
+              {{ render_nav_item('admin.actions.reset', _('admin.actions.reset'), _use_li=True) }}
+              {{ render_nav_item('admin.actions.update', _('admin.actions.update'), _use_li=True) }}
+              {{ render_nav_item('admin.actions.viewlogs', _('admin.actions.viewlogs'), _use_li=True) }}
+            </ul>
           </div>
-        
-    
+        </div>
       </nav>
-      <!-- /.navbar -->
-    
-
-      
-
-  <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-      <img src="{{url_for('static',filename='images/hiddify.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-           style="opacity: .8">
-      <span class="brand-text font-weight-light">{{_("master.page-title")}}</span>
-    </a>
-
-    <!-- Sidebar -->
-    <div class="sidebar">
-      <div>
-        <!-- Sidebar user panel (optional) -->
-      
-
-        <!-- Sidebar Menu -->
-        <nav class="mt-2">
-          <div class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <!-- Add icons to the links using the .nav-icon class
-                 with font-awesome or any other icon font library -->
-                 {{ render_nav_item('admin.admin.index', _('admin.menu.home')) }}
-                 {{ render_nav_item('admin.domain.index_view', _('admin.menu.domain')) }}
-                 {{ render_nav_item('admin.user.index_view', _('admin.menu.user')) }}
-                 {{ render_nav_item('admin.config', _('admin.menu.config')) }}
-                 
-                 
-                 
-                   <a href="https://github.com/hiddify/hiddify-config/issues" target="_blank" class="nav-link">{{_('admin.menu.support')}}</a>
-            </div>
-        </nav>
-        <!-- /.sidebar-menu -->
-      </div>
+      <!-- /.sidebar-menu -->
     </div>
-    <!-- /.sidebar -->
-  </aside>
+  </div>
+  <!-- /.sidebar -->
+</aside>
 
 {% endblock %}
-
-

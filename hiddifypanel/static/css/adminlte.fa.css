@@ -62,6 +62,7 @@
 
 body {
     font-family: 'Vazir', sans-serif !important;
+    text-align:justify;
 }
 
 .ltr {
@@ -423,4 +424,15 @@ ul {
     .sidebar-open .main-sidebar, .sidebar-open .main-sidebar::before {
         margin-right: 0;
     }
+}
+
+.card-title{
+    float:right;
+}
+.card-header > .card-tools{
+ float: left;   
+}
+
+.main-header .nav-link {
+    text-align: right;
 }

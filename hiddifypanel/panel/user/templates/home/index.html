@@ -1,7 +1,19 @@
 {% extends "master.html" %}
 {% block title %}{{_('user.home.title')}}{% endblock %}
 
-
+{% block body_header %}
+<div class="row mb-2">
+    <div class="col-sm-6">
+      <h1 class="m-0"> <a href="https://github.com/hiddify/hiddify-config/wiki">{{_("master.page-title")}}</a></h1>
+    </div><!-- /.col -->
+    <div class="col-sm-6 d-none">
+      <ol class="breadcrumb float-sm-right">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item active">Starter Page</li>
+      </ol>
+    </div><!-- /.col -->
+  </div><!-- /.row -->
+{%endblock%}
 
 {% block body %}
 
@@ -377,6 +389,30 @@
  }
     });
   });
+
+  % if get_locale()=='fa'
+  function ConvertNumberToPersion() {
+          let persian = { 0: '۰', 1: '۱', 2: '۲', 3: '۳', 4: '۴', 5: '۵', 6: '۶', 7: '۷', 8: '۸', 9: '۹' };
+          function traverse(el) {
+//            console.log(el.tagName)
+            if (el.tagName=="PRE" || el.tagName=="STYLE" || el.tagName=="SCRIPT")return
+              if (el.nodeType == 3) {
+                  var list = el.data.match(/[0-9]/g);
+                  if (list != null && list.length != 0) {
+                      for (var i = 0; i < list.length; i++)
+                          el.data = el.data.replace(list[i], persian[list[i]]);
+                  }
+              }
+              for (var i = 0; i < el.childNodes.length; i++) {
+                  
+                  traverse(el.childNodes[i]);
+              }
+          }
+          traverse(document.body);
+      }
+  
+    ConvertNumberToPersion();
+    %endif
 </script>
 
 {% endblock %}

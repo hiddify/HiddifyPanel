@@ -1,0 +1,26 @@
+% for type in link_maker.all_proxies()
+{% set pinfo=link_maker.proxy_info(type) %}
+# {{type}} {{domain}}
+{{pinfo['url']}}
+% endfor
+
+
+
+
+% if hconfigs[ConfigEnum.http_proxy]
+
+# 
+# HTTP Not Secure
+# HTTP Not Secure
+# HTTP Not Secure
+# HTTP Not Secure
+# HTTP Not Secure
+
+% for type in link_maker.all_proxies()
+{% set pinfo=link_maker.proxy_info(type,port=80,security="http") %}
+% if pinfo!=None
+# HTTP {{type}} {{domain}}
+{{pinfo['url']}}
+% endif
+            % endfor
+            % endif

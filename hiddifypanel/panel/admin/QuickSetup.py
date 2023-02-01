@@ -33,14 +33,13 @@ def save():
                 return render_template('quick_setup.html', form=form,lang_form=lang_form)                
 
         if form.validate_on_submit():
-            
-            flash(_('config.validation-success'), 'success')
             data=[Domain(domain=form.domain.data,mode=DomainType.direct),]
             db.session.bulk_save_objects(data)
             BoolConfig.query.filter(BoolConfig.key==ConfigEnum.telegram_enable).first().value=form.enable_telegram.data
             BoolConfig.query.filter(BoolConfig.key==ConfigEnum.vmess_enable).first().value=form.enable_vmess.data
             db.session.commit()
-        #     return redirect(url_for('admin.config'))
+            apply_btn=f"<a href='{url_for('admin.actions.apply_configs')}' class='btn btn-primary'>"+_("admin.config.apply_configs")+"</a>"
+            flash(Markup(_('config.validation-success',link=apply_btn)), 'success')
         else:
             flash(_('config.validation-error'), 'danger')
         return render_template('quick_setup.html', form=form,lang_form=lang_form)
