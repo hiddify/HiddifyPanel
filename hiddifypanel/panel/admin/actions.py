@@ -87,7 +87,7 @@ def status():
     domain=o.hostname
     subprocess.Popen(f"{config.HIDDIFY_CONFIG_PATH}/status.sh",cwd=f"{config.HIDDIFY_CONFIG_PATH}",start_new_session=True)
     return render_template("result.html",data={
-                        "out-type":"success",
+                        "out-type":"info",
                         "out-msg":f"see the log in the bellow screen",
                         "log-path":f"reverselog/status.log"
     })

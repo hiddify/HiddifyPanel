@@ -2,7 +2,9 @@ flask
 flask-admin
 flask-simplelogin
 bootstrap-flask
-flask-sqlalchemy
+flask_sqlalchemy 
+sqlalchemy==1.4.46
+flask_adminlte3
 sqlalchemy-serializer
 dynaconf
 click

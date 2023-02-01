@@ -1,9 +1,10 @@
 from dynaconf import FlaskDynaconf
 from flask import Flask
-from flask_bootstrap import Bootstrap5, SwitchField
+import flask_bootstrap 
 from flask_babelex import Babel
 from hiddifypanel.panel.database import db
 # from flask_babel import Babel
+import hiddifypanel
 
 
 # from werkzeug.middleware.proxy_fix import ProxyFix
@@ -12,9 +13,22 @@ def create_app(**config):
     app = Flask(__name__,static_url_path="/<proxy_path>/static/",instance_relative_config=True)
     FlaskDynaconf(app)  # config managed by Dynaconf
     app.jinja_env.line_statement_prefix = '%'
-    app.config.load_extensions(
-        "EXTENSIONS"
-    )  # Load extensions from settings.toml
+    flask_bootstrap.Bootstrap4(app)
+    hiddifypanel.panel.database.init_app(app)
+    hiddifypanel.panel.admin.init_app(app)
+    hiddifypanel.panel.user.init_app(app)
+    hiddifypanel.panel.cli.init_app(app)
+    hiddifypanel.panel.webui.init_app(app)
+    hiddifypanel.panel.restapi.init_app(app)
+    # app.config.load_extensions(
+    #     ["flask_bootstrap:Bootstrap4",
+    # "hiddifypanel.panel.database:init_app",
+    # "hiddifypanel.panel.user:init_app",
+    # "hiddifypanel.panel.admin:init_app",
+    # "hiddifypanel.panel.cli:init_app",
+    # "hiddifypanel.panel.webui:init_app",
+    # "hiddifypanel.panel.restapi:init_app",]
+    # )  # Load extensions from settings.toml
     app.config.update(config)  # Override with passed config
 
     babel = Babel(app)
