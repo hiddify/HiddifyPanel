@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-31 12:47+0100\n"
+"POT-Creation-Date: 2023-02-01 19:34+0100\n"
 "PO-Revision-Date: 2023-01-31 12:45+0100\n"
 "Last-Translator: hidden u\n"
 "Language: en_US\n"
@@ -27,6 +27,7 @@ msgstr "Mode"
 
 # | msgid "Apply Configs"
 #: hiddifypanel/panel/admin/FullConfigAdmin.py:51
+#: hiddifypanel/panel/admin/ProxyAdmin.py:96
 #: hiddifypanel/panel/admin/QuickSetup.py:41
 msgid "admin.config.apply_configs"
 msgstr "Apply Configs"
@@ -35,6 +36,7 @@ msgstr "Apply Configs"
 # | "Configs have changed successfully. Click %(link)s to apply the configs. "
 # | "It may takes 2 minutes to apply."
 #: hiddifypanel/panel/admin/FullConfigAdmin.py:52
+#: hiddifypanel/panel/admin/ProxyAdmin.py:97
 #: hiddifypanel/panel/admin/QuickSetup.py:42
 msgid "config.validation-success"
 msgstr ""
@@ -43,6 +45,7 @@ msgstr ""
 
 # | msgid "One of the fields has encountered with error"
 #: hiddifypanel/panel/admin/FullConfigAdmin.py:55
+#: hiddifypanel/panel/admin/ProxyAdmin.py:100
 #: hiddifypanel/panel/admin/QuickSetup.py:44
 msgid "config.validation-error"
 msgstr "One of the fields has encountered with error"
@@ -128,10 +131,34 @@ msgid "config.port 443 is required"
 msgstr "Port 443 should always be presented. "
 
 #: hiddifypanel/panel/admin/FullConfigAdmin.py:158
+#: hiddifypanel/panel/admin/ProxyAdmin.py:34
+#: hiddifypanel/panel/admin/ProxyAdmin.py:73
 #: hiddifypanel/panel/admin/QuickSetup.py:50
 #: hiddifypanel/panel/admin/QuickSetup.py:68
 msgid "Submit"
 msgstr "Submit"
+
+# | msgid "Name"
+#: hiddifypanel/panel/admin/ProxyAdmin1.py:16
+#, fuzzy
+msgid "proxy.name"
+msgstr "Name"
+
+#: hiddifypanel/panel/admin/ProxyAdmin1.py:17
+msgid "proxy.protocol"
+msgstr ""
+
+#: hiddifypanel/panel/admin/ProxyAdmin1.py:18
+msgid "proxy.transport"
+msgstr ""
+
+#: hiddifypanel/panel/admin/ProxyAdmin1.py:19
+msgid "proxy.l3"
+msgstr ""
+
+#: hiddifypanel/panel/admin/ProxyAdmin1.py:20
+msgid "proxy.cdn"
+msgstr ""
 
 # | msgid "Change language success"
 #: hiddifypanel/panel/admin/QuickSetup.py:30
@@ -429,14 +456,14 @@ msgstr "You can select different ports of the system in the section"
 
 # | msgid "Allow HTTP connection"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.http_proxy.label"
+msgid "config.http_proxy_enable.label"
 msgstr "Allow HTTP connection"
 
 # | msgid ""
 # | "By allowing this, your users can connect to the system with unencrypted "
 # | "http port. (not recommended)"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.http_proxy.description"
+msgid "config.http_proxy_enable.description"
 msgstr ""
 "By allowing this, your users can connect to the system with unencrypted "
 "http port. (not recommended)"
@@ -691,23 +718,23 @@ msgstr ""
 
 # | msgid "Enable HTTP domain fronting"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.domain_fronting_http.label"
+msgid "config.domain_fronting_http_enable.label"
 msgstr "Enable HTTP domain fronting"
 
 # | msgid ""
 # | "Enabling HTTP domain fronting causes your domain to be block quickly."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.domain_fronting_http.description"
+msgid "config.domain_fronting_http_enable.description"
 msgstr "Enabling HTTP domain fronting causes your domain to be block quickly."
 
 # | msgid "Enable TLS domain fronting"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.domain_fronting_tls.label"
+msgid "config.domain_fronting_tls_enable.label"
 msgstr "Enable TLS domain fronting"
 
 # | msgid "It will use port 443 to connect to CDN"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.domain_fronting_tls.description"
+msgid "config.domain_fronting_tls_enable.description"
 msgstr "It will use port 443 to connect to CDN"
 
 # | msgid "Admin Settings"
@@ -747,6 +774,18 @@ msgstr "RAM Usage Chart"
 msgid "admin.network_chart"
 msgstr "Network Usage"
 
+# | msgid "Apply Configs"
+#: hiddifypanel/panel/admin/templates/proxy.html:11
+#, fuzzy
+msgid "admin.proxy.global_config"
+msgstr "Apply Configs"
+
+# | msgid "Apply Configs"
+#: hiddifypanel/panel/admin/templates/proxy.html:21
+#, fuzzy
+msgid "admin.proxy.detailed_config"
+msgstr "Apply Configs"
+
 # | msgid "QuickSetup"
 #: hiddifypanel/panel/admin/templates/quick_setup.html:35
 msgid "admin.quicksetup.title"
@@ -763,66 +802,87 @@ msgstr ""
 
 # | msgid "All Configs"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:1
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:1
 msgid "user.home.tool.all-configs"
 msgstr "All Configs"
 
 # | msgid "Name and Link"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:7
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:7
 msgid "user.home.allconfig.name"
 msgstr "Name and Link"
 
 # | msgid "Type"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:8
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:8
 msgid "user.home.allconfig.type"
 msgstr "Type"
 
 # | msgid "Protocol"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:9
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:9
 msgid "user.home.allconfig.protocol"
 msgstr "Protocol"
 
 # | msgid "Transport"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:10
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:10
 msgid "user.home.allconfig.transport"
 msgstr "Transport"
 
 # | msgid "Security"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:11
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:11
 msgid "user.home.allconfig.security"
 msgstr "Security"
 
 # | msgid "Hiddify Configs"
-#: hiddifypanel/panel/user/templates/home/all-configs.html:19
+#: hiddifypanel/panel/user/templates/home/all-configs.html:20
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:19
 msgid "user.home.allconfig.hiddify-configs"
 msgstr "Hiddify Configs"
 
 # | msgid "All"
-#: hiddifypanel/panel/user/templates/home/all-configs.html:22
 #: hiddifypanel/panel/user/templates/home/all-configs.html:23
 #: hiddifypanel/panel/user/templates/home/all-configs.html:24
 #: hiddifypanel/panel/user/templates/home/all-configs.html:25
-#: hiddifypanel/panel/user/templates/home/all-configs.html:34
-#: hiddifypanel/panel/user/templates/home/all-configs.html:36
+#: hiddifypanel/panel/user/templates/home/all-configs.html:26
+#: hiddifypanel/panel/user/templates/home/all-configs.html:35
 #: hiddifypanel/panel/user/templates/home/all-configs.html:37
-#: hiddifypanel/panel/user/templates/home/all-configs.html:46
+#: hiddifypanel/panel/user/templates/home/all-configs.html:38
 #: hiddifypanel/panel/user/templates/home/all-configs.html:47
 #: hiddifypanel/panel/user/templates/home/all-configs.html:48
 #: hiddifypanel/panel/user/templates/home/all-configs.html:49
+#: hiddifypanel/panel/user/templates/home/all-configs.html:50
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:22
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:23
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:24
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:25
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:34
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:36
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:37
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:46
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:47
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:48
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:49
 msgid "all"
 msgstr "All"
 
 # | msgid "Clash Configs"
-#: hiddifypanel/panel/user/templates/home/all-configs.html:31
+#: hiddifypanel/panel/user/templates/home/all-configs.html:32
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:31
 msgid "user.home.allconfig.clash-configs"
 msgstr "Clash Configs"
 
 # | msgid "Except vless"
-#: hiddifypanel/panel/user/templates/home/all-configs.html:35
+#: hiddifypanel/panel/user/templates/home/all-configs.html:36
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:35
 msgid "user.home.allconfigs.expect_vless"
 msgstr "Except vless"
 
 # | msgid "Subscription Link"
-#: hiddifypanel/panel/user/templates/home/all-configs.html:43
+#: hiddifypanel/panel/user/templates/home/all-configs.html:44
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:43
 msgid "user.home.allconfig.link-configs"
 msgstr "Subscription Link"
 
@@ -1042,7 +1102,6 @@ msgstr "Copy"
 # | "    Some browsers might already have this setting enabled.\n"
 # | "    <h5>​​Mozilla Firefox</h5>\n"
 # | "    Select the <b>menu</b> button > <b>Settings</b>.In the General menu,
-# "
 # | "scroll down to access <b>Network Settings</b>. Select <b>Settings</b>. "
 # | "Select <b>Enable DNS over HTTPS</b>.\n"
 # | "    ​<h5>​Google Chrome</h5>\n"
@@ -1100,7 +1159,7 @@ msgstr "Telegram"
 
 # | msgid "Hiddify"
 #: hiddifypanel/panel/user/templates/home/index.html:7
-#: hiddifypanel/templates/admin-layout.html:57
+#: hiddifypanel/templates/admin-layout.html:58
 #: hiddifypanel/templates/master.html:6
 msgid "master.page-title"
 msgstr "Hiddify"
@@ -1263,7 +1322,6 @@ msgstr ""
 # "
 # | "it means that this ip is so called dirty on your ISP.\n"
 # | "If the speed was low without a proxy, don't waste your time to test this
-# "
 # | "proxy.\n"
 # | "Otherwise, test with different proxies of this site and if the speed is "
 # | "similar to the speed without the proxy, then you have found the best "
@@ -1366,7 +1424,6 @@ msgstr "Linux"
 # | "    </div>\n"
 # | "    <div class=\"card-body\">\n"
 # | "        HiddifyDesktop is an open source fork of Clash that supports more
-# "
 # | "protocol.\n"
 # | "        <br>\n"
 # | "        Its source codes exist in\n"
@@ -1386,7 +1443,6 @@ msgstr "Linux"
 # | "</div>\n"
 # | "Now, according to your need, you can click on one of the buttons. By "
 # | "viewing the window in your browser, just click on the Open HiddifyDesktop
-# "
 # | "option to automatically add the server link to HiddifyDesktop.\n"
 #: hiddifypanel/panel/user/templates/home/windows.html:33
 msgid "user.home.windows.intro"
@@ -1431,73 +1487,80 @@ msgstr ""
 
 # | msgid "Admin"
 #: hiddifypanel/templates/admin-layout.html:22
-#: hiddifypanel/templates/admin-layout.html:71
+#: hiddifypanel/templates/admin-layout.html:72
 msgid "admin.menu.home"
 msgstr "Admin"
 
 # | msgid "Domains"
 #: hiddifypanel/templates/admin-layout.html:23
-#: hiddifypanel/templates/admin-layout.html:72
+#: hiddifypanel/templates/admin-layout.html:73
 msgid "admin.menu.domain"
 msgstr "Domains"
 
 # | msgid "Users"
 #: hiddifypanel/templates/admin-layout.html:24
-#: hiddifypanel/templates/admin-layout.html:73
+#: hiddifypanel/templates/admin-layout.html:74
 msgid "admin.menu.user"
 msgstr "Users"
 
-# | msgid "Settings"
+# | msgid "Users"
 #: hiddifypanel/templates/admin-layout.html:25
-#: hiddifypanel/templates/admin-layout.html:74
+#: hiddifypanel/templates/admin-layout.html:75
+#, fuzzy
+msgid "admin.menu.proxy"
+msgstr "Users"
+
+# | msgid "Settings"
+#: hiddifypanel/templates/admin-layout.html:26
+#: hiddifypanel/templates/admin-layout.html:76
 msgid "admin.menu.config"
 msgstr "Settings"
 
 # | msgid "Actions"
-#: hiddifypanel/templates/admin-layout.html:28
-#: hiddifypanel/templates/admin-layout.html:83
+#: hiddifypanel/templates/admin-layout.html:29
+#: hiddifypanel/templates/admin-layout.html:85
 msgid "admin.actions.title"
 msgstr "Actions"
 
 # | msgid "Status"
-#: hiddifypanel/templates/admin-layout.html:30
-#: hiddifypanel/templates/admin-layout.html:85
+#: hiddifypanel/templates/admin-layout.html:31
+#: hiddifypanel/templates/admin-layout.html:87
 msgid "admin.actions.status"
 msgstr "Status"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/templates/admin-layout.html:31
-#: hiddifypanel/templates/admin-layout.html:86
+#: hiddifypanel/templates/admin-layout.html:32
+#: hiddifypanel/templates/admin-layout.html:88
 msgid "admin.actions.apply_configs"
 msgstr "Apply Configs"
 
 # | msgid "Reinstall System"
-#: hiddifypanel/templates/admin-layout.html:32
-#: hiddifypanel/templates/admin-layout.html:87
+#: hiddifypanel/templates/admin-layout.html:33
+#: hiddifypanel/templates/admin-layout.html:89
 msgid "admin.actions.reinstall"
 msgstr "Reinstall System"
 
 # | msgid "Restart system"
-#: hiddifypanel/templates/admin-layout.html:33
-#: hiddifypanel/templates/admin-layout.html:88
+#: hiddifypanel/templates/admin-layout.html:34
+#: hiddifypanel/templates/admin-layout.html:90
 msgid "admin.actions.reset"
 msgstr "Restart system"
 
 # | msgid "Update System"
-#: hiddifypanel/templates/admin-layout.html:34
-#: hiddifypanel/templates/admin-layout.html:89
+#: hiddifypanel/templates/admin-layout.html:35
+#: hiddifypanel/templates/admin-layout.html:91
 msgid "admin.actions.update"
 msgstr "Update System"
 
 # | msgid "View Logs"
-#: hiddifypanel/templates/admin-layout.html:35
-#: hiddifypanel/templates/admin-layout.html:90
+#: hiddifypanel/templates/admin-layout.html:36
+#: hiddifypanel/templates/admin-layout.html:92
 msgid "admin.actions.viewlogs"
 msgstr "View Logs"
 
 # | msgid "Support"
-#: hiddifypanel/templates/admin-layout.html:41
-#: hiddifypanel/templates/admin-layout.html:79
+#: hiddifypanel/templates/admin-layout.html:42
+#: hiddifypanel/templates/admin-layout.html:81
 msgid "admin.menu.support"
 msgstr "Support"
 

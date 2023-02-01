@@ -1,7 +1,7 @@
 from flask import g
 import enum
-from hiddifypanel.models import User,Domain,BoolConfig,StrConfig,DomainType,ConfigEnum,get_hconfigs,get_hdomains,hconfig
-
+from hiddifypanel.models import User,Domain,BoolConfig,StrConfig,DomainType,ConfigEnum,get_hconfigs,get_hdomains,hconfig,Proxy
+import yaml
 def all_proxies():
     # all_cfg= [
     #     'WS Fake vless',
@@ -43,84 +43,86 @@ def all_proxies():
     return all_cfg
 
 def proxy_info(name, mode="tls"):
+    return "error"
+# def proxy_info(name, mode="tls"):
     
-    domain = g.domain
-    hconfigs=get_hconfigs()
-    if mode=="tls":
-        port=443
-        security="tls"
-    elif mode =="http":
-        security = 'http'
-        port == 80
-    elif mode =="kcp":
-        security = 'kcp'
-        port == hconfig(ConfigEnum.kcp_ports).split(",")[0]
+#     domain = g.domain
+#     hconfigs=get_hconfigs()
+#     if mode=="tls":
+#         port=443
+#         security="tls"
+#     elif mode =="http":
+#         security = 'http'
+#         port == 80
+#     elif mode =="kcp":
+#         security = 'kcp'
+#         port == hconfig(ConfigEnum.kcp_ports).split(",")[0]
 
-    name_enc = name.replace(" ", "_")+f'_{security}_{domain}_{port}'
-    if hconfig(ConfigEnum.domain_fronting_domain) and  ((security=="http" and hconfig(ConfigEnum.domain_fronting_http)) or (security=="tls" and hconfig(ConfigEnum.domain_fronting_tls))):
-        if name == 'WS Fake vless':
-            return {'name':name_enc,'name':name_enc,'transport': 'ws', 'proto': 'vless', 'security': security, 'port': port, 'mode': 'Fake', 'url': f'vless://{g.user_uuid}@{hconfigs[ConfigEnum.fake_cdn_domain]}:{port}?security={security}&sni={hconfigs[ConfigEnum.fake_cdn_domain]}&type=ws&host={domain}&path=/{hconfigs[ConfigEnum.proxy_path]}/vlessws#{name_enc}'}
+#     name_enc = name.replace(" ", "_")+f'_{security}_{domain}_{port}'
+#     if hconfig(ConfigEnum.domain_fronting_domain) and  ((security=="http" and hconfig(ConfigEnum.domain_fronting_http_enable)) or (security=="tls" and hconfig(ConfigEnum.domain_fronting_tls_enable))):
+#         if name == 'WS Fake vless':
+#             return {'name':name_enc,'name':name_enc,'transport': 'ws', 'proto': 'vless', 'security': security, 'port': port, 'mode': 'Fake', 'url': f'vless://{g.user_uuid}@{hconfigs[ConfigEnum.fake_cdn_domain]}:{port}?security={security}&sni={hconfigs[ConfigEnum.fake_cdn_domain]}&type=ws&host={domain}&path=/{hconfigs[ConfigEnum.proxy_path]}/vlessws#{name_enc}'}
 
-        # if security!="http" and name == 'WS Fake trojan':
-        #     return {'name':name_enc,'transport': 'ws', 'proto': 'trojan', 'security': security, 'port': port, 'mode': 'Fake', 'url': f'trojan://{g.user_uuid}@{hconfigs[ConfigEnum.fake_cdn_domain]}:{port}?security={security}&sni={hconfigs[ConfigEnum.fake_cdn_domain]}&type=ws&host={domain}&path=/{hconfigs[ConfigEnum.proxy_path]}/trojanws#{name_enc}'}
-        if name == 'WS Fake vmess':
-            return {'name':name_enc,'transport': 'ws', 'proto': 'vmess', 'security': security, 'port': port, 'mode': 'Fake', 'url': pbase64(f'vmess://{{"v":"2", "ps":"{name_enc}", "add":"{domain}", "port":"{port}", "id":"{g.user_uuid}", "aid":"0", "scy":"auto", "net":"ws", "type":"none", "host":"{domain}", "path":"/{hconfigs[ConfigEnum.proxy_path]}/vmessws", "tls":"{security}", "sni":"{hconfigs[ConfigEnum.fake_cdn_domain]}"}}')}
-        # if name == 'grpc Fake vless':
-        #     return {'name':name_enc,'transport': 'grpc', 'proto': 'vless', 'security': security, 'port': port, 'mode': 'Fake', 'url': f'vless://{g.user_uuid}@{hconfigs[ConfigEnum.fake_cdn_domain]}:{port}?security={security}&sni={domain}&type=grpc&serviceName={hconfigs[ConfigEnum.proxy_path]}-vlgrpc&mode=multi#{name_enc}'}
+#         # if security!="http" and name == 'WS Fake trojan':
+#         #     return {'name':name_enc,'transport': 'ws', 'proto': 'trojan', 'security': security, 'port': port, 'mode': 'Fake', 'url': f'trojan://{g.user_uuid}@{hconfigs[ConfigEnum.fake_cdn_domain]}:{port}?security={security}&sni={hconfigs[ConfigEnum.fake_cdn_domain]}&type=ws&host={domain}&path=/{hconfigs[ConfigEnum.proxy_path]}/trojanws#{name_enc}'}
+#         if name == 'WS Fake vmess':
+#             return {'name':name_enc,'transport': 'ws', 'proto': 'vmess', 'security': security, 'port': port, 'mode': 'Fake', 'url': pbase64(f'vmess://{{"v":"2", "ps":"{name_enc}", "add":"{domain}", "port":"{port}", "id":"{g.user_uuid}", "aid":"0", "scy":"auto", "net":"ws", "type":"none", "host":"{domain}", "path":"/{hconfigs[ConfigEnum.proxy_path]}/vmessws", "tls":"{security}", "sni":"{hconfigs[ConfigEnum.fake_cdn_domain]}"}}')}
+#         # if name == 'grpc Fake vless':
+#         #     return {'name':name_enc,'transport': 'grpc', 'proto': 'vless', 'security': security, 'port': port, 'mode': 'Fake', 'url': f'vless://{g.user_uuid}@{hconfigs[ConfigEnum.fake_cdn_domain]}:{port}?security={security}&sni={domain}&type=grpc&serviceName={hconfigs[ConfigEnum.proxy_path]}-vlgrpc&mode=multi#{name_enc}'}
 
-        # if security!="http" and name == 'grpc Fake trojan':
-        #     return {'name':name_enc,'transport': 'grpc', 'proto': 'trojan', 'security': security, 'port': port, 'mode': 'Fake', 'url': f'trojan://{g.user_uuid}@{hconfigs[ConfigEnum.fake_cdn_domain]}:{port}?security={security}&sni={domain}&type=grpc&serviceName={hconfigs[ConfigEnum.proxy_path]}-trgrpc&mode=multi#{name_enc}'}
+#         # if security!="http" and name == 'grpc Fake trojan':
+#         #     return {'name':name_enc,'transport': 'grpc', 'proto': 'trojan', 'security': security, 'port': port, 'mode': 'Fake', 'url': f'trojan://{g.user_uuid}@{hconfigs[ConfigEnum.fake_cdn_domain]}:{port}?security={security}&sni={domain}&type=grpc&serviceName={hconfigs[ConfigEnum.proxy_path]}-trgrpc&mode=multi#{name_enc}'}
 
-        # if name == 'grpc Fake vmess':
-        #     return {'name':name_enc,'transport': 'grpc', 'proto': 'vmess', 'security': security, 'port': port, 'mode': 'Fake', 'url': pbase64(f'vmess://{{"v":"2", "ps":"{name_enc}", "add":"{hconfigs[ConfigEnum.fake_cdn_domain]}", "port":"{port}", "id":"{g.user_uuid}", "aid":"0", "scy":"auto", "net":"grpc", "type":"multi", "host":"{domain}", "path":"{hconfigs[ConfigEnum.proxy_path]}-vmgrpc", "tls":"{security}", "sni":"{hconfigs[ConfigEnum.fake_cdn_domain]}"}}')}
+#         # if name == 'grpc Fake vmess':
+#         #     return {'name':name_enc,'transport': 'grpc', 'proto': 'vmess', 'security': security, 'port': port, 'mode': 'Fake', 'url': pbase64(f'vmess://{{"v":"2", "ps":"{name_enc}", "add":"{hconfigs[ConfigEnum.fake_cdn_domain]}", "port":"{port}", "id":"{g.user_uuid}", "aid":"0", "scy":"auto", "net":"grpc", "type":"multi", "host":"{domain}", "path":"{hconfigs[ConfigEnum.proxy_path]}-vmgrpc", "tls":"{security}", "sni":"{hconfigs[ConfigEnum.fake_cdn_domain]}"}}')}
 
-    # if hconfig(ConfigEnum.domain_fronting_http):
-    #     if name == 'http Fake vless':
-    #         return {'name':name_enc,'transport': 'ws', 'proto': 'vless', 'security': 'http', 'port': 80, 'mode': 'Fake', 'url': f'vless://{g.user_uuid}@{hconfigs[ConfigEnum.fake_cdn_domain]}:80?security=none&type=ws&host={domain}&path=/{hconfigs[ConfigEnum.proxy_path]}/vlessws#{name_enc}'}
-    #     if name == 'http Fake vmess':
-    #         return {'name':name_enc,'transport': 'ws', 'proto': 'vmess', 'security': 'http', 'port': 80, 'mode': 'Fake', 'url': pbase64(f'vmess://{{"v":"2", "ps":"{name_enc}", "add":"{hconfigs[ConfigEnum.domain_fronting_domain]}", "port":"{port}", "id":"{g.user_uuid}", "aid":"0", "scy":"auto", "net":"ws", "type":"none", "host":"{domain}", "path":"/{hconfigs[ConfigEnum.proxy_path]}/vmessws"}}')}
-    if security=="http" and not hconfig(ConfigEnum.http_proxy):
-        return None
-    if security!="http" and  name == "XTLS direct vless":
-        return {'name':name_enc,'transport': 'tcp', 'proto': 'vless', 'security': 'xtls', 'port': port, 'mode': 'direct', 'url': f'vless://{g.user_uuid}@{{direct_host}}:{port}?flow=xtls-rprx-direct&security=xtls&alpn=h2&sni={domain}&type=tcp#{name_enc}'}
-    if name == "WS direct vless":
-        return {'name':name_enc,'transport': 'ws', 'proto': 'vless', 'security': security, 'port': port, 'mode': 'direct', 'url': f'vless://{g.user_uuid}@{{direct_host}}:{port}?security={security}&sni={domain}&type=ws&alpn=h2&path=/{hconfigs[ConfigEnum.proxy_path]}/vlessws#{name_enc}'}
-    if security!="http" and name == "WS direct trojan":
-        return {'name':name_enc,'transport': 'ws', 'proto': 'trojan', 'security': security, 'port': port, 'mode': 'direct', 'url': f'trojan://{g.user_uuid}@{{direct_host}}:{port}?security={security}&sni={domain}&type=ws&alpn=h2&path=/{hconfigs[ConfigEnum.proxy_path]}/trojanws#{name_enc}'}
-    if name == "WS direct vmess":
-        return {'name':name_enc,'transport': 'ws', 'proto': 'vmess', 'security': security, 'port': port, 'mode': 'direct', 'url': pbase64(f'vmess://{{"v":"2", "ps":"{name_enc}", "add":"{{direct_host}}", "port":"{port}", "id":"{g.user_uuid}", "aid":"0", "scy":"auto", "net":"ws", "type":"none", "host":"", "path":"/{hconfigs[ConfigEnum.proxy_path]}/vmessws", "tls":"{security}", "sni":"{domain}","alpn":"h2"}}')}
+#     # if hconfig(ConfigEnum.domain_fronting_http_enable):
+#     #     if name == 'http Fake vless':
+#     #         return {'name':name_enc,'transport': 'ws', 'proto': 'vless', 'security': 'http', 'port': 80, 'mode': 'Fake', 'url': f'vless://{g.user_uuid}@{hconfigs[ConfigEnum.fake_cdn_domain]}:80?security=none&type=ws&host={domain}&path=/{hconfigs[ConfigEnum.proxy_path]}/vlessws#{name_enc}'}
+#     #     if name == 'http Fake vmess':
+#     #         return {'name':name_enc,'transport': 'ws', 'proto': 'vmess', 'security': 'http', 'port': 80, 'mode': 'Fake', 'url': pbase64(f'vmess://{{"v":"2", "ps":"{name_enc}", "add":"{hconfigs[ConfigEnum.domain_fronting_domain]}", "port":"{port}", "id":"{g.user_uuid}", "aid":"0", "scy":"auto", "net":"ws", "type":"none", "host":"{domain}", "path":"/{hconfigs[ConfigEnum.proxy_path]}/vmessws"}}')}
+#     if security=="http" and not hconfig(ConfigEnum.http_proxy_enable):
+#         return None
+#     if security!="http" and  name == "XTLS direct vless":
+#         return {'name':name_enc,'transport': 'tcp', 'proto': 'vless', 'security': 'xtls', 'port': port, 'mode': 'direct', 'url': f'vless://{g.user_uuid}@{{direct_host}}:{port}?flow=xtls-rprx-direct&security=xtls&alpn=h2&sni={domain}&type=tcp#{name_enc}'}
+#     if name == "WS direct vless":
+#         return {'name':name_enc,'transport': 'ws', 'proto': 'vless', 'security': security, 'port': port, 'mode': 'direct', 'url': f'vless://{g.user_uuid}@{{direct_host}}:{port}?security={security}&sni={domain}&type=ws&alpn=h2&path=/{hconfigs[ConfigEnum.proxy_path]}/vlessws#{name_enc}'}
+#     if security!="http" and name == "WS direct trojan":
+#         return {'name':name_enc,'transport': 'ws', 'proto': 'trojan', 'security': security, 'port': port, 'mode': 'direct', 'url': f'trojan://{g.user_uuid}@{{direct_host}}:{port}?security={security}&sni={domain}&type=ws&alpn=h2&path=/{hconfigs[ConfigEnum.proxy_path]}/trojanws#{name_enc}'}
+#     if name == "WS direct vmess":
+#         return {'name':name_enc,'transport': 'ws', 'proto': 'vmess', 'security': security, 'port': port, 'mode': 'direct', 'url': pbase64(f'vmess://{{"v":"2", "ps":"{name_enc}", "add":"{{direct_host}}", "port":"{port}", "id":"{g.user_uuid}", "aid":"0", "scy":"auto", "net":"ws", "type":"none", "host":"", "path":"/{hconfigs[ConfigEnum.proxy_path]}/vmessws", "tls":"{security}", "sni":"{domain}","alpn":"h2"}}')}
 
-    if name == "WS CDN vless":
-        return {'name':name_enc,'transport': 'ws', 'proto': 'vless', 'security': security, 'port': port, 'mode': 'CDN', 'url': f'vless://{g.user_uuid}@{domain}:{port}?security{security}&sni={domain}&type=ws&path=/{hconfigs[ConfigEnum.proxy_path]}/vlessws#{name_enc}'}
-    if security!="http" and name == "WS CDN trojan":
-        return {'name':name_enc,'transport': 'ws', 'proto': 'trojan', 'security': security, 'port': port, 'mode': 'CDN', 'url': f'trojan://{g.user_uuid}@{domain}:{port}?security{security}&sni={domain}&type=ws&path=/{hconfigs[ConfigEnum.proxy_path]}/trojanws#{name_enc}'}
-    if name == "WS CDN vmess":
-        return {'name':name_enc,'transport': 'ws', 'proto': 'vmess', 'security': security, 'port': port, 'mode': 'CDN', 'url': pbase64(f'vmess://{{"v":"2", "ps":"{name_enc}", "add":"{domain}", "port":"{port}", "id":"{g.user_uuid}", "aid":"0", "scy":"auto", "net":"ws", "type":"none", "host":"", "path":"/{hconfigs[ConfigEnum.proxy_path]}/vmessws", "tls":"{security}", "sni":"{domain}"}}')}
+#     if name == "WS CDN vless":
+#         return {'name':name_enc,'transport': 'ws', 'proto': 'vless', 'security': security, 'port': port, 'mode': 'CDN', 'url': f'vless://{g.user_uuid}@{domain}:{port}?security{security}&sni={domain}&type=ws&path=/{hconfigs[ConfigEnum.proxy_path]}/vlessws#{name_enc}'}
+#     if security!="http" and name == "WS CDN trojan":
+#         return {'name':name_enc,'transport': 'ws', 'proto': 'trojan', 'security': security, 'port': port, 'mode': 'CDN', 'url': f'trojan://{g.user_uuid}@{domain}:{port}?security{security}&sni={domain}&type=ws&path=/{hconfigs[ConfigEnum.proxy_path]}/trojanws#{name_enc}'}
+#     if name == "WS CDN vmess":
+#         return {'name':name_enc,'transport': 'ws', 'proto': 'vmess', 'security': security, 'port': port, 'mode': 'CDN', 'url': pbase64(f'vmess://{{"v":"2", "ps":"{name_enc}", "add":"{domain}", "port":"{port}", "id":"{g.user_uuid}", "aid":"0", "scy":"auto", "net":"ws", "type":"none", "host":"", "path":"/{hconfigs[ConfigEnum.proxy_path]}/vmessws", "tls":"{security}", "sni":"{domain}"}}')}
 
-    if name == "grpc CDN vless":
-        return {'name':name_enc,'transport': 'grpc', 'proto': 'vless', 'security': security, 'port': port, 'mode': 'CDN', 'url': f'vless://{g.user_uuid}@{{direct_host}}:{port}?security{security}&alpn=h2&sni={domain}&type=grpc&serviceName={hconfigs[ConfigEnum.proxy_path]}-vlgrpc&mode=multi#{name_enc}'}
-    if security!="http" and name == "grpc CDN trojan":
-        return {'name':name_enc,'transport': 'grpc', 'proto': 'trojan', 'security': security, 'port': port, 'mode': 'CDN', 'url': f'trojan://{g.user_uuid}@{{direct_host}}:{port}?security{security}&alpn=h2&sni={domain}&type=grpc&serviceName={hconfigs[ConfigEnum.proxy_path]}-trgrpc&mode=multi#{name_enc}'}
-    if name == "grpc CDN vmess":
-        return {'name':name_enc,'transport': 'grpc', 'proto': 'vmess', 'security': security, 'port': port, 'mode': 'CDN', 'url': pbase64(f'vmess://{{"v":"2", "ps":"{name_enc}", "add":"{{direct_host}}", "port":"{port}", "id":"{g.user_uuid}", "aid":"0", "scy":"auto", "net":"grpc", "type":"multi", "host":"", "path":"{hconfigs[ConfigEnum.proxy_path]}-vmgrpc", "tls":"{security}", "sni":"{domain}","alpn":"h2"}}')}
+#     if name == "grpc CDN vless":
+#         return {'name':name_enc,'transport': 'grpc', 'proto': 'vless', 'security': security, 'port': port, 'mode': 'CDN', 'url': f'vless://{g.user_uuid}@{{direct_host}}:{port}?security{security}&alpn=h2&sni={domain}&type=grpc&serviceName={hconfigs[ConfigEnum.proxy_path]}-vlgrpc&mode=multi#{name_enc}'}
+#     if security!="http" and name == "grpc CDN trojan":
+#         return {'name':name_enc,'transport': 'grpc', 'proto': 'trojan', 'security': security, 'port': port, 'mode': 'CDN', 'url': f'trojan://{g.user_uuid}@{{direct_host}}:{port}?security{security}&alpn=h2&sni={domain}&type=grpc&serviceName={hconfigs[ConfigEnum.proxy_path]}-trgrpc&mode=multi#{name_enc}'}
+#     if name == "grpc CDN vmess":
+#         return {'name':name_enc,'transport': 'grpc', 'proto': 'vmess', 'security': security, 'port': port, 'mode': 'CDN', 'url': pbase64(f'vmess://{{"v":"2", "ps":"{name_enc}", "add":"{{direct_host}}", "port":"{port}", "id":"{g.user_uuid}", "aid":"0", "scy":"auto", "net":"grpc", "type":"multi", "host":"", "path":"{hconfigs[ConfigEnum.proxy_path]}-vmgrpc", "tls":"{security}", "sni":"{domain}","alpn":"h2"}}')}
 
-    if name == "tcp direct vless":
-        return {'name':name_enc,'transport': 'tcp', 'proto': 'vless', 'security': security, 'port': port, 'mode': 'direct', 'url': f'vless://{g.user_uuid}@{{direct_host}}:{port}?security{security}&alpn=h2&sni={domain}&type=tcp#{name_enc}'}
-    if security!="http" and name == "grpc CDN trojan":
-        return {'name':name_enc,'transport': 'tcp', 'proto': 'trojan', 'security': security, 'port': port, 'mode': 'direct', 'url': f'trojan://{g.user_uuid}@{{direct_host}}:{port}?security{security}&alpn=h2&sni={domain}&type=tcp#{name_enc}'}
-    if name == "grpc CDN vmess":
-        return {'name':name_enc,'transport': 'tcp', 'proto': 'vmess', 'security': security, 'port': port, 'mode': 'direct', 'url': pbase64(f'vmess://{{"v": "2", "ps": "{name_enc}", "add": "{{direct_host}}", "port": "{port}", "id": "{g.user_uuid}", "aid": "0", "scy": "auto", "net": "tcp", "type":"http", "host": "", "path": "/{hconfigs[ConfigEnum.proxy_path]}/vmtc", "tls": "{security}", "sni": "{domain}","alpn":"h2"}}')}
+#     if name == "tcp direct vless":
+#         return {'name':name_enc,'transport': 'tcp', 'proto': 'vless', 'security': security, 'port': port, 'mode': 'direct', 'url': f'vless://{g.user_uuid}@{{direct_host}}:{port}?security{security}&alpn=h2&sni={domain}&type=tcp#{name_enc}'}
+#     if security!="http" and name == "grpc CDN trojan":
+#         return {'name':name_enc,'transport': 'tcp', 'proto': 'trojan', 'security': security, 'port': port, 'mode': 'direct', 'url': f'trojan://{g.user_uuid}@{{direct_host}}:{port}?security{security}&alpn=h2&sni={domain}&type=tcp#{name_enc}'}
+#     if name == "grpc CDN vmess":
+#         return {'name':name_enc,'transport': 'tcp', 'proto': 'vmess', 'security': security, 'port': port, 'mode': 'direct', 'url': pbase64(f'vmess://{{"v": "2", "ps": "{name_enc}", "add": "{{direct_host}}", "port": "{port}", "id": "{g.user_uuid}", "aid": "0", "scy": "auto", "net": "tcp", "type":"http", "host": "", "path": "/{hconfigs[ConfigEnum.proxy_path]}/vmtc", "tls": "{security}", "sni": "{domain}","alpn":"h2"}}')}
 
-    if name == "h1 direct vless":
-        return {'name':name_enc,'transport': 'h1.1', 'proto': 'vless', 'security': security, 'port': port, 'mode': 'direct', 'url': f'vless://{g.user_uuid}@{{direct_host}}:{port}?security{security}&alpn=http/1.1&sni={domain}&alpn=h2&type=tcp&headerType=http&path=/{hconfigs[ConfigEnum.proxy_path]}/vltc#{name_enc}'}
-    if name == "h1 direct vmess":
-        return {'name':name_enc,'transport': 'tcp', 'proto': 'vmess', 'security': security, 'port': port, 'mode': 'direct', 'url': pbase64(f'vmess://{{"v": "2", "ps": "{name_enc}", "add": "{{direct_host}}", "port": "{port}", "id": "{g.user_uuid}", "aid": "0", "scy": "auto", "net": "tcp", "type":"http", "host": "", "path": "/{hconfigs[ConfigEnum.proxy_path]}/vmtc", "tls": "{security}", "sni": "{domain}","alpn":"http/1.1"}}')}
-    if security!="http" and name == "faketls direct ss":
-        return {'name':name_enc,'transport': 'faketls', 'proto': 'ss', 'security': security, 'port': port, 'mode': 'direct', 'url': f'ss://chacha20-ietf-poly1305:{{hconfigs[ConfigEnum.ssfaketls_secret]}}@{{direct_host}}:{port}?plugin=obfs-local%3Bobfs%3Dtls%3Bobfs-host%3D{hconfig(ConfigEnum.ssfaketls_fakedomain)}&amp;udp-over-tcp=true#{name_enc}'}
-    if name == "ws direct v2ray":
-        return {'name':name_enc,'transport': 'ws', 'proto': 'v2ray', 'security': security, 'port': port, 'mode': 'direct', 'url': f'ss://chacha20-ietf-poly1305:{{hconfigs[ConfigEnum.ssfaketls_secret]}}@{{direct_host}}:{port}?plugin=v2ray-plugin%3Bmode%3Dwebsocket%3Bpath%3D/{hconfigs[ConfigEnum.proxy_path]}/v2ray/%3Bhost%3D{domain}%3Btls&amp;udp-over-tcp=true#{name_enc}'}
-    if name == "ws CDN v2ray":
-        return {'name':name_enc,'transport': 'ws', 'proto': 'v2ray', 'security': security, 'port': port, 'mode': 'CDN', 'url': f'ss://chacha20-ietf-poly1305:{{hconfigs[ConfigEnum.ssfaketls_secret]}}@{{domain}}:{port}?plugin=v2ray-plugin%3Bmode%3Dwebsocket%3Bpath%3D/{hconfigs[ConfigEnum.proxy_path]}/v2ray/%3Bhost%3D{domain}%3Btls&amp;udp-over-tcp=true#{name_enc}'}
+#     if name == "h1 direct vless":
+#         return {'name':name_enc,'transport': 'h1.1', 'proto': 'vless', 'security': security, 'port': port, 'mode': 'direct', 'url': f'vless://{g.user_uuid}@{{direct_host}}:{port}?security{security}&alpn=http/1.1&sni={domain}&alpn=h2&type=tcp&headerType=http&path=/{hconfigs[ConfigEnum.proxy_path]}/vltc#{name_enc}'}
+#     if name == "h1 direct vmess":
+#         return {'name':name_enc,'transport': 'tcp', 'proto': 'vmess', 'security': security, 'port': port, 'mode': 'direct', 'url': pbase64(f'vmess://{{"v": "2", "ps": "{name_enc}", "add": "{{direct_host}}", "port": "{port}", "id": "{g.user_uuid}", "aid": "0", "scy": "auto", "net": "tcp", "type":"http", "host": "", "path": "/{hconfigs[ConfigEnum.proxy_path]}/vmtc", "tls": "{security}", "sni": "{domain}","alpn":"http/1.1"}}')}
+#     if security!="http" and name == "faketls direct ss":
+#         return {'name':name_enc,'transport': 'faketls', 'proto': 'ss', 'security': security, 'port': port, 'mode': 'direct', 'url': f'ss://chacha20-ietf-poly1305:{{hconfigs[ConfigEnum.ssfaketls_secret]}}@{{direct_host}}:{port}?plugin=obfs-local%3Bobfs%3Dtls%3Bobfs-host%3D{hconfig(ConfigEnum.ssfaketls_fakedomain)}&amp;udp-over-tcp=true#{name_enc}'}
+#     if name == "ws direct v2ray":
+#         return {'name':name_enc,'transport': 'ws', 'proto': 'v2ray', 'security': security, 'port': port, 'mode': 'direct', 'url': f'ss://chacha20-ietf-poly1305:{{hconfigs[ConfigEnum.ssfaketls_secret]}}@{{direct_host}}:{port}?plugin=v2ray-plugin%3Bmode%3Dwebsocket%3Bpath%3D/{hconfigs[ConfigEnum.proxy_path]}/v2ray/%3Bhost%3D{domain}%3Btls&amp;udp-over-tcp=true#{name_enc}'}
+#     if name == "ws CDN v2ray":
+#         return {'name':name_enc,'transport': 'ws', 'proto': 'v2ray', 'security': security, 'port': port, 'mode': 'CDN', 'url': f'ss://chacha20-ietf-poly1305:{{hconfigs[ConfigEnum.ssfaketls_secret]}}@{{domain}}:{port}?plugin=v2ray-plugin%3Bmode%3Dwebsocket%3Bpath%3D/{hconfigs[ConfigEnum.proxy_path]}/v2ray/%3Bhost%3D{domain}%3Btls&amp;udp-over-tcp=true#{name_enc}'}
 
 def pbase64(full_str):
     return full_str
@@ -136,6 +138,7 @@ def make_proxy(proxy):
 
     domain = g.domain
     hconfigs=get_hconfigs()
+    port=0
     if model=="tls":
         port=443
         l3="tls"
@@ -145,22 +148,26 @@ def make_proxy(proxy):
     elif model =="kcp":
         l3 = 'kcp'
         port == hconfig(ConfigEnum.kcp_ports).split(",")[0]
+    
     name=proxy.name   
     is_cdn="CDN" in name
     direct_host=domain if is_cdn else g.direct_host
     
     base={
-        'name':name.replace(" ", "_")+f'_{l3}_{domain}_{port}',
+        'name':name.replace(" ", "_"),#+f'_{l3}_{domain}_{port}',
         'cdn':is_cdn,
         'mode':"CDN" if is_cdn else "direct",
         'l3': l3,
         'port': port,
         'server':domain if is_cdn else g.direct_host,
         'sni':domain,
-        'uuid':g.user_uuid,
-        'proto':name.split[" "][-1],
-        'proxy_path':hconfig(ConfigEnum.proxy_path)
+        'uuid':str(g.user_uuid),
+        'proto':proxy.proto,
+        'transport':proxy.transport,
+        'proxy_path':hconfig(ConfigEnum.proxy_path),
+        'alpn':"h2"
     }
+
     if base["proto"]=="trojan" and l3!="tls":
         return
 
@@ -173,15 +180,15 @@ def make_proxy(proxy):
     if "FAKE" in name:
         if not hconfig(ConfigEnum.domain_fronting_domain):
             return
-        if l3=="http" and not hconfig(ConfigEnum.domain_fronting_http):
+        if l3=="http" and not hconfig(ConfigEnum.domain_fronting_http_enable):
             return
-        if l3=="tls" and  not hconfig(ConfigEnum.domain_fronting_tls):
+        if l3=="tls" and  not hconfig(ConfigEnum.domain_fronting_tls_enable):
             return 
         base['server']=hconfigs[ConfigEnum.domain_fronting_domain]
         base['sni']=hconfigs[ConfigEnum.domain_fronting_domain]
         base["host"]=domain
         base['mode']='Fake'
-    elif l3=="http" and not hconfig(ConfigEnum.http_proxy):
+    elif l3=="http" and not hconfig(ConfigEnum.http_proxy_enable):
         return None    
 
     ws_path={'vless':f'/{hconfigs[ConfigEnum.proxy_path]}/vlessws',
@@ -200,8 +207,8 @@ def make_proxy(proxy):
     }    
 
     if base["proto"] in ['v2ray','ss','ssr']:
-        base['encryption']='chacha20-ietf-poly1305'
-        base['uuid']=hconfig(ConfigEnum.shared_secret)
+        base['chipher']='chacha20-ietf-poly1305'
+        base['uuid']=f'{hconfig(ConfigEnum.shared_secret)}'
 
     if base["proto"]=="ssr":
         base["ssr-obfs"]= "tls1.2_ticket_auth"
@@ -220,7 +227,10 @@ def make_proxy(proxy):
 
     if "XTLS" in name:
         return {**base, 'transport': 'tcp', 'l3': 'xtls', 'alpn':'h2','flow':'xtls-rprx-direct'}
-
+    if "tcp" in name:
+        base['transport']='tcp'
+        base['path']=tcp_path[base["proto"]]
+        return base   
     if "WS" in name:
         base['transport']='ws'
         base['path']=ws_path[base["proto"]]
@@ -230,20 +240,18 @@ def make_proxy(proxy):
         base['grpc_mode']="multi"
         base['grpc_service_name']=grpc_service_name[base["proto"]]
         return base
-    if "tcp" in name:
-        base['transport']='tcp'
-        base['path']=tcp_path[base["proto"]]
-        return base   
+    
     if "h1" in name:
         base['transport']= 'tcp'
         base['alpn']='http/1.1'
         return base
-    return "error"
+    return "error!"
 
 
 def to_link(proxy):
+    if type(proxy) is str:return proxy
     if proxy['proto']=='vmess':
-        return pbase64(f'vmess://{{"v":"2", "ps":"{proxy["name"]}", "add":"{proxy["server"]}", "port":"{proxy["port"]}", "id":"{proxy["uuid"]}", "aid":"0", "scy":"auto", "net":"{proxy["transport"]}", "type":"none", "host":"{proxy.get("host")}", "path":"{proxy["path"]}", "tls":"{proxy["l3"]}", "sni":"{proxy["sni"]}"}}')
+        return pbase64(f'vmess://{{"v":"2", "ps":"{proxy["name"]}", "add":"{proxy["server"]}", "port":"{proxy["port"]}", "id":"{proxy["uuid"]}", "aid":"0", "scy":"auto", "net":"{proxy["transport"]}", "type":"none", "host":"{proxy.get("host")}", "path":"{proxy["path"] if "path" in proxy else ""}", "tls":"{proxy["l3"]}", "sni":"{proxy["sni"]}"}}')
     if proxy['proto']=="ssr":
         baseurl=f'ssr://proxy["encryption"]:{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}'
         return None
@@ -271,9 +279,10 @@ def to_link(proxy):
         return f'{baseurl}?security=tls{infos}#{proxy["name"]}'
     
 def to_clash_yml(proxy):
-    return yaml.dumps(to_clash(proxy))
+    return yaml.dump(to_clash(proxy))
 
 def to_clash(proxy):
+    if proxy['l3']=="kcp":return
     base={}
     # vmess ws
     base["name"]= proxy["name"]
@@ -342,11 +351,11 @@ def to_clash(proxy):
         }
         if "host" in proxy:
             base["ws-opts"]["headers"]={"Host":proxy["host"]}
-    if proxy["network"]=="tcp" and proxy["l3"]=="http":
-        base["network"]="http"
-        base["http-opts"]={
-            "path":proxy["path"]
-        }
+    # if proxy["transport"]=="tcp" and proxy["l3"]=="http":
+    #     base["network"]="http"
+    #     base["http-opts"]={
+    #         "path":proxy["path"]
+    #     }
         
     if base["network"]=="grpc":
         base["grpc-opts"]={
@@ -356,3 +365,14 @@ def to_clash(proxy):
     return base
     
 
+
+def get_all_clash_configs():
+    allp=[]
+    for type in all_proxies():
+        pinfo=make_proxy(type)
+        if pinfo!=None:
+            clash=to_clash(pinfo)
+            if clash:
+                allp.append(clash)
+    
+    return yaml.dump({"proxies":allp},sort_keys=False)

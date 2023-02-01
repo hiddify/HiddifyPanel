@@ -115,7 +115,7 @@ def get_config_form():
             else:
                 render_kw={'class':"ltr"}
                 validators=[]
-                if c.key==ConfigEnum.fake_cdn_domain:
+                if c.key==ConfigEnum.domain_fronting_domain:
                     validators.append(wtf.validators.Regexp("^([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})|$",re.IGNORECASE,_("config.Invalid domain")))
                 elif 'domain' in c.key:
                     validators.append(wtf.validators.Regexp("^([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})$",re.IGNORECASE,_("config.Invalid domain")))

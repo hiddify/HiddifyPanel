@@ -8,12 +8,21 @@
 
 
 <div class="card">
-    <div class="card-header">{{_("admin.config.title")}}
+    <div class="card-header">{{_("admin.proxy.global_config")}}</div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12 global-form">
+                {{render_form(global_config_form,extra_classes="card-columns")}}
+            </div>
+        </div>
     </div>
+</div>
+<div class="card">
+    <div class="card-header">{{_("admin.proxy.detailed_config")}}</div>
     <div class="card-body">
         <div class="row">
             <div class="col-12">
-                {{render_form(form,form_type="",extra_classes="card-columns")}}
+                {{render_form(detailed_config_form,extra_classes="card-columns")}}
             </div>
         </div>
     </div>
@@ -35,9 +44,9 @@
         background-color: white;
         margin: 0px;
     }
-    legend+div>label {
+    /* legend+div>label {
         display: none;
-    }
+    } */
 
 @media (min-width: 576px) {
     .card-columns {
@@ -50,5 +59,11 @@
         column-count: 2;
     }
 }
+.global-form .custom-switch{
+    display: inline-block;
+}
+#submit_global{
+    display: block;
+}
 </style>
-{% endblock %}
+{% endblock %}  

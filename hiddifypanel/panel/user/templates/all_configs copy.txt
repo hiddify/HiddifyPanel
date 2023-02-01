@@ -7,7 +7,7 @@
 
 
 
-% if hconfigs[ConfigEnum.http_proxy]
+% if hconfigs[ConfigEnum.http_proxy_enable]
 
 # 
 # HTTP Not Secure

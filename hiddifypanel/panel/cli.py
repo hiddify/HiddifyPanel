@@ -45,9 +45,9 @@ def init_db():
             User(name="default",monthly_usage_limit_GB=9000,expiry_time=next10year),
             Domain(domain=external_ip+".sslip.io",mode=DomainType.direct),
             StrConfig(category="admin",key=ConfigEnum.admin_secret,value=str(uuid.uuid4())),
-            StrConfig(category="ports",key=ConfigEnum.tls_ports,value="443"),
             StrConfig(category="ports",key=ConfigEnum.http_ports,value="80"),
-            StrConfig(category="ports",key=ConfigEnum.kcp_ports,value="88"),
+            StrConfig(category="ports",key=ConfigEnum.tls_ports,value="443"),
+            
             StrConfig(category="general",key=ConfigEnum.decoy_site,value="https://www.wikipedia.org/"),
             StrConfig(category="proxies",key=ConfigEnum.proxy_path,value=get_random_string()),
             BoolConfig(category="general",key=ConfigEnum.firewall,value=False),
@@ -56,12 +56,14 @@ def init_db():
             
             BoolConfig(category="proxies",key=ConfigEnum.block_iran_sites,value=True),
             BoolConfig(category="proxies",key=ConfigEnum.allow_invalid_sni,value=True),
+            BoolConfig(category="kcp",key=ConfigEnum.kcp_enable,value=False),
+            StrConfig(category="kcp",key=ConfigEnum.kcp_ports,value="88"),
             BoolConfig(category="general",key=ConfigEnum.auto_update,value=True),
             BoolConfig(category="general",key=ConfigEnum.speed_test,value=True),
             BoolConfig(category="general",key=ConfigEnum.only_ipv4,value=True),
 
             BoolConfig(category="proxies",key=ConfigEnum.vmess_enable,value=True),
-            BoolConfig(category="proxies",key=ConfigEnum.http_proxy,value=True),
+            BoolConfig(category="ports",key=ConfigEnum.http_proxy_enable,value=True),
             StrConfig(category="proxies",key=ConfigEnum.shared_secret,value=str(uuid.uuid4())),
 
             BoolConfig(category="telegram",key=ConfigEnum.telegram_enable,value=True),
@@ -84,8 +86,8 @@ def init_db():
             BoolConfig(category="tuic",key=ConfigEnum.tuic_enable,value=False),
             StrConfig(category="tuic",key=ConfigEnum.tuic_port,value=3048),
 
-            BoolConfig(category="domain_fronting",key=ConfigEnum.domain_fronting_tls,value=False),
-            BoolConfig(category="domain_fronting",key=ConfigEnum.domain_fronting_http,value=False),
+            BoolConfig(category="domain_fronting",key=ConfigEnum.domain_fronting_tls_enable,value=False),
+            BoolConfig(category="domain_fronting",key=ConfigEnum.domain_fronting_http_enable,value=False),
             StrConfig(category="domain_fronting",key=ConfigEnum.domain_fronting_domain,value=""),
             *get_proxy_rows()
         ]
@@ -161,7 +163,7 @@ def init_app(app):
         # "ENABLE_MONITORING":ConfigEnum.ssfaketls_enable,
         "ENABLE_FIREWALL":ConfigEnum.firewall,
         "ENABLE_NETDATA":ConfigEnum.netdata,
-        "ENABLE_HTTP_PROXY":ConfigEnum.http_proxy,
+        "ENABLE_HTTP_PROXY":ConfigEnum.http_proxy_enable,
         "ALLOW_ALL_SNI_TO_USE_PROXY":ConfigEnum.allow_invalid_sni,
         "ENABLE_AUTO_UPDATE":ConfigEnum.auto_update,
         "ENABLE_SPEED_TEST":ConfigEnum.speed_test,
@@ -211,8 +213,8 @@ def get_proxy_rows():
         "tcp direct vless",
         "tcp direct trojan",
         "tcp direct vmess",
-        "h1 direct vless",
-        "h1 direct vmess",
+        # "h1 direct vless",
+        # "h1 direct vmess",
         "faketls direct ss",
         "ws direct v2ray",
         "shadowtls direct ss",
@@ -221,7 +223,8 @@ def get_proxy_rows():
     for l3 in ["tls", "http", "kcp"]:
         for c in cfgs:
             transport,cdn,proto=c.split(" ")
-            
+            if l3=="kcp" and cdn!="direct":
+                continue
             if proto=="trojan" and l3!="tls":
                 continue
             if transport in ["XTLS","faketls"] and l3=="http":

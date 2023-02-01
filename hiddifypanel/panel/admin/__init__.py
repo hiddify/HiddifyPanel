@@ -4,8 +4,8 @@ from flask_admin import Admin
 from . import FullConfigAdmin 
 from .DomainAdmin import DomainAdmin
 from .ConfigAdmin import ConfigAdmin
-from .ProxyAdmin import ProxyAdmin
-from . import QuickSetup
+# from .ProxyAdmin import ProxyAdmin
+from . import QuickSetup,ProxyAdmin
 from hiddifypanel.models import  StrConfig,ConfigEnum
 # from .resources import ProductItemResource, ProductResource
 from hiddifypanel.panel.database import db
@@ -38,7 +38,7 @@ def init_app(app):
     
     admin.add_view(UserAdmin(User, db.session))
     admin.add_view(DomainAdmin(Domain, db.session))
-    admin.add_view(ProxyAdmin(Proxy, db.session))
+    # admin.add_view(ProxyAdmin(Proxy, db.session))
     # admin.add_view(ConfigAdmin(BoolConfig, db.session))
     # admin.add_view(ConfigAdmin(StrConfig, db.session))
     # admin.add_view(Actions(name="Dashboard",endpoint="home",url="/<proxy_path>/<user_secret>/admin/",))
@@ -52,6 +52,8 @@ def init_app(app):
     bp.add_url_rule('/admin/config/getallbabel/',view_func=FullConfigAdmin.get_babel_string,methods=["GET"])
     bp.add_url_rule('/admin/config/',endpoint="config",view_func=FullConfigAdmin.index,methods=["GET"])
     bp.add_url_rule('/admin/config/',endpoint="config-save",view_func=FullConfigAdmin.save,methods=["POST"])
+    bp.add_url_rule('/admin/proxy/',endpoint="proxy",view_func=ProxyAdmin.index,methods=["GET"])
+    bp.add_url_rule('/admin/proxy/',endpoint="proxy-save",view_func=ProxyAdmin.save,methods=["POST"])
 
     bp.add_url_rule('/admin/quicksetup/',endpoint="quicksetup",view_func=QuickSetup.index,methods=["GET"])
     bp.add_url_rule('/admin/quicksetup/',endpoint="quicksetup-save", view_func=QuickSetup.save,methods=["POST"])

@@ -1,12 +1,5 @@
-proxies:
-
-% for type in link_maker.all_proxies()
-{% set pinfo=link_maker.proxy_info(type,mode=mode) %}
-% if pinfo!=None
-  - {{link_maker.to_clash_yml()}}
-%endif
-%endfor
-%endfor
+# proxies:
+{{link_maker.get_all_clash_configs()}}
 
 
 

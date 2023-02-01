@@ -14,11 +14,12 @@ class ConfigEnum(StrEnum):
     tls_ports="tls_ports"
     http_ports="http_ports"
     kcp_ports="kcp_ports"
+    kcp_enable="kcp_enable"
     decoy_site="decoy_site"
     proxy_path="proxy_path"
     firewall="firewall"
     netdata="netdata"
-    http_proxy="http_proxy"
+    http_proxy_enable="http_proxy_enable"
     block_iran_sites="block_iran_sites"
     allow_invalid_sni="allow_invalid_sni"
     auto_update="auto_update"
@@ -49,8 +50,8 @@ class ConfigEnum(StrEnum):
 
     vmess_enable="vmess_enable"
     domain_fronting_domain="domain_fronting_domain"
-    domain_fronting_http="domain_fronting_http"
-    domain_fronting_tls="domain_fronting_tls"
+    domain_fronting_http_enable="domain_fronting_http_enable"
+    domain_fronting_tls_enable="domain_fronting_tls_enable"
 
     db_version="db_version"
 

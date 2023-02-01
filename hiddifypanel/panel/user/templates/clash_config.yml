@@ -105,6 +105,7 @@ proxy-groups:
     % endif
     type: select
 
+{{link_maker.get_all_clash_configs()}}
 proxy-providers:
   all_proxies:
     type: http
