@@ -15,7 +15,9 @@
     <div class="card-body">
       {{_("user.home.ios.stash.intro")}}
       <br>
+      {% with show_meta=True %}
       {% include "home/clash-links.html" %}
+      {% endwith %}
     </div>
     <!-- /.card-body -->
   </div>

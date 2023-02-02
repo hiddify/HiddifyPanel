@@ -23,6 +23,7 @@
         <div class="card-header">{{_("user.home.clash_configs.foreign_sites.title")}}</div>
         <div class="card-body">
             {{_("user.home.clash_configs.foreign_sites.description")}}
+            % if show_meta
             <div class="btn-group">
                 <a href="clashmeta://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/meta/normal.yml&name=mnormal_{{domain}}"
                     class="btn btn-warning orig-link">{{_("user.home.clash_configs.foreign_sites.btn")}}</a>
@@ -34,6 +35,12 @@
                         class="btn btn-secondary orig-link">{{_("user.home.clash_configs.link_for_normal_clash")}}</a>
                 </div>
             </details>
+            %else
+            <div class="btn-group">
+                <a href="clash://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/normal.yml&name=normal_{{domain}}"
+                class="btn btn-warning orig-link">{{_("user.home.clash_configs.foreign_sites.btn")}}</a>
+            </div>
+            % endif
         </div>
     </div>
 
