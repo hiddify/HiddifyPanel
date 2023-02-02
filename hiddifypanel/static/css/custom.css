@@ -13,13 +13,20 @@ margin-left: 20px;
 }
 
 legend {
-    margin: 0px;
-    border: 1px solid #ccc;
-    text-align: center;
-    border-radius: 10px;
-    background: #cac9c9;
+    background-color: white;
+  margin: 0px;
+  border: 1px solid #ccc;
+  padding: 5px;
+  text-align: center;
+  border-radius: 10px;
+  background: #f6f6f6;
   }
 
   fieldset fieldset legend {
-    background: #f6f6f6;
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    letter-spacing: 0px;
+    text-shadow: 0 1px 1px rgba(0,0,0,.15);
+    color: #555 !important;
+    padding-top: 10px;
   }
