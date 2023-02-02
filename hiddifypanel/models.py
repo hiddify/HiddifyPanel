@@ -10,6 +10,20 @@ import uuid as uuid_mod
 from enum import auto
 from strenum import StrEnum
 
+class ConfigCategory(StrEnum):
+    admin=auto()
+    general=auto()
+    proxies=auto()
+    domain_fronting=auto()
+    telegram=auto()
+    http=auto()
+    tls=auto()
+    ssfaketls=auto()
+    shadowtls=auto()
+    tuic=auto()
+    ssr=auto()
+    kcp=auto()
+    hidden=auto()
 
 class ConfigEnum(StrEnum):
     lang = auto()
@@ -35,6 +49,8 @@ class ConfigEnum(StrEnum):
     # telegram_secret=auto()
     telegram_adtag = auto()
     telegram_fakedomain = auto()
+
+    v2ray_enable = auto()
 
     ssfaketls_enable = auto()
     # ssfaketls_secret="ssfaketls_secret"
@@ -63,53 +79,61 @@ class ConfigEnum(StrEnum):
       return cls.not_found #"key not found"
     def info(self):
         map = {
-            lang: {'category': 'general'},
-            admin_secret: {'category': 'admin'},
-            tls_ports: {'category': 'tls'},
-            http_ports: {'category': 'http'},
-            kcp_ports: {'category': 'kcp'},
-            kcp_enable: {'category': 'kcp'},
-            decoy_site: {'category': 'general'},
-            proxy_path: {'category': 'proxies'},
-            firewall: {'category': 'general'},
-            netdata: {'category': 'general'},
-            http_proxy_enable: {'category': 'http'},
-            block_iran_sites: {'category': 'proxies'},
-            allow_invalid_sni: {'category': 'tls'},
-            auto_update: {'category': 'general'},
-            speed_test: {'category': 'general'},
-            only_ipv4: {'category': 'general'},
+            self.lang: {'category': ConfigCategory.general},
+            self.admin_secret: {'category': ConfigCategory.admin},
+            self.tls_ports: {'category': ConfigCategory.tls},
+            self.http_ports: {'category': ConfigCategory.http},
+            self.kcp_ports: {'category': ConfigCategory.kcp},
+            self.kcp_enable: {'category': ConfigCategory.kcp,'type':bool},
+            self.decoy_site: {'category': ConfigCategory.general},
+            self.proxy_path: {'category': ConfigCategory.proxies},
+            self.firewall: {'category': ConfigCategory.general},
+            self.netdata: {'category': ConfigCategory.general},
+            self.http_proxy_enable: {'category': ConfigCategory.http,'type':bool},
+            self.block_iran_sites: {'category': ConfigCategory.proxies,'type':bool},
+            self.allow_invalid_sni: {'category': ConfigCategory.tls,'type':bool},
+            self.auto_update: {'category': ConfigCategory.general,'type':bool},
+            self.speed_test: {'category': ConfigCategory.general,'type':bool},
+            self.only_ipv4: {'category': ConfigCategory.general,'type':bool},
 
-            shared_secret: {'category': 'proxies'},
+            self.shared_secret: {'category': ConfigCategory.proxies},
 
-            telegram_enable: {'category': 'telegram'},
+            self.telegram_enable: {'category': ConfigCategory.telegram,'type':bool},
             # telegram_secret:{'category':'general'},
-            telegram_adtag: {'category': 'telegram'},
-            telegram_fakedomain: {'category': 'telegram'},
+            self.telegram_adtag: {'category': ConfigCategory.telegram},
+            self.telegram_fakedomain: {'category': ConfigCategory.telegram},
 
-            ssfaketls_enable: {'category': 'ssfaketls'},
+            self.v2ray_enable: {'category': ConfigCategory.proxies,'type':bool},
+
+            self.ssfaketls_enable: {'category': ConfigCategory.ssfaketls,'type':bool},
             # ssfaketls_secret:{'category':'ssfaketls'},
-            ssfaketls_fakedomain: {'category': 'ssfaketls'},
+            self.ssfaketls_fakedomain: {'category': ConfigCategory.ssfaketls},
 
-            shadowtls_enable: {'category': 'shadowtls'},
+            self.shadowtls_enable: {'category': ConfigCategory.shadowtls,'type':bool},
             # shadowtls_secret:{'category':'shadowtls'},
-            shadowtls_fakedomain: {'category': 'shadowtls'},
+            self.shadowtls_fakedomain: {'category': ConfigCategory.shadowtls},
 
-            tuic_enable: {'category': 'tuic'},
-            tuic_port: {'category': 'tuic'},
+            self.tuic_enable: {'category': ConfigCategory.tuic,'type':bool},
+            self.tuic_port: {'category': ConfigCategory.tuic},
 
-            ssr_enable: {'category': 'ssr'},
+            self.ssr_enable: {'category': ConfigCategory.ssr,'type':bool},
             # ssr_secret:{'category':'ssr'},
-            ssr_fakedomain: {'category': 'ssr'},
+            self.ssr_fakedomain: {'category': ConfigCategory.ssr},
 
-            vmess_enable: {'category': 'proxies'},
-            domain_fronting_domain: {'category': 'domain_fronting'},
-            domain_fronting_http_enable: {'category': 'domain_fronting'},
-            domain_fronting_tls_enable: {'category': 'domain_fronting'},
+            self.vmess_enable: {'category': ConfigCategory.proxies,'type':bool},
+            self.domain_fronting_domain: {'category': ConfigCategory.domain_fronting},
+            self.domain_fronting_http_enable: {'category': ConfigCategory.domain_fronting},
+            self.domain_fronting_tls_enable: {'category': ConfigCategory.domain_fronting},
 
-            db_version: {'category': 'hidden'},
+            self.db_version: {'category': ConfigCategory.hidden},
         }
         return map[self]
+
+    def category(self):
+        return self.info()['category']
+    def type(self):
+        info=self.info()
+        return info['type'] if 'type' in info else str
 
 
 class DomainType(enum.Enum):
@@ -156,14 +180,14 @@ class User(db.Model, SerializerMixin):
 
 
 class BoolConfig(db.Model, SerializerMixin):
-    category = db.Column(db.String(128), primary_key=True)
+    # category = db.Column(db.String(128), primary_key=True)
     key = db.Column(db.Enum(ConfigEnum), primary_key=True)
     value = db.Column(db.Boolean)
     description = db.Column(db.String(512))
 
 
 class StrConfig(db.Model, SerializerMixin):
-    category = db.Column(db.String(128), primary_key=True)
+    # category = db.Column(db.String(128), primary_key=True)
     key = db.Column(db.Enum(ConfigEnum), primary_key=True,   default=ConfigEnum.admin_secret)
     value = db.Column(db.String(512))
     description = db.Column(db.String(512))

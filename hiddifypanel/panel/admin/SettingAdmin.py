@@ -1,4 +1,4 @@
-from hiddifypanel.models import BoolConfig,StrConfig,ConfigEnum,hconfig
+from hiddifypanel.models import BoolConfig,StrConfig,ConfigEnum,hconfig,ConfigCategory
 from flask_babelex import lazy_gettext as _
 # from flask_babelex import gettext as _
 import wtforms as wtf
@@ -76,12 +76,12 @@ class SettingAdmin(FlaskView):
         bool_types={c.key:'bool' for c in boolconfigs}
 
         configs=[*boolconfigs,*strconfigs]
-        categories=sorted([ c for c in {c.category:1 for c in configs}])
+        categories=sorted([ c for c in {c.info()['category']:1 for c in configs}])
 
         for cat in categories:
             if cat=='hidden':continue
 
-            cat_configs=[c for c in configs if c.category==cat]
+            cat_configs=[c for c in configs if c.info()['category']==cat]
             
             for c in cat_configs:
                 res+=f'{{{{_("config.{c.key}.label")}}}} {{{{_("config.{c.key}.description")}}}}'
@@ -101,14 +101,14 @@ def get_config_form():
     bool_types={c.key:'bool' for c in boolconfigs}
 
     configs=[*boolconfigs,*strconfigs]
-    categories=sorted([ c for c in {c.category:1 for c in configs}])
+    # categories=sorted([ c for c in {c.key.category():1 for c in configs}])
     # dict_configs={cat:[c for c in configs if c.category==cat] for cat in categories}
     class DynamicForm(FlaskForm):pass
 
-    for cat in categories:
+    for cat in ConfigCategory:
         if cat=='hidden':continue
 
-        cat_configs=[c for c in configs if c.category==cat]
+        cat_configs=[c for c in configs if c.key.category()==cat]
         class CategoryForm(FlaskForm):
             description_for_fieldset=wtf.fields.TextAreaField("",description=_(f'config.{cat}.description'),render_kw={"class":"d-none"})
         for c in cat_configs:

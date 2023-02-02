@@ -84,7 +84,7 @@ def get_global_config_form(empty=False):
     class DynamicForm(FlaskForm):pass
 
     for cf in boolconfigs:
-        if cf.category=='hidden':continue
+        if cf.key.category()=='hidden':continue
         if not cf.key.endswith("_enable"):continue
         field= SwitchField(_(f'config.{cf.key}.label'), default=cf.value,description=_(f'config.{cf.key}.description')) 
         setattr(DynamicForm, cf.key,  field)
