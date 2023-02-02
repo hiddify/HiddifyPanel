@@ -258,8 +258,13 @@ def to_link(proxy):
 def to_clash_yml(proxy):
     return yaml.dump(to_clash(proxy))
 
-def to_clash(proxy):
+def to_clash(proxy,meta_or_normal):
     if proxy['l3']=="kcp":return
+    if meta_or_normal=="normal":
+        if pinfo['proto']=="vless":return
+        if pinfo['l3']=="xtls":return
+        if pinfo['transport']=="shadowtls":return
+
     base={}
     # vmess ws
     base["name"]= proxy["name"]
@@ -343,12 +348,12 @@ def to_clash(proxy):
     
 
 
-def get_all_clash_configs():
+def get_all_clash_configs(meta_or_normal):
     allp=[]
     for type in all_proxies():
         pinfo=make_proxy(type)
         if pinfo!=None:
-            clash=to_clash(pinfo)
+            clash=to_clash(pinfo,meta_or_normal)
             if clash:
                 allp.append(clash)
     
