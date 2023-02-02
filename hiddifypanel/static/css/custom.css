@@ -11,3 +11,11 @@ text-align:justify;
 .nav-treeview{
 margin-left: 20px;
 }
+
+legend {
+    margin: 0px;
+    border: 1px solid #ccc;
+    text-align: center;
+    border-radius: 10px;
+    background: #f6f6f6;
+  }
