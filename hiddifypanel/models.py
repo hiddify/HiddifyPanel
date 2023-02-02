@@ -86,7 +86,7 @@ class ConfigEnum(StrEnum):
             self.kcp_ports: {'category': ConfigCategory.kcp},
             self.kcp_enable: {'category': ConfigCategory.kcp,'type':bool},
             self.decoy_domain: {'category': ConfigCategory.general},
-            self.proxy_path: {'category': ConfigCategory.proxies},
+            self.proxy_path: {'category': ConfigCategory.hidden},
             self.firewall: {'category': ConfigCategory.general},
             self.netdata: {'category': ConfigCategory.general},
             self.http_proxy_enable: {'category': ConfigCategory.http,'type':bool},
