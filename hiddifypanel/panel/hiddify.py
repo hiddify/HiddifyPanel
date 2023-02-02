@@ -1,9 +1,10 @@
-from flask import jsonify,g
+from flask import jsonify,g,flash
 to_gig_d = 1024*1024*1024
 import datetime
 from hiddifypanel.panel.database import db
 from hiddifypanel.models import StrConfig,BoolConfig,User,Domain,get_hconfigs,Proxy,hconfig,ConfigEnum
 import urllib
+
 def auth(function):
     def wrapper(*args,**kwargs):
         if g.user_uuid==None:
@@ -95,3 +96,8 @@ def get_available_proxies():
     if not hconfig(ConfigEnum.http_proxy_enable):
         proxies=[c for c in proxies if 'http' != c.l3]
     return proxies
+
+
+def flash_config_success():
+    apply_btn=f"<a href='{url_for('admin.Actions:apply_configs')}' class='btn btn-primary'>"+_("admin.config.apply_configs")+"</a>"
+    flash(Markup(_('config.validation-success',link=apply_btn)), 'success')

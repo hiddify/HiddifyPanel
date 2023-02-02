@@ -47,8 +47,7 @@ class QuickSetup(FlaskView):
                         BoolConfig.query.filter(BoolConfig.key==ConfigEnum.telegram_enable).first().value=quick_form.enable_telegram.data
                         BoolConfig.query.filter(BoolConfig.key==ConfigEnum.vmess_enable).first().value=quick_form.enable_vmess.data
                         db.session.commit()
-                        apply_btn=f"<a href='{url_for('admin.Actions:apply_configs')}' class='btn btn-primary'>"+_("admin.config.apply_configs")+"</a>"
-                        flash(Markup(_('config.validation-success',link=apply_btn)), 'success')
+                        hiddify.flash_config_success()
                 else:
                         flash(_('config.validation-error'), 'danger')
                 return render_template('quick_setup.html', form=quick_form,lang_form=get_lang_form(True))

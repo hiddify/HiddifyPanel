@@ -57,8 +57,7 @@ class ProxyAdmin(FlaskView):
                         
                 # print(cat,vs)
             db.session.commit()
-            apply_btn=f"<a href='{url_for('admin.Actions:apply_configs')}' class='btn btn-primary'>"+_("admin.config.apply_configs")+"</a>"
-            flash(Markup(_('config.validation-success',link=apply_btn)), 'success')
+            hiddify.flash_config_success()
             global_config_form= get_global_config_form(True)
         else:
             flash(Markup(_('config.validation-error')), 'danger')

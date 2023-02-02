@@ -15,7 +15,7 @@ from hiddifypanel.models import  User,Domain,DomainType,StrConfig,ConfigEnum,get
 from hiddifypanel.panel.database import db
 from wtforms.fields import *
 from flask_classful import FlaskView
-
+from hiddifypanel.panel import hiddify
 class SettingAdmin(FlaskView):
     
 
@@ -52,8 +52,8 @@ class SettingAdmin(FlaskView):
                 # print(cat,vs)
             db.session.commit()
             from flask_babel import refresh; refresh()
-            apply_btn=f"<a href='{url_for('admin.Actions:apply_configs')}' class='btn btn-primary'>"+_("admin.config.apply_configs")+"</a>"
-            flash(Markup(_('config.validation-success',link=apply_btn)), 'success')
+            hiddify.flash_config_success()
+            
 
             return render_template('config.html', form=form)
         flash(_('config.validation-error'), 'danger')

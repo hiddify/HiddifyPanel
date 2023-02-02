@@ -5,6 +5,7 @@ from hiddifypanel.models import  User,Domain,DomainType,StrConfig,ConfigEnum,get
 from wtforms.validators import Regexp,ValidationError
 from .adminlte import AdminLTEModelView
 from flask_babelex import lazy_gettext as _
+from hiddifypanel.panel import hiddify
 class DomainAdmin(AdminLTEModelView):
     can_export = True
     form_args = {
@@ -29,12 +30,13 @@ class DomainAdmin(AdminLTEModelView):
         model.domain = model.domain.lower()
         configs=get_hconfigs()
         for c in configs:
-            if "domain" in c:
+            if "domain" in c and ConfigEnum.decoy_domain!=c:
                 if model.domain==configs[c]:
                     raise ValidationError(f"another {model.mode} is exist")    
     
+
         # if model.mode in [DomainType.ss_faketls, DomainType.telegram_faketls]:
         #     if len(Domain.query.filter(Domain.mode==model.mode and Domain.id!=model.id).all())>0:
         #         ValidationError(f"another {model.mode} is exist")
-
+        hiddify.flash_config_success()
     pass
