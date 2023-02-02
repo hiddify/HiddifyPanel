@@ -253,11 +253,15 @@ def to_clash(proxy,meta_or_normal):
         }
         if "host" in proxy:
             base["ws-opts"]["headers"]={"Host":proxy["host"]}
-    if proxy["transport"]=="tcp":
-        # base["network"]="http"
-        base["http-opts"]={
-            "path":proxy["path"]
-        }
+
+    if base["network"]=="tcp":
+        # if proxy['proto']=='vless':
+        #     base["network"]="http"    
+
+        if "path" in proxy:
+            base["http-opts"]={
+                "path":proxy["path"]
+            }
         
     if base["network"]=="grpc":
         base["grpc-opts"]={
