@@ -51,7 +51,7 @@ def make_proxy(proxy):
     direct_host=domain if is_cdn else g.direct_host
     
     base={
-        'name':name.replace(" ", "_")+f'_{l3}_{domain}_{port}',
+        'name':name.replace(" ", "_"),#+f'_{l3}_s',
         'cdn':is_cdn,
         'mode':"CDN" if is_cdn else "direct",
         'l3': l3,
@@ -253,17 +253,18 @@ def to_clash(proxy,meta_or_normal):
         }
         if "host" in proxy:
             base["ws-opts"]["headers"]={"Host":proxy["host"]}
-    # if proxy["transport"]=="tcp" and proxy["l3"]=="http":
-    #     base["network"]="http"
-    #     base["http-opts"]={
-    #         "path":proxy["path"]
-    #     }
+    if proxy["transport"]=="tcp":
+        # base["network"]="http"
+        base["http-opts"]={
+            "path":proxy["path"]
+        }
         
     if base["network"]=="grpc":
         base["grpc-opts"]={
         "grpc-service-name":proxy["grpc_service_name"]
         }
-
+    
+   
     return base
     
 
