@@ -17,5 +17,9 @@ legend {
     border: 1px solid #ccc;
     text-align: center;
     border-radius: 10px;
+    background: #cac9c9;
+  }
+
+  fieldset fieldset legend {
     background: #f6f6f6;
   }
