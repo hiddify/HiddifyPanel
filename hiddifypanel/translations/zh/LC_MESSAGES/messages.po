@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-02-02 11:49+0100\n"
+"POT-Creation-Date: 2023-02-02 13:38+0100\n"
 "PO-Revision-Date: 2023-01-28 14:59+0330\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh\n"
@@ -69,7 +69,7 @@ msgstr ""
 #: hiddifypanel/panel/admin/ProxyAdmin.py:117
 #: hiddifypanel/panel/admin/QuickSetup.py:59
 #: hiddifypanel/panel/admin/QuickSetup.py:78
-#: hiddifypanel/panel/admin/SettingAdmin.py:162
+#: hiddifypanel/panel/admin/SettingAdmin.py:163
 msgid "Submit"
 msgstr ""
 
@@ -131,7 +131,7 @@ msgid "config.Invalid domain"
 msgstr ""
 
 #: hiddifypanel/panel/admin/QuickSetup.py:74
-#: hiddifypanel/panel/admin/SettingAdmin.py:126
+#: hiddifypanel/panel/admin/SettingAdmin.py:127
 msgid "config.Domain already used"
 msgstr ""
 
@@ -159,27 +159,23 @@ msgstr ""
 msgid "config.vmess_enable.description"
 msgstr ""
 
-#: hiddifypanel/panel/admin/SettingAdmin.py:131
-msgid "config.Invalid decoy_domain"
-msgstr ""
-
-#: hiddifypanel/panel/admin/SettingAdmin.py:135
+#: hiddifypanel/panel/admin/SettingAdmin.py:136
 msgid "config.invalid uuid"
 msgstr ""
 
-#: hiddifypanel/panel/admin/SettingAdmin.py:139
+#: hiddifypanel/panel/admin/SettingAdmin.py:140
 msgid "config.Invalid proxy path"
 msgstr ""
 
-#: hiddifypanel/panel/admin/SettingAdmin.py:143
+#: hiddifypanel/panel/admin/SettingAdmin.py:144
 msgid "config.Invalid port"
 msgstr ""
 
-#: hiddifypanel/panel/admin/SettingAdmin.py:146
+#: hiddifypanel/panel/admin/SettingAdmin.py:147
 msgid "config.port 80 is required"
 msgstr ""
 
-#: hiddifypanel/panel/admin/SettingAdmin.py:149
+#: hiddifypanel/panel/admin/SettingAdmin.py:150
 msgid "config.port 443 is required"
 msgstr ""
 
@@ -1159,5 +1155,8 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "user.home.link.success - copy"
+#~ msgstr ""
+
+#~ msgid "config.Invalid decoy_domain"
 #~ msgstr ""
 

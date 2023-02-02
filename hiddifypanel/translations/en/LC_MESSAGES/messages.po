@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-02 11:49+0100\n"
+"POT-Creation-Date: 2023-02-02 13:38+0100\n"
 "PO-Revision-Date: 2023-02-01 20:51+0100\n"
 "Last-Translator: hidden u\n"
 "Language: en_US\n"
@@ -76,7 +76,7 @@ msgstr "One of the fields has encountered with error"
 #: hiddifypanel/panel/admin/ProxyAdmin.py:117
 #: hiddifypanel/panel/admin/QuickSetup.py:59
 #: hiddifypanel/panel/admin/QuickSetup.py:78
-#: hiddifypanel/panel/admin/SettingAdmin.py:162
+#: hiddifypanel/panel/admin/SettingAdmin.py:163
 msgid "Submit"
 msgstr "Submit"
 
@@ -151,7 +151,7 @@ msgstr "Error! Invalid domain.  The domain format is www.google.com"
 
 # | msgid "Domain is exist in domains section. Use another domain"
 #: hiddifypanel/panel/admin/QuickSetup.py:74
-#: hiddifypanel/panel/admin/SettingAdmin.py:126
+#: hiddifypanel/panel/admin/SettingAdmin.py:127
 msgid "config.Domain already used"
 msgstr "Domain is exist in domains section. Use another domain"
 
@@ -198,42 +198,33 @@ msgstr ""
 "detected by the government. So it is not recommended"
 
 # | msgid ""
-# | "Invalid address: a website for decoy site should be complete url e.g., "
-# | "https://www.wikipedia.org/\n"
-#: hiddifypanel/panel/admin/SettingAdmin.py:131
-msgid "config.Invalid decoy_domain"
-msgstr ""
-"Invalid address: a website for decoy site should be complete url e.g., "
-"https://www.wikipedia.org/\n"
-
-# | msgid ""
 # | "Invalid UUID secret. e.g., 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n"
 # | "\n"
-#: hiddifypanel/panel/admin/SettingAdmin.py:135
+#: hiddifypanel/panel/admin/SettingAdmin.py:136
 msgid "config.invalid uuid"
 msgstr ""
 "Invalid UUID secret. e.g., 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n"
 "\n"
 
 # | msgid "Invalid proxy path. It should be asci string (a-z A-Z 0-9)"
-#: hiddifypanel/panel/admin/SettingAdmin.py:139
+#: hiddifypanel/panel/admin/SettingAdmin.py:140
 msgid "config.Invalid proxy path"
 msgstr "Invalid proxy path. It should be asci string (a-z A-Z 0-9)"
 
 # | msgid "Invalid port. It should be comma separated integer e.g., 1000,1001"
-#: hiddifypanel/panel/admin/SettingAdmin.py:143
+#: hiddifypanel/panel/admin/SettingAdmin.py:144
 msgid "config.Invalid port"
 msgstr "Invalid port. It should be comma separated integer e.g., 1000,1001"
 
 # | msgid ""
 # | "Port 80 should always be presented. We use it for getting ssl
 # certificate"
-#: hiddifypanel/panel/admin/SettingAdmin.py:146
+#: hiddifypanel/panel/admin/SettingAdmin.py:147
 msgid "config.port 80 is required"
 msgstr "Port 80 should always be presented. We use it for getting ssl certificate"
 
 # | msgid "Port 443 should always be presented. "
-#: hiddifypanel/panel/admin/SettingAdmin.py:149
+#: hiddifypanel/panel/admin/SettingAdmin.py:150
 msgid "config.port 443 is required"
 msgstr "Port 443 should always be presented. "
 
@@ -1690,4 +1681,13 @@ msgstr "Copy to clipboard:  Ctrl+C, Enter"
 # | msgid "It will use port 443 to connect to CDN"
 #~ msgid "config.domain_fronting_tls.description"
 #~ msgstr "It will use port 443 to connect to CDN"
+
+# | msgid ""
+# | "Invalid address: a website for decoy site should be complete url e.g., "
+# | "https://www.wikipedia.org/\n"
+#~ msgid "config.Invalid decoy_domain"
+#~ msgstr ""
+#~ "Invalid address: a website for decoy "
+#~ "site should be complete url e.g., "
+#~ "https://www.wikipedia.org/\n"
 
