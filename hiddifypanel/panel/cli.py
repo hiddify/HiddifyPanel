@@ -115,7 +115,7 @@ def test():
 def admin_links():
         proxy_path=hconfig(ConfigEnum.proxy_path)
         admin_secret=hconfig(ConfigEnum.admin_secret)
-        
+        server_ip=hiddify.get_ip(4)
         admin_links=f"Not Secure:\n   http://{server_ip}/{proxy_path}/{admin_secret}/admin/\n"
         domains=[d.domain for d in Domain.query.all()]
         admin_links+=f"Secure:\n"

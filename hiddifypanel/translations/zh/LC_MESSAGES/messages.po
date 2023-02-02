@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-02 18:25+0100\n"
-"PO-Revision-Date: 2023-02-02 11:20-0600\n"
+"POT-Creation-Date: 2023-02-02 18:44+0100\n"
+"PO-Revision-Date: 2023-02-02 11:43-0600\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Generated-By: Babel 2.11.0\n"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/panel/admin/ProxyAdmin.py:41 hiddifypanel/panel/hiddify.py:102
+#: hiddifypanel/panel/admin/ProxyAdmin.py:41 hiddifypanel/panel/hiddify.py:103
 #, fuzzy
 msgid "admin.config.apply_configs"
 msgstr "应用配置"
@@ -24,7 +24,7 @@ msgstr "应用配置"
 # | "Configs have changed successfully. Click %(link)s to apply the configs.
 # It "
 # | "may takes 2 minutes to apply."
-#: hiddifypanel/panel/admin/ProxyAdmin.py:42 hiddifypanel/panel/hiddify.py:103
+#: hiddifypanel/panel/admin/ProxyAdmin.py:42 hiddifypanel/panel/hiddify.py:104
 #, fuzzy
 msgid "config.validation-success"
 msgstr "配置已成功更改。单击 %(link)s 以应用配置。申请可能需要 2 分钟。"
@@ -73,7 +73,7 @@ msgstr "其中一个字段遇到错误"
 #: hiddifypanel/panel/admin/ProxyAdmin.py:116
 #: hiddifypanel/panel/admin/QuickSetup.py:58
 #: hiddifypanel/panel/admin/QuickSetup.py:77
-#: hiddifypanel/panel/admin/SettingAdmin.py:163
+#: hiddifypanel/panel/admin/SettingAdmin.py:161
 #, fuzzy
 msgid "Submit"
 msgstr "提交"
@@ -117,7 +117,7 @@ msgstr "更改语言时出错"
 
 # | msgid "Language"
 #: hiddifypanel/panel/admin/QuickSetup.py:57
-#: hiddifypanel/panel/admin/SettingAdmin.py:118
+#: hiddifypanel/panel/admin/SettingAdmin.py:116
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/panel/admin/templates/quick_setup.html:22
 #, fuzzy
@@ -126,21 +126,21 @@ msgstr "语言"
 
 # | msgid "English انگلیسی 英语"
 #: hiddifypanel/panel/admin/QuickSetup.py:57
-#: hiddifypanel/panel/admin/SettingAdmin.py:118
+#: hiddifypanel/panel/admin/SettingAdmin.py:116
 #, fuzzy
 msgid "lang.en"
 msgstr "English انگلیسی 英语"
 
 # | msgid "Persian فارسی 波斯语"
 #: hiddifypanel/panel/admin/QuickSetup.py:57
-#: hiddifypanel/panel/admin/SettingAdmin.py:118
+#: hiddifypanel/panel/admin/SettingAdmin.py:116
 #, fuzzy
 msgid "lang.fa"
 msgstr "Persian فارسی 波斯语"
 
 # | msgid "It will change admin and user language"
 #: hiddifypanel/panel/admin/QuickSetup.py:57
-#: hiddifypanel/panel/admin/SettingAdmin.py:118
+#: hiddifypanel/panel/admin/SettingAdmin.py:116
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.lang.description"
@@ -148,15 +148,15 @@ msgstr "它将更改管理和用户语言"
 
 # | msgid "Error! Invalid domain.  The domain format is www.google.com"
 #: hiddifypanel/panel/admin/QuickSetup.py:72
+#: hiddifypanel/panel/admin/SettingAdmin.py:121
 #: hiddifypanel/panel/admin/SettingAdmin.py:123
-#: hiddifypanel/panel/admin/SettingAdmin.py:125
 #, fuzzy
 msgid "config.Invalid domain"
 msgstr "错误！域无效。域格式为 www.google.com"
 
 # | msgid "Domain is exist in domains section. Use another domain"
 #: hiddifypanel/panel/admin/QuickSetup.py:73
-#: hiddifypanel/panel/admin/SettingAdmin.py:127
+#: hiddifypanel/panel/admin/SettingAdmin.py:125
 #, fuzzy
 msgid "config.Domain already used"
 msgstr "域存在于域部分。使用另一个域"
@@ -208,27 +208,27 @@ msgid "config.vmess_enable.description"
 msgstr "几个人报告说 vmess 导致系统被政府检测到。所以不推荐"
 
 # | msgid "Chinese چینی 中国人"
-#: hiddifypanel/panel/admin/SettingAdmin.py:118
+#: hiddifypanel/panel/admin/SettingAdmin.py:116
 msgid "lang.zh"
 msgstr "Chinese چینی 中国人"
 
 # | msgid ""
 # | "Invalid UUID secret. e.g., 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n"
 # | "\n"
-#: hiddifypanel/panel/admin/SettingAdmin.py:136
+#: hiddifypanel/panel/admin/SettingAdmin.py:134
 #, fuzzy
 msgid "config.invalid uuid"
 msgstr "UUID 密码无效。例如，6098ea35-8cb2-4a08-ba15-2be25bc49cb6"
 
 # | msgid "Invalid proxy path. It should be asci string (a-z A-Z 0-9)"
-#: hiddifypanel/panel/admin/SettingAdmin.py:140
+#: hiddifypanel/panel/admin/SettingAdmin.py:138
 #, fuzzy
 msgid "config.Invalid proxy path"
 msgstr "代理路径无效。它应该是 asci 字符串 (a-z A-Z 0-9)"
 
 # | msgid ""
 # | "Invalid port. It should be comma separated integer e.g., 1000,1001"
-#: hiddifypanel/panel/admin/SettingAdmin.py:144
+#: hiddifypanel/panel/admin/SettingAdmin.py:142
 #, fuzzy
 msgid "config.Invalid port"
 msgstr "端口无效。它应该是逗号分隔的整数，例如 1000,1001"
@@ -236,13 +236,13 @@ msgstr "端口无效。它应该是逗号分隔的整数，例如 1000,1001"
 # | msgid ""
 # | "Port 80 should always be presented. We use it for getting ssl
 # certificate"
-#: hiddifypanel/panel/admin/SettingAdmin.py:147
+#: hiddifypanel/panel/admin/SettingAdmin.py:145
 #, fuzzy
 msgid "config.port 80 is required"
 msgstr "应始终提供端口 80。我们用它来获取 ssl 证书"
 
 # | msgid "Port 443 should always be presented. "
-#: hiddifypanel/panel/admin/SettingAdmin.py:150
+#: hiddifypanel/panel/admin/SettingAdmin.py:148
 #, fuzzy
 msgid "config.port 443 is required"
 msgstr "应始终显示端口 443。"
@@ -330,57 +330,6 @@ msgstr "管理员设置"
 #, fuzzy
 msgid "config.admin.description"
 msgstr "管理部分用于配置管理相关设置"
-
-# | msgid "Enable TLS domain fronting"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-#, fuzzy
-msgid "config.domain_fronting_tls_enable.label"
-msgstr "启用 TLS 域前端"
-
-# | msgid "It will use port 443 to connect to CDN"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-#, fuzzy
-msgid "config.domain_fronting_tls_enable.description"
-msgstr "它将使用端口 443 连接到 CDN"
-
-# | msgid "Enable HTTP domain fronting"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-#, fuzzy
-msgid "config.domain_fronting_http_enable.label"
-msgstr "启用 HTTP 域前端"
-
-# | msgid ""
-# | "Enabling HTTP domain fronting causes your domain to be block quickly."
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-#, fuzzy
-msgid "config.domain_fronting_http_enable.description"
-msgstr "启用 HTTP 域前端会导致您的域被快速阻止。"
-
-# | msgid "Domain Fronting"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-#, fuzzy
-msgid "config.domain_fronting_domain.label"
-msgstr "域名前端"
-
-# | msgid ""
-# | "It is used to simulate another website instead of your website in SNI. "
-# | "Therefore, GTW can not filter your domain"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-#, fuzzy
-msgid "config.domain_fronting_domain.description"
-msgstr "它用于在 SNI 中模拟另一个网站而不是您的网站。因此，GTW 无法过滤您的域"
-
-# | msgid "Domain Fronting"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.domain_fronting.label"
-msgstr "域名前端"
-
-# | msgid ""
-# | "It is used to simulate another website instead of your website in SNI. "
-# | "Therefore, GTW can not filter your domain"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.domain_fronting.description"
-msgstr "它用于在 SNI 中模拟另一个网站而不是您的网站。因此，GTW 无法过滤您的域"
 
 # | msgid "Firewall"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -472,39 +421,139 @@ msgstr "通用设置"
 msgid "config.general.description"
 msgstr "这是一般的系统配置。"
 
-# | msgid "Enable KCP"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.kcp_enable.label"
-msgstr "启用 KCP"
-
-# | msgid "It is a UDP based protocol "
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.kcp_enable.description"
-msgstr "它是一个基于 UDP 的协议"
-
-# | msgid "KCP ports"
+# | msgid "Block Iranian sites"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
-msgid "config.kcp_ports.label"
-msgstr "KCP端口"
+msgid "config.block_iran_sites.label"
+msgstr "封锁伊朗网站"
 
 # | msgid ""
-# | "Comma separated integers indicating the ports to use as KCP
-# connection.\n"
+# | "Block Iranian sites to prevent detection by the government (experimental:
+# If"
+# | " there is a problem, please disable it and tell us.)"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
-msgid "config.kcp_ports.description"
-msgstr "逗号分隔的整数，指示用作 KCP 连接的端口。"
+msgid "config.block_iran_sites.description"
+msgstr "屏蔽伊朗网站以防止被政府发现（实验：如果有问题，请禁用它并告诉我们。）"
 
-# | msgid "KCP"
+# | msgid "Shared Secret"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.kcp.label"
-msgstr "KCP"
+#, fuzzy
+msgid "config.shared_secret.label"
+msgstr "共享秘密"
 
-# | msgid "Need to be completed."
+# | msgid ""
+# | "Some proxies don't support accounting currently so we have to use a
+# secret "
+# | "for them."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.kcp.description"
-msgstr "需要完成"
+#, fuzzy
+msgid "config.shared_secret.description"
+msgstr "有些代理目前不支持计费，所以我们必须为他们使用一个秘密。"
+
+# | msgid "Proxies Settings"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.proxies.label"
+msgstr "代理设置"
+
+# | msgid "Define Specific Proxy Settings"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.proxies.description"
+msgstr "定义特定的代理设置"
+
+# | msgid "Enable TLS domain fronting"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.domain_fronting_tls_enable.label"
+msgstr "启用 TLS 域前端"
+
+# | msgid "It will use port 443 to connect to CDN"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.domain_fronting_tls_enable.description"
+msgstr "它将使用端口 443 连接到 CDN"
+
+# | msgid "Enable HTTP domain fronting"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.domain_fronting_http_enable.label"
+msgstr "启用 HTTP 域前端"
+
+# | msgid ""
+# | "Enabling HTTP domain fronting causes your domain to be block quickly."
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.domain_fronting_http_enable.description"
+msgstr "启用 HTTP 域前端会导致您的域被快速阻止。"
+
+# | msgid "Domain Fronting"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.domain_fronting_domain.label"
+msgstr "域名前端"
+
+# | msgid ""
+# | "It is used to simulate another website instead of your website in SNI. "
+# | "Therefore, GTW can not filter your domain"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.domain_fronting_domain.description"
+msgstr "它用于在 SNI 中模拟另一个网站而不是您的网站。因此，GTW 无法过滤您的域"
+
+# | msgid "Domain Fronting"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.domain_fronting.label"
+msgstr "域名前端"
+
+# | msgid ""
+# | "It is used to simulate another website instead of your website in SNI. "
+# | "Therefore, GTW can not filter your domain"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.domain_fronting.description"
+msgstr "它用于在 SNI 中模拟另一个网站而不是您的网站。因此，GTW 无法过滤您的域"
+
+# | msgid "Telegram AD Tag"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.telegram_adtag.label"
+msgstr "电报广告标签"
+
+# | msgid ""
+# | "It is used to show a sponsored channel in the client's chat list. To "
+# | "advertise a channel get a tag from @MTProxybot "
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.telegram_adtag.description"
+msgstr "它用于在客户的聊天列表中显示赞助频道。要宣传频道，请从@MTProxybot 获取标签"
+
+# | msgid "Telegram FakeDomain"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.telegram_fakedomain.label"
+msgstr "电报假域名"
+
+# | msgid ""
+# | "Please use a well known domain in your data center. For example, if you
+# are "
+# | "in azure data center, microsoft-update.com is a good example. "
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.telegram_fakedomain.description"
+msgstr "请在您的数据中心使用众所周知的域。例如，如果您在 Azure 数据中心，microsoft-update.com 就是一个很好的例子。"
+
+# | msgid "Telegram Proxy "
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.telegram.label"
+msgstr "电报代理"
+
+# | msgid "A proxy designed for telegram to bypass telegram filtering"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.telegram.description"
+msgstr "为电报设计的绕过电报过滤的代理"
 
 # | msgid "Allow HTTP connection"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -535,47 +584,13 @@ msgstr "HTTP 端口"
 msgid "config.http_ports.description"
 msgstr "逗号分隔的整数，指示用作未加密连接的端口（需要端口 80）。"
 
-# | msgid "TLS Ports"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-#, fuzzy
-msgid "config.tls_ports.label"
-msgstr "TLS 端口"
+msgid "config.http.label"
+msgstr ""
 
-# | msgid ""
-# | "Comma separated integers indicating the ports to use as TLS connection
-# (port"
-# | " 443 is required).\n"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-#, fuzzy
-msgid "config.tls_ports.description"
-msgstr "逗号分隔的整数，指示用作 TLS 连接的端口（需要端口 443）。"
-
-# | msgid "Ports settings"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-#, fuzzy
-msgid "config.ports.label"
-msgstr "端口设置"
-
-# | msgid "You can select different ports of the system in the section"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-#, fuzzy
-msgid "config.ports.description"
-msgstr "您可以在该部分选择系统的不同端口"
-
-# | msgid "Block Iranian sites"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-#, fuzzy
-msgid "config.block_iran_sites.label"
-msgstr "封锁伊朗网站"
-
-# | msgid ""
-# | "Block Iranian sites to prevent detection by the government (experimental:
-# If"
-# | " there is a problem, please disable it and tell us.)"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-#, fuzzy
-msgid "config.block_iran_sites.description"
-msgstr "屏蔽伊朗网站以防止被政府发现（实验：如果有问题，请禁用它并告诉我们。）"
+msgid "config.http.description"
+msgstr ""
 
 # | msgid "Allow invalid SNI"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -592,45 +607,70 @@ msgstr "允许无效的 SNI"
 msgid "config.allow_invalid_sni.description"
 msgstr "如果您允许无效的 SNI，您可以使用任何域而不是您的原始域来访问代理（不推荐）。"
 
-# | msgid "Secret Proxy Path"
+# | msgid "TLS Ports"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
-msgid "config.proxy_path.label"
-msgstr "秘密代理路径"
+msgid "config.tls_ports.label"
+msgstr "TLS 端口"
 
 # | msgid ""
-# | "We use secret proxy path to hide our proxies for the gouvernment."
+# | "Comma separated integers indicating the ports to use as TLS connection
+# (port"
+# | " 443 is required).\n"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
-msgid "config.proxy_path.description"
-msgstr "我们使用秘密代理路径来隐藏我们对政府的代理。"
+msgid "config.tls_ports.description"
+msgstr "逗号分隔的整数，指示用作 TLS 连接的端口（需要端口 443）。"
 
-# | msgid "Shared Secret"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.tls.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.tls.description"
+msgstr ""
+
+# | msgid "Shadowsocks Fake TLS (simple obfs)"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
-msgid "config.shared_secret.label"
-msgstr "共享秘密"
+msgid "config.ssfaketls_enable.label"
+msgstr "Shadowsocks 假 TLS（简单的 obfs）"
+
+# | msgid "simple obfs protocol is not recommended"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.ssfaketls_enable.description"
+msgstr "不推荐使用简单的 obfs 协议"
+
+# | msgid "SS fakeTLS fakedomain"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.ssfaketls_fakedomain.label"
+msgstr "SS fakeTLS 假域"
 
 # | msgid ""
-# | "Some proxies don't support accounting currently so we have to use a
-# secret "
-# | "for them."
+# | "Please use a well known domain in your data center. For example, if you
+# are "
+# | "in azure data center, microsoft-update.com is a good example. "
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
-msgid "config.shared_secret.description"
-msgstr "有些代理目前不支持计费，所以我们必须为他们使用一个秘密。"
+msgid "config.ssfaketls_fakedomain.description"
+msgstr "请在您的数据中心使用众所周知的域。例如，如果您在 Azure 数据中心，microsoft-update.com 就是一个很好的例子。"
 
-# | msgid "Proxies Settings"
+# | msgid "Shadowsocks FakeTLS"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
-msgid "config.proxies.label"
-msgstr "代理设置"
+msgid "config.ssfaketls.label"
+msgstr "Shadowsocks 伪TLS"
 
-# | msgid "Define Specific Proxy Settings"
+# | msgid ""
+# | "Shadowsocks fake tls is a simple obfusacting tool that encapsulate the
+# date "
+# | "in TLS packet"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
-msgid "config.proxies.description"
-msgstr "定义特定的代理设置"
+msgid "config.ssfaketls.description"
+msgstr "Shadowsocks fake tls 是一个简单的混淆工具，将日期封装在 TLS 数据包中"
 
 # | msgid "Shadow TLS"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -684,47 +724,48 @@ msgstr ""
 "\n"
 "它像木马一样工作，但不需要签名证书。防火墙将使用您选择的有效证书看到真正的 tls 握手。"
 
-# | msgid "Shadowsocks Fake TLS (simple obfs)"
+# | msgid "Enable TUIC"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
-msgid "config.ssfaketls_enable.label"
-msgstr "Shadowsocks 假 TLS（简单的 obfs）"
+msgid "config.tuic_enable.label"
+msgstr "启用 TUIC"
 
-# | msgid "simple obfs protocol is not recommended"
+# | msgid "It is a UDP based protocol similar to quic"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
-msgid "config.ssfaketls_enable.description"
-msgstr "不推荐使用简单的 obfs 协议"
+msgid "config.tuic_enable.description"
+msgstr "它是一个类似于 quic 的基于 UDP 的协议"
 
-# | msgid "SS fakeTLS fakedomain"
+# | msgid "TUIC ports"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
-msgid "config.ssfaketls_fakedomain.label"
-msgstr "SS fakeTLS 假域"
+msgid "config.tuic_port.label"
+msgstr "TUIC端口"
 
-# | msgid ""
-# | "Please use a well known domain in your data center. For example, if you
-# are "
-# | "in azure data center, microsoft-update.com is a good example. "
+# | msgid "Use comma to separate ports like 63000,60000"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
-msgid "config.ssfaketls_fakedomain.description"
-msgstr "请在您的数据中心使用众所周知的域。例如，如果您在 Azure 数据中心，microsoft-update.com 就是一个很好的例子。"
+msgid "config.tuic_port.description"
+msgstr "使用逗号分隔端口，如 63000,60000"
 
-# | msgid "Shadowsocks FakeTLS"
+# | msgid "TUIC"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
-msgid "config.ssfaketls.label"
-msgstr "Shadowsocks 伪TLS"
+msgid "config.tuic.label"
+msgstr "国际车联"
 
 # | msgid ""
-# | "Shadowsocks fake tls is a simple obfusacting tool that encapsulate the
-# date "
-# | "in TLS packet"
+# | "Delicately-TUICed high-performance proxy is on top of the QUIC protocol.
+# \n"
+# | "\n"
+# | "TUIC's goal is to minimize the handshake latency as much as possible"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
-msgid "config.ssfaketls.description"
-msgstr "Shadowsocks fake tls 是一个简单的混淆工具，将日期封装在 TLS 数据包中"
+msgid "config.tuic.description"
+msgstr ""
+"Delicately-TUICed 高性能代理在 QUIC 协议之上。\n"
+"\n"
+"TUIC 的目标是尽可能减少握手延迟"
 
 # | msgid "Enable SSR"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -772,89 +813,60 @@ msgstr "固态雷达"
 msgid "config.ssr.description"
 msgstr "ShadowsocksR 是原始 Shadowsocks 项目的一个分支，据称在安全性和稳定性方面更胜一筹。"
 
-# | msgid "Telegram AD Tag"
+# | msgid "Enable KCP"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.kcp_enable.label"
+msgstr "启用 KCP"
+
+# | msgid "It is a UDP based protocol "
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.kcp_enable.description"
+msgstr "它是一个基于 UDP 的协议"
+
+# | msgid "KCP ports"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
-msgid "config.telegram_adtag.label"
-msgstr "电报广告标签"
+msgid "config.kcp_ports.label"
+msgstr "KCP端口"
 
 # | msgid ""
-# | "It is used to show a sponsored channel in the client's chat list. To "
-# | "advertise a channel get a tag from @MTProxybot "
+# | "Comma separated integers indicating the ports to use as KCP
+# connection.\n"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
-msgid "config.telegram_adtag.description"
-msgstr "它用于在客户的聊天列表中显示赞助频道。要宣传频道，请从@MTProxybot 获取标签"
+msgid "config.kcp_ports.description"
+msgstr "逗号分隔的整数，指示用作 KCP 连接的端口。"
 
-# | msgid "Telegram FakeDomain"
+# | msgid "KCP"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-#, fuzzy
-msgid "config.telegram_fakedomain.label"
-msgstr "电报假域名"
+msgid "config.kcp.label"
+msgstr "KCP"
 
-# | msgid ""
-# | "Please use a well known domain in your data center. For example, if you
-# are "
-# | "in azure data center, microsoft-update.com is a good example. "
+# | msgid "Need to be completed."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-#, fuzzy
-msgid "config.telegram_fakedomain.description"
-msgstr "请在您的数据中心使用众所周知的域。例如，如果您在 Azure 数据中心，microsoft-update.com 就是一个很好的例子。"
+msgid "config.kcp.description"
+msgstr "需要完成"
 
-# | msgid "Telegram Proxy "
+# | msgid "Secret Proxy Path"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
-msgid "config.telegram.label"
-msgstr "电报代理"
-
-# | msgid "A proxy designed for telegram to bypass telegram filtering"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-#, fuzzy
-msgid "config.telegram.description"
-msgstr "为电报设计的绕过电报过滤的代理"
-
-# | msgid "Enable TUIC"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-#, fuzzy
-msgid "config.tuic_enable.label"
-msgstr "启用 TUIC"
-
-# | msgid "It is a UDP based protocol similar to quic"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-#, fuzzy
-msgid "config.tuic_enable.description"
-msgstr "它是一个类似于 quic 的基于 UDP 的协议"
-
-# | msgid "TUIC ports"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-#, fuzzy
-msgid "config.tuic_port.label"
-msgstr "TUIC端口"
-
-# | msgid "Use comma to separate ports like 63000,60000"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-#, fuzzy
-msgid "config.tuic_port.description"
-msgstr "使用逗号分隔端口，如 63000,60000"
-
-# | msgid "TUIC"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-#, fuzzy
-msgid "config.tuic.label"
-msgstr "国际车联"
+msgid "config.proxy_path.label"
+msgstr "秘密代理路径"
 
 # | msgid ""
-# | "Delicately-TUICed high-performance proxy is on top of the QUIC protocol.
-# \n"
-# | "\n"
-# | "TUIC's goal is to minimize the handshake latency as much as possible"
+# | "We use secret proxy path to hide our proxies for the gouvernment."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
-msgid "config.tuic.description"
+msgid "config.proxy_path.description"
+msgstr "我们使用秘密代理路径来隐藏我们对政府的代理。"
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.v2ray_enable.label"
 msgstr ""
-"Delicately-TUICed 高性能代理在 QUIC 协议之上。\n"
-"\n"
-"TUIC 的目标是尽可能减少握手延迟"
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.v2ray_enable.description"
+msgstr ""
 
 # | msgid "Database version label"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -865,6 +877,14 @@ msgstr "Database version label"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.db_version.description"
 msgstr "Database version description"
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.not_found.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.not_found.description"
+msgstr ""
 
 # | msgid "Protocol Usage Chart"
 #: hiddifypanel/panel/admin/templates/index.html:16
@@ -1801,6 +1821,14 @@ msgstr "复制到剪贴板：Ctrl+C，回车"
 # | msgid "Fake site: simulates a site when someone visits your domain"
 #~ msgid "config.decoy_site.description"
 #~ msgstr "Fake site: simulates a site when someone visits your domain"
+
+# | msgid "Ports settings"
+#~ msgid "config.ports.label"
+#~ msgstr "端口设置"
+
+# | msgid "You can select different ports of the system in the section"
+#~ msgid "config.ports.description"
+#~ msgstr "您可以在该部分选择系统的不同端口"
 
 # | msgid "Allow HTTP connection"
 #~ msgid "config.http_proxy.label"

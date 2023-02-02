@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-02 18:25+0100\n"
-"PO-Revision-Date: 2023-02-02 11:20-0600\n"
+"POT-Creation-Date: 2023-02-02 18:44+0100\n"
+"PO-Revision-Date: 2023-02-02 11:43-0600\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Generated-By: Babel 2.11.0\n"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/panel/admin/ProxyAdmin.py:41 hiddifypanel/panel/hiddify.py:102
+#: hiddifypanel/panel/admin/ProxyAdmin.py:41 hiddifypanel/panel/hiddify.py:103
 msgid "admin.config.apply_configs"
 msgstr "اعمال تنظیمات"
 
@@ -23,7 +23,7 @@ msgstr "اعمال تنظیمات"
 # | "Configs have changed successfully. Click %(link)s to apply the configs.
 # It "
 # | "may takes 2 minutes to apply."
-#: hiddifypanel/panel/admin/ProxyAdmin.py:42 hiddifypanel/panel/hiddify.py:103
+#: hiddifypanel/panel/admin/ProxyAdmin.py:42 hiddifypanel/panel/hiddify.py:104
 msgid "config.validation-success"
 msgstr ""
 "تنظیمات با موفقیت ذخیره شدند. لطفا بر روی این لینک: %(link)s کلیک کنید تا"
@@ -75,7 +75,7 @@ msgstr "یکی از فیلدها دچار خطا شده است."
 #: hiddifypanel/panel/admin/ProxyAdmin.py:116
 #: hiddifypanel/panel/admin/QuickSetup.py:58
 #: hiddifypanel/panel/admin/QuickSetup.py:77
-#: hiddifypanel/panel/admin/SettingAdmin.py:163
+#: hiddifypanel/panel/admin/SettingAdmin.py:161
 msgid "Submit"
 msgstr "ثبت"
 
@@ -116,7 +116,7 @@ msgstr "خطایی در تغییر زبان رخ داد"
 
 # | msgid "Language"
 #: hiddifypanel/panel/admin/QuickSetup.py:57
-#: hiddifypanel/panel/admin/SettingAdmin.py:118
+#: hiddifypanel/panel/admin/SettingAdmin.py:116
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/panel/admin/templates/quick_setup.html:22
 msgid "config.lang.label"
@@ -124,33 +124,33 @@ msgstr "زبان"
 
 # | msgid "English انگلیسی 英语"
 #: hiddifypanel/panel/admin/QuickSetup.py:57
-#: hiddifypanel/panel/admin/SettingAdmin.py:118
+#: hiddifypanel/panel/admin/SettingAdmin.py:116
 msgid "lang.en"
 msgstr "English انگلیسی 英语"
 
 # | msgid "Persian فارسی 波斯语"
 #: hiddifypanel/panel/admin/QuickSetup.py:57
-#: hiddifypanel/panel/admin/SettingAdmin.py:118
+#: hiddifypanel/panel/admin/SettingAdmin.py:116
 msgid "lang.fa"
 msgstr "Persian فارسی 波斯语"
 
 # | msgid "It will change admin and user language"
 #: hiddifypanel/panel/admin/QuickSetup.py:57
-#: hiddifypanel/panel/admin/SettingAdmin.py:118
+#: hiddifypanel/panel/admin/SettingAdmin.py:116
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.lang.description"
 msgstr "این گزینه زبان بخش مدیریت و بخش کاربر را تغییر می دهد"
 
 # | msgid "Error! Invalid domain.  The domain format is www.google.com"
 #: hiddifypanel/panel/admin/QuickSetup.py:72
+#: hiddifypanel/panel/admin/SettingAdmin.py:121
 #: hiddifypanel/panel/admin/SettingAdmin.py:123
-#: hiddifypanel/panel/admin/SettingAdmin.py:125
 msgid "config.Invalid domain"
 msgstr "خطا! دامنه نامعتبر! فرمت دامنه باید مثل www.google.com باشد."
 
 # | msgid "Domain is exist in domains section. Use another domain"
 #: hiddifypanel/panel/admin/QuickSetup.py:73
-#: hiddifypanel/panel/admin/SettingAdmin.py:127
+#: hiddifypanel/panel/admin/SettingAdmin.py:125
 msgid "config.Domain already used"
 msgstr "دامنه در بخش دامنه‌ها وجود دارد. از دامنه دیگری استفاده کنید."
 
@@ -201,39 +201,39 @@ msgstr ""
 "توسط فیلترینگ شناسایی شود. بنابراین استفاده از آن توصیه نمی‌شود."
 
 # | msgid "Chinese چینی 中国人"
-#: hiddifypanel/panel/admin/SettingAdmin.py:118
+#: hiddifypanel/panel/admin/SettingAdmin.py:116
 msgid "lang.zh"
 msgstr "Chinese چینی 中国人"
 
 # | msgid ""
 # | "Invalid UUID secret. e.g., 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n"
 # | "\n"
-#: hiddifypanel/panel/admin/SettingAdmin.py:136
+#: hiddifypanel/panel/admin/SettingAdmin.py:134
 msgid "config.invalid uuid"
 msgstr "رمز UUID نامعتبر است. به عنوان مثال: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6"
 
 # | msgid "Invalid proxy path. It should be asci string (a-z A-Z 0-9)"
-#: hiddifypanel/panel/admin/SettingAdmin.py:140
+#: hiddifypanel/panel/admin/SettingAdmin.py:138
 msgid "config.Invalid proxy path"
 msgstr "مسیر پروکسی نامعتبر است. باید رشته متن asci باشد. ( شامل a-z A-Z 0-9)"
 
 # | msgid ""
 # | "Invalid port. It should be comma separated integer e.g., 1000,1001"
-#: hiddifypanel/panel/admin/SettingAdmin.py:144
+#: hiddifypanel/panel/admin/SettingAdmin.py:142
 msgid "config.Invalid port"
 msgstr "پورت نامعتبر است. اعداد باید با کاما از هم جدا شود، مثلاً 1000,1001"
 
 # | msgid ""
 # | "Port 80 should always be presented. We use it for getting ssl
 # certificate"
-#: hiddifypanel/panel/admin/SettingAdmin.py:147
+#: hiddifypanel/panel/admin/SettingAdmin.py:145
 msgid "config.port 80 is required"
 msgstr ""
 "پورت 80 همیشه باید در دسترس باشد. از آن برای دریافت سرتیفیکیت ssl استفاده"
 " می‌کنیم."
 
 # | msgid "Port 443 should always be presented. "
-#: hiddifypanel/panel/admin/SettingAdmin.py:150
+#: hiddifypanel/panel/admin/SettingAdmin.py:148
 msgid "config.port 443 is required"
 msgstr "پورت ۴۴۳ همیشه باید در دسترس باشد."
 
@@ -306,55 +306,6 @@ msgstr "تنظیمات ادمین"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.admin.description"
 msgstr "قسمت ادمین برای دسترسی به تنظیمات مدیریتی است."
-
-# | msgid "Enable TLS domain fronting"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.domain_fronting_tls_enable.label"
-msgstr "فعال کردن نمای دامنه در اتصال TLS."
-
-# | msgid "It will use port 443 to connect to CDN"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.domain_fronting_tls_enable.description"
-msgstr "برای اتصال به CDN از پورت 443 استفاده میکند."
-
-# | msgid "Enable HTTP domain fronting"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.domain_fronting_http_enable.label"
-msgstr "فعال کردن نمای دامنه در اتصال HTTP."
-
-# | msgid ""
-# | "Enabling HTTP domain fronting causes your domain to be block quickly."
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.domain_fronting_http_enable.description"
-msgstr "فعال کردن نمای دامنه در HTTP باعث می شود دامنه شما به سرعت فیلتر شود."
-
-# | msgid "Domain Fronting"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.domain_fronting_domain.label"
-msgstr "دامین فرانتینگ"
-
-# | msgid ""
-# | "It is used to simulate another website instead of your website in SNI. "
-# | "Therefore, GTW can not filter your domain"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.domain_fronting_domain.description"
-msgstr ""
-"از این مورد برای شبیه‌سازی یک وبسایت دیگر به جای SNI شما استفاده می‌شود. "
-"در نتیجه GTW نمی‌تواند دامنه شما را فیلتر کند."
-
-# | msgid "Domain Fronting"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.domain_fronting.label"
-msgstr "نمای دامنه"
-
-# | msgid ""
-# | "It is used to simulate another website instead of your website in SNI. "
-# | "Therefore, GTW can not filter your domain"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.domain_fronting.description"
-msgstr ""
-"برای شبیه سازی وب سایت دیگری به جای وب سایت شما در SNI استفاده می شود. "
-"بنابراین، GTW نمی تواند دامنه شما را فیلتر کند."
 
 # | msgid "Firewall"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -442,39 +393,134 @@ msgstr "تنظیمات عمومی"
 msgid "config.general.description"
 msgstr "این قسمت، تنظیمات عمومی سیستم است."
 
-# | msgid "Enable KCP"
+# | msgid "Block Iranian sites"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.kcp_enable.label"
-msgstr "KCP را فعال کنید."
-
-# | msgid "It is a UDP based protocol "
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.kcp_enable.description"
-msgstr "این یک پروتکل مبتنی بر UDP است."
-
-# | msgid "KCP ports"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.kcp_ports.label"
-msgstr "پورت‌های KCP"
+msgid "config.block_iran_sites.label"
+msgstr "بلاک کردن سایت‌های ایرانی"
 
 # | msgid ""
-# | "Comma separated integers indicating the ports to use as KCP
-# connection.\n"
+# | "Block Iranian sites to prevent detection by the government (experimental:
+# If"
+# | " there is a problem, please disable it and tell us.)"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.kcp_ports.description"
+msgid "config.block_iran_sites.description"
 msgstr ""
-"پورت هایی را که برای استفاده برای اتصال KCP هستند. برای ورود چند پورت، "
-"آنها را با کاما از هم جدا کنید."
+"برای جلوگیری از شناسایی توسط فیلترچی، دسترسی به سایت های ایرانی را مسدود "
+"می‌کند. (این قسمت بصورت آزمایشی است؛ اگر مشکلی وجود دارد، لطفاً آن را "
+"غیرفعال کنید و ما را مطلع کنید.)"
 
-# | msgid "KCP"
+# | msgid "Shared Secret"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.kcp.label"
-msgstr "KCP"
+msgid "config.shared_secret.label"
+msgstr "رمز مشترک"
 
-# | msgid "Need to be completed."
+# | msgid ""
+# | "Some proxies don't support accounting currently so we have to use a
+# secret "
+# | "for them."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.kcp.description"
-msgstr "نیاز به کامل شدن دارد."
+msgid "config.shared_secret.description"
+msgstr ""
+"برخی از پراکسی‌ها در حال حاضر محاسبه حجم ترافیک را پشتیبانی نمی‌کنند، "
+"بنابراین باید از یک رمز برای آنها استفاده کنیم."
+
+# | msgid "Proxies Settings"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.proxies.label"
+msgstr "تنظیمات پروکسی"
+
+# | msgid "Define Specific Proxy Settings"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.proxies.description"
+msgstr "تنظیمات یک پروکسی خاص را مشخص کنید."
+
+# | msgid "Enable TLS domain fronting"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.domain_fronting_tls_enable.label"
+msgstr "فعال کردن نمای دامنه در اتصال TLS."
+
+# | msgid "It will use port 443 to connect to CDN"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.domain_fronting_tls_enable.description"
+msgstr "برای اتصال به CDN از پورت 443 استفاده میکند."
+
+# | msgid "Enable HTTP domain fronting"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.domain_fronting_http_enable.label"
+msgstr "فعال کردن نمای دامنه در اتصال HTTP."
+
+# | msgid ""
+# | "Enabling HTTP domain fronting causes your domain to be block quickly."
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.domain_fronting_http_enable.description"
+msgstr "فعال کردن نمای دامنه در HTTP باعث می شود دامنه شما به سرعت فیلتر شود."
+
+# | msgid "Domain Fronting"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.domain_fronting_domain.label"
+msgstr "دامین فرانتینگ"
+
+# | msgid ""
+# | "It is used to simulate another website instead of your website in SNI. "
+# | "Therefore, GTW can not filter your domain"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.domain_fronting_domain.description"
+msgstr ""
+"از این مورد برای شبیه‌سازی یک وبسایت دیگر به جای SNI شما استفاده می‌شود. "
+"در نتیجه GTW نمی‌تواند دامنه شما را فیلتر کند."
+
+# | msgid "Domain Fronting"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.domain_fronting.label"
+msgstr "نمای دامنه"
+
+# | msgid ""
+# | "It is used to simulate another website instead of your website in SNI. "
+# | "Therefore, GTW can not filter your domain"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.domain_fronting.description"
+msgstr ""
+"برای شبیه سازی وب سایت دیگری به جای وب سایت شما در SNI استفاده می شود. "
+"بنابراین، GTW نمی تواند دامنه شما را فیلتر کند."
+
+# | msgid "Telegram AD Tag"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.telegram_adtag.label"
+msgstr "تگ تبلیغاتی تلگرام"
+
+# | msgid ""
+# | "It is used to show a sponsored channel in the client's chat list. To "
+# | "advertise a channel get a tag from @MTProxybot "
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.telegram_adtag.description"
+msgstr ""
+"برای نشان دادن کانال اسپانسر شده در لیست چت کاربر استفاده می شود. برای "
+"تبلیغ یک کانال یک تگ از @MTProxybot دریافت کنید. "
+
+# | msgid "Telegram FakeDomain"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.telegram_fakedomain.label"
+msgstr "دامنه فیک تلگرام "
+
+# | msgid ""
+# | "Please use a well known domain in your data center. For example, if you
+# are "
+# | "in azure data center, microsoft-update.com is a good example. "
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.telegram_fakedomain.description"
+msgstr ""
+"لطفا از یک دامنه معتبر در دیتاسنتر خود استفاده کنید. برای مثال، اگر از "
+"دیتاسنتر Azure استفاده می‌کنید، microsoft-update.com یک نمونه خوب است."
+
+# | msgid "Telegram Proxy "
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.telegram.label"
+msgstr "پروکسی تلگرام"
+
+# | msgid "A proxy designed for telegram to bypass telegram filtering"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.telegram.description"
+msgstr "پروکسی برای تلگرام طراحی شده تا فیلترینگ تلگرام را دور بزند."
 
 # | msgid "Allow HTTP connection"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -502,49 +548,16 @@ msgstr "پورت‌های HTTP"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.http_ports.description"
 msgstr ""
-"پورت هایی را که برای استفاده برای اتصال HTTP هستند. برای ورود چند پورت، "
-"آنها را با کاما از هم جدا کنید. (پورت 80 اجباری است)."
+"پورت هایی که برای استفاده اتصال HTTP هستند. برای ورود چند پورت، آنها را "
+"با کاما از هم جدا کنید.  (پورت 80 اجباری است)."
 
-# | msgid "TLS Ports"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.tls_ports.label"
-msgstr "پورت‌های TLS"
-
-# | msgid ""
-# | "Comma separated integers indicating the ports to use as TLS connection
-# (port"
-# | " 443 is required).\n"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.tls_ports.description"
+msgid "config.http.label"
 msgstr ""
-"پورت هایی را که برای استفاده برای اتصال TLS هستند. برای ورود چند پورت، "
-"آنها را با کاما از هم جدا کنید. (پورت 443 اجباری است)."
 
-# | msgid "Ports settings"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.ports.label"
-msgstr "تنظیمات پورت"
-
-# | msgid "You can select different ports of the system in the section"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.ports.description"
-msgstr "میتوانید از این قسمت پورت‌های مختلف سیستم را انتخاب کنید."
-
-# | msgid "Block Iranian sites"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.block_iran_sites.label"
-msgstr "بلاک کردن سایت‌های ایرانی"
-
-# | msgid ""
-# | "Block Iranian sites to prevent detection by the government (experimental:
-# If"
-# | " there is a problem, please disable it and tell us.)"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.block_iran_sites.description"
+msgid "config.http.description"
 msgstr ""
-"برای جلوگیری از شناسایی توسط فیلترچی، دسترسی به سایت های ایرانی را مسدود "
-"می‌کند. (این قسمت بصورت آزمایشی است؛ اگر مشکلی وجود دارد، لطفاً آن را "
-"غیرفعال کنید و ما را مطلع کنید.)"
 
 # | msgid "Allow invalid SNI"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -561,43 +574,69 @@ msgstr ""
 "اگر به SNI نامعتبر اجازه دهید، می‌توانید از هر دامنه‌ای به جای دامنه اصلی"
 " خود برای دسترسی به پروکسی استفاده کنید (توصیه نمی‌شود)."
 
-# | msgid "Secret Proxy Path"
+# | msgid "TLS Ports"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.proxy_path.label"
-msgstr "مسیر مخفی پروکسی"
+msgid "config.tls_ports.label"
+msgstr "پورت‌های TLS"
 
 # | msgid ""
-# | "We use secret proxy path to hide our proxies for the gouvernment."
+# | "Comma separated integers indicating the ports to use as TLS connection
+# (port"
+# | " 443 is required).\n"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.proxy_path.description"
+msgid "config.tls_ports.description"
 msgstr ""
-"ما از مسیر‌های پروکسی مخفی استفاده میکنیم تا پروکسی‌ها را از فیلترچی مخفی"
-" کنیم."
+"پورت هایی که برای استفاده اتصال TLS هستند. برای ورود چند پورت، آنها را با"
+" کاما از هم جدا کنید. (پورت 443 اجباری است)."
 
-# | msgid "Shared Secret"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.shared_secret.label"
-msgstr "رمز مشترک"
+msgid "config.tls.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.tls.description"
+msgstr ""
+
+# | msgid "Shadowsocks Fake TLS (simple obfs)"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.ssfaketls_enable.label"
+msgstr "Shadowsocks Fake TLS (obfs ساده)"
+
+# | msgid "simple obfs protocol is not recommended"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.ssfaketls_enable.description"
+msgstr "پروتکل obfs ساده، توصیه نمی شود"
+
+# | msgid "SS fakeTLS fakedomain"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.ssfaketls_fakedomain.label"
+msgstr "دامنه جعلی برای SS fakeTLS"
 
 # | msgid ""
-# | "Some proxies don't support accounting currently so we have to use a
-# secret "
-# | "for them."
+# | "Please use a well known domain in your data center. For example, if you
+# are "
+# | "in azure data center, microsoft-update.com is a good example. "
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.shared_secret.description"
+msgid "config.ssfaketls_fakedomain.description"
 msgstr ""
-"برخی از پراکسی‌ها در حال حاضر محاسبه حجم ترافیک را پشتیبانی نمی‌کنند، "
-"بنابراین باید از یک رمز برای آنها استفاده کنیم."
+"لطفاً از یک دامنه شناخته شده در دیتاسنتر خود استفاده کنید. به عنوان مثال،"
+" اگر از دیتاسنتر azure استفاده می‌کنید، microsoft-update.com یک نمونه خوب"
+" است."
 
-# | msgid "Proxies Settings"
+# | msgid "Shadowsocks FakeTLS"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.proxies.label"
-msgstr "تنظیمات پروکسی"
+msgid "config.ssfaketls.label"
+msgstr "Shadowsocks FakeTLS"
 
-# | msgid "Define Specific Proxy Settings"
+# | msgid ""
+# | "Shadowsocks fake tls is a simple obfusacting tool that encapsulate the
+# date "
+# | "in TLS packet"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.proxies.description"
-msgstr "تنظیمات یک پروکسی خاص را مشخص کنید."
+msgid "config.ssfaketls.description"
+msgstr ""
+"شادوساکس FakeTLS یک روش مبهم سازی ساده هست که دیتا را در بسته  TLS کپسوله"
+" میکند تا فیلترچی فریب بخورد."
 
 # | msgid "Shadow TLS"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -651,46 +690,41 @@ msgstr ""
 "مانند تروجان کار می کند اما نیازی به signing certificate ندارد. فایروال، "
 "tls handshake واقعی را با گواهی معتبری که انتخاب می کنید، می‌بیند."
 
-# | msgid "Shadowsocks Fake TLS (simple obfs)"
+# | msgid "Enable TUIC"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.ssfaketls_enable.label"
-msgstr "Shadowsocks Fake TLS (obfs ساده)"
+msgid "config.tuic_enable.label"
+msgstr "فعال کردن TUIC"
 
-# | msgid "simple obfs protocol is not recommended"
+# | msgid "It is a UDP based protocol similar to quic"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.ssfaketls_enable.description"
-msgstr "پروتکل obfs ساده، توصیه نمی شود"
+msgid "config.tuic_enable.description"
+msgstr "این یک پروتکل مبتنی بر UDP شبیه به quic است"
 
-# | msgid "SS fakeTLS fakedomain"
+# | msgid "TUIC ports"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.ssfaketls_fakedomain.label"
-msgstr "دامنه جعلی برای SS fakeTLS"
+msgid "config.tuic_port.label"
+msgstr "پورت‌های TUIC"
 
-# | msgid ""
-# | "Please use a well known domain in your data center. For example, if you
-# are "
-# | "in azure data center, microsoft-update.com is a good example. "
+# | msgid "Use comma to separate ports like 63000,60000"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.ssfaketls_fakedomain.description"
-msgstr ""
-"لطفاً از یک دامنه شناخته شده در دیتاسنتر خود استفاده کنید. به عنوان مثال،"
-" اگر از دیتاسنتر azure استفاده می‌کنید، microsoft-update.com یک نمونه خوب"
-" است."
+msgid "config.tuic_port.description"
+msgstr "از کاما برای جدا کردن پروت‌ها استفاده کنید مثلا 63000,60000"
 
-# | msgid "Shadowsocks FakeTLS"
+# | msgid "TUIC"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.ssfaketls.label"
-msgstr "Shadowsocks FakeTLS"
+msgid "config.tuic.label"
+msgstr "TUIC"
 
 # | msgid ""
-# | "Shadowsocks fake tls is a simple obfusacting tool that encapsulate the
-# date "
-# | "in TLS packet"
+# | "Delicately-TUICed high-performance proxy is on top of the QUIC protocol.
+# \n"
+# | "\n"
+# | "TUIC's goal is to minimize the handshake latency as much as possible"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.ssfaketls.description"
+msgid "config.tuic.description"
 msgstr ""
-"شادوساکس FakeTLS یک روش مبهم سازی ساده هست که دیتا را در بسته  TLS کپسوله"
-" میکند تا فیلترچی فریب بخورد."
+"پروکسی Delicately-TUICed با کارایی بالا روی پروتکل QUIC است. \n"
+"هدف TUIC این است که تأخیر handshake را تا حد امکان به حداقل برساند."
 
 # | msgid "Enable SSR"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -739,80 +773,60 @@ msgstr ""
 "ShadowsocksR ورژنی از پروژه اصلی Shadowsocks است که ادعا می‌شود از نظر "
 "امنیت و ثبات نسبت به آن بهتر است."
 
-# | msgid "Telegram AD Tag"
+# | msgid "Enable KCP"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.telegram_adtag.label"
-msgstr "تگ تبلیغاتی تلگرام"
+msgid "config.kcp_enable.label"
+msgstr "KCP را فعال کنید."
+
+# | msgid "It is a UDP based protocol "
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.kcp_enable.description"
+msgstr "این یک پروتکل مبتنی بر UDP است."
+
+# | msgid "KCP ports"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.kcp_ports.label"
+msgstr "پورت‌های KCP"
 
 # | msgid ""
-# | "It is used to show a sponsored channel in the client's chat list. To "
-# | "advertise a channel get a tag from @MTProxybot "
+# | "Comma separated integers indicating the ports to use as KCP
+# connection.\n"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.telegram_adtag.description"
+msgid "config.kcp_ports.description"
 msgstr ""
-"برای نشان دادن کانال اسپانسر شده در لیست چت کاربر استفاده می شود. برای "
-"تبلیغ یک کانال یک تگ از @MTProxybot دریافت کنید. "
+"پورت هایی که برای استفاده اتصال KCP هستند. برای ورود چند پورت، آنها را با"
+" کاما از هم جدا کنید. "
 
-# | msgid "Telegram FakeDomain"
+# | msgid "KCP"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.telegram_fakedomain.label"
-msgstr "دامنه فیک تلگرام "
+msgid "config.kcp.label"
+msgstr "KCP"
+
+# | msgid "Need to be completed."
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.kcp.description"
+msgstr "نیاز به کامل شدن دارد."
+
+# | msgid "Secret Proxy Path"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.proxy_path.label"
+msgstr "مسیر مخفی پروکسی"
 
 # | msgid ""
-# | "Please use a well known domain in your data center. For example, if you
-# are "
-# | "in azure data center, microsoft-update.com is a good example. "
+# | "We use secret proxy path to hide our proxies for the gouvernment."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.telegram_fakedomain.description"
+msgid "config.proxy_path.description"
 msgstr ""
-"لطفا از یک دامنه معتبر در دیتاسنتر خود استفاده کنید. برای مثال، اگر از "
-"دیتاسنتر Azure استفاده می‌کنید، microsoft-update.com یک نمونه خوب است."
+"ما از مسیر‌های پروکسی مخفی استفاده میکنیم تا پروکسی‌ها را از فیلترچی مخفی"
+" کنیم."
 
-# | msgid "Telegram Proxy "
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.telegram.label"
-msgstr "پروکسی تلگرام"
-
-# | msgid "A proxy designed for telegram to bypass telegram filtering"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.telegram.description"
-msgstr "پروکسی برای تلگرام طراحی شده تا فیلترینگ تلگرام را دور بزند."
-
-# | msgid "Enable TUIC"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.tuic_enable.label"
-msgstr "فعال کردن TUIC"
-
-# | msgid "It is a UDP based protocol similar to quic"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.tuic_enable.description"
-msgstr "این یک پروتکل مبتنی بر UDP شبیه به quic است"
-
-# | msgid "TUIC ports"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.tuic_port.label"
-msgstr "پورت‌های TUIC"
-
-# | msgid "Use comma to separate ports like 63000,60000"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.tuic_port.description"
-msgstr "از کاما برای جدا کردن پروت‌ها استفاده کنید مثلا 63000,60000"
-
-# | msgid "TUIC"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.tuic.label"
-msgstr "TUIC"
-
-# | msgid ""
-# | "Delicately-TUICed high-performance proxy is on top of the QUIC protocol.
-# \n"
-# | "\n"
-# | "TUIC's goal is to minimize the handshake latency as much as possible"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.tuic.description"
+msgid "config.v2ray_enable.label"
 msgstr ""
-"پروکسی Delicately-TUICed با کارایی بالا روی پروتکل QUIC است. \n"
-"هدف TUIC این است که تأخیر handshake را تا حد امکان به حداقل برساند."
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.v2ray_enable.description"
+msgstr ""
 
 # | msgid "Database version label"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -823,6 +837,14 @@ msgstr "ورژن دیتابیس"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.db_version.description"
 msgstr "توضیحات ورژن دیتابیس"
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.not_found.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.not_found.description"
+msgstr ""
 
 # | msgid "Protocol Usage Chart"
 #: hiddifypanel/panel/admin/templates/index.html:16
@@ -1673,6 +1695,14 @@ msgstr "کپی کردن به کلیپ‌بورد: دکمه Ctrl+C و Enter"
 #~ "سایت جعلی: زمانی که شخصی از دامنه"
 #~ " شما بازدید می کند یک سایت جعلی"
 #~ " را نمایش می‌دهد."
+
+# | msgid "Ports settings"
+#~ msgid "config.ports.label"
+#~ msgstr "تنظیمات پورت"
+
+# | msgid "You can select different ports of the system in the section"
+#~ msgid "config.ports.description"
+#~ msgstr "میتوانید از این قسمت پورت‌های مختلف سیستم را انتخاب کنید."
 
 # | msgid "Allow HTTP connection"
 #~ msgid "config.http_proxy.label"

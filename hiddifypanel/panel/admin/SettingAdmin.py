@@ -76,12 +76,10 @@ class SettingAdmin(FlaskView):
         bool_types={c.key:'bool' for c in boolconfigs}
 
         configs=[*boolconfigs,*strconfigs]
-        categories=sorted([ c for c in {c.info()['category']:1 for c in configs}])
-
-        for cat in categories:
+        for cat in ConfigCategory:
             if cat=='hidden':continue
 
-            cat_configs=[c for c in configs if c.info()['category']==cat]
+            cat_configs=[c for c in configs if c.key.category()==cat]
             
             for c in cat_configs:
                 res+=f'{{{{_("config.{c.key}.label")}}}} {{{{_("config.{c.key}.description")}}}}'
