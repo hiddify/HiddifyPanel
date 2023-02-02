@@ -4,6 +4,7 @@ import datetime
 from hiddifypanel.panel.database import db
 from hiddifypanel.models import StrConfig,BoolConfig,User,Domain,get_hconfigs,Proxy,hconfig,ConfigEnum
 import urllib
+from flask_babelex import lazy_gettext as _
 
 def auth(function):
     def wrapper(*args,**kwargs):
