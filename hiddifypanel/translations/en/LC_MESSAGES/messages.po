@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-02 19:04+0100\n"
-"PO-Revision-Date: 2023-02-02 12:04-0600\n"
+"POT-Creation-Date: 2023-02-02 20:19+0100\n"
+"PO-Revision-Date: 2023-02-02 13:06-0600\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -803,10 +803,10 @@ msgstr ""
 msgid "config.kcp.label"
 msgstr "KCP"
 
-# | msgid "Need to be completed."
+# | msgid "KCP Configurations could be set in this section."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.kcp.description"
-msgstr "Need to be completed."
+msgstr "KCP Configurations could be set in this section."
 
 # | msgid "Secret Proxy Path"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1101,27 +1101,28 @@ msgstr ""
 "                In this mode, you will not feel any change in the speed.\n"
 "            </div>"
 
-# | msgid "Install proxy for only blocked sites"
-#: hiddifypanel/panel/user/templates/home/clash-links.html:10
+# | msgid "Install for only blocked sites"
+#: hiddifypanel/panel/user/templates/home/clash-links.html:11
+#: hiddifypanel/panel/user/templates/home/clash-links.html:23
 msgid "user.home.clash_configs.only_for_blocked_sites.btn"
-msgstr "Install proxy for only blocked sites"
+msgstr "Install for only blocked sites"
 
 # | msgid "Alternative link for Clash"
-#: hiddifypanel/panel/user/templates/home/clash-links.html:13
-#: hiddifypanel/panel/user/templates/home/clash-links.html:31
-#: hiddifypanel/panel/user/templates/home/clash-links.html:50
+#: hiddifypanel/panel/user/templates/home/clash-links.html:14
+#: hiddifypanel/panel/user/templates/home/clash-links.html:39
+#: hiddifypanel/panel/user/templates/home/clash-links.html:65
 msgid "user.home.clash_configs.alternative_for_normal_clash"
 msgstr "Alternative link for Clash"
 
 # | msgid "Instal Clash"
-#: hiddifypanel/panel/user/templates/home/clash-links.html:16
-#: hiddifypanel/panel/user/templates/home/clash-links.html:34
-#: hiddifypanel/panel/user/templates/home/clash-links.html:53
+#: hiddifypanel/panel/user/templates/home/clash-links.html:17
+#: hiddifypanel/panel/user/templates/home/clash-links.html:42
+#: hiddifypanel/panel/user/templates/home/clash-links.html:68
 msgid "user.home.clash_configs.link_for_normal_clash"
 msgstr "Instal Clash"
 
 # | msgid "Foreign sites proxy"
-#: hiddifypanel/panel/user/templates/home/clash-links.html:23
+#: hiddifypanel/panel/user/templates/home/clash-links.html:30
 msgid "user.home.clash_configs.foreign_sites.title"
 msgstr "Foreign sites proxy"
 
@@ -1130,7 +1131,7 @@ msgstr "Foreign sites proxy"
 # | "<div class=\"callout callout-warning\">\n"
 # | "\tThis mode is useful in accessing some sanctaioned sites.\n"
 # | "</div>\n"
-#: hiddifypanel/panel/user/templates/home/clash-links.html:25
+#: hiddifypanel/panel/user/templates/home/clash-links.html:32
 msgid "user.home.clash_configs.foreign_sites.description"
 msgstr ""
 "Use proxy for all foreign sites (even not blocked ones)\n"
@@ -1139,31 +1140,32 @@ msgstr ""
 "</div>\n"
 
 # | msgid "Install for foreign sites"
-#: hiddifypanel/panel/user/templates/home/clash-links.html:28
+#: hiddifypanel/panel/user/templates/home/clash-links.html:36
+#: hiddifypanel/panel/user/templates/home/clash-links.html:48
 msgid "user.home.clash_configs.foreign_sites.btn"
 msgstr "Install for foreign sites"
 
 # | msgid "Proxy for all sites"
-#: hiddifypanel/panel/user/templates/home/clash-links.html:42
+#: hiddifypanel/panel/user/templates/home/clash-links.html:56
 msgid "user.home.clash_configs.all_sites.title"
 msgstr "Proxy for all sites"
 
 # | msgid ""
 # | "Use proxy for all websites even for local websites.\n"
 # | "<div class=\"callout callout-danger\">\n"
-# | "    The speed of loading local sites will be reduced and will endanger "
-# | "your privacy.\n"
+# | "    Loading local sites will be slower and will endanger your privacy.\n"
 # | "</div>\n"
-#: hiddifypanel/panel/user/templates/home/clash-links.html:44
+#: hiddifypanel/panel/user/templates/home/clash-links.html:58
 msgid "user.home.clash_configs.all_sites.description"
 msgstr ""
 "Use proxy for all websites even for local websites.\n"
 "<div class=\"callout callout-danger\">\n"
-"    The speed of loading local sites will be reduced and will endanger your privacy.\n"
+"    Loading local sites will be slower and will endanger your privacy.\n"
 "</div>\n"
 
 # | msgid "Install Proxy for all sites"
-#: hiddifypanel/panel/user/templates/home/clash-links.html:47
+#: hiddifypanel/panel/user/templates/home/clash-links.html:62
+#: hiddifypanel/panel/user/templates/home/clash-links.html:74
 msgid "user.home.clash_configs.all_sites.btn"
 msgstr "Install Proxy for all sites"
 
@@ -1350,7 +1352,7 @@ msgstr ""
 "        </div>"
 
 # | msgid "Other applications (shadowlink, fairVPN, napsternetv)"
-#: hiddifypanel/panel/user/templates/home/ios.html:31
+#: hiddifypanel/panel/user/templates/home/ios.html:33
 msgid "user.home.ios.others.title"
 msgstr "Other applications (shadowlink, fairVPN, napsternetv)"
 
@@ -1368,7 +1370,7 @@ msgstr "Other applications (shadowlink, fairVPN, napsternetv)"
 # | "\n"
 # | "<br />\n"
 # | "Then apply one of the following configs:"
-#: hiddifypanel/panel/user/templates/home/ios.html:42
+#: hiddifypanel/panel/user/templates/home/ios.html:44
 msgid "user.home.ios.others.intro"
 msgstr ""
 "First install on of the following applications:\n"

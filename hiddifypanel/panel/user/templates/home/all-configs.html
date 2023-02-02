@@ -55,7 +55,7 @@
         {% set pinfo=link_maker.make_proxy(type) %}
         % if pinfo!=None
         <tr>
-            <td><div class="btn-group"><a href='{{link_maker.to_link(pinfo)}}' class="btn btn-primary orig-link">{{pinfo["name"]}}</a></div></td>
+            <td><div class="btn-group"><a href='{{link_maker.to_link(pinfo)}}' class="btn btn-primary orig-link">{{pinfo["name"].replace("_", " ")}}</a></div></td>
             <td><span class="badge badge-danger">{{pinfo["mode"]}}</span></td>
             <td><span class="badge badge-info">{{pinfo["proto"]}}</span></td>
             <td><span class="badge badge-warning">{{pinfo['transport']}}</span></td>     

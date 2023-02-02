@@ -169,7 +169,7 @@
     var link = this.getAttribute('data-copy')|| this.href;
     try {
       navigator.clipboard.writeText(link).then(function () {
-        alert("{{_('user.home.link.success-copy')}} " + link);
+        alert("{{_('user.home.link.success-copy')}} \n" + link);
       }, function (err) {
         window.prompt("{{_('user.home.link.manual-copy')}}: Ctrl+C, Enter", link);
       });
@@ -195,6 +195,17 @@
             $('#share-link-redirect').show()
         $('#share-qr-code').modal('show');
     }
+
+
+  
+</script>
+
+
+
+{% endblock %}
+
+{% block tail %}
+<script>
   $(document).ready(function () {
   $('a.copy-link').click(copy_click)
   $('a.share-link').click(share_click)
@@ -206,15 +217,7 @@
   })
 
 
-  
 </script>
-
-
-
-{% endblock %}
-
-{% block tail %}
-
 {% endblock %}
 </body>
 </html>

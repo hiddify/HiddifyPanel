@@ -21,6 +21,7 @@ class UserView(FlaskView):
         c=get_common_data(g.user_uuid)
         resp= Response(render_template('clash_proxies.yml',meta_or_normal=meta_or_normal,**c))
         resp.mimetype="text/plain"
+        
         return resp
     
     @route('/clash/<mode>.yml')
@@ -79,8 +80,8 @@ def get_common_data(user_uuid):
         'user':user,
         'domain':domain,
         'is_cdn':is_cdn,
-        'usage_limit_b':User.monthly_usage_limit_GB*1024*1024*1024,
-        'usage_current_b':User.current_usage_GB*1024*1024*1024,
+        'usage_limit_b':user.monthly_usage_limit_GB*1024*1024*1024,
+        'usage_current_b':user.current_usage_GB*1024*1024*1024,
         'expire_s':(user.expiry_time-datetime.date(1970, 1, 1)).total_seconds,
         'expire_days':(user.expiry_time-datetime.date.today()).days,
         'hconfigs':get_hconfigs(),

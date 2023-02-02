@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-02 19:04+0100\n"
-"PO-Revision-Date: 2023-02-02 12:04-0600\n"
+"POT-Creation-Date: 2023-02-02 20:19+0100\n"
+"PO-Revision-Date: 2023-02-02 13:06-0600\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -181,7 +181,7 @@ msgstr "فعال کردن پروکسی تلگرام (MTProxy)"
 #: hiddifypanel/panel/admin/QuickSetup.py:75
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.telegram_enable.description"
-msgstr "برای کپسوله کردن پروکسی تلگرام در قالب ترافیک TLS استفاده می‌شود"
+msgstr "برای کپسوله کردن پروکسی تلگرام در قالب ترافیک TLS استفاده می‌شود."
 
 # | msgid "Enable vmess"
 #: hiddifypanel/panel/admin/QuickSetup.py:76
@@ -386,7 +386,7 @@ msgstr "در این قسمت تنظیمات Torrent Block قابل انجام ا
 # | msgid "Decoy Site"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.decoy_domain.label"
-msgstr "سایت جعلی"
+msgstr "آدرس سایت جعلی:"
 
 # | msgid "Fake site: simulates a site when someone visits your domain"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -443,8 +443,8 @@ msgstr "رمز مشترک"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.shared_secret.description"
 msgstr ""
-"برخی از پراکسی‌ها در حال حاضر محاسبه حجم ترافیک را پشتیبانی نمی‌کنند، "
-"بنابراین باید از یک رمز برای آنها استفاده کنیم."
+"برخی از پروکسی‌ها در حال حاضر محاسبه حجم ترافیک را پشتیبانی نمی‌کنند، این"
+" رمز برای این دسته از پروکسی‌ها استفاده خواهد شد."
 
 # | msgid "Proxies Settings"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -454,12 +454,12 @@ msgstr "تنظیمات پروکسی"
 # | msgid "Define Specific Proxy Settings"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.proxies.description"
-msgstr "تنظیمات یک پروکسی خاص را مشخص کنید."
+msgstr "تنظیمات اختصاصی را مشخص کنید."
 
 # | msgid "Enable TLS domain fronting"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.domain_fronting_tls_enable.label"
-msgstr "فعال کردن نمای دامنه در اتصال TLS."
+msgstr "فعال کردن دامین فرانتینگ در اتصال TLS."
 
 # | msgid "It will use port 443 to connect to CDN"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -475,7 +475,7 @@ msgstr "فعال کردن دامین فرانتینگ در اتصال HTTP."
 # | "Enabling HTTP domain fronting causes your domain to be block quickly."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.domain_fronting_http_enable.description"
-msgstr "فعال کردن نمای دامنه در HTTP باعث می شود دامنه شما به سرعت فیلتر شود."
+msgstr "فعال کردن دامین فرانتینگ در HTTP باعث می شود دامنه شما به سرعت فیلتر شود."
 
 # | msgid "Domain Fronting"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -542,7 +542,9 @@ msgstr "پروکسی تلگرام"
 # | msgid "A proxy designed for telegram to bypass telegram filtering"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.telegram.description"
-msgstr "پروکسی برای تلگرام طراحی شده تا فیلترینگ تلگرام را دور بزند."
+msgstr ""
+"پروکسی تلگرام برای استفاده درون اپ تلگرام طراحی شده تا فیلترینگ تلگرام را"
+" دور بزند."
 
 # | msgid "Allow HTTP connection"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -828,10 +830,10 @@ msgstr ""
 msgid "config.kcp.label"
 msgstr "KCP"
 
-# | msgid "Need to be completed."
+# | msgid "KCP Configurations could be set in this section."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.kcp.description"
-msgstr "نیاز به کامل شدن دارد."
+msgstr "تنظیمات KCP"
 
 # | msgid "Secret Proxy Path"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1009,7 +1011,7 @@ msgstr "به جز vless"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:44
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:43
 msgid "user.home.allconfig.link-configs"
-msgstr "لینک اشتراک"
+msgstr "لینک برای Subscription"
 
 # | msgid "Direct Download"
 #: hiddifypanel/panel/user/templates/home/android.html:4
@@ -1070,15 +1072,15 @@ msgstr ""
 "آیا استفاده از HiddifyAndorid ایمن است؟\n"
 "     </div>\n"
 "     <div class=\"card-body\">\n"
-"         HiddifyAndroid یک ورژن (fork) منبع باز Clash است که از پروتکل "
-"های بیشتری پشتیبانی می کند.\n"
+"        اپ HiddifyAndroid یک ورژن (fork) منبع باز از اپ Clash است که نسبت"
+" به اپ کلش از پروتکل های بیشتری پشتیبانی می کند.\n"
 "         <br>\n"
-"         کدهای منبع آن موجود است\n"
+"         کدهای منبع آن را در گیت‌هاب می‌توانید ببینید:\n"
 "         <a "
 "href=\"https://github.com/hiddify/HiddifyProxyAndroid\">GitHub</a>.\n"
 "        \n"
 "         <br>\n"
-"         بنابراین، ایمن است.\n"
+"         بنابراین، با خیال راحت از آن استفاده کنید.\n"
 "\n"
 "         <details>\n"
 "             <summary>جایگزین: Normal Clash</summary>\n"
@@ -1086,7 +1088,7 @@ msgstr ""
 "                 <a "
 "href=\"https://play.google.com/store/apps/details?id=com.github.kr328.clash\""
 "\n"
-"                     class=\"btn btn-warning orig-link\">برخورد در Google"
+"                     class=\"btn btn-warning orig-link\">دانلود از Google"
 " Play</a>\n"
 "             </div>\n"
 "             <div class=\"btn-group\">\n"
@@ -1098,8 +1100,8 @@ msgstr ""
 "             </div>\n"
 "\n"
 "             <div class=\"alert alert-danger\">\n"
-"             Clash از پروتکل VLESS پشتیبانی نمی کند. بنابراین، باید لینک "
-"دیگری برای آن اضافه کنیم.\n"
+"             Clash از پروتکل VLESS پشتیبانی نمی کند. بنابراین، باید از "
+"پروتکل دیگری برای آن استفاده کنید.\n"
 "             </div>\n"
 "            \n"
 "\n"
@@ -1114,7 +1116,9 @@ msgstr "تست"
 # | msgid "Now based on your needs, click on one of the following links."
 #: hiddifypanel/panel/user/templates/home/clash-links.html:1
 msgid "user.home.clash_configs.intro"
-msgstr "حالا بر اساس نیازتان، روی یکی از لینک‌های زیر کلیک کنید."
+msgstr ""
+"پس از نصب اپ مورد نیاز در قسمت بالا، بر اساس نیازتان، روی یکی از لینک‌های"
+" زیر کلیک کنید تا پروکسی سرورها به اپ‌تان وارد شوند:"
 
 # | msgid "For only blocked sites"
 #: hiddifypanel/panel/user/templates/home/clash-links.html:5
@@ -1130,33 +1134,36 @@ msgstr "فقط برای سایت‌های فیلتر شده"
 #: hiddifypanel/panel/user/templates/home/clash-links.html:7
 msgid "user.home.clash_configs.only_for_blocked_sites.description"
 msgstr ""
-"<b>پیشنهادی</b>.\n"
-"فقط سایت‌های فیلتر شده از طریق پروکسی عبور داده شود.\n"
+"<b>حالت پیشنهادی</b>.\n"
+"در این حالت فقط سایت‌های فیلتر شده از طریق پروکسی عبور داده می‌شوند.\n"
 "<div class=\"callout callout-success\">\n"
-"در این حالت، شما هیچ تغییری در سرعت احساس نمی‌کنید. \n"
+"در این حالت، سایت‌های فیلتر نشده، بدون پروکسی باز می‌شوند و شما هیچ "
+"تغییری در سرعت احساس نمی‌کنید. همچنین سایت‌های داخلی نیم‌بها حساب می‌شوند"
+"\n"
 "</div>"
 
-# | msgid "Install proxy for only blocked sites"
-#: hiddifypanel/panel/user/templates/home/clash-links.html:10
+# | msgid "Install for only blocked sites"
+#: hiddifypanel/panel/user/templates/home/clash-links.html:11
+#: hiddifypanel/panel/user/templates/home/clash-links.html:23
 msgid "user.home.clash_configs.only_for_blocked_sites.btn"
-msgstr "نصب فقط برای سایت‌های فیلتر شده"
+msgstr "نصب برای سایت‌های فیلتر"
 
 # | msgid "Alternative link for Clash"
-#: hiddifypanel/panel/user/templates/home/clash-links.html:13
-#: hiddifypanel/panel/user/templates/home/clash-links.html:31
-#: hiddifypanel/panel/user/templates/home/clash-links.html:50
+#: hiddifypanel/panel/user/templates/home/clash-links.html:14
+#: hiddifypanel/panel/user/templates/home/clash-links.html:39
+#: hiddifypanel/panel/user/templates/home/clash-links.html:65
 msgid "user.home.clash_configs.alternative_for_normal_clash"
 msgstr "لینک جایگزین برای کلش معمولی"
 
 # | msgid "Instal Clash"
-#: hiddifypanel/panel/user/templates/home/clash-links.html:16
-#: hiddifypanel/panel/user/templates/home/clash-links.html:34
-#: hiddifypanel/panel/user/templates/home/clash-links.html:53
+#: hiddifypanel/panel/user/templates/home/clash-links.html:17
+#: hiddifypanel/panel/user/templates/home/clash-links.html:42
+#: hiddifypanel/panel/user/templates/home/clash-links.html:68
 msgid "user.home.clash_configs.link_for_normal_clash"
 msgstr "نصب کلش معمولی"
 
 # | msgid "Foreign sites proxy"
-#: hiddifypanel/panel/user/templates/home/clash-links.html:23
+#: hiddifypanel/panel/user/templates/home/clash-links.html:30
 msgid "user.home.clash_configs.foreign_sites.title"
 msgstr "پروکسی سایت‌های خارجی"
 
@@ -1165,42 +1172,47 @@ msgstr "پروکسی سایت‌های خارجی"
 # | "<div class=\"callout callout-warning\">\n"
 # | "\tThis mode is useful in accessing some sanctaioned sites.\n"
 # | "</div>\n"
-#: hiddifypanel/panel/user/templates/home/clash-links.html:25
+#: hiddifypanel/panel/user/templates/home/clash-links.html:32
 msgid "user.home.clash_configs.foreign_sites.description"
 msgstr ""
-"استفاده از پروکسی برای همه سایت‌های خارجی (حتی سایت‌های غیر فیلتر). \n"
+"استفاده از پروکسی برای همه سایت‌های خارجی (حتی سایت‌های غیر فیلتر) و "
+"سایت‌های ایرانی مستقیم وصل شوند.\n"
 "<div class=\"callout callout-warning\">\n"
-"این حالت برای دسترسی به بعضی از سایت‌های تحریم شده مفید است. \n"
+"در این این حالت همه سایت‌های خارجی (حتی فیلتر نشده‌ها)، از پروکسی عبور "
+"داده می‌شوند. برای دسترسی به بعضی از سایت‌های تحریم شده مفید است. \n"
 "</div>"
 
 # | msgid "Install for foreign sites"
-#: hiddifypanel/panel/user/templates/home/clash-links.html:28
+#: hiddifypanel/panel/user/templates/home/clash-links.html:36
+#: hiddifypanel/panel/user/templates/home/clash-links.html:48
 msgid "user.home.clash_configs.foreign_sites.btn"
 msgstr "نصب برای سایت‌های خارجی"
 
 # | msgid "Proxy for all sites"
-#: hiddifypanel/panel/user/templates/home/clash-links.html:42
+#: hiddifypanel/panel/user/templates/home/clash-links.html:56
 msgid "user.home.clash_configs.all_sites.title"
 msgstr "پروکسی برای همه سایت‌ها"
 
 # | msgid ""
 # | "Use proxy for all websites even for local websites.\n"
 # | "<div class=\"callout callout-danger\">\n"
-# | "    The speed of loading local sites will be reduced and will endanger
-# your privacy.\n"
+# | "    Loading local sites will be slower and will endanger your privacy.\n"
 # | "</div>\n"
-#: hiddifypanel/panel/user/templates/home/clash-links.html:44
+#: hiddifypanel/panel/user/templates/home/clash-links.html:58
 msgid "user.home.clash_configs.all_sites.description"
 msgstr ""
-"استفاده از پروکسی برای همه سایت‌ها، حتی برای سایت‌های داخلی.\n"
+"<b>این حالت پیشنهاد نمی‌شود</b>. استفاده از پروکسی برای همه سایت‌ها، حتی "
+"برای سایت‌های داخلی.\n"
 "<div class=\"callout callout-danger\">\n"
-"سایت‌های داخلی کند و باعث به خطر افتادن امنیت نیز می‌شود.\n"
+"در این حالت همه سایت‌ها (حتی سایتهای داخلی) از پروکسی عبور می‌کنند که "
+"باعث به خطر افتادن امنیت و مسدود شدن پروکسی خواهد شد.\n"
 "</div>\n"
 
 # | msgid "Install Proxy for all sites"
-#: hiddifypanel/panel/user/templates/home/clash-links.html:47
+#: hiddifypanel/panel/user/templates/home/clash-links.html:62
+#: hiddifypanel/panel/user/templates/home/clash-links.html:74
 msgid "user.home.clash_configs.all_sites.btn"
-msgstr "نصب پروکسی برای همه سایت‌ها"
+msgstr "نصب برای همه سایت‌ها"
 
 # | msgid "Copy the link bellow into your browser."
 #: hiddifypanel/panel/user/templates/home/doh.html:1
@@ -1247,7 +1259,20 @@ msgstr ""
 "\n"
 "بعضی مرورگرها ممکن است به این تنظیمات را از قبل داشته باشند. \n"
 "  <h5>​​موزیلا فایرفاکس</h5>\n"
-"    "
+"     دکمه <b>menu</b> > <b>تنظیمات</b> را انتخاب کنید. در منوی عمومی، به "
+"پایین بروید تا به <b>تنظیمات شبکه</b> دسترسی پیدا کنید. <b>تنظیمات</b> را"
+" انتخاب کنید. <b>فعال کردن DNS از طریق HTTPS</b> را انتخاب کنید.\n"
+"     ​<h5>‏Google Chrome</h5>\n"
+"     منوی <b>سه نقطه</b> را در مرورگر خود > <b>تنظیمات</b> انتخاب کنید.\n"
+"     <b>حریم خصوصی و امنیت</b> > <b>امنیت</b> را انتخاب کنید.\n"
+"     به پایین بروید و <b>استفاده از DNS امن</b> را فعال کنید.\n"
+"    \n"
+"     <h5>​Microsoft Edge</h5>\n"
+"     منوی <b>سه نقطه</b> را در مرورگر خود > <b>تنظیمات</b> انتخاب کنید.\n"
+"     <b>حریم خصوصی، جستجو و خدمات</b> را انتخاب کنید و به <b>امنیت</b> "
+"بروید.\n"
+"     <b>استفاده از DNS امن</b> را فعال کنید.\n"
+"     انتخاب ارائه دهنده خدمات را انتخاب کنید."
 
 # | msgid "Hiddify Proxy"
 #: copy.html:2 hiddifypanel/panel/user/templates/home/index
@@ -1323,8 +1348,9 @@ msgstr "کیوآر کد"
 #: hiddifypanel/panel/user/templates/home/usage.html:36
 msgid "user.home.qr-code.description"
 msgstr ""
-"برای کپی یا به اشتراک‌گذاری لینک‌ها، روی قسمت طوسی‌رنگ <i class='fa-solid"
-" fa-qrcode'></i> کلیک کنید تا کیوآر کد نمایش داده شود."
+"برای کپی یا به اشتراک‌گذاری لینک‌ها، روی قسمت طوسی‌رنگ  که با شکل <i "
+"class='fa-solid fa-qrcode'></i>  مشخص شده، کلیک کنید تا کیوآر نمایش داده "
+"شود."
 
 # | msgid "Display QR Code"
 #: hiddifypanel/panel/user/templates/home/index.html:133
@@ -1351,7 +1377,7 @@ msgstr "جستجو"
 #: copy.html:6 hiddifypanel/panel/user/templates/home/ios
 #: hiddifypanel/panel/user/templates/home/ios.html:5
 msgid "user.home.ios.stash.title"
-msgstr "اپ Stash توصیه می‌شود."
+msgstr "توصیه ما اپ Stash است."
 
 # | msgid ""
 # | "Stash is a great application. We think it is worth to buy it.\n"
@@ -1365,7 +1391,8 @@ msgstr "اپ Stash توصیه می‌شود."
 #: hiddifypanel/panel/user/templates/home/ios.html:16
 msgid "user.home.ios.stash.intro"
 msgstr ""
-"اپلیکیشن Stash یک اپ بسیار عالی است و به نظر ما ارزش خرید دارد.\n"
+"برای سیستم عامل iOS اپلیکیشن Stash یک اپ بسیار عالی است اما غیر رایگان "
+"است؛ به نظر ما برای استفاده از پروکسی هوشمند ارزش خرید دارد.\n"
 "  <div class=\"btn-group\">\n"
 "        <a href=\"https://apps.apple.com/us/app/stash-rule-based-"
 "proxy/id1596063349\" target=\"_blank\" class=\"btn btn-success orig-"
@@ -1373,7 +1400,7 @@ msgstr ""
 "        </div>"
 
 # | msgid "Other applications (shadowlink, fairVPN, napsternetv)"
-#: hiddifypanel/panel/user/templates/home/ios.html:31
+#: hiddifypanel/panel/user/templates/home/ios.html:33
 msgid "user.home.ios.others.title"
 msgstr "سایر اپلیکیشن‌ها (shadowlink, fairVPN, napsternetv)"
 
@@ -1391,10 +1418,10 @@ msgstr "سایر اپلیکیشن‌ها (shadowlink, fairVPN, napsternetv)"
 # | "\n"
 # | "<br />\n"
 # | "Then apply one of the following configs:"
-#: hiddifypanel/panel/user/templates/home/ios.html:42
+#: hiddifypanel/panel/user/templates/home/ios.html:44
 msgid "user.home.ios.others.intro"
 msgstr ""
-"ابتدا یکی از برنامه های زیر را نصب کنید:\n"
+"ابتدا یکی از این برنامه‌ها را نصب کنید:\n"
 "<div class=\"btn-group\">\n"
 "<a href=\"https://apps.apple.com/us/app/shadowlink-shadowsocks-"
 "vpn/id1439686518\"\n"
@@ -1406,7 +1433,7 @@ msgstr ""
 "</div>\n"
 "\n"
 "<br />\n"
-"سپس یکی از تنظیمات زیر را اعمال کنید:"
+"سپس یکی از کانفیگ‌های زیر را اعمال کنید:"
 
 # | msgid ""
 # | "First, test the speed <b>without</b> the proxy. If the speed is not good,
@@ -1419,11 +1446,12 @@ msgstr ""
 #: hiddifypanel/panel/user/templates/home/speedtest.html:1
 msgid "user.home.speedtest.intro"
 msgstr ""
-"ابتدا سرعت را <b>بدون</b> پراکسی تست کنید. اگر سرعت خوب نیست، به این معنی"
-" است که این IP در ISP شما اصطلاحا کثیف است.\n"
+"ابتدا سرعت را <b>بدون</b> اتصال به پروکسی تست کنید. اگر سرعت خوب نیست، به"
+" این معنی است که این IP در ISP شما اصطلاحا کثیف است.\n"
 "اگر سرعت بدون پراکسی کم بود، وقت خود را برای تست این پروکسی تلف نکنید.\n"
-"در غیر این صورت با پراکسی های مختلف این سایت تست کنید و اگر سرعت مشابه "
-"سرعت بدون پروکسی است، بهترین پروتکل را پیدا کرده اید."
+"در غیر این صورت با پروکسی های مختلف ارائه شده  در این صفحه تست کنید و هر "
+"زمان سرعت با پروکسی نزدیک به سرعت بدون پروکسی بود، بهترین پروتکل را پیدا "
+"کرده اید."
 
 # | msgid "Upload"
 #: hiddifypanel/panel/user/templates/home/speedtest.html:5
@@ -1438,7 +1466,7 @@ msgstr "دانلود"
 # | msgid "Both ways"
 #: hiddifypanel/panel/user/templates/home/speedtest.html:9
 msgid "user.home.speedtest.two_ways"
-msgstr "هر دو راه"
+msgstr "هر دو (آپلود و دانلود)"
 
 # | msgid "Telegram Proxy"
 #: hiddifypanel/panel/user/templates/home/telegram.html:7
@@ -1452,14 +1480,14 @@ msgstr "پروکسی تلگرام"
 #: hiddifypanel/panel/user/templates/home/telegram.html:12
 msgid "user.home.telegram.description"
 msgstr ""
-"روی این لینک  %(link)s کلیک کنید و سپس در تلگرام پنجره‌‌ای مشاهده می‌کنید"
-" که یک دکمه با نوشته <b>Connect Proxy</b> قابل مشاهده است. روی آن کلیک "
+"روی این لینک  %(link)s کلیک کنید. سپس در تلگرام پنجره‌‌ای مشاهده می‌کنید "
+"که یک دکمه با نوشته <b>Connect Proxy</b> قابل مشاهده است. روی آن کلیک "
 "کنید تا پروکسی متصل شود."
 
 # | msgid "Trafic Usage"
 #: hiddifypanel/panel/user/templates/home/usage.html:7
 msgid "user.home.usage.title"
-msgstr "حجم ترافیک مصرفی"
+msgstr "حجم مصرف شده:"
 
 # | msgid "of"
 #: hiddifypanel/panel/user/templates/home/usage.html:9
@@ -1474,7 +1502,7 @@ msgstr "ماهانه"
 # | msgid "Expire in: "
 #: hiddifypanel/panel/user/templates/home/usage.html:16
 msgid "user.home.usage.expire"
-msgstr "تا انقضا:"
+msgstr "مدت زمان باقی مانده:"
 
 # | msgid "Days"
 #: hiddifypanel/panel/user/templates/home/usage.html:16

@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-02 19:04+0100\n"
-"PO-Revision-Date: 2023-02-02 12:04-0600\n"
+"POT-Creation-Date: 2023-02-02 20:19+0100\n"
+"PO-Revision-Date: 2023-02-02 13:06-0600\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -866,7 +866,7 @@ msgstr "逗号分隔的整数，指示用作 KCP 连接的端口。"
 msgid "config.kcp.label"
 msgstr "KCP"
 
-# | msgid "Need to be completed."
+# | msgid "KCP Configurations could be set in this section."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.kcp.description"
 msgstr "需要完成"
@@ -1195,30 +1195,31 @@ msgstr ""
 "                在这种模式下，您不会感觉到速度有任何变化。\n"
 "            </div>"
 
-# | msgid "Install proxy for only blocked sites"
-#: hiddifypanel/panel/user/templates/home/clash-links.html:10
+# | msgid "Install for only blocked sites"
+#: hiddifypanel/panel/user/templates/home/clash-links.html:11
+#: hiddifypanel/panel/user/templates/home/clash-links.html:23
 #, fuzzy
 msgid "user.home.clash_configs.only_for_blocked_sites.btn"
 msgstr "仅为被阻止的站点安装代理"
 
 # | msgid "Alternative link for Clash"
-#: hiddifypanel/panel/user/templates/home/clash-links.html:13
-#: hiddifypanel/panel/user/templates/home/clash-links.html:31
-#: hiddifypanel/panel/user/templates/home/clash-links.html:50
+#: hiddifypanel/panel/user/templates/home/clash-links.html:14
+#: hiddifypanel/panel/user/templates/home/clash-links.html:39
+#: hiddifypanel/panel/user/templates/home/clash-links.html:65
 #, fuzzy
 msgid "user.home.clash_configs.alternative_for_normal_clash"
 msgstr "冲突的替代链接"
 
 # | msgid "Instal Clash"
-#: hiddifypanel/panel/user/templates/home/clash-links.html:16
-#: hiddifypanel/panel/user/templates/home/clash-links.html:34
-#: hiddifypanel/panel/user/templates/home/clash-links.html:53
+#: hiddifypanel/panel/user/templates/home/clash-links.html:17
+#: hiddifypanel/panel/user/templates/home/clash-links.html:42
+#: hiddifypanel/panel/user/templates/home/clash-links.html:68
 #, fuzzy
 msgid "user.home.clash_configs.link_for_normal_clash"
 msgstr "安装冲突"
 
 # | msgid "Foreign sites proxy"
-#: hiddifypanel/panel/user/templates/home/clash-links.html:23
+#: hiddifypanel/panel/user/templates/home/clash-links.html:30
 #, fuzzy
 msgid "user.home.clash_configs.foreign_sites.title"
 msgstr "国外网站代理"
@@ -1228,7 +1229,7 @@ msgstr "国外网站代理"
 # | "<div class=\"callout callout-warning\">\n"
 # | "\tThis mode is useful in accessing some sanctaioned sites.\n"
 # | "</div>\n"
-#: hiddifypanel/panel/user/templates/home/clash-links.html:25
+#: hiddifypanel/panel/user/templates/home/clash-links.html:32
 #, fuzzy
 msgid "user.home.clash_configs.foreign_sites.description"
 msgstr ""
@@ -1238,13 +1239,14 @@ msgstr ""
 "</div>"
 
 # | msgid "Install for foreign sites"
-#: hiddifypanel/panel/user/templates/home/clash-links.html:28
+#: hiddifypanel/panel/user/templates/home/clash-links.html:36
+#: hiddifypanel/panel/user/templates/home/clash-links.html:48
 #, fuzzy
 msgid "user.home.clash_configs.foreign_sites.btn"
 msgstr "国外网站安装"
 
 # | msgid "Proxy for all sites"
-#: hiddifypanel/panel/user/templates/home/clash-links.html:42
+#: hiddifypanel/panel/user/templates/home/clash-links.html:56
 #, fuzzy
 msgid "user.home.clash_configs.all_sites.title"
 msgstr "所有网站的代理"
@@ -1252,10 +1254,9 @@ msgstr "所有网站的代理"
 # | msgid ""
 # | "Use proxy for all websites even for local websites.\n"
 # | "<div class=\"callout callout-danger\">\n"
-# | "    The speed of loading local sites will be reduced and will endanger
-# your privacy.\n"
+# | "    Loading local sites will be slower and will endanger your privacy.\n"
 # | "</div>\n"
-#: hiddifypanel/panel/user/templates/home/clash-links.html:44
+#: hiddifypanel/panel/user/templates/home/clash-links.html:58
 #, fuzzy
 msgid "user.home.clash_configs.all_sites.description"
 msgstr ""
@@ -1265,7 +1266,8 @@ msgstr ""
 "</div>"
 
 # | msgid "Install Proxy for all sites"
-#: hiddifypanel/panel/user/templates/home/clash-links.html:47
+#: hiddifypanel/panel/user/templates/home/clash-links.html:62
+#: hiddifypanel/panel/user/templates/home/clash-links.html:74
 #, fuzzy
 msgid "user.home.clash_configs.all_sites.btn"
 msgstr "为所有网站安装代理"
@@ -1474,7 +1476,7 @@ msgstr ""
 "        </div>"
 
 # | msgid "Other applications (shadowlink, fairVPN, napsternetv)"
-#: hiddifypanel/panel/user/templates/home/ios.html:31
+#: hiddifypanel/panel/user/templates/home/ios.html:33
 #, fuzzy
 msgid "user.home.ios.others.title"
 msgstr "其他应用程序（shadowlink、fairVPN、napsternetv）"
@@ -1493,7 +1495,7 @@ msgstr "其他应用程序（shadowlink、fairVPN、napsternetv）"
 # | "\n"
 # | "<br />\n"
 # | "Then apply one of the following configs:"
-#: hiddifypanel/panel/user/templates/home/ios.html:42
+#: hiddifypanel/panel/user/templates/home/ios.html:44
 #, fuzzy
 msgid "user.home.ios.others.intro"
 msgstr ""

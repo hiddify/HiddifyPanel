@@ -258,9 +258,9 @@ def get_proxy_rows():
             transport,cdn,proto=c.split(" ")
             if l3=="kcp" and cdn!="direct":
                 continue
-            if proto=="trojan" and l3!="tls":
+            if proto=="trojan" and l3 not in ["tls",'xtls']:
                 continue
-            if transport in ["XTLS","faketls"] and l3=="http":
+            if transport in ["grpc","XTLS","faketls"] and l3=="http":
                 continue
 
 

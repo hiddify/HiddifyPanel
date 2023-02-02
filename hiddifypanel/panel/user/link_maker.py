@@ -111,20 +111,19 @@ def pbase64(full_str):
 
 
 def make_proxy(proxy):
-    model=proxy.l3
+    l3=proxy.l3
 
     domain = g.domain
     hconfigs=get_hconfigs()
     port=0
-    if model=="tls":
+    if l3 in ["tls","xtls"]:
         port=443
-        l3="tls"
-    elif model =="http":
-        l3 = 'http'
+    elif l3 =="http":
         port == 80
-    elif model =="kcp":
-        l3 = 'kcp'
+    elif l3 =="kcp":
         port == hconfig(ConfigEnum.kcp_ports).split(",")[0]
+    elif l3 =="tuic":
+        port == hconfig(ConfigEnum.tuic_port).split(",")[0]
     
     name=proxy.name   
     is_cdn="CDN" in name

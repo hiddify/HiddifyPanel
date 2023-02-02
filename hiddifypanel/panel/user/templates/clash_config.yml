@@ -41,27 +41,11 @@ profile:
   store-selected: false
 
 proxy-groups:
-  - name: "tuic"
-    type: relay
-    proxies:
-      - vless
-      - tuic
-
-
-  - name: auto_all
-    use:
-      - all_proxies
-    type: url-test
-    url: http://cp.cloudflare.com
-    interval: 300
-
-  - name: auto
-    type: fallback
-    url: 'http://cp.cloudflare.com'
-    interval: 300
-    proxies:
-        - auto_all
-        - OnProxyIssue_{{mode}}
+  # - name: "tuic+vless"
+  #   type: relay
+  #   proxies:
+  #     - vless
+  #     - tuic
 
   - name: PROXY
     proxies:
@@ -69,6 +53,11 @@ proxy-groups:
     use:
       - all_proxies
     type: select
+
+
+  
+
+  
 
 
   - name: OnIranSites_{{mode}}
@@ -104,7 +93,20 @@ proxy-groups:
     % endif
     type: select
 
-{{link_maker.get_all_clash_configs()}}
+  - name: auto_all
+    use:
+      - all_proxies
+    type: url-test
+    url: http://cp.cloudflare.com
+    interval: 300
+  - name: auto
+    type: fallback
+    url: 'http://cp.cloudflare.com'
+    interval: 300
+    proxies:
+        - auto_all
+        - OnProxyIssue_{{mode}}
+{{link_maker.get_all_clash_configs(meta_or_normal)}}
 proxy-providers:
   all_proxies:
     type: http
