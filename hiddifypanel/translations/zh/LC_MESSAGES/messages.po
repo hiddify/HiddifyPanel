@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-02-02 15:43+0100\n"
+"POT-Creation-Date: 2023-02-02 15:47+0100\n"
 "PO-Revision-Date: 2023-01-28 14:59+0330\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh\n"
@@ -120,13 +120,13 @@ msgstr "语言"
 #: hiddifypanel/panel/admin/SettingAdmin.py:118
 #, auto_translate
 msgid "lang.en"
-msgstr "English انگلیسی"
+msgstr "English انگلیسی 英语"
 
 #: hiddifypanel/panel/admin/QuickSetup.py:57
 #: hiddifypanel/panel/admin/SettingAdmin.py:118
 #, auto_translate
 msgid "lang.fa"
-msgstr "波斯语"
+msgstr "Persian فارسی 波斯语"
 
 #: hiddifypanel/panel/admin/QuickSetup.py:57
 #: hiddifypanel/panel/admin/SettingAdmin.py:118
@@ -178,6 +178,10 @@ msgstr "启用 vmess"
 #, auto_translate
 msgid "config.vmess_enable.description"
 msgstr "几个人报告说 vmess 导致系统被政府检测到。所以不推荐"
+
+#: hiddifypanel/panel/admin/SettingAdmin.py:118
+msgid "lang.zh"
+msgstr "Chinese چینی 中国人"
 
 #: hiddifypanel/panel/admin/SettingAdmin.py:136
 #, auto_translate

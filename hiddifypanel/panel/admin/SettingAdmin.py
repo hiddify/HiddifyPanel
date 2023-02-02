@@ -115,7 +115,7 @@ def get_config_form():
             if c.key in bool_types:
                 field= SwitchField(_(f'config.{c.key}.label'), default=c.value,description=_(f'config.{c.key}.description')) 
             elif c.key==ConfigEnum.lang:
-                field=wtf.fields.SelectField(_("config.lang.label"),choices=[("en",_("lang.en")),("fa",_("lang.fa"))],description=_("config.lang.description"),default=hconfig(ConfigEnum.lang))
+                field=wtf.fields.SelectField(_("config.lang.label"),choices=[("en",_("lang.en")),("fa",_("lang.fa")),("zh",_("lang.zh"))],description=_("config.lang.description"),default=hconfig(ConfigEnum.lang))
             else:
                 render_kw={'class':"ltr"}
                 validators=[]

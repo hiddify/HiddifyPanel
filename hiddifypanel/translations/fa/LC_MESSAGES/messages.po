@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-02 15:43+0100\n"
+"POT-Creation-Date: 2023-02-02 15:47+0100\n"
 "PO-Revision-Date: 2023-02-01 20:37+0100\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
@@ -117,13 +117,14 @@ msgstr "زبان"
 #: hiddifypanel/panel/admin/QuickSetup.py:57
 #: hiddifypanel/panel/admin/SettingAdmin.py:118
 msgid "lang.en"
-msgstr "English انگلیسی"
+msgstr "English انگلیسی 英语"
 
 # | msgid "Persian فارسی"
 #: hiddifypanel/panel/admin/QuickSetup.py:57
 #: hiddifypanel/panel/admin/SettingAdmin.py:118
 msgid "lang.fa"
-msgstr "Persian فارسی"
+msgstr "Persian فارسی 波斯语"
+
 
 # | msgid "It will change admin and user language"
 #: hiddifypanel/panel/admin/QuickSetup.py:57
@@ -187,6 +188,11 @@ msgid "config.vmess_enable.description"
 msgstr ""
 "گزارش‌های متعددی موجود است مبنی بر اینکه که vmess باعث می‌شود که سیستم "
 "توسط فیلترینگ شناسایی شود. بنابراین استفاده از آن توصیه نمی‌شود."
+
+# | msgid "Persian فارسی"
+#: hiddifypanel/panel/admin/SettingAdmin.py:118
+msgid "lang.zh"
+msgstr "Chinese چینی 中国人"
 
 # | msgid ""
 # | "Invalid UUID secret. e.g., 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n"
