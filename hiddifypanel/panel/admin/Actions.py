@@ -61,11 +61,11 @@ class Actions(FlaskView):
         admin_secret=hconfig(ConfigEnum.admin_secret)
         proxy_path=hconfig(ConfigEnum.proxy_path)
         admin_links=f"<h5 >{_('Admin Links')}</h5><ul>"
-        admin_links+=f"<li>{_('Not Secure')}: <a class='badge ltr share-link' href='http://{server_ip}/{proxy_path}/{admin_secret}/'>http://{server_ip}/{proxy_path}/{admin_secret}/</a></li>"
+        admin_links+=f"<li>{_('Not Secure')}: <a class='badge ltr share-link' href='http://{server_ip}/{proxy_path}/{admin_secret}/'>http://{server_ip}/{proxy_path}/{admin_secret}/admin</a></li>"
         domains=[d.domain for d in Domain.query.all()]
         # domains=[*domains,f'{server_ip}.sslip.io']
         for d in domains:
-                admin_links+=f"<li><a class='badge ltr  share-link' href='https://{d}/{proxy_path}/{admin_secret}/'>https://{d}/{proxy_path}/{admin_secret}/</a></li>"
+                admin_links+=f"<li><a class='badge ltr  share-link' href='https://{d}/{proxy_path}/{admin_secret}/'>https://{d}/{proxy_path}/{admin_secret}/admin</a></li>"
 
         return render_template("result.html",
                             out_type="success",

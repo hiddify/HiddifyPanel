@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-02 11:19+0100\n"
+"POT-Creation-Date: 2023-02-02 11:49+0100\n"
 "PO-Revision-Date: 2023-02-01 20:51+0100\n"
 "Last-Translator: hidden u\n"
 "Language: en_US\n"
@@ -30,7 +30,7 @@ msgstr ""
 
 # | msgid "Domain"
 #: hiddifypanel/panel/admin/DomainAdmin.py:19
-#: hiddifypanel/panel/admin/QuickSetup.py:73
+#: hiddifypanel/panel/admin/QuickSetup.py:75
 msgid "domain.domain"
 msgstr "Domain"
 
@@ -48,8 +48,8 @@ msgstr "Domain Fronting"
 # | msgid "Apply Configs"
 #: hiddifypanel/panel/admin/ProxyAdmin.py:41
 #: hiddifypanel/panel/admin/ProxyAdmin.py:60
-#: hiddifypanel/panel/admin/QuickSetup.py:48
-#: hiddifypanel/panel/admin/SettingAdmin.py:54
+#: hiddifypanel/panel/admin/QuickSetup.py:50
+#: hiddifypanel/panel/admin/SettingAdmin.py:55
 msgid "admin.config.apply_configs"
 msgstr "Apply Configs"
 
@@ -58,8 +58,8 @@ msgstr "Apply Configs"
 # | "It may takes 2 minutes to apply."
 #: hiddifypanel/panel/admin/ProxyAdmin.py:42
 #: hiddifypanel/panel/admin/ProxyAdmin.py:61
-#: hiddifypanel/panel/admin/QuickSetup.py:49
-#: hiddifypanel/panel/admin/SettingAdmin.py:55
+#: hiddifypanel/panel/admin/QuickSetup.py:51
+#: hiddifypanel/panel/admin/SettingAdmin.py:56
 msgid "config.validation-success"
 msgstr ""
 "Configs have changed successfully. Click %(link)s to apply the configs. "
@@ -67,16 +67,16 @@ msgstr ""
 
 # | msgid "One of the fields has encountered with error"
 #: hiddifypanel/panel/admin/ProxyAdmin.py:64
-#: hiddifypanel/panel/admin/QuickSetup.py:51
-#: hiddifypanel/panel/admin/SettingAdmin.py:58
+#: hiddifypanel/panel/admin/QuickSetup.py:53
+#: hiddifypanel/panel/admin/SettingAdmin.py:59
 msgid "config.validation-error"
 msgstr "One of the fields has encountered with error"
 
 #: hiddifypanel/panel/admin/ProxyAdmin.py:91
 #: hiddifypanel/panel/admin/ProxyAdmin.py:117
-#: hiddifypanel/panel/admin/QuickSetup.py:57
-#: hiddifypanel/panel/admin/QuickSetup.py:76
-#: hiddifypanel/panel/admin/SettingAdmin.py:161
+#: hiddifypanel/panel/admin/QuickSetup.py:59
+#: hiddifypanel/panel/admin/QuickSetup.py:78
+#: hiddifypanel/panel/admin/SettingAdmin.py:162
 msgid "Submit"
 msgstr "Submit"
 
@@ -111,47 +111,47 @@ msgid "quicksetup.setlang.success"
 msgstr "Change language success"
 
 # | msgid "An error happened in changing language"
-#: hiddifypanel/panel/admin/QuickSetup.py:34
+#: hiddifypanel/panel/admin/QuickSetup.py:35
 msgid "quicksetup.setlang.error"
 msgstr "An error happened in changing language"
 
 # | msgid "Language"
-#: hiddifypanel/panel/admin/QuickSetup.py:56
-#: hiddifypanel/panel/admin/SettingAdmin.py:117
+#: hiddifypanel/panel/admin/QuickSetup.py:58
+#: hiddifypanel/panel/admin/SettingAdmin.py:118
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/panel/admin/templates/quick_setup.html:22
 msgid "config.lang.label"
 msgstr "Language"
 
 # | msgid "English انگلیسی"
-#: hiddifypanel/panel/admin/QuickSetup.py:56
-#: hiddifypanel/panel/admin/SettingAdmin.py:117
+#: hiddifypanel/panel/admin/QuickSetup.py:58
+#: hiddifypanel/panel/admin/SettingAdmin.py:118
 msgid "lang.en"
 msgstr "English انگلیسی"
 
 # | msgid "Persian فارسی"
-#: hiddifypanel/panel/admin/QuickSetup.py:56
-#: hiddifypanel/panel/admin/SettingAdmin.py:117
+#: hiddifypanel/panel/admin/QuickSetup.py:58
+#: hiddifypanel/panel/admin/SettingAdmin.py:118
 msgid "lang.fa"
 msgstr "Persian فارسی"
 
 # | msgid "It will change admin and user language"
-#: hiddifypanel/panel/admin/QuickSetup.py:56
-#: hiddifypanel/panel/admin/SettingAdmin.py:117
+#: hiddifypanel/panel/admin/QuickSetup.py:58
+#: hiddifypanel/panel/admin/SettingAdmin.py:118
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.lang.description"
 msgstr "It will change admin and user language"
 
 # | msgid "Error! Invalid domain.  The domain format is www.google.com"
-#: hiddifypanel/panel/admin/QuickSetup.py:71
-#: hiddifypanel/panel/admin/SettingAdmin.py:122
-#: hiddifypanel/panel/admin/SettingAdmin.py:124
+#: hiddifypanel/panel/admin/QuickSetup.py:73
+#: hiddifypanel/panel/admin/SettingAdmin.py:123
+#: hiddifypanel/panel/admin/SettingAdmin.py:125
 msgid "config.Invalid domain"
 msgstr "Error! Invalid domain.  The domain format is www.google.com"
 
 # | msgid "Domain is exist in domains section. Use another domain"
-#: hiddifypanel/panel/admin/QuickSetup.py:72
-#: hiddifypanel/panel/admin/SettingAdmin.py:125
+#: hiddifypanel/panel/admin/QuickSetup.py:74
+#: hiddifypanel/panel/admin/SettingAdmin.py:126
 msgid "config.Domain already used"
 msgstr "Domain is exist in domains section. Use another domain"
 
@@ -159,7 +159,7 @@ msgstr "Domain is exist in domains section. Use another domain"
 # | "This field should be correct. Please visit <a href=\"https://github."
 # | "com/hiddify/hiddify-config/wiki/راهنمای-تنظیم-دامنه-و-نهایی-کردن-"
 # | "نصب#آموزش-ساخت-زیردامنه\"> Help</a> to learn how to create a subdomain."
-#: hiddifypanel/panel/admin/QuickSetup.py:73
+#: hiddifypanel/panel/admin/QuickSetup.py:75
 msgid "domain.description"
 msgstr ""
 "This field should be correct. Please visit <a "
@@ -168,7 +168,7 @@ msgstr ""
 "Help</a> to learn how to create a subdomain."
 
 # | msgid "Enable Telegram MT Proxy"
-#: hiddifypanel/panel/admin/QuickSetup.py:74
+#: hiddifypanel/panel/admin/QuickSetup.py:76
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.telegram_enable.label"
 msgstr "Enable Telegram MT Proxy"
@@ -176,13 +176,13 @@ msgstr "Enable Telegram MT Proxy"
 # | msgid ""
 # | "Telegram MT Proxy is used for encapsulate telegram proxy as a TLS
 # traffic"
-#: hiddifypanel/panel/admin/QuickSetup.py:74
+#: hiddifypanel/panel/admin/QuickSetup.py:76
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.telegram_enable.description"
 msgstr "Telegram MT Proxy is used for encapsulate telegram proxy as a TLS traffic"
 
 # | msgid "Enable vmess"
-#: hiddifypanel/panel/admin/QuickSetup.py:75
+#: hiddifypanel/panel/admin/QuickSetup.py:77
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.vmess_enable.label"
 msgstr "Enable vmess"
@@ -190,7 +190,7 @@ msgstr "Enable vmess"
 # | msgid ""
 # | "It is reported by several people that vmess causes the system to be "
 # | "detected by the government. So it is not recommended"
-#: hiddifypanel/panel/admin/QuickSetup.py:75
+#: hiddifypanel/panel/admin/QuickSetup.py:77
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.vmess_enable.description"
 msgstr ""
@@ -200,7 +200,7 @@ msgstr ""
 # | msgid ""
 # | "Invalid address: a website for decoy site should be complete url e.g., "
 # | "https://www.wikipedia.org/\n"
-#: hiddifypanel/panel/admin/SettingAdmin.py:130
+#: hiddifypanel/panel/admin/SettingAdmin.py:131
 msgid "config.Invalid decoy_site"
 msgstr ""
 "Invalid address: a website for decoy site should be complete url e.g., "
@@ -209,31 +209,31 @@ msgstr ""
 # | msgid ""
 # | "Invalid UUID secret. e.g., 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n"
 # | "\n"
-#: hiddifypanel/panel/admin/SettingAdmin.py:134
+#: hiddifypanel/panel/admin/SettingAdmin.py:135
 msgid "config.invalid uuid"
 msgstr ""
 "Invalid UUID secret. e.g., 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n"
 "\n"
 
 # | msgid "Invalid proxy path. It should be asci string (a-z A-Z 0-9)"
-#: hiddifypanel/panel/admin/SettingAdmin.py:138
+#: hiddifypanel/panel/admin/SettingAdmin.py:139
 msgid "config.Invalid proxy path"
 msgstr "Invalid proxy path. It should be asci string (a-z A-Z 0-9)"
 
 # | msgid "Invalid port. It should be comma separated integer e.g., 1000,1001"
-#: hiddifypanel/panel/admin/SettingAdmin.py:142
+#: hiddifypanel/panel/admin/SettingAdmin.py:143
 msgid "config.Invalid port"
 msgstr "Invalid port. It should be comma separated integer e.g., 1000,1001"
 
 # | msgid ""
 # | "Port 80 should always be presented. We use it for getting ssl
 # certificate"
-#: hiddifypanel/panel/admin/SettingAdmin.py:145
+#: hiddifypanel/panel/admin/SettingAdmin.py:146
 msgid "config.port 80 is required"
 msgstr "Port 80 should always be presented. We use it for getting ssl certificate"
 
 # | msgid "Port 443 should always be presented. "
-#: hiddifypanel/panel/admin/SettingAdmin.py:148
+#: hiddifypanel/panel/admin/SettingAdmin.py:149
 msgid "config.port 443 is required"
 msgstr "Port 443 should always be presented. "
 
@@ -1152,7 +1152,7 @@ msgstr "Copy the link bellow into your browser."
 
 # | msgid "Copy"
 #: hiddifypanel/panel/user/templates/home/doh.html:8
-#: hiddifypanel/templates/master.html:122
+#: hiddifypanel/templates/master.html:121
 msgid "copy"
 msgstr "Copy"
 
@@ -1569,13 +1569,13 @@ msgstr "Settings"
 
 # | msgid "Actions"
 #: hiddifypanel/templates/admin-layout.html:35
-#: hiddifypanel/templates/admin-layout.html:93
+#: hiddifypanel/templates/admin-layout.html:94
 msgid "admin.actions.title"
 msgstr "Actions"
 
 # | msgid "Status"
 #: hiddifypanel/templates/admin-layout.html:37
-#: hiddifypanel/templates/admin-layout.html:95
+#: hiddifypanel/templates/admin-layout.html:97
 msgid "admin.actions.status"
 msgstr "Status"
 
@@ -1586,74 +1586,74 @@ msgstr "Apply Configs"
 
 # | msgid "Reinstall System"
 #: hiddifypanel/templates/admin-layout.html:39
-#: hiddifypanel/templates/admin-layout.html:98
+#: hiddifypanel/templates/admin-layout.html:100
 msgid "admin.actions.reinstall"
 msgstr "Reinstall System"
 
 # | msgid "Restart system"
 #: hiddifypanel/templates/admin-layout.html:40
-#: hiddifypanel/templates/admin-layout.html:97
+#: hiddifypanel/templates/admin-layout.html:99
 msgid "admin.actions.reset"
 msgstr "Restart system"
 
 # | msgid "Update System"
 #: hiddifypanel/templates/admin-layout.html:41
-#: hiddifypanel/templates/admin-layout.html:99
+#: hiddifypanel/templates/admin-layout.html:101
 msgid "admin.actions.update"
 msgstr "Update System"
 
 # | msgid "View Logs"
 #: hiddifypanel/templates/admin-layout.html:42
-#: hiddifypanel/templates/admin-layout.html:100
+#: hiddifypanel/templates/admin-layout.html:96
 msgid "admin.actions.viewlogs"
 msgstr "View Logs"
 
 # | msgid "Support"
 #: hiddifypanel/templates/admin-layout.html:48
-#: hiddifypanel/templates/admin-layout.html:104
+#: hiddifypanel/templates/admin-layout.html:105
 msgid "admin.menu.support"
 msgstr "Support"
 
 # | msgid "Users"
 #: hiddifypanel/templates/admin-layout.html:51
-#: hiddifypanel/templates/admin-layout.html:107
+#: hiddifypanel/templates/admin-layout.html:108
 #, fuzzy
 msgid "admin.menu.telegram"
 msgstr "Telegram"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/templates/admin-layout.html:96
+#: hiddifypanel/templates/admin-layout.html:98
 #, fuzzy
 msgid "admin.actions.apply_configs"
 msgstr "Apply Configs"
 
 # | msgid "Share to social media"
-#: hiddifypanel/templates/master.html:113
+#: hiddifypanel/templates/master.html:112
 msgid "user.home.share-title"
 msgstr "Share to social media"
 
 # | msgid "Link for social media"
-#: hiddifypanel/templates/master.html:123
+#: hiddifypanel/templates/master.html:122
 msgid "clickable copy"
 msgstr "Link for social media"
 
-#: hiddifypanel/templates/master.html:124
+#: hiddifypanel/templates/master.html:123
 msgid "open"
 msgstr ""
 
 # | msgid "Close"
-#: hiddifypanel/templates/master.html:131
+#: hiddifypanel/templates/master.html:130
 msgid "close"
 msgstr "Close"
 
 # | msgid "Link Copied to clipboard. "
-#: hiddifypanel/templates/master.html:173
+#: hiddifypanel/templates/master.html:172
 msgid "user.home.link.success-copy"
 msgstr "Link Copied to clipboard. "
 
 # | msgid "Copy to clipboard:  Ctrl+C, Enter"
-#: hiddifypanel/templates/master.html:175
-#: hiddifypanel/templates/master.html:178
+#: hiddifypanel/templates/master.html:174
+#: hiddifypanel/templates/master.html:177
 msgid "user.home.link.manual-copy"
 msgstr "Copy to clipboard:  Ctrl+C, Enter"
 

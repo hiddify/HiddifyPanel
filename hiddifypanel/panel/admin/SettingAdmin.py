@@ -1,6 +1,6 @@
 from hiddifypanel.models import BoolConfig,StrConfig,ConfigEnum,hconfig
-# from flask_babelex import lazy_gettext as __
-from flask_babelex import gettext as _
+from flask_babelex import lazy_gettext as _
+# from flask_babelex import gettext as _
 import wtforms as wtf
 from flask_wtf import FlaskForm, CSRFProtect
 from flask_bootstrap import SwitchField
@@ -51,6 +51,7 @@ class SettingAdmin(FlaskView):
                     
                 # print(cat,vs)
             db.session.commit()
+            from flask_babel import refresh; refresh()
             apply_btn=f"<a href='{url_for('admin.Actions:apply_configs')}' class='btn btn-primary'>"+_("admin.config.apply_configs")+"</a>"
             flash(Markup(_('config.validation-success',link=apply_btn)), 'success')
 

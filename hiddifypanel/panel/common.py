@@ -24,6 +24,8 @@ def init_app(app):
         g.is_admin = False
 
         g.proxy_path =  values.pop('proxy_path', None) if values else None
+        # if g.proxy_path!=hconfig(ConfigEnum.proxy_path):
+            # raise Exception("Invalid Proxy Path")
         tmp_secret=values.pop('user_secret', None) if values else None
         try:
             if tmp_secret:
@@ -34,5 +36,7 @@ def init_app(app):
         
         if not g.is_admin:
             g.user=User.query.filter(User.uuid==f'{g.user_uuid}').first()
+            if endpoint and "admin" in endpoint:
+                raise Exception("Access Denied")
 
         print(g.user)
