@@ -123,13 +123,14 @@ def get_config_form():
                     validators.append(wtf.validators.Regexp("^([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})|$",re.IGNORECASE,_("config.Invalid domain")))
                 elif 'domain' in c.key:
                     validators.append(wtf.validators.Regexp("^([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})$",re.IGNORECASE,_("config.Invalid domain")))
-                    validators.append(wtf.validators.NoneOf(db.session.query(Domain.domain).all(),_("config.Domain already used")))
+                    if c.key!=ConfigEnum.decoy_domain:
+                        validators.append(wtf.validators.NoneOf(db.session.query(Domain.domain).all(),_("config.Domain already used")))
                     render_kw['required']=""
         
 
-                if c.key==ConfigEnum.decoy_site:
-                    validators.append(wtf.validators.Regexp("http(s|)://([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})/?",re.IGNORECASE,_("config.Invalid decoy_site")))
-                    render_kw['required']=""
+                # if c.key==ConfigEnum.decoy_domain:
+                #     validators.append(wtf.validators.Regexp("http(s|)://([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})/?",re.IGNORECASE,_("config.Invalid decoy_domain")))
+                #     render_kw['required']=""
 
                 if 'secret' in c.key:
                     validators.append(wtf.validators.Regexp("^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",re.IGNORECASE,_('config.invalid uuid')))

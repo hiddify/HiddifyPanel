@@ -32,7 +32,7 @@ class ConfigEnum(StrEnum):
     http_ports = auto()
     kcp_ports = auto()
     kcp_enable = auto()
-    decoy_site = auto()
+    decoy_domain = auto()
     proxy_path = auto()
     firewall = auto()
     netdata = auto()
@@ -85,7 +85,7 @@ class ConfigEnum(StrEnum):
             self.http_ports: {'category': ConfigCategory.http},
             self.kcp_ports: {'category': ConfigCategory.kcp},
             self.kcp_enable: {'category': ConfigCategory.kcp,'type':bool},
-            self.decoy_site: {'category': ConfigCategory.general},
+            self.decoy_domain: {'category': ConfigCategory.general},
             self.proxy_path: {'category': ConfigCategory.proxies},
             self.firewall: {'category': ConfigCategory.general},
             self.netdata: {'category': ConfigCategory.general},

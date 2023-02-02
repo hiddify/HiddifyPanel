@@ -199,7 +199,7 @@ msgstr ""
 # | "Invalid address: a website for decoy site should be complete url e.g., "
 # | "https://www.wikipedia.org/\n"
 #: hiddifypanel/panel/admin/SettingAdmin.py:131
-msgid "config.Invalid decoy_site"
+msgid "config.Invalid decoy_domain"
 msgstr ""
 "آدرس نامعتبر: یک وب‌سایت جعلی باید نشانی اینترنتی کاملی داشته باشد، به "
 "عنوان مثال، https://www.wikipedia.org/"
@@ -427,12 +427,12 @@ msgstr "IPv6 را غیر فعال می‌کند. "
 
 # | msgid "Decoy Site"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.decoy_site.label"
+msgid "config.decoy_domain.label"
 msgstr "سایت جعلی"
 
 # | msgid "Fake site: simulates a site when someone visits your domain"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.decoy_site.description"
+msgid "config.decoy_domain.description"
 msgstr ""
 "سایت جعلی: زمانی که شخصی از دامنه شما بازدید می کند یک سایت جعلی را نمایش"
 " می‌دهد."

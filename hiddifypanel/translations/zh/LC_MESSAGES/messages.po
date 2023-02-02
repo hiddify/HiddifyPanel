@@ -160,7 +160,7 @@ msgid "config.vmess_enable.description"
 msgstr ""
 
 #: hiddifypanel/panel/admin/SettingAdmin.py:131
-msgid "config.Invalid decoy_site"
+msgid "config.Invalid decoy_domain"
 msgstr ""
 
 #: hiddifypanel/panel/admin/SettingAdmin.py:135
@@ -312,11 +312,11 @@ msgid "config.only_ipv4.description"
 msgstr ""
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.decoy_site.label"
+msgid "config.decoy_domain.label"
 msgstr ""
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.decoy_site.description"
+msgid "config.decoy_domain.description"
 msgstr ""
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1056,7 +1056,7 @@ msgstr ""
 #~ msgid "config.db_version"
 #~ msgstr ""
 
-#~ msgid "config.decoy_site"
+#~ msgid "config.decoy_domain"
 #~ msgstr ""
 
 #~ msgid "config.proxy_path"

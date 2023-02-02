@@ -48,7 +48,7 @@ def init_db():
             StrConfig(category="ports",key=ConfigEnum.http_ports,value="80"),
             StrConfig(category="ports",key=ConfigEnum.tls_ports,value="443"),
             
-            StrConfig(category="general",key=ConfigEnum.decoy_site,value="https://www.wikipedia.org/"),
+            StrConfig(category="general",key=ConfigEnum.decoy_domain,value="https://www.wikipedia.org/"),
             StrConfig(category="proxies",key=ConfigEnum.proxy_path,value=get_random_string()),
             BoolConfig(category="general",key=ConfigEnum.firewall,value=False),
             BoolConfig(category="general",key=ConfigEnum.netdata,value=True),
