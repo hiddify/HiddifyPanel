@@ -41,6 +41,8 @@ setup(
     
     packages=find_packages(exclude=["tests", ".github"]),
     install_requires=read_requirements("requirements.txt"),
+    package_data={'': ['hiddifypanel/translations/*/*/*.mo', 'hiddifypanel/translations/*/*/*.po']},
+
     entry_points={
         "console_scripts": ["hiddifypanel = hiddifypanel.__main__:main"]
     },
