@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-02 18:44+0100\n"
-"PO-Revision-Date: 2023-02-02 11:43-0600\n"
+"POT-Creation-Date: 2023-02-02 18:54+0100\n"
+"PO-Revision-Date: 2023-02-02 11:53-0600\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -399,6 +399,14 @@ msgstr "只有 IPv4"
 msgid "config.only_ipv4.description"
 msgstr "它将禁用 IPv6"
 
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.torrent_block.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.torrent_block.description"
+msgstr ""
+
 # | msgid "Decoy Site"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.decoy_domain.label"
@@ -435,6 +443,16 @@ msgstr "封锁伊朗网站"
 #, fuzzy
 msgid "config.block_iran_sites.description"
 msgstr "屏蔽伊朗网站以防止被政府发现（实验：如果有问题，请禁用它并告诉我们。）"
+
+# | msgid "V2Ray configurations"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.v2ray_enable.label"
+msgstr "V2Ray configurations"
+
+# | msgid "V2Ray configurations could be set here."
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.v2ray_enable.description"
+msgstr "V2Ray configurations could be set here."
 
 # | msgid "Shared Secret"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -622,13 +640,15 @@ msgstr "TLS 端口"
 msgid "config.tls_ports.description"
 msgstr "逗号分隔的整数，指示用作 TLS 连接的端口（需要端口 443）。"
 
+# | msgid "TLS Configuration"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.tls.label"
-msgstr ""
+msgstr "TLS Configuration"
 
+# | msgid "TLS Configurations could be set here."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.tls.description"
-msgstr ""
+msgstr "TLS Configurations could be set here."
 
 # | msgid "Shadowsocks Fake TLS (simple obfs)"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -860,14 +880,6 @@ msgstr "秘密代理路径"
 msgid "config.proxy_path.description"
 msgstr "我们使用秘密代理路径来隐藏我们对政府的代理。"
 
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.v2ray_enable.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.v2ray_enable.description"
-msgstr ""
-
 # | msgid "Database version label"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.db_version.label"
@@ -878,13 +890,15 @@ msgstr "Database version label"
 msgid "config.db_version.description"
 msgstr "Database version description"
 
+# | msgid "Config not found"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.not_found.label"
-msgstr ""
+msgstr "Config not found"
 
+# | msgid "Config not found"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.not_found.description"
-msgstr ""
+msgstr "Config not found"
 
 # | msgid "Protocol Usage Chart"
 #: hiddifypanel/panel/admin/templates/index.html:16
@@ -1330,9 +1344,9 @@ msgstr "电报"
 
 # | msgid "HiddifyPanel"
 #: hiddifypanel/panel/user/templates/home/index.html:7
-#: hiddifypanel/templates/admin-layout.html:20
-#: hiddifypanel/templates/admin-layout.html:24
-#: hiddifypanel/templates/admin-layout.html:67
+#: hiddifypanel/templates/admin-layout.html:19
+#: hiddifypanel/templates/admin-layout.html:23
+#: hiddifypanel/templates/admin-layout.html:66
 #: hiddifypanel/templates/master.html:6
 #, fuzzy
 msgid "master.page-title"
@@ -1665,107 +1679,103 @@ msgstr ""
 "现在，根据您的需要，您可以单击其中一个按钮。通过在浏览器中查看窗口，只需单击打开 HiddifyDesktop 选项即可自动将服务器链接添加到 "
 "HiddifyDesktop。"
 
-#: hiddifypanel/templates/admin-layout.html:9
-msgid "new_test"
-msgstr ""
-
 # | msgid "Admin"
-#: hiddifypanel/templates/admin-layout.html:28
-#: hiddifypanel/templates/admin-layout.html:81
+#: hiddifypanel/templates/admin-layout.html:27
+#: hiddifypanel/templates/admin-layout.html:80
 #, fuzzy
 msgid "admin.menu.home"
 msgstr "行政"
 
 # | msgid "Domains"
-#: hiddifypanel/templates/admin-layout.html:29
-#: hiddifypanel/templates/admin-layout.html:82
+#: hiddifypanel/templates/admin-layout.html:28
+#: hiddifypanel/templates/admin-layout.html:81
 #, fuzzy
 msgid "admin.menu.domain"
 msgstr "域名"
 
 # | msgid "Users"
-#: hiddifypanel/templates/admin-layout.html:30
-#: hiddifypanel/templates/admin-layout.html:83
+#: hiddifypanel/templates/admin-layout.html:29
+#: hiddifypanel/templates/admin-layout.html:82
 #, fuzzy
 msgid "admin.menu.user"
 msgstr "用户"
 
 # | msgid "Proxies"
-#: hiddifypanel/templates/admin-layout.html:31
-#: hiddifypanel/templates/admin-layout.html:84
+#: hiddifypanel/templates/admin-layout.html:30
+#: hiddifypanel/templates/admin-layout.html:83
 #, fuzzy
 msgid "admin.menu.proxy"
 msgstr "代理"
 
 # | msgid "Settings"
-#: hiddifypanel/templates/admin-layout.html:32
-#: hiddifypanel/templates/admin-layout.html:85
+#: hiddifypanel/templates/admin-layout.html:31
+#: hiddifypanel/templates/admin-layout.html:84
 #, fuzzy
 msgid "admin.menu.config"
 msgstr "设置"
 
 # | msgid "Actions"
-#: hiddifypanel/templates/admin-layout.html:35
-#: hiddifypanel/templates/admin-layout.html:94
+#: hiddifypanel/templates/admin-layout.html:34
+#: hiddifypanel/templates/admin-layout.html:93
 #, fuzzy
 msgid "admin.actions.title"
 msgstr "动作"
 
 # | msgid "Status"
-#: hiddifypanel/templates/admin-layout.html:37
-#: hiddifypanel/templates/admin-layout.html:97
+#: hiddifypanel/templates/admin-layout.html:36
+#: hiddifypanel/templates/admin-layout.html:96
 #, fuzzy
 msgid "admin.actions.status"
 msgstr "地位"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/templates/admin-layout.html:38
+#: hiddifypanel/templates/admin-layout.html:37
 msgid "admin.Actions:apply_configs"
 msgstr "应用配置"
 
 # | msgid "Reinstall System"
-#: hiddifypanel/templates/admin-layout.html:39
-#: hiddifypanel/templates/admin-layout.html:100
+#: hiddifypanel/templates/admin-layout.html:38
+#: hiddifypanel/templates/admin-layout.html:99
 #, fuzzy
 msgid "admin.actions.reinstall"
 msgstr "重装系统"
 
 # | msgid "Restart system"
-#: hiddifypanel/templates/admin-layout.html:40
-#: hiddifypanel/templates/admin-layout.html:99
+#: hiddifypanel/templates/admin-layout.html:39
+#: hiddifypanel/templates/admin-layout.html:98
 #, fuzzy
 msgid "admin.actions.reset"
 msgstr "重启系统"
 
 # | msgid "Update System"
-#: hiddifypanel/templates/admin-layout.html:41
-#: hiddifypanel/templates/admin-layout.html:101
+#: hiddifypanel/templates/admin-layout.html:40
+#: hiddifypanel/templates/admin-layout.html:100
 #, fuzzy
 msgid "admin.actions.update"
 msgstr "更新系统"
 
 # | msgid "View Logs"
-#: hiddifypanel/templates/admin-layout.html:42
-#: hiddifypanel/templates/admin-layout.html:96
+#: hiddifypanel/templates/admin-layout.html:41
+#: hiddifypanel/templates/admin-layout.html:95
 #, fuzzy
 msgid "admin.actions.viewlogs"
 msgstr "查看日志"
 
 # | msgid "Support"
-#: hiddifypanel/templates/admin-layout.html:48
-#: hiddifypanel/templates/admin-layout.html:105
+#: hiddifypanel/templates/admin-layout.html:47
+#: hiddifypanel/templates/admin-layout.html:104
 #, fuzzy
 msgid "admin.menu.support"
 msgstr "支持"
 
 # | msgid "Telegram"
-#: hiddifypanel/templates/admin-layout.html:51
-#: hiddifypanel/templates/admin-layout.html:108
+#: hiddifypanel/templates/admin-layout.html:50
+#: hiddifypanel/templates/admin-layout.html:107
 msgid "admin.menu.telegram"
 msgstr "电报"
 
 # | msgid "Apply configs"
-#: hiddifypanel/templates/admin-layout.html:98
+#: hiddifypanel/templates/admin-layout.html:97
 msgid "admin.actions.apply_configs"
 msgstr "Apply configs"
 
@@ -1868,4 +1878,7 @@ msgstr "复制到剪贴板：Ctrl+C，回车"
 # | msgid "Check"
 #~ msgid "check"
 #~ msgstr "查看"
+
+#~ msgid "new_test"
+#~ msgstr ""
 

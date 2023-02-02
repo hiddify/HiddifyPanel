@@ -51,6 +51,7 @@ class ConfigEnum(StrEnum):
     telegram_fakedomain = auto()
 
     v2ray_enable = auto()
+    torrent_block = auto()
 
     ssfaketls_enable = auto()
     # ssfaketls_secret="ssfaketls_secret"
@@ -79,6 +80,7 @@ class ConfigEnum(StrEnum):
       return cls.not_found #"key not found"
     def info(self):
         map = {
+            self.not_found:{'category': ConfigCategory.hidden},
             self.lang: {'category': ConfigCategory.general},
             self.admin_secret: {'category': ConfigCategory.admin},
             self.tls_ports: {'category': ConfigCategory.tls},
@@ -95,6 +97,7 @@ class ConfigEnum(StrEnum):
             self.auto_update: {'category': ConfigCategory.general,'type':bool},
             self.speed_test: {'category': ConfigCategory.general,'type':bool},
             self.only_ipv4: {'category': ConfigCategory.general,'type':bool},
+            self.torrent_block: {'category': ConfigCategory.general,'type':bool},
 
             self.shared_secret: {'category': ConfigCategory.proxies},
 

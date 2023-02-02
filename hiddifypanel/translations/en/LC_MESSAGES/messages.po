@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-02 18:44+0100\n"
-"PO-Revision-Date: 2023-02-02 11:43-0600\n"
+"POT-Creation-Date: 2023-02-02 18:54+0100\n"
+"PO-Revision-Date: 2023-02-02 11:53-0600\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -365,6 +365,14 @@ msgstr "Only IPv4"
 msgid "config.only_ipv4.description"
 msgstr "It will disable IPv6"
 
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.torrent_block.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.torrent_block.description"
+msgstr ""
+
 # | msgid "Decoy Site"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.decoy_domain.label"
@@ -399,6 +407,16 @@ msgid "config.block_iran_sites.description"
 msgstr ""
 "Block Iranian sites to prevent detection by the government (experimental: If"
 " there is a problem, please disable it and tell us.)"
+
+# | msgid "V2Ray configurations"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.v2ray_enable.label"
+msgstr "V2Ray configurations"
+
+# | msgid "V2Ray configurations could be set here."
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.v2ray_enable.description"
+msgstr "V2Ray configurations could be set here."
 
 # | msgid "Shared Secret"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -540,12 +558,14 @@ msgstr ""
 "connections (port 80 is required).\n"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
 msgid "config.http.label"
-msgstr ""
+msgstr "HTTP settings"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
 msgid "config.http.description"
-msgstr ""
+msgstr "HTTP connection settings"
 
 # | msgid "Allow invalid SNI"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -575,13 +595,15 @@ msgstr ""
 "Comma separated integers indicating the ports to use as TLS connection (port"
 " 443 is required).\n"
 
+# | msgid "TLS Configuration"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.tls.label"
-msgstr ""
+msgstr "TLS Configuration"
 
+# | msgid "TLS Configurations could be set here."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.tls.description"
-msgstr ""
+msgstr "TLS Configurations could be set here."
 
 # | msgid "Shadowsocks Fake TLS (simple obfs)"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -794,14 +816,6 @@ msgstr "Secret Proxy Path"
 msgid "config.proxy_path.description"
 msgstr "We use secret proxy path to hide our proxies for the gouvernment."
 
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.v2ray_enable.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.v2ray_enable.description"
-msgstr ""
-
 # | msgid "Database version label"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.db_version.label"
@@ -812,13 +826,15 @@ msgstr "Database version label"
 msgid "config.db_version.description"
 msgstr "Database version description"
 
+# | msgid "Config not found"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.not_found.label"
-msgstr ""
+msgstr "Config not found"
 
+# | msgid "Config not found"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.not_found.description"
-msgstr ""
+msgstr "Config not found"
 
 # | msgid "Protocol Usage Chart"
 #: hiddifypanel/panel/admin/templates/index.html:16
@@ -1224,9 +1240,9 @@ msgstr "Telegram"
 
 # | msgid "HiddifyPanel"
 #: hiddifypanel/panel/user/templates/home/index.html:7
-#: hiddifypanel/templates/admin-layout.html:20
-#: hiddifypanel/templates/admin-layout.html:24
-#: hiddifypanel/templates/admin-layout.html:67
+#: hiddifypanel/templates/admin-layout.html:19
+#: hiddifypanel/templates/admin-layout.html:23
+#: hiddifypanel/templates/admin-layout.html:66
 #: hiddifypanel/templates/master.html:6
 msgid "master.page-title"
 msgstr "HiddifyPanel"
@@ -1527,95 +1543,91 @@ msgstr ""
 "Now, according to your need, you can click on one of the buttons. By viewing the window in your browser, just click on the Open HiddifyDesktop option to automatically add the server link to HiddifyDesktop.\n"
 "\n"
 
-#: hiddifypanel/templates/admin-layout.html:9
-msgid "new_test"
-msgstr ""
-
 # | msgid "Admin"
-#: hiddifypanel/templates/admin-layout.html:28
-#: hiddifypanel/templates/admin-layout.html:81
+#: hiddifypanel/templates/admin-layout.html:27
+#: hiddifypanel/templates/admin-layout.html:80
 msgid "admin.menu.home"
 msgstr "Admin"
 
 # | msgid "Domains"
-#: hiddifypanel/templates/admin-layout.html:29
-#: hiddifypanel/templates/admin-layout.html:82
+#: hiddifypanel/templates/admin-layout.html:28
+#: hiddifypanel/templates/admin-layout.html:81
 msgid "admin.menu.domain"
 msgstr "Domains"
 
 # | msgid "Users"
-#: hiddifypanel/templates/admin-layout.html:30
-#: hiddifypanel/templates/admin-layout.html:83
+#: hiddifypanel/templates/admin-layout.html:29
+#: hiddifypanel/templates/admin-layout.html:82
 msgid "admin.menu.user"
 msgstr "Users"
 
 # | msgid "Proxies"
-#: hiddifypanel/templates/admin-layout.html:31
-#: hiddifypanel/templates/admin-layout.html:84
+#: hiddifypanel/templates/admin-layout.html:30
+#: hiddifypanel/templates/admin-layout.html:83
 msgid "admin.menu.proxy"
 msgstr "Proxies"
 
 # | msgid "Settings"
-#: hiddifypanel/templates/admin-layout.html:32
-#: hiddifypanel/templates/admin-layout.html:85
+#: hiddifypanel/templates/admin-layout.html:31
+#: hiddifypanel/templates/admin-layout.html:84
 msgid "admin.menu.config"
 msgstr "Settings"
 
 # | msgid "Actions"
-#: hiddifypanel/templates/admin-layout.html:35
-#: hiddifypanel/templates/admin-layout.html:94
+#: hiddifypanel/templates/admin-layout.html:34
+#: hiddifypanel/templates/admin-layout.html:93
 msgid "admin.actions.title"
 msgstr "Actions"
 
 # | msgid "Status"
-#: hiddifypanel/templates/admin-layout.html:37
-#: hiddifypanel/templates/admin-layout.html:97
+#: hiddifypanel/templates/admin-layout.html:36
+#: hiddifypanel/templates/admin-layout.html:96
 msgid "admin.actions.status"
 msgstr "Status"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/templates/admin-layout.html:38
+#: hiddifypanel/templates/admin-layout.html:37
 msgid "admin.Actions:apply_configs"
 msgstr "Apply Configs"
 
 # | msgid "Reinstall System"
-#: hiddifypanel/templates/admin-layout.html:39
-#: hiddifypanel/templates/admin-layout.html:100
+#: hiddifypanel/templates/admin-layout.html:38
+#: hiddifypanel/templates/admin-layout.html:99
 msgid "admin.actions.reinstall"
 msgstr "Reinstall System"
 
 # | msgid "Restart system"
-#: hiddifypanel/templates/admin-layout.html:40
-#: hiddifypanel/templates/admin-layout.html:99
+#: hiddifypanel/templates/admin-layout.html:39
+#: hiddifypanel/templates/admin-layout.html:98
 msgid "admin.actions.reset"
 msgstr "Restart system"
 
 # | msgid "Update System"
-#: hiddifypanel/templates/admin-layout.html:41
-#: hiddifypanel/templates/admin-layout.html:101
+#: hiddifypanel/templates/admin-layout.html:40
+#: hiddifypanel/templates/admin-layout.html:100
 msgid "admin.actions.update"
 msgstr "Update System"
 
 # | msgid "View Logs"
-#: hiddifypanel/templates/admin-layout.html:42
-#: hiddifypanel/templates/admin-layout.html:96
+#: hiddifypanel/templates/admin-layout.html:41
+#: hiddifypanel/templates/admin-layout.html:95
 msgid "admin.actions.viewlogs"
 msgstr "View Logs"
 
 # | msgid "Support"
-#: hiddifypanel/templates/admin-layout.html:48
-#: hiddifypanel/templates/admin-layout.html:105
+#: hiddifypanel/templates/admin-layout.html:47
+#: hiddifypanel/templates/admin-layout.html:104
 msgid "admin.menu.support"
 msgstr "Support"
 
 # | msgid "Telegram"
-#: hiddifypanel/templates/admin-layout.html:51
-#: hiddifypanel/templates/admin-layout.html:108
+#: hiddifypanel/templates/admin-layout.html:50
+#: hiddifypanel/templates/admin-layout.html:107
 msgid "admin.menu.telegram"
 msgstr "Telegram"
 
 # | msgid "Apply configs"
-#: hiddifypanel/templates/admin-layout.html:98
+#: hiddifypanel/templates/admin-layout.html:97
 msgid "admin.actions.apply_configs"
 msgstr "Apply configs"
 
@@ -1710,3 +1722,7 @@ msgstr "Copy to clipboard:  Ctrl+C, Enter"
 # | msgid "Check"
 #~ msgid "check"
 #~ msgstr "Check"
+
+#, fuzzy
+#~ msgid "new_test"
+#~ msgstr "test"

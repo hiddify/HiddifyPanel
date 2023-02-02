@@ -89,8 +89,19 @@ def init_db():
             BoolConfig(key=ConfigEnum.domain_fronting_tls_enable,value=False),
             BoolConfig(key=ConfigEnum.domain_fronting_http_enable,value=False),
             StrConfig(key=ConfigEnum.domain_fronting_domain,value=""),
+
+
             *get_proxy_rows()
         ]
+
+        for c in ConfigEnum:
+            if c in [d.key for d in data if type(d) in [BoolConfig,StrConfig]]:
+                continue
+            if c.type()==bool:
+                data.append(BoolConfig(key=c,value=False))
+            else:
+                data.append(StrConfig(key=c,value=""))
+                    
 
         
         db.session.bulk_save_objects(data)
