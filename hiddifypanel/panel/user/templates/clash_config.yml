@@ -17,7 +17,6 @@ dns:
   % if meta_or_normal=='meta'
   prefer-h3: true #Enable DoH support for HTTP/3,
   % endif
-  use-hosts: true
   fake-ip-filter:
      - '{{domain}}'
      - '{{hconfigs[ConfigEnum.telegram_fakedomain]}}'
