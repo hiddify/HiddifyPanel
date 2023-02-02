@@ -32,7 +32,7 @@ def init_app(app):
     
     admin = Admin(endpoint="admin",base_template='flaskadmin-layout.html')    
 
-    admin.template_mode = app.config.FLASK_ADMIN_TEMPLATE_MODE
+    admin.template_mode = "bootstrap4"
     
     
 
