@@ -7,3 +7,4 @@ graft hiddifypanel/static
 include hiddifypanel/static
 include hiddifypanel/translations
 graft hiddifypanel/translations
+recursive-include hiddifypanel/translations *
