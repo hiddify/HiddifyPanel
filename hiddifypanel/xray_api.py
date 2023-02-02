@@ -29,6 +29,7 @@ def remove_client(uuid):
             pass        
 
 def get_usage(uuid,reset=False):
+    xray_client=get_xray_client()
     d = xray_client.get_client_download_traffic(f'{uuid}@hiddify.com',reset=reset)
     u = xray_client.get_client_upload_traffic(f'{uuid}@hiddify.com',reset=reset)
     if d is None or u is None:

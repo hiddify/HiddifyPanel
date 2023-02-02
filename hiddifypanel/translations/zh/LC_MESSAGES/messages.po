@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-02 18:54+0100\n"
-"PO-Revision-Date: 2023-02-02 11:53-0600\n"
+"POT-Creation-Date: 2023-02-02 19:04+0100\n"
+"PO-Revision-Date: 2023-02-02 12:04-0600\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Generated-By: Babel 2.11.0\n"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/panel/admin/ProxyAdmin.py:41 hiddifypanel/panel/hiddify.py:103
+#: hiddifypanel/panel/admin/ProxyAdmin.py:41 hiddifypanel/panel/hiddify.py:106
 #, fuzzy
 msgid "admin.config.apply_configs"
 msgstr "应用配置"
@@ -24,7 +24,7 @@ msgstr "应用配置"
 # | "Configs have changed successfully. Click %(link)s to apply the configs.
 # It "
 # | "may takes 2 minutes to apply."
-#: hiddifypanel/panel/admin/ProxyAdmin.py:42 hiddifypanel/panel/hiddify.py:104
+#: hiddifypanel/panel/admin/ProxyAdmin.py:42 hiddifypanel/panel/hiddify.py:107
 #, fuzzy
 msgid "config.validation-success"
 msgstr "配置已成功更改。单击 %(link)s 以应用配置。申请可能需要 2 分钟。"
@@ -399,13 +399,15 @@ msgstr "只有 IPv4"
 msgid "config.only_ipv4.description"
 msgstr "它将禁用 IPv6"
 
+# | msgid "Torrent Block Configuration"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.torrent_block.label"
-msgstr ""
+msgstr "Torrent Block Configuration"
 
+# | msgid "Torrent Block Configurations could be set in this section."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.torrent_block.description"
-msgstr ""
+msgstr "Torrent Block Configurations could be set in this section."
 
 # | msgid "Decoy Site"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -449,7 +451,7 @@ msgstr "屏蔽伊朗网站以防止被政府发现（实验：如果有问题，
 msgid "config.v2ray_enable.label"
 msgstr "V2Ray configurations"
 
-# | msgid "V2Ray configurations could be set here."
+# | msgid "V2Ray configurations could be set in this section."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.v2ray_enable.description"
 msgstr "V2Ray configurations could be set here."
@@ -602,13 +604,15 @@ msgstr "HTTP 端口"
 msgid "config.http_ports.description"
 msgstr "逗号分隔的整数，指示用作未加密连接的端口（需要端口 80）。"
 
+# | msgid "HTTP Configuration"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.http.label"
-msgstr ""
+msgstr "HTTP Configuration"
 
+# | msgid "HTTP Configurations could be set in this section."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.http.description"
-msgstr ""
+msgstr "HTTP Configurations could be set in this section."
 
 # | msgid "Allow invalid SNI"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -645,7 +649,7 @@ msgstr "逗号分隔的整数，指示用作 TLS 连接的端口（需要端口 
 msgid "config.tls.label"
 msgstr "TLS Configuration"
 
-# | msgid "TLS Configurations could be set here."
+# | msgid "TLS Configurations could be set  in this section."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.tls.description"
 msgstr "TLS Configurations could be set here."
@@ -1879,6 +1883,7 @@ msgstr "复制到剪贴板：Ctrl+C，回车"
 #~ msgid "check"
 #~ msgstr "查看"
 
+# | msgid "TEST Translation"
 #~ msgid "new_test"
-#~ msgstr ""
+#~ msgstr "TEST Translation"
 

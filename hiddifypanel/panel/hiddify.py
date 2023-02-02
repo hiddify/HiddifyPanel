@@ -1,10 +1,12 @@
 from flask import jsonify,g,flash,url_for,Markup
 to_gig_d = 1024*1024*1024
 import datetime
+
 from hiddifypanel.panel.database import db
 from hiddifypanel.models import StrConfig,BoolConfig,User,Domain,get_hconfigs,Proxy,hconfig,ConfigEnum
 import urllib
 from flask_babelex import lazy_gettext as _
+from hiddifypanel import xray_api
 
 def auth(function):
     def wrapper(*args,**kwargs):
@@ -31,12 +33,13 @@ def abs_url(path):
     return f"/{g.proxy_path}/{g.user_uuid}/{path}"
 def asset_url(path):
     return f"/{g.proxy_path}/{path}"
+
 def update_usage():
         
         res={}
         for user in db.session.query(User).all():
-            if (datetime.today()-last_rest_time).days>=30:
-                user.last_rest_time=datetime.today()
+            if (datetime.date.today()-user.last_reset_time).days>=30:
+                user.last_reset_time=datetime.date.today()
                 if user.current_usage_GB > user.monthly_usage_limit_GB:
                     xray_api.add_client(user.uuid)
                 user.current_usage_GB=0

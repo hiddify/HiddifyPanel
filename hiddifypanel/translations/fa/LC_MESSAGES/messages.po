@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-02 18:54+0100\n"
-"PO-Revision-Date: 2023-02-02 11:53-0600\n"
+"POT-Creation-Date: 2023-02-02 19:04+0100\n"
+"PO-Revision-Date: 2023-02-02 12:04-0600\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Generated-By: Babel 2.11.0\n"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/panel/admin/ProxyAdmin.py:41 hiddifypanel/panel/hiddify.py:103
+#: hiddifypanel/panel/admin/ProxyAdmin.py:41 hiddifypanel/panel/hiddify.py:106
 msgid "admin.config.apply_configs"
 msgstr "اعمال تنظیمات"
 
@@ -23,7 +23,7 @@ msgstr "اعمال تنظیمات"
 # | "Configs have changed successfully. Click %(link)s to apply the configs.
 # It "
 # | "may takes 2 minutes to apply."
-#: hiddifypanel/panel/admin/ProxyAdmin.py:42 hiddifypanel/panel/hiddify.py:104
+#: hiddifypanel/panel/admin/ProxyAdmin.py:42 hiddifypanel/panel/hiddify.py:107
 msgid "config.validation-success"
 msgstr ""
 "تنظیمات با موفقیت ذخیره شدند. لطفا بر روی این لینک: %(link)s کلیک کنید تا"
@@ -319,8 +319,8 @@ msgstr "فایروال"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.firewall.description"
 msgstr ""
-"با فعال کردن فایروال، پورت‌های استفاده شده باز خواهند شد (حداقل ۲۲، ۴۴۳ و"
-" ۸۰) و سایر پورت‌ها بسته می‌شوند."
+"با فعال کردن فایروال، پورت‌های ادرحال استفاده باز خواهند شد (حداقل ۲۲، "
+"۴۴۳ و ۸۰) و سایر پورت‌ها بسته می‌شوند."
 
 # | msgid "Netdata"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -331,7 +331,9 @@ msgstr "Netdata"
 # | "For displaying resources. May use your CPU but it is not too much."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.netdata.description"
-msgstr "برای نمایش منابع. ممکن است از CPU شما استفاده کند اما میزان آن زیاد نیست."
+msgstr ""
+"نت دیتا ابزاری است برای نمایش مقدار استفاده سیستم از منابع. فعالسازی آن "
+"ممکن است از اندکی از CPU شما استفاده کند."
 
 # | msgid "Auto Update"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -344,8 +346,8 @@ msgstr "آپدیت خودکار"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.auto_update.description"
 msgstr ""
-"هر روز راس ساعت ۳ صبح، آپدیت‌ها را چک می‌کنیم. در صورتی که آپدیت جدیدی "
-"موجود باشد به صورت خودکار سیستم را آپدیت می‌کنیم."
+"هر روز راس ساعت ۳ صبح، سیستم برای آپدیت جدید چک می‌شود. در صورتی که آپدیت"
+" جدیدی موجود باشد به صورت خودکار سیستم آپدیت خواهد شد."
 
 # | msgid "SpeedTest"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -358,8 +360,8 @@ msgstr "تست سرعت"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.speed_test.description"
 msgstr ""
-"به کاربران اجازه تست سرعت بدهید. این کار کمک می‌کند تا کیفیت لینک را "
-"بسنجند."
+"با فعالسازی این گزینه به کاربران اجازه تست سرعت می‌دهید. این کار به آن‌ها"
+" کمک می‌کند تا کیفیت سرور و کانفیگ‌ها را بسنجند."
 
 # | msgid "Only IPv4"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -371,13 +373,15 @@ msgstr "فقط آی‌پی ورژن 4"
 msgid "config.only_ipv4.description"
 msgstr "IPv6 را غیر فعال می‌کند. "
 
+# | msgid "Torrent Block Configuration"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.torrent_block.label"
-msgstr ""
+msgstr "تنظیمات Torrent Block"
 
+# | msgid "Torrent Block Configurations could be set in this section."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.torrent_block.description"
-msgstr ""
+msgstr "در این قسمت تنظیمات Torrent Block قابل انجام است."
 
 # | msgid "Decoy Site"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -399,7 +403,7 @@ msgstr "تنظیمات عمومی"
 # | msgid "It is general system configurations."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.general.description"
-msgstr "این قسمت، تنظیمات عمومی سیستم است."
+msgstr "تنظیمات عمومی سیستم در این بخش قابل انجام است."
 
 # | msgid "Block Iranian sites"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -422,7 +426,7 @@ msgstr ""
 msgid "config.v2ray_enable.label"
 msgstr "تنظمات V2Ray"
 
-# | msgid "V2Ray configurations could be set here."
+# | msgid "V2Ray configurations could be set in this section."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.v2ray_enable.description"
 msgstr "تنظیمات فعالسازی V2Ray"
@@ -569,10 +573,12 @@ msgstr ""
 "پورت هایی که برای استفاده اتصال HTTP هستند. برای ورود چند پورت، آنها را "
 "با کاما از هم جدا کنید.  (پورت 80 اجباری است)."
 
+# | msgid "HTTP Configuration"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.http.label"
 msgstr "تنظیمات HTTP"
 
+# | msgid "HTTP Configurations could be set in this section."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.http.description"
 msgstr "تنظیمات مربوط به اتصال HTTP"
@@ -612,7 +618,7 @@ msgstr ""
 msgid "config.tls.label"
 msgstr "تنظیمات TLS"
 
-# | msgid "TLS Configurations could be set here."
+# | msgid "TLS Configurations could be set  in this section."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.tls.description"
 msgstr "تنظیمات مربوط به اتصال TLS"
@@ -1757,6 +1763,7 @@ msgstr "کپی کردن به کلیپ‌بورد: دکمه Ctrl+C و Enter"
 #~ msgid "check"
 #~ msgstr "بررسی"
 
+# | msgid "TEST Translation"
 #~ msgid "new_test"
 #~ msgstr "تست"
 

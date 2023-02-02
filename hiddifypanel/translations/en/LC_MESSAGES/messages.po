@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-02 18:54+0100\n"
-"PO-Revision-Date: 2023-02-02 11:53-0600\n"
+"POT-Creation-Date: 2023-02-02 19:04+0100\n"
+"PO-Revision-Date: 2023-02-02 12:04-0600\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -15,14 +15,14 @@ msgstr ""
 "Generated-By: Babel 2.11.0\n"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/panel/admin/ProxyAdmin.py:41 hiddifypanel/panel/hiddify.py:103
+#: hiddifypanel/panel/admin/ProxyAdmin.py:41 hiddifypanel/panel/hiddify.py:106
 msgid "admin.config.apply_configs"
 msgstr "Apply Configs"
 
 # | msgid ""
 # | "Configs have changed successfully. Click %(link)s to apply the configs. "
 # | "It may takes 2 minutes to apply."
-#: hiddifypanel/panel/admin/ProxyAdmin.py:42 hiddifypanel/panel/hiddify.py:104
+#: hiddifypanel/panel/admin/ProxyAdmin.py:42 hiddifypanel/panel/hiddify.py:107
 msgid "config.validation-success"
 msgstr ""
 "Configs have changed successfully. Click %(link)s to apply the configs. It "
@@ -365,13 +365,15 @@ msgstr "Only IPv4"
 msgid "config.only_ipv4.description"
 msgstr "It will disable IPv6"
 
+# | msgid "Torrent Block Configuration"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.torrent_block.label"
-msgstr ""
+msgstr "Torrent Block Configuration"
 
+# | msgid "Torrent Block Configurations could be set in this section."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.torrent_block.description"
-msgstr ""
+msgstr "Torrent Block Configurations could be set in this section."
 
 # | msgid "Decoy Site"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -413,10 +415,10 @@ msgstr ""
 msgid "config.v2ray_enable.label"
 msgstr "V2Ray configurations"
 
-# | msgid "V2Ray configurations could be set here."
+# | msgid "V2Ray configurations could be set in this section."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.v2ray_enable.description"
-msgstr "V2Ray configurations could be set here."
+msgstr "V2Ray configurations could be set in this section."
 
 # | msgid "Shared Secret"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -557,15 +559,15 @@ msgstr ""
 "Comma separated integers indicating the ports to use as unencrypted "
 "connections (port 80 is required).\n"
 
+# | msgid "HTTP Configuration"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-#, fuzzy
 msgid "config.http.label"
-msgstr "HTTP settings"
+msgstr "HTTP Configuration"
 
+# | msgid "HTTP Configurations could be set in this section."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-#, fuzzy
 msgid "config.http.description"
-msgstr "HTTP connection settings"
+msgstr "HTTP Configurations could be set in this section."
 
 # | msgid "Allow invalid SNI"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -600,10 +602,10 @@ msgstr ""
 msgid "config.tls.label"
 msgstr "TLS Configuration"
 
-# | msgid "TLS Configurations could be set here."
+# | msgid "TLS Configurations could be set  in this section."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.tls.description"
-msgstr "TLS Configurations could be set here."
+msgstr "TLS Configurations could be set  in this section."
 
 # | msgid "Shadowsocks Fake TLS (simple obfs)"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1723,6 +1725,6 @@ msgstr "Copy to clipboard:  Ctrl+C, Enter"
 #~ msgid "check"
 #~ msgstr "Check"
 
-#, fuzzy
+# | msgid "TEST Translation"
 #~ msgid "new_test"
-#~ msgstr "test"
+#~ msgstr "TEST Translation"
