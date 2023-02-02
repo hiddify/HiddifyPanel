@@ -14,80 +14,83 @@ from flask import render_template,current_app,flash, Markup,url_for
 from hiddifypanel.models import  User,Domain,DomainType,StrConfig,ConfigEnum,get_hconfigs
 from hiddifypanel.panel.database import db
 from wtforms.fields import *
+from flask_classful import FlaskView
 
-
-# @expose("/")
-def index():
-    # return "d"
-    import flask_babelex
+class SettingAdmin(FlaskView):
     
 
-    # form=HelloForm()
-    # # return render('config.html',form=form)
-    # return render_template('config.html',form=HelloForm())
-    form=get_config_form()
-    return render_template('config.html',form=form)
 
-
-def save():
-    form=get_config_form()
-    if form.validate_on_submit():
+    def index(self):
+        # return "d"
         
+        
+
+        # form=HelloForm()
+        # # return render('config.html',form=form)
+        # return render_template('config.html',form=HelloForm())
+        form=get_config_form()
+        return render_template('config.html',form=form)
+
+
+    def post(self):
+        form=get_config_form()
+        if form.validate_on_submit():
+            
+            boolconfigs=BoolConfig.query.all()
+            bool_types={c.key:'bool' for c in boolconfigs}
+            for cat,vs in form.data.items():#[c for c in ConfigEnum]:
+            
+                if type(vs) is dict:
+                    for k,v in vs.items():
+            
+                        if k in [c for c in ConfigEnum]:
+                            if k in bool_types:
+                                BoolConfig.query.filter(BoolConfig.key==k).first().value=v
+                            else:
+                                StrConfig.query.filter(StrConfig.key==k).first().value=v
+                    
+                # print(cat,vs)
+            db.session.commit()
+            apply_btn=f"<a href='{url_for('admin.Actions:apply_configs')}' class='btn btn-primary'>"+_("admin.config.apply_configs")+"</a>"
+            flash(Markup(_('config.validation-success',link=apply_btn)), 'success')
+
+            return render_template('config.html', form=form)
+        flash(_('config.validation-error'), 'danger')
+        return render_template('config.html', form=form)
+
+        
+        import flask_babelex
+        
+
+        # form=HelloForm()
+        # # return render('config.html',form=form)
+        # return render_template('config.html',form=HelloForm())
+        form=get_config_form()
+        return render_template('config.html',form=form)
+
+    def get_babel_string(self):
+        res=""
+        strconfigs=StrConfig.query.all()
         boolconfigs=BoolConfig.query.all()
         bool_types={c.key:'bool' for c in boolconfigs}
-        for cat,vs in form.data.items():#[c for c in ConfigEnum]:
-        
-            if type(vs) is dict:
-                for k,v in vs.items():
-        
-                    if k in [c for c in ConfigEnum]:
-                        if k in bool_types:
-                            BoolConfig.query.filter(BoolConfig.key==k).first().value=v
-                        else:
-                            StrConfig.query.filter(StrConfig.key==k).first().value=v
-                
-            # print(cat,vs)
-        db.session.commit()
-        apply_btn=f"<a href='{url_for('admin.actions.apply_configs')}' class='btn btn-primary'>"+_("admin.config.apply_configs")+"</a>"
-        flash(Markup(_('config.validation-success',link=apply_btn)), 'success')
 
-        return render_template('config.html', form=form)
-    flash(_('config.validation-error'), 'danger')
-    return render_template('config.html', form=form)
+        configs=[*boolconfigs,*strconfigs]
+        categories=sorted([ c for c in {c.category:1 for c in configs}])
 
-    
-    import flask_babelex
-    
+        for cat in categories:
+            if cat=='hidden':continue
 
-    # form=HelloForm()
-    # # return render('config.html',form=form)
-    # return render_template('config.html',form=HelloForm())
-    form=get_config_form()
-    return render_template('config.html',form=form)
-
-def get_babel_string():
-    res=""
-    strconfigs=StrConfig.query.all()
-    boolconfigs=BoolConfig.query.all()
-    bool_types={c.key:'bool' for c in boolconfigs}
-
-    configs=[*boolconfigs,*strconfigs]
-    categories=sorted([ c for c in {c.category:1 for c in configs}])
-
-    for cat in categories:
-        if cat=='hidden':continue
-
-        cat_configs=[c for c in configs if c.category==cat]
-        
-        for c in cat_configs:
-            res+=f'{{{{_("config.{c.key}.label")}}}} {{{{_("config.{c.key}.description")}}}}'
+            cat_configs=[c for c in configs if c.category==cat]
             
+            for c in cat_configs:
+                res+=f'{{{{_("config.{c.key}.label")}}}} {{{{_("config.{c.key}.description")}}}}'
+                
 
-        res+=f'{{{{_("config.{cat}.label")}}}}{{{{_("config.{cat}.description")}}}}'
-    for c in ConfigEnum:
-        res+=f'{{{{_("config.{c}.label")}}}} {{{{_("config.{c}.description")}}}}'
-    return res
-    
+            res+=f'{{{{_("config.{cat}.label")}}}}{{{{_("config.{cat}.description")}}}}'
+        for c in ConfigEnum:
+            res+=f'{{{{_("config.{c}.label")}}}} {{{{_("config.{c}.description")}}}}'
+        return res
+        
 
 def get_config_form():
     

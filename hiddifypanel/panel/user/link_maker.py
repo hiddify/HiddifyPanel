@@ -2,45 +2,22 @@ from flask import g
 import enum
 from hiddifypanel.models import User,Domain,BoolConfig,StrConfig,DomainType,ConfigEnum,get_hconfigs,get_hdomains,hconfig,Proxy
 import yaml
+from hiddifypanel.panel import hiddify
 def all_proxies():
-    # all_cfg= [
-    #     'WS Fake vless',
-    #     'WS Fake trojan',
-    #     'WS Fake vmess',
-    #     # 'grpc Fake vless',
-    #     # 'grpc Fake trojan',
-    #     # 'grpc Fake vmess',
-    #     "XTLS direct vless",
-    #     "WS direct vless",
-    #     "WS direct trojan",
-    #     "WS direct vmess",
-    #     "WS CDN vless",
-    #     "WS CDN trojan",
-    #     "WS CDN vmess",
-    #     "grpc CDN vless",
-    #     "grpc CDN trojan",
-    #     "grpc CDN vmess",
-    #     "tcp direct vless",
-    #     "tcp direct trojan",
-    #     "tcp direct vmess",
-    #     "h1 direct vless",
-    #     "h1 direct vmess",
-    #     "faketls direct ss",
-    #     "ws direct v2ray",
-    #     "ws CDN v2ray"
-    # ]
-    all_cfg=Proxy.query.filter(Proxy.enable==True).all()
-    if not hconfig(ConfigEnum.domain_fronting_domain):
-        all_cfg=[c for c in all_cfg if 'Fake' not in c.cdn]
-    if not g.is_cdn:
-        all_cfg=[c for c in all_cfg if 'CDN' not in c.cdn]
-    if not hconfig(ConfigEnum.ssfaketls_enable):
-        all_cfg=[c for c in all_cfg if 'faketls' not in c.transport and 'v2ray' not in c.proto]
-    if not hconfig(ConfigEnum.vmess_enable):
-        all_cfg=[c for c in all_cfg if 'vmess' not in c.proto]
+    all_proxies=hiddify.get_available_proxies()
+    all_proxies=[p for p in all_proxies if p.enable]
+    # all_cfg=Proxy.query.filter(Proxy.enable==True).all()
+    # if not hconfig(ConfigEnum.domain_fronting_domain):
+    #     all_cfg=[c for c in all_cfg if 'Fake' not in c.cdn]
+    # if not g.is_cdn:
+    #     all_cfg=[c for c in all_cfg if 'CDN' not in c.cdn]
+    # if not hconfig(ConfigEnum.ssfaketls_enable):
+    #     all_cfg=[c for c in all_cfg if 'faketls' not in c.transport and 'v2ray' not in c.proto]
+    # if not hconfig(ConfigEnum.vmess_enable):
+    #     all_cfg=[c for c in all_cfg if 'vmess' not in c.proto]
 
      
-    return all_cfg
+    return all_proxies
 
 def proxy_info(name, mode="tls"):
     return "error"

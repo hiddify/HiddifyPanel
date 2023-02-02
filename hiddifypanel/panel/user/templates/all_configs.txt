@@ -1,8 +1,11 @@
 % for type in link_maker.all_proxies()
-{% set pinfo=link_maker.proxy_info(type) %}
+{% set pinfo=link_maker.make_proxy(type) %}
 % if pinfo!=None
+{% set link=link_maker.to_link(pinfo) %}
+% if link!=None
 # {{pinfo["name"]}} {{domain}}
-{{link_maker.to_link(pinfo)}}
+{{link}}
+%endif
 %endif
 % endfor
 

@@ -35,4 +35,4 @@ def init_app(app):
         if not g.is_admin:
             g.user=User.query.filter(User.uuid==f'{g.user_uuid}').first()
 
-        
+        print(g.user)

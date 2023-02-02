@@ -70,9 +70,9 @@ body {
 }
 
 
-ul {
+/* ul {
     padding-inline-start: 0px;
-}
+} */
 
 .dropdown-item {
     text-align: right;
@@ -435,4 +435,8 @@ ul {
 
 .main-header .nav-link {
     text-align: right;
+}
+.nav-treeview{
+    margin-left: 0px;
+    margin-right: 20px;
 }

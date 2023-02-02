@@ -213,31 +213,6 @@
     }
 </style>
 
-<div class="modal fade" id="share-qr-code" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <h5 class="modal-title" id="exampleModalLongTitle">{{_('user.home.share-title')}}</h5>
-                
-            </div>
-            <div class="modal-body">
-                <center>
-                    <a id='qrcode-link' class="btn btn-primary copy-link" href="">{{_("copy")}}</a>
-                    <a id="share-link-redirect" class="btn btn-success copy-link" href="">{{_('clickable copy')}}</a>
-                    <br />
-                    <div id="qrcode" style="margin:10px;"></div>
-                </center>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary close" data-dismiss="modal">{{_('close')}}</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 
 </div>
@@ -266,26 +241,26 @@
 <script>
 
     
-    w = Math.min(window.innerWidth, window.innerHeight) * .75;
-    qrcode = new QRCode(document.getElementById("qrcode"), { width: w, height: w, correctLevel: 1 });
-    w = Math.min(window.innerWidth, window.innerHeight) * .75;
+    // w = Math.min(window.innerWidth, window.innerHeight) * .75;
+    // qrcode = new QRCode(document.getElementById("qrcode"), { width: w, height: w, correctLevel: 1 });
+    // w = Math.min(window.innerWidth, window.innerHeight) * .75;
     // qrcode2 = new QRCode(document.getElementById("qrcode2"), { width: w / 2, height: w / 2, correctLevel: 1 });
     // qrcode2.clear()
     // qrcode2.makeCode(document.location.href);
-    function share_click(e) {
-        e.preventDefault();
-        var link = this.href;
-        qrcode.clear()
-        qrcode.makeCode(link);
-        hrefshare = "https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/redirect/" + link.replaceAll('://', '%3A%2F%2F')
-        $('#qrcode-link')[0].href = link
-        $('#share-link-redirect')[0].href = hrefshare
-        if (link.startsWith("http"))
-            $('#share-link-redirect').hide()
-        else
-            $('#share-link-redirect').show()
-        $('#share-qr-code').modal('show');
-    }
+    // function share_click(e) {
+    //     e.preventDefault();
+    //     var link = this.href;
+    //     qrcode.clear()
+    //     qrcode.makeCode(link);
+    //     hrefshare = "https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/redirect/" + link.replaceAll('://', '%3A%2F%2F')
+    //     $('#qrcode-link')[0].href = link
+    //     $('#share-link-redirect')[0].href = hrefshare
+    //     if (link.startsWith("http"))
+    //         $('#share-link-redirect').hide()
+    //     else
+    //         $('#share-link-redirect').show()
+    //     $('#share-qr-code').modal('show');
+    // }
     $(document).ready(function () {
         $('a.orig-link').each((i, p) => {
             href = p.href
@@ -303,8 +278,8 @@
             $(eshare).insertBefore(p);
             // $(ecopy).insertAfter(p);
         });
-        $('a.copy-link').click(copy_click)
-        $('a.share-link').click(share_click)
+        // $('a.copy-link').click(copy_click)
+        // $('a.share-link').click(share_click)
         $('.close').click(() => $('.modal').modal('hide'))
     });
 

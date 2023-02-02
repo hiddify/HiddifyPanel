@@ -16,40 +16,48 @@ from hiddifypanel.panel.database import db
 from wtforms.fields import *
 
 
+from flask_classful import FlaskView
 
+class QuickSetup(FlaskView):
     
-def index():
-        return render_template('quick_setup.html', lang_form=get_lang_form(), form=get_quick_setup_form(),ipv4=hiddify.get_ip(4),ipv6=hiddify.get_ip(6))
-def save():
-        form=get_quick_setup_form()
-        lang_form=get_lang_form()
-        if lang_form.lang_submit.data:
-                if lang_form.validate_on_submit():
-                        StrConfig.query.filter(StrConfig.key==ConfigEnum.lang).first().value=lang_form.lang.data
+        def index(self):
+                return render_template('quick_setup.html', lang_form=get_lang_form(), form=get_quick_setup_form(),ipv4=hiddify.get_ip(4),ipv6=hiddify.get_ip(6))
+        def post(self):
+                quick_form=get_quick_setup_form()
+                lang_form=get_lang_form()
+                if lang_form.lang_submit.data:
+                        if lang_form.validate_on_submit():
+                                StrConfig.query.filter(StrConfig.key==ConfigEnum.lang).first().value=lang_form.lang.data
+                                db.session.commit()
+                                flash(_('quicksetup.setlang.success'), 'success')
+                        else:
+                                flash(_('quicksetup.setlang.error'), 'danger')
+                        return render_template('quick_setup.html', form=get_quick_setup_form(True),lang_form=lang_form)                
+
+                if quick_form.validate_on_submit():
+                        sslip_dm=Domain.query.filter(Domain.domain==f'{hiddify.get_ip(4)}.sslip.io').first()
+                        db.session.remove(sslip_dm)
+
+                        data=[Domain(domain=quick_form.domain.data,mode=DomainType.direct),]
+                        
+                        db.session.bulk_save_objects(data)
+                        
+                        BoolConfig.query.filter(BoolConfig.key==ConfigEnum.telegram_enable).first().value=quick_form.enable_telegram.data
+                        BoolConfig.query.filter(BoolConfig.key==ConfigEnum.vmess_enable).first().value=quick_form.enable_vmess.data
                         db.session.commit()
-                        flash(_('quicksetup.setlang.success'), 'success')
+                        apply_btn=f"<a href='{url_for('admin.Actions:apply_configs')}' class='btn btn-primary'>"+_("admin.config.apply_configs")+"</a>"
+                        flash(Markup(_('config.validation-success',link=apply_btn)), 'success')
                 else:
-                        flash(_('quicksetup.setlang.error'), 'danger')
-                return render_template('quick_setup.html', form=form,lang_form=lang_form)                
+                        flash(_('config.validation-error'), 'danger')
+                return render_template('quick_setup.html', form=quick_form,lang_form=get_lang_form(True))
 
-        if form.validate_on_submit():
-            data=[Domain(domain=form.domain.data,mode=DomainType.direct),]
-            db.session.bulk_save_objects(data)
-            BoolConfig.query.filter(BoolConfig.key==ConfigEnum.telegram_enable).first().value=form.enable_telegram.data
-            BoolConfig.query.filter(BoolConfig.key==ConfigEnum.vmess_enable).first().value=form.enable_vmess.data
-            db.session.commit()
-            apply_btn=f"<a href='{url_for('admin.actions.apply_configs')}' class='btn btn-primary'>"+_("admin.config.apply_configs")+"</a>"
-            flash(Markup(_('config.validation-success',link=apply_btn)), 'success')
-        else:
-            flash(_('config.validation-error'), 'danger')
-        return render_template('quick_setup.html', form=form,lang_form=lang_form)
-
-def get_lang_form():
+def get_lang_form(empty=False):
         class LangForm(FlaskForm):
                 lang=wtf.fields.SelectField(_("config.lang.label"),choices=[("en",_("lang.en")),("fa",_("lang.fa"))],description=_("config.lang.description"),default=hconfig(ConfigEnum.lang))
                 lang_submit=wtf.fields.SubmitField(_('Submit'))
-        return LangForm()
-def get_quick_setup_form():
+        
+        return LangForm(None)if empty else LangForm()
+def get_quick_setup_form(empty=False):
         def get_used_domains():
                 configs=get_hconfigs()
                 domains=[]
@@ -66,4 +74,5 @@ def get_quick_setup_form():
                 enable_telegram=SwitchField(_("config.telegram_enable.label"),description=_("config.telegram_enable.description"),default=hconfig(ConfigEnum.telegram_enable))
                 enable_vmess=SwitchField(_("config.vmess_enable.label"),description=_("config.vmess_enable.description"),default=hconfig(ConfigEnum.vmess_enable))
                 submit=wtf.fields.SubmitField(_('Submit'))
-        return QuickSetupForm()
+        
+        return QuickSetup(None) if empty else QuickSetupForm()

@@ -4,15 +4,15 @@
 
 {% block body %}
 
-<div class="alert alert-{{data["out-type"]}}" role="alert" dir="ltr">
-    {{data["out-msg"] |safe}}
+<div class="alert alert-{{out_type}}" role="alert">
+    {{out_msg|safe}}
   </div>
 
-% if "log-path" in data
-<div dir="ltr">
-<h1>Logs</h1>
-  <a href="{{data['log-path']}}" target="_blank" >Click here to see the complete log</a><br>
-  <iframe id='ilog' src="{{data['log-path']}}" style="width:100%;height:500px" ></iframe>
+% if log_path
+<div >
+<h1>{{_('log')}}</h1>
+  <a href="{{log_path}}" target="_blank" >{{_('Click here to see the complete log')}}</a><br>
+  <iframe id='ilog' src="{{log_path}}" style="width:100%;height:500px" ></iframe>
 </div>
 <script>
 var x=document.getElementById("ilog");

@@ -15,10 +15,10 @@ def create_app(**config):
     app.jinja_env.line_statement_prefix = '%'
     flask_bootstrap.Bootstrap4(app)
     hiddifypanel.panel.database.init_app(app)
+    hiddifypanel.panel.common.init_app(app)
     hiddifypanel.panel.admin.init_app(app)
     hiddifypanel.panel.user.init_app(app)
     hiddifypanel.panel.cli.init_app(app)
-    hiddifypanel.panel.webui.init_app(app)
     hiddifypanel.panel.restapi.init_app(app)
     # app.config.load_extensions(
     #     ["flask_bootstrap:Bootstrap4",

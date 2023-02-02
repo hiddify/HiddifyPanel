@@ -2,7 +2,7 @@ from flask import jsonify,g
 to_gig_d = 1024*1024*1024
 import datetime
 from hiddifypanel.panel.database import db
-from hiddifypanel.models import StrConfig,BoolConfig,User,Domain,get_hconfigs
+from hiddifypanel.models import StrConfig,BoolConfig,User,Domain,get_hconfigs,Proxy,hconfig,ConfigEnum
 import urllib
 def auth(function):
     def wrapper(*args,**kwargs):
@@ -72,3 +72,26 @@ def get_ip(version,retry=3):
         if retry==0:
             return None
         return get_ip(version,retry=retry-1)
+
+
+def get_available_proxies():
+    proxies=Proxy.query.all()
+    
+    if not hconfig(ConfigEnum.domain_fronting_domain):
+        proxies=[c for c in proxies if 'Fake' not in c.cdn]
+    if not hconfig(ConfigEnum.ssfaketls_enable):
+        proxies=[c for c in proxies if 'faketls' != c.transport]
+        proxies=[c for c in proxies if 'v2ray' != c.proto]
+    if not hconfig(ConfigEnum.shadowtls_enable):
+        proxies=[c for c in proxies if c.transport!='shadowtls']
+    if not hconfig(ConfigEnum.ssr_enable):
+        proxies=[c for c in proxies if 'ssr' != c.proto]
+    if not hconfig(ConfigEnum.vmess_enable):
+        proxies=[c for c in proxies if 'vmess' not in c.proto]
+
+    if not hconfig(ConfigEnum.kcp_enable):
+        proxies=[c for c in proxies if 'kcp' not in c.l3]
+    
+    if not hconfig(ConfigEnum.http_proxy_enable):
+        proxies=[c for c in proxies if 'http' != c.l3]
+    return proxies

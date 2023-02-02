@@ -60,7 +60,7 @@ def init_db():
             StrConfig(category="kcp",key=ConfigEnum.kcp_ports,value="88"),
             BoolConfig(category="general",key=ConfigEnum.auto_update,value=True),
             BoolConfig(category="general",key=ConfigEnum.speed_test,value=True),
-            BoolConfig(category="general",key=ConfigEnum.only_ipv4,value=True),
+            BoolConfig(category="general",key=ConfigEnum.only_ipv4,value=False),
 
             BoolConfig(category="proxies",key=ConfigEnum.vmess_enable,value=True),
             BoolConfig(category="ports",key=ConfigEnum.http_proxy_enable,value=True),
@@ -81,7 +81,7 @@ def init_db():
 
             BoolConfig(category="ssr",key=ConfigEnum.ssr_enable,value=False),
             # StrConfig(category="ssr",key=ConfigEnum.ssr_secret,value=str(uuid.uuid4())),
-            StrConfig(category="ssr",key=ConfigEnum.ssr_fakedomain, value="en.wikipedia.org"),
+            StrConfig(category="ssr",key=ConfigEnum.ssr_fakedomain, value="ar.wikipedia.org"),
 
             BoolConfig(category="tuic",key=ConfigEnum.tuic_enable,value=False),
             StrConfig(category="tuic",key=ConfigEnum.tuic_port,value=3048),
@@ -108,10 +108,13 @@ def all_configs():
 
 def update_usage():
     print(hiddify.update_usage())
+
+def test():
+    print(ConfigEnum("auto_update1"))
 def init_app(app):
     # add multiple commands in a bulk
     #print(app.config['SQLALCHEMY_DATABASE_URI'] )
-    for command in [init_db, drop_db, all_configs,update_usage]:
+    for command in [init_db, drop_db, all_configs,update_usage,test]:
         app.cli.add_command(app.cli.command()(command))
 
     @app.cli.command()

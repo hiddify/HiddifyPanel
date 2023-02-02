@@ -5,45 +5,50 @@ import datetime
 from hiddifypanel.models import User,Domain,BoolConfig,StrConfig,DomainType,ConfigEnum,get_hconfigs,get_hdomains
 from hiddifypanel.panel.hiddify  import auth
 from . import link_maker
-@auth
-def index():
-    c=get_common_data(g.user_uuid)
+from flask_classful import FlaskView,route
 
-    return render_template('home/index.html',**c)
+class UserView(FlaskView):
+
+    def index(self):
+        c=get_common_data(g.user_uuid)
+
+        return render_template('home/index.html',**c)
+        
+
+    @route('/clash/<meta_or_normal>/proxies.yml')
+    @route('/clash/proxies.yml')
+    def clash_proxies(self,meta_or_normal="normal"):
+        c=get_common_data(g.user_uuid)
+        resp= Response(render_template('clash_proxies.yml',meta_or_normal=meta_or_normal,**c))
+        resp.mimetype="text/plain"
+        return resp
     
+    @route('/clash/<mode>.yml')
+    @route('/clash/<meta_or_normal>/<mode>.yml')
+    def clash_config(self,meta_or_normal="normal",mode="all.yml"):
+        
+        
+        c=get_common_data(g.user_uuid)
+        
 
 
+        resp= Response(render_template('clash_config.yml',mode=mode,meta_or_normal=meta_or_normal,**c,hash=hash(f'{c}')))
+        resp.mimetype="text/plain"
+        resp.headers['Subscription-Userinfo']=f"upload=0;download={c['usage_current_b']};total={c['usage_limit_b']};expire={c['expire_s']}"
+        return resp
 
-def clash_proxies(meta_or_normal="normal"):
-    c=get_common_data(g.user_uuid)
-    resp= Response(render_template('clash_proxies.yml',meta_or_normal=meta_or_normal,**c))
-    resp.mimetype="text/plain"
-    return resp
-
-def clash_config(meta_or_normal="normal",mode="all.yml"):
-    
-    
-    c=get_common_data(g.user_uuid)
-    
-
-
-    resp= Response(render_template('clash_config.yml',mode=mode,meta_or_normal=meta_or_normal,**c,hash=hash(f'{c}')))
-    resp.mimetype="text/plain"
-    resp.headers['Subscription-Userinfo']=f"upload=0;download={c['usage_current_b']};total={c['usage_limit_b']};expire={c['expire_s']}"
-    return resp
-
-
-def all_configs():
-    c=get_common_data(g.user_uuid)
-    # response.content_type = 'text/plain';
-    
-    resp= render_template('all_configs.txt',**c,base64=do_base_64)
-    res=""
-    for line in resp.split("\n"):
-        if "vmess://" in line:
-            line="vmess://"+do_base_64(line.replace("vmess://",""))
-        res+=line+"\n"
-    return Response(res,mimetype="text/plain")
+    @route('/all.txt')
+    def all_configs(self):
+        c=get_common_data(g.user_uuid)
+        # response.content_type = 'text/plain';
+        
+        resp= render_template('all_configs.txt',**c,base64=do_base_64)
+        res=""
+        for line in resp.split("\n"):
+            if "vmess://" in line:
+                line="vmess://"+do_base_64(line.replace("vmess://",""))
+            res+=line+"\n"
+        return Response(res,mimetype="text/plain")
 
 def do_base_64(str):
     import base64
