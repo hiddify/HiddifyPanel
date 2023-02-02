@@ -3,9 +3,11 @@ from flask import Flask
 import flask_bootstrap 
 from flask_babelex import Babel
 from hiddifypanel.panel.database import db
+from hiddifypanel.models import hconfig,ConfigEnum
 # from flask_babel import Babel
 import hiddifypanel
 
+from flask import url_for
 
 # from werkzeug.middleware.proxy_fix import ProxyFix
 
@@ -45,7 +47,7 @@ def create_app(**config):
     # app=ProxyFix(app, x_for=1, x_host=1,x_proto=1,x_port=1,x_prefix=1)
     app.jinja_env.globals['get_locale'] = get_locale
     
-
+    
     return app
 
 

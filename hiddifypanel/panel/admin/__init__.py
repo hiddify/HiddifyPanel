@@ -10,7 +10,7 @@ from .QuickSetup import QuickSetup
 from hiddifypanel.models import  StrConfig,ConfigEnum
 # from .resources import ProductItemResource, ProductResource
 from hiddifypanel.panel.database import db
-from hiddifypanel.models import User,Domain,BoolConfig,StrConfig,Proxy
+from hiddifypanel.models import User,Domain,BoolConfig,StrConfig,Proxy,hconfig,ConfigEnum
 from .Dashboard import Dashboard
 
 from flask_admin.menu import MenuLink
@@ -60,5 +60,6 @@ def init_app(app):
     app.register_blueprint(bp)
     app.register_blueprint(flask)
     app.add_url_rule("/<proxy_path>/<user_secret>/admin/static/<filename>/",endpoint="admin.static")# fix bug in admin with blueprint
+    
     # print(app.url_map)    
     

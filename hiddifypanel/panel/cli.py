@@ -111,10 +111,28 @@ def update_usage():
 
 def test():
     print(ConfigEnum("auto_update1"))
+
+def admin_links():
+        proxy_path=hconfig(ConfigEnum.proxy_path)
+        admin_secret=hconfig(ConfigEnum.admin_secret)
+        
+        admin_links=f"Not Secure:\n   http://{server_ip}/{proxy_path}/{admin_secret}/admin/\n"
+        domains=[d.domain for d in Domain.query.all()]
+        admin_links+=f"Secure:\n"
+        # domains=[*domains,f'{server_ip}.sslip.io']
+        for d in domains:
+            admin_links+=f"   https://{d}/{proxy_path}/{admin_secret}/admin/\n"
+
+        print(admin_links)
+def admin_path():
+        proxy_path=hconfig(ConfigEnum.proxy_path)
+        admin_secret=hconfig(ConfigEnum.admin_secret)        
+        print(f"/{proxy_path}/{admin_secret}/admin/")
+
 def init_app(app):
     # add multiple commands in a bulk
     #print(app.config['SQLALCHEMY_DATABASE_URI'] )
-    for command in [init_db, drop_db, all_configs,update_usage,test]:
+    for command in [init_db, drop_db, all_configs,update_usage,test,admin_links,admin_path]:
         app.cli.add_command(app.cli.command()(command))
 
     @app.cli.command()
