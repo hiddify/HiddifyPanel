@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-02 20:19+0100\n"
-"PO-Revision-Date: 2023-02-02 13:06-0600\n"
+"POT-Creation-Date: 2023-02-02 21:29+0100\n"
+"PO-Revision-Date: 2023-02-02 14:28-0600\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -139,7 +139,7 @@ msgstr "Persian فارسی 波斯语"
 #: hiddifypanel/panel/admin/SettingAdmin.py:116
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.lang.description"
-msgstr "این گزینه زبان بخش مدیریت و بخش کاربر را تغییر می دهد"
+msgstr "این گزینه زبان بخش مدیریت و بخش کاربر را تغییر می دهد."
 
 # | msgid "Error! Invalid domain.  The domain format is www.google.com"
 #: hiddifypanel/panel/admin/QuickSetup.py:72
@@ -319,8 +319,8 @@ msgstr "فایروال"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.firewall.description"
 msgstr ""
-"با فعال کردن فایروال، پورت‌های ادرحال استفاده باز خواهند شد (حداقل ۲۲، "
-"۴۴۳ و ۸۰) و سایر پورت‌ها بسته می‌شوند."
+"با فعال کردن فایروال، پورت‌های درحال استفاده باز خواهند شد (حداقل ۲۲، ۴۴۳"
+" و ۸۰) و سایر پورت‌ها بسته می‌شوند."
 
 # | msgid "Netdata"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -633,7 +633,7 @@ msgstr "Shadowsocks Fake TLS (obfs ساده)"
 # | msgid "simple obfs protocol is not recommended"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.ssfaketls_enable.description"
-msgstr "پروتکل obfs ساده، توصیه نمی شود"
+msgstr "پروتکل obfs ساده. (توصیه نمی شود.)"
 
 # | msgid "SS fakeTLS fakedomain"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
