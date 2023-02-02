@@ -256,7 +256,7 @@ def to_clash(proxy,meta_or_normal):
 
     if base["network"]=="tcp":
         # if proxy['proto']=='vless':
-        #     base["network"]="http"    
+        base["network"]="http"    
 
         if "path" in proxy:
             base["http-opts"]={
