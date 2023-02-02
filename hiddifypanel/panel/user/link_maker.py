@@ -260,7 +260,7 @@ def to_clash(proxy,meta_or_normal):
 
         if "path" in proxy:
             base["http-opts"]={
-                "path":proxy["path"]
+                "path": [proxy["path"]]
             }
         
     if base["network"]=="grpc":
