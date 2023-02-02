@@ -26,6 +26,7 @@ if __name__ == "__main__":
                 
                 print(src_prof.msgid, src_prof.msgstr,entry.msgstr)
                 entry.flags.append("auto_translate")
+                entry.flags.append("fuzzy")
 
             
 

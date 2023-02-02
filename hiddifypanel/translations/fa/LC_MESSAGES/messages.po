@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-02 15:47+0100\n"
+"POT-Creation-Date: 2023-02-02 16:46+0100\n"
 "PO-Revision-Date: 2023-02-01 20:37+0100\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
@@ -75,7 +75,7 @@ msgstr "ثبت"
 
 # | msgid "Name"
 #: hiddifypanel/panel/admin/ProxyAdmin1.py:16
-#, auto_translate
+#, auto_translate, fuzzy
 msgid "proxy.name"
 msgstr "نام"
 
@@ -124,7 +124,6 @@ msgstr "English انگلیسی 英语"
 #: hiddifypanel/panel/admin/SettingAdmin.py:118
 msgid "lang.fa"
 msgstr "Persian فارسی 波斯语"
-
 
 # | msgid "It will change admin and user language"
 #: hiddifypanel/panel/admin/QuickSetup.py:57
@@ -297,26 +296,26 @@ msgstr "قسمت ادمین برای دسترسی به تنظیمات مدیری
 
 # | msgid "Enable TLS domain fronting"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-#, auto_translate
+#, auto_translate, fuzzy
 msgid "config.domain_fronting_tls_enable.label"
 msgstr "جلوبندی دامنه TLS را فعال کنید"
 
 # | msgid "It will use port 443 to connect to CDN"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-#, auto_translate
+#, auto_translate, fuzzy
 msgid "config.domain_fronting_tls_enable.description"
 msgstr "برای اتصال به CDN از پورت 443 استفاده می کند"
 
 # | msgid "Enable HTTP domain fronting"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-#, auto_translate
+#, auto_translate, fuzzy
 msgid "config.domain_fronting_http_enable.label"
 msgstr "جلوبندی دامنه HTTP را فعال کنید"
 
 # | msgid ""
 # | "Enabling HTTP domain fronting causes your domain to be block quickly."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-#, auto_translate
+#, auto_translate, fuzzy
 msgid "config.domain_fronting_http_enable.description"
 msgstr "فعال کردن جلوبندی دامنه HTTP باعث می شود دامنه شما به سرعت مسدود شود."
 
@@ -336,7 +335,7 @@ msgstr ""
 
 # | msgid "Domain Fronting"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-#, auto_translate
+#, auto_translate, fuzzy
 msgid "config.domain_fronting.label"
 msgstr "نمای دامنه"
 
@@ -344,7 +343,7 @@ msgstr "نمای دامنه"
 # | "It is used to simulate another website instead of your website in SNI. "
 # | "Therefore, GTW can not filter your domain"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-#, auto_translate
+#, auto_translate, fuzzy
 msgid "config.domain_fronting.description"
 msgstr ""
 "برای شبیه سازی وب سایت دیگری به جای وب سایت شما در SNI استفاده می شود. "
@@ -437,13 +436,13 @@ msgstr "این قسمت، تنظیمات عمومی سیستم است."
 
 # | msgid "Enable TUIC"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-#, auto_translate
+#, auto_translate, fuzzy
 msgid "config.kcp_enable.label"
 msgstr "KCP را فعال کنید"
 
 # | msgid "It is a UDP based protocol similar to quic"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-#, auto_translate
+#, auto_translate, fuzzy
 msgid "config.kcp_enable.description"
 msgstr "این یک پروتکل مبتنی بر UDP است"
 
@@ -463,7 +462,7 @@ msgstr ""
 
 # | msgid "TUIC"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-#, auto_translate
+#, auto_translate, fuzzy
 msgid "config.kcp.label"
 msgstr "KCP"
 
@@ -473,13 +472,13 @@ msgstr "KCP"
 # | "\n"
 # | "TUIC's goal is to minimize the handshake latency as much as possible"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-#, auto_translate
+#, auto_translate, fuzzy
 msgid "config.kcp.description"
 msgstr "نیاز به کامل شدن"
 
 # | msgid "Allow HTTP connection"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-#, auto_translate
+#, auto_translate, fuzzy
 msgid "config.http_proxy_enable.label"
 msgstr "اجازه اتصال HTTP"
 
@@ -487,7 +486,7 @@ msgstr "اجازه اتصال HTTP"
 # | "By allowing this, your users can connect to the system with unencrypted "
 # | "http port. (not recommended)"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-#, auto_translate
+#, auto_translate, fuzzy
 msgid "config.http_proxy_enable.description"
 msgstr ""
 "با اجازه دادن به این کار، کاربران شما می توانند با پورت http رمزگذاری "
@@ -844,13 +843,13 @@ msgstr "نمودار مصرف اینترنت"
 
 # | msgid "Apply Configs"
 #: hiddifypanel/panel/admin/templates/proxy.html:11
-#, auto_translate
+#, auto_translate, fuzzy
 msgid "admin.proxy.global_config"
 msgstr "تنظیمات جهانی"
 
 # | msgid "Apply Configs"
 #: hiddifypanel/panel/admin/templates/proxy.html:21
-#, auto_translate
+#, auto_translate, fuzzy
 msgid "admin.proxy.detailed_config"
 msgstr "تنظیمات دقیق"
 
@@ -1548,7 +1547,7 @@ msgstr "کاربران"
 # | msgid "Users"
 #: hiddifypanel/templates/admin-layout.html:31
 #: hiddifypanel/templates/admin-layout.html:84
-#, auto_translate
+#, auto_translate, fuzzy
 msgid "admin.menu.proxy"
 msgstr "پروکسی ها"
 
