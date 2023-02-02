@@ -12,6 +12,9 @@ text-align:justify;
 margin-left: 20px;
 }
 
+legend label{
+    margin-bottom: 0px;
+}
 legend {
     background-color: white;
   margin: 0px;
@@ -20,6 +23,8 @@ legend {
   text-align: center;
   border-radius: 10px;
   background: #f6f6f6;
+    padding-bottom: 0px; 
+
   }
 
   fieldset fieldset legend {
@@ -28,5 +33,5 @@ legend {
     letter-spacing: 0px;
     text-shadow: 0 1px 1px rgba(0,0,0,.15);
     color: #555 !important;
-    padding-top: 10px;
+    /* padding-top: 10px; */
   }
