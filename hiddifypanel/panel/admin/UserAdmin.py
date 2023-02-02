@@ -54,12 +54,13 @@ class UserAdmin(AdminLTEModelView):
     # def on_model_change(self, form, model, is_created):
     #     model.password = generate_password_hash(model.password)
     
+    
     def _ul_formatter(view, context, model, name):
         proxy_path=hconfig(ConfigEnum.proxy_path)
-        return Markup(" ".join([f"""<a target='_blank' href='https://{d.domain}/{proxy_path}/{model.uuid}/'><span class='badge badge-info ltr'>{f'<span class="badge badge-success" >{_("domain.cdn")}</span> ' if d.mode!=DomainType.cdn else ''}{d.domain}</span></a>""" 
-            for d in Domain.query.filter(Domain.mode == DomainType.cdn or Domain.mode == DomainType.direct).all()]))
+        return Markup(" ".join([_get_link(d) for d in Domain.query.all()]))
     def _uuid_formatter(view, context, model, name):
         return Markup(f"<span>{model.uuid}</span>")
+
     column_formatters = {
         'UserLinks': _ul_formatter,
         'uuid': _uuid_formatter,
@@ -83,3 +84,8 @@ class UserAdmin(AdminLTEModelView):
         # else:
         #     xray_api.remove_client(model.uuid)
         
+def _get_link(uuid,domain):
+        text=domain.domain
+        if domain.mode==Domain.cdn:
+            text=f'<span class="badge badge-success" >{_("domain.cdn")}</span>'+text        
+        return f"<a target='_blank' href='https://{domain.domain}/{proxy_path}/{uuid}/'><span class='badge badge-info ltr'>{text}</span></a>"

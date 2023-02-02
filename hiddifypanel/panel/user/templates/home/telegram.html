@@ -3,7 +3,8 @@
 
 {% macro tg_proxy_btn() -%}
 <div class="btn-group">
-    <a href="tg://proxy?server={{direct_host}}&amp;port=443&amp;secret=ee{{hconfigs[ConfigEnum.telegram_secret]}}{{hconfigs[ConfigEnum.telegram_fakedomain].encode('utf-8').hex()}}"
+    {% hexuuid=hconfigs[ConfigEnum.shared_secret].replace("-","") %}
+    <a href="tg://proxy?server={{direct_host}}&amp;port=443&amp;secret=ee{{hexuuid}}{{hconfigs[ConfigEnum.telegram_fakedomain].encode('utf-8').hex()}}"
         class="btn btn-primary orig-link">{{_("user.home.telegram.clickbtn")}}</a>
 </div>
 {%- endmacro -%}
