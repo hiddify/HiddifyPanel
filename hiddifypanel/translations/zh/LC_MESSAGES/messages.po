@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-02-02 13:38+0100\n"
+"POT-Creation-Date: 2023-02-02 15:43+0100\n"
 "PO-Revision-Date: 2023-01-28 14:59+0330\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh\n"
@@ -17,6 +17,16 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.11.0\n"
+
+#: hiddifypanel/panel/admin/ProxyAdmin.py:41 hiddifypanel/panel/hiddify.py:102
+#, auto_translate
+msgid "admin.config.apply_configs"
+msgstr "应用配置"
+
+#: hiddifypanel/panel/admin/ProxyAdmin.py:42 hiddifypanel/panel/hiddify.py:103
+#, auto_translate
+msgid "config.validation-success"
+msgstr "配置已成功更改。单击 %(link)s 以应用配置。申请可能需要 2 分钟。"
 
 #: hiddifypanel/panel/admin/Actions.py:72
 msgid ""
@@ -32,512 +42,625 @@ msgstr ""
 msgid "Success! Please wait around 5 minutes to make sure everything is updated."
 msgstr ""
 
-#: hiddifypanel/panel/admin/DomainAdmin.py:19
-#: hiddifypanel/panel/admin/QuickSetup.py:75
-msgid "domain.domain"
-msgstr ""
-
 #: hiddifypanel/panel/admin/DomainAdmin.py:20
+#: hiddifypanel/panel/admin/QuickSetup.py:74
+#, auto_translate
+msgid "domain.domain"
+msgstr "领域"
+
+#: hiddifypanel/panel/admin/DomainAdmin.py:21
+#, auto_translate
 msgid "domain.mode"
-msgstr ""
+msgstr "模式"
 
 #: hiddifypanel/panel/admin/ProxyAdmin.py:36
 msgid "config.domain-fronting-notsetup-error"
 msgstr ""
 
-#: hiddifypanel/panel/admin/ProxyAdmin.py:41
-#: hiddifypanel/panel/admin/ProxyAdmin.py:60
-#: hiddifypanel/panel/admin/QuickSetup.py:50
-#: hiddifypanel/panel/admin/SettingAdmin.py:55
-msgid "admin.config.apply_configs"
-msgstr ""
-
-#: hiddifypanel/panel/admin/ProxyAdmin.py:42
-#: hiddifypanel/panel/admin/ProxyAdmin.py:61
-#: hiddifypanel/panel/admin/QuickSetup.py:51
-#: hiddifypanel/panel/admin/SettingAdmin.py:56
-msgid "config.validation-success"
-msgstr ""
-
-#: hiddifypanel/panel/admin/ProxyAdmin.py:64
-#: hiddifypanel/panel/admin/QuickSetup.py:53
+#: hiddifypanel/panel/admin/ProxyAdmin.py:63
+#: hiddifypanel/panel/admin/QuickSetup.py:52
 #: hiddifypanel/panel/admin/SettingAdmin.py:59
+#, auto_translate
 msgid "config.validation-error"
-msgstr ""
+msgstr "其中一个字段遇到错误"
 
-#: hiddifypanel/panel/admin/ProxyAdmin.py:91
-#: hiddifypanel/panel/admin/ProxyAdmin.py:117
-#: hiddifypanel/panel/admin/QuickSetup.py:59
-#: hiddifypanel/panel/admin/QuickSetup.py:78
+#: hiddifypanel/panel/admin/ProxyAdmin.py:90
+#: hiddifypanel/panel/admin/ProxyAdmin.py:116
+#: hiddifypanel/panel/admin/QuickSetup.py:58
+#: hiddifypanel/panel/admin/QuickSetup.py:77
 #: hiddifypanel/panel/admin/SettingAdmin.py:163
+#, auto_translate
 msgid "Submit"
-msgstr ""
+msgstr "提交"
 
 #: hiddifypanel/panel/admin/ProxyAdmin1.py:16
+#, auto_translate
 msgid "proxy.name"
-msgstr ""
+msgstr "名称"
 
 #: hiddifypanel/panel/admin/ProxyAdmin1.py:17
+#, auto_translate
 msgid "proxy.protocol"
-msgstr ""
+msgstr "协议"
 
 #: hiddifypanel/panel/admin/ProxyAdmin1.py:18
+#, auto_translate
 msgid "proxy.transport"
-msgstr ""
+msgstr "运输"
 
 #: hiddifypanel/panel/admin/ProxyAdmin1.py:19
+#, auto_translate
 msgid "proxy.l3"
-msgstr ""
+msgstr "外层"
 
 #: hiddifypanel/panel/admin/ProxyAdmin1.py:20
+#, auto_translate
 msgid "proxy.cdn"
-msgstr ""
+msgstr "内容分发网络"
 
 #: hiddifypanel/panel/admin/QuickSetup.py:32
+#, auto_translate
 msgid "quicksetup.setlang.success"
-msgstr ""
+msgstr "改语言成功"
 
 #: hiddifypanel/panel/admin/QuickSetup.py:35
+#, auto_translate
 msgid "quicksetup.setlang.error"
-msgstr ""
+msgstr "更改语言时出错"
 
-#: hiddifypanel/panel/admin/QuickSetup.py:58
+#: hiddifypanel/panel/admin/QuickSetup.py:57
 #: hiddifypanel/panel/admin/SettingAdmin.py:118
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/panel/admin/templates/quick_setup.html:22
+#, auto_translate
 msgid "config.lang.label"
-msgstr ""
+msgstr "语言"
 
-#: hiddifypanel/panel/admin/QuickSetup.py:58
+#: hiddifypanel/panel/admin/QuickSetup.py:57
 #: hiddifypanel/panel/admin/SettingAdmin.py:118
+#, auto_translate
 msgid "lang.en"
-msgstr ""
+msgstr "English انگلیسی"
 
-#: hiddifypanel/panel/admin/QuickSetup.py:58
+#: hiddifypanel/panel/admin/QuickSetup.py:57
 #: hiddifypanel/panel/admin/SettingAdmin.py:118
+#, auto_translate
 msgid "lang.fa"
-msgstr ""
+msgstr "波斯语"
 
-#: hiddifypanel/panel/admin/QuickSetup.py:58
+#: hiddifypanel/panel/admin/QuickSetup.py:57
 #: hiddifypanel/panel/admin/SettingAdmin.py:118
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.lang.description"
-msgstr ""
+msgstr "它将更改管理和用户语言"
 
-#: hiddifypanel/panel/admin/QuickSetup.py:73
+#: hiddifypanel/panel/admin/QuickSetup.py:72
 #: hiddifypanel/panel/admin/SettingAdmin.py:123
 #: hiddifypanel/panel/admin/SettingAdmin.py:125
+#, auto_translate
 msgid "config.Invalid domain"
-msgstr ""
+msgstr "错误！域无效。域格式为 www.google.com"
+
+#: hiddifypanel/panel/admin/QuickSetup.py:73
+#: hiddifypanel/panel/admin/SettingAdmin.py:127
+#, auto_translate
+msgid "config.Domain already used"
+msgstr "域存在于域部分。使用另一个域"
 
 #: hiddifypanel/panel/admin/QuickSetup.py:74
-#: hiddifypanel/panel/admin/SettingAdmin.py:127
-msgid "config.Domain already used"
-msgstr ""
-
-#: hiddifypanel/panel/admin/QuickSetup.py:75
+#, auto_translate
 msgid "domain.description"
 msgstr ""
+"这个字段应该是正确的。请访问<a href=\"https://github.com/hiddify/hiddify-"
+"config/wiki/راهنمای-تنظیم-دامنه-و-نهاوی-کردن-نصب#آمووous-ساخت-یردامنه\">帮助</a>了解如何创建子域。"
 
-#: hiddifypanel/panel/admin/QuickSetup.py:76
+#: hiddifypanel/panel/admin/QuickSetup.py:75
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.telegram_enable.label"
-msgstr ""
+msgstr "启用 Telegram MT 代理"
+
+#: hiddifypanel/panel/admin/QuickSetup.py:75
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
+msgid "config.telegram_enable.description"
+msgstr "电报 MT 代理用于将电报代理封装为 TLS 流量"
 
 #: hiddifypanel/panel/admin/QuickSetup.py:76
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.telegram_enable.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/QuickSetup.py:77
-#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.vmess_enable.label"
-msgstr ""
+msgstr "启用 vmess"
 
-#: hiddifypanel/panel/admin/QuickSetup.py:77
+#: hiddifypanel/panel/admin/QuickSetup.py:76
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.vmess_enable.description"
-msgstr ""
+msgstr "几个人报告说 vmess 导致系统被政府检测到。所以不推荐"
 
 #: hiddifypanel/panel/admin/SettingAdmin.py:136
+#, auto_translate
 msgid "config.invalid uuid"
-msgstr ""
+msgstr "UUID 密码无效。例如，6098ea35-8cb2-4a08-ba15-2be25bc49cb6"
 
 #: hiddifypanel/panel/admin/SettingAdmin.py:140
+#, auto_translate
 msgid "config.Invalid proxy path"
-msgstr ""
+msgstr "代理路径无效。它应该是 asci 字符串 (a-z A-Z 0-9)"
 
 #: hiddifypanel/panel/admin/SettingAdmin.py:144
+#, auto_translate
 msgid "config.Invalid port"
-msgstr ""
+msgstr "端口无效。它应该是逗号分隔的整数，例如 1000,1001"
 
 #: hiddifypanel/panel/admin/SettingAdmin.py:147
+#, auto_translate
 msgid "config.port 80 is required"
-msgstr ""
+msgstr "应始终提供端口 80。我们用它来获取 ssl 证书"
 
 #: hiddifypanel/panel/admin/SettingAdmin.py:150
+#, auto_translate
 msgid "config.port 443 is required"
-msgstr ""
+msgstr "应始终显示端口 443。"
 
 #: hiddifypanel/panel/admin/UserAdmin.py:27
+#, auto_translate
 msgid "user.UUID"
-msgstr ""
+msgstr "UUID"
 
 #: hiddifypanel/panel/admin/UserAdmin.py:28
+#, auto_translate
 msgid "user.name"
-msgstr ""
+msgstr "名称"
 
 #: hiddifypanel/panel/admin/UserAdmin.py:29
+#, auto_translate
 msgid "user.monthly_usage_limit_GB"
-msgstr ""
+msgstr "每月使用限额 (GB)"
 
 #: hiddifypanel/panel/admin/UserAdmin.py:30
+#, auto_translate
 msgid "user.current_usage_GB"
-msgstr ""
+msgstr "当前使用量 (GB)"
 
 #: hiddifypanel/panel/admin/UserAdmin.py:31
+#, auto_translate
 msgid "user.expiry_time"
-msgstr ""
+msgstr "过期时间"
 
 #: hiddifypanel/panel/admin/UserAdmin.py:32
+#, auto_translate
 msgid "user.last_reset_time"
-msgstr ""
+msgstr "最后使用日期重置"
 
 #: hiddifypanel/panel/admin/UserAdmin.py:33
+#, auto_translate
 msgid "user.user_links"
-msgstr ""
+msgstr "用户链接"
 
 #: hiddifypanel/panel/admin/UserAdmin.py:34
+#, auto_translate
 msgid "actions"
-msgstr ""
+msgstr "动作"
 
 #: hiddifypanel/panel/admin/templates/config.html:11
+#, auto_translate
 msgid "admin.config.title"
-msgstr ""
+msgstr "设置"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:5
+#, auto_translate
 msgid "domain.cdn"
-msgstr ""
+msgstr "内容分发网络"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.admin_secret.label"
-msgstr ""
+msgstr "管理秘密"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.admin_secret.description"
-msgstr ""
+msgstr "Admin Secret 将用于访问管理面板"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.admin.label"
-msgstr ""
+msgstr "管理员设置"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.admin.description"
-msgstr ""
+msgstr "管理部分用于配置管理相关设置"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.domain_fronting_tls_enable.label"
-msgstr ""
+msgstr "启用 TLS 域前端"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.domain_fronting_tls_enable.description"
-msgstr ""
+msgstr "它将使用端口 443 连接到 CDN"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.domain_fronting_http_enable.label"
-msgstr ""
+msgstr "启用 HTTP 域前端"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.domain_fronting_http_enable.description"
-msgstr ""
+msgstr "启用 HTTP 域前端会导致您的域被快速阻止。"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.domain_fronting_domain.label"
-msgstr ""
+msgstr "域名前端"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.domain_fronting_domain.description"
-msgstr ""
+msgstr "它用于在 SNI 中模拟另一个网站而不是您的网站。因此，GTW 无法过滤您的域"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.domain_fronting.label"
-msgstr ""
+msgstr "域名前端"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.domain_fronting.description"
-msgstr ""
+msgstr "它用于在 SNI 中模拟另一个网站而不是您的网站。因此，GTW 无法过滤您的域"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.firewall.label"
-msgstr ""
+msgstr "防火墙"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.firewall.description"
-msgstr ""
+msgstr "启用防火墙将打开使用的端口（至少 22,443,80）并关闭所有其他端口"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.netdata.label"
-msgstr ""
+msgstr "网络数据"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.netdata.description"
-msgstr ""
+msgstr "用于显示资源。可能会使用您的 CPU，但不会太多。"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.auto_update.label"
-msgstr ""
+msgstr "自动更新"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.auto_update.description"
-msgstr ""
+msgstr "每天凌晨 3:00，我们将检查是否有新更新。如果有可用的新更新，我们将自动更新系统。"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.speed_test.label"
-msgstr ""
+msgstr "测速"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.speed_test.description"
-msgstr ""
+msgstr "允许您的用户进行速度测试。它可以帮助他们识别链接质量。"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.only_ipv4.label"
-msgstr ""
+msgstr "只有 IPv4"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.only_ipv4.description"
-msgstr ""
+msgstr "它将禁用 IPv6"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.decoy_domain.label"
-msgstr ""
+msgstr "诱饵网站"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.decoy_domain.description"
-msgstr ""
+msgstr "假网站：当有人访问您的域时模拟网站"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.general.label"
-msgstr ""
+msgstr "通用设置"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.general.description"
-msgstr ""
+msgstr "这是一般的系统配置。"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.kcp_enable.label"
-msgstr ""
+msgstr "启用 KCP"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.kcp_enable.description"
-msgstr ""
+msgstr "它是一个基于 UDP 的协议"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.kcp_ports.label"
-msgstr ""
+msgstr "KCP端口"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.kcp_ports.description"
-msgstr ""
+msgstr "逗号分隔的整数，指示用作 KCP 连接的端口。"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.kcp.label"
-msgstr ""
+msgstr "科普"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.kcp.description"
-msgstr ""
+msgstr "需要完整"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.http_proxy_enable.label"
-msgstr ""
+msgstr "允许 HTTP 连接"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.http_proxy_enable.description"
-msgstr ""
+msgstr "通过允许，您的用户可以使用未加密的 http 端口连接到系统。 （不建议）"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.http_ports.label"
-msgstr ""
+msgstr "HTTP 端口"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.http_ports.description"
-msgstr ""
+msgstr "逗号分隔的整数，指示用作未加密连接的端口（需要端口 80）。"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.tls_ports.label"
-msgstr ""
+msgstr "TLS 端口"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.tls_ports.description"
-msgstr ""
+msgstr "逗号分隔的整数，指示用作 TLS 连接的端口（需要端口 443）。"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.ports.label"
-msgstr ""
+msgstr "端口设置"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.ports.description"
-msgstr ""
+msgstr "您可以在该部分选择系统的不同端口"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.block_iran_sites.label"
-msgstr ""
+msgstr "封锁伊朗网站"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.block_iran_sites.description"
-msgstr ""
+msgstr "屏蔽伊朗网站以防止被政府发现（实验：如果有问题，请禁用它并告诉我们。）"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.allow_invalid_sni.label"
-msgstr ""
+msgstr "允许无效的 SNI"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.allow_invalid_sni.description"
-msgstr ""
+msgstr "如果您允许无效的 SNI，您可以使用任何域而不是您的原始域来访问代理（不推荐）。"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.proxy_path.label"
-msgstr ""
+msgstr "秘密代理路径"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.proxy_path.description"
-msgstr ""
+msgstr "我们使用秘密代理路径来隐藏我们对政府的代理。"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.shared_secret.label"
-msgstr ""
+msgstr "共享秘密"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.shared_secret.description"
-msgstr ""
+msgstr "有些代理目前不支持计费，所以我们必须为他们使用一个秘密。"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.proxies.label"
-msgstr ""
+msgstr "代理设置"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.proxies.description"
-msgstr ""
+msgstr "定义特定的代理设置"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.shadowtls_enable.label"
-msgstr ""
+msgstr "影子TLS"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.shadowtls_enable.description"
 msgstr ""
+"Shadow TLS 是一种性能较低的新协议，但它可以使用 faketls 隐藏来自政府的流量。\n"
+"请注意，目前 ShadowTLS 不支持计费。"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.shadowtls_fakedomain.label"
-msgstr ""
+msgstr "ShadowTLS 假域"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.shadowtls_fakedomain.description"
-msgstr ""
+msgstr "请在您的数据中心使用众所周知的域。例如，如果您在 Azure 数据中心，microsoft-update.com 就是一个很好的例子。"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.shadowtls.label"
-msgstr ""
+msgstr "影子TLS"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.shadowtls.description"
 msgstr ""
+"将真实的 tls 握手暴露给防火墙的代理。\n"
+"\n"
+"它像木马一样工作，但不需要签名证书。防火墙将使用您选择的有效证书看到真正的 tls 握手。"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.ssfaketls_enable.label"
-msgstr ""
+msgstr "Shadowsocks 假 TLS（简单的 obfs）"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.ssfaketls_enable.description"
-msgstr ""
+msgstr "不推荐使用简单的 obfs 协议"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.ssfaketls_fakedomain.label"
-msgstr ""
+msgstr "SS fakeTLS 假域"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.ssfaketls_fakedomain.description"
-msgstr ""
+msgstr "请在您的数据中心使用众所周知的域。例如，如果您在 Azure 数据中心，microsoft-update.com 就是一个很好的例子。"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.ssfaketls.label"
-msgstr ""
+msgstr "Shadowsocks 伪TLS"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.ssfaketls.description"
-msgstr ""
+msgstr "Shadowsocks fake tls 是一个简单的混淆工具，将日期封装在 TLS 数据包中"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.ssr_enable.label"
-msgstr ""
+msgstr "启用 SSR"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.ssr_enable.description"
-msgstr ""
+msgstr "ShadowsocksR 是原始 Shadowsocks 项目的一个分支，据称在安全性和稳定性方面更胜一筹。未测试。不支持计费。"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.ssr_fakedomain.label"
-msgstr ""
+msgstr "SSR 假域名"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.ssr_fakedomain.description"
-msgstr ""
+msgstr "请在您的数据中心使用众所周知的域。例如，如果你在 Azure 数据中心，microsoft-update.com 就是一个很好的例子"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.ssr.label"
-msgstr ""
+msgstr "固态雷达"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.ssr.description"
-msgstr ""
+msgstr "ShadowsocksR 是原始 Shadowsocks 项目的一个分支，据称在安全性和稳定性方面更胜一筹。"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.telegram_adtag.label"
-msgstr ""
+msgstr "电报广告标签"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.telegram_adtag.description"
-msgstr ""
+msgstr "它用于在客户的聊天列表中显示赞助频道。要宣传频道，请从@MTProxybot 获取标签"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.telegram_fakedomain.label"
-msgstr ""
+msgstr "电报假域名"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.telegram_fakedomain.description"
-msgstr ""
+msgstr "请在您的数据中心使用众所周知的域。例如，如果您在 Azure 数据中心，microsoft-update.com 就是一个很好的例子。"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.telegram.label"
-msgstr ""
+msgstr "电报代理"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.telegram.description"
-msgstr ""
+msgstr "为电报设计的绕过电报过滤的代理"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.tuic_enable.label"
-msgstr ""
+msgstr "启用 TUIC"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.tuic_enable.description"
-msgstr ""
+msgstr "它是一个类似于 quic 的基于 UDP 的协议"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.tuic_port.label"
-msgstr ""
+msgstr "TUIC端口"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.tuic_port.description"
-msgstr ""
+msgstr "使用逗号分隔端口，如 63000,60000"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.tuic.label"
-msgstr ""
+msgstr "国际车联"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, auto_translate
 msgid "config.tuic.description"
 msgstr ""
+"Delicately-TUICed 高性能代理在 QUIC 协议之上。\n"
+"\n"
+"TUIC 的目标是尽可能减少握手延迟"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.db_version.label"
@@ -548,40 +671,49 @@ msgid "config.db_version.description"
 msgstr ""
 
 #: hiddifypanel/panel/admin/templates/index.html:16
+#, auto_translate
 msgid "admin.protocol_chart"
-msgstr ""
+msgstr "协议使用图表"
 
 #: hiddifypanel/panel/admin/templates/index.html:47
+#, auto_translate
 msgid "admin.user_chart"
-msgstr ""
+msgstr "用户使用图表"
 
 #: hiddifypanel/panel/admin/templates/index.html:77
+#, auto_translate
 msgid "admin.cpu_chart"
-msgstr ""
+msgstr "CPU使用率图表"
 
 #: hiddifypanel/panel/admin/templates/index.html:108
+#, auto_translate
 msgid "admin.ram_chart"
-msgstr ""
+msgstr "内存使用图表"
 
 #: hiddifypanel/panel/admin/templates/index.html:139
+#, auto_translate
 msgid "admin.network_chart"
-msgstr ""
+msgstr "网络使用"
 
 #: hiddifypanel/panel/admin/templates/proxy.html:11
+#, auto_translate
 msgid "admin.proxy.global_config"
-msgstr ""
+msgstr "全局配置"
 
 #: hiddifypanel/panel/admin/templates/proxy.html:21
+#, auto_translate
 msgid "admin.proxy.detailed_config"
-msgstr ""
+msgstr "详细配置"
 
 #: hiddifypanel/panel/admin/templates/quick_setup.html:35
+#, auto_translate
 msgid "admin.quicksetup.title"
-msgstr ""
+msgstr "快速设置"
 
 #: hiddifypanel/panel/admin/templates/quick_setup.html:40
+#, auto_translate
 msgid "admin.quicksetup_intro"
-msgstr ""
+msgstr "您的 IPv4 是 %(ipv4)s，IPv6 是 %(ipv6)s。请在您的域中设置此 ip 并在下面输入您的域。"
 
 #: hiddifypanel/panel/admin/templates/result.html:13
 msgid "log"
@@ -593,38 +725,45 @@ msgstr ""
 
 #: hiddifypanel/panel/user/templates/home/all-configs.html:1
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:1
+#, auto_translate
 msgid "user.home.tool.all-configs"
-msgstr ""
+msgstr "所有配置"
 
 #: hiddifypanel/panel/user/templates/home/all-configs.html:7
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:7
+#, auto_translate
 msgid "user.home.allconfig.name"
-msgstr ""
+msgstr "名称和链接"
 
 #: hiddifypanel/panel/user/templates/home/all-configs.html:8
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:8
+#, auto_translate
 msgid "user.home.allconfig.type"
-msgstr ""
+msgstr "类型"
 
 #: hiddifypanel/panel/user/templates/home/all-configs.html:9
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:9
+#, auto_translate
 msgid "user.home.allconfig.protocol"
-msgstr ""
+msgstr "协议"
 
 #: hiddifypanel/panel/user/templates/home/all-configs.html:10
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:10
+#, auto_translate
 msgid "user.home.allconfig.transport"
-msgstr ""
+msgstr "运输"
 
 #: hiddifypanel/panel/user/templates/home/all-configs.html:11
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:11
+#, auto_translate
 msgid "user.home.allconfig.security"
-msgstr ""
+msgstr "安全"
 
 #: hiddifypanel/panel/user/templates/home/all-configs.html:20
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:19
+#, auto_translate
 msgid "user.home.allconfig.hiddify-configs"
-msgstr ""
+msgstr "隐藏配置"
 
 #: hiddifypanel/panel/user/templates/home/all-configs.html:23
 #: hiddifypanel/panel/user/templates/home/all-configs.html:24
@@ -648,364 +787,573 @@ msgstr ""
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:47
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:48
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:49
+#, auto_translate
 msgid "all"
-msgstr ""
+msgstr "全部"
 
 #: hiddifypanel/panel/user/templates/home/all-configs.html:32
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:31
+#, auto_translate
 msgid "user.home.allconfig.clash-configs"
-msgstr ""
+msgstr "冲突配置"
 
 #: hiddifypanel/panel/user/templates/home/all-configs.html:36
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:35
+#, auto_translate
 msgid "user.home.allconfigs.expect_vless"
-msgstr ""
+msgstr "除了 vless"
 
 #: hiddifypanel/panel/user/templates/home/all-configs.html:44
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:43
+#, auto_translate
 msgid "user.home.allconfig.link-configs"
-msgstr ""
+msgstr "订阅链接"
 
 #: hiddifypanel/panel/user/templates/home/android.html:4
+#, auto_translate
 msgid "download"
-msgstr ""
+msgstr "直接下载"
 
 #: hiddifypanel/panel/user/templates/home/android.html:11
+#, auto_translate
 msgid "install from google play"
-msgstr ""
+msgstr "谷歌播放"
 
 #: hiddifypanel/panel/user/templates/home/android.html:15
+#, auto_translate
 msgid "user.home.android.intro"
 msgstr ""
+"请从 %(dl_link)s 或 %(play_link)s 安装 HiddifyAndroid。\n"
+"\n"
+"<div class=\"callout callout-danger\">\n"
+"    <b>将 HiddifyAndroid 更新到版本 0.8</b>\n"
+"</div>\n"
+"\n"
+"<div class=\"卡片信息\">\n"
+"    <div class=\"card-header\">\n"
+"使用 HiddifyAndorid 安全吗？\n"
+"    </div>\n"
+"    <div class=\"card-body\">\n"
+"        HiddifyAndroid 是 Clash 的开源分支，支持更多协议。\n"
+"        <br>\n"
+"        它的源代码存在于\n"
+"        <a "
+"href=\"https://github.com/hiddify/HiddifyProxyAndroid\">GitHub</a>。\n"
+"        \n"
+"        <br>\n"
+"        因此，它是安全的。\n"
+"\n"
+"        <详情>\n"
+"            <summary>备选方案：普通冲突</summary>\n"
+"            <div class=\"btn-group\">\n"
+"                <a "
+"href=\"https://play.google.com/store/apps/details?id=com.github.kr328.clash\""
+"\n"
+"                    class=\"btn btn-warning orig-link\">Google Play "
+"中的冲突</a>\n"
+"            </div>\n"
+"            <div class=\"btn-group\">\n"
+"                <a "
+"href=\"/{{hconfigs[ConfigEnum.proxy_path]}}/gh/Kr328/ClashForAndroid/releases/download/v2.5.12/cfa-2.5.12"
+"-premium-universal-release.apk\"\n"
+"                    class=\"btn btn-warning orig-link\">直接下载</a>\n"
+"            </div>\n"
+"\n"
+"            <div class=\"alert alert-danger\">\n"
+"            Clash 不支持 VLESS 协议。因此，我们需要为它添加另一个链接。\n"
+"            </div>\n"
+"            \n"
+"\n"
+"        </详情>\n"
+"    </div>\n"
+"</div>"
 
 #: hiddifypanel/panel/user/templates/home/base.html:36
 msgid "test"
 msgstr "测试"
 
 #: hiddifypanel/panel/user/templates/home/clash-links.html:1
+#, auto_translate
 msgid "user.home.clash_configs.intro"
-msgstr ""
+msgstr "现在根据您的需要，单击以下链接之一。"
 
 #: hiddifypanel/panel/user/templates/home/clash-links.html:5
+#, auto_translate
 msgid "user.home.clash_configs.only_for_blocked_sites.title"
-msgstr ""
+msgstr "仅适用于被阻止的网站"
 
 #: hiddifypanel/panel/user/templates/home/clash-links.html:7
+#, auto_translate
 msgid "user.home.clash_configs.only_for_blocked_sites.description"
 msgstr ""
+"建议使用此模式。它仅通过代理转发被阻止的站点。\n"
+"            <div class=\"callout callout-success\">\n"
+"                在这种模式下，您不会感觉到速度有任何变化。\n"
+"            </div>"
 
 #: hiddifypanel/panel/user/templates/home/clash-links.html:10
+#, auto_translate
 msgid "user.home.clash_configs.only_for_blocked_sites.btn"
-msgstr ""
+msgstr "仅为被阻止的站点安装代理"
 
 #: hiddifypanel/panel/user/templates/home/clash-links.html:13
 #: hiddifypanel/panel/user/templates/home/clash-links.html:31
 #: hiddifypanel/panel/user/templates/home/clash-links.html:50
+#, auto_translate
 msgid "user.home.clash_configs.alternative_for_normal_clash"
-msgstr ""
+msgstr "冲突的替代链接"
 
 #: hiddifypanel/panel/user/templates/home/clash-links.html:16
 #: hiddifypanel/panel/user/templates/home/clash-links.html:34
 #: hiddifypanel/panel/user/templates/home/clash-links.html:53
+#, auto_translate
 msgid "user.home.clash_configs.link_for_normal_clash"
-msgstr ""
+msgstr "安装冲突"
 
 #: hiddifypanel/panel/user/templates/home/clash-links.html:23
+#, auto_translate
 msgid "user.home.clash_configs.foreign_sites.title"
-msgstr ""
+msgstr "国外网站代理"
 
 #: hiddifypanel/panel/user/templates/home/clash-links.html:25
+#, auto_translate
 msgid "user.home.clash_configs.foreign_sites.description"
 msgstr ""
+"对所有外国网站使用代理（即使不是被封锁的网站）\n"
+"<div class=\"callout callout-warning\">\n"
+"这种模式在访问一些受制裁的网站时很有用。\n"
+"</div>"
 
 #: hiddifypanel/panel/user/templates/home/clash-links.html:28
+#, auto_translate
 msgid "user.home.clash_configs.foreign_sites.btn"
-msgstr ""
+msgstr "国外网站安装"
 
 #: hiddifypanel/panel/user/templates/home/clash-links.html:42
+#, auto_translate
 msgid "user.home.clash_configs.all_sites.title"
-msgstr ""
+msgstr "所有网站的代理"
 
 #: hiddifypanel/panel/user/templates/home/clash-links.html:44
+#, auto_translate
 msgid "user.home.clash_configs.all_sites.description"
 msgstr ""
+"对所有网站甚至本地网站使用代理。\n"
+"<div class=\"callout callout-danger\">\n"
+"    加载本地站点的速度将降低，并会危及您的隐私。\n"
+"</div>"
 
 #: hiddifypanel/panel/user/templates/home/clash-links.html:47
+#, auto_translate
 msgid "user.home.clash_configs.all_sites.btn"
-msgstr ""
+msgstr "为所有网站安装代理"
 
 #: hiddifypanel/panel/user/templates/home/doh.html:1
+#, auto_translate
 msgid "user.home.tool.doh"
-msgstr ""
+msgstr "将下面的链接复制到您的浏览器中。"
 
 #: hiddifypanel/panel/user/templates/home/doh.html:8
 #: hiddifypanel/templates/master.html:121
+#, auto_translate
 msgid "copy"
-msgstr ""
+msgstr "复制"
 
 #: hiddifypanel/panel/user/templates/home/doh.html:13
+#, auto_translate
 msgid "user.home.tool.doh.help"
 msgstr ""
+"<h4>在浏览器上配置 DoH</h4>\n"
+"    有多种浏览器与 DNS over HTTPS (DoH) 兼容。该协议让\n"
+"    您加密您与 1.1.1.1 的连接，以保护您的 DNS 查询免受隐私入侵和篡改。\n"
+"\n"
+"    某些浏览器可能已经启用了此设置。\n"
+"\n"
+"    <h5> 火狐浏览器</h5>\n"
+"    选择<b>菜单</b>按钮 > "
+"<b>设置</b>。在常规菜单中，向下滚动以访问<b>网络设置</b>。选择<b>设置</b>。选择<b>通过 HTTPS 启用 DNS</b>。"
+"\n"
+"    <h5> 谷歌浏览器</h5>\n"
+"    选择浏览器中的<b>三点</b>菜单 > <b>设置</b>。\n"
+"    选择<b>隐私和安全</b> > <b>安全</b>。\n"
+"    向下滚动并启用<b>使用安全 DNS</b>。\n"
+"    \n"
+"    <h5> 微软边缘</h5>\n"
+"    选择浏览器中的<b>三点</b>菜单 > <b>设置</b>。\n"
+"    选择<b>隐私、搜索和服务</b>，然后向下滚动到<b>安全</b>。\n"
+"    启用<b>使用安全 DNS</b>。\n"
+"    选择选择服务提供商。"
 
 #: copy.html:2 hiddifypanel/panel/user/templates/home/index
 #: hiddifypanel/panel/user/templates/home/index.html:2
+#, auto_translate
 msgid "user.home.title"
-msgstr ""
+msgstr "隐藏代理"
 
 #: copy.html:27 hiddifypanel/panel/user/templates/home/index
 #: hiddifypanel/panel/user/templates/home/index.html:39
+#, auto_translate
 msgid "telegram"
-msgstr ""
+msgstr "电报"
 
 #: hiddifypanel/panel/user/templates/home/index.html:7
 #: hiddifypanel/templates/admin-layout.html:20
 #: hiddifypanel/templates/admin-layout.html:24
 #: hiddifypanel/templates/admin-layout.html:67
 #: hiddifypanel/templates/master.html:6
+#, auto_translate
 msgid "master.page-title"
-msgstr ""
+msgstr "隐藏面板"
 
 #: hiddifypanel/panel/user/templates/home/index.html:42
+#, auto_translate
 msgid "android"
-msgstr ""
+msgstr "安卓"
 
 #: hiddifypanel/panel/user/templates/home/index.html:44
+#, auto_translate
 msgid "ios"
-msgstr ""
+msgstr "iOS"
 
 #: hiddifypanel/panel/user/templates/home/index.html:46
+#, auto_translate
 msgid "desktop"
-msgstr ""
+msgstr "桌面"
 
 #: hiddifypanel/panel/user/templates/home/index.html:53
+#, auto_translate
 msgid "user.home.select os"
-msgstr ""
+msgstr "请选择您的操作系统"
 
 #: hiddifypanel/panel/user/templates/home/index.html:88
+#, auto_translate
 msgid "user.home.all_configs"
-msgstr ""
+msgstr "所有配置"
 
 #: hiddifypanel/panel/user/templates/home/index.html:90
+#, auto_translate
 msgid "user.home.speedtest"
-msgstr ""
+msgstr "Speedtest（检测脏IP）"
 
 #: hiddifypanel/panel/user/templates/home/index.html:92
+#, auto_translate
 msgid "user.home.doh"
-msgstr ""
+msgstr "通过 https 的 DNS"
 
 #: hiddifypanel/panel/user/templates/home/index.html:98
+#, auto_translate
 msgid "user.home.select tool"
-msgstr ""
+msgstr "请选择项目。"
 
 #: hiddifypanel/panel/user/templates/home/index.html:124
 #: hiddifypanel/panel/user/templates/home/usage.html:35
+#, auto_translate
 msgid "QR code"
-msgstr ""
+msgstr "二维码"
 
 #: hiddifypanel/panel/user/templates/home/index.html:125
 #: hiddifypanel/panel/user/templates/home/usage.html:36
+#, auto_translate
 msgid "user.home.qr-code.description"
-msgstr ""
+msgstr "要复制或共享链接，请点击灰色的 <i class='fa-solid fa-qrcode'></i> 字段以显示其二维码。"
 
 #: hiddifypanel/panel/user/templates/home/index.html:133
 #: hiddifypanel/panel/user/templates/home/usage.html:44
+#, auto_translate
 msgid "user.home.qr-code.display"
-msgstr ""
+msgstr "显示二维码"
 
 #: hiddifypanel/panel/user/templates/home/index.html:351
+#, auto_translate
 msgid "next"
-msgstr ""
+msgstr "下一个"
 
 #: hiddifypanel/panel/user/templates/home/index.html:352
+#, auto_translate
 msgid "previous"
-msgstr ""
+msgstr "以前的"
 
 #: hiddifypanel/panel/user/templates/home/index.html:363
+#, auto_translate
 msgid "search"
-msgstr ""
+msgstr "搜索"
 
 #: copy.html:6 hiddifypanel/panel/user/templates/home/ios
 #: hiddifypanel/panel/user/templates/home/ios.html:5
+#, auto_translate
 msgid "user.home.ios.stash.title"
-msgstr ""
+msgstr "收藏<span class=\"badge badge-success\">推荐</span>"
 
 #: copy.html:17 hiddifypanel/panel/user/templates/home/ios
 #: hiddifypanel/panel/user/templates/home/ios.html:16
+#, auto_translate
 msgid "user.home.ios.stash.intro"
 msgstr ""
+"Stash 是一个很棒的应用程序。我们认为值得购买。\n"
+"\n"
+"        <div class=\"btn-group\">\n"
+"        <a href=\"https://apps.ap0ple.com/us/app/stash-rule-based-"
+"proxy/id1596063349\" target=\"_blank\" class=\"btn btn-success orig-"
+"link\">下载存储</一个>\n"
+"        </div>"
 
 #: hiddifypanel/panel/user/templates/home/ios.html:31
+#, auto_translate
 msgid "user.home.ios.others.title"
-msgstr ""
+msgstr "其他应用程序（shadowlink、fairVPN、napsternetv）"
 
 #: hiddifypanel/panel/user/templates/home/ios.html:42
+#, auto_translate
 msgid "user.home.ios.others.intro"
 msgstr ""
+"首先安装以下应用程序之一：\n"
+"<div class=\"btn-group\">\n"
+"<a href=\"https://apps.apple.com/us/app/shadowlink-shadowsocks-"
+"vpn/id1439686518\"\n"
+"        class=\"btn btn-primary orig-link\">影子链接</a>\n"
+"    <a href=\"https://apps.apple.com/us/app/napsternetv/id1629465476\"\n"
+"        class=\"btn btn-primary orig-link\">napsternetv</a>\n"
+"<a href=\"https://apps.apple.com/us/app/fair-vpn/id1533873488\"\n"
+"        class=\"btn btn-primary orig-link\">fair-vpn</a>\n"
+"</div>\n"
+"\n"
+"<br />\n"
+"然后应用以下配置之一："
 
 #: hiddifypanel/panel/user/templates/home/speedtest.html:1
+#, auto_translate
 msgid "user.home.speedtest.intro"
 msgstr ""
+"首先，测试<b>没有</b>代理的速度。如果速度不好，则说明此 ip 在您的 ISP 上是所谓的脏地址。\n"
+"如果没有代理时速度很慢，请不要浪费时间测试此代理。\n"
+"否则，用这个站点的不同代理测试，如果速度与没有代理的速度相似，那么你已经找到了最好的协议。"
 
 #: hiddifypanel/panel/user/templates/home/speedtest.html:5
+#, auto_translate
 msgid "user.home.speedtest.upload"
-msgstr ""
+msgstr "上传"
 
 #: hiddifypanel/panel/user/templates/home/speedtest.html:7
+#, auto_translate
 msgid "user.home.speedtest.download"
-msgstr ""
+msgstr "下载"
 
 #: hiddifypanel/panel/user/templates/home/speedtest.html:9
+#, auto_translate
 msgid "user.home.speedtest.two_ways"
-msgstr ""
+msgstr "双向"
 
 #: hiddifypanel/panel/user/templates/home/telegram.html:7
+#, auto_translate
 msgid "user.home.telegram.clickbtn"
-msgstr ""
+msgstr "电报代理"
 
 #: hiddifypanel/panel/user/templates/home/telegram.html:12
+#, auto_translate
 msgid "user.home.telegram.description"
-msgstr ""
+msgstr "单击 %(link)s，然后，在电报中您可以看到一个包含 <b>Connect Proxy</b> 的窗口。单击它，它将起作用。"
 
 #: hiddifypanel/panel/user/templates/home/usage.html:7
+#, auto_translate
 msgid "user.home.usage.title"
-msgstr ""
+msgstr "流量使用"
 
 #: hiddifypanel/panel/user/templates/home/usage.html:9
+#, auto_translate
 msgid "user.home.usage.from"
-msgstr ""
+msgstr "的"
 
 #: hiddifypanel/panel/user/templates/home/usage.html:10
+#, auto_translate
 msgid "user.home.usage.monthly"
-msgstr ""
+msgstr "每月"
 
 #: hiddifypanel/panel/user/templates/home/usage.html:16
+#, auto_translate
 msgid "user.home.usage.expire"
-msgstr ""
+msgstr "过期于："
 
 #: hiddifypanel/panel/user/templates/home/usage.html:16
+#, auto_translate
 msgid "days"
-msgstr ""
+msgstr "天"
 
 #: hiddifypanel/panel/user/templates/home/usage.html:24
+#, auto_translate
 msgid "user.home.usage.details"
-msgstr ""
+msgstr "显示使用详情。"
 
 #: hiddifypanel/panel/user/templates/home/windows.html:6
 #: hiddifypanel/panel/user/templates/home/windows.html:22
+#, auto_translate
 msgid "Windows"
-msgstr ""
+msgstr "视窗"
 
 #: hiddifypanel/panel/user/templates/home/windows.html:9
 #: hiddifypanel/panel/user/templates/home/windows.html:25
+#, auto_translate
 msgid "macOS"
-msgstr ""
+msgstr "苹果系统"
 
 #: hiddifypanel/panel/user/templates/home/windows.html:12
 #: hiddifypanel/panel/user/templates/home/windows.html:28
+#, auto_translate
 msgid "Linux"
-msgstr ""
+msgstr "Linux"
 
 #: hiddifypanel/panel/user/templates/home/windows.html:33
+#, auto_translate
 msgid "user.home.windows.intro"
 msgstr ""
+"首先，根据您的操作系统下载并安装 HiddifyDesktop 软件。\n"
+"<br>\n"
+"%(hiddify_desktop_links)s\n"
+"\n"
+"<div class=\"卡片信息\">\n"
+"    <div class=\"card-header\">\n"
+"使用 HiddifyDesktop 安全吗？\n"
+"    </div>\n"
+"    <div class=\"card-body\">\n"
+"        HiddifyDesktop 是 Clash 的开源分支，支持更多协议。\n"
+"        <br>\n"
+"        它的源代码存在于\n"
+"        <a href=\"https://github.com/hiddify/HiddifyDesktop\">GitHub</a>。"
+"\n"
+"        \n"
+"        <br>\n"
+"        因此，它是安全的。\n"
+"\n"
+"        <详情>\n"
+"            <summary>备选方案：普通冲突</summary>\n"
+"            %(normal_clash_link)s\n"
+"\n"
+"            <div class=\"alert alert-danger\">\n"
+"            Clash 不支持 VLESS 协议。因此，我们需要为它添加另一个链接。\n"
+"            </div>\n"
+"            \n"
+"\n"
+"        </详情>\n"
+"    </div>\n"
+"</div>\n"
+"现在，根据您的需要，您可以单击其中一个按钮。通过在浏览器中查看窗口，只需单击打开 HiddifyDesktop 选项即可自动将服务器链接添加到 "
+"HiddifyDesktop。"
 
 #: hiddifypanel/templates/admin-layout.html:28
 #: hiddifypanel/templates/admin-layout.html:81
+#, auto_translate
 msgid "admin.menu.home"
-msgstr ""
+msgstr "行政"
 
 #: hiddifypanel/templates/admin-layout.html:29
 #: hiddifypanel/templates/admin-layout.html:82
+#, auto_translate
 msgid "admin.menu.domain"
-msgstr ""
+msgstr "域名"
 
 #: hiddifypanel/templates/admin-layout.html:30
 #: hiddifypanel/templates/admin-layout.html:83
+#, auto_translate
 msgid "admin.menu.user"
-msgstr ""
+msgstr "用户"
 
 #: hiddifypanel/templates/admin-layout.html:31
 #: hiddifypanel/templates/admin-layout.html:84
+#, auto_translate
 msgid "admin.menu.proxy"
-msgstr ""
+msgstr "代理"
 
 #: hiddifypanel/templates/admin-layout.html:32
 #: hiddifypanel/templates/admin-layout.html:85
+#, auto_translate
 msgid "admin.menu.config"
-msgstr ""
+msgstr "设置"
 
 #: hiddifypanel/templates/admin-layout.html:35
 #: hiddifypanel/templates/admin-layout.html:94
+#, auto_translate
 msgid "admin.actions.title"
-msgstr ""
+msgstr "动作"
 
 #: hiddifypanel/templates/admin-layout.html:37
 #: hiddifypanel/templates/admin-layout.html:97
+#, auto_translate
 msgid "admin.actions.status"
-msgstr ""
+msgstr "地位"
 
 #: hiddifypanel/templates/admin-layout.html:38
+#, auto_translate
 msgid "admin.Actions:apply_configs"
-msgstr ""
+msgstr "应用配置"
 
 #: hiddifypanel/templates/admin-layout.html:39
 #: hiddifypanel/templates/admin-layout.html:100
+#, auto_translate
 msgid "admin.actions.reinstall"
-msgstr ""
+msgstr "重装系统"
 
 #: hiddifypanel/templates/admin-layout.html:40
 #: hiddifypanel/templates/admin-layout.html:99
+#, auto_translate
 msgid "admin.actions.reset"
-msgstr ""
+msgstr "重启系统"
 
 #: hiddifypanel/templates/admin-layout.html:41
 #: hiddifypanel/templates/admin-layout.html:101
+#, auto_translate
 msgid "admin.actions.update"
-msgstr ""
+msgstr "更新系统"
 
 #: hiddifypanel/templates/admin-layout.html:42
 #: hiddifypanel/templates/admin-layout.html:96
+#, auto_translate
 msgid "admin.actions.viewlogs"
-msgstr ""
+msgstr "查看日志"
 
 #: hiddifypanel/templates/admin-layout.html:48
 #: hiddifypanel/templates/admin-layout.html:105
+#, auto_translate
 msgid "admin.menu.support"
-msgstr ""
+msgstr "支持"
 
 #: hiddifypanel/templates/admin-layout.html:51
 #: hiddifypanel/templates/admin-layout.html:108
+#, auto_translate
 msgid "admin.menu.telegram"
-msgstr ""
+msgstr "电报"
 
 #: hiddifypanel/templates/admin-layout.html:98
 msgid "admin.actions.apply_configs"
 msgstr ""
 
 #: hiddifypanel/templates/master.html:112
+#, auto_translate
 msgid "user.home.share-title"
-msgstr ""
+msgstr "分享到社交媒体"
 
 #: hiddifypanel/templates/master.html:122
+#, auto_translate
 msgid "clickable copy"
-msgstr ""
+msgstr "社交媒体链接"
 
 #: hiddifypanel/templates/master.html:123
 msgid "open"
 msgstr ""
 
 #: hiddifypanel/templates/master.html:130
+#, auto_translate
 msgid "close"
-msgstr ""
+msgstr "关闭"
 
 #: hiddifypanel/templates/master.html:172
+#, auto_translate
 msgid "user.home.link.success-copy"
-msgstr ""
+msgstr "链接已复制到剪贴板。"
 
 #: hiddifypanel/templates/master.html:174
 #: hiddifypanel/templates/master.html:177
+#, auto_translate
 msgid "user.home.link.manual-copy"
-msgstr ""
+msgstr "复制到剪贴板：Ctrl+C，回车"
 
 #~ msgid "actionss"
 #~ msgstr ""
@@ -1152,7 +1500,7 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "user.home.link.success-copy"
-#~ msgstr ""
+#~ msgstr "链接已复制到剪贴板。"
 
 #~ msgid "user.home.link.success - copy"
 #~ msgstr ""
