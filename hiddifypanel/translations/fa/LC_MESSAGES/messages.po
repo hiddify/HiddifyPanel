@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-03 18:30+0100\n"
-"PO-Revision-Date: 2023-02-03 08:31-0600\n"
+"POT-Creation-Date: 2023-02-03 23:20+0100\n"
+"PO-Revision-Date: 2023-02-03 12:07-0600\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -15,15 +15,15 @@ msgstr ""
 "Generated-By: Babel 2.11.0\n"
 
 #: hiddifypanel/panel/hiddify.py:26
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "We have opened a temporary port (for 4 hours) to access the panel in case"
 " of any issues. Please copy this link. <a href='%(link)s' class='btn btn-"
 "danger share-link'>Temporary Link</a>"
 msgstr ""
-"ما یک پورت موقت (به مدت 4 ساعت) برای دسترسی به پنل در صورت بروز هرگونه "
-"مشکل باز کرده ایم. لطفا این لینک را کپی کنید <a href='%(link)s' "
-"class='btn btn-danger share-link'>پیوند موقت</a>"
+"ما یک پورت موقت (برای 4 ساعت آینده) برای دسترسی به پنل در صورت بروز "
+"هرگونه مشکل باز کرده‌ایم. لطفا این لینک را کپی کنید: <a href='%(link)s' "
+"class='btn btn-danger share-link'>لینک موقت</a>"
 
 # | msgid "Apply Configs"
 #: hiddifypanel/panel/admin/ProxyAdmin.py:41 hiddifypanel/panel/hiddify.py:137
@@ -42,9 +42,8 @@ msgstr ""
 
 # | msgid "Rebooting system may takes time. Please wait..."
 #: hiddifypanel/panel/admin/Actions.py:55
-#, fuzzy
 msgid "rebooting system may takes time please wait"
-msgstr "راه اندازی مجدد سیستم ممکن است زمان ببرد. لطفا صبر کنید..."
+msgstr "راه اندازی مجدد سیستم ممکن است اندکی زمان ببرد. لطفا صبر کنید..."
 
 #: hiddifypanel/panel/admin/Actions.py:84
 msgid ""
@@ -79,28 +78,26 @@ msgstr "حالت"
 
 # | msgid "IP"
 #: hiddifypanel/panel/admin/DomainAdmin.py:24
-#, fuzzy
 msgid "domain.ip"
-msgstr "IP"
+msgstr "آی‌پی"
 
 #: hiddifypanel/panel/admin/DomainAdmin.py:56
 #: hiddifypanel/panel/admin/QuickSetup.py:42
-#, fuzzy
 msgid "Domain can not be resolved! there is a problem in your domain"
-msgstr "دامنه قابل حل نیست! در دامنه شما مشکلی وجود دارد"
+msgstr "دامنه قابل دسترسی نیست! در دامنه شما مشکلی وجود دارد."
 
 #: hiddifypanel/panel/admin/DomainAdmin.py:60
 #: hiddifypanel/panel/admin/QuickSetup.py:46
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which "
 "is required in direct mode"
 msgstr ""
-"دامنه IP=%(domain_ip)s با ip=%(server_ip)s شما مطابقت ندارد که در حالت "
-"مستقیم مورد نیاز است"
+"آی‌پی دامنه IP=%(domain_ip)s با آی‌پی ip=%(server_ip)s شما مطابقت ندارد "
+"که در حالت مستقیم مورد نیاز است."
 
 #: hiddifypanel/panel/admin/DomainAdmin.py:63
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "In CDN mode, Domain IP=%(domain_ip)s should be different to your "
 "ip=%(server_ip)s"
@@ -161,13 +158,13 @@ msgid "quicksetup.setlang.error"
 msgstr "خطایی در تغییر زبان رخ داد"
 
 #: hiddifypanel/panel/admin/QuickSetup.py:63
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "The default user link is %(link)s. To add or edit more users, please "
 "visit users from menu."
 msgstr ""
-"لینک کاربر پیش فرض %(link)s است. برای افزودن یا ویرایش کاربران بیشتر، "
-"لطفاً از منو به کاربران مراجعه کنید."
+"لینک پیش فرض کاربر:  %(link)s است. برای افزودن یا ویرایش کاربران، لطفاً "
+"از منو به بخش کاربران مراجعه کنید."
 
 # | msgid "Language"
 #: hiddifypanel/panel/admin/QuickSetup.py:70
