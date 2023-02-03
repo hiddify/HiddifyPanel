@@ -181,9 +181,9 @@ def to_clash_yml(proxy):
 def to_clash(proxy,meta_or_normal):
     if proxy['l3']=="kcp":return
     if meta_or_normal=="normal":
-        if pinfo['proto']=="vless":return
-        if pinfo['l3']=="xtls":return
-        if pinfo['transport']=="shadowtls":return
+        if proxy['proto']=="vless":return
+        if proxy['l3']=="xtls":return
+        if proxy['transport']=="shadowtls":return
 
     base={}
     # vmess ws
