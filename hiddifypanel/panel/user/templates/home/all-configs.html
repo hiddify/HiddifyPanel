@@ -17,7 +17,7 @@
             <td>
                 <div class="btn-group">
                     <a href="clashmeta://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/meta/all.yml&name=meta_normal_{{domain}}"
-        class="btn btn-primary orig-link"> {{_('user.home.allconfig.hiddify-configs')}}</a>
+        class="btn btn-light orig-link"> {{_('user.home.allconfig.hiddify-configs')}}</a>
                 </div>
             </td>
             <td><span class="badge badge-danger">{{_('all')}}</span></td>
@@ -29,7 +29,7 @@
             <td>
                 <div class="btn-group">
                     <a href="clash://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/all.yml&name=new_normal_{{domain}}"
-                    class="btn btn-primary orig-link"> {{_('user.home.allconfig.clash-configs')}}</a>
+                    class="btn btn-light orig-link"> {{_('user.home.allconfig.clash-configs')}}</a>
                 </div>
             </td>
             <td><span class="badge badge-danger">{{_('all')}}</span></td>
@@ -41,7 +41,7 @@
             <td>
                 <div class="btn-group">
                     <a href="https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/all.txt?name=new_link_{{domain}}"
-                    class="btn btn-primary orig-link"> {{_('user.home.allconfig.link-configs')}}</a>
+                    class="btn btn-light orig-link"> {{_('user.home.allconfig.link-configs')}}</a>
                 </div>
             </td>
             <td><span class="badge badge-danger">{{_('all')}}</span></td>
@@ -55,7 +55,7 @@
         {% set pinfo=link_maker.make_proxy(type) %}
         % if pinfo!=None
         <tr>
-            <td><div class="btn-group"><a href='{{link_maker.to_link(pinfo)}}' class="btn btn-primary orig-link">{{pinfo["name"].replace("_", " ")}}</a></div></td>
+            <td><div class="btn-group"><a href='{{link_maker.to_link(pinfo)}}' class="btn btn-light orig-link">{{pinfo["name"].replace("_", " ")}}</a></div></td>
             <td><span class="badge badge-danger">{{pinfo["mode"]}}</span></td>
             <td><span class="badge badge-info">{{pinfo["proto"]}}</span></td>
             <td><span class="badge badge-warning">{{pinfo['transport']}}</span></td>     

@@ -46,7 +46,7 @@
       % for type in link_maker.all_proxies()
       {% set pinfo=link_maker.make_proxy(type) %}
       % if pinfo!=None
-      <div class="btn-group"><a href='{{link_maker.to_link(pinfo)}}' class="btn btn-light btn-sm" orig-link">{{pinfo['name']}}</a></div>
+      <div class="btn-group"><a href='{{link_maker.to_link(pinfo)}}' class="btn btn-light orig-link">{{pinfo['name']}}</a></div>
       % endif
       % endfor
 

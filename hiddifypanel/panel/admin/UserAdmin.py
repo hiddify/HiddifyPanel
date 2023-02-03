@@ -56,7 +56,7 @@ class UserAdmin(AdminLTEModelView):
     
     
     def _ul_formatter(view, context, model, name):
-        proxy_path=hconfig(ConfigEnum.proxy_path)
+        
         return Markup(" ".join([_get_link(model.uuid,d) for d in Domain.query.all()]))
     def _uuid_formatter(view, context, model, name):
         return Markup(f"<span>{model.uuid}</span>")
@@ -85,7 +85,8 @@ class UserAdmin(AdminLTEModelView):
         #     xray_api.remove_client(model.uuid)
         
 def _get_link(uuid,domain):
+        proxy_path=hconfig(ConfigEnum.proxy_path)
         text=domain.domain
-        if domain.mode==Domain.cdn:
+        if domain.mode==DomainType.cdn:
             text=f'<span class="badge badge-success" >{_("domain.cdn")}</span>'+text        
         return f"<a target='_blank' href='https://{domain.domain}/{proxy_path}/{uuid}/'><span class='badge badge-info ltr'>{text}</span></a>"
