@@ -30,7 +30,7 @@ class Actions(FlaskView):
         # resp.mimetype="text/plain"
         out=f'<pre style="background-color:black; color:white;padding:10px">{logs}</pre>'
         if "----Finished!---" in out:
-            out=f"<a href='#' target='_blank'><div style='background-color:#b1eab1; padding: 10px;border: solid;'>{_('Finished! For scrolling the log click here.')}</div></a>{out}"
+            out=f"<a href='#' target='_blank'><div style='background-color:#b1eab1; padding: 10px;border: solid;'>Finished! For scrolling the log click here.</div></a>{out}"
 
 
             
@@ -79,7 +79,7 @@ class Actions(FlaskView):
                             out_type="success",
                             out_msg=_("Success! Please wait around 4 minutes to make sure everything is updated. During this time, please save your proxy links which are:")+
                                     admin_links,
-                            log_path=f"https://{domains[0]}/{proxy_path}/{admin_secret}/actions/reverselog/0-install.log"
+                            log_path=f"https://{domains[0]}/{proxy_path}/{admin_secret}/admin/actions/reverselog/0-install.log/"
                             
         )
 

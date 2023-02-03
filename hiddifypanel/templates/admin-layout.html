@@ -92,8 +92,8 @@
             <a id= href="#"
               class="nav-link">{{icon('solid','suitcase','nav-icon')+_('admin.actions.title')}} <i class="right fas fa-angle-left"></i></a>
             <ul class="nav nav-treeview">
-              {{ render_nav_item('admin.Actions:viewlogs',icon('solid','inbox','nav-icon')+ _('admin.actions.viewlogs'), _use_li=True) }}
               {{ render_nav_item('admin.Actions:status',icon('solid','signal','nav-icon')+ _('admin.actions.status'), _use_li=True) }}
+              {{ render_nav_item('admin.Actions:viewlogs',icon('solid','inbox','nav-icon')+ _('admin.actions.viewlogs'), _use_li=True) }}
               {{ render_nav_item('admin.Actions:apply_configs',icon('solid','bolt','nav-icon')+ _('admin.actions.apply_configs'), _use_li=True) }}
               {{ render_nav_item('admin.Actions:reset', icon('solid','power-off','nav-icon')+_('admin.actions.reset'), _use_li=True) }}
               {{ render_nav_item('admin.Actions:reinstall', icon('solid','rotate','nav-icon')+_('admin.actions.reinstall'), _use_li=True) }}
