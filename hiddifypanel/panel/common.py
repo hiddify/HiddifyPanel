@@ -36,7 +36,7 @@ def init_app(app):
         
         if not g.is_admin:
             g.user=User.query.filter(User.uuid==f'{g.user_uuid}').first()
-            if endpoint and "admin" in endpoint:
+            if endpoint and ("admin" in endpoint or "api" in endpoint) :
                 raise Exception("Access Denied")
 
         print(g.user)

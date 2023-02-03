@@ -4,7 +4,7 @@ from flask_restful import Api
 from .resources import *
 from .update_usage import UpdateUsageResource
 
-bp = Blueprint("restapi", __name__, url_prefix="/api/v1")
+bp = Blueprint("api", __name__, url_prefix="/<proxy_path>/<user_secret>/api/v1")
 api = Api(bp)
 
 
@@ -16,4 +16,4 @@ def init_app(app):
     api.add_resource(AllResource, "/all/")
     api.add_resource(UpdateUsageResource, "/update_usage/")
     
-    # app.register_blueprint(bp)
+    app.register_blueprint(bp)
