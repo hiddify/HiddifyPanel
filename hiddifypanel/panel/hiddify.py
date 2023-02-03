@@ -72,7 +72,7 @@ def update_usage():
                     xray_api.add_client(user.uuid)
                 user.current_usage_GB=0
 
-            d = xray_api.get_usage(user.uuid)
+            d = xray_api.get_usage(user.uuid,reset=True)
             
             if d == None:
                res[user.uuid]="No value" 
