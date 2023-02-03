@@ -25,12 +25,13 @@ def add_client(uuid):
 def remove_client(uuid):
     xray_client=get_xray_client()
     tags=get_inbound_tags()
-    for t in tags:
-        try:
-            xray_client.remove_client(t, f'{uuid}@hiddify.com')
-        except Exception as e:
-            print(f"error in remove  {uuid} {tag} {e}" )
-            pass        
+    if tags:
+        for t in tags:
+            try:
+                xray_client.remove_client(t, f'{uuid}@hiddify.com')
+            except Exception as e:
+                print(f"error in remove  {uuid} {tag} {e}" )
+                pass        
 
 def get_usage(uuid,reset=False):
     xray_client=get_xray_client()
