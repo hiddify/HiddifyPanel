@@ -19,7 +19,7 @@
             </details>
             %else
             <div class="btn-group">
-                <a href="clashmeta://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/lite.yml&name=lite_{{domain}}"
+                <a href="clash://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/lite.yml&name=lite_{{domain}}"
                     class="btn btn-success orig-link">{{_("user.home.clash_configs.only_for_blocked_sites.btn")}}</a>
             </div>
             %endif
