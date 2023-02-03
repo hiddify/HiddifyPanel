@@ -48,6 +48,7 @@ class ConfigEnum(StrEnum):
     telegram_enable = auto()
     # telegram_secret=auto()
     telegram_adtag = auto()
+    telegram_lib = auto()
     telegram_fakedomain = auto()
 
     v2ray_enable = auto()

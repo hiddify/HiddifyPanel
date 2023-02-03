@@ -70,7 +70,7 @@ def init_db():
             # StrConfig(key=ConfigEnum.telegram_secret,value=uuid.uuid4().hex),
             StrConfig(key=ConfigEnum.telegram_adtag,value=""),
             StrConfig(key=ConfigEnum.telegram_fakedomain, value="www.wikipedia.org"),
-
+ 
             BoolConfig(key=ConfigEnum.ssfaketls_enable,value=False),
             # StrConfig(key=ConfigEnum.ssfaketls_secret,value=str(uuid.uuid4())),
             StrConfig(key=ConfigEnum.ssfaketls_fakedomain, value="fa.wikipedia.org"),
@@ -110,6 +110,13 @@ def init_db():
         db_version=1
     
     if db_version==1:
+        db.session.bulk_save_objects([
+            StrConfig(key=ConfigEnum.telegram_lib,value="python"),
+        ])
+        db.session.commit()
+        db_version=2
+        
+    if db_version==2:
         pass # for next update
     
     StrConfig.query.filter(StrConfig.key == ConfigEnum.db_version).update({'value': db_version})

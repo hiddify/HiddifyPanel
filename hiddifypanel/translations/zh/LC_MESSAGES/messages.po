@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-03 15:31+0100\n"
-"PO-Revision-Date: 2023-02-03 08:29-0600\n"
+"POT-Creation-Date: 2023-02-03 18:30+0100\n"
+"PO-Revision-Date: 2023-02-03 08:31-0600\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -116,7 +116,7 @@ msgstr "其中一个字段遇到错误"
 #: hiddifypanel/panel/admin/ProxyAdmin.py:116
 #: hiddifypanel/panel/admin/QuickSetup.py:71
 #: hiddifypanel/panel/admin/QuickSetup.py:90
-#: hiddifypanel/panel/admin/SettingAdmin.py:163
+#: hiddifypanel/panel/admin/SettingAdmin.py:165
 #, fuzzy
 msgid "Submit"
 msgstr "提交"
@@ -198,15 +198,15 @@ msgstr "它将更改管理和用户语言"
 
 # | msgid "Error! Invalid domain.  The domain format is www.google.com"
 #: hiddifypanel/panel/admin/QuickSetup.py:85
-#: hiddifypanel/panel/admin/SettingAdmin.py:123
 #: hiddifypanel/panel/admin/SettingAdmin.py:125
+#: hiddifypanel/panel/admin/SettingAdmin.py:127
 #, fuzzy
 msgid "config.Invalid domain"
 msgstr "错误！域无效。域格式为 www.google.com"
 
 # | msgid "Domain is exist in domains section. Use another domain"
 #: hiddifypanel/panel/admin/QuickSetup.py:86
-#: hiddifypanel/panel/admin/SettingAdmin.py:127
+#: hiddifypanel/panel/admin/SettingAdmin.py:129
 #, fuzzy
 msgid "config.Domain already used"
 msgstr "域存在于域部分。使用另一个域"
@@ -262,23 +262,47 @@ msgstr "几个人报告说 vmess 导致系统被政府检测到。所以不推�
 msgid "lang.zh"
 msgstr "Chinese چینی 中国人"
 
+#: hiddifypanel/panel/admin/SettingAdmin.py:120
+msgid "config.telegram_lib.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/SettingAdmin.py:120
+msgid "lib.telegram.python"
+msgstr ""
+
+#: hiddifypanel/panel/admin/SettingAdmin.py:120
+msgid "lib.telegram.go"
+msgstr ""
+
+#: hiddifypanel/panel/admin/SettingAdmin.py:120
+msgid "lib.telegram.orignal"
+msgstr ""
+
+#: hiddifypanel/panel/admin/SettingAdmin.py:120
+msgid "lib.telegram.erlang"
+msgstr ""
+
+#: hiddifypanel/panel/admin/SettingAdmin.py:120
+msgid "config.telegram_lib.description"
+msgstr ""
+
 # | msgid ""
 # | "Invalid UUID secret. e.g., 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n"
 # | "\n"
-#: hiddifypanel/panel/admin/SettingAdmin.py:136
+#: hiddifypanel/panel/admin/SettingAdmin.py:138
 #, fuzzy
 msgid "config.invalid uuid"
 msgstr "UUID 密码无效。例如，6098ea35-8cb2-4a08-ba15-2be25bc49cb6"
 
 # | msgid "Invalid proxy path. It should be asci string (a-z A-Z 0-9)"
-#: hiddifypanel/panel/admin/SettingAdmin.py:140
+#: hiddifypanel/panel/admin/SettingAdmin.py:142
 #, fuzzy
 msgid "config.Invalid proxy path"
 msgstr "代理路径无效。它应该是 asci 字符串 (a-z A-Z 0-9)"
 
 # | msgid ""
 # | "Invalid port. It should be comma separated integer e.g., 1000,1001"
-#: hiddifypanel/panel/admin/SettingAdmin.py:144
+#: hiddifypanel/panel/admin/SettingAdmin.py:146
 #, fuzzy
 msgid "config.Invalid port"
 msgstr "端口无效。它应该是逗号分隔的整数，例如 1000,1001"
@@ -286,13 +310,13 @@ msgstr "端口无效。它应该是逗号分隔的整数，例如 1000,1001"
 # | msgid ""
 # | "Port 80 should always be presented. We use it for getting ssl
 # certificate"
-#: hiddifypanel/panel/admin/SettingAdmin.py:147
+#: hiddifypanel/panel/admin/SettingAdmin.py:149
 #, fuzzy
 msgid "config.port 80 is required"
 msgstr "应始终提供端口 80。我们用它来获取 ssl 证书"
 
 # | msgid "Port 443 should always be presented. "
-#: hiddifypanel/panel/admin/SettingAdmin.py:150
+#: hiddifypanel/panel/admin/SettingAdmin.py:152
 #, fuzzy
 msgid "config.port 443 is required"
 msgstr "应始终显示端口 443。"
