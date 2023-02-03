@@ -165,16 +165,17 @@ def to_link(proxy):
     infos=f'&alpn={proxy["alpn"]}&sni={proxy["sni"]}&type={proxy["transport"]}'
     infos+=f'&path={proxy["path"]}' if "path" in proxy else ""
     infos+='&host={proxy["host"]}' if "host" in proxy else ""
-    infos+=f'#{proxy["name"]}'
     if "grpc"==proxy["transport"]:
         infos+=f'&serviceName={proxy["grpc_service_name"]}&mode={proxy["grpc_mode"]}'
+    
+    infos+=f'#{proxy["name"]}'
     baseurl=f'{proxy["proto"]}://{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}'
     if proxy['l3']=='xtls':
         return f'{baseurl}?flow={proxy["flow"]}&security=xtls&type=tcp{infos}'
     if proxy['l3']=='http':
         return f'{baseurl}?security=none{infos}'
     if proxy['l3']=='tls':
-        return f'{baseurl}?security=tls{infos}#{proxy["name"]}'
+        return f'{baseurl}?security=tls{infos}'
     
 def to_clash_yml(proxy):
     return yaml.dump(to_clash(proxy))
