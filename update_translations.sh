@@ -4,10 +4,10 @@ source .env
 PATH=/config/.local/bin:$PATH
 pybabel extract -F babel.cfg -o messages.pot hiddifypanel
 
-wget -O hiddifypanel/translations/en/LC_MESSAGES/messages.po  "https://localise.biz/api/export/locale/en-US.po?index=id&fallback=en-US&key=5Tqp1dLHQSk98s-twNF6RpwZu7lZSLLM"
+wget -O hiddifypanel/translations/en/LC_MESSAGES/messages.po  "https://localise.biz/api/export/locale/en-US.po?index=id&key=5Tqp1dLHQSk98s-twNF6RpwZu7lZSLLM"
 
-wget -O hiddifypanel/translations/fa/LC_MESSAGES/messages.po "https://localise.biz/api/export/locale/fa.po?index=id&fallback=en-US&key=5Tqp1dLHQSk98s-twNF6RpwZu7lZSLLM"
-wget -O hiddifypanel/translations/zh/LC_MESSAGES/messages.po "https://localise.biz/api/export/locale/zh.po?index=id&fallback=en-US&key=5Tqp1dLHQSk98s-twNF6RpwZu7lZSLLM"
+wget -O hiddifypanel/translations/fa/LC_MESSAGES/messages.po "https://localise.biz/api/export/locale/fa.po?index=id&key=5Tqp1dLHQSk98s-twNF6RpwZu7lZSLLM"
+wget -O hiddifypanel/translations/zh/LC_MESSAGES/messages.po "https://localise.biz/api/export/locale/zh.po?index=id&key=5Tqp1dLHQSk98s-twNF6RpwZu7lZSLLM"
 
 pybabel update -N -i messages.pot -d hiddifypanel/translations -l en
 

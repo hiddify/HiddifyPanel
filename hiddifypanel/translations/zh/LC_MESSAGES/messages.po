@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-03 11:58+0100\n"
-"PO-Revision-Date: 2023-02-02 14:31-0600\n"
+"POT-Creation-Date: 2023-02-03 13:13+0100\n"
+"PO-Revision-Date: 2023-02-03 06:13-0600\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -14,8 +14,18 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.11.0\n"
 
+#: hiddifypanel/panel/hiddify.py:23
+#, fuzzy, python-format
+msgid ""
+"We have opened a temporary port (for 4 hours) to access the panel in case"
+" of any issues. Please copy this link. <a href='%(link)s' class='btn btn-"
+"danger share-link'>Temporary Link</a>"
+msgstr ""
+"我们已经打开了一个临时端口（4 小时）以在出现任何问题时访问该面板。请复制此链接。 <a href='%(link)s' class='btn "
+"btn-danger share-link'>临时链接</a>"
+
 # | msgid "Apply Configs"
-#: hiddifypanel/panel/admin/ProxyAdmin.py:41 hiddifypanel/panel/hiddify.py:106
+#: hiddifypanel/panel/admin/ProxyAdmin.py:41 hiddifypanel/panel/hiddify.py:134
 #, fuzzy
 msgid "admin.config.apply_configs"
 msgstr "应用配置"
@@ -24,27 +34,29 @@ msgstr "应用配置"
 # | "Configs have changed successfully. Click %(link)s to apply the configs.
 # It "
 # | "may takes 2 minutes to apply."
-#: hiddifypanel/panel/admin/ProxyAdmin.py:42 hiddifypanel/panel/hiddify.py:107
+#: hiddifypanel/panel/admin/ProxyAdmin.py:42 hiddifypanel/panel/hiddify.py:135
 #, fuzzy
 msgid "config.validation-success"
 msgstr "配置已成功更改。单击 %(link)s 以应用配置。申请可能需要 2 分钟。"
 
+# | msgid "Rebooting system may takes time. Please wait..."
 #: hiddifypanel/panel/admin/Actions.py:55
+#, fuzzy
 msgid "rebooting system may takes time please wait"
-msgstr ""
+msgstr "重新启动系统可能需要一些时间。请稍等..."
 
-#: hiddifypanel/panel/admin/Actions.py:83
+#: hiddifypanel/panel/admin/Actions.py:84
 msgid ""
 "Success! Please wait around 4 minutes to make sure everything is updated."
 " During this time, please save your proxy links which are:"
 msgstr "成功！ 请等待大约 4 分钟，以确保所有内容都已更新。 在此期间，请保存您的代理链接:"
 
 # | msgid "See the log in the bellow screen"
-#: hiddifypanel/panel/admin/Actions.py:104
+#: hiddifypanel/panel/admin/Actions.py:106
 msgid "see the log in the bellow screen"
 msgstr "请参阅以下屏幕中的日志："
 
-#: hiddifypanel/panel/admin/Actions.py:123
+#: hiddifypanel/panel/admin/Actions.py:126
 msgid "Success! Please wait around 5 minutes to make sure everything is updated."
 msgstr "成功！ 请等待大约 5 分钟，以确保所有内容都已更新。"
 
@@ -61,29 +73,32 @@ msgstr "领域"
 msgid "domain.mode"
 msgstr "模式"
 
+# | msgid "IP"
 #: hiddifypanel/panel/admin/DomainAdmin.py:24
+#, fuzzy
 msgid "domain.ip"
-msgstr ""
+msgstr "知识产权"
 
 #: hiddifypanel/panel/admin/DomainAdmin.py:56
 #: hiddifypanel/panel/admin/QuickSetup.py:42
+#, fuzzy
 msgid "Domain can not be resolved! there is a problem in your domain"
-msgstr ""
+msgstr "域名无法解析！你的域有问题"
 
 #: hiddifypanel/panel/admin/DomainAdmin.py:60
 #: hiddifypanel/panel/admin/QuickSetup.py:46
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which "
 "is required in direct mode"
-msgstr ""
+msgstr "域 IP=%(domain_ip)s 与您的 ip=%(server_ip)s 不匹配，这在直接模式下是必需的"
 
 #: hiddifypanel/panel/admin/DomainAdmin.py:63
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "In CDN mode, Domain IP=%(domain_ip)s should be different to your "
 "ip=%(server_ip)s"
-msgstr ""
+msgstr "在 CDN 模式下，Domain IP=%(domain_ip)s 应该与您的 ip=%(server_ip)s 不同"
 
 #: hiddifypanel/panel/admin/ProxyAdmin.py:36
 msgid "config.domain-fronting-notsetup-error"
@@ -101,7 +116,7 @@ msgstr "其中一个字段遇到错误"
 #: hiddifypanel/panel/admin/ProxyAdmin.py:116
 #: hiddifypanel/panel/admin/QuickSetup.py:71
 #: hiddifypanel/panel/admin/QuickSetup.py:90
-#: hiddifypanel/panel/admin/SettingAdmin.py:161
+#: hiddifypanel/panel/admin/SettingAdmin.py:163
 #, fuzzy
 msgid "Submit"
 msgstr "提交"
@@ -144,15 +159,15 @@ msgid "quicksetup.setlang.error"
 msgstr "更改语言时出错"
 
 #: hiddifypanel/panel/admin/QuickSetup.py:63
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "The default user link is %(link)s. To add or edit more users, please "
 "visit users from menu."
-msgstr ""
+msgstr "默认用户链接是 %(link)s。要添加或编辑更多用户，请从菜单访问用户。"
 
 # | msgid "Language"
 #: hiddifypanel/panel/admin/QuickSetup.py:70
-#: hiddifypanel/panel/admin/SettingAdmin.py:116
+#: hiddifypanel/panel/admin/SettingAdmin.py:118
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/panel/admin/templates/quick_setup.html:22
 #, fuzzy
@@ -161,21 +176,21 @@ msgstr "语言"
 
 # | msgid "English انگلیسی 英语"
 #: hiddifypanel/panel/admin/QuickSetup.py:70
-#: hiddifypanel/panel/admin/SettingAdmin.py:116
+#: hiddifypanel/panel/admin/SettingAdmin.py:118
 #, fuzzy
 msgid "lang.en"
 msgstr "English انگلیسی 英语"
 
 # | msgid "Persian فارسی 波斯语"
 #: hiddifypanel/panel/admin/QuickSetup.py:70
-#: hiddifypanel/panel/admin/SettingAdmin.py:116
+#: hiddifypanel/panel/admin/SettingAdmin.py:118
 #, fuzzy
 msgid "lang.fa"
 msgstr "Persian فارسی 波斯语"
 
 # | msgid "It will change admin and user language"
 #: hiddifypanel/panel/admin/QuickSetup.py:70
-#: hiddifypanel/panel/admin/SettingAdmin.py:116
+#: hiddifypanel/panel/admin/SettingAdmin.py:118
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.lang.description"
@@ -183,15 +198,15 @@ msgstr "它将更改管理和用户语言"
 
 # | msgid "Error! Invalid domain.  The domain format is www.google.com"
 #: hiddifypanel/panel/admin/QuickSetup.py:85
-#: hiddifypanel/panel/admin/SettingAdmin.py:121
 #: hiddifypanel/panel/admin/SettingAdmin.py:123
+#: hiddifypanel/panel/admin/SettingAdmin.py:125
 #, fuzzy
 msgid "config.Invalid domain"
 msgstr "错误！域无效。域格式为 www.google.com"
 
 # | msgid "Domain is exist in domains section. Use another domain"
 #: hiddifypanel/panel/admin/QuickSetup.py:86
-#: hiddifypanel/panel/admin/SettingAdmin.py:125
+#: hiddifypanel/panel/admin/SettingAdmin.py:127
 #, fuzzy
 msgid "config.Domain already used"
 msgstr "域存在于域部分。使用另一个域"
@@ -243,27 +258,27 @@ msgid "config.vmess_enable.description"
 msgstr "几个人报告说 vmess 导致系统被政府检测到。所以不推荐"
 
 # | msgid "Chinese چینی 中国人"
-#: hiddifypanel/panel/admin/SettingAdmin.py:116
+#: hiddifypanel/panel/admin/SettingAdmin.py:118
 msgid "lang.zh"
 msgstr "Chinese چینی 中国人"
 
 # | msgid ""
 # | "Invalid UUID secret. e.g., 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n"
 # | "\n"
-#: hiddifypanel/panel/admin/SettingAdmin.py:134
+#: hiddifypanel/panel/admin/SettingAdmin.py:136
 #, fuzzy
 msgid "config.invalid uuid"
 msgstr "UUID 密码无效。例如，6098ea35-8cb2-4a08-ba15-2be25bc49cb6"
 
 # | msgid "Invalid proxy path. It should be asci string (a-z A-Z 0-9)"
-#: hiddifypanel/panel/admin/SettingAdmin.py:138
+#: hiddifypanel/panel/admin/SettingAdmin.py:140
 #, fuzzy
 msgid "config.Invalid proxy path"
 msgstr "代理路径无效。它应该是 asci 字符串 (a-z A-Z 0-9)"
 
 # | msgid ""
 # | "Invalid port. It should be comma separated integer e.g., 1000,1001"
-#: hiddifypanel/panel/admin/SettingAdmin.py:142
+#: hiddifypanel/panel/admin/SettingAdmin.py:144
 #, fuzzy
 msgid "config.Invalid port"
 msgstr "端口无效。它应该是逗号分隔的整数，例如 1000,1001"
@@ -271,13 +286,13 @@ msgstr "端口无效。它应该是逗号分隔的整数，例如 1000,1001"
 # | msgid ""
 # | "Port 80 should always be presented. We use it for getting ssl
 # certificate"
-#: hiddifypanel/panel/admin/SettingAdmin.py:145
+#: hiddifypanel/panel/admin/SettingAdmin.py:147
 #, fuzzy
 msgid "config.port 80 is required"
 msgstr "应始终提供端口 80。我们用它来获取 ssl 证书"
 
 # | msgid "Port 443 should always be presented. "
-#: hiddifypanel/panel/admin/SettingAdmin.py:148
+#: hiddifypanel/panel/admin/SettingAdmin.py:150
 #, fuzzy
 msgid "config.port 443 is required"
 msgstr "应始终显示端口 443。"
@@ -436,13 +451,15 @@ msgstr "它将禁用 IPv6"
 
 # | msgid "Torrent Block Configuration"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
 msgid "config.torrent_block.label"
-msgstr "Torrent Block Configuration"
+msgstr "洪流块配置"
 
 # | msgid "Torrent Block Configurations could be set in this section."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
 msgid "config.torrent_block.description"
-msgstr "Torrent Block Configurations could be set in this section."
+msgstr "可以在本节中设置 Torrent 块配置。"
 
 # | msgid "Decoy Site"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -483,13 +500,15 @@ msgstr "屏蔽伊朗网站以防止被政府发现（实验：如果有问题，
 
 # | msgid "V2Ray configurations"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
 msgid "config.v2ray_enable.label"
-msgstr "V2Ray configurations"
+msgstr "V2Ray 配置"
 
 # | msgid "V2Ray configurations could be set in this section."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
 msgid "config.v2ray_enable.description"
-msgstr "V2Ray configurations could be set here."
+msgstr "V2Ray 配置可以在这个部分进行设置。"
 
 # | msgid "Shared Secret"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -641,13 +660,15 @@ msgstr "逗号分隔的整数，指示用作未加密连接的端口（需要端
 
 # | msgid "HTTP Configuration"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
 msgid "config.http.label"
-msgstr "HTTP Configuration"
+msgstr "HTTP配置"
 
 # | msgid "HTTP Configurations could be set in this section."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
 msgid "config.http.description"
-msgstr "HTTP Configurations could be set in this section."
+msgstr "可以在此部分设置 HTTP 配置。"
 
 # | msgid "Allow invalid SNI"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -681,13 +702,15 @@ msgstr "逗号分隔的整数，指示用作 TLS 连接的端口（需要端口 
 
 # | msgid "TLS Configuration"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
 msgid "config.tls.label"
-msgstr "TLS Configuration"
+msgstr "TLS 配置"
 
 # | msgid "TLS Configurations could be set  in this section."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
 msgid "config.tls.description"
-msgstr "TLS Configurations could be set here."
+msgstr "可以在本节中设置 TLS 配置。"
 
 # | msgid "Shadowsocks Fake TLS (simple obfs)"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -931,13 +954,15 @@ msgstr "Database version description"
 
 # | msgid "Config not found"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
 msgid "config.not_found.label"
-msgstr "Config not found"
+msgstr "找不到配置"
 
 # | msgid "Config not found"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
 msgid "config.not_found.description"
-msgstr "Config not found"
+msgstr "找不到配置"
 
 # | msgid "Protocol Usage Chart"
 #: hiddifypanel/panel/admin/templates/index.html:16
@@ -997,8 +1022,9 @@ msgstr "您的 IPv4 是 %(ipv4)s，IPv6 是 %(ipv6)s。请在您的域中设置�
 
 # | msgid "Log"
 #: hiddifypanel/panel/admin/templates/result.html:13
+#, fuzzy
 msgid "log"
-msgstr "Log"
+msgstr "日志"
 
 # | msgid "Click here to see the complete log."
 #: hiddifypanel/panel/admin/templates/result.html:14
@@ -1315,7 +1341,7 @@ msgstr "将下面的链接复制到您的浏览器中。"
 
 # | msgid "Copy"
 #: hiddifypanel/panel/user/templates/home/doh.html:8
-#: hiddifypanel/templates/master.html:121
+#: hiddifypanel/templates/master.html:122
 #, fuzzy
 msgid "copy"
 msgstr "复制"
@@ -1821,37 +1847,37 @@ msgid "admin.actions.apply_configs"
 msgstr "Apply configs"
 
 # | msgid "Share to social media"
-#: hiddifypanel/templates/master.html:112
+#: hiddifypanel/templates/master.html:113
 #, fuzzy
 msgid "user.home.share-title"
 msgstr "分享到社交媒体"
 
 # | msgid "Link for social media"
-#: hiddifypanel/templates/master.html:122
+#: hiddifypanel/templates/master.html:123
 #, fuzzy
 msgid "clickable copy"
 msgstr "社交媒体链接"
 
 # | msgid "Open"
-#: hiddifypanel/templates/master.html:123
+#: hiddifypanel/templates/master.html:124
 msgid "open"
 msgstr "打开"
 
 # | msgid "Close"
-#: hiddifypanel/templates/master.html:130
+#: hiddifypanel/templates/master.html:131
 #, fuzzy
 msgid "close"
 msgstr "关闭"
 
 # | msgid "Link Copied to clipboard. "
-#: hiddifypanel/templates/master.html:172
+#: hiddifypanel/templates/master.html:173
 #, fuzzy
 msgid "user.home.link.success-copy"
 msgstr "链接已复制到剪贴板。"
 
 # | msgid "Copy to clipboard:  Ctrl+C, Enter"
-#: hiddifypanel/templates/master.html:174
-#: hiddifypanel/templates/master.html:177
+#: hiddifypanel/templates/master.html:175
+#: hiddifypanel/templates/master.html:178
 #, fuzzy
 msgid "user.home.link.manual-copy"
 msgstr "复制到剪贴板：Ctrl+C，回车"
@@ -1861,17 +1887,14 @@ msgstr "复制到剪贴板：Ctrl+C，回车"
 # | "https://www.wikipedia.org/\n"
 #~ msgid "config.Invalid decoy_site"
 #~ msgstr ""
-#~ "Invalid address: a website for decoy "
-#~ "site should be complete url e.g., "
-#~ "https://www.wikipedia.org/\n"
 
 # | msgid "Decoy Site"
 #~ msgid "config.decoy_site.label"
-#~ msgstr "Decoy Site"
+#~ msgstr ""
 
 # | msgid "Fake site: simulates a site when someone visits your domain"
 #~ msgid "config.decoy_site.description"
-#~ msgstr "Fake site: simulates a site when someone visits your domain"
+#~ msgstr ""
 
 # | msgid "Ports settings"
 #~ msgid "config.ports.label"
@@ -1883,7 +1906,7 @@ msgstr "复制到剪贴板：Ctrl+C，回车"
 
 # | msgid "Allow HTTP connection"
 #~ msgid "config.http_proxy.label"
-#~ msgstr "Allow HTTP connection"
+#~ msgstr ""
 
 # | msgid ""
 # | "By allowing this, your users can connect to the system with unencrypted
@@ -1891,36 +1914,29 @@ msgstr "复制到剪贴板：Ctrl+C，回车"
 # | " port. (not recommended)"
 #~ msgid "config.http_proxy.description"
 #~ msgstr ""
-#~ "By allowing this, your users can "
-#~ "connect to the system with unencrypted"
-#~ " http port. (not recommended)"
 
 # | msgid "Link Copied to clipboard. "
 #~ msgid "user.home.link.success - copy"
-#~ msgstr "Link Copied to clipboard. "
+#~ msgstr ""
 
 # | msgid "Enable HTTP domain fronting"
 #~ msgid "config.domain_fronting_http.label"
-#~ msgstr "Enable HTTP domain fronting"
+#~ msgstr ""
 
 # | msgid ""
 # | "Enabling HTTP domain fronting causes your domain to be block quickly."
 #~ msgid "config.domain_fronting_http.description"
-#~ msgstr "Enabling HTTP domain fronting causes your domain to be block quickly."
+#~ msgstr ""
 
 # | msgid "Enable TLS domain fronting"
 #~ msgid "config.domain_fronting_tls.label"
-#~ msgstr "Enable TLS domain fronting"
+#~ msgstr ""
 
 # | msgid "It will use port 443 to connect to CDN"
 #~ msgid "config.domain_fronting_tls.description"
-#~ msgstr "It will use port 443 to connect to CDN"
+#~ msgstr ""
 
 # | msgid "Check"
 #~ msgid "check"
 #~ msgstr "查看"
-
-# | msgid "TEST Translation"
-#~ msgid "new_test"
-#~ msgstr "TEST Translation"
 

@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-03 11:58+0100\n"
-"PO-Revision-Date: 2023-02-02 14:31-0600\n"
+"POT-Creation-Date: 2023-02-03 13:13+0100\n"
+"PO-Revision-Date: 2023-02-03 06:13-0600\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -14,25 +14,37 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "Generated-By: Babel 2.11.0\n"
 
+#: hiddifypanel/panel/hiddify.py:23
+#, python-format
+msgid ""
+"We have opened a temporary port (for 4 hours) to access the panel in case of"
+" any issues. Please copy this link. <a href='%(link)s' class='btn btn-danger"
+" share-link'>Temporary Link</a>"
+msgstr ""
+"We have opened a temporary port (for 4 hours) to access the panel in case of"
+" any issues. Please copy this link. <a href='%(link)s' class='btn btn-danger"
+" share-link'>Temporary Link</a>"
+
 # | msgid "Apply Configs"
-#: hiddifypanel/panel/admin/ProxyAdmin.py:41 hiddifypanel/panel/hiddify.py:106
+#: hiddifypanel/panel/admin/ProxyAdmin.py:41 hiddifypanel/panel/hiddify.py:134
 msgid "admin.config.apply_configs"
 msgstr "Apply Configs"
 
 # | msgid ""
 # | "Configs have changed successfully. Click %(link)s to apply the configs. "
 # | "It may takes 2 minutes to apply."
-#: hiddifypanel/panel/admin/ProxyAdmin.py:42 hiddifypanel/panel/hiddify.py:107
+#: hiddifypanel/panel/admin/ProxyAdmin.py:42 hiddifypanel/panel/hiddify.py:135
 msgid "config.validation-success"
 msgstr ""
 "Configs have changed successfully. Click %(link)s to apply the configs. It "
 "may takes 2 minutes to apply."
 
+# | msgid "Rebooting system may takes time. Please wait..."
 #: hiddifypanel/panel/admin/Actions.py:55
 msgid "rebooting system may takes time please wait"
-msgstr ""
+msgstr "Rebooting system may takes time. Please wait..."
 
-#: hiddifypanel/panel/admin/Actions.py:83
+#: hiddifypanel/panel/admin/Actions.py:84
 msgid ""
 "Success! Please wait around 4 minutes to make sure everything is updated. "
 "During this time, please save your proxy links which are:"
@@ -41,11 +53,11 @@ msgstr ""
 "During this time, please save your proxy links which are:"
 
 # | msgid "See the log in the bellow screen"
-#: hiddifypanel/panel/admin/Actions.py:104
+#: hiddifypanel/panel/admin/Actions.py:106
 msgid "see the log in the bellow screen"
 msgstr "See the log in the bellow screen"
 
-#: hiddifypanel/panel/admin/Actions.py:123
+#: hiddifypanel/panel/admin/Actions.py:126
 msgid ""
 "Success! Please wait around 5 minutes to make sure everything is updated."
 msgstr ""
@@ -62,14 +74,15 @@ msgstr "Domain"
 msgid "domain.mode"
 msgstr "Mode"
 
+# | msgid "IP"
 #: hiddifypanel/panel/admin/DomainAdmin.py:24
 msgid "domain.ip"
-msgstr ""
+msgstr "IP"
 
 #: hiddifypanel/panel/admin/DomainAdmin.py:56
 #: hiddifypanel/panel/admin/QuickSetup.py:42
 msgid "Domain can not be resolved! there is a problem in your domain"
-msgstr ""
+msgstr "Domain can not be resolved! there is a problem in your domain"
 
 #: hiddifypanel/panel/admin/DomainAdmin.py:60
 #: hiddifypanel/panel/admin/QuickSetup.py:46
@@ -78,6 +91,8 @@ msgid ""
 "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is "
 "required in direct mode"
 msgstr ""
+"Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is "
+"required in direct mode"
 
 #: hiddifypanel/panel/admin/DomainAdmin.py:63
 #, python-format
@@ -85,6 +100,8 @@ msgid ""
 "In CDN mode, Domain IP=%(domain_ip)s should be different to your "
 "ip=%(server_ip)s"
 msgstr ""
+"In CDN mode, Domain IP=%(domain_ip)s should be different to your "
+"ip=%(server_ip)s"
 
 #: hiddifypanel/panel/admin/ProxyAdmin.py:36
 msgid "config.domain-fronting-notsetup-error"
@@ -101,7 +118,7 @@ msgstr "One of the fields has encountered with error"
 #: hiddifypanel/panel/admin/ProxyAdmin.py:116
 #: hiddifypanel/panel/admin/QuickSetup.py:71
 #: hiddifypanel/panel/admin/QuickSetup.py:90
-#: hiddifypanel/panel/admin/SettingAdmin.py:161
+#: hiddifypanel/panel/admin/SettingAdmin.py:163
 msgid "Submit"
 msgstr "Submit"
 
@@ -146,10 +163,12 @@ msgid ""
 "The default user link is %(link)s. To add or edit more users, please visit "
 "users from menu."
 msgstr ""
+"The default user link is %(link)s. To add or edit more users, please visit "
+"users from menu."
 
 # | msgid "Language"
 #: hiddifypanel/panel/admin/QuickSetup.py:70
-#: hiddifypanel/panel/admin/SettingAdmin.py:116
+#: hiddifypanel/panel/admin/SettingAdmin.py:118
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/panel/admin/templates/quick_setup.html:22
 msgid "config.lang.label"
@@ -157,33 +176,33 @@ msgstr "Language"
 
 # | msgid "English انگلیسی 英语"
 #: hiddifypanel/panel/admin/QuickSetup.py:70
-#: hiddifypanel/panel/admin/SettingAdmin.py:116
+#: hiddifypanel/panel/admin/SettingAdmin.py:118
 msgid "lang.en"
 msgstr "English انگلیسی 英语"
 
 # | msgid "Persian فارسی 波斯语"
 #: hiddifypanel/panel/admin/QuickSetup.py:70
-#: hiddifypanel/panel/admin/SettingAdmin.py:116
+#: hiddifypanel/panel/admin/SettingAdmin.py:118
 msgid "lang.fa"
 msgstr "Persian فارسی 波斯语"
 
 # | msgid "It will change admin and user language"
 #: hiddifypanel/panel/admin/QuickSetup.py:70
-#: hiddifypanel/panel/admin/SettingAdmin.py:116
+#: hiddifypanel/panel/admin/SettingAdmin.py:118
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.lang.description"
 msgstr "It will change admin and user language"
 
 # | msgid "Error! Invalid domain.  The domain format is www.google.com"
 #: hiddifypanel/panel/admin/QuickSetup.py:85
-#: hiddifypanel/panel/admin/SettingAdmin.py:121
 #: hiddifypanel/panel/admin/SettingAdmin.py:123
+#: hiddifypanel/panel/admin/SettingAdmin.py:125
 msgid "config.Invalid domain"
 msgstr "Error! Invalid domain.  The domain format is www.google.com"
 
 # | msgid "Domain is exist in domains section. Use another domain"
 #: hiddifypanel/panel/admin/QuickSetup.py:86
-#: hiddifypanel/panel/admin/SettingAdmin.py:125
+#: hiddifypanel/panel/admin/SettingAdmin.py:127
 msgid "config.Domain already used"
 msgstr "Domain is exist in domains section. Use another domain"
 
@@ -231,39 +250,39 @@ msgstr ""
 " by the government. So it is not recommended"
 
 # | msgid "Chinese چینی 中国人"
-#: hiddifypanel/panel/admin/SettingAdmin.py:116
+#: hiddifypanel/panel/admin/SettingAdmin.py:118
 msgid "lang.zh"
 msgstr "Chinese چینی 中国人"
 
 # | msgid ""
 # | "Invalid UUID secret. e.g., 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n"
 # | "\n"
-#: hiddifypanel/panel/admin/SettingAdmin.py:134
+#: hiddifypanel/panel/admin/SettingAdmin.py:136
 msgid "config.invalid uuid"
 msgstr ""
 "Invalid UUID secret. e.g., 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n"
 "\n"
 
 # | msgid "Invalid proxy path. It should be asci string (a-z A-Z 0-9)"
-#: hiddifypanel/panel/admin/SettingAdmin.py:138
+#: hiddifypanel/panel/admin/SettingAdmin.py:140
 msgid "config.Invalid proxy path"
 msgstr "Invalid proxy path. It should be asci string (a-z A-Z 0-9)"
 
 # | msgid "Invalid port. It should be comma separated integer e.g., 1000,1001"
-#: hiddifypanel/panel/admin/SettingAdmin.py:142
+#: hiddifypanel/panel/admin/SettingAdmin.py:144
 msgid "config.Invalid port"
 msgstr "Invalid port. It should be comma separated integer e.g., 1000,1001"
 
 # | msgid ""
 # | "Port 80 should always be presented. We use it for getting ssl
 # certificate"
-#: hiddifypanel/panel/admin/SettingAdmin.py:145
+#: hiddifypanel/panel/admin/SettingAdmin.py:147
 msgid "config.port 80 is required"
 msgstr ""
 "Port 80 should always be presented. We use it for getting ssl certificate"
 
 # | msgid "Port 443 should always be presented. "
-#: hiddifypanel/panel/admin/SettingAdmin.py:148
+#: hiddifypanel/panel/admin/SettingAdmin.py:150
 msgid "config.port 443 is required"
 msgstr "Port 443 should always be presented. "
 
@@ -1211,7 +1230,7 @@ msgstr "Copy the link bellow into your browser."
 
 # | msgid "Copy"
 #: hiddifypanel/panel/user/templates/home/doh.html:8
-#: hiddifypanel/templates/master.html:121
+#: hiddifypanel/templates/master.html:122
 msgid "copy"
 msgstr "Copy"
 
@@ -1671,33 +1690,33 @@ msgid "admin.actions.apply_configs"
 msgstr "Apply configs"
 
 # | msgid "Share to social media"
-#: hiddifypanel/templates/master.html:112
+#: hiddifypanel/templates/master.html:113
 msgid "user.home.share-title"
 msgstr "Share to social media"
 
 # | msgid "Link for social media"
-#: hiddifypanel/templates/master.html:122
+#: hiddifypanel/templates/master.html:123
 msgid "clickable copy"
 msgstr "Link for social media"
 
 # | msgid "Open"
-#: hiddifypanel/templates/master.html:123
+#: hiddifypanel/templates/master.html:124
 msgid "open"
 msgstr "Open"
 
 # | msgid "Close"
-#: hiddifypanel/templates/master.html:130
+#: hiddifypanel/templates/master.html:131
 msgid "close"
 msgstr "Close"
 
 # | msgid "Link Copied to clipboard. "
-#: hiddifypanel/templates/master.html:172
+#: hiddifypanel/templates/master.html:173
 msgid "user.home.link.success-copy"
 msgstr "Link Copied to clipboard. "
 
 # | msgid "Copy to clipboard:  Ctrl+C, Enter"
-#: hiddifypanel/templates/master.html:174
-#: hiddifypanel/templates/master.html:177
+#: hiddifypanel/templates/master.html:175
+#: hiddifypanel/templates/master.html:178
 msgid "user.home.link.manual-copy"
 msgstr "Copy to clipboard:  Ctrl+C, Enter"
 
@@ -1761,7 +1780,3 @@ msgstr "Copy to clipboard:  Ctrl+C, Enter"
 # | msgid "Check"
 #~ msgid "check"
 #~ msgstr "Check"
-
-# | msgid "TEST Translation"
-#~ msgid "new_test"
-#~ msgstr "TEST Translation"

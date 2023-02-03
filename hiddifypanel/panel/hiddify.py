@@ -6,7 +6,35 @@ from hiddifypanel.panel.database import db
 from hiddifypanel.models import StrConfig,BoolConfig,User,Domain,get_hconfigs,Proxy,hconfig,ConfigEnum
 import urllib
 from flask_babelex import lazy_gettext as _
+from flask_babelex import gettext as __
 from hiddifypanel import xray_api
+
+
+def add_temporary_access():
+    import random
+
+    random_port=(random.randint(30000, 50000))
+    iptableparm=f'PREROUTING -p tcp --dport {random_port} -j REDIRECT --to-ports 127.0.0.1:9000'
+    cmd=f'iptables -t nat -I {iptableparm}'
+    exec_command(cmd)
+    cmd2='echo iptables -t nat -D {iptableparm} | at now + 4 hour'
+    exec_command(cmd)
+    temp_admin_link=f"http://{get_ip(4)}:{random_port}{get_admin_path()}"
+    return flash(Markup(_("We have opened a temporary port (for 4 hours) to access the panel in case of any issues. Please copy this link. <a href='%(link)s' class='btn btn-danger share-link'>Temporary Link</a>",link=temp_admin_link)),'warning')
+
+def get_admin_path():
+    proxy_path=hconfig(ConfigEnum.proxy_path)
+    admin_secret=hconfig(ConfigEnum.admin_secret)        
+    return (f"/{proxy_path}/{admin_secret}/admin/")
+
+def exec_command(cmd,cwd=None):
+    try:
+        import os
+        os.system(cmd)
+    except Exception as e:
+        print(e)
+
+    
 
 def auth(function):
     def wrapper(*args,**kwargs):

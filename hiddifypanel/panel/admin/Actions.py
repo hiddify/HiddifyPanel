@@ -9,7 +9,7 @@ import json
 import urllib.request
 import subprocess
 import re
-
+from hiddifypanel.panel import hiddify
 from flask import current_app,render_template,request,Response,Markup,url_for,flash
 
 
@@ -58,6 +58,7 @@ class Actions(FlaskView):
     
     def reinstall(self,complete_install=True):
         config=current_app.config
+        hiddify.add_temporary_access()
         file="install.sh" if complete_install else "apply_configs.sh"
         try:
             server_ip=urllib.request.urlopen('https://v4.ident.me/').read().decode('utf8')
@@ -89,6 +90,7 @@ class Actions(FlaskView):
 
     
     def status(self):
+        hiddify.add_temporary_access()
         config=current_app.config
         # configs=read_configs()
         # subprocess.Popen(f"{config_dir}/update.sh",env=my_env,cwd=f"{config_dir}")
@@ -109,6 +111,7 @@ class Actions(FlaskView):
 
     
     def update(self):
+        hiddify.add_temporary_access()
         config=current_app.config
         cwd = os.getcwd()
         
