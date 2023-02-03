@@ -22,11 +22,19 @@ class Actions(FlaskView):
     
     def reverselog(self,logfile):
         config_dir=current_app.config.HIDDIFY_CONFIG_PATH
+        
         with open(f'{config_dir}/log/system/{logfile}') as f:
             lines=[line for line in f]
-            resp= Response("".join(lines[::-1]))
-            resp.mimetype="text/plain"
-            return resp
+            logs="".join(lines[::-1])
+        # resp= Response()
+        # resp.mimetype="text/plain"
+        out=f'<pre style="background-color:black; color:white;padding:10px">{logs}</pre>'
+        if "----Finished!---" in out:
+            out=f"<a href='#' target='_blank'><div style='background-color:#b1eab1; padding: 10px;border: solid;'>{_('Finished! For scrolling the log click here.')}</div></a>{out}"
+
+
+            
+        return out
             
             
 
