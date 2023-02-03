@@ -148,7 +148,8 @@ def make_proxy(proxy):
 def to_link(proxy):
     if type(proxy) is str:return proxy
     if proxy['proto']=='vmess':
-        return pbase64(f'vmess://{{"v":"2", "ps":"{proxy["name"]}", "add":"{proxy["server"]}", "port":"{proxy["port"]}", "id":"{proxy["uuid"]}", "aid":"0", "scy":"auto", "net":"{proxy["transport"]}", "type":"none", "host":"{proxy.get("host")}", "path":"{proxy["path"] if "path" in proxy else ""}", "tls":"{proxy["l3"]}", "sni":"{proxy["sni"]}"}}')
+        vmess_type= 'http' if proxy["transport"]=='tcp' else 'none'
+        return pbase64(f'vmess://{{"v":"2", "ps":"{proxy["name"]}", "add":"{proxy["server"]}", "port":"{proxy["port"]}", "id":"{proxy["uuid"]}", "aid":"0", "scy":"auto", "net":"{proxy["transport"]}", "type":"none", "host":"{proxy.get("host","")}", "path":"{proxy["path"] if "path" in proxy else ""}", "tls":"{proxy["l3"]}", "sni":"{proxy["sni"]}"}}')
     if proxy['proto']=="ssr":
         baseurl=f'ssr://proxy["encryption"]:{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}'
         return None
