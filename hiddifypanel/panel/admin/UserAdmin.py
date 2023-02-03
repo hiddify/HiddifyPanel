@@ -57,7 +57,7 @@ class UserAdmin(AdminLTEModelView):
     
     def _ul_formatter(view, context, model, name):
         proxy_path=hconfig(ConfigEnum.proxy_path)
-        return Markup(" ".join([_get_link(d) for d in Domain.query.all()]))
+        return Markup(" ".join([_get_link(model.uuid,d) for d in Domain.query.all()]))
     def _uuid_formatter(view, context, model, name):
         return Markup(f"<span>{model.uuid}</span>")
 
