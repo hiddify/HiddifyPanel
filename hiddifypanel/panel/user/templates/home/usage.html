@@ -7,7 +7,7 @@
                 <h3>{{_('user.home.usage.title')}}</h3>
                 <div class="info-box-content">
                     <span class="info-box-text">{{user.current_usage_GB}}GB <b>{{_('user.home.usage.from')}}</b>
-                            {{user.monthly_usage_limit_GB}}GB  {{_('user.home.usage.monthly')}}</span> 
+                            {{user.monthly_usage_limit_GB|round(3)}}GB  {{_('user.home.usage.monthly')}}</span> 
                     <div class="progress">
                         <div class="progress-bar progress-bar-striped bg-warning"
                             style="width: {{user.current_usage_GB*10000/user.monthly_usage_limit_GB}}%"></div>

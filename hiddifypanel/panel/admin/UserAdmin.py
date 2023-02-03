@@ -60,10 +60,12 @@ class UserAdmin(AdminLTEModelView):
         return Markup(" ".join([_get_link(model.uuid,d) for d in Domain.query.all()]))
     def _uuid_formatter(view, context, model, name):
         return Markup(f"<span>{model.uuid}</span>")
-
+    def _usage_formatter(view, context, model, name):
+        return round(model.current_usage_GB,3)
     column_formatters = {
         'UserLinks': _ul_formatter,
         'uuid': _uuid_formatter,
+        'current_usage_GB': _usage_formatter
     }
     def on_model_delete(self, model):
         xray_api.remove_client(model.uuid)
