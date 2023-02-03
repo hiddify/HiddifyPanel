@@ -14,7 +14,7 @@ def add_temporary_access():
     import random
 
     random_port=(random.randint(30000, 50000))
-    iptableparm=f'PREROUTING -p tcp --dport {random_port} -j REDIRECT --to-ports 127.0.0.1:9000'
+    iptableparm=f'PREROUTING -p tcp --dport {random_port} -j REDIRECT --to-port 9000'
     cmd=f'iptables -t nat -I {iptableparm}'
     exec_command(cmd)
     cmd2='echo iptables -t nat -D {iptableparm} | at now + 4 hour'
