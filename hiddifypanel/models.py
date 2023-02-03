@@ -139,9 +139,9 @@ class ConfigEnum(StrEnum):
         return info['type'] if 'type' in info else str
 
 
-class DomainType(enum.Enum):
-    direct = "direct"
-    cdn = "cdn"
+class DomainType(StrEnum):
+    direct = auto()
+    cdn = auto()
     # fake_cdn = "fake_cdn"
     # telegram_faketls = "telegram_faketls"
     # ss_faketls = "ss_faketls"

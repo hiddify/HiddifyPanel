@@ -105,3 +105,17 @@ def get_available_proxies():
 def flash_config_success():
     apply_btn=f"<a href='{url_for('admin.Actions:apply_configs')}' class='btn btn-primary'>"+_("admin.config.apply_configs")+"</a>"
     flash(Markup(_('config.validation-success',link=apply_btn)), 'success')
+
+# Importing socket library 
+import socket 
+
+# Function to display hostname and 
+# IP address 
+def get_domain_ip(domain): 
+    import socket
+    try: 
+        host_ip = socket.gethostbyname(domain) 
+        return host_ip
+    except: 
+        return None
+

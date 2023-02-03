@@ -4,8 +4,12 @@ def get_xray_client():
     return xtlsapi.XrayClient('127.0.0.1', 10085)
     
 def get_inbound_tags():
-    xray_client=get_xray_client()
-    return [inb.name.split(">>>")[1] for inb in xray_client.stats_query('inbound')]
+    try:
+        xray_client=get_xray_client()
+        return [inb.name.split(">>>")[1] for inb in xray_client.stats_query('inbound')]
+    except Exception as e:
+        print(f"error in get inbound tags {e}" )
+        return []
 
 def add_client(uuid):
     xray_client=get_xray_client()

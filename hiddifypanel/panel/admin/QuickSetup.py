@@ -36,7 +36,16 @@ class QuickSetup(FlaskView):
 
                         return render_template('quick_setup.html', form=get_quick_setup_form(True),lang_form=lang_form)                
 
-                if quick_form.validate_on_submit():
+                dip=hiddify.get_domain_ip(model.domain)
+                domain_ok=True
+                if dip==None:
+                        flash(_("Domain can not be resolved! there is a problem in your domain"), 'danger')    
+                        domain_ok=False
+                myip=hiddify.get_ip(4)
+                if dip and myip!=dip:
+                        flash(_("Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode",server_ip=myip,domain_ip=dip),'danger')    
+                        domain_ok=False
+                if quick_form.validate_on_submit() and domain_ok:
                         sslip_dm=Domain.query.filter(Domain.domain==f'{hiddify.get_ip(4)}.sslip.io').first()
                         db.session.remove(sslip_dm)
 
