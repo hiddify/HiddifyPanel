@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-03 13:13+0100\n"
-"PO-Revision-Date: 2023-02-03 06:13-0600\n"
+"POT-Creation-Date: 2023-02-03 15:31+0100\n"
+"PO-Revision-Date: 2023-02-03 08:29-0600\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.11.0\n"
 
-#: hiddifypanel/panel/hiddify.py:23
+#: hiddifypanel/panel/hiddify.py:26
 #, fuzzy, python-format
 msgid ""
 "We have opened a temporary port (for 4 hours) to access the panel in case"
@@ -25,7 +25,7 @@ msgstr ""
 "btn-danger share-link'>临时链接</a>"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/panel/admin/ProxyAdmin.py:41 hiddifypanel/panel/hiddify.py:134
+#: hiddifypanel/panel/admin/ProxyAdmin.py:41 hiddifypanel/panel/hiddify.py:137
 #, fuzzy
 msgid "admin.config.apply_configs"
 msgstr "应用配置"
@@ -34,7 +34,7 @@ msgstr "应用配置"
 # | "Configs have changed successfully. Click %(link)s to apply the configs.
 # It "
 # | "may takes 2 minutes to apply."
-#: hiddifypanel/panel/admin/ProxyAdmin.py:42 hiddifypanel/panel/hiddify.py:135
+#: hiddifypanel/panel/admin/ProxyAdmin.py:42 hiddifypanel/panel/hiddify.py:138
 #, fuzzy
 msgid "config.validation-success"
 msgstr "配置已成功更改。单击 %(link)s 以应用配置。申请可能需要 2 分钟。"
@@ -1623,7 +1623,7 @@ msgstr "电报代理"
 msgid "user.home.telegram.description"
 msgstr "单击 %(link)s，然后，在电报中您可以看到一个包含 <b>Connect Proxy</b> 的窗口。单击它，它将起作用。"
 
-# | msgid "Trafic Usage"
+# | msgid "Traffic Usage"
 #: hiddifypanel/panel/user/templates/home/usage.html:7
 #, fuzzy
 msgid "user.home.usage.title"

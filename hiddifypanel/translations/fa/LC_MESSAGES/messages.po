@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-03 13:13+0100\n"
-"PO-Revision-Date: 2023-02-03 06:13-0600\n"
+"POT-Creation-Date: 2023-02-03 15:31+0100\n"
+"PO-Revision-Date: 2023-02-03 08:29-0600\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.11.0\n"
 
-#: hiddifypanel/panel/hiddify.py:23
+#: hiddifypanel/panel/hiddify.py:26
 #, fuzzy, python-format
 msgid ""
 "We have opened a temporary port (for 4 hours) to access the panel in case"
@@ -26,7 +26,7 @@ msgstr ""
 "class='btn btn-danger share-link'>پیوند موقت</a>"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/panel/admin/ProxyAdmin.py:41 hiddifypanel/panel/hiddify.py:134
+#: hiddifypanel/panel/admin/ProxyAdmin.py:41 hiddifypanel/panel/hiddify.py:137
 msgid "admin.config.apply_configs"
 msgstr "اعمال تنظیمات"
 
@@ -34,7 +34,7 @@ msgstr "اعمال تنظیمات"
 # | "Configs have changed successfully. Click %(link)s to apply the configs.
 # It "
 # | "may takes 2 minutes to apply."
-#: hiddifypanel/panel/admin/ProxyAdmin.py:42 hiddifypanel/panel/hiddify.py:135
+#: hiddifypanel/panel/admin/ProxyAdmin.py:42 hiddifypanel/panel/hiddify.py:138
 msgid "config.validation-success"
 msgstr ""
 "تنظیمات با موفقیت ذخیره شدند. لطفا بر روی این لینک: %(link)s کلیک کنید تا"
@@ -1539,7 +1539,7 @@ msgstr ""
 "که یک دکمه با نوشته <b>Connect Proxy</b> قابل مشاهده است. روی آن کلیک "
 "کنید تا پروکسی متصل شود."
 
-# | msgid "Trafic Usage"
+# | msgid "Traffic Usage"
 #: hiddifypanel/panel/user/templates/home/usage.html:7
 msgid "user.home.usage.title"
 msgstr "حجم مصرف شده:"
