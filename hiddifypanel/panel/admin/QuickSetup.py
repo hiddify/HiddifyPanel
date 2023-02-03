@@ -48,6 +48,10 @@ class QuickSetup(FlaskView):
                         BoolConfig.query.filter(BoolConfig.key==ConfigEnum.vmess_enable).first().value=quick_form.enable_vmess.data
                         db.session.commit()
                         hiddify.flash_config_success()
+                        proxy_path=hconfig(ConfigEnum.proxy_path)
+                        uuid=User.query.first().uuid
+                        userlink="<a class='btn btn-light share-link' target='_blank' href='https://{quick_form.domain.data}/{proxy_path}/{uuid}/'>{_('default user link')}</a>"
+                        flash(_('The default user link is %(link)s. To add or edit more users, please visit users from menu.',link=userlink),'info')
                 else:
                         flash(_('config.validation-error'), 'danger')
                 return render_template('quick_setup.html', form=quick_form,lang_form=get_lang_form(True))
