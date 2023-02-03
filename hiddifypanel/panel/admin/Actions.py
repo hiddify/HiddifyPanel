@@ -73,7 +73,8 @@ class Actions(FlaskView):
         domains=[d.domain for d in Domain.query.all()]
         # domains=[*domains,f'{server_ip}.sslip.io']
         for d in domains:
-                admin_links+=f"<li><a class='badge ltr  share-link' href='https://{d}/{proxy_path}/{admin_secret}/'>https://{d}/{proxy_path}/{admin_secret}/admin</a></li>"
+                link=f'https://{d}/{proxy_path}/{admin_secret}/admin'
+                admin_links+=f"<li><a class='badge ltr  share-link' href='{link}'>{link}</a></li>"
 
         return render_template("result.html",
                             out_type="success",
