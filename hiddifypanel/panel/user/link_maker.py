@@ -165,7 +165,7 @@ def to_link(proxy):
     infos+=f'&path={proxy["path"]}' if "path" in proxy else ""
     infos+='&host={proxy["host"]}' if "host" in proxy else ""
     infos+=f'#{proxy["name"]}'
-    if "grpc"==proxy["mode"]:
+    if "grpc"==proxy["transport"]:
         infos+=f'&serviceName={proxy["grpc_service_name"]}&mode={proxy["grpc_mode"]}'
     baseurl=f'{proxy["proto"]}://{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}'
     if proxy['l3']=='xtls':
