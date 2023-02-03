@@ -62,12 +62,13 @@ def get_common_data(user_uuid):
     o = urlparse(request.base_url)
     db_domain=Domain.query.filter(Domain.domain==o.hostname).first()
     domain=o.hostname
+    direct_host= domain
     is_cdn=False
     if db_domain and db_domain.mode==DomainType.cdn:
         direct_host=urllib.request.urlopen('https://v4.ident.me/').read().decode('utf8')
         is_cdn=True
     
-    direct_host= domain
+    
     # uuid_secret=str(uuid.UUID(user_secret))
     user=User.query.filter(User.uuid==f'{user_uuid}').first()
     if user is None:

@@ -10,7 +10,7 @@ import urllib.request
 import subprocess
 import re
 
-from flask import current_app,render_template,request,Response,Markup,url_for
+from flask import current_app,render_template,request,Response,Markup,url_for,flash
 
 
 from flask_classful import FlaskView
@@ -51,8 +51,10 @@ class Actions(FlaskView):
 
     
     def reset(self):
-        # subprocess.Popen(f"reboot",start_new_session=True)
-        return self.status()
+        status=self.status()
+        flash(_("rebooting system may takes time please wait"),'info')
+        subprocess.Popen(f"reboot",start_new_session=True)
+        return status
     
     def reinstall(self,complete_install=True):
         config=current_app.config
