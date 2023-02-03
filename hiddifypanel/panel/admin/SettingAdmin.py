@@ -107,6 +107,8 @@ def get_config_form():
         if cat=='hidden':continue
 
         cat_configs=[c for c in configs if c.key.category()==cat]
+        if len(cat_configs)==0:continue
+        
         class CategoryForm(FlaskForm):
             description_for_fieldset=wtf.fields.TextAreaField("",description=_(f'config.{cat}.description'),render_kw={"class":"d-none"})
         for c in cat_configs:

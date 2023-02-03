@@ -56,8 +56,8 @@ def init_db():
             
             BoolConfig(key=ConfigEnum.block_iran_sites,value=True),
             BoolConfig(key=ConfigEnum.allow_invalid_sni,value=True),
-            BoolConfig(key=ConfigEnum.kcp_enable,value=False),
-            StrConfig(key=ConfigEnum.kcp_ports,value="88"),
+            # BoolConfig(key=ConfigEnum.kcp_enable,value=False),
+            # StrConfig(key=ConfigEnum.kcp_ports,value="88"),
             BoolConfig(key=ConfigEnum.auto_update,value=True),
             BoolConfig(key=ConfigEnum.speed_test,value=True),
             BoolConfig(key=ConfigEnum.only_ipv4,value=False),
@@ -75,32 +75,33 @@ def init_db():
             # StrConfig(key=ConfigEnum.ssfaketls_secret,value=str(uuid.uuid4())),
             StrConfig(key=ConfigEnum.ssfaketls_fakedomain, value="fa.wikipedia.org"),
 
-            BoolConfig(key=ConfigEnum.shadowtls_enable,value=False),
+            # BoolConfig(key=ConfigEnum.shadowtls_enable,value=False),
             # StrConfig(key=ConfigEnum.shadowtls_secret,value=str(uuid.uuid4())),
-            StrConfig(key=ConfigEnum.shadowtls_fakedomain, value="en.wikipedia.org"),
+            # StrConfig(key=ConfigEnum.shadowtls_fakedomain, value="en.wikipedia.org"),
 
-            BoolConfig(key=ConfigEnum.ssr_enable,value=False),
-            # StrConfig(key=ConfigEnum.ssr_secret,value=str(uuid.uuid4())),
-            StrConfig(key=ConfigEnum.ssr_fakedomain, value="ar.wikipedia.org"),
+            # BoolConfig(key=ConfigEnum.ssr_enable,value=False),
+            # # StrConfig(key=ConfigEnum.ssr_secret,value=str(uuid.uuid4())),
+            # StrConfig(key=ConfigEnum.ssr_fakedomain, value="ar.wikipedia.org"),
 
-            BoolConfig(key=ConfigEnum.tuic_enable,value=False),
-            StrConfig(key=ConfigEnum.tuic_port,value=3048),
+            # BoolConfig(key=ConfigEnum.tuic_enable,value=False),
+            # StrConfig(key=ConfigEnum.tuic_port,value=3048),
 
             BoolConfig(key=ConfigEnum.domain_fronting_tls_enable,value=False),
             BoolConfig(key=ConfigEnum.domain_fronting_http_enable,value=False),
             StrConfig(key=ConfigEnum.domain_fronting_domain,value=""),
 
+            # BoolConfig(key=ConfigEnum.torrent_block,value=False),
 
             *get_proxy_rows()
         ]
 
-        for c in ConfigEnum:
-            if c in [d.key for d in data if type(d) in [BoolConfig,StrConfig]]:
-                continue
-            if c.type()==bool:
-                data.append(BoolConfig(key=c,value=False))
-            else:
-                data.append(StrConfig(key=c,value=""))
+        # for c in ConfigEnum:
+        #     if c in [d.key for d in data if type(d) in [BoolConfig,StrConfig]]:
+        #         continue
+        #     if c.type()==bool:
+        #         data.append(BoolConfig(key=c,value=False))
+        #     else:
+        #         data.append(StrConfig(key=c,value=""))
                     
 
         
@@ -110,7 +111,8 @@ def init_db():
     
     if db_version==1:
         pass # for next update
-
+    
+    StrConfig.query.filter(StrConfig.key == ConfigEnum.db_version).update({'value': db_version})
     return BoolConfig.query.all()
 
 def all_configs():
