@@ -36,17 +36,8 @@ class QuickSetup(FlaskView):
                                 flash(_('quicksetup.setlang.error'), 'danger')
 
                         return render_template('quick_setup.html', form=get_quick_setup_form(True),lang_form=lang_form)                
-
-                dip=hiddify.get_domain_ip(quick_form.domain.data)
-                domain_ok=True
-                if dip==None:
-                        flash(_("Domain can not be resolved! there is a problem in your domain"), 'danger')    
-                        domain_ok=False
-                myip=hiddify.get_ip(4)
-                if dip and myip!=dip:
-                        flash(_("Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode",server_ip=myip,domain_ip=dip),'danger')    
-                        domain_ok=False
-                if quick_form.validate_on_submit() and domain_ok:
+                
+                if quick_form.validate_on_submit():
                         sslip_dm=Domain.query.filter(Domain.domain==f'{hiddify.get_ip(4)}.sslip.io').delete()
 
                         data=[Domain(domain=quick_form.domain.data,mode=DomainType.direct),]
@@ -84,10 +75,21 @@ def get_quick_setup_form(empty=False):
                 return domains
         class QuickSetupForm(FlaskForm):
                 domain_validators=[wtf.validators.Regexp("^([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})$",re.IGNORECASE,_("config.Invalid domain")),
+                                        validate_domain,
                                         wtf.validators.NoneOf(get_used_domains(),_("config.Domain already used"))]
                 domain=wtf.fields.StringField(_("domain.domain"),domain_validators,description=_("domain.description"),render_kw={"pattern":domain_validators[0].regex.pattern,"title":domain_validators[0].message,"required":"","placeholder":"sub.domain.com"})
                 enable_telegram=SwitchField(_("config.telegram_enable.label"),description=_("config.telegram_enable.description"),default=hconfig(ConfigEnum.telegram_enable))
                 enable_vmess=SwitchField(_("config.vmess_enable.label"),description=_("config.vmess_enable.description"),default=hconfig(ConfigEnum.vmess_enable))
                 submit=wtf.fields.SubmitField(_('Submit'))
+
+                def validate_domain(self, field):
+                        domain=field.data
+                        dip=hiddify.get_domain_ip(domain)
+                        if dip==None:
+                                raise ValidationError(_("Domain can not be resolved! there is a problem in your domain"))
+
+                        myip=hiddify.get_ip(4)
+                        if dip and myip!=dip:
+                                raise ValidationError(_("Domain (%(domain))-> IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode",server_ip=myip,domain_ip=dip,domain=domain))
         
         return QuickSetupForm(None) if empty else QuickSetupForm()
