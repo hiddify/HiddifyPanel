@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-04 09:33+0100\n"
-"PO-Revision-Date: 2023-02-04 02:32-0600\n"
+"POT-Creation-Date: 2023-02-04 10:08+0100\n"
+"PO-Revision-Date: 2023-02-04 02:33-0600\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -90,7 +90,7 @@ msgstr "错误！！！"
 
 # | msgid "Domain"
 #: hiddifypanel/panel/admin/DomainAdmin.py:22
-#: hiddifypanel/panel/admin/QuickSetup.py:87
+#: hiddifypanel/panel/admin/QuickSetup.py:89
 #, fuzzy
 msgid "domain.domain"
 msgstr "领域"
@@ -108,13 +108,13 @@ msgid "domain.ip"
 msgstr "知识产权"
 
 #: hiddifypanel/panel/admin/DomainAdmin.py:56
-#: hiddifypanel/panel/admin/QuickSetup.py:42
+#: hiddifypanel/panel/admin/QuickSetup.py:43
 #, fuzzy
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr "域名无法解析！你的域有问题"
 
 #: hiddifypanel/panel/admin/DomainAdmin.py:60
-#: hiddifypanel/panel/admin/QuickSetup.py:46
+#: hiddifypanel/panel/admin/QuickSetup.py:47
 #, fuzzy, python-format
 msgid ""
 "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which "
@@ -134,7 +134,7 @@ msgstr "错误！ 未设置域前端"
 
 # | msgid "One of the fields has encountered with error"
 #: hiddifypanel/panel/admin/ProxyAdmin.py:63
-#: hiddifypanel/panel/admin/QuickSetup.py:65
+#: hiddifypanel/panel/admin/QuickSetup.py:66
 #: hiddifypanel/panel/admin/SettingAdmin.py:59
 #, fuzzy
 msgid "config.validation-error"
@@ -142,8 +142,8 @@ msgstr "其中一个字段遇到错误"
 
 #: hiddifypanel/panel/admin/ProxyAdmin.py:90
 #: hiddifypanel/panel/admin/ProxyAdmin.py:116
-#: hiddifypanel/panel/admin/QuickSetup.py:71
-#: hiddifypanel/panel/admin/QuickSetup.py:90
+#: hiddifypanel/panel/admin/QuickSetup.py:73
+#: hiddifypanel/panel/admin/QuickSetup.py:92
 #: hiddifypanel/panel/admin/SettingAdmin.py:165
 #, fuzzy
 msgid "Submit"
@@ -175,18 +175,18 @@ msgid "proxy.cdn"
 msgstr "CDN"
 
 # | msgid "Change language success"
-#: hiddifypanel/panel/admin/QuickSetup.py:32
+#: hiddifypanel/panel/admin/QuickSetup.py:33
 #, fuzzy
 msgid "quicksetup.setlang.success"
 msgstr "改语言成功"
 
 # | msgid "An error happened in changing language"
-#: hiddifypanel/panel/admin/QuickSetup.py:35
+#: hiddifypanel/panel/admin/QuickSetup.py:36
 #, fuzzy
 msgid "quicksetup.setlang.error"
 msgstr "更改语言时出错"
 
-#: hiddifypanel/panel/admin/QuickSetup.py:63
+#: hiddifypanel/panel/admin/QuickSetup.py:64
 #, fuzzy, python-format
 msgid ""
 "The default user link is %(link)s. To add or edit more users, please "
@@ -194,7 +194,7 @@ msgid ""
 msgstr "默认用户链接是 %(link)s。要添加或编辑更多用户，请从菜单访问用户。"
 
 # | msgid "Language"
-#: hiddifypanel/panel/admin/QuickSetup.py:70
+#: hiddifypanel/panel/admin/QuickSetup.py:71
 #: hiddifypanel/panel/admin/SettingAdmin.py:118
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/panel/admin/templates/quick_setup.html:22
@@ -203,29 +203,41 @@ msgid "config.lang.label"
 msgstr "语言"
 
 # | msgid "English انگلیسی 英语"
-#: hiddifypanel/panel/admin/QuickSetup.py:70
+#: hiddifypanel/panel/admin/QuickSetup.py:71
+#: hiddifypanel/panel/admin/QuickSetup.py:72
 #: hiddifypanel/panel/admin/SettingAdmin.py:118
 #, fuzzy
 msgid "lang.en"
 msgstr "English انگلیسی 英语"
 
 # | msgid "Persian فارسی 波斯语"
-#: hiddifypanel/panel/admin/QuickSetup.py:70
+#: hiddifypanel/panel/admin/QuickSetup.py:71
+#: hiddifypanel/panel/admin/QuickSetup.py:72
 #: hiddifypanel/panel/admin/SettingAdmin.py:118
 #, fuzzy
 msgid "lang.fa"
 msgstr "Persian فارسی 波斯语"
 
 # | msgid "It will change admin and user language"
-#: hiddifypanel/panel/admin/QuickSetup.py:70
+#: hiddifypanel/panel/admin/QuickSetup.py:71
 #: hiddifypanel/panel/admin/SettingAdmin.py:118
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.lang.description"
 msgstr "它将更改管理和用户语言"
 
+#: hiddifypanel/panel/admin/QuickSetup.py:72
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.admin_lang.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/QuickSetup.py:72
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.admin_lang.description"
+msgstr ""
+
 # | msgid "Error! Invalid domain.  The domain format is www.google.com"
-#: hiddifypanel/panel/admin/QuickSetup.py:85
+#: hiddifypanel/panel/admin/QuickSetup.py:87
 #: hiddifypanel/panel/admin/SettingAdmin.py:125
 #: hiddifypanel/panel/admin/SettingAdmin.py:127
 #, fuzzy
@@ -233,7 +245,7 @@ msgid "config.Invalid domain"
 msgstr "错误！域无效。域格式为 www.google.com"
 
 # | msgid "Domain is exist in domains section. Use another domain"
-#: hiddifypanel/panel/admin/QuickSetup.py:86
+#: hiddifypanel/panel/admin/QuickSetup.py:88
 #: hiddifypanel/panel/admin/SettingAdmin.py:129
 #, fuzzy
 msgid "config.Domain already used"
@@ -245,7 +257,7 @@ msgstr "域存在于域部分。使用另一个域"
 # "href=\"https://github.com/hiddify/hiddify-config/wiki/راهنمای-تنظیم-دامنه-و-"
 # | "نهایی-کردن-نصب#آموزش-ساخت-زیردامنه\"> Help</a> to learn how to create a "
 # | "subdomain."
-#: hiddifypanel/panel/admin/QuickSetup.py:87
+#: hiddifypanel/panel/admin/QuickSetup.py:89
 #, fuzzy
 msgid "domain.description"
 msgstr ""
@@ -253,7 +265,7 @@ msgstr ""
 "config/wiki/راهنمای-تنظیم-دامنه-و-نهاوی-کردن-نصب#آمووous-ساخت-یردامنه\">帮助</a>了解如何创建子域。"
 
 # | msgid "Enable Telegram MT Proxy"
-#: hiddifypanel/panel/admin/QuickSetup.py:88
+#: hiddifypanel/panel/admin/QuickSetup.py:90
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.telegram_enable.label"
@@ -262,14 +274,14 @@ msgstr "启用 Telegram MT 代理"
 # | msgid ""
 # | "Telegram MT Proxy is used for encapsulate telegram proxy as a TLS
 # traffic"
-#: hiddifypanel/panel/admin/QuickSetup.py:88
+#: hiddifypanel/panel/admin/QuickSetup.py:90
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.telegram_enable.description"
 msgstr "电报 MT 代理用于将电报代理封装为 TLS 流量"
 
 # | msgid "Enable vmess"
-#: hiddifypanel/panel/admin/QuickSetup.py:89
+#: hiddifypanel/panel/admin/QuickSetup.py:91
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.vmess_enable.label"
@@ -279,7 +291,7 @@ msgstr "启用 vmess"
 # | "It is reported by several people that vmess causes the system to be
 # detected"
 # | " by the government. So it is not recommended"
-#: hiddifypanel/panel/admin/QuickSetup.py:89
+#: hiddifypanel/panel/admin/QuickSetup.py:91
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.vmess_enable.description"
@@ -994,14 +1006,6 @@ msgstr "KCP"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.kcp.description"
 msgstr "需要完成"
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.admin_lang.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.admin_lang.description"
-msgstr ""
 
 # | msgid "Secret Proxy Path"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
