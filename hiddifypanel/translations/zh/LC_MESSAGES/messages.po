@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-04 19:50+0100\n"
-"PO-Revision-Date: 2023-02-04 12:18-0600\n"
+"POT-Creation-Date: 2023-02-04 20:45+0100\n"
+"PO-Revision-Date: 2023-02-04 13:45-0600\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -72,7 +72,7 @@ msgstr ""
 
 # | msgid ""
 # | "It seems that you are using default domain (%(domain)s) which is not "
-# | "recommended. Please remove it from domain section."
+# | "recommended. Please change or remove it from domain section."
 #: hiddifypanel/panel/admin/Dashboard.py:19
 #, fuzzy, python-format
 msgid ""
@@ -230,10 +230,12 @@ msgstr "English انگلیسی 英语"
 msgid "lang.fa"
 msgstr "Persian فارسی 波斯语"
 
+# | msgid "Choose language for Admin area."
 #: hiddifypanel/panel/admin/QuickSetup.py:71
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
 msgid "config.admin_lang.description"
-msgstr ""
+msgstr "为管理区域选择语言。"
 
 # | msgid "User Area Language"
 #: hiddifypanel/panel/admin/QuickSetup.py:72
@@ -354,7 +356,8 @@ msgstr "Erlang：中等性能"
 msgid "config.telegram_lib.description"
 msgstr "您可以在不同的电报库之间切换。"
 
-# | msgid "Invalid branding link"
+# | msgid ""
+# | "Invalid link. it should be on this format: (https or http://example.com)"
 #: hiddifypanel/panel/admin/SettingAdmin.py:141
 #, fuzzy
 msgid "config.Invalid brand link"
@@ -455,44 +458,62 @@ msgstr "设置"
 msgid "domain.cdn"
 msgstr "内容分发网络"
 
-# | msgid "Branding Title"
+# | msgid "User Page Title"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
 msgid "config.branding_title.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.branding_title.description"
-msgstr ""
-
-# | msgid "Support link"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.branding_site.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.branding_site.description"
-msgstr ""
-
-# | msgid "FreeText"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.branding_freetext.label"
-msgstr ""
-
-# | msgid "Branding free text. You can add html tags"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.branding_freetext.description"
-msgstr ""
-
-# | msgid "Customization"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.branding.label"
-msgstr ""
+msgstr "用户页面标题"
 
 # | msgid ""
-# | "If you add some text in this section, it will appear in the user page."
+# | "Enter a customized title to be shown on user page. (before user's Welcome
+# "
+# | "Text.)"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.branding_title.description"
+msgstr "输入要在用户页面上显示的自定义标题。 （在用户的欢迎文本之前。）"
+
+# | msgid ""
+# | "Support link (Goes both on branding title and also on support section of
+# "
+# | "user page.)"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.branding_site.label"
+msgstr "支持链接（同时出现在品牌标题和用户页面的支持部分。）"
+
+# | msgid "The link to be shown on Support section of user's page."
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.branding_site.description"
+msgstr "要显示在用户页面的支持部分的链接。"
+
+# | msgid "Support section text"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.branding_freetext.label"
+msgstr "支持部分文本"
+
+# | msgid ""
+# | "Branding text. This box's text will be shown on support section of user's
+# "
+# | "page. You can use html tags."
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.branding_freetext.description"
+msgstr "品牌文字。此框的文本将显示在用户页面的支持部分。您可以使用 html 标签。"
+
+# | msgid "Customizing User Page"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.branding.label"
+msgstr "客制化"
+
+# | msgid "Customization settings for user page"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
 msgid "config.branding.description"
-msgstr ""
+msgstr "用户页面自定义设置"
 
 # | msgid "Admin Secret"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1101,7 +1122,7 @@ msgstr "找不到配置"
 msgid "config.not_found.description"
 msgstr "找不到配置"
 
-# | msgid "CPU usage chart"
+# | msgid "CPU usage"
 #: hiddifypanel/panel/admin/templates/index.html:12
 #: hiddifypanel/panel/admin/templates/index.html:32
 #: hiddifypanel/panel/admin/templates/index.html:149
@@ -1109,7 +1130,7 @@ msgstr "找不到配置"
 msgid "admin.cpu_chart"
 msgstr "CPU使用率图表"
 
-# | msgid "RAM Usage Chart"
+# | msgid "RAM Usage"
 #: hiddifypanel/panel/admin/templates/index.html:47
 #: hiddifypanel/panel/admin/templates/index.html:68
 #, fuzzy
@@ -1293,7 +1314,7 @@ msgstr "谷歌播放"
 # | "    </div>\n"
 # | "    <div class=\"card-body\">\n"
 # | "        HiddifyAndroid is an open source fork of Clash that supports more
-# protocol.\n"
+# protocols.\n"
 # | "        <br>\n"
 # | "        It's source codes exist in\n"
 # | "        <a
@@ -1550,7 +1571,7 @@ msgstr "隐藏代理"
 msgid "telegram"
 msgstr "电报"
 
-# | msgid "HiddifyPanel"
+# | msgid "Hiddify Panel"
 #: hiddifypanel/panel/user/templates/home/index.html:7
 #: hiddifypanel/templates/admin-layout.html:19
 #: hiddifypanel/templates/admin-layout.html:23
@@ -1561,9 +1582,9 @@ msgid "master.page-title"
 msgstr "隐藏面板"
 
 #: hiddifypanel/panel/user/templates/home/index.html:7
-#, python-format
+#, fuzzy, python-format
 msgid "Welcome %(user)s"
-msgstr ""
+msgstr "欢迎 %(user)s"
 
 # | msgid "Android"
 #: hiddifypanel/panel/user/templates/home/index.html:42
@@ -1807,13 +1828,15 @@ msgstr "显示使用详情。"
 
 # | msgid "Support"
 #: hiddifypanel/panel/user/templates/home/usage.html:33
+#, fuzzy
 msgid "user.home.branding.title"
-msgstr ""
+msgstr "支持"
 
-# | msgid "Support Page"
+# | msgid "Support Page Link"
 #: hiddifypanel/panel/user/templates/home/usage.html:42
+#, fuzzy
 msgid "user.home.branding.linktitle"
-msgstr ""
+msgstr "支持页面链接"
 
 #: hiddifypanel/panel/user/templates/home/windows.html:6
 #: hiddifypanel/panel/user/templates/home/windows.html:22
@@ -1845,7 +1868,7 @@ msgstr "Linux"
 # | "    </div>\n"
 # | "    <div class=\"card-body\">\n"
 # | "        HiddifyDesktop is an open source fork of Clash that supports more
-# protocol.\n"
+# protocols.\n"
 # | "        <br>\n"
 # | "        Its source codes exist in\n"
 # | "        <a
@@ -1999,8 +2022,9 @@ msgstr "电报"
 
 #: hiddifypanel/templates/admin-layout.html:82
 #: hiddifypanel/templates/donation.html:5
+#, fuzzy
 msgid "Donation"
-msgstr ""
+msgstr "捐款"
 
 # | msgid "Apply configs"
 #: hiddifypanel/templates/admin-layout.html:102
@@ -2118,8 +2142,9 @@ msgstr ""
 "联系我们。"
 
 #: hiddifypanel/templates/donation.html:14
+#, fuzzy
 msgid "Close"
-msgstr ""
+msgstr "关闭"
 
 # | msgid "Share to social media"
 #: hiddifypanel/templates/master.html:113

@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-04 19:50+0100\n"
-"PO-Revision-Date: 2023-02-04 12:18-0600\n"
+"POT-Creation-Date: 2023-02-04 20:45+0100\n"
+"PO-Revision-Date: 2023-02-04 13:45-0600\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -74,15 +74,15 @@ msgstr ""
 
 # | msgid ""
 # | "It seems that you are using default domain (%(domain)s) which is not "
-# | "recommended. Please remove it from domain section."
+# | "recommended. Please change or remove it from domain section."
 #: hiddifypanel/panel/admin/Dashboard.py:19
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "It seems that you are using default domain (%(domain)s) which is not "
 "recommended."
 msgstr ""
 "It seems that you are using default domain (%(domain)s) which is not "
-"recommended. Please remove it from domain section."
+"recommended. Please change or remove it from domain section."
 
 #: hiddifypanel/panel/admin/Dashboard.py:23
 #, python-format
@@ -230,11 +230,11 @@ msgstr "English انگلیسی 英语"
 msgid "lang.fa"
 msgstr "Persian فارسی 波斯语"
 
+# | msgid "Choose language for Admin area."
 #: hiddifypanel/panel/admin/QuickSetup.py:71
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-#, fuzzy
 msgid "config.admin_lang.description"
-msgstr "config.admin_lang.description"
+msgstr "Choose language for Admin area."
 
 # | msgid "User Area Language"
 #: hiddifypanel/panel/admin/QuickSetup.py:72
@@ -342,10 +342,12 @@ msgstr "Erlang: medium performance"
 msgid "config.telegram_lib.description"
 msgstr "You can switch between different telegram libraries."
 
-# | msgid "Invalid branding link"
+# | msgid ""
+# | "Invalid link. it should be on this format: (https or http://example.com)"
 #: hiddifypanel/panel/admin/SettingAdmin.py:141
 msgid "config.Invalid brand link"
-msgstr "Invalid branding link"
+msgstr ""
+"Invalid link. it should be on this format: (https or http://example.com)"
 
 # | msgid ""
 # | "Invalid UUID secret. Example: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n"
@@ -429,53 +431,60 @@ msgstr "Settings"
 msgid "domain.cdn"
 msgstr "CDN"
 
-# | msgid "Branding Title"
+# | msgid "User Page Title"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-#, fuzzy
 msgid "config.branding_title.label"
-msgstr "Branding Title"
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-#, fuzzy
-msgid "config.branding_title.description"
-msgstr "config.branding_title.description"
-
-# | msgid "Support link"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-#, fuzzy
-msgid "config.branding_site.label"
-msgstr "Support link"
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-#, fuzzy
-msgid "config.branding_site.description"
-msgstr "config.branding_site.description"
-
-# | msgid "FreeText"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-#, fuzzy
-msgid "config.branding_freetext.label"
-msgstr "FreeText"
-
-# | msgid "Branding free text. You can add html tags"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-#, fuzzy
-msgid "config.branding_freetext.description"
-msgstr "Branding free text. You can add html tags"
-
-# | msgid "Customization"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-#, fuzzy
-msgid "config.branding.label"
-msgstr "Customization"
+msgstr "User Page Title"
 
 # | msgid ""
-# | "If you add some text in this section, it will appear in the user page."
+# | "Enter a customized title to be shown on user page. (before user's Welcome
+# "
+# | "Text.)"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-#, fuzzy
-msgid "config.branding.description"
+msgid "config.branding_title.description"
 msgstr ""
-"If you add some text in this section, it will appear in the user page."
+"Enter a customized title to be shown on user page. (before user's Welcome "
+"Text.)"
+
+# | msgid ""
+# | "Support link (Goes both on branding title and also on support section of
+# "
+# | "user page.)"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.branding_site.label"
+msgstr ""
+"Support link (Goes both on branding title and also on support section of "
+"user page.)"
+
+# | msgid "The link to be shown on Support section of user's page."
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.branding_site.description"
+msgstr "The link to be shown on Support section of user's page."
+
+# | msgid "Support section text"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.branding_freetext.label"
+msgstr "Support section text"
+
+# | msgid ""
+# | "Branding text. This box's text will be shown on support section of user's
+# "
+# | "page. You can use html tags."
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.branding_freetext.description"
+msgstr ""
+"Branding text. This box's text will be shown on support section of user's "
+"page. You can use html tags."
+
+# | msgid "Customizing User Page"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.branding.label"
+msgstr "Customizing User Page"
+
+# | msgid "Customization settings for user page"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.branding.description"
+msgstr "Customization settings for user page"
 
 # | msgid "Admin Secret"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1035,18 +1044,18 @@ msgstr "Config not found"
 msgid "config.not_found.description"
 msgstr "Config not found"
 
-# | msgid "CPU usage chart"
+# | msgid "CPU usage"
 #: hiddifypanel/panel/admin/templates/index.html:12
 #: hiddifypanel/panel/admin/templates/index.html:32
 #: hiddifypanel/panel/admin/templates/index.html:149
 msgid "admin.cpu_chart"
-msgstr "CPU usage chart"
+msgstr "CPU usage"
 
-# | msgid "RAM Usage Chart"
+# | msgid "RAM Usage"
 #: hiddifypanel/panel/admin/templates/index.html:47
 #: hiddifypanel/panel/admin/templates/index.html:68
 msgid "admin.ram_chart"
-msgstr "RAM Usage Chart"
+msgstr "RAM Usage"
 
 # | msgid "Network Usage"
 #: hiddifypanel/panel/admin/templates/index.html:80
@@ -1207,7 +1216,7 @@ msgstr "Google Play"
 # | "    <div class=\"card-body\">\n"
 # | "        HiddifyAndroid is an open source fork of Clash that supports more
 # "
-# | "protocol.\n"
+# | "protocols.\n"
 # | "        <br>\n"
 # | "        It's source codes exist in\n"
 # | "        <a href=\"https://github.com/hiddify/HiddifyProxyAndroid\">"
@@ -1246,7 +1255,7 @@ msgstr ""
 "Is it safe to use HiddifyAndorid?\n"
 "    </div>\n"
 "    <div class=\"card-body\">\n"
-"        HiddifyAndroid is an open source fork of Clash that supports more protocol.\n"
+"        HiddifyAndroid is an open source fork of Clash that supports more protocols.\n"
 "        <br>\n"
 "        It's source codes exist in\n"
 "        <a href=\"https://github.com/hiddify/HiddifyProxyAndroid\">GitHub</a>.\n"
@@ -1443,17 +1452,17 @@ msgstr "Hiddify Proxy"
 msgid "telegram"
 msgstr "Telegram"
 
-# | msgid "HiddifyPanel"
+# | msgid "Hiddify Panel"
 #: hiddifypanel/panel/user/templates/home/index.html:7
 #: hiddifypanel/templates/admin-layout.html:19
 #: hiddifypanel/templates/admin-layout.html:23
 #: hiddifypanel/templates/admin-layout.html:66
 #: hiddifypanel/templates/master.html:6
 msgid "master.page-title"
-msgstr "HiddifyPanel"
+msgstr "Hiddify Panel"
 
 #: hiddifypanel/panel/user/templates/home/index.html:7
-#, fuzzy, python-format
+#, python-format
 msgid "Welcome %(user)s"
 msgstr "Welcome %(user)s"
 
@@ -1670,15 +1679,13 @@ msgstr "Display usage details."
 
 # | msgid "Support"
 #: hiddifypanel/panel/user/templates/home/usage.html:33
-#, fuzzy
 msgid "user.home.branding.title"
 msgstr "Support"
 
-# | msgid "Support Page"
+# | msgid "Support Page Link"
 #: hiddifypanel/panel/user/templates/home/usage.html:42
-#, fuzzy
 msgid "user.home.branding.linktitle"
-msgstr "Support Page"
+msgstr "Support Page Link"
 
 #: hiddifypanel/panel/user/templates/home/windows.html:6
 #: hiddifypanel/panel/user/templates/home/windows.html:22
@@ -1709,7 +1716,7 @@ msgstr "Linux"
 # | "    <div class=\"card-body\">\n"
 # | "        HiddifyDesktop is an open source fork of Clash that supports more
 # "
-# | "protocol.\n"
+# | "protocols.\n"
 # | "        <br>\n"
 # | "        Its source codes exist in\n"
 # | "        <a
@@ -1742,7 +1749,7 @@ msgstr ""
 "Is it safe to use HiddifyDesktop?\n"
 "    </div>\n"
 "    <div class=\"card-body\">\n"
-"        HiddifyDesktop is an open source fork of Clash that supports more protocol.\n"
+"        HiddifyDesktop is an open source fork of Clash that supports more protocols.\n"
 "        <br>\n"
 "        Its source codes exist in\n"
 "        <a href=\"https://github.com/hiddify/HiddifyDesktop\">GitHub</a>.\n"
@@ -1850,7 +1857,6 @@ msgstr "Telegram"
 
 #: hiddifypanel/templates/admin-layout.html:82
 #: hiddifypanel/templates/donation.html:5
-#, fuzzy
 msgid "Donation"
 msgstr "Donation"
 
@@ -1953,7 +1959,6 @@ msgstr ""
 "Please contact us at <a href=\"mailto:hiddify@gmail.com\">hiddify@gmail.com</a> if you can help us."
 
 #: hiddifypanel/templates/donation.html:14
-#, fuzzy
 msgid "Close"
 msgstr "Close"
 

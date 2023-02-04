@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-04 19:50+0100\n"
-"PO-Revision-Date: 2023-02-04 12:18-0600\n"
+"POT-Creation-Date: 2023-02-04 20:45+0100\n"
+"PO-Revision-Date: 2023-02-04 13:45-0600\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -78,7 +78,7 @@ msgstr ""
 
 # | msgid ""
 # | "It seems that you are using default domain (%(domain)s) which is not "
-# | "recommended. Please remove it from domain section."
+# | "recommended. Please change or remove it from domain section."
 #: hiddifypanel/panel/admin/Dashboard.py:19
 #, python-format
 msgid ""
@@ -232,6 +232,7 @@ msgstr "English انگلیسی 英语"
 msgid "lang.fa"
 msgstr "Persian فارسی 波斯语"
 
+# | msgid "Choose language for Admin area."
 #: hiddifypanel/panel/admin/QuickSetup.py:71
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.admin_lang.description"
@@ -348,10 +349,11 @@ msgstr "Erlang: عملکرد متوسط"
 msgid "config.telegram_lib.description"
 msgstr "در این قسمت می‌توانید کتابخانه‌های مختلف تلگرام را انتخاب نمایید."
 
-# | msgid "Invalid branding link"
+# | msgid ""
+# | "Invalid link. it should be on this format: (https or http://example.com)"
 #: hiddifypanel/panel/admin/SettingAdmin.py:141
 msgid "config.Invalid brand link"
-msgstr "پیوند نام تجاری نامعتبر است."
+msgstr "لینک پشتیبانی نامعتبر است. لطفا لینک را با فرمت معتبر وارد کنید."
 
 # | msgid ""
 # | "Invalid UUID secret. Example: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n"
@@ -435,41 +437,57 @@ msgstr "تنظیمات"
 msgid "domain.cdn"
 msgstr "سی‌دی‌ان"
 
-# | msgid "Branding Title"
+# | msgid "User Page Title"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.branding_title.label"
-msgstr "موضوع تجاری"
+msgstr "عنوان برند شما در صفحه کاربران"
 
+# | msgid ""
+# | "Enter a customized title to be shown on user page. (before user's Welcome
+# "
+# | "Text.)"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.branding_title.description"
-msgstr "در این قسمت می‌توانید یک نام تجاری برای خود وارد کنید."
+msgstr ""
+"در این قسمت می‌توانید یک نام یا تایتل برای خود وارد کنید. این نام در "
+"بالای صفحه کاربر قبل از متن خوش‌آمد نمایش داده می‌شود."
 
-# | msgid "Support link"
+# | msgid ""
+# | "Support link (Goes both on branding title and also on support section of
+# "
+# | "user page.)"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.branding_site.label"
 msgstr "لینک پشتیبانی"
 
+# | msgid "The link to be shown on Support section of user's page."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.branding_site.description"
 msgstr ""
+"لینکی که در این قسمت وارد می‌کنید، در صفحه کاربر و در قسمت پشتیبانی به "
+"کاربران نمایش داده می‌شود."
 
-# | msgid "FreeText"
+# | msgid "Support section text"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.branding_freetext.label"
-msgstr ""
+msgstr "متن باکس پشتیبانی"
 
-# | msgid "Branding free text. You can add html tags"
+# | msgid ""
+# | "Branding text. This box's text will be shown on support section of user's
+# "
+# | "page. You can use html tags."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.branding_freetext.description"
 msgstr ""
+"متنی که در این قسمت وارد می‌کنید، در باکس پشتیبانی در صفحه کاربران نمایش "
+"داده می‌شود. امکان استفاده از کدهای HTML هم وجود دارد."
 
-# | msgid "Customization"
+# | msgid "Customizing User Page"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.branding.label"
-msgstr "شخصی‌سازی"
+msgstr "شخصی‌سازی صفحه کاربران"
 
-# | msgid ""
-# | "If you add some text in this section, it will appear in the user page."
+# | msgid "Customization settings for user page"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.branding.description"
 msgstr "متنی که در این قسمت وارد می‌کنید، در صفحه کاربر نمایش داده می‌شود."
@@ -1055,14 +1073,14 @@ msgstr "تنظیمات پیدا نشد."
 msgid "config.not_found.description"
 msgstr "تنظیمات پیدا نشد."
 
-# | msgid "CPU usage chart"
+# | msgid "CPU usage"
 #: hiddifypanel/panel/admin/templates/index.html:12
 #: hiddifypanel/panel/admin/templates/index.html:32
 #: hiddifypanel/panel/admin/templates/index.html:149
 msgid "admin.cpu_chart"
 msgstr "نمودار پردازنده"
 
-# | msgid "RAM Usage Chart"
+# | msgid "RAM Usage"
 #: hiddifypanel/panel/admin/templates/index.html:47
 #: hiddifypanel/panel/admin/templates/index.html:68
 msgid "admin.ram_chart"
@@ -1226,7 +1244,7 @@ msgstr "گوگل‌پلی"
 # | "    </div>\n"
 # | "    <div class=\"card-body\">\n"
 # | "        HiddifyAndroid is an open source fork of Clash that supports more
-# protocol.\n"
+# protocols.\n"
 # | "        <br>\n"
 # | "        It's source codes exist in\n"
 # | "        <a
@@ -1477,7 +1495,7 @@ msgstr "پروکسی هایدیفای"
 msgid "telegram"
 msgstr "تلگرام"
 
-# | msgid "HiddifyPanel"
+# | msgid "Hiddify Panel"
 #: hiddifypanel/panel/user/templates/home/index.html:7
 #: hiddifypanel/templates/admin-layout.html:19
 #: hiddifypanel/templates/admin-layout.html:23
@@ -1715,7 +1733,7 @@ msgstr "نمایش جزئیات استفاده"
 msgid "user.home.branding.title"
 msgstr "پشتیبانی"
 
-# | msgid "Support Page"
+# | msgid "Support Page Link"
 #: hiddifypanel/panel/user/templates/home/usage.html:42
 msgid "user.home.branding.linktitle"
 msgstr "صفحه پشتیبانی"
@@ -1747,7 +1765,7 @@ msgstr "لینوکس"
 # | "    </div>\n"
 # | "    <div class=\"card-body\">\n"
 # | "        HiddifyDesktop is an open source fork of Clash that supports more
-# protocol.\n"
+# protocols.\n"
 # | "        <br>\n"
 # | "        Its source codes exist in\n"
 # | "        <a
@@ -1949,7 +1967,6 @@ msgstr "اعمال تغییرات"
 # | "Please contact us at <a
 # href=\"mailto:hiddify@gmail.com\">hiddify@gmail.com</a> if you can help us."
 #: hiddifypanel/templates/donation.html:11
-#, fuzzy
 msgid "Donation.description"
 msgstr ""
 "برای توسعه این پروژه به کمک شما نیاز داریم\n"
