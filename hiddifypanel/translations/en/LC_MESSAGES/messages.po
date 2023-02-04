@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-04 10:15+0100\n"
-"PO-Revision-Date: 2023-02-04 03:15-0600\n"
+"POT-Creation-Date: 2023-02-04 11:57+0100\n"
+"PO-Revision-Date: 2023-02-04 04:57-0600\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -26,14 +26,14 @@ msgstr ""
 " share-link'>Temporary Link</a>"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/panel/admin/ProxyAdmin.py:41 hiddifypanel/panel/hiddify.py:137
+#: hiddifypanel/panel/admin/ProxyAdmin.py:41 hiddifypanel/panel/hiddify.py:138
 msgid "admin.config.apply_configs"
 msgstr "Apply Configs"
 
 # | msgid ""
 # | "Configs have changed successfully. Click %(link)s to apply the configs. "
 # | "It may takes 2 minutes to apply."
-#: hiddifypanel/panel/admin/ProxyAdmin.py:42 hiddifypanel/panel/hiddify.py:138
+#: hiddifypanel/panel/admin/ProxyAdmin.py:42 hiddifypanel/panel/hiddify.py:139
 msgid "config.validation-success"
 msgstr ""
 "Configs have changed successfully. Click %(link)s to apply the configs. It "
@@ -141,7 +141,7 @@ msgstr "config.domain-fronting-notsetup-error"
 # | msgid "One of the fields has encountered with error"
 #: hiddifypanel/panel/admin/ProxyAdmin.py:63
 #: hiddifypanel/panel/admin/QuickSetup.py:66
-#: hiddifypanel/panel/admin/SettingAdmin.py:59
+#: hiddifypanel/panel/admin/SettingAdmin.py:62
 msgid "config.validation-error"
 msgstr "One of the fields has encountered with error"
 
@@ -149,7 +149,7 @@ msgstr "One of the fields has encountered with error"
 #: hiddifypanel/panel/admin/ProxyAdmin.py:116
 #: hiddifypanel/panel/admin/QuickSetup.py:73
 #: hiddifypanel/panel/admin/QuickSetup.py:92
-#: hiddifypanel/panel/admin/SettingAdmin.py:165
+#: hiddifypanel/panel/admin/SettingAdmin.py:168
 msgid "Submit"
 msgstr "Submit"
 
@@ -207,14 +207,14 @@ msgstr "User Area Language"
 # | msgid "English انگلیسی 英语"
 #: hiddifypanel/panel/admin/QuickSetup.py:71
 #: hiddifypanel/panel/admin/QuickSetup.py:72
-#: hiddifypanel/panel/admin/SettingAdmin.py:118
+#: hiddifypanel/panel/admin/SettingAdmin.py:121
 msgid "lang.en"
 msgstr "English انگلیسی 英语"
 
 # | msgid "Persian فارسی 波斯语"
 #: hiddifypanel/panel/admin/QuickSetup.py:71
 #: hiddifypanel/panel/admin/QuickSetup.py:72
-#: hiddifypanel/panel/admin/SettingAdmin.py:118
+#: hiddifypanel/panel/admin/SettingAdmin.py:121
 msgid "lang.fa"
 msgstr "Persian فارسی 波斯语"
 
@@ -238,14 +238,14 @@ msgstr "config.admin_lang.description"
 
 # | msgid "Error! Invalid domain.  The domain format is www.google.com"
 #: hiddifypanel/panel/admin/QuickSetup.py:87
-#: hiddifypanel/panel/admin/SettingAdmin.py:125
-#: hiddifypanel/panel/admin/SettingAdmin.py:127
+#: hiddifypanel/panel/admin/SettingAdmin.py:128
+#: hiddifypanel/panel/admin/SettingAdmin.py:130
 msgid "config.Invalid domain"
 msgstr "Error! Invalid domain.  The domain format is www.google.com"
 
 # | msgid "Domain is exist in domains section. Use another domain"
 #: hiddifypanel/panel/admin/QuickSetup.py:88
-#: hiddifypanel/panel/admin/SettingAdmin.py:129
+#: hiddifypanel/panel/admin/SettingAdmin.py:132
 msgid "config.Domain already used"
 msgstr "Domain is exist in domains section. Use another domain"
 
@@ -293,38 +293,38 @@ msgstr ""
 " by the government. So it is not recommended"
 
 # | msgid "Chinese چینی 中国人"
-#: hiddifypanel/panel/admin/SettingAdmin.py:118
+#: hiddifypanel/panel/admin/SettingAdmin.py:121
 msgid "lang.zh"
 msgstr "Chinese چینی 中国人"
 
 # | msgid "Telegram Proxy Lib"
-#: hiddifypanel/panel/admin/SettingAdmin.py:120
+#: hiddifypanel/panel/admin/SettingAdmin.py:123
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.telegram_lib.label"
 msgstr "Telegram Proxy Lib"
 
 # | msgid "Python: low performance"
-#: hiddifypanel/panel/admin/SettingAdmin.py:120
+#: hiddifypanel/panel/admin/SettingAdmin.py:123
 msgid "lib.telegram.python"
 msgstr "Python: low performance"
 
 # | msgid "Go: high performance: No ad support"
-#: hiddifypanel/panel/admin/SettingAdmin.py:120
+#: hiddifypanel/panel/admin/SettingAdmin.py:123
 msgid "lib.telegram.go"
 msgstr "Go: high performance: No ad support"
 
 # | msgid "Original: high performance"
-#: hiddifypanel/panel/admin/SettingAdmin.py:120
+#: hiddifypanel/panel/admin/SettingAdmin.py:123
 msgid "lib.telegram.orignal"
 msgstr "Original: high performance"
 
 # | msgid "Erlang: medium performance"
-#: hiddifypanel/panel/admin/SettingAdmin.py:120
+#: hiddifypanel/panel/admin/SettingAdmin.py:123
 msgid "lib.telegram.erlang"
 msgstr "Erlang: medium performance"
 
 # | msgid "You can switch between different telegram libraries."
-#: hiddifypanel/panel/admin/SettingAdmin.py:120
+#: hiddifypanel/panel/admin/SettingAdmin.py:123
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.telegram_lib.description"
 msgstr "You can switch between different telegram libraries."
@@ -332,32 +332,32 @@ msgstr "You can switch between different telegram libraries."
 # | msgid ""
 # | "Invalid UUID secret. e.g., 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n"
 # | "\n"
-#: hiddifypanel/panel/admin/SettingAdmin.py:138
+#: hiddifypanel/panel/admin/SettingAdmin.py:141
 msgid "config.invalid uuid"
 msgstr ""
 "Invalid UUID secret. e.g., 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n"
 "\n"
 
 # | msgid "Invalid proxy path. It should be asci string (a-z A-Z 0-9)"
-#: hiddifypanel/panel/admin/SettingAdmin.py:142
+#: hiddifypanel/panel/admin/SettingAdmin.py:145
 msgid "config.Invalid proxy path"
 msgstr "Invalid proxy path. It should be asci string (a-z A-Z 0-9)"
 
 # | msgid "Invalid port. It should be comma separated integer e.g., 1000,1001"
-#: hiddifypanel/panel/admin/SettingAdmin.py:146
+#: hiddifypanel/panel/admin/SettingAdmin.py:149
 msgid "config.Invalid port"
 msgstr "Invalid port. It should be comma separated integer e.g., 1000,1001"
 
 # | msgid ""
 # | "Port 80 should always be presented. We use it for getting ssl
 # certificate"
-#: hiddifypanel/panel/admin/SettingAdmin.py:149
+#: hiddifypanel/panel/admin/SettingAdmin.py:152
 msgid "config.port 80 is required"
 msgstr ""
 "Port 80 should always be presented. We use it for getting ssl certificate"
 
 # | msgid "Port 443 should always be presented. "
-#: hiddifypanel/panel/admin/SettingAdmin.py:152
+#: hiddifypanel/panel/admin/SettingAdmin.py:155
 msgid "config.port 443 is required"
 msgstr "Port 443 should always be presented. "
 
@@ -1383,6 +1383,11 @@ msgstr "Telegram"
 #: hiddifypanel/templates/master.html:6
 msgid "master.page-title"
 msgstr "HiddifyPanel"
+
+#: hiddifypanel/panel/user/templates/home/index.html:7
+#, fuzzy, python-format
+msgid "Welcome %(user)s"
+msgstr "Welcome %(user)s"
 
 # | msgid "Android"
 #: hiddifypanel/panel/user/templates/home/index.html:42
