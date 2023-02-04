@@ -6,14 +6,111 @@
 
 {% block body %}
 
-<iframe src="netdata/dash.html" style="width:100%;height:500px;">
-</iframe>
+<div class="card-deck">
+    <div class="card card-danger">
+        <div class="card-header">
+            <h3 class="card-title">{{_('admin.cpu_chart')}}</h3>
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="chartjs-size-monitor">
+                <div class="chartjs-size-monitor-expand">
+                    <div class=""></div>
+                </div>
+                <div class="chartjs-size-monitor-shrink">
+                    <div class=""></div>
+                </div>
+            </div>
+            <div >
+                <div data-netdata="system.cpu" data-chart-library="gauge" data-title="{{_('admin.cpu_chart')}}" data-units="%" data-gauge-max-value="100"
+                    data-after="-300" data-points="300" data-dt-element-name="time603"
+                    data-colors="#dc3545"
+                    ></div>
     
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+    <div class="card card-info">
+        <div class="card-header">
+            <h3 class="card-title">{{_('admin.ram_chart')}}</h3>
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="chart">
+                <div class="chartjs-size-monitor">
+                    <div class="chartjs-size-monitor-expand">
+                        <div class=""></div>
+                    </div>
+                    <div class="chartjs-size-monitor-shrink">
+                        <div class=""></div>
+                    </div>
+                </div>
+                <div data-netdata="system.ram" data-dimensions="used|buffers|active|wired" data-append-options="percentage"
+        data-chart-library="gauge" data-title="{{_('admin.ram_chart')}}" data-units="%" data-gauge-max-value="100"
+        data-points="300" data-colors="#17a2b8" role="application">
+
+    </div>
+            </div>
+        </div>
+
+    </div>
+
+<!-- 
+    <div class="card card-success">
+        <div class="card-header">
+            <h3 class="card-title">{{_('admin.network_chart')}}</h3>
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="chart">
+                <div class="chartjs-size-monitor">
+                    <div class="chartjs-size-monitor-expand">
+                        <div class=""></div>
+                    </div>
+                    <div class="chartjs-size-monitor-shrink">
+                        <div class=""></div>
+                    </div>
+                </div>
+                
+        
+            </div>
+        </div>
+    </div>
+</div> -->
+</div>
+
     <div class="card-deck">
 
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">{{_('admin.protocol_chart')}}</h3>
+                <!-- <h3 class="card-title">{{_('admin.protocol_chart')}}</h3> -->
+                <h3 class="card-title">{{_('admin.network_chart')}}</h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                         <i class="fas fa-minus"></i>
@@ -30,12 +127,16 @@
                             <div class=""></div>
                         </div>
                         <div class="chartjs-size-monitor-shrink">
-                            <div class=""></div>
+                            <div class=""></div>                           
                         </div>
                     </div>
-                    <canvas id="areaChart"
-                        style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%; display: block; width: 352px;"
-                        width="591" height="419" class="chartjs-render-monitor"></canvas>
+                    <div data-netdata="system.net" data-chart-library="google" data-height="250" 
+                            data-legend-position="bellow"
+                            data-title=""
+                            legend-position="bellow"
+                            
+                            data-after="-300" data-dt-element-name="time206" ></div>
+                            
                 </div>
             </div>
 
@@ -44,36 +145,7 @@
 
         <div class="card card-danger">
             <div class="card-header">
-                <h3 class="card-title">{{_('admin.user_chart')}}</h3>
-                <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                        <i class="fas fa-minus"></i>
-                    </button>
-                    <button type="button" class="btn btn-tool" data-card-widget="remove">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="card-body">
-                <div class="chartjs-size-monitor">
-                    <div class="chartjs-size-monitor-expand">
-                        <div class=""></div>
-                    </div>
-                    <div class="chartjs-size-monitor-shrink">
-                        <div class=""></div>
-                    </div>
-                </div>
-                <canvas id="donutChart"
-                    style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%; display: block; width: 352px;"
-                    width="591" height="419" class="chartjs-render-monitor"></canvas>
-            </div>
-
-        </div>
-    </div>
-
-    <div class="card-deck">
-        <div class="card card-danger">
-            <div class="card-header">
+                <!-- <h3 class="card-title">{{_('admin.user_chart')}}</h3> -->
                 <h3 class="card-title">{{_('admin.cpu_chart')}}</h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -93,77 +165,30 @@
                         <div class=""></div>
                     </div>
                 </div>
-                <canvas id="pieChart"
+                <!-- <canvas id="donutChart"
                     style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%; display: block; width: 352px;"
-                    width="591" height="419" class="chartjs-render-monitor"></canvas>
+                    width="591" height="419" class="chartjs-render-monitor"></canvas> -->
+                    <div data-netdata="apps.cpu" data-chart-library="google"  data-height="250" 
+			data-after="-300" data-dt-element-name="time207"
+            data-legend-position="bottom" 
+            data-title=""
+            data-units="%"
+            data-legend="no"
+            legend="bottom"
+            ></div>
             </div>
 
-        </div>
-
-
-
-
-        <div class="card card-info">
-            <div class="card-header">
-                <h3 class="card-title">{{_('admin.ram_chart')}}</h3>
-                <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                        <i class="fas fa-minus"></i>
-                    </button>
-                    <button type="button" class="btn btn-tool" data-card-widget="remove">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="card-body">
-                <div class="chart">
-                    <div class="chartjs-size-monitor">
-                        <div class="chartjs-size-monitor-expand">
-                            <div class=""></div>
-                        </div>
-                        <div class="chartjs-size-monitor-shrink">
-                            <div class=""></div>
-                        </div>
-                    </div>
-                    <canvas id="lineChart"
-                        style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%; display: block; width: 352px;"
-                        width="591" height="419" class="chartjs-render-monitor"></canvas>
-                </div>
-            </div>
-
-        </div>
-
-
-        <div class="card card-success">
-            <div class="card-header">
-                <h3 class="card-title">{{_('admin.network_chart')}}</h3>
-                <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                        <i class="fas fa-minus"></i>
-                    </button>
-                    <button type="button" class="btn btn-tool" data-card-widget="remove">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="card-body">
-                <div class="chart">
-                    <div class="chartjs-size-monitor">
-                        <div class="chartjs-size-monitor-expand">
-                            <div class=""></div>
-                        </div>
-                        <div class="chartjs-size-monitor-shrink">
-                            <div class=""></div>
-                        </div>
-                    </div>
-                    <canvas id="barChart"
-                        style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%; display: block; width: 352px;"
-                        width="591" height="419" class="chartjs-render-monitor"></canvas>
-                </div>
-            </div>
         </div>
     </div>
-</div>
 
 
+
+{% endblock %}
+
+{% block tail_js%}
+{{super()}}
+<script>var netdataNoBootstrap = true;</script>
+
+
+<script type="text/javascript" src="netdata/dashboard.js"></script>
 {% endblock %}
