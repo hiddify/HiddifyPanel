@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-04 22:17+0100\n"
-"PO-Revision-Date: 2023-02-04 14:58-0600\n"
+"POT-Creation-Date: 2023-02-04 23:37+0100\n"
+"PO-Revision-Date: 2023-02-04 15:17-0600\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -100,7 +100,7 @@ msgstr "Error!!"
 
 # | msgid "Domain"
 #: hiddifypanel/panel/admin/DomainAdmin.py:22
-#: hiddifypanel/panel/admin/QuickSetup.py:89
+#: hiddifypanel/panel/admin/QuickSetup.py:80
 msgid "domain.domain"
 msgstr "Domain"
 
@@ -118,7 +118,7 @@ msgstr "IP"
 # | "Domain can not be resolved! There is a problem in your domain. Please "
 # | "check your Domain configurations."
 #: hiddifypanel/panel/admin/DomainAdmin.py:56
-#: hiddifypanel/panel/admin/QuickSetup.py:43
+#: hiddifypanel/panel/admin/QuickSetup.py:89
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr ""
 "Domain can not be resolved! There is a problem in your domain. Please check "
@@ -128,7 +128,6 @@ msgstr ""
 # | "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which "
 # | "is required in direct mode."
 #: hiddifypanel/panel/admin/DomainAdmin.py:60
-#: hiddifypanel/panel/admin/QuickSetup.py:47
 #, python-format
 msgid ""
 "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is "
@@ -153,15 +152,15 @@ msgstr "Error! Domain Fronting not set."
 
 # | msgid "One of the fields has encountered with error"
 #: hiddifypanel/panel/admin/ProxyAdmin.py:63
-#: hiddifypanel/panel/admin/QuickSetup.py:66
+#: hiddifypanel/panel/admin/QuickSetup.py:56
 #: hiddifypanel/panel/admin/SettingAdmin.py:62
 msgid "config.validation-error"
 msgstr "One of the fields has encountered with error"
 
 #: hiddifypanel/panel/admin/ProxyAdmin.py:90
 #: hiddifypanel/panel/admin/ProxyAdmin.py:116
-#: hiddifypanel/panel/admin/QuickSetup.py:73
-#: hiddifypanel/panel/admin/QuickSetup.py:92
+#: hiddifypanel/panel/admin/QuickSetup.py:63
+#: hiddifypanel/panel/admin/QuickSetup.py:83
 #: hiddifypanel/panel/admin/SettingAdmin.py:172
 msgid "Submit"
 msgstr "Submit"
@@ -201,7 +200,7 @@ msgstr "Changing the Language was successful."
 msgid "quicksetup.setlang.error"
 msgstr "An error occurred while changing language."
 
-#: hiddifypanel/panel/admin/QuickSetup.py:64
+#: hiddifypanel/panel/admin/QuickSetup.py:54
 #, python-format
 msgid ""
 "The default user link is %(link)s. To add or edit more users, please visit "
@@ -211,53 +210,53 @@ msgstr ""
 "users from menu."
 
 # | msgid "Admin panel language"
-#: hiddifypanel/panel/admin/QuickSetup.py:71
+#: hiddifypanel/panel/admin/QuickSetup.py:61
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.admin_lang.label"
 msgstr "Admin panel language"
 
 # | msgid "English انگلیسی 英语"
-#: hiddifypanel/panel/admin/QuickSetup.py:71
-#: hiddifypanel/panel/admin/QuickSetup.py:72
+#: hiddifypanel/panel/admin/QuickSetup.py:61
+#: hiddifypanel/panel/admin/QuickSetup.py:62
 #: hiddifypanel/panel/admin/SettingAdmin.py:121
 msgid "lang.en"
 msgstr "English انگلیسی 英语"
 
 # | msgid "Persian فارسی 波斯语"
-#: hiddifypanel/panel/admin/QuickSetup.py:71
-#: hiddifypanel/panel/admin/QuickSetup.py:72
+#: hiddifypanel/panel/admin/QuickSetup.py:61
+#: hiddifypanel/panel/admin/QuickSetup.py:62
 #: hiddifypanel/panel/admin/SettingAdmin.py:121
 msgid "lang.fa"
 msgstr "Persian فارسی 波斯语"
 
 # | msgid "Choose language for Admin area."
-#: hiddifypanel/panel/admin/QuickSetup.py:71
+#: hiddifypanel/panel/admin/QuickSetup.py:61
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.admin_lang.description"
 msgstr "Choose language for Admin area."
 
 # | msgid "User Area Language"
-#: hiddifypanel/panel/admin/QuickSetup.py:72
+#: hiddifypanel/panel/admin/QuickSetup.py:62
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/panel/admin/templates/quick_setup.html:22
 msgid "config.lang.label"
 msgstr "User Area Language"
 
 # | msgid "It will change user language"
-#: hiddifypanel/panel/admin/QuickSetup.py:72
+#: hiddifypanel/panel/admin/QuickSetup.py:62
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.lang.description"
 msgstr "It will change user language"
 
 # | msgid "Error! Invalid domain.  The domain format is www.google.com"
-#: hiddifypanel/panel/admin/QuickSetup.py:87
+#: hiddifypanel/panel/admin/QuickSetup.py:77
 #: hiddifypanel/panel/admin/SettingAdmin.py:132
 #: hiddifypanel/panel/admin/SettingAdmin.py:134
 msgid "config.Invalid domain"
 msgstr "Error! Invalid domain.  The domain format is www.google.com"
 
 # | msgid "Domain is exist in domains section. Use another domain"
-#: hiddifypanel/panel/admin/QuickSetup.py:88
+#: hiddifypanel/panel/admin/QuickSetup.py:79
 #: hiddifypanel/panel/admin/SettingAdmin.py:136
 msgid "config.Domain already used"
 msgstr "Domain is exist in domains section. Use another domain"
@@ -266,7 +265,7 @@ msgstr "Domain is exist in domains section. Use another domain"
 # | "This field should be correct. Please visit <a href=\"https://github."
 # | "com/hiddify/hiddify-config/wiki/راهنمای-تنظیم-دامنه-و-نهایی-کردن-"
 # | "نصب#آموزش-ساخت-زیردامنه\"> Help</a> to learn how to create a subdomain."
-#: hiddifypanel/panel/admin/QuickSetup.py:89
+#: hiddifypanel/panel/admin/QuickSetup.py:80
 msgid "domain.description"
 msgstr ""
 "This field should be correct. Please visit <a "
@@ -275,7 +274,7 @@ msgstr ""
 "subdomain."
 
 # | msgid "Enable Telegram MT Proxy"
-#: hiddifypanel/panel/admin/QuickSetup.py:90
+#: hiddifypanel/panel/admin/QuickSetup.py:81
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.telegram_enable.label"
 msgstr "Enable Telegram MT Proxy"
@@ -283,14 +282,14 @@ msgstr "Enable Telegram MT Proxy"
 # | msgid ""
 # | "Telegram MT Proxy is used for encapsulate telegram proxy as a TLS
 # traffic"
-#: hiddifypanel/panel/admin/QuickSetup.py:90
+#: hiddifypanel/panel/admin/QuickSetup.py:81
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.telegram_enable.description"
 msgstr ""
 "Telegram MT Proxy is used for encapsulate telegram proxy as a TLS traffic"
 
 # | msgid "Enable vmess"
-#: hiddifypanel/panel/admin/QuickSetup.py:91
+#: hiddifypanel/panel/admin/QuickSetup.py:82
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.vmess_enable.label"
 msgstr "Enable vmess"
@@ -298,12 +297,21 @@ msgstr "Enable vmess"
 # | msgid ""
 # | "It is reported by several people that vmess causes the system to be "
 # | "detected by the government. So it is not recommended"
-#: hiddifypanel/panel/admin/QuickSetup.py:91
+#: hiddifypanel/panel/admin/QuickSetup.py:82
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.vmess_enable.description"
 msgstr ""
 "It is reported by several people that vmess causes the system to be detected"
 " by the government. So it is not recommended"
+
+#: hiddifypanel/panel/admin/QuickSetup.py:93
+#, python-format, fuzzy
+msgid ""
+"Domain (%(domain))-> IP=%(domain_ip)s is not matched with your "
+"ip=%(server_ip)s which is required in direct mode"
+msgstr ""
+"Domain (%(domain))-> IP=%(domain_ip)s is not matched with your "
+"ip=%(server_ip)s which is required in direct mode"
 
 # | msgid "Chinese چینی 中国人"
 #: hiddifypanel/panel/admin/SettingAdmin.py:121
@@ -1763,6 +1771,16 @@ msgstr ""
 "</div>\n"
 "Now, according to your need, you can click on one of the buttons. By viewing the window in your browser, just click on the Open HiddifyDesktop option to automatically add the server link to HiddifyDesktop.\n"
 "\n"
+
+#: hiddifypanel/templates/500.html:7 hiddifypanel/templates/error.html:7
+#, fuzzy
+msgid "Oops! Something went wrong."
+msgstr "Oops! Something went wrong."
+
+#: hiddifypanel/templates/500.html:9
+#, fuzzy
+msgid "Please contact hiddify@gmail.com with the details in this page."
+msgstr "Please contact hiddify@gmail.com with the details in this page."
 
 # | msgid "Hiddify Panel"
 #: hiddifypanel/templates/admin-layout.html:19
