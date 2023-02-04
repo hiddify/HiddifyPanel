@@ -47,8 +47,7 @@ class QuickSetup(FlaskView):
                         flash(_("Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode",server_ip=myip,domain_ip=dip),'danger')    
                         domain_ok=False
                 if quick_form.validate_on_submit() and domain_ok:
-                        sslip_dm=Domain.query.filter(Domain.domain==f'{hiddify.get_ip(4)}.sslip.io').first()
-                        db.session.remove(sslip_dm)
+                        sslip_dm=Domain.query.filter(Domain.domain==f'{hiddify.get_ip(4)}.sslip.io').delete()
 
                         data=[Domain(domain=quick_form.domain.data,mode=DomainType.direct),]
                         
@@ -86,7 +85,7 @@ def get_quick_setup_form(empty=False):
         class QuickSetupForm(FlaskForm):
                 domain_validators=[wtf.validators.Regexp("^([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})$",re.IGNORECASE,_("config.Invalid domain")),
                                         wtf.validators.NoneOf(get_used_domains(),_("config.Domain already used"))]
-                domain=wtf.fields.StringField(_("domain.domain"),domain_validators,description=_("domain.description"),render_kw={"pattern":domain_validators[0].regex.pattern,"title":domain_validators[0].message,"required":""})
+                domain=wtf.fields.StringField(_("domain.domain"),domain_validators,description=_("domain.description"),render_kw={"pattern":domain_validators[0].regex.pattern,"title":domain_validators[0].message,"required":"","placeholder":"sub.domain.com"})
                 enable_telegram=SwitchField(_("config.telegram_enable.label"),description=_("config.telegram_enable.description"),default=hconfig(ConfigEnum.telegram_enable))
                 enable_vmess=SwitchField(_("config.vmess_enable.label"),description=_("config.vmess_enable.description"),default=hconfig(ConfigEnum.vmess_enable))
                 submit=wtf.fields.SubmitField(_('Submit'))
