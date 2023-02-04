@@ -9,6 +9,7 @@ from .adminlte import AdminLTEModelView
 # from gettext import gettext as _
 from flask_babelex import gettext as __
 from flask_babelex import lazy_gettext as _
+from hiddifypanel.panel import hiddify
 class UserAdmin(AdminLTEModelView):
     column_display_pk = True
     can_export = True
@@ -57,7 +58,7 @@ class UserAdmin(AdminLTEModelView):
     
     def _ul_formatter(view, context, model, name):
         
-        return Markup(" ".join([_get_link(model.uuid,d) for d in Domain.query.all()]))
+        return Markup(" ".join([hiddify.get_user_link(model.uuid,d) for d in Domain.query.all()]))
     def _uuid_formatter(view, context, model, name):
         return Markup(f"<span>{model.uuid}</span>")
     def _usage_formatter(view, context, model, name):
@@ -86,9 +87,3 @@ class UserAdmin(AdminLTEModelView):
         # else:
         #     xray_api.remove_client(model.uuid)
         
-def _get_link(uuid,domain):
-        proxy_path=hconfig(ConfigEnum.proxy_path)
-        text=domain.domain
-        if domain.mode==DomainType.cdn:
-            text=f'<span class="badge badge-success" >{_("domain.cdn")}</span>'+text        
-        return f"<a target='_blank' href='https://{domain.domain}/{proxy_path}/{uuid}/'><span class='badge badge-info ltr'>{text}</span></a>"
