@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-04 10:08+0100\n"
-"PO-Revision-Date: 2023-02-04 02:33-0600\n"
+"POT-Creation-Date: 2023-02-04 10:11+0100\n"
+"PO-Revision-Date: 2023-02-04 03:11-0600\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -197,13 +197,12 @@ msgstr ""
 "The default user link is %(link)s. To add or edit more users, please visit "
 "users from menu."
 
-# | msgid "Language"
+# | msgid "User Area Language"
 #: hiddifypanel/panel/admin/QuickSetup.py:71
-#: hiddifypanel/panel/admin/SettingAdmin.py:118
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/panel/admin/templates/quick_setup.html:22
 msgid "config.lang.label"
-msgstr "Language"
+msgstr "User Area Language"
 
 # | msgid "English انگلیسی 英语"
 #: hiddifypanel/panel/admin/QuickSetup.py:71
@@ -219,18 +218,17 @@ msgstr "English انگلیسی 英语"
 msgid "lang.fa"
 msgstr "Persian فارسی 波斯语"
 
-# | msgid "It will change admin and user language"
+# | msgid "It will change user language"
 #: hiddifypanel/panel/admin/QuickSetup.py:71
-#: hiddifypanel/panel/admin/SettingAdmin.py:118
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.lang.description"
-msgstr "It will change admin and user language"
+msgstr "It will change user language"
 
+# | msgid "Admin panel language"
 #: hiddifypanel/panel/admin/QuickSetup.py:72
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-#, fuzzy
 msgid "config.admin_lang.label"
-msgstr "config.admin_lang.label"
+msgstr "Admin panel language"
 
 #: hiddifypanel/panel/admin/QuickSetup.py:72
 #: hiddifypanel/panel/admin/templates/configfake.html:6

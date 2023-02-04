@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-04 10:08+0100\n"
-"PO-Revision-Date: 2023-02-04 02:33-0600\n"
+"POT-Creation-Date: 2023-02-04 10:11+0100\n"
+"PO-Revision-Date: 2023-02-04 03:11-0600\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -199,9 +199,8 @@ msgstr ""
 "لینک پیش فرض کاربر:  %(link)s است. برای افزودن یا ویرایش کاربران، لطفاً "
 "از منو به بخش کاربران مراجعه کنید."
 
-# | msgid "Language"
+# | msgid "User Area Language"
 #: hiddifypanel/panel/admin/QuickSetup.py:71
-#: hiddifypanel/panel/admin/SettingAdmin.py:118
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/panel/admin/templates/quick_setup.html:22
 msgid "config.lang.label"
@@ -221,17 +220,17 @@ msgstr "English انگلیسی 英语"
 msgid "lang.fa"
 msgstr "Persian فارسی 波斯语"
 
-# | msgid "It will change admin and user language"
+# | msgid "It will change user language"
 #: hiddifypanel/panel/admin/QuickSetup.py:71
-#: hiddifypanel/panel/admin/SettingAdmin.py:118
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.lang.description"
 msgstr "این گزینه زبان بخش مدیریت و بخش کاربر را تغییر می دهد."
 
+# | msgid "Admin panel language"
 #: hiddifypanel/panel/admin/QuickSetup.py:72
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.admin_lang.label"
-msgstr ""
+msgstr "زبان محیط مدیریت"
 
 #: hiddifypanel/panel/admin/QuickSetup.py:72
 #: hiddifypanel/panel/admin/templates/configfake.html:6
