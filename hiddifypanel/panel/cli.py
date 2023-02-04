@@ -146,7 +146,7 @@ def all_configs():
     configs['hconfigs']['first_setup']=len(configs['domains'])==1 and 'sslip.io' in configs['domains'][0]['domain'] and len(configs['users'])==1 and configs['users'][0]['name']=="default"
 
 
-    print(json.dumps())
+    print(json.dumps(configs))
 
 def update_usage():
     print(hiddify.update_usage())
