@@ -38,6 +38,7 @@ class SettingAdmin(FlaskView):
             
             boolconfigs=BoolConfig.query.all()
             bool_types={c.key:'bool' for c in boolconfigs}
+            old_config=get_hconfigs()
             for cat,vs in form.data.items():#[c for c in ConfigEnum]:
             
                 if type(vs) is dict:
@@ -52,7 +53,9 @@ class SettingAdmin(FlaskView):
                 # print(cat,vs)
             db.session.commit()
             from flask_babel import refresh; refresh()
-            hiddify.flash_config_success()
+            
+            do_full_install=old_config[ConfigEnum.telegram_lib]!=hconfig(ConfigEnum.telegram_lib)
+            hiddify.flash_config_success(full_install=do_full_install)
             
 
             return render_template('config.html', form=form)

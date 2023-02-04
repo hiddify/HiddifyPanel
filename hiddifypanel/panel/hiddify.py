@@ -133,8 +133,9 @@ def get_available_proxies():
     return proxies
 
 
-def flash_config_success():
-    apply_btn=f"<a href='{url_for('admin.Actions:apply_configs')}' class='btn btn-primary'>"+_("admin.config.apply_configs")+"</a>"
+def flash_config_success(full_install):
+    url='admin.Actions:'+('reinstall' if full_install else 'apply_configs')
+    apply_btn=f"<a href='{url_for('{url}')}' class='btn btn-primary'>"+_("admin.config.apply_configs")+"</a>"
     flash(Markup(_('config.validation-success',link=apply_btn)), 'success')
 
 # Importing socket library 
