@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-03 23:20+0100\n"
-"PO-Revision-Date: 2023-02-03 12:07-0600\n"
+"POT-Creation-Date: 2023-02-04 08:50+0100\n"
+"PO-Revision-Date: 2023-02-04 01:49-0600\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -64,6 +64,39 @@ msgid "Success! Please wait around 5 minutes to make sure everything is updated.
 msgstr ""
 "موفقیت آمیز بود! لطفا برای اینکه مطمئن شوید بروزرسانی‌ها به درستی اعمال "
 "شده، حدود 5 دقیقه صبر کنید."
+
+#: hiddifypanel/panel/admin/Dashboard.py:17
+#, fuzzy, python-format
+msgid ""
+"It seems that you have not setup the system completely. <a class=\"btn "
+"btn-success\" href=\"%(quick_setup)s\">Click here</a> to complete setup."
+msgstr ""
+"به نظر می رسد که شما سیستم را به طور کامل راه اندازی نکرده اید. برای "
+"تکمیل تنظیمات <a class=\"btn btn-success\" href=\"%(quick_setup)s\">اینجا"
+" را کلیک کنید</a>."
+
+#: hiddifypanel/panel/admin/Dashboard.py:19
+#, fuzzy, python-format
+msgid ""
+"It seems that you are using default domain (%(domain)s) which is not "
+"recommended."
+msgstr ""
+"به نظر می رسد از دامنه پیش فرض (%(domain)s) استفاده می کنید که توصیه نمی "
+"شود."
+
+#: hiddifypanel/panel/admin/Dashboard.py:23
+#, fuzzy, python-format
+msgid ""
+"It seems that you have not created any users yet. <a "
+"href=\"%(default_link)s\">default user link</a>"
+msgstr ""
+"به نظر می رسد که شما هنوز هیچ کاربری ایجاد نکرده اید. <a "
+"href=\"%(default_link)s\">پیوند کاربر پیش‌فرض</a>"
+
+#: hiddifypanel/panel/admin/Dashboard.py:26
+#, fuzzy
+msgid "Error!!!"
+msgstr "خطا!!!"
 
 # | msgid "Domain"
 #: hiddifypanel/panel/admin/DomainAdmin.py:22
@@ -257,29 +290,41 @@ msgstr ""
 msgid "lang.zh"
 msgstr "Chinese چینی 中国人"
 
+# | msgid "Telegram Proxy Lib"
 #: hiddifypanel/panel/admin/SettingAdmin.py:120
+#, fuzzy
 msgid "config.telegram_lib.label"
-msgstr ""
+msgstr "لیب پروکسی تلگرام"
 
+# | msgid "Python: low performance"
 #: hiddifypanel/panel/admin/SettingAdmin.py:120
+#, fuzzy
 msgid "lib.telegram.python"
-msgstr ""
+msgstr "پایتون: عملکرد پایین"
 
+# | msgid "Go: high performance: No ad support"
 #: hiddifypanel/panel/admin/SettingAdmin.py:120
+#, fuzzy
 msgid "lib.telegram.go"
-msgstr ""
+msgstr "برو: عملکرد بالا: بدون پشتیبانی از تبلیغات"
 
+# | msgid "Original: high performance"
 #: hiddifypanel/panel/admin/SettingAdmin.py:120
+#, fuzzy
 msgid "lib.telegram.orignal"
-msgstr ""
+msgstr "اصل: کارایی بالا"
 
+# | msgid "Erlang: medium performance"
 #: hiddifypanel/panel/admin/SettingAdmin.py:120
+#, fuzzy
 msgid "lib.telegram.erlang"
-msgstr ""
+msgstr "Erlang: عملکرد متوسط"
 
+# | msgid "You can switch between different telegram libraries."
 #: hiddifypanel/panel/admin/SettingAdmin.py:120
+#, fuzzy
 msgid "config.telegram_lib.description"
-msgstr ""
+msgstr "می توانید بین کتابخانه های مختلف تلگرام جابجا شوید."
 
 # | msgid ""
 # | "Invalid UUID secret. e.g., 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n"
@@ -314,42 +359,42 @@ msgid "config.port 443 is required"
 msgstr "پورت ۴۴۳ همیشه باید در دسترس باشد."
 
 # | msgid "UUID"
-#: hiddifypanel/panel/admin/UserAdmin.py:27
+#: hiddifypanel/panel/admin/UserAdmin.py:28
 msgid "user.UUID"
 msgstr "UUID"
 
 # | msgid "Name"
-#: hiddifypanel/panel/admin/UserAdmin.py:28
+#: hiddifypanel/panel/admin/UserAdmin.py:29
 msgid "user.name"
 msgstr "نام"
 
 # | msgid "Monthly Usage Limit (GB)"
-#: hiddifypanel/panel/admin/UserAdmin.py:29
+#: hiddifypanel/panel/admin/UserAdmin.py:30
 msgid "user.monthly_usage_limit_GB"
 msgstr "محدودیت حجم ماهانه (گیگابایت)"
 
 # | msgid "Current Usage (GB)"
-#: hiddifypanel/panel/admin/UserAdmin.py:30
+#: hiddifypanel/panel/admin/UserAdmin.py:31
 msgid "user.current_usage_GB"
 msgstr "حجم استفاده شده کنونی (گیگابایت)"
 
 # | msgid "Expire Time"
-#: hiddifypanel/panel/admin/UserAdmin.py:31
+#: hiddifypanel/panel/admin/UserAdmin.py:32
 msgid "user.expiry_time"
 msgstr "زمان انقضا"
 
 # | msgid "Last usage date reset"
-#: hiddifypanel/panel/admin/UserAdmin.py:32
+#: hiddifypanel/panel/admin/UserAdmin.py:33
 msgid "user.last_reset_time"
 msgstr "آخرین تاریخ بازنشانی حجم استفاده شده"
 
 # | msgid "Links for user"
-#: hiddifypanel/panel/admin/UserAdmin.py:33
+#: hiddifypanel/panel/admin/UserAdmin.py:34
 msgid "user.user_links"
 msgstr "لینک‌های کاربر"
 
 # | msgid "Actions"
-#: hiddifypanel/panel/admin/UserAdmin.py:34
+#: hiddifypanel/panel/admin/UserAdmin.py:35
 msgid "actions"
 msgstr "عملیات"
 
@@ -944,30 +989,34 @@ msgstr "تنظیمات پیدا نشد."
 msgid "config.not_found.description"
 msgstr "تنظیمات پیدا نشد."
 
-# | msgid "Protocol Usage Chart"
-#: hiddifypanel/panel/admin/templates/index.html:16
-msgid "admin.protocol_chart"
-msgstr "نمودار مصرف هر پروتکل"
-
-# | msgid "Users Usage Chart"
-#: hiddifypanel/panel/admin/templates/index.html:47
-msgid "admin.user_chart"
-msgstr "نمودار مصرف کاربران"
-
 # | msgid "CPU usage chart"
-#: hiddifypanel/panel/admin/templates/index.html:77
+#: hiddifypanel/panel/admin/templates/index.html:12
+#: hiddifypanel/panel/admin/templates/index.html:32
+#: hiddifypanel/panel/admin/templates/index.html:149
 msgid "admin.cpu_chart"
 msgstr "نمودار پردازنده"
 
 # | msgid "RAM Usage Chart"
-#: hiddifypanel/panel/admin/templates/index.html:108
+#: hiddifypanel/panel/admin/templates/index.html:47
+#: hiddifypanel/panel/admin/templates/index.html:68
 msgid "admin.ram_chart"
 msgstr "نمودار رم"
 
 # | msgid "Network Usage"
-#: hiddifypanel/panel/admin/templates/index.html:139
+#: hiddifypanel/panel/admin/templates/index.html:80
+#: hiddifypanel/panel/admin/templates/index.html:113
 msgid "admin.network_chart"
 msgstr "نمودار مصرف اینترنت"
+
+# | msgid "Protocol Usage Chart"
+#: hiddifypanel/panel/admin/templates/index.html:112
+msgid "admin.protocol_chart"
+msgstr "نمودار مصرف هر پروتکل"
+
+# | msgid "Users Usage Chart"
+#: hiddifypanel/panel/admin/templates/index.html:148
+msgid "admin.user_chart"
+msgstr "نمودار مصرف کاربران"
 
 # | msgid "Global Configs"
 #: hiddifypanel/panel/admin/templates/proxy.html:11
