@@ -72,11 +72,11 @@ class Actions(FlaskView):
         admin_secret=hconfig(ConfigEnum.admin_secret)
         proxy_path=hconfig(ConfigEnum.proxy_path)
         admin_links=f"<h5 >{_('Admin Links')}</h5><ul>"
-        admin_links+=f"<li>{_('Not Secure')}: <a class='badge ltr share-link' href='http://{server_ip}/{proxy_path}/{admin_secret}/admin'>http://{server_ip}/{proxy_path}/{admin_secret}/admin</a></li>"
+        admin_links+=f"<li>{_('Not Secure')}: <a class='badge ltr share-link' href='http://{server_ip}/{proxy_path}/{admin_secret}/admin/'>http://{server_ip}/{proxy_path}/{admin_secret}/admin/</a></li>"
         domains=[d.domain for d in Domain.query.all()]
         # domains=[*domains,f'{server_ip}.sslip.io']
         for d in domains:
-                link=f'https://{d}/{proxy_path}/{admin_secret}/admin'
+                link=f'https://{d}/{proxy_path}/{admin_secret}/admin/'
                 admin_links+=f"<li><a class='badge ltr  share-link' href='{link}'>{link}</a></li>"
 
         return render_template("result.html",
@@ -131,15 +131,3 @@ class Actions(FlaskView):
 
 
 
-
-
-
-    # def register_routes(bp):
-    #     bp.add_url_rule("/reverselog/<logfile>", view_func=reverselog)
-    #     bp.add_url_rule("/apply_configs", view_func=apply_configs)
-    #     # bp.add_url_rule("/change", view_func=change)
-    #     bp.add_url_rule("/reinstall", view_func=reinstall)
-    #     bp.add_url_rule("/reset", view_func=reset)
-    #     bp.add_url_rule("/status", view_func=status)
-    #     bp.add_url_rule("/update", view_func=update)
-    #     bp.add_url_rule("/viewlogs", view_func=viewlogs)
