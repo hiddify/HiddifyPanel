@@ -82,14 +82,15 @@ def get_quick_setup_form(empty=False):
                 enable_vmess=SwitchField(_("config.vmess_enable.label"),description=_("config.vmess_enable.description"),default=hconfig(ConfigEnum.vmess_enable))
                 submit=wtf.fields.SubmitField(_('Submit'))
 
-                def validate_domain(self, field):
-                        domain=field.data
-                        dip=hiddify.get_domain_ip(domain)
-                        if dip==None:
-                                raise ValidationError(_("Domain can not be resolved! there is a problem in your domain"))
-
-                        myip=hiddify.get_ip(4)
-                        if dip and myip!=dip:
-                                raise ValidationError(_("Domain (%(domain))-> IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode",server_ip=myip,domain_ip=dip,domain=domain))
+                
         
         return QuickSetupForm(None) if empty else QuickSetupForm()
+def validate_domain(form,field):
+        domain=field.data
+        dip=hiddify.get_domain_ip(domain)
+        if dip==None:
+                raise ValidationError(_("Domain can not be resolved! there is a problem in your domain"))
+
+        myip=hiddify.get_ip(4)
+        if dip and myip!=dip:
+                raise ValidationError(_("Domain (%(domain))-> IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode",server_ip=myip,domain_ip=dip,domain=domain))
