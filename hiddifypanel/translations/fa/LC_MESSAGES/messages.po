@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-04 09:11+0100\n"
-"PO-Revision-Date: 2023-02-04 01:50-0600\n"
+"POT-Creation-Date: 2023-02-04 09:33+0100\n"
+"PO-Revision-Date: 2023-02-04 02:32-0600\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -72,8 +72,8 @@ msgid ""
 "btn-success\" href=\"%(quick_setup)s\">Click here</a> to complete setup."
 msgstr ""
 "به نظر می رسد که شما سیستم را به طور کامل راه اندازی نکرده اید. برای "
-"تکمیل تنظیمات <a class=\"btn btn-success\" href=\"%(quick_setup)s\">اینجا"
-" را کلیک کنید</a>."
+"تکمیل تنظیمات <a class=\"btn btn-success\" "
+"href=\"%(quick_setup)s\">اینجا</a> را کلیک کنید."
 
 #: hiddifypanel/panel/admin/Dashboard.py:19
 #, fuzzy, python-format
@@ -292,6 +292,7 @@ msgstr "Chinese چینی 中国人"
 
 # | msgid "Telegram Proxy Lib"
 #: hiddifypanel/panel/admin/SettingAdmin.py:120
+#: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.telegram_lib.label"
 msgstr "لیب پروکسی تلگرام"
@@ -322,6 +323,7 @@ msgstr "Erlang: عملکرد متوسط"
 
 # | msgid "You can switch between different telegram libraries."
 #: hiddifypanel/panel/admin/SettingAdmin.py:120
+#: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.telegram_lib.description"
 msgstr "می توانید بین کتابخانه های مختلف تلگرام جابجا شوید."
@@ -955,6 +957,14 @@ msgstr "KCP"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.kcp.description"
 msgstr "تنظیمات KCP"
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.admin_lang.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.admin_lang.description"
+msgstr ""
 
 # | msgid "Secret Proxy Path"
 #: hiddifypanel/panel/admin/templates/configfake.html:6

@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-04 09:11+0100\n"
-"PO-Revision-Date: 2023-02-04 01:50-0600\n"
+"POT-Creation-Date: 2023-02-04 09:33+0100\n"
+"PO-Revision-Date: 2023-02-04 02:32-0600\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -292,6 +292,7 @@ msgstr "Chinese چینی 中国人"
 
 # | msgid "Telegram Proxy Lib"
 #: hiddifypanel/panel/admin/SettingAdmin.py:120
+#: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.telegram_lib.label"
 msgstr "电报代理库"
@@ -322,6 +323,7 @@ msgstr "Erlang：中等性能"
 
 # | msgid "You can switch between different telegram libraries."
 #: hiddifypanel/panel/admin/SettingAdmin.py:120
+#: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.telegram_lib.description"
 msgstr "您可以在不同的电报库之间切换。"
@@ -992,6 +994,14 @@ msgstr "KCP"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.kcp.description"
 msgstr "需要完成"
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.admin_lang.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.admin_lang.description"
+msgstr ""
 
 # | msgid "Secret Proxy Path"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
