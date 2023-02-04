@@ -8,13 +8,13 @@ from hiddifypanel.models import  User,Domain,DomainType,StrConfig,ConfigEnum,hco
 class Dashboard(FlaskView):
     def index(self):
         try:
-            def_user=User.query.filter(User.name=='default').first()
+            def_user=None if len(User.query.all())>1 else User.query.filter(User.name=='default').first()
             domains=Domain.query.all()
             sslip_domains=[d for d in domains if "sslip.io" in d.domain]
 
             if def_user and sslip_domains:
                 quick_setup=url_for("admin.QuickSetup:index")
-                flash(Markup(_('It seems that you have not setup the system completely. <a class="btn btn-success" href="%(quick_setup)s">Click here</a> to complete setup.',quick_setup='')),'warning')
+                flash(Markup(_('It seems that you have not setup the system completely. <a class="btn btn-success" href="%(quick_setup)s">Click here</a> to complete setup.',quick_setup=quick_setup)),'warning')
             elif sslip_domains:
                 flash(Markup(_('It seems that you are using default domain (%(domain)s) which is not recommended.',domain=sslip_domains[0])),'warning')
             elif def_user:

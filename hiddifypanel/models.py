@@ -27,6 +27,7 @@ class ConfigCategory(StrEnum):
 
 class ConfigEnum(StrEnum):
     lang = auto()
+    admin_lang = auto()
     admin_secret = auto()
     tls_ports = auto()
     http_ports = auto()
@@ -82,8 +83,9 @@ class ConfigEnum(StrEnum):
     def info(self):
         map = {
             self.not_found:{'category': ConfigCategory.hidden},
-            self.lang: {'category': ConfigCategory.general},
             self.admin_secret: {'category': ConfigCategory.admin},
+            self.lang: {'category': ConfigCategory.admin},
+            self.admin_lang: {'category': ConfigCategory.admin},
             self.tls_ports: {'category': ConfigCategory.tls},
             self.http_ports: {'category': ConfigCategory.http},
             self.kcp_ports: {'category': ConfigCategory.kcp},

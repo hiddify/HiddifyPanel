@@ -115,8 +115,14 @@ def init_db():
         ])
         db.session.commit()
         db_version=2
-        
     if db_version==2:
+        db.session.bulk_save_objects([
+            StrConfig(key=ConfigEnum.admin_lang,value=hconfig(ConfigEnum.lang)),
+        ])
+        db.session.commit()
+        db_version=3
+
+    if db_version==3:
         pass # for next update
     
     StrConfig.query.filter(StrConfig.key == ConfigEnum.db_version).update({'value': db_version})

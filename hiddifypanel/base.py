@@ -1,5 +1,5 @@
 from dynaconf import FlaskDynaconf
-from flask import Flask
+from flask import Flask,request
 import flask_bootstrap 
 from flask_babelex import Babel
 from hiddifypanel.panel.database import db
@@ -39,6 +39,8 @@ def create_app(**config):
         # Put your logic here. Application can store locale in
         # user profile, cookie, session, etc.
         from hiddifypanel.models import ConfigEnum,hconfig
+        if "admin" in request.base_url:
+            return hconfig(ConfigEnum.admin_lang) or hconfig(ConfigEnum.lang) or 'fa'
         return hconfig(ConfigEnum.lang) or "fa"
 
     from flask_wtf.csrf import CSRFProtect

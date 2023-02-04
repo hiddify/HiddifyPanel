@@ -17,7 +17,7 @@
 {% block body %}
 {{super()}}
 
-
+<div class="card-columns">
 <div class="card">
     <div class="card-header">{{_("config.lang.label")}}</div>
     <div class="card-body">
@@ -43,5 +43,19 @@
         </div>
     </div>
 </div>
+</div>
 
+<style>
+    @media (min-width: 576px) {
+    .card-columns {
+        column-count: 1;
+    }
+}
+
+@media (min-width: 768px) {
+    .card-columns {
+        column-count: 2;
+    }
+}
+</style>
 {% endblock %}
