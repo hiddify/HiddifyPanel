@@ -69,7 +69,11 @@ class UserAdmin(AdminLTEModelView):
         'current_usage_GB': _usage_formatter
     }
     def on_model_delete(self, model):
+        if len(User.query.all())<=1:
+            raise ValidationError(f"at least one user should exist")    
         xray_api.remove_client(model.uuid)
+        hiddify.flash_config_success()
+
         
     # def is_accessible(self):
     #     return g.is_admin
@@ -86,4 +90,5 @@ class UserAdmin(AdminLTEModelView):
         #     xray_api.add_client(model.uuid)
         # else:
         #     xray_api.remove_client(model.uuid)
+        hiddify.flash_config_success()
         
