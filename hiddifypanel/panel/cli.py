@@ -35,7 +35,7 @@ def init_db():
     
     db_version=hconfig(ConfigEnum.db_version)
     if db_version==None:
-        
+        print("DB not exist, creating default values")
         db.create_all()
         next10year = datetime.date.today() + relativedelta.relativedelta(years=10)
         external_ip=urllib.request.urlopen('https://v4.ident.me/').read().decode('utf8')
@@ -110,12 +110,14 @@ def init_db():
         db_version=1
     
     if db_version==1:
+        print(f"Updating DB from version {db_version}")
         db.session.bulk_save_objects([
             StrConfig(key=ConfigEnum.telegram_lib,value="python"),
         ])
         db.session.commit()
         db_version=2
     if db_version==2:
+        print(f"Updating DB from version {db_version}")
         db.session.bulk_save_objects([
             StrConfig(key=ConfigEnum.admin_lang,value=hconfig(ConfigEnum.lang)),
         ])
@@ -123,6 +125,7 @@ def init_db():
         db_version=3
 
     if db_version==3:
+        print(f"Updating DB from version {db_version}")
         pass # for next update
     
     StrConfig.query.filter(StrConfig.key == ConfigEnum.db_version).update({'value': db_version})
