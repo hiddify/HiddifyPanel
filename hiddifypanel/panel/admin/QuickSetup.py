@@ -69,7 +69,7 @@ class QuickSetup(FlaskView):
 def get_lang_form(empty=False):
         class LangForm(FlaskForm):
                 lang=wtf.fields.SelectField(_("config.lang.label"),choices=[("en",_("lang.en")),("fa",_("lang.fa"))],description=_("config.lang.description"),default=hconfig(ConfigEnum.lang))
-                lang=wtf.fields.SelectField(_("config.admin_lang.label"),choices=[("en",_("lang.en")),("fa",_("lang.fa"))],description=_("config.admin_lang.description"),default=hconfig(ConfigEnum.admin_lang))
+                admin_lang=wtf.fields.SelectField(_("config.admin_lang.label"),choices=[("en",_("lang.en")),("fa",_("lang.fa"))],description=_("config.admin_lang.description"),default=hconfig(ConfigEnum.admin_lang))
                 lang_submit=wtf.fields.SubmitField(_('Submit'))
         
         return LangForm(None)if empty else LangForm()
