@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-04 17:25+0100\n"
-"PO-Revision-Date: 2023-02-04 10:25-0600\n"
+"POT-Creation-Date: 2023-02-04 19:18+0100\n"
+"PO-Revision-Date: 2023-02-04 12:18-0600\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -31,15 +31,16 @@ msgid "admin.config.apply_configs"
 msgstr "应用配置"
 
 # | msgid ""
-# | "Configs have changed successfully. Click %(link)s to apply the configs.
-# It "
-# | "may takes 2 minutes to apply."
+# | "Configs have been changed successfully. Click %(link)s to apply the
+# configs."
+# | " It may take 2 minutes to apply."
 #: hiddifypanel/panel/admin/ProxyAdmin.py:42 hiddifypanel/panel/hiddify.py:139
 #, fuzzy
 msgid "config.validation-success"
 msgstr "配置已成功更改。单击 %(link)s 以应用配置。申请可能需要 2 分钟。"
 
-# | msgid "Rebooting system may takes time. Please wait..."
+# | msgid ""
+# | "Rebooting System... This may take afew minutes. Please wait..."
 #: hiddifypanel/panel/admin/Actions.py:55
 #, fuzzy
 msgid "rebooting system may takes time please wait"
@@ -69,6 +70,9 @@ msgstr ""
 "看来你还没有完全设置系统。 <a class=\"btn btn-success\" "
 "href=\"%(quick_setup)s\">点击这里</a>完成设置。"
 
+# | msgid ""
+# | "It seems that you are using default domain (%(domain)s) which is not "
+# | "recommended. Please remove it from domain section."
 #: hiddifypanel/panel/admin/Dashboard.py:19
 #, fuzzy, python-format
 msgid ""
@@ -83,6 +87,7 @@ msgid ""
 "href=\"%(default_link)s\">default user link</a>"
 msgstr "您似乎还没有创建任何用户。 <a href=\"%(default_link)s\">默认用户链接</a>"
 
+# | msgid "Error!!"
 #: hiddifypanel/panel/admin/Dashboard.py:26
 #, fuzzy
 msgid "Error!!!"
@@ -107,12 +112,20 @@ msgstr "模式"
 msgid "domain.ip"
 msgstr "知识产权"
 
+# | msgid ""
+# | "Domain can not be resolved! There is a problem in your domain. Please
+# check "
+# | "your Domain configurations."
 #: hiddifypanel/panel/admin/DomainAdmin.py:56
 #: hiddifypanel/panel/admin/QuickSetup.py:43
 #, fuzzy
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr "域名无法解析！你的域有问题"
 
+# | msgid ""
+# | "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which
+# is "
+# | "required in direct mode."
 #: hiddifypanel/panel/admin/DomainAdmin.py:60
 #: hiddifypanel/panel/admin/QuickSetup.py:47
 #, fuzzy, python-format
@@ -128,6 +141,7 @@ msgid ""
 "ip=%(server_ip)s"
 msgstr "在 CDN 模式下，Domain IP=%(domain_ip)s 应该与您的 ip=%(server_ip)s 不同"
 
+# | msgid "Error! Domain Fronting not set."
 #: hiddifypanel/panel/admin/ProxyAdmin.py:36
 msgid "config.domain-fronting-notsetup-error"
 msgstr "错误！ 未设置域前端"
@@ -174,13 +188,13 @@ msgstr "外层"
 msgid "proxy.cdn"
 msgstr "CDN"
 
-# | msgid "Change language success"
+# | msgid "Changing the Language was successful."
 #: hiddifypanel/panel/admin/QuickSetup.py:33
 #, fuzzy
 msgid "quicksetup.setlang.success"
 msgstr "改语言成功"
 
-# | msgid "An error happened in changing language"
+# | msgid "An error occurred while changing language."
 #: hiddifypanel/panel/admin/QuickSetup.py:36
 #, fuzzy
 msgid "quicksetup.setlang.error"
@@ -193,13 +207,12 @@ msgid ""
 "visit users from menu."
 msgstr "默认用户链接是 %(link)s。要添加或编辑更多用户，请从菜单访问用户。"
 
-# | msgid "User Area Language"
+# | msgid "Admin panel language"
 #: hiddifypanel/panel/admin/QuickSetup.py:71
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-#: hiddifypanel/panel/admin/templates/quick_setup.html:22
 #, fuzzy
-msgid "config.lang.label"
-msgstr "语言"
+msgid "config.admin_lang.label"
+msgstr "管理面板语言"
 
 # | msgid "English انگلیسی 英语"
 #: hiddifypanel/panel/admin/QuickSetup.py:71
@@ -217,24 +230,25 @@ msgstr "English انگلیسی 英语"
 msgid "lang.fa"
 msgstr "Persian فارسی 波斯语"
 
-# | msgid "It will change user language"
 #: hiddifypanel/panel/admin/QuickSetup.py:71
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.admin_lang.description"
+msgstr ""
+
+# | msgid "User Area Language"
+#: hiddifypanel/panel/admin/QuickSetup.py:72
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#: hiddifypanel/panel/admin/templates/quick_setup.html:22
+#, fuzzy
+msgid "config.lang.label"
+msgstr "语言"
+
+# | msgid "It will change user language"
+#: hiddifypanel/panel/admin/QuickSetup.py:72
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.lang.description"
 msgstr "它将更改管理和用户语言"
-
-# | msgid "Admin panel language"
-#: hiddifypanel/panel/admin/QuickSetup.py:72
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-#, fuzzy
-msgid "config.admin_lang.label"
-msgstr "管理面板语言"
-
-#: hiddifypanel/panel/admin/QuickSetup.py:72
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.admin_lang.description"
-msgstr ""
 
 # | msgid "Error! Invalid domain.  The domain format is www.google.com"
 #: hiddifypanel/panel/admin/QuickSetup.py:87
@@ -302,7 +316,7 @@ msgstr "几个人报告说 vmess 导致系统被政府检测到。所以不推�
 msgid "lang.zh"
 msgstr "Chinese چینی 中国人"
 
-# | msgid "Telegram Proxy Lib"
+# | msgid "Telegram Proxy Library"
 #: hiddifypanel/panel/admin/SettingAdmin.py:123
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
@@ -347,7 +361,7 @@ msgid "config.Invalid brand link"
 msgstr "品牌链接无效"
 
 # | msgid ""
-# | "Invalid UUID secret. e.g., 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n"
+# | "Invalid UUID secret. Example: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n"
 # | "\n"
 #: hiddifypanel/panel/admin/SettingAdmin.py:145
 #, fuzzy
@@ -417,7 +431,7 @@ msgstr "过期时间"
 msgid "user.last_reset_time"
 msgstr "最后使用日期重置"
 
-# | msgid "Links for user"
+# | msgid "User Links"
 #: hiddifypanel/panel/admin/UserAdmin.py:34
 #, fuzzy
 msgid "user.user_links"
@@ -526,7 +540,7 @@ msgid "config.netdata.label"
 msgstr "网络数据"
 
 # | msgid ""
-# | "For displaying resources. May use your CPU but it is not too much."
+# | "For displaying resources. Uses your server's CPU but it is not too much."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.netdata.description"
@@ -613,7 +627,7 @@ msgid "config.block_iran_sites.label"
 msgstr "封锁伊朗网站"
 
 # | msgid ""
-# | "Block Iranian sites to prevent detection by the government (experimental:
+# | "Block Iranian sites to prevent detection by the government (Experimental:
 # If"
 # | " there is a problem, please disable it and tell us.)"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1133,7 +1147,7 @@ msgstr "全局配置"
 msgid "admin.proxy.detailed_config"
 msgstr "详细配置"
 
-# | msgid "QuickSetup"
+# | msgid "Quick Setup"
 #: hiddifypanel/panel/admin/templates/quick_setup.html:35
 #, fuzzy
 msgid "admin.quicksetup.title"
@@ -1398,7 +1412,7 @@ msgstr "仅为被阻止的站点安装代理"
 msgid "user.home.clash_configs.alternative_for_normal_clash"
 msgstr "冲突的替代链接"
 
-# | msgid "Instal Clash"
+# | msgid "Install Clash"
 #: hiddifypanel/panel/user/templates/home/clash-links.html:17
 #: hiddifypanel/panel/user/templates/home/clash-links.html:42
 #: hiddifypanel/panel/user/templates/home/clash-links.html:68
@@ -1413,7 +1427,7 @@ msgid "user.home.clash_configs.foreign_sites.title"
 msgstr "国外网站代理"
 
 # | msgid ""
-# | "Use proxy for all foreign sites (even not blocked ones)\n"
+# | "Use proxy for all foreign sites (even not blocked ones).\n"
 # | "<div class=\"callout callout-warning\">\n"
 # | "\tThis mode is useful in accessing some sanctaioned sites.\n"
 # | "</div>\n"
@@ -1453,7 +1467,7 @@ msgstr ""
 "    加载本地站点的速度将降低，并会危及您的隐私。\n"
 "</div>"
 
-# | msgid "Install Proxy for all sites"
+# | msgid "Install Proxy for all sites."
 #: hiddifypanel/panel/user/templates/home/clash-links.html:62
 #: hiddifypanel/panel/user/templates/home/clash-links.html:74
 #, fuzzy
@@ -1648,7 +1662,7 @@ msgid "user.home.ios.stash.title"
 msgstr "收藏<span class=\"badge badge-success\">推荐</span>"
 
 # | msgid ""
-# | "Stash is a great application. We think it is worth to buy it.\n"
+# | "Stash is a great application. We think it worth buying.\n"
 # | "\n"
 # | "        <div class=\"btn-group\">\n"
 # | "        <a
@@ -1897,42 +1911,42 @@ msgstr "行政"
 
 # | msgid "Domains"
 #: hiddifypanel/templates/admin-layout.html:28
-#: hiddifypanel/templates/admin-layout.html:81
+#: hiddifypanel/templates/admin-layout.html:85
 #, fuzzy
 msgid "admin.menu.domain"
 msgstr "域名"
 
 # | msgid "Users"
 #: hiddifypanel/templates/admin-layout.html:29
-#: hiddifypanel/templates/admin-layout.html:82
+#: hiddifypanel/templates/admin-layout.html:86
 #, fuzzy
 msgid "admin.menu.user"
 msgstr "用户"
 
 # | msgid "Proxies"
 #: hiddifypanel/templates/admin-layout.html:30
-#: hiddifypanel/templates/admin-layout.html:83
+#: hiddifypanel/templates/admin-layout.html:87
 #, fuzzy
 msgid "admin.menu.proxy"
 msgstr "代理"
 
 # | msgid "Settings"
 #: hiddifypanel/templates/admin-layout.html:31
-#: hiddifypanel/templates/admin-layout.html:84
+#: hiddifypanel/templates/admin-layout.html:88
 #, fuzzy
 msgid "admin.menu.config"
 msgstr "设置"
 
 # | msgid "Actions"
 #: hiddifypanel/templates/admin-layout.html:34
-#: hiddifypanel/templates/admin-layout.html:93
+#: hiddifypanel/templates/admin-layout.html:98
 #, fuzzy
 msgid "admin.actions.title"
 msgstr "动作"
 
 # | msgid "Status"
 #: hiddifypanel/templates/admin-layout.html:36
-#: hiddifypanel/templates/admin-layout.html:95
+#: hiddifypanel/templates/admin-layout.html:100
 #, fuzzy
 msgid "admin.actions.status"
 msgstr "地位"
@@ -1944,49 +1958,168 @@ msgstr "应用配置"
 
 # | msgid "Reinstall System"
 #: hiddifypanel/templates/admin-layout.html:38
-#: hiddifypanel/templates/admin-layout.html:99
+#: hiddifypanel/templates/admin-layout.html:104
 #, fuzzy
 msgid "admin.actions.reinstall"
 msgstr "重装系统"
 
-# | msgid "Restart system"
+# | msgid "Restart System"
 #: hiddifypanel/templates/admin-layout.html:39
-#: hiddifypanel/templates/admin-layout.html:98
+#: hiddifypanel/templates/admin-layout.html:103
 #, fuzzy
 msgid "admin.actions.reset"
 msgstr "重启系统"
 
 # | msgid "Update System"
 #: hiddifypanel/templates/admin-layout.html:40
-#: hiddifypanel/templates/admin-layout.html:100
+#: hiddifypanel/templates/admin-layout.html:105
 #, fuzzy
 msgid "admin.actions.update"
 msgstr "更新系统"
 
 # | msgid "View Logs"
 #: hiddifypanel/templates/admin-layout.html:41
-#: hiddifypanel/templates/admin-layout.html:96
+#: hiddifypanel/templates/admin-layout.html:101
 #, fuzzy
 msgid "admin.actions.viewlogs"
 msgstr "查看日志"
 
 # | msgid "Support"
 #: hiddifypanel/templates/admin-layout.html:47
-#: hiddifypanel/templates/admin-layout.html:104
+#: hiddifypanel/templates/admin-layout.html:109
 #, fuzzy
 msgid "admin.menu.support"
 msgstr "支持"
 
 # | msgid "Telegram"
 #: hiddifypanel/templates/admin-layout.html:50
-#: hiddifypanel/templates/admin-layout.html:107
+#: hiddifypanel/templates/admin-layout.html:112
 msgid "admin.menu.telegram"
 msgstr "电报"
 
+#: hiddifypanel/templates/admin-layout.html:82
+#: hiddifypanel/templates/donation.html:5
+msgid "Donation"
+msgstr ""
+
 # | msgid "Apply configs"
-#: hiddifypanel/templates/admin-layout.html:97
+#: hiddifypanel/templates/admin-layout.html:102
 msgid "admin.actions.apply_configs"
 msgstr "Apply configs"
+
+# | msgid ""
+# | "We need your help in developing this project\n"
+# | "<br>\n"
+# | "If you are developer or content producer, please contact us at <a
+# href=\"mailto:hiddify@gmail.com\">hiddify@gmail.com</a>\n"
+# | "<br><br>\n"
+# | "\n"
+# | "Also, we need financial help to further develop this panel and our
+# service (we are non-profit).\n"
+# | "Crypto donation BTC, TON, ETH, DOGE:  <a
+# href=\"https://nowpayments.io/donation?api_key=WNVGZP8-9094SDB-NGCVEG3-ZBTRVX4\"
+# class=\"btn btn-info\" target=\"_blank\"> by NOWPayments</a>\n"
+# | "<details>\n"
+# | "<summary>Other payment methods</summary>\n"
+# | "<ul>\n"
+# | "<li> <a target=\"_blank\"
+# href=\"https://opencollective.com/hiddify/contribute/backer-50556/checkout?interval=month&amount=25\"
+# class=\"btn btn-info\">Credit card and PayPal</a></li>\n"
+# | "<li> <div class=\"btn-group\">\n"
+# | "    <a href=\"#\"
+# data-copy=\"EQCWnykA-YhavOXgH3sf-uxtXLjy83_9n5bJPGRPE8r2247_\" class=\"btn
+# btn-secondary copy-link\"><i class=\"fa-regular fa-copy\"></i></a>    \n"
+# | "<a data-copy=\"EQCWnykA-YhavOXgH3sf-uxtXLjy83_9n5bJPGRPE8r2247_\"
+# href=\"#\" class=\"btn btn-info share-link\">TON</a> </div></li>\n"
+# | "    <a href=\"#\"
+# data-copy=\"0xF15ec158318d7F5236d82d040102340B0974C3E0\" class=\"btn
+# btn-secondary copy-link\"><i class=\"fa-regular fa-copy\"></i></a>    \n"
+# | "<a data-copy=\"0xF15ec158318d7F5236d82d040102340B0974C3E0\" href=\"#\"
+# class=\"btn btn-info share-link\">Ethereum</a> </div></li>\n"
+# | "    <a href=\"#\" data-copy=\"3Epy7jyUUCVb1w12MNTu2JFVVhmfpr4EGX\"
+# class=\"btn btn-secondary copy-link\"><i class=\"fa-regular
+# fa-copy\"></i></a>    \n"
+# | "<a data-copy=\"3Epy7jyUUCVb1w12MNTu2JFVVhmfpr4EGX\" href=\"#\"
+# class=\"btn btn-info share-link\">Bitcoin</a> </div></li>\n"
+# | "    <a href=\"#\" data-copy=\"DJy27pQKwnhaRxWDbU6dG7UdHHif6yp8Jb\"
+# class=\"btn btn-secondary copy-link\"><i class=\"fa-regular
+# fa-copy\"></i></a>    \n"
+# | "<a data-copy=\"DJy27pQKwnhaRxWDbU6dG7UdHHif6yp8Jb\" href=\"#\"
+# class=\"btn btn-info share-link\">Dogecoin</a> </div></li>\n"
+# | "</ul>\n"
+# | "</details>\n"
+# | "We need also other help:\n"
+# | "<li>Share Hiddify Panel with others</li>\n"
+# | "<li>Python developer</li>\n"
+# | "<li>Kotlin Developer</li>\n"
+# | "<li>Content Providers</li>\n"
+# | "Please contact us at <a
+# href=\"mailto:hiddify@gmail.com\">hiddify@gmail.com</a> if you can help us."
+#: hiddifypanel/templates/donation.html:11
+#, fuzzy
+msgid "Donation.description"
+msgstr ""
+"我们需要你的帮助来开发这个项目\n"
+"<br>\n"
+"如果您有能力编写或制作内容，请通过 <a "
+"href=\"mailto:hiddify@gmail.com\">hiddify@gmail.com</a> 联系我们\n"
+"<br>\n"
+"\n"
+"此外，我们需要经济帮助来进一步开发该小组和我们的服务（我们是非营利组织）。\n"
+"\n"
+"加密捐赠 BTC、TON、ETH、DOGE：<a "
+"href=\"https://nowpayments.io/donation?api_key=WNVGZP8-9094SDB-"
+"NGCVEG3-ZBTRVX4\"> NOWPayments</a>\n"
+"<br>\n"
+"<详情>\n"
+"<summary>其他支付方式</summary>\n"
+"<ul>\n"
+"<li> <a "
+"href=\"https://opencollective.com/hiddify/contribute/backer-50556/checkout?interval=month&amount=25\">信用卡和"
+" PayPal</a></li>\n"
+"<li> <div class=\"btn-group\">\n"
+"    <a href=\"#\" data-copy=\"EQCWnykA-YhavOXgH3sf-"
+"uxtXLjy83_9n5bJPGRPE8r2247_\" class=\"btn btn-secondary copy-link\"><i "
+"class=\"fa-regular fa-copy\"></i></a >\n"
+"<a data-copy=\"EQCWnykA-YhavOXgH3sf-uxtXLjy83_9n5bJPGRPE8r2247_\" "
+"href=\"#\">TON</a> </div></li>\n"
+"\n"
+"\n"
+"<li> <div class=\"btn-group\">\n"
+"    <a href=\"#\" data-"
+"copy=\"0xF15ec158318d7F5236d82d040102340B0974C3E0\" class=\"btn btn-"
+"secondary copy-link\"><i class=\"fa-regular fa-copy\"></i></a>\n"
+"<a data-copy=\"0xF15ec158318d7F5236d82d040102340B0974C3E0\" "
+"href=\"#\">以太坊</a> </div></li>\n"
+"\n"
+"<li> <div class=\"btn-group\">\n"
+"    <a href=\"#\" data-copy=\"3Epy7jyUUCVb1w12MNTu2JFVVhmfpr4EGX\" "
+"class=\"btn btn-secondary copy-link\"><i class=\"fa-regular fa-"
+"copy\"></i></a>\n"
+"<a data-copy=\"3Epy7jyUUCVb1w12MNTu2JFVVhmfpr4EGX\" href=\"#\">比特币</a> "
+"</div></li>\n"
+"\n"
+"<li> <div class=\"btn-group\">\n"
+"    <a href=\"#\" data-copy=\"DJy27pQKwnhaRxWDbU6dG7UdHHif6yp8Jb\" "
+"class=\"btn btn-secondary copy-link\"><i class=\"fa-regular fa-"
+"copy\"></i></a>\n"
+"<a data-copy=\"DJy27pQKwnhaRxWDbU6dG7UdHHif6yp8Jb\" href=\"#\">狗狗币</a> "
+"</div></li>\n"
+"</ul>\n"
+"\n"
+"我们还需要其他帮助：\n"
+"<ul>\n"
+"<li>与他人共享 Hiddify 面板</li>\n"
+"<li>Python 开发人员</li>\n"
+"<li>Kotlin 开发人员</li>\n"
+"<li>内容提供商</li>\n"
+"\n"
+"如果您能帮助我们，请通过 <a href=\"mailto:hiddify@gmail.com\">hiddify@gmail.com</a> "
+"联系我们。"
+
+#: hiddifypanel/templates/donation.html:14
+msgid "Close"
+msgstr ""
 
 # | msgid "Share to social media"
 #: hiddifypanel/templates/master.html:113
@@ -2025,7 +2158,8 @@ msgid "user.home.link.manual-copy"
 msgstr "复制到剪贴板：Ctrl+C，回车"
 
 # | msgid ""
-# | "Invalid address: a website for decoy site should be complete url e.g., "
+# | "Invalid address: The decoy site's URL should be a complete URL. Example:
+# "
 # | "https://www.wikipedia.org/\n"
 #~ msgid "config.Invalid decoy_site"
 #~ msgstr ""
@@ -2057,7 +2191,7 @@ msgstr "复制到剪贴板：Ctrl+C，回车"
 #~ msgid "config.http_proxy.description"
 #~ msgstr ""
 
-# | msgid "Link Copied to clipboard. "
+# | msgid "Link copied to clipboard. "
 #~ msgid "user.home.link.success - copy"
 #~ msgstr ""
 
@@ -2066,7 +2200,7 @@ msgstr "复制到剪贴板：Ctrl+C，回车"
 #~ msgstr ""
 
 # | msgid ""
-# | "Enabling HTTP domain fronting causes your domain to be block quickly."
+# | "Enabling HTTP domain fronting causes your domain to be blocked quickly."
 #~ msgid "config.domain_fronting_http.description"
 #~ msgstr ""
 

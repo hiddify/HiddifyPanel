@@ -11,8 +11,8 @@ from enum import auto
 from strenum import StrEnum
 
 class ConfigCategory(StrEnum):
-    branding=auto()
     admin=auto()
+    branding=auto()
     general=auto()
     proxies=auto()
     domain_fronting=auto()

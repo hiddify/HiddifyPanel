@@ -8,7 +8,7 @@
 
 
 {% block nav_bar %}
-
+{% include "donation.html" %}
 <!-- Navbar -->
 <nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
   <!-- Left navbar links -->
@@ -78,6 +78,10 @@
           <!-- Add icons to the links using the .nav-icon class
                  with font-awesome or any other icon font library -->
                  {{ render_nav_item('admin.Dashboard:index', icon('solid','house','nav-icon')+_('admin.menu.home')) }}
+                 <a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#modal-donation">
+                  <i class="fa-solid fa-heart nav-icon"></i>&nbsp;{{_("Donation")}}
+                </a>
+                 
                  {{ render_nav_item('flask.domain.index_view', icon('solid','link','nav-icon')+_('admin.menu.domain')) }}
                  {{ render_nav_item('flask.user.index_view', icon('solid','user','nav-icon')+_('admin.menu.user')) }}
                  {{ render_nav_item('admin.ProxyAdmin:index', icon('solid','arrow-down-up-lock','nav-icon')+_('admin.menu.proxy')) }}
@@ -89,6 +93,7 @@
           {% set action_active = True if request.endpoint and "Actions:" in request.endpoint else False %}
 
           <li class="nav-item {{'menu-open' if action_active else ''}}">
+            
             <a id= href="#"
               class="nav-link">{{icon('solid','suitcase','nav-icon')+_('admin.actions.title')}} <i class="right fas fa-angle-left"></i></a>
             <ul class="nav nav-treeview">
@@ -113,4 +118,16 @@
   <!-- /.sidebar -->
 </aside>
 
+{% endblock %}
+
+
+{%block tail_js %}
+{{super()}}
+<script>
+$(document).ready(function () {
+  if ($('#show-modal-donation').length){
+    $("#modal-donation").modal()
+  }
+})
+</script>
 {% endblock %}

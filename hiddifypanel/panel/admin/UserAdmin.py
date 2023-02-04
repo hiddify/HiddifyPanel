@@ -1,7 +1,7 @@
 from flask_admin.contrib import sqla
 from hiddifypanel.panel.database import db
 from hiddifypanel.models import  User,Domain,DomainType,StrConfig,ConfigEnum,hconfig
-from flask import Markup,g
+from flask import Markup,g,flash
 from wtforms.validators import Regexp,ValidationError
 import re,uuid
 from hiddifypanel import xray_api
@@ -79,7 +79,8 @@ class UserAdmin(AdminLTEModelView):
     #     return g.is_admin
 
     def on_model_change(self, form, model, is_created):
-        
+        if len(User.query.all())%4==0:
+            flash(Markup('<div id="show-modal-donation"></div>'), ' d-none')
         if not re.match("^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$", model.uuid):
             raise ValidationError('Invalid UUID e.g.,'+ str(uuid.uuid4()))
         else:

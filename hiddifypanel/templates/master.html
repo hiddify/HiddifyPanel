@@ -183,17 +183,23 @@
   qrcode = new QRCode(document.getElementById("qrcode"), { width: w, height: w, correctLevel: 1 });
   function share_click(e) {
         e.preventDefault();
-        var link = this.href;
+        var link = this.getAttribute('data-copy')|| this.href;
         qrcode.clear()
         qrcode.makeCode(link);
         hrefshare = "https://{{domain}}/{{hconfig(ConfigEnum.proxy_path)}}/redirect/" + link.replaceAll('://', '%3A%2F%2F')
         $('#qrcode-link')[0].href = link
         $('#share-link-open')[0].href = link
         $('#share-link-redirect')[0].href = hrefshare
+        $('#share-link-open').show()
         if (link.startsWith("http"))
             $('#share-link-redirect').hide()
         else
             $('#share-link-redirect').show()
+
+        if (this.getAttribute('data-copy')){
+          $('#share-link-redirect').hide()
+          $('#share-link-open').hide()
+        }
         $('#share-qr-code').modal('show');
     }
 
