@@ -125,6 +125,7 @@ def init_db():
             StrConfig(key=ConfigEnum.branding_title,value=""),
             StrConfig(key=ConfigEnum.branding_site,value=""),
             StrConfig(key=ConfigEnum.branding_freetext,value=""),
+            BoolConfig(key=ConfigEnum.v2ray_enable,value=False),
         ])
         db.session.commit()
         db_version=3
