@@ -10,7 +10,7 @@ class Dashboard(FlaskView):
         try:
             def_user=None if len(User.query.all())>1 else User.query.filter(User.name=='default').first()
             domains=Domain.query.all()
-            sslip_domains=[d for d in domains if "sslip.io" in d.domain]
+            sslip_domains=[d.domain for d in domains if "sslip.io" in d.domain]
 
             if def_user and sslip_domains:
                 quick_setup=url_for("admin.QuickSetup:index")
