@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-04 20:45+0100\n"
-"PO-Revision-Date: 2023-02-04 13:45-0600\n"
+"POT-Creation-Date: 2023-02-04 21:31+0100\n"
+"PO-Revision-Date: 2023-02-04 14:05-0600\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -85,8 +85,9 @@ msgid ""
 "It seems that you are using default domain (%(domain)s) which is not "
 "recommended."
 msgstr ""
-"به نظر می‌رسد شما درحال استفاده از دامنه پیش فرض (%(domain)s) هستید؛ این "
-"کار توصیه نمی‌شود. لطفا از بخش دامنه‌ها آن را حذف یا تغییر دهید."
+"به نظر می‌رسد شما درحال استفاده از دامنه پیش فرض (<span "
+"class='ltr'>%(domain)s</span>) هستید؛ این کار توصیه نمی‌شود. لطفا از بخش "
+"دامنه‌ها آن را حذف یا تغییر دهید."
 
 #: hiddifypanel/panel/admin/Dashboard.py:23
 #, python-format
@@ -1486,6 +1487,7 @@ msgstr ""
 # | msgid "Hiddify Proxy"
 #: copy.html:2 hiddifypanel/panel/user/templates/home/index
 #: hiddifypanel/panel/user/templates/home/index.html:2
+#: hiddifypanel/panel/user/templates/home/index.html:7
 msgid "user.home.title"
 msgstr "پروکسی هایدیفای"
 
@@ -1494,15 +1496,6 @@ msgstr "پروکسی هایدیفای"
 #: hiddifypanel/panel/user/templates/home/index.html:39
 msgid "telegram"
 msgstr "تلگرام"
-
-# | msgid "Hiddify Panel"
-#: hiddifypanel/panel/user/templates/home/index.html:7
-#: hiddifypanel/templates/admin-layout.html:19
-#: hiddifypanel/templates/admin-layout.html:23
-#: hiddifypanel/templates/admin-layout.html:66
-#: hiddifypanel/templates/master.html:6
-msgid "master.page-title"
-msgstr "هایدیفای"
 
 #: hiddifypanel/panel/user/templates/home/index.html:7
 #, python-format
@@ -1825,6 +1818,14 @@ msgstr ""
 " پنجره در مرورگر خود، کافیست روی گزینه Open HiddifyDesktop کلیک کنید تا "
 "لینک سرور به صورت خودکار به HiddifyDesktop اضافه شود."
 
+# | msgid "Hiddify Panel"
+#: hiddifypanel/templates/admin-layout.html:19
+#: hiddifypanel/templates/admin-layout.html:23
+#: hiddifypanel/templates/admin-layout.html:66
+#: hiddifypanel/templates/master.html:6
+msgid "master.page-title"
+msgstr "هایدیفای"
+
 # | msgid "Admin"
 #: hiddifypanel/templates/admin-layout.html:27
 #: hiddifypanel/templates/admin-layout.html:80
@@ -1833,13 +1834,13 @@ msgstr "ادمین"
 
 # | msgid "Domains"
 #: hiddifypanel/templates/admin-layout.html:28
-#: hiddifypanel/templates/admin-layout.html:85
+#: hiddifypanel/templates/admin-layout.html:86
 msgid "admin.menu.domain"
 msgstr "دامنه‌ها"
 
 # | msgid "Users"
 #: hiddifypanel/templates/admin-layout.html:29
-#: hiddifypanel/templates/admin-layout.html:86
+#: hiddifypanel/templates/admin-layout.html:85
 msgid "admin.menu.user"
 msgstr "کاربران"
 
@@ -1937,25 +1938,26 @@ msgstr "اعمال تغییرات"
 # href=\"https://opencollective.com/hiddify/contribute/backer-50556/checkout?interval=month&amount=25\"
 # class=\"btn btn-info\">Credit card and PayPal</a></li>\n"
 # | "<li> <div class=\"btn-group\">\n"
-# | "    <a href=\"#\"
+# | "    <a role=\"button\"
 # data-copy=\"EQCWnykA-YhavOXgH3sf-uxtXLjy83_9n5bJPGRPE8r2247_\" class=\"btn
 # btn-secondary copy-link\"><i class=\"fa-regular fa-copy\"></i></a>    \n"
 # | "<a data-copy=\"EQCWnykA-YhavOXgH3sf-uxtXLjy83_9n5bJPGRPE8r2247_\"
-# href=\"#\" class=\"btn btn-info share-link\">TON</a> </div></li>\n"
-# | "    <a href=\"#\"
+# role=\"button\" class=\"btn btn-info share-link\">TON</a> </div></li>\n"
+# | "    <a role=\"button\"
 # data-copy=\"0xF15ec158318d7F5236d82d040102340B0974C3E0\" class=\"btn
 # btn-secondary copy-link\"><i class=\"fa-regular fa-copy\"></i></a>    \n"
-# | "<a data-copy=\"0xF15ec158318d7F5236d82d040102340B0974C3E0\" href=\"#\"
-# class=\"btn btn-info share-link\">Ethereum</a> </div></li>\n"
-# | "    <a href=\"#\" data-copy=\"3Epy7jyUUCVb1w12MNTu2JFVVhmfpr4EGX\"
+# | "<a data-copy=\"0xF15ec158318d7F5236d82d040102340B0974C3E0\"
+# role=\"button\" class=\"btn btn-info share-link\">Ethereum</a>
+# </div></li>\n"
+# | "    <a role=\"button\" data-copy=\"3Epy7jyUUCVb1w12MNTu2JFVVhmfpr4EGX\"
 # class=\"btn btn-secondary copy-link\"><i class=\"fa-regular
 # fa-copy\"></i></a>    \n"
-# | "<a data-copy=\"3Epy7jyUUCVb1w12MNTu2JFVVhmfpr4EGX\" href=\"#\"
+# | "<a data-copy=\"3Epy7jyUUCVb1w12MNTu2JFVVhmfpr4EGX\" role=\"button\"
 # class=\"btn btn-info share-link\">Bitcoin</a> </div></li>\n"
-# | "    <a href=\"#\" data-copy=\"DJy27pQKwnhaRxWDbU6dG7UdHHif6yp8Jb\"
+# | "    <a role=\"button\" data-copy=\"DJy27pQKwnhaRxWDbU6dG7UdHHif6yp8Jb\"
 # class=\"btn btn-secondary copy-link\"><i class=\"fa-regular
 # fa-copy\"></i></a>    \n"
-# | "<a data-copy=\"DJy27pQKwnhaRxWDbU6dG7UdHHif6yp8Jb\" href=\"#\"
+# | "<a data-copy=\"DJy27pQKwnhaRxWDbU6dG7UdHHif6yp8Jb\" role=\"button\"
 # class=\"btn btn-info share-link\">Dogecoin</a> </div></li>\n"
 # | "</ul>\n"
 # | "</details>\n"
@@ -1990,32 +1992,33 @@ msgstr ""
 "href=\"https://opencollective.com/hiddify/contribute/backer-50556/checkout?interval=month&amount=25\""
 " class=\"btn btn-info copy-link\">کارت اعتباری و PayPal</a></li>\n"
 "<li> <div class=\"btn-group\">\n"
-"    <a href=\"#\" data-copy=\"EQCWnykA-YhavOXgH3sf-"
+"    <a role=\"button\" data-copy=\"EQCWnykA-YhavOXgH3sf-"
 "uxtXLjy83_9n5bJPGRPE8r2247_\" class=\"btn btn-secondary copy-link\"><i "
 "class=\"fa-regular fa-copy\"></i></a >\n"
 "<a data-copy=\"EQCWnykA-YhavOXgH3sf-uxtXLjy83_9n5bJPGRPE8r2247_\" "
-"href=\"#\" class=\"btn btn-info share-link\">TON</a> </div></li>\n"
+"role=\"button\" class=\"btn btn-info share-link\">TON</a> </div></li>\n"
 "\n"
 "\n"
 "<li> <div class=\"btn-group\">\n"
-"    <a href=\"#\" data-"
+"    <a role=\"button\" data-"
 "copy=\"0xF15ec158318d7F5236d82d040102340B0974C3E0\" class=\"btn btn-"
 "secondary share-link\"><i class=\"fa-regular fa-copy\"></i></a>\n"
-"<a data-copy=\"0xF15ec158318d7F5236d82d040102340B0974C3E0\" href=\"#\" "
-"class=\"btn btn-info share-link\">اتریوم</a> </div></li>\n"
+"<a data-copy=\"0xF15ec158318d7F5236d82d040102340B0974C3E0\" "
+"role=\"button\" class=\"btn btn-info share-link\">اتریوم</a> </div></li>"
+"\n"
 "\n"
 "<li> <div class=\"btn-group\">\n"
-"    <a href=\"#\" data-copy=\"3Epy7jyUUCVb1w12MNTu2JFVVhmfpr4EGX\" "
+"    <a role=\"button\" data-copy=\"3Epy7jyUUCVb1w12MNTu2JFVVhmfpr4EGX\" "
 "class=\"btn btn-secondary copy-link\"><i class=\"fa-regular fa-"
 "copy\"></i></a>\n"
-"<a data-copy=\"3Epy7jyUUCVb1w12MNTu2JFVVhmfpr4EGX\" href=\"#\" "
+"<a data-copy=\"3Epy7jyUUCVb1w12MNTu2JFVVhmfpr4EGX\" role=\"button\" "
 "class=\"btn btn-info share-link\">بیت کوین</a> </div></li>\n"
 "\n"
 "<li> <div class=\"btn-group\">\n"
-"    <a href=\"#\" data-copy=\"DJy27pQKwnhaRxWDbU6dG7UdHHif6yp8Jb\" "
+"    <a role=\"button\" data-copy=\"DJy27pQKwnhaRxWDbU6dG7UdHHif6yp8Jb\" "
 "class=\"btn btn-secondary copy-link\"><i class=\"fa-regular fa-"
 "copy\"></i></a>\n"
-"<a data-copy=\"DJy27pQKwnhaRxWDbU6dG7UdHHif6yp8Jb\" href=\"#\" "
+"<a data-copy=\"DJy27pQKwnhaRxWDbU6dG7UdHHif6yp8Jb\" role=\"button\" "
 "class=\"btn btn-info share-link\">Dogecoin</a> </div></li>\n"
 "</ul>\n"
 "</details>\n"

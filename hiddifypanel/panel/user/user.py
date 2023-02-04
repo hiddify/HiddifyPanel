@@ -6,6 +6,7 @@ from hiddifypanel.models import User,Domain,BoolConfig,StrConfig,DomainType,Conf
 from hiddifypanel.panel.hiddify  import auth
 from . import link_maker
 from flask_classful import FlaskView,route
+import random
 
 class UserView(FlaskView):
 
@@ -31,9 +32,9 @@ class UserView(FlaskView):
         
         c=get_common_data(g.user_uuid)
         
-
-
-        resp= Response(render_template('clash_config.yml',mode=mode,meta_or_normal=meta_or_normal,**c,hash=hash(f'{c}')))
+        
+        hash_rnd=random.randint(0,1000000) #hash(f'{c}')
+        resp= Response(render_template('clash_config.yml',mode=mode,meta_or_normal=meta_or_normal,**c,hash=hash_rnd))
         resp.mimetype="text/plain"
         resp.headers['Subscription-Userinfo']=f"upload=0;download={c['usage_current_b']};total={c['usage_limit_b']};expire={c['expire_s']}"
         return resp

@@ -1,3 +1,6 @@
+% set OnProxyIssue='REJECT' if mode =="all" else 'DIRECT'
+% set OnIranSites='PROXY' if mode =="all" else 'DIRECT'
+% set OnNotFilteredSites='DIRECT' if mode =="lite" else 'PROXY'
 
 mixed-port: 7890
 allow-lan: false
@@ -49,7 +52,7 @@ proxy-groups:
 
   - name: PROXY
     proxies:
-      - auto
+      - auto_fallback
     use:
       - all_proxies
     type: select
@@ -60,52 +63,53 @@ proxy-groups:
   
 
 
-  - name: OnIranSites_{{mode}}
-    proxies:
-    % if mode=="all"
-      - PROXY
-      - DIRECT
-    % else:
-      - DIRECT
-      - PROXY
-    % endif
-    type: select
+  # - name: OnIranSites_{{mode}}
+  #   proxies:
+  #   % if mode=="all"
+  #     - PROXY
+  #     - DIRECT
+  #   % else:
+  #     - DIRECT
+  #     - PROXY
+  #   % endif
+  #   type: select
 
-  - name: OnNotFilteredSites_{{mode}}
-    proxies:
-    % if mode =="lite"
-      - DIRECT
-      - PROXY
-    % else:
-      - PROXY
-      - DIRECT
-    % endif
-    type: select  
+  # - name: OnNotFilteredSites_{{mode}}
+  #   proxies:
+  #   % if mode =="lite"
+  #     - DIRECT
+  #     - PROXY
+  #   % else:
+  #     - PROXY
+  #     - DIRECT
+  #   % endif
+  #   type: select  
 
-  - name: OnProxyIssue_{{mode}}
-    proxies:
-    % if mode =="all"
-      - REJECT
-      - DIRECT
-    % else:
-      - DIRECT
-      - REJECT
-    % endif
-    type: select
+  # - name: OnProxyIssue_{{mode}}
+  #   proxies:
+  #   % if mode =="all"
+  #     - REJECT
+  #     - DIRECT
+  #   % else:
+  #     - DIRECT
+  #     - REJECT
+  #   % endif
+    # type: select
 
-  - name: auto_all
+  - name: auto
     use:
       - all_proxies
     type: url-test
     url: http://cp.cloudflare.com
     interval: 300
-  - name: auto
+
+  - name: auto_fallback
     type: fallback
     url: 'http://cp.cloudflare.com'
     interval: 300
     proxies:
-        - auto_all
-        - OnProxyIssue_{{mode}}
+        - auto
+        - {{OnProxyIssue}}
 {{link_maker.get_all_clash_configs(meta_or_normal)}}
 proxy-providers:
   all_proxies:
@@ -156,8 +160,8 @@ rules:
   - IP-CIDR,10.10.34.0/24,PROXY
   - RULE-SET,tmpblocked,PROXY
   - RULE-SET,blocked,PROXY
-  - GEOIP,IR,OnIranSites_{{mode}}
-  - DOMAIN-SUFFIX,.ir,OnIranSites_{{mode}}
-  - RULE-SET,open,OnIranSites_{{mode}}
+  - GEOIP,IR,{{OnIranSites}}
+  - DOMAIN-SUFFIX,.ir,{{OnIranSites}}
+  - RULE-SET,open,{{OnIranSites}}
   - RULE-SET,ads,REJECT
-  - MATCH,OnNotFilteredSites_{{mode}}
+  - MATCH,{{OnNotFilteredSites}}
