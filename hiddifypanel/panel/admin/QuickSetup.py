@@ -28,6 +28,7 @@ class QuickSetup(FlaskView):
                 if lang_form.lang_submit.data:
                         if lang_form.validate_on_submit():
                                 StrConfig.query.filter(StrConfig.key==ConfigEnum.lang).first().value=lang_form.lang.data
+                                StrConfig.query.filter(StrConfig.key==ConfigEnum.admin_lang).first().value=lang_form.admin_lang.data
                                 db.session.commit()
                                 flash(_('quicksetup.setlang.success'), 'success')
                                 from flask_babel import refresh; refresh()
@@ -68,6 +69,7 @@ class QuickSetup(FlaskView):
 def get_lang_form(empty=False):
         class LangForm(FlaskForm):
                 lang=wtf.fields.SelectField(_("config.lang.label"),choices=[("en",_("lang.en")),("fa",_("lang.fa"))],description=_("config.lang.description"),default=hconfig(ConfigEnum.lang))
+                lang=wtf.fields.SelectField(_("config.admin_lang.label"),choices=[("en",_("lang.en")),("fa",_("lang.fa"))],description=_("config.admin_lang.description"),default=hconfig(ConfigEnum.admin_lang))
                 lang_submit=wtf.fields.SubmitField(_('Submit'))
         
         return LangForm(None)if empty else LangForm()

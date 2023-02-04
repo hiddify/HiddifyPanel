@@ -108,6 +108,7 @@ class ConfigEnum(StrEnum):
             # telegram_secret:{'category':'general'},
             self.telegram_adtag: {'category': ConfigCategory.telegram},
             self.telegram_fakedomain: {'category': ConfigCategory.telegram},
+            self.telegram_lib: {'category': ConfigCategory.telegram},
 
             self.v2ray_enable: {'category': ConfigCategory.proxies,'type':bool},
 
