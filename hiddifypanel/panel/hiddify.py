@@ -3,7 +3,7 @@ to_gig_d = 1024*1024*1024
 import datetime
 
 from hiddifypanel.panel.database import db
-from hiddifypanel.models import StrConfig,BoolConfig,User,Domain,get_hconfigs,Proxy,hconfig,ConfigEnum
+from hiddifypanel.models import StrConfig,BoolConfig,User,Domain,get_hconfigs,Proxy,hconfig,ConfigEnum,DomainType
 import urllib
 from flask_babelex import lazy_gettext as _
 from flask_babelex import gettext as __
