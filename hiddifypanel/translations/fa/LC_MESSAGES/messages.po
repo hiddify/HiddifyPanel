@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-04 16:47+0100\n"
-"PO-Revision-Date: 2023-02-04 09:46-0600\n"
+"POT-Creation-Date: 2023-02-04 17:25+0100\n"
+"PO-Revision-Date: 2023-02-04 10:25-0600\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -204,7 +204,7 @@ msgstr ""
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/panel/admin/templates/quick_setup.html:22
 msgid "config.lang.label"
-msgstr "زبان"
+msgstr "زبان محیط کاربران"
 
 # | msgid "English انگلیسی 英语"
 #: hiddifypanel/panel/admin/QuickSetup.py:71
@@ -224,7 +224,9 @@ msgstr "Persian فارسی 波斯语"
 #: hiddifypanel/panel/admin/QuickSetup.py:71
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.lang.description"
-msgstr "این گزینه زبان بخش مدیریت و بخش کاربر را تغییر می دهد."
+msgstr ""
+"این گزینه زبان بخش کاربر را تغییر می دهد برای تغییر زبان بخش مدیریت از "
+"گزینه مربوطه اقدام کنید."
 
 # | msgid "Admin panel language"
 #: hiddifypanel/panel/admin/QuickSetup.py:72
@@ -427,6 +429,7 @@ msgstr "تنظیمات"
 msgid "domain.cdn"
 msgstr "سی‌دی‌ان"
 
+# | msgid "Branding Title"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.branding_title.label"
 msgstr ""
@@ -435,6 +438,7 @@ msgstr ""
 msgid "config.branding_title.description"
 msgstr ""
 
+# | msgid "Support link"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.branding_site.label"
 msgstr ""
@@ -443,18 +447,23 @@ msgstr ""
 msgid "config.branding_site.description"
 msgstr ""
 
+# | msgid "FreeText"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.branding_freetext.label"
 msgstr ""
 
+# | msgid "Branding free text. You can add html tags"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.branding_freetext.description"
 msgstr ""
 
+# | msgid "Customization"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.branding.label"
 msgstr ""
 
+# | msgid ""
+# | "If you add some text in this section, it will appear in the user page."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.branding.description"
 msgstr ""
@@ -1517,7 +1526,7 @@ msgid "user.home.select tool"
 msgstr "لطفا یکی از موارد زیر را انتخاب کنید."
 
 #: hiddifypanel/panel/user/templates/home/index.html:124
-#: hiddifypanel/panel/user/templates/home/usage.html:50
+#: hiddifypanel/panel/user/templates/home/usage.html:51
 msgid "QR code"
 msgstr "کیوآر کد"
 
@@ -1526,7 +1535,7 @@ msgstr "کیوآر کد"
 # fa-qrcode'></i>"
 # | " field to display its QR Code."
 #: hiddifypanel/panel/user/templates/home/index.html:125
-#: hiddifypanel/panel/user/templates/home/usage.html:51
+#: hiddifypanel/panel/user/templates/home/usage.html:52
 msgid "user.home.qr-code.description"
 msgstr ""
 "برای کپی یا به اشتراک‌گذاری لینک‌ها، روی قسمت طوسی‌رنگ  که با شکل <i "
@@ -1535,7 +1544,7 @@ msgstr ""
 
 # | msgid "Display QR Code"
 #: hiddifypanel/panel/user/templates/home/index.html:133
-#: hiddifypanel/panel/user/templates/home/usage.html:59
+#: hiddifypanel/panel/user/templates/home/usage.html:60
 msgid "user.home.qr-code.display"
 msgstr "نمایش کیو آر کد"
 
@@ -1691,17 +1700,17 @@ msgid "days"
 msgstr "روز"
 
 # | msgid "Display usage details."
-#: hiddifypanel/panel/user/templates/home/usage.html:24
+#: hiddifypanel/panel/user/templates/home/usage.html:25
 msgid "user.home.usage.details"
 msgstr "نمایش جزئیات استفاده"
 
 # | msgid "Support"
-#: hiddifypanel/panel/user/templates/home/usage.html:32
+#: hiddifypanel/panel/user/templates/home/usage.html:33
 msgid "user.home.branding.title"
 msgstr ""
 
-# | msgid "Support link"
-#: hiddifypanel/panel/user/templates/home/usage.html:41
+# | msgid "Support Page"
+#: hiddifypanel/panel/user/templates/home/usage.html:42
 msgid "user.home.branding.linktitle"
 msgstr ""
 

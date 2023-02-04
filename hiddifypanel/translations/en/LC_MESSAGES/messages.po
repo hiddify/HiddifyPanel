@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-04 16:47+0100\n"
-"PO-Revision-Date: 2023-02-04 09:46-0600\n"
+"POT-Creation-Date: 2023-02-04 17:25+0100\n"
+"PO-Revision-Date: 2023-02-04 10:25-0600\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -416,45 +416,53 @@ msgstr "Settings"
 msgid "domain.cdn"
 msgstr "CDN"
 
+# | msgid "Branding Title"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.branding_title.label"
-msgstr "config.branding_title.label"
+msgstr "Branding Title"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.branding_title.description"
 msgstr "config.branding_title.description"
 
+# | msgid "Support link"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.branding_site.label"
-msgstr "config.branding_site.label"
+msgstr "Support link"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.branding_site.description"
 msgstr "config.branding_site.description"
 
+# | msgid "FreeText"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.branding_freetext.label"
-msgstr "config.branding_freetext.label"
+msgstr "FreeText"
 
+# | msgid "Branding free text. You can add html tags"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.branding_freetext.description"
-msgstr "config.branding_freetext.description"
+msgstr "Branding free text. You can add html tags"
 
+# | msgid "Customization"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.branding.label"
-msgstr "config.branding.label"
+msgstr "Customization"
 
+# | msgid ""
+# | "If you add some text in this section, it will appear in the user page."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.branding.description"
-msgstr "config.branding.description"
+msgstr ""
+"If you add some text in this section, it will appear in the user page."
 
 # | msgid "Admin Secret"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1475,7 +1483,7 @@ msgid "user.home.select tool"
 msgstr "Please select the item."
 
 #: hiddifypanel/panel/user/templates/home/index.html:124
-#: hiddifypanel/panel/user/templates/home/usage.html:50
+#: hiddifypanel/panel/user/templates/home/usage.html:51
 msgid "QR code"
 msgstr "QR code"
 
@@ -1483,7 +1491,7 @@ msgstr "QR code"
 # | "To copy or share links, click on the gray <i class='fa-solid fa-qrcode'>"
 # | "</i> field to display its QR Code."
 #: hiddifypanel/panel/user/templates/home/index.html:125
-#: hiddifypanel/panel/user/templates/home/usage.html:51
+#: hiddifypanel/panel/user/templates/home/usage.html:52
 msgid "user.home.qr-code.description"
 msgstr ""
 "To copy or share links, click on the gray <i class='fa-solid fa-qrcode'></i>"
@@ -1491,7 +1499,7 @@ msgstr ""
 
 # | msgid "Display QR Code"
 #: hiddifypanel/panel/user/templates/home/index.html:133
-#: hiddifypanel/panel/user/templates/home/usage.html:59
+#: hiddifypanel/panel/user/templates/home/usage.html:60
 msgid "user.home.qr-code.display"
 msgstr "Display QR Code"
 
@@ -1641,21 +1649,21 @@ msgid "days"
 msgstr "Days"
 
 # | msgid "Display usage details."
-#: hiddifypanel/panel/user/templates/home/usage.html:24
+#: hiddifypanel/panel/user/templates/home/usage.html:25
 msgid "user.home.usage.details"
 msgstr "Display usage details."
 
 # | msgid "Support"
-#: hiddifypanel/panel/user/templates/home/usage.html:32
+#: hiddifypanel/panel/user/templates/home/usage.html:33
 #, fuzzy
 msgid "user.home.branding.title"
 msgstr "Support"
 
-# | msgid "Support link"
-#: hiddifypanel/panel/user/templates/home/usage.html:41
+# | msgid "Support Page"
+#: hiddifypanel/panel/user/templates/home/usage.html:42
 #, fuzzy
 msgid "user.home.branding.linktitle"
-msgstr "Support link"
+msgstr "Support Page"
 
 #: hiddifypanel/panel/user/templates/home/windows.html:6
 #: hiddifypanel/panel/user/templates/home/windows.html:22

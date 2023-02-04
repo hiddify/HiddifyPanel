@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-04 16:47+0100\n"
-"PO-Revision-Date: 2023-02-04 09:46-0600\n"
+"POT-Creation-Date: 2023-02-04 17:25+0100\n"
+"PO-Revision-Date: 2023-02-04 10:25-0600\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -441,6 +441,7 @@ msgstr "设置"
 msgid "domain.cdn"
 msgstr "内容分发网络"
 
+# | msgid "Branding Title"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.branding_title.label"
 msgstr ""
@@ -449,6 +450,7 @@ msgstr ""
 msgid "config.branding_title.description"
 msgstr ""
 
+# | msgid "Support link"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.branding_site.label"
 msgstr ""
@@ -457,18 +459,23 @@ msgstr ""
 msgid "config.branding_site.description"
 msgstr ""
 
+# | msgid "FreeText"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.branding_freetext.label"
 msgstr ""
 
+# | msgid "Branding free text. You can add html tags"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.branding_freetext.description"
 msgstr ""
 
+# | msgid "Customization"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.branding.label"
 msgstr ""
 
+# | msgid ""
+# | "If you add some text in this section, it will appear in the user page."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.branding.description"
 msgstr ""
@@ -1593,7 +1600,7 @@ msgid "user.home.select tool"
 msgstr "请选择项目。"
 
 #: hiddifypanel/panel/user/templates/home/index.html:124
-#: hiddifypanel/panel/user/templates/home/usage.html:50
+#: hiddifypanel/panel/user/templates/home/usage.html:51
 #, fuzzy
 msgid "QR code"
 msgstr "二维码"
@@ -1603,14 +1610,14 @@ msgstr "二维码"
 # fa-qrcode'></i>"
 # | " field to display its QR Code."
 #: hiddifypanel/panel/user/templates/home/index.html:125
-#: hiddifypanel/panel/user/templates/home/usage.html:51
+#: hiddifypanel/panel/user/templates/home/usage.html:52
 #, fuzzy
 msgid "user.home.qr-code.description"
 msgstr "要复制或共享链接，请点击灰色的 <i class='fa-solid fa-qrcode'></i> 字段以显示其二维码。"
 
 # | msgid "Display QR Code"
 #: hiddifypanel/panel/user/templates/home/index.html:133
-#: hiddifypanel/panel/user/templates/home/usage.html:59
+#: hiddifypanel/panel/user/templates/home/usage.html:60
 #, fuzzy
 msgid "user.home.qr-code.display"
 msgstr "显示二维码"
@@ -1779,18 +1786,18 @@ msgid "days"
 msgstr "天"
 
 # | msgid "Display usage details."
-#: hiddifypanel/panel/user/templates/home/usage.html:24
+#: hiddifypanel/panel/user/templates/home/usage.html:25
 #, fuzzy
 msgid "user.home.usage.details"
 msgstr "显示使用详情。"
 
 # | msgid "Support"
-#: hiddifypanel/panel/user/templates/home/usage.html:32
+#: hiddifypanel/panel/user/templates/home/usage.html:33
 msgid "user.home.branding.title"
 msgstr ""
 
-# | msgid "Support link"
-#: hiddifypanel/panel/user/templates/home/usage.html:41
+# | msgid "Support Page"
+#: hiddifypanel/panel/user/templates/home/usage.html:42
 msgid "user.home.branding.linktitle"
 msgstr ""
 

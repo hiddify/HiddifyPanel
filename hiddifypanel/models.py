@@ -92,7 +92,7 @@ class ConfigEnum(StrEnum):
             self.branding_freetext:{'category': ConfigCategory.branding},
             self.not_found:{'category': ConfigCategory.hidden},
             self.admin_secret: {'category': ConfigCategory.admin},
-            self.lang: {'category': ConfigCategory.admin},
+            self.lang: {'category': ConfigCategory.branding},
             self.admin_lang: {'category': ConfigCategory.admin},
             self.tls_ports: {'category': ConfigCategory.tls},
             self.http_ports: {'category': ConfigCategory.http},
