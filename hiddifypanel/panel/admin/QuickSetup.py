@@ -7,7 +7,7 @@ from flask_bootstrap import SwitchField
 from hiddifypanel.panel import hiddify
 from flask_admin.base import expose
 # from gettext import gettext as _
-
+from wtforms.validators import Regexp,ValidationError
 
 import re
 from flask import render_template,current_app,flash, Markup,redirect,url_for
@@ -93,4 +93,4 @@ def validate_domain(form,field):
 
         myip=hiddify.get_ip(4)
         if dip and myip!=dip:
-                raise ValidationError(_("Domain (%(domain))-> IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode",server_ip=myip,domain_ip=dip,domain=domain))
+                raise ValidationError(_("Domain (%(domain)s)-> IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode",server_ip=myip,domain_ip=dip,domain=domain))
