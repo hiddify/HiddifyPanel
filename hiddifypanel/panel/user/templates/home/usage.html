@@ -10,7 +10,7 @@
                             {{user.monthly_usage_limit_GB}}GB  {{_('user.home.usage.monthly')}}</span> 
                     <div class="progress">
                         <div class="progress-bar progress-bar-striped bg-warning"
-                            style="width: {{user.current_usage_GB*10000/user.monthly_usage_limit_GB}}%"></div>
+                            style="width: {{user.current_usage_GB*100/user.monthly_usage_limit_GB}}%"></div>
                     </div>
                     <span class="progress-description">
                         <i class="fa-solid fa-calendar-days fa-margin"></i> <b>{{_('user.home.usage.expire')}}</b> {{expire_days}} {{_('days')}}                     </span>
@@ -29,7 +29,7 @@
 
 
 
-        <div  class="card small-box bg-warning">
+        <div  class="card small-box bg-warning d-none d-sm-flex">
             <div class="card-body">
             <div class="inner">
                 <h3>{{_('QR code')}}</h3>
