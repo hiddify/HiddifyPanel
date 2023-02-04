@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-04 11:57+0100\n"
-"PO-Revision-Date: 2023-02-04 04:57-0600\n"
+"POT-Creation-Date: 2023-02-04 16:47+0100\n"
+"PO-Revision-Date: 2023-02-04 09:46-0600\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -144,7 +144,7 @@ msgstr "其中一个字段遇到错误"
 #: hiddifypanel/panel/admin/ProxyAdmin.py:116
 #: hiddifypanel/panel/admin/QuickSetup.py:73
 #: hiddifypanel/panel/admin/QuickSetup.py:92
-#: hiddifypanel/panel/admin/SettingAdmin.py:168
+#: hiddifypanel/panel/admin/SettingAdmin.py:172
 #, fuzzy
 msgid "Submit"
 msgstr "提交"
@@ -238,15 +238,15 @@ msgstr ""
 
 # | msgid "Error! Invalid domain.  The domain format is www.google.com"
 #: hiddifypanel/panel/admin/QuickSetup.py:87
-#: hiddifypanel/panel/admin/SettingAdmin.py:128
-#: hiddifypanel/panel/admin/SettingAdmin.py:130
+#: hiddifypanel/panel/admin/SettingAdmin.py:132
+#: hiddifypanel/panel/admin/SettingAdmin.py:134
 #, fuzzy
 msgid "config.Invalid domain"
 msgstr "错误！域无效。域格式为 www.google.com"
 
 # | msgid "Domain is exist in domains section. Use another domain"
 #: hiddifypanel/panel/admin/QuickSetup.py:88
-#: hiddifypanel/panel/admin/SettingAdmin.py:132
+#: hiddifypanel/panel/admin/SettingAdmin.py:136
 #, fuzzy
 msgid "config.Domain already used"
 msgstr "域存在于域部分。使用另一个域"
@@ -340,23 +340,29 @@ msgstr "Erlang：中等性能"
 msgid "config.telegram_lib.description"
 msgstr "您可以在不同的电报库之间切换。"
 
+# | msgid "Invalid branding link"
+#: hiddifypanel/panel/admin/SettingAdmin.py:141
+#, fuzzy
+msgid "config.Invalid brand link"
+msgstr "品牌链接无效"
+
 # | msgid ""
 # | "Invalid UUID secret. e.g., 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n"
 # | "\n"
-#: hiddifypanel/panel/admin/SettingAdmin.py:141
+#: hiddifypanel/panel/admin/SettingAdmin.py:145
 #, fuzzy
 msgid "config.invalid uuid"
 msgstr "UUID 密码无效。例如，6098ea35-8cb2-4a08-ba15-2be25bc49cb6"
 
 # | msgid "Invalid proxy path. It should be asci string (a-z A-Z 0-9)"
-#: hiddifypanel/panel/admin/SettingAdmin.py:145
+#: hiddifypanel/panel/admin/SettingAdmin.py:149
 #, fuzzy
 msgid "config.Invalid proxy path"
 msgstr "代理路径无效。它应该是 asci 字符串 (a-z A-Z 0-9)"
 
 # | msgid ""
 # | "Invalid port. It should be comma separated integer e.g., 1000,1001"
-#: hiddifypanel/panel/admin/SettingAdmin.py:149
+#: hiddifypanel/panel/admin/SettingAdmin.py:153
 #, fuzzy
 msgid "config.Invalid port"
 msgstr "端口无效。它应该是逗号分隔的整数，例如 1000,1001"
@@ -364,13 +370,13 @@ msgstr "端口无效。它应该是逗号分隔的整数，例如 1000,1001"
 # | msgid ""
 # | "Port 80 should always be presented. We use it for getting ssl
 # certificate"
-#: hiddifypanel/panel/admin/SettingAdmin.py:152
+#: hiddifypanel/panel/admin/SettingAdmin.py:156
 #, fuzzy
 msgid "config.port 80 is required"
 msgstr "应始终提供端口 80。我们用它来获取 ssl 证书"
 
 # | msgid "Port 443 should always be presented. "
-#: hiddifypanel/panel/admin/SettingAdmin.py:155
+#: hiddifypanel/panel/admin/SettingAdmin.py:159
 #, fuzzy
 msgid "config.port 443 is required"
 msgstr "应始终显示端口 443。"
@@ -434,6 +440,38 @@ msgstr "设置"
 #, fuzzy
 msgid "domain.cdn"
 msgstr "内容分发网络"
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.branding_title.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.branding_title.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.branding_site.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.branding_site.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.branding_freetext.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.branding_freetext.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.branding.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.branding.description"
+msgstr ""
 
 # | msgid "Admin Secret"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1555,7 +1593,7 @@ msgid "user.home.select tool"
 msgstr "请选择项目。"
 
 #: hiddifypanel/panel/user/templates/home/index.html:124
-#: hiddifypanel/panel/user/templates/home/usage.html:35
+#: hiddifypanel/panel/user/templates/home/usage.html:50
 #, fuzzy
 msgid "QR code"
 msgstr "二维码"
@@ -1565,14 +1603,14 @@ msgstr "二维码"
 # fa-qrcode'></i>"
 # | " field to display its QR Code."
 #: hiddifypanel/panel/user/templates/home/index.html:125
-#: hiddifypanel/panel/user/templates/home/usage.html:36
+#: hiddifypanel/panel/user/templates/home/usage.html:51
 #, fuzzy
 msgid "user.home.qr-code.description"
 msgstr "要复制或共享链接，请点击灰色的 <i class='fa-solid fa-qrcode'></i> 字段以显示其二维码。"
 
 # | msgid "Display QR Code"
 #: hiddifypanel/panel/user/templates/home/index.html:133
-#: hiddifypanel/panel/user/templates/home/usage.html:44
+#: hiddifypanel/panel/user/templates/home/usage.html:59
 #, fuzzy
 msgid "user.home.qr-code.display"
 msgstr "显示二维码"
@@ -1745,6 +1783,16 @@ msgstr "天"
 #, fuzzy
 msgid "user.home.usage.details"
 msgstr "显示使用详情。"
+
+# | msgid "Support"
+#: hiddifypanel/panel/user/templates/home/usage.html:32
+msgid "user.home.branding.title"
+msgstr ""
+
+# | msgid "Support link"
+#: hiddifypanel/panel/user/templates/home/usage.html:41
+msgid "user.home.branding.linktitle"
+msgstr ""
 
 #: hiddifypanel/panel/user/templates/home/windows.html:6
 #: hiddifypanel/panel/user/templates/home/windows.html:22

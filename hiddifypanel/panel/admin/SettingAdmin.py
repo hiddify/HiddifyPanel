@@ -121,6 +121,10 @@ def get_config_form():
                 field=wtf.fields.SelectField(_(f"config.{c.key}.label"),choices=[("en",_("lang.en")),("fa",_("lang.fa")),("zh",_("lang.zh"))],description=_(f"config.{c.key}.description"),default=hconfig(ConfigEnum.lang))
             elif c.key==ConfigEnum.telegram_lib:
                 field=wtf.fields.SelectField(_("config.telegram_lib.label"),choices=[("python",_("lib.telegram.python")),("tgo",_("lib.telegram.go")),("orig",_("lib.telegram.orignal")),("erlang",_("lib.telegram.erlang"))],description=_("config.telegram_lib.description"),default=hconfig(ConfigEnum.telegram_lib))
+            elif c.key==ConfigEnum.branding_freetext:
+                validators=[wtf.validators.Length(max=2048)]
+                render_kw={'class':"ltr",'maxlength':2048}
+                field= wtf.fields.TextAreaField(_(f'config.{c.key}.label'), validators, default=c.value, description=_(f'config.{c.key}.description'),render_kw=render_kw) 
             else:
                 render_kw={'class':"ltr"}
                 validators=[]
@@ -131,11 +135,11 @@ def get_config_form():
                     if c.key!=ConfigEnum.decoy_domain:
                         validators.append(wtf.validators.NoneOf(db.session.query(Domain.domain).all(),_("config.Domain already used")))
                     render_kw['required']=""
-        
+                
 
-                # if c.key==ConfigEnum.decoy_domain:
-                #     validators.append(wtf.validators.Regexp("http(s|)://([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})/?",re.IGNORECASE,_("config.Invalid decoy_domain")))
-                #     render_kw['required']=""
+                if c.key==ConfigEnum.branding_site:
+                    validators.append(wtf.validators.Regexp("http(s|)://([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})/?.*",re.IGNORECASE,_("config.Invalid brand link")))
+                    # render_kw['required']=""
 
                 if 'secret' in c.key:
                     validators.append(wtf.validators.Regexp("^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",re.IGNORECASE,_('config.invalid uuid')))

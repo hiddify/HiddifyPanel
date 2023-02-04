@@ -4,7 +4,7 @@
 {% block body_header %}
 <div class="row mb-2">
     <div class="col-sm-6">
-      <h1 class="m-0"> <a href="https://github.com/hiddify/hiddify-config/wiki">{{_("master.page-title")}}</a>: {{_('Welcome %(user)s',user=user.name)}} </h1>
+      <h1 class="m-0"> <a href="{{hconfig(ConfigEnum.branding_site) or 'https://github.com/hiddify/hiddify-config/wiki'}}">{{hconfig(ConfigEnum.branding_title) or _("master.page-title")}}</a>: {{_('Welcome %(user)s',user=user.name)}} </h1>
     </div><!-- /.col -->
     <div class="col-sm-6 d-none">
       <ol class="breadcrumb float-sm-right">

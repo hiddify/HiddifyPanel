@@ -119,13 +119,16 @@ def init_db():
         db.session.commit()
         db_version=2
         print(f"New DB version is {db_version}")
-    # if db_version==2:
-    #     print(f"Updating DB from version {db_version}")
-    #     db.session.bulk_save_objects([
-            
-    #     ])
-    #     db.session.commit()
-    #     db_version=3
+    if db_version==2:
+        print(f"Updating DB from version {db_version}")
+        db.session.bulk_save_objects([
+            StrConfig(key=ConfigEnum.branding_title,value=""),
+            StrConfig(key=ConfigEnum.branding_site,value=""),
+            StrConfig(key=ConfigEnum.branding_freetext,value=""),
+        ])
+        db.session.commit()
+        db_version=3
+        print(f"New DB version is {db_version}")
 
     # if db_version==3:
     #     print(f"Updating DB from version {db_version}")

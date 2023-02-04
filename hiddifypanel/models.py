@@ -11,6 +11,7 @@ from enum import auto
 from strenum import StrEnum
 
 class ConfigCategory(StrEnum):
+    branding=auto()
     admin=auto()
     general=auto()
     proxies=auto()
@@ -76,12 +77,19 @@ class ConfigEnum(StrEnum):
     domain_fronting_tls_enable = auto()
 
     db_version = auto()
+
+    branding_title=auto()
+    branding_site=auto()
+    branding_freetext=auto()
     not_found=auto()
     @classmethod
     def _missing_(cls, value):
       return cls.not_found #"key not found"
     def info(self):
         map = {
+            self.branding_title:{'category': ConfigCategory.branding},
+            self.branding_site:{'category': ConfigCategory.branding},
+            self.branding_freetext:{'category': ConfigCategory.branding},
             self.not_found:{'category': ConfigCategory.hidden},
             self.admin_secret: {'category': ConfigCategory.admin},
             self.lang: {'category': ConfigCategory.admin},
@@ -190,14 +198,12 @@ class BoolConfig(db.Model, SerializerMixin):
     # category = db.Column(db.String(128), primary_key=True)
     key = db.Column(db.Enum(ConfigEnum), primary_key=True)
     value = db.Column(db.Boolean)
-    description = db.Column(db.String(512))
 
 
 class StrConfig(db.Model, SerializerMixin):
     # category = db.Column(db.String(128), primary_key=True)
     key = db.Column(db.Enum(ConfigEnum), primary_key=True,   default=ConfigEnum.admin_secret)
-    value = db.Column(db.String(512))
-    description = db.Column(db.String(512))
+    value = db.Column(db.String(2048))
 
 
 def hdomains(mode):

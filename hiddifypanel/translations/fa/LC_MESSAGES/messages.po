@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-04 11:57+0100\n"
-"PO-Revision-Date: 2023-02-04 04:57-0600\n"
+"POT-Creation-Date: 2023-02-04 16:47+0100\n"
+"PO-Revision-Date: 2023-02-04 09:46-0600\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -151,7 +151,7 @@ msgstr "یکی از فیلدها دچار خطا شده است."
 #: hiddifypanel/panel/admin/ProxyAdmin.py:116
 #: hiddifypanel/panel/admin/QuickSetup.py:73
 #: hiddifypanel/panel/admin/QuickSetup.py:92
-#: hiddifypanel/panel/admin/SettingAdmin.py:168
+#: hiddifypanel/panel/admin/SettingAdmin.py:172
 msgid "Submit"
 msgstr "ثبت"
 
@@ -239,14 +239,14 @@ msgstr ""
 
 # | msgid "Error! Invalid domain.  The domain format is www.google.com"
 #: hiddifypanel/panel/admin/QuickSetup.py:87
-#: hiddifypanel/panel/admin/SettingAdmin.py:128
-#: hiddifypanel/panel/admin/SettingAdmin.py:130
+#: hiddifypanel/panel/admin/SettingAdmin.py:132
+#: hiddifypanel/panel/admin/SettingAdmin.py:134
 msgid "config.Invalid domain"
 msgstr "خطا! دامنه نامعتبر! فرمت دامنه باید مثل www.google.com باشد."
 
 # | msgid "Domain is exist in domains section. Use another domain"
 #: hiddifypanel/panel/admin/QuickSetup.py:88
-#: hiddifypanel/panel/admin/SettingAdmin.py:132
+#: hiddifypanel/panel/admin/SettingAdmin.py:136
 msgid "config.Domain already used"
 msgstr "دامنه در بخش دامنه‌ها وجود دارد. از دامنه دیگری استفاده کنید."
 
@@ -339,35 +339,41 @@ msgstr "Erlang: عملکرد متوسط"
 msgid "config.telegram_lib.description"
 msgstr "می توانید بین کتابخانه های مختلف تلگرام جابجا شوید."
 
+# | msgid "Invalid branding link"
+#: hiddifypanel/panel/admin/SettingAdmin.py:141
+#, fuzzy
+msgid "config.Invalid brand link"
+msgstr "پیوند نام تجاری نامعتبر است"
+
 # | msgid ""
 # | "Invalid UUID secret. e.g., 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n"
 # | "\n"
-#: hiddifypanel/panel/admin/SettingAdmin.py:141
+#: hiddifypanel/panel/admin/SettingAdmin.py:145
 msgid "config.invalid uuid"
 msgstr "رمز UUID نامعتبر است. به عنوان مثال: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6"
 
 # | msgid "Invalid proxy path. It should be asci string (a-z A-Z 0-9)"
-#: hiddifypanel/panel/admin/SettingAdmin.py:145
+#: hiddifypanel/panel/admin/SettingAdmin.py:149
 msgid "config.Invalid proxy path"
 msgstr "مسیر پروکسی نامعتبر است. باید رشته متن asci باشد. ( شامل a-z A-Z 0-9)"
 
 # | msgid ""
 # | "Invalid port. It should be comma separated integer e.g., 1000,1001"
-#: hiddifypanel/panel/admin/SettingAdmin.py:149
+#: hiddifypanel/panel/admin/SettingAdmin.py:153
 msgid "config.Invalid port"
 msgstr "پورت نامعتبر است. اعداد باید با کاما از هم جدا شود، مثلاً 1000,1001"
 
 # | msgid ""
 # | "Port 80 should always be presented. We use it for getting ssl
 # certificate"
-#: hiddifypanel/panel/admin/SettingAdmin.py:152
+#: hiddifypanel/panel/admin/SettingAdmin.py:156
 msgid "config.port 80 is required"
 msgstr ""
 "پورت 80 همیشه باید در دسترس باشد. از آن برای دریافت سرتیفیکیت ssl استفاده"
 " می‌کنیم."
 
 # | msgid "Port 443 should always be presented. "
-#: hiddifypanel/panel/admin/SettingAdmin.py:155
+#: hiddifypanel/panel/admin/SettingAdmin.py:159
 msgid "config.port 443 is required"
 msgstr "پورت ۴۴۳ همیشه باید در دسترس باشد."
 
@@ -420,6 +426,38 @@ msgstr "تنظیمات"
 #: hiddifypanel/panel/admin/templates/configfake.html:5
 msgid "domain.cdn"
 msgstr "سی‌دی‌ان"
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.branding_title.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.branding_title.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.branding_site.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.branding_site.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.branding_freetext.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.branding_freetext.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.branding.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.branding.description"
+msgstr ""
 
 # | msgid "Admin Secret"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1479,7 +1517,7 @@ msgid "user.home.select tool"
 msgstr "لطفا یکی از موارد زیر را انتخاب کنید."
 
 #: hiddifypanel/panel/user/templates/home/index.html:124
-#: hiddifypanel/panel/user/templates/home/usage.html:35
+#: hiddifypanel/panel/user/templates/home/usage.html:50
 msgid "QR code"
 msgstr "کیوآر کد"
 
@@ -1488,7 +1526,7 @@ msgstr "کیوآر کد"
 # fa-qrcode'></i>"
 # | " field to display its QR Code."
 #: hiddifypanel/panel/user/templates/home/index.html:125
-#: hiddifypanel/panel/user/templates/home/usage.html:36
+#: hiddifypanel/panel/user/templates/home/usage.html:51
 msgid "user.home.qr-code.description"
 msgstr ""
 "برای کپی یا به اشتراک‌گذاری لینک‌ها، روی قسمت طوسی‌رنگ  که با شکل <i "
@@ -1497,7 +1535,7 @@ msgstr ""
 
 # | msgid "Display QR Code"
 #: hiddifypanel/panel/user/templates/home/index.html:133
-#: hiddifypanel/panel/user/templates/home/usage.html:44
+#: hiddifypanel/panel/user/templates/home/usage.html:59
 msgid "user.home.qr-code.display"
 msgstr "نمایش کیو آر کد"
 
@@ -1656,6 +1694,16 @@ msgstr "روز"
 #: hiddifypanel/panel/user/templates/home/usage.html:24
 msgid "user.home.usage.details"
 msgstr "نمایش جزئیات استفاده"
+
+# | msgid "Support"
+#: hiddifypanel/panel/user/templates/home/usage.html:32
+msgid "user.home.branding.title"
+msgstr ""
+
+# | msgid "Support link"
+#: hiddifypanel/panel/user/templates/home/usage.html:41
+msgid "user.home.branding.linktitle"
+msgstr ""
 
 #: hiddifypanel/panel/user/templates/home/windows.html:6
 #: hiddifypanel/panel/user/templates/home/windows.html:22

@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-04 11:57+0100\n"
-"PO-Revision-Date: 2023-02-04 04:57-0600\n"
+"POT-Creation-Date: 2023-02-04 16:47+0100\n"
+"PO-Revision-Date: 2023-02-04 09:46-0600\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -149,7 +149,7 @@ msgstr "One of the fields has encountered with error"
 #: hiddifypanel/panel/admin/ProxyAdmin.py:116
 #: hiddifypanel/panel/admin/QuickSetup.py:73
 #: hiddifypanel/panel/admin/QuickSetup.py:92
-#: hiddifypanel/panel/admin/SettingAdmin.py:168
+#: hiddifypanel/panel/admin/SettingAdmin.py:172
 msgid "Submit"
 msgstr "Submit"
 
@@ -238,14 +238,14 @@ msgstr "config.admin_lang.description"
 
 # | msgid "Error! Invalid domain.  The domain format is www.google.com"
 #: hiddifypanel/panel/admin/QuickSetup.py:87
-#: hiddifypanel/panel/admin/SettingAdmin.py:128
-#: hiddifypanel/panel/admin/SettingAdmin.py:130
+#: hiddifypanel/panel/admin/SettingAdmin.py:132
+#: hiddifypanel/panel/admin/SettingAdmin.py:134
 msgid "config.Invalid domain"
 msgstr "Error! Invalid domain.  The domain format is www.google.com"
 
 # | msgid "Domain is exist in domains section. Use another domain"
 #: hiddifypanel/panel/admin/QuickSetup.py:88
-#: hiddifypanel/panel/admin/SettingAdmin.py:132
+#: hiddifypanel/panel/admin/SettingAdmin.py:136
 msgid "config.Domain already used"
 msgstr "Domain is exist in domains section. Use another domain"
 
@@ -329,35 +329,40 @@ msgstr "Erlang: medium performance"
 msgid "config.telegram_lib.description"
 msgstr "You can switch between different telegram libraries."
 
+# | msgid "Invalid branding link"
+#: hiddifypanel/panel/admin/SettingAdmin.py:141
+msgid "config.Invalid brand link"
+msgstr "Invalid branding link"
+
 # | msgid ""
 # | "Invalid UUID secret. e.g., 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n"
 # | "\n"
-#: hiddifypanel/panel/admin/SettingAdmin.py:141
+#: hiddifypanel/panel/admin/SettingAdmin.py:145
 msgid "config.invalid uuid"
 msgstr ""
 "Invalid UUID secret. e.g., 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n"
 "\n"
 
 # | msgid "Invalid proxy path. It should be asci string (a-z A-Z 0-9)"
-#: hiddifypanel/panel/admin/SettingAdmin.py:145
+#: hiddifypanel/panel/admin/SettingAdmin.py:149
 msgid "config.Invalid proxy path"
 msgstr "Invalid proxy path. It should be asci string (a-z A-Z 0-9)"
 
 # | msgid "Invalid port. It should be comma separated integer e.g., 1000,1001"
-#: hiddifypanel/panel/admin/SettingAdmin.py:149
+#: hiddifypanel/panel/admin/SettingAdmin.py:153
 msgid "config.Invalid port"
 msgstr "Invalid port. It should be comma separated integer e.g., 1000,1001"
 
 # | msgid ""
 # | "Port 80 should always be presented. We use it for getting ssl
 # certificate"
-#: hiddifypanel/panel/admin/SettingAdmin.py:152
+#: hiddifypanel/panel/admin/SettingAdmin.py:156
 msgid "config.port 80 is required"
 msgstr ""
 "Port 80 should always be presented. We use it for getting ssl certificate"
 
 # | msgid "Port 443 should always be presented. "
-#: hiddifypanel/panel/admin/SettingAdmin.py:155
+#: hiddifypanel/panel/admin/SettingAdmin.py:159
 msgid "config.port 443 is required"
 msgstr "Port 443 should always be presented. "
 
@@ -410,6 +415,46 @@ msgstr "Settings"
 #: hiddifypanel/panel/admin/templates/configfake.html:5
 msgid "domain.cdn"
 msgstr "CDN"
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.branding_title.label"
+msgstr "config.branding_title.label"
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.branding_title.description"
+msgstr "config.branding_title.description"
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.branding_site.label"
+msgstr "config.branding_site.label"
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.branding_site.description"
+msgstr "config.branding_site.description"
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.branding_freetext.label"
+msgstr "config.branding_freetext.label"
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.branding_freetext.description"
+msgstr "config.branding_freetext.description"
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.branding.label"
+msgstr "config.branding.label"
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.branding.description"
+msgstr "config.branding.description"
 
 # | msgid "Admin Secret"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1430,7 +1475,7 @@ msgid "user.home.select tool"
 msgstr "Please select the item."
 
 #: hiddifypanel/panel/user/templates/home/index.html:124
-#: hiddifypanel/panel/user/templates/home/usage.html:35
+#: hiddifypanel/panel/user/templates/home/usage.html:50
 msgid "QR code"
 msgstr "QR code"
 
@@ -1438,7 +1483,7 @@ msgstr "QR code"
 # | "To copy or share links, click on the gray <i class='fa-solid fa-qrcode'>"
 # | "</i> field to display its QR Code."
 #: hiddifypanel/panel/user/templates/home/index.html:125
-#: hiddifypanel/panel/user/templates/home/usage.html:36
+#: hiddifypanel/panel/user/templates/home/usage.html:51
 msgid "user.home.qr-code.description"
 msgstr ""
 "To copy or share links, click on the gray <i class='fa-solid fa-qrcode'></i>"
@@ -1446,7 +1491,7 @@ msgstr ""
 
 # | msgid "Display QR Code"
 #: hiddifypanel/panel/user/templates/home/index.html:133
-#: hiddifypanel/panel/user/templates/home/usage.html:44
+#: hiddifypanel/panel/user/templates/home/usage.html:59
 msgid "user.home.qr-code.display"
 msgstr "Display QR Code"
 
@@ -1599,6 +1644,18 @@ msgstr "Days"
 #: hiddifypanel/panel/user/templates/home/usage.html:24
 msgid "user.home.usage.details"
 msgstr "Display usage details."
+
+# | msgid "Support"
+#: hiddifypanel/panel/user/templates/home/usage.html:32
+#, fuzzy
+msgid "user.home.branding.title"
+msgstr "Support"
+
+# | msgid "Support link"
+#: hiddifypanel/panel/user/templates/home/usage.html:41
+#, fuzzy
+msgid "user.home.branding.linktitle"
+msgstr "Support link"
 
 #: hiddifypanel/panel/user/templates/home/windows.html:6
 #: hiddifypanel/panel/user/templates/home/windows.html:22

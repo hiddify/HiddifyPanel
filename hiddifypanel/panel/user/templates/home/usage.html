@@ -25,9 +25,24 @@
             </a>
         </div>
 
+        % if hconfig(ConfigEnum.branding_site) and hconfig(ConfigEnum.branding_freetext)
+        <div  class="card small-box bg-green d-none d-sm-flex">
+            <div class="card-body">
+            <div class="inner">
+                <h3>{{_('user.home.branding.title')}}</h3>
+                <p>{{hconfig(ConfigEnum.branding_freetext)|safe}}</p>
+            </div>
+            <div class="icon">
+                <i class="fa-solid fa-question fa-margin"></i>
+            </div>
+        </div>
+            <a href="{{hconfig(ConfigEnum.branding_site)}}"
+             class="card-footer share-link">
+             <i class="fa-solid fa-up-right-from-square"></i> {{_('user.home.branding.linktitle')}}
+            </a>
 
-
-
+        </div>
+        %endif
 
         <div  class="card small-box bg-warning d-none d-sm-flex">
             <div class="card-body">
