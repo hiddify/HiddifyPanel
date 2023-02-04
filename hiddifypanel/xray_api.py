@@ -19,7 +19,7 @@ def add_client(uuid):
             alter_id=0 if 'vmess' in t else None
             xray_client.add_client(t,f'{uuid}', f'{uuid}@hiddify.com',alter_id=alter_id)
         except Exception as e:
-            print(f"error in add  {uuid} {tag} {e}" )
+            print(f"error in add  {uuid} {t} {e}" )
             pass
 
 def remove_client(uuid):
@@ -30,7 +30,7 @@ def remove_client(uuid):
         try:
             xray_client.remove_client(t, f'{uuid}@hiddify.com')
         except Exception as e:
-            print(f"error in remove  {uuid} {tag} {e}" )
+            print(f"error in remove  {uuid} {t} {e}" )
             pass        
 
 def get_usage(uuid,reset=False):
