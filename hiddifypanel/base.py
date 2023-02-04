@@ -1,5 +1,7 @@
 from dynaconf import FlaskDynaconf
-from flask import Flask,request
+from wtforms.validators import ValidationError
+from flask import Flask,request,render_template
+
 import flask_bootstrap 
 from flask_babelex import Babel
 from hiddifypanel.panel.database import db
@@ -33,6 +35,8 @@ def create_app(**config):
     # )  # Load extensions from settings.toml
     app.config.update(config)  # Override with passed config
 
+    
+    
     babel = Babel(app)
     @babel.localeselector
     def get_locale():

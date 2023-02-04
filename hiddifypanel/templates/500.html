@@ -1,0 +1,19 @@
+{% extends 'master.html' %}
+{%block body%}
+<section class="content ltr">
+    <div class="error-page">
+        <h2 class="headline text-danger">500</h2>
+        <div class="error-content">
+            <h3><i class="fas fa-exclamation-triangle text-danger"></i> {{_('Oops! Something went wrong.')}}</h3>
+            <p>
+                {{_('Please contact hiddify@gmail.com with the details in this page.')}}
+            </p>
+        
+        </div>
+    </div>
+    <pre class="ltr">
+{{error}}
+{{trace}}
+                    </pre>
+</section>
+{%endblock%}

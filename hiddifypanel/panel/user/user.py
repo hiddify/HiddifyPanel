@@ -11,8 +11,8 @@ import random
 class UserView(FlaskView):
 
     def index(self):
+        
         c=get_common_data(g.user_uuid)
-
         return render_template('home/index.html',**c)
         
 
@@ -73,7 +73,7 @@ def get_common_data(user_uuid):
     # uuid_secret=str(uuid.UUID(user_secret))
     user=User.query.filter(User.uuid==f'{user_uuid}').first()
     if user is None:
-        raise ValidationError("Invalid User")
+        abort(401,"Invalid User")
     g.domain=domain
     g.direct_host=direct_host
     g.is_cdn=is_cdn

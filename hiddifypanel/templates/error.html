@@ -1,0 +1,16 @@
+{% extends 'master.html' %}
+{%block body%}
+<section class="content">
+    <div class="error-page">
+        <h2 class="headline text-danger">{{error.code}}</h2>
+        <div class="error-content">
+            <h3><i class="fas fa-exclamation-triangle text-danger"></i> {{_('Oops! Something went wrong.')}}</h3>
+            <p>
+                {{error}}
+            </p>
+            
+        </div>
+    </div>
+
+</section>
+{%endblock%}
