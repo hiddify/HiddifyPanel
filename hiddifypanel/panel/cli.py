@@ -33,8 +33,9 @@ def init_db():
     
     
     
-    db_version=hconfig(ConfigEnum.db_version)
-    if db_version==None:
+    db_version=int(hconfig(ConfigEnum.db_version)) or 0
+    print(f"Current DB version is {db_version}")
+    if db_version==0:
         print("DB not exist, creating default values")
         db.create_all()
         next10year = datetime.date.today() + relativedelta.relativedelta(years=10)
@@ -108,7 +109,7 @@ def init_db():
         db.session.bulk_save_objects(data)
         db.session.commit()
         db_version=1
-    
+    print('test',db_version==1)
     if db_version==1:
         print(f"Updating DB from version {db_version}")
         db.session.bulk_save_objects([
@@ -117,6 +118,7 @@ def init_db():
         ])
         db.session.commit()
         db_version=2
+        print(f"New DB version is {db_version}")
     # if db_version==2:
     #     print(f"Updating DB from version {db_version}")
     #     db.session.bulk_save_objects([
@@ -129,7 +131,9 @@ def init_db():
     #     print(f"Updating DB from version {db_version}")
     #     pass # for next update
     
+    # 
     StrConfig.query.filter(StrConfig.key == ConfigEnum.db_version).update({'value': db_version})
+    db.session.commit()
     return BoolConfig.query.all()
 
 def all_configs():
