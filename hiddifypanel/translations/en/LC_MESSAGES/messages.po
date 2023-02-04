@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-04 23:37+0100\n"
-"PO-Revision-Date: 2023-02-04 15:17-0600\n"
+"POT-Creation-Date: 2023-02-04 23:52+0100\n"
+"PO-Revision-Date: 2023-02-04 16:37-0600\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -118,7 +118,7 @@ msgstr "IP"
 # | "Domain can not be resolved! There is a problem in your domain. Please "
 # | "check your Domain configurations."
 #: hiddifypanel/panel/admin/DomainAdmin.py:56
-#: hiddifypanel/panel/admin/QuickSetup.py:89
+#: hiddifypanel/panel/admin/QuickSetup.py:92
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr ""
 "Domain can not be resolved! There is a problem in your domain. Please check "
@@ -304,13 +304,13 @@ msgstr ""
 "It is reported by several people that vmess causes the system to be detected"
 " by the government. So it is not recommended"
 
-#: hiddifypanel/panel/admin/QuickSetup.py:93
+#: hiddifypanel/panel/admin/QuickSetup.py:96
 #, python-format, fuzzy
 msgid ""
-"Domain (%(domain))-> IP=%(domain_ip)s is not matched with your "
+"Domain (%(domain)s)-> IP=%(domain_ip)s is not matched with your "
 "ip=%(server_ip)s which is required in direct mode"
 msgstr ""
-"Domain (%(domain))-> IP=%(domain_ip)s is not matched with your "
+"Domain (%(domain)s)-> IP=%(domain_ip)s is not matched with your "
 "ip=%(server_ip)s which is required in direct mode"
 
 # | msgid "Chinese چینی 中国人"
@@ -2074,3 +2074,10 @@ msgstr "Copy to clipboard:  Ctrl+C, Enter"
 # | msgid "Check"
 #~ msgid "check"
 #~ msgstr "Check"
+
+#~ msgid ""
+#~ "Domain (%(domain))-> IP=%(domain_ip)s is not matched with your "
+#~ "ip=%(server_ip)s which is required in direct mode"
+#~ msgstr ""
+#~ "Domain (%(domain))-> IP=%(domain_ip)s is not matched with your "
+#~ "ip=%(server_ip)s which is required in direct mode"

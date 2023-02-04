@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-04 23:37+0100\n"
-"PO-Revision-Date: 2023-02-04 15:17-0600\n"
+"POT-Creation-Date: 2023-02-04 23:52+0100\n"
+"PO-Revision-Date: 2023-02-04 16:37-0600\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -117,7 +117,7 @@ msgstr "知识产权"
 # check "
 # | "your Domain configurations."
 #: hiddifypanel/panel/admin/DomainAdmin.py:56
-#: hiddifypanel/panel/admin/QuickSetup.py:89
+#: hiddifypanel/panel/admin/QuickSetup.py:92
 #, fuzzy
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr "域名无法解析！你的域有问题"
@@ -312,10 +312,10 @@ msgstr "启用 vmess"
 msgid "config.vmess_enable.description"
 msgstr "几个人报告说 vmess 导致系统被政府检测到。所以不推荐"
 
-#: hiddifypanel/panel/admin/QuickSetup.py:93
+#: hiddifypanel/panel/admin/QuickSetup.py:96
 #, python-format
 msgid ""
-"Domain (%(domain))-> IP=%(domain_ip)s is not matched with your "
+"Domain (%(domain)s)-> IP=%(domain_ip)s is not matched with your "
 "ip=%(server_ip)s which is required in direct mode"
 msgstr ""
 
@@ -2255,4 +2255,10 @@ msgstr "复制到剪贴板：Ctrl+C，回车"
 # | msgid "Check"
 #~ msgid "check"
 #~ msgstr "查看"
+
+#~ msgid ""
+#~ "Domain (%(domain))-> IP=%(domain_ip)s is not"
+#~ " matched with your ip=%(server_ip)s which"
+#~ " is required in direct mode"
+#~ msgstr ""
 

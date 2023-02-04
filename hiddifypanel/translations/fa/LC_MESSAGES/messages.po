@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-04 23:37+0100\n"
-"PO-Revision-Date: 2023-02-04 15:17-0600\n"
+"POT-Creation-Date: 2023-02-04 23:52+0100\n"
+"PO-Revision-Date: 2023-02-04 16:37-0600\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -124,7 +124,7 @@ msgstr "آی‌پی"
 # check "
 # | "your Domain configurations."
 #: hiddifypanel/panel/admin/DomainAdmin.py:56
-#: hiddifypanel/panel/admin/QuickSetup.py:89
+#: hiddifypanel/panel/admin/QuickSetup.py:92
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr "دامنه قابل دسترسی نیست! در دامنه شما مشکلی وجود دارد."
 
@@ -312,10 +312,10 @@ msgstr ""
 "گزارش‌های متعددی موجود است مبنی بر اینکه که vmess باعث می‌شود که سیستم "
 "توسط فیلترینگ شناسایی شود. بنابراین استفاده از آن توصیه نمی‌شود."
 
-#: hiddifypanel/panel/admin/QuickSetup.py:93
+#: hiddifypanel/panel/admin/QuickSetup.py:96
 #, python-format
 msgid ""
-"Domain (%(domain))-> IP=%(domain_ip)s is not matched with your "
+"Domain (%(domain)s)-> IP=%(domain_ip)s is not matched with your "
 "ip=%(server_ip)s which is required in direct mode"
 msgstr ""
 
@@ -2155,4 +2155,10 @@ msgstr "کپی کردن به کلیپ‌بورد: دکمه Ctrl+C و Enter"
 # | msgid "Check"
 #~ msgid "check"
 #~ msgstr "بررسی"
+
+#~ msgid ""
+#~ "Domain (%(domain))-> IP=%(domain_ip)s is not"
+#~ " matched with your ip=%(server_ip)s which"
+#~ " is required in direct mode"
+#~ msgstr ""
 

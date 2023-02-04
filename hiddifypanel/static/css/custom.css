@@ -35,3 +35,7 @@ legend {
     color: #555 !important;
     /* padding-top: 10px; */
   }
+
+  .modal{
+    z-index: 4999;
+  }
