@@ -15,7 +15,7 @@ class Dashboard(FlaskView):
             if def_user and sslip_domains:
                 quick_setup=url_for("admin.QuickSetup:index")
                 flash(Markup(_('It seems that you have not setup the system completely. <a class="btn btn-success" href="%(quick_setup)s">Click here</a> to complete setup.',quick_setup=quick_setup)),'warning')
-            elif sslip_domains:
+            elif len(sslip_domains):
                 flash(Markup(_('It seems that you are using default domain (%(domain)s) which is not recommended.',domain=sslip_domains[0])),'warning')
             elif def_user:
                 d=domains[0].domain
