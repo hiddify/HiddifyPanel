@@ -33,7 +33,7 @@ def init_db():
     
     
     
-    db_version=int(hconfig(ConfigEnum.db_version)) or 0
+    db_version=int(hconfig(ConfigEnum.db_version) or 0) 
     print(f"Current DB version is {db_version}")
     if db_version==0:
         print("DB not exist, creating default values")
