@@ -54,7 +54,7 @@ class QuickSetup(FlaskView):
                         flash(_('The default user link is %(link)s. To add or edit more users, please visit users from menu.',link=userlink),'info')
                 else:
                         flash(_('config.validation-error'), 'danger')
-                return render_template('quick_setup.html', form=quick_form,lang_form=get_lang_form(True))
+                return render_template('quick_setup.html', form=quick_form,lang_form=get_lang_form(True),ipv4=hiddify.get_ip(4),ipv6=hiddify.get_ip(6) )
 
 def get_lang_form(empty=False):
         class LangForm(FlaskForm):
