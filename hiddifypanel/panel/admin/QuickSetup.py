@@ -37,7 +37,7 @@ class QuickSetup(FlaskView):
 
                         return render_template('quick_setup.html', form=get_quick_setup_form(True),lang_form=lang_form)                
 
-                dip=hiddify.get_domain_ip(model.domain)
+                dip=hiddify.get_domain_ip(quick_form.domain.data)
                 domain_ok=True
                 if dip==None:
                         flash(_("Domain can not be resolved! there is a problem in your domain"), 'danger')    
