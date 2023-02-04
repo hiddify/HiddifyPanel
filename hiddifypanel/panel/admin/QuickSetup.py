@@ -91,4 +91,4 @@ def get_quick_setup_form(empty=False):
                 enable_vmess=SwitchField(_("config.vmess_enable.label"),description=_("config.vmess_enable.description"),default=hconfig(ConfigEnum.vmess_enable))
                 submit=wtf.fields.SubmitField(_('Submit'))
         
-        return QuickSetup(None) if empty else QuickSetupForm()
+        return QuickSetupForm(None) if empty else QuickSetupForm()
