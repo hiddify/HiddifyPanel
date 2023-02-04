@@ -138,7 +138,7 @@ def get_config_form():
                 
 
                 if c.key==ConfigEnum.branding_site:
-                    validators.append(wtf.validators.Regexp("http(s|)://([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})/?.*",re.IGNORECASE,_("config.Invalid brand link")))
+                    validators.append(wtf.validators.Regexp("()|(http(s|)://([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})/?.*)",re.IGNORECASE,_("config.Invalid brand link")))
                     # render_kw['required']=""
 
                 if 'secret' in c.key:
