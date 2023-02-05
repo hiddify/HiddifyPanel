@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-05 12:31+0100\n"
-"PO-Revision-Date: 2023-02-05 05:31-0600\n"
+"POT-Creation-Date: 2023-02-05 19:15+0100\n"
+"PO-Revision-Date: 2023-02-05 11:39-0600\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "Generated-By: Babel 2.11.0\n"
 
-#: hiddifypanel/panel/hiddify.py:27
+#: hiddifypanel/panel/hiddify.py:28
 #, python-format
 msgid ""
 "We have opened a temporary port (for 4 hours) to access the panel in case of"
@@ -26,14 +26,14 @@ msgstr ""
 " share-link'>Temporary Link</a>"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/panel/admin/ProxyAdmin.py:42 hiddifypanel/panel/hiddify.py:139
+#: hiddifypanel/panel/admin/ProxyAdmin.py:42 hiddifypanel/panel/hiddify.py:140
 msgid "admin.config.apply_configs"
 msgstr "Apply Configs"
 
 # | msgid ""
 # | "Configs have been changed successfully. Click %(link)s to apply the "
 # | "configs. It may take 2 minutes to apply."
-#: hiddifypanel/panel/admin/ProxyAdmin.py:43 hiddifypanel/panel/hiddify.py:140
+#: hiddifypanel/panel/admin/ProxyAdmin.py:43 hiddifypanel/panel/hiddify.py:141
 msgid "config.validation-success"
 msgstr ""
 "Configs have been changed successfully. Click %(link)s to apply the configs."
@@ -63,40 +63,38 @@ msgid ""
 msgstr ""
 "Success! Please wait around 5 minutes to make sure everything is updated."
 
+# | msgid "Config file is incorrect."
 #: hiddifypanel/panel/admin/Backup.py:88
-#, fuzzy
 msgid "Config file is incorrect"
-msgstr "Config file is incorrect"
+msgstr "Config file is incorrect."
 
+# | msgid "Restore File:"
 #: hiddifypanel/panel/admin/Backup.py:94
-#, fuzzy
 msgid "Restore File"
-msgstr "Restore File"
+msgstr "Restore File:"
 
+# | msgid "Choose the downloaded restore file."
 #: hiddifypanel/panel/admin/Backup.py:94
-#, fuzzy
 msgid "Restore File Description"
-msgstr "Restore File Description"
+msgstr "Choose the downloaded restore file."
 
 #: hiddifypanel/panel/admin/Backup.py:95
-#, fuzzy
 msgid "Restore Users"
 msgstr "Restore Users"
 
+# | msgid "Select this option in order to restore all users."
 #: hiddifypanel/panel/admin/Backup.py:95
-#, fuzzy
 msgid "Restore Users description"
-msgstr "Restore Users description"
+msgstr "Select this option in order to restore all users."
 
 #: hiddifypanel/panel/admin/Backup.py:96
-#, fuzzy
 msgid "Restore Domain"
 msgstr "Restore Domain"
 
+# | msgid "Select this option in order to restore your domains."
 #: hiddifypanel/panel/admin/Backup.py:96
-#, fuzzy
 msgid "Restore Domain description"
-msgstr "Restore Domain description"
+msgstr "Select this option in order to restore your domains."
 
 #: hiddifypanel/panel/admin/Backup.py:97
 #: hiddifypanel/panel/admin/ProxyAdmin.py:91
@@ -285,7 +283,8 @@ msgid "config.lang.description"
 msgstr "It will change user language"
 
 # | msgid "Error! Invalid domain.  The domain format is www.google.com"
-#: hiddifypanel/panel/admin/QuickSetup.py:80
+#: hiddifypanel/panel/admin/QuickSetup.py:81
+#: hiddifypanel/panel/admin/QuickSetup.py:89
 #: hiddifypanel/panel/admin/SettingAdmin.py:133
 #: hiddifypanel/panel/admin/SettingAdmin.py:135
 msgid "config.Invalid domain"
@@ -390,14 +389,17 @@ msgstr ""
 "Fake site: simulates a site when someone visits your domain\n"
 "Please do not use Iranian sites or Google, Yahoo, Wikipedia."
 
+# | msgid ""
+# | "Domain (%(domain)s)-> IP=%(domain_ip)s is not matched with your "
+# | "ip=%(server_ip)s which is required in direct mode."
 #: hiddifypanel/panel/admin/QuickSetup.py:103
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Domain (%(domain)s)-> IP=%(domain_ip)s is not matched with your "
 "ip=%(server_ip)s which is required in direct mode"
 msgstr ""
 "Domain (%(domain)s)-> IP=%(domain_ip)s is not matched with your "
-"ip=%(server_ip)s which is required in direct mode"
+"ip=%(server_ip)s which is required in direct mode."
 
 # | msgid "Chinese چینی 中国人"
 #: hiddifypanel/panel/admin/SettingAdmin.py:122
@@ -529,28 +531,33 @@ msgstr "Actions"
 
 #: hiddifypanel/panel/admin/templates/backup.html:9
 #: hiddifypanel/templates/admin-layout.html:108
-#, fuzzy
 msgid "Backup"
 msgstr "Backup"
 
+# | msgid ""
+# | "You can download a json formated of configurations by clicking on the "
+# | "below button:\n"
+# | "<br>\n"
+# | "<a href='%(link)s' class='btn btn-primary'>Download Backup File</a>"
 #: hiddifypanel/panel/admin/templates/backup.html:14
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "You can download a json formated of configurations by clicking <a "
 "href='%(link)s' class='btn btn-primary'>here</a>"
 msgstr ""
-"You can download a json formated of configurations by clicking <a "
-"href='%(link)s' class='btn btn-primary'>here</a>"
+"You can download a json formated of configurations by clicking on the below button:\n"
+"<br>\n"
+"<a href='%(link)s' class='btn btn-primary'>Download Backup File</a>"
 
 #: hiddifypanel/panel/admin/templates/backup.html:21
-#, fuzzy
 msgid "Restore"
 msgstr "Restore"
 
+# | msgid "You can restore your configs from previously downloaded backup
+# file."
 #: hiddifypanel/panel/admin/templates/backup.html:26
-#, fuzzy
 msgid "You can restore your configs from previously downloaded configs"
-msgstr "You can restore your configs from previously downloaded configs"
+msgstr "You can restore your configs from previously downloaded backup file."
 
 # | msgid "Settings"
 #: hiddifypanel/panel/admin/templates/config.html:11
@@ -1760,10 +1767,10 @@ msgstr "Expire in: "
 msgid "days"
 msgstr "Days"
 
-# | msgid "زمان صفر شدن حجم:"
+# | msgid "Traffic usage reset time:"
 #: hiddifypanel/panel/user/templates/home/usage.html:20
 msgid "Reset Usage Time:"
-msgstr "زمان صفر شدن حجم:"
+msgstr "Traffic usage reset time:"
 
 # | msgid "Display usage details."
 #: hiddifypanel/panel/user/templates/home/usage.html:32
@@ -1866,12 +1873,10 @@ msgstr ""
 "\n"
 
 #: hiddifypanel/templates/500.html:7 hiddifypanel/templates/error.html:7
-#, fuzzy
 msgid "Oops! Something went wrong."
 msgstr "Oops! Something went wrong."
 
 #: hiddifypanel/templates/500.html:9
-#, fuzzy
 msgid "Please contact hiddify@gmail.com with the details in this page."
 msgstr "Please contact hiddify@gmail.com with the details in this page."
 
@@ -2172,9 +2177,12 @@ msgstr "Copy to clipboard:  Ctrl+C, Enter"
 #~ msgid "check"
 #~ msgstr "Check"
 
+# | msgid ""
+# | "Domain (%(domain))-> IP=%(domain_ip)s is not matched with your "
+# | "ip=%(server_ip)s which is required in direct mode."
 #~ msgid ""
 #~ "Domain (%(domain))-> IP=%(domain_ip)s is not matched with your "
 #~ "ip=%(server_ip)s which is required in direct mode"
 #~ msgstr ""
 #~ "Domain (%(domain))-> IP=%(domain_ip)s is not matched with your "
-#~ "ip=%(server_ip)s which is required in direct mode"
+#~ "ip=%(server_ip)s which is required in direct mode."

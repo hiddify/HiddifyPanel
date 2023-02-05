@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-05 12:31+0100\n"
-"PO-Revision-Date: 2023-02-05 05:31-0600\n"
+"POT-Creation-Date: 2023-02-05 19:15+0100\n"
+"PO-Revision-Date: 2023-02-05 11:39-0600\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.11.0\n"
 
-#: hiddifypanel/panel/hiddify.py:27
+#: hiddifypanel/panel/hiddify.py:28
 #, python-format
 msgid ""
 "We have opened a temporary port (for 4 hours) to access the panel in case"
@@ -26,7 +26,7 @@ msgstr ""
 "class='btn btn-danger share-link'>لینک موقت</a>"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/panel/admin/ProxyAdmin.py:42 hiddifypanel/panel/hiddify.py:139
+#: hiddifypanel/panel/admin/ProxyAdmin.py:42 hiddifypanel/panel/hiddify.py:140
 msgid "admin.config.apply_configs"
 msgstr "اعمال تنظیمات"
 
@@ -34,7 +34,7 @@ msgstr "اعمال تنظیمات"
 # | "Configs have been changed successfully. Click %(link)s to apply the
 # configs."
 # | " It may take 2 minutes to apply."
-#: hiddifypanel/panel/admin/ProxyAdmin.py:43 hiddifypanel/panel/hiddify.py:140
+#: hiddifypanel/panel/admin/ProxyAdmin.py:43 hiddifypanel/panel/hiddify.py:141
 msgid "config.validation-success"
 msgstr ""
 "تنظیمات با موفقیت ذخیره شدند. لطفا بر روی این لینک: %(link)s کلیک کنید تا"
@@ -66,30 +66,35 @@ msgstr ""
 "موفقیت آمیز بود! لطفا برای اینکه مطمئن شوید بروزرسانی‌ها به درستی اعمال "
 "شده، حدود 5 دقیقه صبر کنید."
 
+# | msgid "Config file is incorrect."
 #: hiddifypanel/panel/admin/Backup.py:88
 msgid "Config file is incorrect"
 msgstr "فایل کانفیگ اشتباه است."
 
+# | msgid "Restore File:"
 #: hiddifypanel/panel/admin/Backup.py:94
 msgid "Restore File"
-msgstr "بازگردانی فایل"
+msgstr "فایل بک‌آپ:"
 
+# | msgid "Choose the downloaded restore file."
 #: hiddifypanel/panel/admin/Backup.py:94
 msgid "Restore File Description"
-msgstr "برای بازگرداندن فایل از این گزینه استفاده کنید."
+msgstr "برای بازگردانی، فایل بک‌آپ را انتخاب کنید."
 
 #: hiddifypanel/panel/admin/Backup.py:95
 msgid "Restore Users"
 msgstr "بازگردانی کاربران"
 
+# | msgid "Select this option in order to restore all users."
 #: hiddifypanel/panel/admin/Backup.py:95
 msgid "Restore Users description"
 msgstr "برای بازگرداندن کاربران از این گزینه استفاده کنید."
 
 #: hiddifypanel/panel/admin/Backup.py:96
 msgid "Restore Domain"
-msgstr "بازگردانی دامنه"
+msgstr "بازگردانی دامنه‌ها"
 
+# | msgid "Select this option in order to restore your domains."
 #: hiddifypanel/panel/admin/Backup.py:96
 msgid "Restore Domain description"
 msgstr "برای بازگرداندن دامنه از این گزینه استفاده کنید."
@@ -283,7 +288,8 @@ msgstr ""
 "گزینه مربوطه اقدام کنید."
 
 # | msgid "Error! Invalid domain.  The domain format is www.google.com"
-#: hiddifypanel/panel/admin/QuickSetup.py:80
+#: hiddifypanel/panel/admin/QuickSetup.py:81
+#: hiddifypanel/panel/admin/QuickSetup.py:89
 #: hiddifypanel/panel/admin/SettingAdmin.py:133
 #: hiddifypanel/panel/admin/SettingAdmin.py:135
 msgid "config.Invalid domain"
@@ -393,6 +399,9 @@ msgstr ""
 " هست، یک سایت جعلی را نمایش می‌دهد. حتما از سایت‌های غیرمعروف و غیرایرانی"
 " استفاده کنید."
 
+# | msgid ""
+# | "Domain (%(domain)s)-> IP=%(domain_ip)s is not matched with your "
+# | "ip=%(server_ip)s which is required in direct mode."
 #: hiddifypanel/panel/admin/QuickSetup.py:103
 #, python-format
 msgid ""
@@ -535,24 +544,32 @@ msgstr "عملیات"
 msgid "Backup"
 msgstr "پشتیبان‌گیری"
 
+# | msgid ""
+# | "You can download a json formated of configurations by clicking on the
+# below button:\n"
+# | "<br>\n"
+# | "<a href='%(link)s' class='btn btn-primary'>Download Backup File</a>"
 #: hiddifypanel/panel/admin/templates/backup.html:14
 #, python-format
 msgid ""
 "You can download a json formated of configurations by clicking <a "
 "href='%(link)s' class='btn btn-primary'>here</a>"
 msgstr ""
-"می‌توانید با کلیلک بر روی <a href='%(link)s' class='btn btn-primary'>این "
-"لینک</a> تنظیمات را با فرمت json دریافت کنید."
+"می‌توانید با کلیلک بر روی دکمه زیر تنظیمات را با فرمت json دریافت کنید.\n"
+"<br>\n"
+"<a href='%(link)s' class='btn btn-primary'>دریافت فایل پشتیبان</a>"
 
 #: hiddifypanel/panel/admin/templates/backup.html:21
 msgid "Restore"
-msgstr "بازگردانی"
+msgstr "بازگردانی از فایل پشتیبان"
 
+# | msgid ""
+# | "You can restore your configs from previously downloaded backup file."
 #: hiddifypanel/panel/admin/templates/backup.html:26
 msgid "You can restore your configs from previously downloaded configs"
 msgstr ""
-"در این قسمت می‌توانید تنظیمات قبلی خود را (که قبلا دانلود کرده‌اید.) "
-"بازگردانی نمایید."
+"در این قسمت می‌توانید تنظیمات قبلی خود را (که قبلا از قسمت پشتیبان گیری "
+"دانلود کرده‌اید.) بازگردانی نمایید."
 
 # | msgid "Settings"
 #: hiddifypanel/panel/admin/templates/config.html:11
@@ -1803,9 +1820,8 @@ msgstr "مدت زمان باقی مانده:"
 msgid "days"
 msgstr "روز"
 
-# | msgid "زمان صفر شدن حجم:"
+# | msgid "Traffic usage reset time:"
 #: hiddifypanel/panel/user/templates/home/usage.html:20
-#, fuzzy
 msgid "Reset Usage Time:"
 msgstr "زمان صفر شدن حجم:"
 
@@ -2247,6 +2263,9 @@ msgstr "کپی کردن به کلیپ‌بورد: دکمه Ctrl+C و Enter"
 #~ msgid "check"
 #~ msgstr "بررسی"
 
+# | msgid ""
+# | "Domain (%(domain))-> IP=%(domain_ip)s is not matched with your "
+# | "ip=%(server_ip)s which is required in direct mode."
 #~ msgid ""
 #~ "Domain (%(domain))-> IP=%(domain_ip)s is not"
 #~ " matched with your ip=%(server_ip)s which"
