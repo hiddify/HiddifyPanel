@@ -165,7 +165,7 @@ def to_link(proxy):
     
     infos=f'&alpn={proxy["alpn"]}&sni={proxy["sni"]}&type={proxy["transport"]}'
     infos+=f'&path={proxy["path"]}' if "path" in proxy else ""
-    infos+='&host={proxy["host"]}' if "host" in proxy else ""
+    infos+=f'&host={proxy["host"]}' if "host" in proxy else ""
     if "grpc"==proxy["transport"]:
         infos+=f'&serviceName={proxy["grpc_service_name"]}&mode={proxy["grpc_mode"]}'
     
