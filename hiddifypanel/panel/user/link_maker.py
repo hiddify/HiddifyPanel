@@ -144,11 +144,11 @@ def make_proxy(proxy):
         base['transport']= 'tcp'
         base['alpn']='http/1.1'
         return base
-    return "error!"
+    return {'name': name, 'error':True}
 
 
 def to_link(proxy):
-    if type(proxy) == str:return proxy
+    if 'error' in proxy:return proxy
 
     name_link=proxy["name"]+"_"+proxy['extra_info']
     if proxy['proto']=='vmess':
