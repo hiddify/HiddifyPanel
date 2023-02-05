@@ -131,15 +131,11 @@ def init_db():
         db_version=3
         print(f"New DB version is {db_version}")
 
-    if db_version>=3:# for next update
+    if db_version==3:# for next update
         print(f"Updating DB from version {db_version}")
         db.session.bulk_save_objects([
-            # *get_proxy_rows_v2()
+            *get_proxy_rows_v2()
         ])
-        from alembic import op
-        # try:
-        # from sqlalchemy import Column, INTEGER, ForeignKey
-        # op.add_column(User,User.monthly)
         
         try:
             db.engine.execute('ALTER TABLE user ADD COLUMN monthly BOOLEAN')
@@ -147,7 +143,6 @@ def init_db():
         except:
             pass
         
-        # except:pass
         db.session.commit()
         db_version=4
         print(f"New DB version is {db_version}")
