@@ -51,7 +51,7 @@ def make_proxy(proxy):
     direct_host=domain if is_cdn else g.direct_host
     
     base={
-        'name':name.replace(" ", "_"),#+f'_{l3}_s',
+        'name':name.replace(" ", "_"),
         'cdn':is_cdn,
         'mode':"CDN" if is_cdn else "direct",
         'l3': l3,
@@ -62,7 +62,8 @@ def make_proxy(proxy):
         'proto':proxy.proto,
         'transport':proxy.transport,
         'proxy_path':hconfig(ConfigEnum.proxy_path),
-        'alpn':"h2"
+        'alpn':"h2",
+        'extra_info':f'{domain}'
     }
 
     if base["proto"]=="trojan" and l3!="tls":
@@ -148,20 +149,22 @@ def make_proxy(proxy):
 
 def to_link(proxy):
     if type(proxy) is str:return proxy
+
+    name_link=proxy["name"]+"_"+proxy['extra_info']
     if proxy['proto']=='vmess':
         vmess_type= 'http' if proxy["transport"]=='tcp' else 'none'
-        return pbase64(f'vmess://{{"v":"2", "ps":"{proxy["name"]}", "add":"{proxy["server"]}", "port":"{proxy["port"]}", "id":"{proxy["uuid"]}", "aid":"0", "scy":"auto", "net":"{proxy["transport"]}", "type":"none", "host":"{proxy.get("host","")}", "path":"{proxy["path"] if "path" in proxy else ""}", "tls":"{proxy["l3"]}", "sni":"{proxy["sni"]}"}}')
+        return pbase64(f'vmess://{{"v":"2", "ps":"{name_link}", "add":"{proxy["server"]}", "port":"{proxy["port"]}", "id":"{proxy["uuid"]}", "aid":"0", "scy":"auto", "net":"{proxy["transport"]}", "type":"none", "host":"{proxy.get("host","")}", "path":"{proxy["path"] if "path" in proxy else ""}", "tls":"{proxy["l3"]}", "sni":"{proxy["sni"]}"}}')
     if proxy['proto']=="ssr":
         baseurl=f'ssr://proxy["encryption"]:{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}'
         return None
     if proxy['proto'] in ['ss','v2ray']:
         baseurl=f'ss://proxy["encryption"]:{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}'
         if proxy['mode']=='faketls':
-            return f'{baseurl}?plugin=obfs-local%3Bobfs%3Dtls%3Bobfs-host%3D{proxy["fakedomain"]}&amp;udp-over-tcp=true#{proxy["name"]}'
+            return f'{baseurl}?plugin=obfs-local%3Bobfs%3Dtls%3Bobfs-host%3D{proxy["fakedomain"]}&amp;udp-over-tcp=true#{name_link}'
         if proxy['mode']=='shadowtls':
-            return f'{baseurl}?plugin=shadow-tls%3Bpassword%3D{proxy["proxy_path"]}%3Bhost%3D{proxy["fakedomain"]}&amp;udp-over-tcp=true#{proxy["name"]}'
+            return f'{baseurl}?plugin=shadow-tls%3Bpassword%3D{proxy["proxy_path"]}%3Bhost%3D{proxy["fakedomain"]}&amp;udp-over-tcp=true#{name_link}'
         if proxy['proto']=='v2ray':
-            return f'{baseurl}?plugin=v2ray-plugin%3Bmode%3Dwebsocket%3Bpath%3D{proxy["path"]}%3Bhost%3D{domain}%3Btls&amp;udp-over-tcp=true#{proxy["name"]}'
+            return f'{baseurl}?plugin=v2ray-plugin%3Bmode%3Dwebsocket%3Bpath%3D{proxy["path"]}%3Bhost%3D{domain}%3Btls&amp;udp-over-tcp=true#{name_link}'
     
     infos=f'&alpn={proxy["alpn"]}&sni={proxy["sni"]}&type={proxy["transport"]}'
     infos+=f'&path={proxy["path"]}' if "path" in proxy else ""
@@ -169,7 +172,7 @@ def to_link(proxy):
     if "grpc"==proxy["transport"]:
         infos+=f'&serviceName={proxy["grpc_service_name"]}&mode={proxy["grpc_mode"]}'
     
-    infos+=f'#{proxy["name"]}'
+    infos+=f'#{name_link}'
     baseurl=f'{proxy["proto"]}://{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}'
     if 'xtls' == proxy['l3']:
         return f'{baseurl}?flow={proxy["flow"]}&security=xtls&type=tcp{infos}'
