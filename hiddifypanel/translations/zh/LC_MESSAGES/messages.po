@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-04 23:52+0100\n"
-"PO-Revision-Date: 2023-02-04 16:37-0600\n"
+"POT-Creation-Date: 2023-02-05 01:48+0100\n"
+"PO-Revision-Date: 2023-02-04 16:52-0600\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -60,6 +60,44 @@ msgstr "请参阅以下屏幕中的日志："
 #: hiddifypanel/panel/admin/Actions.py:126
 msgid "Success! Please wait around 5 minutes to make sure everything is updated."
 msgstr "成功！ 请等待大约 5 分钟，以确保所有内容都已更新。"
+
+#: hiddifypanel/panel/admin/Backup.py:87
+msgid "Config file is incorrect"
+msgstr ""
+
+#: hiddifypanel/panel/admin/Backup.py:93
+msgid "Restore File"
+msgstr ""
+
+#: hiddifypanel/panel/admin/Backup.py:93
+msgid "Restore File Description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/Backup.py:94
+msgid "Restore Users"
+msgstr ""
+
+#: hiddifypanel/panel/admin/Backup.py:94
+msgid "Restore Users description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/Backup.py:95
+msgid "Restore Domain"
+msgstr ""
+
+#: hiddifypanel/panel/admin/Backup.py:95
+msgid "Restore Domain description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/Backup.py:96
+#: hiddifypanel/panel/admin/ProxyAdmin.py:90
+#: hiddifypanel/panel/admin/ProxyAdmin.py:116
+#: hiddifypanel/panel/admin/QuickSetup.py:63
+#: hiddifypanel/panel/admin/QuickSetup.py:83
+#: hiddifypanel/panel/admin/SettingAdmin.py:172
+#, fuzzy
+msgid "Submit"
+msgstr "提交"
 
 #: hiddifypanel/panel/admin/Dashboard.py:17
 #, fuzzy, python-format
@@ -152,15 +190,6 @@ msgstr "错误！ 未设置域前端"
 #, fuzzy
 msgid "config.validation-error"
 msgstr "其中一个字段遇到错误"
-
-#: hiddifypanel/panel/admin/ProxyAdmin.py:90
-#: hiddifypanel/panel/admin/ProxyAdmin.py:116
-#: hiddifypanel/panel/admin/QuickSetup.py:63
-#: hiddifypanel/panel/admin/QuickSetup.py:83
-#: hiddifypanel/panel/admin/SettingAdmin.py:172
-#, fuzzy
-msgid "Submit"
-msgstr "提交"
 
 # | msgid "Name"
 #: hiddifypanel/panel/admin/ProxyAdmin1.py:16
@@ -451,6 +480,26 @@ msgstr "用户链接"
 #, fuzzy
 msgid "actions"
 msgstr "动作"
+
+#: hiddifypanel/panel/admin/templates/backup.html:9
+#: hiddifypanel/templates/admin-layout.html:108
+msgid "Backup"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/backup.html:14
+#, python-format
+msgid ""
+"You can download a json formated of configurations by clicking <a "
+"href='%(link)s' class='btn btn-primary'>here</a>"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/backup.html:21
+msgid "Restore"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/backup.html:26
+msgid "You can restore your configs from previously downloaded configs"
+msgstr ""
 
 # | msgid "Settings"
 #: hiddifypanel/panel/admin/templates/config.html:11
@@ -2023,14 +2072,14 @@ msgstr "查看日志"
 
 # | msgid "Support"
 #: hiddifypanel/templates/admin-layout.html:47
-#: hiddifypanel/templates/admin-layout.html:109
+#: hiddifypanel/templates/admin-layout.html:111
 #, fuzzy
 msgid "admin.menu.support"
 msgstr "支持"
 
 # | msgid "Telegram"
 #: hiddifypanel/templates/admin-layout.html:50
-#: hiddifypanel/templates/admin-layout.html:112
+#: hiddifypanel/templates/admin-layout.html:114
 msgid "admin.menu.telegram"
 msgstr "电报"
 

@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-04 23:52+0100\n"
-"PO-Revision-Date: 2023-02-04 16:37-0600\n"
+"POT-Creation-Date: 2023-02-05 01:48+0100\n"
+"PO-Revision-Date: 2023-02-04 16:52-0600\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -62,6 +62,50 @@ msgid ""
 "Success! Please wait around 5 minutes to make sure everything is updated."
 msgstr ""
 "Success! Please wait around 5 minutes to make sure everything is updated."
+
+#: hiddifypanel/panel/admin/Backup.py:87
+#, fuzzy
+msgid "Config file is incorrect"
+msgstr "Config file is incorrect"
+
+#: hiddifypanel/panel/admin/Backup.py:93
+#, fuzzy
+msgid "Restore File"
+msgstr "Restore File"
+
+#: hiddifypanel/panel/admin/Backup.py:93
+#, fuzzy
+msgid "Restore File Description"
+msgstr "Restore File Description"
+
+#: hiddifypanel/panel/admin/Backup.py:94
+#, fuzzy
+msgid "Restore Users"
+msgstr "Restore Users"
+
+#: hiddifypanel/panel/admin/Backup.py:94
+#, fuzzy
+msgid "Restore Users description"
+msgstr "Restore Users description"
+
+#: hiddifypanel/panel/admin/Backup.py:95
+#, fuzzy
+msgid "Restore Domain"
+msgstr "Restore Domain"
+
+#: hiddifypanel/panel/admin/Backup.py:95
+#, fuzzy
+msgid "Restore Domain description"
+msgstr "Restore Domain description"
+
+#: hiddifypanel/panel/admin/Backup.py:96
+#: hiddifypanel/panel/admin/ProxyAdmin.py:90
+#: hiddifypanel/panel/admin/ProxyAdmin.py:116
+#: hiddifypanel/panel/admin/QuickSetup.py:63
+#: hiddifypanel/panel/admin/QuickSetup.py:83
+#: hiddifypanel/panel/admin/SettingAdmin.py:172
+msgid "Submit"
+msgstr "Submit"
 
 #: hiddifypanel/panel/admin/Dashboard.py:17
 #, python-format
@@ -156,14 +200,6 @@ msgstr "Error! Domain Fronting not set."
 #: hiddifypanel/panel/admin/SettingAdmin.py:62
 msgid "config.validation-error"
 msgstr "One of the fields has encountered with error"
-
-#: hiddifypanel/panel/admin/ProxyAdmin.py:90
-#: hiddifypanel/panel/admin/ProxyAdmin.py:116
-#: hiddifypanel/panel/admin/QuickSetup.py:63
-#: hiddifypanel/panel/admin/QuickSetup.py:83
-#: hiddifypanel/panel/admin/SettingAdmin.py:172
-msgid "Submit"
-msgstr "Submit"
 
 # | msgid "Name"
 #: hiddifypanel/panel/admin/ProxyAdmin1.py:16
@@ -305,7 +341,7 @@ msgstr ""
 " by the government. So it is not recommended"
 
 #: hiddifypanel/panel/admin/QuickSetup.py:96
-#, python-format, fuzzy
+#, fuzzy, python-format
 msgid ""
 "Domain (%(domain)s)-> IP=%(domain_ip)s is not matched with your "
 "ip=%(server_ip)s which is required in direct mode"
@@ -428,6 +464,31 @@ msgstr "User Links"
 #: hiddifypanel/panel/admin/UserAdmin.py:35
 msgid "actions"
 msgstr "Actions"
+
+#: hiddifypanel/panel/admin/templates/backup.html:9
+#: hiddifypanel/templates/admin-layout.html:108
+#, fuzzy
+msgid "Backup"
+msgstr "Backup"
+
+#: hiddifypanel/panel/admin/templates/backup.html:14
+#, python-format, fuzzy
+msgid ""
+"You can download a json formated of configurations by clicking <a "
+"href='%(link)s' class='btn btn-primary'>here</a>"
+msgstr ""
+"You can download a json formated of configurations by clicking <a "
+"href='%(link)s' class='btn btn-primary'>here</a>"
+
+#: hiddifypanel/panel/admin/templates/backup.html:21
+#, fuzzy
+msgid "Restore"
+msgstr "Restore"
+
+#: hiddifypanel/panel/admin/templates/backup.html:26
+#, fuzzy
+msgid "You can restore your configs from previously downloaded configs"
+msgstr "You can restore your configs from previously downloaded configs"
 
 # | msgid "Settings"
 #: hiddifypanel/panel/admin/templates/config.html:11
@@ -1863,13 +1924,13 @@ msgstr "View Logs"
 
 # | msgid "Support"
 #: hiddifypanel/templates/admin-layout.html:47
-#: hiddifypanel/templates/admin-layout.html:109
+#: hiddifypanel/templates/admin-layout.html:111
 msgid "admin.menu.support"
 msgstr "Support"
 
 # | msgid "Telegram"
 #: hiddifypanel/templates/admin-layout.html:50
-#: hiddifypanel/templates/admin-layout.html:112
+#: hiddifypanel/templates/admin-layout.html:114
 msgid "admin.menu.telegram"
 msgstr "Telegram"
 
