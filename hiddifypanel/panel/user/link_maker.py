@@ -148,7 +148,7 @@ def make_proxy(proxy):
 
 
 def to_link(proxy):
-    if type(proxy) is str:return proxy
+    if type(proxy) == str:return proxy
 
     name_link=proxy["name"]+"_"+proxy['extra_info']
     if proxy['proto']=='vmess':
