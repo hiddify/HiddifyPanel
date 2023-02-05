@@ -8,7 +8,7 @@ from hiddifypanel.models import  User,Domain,DomainType,StrConfig,ConfigEnum,hco
 from hiddifypanel.panel.hiddify import flash
 class Dashboard(FlaskView):
     def index(self):
-        try:
+        # try:
             def_user=None if len(User.query.all())>1 else User.query.filter(User.name=='default').first()
             domains=Domain.query.all()
             sslip_domains=[d.domain for d in domains if "sslip.io" in d.domain]
@@ -23,6 +23,6 @@ class Dashboard(FlaskView):
                 u=def_user.uuid
                 flash((_('It seems that you have not created any users yet. <a href="%(default_link)s">default user link</a>',default_link=hiddify.get_user_link(u,d))),'info')
             
-        except:
-            flash((_('Error!!!')),'info')
-        return render_template('index.html')
+        # except:
+        #     flash((_('Error!!!')),'info')
+            return render_template('index.html')
