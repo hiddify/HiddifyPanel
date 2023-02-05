@@ -15,13 +15,14 @@ def add_temporary_access():
     import random
 
     random_port=(random.randint(30000, 50000))
-    iptableparm=f'PREROUTING -p tcp --dport {random_port} -j REDIRECT --to-port 9000'
-    exec_command(f'iptables -t nat -I {iptableparm}')
-    exec_command(f'echo "iptables -t nat -D {iptableparm}" | at now + 4 hour')
+    exec_command('/opt/hiddify-config/hiddify-panel/temporary_access.sh')
+    # iptableparm=f'PREROUTING -p tcp --dport {random_port} -j REDIRECT --to-port 9000'
+    # exec_command(f'iptables -t nat -I {iptableparm}')
+    # exec_command(f'echo "iptables -t nat -D {iptableparm}" | at now + 4 hour')
     
-    iptableparm=f'INPUT -p tcp --dport {random_port} -j ACCEPT'
-    exec_command(f'iptables -I {iptableparm}')
-    exec_command(f'echo "iptables -D {iptableparm}" | at now + 4 hour')
+    # iptableparm=f'INPUT -p tcp --dport {random_port} -j ACCEPT'
+    # exec_command(f'iptables -I {iptableparm}')
+    # exec_command(f'echo "iptables -D {iptableparm}" | at now + 4 hour')
 
     temp_admin_link=f"http://{get_ip(4)}:{random_port}{get_admin_path()}"
     return flash((_("We have opened a temporary port (for 4 hours) to access the panel in case of any issues. Please copy this link. <a href='%(link)s' class='btn btn-danger share-link'>Temporary Link</a>",link=temp_admin_link)),'warning')
