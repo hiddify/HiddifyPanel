@@ -86,7 +86,7 @@ def get_quick_setup_form(empty=False):
                 enable_vmess=SwitchField(_("config.vmess_enable.label"),description=_("config.vmess_enable.description"),default=hconfig(ConfigEnum.vmess_enable))
                 enable_firewall=SwitchField(_("config.firewall.label"),description=_("config.firewall.description"),default=hconfig(ConfigEnum.firewall))
                 block_iran_sites=SwitchField(_("config.block_iran_sites.label"),description=_("config.block_iran_sites.description"),default=hconfig(ConfigEnum.block_iran_sites))
-                decoy_domain=SwitchField(_("config.decoy_domain.label"),description=_("config.decoy_domain.description"),default=hconfig(ConfigEnum.decoy_domain),validators=[wtf.validators.Regexp(domain_regex,re.IGNORECASE,_("config.Invalid domain"))])
+                decoy_domain=wtf.fields.StringField(_("config.decoy_domain.label"),description=_("config.decoy_domain.description"),default=hconfig(ConfigEnum.decoy_domain),validators=[wtf.validators.Regexp(domain_regex,re.IGNORECASE,_("config.Invalid domain"))])
                 submit=wtf.fields.SubmitField(_('Submit'))
 
                 
