@@ -46,7 +46,7 @@ class QuickSetup(FlaskView):
                         
                         BoolConfig.query.filter(BoolConfig.key==ConfigEnum.telegram_enable).first().value=quick_form.enable_telegram.data
                         BoolConfig.query.filter(BoolConfig.key==ConfigEnum.vmess_enable).first().value=quick_form.enable_vmess.data
-                        BoolConfig.query.filter(BoolConfig.key==ConfigEnum.enable_firewall).first().value=quick_form.enable_firewall.data
+                        BoolConfig.query.filter(BoolConfig.key==ConfigEnum.firewall).first().value=quick_form.enable_firewall.data
                         BoolConfig.query.filter(BoolConfig.key==ConfigEnum.block_iran_sites).first().value=quick_form.block_iran_sites.data
                         StrConfig.query.filter(StrConfig.key==ConfigEnum.decoy_domain).first().value=quick_form.decoy_domain.data
                         db.session.commit()
