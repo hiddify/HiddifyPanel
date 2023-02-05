@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-05 01:48+0100\n"
-"PO-Revision-Date: 2023-02-04 16:52-0600\n"
+"POT-Creation-Date: 2023-02-05 10:35+0100\n"
+"PO-Revision-Date: 2023-02-05 03:29-0600\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.11.0\n"
 
-#: hiddifypanel/panel/hiddify.py:26
+#: hiddifypanel/panel/hiddify.py:27
 #, fuzzy, python-format
 msgid ""
 "We have opened a temporary port (for 4 hours) to access the panel in case"
@@ -25,7 +25,7 @@ msgstr ""
 "btn-danger share-link'>临时链接</a>"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/panel/admin/ProxyAdmin.py:41 hiddifypanel/panel/hiddify.py:138
+#: hiddifypanel/panel/admin/ProxyAdmin.py:42 hiddifypanel/panel/hiddify.py:139
 #, fuzzy
 msgid "admin.config.apply_configs"
 msgstr "应用配置"
@@ -34,7 +34,7 @@ msgstr "应用配置"
 # | "Configs have been changed successfully. Click %(link)s to apply the
 # configs."
 # | " It may take 2 minutes to apply."
-#: hiddifypanel/panel/admin/ProxyAdmin.py:42 hiddifypanel/panel/hiddify.py:139
+#: hiddifypanel/panel/admin/ProxyAdmin.py:43 hiddifypanel/panel/hiddify.py:140
 #, fuzzy
 msgid "config.validation-success"
 msgstr "配置已成功更改。单击 %(link)s 以应用配置。申请可能需要 2 分钟。"
@@ -61,45 +61,45 @@ msgstr "请参阅以下屏幕中的日志："
 msgid "Success! Please wait around 5 minutes to make sure everything is updated."
 msgstr "成功！ 请等待大约 5 分钟，以确保所有内容都已更新。"
 
-#: hiddifypanel/panel/admin/Backup.py:87
+#: hiddifypanel/panel/admin/Backup.py:88
 msgid "Config file is incorrect"
 msgstr ""
 
-#: hiddifypanel/panel/admin/Backup.py:93
+#: hiddifypanel/panel/admin/Backup.py:94
 msgid "Restore File"
 msgstr ""
 
-#: hiddifypanel/panel/admin/Backup.py:93
+#: hiddifypanel/panel/admin/Backup.py:94
 msgid "Restore File Description"
 msgstr ""
 
-#: hiddifypanel/panel/admin/Backup.py:94
+#: hiddifypanel/panel/admin/Backup.py:95
 msgid "Restore Users"
 msgstr ""
 
-#: hiddifypanel/panel/admin/Backup.py:94
+#: hiddifypanel/panel/admin/Backup.py:95
 msgid "Restore Users description"
 msgstr ""
 
-#: hiddifypanel/panel/admin/Backup.py:95
+#: hiddifypanel/panel/admin/Backup.py:96
 msgid "Restore Domain"
 msgstr ""
 
-#: hiddifypanel/panel/admin/Backup.py:95
+#: hiddifypanel/panel/admin/Backup.py:96
 msgid "Restore Domain description"
 msgstr ""
 
-#: hiddifypanel/panel/admin/Backup.py:96
-#: hiddifypanel/panel/admin/ProxyAdmin.py:90
-#: hiddifypanel/panel/admin/ProxyAdmin.py:116
-#: hiddifypanel/panel/admin/QuickSetup.py:63
-#: hiddifypanel/panel/admin/QuickSetup.py:83
-#: hiddifypanel/panel/admin/SettingAdmin.py:172
+#: hiddifypanel/panel/admin/Backup.py:97
+#: hiddifypanel/panel/admin/ProxyAdmin.py:91
+#: hiddifypanel/panel/admin/ProxyAdmin.py:117
+#: hiddifypanel/panel/admin/QuickSetup.py:66
+#: hiddifypanel/panel/admin/QuickSetup.py:90
+#: hiddifypanel/panel/admin/SettingAdmin.py:173
 #, fuzzy
 msgid "Submit"
 msgstr "提交"
 
-#: hiddifypanel/panel/admin/Dashboard.py:17
+#: hiddifypanel/panel/admin/Dashboard.py:18
 #, fuzzy, python-format
 msgid ""
 "It seems that you have not setup the system completely. <a class=\"btn "
@@ -111,14 +111,14 @@ msgstr ""
 # | msgid ""
 # | "It seems that you are using default domain (%(domain)s) which is not "
 # | "recommended. Please change or remove it from domain section."
-#: hiddifypanel/panel/admin/Dashboard.py:19
+#: hiddifypanel/panel/admin/Dashboard.py:20
 #, fuzzy, python-format
 msgid ""
 "It seems that you are using default domain (%(domain)s) which is not "
 "recommended."
 msgstr "您似乎正在使用不推荐的默认域 (%(domain)s)。"
 
-#: hiddifypanel/panel/admin/Dashboard.py:23
+#: hiddifypanel/panel/admin/Dashboard.py:24
 #, fuzzy, python-format
 msgid ""
 "It seems that you have not created any users yet. <a "
@@ -126,14 +126,14 @@ msgid ""
 msgstr "您似乎还没有创建任何用户。 <a href=\"%(default_link)s\">默认用户链接</a>"
 
 # | msgid "Error!!"
-#: hiddifypanel/panel/admin/Dashboard.py:26
+#: hiddifypanel/panel/admin/Dashboard.py:27
 #, fuzzy
 msgid "Error!!!"
 msgstr "错误！！！"
 
 # | msgid "Domain"
 #: hiddifypanel/panel/admin/DomainAdmin.py:22
-#: hiddifypanel/panel/admin/QuickSetup.py:80
+#: hiddifypanel/panel/admin/QuickSetup.py:84
 #, fuzzy
 msgid "domain.domain"
 msgstr "领域"
@@ -155,7 +155,7 @@ msgstr "知识产权"
 # check "
 # | "your Domain configurations."
 #: hiddifypanel/panel/admin/DomainAdmin.py:56
-#: hiddifypanel/panel/admin/QuickSetup.py:92
+#: hiddifypanel/panel/admin/QuickSetup.py:99
 #, fuzzy
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr "域名无法解析！你的域有问题"
@@ -179,14 +179,14 @@ msgid ""
 msgstr "在 CDN 模式下，Domain IP=%(domain_ip)s 应该与您的 ip=%(server_ip)s 不同"
 
 # | msgid "Error! Domain Fronting not set."
-#: hiddifypanel/panel/admin/ProxyAdmin.py:36
+#: hiddifypanel/panel/admin/ProxyAdmin.py:37
 msgid "config.domain-fronting-notsetup-error"
 msgstr "错误！ 未设置域前端"
 
 # | msgid "One of the fields has encountered with error"
-#: hiddifypanel/panel/admin/ProxyAdmin.py:63
-#: hiddifypanel/panel/admin/QuickSetup.py:56
-#: hiddifypanel/panel/admin/SettingAdmin.py:62
+#: hiddifypanel/panel/admin/ProxyAdmin.py:64
+#: hiddifypanel/panel/admin/QuickSetup.py:59
+#: hiddifypanel/panel/admin/SettingAdmin.py:63
 #, fuzzy
 msgid "config.validation-error"
 msgstr "其中一个字段遇到错误"
@@ -228,7 +228,7 @@ msgstr "改语言成功"
 msgid "quicksetup.setlang.error"
 msgstr "更改语言时出错"
 
-#: hiddifypanel/panel/admin/QuickSetup.py:54
+#: hiddifypanel/panel/admin/QuickSetup.py:57
 #, fuzzy, python-format
 msgid ""
 "The default user link is %(link)s. To add or edit more users, please "
@@ -236,37 +236,37 @@ msgid ""
 msgstr "默认用户链接是 %(link)s。要添加或编辑更多用户，请从菜单访问用户。"
 
 # | msgid "Admin panel language"
-#: hiddifypanel/panel/admin/QuickSetup.py:61
+#: hiddifypanel/panel/admin/QuickSetup.py:64
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.admin_lang.label"
 msgstr "管理面板语言"
 
 # | msgid "English انگلیسی 英语"
-#: hiddifypanel/panel/admin/QuickSetup.py:61
-#: hiddifypanel/panel/admin/QuickSetup.py:62
-#: hiddifypanel/panel/admin/SettingAdmin.py:121
+#: hiddifypanel/panel/admin/QuickSetup.py:64
+#: hiddifypanel/panel/admin/QuickSetup.py:65
+#: hiddifypanel/panel/admin/SettingAdmin.py:122
 #, fuzzy
 msgid "lang.en"
 msgstr "English انگلیسی 英语"
 
 # | msgid "Persian فارسی 波斯语"
-#: hiddifypanel/panel/admin/QuickSetup.py:61
-#: hiddifypanel/panel/admin/QuickSetup.py:62
-#: hiddifypanel/panel/admin/SettingAdmin.py:121
+#: hiddifypanel/panel/admin/QuickSetup.py:64
+#: hiddifypanel/panel/admin/QuickSetup.py:65
+#: hiddifypanel/panel/admin/SettingAdmin.py:122
 #, fuzzy
 msgid "lang.fa"
 msgstr "Persian فارسی 波斯语"
 
 # | msgid "Choose language for Admin area."
-#: hiddifypanel/panel/admin/QuickSetup.py:61
+#: hiddifypanel/panel/admin/QuickSetup.py:64
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.admin_lang.description"
 msgstr "为管理区域选择语言。"
 
 # | msgid "User Area Language"
-#: hiddifypanel/panel/admin/QuickSetup.py:62
+#: hiddifypanel/panel/admin/QuickSetup.py:65
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/panel/admin/templates/quick_setup.html:22
 #, fuzzy
@@ -274,23 +274,23 @@ msgid "config.lang.label"
 msgstr "语言"
 
 # | msgid "It will change user language"
-#: hiddifypanel/panel/admin/QuickSetup.py:62
+#: hiddifypanel/panel/admin/QuickSetup.py:65
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.lang.description"
 msgstr "它将更改管理和用户语言"
 
 # | msgid "Error! Invalid domain.  The domain format is www.google.com"
-#: hiddifypanel/panel/admin/QuickSetup.py:77
-#: hiddifypanel/panel/admin/SettingAdmin.py:132
-#: hiddifypanel/panel/admin/SettingAdmin.py:134
+#: hiddifypanel/panel/admin/QuickSetup.py:80
+#: hiddifypanel/panel/admin/SettingAdmin.py:133
+#: hiddifypanel/panel/admin/SettingAdmin.py:135
 #, fuzzy
 msgid "config.Invalid domain"
 msgstr "错误！域无效。域格式为 www.google.com"
 
 # | msgid "Domain is exist in domains section. Use another domain"
-#: hiddifypanel/panel/admin/QuickSetup.py:79
-#: hiddifypanel/panel/admin/SettingAdmin.py:136
+#: hiddifypanel/panel/admin/QuickSetup.py:83
+#: hiddifypanel/panel/admin/SettingAdmin.py:137
 #, fuzzy
 msgid "config.Domain already used"
 msgstr "域存在于域部分。使用另一个域"
@@ -301,7 +301,7 @@ msgstr "域存在于域部分。使用另一个域"
 # "href=\"https://github.com/hiddify/hiddify-config/wiki/راهنمای-تنظیم-دامنه-و-"
 # | "نهایی-کردن-نصب#آموزش-ساخت-زیردامنه\"> Help</a> to learn how to create a "
 # | "subdomain."
-#: hiddifypanel/panel/admin/QuickSetup.py:80
+#: hiddifypanel/panel/admin/QuickSetup.py:84
 #, fuzzy
 msgid "domain.description"
 msgstr ""
@@ -309,7 +309,7 @@ msgstr ""
 "config/wiki/راهنمای-تنظیم-دامنه-و-نهاوی-کردن-نصب#آمووous-ساخت-یردامنه\">帮助</a>了解如何创建子域。"
 
 # | msgid "Enable Telegram MT Proxy"
-#: hiddifypanel/panel/admin/QuickSetup.py:81
+#: hiddifypanel/panel/admin/QuickSetup.py:85
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.telegram_enable.label"
@@ -318,14 +318,14 @@ msgstr "启用 Telegram MT 代理"
 # | msgid ""
 # | "Telegram MT Proxy is used for encapsulate telegram proxy as a TLS
 # traffic"
-#: hiddifypanel/panel/admin/QuickSetup.py:81
+#: hiddifypanel/panel/admin/QuickSetup.py:85
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.telegram_enable.description"
 msgstr "电报 MT 代理用于将电报代理封装为 TLS 流量"
 
 # | msgid "Enable vmess"
-#: hiddifypanel/panel/admin/QuickSetup.py:82
+#: hiddifypanel/panel/admin/QuickSetup.py:86
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.vmess_enable.label"
@@ -335,13 +335,61 @@ msgstr "启用 vmess"
 # | "It is reported by several people that vmess causes the system to be
 # detected"
 # | " by the government. So it is not recommended"
-#: hiddifypanel/panel/admin/QuickSetup.py:82
+#: hiddifypanel/panel/admin/QuickSetup.py:86
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.vmess_enable.description"
 msgstr "几个人报告说 vmess 导致系统被政府检测到。所以不推荐"
 
-#: hiddifypanel/panel/admin/QuickSetup.py:96
+# | msgid "Firewall"
+#: hiddifypanel/panel/admin/QuickSetup.py:87
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.firewall.label"
+msgstr "防火墙"
+
+# | msgid ""
+# | "Enabling firewall will open used ports (at least 22,443,80) and close all
+# "
+# | "other ports"
+#: hiddifypanel/panel/admin/QuickSetup.py:87
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.firewall.description"
+msgstr "启用防火墙将打开使用的端口（至少 22,443,80）并关闭所有其他端口"
+
+# | msgid "Block Iranian sites"
+#: hiddifypanel/panel/admin/QuickSetup.py:88
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.block_iran_sites.label"
+msgstr "封锁伊朗网站"
+
+# | msgid ""
+# | "Block Iranian sites to prevent detection by the government (Experimental:
+# If"
+# | " there is a problem, please disable it and tell us.)"
+#: hiddifypanel/panel/admin/QuickSetup.py:88
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.block_iran_sites.description"
+msgstr "屏蔽伊朗网站以防止被政府发现（实验：如果有问题，请禁用它并告诉我们。）"
+
+# | msgid "Decoy Site"
+#: hiddifypanel/panel/admin/QuickSetup.py:89
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.decoy_domain.label"
+msgstr "诱饵网站"
+
+# | msgid ""
+# | "Fake site: simulates a site when someone visits your domain\n"
+# | "Please do not use Iranian sites or Google, Yahoo, Wikipedia."
+#: hiddifypanel/panel/admin/QuickSetup.py:89
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.decoy_domain.description"
+msgstr "假网站：当有人访问您的域时模拟网站"
+
+#: hiddifypanel/panel/admin/QuickSetup.py:103
 #, python-format
 msgid ""
 "Domain (%(domain)s)-> IP=%(domain_ip)s is not matched with your "
@@ -349,43 +397,48 @@ msgid ""
 msgstr ""
 
 # | msgid "Chinese چینی 中国人"
-#: hiddifypanel/panel/admin/SettingAdmin.py:121
+#: hiddifypanel/panel/admin/SettingAdmin.py:122
 msgid "lang.zh"
 msgstr "Chinese چینی 中国人"
 
 # | msgid "Telegram Proxy Library"
-#: hiddifypanel/panel/admin/SettingAdmin.py:123
+#: hiddifypanel/panel/admin/SettingAdmin.py:124
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.telegram_lib.label"
 msgstr "电报代理库"
 
 # | msgid "Python: low performance"
-#: hiddifypanel/panel/admin/SettingAdmin.py:123
+#: hiddifypanel/panel/admin/SettingAdmin.py:124
 #, fuzzy
 msgid "lib.telegram.python"
 msgstr "Python：低性能"
 
 # | msgid "Go: high performance: No ad support"
-#: hiddifypanel/panel/admin/SettingAdmin.py:123
+#: hiddifypanel/panel/admin/SettingAdmin.py:124
 #, fuzzy
 msgid "lib.telegram.go"
 msgstr "Go：高性能：无广告支持"
 
 # | msgid "Original: high performance"
-#: hiddifypanel/panel/admin/SettingAdmin.py:123
+#: hiddifypanel/panel/admin/SettingAdmin.py:124
 #, fuzzy
 msgid "lib.telegram.orignal"
 msgstr "原文：高性能"
 
 # | msgid "Erlang: medium performance"
-#: hiddifypanel/panel/admin/SettingAdmin.py:123
+#: hiddifypanel/panel/admin/SettingAdmin.py:124
 #, fuzzy
 msgid "lib.telegram.erlang"
 msgstr "Erlang：中等性能"
 
-# | msgid "You can switch between different telegram libraries."
-#: hiddifypanel/panel/admin/SettingAdmin.py:123
+# | msgid ""
+# | "You can switch between different telegram libraries. Please note that
+# only "
+# | "python works in all servers, others may have some issue. Test proxy after
+# "
+# | "changing it."
+#: hiddifypanel/panel/admin/SettingAdmin.py:124
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.telegram_lib.description"
@@ -393,7 +446,7 @@ msgstr "您可以在不同的电报库之间切换。"
 
 # | msgid ""
 # | "Invalid link. it should be on this format: (https or http://example.com)"
-#: hiddifypanel/panel/admin/SettingAdmin.py:141
+#: hiddifypanel/panel/admin/SettingAdmin.py:142
 #, fuzzy
 msgid "config.Invalid brand link"
 msgstr "品牌链接无效"
@@ -401,20 +454,20 @@ msgstr "品牌链接无效"
 # | msgid ""
 # | "Invalid UUID secret. Example: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n"
 # | "\n"
-#: hiddifypanel/panel/admin/SettingAdmin.py:145
+#: hiddifypanel/panel/admin/SettingAdmin.py:146
 #, fuzzy
 msgid "config.invalid uuid"
 msgstr "UUID 密码无效。例如，6098ea35-8cb2-4a08-ba15-2be25bc49cb6"
 
 # | msgid "Invalid proxy path. It should be asci string (a-z A-Z 0-9)"
-#: hiddifypanel/panel/admin/SettingAdmin.py:149
+#: hiddifypanel/panel/admin/SettingAdmin.py:150
 #, fuzzy
 msgid "config.Invalid proxy path"
 msgstr "代理路径无效。它应该是 asci 字符串 (a-z A-Z 0-9)"
 
 # | msgid ""
 # | "Invalid port. It should be comma separated integer e.g., 1000,1001"
-#: hiddifypanel/panel/admin/SettingAdmin.py:153
+#: hiddifypanel/panel/admin/SettingAdmin.py:154
 #, fuzzy
 msgid "config.Invalid port"
 msgstr "端口无效。它应该是逗号分隔的整数，例如 1000,1001"
@@ -422,61 +475,61 @@ msgstr "端口无效。它应该是逗号分隔的整数，例如 1000,1001"
 # | msgid ""
 # | "Port 80 should always be presented. We use it for getting ssl
 # certificate"
-#: hiddifypanel/panel/admin/SettingAdmin.py:156
+#: hiddifypanel/panel/admin/SettingAdmin.py:157
 #, fuzzy
 msgid "config.port 80 is required"
 msgstr "应始终提供端口 80。我们用它来获取 ssl 证书"
 
 # | msgid "Port 443 should always be presented. "
-#: hiddifypanel/panel/admin/SettingAdmin.py:159
+#: hiddifypanel/panel/admin/SettingAdmin.py:160
 #, fuzzy
 msgid "config.port 443 is required"
 msgstr "应始终显示端口 443。"
 
 # | msgid "UUID"
-#: hiddifypanel/panel/admin/UserAdmin.py:28
+#: hiddifypanel/panel/admin/UserAdmin.py:29
 #, fuzzy
 msgid "user.UUID"
 msgstr "UUID"
 
 # | msgid "Name"
-#: hiddifypanel/panel/admin/UserAdmin.py:29
+#: hiddifypanel/panel/admin/UserAdmin.py:30
 #, fuzzy
 msgid "user.name"
 msgstr "名称"
 
 # | msgid "Monthly Usage Limit (GB)"
-#: hiddifypanel/panel/admin/UserAdmin.py:30
+#: hiddifypanel/panel/admin/UserAdmin.py:31
 #, fuzzy
 msgid "user.monthly_usage_limit_GB"
 msgstr "每月使用限额 (GB)"
 
 # | msgid "Current Usage (GB)"
-#: hiddifypanel/panel/admin/UserAdmin.py:31
+#: hiddifypanel/panel/admin/UserAdmin.py:32
 #, fuzzy
 msgid "user.current_usage_GB"
 msgstr "当前使用量 (GB)"
 
 # | msgid "Expire Time"
-#: hiddifypanel/panel/admin/UserAdmin.py:32
+#: hiddifypanel/panel/admin/UserAdmin.py:33
 #, fuzzy
 msgid "user.expiry_time"
 msgstr "过期时间"
 
 # | msgid "Last usage date reset"
-#: hiddifypanel/panel/admin/UserAdmin.py:33
+#: hiddifypanel/panel/admin/UserAdmin.py:34
 #, fuzzy
 msgid "user.last_reset_time"
 msgstr "最后使用日期重置"
 
 # | msgid "User Links"
-#: hiddifypanel/panel/admin/UserAdmin.py:34
+#: hiddifypanel/panel/admin/UserAdmin.py:35
 #, fuzzy
 msgid "user.user_links"
 msgstr "用户链接"
 
 # | msgid "Actions"
-#: hiddifypanel/panel/admin/UserAdmin.py:35
+#: hiddifypanel/panel/admin/UserAdmin.py:36
 #, fuzzy
 msgid "actions"
 msgstr "动作"
@@ -537,7 +590,9 @@ msgstr "输入要在用户页面上显示的自定义标题。 （在用户的�
 msgid "config.branding_site.label"
 msgstr "支持链接（同时出现在品牌标题和用户页面的支持部分。）"
 
-# | msgid "The link to be shown on Support section of user's page."
+# | msgid ""
+# | "The link to be shown on Support section of user's page.\n"
+# | "You can put also your telegram channel or telegram PV here."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.branding_site.description"
@@ -593,21 +648,6 @@ msgstr "管理员设置"
 #, fuzzy
 msgid "config.admin.description"
 msgstr "管理部分用于配置管理相关设置"
-
-# | msgid "Firewall"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-#, fuzzy
-msgid "config.firewall.label"
-msgstr "防火墙"
-
-# | msgid ""
-# | "Enabling firewall will open used ports (at least 22,443,80) and close all
-# "
-# | "other ports"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-#, fuzzy
-msgid "config.firewall.description"
-msgstr "启用防火墙将打开使用的端口（至少 22,443,80）并关闭所有其他端口"
 
 # | msgid "Netdata"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -674,16 +714,6 @@ msgstr "洪流块配置"
 msgid "config.torrent_block.description"
 msgstr "可以在本节中设置 Torrent 块配置。"
 
-# | msgid "Decoy Site"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.decoy_domain.label"
-msgstr "诱饵网站"
-
-# | msgid "Fake site: simulates a site when someone visits your domain"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.decoy_domain.description"
-msgstr "假网站：当有人访问您的域时模拟网站"
-
 # | msgid "General Settings"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
@@ -695,21 +725,6 @@ msgstr "通用设置"
 #, fuzzy
 msgid "config.general.description"
 msgstr "这是一般的系统配置。"
-
-# | msgid "Block Iranian sites"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-#, fuzzy
-msgid "config.block_iran_sites.label"
-msgstr "封锁伊朗网站"
-
-# | msgid ""
-# | "Block Iranian sites to prevent detection by the government (Experimental:
-# If"
-# | " there is a problem, please disable it and tell us.)"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-#, fuzzy
-msgid "config.block_iran_sites.description"
-msgstr "屏蔽伊朗网站以防止被政府发现（实验：如果有问题，请禁用它并告诉我们。）"
 
 # | msgid "V2Ray configurations"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1650,7 +1665,7 @@ msgstr "iOS"
 msgid "desktop"
 msgstr "桌面"
 
-# | msgid "Please select your operation system"
+# | msgid "Please select your operating system."
 #: hiddifypanel/panel/user/templates/home/index.html:53
 #, fuzzy
 msgid "user.home.select os"
