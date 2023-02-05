@@ -46,6 +46,9 @@ class QuickSetup(FlaskView):
                         
                         BoolConfig.query.filter(BoolConfig.key==ConfigEnum.telegram_enable).first().value=quick_form.enable_telegram.data
                         BoolConfig.query.filter(BoolConfig.key==ConfigEnum.vmess_enable).first().value=quick_form.enable_vmess.data
+                        BoolConfig.query.filter(BoolConfig.key==ConfigEnum.enable_firewall).first().value=quick_form.enable_firewall.data
+                        BoolConfig.query.filter(BoolConfig.key==ConfigEnum.block_iran_sites).first().value=quick_form.block_iran_sites.data
+                        StrConfig.query.filter(StrConfig.key==ConfigEnum.decoy_domain).first().value=quick_form.decoy_domain.data
                         db.session.commit()
                         hiddify.flash_config_success()
                         proxy_path=hconfig(ConfigEnum.proxy_path)
@@ -74,12 +77,16 @@ def get_quick_setup_form(empty=False):
                         domains.append(d.domain)
                 return domains
         class QuickSetupForm(FlaskForm):
-                domain_validators=[wtf.validators.Regexp("^([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})$",re.IGNORECASE,_("config.Invalid domain")),
+                domain_regex=wtf.validators.Regexp("^([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})$",re.IGNORECASE,_("config.Invalid domain"))
+                domain_validators=[domain_regex,
                                         validate_domain,
                                         wtf.validators.NoneOf(get_used_domains(),_("config.Domain already used"))]
                 domain=wtf.fields.StringField(_("domain.domain"),domain_validators,description=_("domain.description"),render_kw={"pattern":domain_validators[0].regex.pattern,"title":domain_validators[0].message,"required":"","placeholder":"sub.domain.com"})
                 enable_telegram=SwitchField(_("config.telegram_enable.label"),description=_("config.telegram_enable.description"),default=hconfig(ConfigEnum.telegram_enable))
                 enable_vmess=SwitchField(_("config.vmess_enable.label"),description=_("config.vmess_enable.description"),default=hconfig(ConfigEnum.vmess_enable))
+                enable_firewall=SwitchField(_("config.firewall.label"),description=_("config.firewall.description"),default=hconfig(ConfigEnum.firewall))
+                block_iran_sites=SwitchField(_("config.block_iran_sites.label"),description=_("config.block_iran_sites.description"),default=hconfig(ConfigEnum.block_iran_sites))
+                decoy_domain=SwitchField(_("config.decoy_domain.label"),description=_("config.decoy_domain.description"),default=hconfig(ConfigEnum.decoy_domain),validators=[domain_regex])
                 submit=wtf.fields.SubmitField(_('Submit'))
 
                 
