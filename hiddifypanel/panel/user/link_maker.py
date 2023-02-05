@@ -74,7 +74,7 @@ def make_proxy(proxy):
         return 
     
 
-    if "FAKE" in name:
+    if "Fake" in name:
         if not hconfig(ConfigEnum.domain_fronting_domain):
             return
         if l3=="http" and not hconfig(ConfigEnum.domain_fronting_http_enable):
