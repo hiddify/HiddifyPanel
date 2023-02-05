@@ -9,7 +9,7 @@ class AllResource(Resource):
     def get(self):
         products = User.query.all() or abort(204)
         response= jsonify(
-            {"users": [u.to_dict() for u in User.query.filter((User.monthly_usage_limit_GB>User.current_usage_GB)).filter(User.expiry_time>=datetime.date.today()).all()],
+            {"users": [u.to_dict() for u in User.query.filter((User.usage_limit_GB>User.current_usage_GB)).filter(User.expiry_time>=datetime.date.today()).all()],
             "domains": [u.to_dict() for u in Domain.query.all()],
             "proxies": [u.to_dict() for u in Proxy.query.all()],
             "hconfigs": get_hconfigs()

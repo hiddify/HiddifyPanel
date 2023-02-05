@@ -23,13 +23,16 @@ class UserAdmin(AdminLTEModelView):
     # }
     # }
     # column_labels={'uuid':_("user.UUID")}
-    column_filters=["uuid","name","monthly_usage_limit_GB","current_usage_GB","expiry_time"]
+    column_filters=["uuid","name","usage_limit_GB",'monthly',"current_usage_GB","expiry_time"]
     
     column_labels={
         "uuid":_("user.UUID"),
         "name": _("user.name"),
-        "monthly_usage_limit_GB":_("user.monthly_usage_limit_GB"),
+        "usage_limit_GB":_("user.usage_limit_GB"),
+        "monthly":_("Reset every month"),
         "current_usage_GB":_("user.current_usage_GB"),
+        
+
         "expiry_time":_("user.expiry_time"),
         "last_reset_time":_("user.last_reset_time"),
         "UserLinks":_("user.user_links"),
@@ -43,15 +46,15 @@ class UserAdmin(AdminLTEModelView):
     #  return column_labels[field]
     column_descriptions = dict(
         # name=_'just for remembering',
-        # monthly_usage_limit_GB="in GB",
+        # usage_limit_GB="in GB",
         # current_usage_GB="in GB"
     )
-    column_editable_list=["name","monthly_usage_limit_GB","current_usage_GB","expiry_time"]
+    column_editable_list=["name","usage_limit_GB","current_usage_GB","expiry_time"]
     # form_extra_fields={
     #     'uuid': {'label_name':"D"}
         
     #     }
-    column_list = ["uuid","name","monthly_usage_limit_GB","current_usage_GB","expiry_time","UserLinks"]
+    column_list = ["uuid","name","usage_limit_GB",'monthly',"current_usage_GB","expiry_time","UserLinks"]
     # can_edit = False
     # def on_model_change(self, form, model, is_created):
     #     model.password = generate_password_hash(model.password)
@@ -88,7 +91,7 @@ class UserAdmin(AdminLTEModelView):
             super().on_model_change(form, model, is_created)
         
         
-        # if model.current_usage_GB < model.monthly_usage_limit_GB:
+        # if model.current_usage_GB < model.usage_limit_GB:
         #     xray_api.add_client(model.uuid)
         # else:
         #     xray_api.remove_client(model.uuid)

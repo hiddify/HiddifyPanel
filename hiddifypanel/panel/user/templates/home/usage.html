@@ -7,13 +7,20 @@
                 <h3>{{_('user.home.usage.title')}}</h3>
                 <div class="info-box-content">
                     <span class="info-box-text">{{user.current_usage_GB|round(3)}}GB <b>{{_('user.home.usage.from')}}</b>
-                            {{user.monthly_usage_limit_GB}}GB  {{_('user.home.usage.monthly')}}</span> 
+                            {{user.usage_limit_GB}}GB  {{_('user.home.usage.monthly') if user.monthly else '' }}</span> 
                     <div class="progress">
                         <div class="progress-bar progress-bar-striped bg-warning"
-                            style="width: {{user.current_usage_GB*100/user.monthly_usage_limit_GB}}%"></div>
+                            style="width: {{user.current_usage_GB*100/user.usage_limit_GB}}%"></div>
                     </div>
-                    <span class="progress-description">
-                        <i class="fa-solid fa-calendar-days fa-margin"></i> <b>{{_('user.home.usage.expire')}}</b> {{expire_days}} {{_('days')}}                     </span>
+                    <div>
+                        <i class="fa-solid fa-calendar-days fa-margin"></i> <b>{{_('user.home.usage.expire')}}</b> {{expire_days}} {{_('days')}}                     
+                    </div>
+                    % if user.monthly
+                    <div>
+                        <i class="fa-solid fa-calendar-days fa-margin"></i> <b>{{_('Reset Usage Time:')}}</b> {{reset_day}} {{_('days')}}                     
+                    </div>
+                    %endif
+                    
                 </div>
             </div>
             <div class="icon">

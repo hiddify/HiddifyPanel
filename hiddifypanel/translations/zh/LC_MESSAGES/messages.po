@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-05 10:35+0100\n"
-"PO-Revision-Date: 2023-02-05 03:29-0600\n"
+"POT-Creation-Date: 2023-02-05 12:31+0100\n"
+"PO-Revision-Date: 2023-02-05 05:31-0600\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -498,38 +498,44 @@ msgstr "UUID"
 msgid "user.name"
 msgstr "名称"
 
-# | msgid "Monthly Usage Limit (GB)"
+# | msgid "Usage Limit (GB)"
 #: hiddifypanel/panel/admin/UserAdmin.py:31
 #, fuzzy
-msgid "user.monthly_usage_limit_GB"
-msgstr "每月使用限额 (GB)"
+msgid "user.usage_limit_GB"
+msgstr "使用限制 (GB)"
+
+# | msgid "Monthly"
+#: hiddifypanel/panel/admin/UserAdmin.py:32
+#, fuzzy
+msgid "Reset every month"
+msgstr "每月"
 
 # | msgid "Current Usage (GB)"
-#: hiddifypanel/panel/admin/UserAdmin.py:32
+#: hiddifypanel/panel/admin/UserAdmin.py:33
 #, fuzzy
 msgid "user.current_usage_GB"
 msgstr "当前使用量 (GB)"
 
 # | msgid "Expire Time"
-#: hiddifypanel/panel/admin/UserAdmin.py:33
+#: hiddifypanel/panel/admin/UserAdmin.py:36
 #, fuzzy
 msgid "user.expiry_time"
 msgstr "过期时间"
 
 # | msgid "Last usage date reset"
-#: hiddifypanel/panel/admin/UserAdmin.py:34
+#: hiddifypanel/panel/admin/UserAdmin.py:37
 #, fuzzy
 msgid "user.last_reset_time"
 msgstr "最后使用日期重置"
 
 # | msgid "User Links"
-#: hiddifypanel/panel/admin/UserAdmin.py:35
+#: hiddifypanel/panel/admin/UserAdmin.py:38
 #, fuzzy
 msgid "user.user_links"
 msgstr "用户链接"
 
 # | msgid "Actions"
-#: hiddifypanel/panel/admin/UserAdmin.py:36
+#: hiddifypanel/panel/admin/UserAdmin.py:39
 #, fuzzy
 msgid "actions"
 msgstr "动作"
@@ -1696,7 +1702,7 @@ msgid "user.home.select tool"
 msgstr "请选择项目。"
 
 #: hiddifypanel/panel/user/templates/home/index.html:124
-#: hiddifypanel/panel/user/templates/home/usage.html:51
+#: hiddifypanel/panel/user/templates/home/usage.html:58
 #, fuzzy
 msgid "QR code"
 msgstr "二维码"
@@ -1706,14 +1712,14 @@ msgstr "二维码"
 # fa-qrcode'></i>"
 # | " field to display its QR Code."
 #: hiddifypanel/panel/user/templates/home/index.html:125
-#: hiddifypanel/panel/user/templates/home/usage.html:52
+#: hiddifypanel/panel/user/templates/home/usage.html:59
 #, fuzzy
 msgid "user.home.qr-code.description"
 msgstr "要复制或共享链接，请点击灰色的 <i class='fa-solid fa-qrcode'></i> 字段以显示其二维码。"
 
 # | msgid "Display QR Code"
 #: hiddifypanel/panel/user/templates/home/index.html:133
-#: hiddifypanel/panel/user/templates/home/usage.html:60
+#: hiddifypanel/panel/user/templates/home/usage.html:67
 #, fuzzy
 msgid "user.home.qr-code.display"
 msgstr "显示二维码"
@@ -1877,24 +1883,31 @@ msgstr "过期于："
 
 # | msgid "Days"
 #: hiddifypanel/panel/user/templates/home/usage.html:16
+#: hiddifypanel/panel/user/templates/home/usage.html:20
 #, fuzzy
 msgid "days"
 msgstr "天"
 
+# | msgid "زمان صفر شدن حجم:"
+#: hiddifypanel/panel/user/templates/home/usage.html:20
+#, fuzzy
+msgid "Reset Usage Time:"
+msgstr "òمان صور شدن حوم:"
+
 # | msgid "Display usage details."
-#: hiddifypanel/panel/user/templates/home/usage.html:25
+#: hiddifypanel/panel/user/templates/home/usage.html:32
 #, fuzzy
 msgid "user.home.usage.details"
 msgstr "显示使用详情。"
 
 # | msgid "Support"
-#: hiddifypanel/panel/user/templates/home/usage.html:33
+#: hiddifypanel/panel/user/templates/home/usage.html:40
 #, fuzzy
 msgid "user.home.branding.title"
 msgstr "支持"
 
 # | msgid "Support Page Link"
-#: hiddifypanel/panel/user/templates/home/usage.html:42
+#: hiddifypanel/panel/user/templates/home/usage.html:49
 #, fuzzy
 msgid "user.home.branding.linktitle"
 msgstr "支持页面链接"
@@ -2267,6 +2280,10 @@ msgstr "复制到剪贴板：Ctrl+C，回车"
 # | "https://www.wikipedia.org/\n"
 #~ msgid "config.Invalid decoy_site"
 #~ msgstr ""
+
+# | msgid "Monthly Usage Limit (GB)"
+#~ msgid "user.monthly_usage_limit_GB"
+#~ msgstr "每月使用限额 (GB)"
 
 # | msgid "Decoy Site"
 #~ msgid "config.decoy_site.label"

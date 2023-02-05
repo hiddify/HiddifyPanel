@@ -70,9 +70,9 @@ def update_usage():
         
         res={}
         for user in db.session.query(User).all():
-            if (datetime.date.today()-user.last_reset_time).days>=30:
+            if (user.monthly and datetime.date.today()-user.last_reset_time).days>=30:
                 user.last_reset_time=datetime.date.today()
-                if user.current_usage_GB > user.monthly_usage_limit_GB:
+                if user.current_usage_GB > user.usage_limit_GB:
                     xray_api.add_client(user.uuid)
                 user.current_usage_GB=0
 
@@ -84,7 +84,7 @@ def update_usage():
                 in_gig=(d)/to_gig_d
                 res[user.uuid]=in_gig
                 user.current_usage_GB += in_gig
-            if user.current_usage_GB > user.monthly_usage_limit_GB:
+            if user.current_usage_GB > user.usage_limit_GB:
                 xray_api.remove_client(user.uuid)
                 res[user.uuid]+=" !OUT of USAGE! Client Removed"
                     
@@ -96,7 +96,7 @@ def update_usage():
 
 def all_configs():
     return {
-        "users": [u.to_dict() for u in User.query.filter((User.monthly_usage_limit_GB>User.current_usage_GB)).filter(User.expiry_time>=datetime.date.today()).all()],
+        "users": [u.to_dict() for u in User.query.filter((User.usage_limit_GB>User.current_usage_GB)).filter(User.expiry_time>=datetime.date.today()).all()],
         "domains": [u.to_dict() for u in Domain.query.all()],
         "hconfigs": get_hconfigs()
         }

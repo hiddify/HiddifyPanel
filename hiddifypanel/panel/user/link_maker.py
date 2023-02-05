@@ -37,7 +37,7 @@ def make_proxy(proxy):
     domain = g.domain
     hconfigs=get_hconfigs()
     port=0
-    if l3 in ["tls","xtls"]:
+    if l3 in ["tls"]:
         port=443
     elif l3 =="http":
         port = 80
@@ -123,7 +123,8 @@ def make_proxy(proxy):
         return base
 
     if "XTLS" in name:
-        return {**base, 'transport': 'tcp', 'l3': 'xtls', 'alpn':'h2','flow':'xtls-rprx-direct'}
+        base['flow']='xtls-rprx-vision' if proxy.transport=='XTLSVision' else 'xtls-rprx-direct'
+        return {**base, 'transport': 'tcp', 'l3': 'xtls', 'alpn':'h2'}
     if "tcp" in name:
         base['transport']='tcp'
         base['path']=tcp_path[base["proto"]]
@@ -170,7 +171,7 @@ def to_link(proxy):
     
     infos+=f'#{proxy["name"]}'
     baseurl=f'{proxy["proto"]}://{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}'
-    if proxy['l3']=='xtls':
+    if 'xtls' == proxy['l3']:
         return f'{baseurl}?flow={proxy["flow"]}&security=xtls&type=tcp{infos}'
     if proxy['l3']=='http':
         return f'{baseurl}?security=none{infos}'
@@ -182,6 +183,7 @@ def to_clash_yml(proxy):
 
 def to_clash(proxy,meta_or_normal):
     if proxy['l3']=="kcp":return
+    if proxy.get('flow','')=="xtls-rprx-vision":return
     if meta_or_normal=="normal":
         if proxy['proto']=="vless":return
         if proxy['l3']=="xtls":return
@@ -235,8 +237,8 @@ def to_clash(proxy,meta_or_normal):
         base["uuid"]= proxy["uuid"]
         base["servername"]= proxy["sni"]
         base["tls"]= proxy["l3"]=="tls"
-    if "proxy"=="XTLS":
-        base["flow"]= "xtls-rprx-direct"
+    if "xtls" == proxy['l3']:
+        base["flow"]= proxy['flow']
         base["flow-show"]= True
 
     if proxy["proto"]=="vmess":

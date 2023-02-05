@@ -47,7 +47,7 @@ class Backup(FlaskView):
                     dbuser.current_usage_GB=user['current_usage_GB']
                     dbuser.expiry_time=datetime.strptime(user['expiry_time'],'%Y-%m-%d')
                     dbuser.last_reset_time=datetime.strptime(user['last_reset_time'],'%Y-%m-%d')
-                    dbuser.monthly_usage_limit_GB=user['monthly_usage_limit_GB']
+                    dbuser.usage_limit_GB=user['usage_limit_GB']
                     dbuser.name=user['name']
                     
                         

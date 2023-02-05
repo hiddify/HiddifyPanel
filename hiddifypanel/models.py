@@ -184,10 +184,12 @@ class User(db.Model, SerializerMixin):
     name = db.Column(db.String(512), nullable=False)
     # monthly_usage_limit=db.Column(db.BigInteger,default=100,nullable=False)
     # current_usage=db.Column(db.BigInteger,default=0,nullable=False)
-    monthly_usage_limit_GB = db.Column(db.Numeric(
+    usage_limit_GB = db.Column(db.Numeric(
         6, 9, asdecimal=False), default=1000, nullable=False)
     current_usage_GB = db.Column(db.Numeric(
         6, 9, asdecimal=False), default=0, nullable=False)
+    
+    monthly=db.Column(db.Boolean,default=False)
 
     expiry_time = db.Column(
         db.Date, default=datetime.date.today() + relativedelta.relativedelta(months=6))

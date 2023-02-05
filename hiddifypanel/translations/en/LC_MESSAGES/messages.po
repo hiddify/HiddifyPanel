@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-05 10:35+0100\n"
-"PO-Revision-Date: 2023-02-05 03:29-0600\n"
+"POT-Creation-Date: 2023-02-05 12:31+0100\n"
+"PO-Revision-Date: 2023-02-05 05:31-0600\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -492,33 +492,38 @@ msgstr "UUID"
 msgid "user.name"
 msgstr "Name"
 
-# | msgid "Monthly Usage Limit (GB)"
+# | msgid "Usage Limit (GB)"
 #: hiddifypanel/panel/admin/UserAdmin.py:31
-msgid "user.monthly_usage_limit_GB"
-msgstr "Monthly Usage Limit (GB)"
+msgid "user.usage_limit_GB"
+msgstr "Usage Limit (GB)"
+
+# | msgid "Monthly"
+#: hiddifypanel/panel/admin/UserAdmin.py:32
+msgid "Reset every month"
+msgstr "Monthly"
 
 # | msgid "Current Usage (GB)"
-#: hiddifypanel/panel/admin/UserAdmin.py:32
+#: hiddifypanel/panel/admin/UserAdmin.py:33
 msgid "user.current_usage_GB"
 msgstr "Current Usage (GB)"
 
 # | msgid "Expire Time"
-#: hiddifypanel/panel/admin/UserAdmin.py:33
+#: hiddifypanel/panel/admin/UserAdmin.py:36
 msgid "user.expiry_time"
 msgstr "Expire Time"
 
 # | msgid "Last usage date reset"
-#: hiddifypanel/panel/admin/UserAdmin.py:34
+#: hiddifypanel/panel/admin/UserAdmin.py:37
 msgid "user.last_reset_time"
 msgstr "Last usage date reset"
 
 # | msgid "User Links"
-#: hiddifypanel/panel/admin/UserAdmin.py:35
+#: hiddifypanel/panel/admin/UserAdmin.py:38
 msgid "user.user_links"
 msgstr "User Links"
 
 # | msgid "Actions"
-#: hiddifypanel/panel/admin/UserAdmin.py:36
+#: hiddifypanel/panel/admin/UserAdmin.py:39
 msgid "actions"
 msgstr "Actions"
 
@@ -1589,7 +1594,7 @@ msgid "user.home.select tool"
 msgstr "Please select the item."
 
 #: hiddifypanel/panel/user/templates/home/index.html:124
-#: hiddifypanel/panel/user/templates/home/usage.html:51
+#: hiddifypanel/panel/user/templates/home/usage.html:58
 msgid "QR code"
 msgstr "QR code"
 
@@ -1597,7 +1602,7 @@ msgstr "QR code"
 # | "To copy or share links, click on the gray <i class='fa-solid fa-qrcode'>"
 # | "</i> field to display its QR Code."
 #: hiddifypanel/panel/user/templates/home/index.html:125
-#: hiddifypanel/panel/user/templates/home/usage.html:52
+#: hiddifypanel/panel/user/templates/home/usage.html:59
 msgid "user.home.qr-code.description"
 msgstr ""
 "To copy or share links, click on the gray <i class='fa-solid fa-qrcode'></i>"
@@ -1605,7 +1610,7 @@ msgstr ""
 
 # | msgid "Display QR Code"
 #: hiddifypanel/panel/user/templates/home/index.html:133
-#: hiddifypanel/panel/user/templates/home/usage.html:60
+#: hiddifypanel/panel/user/templates/home/usage.html:67
 msgid "user.home.qr-code.display"
 msgstr "Display QR Code"
 
@@ -1751,21 +1756,27 @@ msgstr "Expire in: "
 
 # | msgid "Days"
 #: hiddifypanel/panel/user/templates/home/usage.html:16
+#: hiddifypanel/panel/user/templates/home/usage.html:20
 msgid "days"
 msgstr "Days"
 
+# | msgid "زمان صفر شدن حجم:"
+#: hiddifypanel/panel/user/templates/home/usage.html:20
+msgid "Reset Usage Time:"
+msgstr "زمان صفر شدن حجم:"
+
 # | msgid "Display usage details."
-#: hiddifypanel/panel/user/templates/home/usage.html:25
+#: hiddifypanel/panel/user/templates/home/usage.html:32
 msgid "user.home.usage.details"
 msgstr "Display usage details."
 
 # | msgid "Support"
-#: hiddifypanel/panel/user/templates/home/usage.html:33
+#: hiddifypanel/panel/user/templates/home/usage.html:40
 msgid "user.home.branding.title"
 msgstr "Support"
 
 # | msgid "Support Page Link"
-#: hiddifypanel/panel/user/templates/home/usage.html:42
+#: hiddifypanel/panel/user/templates/home/usage.html:49
 msgid "user.home.branding.linktitle"
 msgstr "Support Page Link"
 
@@ -2102,6 +2113,10 @@ msgstr "Copy to clipboard:  Ctrl+C, Enter"
 #~ msgstr ""
 #~ "Invalid address: The decoy site's URL should be a complete URL. Example: "
 #~ "https://www.wikipedia.org/\n"
+
+# | msgid "Monthly Usage Limit (GB)"
+#~ msgid "user.monthly_usage_limit_GB"
+#~ msgstr "Monthly Usage Limit (GB)"
 
 # | msgid "Decoy Site"
 #~ msgid "config.decoy_site.label"

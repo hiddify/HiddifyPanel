@@ -43,7 +43,7 @@ def init_db():
         
         data = [
             StrConfig(key=ConfigEnum.db_version,value=1),
-            User(name="default",monthly_usage_limit_GB=9000,expiry_time=next10year),
+            User(name="default",usage_limit_GB=9000,expiry_time=next10year),
             Domain(domain=external_ip+".sslip.io",mode=DomainType.direct),
             StrConfig(key=ConfigEnum.admin_secret,value=str(uuid.uuid4())),
             StrConfig(key=ConfigEnum.http_ports,value="80"),
@@ -93,7 +93,7 @@ def init_db():
 
             # BoolConfig(key=ConfigEnum.torrent_block,value=False),
 
-            *get_proxy_rows()
+            *get_proxy_rows_v1()
         ]
 
         # for c in ConfigEnum:
@@ -131,10 +131,32 @@ def init_db():
         db_version=3
         print(f"New DB version is {db_version}")
 
-    # if db_version==3:
+    if db_version>=3:# for next update
+        print(f"Updating DB from version {db_version}")
+        db.session.bulk_save_objects([
+            # *get_proxy_rows_v2()
+        ])
+        from alembic import op
+        # try:
+        # from sqlalchemy import Column, INTEGER, ForeignKey
+        # op.add_column(User,User.monthly)
+        
+        try:
+            db.engine.execute('ALTER TABLE user ADD COLUMN monthly BOOLEAN')
+            db.engine.execute('ALTER TABLE user RENAME COLUMN monthly_usage_limit_GB TO usage_limit_GB')
+        except:
+            pass
+        
+        # except:pass
+        db.session.commit()
+        db_version=4
+        print(f"New DB version is {db_version}")
+        
+    # if db_version==3:# for next update
     #     print(f"Updating DB from version {db_version}")
-    #     pass # for next update
-    
+    #     db_version=4
+    #     print(f"New DB version is {db_version}")
+        
     # 
     StrConfig.query.filter(StrConfig.key == ConfigEnum.db_version).update({'value': db_version})
     db.session.commit()
@@ -203,7 +225,7 @@ def init_app(app):
         if "USER_SECRET" in config:
             secrets=config["USER_SECRET"].split(";")
             for i,s in enumerate(secrets):
-                data.append(User(name=f"default {i}",uuid=uuid.UUID(s),monthly_usage_limit_GB=9000,expiry_time=next10year))
+                data.append(User(name=f"default {i}",uuid=uuid.UUID(s),usage_limit_GB=9000,expiry_time=next10year))
 
         if "MAIN_DOMAIN" in config:
             domains=config["MAIN_DOMAIN"].split(";")
@@ -254,9 +276,10 @@ def init_app(app):
             db.session.bulk_save_objects(data)
         db.session.commit()
 
-
-def get_proxy_rows():
-    cfgs=[   
+def get_proxy_rows_v2():
+    return make_proxy_rows(["XTLSVision direct trojan"])
+def get_proxy_rows_v1():
+    return make_proxy_rows([   
         'WS Fake vless',
         'WS Fake trojan',
         'WS Fake vmess',
@@ -284,6 +307,10 @@ def get_proxy_rows():
         "shadowtls direct ss",
         "tcp direct ssr",
         "ws CDN v2ray"]
+    )
+
+def make_proxy_rows(cfgs):
+    
     for l3 in ["tls", "http", "kcp"]:
         for c in cfgs:
             transport,cdn,proto=c.split(" ")
