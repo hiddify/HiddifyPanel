@@ -6,6 +6,7 @@ from .DomainAdmin import DomainAdmin
 from .ConfigAdmin import ConfigAdmin
 from .ProxyAdmin import ProxyAdmin
 from .Actions import Actions
+from .Backup import Backup
 from .QuickSetup import QuickSetup
 from hiddifypanel.models import  StrConfig,ConfigEnum
 # from .resources import ProductItemResource, ProductResource
@@ -51,6 +52,7 @@ def init_app(app):
     ProxyAdmin.register(bp)
     Actions.register(bp)
     QuickSetup.register(bp)
+    Backup.register(bp)
     Dashboard.register(bp,route_base="/")
 
     # bp.add_url_rule('/admin/quicksetup/',endpoint="quicksetup",view_func=QuickSetup.index,methods=["GET"])

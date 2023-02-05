@@ -105,6 +105,8 @@
               {{ render_nav_item('admin.Actions:update', icon('solid','arrow-up-from-bracket','nav-icon')+_('admin.actions.update'), _use_li=True) }}
             </ul>
           </li>
+          {{ render_nav_item('admin.Backup:index',icon('solid','floppy-disk','nav-icon')+ _('Backup'), _use_li=True) }}
+          
           <a href="https://github.com/hiddify/hiddify-config/issues" target="_blank"
       class="nav-item nav-link">{{icon('solid','circle-question','nav-icon')+_('admin.menu.support')}}</a>
 

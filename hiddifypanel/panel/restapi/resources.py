@@ -2,7 +2,7 @@ from flask import abort, jsonify
 from flask_restful import Resource
 from flask_simplelogin import login_required
 import datetime
-from hiddifypanel.models import StrConfig,BoolConfig,User,Domain,get_hconfigs
+from hiddifypanel.models import StrConfig,BoolConfig,User,Domain,get_hconfigs,Proxy
 
 
 class AllResource(Resource):
@@ -11,6 +11,7 @@ class AllResource(Resource):
         return jsonify(
             {"users": [u.to_dict() for u in User.query.filter((User.monthly_usage_limit_GB>User.current_usage_GB)).filter(User.expiry_time>=datetime.date.today()).all()],
             "domains": [u.to_dict() for u in Domain.query.all()],
+            "proxies": [u.to_dict() for u in Proxy.query.all()],
             "hconfigs": get_hconfigs()
             }
         )

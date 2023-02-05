@@ -1,0 +1,47 @@
+{% extends 'admin-layout.html' %}
+{% from 'bootstrap4/form.html' import render_form %}
+
+{% block body %}
+{{super()}}
+
+<div class="card-columns">
+<div class="card">
+    <div class="card-header">{{_("Backup")}}</div>
+    <div class="card-body">
+
+        <div class="row">
+            <div class="col-12">
+                {{_("You can download a json formated of configurations by clicking <a href='%(link)s' class='btn btn-primary'>here</a>", link=url_for("api.allresource"))}}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">{{_("Restore")}}</div>
+    <div class="card-body">
+
+        <div class="row">
+            <div class="col-12">
+                {{_('You can restore your configs from previously downloaded configs')}}
+                {{render_form(restore_form)}}
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<style>
+    @media (min-width: 576px) {
+    .card-columns {
+        column-count: 1;
+    }
+}
+
+@media (min-width: 768px) {
+    .card-columns {
+        column-count: 2;
+    }
+}
+</style>
+{% endblock %}
