@@ -21,7 +21,7 @@ class Dashboard(FlaskView):
             elif def_user:
                 d=domains[0]
                 u=def_user.uuid
-                flash((_('It seems that you have not created any users yet. Default user link: %(default_link)s',default_link=hiddify.get_user_link(u,d))),'info')
+                flash((_('It seems that you have not created any users yet. Default user link: %(default_link)s',default_link=hiddify.get_user_link(u,d))),'secondary')
             
         # except:
         #     flash((_('Error!!!')),'info')
