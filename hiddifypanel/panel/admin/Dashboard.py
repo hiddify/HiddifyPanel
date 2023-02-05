@@ -19,7 +19,7 @@ class Dashboard(FlaskView):
             elif len(sslip_domains):
                 flash((_('It seems that you are using default domain (%(domain)s) which is not recommended.',domain=sslip_domains[0])),'warning')
             elif def_user:
-                d=domains[0].domain
+                d=domains[0]
                 u=def_user.uuid
                 flash((_('It seems that you have not created any users yet. <a href="%(default_link)s">default user link</a>',default_link=hiddify.get_user_link(u,d))),'info')
             
