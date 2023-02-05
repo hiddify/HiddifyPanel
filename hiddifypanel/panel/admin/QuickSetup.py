@@ -77,8 +77,8 @@ def get_quick_setup_form(empty=False):
                         domains.append(d.domain)
                 return domains
         class QuickSetupForm(FlaskForm):
-                domain_regex=wtf.validators.Regexp("^([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})$",re.IGNORECASE,_("config.Invalid domain"))
-                domain_validators=[domain_regex,
+                domain_regex="^([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})$"
+                domain_validators=[wtf.validators.Regexp(domain_regex,re.IGNORECASE,_("config.Invalid domain")),
                                         validate_domain,
                                         wtf.validators.NoneOf(get_used_domains(),_("config.Domain already used"))]
                 domain=wtf.fields.StringField(_("domain.domain"),domain_validators,description=_("domain.description"),render_kw={"pattern":domain_validators[0].regex.pattern,"title":domain_validators[0].message,"required":"","placeholder":"sub.domain.com"})
@@ -86,7 +86,7 @@ def get_quick_setup_form(empty=False):
                 enable_vmess=SwitchField(_("config.vmess_enable.label"),description=_("config.vmess_enable.description"),default=hconfig(ConfigEnum.vmess_enable))
                 enable_firewall=SwitchField(_("config.firewall.label"),description=_("config.firewall.description"),default=hconfig(ConfigEnum.firewall))
                 block_iran_sites=SwitchField(_("config.block_iran_sites.label"),description=_("config.block_iran_sites.description"),default=hconfig(ConfigEnum.block_iran_sites))
-                decoy_domain=SwitchField(_("config.decoy_domain.label"),description=_("config.decoy_domain.description"),default=hconfig(ConfigEnum.decoy_domain),validators=[domain_regex])
+                decoy_domain=SwitchField(_("config.decoy_domain.label"),description=_("config.decoy_domain.description"),default=hconfig(ConfigEnum.decoy_domain),validators=[wtf.validators.Regexp(domain_regex,re.IGNORECASE,_("config.Invalid domain"))])
                 submit=wtf.fields.SubmitField(_('Submit'))
 
                 
