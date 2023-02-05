@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-05 19:35+0100\n"
-"PO-Revision-Date: 2023-02-05 12:34-0600\n"
+"POT-Creation-Date: 2023-02-05 19:46+0100\n"
+"PO-Revision-Date: 2023-02-05 12:46-0600\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -1203,6 +1203,12 @@ msgstr "Log"
 #: hiddifypanel/panel/admin/templates/result.html:14
 msgid "Click here to see the complete log"
 msgstr "Click here to see the complete log."
+
+# | msgid "لطفا قبل از ترک این صفحه لینک دسترسی اضطراری را کپی کنید"
+#: hiddifypanel/panel/admin/templates/result.html:31
+#, fuzzy
+msgid "Please copy the emergency link before leaving this page."
+msgstr "لطفا قبل از ترک این صفحه لینک دسترسی اضطراری را کپی کنید"
 
 # | msgid "All Configs"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:1

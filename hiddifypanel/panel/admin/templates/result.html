@@ -23,6 +23,13 @@ function refresh(){
 }
 setInterval(refresh,1000);
 
+window.addEventListener('beforeunload', function (e) {
+  // Cancel the event
+  e.preventDefault(); // If you prevent default behavior in Mozilla Firefox prompt will always be shown
+  // Chrome requires returnValue to be set
+
+  e.returnValue = '{{_("Please copy the emergency link before leaving this page.")}}'';
+});
 </script>
 % endif
 {% endblock %}
