@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import pprint
 from flask_babelex import gettext as _
 import pathlib
 from hiddifypanel.models import  User,Domain,DomainType,StrConfig,ConfigEnum,hconfig
@@ -131,3 +132,13 @@ class Actions(FlaskView):
 
 
 
+    def update_usage(self):
+        
+        
+        import json
+
+        return render_template("result.html",
+                            out_type="info",
+                            out_msg=f'<pre class="ltr">{json.dumps(hiddify.update_usage(),indent=2)}</pre>',
+                            log_path=None
+        )

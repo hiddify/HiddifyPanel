@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-05 19:46+0100\n"
-"PO-Revision-Date: 2023-02-05 12:46-0600\n"
+"POT-Creation-Date: 2023-02-05 21:13+0100\n"
+"PO-Revision-Date: 2023-02-05 14:13-0600\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -42,11 +42,11 @@ msgstr ""
 
 # | msgid ""
 # | "Rebooting System... This may take afew minutes. Please wait..."
-#: hiddifypanel/panel/admin/Actions.py:55
+#: hiddifypanel/panel/admin/Actions.py:56
 msgid "rebooting system may takes time please wait"
 msgstr "راه اندازی مجدد سیستم ممکن است اندکی زمان ببرد. لطفا صبر کنید..."
 
-#: hiddifypanel/panel/admin/Actions.py:84
+#: hiddifypanel/panel/admin/Actions.py:85
 msgid ""
 "Success! Please wait around 4 minutes to make sure everything is updated."
 " During this time, please save your proxy links which are:"
@@ -56,11 +56,11 @@ msgstr ""
 " سیو نمایید:"
 
 # | msgid "See the log in the bellow screen"
-#: hiddifypanel/panel/admin/Actions.py:106
+#: hiddifypanel/panel/admin/Actions.py:107
 msgid "see the log in the bellow screen"
 msgstr "لاگ سیستم  را می‌توانید در صفحه زیر ببینید:"
 
-#: hiddifypanel/panel/admin/Actions.py:126
+#: hiddifypanel/panel/admin/Actions.py:127
 msgid "Success! Please wait around 5 minutes to make sure everything is updated."
 msgstr ""
 "موفقیت آمیز بود! لطفا برای اینکه مطمئن شوید بروزرسانی‌ها به درستی اعمال "
@@ -535,7 +535,7 @@ msgid "actions"
 msgstr "عملیات"
 
 #: hiddifypanel/panel/admin/templates/backup.html:9
-#: hiddifypanel/templates/admin-layout.html:108
+#: hiddifypanel/templates/admin-layout.html:109
 msgid "Backup"
 msgstr "پشتیبان‌گیری"
 
@@ -1235,10 +1235,11 @@ msgstr "لاگ"
 msgid "Click here to see the complete log"
 msgstr "برای دیدن لاگ کامل، اینجا کلیک کنید."
 
-# | msgid "لطفا قبل از ترک این صفحه لینک دسترسی اضطراری را کپی کنید"
+# | msgid ""
+# | "Please Copy and Save the emergency access link before leaving this page."
 #: hiddifypanel/panel/admin/templates/result.html:31
 msgid "Please copy the emergency link before leaving this page."
-msgstr ""
+msgstr "لطفا قبل از ترک این صفحه لینک دسترسی اضطراری را کپی کنید."
 
 # | msgid "All Configs"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:1
@@ -2016,13 +2017,13 @@ msgstr "نمایش لاگ"
 
 # | msgid "Support"
 #: hiddifypanel/templates/admin-layout.html:47
-#: hiddifypanel/templates/admin-layout.html:111
+#: hiddifypanel/templates/admin-layout.html:112
 msgid "admin.menu.support"
 msgstr "پشتیبانی"
 
 # | msgid "Telegram"
 #: hiddifypanel/templates/admin-layout.html:50
-#: hiddifypanel/templates/admin-layout.html:114
+#: hiddifypanel/templates/admin-layout.html:115
 msgid "admin.menu.telegram"
 msgstr "تلگرام"
 
@@ -2035,6 +2036,11 @@ msgstr "حمایت"
 #: hiddifypanel/templates/admin-layout.html:102
 msgid "admin.actions.apply_configs"
 msgstr "اعمال تغییرات"
+
+# | msgid "Check usage"
+#: hiddifypanel/templates/admin-layout.html:106
+msgid "User usage update"
+msgstr "چک مصرف"
 
 # | msgid ""
 # | "We need your help in developing this project\n"

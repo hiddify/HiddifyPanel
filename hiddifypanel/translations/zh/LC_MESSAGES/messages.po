@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-05 19:46+0100\n"
-"PO-Revision-Date: 2023-02-05 12:46-0600\n"
+"POT-Creation-Date: 2023-02-05 21:13+0100\n"
+"PO-Revision-Date: 2023-02-05 14:13-0600\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -39,22 +39,22 @@ msgstr "配置已成功更改。单击 %(link)s 以应用配置。申请可能�
 
 # | msgid ""
 # | "Rebooting System... This may take afew minutes. Please wait..."
-#: hiddifypanel/panel/admin/Actions.py:55
+#: hiddifypanel/panel/admin/Actions.py:56
 msgid "rebooting system may takes time please wait"
 msgstr "重新启动系统可能需要一些时间。请稍等..."
 
-#: hiddifypanel/panel/admin/Actions.py:84
+#: hiddifypanel/panel/admin/Actions.py:85
 msgid ""
 "Success! Please wait around 4 minutes to make sure everything is updated."
 " During this time, please save your proxy links which are:"
 msgstr "成功！ 请等待大约 4 分钟，以确保所有内容都已更新。 在此期间，请保存您的代理链接:"
 
 # | msgid "See the log in the bellow screen"
-#: hiddifypanel/panel/admin/Actions.py:106
+#: hiddifypanel/panel/admin/Actions.py:107
 msgid "see the log in the bellow screen"
 msgstr "请参阅以下屏幕中的日志："
 
-#: hiddifypanel/panel/admin/Actions.py:126
+#: hiddifypanel/panel/admin/Actions.py:127
 msgid "Success! Please wait around 5 minutes to make sure everything is updated."
 msgstr "成功！ 请等待大约 5 分钟，以确保所有内容都已更新。"
 
@@ -120,11 +120,11 @@ msgid ""
 msgstr "您似乎正在使用不推荐的默认域 (%(domain)s)。"
 
 #: hiddifypanel/panel/admin/Dashboard.py:24
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "It seems that you have not created any users yet. Default user link: "
 "%(default_link)s"
-msgstr ""
+msgstr "您似乎还没有创建任何用户。默认用户链接：%(default_link)s"
 
 # | msgid "Domain"
 #: hiddifypanel/panel/admin/DomainAdmin.py:22
@@ -495,7 +495,7 @@ msgid "actions"
 msgstr "动作"
 
 #: hiddifypanel/panel/admin/templates/backup.html:9
-#: hiddifypanel/templates/admin-layout.html:108
+#: hiddifypanel/templates/admin-layout.html:109
 msgid "Backup"
 msgstr "备份"
 
@@ -1134,10 +1134,12 @@ msgstr "日志"
 msgid "Click here to see the complete log"
 msgstr "单击此处查看完整日志。"
 
-# | msgid "لطفا قبل از ترک این صفحه لینک دسترسی اضطراری را کپی کنید"
+# | msgid ""
+# | "Please Copy and Save the emergency access link before leaving this page."
 #: hiddifypanel/panel/admin/templates/result.html:31
+#, fuzzy
 msgid "Please copy the emergency link before leaving this page."
-msgstr ""
+msgstr "离开此页面前，请复制并保存紧急访问链接。"
 
 # | msgid "All Configs"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:1
@@ -1890,13 +1892,13 @@ msgstr "查看日志"
 
 # | msgid "Support"
 #: hiddifypanel/templates/admin-layout.html:47
-#: hiddifypanel/templates/admin-layout.html:111
+#: hiddifypanel/templates/admin-layout.html:112
 msgid "admin.menu.support"
 msgstr "支持"
 
 # | msgid "Telegram"
 #: hiddifypanel/templates/admin-layout.html:50
-#: hiddifypanel/templates/admin-layout.html:114
+#: hiddifypanel/templates/admin-layout.html:115
 msgid "admin.menu.telegram"
 msgstr "电报"
 
@@ -1909,6 +1911,11 @@ msgstr "捐款"
 #: hiddifypanel/templates/admin-layout.html:102
 msgid "admin.actions.apply_configs"
 msgstr "应用配置"
+
+# | msgid "Check usage"
+#: hiddifypanel/templates/admin-layout.html:106
+msgid "User usage update"
+msgstr ""
 
 # | msgid ""
 # | "We need your help in developing this project\n"

@@ -1,6 +1,6 @@
 from flask import jsonify,g,url_for,Markup
 from flask import flash as flask_flash
-to_gig_d = 1024*1024*1024
+to_gig_d = 1000*1000*1000
 import datetime
 
 from hiddifypanel.panel.database import db
@@ -70,8 +70,8 @@ def asset_url(path):
 def update_usage():
         
         res={}
-        for user in db.session.query(User).all():
-            if (user.monthly and datetime.date.today()-user.last_reset_time).days>=30:
+        for user in User.query.all():
+            if user.monthly and (datetime.date.today()-user.last_reset_time).days>=30:
                 user.last_reset_time=datetime.date.today()
                 if user.current_usage_GB > user.usage_limit_GB:
                     xray_api.add_client(user.uuid)
