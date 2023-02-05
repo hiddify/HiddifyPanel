@@ -7,7 +7,7 @@ from hiddifypanel.panel.hiddify  import auth
 from . import link_maker
 from flask_classful import FlaskView,route
 import random
-
+from urllib.parse import urlparse
 class UserView(FlaskView):
 
     def index(self):
@@ -58,7 +58,7 @@ def do_base_64(str):
     return resp.decode()
     
 def get_common_data(user_uuid):
-    from urllib.parse import urlparse
+    
     
     o = urlparse(request.base_url)
     db_domain=Domain.query.filter(Domain.domain==o.hostname).first()
