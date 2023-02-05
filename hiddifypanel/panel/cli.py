@@ -31,6 +31,11 @@ import datetime
 
 def init_db():
     
+    try:
+        db.engine.execute('ALTER TABLE user ADD COLUMN monthly BOOLEAN')
+        db.engine.execute('ALTER TABLE user RENAME COLUMN monthly_usage_limit_GB TO usage_limit_GB')
+    except:
+        pass
     
     
     db_version=int(hconfig(ConfigEnum.db_version) or 0) 
@@ -135,18 +140,11 @@ def init_db():
         print(f"Updating DB from version {db_version}")
         db.session.bulk_save_objects([
             *get_proxy_rows_v2()
-        ])
-        
-        try:
-            db.engine.execute('ALTER TABLE user ADD COLUMN monthly BOOLEAN')
-            db.engine.execute('ALTER TABLE user RENAME COLUMN monthly_usage_limit_GB TO usage_limit_GB')
-        except:
-            pass
-        
+        ])        
         db.session.commit()
         db_version=4
         print(f"New DB version is {db_version}")
-        
+    
     # if db_version==3:# for next update
     #     print(f"Updating DB from version {db_version}")
     #     db_version=4
