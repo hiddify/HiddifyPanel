@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-05 19:15+0100\n"
-"PO-Revision-Date: 2023-02-05 11:39-0600\n"
+"POT-Creation-Date: 2023-02-05 19:32+0100\n"
+"PO-Revision-Date: 2023-02-05 12:32-0600\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -119,17 +119,15 @@ msgid ""
 "recommended."
 msgstr "您似乎正在使用不推荐的默认域 (%(domain)s)。"
 
+# | msgid ""
+# | "شما هنوز هیچ کاربری ایجاد نکرده اید. لینک صفحه کاربری پیشفرض: "
+# | "%(default_link)s"
 #: hiddifypanel/panel/admin/Dashboard.py:24
 #, python-format
 msgid ""
-"It seems that you have not created any users yet. <a "
-"href=\"%(default_link)s\">default user link</a>"
-msgstr "您似乎还没有创建任何用户。 <a href=\"%(default_link)s\">默认用户链接</a>"
-
-# | msgid "Error!!"
-#: hiddifypanel/panel/admin/Dashboard.py:27
-msgid "Error!!!"
-msgstr "错误！！！"
+"It seems that you have not created any users yet. Default user link: "
+"%(default_link)s"
+msgstr ""
 
 # | msgid "Domain"
 #: hiddifypanel/panel/admin/DomainAdmin.py:22
@@ -2117,6 +2115,16 @@ msgstr "复制到剪贴板：Ctrl+C，回车"
 # | msgid "Check"
 #~ msgid "check"
 #~ msgstr "查看"
+
+#~ msgid ""
+#~ "It seems that you have not created"
+#~ " any users yet. <a "
+#~ "href=\"%(default_link)s\">default user link</a>"
+#~ msgstr "您似乎还没有创建任何用户。 <a href=\"%(default_link)s\">默认用户链接</a>"
+
+# | msgid "Error!!"
+#~ msgid "Error!!!"
+#~ msgstr "错误！！！"
 
 # | msgid ""
 # | "Domain (%(domain))-> IP=%(domain_ip)s is not matched with your "

@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-05 19:15+0100\n"
-"PO-Revision-Date: 2023-02-05 11:39-0600\n"
+"POT-Creation-Date: 2023-02-05 19:32+0100\n"
+"PO-Revision-Date: 2023-02-05 12:32-0600\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -126,19 +126,17 @@ msgstr ""
 "It seems that you are using default domain (%(domain)s) which is not "
 "recommended. Please change or remove it from domain section."
 
+# | msgid ""
+# | "شما هنوز هیچ کاربری ایجاد نکرده اید. لینک صفحه کاربری پیشفرض: "
+# | "%(default_link)s"
 #: hiddifypanel/panel/admin/Dashboard.py:24
-#, python-format
+#, fuzzy, python-format
 msgid ""
-"It seems that you have not created any users yet. <a "
-"href=\"%(default_link)s\">default user link</a>"
+"It seems that you have not created any users yet. Default user link: "
+"%(default_link)s"
 msgstr ""
-"It seems that you have not created any users yet. <a "
-"href=\"%(default_link)s\">default user link</a>"
-
-# | msgid "Error!!"
-#: hiddifypanel/panel/admin/Dashboard.py:27
-msgid "Error!!!"
-msgstr "Error!!"
+"شما هنوز هیچ کاربری ایجاد نکرده اید. لینک صفحه کاربری پیشفرض: "
+"%(default_link)s"
 
 # | msgid "Domain"
 #: hiddifypanel/panel/admin/DomainAdmin.py:22
@@ -2176,6 +2174,17 @@ msgstr "Copy to clipboard:  Ctrl+C, Enter"
 # | msgid "Check"
 #~ msgid "check"
 #~ msgstr "Check"
+
+#~ msgid ""
+#~ "It seems that you have not created any users yet. <a "
+#~ "href=\"%(default_link)s\">default user link</a>"
+#~ msgstr ""
+#~ "It seems that you have not created any users yet. <a "
+#~ "href=\"%(default_link)s\">default user link</a>"
+
+# | msgid "Error!!"
+#~ msgid "Error!!!"
+#~ msgstr "Error!!"
 
 # | msgid ""
 # | "Domain (%(domain))-> IP=%(domain_ip)s is not matched with your "
