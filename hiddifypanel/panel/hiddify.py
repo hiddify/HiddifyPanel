@@ -1,4 +1,5 @@
-from flask import jsonify,g,flash,url_for,Markup
+from flask import jsonify,g,url_for,Markup
+from flask import flash as flask_flash
 to_gig_d = 1024*1024*1024
 import datetime
 
@@ -23,7 +24,7 @@ def add_temporary_access():
     exec_command(f'echo "iptables -D {iptableparm}" | at now + 4 hour')
 
     temp_admin_link=f"http://{get_ip(4)}:{random_port}{get_admin_path()}"
-    return flash(Markup(_("We have opened a temporary port (for 4 hours) to access the panel in case of any issues. Please copy this link. <a href='%(link)s' class='btn btn-danger share-link'>Temporary Link</a>",link=temp_admin_link)),'warning')
+    return flash((_("We have opened a temporary port (for 4 hours) to access the panel in case of any issues. Please copy this link. <a href='%(link)s' class='btn btn-danger share-link'>Temporary Link</a>",link=temp_admin_link)),'warning')
 
 def get_admin_path():
     proxy_path=hconfig(ConfigEnum.proxy_path)
@@ -136,7 +137,7 @@ def get_available_proxies():
 def flash_config_success(full_install=False):
     url=url_for('admin.Actions:'+('reinstall' if full_install else 'apply_configs'))
     apply_btn=f"<a href='{url}' class='btn btn-primary'>"+_("admin.config.apply_configs")+"</a>"
-    flash(Markup(_('config.validation-success',link=apply_btn)), 'success')
+    flash((_('config.validation-success',link=apply_btn)), 'success')
 
 # Importing socket library 
 import socket 
@@ -162,4 +163,6 @@ def get_user_link(uuid,domain):
 
 
 
-        
+def flash(message,category):
+    print(message)
+    return flask_flash(Markup(message),category)

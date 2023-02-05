@@ -16,7 +16,8 @@ import urllib.request
 import subprocess
 import re
 from hiddifypanel.panel import hiddify
-from flask import current_app,render_template,request,Response,Markup,url_for,flash
+from flask import current_app,render_template,request,Response,Markup,url_for
+from hiddifypanel.panel.hiddify import flash
 from flask_wtf.file import FileField, FileRequired
 import json
 

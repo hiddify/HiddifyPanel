@@ -1,6 +1,6 @@
 from hiddifypanel.models import BoolConfig,StrConfig,ConfigEnum,hconfig
-from flask_babelex import lazy_gettext as _
-# from flask_babelex import gettext as _
+# from flask_babelex import lazy_gettext as _
+from flask_babelex import gettext as _
 import wtforms as wtf
 from flask_wtf import FlaskForm, CSRFProtect
 from flask_bootstrap import SwitchField
@@ -10,12 +10,12 @@ from flask_admin.base import expose
 from wtforms.validators import Regexp,ValidationError
 
 import re
-from flask import render_template,current_app,flash, Markup,redirect,url_for
+from flask import render_template,current_app, Markup,redirect,url_for
 from hiddifypanel.models import  User,Domain,DomainType,StrConfig,ConfigEnum,get_hconfigs
 from hiddifypanel.panel.database import db
 from wtforms.fields import *
 
-
+from hiddifypanel.panel.hiddify import flash
 from flask_classful import FlaskView
 
 class QuickSetup(FlaskView):
@@ -30,10 +30,10 @@ class QuickSetup(FlaskView):
                                 StrConfig.query.filter(StrConfig.key==ConfigEnum.lang).first().value=lang_form.lang.data
                                 StrConfig.query.filter(StrConfig.key==ConfigEnum.admin_lang).first().value=lang_form.admin_lang.data
                                 db.session.commit()
-                                flash(_('quicksetup.setlang.success'), 'success')
+                                flash((_('quicksetup.setlang.success')), 'success')
                                 from flask_babel import refresh; refresh()
                         else:
-                                flash(_('quicksetup.setlang.error'), 'danger')
+                                flash((_('quicksetup.setlang.error')), 'danger')
 
                         return render_template('quick_setup.html', form=get_quick_setup_form(True),lang_form=lang_form)                
                 
@@ -50,8 +50,8 @@ class QuickSetup(FlaskView):
                         hiddify.flash_config_success()
                         proxy_path=hconfig(ConfigEnum.proxy_path)
                         uuid=User.query.first().uuid
-                        userlink="<a class='btn btn-light share-link' target='_blank' href='https://{quick_form.domain.data}/{proxy_path}/{uuid}/'>{_('default user link')}</a>"
-                        flash(_('The default user link is %(link)s. To add or edit more users, please visit users from menu.',link=userlink),'info')
+                        userlink=f"<a class='btn btn-secondary share-link' target='_blank' href='https://{quick_form.domain.data}/{proxy_path}/{uuid}/'>{_('default user link')}</a>"
+                        flash((_('The default user link is %(link)s. To add or edit more users, please visit users from menu.',link=userlink)),'info')
                 else:
                         flash(_('config.validation-error'), 'danger')
                 return render_template('quick_setup.html', form=quick_form,lang_form=get_lang_form(True),ipv4=hiddify.get_ip(4),ipv6=hiddify.get_ip(6) )

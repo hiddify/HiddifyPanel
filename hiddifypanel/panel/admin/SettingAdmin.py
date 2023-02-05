@@ -10,7 +10,8 @@ from flask_admin.base import expose
 
 
 import re
-from flask import render_template,current_app,flash, Markup,url_for
+from flask import render_template,current_app, Markup,url_for
+from hiddifypanel.panel.hiddify import flash
 from hiddifypanel.models import  User,Domain,DomainType,StrConfig,ConfigEnum,get_hconfigs
 from hiddifypanel.panel.database import db
 from wtforms.fields import *

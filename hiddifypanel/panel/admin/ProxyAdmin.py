@@ -10,13 +10,14 @@ from flask_admin.base import expose
 
 
 import re
-from flask import render_template,current_app,flash, Markup,url_for
+from flask import render_template,current_app, Markup,url_for
+from hiddifypanel.panel.hiddify import flash
 from hiddifypanel.models import  User,Domain,DomainType,StrConfig,ConfigEnum,get_hconfigs
 from hiddifypanel.panel.database import db
 from wtforms.fields import *
 from hiddifypanel.panel import hiddify
 from flask_classful import FlaskView
-
+from hiddifypanel.panel.hiddify import flash
 class ProxyAdmin(FlaskView):
 
     def index(self):
@@ -33,13 +34,13 @@ class ProxyAdmin(FlaskView):
                         if k in [c for c in ConfigEnum]:
                             BoolConfig.query.filter(BoolConfig.key==k).first().value=vs
                             if vs and k in [ConfigEnum.domain_fronting_http_enable, ConfigEnum.domain_fronting_tls_enable]:
-                                flash(Markup(_('config.domain-fronting-notsetup-error')), 'danger')                
+                                flash((_('config.domain-fronting-notsetup-error')), 'danger')                
 
                     
                 # print(cat,vs)
                 db.session.commit()
                 apply_btn=f"<a href='{url_for('admin.Actions:apply_configs')}' class='btn btn-primary'>"+_("admin.config.apply_configs")+"</a>"
-                flash(Markup(_('config.validation-success',link=apply_btn)), 'success')
+                flash((_('config.validation-success',link=apply_btn)), 'success')
                 all_proxy_form=get_all_proxy_form(True)
 
     
@@ -60,7 +61,7 @@ class ProxyAdmin(FlaskView):
             hiddify.flash_config_success()
             global_config_form= get_global_config_form(True)
         else:
-            flash(Markup(_('config.validation-error')), 'danger')
+            flash((_('config.validation-error')), 'danger')
 
         return render_template('proxy.html', global_config_form=global_config_form, detailed_config_form=all_proxy_form)
         
