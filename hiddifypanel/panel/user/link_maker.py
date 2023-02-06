@@ -214,7 +214,7 @@ def to_clash(proxy,meta_or_normal):
         if proxy["transport"]=="faketls":
             base["plugin"]= "obfs"
             base["plugin-opts"]={
-                "mode": tls,
+                "mode": 'tls',
                 "host": proxy["fakedomain"]
             }
         elif proxy["transport"]=="shadowtls":

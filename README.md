@@ -40,22 +40,10 @@ To see the help message and usage instructions.
 ## First run
 
 ```bash
-hiddifypanel create-db   # run once
-hiddifypanel populate-db  # run once (optional)
-hiddifypanel add-user -u admin -p 1234  # ads a user
+hiddifypanel init-db   # run once
+echo localhost:9000/$(hiddifypanel admin-path)
 hiddifypanel run
 ```
-
-Go to:
-
-- Website: http://localhost:5000
-- Admin: http://localhost:5000/admin/
-  - user: admin, senha: 1234
-- API GET:
-  - http://localhost:5000/api/v1/product/
-  - http://localhost:5000/api/v1/product/1
-  - http://localhost:5000/api/v1/product/2
-  - http://localhost:5000/api/v1/product/3
 
 
 > **Note**: You can also use `flask run` to run the application.
