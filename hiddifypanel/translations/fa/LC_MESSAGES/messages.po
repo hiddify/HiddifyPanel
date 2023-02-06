@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-05 21:13+0100\n"
-"PO-Revision-Date: 2023-02-05 14:13-0600\n"
+"POT-Creation-Date: 2023-02-06 15:13+0100\n"
+"PO-Revision-Date: 2023-02-06 07:18-0600\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -46,14 +46,18 @@ msgstr ""
 msgid "rebooting system may takes time please wait"
 msgstr "راه اندازی مجدد سیستم ممکن است اندکی زمان ببرد. لطفا صبر کنید..."
 
+# | msgid ""
+# | "Success! Please wait about 5 minutes to make sure everything is updated.
+# "
+# | "During this time, please copy and save your proxy links which are:"
 #: hiddifypanel/panel/admin/Actions.py:85
 msgid ""
 "Success! Please wait around 4 minutes to make sure everything is updated."
 " During this time, please save your proxy links which are:"
 msgstr ""
 "موفقیت آمیز بود! لطفا برای اینکه مطمئن شوید بروزرسانی‌ها به درستی اعمال "
-"شده، حدود 5 دقیقه صبر کنید. در این فاصله لینک‌های زیر را در جایی برای خود"
-" سیو نمایید:"
+"شده، حدود 5 دقیقه صبر کنید. در این فاصله لینک‌های زیر را کپی کرده و در "
+"جایی برای خود ذخیره نمایید:"
 
 # | msgid "See the log in the bellow screen"
 #: hiddifypanel/panel/admin/Actions.py:107
@@ -190,7 +194,7 @@ msgstr "در حالت CDN، IP=%(domain_ip)s باید با ip=%(server_ip)s شم
 msgid "config.domain-fronting-notsetup-error"
 msgstr "خطا! تنظیمات دامین فرانتینگ کامل نشده."
 
-# | msgid "One of the fields has encountered with error"
+# | msgid "There is an error in one of the fields."
 #: hiddifypanel/panel/admin/ProxyAdmin.py:64
 #: hiddifypanel/panel/admin/QuickSetup.py:59
 #: hiddifypanel/panel/admin/SettingAdmin.py:63
@@ -274,13 +278,11 @@ msgstr "در این قسمت می‌توانید زبان بخش مدیریت ر
 msgid "config.lang.label"
 msgstr "زبان محیط کاربران"
 
-# | msgid "It will change user language"
+# | msgid "Choose language for Users area."
 #: hiddifypanel/panel/admin/QuickSetup.py:65
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.lang.description"
-msgstr ""
-"این گزینه زبان بخش کاربر را تغییر می دهد برای تغییر زبان بخش مدیریت از "
-"گزینه مربوطه اقدام کنید."
+msgstr "این گزینه زبان بخش کاربران را تغییر می‌دهد."
 
 # | msgid "Error! Invalid domain.  The domain format is www.google.com"
 #: hiddifypanel/panel/admin/QuickSetup.py:81
@@ -297,7 +299,9 @@ msgid "config.Domain already used"
 msgstr "دامنه در بخش دامنه‌ها وجود دارد. از دامنه دیگری استفاده کنید."
 
 # | msgid ""
-# | "This field should be correct. Please visit <a "
+# | "Please fill in this field carefully and correctly. Otherwise, proxies
+# will "
+# | "run into problems. Please visit <a "
 # |
 # "href=\"https://github.com/hiddify/hiddify-config/wiki/راهنمای-تنظیم-دامنه-و-"
 # | "نهایی-کردن-نصب#آموزش-ساخت-زیردامنه\"> Help</a> to learn how to create a "
@@ -305,11 +309,12 @@ msgstr "دامنه در بخش دامنه‌ها وجود دارد. از دام�
 #: hiddifypanel/panel/admin/QuickSetup.py:84
 msgid "domain.description"
 msgstr ""
-"این فیلد باید به درستی وارد شود. لطفا برای دیدن راهنمای ساخت زیردامنه \n"
+"این فیلد باید با دقت و به درستی تکمیل شود. در غیر اینصورت پروکسی ها به "
+"مشکل بر خواهند خورد. لطفا برای دیدن راهنمای ساخت زیردامنه \n"
 "<a href=\"https://github.com/hiddify/hiddify-"
 "config/wiki/راهنمای-تنظیم-دامنه-و-نهایی-کردن-نصب#آموزش-ساخت-زیردامنه\">این"
 " آدرس </a>\n"
-"را ببینید:"
+"را ببینید."
 
 # | msgid "Enable Telegram MT Proxy"
 #: hiddifypanel/panel/admin/QuickSetup.py:85
@@ -1172,7 +1177,7 @@ msgstr "تنظیمات پیدا نشد."
 msgid "config.not_found.description"
 msgstr "تنظیمات پیدا نشد."
 
-# | msgid "CPU usage"
+# | msgid "CPU Usage"
 #: hiddifypanel/panel/admin/templates/index.html:12
 #: hiddifypanel/panel/admin/templates/index.html:32
 #: hiddifypanel/panel/admin/templates/index.html:149
@@ -1217,13 +1222,17 @@ msgid "admin.quicksetup.title"
 msgstr "نصب سریع"
 
 # | msgid ""
-# | "Your IPv4 is %(ipv4)s and IPv6 is %(ipv6)s. Please set this ip in your "
-# | "domain and enter your domain bellow.\n"
+# | "Your server's IPs are: IPv4: %(ipv4)s and IPv6: %(ipv6)s.\n"
+# | "<br>\n"
+# | "Set these IPs on your domain or subdomain and enter your domain or
+# subdomain in the bellow box.\n"
 #: hiddifypanel/panel/admin/templates/quick_setup.html:40
 msgid "admin.quicksetup_intro"
 msgstr ""
-"IPv4 شما %(ipv4)s و IPv6 شما %(ipv6)s است. لطفا این آی‌پی را با دامنه خود"
-" تنظیم کنید و دامنه را در زیر وارد کنید. "
+"آی‌پی‌های سرور شما عبارتند از: IPv4: %(ipv4)s و IPv6: %(ipv6)s\n"
+"<br>\n"
+"دامنه یا زیر دامنه خود را با این آی‌پی‌ها تنظیم کنید و سپس دامنه یا زیر "
+"دامنه تنظیم شده را در کادر زیر وارد کنید."
 
 # | msgid "Log"
 #: hiddifypanel/panel/admin/templates/result.html:13
@@ -1646,6 +1655,7 @@ msgstr "DNS روی HTTPS"
 msgid "user.home.select tool"
 msgstr "لطفا یکی از موارد زیر را انتخاب کنید."
 
+# | msgid "QR Code"
 #: hiddifypanel/panel/user/templates/home/index.html:124
 #: hiddifypanel/panel/user/templates/home/usage.html:58
 msgid "QR code"
@@ -1716,7 +1726,7 @@ msgid "user.home.ios.others.title"
 msgstr "سایر اپلیکیشن‌ها (shadowlink, fairVPN, napsternetv)"
 
 # | msgid ""
-# | "First install on of the following applications:\n"
+# | "First install one of the following applications:\n"
 # | "<div class=\"btn-group\">\n"
 # | "<a
 # href=\"https://apps.apple.com/us/app/shadowlink-shadowsocks-vpn/id1439686518\"\n"
@@ -2037,7 +2047,7 @@ msgstr "حمایت"
 msgid "admin.actions.apply_configs"
 msgstr "اعمال تغییرات"
 
-# | msgid "Check usage"
+# | msgid "Check Usage"
 #: hiddifypanel/templates/admin-layout.html:106
 msgid "User usage update"
 msgstr "چک مصرف"

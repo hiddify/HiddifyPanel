@@ -296,10 +296,10 @@ def get_proxy_rows_v1():
         # "h1 direct vless",
         # "h1 direct vmess",
         "faketls direct ss",
-        "ws direct v2ray",
+        "WS direct v2ray",
         "shadowtls direct ss",
         "tcp direct ssr",
-        "ws CDN v2ray"]
+        "WS CDN v2ray"]
     )
 
 def make_proxy_rows(cfgs):

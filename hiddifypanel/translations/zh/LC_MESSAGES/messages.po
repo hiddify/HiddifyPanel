@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-05 21:13+0100\n"
-"PO-Revision-Date: 2023-02-05 14:13-0600\n"
+"POT-Creation-Date: 2023-02-06 15:13+0100\n"
+"PO-Revision-Date: 2023-02-06 07:18-0600\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -43,6 +43,10 @@ msgstr "配置已成功更改。单击 %(link)s 以应用配置。申请可能�
 msgid "rebooting system may takes time please wait"
 msgstr "重新启动系统可能需要一些时间。请稍等..."
 
+# | msgid ""
+# | "Success! Please wait about 5 minutes to make sure everything is updated.
+# "
+# | "During this time, please copy and save your proxy links which are:"
 #: hiddifypanel/panel/admin/Actions.py:85
 msgid ""
 "Success! Please wait around 4 minutes to make sure everything is updated."
@@ -120,7 +124,7 @@ msgid ""
 msgstr "您似乎正在使用不推荐的默认域 (%(domain)s)。"
 
 #: hiddifypanel/panel/admin/Dashboard.py:24
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "It seems that you have not created any users yet. Default user link: "
 "%(default_link)s"
@@ -174,7 +178,7 @@ msgstr "在 CDN 模式下，Domain IP=%(domain_ip)s 应该与您的 ip=%(server_
 msgid "config.domain-fronting-notsetup-error"
 msgstr "错误！ 未设置域前端"
 
-# | msgid "One of the fields has encountered with error"
+# | msgid "There is an error in one of the fields."
 #: hiddifypanel/panel/admin/ProxyAdmin.py:64
 #: hiddifypanel/panel/admin/QuickSetup.py:59
 #: hiddifypanel/panel/admin/SettingAdmin.py:63
@@ -256,7 +260,7 @@ msgstr "为管理区域选择语言。"
 msgid "config.lang.label"
 msgstr "语言"
 
-# | msgid "It will change user language"
+# | msgid "Choose language for Users area."
 #: hiddifypanel/panel/admin/QuickSetup.py:65
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.lang.description"
@@ -277,7 +281,9 @@ msgid "config.Domain already used"
 msgstr "域存在于域部分。使用另一个域"
 
 # | msgid ""
-# | "This field should be correct. Please visit <a "
+# | "Please fill in this field carefully and correctly. Otherwise, proxies
+# will "
+# | "run into problems. Please visit <a "
 # |
 # "href=\"https://github.com/hiddify/hiddify-config/wiki/راهنمای-تنظیم-دامنه-و-"
 # | "نهایی-کردن-نصب#آموزش-ساخت-زیردامنه\"> Help</a> to learn how to create a "
@@ -1073,7 +1079,7 @@ msgstr "找不到配置"
 msgid "config.not_found.description"
 msgstr "找不到配置"
 
-# | msgid "CPU usage"
+# | msgid "CPU Usage"
 #: hiddifypanel/panel/admin/templates/index.html:12
 #: hiddifypanel/panel/admin/templates/index.html:32
 #: hiddifypanel/panel/admin/templates/index.html:149
@@ -1118,8 +1124,10 @@ msgid "admin.quicksetup.title"
 msgstr "快速设置"
 
 # | msgid ""
-# | "Your IPv4 is %(ipv4)s and IPv6 is %(ipv6)s. Please set this ip in your "
-# | "domain and enter your domain bellow.\n"
+# | "Your server's IPs are: IPv4: %(ipv4)s and IPv6: %(ipv6)s.\n"
+# | "<br>\n"
+# | "Set these IPs on your domain or subdomain and enter your domain or
+# subdomain in the bellow box.\n"
 #: hiddifypanel/panel/admin/templates/quick_setup.html:40
 msgid "admin.quicksetup_intro"
 msgstr "您的 IPv4 是 %(ipv4)s，IPv6 是 %(ipv6)s。请在您的域中设置此 ip 并在下面输入您的域。"
@@ -1137,7 +1145,6 @@ msgstr "单击此处查看完整日志。"
 # | msgid ""
 # | "Please Copy and Save the emergency access link before leaving this page."
 #: hiddifypanel/panel/admin/templates/result.html:31
-#, fuzzy
 msgid "Please copy the emergency link before leaving this page."
 msgstr "离开此页面前，请复制并保存紧急访问链接。"
 
@@ -1534,6 +1541,7 @@ msgstr "通过 https 的 DNS"
 msgid "user.home.select tool"
 msgstr "请选择项目。"
 
+# | msgid "QR Code"
 #: hiddifypanel/panel/user/templates/home/index.html:124
 #: hiddifypanel/panel/user/templates/home/usage.html:58
 msgid "QR code"
@@ -1601,7 +1609,7 @@ msgid "user.home.ios.others.title"
 msgstr "其他应用程序（shadowlink、fairVPN、napsternetv）"
 
 # | msgid ""
-# | "First install on of the following applications:\n"
+# | "First install one of the following applications:\n"
 # | "<div class=\"btn-group\">\n"
 # | "<a
 # href=\"https://apps.apple.com/us/app/shadowlink-shadowsocks-vpn/id1439686518\"\n"
@@ -1912,10 +1920,10 @@ msgstr "捐款"
 msgid "admin.actions.apply_configs"
 msgstr "应用配置"
 
-# | msgid "Check usage"
+# | msgid "Check Usage"
 #: hiddifypanel/templates/admin-layout.html:106
 msgid "User usage update"
-msgstr ""
+msgstr "检查使用情况"
 
 # | msgid ""
 # | "We need your help in developing this project\n"

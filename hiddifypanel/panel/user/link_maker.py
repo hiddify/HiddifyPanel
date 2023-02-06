@@ -112,7 +112,7 @@ def make_proxy(proxy):
         base["ssr-obfs"]= "tls1.2_ticket_auth"
         base["ssr-protocol"]= "auth_sha1_v4"
         base["fakedomain"]=hconfigs[ConfigEnum.ssr_fakedomain]
-        base["mode"]="faketls"
+        base["mode"]="FakeTLS"
         return base
     elif "faketls" in name:
         base['fakedomain']=hconfig(ConfigEnum.ssfaketls_fakedomain)
@@ -130,9 +130,10 @@ def make_proxy(proxy):
         base['transport']='tcp'
         base['path']=tcp_path[base["proto"]]
         return base   
-    if "WS" in name:
+    if proxy.transport in ["ws","WS"]:
         base['transport']='ws'
         base['path']=ws_path[base["proto"]]
+        base["host"]=domain
         return base
     if "grpc" in name:
         base['transport']='grpc'
@@ -164,7 +165,7 @@ def to_link(proxy):
         if proxy['mode']=='shadowtls':
             return f'{baseurl}?plugin=shadow-tls%3Bpassword%3D{proxy["proxy_path"]}%3Bhost%3D{proxy["fakedomain"]}&amp;udp-over-tcp=true#{name_link}'
         if proxy['proto']=='v2ray':
-            return f'{baseurl}?plugin=v2ray-plugin%3Bmode%3Dwebsocket%3Bpath%3D{proxy["path"]}%3Bhost%3D{domain}%3Btls&amp;udp-over-tcp=true#{name_link}'
+            return f'{baseurl}?plugin=v2ray-plugin%3Bmode%3Dwebsocket%3Bpath%3D{proxy["path"]}%3Bhost%3D{proxy["host"]}%3Btls&amp;udp-over-tcp=true#{name_link}'
     
     infos=f'&alpn={proxy["alpn"]}&sni={proxy["sni"]}&type={proxy["transport"]}'
     infos+=f'&path={proxy["path"]}' if "path" in proxy else ""

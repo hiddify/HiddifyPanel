@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-05 21:13+0100\n"
-"PO-Revision-Date: 2023-02-05 14:13-0600\n"
+"POT-Creation-Date: 2023-02-06 15:13+0100\n"
+"PO-Revision-Date: 2023-02-06 07:18-0600\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -44,13 +44,17 @@ msgstr ""
 msgid "rebooting system may takes time please wait"
 msgstr "Rebooting System... This may take afew minutes. Please wait..."
 
+# | msgid ""
+# | "Success! Please wait about 5 minutes to make sure everything is updated.
+# "
+# | "During this time, please copy and save your proxy links which are:"
 #: hiddifypanel/panel/admin/Actions.py:85
 msgid ""
 "Success! Please wait around 4 minutes to make sure everything is updated. "
 "During this time, please save your proxy links which are:"
 msgstr ""
-"Success! Please wait around 4 minutes to make sure everything is updated. "
-"During this time, please save your proxy links which are:"
+"Success! Please wait about 5 minutes to make sure everything is updated. "
+"During this time, please copy and save your proxy links which are:"
 
 # | msgid "See the log in the bellow screen"
 #: hiddifypanel/panel/admin/Actions.py:107
@@ -187,12 +191,12 @@ msgstr ""
 msgid "config.domain-fronting-notsetup-error"
 msgstr "Error! Domain Fronting not set."
 
-# | msgid "One of the fields has encountered with error"
+# | msgid "There is an error in one of the fields."
 #: hiddifypanel/panel/admin/ProxyAdmin.py:64
 #: hiddifypanel/panel/admin/QuickSetup.py:59
 #: hiddifypanel/panel/admin/SettingAdmin.py:63
 msgid "config.validation-error"
-msgstr "One of the fields has encountered with error"
+msgstr "There is an error in one of the fields."
 
 # | msgid "Name"
 #: hiddifypanel/panel/admin/ProxyAdmin1.py:16
@@ -271,11 +275,11 @@ msgstr "Choose language for Admin area."
 msgid "config.lang.label"
 msgstr "User Area Language"
 
-# | msgid "It will change user language"
+# | msgid "Choose language for Users area."
 #: hiddifypanel/panel/admin/QuickSetup.py:65
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.lang.description"
-msgstr "It will change user language"
+msgstr "Choose language for Users area."
 
 # | msgid "Error! Invalid domain.  The domain format is www.google.com"
 #: hiddifypanel/panel/admin/QuickSetup.py:81
@@ -292,13 +296,15 @@ msgid "config.Domain already used"
 msgstr "Domain is exist in domains section. Use another domain"
 
 # | msgid ""
-# | "This field should be correct. Please visit <a href=\"https://github."
+# | "Please fill in this field carefully and correctly. Otherwise, proxies "
+# | "will run into problems. Please visit <a href=\"https://github."
 # | "com/hiddify/hiddify-config/wiki/راهنمای-تنظیم-دامنه-و-نهایی-کردن-"
 # | "نصب#آموزش-ساخت-زیردامنه\"> Help</a> to learn how to create a subdomain."
 #: hiddifypanel/panel/admin/QuickSetup.py:84
 msgid "domain.description"
 msgstr ""
-"This field should be correct. Please visit <a "
+"Please fill in this field carefully and correctly. Otherwise, proxies will "
+"run into problems. Please visit <a "
 "href=\"https://github.com/hiddify/hiddify-config/wiki/راهنمای-تنظیم-دامنه-و-"
 "نهایی-کردن-نصب#آموزش-ساخت-زیردامنه\"> Help</a> to learn how to create a "
 "subdomain."
@@ -1141,12 +1147,12 @@ msgstr "Config not found"
 msgid "config.not_found.description"
 msgstr "Config not found"
 
-# | msgid "CPU usage"
+# | msgid "CPU Usage"
 #: hiddifypanel/panel/admin/templates/index.html:12
 #: hiddifypanel/panel/admin/templates/index.html:32
 #: hiddifypanel/panel/admin/templates/index.html:149
 msgid "admin.cpu_chart"
-msgstr "CPU usage"
+msgstr "CPU Usage"
 
 # | msgid "RAM Usage"
 #: hiddifypanel/panel/admin/templates/index.html:47
@@ -1186,13 +1192,16 @@ msgid "admin.quicksetup.title"
 msgstr "Quick Setup"
 
 # | msgid ""
-# | "Your IPv4 is %(ipv4)s and IPv6 is %(ipv6)s. Please set this ip in your "
-# | "domain and enter your domain bellow.\n"
+# | "Your server's IPs are: IPv4: %(ipv4)s and IPv6: %(ipv6)s.\n"
+# | "<br>\n"
+# | "Set these IPs on your domain or subdomain and enter your domain or "
+# | "subdomain in the bellow box.\n"
 #: hiddifypanel/panel/admin/templates/quick_setup.html:40
 msgid "admin.quicksetup_intro"
 msgstr ""
-"Your IPv4 is %(ipv4)s and IPv6 is %(ipv6)s. Please set this ip in your "
-"domain and enter your domain bellow.\n"
+"Your server's IPs are: IPv4: %(ipv4)s and IPv6: %(ipv6)s.\n"
+"<br>\n"
+"Set these IPs on your domain or subdomain and enter your domain or subdomain in the bellow box.\n"
 
 # | msgid "Log"
 #: hiddifypanel/panel/admin/templates/result.html:13
@@ -1602,10 +1611,11 @@ msgstr "DNS over https"
 msgid "user.home.select tool"
 msgstr "Please select the item."
 
+# | msgid "QR Code"
 #: hiddifypanel/panel/user/templates/home/index.html:124
 #: hiddifypanel/panel/user/templates/home/usage.html:58
 msgid "QR code"
-msgstr "QR code"
+msgstr "QR Code"
 
 # | msgid ""
 # | "To copy or share links, click on the gray <i class='fa-solid fa-qrcode'>"
@@ -1668,7 +1678,7 @@ msgid "user.home.ios.others.title"
 msgstr "Other applications (shadowlink, fairVPN, napsternetv)"
 
 # | msgid ""
-# | "First install on of the following applications:\n"
+# | "First install one of the following applications:\n"
 # | "<div class=\"btn-group\">\n"
 # | "<a href=\"https://apps.apple.com/us/app/shadowlink-shadowsocks-"
 # | "vpn/id1439686518\"\n"
@@ -1684,7 +1694,7 @@ msgstr "Other applications (shadowlink, fairVPN, napsternetv)"
 #: hiddifypanel/panel/user/templates/home/ios.html:44
 msgid "user.home.ios.others.intro"
 msgstr ""
-"First install on of the following applications:\n"
+"First install one of the following applications:\n"
 "<div class=\"btn-group\">\n"
 "<a href=\"https://apps.apple.com/us/app/shadowlink-shadowsocks-vpn/id1439686518\"\n"
 "        class=\"btn btn-primary orig-link\">shadow link</a> \n"
@@ -1983,11 +1993,10 @@ msgstr "Donation"
 msgid "admin.actions.apply_configs"
 msgstr "Apply configs"
 
-# | msgid "Check usage"
+# | msgid "Check Usage"
 #: hiddifypanel/templates/admin-layout.html:106
-#, fuzzy
 msgid "User usage update"
-msgstr "Check usage"
+msgstr "Check Usage"
 
 # | msgid ""
 # | "We need your help in developing this project\n"
