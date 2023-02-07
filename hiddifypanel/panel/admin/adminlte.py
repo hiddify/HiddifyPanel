@@ -10,4 +10,4 @@ class AdminLTEModelView(ModelView):
     edit_modal_template = 'flask-admin/model/modals/edit.html'
     details_modal_template = 'flask-admin/model/modals/details.html'
 
-    form_base_class = SecureForm
+    # form_base_class = SecureForm

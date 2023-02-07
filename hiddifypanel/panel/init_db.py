@@ -25,7 +25,7 @@ def get_random_string():
 
 def _v1():
         db.create_all()
-        next10year = datetime.date.today() + relativedelta.relativedelta(years=10)
+        next10year = datetime.date.today() + relativedelta.relativedelta(years=6)
         external_ip=urllib.request.urlopen('https://v4.ident.me/').read().decode('utf8')
         
         data = [
