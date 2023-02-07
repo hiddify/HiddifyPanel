@@ -43,7 +43,7 @@ class Actions(FlaskView):
     def viewlogs(self):
         config_dir=current_app.config.HIDDIFY_CONFIG_PATH
         res=[]
-        for filename in os.listdir(f'{config_dir}/log/system/'):
+        for filename in sorted(os.listdir(f'{config_dir}/log/system/')):
             res.append(f"<a href='{url_for('admin.Actions:reverselog',logfile=filename)}'>{filename}</a>") 
         return Markup("<br>".join(res))
     
