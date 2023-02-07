@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-07 13:53+0100\n"
-"PO-Revision-Date: 2023-02-07 05:58-0600\n"
+"POT-Creation-Date: 2023-02-07 23:14+0100\n"
+"PO-Revision-Date: 2023-02-07 16:14-0600\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -130,19 +130,25 @@ msgid ""
 "%(default_link)s"
 msgstr "您似乎还没有创建任何用户。默认用户链接：%(default_link)s"
 
+#: hiddifypanel/panel/admin/DomainAdmin.py:16
+msgid ""
+"Direct mode means you want to use your server directly (for usual use), "
+"CDN means that you use your server on behind of a CDN provider."
+msgstr ""
+
 # | msgid "Domain"
-#: hiddifypanel/panel/admin/DomainAdmin.py:22
+#: hiddifypanel/panel/admin/DomainAdmin.py:31
 #: hiddifypanel/panel/admin/QuickSetup.py:88
 msgid "domain.domain"
 msgstr "领域"
 
 # | msgid "Mode"
-#: hiddifypanel/panel/admin/DomainAdmin.py:23
+#: hiddifypanel/panel/admin/DomainAdmin.py:32
 msgid "domain.mode"
 msgstr "模式"
 
 # | msgid "IP"
-#: hiddifypanel/panel/admin/DomainAdmin.py:24
+#: hiddifypanel/panel/admin/DomainAdmin.py:33
 msgid "domain.ip"
 msgstr "知识产权"
 
@@ -150,7 +156,7 @@ msgstr "知识产权"
 # | "Domain can not be resolved! There is a problem in your domain. Please
 # check "
 # | "your Domain configurations."
-#: hiddifypanel/panel/admin/DomainAdmin.py:56
+#: hiddifypanel/panel/admin/DomainAdmin.py:65
 #: hiddifypanel/panel/admin/QuickSetup.py:103
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr "域名无法解析！你的域有问题"
@@ -159,14 +165,14 @@ msgstr "域名无法解析！你的域有问题"
 # | "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which
 # is "
 # | "required in direct mode."
-#: hiddifypanel/panel/admin/DomainAdmin.py:60
+#: hiddifypanel/panel/admin/DomainAdmin.py:69
 #, python-format
 msgid ""
 "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which "
 "is required in direct mode"
 msgstr "域 IP=%(domain_ip)s 与您的 ip=%(server_ip)s 不匹配，这在直接模式下是必需的"
 
-#: hiddifypanel/panel/admin/DomainAdmin.py:63
+#: hiddifypanel/panel/admin/DomainAdmin.py:72
 #, python-format
 msgid ""
 "In CDN mode, Domain IP=%(domain_ip)s should be different to your "
@@ -458,53 +464,48 @@ msgstr "应始终提供端口 80。我们用它来获取 ssl 证书"
 msgid "config.port 443 is required"
 msgstr "应始终显示端口 443。"
 
-# | msgid "UUID"
-#: hiddifypanel/panel/admin/UserAdmin.py:29
-msgid "user.UUID"
-msgstr "UUID"
+# | msgid "Actions"
+#: hiddifypanel/panel/admin/UserAdmin.py:35
+msgid "actions"
+msgstr "动作"
 
 # | msgid "Name"
-#: hiddifypanel/panel/admin/UserAdmin.py:30
+#: hiddifypanel/panel/admin/UserAdmin.py:36
 msgid "user.name"
 msgstr "名称"
 
+# | msgid "User Links"
+#: hiddifypanel/panel/admin/UserAdmin.py:37
+msgid "user.user_links"
+msgstr "用户链接"
+
 # | msgid "Usage Limit (GB)"
-#: hiddifypanel/panel/admin/UserAdmin.py:31
+#: hiddifypanel/panel/admin/UserAdmin.py:38
 msgid "user.usage_limit_GB"
 msgstr "使用限制 (GB)"
 
 # | msgid "Monthly"
-#: hiddifypanel/panel/admin/UserAdmin.py:32
+#: hiddifypanel/panel/admin/UserAdmin.py:39
 msgid "Reset every month"
 msgstr "每月"
 
 # | msgid "Current Usage (GB)"
-#: hiddifypanel/panel/admin/UserAdmin.py:33
+#: hiddifypanel/panel/admin/UserAdmin.py:40
 msgid "user.current_usage_GB"
 msgstr "当前使用量 (GB)"
 
 # | msgid "Expire Time"
-#: hiddifypanel/panel/admin/UserAdmin.py:36
+#: hiddifypanel/panel/admin/UserAdmin.py:41
 msgid "user.expiry_time"
 msgstr "过期时间"
 
-# | msgid "Last usage date reset"
-#: hiddifypanel/panel/admin/UserAdmin.py:37
-msgid "user.last_reset_time"
-msgstr "最后使用日期重置"
-
-# | msgid "User Links"
-#: hiddifypanel/panel/admin/UserAdmin.py:38
-msgid "user.user_links"
-msgstr "用户链接"
-
-# | msgid "Actions"
-#: hiddifypanel/panel/admin/UserAdmin.py:39
-msgid "actions"
-msgstr "动作"
+# | msgid "UUID"
+#: hiddifypanel/panel/admin/UserAdmin.py:43
+msgid "user.UUID"
+msgstr "UUID"
 
 #: hiddifypanel/panel/admin/templates/backup.html:9
-#: hiddifypanel/templates/admin-layout.html:109
+#: hiddifypanel/templates/admin-layout.html:107
 msgid "Backup"
 msgstr "备份"
 
@@ -539,6 +540,11 @@ msgstr "设置"
 #: hiddifypanel/panel/admin/templates/configfake.html:5
 msgid "domain.cdn"
 msgstr "内容分发网络"
+
+#: hiddifypanel/panel/admin/templates/configfake.html:5
+#, fuzzy
+msgid "Create"
+msgstr "创造"
 
 # | msgid "User Page Title"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1124,7 +1130,7 @@ msgstr "详细配置"
 #: hiddifypanel/panel/admin/templates/quick_setup.html:7
 #: hiddifypanel/panel/admin/templates/result.html:18
 msgid "Save Link"
-msgstr ""
+msgstr "保存链接"
 
 #: hiddifypanel/panel/admin/templates/quick_setup.html:7
 #, python-format
@@ -1133,6 +1139,8 @@ msgid ""
 "href=\"%(adminlink)s\" class=\"btn btn-primary copy-"
 "link\">%(adminlink)s</a>. Please save this link."
 msgstr ""
+"请注意，您的面板只能通过 <a href=\"%(adminlink)s\" class=\"btn btn-primary copy-"
+"link\">%(adminlink)s</a> 访问。 请保存此链接。"
 
 # | msgid "Quick Setup"
 #: hiddifypanel/panel/admin/templates/quick_setup.html:43
@@ -1163,6 +1171,19 @@ msgstr "单击此处查看完整日志。"
 #: hiddifypanel/panel/admin/templates/result.html:18
 msgid "Please copy the emergency link before leaving this page."
 msgstr "离开此页面前，请复制并保存紧急访问链接。"
+
+#: hiddifypanel/panel/admin/templates/model/domain_list.html:7
+msgid ""
+"In this section, you can add your domain. You need to add at least one "
+"domain in direct mode."
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/model/user_list.html:7
+#, python-format
+msgid ""
+"User usage will be updated every 6 minutes. To update it now click <a "
+"href=\"%(link)s\" class=\"btn btn-info\">here</a>"
+msgstr ""
 
 # | msgid "All Configs"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:1
@@ -1851,37 +1872,37 @@ msgstr "行政"
 
 # | msgid "Domains"
 #: hiddifypanel/templates/admin-layout.html:28
-#: hiddifypanel/templates/admin-layout.html:86
+#: hiddifypanel/templates/admin-layout.html:84
 msgid "admin.menu.domain"
 msgstr "域名"
 
 # | msgid "Users"
 #: hiddifypanel/templates/admin-layout.html:29
-#: hiddifypanel/templates/admin-layout.html:85
+#: hiddifypanel/templates/admin-layout.html:83
 msgid "admin.menu.user"
 msgstr "用户"
 
 # | msgid "Proxies"
 #: hiddifypanel/templates/admin-layout.html:30
-#: hiddifypanel/templates/admin-layout.html:87
+#: hiddifypanel/templates/admin-layout.html:85
 msgid "admin.menu.proxy"
 msgstr "代理"
 
 # | msgid "Settings"
 #: hiddifypanel/templates/admin-layout.html:31
-#: hiddifypanel/templates/admin-layout.html:88
+#: hiddifypanel/templates/admin-layout.html:86
 msgid "admin.menu.config"
 msgstr "设置"
 
 # | msgid "Actions"
 #: hiddifypanel/templates/admin-layout.html:34
-#: hiddifypanel/templates/admin-layout.html:98
+#: hiddifypanel/templates/admin-layout.html:96
 msgid "admin.actions.title"
 msgstr "动作"
 
 # | msgid "Status"
 #: hiddifypanel/templates/admin-layout.html:36
-#: hiddifypanel/templates/admin-layout.html:100
+#: hiddifypanel/templates/admin-layout.html:98
 msgid "admin.actions.status"
 msgstr "地位"
 
@@ -1892,54 +1913,54 @@ msgstr "应用配置"
 
 # | msgid "Reinstall System"
 #: hiddifypanel/templates/admin-layout.html:38
-#: hiddifypanel/templates/admin-layout.html:104
+#: hiddifypanel/templates/admin-layout.html:102
 msgid "admin.actions.reinstall"
 msgstr "重装系统"
 
 # | msgid "Restart System"
 #: hiddifypanel/templates/admin-layout.html:39
-#: hiddifypanel/templates/admin-layout.html:103
+#: hiddifypanel/templates/admin-layout.html:101
 msgid "admin.actions.reset"
 msgstr "重启系统"
 
 # | msgid "Update System"
 #: hiddifypanel/templates/admin-layout.html:40
-#: hiddifypanel/templates/admin-layout.html:105
+#: hiddifypanel/templates/admin-layout.html:103
 msgid "admin.actions.update"
 msgstr "更新系统"
 
 # | msgid "View Logs"
 #: hiddifypanel/templates/admin-layout.html:41
-#: hiddifypanel/templates/admin-layout.html:101
+#: hiddifypanel/templates/admin-layout.html:99
 msgid "admin.actions.viewlogs"
 msgstr "查看日志"
 
 # | msgid "Support"
 #: hiddifypanel/templates/admin-layout.html:47
-#: hiddifypanel/templates/admin-layout.html:112
+#: hiddifypanel/templates/admin-layout.html:110
 msgid "admin.menu.support"
 msgstr "支持"
 
 # | msgid "Telegram"
 #: hiddifypanel/templates/admin-layout.html:50
-#: hiddifypanel/templates/admin-layout.html:115
+#: hiddifypanel/templates/admin-layout.html:113
 msgid "admin.menu.telegram"
 msgstr "电报"
 
-#: hiddifypanel/templates/admin-layout.html:82
-#: hiddifypanel/templates/donation.html:5
-msgid "Donation"
-msgstr "捐款"
-
 # | msgid "Apply configs"
-#: hiddifypanel/templates/admin-layout.html:102
+#: hiddifypanel/templates/admin-layout.html:100
 msgid "admin.actions.apply_configs"
 msgstr "应用配置"
 
 # | msgid "Check Usage"
-#: hiddifypanel/templates/admin-layout.html:106
+#: hiddifypanel/templates/admin-layout.html:104
 msgid "User usage update"
 msgstr "检查使用情况"
+
+#: hiddifypanel/templates/admin-layout.html:115
+#: hiddifypanel/templates/donation.html:5
+msgid "Donation"
+msgstr "捐款"
 
 # | msgid ""
 # | "We need your help in developing this project\n"
@@ -2081,6 +2102,14 @@ msgstr "链接已复制到剪贴板。"
 msgid "user.home.link.manual-copy"
 msgstr "复制到剪贴板：Ctrl+C，回车"
 
+#: hiddifypanel/templates/hiddify-flask-admin/list.html:65
+msgid "Count:"
+msgstr ""
+
+#: hiddifypanel/templates/hiddify-flask-admin/list.html:91
+msgid "Actions"
+msgstr ""
+
 # | msgid ""
 # | "Invalid address: The decoy site's URL should be a complete URL. Example:
 # "
@@ -2091,6 +2120,10 @@ msgstr "复制到剪贴板：Ctrl+C，回车"
 # | msgid "Monthly Usage Limit (GB)"
 #~ msgid "user.monthly_usage_limit_GB"
 #~ msgstr "每月使用限额 (GB)"
+
+# | msgid "Last usage date reset"
+#~ msgid "user.last_reset_time"
+#~ msgstr "最后使用日期重置"
 
 # | msgid "Decoy Site"
 #~ msgid "config.decoy_site.label"
