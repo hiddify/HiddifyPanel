@@ -15,7 +15,7 @@ def add_temporary_access():
     import random
 
     random_port=(random.randint(30000, 50000))
-    exec_command('/opt/hiddify-config/hiddify-panel/temporary_access.sh')
+    exec_command(f'/opt/hiddify-config/hiddify-panel/temporary_access.sh {random_port}')
     # iptableparm=f'PREROUTING -p tcp --dport {random_port} -j REDIRECT --to-port 9000'
     # exec_command(f'iptables -t nat -I {iptableparm}')
     # exec_command(f'echo "iptables -t nat -D {iptableparm}" | at now + 4 hour')
