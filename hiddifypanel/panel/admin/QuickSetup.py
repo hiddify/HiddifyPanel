@@ -83,7 +83,7 @@ def get_quick_setup_form(empty=False):
                 domain_validators=[wtf.validators.Regexp(domain_regex,re.IGNORECASE,_("config.Invalid domain")),
                                         validate_domain,
                                         wtf.validators.NoneOf([d.domain.lower() for d in Domain.query.all()],_("config.Domain already used")),
-                                        wtf.validators.NoneOf([c.value.lower() for c in StrConfig.query.all() if "_domain" in c.key and c.key!=ConfigEnum.decoy_domain],_("config.Domain already used"))
+                                        wtf.validators.NoneOf([c.value.lower() for c in StrConfig.query.all() if "fakedomain" in c.key and c.key!=ConfigEnum.decoy_domain],_("config.Domain already used"))
                                         ]
                 domain=wtf.fields.StringField(_("domain.domain"),domain_validators,description=_("domain.description"),render_kw={"pattern":domain_validators[0].regex.pattern,"title":domain_validators[0].message,"required":"","placeholder":"sub.domain.com"})
                 enable_telegram=SwitchField(_("config.telegram_enable.label"),description=_("config.telegram_enable.description"),default=hconfig(ConfigEnum.telegram_enable))
