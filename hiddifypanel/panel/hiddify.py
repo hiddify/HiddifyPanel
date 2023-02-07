@@ -102,7 +102,7 @@ def all_configs():
         "hconfigs": get_hconfigs()
         }
     for d in configs['domains']:
-        d.domain=d.domain.lower()
+        d['domain']=d['domain'].lower()
 
     return configs
     
