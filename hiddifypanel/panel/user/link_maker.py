@@ -228,6 +228,7 @@ def to_clash(proxy,meta_or_normal):
             
         elif proxy["proto"]=="v2ray":
             base["plugin"]= "v2ray-plugin"
+            base["type"]="ss"
             base["plugin-opts"]={
                 "mode": "websocket",
                 "tls": proxy["l3"]=="tls",
