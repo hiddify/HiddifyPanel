@@ -168,7 +168,7 @@ def to_link(proxy):
             return f'{baseurl}?plugin=v2ray-plugin%3Bmode%3Dwebsocket%3Bpath%3D{proxy["path"]}%3Bhost%3D{proxy["host"]}%3Btls&amp;udp-over-tcp=true#{name_link}'
     
     infos=f'&sni={proxy["sni"]}&type={proxy["transport"]}'
-    if proxy['alpn']!=2:
+    if proxy['alpn']!='h2':
         infos+=f'&alpn={proxy["alpn"]}'
     infos+=f'&path={proxy["path"]}' if "path" in proxy else ""
     infos+=f'&host={proxy["host"]}' if "host" in proxy else ""
