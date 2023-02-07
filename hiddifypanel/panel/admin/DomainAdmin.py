@@ -65,6 +65,7 @@ class DomainAdmin(AdminLTEModelView):
         # if model.mode in [DomainType.ss_faketls, DomainType.telegram_faketls]:
         #     if len(Domain.query.filter(Domain.mode==model.mode and Domain.id!=model.id).all())>0:
         #         ValidationError(f"another {model.mode} is exist")
+        model.domain=model.domain.lower()
         hiddify.flash_config_success()
     
 

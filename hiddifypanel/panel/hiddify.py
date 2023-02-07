@@ -96,11 +96,15 @@ def update_usage():
 
 
 def all_configs():
-    return {
+    configs={
         "users": [u.to_dict() for u in User.query.filter((User.usage_limit_GB>User.current_usage_GB)).filter(User.expiry_time>=datetime.date.today()).all()],
         "domains": [u.to_dict() for u in Domain.query.all()],
         "hconfigs": get_hconfigs()
         }
+    for d in configs['domains']:
+        d.domain=d.domain.lower()
+
+    return configs
     
 
 def get_ip(version,retry=3):

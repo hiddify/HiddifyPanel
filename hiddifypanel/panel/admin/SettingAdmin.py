@@ -47,8 +47,10 @@ class SettingAdmin(FlaskView):
             
                         if k in [c for c in ConfigEnum]:
                             if k in bool_types:
-                                BoolConfig.query.filter(BoolConfig.key==k).first().value=v
+                                BoolConfig.query.filter(BoolConfig.key==k).first().value=v                            
                             else:
+                                if "_domain" in k:
+                                    v=v.lower()
                                 StrConfig.query.filter(StrConfig.key==k).first().value=v
                     
                 # print(cat,vs)
@@ -134,7 +136,8 @@ def get_config_form():
                 elif 'domain' in c.key:
                     validators.append(wtf.validators.Regexp("^([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})$",re.IGNORECASE,_("config.Invalid domain")))
                     if c.key!=ConfigEnum.decoy_domain:
-                        validators.append(wtf.validators.NoneOf(db.session.query(Domain.domain).all(),_("config.Domain already used")))
+                        validators.append(wtf.validators.NoneOf([d.domain.lower() for d in Domain.query.all()],_("config.Domain already used")))
+                        validators.append(wtf.validators.NoneOf([c.value.lower() for c in StrConfig.query.filter("_domain" in StrConfig.key and StrConfig.key!=ConfigEnum.decoy_domain).all()],_("config.Domain already used")))
                     render_kw['required']=""
                 
 

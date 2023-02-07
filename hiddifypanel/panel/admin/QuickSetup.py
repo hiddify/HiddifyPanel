@@ -40,7 +40,7 @@ class QuickSetup(FlaskView):
                 if quick_form.validate_on_submit():
                         sslip_dm=Domain.query.filter(Domain.domain==f'{hiddify.get_ip(4)}.sslip.io').delete()
 
-                        data=[Domain(domain=quick_form.domain.data,mode=DomainType.direct),]
+                        data=[Domain(domain=quick_form.domain.data.lower(),mode=DomainType.direct),]
                         
                         db.session.bulk_save_objects(data)
                         
@@ -78,9 +78,12 @@ def get_quick_setup_form(empty=False):
                 return domains
         class QuickSetupForm(FlaskForm):
                 domain_regex="^([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})$"
+
                 domain_validators=[wtf.validators.Regexp(domain_regex,re.IGNORECASE,_("config.Invalid domain")),
                                         validate_domain,
-                                        wtf.validators.NoneOf(get_used_domains(),_("config.Domain already used"))]
+                                        wtf.validators.NoneOf([d.domain.lower() for d in Domain.query.all()],_("config.Domain already used")),
+                                        wtf.validators.NoneOf([c.value.lower() for c in StrConfig.query.filter("_domain" in StrConfig.key and StrConfig.key!=ConfigEnum.decoy_domain).all()],_("config.Domain already used"))
+                                        ]
                 domain=wtf.fields.StringField(_("domain.domain"),domain_validators,description=_("domain.description"),render_kw={"pattern":domain_validators[0].regex.pattern,"title":domain_validators[0].message,"required":"","placeholder":"sub.domain.com"})
                 enable_telegram=SwitchField(_("config.telegram_enable.label"),description=_("config.telegram_enable.description"),default=hconfig(ConfigEnum.telegram_enable))
                 enable_vmess=SwitchField(_("config.vmess_enable.label"),description=_("config.vmess_enable.description"),default=hconfig(ConfigEnum.vmess_enable))
