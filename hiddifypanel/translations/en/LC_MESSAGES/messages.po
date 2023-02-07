@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-07 23:14+0100\n"
-"PO-Revision-Date: 2023-02-07 16:14-0600\n"
+"POT-Creation-Date: 2023-02-07 23:40+0100\n"
+"PO-Revision-Date: 2023-02-07 16:39-0600\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -1162,29 +1162,36 @@ msgstr "Config not found"
 # | msgid "CPU Usage"
 #: hiddifypanel/panel/admin/templates/index.html:12
 #: hiddifypanel/panel/admin/templates/index.html:32
-#: hiddifypanel/panel/admin/templates/index.html:149
+#: hiddifypanel/panel/admin/templates/index.html:178
 msgid "admin.cpu_chart"
 msgstr "CPU Usage"
 
 # | msgid "RAM Usage"
-#: hiddifypanel/panel/admin/templates/index.html:47
-#: hiddifypanel/panel/admin/templates/index.html:68
+#: hiddifypanel/panel/admin/templates/index.html:46
+#: hiddifypanel/panel/admin/templates/index.html:67
+#: hiddifypanel/panel/admin/templates/index.html:79
 msgid "admin.ram_chart"
 msgstr "RAM Usage"
 
+# | msgid "IPv4 connections"
+#: hiddifypanel/panel/admin/templates/index.html:100
+#, fuzzy
+msgid "admin.ipv4 connections"
+msgstr "IPv4 connections"
+
 # | msgid "Network Usage"
-#: hiddifypanel/panel/admin/templates/index.html:80
-#: hiddifypanel/panel/admin/templates/index.html:113
+#: hiddifypanel/panel/admin/templates/index.html:112
+#: hiddifypanel/panel/admin/templates/index.html:145
 msgid "admin.network_chart"
 msgstr "Network Usage"
 
 # | msgid "Protocol Usage Chart"
-#: hiddifypanel/panel/admin/templates/index.html:112
+#: hiddifypanel/panel/admin/templates/index.html:144
 msgid "admin.protocol_chart"
 msgstr "Protocol Usage Chart"
 
 # | msgid "Users Usage Chart"
-#: hiddifypanel/panel/admin/templates/index.html:148
+#: hiddifypanel/panel/admin/templates/index.html:177
 msgid "admin.user_chart"
 msgstr "Users Usage Chart"
 
