@@ -11,7 +11,10 @@ from flask_babelex import gettext as __
 from flask_babelex import lazy_gettext as _
 from hiddifypanel.panel import hiddify
 from hiddifypanel.panel.hiddify import flash
+
 class UserAdmin(AdminLTEModelView):
+    
+
     column_display_pk = True
     can_export = True
 

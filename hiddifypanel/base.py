@@ -34,7 +34,7 @@ def create_app(**config):
     # "hiddifypanel.panel.restapi:init_app",]
     # )  # Load extensions from settings.toml
     app.config.update(config)  # Override with passed config
-
+    app.config['WTF_CSRF_CHECK_DEFAULT']=False
     
     
     babel = Babel(app)
@@ -50,6 +50,10 @@ def create_app(**config):
     from flask_wtf.csrf import CSRFProtect
 
     csrf = CSRFProtect(app)
+    @app.before_request
+    def check_csrf():
+        if  "/admin/user/" not in request.base_url and "/admin/domain/" not in request.base_url:
+            csrf.protect()
     # app=ProxyFix(app, x_for=1, x_host=1,x_proto=1,x_port=1,x_prefix=1)
     app.jinja_env.globals['get_locale'] = get_locale
     

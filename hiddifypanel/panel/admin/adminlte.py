@@ -1,5 +1,5 @@
 from flask_admin.contrib.sqla import ModelView
-
+from flask_admin.form import SecureForm
 class AdminLTEModelView(ModelView):
     list_template = 'flask-admin/model/list.html'
     create_template = 'flask-admin/model/create.html'
@@ -9,3 +9,5 @@ class AdminLTEModelView(ModelView):
     create_modal_template = 'flask-admin/model/modals/create.html'
     edit_modal_template = 'flask-admin/model/modals/edit.html'
     details_modal_template = 'flask-admin/model/modals/details.html'
+
+    form_base_class = SecureForm
