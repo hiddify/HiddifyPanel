@@ -47,9 +47,9 @@ def create_app(**config):
             return hconfig(ConfigEnum.admin_lang) or hconfig(ConfigEnum.lang) or 'fa'
         return hconfig(ConfigEnum.lang) or "fa"
 
-    from flask_wtf.csrf import CSRFProtect
+    # from flask_wtf.csrf import CSRFProtect
 
-    csrf = CSRFProtect(app)
+    # csrf = CSRFProtect(app)
     # app=ProxyFix(app, x_for=1, x_host=1,x_proto=1,x_port=1,x_prefix=1)
     app.jinja_env.globals['get_locale'] = get_locale
     

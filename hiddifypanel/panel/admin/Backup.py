@@ -5,7 +5,7 @@ from flask_babelex import gettext as _
 from flask_bootstrap import SwitchField
 # from flask_babelex import gettext as _
 import wtforms as wtf
-from flask_wtf import FlaskForm, CSRFProtect
+from flask_wtf import FlaskForm
 import pathlib
 from hiddifypanel.models import BoolConfig,StrConfig,ConfigEnum,hconfig,Proxy,User,Domain,DomainType
 

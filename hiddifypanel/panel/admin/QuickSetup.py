@@ -2,7 +2,7 @@ from hiddifypanel.models import BoolConfig,StrConfig,ConfigEnum,hconfig
 # from flask_babelex import lazy_gettext as _
 from flask_babelex import gettext as _
 import wtforms as wtf
-from flask_wtf import FlaskForm, CSRFProtect
+from flask_wtf import FlaskForm
 from flask_bootstrap import SwitchField
 from hiddifypanel.panel import hiddify
 from flask_admin.base import expose
