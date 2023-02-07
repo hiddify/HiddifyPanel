@@ -1,0 +1,31 @@
+{% extends 'hiddify-flask-admin/list.html' %}
+
+{% block body %}
+    {{super()}}
+
+    <div class="callout callout-success">
+        {{_('User usage will be updated every 6 minutes. To update it now click <a href="%(link)s" class="btn btn-info">here</a>',link=url_for("admin.Actions:update_usage"))}}
+        
+    </div>
+    <style>
+    .col-expiry-date{
+        white-space: nowrap;
+    }
+    td.col-domain{
+        direction:ltr
+    }
+    .col-UserLinks a > span{
+        text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 80px;
+    overflow: hidden;
+    }
+    .col-uuid span{
+        text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 80px;
+    overflow: hidden;
+    display: inline-block;
+    }
+    </style>
+{% endblock %}

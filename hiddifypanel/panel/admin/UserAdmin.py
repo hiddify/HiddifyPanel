@@ -14,9 +14,12 @@ from hiddifypanel.panel.hiddify import flash
 
 class UserAdmin(AdminLTEModelView):
     
-
-    column_display_pk = True
-    can_export = True
+    list_template = 'model/user_list.html'    
+    form_excluded_columns=['last_reset_time']
+    edit_modal=True
+    create_modal=True
+    # column_display_pk = True
+    # can_export = True
 
     
     # form_args = {
@@ -26,20 +29,18 @@ class UserAdmin(AdminLTEModelView):
     # }
     # }
     # column_labels={'uuid':_("user.UUID")}
-    column_filters=["uuid","name","usage_limit_GB",'monthly',"current_usage_GB","expiry_time"]
+    # column_filters=["uuid","name","usage_limit_GB",'monthly',"current_usage_GB","expiry_time"]
     
     column_labels={
-        "uuid":_("user.UUID"),
+        "Actions":_("actions"),
         "name": _("user.name"),
+        "UserLinks":_("user.user_links"),
         "usage_limit_GB":_("user.usage_limit_GB"),
         "monthly":_("Reset every month"),
         "current_usage_GB":_("user.current_usage_GB"),
-        
-
         "expiry_time":_("user.expiry_time"),
-        "last_reset_time":_("user.last_reset_time"),
-        "UserLinks":_("user.user_links"),
-        "Actions":_("actions")
+        # "last_reset_time":_("user.last_reset_time"),
+        "uuid":_("user.UUID"),
      }
     column_searchable_list=[("uuid"),"name"]
     def search_placeholder(self):
@@ -57,7 +58,7 @@ class UserAdmin(AdminLTEModelView):
     #     'uuid': {'label_name':"D"}
         
     #     }
-    column_list = ["uuid","name","usage_limit_GB",'monthly',"current_usage_GB","expiry_time","UserLinks"]
+    column_list = ["name","UserLinks","current_usage_GB","usage_limit_GB",'monthly',"expiry_time","uuid",]
     # can_edit = False
     # def on_model_change(self, form, model, is_created):
     #     model.password = generate_password_hash(model.password)

@@ -1,0 +1,17 @@
+{% extends 'hiddify-flask-admin/list.html' %}
+
+{% block body %}
+    {{super()}}
+
+    <div class="callout callout-info">
+        {{_('In this section, you can add your domain. You need to add at least one domain in direct mode.')}}
+    </div>
+
+
+    <style>
+        
+        td.col-domain{
+            direction:ltr;
+        }
+    </style>
+{% endblock %}

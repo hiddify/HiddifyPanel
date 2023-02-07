@@ -78,9 +78,7 @@
           <!-- Add icons to the links using the .nav-icon class
                  with font-awesome or any other icon font library -->
                  {{ render_nav_item('admin.Dashboard:index', icon('solid','house','nav-icon')+_('admin.menu.home')) }}
-                 <a class="nav-item nav-link" role="button" data-toggle="modal" data-target="#modal-donation">
-                  <i class="fa-solid fa-heart nav-icon"></i>&nbsp;{{_("Donation")}}
-                </a>
+              
                  
                 {{ render_nav_item('flask.user.index_view', icon('solid','user','nav-icon')+_('admin.menu.user')) }}
                  {{ render_nav_item('flask.domain.index_view', icon('solid','link','nav-icon')+_('admin.menu.domain')) }}
@@ -103,7 +101,7 @@
               {{ render_nav_item('admin.Actions:reset', icon('solid','power-off','nav-icon')+_('admin.actions.reset'), _use_li=True) }}
               {{ render_nav_item('admin.Actions:reinstall', icon('solid','rotate','nav-icon')+_('admin.actions.reinstall'), _use_li=True) }}
               {{ render_nav_item('admin.Actions:update', icon('solid','arrow-up-from-bracket','nav-icon')+_('admin.actions.update'), _use_li=True) }}
-              {{ render_nav_item('admin.Actions:update_usage', icon('solid','charging-station','nav-icon')+_('User usage update'), _use_li=True) }}
+              <!-- {{ render_nav_item('admin.Actions:update_usage', icon('solid','charging-station','nav-icon')+_('User usage update'), _use_li=True) }} -->
             </ul>
           </li>
           {{ render_nav_item('admin.Backup:index',icon('solid','floppy-disk','nav-icon')+ _('Backup'), _use_li=True) }}
@@ -113,7 +111,11 @@
 
     <a href="https://t.me/hiddify" target="_blank"
       class="nav-item nav-link">{{icon('brands','telegram','nav-icon')+_('admin.menu.telegram')}}</a>
+      <a class="nav-item nav-link" role="button" data-toggle="modal" data-target="#modal-donation">
+        <i class="fa-solid fa-heart nav-icon"></i>&nbsp;{{_("Donation")}}
+      </a>
         </div>
+        
       </nav>
       <!-- /.sidebar-menu -->
     </div>

@@ -9,9 +9,15 @@ from hiddifypanel.panel import hiddify
 from flask import Markup
 
 class DomainAdmin(AdminLTEModelView):
-    
-
-    can_export = True
+    list_template = 'model/domain_list.html'    
+    edit_modal=True
+    column_descriptions = dict(
+        # name=_'just for remembering',
+        mode=_("Direct mode means you want to use your server directly (for usual use), CDN means that you use your server on behind of a CDN provider."),
+        # current_usage_GB="in GB"
+    )
+    create_modal=True
+    can_export = False
     form_args = {
     'domain': {
         'validators': [Regexp(r'^([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})$',message="Should be a valid domain")]
@@ -19,7 +25,7 @@ class DomainAdmin(AdminLTEModelView):
     }
     column_list = ["domain","mode","domain_ip"]
     column_editable_list=["domain"]
-    column_filters=["domain","mode"]
+    # column_filters=["domain","mode"]
     column_searchable_list=["domain","mode"]
     column_labels={
         "domain":_("domain.domain"),

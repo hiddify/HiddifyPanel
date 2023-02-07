@@ -441,3 +441,10 @@ body {
     margin-left: 0px;
     margin-right: 20px;
 }
+
+.pull-right{
+    float:left;
+}
+.pull-left{
+    float:right;
+}
