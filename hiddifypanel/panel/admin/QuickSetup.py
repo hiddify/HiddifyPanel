@@ -21,7 +21,8 @@ from flask_classful import FlaskView
 class QuickSetup(FlaskView):
     
         def index(self):
-                return render_template('quick_setup.html', lang_form=get_lang_form(), form=get_quick_setup_form(),ipv4=hiddify.get_ip(4),ipv6=hiddify.get_ip(6))
+                return render_template('quick_setup.html', lang_form=get_lang_form(), form=get_quick_setup_form(),ipv4=hiddify.get_ip(4),ipv6=hiddify.get_ip(6),admin_link=admin_link())
+        
         def post(self):
                 quick_form=get_quick_setup_form()
                 lang_form=get_lang_form()
@@ -35,7 +36,7 @@ class QuickSetup(FlaskView):
                         else:
                                 flash((_('quicksetup.setlang.error')), 'danger')
 
-                        return render_template('quick_setup.html', form=get_quick_setup_form(True),lang_form=lang_form)                
+                        return render_template('quick_setup.html', form=get_quick_setup_form(True),lang_form=lang_form,admin_link=admin_link())                
                 
                 if quick_form.validate_on_submit():
                         sslip_dm=Domain.query.filter(Domain.domain==f'{hiddify.get_ip(4)}.sslip.io').delete()
@@ -57,7 +58,7 @@ class QuickSetup(FlaskView):
                         flash((_('The default user link is %(link)s. To add or edit more users, please visit users from menu.',link=userlink)),'info')
                 else:
                         flash(_('config.validation-error'), 'danger')
-                return render_template('quick_setup.html', form=quick_form,lang_form=get_lang_form(True),ipv4=hiddify.get_ip(4),ipv6=hiddify.get_ip(6) )
+                return render_template('quick_setup.html', form=quick_form,lang_form=get_lang_form(True),ipv4=hiddify.get_ip(4),ipv6=hiddify.get_ip(6),admin_link=admin_link() )
 
 def get_lang_form(empty=False):
         class LangForm(FlaskForm):
@@ -82,7 +83,7 @@ def get_quick_setup_form(empty=False):
                 domain_validators=[wtf.validators.Regexp(domain_regex,re.IGNORECASE,_("config.Invalid domain")),
                                         validate_domain,
                                         wtf.validators.NoneOf([d.domain.lower() for d in Domain.query.all()],_("config.Domain already used")),
-                                        wtf.validators.NoneOf([c.value.lower() for c in StrConfig.query.filter("_domain" in StrConfig.key and StrConfig.key!=ConfigEnum.decoy_domain).all()],_("config.Domain already used"))
+                                        wtf.validators.NoneOf([c.value.lower() for c in StrConfig.query.all() if "_domain" in c.key and c.key!=ConfigEnum.decoy_domain],_("config.Domain already used"))
                                         ]
                 domain=wtf.fields.StringField(_("domain.domain"),domain_validators,description=_("domain.description"),render_kw={"pattern":domain_validators[0].regex.pattern,"title":domain_validators[0].message,"required":"","placeholder":"sub.domain.com"})
                 enable_telegram=SwitchField(_("config.telegram_enable.label"),description=_("config.telegram_enable.description"),default=hconfig(ConfigEnum.telegram_enable))
@@ -104,3 +105,5 @@ def validate_domain(form,field):
         myip=hiddify.get_ip(4)
         if dip and myip!=dip:
                 raise ValidationError(_("Domain (%(domain)s)-> IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode",server_ip=myip,domain_ip=dip,domain=domain))
+def admin_link():
+        return "https://"+Domain.query.first().domain+hiddify.get_admin_path()

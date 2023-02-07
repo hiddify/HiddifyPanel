@@ -171,3 +171,5 @@ def get_user_link(uuid,domain):
 def flash(message,category):
     print(message)
     return flask_flash(Markup(message),category)
+
+

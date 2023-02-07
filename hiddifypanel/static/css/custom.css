@@ -44,3 +44,6 @@ legend {
   .main-sidebar{
     font-size: 0.9em;
   }
+  .modal.modal-display-on-load{
+    display: block;
+  }

@@ -1,4 +1,11 @@
 {% from 'bootstrap4/form.html' import render_form %}
+{% from 'macros.html' import modal %}
+{% extends 'admin-layout.html' %}
+
+{% block tail %}
+{{super()}}
+{{modal('quicksetup',_('Save Link'),_('Please note that your panel can be accessed only via <a href="%(adminlink)s" class="btn btn-primary copy-link">%(adminlink)s</a>. Please save this link.',adminlink=admin_link),show=True)}}
+{% endblock %}
 
 {% macro ip_btn(ip) -%}
 % if ip 
@@ -12,10 +19,11 @@
 %endif
 {%- endmacro -%}
 
-{% extends 'admin-layout.html' %}
+
 
 {% block body %}
 {{super()}}
+
 
 <div class="card-columns">
 <div class="card">

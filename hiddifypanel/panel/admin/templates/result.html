@@ -1,5 +1,5 @@
 {% extends 'admin-layout.html' %}
-
+{% from 'macros.html' import modal %}
 {% block title %}Action result{% endblock %}
 
 {% block body %}
@@ -14,6 +14,8 @@
   <a href="{{log_path}}" target="_blank" >{{_('Click here to see the complete log')}}</a><br>
   <iframe id='ilog' src="{{log_path}}" style="width:100%;height:500px" ></iframe>
 </div>
+
+{{modal('save_emergency',_('Save Link'),_("Please copy the emergency link before leaving this page."),show=False)}}
 <script>
 var x=document.getElementById("ilog");
 var orig_log_url=x.src
@@ -27,8 +29,9 @@ window.addEventListener('beforeunload', function (e) {
   // Cancel the event
   e.preventDefault(); // If you prevent default behavior in Mozilla Firefox prompt will always be shown
   // Chrome requires returnValue to be set
-
-  e.returnValue = '{{_("Please copy the emergency link before leaving this page.")}}';
+  $("#save_emergency").modal()
+  e.returnValue = 'Save';
+  return "save"
 });
 </script>
 % endif

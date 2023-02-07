@@ -137,7 +137,7 @@ def get_config_form():
                     validators.append(wtf.validators.Regexp("^([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})$",re.IGNORECASE,_("config.Invalid domain")))
                     if c.key!=ConfigEnum.decoy_domain:
                         validators.append(wtf.validators.NoneOf([d.domain.lower() for d in Domain.query.all()],_("config.Domain already used")))
-                        validators.append(wtf.validators.NoneOf([c.value.lower() for c in StrConfig.query.filter("_domain" in StrConfig.key and StrConfig.key!=ConfigEnum.decoy_domain).all()],_("config.Domain already used")))
+                        validators.append(wtf.validators.NoneOf([c.value.lower() for c in StrConfig.query.all() if "_domain" in c.key and c.key!=ConfigEnum.decoy_domain],_("config.Domain already used")))
                     render_kw['required']=""
                 
 
