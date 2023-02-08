@@ -33,7 +33,7 @@ class ProxyAdmin(FlaskView):
                 for k,vs in global_config_form.data.items():
                         if k in [c for c in ConfigEnum]:
                             BoolConfig.query.filter(BoolConfig.key==k).first().value=vs
-                            if vs and k in [ConfigEnum.domain_fronting_http_enable, ConfigEnum.domain_fronting_tls_enable]:
+                            if vs and k in [ConfigEnum.domain_fronting_http_enable, ConfigEnum.domain_fronting_tls_enable] and hconfig(ConfigEnum.domain_fronting_domain)=="":
                                 flash((_('config.domain-fronting-notsetup-error')), 'danger')                
 
                     

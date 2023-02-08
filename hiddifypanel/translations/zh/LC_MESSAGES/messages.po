@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-07 23:40+0100\n"
-"PO-Revision-Date: 2023-02-07 16:39-0600\n"
+"POT-Creation-Date: 2023-02-08 07:42+0100\n"
+"PO-Revision-Date: 2023-02-08 00:38-0600\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -754,8 +754,10 @@ msgid "config.domain_fronting.label"
 msgstr "域名前端"
 
 # | msgid ""
-# | "It is used to simulate another website instead of your website in SNI. "
-# | "Therefore, GTW can not filter your domain"
+# | "It is used to simulate another website instead of your website in SNI.
+# Therefore, GTW can not filter your domain\n"
+# | "<a
+# href=\"https://github.com/hiddify/hiddify-config/wiki/%D8%A7%D8%B3%D8%AA%D9%81%D8%A7%D8%AF%D9%87-%D8%A7%D8%B2-%D8%AF%D8%A7%D9%85%DB%8C%D9%86-%D9%81%D8%B1%D8%A7%D9%86%D8%AA%DB%8C%D9%86%DA%AF\">Guid</a>."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.domain_fronting.description"
 msgstr "它用于在 SNI 中模拟另一个网站而不是您的网站。因此，GTW 无法过滤您的域"
@@ -1091,7 +1093,8 @@ msgstr "找不到配置"
 # | msgid "CPU Usage"
 #: hiddifypanel/panel/admin/templates/index.html:12
 #: hiddifypanel/panel/admin/templates/index.html:32
-#: hiddifypanel/panel/admin/templates/index.html:178
+#: hiddifypanel/panel/admin/templates/index.html:179
+#: hiddifypanel/panel/admin/templates/index.html:190
 msgid "admin.cpu_chart"
 msgstr "CPU使用率图表"
 
@@ -1110,6 +1113,7 @@ msgstr ""
 # | msgid "Network Usage"
 #: hiddifypanel/panel/admin/templates/index.html:112
 #: hiddifypanel/panel/admin/templates/index.html:145
+#: hiddifypanel/panel/admin/templates/index.html:156
 msgid "admin.network_chart"
 msgstr "网络使用"
 
@@ -1119,7 +1123,7 @@ msgid "admin.protocol_chart"
 msgstr "协议使用图表"
 
 # | msgid "Users Usage Chart"
-#: hiddifypanel/panel/admin/templates/index.html:177
+#: hiddifypanel/panel/admin/templates/index.html:178
 msgid "admin.user_chart"
 msgstr "用户使用图表"
 
