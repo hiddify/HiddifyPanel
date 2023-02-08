@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-09 00:36+0100\n"
-"PO-Revision-Date: 2023-02-08 17:36-0600\n"
+"POT-Creation-Date: 2023-02-09 00:47+0100\n"
+"PO-Revision-Date: 2023-02-08 17:47-0600\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -1163,8 +1163,11 @@ msgstr ""
 
 # | msgid ""
 # | "We have opened a temporary port (for 4 hours) to access the panel in case
-# of"
-# | " any issues. Please copy this link. "
+# of any issues. \n"
+# | "If you do not see the green part in the box below, it will not be
+# possible for you to access the panel without this link. Do not refresh this
+# page under any circumstances.\n"
+# | "Please copy this link. "
 #: hiddifypanel/panel/admin/templates/result.html:17
 msgid ""
 "We have opened a temporary port (for 4 hours) to access the panel in case"
