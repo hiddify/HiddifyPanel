@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-08 07:42+0100\n"
-"PO-Revision-Date: 2023-02-08 00:38-0600\n"
+"POT-Creation-Date: 2023-02-09 00:36+0100\n"
+"PO-Revision-Date: 2023-02-08 17:36-0600\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -14,18 +14,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.11.0\n"
 
-#: hiddifypanel/panel/hiddify.py:28
-#, python-format
-msgid ""
-"We have opened a temporary port (for 4 hours) to access the panel in case"
-" of any issues. Please copy this link. <a href='%(link)s' class='btn btn-"
-"danger share-link'>Temporary Link</a>"
-msgstr ""
-"我们已经打开了一个临时端口（4 小时）以在出现任何问题时访问该面板。请复制此链接。 <a href='%(link)s' class='btn "
-"btn-danger share-link'>临时链接</a>"
-
 # | msgid "Apply Configs"
-#: hiddifypanel/panel/admin/ProxyAdmin.py:42 hiddifypanel/panel/hiddify.py:144
+#: hiddifypanel/panel/admin/ProxyAdmin.py:42 hiddifypanel/panel/hiddify.py:145
 msgid "admin.config.apply_configs"
 msgstr "应用配置"
 
@@ -33,13 +23,13 @@ msgstr "应用配置"
 # | "Configs have been changed successfully. Click %(link)s to apply the
 # configs."
 # | " It may take 2 minutes to apply."
-#: hiddifypanel/panel/admin/ProxyAdmin.py:43 hiddifypanel/panel/hiddify.py:145
+#: hiddifypanel/panel/admin/ProxyAdmin.py:43 hiddifypanel/panel/hiddify.py:146
 msgid "config.validation-success"
 msgstr "配置已成功更改。单击 %(link)s 以应用配置。申请可能需要 2 分钟。"
 
 # | msgid ""
 # | "Rebooting System... This may take afew minutes. Please wait..."
-#: hiddifypanel/panel/admin/Actions.py:56
+#: hiddifypanel/panel/admin/Actions.py:58
 msgid "rebooting system may takes time please wait"
 msgstr "重新启动系统可能需要一些时间。请稍等..."
 
@@ -47,18 +37,18 @@ msgstr "重新启动系统可能需要一些时间。请稍等..."
 # | "Success! Please wait about 5 minutes to make sure everything is updated.
 # "
 # | "During this time, please copy and save your proxy links which are:"
-#: hiddifypanel/panel/admin/Actions.py:85
+#: hiddifypanel/panel/admin/Actions.py:88
 msgid ""
 "Success! Please wait around 4 minutes to make sure everything is updated."
 " During this time, please save your proxy links which are:"
 msgstr "成功！ 请等待大约 4 分钟，以确保所有内容都已更新。 在此期间，请保存您的代理链接:"
 
 # | msgid "See the log in the bellow screen"
-#: hiddifypanel/panel/admin/Actions.py:107
+#: hiddifypanel/panel/admin/Actions.py:110
 msgid "see the log in the bellow screen"
 msgstr "请参阅以下屏幕中的日志："
 
-#: hiddifypanel/panel/admin/Actions.py:127
+#: hiddifypanel/panel/admin/Actions.py:130
 msgid "Success! Please wait around 5 minutes to make sure everything is updated."
 msgstr "成功！ 请等待大约 5 分钟，以确保所有内容都已更新。"
 
@@ -100,7 +90,7 @@ msgstr "选择此选项以恢复您的域。"
 #: hiddifypanel/panel/admin/ProxyAdmin.py:117
 #: hiddifypanel/panel/admin/QuickSetup.py:67
 #: hiddifypanel/panel/admin/QuickSetup.py:94
-#: hiddifypanel/panel/admin/SettingAdmin.py:176
+#: hiddifypanel/panel/admin/SettingAdmin.py:178
 msgid "Submit"
 msgstr "提交"
 
@@ -130,25 +120,25 @@ msgid ""
 "%(default_link)s"
 msgstr "您似乎还没有创建任何用户。默认用户链接：%(default_link)s"
 
-#: hiddifypanel/panel/admin/DomainAdmin.py:16
+#: hiddifypanel/panel/admin/DomainAdmin.py:17
 msgid ""
 "Direct mode means you want to use your server directly (for usual use), "
 "CDN means that you use your server on behind of a CDN provider."
 msgstr ""
 
 # | msgid "Domain"
-#: hiddifypanel/panel/admin/DomainAdmin.py:31
+#: hiddifypanel/panel/admin/DomainAdmin.py:32
 #: hiddifypanel/panel/admin/QuickSetup.py:88
 msgid "domain.domain"
 msgstr "领域"
 
 # | msgid "Mode"
-#: hiddifypanel/panel/admin/DomainAdmin.py:32
+#: hiddifypanel/panel/admin/DomainAdmin.py:33
 msgid "domain.mode"
 msgstr "模式"
 
 # | msgid "IP"
-#: hiddifypanel/panel/admin/DomainAdmin.py:33
+#: hiddifypanel/panel/admin/DomainAdmin.py:34
 msgid "domain.ip"
 msgstr "知识产权"
 
@@ -156,7 +146,7 @@ msgstr "知识产权"
 # | "Domain can not be resolved! There is a problem in your domain. Please
 # check "
 # | "your Domain configurations."
-#: hiddifypanel/panel/admin/DomainAdmin.py:65
+#: hiddifypanel/panel/admin/DomainAdmin.py:68
 #: hiddifypanel/panel/admin/QuickSetup.py:103
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr "域名无法解析！你的域有问题"
@@ -165,14 +155,14 @@ msgstr "域名无法解析！你的域有问题"
 # | "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which
 # is "
 # | "required in direct mode."
-#: hiddifypanel/panel/admin/DomainAdmin.py:69
+#: hiddifypanel/panel/admin/DomainAdmin.py:72
 #, python-format
 msgid ""
 "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which "
 "is required in direct mode"
 msgstr "域 IP=%(domain_ip)s 与您的 ip=%(server_ip)s 不匹配，这在直接模式下是必需的"
 
-#: hiddifypanel/panel/admin/DomainAdmin.py:72
+#: hiddifypanel/panel/admin/DomainAdmin.py:75
 #, python-format
 msgid ""
 "In CDN mode, Domain IP=%(domain_ip)s should be different to your "
@@ -275,16 +265,16 @@ msgstr "它将更改管理和用户语言"
 # | msgid "Error! Invalid domain.  The domain format is www.google.com"
 #: hiddifypanel/panel/admin/QuickSetup.py:83
 #: hiddifypanel/panel/admin/QuickSetup.py:93
-#: hiddifypanel/panel/admin/SettingAdmin.py:135
 #: hiddifypanel/panel/admin/SettingAdmin.py:137
+#: hiddifypanel/panel/admin/SettingAdmin.py:139
 msgid "config.Invalid domain"
 msgstr "错误！域无效。域格式为 www.google.com"
 
 # | msgid "Domain is exist in domains section. Use another domain"
 #: hiddifypanel/panel/admin/QuickSetup.py:85
 #: hiddifypanel/panel/admin/QuickSetup.py:86
-#: hiddifypanel/panel/admin/SettingAdmin.py:139
-#: hiddifypanel/panel/admin/SettingAdmin.py:140
+#: hiddifypanel/panel/admin/SettingAdmin.py:141
+#: hiddifypanel/panel/admin/SettingAdmin.py:142
 msgid "config.Domain already used"
 msgstr "域存在于域部分。使用另一个域"
 
@@ -392,28 +382,28 @@ msgid "lang.zh"
 msgstr "Chinese چینی 中国人"
 
 # | msgid "Telegram Proxy Library"
-#: hiddifypanel/panel/admin/SettingAdmin.py:126
+#: hiddifypanel/panel/admin/SettingAdmin.py:128
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.telegram_lib.label"
 msgstr "电报代理库"
 
 # | msgid "Python: low performance"
-#: hiddifypanel/panel/admin/SettingAdmin.py:126
+#: hiddifypanel/panel/admin/SettingAdmin.py:128
 msgid "lib.telegram.python"
 msgstr "Python：低性能"
 
 # | msgid "Go: high performance: No ad support"
-#: hiddifypanel/panel/admin/SettingAdmin.py:126
+#: hiddifypanel/panel/admin/SettingAdmin.py:128
 msgid "lib.telegram.go"
 msgstr "Go：高性能：无广告支持"
 
 # | msgid "Original: high performance"
-#: hiddifypanel/panel/admin/SettingAdmin.py:126
+#: hiddifypanel/panel/admin/SettingAdmin.py:128
 msgid "lib.telegram.orignal"
 msgstr "原文：高性能"
 
 # | msgid "Erlang: medium performance"
-#: hiddifypanel/panel/admin/SettingAdmin.py:126
+#: hiddifypanel/panel/admin/SettingAdmin.py:128
 msgid "lib.telegram.erlang"
 msgstr "Erlang：中等性能"
 
@@ -423,44 +413,44 @@ msgstr "Erlang：中等性能"
 # | "python works in all servers, others may have some issue. Test proxy after
 # "
 # | "changing it."
-#: hiddifypanel/panel/admin/SettingAdmin.py:126
+#: hiddifypanel/panel/admin/SettingAdmin.py:128
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.telegram_lib.description"
 msgstr "您可以在不同的电报库之间切换。"
 
 # | msgid ""
 # | "Invalid link. it should be on this format: (https or http://example.com)"
-#: hiddifypanel/panel/admin/SettingAdmin.py:145
+#: hiddifypanel/panel/admin/SettingAdmin.py:147
 msgid "config.Invalid brand link"
 msgstr "品牌链接无效"
 
 # | msgid ""
 # | "Invalid UUID secret. Example: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n"
 # | "\n"
-#: hiddifypanel/panel/admin/SettingAdmin.py:149
+#: hiddifypanel/panel/admin/SettingAdmin.py:151
 msgid "config.invalid uuid"
 msgstr "UUID 密码无效。例如，6098ea35-8cb2-4a08-ba15-2be25bc49cb6"
 
 # | msgid "Invalid proxy path. It should be asci string (a-z A-Z 0-9)"
-#: hiddifypanel/panel/admin/SettingAdmin.py:153
+#: hiddifypanel/panel/admin/SettingAdmin.py:155
 msgid "config.Invalid proxy path"
 msgstr "代理路径无效。它应该是 asci 字符串 (a-z A-Z 0-9)"
 
 # | msgid ""
 # | "Invalid port. It should be comma separated integer e.g., 1000,1001"
-#: hiddifypanel/panel/admin/SettingAdmin.py:157
+#: hiddifypanel/panel/admin/SettingAdmin.py:159
 msgid "config.Invalid port"
 msgstr "端口无效。它应该是逗号分隔的整数，例如 1000,1001"
 
 # | msgid ""
 # | "Port 80 should always be presented. We use it for getting ssl
 # certificate"
-#: hiddifypanel/panel/admin/SettingAdmin.py:160
+#: hiddifypanel/panel/admin/SettingAdmin.py:162
 msgid "config.port 80 is required"
 msgstr "应始终提供端口 80。我们用它来获取 ssl 证书"
 
 # | msgid "Port 443 should always be presented. "
-#: hiddifypanel/panel/admin/SettingAdmin.py:163
+#: hiddifypanel/panel/admin/SettingAdmin.py:165
 msgid "config.port 443 is required"
 msgstr "应始终显示端口 443。"
 
@@ -505,7 +495,7 @@ msgid "user.UUID"
 msgstr "UUID"
 
 #: hiddifypanel/panel/admin/templates/backup.html:9
-#: hiddifypanel/templates/admin-layout.html:107
+#: hiddifypanel/templates/admin-layout.html:79
 msgid "Backup"
 msgstr "备份"
 
@@ -1138,7 +1128,7 @@ msgid "admin.proxy.detailed_config"
 msgstr "详细配置"
 
 #: hiddifypanel/panel/admin/templates/quick_setup.html:7
-#: hiddifypanel/panel/admin/templates/result.html:18
+#: hiddifypanel/panel/admin/templates/result.html:22
 msgid "Save Link"
 msgstr "保存链接"
 
@@ -1166,21 +1156,36 @@ msgstr "快速设置"
 msgid "admin.quicksetup_intro"
 msgstr "您的 IPv4 是 %(ipv4)s，IPv6 是 %(ipv6)s。请在您的域中设置此 ip 并在下面输入您的域。"
 
-# | msgid "Log"
+# | msgid "Emergency Link"
 #: hiddifypanel/panel/admin/templates/result.html:13
+msgid "Temporary Link"
+msgstr ""
+
+# | msgid ""
+# | "We have opened a temporary port (for 4 hours) to access the panel in case
+# of"
+# | " any issues. Please copy this link. "
+#: hiddifypanel/panel/admin/templates/result.html:17
+msgid ""
+"We have opened a temporary port (for 4 hours) to access the panel in case"
+" of any issues. Please copy this link."
+msgstr ""
+
+# | msgid ""
+# | "Please Copy and Save the emergency access link before leaving this page."
+#: hiddifypanel/panel/admin/templates/result.html:22
+msgid "Please copy the emergency link before leaving this page."
+msgstr "离开此页面前，请复制并保存紧急访问链接。"
+
+# | msgid "Log"
+#: hiddifypanel/panel/admin/templates/result.html:28
 msgid "log"
 msgstr "日志"
 
 # | msgid "Click here to see the complete log."
-#: hiddifypanel/panel/admin/templates/result.html:14
+#: hiddifypanel/panel/admin/templates/result.html:29
 msgid "Click here to see the complete log"
 msgstr "单击此处查看完整日志。"
-
-# | msgid ""
-# | "Please Copy and Save the emergency access link before leaving this page."
-#: hiddifypanel/panel/admin/templates/result.html:18
-msgid "Please copy the emergency link before leaving this page."
-msgstr "离开此页面前，请复制并保存紧急访问链接。"
 
 #: hiddifypanel/panel/admin/templates/model/domain_list.html:7
 msgid ""
@@ -1188,12 +1193,17 @@ msgid ""
 "domain in direct mode."
 msgstr ""
 
+# | msgid ""
+# | "User usage will be updated every 6 minutes. To update it now click <a "
+# | "href=\"%(link)s\" class=\"btn btn-info\">here</a>."
 #: hiddifypanel/panel/admin/templates/model/user_list.html:7
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "User usage will be updated every 6 minutes. To update it now click <a "
 "href=\"%(link)s\" class=\"btn btn-info\">here</a>"
 msgstr ""
+"用户使用情况将每 6 分钟更新一次。现在要更新它，请点击<a href=\"%(link)s\" class=\"btn btn-"
+"info\">此处</a>。"
 
 # | msgid "All Configs"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:1
@@ -1867,107 +1877,93 @@ msgid "Please contact hiddify@gmail.com with the details in this page."
 msgstr "请使用本页中的详细信息联系 hiddify@gmail.com。"
 
 # | msgid "Hiddify Panel"
-#: hiddifypanel/templates/admin-layout.html:19
-#: hiddifypanel/templates/admin-layout.html:23
-#: hiddifypanel/templates/admin-layout.html:66
+#: hiddifypanel/templates/admin-layout.html:18
+#: hiddifypanel/templates/admin-layout.html:38
 #: hiddifypanel/templates/master.html:6
 msgid "master.page-title"
 msgstr "隐藏面板"
 
+# | msgid "Apply Configs"
+#: hiddifypanel/templates/admin-layout.html:22
+msgid "admin.Actions:apply_configs"
+msgstr "应用配置"
+
 # | msgid "Admin"
-#: hiddifypanel/templates/admin-layout.html:27
-#: hiddifypanel/templates/admin-layout.html:80
+#: hiddifypanel/templates/admin-layout.html:52
 msgid "admin.menu.home"
 msgstr "行政"
 
-# | msgid "Domains"
-#: hiddifypanel/templates/admin-layout.html:28
-#: hiddifypanel/templates/admin-layout.html:84
-msgid "admin.menu.domain"
-msgstr "域名"
-
 # | msgid "Users"
-#: hiddifypanel/templates/admin-layout.html:29
-#: hiddifypanel/templates/admin-layout.html:83
+#: hiddifypanel/templates/admin-layout.html:55
 msgid "admin.menu.user"
 msgstr "用户"
 
+# | msgid "Domains"
+#: hiddifypanel/templates/admin-layout.html:56
+msgid "admin.menu.domain"
+msgstr "域名"
+
 # | msgid "Proxies"
-#: hiddifypanel/templates/admin-layout.html:30
-#: hiddifypanel/templates/admin-layout.html:85
+#: hiddifypanel/templates/admin-layout.html:57
 msgid "admin.menu.proxy"
 msgstr "代理"
 
 # | msgid "Settings"
-#: hiddifypanel/templates/admin-layout.html:31
-#: hiddifypanel/templates/admin-layout.html:86
+#: hiddifypanel/templates/admin-layout.html:58
 msgid "admin.menu.config"
 msgstr "设置"
 
 # | msgid "Actions"
-#: hiddifypanel/templates/admin-layout.html:34
-#: hiddifypanel/templates/admin-layout.html:96
+#: hiddifypanel/templates/admin-layout.html:68
 msgid "admin.actions.title"
 msgstr "动作"
 
 # | msgid "Status"
-#: hiddifypanel/templates/admin-layout.html:36
-#: hiddifypanel/templates/admin-layout.html:98
+#: hiddifypanel/templates/admin-layout.html:70
 msgid "admin.actions.status"
 msgstr "地位"
 
-# | msgid "Apply Configs"
-#: hiddifypanel/templates/admin-layout.html:37
-msgid "admin.Actions:apply_configs"
-msgstr "应用配置"
-
-# | msgid "Reinstall System"
-#: hiddifypanel/templates/admin-layout.html:38
-#: hiddifypanel/templates/admin-layout.html:102
-msgid "admin.actions.reinstall"
-msgstr "重装系统"
-
-# | msgid "Restart System"
-#: hiddifypanel/templates/admin-layout.html:39
-#: hiddifypanel/templates/admin-layout.html:101
-msgid "admin.actions.reset"
-msgstr "重启系统"
-
-# | msgid "Update System"
-#: hiddifypanel/templates/admin-layout.html:40
-#: hiddifypanel/templates/admin-layout.html:103
-msgid "admin.actions.update"
-msgstr "更新系统"
-
 # | msgid "View Logs"
-#: hiddifypanel/templates/admin-layout.html:41
-#: hiddifypanel/templates/admin-layout.html:99
+#: hiddifypanel/templates/admin-layout.html:71
 msgid "admin.actions.viewlogs"
 msgstr "查看日志"
 
+# | msgid "Apply configs"
+#: hiddifypanel/templates/admin-layout.html:72
+msgid "admin.actions.apply_configs"
+msgstr "应用配置"
+
+# | msgid "Restart System"
+#: hiddifypanel/templates/admin-layout.html:73
+msgid "admin.actions.reset"
+msgstr "重启系统"
+
+# | msgid "Reinstall System"
+#: hiddifypanel/templates/admin-layout.html:74
+msgid "admin.actions.reinstall"
+msgstr "重装系统"
+
+# | msgid "Update System"
+#: hiddifypanel/templates/admin-layout.html:75
+msgid "admin.actions.update"
+msgstr "更新系统"
+
+# | msgid "Check Usage"
+#: hiddifypanel/templates/admin-layout.html:76
+msgid "User usage update"
+msgstr "检查使用情况"
+
 # | msgid "Support"
-#: hiddifypanel/templates/admin-layout.html:47
-#: hiddifypanel/templates/admin-layout.html:110
+#: hiddifypanel/templates/admin-layout.html:82
 msgid "admin.menu.support"
 msgstr "支持"
 
 # | msgid "Telegram"
-#: hiddifypanel/templates/admin-layout.html:50
-#: hiddifypanel/templates/admin-layout.html:113
+#: hiddifypanel/templates/admin-layout.html:85
 msgid "admin.menu.telegram"
 msgstr "电报"
 
-# | msgid "Apply configs"
-#: hiddifypanel/templates/admin-layout.html:100
-msgid "admin.actions.apply_configs"
-msgstr "应用配置"
-
-# | msgid "Check Usage"
-#: hiddifypanel/templates/admin-layout.html:104
-msgid "User usage update"
-msgstr "检查使用情况"
-
-#: hiddifypanel/templates/admin-layout.html:115
+#: hiddifypanel/templates/admin-layout.html:87
 #: hiddifypanel/templates/donation.html:5
 msgid "Donation"
 msgstr "捐款"
@@ -2186,6 +2182,18 @@ msgstr ""
 # | msgid "Check"
 #~ msgid "check"
 #~ msgstr "查看"
+
+#~ msgid ""
+#~ "We have opened a temporary port "
+#~ "(for 4 hours) to access the panel"
+#~ " in case of any issues. Please "
+#~ "copy this link. <a href='%(link)s' "
+#~ "class='btn btn-danger share-link'>Temporary"
+#~ " Link</a>"
+#~ msgstr ""
+#~ "我们已经打开了一个临时端口（4 小时）以在出现任何问题时访问该面板。请复制此链接。 <a "
+#~ "href='%(link)s' class='btn btn-danger "
+#~ "share-link'>临时链接</a>"
 
 #~ msgid ""
 #~ "It seems that you have not created"
