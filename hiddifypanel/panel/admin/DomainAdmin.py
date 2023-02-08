@@ -11,6 +11,7 @@ from flask import Markup
 class DomainAdmin(AdminLTEModelView):
     list_template = 'model/domain_list.html'    
     edit_modal=True
+    
     column_descriptions = dict(
         # name=_'just for remembering',
         mode=_("Direct mode means you want to use your server directly (for usual use), CDN means that you use your server on behind of a CDN provider."),
@@ -24,7 +25,7 @@ class DomainAdmin(AdminLTEModelView):
     }
     }
     column_list = ["domain","mode","domain_ip"]
-    column_editable_list=["domain"]
+    # column_editable_list=["domain"]
     # column_filters=["domain","mode"]
     column_searchable_list=["domain","mode"]
     column_labels={
@@ -32,7 +33,8 @@ class DomainAdmin(AdminLTEModelView):
         "mode": _("domain.mode"),
         'domain_ip':_('domain.ip'),
         }
-
+    def _domain_admin_link(view, context, model, name):
+        return Markup(f'<a href="https://{model.domain}{hiddify.get_admin_path()}" class="badge badge-info" target="_blank">{model.domain}</a>')
     def _domain_ip(view, context, model, name):
         dip=hiddify.get_domain_ip(model.domain)
         myip=hiddify.get_ip(4)
@@ -44,7 +46,8 @@ class DomainAdmin(AdminLTEModelView):
             badge_type='danger'
         return Markup(f'<span class="badge badge-{badge_type}">{dip}</span>')
     column_formatters = {
-        'domain_ip': _domain_ip        
+        'domain_ip': _domain_ip        ,
+        'domain': _domain_admin_link        
     }
     def search_placeholder(self):
             return f"{_('search')} {_('domain.domain')} {_('domain.mode')}"
