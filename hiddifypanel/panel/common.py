@@ -33,7 +33,8 @@ def init_app(app):
     @app.url_value_preprocessor
     def pull_secret_code(endpoint, values):
         # print("Y",endpoint, values)
-        
+        # if values is None:
+        #     return 
         g.user=None
         g.user_uuid = None
         g.is_admin = False

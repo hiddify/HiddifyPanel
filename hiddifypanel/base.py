@@ -52,8 +52,10 @@ def create_app(**config):
     csrf = CSRFProtect(app)
     @app.before_request
     def check_csrf():
-        if  "/admin/user/" not in request.base_url and "/admin/domain/" not in request.base_url:
-            csrf.protect()
+        if  "/admin/user/" in request.base_url :return
+        if  "/admin/domain/" in request.base_url :return
+        if "/admin/actions/" in request.base_url :return
+        csrf.protect()
     # app=ProxyFix(app, x_for=1, x_host=1,x_proto=1,x_port=1,x_prefix=1)
     app.jinja_env.globals['get_locale'] = get_locale
     

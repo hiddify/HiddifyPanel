@@ -25,7 +25,8 @@ def add_temporary_access():
     # exec_command(f'echo "iptables -D {iptableparm}" | at now + 4 hour')
 
     temp_admin_link=f"http://{get_ip(4)}:{random_port}{get_admin_path()}"
-    return flash((_("We have opened a temporary port (for 4 hours) to access the panel in case of any issues. Please copy this link. <a href='%(link)s' class='btn btn-danger share-link'>Temporary Link</a>",link=temp_admin_link)),'warning')
+    g.temp_admin_link=temp_admin_link
+    
 
 def get_admin_path():
     proxy_path=hconfig(ConfigEnum.proxy_path)

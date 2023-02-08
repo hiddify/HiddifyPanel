@@ -28,7 +28,7 @@ def all_configs():
     import json
     configs=hiddify.all_configs()
     configs['hconfigs']['first_setup']=len(configs['domains'])==1 and 'sslip.io' in configs['domains'][0]['domain'] and len(configs['users'])==1 and configs['users'][0]['name']=="default"
- 
+    # configs
 
     print(json.dumps(configs))
 

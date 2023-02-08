@@ -1,6 +1,5 @@
 {% extends 'master.html' %}
-{% from 'bootstrap4/nav.html' import render_nav_item, render_breadcrumb_item %}
-{% from 'macros.html' import icon %}
+{% from 'macros.html' import icon,render_nav_item %}
 
 {% block title%}{{title if title else "Admin"}}{% endblock %}
 {% block bodyclass %}{%endblock%}
@@ -15,42 +14,15 @@
 
 
 
-
+  <div class="navbar-nav">
   <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i> <span class="brand-text font-weight-light">{{_("master.page-title")}}</a>
-  <!-- <a href="" class="brand-link" style="padding:0px">
-     <img src="{{url_for('static',filename='images/hiddify.png')}}" alt="AdminLTE Logo"
-      class="brand-image img-circle elevation-3" style="opacity: .8"> 
-    <span class="brand-text font-weight-light">{{_("master.page-title")}}</span>
-  </a> -->
-<!-- 
-  <div class="d-none d-md-flex">
-    {{ render_nav_item('admin.Dashboard:index', icon('solid','house','nav-icon')+_('admin.menu.home')) }}
-    {{ render_nav_item('flask.domain.index_view', icon('solid','link','nav-icon')+_('admin.menu.domain')) }}
-    {{ render_nav_item('flask.user.index_view', icon('solid','user','nav-icon')+_('admin.menu.user')) }}
-    {{ render_nav_item('admin.ProxyAdmin:index', icon('solid','arrow-down-up-lock','nav-icon')+_('admin.menu.proxy')) }}
-    {{ render_nav_item('admin.SettingAdmin:index',icon('solid','gear','nav-icon')+ _('admin.menu.config')) }}
-    <div class="nav-item dropdown">
-      <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
-        class="nav-link dropdown-toggle">{{icon('solid','suitcase','nav-icon')+_('admin.actions.title')}}</a>
-      <ul class="dropdown-menu border-0 shadow">
-        {{ render_nav_item('admin.Actions:status', _('admin.actions.status')) }}
-        {{ render_nav_item('admin.Actions:apply_configs', _('admin.Actions:apply_configs')) }}
-        {{ render_nav_item('admin.Actions:reinstall', _('admin.actions.reinstall')) }}
-        {{ render_nav_item('admin.Actions:reset', _('admin.actions.reset')) }}
-        {{ render_nav_item('admin.Actions:update', _('admin.actions.update')) }}
-        {{ render_nav_item('admin.Actions:viewlogs', _('admin.actions.viewlogs')) }}
-      </ul>
-    </div>
-
-
-    <a href="https://github.com/hiddify/hiddify-config/issues" target="_blank"
-      class="nav-link">{{icon('solid','circle-question','nav-icon')+_('admin.menu.support')}}</a>
-
-    <a href="https://t.me/hiddify" target="_blank"
-      class="nav-link">{{icon('brands','telegram','nav-icon')+_('admin.menu.telegram')}}</a>
-  </div> -->
-
-
+  </div>
+  <ul class="navbar-nav ml-auto">
+    <a class="nav-link btn btn-outline-secondary form_post" href="{{url_for('admin.Actions:apply_configs')}}">
+      {{_('admin.Actions:apply_configs')}}
+  </a>
+  
+  </ul>
 </nav>
 <!-- /.navbar -->
 
@@ -97,10 +69,10 @@
             <ul class="nav nav-treeview">
               {{ render_nav_item('admin.Actions:status',icon('solid','signal','nav-icon')+ _('admin.actions.status'), _use_li=True) }}
               {{ render_nav_item('admin.Actions:viewlogs',icon('solid','inbox','nav-icon')+ _('admin.actions.viewlogs'), _use_li=True) }}
-              {{ render_nav_item('admin.Actions:apply_configs',icon('solid','bolt','nav-icon')+ _('admin.actions.apply_configs'), _use_li=True) }}
-              {{ render_nav_item('admin.Actions:reset', icon('solid','power-off','nav-icon')+_('admin.actions.reset'), _use_li=True) }}
-              {{ render_nav_item('admin.Actions:reinstall', icon('solid','rotate','nav-icon')+_('admin.actions.reinstall'), _use_li=True) }}
-              {{ render_nav_item('admin.Actions:update', icon('solid','arrow-up-from-bracket','nav-icon')+_('admin.actions.update'), _use_li=True) }}
+              {{ render_nav_item('admin.Actions:apply_configs',icon('solid','bolt','nav-icon')+ _('admin.actions.apply_configs'), _use_li=True,extra_class="form_post") }}
+              {{ render_nav_item('admin.Actions:reset', icon('solid','power-off','nav-icon')+_('admin.actions.reset'), _use_li=True,extra_class="form_post") }}
+              {{ render_nav_item('admin.Actions:reinstall', icon('solid','rotate','nav-icon')+_('admin.actions.reinstall'), _use_li=True,extra_class="form_post") }}
+              {{ render_nav_item('admin.Actions:update', icon('solid','arrow-up-from-bracket','nav-icon')+_('admin.actions.update'), _use_li=True,extra_class="form_post") }}
               <!-- {{ render_nav_item('admin.Actions:update_usage', icon('solid','charging-station','nav-icon')+_('User usage update'), _use_li=True) }} -->
             </ul>
           </li>
@@ -128,11 +100,24 @@
 
 {%block tail_js %}
 {{super()}}
+<form id="action_form" method="post"></form>
 <script>
 $(document).ready(function () {
   if ($('#show-modal-donation').length){
     $("#modal-donation").modal()
   }
+  $('.form_post').click(function (e) {
+    e.preventDefault();
+    console.log(this); console.log(e);
+    var link = this.href;
+    $("#action_form").attr("action",link)
+    $("#action_form").submit()
+  })
+  if ($('.').length){
+    $("#modal-donation").modal()
+  }
 })
+
 </script>
+
 {% endblock %}

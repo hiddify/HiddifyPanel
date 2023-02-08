@@ -14,7 +14,7 @@ from hiddifypanel.panel import hiddify
 from flask import current_app,render_template,request,Response,Markup,url_for
 from hiddifypanel.panel.hiddify import flash
 
-from flask_classful import FlaskView
+from flask_classful import FlaskView,route
 
 class Actions(FlaskView):
 
@@ -22,6 +22,7 @@ class Actions(FlaskView):
         return render_template('index.html')
     
     def reverselog(self,logfile):
+        if logfile==None:return self.viewlogs()
         config_dir=current_app.config.HIDDIFY_CONFIG_PATH
         
         with open(f'{config_dir}/log/system/{logfile}') as f:
@@ -46,17 +47,19 @@ class Actions(FlaskView):
         for filename in sorted(os.listdir(f'{config_dir}/log/system/')):
             res.append(f"<a href='{url_for('admin.Actions:reverselog',logfile=filename)}'>{filename}</a>") 
         return Markup("<br>".join(res))
-    
+        
+    @route('apply_configs', methods=['POST'])
     def apply_configs(self):
         return self.reinstall(False)
 
-    
+    @route('reset', methods=['POST'])
     def reset(self):
         status=self.status()
         flash(_("rebooting system may takes time please wait"),'info')
         subprocess.Popen(f"reboot",start_new_session=True)
         return status
     
+    @route('reinstall', methods=['POST'])
     def reinstall(self,complete_install=True):
         config=current_app.config
         hiddify.add_temporary_access()
@@ -110,7 +113,7 @@ class Actions(FlaskView):
 
 
 
-    
+    @route('update', methods=['POST'])
     def update(self):
         hiddify.add_temporary_access()
         config=current_app.config

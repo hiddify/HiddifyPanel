@@ -448,3 +448,8 @@ body {
 .pull-left{
     float:right;
 }
+
+.ml-auto, .mx-auto {
+    margin-right: auto !important;
+    margin-left: 0 !important;
+}
