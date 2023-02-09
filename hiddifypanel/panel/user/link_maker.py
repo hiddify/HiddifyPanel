@@ -174,16 +174,24 @@ def to_link(proxy):
     infos+=f'&host={proxy["host"]}' if "host" in proxy else ""
     if "grpc"==proxy["transport"]:
         infos+=f'&serviceName={proxy["grpc_service_name"]}&mode={proxy["grpc_mode"]}'
-    
+    if 'vless'==proxy['proto']:
+        infos+="&encryption=none"
+    infos+="&fingerprint=chrome" 
+    if proxy['l3']!='quic':
+        infos+='&headerType=None' #if not quic
+    if proxy['cdn']=='Fake':
+        infos+="&allowInsecure=true"
+
     infos+=f'#{name_link}'
     baseurl=f'{proxy["proto"]}://{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}'
     if 'xtls' == proxy['l3']:
-        return f'{baseurl}?flow={proxy["flow"]}&security=xtls&type=tcp{infos}'
+        return f'{baseurl}?flow={proxy["flow"]}&security=tls&type=tcp{infos}'
     if proxy['l3']=='http':
         return f'{baseurl}?security=none{infos}'
     if proxy['l3']=='tls':
         return f'{baseurl}?security=tls{infos}'
     
+
 def to_clash_yml(proxy):
     return yaml.dump(to_clash(proxy))
 
