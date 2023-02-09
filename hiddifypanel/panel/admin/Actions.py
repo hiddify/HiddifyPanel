@@ -72,7 +72,7 @@ class Actions(FlaskView):
         # subprocess.Popen(f"{config_dir}/update.sh",env=my_env,cwd=f"{config_dir}")
         # os.system(f'cd {config_dir};{env} ./install.sh &')
         # rc = subprocess.call(f"cd {config_dir};./{file} & disown",shell=True)
-        subprocess.Popen(f"{config.HIDDIFY_CONFIG_PATH}/{file}",cwd=f"{config.HIDDIFY_CONFIG_PATH}",start_new_session=True)
+        
         admin_secret=hconfig(ConfigEnum.admin_secret)
         proxy_path=hconfig(ConfigEnum.proxy_path)
         admin_links=f"<h5 >{_('Admin Links')}</h5><ul>"
@@ -83,13 +83,16 @@ class Actions(FlaskView):
                 link=f'https://{d}/{proxy_path}/{admin_secret}/admin/'
                 admin_links+=f"<li><a class='badge ltr  share-link' href='{link}'>{link}</a></li>"
 
-        return render_template("result.html",
+        resp= render_template("result.html",
                             out_type="success",
                             out_msg=_("Success! Please wait around 4 minutes to make sure everything is updated. During this time, please save your proxy links which are:")+
                                     admin_links,
                             log_path=f"https://{domains[0]}/{proxy_path}/{admin_secret}/admin/actions/reverselog/0-install.log/"
                             
         )
+
+        subprocess.Popen(f"{config.HIDDIFY_CONFIG_PATH}/{file}",cwd=f"{config.HIDDIFY_CONFIG_PATH}",start_new_session=True)
+        return resp
 
 
     
