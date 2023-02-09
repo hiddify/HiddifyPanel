@@ -248,10 +248,12 @@ def to_clash(proxy,meta_or_normal):
     elif proxy["proto"]=="trojan":
         base["password"]=proxy["uuid"]
         base["sni"]= proxy["sni"]
+    
     else:
         base["uuid"]= proxy["uuid"]
         base["servername"]= proxy["sni"]
         base["tls"]= proxy["l3"]=="tls"
+    base['client-fingerprint']="random"
     if "xtls" == proxy['l3']:
         base["flow"]= proxy['flow']
         base["flow-show"]= True
