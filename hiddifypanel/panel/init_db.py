@@ -120,17 +120,22 @@ def _v6():
     ])
 
 def _v7():
-        db.session.bulk_save_objects([
-            StrConfig(key=ConfigEnum.cdn_forced_host,value=""),
-        ])
+    pass
+        # db.session.bulk_save_objects([
+        #     StrConfig(key=ConfigEnum.cdn_forced_host,value=""),
+        # ])
 def init_db():
     
     try:
         db.engine.execute('ALTER TABLE user ADD COLUMN monthly BOOLEAN')
-        db.engine.execute('ALTER TABLE user RENAME COLUMN monthly_usage_limit_GB TO usage_limit_GB')
+        db.engine.execute('ALTER TABLE user RENAME COLUMN monthly_usage_limit_GB TO usage_limit_GB')       
     except:
         pass
-    
+    try:
+        column_type = Domain.cdn_ip.type.compile(db.engine.dialect)
+        db.engine.execute(f'ALTER TABLE domain ADD COLUMN cdn_ip {column_type}')
+    except:
+        pass
     
     db_version=int(hconfig(ConfigEnum.db_version) or 0) 
     print(f"Current DB version is {db_version}")

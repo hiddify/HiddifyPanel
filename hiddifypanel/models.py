@@ -165,6 +165,7 @@ class Domain(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     domain = db.Column(db.String(200), nullable=False, unique=True)
     mode = db.Column(db.Enum(DomainType), nullable=False)
+    cdn_ip = db.Column(db.String(200), nullable=True)
 
 
 class Proxy(db.Model, SerializerMixin):

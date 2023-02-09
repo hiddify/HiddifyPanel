@@ -48,6 +48,8 @@ def make_proxy(proxy):
     
     name=proxy.name   
     is_cdn="CDN" in name
+    if is_cdn and not g.is_cdn:
+        return
     direct_host=domain if is_cdn else g.direct_host
     
     base={

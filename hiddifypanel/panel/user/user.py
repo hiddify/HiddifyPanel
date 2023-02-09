@@ -64,10 +64,12 @@ def get_common_data(user_uuid):
     db_domain=Domain.query.filter(Domain.domain==o.hostname).first()
     domain=o.hostname
     direct_host= domain
-    is_cdn=False
+    g.is_cdn=False
+    g.cdn_forced_host=domain
     if db_domain and db_domain.mode==DomainType.cdn:
         direct_host=urllib.request.urlopen('https://v4.ident.me/').read().decode('utf8')
-        is_cdn=True
+        g.is_cdn=True
+        g.cdn_forced_host=db_domain.cdn_ip or domain
     
     
     # uuid_secret=str(uuid.UUID(user_secret))
@@ -75,14 +77,14 @@ def get_common_data(user_uuid):
     if user is None:
         abort(401,"Invalid User")
     g.domain=domain
-    g.cdn_forced_host=hconfig(ConfigEnum.cdn_forced_host) or domain
+    
     g.direct_host=direct_host
-    g.is_cdn=is_cdn
+    
     return {
         'direct_host':direct_host,
         'user':user,
         'domain':domain,
-        'is_cdn':is_cdn,
+        'is_cdn':g.is_cdn,
         'usage_limit_b':int(user.usage_limit_GB*1024*1024*1024),
         'usage_current_b':int(user.current_usage_GB*1024*1024*1024),
         'expire_s':int((user.expiry_time-datetime.date(1970, 1, 1)).total_seconds()),

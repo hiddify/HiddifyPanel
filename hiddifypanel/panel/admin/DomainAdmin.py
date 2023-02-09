@@ -4,7 +4,7 @@ from wtforms.validators import Regexp
 from hiddifypanel.models import  User,Domain,DomainType,StrConfig,ConfigEnum,get_hconfigs
 from wtforms.validators import Regexp,ValidationError
 from .adminlte import AdminLTEModelView
-from flask_babelex import lazy_gettext as _
+from flask_babelex import gettext as _
 from hiddifypanel.panel import hiddify
 from flask import Markup
 
@@ -15,22 +15,27 @@ class DomainAdmin(AdminLTEModelView):
     column_descriptions = dict(
         # name=_'just for remembering',
         mode=_("Direct mode means you want to use your server directly (for usual use), CDN means that you use your server on behind of a CDN provider."),
+        cdn_ip=_("config.cdn_forced_host.description"),
         # current_usage_GB="in GB"
     )
     create_modal=True
     can_export = False
     form_args = {
     'domain': {
-        'validators': [Regexp(r'^([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})$',message="Should be a valid domain")]
+        'validators': [Regexp(r'^([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})$',message=_("Should be a valid domain"))]
+    },
+    "cdn_ip":{
+        'validators':[Regexp(r"(^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d).){3}(25[0-5]|(2[0-4]|1\d|[1-9]|)\d)$)|^([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})$",message=_("config.Invalid IP or domain"))]
     }
     }
-    column_list = ["domain","mode","domain_ip"]
+    column_list = ["domain","mode","domain_ip","cdn_ip"]
     # column_editable_list=["domain"]
     # column_filters=["domain","mode"]
     column_searchable_list=["domain","mode"]
     column_labels={
         "domain":_("domain.domain"),
         "mode": _("domain.mode"),
+        "cdn_ip":_("config.cdn_forced_host.label"),
         'domain_ip':_('domain.ip'),
         }
     def _domain_admin_link(view, context, model, name):
@@ -78,6 +83,10 @@ class DomainAdmin(AdminLTEModelView):
         #     if len(Domain.query.filter(Domain.mode==model.mode and Domain.id!=model.id).all())>0:
         #         ValidationError(f"another {model.mode} is exist")
         model.domain=model.domain.lower()
+
+        if model.mode==DomainType.direct and model.cdn_ip:
+            raise ValidationError(f"Specifying CDN IP is only valid for CDN mode")
+
         hiddify.flash_config_success()
     
 

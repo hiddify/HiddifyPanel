@@ -136,8 +136,6 @@ def get_config_form():
                 validators=[]
                 if c.key==ConfigEnum.domain_fronting_domain:
                     validators.append(wtf.validators.Regexp("^([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})|$",re.IGNORECASE,_("config.Invalid domain")))
-                elif c.key==ConfigEnum.cdn_forced_host:
-                    validators.append(wtf.validators.Regexp("(^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d).){3}(25[0-5]|(2[0-4]|1\d|[1-9]|)\d)$)|^([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})$",re.IGNORECASE,_("config.Invalid IP or domain")))
                 elif 'domain' in c.key:
                     validators.append(wtf.validators.Regexp("^([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})$",re.IGNORECASE,_("config.Invalid domain")))
                     if c.key!=ConfigEnum.decoy_domain:
