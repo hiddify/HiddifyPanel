@@ -124,8 +124,9 @@ def get_config_form():
                 field=wtf.fields.SelectField(_(f"config.{c.key}.label"),choices=[("en",_("lang.en")),("fa",_("lang.fa")),("zh",_("lang.zh"))],description=_(f"config.{c.key}.description"),default=hconfig(c.key))
             elif c.key==ConfigEnum.telegram_lib:
                 # if hconfig(ConfigEnum.telegram_lib)=='python':
-                #     continue
-                field=wtf.fields.SelectField(_("config.telegram_lib.label"),choices=[("python",_("lib.telegram.python")),("tgo",_("lib.telegram.go")),("orig",_("lib.telegram.orignal")),("erlang",_("lib.telegram.erlang"))],description=_("config.telegram_lib.description"),default=hconfig(ConfigEnum.telegram_lib))
+                #     continue6
+                libs=[("python",_("lib.telegram.python")),("tgo",_("lib.telegram.go")),("orig",_("lib.telegram.orignal")),("erlang",_("lib.telegram.erlang"))]
+                field=wtf.fields.SelectField(_("config.telegram_lib.label"),choices=libs,description=_("config.telegram_lib.description"),default=hconfig(ConfigEnum.telegram_lib))
             elif c.key==ConfigEnum.branding_freetext:
                 validators=[wtf.validators.Length(max=2048)]
                 render_kw={'class':"ltr",'maxlength':2048}

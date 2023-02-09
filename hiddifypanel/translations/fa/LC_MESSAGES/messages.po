@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-09 00:47+0100\n"
-"PO-Revision-Date: 2023-02-08 17:47-0600\n"
+"POT-Creation-Date: 2023-02-09 02:46+0100\n"
+"PO-Revision-Date: 2023-02-08 19:46-0600\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -49,11 +49,11 @@ msgstr ""
 "جایی برای خود ذخیره نمایید:"
 
 # | msgid "See the log in the bellow screen"
-#: hiddifypanel/panel/admin/Actions.py:110
+#: hiddifypanel/panel/admin/Actions.py:113
 msgid "see the log in the bellow screen"
 msgstr "لاگ سیستم  را می‌توانید در صفحه زیر ببینید:"
 
-#: hiddifypanel/panel/admin/Actions.py:130
+#: hiddifypanel/panel/admin/Actions.py:134
 msgid "Success! Please wait around 5 minutes to make sure everything is updated."
 msgstr ""
 "موفقیت آمیز بود! لطفا برای اینکه مطمئن شوید بروزرسانی‌ها به درستی اعمال "
@@ -97,7 +97,7 @@ msgstr "برای بازگرداندن دامنه از این گزینه استف
 #: hiddifypanel/panel/admin/ProxyAdmin.py:117
 #: hiddifypanel/panel/admin/QuickSetup.py:67
 #: hiddifypanel/panel/admin/QuickSetup.py:94
-#: hiddifypanel/panel/admin/SettingAdmin.py:178
+#: hiddifypanel/panel/admin/SettingAdmin.py:180
 msgid "Submit"
 msgstr "ثبت"
 
@@ -286,16 +286,16 @@ msgstr "این گزینه زبان بخش کاربران را تغییر می‌
 # | msgid "Error! Invalid domain.  The domain format is www.google.com"
 #: hiddifypanel/panel/admin/QuickSetup.py:83
 #: hiddifypanel/panel/admin/QuickSetup.py:93
-#: hiddifypanel/panel/admin/SettingAdmin.py:137
 #: hiddifypanel/panel/admin/SettingAdmin.py:139
+#: hiddifypanel/panel/admin/SettingAdmin.py:141
 msgid "config.Invalid domain"
 msgstr "خطا! دامنه نامعتبر! فرمت دامنه باید مثل www.google.com باشد."
 
 # | msgid "Domain is exist in domains section. Use another domain"
 #: hiddifypanel/panel/admin/QuickSetup.py:85
 #: hiddifypanel/panel/admin/QuickSetup.py:86
-#: hiddifypanel/panel/admin/SettingAdmin.py:141
-#: hiddifypanel/panel/admin/SettingAdmin.py:142
+#: hiddifypanel/panel/admin/SettingAdmin.py:143
+#: hiddifypanel/panel/admin/SettingAdmin.py:144
 msgid "config.Domain already used"
 msgstr "دامنه در بخش دامنه‌ها وجود دارد. از دامنه دیگری استفاده کنید."
 
@@ -418,12 +418,6 @@ msgstr ""
 msgid "lang.zh"
 msgstr "Chinese چینی 中国人"
 
-# | msgid "Telegram Proxy Library"
-#: hiddifypanel/panel/admin/SettingAdmin.py:128
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.telegram_lib.label"
-msgstr "مدل پروکسی تلگرام"
-
 # | msgid "Python: low performance"
 #: hiddifypanel/panel/admin/SettingAdmin.py:128
 msgid "lib.telegram.python"
@@ -434,15 +428,21 @@ msgstr "پایتون: عملکرد ضعیف"
 msgid "lib.telegram.go"
 msgstr "Go: عملکرد بالا، عدم پشتیبانی از تبلیغات"
 
-# | msgid "Original: high performance"
+# | msgid "NOT Working: Original: high performance"
 #: hiddifypanel/panel/admin/SettingAdmin.py:128
 msgid "lib.telegram.orignal"
-msgstr "اصلی: عملکرد قوی"
+msgstr "کار نمیکند! اصلی: عملکرد قوی"
 
-# | msgid "Erlang: medium performance"
+# | msgid "NOT Working: Erlang: medium performance"
 #: hiddifypanel/panel/admin/SettingAdmin.py:128
 msgid "lib.telegram.erlang"
-msgstr "Erlang: عملکرد متوسط"
+msgstr "کار نمیکند! Erlang: عملکرد متوسط"
+
+# | msgid "Telegram Proxy Library"
+#: hiddifypanel/panel/admin/SettingAdmin.py:130
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.telegram_lib.label"
+msgstr "مدل پروکسی تلگرام"
 
 # | msgid ""
 # | "You can switch between different telegram libraries. Please note that
@@ -450,7 +450,7 @@ msgstr "Erlang: عملکرد متوسط"
 # | "python works in all servers, others may have some issue. Test proxy after
 # "
 # | "changing it."
-#: hiddifypanel/panel/admin/SettingAdmin.py:128
+#: hiddifypanel/panel/admin/SettingAdmin.py:130
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.telegram_lib.description"
 msgstr ""
@@ -460,39 +460,39 @@ msgstr ""
 
 # | msgid ""
 # | "Invalid link. it should be on this format: (https or http://example.com)"
-#: hiddifypanel/panel/admin/SettingAdmin.py:147
+#: hiddifypanel/panel/admin/SettingAdmin.py:149
 msgid "config.Invalid brand link"
 msgstr "لینک پشتیبانی نامعتبر است. لطفا لینک را با فرمت معتبر وارد کنید."
 
 # | msgid ""
 # | "Invalid UUID secret. Example: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n"
 # | "\n"
-#: hiddifypanel/panel/admin/SettingAdmin.py:151
+#: hiddifypanel/panel/admin/SettingAdmin.py:153
 msgid "config.invalid uuid"
 msgstr "رمز UUID نامعتبر است. به عنوان مثال: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6"
 
 # | msgid "Invalid proxy path. It should be asci string (a-z A-Z 0-9)"
-#: hiddifypanel/panel/admin/SettingAdmin.py:155
+#: hiddifypanel/panel/admin/SettingAdmin.py:157
 msgid "config.Invalid proxy path"
 msgstr "مسیر پروکسی نامعتبر است. باید رشته متن asci باشد. ( شامل a-z A-Z 0-9)"
 
 # | msgid ""
 # | "Invalid port. It should be comma separated integer e.g., 1000,1001"
-#: hiddifypanel/panel/admin/SettingAdmin.py:159
+#: hiddifypanel/panel/admin/SettingAdmin.py:161
 msgid "config.Invalid port"
 msgstr "پورت نامعتبر است. اعداد باید با کاما از هم جدا شود، مثلاً 1000,1001"
 
 # | msgid ""
 # | "Port 80 should always be presented. We use it for getting ssl
 # certificate"
-#: hiddifypanel/panel/admin/SettingAdmin.py:162
+#: hiddifypanel/panel/admin/SettingAdmin.py:164
 msgid "config.port 80 is required"
 msgstr ""
 "پورت 80 همیشه باید در دسترس باشد. از آن برای دریافت سرتیفیکیت ssl استفاده"
 " می‌کنیم."
 
 # | msgid "Port 443 should always be presented. "
-#: hiddifypanel/panel/admin/SettingAdmin.py:165
+#: hiddifypanel/panel/admin/SettingAdmin.py:167
 msgid "config.port 443 is required"
 msgstr "پورت ۴۴۳ همیشه باید در دسترس باشد."
 
@@ -1232,7 +1232,7 @@ msgid "admin.proxy.detailed_config"
 msgstr "تنظیمات دقیق"
 
 #: hiddifypanel/panel/admin/templates/quick_setup.html:7
-#: hiddifypanel/panel/admin/templates/result.html:22
+#: hiddifypanel/panel/admin/templates/result.html:25
 msgid "Save Link"
 msgstr "این لینک را در محلی ذخیره نمایید."
 
@@ -1267,7 +1267,7 @@ msgstr ""
 "دامنه تنظیم شده را در کادر زیر وارد کنید."
 
 # | msgid "Emergency Link"
-#: hiddifypanel/panel/admin/templates/result.html:13
+#: hiddifypanel/panel/admin/templates/result.html:15
 #, fuzzy
 msgid "Temporary Link"
 msgstr "لینک اضطراری"
@@ -1279,7 +1279,7 @@ msgstr "لینک اضطراری"
 # possible for you to access the panel without this link. Do not refresh this
 # page under any circumstances.\n"
 # | "Please copy this link. "
-#: hiddifypanel/panel/admin/templates/result.html:17
+#: hiddifypanel/panel/admin/templates/result.html:20
 #, fuzzy
 msgid ""
 "We have opened a temporary port (for 4 hours) to access the panel in case"
@@ -1293,17 +1293,17 @@ msgstr ""
 
 # | msgid ""
 # | "Please Copy and Save the emergency access link before leaving this page."
-#: hiddifypanel/panel/admin/templates/result.html:22
+#: hiddifypanel/panel/admin/templates/result.html:25
 msgid "Please copy the emergency link before leaving this page."
 msgstr "لطفا قبل از ترک این صفحه لینک دسترسی اضطراری را کپی کنید."
 
 # | msgid "Log"
-#: hiddifypanel/panel/admin/templates/result.html:28
+#: hiddifypanel/panel/admin/templates/result.html:31
 msgid "log"
 msgstr "لاگ"
 
 # | msgid "Click here to see the complete log."
-#: hiddifypanel/panel/admin/templates/result.html:29
+#: hiddifypanel/panel/admin/templates/result.html:32
 msgid "Click here to see the complete log"
 msgstr "برای دیدن لاگ کامل، اینجا کلیک کنید."
 
