@@ -7,8 +7,8 @@ import re,uuid
 from hiddifypanel import xray_api
 from .adminlte import AdminLTEModelView
 # from gettext import gettext as _
-from flask_babelex import gettext as __
-from flask_babelex import lazy_gettext as _
+from flask_babelex import gettext as _
+# from flask_babelex import lazy_gettext as _
 from hiddifypanel.panel import hiddify
 from hiddifypanel.panel.hiddify import flash
 
@@ -22,12 +22,13 @@ class UserAdmin(AdminLTEModelView):
     # can_export = True
 
     
-    # form_args = {
-    # 'name': {
+    form_args = {
+    'uuid': {
+        'validators': [Regexp(r'^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$',message=_("Should be a valid uuid"))]
     #     'label': 'First Name',
     #     'validators': [required()]
-    # }
-    # }
+    }
+    }
     # column_labels={'uuid':_("user.UUID")}
     # column_filters=["uuid","name","usage_limit_GB",'monthly',"current_usage_GB","expiry_time"]
     

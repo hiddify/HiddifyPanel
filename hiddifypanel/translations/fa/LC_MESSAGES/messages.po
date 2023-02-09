@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-09 11:58+0100\n"
-"PO-Revision-Date: 2023-02-09 04:58-0600\n"
+"POT-Creation-Date: 2023-02-09 12:41+0100\n"
+"PO-Revision-Date: 2023-02-09 05:40-0600\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -97,7 +97,7 @@ msgstr "برای بازگرداندن دامنه از این گزینه استف
 #: hiddifypanel/panel/admin/ProxyAdmin.py:118
 #: hiddifypanel/panel/admin/QuickSetup.py:67
 #: hiddifypanel/panel/admin/QuickSetup.py:94
-#: hiddifypanel/panel/admin/SettingAdmin.py:181
+#: hiddifypanel/panel/admin/SettingAdmin.py:179
 msgid "Submit"
 msgstr "ثبت"
 
@@ -143,19 +143,49 @@ msgstr ""
 "کنید (برای استفاده معمول)، CDN به این معنی است که از سرور خود در پشت یک "
 "ارائه دهنده CDN استفاده می کنید."
 
+# | msgid ""
+# | "In this part you can use a specific domain or IP for your cdn server to
+# be "
+# | "override in the user links. You can use either IP or domain."
+#: hiddifypanel/panel/admin/DomainAdmin.py:18
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.cdn_forced_host.description"
+msgstr ""
+"در این قسمت می توانید از دامنه یا IP خاصی برای سرور cdn خود استفاده کنید "
+"تا در لینک های کاربری جایگزین شود. می توانید از IP یا دامنه استفاده کنید."
+
+#: hiddifypanel/panel/admin/DomainAdmin.py:25
+#, fuzzy
+msgid "Should be a valid domain"
+msgstr "باید یک دامنه معتبر باشد"
+
+# | msgid "Invalid IP or domain"
+#: hiddifypanel/panel/admin/DomainAdmin.py:28
+#, fuzzy
+msgid "config.Invalid IP or domain"
+msgstr "IP یا دامنه نامعتبر است"
+
 # | msgid "Domain"
-#: hiddifypanel/panel/admin/DomainAdmin.py:32
+#: hiddifypanel/panel/admin/DomainAdmin.py:36
 #: hiddifypanel/panel/admin/QuickSetup.py:88
 msgid "domain.domain"
 msgstr "دامنه"
 
 # | msgid "Mode"
-#: hiddifypanel/panel/admin/DomainAdmin.py:33
+#: hiddifypanel/panel/admin/DomainAdmin.py:37
 msgid "domain.mode"
 msgstr "حالت"
 
+# | msgid "Force CDN Config to use Host"
+#: hiddifypanel/panel/admin/DomainAdmin.py:38
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.cdn_forced_host.label"
+msgstr "آی پی یا دامنه اجباری در کانفیگ‌های CDN "
+
 # | msgid "IP"
-#: hiddifypanel/panel/admin/DomainAdmin.py:34
+#: hiddifypanel/panel/admin/DomainAdmin.py:39
 msgid "domain.ip"
 msgstr "آی‌پی"
 
@@ -163,7 +193,7 @@ msgstr "آی‌پی"
 # | "Domain can not be resolved! There is a problem in your domain. Please
 # check "
 # | "your Domain configurations."
-#: hiddifypanel/panel/admin/DomainAdmin.py:68
+#: hiddifypanel/panel/admin/DomainAdmin.py:73
 #: hiddifypanel/panel/admin/QuickSetup.py:103
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr "دامنه قابل دسترسی نیست! در دامنه شما مشکلی وجود دارد."
@@ -172,7 +202,7 @@ msgstr "دامنه قابل دسترسی نیست! در دامنه شما مشک
 # | "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which
 # is "
 # | "required in direct mode."
-#: hiddifypanel/panel/admin/DomainAdmin.py:72
+#: hiddifypanel/panel/admin/DomainAdmin.py:77
 #, python-format
 msgid ""
 "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which "
@@ -181,7 +211,7 @@ msgstr ""
 "آی‌پی دامنه IP=%(domain_ip)s با آی‌پی ip=%(server_ip)s شما مطابقت ندارد "
 "که در حالت مستقیم مورد نیاز است."
 
-#: hiddifypanel/panel/admin/DomainAdmin.py:75
+#: hiddifypanel/panel/admin/DomainAdmin.py:80
 #, python-format
 msgid ""
 "In CDN mode, Domain IP=%(domain_ip)s should be different to your "
@@ -293,15 +323,15 @@ msgstr "این گزینه زبان بخش کاربران را تغییر می‌
 #: hiddifypanel/panel/admin/QuickSetup.py:83
 #: hiddifypanel/panel/admin/QuickSetup.py:93
 #: hiddifypanel/panel/admin/SettingAdmin.py:138
-#: hiddifypanel/panel/admin/SettingAdmin.py:142
+#: hiddifypanel/panel/admin/SettingAdmin.py:140
 msgid "config.Invalid domain"
 msgstr "خطا! دامنه نامعتبر! فرمت دامنه باید مثل www.google.com باشد."
 
 # | msgid "Domain is exist in domains section. Use another domain"
 #: hiddifypanel/panel/admin/QuickSetup.py:85
 #: hiddifypanel/panel/admin/QuickSetup.py:86
-#: hiddifypanel/panel/admin/SettingAdmin.py:144
-#: hiddifypanel/panel/admin/SettingAdmin.py:145
+#: hiddifypanel/panel/admin/SettingAdmin.py:142
+#: hiddifypanel/panel/admin/SettingAdmin.py:143
 msgid "config.Domain already used"
 msgstr "دامنه در بخش دامنه‌ها وجود دارد. از دامنه دیگری استفاده کنید."
 
@@ -464,87 +494,87 @@ msgstr ""
 "کنید که فقط پایتون در تمام سیستم ها درست کار میکند و بقیه ممکن است "
 "اشکالاتی داشته باشد. بعد از تغییر حتما تست کنید."
 
-# | msgid "Invalid IP or domain"
-#: hiddifypanel/panel/admin/SettingAdmin.py:140
-#, fuzzy
-msgid "config.Invalid IP or domain"
-msgstr "IP یا دامنه نامعتبر است"
-
 # | msgid ""
 # | "Invalid link. it should be on this format: (https or http://example.com)"
-#: hiddifypanel/panel/admin/SettingAdmin.py:150
+#: hiddifypanel/panel/admin/SettingAdmin.py:148
 msgid "config.Invalid brand link"
 msgstr "لینک پشتیبانی نامعتبر است. لطفا لینک را با فرمت معتبر وارد کنید."
 
 # | msgid ""
 # | "Invalid UUID secret. Example: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n"
 # | "\n"
-#: hiddifypanel/panel/admin/SettingAdmin.py:154
+#: hiddifypanel/panel/admin/SettingAdmin.py:152
 msgid "config.invalid uuid"
 msgstr "رمز UUID نامعتبر است. به عنوان مثال: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6"
 
 # | msgid "Invalid proxy path. It should be asci string (a-z A-Z 0-9)"
-#: hiddifypanel/panel/admin/SettingAdmin.py:158
+#: hiddifypanel/panel/admin/SettingAdmin.py:156
 msgid "config.Invalid proxy path"
 msgstr "مسیر پروکسی نامعتبر است. باید رشته متن asci باشد. ( شامل a-z A-Z 0-9)"
 
 # | msgid ""
 # | "Invalid port. It should be comma separated integer e.g., 1000,1001"
-#: hiddifypanel/panel/admin/SettingAdmin.py:162
+#: hiddifypanel/panel/admin/SettingAdmin.py:160
 msgid "config.Invalid port"
 msgstr "پورت نامعتبر است. اعداد باید با کاما از هم جدا شود، مثلاً 1000,1001"
 
 # | msgid ""
 # | "Port 80 should always be presented. We use it for getting ssl
 # certificate"
-#: hiddifypanel/panel/admin/SettingAdmin.py:165
+#: hiddifypanel/panel/admin/SettingAdmin.py:163
 msgid "config.port 80 is required"
 msgstr ""
 "پورت 80 همیشه باید در دسترس باشد. از آن برای دریافت سرتیفیکیت ssl استفاده"
 " می‌کنیم."
 
 # | msgid "Port 443 should always be presented. "
-#: hiddifypanel/panel/admin/SettingAdmin.py:168
+#: hiddifypanel/panel/admin/SettingAdmin.py:166
 msgid "config.port 443 is required"
 msgstr "پورت ۴۴۳ همیشه باید در دسترس باشد."
 
+# | msgid "Should be a valid UUID"
+#: hiddifypanel/panel/admin/UserAdmin.py:27
+#, fuzzy
+msgid "Should be a valid uuid"
+msgstr "باید یک UUID معتبر باشد"
+
 # | msgid "Actions"
-#: hiddifypanel/panel/admin/UserAdmin.py:35
+#: hiddifypanel/panel/admin/UserAdmin.py:36
 msgid "actions"
 msgstr "عملیات"
 
 # | msgid "Name"
-#: hiddifypanel/panel/admin/UserAdmin.py:36
+#: hiddifypanel/panel/admin/UserAdmin.py:37
 msgid "user.name"
 msgstr "نام"
 
 # | msgid "User Links"
-#: hiddifypanel/panel/admin/UserAdmin.py:37
+#: hiddifypanel/panel/admin/UserAdmin.py:38
 msgid "user.user_links"
 msgstr "لینک‌های کاربر"
 
 # | msgid "Usage Limit (GB)"
-#: hiddifypanel/panel/admin/UserAdmin.py:38
+#: hiddifypanel/panel/admin/UserAdmin.py:39
 msgid "user.usage_limit_GB"
 msgstr "محدودیت حجم (گیگابایت)"
 
 # | msgid "Monthly"
-#: hiddifypanel/panel/admin/UserAdmin.py:39
+#: hiddifypanel/panel/admin/UserAdmin.py:40
 msgid "Reset every month"
 msgstr "ماهیانه"
 
 # | msgid "Current Usage (GB)"
-#: hiddifypanel/panel/admin/UserAdmin.py:40
+#: hiddifypanel/panel/admin/UserAdmin.py:41
 msgid "user.current_usage_GB"
 msgstr "حجم استفاده شده کنونی (گیگابایت)"
 
 # | msgid "Expire Time"
-#: hiddifypanel/panel/admin/UserAdmin.py:41
+#: hiddifypanel/panel/admin/UserAdmin.py:42
 msgid "user.expiry_time"
 msgstr "زمان انقضا"
 
 # | msgid "UUID"
-#: hiddifypanel/panel/admin/UserAdmin.py:43
+#: hiddifypanel/panel/admin/UserAdmin.py:44
 msgid "user.UUID"
 msgstr "UUID"
 
@@ -757,23 +787,6 @@ msgid "config.shared_secret.description"
 msgstr ""
 "برخی از پروکسی‌ها در حال حاضر محاسبه حجم ترافیک را پشتیبانی نمی‌کنند، این"
 " رمز برای این دسته از پروکسی‌ها استفاده خواهد شد."
-
-# | msgid "Force CDN Config to use Host"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-#, fuzzy
-msgid "config.cdn_forced_host.label"
-msgstr "آی پی یا دامنه اجباری در کانفیگ‌های CDN "
-
-# | msgid ""
-# | "In this part you can use a specific domain or IP for your cdn server to
-# be "
-# | "override in the user links. You can use either IP or domain."
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-#, fuzzy
-msgid "config.cdn_forced_host.description"
-msgstr ""
-"در این قسمت می توانید از دامنه یا IP خاصی برای سرور cdn خود استفاده کنید "
-"تا در لینک های کاربری جایگزین شود. می توانید از IP یا دامنه استفاده کنید."
 
 # | msgid "Proxies Settings"
 #: hiddifypanel/panel/admin/templates/configfake.html:6

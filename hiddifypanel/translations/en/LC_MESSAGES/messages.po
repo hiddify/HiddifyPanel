@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-09 11:58+0100\n"
-"PO-Revision-Date: 2023-02-09 04:58-0600\n"
+"POT-Creation-Date: 2023-02-09 12:41+0100\n"
+"PO-Revision-Date: 2023-02-09 05:40-0600\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -94,7 +94,7 @@ msgstr "Select this option to restore your domains."
 #: hiddifypanel/panel/admin/ProxyAdmin.py:118
 #: hiddifypanel/panel/admin/QuickSetup.py:67
 #: hiddifypanel/panel/admin/QuickSetup.py:94
-#: hiddifypanel/panel/admin/SettingAdmin.py:181
+#: hiddifypanel/panel/admin/SettingAdmin.py:179
 msgid "Submit"
 msgstr "Submit"
 
@@ -137,26 +137,51 @@ msgstr ""
 "Direct mode means you want to use your server directly (for usual use), CDN "
 "means that you use your server on behind of a CDN provider."
 
+# | msgid ""
+# | "In this part you can use a specific domain or IP for your cdn server to "
+# | "be override in the user links. You can use either IP or domain."
+#: hiddifypanel/panel/admin/DomainAdmin.py:18
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.cdn_forced_host.description"
+msgstr ""
+"In this part you can use a specific domain or IP for your cdn server to be "
+"override in the user links. You can use either IP or domain."
+
+#: hiddifypanel/panel/admin/DomainAdmin.py:25
+msgid "Should be a valid domain"
+msgstr "Should be a valid domain"
+
+# | msgid "Invalid IP or domain"
+#: hiddifypanel/panel/admin/DomainAdmin.py:28
+msgid "config.Invalid IP or domain"
+msgstr "Invalid IP or domain"
+
 # | msgid "Domain"
-#: hiddifypanel/panel/admin/DomainAdmin.py:32
+#: hiddifypanel/panel/admin/DomainAdmin.py:36
 #: hiddifypanel/panel/admin/QuickSetup.py:88
 msgid "domain.domain"
 msgstr "Domain"
 
 # | msgid "Mode"
-#: hiddifypanel/panel/admin/DomainAdmin.py:33
+#: hiddifypanel/panel/admin/DomainAdmin.py:37
 msgid "domain.mode"
 msgstr "Mode"
 
+# | msgid "Force CDN Config to use Host"
+#: hiddifypanel/panel/admin/DomainAdmin.py:38
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.cdn_forced_host.label"
+msgstr "Force CDN Config to use Host"
+
 # | msgid "IP"
-#: hiddifypanel/panel/admin/DomainAdmin.py:34
+#: hiddifypanel/panel/admin/DomainAdmin.py:39
 msgid "domain.ip"
 msgstr "IP"
 
 # | msgid ""
 # | "Domain can not be resolved! There is a problem in your domain. Please "
 # | "check your Domain configurations."
-#: hiddifypanel/panel/admin/DomainAdmin.py:68
+#: hiddifypanel/panel/admin/DomainAdmin.py:73
 #: hiddifypanel/panel/admin/QuickSetup.py:103
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr ""
@@ -166,7 +191,7 @@ msgstr ""
 # | msgid ""
 # | "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which "
 # | "is required in direct mode."
-#: hiddifypanel/panel/admin/DomainAdmin.py:72
+#: hiddifypanel/panel/admin/DomainAdmin.py:77
 #, python-format
 msgid ""
 "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is "
@@ -175,7 +200,7 @@ msgstr ""
 "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is "
 "required in direct mode."
 
-#: hiddifypanel/panel/admin/DomainAdmin.py:75
+#: hiddifypanel/panel/admin/DomainAdmin.py:80
 #, python-format
 msgid ""
 "In CDN mode, Domain IP=%(domain_ip)s should be different to your "
@@ -289,15 +314,15 @@ msgstr "Choose language for Users area."
 #: hiddifypanel/panel/admin/QuickSetup.py:83
 #: hiddifypanel/panel/admin/QuickSetup.py:93
 #: hiddifypanel/panel/admin/SettingAdmin.py:138
-#: hiddifypanel/panel/admin/SettingAdmin.py:142
+#: hiddifypanel/panel/admin/SettingAdmin.py:140
 msgid "config.Invalid domain"
 msgstr "Error! Invalid domain.  The domain format is www.google.com"
 
 # | msgid "Domain is exist in domains section. Use another domain"
 #: hiddifypanel/panel/admin/QuickSetup.py:85
 #: hiddifypanel/panel/admin/QuickSetup.py:86
-#: hiddifypanel/panel/admin/SettingAdmin.py:144
-#: hiddifypanel/panel/admin/SettingAdmin.py:145
+#: hiddifypanel/panel/admin/SettingAdmin.py:142
+#: hiddifypanel/panel/admin/SettingAdmin.py:143
 msgid "config.Domain already used"
 msgstr "Domain is exist in domains section. Use another domain"
 
@@ -453,14 +478,9 @@ msgstr ""
 "python works in all servers, others may have some issue. Test proxy after "
 "changing it."
 
-# | msgid "Invalid IP or domain"
-#: hiddifypanel/panel/admin/SettingAdmin.py:140
-msgid "config.Invalid IP or domain"
-msgstr "Invalid IP or domain"
-
 # | msgid ""
 # | "Invalid link. it should be on this format: (https or http://example.com)"
-#: hiddifypanel/panel/admin/SettingAdmin.py:150
+#: hiddifypanel/panel/admin/SettingAdmin.py:148
 msgid "config.Invalid brand link"
 msgstr ""
 "Invalid link. it should be on this format: (https or http://example.com)"
@@ -468,72 +488,77 @@ msgstr ""
 # | msgid ""
 # | "Invalid UUID secret. Example: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n"
 # | "\n"
-#: hiddifypanel/panel/admin/SettingAdmin.py:154
+#: hiddifypanel/panel/admin/SettingAdmin.py:152
 msgid "config.invalid uuid"
 msgstr ""
 "Invalid UUID secret. Example: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n"
 "\n"
 
 # | msgid "Invalid proxy path. It should be asci string (a-z A-Z 0-9)"
-#: hiddifypanel/panel/admin/SettingAdmin.py:158
+#: hiddifypanel/panel/admin/SettingAdmin.py:156
 msgid "config.Invalid proxy path"
 msgstr "Invalid proxy path. It should be asci string (a-z A-Z 0-9)"
 
 # | msgid "Invalid port. It should be comma separated integer e.g., 1000,1001"
-#: hiddifypanel/panel/admin/SettingAdmin.py:162
+#: hiddifypanel/panel/admin/SettingAdmin.py:160
 msgid "config.Invalid port"
 msgstr "Invalid port. It should be comma separated integer e.g., 1000,1001"
 
 # | msgid ""
 # | "Port 80 should always be presented. We use it for getting ssl
 # certificate"
-#: hiddifypanel/panel/admin/SettingAdmin.py:165
+#: hiddifypanel/panel/admin/SettingAdmin.py:163
 msgid "config.port 80 is required"
 msgstr ""
 "Port 80 should always be presented. We use it for getting ssl certificate"
 
 # | msgid "Port 443 should always be presented. "
-#: hiddifypanel/panel/admin/SettingAdmin.py:168
+#: hiddifypanel/panel/admin/SettingAdmin.py:166
 msgid "config.port 443 is required"
 msgstr "Port 443 should always be presented. "
 
+# | msgid "Should be a valid UUID"
+#: hiddifypanel/panel/admin/UserAdmin.py:27
+msgid "Should be a valid uuid"
+msgstr "Should be a valid UUID"
+
 # | msgid "Actions"
-#: hiddifypanel/panel/admin/UserAdmin.py:35
+#: hiddifypanel/panel/admin/UserAdmin.py:36
 msgid "actions"
 msgstr "Actions"
 
 # | msgid "Name"
-#: hiddifypanel/panel/admin/UserAdmin.py:36
+#: hiddifypanel/panel/admin/UserAdmin.py:37
 msgid "user.name"
 msgstr "Name"
 
 # | msgid "User Links"
-#: hiddifypanel/panel/admin/UserAdmin.py:37
+#: hiddifypanel/panel/admin/UserAdmin.py:38
 msgid "user.user_links"
 msgstr "User Links"
 
 # | msgid "Usage Limit (GB)"
-#: hiddifypanel/panel/admin/UserAdmin.py:38
+#: hiddifypanel/panel/admin/UserAdmin.py:39
 msgid "user.usage_limit_GB"
 msgstr "Usage Limit (GB)"
 
 # | msgid "Monthly"
-#: hiddifypanel/panel/admin/UserAdmin.py:39
+#: hiddifypanel/panel/admin/UserAdmin.py:40
 msgid "Reset every month"
 msgstr "Monthly"
 
 # | msgid "Current Usage (GB)"
-#: hiddifypanel/panel/admin/UserAdmin.py:40
+#: hiddifypanel/panel/admin/UserAdmin.py:41
 msgid "user.current_usage_GB"
 msgstr "Current Usage (GB)"
 
 # | msgid "Expire Time"
-#: hiddifypanel/panel/admin/UserAdmin.py:41
+#: hiddifypanel/panel/admin/UserAdmin.py:42
 msgid "user.expiry_time"
 msgstr "Expire Time"
 
 # | msgid "UUID"
-#: hiddifypanel/panel/admin/UserAdmin.py:43
+#: hiddifypanel/panel/admin/UserAdmin.py:44
 msgid "user.UUID"
 msgstr "UUID"
 
@@ -744,20 +769,6 @@ msgid "config.shared_secret.description"
 msgstr ""
 "Some proxies don't support accounting currently so we have to use a secret "
 "for them."
-
-# | msgid "Force CDN Config to use Host"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.cdn_forced_host.label"
-msgstr "Force CDN Config to use Host"
-
-# | msgid ""
-# | "In this part you can use a specific domain or IP for your cdn server to "
-# | "be override in the user links. You can use either IP or domain."
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.cdn_forced_host.description"
-msgstr ""
-"In this part you can use a specific domain or IP for your cdn server to be "
-"override in the user links. You can use either IP or domain."
 
 # | msgid "Proxies Settings"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
