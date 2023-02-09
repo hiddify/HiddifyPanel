@@ -25,8 +25,8 @@
 {{super()}}
 
 
-<div class="card-columns">
-<div class="card">
+<div class="row">
+<div class="card col-12">
     <div class="card-header">{{_("config.lang.label")}}</div>
     <div class="card-body">
 
@@ -44,7 +44,7 @@
     <div class="card-body">
 
         <div class="row">
-            <div class="col-12">
+            <div class="card-columns">
                 {{_('admin.quicksetup_intro',ipv4=ip_btn(ipv4),ipv6=ip_btn(ipv6))}}
                 {{render_form(form,form_type="",extra_classes="card-columns1")}}
             </div>

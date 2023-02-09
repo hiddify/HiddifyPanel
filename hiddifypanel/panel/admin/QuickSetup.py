@@ -28,7 +28,7 @@ class QuickSetup(FlaskView):
                 lang_form=get_lang_form()
                 if lang_form.lang_submit.data:
                         if lang_form.validate_on_submit():
-                                StrConfig.query.filter(StrConfig.key==ConfigEnum.lang).first().value=lang_form.lang.data
+                                StrConfig.query.filter(StrConfig.key==ConfigEnum.lang).first().value=lang_form.admin_lang.data
                                 StrConfig.query.filter(StrConfig.key==ConfigEnum.admin_lang).first().value=lang_form.admin_lang.data
                                 db.session.commit()
                                 flash((_('quicksetup.setlang.success')), 'success')
@@ -63,7 +63,7 @@ class QuickSetup(FlaskView):
 def get_lang_form(empty=False):
         class LangForm(FlaskForm):
                 admin_lang=wtf.fields.SelectField(_("config.admin_lang.label"),choices=[("en",_("lang.en")),("fa",_("lang.fa"))],description=_("config.admin_lang.description"),default=hconfig(ConfigEnum.admin_lang))
-                lang=wtf.fields.SelectField(_("config.lang.label"),choices=[("en",_("lang.en")),("fa",_("lang.fa"))],description=_("config.lang.description"),default=hconfig(ConfigEnum.lang))
+                # lang=wtf.fields.SelectField(_("config.lang.label"),choices=[("en",_("lang.en")),("fa",_("lang.fa"))],description=_("config.lang.description"),default=hconfig(ConfigEnum.lang))
                 lang_submit=wtf.fields.SubmitField(_('Submit'))
         
         return LangForm(None)if empty else LangForm()
@@ -87,9 +87,9 @@ def get_quick_setup_form(empty=False):
                                         ]
                 domain=wtf.fields.StringField(_("domain.domain"),domain_validators,description=_("domain.description"),render_kw={"class":"ltr", "pattern":domain_validators[0].regex.pattern,"title":domain_validators[0].message,"required":"","placeholder":"sub.domain.com"})
                 enable_telegram=SwitchField(_("config.telegram_enable.label"),description=_("config.telegram_enable.description"),default=hconfig(ConfigEnum.telegram_enable))
-                enable_vmess=SwitchField(_("config.vmess_enable.label"),description=_("config.vmess_enable.description"),default=hconfig(ConfigEnum.vmess_enable))
                 enable_firewall=SwitchField(_("config.firewall.label"),description=_("config.firewall.description"),default=hconfig(ConfigEnum.firewall))
                 block_iran_sites=SwitchField(_("config.block_iran_sites.label"),description=_("config.block_iran_sites.description"),default=hconfig(ConfigEnum.block_iran_sites))
+                enable_vmess=SwitchField(_("config.vmess_enable.label"),description=_("config.vmess_enable.description"),default=hconfig(ConfigEnum.vmess_enable))
                 decoy_domain=wtf.fields.StringField(_("config.decoy_domain.label"),description=_("config.decoy_domain.description"),default=hconfig(ConfigEnum.decoy_domain),validators=[wtf.validators.Regexp(domain_regex,re.IGNORECASE,_("config.Invalid domain"))])
                 submit=wtf.fields.SubmitField(_('Submit'))
 
