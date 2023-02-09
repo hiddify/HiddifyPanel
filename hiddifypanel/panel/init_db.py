@@ -135,7 +135,7 @@ def init_db():
     db_version=int(hconfig(ConfigEnum.db_version) or 0) 
     print(f"Current DB version is {db_version}")
 
-    db_actions={1:_v1,2:_v2,3:_v3,6:_v6,7:_v7}
+    db_actions={1:_v1,2:_v2,3:_v3,6:_v6}
     for ver,db_action in db_actions.items():
         if ver<=db_version:continue
         print(f"Updating db from version {db_version}")
