@@ -179,7 +179,7 @@ def to_link(proxy):
     infos+="&fingerprint=chrome" 
     if proxy['l3']!='quic':
         infos+='&headerType=None' #if not quic
-    if proxy['cdn']=='Fake':
+    if proxy['mode']=='Fake':
         infos+="&allowInsecure=true"
 
     infos+=f'#{name_link}'
@@ -240,7 +240,7 @@ def to_clash(proxy,meta_or_normal):
             base["plugin-opts"]={
                 "mode": "websocket",
                 "tls": proxy["l3"]=="tls",
-                "skip-cert-verify": proxy["mode"]=="FAKE",
+                "skip-cert-verify": proxy["mode"]=="Fake",
                 "host": proxy['sni'],
                 "path": proxy["path"]
             }
@@ -264,7 +264,7 @@ def to_clash(proxy,meta_or_normal):
         base["cipher"]= "auto"
     base["udp"]= True
     
-    base["skip-cert-verify"]= proxy["mode"]=="FAKE"
+    base["skip-cert-verify"]= proxy["mode"]=="Fake"
     
     
     base["network"]= proxy["transport"]
