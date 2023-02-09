@@ -14,7 +14,7 @@ class DomainAdmin(AdminLTEModelView):
     edit_modal=True
     
     column_descriptions = dict(
-        # name=_'just for remembering',
+        domain=_("domain.description"),
         mode=_("Direct mode means you want to use your server directly (for usual use), CDN means that you use your server on behind of a CDN provider."),
         cdn_ip=_("config.cdn_forced_host.description"),
         # current_usage_GB="in GB"

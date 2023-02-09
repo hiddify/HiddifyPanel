@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-09 12:43+0100\n"
-"PO-Revision-Date: 2023-02-09 05:41-0600\n"
+"POT-Creation-Date: 2023-02-09 19:39+0100\n"
+"PO-Revision-Date: 2023-02-09 06:14-0600\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -133,7 +133,26 @@ msgstr ""
 "شما هنوز هیچ کاربری ایجاد نکرده اید. لینک صفحه کاربری پیشفرض: "
 "%(default_link)s"
 
+# | msgid ""
+# | "Please fill in this field carefully and correctly. Otherwise, proxies
+# will "
+# | "run into problems. Please visit <a "
+# |
+# "href=\"https://github.com/hiddify/hiddify-config/wiki/راهنمای-تنظیم-دامنه-و-"
+# | "نهایی-کردن-نصب#آموزش-ساخت-زیردامنه\"> Help</a> to learn how to create a "
+# | "subdomain."
 #: hiddifypanel/panel/admin/DomainAdmin.py:17
+#: hiddifypanel/panel/admin/QuickSetup.py:88
+msgid "domain.description"
+msgstr ""
+"این فیلد باید با دقت و به درستی تکمیل شود. در غیر اینصورت پروکسی ها به "
+"مشکل بر خواهند خورد. لطفا برای دیدن راهنمای ساخت زیردامنه \n"
+"<a href=\"https://github.com/hiddify/hiddify-"
+"config/wiki/راهنمای-تنظیم-دامنه-و-نهایی-کردن-نصب#آموزش-ساخت-زیردامنه\">این"
+" آدرس </a>\n"
+"را ببینید."
+
+#: hiddifypanel/panel/admin/DomainAdmin.py:18
 #, fuzzy
 msgid ""
 "Direct mode means you want to use your server directly (for usual use), "
@@ -145,47 +164,43 @@ msgstr ""
 
 # | msgid ""
 # | "In this part you can use a specific domain or IP for your cdn server to
-# be "
-# | "override in the user links. You can use either IP or domain."
-#: hiddifypanel/panel/admin/DomainAdmin.py:18
+# be override in the user links. You can use either IP or domain.\n"
+# | "\n"
+# | "Morteza Bashsiz provides a list of recommended IPs for cloudflare <a
+# href=\"http://bot.sudoer.net/best.cf.iran\">here</a>."
+#: hiddifypanel/panel/admin/DomainAdmin.py:19
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.cdn_forced_host.description"
 msgstr ""
 "در این قسمت می توانید از دامنه یا IP خاصی برای سرور cdn خود استفاده کنید "
 "تا در لینک های کاربری جایگزین شود. می توانید از IP یا دامنه استفاده کنید."
-
-#: hiddifypanel/panel/admin/DomainAdmin.py:25
-#, fuzzy
-msgid "Should be a valid domain"
-msgstr "باید یک دامنه معتبر باشد"
-
-# | msgid "Invalid IP or domain"
-#: hiddifypanel/panel/admin/DomainAdmin.py:28
-#, fuzzy
-msgid "config.Invalid IP or domain"
-msgstr "IP یا دامنه نامعتبر است"
+"\n"
+"\n"
+"مرتضی باشسیز در \n"
+"<a href=\"http://bot.sudoer.net/best.cf.iran\">اینجا</a>\n"
+"لیست آی پی های پیشنهادی برای کلودفلر را قرار داده است."
 
 # | msgid "Domain"
-#: hiddifypanel/panel/admin/DomainAdmin.py:36
+#: hiddifypanel/panel/admin/DomainAdmin.py:37
 #: hiddifypanel/panel/admin/QuickSetup.py:88
 msgid "domain.domain"
 msgstr "دامنه"
 
 # | msgid "Mode"
-#: hiddifypanel/panel/admin/DomainAdmin.py:37
+#: hiddifypanel/panel/admin/DomainAdmin.py:38
 msgid "domain.mode"
 msgstr "حالت"
 
 # | msgid "Force CDN Config to use Host"
-#: hiddifypanel/panel/admin/DomainAdmin.py:38
+#: hiddifypanel/panel/admin/DomainAdmin.py:39
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.cdn_forced_host.label"
 msgstr "آی پی یا دامنه اجباری در کانفیگ‌های CDN "
 
 # | msgid "IP"
-#: hiddifypanel/panel/admin/DomainAdmin.py:39
+#: hiddifypanel/panel/admin/DomainAdmin.py:40
 msgid "domain.ip"
 msgstr "آی‌پی"
 
@@ -193,7 +208,7 @@ msgstr "آی‌پی"
 # | "Domain can not be resolved! There is a problem in your domain. Please
 # check "
 # | "your Domain configurations."
-#: hiddifypanel/panel/admin/DomainAdmin.py:73
+#: hiddifypanel/panel/admin/DomainAdmin.py:74
 #: hiddifypanel/panel/admin/QuickSetup.py:103
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr "دامنه قابل دسترسی نیست! در دامنه شما مشکلی وجود دارد."
@@ -202,7 +217,7 @@ msgstr "دامنه قابل دسترسی نیست! در دامنه شما مشک
 # | "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which
 # is "
 # | "required in direct mode."
-#: hiddifypanel/panel/admin/DomainAdmin.py:77
+#: hiddifypanel/panel/admin/DomainAdmin.py:78
 #, python-format
 msgid ""
 "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which "
@@ -211,7 +226,7 @@ msgstr ""
 "آی‌پی دامنه IP=%(domain_ip)s با آی‌پی ip=%(server_ip)s شما مطابقت ندارد "
 "که در حالت مستقیم مورد نیاز است."
 
-#: hiddifypanel/panel/admin/DomainAdmin.py:80
+#: hiddifypanel/panel/admin/DomainAdmin.py:81
 #, python-format
 msgid ""
 "In CDN mode, Domain IP=%(domain_ip)s should be different to your "
@@ -334,24 +349,6 @@ msgstr "خطا! دامنه نامعتبر! فرمت دامنه باید مثل w
 #: hiddifypanel/panel/admin/SettingAdmin.py:143
 msgid "config.Domain already used"
 msgstr "دامنه در بخش دامنه‌ها وجود دارد. از دامنه دیگری استفاده کنید."
-
-# | msgid ""
-# | "Please fill in this field carefully and correctly. Otherwise, proxies
-# will "
-# | "run into problems. Please visit <a "
-# |
-# "href=\"https://github.com/hiddify/hiddify-config/wiki/راهنمای-تنظیم-دامنه-و-"
-# | "نهایی-کردن-نصب#آموزش-ساخت-زیردامنه\"> Help</a> to learn how to create a "
-# | "subdomain."
-#: hiddifypanel/panel/admin/QuickSetup.py:88
-msgid "domain.description"
-msgstr ""
-"این فیلد باید با دقت و به درستی تکمیل شود. در غیر اینصورت پروکسی ها به "
-"مشکل بر خواهند خورد. لطفا برای دیدن راهنمای ساخت زیردامنه \n"
-"<a href=\"https://github.com/hiddify/hiddify-"
-"config/wiki/راهنمای-تنظیم-دامنه-و-نهایی-کردن-نصب#آموزش-ساخت-زیردامنه\">این"
-" آدرس </a>\n"
-"را ببینید."
 
 # | msgid "Enable Telegram MT Proxy"
 #: hiddifypanel/panel/admin/QuickSetup.py:89
@@ -531,12 +528,6 @@ msgstr ""
 #: hiddifypanel/panel/admin/SettingAdmin.py:166
 msgid "config.port 443 is required"
 msgstr "پورت ۴۴۳ همیشه باید در دسترس باشد."
-
-# | msgid "Should be a valid UUID"
-#: hiddifypanel/panel/admin/UserAdmin.py:27
-#, fuzzy
-msgid "Should be a valid uuid"
-msgstr "باید یک UUID معتبر باشد"
 
 # | msgid "Actions"
 #: hiddifypanel/panel/admin/UserAdmin.py:36
@@ -2432,4 +2423,15 @@ msgstr "عملیات"
 #~ " شما: ip=%(server_ip)s همخوانی ندارد. در"
 #~ " حالت مستقیم (Direct Mode) این مورد"
 #~ " الزامی است."
+
+# | msgid "Invalid IP or domain"
+#~ msgid "config.Invalid IP or domain"
+#~ msgstr "IP یا دامنه نامعتبر است"
+
+#~ msgid "Should be a valid domain"
+#~ msgstr "باید یک دامنه معتبر باشد"
+
+# | msgid "Should be a valid UUID"
+#~ msgid "Should be a valid uuid"
+#~ msgstr "باید یک UUID معتبر باشد"
 
