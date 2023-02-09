@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-09 19:59+0100\n"
-"PO-Revision-Date: 2023-02-09 12:59-0600\n"
+"POT-Creation-Date: 2023-02-09 20:17+0100\n"
+"PO-Revision-Date: 2023-02-09 13:17-0600\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -303,14 +303,12 @@ msgstr "زبان محیط مدیریت"
 
 # | msgid "English انگلیسی 英语"
 #: hiddifypanel/panel/admin/QuickSetup.py:65
-#: hiddifypanel/panel/admin/QuickSetup.py:66
 #: hiddifypanel/panel/admin/SettingAdmin.py:124
 msgid "lang.en"
 msgstr "English انگلیسی 英语"
 
 # | msgid "Persian فارسی 波斯语"
 #: hiddifypanel/panel/admin/QuickSetup.py:65
-#: hiddifypanel/panel/admin/QuickSetup.py:66
 #: hiddifypanel/panel/admin/SettingAdmin.py:124
 msgid "lang.fa"
 msgstr "Persian فارسی 波斯语"
@@ -320,19 +318,6 @@ msgstr "Persian فارسی 波斯语"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.admin_lang.description"
 msgstr "در این قسمت می‌توانید زبان بخش مدیریت را انتخاب کنید."
-
-# | msgid "User Area Language"
-#: hiddifypanel/panel/admin/QuickSetup.py:66
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-#: hiddifypanel/panel/admin/templates/quick_setup.html:30
-msgid "config.lang.label"
-msgstr "زبان محیط کاربران"
-
-# | msgid "Choose language for Users area."
-#: hiddifypanel/panel/admin/QuickSetup.py:66
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.lang.description"
-msgstr "این گزینه زبان بخش کاربران را تغییر می‌دهد."
 
 # | msgid "Error! Invalid domain.  The domain format is www.google.com"
 #: hiddifypanel/panel/admin/QuickSetup.py:83
@@ -364,25 +349,8 @@ msgstr "فعال کردن پروکسی تلگرام (MTProxy)"
 msgid "config.telegram_enable.description"
 msgstr "برای کپسوله کردن پروکسی تلگرام در قالب ترافیک TLS استفاده می‌شود."
 
-# | msgid "Enable vmess"
-#: hiddifypanel/panel/admin/QuickSetup.py:90
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.vmess_enable.label"
-msgstr "فعال کردن vmess"
-
-# | msgid ""
-# | "It is reported by several people that vmess causes the system to be
-# detected"
-# | " by the government. So it is not recommended"
-#: hiddifypanel/panel/admin/QuickSetup.py:90
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.vmess_enable.description"
-msgstr ""
-"گزارش‌های متعددی موجود است مبنی بر اینکه که vmess باعث می‌شود که سیستم "
-"توسط فیلترینگ شناسایی شود. بنابراین استفاده از آن توصیه نمی‌شود."
-
 # | msgid "Firewall"
-#: hiddifypanel/panel/admin/QuickSetup.py:91
+#: hiddifypanel/panel/admin/QuickSetup.py:90
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.firewall.label"
 msgstr "فایروال"
@@ -391,7 +359,7 @@ msgstr "فایروال"
 # | "Enabling firewall will open used ports (at least 22,443,80) and close all
 # "
 # | "other ports"
-#: hiddifypanel/panel/admin/QuickSetup.py:91
+#: hiddifypanel/panel/admin/QuickSetup.py:90
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.firewall.description"
 msgstr ""
@@ -399,7 +367,7 @@ msgstr ""
 " و ۸۰) و سایر پورت‌ها بسته می‌شوند."
 
 # | msgid "Block Iranian sites"
-#: hiddifypanel/panel/admin/QuickSetup.py:92
+#: hiddifypanel/panel/admin/QuickSetup.py:91
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.block_iran_sites.label"
 msgstr "بلاک کردن سایت‌های ایرانی"
@@ -408,13 +376,30 @@ msgstr "بلاک کردن سایت‌های ایرانی"
 # | "Block Iranian sites to prevent detection by the government (Experimental:
 # If"
 # | " there is a problem, please disable it and tell us.)"
-#: hiddifypanel/panel/admin/QuickSetup.py:92
+#: hiddifypanel/panel/admin/QuickSetup.py:91
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.block_iran_sites.description"
 msgstr ""
 "برای جلوگیری از شناسایی توسط فیلترچی، دسترسی به سایت های ایرانی را مسدود "
 "می‌کند. (این قسمت بصورت آزمایشی است؛ اگر مشکلی وجود دارد، لطفاً آن را "
 "غیرفعال کنید و ما را مطلع کنید.)"
+
+# | msgid "Enable vmess"
+#: hiddifypanel/panel/admin/QuickSetup.py:92
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.vmess_enable.label"
+msgstr "فعال کردن vmess"
+
+# | msgid ""
+# | "It is reported by several people that vmess causes the system to be
+# detected"
+# | " by the government. So it is not recommended"
+#: hiddifypanel/panel/admin/QuickSetup.py:92
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.vmess_enable.description"
+msgstr ""
+"گزارش‌های متعددی موجود است مبنی بر اینکه که vmess باعث می‌شود که سیستم "
+"توسط فیلترینگ شناسایی شود. بنابراین استفاده از آن توصیه نمی‌شود."
 
 # | msgid "Decoy Site"
 #: hiddifypanel/panel/admin/QuickSetup.py:93
@@ -634,6 +619,17 @@ msgstr "تنظیمات ادمین"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.admin.description"
 msgstr "قسمت ادمین برای دسترسی به تنظیمات مدیریتی است."
+
+# | msgid "User Area Language"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#: hiddifypanel/panel/admin/templates/quick_setup.html:30
+msgid "config.lang.label"
+msgstr "زبان محیط کاربران"
+
+# | msgid "Choose language for Users area."
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.lang.description"
+msgstr "این گزینه زبان بخش کاربران را تغییر می‌دهد."
 
 # | msgid "User Page Title"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1294,15 +1290,17 @@ msgid "admin.quicksetup.title"
 msgstr "نصب سریع"
 
 # | msgid ""
-# | "Your server's IPs are: IPv4: %(ipv4)s and IPv6: %(ipv6)s.\n"
-# | "<br>\n"
+# | "Your server's IPs are: \n"
+# | "<div >\n"
+# | "IPv4: %(ipv4)s <br> IPv6: %(ipv6)s\n"
+# | "</div>\n"
 # | "Set these IPs on your domain or subdomain and enter your domain or
 # subdomain in the bellow box.\n"
 #: hiddifypanel/panel/admin/templates/quick_setup.html:48
 msgid "admin.quicksetup_intro"
 msgstr ""
-"آی‌پی‌های سرور شما عبارتند از: IPv4: %(ipv4)s و IPv6: %(ipv6)s\n"
-"<br>\n"
+"آی‌پی‌های سرور شما عبارتند از: <div >IPv4: %(ipv4)s <br> IPv6: %(ipv6)s\n"
+"</div>\n"
 "دامنه یا زیر دامنه خود را با این آی‌پی‌ها تنظیم کنید و سپس دامنه یا زیر "
 "دامنه تنظیم شده را در کادر زیر وارد کنید."
 

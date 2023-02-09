@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-09 19:59+0100\n"
-"PO-Revision-Date: 2023-02-09 12:59-0600\n"
+"POT-Creation-Date: 2023-02-09 20:17+0100\n"
+"PO-Revision-Date: 2023-02-09 13:17-0600\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -271,14 +271,12 @@ msgstr "管理面板语言"
 
 # | msgid "English انگلیسی 英语"
 #: hiddifypanel/panel/admin/QuickSetup.py:65
-#: hiddifypanel/panel/admin/QuickSetup.py:66
 #: hiddifypanel/panel/admin/SettingAdmin.py:124
 msgid "lang.en"
 msgstr "English انگلیسی 英语"
 
 # | msgid "Persian فارسی 波斯语"
 #: hiddifypanel/panel/admin/QuickSetup.py:65
-#: hiddifypanel/panel/admin/QuickSetup.py:66
 #: hiddifypanel/panel/admin/SettingAdmin.py:124
 msgid "lang.fa"
 msgstr "Persian فارسی 波斯语"
@@ -288,19 +286,6 @@ msgstr "Persian فارسی 波斯语"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.admin_lang.description"
 msgstr "为管理区域选择语言。"
-
-# | msgid "User Area Language"
-#: hiddifypanel/panel/admin/QuickSetup.py:66
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-#: hiddifypanel/panel/admin/templates/quick_setup.html:30
-msgid "config.lang.label"
-msgstr "语言"
-
-# | msgid "Choose language for Users area."
-#: hiddifypanel/panel/admin/QuickSetup.py:66
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.lang.description"
-msgstr "它将更改管理和用户语言"
 
 # | msgid "Error! Invalid domain.  The domain format is www.google.com"
 #: hiddifypanel/panel/admin/QuickSetup.py:83
@@ -332,23 +317,8 @@ msgstr "启用 Telegram MT 代理"
 msgid "config.telegram_enable.description"
 msgstr "电报 MT 代理用于将电报代理封装为 TLS 流量"
 
-# | msgid "Enable vmess"
-#: hiddifypanel/panel/admin/QuickSetup.py:90
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.vmess_enable.label"
-msgstr "启用 vmess"
-
-# | msgid ""
-# | "It is reported by several people that vmess causes the system to be
-# detected"
-# | " by the government. So it is not recommended"
-#: hiddifypanel/panel/admin/QuickSetup.py:90
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.vmess_enable.description"
-msgstr "几个人报告说 vmess 导致系统被政府检测到。所以不推荐"
-
 # | msgid "Firewall"
-#: hiddifypanel/panel/admin/QuickSetup.py:91
+#: hiddifypanel/panel/admin/QuickSetup.py:90
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.firewall.label"
 msgstr "防火墙"
@@ -357,13 +327,13 @@ msgstr "防火墙"
 # | "Enabling firewall will open used ports (at least 22,443,80) and close all
 # "
 # | "other ports"
-#: hiddifypanel/panel/admin/QuickSetup.py:91
+#: hiddifypanel/panel/admin/QuickSetup.py:90
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.firewall.description"
 msgstr "启用防火墙将打开使用的端口（至少 22,443,80）并关闭所有其他端口"
 
 # | msgid "Block Iranian sites"
-#: hiddifypanel/panel/admin/QuickSetup.py:92
+#: hiddifypanel/panel/admin/QuickSetup.py:91
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.block_iran_sites.label"
 msgstr "封锁伊朗网站"
@@ -372,10 +342,25 @@ msgstr "封锁伊朗网站"
 # | "Block Iranian sites to prevent detection by the government (Experimental:
 # If"
 # | " there is a problem, please disable it and tell us.)"
-#: hiddifypanel/panel/admin/QuickSetup.py:92
+#: hiddifypanel/panel/admin/QuickSetup.py:91
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.block_iran_sites.description"
 msgstr "屏蔽伊朗网站以防止被政府发现（实验：如果有问题，请禁用它并告诉我们。）"
+
+# | msgid "Enable vmess"
+#: hiddifypanel/panel/admin/QuickSetup.py:92
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.vmess_enable.label"
+msgstr "启用 vmess"
+
+# | msgid ""
+# | "It is reported by several people that vmess causes the system to be
+# detected"
+# | " by the government. So it is not recommended"
+#: hiddifypanel/panel/admin/QuickSetup.py:92
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.vmess_enable.description"
+msgstr "几个人报告说 vmess 导致系统被政府检测到。所以不推荐"
 
 # | msgid "Decoy Site"
 #: hiddifypanel/panel/admin/QuickSetup.py:93
@@ -581,6 +566,17 @@ msgstr "管理员设置"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.admin.description"
 msgstr "管理部分用于配置管理相关设置"
+
+# | msgid "User Area Language"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#: hiddifypanel/panel/admin/templates/quick_setup.html:30
+msgid "config.lang.label"
+msgstr "语言"
+
+# | msgid "Choose language for Users area."
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.lang.description"
+msgstr "它将更改管理和用户语言"
 
 # | msgid "User Page Title"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1176,8 +1172,10 @@ msgid "admin.quicksetup.title"
 msgstr "快速设置"
 
 # | msgid ""
-# | "Your server's IPs are: IPv4: %(ipv4)s and IPv6: %(ipv6)s.\n"
-# | "<br>\n"
+# | "Your server's IPs are: \n"
+# | "<div >\n"
+# | "IPv4: %(ipv4)s <br> IPv6: %(ipv6)s\n"
+# | "</div>\n"
 # | "Set these IPs on your domain or subdomain and enter your domain or
 # subdomain in the bellow box.\n"
 #: hiddifypanel/panel/admin/templates/quick_setup.html:48

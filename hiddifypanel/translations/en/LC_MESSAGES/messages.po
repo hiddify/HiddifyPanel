@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-09 19:59+0100\n"
-"PO-Revision-Date: 2023-02-09 12:59-0600\n"
+"POT-Creation-Date: 2023-02-09 20:17+0100\n"
+"PO-Revision-Date: 2023-02-09 13:17-0600\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -289,14 +289,12 @@ msgstr "Admin panel language"
 
 # | msgid "English انگلیسی 英语"
 #: hiddifypanel/panel/admin/QuickSetup.py:65
-#: hiddifypanel/panel/admin/QuickSetup.py:66
 #: hiddifypanel/panel/admin/SettingAdmin.py:124
 msgid "lang.en"
 msgstr "English انگلیسی 英语"
 
 # | msgid "Persian فارسی 波斯语"
 #: hiddifypanel/panel/admin/QuickSetup.py:65
-#: hiddifypanel/panel/admin/QuickSetup.py:66
 #: hiddifypanel/panel/admin/SettingAdmin.py:124
 msgid "lang.fa"
 msgstr "Persian فارسی 波斯语"
@@ -306,19 +304,6 @@ msgstr "Persian فارسی 波斯语"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.admin_lang.description"
 msgstr "Choose language for Admin area."
-
-# | msgid "User Area Language"
-#: hiddifypanel/panel/admin/QuickSetup.py:66
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-#: hiddifypanel/panel/admin/templates/quick_setup.html:30
-msgid "config.lang.label"
-msgstr "User Area Language"
-
-# | msgid "Choose language for Users area."
-#: hiddifypanel/panel/admin/QuickSetup.py:66
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.lang.description"
-msgstr "Choose language for Users area."
 
 # | msgid "Error! Invalid domain.  The domain format is www.google.com"
 #: hiddifypanel/panel/admin/QuickSetup.py:83
@@ -351,24 +336,8 @@ msgid "config.telegram_enable.description"
 msgstr ""
 "Telegram MT Proxy is used for encapsulate telegram proxy as a TLS traffic"
 
-# | msgid "Enable vmess"
-#: hiddifypanel/panel/admin/QuickSetup.py:90
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.vmess_enable.label"
-msgstr "Enable vmess"
-
-# | msgid ""
-# | "It is reported by several people that vmess causes the system to be "
-# | "detected by the government. So it is not recommended"
-#: hiddifypanel/panel/admin/QuickSetup.py:90
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.vmess_enable.description"
-msgstr ""
-"It is reported by several people that vmess causes the system to be detected"
-" by the government. So it is not recommended"
-
 # | msgid "Firewall"
-#: hiddifypanel/panel/admin/QuickSetup.py:91
+#: hiddifypanel/panel/admin/QuickSetup.py:90
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.firewall.label"
 msgstr "Firewall"
@@ -377,7 +346,7 @@ msgstr "Firewall"
 # | "Enabling firewall will open used ports (at least 22,443,80) and close all
 # "
 # | "other ports"
-#: hiddifypanel/panel/admin/QuickSetup.py:91
+#: hiddifypanel/panel/admin/QuickSetup.py:90
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.firewall.description"
 msgstr ""
@@ -385,7 +354,7 @@ msgstr ""
 "other ports"
 
 # | msgid "Block Iranian sites"
-#: hiddifypanel/panel/admin/QuickSetup.py:92
+#: hiddifypanel/panel/admin/QuickSetup.py:91
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.block_iran_sites.label"
 msgstr "Block Iranian sites"
@@ -394,12 +363,28 @@ msgstr "Block Iranian sites"
 # | "Block Iranian sites to prevent detection by the government (Experimental:
 # "
 # | "If there is a problem, please disable it and tell us.)"
-#: hiddifypanel/panel/admin/QuickSetup.py:92
+#: hiddifypanel/panel/admin/QuickSetup.py:91
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.block_iran_sites.description"
 msgstr ""
 "Block Iranian sites to prevent detection by the government (Experimental: If"
 " there is a problem, please disable it and tell us.)"
+
+# | msgid "Enable vmess"
+#: hiddifypanel/panel/admin/QuickSetup.py:92
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.vmess_enable.label"
+msgstr "Enable vmess"
+
+# | msgid ""
+# | "It is reported by several people that vmess causes the system to be "
+# | "detected by the government. So it is not recommended"
+#: hiddifypanel/panel/admin/QuickSetup.py:92
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.vmess_enable.description"
+msgstr ""
+"It is reported by several people that vmess causes the system to be detected"
+" by the government. So it is not recommended"
 
 # | msgid "Decoy Site"
 #: hiddifypanel/panel/admin/QuickSetup.py:93
@@ -617,6 +602,17 @@ msgstr "Admin Settings"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.admin.description"
 msgstr "Admin section is for configuring admin related settings"
+
+# | msgid "User Area Language"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#: hiddifypanel/panel/admin/templates/quick_setup.html:30
+msgid "config.lang.label"
+msgstr "User Area Language"
+
+# | msgid "Choose language for Users area."
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.lang.description"
+msgstr "Choose language for Users area."
 
 # | msgid "User Page Title"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1252,15 +1248,19 @@ msgid "admin.quicksetup.title"
 msgstr "Quick Setup"
 
 # | msgid ""
-# | "Your server's IPs are: IPv4: %(ipv4)s and IPv6: %(ipv6)s.\n"
-# | "<br>\n"
+# | "Your server's IPs are: \n"
+# | "<div >\n"
+# | "IPv4: %(ipv4)s <br> IPv6: %(ipv6)s\n"
+# | "</div>\n"
 # | "Set these IPs on your domain or subdomain and enter your domain or "
 # | "subdomain in the bellow box.\n"
 #: hiddifypanel/panel/admin/templates/quick_setup.html:48
 msgid "admin.quicksetup_intro"
 msgstr ""
-"Your server's IPs are: IPv4: %(ipv4)s and IPv6: %(ipv6)s.\n"
-"<br>\n"
+"Your server's IPs are: \n"
+"<div >\n"
+"IPv4: %(ipv4)s <br> IPv6: %(ipv6)s\n"
+"</div>\n"
 "Set these IPs on your domain or subdomain and enter your domain or subdomain in the bellow box.\n"
 
 # | msgid "Emergency Link"
