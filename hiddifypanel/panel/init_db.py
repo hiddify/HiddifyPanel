@@ -112,7 +112,11 @@ def _v3():
 def _v4():
         db.session.bulk_save_objects([
             *get_proxy_rows_v2()
-        ])        
+        ])
+
+def _v5():
+    Proxy.query.filter(Proxy.name=='tls XTLS direct trojan').delete()
+
 def init_db():
     
     try:
@@ -125,7 +129,7 @@ def init_db():
     db_version=int(hconfig(ConfigEnum.db_version) or 0) 
     print(f"Current DB version is {db_version}")
 
-    db_actions={1:_v1,2:_v2,3:_v3,4:_v4}
+    db_actions={1:_v1,2:_v2,3:_v3,4:_v4,5:_v5}
     for ver,db_action in db_actions.items():
         if ver<=db_version:continue
         print(f"Updating db from version {db_version}")
@@ -152,7 +156,7 @@ def get_proxy_rows_v1():
         # 'grpc Fake trojan',
         # 'grpc Fake vmess',
         # "XTLS direct vless",
-        "XTLS direct trojan",
+        # "XTLS direct trojan",
         "WS direct vless",
         "WS direct trojan",
         "WS direct vmess",
