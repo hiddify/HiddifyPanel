@@ -10,7 +10,10 @@
 
 %if g.temp_admin_link
 {% macro temp_link() -%}
-  <a target='_blank' href='{{g.temp_admin_link}}' class='btn btn-danger copy-link'>{{_('Temporary Link')}}</a>  
+<div class="btn-group">
+  <a href='{{g.temp_admin_link}}' class="btn btn-secondary copy-link"><i class="fa-regular fa-copy"></i></a>
+  <a target='_blank' href='{{g.temp_admin_link}}' class='btn btn-danger'>{{_('Temporary Link')}}</a>  
+</div>
 {%- endmacro -%}  
 
 <div class="alert alert-warning">
