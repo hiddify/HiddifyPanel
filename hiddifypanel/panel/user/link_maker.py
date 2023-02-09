@@ -124,7 +124,7 @@ def make_proxy(proxy):
         return base
 
     if "XTLS" in name:
-        base['flow']='xtls-rprx-vision' if proxy.transport=='XTLSVision' else 'xtls-rprx-direct'
+        base['flow']='xtls-rprx-vision'
         return {**base, 'transport': 'tcp', 'l3': 'xtls', 'alpn':'h2'}
     if "tcp" in name:
         base['transport']='tcp'

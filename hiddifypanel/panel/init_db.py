@@ -109,13 +109,15 @@ def _v3():
             BoolConfig(key=ConfigEnum.v2ray_enable,value=False),
         ])
 
-def _v4():
-        db.session.bulk_save_objects([
-            *get_proxy_rows_v2()
-        ])
-
-def _v5():
-    Proxy.query.filter(Proxy.name=='tls XTLS direct trojan').delete()
+def _v6():
+    try:
+        Proxy.query.filter(Proxy.name=='tls XTLS direct trojan').delete()
+        Proxy.query.filter(Proxy.name=='tls XTLSVision direct trojan').delete()
+    except:
+        pass
+    db.session.bulk_save_objects([
+        *make_proxy_rows(["XTLS direct vless"])
+    ])
 
 def init_db():
     
@@ -129,7 +131,7 @@ def init_db():
     db_version=int(hconfig(ConfigEnum.db_version) or 0) 
     print(f"Current DB version is {db_version}")
 
-    db_actions={1:_v1,2:_v2,3:_v3,4:_v4,5:_v5}
+    db_actions={1:_v1,2:_v2,3:_v3,6:_v6}
     for ver,db_action in db_actions.items():
         if ver<=db_version:continue
         print(f"Updating db from version {db_version}")
