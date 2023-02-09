@@ -40,6 +40,9 @@ legend {
   .modal{
     z-index: 4999;
   }
+  .daterangepicker {
+    z-index: 5000;
+  }
 
   .main-sidebar{
     font-size: 0.9em;

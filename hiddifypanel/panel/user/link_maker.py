@@ -56,7 +56,7 @@ def make_proxy(proxy):
         'mode':"CDN" if is_cdn else "direct",
         'l3': l3,
         'port': port,
-        'server':domain if is_cdn else g.direct_host,
+        'server':g.cdn_forced_host if is_cdn else g.direct_host,
         'sni':domain,
         'uuid':str(g.user_uuid),
         'proto':proxy.proto,

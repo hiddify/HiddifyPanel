@@ -82,11 +82,13 @@ class ConfigEnum(StrEnum):
     branding_site=auto()
     branding_freetext=auto()
     not_found=auto()
+    cdn_forced_host=auto()
     @classmethod
     def _missing_(cls, value):
       return cls.not_found #"key not found"
     def info(self):
         map = {
+            self.cdn_forced_host:{'category': ConfigCategory.proxies},
             self.branding_title:{'category': ConfigCategory.branding},
             self.branding_site:{'category': ConfigCategory.branding},
             self.branding_freetext:{'category': ConfigCategory.branding},
@@ -184,15 +186,13 @@ class User(db.Model, SerializerMixin):
     name = db.Column(db.String(512), nullable=False)
     # monthly_usage_limit=db.Column(db.BigInteger,default=100,nullable=False)
     # current_usage=db.Column(db.BigInteger,default=0,nullable=False)
+    expiry_time = db.Column(db.Date, default=datetime.date.today() + relativedelta.relativedelta(months=6))
     usage_limit_GB = db.Column(db.Numeric(
         6, 9, asdecimal=False), default=1000, nullable=False)
+    monthly=db.Column(db.Boolean,default=False)
     current_usage_GB = db.Column(db.Numeric(
         6, 9, asdecimal=False), default=0, nullable=False)
-    
-    monthly=db.Column(db.Boolean,default=False)
 
-    expiry_time = db.Column(
-        db.Date, default=datetime.date.today() + relativedelta.relativedelta(months=6))
     last_reset_time = db.Column(db.Date, default=datetime.date.today())
 
 

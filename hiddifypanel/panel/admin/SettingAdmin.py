@@ -136,6 +136,8 @@ def get_config_form():
                 validators=[]
                 if c.key==ConfigEnum.domain_fronting_domain:
                     validators.append(wtf.validators.Regexp("^([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})|$",re.IGNORECASE,_("config.Invalid domain")))
+                elif c.key==ConfigEnum.cdn_forced_host:
+                    validators.append(wtf.validators.Regexp("(^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d).){3}(25[0-5]|(2[0-4]|1\d|[1-9]|)\d)$)|^([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})$",re.IGNORECASE,_("config.Invalid IP or domain")))
                 elif 'domain' in c.key:
                     validators.append(wtf.validators.Regexp("^([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})$",re.IGNORECASE,_("config.Invalid domain")))
                     if c.key!=ConfigEnum.decoy_domain:
@@ -172,7 +174,7 @@ def get_config_form():
                 field= wtf.fields.StringField(_(f'config.{c.key}.label'), validators, default=c.value, description=_(f'config.{c.key}.description'),render_kw=render_kw) 
             setattr(CategoryForm,c.key , field)    
 
-        multifield=wtf.fields.FormField(CategoryForm,_(f'config.{cat}.label'))
+        multifield=wtf.fields.FormField(CategoryForm,Markup('<i class="fa-solid fa-plus"></i>&nbsp'+_(f'config.{cat}.label')))
             
         setattr(DynamicForm, cat,  multifield)    
 

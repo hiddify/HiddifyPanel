@@ -75,6 +75,7 @@ def get_common_data(user_uuid):
     if user is None:
         abort(401,"Invalid User")
     g.domain=domain
+    g.cdn_forced_host=hconfig(ConfigEnum.cdn_forced_host) or domain
     g.direct_host=direct_host
     g.is_cdn=is_cdn
     return {

@@ -50,5 +50,24 @@
         column-count: 2;
     }
 }
+fieldset {
+    box-shadow:none;
+    margin-bottom:0px;
+}
+
 </style>
+
 {% endblock %}
+
+% block tail
+{{super()}}
+<script>
+// $("fieldset .form-group").hide()
+$("fieldset").filter(function() { return !($(this).children().children().is('.invalid-feedback')); }).find('.form-group').hide()
+$("fieldset legend").click(function(e){
+    $(this.parentNode).find('.form-group').toggle('fade')
+    
+    
+})
+</script>
+%endblock

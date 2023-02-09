@@ -112,7 +112,8 @@ def get_all_proxy_form(empty=False):
 
             multifield=wtf.fields.FormField(ProtoForm,proto)
             setattr(CDNForm, proto,  multifield)
-        multifield=wtf.fields.FormField(CDNForm,cdn)
+        field_name=cdn if cdn!="Fake" else _('config.domain_fronting.label')
+        multifield=wtf.fields.FormField(CDNForm,field_name)
         setattr(DynamicForm, cdn,  multifield)
     setattr(DynamicForm,"submit_detail",wtf.fields.SubmitField(_('Submit')))
     if empty:
