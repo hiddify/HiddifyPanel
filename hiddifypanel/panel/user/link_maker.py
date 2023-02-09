@@ -253,7 +253,8 @@ def to_clash(proxy,meta_or_normal):
         base["uuid"]= proxy["uuid"]
         base["servername"]= proxy["sni"]
         base["tls"]= proxy["l3"]=="tls"
-    base['client-fingerprint']="random"
+    if meta_or_normal=="meta":
+        base['client-fingerprint']="random"
     if "xtls" == proxy['l3']:
         base["flow"]= proxy['flow']
         base["flow-show"]= True
