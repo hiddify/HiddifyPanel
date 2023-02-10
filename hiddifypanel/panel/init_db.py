@@ -119,11 +119,13 @@ def _v6():
         *make_proxy_rows(["XTLS direct vless"])
     ])
 
-def _v7():
-    pass
-        # db.session.bulk_save_objects([
-        #     StrConfig(key=ConfigEnum.cdn_forced_host,value=""),
-        # ])
+def _v8():
+    db.session.bulk_save_objects([
+        *make_proxy_rows([
+        "grpc direct vless",
+        "grpc direct trojan",
+        "grpc direct vmess"])
+    ])
 def init_db():
     
     try:
@@ -140,7 +142,7 @@ def init_db():
     db_version=int(hconfig(ConfigEnum.db_version) or 0) 
     print(f"Current DB version is {db_version}")
 
-    db_actions={1:_v1,2:_v2,3:_v3,6:_v6}
+    db_actions={1:_v1,2:_v2,3:_v3,6:_v6,8:_v8}
     for ver,db_action in db_actions.items():
         if ver<=db_version:continue
         print(f"Updating db from version {db_version}")
@@ -156,8 +158,7 @@ def init_db():
 
 
 
-def get_proxy_rows_v2():
-    return make_proxy_rows(["XTLSVision direct trojan"])
+
 def get_proxy_rows_v1():
     return make_proxy_rows([   
         'WS Fake vless',

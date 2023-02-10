@@ -60,9 +60,11 @@ def do_base_64(str):
 def get_common_data(user_uuid):
     
     
-    o = urlparse(request.base_url)
-    db_domain=Domain.query.filter(Domain.domain==o.hostname).first()
-    domain=o.hostname
+    
+    domain=urlparse(request.base_url).hostname
+    
+    db_domain=Domain.query.filter(Domain.domain==domain).first()
+    
     direct_host= domain
     g.is_cdn=False
     g.cdn_forced_host=domain

@@ -49,7 +49,7 @@ def make_proxy(proxy):
     name=proxy.name   
     is_cdn="CDN" in name
     if is_cdn and not g.is_cdn:
-        return
+            return
     direct_host=domain if is_cdn else g.direct_host
     
     base={
@@ -100,6 +100,7 @@ def make_proxy(proxy):
             'trojan': f'/{hconfigs[ConfigEnum.proxy_path]}/trtc',
             'vmess':f'/{hconfigs[ConfigEnum.proxy_path]}/vmtc'
     }
+    
     grpc_service_name={
         'vless':f'{hconfigs[ConfigEnum.proxy_path]}-vlgrpc',
         'vmess':f'{hconfigs[ConfigEnum.proxy_path]}-vmgrpc',
@@ -124,7 +125,7 @@ def make_proxy(proxy):
         base['fakedomain']=hconfig(ConfigEnum.shadowtls_fakedomain)
         base['mode']='ShadowTLS'
         return base
-
+    
     if "XTLS" in name:
         base['flow']='xtls-rprx-vision'
         return {**base, 'transport': 'tcp', 'l3': 'xtls', 'alpn':'h2'}
@@ -137,7 +138,8 @@ def make_proxy(proxy):
         base['path']=ws_path[base["proto"]]
         base["host"]=domain
         return base
-    if "grpc" in name:
+    
+    if proxy.transport == "grpc":
         base['transport']='grpc'
         base['grpc_mode']="multi"
         base['grpc_service_name']=grpc_service_name[base["proto"]]
@@ -147,7 +149,7 @@ def make_proxy(proxy):
         base['transport']= 'tcp'
         base['alpn']='http/1.1'
         return base
-    return {'name': name, 'error':True}
+    return {'name': name, 'error':True,'proto':proxy.proto}
 
 
 def to_link(proxy):
@@ -190,7 +192,7 @@ def to_link(proxy):
         return f'{baseurl}?flow={proxy["flow"]}&security=tls&type=tcp{infos}'
     if proxy['l3']=='http':
         return f'{baseurl}?security=none{infos}'
-    if proxy['l3']=='tls':
+    if proxy['l3']=='tls' :
         return f'{baseurl}?security=tls{infos}'
     
 

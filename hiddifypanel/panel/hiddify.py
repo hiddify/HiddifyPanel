@@ -137,6 +137,9 @@ def get_available_proxies():
     
     if not hconfig(ConfigEnum.http_proxy_enable):
         proxies=[c for c in proxies if 'http' != c.l3]
+    
+    if not Domain.query.filter(Domain.mode==DomainType.cdn).first():
+        proxies=[c for c in proxies if c.cdn!="CDN"]
     return proxies
 
 
