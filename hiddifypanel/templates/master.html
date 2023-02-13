@@ -1,4 +1,5 @@
 {% from 'bootstrap4/utils.html' import render_messages %}
+{% from 'macros.html' import render_toast %}
 
 <!DOCTYPE html>
 <html>
@@ -21,9 +22,12 @@
   <link rel="stylesheet" href="{{ url_for('static', filename="css/adminlte.css" ) }}">
 
 
-  <link rel="stylesheet" href="{{url_for('static',filename='plugins/datatables/dataTables.bootstrap4.css')}}">
+  <!-- <link rel="stylesheet" href="{{url_for('static',filename='plugins/datatables/dataTables.bootstrap4.css')}}">
   <link rel="stylesheet" href="{{url_for('static',filename='plugins/datatables/extensions/Responsive/css/dataTables.responsive.css')}}">
-  <link rel="stylesheet" href="{{url_for('static',filename='plugins/datatables/extensions/Responsive/css/responsive.bootstrap4.min.css')}}">
+  <link rel="stylesheet" href="{{url_for('static',filename='plugins/datatables/extensions/Responsive/css/responsive.bootstrap4.min.css')}}"> -->
+
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap4.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.bootstrap4.min.css">
 
   <link rel="stylesheet" href="{{ url_for('static', filename="css/custom.css" ) }}">  
   % if get_locale()=='fa'
@@ -66,7 +70,7 @@
         
         {% block messages %}
         {# layout.messages() #}
-        {{ render_messages() }}
+        {# render_messages() #}
 
     {% endblock %}
 
@@ -140,8 +144,13 @@
 
 <!-- jQuery -->
 <script src="{{ url_for('static', filename="plugins/jquery/jquery.min.js" ) }}"></script>
+<script src="{{ url_for('static', filename="plugins/bootstrap/js/bootstrap.min.js" ) }}"></script>
+
+
+<!-- <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
+
 <script src="{{ url_for('static', filename="js/moment.min.js" ) }}"></script>
-{#<script src="{{ url_for('static', filename="plugins/select2/select2.min.js" ) }}"></script>#}
+<!-- {#<script src="{{ url_for('static', filename="plugins/select2/select2.min.js" ) }}"></script>#} -->
 
 
 
@@ -151,10 +160,17 @@
 <script src="{{ url_for('static', filename="plugins/bootstrap/js/bootstrap.bundle.min.js" ) }}"></script>
 <script src="{{ url_for('static', filename="js/popper.min.js" ) }}"></script> 
 
-<script src="{{ url_for('static', filename='plugins/datatables/jquery.dataTables.js' ) }}"></script>
+<script src="{{ url_for('static', filename='plugins/datatables/jquery.dataTables.min.js' ) }}"></script>
 <script src="{{ url_for('static', filename='plugins/datatables/dataTables.bootstrap4.js' ) }}"></script>
-
+<script src="{{ url_for('static', filename='plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js' ) }}"></script>
 <script src="{{ url_for('static', filename='plugins/datatables/extensions/Responsive/js/responsive.bootstrap4.min.js' ) }}"></script>
+<!-- <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap4.min.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/responsive/2.4.0/js/responsive.bootstrap4.min.js"></script> -->
+
+
+
 
 <!-- AdminLTE App -->
 <script src="{{ url_for('static', filename='js/adminlte.js' ) }}"></script>
@@ -183,6 +199,7 @@
   qrcode = new QRCode(document.getElementById("qrcode"), { width: w, height: w, correctLevel: 1 });
   function share_click(e) {
         e.preventDefault();
+        
         var link = this.getAttribute('data-copy')|| this.href;
         qrcode.clear()
         qrcode.makeCode(link);
@@ -214,6 +231,16 @@
 {% block tail %}
 <script>
   $(document).ready(function () {
+    
+    {% for cat, msg in get_flashed_messages(with_categories=True) %}
+    $(document).Toasts('create', {
+        class: 'bg-{{cat}}',
+        position: '{{'topLeft' if get_locale()=='fa' else 'topRight'}}' ,
+        
+        
+        body: `{{msg}}`
+      })
+    {% endfor %}
   $('a.copy-link').click(copy_click)
   $('a.share-link').click(share_click)
   //   $("input").each((i,e)=>{

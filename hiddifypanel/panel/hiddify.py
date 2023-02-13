@@ -143,8 +143,8 @@ def get_available_proxies():
     return proxies
 
 
-def flash_config_success(full_install=False):
-    url=url_for('admin.Actions:'+('reinstall' if full_install else 'apply_configs'))
+def flash_config_success(full_install=False,domain_changed=True):
+    url=url_for('admin.Actions:reinstall',complete_install=full_install,domain_changed=domain_changed)
     apply_btn=f"<a href='{url}' class='btn btn-primary form_post'>"+_("admin.config.apply_configs")+"</a>"
     flash((_('config.validation-success',link=apply_btn)), 'success')
 

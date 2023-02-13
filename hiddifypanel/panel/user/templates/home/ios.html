@@ -1,46 +1,25 @@
-<div class="col">
-  <div class="card card-info card-outline">
-    <div class="card-header">
-      <h3 class="card-title" data-widget="collapse">
-        {{_("user.home.ios.stash.title")}}
-      </h3>
 
-      <div class="card-tools">
-        <button type="button" class="btn btn-tool" data-widget="collapse"><i class="fa fa-plus"></i>
-        </button>
-      </div>
-      <!-- /.card-tools -->
-    </div>
-    <!-- /.card-header -->
-    <div class="card-body">
+<div class="col">
+  {{_("Please select one of the following applications:")}}
+      <details  data-widget="collapse">
+        <summary class="callout callout-success">
+        {{_("user.home.ios.stash.title")}}
+      </summary>
+      <br>
       {{_("user.home.ios.stash.intro")}}
       <br>
       {% with show_meta=True %}
       {% include "home/clash-links.html" %}
       {% endwith %}
-    </div>
-    <!-- /.card-body -->
-  </div>
-  <!-- /.card -->
-</div>
-<!-- /.col -->
+        
+</details>
 
-
-<div class="col">
-  <div class="card card-info  card-outline">
-    <div class="card-header">
-      <h3 class="card-title" data-widget="collapse">
+  <details  data-widget="collapse">
+    <summary class="callout callout-success">
         {{_("user.home.ios.others.title")}}
-      </h3>
+      </summary>
 
-      <div class="card-tools">
-        <button type="button" class="btn btn-tool" data-widget="collapse"><i class="fa fa-plus"></i>
-        </button>
-      </div>
-      <!-- /.card-tools -->
-    </div>
-    <!-- /.card-header -->
-    <div class="card-body">
+      
       {{_("user.home.ios.others.intro")}}
       <br>
       % for type in link_maker.all_proxies()
@@ -51,11 +30,7 @@
       % endfor
 
 
-
-
-    </div>
-    <!-- /.card-body -->
-  </div>
-  <!-- /.card -->
+    </details>
+    
 </div>
 <!-- /.col -->

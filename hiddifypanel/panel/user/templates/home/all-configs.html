@@ -1,71 +1,72 @@
 {{_("user.home.tool.all-configs")}}
 
-
+<div class="col">
 <table id="all-links" class="table table-bordered table-striped dt-responsive nowrap" style="width:100%">
-    <thead>
+  <thead>
     <tr>
       <th>{{_('user.home.allconfig.name')}}</th>
       <th>{{_('user.home.allconfig.type')}}</th>
       <th>{{_('user.home.allconfig.protocol')}}</th>
-      <th>{{_('user.home.allconfig.transport')}}</th>     
-      <th>{{_('user.home.allconfig.security')}}</th>     
-      
+      <th>{{_('user.home.allconfig.transport')}}</th>
+      <th>{{_('user.home.allconfig.security')}}</th>
+
     </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-                <div class="btn-group">
-                    <a href="clashmeta://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/meta/all.yml&name=meta_normal_{{domain}}"
-        class="btn btn-light orig-link"> {{_('user.home.allconfig.hiddify-configs')}}</a>
-                </div>
-            </td>
-            <td><span class="badge badge-danger">{{_('all')}}</span></td>
-            <td><span class="badge badge-info">{{_('all')}}</span></td>
-            <td><span class="badge badge-warning">{{_('all')}}</span></td>     
-            <td><span class="badge badge-success">{{_('all')}}</span></td>     
-          </tr>
-          <tr>
-            <td>
-                <div class="btn-group">
-                    <a href="clash://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/all.yml&name=new_normal_{{domain}}"
-                    class="btn btn-light orig-link"> {{_('user.home.allconfig.clash-configs')}}</a>
-                </div>
-            </td>
-            <td><span class="badge badge-danger">{{_('all')}}</span></td>
-            <td><span class="badge badge-info">{{_('user.home.allconfigs.expect_vless')}}</span></td>
-            <td><span class="badge badge-warning">{{_('all')}}</span></td>     
-            <td><span class="badge badge-success">{{_('all')}}</span></td>     
-          </tr>
-        <tr>
-            <td>
-                <div class="btn-group">
-                    <a href="https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/all.txt?name=new_link_{{domain}}"
-                    class="btn btn-light orig-link"> {{_('user.home.allconfig.link-configs')}}</a>
-                </div>
-            </td>
-            <td><span class="badge badge-danger">{{_('all')}}</span></td>
-            <td><span class="badge badge-info">{{_('all')}}</span></td>
-            <td><span class="badge badge-warning">{{_('all')}}</span></td>     
-            <td><span class="badge badge-success">{{_('all')}}</span></td>        
-          </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <div class="btn-group">
+          <a href="clashmeta://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/meta/all.yml&name=meta_normal_{{domain}}"
+            class="btn btn-light orig-link"> {{_('user.home.allconfig.hiddify-configs')}}</a>
+        </div>
+      </td>
+      <td><span class="badge badge-danger">{{_('all')}}</span></td>
+      <td><span class="badge badge-info">{{_('all')}}</span></td>
+      <td><span class="badge badge-warning">{{_('all')}}</span></td>
+      <td><span class="badge badge-success">{{_('all')}}</span></td>
+    </tr>
+    <tr>
+      <td>
+        <div class="btn-group">
+          <a href="clash://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/all.yml&name=new_normal_{{domain}}"
+            class="btn btn-light orig-link"> {{_('user.home.allconfig.clash-configs')}}</a>
+        </div>
+      </td>
+      <td><span class="badge badge-danger">{{_('all')}}</span></td>
+      <td><span class="badge badge-info">{{_('user.home.allconfigs.expect_vless')}}</span></td>
+      <td><span class="badge badge-warning">{{_('all')}}</span></td>
+      <td><span class="badge badge-success">{{_('all')}}</span></td>
+    </tr>
+    <tr>
+      <td>
+        <div class="btn-group">
+          <a href="https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/all.txt?name=new_link_{{domain}}"
+            class="btn btn-light orig-link"> {{_('user.home.allconfig.link-configs')}}</a>
+        </div>
+      </td>
+      <td><span class="badge badge-danger">{{_('all')}}</span></td>
+      <td><span class="badge badge-info">{{_('all')}}</span></td>
+      <td><span class="badge badge-warning">{{_('all')}}</span></td>
+      <td><span class="badge badge-success">{{_('all')}}</span></td>
+    </tr>
 
-        % for type in link_maker.all_proxies()
-        
-        {% set pinfo=link_maker.make_proxy(type) %}
-        % if pinfo!=None
-        <tr>
-            <td><div class="btn-group"><a href='{{link_maker.to_link(pinfo)}}' class="btn btn-light orig-link">{{pinfo["name"].replace("_", " ")}}</a></div></td>
-            <td><span class="badge badge-danger">{{pinfo["mode"]}}</span></td>
-            <td><span class="badge badge-info">{{pinfo["proto"]}}</span></td>
-            <td><span class="badge badge-warning">{{pinfo['transport']}}</span></td>     
-            <td><span class="badge badge-success">{{pinfo['l3']}}</span></td>     
-          </tr>
-          % endif
-          
-          %endfor
-        </tbody>
-        </table>
+    % for type in link_maker.all_proxies()
 
+    {% set pinfo=link_maker.make_proxy(type) %}
+    % if pinfo!=None
+    <tr>
+      <td>
+        <div class="btn-group"><a href='{{link_maker.to_link(pinfo)}}'
+            class="btn btn-light orig-link">{{pinfo["name"].replace("_", " ")}}</a></div>
+      </td>
+      <td><span class="badge badge-danger">{{pinfo["mode"]}}</span></td>
+      <td><span class="badge badge-info">{{pinfo["proto"]}}</span></td>
+      <td><span class="badge badge-warning">{{pinfo['transport']}}</span></td>
+      <td><span class="badge badge-success">{{pinfo['l3']}}</span></td>
+    </tr>
+    % endif
 
-
+    %endfor
+  </tbody>
+</table>
+</div>

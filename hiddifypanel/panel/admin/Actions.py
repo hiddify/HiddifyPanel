@@ -60,7 +60,8 @@ class Actions(FlaskView):
         return status
     
     @route('reinstall', methods=['POST'])
-    def reinstall(self,complete_install=True):
+    def reinstall(self,complete_install=True,domain_changed=True):
+        flash(f'complete_install={complete_install} domain_changed={domain_changed}', 'info')
         config=current_app.config
         hiddify.add_temporary_access()
         file="install.sh" if complete_install else "apply_configs.sh"
@@ -87,7 +88,7 @@ class Actions(FlaskView):
                             out_type="success",
                             out_msg=_("Success! Please wait around 4 minutes to make sure everything is updated. During this time, please save your proxy links which are:")+
                                     admin_links,
-                            log_path=f"https://{domains[0]}/{proxy_path}/{admin_secret}/admin/actions/reverselog/0-install.log/"
+                            log_path=(f"https://{domains[0]}" if domain_changed else "")+f"/{proxy_path}/{admin_secret}/admin/actions/reverselog/0-install.log/"
                             
         )
 

@@ -29,12 +29,15 @@ def init_app(app):
         if 'proxy_path' not in values:
             # values['proxy_path']=f'{g.proxy_path}'
             values['proxy_path']=hconfig(ConfigEnum.proxy_path)
+
+        
     
     @app.url_value_preprocessor
     def pull_secret_code(endpoint, values):
         # print("Y",endpoint, values)
         # if values is None:
         #     return 
+        
         g.user=None
         g.user_uuid = None
         g.is_admin = False

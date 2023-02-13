@@ -58,3 +58,60 @@
     </a>
     {% if _use_li %}</li>{% endif %}
 {% endmacro %}
+
+
+
+
+
+
+
+
+
+
+{% extends 'base/utils.html' %}
+
+{#  This macro was part of Flask-Bootstrap and was modified under the terms of
+    its BSD License. Copyright (c) 2013, Marc Brinkmann. All rights reserved. #}
+
+{# versionadded: New in 1.2.0 #}
+
+{% macro render_toast(messages=None, container=False, transform={
+     'critical': 'danger',
+     'error': 'danger',
+     'info': 'info',
+     'warning': 'warning',
+     'debug': 'primary',
+     'notset': 'primary',
+     'message': 'primary',
+    }, default_category=config.BOOTSTRAP_MSG_CATEGORY, dismissible=False, dismiss_animate=False) -%}
+   
+    {% with messages = messages or get_flashed_messages(with_categories=True) -%}
+    {% if messages -%} {# don't output anything if there are no messages #}
+
+    <div role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-autohide="false">
+        <!-- Position it -->
+        <div  style="position: absolute; top: 0; right: 0; z-index: 9999;">
+
+    {% for cat, msg in messages %}
+    <div role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-autohide="false">
+
+    <div class="toast-header">
+        <img src="..." class="rounded mr-2" alt="...">
+        <strong class="mr-auto">Bootstrap</strong>
+        <small>11 mins ago</small>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+        <div class="toast bg-{{ transform.get(cat.lower(), cat or default_category) }}{% if dismissible %} alert-dismissible {% if dismiss_animate %}fade show{% endif %}{% endif %}" role="alert" aria-live="assertive" aria-atomic="true">
+    {% if dismissible %}
+        <button type="button" class="close" data-dismiss="toast" aria-label="Close"><span aria-hidden="true">&times;</span></button>{% endif %}
+           {{ msg }}
+        </div>
+    {%- endfor -%}
+</div>
+</div>
+</div>
+    {% endif -%}
+    {% endwith -%}
+{% endmacro -%}

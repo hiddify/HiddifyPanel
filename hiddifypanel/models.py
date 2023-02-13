@@ -88,7 +88,7 @@ class ConfigEnum(StrEnum):
       return cls.not_found #"key not found"
     def info(self):
         map = {
-            self.cdn_forced_host:{'category': ConfigCategory.proxies},
+            self.cdn_forced_host:{'category': ConfigCategory.proxies,},
             self.branding_title:{'category': ConfigCategory.branding},
             self.branding_site:{'category': ConfigCategory.branding},
             self.branding_freetext:{'category': ConfigCategory.branding},
@@ -96,46 +96,46 @@ class ConfigEnum(StrEnum):
             self.admin_secret: {'category': ConfigCategory.admin},
             self.lang: {'category': ConfigCategory.branding},
             self.admin_lang: {'category': ConfigCategory.admin},
-            self.tls_ports: {'category': ConfigCategory.tls},
-            self.http_ports: {'category': ConfigCategory.http},
-            self.kcp_ports: {'category': ConfigCategory.kcp},
-            self.kcp_enable: {'category': ConfigCategory.kcp,'type':bool},
-            self.decoy_domain: {'category': ConfigCategory.general},
-            self.proxy_path: {'category': ConfigCategory.hidden},
-            self.firewall: {'category': ConfigCategory.general},
-            self.netdata: {'category': ConfigCategory.general},
+            self.tls_ports: {'category': ConfigCategory.tls,'apply_mode':'apply'},
+            self.http_ports: {'category': ConfigCategory.http,'apply_mode':'apply'},
+            self.kcp_ports: {'category': ConfigCategory.kcp,'apply_mode':'apply'},
+            self.kcp_enable: {'category': ConfigCategory.kcp,'type':bool,'apply_mode':'apply'},
+            self.decoy_domain: {'category': ConfigCategory.general,'apply_mode':'apply'},
+            self.proxy_path: {'category': ConfigCategory.hidden,'apply_mode':'apply'},
+            self.firewall: {'category': ConfigCategory.general,'apply_mode':'apply'},
+            self.netdata: {'category': ConfigCategory.general,'apply_mode':'apply'},
             self.http_proxy_enable: {'category': ConfigCategory.http,'type':bool},
-            self.block_iran_sites: {'category': ConfigCategory.proxies,'type':bool},
-            self.allow_invalid_sni: {'category': ConfigCategory.tls,'type':bool},
-            self.auto_update: {'category': ConfigCategory.general,'type':bool},
-            self.speed_test: {'category': ConfigCategory.general,'type':bool},
-            self.only_ipv4: {'category': ConfigCategory.general,'type':bool},
-            self.torrent_block: {'category': ConfigCategory.general,'type':bool},
+            self.block_iran_sites: {'category': ConfigCategory.proxies,'type':bool,'apply_mode':'apply'},
+            self.allow_invalid_sni: {'category': ConfigCategory.tls,'type':bool,'apply_mode':'apply'},
+            self.auto_update: {'category': ConfigCategory.general,'type':bool,'apply_mode':'apply'},
+            self.speed_test: {'category': ConfigCategory.general,'type':bool,'apply_mode':'apply'},
+            self.only_ipv4: {'category': ConfigCategory.general,'type':bool,'apply_mode':'apply'},
+            self.torrent_block: {'category': ConfigCategory.general,'type':bool,'apply_mode':'apply'},
 
-            self.shared_secret: {'category': ConfigCategory.proxies},
+            self.shared_secret: {'category': ConfigCategory.proxies,'apply_mode':'apply'},
 
-            self.telegram_enable: {'category': ConfigCategory.telegram,'type':bool},
+            self.telegram_enable: {'category': ConfigCategory.telegram,'type':bool,'apply_mode':'apply'},
             # telegram_secret:{'category':'general'},
-            self.telegram_adtag: {'category': ConfigCategory.telegram},
-            self.telegram_fakedomain: {'category': ConfigCategory.telegram},
-            self.telegram_lib: {'category': ConfigCategory.telegram},
+            self.telegram_adtag: {'category': ConfigCategory.telegram,'apply_mode':'apply'},
+            self.telegram_fakedomain: {'category': ConfigCategory.telegram,'apply_mode':'apply'},
+            self.telegram_lib: {'category': ConfigCategory.telegram,'apply_mode':'reinstall'},
 
-            self.v2ray_enable: {'category': ConfigCategory.proxies,'type':bool},
+            self.v2ray_enable: {'category': ConfigCategory.proxies,'type':bool,'apply_mode':'apply'},
 
-            self.ssfaketls_enable: {'category': ConfigCategory.ssfaketls,'type':bool},
+            self.ssfaketls_enable: {'category': ConfigCategory.ssfaketls,'type':bool,'apply_mode':'apply'},
             # ssfaketls_secret:{'category':'ssfaketls'},
-            self.ssfaketls_fakedomain: {'category': ConfigCategory.ssfaketls},
+            self.ssfaketls_fakedomain: {'category': ConfigCategory.ssfaketls,'apply_mode':'apply'},
 
-            self.shadowtls_enable: {'category': ConfigCategory.shadowtls,'type':bool},
+            self.shadowtls_enable: {'category': ConfigCategory.shadowtls,'type':bool,'apply_mode':'apply'},
             # shadowtls_secret:{'category':'shadowtls'},
-            self.shadowtls_fakedomain: {'category': ConfigCategory.shadowtls},
+            self.shadowtls_fakedomain: {'category': ConfigCategory.shadowtls,'apply_mode':'apply'},
 
-            self.tuic_enable: {'category': ConfigCategory.tuic,'type':bool},
-            self.tuic_port: {'category': ConfigCategory.tuic},
+            self.tuic_enable: {'category': ConfigCategory.tuic,'type':bool,'apply_mode':'apply'},
+            self.tuic_port: {'category': ConfigCategory.tuic,'apply_mode':'apply'},
 
-            self.ssr_enable: {'category': ConfigCategory.ssr,'type':bool},
+            self.ssr_enable: {'category': ConfigCategory.ssr,'type':bool,'apply_mode':'apply'},
             # ssr_secret:{'category':'ssr'},
-            self.ssr_fakedomain: {'category': ConfigCategory.ssr},
+            self.ssr_fakedomain: {'category': ConfigCategory.ssr,'apply_mode':'apply'},
 
             self.vmess_enable: {'category': ConfigCategory.proxies,'type':bool},
             self.domain_fronting_domain: {'category': ConfigCategory.domain_fronting},
@@ -151,7 +151,9 @@ class ConfigEnum(StrEnum):
     def type(self):
         info=self.info()
         return info['type'] if 'type' in info else str
-
+    def apply_mode(self):
+        info=self.info()
+        return info['apply_mode'] if 'apply_mode' in info else ''
 
 class DomainType(StrEnum):
     direct = auto()

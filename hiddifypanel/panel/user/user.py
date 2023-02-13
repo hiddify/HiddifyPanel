@@ -8,12 +8,18 @@ from . import link_maker
 from flask_classful import FlaskView,route
 import random
 from urllib.parse import urlparse
+import user_agents
+
+
 class UserView(FlaskView):
 
     def index(self):
         
         c=get_common_data(g.user_uuid)
-        return render_template('home/index.html',**c)
+        user_agent =  user_agents.parse(request.user_agent.string)
+        
+        
+        return render_template('home/index.html',**c,ua=user_agent)
         
 
     @route('/clash/<meta_or_normal>/proxies.yml')

@@ -5,7 +5,7 @@
 {% block title %}Home | Admin |Hiddify{% endblock %}
 
 {% block body %}
-
+% if hconfig(ConfigEnum.netdata)
 <div class="card-deck">
     <div class="card card-danger">
         <div class="card-header d-none">
@@ -206,8 +206,11 @@
 
     </div>
 </div>
-
-
+%else
+<div class="alert alert-info">
+    {{_("You have disabled netdata in the setting. You need to enable it to see the information.")}}
+</div>
+% endif
 
 {% endblock %}
 

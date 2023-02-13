@@ -50,3 +50,6 @@ legend {
   .modal.modal-display-on-load{
     display: block;
   }
+  .toasts-top-left,.toasts-top-right{
+    top:50px
+  }

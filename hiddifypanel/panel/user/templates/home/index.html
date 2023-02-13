@@ -38,32 +38,32 @@
                     <li class="nav-item"><a class="nav-link" href="#telegram" data-toggle="tab"><i
                                 class="fa-brands fa-telegram fa-margin"></i> {{_('telegram')}}</a></li>
                     % endif
-                    <li class="nav-item"><a class="nav-link" href="#android" data-toggle="tab"><i
+                    <li class="nav-item"><a class="nav-link {{"active" if ua.os.family=="Android" else ""}}" href="#android" data-toggle="tab"><i
                                 class="fa-brands fa-android fa-margin"></i> {{_('android')}}</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#ios" data-toggle="tab"><i
+                    <li class="nav-item"><a class="nav-link {{"active" if ua.os.family=="iOS" else ""}}" href="#ios" data-toggle="tab"><i
                                 class="fa-brands fa-app-store-ios fa-margin"></i> {{_('ios')}}</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#windows" data-toggle="tab">
+                    <li class="nav-item"><a class="nav-link {{"active" if ua.is_pc else ""}}" href="#windows" data-toggle="tab">
                         <i class="fa-brands fa-windows fa-margin1"></i> <i class="fa-brands fa-apple fa-margin1"></i> <i class="fa-brands fa-linux fa-margin1"></i> {{_('desktop')}}</a></li>
                     
                 </ul>
             </div><!-- /.card-header -->
             <div class="card-body">
                 <div class="tab-content">
-                    <div class="tab-pane active" id="default">
+                    <div class="tab-pane {{"active" if not ua.is_pc and ua.os.family not in ["Android", "iOS"] else ""}}" id="default">
                         {{_('user.home.select os')}}
                     </div>
                     <div class="tab-pane" id="telegram">
                         {% include 'home/telegram.html' %}
                     </div>
-                    <div class="tab-pane" id="android">
+                    <div class="tab-pane  {{"active" if ua.os.family=="Android" else ""}}" id="android">
                         {% include 'home/android.html' %}
                     </div>
                     <!-- /.tab-pane -->
-                    <div class="tab-pane" id="ios">
+                    <div class="tab-pane {{"active" if ua.os.family=="iOS" else ""}}" id="ios">
                         {% include 'home/ios.html' %}
                     </div>
                     <!-- /.tab-pane -->
-                    <div class="tab-pane" id="windows">
+                    <div class="tab-pane {{"active" if ua.is_pc else ""}}" id="windows">
                         {% include "home/windows.html" %}
                     </div>
                     <!-- /.tab-pane -->
@@ -333,17 +333,9 @@
     
     $('#all-links').DataTable({
 // scrollY: 300,
- responsive1: {
+responsive: {
             details: {
-                display: $.fn.dataTable.Responsive.display.modal( {
-                    header: function ( row ) {
-                        var data = row.data();
-                        return ''; //'Details for '+data[0]+' '+data[1];
-                    }
-                } ),
-                renderer: $.fn.dataTable.Responsive.renderer.tableAll( {
-                    tableClass: 'table'
-                } )
+                type: 'column'
             }
         },
         "language": {
@@ -357,11 +349,10 @@
       "lengthChange": true,
       "searching": true,
       "ordering": true,
-      "autoWidth": true,
-  
-"oLanguage": {
-   "sSearch": "{{_('search')}}: "
- }
+      "autoWidth": true,     
+        "oLanguage": {
+        "sSearch": "{{_('search')}}: "
+        }
     });
   });
 
