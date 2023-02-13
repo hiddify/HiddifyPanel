@@ -173,14 +173,15 @@ def to_link(proxy):
     
     infos=f'&sni={proxy["sni"]}&type={proxy["transport"]}'
     if proxy['alpn']!='h2':
-        infos+=f'&alpn={proxy["alpn"]}'
+        infos+=f'&alpn=h2,http/1.1'
+        # infos+=f'&alpn={proxy["alpn"]}'
     infos+=f'&path={proxy["path"]}' if "path" in proxy else ""
     infos+=f'&host={proxy["host"]}' if "host" in proxy else ""
     if "grpc"==proxy["transport"]:
         infos+=f'&serviceName={proxy["grpc_service_name"]}&mode={proxy["grpc_mode"]}'
     if 'vless'==proxy['proto']:
         infos+="&encryption=none"
-    infos+="&fingerprint=chrome" 
+    infos+="&fp=chrome" 
     if proxy['l3']!='quic':
         infos+='&headerType=None' #if not quic
     if proxy['mode']=='Fake':
