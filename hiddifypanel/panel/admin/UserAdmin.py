@@ -100,5 +100,9 @@ class UserAdmin(AdminLTEModelView):
         #     xray_api.add_client(model.uuid)
         # else:
         #     xray_api.remove_client(model.uuid)
-        hiddify.flash_config_success()
+        # hiddify.flash_config_success()
         
+    def after_model_change(form, model, is_created):
+        hiddify.quick_apply_users()
+    def after_model_delete(model):
+        hiddify.quick_apply_users()

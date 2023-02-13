@@ -71,11 +71,13 @@ def asset_url(path):
 def update_usage():
         
         res={}
+        have_change=False
         for user in User.query.all():
             if user.monthly and (datetime.date.today()-user.last_reset_time).days>=30:
                 user.last_reset_time=datetime.date.today()
                 if user.current_usage_GB > user.usage_limit_GB:
                     xray_api.add_client(user.uuid)
+                    have_change=True
                 user.current_usage_GB=0
 
             d = xray_api.get_usage(user.uuid,reset=True)
@@ -88,10 +90,12 @@ def update_usage():
                 user.current_usage_GB += in_gig
             if user.current_usage_GB > user.usage_limit_GB:
                 xray_api.remove_client(user.uuid)
+                have_change=True
                 res[user.uuid]+=" !OUT of USAGE! Client Removed"
                     
         db.session.commit()
-        
+        if have_change:
+            quick_apply_users()
         return {"status": 'success', "comments":res}
         
 
@@ -141,6 +145,9 @@ def get_available_proxies():
     if not Domain.query.filter(Domain.mode==DomainType.cdn).first():
         proxies=[c for c in proxies if c.cdn!="CDN"]
     return proxies
+
+def quick_apply_users():
+    exec_command("/opt/hiddify-config/install.sh apply_users &")
 
 
 def flash_config_success(full_install=False,domain_changed=True):
