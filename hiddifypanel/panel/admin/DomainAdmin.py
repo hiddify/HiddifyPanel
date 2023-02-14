@@ -96,4 +96,4 @@ class DomainAdmin(AdminLTEModelView):
     def on_model_delete(self, model):
         if len(Domain.query.all())<=1:
             raise ValidationError(f"at least one domain should exist")    
-
+        hiddify.flash_config_success()

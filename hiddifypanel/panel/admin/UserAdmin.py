@@ -86,7 +86,7 @@ class UserAdmin(AdminLTEModelView):
         if len(User.query.all())<=1:
             raise ValidationError(f"at least one user should exist")    
         xray_api.remove_client(model.uuid)
-        hiddify.flash_config_success()
+        # hiddify.flash_config_success()
 
         
     # def is_accessible(self):
