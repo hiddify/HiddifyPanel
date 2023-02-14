@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-13 21:46+0100\n"
-"PO-Revision-Date: 2023-02-13 14:45-0600\n"
+"POT-Creation-Date: 2023-02-14 17:19+0100\n"
+"PO-Revision-Date: 2023-02-14 10:19-0600\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Generated-By: Babel 2.11.0\n"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/panel/admin/ProxyAdmin.py:42 hiddifypanel/panel/hiddify.py:148
+#: hiddifypanel/panel/admin/ProxyAdmin.py:42 hiddifypanel/panel/hiddify.py:155
 msgid "admin.config.apply_configs"
 msgstr "应用配置"
 
@@ -23,9 +23,39 @@ msgstr "应用配置"
 # | "Configs have been changed successfully. Click %(link)s to apply the
 # configs."
 # | " It may take 2 minutes to apply."
-#: hiddifypanel/panel/admin/ProxyAdmin.py:43 hiddifypanel/panel/hiddify.py:149
+#: hiddifypanel/panel/admin/ProxyAdmin.py:43 hiddifypanel/panel/hiddify.py:156
 msgid "config.validation-success"
 msgstr "配置已成功更改。单击 %(link)s 以应用配置。申请可能需要 2 分钟。"
+
+# | msgid "All"
+#: hiddifypanel/panel/hiddify.py:175
+#: hiddifypanel/panel/user/templates/home/all-configs.html:24
+#: hiddifypanel/panel/user/templates/home/all-configs.html:25
+#: hiddifypanel/panel/user/templates/home/all-configs.html:26
+#: hiddifypanel/panel/user/templates/home/all-configs.html:27
+#: hiddifypanel/panel/user/templates/home/all-configs.html:28
+#: hiddifypanel/panel/user/templates/home/all-configs.html:37
+#: hiddifypanel/panel/user/templates/home/all-configs.html:38
+#: hiddifypanel/panel/user/templates/home/all-configs.html:40
+#: hiddifypanel/panel/user/templates/home/all-configs.html:41
+#: hiddifypanel/panel/user/templates/home/all-configs.html:50
+#: hiddifypanel/panel/user/templates/home/all-configs.html:51
+#: hiddifypanel/panel/user/templates/home/all-configs.html:52
+#: hiddifypanel/panel/user/templates/home/all-configs.html:53
+#: hiddifypanel/panel/user/templates/home/all-configs.html:54
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:22
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:23
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:24
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:25
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:34
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:36
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:37
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:46
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:47
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:48
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:49
+msgid "all"
+msgstr "全部"
 
 # | msgid ""
 # | "Rebooting System... This may take afew minutes. Please wait..."
@@ -1258,70 +1288,48 @@ msgstr "名称和链接"
 msgid "user.home.allconfig.type"
 msgstr "类型"
 
-# | msgid "Protocol"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:9
+msgid "Domain"
+msgstr ""
+
+# | msgid "Protocol"
+#: hiddifypanel/panel/user/templates/home/all-configs.html:10
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:9
 msgid "user.home.allconfig.protocol"
 msgstr "协议"
 
 # | msgid "Transport"
-#: hiddifypanel/panel/user/templates/home/all-configs.html:10
+#: hiddifypanel/panel/user/templates/home/all-configs.html:11
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:10
 msgid "user.home.allconfig.transport"
 msgstr "运输"
 
 # | msgid "Security"
-#: hiddifypanel/panel/user/templates/home/all-configs.html:11
+#: hiddifypanel/panel/user/templates/home/all-configs.html:12
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:11
 msgid "user.home.allconfig.security"
 msgstr "安全"
 
 # | msgid "Hiddify Configs"
-#: hiddifypanel/panel/user/templates/home/all-configs.html:20
+#: hiddifypanel/panel/user/templates/home/all-configs.html:21
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:19
 msgid "user.home.allconfig.hiddify-configs"
 msgstr "隐藏配置"
 
-# | msgid "All"
-#: hiddifypanel/panel/user/templates/home/all-configs.html:23
-#: hiddifypanel/panel/user/templates/home/all-configs.html:24
-#: hiddifypanel/panel/user/templates/home/all-configs.html:25
-#: hiddifypanel/panel/user/templates/home/all-configs.html:26
-#: hiddifypanel/panel/user/templates/home/all-configs.html:35
-#: hiddifypanel/panel/user/templates/home/all-configs.html:37
-#: hiddifypanel/panel/user/templates/home/all-configs.html:38
-#: hiddifypanel/panel/user/templates/home/all-configs.html:47
-#: hiddifypanel/panel/user/templates/home/all-configs.html:48
-#: hiddifypanel/panel/user/templates/home/all-configs.html:49
-#: hiddifypanel/panel/user/templates/home/all-configs.html:50
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:22
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:23
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:24
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:25
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:34
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:36
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:37
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:46
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:47
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:48
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:49
-msgid "all"
-msgstr "全部"
-
 # | msgid "Clash Configs"
-#: hiddifypanel/panel/user/templates/home/all-configs.html:32
+#: hiddifypanel/panel/user/templates/home/all-configs.html:34
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:31
 msgid "user.home.allconfig.clash-configs"
 msgstr "冲突配置"
 
 # | msgid "Except vless"
-#: hiddifypanel/panel/user/templates/home/all-configs.html:36
+#: hiddifypanel/panel/user/templates/home/all-configs.html:39
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:35
 msgid "user.home.allconfigs.expect_vless"
 msgstr "除了 vless"
 
 # | msgid "Subscription Link"
-#: hiddifypanel/panel/user/templates/home/all-configs.html:44
+#: hiddifypanel/panel/user/templates/home/all-configs.html:47
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:43
 msgid "user.home.allconfig.link-configs"
 msgstr "订阅链接"
@@ -1523,7 +1531,7 @@ msgstr "将下面的链接复制到您的浏览器中。"
 
 # | msgid "Copy"
 #: hiddifypanel/panel/user/templates/home/doh.html:8
-#: hiddifypanel/templates/master.html:122
+#: hiddifypanel/templates/master.html:126
 msgid "copy"
 msgstr "复制"
 
@@ -1579,62 +1587,75 @@ msgstr ""
 #: copy.html:2 hiddifypanel/panel/user/templates/home/index
 #: hiddifypanel/panel/user/templates/home/index.html:2
 #: hiddifypanel/panel/user/templates/home/index.html:7
+#: hiddifypanel/panel/user/templates/home/multi.html:2
+#: hiddifypanel/panel/user/templates/home/multi.html:7
 msgid "user.home.title"
 msgstr "隐藏代理"
 
 # | msgid "Telegram"
 #: copy.html:27 hiddifypanel/panel/user/templates/home/index
 #: hiddifypanel/panel/user/templates/home/index.html:39
+#: hiddifypanel/panel/user/templates/home/multi.html:33
 msgid "telegram"
 msgstr "电报"
 
 #: hiddifypanel/panel/user/templates/home/index.html:7
+#: hiddifypanel/panel/user/templates/home/multi.html:7
 #, python-format
 msgid "Welcome %(user)s"
 msgstr "欢迎 %(user)s"
 
 # | msgid "Android"
 #: hiddifypanel/panel/user/templates/home/index.html:42
+#: hiddifypanel/panel/user/templates/home/multi.html:36
 msgid "android"
 msgstr "安卓"
 
 # | msgid "iOS"
 #: hiddifypanel/panel/user/templates/home/index.html:44
+#: hiddifypanel/panel/user/templates/home/multi.html:38
 msgid "ios"
 msgstr "iOS"
 
 # | msgid "Desktop"
 #: hiddifypanel/panel/user/templates/home/index.html:46
+#: hiddifypanel/panel/user/templates/home/multi.html:40
 msgid "desktop"
 msgstr "桌面"
 
 # | msgid "Please select your operating system."
 #: hiddifypanel/panel/user/templates/home/index.html:53
+#: hiddifypanel/panel/user/templates/home/multi.html:47
 msgid "user.home.select os"
 msgstr "请选择您的操作系统。"
 
 # | msgid "All Configs"
 #: hiddifypanel/panel/user/templates/home/index.html:88
+#: hiddifypanel/panel/user/templates/home/multi.html:82
 msgid "user.home.all_configs"
 msgstr "所有配置"
 
 # | msgid "Speedtest (detect dirty IP)"
 #: hiddifypanel/panel/user/templates/home/index.html:90
+#: hiddifypanel/panel/user/templates/home/multi.html:84
 msgid "user.home.speedtest"
 msgstr "Speedtest（检测脏IP）"
 
 # | msgid "DNS over https"
 #: hiddifypanel/panel/user/templates/home/index.html:92
+#: hiddifypanel/panel/user/templates/home/multi.html:86
 msgid "user.home.doh"
 msgstr "通过 https 的 DNS"
 
 # | msgid "Please select the item."
 #: hiddifypanel/panel/user/templates/home/index.html:98
+#: hiddifypanel/panel/user/templates/home/multi.html:92
 msgid "user.home.select tool"
 msgstr "请选择项目。"
 
 # | msgid "QR Code"
 #: hiddifypanel/panel/user/templates/home/index.html:124
+#: hiddifypanel/panel/user/templates/home/multi.html:118
 #: hiddifypanel/panel/user/templates/home/usage.html:58
 msgid "QR code"
 msgstr "二维码"
@@ -1644,28 +1665,33 @@ msgstr "二维码"
 # fa-qrcode'></i>"
 # | " field to display its QR Code."
 #: hiddifypanel/panel/user/templates/home/index.html:125
+#: hiddifypanel/panel/user/templates/home/multi.html:119
 #: hiddifypanel/panel/user/templates/home/usage.html:59
 msgid "user.home.qr-code.description"
 msgstr "要复制或共享链接，请点击灰色的 <i class='fa-solid fa-qrcode'></i> 字段以显示其二维码。"
 
 # | msgid "Display QR Code"
 #: hiddifypanel/panel/user/templates/home/index.html:133
+#: hiddifypanel/panel/user/templates/home/multi.html:127
 #: hiddifypanel/panel/user/templates/home/usage.html:67
 msgid "user.home.qr-code.display"
 msgstr "显示二维码"
 
 # | msgid "Next"
-#: hiddifypanel/panel/user/templates/home/index.html:351
+#: hiddifypanel/panel/user/templates/home/index.html:343
+#: hiddifypanel/panel/user/templates/home/multi.html:337
 msgid "next"
 msgstr "下一个"
 
 # | msgid "Previous"
-#: hiddifypanel/panel/user/templates/home/index.html:352
+#: hiddifypanel/panel/user/templates/home/index.html:344
+#: hiddifypanel/panel/user/templates/home/multi.html:338
 msgid "previous"
 msgstr "以前的"
 
 # | msgid "Search"
-#: hiddifypanel/panel/user/templates/home/index.html:363
+#: hiddifypanel/panel/user/templates/home/index.html:354
+#: hiddifypanel/panel/user/templates/home/multi.html:348
 msgid "search"
 msgstr "搜索"
 
@@ -1680,7 +1706,7 @@ msgstr "收藏<span class=\"badge badge-success\">推荐</span>"
 # | "\n"
 # | "        <div class=\"btn-group\">\n"
 # | "        <a
-# href=\"https://apps.ap0ple.com/us/app/stash-rule-based-proxy/id1596063349\"
+# href=\"https://apps.apple.com/us/app/stash-rule-based-proxy/id1596063349\"
 # target=\"_blank\" class=\"btn btn-success orig-link\">Download stash</a>\n"
 # | "        </div>"
 #: copy.html:17 hiddifypanel/panel/user/templates/home/ios
@@ -1771,9 +1797,8 @@ msgid "user.home.telegram.clickbtn"
 msgstr "电报代理"
 
 # | msgid ""
-# | "Click on %(link)s, then, in the telegram you can see a window that
-# contains "
-# | "<b>Connect Proxy</b>. Click on it and it will work."
+# | "Click on one of the following link then, in the telegram you can see a "
+# | "window that contains <b>Connect Proxy</b>. Click on it and it will work."
 #: hiddifypanel/panel/user/templates/home/telegram.html:13
 msgid "user.home.telegram.description"
 msgstr "单击 %(link)s，然后，在电报中您可以看到一个包含 <b>Connect Proxy</b> 的窗口。单击它，它将起作用。"
@@ -1920,7 +1945,7 @@ msgstr "请使用本页中的详细信息联系 hiddify@gmail.com。"
 # | msgid "Hiddify Panel"
 #: hiddifypanel/templates/admin-layout.html:18
 #: hiddifypanel/templates/admin-layout.html:38
-#: hiddifypanel/templates/master.html:6
+#: hiddifypanel/templates/master.html:7
 msgid "master.page-title"
 msgstr "隐藏面板"
 
@@ -2119,33 +2144,33 @@ msgid "Close"
 msgstr "关闭"
 
 # | msgid "Close"
-#: hiddifypanel/templates/macros.html:28 hiddifypanel/templates/master.html:131
+#: hiddifypanel/templates/macros.html:28 hiddifypanel/templates/master.html:135
 msgid "close"
 msgstr "关闭"
 
 # | msgid "Share to social media"
-#: hiddifypanel/templates/master.html:113
+#: hiddifypanel/templates/master.html:117
 msgid "user.home.share-title"
 msgstr "分享到社交媒体"
 
 # | msgid "Link for social media"
-#: hiddifypanel/templates/master.html:123
+#: hiddifypanel/templates/master.html:127
 msgid "clickable copy"
 msgstr "社交媒体链接"
 
 # | msgid "Open"
-#: hiddifypanel/templates/master.html:124
+#: hiddifypanel/templates/master.html:128
 msgid "open"
 msgstr "打开"
 
 # | msgid "Link Copied to clipboard. "
-#: hiddifypanel/templates/master.html:173
+#: hiddifypanel/templates/master.html:189
 msgid "user.home.link.success-copy"
 msgstr "链接已复制到剪贴板。"
 
 # | msgid "Copy to clipboard:  Ctrl+C, Enter"
-#: hiddifypanel/templates/master.html:175
-#: hiddifypanel/templates/master.html:178
+#: hiddifypanel/templates/master.html:191
+#: hiddifypanel/templates/master.html:194
 msgid "user.home.link.manual-copy"
 msgstr "复制到剪贴板：Ctrl+C，回车"
 

@@ -5,7 +5,7 @@
 <div class="btn-group">
     {% set hexuuid=hconfigs[ConfigEnum.shared_secret].replace("-","") %}
     <a href="tg://proxy?server={{domain}}&amp;port=443&amp;secret=ee{{hexuuid}}{{hconfigs[ConfigEnum.telegram_fakedomain].encode('utf-8').hex()}}"
-        class="btn btn-primary orig-link">{{_("user.home.telegram.clickbtn")}}</a>
+        class="btn btn-primary orig-link">{{_("user.home.telegram.clickbtn")}} <span class="badge ltr badge-info">{{domain}}</span></a>
 </div>
 {%- endmacro -%}
 

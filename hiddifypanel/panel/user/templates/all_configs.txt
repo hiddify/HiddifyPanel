@@ -1,14 +1,23 @@
 % for d in domains:
+####################################
+## {{d.mode}}  {{d.domain}}  
+####################################
 % for type in link_maker.all_proxies()
-{% set pinfo=link_maker.make_proxy(type,d) %}
+% set pinfo=link_maker.make_proxy(type,d)
 % if pinfo!=None
-{% set link=link_maker.to_link(pinfo) %}
+% set link=link_maker.to_link(pinfo)
 % if link!=None
+{{''}}
 # {{pinfo["name"]}} {{domain}}
 {{link}}
 %endif
 %endif
 % endfor
+
+{{''}}
+
+
+
 % endfor
 
 

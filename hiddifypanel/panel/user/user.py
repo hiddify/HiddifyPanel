@@ -58,6 +58,7 @@ class UserView(FlaskView):
 
     @route('/all.txt')
     def all_configs(self):
+        mode=request.args.get("mode")
         c=get_common_data(g.user_uuid,mode)
         # response.content_type = 'text/plain';
         
