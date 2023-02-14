@@ -84,13 +84,13 @@ def get_common_data(user_uuid,mode):
         domains=[db_domain]
         direct_host= domain
 
-        if db_domain and db_domain.mode==DomainType.cdn:
-            direct_domain_db=Domain.query.filter(Domain.mode==DomainType.direct).first()
-            if not direct_domain_db:
-                direct_host=urllib.request.urlopen('https://v4.ident.me/').read().decode('utf8')
-                direct_domain_db=Domain(domain=direct_host,mode=DomainType.direct)
+        # if db_domain and db_domain.mode==DomainType.cdn:
+        #     direct_domain_db=Domain.query.filter(Domain.mode==DomainType.direct).first()
+            # if not direct_domain_db:
+            #     direct_host=urllib.request.urlopen('https://v4.ident.me/').read().decode('utf8')
+            #     direct_domain_db=Domain(domain=direct_host,mode=DomainType.direct)
             
-            domains.append(direct_domain_db)
+            # domains.append(direct_domain_db)
         
         
 
