@@ -31,10 +31,12 @@ def pbase64(full_str):
 
 
 
-def make_proxy(proxy):
+def make_proxy(proxy,domain_db):
     l3=proxy.l3
 
-    domain = g.domain
+    domain=domain_db.domain
+    direct_host=domain_db.domain
+    
     hconfigs=get_hconfigs()
     port=0
     if l3 in ["tls"]:
@@ -48,17 +50,20 @@ def make_proxy(proxy):
     
     name=proxy.name   
     is_cdn="CDN" in name
-    if is_cdn and not g.is_cdn:
-            return
-    direct_host=domain if is_cdn else g.direct_host
+    if is_cdn and domain_db.mode!=DomainType.cdn:
+        return
+    if not is_cdn and domain_db.mode==DomainType.cdn:
+        return
     
+    cdn_forced_host= domain_db.cdn_ip or domain_db.domain
+        
     base={
         'name':name.replace(" ", "_"),
         'cdn':is_cdn,
         'mode':"CDN" if is_cdn else "direct",
         'l3': l3,
         'port': port,
-        'server':g.cdn_forced_host if is_cdn else g.direct_host,
+        'server':cdn_forced_host ,
         'sni':domain,
         'uuid':str(g.user_uuid),
         'proto':proxy.proto,
@@ -300,10 +305,11 @@ def to_clash(proxy,meta_or_normal):
     
 
 
-def get_all_clash_configs(meta_or_normal):
+def get_all_clash_configs(meta_or_normal,domains):
     allp=[]
-    for type in all_proxies():
-        pinfo=make_proxy(type)
+    for d in domains:
+     for type in all_proxies():
+        pinfo=make_proxy(type,d)
         if pinfo!=None:
             clash=to_clash(pinfo,meta_or_normal)
             if clash:

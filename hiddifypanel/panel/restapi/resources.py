@@ -49,3 +49,7 @@ class StrConfigResource(Resource):
         return jsonify(
             {"str_configs": [product.to_dict() for product in products]}
         )
+
+class HelloResource(Resource):
+    def get(self):
+        return jsonify({"ok": True})

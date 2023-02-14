@@ -67,7 +67,7 @@ class UserAdmin(AdminLTEModelView):
     
     def _ul_formatter(view, context, model, name):
         
-        return Markup(" ".join([hiddify.get_user_link(model.uuid,d) for d in Domain.query.all()]))
+        return Markup(hiddify.get_user_link(model.uuid,Domain.query.first(),'multi')+" ".join([hiddify.get_user_link(model.uuid,d) for d in Domain.query.all()]))
     def _uuid_formatter(view, context, model, name):
         return Markup(f"<span>{model.uuid}</span>")
     def _usage_formatter(view, context, model, name):

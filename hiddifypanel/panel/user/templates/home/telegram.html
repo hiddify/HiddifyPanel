@@ -1,13 +1,19 @@
 
 
 
-{% macro tg_proxy_btn() -%}
+{% macro tg_proxy_btn(domain) -%}
 <div class="btn-group">
     {% set hexuuid=hconfigs[ConfigEnum.shared_secret].replace("-","") %}
-    <a href="tg://proxy?server={{direct_host}}&amp;port=443&amp;secret=ee{{hexuuid}}{{hconfigs[ConfigEnum.telegram_fakedomain].encode('utf-8').hex()}}"
+    <a href="tg://proxy?server={{domain}}&amp;port=443&amp;secret=ee{{hexuuid}}{{hconfigs[ConfigEnum.telegram_fakedomain].encode('utf-8').hex()}}"
         class="btn btn-primary orig-link">{{_("user.home.telegram.clickbtn")}}</a>
 </div>
 {%- endmacro -%}
 
 
-{{_('user.home.telegram.description',link=tg_proxy_btn()) }}
+{{_('user.home.telegram.description',link=tg_proxy_btn(direct_host)) }}
+
+% for d in domains:
+    % if d.mode !='cdn'
+        {{tg_proxy_btn(d.domain)}}
+    % endif
+% endfor

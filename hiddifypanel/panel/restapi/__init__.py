@@ -15,5 +15,6 @@ def init_app(app):
     api.add_resource(BoolConfigResource, "/bool_configs/")
     api.add_resource(AllResource, "/all/")
     api.add_resource(UpdateUsageResource, "/update_usage/")
+    api.add_resource(HelloResource, "/hello/")
     
     app.register_blueprint(bp)

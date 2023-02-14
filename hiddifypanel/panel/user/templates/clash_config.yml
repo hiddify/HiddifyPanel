@@ -1,6 +1,6 @@
-% set OnProxyIssue='REJECT' if mode =="all" else 'DIRECT'
-% set OnIranSites='PROXY' if mode =="all" else 'DIRECT'
-% set OnNotFilteredSites='DIRECT' if mode =="lite" else 'PROXY'
+% set OnProxyIssue='REJECT' if typ =="all" else 'DIRECT'
+% set OnIranSites='PROXY' if typ =="all" else 'DIRECT'
+% set OnNotFilteredSites='DIRECT' if typ =="lite" else 'PROXY'
 
 mixed-port: 7890
 allow-lan: false
@@ -63,9 +63,9 @@ proxy-groups:
   
 
 
-  # - name: OnIranSites_{{mode}}
+  # - name: OnIranSites_{{typ}}
   #   proxies:
-  #   % if mode=="all"
+  #   % if typ=="all"
   #     - PROXY
   #     - DIRECT
   #   % else:
@@ -74,9 +74,9 @@ proxy-groups:
   #   % endif
   #   type: select
 
-  # - name: OnNotFilteredSites_{{mode}}
+  # - name: OnNotFilteredSites_{{typ}}
   #   proxies:
-  #   % if mode =="lite"
+  #   % if typ =="lite"
   #     - DIRECT
   #     - PROXY
   #   % else:
@@ -85,9 +85,9 @@ proxy-groups:
   #   % endif
   #   type: select  
 
-  # - name: OnProxyIssue_{{mode}}
+  # - name: OnProxyIssue_{{typ}}
   #   proxies:
-  #   % if mode =="all"
+  #   % if typ =="all"
   #     - REJECT
   #     - DIRECT
   #   % else:
@@ -110,11 +110,11 @@ proxy-groups:
     proxies:
         - auto
         - {{OnProxyIssue}}
-{{link_maker.get_all_clash_configs(meta_or_normal)}}
+{{link_maker.get_all_clash_configs(meta_or_normal,domains)}}
 proxy-providers:
   all_proxies:
     type: http
-    url: "https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{(user.uuid)}}/clash/{{meta_or_normal}}/proxies.yml?{{hash}}"
+    url: "https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{(user.uuid)}}/clash/{{meta_or_normal}}/proxies.yml?mode={{mode}}&{{hash}}"
     path: {{domain}}/{{(user.uuid)}}-{{meta_or_normal}}-proxies{{hash}}.yaml
     health-check:
       enable: true

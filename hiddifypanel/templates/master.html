@@ -220,7 +220,18 @@
         $('#share-qr-code').modal('show');
     }
 
-
+    $(document).ready(function () {
+      % set cats={'error':'danger'}
+      {% for cat, msg in get_flashed_messages(with_categories=True) %}
+      $(document).Toasts('create', {
+          class: 'bg-{{cats.get(cat,cat)}}',
+          position: '{{'topLeft' if get_locale()=='fa' else 'topRight'}}' ,
+          
+          
+          body: `{{msg}}`
+        })
+      {% endfor %}
+    });
   
 </script>
 
@@ -232,15 +243,6 @@
 <script>
   $(document).ready(function () {
     
-    {% for cat, msg in get_flashed_messages(with_categories=True) %}
-    $(document).Toasts('create', {
-        class: 'bg-{{cat}}',
-        position: '{{'topLeft' if get_locale()=='fa' else 'topRight'}}' ,
-        
-        
-        body: `{{msg}}`
-      })
-    {% endfor %}
   $('a.copy-link').click(copy_click)
   $('a.share-link').click(share_click)
   //   $("input").each((i,e)=>{

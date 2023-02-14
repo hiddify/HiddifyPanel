@@ -1,0 +1,378 @@
+{% extends "master.html" %}
+{% block title %}{{hconfig(ConfigEnum.branding_title) or _('user.home.title')}}{% endblock %}
+
+{% block body_header %}
+<div class="row mb-2">
+    <div class="col-12">
+      <h1 class="m-0" style="text-align: start;"> <a href="{{hconfig(ConfigEnum.branding_site) or 'https://github.com/hiddify/hiddify-config/wiki'}}">{{hconfig(ConfigEnum.branding_title) or _('user.home.title')}}</a>: <div class="d-inline-flex">{{_('Welcome %(user)s',user=user.name if user.name!="default" else "")}}</div> </h1>
+    </div><!-- /.col -->
+  </div><!-- /.row -->
+{%endblock%}
+
+{% block body %}
+
+
+
+
+
+
+
+
+{% include "home/usage.html" %}
+
+
+<div class="row" style="margin-top: 10px;">
+    <div class="col-12">
+        <!-- Custom Tabs -->
+        <div class="card">
+            <div class="card-header d-flex p-0">
+                <h3 class="card-title p-1"> </h3>
+                <ul class="nav nav-pills p-2">
+                    % if hconfigs[ConfigEnum.telegram_enable]
+                    <li class="nav-item"><a class="nav-link" href="#telegram" data-toggle="tab"><i
+                                class="fa-brands fa-telegram fa-margin"></i> {{_('telegram')}}</a></li>
+                    % endif
+                    <li class="nav-item"><a class="nav-link {{"active" if ua.os.family=="Android" else ""}}" href="#android" data-toggle="tab"><i
+                                class="fa-brands fa-android fa-margin"></i> {{_('android')}}</a></li>
+                    <li class="nav-item"><a class="nav-link {{"active" if ua.os.family=="iOS" else ""}}" href="#ios" data-toggle="tab"><i
+                                class="fa-brands fa-app-store-ios fa-margin"></i> {{_('ios')}}</a></li>
+                    <li class="nav-item"><a class="nav-link {{"active" if ua.is_pc else ""}}" href="#windows" data-toggle="tab">
+                        <i class="fa-brands fa-windows fa-margin1"></i> <i class="fa-brands fa-apple fa-margin1"></i> <i class="fa-brands fa-linux fa-margin1"></i> {{_('desktop')}}</a></li>
+                    
+                </ul>
+            </div><!-- /.card-header -->
+            <div class="card-body">
+                <div class="tab-content">
+                    <div class="tab-pane {{"active" if not ua.is_pc and ua.os.family not in ["Android", "iOS"] else ""}}" id="default">
+                        {{_('user.home.select os')}}
+                    </div>
+                    <div class="tab-pane" id="telegram">
+                        {% include 'home/telegram.html' %}
+                    </div>
+                    <div class="tab-pane  {{"active" if ua.os.family=="Android" else ""}}" id="android">
+                        {% include 'home/android.html' %}
+                    </div>
+                    <!-- /.tab-pane -->
+                    <div class="tab-pane {{"active" if ua.os.family=="iOS" else ""}}" id="ios">
+                        {% include 'home/ios.html' %}
+                    </div>
+                    <!-- /.tab-pane -->
+                    <div class="tab-pane {{"active" if ua.is_pc else ""}}" id="windows">
+                        {% include "home/windows.html" %}
+                    </div>
+                    <!-- /.tab-pane -->
+                </div>
+                <!-- /.tab-content -->
+            </div><!-- /.card-body -->
+        </div>
+        <!-- ./card -->
+    </div>
+    <!-- /.col -->
+</div>
+
+
+<div class="row">
+    <div class="col-12">
+        <!-- Custom Tabs -->
+        <div class="card">
+            <div class="card-header d-flex p-0">
+                <h3 class="card-title p-0"></h3>
+                <ul class="nav nav-pills p-2">
+                    <li class="nav-item"><a class="nav-link" href="#all_configs" data-toggle="tab"><i
+                                class="fa-solid fa-grip fa-margin"></i> {{_('user.home.all_configs')}}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#speedtest" data-toggle="tab"><i
+                                class="fa-solid fa-gauge-high fa-margin"></i> {{_('user.home.speedtest')}}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#doh" data-toggle="tab"><i
+                                class="fa-solid fa-sitemap fa-margin"></i> {{_('user.home.doh')}}</a></li>
+                </ul>
+            </div><!-- /.card-header -->
+            <div class="card-body">
+                <div class="tab-content">
+                    <div class="tab-pane active" id="default">
+                        {{_('user.home.select tool')}}
+                    </div>
+                    <div class="tab-pane" id="all_configs">
+                        {% include 'home/all-configs.html'%}
+                    </div>
+                    <div class="tab-pane" id="speedtest">
+                        {% include 'home/speedtest.html' %}
+                    </div>
+                    <!-- /.tab-pane -->
+                    <div class="tab-pane" id="doh">
+                        {% include 'home/doh.html' %}
+                    </div>
+
+                    <!-- /.tab-pane -->
+                </div>
+                <!-- /.tab-content -->
+            </div><!-- /.card-body -->
+        </div>
+        <!-- ./card -->
+    <!-- /.col -->
+
+
+<div class="card-deck d-sm-none">
+        <div  class="card small-box bg-warning">
+            <div class="card-body">
+            <div class="inner">
+                <h3>{{_('QR code')}}</h3>
+                <p>{{_('user.home.qr-code.description')}}</p>
+            </div>
+            <div class="icon">
+                <i class="fa-solid fa-qrcode fa-margin"></i>
+            </div>
+        </div>
+            <a href="https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/"
+             class="card-footer share-link">
+                <i class="fas fa-qrcode"></i> {{_('user.home.qr-code.display')}}
+            </a>
+
+        </div>
+    </div>
+</div>
+
+ </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+    .fa-margin {
+        margin-left: 10px;
+        margin-right: 5px;
+    }
+
+    .text-break {
+        word-wrap: break-word !important;
+        word-break: break-word !important;
+    }
+
+    .btn-group {
+        margin-bottom: 10px;
+    }
+
+    #qrcode img {
+        margin: auto;
+        width: 90%;
+    }
+</style>
+
+
+
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% block tail_js %}
+{{ super() }}
+<script>
+
+    
+    // w = Math.min(window.innerWidth, window.innerHeight) * .75;
+    // qrcode = new QRCode(document.getElementById("qrcode"), { width: w, height: w, correctLevel: 1 });
+    // w = Math.min(window.innerWidth, window.innerHeight) * .75;
+    // qrcode2 = new QRCode(document.getElementById("qrcode2"), { width: w / 2, height: w / 2, correctLevel: 1 });
+    // qrcode2.clear()
+    // qrcode2.makeCode(document.location.href);
+    // function share_click(e) {
+    //     e.preventDefault();
+    //     var link = this.href;
+    //     qrcode.clear()
+    //     qrcode.makeCode(link);
+    //     hrefshare = "https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/redirect/" + link.replaceAll('://', '%3A%2F%2F')
+    //     $('#qrcode-link')[0].href = link
+    //     $('#share-link-redirect')[0].href = hrefshare
+    //     if (link.startsWith("http"))
+    //         $('#share-link-redirect').hide()
+    //     else
+    //         $('#share-link-redirect').show()
+    //     $('#share-qr-code').modal('show');
+    // }
+    $(document).ready(function () {
+        $('a.orig-link').each((i, p) => {
+            href = p.href
+            if (href.startsWith("clash://install-config?url=")) {
+                href = href.replaceAll('clash://install-config?url=', '');
+                href = href.replaceAll(".yml&", ".yml?")
+            }
+            if (href.startsWith("clashmeta://install-config?url=")) {
+                href = href.replaceAll('clashmeta://install-config?url=', '');
+                href = href.replaceAll(".yml&", ".yml?")
+            }
+
+            // ecopy = ' <a href="' + href + '" class="btn btn-success copy-link">کپی لینک</a>'
+            eshare = ' <a href="' + href + '" class="btn btn-secondary share-link"><i class="fa-solid fa-qrcode"></i></a>'
+        $(eshare).insertBefore(p);
+            // $(ecopy).insertAfter(p);
+        });
+        // $('a.copy-link').click(copy_click)
+        // $('a.share-link').click(share_click)
+        $('.close').click(() => $('.modal').modal('hide'))
+    });
+
+
+    const Main_Details = document.querySelectorAll('.main-details');
+
+    Main_Details.forEach(deet => {
+        deet.addEventListener('toggle', toggleOpenOneOnly)
+    })
+
+    function toggleOpenOneOnly(e) {
+        if (this.open) {
+            Main_Details.forEach(deet => {
+                if (deet != this && deet.open) deet.open = false
+            });
+        }
+    }
+</script>
+
+<script>
+    
+    
+    function replace_info(str) {
+    
+        if (str.includes('vmess://')) {
+            splt = str.split('vmess://')
+            return "vmess://" + btoa(splt[1])
+        }
+
+        if (str.includes('vmess%3A%2F%2F')) {
+            splt = str.split('vmess%3A%2F%2F')
+            return splt[0] + "vmess%3A%2F%2F" + btoa(splt[1])
+        }
+        return str;
+    }
+
+
+    codes = document.getElementsByTagName('code');
+    for (i = 0; i < codes.length; i++) {
+        codes[i].innerHTML = replace_info(codes[i].innerHTML);
+    }
+
+    as = $('a.orig-link');
+    for (i = 0; i < as.length; i++) {
+        console.log(as[i].href)
+        as[i].href = replace_info(as[i].href);
+        as[i].innerHTML = replace_info(as[i].innerHTML);
+    }
+
+    $(function () {
+    
+    $('#all-links').DataTable({
+// scrollY: 300,
+responsive: {
+            details: {
+                type: 'column'
+            }
+        },
+        "language": {
+            "paginate": {
+                "next": "{{_('next')}}",
+                "previous" : "{{_('previous')}}"
+            }
+        },
+      "info" : true,
+      "paging": false,
+      "lengthChange": true,
+      "searching": true,
+      "ordering": true,
+      "autoWidth": true,     
+        "oLanguage": {
+        "sSearch": "{{_('search')}}: "
+        }
+    });
+  });
+
+  % if get_locale()=='fa'
+  function ConvertNumberToPersion() {
+          let persian = { 0: '۰', 1: '۱', 2: '۲', 3: '۳', 4: '۴', 5: '۵', 6: '۶', 7: '۷', 8: '۸', 9: '۹' };
+          function traverse(el) {
+//            console.log(el.tagName)
+            if (el.tagName=="PRE" || el.tagName=="STYLE" || el.tagName=="SCRIPT")return
+              if (el.nodeType == 3) {
+                  var list = el.data.match(/[0-9]/g);
+                  if (list != null && list.length != 0) {
+                      for (var i = 0; i < list.length; i++)
+                          el.data = el.data.replace(list[i], persian[list[i]]);
+                  }
+              }
+              for (var i = 0; i < el.childNodes.length; i++) {
+                  
+                  traverse(el.childNodes[i]);
+              }
+          }
+          traverse(document.body);
+      }
+  
+    ConvertNumberToPersion();
+    %endif
+</script>
+
+{% endblock %}

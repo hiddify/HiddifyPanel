@@ -1,5 +1,6 @@
+% for d in domains:
 % for type in link_maker.all_proxies()
-{% set pinfo=link_maker.make_proxy(type) %}
+{% set pinfo=link_maker.make_proxy(type,d) %}
 % if pinfo!=None
 {% set link=link_maker.to_link(pinfo) %}
 % if link!=None
@@ -7,6 +8,7 @@
 {{link}}
 %endif
 %endif
+% endfor
 % endfor
 
 

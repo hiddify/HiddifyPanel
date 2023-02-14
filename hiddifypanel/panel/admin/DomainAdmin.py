@@ -89,7 +89,8 @@ class DomainAdmin(AdminLTEModelView):
             raise ValidationError(f"Specifying CDN IP is only valid for CDN mode")
 
         hiddify.flash_config_success()
-    
+
+        
 
     def on_model_delete(self, model):
         if len(Domain.query.all())<=1:

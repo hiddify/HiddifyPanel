@@ -7,19 +7,19 @@
             {{_("user.home.clash_configs.only_for_blocked_sites.description")}}
             % if show_meta
             <div class="btn-group">
-                <a href="clashmeta://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/meta/lite.yml&name=mlite_{{domain}}"
+                <a href="clashmeta://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/meta/lite.yml&name=mlite_{{domain}}-{{mode}}&mode={{mode}}"
                     class="btn btn-success orig-link">{{_("user.home.clash_configs.only_for_blocked_sites.btn")}}</a>
             </div>
             <details>
                 <summary>{{_("user.home.clash_configs.alternative_for_normal_clash")}}</summary>
                 <div class="btn-group">
-                    <a href="clash://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/lite.yml&name=lite_{{domain}}"
+                    <a href="clash://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/lite.yml&name=lite_{{domain}}-{{mode}}&mode={{mode}}"
                         class="btn btn-secondary orig-link">{{_("user.home.clash_configs.link_for_normal_clash")}}</a>
                 </div>
             </details>
             %else
             <div class="btn-group">
-                <a href="clash://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/lite.yml&name=lite_{{domain}}"
+                <a href="clash://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/lite.yml&name=lite_{{domain}}-{{mode}}&mode={{mode}}"
                     class="btn btn-success orig-link">{{_("user.home.clash_configs.only_for_blocked_sites.btn")}}</a>
             </div>
             %endif
@@ -32,19 +32,19 @@
             {{_("user.home.clash_configs.foreign_sites.description")}}
             % if show_meta
             <div class="btn-group">
-                <a href="clashmeta://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/meta/normal.yml&name=mnormal_{{domain}}"
+                <a href="clashmeta://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/meta/normal.yml&name=mnormal_{{domain}}-{{mode}}&mode={{mode}}"
                     class="btn btn-warning orig-link">{{_("user.home.clash_configs.foreign_sites.btn")}}</a>
             </div>
             <details>
                 <summary>{{_("user.home.clash_configs.alternative_for_normal_clash")}}</summary>
                 <div class="btn-group">
-                    <a href="clash://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/normal.yml&name=normal_{{domain}}"
+                    <a href="clash://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/normal.yml&name=normal_{{domain}}-{{mode}}&mode={{mode}}"
                         class="btn btn-secondary orig-link">{{_("user.home.clash_configs.link_for_normal_clash")}}</a>
                 </div>
             </details>
             %else
             <div class="btn-group">
-                <a href="clash://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/normal.yml&name=normal_{{domain}}"
+                <a href="clash://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/normal.yml&name=normal_{{domain}}-{{mode}}&mode={{mode}}"
                 class="btn btn-warning orig-link">{{_("user.home.clash_configs.foreign_sites.btn")}}</a>
             </div>
             % endif
@@ -58,19 +58,19 @@
             {{_("user.home.clash_configs.all_sites.description")}}
             % if show_meta
             <div class="btn-group">
-                <a href="clashmeta://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/meta/all.yml&name=mall_{{domain}}"
+                <a href="clashmeta://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/meta/all.yml&name=mall_{{domain}}-{{mode}}&mode={{mode}}"
                     class="btn btn-danger orig-link">{{_("user.home.clash_configs.all_sites.btn")}}</a>
             </div>
             <details>
                 <summary>{{_("user.home.clash_configs.alternative_for_normal_clash")}}</summary>
                 <div class="btn-group">
-                    <a href="clash://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/all.yml&name=all_{{domain}}"
+                    <a href="clash://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/all.yml&name=all_{{domain}}-{{mode}}&mode={{mode}}"
                         class="btn btn-secondary orig-link">{{_("user.home.clash_configs.link_for_normal_clash")}}</a>
                 </div>
             </details>
             %else
             <div class="btn-group">
-                <a href="clash://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/all.yml&name=all_{{domain}}"
+                <a href="clash://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/all.yml&name=all_{{domain}}-{{mode}}&mode={{mode}}"
                     class="btn btn-danger orig-link">{{_("user.home.clash_configs.all_sites.btn")}}</a>
             </div>
             %endif
