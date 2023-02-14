@@ -1,5 +1,6 @@
 from flask import Blueprint,url_for,request,jsonify,g
 from flask_admin import Admin
+# from flask_sockets import Sockets
 
 from .SettingAdmin import SettingAdmin 
 from .DomainAdmin import DomainAdmin
@@ -21,6 +22,7 @@ from flask_adminlte3 import AdminLTE3
 flask = Blueprint("flask", __name__, url_prefix=f"/<proxy_path>/<user_secret>/",template_folder="templates")
 bp = Blueprint("admin", __name__, url_prefix=f"/<proxy_path>/<user_secret>/admin/",template_folder="templates")
 
+# from extensions import socketio
 
 
 def init_app(app):
@@ -55,6 +57,7 @@ def init_app(app):
     Backup.register(bp)
     Dashboard.register(bp,route_base="/")
 
+    
     # bp.add_url_rule('/admin/quicksetup/',endpoint="quicksetup",view_func=QuickSetup.index,methods=["GET"])
     # bp.add_url_rule('/admin/quicksetup/',endpoint="quicksetup-save", view_func=QuickSetup.save,methods=["POST"])
 
@@ -63,5 +66,8 @@ def init_app(app):
     app.register_blueprint(flask)
     app.add_url_rule("/<proxy_path>/<user_secret>/admin/static/<filename>/",endpoint="admin.static")# fix bug in admin with blueprint
     
+    # sockets = Sockets(app)
+    # sockets.register_blueprint(bp)
+
     # print(app.url_map)    
     
