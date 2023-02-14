@@ -68,7 +68,7 @@ class DomainAdmin(AdminLTEModelView):
         for c in configs:
             if "domain" in c and ConfigEnum.decoy_domain!=c:
                 if model.domain==configs[c]:
-                    raise ValidationError(f"another {model.mode} is exist")    
+                    raise ValidationError(_("You have used this domain in: ")+_(f"config.{c}.label"))    
     
         dip=hiddify.get_domain_ip(model.domain)
         if dip==None:

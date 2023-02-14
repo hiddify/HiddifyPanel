@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-14 18:20+0100\n"
-"PO-Revision-Date: 2023-02-14 11:20-0600\n"
+"POT-Creation-Date: 2023-02-14 18:34+0100\n"
+"PO-Revision-Date: 2023-02-14 11:34-0600\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -208,6 +208,10 @@ msgstr "آی‌پی"
 #: hiddifypanel/panel/admin/DomainAdmin.py:44
 msgid "admin link"
 msgstr "مدیریت"
+
+#: hiddifypanel/panel/admin/DomainAdmin.py:71
+msgid "You have used this domain in: "
+msgstr "شما از این دامنه در بخش زیر استفاده کرده اید: "
 
 # | msgid ""
 # | "Domain can not be resolved! There is a problem in your domain. Please
