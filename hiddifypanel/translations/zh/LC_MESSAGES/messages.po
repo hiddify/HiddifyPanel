@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-14 17:59+0100\n"
-"PO-Revision-Date: 2023-02-14 10:59-0600\n"
+"POT-Creation-Date: 2023-02-14 18:09+0100\n"
+"PO-Revision-Date: 2023-02-14 11:08-0600\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -177,7 +177,7 @@ msgid "domain.ip"
 msgstr "知识产权"
 
 # | msgid "Admin"
-#: hiddifypanel/panel/admin/DomainAdmin.py:43
+#: hiddifypanel/panel/admin/DomainAdmin.py:44
 #, fuzzy
 msgid "admin link"
 msgstr "行政"
@@ -186,7 +186,7 @@ msgstr "行政"
 # | "Domain can not be resolved! There is a problem in your domain. Please
 # check "
 # | "your Domain configurations."
-#: hiddifypanel/panel/admin/DomainAdmin.py:74
+#: hiddifypanel/panel/admin/DomainAdmin.py:75
 #: hiddifypanel/panel/admin/QuickSetup.py:103
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr "域名无法解析！你的域有问题"
@@ -195,14 +195,14 @@ msgstr "域名无法解析！你的域有问题"
 # | "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which
 # is "
 # | "required in direct mode."
-#: hiddifypanel/panel/admin/DomainAdmin.py:78
+#: hiddifypanel/panel/admin/DomainAdmin.py:79
 #, python-format
 msgid ""
 "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which "
 "is required in direct mode"
 msgstr "域 IP=%(domain_ip)s 与您的 ip=%(server_ip)s 不匹配，这在直接模式下是必需的"
 
-#: hiddifypanel/panel/admin/DomainAdmin.py:81
+#: hiddifypanel/panel/admin/DomainAdmin.py:82
 #, python-format
 msgid ""
 "In CDN mode, Domain IP=%(domain_ip)s should be different to your "
@@ -1106,8 +1106,8 @@ msgstr "找不到配置"
 # | msgid "CPU Usage"
 #: hiddifypanel/panel/admin/templates/index.html:12
 #: hiddifypanel/panel/admin/templates/index.html:32
-#: hiddifypanel/panel/admin/templates/index.html:179
-#: hiddifypanel/panel/admin/templates/index.html:190
+#: hiddifypanel/panel/admin/templates/index.html:213
+#: hiddifypanel/panel/admin/templates/index.html:224
 msgid "admin.cpu_chart"
 msgstr "CPU使用率图表"
 
@@ -1115,6 +1115,7 @@ msgstr "CPU使用率图表"
 #: hiddifypanel/panel/admin/templates/index.html:46
 #: hiddifypanel/panel/admin/templates/index.html:67
 #: hiddifypanel/panel/admin/templates/index.html:79
+#: hiddifypanel/panel/admin/templates/index.html:112
 msgid "admin.ram_chart"
 msgstr "内存使用图表"
 
@@ -1123,24 +1124,29 @@ msgstr "内存使用图表"
 msgid "admin.ipv4 connections"
 msgstr ""
 
+# | msgid "IPv6 connections"
+#: hiddifypanel/panel/admin/templates/index.html:133
+msgid "admin.ipv6 connections"
+msgstr ""
+
 # | msgid "Network Usage"
-#: hiddifypanel/panel/admin/templates/index.html:112
-#: hiddifypanel/panel/admin/templates/index.html:145
-#: hiddifypanel/panel/admin/templates/index.html:156
+#: hiddifypanel/panel/admin/templates/index.html:146
+#: hiddifypanel/panel/admin/templates/index.html:179
+#: hiddifypanel/panel/admin/templates/index.html:190
 msgid "admin.network_chart"
 msgstr "网络使用"
 
 # | msgid "Protocol Usage Chart"
-#: hiddifypanel/panel/admin/templates/index.html:144
+#: hiddifypanel/panel/admin/templates/index.html:178
 msgid "admin.protocol_chart"
 msgstr "协议使用图表"
 
 # | msgid "Users Usage Chart"
-#: hiddifypanel/panel/admin/templates/index.html:178
+#: hiddifypanel/panel/admin/templates/index.html:212
 msgid "admin.user_chart"
 msgstr "用户使用图表"
 
-#: hiddifypanel/panel/admin/templates/index.html:211
+#: hiddifypanel/panel/admin/templates/index.html:245
 #, fuzzy
 msgid ""
 "You have disabled netdata in the setting. You need to enable it to see "

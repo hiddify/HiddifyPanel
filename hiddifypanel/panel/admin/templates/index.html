@@ -106,6 +106,40 @@
         </div>
 
     </div>
+    % if not hconfig(ConfigEnum.only_ipv4)
+    <div class="card card-info">
+        <div class="card-header d-none">
+            <h3 class="card-title">{{_('admin.ram_chart')}}</h3>
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="chart">
+                <div class="chartjs-size-monitor">
+                    <div class="chartjs-size-monitor-expand">
+                        <div class=""></div>
+                    </div>
+                    <div class="chartjs-size-monitor-shrink">
+                        <div class=""></div>
+                    </div>
+                </div>
+                <div data-netdata="ipv6.tcpsock" 
+                    data-chart-library="gauge" data-title="{{_('admin.ipv6 connections')}}"
+                    data-units="" data-gauge-max-value="1000" data-height="150" data-points="300" data-colors="#ffc107"
+                    role="application">
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    % endif
     <!-- 
     <div class="card card-success">
         <div class="card-header">
