@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-14 18:34+0100\n"
-"PO-Revision-Date: 2023-02-14 11:34-0600\n"
+"POT-Creation-Date: 2023-02-14 18:40+0100\n"
+"PO-Revision-Date: 2023-02-14 11:39-0600\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -1240,11 +1240,24 @@ msgstr "日志"
 msgid "Click here to see the complete log"
 msgstr "单击此处查看完整日志。"
 
+# | msgid ""
+# | "In this section, you can add your domain. You need to add at least one
+# domain in direct mode.\n"
+# | "\n"
+# | "If you want to lessen the probability of having dirty IP, you can add
+# multiple relay server <a
+# href=\"https://github.com/hiddify/hiddify-config/discussions/129\">read
+# more</a>."
 #: hiddifypanel/panel/admin/templates/model/domain_list.html:7
+#, fuzzy
 msgid ""
 "In this section, you can add your domain. You need to add at least one "
 "domain in direct mode."
 msgstr ""
+"在此部分中，您可以添加您的域。您需要在直接模式下至少添加一个域。\n"
+"\n"
+"如果您想减少脏 IP 的可能性，您可以添加多个中继服务器<a href=\"https://github.com/hiddify/hiddify-"
+"config/discussions/129\">阅读更多</a>。"
 
 # | msgid ""
 # | "User usage will be updated every 6 minutes. To update it now click <a "
