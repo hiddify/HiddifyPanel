@@ -90,7 +90,7 @@ def get_common_data(user_uuid,mode):
                 direct_host=urllib.request.urlopen('https://v4.ident.me/').read().decode('utf8')
                 direct_domain_db=Domain(domain=direct_host,mode=DomainType.direct)
             
-            domains.append(db_domain)
+            domains.append(direct_domain_db)
         
         
 
