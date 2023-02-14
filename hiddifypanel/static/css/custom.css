@@ -53,3 +53,7 @@ legend {
   .toasts-top-left,.toasts-top-right{
     top:50px
   }
+
+  .toast{
+    max-width: 550px;
+  }

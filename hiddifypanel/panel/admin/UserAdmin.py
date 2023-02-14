@@ -54,7 +54,7 @@ class UserAdmin(AdminLTEModelView):
         # usage_limit_GB="in GB",
         # current_usage_GB="in GB"
     )
-    column_editable_list=["name","usage_limit_GB","current_usage_GB","expiry_time"]
+    column_editable_list=["usage_limit_GB","current_usage_GB","expiry_time"]
     # form_extra_fields={
     #     'uuid': {'label_name':"D"}
         
@@ -65,14 +65,19 @@ class UserAdmin(AdminLTEModelView):
     #     model.password = generate_password_hash(model.password)
     
     
+    def _name_formatter(view, context, model, name):
+        proxy_path=hconfig(ConfigEnum.proxy_path)
+        link=f"<a target='_blank' href='https://{Domain.query.first().domain}/{proxy_path}/{model.uuid}/multi'><i class='fa-solid fa-arrow-up-right-from-square'></i> {model.name}</a>"
+        return Markup(link)
     def _ul_formatter(view, context, model, name):
         
-        return Markup(hiddify.get_user_link(model.uuid,Domain.query.first(),'multi')+" ".join([hiddify.get_user_link(model.uuid,d) for d in Domain.query.all()]))
+        return Markup(" ".join([hiddify.get_user_link(model.uuid,d,'multi') for d in Domain.query.all()]))
     def _uuid_formatter(view, context, model, name):
         return Markup(f"<span>{model.uuid}</span>")
     def _usage_formatter(view, context, model, name):
         return round(model.current_usage_GB,3)
     column_formatters = {
+        'name': _name_formatter,
         'UserLinks': _ul_formatter,
         'uuid': _uuid_formatter,
         'current_usage_GB': _usage_formatter

@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-14 17:19+0100\n"
-"PO-Revision-Date: 2023-02-14 10:19-0600\n"
+"POT-Creation-Date: 2023-02-14 17:59+0100\n"
+"PO-Revision-Date: 2023-02-14 10:59-0600\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -26,36 +26,6 @@ msgstr "应用配置"
 #: hiddifypanel/panel/admin/ProxyAdmin.py:43 hiddifypanel/panel/hiddify.py:156
 msgid "config.validation-success"
 msgstr "配置已成功更改。单击 %(link)s 以应用配置。申请可能需要 2 分钟。"
-
-# | msgid "All"
-#: hiddifypanel/panel/hiddify.py:175
-#: hiddifypanel/panel/user/templates/home/all-configs.html:24
-#: hiddifypanel/panel/user/templates/home/all-configs.html:25
-#: hiddifypanel/panel/user/templates/home/all-configs.html:26
-#: hiddifypanel/panel/user/templates/home/all-configs.html:27
-#: hiddifypanel/panel/user/templates/home/all-configs.html:28
-#: hiddifypanel/panel/user/templates/home/all-configs.html:37
-#: hiddifypanel/panel/user/templates/home/all-configs.html:38
-#: hiddifypanel/panel/user/templates/home/all-configs.html:40
-#: hiddifypanel/panel/user/templates/home/all-configs.html:41
-#: hiddifypanel/panel/user/templates/home/all-configs.html:50
-#: hiddifypanel/panel/user/templates/home/all-configs.html:51
-#: hiddifypanel/panel/user/templates/home/all-configs.html:52
-#: hiddifypanel/panel/user/templates/home/all-configs.html:53
-#: hiddifypanel/panel/user/templates/home/all-configs.html:54
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:22
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:23
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:24
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:25
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:34
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:36
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:37
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:46
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:47
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:48
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:49
-msgid "all"
-msgstr "全部"
 
 # | msgid ""
 # | "Rebooting System... This may take afew minutes. Please wait..."
@@ -205,6 +175,12 @@ msgstr "强制 CDN 主机"
 #: hiddifypanel/panel/admin/DomainAdmin.py:40
 msgid "domain.ip"
 msgstr "知识产权"
+
+# | msgid "Admin"
+#: hiddifypanel/panel/admin/DomainAdmin.py:43
+#, fuzzy
+msgid "admin link"
+msgstr "行政"
 
 # | msgid ""
 # | "Domain can not be resolved! There is a problem in your domain. Please
@@ -1165,10 +1141,11 @@ msgid "admin.user_chart"
 msgstr "用户使用图表"
 
 #: hiddifypanel/panel/admin/templates/index.html:211
+#, fuzzy
 msgid ""
 "You have disabled netdata in the setting. You need to enable it to see "
 "the information."
-msgstr ""
+msgstr "您已在设置中禁用网络数据。您需要启用它才能看到信息。"
 
 # | msgid "Global Configs"
 #: hiddifypanel/panel/admin/templates/proxy.html:11
@@ -1315,6 +1292,35 @@ msgstr "安全"
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:19
 msgid "user.home.allconfig.hiddify-configs"
 msgstr "隐藏配置"
+
+# | msgid "All"
+#: hiddifypanel/panel/user/templates/home/all-configs.html:24
+#: hiddifypanel/panel/user/templates/home/all-configs.html:25
+#: hiddifypanel/panel/user/templates/home/all-configs.html:26
+#: hiddifypanel/panel/user/templates/home/all-configs.html:27
+#: hiddifypanel/panel/user/templates/home/all-configs.html:28
+#: hiddifypanel/panel/user/templates/home/all-configs.html:37
+#: hiddifypanel/panel/user/templates/home/all-configs.html:38
+#: hiddifypanel/panel/user/templates/home/all-configs.html:40
+#: hiddifypanel/panel/user/templates/home/all-configs.html:41
+#: hiddifypanel/panel/user/templates/home/all-configs.html:50
+#: hiddifypanel/panel/user/templates/home/all-configs.html:51
+#: hiddifypanel/panel/user/templates/home/all-configs.html:52
+#: hiddifypanel/panel/user/templates/home/all-configs.html:53
+#: hiddifypanel/panel/user/templates/home/all-configs.html:54
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:22
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:23
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:24
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:25
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:34
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:36
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:37
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:46
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:47
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:48
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:49
+msgid "all"
+msgstr "全部"
 
 # | msgid "Clash Configs"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:34

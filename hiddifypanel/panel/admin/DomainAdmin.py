@@ -40,14 +40,15 @@ class DomainAdmin(AdminLTEModelView):
         'domain_ip':_('domain.ip'),
         }
     def _domain_admin_link(view, context, model, name):
-        return Markup(f'<a href="https://{model.domain}{hiddify.get_admin_path()}" class="badge badge-info" target="_blank">{model.domain}</a>')
+        admin_link=f'https://{model.domain}{hiddify.get_admin_path()}'
+        return Markup(f'<div class="btn-group"><a href="{admin_link}" class="btn btn-xs btn-secondary">'+_("admin link")+f'</a><a href="{admin_link}" class="btn btn-xs btn-info ltr" target="_blank">{model.domain}</a></div>')
     def _domain_ip(view, context, model, name):
         dip=hiddify.get_domain_ip(model.domain)
         myip=hiddify.get_ip(4)
-        if myip==dip:
-            badge_type='success'
-        elif dip:
-            badge_type='info'
+        if myip==dip and model.mode==DomainType.direct:
+            badge_type=''
+        elif dip and model.mode!=DomainType.direct and myip!=dip:
+            badge_type='warning'
         else:
             badge_type='danger'
         return Markup(f'<span class="badge badge-{badge_type}">{dip}</span>')
@@ -90,7 +91,7 @@ class DomainAdmin(AdminLTEModelView):
 
         hiddify.flash_config_success()
 
-        
+
 
     def on_model_delete(self, model):
         if len(Domain.query.all())<=1:

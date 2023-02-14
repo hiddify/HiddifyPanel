@@ -172,11 +172,24 @@ def get_domain_ip(domain):
 
 def get_user_link(uuid,domain,mode=''):
         proxy_path=hconfig(ConfigEnum.proxy_path)
-        text= _('all') if mode else domain.domain
+        res=""
+        if mode=="multi":
+            res+="<div class='btn-group'>"
+
+        link=f"https://{domain.domain}/{proxy_path}/{uuid}/"
+        link_multi=f"https://{domain.domain}/{proxy_path}/{uuid}/multi"
+        text= domain.domain
         if domain.mode==DomainType.cdn:
             text=f'<span class="badge badge-success" >{_("domain.cdn")}</span>'+text        
         
-        return f"<a target='_blank' href='https://{domain.domain}/{proxy_path}/{uuid}/{mode}'><span class='badge badge-info ltr'>{text}</span></a>"
+        if mode=="multi":
+            res+=f"<a class='btn btn-xs btn-secondary' target='_blank' href='{link_multi}' >{_('all')}</a>"
+        res+=f"<a target='_blank' href='{link}' class='btn btn-xs btn-info ltr' >{text}</a>"
+
+
+        if mode=="multi":
+            res+="</div>"
+        return res
 
 
 

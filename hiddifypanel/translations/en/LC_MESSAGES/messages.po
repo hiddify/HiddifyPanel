@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-14 17:19+0100\n"
-"PO-Revision-Date: 2023-02-14 10:19-0600\n"
+"POT-Creation-Date: 2023-02-14 17:59+0100\n"
+"PO-Revision-Date: 2023-02-14 10:59-0600\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -27,36 +27,6 @@ msgid "config.validation-success"
 msgstr ""
 "Configs have been changed successfully. Click %(link)s to apply the configs."
 " It may take 2 minutes to apply."
-
-# | msgid "All"
-#: hiddifypanel/panel/hiddify.py:175
-#: hiddifypanel/panel/user/templates/home/all-configs.html:24
-#: hiddifypanel/panel/user/templates/home/all-configs.html:25
-#: hiddifypanel/panel/user/templates/home/all-configs.html:26
-#: hiddifypanel/panel/user/templates/home/all-configs.html:27
-#: hiddifypanel/panel/user/templates/home/all-configs.html:28
-#: hiddifypanel/panel/user/templates/home/all-configs.html:37
-#: hiddifypanel/panel/user/templates/home/all-configs.html:38
-#: hiddifypanel/panel/user/templates/home/all-configs.html:40
-#: hiddifypanel/panel/user/templates/home/all-configs.html:41
-#: hiddifypanel/panel/user/templates/home/all-configs.html:50
-#: hiddifypanel/panel/user/templates/home/all-configs.html:51
-#: hiddifypanel/panel/user/templates/home/all-configs.html:52
-#: hiddifypanel/panel/user/templates/home/all-configs.html:53
-#: hiddifypanel/panel/user/templates/home/all-configs.html:54
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:22
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:23
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:24
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:25
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:34
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:36
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:37
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:46
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:47
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:48
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:49
-msgid "all"
-msgstr "All"
 
 # | msgid "Rebooting System... This may take afew minutes. Please wait..."
 #: hiddifypanel/panel/admin/Actions.py:58
@@ -217,6 +187,11 @@ msgstr "Force CDN Config to use Host"
 #: hiddifypanel/panel/admin/DomainAdmin.py:40
 msgid "domain.ip"
 msgstr "IP"
+
+# | msgid "Admin"
+#: hiddifypanel/panel/admin/DomainAdmin.py:43
+msgid "admin link"
+msgstr "Admin"
 
 # | msgid ""
 # | "Domain can not be resolved! There is a problem in your domain. Please "
@@ -1239,7 +1214,6 @@ msgid "admin.user_chart"
 msgstr "Users Usage Chart"
 
 #: hiddifypanel/panel/admin/templates/index.html:211
-#, fuzzy
 msgid ""
 "You have disabled netdata in the setting. You need to enable it to see the "
 "information."
@@ -1410,6 +1384,35 @@ msgstr "Security"
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:19
 msgid "user.home.allconfig.hiddify-configs"
 msgstr "Hiddify Configs"
+
+# | msgid "All"
+#: hiddifypanel/panel/user/templates/home/all-configs.html:24
+#: hiddifypanel/panel/user/templates/home/all-configs.html:25
+#: hiddifypanel/panel/user/templates/home/all-configs.html:26
+#: hiddifypanel/panel/user/templates/home/all-configs.html:27
+#: hiddifypanel/panel/user/templates/home/all-configs.html:28
+#: hiddifypanel/panel/user/templates/home/all-configs.html:37
+#: hiddifypanel/panel/user/templates/home/all-configs.html:38
+#: hiddifypanel/panel/user/templates/home/all-configs.html:40
+#: hiddifypanel/panel/user/templates/home/all-configs.html:41
+#: hiddifypanel/panel/user/templates/home/all-configs.html:50
+#: hiddifypanel/panel/user/templates/home/all-configs.html:51
+#: hiddifypanel/panel/user/templates/home/all-configs.html:52
+#: hiddifypanel/panel/user/templates/home/all-configs.html:53
+#: hiddifypanel/panel/user/templates/home/all-configs.html:54
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:22
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:23
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:24
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:25
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:34
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:36
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:37
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:46
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:47
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:48
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:49
+msgid "all"
+msgstr "All"
 
 # | msgid "Clash Configs"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:34
