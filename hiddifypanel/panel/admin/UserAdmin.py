@@ -67,11 +67,15 @@ class UserAdmin(AdminLTEModelView):
     
     def _name_formatter(view, context, model, name):
         proxy_path=hconfig(ConfigEnum.proxy_path)
-        link=f"<a target='_blank' href='https://{Domain.query.first().domain}/{proxy_path}/{model.uuid}/multi'><i class='fa-solid fa-arrow-up-right-from-square'></i> {model.name}</a>"
-        return Markup(link)
+        d=Domain.query.filter(Domain.mode!=DomainType.fake).first()
+        if d:
+            link=f"<a target='_blank' href='https://{d.domain}/{proxy_path}/{model.uuid}/multi'><i class='fa-solid fa-arrow-up-right-from-square'></i> {model.name}</a>"
+            return Markup(link)
+        else:
+            return model.name
     def _ul_formatter(view, context, model, name):
         
-        return Markup(" ".join([hiddify.get_user_link(model.uuid,d,'multi') for d in Domain.query.all()]))
+        return Markup(" ".join([hiddify.get_user_link(model.uuid,d,'multi') for d in Domain.query.filter(Domain.mode!=DomainType.fake).all()]))
     def _uuid_formatter(view, context, model, name):
         return Markup(f"<span>{model.uuid}</span>")
     def _usage_formatter(view, context, model, name):
