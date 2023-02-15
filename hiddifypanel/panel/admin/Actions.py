@@ -100,7 +100,7 @@ class Actions(FlaskView):
 
     
     def status(self):
-        hiddify.add_temporary_access()
+        # hiddify.add_temporary_access()
         config=current_app.config
         # configs=read_configs()
         # subprocess.Popen(f"{config_dir}/update.sh",env=my_env,cwd=f"{config_dir}")
