@@ -14,6 +14,7 @@ from flask import url_for
 # from werkzeug.middleware.proxy_fix import ProxyFix
 
 def create_app(**config):
+    
     app = Flask(__name__,static_url_path="/<proxy_path>/static/",instance_relative_config=True)
     FlaskDynaconf(app)  # config managed by Dynaconf
     app.jinja_env.line_statement_prefix = '%'
@@ -58,6 +59,7 @@ def create_app(**config):
         csrf.protect()
     # app=ProxyFix(app, x_for=1, x_host=1,x_proto=1,x_port=1,x_prefix=1)
     app.jinja_env.globals['get_locale'] = get_locale
+    app.jinja_env.globals['version'] = hiddifypanel.__version__
     
     
     return app

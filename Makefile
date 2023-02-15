@@ -83,6 +83,7 @@ release:          ## Create a new tag for release.
 	@read -p "Version? (provide the next x.y.z semver) : " TAG
 	
 	@echo "$${TAG}" > hiddifypanel/VERSION
+	@echo "__version__='$${TAG}'" > hiddifypanel/VERSION.py
 	@$(ENV_PREFIX)gitchangelog > HISTORY.md
 	@git add hiddifypanel/VERSION HISTORY.md
 	@git commit -m "release: version $${TAG} 🚀"

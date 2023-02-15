@@ -4,3 +4,4 @@ __all__ = ["create_app", "create_app_wsgi"]
 
 # application = create_app_wsgi()
 
+from .VERSION import __version__
