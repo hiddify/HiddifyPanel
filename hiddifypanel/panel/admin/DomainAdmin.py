@@ -86,7 +86,7 @@ class DomainAdmin(AdminLTEModelView):
         #         ValidationError(f"another {model.mode} is exist")
         model.domain=model.domain.lower()
 
-        if model.mode !=DomainType.direct and model.cdn_ip:
+        if model.mode ==DomainType.direct and model.cdn_ip:
             raise ValidationError(f"Specifying CDN IP is only valid for CDN mode")
 
         if model.mode==DomainType.fake and not model.cdn_ip:
