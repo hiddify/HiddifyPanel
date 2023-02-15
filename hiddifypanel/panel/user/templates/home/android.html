@@ -1,15 +1,15 @@
 {% macro hiddify_android_dl() -%}
 <div class="btn-group">
-    <a href="/{{hconfigs[ConfigEnum.proxy_path]}}/gh/hiddify/HiddifyProxyAndroid/releases/download/v0.8/hiddify-2.6.1-h0.8-meta-alpha-universal-release.apk"
+    <a href="/{{hconfigs[ConfigEnum.proxy_path]}}/gh/hiddify/HiddifyProxyAndroid/releases/download/v0.10/hiddify-2.6.6-h0.10-meta-alpha-universal-release.apk"
         class="btn btn-primary orig-link">{{_('download')}}</a>
 </div>
 {%- endmacro -%}
 
 {% macro hiddify_android_google_play() -%}
-<div class="btn-group">
+<!-- <div class="btn-group">
     <a href="/{{hconfigs[ConfigEnum.proxy_path]}}/gh/hiddify/HiddifyProxyAndroid/releases/download/v0.8/hiddify-2.6.1-h0.8-meta-alpha-universal-release.apk"
         class="btn btn-primary orig-link">{{_('install from google play')}}</a>
-</div>
+</div> -->
 {%- endmacro -%}
 
 {{_('user.home.android.intro',dl_link=hiddify_android_dl(),play_link=hiddify_android_google_play())}}

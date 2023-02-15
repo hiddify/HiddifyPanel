@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-14 18:40+0100\n"
-"PO-Revision-Date: 2023-02-14 11:39-0600\n"
+"POT-Creation-Date: 2023-02-15 16:56+0100\n"
+"PO-Revision-Date: 2023-02-15 09:56-0600\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -39,7 +39,7 @@ msgstr "راه اندازی مجدد سیستم ممکن است اندکی زم�
 # | "Success! Please wait about 5 minutes to make sure everything is updated.
 # "
 # | "During this time, please copy and save your proxy links which are:"
-#: hiddifypanel/panel/admin/Actions.py:89
+#: hiddifypanel/panel/admin/Actions.py:91
 msgid ""
 "Success! Please wait around 4 minutes to make sure everything is updated."
 " During this time, please save your proxy links which are:"
@@ -49,11 +49,11 @@ msgstr ""
 "جایی برای خود ذخیره نمایید:"
 
 # | msgid "See the log in the bellow screen"
-#: hiddifypanel/panel/admin/Actions.py:114
+#: hiddifypanel/panel/admin/Actions.py:116
 msgid "see the log in the bellow screen"
 msgstr "لاگ سیستم  را می‌توانید در صفحه زیر ببینید:"
 
-#: hiddifypanel/panel/admin/Actions.py:135
+#: hiddifypanel/panel/admin/Actions.py:137
 msgid "Success! Please wait around 5 minutes to make sure everything is updated."
 msgstr ""
 "موفقیت آمیز بود! لطفا برای اینکه مطمئن شوید بروزرسانی‌ها به درستی اعمال "
@@ -1264,7 +1264,6 @@ msgid "admin.user_chart"
 msgstr "نمودار مصرف کاربران"
 
 #: hiddifypanel/panel/admin/templates/index.html:245
-#, fuzzy
 msgid ""
 "You have disabled netdata in the setting. You need to enable it to see "
 "the information."
@@ -1513,7 +1512,7 @@ msgstr "گوگل‌پلی"
 # | "Please install HiddifyAndroid from %(dl_link)s or %(play_link)s. \n"
 # | "\n"
 # | "<div class=\"callout callout-danger\">\n"
-# | "    <b>Update HiddifyAndroid to version 0.8</b>\n"
+# | "    <b>Update HiddifyAndroid to version 0.10</b>\n"
 # | "</div>\n"
 # | "<div class=\"card card-info\">\n"
 # | "    <div class=\"card-header\">\n"
@@ -1551,7 +1550,7 @@ msgstr ""
 "لطفاً HiddifyAndroid را از %(dl_link)s یا %(play_link)s نصب کنید.\n"
 "\n"
 "<div class=\"callout callout-danger\">\n"
-"    <b>اپ HiddifyAndroid را به ورژن 0.8 آپدیت کنید. </b>\n"
+"    <b>اپ HiddifyAndroid را به ورژن 0.10 آپدیت کنید. </b>\n"
 "</div>\n"
 "<div class=\"card card-info\">\n"
 "     <div class=\"card-header\">\n"
@@ -1603,8 +1602,8 @@ msgstr "تست"
 #: hiddifypanel/panel/user/templates/home/clash-links.html:1
 msgid "user.home.clash_configs.intro"
 msgstr ""
-"پس از نصب اپ مورد نیاز در قسمت بالا، بر اساس نیازتان، روی یکی از لینک‌های"
-" زیر کلیک کنید تا پروکسی سرورها به اپ‌تان وارد شوند:"
+"پس از نصب اپ مورد نیاز در قسمت بالا، بر اساس نوع اتصال، روی یکی از "
+"لینک‌های زیر کلیک کنید تا پروکسی سرورها به اپ‌تان وارد شوند:"
 
 # | msgid "For only blocked sites"
 #: hiddifypanel/panel/user/templates/home/clash-links.html:5
@@ -1902,7 +1901,6 @@ msgstr ""
 "        </div>"
 
 #: hiddifypanel/panel/user/templates/home/ios.html:3
-#, fuzzy
 msgid "Please select one of the following applications:"
 msgstr "لطفا یکی از برنامه های زیر را انتخاب کنید:"
 
@@ -2347,7 +2345,7 @@ msgstr "بستن"
 # | msgid "Share to social media"
 #: hiddifypanel/templates/master.html:117
 msgid "user.home.share-title"
-msgstr "اشتراک‌گذاری در شبکه‌های اجتماعی"
+msgstr "اشتراک‌گذاری"
 
 # | msgid "Link for social media"
 #: hiddifypanel/templates/master.html:127
