@@ -264,7 +264,7 @@ def to_clash(proxy,meta_or_normal):
         base["servername"]= proxy["sni"]
         base["tls"]= proxy["l3"]=="tls"
     if meta_or_normal=="meta":
-        base['client-fingerprint']="random"
+        base['client-fingerprint']="chrome"
     if "xtls" == proxy['l3']:
         base["flow"]= proxy['flow']
         base["flow-show"]= True
