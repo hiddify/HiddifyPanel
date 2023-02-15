@@ -85,7 +85,7 @@ release:          ## Create a new tag for release.
 	@echo "$${TAG}" > hiddifypanel/VERSION
 	@echo "__version__='$${TAG}'" > hiddifypanel/VERSION.py
 	@$(ENV_PREFIX)gitchangelog > HISTORY.md
-	@git add hiddifypanel/VERSION HISTORY.md
+	@git add hiddifypanel/VERSION hiddifypanel/VERSION.py HISTORY.md
 	@git commit -m "release: version $${TAG} 🚀"
 	@echo "creating git tag : $${TAG}"
 	@git tag $${TAG}
