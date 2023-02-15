@@ -200,3 +200,13 @@ def flash(message,category):
     return flask_flash(Markup(message),category)
 
 
+
+
+
+def validate_domain_exist(form,field):
+        domain=field.data
+        if not domain:return
+        dip=hiddify.get_domain_ip(domain)
+        if dip==None:
+                raise ValidationError(_("Domain can not be resolved! there is a problem in your domain"))
+        
