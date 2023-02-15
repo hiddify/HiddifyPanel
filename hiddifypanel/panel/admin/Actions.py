@@ -61,6 +61,8 @@ class Actions(FlaskView):
     
     @route('reinstall', methods=['POST'])
     def reinstall(self,complete_install=True,domain_changed=True):
+        domain_changed=request.args.get("domain_changed",domain_changed)
+        complete_install=request.args.get("complete_install",complete_install)
         flash(f'complete_install={complete_install} domain_changed={domain_changed}', 'info')
         config=current_app.config
         hiddify.add_temporary_access()
