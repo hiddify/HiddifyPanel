@@ -78,7 +78,7 @@ class DomainAdmin(AdminLTEModelView):
         if model.mode==DomainType.direct and myip!=dip:
             raise ValidationError(_("Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode",server_ip=myip,domain_ip=dip))
 
-        if dip==myip and model.mode in [DomainType.cdn,DomainType.relay]:
+        if dip==myip and model.mode in [DomainType.cdn,DomainType.relay,DomainType.fake]:
             raise ValidationError(_("In CDN mode, Domain IP=%(domain_ip)s should be different to your ip=%(server_ip)s",server_ip=myip,domain_ip=dip))
         
         # if model.mode in [DomainType.ss_faketls, DomainType.telegram_faketls]:
@@ -86,8 +86,14 @@ class DomainAdmin(AdminLTEModelView):
         #         ValidationError(f"another {model.mode} is exist")
         model.domain=model.domain.lower()
 
-        if model.mode==DomainType.direct and model.cdn_ip:
+        if model.mode !=DomainType.direct and model.cdn_ip:
             raise ValidationError(f"Specifying CDN IP is only valid for CDN mode")
+
+        if model.mode==DomainType.fake and not model.cdn_ip:
+            model.cdn_ip=myip
+
+        # if model.mode==DomainType.fake and model.cdn_ip!=myip:
+        #     raise ValidationError(f"Specifying CDN IP is only valid for CDN mode")
 
         hiddify.flash_config_success()
 

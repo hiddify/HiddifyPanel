@@ -159,6 +159,7 @@ class DomainType(StrEnum):
     direct = auto()
     cdn = auto()
     relay = auto()
+    fake = auto()
     # fake_cdn = "fake_cdn"
     # telegram_faketls = "telegram_faketls"
     # ss_faketls = "ss_faketls"

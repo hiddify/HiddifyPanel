@@ -35,7 +35,7 @@ def make_proxy(proxy,domain_db):
     l3=proxy.l3
 
     domain=domain_db.domain
-    direct_host=domain_db.domain
+    
     
     hconfigs=get_hconfigs()
     port=0
