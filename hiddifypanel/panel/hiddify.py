@@ -163,10 +163,12 @@ import socket
 def get_domain_ip(domain): 
     import socket
     try: 
-        host_ip = socket.gethostbyname(domain) 
-        return host_ip
+        return socket.gethostbyname(domain) 
     except: 
-        return None
+        try:
+            return socket.getaddrinfo(domain, None, socket.AF_INET6);
+        except: 
+            return None
 
 
 
