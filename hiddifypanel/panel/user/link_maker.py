@@ -215,7 +215,7 @@ def to_clash(proxy,meta_or_normal):
 
     base={}
     # vmess ws
-    base["name"]= proxy["name"]
+    base["name"]= proxy["name"]+" "+proxy['extra_info']
     base["type"]= proxy["proto"]
     base["server"]= proxy["server"]
     base["port"]=proxy["port"]
