@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-16 10:18+0100\n"
-"PO-Revision-Date: 2023-02-16 03:17-0600\n"
+"POT-Creation-Date: 2023-02-16 13:36+0100\n"
+"PO-Revision-Date: 2023-02-16 06:36-0600\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -60,7 +60,7 @@ msgstr ""
 # | msgid ""
 # | "Please wait about 5 minutes to make sure everything is updated. During "
 # | "this time, please copy and save your proxy links which are:"
-#: hiddifypanel/panel/admin/Actions.py:93
+#: hiddifypanel/panel/admin/Actions.py:94
 msgid ""
 "Success! Please wait around 4 minutes to make sure everything is updated. "
 "During this time, please save your proxy links which are:"
@@ -69,11 +69,11 @@ msgstr ""
 "time, please copy and save your proxy links which are:"
 
 # | msgid "See the log in the bellow screen"
-#: hiddifypanel/panel/admin/Actions.py:118
+#: hiddifypanel/panel/admin/Actions.py:119
 msgid "see the log in the bellow screen"
 msgstr "See the log in the bellow screen"
 
-#: hiddifypanel/panel/admin/Actions.py:139
+#: hiddifypanel/panel/admin/Actions.py:140
 msgid ""
 "Success! Please wait around 5 minutes to make sure everything is updated."
 msgstr ""
@@ -513,42 +513,42 @@ msgid "config.port 443 is required"
 msgstr "Port 443 should always be presented. "
 
 # | msgid "Actions"
-#: hiddifypanel/panel/admin/UserAdmin.py:36
+#: hiddifypanel/panel/admin/UserAdmin.py:44
 msgid "actions"
 msgstr "Actions"
 
 # | msgid "Name"
-#: hiddifypanel/panel/admin/UserAdmin.py:37
+#: hiddifypanel/panel/admin/UserAdmin.py:45
 msgid "user.name"
 msgstr "Name"
 
 # | msgid "User Links"
-#: hiddifypanel/panel/admin/UserAdmin.py:38
+#: hiddifypanel/panel/admin/UserAdmin.py:46
 msgid "user.user_links"
 msgstr "User Links"
 
 # | msgid "Usage Limit (GB)"
-#: hiddifypanel/panel/admin/UserAdmin.py:39
+#: hiddifypanel/panel/admin/UserAdmin.py:47
 msgid "user.usage_limit_GB"
 msgstr "Usage Limit (GB)"
 
 # | msgid "Monthly"
-#: hiddifypanel/panel/admin/UserAdmin.py:40
+#: hiddifypanel/panel/admin/UserAdmin.py:48
 msgid "Reset every month"
 msgstr "Monthly"
 
 # | msgid "Current Usage (GB)"
-#: hiddifypanel/panel/admin/UserAdmin.py:41
+#: hiddifypanel/panel/admin/UserAdmin.py:49
 msgid "user.current_usage_GB"
 msgstr "Current Usage (GB)"
 
 # | msgid "Expire Time"
-#: hiddifypanel/panel/admin/UserAdmin.py:42
+#: hiddifypanel/panel/admin/UserAdmin.py:50
 msgid "user.expiry_time"
 msgstr "Expire Time"
 
 # | msgid "UUID"
-#: hiddifypanel/panel/admin/UserAdmin.py:44
+#: hiddifypanel/panel/admin/UserAdmin.py:52
 msgid "user.UUID"
 msgstr "UUID"
 
@@ -747,15 +747,15 @@ msgstr "General Settings"
 msgid "config.general.description"
 msgstr "It is general system configurations."
 
-# | msgid "V2Ray configurations"
+# | msgid "Enable V2Ray "
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.v2ray_enable.label"
-msgstr "V2Ray configurations"
+msgstr "Enable V2Ray "
 
-# | msgid "V2Ray configurations could be set in this section."
+# | msgid "V2Ray does not support accounting and not suggested. "
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.v2ray_enable.description"
-msgstr "V2Ray configurations could be set in this section."
+msgstr "V2Ray does not support accounting and not suggested. "
 
 # | msgid "Shared Secret"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
