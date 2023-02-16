@@ -12,6 +12,7 @@ from flask_babelex import lazy_gettext as _
 from hiddifypanel.panel import hiddify
 from hiddifypanel.panel.hiddify import flash
 from wtforms.fields import StringField
+from flask_bootstrap import SwitchField
 class UserAdmin(AdminLTEModelView):
     
     list_template = 'model/user_list.html'    
@@ -20,7 +21,7 @@ class UserAdmin(AdminLTEModelView):
     # create_modal=True
     # column_display_pk = True
     # can_export = True
-
+    # form_overrides = dict(monthly=SwitchField)
     # form_overrides = dict(expiry_time=StringField)
     # form_widget_args={
     # 'expiry_time':{'class':'datepicker'}    
