@@ -11,23 +11,30 @@ from flask_babelex import gettext as __
 from flask_babelex import lazy_gettext as _
 from hiddifypanel.panel import hiddify
 from hiddifypanel.panel.hiddify import flash
-
+from wtforms.fields import StringField
 class UserAdmin(AdminLTEModelView):
     
     list_template = 'model/user_list.html'    
     form_excluded_columns=['last_reset_time']
-    edit_modal=True
-    create_modal=True
+    # edit_modal=True
+    # create_modal=True
     # column_display_pk = True
     # can_export = True
 
-    
+    # form_overrides = dict(expiry_time=StringField)
+    # form_widget_args={
+    # 'expiry_time':{'class':'datepicker'}    
+    # }
     form_args = {
     'uuid': {
         'validators': [Regexp(r'^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$',message=__("Should be a valid uuid"))]
     #     'label': 'First Name',
     #     'validators': [required()]
     }
+    # ,
+    # 'expiry_time':{
+    # "":'%Y-%m-%d'
+    # }
     }
     # column_labels={'uuid':_("user.UUID")}
     # column_filters=["uuid","name","usage_limit_GB",'monthly',"current_usage_GB","expiry_time"]
