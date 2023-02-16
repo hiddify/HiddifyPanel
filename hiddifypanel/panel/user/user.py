@@ -59,6 +59,7 @@ class UserView(FlaskView):
     @route('/all.txt')
     def all_configs(self):
         mode=request.args.get("mode")
+        base64=request.args.get("base64").lower()=="true"
         c=get_common_data(g.user_uuid,mode)
         # response.content_type = 'text/plain';
         
@@ -68,6 +69,8 @@ class UserView(FlaskView):
             if "vmess://" in line:
                 line="vmess://"+do_base_64(line.replace("vmess://",""))
             res+=line+"\n"
+        if base64:
+            res=do_base_64(res)
         return Response(res,mimetype="text/plain")
 
 def do_base_64(str):
