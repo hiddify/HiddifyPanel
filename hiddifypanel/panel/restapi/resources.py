@@ -1,6 +1,6 @@
 from flask import abort, jsonify,request
 from flask_restful import Resource
-from flask_simplelogin import login_required
+# from flask_simplelogin import login_required
 import datetime
 from hiddifypanel.models import StrConfig,BoolConfig,User,Domain,get_hconfigs,Proxy
 from urllib.parse import urlparse
