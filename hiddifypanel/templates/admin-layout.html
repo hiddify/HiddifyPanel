@@ -15,7 +15,7 @@
 
 
   <div class="navbar-nav">
-  <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i> <span class="brand-text font-weight-light">{{_("master.page-title")}} {{version}}</a>
+  <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i> <span class="brand-text font-weight-light">{{_("master.page-title")}} <span class="badge d-none d-sm-flex">{{version}}</span></a>
   </div>
   <ul class="navbar-nav ml-auto">
     <a class="nav-link btn btn-outline-secondary form_post" href="{{url_for('admin.Actions:apply_configs')}}">
