@@ -49,7 +49,7 @@ class SettingAdmin(FlaskView):
                             if k in bool_types:
                                 BoolConfig.query.filter(BoolConfig.key==k).first().value=v                            
                             else:
-                                if "_domain" in k:
+                                if "_domain" in k or k in [ConfigEnum.admin_secret]:
                                     v=v.lower()
                                 StrConfig.query.filter(StrConfig.key==k).first().value=v
                     
