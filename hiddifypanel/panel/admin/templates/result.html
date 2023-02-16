@@ -41,7 +41,7 @@ function refresh(){
   //x.contentWindow.scrollTo( 0, 999999 );
 }
 setInterval(refresh,1000);
-
+%if g.temp_admin_link
 window.addEventListener('beforeunload', function (e) {
   // Cancel the event
   e.preventDefault(); // If you prevent default behavior in Mozilla Firefox prompt will always be shown
@@ -50,6 +50,7 @@ window.addEventListener('beforeunload', function (e) {
   e.returnValue = 'Save';
   return "save"
 });
+%endif
 </script>
 % endif
 {% endblock %}
