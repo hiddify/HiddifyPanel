@@ -4,7 +4,24 @@
 
 {% block tail %}
 {{super()}}
-{{modal('quicksetup',_('Save Link'),_('Please note that your panel can be accessed only via <a href="%(adminlink)s" class="btn btn-primary copy-link">%(adminlink)s</a>. Please save this link.',adminlink=admin_link),show=True)}}
+
+{{modal('quicksetup',_('Save Link'),_('Please note that your panel can be accessed only via <a href="%(adminlink)s" class="btn btn-primary copy-link">%(adminlink)s</a>. Please save this link.',adminlink=admin_link),show=show_domain_info)}}
+
+<script>
+    disable_notif=false
+    $(document).on('submit','form',function(){
+        disable_notif=true
+    });
+    window.addEventListener('beforeunload', function (e) {
+        if (disable_notif) return
+        // Cancel the event
+        e.preventDefault(); // If you prevent default behavior in Mozilla Firefox prompt will always be shown
+        // Chrome requires returnValue to be set
+        $("#quicksetup").modal()
+        e.returnValue = 'Save';
+        return "save"
+});
+</script>
 {% endblock %}
 
 {% macro ip_btn(ip) -%}

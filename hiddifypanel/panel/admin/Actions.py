@@ -63,7 +63,9 @@ class Actions(FlaskView):
     def reinstall(self,complete_install=True,domain_changed=True):
         domain_changed=request.args.get("domain_changed",domain_changed)
         complete_install=request.args.get("complete_install",complete_install)
-        flash(f'complete_install={complete_install} domain_changed={domain_changed}', 'info')
+        if domain_changed:
+            flash((_('Your domains changed. Please do not forget to copy admin links, otherwise you can not access to the panel anymore.')),'info')
+        # flash(f'complete_install={complete_install} domain_changed={domain_changed}', 'info')
         config=current_app.config
         hiddify.add_temporary_access()
         file="install.sh" if complete_install else "apply_configs.sh"
@@ -79,7 +81,7 @@ class Actions(FlaskView):
         admin_secret=hconfig(ConfigEnum.admin_secret)
         proxy_path=hconfig(ConfigEnum.proxy_path)
         admin_links=f"<h5 >{_('Admin Links')}</h5><ul>"
-        admin_links+=f"<li>{_('Not Secure')}: <a class='badge ltr share-link' href='http://{server_ip}/{proxy_path}/{admin_secret}/admin/'>http://{server_ip}/{proxy_path}/{admin_secret}/admin/</a></li>"
+        admin_links+=f"<li><span class='badge badge-danger'>{_('Not Secure')}</span>: <a class='badge ltr share-link' href='http://{server_ip}/{proxy_path}/{admin_secret}/admin/'>http://{server_ip}/{proxy_path}/{admin_secret}/admin/</a></li>"
         domains=[d.domain for d in Domain.query.all()]
         # domains=[*domains,f'{server_ip}.sslip.io']
         for d in domains:
@@ -87,7 +89,7 @@ class Actions(FlaskView):
                 admin_links+=f"<li><a class='badge ltr  share-link' href='{link}'>{link}</a></li>"
 
         resp= render_template("result.html",
-                            out_type="success",
+                            out_type="info",
                             out_msg=_("Success! Please wait around 4 minutes to make sure everything is updated. During this time, please save your proxy links which are:")+
                                     admin_links,
                             log_path=(f"https://{domains[0]}" if domain_changed else "")+f"/{proxy_path}/{admin_secret}/admin/actions/reverselog/0-install.log/"

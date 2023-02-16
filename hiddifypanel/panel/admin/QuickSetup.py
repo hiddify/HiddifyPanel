@@ -21,7 +21,7 @@ from flask_classful import FlaskView
 class QuickSetup(FlaskView):
     
         def index(self):
-                return render_template('quick_setup.html', lang_form=get_lang_form(), form=get_quick_setup_form(),ipv4=hiddify.get_ip(4),ipv6=hiddify.get_ip(6),admin_link=admin_link())
+                return render_template('quick_setup.html', lang_form=get_lang_form(), form=get_quick_setup_form(),ipv4=hiddify.get_ip(4),ipv6=hiddify.get_ip(6),admin_link=admin_link(),show_domain_info=True)
         
         def post(self):
                 quick_form=get_quick_setup_form()
@@ -36,7 +36,7 @@ class QuickSetup(FlaskView):
                         else:
                                 flash((_('quicksetup.setlang.error')), 'danger')
 
-                        return render_template('quick_setup.html', form=get_quick_setup_form(True),lang_form=lang_form,admin_link=admin_link())                
+                        return render_template('quick_setup.html', form=get_quick_setup_form(True),lang_form=lang_form,admin_link=admin_link(),ipv4=hiddify.get_ip(4),ipv6=hiddify.get_ip(6),show_domain_info=False)                
                 
                 if quick_form.validate_on_submit():
                         sslip_dm=Domain.query.filter(Domain.domain==f'{hiddify.get_ip(4)}.sslip.io').delete()
@@ -51,14 +51,18 @@ class QuickSetup(FlaskView):
                         BoolConfig.query.filter(BoolConfig.key==ConfigEnum.block_iran_sites).first().value=quick_form.block_iran_sites.data
                         StrConfig.query.filter(StrConfig.key==ConfigEnum.decoy_domain).first().value=quick_form.decoy_domain.data
                         db.session.commit()
-                        hiddify.flash_config_success()
+                        # hiddify.flash_config_success()
                         proxy_path=hconfig(ConfigEnum.proxy_path)
                         uuid=User.query.first().uuid
-                        userlink=f"<a class='btn btn-secondary share-link' target='_blank' href='https://{quick_form.domain.data}/{proxy_path}/{uuid}/'>{_('default user link')}</a>"
-                        flash((_('The default user link is %(link)s. To add or edit more users, please visit users from menu.',link=userlink)),'info')
+                        # userlink=f"<a class='btn btn-secondary share-link' target='_blank' href='https://{quick_form.domain.data}/{proxy_path}/{uuid}/'>{_('default user link')}</a>"
+                        # flash((_('The default user link is %(link)s. To add or edit more users, please visit users from menu.',link=userlink)),'info')
+                        
+                        from . import Actions
+                        action=Actions()
+                        return action.reinstall()
                 else:
                         flash(_('config.validation-error'), 'danger')
-                return render_template('quick_setup.html', form=quick_form,lang_form=get_lang_form(True),ipv4=hiddify.get_ip(4),ipv6=hiddify.get_ip(6),admin_link=admin_link() )
+                return render_template('quick_setup.html', form=quick_form,lang_form=get_lang_form(True),ipv4=hiddify.get_ip(4),ipv6=hiddify.get_ip(6),admin_link=admin_link() ,show_domain_info=False)
 
 def get_lang_form(empty=False):
         class LangForm(FlaskForm):

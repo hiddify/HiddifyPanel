@@ -85,7 +85,10 @@ class Backup(FlaskView):
             db.session.bulk_save_objects(new_rows)
             db.session.commit()
             from flask_babel import refresh; refresh()
-            hiddify.flash_config_success(full_install=True)
+            from . import Actions
+            action=Actions()
+            return action.reinstall()
+            # hiddify.flash_config_success(full_install=True)
         else:
             flash(_('Config file is incorrect'))
         return render_template('backup.html',restore_form=restore_form)
