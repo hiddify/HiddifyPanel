@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-16 13:36+0100\n"
-"PO-Revision-Date: 2023-02-16 06:36-0600\n"
+"POT-Creation-Date: 2023-02-16 16:36+0100\n"
+"PO-Revision-Date: 2023-02-16 09:36-0600\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -1382,25 +1382,28 @@ msgid "Click here to see the complete log"
 msgstr "برای دیدن لاگ کامل، اینجا کلیک کنید."
 
 # | msgid ""
-# | "In this section, you can add your domain. You need to add at least one
-# domain in direct mode.\n"
-# | "\n"
+# | "In this section, you can add your domain. \n"
+# | "<br>\n"
 # | "If you want to lessen the probability of having dirty IP, you can add
 # multiple relay server <a
 # href=\"https://github.com/hiddify/hiddify-config/discussions/129\">read
-# more</a>."
+# more</a>.\n"
+# | "If you have multiple IPv4 or IPv6 in your panel You have to add the
+# domain pointed to them as relay."
 #: hiddifypanel/panel/admin/templates/model/domain_list.html:7
 #, fuzzy
 msgid ""
 "In this section, you can add your domain. You need to add at least one "
 "domain in direct mode."
 msgstr ""
-"در این قسمت می توانید دامنه خود را اضافه کنید. شما باید حداقل یک دامنه را"
-" در حالت مستقیم اضافه کنید.\n"
-"\n"
+"در این قسمت می توانید دامنه خود را اضافه کنید.\n"
+"<br>\n"
 "اگر می‌خواهید احتمال داشتن IP کثیف را کاهش دهید، می‌توانید چندین سرور "
 "میانی اضافه کنید <a href=\"https://github.com/hiddify/hiddify-"
-"config/discussions/129\">بیشتر بخوانید</a>."
+"config/discussions/129\">بیشتر بخوانید</a>.\n"
+"<br>\n"
+"اگر میخواهید IPv6 یا سایر IPv4 ها را به پنل اضافه کنید از طریق مود relay "
+"این کار را انجام دهید"
 
 # | msgid ""
 # | "User usage will be updated every 6 minutes. To update it now click <a "
