@@ -7,7 +7,7 @@
             {{_("user.home.clash_configs.only_for_blocked_sites.description")}}
             % if show_meta
             <div class="btn-group">
-                <a href="clashmeta://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/meta/lite.yml&name=mlite_{{domain}}-{{mode}}&mode={{mode}}"
+                <a href="{{'clash' if ios else 'clashmeta'}}://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/meta/lite.yml&name=mlite_{{domain}}-{{mode}}&mode={{mode}}"
                     class="btn btn-success orig-link">{{_("user.home.clash_configs.only_for_blocked_sites.btn")}}</a>
             </div>
             <details>
@@ -32,7 +32,7 @@
             {{_("user.home.clash_configs.foreign_sites.description")}}
             % if show_meta
             <div class="btn-group">
-                <a href="clashmeta://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/meta/normal.yml&name=mnormal_{{domain}}-{{mode}}&mode={{mode}}"
+                <a href="{{'clash' if ios else 'clashmeta'}}://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/meta/normal.yml&name=mnormal_{{domain}}-{{mode}}&mode={{mode}}"
                     class="btn btn-warning orig-link">{{_("user.home.clash_configs.foreign_sites.btn")}}</a>
             </div>
             <details>
@@ -58,7 +58,7 @@
             {{_("user.home.clash_configs.all_sites.description")}}
             % if show_meta
             <div class="btn-group">
-                <a href="clashmeta://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/meta/all.yml&name=mall_{{domain}}-{{mode}}&mode={{mode}}"
+                <a href="{{'clash' if ios else 'clashmeta'}}://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/meta/all.yml&name=mall_{{domain}}-{{mode}}&mode={{mode}}"
                     class="btn btn-danger orig-link">{{_("user.home.clash_configs.all_sites.btn")}}</a>
             </div>
             <details>
