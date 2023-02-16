@@ -87,7 +87,7 @@ class Backup(FlaskView):
             from flask_babel import refresh; refresh()
             from . import Actions
             action=Actions()
-            return action.reinstall()
+            return action.reinstall(complete_install=True,domain_changed=True)
             # hiddify.flash_config_success(full_install=True)
         else:
             flash(_('Config file is incorrect'))
