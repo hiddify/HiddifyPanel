@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-16 16:36+0100\n"
-"PO-Revision-Date: 2023-02-16 09:36-0600\n"
+"POT-Creation-Date: 2023-02-16 23:26+0100\n"
+"PO-Revision-Date: 2023-02-16 16:26-0600\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -1479,6 +1479,11 @@ msgstr "کانفیگ هایدیفای"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:52
 #: hiddifypanel/panel/user/templates/home/all-configs.html:53
 #: hiddifypanel/panel/user/templates/home/all-configs.html:54
+#: hiddifypanel/panel/user/templates/home/all-configs.html:63
+#: hiddifypanel/panel/user/templates/home/all-configs.html:64
+#: hiddifypanel/panel/user/templates/home/all-configs.html:65
+#: hiddifypanel/panel/user/templates/home/all-configs.html:66
+#: hiddifypanel/panel/user/templates/home/all-configs.html:67
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:22
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:23
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:24
@@ -1507,7 +1512,9 @@ msgstr "به جز vless"
 
 # | msgid "Subscription Link"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:47
+#: hiddifypanel/panel/user/templates/home/all-configs.html:60
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:43
+#: hiddifypanel/panel/user/templates/home/ios.html:27
 msgid "user.home.allconfig.link-configs"
 msgstr "لینک برای Subscription"
 
@@ -1917,10 +1924,10 @@ msgstr ""
 msgid "Please select one of the following applications:"
 msgstr "لطفا یکی از برنامه های زیر را انتخاب کنید:"
 
-# | msgid "Other applications (shadowlink, fairVPN, napsternetv)"
+# | msgid "Other applications (shadowlink, fairVPN)"
 #: hiddifypanel/panel/user/templates/home/ios.html:19
 msgid "user.home.ios.others.title"
-msgstr "سایر اپلیکیشن‌ها (shadowlink, fairVPN, napsternetv)"
+msgstr "سایر اپلیکیشن‌ها (shadowlink, fairVPN)"
 
 # | msgid ""
 # | "First install one of the following applications:\n"
@@ -1928,8 +1935,9 @@ msgstr "سایر اپلیکیشن‌ها (shadowlink, fairVPN, napsternetv)"
 # | "<a
 # href=\"https://apps.apple.com/us/app/shadowlink-shadowsocks-vpn/id1439686518\"\n"
 # | "        class=\"btn btn-primary orig-link\">shadow link</a> \n"
-# | "    <a href=\"https://apps.apple.com/us/app/napsternetv/id1629465476\"\n"
-# | "        class=\"btn btn-primary orig-link\">napsternetv</a>\n"
+# | "<!--    <a
+# href=\"https://apps.apple.com/us/app/napsternetv/id1629465476\"\n"
+# | "        class=\"btn btn-primary orig-link\">napsternetv</a>-->\n"
 # | "\t<a href=\"https://apps.apple.com/us/app/fair-vpn/id1533873488\"\n"
 # | "        class=\"btn btn-primary orig-link\">fair-vpn</a>\n"
 # | "</div>\n"
@@ -1944,8 +1952,9 @@ msgstr ""
 "<a href=\"https://apps.apple.com/us/app/shadowlink-shadowsocks-"
 "vpn/id1439686518\"\n"
 "         class=\"btn btn-primary orig-link\">Shadowlink</a>\n"
-"     <a href=\"https://apps.apple.com/us/app/napsternetv/id1629465476\"\n"
-"         class=\"btn btn-primary orig-link\">napsternetv</a>\n"
+"<!--     <a "
+"href=\"https://apps.apple.com/us/app/napsternetv/id1629465476\"\n"
+"         class=\"btn btn-primary orig-link\">napsternetv</a>-->\n"
 "<a href=\"https://apps.apple.com/us/app/fair-vpn/id1533873488\"\n"
 "         class=\"btn btn-primary orig-link\">fair-vpn</a>\n"
 "</div>\n"
