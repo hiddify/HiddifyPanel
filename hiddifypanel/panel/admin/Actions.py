@@ -60,12 +60,13 @@ class Actions(FlaskView):
         return status
     
     @route('reinstall', methods=['POST'])
-    def reinstall(self,complete_install=True,domain_changed=True):
-        domain_changed=request.args.get("domain_changed",domain_changed)
-        complete_install=request.args.get("complete_install",complete_install)
+    def reinstall(self,complete_install=True,domain_changed=False):
+        domain_changed=request.args.get("domain_changed",str(domain_changed)).lower()=="true"
+        complete_install=request.args.get("complete_install",str(complete_install)).lower()=="true"
         if domain_changed:
             flash((_('Your domains changed. Please do not forget to copy admin links, otherwise you can not access to the panel anymore.')),'info')
-        # flash(f'complete_install={complete_install} domain_changed={domain_changed}', 'info')
+        # flash(f'complete_install={complete_install} domain_changed={domain_changed} ', 'info')
+        # return render_template("result.html")
         config=current_app.config
         hiddify.add_temporary_access()
         file="install.sh" if complete_install else "apply_configs.sh"

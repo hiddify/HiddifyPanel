@@ -150,10 +150,13 @@ def quick_apply_users():
     exec_command("/opt/hiddify-config/install.sh apply_users &")
 
 
-def flash_config_success(full_install=False,domain_changed=True):
-    url=url_for('admin.Actions:reinstall',complete_install=full_install,domain_changed=domain_changed)
-    apply_btn=f"<a href='{url}' class='btn btn-primary form_post'>"+_("admin.config.apply_configs")+"</a>"
-    flash((_('config.validation-success',link=apply_btn)), 'success')
+def flash_config_success(restart_mode='',domain_changed=True):
+    if restart_mode:
+        url=url_for('admin.Actions:reinstall',complete_install=restart_mode=='reinstall',domain_changed=domain_changed)
+        apply_btn=f"<a href='{url}' class='btn btn-primary form_post'>"+_("admin.config.apply_configs")+"</a>"
+        flash((_('config.validation-success',link=apply_btn)), 'success')
+    else:
+        flash((_('config.validation-success-no-reset')), 'success')
 
 # Importing socket library 
 import socket 
@@ -210,3 +213,15 @@ def validate_domain_exist(form,field):
         if dip==None:
                 raise ValidationError(_("Domain can not be resolved! there is a problem in your domain"))
         
+
+
+def check_need_reset(old_configs):
+    restart_mode=''
+    for c in old_configs:
+        if old_configs[c]!=hconfig(c) and c.apply_mode():
+            if restart_mode!='reinstall':
+                restart_mode=c.apply_mode()
+    # do_full_install=old_config[ConfigEnum.telegram_lib]!=hconfig(ConfigEnum.telegram_lib)
+    
+    flash_config_success(restart_mode=restart_mode,domain_changed=False)
+    

@@ -29,7 +29,7 @@ class ProxyAdmin(FlaskView):
         all_proxy_form=get_all_proxy_form()
 
         if global_config_form.submit_global.data and global_config_form.validate_on_submit():
-                
+                old_configs=get_hconfigs()
                 for k,vs in global_config_form.data.items():
                         if k in [c for c in ConfigEnum]:
                             BoolConfig.query.filter(BoolConfig.key==k).first().value=vs
@@ -39,8 +39,7 @@ class ProxyAdmin(FlaskView):
                     
                 # print(cat,vs)
                 db.session.commit()
-                apply_btn=f"<a href='{url_for('admin.Actions:apply_configs')}' class='btn btn-primary'>"+_("admin.config.apply_configs")+"</a>"
-                flash((_('config.validation-success',link=apply_btn)), 'success')
+                hiddify.check_need_reset(old_configs)
                 all_proxy_form=get_all_proxy_form(True)
 
     
@@ -58,7 +57,7 @@ class ProxyAdmin(FlaskView):
                         
                 # print(cat,vs)
             db.session.commit()
-            hiddify.flash_config_success()
+            hiddify.flash_config_success(restart_mode='apply',domain_changed=False)
             global_config_form= get_global_config_form(True)
         else:
             flash((_('config.validation-error')), 'danger')

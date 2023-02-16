@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-16 08:50+0100\n"
-"PO-Revision-Date: 2023-02-16 01:49-0600\n"
+"POT-Creation-Date: 2023-02-16 10:18+0100\n"
+"PO-Revision-Date: 2023-02-16 03:17-0600\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Generated-By: Babel 2.11.0\n"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/panel/admin/ProxyAdmin.py:42 hiddifypanel/panel/hiddify.py:155
+#: hiddifypanel/panel/hiddify.py:156
 msgid "admin.config.apply_configs"
 msgstr "اعمال تنظیمات"
 
@@ -23,18 +23,24 @@ msgstr "اعمال تنظیمات"
 # | "Configs have been changed successfully. Click %(link)s to apply the
 # configs."
 # | " It may take 2 minutes to apply."
-#: hiddifypanel/panel/admin/ProxyAdmin.py:43 hiddifypanel/panel/hiddify.py:156
+#: hiddifypanel/panel/hiddify.py:157
 msgid "config.validation-success"
 msgstr ""
 "تنظیمات با موفقیت ذخیره شدند. لطفا بر روی این لینک: %(link)s کلیک کنید تا"
 " بر روی سیستم اعمال شوند. این کار ممکن است 2 دقیقه طول بکشد.\n"
+
+# | msgid "Configs have been changed successfully."
+#: hiddifypanel/panel/hiddify.py:159
+#, fuzzy
+msgid "config.validation-success-no-reset"
+msgstr "تنظیمات با موفقیت تغییر کرده است."
 
 # | msgid ""
 # | "Domain can not be resolved! There is a problem in your domain. Please
 # check "
 # | "your Domain configurations."
 #: hiddifypanel/panel/admin/DomainAdmin.py:75
-#: hiddifypanel/panel/admin/QuickSetup.py:108 hiddifypanel/panel/hiddify.py:211
+#: hiddifypanel/panel/admin/QuickSetup.py:108 hiddifypanel/panel/hiddify.py:214
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr "دامنه قابل دسترسی نیست! در دامنه شما مشکلی وجود دارد."
 
@@ -111,11 +117,11 @@ msgid "Restore Domain description"
 msgstr "برای بازگرداندن دامنه از این گزینه استفاده کنید."
 
 #: hiddifypanel/panel/admin/Backup.py:102
-#: hiddifypanel/panel/admin/ProxyAdmin.py:91
-#: hiddifypanel/panel/admin/ProxyAdmin.py:118
+#: hiddifypanel/panel/admin/ProxyAdmin.py:90
+#: hiddifypanel/panel/admin/ProxyAdmin.py:117
 #: hiddifypanel/panel/admin/QuickSetup.py:71
 #: hiddifypanel/panel/admin/QuickSetup.py:98
-#: hiddifypanel/panel/admin/SettingAdmin.py:188
+#: hiddifypanel/panel/admin/SettingAdmin.py:181
 msgid "Submit"
 msgstr "ثبت"
 
@@ -258,14 +264,14 @@ msgid "config.domain-fronting-notsetup-error"
 msgstr "خطا! تنظیمات دامین فرانتینگ کامل نشده."
 
 # | msgid "There is an error in one of the fields."
-#: hiddifypanel/panel/admin/ProxyAdmin.py:64
+#: hiddifypanel/panel/admin/ProxyAdmin.py:63
 #: hiddifypanel/panel/admin/QuickSetup.py:64
-#: hiddifypanel/panel/admin/SettingAdmin.py:71
+#: hiddifypanel/panel/admin/SettingAdmin.py:64
 msgid "config.validation-error"
 msgstr "یکی از فیلدها دچار خطا شده است."
 
 # | msgid "Domain Fronting"
-#: hiddifypanel/panel/admin/ProxyAdmin.py:115
+#: hiddifypanel/panel/admin/ProxyAdmin.py:114
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.domain_fronting.label"
 msgstr "دامین فرانتینگ"
@@ -313,13 +319,13 @@ msgstr "زبان محیط مدیریت"
 
 # | msgid "English انگلیسی 英语"
 #: hiddifypanel/panel/admin/QuickSetup.py:69
-#: hiddifypanel/panel/admin/SettingAdmin.py:130
+#: hiddifypanel/panel/admin/SettingAdmin.py:123
 msgid "lang.en"
 msgstr "English انگلیسی 英语"
 
 # | msgid "Persian فارسی 波斯语"
 #: hiddifypanel/panel/admin/QuickSetup.py:69
-#: hiddifypanel/panel/admin/SettingAdmin.py:130
+#: hiddifypanel/panel/admin/SettingAdmin.py:123
 msgid "lang.fa"
 msgstr "Persian فارسی 波斯语"
 
@@ -332,16 +338,16 @@ msgstr "در این قسمت می‌توانید زبان بخش مدیریت ر
 # | msgid "Error! Invalid domain.  The domain format is www.google.com"
 #: hiddifypanel/panel/admin/QuickSetup.py:87
 #: hiddifypanel/panel/admin/QuickSetup.py:97
-#: hiddifypanel/panel/admin/SettingAdmin.py:144
-#: hiddifypanel/panel/admin/SettingAdmin.py:147
+#: hiddifypanel/panel/admin/SettingAdmin.py:137
+#: hiddifypanel/panel/admin/SettingAdmin.py:140
 msgid "config.Invalid domain"
 msgstr "خطا! دامنه نامعتبر! فرمت دامنه باید مثل www.google.com باشد."
 
 # | msgid "Domain is exist in domains section. Use another domain"
 #: hiddifypanel/panel/admin/QuickSetup.py:89
 #: hiddifypanel/panel/admin/QuickSetup.py:90
-#: hiddifypanel/panel/admin/SettingAdmin.py:151
-#: hiddifypanel/panel/admin/SettingAdmin.py:152
+#: hiddifypanel/panel/admin/SettingAdmin.py:144
+#: hiddifypanel/panel/admin/SettingAdmin.py:145
 msgid "config.Domain already used"
 msgstr "دامنه در بخش دامنه‌ها وجود دارد. از دامنه دیگری استفاده کنید."
 
@@ -442,32 +448,32 @@ msgstr ""
 "همخوانی ندارد. در حالت مستقیم (Direct Mode) این مورد الزامی است."
 
 # | msgid "Chinese چینی 中国人"
-#: hiddifypanel/panel/admin/SettingAdmin.py:130
+#: hiddifypanel/panel/admin/SettingAdmin.py:123
 msgid "lang.zh"
 msgstr "Chinese چینی 中国人"
 
 # | msgid "Python: low performance"
-#: hiddifypanel/panel/admin/SettingAdmin.py:134
+#: hiddifypanel/panel/admin/SettingAdmin.py:127
 msgid "lib.telegram.python"
 msgstr "پایتون: عملکرد ضعیف"
 
 # | msgid "Go: high performance: No ad support"
-#: hiddifypanel/panel/admin/SettingAdmin.py:134
+#: hiddifypanel/panel/admin/SettingAdmin.py:127
 msgid "lib.telegram.go"
 msgstr "Go: عملکرد بالا، عدم پشتیبانی از تبلیغات"
 
 # | msgid "NOT Working: Original: high performance"
-#: hiddifypanel/panel/admin/SettingAdmin.py:134
+#: hiddifypanel/panel/admin/SettingAdmin.py:127
 msgid "lib.telegram.orignal"
 msgstr "کار نمیکند! اصلی: عملکرد قوی"
 
 # | msgid "NOT Working: Erlang: medium performance"
-#: hiddifypanel/panel/admin/SettingAdmin.py:134
+#: hiddifypanel/panel/admin/SettingAdmin.py:127
 msgid "lib.telegram.erlang"
 msgstr "کار نمیکند! Erlang: عملکرد متوسط"
 
 # | msgid "Telegram Proxy Library"
-#: hiddifypanel/panel/admin/SettingAdmin.py:135
+#: hiddifypanel/panel/admin/SettingAdmin.py:128
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.telegram_lib.label"
 msgstr "مدل پروکسی تلگرام"
@@ -478,7 +484,7 @@ msgstr "مدل پروکسی تلگرام"
 # | "python works in all servers, others may have some issue. Test proxy after
 # "
 # | "changing it."
-#: hiddifypanel/panel/admin/SettingAdmin.py:135
+#: hiddifypanel/panel/admin/SettingAdmin.py:128
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.telegram_lib.description"
 msgstr ""
@@ -488,39 +494,39 @@ msgstr ""
 
 # | msgid ""
 # | "Invalid link. it should be on this format: (https or http://example.com)"
-#: hiddifypanel/panel/admin/SettingAdmin.py:157
+#: hiddifypanel/panel/admin/SettingAdmin.py:150
 msgid "config.Invalid brand link"
 msgstr "لینک پشتیبانی نامعتبر است. لطفا لینک را با فرمت معتبر وارد کنید."
 
 # | msgid ""
 # | "Invalid UUID secret. Example: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n"
 # | "\n"
-#: hiddifypanel/panel/admin/SettingAdmin.py:161
+#: hiddifypanel/panel/admin/SettingAdmin.py:154
 msgid "config.invalid uuid"
 msgstr "رمز UUID نامعتبر است. به عنوان مثال: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6"
 
 # | msgid "Invalid proxy path. It should be asci string (a-z A-Z 0-9)"
-#: hiddifypanel/panel/admin/SettingAdmin.py:165
+#: hiddifypanel/panel/admin/SettingAdmin.py:158
 msgid "config.Invalid proxy path"
 msgstr "مسیر پروکسی نامعتبر است. باید رشته متن asci باشد. ( شامل a-z A-Z 0-9)"
 
 # | msgid ""
 # | "Invalid port. It should be comma separated integer e.g., 1000,1001"
-#: hiddifypanel/panel/admin/SettingAdmin.py:169
+#: hiddifypanel/panel/admin/SettingAdmin.py:162
 msgid "config.Invalid port"
 msgstr "پورت نامعتبر است. اعداد باید با کاما از هم جدا شود، مثلاً 1000,1001"
 
 # | msgid ""
 # | "Port 80 should always be presented. We use it for getting ssl
 # certificate"
-#: hiddifypanel/panel/admin/SettingAdmin.py:172
+#: hiddifypanel/panel/admin/SettingAdmin.py:165
 msgid "config.port 80 is required"
 msgstr ""
 "پورت 80 همیشه باید در دسترس باشد. از آن برای دریافت سرتیفیکیت ssl استفاده"
 " می‌کنیم."
 
 # | msgid "Port 443 should always be presented. "
-#: hiddifypanel/panel/admin/SettingAdmin.py:175
+#: hiddifypanel/panel/admin/SettingAdmin.py:168
 msgid "config.port 443 is required"
 msgstr "پورت ۴۴۳ همیشه باید در دسترس باشد."
 

@@ -95,11 +95,11 @@ class DomainAdmin(AdminLTEModelView):
         # if model.mode==DomainType.fake and model.cdn_ip!=myip:
         #     raise ValidationError(f"Specifying CDN IP is only valid for CDN mode")
 
-        hiddify.flash_config_success()
+        hiddify.flash_config_success(restart_mode='apply',domain_changed=True)
 
 
 
     def on_model_delete(self, model):
         if len(Domain.query.all())<=1:
             raise ValidationError(f"at least one domain should exist")    
-        hiddify.flash_config_success()
+        hiddify.flash_config_success(restart_mode='apply',domain_changed=True)
