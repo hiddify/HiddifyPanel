@@ -59,7 +59,7 @@ class UserView(FlaskView):
     @route('/all.txt')
     def all_configs(self):
         mode=request.args.get("mode")
-        base64=request.args.get("base64").lower()=="true"
+        base64=request.args.get("base64","").lower()=="true"
         c=get_common_data(g.user_uuid,mode)
         # response.content_type = 'text/plain';
         
