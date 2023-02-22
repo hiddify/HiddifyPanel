@@ -30,6 +30,16 @@ class UserView(FlaskView):
        
         return render_template('home/multi.html',**c,ua=user_agent)
 
+    @route('/new/')
+    @route('/new')
+    def new(self):
+        
+        c=get_common_data(g.user_uuid,mode="new")
+        
+        user_agent =  user_agents.parse(request.user_agent.string)
+       
+        return render_template('home/multi.html',**c,ua=user_agent)
+
     @route('/clash/<meta_or_normal>/proxies.yml')
     @route('/clash/proxies.yml')
     def clash_proxies(self,meta_or_normal="normal"):
@@ -82,6 +92,9 @@ def get_common_data(user_uuid,mode):
     domain=urlparse(request.base_url).hostname
     if mode =='multi':
         domains=Domain.query.all()
+    if mode =='new':
+        db_domain=Domain.query.filter(Domain.domain==domain).first()
+        domains=db_domain.show_domains or Domain.query.all()
     else:
         db_domain=Domain.query.filter(Domain.domain==domain).first()
         domains=[db_domain]

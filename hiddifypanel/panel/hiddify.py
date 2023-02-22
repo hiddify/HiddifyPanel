@@ -182,14 +182,16 @@ def get_user_link(uuid,domain,mode=''):
             res+="<div class='btn-group'>"
 
         link=f"https://{domain.domain}/{proxy_path}/{uuid}/"
-        link_multi=f"https://{domain.domain}/{proxy_path}/{uuid}/multi"
+        link_multi=f"{link}multi"
+        if mode=='new':
+            link=f"{link}new"
         text= domain.domain
         if domain.mode==DomainType.cdn:
-            text=f'<span class="badge badge-success" >{_("domain.cdn")}</span>'+text        
+            text=f'<span class="badge badge-success" >{_("domain.cdn")}</span>'+text
         
         if mode=="multi":
             res+=f"<a class='btn btn-xs btn-secondary' target='_blank' href='{link_multi}' >{_('all')}</a>"
-        res+=f"<a target='_blank' href='{link}' class='btn btn-xs btn-info ltr' >{text}</a>"
+        res+=f"<a target='_blank' href='{link}' class='btn btn-xs btn-info ltr' ><i class='fa-solid fa-arrow-up-right-from-square'></i> {text}</a>"
 
 
         if mode=="multi":

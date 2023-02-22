@@ -63,6 +63,7 @@ def init_app(app):
 
 
     app.register_blueprint(bp)
+    flask.debug=True
     app.register_blueprint(flask)
     app.add_url_rule("/<proxy_path>/<user_secret>/admin/static/<filename>/",endpoint="admin.static")# fix bug in admin with blueprint
     

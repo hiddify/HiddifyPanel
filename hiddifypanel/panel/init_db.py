@@ -24,7 +24,7 @@ def get_random_string():
 
 
 def _v1():
-        db.create_all()
+        
         next10year = datetime.date.today() + relativedelta.relativedelta(years=6)
         external_ip=urllib.request.urlopen('https://v4.ident.me/').read().decode('utf8')
         
@@ -126,8 +126,9 @@ def _v8():
         "grpc direct trojan",
         "grpc direct vmess"])
     ])
+
 def init_db():
-    
+    db.create_all()
     try:
         db.engine.execute('ALTER TABLE user ADD COLUMN monthly BOOLEAN')
         db.engine.execute('ALTER TABLE user RENAME COLUMN monthly_usage_limit_GB TO usage_limit_GB')       

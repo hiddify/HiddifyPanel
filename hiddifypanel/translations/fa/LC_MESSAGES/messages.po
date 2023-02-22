@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-16 23:26+0100\n"
-"PO-Revision-Date: 2023-02-16 16:26-0600\n"
+"POT-Creation-Date: 2023-02-22 22:46+0100\n"
+"PO-Revision-Date: 2023-02-22 15:46-0600\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -31,16 +31,15 @@ msgstr ""
 
 # | msgid "Configs have been changed successfully."
 #: hiddifypanel/panel/hiddify.py:159
-#, fuzzy
 msgid "config.validation-success-no-reset"
-msgstr "تنظیمات با موفقیت تغییر کرده است."
+msgstr "تنظیمات با موفقیت تغییر کرد."
 
 # | msgid ""
 # | "Domain can not be resolved! There is a problem in your domain. Please
 # check "
 # | "your Domain configurations."
-#: hiddifypanel/panel/admin/DomainAdmin.py:75
-#: hiddifypanel/panel/admin/QuickSetup.py:108 hiddifypanel/panel/hiddify.py:214
+#: hiddifypanel/panel/admin/DomainAdmin.py:110
+#: hiddifypanel/panel/admin/QuickSetup.py:108 hiddifypanel/panel/hiddify.py:216
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr "دامنه قابل دسترسی نیست! در دامنه شما مشکلی وجود دارد."
 
@@ -165,7 +164,7 @@ msgstr ""
 # "href=\"https://github.com/hiddify/hiddify-config/wiki/راهنمای-تنظیم-دامنه-و-"
 # | "نهایی-کردن-نصب#آموزش-ساخت-زیردامنه\"> Help</a> to learn how to create a "
 # | "subdomain."
-#: hiddifypanel/panel/admin/DomainAdmin.py:17
+#: hiddifypanel/panel/admin/DomainAdmin.py:33
 #: hiddifypanel/panel/admin/QuickSetup.py:92
 msgid "domain.description"
 msgstr ""
@@ -176,7 +175,7 @@ msgstr ""
 " آدرس </a>\n"
 "را ببینید."
 
-#: hiddifypanel/panel/admin/DomainAdmin.py:18
+#: hiddifypanel/panel/admin/DomainAdmin.py:34
 #, fuzzy
 msgid ""
 "Direct mode means you want to use your server directly (for usual use), "
@@ -192,7 +191,7 @@ msgstr ""
 # | "\n"
 # | "Morteza Bashsiz provides a list of recommended IPs for cloudflare <a
 # href=\"http://bot.sudoer.net/best.cf.iran\">here</a>."
-#: hiddifypanel/panel/admin/DomainAdmin.py:19
+#: hiddifypanel/panel/admin/DomainAdmin.py:35
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.cdn_forced_host.description"
@@ -205,36 +204,64 @@ msgstr ""
 "<a href=\"http://bot.sudoer.net/best.cf.iran\">اینجا</a>\n"
 "لیست آی پی های پیشنهادی برای کلودفلر را قرار داده است."
 
+# | msgid ""
+# | "For users visit the user area with this domain, Specify they can see the
+# proxies of which domains.\n"
+# | "<br>\n"
+# | "Suggestion: For a domain with an unfiltered IP and different from the
+# others, select all other domains (except the current domain). As a result,
+# since the use of this IP is not for proxy and it is a simple website, this
+# domain and IP will never be blocked and your users can easily update new
+# profiles."
+#: hiddifypanel/panel/admin/DomainAdmin.py:36
+msgid ""
+"You can select the configs with which domains show be shown in the user "
+"area. If you select all, automatically, all the new domains will be added"
+" for each users."
+msgstr ""
+"مشخص کنید کاربرانی که با این دامنه، پنل کاربری را مشاهده می‌کنند، "
+"کانفیگ‌های مربوط به کدام دامنه‌ها را مشاهده کنند.\n"
+"<br>\n"
+"پیشنهاد: برای یک دامنه با IP فیلتر نشده و متفاوت از بقیه، همه دامنه های "
+"دیگر (به جز دامنه فعلی) را انتخاب کنید. در نتیجه از آنجایی که از این IP "
+"استفاده فیلترشکن نمی‌شود و یک وبسایت ساده است، این دامنه و آی پی هرگز "
+"مسدود نمی‌شود و کاربران شما به راحتی می توانند پروفایل های جدید را به روز"
+" کنند."
+
 # | msgid "Domain"
-#: hiddifypanel/panel/admin/DomainAdmin.py:37
+#: hiddifypanel/panel/admin/DomainAdmin.py:57
 #: hiddifypanel/panel/admin/QuickSetup.py:92
 msgid "domain.domain"
 msgstr "دامنه"
 
 # | msgid "Mode"
-#: hiddifypanel/panel/admin/DomainAdmin.py:38
+#: hiddifypanel/panel/admin/DomainAdmin.py:58
 msgid "domain.mode"
 msgstr "حالت"
 
 # | msgid "Force CDN Config to use Host"
-#: hiddifypanel/panel/admin/DomainAdmin.py:39
+#: hiddifypanel/panel/admin/DomainAdmin.py:59
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.cdn_forced_host.label"
 msgstr "آی پی یا دامنه اجباری در کانفیگ‌های CDN "
 
 # | msgid "IP"
-#: hiddifypanel/panel/admin/DomainAdmin.py:40
+#: hiddifypanel/panel/admin/DomainAdmin.py:60
 msgid "domain.ip"
 msgstr "آی‌پی"
 
+#: hiddifypanel/panel/admin/DomainAdmin.py:61
+msgid "Show Domains"
+msgstr ""
+
 # | msgid "Admin"
-#: hiddifypanel/panel/admin/DomainAdmin.py:44
+#: hiddifypanel/panel/admin/DomainAdmin.py:70
 msgid "admin link"
 msgstr "مدیریت"
 
 # | msgid "You have already used this domain in: "
-#: hiddifypanel/panel/admin/DomainAdmin.py:71
+#: hiddifypanel/panel/admin/DomainAdmin.py:105
 msgid "You have used this domain in: "
 msgstr "شما از این دامنه در بخش زیر استفاده کرده اید: "
 
@@ -242,7 +269,7 @@ msgstr "شما از این دامنه در بخش زیر استفاده کرده
 # | "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which
 # is "
 # | "required in direct mode."
-#: hiddifypanel/panel/admin/DomainAdmin.py:79
+#: hiddifypanel/panel/admin/DomainAdmin.py:115
 #, python-format
 msgid ""
 "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which "
@@ -251,7 +278,7 @@ msgstr ""
 "آی‌پی دامنه IP=%(domain_ip)s با آی‌پی ip=%(server_ip)s شما مطابقت ندارد "
 "که در حالت مستقیم مورد نیاز است."
 
-#: hiddifypanel/panel/admin/DomainAdmin.py:82
+#: hiddifypanel/panel/admin/DomainAdmin.py:119
 #, python-format
 msgid ""
 "In CDN mode, Domain IP=%(domain_ip)s should be different to your "
@@ -569,6 +596,12 @@ msgstr "زمان انقضا"
 #: hiddifypanel/panel/admin/UserAdmin.py:52
 msgid "user.UUID"
 msgstr "UUID"
+
+#: hiddifypanel/panel/admin/UserAdmin.py:64
+msgid ""
+"If monthly is enabled, the usage will be reset after 30 days from this "
+"date."
+msgstr ""
 
 #: hiddifypanel/panel/admin/templates/backup.html:9
 #: hiddifypanel/templates/admin-layout.html:79

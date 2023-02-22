@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-16 23:26+0100\n"
-"PO-Revision-Date: 2023-02-16 16:26-0600\n"
+"POT-Creation-Date: 2023-02-22 22:46+0100\n"
+"PO-Revision-Date: 2023-02-22 15:46-0600\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -37,8 +37,8 @@ msgstr "配置已成功更改。"
 # | "Domain can not be resolved! There is a problem in your domain. Please
 # check "
 # | "your Domain configurations."
-#: hiddifypanel/panel/admin/DomainAdmin.py:75
-#: hiddifypanel/panel/admin/QuickSetup.py:108 hiddifypanel/panel/hiddify.py:214
+#: hiddifypanel/panel/admin/DomainAdmin.py:110
+#: hiddifypanel/panel/admin/QuickSetup.py:108 hiddifypanel/panel/hiddify.py:216
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr "域名无法解析！你的域有问题"
 
@@ -150,14 +150,14 @@ msgstr "您似乎还没有创建任何用户。默认用户链接：%(default_li
 # "href=\"https://github.com/hiddify/hiddify-config/wiki/راهنمای-تنظیم-دامنه-و-"
 # | "نهایی-کردن-نصب#آموزش-ساخت-زیردامنه\"> Help</a> to learn how to create a "
 # | "subdomain."
-#: hiddifypanel/panel/admin/DomainAdmin.py:17
+#: hiddifypanel/panel/admin/DomainAdmin.py:33
 #: hiddifypanel/panel/admin/QuickSetup.py:92
 msgid "domain.description"
 msgstr ""
 "这个字段应该是正确的。请访问<a href=\"https://github.com/hiddify/hiddify-"
 "config/wiki/راهنمای-تنظیم-دامنه-و-نهاوی-کردن-نصب#آمووous-ساخت-یردامنه\">帮助</a>了解如何创建子域。"
 
-#: hiddifypanel/panel/admin/DomainAdmin.py:18
+#: hiddifypanel/panel/admin/DomainAdmin.py:34
 msgid ""
 "Direct mode means you want to use your server directly (for usual use), "
 "CDN means that you use your server on behind of a CDN provider."
@@ -169,43 +169,63 @@ msgstr ""
 # | "\n"
 # | "Morteza Bashsiz provides a list of recommended IPs for cloudflare <a
 # href=\"http://bot.sudoer.net/best.cf.iran\">here</a>."
-#: hiddifypanel/panel/admin/DomainAdmin.py:19
+#: hiddifypanel/panel/admin/DomainAdmin.py:35
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.cdn_forced_host.description"
 msgstr "在这部分中，您可以为您的 cdn 服务器使用特定的域或 IP，以在用户链接中覆盖。您可以使用 IP 或域。"
 
+# | msgid ""
+# | "For users visit the user area with this domain, Specify they can see the
+# proxies of which domains.\n"
+# | "<br>\n"
+# | "Suggestion: For a domain with an unfiltered IP and different from the
+# others, select all other domains (except the current domain). As a result,
+# since the use of this IP is not for proxy and it is a simple website, this
+# domain and IP will never be blocked and your users can easily update new
+# profiles."
+#: hiddifypanel/panel/admin/DomainAdmin.py:36
+msgid ""
+"You can select the configs with which domains show be shown in the user "
+"area. If you select all, automatically, all the new domains will be added"
+" for each users."
+msgstr ""
+
 # | msgid "Domain"
-#: hiddifypanel/panel/admin/DomainAdmin.py:37
+#: hiddifypanel/panel/admin/DomainAdmin.py:57
 #: hiddifypanel/panel/admin/QuickSetup.py:92
 msgid "domain.domain"
 msgstr "领域"
 
 # | msgid "Mode"
-#: hiddifypanel/panel/admin/DomainAdmin.py:38
+#: hiddifypanel/panel/admin/DomainAdmin.py:58
 msgid "domain.mode"
 msgstr "模式"
 
 # | msgid "Force CDN Config to use Host"
-#: hiddifypanel/panel/admin/DomainAdmin.py:39
+#: hiddifypanel/panel/admin/DomainAdmin.py:59
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.cdn_forced_host.label"
 msgstr "强制 CDN 主机"
 
 # | msgid "IP"
-#: hiddifypanel/panel/admin/DomainAdmin.py:40
+#: hiddifypanel/panel/admin/DomainAdmin.py:60
 msgid "domain.ip"
 msgstr "知识产权"
 
+#: hiddifypanel/panel/admin/DomainAdmin.py:61
+msgid "Show Domains"
+msgstr ""
+
 # | msgid "Admin"
-#: hiddifypanel/panel/admin/DomainAdmin.py:44
+#: hiddifypanel/panel/admin/DomainAdmin.py:70
 #, fuzzy
 msgid "admin link"
 msgstr "行政"
 
 # | msgid "You have already used this domain in: "
-#: hiddifypanel/panel/admin/DomainAdmin.py:71
+#: hiddifypanel/panel/admin/DomainAdmin.py:105
 #, fuzzy
 msgid "You have used this domain in: "
 msgstr "您已经在以下领域使用过此域名："
@@ -214,14 +234,14 @@ msgstr "您已经在以下领域使用过此域名："
 # | "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which
 # is "
 # | "required in direct mode."
-#: hiddifypanel/panel/admin/DomainAdmin.py:79
+#: hiddifypanel/panel/admin/DomainAdmin.py:115
 #, python-format
 msgid ""
 "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which "
 "is required in direct mode"
 msgstr "域 IP=%(domain_ip)s 与您的 ip=%(server_ip)s 不匹配，这在直接模式下是必需的"
 
-#: hiddifypanel/panel/admin/DomainAdmin.py:82
+#: hiddifypanel/panel/admin/DomainAdmin.py:119
 #, python-format
 msgid ""
 "In CDN mode, Domain IP=%(domain_ip)s should be different to your "
@@ -522,6 +542,12 @@ msgstr "过期时间"
 #: hiddifypanel/panel/admin/UserAdmin.py:52
 msgid "user.UUID"
 msgstr "UUID"
+
+#: hiddifypanel/panel/admin/UserAdmin.py:64
+msgid ""
+"If monthly is enabled, the usage will be reset after 30 days from this "
+"date."
+msgstr ""
 
 #: hiddifypanel/panel/admin/templates/backup.html:9
 #: hiddifypanel/templates/admin-layout.html:79
