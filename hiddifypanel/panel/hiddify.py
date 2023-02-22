@@ -9,7 +9,7 @@ import urllib
 from flask_babelex import lazy_gettext as _
 from flask_babelex import gettext as __
 from hiddifypanel import xray_api
-
+from sqlalchemy.orm import Load 
 
 def add_temporary_access():
     import random
@@ -99,15 +99,21 @@ def update_usage():
         return {"status": 'success', "comments":res}
         
 
+def domain_dict(d):
+    return {
+            'domain':d.domain,
+            'mode':d.mode,
+        }
 
 def all_configs():
     configs={
         "users": [u.to_dict() for u in User.query.filter((User.usage_limit_GB>User.current_usage_GB)).filter(User.expiry_time>=datetime.date.today()).all()],
-        "domains": [u.to_dict() for u in Domain.query.all()],
+        "domains": [domain_dict(u) for u in Domain.query.all()],
         "hconfigs": get_hconfigs()
         }
     for d in configs['domains']:
         d['domain']=d['domain'].lower()
+        # del d['domain']['show_domains']
 
     return configs
     
