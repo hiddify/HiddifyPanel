@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-22 22:46+0100\n"
-"PO-Revision-Date: 2023-02-22 15:46-0600\n"
+"POT-Creation-Date: 2023-02-22 23:11+0100\n"
+"PO-Revision-Date: 2023-02-22 16:10-0600\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -251,9 +251,10 @@ msgstr "آی پی یا دامنه اجباری در کانفیگ‌های CDN "
 msgid "domain.ip"
 msgstr "آی‌پی"
 
+# | msgid "Show Configs of Domains:"
 #: hiddifypanel/panel/admin/DomainAdmin.py:61
 msgid "Show Domains"
-msgstr ""
+msgstr "نمایش کانفیگ‌های دامنه‌ی:"
 
 # | msgid "Admin"
 #: hiddifypanel/panel/admin/DomainAdmin.py:70
@@ -602,6 +603,8 @@ msgid ""
 "If monthly is enabled, the usage will be reset after 30 days from this "
 "date."
 msgstr ""
+"اگر گزینه ماهانه فعال باشد، حجم مصرفی کاربران 30 روز بعد از این تاریخ "
+"ریست می‌شود"
 
 #: hiddifypanel/panel/admin/templates/backup.html:9
 #: hiddifypanel/templates/admin-layout.html:79
