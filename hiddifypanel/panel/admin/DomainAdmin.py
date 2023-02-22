@@ -39,6 +39,7 @@ class DomainAdmin(AdminLTEModelView):
     
     # create_modal = True
     can_export = False
+    form_widget_args={'show_domains':{'class':'form-control ltr'}}
     form_args = {
         
         'domain': {

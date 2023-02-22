@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-22 23:12+0100\n"
-"PO-Revision-Date: 2023-02-22 16:11-0600\n"
+"POT-Creation-Date: 2023-02-22 23:24+0100\n"
+"PO-Revision-Date: 2023-02-22 16:24-0600\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -37,7 +37,7 @@ msgstr "配置已成功更改。"
 # | "Domain can not be resolved! There is a problem in your domain. Please
 # check "
 # | "your Domain configurations."
-#: hiddifypanel/panel/admin/DomainAdmin.py:110
+#: hiddifypanel/panel/admin/DomainAdmin.py:111
 #: hiddifypanel/panel/admin/QuickSetup.py:108 hiddifypanel/panel/hiddify.py:216
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr "域名无法解析！你的域有问题"
@@ -157,6 +157,16 @@ msgstr ""
 "这个字段应该是正确的。请访问<a href=\"https://github.com/hiddify/hiddify-"
 "config/wiki/راهنمای-تنظیم-دامنه-و-نهاوی-کردن-نصب#آمووous-ساخت-یردامنه\">帮助</a>了解如何创建子域。"
 
+# | msgid ""
+# | "Direct mode means you want to use your server directly (for usual use),
+# <br>\n"
+# | "CDN means that you use your server on behind of a CDN provider.<br>\n"
+# | "Relay: use an intermediate server <a
+# href=\"https://github.com/hiddify/hiddify-config/discussions/129\"
+# target=\"_blank\">read more</a>\n"
+# | "<br>\n"
+# | "Fake: Use a fake domain (e.g., soft98.ir) to bypass SNI whitelist proxy
+# bypass, not recommended.\n"
 #: hiddifypanel/panel/admin/DomainAdmin.py:34
 msgid ""
 "Direct mode means you want to use your server directly (for usual use), "
@@ -192,41 +202,41 @@ msgid ""
 msgstr ""
 
 # | msgid "Domain"
-#: hiddifypanel/panel/admin/DomainAdmin.py:57
+#: hiddifypanel/panel/admin/DomainAdmin.py:58
 #: hiddifypanel/panel/admin/QuickSetup.py:92
 msgid "domain.domain"
 msgstr "领域"
 
 # | msgid "Mode"
-#: hiddifypanel/panel/admin/DomainAdmin.py:58
+#: hiddifypanel/panel/admin/DomainAdmin.py:59
 msgid "domain.mode"
 msgstr "模式"
 
 # | msgid "Force CDN Config to use Host"
-#: hiddifypanel/panel/admin/DomainAdmin.py:59
+#: hiddifypanel/panel/admin/DomainAdmin.py:60
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.cdn_forced_host.label"
 msgstr "强制 CDN 主机"
 
 # | msgid "IP"
-#: hiddifypanel/panel/admin/DomainAdmin.py:60
+#: hiddifypanel/panel/admin/DomainAdmin.py:61
 msgid "domain.ip"
 msgstr "知识产权"
 
 # | msgid "Show Configs of Domains:"
-#: hiddifypanel/panel/admin/DomainAdmin.py:61
+#: hiddifypanel/panel/admin/DomainAdmin.py:62
 msgid "Show Domains"
 msgstr ""
 
 # | msgid "Admin"
-#: hiddifypanel/panel/admin/DomainAdmin.py:70
+#: hiddifypanel/panel/admin/DomainAdmin.py:71
 #, fuzzy
 msgid "admin link"
 msgstr "行政"
 
 # | msgid "You have already used this domain in: "
-#: hiddifypanel/panel/admin/DomainAdmin.py:105
+#: hiddifypanel/panel/admin/DomainAdmin.py:106
 #, fuzzy
 msgid "You have used this domain in: "
 msgstr "您已经在以下领域使用过此域名："
@@ -235,14 +245,14 @@ msgstr "您已经在以下领域使用过此域名："
 # | "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which
 # is "
 # | "required in direct mode."
-#: hiddifypanel/panel/admin/DomainAdmin.py:115
+#: hiddifypanel/panel/admin/DomainAdmin.py:116
 #, python-format
 msgid ""
 "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which "
 "is required in direct mode"
 msgstr "域 IP=%(domain_ip)s 与您的 ip=%(server_ip)s 不匹配，这在直接模式下是必需的"
 
-#: hiddifypanel/panel/admin/DomainAdmin.py:119
+#: hiddifypanel/panel/admin/DomainAdmin.py:120
 #, python-format
 msgid ""
 "In CDN mode, Domain IP=%(domain_ip)s should be different to your "

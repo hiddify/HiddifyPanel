@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-22 23:12+0100\n"
-"PO-Revision-Date: 2023-02-22 16:11-0600\n"
+"POT-Creation-Date: 2023-02-22 23:24+0100\n"
+"PO-Revision-Date: 2023-02-22 16:24-0600\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -36,7 +36,7 @@ msgstr "Configs have been changed successfully."
 # | msgid ""
 # | "Domain can not be resolved! There is a problem in your domain. Please "
 # | "check your Domain configurations."
-#: hiddifypanel/panel/admin/DomainAdmin.py:110
+#: hiddifypanel/panel/admin/DomainAdmin.py:111
 #: hiddifypanel/panel/admin/QuickSetup.py:108
 #: hiddifypanel/panel/hiddify.py:216
 msgid "Domain can not be resolved! there is a problem in your domain"
@@ -166,14 +166,26 @@ msgstr ""
 "نهایی-کردن-نصب#آموزش-ساخت-زیردامنه\"> Help</a> to learn how to create a "
 "subdomain."
 
+# | msgid ""
+# | "Direct mode means you want to use your server directly (for usual use), "
+# | "<br>\n"
+# | "CDN means that you use your server on behind of a CDN provider.<br>\n"
+# | "Relay: use an intermediate server <a href=\"https://github."
+# | "com/hiddify/hiddify-config/discussions/129\" target=\"_blank\">read "
+# | "more</a>\n"
+# | "Fake: Use a fake domain (e.g., soft98.ir) to bypass SNI whitelist proxy "
+# | "bypass, not recommended.\n"
 #: hiddifypanel/panel/admin/DomainAdmin.py:34
 #, fuzzy
 msgid ""
 "Direct mode means you want to use your server directly (for usual use), CDN "
 "means that you use your server on behind of a CDN provider."
 msgstr ""
-"Direct mode means you want to use your server directly (for usual use), CDN "
-"means that you use your server on behind of a CDN provider."
+"Direct mode means you want to use your server directly (for usual use), <br>\n"
+"CDN means that you use your server on behind of a CDN provider.<br>\n"
+"Relay: use an intermediate server <a href=\"https://github.com/hiddify/hiddify-config/discussions/129\" target=\"_blank\">read more</a>\n"
+"<br>\n"
+"Fake: Use a fake domain (e.g., soft98.ir) to bypass SNI whitelist proxy bypass, not recommended.\n"
 
 # | msgid ""
 # | "In this part you can use a specific domain or IP for your cdn server to "
@@ -213,47 +225,47 @@ msgstr ""
 "Suggestion: For a domain with an unfiltered IP and different from the others, select all other domains (except the current domain). As a result, since the use of this IP is not for proxy and it is a simple website, this domain and IP will never be blocked and your users can easily update new profiles."
 
 # | msgid "Domain"
-#: hiddifypanel/panel/admin/DomainAdmin.py:57
+#: hiddifypanel/panel/admin/DomainAdmin.py:58
 #: hiddifypanel/panel/admin/QuickSetup.py:92
 msgid "domain.domain"
 msgstr "Domain"
 
 # | msgid "Mode"
-#: hiddifypanel/panel/admin/DomainAdmin.py:58
+#: hiddifypanel/panel/admin/DomainAdmin.py:59
 msgid "domain.mode"
 msgstr "Mode"
 
 # | msgid "Force CDN Config to use Host"
-#: hiddifypanel/panel/admin/DomainAdmin.py:59
+#: hiddifypanel/panel/admin/DomainAdmin.py:60
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.cdn_forced_host.label"
 msgstr "Force CDN Config to use Host"
 
 # | msgid "IP"
-#: hiddifypanel/panel/admin/DomainAdmin.py:60
+#: hiddifypanel/panel/admin/DomainAdmin.py:61
 msgid "domain.ip"
 msgstr "IP"
 
 # | msgid "Show Configs of Domains:"
-#: hiddifypanel/panel/admin/DomainAdmin.py:61
+#: hiddifypanel/panel/admin/DomainAdmin.py:62
 #, fuzzy
 msgid "Show Domains"
 msgstr "Show Configs of Domains:"
 
 # | msgid "Admin"
-#: hiddifypanel/panel/admin/DomainAdmin.py:70
+#: hiddifypanel/panel/admin/DomainAdmin.py:71
 msgid "admin link"
 msgstr "Admin"
 
 # | msgid "You have already used this domain in: "
-#: hiddifypanel/panel/admin/DomainAdmin.py:105
+#: hiddifypanel/panel/admin/DomainAdmin.py:106
 msgid "You have used this domain in: "
 msgstr "You have already used this domain in: "
 
 # | msgid ""
 # | "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which "
 # | "is required in direct mode."
-#: hiddifypanel/panel/admin/DomainAdmin.py:115
+#: hiddifypanel/panel/admin/DomainAdmin.py:116
 #, python-format
 msgid ""
 "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is "
@@ -262,7 +274,7 @@ msgstr ""
 "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is "
 "required in direct mode."
 
-#: hiddifypanel/panel/admin/DomainAdmin.py:119
+#: hiddifypanel/panel/admin/DomainAdmin.py:120
 #, python-format
 msgid ""
 "In CDN mode, Domain IP=%(domain_ip)s should be different to your "
