@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-22 23:24+0100\n"
-"PO-Revision-Date: 2023-02-22 16:24-0600\n"
+"POT-Creation-Date: 2023-02-23 00:24+0100\n"
+"PO-Revision-Date: 2023-02-22 17:24-0600\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -98,29 +98,37 @@ msgid "Restore File Description"
 msgstr "برای بازگردانی، فایل دانلود شده (بک آپ) را از سیستم خود انتخاب کنید."
 
 #: hiddifypanel/panel/admin/Backup.py:100
+msgid "Restore Settings"
+msgstr ""
+
+#: hiddifypanel/panel/admin/Backup.py:100
+msgid "Restore Settings description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/Backup.py:101
 msgid "Restore Users"
 msgstr "بازیابی کاربران"
 
 # | msgid "Select this option to restore all users."
-#: hiddifypanel/panel/admin/Backup.py:100
+#: hiddifypanel/panel/admin/Backup.py:101
 msgid "Restore Users description"
 msgstr "برای بازگرداندن کاربران از این گزینه استفاده کنید."
 
-#: hiddifypanel/panel/admin/Backup.py:101
+#: hiddifypanel/panel/admin/Backup.py:102
 msgid "Restore Domain"
 msgstr "بازگردانی دامنه‌ها"
 
 # | msgid "Select this option to restore your domains."
-#: hiddifypanel/panel/admin/Backup.py:101
+#: hiddifypanel/panel/admin/Backup.py:102
 msgid "Restore Domain description"
 msgstr "برای بازگرداندن دامنه از این گزینه استفاده کنید."
 
-#: hiddifypanel/panel/admin/Backup.py:102
+#: hiddifypanel/panel/admin/Backup.py:103
 #: hiddifypanel/panel/admin/ProxyAdmin.py:90
 #: hiddifypanel/panel/admin/ProxyAdmin.py:117
 #: hiddifypanel/panel/admin/QuickSetup.py:71
 #: hiddifypanel/panel/admin/QuickSetup.py:98
-#: hiddifypanel/panel/admin/SettingAdmin.py:181
+#: hiddifypanel/panel/admin/SettingAdmin.py:186
 msgid "Submit"
 msgstr "ثبت"
 
@@ -311,7 +319,7 @@ msgstr "خطا! تنظیمات دامین فرانتینگ کامل نشده."
 # | msgid "There is an error in one of the fields."
 #: hiddifypanel/panel/admin/ProxyAdmin.py:63
 #: hiddifypanel/panel/admin/QuickSetup.py:64
-#: hiddifypanel/panel/admin/SettingAdmin.py:64
+#: hiddifypanel/panel/admin/SettingAdmin.py:69
 msgid "config.validation-error"
 msgstr "یکی از فیلدها دچار خطا شده است."
 
@@ -364,13 +372,13 @@ msgstr "زبان محیط مدیریت"
 
 # | msgid "English انگلیسی 英语"
 #: hiddifypanel/panel/admin/QuickSetup.py:69
-#: hiddifypanel/panel/admin/SettingAdmin.py:123
+#: hiddifypanel/panel/admin/SettingAdmin.py:128
 msgid "lang.en"
 msgstr "English انگلیسی 英语"
 
 # | msgid "Persian فارسی 波斯语"
 #: hiddifypanel/panel/admin/QuickSetup.py:69
-#: hiddifypanel/panel/admin/SettingAdmin.py:123
+#: hiddifypanel/panel/admin/SettingAdmin.py:128
 msgid "lang.fa"
 msgstr "Persian فارسی 波斯语"
 
@@ -383,16 +391,16 @@ msgstr "در این قسمت می‌توانید زبان بخش مدیریت ر
 # | msgid "Error! Invalid domain.  The domain format is www.google.com"
 #: hiddifypanel/panel/admin/QuickSetup.py:87
 #: hiddifypanel/panel/admin/QuickSetup.py:97
-#: hiddifypanel/panel/admin/SettingAdmin.py:137
-#: hiddifypanel/panel/admin/SettingAdmin.py:140
+#: hiddifypanel/panel/admin/SettingAdmin.py:142
+#: hiddifypanel/panel/admin/SettingAdmin.py:145
 msgid "config.Invalid domain"
 msgstr "خطا! دامنه نامعتبر! فرمت دامنه باید مثل www.google.com باشد."
 
 # | msgid "Domain is exist in domains section. Use another domain"
 #: hiddifypanel/panel/admin/QuickSetup.py:89
 #: hiddifypanel/panel/admin/QuickSetup.py:90
-#: hiddifypanel/panel/admin/SettingAdmin.py:144
-#: hiddifypanel/panel/admin/SettingAdmin.py:145
+#: hiddifypanel/panel/admin/SettingAdmin.py:149
+#: hiddifypanel/panel/admin/SettingAdmin.py:150
 msgid "config.Domain already used"
 msgstr "دامنه در بخش دامنه‌ها وجود دارد. از دامنه دیگری استفاده کنید."
 
@@ -493,32 +501,32 @@ msgstr ""
 "همخوانی ندارد. در حالت مستقیم (Direct Mode) این مورد الزامی است."
 
 # | msgid "Chinese چینی 中国人"
-#: hiddifypanel/panel/admin/SettingAdmin.py:123
+#: hiddifypanel/panel/admin/SettingAdmin.py:128
 msgid "lang.zh"
 msgstr "Chinese چینی 中国人"
 
 # | msgid "Python: low performance"
-#: hiddifypanel/panel/admin/SettingAdmin.py:127
+#: hiddifypanel/panel/admin/SettingAdmin.py:132
 msgid "lib.telegram.python"
 msgstr "پایتون: عملکرد ضعیف"
 
 # | msgid "Go: high performance: No ad support"
-#: hiddifypanel/panel/admin/SettingAdmin.py:127
+#: hiddifypanel/panel/admin/SettingAdmin.py:132
 msgid "lib.telegram.go"
 msgstr "Go: عملکرد بالا، عدم پشتیبانی از تبلیغات"
 
 # | msgid "NOT Working: Original: high performance"
-#: hiddifypanel/panel/admin/SettingAdmin.py:127
+#: hiddifypanel/panel/admin/SettingAdmin.py:132
 msgid "lib.telegram.orignal"
 msgstr "کار نمیکند! اصلی: عملکرد قوی"
 
 # | msgid "NOT Working: Erlang: medium performance"
-#: hiddifypanel/panel/admin/SettingAdmin.py:127
+#: hiddifypanel/panel/admin/SettingAdmin.py:132
 msgid "lib.telegram.erlang"
 msgstr "کار نمیکند! Erlang: عملکرد متوسط"
 
 # | msgid "Telegram Proxy Library"
-#: hiddifypanel/panel/admin/SettingAdmin.py:128
+#: hiddifypanel/panel/admin/SettingAdmin.py:133
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.telegram_lib.label"
 msgstr "مدل پروکسی تلگرام"
@@ -529,7 +537,7 @@ msgstr "مدل پروکسی تلگرام"
 # | "python works in all servers, others may have some issue. Test proxy after
 # "
 # | "changing it."
-#: hiddifypanel/panel/admin/SettingAdmin.py:128
+#: hiddifypanel/panel/admin/SettingAdmin.py:133
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.telegram_lib.description"
 msgstr ""
@@ -539,39 +547,39 @@ msgstr ""
 
 # | msgid ""
 # | "Invalid link. it should be on this format: (https or http://example.com)"
-#: hiddifypanel/panel/admin/SettingAdmin.py:150
+#: hiddifypanel/panel/admin/SettingAdmin.py:155
 msgid "config.Invalid brand link"
 msgstr "لینک پشتیبانی نامعتبر است. لطفا لینک را با فرمت معتبر وارد کنید."
 
 # | msgid ""
 # | "Invalid UUID secret. Example: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n"
 # | "\n"
-#: hiddifypanel/panel/admin/SettingAdmin.py:154
+#: hiddifypanel/panel/admin/SettingAdmin.py:159
 msgid "config.invalid uuid"
 msgstr "رمز UUID نامعتبر است. به عنوان مثال: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6"
 
 # | msgid "Invalid proxy path. It should be asci string (a-z A-Z 0-9)"
-#: hiddifypanel/panel/admin/SettingAdmin.py:158
+#: hiddifypanel/panel/admin/SettingAdmin.py:163
 msgid "config.Invalid proxy path"
 msgstr "مسیر پروکسی نامعتبر است. باید رشته متن asci باشد. ( شامل a-z A-Z 0-9)"
 
 # | msgid ""
 # | "Invalid port. It should be comma separated integer e.g., 1000,1001"
-#: hiddifypanel/panel/admin/SettingAdmin.py:162
+#: hiddifypanel/panel/admin/SettingAdmin.py:167
 msgid "config.Invalid port"
 msgstr "پورت نامعتبر است. اعداد باید با کاما از هم جدا شود، مثلاً 1000,1001"
 
 # | msgid ""
 # | "Port 80 should always be presented. We use it for getting ssl
 # certificate"
-#: hiddifypanel/panel/admin/SettingAdmin.py:165
+#: hiddifypanel/panel/admin/SettingAdmin.py:170
 msgid "config.port 80 is required"
 msgstr ""
 "پورت 80 همیشه باید در دسترس باشد. از آن برای دریافت سرتیفیکیت ssl استفاده"
 " می‌کنیم."
 
 # | msgid "Port 443 should always be presented. "
-#: hiddifypanel/panel/admin/SettingAdmin.py:168
+#: hiddifypanel/panel/admin/SettingAdmin.py:173
 msgid "config.port 443 is required"
 msgstr "پورت ۴۴۳ همیشه باید در دسترس باشد."
 
@@ -859,10 +867,13 @@ msgstr "تنظیمات اختصاصی را مشخص کنید."
 msgid "config.domain_fronting_tls_enable.label"
 msgstr "فعال کردن دامین فرانتینگ در اتصال TLS."
 
-# | msgid "It will use port 443 to connect to CDN"
+# | msgid ""
+# | "In CloudFlare, TLS domain fronting is not supported. It will use port 443
+# to"
+# | " connect to CDN. "
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.domain_fronting_tls_enable.description"
-msgstr "برای اتصال به CDN از پورت 443 استفاده میکند."
+msgstr "در کلودفلر پشتبانی نمیشود. برای اتصال به CDN از پورت 443 استفاده میکند."
 
 # | msgid "Enable HTTP domain fronting"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -2125,79 +2136,75 @@ msgid "Linux"
 msgstr "لینوکس"
 
 # | msgid ""
-# | "First, download and install the Clash software according to your
-# operating system.\n"
+# | "First, download and install the Hiddify Desktop software according to
+# your operating system.\n"
 # | "<br>\n"
 # | "%(hiddify_desktop_links)s\n"
-# | "<!--\n"
+# | "\n"
 # | "<div class=\"card card-info\">\n"
 # | "    <div class=\"card-header\">\n"
-# | "Is it safe to use HiddifyDesktop?\n"
+# | "Why HiddifyDesktop?\n"
 # | "    </div>\n"
 # | "    <div class=\"card-body\">\n"
-# | "        HiddifyDesktop is an open source fork of Clash that supports more
-# protocols.\n"
+# | "        HiddifyDesktop is an safe and open source fork of Clash that
+# supports more vless and utls fingerprinting.\n"
 # | "        <br>\n"
 # | "        Its source codes exist in\n"
 # | "        <a
 # href=\"https://github.com/hiddify/HiddifyDesktop\">GitHub</a>.\n"
 # | "        \n"
-# | "        Therefore, it is safe.\n"
-# | "\n"
 # | "        <details>\n"
 # | "            <summary>Alternative: Normal Clash</summary>\n"
 # | "            %(normal_clash_link)s\n"
 # | "            <div class=\"alert alert-danger\">\n"
-# | "            \tClash does not support VLESS protocol. Therefore, we need
-# to add another link for it.\n"
+# | "            \tClash does not support browser fingerprinting and VLESS
+# protocol . Therefore, we need to add another link for it.\n"
 # | "            </div>\n"
 # | "            \n"
 # | "        </details>\n"
 # | "</div>\n"
-# | "-->\n"
 # | "Now, according to your need, you can click on one of the buttons. By
-# viewing the window in your browser, just click on the Open Clash option to
-# automatically add the server link to Clash.\n"
+# viewing the window in your browser, just click on the <b>Open</b> option to
+# automatically add the server link to Hiddify Desktop.\n"
 #: hiddifypanel/panel/user/templates/home/windows.html:33
 msgid "user.home.windows.intro"
 msgstr ""
-"ابتدا نرم افزار Clash را با توجه به سیستم عامل خود دانلود و نصب کنید.\n"
+"ابتدا نرم افزار هیدیفای دسکتاپ را با توجه به سیستم عامل خود دانلود و نصب "
+"کنید.\n"
 "<br>\n"
 "%(hiddify_desktop_links)s\n"
-"<!--\n"
+"\n"
 "<div class=\"card card-info\">\n"
 "     <div class=\"card-header\">\n"
-"آیا استفاده از HiddifyDesktop ایمن است؟\n"
+"چرا HiddifyDesktop ؟\n"
 "     </div>\n"
 "     <div class=\"card-body\">\n"
-"         HiddifyDesktop یک ورژن (fork) منبع باز از Clash است که از پروتکل"
-" های بیشتری پشتیبانی می‌کند.\n"
+"         HiddifyDesktop یک ورژن (fork) امن و منبع باز از Clash است که از "
+"پروتکل VLESS و همینطور شبیه سازی مرورگر پشتیبانی می‌کند.\n"
 "         <br>\n"
 "         کدهای منبع آن در لینک زیر موجود است\n"
 "         <a "
 "href=\"https://github.com/hiddify/HiddifyDesktop\">GitHub</a>.\n"
 "        \n"
-"         <br>\n"
-"         بنابراین، ایمن است.\n"
 "\n"
 "         <details>\n"
 "             <summary>جایگزین: کلش </summary>\n"
 "             %(normal_clash_link)s\n"
 "\n"
 "             <div class=\"alert alert-danger\">\n"
-"             Clash از پروتکل VLESS پشتیبانی نمی کند. بنابراین، باید لینک "
-"دیگری برای آن اضافه کنیم.\n"
+"             Clash از پروتکل VLESS و شبیه سازی مرورگر را پشتیبانی نمی "
+"کند. بنابراین، باید لینک دیگری برای آن اضافه کنیم.\n"
 "             </div>\n"
 "            \n"
 "\n"
 "         </details>\n"
 "     </div>\n"
 "</div>\n"
-"-->\n"
+"\n"
 "<br>\n"
 "حال با توجه به نیاز خود می توانید روی یکی از دکمه ها کلیک کنید. با مشاهده"
-" پنجره در مرورگر خود، کافیست روی گزینه Open Clash کلیک کنید تا لینک سرور "
-"به صورت خودکار به Clash اضافه شود."
+" پنجره در مرورگر خود، کافیست روی گزینه <b>Open</b> کلیک کنید تا لینک سرور"
+" به صورت خودکار به هیدیفای اضافه شود."
 
 #: hiddifypanel/templates/500.html:7 hiddifypanel/templates/error.html:7
 msgid "Oops! Something went wrong."
