@@ -144,9 +144,9 @@ class DomainAdmin(AdminLTEModelView):
 
         hiddify.flash_config_success(restart_mode='apply', domain_changed=True)
 
-    def after_model_change(self,form, model, is_created):
-        if model.show_domains.count==0:
-            db.session.bulk_save_objects(ShowDomain(model.id,model.id))
+    # def after_model_change(self,form, model, is_created):
+    #     if model.show_domains.count==0:
+    #         db.session.bulk_save_objects(ShowDomain(model.id,model.id))
 
     def on_model_delete(self, model):
         if len(Domain.query.all()) <= 1:
