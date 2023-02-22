@@ -63,8 +63,8 @@ class Backup(FlaskView):
                         new_rows.append(dbdomain)
                     
                     dbdomain.mode=domain['mode']
-
-            for c,v in json_data["hconfigs"].items():
+            if restore_form.enable_config_restore.data:
+             for c,v in json_data["hconfigs"].items():
                 ckey=ConfigEnum(c)
                 if ckey==ConfigEnum.db_version:continue
                 if ckey.type()==bool:
@@ -72,7 +72,7 @@ class Backup(FlaskView):
                 else:
                     StrConfig.query.filter(StrConfig.key==ckey).update({'value':v})
             
-            for proxy in json_data["proxies"]:
+             for proxy in json_data["proxies"]:
                 dbproxy=Proxy.query.filter(Proxy.name==proxy['name']).first()
                 if not dbproxy:
                     dbproxy=Proxy()
@@ -97,6 +97,7 @@ class Backup(FlaskView):
 def get_restore_form(empty=False):
         class RestoreForm(FlaskForm):
                 restore_file=FileField(_("Restore File"),description=_("Restore File Description"),validators=[FileRequired()])
+                enable_config_restore=SwitchField(_("Restore Settings"),description=_("Restore Settings description"),default=False)
                 enable_user_restore=SwitchField(_("Restore Users"),description=_("Restore Users description"),default=False)
                 enable_domain_restore=SwitchField(_("Restore Domain"),description=_("Restore Domain description"),default=False)
                 submit=wtf.fields.SubmitField(_('Submit'))
