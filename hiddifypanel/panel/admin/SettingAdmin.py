@@ -57,6 +57,11 @@ class SettingAdmin(FlaskView):
             db.session.commit()
             from flask_babel import refresh; refresh()
             
+            if old_configs[ConfigEnum.proxy_path]!=hconfig(ConfigEnum.proxy_path):
+                from . import Actions
+                action=Actions()
+                return action.reinstall(complete_install=False,domain_changed=True)
+                
             hiddify.check_need_reset(old_configs)
             
 

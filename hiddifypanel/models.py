@@ -107,7 +107,7 @@ class ConfigEnum(StrEnum):
             self.kcp_ports: {'category': ConfigCategory.kcp,'apply_mode':'apply'},
             self.kcp_enable: {'category': ConfigCategory.kcp,'type':bool,'apply_mode':'apply'},
             self.decoy_domain: {'category': ConfigCategory.general,'apply_mode':'apply'},
-            self.proxy_path: {'category': ConfigCategory.hidden,'apply_mode':'apply'},
+            self.proxy_path: {'category': ConfigCategory.general,'apply_mode':'apply'},
             self.firewall: {'category': ConfigCategory.general,'apply_mode':'apply'},
             self.netdata: {'category': ConfigCategory.general,'apply_mode':'apply'},
             self.http_proxy_enable: {'category': ConfigCategory.http,'type':bool},
