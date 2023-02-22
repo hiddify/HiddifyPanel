@@ -16,7 +16,7 @@ from flask_bootstrap import SwitchField
 class UserAdmin(AdminLTEModelView):
     
     list_template = 'model/user_list.html'    
-    form_excluded_columns=['last_reset_time']
+    # form_excluded_columns=['last_reset_time']
     # edit_modal=True
     # create_modal=True
     # column_display_pk = True
@@ -61,6 +61,7 @@ class UserAdmin(AdminLTEModelView):
         # name=_'just for remembering',
         # usage_limit_GB="in GB",
         # current_usage_GB="in GB"
+        last_reset_time=_("If monthly is enabled, the usage will be reset after 30 days from this date.")
     )
     column_editable_list=["usage_limit_GB","current_usage_GB","expiry_time"]
     # form_extra_fields={
