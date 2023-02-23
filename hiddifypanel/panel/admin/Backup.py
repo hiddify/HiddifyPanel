@@ -8,7 +8,7 @@ import wtforms as wtf
 from flask_wtf import FlaskForm
 import pathlib
 from hiddifypanel.models import BoolConfig,StrConfig,ConfigEnum,hconfig,Proxy,User,Domain,DomainType
-
+from hiddifypanel.panel import hiddify
 from datetime import datetime,timedelta,date
 import os,sys
 import json

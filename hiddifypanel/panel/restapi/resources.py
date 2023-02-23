@@ -4,7 +4,7 @@ from flask_restful import Resource
 import datetime
 from hiddifypanel.models import StrConfig,BoolConfig,User,Domain,get_hconfigs,Proxy
 from urllib.parse import urlparse
-
+from hiddifypanel.panel import hiddify
 class AllResource(Resource):
     def get(self):
         products = User.query.all() or abort(204)
