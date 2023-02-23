@@ -10,7 +10,7 @@ class AllResource(Resource):
         products = User.query.all() or abort(204)
         response= jsonify(
             {"users": [u.to_dict() for u in User.query.filter((User.usage_limit_GB>User.current_usage_GB)).filter(User.expiry_time>=datetime.date.today()).all()],
-            "domains": [u.to_dict() for u in Domain.query.all()],
+            "domains": [hiddify.domain_dict(u) for u in Domain.query.all()],
             "proxies": [u.to_dict() for u in Proxy.query.all()],
             "hconfigs": get_hconfigs()
             }
@@ -33,7 +33,7 @@ class DomainResource(Resource):
     def get(self):
         products = Domain.query.all() or abort(204)
         return jsonify(
-            {"domains": [product.to_dict() for product in products]}
+            {"domains": [hiddify.domain_dict(product) for product in products]}
         )
 
 class BoolConfigResource(Resource):
