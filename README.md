@@ -1,8 +1,11 @@
-# hiddifypanel Flask Application
+# hiddifypanel 
 
  hiddifypanel to create multi proxy using xray mtproxy and others
 
-# under development do not use it yet
+# How to use it
+Please visit https://github.com/hiddify/hiddify-config/wiki for the installation.
+
+<!--
 ## Installation
 
 From source:
@@ -47,3 +50,5 @@ hiddifypanel run
 
 
 > **Note**: You can also use `flask run` to run the application.
+
+-->
