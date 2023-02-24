@@ -103,6 +103,8 @@ def domain_dict(d):
     return {
             'domain':d.domain,
             'mode':d.mode,
+            'cdn_ip':d.cdn_ip,
+            'show_domains':[dd.domain for dd in d.show_domains]
         }
 
 def all_configs():

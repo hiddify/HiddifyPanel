@@ -63,6 +63,9 @@ class Backup(FlaskView):
                         new_rows.append(dbdomain)
                     
                     dbdomain.mode=domain['mode']
+                    dbdomain.cdn_ip=domain.get('cdn_ip','')
+                    show_domains=domain.get('show_domains',[])
+                    dbdomain.show_domains=Domain.query.filter(Domain.domain.in_(show_domains)).all()
             if restore_form.enable_config_restore.data:
              for c,v in json_data["hconfigs"].items():
                 ckey=ConfigEnum(c)
