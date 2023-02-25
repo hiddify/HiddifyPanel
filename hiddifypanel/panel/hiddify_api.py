@@ -4,8 +4,8 @@ def sync_child_to_parent(parent_link=None):
     parent_link= parent_link or hconfig(ConfigEnum.parent_panel)
     if not parent_link:
         raise ConnectionError("no parent link")
-    unique_id=hconfig(ConfigEnum.unique_id)
-    return send_to_panel(f"{parent_link}/api/v1/sync_child/?unique_id={unique_id}",'PUT',hiddify.dump_db_to_dict())
+    
+    return send_to_panel(f"{parent_link}/api/v1/sync_child/",'PUT',hiddify.dump_db_to_dict())
 
 def add_user_usage_to_parent(dbusers_bytes,parent_link=None):
     uuid_bytes={u.uuid:b for u,b in dbusers_bytes.items()}
@@ -55,6 +55,7 @@ def send_to_panel(url,method="GET",data=None):
     http.mount("http://", adapter)
     
     headers = {'Content-Type': 'application/json'}
+    headers = {'Unique-ID': hconfig(ConfigEnum.unique_id)}
     if method=="GET":
         response = http.get(url,params=data,headers=headers)
     if method == "PUT":
