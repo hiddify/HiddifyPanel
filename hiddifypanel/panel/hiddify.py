@@ -119,6 +119,12 @@ def proxy_dict(d):
             'child_ip':d.child.ip if d.child else ''
         }
 
+def parent_domain_dict(d):
+    return {
+            'domain':d.domain,
+        }
+
+
 def config_dict(d):
     return {
             'key':d.key,
@@ -265,7 +271,7 @@ def dump_db_to_dict():
     return {"users": [u.to_dict() for u in User.query.all()],
             "domains": [domain_dict(u) for u in Domain.query.all()],
             "proxies": [proxy_dict(u) for u in Proxy.query.all()],
-            "parent_domains": [u.to_dict() for u in ParentDomain.query.all()],
+            "parent_domains": [parent_domain_dict(u) for u in ParentDomain.query.all()],
             "hconfigs": [*[config_dict(u) for u in BoolConfig.query.all()],
                          *[config_dict(u) for u in StrConfig.query.all()]]
             }
