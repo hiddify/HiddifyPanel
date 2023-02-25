@@ -165,7 +165,9 @@ def _v10():
             rows.append(BoolConfig(key=c,value=v,child_id=0))
         else:
             rows.append(StrConfig(key=c,value=v,child_id=0))
+    
     db.session.bulk_save_objects(rows)
+    
 
 def init_db():
     # db.engine.execute(f'ALTER TABLE bool_config_old RENAME TO bool_config')

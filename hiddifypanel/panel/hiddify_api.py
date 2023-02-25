@@ -56,10 +56,11 @@ def send_to_panel(url,method="GET",data=None):
     
     headers = {'Content-Type': 'application/json',
                 'Unique-ID': hconfig(ConfigEnum.unique_id)}
+    print(headers)
     if method=="GET":
-        response = requests.get(url,params=data,headers=headers)
+        response = http.get(url,params=data,headers=headers)
     if method == "PUT":
-        response = requests.put(url,json=data,headers=headers)
+        response = http.put(url,json=data,headers=headers)
     
     res= response.json()
     print(res)
