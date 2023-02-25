@@ -298,14 +298,14 @@ def dump_db_to_dict():
             }
 
 
-def set_db_from_json(json_data,override_child=False,override_child_id=None,set_users=True,set_domains=True,set_proxies=True,set_settings=True,remove_domains=False,remove_users=False):
+def set_db_from_json(json_data,override_child=False,override_child_id=None,set_users=True,set_domains=True,set_proxies=True,set_settings=True,remove_domains=False,remove_users=False,override_unique_id=True):
     def get_child(dic):
         if override_child:
             return override_child_id
         if 'child_ip' in dic:
             child=Child.query.filter(Child.ip==dic['child_ip']).first()
-        if child:
-            return child.id
+            if child:
+                return child.id
         return 0
 
     new_rows=[]                            
@@ -353,13 +353,13 @@ def set_db_from_json(json_data,override_child=False,override_child_id=None,set_u
         
         for config in json_data["hconfigs"]:
             c=config['key']
-            if c==ConfigEnum.unique_id:
-                continue
+            ckey=ConfigEnum(c)
+            if c==ConfigEnum.unique_id and not override_unique_id:
+                    continue
             v=config['value']
             child_id=get_child(config)
-            ckey=ConfigEnum(c)
 
-            if ckey==ConfigEnum.db_version:continue
+            if ckey in [ConfigEnum.db_version]:continue
             if ckey.type()==bool:
                 dbconf=BoolConfig.query.filter(BoolConfig.key==ckey and BoolConfig.child_id==child_id).first()
                 if not dbconf:

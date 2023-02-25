@@ -40,7 +40,8 @@ class Backup(FlaskView):
                 set_users=restore_form.enable_user_restore.data,
                 set_domains=restore_form.enable_domain_restore.data,
                 set_settings=restore_form.enable_config_restore.data,
-                override_child=False
+                override_child=False,
+                override_unique_id=False
             )
 
             from flask_babel import refresh; refresh()
