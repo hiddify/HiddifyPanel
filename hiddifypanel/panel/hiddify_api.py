@@ -59,5 +59,7 @@ def send_to_panel(url,method="GET",data=None):
         response = http.get(url,params=data,headers=headers)
     if method == "PUT":
         response = http.put(url,json=data,headers=headers)
-
-    return response
+    
+    res= response.json()
+    print(res)
+    return res

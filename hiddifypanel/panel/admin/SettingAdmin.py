@@ -1,4 +1,5 @@
 from hiddifypanel.models import BoolConfig,StrConfig,ConfigEnum,hconfig,ConfigCategory
+from wtforms.validators import Regexp, ValidationError
 from flask_babelex import lazy_gettext as _
 # from flask_babelex import gettext as _
 import wtforms as wtf
@@ -53,8 +54,13 @@ class SettingAdmin(FlaskView):
                                     v=v.lower()
                                 if k == ConfigEnum.parent_panel:
                                     v=(v+"/").replace("/admin",'')
-                                    hiddify_api.sync_child_to_parent(v)
-                                        # raise ValidationError(_("Can not connect to parent panel!"))
+                                    try:
+                                        if hiddify_api.sync_child_to_parent(v)['status']!=200:
+                                            flash(_("Can not connect to parent panel!"),'error')
+                                            return render_template('config.html', form=form)
+                                    except:
+                                        flash(_("Can not connect to parent panel!"),'error')
+                                        return render_template('config.html', form=form)
                                 StrConfig.query.filter(StrConfig.key==k).first().value=v
 
                 # print(cat,vs)
