@@ -9,8 +9,8 @@ from hiddifypanel.panel.hiddify import flash
 class Dashboard(FlaskView):
     def index(self):
             if hconfig(ConfigEnum.is_parent):
-                childs=Child.query.all()
-                return render_template('parent_dash.html')
+                childs=Child.query.filter(Child.id!=0).all()
+                return render_template('parent_dash.html',childs=childs)
         # try:
             def_user=None if len(User.query.all())>1 else User.query.filter(User.name=='default').first()
             domains=Domain.query.all()

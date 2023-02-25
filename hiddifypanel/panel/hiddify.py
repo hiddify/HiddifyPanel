@@ -350,8 +350,11 @@ def set_db_from_json(json_data,override_child=False,override_child_id=None,set_u
             if d.domain not in dd:
                 db.session.delete(d)
     if set_settings and 'hconfigs' in json_data:
+        
         for config in json_data["hconfigs"]:
             c=config['key']
+            if c==ConfigEnum.unique_id:
+                continue
             v=config['value']
             child_id=get_child(config)
             ckey=ConfigEnum(c)

@@ -23,14 +23,14 @@ from .domain import DomainType,Domain
 
 
 class BoolConfig(db.Model, SerializerMixin):
-    child_id= db.Column(db.Integer,db.ForeignKey('child.id'))
+    child_id= db.Column(db.Integer,db.ForeignKey('child.id'), primary_key=True,default=0)
     # category = db.Column(db.String(128), primary_key=True)
     key = db.Column(db.Enum(ConfigEnum), primary_key=True)
     value = db.Column(db.Boolean)
 
 
 class StrConfig(db.Model, SerializerMixin):
-    child_id= db.Column(db.Integer, db.ForeignKey('child.id'))
+    child_id= db.Column(db.Integer, db.ForeignKey('child.id'), primary_key=True,default=0)
     # category = db.Column(db.String(128), primary_key=True)
     key = db.Column(db.Enum(ConfigEnum), primary_key=True,   default=ConfigEnum.admin_secret)
     value = db.Column(db.String(2048))
@@ -54,7 +54,7 @@ def get_hdomains():
     return {mode: hdomains(mode) for mode in DomainType}
 
 
-def hconfig(key: ConfigEnum,child_id=None):
+def hconfig(key: ConfigEnum,child_id=0):
     try:
         str_conf = StrConfig.query.filter(StrConfig.key == key and StrConfig.child_id==child_id).first()
         if str_conf:

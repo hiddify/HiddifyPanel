@@ -12,10 +12,12 @@ class SyncChildResource(Resource):
             return {'status':500,'msg':"Not a parent"},500
         return 
 
-    def put(self):
+    def put(self,unique_id):
         panel_data=request.json
         if not hconfig(ConfigEnum.is_parent):
             return {'status':500,'msg':"Not a parent"},500
+        print(panel_data)
+        print("==================")
         child_ip=request.remote_addr
         first_setup=False
         child=Child.query.filter(Child.ip==child_ip).first()

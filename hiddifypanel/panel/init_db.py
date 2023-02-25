@@ -27,6 +27,7 @@ def _v1():
         external_ip=urllib.request.urlopen('https://v4.ident.me/').read().decode('utf8')
         
         data = [
+            Child(ip="self",id=0),
             StrConfig(key=ConfigEnum.db_version,value=1),
             User(name="default",usage_limit_GB=9000,expiry_time=next10year),
             Domain(domain=external_ip+".sslip.io",mode=DomainType.direct),
@@ -140,11 +141,38 @@ def _v9():
     db.session.bulk_save_objects(
         [
             BoolConfig(key=ConfigEnum.is_parent,value=False),
-            StrConfig(key=ConfigEnum.parent_panel,value='')
+            StrConfig(key=ConfigEnum.parent_panel,value=''),
+            StrConfig(key=ConfigEnum.unique_id,value=str(uuid.uuid4()))
         ]
     )
-def init_db():
+
+def _v10():
+    all_configs=get_hconfigs()
+    try:
+        
+        db.engine.execute("ALTER TABLE `str_config` RENAME TO `str_config_old`")
+        db.engine.execute("ALTER TABLE `bool_config` RENAME TO `bool_config_old`")
+        
+    except:
+        pass
     db.create_all()
+    
+    rows=[]
+    if not Child.query.filter(Child.id==0).first():
+        rows.append(Child(ip="self",id=0))
+    for c,v in all_configs.items():
+        if c.type()==bool:
+            rows.append(BoolConfig(key=c,value=v,child_id=0))
+        else:
+            rows.append(StrConfig(key=c,value=v,child_id=0))
+    db.session.bulk_save_objects(rows)
+
+def init_db():
+    # db.engine.execute(f'ALTER TABLE bool_config_old RENAME TO bool_config')
+    # db.engine.execute(f'ALTER TABLE str_config_old RENAME TO str_config')
+
+    db.create_all()
+    
     try:
         column_type = Domain.child_id.type.compile(db.engine.dialect)
         db.engine.execute(f'ALTER TABLE domain ADD COLUMN child_id {column_type}')
@@ -169,7 +197,7 @@ def init_db():
     db_version=int(hconfig(ConfigEnum.db_version) or 0) 
     print(f"Current DB version is {db_version}")
 
-    db_actions={1:_v1,2:_v2,3:_v3,6:_v6,8:_v8,9:_v9}
+    db_actions={1:_v1,2:_v2,3:_v3,6:_v6,8:_v8,9:_v9,10:_v10}
     for ver,db_action in db_actions.items():
         if ver<=db_version:continue
         print(f"Updating db from version {db_version}")
@@ -177,9 +205,10 @@ def init_db():
         db.session.commit()
         print(f"Updated successfuly db from version {db_version} to {ver}")
         db_version=ver
-        
+
     # 
-    StrConfig.query.filter(StrConfig.key == ConfigEnum.db_version).update({'value': db_version})
+    
+    StrConfig.query.filter(StrConfig.key == ConfigEnum.db_version and StrConfig.child_id==0).update({'value': db_version})
     db.session.commit()
     return BoolConfig.query.all()
 

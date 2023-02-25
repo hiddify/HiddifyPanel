@@ -23,8 +23,8 @@
             <tr><th>IP</th><th>{{_("Domain")}}</th></tr>
 
             %for child in childs
-                <tr><td>{{child.ip}}</td><td>
-                    %for d in child.domain
+                <tr><td>{{child.ip}} {{child.domains}}</td><td>
+                    %for d in child.domains
                         {{admin_btn(child,d)}} 
                     %endfor
                 </td></tr>

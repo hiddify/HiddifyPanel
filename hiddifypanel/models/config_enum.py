@@ -35,6 +35,7 @@ class ConfigCategory(StrEnum):
 class ConfigEnum(StrEnum):
     is_parent=auto()
     parent_panel=auto()
+    unique_id=auto()
     cdn_forced_host=auto() # removed
     lang = auto()
     admin_lang = auto()
@@ -99,7 +100,7 @@ class ConfigEnum(StrEnum):
         map = {
             self.is_parent:{'category': ConfigCategory.hidden,'type':bool},
             self.parent_panel:{'category': ConfigCategory.admin},
-            
+            self.unique_id:{'category': ConfigCategory.hidden,},
             self.cdn_forced_host:{'category': ConfigCategory.hidden,},
             self.branding_title:{'category': ConfigCategory.branding,'show_in_parent':True},
             self.branding_site:{'category': ConfigCategory.branding,'show_in_parent':True},
