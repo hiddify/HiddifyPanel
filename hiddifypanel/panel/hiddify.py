@@ -306,7 +306,7 @@ def set_db_from_json(json_data,override_child=False,override_child_id=None,set_u
             child=Child.query.filter(Child.ip==dic['child_ip']).first()
         if child:
             return child.id
-        return None
+        return 0
 
     new_rows=[]                            
     if set_users and 'users' in json_data:
