@@ -59,7 +59,7 @@ def hconfig(key: ConfigEnum,child_id=0):
         str_conf = StrConfig.query.filter(StrConfig.key == key and StrConfig.child_id==child_id).first()
         if str_conf:
             return str_conf.value
-        bool_conf = BoolConfig.query.filter(BoolConfig.key == key  and StrConfig.child_id==child_id).first()
+        bool_conf = BoolConfig.query.filter(BoolConfig.key == key  and BoolConfig.child_id==child_id).first()
         if bool_conf:
             return bool_conf.value
         # if key == ConfigEnum.ssfaketls_fakedomain:
@@ -68,13 +68,14 @@ def hconfig(key: ConfigEnum,child_id=0):
         #     return hdomain(DomainType.telegram_faketls)
         # if key == ConfigEnum.fake_cdn_domain:
         #     return hdomain(DomainType.fake_cdn)
+        print(f'{key} not found ')
     except:
         print(f'{key} error!')
 
     return None
 
 
-def get_hconfigs(child_id=None):
+def get_hconfigs(child_id=0):
     return {**{u.key: u.value for u in BoolConfig.query.filter(BoolConfig.child_id==child_id).all()},
             **{u.key: u.value for u in StrConfig.query.filter(StrConfig.child_id==child_id).all()},
             # ConfigEnum.telegram_fakedomain:hdomain(DomainType.telegram_faketls),
