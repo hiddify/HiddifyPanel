@@ -154,7 +154,7 @@ def get_config_form():
                 if c.key==ConfigEnum.domain_fronting_domain:
                     validators.append(wtf.validators.Regexp("^([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})|$",re.IGNORECASE,_("config.Invalid domain")))
                     validators.append(hiddify.validate_domain_exist)
-                elif 'domain' in c.key:
+                elif '_domain' in c.key:
                     validators.append(wtf.validators.Regexp("^([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})$",re.IGNORECASE,_("config.Invalid domain")))
                     validators.append(hiddify.validate_domain_exist)
 
