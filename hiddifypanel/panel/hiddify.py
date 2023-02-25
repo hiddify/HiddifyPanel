@@ -371,7 +371,7 @@ def set_db_from_json(json_data,override_child=False,override_child_id=None,set_u
                     dbconf=StrConfig(key=ckey,child_id=child_id)
                     new_rows.append(dbconf)
 
-        dbconf.value=v
+            dbconf.value=v
         if 'proxies' in json_data:
          for proxy in json_data["proxies"]:
             dbproxy=Proxy.query.filter(Proxy.name==proxy['name']).first()
