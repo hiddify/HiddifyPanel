@@ -5,6 +5,7 @@ from flask_admin import Admin
 from .SettingAdmin import SettingAdmin 
 from .DomainAdmin import DomainAdmin
 from .ConfigAdmin import ConfigAdmin
+from .ParentDomainAdmin import ParentDomainAdmin
 from .ProxyAdmin import ProxyAdmin
 from .Actions import Actions
 from .Backup import Backup
@@ -12,7 +13,7 @@ from .QuickSetup import QuickSetup
 from hiddifypanel.models import  StrConfig,ConfigEnum
 # from .resources import ProductItemResource, ProductResource
 from hiddifypanel.panel.database import db
-from hiddifypanel.models import User,Domain,BoolConfig,StrConfig,Proxy,hconfig,ConfigEnum
+from hiddifypanel.models import *
 from .Dashboard import Dashboard
 
 from flask_admin.menu import MenuLink
@@ -44,6 +45,7 @@ def init_app(app):
     
     admin.add_view(UserAdmin(User, db.session))
     admin.add_view(DomainAdmin(Domain, db.session))
+    admin.add_view(ParentDomainAdmin(ParentDomain, db.session))
     
     
     

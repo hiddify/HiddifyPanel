@@ -92,7 +92,7 @@ def init_app(app):
     def set_setting(key,val):
         c=ConfigEnum(key)
         if c.type()==bool:
-            BoolConfig.query.filter(BoolConfig.key == c).update({'value': val})
+            BoolConfig.query.filter(BoolConfig.key == c).update({'value': val.lower()=="true"})
         else:
             StrConfig.query.filter(StrConfig.key == c).update({'value': val})
         db.session.commit()

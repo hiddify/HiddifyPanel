@@ -46,12 +46,12 @@ class UserAdmin(AdminLTEModelView):
         "UserLinks":_("user.user_links"),
         "usage_limit_GB":_("user.usage_limit_GB"),
         "monthly":_("Reset every month"),
-        "mode":_("Define the user mode. Should the usage reset every month?"),
+        "mode":_("Mode"),
         "current_usage_GB":_("user.current_usage_GB"),
         "expiry_time":_("user.expiry_time"),
         # "last_reset_time":_("user.last_reset_time"),
         "uuid":_("user.UUID"),
-        "comment":_("Add some text that is only visible to you."),
+        "comment":_("Note"),
      }
     column_searchable_list=[("uuid"),"name"]
     def search_placeholder(self):
@@ -63,6 +63,8 @@ class UserAdmin(AdminLTEModelView):
         # name=_'just for remembering',
         # usage_limit_GB="in GB",
         # current_usage_GB="in GB"
+        comment=_("Add some text that is only visible to you."),
+        mode=_("Define the user mode. Should the usage reset every month?"),
         last_reset_time=_("If monthly is enabled, the usage will be reset after 30 days from this date.")
     )
     column_editable_list=["usage_limit_GB","current_usage_GB","expiry_time"]

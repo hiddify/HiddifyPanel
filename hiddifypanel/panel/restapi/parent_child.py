@@ -7,6 +7,8 @@ from urllib.parse import urlparse
 from hiddifypanel.panel import hiddify
 class SyncChildResource(Resource):
      def put(self, panel_data):
+        if not hconfig(ConfigEnum.is_parent):
+            raise "Not a parent"
         child_ip=request.remote_addr
         first_setup=False
         child=Child.query.filter(Child.ip==child_ip).first()

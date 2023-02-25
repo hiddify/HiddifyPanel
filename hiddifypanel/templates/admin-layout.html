@@ -15,9 +15,9 @@
 
 
   <div class="navbar-nav">
-  <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i> <span class="brand-text font-weight-light">{{_("master.page-title")}} <span class="badge d-none d-sm-flex">{{version}}</span></a>
+  <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i> <span class="brand-text font-weight-light">{{_("master.page-title")}} <span class="badge d-none d-sm-inline-block">{{version}}</span></a>
   </div>
-  % if not hconfig(ConfigEnum.is_parent):
+  % if not hconfig(ConfigEnum.is_parent)
         
   <ul class="navbar-nav ml-auto">
     <a class="nav-link btn btn-outline-secondary form_post" href="{{url_for('admin.Actions:apply_configs')}}">
@@ -53,8 +53,8 @@
                  with font-awesome or any other icon font library -->
                  {{ render_nav_item('admin.Dashboard:index', icon('solid','house','nav-icon')+_('admin.menu.home')) }}
               
-                % if hconfig(ConfigEnum.is_parent)
-                {{ render_nav_item(hconfig(ConfigEnum.parent_panel)+"/user/", icon('solid','user','nav-icon')+_('admin.menu.user')) }}
+                % if hconfig(ConfigEnum.parent_panel)
+                {{ render_nav_item(hconfig(ConfigEnum.parent_panel)+"/admin/user/", icon('solid','user','nav-icon')+_('admin.menu.user'),_badge=_('in parent panel') ) }}
                 %else
                 {{ render_nav_item('flask.user.index_view', icon('solid','user','nav-icon')+_('admin.menu.user')) }}
                 %endif
@@ -63,7 +63,7 @@
                  {{ render_nav_item('admin.ProxyAdmin:index', icon('solid','arrow-down-up-lock','nav-icon')+_('admin.menu.proxy')) }}
                  %endif
                  % if hconfig(ConfigEnum.is_parent)
-                  {{ render_nav_item('admin.DoaminParent:index', icon('solid','arrow-down-up-lock','nav-icon')+_('admin.menu.domain')) }}
+                  {{ render_nav_item('flask.parentdomain.index_view', icon('solid','arrow-down-up-lock','nav-icon')+_('admin.menu.domain')) }}
                  %endif
                  {{ render_nav_item('admin.SettingAdmin:index',icon('solid','gear','nav-icon')+ _('admin.menu.config')) }}
 

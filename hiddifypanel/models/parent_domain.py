@@ -25,7 +25,7 @@ class ParentDomain(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     domain = db.Column(db.String(200), nullable=False, unique=True)
     show_domains = db.relationship('Domain', secondary=ShowDomainParent,
-                                primaryjoin=id==ShowDomainParent.c.domain_id,
-                                secondaryjoin=id==ShowDomainParent.c.related_id, 
-                                # backref=backref('show_domains', lazy='dynamic')
+                                # primaryjoin=id==ShowDomainParent.c.domain_id,
+                                # secondaryjoin=id==ShowDomainParent.c.related_id, 
+                                backref=backref('parent_domains', lazy='dynamic')
                                 )
