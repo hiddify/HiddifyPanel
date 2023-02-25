@@ -2,6 +2,7 @@ from flask import abort, jsonify,request
 from flask_restful import Resource
 # from flask_simplelogin import login_required
 import datetime
+from hiddifypanel.panel.database import db
 from hiddifypanel.models import *
 from urllib.parse import urlparse
 from hiddifypanel.panel import hiddify
