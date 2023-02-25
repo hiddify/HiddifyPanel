@@ -81,7 +81,10 @@ class UserView(FlaskView):
             res+=line+"\n"
         if base64:
             res=do_base_64(res)
-        return Response(res,mimetype="text/plain")
+        resp= Response(res)
+        resp.mimetype="text/plain"
+        resp.headers['Subscription-Userinfo']=f"upload=0;download={c['usage_current_b']};total={c['usage_limit_b']};expire={c['expire_s']}"
+        return resp
 
 def do_base_64(str):
     import base64
@@ -90,13 +93,17 @@ def do_base_64(str):
     
 def get_common_data(user_uuid,mode):
     domain=urlparse(request.base_url).hostname
+    db_domain=Domain.query.filter(Domain.domain==domain).first()
+    if not db_domain:
+        db_domain=Domain(domain=domain,mode=DomainType.direct,cdn_ip='',show_domains=[])
+        
     if mode =='multi':
         domains=Domain.query.all()
-    if mode =='new':
+    elif mode =='new':
         db_domain=Domain.query.filter(Domain.domain==domain).first()
         domains=db_domain.show_domains or Domain.query.all()
     else:
-        db_domain=Domain.query.filter(Domain.domain==domain).first()
+        
         domains=[db_domain]
         direct_host= domain
 
