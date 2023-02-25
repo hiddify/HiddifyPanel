@@ -11,7 +11,8 @@ class SyncChildResource(Resource):
             return {'status':500,'msg':"Not a parent"},500
         return 
 
-    def put(self, panel_data):
+    def put(self):
+        panel_data=request.json
         if not hconfig(ConfigEnum.is_parent):
             return {'status':500,'msg':"Not a parent"},500
         child_ip=request.remote_addr
@@ -30,7 +31,8 @@ class SyncChildResource(Resource):
 
 
 class AddUsageResource(Resource):
-     def put(self, uuids_bytes):
+     def put(self):
+        uuids_bytes=request.json
         add_users_usage_uuid(uuids_bytes)
         return {"users": [u.to_dict() for u in User.query.all()]}
 
