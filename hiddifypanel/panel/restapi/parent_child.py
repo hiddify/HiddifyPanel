@@ -17,6 +17,7 @@ class SyncChildResource(Resource):
         panel_data=request.json
         if not hconfig(ConfigEnum.is_parent):
             return {'status':500,'msg':"Not a parent"},500
+        print(request.headers)
         child_ip=request.headers['Unique-ID']
         print(panel_data)
         print("==================")

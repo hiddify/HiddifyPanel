@@ -16,7 +16,7 @@ def init_app(app):
     api.add_resource(AllResource, "/all/")
     api.add_resource(UpdateUsageResource, "/update_usage/")
     api.add_resource(HelloResource, "/hello/")
-    api.add_resource(SyncChildResource, "/sync_child/<string:unique_id>/")
-    api.add_resource(AddUsageResource, "/add_usage/<string:unique_id>/")
+    api.add_resource(SyncChildResource, "/sync_child/")
+    api.add_resource(AddUsageResource, "/add_usage/")
     
     app.register_blueprint(bp)
