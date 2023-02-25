@@ -10,3 +10,8 @@ import datetime
 class UpdateUsageResource(Resource):
     def get(self):
         return jsonify(hiddify.update_usage())
+
+
+class addUsageResource(Resource):
+    def post(self):
+        return jsonify(hiddify.update_usage())

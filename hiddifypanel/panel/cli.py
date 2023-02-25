@@ -26,7 +26,15 @@ def drop_db():
 
 def all_configs():
     import json
-    configs=hiddify.all_configs()
+    configs={
+        "users": [u.to_dict() for u in User.query.filter((User.usage_limit_GB>User.current_usage_GB)).filter(User.expiry_time>=datetime.date.today()).all()],
+        "domains": [hiddify.domain_dict(u) for u in Domain.query.all()],
+        "hconfigs": get_hconfigs()
+        }
+    for d in configs['domains']:
+        d['domain']=d['domain'].lower()
+        # del d['domain']['show_domains']
+
     configs['hconfigs']['first_setup']=len(configs['domains'])==1 and 'sslip.io' in configs['domains'][0]['domain'] and len(configs['users'])==1 and configs['users'][0]['name']=="default"
     # configs
 

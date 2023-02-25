@@ -1,9 +1,13 @@
 import xtlsapi
 
 def get_xray_client():
+    if hconfig(ConfigEnum.is_parent):
+        return
     return xtlsapi.XrayClient('127.0.0.1', 10085)
     
 def get_inbound_tags():
+    if hconfig(ConfigEnum.is_parent):
+        return
     try:
         xray_client=get_xray_client()
         return [inb.name.split(">>>")[1] for inb in xray_client.stats_query('inbound')]
@@ -12,6 +16,8 @@ def get_inbound_tags():
         return []
 
 def add_client(uuid):
+    if hconfig(ConfigEnum.is_parent):
+        return
     xray_client=get_xray_client()
     tags=get_inbound_tags()
     for t in tags:
@@ -23,6 +29,8 @@ def add_client(uuid):
             pass
 
 def remove_client(uuid):
+    if hconfig(ConfigEnum.is_parent):
+        return
     xray_client=get_xray_client()
     tags=get_inbound_tags()
     
@@ -34,6 +42,8 @@ def remove_client(uuid):
             pass        
 
 def get_usage(uuid,reset=False):
+    if hconfig(ConfigEnum.is_parent):
+        return
     xray_client=get_xray_client()
     d = xray_client.get_client_download_traffic(f'{uuid}@hiddify.com',reset=reset)
     u = xray_client.get_client_upload_traffic(f'{uuid}@hiddify.com',reset=reset)

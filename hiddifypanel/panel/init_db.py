@@ -1,4 +1,4 @@
-from hiddifypanel.models import  User,Domain,DomainType,BoolConfig,StrConfig,ConfigEnum,hconfig
+from hiddifypanel.models import  *
 from hiddifypanel.panel.database import db
 
 
@@ -6,9 +6,7 @@ from hiddifypanel.panel.database import db
 from hiddifypanel.panel.database import db
 from dateutil import relativedelta
 import datetime
-from hiddifypanel.models import BoolConfig,StrConfig,ConfigEnum,hconfig,Proxy
-from hiddifypanel.models import Domain,DomainType
-from hiddifypanel.models import User
+from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify
 import random
 import uuid
@@ -126,9 +124,37 @@ def _v8():
         "grpc direct trojan",
         "grpc direct vmess"])
     ])
-
+def _v9():
+    try:
+        column_type = User.mode.type.compile(db.engine.dialect)
+        db.engine.execute(f'ALTER TABLE user ADD COLUMN mode {column_type}')
+        column_type = User.comment.type.compile(db.engine.dialect)
+        db.engine.execute(f'ALTER TABLE user ADD COLUMN comment {column_type}')
+        column_type = Domain.alias.type.compile(db.engine.dialect)
+        db.engine.execute(f'ALTER TABLE domain ADD COLUMN alias {column_type}')
+        for u in User.query.all():
+            u.mode= UserMode.monthly if u.monthly else UserMode.no_reset
+    except:
+        pass
+    
+    db.session.bulk_save_objects(
+        [
+            BoolConfig(key=ConfigEnum.is_parent,value=False),
+            StrConfig(key=ConfigEnum.parent_panel,value='')
+        ]
+    )
 def init_db():
     db.create_all()
+    try:
+        column_type = Domain.child_id.type.compile(db.engine.dialect)
+        db.engine.execute(f'ALTER TABLE domain ADD COLUMN child_id {column_type}')
+        column_type = Proxy.child_id.type.compile(db.engine.dialect)
+        db.engine.execute(f'ALTER TABLE proxy ADD COLUMN child_id {column_type}')
+        column_type = BoolConfig.child_id.type.compile(db.engine.dialect)
+        db.engine.execute(f'ALTER TABLE bool_config ADD COLUMN child_id {column_type}')
+        column_type = StrConfig.child_id.type.compile(db.engine.dialect)
+        db.engine.execute(f'ALTER TABLE str_config ADD COLUMN child_id {column_type}')
+    except:pass
     try:
         db.engine.execute('ALTER TABLE user ADD COLUMN monthly BOOLEAN')
         db.engine.execute('ALTER TABLE user RENAME COLUMN monthly_usage_limit_GB TO usage_limit_GB')       
@@ -143,7 +169,7 @@ def init_db():
     db_version=int(hconfig(ConfigEnum.db_version) or 0) 
     print(f"Current DB version is {db_version}")
 
-    db_actions={1:_v1,2:_v2,3:_v3,6:_v6,8:_v8}
+    db_actions={1:_v1,2:_v2,3:_v3,6:_v6,8:_v8,9:_v9}
     for ver,db_action in db_actions.items():
         if ver<=db_version:continue
         print(f"Updating db from version {db_version}")

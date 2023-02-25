@@ -1,0 +1,32 @@
+
+{% block body %}
+
+{% macro admin_btn(child,domain) -%}
+<div class="btn-group">
+    
+    <a href="https://{{domain}}/{{hconfig(ConfigEnum.proxy_path,child.id)}}/{{hconfig(ConfigEnum.admin_secret,child.id)}}/admin/"
+        class="btn btn-primary orig-link">{{_("admin")}} <span class="badge ltr badge-info">{{domain}}</span></a>
+</div>
+{%- endmacro -%}
+
+
+<div class="card card-info">
+    <div class="card-header">
+        <h3 class="card-title">{{_('Childs')}}</h3>
+    </div>
+    <div class="card-body">
+        <table>
+            <tr><th>IP</th><th>{{_("Domain")}}</th></tr>
+
+            %for child in childs
+                <tr><td>{{child.ip}}</td><td>
+                    %for d in child.domain
+                        {{admin_btn(child,d)}} 
+                    %endfor
+                </td></tr>
+            %endfor
+        </table>
+    </div>
+
+</div>
+{% endblock%}

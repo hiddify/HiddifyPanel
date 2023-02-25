@@ -33,6 +33,9 @@ class ConfigCategory(StrEnum):
     hidden=auto()
 
 class ConfigEnum(StrEnum):
+    is_parent=auto()
+    parent_panel=auto()
+    cdn_forced_host=auto() # removed
     lang = auto()
     admin_lang = auto()
     admin_secret = auto()
@@ -88,32 +91,35 @@ class ConfigEnum(StrEnum):
     branding_site=auto()
     branding_freetext=auto()
     not_found=auto()
-    cdn_forced_host=auto()
+    # cdn_forced_host=auto()
     @classmethod
     def _missing_(cls, value):
       return cls.not_found #"key not found"
     def info(self):
         map = {
-            self.cdn_forced_host:{'category': ConfigCategory.proxies,},
-            self.branding_title:{'category': ConfigCategory.branding},
-            self.branding_site:{'category': ConfigCategory.branding},
-            self.branding_freetext:{'category': ConfigCategory.branding},
+            self.is_parent:{'category': ConfigCategory.hidden,'type':bool},
+            self.parent_panel:{'category': ConfigCategory.admin},
+            
+            # self.cdn_forced_host:{'category': ConfigCategory.proxies,},
+            self.branding_title:{'category': ConfigCategory.branding,'show_in_parent':True},
+            self.branding_site:{'category': ConfigCategory.branding,'show_in_parent':True},
+            self.branding_freetext:{'category': ConfigCategory.branding,'show_in_parent':True},
             self.not_found:{'category': ConfigCategory.hidden},
-            self.admin_secret: {'category': ConfigCategory.admin},
-            self.lang: {'category': ConfigCategory.branding},
-            self.admin_lang: {'category': ConfigCategory.admin},
+            self.admin_secret: {'category': ConfigCategory.admin,'show_in_parent':True},
+            self.lang: {'category': ConfigCategory.branding,'show_in_parent':True},
+            self.admin_lang: {'category': ConfigCategory.admin,'show_in_parent':True},
             self.tls_ports: {'category': ConfigCategory.tls,'apply_mode':'apply'},
             self.http_ports: {'category': ConfigCategory.http,'apply_mode':'apply'},
             self.kcp_ports: {'category': ConfigCategory.kcp,'apply_mode':'apply'},
             self.kcp_enable: {'category': ConfigCategory.kcp,'type':bool,'apply_mode':'apply'},
             self.decoy_domain: {'category': ConfigCategory.general,'apply_mode':'apply'},
-            self.proxy_path: {'category': ConfigCategory.general,'apply_mode':'apply'},
+            self.proxy_path: {'category': ConfigCategory.general,'apply_mode':'apply','show_in_parent':True},
             self.firewall: {'category': ConfigCategory.general,'apply_mode':'apply'},
             self.netdata: {'category': ConfigCategory.general,'apply_mode':'apply'},
             self.http_proxy_enable: {'category': ConfigCategory.http,'type':bool},
             self.block_iran_sites: {'category': ConfigCategory.proxies,'type':bool,'apply_mode':'apply'},
             self.allow_invalid_sni: {'category': ConfigCategory.tls,'type':bool,'apply_mode':'apply'},
-            self.auto_update: {'category': ConfigCategory.general,'type':bool,'apply_mode':'apply'},
+            self.auto_update: {'category': ConfigCategory.general,'type':bool,'apply_mode':'apply','show_in_parent':True},
             self.speed_test: {'category': ConfigCategory.general,'type':bool,'apply_mode':'apply'},
             self.only_ipv4: {'category': ConfigCategory.general,'type':bool,'apply_mode':'apply'},
             self.torrent_block: {'category': ConfigCategory.general,'type':bool,'apply_mode':'apply'},
@@ -160,121 +166,6 @@ class ConfigEnum(StrEnum):
     def apply_mode(self):
         info=self.info()
         return info['apply_mode'] if 'apply_mode' in info else ''
-
-class DomainType(StrEnum):
-    direct = auto()
-    cdn = auto()
-    relay = auto()
-    fake = auto()
-    # fake_cdn = "fake_cdn"
-    # telegram_faketls = "telegram_faketls"
-    # ss_faketls = "ss_faketls"
-
-
-ShowDomain = db.Table('show_domain',
-    db.Column('domain_id', db.Integer, db.ForeignKey('domain.id'), primary_key=True),
-    db.Column('related_id', db.Integer, db.ForeignKey('domain.id'), primary_key=True)
-)
-
-class Domain(db.Model, SerializerMixin):
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    domain = db.Column(db.String(200), nullable=False, unique=True)
-    mode = db.Column(db.Enum(DomainType), nullable=False)
-    cdn_ip = db.Column(db.String(200), nullable=True)
-    # show_all=db.Column(db.Boolean, nullable=True)
-    show_domains = db.relationship('Domain', secondary=ShowDomain,
-                                primaryjoin=id==ShowDomain.c.domain_id,
-                                secondaryjoin=id==ShowDomain.c.related_id, 
-                                # backref=backref('show_domains', lazy='dynamic')
-                                )
-    def __repr__(self):
-        return f'{self.domain}'
-
-
-
-class Proxy(db.Model, SerializerMixin):
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    name = db.Column(db.String(200), nullable=False, unique=True)
-    enable = db.Column(db.Boolean, nullable=False)
-    proto = db.Column(db.String(200), nullable=False)
-    l3 = db.Column(db.String(200), nullable=False)
-    transport = db.Column(db.String(200), nullable=False)
-    cdn = db.Column(db.String(200), nullable=False)
-
-
-class User(db.Model, SerializerMixin):
-
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    uuid = db.Column(db.String(36), default=lambda: str(
-        uuid_mod.uuid4()), nullable=False, unique=True)
-    # uuid = db.Column(db.UUID(binary=False),default=uuid.uuid4,unique=True,nullable=False)
-    name = db.Column(db.String(512), nullable=False)
-    # monthly_usage_limit=db.Column(db.BigInteger,default=100,nullable=False)
-    # current_usage=db.Column(db.BigInteger,default=0,nullable=False)
-    expiry_time = db.Column(db.Date, default=datetime.date.today() + relativedelta.relativedelta(months=6))
-    usage_limit_GB = db.Column(db.Numeric(
-        6, 9, asdecimal=False), default=1000, nullable=False)
-    monthly=db.Column(db.Boolean,default=False)
-    current_usage_GB = db.Column(db.Numeric(
-        6, 9, asdecimal=False), default=0, nullable=False)
-
-    last_reset_time = db.Column(db.Date, default=datetime.date.today())
-
-
-class BoolConfig(db.Model, SerializerMixin):
-    # category = db.Column(db.String(128), primary_key=True)
-    key = db.Column(db.Enum(ConfigEnum), primary_key=True)
-    value = db.Column(db.Boolean)
-
-
-class StrConfig(db.Model, SerializerMixin):
-    # category = db.Column(db.String(128), primary_key=True)
-    key = db.Column(db.Enum(ConfigEnum), primary_key=True,   default=ConfigEnum.admin_secret)
-    value = db.Column(db.String(2048))
-
-
-def hdomains(mode):
-    domains = Domain.query.filter(Domain.mode == mode).all()
-    if domains:
-        return [d.domain for d in domains]
-    return []
-
-
-def hdomain(mode):
-    domains = hdomains(mode)
-    if domains:
-        return domains[0]
-    return None
-
-
-def get_hdomains():
-    return {mode: hdomains(mode) for mode in DomainType}
-
-
-def hconfig(key: ConfigEnum):
-    try:
-        str_conf = StrConfig.query.filter(StrConfig.key == key).first()
-        if str_conf:
-            return str_conf.value
-        bool_conf = BoolConfig.query.filter(BoolConfig.key == key).first()
-        if bool_conf:
-            return bool_conf.value
-        # if key == ConfigEnum.ssfaketls_fakedomain:
-        #     return hdomain(DomainType.ss_faketls)
-        # if key == ConfigEnum.telegram_fakedomain:
-        #     return hdomain(DomainType.telegram_faketls)
-        # if key == ConfigEnum.fake_cdn_domain:
-        #     return hdomain(DomainType.fake_cdn)
-    except:
-        print(f'{key} error!')
-
-    return None
-
-
-def get_hconfigs():
-    return {**{u.key: u.value for u in BoolConfig.query.all()},
-            **{u.key: u.value for u in StrConfig.query.all()},
-            # ConfigEnum.telegram_fakedomain:hdomain(DomainType.telegram_faketls),
-            # ConfigEnum.ssfaketls_fakedomain:hdomain(DomainType.ss_faketls),
-            # ConfigEnum.fake_cdn_domain:hdomain(DomainType.fake_cdn)
-            }
+    def show_in_parent(self):
+        info=self.info()
+        return info['show_in_parent'] if 'show_in_parent' in info else False

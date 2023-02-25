@@ -17,12 +17,14 @@
   <div class="navbar-nav">
   <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i> <span class="brand-text font-weight-light">{{_("master.page-title")}} <span class="badge d-none d-sm-flex">{{version}}</span></a>
   </div>
+  % if not hconfig(ConfigEnum.is_parent):
+        
   <ul class="navbar-nav ml-auto">
     <a class="nav-link btn btn-outline-secondary form_post" href="{{url_for('admin.Actions:apply_configs')}}">
       {{icon('solid','bolt','nav-icon')}} {{_('admin.Actions:apply_configs')}}
-  </a>
-  
+    </a>  
   </ul>
+  %endif
 </nav>
 <!-- /.navbar -->
 
@@ -51,15 +53,23 @@
                  with font-awesome or any other icon font library -->
                  {{ render_nav_item('admin.Dashboard:index', icon('solid','house','nav-icon')+_('admin.menu.home')) }}
               
-                 
+                % if hconfig(ConfigEnum.is_parent)
+                {{ render_nav_item(hconfig(ConfigEnum.parent_panel)+"/user/", icon('solid','user','nav-icon')+_('admin.menu.user')) }}
+                %else
                 {{ render_nav_item('flask.user.index_view', icon('solid','user','nav-icon')+_('admin.menu.user')) }}
+                %endif
+                % if not hconfig(ConfigEnum.is_parent)
                  {{ render_nav_item('flask.domain.index_view', icon('solid','link','nav-icon')+_('admin.menu.domain')) }}
                  {{ render_nav_item('admin.ProxyAdmin:index', icon('solid','arrow-down-up-lock','nav-icon')+_('admin.menu.proxy')) }}
+                 %endif
+                 % if hconfig(ConfigEnum.is_parent)
+                  {{ render_nav_item('admin.DoaminParent:index', icon('solid','arrow-down-up-lock','nav-icon')+_('admin.menu.domain')) }}
+                 %endif
                  {{ render_nav_item('admin.SettingAdmin:index',icon('solid','gear','nav-icon')+ _('admin.menu.config')) }}
 
 
 
-          
+          % if not hconfig(ConfigEnum.is_parent)
           {% set action_active = True if request.endpoint and "Actions:" in request.endpoint else False %}
 
           <li class="nav-item {{'menu-open' if action_active else ''}}">
@@ -76,6 +86,7 @@
               <!-- {{ render_nav_item('admin.Actions:update_usage', icon('solid','charging-station','nav-icon')+_('User usage update'), _use_li=True) }} -->
             </ul>
           </li>
+          %endif
           {{ render_nav_item('admin.Backup:index',icon('solid','floppy-disk','nav-icon')+ _('Backup'), _use_li=True) }}
           
           <a href="https://github.com/hiddify/hiddify-config/issues" target="_blank"

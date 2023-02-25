@@ -51,9 +51,14 @@ class SettingAdmin(FlaskView):
                             else:
                                 if "_domain" in k or k in [ConfigEnum.admin_secret]:
                                     v=v.lower()
+                                if k == ConfigEnum.parent_panel:
+                                    v=(v+"/").replace("/admin",'').replace('//','/')
+                                    if not hiddify.register_to_parent_panel(v):
+                                        raise ValidationError(_("Can not connect to parent panel!"))
                                 StrConfig.query.filter(StrConfig.key==k).first().value=v
-                    
+
                 # print(cat,vs)
+
             db.session.commit()
             from flask_babel import refresh; refresh()
             
@@ -112,11 +117,11 @@ def get_config_form():
     # categories=sorted([ c for c in {c.key.category():1 for c in configs}])
     # dict_configs={cat:[c for c in configs if c.category==cat] for cat in categories}
     class DynamicForm(FlaskForm):pass
-
+    is_parent=hconfig(ConfigEnum.is_parent)
     for cat in ConfigCategory:
         if cat=='hidden':continue
 
-        cat_configs=[c for c in configs if c.key.category()==cat]
+        cat_configs=[c for c in configs if c.key.category()==cat and (not is_parent or c.show_in_parent())]
         if len(cat_configs)==0:continue
         
         class CategoryForm(FlaskForm):
@@ -150,8 +155,10 @@ def get_config_form():
                         validators.append(wtf.validators.NoneOf([cc.value.lower() for cc in StrConfig.query.all() if cc.key!=c.key and  "fakedomain" in cc.key and cc.key!=ConfigEnum.decoy_domain],_("config.Domain already used")))
                     render_kw['required']=""
                 
+                if c.key ==ConfigEnum.parent_panel:
+                    validators.append(wtf.validators.Regexp("()|(http(s|)://([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})/.*)",re.IGNORECASE,_("Invalid admin link")))
 
-                if c.key==ConfigEnum.branding_site:
+                if c.key==ConfigEnum.branding_site :
                     validators.append(wtf.validators.Regexp("()|(http(s|)://([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})/?.*)",re.IGNORECASE,_("config.Invalid brand link")))
                     # render_kw['required']=""
 

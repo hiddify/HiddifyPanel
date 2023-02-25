@@ -1,6 +1,6 @@
 from flask_admin.contrib import sqla
 from hiddifypanel.panel.database import db
-from hiddifypanel.models import  User,Domain,DomainType,StrConfig,ConfigEnum,hconfig
+from hiddifypanel.models import  *
 from flask import Markup,g
 from wtforms.validators import Regexp,ValidationError
 import re,uuid
@@ -16,7 +16,7 @@ from flask_bootstrap import SwitchField
 class UserAdmin(AdminLTEModelView):
     
     list_template = 'model/user_list.html'    
-    # form_excluded_columns=['last_reset_time']
+    form_excluded_columns=['monthly']
     # edit_modal=True
     # create_modal=True
     # column_display_pk = True
@@ -46,10 +46,12 @@ class UserAdmin(AdminLTEModelView):
         "UserLinks":_("user.user_links"),
         "usage_limit_GB":_("user.usage_limit_GB"),
         "monthly":_("Reset every month"),
+        "mode":_("Define the user mode. Should the usage reset every month?"),
         "current_usage_GB":_("user.current_usage_GB"),
         "expiry_time":_("user.expiry_time"),
         # "last_reset_time":_("user.last_reset_time"),
         "uuid":_("user.UUID"),
+        "comment":_("Add some text that is only visible to you."),
      }
     column_searchable_list=[("uuid"),"name"]
     def search_placeholder(self):
@@ -68,7 +70,7 @@ class UserAdmin(AdminLTEModelView):
     #     'uuid': {'label_name':"D"}
         
     #     }
-    column_list = ["name","UserLinks","current_usage_GB","usage_limit_GB",'monthly',"expiry_time","uuid",]
+    column_list = ["name","UserLinks","current_usage_GB","usage_limit_GB",'mode',"expiry_time","comment","uuid"]
     # can_edit = False
     # def on_model_change(self, form, model, is_created):
     #     model.password = generate_password_hash(model.password)
@@ -76,15 +78,22 @@ class UserAdmin(AdminLTEModelView):
     
     def _name_formatter(view, context, model, name):
         proxy_path=hconfig(ConfigEnum.proxy_path)
-        d=Domain.query.filter(Domain.mode!=DomainType.fake).first()
+        if hconfig(ConfigEnum.is_parent):
+            d=ParentDomain.query.first()
+        else:
+            d=Domain.query.filter(Domain.mode!=DomainType.fake).first()
         if d:
             link=f"<a target='_blank' href='https://{d.domain}/{proxy_path}/{model.uuid}/new'><i class='fa-solid fa-arrow-up-right-from-square'></i> {model.name}</a>"
             return Markup(link)
         else:
             return model.name
     def _ul_formatter(view, context, model, name):
-        
-        return Markup(" ".join([hiddify.get_user_link(model.uuid,d,'new') for d in Domain.query.filter(Domain.mode!=DomainType.fake).all()]))
+        if hconfig(ConfigEnum.is_parent):
+            domains=ParentDomain.query.all()
+        else:    
+            domains=Domain.query.filter(Domain.mode!=DomainType.fake).all()
+        return Markup(" ".join([hiddify.get_user_link(model.uuid,d,'new') for d in domains]))
+    
     def _uuid_formatter(view, context, model, name):
         return Markup(f"<span>{model.uuid}</span>")
     def _usage_formatter(view, context, model, name):

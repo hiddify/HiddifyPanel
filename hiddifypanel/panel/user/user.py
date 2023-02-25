@@ -2,7 +2,7 @@ from flask import abort, render_template,request,Response,g
 from wtforms.validators import Regexp,ValidationError
 import urllib,uuid
 import datetime
-from hiddifypanel.models import User,Domain,BoolConfig,StrConfig,DomainType,ConfigEnum,get_hconfigs,get_hdomains
+from hiddifypanel.models import *
 from hiddifypanel.panel.hiddify  import auth
 from . import link_maker
 from flask_classful import FlaskView,route
@@ -93,10 +93,13 @@ def do_base_64(str):
     
 def get_common_data(user_uuid,mode):
     domain=urlparse(request.base_url).hostname
-    db_domain=Domain.query.filter(Domain.domain==domain).first()
-    if not db_domain:
-        db_domain=Domain(domain=domain,mode=DomainType.direct,cdn_ip='',show_domains=[])
-        
+    if hconfig(ConfigEnum.is_parent):
+        db_domain=ParentDomain.query.filter(ParentDomain.domain==domain).first() or ParentDomain(domain=domain,show_domains=[])
+    else:
+        db_domain=Domain.query.filter(Domain.domain==domain).first() or Domain(domain=domain,mode=DomainType.direct,cdn_ip='',show_domains=[])
+
+    
+
     if mode =='multi':
         domains=Domain.query.all()
     elif mode =='new':
@@ -122,8 +125,15 @@ def get_common_data(user_uuid,mode):
     if user is None:
         abort(401,"Invalid User")
     
+
+
     
-    
+    package_mode_dic={
+        UserMode.daily:1,
+        UserMode.weekly:7,
+        UserMode.monthly:30
+
+    }
     
     return {
         # 'direct_host':direct_host,
@@ -135,7 +145,7 @@ def get_common_data(user_uuid,mode):
         'usage_current_b':int(user.current_usage_GB*1024*1024*1024),
         'expire_s':int((user.expiry_time-datetime.date(1970, 1, 1)).total_seconds()),
         'expire_days':(user.expiry_time-datetime.date.today()).days,
-        'reset_day':30-(datetime.date.today()-user.last_reset_time).days,
+        'reset_day':package_mode_dic.get(user.mode,1000)-(datetime.date.today()-user.last_reset_time).days,
         'hconfigs':get_hconfigs(),
         'hdomains':get_hdomains(),
         'ConfigEnum':ConfigEnum,

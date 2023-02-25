@@ -11,6 +11,7 @@ import urllib.request
 import subprocess
 import re
 from hiddifypanel.panel import hiddify
+from hiddifypanel.panel import hiddify_api
 from flask import current_app,render_template,request,Response,Markup,url_for
 from hiddifypanel.panel.hiddify import flash
 
@@ -61,6 +62,14 @@ class Actions(FlaskView):
     
     @route('reinstall', methods=['POST'])
     def reinstall(self,complete_install=True,domain_changed=False):
+
+        if hconfig(ConfigEnum.parent_panel):
+            try:
+                hiddify_api.sync_child_to_parent()
+            except e as Exception:
+                flash (_('can not sync child with parent panel')+" "+e)
+
+
         domain_changed=request.args.get("domain_changed",str(domain_changed)).lower()=="true"
         complete_install=request.args.get("complete_install",str(complete_install)).lower()=="true"
         if domain_changed:

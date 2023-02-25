@@ -103,21 +103,29 @@ def domain_dict(d):
     return {
             'domain':d.domain,
             'mode':d.mode,
+            'child_ip':d.child.ip if d.child else '',
             'cdn_ip':d.cdn_ip,
             'show_domains':[dd.domain for dd in d.show_domains]
         }
 
-def all_configs():
-    configs={
-        "users": [u.to_dict() for u in User.query.filter((User.usage_limit_GB>User.current_usage_GB)).filter(User.expiry_time>=datetime.date.today()).all()],
-        "domains": [domain_dict(u) for u in Domain.query.all()],
-        "hconfigs": get_hconfigs()
+def proxy_dict(d):
+    return {
+            'name':d.name,
+            'enable':d.enable,
+            'proto':d.proto,
+            'l3':d.l3,
+            'transport':d.transport,
+            'cdn':d.cdn,
+            'child_ip':d.child.ip if d.child else ''
         }
-    for d in configs['domains']:
-        d['domain']=d['domain'].lower()
-        # del d['domain']['show_domains']
 
-    return configs
+def config_dict(d):
+    return {
+            'key':d.key,
+            'value':d.value,
+            'child_ip':d.child.ip if d.child else ''
+        }
+
     
 
 def get_ip(version,retry=3):
@@ -155,10 +163,14 @@ def get_available_proxies():
     return proxies
 
 def quick_apply_users():
+    if hconfig(ConfigEnum.is_parent):
+        return
     exec_command("/opt/hiddify-config/install.sh apply_users &")
 
 
 def flash_config_success(restart_mode='',domain_changed=True):
+    if hconfig(ConfigEnum.is_parent):
+        return
     if restart_mode:
         url=url_for('admin.Actions:reinstall',complete_install=restart_mode=='reinstall',domain_changed=domain_changed)
         apply_btn=f"<a href='{url}' class='btn btn-primary form_post'>"+_("admin.config.apply_configs")+"</a>"
@@ -235,3 +247,111 @@ def check_need_reset(old_configs):
     
     flash_config_success(restart_mode=restart_mode,domain_changed=False)
     
+
+
+def register_to_parent_panel(parent_link,retry=3):
+    try:
+        urllib.request.urlopen(f'{parent_link}/api/register_child/').read().decode('utf8')
+        return True
+    except:
+        if retry==0:
+            return False
+        return register_child(version,retry=retry-1)
+
+
+
+
+def dump_db_to_dict():
+    return {"users": [u.to_dict() for u in User.query.all()],
+            "domains": [hiddify.domain_dict(u) for u in Domain.query.all()],
+            "proxies": [hiddify.proxy_dict(u) for u in Proxy.query.all()],
+            "parent_domains": [u.to_dict() for u in ParentDomain.query.all()],
+            "hconfigs": [*[hiddify.config_dict(u) for u in BoolConfig.query.all()],
+                         *[hiddify.config_dict(u) for u in StrConfig.query.all()]]
+            }
+
+
+def set_db_from_json(json_data,override_child=False,override_child_id=None,set_users=True,set_domains=True,set_proxies=True,set_settings=True,remove_domains=False,remove_users=False):
+    def get_child(dic):
+        if override_child:
+            return override_child_id
+        if 'child_ip' in dic:
+            child=Child.query.filter(Child.ip==dic['child_ip']).first()
+        if child:
+            return child.id
+        return None
+
+    new_rows=[]                            
+    if set_users:
+        for user in json_data['users']:
+            print(user)
+            dbuser=User.query.filter(User.uuid==user['uuid']).first()
+            
+            if not dbuser:
+                dbuser=User()
+                dbuser.uuid=user['uuid']
+                new_rows.append(dbuser)
+            
+            dbuser.current_usage_GB=user['current_usage_GB']
+            dbuser.expiry_time=datetime.strptime(user['expiry_time'],'%Y-%m-%d')
+            dbuser.last_reset_time=datetime.strptime(user['last_reset_time'],'%Y-%m-%d')
+            dbuser.usage_limit_GB=user['usage_limit_GB']
+            dbuser.name=user['name']
+            dbuser.comment=user['comment']
+            dbuser.mode=user['mode']              
+    if remove_users:
+        dd={u.uuid:1 for u in json_data['users']}
+        for d in User.query.all():
+            if d.uuid not in dd:
+                db.session.delete(d)
+    
+    if set_domains:
+        for domain in json_data['domains']:
+            dbdomain=Domain.query.filter(Domain.domain==domain['domain']).first()
+            if not dbdomain:
+                dbdomain=Domain(domain=domain['domain'])
+                new_rows.append(dbdomain)
+            domain.child_id =get_child(domain)
+            
+            dbdomain.mode=domain['mode']
+            dbdomain.cdn_ip=domain.get('cdn_ip','')
+            show_domains=domain.get('show_domains',[])
+            dbdomain.show_domains=Domain.query.filter(Domain.domain.in_(show_domains)).all()
+    if remove_domains and override_child and override_child_id:
+        dd={d.domain:1 for d in json_data['domains']}
+        for d in Domain.query.filter(Domain.child_id==override_child_id):
+            if d.domain not in dd:
+                db.session.delete(d)
+    if set_settings:
+        for config in json_data["hconfigs"]:
+            c=config['key']
+            v=config['value']
+            child_id=get_child(config)
+            ckey=ConfigEnum(c)
+
+            if ckey==ConfigEnum.db_version:continue
+            if ckey.type()==bool:
+                dbconf=BoolConfig.query.filter(BoolConfig.key==ckey and BoolConfig.child_id==child_id).first()
+                if not dbconf:
+                    dbconf=BoolConfig(key=ckey,child_id=child_id)
+                    new_rows.append(dbconf)
+            else:
+                dbconf=StrConfig.query.filter(StrConfig.key==ckey).first()
+                if not dbconf:
+                    dbconf=StrConfig(key=ckey,child_id=child_id)
+                    new_rows.append(dbconf)
+
+        dbconf.value=v
+        for proxy in json_data["proxies"]:
+            dbproxy=Proxy.query.filter(Proxy.name==proxy['name']).first()
+            if not dbproxy:
+                dbproxy=Proxy()
+                new_rows.append(dbproxy)
+            dbproxy.enable=proxy['enable']
+            dbproxy.proto=proxy['proto']
+            dbproxy.transport=proxy['transport']
+            dbproxy.cdn=proxy['cdn']
+            dbproxy.l3=proxy['l3']
+            dbproxy.child_id=get_child(proxy)
+    db.session.bulk_save_objects(new_rows)
+    db.session.commit()

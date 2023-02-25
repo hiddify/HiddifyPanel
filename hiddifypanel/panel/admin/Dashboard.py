@@ -4,10 +4,13 @@ from flask import render_template,url_for,Markup
 from flask_babelex import lazy_gettext as _
 from hiddifypanel.panel import hiddify
 from flask_classful import FlaskView
-from hiddifypanel.models import  User,Domain,DomainType,StrConfig,ConfigEnum,hconfig
+from hiddifypanel.models import *
 from hiddifypanel.panel.hiddify import flash
 class Dashboard(FlaskView):
     def index(self):
+            if hconfig(ConfigEnum.is_parent):
+                childs=Child.query.all()
+                return render_template('parent_dash.html')
         # try:
             def_user=None if len(User.query.all())>1 else User.query.filter(User.name=='default').first()
             domains=Domain.query.all()

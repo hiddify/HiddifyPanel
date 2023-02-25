@@ -1,11 +1,13 @@
 from flask import g,jsonify,abort,render_template,request
-from hiddifypanel.models import User,Domain,BoolConfig,StrConfig,hconfig,ConfigEnum
+from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify
 import uuid
 from flask import g,send_from_directory,url_for
 import traceback
 def init_app(app):    
     app.jinja_env.globals['ConfigEnum'] = ConfigEnum
+    app.jinja_env.globals['DomainType'] = DomainType
+    app.jinja_env.globals['UserMode'] = UserMode
     app.jinja_env.globals['hconfig'] = hconfig
     
     
