@@ -87,6 +87,18 @@ def init_app(app):
         return "success"
 
     @app.cli.command()
+    @click.option("--key", "-k")
+    @click.option("--val", "-v")
+    def set_setting(key,val):
+        c=ConfigEnum(key)
+        if c.type()==bool:
+            BoolConfig.query.filter(BoolConfig.key == c).update({'value': val})
+        else:
+            StrConfig.query.filter(StrConfig.key == c).update({'value': val})
+        db.session.commit()
+        return "success"
+
+    @app.cli.command()
     @click.option("--config", "-c")
     def import_config(config):
         next10year = datetime.date.today() + relativedelta.relativedelta(years=10)

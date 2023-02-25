@@ -100,7 +100,7 @@ class ConfigEnum(StrEnum):
             self.is_parent:{'category': ConfigCategory.hidden,'type':bool},
             self.parent_panel:{'category': ConfigCategory.admin},
             
-            # self.cdn_forced_host:{'category': ConfigCategory.proxies,},
+            self.cdn_forced_host:{'category': ConfigCategory.hidden,},
             self.branding_title:{'category': ConfigCategory.branding,'show_in_parent':True},
             self.branding_site:{'category': ConfigCategory.branding,'show_in_parent':True},
             self.branding_freetext:{'category': ConfigCategory.branding,'show_in_parent':True},

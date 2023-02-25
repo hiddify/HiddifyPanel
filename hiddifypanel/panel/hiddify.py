@@ -4,7 +4,7 @@ to_gig_d = 1000*1000*1000
 import datetime
 
 from hiddifypanel.panel.database import db
-from hiddifypanel.models import StrConfig,BoolConfig,User,Domain,get_hconfigs,Proxy,hconfig,ConfigEnum,DomainType
+from hiddifypanel.models import *
 import urllib
 from flask_babelex import lazy_gettext as _
 from flask_babelex import gettext as __
@@ -263,11 +263,11 @@ def register_to_parent_panel(parent_link,retry=3):
 
 def dump_db_to_dict():
     return {"users": [u.to_dict() for u in User.query.all()],
-            "domains": [hiddify.domain_dict(u) for u in Domain.query.all()],
-            "proxies": [hiddify.proxy_dict(u) for u in Proxy.query.all()],
+            "domains": [domain_dict(u) for u in Domain.query.all()],
+            "proxies": [proxy_dict(u) for u in Proxy.query.all()],
             "parent_domains": [u.to_dict() for u in ParentDomain.query.all()],
-            "hconfigs": [*[hiddify.config_dict(u) for u in BoolConfig.query.all()],
-                         *[hiddify.config_dict(u) for u in StrConfig.query.all()]]
+            "hconfigs": [*[config_dict(u) for u in BoolConfig.query.all()],
+                         *[config_dict(u) for u in StrConfig.query.all()]]
             }
 
 

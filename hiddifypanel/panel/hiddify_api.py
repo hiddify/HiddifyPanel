@@ -53,11 +53,11 @@ def send_to_panel(url,method="GET",data=None):
     http = requests.Session()
     http.mount("https://", adapter)
     http.mount("http://", adapter)
-
+    
     headers = {'Content-Type': 'application/json'}
     if method=="GET":
-        response = http.get(link,params=data,headers=headers)
+        response = http.get(url,params=data,headers=headers)
     if method == "PUT":
-        response = http.put(link,json=data,headers=headers)
+        response = http.put(url,json=data,headers=headers)
 
     return response

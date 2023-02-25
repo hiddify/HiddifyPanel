@@ -12,11 +12,11 @@ from flask_admin.base import expose
 import re
 from flask import render_template,current_app, Markup,url_for
 from hiddifypanel.panel.hiddify import flash
-from hiddifypanel.models import  User,Domain,DomainType,StrConfig,ConfigEnum,get_hconfigs
+from hiddifypanel.models import  *
 from hiddifypanel.panel.database import db
 from wtforms.fields import *
 from flask_classful import FlaskView
-from hiddifypanel.panel import hiddify
+from hiddifypanel.panel import hiddify,hiddify_api
 class SettingAdmin(FlaskView):
     
 
@@ -52,9 +52,9 @@ class SettingAdmin(FlaskView):
                                 if "_domain" in k or k in [ConfigEnum.admin_secret]:
                                     v=v.lower()
                                 if k == ConfigEnum.parent_panel:
-                                    v=(v+"/").replace("/admin",'').replace('//','/')
-                                    if not hiddify.register_to_parent_panel(v):
-                                        raise ValidationError(_("Can not connect to parent panel!"))
+                                    v=(v+"/").replace("/admin",'')
+                                    hiddify_api.sync_child_to_parent(v)
+                                        # raise ValidationError(_("Can not connect to parent panel!"))
                                 StrConfig.query.filter(StrConfig.key==k).first().value=v
 
                 # print(cat,vs)
