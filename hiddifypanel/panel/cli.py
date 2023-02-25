@@ -90,12 +90,7 @@ def init_app(app):
     @click.option("--key", "-k")
     @click.option("--val", "-v")
     def set_setting(key,val):
-        c=ConfigEnum(key)
-        if c.type()==bool:
-            BoolConfig.query.filter(BoolConfig.key == c).update({'value': val.lower()=="true"})
-        else:
-            StrConfig.query.filter(StrConfig.key == c).update({'value': val})
-        db.session.commit()
+        hiddify.set_db_from_json({'hconfigs':[{'key':key,'value':val}]})
         return "success"
 
     @app.cli.command()
