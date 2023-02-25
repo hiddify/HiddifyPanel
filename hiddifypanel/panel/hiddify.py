@@ -201,6 +201,25 @@ def get_domain_ip(domain):
 
 
 
+def check_connection_for_domain(domain):
+    import requests
+    proxy_path=hconfig(ConfigEnum.proxy_path)
+    admin_secret=hconfig(ConfigEnum.admin_secret)        
+    path=f"{proxy_path}/{admin_secret}/api/v1/hello/"
+    try:
+        print(f"https://{domain}/{path}")
+        res=requests.get(f"https://{domain}/{path}",verify=False, timeout=2).json()
+        return res['status']==200
+        
+    except:
+        try:
+            print(f"http://{get_domain_ip(domain)}/{path}")
+            res=requests.get(f"http://{get_domain_ip(domain)}/{path}",verify=False, timeout=2).json()
+            return res['status']==200
+        except:
+            return False
+    return True
+
 def get_user_link(uuid,domain,mode=''):
         proxy_path=hconfig(ConfigEnum.proxy_path)
         res=""
@@ -357,6 +376,7 @@ def set_db_from_json(json_data,override_child=False,override_child_id=None,set_u
                 dbproxy=Proxy()
                 new_rows.append(dbproxy)
             dbproxy.enable=proxy['enable']
+            dbproxy.name=proxy['name']
             dbproxy.proto=proxy['proto']
             dbproxy.transport=proxy['transport']
             dbproxy.cdn=proxy['cdn']

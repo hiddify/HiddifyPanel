@@ -49,6 +49,6 @@ class StrConfigResource(Resource):
 
 class HelloResource(Resource):
     def get(self):
-        return jsonify({"ok": True})
+        return jsonify({"status": 200,"msg":"ok"})
 
 

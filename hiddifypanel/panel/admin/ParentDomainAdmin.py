@@ -106,7 +106,9 @@ class ParentDomainAdmin(AdminLTEModelView):
         if dip == None:
             raise ValidationError(
                 _("Domain can not be resolved! there is a problem in your domain"))
-
+        if not hiddify.check_connection_for_domain(model.domain):
+            raise ValidationError(
+                _("Domain is not correctly mapped to this server!"))
         print(model.show_domains)
         if len(model.show_domains)==Domain.query.count():
             model.show_domains=[]
