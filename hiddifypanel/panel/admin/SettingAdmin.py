@@ -52,8 +52,10 @@ class SettingAdmin(FlaskView):
                             else:
                                 if "_domain" in k or k in [ConfigEnum.admin_secret]:
                                     v=v.lower()
-                                if k == ConfigEnum.parent_panel:
-                                    v=(v+"/").replace("/admin",'')
+                                if k == ConfigEnum.parent_panel and v!='':
+                                    # v=(v+"/").replace("/admin",'')
+                                    v=re.sub("/admin/.*","",v)
+
                                     try:
                                         if hiddify_api.sync_child_to_parent(v)['status']!=200:
                                             flash(_("Can not connect to parent panel!"),'error')

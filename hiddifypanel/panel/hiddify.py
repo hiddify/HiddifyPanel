@@ -212,7 +212,9 @@ def get_user_link(uuid,domain,mode=''):
         if mode=='new':
             link=f"{link}new"
         text= domain.domain
-        if domain.mode==DomainType.cdn:
+        
+
+        if hasattr(domain, 'mode') and domain.mode==DomainType.cdn:
             text=f'<span class="badge badge-success" >{_("domain.cdn")}</span>'+text
         
         if mode=="multi":
@@ -288,7 +290,7 @@ def set_db_from_json(json_data,override_child=False,override_child_id=None,set_u
         return None
 
     new_rows=[]                            
-    if set_users:
+    if set_users and 'users' in json_data:
         for user in json_data['users']:
             print(user)
             dbuser=User.query.filter(User.uuid==user['uuid']).first()
@@ -305,13 +307,13 @@ def set_db_from_json(json_data,override_child=False,override_child_id=None,set_u
             dbuser.name=user['name']
             dbuser.comment=user['comment']
             dbuser.mode=user['mode']              
-    if remove_users:
+    if remove_users  and 'users' in json_data:
         dd={u.uuid:1 for u in json_data['users']}
         for d in User.query.all():
             if d.uuid not in dd:
                 db.session.delete(d)
     
-    if set_domains:
+    if set_domains  and 'domain' in json_data:
         for domain in json_data['domains']:
             dbdomain=Domain.query.filter(Domain.domain==domain['domain']).first()
             if not dbdomain:
@@ -323,12 +325,12 @@ def set_db_from_json(json_data,override_child=False,override_child_id=None,set_u
             dbdomain.cdn_ip=domain.get('cdn_ip','')
             show_domains=domain.get('show_domains',[])
             dbdomain.show_domains=Domain.query.filter(Domain.domain.in_(show_domains)).all()
-    if remove_domains and override_child and override_child_id:
+    if remove_domains and override_child and override_child_id and 'domain' in json_data:
         dd={d.domain:1 for d in json_data['domains']}
         for d in Domain.query.filter(Domain.child_id==override_child_id):
             if d.domain not in dd:
                 db.session.delete(d)
-    if set_settings:
+    if set_settings and 'hconfigs' in json_data:
         for config in json_data["hconfigs"]:
             c=config['key']
             v=config['value']
@@ -348,7 +350,8 @@ def set_db_from_json(json_data,override_child=False,override_child_id=None,set_u
                     new_rows.append(dbconf)
 
         dbconf.value=v
-        for proxy in json_data["proxies"]:
+        if 'proxies' in json_data:
+         for proxy in json_data["proxies"]:
             dbproxy=Proxy.query.filter(Proxy.name==proxy['name']).first()
             if not dbproxy:
                 dbproxy=Proxy()

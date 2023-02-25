@@ -26,7 +26,7 @@ class SyncChildResource(Resource):
             db.session.commit()
             child=Child.query.filter(Child.ip==child_ip).first()
         
-        hiddify.set_db_from_json(json_data,override_child=True,override_child_id=child.child_id,set_users=first_setup,remove_domains=True)
+        hiddify.set_db_from_json(panel_data,override_child=True,override_child_id=child.id,set_users=first_setup,remove_domains=True)
 
         return {'status':200,"msg":"ok"}
 
