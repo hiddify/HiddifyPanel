@@ -3,9 +3,8 @@ import click
 
 from hiddifypanel.panel.database import db
 from hiddifypanel.panel.init_db import init_db
-from hiddifypanel.models import BoolConfig,StrConfig,ConfigEnum,hconfig,Proxy
-from hiddifypanel.models import Domain,DomainType
-from hiddifypanel.models import User
+from hiddifypanel.models import *
+
 from hiddifypanel.panel import hiddify
 import random
 import uuid

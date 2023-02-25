@@ -74,9 +74,9 @@ def hconfig(key: ConfigEnum,child_id=None):
     return None
 
 
-def get_hconfigs():
-    return {**{u.key: u.value for u in BoolConfig.query.all()},
-            **{u.key: u.value for u in StrConfig.query.all()},
+def get_hconfigs(child_id=None):
+    return {**{u.key: u.value for u in BoolConfig.query.filter(StrConfig.child_id==child_id).all()},
+            **{u.key: u.value for u in StrConfig.query.filter(StrConfig.child_id==child_id).all()},
             # ConfigEnum.telegram_fakedomain:hdomain(DomainType.telegram_faketls),
             # ConfigEnum.ssfaketls_fakedomain:hdomain(DomainType.ss_faketls),
             # ConfigEnum.fake_cdn_domain:hdomain(DomainType.fake_cdn)
