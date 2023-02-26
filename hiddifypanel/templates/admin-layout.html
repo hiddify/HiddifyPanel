@@ -9,7 +9,7 @@
 {% block nav_bar %}
 {% include "donation.html" %}
 <!-- Navbar -->
-<nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
+<nav class="main-header navbar navbar-expand {{"navbar-dark" if hconfig(ConfigEnum.is_parent) else "bg-white navbar-light"}} border-bottom">
   <!-- Left navbar links -->
 
 
@@ -42,7 +42,7 @@
     <img src="{{url_for('static',filename='images/hiddify.png')}}" alt="AdminLTE Logo"
       class="brand-image img-circle elevation-3" style="opacity: .8">
     <span class="brand-text font-weight-light">{{_("master.page-title")}}</span> <span class="badge">{{version}}</span>
-    % if hconfig(ConfigEnum.is_parent)
+    % if False and  hconfig(ConfigEnum.is_parent)
     <br>
     <span class="badge">{{_("Parent Panel")}}</span>
     %endif  
@@ -54,13 +54,13 @@
     <div>
       <!-- Sidebar user panel (optional) -->
 
-
+      
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <div class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                  with font-awesome or any other icon font library -->
-                 {{ render_nav_item('admin.Dashboard:index', icon('solid','house','nav-icon')+_('admin.menu.home')) }}
+                 {{ render_nav_item('admin.Dashboard:index', icon('solid','house','nav-icon')+(_("Parent Panel") if hconfig(ConfigEnum.is_parent) else _('admin.menu.home'))) }}
               
                 % if hconfig(ConfigEnum.parent_panel)
                 {{ render_nav_item(hconfig(ConfigEnum.parent_panel)+"/admin/user/", icon('solid','user','nav-icon')+_('admin.menu.user'),_badge=_('in parent panel') ) }}
