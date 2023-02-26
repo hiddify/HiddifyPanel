@@ -56,10 +56,10 @@ def get_hdomains():
 
 def hconfig(key: ConfigEnum,child_id=0):
     try:
-        str_conf = StrConfig.query.filter(StrConfig.key == key and StrConfig.child_id==child_id).first()
+        str_conf = StrConfig.query.filter(StrConfig.key == key, StrConfig.child_id==child_id).first()
         if str_conf:
             return str_conf.value
-        bool_conf = BoolConfig.query.filter(BoolConfig.key == key  and BoolConfig.child_id==child_id).first()
+        bool_conf = BoolConfig.query.filter(BoolConfig.key == key, BoolConfig.child_id==child_id).first()
         if bool_conf:
             return bool_conf.value
         # if key == ConfigEnum.ssfaketls_fakedomain:

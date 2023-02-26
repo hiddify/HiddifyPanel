@@ -13,12 +13,12 @@ class SyncChildResource(Resource):
         return 
 
     def put(self):
-        
+     try:
         panel_data=request.json
         if not hconfig(ConfigEnum.is_parent):
-            return {'status':500,'msg':"Not a parent"},500
+            raise Exception("Not a parent")
         print(request.headers)
-        child_ip=request.headers['Unique-ID']
+        child_ip=request.headers['Unique-Id']
         print(panel_data)
         print("==================")
         
@@ -31,10 +31,12 @@ class SyncChildResource(Resource):
             db.session.commit()
             child=Child.query.filter(Child.ip==child_ip).first()
         
-        hiddify.set_db_from_json(panel_data,override_child=True,override_child_id=child.id,set_users=first_setup,remove_domains=True)
+        hiddify.set_db_from_json(panel_data,override_child_id=child.id,set_users=first_setup,remove_domains=True)
 
         return {'status':200,"msg":"ok"}
-
+     except Exception as e:
+            print(e)
+            return {'status':500,"msg":str(e)},500
 
 class AddUsageResource(Resource):
      def put(self):

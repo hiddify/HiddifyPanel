@@ -1,4 +1,5 @@
 from flask import jsonify,g,url_for,Markup
+from wtforms.validators import ValidationError
 from flask import flash as flask_flash
 to_gig_d = 1000*1000*1000
 import datetime
@@ -200,6 +201,17 @@ def get_domain_ip(domain):
             return None
 
 
+def check_connection_to_remote(api_url):
+    import requests
+    path=f"{api_url}/api/v1/hello/"
+    
+    try:
+        res=requests.get(path,verify=False, timeout=2).json()
+        return True
+        
+    except:
+        return False
+
 
 def check_connection_for_domain(domain):
     import requests
@@ -276,15 +288,6 @@ def check_need_reset(old_configs):
     
 
 
-def register_to_parent_panel(parent_link,retry=3):
-    try:
-        urllib.request.urlopen(f'{parent_link}/api/register_child/').read().decode('utf8')
-        return True
-    except:
-        if retry==0:
-            return False
-        return register_child(version,retry=retry-1)
-
 
 
 
@@ -298,9 +301,10 @@ def dump_db_to_dict():
             }
 
 
-def set_db_from_json(json_data,override_child=False,override_child_id=None,set_users=True,set_domains=True,set_proxies=True,set_settings=True,remove_domains=False,remove_users=False,override_unique_id=True):
+def set_db_from_json(json_data,override_child_id=None,set_users=True,set_domains=True,set_proxies=True,set_settings=True,remove_domains=False,remove_users=False,override_unique_id=True):
     def get_child(dic):
-        if override_child:
+        print(override_child_id)
+        if override_child_id is not None:
             return override_child_id
         if 'child_ip' in dic:
             child=Child.query.filter(Child.ip==dic['child_ip']).first()
@@ -332,20 +336,20 @@ def set_db_from_json(json_data,override_child=False,override_child_id=None,set_u
             if d.uuid not in dd:
                 db.session.delete(d)
     
-    if set_domains  and 'domain' in json_data:
+    if set_domains  and 'domains' in json_data:
         for domain in json_data['domains']:
             dbdomain=Domain.query.filter(Domain.domain==domain['domain']).first()
             if not dbdomain:
                 dbdomain=Domain(domain=domain['domain'])
                 new_rows.append(dbdomain)
-            domain.child_id =get_child(domain)
+            dbdomain.child_id =get_child(domain)
             
             dbdomain.mode=domain['mode']
             dbdomain.cdn_ip=domain.get('cdn_ip','')
             show_domains=domain.get('show_domains',[])
             dbdomain.show_domains=Domain.query.filter(Domain.domain.in_(show_domains)).all()
-    if remove_domains and override_child and override_child_id and 'domain' in json_data:
-        dd={d.domain:1 for d in json_data['domains']}
+    if remove_domains and override_child_id is not None and 'domains' in json_data:
+        dd={d['domain']:1 for d in json_data['domains']}
         for d in Domain.query.filter(Domain.child_id==override_child_id):
             if d.domain not in dd:
                 db.session.delete(d)
@@ -358,20 +362,26 @@ def set_db_from_json(json_data,override_child=False,override_child_id=None,set_u
                     continue
             v=config['value']
             child_id=get_child(config)
-
+            print(c,ckey,ckey.type(), "child_id",child_id)
             if ckey in [ConfigEnum.db_version]:continue
             if ckey.type()==bool:
-                dbconf=BoolConfig.query.filter(BoolConfig.key==ckey and BoolConfig.child_id==child_id).first()
+                dbconf=BoolConfig.query.filter(BoolConfig.key==ckey, BoolConfig.child_id==child_id).first()
+                # print(dbconf,dbconf.child_id)
+                print("====",dbconf)
                 if not dbconf:
                     dbconf=BoolConfig(key=ckey,child_id=child_id)
                     new_rows.append(dbconf)
+                
+                v=str(v).lower()=="true"
             else:
-                dbconf=StrConfig.query.filter(StrConfig.key==ckey).first()
+                dbconf=StrConfig.query.filter(StrConfig.key==ckey, StrConfig.child_id==child_id).first()
+                print("====",dbconf)
                 if not dbconf:
                     dbconf=StrConfig(key=ckey,child_id=child_id)
                     new_rows.append(dbconf)
 
             dbconf.value=v
+            print(">>>>",dbconf)
         if 'proxies' in json_data:
          for proxy in json_data["proxies"]:
             dbproxy=Proxy.query.filter(Proxy.name==proxy['name']).first()
@@ -385,5 +395,7 @@ def set_db_from_json(json_data,override_child=False,override_child_id=None,set_u
             dbproxy.cdn=proxy['cdn']
             dbproxy.l3=proxy['l3']
             dbproxy.child_id=get_child(proxy)
+
+    print(new_rows)
     db.session.bulk_save_objects(new_rows)
     db.session.commit()

@@ -9,7 +9,7 @@
 <div class="btn-group">
     
     <a href="https://{{domain}}/{{hconfig(ConfigEnum.proxy_path,child.id)}}/{{hconfig(ConfigEnum.admin_secret,child.id)}}/admin/"
-        class="btn btn-primary orig-link">{{_("admin")}} <span class="badge ltr badge-info">{{domain}}</span></a>
+        class="btn btn-xs btn-{{"success" if child.is_active else "warning"}} orig-link ltr" target="_blank">{{domain}}</a>
 </div>
 {%- endmacro -%}
 
@@ -20,10 +20,14 @@
     </div>
     <div class="card-body">
         <table>
-            <tr><th>IP</th><th>{{_("Domain")}}</th></tr>
+            <tr><th></th><th>Status</th><th>{{_("Domain")}}</th></tr>
 
             %for child in childs
-                <tr><td>{{child.ip}} {{child.domains}}</td><td>
+                <tr><td>{{child.id}} </td><td><span class="badge badge-{{"success" if child.is_active else "warning"}}">&nbsp{{icon('solid','check') if child.is_active else icon('solid','triangle-exclamation')}}</span>
+                    % if not child.is_active
+                    <a href="remove_child" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></a>
+                    %endif
+                </td><td>
                     %for d in child.domains
                         {{admin_btn(child,d)}} 
                     %endfor

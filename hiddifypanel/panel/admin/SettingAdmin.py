@@ -17,7 +17,7 @@ from hiddifypanel.models import  *
 from hiddifypanel.panel.database import db
 from wtforms.fields import *
 from flask_classful import FlaskView
-from hiddifypanel.panel import hiddify,hiddify_api
+from hiddifypanel.panel import hiddify,hiddify_api,custom_widgets
 class SettingAdmin(FlaskView):
     
 
@@ -147,7 +147,7 @@ def get_config_form():
             elif c.key==ConfigEnum.branding_freetext:
                 validators=[wtf.validators.Length(max=2048)]
                 render_kw={'class':"ltr",'maxlength':2048}
-                field= wtf.fields.TextAreaField(_(f'config.{c.key}.label'), validators, default=c.value, description=_(f'config.{c.key}.description'),render_kw=render_kw) 
+                field= custom_widgets.CKTextAreaField(_(f'config.{c.key}.label'), validators, default=c.value, description=_(f'config.{c.key}.description'),render_kw=render_kw) 
             else:
                 render_kw={'class':"ltr"}
                 validators=[]

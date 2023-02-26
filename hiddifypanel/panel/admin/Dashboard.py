@@ -10,6 +10,14 @@ class Dashboard(FlaskView):
     def index(self):
             if hconfig(ConfigEnum.is_parent):
                 childs=Child.query.filter(Child.id!=0).all()
+                for c in childs:
+                    c.is_active=False
+                    for d in c.domains:
+                        remote=f"https://{d.domain}/{hconfig(ConfigEnum.proxy_path,c.id)}/{hconfig(ConfigEnum.admin_secret,c.id)}"
+                        d.is_active= hiddify.check_connection_to_remote(remote)
+                        if d.is_active:
+                            c.is_active=True
+
                 return render_template('parent_dash.html',childs=childs)
         # try:
             def_user=None if len(User.query.all())>1 else User.query.filter(User.name=='default').first()

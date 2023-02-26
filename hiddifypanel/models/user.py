@@ -37,4 +37,4 @@ class User(db.Model, SerializerMixin):
     current_usage_GB = db.Column(db.Numeric(6, 9, asdecimal=False), default=0, nullable=False)
 
     last_reset_time = db.Column(db.Date, default=datetime.date.today())
-    comment = db.Column(db.String(512), nullable=False)
+    comment = db.Column(db.String(512))

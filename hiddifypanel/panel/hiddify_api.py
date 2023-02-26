@@ -55,7 +55,7 @@ def send_to_panel(url,method="GET",data=None):
     http.mount("http://", adapter)
     
     headers = {'Content-Type': 'application/json',
-                'Unique-ID': hconfig(ConfigEnum.unique_id)}
+                'Unique-Id': hconfig(ConfigEnum.unique_id)}
     print(headers)
     if method=="GET":
         response = http.get(url,params=data,headers=headers)
