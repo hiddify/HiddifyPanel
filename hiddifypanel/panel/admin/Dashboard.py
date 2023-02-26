@@ -3,6 +3,7 @@ from hiddifypanel.panel.hiddify  import admin
 from flask import render_template,url_for,Markup
 from flask_babelex import lazy_gettext as _
 from hiddifypanel.panel import hiddify
+import datetime
 from flask_classful import FlaskView
 from hiddifypanel.models import *
 from hiddifypanel.panel.hiddify import flash
@@ -36,4 +37,7 @@ class Dashboard(FlaskView):
             
         # except:
         #     flash((_('Error!!!')),'info')
-            return render_template('index.html')
+            h24=datetime.datetime.now()-datetime.timedelta(days=1)
+            onlines=User.query.filter(User.last_online>h24).count()
+            total=User.query.count()
+            return render_template('index.html',onlines=onlines,total_users=total)

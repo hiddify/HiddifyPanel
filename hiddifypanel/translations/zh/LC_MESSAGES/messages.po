@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-26 20:46+0100\n"
-"PO-Revision-Date: 2023-02-26 13:46-0600\n"
+"POT-Creation-Date: 2023-02-26 21:30+0100\n"
+"PO-Revision-Date: 2023-02-26 14:30-0600\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -199,7 +199,7 @@ msgstr "行政"
 msgid "Domain is not correctly mapped to this server!"
 msgstr "域未正确映射到此服务器！"
 
-#: hiddifypanel/panel/admin/Dashboard.py:29
+#: hiddifypanel/panel/admin/Dashboard.py:30
 #, python-format
 msgid ""
 "It seems that you have not setup the system completely. <a class=\"btn "
@@ -211,14 +211,14 @@ msgstr ""
 # | msgid ""
 # | "It seems that you are using default domain (%(domain)s) which is not "
 # | "recommended. Please change or remove it from domain section."
-#: hiddifypanel/panel/admin/Dashboard.py:31
+#: hiddifypanel/panel/admin/Dashboard.py:32
 #, python-format
 msgid ""
 "It seems that you are using default domain (%(domain)s) which is not "
 "recommended."
 msgstr "您似乎正在使用不推荐的默认域 (%(domain)s)。"
 
-#: hiddifypanel/panel/admin/Dashboard.py:35
+#: hiddifypanel/panel/admin/Dashboard.py:36
 #, python-format
 msgid ""
 "It seems that you have not created any users yet. Default user link: "
@@ -1245,8 +1245,8 @@ msgstr "找不到配置"
 # | msgid "CPU Usage"
 #: hiddifypanel/panel/admin/templates/index.html:12
 #: hiddifypanel/panel/admin/templates/index.html:32
-#: hiddifypanel/panel/admin/templates/index.html:213
-#: hiddifypanel/panel/admin/templates/index.html:224
+#: hiddifypanel/panel/admin/templates/index.html:246
+#: hiddifypanel/panel/admin/templates/index.html:257
 msgid "admin.cpu_chart"
 msgstr "CPU使用率图表"
 
@@ -1254,38 +1254,43 @@ msgstr "CPU使用率图表"
 #: hiddifypanel/panel/admin/templates/index.html:46
 #: hiddifypanel/panel/admin/templates/index.html:67
 #: hiddifypanel/panel/admin/templates/index.html:79
-#: hiddifypanel/panel/admin/templates/index.html:112
+#: hiddifypanel/panel/admin/templates/index.html:113
+#: hiddifypanel/panel/admin/templates/index.html:145
 msgid "admin.ram_chart"
 msgstr "内存使用图表"
 
+#: hiddifypanel/panel/admin/templates/index.html:103
+msgid "Online Users in 24 hours"
+msgstr ""
+
 # | msgid "IPv4 connections"
-#: hiddifypanel/panel/admin/templates/index.html:100
+#: hiddifypanel/panel/admin/templates/index.html:134
 msgid "admin.ipv4 connections"
 msgstr ""
 
 # | msgid "IPv6 connections"
-#: hiddifypanel/panel/admin/templates/index.html:133
+#: hiddifypanel/panel/admin/templates/index.html:166
 msgid "admin.ipv6 connections"
 msgstr ""
 
 # | msgid "Network Usage"
-#: hiddifypanel/panel/admin/templates/index.html:146
 #: hiddifypanel/panel/admin/templates/index.html:179
-#: hiddifypanel/panel/admin/templates/index.html:190
+#: hiddifypanel/panel/admin/templates/index.html:212
+#: hiddifypanel/panel/admin/templates/index.html:223
 msgid "admin.network_chart"
 msgstr "网络使用"
 
 # | msgid "Protocol Usage Chart"
-#: hiddifypanel/panel/admin/templates/index.html:178
+#: hiddifypanel/panel/admin/templates/index.html:211
 msgid "admin.protocol_chart"
 msgstr "协议使用图表"
 
 # | msgid "Users Usage Chart"
-#: hiddifypanel/panel/admin/templates/index.html:212
+#: hiddifypanel/panel/admin/templates/index.html:245
 msgid "admin.user_chart"
 msgstr "用户使用图表"
 
-#: hiddifypanel/panel/admin/templates/index.html:245
+#: hiddifypanel/panel/admin/templates/index.html:278
 #, fuzzy
 msgid ""
 "You have disabled netdata in the setting. You need to enable it to see "

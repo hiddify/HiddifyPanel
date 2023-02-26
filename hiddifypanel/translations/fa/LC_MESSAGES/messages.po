@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-26 20:46+0100\n"
-"PO-Revision-Date: 2023-02-26 13:46-0600\n"
+"POT-Creation-Date: 2023-02-26 21:30+0100\n"
+"PO-Revision-Date: 2023-02-26 14:30-0600\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -216,7 +216,7 @@ msgstr "مدیریت"
 msgid "Domain is not correctly mapped to this server!"
 msgstr "دامنه به درستی به این سرور وصل نشده است!"
 
-#: hiddifypanel/panel/admin/Dashboard.py:29
+#: hiddifypanel/panel/admin/Dashboard.py:30
 #, python-format
 msgid ""
 "It seems that you have not setup the system completely. <a class=\"btn "
@@ -229,7 +229,7 @@ msgstr ""
 # | msgid ""
 # | "It seems that you are using default domain (%(domain)s) which is not "
 # | "recommended. Please change or remove it from domain section."
-#: hiddifypanel/panel/admin/Dashboard.py:31
+#: hiddifypanel/panel/admin/Dashboard.py:32
 #, python-format
 msgid ""
 "It seems that you are using default domain (%(domain)s) which is not "
@@ -239,7 +239,7 @@ msgstr ""
 "-inline-block'>%(domain)s</span>) هستید؛ این کار توصیه نمی‌شود. لطفا از "
 "بخش دامنه‌ها آن را حذف یا تغییر دهید."
 
-#: hiddifypanel/panel/admin/Dashboard.py:35
+#: hiddifypanel/panel/admin/Dashboard.py:36
 #, python-format
 msgid ""
 "It seems that you have not created any users yet. Default user link: "
@@ -1364,8 +1364,8 @@ msgstr "تنظیمات پیدا نشد."
 # | msgid "CPU Usage"
 #: hiddifypanel/panel/admin/templates/index.html:12
 #: hiddifypanel/panel/admin/templates/index.html:32
-#: hiddifypanel/panel/admin/templates/index.html:213
-#: hiddifypanel/panel/admin/templates/index.html:224
+#: hiddifypanel/panel/admin/templates/index.html:246
+#: hiddifypanel/panel/admin/templates/index.html:257
 msgid "admin.cpu_chart"
 msgstr "نمودار پردازنده"
 
@@ -1373,38 +1373,43 @@ msgstr "نمودار پردازنده"
 #: hiddifypanel/panel/admin/templates/index.html:46
 #: hiddifypanel/panel/admin/templates/index.html:67
 #: hiddifypanel/panel/admin/templates/index.html:79
-#: hiddifypanel/panel/admin/templates/index.html:112
+#: hiddifypanel/panel/admin/templates/index.html:113
+#: hiddifypanel/panel/admin/templates/index.html:145
 msgid "admin.ram_chart"
 msgstr "نمودار رم"
 
+#: hiddifypanel/panel/admin/templates/index.html:103
+msgid "Online Users in 24 hours"
+msgstr "یوزرهای آنلاین در 24 ساعت اخیر"
+
 # | msgid "IPv4 connections"
-#: hiddifypanel/panel/admin/templates/index.html:100
+#: hiddifypanel/panel/admin/templates/index.html:134
 msgid "admin.ipv4 connections"
 msgstr "کانکشنهای IPv4"
 
 # | msgid "IPv6 connections"
-#: hiddifypanel/panel/admin/templates/index.html:133
+#: hiddifypanel/panel/admin/templates/index.html:166
 msgid "admin.ipv6 connections"
 msgstr "کانکشن‌های IPv6"
 
 # | msgid "Network Usage"
-#: hiddifypanel/panel/admin/templates/index.html:146
 #: hiddifypanel/panel/admin/templates/index.html:179
-#: hiddifypanel/panel/admin/templates/index.html:190
+#: hiddifypanel/panel/admin/templates/index.html:212
+#: hiddifypanel/panel/admin/templates/index.html:223
 msgid "admin.network_chart"
 msgstr "نمودار مصرف اینترنت"
 
 # | msgid "Protocol Usage Chart"
-#: hiddifypanel/panel/admin/templates/index.html:178
+#: hiddifypanel/panel/admin/templates/index.html:211
 msgid "admin.protocol_chart"
 msgstr "نمودار مصرف هر پروتکل"
 
 # | msgid "Users Usage Chart"
-#: hiddifypanel/panel/admin/templates/index.html:212
+#: hiddifypanel/panel/admin/templates/index.html:245
 msgid "admin.user_chart"
 msgstr "نمودار مصرف کاربران"
 
-#: hiddifypanel/panel/admin/templates/index.html:245
+#: hiddifypanel/panel/admin/templates/index.html:278
 msgid ""
 "You have disabled netdata in the setting. You need to enable it to see "
 "the information."
