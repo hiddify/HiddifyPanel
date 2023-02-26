@@ -92,7 +92,7 @@ def update_usage():
             if user.current_usage_GB > user.usage_limit_GB:
                 xray_api.remove_client(user.uuid)
                 have_change=True
-                res[user.uuid]+=" !OUT of USAGE! Client Removed"
+                res[user.uuid]=f"{res[user.uuid]} !OUT of USAGE! Client Removed"
                     
         db.session.commit()
         if have_change:
