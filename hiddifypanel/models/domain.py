@@ -33,7 +33,7 @@ ShowDomain = db.Table('show_domain',
 
 class Domain(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    child_id= db.Column(db.Integer, db.ForeignKey('child.id'))
+    child_id= db.Column(db.Integer, db.ForeignKey('child.id'),default=0)
     domain = db.Column(db.String(200), nullable=False, unique=True)
     alias = db.Column(db.String(200))
     mode = db.Column(db.Enum(DomainType), nullable=False)

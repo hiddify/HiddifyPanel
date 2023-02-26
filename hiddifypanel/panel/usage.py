@@ -55,6 +55,7 @@ def add_users_usage(dbusers_bytes):
             in_gig=(usage_bytes)/to_gig_d
             res[user.uuid]=in_gig
             user.current_usage_GB += in_gig
+            user.last_online=datetime.datetime.now()
 
         if user.current_usage_GB > user.usage_limit_GB:
             xray_api.remove_client(user.uuid)

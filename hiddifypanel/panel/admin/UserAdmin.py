@@ -10,6 +10,9 @@ from .adminlte import AdminLTEModelView
 # from gettext import gettext as _
 from flask_babelex import gettext as __
 from flask_babelex import lazy_gettext as _
+from babel.dates import format_timedelta
+
+
 from hiddifypanel.panel import hiddify,custom_widgets
 from hiddifypanel.panel.hiddify import flash
 from wtforms.fields import StringField
@@ -17,7 +20,7 @@ from flask_bootstrap import SwitchField
 class UserAdmin(AdminLTEModelView):
     
     list_template = 'model/user_list.html'    
-    form_excluded_columns=['monthly']
+    form_excluded_columns=['monthly','last_online']
     # edit_modal=True
     # create_modal=True
     # column_display_pk = True
@@ -50,9 +53,10 @@ class UserAdmin(AdminLTEModelView):
         "mode":_("Mode"),
         "current_usage_GB":_("user.current_usage_GB"),
         "expiry_time":_("user.expiry_time"),
-        # "last_reset_time":_("user.last_reset_time"),
+        "last_reset_time":_("user.last_reset_time"),
         "uuid":_("user.UUID"),
         "comment":_("Note"),
+        'last_online':_('Last Online')
      }
     column_searchable_list=[("uuid"),"name"]
     def search_placeholder(self):
@@ -73,7 +77,7 @@ class UserAdmin(AdminLTEModelView):
     #     'uuid': {'label_name':"D"}
         
     #     }
-    column_list = ["name","UserLinks","current_usage_GB",'mode',"expiry_time","comment","uuid"]
+    column_list = ["name","UserLinks","current_usage_GB",'mode',"expiry_time","comment",'last_online',"uuid"]
     # can_edit = False
     # def on_model_change(self, form, model, is_created):
     #     model.password = generate_password_hash(model.password)
@@ -117,16 +121,30 @@ class UserAdmin(AdminLTEModelView):
         """)
 
     def _expire_formatter(view, context, model, name):
-        days=(model.expiry_time-datetime.date.today()).days
+        diff=(model.expiry_time-datetime.date.today())
+        state='success' if diff.days>7 else ('warning' if diff.days>0 else 'danger') 
+        return Markup(f"<span class='badge badge-{state}'>{format_timedelta(diff, add_direction=True, locale=hconfig(ConfigEnum.admin_lang))}</span>")
+        # return Markup(f"<span class='badge ltr badge-}'>{days}</span> "+_('days'))
+
+    def _online_formatter(view, context, model, name):
+        diff=datetime.datetime.now()-model.last_online
         
-        return Markup(f"<span class='badge ltr badge-{'success' if days>7 else ('warning' if days>0 else 'danger') }'>{days}</span> "+_('days'))
+        if diff.days>1000:
+            return "-"
+        
+        state="danger" if diff.days>3 else ("success" if diff.days<=1 else "warning")
+        return Markup(f"<span class='badge badge-{state}'>{format_timedelta(diff, add_direction=True, locale=hconfig(ConfigEnum.admin_lang))}</span>")
+        
+        
+        # return Markup(f"<span class='badge ltr badge-{'success' if days>7 else ('warning' if days>0 else 'danger') }'>{days}</span> "+_('days'))
 
     column_formatters = {
         'name': _name_formatter,
         'UserLinks': _ul_formatter,
         'uuid': _uuid_formatter,
         'current_usage_GB': _usage_formatter,
-        "expiry_time":_expire_formatter
+        "expiry_time":_expire_formatter,
+        'last_online':_online_formatter
     }
     def on_model_delete(self, model):
         if len(User.query.all())<=1:

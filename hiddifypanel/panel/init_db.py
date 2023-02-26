@@ -46,29 +46,46 @@ def init_db():
     try:
         db.engine.execute(f'update str_config set child_id=0 where child_id is NULL')
         db.engine.execute(f'update bool_config set child_id=0 where child_id is NULL')
+        db.engine.execute(f'update domain set child_id=0 where child_id is NULL')
+        db.engine.execute(f'update proxy set child_id=0 where child_id is NULL')
         column_type = Domain.cdn_ip.type.compile(db.engine.dialect)
         db.engine.execute(f'ALTER TABLE domain ADD COLUMN cdn_ip {column_type}')
     except:
         pass
     
     db_version=int(hconfig(ConfigEnum.db_version) or 0) 
+    start_version=db_version
     print(f"Current DB version is {db_version}")
-
-    db_actions={1:_v1,2:_v2,3:_v3,6:_v6,8:_v8,9:_v9,10:_v10}
+    if not Child.query.filter(Child.id==0).first():
+        print(Child.query.filter(Child.id==0).first())
+        db.session.add(Child(ip="self",id=0))
+        db.session.commit()
+    db_actions={1:_v1,2:_v2,3:_v3,6:_v6,8:_v8,9:_v9,10:_v10,11:_v11}
     for ver,db_action in db_actions.items():
         if ver<=db_version:continue
+        if start_version==0 and ver==10:continue
         print(f"Updating db from version {db_version}")
         db_action()
-        db.session.commit()
+        
         print(f"Updated successfuly db from version {db_version} to {ver}")
         db_version=ver
-
+        set_hconfig(ConfigEnum.db_version,db_version,commit=False)
+        db.session.commit()
     # 
     
-    StrConfig.query.filter(StrConfig.key == ConfigEnum.db_version, StrConfig.child_id==0).update({'value': db_version})
     db.session.commit()
     return BoolConfig.query.all()
 
+
+
+def _v11():
+    try:
+        column_type = User.last_online.type.compile(db.engine.dialect)
+        db.engine.execute(f'ALTER TABLE user ADD COLUMN last_online {column_type}')
+        db.engine.execute(f'update user set last_online="1970-01-01" where child_id is NULL')
+    except:
+        pass
+    
 
 
 def get_random_string():
@@ -85,7 +102,6 @@ def _v1():
         external_ip=urllib.request.urlopen('https://v4.ident.me/').read().decode('utf8')
         
         data = [
-            Child(ip="self",id=0),
             StrConfig(key=ConfigEnum.db_version,value=1),
             User(name="default",usage_limit_GB=9000,expiry_time=next10year),
             Domain(domain=external_ip+".sslip.io",mode=DomainType.direct),
@@ -215,8 +231,7 @@ def _v10():
     db.create_all()
     
     rows=[]
-    if not Child.query.filter(Child.id==0).first():
-        rows.append(Child(ip="self",id=0))
+    
     for c,v in all_configs.items():
         if c.type()==bool:
             rows.append(BoolConfig(key=c,value=v,child_id=0))

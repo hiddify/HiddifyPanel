@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-26 14:46+0100\n"
-"PO-Revision-Date: 2023-02-26 07:24-0600\n"
+"POT-Creation-Date: 2023-02-26 20:46+0100\n"
+"PO-Revision-Date: 2023-02-26 13:46-0600\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -590,81 +590,84 @@ msgid "config.port 443 is required"
 msgstr "پورت ۴۴۳ همیشه باید در دسترس باشد."
 
 # | msgid "Actions"
-#: hiddifypanel/panel/admin/UserAdmin.py:45
+#: hiddifypanel/panel/admin/UserAdmin.py:48
 msgid "actions"
 msgstr "عملیات"
 
 # | msgid "Name"
-#: hiddifypanel/panel/admin/UserAdmin.py:46
+#: hiddifypanel/panel/admin/UserAdmin.py:49
 msgid "user.name"
 msgstr "نام"
 
 # | msgid "User Links"
-#: hiddifypanel/panel/admin/UserAdmin.py:47
+#: hiddifypanel/panel/admin/UserAdmin.py:50
 msgid "user.user_links"
 msgstr "لینک‌های کاربر"
 
 # | msgid "Usage Limit (GB)"
-#: hiddifypanel/panel/admin/UserAdmin.py:48
+#: hiddifypanel/panel/admin/UserAdmin.py:51
 msgid "user.usage_limit_GB"
 msgstr "محدودیت حجم (گیگابایت)"
 
 # | msgid "Monthly"
-#: hiddifypanel/panel/admin/UserAdmin.py:49
+#: hiddifypanel/panel/admin/UserAdmin.py:52
 msgid "Reset every month"
 msgstr "ماهیانه"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:50
+#: hiddifypanel/panel/admin/UserAdmin.py:53
 #, fuzzy
 msgid "Mode"
 msgstr "حالت"
 
 # | msgid "Current Usage (GB)"
-#: hiddifypanel/panel/admin/UserAdmin.py:51
+#: hiddifypanel/panel/admin/UserAdmin.py:54
 msgid "user.current_usage_GB"
-msgstr "حجم استفاده شده کنونی (گیگابایت)"
+msgstr "حجم مصرفی (گیگابایت)"
 
-# | msgid "Expire Time"
-#: hiddifypanel/panel/admin/UserAdmin.py:52
+# | msgid "Expire (days)"
+#: hiddifypanel/panel/admin/UserAdmin.py:55
 msgid "user.expiry_time"
-msgstr "زمان انقضا (روز)"
+msgstr "انقضا (روز)"
+
+# | msgid "Last usage date reset"
+#: hiddifypanel/panel/admin/UserAdmin.py:56
+msgid "user.last_reset_time"
+msgstr "آخرین زمان ریست شدن حجم (روز پیش)"
 
 # | msgid "UUID"
-#: hiddifypanel/panel/admin/UserAdmin.py:54
+#: hiddifypanel/panel/admin/UserAdmin.py:57
 msgid "user.UUID"
 msgstr "UUID"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:55
+#: hiddifypanel/panel/admin/UserAdmin.py:58
 #, fuzzy
 msgid "Note"
 msgstr "یادداشت"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:67
+#: hiddifypanel/panel/admin/UserAdmin.py:59
+#, fuzzy
+msgid "Last Online"
+msgstr "آخرین آنلاین"
+
+#: hiddifypanel/panel/admin/UserAdmin.py:71
 #, fuzzy
 msgid "Add some text that is only visible to you."
 msgstr "متنی را اضافه کنید که فقط برای شما قابل مشاهده است."
 
-#: hiddifypanel/panel/admin/UserAdmin.py:68
+#: hiddifypanel/panel/admin/UserAdmin.py:72
 msgid "Define the user mode. Should the usage reset every month?"
 msgstr "حالت کاربر را تعریف کنید. آیا میزان استفاده باید هر ماه ریست شود؟"
 
 # | msgid ""
 # | "If the monthly option is enabled, when this number reaches 30, the user "
 # | "usage will be reset (for weekly and daily this number is 7 and 1)"
-#: hiddifypanel/panel/admin/UserAdmin.py:69
+#: hiddifypanel/panel/admin/UserAdmin.py:73
 msgid ""
 "If monthly is enabled, the usage will be reset after 30 days from this "
 "date."
 msgstr ""
 "اگر گزینه ماهانه فعال باشد، وقتی این عدد به ۳۰ برسد حجم کاربر ریست می‌شود"
 " (برای هفتگی و روزانه این عدد ۷ و ۱ است)"
-
-# | msgid "Days"
-#: hiddifypanel/panel/admin/UserAdmin.py:122
-#: hiddifypanel/panel/user/templates/home/usage.html:16
-#: hiddifypanel/panel/user/templates/home/usage.html:20
-msgid "days"
-msgstr "روز"
 
 #: hiddifypanel/panel/admin/templates/backup.html:9
 #: hiddifypanel/templates/admin-layout.html:99
@@ -1557,6 +1560,10 @@ msgstr ""
 "بروزرسانی دستی <a href=\"%(link)s\" class=\"btn btn-info\">اینجا</a> کلیک"
 " کنید."
 
+#: hiddifypanel/panel/user/user.py:104
+msgid "This domain does not exist in the panel!"
+msgstr "این دامنه در پنل وجود ندارد."
+
 # | msgid "All Configs"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:1
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:1
@@ -2160,15 +2167,20 @@ msgstr "از"
 msgid "user.home.usage.monthly"
 msgstr "ماهانه"
 
-# | msgid "Expire in: "
+# | msgid "Expire: "
 #: hiddifypanel/panel/user/templates/home/usage.html:16
 msgid "user.home.usage.expire"
-msgstr "مدت زمان باقی مانده:"
+msgstr "پایان:"
 
 # | msgid "Traffic usage reset time:"
 #: hiddifypanel/panel/user/templates/home/usage.html:20
 msgid "Reset Usage Time:"
 msgstr "زمان صفر شدن حجم:"
+
+# | msgid "Days"
+#: hiddifypanel/panel/user/templates/home/usage.html:20
+msgid "days"
+msgstr "روز"
 
 # | msgid "Display usage details."
 #: hiddifypanel/panel/user/templates/home/usage.html:32
@@ -2548,10 +2560,6 @@ msgstr "عملیات"
 # | msgid "Monthly Usage Limit (GB)"
 #~ msgid "user.monthly_usage_limit_GB"
 #~ msgstr "محدودیت حجم ماهانه (گیگابایت)"
-
-# | msgid "Last usage date reset"
-#~ msgid "user.last_reset_time"
-#~ msgstr "زمان ریست کردن حجم (روز پیش)"
 
 # | msgid "Decoy Site"
 #~ msgid "config.decoy_site.label"

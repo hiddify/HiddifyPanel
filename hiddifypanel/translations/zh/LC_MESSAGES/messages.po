@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-26 14:46+0100\n"
-"PO-Revision-Date: 2023-02-26 07:24-0600\n"
+"POT-Creation-Date: 2023-02-26 20:46+0100\n"
+"PO-Revision-Date: 2023-02-26 13:46-0600\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -536,61 +536,70 @@ msgid "config.port 443 is required"
 msgstr "应始终显示端口 443。"
 
 # | msgid "Actions"
-#: hiddifypanel/panel/admin/UserAdmin.py:45
+#: hiddifypanel/panel/admin/UserAdmin.py:48
 msgid "actions"
 msgstr "动作"
 
 # | msgid "Name"
-#: hiddifypanel/panel/admin/UserAdmin.py:46
+#: hiddifypanel/panel/admin/UserAdmin.py:49
 msgid "user.name"
 msgstr "名称"
 
 # | msgid "User Links"
-#: hiddifypanel/panel/admin/UserAdmin.py:47
+#: hiddifypanel/panel/admin/UserAdmin.py:50
 msgid "user.user_links"
 msgstr "用户链接"
 
 # | msgid "Usage Limit (GB)"
-#: hiddifypanel/panel/admin/UserAdmin.py:48
+#: hiddifypanel/panel/admin/UserAdmin.py:51
 msgid "user.usage_limit_GB"
 msgstr "使用限制 (GB)"
 
 # | msgid "Monthly"
-#: hiddifypanel/panel/admin/UserAdmin.py:49
+#: hiddifypanel/panel/admin/UserAdmin.py:52
 msgid "Reset every month"
 msgstr "每月"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:50
+#: hiddifypanel/panel/admin/UserAdmin.py:53
 #, fuzzy
 msgid "Mode"
 msgstr "模式"
 
 # | msgid "Current Usage (GB)"
-#: hiddifypanel/panel/admin/UserAdmin.py:51
+#: hiddifypanel/panel/admin/UserAdmin.py:54
 msgid "user.current_usage_GB"
 msgstr "当前使用量 (GB)"
 
-# | msgid "Expire Time"
-#: hiddifypanel/panel/admin/UserAdmin.py:52
+# | msgid "Expire (days)"
+#: hiddifypanel/panel/admin/UserAdmin.py:55
 msgid "user.expiry_time"
 msgstr "过期时间"
 
+# | msgid "Last usage date reset"
+#: hiddifypanel/panel/admin/UserAdmin.py:56
+msgid "user.last_reset_time"
+msgstr "最后使用日期重置"
+
 # | msgid "UUID"
-#: hiddifypanel/panel/admin/UserAdmin.py:54
+#: hiddifypanel/panel/admin/UserAdmin.py:57
 msgid "user.UUID"
 msgstr "UUID"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:55
+#: hiddifypanel/panel/admin/UserAdmin.py:58
 #, fuzzy
 msgid "Note"
 msgstr "笔记"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:67
+#: hiddifypanel/panel/admin/UserAdmin.py:59
+msgid "Last Online"
+msgstr ""
+
+#: hiddifypanel/panel/admin/UserAdmin.py:71
 #, fuzzy
 msgid "Add some text that is only visible to you."
 msgstr "添加一些仅对您可见的文本。"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:68
+#: hiddifypanel/panel/admin/UserAdmin.py:72
 #, fuzzy
 msgid "Define the user mode. Should the usage reset every month?"
 msgstr "定义用户模式。应该每个月重置使用量吗？"
@@ -598,18 +607,11 @@ msgstr "定义用户模式。应该每个月重置使用量吗？"
 # | msgid ""
 # | "If the monthly option is enabled, when this number reaches 30, the user "
 # | "usage will be reset (for weekly and daily this number is 7 and 1)"
-#: hiddifypanel/panel/admin/UserAdmin.py:69
+#: hiddifypanel/panel/admin/UserAdmin.py:73
 msgid ""
 "If monthly is enabled, the usage will be reset after 30 days from this "
 "date."
 msgstr ""
-
-# | msgid "Days"
-#: hiddifypanel/panel/admin/UserAdmin.py:122
-#: hiddifypanel/panel/user/templates/home/usage.html:16
-#: hiddifypanel/panel/user/templates/home/usage.html:20
-msgid "days"
-msgstr "天"
 
 #: hiddifypanel/panel/admin/templates/backup.html:9
 #: hiddifypanel/templates/admin-layout.html:99
@@ -1422,6 +1424,10 @@ msgstr ""
 "用户使用情况将每 6 分钟更新一次。现在要更新它，请点击<a href=\"%(link)s\" class=\"btn btn-"
 "info\">此处</a>。"
 
+#: hiddifypanel/panel/user/user.py:104
+msgid "This domain does not exist in the panel!"
+msgstr ""
+
 # | msgid "All Configs"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:1
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:1
@@ -2003,7 +2009,7 @@ msgstr "的"
 msgid "user.home.usage.monthly"
 msgstr "每月"
 
-# | msgid "Expire in: "
+# | msgid "Expire: "
 #: hiddifypanel/panel/user/templates/home/usage.html:16
 msgid "user.home.usage.expire"
 msgstr "过期于："
@@ -2012,6 +2018,11 @@ msgstr "过期于："
 #: hiddifypanel/panel/user/templates/home/usage.html:20
 msgid "Reset Usage Time:"
 msgstr "流量使用重置时间："
+
+# | msgid "Days"
+#: hiddifypanel/panel/user/templates/home/usage.html:20
+msgid "days"
+msgstr "天"
 
 # | msgid "Display usage details."
 #: hiddifypanel/panel/user/templates/home/usage.html:32
@@ -2382,10 +2393,6 @@ msgstr ""
 # | msgid "Monthly Usage Limit (GB)"
 #~ msgid "user.monthly_usage_limit_GB"
 #~ msgstr "每月使用限额 (GB)"
-
-# | msgid "Last usage date reset"
-#~ msgid "user.last_reset_time"
-#~ msgstr "最后使用日期重置"
 
 # | msgid "Decoy Site"
 #~ msgid "config.decoy_site.label"

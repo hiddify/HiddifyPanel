@@ -40,7 +40,7 @@ def all_configs():
     print(json.dumps(configs))
 
 def update_usage():
-    print(hiddify.update_usage())
+    print(usage.update_local_usage())
 
 def test():
     print(ConfigEnum("auto_update1"))

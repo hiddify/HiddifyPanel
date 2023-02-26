@@ -10,7 +10,7 @@ import json
 import urllib.request
 import subprocess
 import re
-from hiddifypanel.panel import hiddify
+from hiddifypanel.panel import hiddify,usage
 from hiddifypanel.panel import hiddify_api
 from flask import current_app,render_template,request,Response,Markup,url_for
 from hiddifypanel.panel.hiddify import flash
@@ -162,6 +162,6 @@ class Actions(FlaskView):
 
         return render_template("result.html",
                             out_type="info",
-                            out_msg=f'<pre class="ltr">{json.dumps(hiddify.update_usage(),indent=2)}</pre>',
+                            out_msg=f'<pre class="ltr">{json.dumps(usage.update_local_usage(),indent=2)}</pre>',
                             log_path=None
         )

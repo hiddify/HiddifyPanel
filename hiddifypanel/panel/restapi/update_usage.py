@@ -5,13 +5,10 @@ from xtlsapi import XrayClient, utils, exceptions
 from hiddifypanel.panel.database import db
 from hiddifypanel.models import  User,Domain,DomainType,StrConfig,ConfigEnum,hconfig
 from hiddifypanel import xray_api
-from hiddifypanel.panel import hiddify
+from hiddifypanel.panel import hiddify,usage
 import datetime
 class UpdateUsageResource(Resource):
     def get(self):
-        return jsonify(hiddify.update_usage())
+        return jsonify(usage.update_local_usage())
 
 
-class addUsageResource(Resource):
-    def post(self):
-        return jsonify(hiddify.update_usage())

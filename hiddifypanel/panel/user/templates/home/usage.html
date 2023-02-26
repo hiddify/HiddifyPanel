@@ -13,7 +13,7 @@
                             style="width: {{user.current_usage_GB*100/user.usage_limit_GB}}%"></div>
                     </div>
                     <div>
-                        <i class="fa-solid fa-calendar-days fa-margin"></i> <b>{{_('user.home.usage.expire')}}</b> {{expire_days}} {{_('days')}}                     
+                        <i class="fa-solid fa-calendar-days fa-margin"></i> <b>{{_('user.home.usage.expire')}}</b> {{expire_rel}}
                     </div>
                     % if user.monthly
                     <div>

@@ -66,3 +66,12 @@ $("#show_domains").multipleSelect({width: '100%'});
 {% endblock %}
 
 
+{% block rtl_styles %}
+    {{super()}}
+    <style>
+        #expiry_time,#last_reset_time,#current_usage_GB,#usage_limit_GB {
+            direction: ltr;
+            text-align: right;
+        }
+    </style>
+  {% endblock %}  

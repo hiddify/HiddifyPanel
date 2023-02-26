@@ -29,7 +29,7 @@ class User(db.Model, SerializerMixin):
     uuid = db.Column(db.String(36), default=lambda: str(
         uuid_mod.uuid4()), nullable=False, unique=True)
     name = db.Column(db.String(512), nullable=False)
-
+    last_online=db.Column(db.DateTime,nullable=False,default=datetime.datetime.min)
     expiry_time = db.Column(db.Date, default=datetime.date.today() + relativedelta.relativedelta(months=6))
     usage_limit_GB = db.Column(db.Numeric(6, 9, asdecimal=False), default=1000, nullable=False)
     mode=db.Column(db.Enum(UserMode),default=UserMode.no_reset)

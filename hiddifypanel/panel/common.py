@@ -33,7 +33,10 @@ def init_app(app):
             values['proxy_path']=hconfig(ConfigEnum.proxy_path)
 
         
-    
+    # @app.template_filter()
+    # def rel_datetime(value):
+    #     diff=datetime.datetime.now()-value
+    #     return format_timedelta(diff, add_direction=True, locale=hconfig(ConfigEnum.lang))
     @app.url_value_preprocessor
     def pull_secret_code(endpoint, values):
         # print("Y",endpoint, values)

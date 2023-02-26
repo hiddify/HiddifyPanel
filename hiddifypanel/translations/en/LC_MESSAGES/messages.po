@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-26 14:46+0100\n"
-"PO-Revision-Date: 2023-02-26 07:24-0600\n"
+"POT-Creation-Date: 2023-02-26 20:46+0100\n"
+"PO-Revision-Date: 2023-02-26 13:46-0600\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -571,78 +571,81 @@ msgid "config.port 443 is required"
 msgstr "Port 443 should always be presented. "
 
 # | msgid "Actions"
-#: hiddifypanel/panel/admin/UserAdmin.py:45
+#: hiddifypanel/panel/admin/UserAdmin.py:48
 msgid "actions"
 msgstr "Actions"
 
 # | msgid "Name"
-#: hiddifypanel/panel/admin/UserAdmin.py:46
+#: hiddifypanel/panel/admin/UserAdmin.py:49
 msgid "user.name"
 msgstr "Name"
 
 # | msgid "User Links"
-#: hiddifypanel/panel/admin/UserAdmin.py:47
+#: hiddifypanel/panel/admin/UserAdmin.py:50
 msgid "user.user_links"
 msgstr "User Links"
 
 # | msgid "Usage Limit (GB)"
-#: hiddifypanel/panel/admin/UserAdmin.py:48
+#: hiddifypanel/panel/admin/UserAdmin.py:51
 msgid "user.usage_limit_GB"
 msgstr "Usage Limit (GB)"
 
 # | msgid "Monthly"
-#: hiddifypanel/panel/admin/UserAdmin.py:49
+#: hiddifypanel/panel/admin/UserAdmin.py:52
 msgid "Reset every month"
 msgstr "Monthly"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:50
+#: hiddifypanel/panel/admin/UserAdmin.py:53
 msgid "Mode"
 msgstr "Mode"
 
 # | msgid "Current Usage (GB)"
-#: hiddifypanel/panel/admin/UserAdmin.py:51
+#: hiddifypanel/panel/admin/UserAdmin.py:54
 msgid "user.current_usage_GB"
 msgstr "Current Usage (GB)"
 
-# | msgid "Expire Time"
-#: hiddifypanel/panel/admin/UserAdmin.py:52
+# | msgid "Expire (days)"
+#: hiddifypanel/panel/admin/UserAdmin.py:55
 msgid "user.expiry_time"
-msgstr "Expire Time"
+msgstr "Expire (days)"
+
+# | msgid "Last usage date reset"
+#: hiddifypanel/panel/admin/UserAdmin.py:56
+msgid "user.last_reset_time"
+msgstr "Last usage date reset"
 
 # | msgid "UUID"
-#: hiddifypanel/panel/admin/UserAdmin.py:54
+#: hiddifypanel/panel/admin/UserAdmin.py:57
 msgid "user.UUID"
 msgstr "UUID"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:55
+#: hiddifypanel/panel/admin/UserAdmin.py:58
 msgid "Note"
 msgstr "Note"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:67
+#: hiddifypanel/panel/admin/UserAdmin.py:59
+#, fuzzy
+msgid "Last Online"
+msgstr "Last Online"
+
+#: hiddifypanel/panel/admin/UserAdmin.py:71
 msgid "Add some text that is only visible to you."
 msgstr "Add some text that is only visible to you."
 
-#: hiddifypanel/panel/admin/UserAdmin.py:68
+#: hiddifypanel/panel/admin/UserAdmin.py:72
 msgid "Define the user mode. Should the usage reset every month?"
 msgstr "Define the user mode. Should the usage reset every month?"
 
 # | msgid ""
 # | "If the monthly option is enabled, when this number reaches 30, the user "
 # | "usage will be reset (for weekly and daily this number is 7 and 1)"
-#: hiddifypanel/panel/admin/UserAdmin.py:69
+#: hiddifypanel/panel/admin/UserAdmin.py:73
 #, fuzzy
 msgid ""
 "If monthly is enabled, the usage will be reset after 30 days from this date."
 msgstr ""
 "If the monthly option is enabled, when this number reaches 30, the user "
 "usage will be reset (for weekly and daily this number is 7 and 1)"
-
-# | msgid "Days"
-#: hiddifypanel/panel/admin/UserAdmin.py:122
-#: hiddifypanel/panel/user/templates/home/usage.html:16
-#: hiddifypanel/panel/user/templates/home/usage.html:20
-msgid "days"
-msgstr "Days"
 
 #: hiddifypanel/panel/admin/templates/backup.html:9
 #: hiddifypanel/templates/admin-layout.html:99
@@ -1508,6 +1511,11 @@ msgstr ""
 "User usage will be updated every 6 minutes. To update it now click <a "
 "href=\"%(link)s\" class=\"btn btn-info\">here</a>."
 
+#: hiddifypanel/panel/user/user.py:104
+#, fuzzy
+msgid "This domain does not exist in the panel!"
+msgstr "This domain does not exist in the panel!"
+
 # | msgid "All Configs"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:1
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:1
@@ -2090,15 +2098,20 @@ msgstr "of"
 msgid "user.home.usage.monthly"
 msgstr "Monthly"
 
-# | msgid "Expire in: "
+# | msgid "Expire: "
 #: hiddifypanel/panel/user/templates/home/usage.html:16
 msgid "user.home.usage.expire"
-msgstr "Expire in: "
+msgstr "Expire: "
 
 # | msgid "Traffic usage reset time:"
 #: hiddifypanel/panel/user/templates/home/usage.html:20
 msgid "Reset Usage Time:"
 msgstr "Traffic usage reset time:"
+
+# | msgid "Days"
+#: hiddifypanel/panel/user/templates/home/usage.html:20
+msgid "days"
+msgstr "Days"
 
 # | msgid "Display usage details."
 #: hiddifypanel/panel/user/templates/home/usage.html:32
@@ -2453,10 +2466,6 @@ msgstr "Actions"
 # | msgid "Monthly Usage Limit (GB)"
 #~ msgid "user.monthly_usage_limit_GB"
 #~ msgstr "Monthly Usage Limit (GB)"
-
-# | msgid "Last usage date reset"
-#~ msgid "user.last_reset_time"
-#~ msgstr "Last usage date reset"
 
 # | msgid "Decoy Site"
 #~ msgid "config.decoy_site.label"

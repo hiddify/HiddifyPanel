@@ -69,35 +69,35 @@ def abs_url(path):
 def asset_url(path):
     return f"/{g.proxy_path}/{path}"
 
-def update_usage():
+# def update_usage():
         
-        res={}
-        have_change=False
-        for user in User.query.all():
-            if user.monthly and (datetime.date.today()-user.last_reset_time).days>=30:
-                user.last_reset_time=datetime.date.today()
-                if user.current_usage_GB > user.usage_limit_GB:
-                    xray_api.add_client(user.uuid)
-                    have_change=True
-                user.current_usage_GB=0
+#         res={}
+#         have_change=False
+#         for user in User.query.all():
+#             if user.monthly and (datetime.date.today()-user.last_reset_time).days>=30:
+#                 user.last_reset_time=datetime.date.today()
+#                 if user.current_usage_GB > user.usage_limit_GB:
+#                     xray_api.add_client(user.uuid)
+#                     have_change=True
+#                 user.current_usage_GB=0
 
-            d = xray_api.get_usage(user.uuid,reset=True)
+#             d = xray_api.get_usage(user.uuid,reset=True)
             
-            if d == None:
-               res[user.uuid]="No value" 
-            else:
-                in_gig=(d)/to_gig_d
-                res[user.uuid]=in_gig
-                user.current_usage_GB += in_gig
-            if user.current_usage_GB > user.usage_limit_GB:
-                xray_api.remove_client(user.uuid)
-                have_change=True
-                res[user.uuid]=f"{res[user.uuid]} !OUT of USAGE! Client Removed"
+#             if d == None:
+#                res[user.uuid]="No value" 
+#             else:
+#                 in_gig=(d)/to_gig_d
+#                 res[user.uuid]=in_gig
+#                 user.current_usage_GB += in_gig
+#             if user.current_usage_GB > user.usage_limit_GB:
+#                 xray_api.remove_client(user.uuid)
+#                 have_change=True
+#                 res[user.uuid]=f"{res[user.uuid]} !OUT of USAGE! Client Removed"
                     
-        db.session.commit()
-        if have_change:
-            quick_apply_users()
-        return {"status": 'success', "comments":res}
+#         db.session.commit()
+#         if have_change:
+#             quick_apply_users()
+#         return {"status": 'success', "comments":res}
         
 
 def domain_dict(d):

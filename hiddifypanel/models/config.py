@@ -75,6 +75,23 @@ def hconfig(key: ConfigEnum,child_id=0):
     return None
 
 
+def set_hconfig(key: ConfigEnum,value,child_id=0,commit=True):
+    
+        if key.type()==bool:
+            dbconf = BoolConfig.query.filter(BoolConfig.key == key, BoolConfig.child_id==child_id).first()    
+            if not dbconf:
+                dbconf=BoolConfig(key=key,value=value,child_id=child_id)
+                db.session.add(dbconf)
+        else:
+            dbconf = StrConfig.query.filter(StrConfig.key == key, StrConfig.child_id==child_id).first()    
+            if not dbconf:
+                dbconf=StrConfig(key=key,value=value,child_id=child_id)
+                db.session.add(dbconf)
+        dbconf.value=value
+        if commit:
+            db.session.commit()
+
+
 def get_hconfigs(child_id=0):
     return {**{u.key: u.value for u in BoolConfig.query.filter(BoolConfig.child_id==child_id).all()},
             **{u.key: u.value for u in StrConfig.query.filter(StrConfig.child_id==child_id).all()},
