@@ -28,15 +28,15 @@ class QuickSetup(FlaskView):
                 lang_form=get_lang_form()
                 if lang_form.lang_submit.data:
                         if lang_form.validate_on_submit():
-                                StrConfig.query.filter(StrConfig.key==ConfigEnum.lang).first().value=lang_form.admin_lang.data
-                                StrConfig.query.filter(StrConfig.key==ConfigEnum.admin_lang).first().value=lang_form.admin_lang.data
+                                StrConfig.query.filter(StrConfig.key==ConfigEnum.lang,StrConfig.child_id==0).first().value=lang_form.admin_lang.data
+                                StrConfig.query.filter(StrConfig.key==ConfigEnum.admin_lang,StrConfig.child_id==0).first().value=lang_form.admin_lang.data
                                 db.session.commit()
-                                flash((_('quicksetup.setlang.success')), 'success')
                                 from flask_babel import refresh; refresh()
+                                flash((_('quicksetup.setlang.success')), 'success')
                         else:
                                 flash((_('quicksetup.setlang.error')), 'danger')
 
-                        return render_template('quick_setup.html', form=get_quick_setup_form(True),lang_form=lang_form,admin_link=admin_link(),ipv4=hiddify.get_ip(4),ipv6=hiddify.get_ip(6),show_domain_info=False)                
+                        return render_template('quick_setup.html', form=get_quick_setup_form(True),lang_form=get_lang_form(),admin_link=admin_link(),ipv4=hiddify.get_ip(4),ipv6=hiddify.get_ip(6),show_domain_info=False)                
                 
                 if quick_form.validate_on_submit():
                         sslip_dm=Domain.query.filter(Domain.domain==f'{hiddify.get_ip(4)}.sslip.io').delete()
@@ -44,12 +44,17 @@ class QuickSetup(FlaskView):
                         data=[Domain(domain=quick_form.domain.data.lower(),mode=DomainType.direct),]
                         
                         db.session.bulk_save_objects(data)
+
+                        hiddify.set_db_from_json(
+                                {"hconfigs":[
+                                        {"key":ConfigEnum.telegram_enable,"value":quick_form.enable_telegram.data},
+                                        {"key":ConfigEnum.vmess_enable,"value":quick_form.enable_vmess.data},
+                                        {"key":ConfigEnum.firewall,"value":quick_form.enable_firewall.data},
+                                        {"key":ConfigEnum.block_iran_sites,"value":quick_form.block_iran_sites.data},
+                                        {"key":ConfigEnum.decoy_domain,"value":quick_form.decoy_domain.data}
+                                ]}
+                        ) 
                         
-                        BoolConfig.query.filter(BoolConfig.key==ConfigEnum.telegram_enable).first().value=quick_form.enable_telegram.data
-                        BoolConfig.query.filter(BoolConfig.key==ConfigEnum.vmess_enable).first().value=quick_form.enable_vmess.data
-                        BoolConfig.query.filter(BoolConfig.key==ConfigEnum.firewall).first().value=quick_form.enable_firewall.data
-                        BoolConfig.query.filter(BoolConfig.key==ConfigEnum.block_iran_sites).first().value=quick_form.block_iran_sites.data
-                        StrConfig.query.filter(StrConfig.key==ConfigEnum.decoy_domain).first().value=quick_form.decoy_domain.data
                         db.session.commit()
                         # hiddify.flash_config_success()
                         proxy_path=hconfig(ConfigEnum.proxy_path)
