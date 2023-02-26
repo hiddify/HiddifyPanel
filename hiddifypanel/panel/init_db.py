@@ -131,8 +131,7 @@ def _v9():
         db.engine.execute(f'ALTER TABLE user ADD COLUMN mode {column_type}')
         column_type = User.comment.type.compile(db.engine.dialect)
         db.engine.execute(f'ALTER TABLE user ADD COLUMN comment {column_type}')
-        column_type = Domain.alias.type.compile(db.engine.dialect)
-        db.engine.execute(f'ALTER TABLE domain ADD COLUMN alias {column_type}')
+        
         for u in User.query.all():
             u.mode= UserMode.monthly if u.monthly else UserMode.no_reset
     except:
@@ -174,14 +173,10 @@ def init_db():
     
 
     db.create_all()
-    if len(Domain.query.all())!=0 and BoolConfig.query.count()==0:
-        db.engine.execute(f'DROP TABLE bool_config')
-        db.engine.execute(f'ALTER TABLE bool_config_old RENAME TO bool_config')
-    if len(Domain.query.all())!=0 and StrConfig.query.count()==0:
-        db.engine.execute(f'DROP TABLE str_config')
-        db.engine.execute(f'ALTER TABLE str_config_old RENAME TO str_config')
-
+    
     try:
+        column_type = Domain.alias.type.compile(db.engine.dialect)
+        db.engine.execute(f'ALTER TABLE domain ADD COLUMN alias {column_type}')
         column_type = Domain.child_id.type.compile(db.engine.dialect)
         db.engine.execute(f'ALTER TABLE domain ADD COLUMN child_id {column_type}')
         column_type = Proxy.child_id.type.compile(db.engine.dialect)
@@ -191,6 +186,14 @@ def init_db():
         column_type = StrConfig.child_id.type.compile(db.engine.dialect)
         db.engine.execute(f'ALTER TABLE str_config ADD COLUMN child_id {column_type}')
     except:pass
+
+    if len(Domain.query.all())!=0 and BoolConfig.query.count()==0:
+        db.engine.execute(f'DROP TABLE bool_config')
+        db.engine.execute(f'ALTER TABLE bool_config_old RENAME TO bool_config')
+    if len(Domain.query.all())!=0 and StrConfig.query.count()==0:
+        db.engine.execute(f'DROP TABLE str_config')
+        db.engine.execute(f'ALTER TABLE str_config_old RENAME TO str_config')
+
     try:
         db.engine.execute('ALTER TABLE user ADD COLUMN monthly BOOLEAN')
         db.engine.execute('ALTER TABLE user RENAME COLUMN monthly_usage_limit_GB TO usage_limit_GB')       
