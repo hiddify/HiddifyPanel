@@ -82,7 +82,7 @@ def _v11():
     try:
         column_type = User.last_online.type.compile(db.engine.dialect)
         db.engine.execute(f'ALTER TABLE user ADD COLUMN last_online {column_type}')
-        db.engine.execute(f'update user set last_online="1970-01-01" where child_id is NULL')
+        # db.engine.execute(f'update user set last_online="1000-01-01 00:00:00" where last_online is NULL')
     except:
         pass
     

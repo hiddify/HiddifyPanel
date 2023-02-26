@@ -127,6 +127,8 @@ class UserAdmin(AdminLTEModelView):
         # return Markup(f"<span class='badge ltr badge-}'>{days}</span> "+_('days'))
 
     def _online_formatter(view, context, model, name):
+        if not model.last_online:
+            return "-"
         diff=datetime.datetime.now()-model.last_online
         
         if diff.days>1000:
