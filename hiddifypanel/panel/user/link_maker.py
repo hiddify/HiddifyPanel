@@ -56,12 +56,13 @@ def make_proxy(proxy,domain_db):
         return
     
     cdn_forced_host= domain_db.cdn_ip or domain_db.domain
-        
+    
     base={
         'name':name.replace(" ", "_"),
         'cdn':is_cdn,
         'mode':"CDN" if is_cdn else "direct",
         'l3': l3,
+        'host':domain,
         'port': port,
         'server':cdn_forced_host ,
         'sni':domain,
@@ -91,7 +92,7 @@ def make_proxy(proxy,domain_db):
             return 
         base['server']=hconfigs[ConfigEnum.domain_fronting_domain]
         base['sni']=hconfigs[ConfigEnum.domain_fronting_domain]
-        base["host"]=domain
+        # base["host"]=domain
         base['mode']='Fake'
     elif l3=="http" and not hconfig(ConfigEnum.http_proxy_enable):
         return None    
@@ -163,7 +164,7 @@ def to_link(proxy):
     name_link=proxy["name"]+"_"+proxy['extra_info']
     if proxy['proto']=='vmess':
         vmess_type= 'http' if proxy["transport"]=='tcp' else 'none'
-        return pbase64(f'vmess://{{"v":"2", "ps":"{name_link}", "add":"{proxy["server"]}", "port":"{proxy["port"]}", "id":"{proxy["uuid"]}", "aid":"0", "scy":"auto", "net":"{proxy["transport"]}", "type":"none", "host":"{proxy.get("host","")}", "path":"{proxy["path"] if "path" in proxy else ""}", "tls":"{proxy["l3"]}", "sni":"{proxy["sni"]}"}}')
+        return pbase64(f'vmess://{{"v":"2", "ps":"{name_link}", "add":"{proxy["server"]}", "port":"{proxy["port"]}", "id":"{proxy["uuid"]}", "aid":"0", "scy":"auto", "net":"{proxy["transport"]}", "type":"none", "host":"{proxy.get("host","")}", "path":"{proxy["path"] if "path" in proxy else ""}", "tls":"{proxy["l3"]}", "sni":"{proxy["sni"]}","fp":"chrome"}}')
     if proxy['proto']=="ssr":
         baseurl=f'ssr://proxy["encryption"]:{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}'
         return None
