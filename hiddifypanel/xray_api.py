@@ -1,4 +1,5 @@
 import xtlsapi
+from hiddifypanel.models import  *
 
 def get_xray_client():
     if hconfig(ConfigEnum.is_parent):
