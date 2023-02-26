@@ -176,9 +176,8 @@ def quick_apply_users():
 
 
 def flash_config_success(restart_mode='',domain_changed=True):
-    if hconfig(ConfigEnum.is_parent):
-        return
-    if restart_mode:
+    
+    if restart_mode and not hconfig(ConfigEnum.is_parent):
         url=url_for('admin.Actions:reinstall',complete_install=restart_mode=='reinstall',domain_changed=domain_changed)
         apply_btn=f"<a href='{url}' class='btn btn-primary form_post'>"+_("admin.config.apply_configs")+"</a>"
         flash((_('config.validation-success',link=apply_btn)), 'success')

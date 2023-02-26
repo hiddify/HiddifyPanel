@@ -17,7 +17,7 @@ class Dashboard(FlaskView):
                         d.is_active= hiddify.check_connection_to_remote(remote)
                         if d.is_active:
                             c.is_active=True
-
+                
                 return render_template('parent_dash.html',childs=childs)
         # try:
             def_user=None if len(User.query.all())>1 else User.query.filter(User.name=='default').first()

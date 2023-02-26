@@ -1,4 +1,6 @@
 from hiddifypanel.models import BoolConfig,StrConfig,ConfigEnum,hconfig
+import flask_babel,flask_babelex
+
 # from flask_babelex import lazy_gettext as _
 from flask_babelex import gettext as _
 import wtforms as wtf
@@ -31,8 +33,12 @@ class QuickSetup(FlaskView):
                                 StrConfig.query.filter(StrConfig.key==ConfigEnum.lang,StrConfig.child_id==0).first().value=lang_form.admin_lang.data
                                 StrConfig.query.filter(StrConfig.key==ConfigEnum.admin_lang,StrConfig.child_id==0).first().value=lang_form.admin_lang.data
                                 db.session.commit()
-                                from flask_babel import refresh; refresh()
-                                refresh()
+                                
+                                flask_babel.refresh()
+                                flask_babelex.refresh()
+                                # with flask_babel.force_locale(lang_form.admin_lang.data):
+                                #         flask_babel.refresh()
+                                #         flask_babelex.refresh()
                                 flash((_('quicksetup.setlang.success')), 'success')
                         else:
                                 flash((_('quicksetup.setlang.error')), 'danger')

@@ -1,3 +1,4 @@
+import flask_babel,flask_babelex
 from hiddifypanel.models import BoolConfig,StrConfig,ConfigEnum,hconfig,ConfigCategory
 from wtforms.validators import Regexp, ValidationError
 from flask_babelex import lazy_gettext as _
@@ -68,7 +69,8 @@ class SettingAdmin(FlaskView):
                 # print(cat,vs)
 
             db.session.commit()
-            from flask_babel import refresh; refresh()
+            flask_babel.refresh()
+            flask_babelex.refresh()
             
             if old_configs[ConfigEnum.proxy_path]!=hconfig(ConfigEnum.proxy_path):
                 from . import Actions
@@ -77,13 +79,14 @@ class SettingAdmin(FlaskView):
                 
             hiddify.check_need_reset(old_configs)
             
-
+            if old_configs[ConfigEnum.admin_lang]!=hconfig(ConfigEnum.admin_lang):
+                form=get_config_form()
             return render_template('config.html', form=form)
         flash(_('config.validation-error'), 'danger')
         return render_template('config.html', form=form)
 
         
-        import flask_babelex
+        
         
 
         # form=HelloForm()

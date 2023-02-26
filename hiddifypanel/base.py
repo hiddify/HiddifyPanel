@@ -2,6 +2,7 @@ from dynaconf import FlaskDynaconf
 from wtforms.validators import ValidationError
 from flask import Flask,request,render_template
 
+
 import flask_bootstrap 
 from flask_babelex import Babel
 from hiddifypanel.panel.database import db
