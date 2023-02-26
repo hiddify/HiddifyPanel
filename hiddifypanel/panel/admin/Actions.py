@@ -62,7 +62,8 @@ class Actions(FlaskView):
     
     @route('reinstall', methods=['POST'])
     def reinstall(self,complete_install=True,domain_changed=False):
-
+        if hconfig(ConfigEnum.db_version)<9:
+            return ("Please update your panel before this action.")
         if hconfig(ConfigEnum.parent_panel):
             try:
                 hiddify_api.sync_child_to_parent()
