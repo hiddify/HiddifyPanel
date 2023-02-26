@@ -27,9 +27,9 @@ def update_local_usage():
             d = xray_api.get_usage(user.uuid,reset=True)
             res[user]=d
 
-        add_users_usage(res)
+        return add_users_usage(res)
             
-        return {"status": 'success', "comments":res}
+        # return {"status": 'success', "comments":res}
         
 
 def add_users_usage_uuid(uuids_bytes):
@@ -41,6 +41,8 @@ def add_users_usage_uuid(uuids_bytes):
 def add_users_usage(dbusers_bytes):
     if not hconfig(ConfigEnum.is_parent) and hconfig(ConfigEnum.parent_panel):
         return hiddify_api.add_user_usage_to_parent(dbusers_bytes);
+    res={}
+    have_change=False
     for user,usage_bytes in dbusers_bytes.items():
         if user.mode!=UserMode.no_reset and (datetime.date.today()-user.last_reset_time).days>=package_mode_dic.get(user.mode,1000):
             user.last_reset_time=datetime.date.today()
