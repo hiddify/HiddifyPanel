@@ -39,7 +39,8 @@ class SettingAdmin(FlaskView):
         form=get_config_form()
         if form.validate_on_submit():
             
-            boolconfigs=BoolConfig.query.all()
+
+            boolconfigs=BoolConfig.query.filter(BoolConfig.child_id==0).all()
             bool_types={c.key:'bool' for c in boolconfigs}
             old_configs=get_hconfigs()
             for cat,vs in form.data.items():#[c for c in ConfigEnum]:
@@ -49,7 +50,7 @@ class SettingAdmin(FlaskView):
             
                         if k in [c for c in ConfigEnum]:
                             if k in bool_types:
-                                BoolConfig.query.filter(BoolConfig.key==k,BoolConfig.child_id==0).first().value=v                            
+                                BoolConfig.query.filter(BoolConfig.key==k,BoolConfig.child_id==0).first().value=v
                             else:
                                 if "_domain" in k or k in [ConfigEnum.admin_secret]:
                                     v=v.lower()
@@ -121,7 +122,7 @@ def get_config_form():
     
     
     strconfigs=StrConfig.query.filter(StrConfig.child_id==0).all()
-    boolconfigs=BoolConfig.query.filter(StrConfig.child_id==0).all()
+    boolconfigs=BoolConfig.query.filter(BoolConfig.child_id==0).all()
     bool_types={c.key:'bool' for c in boolconfigs}
 
     configs=[*boolconfigs,*strconfigs]
@@ -163,7 +164,7 @@ def get_config_form():
 
                     if c.key!=ConfigEnum.decoy_domain:
                         validators.append(wtf.validators.NoneOf([d.domain.lower() for d in Domain.query.all()],_("config.Domain already used")))
-                        validators.append(wtf.validators.NoneOf([cc.value.lower() for cc in StrConfig.query.all() if cc.key!=c.key and  "fakedomain" in cc.key and cc.key!=ConfigEnum.decoy_domain],_("config.Domain already used")))
+                        validators.append(wtf.validators.NoneOf([cc.value.lower() for cc in StrConfig.query.filter(StrConfig.child_id==0).all() if cc.key!=c.key and  "fakedomain" in cc.key and cc.key!=ConfigEnum.decoy_domain],_("config.Domain already used")))
                     render_kw['required']=""
                 
                 if c.key ==ConfigEnum.parent_panel:

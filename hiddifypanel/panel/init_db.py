@@ -12,6 +12,64 @@ import random
 import uuid
 import urllib
 import string
+def init_db():
+    
+    
+
+    db.create_all()
+    
+    try:
+        column_type = Domain.alias.type.compile(db.engine.dialect)
+        db.engine.execute(f'ALTER TABLE domain ADD COLUMN alias {column_type}')
+        column_type = Domain.child_id.type.compile(db.engine.dialect)
+        db.engine.execute(f'ALTER TABLE domain ADD COLUMN child_id {column_type} DEFAULT 0')
+        column_type = Proxy.child_id.type.compile(db.engine.dialect)
+        db.engine.execute(f'ALTER TABLE proxy ADD COLUMN child_id {column_type} DEFAULT 0')
+        column_type = BoolConfig.child_id.type.compile(db.engine.dialect)
+        db.engine.execute(f'ALTER TABLE bool_config ADD COLUMN child_id {column_type} DEFAULT 0')
+        column_type = StrConfig.child_id.type.compile(db.engine.dialect)
+        db.engine.execute(f'ALTER TABLE str_config ADD COLUMN child_id {column_type} DEFAULT 0')
+    except:pass
+
+    if len(Domain.query.all())!=0 and BoolConfig.query.count()==0:
+        db.engine.execute(f'DROP TABLE bool_config')
+        db.engine.execute(f'ALTER TABLE bool_config_old RENAME TO bool_config')
+    if len(Domain.query.all())!=0 and StrConfig.query.count()==0:
+        db.engine.execute(f'DROP TABLE str_config')
+        db.engine.execute(f'ALTER TABLE str_config_old RENAME TO str_config')
+
+    try:
+        db.engine.execute('ALTER TABLE user ADD COLUMN monthly BOOLEAN')
+        db.engine.execute('ALTER TABLE user RENAME COLUMN monthly_usage_limit_GB TO usage_limit_GB')       
+    except:
+        pass
+    try:
+        db.engine.execute(f'update str_config set child_id=0 where child_id is NULL')
+        db.engine.execute(f'update bool_config set child_id=0 where child_id is NULL')
+        column_type = Domain.cdn_ip.type.compile(db.engine.dialect)
+        db.engine.execute(f'ALTER TABLE domain ADD COLUMN cdn_ip {column_type}')
+    except:
+        pass
+    
+    db_version=int(hconfig(ConfigEnum.db_version) or 0) 
+    print(f"Current DB version is {db_version}")
+
+    db_actions={1:_v1,2:_v2,3:_v3,6:_v6,8:_v8,9:_v9,10:_v10}
+    for ver,db_action in db_actions.items():
+        if ver<=db_version:continue
+        print(f"Updating db from version {db_version}")
+        db_action()
+        db.session.commit()
+        print(f"Updated successfuly db from version {db_version} to {ver}")
+        db_version=ver
+
+    # 
+    
+    StrConfig.query.filter(StrConfig.key == ConfigEnum.db_version and StrConfig.child_id==0).update({'value': db_version})
+    db.session.commit()
+    return BoolConfig.query.all()
+
+
 
 def get_random_string():
     # With combination of lower and upper case
@@ -167,62 +225,6 @@ def _v10():
     
     db.session.bulk_save_objects(rows)
     
-
-def init_db():
-    
-    
-
-    db.create_all()
-    
-    try:
-        column_type = Domain.alias.type.compile(db.engine.dialect)
-        db.engine.execute(f'ALTER TABLE domain ADD COLUMN alias {column_type}')
-        column_type = Domain.child_id.type.compile(db.engine.dialect)
-        db.engine.execute(f'ALTER TABLE domain ADD COLUMN child_id {column_type} DEFAULT 0')
-        column_type = Proxy.child_id.type.compile(db.engine.dialect)
-        db.engine.execute(f'ALTER TABLE proxy ADD COLUMN child_id {column_type} DEFAULT 0')
-        column_type = BoolConfig.child_id.type.compile(db.engine.dialect)
-        db.engine.execute(f'ALTER TABLE bool_config ADD COLUMN child_id {column_type} DEFAULT 0')
-        column_type = StrConfig.child_id.type.compile(db.engine.dialect)
-        db.engine.execute(f'ALTER TABLE str_config ADD COLUMN child_id {column_type} DEFAULT 0')
-    except:pass
-
-    if len(Domain.query.all())!=0 and BoolConfig.query.count()==0:
-        db.engine.execute(f'DROP TABLE bool_config')
-        db.engine.execute(f'ALTER TABLE bool_config_old RENAME TO bool_config')
-    if len(Domain.query.all())!=0 and StrConfig.query.count()==0:
-        db.engine.execute(f'DROP TABLE str_config')
-        db.engine.execute(f'ALTER TABLE str_config_old RENAME TO str_config')
-
-    try:
-        db.engine.execute('ALTER TABLE user ADD COLUMN monthly BOOLEAN')
-        db.engine.execute('ALTER TABLE user RENAME COLUMN monthly_usage_limit_GB TO usage_limit_GB')       
-    except:
-        pass
-    try:
-        db.engine.execute(f'update str_config set child_id=0 where child_id is NULL')
-        column_type = Domain.cdn_ip.type.compile(db.engine.dialect)
-        db.engine.execute(f'ALTER TABLE domain ADD COLUMN cdn_ip {column_type}')
-    except:
-        pass
-    
-    db_version=int(hconfig(ConfigEnum.db_version) or 0) 
-    print(f"Current DB version is {db_version}")
-
-    db_actions={1:_v1,2:_v2,3:_v3,6:_v6,8:_v8,9:_v9,10:_v10}
-    for ver,db_action in db_actions.items():
-        if ver<=db_version:continue
-        print(f"Updating db from version {db_version}")
-        db_action()
-        db.session.commit()
-        print(f"Updated successfuly db from version {db_version} to {ver}")
-        db_version=ver
-
-    # 
-    
-    StrConfig.query.filter(StrConfig.key == ConfigEnum.db_version and StrConfig.child_id==0).update({'value': db_version})
-    db.session.commit()
-    return BoolConfig.query.all()
 
 
 
