@@ -120,8 +120,8 @@ class SettingAdmin(FlaskView):
 def get_config_form():
     
     
-    strconfigs=StrConfig.query.all()
-    boolconfigs=BoolConfig.query.all()
+    strconfigs=StrConfig.query.filter(StrConfig.child_id==0).all()
+    boolconfigs=BoolConfig.query.filter(StrConfig.child_id==0).all()
     bool_types={c.key:'bool' for c in boolconfigs}
 
     configs=[*boolconfigs,*strconfigs]
