@@ -104,6 +104,7 @@ def domain_dict(d):
     return {
             'domain':d.domain,
             'mode':d.mode,
+            'alias':d.alias,
             'child_ip':d.child.ip if d.child else '',
             'cdn_ip':d.cdn_ip,
             'show_domains':[dd.domain for dd in d.show_domains]
@@ -327,8 +328,9 @@ def set_db_from_json(json_data,override_child_id=None,set_users=True,set_domains
             dbuser.last_reset_time=datetime.datetime.strptime(user['last_reset_time'],'%Y-%m-%d')
             dbuser.usage_limit_GB=user['usage_limit_GB']
             dbuser.name=user['name']
-            dbuser.comment=user['comment']
-            dbuser.mode=user['mode']              
+            dbuser.comment=user.get('comment','')
+            dbuser.mode=user['mode']         
+            # dbuser.last_online=user.get('last_online','')
     if remove_users  and 'users' in json_data:
         dd={u.uuid:1 for u in json_data['users']}
         for d in User.query.all():
@@ -345,6 +347,7 @@ def set_db_from_json(json_data,override_child_id=None,set_users=True,set_domains
             
             dbdomain.mode=domain['mode']
             dbdomain.cdn_ip=domain.get('cdn_ip','')
+            domain.alias=domain.get('alias','')
             show_domains=domain.get('show_domains',[])
             dbdomain.show_domains=Domain.query.filter(Domain.domain.in_(show_domains)).all()
     if remove_domains and override_child_id is not None and 'domains' in json_data:
