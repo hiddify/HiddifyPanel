@@ -170,11 +170,17 @@ def _v10():
     
 
 def init_db():
-    # db.engine.execute(f'ALTER TABLE bool_config_old RENAME TO bool_config')
-    # db.engine.execute(f'ALTER TABLE str_config_old RENAME TO str_config')
+    
+    
 
     db.create_all()
-    
+    if len(Domain.query.all())!=0 and BoolConfig.query.count()==0:
+        db.engine.execute(f'DROP TABLE bool_config')
+        db.engine.execute(f'ALTER TABLE bool_config_old RENAME TO bool_config')
+    if len(Domain.query.all())!=0 and StrConfig.query.count()==0:
+        db.engine.execute(f'DROP TABLE str_config')
+        db.engine.execute(f'ALTER TABLE str_config_old RENAME TO str_config')
+
     try:
         column_type = Domain.child_id.type.compile(db.engine.dialect)
         db.engine.execute(f'ALTER TABLE domain ADD COLUMN child_id {column_type}')
