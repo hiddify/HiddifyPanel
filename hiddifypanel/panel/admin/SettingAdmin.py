@@ -49,7 +49,7 @@ class SettingAdmin(FlaskView):
             
                         if k in [c for c in ConfigEnum]:
                             if k in bool_types:
-                                BoolConfig.query.filter(BoolConfig.key==k).first().value=v                            
+                                BoolConfig.query.filter(BoolConfig.key==k,BoolConfig.child_id==0).first().value=v                            
                             else:
                                 if "_domain" in k or k in [ConfigEnum.admin_secret]:
                                     v=v.lower()
@@ -64,7 +64,7 @@ class SettingAdmin(FlaskView):
                                     except:
                                         flash(_("Can not connect to parent panel!"),'error')
                                         return render_template('config.html', form=form)
-                                StrConfig.query.filter(StrConfig.key==k).first().value=v
+                                StrConfig.query.filter(StrConfig.key==k,BoolConfig.child_id==0).first().value=v
 
                 # print(cat,vs)
 
