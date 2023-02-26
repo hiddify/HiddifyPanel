@@ -55,7 +55,7 @@ def init_db():
     
     db_version=int(hconfig(ConfigEnum.db_version) or 0) 
     start_version=db_version
-    print(f"Current DB version is {db_version}")
+    # print(f"Current DB version is {db_version}")
     if not Child.query.filter(Child.id==0).first():
         print(Child.query.filter(Child.id==0).first())
         db.session.add(Child(ip="self",id=0))
