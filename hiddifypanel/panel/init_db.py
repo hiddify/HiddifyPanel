@@ -65,7 +65,7 @@ def init_db():
 
     # 
     
-    StrConfig.query.filter(StrConfig.key == ConfigEnum.db_version and StrConfig.child_id==0).update({'value': db_version})
+    StrConfig.query.filter(StrConfig.key == ConfigEnum.db_version, StrConfig.child_id==0).update({'value': db_version})
     db.session.commit()
     return BoolConfig.query.all()
 
