@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-25 20:23+0100\n"
-"PO-Revision-Date: 2023-02-22 17:24-0600\n"
+"POT-Creation-Date: 2023-02-26 09:37+0100\n"
+"PO-Revision-Date: 2023-02-26 02:37-0600\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Generated-By: Babel 2.11.0\n"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/panel/hiddify.py:182
+#: hiddifypanel/panel/hiddify.py:183
 msgid "admin.config.apply_configs"
 msgstr "اعمال تنظیمات"
 
@@ -23,14 +23,14 @@ msgstr "اعمال تنظیمات"
 # | "Configs have been changed successfully. Click %(link)s to apply the
 # configs."
 # | " It may take 2 minutes to apply."
-#: hiddifypanel/panel/hiddify.py:183
+#: hiddifypanel/panel/hiddify.py:184
 msgid "config.validation-success"
 msgstr ""
 "تنظیمات با موفقیت ذخیره شدند. لطفا بر روی این لینک: %(link)s کلیک کنید تا"
 " بر روی سیستم اعمال شوند. این کار ممکن است 2 دقیقه طول بکشد.\n"
 
 # | msgid "Configs have been changed successfully."
-#: hiddifypanel/panel/hiddify.py:185
+#: hiddifypanel/panel/hiddify.py:186
 msgid "config.validation-success-no-reset"
 msgstr "تنظیمات با موفقیت تغییر کرد."
 
@@ -41,7 +41,7 @@ msgstr "تنظیمات با موفقیت تغییر کرد."
 #: hiddifypanel/panel/admin/ChildAdmin.py:108
 #: hiddifypanel/panel/admin/DomainAdmin.py:111
 #: hiddifypanel/panel/admin/ParentDomainAdmin.py:108
-#: hiddifypanel/panel/admin/QuickSetup.py:108 hiddifypanel/panel/hiddify.py:274
+#: hiddifypanel/panel/admin/QuickSetup.py:108 hiddifypanel/panel/hiddify.py:275
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr "دامنه قابل دسترسی نیست! در دامنه شما مشکلی وجود دارد."
 
@@ -51,12 +51,12 @@ msgstr "دامنه قابل دسترسی نیست! در دامنه شما مشک
 msgid "rebooting system may takes time please wait"
 msgstr "راه اندازی مجدد سیستم ممکن است اندکی زمان ببرد. لطفا صبر کنید..."
 
+# | msgid "Can not sync child with parent panel"
 #: hiddifypanel/panel/admin/Actions.py:70
 msgid "can not sync child with parent panel"
-msgstr ""
+msgstr "نمی توانم این پنل را با پنل مرکزی همگام سازی کنم"
 
 #: hiddifypanel/panel/admin/Actions.py:76
-#, fuzzy
 msgid ""
 "Your domains changed. Please do not forget to copy admin links, otherwise"
 " you can not access to the panel anymore."
@@ -104,12 +104,14 @@ msgid "Restore File Description"
 msgstr "برای بازگردانی، فایل دانلود شده (بک آپ) را از سیستم خود انتخاب کنید."
 
 #: hiddifypanel/panel/admin/Backup.py:60
+#, fuzzy
 msgid "Restore Settings"
-msgstr ""
+msgstr "بازیابی تنظیمات"
 
 #: hiddifypanel/panel/admin/Backup.py:60
+#, fuzzy
 msgid "Restore Settings description"
-msgstr ""
+msgstr "شرح تنظیمات بازیابی"
 
 #: hiddifypanel/panel/admin/Backup.py:61
 msgid "Restore Users"
@@ -211,8 +213,9 @@ msgstr "مدیریت"
 
 #: hiddifypanel/panel/admin/ChildAdmin.py:111
 #: hiddifypanel/panel/admin/ParentDomainAdmin.py:111
+#, fuzzy
 msgid "Domain is not correctly mapped to this server!"
-msgstr ""
+msgstr "دامنه به درستی به این سرور نگاشت نشده است!"
 
 #: hiddifypanel/panel/admin/Dashboard.py:29
 #, python-format
@@ -500,8 +503,9 @@ msgstr ""
 
 #: hiddifypanel/panel/admin/SettingAdmin.py:61
 #: hiddifypanel/panel/admin/SettingAdmin.py:64
+#, fuzzy
 msgid "Can not connect to parent panel!"
-msgstr ""
+msgstr "نمی توان به پنل مرکزی متصل شد!"
 
 # | msgid "Chinese چینی 中国人"
 #: hiddifypanel/panel/admin/SettingAdmin.py:141
@@ -549,8 +553,9 @@ msgstr ""
 "اشکالاتی داشته باشد. بعد از تغییر حتما تست کنید."
 
 #: hiddifypanel/panel/admin/SettingAdmin.py:167
+#, fuzzy
 msgid "Invalid admin link"
-msgstr ""
+msgstr "لینک مدیریت نامعتبر است"
 
 # | msgid ""
 # | "Invalid link. it should be on this format: (https or http://example.com)"
@@ -591,68 +596,79 @@ msgid "config.port 443 is required"
 msgstr "پورت ۴۴۳ همیشه باید در دسترس باشد."
 
 # | msgid "Actions"
-#: hiddifypanel/panel/admin/UserAdmin.py:44
+#: hiddifypanel/panel/admin/UserAdmin.py:45
 msgid "actions"
 msgstr "عملیات"
 
 # | msgid "Name"
-#: hiddifypanel/panel/admin/UserAdmin.py:45
+#: hiddifypanel/panel/admin/UserAdmin.py:46
 msgid "user.name"
 msgstr "نام"
 
 # | msgid "User Links"
-#: hiddifypanel/panel/admin/UserAdmin.py:46
+#: hiddifypanel/panel/admin/UserAdmin.py:47
 msgid "user.user_links"
 msgstr "لینک‌های کاربر"
 
 # | msgid "Usage Limit (GB)"
-#: hiddifypanel/panel/admin/UserAdmin.py:47
+#: hiddifypanel/panel/admin/UserAdmin.py:48
 msgid "user.usage_limit_GB"
 msgstr "محدودیت حجم (گیگابایت)"
 
 # | msgid "Monthly"
-#: hiddifypanel/panel/admin/UserAdmin.py:48
+#: hiddifypanel/panel/admin/UserAdmin.py:49
 msgid "Reset every month"
 msgstr "ماهیانه"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:49
+#: hiddifypanel/panel/admin/UserAdmin.py:50
+#, fuzzy
 msgid "Mode"
-msgstr ""
+msgstr "حالت"
 
 # | msgid "Current Usage (GB)"
-#: hiddifypanel/panel/admin/UserAdmin.py:50
+#: hiddifypanel/panel/admin/UserAdmin.py:51
 msgid "user.current_usage_GB"
 msgstr "حجم استفاده شده کنونی (گیگابایت)"
 
 # | msgid "Expire Time"
-#: hiddifypanel/panel/admin/UserAdmin.py:51
+#: hiddifypanel/panel/admin/UserAdmin.py:52
 msgid "user.expiry_time"
 msgstr "زمان انقضا"
 
 # | msgid "UUID"
-#: hiddifypanel/panel/admin/UserAdmin.py:53
+#: hiddifypanel/panel/admin/UserAdmin.py:54
 msgid "user.UUID"
 msgstr "UUID"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:54
+#: hiddifypanel/panel/admin/UserAdmin.py:55
+#, fuzzy
 msgid "Note"
-msgstr ""
-
-#: hiddifypanel/panel/admin/UserAdmin.py:66
-msgid "Add some text that is only visible to you."
-msgstr ""
+msgstr "یادداشت"
 
 #: hiddifypanel/panel/admin/UserAdmin.py:67
-msgid "Define the user mode. Should the usage reset every month?"
-msgstr ""
+#, fuzzy
+msgid "Add some text that is only visible to you."
+msgstr "متنی را اضافه کنید که فقط برای شما قابل مشاهده است."
 
 #: hiddifypanel/panel/admin/UserAdmin.py:68
+#, fuzzy
+msgid "Define the user mode. Should the usage reset every month?"
+msgstr "حالت کاربر را تعریف کنید. آیا استفاده باید هر ماه بازنشانی شود؟"
+
+#: hiddifypanel/panel/admin/UserAdmin.py:69
 msgid ""
 "If monthly is enabled, the usage will be reset after 30 days from this "
 "date."
 msgstr ""
 "اگر گزینه ماهانه فعال باشد، حجم مصرفی کاربران 30 روز بعد از این تاریخ "
 "ریست می‌شود"
+
+# | msgid "Days"
+#: hiddifypanel/panel/admin/UserAdmin.py:122
+#: hiddifypanel/panel/user/templates/home/usage.html:16
+#: hiddifypanel/panel/user/templates/home/usage.html:20
+msgid "days"
+msgstr "روز"
 
 #: hiddifypanel/panel/admin/templates/backup.html:9
 #: hiddifypanel/templates/admin-layout.html:99
@@ -709,6 +725,21 @@ msgstr "رمز ادمین"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.admin_secret.description"
 msgstr "رمز ادمین برای دسترسی به پنل ادمین استفاده خواهد شد. "
+
+# | msgid "Parent Panel (Multi Server)"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.parent_panel.label"
+msgstr "پنل پدر (مالتی سرور)"
+
+# | msgid ""
+# | "You can connect to the central panel to define only one user and the
+# usage "
+# | "of all servers will be added cumulatively."
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.parent_panel.description"
+msgstr ""
+"می‌توانید از این طریق به پنل مرکزی وصل کنید، تا فقط در یک پنل یوزر تعریف "
+"کنید و حجم های پنل ها تجمیعی حساب میشه "
 
 # | msgid "Admin Settings"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -789,19 +820,6 @@ msgstr "شخصی‌سازی صفحه کاربران"
 msgid "config.branding.description"
 msgstr "متنی که در این قسمت وارد می‌کنید، در صفحه کاربر نمایش داده می‌شود."
 
-# | msgid "Netdata"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.netdata.label"
-msgstr "Netdata"
-
-# | msgid ""
-# | "For displaying resources. Uses your server's CPU but it is not too much."
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.netdata.description"
-msgstr ""
-"نت دیتا ابزاری است برای نمایش مقدار استفاده سیستم از منابع. فعالسازی آن "
-"ممکن است از اندکی از CPU شما استفاده کند."
-
 # | msgid "Auto Update"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.auto_update.label"
@@ -839,6 +857,32 @@ msgstr "فقط آی‌پی ورژن 4"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.only_ipv4.description"
 msgstr "IPv6 را غیر فعال می‌کند. "
+
+# | msgid "Netdata"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.netdata.label"
+msgstr "Netdata"
+
+# | msgid ""
+# | "For displaying resources. Uses your server's CPU but it is not too much."
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.netdata.description"
+msgstr ""
+"نت دیتا ابزاری است برای نمایش مقدار استفاده سیستم از منابع. فعالسازی آن "
+"ممکن است از اندکی از CPU شما استفاده کند."
+
+# | msgid "Secret Proxy Path"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.proxy_path.label"
+msgstr "مسیر مخفی پروکسی"
+
+# | msgid ""
+# | "We use secret proxy path to hide our proxies for the gouvernment."
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.proxy_path.description"
+msgstr ""
+"ما از مسیر‌های پروکسی مخفی استفاده میکنیم تا پروکسی‌ها را از فیلترچی مخفی"
+" کنیم."
 
 # | msgid "General Settings"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1162,6 +1206,23 @@ msgstr "KCP"
 msgid "config.kcp.description"
 msgstr "تنظیمات KCP"
 
+# | msgid "Parent Panel"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.is_parent.label"
+msgstr "پنل پدر"
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.is_parent.description"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.unique_id.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.unique_id.description"
+msgstr ""
+
 # | msgid "KCP ports"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.kcp_ports.label"
@@ -1185,19 +1246,6 @@ msgstr "KCP را فعال کنید."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.kcp_enable.description"
 msgstr "این یک پروتکل مبتنی بر UDP است."
-
-# | msgid "Secret Proxy Path"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.proxy_path.label"
-msgstr "مسیر مخفی پروکسی"
-
-# | msgid ""
-# | "We use secret proxy path to hide our proxies for the gouvernment."
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.proxy_path.description"
-msgstr ""
-"ما از مسیر‌های پروکسی مخفی استفاده میکنیم تا پروکسی‌ها را از فیلترچی مخفی"
-" کنیم."
 
 # | msgid "Torrent Block Configuration"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1366,8 +1414,9 @@ msgstr ""
 "فعال کنید."
 
 #: hiddifypanel/panel/admin/templates/parent_dash.html:19
+#, fuzzy
 msgid "Childs"
-msgstr ""
+msgstr "فرزندان"
 
 #: hiddifypanel/panel/admin/templates/parent_dash.html:23
 #: hiddifypanel/panel/user/templates/home/all-configs.html:9
@@ -2122,12 +2171,6 @@ msgstr "ماهانه"
 msgid "user.home.usage.expire"
 msgstr "مدت زمان باقی مانده:"
 
-# | msgid "Days"
-#: hiddifypanel/panel/user/templates/home/usage.html:16
-#: hiddifypanel/panel/user/templates/home/usage.html:20
-msgid "days"
-msgstr "روز"
-
 # | msgid "Traffic usage reset time:"
 #: hiddifypanel/panel/user/templates/home/usage.html:20
 msgid "Reset Usage Time:"
@@ -2253,8 +2296,9 @@ msgstr "هایدیفای"
 
 #: hiddifypanel/templates/admin-layout.html:20
 #: hiddifypanel/templates/admin-layout.html:47
+#, fuzzy
 msgid "Parent Panel"
-msgstr ""
+msgstr "پنل مرکزی"
 
 # | msgid "Apply Configs"
 #: hiddifypanel/templates/admin-layout.html:28
@@ -2273,8 +2317,9 @@ msgid "admin.menu.user"
 msgstr "کاربران"
 
 #: hiddifypanel/templates/admin-layout.html:66
+#, fuzzy
 msgid "in parent panel"
-msgstr ""
+msgstr "در پنل مرکزی"
 
 # | msgid "Domains"
 #: hiddifypanel/templates/admin-layout.html:71

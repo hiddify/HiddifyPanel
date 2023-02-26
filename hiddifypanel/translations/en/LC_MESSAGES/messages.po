@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-25 20:23+0100\n"
-"PO-Revision-Date: 2023-02-22 17:24-0600\n"
+"POT-Creation-Date: 2023-02-26 09:37+0100\n"
+"PO-Revision-Date: 2023-02-26 02:37-0600\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -15,21 +15,21 @@ msgstr ""
 "Generated-By: Babel 2.11.0\n"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/panel/hiddify.py:182
+#: hiddifypanel/panel/hiddify.py:183
 msgid "admin.config.apply_configs"
 msgstr "Apply Configs"
 
 # | msgid ""
 # | "Configs have been changed successfully. Click %(link)s to apply the "
 # | "configs. It may take 2 minutes to apply."
-#: hiddifypanel/panel/hiddify.py:183
+#: hiddifypanel/panel/hiddify.py:184
 msgid "config.validation-success"
 msgstr ""
 "Configs have been changed successfully. Click %(link)s to apply the configs."
 " It may take 2 minutes to apply."
 
 # | msgid "Configs have been changed successfully."
-#: hiddifypanel/panel/hiddify.py:185
+#: hiddifypanel/panel/hiddify.py:186
 msgid "config.validation-success-no-reset"
 msgstr "Configs have been changed successfully."
 
@@ -40,7 +40,7 @@ msgstr "Configs have been changed successfully."
 #: hiddifypanel/panel/admin/DomainAdmin.py:111
 #: hiddifypanel/panel/admin/ParentDomainAdmin.py:108
 #: hiddifypanel/panel/admin/QuickSetup.py:108
-#: hiddifypanel/panel/hiddify.py:274
+#: hiddifypanel/panel/hiddify.py:275
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr ""
 "Domain can not be resolved! There is a problem in your domain. Please check "
@@ -51,10 +51,11 @@ msgstr ""
 msgid "rebooting system may takes time please wait"
 msgstr "Rebooting System... This may take afew minutes. Please wait..."
 
+# | msgid "Can not sync child with parent panel"
 #: hiddifypanel/panel/admin/Actions.py:70
 #, fuzzy
 msgid "can not sync child with parent panel"
-msgstr "can not sync child with parent panel"
+msgstr "Can not sync child with parent panel"
 
 #: hiddifypanel/panel/admin/Actions.py:76
 msgid ""
@@ -102,12 +103,10 @@ msgid "Restore File Description"
 msgstr "Choose the downloaded restore file."
 
 #: hiddifypanel/panel/admin/Backup.py:60
-#, fuzzy
 msgid "Restore Settings"
 msgstr "Restore Settings"
 
 #: hiddifypanel/panel/admin/Backup.py:60
-#, fuzzy
 msgid "Restore Settings description"
 msgstr "Restore Settings description"
 
@@ -207,7 +206,6 @@ msgstr "Admin"
 
 #: hiddifypanel/panel/admin/ChildAdmin.py:111
 #: hiddifypanel/panel/admin/ParentDomainAdmin.py:111
-#, fuzzy
 msgid "Domain is not correctly mapped to this server!"
 msgstr "Domain is not correctly mapped to this server!"
 
@@ -482,7 +480,6 @@ msgstr ""
 
 #: hiddifypanel/panel/admin/SettingAdmin.py:61
 #: hiddifypanel/panel/admin/SettingAdmin.py:64
-#, fuzzy
 msgid "Can not connect to parent panel!"
 msgstr "Can not connect to parent panel!"
 
@@ -531,7 +528,6 @@ msgstr ""
 "changing it."
 
 #: hiddifypanel/panel/admin/SettingAdmin.py:167
-#, fuzzy
 msgid "Invalid admin link"
 msgstr "Invalid admin link"
 
@@ -575,71 +571,74 @@ msgid "config.port 443 is required"
 msgstr "Port 443 should always be presented. "
 
 # | msgid "Actions"
-#: hiddifypanel/panel/admin/UserAdmin.py:44
+#: hiddifypanel/panel/admin/UserAdmin.py:45
 msgid "actions"
 msgstr "Actions"
 
 # | msgid "Name"
-#: hiddifypanel/panel/admin/UserAdmin.py:45
+#: hiddifypanel/panel/admin/UserAdmin.py:46
 msgid "user.name"
 msgstr "Name"
 
 # | msgid "User Links"
-#: hiddifypanel/panel/admin/UserAdmin.py:46
+#: hiddifypanel/panel/admin/UserAdmin.py:47
 msgid "user.user_links"
 msgstr "User Links"
 
 # | msgid "Usage Limit (GB)"
-#: hiddifypanel/panel/admin/UserAdmin.py:47
+#: hiddifypanel/panel/admin/UserAdmin.py:48
 msgid "user.usage_limit_GB"
 msgstr "Usage Limit (GB)"
 
 # | msgid "Monthly"
-#: hiddifypanel/panel/admin/UserAdmin.py:48
+#: hiddifypanel/panel/admin/UserAdmin.py:49
 msgid "Reset every month"
 msgstr "Monthly"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:49
-#, fuzzy
+#: hiddifypanel/panel/admin/UserAdmin.py:50
 msgid "Mode"
 msgstr "Mode"
 
 # | msgid "Current Usage (GB)"
-#: hiddifypanel/panel/admin/UserAdmin.py:50
+#: hiddifypanel/panel/admin/UserAdmin.py:51
 msgid "user.current_usage_GB"
 msgstr "Current Usage (GB)"
 
 # | msgid "Expire Time"
-#: hiddifypanel/panel/admin/UserAdmin.py:51
+#: hiddifypanel/panel/admin/UserAdmin.py:52
 msgid "user.expiry_time"
 msgstr "Expire Time"
 
 # | msgid "UUID"
-#: hiddifypanel/panel/admin/UserAdmin.py:53
+#: hiddifypanel/panel/admin/UserAdmin.py:54
 msgid "user.UUID"
 msgstr "UUID"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:54
-#, fuzzy
+#: hiddifypanel/panel/admin/UserAdmin.py:55
 msgid "Note"
 msgstr "Note"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:66
-#, fuzzy
+#: hiddifypanel/panel/admin/UserAdmin.py:67
 msgid "Add some text that is only visible to you."
 msgstr "Add some text that is only visible to you."
 
-#: hiddifypanel/panel/admin/UserAdmin.py:67
-#, fuzzy
+#: hiddifypanel/panel/admin/UserAdmin.py:68
 msgid "Define the user mode. Should the usage reset every month?"
 msgstr "Define the user mode. Should the usage reset every month?"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:68
+#: hiddifypanel/panel/admin/UserAdmin.py:69
 #, fuzzy
 msgid ""
 "If monthly is enabled, the usage will be reset after 30 days from this date."
 msgstr ""
 "If monthly is enabled, the usage will be reset after 30 days from this date."
+
+# | msgid "Days"
+#: hiddifypanel/panel/admin/UserAdmin.py:122
+#: hiddifypanel/panel/user/templates/home/usage.html:16
+#: hiddifypanel/panel/user/templates/home/usage.html:20
+msgid "days"
+msgstr "Days"
 
 #: hiddifypanel/panel/admin/templates/backup.html:9
 #: hiddifypanel/templates/admin-layout.html:99
@@ -695,6 +694,20 @@ msgstr "Admin Secret"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.admin_secret.description"
 msgstr "Admin Secret will be used for accessing admin panel"
+
+# | msgid "Parent Panel (Multi Server)"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.parent_panel.label"
+msgstr "Parent Panel (Multi Server)"
+
+# | msgid ""
+# | "You can connect to the central panel to define only one user and the "
+# | "usage of all servers will be added cumulatively."
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.parent_panel.description"
+msgstr ""
+"You can connect to the central panel to define only one user and the usage "
+"of all servers will be added cumulatively."
 
 # | msgid "Admin Settings"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -776,18 +789,6 @@ msgstr "Customizing User Page"
 msgid "config.branding.description"
 msgstr "Customization settings for user page"
 
-# | msgid "Netdata"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.netdata.label"
-msgstr "Netdata"
-
-# | msgid ""
-# | "For displaying resources. Uses your server's CPU but it is not too much."
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.netdata.description"
-msgstr ""
-"For displaying resources. Uses your server's CPU but it is not too much."
-
 # | msgid "Auto Update"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.auto_update.label"
@@ -825,6 +826,28 @@ msgstr "Only IPv4"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.only_ipv4.description"
 msgstr "It will disable IPv6"
+
+# | msgid "Netdata"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.netdata.label"
+msgstr "Netdata"
+
+# | msgid ""
+# | "For displaying resources. Uses your server's CPU but it is not too much."
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.netdata.description"
+msgstr ""
+"For displaying resources. Uses your server's CPU but it is not too much."
+
+# | msgid "Secret Proxy Path"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.proxy_path.label"
+msgstr "Secret Proxy Path"
+
+# | msgid "We use secret proxy path to hide our proxies for the gouvernment."
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.proxy_path.description"
+msgstr "We use secret proxy path to hide our proxies for the gouvernment."
 
 # | msgid "General Settings"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1136,6 +1159,26 @@ msgstr "KCP"
 msgid "config.kcp.description"
 msgstr "KCP Configurations could be set in this section."
 
+# | msgid "Parent Panel"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.is_parent.label"
+msgstr "Parent Panel"
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.is_parent.description"
+msgstr "config.is_parent.description"
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.unique_id.label"
+msgstr "config.unique_id.label"
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.unique_id.description"
+msgstr "config.unique_id.description"
+
 # | msgid "KCP ports"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.kcp_ports.label"
@@ -1158,16 +1201,6 @@ msgstr "Enable KCP"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.kcp_enable.description"
 msgstr "It is a UDP based protocol "
-
-# | msgid "Secret Proxy Path"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.proxy_path.label"
-msgstr "Secret Proxy Path"
-
-# | msgid "We use secret proxy path to hide our proxies for the gouvernment."
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.proxy_path.description"
-msgstr "We use secret proxy path to hide our proxies for the gouvernment."
 
 # | msgid "Torrent Block Configuration"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1333,7 +1366,6 @@ msgstr ""
 "information."
 
 #: hiddifypanel/panel/admin/templates/parent_dash.html:19
-#, fuzzy
 msgid "Childs"
 msgstr "Childs"
 
@@ -2058,12 +2090,6 @@ msgstr "Monthly"
 msgid "user.home.usage.expire"
 msgstr "Expire in: "
 
-# | msgid "Days"
-#: hiddifypanel/panel/user/templates/home/usage.html:16
-#: hiddifypanel/panel/user/templates/home/usage.html:20
-msgid "days"
-msgstr "Days"
-
 # | msgid "Traffic usage reset time:"
 #: hiddifypanel/panel/user/templates/home/usage.html:20
 msgid "Reset Usage Time:"
@@ -2183,7 +2209,6 @@ msgstr "Hiddify Panel"
 
 #: hiddifypanel/templates/admin-layout.html:20
 #: hiddifypanel/templates/admin-layout.html:47
-#, fuzzy
 msgid "Parent Panel"
 msgstr "Parent Panel"
 
@@ -2204,7 +2229,6 @@ msgid "admin.menu.user"
 msgstr "Users"
 
 #: hiddifypanel/templates/admin-layout.html:66
-#, fuzzy
 msgid "in parent panel"
 msgstr "in parent panel"
 
