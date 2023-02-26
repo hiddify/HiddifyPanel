@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-26 09:37+0100\n"
-"PO-Revision-Date: 2023-02-26 02:37-0600\n"
+"POT-Creation-Date: 2023-02-26 09:43+0100\n"
+"PO-Revision-Date: 2023-02-26 02:41-0600\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -633,7 +633,7 @@ msgstr "حجم استفاده شده کنونی (گیگابایت)"
 # | msgid "Expire Time"
 #: hiddifypanel/panel/admin/UserAdmin.py:52
 msgid "user.expiry_time"
-msgstr "زمان انقضا"
+msgstr "زمان انقضا (روز)"
 
 # | msgid "UUID"
 #: hiddifypanel/panel/admin/UserAdmin.py:54
@@ -655,13 +655,16 @@ msgstr "متنی را اضافه کنید که فقط برای شما قابل �
 msgid "Define the user mode. Should the usage reset every month?"
 msgstr "حالت کاربر را تعریف کنید. آیا استفاده باید هر ماه بازنشانی شود؟"
 
+# | msgid ""
+# | "If the monthly option is enabled, when this number reaches 30, the user "
+# | "usage will be reset (for weekly and daily this number is 7 and 1)"
 #: hiddifypanel/panel/admin/UserAdmin.py:69
 msgid ""
 "If monthly is enabled, the usage will be reset after 30 days from this "
 "date."
 msgstr ""
-"اگر گزینه ماهانه فعال باشد، حجم مصرفی کاربران 30 روز بعد از این تاریخ "
-"ریست می‌شود"
+"اگر گزینه ماهانه فعال باشد، وقتی این عدد به 30 برسد حجم کاربر ریست می‌شود"
+" (برای هفتگی و روزانه این عدد 7 و 1 است)"
 
 # | msgid "Days"
 #: hiddifypanel/panel/admin/UserAdmin.py:122
@@ -2558,7 +2561,7 @@ msgstr "عملیات"
 
 # | msgid "Last usage date reset"
 #~ msgid "user.last_reset_time"
-#~ msgstr "آخرین تاریخ بازنشانی حجم استفاده شده"
+#~ msgstr "زمان ریست کردن حجم (روز پیش)"
 
 # | msgid "Decoy Site"
 #~ msgid "config.decoy_site.label"

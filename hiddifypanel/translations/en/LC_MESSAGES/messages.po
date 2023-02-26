@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-26 09:37+0100\n"
-"PO-Revision-Date: 2023-02-26 02:37-0600\n"
+"POT-Creation-Date: 2023-02-26 09:43+0100\n"
+"PO-Revision-Date: 2023-02-26 02:41-0600\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -626,12 +626,16 @@ msgstr "Add some text that is only visible to you."
 msgid "Define the user mode. Should the usage reset every month?"
 msgstr "Define the user mode. Should the usage reset every month?"
 
+# | msgid ""
+# | "If the monthly option is enabled, when this number reaches 30, the user "
+# | "usage will be reset (for weekly and daily this number is 7 and 1)"
 #: hiddifypanel/panel/admin/UserAdmin.py:69
 #, fuzzy
 msgid ""
 "If monthly is enabled, the usage will be reset after 30 days from this date."
 msgstr ""
-"If monthly is enabled, the usage will be reset after 30 days from this date."
+"If the monthly option is enabled, when this number reaches 30, the user "
+"usage will be reset (for weekly and daily this number is 7 and 1)"
 
 # | msgid "Days"
 #: hiddifypanel/panel/admin/UserAdmin.py:122
