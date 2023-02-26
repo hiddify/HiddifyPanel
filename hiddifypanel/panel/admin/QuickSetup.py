@@ -32,6 +32,7 @@ class QuickSetup(FlaskView):
                                 StrConfig.query.filter(StrConfig.key==ConfigEnum.admin_lang,StrConfig.child_id==0).first().value=lang_form.admin_lang.data
                                 db.session.commit()
                                 from flask_babel import refresh; refresh()
+                                refresh()
                                 flash((_('quicksetup.setlang.success')), 'success')
                         else:
                                 flash((_('quicksetup.setlang.error')), 'danger')
