@@ -98,7 +98,9 @@ def get_common_data(user_uuid,mode):
     else:
         db_domain=Domain.query.filter(Domain.domain==domain).first() or Domain(domain=domain,mode=DomainType.direct,cdn_ip='',show_domains=[])
 
-    
+    if not db_domain:
+        db_domain=Domain(domain=domain,mode=DomainType.direct,show_domains=[])
+        flash(_("This domain does not exist in the panel!" + domain))
 
     if mode =='multi':
         domains=Domain.query.all()
