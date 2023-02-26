@@ -178,13 +178,13 @@ def init_db():
         column_type = Domain.alias.type.compile(db.engine.dialect)
         db.engine.execute(f'ALTER TABLE domain ADD COLUMN alias {column_type}')
         column_type = Domain.child_id.type.compile(db.engine.dialect)
-        db.engine.execute(f'ALTER TABLE domain ADD COLUMN child_id {column_type}')
+        db.engine.execute(f'ALTER TABLE domain ADD COLUMN child_id {column_type} DEFAULT 0')
         column_type = Proxy.child_id.type.compile(db.engine.dialect)
-        db.engine.execute(f'ALTER TABLE proxy ADD COLUMN child_id {column_type}')
+        db.engine.execute(f'ALTER TABLE proxy ADD COLUMN child_id {column_type} DEFAULT 0')
         column_type = BoolConfig.child_id.type.compile(db.engine.dialect)
-        db.engine.execute(f'ALTER TABLE bool_config ADD COLUMN child_id {column_type}')
+        db.engine.execute(f'ALTER TABLE bool_config ADD COLUMN child_id {column_type} DEFAULT 0')
         column_type = StrConfig.child_id.type.compile(db.engine.dialect)
-        db.engine.execute(f'ALTER TABLE str_config ADD COLUMN child_id {column_type}')
+        db.engine.execute(f'ALTER TABLE str_config ADD COLUMN child_id {column_type} DEFAULT 0')
     except:pass
 
     if len(Domain.query.all())!=0 and BoolConfig.query.count()==0:
@@ -200,6 +200,7 @@ def init_db():
     except:
         pass
     try:
+        db.engine.execute(f'update str_config set child_id=0 where child_id is NULL')
         column_type = Domain.cdn_ip.type.compile(db.engine.dialect)
         db.engine.execute(f'ALTER TABLE domain ADD COLUMN cdn_ip {column_type}')
     except:
