@@ -64,7 +64,7 @@ class SettingAdmin(FlaskView):
                                     except:
                                         flash(_("Can not connect to parent panel!"),'error')
                                         return render_template('config.html', form=form)
-                                StrConfig.query.filter(StrConfig.key==k,BoolConfig.child_id==0).first().value=v
+                                StrConfig.query.filter(StrConfig.key==k,StrConfig.child_id==0).first().value=v
 
                 # print(cat,vs)
 
