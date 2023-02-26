@@ -11,7 +11,7 @@ from hiddifypanel.models import hconfig,ConfigEnum
 import hiddifypanel
 
 from flask import url_for
-
+from hiddifypanel.panel.init_db import init_db
 # from werkzeug.middleware.proxy_fix import ProxyFix
 
 def create_app(**config):
@@ -20,6 +20,7 @@ def create_app(**config):
     FlaskDynaconf(app)  # config managed by Dynaconf
     app.jinja_env.line_statement_prefix = '%'
     flask_bootstrap.Bootstrap4(app)
+
     hiddifypanel.panel.database.init_app(app)
     hiddifypanel.panel.common.init_app(app)
     hiddifypanel.panel.admin.init_app(app)
@@ -62,7 +63,8 @@ def create_app(**config):
     # app=ProxyFix(app, x_for=1, x_host=1,x_proto=1,x_port=1,x_prefix=1)
     app.jinja_env.globals['get_locale'] = get_locale
     app.jinja_env.globals['version'] = hiddifypanel.__version__
-    
+    with app.app_context():
+        init_db()
     
     return app
 

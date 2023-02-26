@@ -290,9 +290,9 @@
 <script src="https://bernii.github.io/gauge.js/dist/gauge.min.js"></script>
 <script>
     var gauge = new Gauge($("#online_users")[0]); // create sexy gauge!
-gauge.maxValue = 3000; // set max gauge value
+gauge.maxValue = {{total_users}}; // set max gauge value
 gauge.setMinValue(0);  // Prefer setter over gauge.minValue = 0
 gauge.animationSpeed = 32; // set animation speed (32 is default value)
-gauge.set(1250); // 
+gauge.set({{onlines}}); // 
 </script>
 {% endblock %}
