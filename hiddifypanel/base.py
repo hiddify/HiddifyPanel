@@ -22,6 +22,8 @@ def create_app(**config):
     flask_bootstrap.Bootstrap4(app)
 
     hiddifypanel.panel.database.init_app(app)
+    with app.app_context():
+        init_db()
     hiddifypanel.panel.common.init_app(app)
     hiddifypanel.panel.admin.init_app(app)
     hiddifypanel.panel.user.init_app(app)
@@ -63,8 +65,7 @@ def create_app(**config):
     # app=ProxyFix(app, x_for=1, x_host=1,x_proto=1,x_port=1,x_prefix=1)
     app.jinja_env.globals['get_locale'] = get_locale
     app.jinja_env.globals['version'] = hiddifypanel.__version__
-    with app.app_context():
-        init_db()
+    
     
     return app
 
