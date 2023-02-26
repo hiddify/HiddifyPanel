@@ -323,8 +323,8 @@ def set_db_from_json(json_data,override_child_id=None,set_users=True,set_domains
                 new_rows.append(dbuser)
             
             dbuser.current_usage_GB=user['current_usage_GB']
-            dbuser.expiry_time=datetime.strptime(user['expiry_time'],'%Y-%m-%d')
-            dbuser.last_reset_time=datetime.strptime(user['last_reset_time'],'%Y-%m-%d')
+            dbuser.expiry_time=datetime.datetime.strptime(user['expiry_time'],'%Y-%m-%d')
+            dbuser.last_reset_time=datetime.datetime.strptime(user['last_reset_time'],'%Y-%m-%d')
             dbuser.usage_limit_GB=user['usage_limit_GB']
             dbuser.name=user['name']
             dbuser.comment=user['comment']
