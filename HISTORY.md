@@ -4,6 +4,11 @@ Changelog
 
 (unreleased)
 ------------
+- Update relative date to days if less than 2 months. [hiddify]
+
+
+0.9.95 (2023-02-27)
+-------------------
 
 Fix
 ~~~
@@ -11,6 +16,7 @@ Fix
 
 Other
 ~~~~~
+- Release: version 0.9.95 🚀 [hiddify]
 - Update. [hiddify]
 
 
