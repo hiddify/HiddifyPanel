@@ -335,7 +335,7 @@ def set_db_from_json(json_data,override_child_id=None,set_users=True,set_domains
             dbuser.usage_limit_GB=user['usage_limit_GB']
             dbuser.name=user['name']
             dbuser.comment=user.get('comment','')
-            dbuser.mode=user['mode']         
+            dbuser.mode=user.get('mode',user.get('monthly','false')=='true')
             # dbuser.last_online=user.get('last_online','')
     if remove_users  and 'users' in json_data:
         dd={u.uuid:1 for u in json_data['users']}
