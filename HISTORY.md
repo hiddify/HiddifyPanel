@@ -1,16 +1,11 @@
 # Changelog
 
 
-## (unreleased)
+## 0.9.98 (2023-02-27)
 
 ### Fix
 
 * Relase message bug. [hiddify]
-
-
-## 0.9.98 (2023-02-27)
-
-### Fix
 
 * Bug in release message. [hiddify]
 
