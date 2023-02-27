@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-26 21:30+0100\n"
-"PO-Revision-Date: 2023-02-26 14:30-0600\n"
+"POT-Creation-Date: 2023-02-27 21:03+0100\n"
+"PO-Revision-Date: 2023-02-27 14:01-0600\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -15,21 +15,21 @@ msgstr ""
 "Generated-By: Babel 2.11.0\n"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/panel/hiddify.py:182
+#: hiddifypanel/panel/hiddify.py:189
 msgid "admin.config.apply_configs"
 msgstr "Apply Configs"
 
 # | msgid ""
 # | "Configs have been changed successfully. Click %(link)s to apply the "
 # | "configs. It may take 2 minutes to apply."
-#: hiddifypanel/panel/hiddify.py:183
+#: hiddifypanel/panel/hiddify.py:190
 msgid "config.validation-success"
 msgstr ""
 "Configs have been changed successfully. Click %(link)s to apply the configs."
 " It may take 2 minutes to apply."
 
 # | msgid "Configs have been changed successfully."
-#: hiddifypanel/panel/hiddify.py:185
+#: hiddifypanel/panel/hiddify.py:192
 msgid "config.validation-success-no-reset"
 msgstr "Configs have been changed successfully."
 
@@ -40,7 +40,7 @@ msgstr "Configs have been changed successfully."
 #: hiddifypanel/panel/admin/DomainAdmin.py:111
 #: hiddifypanel/panel/admin/ParentDomainAdmin.py:108
 #: hiddifypanel/panel/admin/QuickSetup.py:120
-#: hiddifypanel/panel/hiddify.py:274
+#: hiddifypanel/panel/hiddify.py:281
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr ""
 "Domain can not be resolved! There is a problem in your domain. Please check "
@@ -571,76 +571,74 @@ msgid "config.port 443 is required"
 msgstr "Port 443 should always be presented. "
 
 # | msgid "Actions"
-#: hiddifypanel/panel/admin/UserAdmin.py:48
+#: hiddifypanel/panel/admin/UserAdmin.py:49
 msgid "actions"
 msgstr "Actions"
 
 # | msgid "Name"
-#: hiddifypanel/panel/admin/UserAdmin.py:49
+#: hiddifypanel/panel/admin/UserAdmin.py:50
 msgid "user.name"
 msgstr "Name"
 
 # | msgid "User Links"
-#: hiddifypanel/panel/admin/UserAdmin.py:50
+#: hiddifypanel/panel/admin/UserAdmin.py:51
 msgid "user.user_links"
 msgstr "User Links"
 
 # | msgid "Usage Limit (GB)"
-#: hiddifypanel/panel/admin/UserAdmin.py:51
+#: hiddifypanel/panel/admin/UserAdmin.py:52
 msgid "user.usage_limit_GB"
 msgstr "Usage Limit (GB)"
 
 # | msgid "Monthly"
-#: hiddifypanel/panel/admin/UserAdmin.py:52
+#: hiddifypanel/panel/admin/UserAdmin.py:53
 msgid "Reset every month"
 msgstr "Monthly"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:53
+#: hiddifypanel/panel/admin/UserAdmin.py:54
 msgid "Mode"
 msgstr "Mode"
 
 # | msgid "Current Usage (GB)"
-#: hiddifypanel/panel/admin/UserAdmin.py:54
+#: hiddifypanel/panel/admin/UserAdmin.py:55
 msgid "user.current_usage_GB"
 msgstr "Current Usage (GB)"
 
 # | msgid "Expire (days)"
-#: hiddifypanel/panel/admin/UserAdmin.py:55
+#: hiddifypanel/panel/admin/UserAdmin.py:56
 msgid "user.expiry_time"
 msgstr "Expire (days)"
 
 # | msgid "Last usage date reset"
-#: hiddifypanel/panel/admin/UserAdmin.py:56
+#: hiddifypanel/panel/admin/UserAdmin.py:57
 msgid "user.last_reset_time"
 msgstr "Last usage date reset"
 
 # | msgid "UUID"
-#: hiddifypanel/panel/admin/UserAdmin.py:57
+#: hiddifypanel/panel/admin/UserAdmin.py:58
 msgid "user.UUID"
 msgstr "UUID"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:58
+#: hiddifypanel/panel/admin/UserAdmin.py:59
 msgid "Note"
 msgstr "Note"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:59
-#, fuzzy
+#: hiddifypanel/panel/admin/UserAdmin.py:60
 msgid "Last Online"
 msgstr "Last Online"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:71
+#: hiddifypanel/panel/admin/UserAdmin.py:72
 msgid "Add some text that is only visible to you."
 msgstr "Add some text that is only visible to you."
 
-#: hiddifypanel/panel/admin/UserAdmin.py:72
+#: hiddifypanel/panel/admin/UserAdmin.py:73
 msgid "Define the user mode. Should the usage reset every month?"
 msgstr "Define the user mode. Should the usage reset every month?"
 
 # | msgid ""
 # | "If the monthly option is enabled, when this number reaches 30, the user "
 # | "usage will be reset (for weekly and daily this number is 7 and 1)"
-#: hiddifypanel/panel/admin/UserAdmin.py:73
-#, fuzzy
+#: hiddifypanel/panel/admin/UserAdmin.py:74
 msgid ""
 "If monthly is enabled, the usage will be reset after 30 days from this date."
 msgstr ""
@@ -1518,7 +1516,6 @@ msgstr ""
 "href=\"%(link)s\" class=\"btn btn-info\">here</a>."
 
 #: hiddifypanel/panel/user/user.py:104
-#, fuzzy
 msgid "This domain does not exist in the panel!"
 msgstr "This domain does not exist in the panel!"
 
@@ -1978,11 +1975,15 @@ msgstr "Previous"
 msgid "search"
 msgstr "Search"
 
-# | msgid "Stash <span class=\"badge badge-success\">Recommended</span>"
+# | msgid ""
+# | "Stash and Shadowrocket <span class=\"badge badge-success\">"
+# | "Recommended</span>"
 #: copy.html:6 hiddifypanel/panel/user/templates/home/ios
 #: hiddifypanel/panel/user/templates/home/ios.html:6
 msgid "user.home.ios.stash.title"
-msgstr "Stash <span class=\"badge badge-success\">Recommended</span>"
+msgstr ""
+"Stash and Shadowrocket <span class=\"badge badge-"
+"success\">Recommended</span>"
 
 # | msgid ""
 # | "Stash is a great application. We think it worth buying.\n"
@@ -2007,10 +2008,10 @@ msgstr ""
 msgid "Please select one of the following applications:"
 msgstr "Please select one of the following applications:"
 
-# | msgid "Other applications (shadowlink, fairVPN)"
+# | msgid "fairVPN app"
 #: hiddifypanel/panel/user/templates/home/ios.html:19
 msgid "user.home.ios.others.title"
-msgstr "Other applications (shadowlink, fairVPN)"
+msgstr "fairVPN app"
 
 # | msgid ""
 # | "First install one of the following applications:\n"

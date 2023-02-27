@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-26 21:30+0100\n"
-"PO-Revision-Date: 2023-02-26 14:30-0600\n"
+"POT-Creation-Date: 2023-02-27 21:03+0100\n"
+"PO-Revision-Date: 2023-02-27 14:01-0600\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Generated-By: Babel 2.11.0\n"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/panel/hiddify.py:182
+#: hiddifypanel/panel/hiddify.py:189
 msgid "admin.config.apply_configs"
 msgstr "应用配置"
 
@@ -23,12 +23,12 @@ msgstr "应用配置"
 # | "Configs have been changed successfully. Click %(link)s to apply the
 # configs."
 # | " It may take 2 minutes to apply."
-#: hiddifypanel/panel/hiddify.py:183
+#: hiddifypanel/panel/hiddify.py:190
 msgid "config.validation-success"
 msgstr "配置已成功更改。单击 %(link)s 以应用配置。申请可能需要 2 分钟。"
 
 # | msgid "Configs have been changed successfully."
-#: hiddifypanel/panel/hiddify.py:185
+#: hiddifypanel/panel/hiddify.py:192
 #, fuzzy
 msgid "config.validation-success-no-reset"
 msgstr "配置已成功更改。"
@@ -40,7 +40,7 @@ msgstr "配置已成功更改。"
 #: hiddifypanel/panel/admin/ChildAdmin.py:108
 #: hiddifypanel/panel/admin/DomainAdmin.py:111
 #: hiddifypanel/panel/admin/ParentDomainAdmin.py:108
-#: hiddifypanel/panel/admin/QuickSetup.py:120 hiddifypanel/panel/hiddify.py:274
+#: hiddifypanel/panel/admin/QuickSetup.py:120 hiddifypanel/panel/hiddify.py:281
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr "域名无法解析！你的域有问题"
 
@@ -536,70 +536,71 @@ msgid "config.port 443 is required"
 msgstr "应始终显示端口 443。"
 
 # | msgid "Actions"
-#: hiddifypanel/panel/admin/UserAdmin.py:48
+#: hiddifypanel/panel/admin/UserAdmin.py:49
 msgid "actions"
 msgstr "动作"
 
 # | msgid "Name"
-#: hiddifypanel/panel/admin/UserAdmin.py:49
+#: hiddifypanel/panel/admin/UserAdmin.py:50
 msgid "user.name"
 msgstr "名称"
 
 # | msgid "User Links"
-#: hiddifypanel/panel/admin/UserAdmin.py:50
+#: hiddifypanel/panel/admin/UserAdmin.py:51
 msgid "user.user_links"
 msgstr "用户链接"
 
 # | msgid "Usage Limit (GB)"
-#: hiddifypanel/panel/admin/UserAdmin.py:51
+#: hiddifypanel/panel/admin/UserAdmin.py:52
 msgid "user.usage_limit_GB"
 msgstr "使用限制 (GB)"
 
 # | msgid "Monthly"
-#: hiddifypanel/panel/admin/UserAdmin.py:52
+#: hiddifypanel/panel/admin/UserAdmin.py:53
 msgid "Reset every month"
 msgstr "每月"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:53
+#: hiddifypanel/panel/admin/UserAdmin.py:54
 #, fuzzy
 msgid "Mode"
 msgstr "模式"
 
 # | msgid "Current Usage (GB)"
-#: hiddifypanel/panel/admin/UserAdmin.py:54
+#: hiddifypanel/panel/admin/UserAdmin.py:55
 msgid "user.current_usage_GB"
 msgstr "当前使用量 (GB)"
 
 # | msgid "Expire (days)"
-#: hiddifypanel/panel/admin/UserAdmin.py:55
+#: hiddifypanel/panel/admin/UserAdmin.py:56
 msgid "user.expiry_time"
 msgstr "过期时间"
 
 # | msgid "Last usage date reset"
-#: hiddifypanel/panel/admin/UserAdmin.py:56
+#: hiddifypanel/panel/admin/UserAdmin.py:57
 msgid "user.last_reset_time"
 msgstr "最后使用日期重置"
 
 # | msgid "UUID"
-#: hiddifypanel/panel/admin/UserAdmin.py:57
+#: hiddifypanel/panel/admin/UserAdmin.py:58
 msgid "user.UUID"
 msgstr "UUID"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:58
+#: hiddifypanel/panel/admin/UserAdmin.py:59
 #, fuzzy
 msgid "Note"
 msgstr "笔记"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:59
+#: hiddifypanel/panel/admin/UserAdmin.py:60
+#, fuzzy
 msgid "Last Online"
-msgstr ""
+msgstr "最后上线"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:71
+#: hiddifypanel/panel/admin/UserAdmin.py:72
 #, fuzzy
 msgid "Add some text that is only visible to you."
 msgstr "添加一些仅对您可见的文本。"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:72
+#: hiddifypanel/panel/admin/UserAdmin.py:73
 #, fuzzy
 msgid "Define the user mode. Should the usage reset every month?"
 msgstr "定义用户模式。应该每个月重置使用量吗？"
@@ -607,11 +608,12 @@ msgstr "定义用户模式。应该每个月重置使用量吗？"
 # | msgid ""
 # | "If the monthly option is enabled, when this number reaches 30, the user "
 # | "usage will be reset (for weekly and daily this number is 7 and 1)"
-#: hiddifypanel/panel/admin/UserAdmin.py:73
+#: hiddifypanel/panel/admin/UserAdmin.py:74
+#, fuzzy
 msgid ""
 "If monthly is enabled, the usage will be reset after 30 days from this "
 "date."
-msgstr ""
+msgstr "如果启用每月选项，当这个数字达到 30 时，用户使用量将被重置（每周和每天这个数字是 7 和 1）"
 
 #: hiddifypanel/panel/admin/templates/backup.html:9
 #: hiddifypanel/templates/admin-layout.html:99
@@ -1430,8 +1432,9 @@ msgstr ""
 "info\">此处</a>。"
 
 #: hiddifypanel/panel/user/user.py:104
+#, fuzzy
 msgid "This domain does not exist in the panel!"
-msgstr ""
+msgstr "该域名在面板中不存在！"
 
 # | msgid "All Configs"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:1
@@ -1890,7 +1893,9 @@ msgstr "以前的"
 msgid "search"
 msgstr "搜索"
 
-# | msgid "Stash <span class=\"badge badge-success\">Recommended</span>"
+# | msgid ""
+# | "Stash and Shadowrocket <span class=\"badge badge-"
+# | "success\">Recommended</span>"
 #: copy.html:6 hiddifypanel/panel/user/templates/home/ios
 #: hiddifypanel/panel/user/templates/home/ios.html:6
 msgid "user.home.ios.stash.title"
@@ -1920,7 +1925,7 @@ msgstr ""
 msgid "Please select one of the following applications:"
 msgstr ""
 
-# | msgid "Other applications (shadowlink, fairVPN)"
+# | msgid "fairVPN app"
 #: hiddifypanel/panel/user/templates/home/ios.html:19
 msgid "user.home.ios.others.title"
 msgstr "其他应用程序（shadowlink、fairVPN、napsternetv）"
