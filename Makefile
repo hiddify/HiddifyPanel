@@ -81,11 +81,12 @@ virtualenv:       ## Create a virtual environment.
 release:          ## Create a new tag for release.
 	@echo "previous version was $$(git describe --tags $$(git rev-list --tags --max-count=1))"
 	@echo "WARNING: This operation will create s version tag and push to github"
-	@read -p "Version? (provide the next x.y.z semver) : " TAG
-	
+	@read -p "Version? (provide the next x.y.z semver) : " TAG	
 	@echo "$${TAG}" > hiddifypanel/VERSION
 	@echo "__version__='$${TAG}'" > hiddifypanel/VERSION.py
+	@git tag $${TAG}
 	@$(ENV_PREFIX)gitchangelog > HISTORY.md
+	@git tag -d $${TAG}
 	@git add hiddifypanel/VERSION hiddifypanel/VERSION.py HISTORY.md
 	@git commit -m "release: version $${TAG} 🚀"
 	@echo "creating git tag : $${TAG}"
