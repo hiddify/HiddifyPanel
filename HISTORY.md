@@ -5,10 +5,9 @@
 
 ### Fix
 
+* Bug in release message. [hiddify]
+
 * Version error. [hiddify]
-
-
-## 0.9.97 (2023-02-27)
 
 ### Other
 
