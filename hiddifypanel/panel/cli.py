@@ -28,6 +28,7 @@ def all_configs():
     configs={
         "users": [u.to_dict() for u in User.query.filter((User.usage_limit_GB>User.current_usage_GB)).filter(User.expiry_time>=datetime.date.today()).all()],
         "domains": [hiddify.domain_dict(u) for u in Domain.query.all()],
+        "parent_domains": [hiddify.parent_domain_dict(u) for u in ParentDomain.query.all()],
         "hconfigs": get_hconfigs()
         }
     for d in configs['domains']:

@@ -36,17 +36,17 @@ def make_proxy(proxy,domain_db):
 
     domain=domain_db.domain
     
-    
-    hconfigs=get_hconfigs()
+    child_id=domain_db.child_id
+    hconfigs=get_hconfigs(child_id)
     port=0
     if l3 in ["tls"]:
         port=443
     elif l3 =="http":
         port = 80
     elif l3 =="kcp":
-        port = hconfig(ConfigEnum.kcp_ports).split(",")[0]
+        port = hconfig(ConfigEnum.kcp_ports,child_id).split(",")[0]
     elif l3 =="tuic":
-        port = hconfig(ConfigEnum.tuic_port).split(",")[0]
+        port = hconfig(ConfigEnum.tuic_port,child_id).split(",")[0]
     
     name=proxy.name   
     is_cdn="CDN" in name
@@ -69,7 +69,7 @@ def make_proxy(proxy,domain_db):
         'uuid':str(g.user_uuid),
         'proto':proxy.proto,
         'transport':proxy.transport,
-        'proxy_path':hconfig(ConfigEnum.proxy_path),
+        'proxy_path':hconfig(ConfigEnum.proxy_path,child_id),
         'alpn':"h2",
         'extra_info':f'{domain}'
     }
@@ -84,17 +84,17 @@ def make_proxy(proxy,domain_db):
     
 
     if "Fake" in name:
-        if not hconfig(ConfigEnum.domain_fronting_domain):
+        if not hconfig(ConfigEnum.domain_fronting_domain,child_id):
             return
-        if l3=="http" and not hconfig(ConfigEnum.domain_fronting_http_enable):
+        if l3=="http" and not hconfig(ConfigEnum.domain_fronting_http_enable,child_id):
             return
-        if l3=="tls" and  not hconfig(ConfigEnum.domain_fronting_tls_enable):
+        if l3=="tls" and  not hconfig(ConfigEnum.domain_fronting_tls_enable,child_id):
             return 
-        base['server']=hconfigs[ConfigEnum.domain_fronting_domain]
-        base['sni']=hconfigs[ConfigEnum.domain_fronting_domain]
+        base['server']=hconfig(ConfigEnum.domain_fronting_domain,child_id)
+        base['sni']=hconfigs(ConfigEnum.domain_fronting_domain,child_id)
         # base["host"]=domain
         base['mode']='Fake'
-    elif l3=="http" and not hconfig(ConfigEnum.http_proxy_enable):
+    elif l3=="http" and not hconfig(ConfigEnum.http_proxy_enable,child_id):
         return None    
 
     ws_path={'vless':f'/{hconfigs[ConfigEnum.proxy_path]}/vlessws',
@@ -115,7 +115,7 @@ def make_proxy(proxy,domain_db):
 
     if base["proto"] in ['v2ray','ss','ssr']:
         base['chipher']='chacha20-ietf-poly1305'
-        base['uuid']=f'{hconfig(ConfigEnum.shared_secret)}'
+        base['uuid']=f'{hconfig(ConfigEnum.shared_secret,child_id)}'
 
     if base["proto"]=="ssr":
         base["ssr-obfs"]= "tls1.2_ticket_auth"
@@ -124,11 +124,11 @@ def make_proxy(proxy,domain_db):
         base["mode"]="FakeTLS"
         return base
     elif "faketls" in name:
-        base['fakedomain']=hconfig(ConfigEnum.ssfaketls_fakedomain)
+        base['fakedomain']=hconfig(ConfigEnum.ssfaketls_fakedomain,child_id)
         base['mode']='FakeTLS'
         return base
     elif "shadowtls" in name:
-        base['fakedomain']=hconfig(ConfigEnum.shadowtls_fakedomain)
+        base['fakedomain']=hconfig(ConfigEnum.shadowtls_fakedomain,child_id)
         base['mode']='ShadowTLS'
         return base
     

@@ -110,6 +110,12 @@ def domain_dict(d):
             'show_domains':[dd.domain for dd in d.show_domains]
         }
 
+def parent_domain_dict(d):
+    return {
+            'domain':d.domain,
+            'show_domains':[dd.domain for dd in d.show_domains]
+        }
+
 def proxy_dict(d):
     return {
             'name':d.name,
