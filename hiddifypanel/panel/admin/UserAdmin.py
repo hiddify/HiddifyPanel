@@ -27,9 +27,10 @@ class UserAdmin(AdminLTEModelView):
     # can_export = True
     # form_overrides = dict(monthly=SwitchField)
     form_overrides = dict(expiry_time=custom_widgets.DaysLeftField,last_reset_time=custom_widgets.LastResetField)
-    # form_widget_args={
-    # 'expiry_time':{'class':'datepicker'}    
-    # }
+    form_widget_args={
+    'current_usage_GB':{'min':'0'}    ,
+    'usage_limit_GB':{'min':'0'}    
+    }
     form_args = {
     'uuid': {
         'validators': [Regexp(r'^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$',message=__("Should be a valid uuid"))]
@@ -109,7 +110,7 @@ class UserAdmin(AdminLTEModelView):
     def _usage_formatter(view, context, model, name):
         u= round(model.current_usage_GB,3)
         t=round(model.usage_limit_GB,3)
-        rate=round(u*100/t)
+        rate=round(u*100/(t+0.000001))
         state= "danger" if u>=t else ('warning' if  rate>80 else 'success')
         color= "#ff7e7e" if u>=t else ('#ffc107' if  rate>80 else '#9ee150')
         return Markup(f"""
