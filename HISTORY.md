@@ -4,6 +4,19 @@ Changelog
 
 (unreleased)
 ------------
+
+Fix
+~~~
+- Bug in user panel. [hiddify]
+
+Other
+~~~~~
+- Update. [hiddify]
+
+
+0.9.94 (2023-02-27)
+-------------------
+- Release: version 0.9.94 🚀 [hiddify]
 - Update. [hiddify]
 - Update stash and shadowlink. [hiddify]
 
