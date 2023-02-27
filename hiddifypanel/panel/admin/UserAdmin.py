@@ -121,6 +121,8 @@ class UserAdmin(AdminLTEModelView):
         """)
 
     def _expire_formatter(view, context, model, name):
+        if not model.expiry_time: return "-"
+
         diff=(model.expiry_time-datetime.date.today())
         state='success' if diff.days>7 else ('warning' if diff.days>0 else 'danger') 
         return Markup(f"<span class='badge badge-{state}'>{format_timedelta(diff, add_direction=True, locale=hconfig(ConfigEnum.admin_lang))}</span>")
