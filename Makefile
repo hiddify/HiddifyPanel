@@ -79,7 +79,7 @@ virtualenv:       ## Create a virtual environment.
 
 .PHONY: release
 release:          ## Create a new tag for release.
-	@echo "previous version was $(git describe --tags $(git rev-list --tags --max-count=1))"
+	@echo "previous version was $$(git describe --tags $$(git rev-list --tags --max-count=1))"
 	@echo "WARNING: This operation will create s version tag and push to github"
 	@read -p "Version? (provide the next x.y.z semver) : " TAG
 	
