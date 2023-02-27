@@ -10,7 +10,7 @@ from .adminlte import AdminLTEModelView
 # from gettext import gettext as _
 from flask_babelex import gettext as __
 from flask_babelex import lazy_gettext as _
-from babel.dates import format_timedelta
+
 
 
 from hiddifypanel.panel import hiddify,custom_widgets
@@ -126,7 +126,8 @@ class UserAdmin(AdminLTEModelView):
 
         diff=(model.expiry_time-datetime.date.today())
         state='success' if diff.days>7 else ('warning' if diff.days>0 else 'danger') 
-        return Markup(f"<span class='badge badge-{state}'>{format_timedelta(diff, add_direction=True, locale=hconfig(ConfigEnum.admin_lang))}</span>")
+        formated=hiddify.format_timedelta(diff)
+        return Markup(f"<span class='badge badge-{state}'>{formated}</span>")
         # return Markup(f"<span class='badge ltr badge-}'>{days}</span> "+_('days'))
 
     def _online_formatter(view, context, model, name):
@@ -138,7 +139,7 @@ class UserAdmin(AdminLTEModelView):
             return "-"
         
         state="danger" if diff.days<-3 else ("success" if diff.days>=-1 else "warning")
-        return Markup(f"<span class='badge badge-{state}'>{format_timedelta(diff, add_direction=True, locale=hconfig(ConfigEnum.admin_lang))}</span>")
+        return Markup(f"<span class='badge badge-{state}'>{hiddify.format_timedelta(diff)}</span>")
         
         
         # return Markup(f"<span class='badge ltr badge-{'success' if days>7 else ('warning' if days>0 else 'danger') }'>{days}</span> "+_('days'))

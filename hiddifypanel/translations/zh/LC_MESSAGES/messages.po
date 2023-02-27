@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-27 21:03+0100\n"
-"PO-Revision-Date: 2023-02-27 14:01-0600\n"
+"POT-Creation-Date: 2023-02-27 22:14+0100\n"
+"PO-Revision-Date: 2023-02-27 14:48-0600\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -590,6 +590,7 @@ msgstr "UUID"
 msgid "Note"
 msgstr "笔记"
 
+# | msgid "Last Connection"
 #: hiddifypanel/panel/admin/UserAdmin.py:60
 #, fuzzy
 msgid "Last Online"
@@ -1431,7 +1432,7 @@ msgstr ""
 "用户使用情况将每 6 分钟更新一次。现在要更新它，请点击<a href=\"%(link)s\" class=\"btn btn-"
 "info\">此处</a>。"
 
-#: hiddifypanel/panel/user/user.py:104
+#: hiddifypanel/panel/user/user.py:105
 #, fuzzy
 msgid "This domain does not exist in the panel!"
 msgstr "该域名在面板中不存在！"
@@ -1908,6 +1909,8 @@ msgstr "收藏<span class=\"badge badge-success\">推荐</span>"
 # | "        <a
 # href=\"https://apps.apple.com/us/app/stash-rule-based-proxy/id1596063349\"
 # target=\"_blank\" class=\"btn btn-success orig-link\">Download stash</a>\n"
+# | "<a href=\"https://apps.apple.com/us/app/shadowrocket/id932747118\"\n"
+# | "        class=\"btn btn-primary orig-link\">shadowrocket</a> \n"
 # | "        </div>"
 #: copy.html:17 hiddifypanel/panel/user/templates/home/ios
 #: hiddifypanel/panel/user/templates/home/ios.html:9
@@ -1933,16 +1936,12 @@ msgstr "其他应用程序（shadowlink、fairVPN、napsternetv）"
 # | msgid ""
 # | "First install one of the following applications:\n"
 # | "<div class=\"btn-group\">\n"
-# | "<a
-# href=\"https://apps.apple.com/us/app/shadowlink-shadowsocks-vpn/id1439686518\"\n"
-# | "        class=\"btn btn-primary orig-link\">shadow link</a> \n"
-# | "<!--    <a
-# href=\"https://apps.apple.com/us/app/napsternetv/id1629465476\"\n"
-# | "        class=\"btn btn-primary orig-link\">napsternetv</a>-->\n"
+# | "\n"
 # | "\t<a href=\"https://apps.apple.com/us/app/fair-vpn/id1533873488\"\n"
 # | "        class=\"btn btn-primary orig-link\">fair-vpn</a>\n"
+# | "    <a href=\"https://apps.apple.com/us/app/napsternetv/id1629465476\"\n"
+# | "        class=\"btn btn-primary orig-link\">napsternetv</a>\n"
 # | "</div>\n"
-# | "\n"
 # | "<br />\n"
 # | "Then apply one of the following configs:"
 #: hiddifypanel/panel/user/templates/home/ios.html:23

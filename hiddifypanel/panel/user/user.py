@@ -1,9 +1,10 @@
-from babel.dates import format_timedelta
+
 from flask import abort, render_template,request,Response,g
 from wtforms.validators import Regexp,ValidationError
 import urllib,uuid
 import datetime
 from hiddifypanel.models import *
+from hiddifypanel.panel import hiddify
 from hiddifypanel.panel.hiddify  import auth
 from . import link_maker
 from flask_classful import FlaskView,route
@@ -137,7 +138,7 @@ def get_common_data(user_uuid,mode):
         UserMode.monthly:30
 
     }
-    
+    g.locale= hconfig(ConfigEnum.lang)
     return {
         # 'direct_host':direct_host,
         'user':user,
@@ -148,7 +149,7 @@ def get_common_data(user_uuid,mode):
         'usage_current_b':int(user.current_usage_GB*1024*1024*1024),
         'expire_s':int((user.expiry_time-datetime.date(1970, 1, 1)).total_seconds()),
         'expire_days':(user.expiry_time-datetime.date.today()).days,
-        'expire_rel':format_timedelta(user.expiry_time-datetime.date.today(), add_direction=True, locale=hconfig(ConfigEnum.lang)),
+        'expire_rel':hiddify.format_timedelta(user.expiry_time-datetime.date.today()),
         'reset_day':package_mode_dic.get(user.mode,1000)-(datetime.date.today()-user.last_reset_time).days,
         'hconfigs':get_hconfigs(),
         'hdomains':get_hdomains(),

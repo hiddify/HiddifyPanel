@@ -1,6 +1,6 @@
 from dynaconf import FlaskDynaconf
 from wtforms.validators import ValidationError
-from flask import Flask,request,render_template
+from flask import Flask,request,render_template,g
 
 
 import flask_bootstrap 
@@ -49,8 +49,10 @@ def create_app(**config):
         # user profile, cookie, session, etc.
         from hiddifypanel.models import ConfigEnum,hconfig
         if "admin" in request.base_url:
-            return hconfig(ConfigEnum.admin_lang) or hconfig(ConfigEnum.lang) or 'fa'
-        return hconfig(ConfigEnum.lang) or "fa"
+            g.locale=hconfig(ConfigEnum.admin_lang) or hconfig(ConfigEnum.lang) or 'fa'
+        else: 
+            g.locale= hconfig(ConfigEnum.lang) or "fa"
+        return g.locale
 
     from flask_wtf.csrf import CSRFProtect
 

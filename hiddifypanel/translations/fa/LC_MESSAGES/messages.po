@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-27 21:03+0100\n"
-"PO-Revision-Date: 2023-02-27 14:01-0600\n"
+"POT-Creation-Date: 2023-02-27 22:14+0100\n"
+"PO-Revision-Date: 2023-02-27 14:48-0600\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -644,10 +644,11 @@ msgstr "UUID"
 msgid "Note"
 msgstr "یادداشت"
 
+# | msgid "Last Connection"
 #: hiddifypanel/panel/admin/UserAdmin.py:60
 #, fuzzy
 msgid "Last Online"
-msgstr "آخرین آنلاین"
+msgstr "آخرین اتصال"
 
 #: hiddifypanel/panel/admin/UserAdmin.py:72
 #, fuzzy
@@ -1565,7 +1566,7 @@ msgstr ""
 "بروزرسانی دستی <a href=\"%(link)s\" class=\"btn btn-info\">اینجا</a> کلیک"
 " کنید."
 
-#: hiddifypanel/panel/user/user.py:104
+#: hiddifypanel/panel/user/user.py:105
 msgid "This domain does not exist in the panel!"
 msgstr "این دامنه در پنل وجود ندارد."
 
@@ -2047,7 +2048,9 @@ msgstr "جستجو"
 #: copy.html:6 hiddifypanel/panel/user/templates/home/ios
 #: hiddifypanel/panel/user/templates/home/ios.html:6
 msgid "user.home.ios.stash.title"
-msgstr "اپ Stash و Shadowrocket"
+msgstr ""
+"اپ Stash و Shadowrocket <span class=\"badge badge-"
+"success\">پیشنهادی</span>"
 
 # | msgid ""
 # | "Stash is a great application. We think it worth buying.\n"
@@ -2056,17 +2059,23 @@ msgstr "اپ Stash و Shadowrocket"
 # | "        <a
 # href=\"https://apps.apple.com/us/app/stash-rule-based-proxy/id1596063349\"
 # target=\"_blank\" class=\"btn btn-success orig-link\">Download stash</a>\n"
+# | "<a href=\"https://apps.apple.com/us/app/shadowrocket/id932747118\"\n"
+# | "        class=\"btn btn-primary orig-link\">shadowrocket</a> \n"
 # | "        </div>"
 #: copy.html:17 hiddifypanel/panel/user/templates/home/ios
 #: hiddifypanel/panel/user/templates/home/ios.html:9
 msgid "user.home.ios.stash.intro"
 msgstr ""
-"برای سیستم عامل iOS اپلیکیشن Stash یک اپ بسیار عالی است اما غیر رایگان "
-"است؛ به نظر ما برای استفاده از پروکسی هوشمند ارزش خرید دارد.\n"
+"برای سیستم عامل iOS اپلیکیشن Stash و شدولینک یک اپ بسیار عالی است اما غیر"
+" رایگان است؛ به نظر ما برای استفاده از پروکسی هوشمند ارزش خرید دارد.\n"
 "  <div class=\"btn-group\">\n"
 "        <a href=\"https://apps.apple.com/us/app/stash-rule-based-"
 "proxy/id1596063349\" target=\"_blank\" class=\"btn btn-success orig-"
 "link\">دانلود Stash</a>\n"
+"\n"
+"<a href=\"https://apps.apple.com/us/app/shadowrocket/id932747118\"\n"
+"        class=\"btn btn-primary orig-link\">دانلود shadowrocket</a> \n"
+"\n"
 "        </div>"
 
 #: hiddifypanel/panel/user/templates/home/ios.html:3
@@ -2081,16 +2090,12 @@ msgstr "اپلیکیشن fairVPN"
 # | msgid ""
 # | "First install one of the following applications:\n"
 # | "<div class=\"btn-group\">\n"
-# | "<a
-# href=\"https://apps.apple.com/us/app/shadowlink-shadowsocks-vpn/id1439686518\"\n"
-# | "        class=\"btn btn-primary orig-link\">shadow link</a> \n"
-# | "<!--    <a
-# href=\"https://apps.apple.com/us/app/napsternetv/id1629465476\"\n"
-# | "        class=\"btn btn-primary orig-link\">napsternetv</a>-->\n"
+# | "\n"
 # | "\t<a href=\"https://apps.apple.com/us/app/fair-vpn/id1533873488\"\n"
 # | "        class=\"btn btn-primary orig-link\">fair-vpn</a>\n"
+# | "    <a href=\"https://apps.apple.com/us/app/napsternetv/id1629465476\"\n"
+# | "        class=\"btn btn-primary orig-link\">napsternetv</a>\n"
 # | "</div>\n"
-# | "\n"
 # | "<br />\n"
 # | "Then apply one of the following configs:"
 #: hiddifypanel/panel/user/templates/home/ios.html:23

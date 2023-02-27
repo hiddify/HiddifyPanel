@@ -11,7 +11,7 @@ from flask_babelex import lazy_gettext as _
 from flask_babelex import gettext as __
 from hiddifypanel import xray_api
 from sqlalchemy.orm import Load 
-
+from babel.dates import format_timedelta as babel_format_timedelta
 def add_temporary_access():
     import random
 
@@ -407,3 +407,12 @@ def set_db_from_json(json_data,override_child_id=None,set_users=True,set_domains
     print(new_rows)
     db.session.bulk_save_objects(new_rows)
     db.session.commit()
+
+
+def format_timedelta(delta,add_direction=True):
+    
+    if delta.days<7 or delta.days>=60:
+        return babel_format_timedelta(delta,threshold=1,add_direction=add_direction,locale=g.locale)
+    if delta.days<60:
+        return babel_format_timedelta(delta, granularity="day",threshold=10,add_direction=add_direction,locale=g.locale)
+
