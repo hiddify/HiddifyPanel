@@ -91,7 +91,7 @@ def make_proxy(proxy,domain_db):
         if l3=="tls" and  not hconfig(ConfigEnum.domain_fronting_tls_enable,child_id):
             return 
         base['server']=hconfig(ConfigEnum.domain_fronting_domain,child_id)
-        base['sni']=hconfigs(ConfigEnum.domain_fronting_domain,child_id)
+        base['sni']=hconfig(ConfigEnum.domain_fronting_domain,child_id)
         # base["host"]=domain
         base['mode']='Fake'
     elif l3=="http" and not hconfig(ConfigEnum.http_proxy_enable,child_id):
