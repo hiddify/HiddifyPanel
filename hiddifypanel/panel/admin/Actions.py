@@ -32,7 +32,7 @@ class Actions(FlaskView):
         # resp= Response()
         # resp.mimetype="text/plain"
         out=f'<pre style="background-color:black; color:white;padding:10px">{logs}</pre>'
-        if "----Finished!---" in out:
+        if len(lines)>0 and "----Finished!---" in lines[0]:
             out=f"<a href='#' target='_blank'><div style='background-color:#b1eab1; padding: 10px;border: solid;'>Finished! For scrolling the log click here.</div></a>{out}"
 
 
