@@ -20,7 +20,8 @@ def init_db():
     
     # db.engine.execute(f'ALTER TABLE child ADD COLUMN ip integer')
     try:
-        
+        column_type = Child.unique_id.type.compile(db.engine.dialect)
+        db.engine.execute(f'ALTER TABLE child ADD COLUMN unique_id {column_type}')
         column_type = Domain.alias.type.compile(db.engine.dialect)
         db.engine.execute(f'ALTER TABLE domain ADD COLUMN alias {column_type}')
         column_type = Domain.child_id.type.compile(db.engine.dialect)
