@@ -143,6 +143,8 @@ def get_config_form():
                 field= SwitchField(_(f'config.{c.key}.label'), default=c.value,description=_(f'config.{c.key}.description')) 
             elif c.key==ConfigEnum.lang or c.key==ConfigEnum.admin_lang:
                 field=wtf.fields.SelectField(_(f"config.{c.key}.label"),choices=[("en",_("lang.en")),("fa",_("lang.fa")),("zh",_("lang.zh"))],description=_(f"config.{c.key}.description"),default=hconfig(c.key))
+            elif c.key==ConfigEnum.package_mode:
+                field=wtf.fields.SelectField(_(f"config.{c.key}.label"),choices=[("release",_("Release")),("develop",_("Develop"))],description=_(f"config.{c.key}.description"),default=hconfig(c.key))
             elif c.key==ConfigEnum.telegram_lib:
                 # if hconfig(ConfigEnum.telegram_lib)=='python':
                 #     continue6

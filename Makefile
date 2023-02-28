@@ -77,6 +77,14 @@ virtualenv:       ## Create a virtual environment.
 	@echo
 	@echo "!!! Please run 'source .venv/bin/activate' to enable the environment !!!"
 
+.PHONY: dev
+dev:          ## Create a new tag for release.
+	@echo "dev" > hiddifypanel/VERSION
+	@echo "__version__='dev'" > hiddifypanel/VERSION.py
+	@gitchangelog > HISTORY.md
+	@git add hiddifypanel/VERSION hiddifypanel/VERSION.py HISTORY.md
+	@git commit -m "release: switch to develop"
+	@git push -u origin HEAD
 .PHONY: release
 release:          ## Create a new tag for release.
 	@echo "previous version was $$(git describe --tags $$(git rev-list --tags --max-count=1))"
@@ -85,7 +93,7 @@ release:          ## Create a new tag for release.
 	@echo "$${TAG}" > hiddifypanel/VERSION
 	@echo "__version__='$${TAG}'" > hiddifypanel/VERSION.py
 	@git tag $${TAG}
-	@$(ENV_PREFIX)gitchangelog > HISTORY.md
+	@gitchangelog > HISTORY.md
 	@git tag -d $${TAG}
 	@git add hiddifypanel/VERSION hiddifypanel/VERSION.py HISTORY.md
 	@git commit -m "release: version $${TAG} 🚀"
