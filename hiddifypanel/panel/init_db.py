@@ -75,7 +75,9 @@ def init_db():
         set_hconfig(ConfigEnum.db_version,db_version,commit=False)
         db.session.commit()
     # 
-    
+    if hconfig(ConfigEnum.is_parent) and ParentDomain.query.count()==0:
+        external_ip=hiddify.get_ip(4)
+        db.session.add(ParentDomain(domain=f"{external_ip}.sslip.io",show_domains=[]))
     db.session.commit()
     return BoolConfig.query.all()
 
@@ -109,7 +111,7 @@ def get_random_string():
 def _v1():
         
         next10year = datetime.date.today() + relativedelta.relativedelta(years=6)
-        external_ip=urllib.request.urlopen('https://v4.ident.me/').read().decode('utf8')
+        external_ip=hiddify.get_ip(4)
         
         data = [
             StrConfig(key=ConfigEnum.db_version,value=1),
