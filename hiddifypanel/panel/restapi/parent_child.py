@@ -18,18 +18,19 @@ class SyncChildResource(Resource):
         if not hconfig(ConfigEnum.is_parent):
             raise Exception("Not a parent")
         print(request.headers)
-        child_ip=request.headers['Unique-Id']
+        unique_id=request.headers['Unique-Id']
         print(panel_data)
         print("==================")
         
         first_setup=False
-        child=Child.query.filter(Child.ip==child_ip).first()
+        
+        child=Child.query.filter(Child.unique_id==unique_id).first()
         if not child:
             first_setup=True
-            child=Child(ip=child_ip)
-            db.session.bulk_save_objects([child])
+            child=Child(unique_id=unique_id)
+            db.session.add(child)
             db.session.commit()
-            child=Child.query.filter(Child.ip==child_ip).first()
+            child=Child.query.filter(Child.unique_id==unique_id).first()
         
         hiddify.set_db_from_json(panel_data,override_child_id=child.id,set_users=first_setup,remove_domains=True)
 
