@@ -18,11 +18,9 @@ def init_db():
 
     db.create_all()
     
+    # db.engine.execute(f'ALTER TABLE child ADD COLUMN ip integer')
     try:
-        db.engine.execute(f'ALTER TABLE child drop COLUMN ip')
-        column_type = Child.unique_id.type.compile(db.engine.dialect)
-        db.engine.execute(f'ALTER TABLE child ADD COLUMN unique_id {column_type}')
-        db.engine.execute(f'update child set unique_id="default" where unique_id is NULL')
+        
         column_type = Domain.alias.type.compile(db.engine.dialect)
         db.engine.execute(f'ALTER TABLE domain ADD COLUMN alias {column_type}')
         column_type = Domain.child_id.type.compile(db.engine.dialect)
@@ -62,9 +60,9 @@ def init_db():
     # print(f"Current DB version is {db_version}")
     if not Child.query.filter(Child.id==0).first():
         print(Child.query.filter(Child.id==0).first())
-        db.session.add(Child(ip="self",id=0))
+        db.session.add(Child(unique_id="self",id=0))
         db.session.commit()
-    db_actions={1:_v1,2:_v2,3:_v3,6:_v6,8:_v8,9:_v9,10:_v10,11:_v11}
+    db_actions={1:_v1,2:_v2,3:_v3,6:_v6,8:_v8,9:_v9,10:_v10,11:_v11,12:_v12}
     for ver,db_action in db_actions.items():
         if ver<=db_version:continue
         if start_version==0 and ver==10:continue
@@ -80,7 +78,10 @@ def init_db():
     db.session.commit()
     return BoolConfig.query.all()
 
-
+def _v12():
+    db.engine.execute(f'drop TABLE child')
+    db.create_all()
+    db.session.add(Child(id=0,unique_id="default"))
 
 def _v11():
     try:
