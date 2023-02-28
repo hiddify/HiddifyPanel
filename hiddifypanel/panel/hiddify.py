@@ -447,9 +447,9 @@ def bulk_register_users(users=[],commit=True,remove=False):
                 db.session.delete(d)
     if commit:
         db.session.commit()
-def bulk_register_configs(hconfigs=[],commit=True,override_child_id=None,override_unique_id=True):
+def bulk_register_configs(hconfigs,commit=True,override_child_id=None,override_unique_id=True):
     
-    for config in json_data["hconfigs"]:
+    for config in hconfigs:
         if config['key']==ConfigEnum.unique_id and not override_unique_id:
             continue
         child_id=override_child_id if override_child_id is not None else get_child(config.get('child_unique_id',0))
@@ -457,8 +457,8 @@ def bulk_register_configs(hconfigs=[],commit=True,override_child_id=None,overrid
     if commit:
         db.session.commit()
 
-def bulk_register_proxies(proxies=[],commit=True,override_child_id=None):
-    for proxy in json_data["proxies"]:
+def bulk_register_proxies(proxies,commit=True,override_child_id=None):
+    for proxy in proxies:
         child_id=override_child_id if override_child_id is not None else get_child(config.get('child_unique_id',0))
         add_or_update_proxy(commit=False,child_id=child_id,**proxy)
 

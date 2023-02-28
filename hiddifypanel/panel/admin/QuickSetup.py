@@ -47,25 +47,20 @@ class QuickSetup(FlaskView):
                 
                 if quick_form.validate_on_submit():
                         sslip_dm=Domain.query.filter(Domain.domain==f'{hiddify.get_ip(4)}.sslip.io').delete()
-
-                        data=[Domain(domain=quick_form.domain.data.lower(),mode=DomainType.direct),]
-                        
-                        db.session.bulk_save_objects(data)
-
-                        hiddify.set_db_from_json(
-                                {"hconfigs":[
+                        db.session.add(Domain(domain=quick_form.domain.data.lower(),mode=DomainType.direct))
+                        hiddify.add_or_update_config([
                                         {"key":ConfigEnum.telegram_enable,"value":quick_form.enable_telegram.data},
                                         {"key":ConfigEnum.vmess_enable,"value":quick_form.enable_vmess.data},
                                         {"key":ConfigEnum.firewall,"value":quick_form.enable_firewall.data},
                                         {"key":ConfigEnum.block_iran_sites,"value":quick_form.block_iran_sites.data},
                                         {"key":ConfigEnum.decoy_domain,"value":quick_form.decoy_domain.data}
-                                ]}
-                        ) 
+                                ])
+                        
                         
                         db.session.commit()
                         # hiddify.flash_config_success()
                         proxy_path=hconfig(ConfigEnum.proxy_path)
-                        uuid=User.query.first().uuid
+                        # uuid=User.query.first().uuid
                         # userlink=f"<a class='btn btn-secondary share-link' target='_blank' href='https://{quick_form.domain.data}/{proxy_path}/{uuid}/'>{_('default user link')}</a>"
                         # flash((_('The default user link is %(link)s. To add or edit more users, please visit users from menu.',link=userlink)),'info')
                         
