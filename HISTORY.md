@@ -1,6 +1,13 @@
 # Changelog
 
 
+## (unreleased)
+
+### Other
+
+* Add dev branch. [hiddify]
+
+
 ## 0.9.110 (2023-02-28)
 
 ### Fix
