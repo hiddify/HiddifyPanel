@@ -78,7 +78,7 @@
 
 
 
-          % if not hconfig(ConfigEnum.is_parent)
+          
           {% set action_active = True if request.endpoint and "Actions:" in request.endpoint else False %}
 
           <li class="nav-item {{'menu-open' if action_active else ''}}">
@@ -89,9 +89,11 @@
               {{ render_nav_item('admin.Actions:status',icon('solid','signal','nav-icon')+ _('admin.actions.status'), _use_li=True) }}
               {{ render_nav_item('admin.Actions:viewlogs',icon('solid','inbox','nav-icon')+ _('admin.actions.viewlogs'), _use_li=True) }}
               {{ render_nav_item('admin.Actions:apply_configs',icon('solid','bolt','nav-icon')+ _('admin.actions.apply_configs'), _use_li=True,extra_class="form_post") }}
-              {{ render_nav_item('admin.Actions:reinstall', icon('solid','rotate','nav-icon')+_('admin.actions.reinstall'), _use_li=True,extra_class="form_post") }}
               {{ render_nav_item('admin.Actions:update', icon('solid','arrow-up-from-bracket','nav-icon')+_('admin.actions.update'), _use_li=True,extra_class="form_post") }}
+              % if not hconfig(ConfigEnum.is_parent)
+              {{ render_nav_item('admin.Actions:reinstall', icon('solid','rotate','nav-icon')+_('admin.actions.reinstall'), _use_li=True,extra_class="form_post") }}
               {{ render_nav_item('admin.Actions:reset', icon('solid','power-off','nav-icon')+_('admin.actions.reset'), _use_li=True,extra_class="form_post") }}
+              % endif
               <!-- {{ render_nav_item('admin.Actions:update_usage', icon('solid','charging-station','nav-icon')+_('User usage update'), _use_li=True) }} -->
             </ul>
           </li>
