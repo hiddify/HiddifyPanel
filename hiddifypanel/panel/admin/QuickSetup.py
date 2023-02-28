@@ -48,7 +48,7 @@ class QuickSetup(FlaskView):
                 if quick_form.validate_on_submit():
                         sslip_dm=Domain.query.filter(Domain.domain==f'{hiddify.get_ip(4)}.sslip.io').delete()
                         db.session.add(Domain(domain=quick_form.domain.data.lower(),mode=DomainType.direct))
-                        hiddify.add_or_update_config([
+                        hiddify.bulk_register_configs([
                                         {"key":ConfigEnum.telegram_enable,"value":quick_form.enable_telegram.data},
                                         {"key":ConfigEnum.vmess_enable,"value":quick_form.enable_vmess.data},
                                         {"key":ConfigEnum.firewall,"value":quick_form.enable_firewall.data},

@@ -258,15 +258,18 @@ def format_timedelta(delta, add_direction=True):
 
 
 def get_child(unique_id):
+    
     if unique_id is None:
         return 0
-    child = Child.query.filter(Child.unique_id == unique_id).first()
+    
+    child = Child.query.filter(Child.unique_id == str(unique_id)).first()
+    
     if not child:
-        child=Child(unique_id=unique_id)
-        db.session.add(unique_id)
+        child=Child(unique_id=str(unique_id))
+        db.session.add(child)
         db.session.commit()
-        child = Child.query.filter(Child.unique_id == unique_id).first()
-
+        child = Child.query.filter(Child.unique_id == str(unique_id)).first()
+    
     return child.id
 
 
@@ -383,6 +386,7 @@ def add_or_update_user(commit=True,**user):
         db.session.commit()
 
 def add_or_update_config(commit=True,child_id=0,override_unique_id=True,**config):
+    print(config)
     c = config['key']
     ckey = ConfigEnum(c)
     if c == ConfigEnum.unique_id and not override_unique_id:
@@ -427,7 +431,7 @@ def bulk_register_parent_domains(parent_domains,commit=True,remove=False):
 def bulk_register_domains(domains,commit=True,remove=False,override_child_id=None):
     child_ids={}
     for domain in domains:
-        child_id=override_child_id if override_child_id is not None else get_child(domain.get('child_unique_id',0))
+        child_id=override_child_id if override_child_id is not None else get_child(domain.get('child_unique_id',None))
         child_ids[child_id]=1
         add_or_update_domain(commit=False,child_id=child_id,**domain)
     if remove and len(child_ids):
@@ -448,18 +452,20 @@ def bulk_register_users(users=[],commit=True,remove=False):
     if commit:
         db.session.commit()
 def bulk_register_configs(hconfigs,commit=True,override_child_id=None,override_unique_id=True):
-    
+    print(hconfigs)
     for config in hconfigs:
+        print(config)
         if config['key']==ConfigEnum.unique_id and not override_unique_id:
             continue
-        child_id=override_child_id if override_child_id is not None else get_child(config.get('child_unique_id',0))
+        child_id=override_child_id if override_child_id is not None else get_child(config.get('child_unique_id',None))
+        print(config)
         add_or_update_config(commit=False,child_id=child_id,**config)
     if commit:
         db.session.commit()
 
 def bulk_register_proxies(proxies,commit=True,override_child_id=None):
     for proxy in proxies:
-        child_id=override_child_id if override_child_id is not None else get_child(config.get('child_unique_id',0))
+        child_id=override_child_id if override_child_id is not None else get_child(config.get('child_unique_id',None))
         add_or_update_proxy(commit=False,child_id=child_id,**proxy)
 
     
