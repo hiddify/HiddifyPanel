@@ -1,9 +1,11 @@
 # Changelog
 
 
-## (unreleased)
+## 0.9.111 (2023-02-28)
 
 ### Other
+
+* Release: switch to develop. [hiddify]
 
 * Add dev branch. [hiddify]
 
