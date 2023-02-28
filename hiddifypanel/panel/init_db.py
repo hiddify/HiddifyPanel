@@ -19,6 +19,7 @@ def init_db():
     db.create_all()
     
     try:
+        db.engine.execute(f'ALTER TABLE child drop COLUMN ip')
         column_type = Child.unique_id.type.compile(db.engine.dialect)
         db.engine.execute(f'ALTER TABLE child ADD COLUMN unique_id {column_type}')
         db.engine.execute(f'update child set unique_id="default" where unique_id is NULL')
