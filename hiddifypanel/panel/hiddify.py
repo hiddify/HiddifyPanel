@@ -353,7 +353,7 @@ def add_or_update_domain(commit=True,child_id=0,**domain):
 
     dbdomain.mode = domain['mode']
     dbdomain.cdn_ip = domain.get('cdn_ip', '')
-    domain.alias = domain.get('alias', '')
+    dbdomain.alias = domain.get('alias', '')
     show_domains = domain.get('show_domains', [])
     dbdomain.show_domains = Domain.query.filter(
         Domain.domain.in_(show_domains)).all()
