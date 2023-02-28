@@ -20,32 +20,56 @@ class AllResource(Resource):
 
 
 class UserResource(Resource):
-    def get(self):
+    def get(self,uuid=None):
+        if uuid:
+            product = User.query.filter(User.uuid==uuid).first() or abort(204)
+            return jsonify(product.to_dict())    
+
         products = User.query.all() or abort(204)
         return jsonify(
-            {"users": [product.to_dict() for product in products]}
+            [product.to_dict() for product in products]
         )
+
+    def post(self):
+        hiddify.add_or_update_user(**request.json)
+        return jsonify({'status':200,'msg':'ok'})
+
 
 class DomainResource(Resource):
-    def get(self):
+    def get(self,domain=None):
+        if domain:
+            product = Domain.query.filter(Domain.domain==domain).first() or abort(204)
+            return jsonify(hiddify.domain_dict(product))    
         products = Domain.query.all() or abort(204)
         return jsonify(
-            {"domains": [hiddify.domain_dict(product) for product in products]}
+            [hiddify.domain_dict(product) for product in products]
         )
+    def post(self):
+        hiddify.add_or_update_domain(**request.json)
+        return jsonify({'status':200,'msg':'ok'})
 
-class BoolConfigResource(Resource):
-    def get(self):
-        products = BoolConfig.query.all() or abort(204)
+class ParentDomainResource(Resource):
+    def get(self,parent_domain=None):
+        if domain:
+            product = ParentDomain.query.filter(ParentDomain.domain==domain).first() or abort(204)
+            return jsonify(hiddify.parent_domain_dict(product))    
+        products = ParentDomain.query.all() or abort(204)
         return jsonify(
-            {"bool_configs": [product.to_dict() for product in products]}
+            [hiddify.parent_domain_dict(product) for product in products]
         )
+    def post(self):
+        hiddify.add_or_update_parent_domain(**request.json)
+        return jsonify({'status':200,'msg':'ok'})
 
-class StrConfigResource(Resource):
-    def get(self):
-        products = StrConfig.query.all() or abort(204)
-        return jsonify(
-            {"str_configs": [product.to_dict() for product in products]}
-        )
+class ConfigResource(Resource):
+    def get(self,key=None,child_id=0):
+        if key:
+            return jsonify(hconfig(key,child_id))
+        return jsonify(get_hconfigs(child_id))
+
+    def post(self):
+        hiddify.add_or_update_config(**request.json)
+        return jsonify({'status':200,'msg':'ok'})
 
 class HelloResource(Resource):
     def get(self):

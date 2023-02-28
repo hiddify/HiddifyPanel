@@ -19,6 +19,9 @@ def init_db():
     db.create_all()
     
     try:
+        column_type = Child.unique_id.type.compile(db.engine.dialect)
+        db.engine.execute(f'ALTER TABLE child ADD COLUMN unique_id {column_type}')
+        db.engine.execute(f'update child set unique_id="default" where unique_id is NULL')
         column_type = Domain.alias.type.compile(db.engine.dialect)
         db.engine.execute(f'ALTER TABLE domain ADD COLUMN alias {column_type}')
         column_type = Domain.child_id.type.compile(db.engine.dialect)

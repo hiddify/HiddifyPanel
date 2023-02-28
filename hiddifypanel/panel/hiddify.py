@@ -77,80 +77,6 @@ def abs_url(path):
 def asset_url(path):
     return f"/{g.proxy_path}/{path}"
 
-# def update_usage():
-
-#         res={}
-#         have_change=False
-#         for user in User.query.all():
-#             if user.monthly and (datetime.date.today()-user.last_reset_time).days>=30:
-#                 user.last_reset_time=datetime.date.today()
-#                 if user.current_usage_GB > user.usage_limit_GB:
-#                     xray_api.add_client(user.uuid)
-#                     have_change=True
-#                 user.current_usage_GB=0
-
-#             d = xray_api.get_usage(user.uuid,reset=True)
-
-#             if d == None:
-#                res[user.uuid]="No value"
-#             else:
-#                 in_gig=(d)/to_gig_d
-#                 res[user.uuid]=in_gig
-#                 user.current_usage_GB += in_gig
-#             if user.current_usage_GB > user.usage_limit_GB:
-#                 xray_api.remove_client(user.uuid)
-#                 have_change=True
-#                 res[user.uuid]=f"{res[user.uuid]} !OUT of USAGE! Client Removed"
-
-#         db.session.commit()
-#         if have_change:
-#             quick_apply_users()
-#         return {"status": 'success', "comments":res}
-
-
-def domain_dict(d):
-    return {
-        'domain': d.domain,
-        'mode': d.mode,
-        'alias': d.alias,
-        'child_ip': d.child.ip if d.child else '',
-        'cdn_ip': d.cdn_ip,
-        'show_domains': [dd.domain for dd in d.show_domains]
-    }
-
-
-def parent_domain_dict(d):
-    return {
-        'domain': d.domain,
-        'show_domains': [dd.domain for dd in d.show_domains]
-    }
-
-
-def proxy_dict(d):
-    return {
-        'name': d.name,
-        'enable': d.enable,
-        'proto': d.proto,
-        'l3': d.l3,
-        'transport': d.transport,
-        'cdn': d.cdn,
-        'child_ip': d.child.ip if d.child else ''
-    }
-
-
-def parent_domain_dict(d):
-    return {
-        'domain': d.domain,
-    }
-
-
-def config_dict(d):
-    return {
-        'key': d.key,
-        'value': d.value,
-        'child_ip': d.child.ip if d.child else ''
-    }
-
 
 def get_ip(version, retry=3):
     try:
@@ -195,7 +121,7 @@ def quick_apply_users():
 
 def flash_config_success(restart_mode='', domain_changed=True):
 
-    if restart_mode and not hconfig(ConfigEnum.is_parent):
+    if restart_mode:
         url = url_for('admin.Actions:reinstall', complete_install=restart_mode ==
                       'reinstall', domain_changed=domain_changed)
         apply_btn = f"<a href='{url}' class='btn btn-primary form_post'>" + \
@@ -241,20 +167,20 @@ def check_connection_for_domain(domain):
     try:
         print(f"https://{domain}/{path}")
         res = requests.get(
-            f"https://{domain}/{path}", verify=False, timeout=2).json()
+            f"https://{domain}/{path}", verify=False, timeout=10).json()
         return res['status'] == 200
 
     except:
         try:
             print(f"http://{domain}/{path}")
             res = requests.get(
-                f"http://{domain}/{path}", verify=False, timeout=2).json()
+                f"http://{domain}/{path}", verify=False, timeout=10).json()
             return res['status'] == 200
         except:
             try:
                 print(f"http://{get_domain_ip(domain)}/{path}")
                 res = requests.get(
-                    f"http://{get_domain_ip(domain)}/{path}", verify=False, timeout=2).json()
+                    f"http://{get_domain_ip(domain)}/{path}", verify=False, timeout=10).json()
                 return res['status'] == 200
             except:
                 return False
@@ -311,6 +237,77 @@ def check_need_reset(old_configs):
     flash_config_success(restart_mode=restart_mode, domain_changed=False)
 
 
+
+def format_timedelta(delta, add_direction=True):
+
+    if delta.days < 7 or delta.days >= 60:
+        return babel_format_timedelta(delta, threshold=1, add_direction=add_direction, locale=g.locale)
+    if delta.days < 60:
+        return babel_format_timedelta(delta, granularity="day", threshold=10, add_direction=add_direction, locale=g.locale)
+
+
+
+
+
+
+
+
+
+
+
+
+
+def get_child(unique_id):
+    if unique_id is None:
+        return 0
+    child = Child.query.filter(Child.unique_id == unique_id).first()
+    if not child:
+        child=Child(unique_id=unique_id)
+        db.session.add(unique_id)
+        db.session.commit()
+        child = Child.query.filter(Child.unique_id == unique_id).first()
+
+    return child.id
+
+
+
+def domain_dict(d):
+    return {
+        'domain': d.domain,
+        'mode': d.mode,
+        'alias': d.alias,
+        'child_unique_id': d.child.unique_id if d.child else '',
+        'cdn_ip': d.cdn_ip,
+        'show_domains': [dd.domain for dd in d.show_domains]
+    }
+
+
+def parent_domain_dict(d):
+    return {
+        'domain': d.domain,
+        'show_domains': [dd.domain for dd in d.show_domains]
+    }
+
+
+def proxy_dict(d):
+    return {
+        'name': d.name,
+        'enable': d.enable,
+        'proto': d.proto,
+        'l3': d.l3,
+        'transport': d.transport,
+        'cdn': d.cdn,
+        'child_unique_id': d.child.unique_id if d.child else ''
+    }
+
+def config_dict(d):
+    return {
+        'key': d.key,
+        'value': d.value,
+        'child_unique_id': d.child.unique_id if d.child else ''
+    }
+
+
 def dump_db_to_dict():
     return {"users": [u.to_dict() for u in User.query.all()],
             "domains": [domain_dict(u) for u in Domain.query.all()],
@@ -319,122 +316,167 @@ def dump_db_to_dict():
             "hconfigs": [*[config_dict(u) for u in BoolConfig.query.all()],
                          *[config_dict(u) for u in StrConfig.query.all()]]
             }
+def add_or_update_parent_domains(commit=True,**parent_domain):
+    dbdomain = ParentDomain.query.filter(
+         ParentDomain.domain == parent_domain['domain']).first()
+    if not dbdomain:
+        dbdomain = ParentDomain(domain=parent_domain['domain'])
+        db.session.add(dbdomain)
+    show_domains = parent_domain.get('show_domains', [])
+    dbdomain.show_domains = Domain.query.filter(
+        Domain.domain.in_(show_domains)).all()
+    if commit:
+        db.session.commit()
 
+def add_or_update_proxy(commit=True,child_id=0,**proxy):
+    dbproxy = Proxy.query.filter(
+        Proxy.name == proxy['name']).first()
+    if not dbproxy:
+        dbproxy = Proxy()
+        db.session.add(dbproxy)
+    dbproxy.enable = proxy['enable']
+    dbproxy.name = proxy['name']
+    dbproxy.proto = proxy['proto']
+    dbproxy.transport = proxy['transport']
+    dbproxy.cdn = proxy['cdn']
+    dbproxy.l3 = proxy['l3']
+    dbproxy.child_id = child_id
+    if commit:
+        db.session.commit()
+def add_or_update_domain(commit=True,child_id=0,**domain):
+    dbdomain = Domain.query.filter(
+        Domain.domain == domain['domain']).first()
+    if not dbdomain:
+        dbdomain = Domain(domain=domain['domain'])
+        db.session.add(dbdomain)
+    dbdomain.child_id = child_id
 
-def set_db_from_json(json_data, override_child_id=None, set_users=True, set_domains=True, set_proxies=True, set_settings=True, remove_domains=False, remove_users=False, override_unique_id=True):
-    def get_child(dic):
-        print(override_child_id)
-        if override_child_id is not None:
-            return override_child_id
-        if 'child_ip' in dic:
-            child = Child.query.filter(Child.ip == dic['child_ip']).first()
-            if child:
-                return child.id
-        return 0
+    dbdomain.mode = domain['mode']
+    dbdomain.cdn_ip = domain.get('cdn_ip', '')
+    domain.alias = domain.get('alias', '')
+    show_domains = domain.get('show_domains', [])
+    dbdomain.show_domains = Domain.query.filter(
+        Domain.domain.in_(show_domains)).all()
+    if commit:
+        db.session.commit()
 
-    new_rows = []
-    if set_users and 'users' in json_data:
-        for user in json_data['users']:
-            print(user)
-            dbuser = User.query.filter(User.uuid == user['uuid']).first()
+def add_or_update_user(commit=True,**user):
+    dbuser = User.query.filter(User.uuid == user['uuid']).first()
 
-            if not dbuser:
-                dbuser = User()
-                dbuser.uuid = user['uuid']
-                new_rows.append(dbuser)
+    if not dbuser:
+        dbuser = User()
+        dbuser.uuid = user['uuid']
+        db.session.add(dbuser)
 
-            dbuser.current_usage_GB = user['current_usage_GB']
-            dbuser.expiry_time = datetime.datetime.strptime(
-                user['expiry_time'], '%Y-%m-%d')
-            dbuser.last_reset_time = datetime.datetime.strptime(
-                user['last_reset_time'], '%Y-%m-%d')
-            dbuser.usage_limit_GB = user['usage_limit_GB']
-            dbuser.name = user['name']
-            dbuser.comment = user.get('comment', '')
-            dbuser.mode = user.get('mode', user.get(
-                'monthly', 'false') == 'true')
-            # dbuser.last_online=user.get('last_online','')
-    if remove_users and 'users' in json_data:
-        dd = {u.uuid: 1 for u in json_data['users']}
+    dbuser.current_usage_GB = user['current_usage_GB']
+    dbuser.expiry_time = datetime.datetime.strptime(
+        user['expiry_time'], '%Y-%m-%d')
+    dbuser.last_reset_time = datetime.datetime.strptime(
+        user['last_reset_time'], '%Y-%m-%d')
+    dbuser.usage_limit_GB = user['usage_limit_GB']
+    dbuser.name = user['name']
+    dbuser.comment = user.get('comment', '')
+    dbuser.mode = user.get('mode', user.get(
+        'monthly', 'false') == 'true')
+    # dbuser.last_online=user.get('last_online','')
+    if commit:
+        db.session.commit()
+
+def add_or_update_config(commit=True,child_id=0,override_unique_id=True,**config):
+    c = config['key']
+    ckey = ConfigEnum(c)
+    if c == ConfigEnum.unique_id and not override_unique_id:
+        return
+    v = config['value']
+
+    print(c, ckey, ckey.type(), "child_id", child_id)
+    if ckey in [ConfigEnum.db_version]:
+        return
+    if ckey.type() == bool:
+        dbconf = BoolConfig.query.filter(
+            BoolConfig.key == ckey, BoolConfig.child_id == child_id).first()
+        # print(dbconf,dbconf.child_id)
+        print("====", dbconf)
+        if not dbconf:
+            dbconf = BoolConfig(key=ckey, child_id=child_id)
+            db.session.add(dbconf)
+
+        v = str(v).lower() == "true"
+    else:
+        dbconf = StrConfig.query.filter(
+            StrConfig.key == ckey, StrConfig.child_id == child_id).first()
+        print("====", dbconf)
+        if not dbconf:
+            dbconf = StrConfig(key=ckey, child_id=child_id)
+            db.session.add(dbconf)
+
+    dbconf.value = v
+    print(">>>>", dbconf)
+
+def bulk_register_parent_domains(parent_domains,commit=True,remove=False):
+    for p in parent_domains:
+        add_or_update_parent_domains(commit=False,**p)
+    if remove:
+        dd = {p.domain: 1 for p in parent_domains}
+        for d in ParentDomain.query.all():
+            if d.domain not in dd:
+                db.session.delete(d)
+    if commit:
+        db.session.commit()
+
+def bulk_register_domains(domains,commit=True,remove=False,override_child_id=None):
+    child_ids={}
+    for domain in domains:
+        child_id=override_child_id if override_child_id is not None else get_child(domain.get('child_unique_id',0))
+        child_ids[child_id]=1
+        add_or_update_domain(commit=False,child_id=child_id,**domain)
+    if remove and len(child_ids):
+        dd = {d['domain']: 1 for d in domains}
+        for d in Domain.query.filter(Domain.child_id.in_(child_ids)):
+            if d.domain not in dd:
+                db.session.delete(d)
+    if commit:
+        db.session.commit()
+def bulk_register_users(users=[],commit=True,remove=False):
+    for u in users:
+        add_or_update_user(commit=False,**u)
+    if remove:
+        dd = {u.uuid: 1 for u in users}
         for d in User.query.all():
             if d.uuid not in dd:
                 db.session.delete(d)
+    if commit:
+        db.session.commit()
+def bulk_register_configs(hconfigs=[],commit=True,override_child_id=None,override_unique_id=True):
+    
+    for config in json_data["hconfigs"]:
+        if config['key']==ConfigEnum.unique_id and not override_unique_id:
+            continue
+        child_id=override_child_id if override_child_id is not None else get_child(config.get('child_unique_id',0))
+        add_or_update_config(commit=False,child_id=child_id,**config)
+    if commit:
+        db.session.commit()
 
+def bulk_register_proxies(proxies=[],commit=True,override_child_id=None):
+    for proxy in json_data["proxies"]:
+        child_id=override_child_id if override_child_id is not None else get_child(config.get('child_unique_id',0))
+        add_or_update_proxy(commit=False,child_id=child_id,**proxy)
+
+    
+def set_db_from_json(json_data, override_child_id=None, set_users=True, set_domains=True, set_proxies=True, set_settings=True, remove_domains=False, remove_users=False, override_unique_id=True):
+    
+    
+
+    new_rows = []
+    if set_users and 'users' in json_data:
+        bulk_register_users(json_data['users'],commit=False,remove=remove_users)
     if set_domains and 'domains' in json_data:
-        for domain in json_data['domains']:
-            dbdomain = Domain.query.filter(
-                Domain.domain == domain['domain']).first()
-            if not dbdomain:
-                dbdomain = Domain(domain=domain['domain'])
-                new_rows.append(dbdomain)
-            dbdomain.child_id = get_child(domain)
-
-            dbdomain.mode = domain['mode']
-            dbdomain.cdn_ip = domain.get('cdn_ip', '')
-            domain.alias = domain.get('alias', '')
-            show_domains = domain.get('show_domains', [])
-            dbdomain.show_domains = Domain.query.filter(
-                Domain.domain.in_(show_domains)).all()
-    if remove_domains and override_child_id is not None and 'domains' in json_data:
-        dd = {d['domain']: 1 for d in json_data['domains']}
-        for d in Domain.query.filter(Domain.child_id == override_child_id):
-            if d.domain not in dd:
-                db.session.delete(d)
+        bulk_register_domains(json_data['domains'],commit=False,remove=remove_domains,override_child_id=override_child_id)
+    if set_domains and 'parent_domains' in json_data:
+        bulk_register_parent_domains(json_data['parent_domains'],commit=False,remove=remove_domains)
     if set_settings and 'hconfigs' in json_data:
-
-        for config in json_data["hconfigs"]:
-            c = config['key']
-            ckey = ConfigEnum(c)
-            if c == ConfigEnum.unique_id and not override_unique_id:
-                continue
-            v = config['value']
-            child_id = get_child(config)
-            print(c, ckey, ckey.type(), "child_id", child_id)
-            if ckey in [ConfigEnum.db_version]:
-                continue
-            if ckey.type() == bool:
-                dbconf = BoolConfig.query.filter(
-                    BoolConfig.key == ckey, BoolConfig.child_id == child_id).first()
-                # print(dbconf,dbconf.child_id)
-                print("====", dbconf)
-                if not dbconf:
-                    dbconf = BoolConfig(key=ckey, child_id=child_id)
-                    new_rows.append(dbconf)
-
-                v = str(v).lower() == "true"
-            else:
-                dbconf = StrConfig.query.filter(
-                    StrConfig.key == ckey, StrConfig.child_id == child_id).first()
-                print("====", dbconf)
-                if not dbconf:
-                    dbconf = StrConfig(key=ckey, child_id=child_id)
-                    new_rows.append(dbconf)
-
-            dbconf.value = v
-            print(">>>>", dbconf)
+        bulk_register_configs(json_data["hconfigs"],commit=False,override_child_id=override_child_id,override_unique_id=override_unique_id)
         if 'proxies' in json_data:
-            for proxy in json_data["proxies"]:
-                dbproxy = Proxy.query.filter(
-                    Proxy.name == proxy['name']).first()
-                if not dbproxy:
-                    dbproxy = Proxy()
-                    new_rows.append(dbproxy)
-                dbproxy.enable = proxy['enable']
-                dbproxy.name = proxy['name']
-                dbproxy.proto = proxy['proto']
-                dbproxy.transport = proxy['transport']
-                dbproxy.cdn = proxy['cdn']
-                dbproxy.l3 = proxy['l3']
-                dbproxy.child_id = get_child(proxy)
-
-    print(new_rows)
-    db.session.bulk_save_objects(new_rows)
+            bulk_register_proxies(json_data[proxies],commit=False,override_child_id=override_child_id)
     db.session.commit()
 
-
-def format_timedelta(delta, add_direction=True):
-
-    if delta.days < 7 or delta.days >= 60:
-        return babel_format_timedelta(delta, threshold=1, add_direction=add_direction, locale=g.locale)
-    if delta.days < 60:
-        return babel_format_timedelta(delta, granularity="day", threshold=10, add_direction=add_direction, locale=g.locale)

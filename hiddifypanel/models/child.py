@@ -18,8 +18,8 @@ from strenum import StrEnum
 
 class Child(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    ip = db.Column(db.String(200), nullable=False, unique=True)
-
+    # ip = db.Column(db.String(200), nullable=False, unique=True)
+    unique_id=db.Column(db.String(200), nullable=False, unique=True)
     domains = db.relationship('Domain', backref='child')
     proxies = db.relationship('Proxy', backref='child')
     boolconfigs = db.relationship('BoolConfig', backref='child')
