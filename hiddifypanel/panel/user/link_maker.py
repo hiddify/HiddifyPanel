@@ -39,6 +39,7 @@ def make_proxy(proxy,domain_db):
     child_id=domain_db.child_id
     hconfigs=get_hconfigs(child_id)
     port=0
+    
     if l3 in ["tls"]:
         port=443
     elif l3 =="http":
@@ -71,7 +72,9 @@ def make_proxy(proxy,domain_db):
         'transport':proxy.transport,
         'proxy_path':hconfig(ConfigEnum.proxy_path,child_id),
         'alpn':"h2",
-        'extra_info':f'{domain}'
+        'extra_info':f'{domain}',
+        'fingerprint':hconfig(ConfigEnum.utls,child_id)
+
     }
 
     if base["proto"]=="trojan" and l3!="tls":
@@ -164,7 +167,7 @@ def to_link(proxy):
     name_link=proxy["name"]+"_"+proxy['extra_info']
     if proxy['proto']=='vmess':
         vmess_type= 'http' if proxy["transport"]=='tcp' else 'none'
-        return pbase64(f'vmess://{{"v":"2", "ps":"{name_link}", "add":"{proxy["server"]}", "port":"{proxy["port"]}", "id":"{proxy["uuid"]}", "aid":"0", "scy":"auto", "net":"{proxy["transport"]}", "type":"none", "host":"{proxy.get("host","")}", "path":"{proxy["path"] if "path" in proxy else ""}", "tls":"{proxy["l3"]}", "sni":"{proxy["sni"]}","fp":"android"}}')
+        return pbase64(f'vmess://{{"v":"2", "ps":"{name_link}", "add":"{proxy["server"]}", "port":"{proxy["port"]}", "id":"{proxy["uuid"]}", "aid":"0", "scy":"auto", "net":"{proxy["transport"]}", "type":"none", "host":"{proxy.get("host","")}", "path":"{proxy["path"] if "path" in proxy else ""}", "tls":"{proxy["l3"]}", "sni":"{proxy["sni"]}","fp":"{proxy["fingerprint"]}"}}')
     if proxy['proto']=="ssr":
         baseurl=f'ssr://proxy["encryption"]:{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}'
         return None
@@ -187,7 +190,7 @@ def to_link(proxy):
         infos+=f'&serviceName={proxy["grpc_service_name"]}&mode={proxy["grpc_mode"]}'
     if 'vless'==proxy['proto']:
         infos+="&encryption=none"
-    infos+="&fp=android" 
+    infos+="&fp="+proxy['fingerprint'] 
     if proxy['l3']!='quic':
         infos+='&headerType=None' #if not quic
     if proxy['mode']=='Fake':
@@ -263,13 +266,13 @@ def to_clash(proxy,meta_or_normal):
     elif proxy["proto"]=="trojan":
         base["password"]=proxy["uuid"]
         base["sni"]= proxy["sni"]
-    
+
     else:
         base["uuid"]= proxy["uuid"]
         base["servername"]= proxy["sni"]
         base["tls"]= proxy["l3"]=="tls"
     if meta_or_normal=="meta":
-        base['global-client-fingerprint']="android"
+        base['client-fingerprint']=proxy['fingerprint']
     if "xtls" == proxy['l3']:
         base["flow"]= proxy['flow']
         base["flow-show"]= True

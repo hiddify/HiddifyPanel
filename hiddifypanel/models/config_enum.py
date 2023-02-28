@@ -35,6 +35,7 @@ class ConfigCategory(StrEnum):
 
 class ConfigEnum(StrEnum):
     package_mode=auto()
+    utls=auto()
     telegram_bot_token=auto()
     is_parent=auto()
     parent_panel=auto()
@@ -101,6 +102,7 @@ class ConfigEnum(StrEnum):
       return cls.not_found #"key not found"
     def info(self):
         map = {
+            self.utls: {'category': ConfigCategory.proxies},
             self.package_mode: {'category': ConfigCategory.advanced,'show_in_parent':True},
             self.telegram_bot_token: {'category': ConfigCategory.advanced,'show_in_parent':True},
             self.is_parent:{'category': ConfigCategory.hidden,'type':bool},
