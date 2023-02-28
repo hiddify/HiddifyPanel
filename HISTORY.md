@@ -1,6 +1,23 @@
 # Changelog
 
 
+## 1.0.0 (2023-02-28)
+
+### New
+
+* Add default parent domain. [hiddify]
+
+### Fix
+
+* Show success message only on end. [hiddify]
+
+### Other
+
+* Add utls to be configured. [hiddify]
+
+* Show domain change window after quick setup. [hiddify]
+
+
 ## 0.9.111 (2023-02-28)
 
 ### Other
@@ -96,6 +113,9 @@
 * Add telegram_bot_token. [hiddify]
 
 * Better verify domain. [hiddify]
+
+
+## 0.9.98 (2023-02-27)
 
 ### Fix
 
