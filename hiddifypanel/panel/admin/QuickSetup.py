@@ -66,7 +66,7 @@ class QuickSetup(FlaskView):
                         
                         from . import Actions
                         action=Actions()
-                        return action.reinstall()
+                        return action.reinstall(domain_changed=True)
                 else:
                         flash(_('config.validation-error'), 'danger')
                 return render_template('quick_setup.html', form=quick_form,lang_form=get_lang_form(True),ipv4=hiddify.get_ip(4),ipv6=hiddify.get_ip(6),admin_link=admin_link() ,show_domain_info=False)
