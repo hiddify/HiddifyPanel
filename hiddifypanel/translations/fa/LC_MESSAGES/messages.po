@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-28 23:16+0100\n"
-"PO-Revision-Date: 2023-02-28 16:15-0600\n"
+"POT-Creation-Date: 2023-03-03 09:49+0100\n"
+"PO-Revision-Date: 2023-03-03 02:48-0600\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -44,6 +44,10 @@ msgstr "تنظیمات با موفقیت تغییر کرد."
 #: hiddifypanel/panel/admin/QuickSetup.py:115 hiddifypanel/panel/hiddify.py:226
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr "دامنه قابل دسترسی نیست! در دامنه شما مشکلی وجود دارد."
+
+#: hiddifypanel/panel/hiddify.py:243
+msgid "0 - Last day"
+msgstr "0 - آخرین روز"
 
 # | msgid ""
 # | "Rebooting System... This may take afew minutes. Please wait..."
@@ -1680,7 +1684,7 @@ msgstr "امنیت"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:21
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:19
 msgid "user.home.allconfig.hiddify-configs"
-msgstr "کانفیگ هایدیفای"
+msgstr "کانفیگ هیدیفای"
 
 # | msgid "All"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:24
@@ -2004,7 +2008,7 @@ msgstr ""
 #: hiddifypanel/panel/user/templates/home/multi.html:2
 #: hiddifypanel/panel/user/templates/home/multi.html:7
 msgid "user.home.title"
-msgstr "پروکسی هایدیفای"
+msgstr "پروکسی هیدیفای"
 
 # | msgid "Telegram"
 #: copy.html:27 hiddifypanel/panel/user/templates/home/index
@@ -2372,7 +2376,7 @@ msgstr "خطایی رخ داده است!!"
 #: hiddifypanel/templates/500.html:9
 msgid "Please contact hiddify@gmail.com with the details in this page."
 msgstr ""
-"لطفا با هایدیفای از طریق آدرس ایمیل hiddify@gmail.com و ذکر مشخصات این "
+"لطفا با هیدیفای از طریق آدرس ایمیل hiddify@gmail.com و ذکر مشخصات این "
 "صفحه در ارتباط باشید."
 
 # | msgid "Hiddify Panel"
@@ -2380,7 +2384,7 @@ msgstr ""
 #: hiddifypanel/templates/admin-layout.html:44
 #: hiddifypanel/templates/master.html:7
 msgid "master.page-title"
-msgstr "هایدیفای"
+msgstr "هیدیفای"
 
 #: hiddifypanel/templates/admin-layout.html:20
 #: hiddifypanel/templates/admin-layout.html:47

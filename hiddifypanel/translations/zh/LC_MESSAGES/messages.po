@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-28 23:16+0100\n"
-"PO-Revision-Date: 2023-02-28 16:15-0600\n"
+"POT-Creation-Date: 2023-03-03 09:49+0100\n"
+"PO-Revision-Date: 2023-03-03 02:48-0600\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -43,6 +43,10 @@ msgstr "配置已成功更改。"
 #: hiddifypanel/panel/admin/QuickSetup.py:115 hiddifypanel/panel/hiddify.py:226
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr "域名无法解析！你的域有问题"
+
+#: hiddifypanel/panel/hiddify.py:243
+msgid "0 - Last day"
+msgstr ""
 
 # | msgid ""
 # | "Rebooting System... This may take afew minutes. Please wait..."
