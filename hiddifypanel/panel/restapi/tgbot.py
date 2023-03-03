@@ -72,6 +72,8 @@ def send_welcome(message):
             bot.reply_to(message,get_usage_msg(uuid),reply_markup=user_keyboard(uuid))
         else:
             bot.reply_to(message,_("Welcome to hiddifybot.\n Please click on the link in the panel page to start or enter your user uuid"))
+            uuid=User.query.first().uuid
+            bot.reply_to(message,f"Demo: enter <pre>/start {uuid}</pre>")
 
 
 @bot.message_handler(func=lambda message: True)
