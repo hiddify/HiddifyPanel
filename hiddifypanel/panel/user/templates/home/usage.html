@@ -15,7 +15,7 @@
                     <div>
                         <i class="fa-solid fa-calendar-days fa-margin"></i> <b>{{_('user.home.usage.expire')}}</b> {{expire_rel}}
                     </div>
-                    % if user.monthly
+                    % if reset_day<500
                     <div>
                         <i class="fa-solid fa-calendar-days fa-margin"></i> <b>{{_('Reset Usage Time:')}}</b> {{reset_day}} {{_('days')}}                     
                     </div>

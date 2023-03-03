@@ -150,7 +150,7 @@ def get_common_data(user_uuid,mode):
         'expire_s':int((user.expiry_time-datetime.date(1970, 1, 1)).total_seconds()),
         'expire_days':(user.expiry_time-datetime.date.today()).days,
         'expire_rel':hiddify.format_timedelta(user.expiry_time-datetime.date.today()),
-        'reset_day':package_mode_dic.get(user.mode,1000)-(datetime.date.today()-user.last_reset_time).days,
+        'reset_day':package_mode_dic.get(user.mode,10000)-(datetime.date.today()-user.last_reset_time).days,
         'hconfigs':get_hconfigs(),
         'hdomains':get_hdomains(),
         'ConfigEnum':ConfigEnum,
