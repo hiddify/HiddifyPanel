@@ -93,17 +93,19 @@ def do_base_64(str):
     resp=base64.b64encode(f'{str}'.encode("utf-8"))
     return resp.decode()
     
-def get_common_data(user_uuid,mode):
-    domain=urlparse(request.base_url).hostname
+def get_common_data(user_uuid,mode,no_domain=False):
+    
+    
+    domain=urlparse(request.base_url).hostname if not no_domain else None
     if hconfig(ConfigEnum.is_parent):
         db_domain=ParentDomain.query.filter(ParentDomain.domain==domain).first() or ParentDomain(domain=domain,show_domains=[])
     else:
         db_domain=Domain.query.filter(Domain.domain==domain).first() or Domain(domain=domain,mode=DomainType.direct,cdn_ip='',show_domains=[])
-
     if not db_domain:
         db_domain=Domain(domain=domain,mode=DomainType.direct,show_domains=[])
+        print("no domain")
         flash(_("This domain does not exist in the panel!" + domain))
-
+    print("HI")
     if mode =='multi':
         domains=Domain.query.all()
     elif mode =='new':
