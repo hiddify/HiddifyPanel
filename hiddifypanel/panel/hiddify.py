@@ -238,8 +238,9 @@ def check_need_reset(old_configs):
 
 
 
-def format_timedelta(delta, add_direction=True):
-
+def format_timedelta(delta, add_direction=True,granularity="days"):
+    if granularity=="days" and delta.days==0:
+        return _("0 - Last day")
     if delta.days < 7 or delta.days >= 60:
         return babel_format_timedelta(delta, threshold=1, add_direction=add_direction, locale=g.locale)
     if delta.days < 60:

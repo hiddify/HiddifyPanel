@@ -139,7 +139,7 @@ class UserAdmin(AdminLTEModelView):
             return "-"
         
         state="danger" if diff.days<-3 else ("success" if diff.days>=-1 else "warning")
-        return Markup(f"<span class='badge badge-{state}'>{hiddify.format_timedelta(diff)}</span>")
+        return Markup(f"<span class='badge badge-{state}'>{hiddify.format_timedelta(diff,granularity='min')}</span>")
         
         
         # return Markup(f"<span class='badge ltr badge-{'success' if days>7 else ('warning' if days>0 else 'danger') }'>{days}</span> "+_('days'))
