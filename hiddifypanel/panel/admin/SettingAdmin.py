@@ -19,6 +19,7 @@ from hiddifypanel.panel.database import db
 from wtforms.fields import *
 from flask_classful import FlaskView
 from hiddifypanel.panel import hiddify,hiddify_api,custom_widgets
+from hiddifypanel.panel.telegrambot import register_bot
 class SettingAdmin(FlaskView):
     
 
@@ -82,6 +83,7 @@ class SettingAdmin(FlaskView):
             
             if old_configs[ConfigEnum.admin_lang]!=hconfig(ConfigEnum.admin_lang):
                 form=get_config_form()
+            register_bot()
             return render_template('config.html', form=form)
         flash(_('config.validation-error'), 'danger')
         return render_template('config.html', form=form)
