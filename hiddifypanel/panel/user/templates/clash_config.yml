@@ -84,26 +84,20 @@ proxy-groups:
         - "sequential-{{d.alias or d.domain}}"
     use:
       - "P{{d.alias or d.domain}}"
-    type: url-test
-    url: http://cp.cloudflare.com
-    interval: 300
-    tolerance: 150
-    lazy: true
+    type: select
 %endfor
 
-  - name: auto
+  - name: automatic
+    type: fallback
+    url: 'http://cp.cloudflare.com'
+    interval: 300
     proxies:
-% for d in  domains
-      - "auto-{{d.alias or d.domain}}"
-%endfor
-    # use:
-    #   - all_proxies
-
-    type: url-test
-    url: http://cp.cloudflare.com
-    interval: 300
-    tolerance: 150
+        - "load-balance"
+        - auto
+        - sequential
+        - {{OnProxyIssue}}
     lazy: true
+
 
   - name: "load-balance"
     proxies:
@@ -119,16 +113,6 @@ proxy-groups:
     strategy: consistent-hashing
 
 
-  - name: automatic
-    type: fallback
-    url: 'http://cp.cloudflare.com'
-    interval: 300
-    proxies:
-        - auto
-        - sequential
-        - "load-balance"
-        - {{OnProxyIssue}}
-    lazy: true
 
 
   - name: sequential
@@ -141,6 +125,22 @@ proxy-groups:
     %endfor    
     # use:
     #   - all_proxies   
+
+  - name: auto
+    proxies:
+% for d in  domains
+      - "auto-{{d.alias or d.domain}}"
+%endfor
+    # use:
+    #   - all_proxies
+
+    type: url-test
+    url: http://cp.cloudflare.com
+    interval: 300
+    tolerance: 150
+    lazy: true
+
+
 % for d in  domains
   - name: "auto-{{d.alias or d.domain}}"
     use:
