@@ -5,6 +5,18 @@
 
 ### New
 
+* Make proxies selectable for each domain. [hiddify]
+
+* Show selectable proxies first. [hiddify]
+
+* Remove all proxies. [hiddify]
+
+* Better organization of proxies in clash. [hiddify]
+
+* Add a profile for each domain in clash configs. [hiddify]
+
+* Show apply config on changing domain only when needed. [hiddify]
+
 * Add description for adding alias. [hiddify]
 
 * Add custom name for domain (alias) [hiddify]
@@ -27,11 +39,19 @@
 
 ### Fix
 
+* Alias name in clash config. [hiddify]
+
+* Bug in showing a specific domain. [hiddify]
+
+* Bug in clash config. [hiddify]
+
 * Bug in usage reset time. [hiddify]
 
 * Bug in showing last day. [hiddify]
 
 ### Other
+
+* Release: switch to develop. [hiddify]
 
 * Release: switch to develop. [hiddify]
 
