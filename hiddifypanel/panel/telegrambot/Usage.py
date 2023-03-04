@@ -1,8 +1,6 @@
 from . import bot
-from hiddifypanel.models import *
 from telebot import types
 from flask_babelex import gettext as _
-from flask import abort, jsonify, request, url_for
 from flask import current_app as app
 from hiddifypanel.panel.user.user import get_common_data
 
