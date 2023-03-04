@@ -167,17 +167,17 @@ proxy-groups:
       - "P{{d.alias or d.domain}}"
   %endfor
 
-# {{link_maker.get_all_clash_configs(meta_or_normal,domains)}}
+{#link_maker.get_all_clash_configs(meta_or_normal,domains)#}
 
 proxy-providers:
-  all_proxies:
-    type: http
-    url: "https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{(user.uuid)}}/clash/{{meta_or_normal}}/proxies.yml?mode={{mode}}&{{hash}}"
-    path: {{domain}}/{{(user.uuid)}}-{{meta_or_normal}}-proxies{{hash}}.yaml
-    health-check:
-      enable: true
-      interval: 600
-      url: http://www.gstatic.com/generate_204    
+  # all_proxies:
+  #   type: http
+  #   url: "https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{(user.uuid)}}/clash/{{meta_or_normal}}/proxies.yml?mode={{mode}}&{{hash}}"
+  #   path: {{domain}}/{{(user.uuid)}}-{{meta_or_normal}}-proxies{{hash}}.yaml
+  #   health-check:
+  #     enable: true
+  #     interval: 600
+  #     url: http://www.gstatic.com/generate_204    
   % for d in  domains
   "P{{d.alias or d.domain}}":
     type: http
