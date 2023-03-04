@@ -30,10 +30,6 @@ def register_bot():
 
 
 class TGBotResource(Resource):
-    # def get(self):
-    #     register_bot()
-    #     # domain=(ParentDomain if hconfig(ConfigEnum.is_parent) else Domain).query.first().domain
-    #     return "ok "#+f"https://{domain}"+url_for("api.tgbotresource",proxy_path=hconfig(ConfigEnum.proxy_path), user_secret=hconfig(ConfigEnum.admin_secret))
     def post(self):
         try:
             if request.headers.get('content-type') == 'application/json':
