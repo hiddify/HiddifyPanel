@@ -1,4 +1,4 @@
-% set OnProxyIssue='REJECT' if typ =="all" else 'DIRECT'
+% set OnProxyIssue='DIRECT' if typ =="lite" else 'REJECT'
 % set OnIranSites='PROXY' if typ =="all" else 'DIRECT'
 % set OnNotFilteredSites='DIRECT' if typ =="lite" else 'PROXY'
 
@@ -44,7 +44,7 @@ dns:
     - 1.1.1.1
 profile:
   # Storing select records
-  store-selected: false
+  store-selected: true
 
 proxy-groups:
   # - name: "tuic+vless"
@@ -55,7 +55,9 @@ proxy-groups:
 
   - name: PROXY
     proxies:
-      - auto_fallback
+      - {{"auto" if OnProxyIssue=='DIRECT' else "auto_fallback"}}
+      - sequential 
+      - load-balance     
     use:
       - all_proxies
     type: select
@@ -66,46 +68,25 @@ proxy-groups:
   
 
 
-  # - name: OnIranSites_{{typ}}
-  #   proxies:
-  #   % if typ=="all"
-  #     - PROXY
-  #     - DIRECT
-  #   % else:
-  #     - DIRECT
-  #     - PROXY
-  #   % endif
-  #   type: select
-
-  # - name: OnNotFilteredSites_{{typ}}
-  #   proxies:
-  #   % if typ =="lite"
-  #     - DIRECT
-  #     - PROXY
-  #   % else:
-  #     - PROXY
-  #     - DIRECT
-  #   % endif
-  #   type: select  
-
-  # - name: OnProxyIssue_{{typ}}
-  #   proxies:
-  #   % if typ =="all"
-  #     - REJECT
-  #     - DIRECT
-  #   % else:
-  #     - DIRECT
-  #     - REJECT
-  #   % endif
-    # type: select
-
   - name: auto
     use:
       - all_proxies
     type: url-test
     url: http://cp.cloudflare.com
     interval: 300
+    tolerance: 150
+    lazy: true
 
+  - name: "load-balance"
+    use:
+      - all_proxies
+    type: load-balance
+    url: http://cp.cloudflare.com
+    interval: 300
+    lazy: true    
+    strategy: consistent-hashing
+
+% if OnProxyIssue!='DIRECT'
   - name: auto_fallback
     type: fallback
     url: 'http://cp.cloudflare.com'
@@ -113,7 +94,48 @@ proxy-groups:
     proxies:
         - auto
         - {{OnProxyIssue}}
+    lazy: true
+% endif
+
+  - name: sequential
+    type: fallback
+    url: 'http://cp.cloudflare.com'
+    interval: 300
+    use:
+      - all_proxies
+      - {{OnProxyIssue}}       
+         
+
+% for d in  domains
+  - name: "auto-{{d.alias or d.domain}}"
+    use:
+      - "{{d.alias or d.domain}}"
+    type: url-test
+    url: http://cp.cloudflare.com
+    interval: 300
+    tolerance: 150
+    lazy: true
+
+  - name: "load-balance-{{d.alias or d.domain}}"
+    use:
+      - "{{d.alias or d.domain}}"
+    type: load-balance
+    url: http://cp.cloudflare.com
+    interval: 300
+    lazy: true    
+    strategy: consistent-hashing
+
+  - name: "sequential-{{d.alias or d.domain}}"
+    type: fallback
+    url: 'http://cp.cloudflare.com'
+    interval: 300
+    use:
+      - "{{d.alias or d.domain}}"
+      - {{OnProxyIssue}}       
+  %endfor
+
 {{link_maker.get_all_clash_configs(meta_or_normal,domains)}}
+
 proxy-providers:
   all_proxies:
     type: http
@@ -123,6 +145,16 @@ proxy-providers:
       enable: true
       interval: 600
       url: http://www.gstatic.com/generate_204    
+  % for d in  domains
+  {{d.domain}}:
+    type: http
+    url: "https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{(user.uuid)}}/clash/{{meta_or_normal}}/proxies.yml?mode={{mode}}&domain={{d.domain}}&{{hash}}"
+    path: {{domain}}/{{(user.uuid)}}-{{meta_or_normal}}-{d.domain}-proxies{{hash}}.yaml
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204    
+  %endfor
 
   
 rule-providers:
@@ -148,12 +180,12 @@ rule-providers:
     path: ./ruleset/open.yaml
     interval: 432000    
 
-  ads:
-    type: http
-    behavior: classical
-    url: "https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/clash/rules/ads-sites.yml"
-    path: ./ruleset/ads.yaml
-    interval: 432000   
+  # ads:
+  #   type: http
+  #   behavior: classical
+  #   url: "https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/clash/rules/ads-sites.yml"
+  #   path: ./ruleset/ads.yaml
+  #   interval: 432000   
 
 rules:
   - DOMAIN,{{hconfigs[ConfigEnum.telegram_fakedomain]}},DIRECT
@@ -166,5 +198,15 @@ rules:
   - GEOIP,IR,{{OnIranSites}}
   - DOMAIN-SUFFIX,.ir,{{OnIranSites}}
   - RULE-SET,open,{{OnIranSites}}
-  - RULE-SET,ads,REJECT
+  # - RULE-SET,ads,REJECT
   - MATCH,{{OnNotFilteredSites}}
+
+
+tun:
+  enable: true
+  stack: system # or gvisor
+  dns-hijack:
+    - any:53
+  auto-redir: true
+  auto-route: true
+  auto-detect-interface: true
