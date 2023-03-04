@@ -33,8 +33,8 @@ class DomainAdmin(AdminLTEModelView):
         domain=_("domain.description"),
         mode=_("Direct mode means you want to use your server directly (for usual use), CDN means that you use your server on behind of a CDN provider."),
         cdn_ip=_("config.cdn_forced_host.description"),
-        show_domains=_('You can select the configs with which domains show be shown in the user area. If you select all, automatically, all the new domains will be added for each users.')
-        # current_usage_GB="in GB"
+        show_domains=_('You can select the configs with which domains show be shown in the user area. If you select all, automatically, all the new domains will be added for each users.'),
+        alias=_('The name shown in the configs for this domain.')
     )
     
     # create_modal = True
@@ -63,7 +63,7 @@ class DomainAdmin(AdminLTEModelView):
         'alias':_('Alias')
     }
 
-    form_columns=['domain','mode','cdn_ip','show_domains']
+    form_columns=['domain','alias','mode','cdn_ip','show_domains']
 
     def _domain_admin_link(view, context, model, name):
         if model.mode==DomainType.fake:

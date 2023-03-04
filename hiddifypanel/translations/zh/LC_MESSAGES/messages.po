@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-03 22:51+0100\n"
-"PO-Revision-Date: 2023-03-03 15:49-0600\n"
+"POT-Creation-Date: 2023-03-04 09:29+0100\n"
+"PO-Revision-Date: 2023-03-04 02:29-0600\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -38,7 +38,7 @@ msgstr "配置已成功更改。"
 # check "
 # | "your Domain configurations."
 #: hiddifypanel/panel/admin/ChildAdmin.py:108
-#: hiddifypanel/panel/admin/DomainAdmin.py:111
+#: hiddifypanel/panel/admin/DomainAdmin.py:112
 #: hiddifypanel/panel/admin/ParentDomainAdmin.py:108
 #: hiddifypanel/panel/admin/QuickSetup.py:115 hiddifypanel/panel/hiddify.py:226
 msgid "Domain can not be resolved! there is a problem in your domain"
@@ -194,7 +194,7 @@ msgstr ""
 
 # | msgid "Admin"
 #: hiddifypanel/panel/admin/ChildAdmin.py:65
-#: hiddifypanel/panel/admin/DomainAdmin.py:71
+#: hiddifypanel/panel/admin/DomainAdmin.py:72
 #: hiddifypanel/panel/admin/ParentDomainAdmin.py:65
 #, fuzzy
 msgid "admin link"
@@ -259,6 +259,10 @@ msgstr ""
 msgid "config.cdn_forced_host.description"
 msgstr "在这部分中，您可以为您的 cdn 服务器使用特定的域或 IP，以在用户链接中覆盖。您可以使用 IP 或域。"
 
+#: hiddifypanel/panel/admin/DomainAdmin.py:37
+msgid "The name shown in the configs for this domain."
+msgstr ""
+
 # | msgid "Mode"
 #: hiddifypanel/panel/admin/DomainAdmin.py:59
 msgid "domain.mode"
@@ -276,8 +280,12 @@ msgstr "强制 CDN 主机"
 msgid "domain.ip"
 msgstr "知识产权"
 
+#: hiddifypanel/panel/admin/DomainAdmin.py:63
+msgid "Alias"
+msgstr ""
+
 # | msgid "You have already used this domain in: "
-#: hiddifypanel/panel/admin/DomainAdmin.py:106
+#: hiddifypanel/panel/admin/DomainAdmin.py:107
 #, fuzzy
 msgid "You have used this domain in: "
 msgstr "您已经在以下领域使用过此域名："
@@ -286,14 +294,14 @@ msgstr "您已经在以下领域使用过此域名："
 # | "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which
 # is "
 # | "required in direct mode."
-#: hiddifypanel/panel/admin/DomainAdmin.py:116
+#: hiddifypanel/panel/admin/DomainAdmin.py:117
 #, python-format
 msgid ""
 "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which "
 "is required in direct mode"
 msgstr "域 IP=%(domain_ip)s 与您的 ip=%(server_ip)s 不匹配，这在直接模式下是必需的"
 
-#: hiddifypanel/panel/admin/DomainAdmin.py:120
+#: hiddifypanel/panel/admin/DomainAdmin.py:121
 #, python-format
 msgid ""
 "In CDN mode, Domain IP=%(domain_ip)s should be different to your "
@@ -1517,7 +1525,7 @@ msgid ""
 "uuid"
 msgstr ""
 
-#: hiddifypanel/panel/user/user.py:107
+#: hiddifypanel/panel/user/user.py:112
 #, fuzzy
 msgid "This domain does not exist in the panel!"
 msgstr "该域名在面板中不存在！"

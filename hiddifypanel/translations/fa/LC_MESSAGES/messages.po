@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-03 22:51+0100\n"
-"PO-Revision-Date: 2023-03-03 15:49-0600\n"
+"POT-Creation-Date: 2023-03-04 09:29+0100\n"
+"PO-Revision-Date: 2023-03-04 02:29-0600\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -39,7 +39,7 @@ msgstr "تنظیمات با موفقیت تغییر کرد."
 # check "
 # | "your Domain configurations."
 #: hiddifypanel/panel/admin/ChildAdmin.py:108
-#: hiddifypanel/panel/admin/DomainAdmin.py:111
+#: hiddifypanel/panel/admin/DomainAdmin.py:112
 #: hiddifypanel/panel/admin/ParentDomainAdmin.py:108
 #: hiddifypanel/panel/admin/QuickSetup.py:115 hiddifypanel/panel/hiddify.py:226
 msgid "Domain can not be resolved! there is a problem in your domain"
@@ -209,7 +209,7 @@ msgstr "نمایش کانفیگ‌های دامنه‌ی:"
 
 # | msgid "Admin"
 #: hiddifypanel/panel/admin/ChildAdmin.py:65
-#: hiddifypanel/panel/admin/DomainAdmin.py:71
+#: hiddifypanel/panel/admin/DomainAdmin.py:72
 #: hiddifypanel/panel/admin/ParentDomainAdmin.py:65
 msgid "admin link"
 msgstr "مدیریت"
@@ -294,6 +294,10 @@ msgstr ""
 "<a href=\"http://bot.sudoer.net/best.cf.iran\">اینجا</a>\n"
 "لیست آی پی‌های پیشنهادی برای کلودفلر را قرار داده است."
 
+#: hiddifypanel/panel/admin/DomainAdmin.py:37
+msgid "The name shown in the configs for this domain."
+msgstr "نامی که در کانفیگ‌ها به جای دامنه نمایش داده شود"
+
 # | msgid "Mode"
 #: hiddifypanel/panel/admin/DomainAdmin.py:59
 msgid "domain.mode"
@@ -310,8 +314,12 @@ msgstr "اجبار به استفاده‌ از هاست در  کانفیگ‌ CD
 msgid "domain.ip"
 msgstr "آی‌پی"
 
+#: hiddifypanel/panel/admin/DomainAdmin.py:63
+msgid "Alias"
+msgstr "نام نمایشی"
+
 # | msgid "You have already used this domain in: "
-#: hiddifypanel/panel/admin/DomainAdmin.py:106
+#: hiddifypanel/panel/admin/DomainAdmin.py:107
 msgid "You have used this domain in: "
 msgstr "شما از این دامنه در بخش زیر استفاده کرده اید: "
 
@@ -319,7 +327,7 @@ msgstr "شما از این دامنه در بخش زیر استفاده کرده
 # | "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which
 # is "
 # | "required in direct mode."
-#: hiddifypanel/panel/admin/DomainAdmin.py:116
+#: hiddifypanel/panel/admin/DomainAdmin.py:117
 #, python-format
 msgid ""
 "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which "
@@ -328,7 +336,7 @@ msgstr ""
 "آی‌پی دامنه IP=%(domain_ip)s با آی‌پی ip=%(server_ip)s شما مطابقت ندارد "
 "که در حالت مستقیم مورد نیاز است."
 
-#: hiddifypanel/panel/admin/DomainAdmin.py:120
+#: hiddifypanel/panel/admin/DomainAdmin.py:121
 #, python-format
 msgid ""
 "In CDN mode, Domain IP=%(domain_ip)s should be different to your "
@@ -1641,7 +1649,7 @@ msgstr ""
 "به ربات تلگرام هیدیفای خوش آمدید\n"
 "روی لینک مشاهده جزییات در تلگرام کلیک کنید تا حجم خود را مشاهده کنید"
 
-#: hiddifypanel/panel/user/user.py:107
+#: hiddifypanel/panel/user/user.py:112
 msgid "This domain does not exist in the panel!"
 msgstr "این دامنه در پنل وجود ندارد!"
 

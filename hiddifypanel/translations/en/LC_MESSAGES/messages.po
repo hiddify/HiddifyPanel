@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-03 22:51+0100\n"
-"PO-Revision-Date: 2023-03-03 15:49-0600\n"
+"POT-Creation-Date: 2023-03-04 09:29+0100\n"
+"PO-Revision-Date: 2023-03-04 02:29-0600\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -37,7 +37,7 @@ msgstr "Configs have been changed successfully."
 # | "Domain can not be resolved! There is a problem in your domain. Please "
 # | "check your Domain configurations."
 #: hiddifypanel/panel/admin/ChildAdmin.py:108
-#: hiddifypanel/panel/admin/DomainAdmin.py:111
+#: hiddifypanel/panel/admin/DomainAdmin.py:112
 #: hiddifypanel/panel/admin/ParentDomainAdmin.py:108
 #: hiddifypanel/panel/admin/QuickSetup.py:115
 #: hiddifypanel/panel/hiddify.py:226
@@ -203,7 +203,7 @@ msgstr "Show Configs of Domains:"
 
 # | msgid "Admin"
 #: hiddifypanel/panel/admin/ChildAdmin.py:65
-#: hiddifypanel/panel/admin/DomainAdmin.py:71
+#: hiddifypanel/panel/admin/DomainAdmin.py:72
 #: hiddifypanel/panel/admin/ParentDomainAdmin.py:65
 msgid "admin link"
 msgstr "Admin"
@@ -277,6 +277,11 @@ msgstr ""
 "\n"
 "Morteza Bashsiz provides a list of recommended IPs for cloudflare <a href=\"http://bot.sudoer.net/best.cf.iran\">here</a>."
 
+#: hiddifypanel/panel/admin/DomainAdmin.py:37
+#, fuzzy
+msgid "The name shown in the configs for this domain."
+msgstr "The name shown in the configs for this domain."
+
 # | msgid "Mode"
 #: hiddifypanel/panel/admin/DomainAdmin.py:59
 msgid "domain.mode"
@@ -293,15 +298,20 @@ msgstr "Force CDN Config to use Host"
 msgid "domain.ip"
 msgstr "IP"
 
+#: hiddifypanel/panel/admin/DomainAdmin.py:63
+#, fuzzy
+msgid "Alias"
+msgstr "Alias"
+
 # | msgid "You have already used this domain in: "
-#: hiddifypanel/panel/admin/DomainAdmin.py:106
+#: hiddifypanel/panel/admin/DomainAdmin.py:107
 msgid "You have used this domain in: "
 msgstr "You have already used this domain in: "
 
 # | msgid ""
 # | "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which "
 # | "is required in direct mode."
-#: hiddifypanel/panel/admin/DomainAdmin.py:116
+#: hiddifypanel/panel/admin/DomainAdmin.py:117
 #, python-format
 msgid ""
 "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is "
@@ -310,7 +320,7 @@ msgstr ""
 "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is "
 "required in direct mode."
 
-#: hiddifypanel/panel/admin/DomainAdmin.py:120
+#: hiddifypanel/panel/admin/DomainAdmin.py:121
 #, python-format
 msgid ""
 "In CDN mode, Domain IP=%(domain_ip)s should be different to your "
@@ -1589,7 +1599,7 @@ msgstr ""
 "Welcome to hiddifybot.\n"
 " Please click on the link in the panel page to start or enter your user uuid"
 
-#: hiddifypanel/panel/user/user.py:107
+#: hiddifypanel/panel/user/user.py:112
 msgid "This domain does not exist in the panel!"
 msgstr "This domain does not exist in the panel!"
 
