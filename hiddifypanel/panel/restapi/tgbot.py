@@ -23,7 +23,6 @@ class ExceptionHandler(telebot.ExceptionHandler):
         logger.error(exception)
 
 
-# telebot.logger.setLevel(logging.DEBUG)
 bot = telebot.TeleBot("", parse_mode="HTML", threaded=False, exception_handler=ExceptionHandler())
 
 
