@@ -6,12 +6,14 @@ from flask_restful import Resource
 from hiddifypanel.models import *
 
 logger = telebot.logger
-bot = telebot.TeleBot("", parse_mode="HTML", threaded=False, exception_handler=ExceptionHandler())
 
 
 class ExceptionHandler(telebot.ExceptionHandler):
     def handle(self, exception):
         logger.error(exception)
+
+
+bot = telebot.TeleBot("", parse_mode="HTML", threaded=False, exception_handler=ExceptionHandler())
 
 
 def register_bot():
