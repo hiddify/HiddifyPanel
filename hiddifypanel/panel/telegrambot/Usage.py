@@ -14,7 +14,8 @@ def send_welcome(message):
         bot.reply_to(message, get_usage_msg(uuid), reply_markup=user_keyboard(uuid))
     else:
         bot.reply_to(message,
-                     _("Welcome to hiddifybot.\n Please click on the link in the panel page to start or enter your user uuid"))
+                     _("Welcome to hiddifybot."
+                       "\n Please click on the link in the panel page to start or enter your user uuid"))
 
 
 def user_keyboard(uuid):
