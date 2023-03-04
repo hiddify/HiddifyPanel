@@ -3,1448 +3,1567 @@
 
 ## (unreleased)
 
-### New
+#### New
 
-* Make proxies selectable for each domain. [hiddify]
+* Make proxies selectable for each domain. 
 
-* Show selectable proxies first. [hiddify]
+* Show selectable proxies first. 
 
-* Remove all proxies. [hiddify]
+* Remove all proxies. 
 
-* Better organization of proxies in clash. [hiddify]
+* Better organization of proxies in clash. 
 
-* Add a profile for each domain in clash configs. [hiddify]
+* Add a profile for each domain in clash configs. 
 
-* Show apply config on changing domain only when needed. [hiddify]
+* Show apply config on changing domain only when needed. 
 
-* Add description for adding alias. [hiddify]
+* Add description for adding alias. 
 
-* Add custom name for domain (alias) [hiddify]
+* Add custom name for domain (alias) 
 
-* Allow users to select proxies from only one domain in clash. [hiddify]
+* Allow users to select proxies from only one domain in clash. 
 
-* Add sequential, loadbalance and auto as an option to select specific domain in clash. [hiddify]
+* Add sequential, loadbalance and auto as an option to select specific domain in clash. 
 
-* Add load balance in clash rules. [hiddify]
+* Add load balance in clash rules. 
 
-* Telegram bot, We need contributors in this part. [hiddify]
+* Telegram bot, We need contributors in this part. 
 
-* Add simple telegram bot. [hiddify]
+* Add simple telegram bot. 
 
-### Changes
+#### Changes
 
-* Add demo bot request. [hiddify]
+* Add demo bot request. 
 
-* Improve translations. [hiddify]
+* Improve translations. 
 
-### Fix
+#### Fix
 
-* Alias name in clash config. [hiddify]
+* Alias name in clash config. 
 
-* Bug in showing a specific domain. [hiddify]
+* Bug in showing a specific domain. 
 
-* Bug in clash config. [hiddify]
+* Bug in clash config. 
 
-* Bug in usage reset time. [hiddify]
+* Bug in usage reset time. 
 
-* Bug in showing last day. [hiddify]
+* Bug in showing last day. 
 
-### Other
+#### Other
 
-* Release: switch to develop. [hiddify]
+* Release: switch to develop. 
 
-* Release: switch to develop. [hiddify]
+* Release: switch to develop. 
+
+* Release: switch to develop. 
+
 
 
 ## 1.0.0 (2023-02-28)
 
-### New
+#### New
 
-* Add default parent domain. [hiddify]
+* Add default parent domain. 
 
-### Fix
+#### Fix
 
-* Show success message only on end. [hiddify]
+* Show success message only on end. 
 
-### Other
+#### Other
 
-* Add utls to be configured. [hiddify]
+* Add utls to be configured. 
 
-* Show domain change window after quick setup. [hiddify]
+* Show domain change window after quick setup. 
+
 
 
 ## 0.9.111 (2023-02-28)
 
-### Other
+#### Other
 
-* Release: switch to develop. [hiddify]
+* Release: switch to develop. 
 
-* Add dev branch. [hiddify]
+* Add dev branch. 
+
 
 
 ## 0.9.110 (2023-02-28)
 
-### Fix
+#### Fix
 
-* Restore error. [hiddify]
+* Restore error. 
+
 
 
 ## 0.9.109 (2023-02-28)
 
-### Fix
+#### Fix
 
-* Adding unique id for old installations. [hiddify]
+* Adding unique id for old installations. 
+
 
 
 ## 0.9.108 (2023-02-28)
 
-### Fix
+#### Fix
 
-* Bug in quick setup. [hiddify]
+* Bug in quick setup. 
 
-* Bug in quick setup. [hiddify]
+* Bug in quick setup. 
+
 
 
 ## 0.9.107 (2023-02-28)
 
-### Fix
+#### Fix
 
-* Bug in restore domain. [hiddify]
+* Bug in restore domain. 
+
 
 
 ## 0.9.106 (2023-02-28)
 
-### Fix
+#### Fix
 
-* Bug in child. [hiddify]
+* Bug in child. 
+
 
 
 ## 0.9.105 (2023-02-28)
 
-### Fix
+#### Fix
 
-* Bug in child_ip. [hiddify]
+* Bug in child_ip. 
+
 
 
 ## 0.9.104 (2023-02-28)
 
-### Fix
+#### Fix
 
-* Bug in admin layout. [hiddify]
+* Bug in admin layout. 
+
 
 
 ## 0.9.103 (2023-02-28)
 
-### New
+#### New
 
-* Add actions in parent. [hiddify]
+* Add actions in parent. 
+
 
 
 ## 0.9.102 (2023-02-28)
 
-### Fix
+#### Fix
 
-* Bug in setting child. [hiddify]
+* Bug in setting child. 
+
 
 
 ## 0.9.101 (2023-02-28)
 
-### New
+#### New
 
-* Add api. [hiddify]
+* Add api. 
+
 
 
 ## 0.9.100 (2023-02-28)
 
-### Other
+#### Other
 
-* Change default fingerprint to andorid. [hiddify]
+* Change default fingerprint to andorid. 
+
 
 
 ## 0.9.99 (2023-02-28)
 
-### New
+#### New
 
-* Add telegram_bot_token. [hiddify]
+* Add telegram_bot_token. 
 
-* Better verify domain. [hiddify]
+* Better verify domain. 
+
 
 
 ## 0.9.98 (2023-02-27)
 
-### Fix
+#### Fix
 
-* Relase message bug. [hiddify]
+* Relase message bug. 
 
-* Bug in release message. [hiddify]
+* Bug in release message. 
 
-* Version error. [hiddify]
+* Version error. 
 
-### Other
+#### Other
 
-* Update. [hiddify]
+* Update. 
 
-* Update. [hiddify]
+* Update. 
+
 
 
 ## 0.9.96 (2023-02-27)
 
-### Other
+#### Other
 
-* Update relative date to days if less than 2 months. [hiddify]
+* Update relative date to days if less than 2 months. 
+
 
 
 ## 0.9.95 (2023-02-27)
 
-### Fix
+#### Fix
 
-* Bug in user panel. [hiddify]
+* Bug in user panel. 
 
-### Other
+#### Other
 
-* Update. [hiddify]
+* Update. 
+
 
 
 ## 0.9.94 (2023-02-27)
 
-### Other
+#### Other
 
-* Update. [hiddify]
+* Update. 
 
-* Update stash and shadowlink. [hiddify]
+* Update stash and shadowlink. 
+
 
 
 ## 0.9.93 (2023-02-27)
 
-### Other
+#### Other
 
-* Fix bug when user max usage is zero. [hiddify]
+* Fix bug when user max usage is zero. 
 
-* Add parent_domains to cli. [hiddify]
+* Add parent_domains to cli. 
+
 
 
 ## 0.9.92 (2023-02-27)
 
-### Other
+#### Other
 
-* Fix expirydate issue. [hiddify]
+* Fix expirydate issue. 
+
 
 
 ## 0.9.91 (2023-02-26)
 
-### Other
+#### Other
 
-* Fix bool config. [hiddify]
+* Fix bool config. 
+
 
 
 ## 0.9.90 (2023-02-26)
 
-### Other
+#### Other
 
-* Fix last online. [hiddify]
+* Fix last online. 
+
 
 
 ## 0.9.89 (2023-02-26)
 
-### Other
+#### Other
 
-* Fix. [hiddify]
+* Fix. 
 
-* Fix bug. [hiddify]
+* Fix bug. 
+
 
 
 ## 0.9.88 (2023-02-26)
 
-### Other
+#### Other
 
-* Add pyyaml. [hiddify]
+* Add pyyaml. 
+
 
 
 ## 0.9.87 (2023-02-26)
 
-### Other
+#### Other
 
-* Remove update db notif. [hiddify]
+* Remove update db notif. 
+
 
 
 ## 0.9.86 (2023-02-26)
 
-### Other
+#### Other
 
-* Fix auto update usage. [hiddify]
+* Fix auto update usage. 
 
-* Update db on init. [hiddify]
+* Update db on init. 
+
 
 
 ## 0.9.85 (2023-02-26)
 
-### Other
+#### Other
 
-* Fix update usage. [hiddify]
+* Fix update usage. 
+
 
 
 ## 0.9.84 (2023-02-26)
 
-### Other
+#### Other
 
-* Fix null bug. [hiddify]
+* Fix null bug. 
+
 
 
 ## 0.9.83 (2023-02-26)
 
-### Other
+#### Other
 
-* Update. [hiddify]
+* Update. 
 
-* Add chart for online user. [hiddify]
+* Add chart for online user. 
 
-* Add online users. [hiddify]
+* Add online users. 
+
 
 
 ## 0.9.82 (2023-02-26)
 
-### Other
+#### Other
 
-* Fix bad bug. [Hiddify]
+* Fix bad bug. 
+
 
 
 ## 0.9.81 (2023-02-26)
 
-### Other
+#### Other
 
-* Add tun mode in clash proxies. [hiddify]
+* Add tun mode in clash proxies. 
 
-* Not exist domain. [hiddify]
+* Not exist domain. 
+
 
 
 ## 0.9.80 (2023-02-26)
 
-### Other
+#### Other
 
-* Update. [hiddify]
+* Update. 
 
-* Fix bug in import users. [hiddify]
+* Fix bug in import users. 
 
-* Update centeral panel layoutt. [hiddify]
+* Update centeral panel layoutt. 
+
 
 
 ## 0.9.79 (2023-02-26)
 
-### Other
+#### Other
 
-* Fix. [hiddify]
+* Fix. 
+
 
 
 ## 0.9.78 (2023-02-26)
 
-### Other
+#### Other
 
-* Fix. [hiddify]
+* Fix. 
 
-* Update. [hiddify]
+* Update. 
+
 
 
 ## 0.9.77 (2023-02-26)
 
-### Other
+#### Other
 
-* Update. [hiddify]
+* Update. 
+
 
 
 ## 0.9.76 (2023-02-26)
 
-### Other
+#### Other
 
-* Fix change lang issue. [hiddify]
+* Fix change lang issue. 
+
 
 
 ## 0.9.75 (2023-02-26)
 
-### Other
+#### Other
 
-* Fix backup. [hiddify]
+* Fix backup. 
 
-* Update. [hiddify]
+* Update. 
+
 
 
 ## 0.9.74 (2023-02-26)
 
-### Other
+#### Other
 
-* Fix. [hiddify]
+* Fix. 
 
-* Update. [hiddify]
+* Update. 
+
 
 
 ## 0.9.73 (2023-02-26)
 
-### Other
+#### Other
 
-* Fix. [hiddify]
+* Fix. 
+
 
 
 ## 0.9.72 (2023-02-26)
 
-### Other
+#### Other
 
-* Fix. [hiddify]
+* Fix. 
+
 
 
 ## 0.9.71 (2023-02-26)
 
-### Other
+#### Other
 
-* Fix update panel. [hiddify]
+* Fix update panel. 
+
 
 
 ## 0.9.70 (2023-02-26)
 
-### Other
+#### Other
 
-* Update. [hiddify]
+* Update. 
 
-* Update. [hiddify]
+* Update. 
 
-* Fix updateusage. [hiddify]
+* Fix updateusage. 
 
-* Fix. [hiddify]
+* Fix. 
 
-* Update panel. [hiddify]
+* Update panel. 
 
-* Fix. [hiddify]
+* Fix. 
 
-* Fix child. [hiddify]
+* Fix child. 
 
-* Fix db. [hiddify]
+* Fix db. 
 
-* Add config cli. [hiddify]
+* Add config cli. 
 
-* Fix. [hiddify]
+* Fix. 
 
-* Fix domains. [hiddify]
+* Fix domains. 
 
-* Update. [hiddify]
+* Update. 
 
-* Updaet. [hiddify]
+* Updaet. 
 
-* Add unique id. [hiddify]
+* Add unique id. 
 
-* Update. [hiddify]
+* Update. 
 
-* Update. [hiddify]
+* Update. 
 
-* Update. [hiddify]
+* Update. 
 
-* Update. [hiddify]
+* Update. 
 
-* Add json. [hiddify]
+* Add json. 
 
-* Update. [hiddify]
+* Update. 
 
-* Fix. [hiddify]
+* Fix. 
 
-* Update. [hiddify]
+* Update. 
 
-* Update. [hiddify]
+* Update. 
 
-* Add set config from cli. [hiddify]
+* Add set config from cli. 
 
-* Fix all configs. [hiddify]
+* Fix all configs. 
 
-* Add parent panel. [hiddify]
+* Add parent panel. 
+
 
 
 ## 0.9.66 (2023-02-25)
 
-### Other
+#### Other
 
-* Fix multi link. [hiddify]
+* Fix multi link. 
 
-* Merge branch 'main' of github.com:hiddify/HiddifyPanel. [hiddify]
+* Merge branch 'main' of github.com:hiddify/HiddifyPanel. 
 
-* Update README.md. [Hiddify]
+* Update README.md. 
+
 
 
 ## 0.9.65 (2023-02-24)
 
-### Other
+#### Other
 
-* Fix restore and backup of domains. [hiddify]
+* Fix restore and backup of domains. 
+
 
 
 ## 0.9.64 (2023-02-23)
 
-### Other
+#### Other
 
-* Fix backup. [hiddify]
+* Fix backup. 
+
 
 
 ## 0.9.63 (2023-02-23)
 
-### Other
+#### Other
 
-* Fix backup. [hiddify]
+* Fix backup. 
+
 
 
 ## 0.9.62 (2023-02-22)
 
-### Other
+#### Other
 
-* Fix loop. [hiddify]
+* Fix loop. 
+
 
 
 ## 0.9.61 (2023-02-22)
 
-### Other
+#### Other
 
-* Fix. [hiddify]
+* Fix. 
+
 
 
 ## 0.9.60 (2023-02-22)
 
-### Other
+#### Other
 
-* Add hiddify desktop. [hiddify]
+* Add hiddify desktop. 
 
-* Add ability to change proxy path. [hiddify]
+* Add ability to change proxy path. 
 
-* Add restore settings enable disable. [hiddify]
+* Add restore settings enable disable. 
 
-* Add more info about relay and fake. [hiddify]
+* Add more info about relay and fake. 
+
 
 
 ## 0.9.59 (2023-02-22)
 
-### Other
+#### Other
 
-* Update. [hiddify]
+* Update. 
 
-* Update. [hiddify]
+* Update. 
 
-* Update. [hiddify]
+* Update. 
+
 
 
 ## 0.9.58 (2023-02-22)
 
-### Other
+#### Other
 
-* Add autopep8. [hiddify]
+* Add autopep8. 
 
-* Adding domain specific configuration. [hiddify]
+* Adding domain specific configuration. 
 
-* Add reset after 30 days. [hiddify]
+* Add reset after 30 days. 
 
-* Add version to home. [hiddify]
+* Add version to home. 
+
 
 
 ## 0.9.57 (2023-02-17)
 
-### Other
+#### Other
 
-* FIX. [hiddify]
+* FIX. 
 
-* Change  admin secret to lower case. [hiddify]
+* Change  admin secret to lower case. 
 
-* Update ios. [hiddify]
+* Update ios. 
+
 
 
 ## 0.9.56 (2023-02-16)
 
-### Other
+#### Other
 
-* Add ios. [hiddify]
+* Add ios. 
+
 
 
 ## 0.9.55 (2023-02-16)
 
-### Other
+#### Other
 
-* Fix stash link in ios. [hiddify]
+* Fix stash link in ios. 
+
 
 
 ## 0.9.54 (2023-02-16)
 
-### Other
+#### Other
 
-* Fix support box in mobile. [hiddify]
+* Fix support box in mobile. 
+
 
 
 ## 0.9.53 (2023-02-16)
 
-### Other
+#### Other
 
-* Add version in menu. [hiddify]
+* Add version in menu. 
+
 
 
 ## 0.9.52 (2023-02-16)
 
-### Other
+#### Other
 
-* Add version to sidebar. [hiddify]
+* Add version to sidebar. 
+
 
 
 ## 0.9.51 (2023-02-16)
 
-### Other
+#### Other
 
-* Fix layout. [hiddify]
+* Fix layout. 
+
 
 
 ## 0.9.50 (2023-02-16)
 
-### Other
+#### Other
 
-* Update. [hiddify]
+* Update. 
 
-* Notify domain change on backup. [hiddify]
+* Notify domain change on backup. 
+
 
 
 ## 0.9.49 (2023-02-16)
 
-### Other
+#### Other
 
-* Update. [hiddify]
+* Update. 
+
 
 
 ## 0.9.47 (2023-02-16)
 
-### Other
+#### Other
 
-* Fix click. [hiddify]
+* Fix click. 
+
 
 
 ## 0.9.46 (2023-02-16)
 
-### Other
+#### Other
 
-* Fix error. [hiddify]
+* Fix error. 
+
 
 
 ## 0.9.45 (2023-02-16)
 
-### Other
+#### Other
 
-* Update. [hiddify]
+* Update. 
 
-* Fix not showing date in firefox. [hiddify]
+* Fix not showing date in firefox. 
+
 
 
 ## 0.9.44 (2023-02-16)
 
-### Other
+#### Other
 
-* Update. [hiddify]
+* Update. 
 
-* Fix error in change proxy apply. [hiddify]
+* Fix error in change proxy apply. 
+
 
 
 ## 0.9.43 (2023-02-16)
 
-### Other
+#### Other
 
-* Remove some dependencies. [hiddify]
+* Remove some dependencies. 
+
 
 
 ## 0.9.42 (2023-02-16)
 
-### Other
+#### Other
 
-* Update. [hiddify]
+* Update. 
+
 
 
 ## 0.9.41 (2023-02-16)
 
-### Other
+#### Other
 
-* Update. [hiddify]
+* Update. 
+
 
 
 ## 0.9.40 (2023-02-15)
 
-### Other
+#### Other
 
-* Fix exception. [hiddify]
+* Fix exception. 
+
 
 
 ## 0.9.39 (2023-02-15)
 
-### Other
+#### Other
 
-* Add domain name to clash proxy. [hiddify]
+* Add domain name to clash proxy. 
 
-* Allow ipv6. [hiddify]
+* Allow ipv6. 
 
-* Update. [hiddify]
+* Update. 
 
-* Fix invalid domain names for decoy website. [hiddify]
+* Fix invalid domain names for decoy website. 
+
 
 
 ## 0.9.38 (2023-02-15)
 
-### Other
+#### Other
 
-* Add hiddify proxy v0.11. [hiddify]
+* Add hiddify proxy v0.11. 
+
 
 
 ## 0.9.37 (2023-02-15)
 
-### Other
+#### Other
 
-* Update. [hiddify]
+* Update. 
 
-* Update. [hiddify]
+* Update. 
+
 
 
 ## 0.9.35 (2023-02-15)
 
-### Other
+#### Other
 
-* Add version. [hiddify]
+* Add version. 
 
-* Add version in panel. [hiddify]
+* Add version in panel. 
+
 
 
 ## 0.9.33 (2023-02-15)
 
-### Other
+#### Other
 
-* Add hiddify android v 0.10. [hiddify]
+* Add hiddify android v 0.10. 
 
-* Add global client fingerprint. [hiddify]
+* Add global client fingerprint. 
 
-* Fix ipv6. [hiddify]
+* Fix ipv6. 
+
 
 
 ## 0.9.31 (2023-02-15)
 
-### Other
+#### Other
 
-* Fix full install everytime. [hiddify]
+* Fix full install everytime. 
+
 
 
 ## 0.9.30 (2023-02-15)
 
-### Other
+#### Other
 
-* Fix represntation of fake in user page. [hiddify]
+* Fix represntation of fake in user page. 
+
 
 
 ## 0.9.29 (2023-02-15)
 
-### Other
+#### Other
 
-* Add fake domain. [hiddify]
+* Add fake domain. 
+
 
 
 ## 0.9.28 (2023-02-15)
 
-### Other
+#### Other
 
-* Add fake domain. [hiddify]
+* Add fake domain. 
+
 
 
 ## 0.9.27 (2023-02-15)
 
-### Other
+#### Other
 
-* Update. [hiddify]
+* Update. 
+
 
 
 ## 0.9.26 (2023-02-14)
 
-### Other
+#### Other
 
-* Update. [hiddify]
+* Update. 
+
 
 
 ## 0.9.25 (2023-02-14)
 
-### Other
+#### Other
 
-* Update. [hiddify]
+* Update. 
+
 
 
 ## 0.9.22 (2023-02-14)
 
-### Other
+#### Other
 
-* Fix. [hiddify]
+* Fix. 
+
 
 
 ## 0.9.21 (2023-02-14)
 
-### Other
+#### Other
 
-* Remove direct links in CDN. [hiddify]
+* Remove direct links in CDN. 
+
 
 
 ## 0.9.20 (2023-02-14)
 
-### Other
+#### Other
 
-* Fix direct domain db. [hiddify]
+* Fix direct domain db. 
+
 
 
 ## 0.9.19 (2023-02-14)
 
-### Other
+#### Other
 
-* Add ipv6 connections. [hiddify]
+* Add ipv6 connections. 
+
 
 
 ## 0.9.18 (2023-02-14)
 
-### Other
+#### Other
 
-* Update multi domain. [hiddify]
+* Update multi domain. 
+
 
 
 ## 0.9.17 (2023-02-14)
 
-### Other
+#### Other
 
-* Update. [hiddify]
+* Update. 
+
 
 
 ## 0.9.15 (2023-02-14)
 
-### Other
+#### Other
 
-* Add multi link. [hiddify]
+* Add multi link. 
+
 
 
 ## 0.9.14 (2023-02-14)
 
-### Other
+#### Other
 
-* Update. [hiddify]
+* Update. 
+
 
 
 ## 0.9.13 (2023-02-14)
 
-### Other
+#### Other
 
-* Fix. [hiddify]
+* Fix. 
+
 
 
 ## 0.9.12 (2023-02-13)
 
-### Other
+#### Other
 
-* Add fingerprint in share link. [hiddify]
+* Add fingerprint in share link. 
+
 
 
 ## 0.9.11 (2023-02-13)
 
-### Other
+#### Other
 
-* Remove need for apply for adding a user. [hiddify]
+* Remove need for apply for adding a user. 
 
-* Update. [hiddify]
+* Update. 
+
 
 
 ## 0.9.10 (2023-02-10)
 
-### Other
+#### Other
 
-* Add grpc direct. [hiddify]
+* Add grpc direct. 
 
-* Add relay mode. [hiddify]
+* Add relay mode. 
+
 
 
 ## 0.9.9 (2023-02-09)
 
-### Other
+#### Other
 
-* Update quick setup. [hiddify]
+* Update quick setup. 
 
-* Update. [hiddify]
+* Update. 
 
-* Update. [hiddify]
+* Update. 
+
 
 
 ## 0.9.8 (2023-02-09)
 
-### Other
+#### Other
 
-* Update. [hiddify]
+* Update. 
+
 
 
 ## 0.9.7 (2023-02-09)
 
-### Other
+#### Other
 
-* Fix translation. [hiddify]
+* Fix translation. 
+
 
 
 ## 0.9.6 (2023-02-09)
 
-### Other
+#### Other
 
-* Add specified ip for cdn hosts. [hiddify]
+* Add specified ip for cdn hosts. 
 
-* Add forced ip. [hiddify]
+* Add forced ip. 
+
 
 
 ## 0.9.5 (2023-02-09)
 
-### Other
+#### Other
 
-* Remove. [hiddify]
+* Remove. 
+
 
 
 ## 0.9.4 (2023-02-09)
 
-### Other
+#### Other
 
-* Update. [hiddify]
+* Update. 
+
 
 
 ## 0.9.3 (2023-02-09)
 
-### Other
+#### Other
 
-* Update. [hiddify]
+* Update. 
 
-* Add fingerprint. [hiddify]
+* Add fingerprint. 
 
-* Add fingerprint. [hiddify]
+* Add fingerprint. 
+
 
 
 ## 0.9.2 (2023-02-09)
 
-### Other
+#### Other
 
-* Fix xtls vision. [hiddify]
+* Fix xtls vision. 
 
-* Remove trojan and add vless. [hiddify]
+* Remove trojan and add vless. 
 
-* Remove xtls direct. [hiddify]
+* Remove xtls direct. 
+
 
 
 ## 0.9.1 (2023-02-09)
 
-### Other
+#### Other
 
-* Fix layout. [hiddify]
+* Fix layout. 
 
-* Update. [hiddify]
+* Update. 
 
-* Update link. [hiddify]
+* Update link. 
 
-* Update. [hiddify]
+* Update. 
 
-* Update. [hiddify]
+* Update. 
 
-* Update. [hiddify]
+* Update. 
 
-* Update. [hiddify]
+* Update. 
 
-* Update. [hiddify]
+* Update. 
 
-* Add link from domain to admin page. [hiddify]
+* Add link from domain to admin page. 
 
-* Update ui. [hiddify]
+* Update ui. 
 
-* Ram update. [hiddify]
+* Ram update. 
 
-* Update. [hiddify]
+* Update. 
 
-* Update. [hiddify]
+* Update. 
 
-* Update. [hiddify]
+* Update. 
 
-* Update. [hiddify]
+* Update. 
 
-* Update. [hiddify]
+* Update. 
 
-* Update. [hiddify]
+* Update. 
 
-* Update. [hiddify]
+* Update. 
 
-* Update. [hiddify]
+* Update. 
 
-* Update ux and ui in admin. [hiddify]
+* Update ux and ui in admin. 
 
-* Update. [hiddify]
+* Update. 
 
-* Fix emergency access. [hiddify]
+* Fix emergency access. 
 
-* Fix. [hiddify]
+* Fix. 
 
-* Organizing db. [hiddify]
+* Organizing db. 
 
-* Fix error csrf. [hiddify]
+* Fix error csrf. 
 
-* Fix. [hiddify]
+* Fix. 
 
-* Update. [hiddify]
+* Update. 
 
-* Remove verification. [hiddify]
+* Remove verification. 
 
-* Fix setting admin. [hiddify]
+* Fix setting admin. 
 
-* Fix. [hiddify]
+* Fix. 
 
-* Update. [hiddify]
+* Update. 
 
-* Update. [hiddify]
+* Update. 
 
-* Fix caps domain. [hiddify]
+* Fix caps domain. 
 
-* Fix v2ray. [hiddify]
+* Fix v2ray. 
 
-* Remove csrf. [hiddify]
+* Remove csrf. 
 
-* Fix not creating same uuid in restore. [hiddify]
+* Fix not creating same uuid in restore. 
 
-* Fix alpn. [hiddify]
+* Fix alpn. 
 
-* Remove alpn for h2 in links. [hiddify]
+* Remove alpn for h2 in links. 
 
-* Fix faketls. [hiddify]
+* Fix faketls. 
 
-* Update. [hiddify]
+* Update. 
 
-* Update. [hiddify]
+* Update. 
 
-* Update. [hiddify]
+* Update. 
 
-* Update link_maker.py. [Hiddify]
+* Update link_maker.py. 
 
-* Update link_maker.py. [Hiddify]
+* Update link_maker.py. 
 
-* Update. [hiddify]
+* Update. 
 
-* Fix. [hiddify]
+* Fix. 
 
-* Update icon. [hiddify]
+* Update icon. 
 
-* Update usage. [hiddify]
+* Update usage. 
 
-* Add domain to infoname. [hiddify]
+* Add domain to infoname. 
 
-* Fix bug. [hiddify]
+* Fix bug. 
 
-* Fix domain fronting. [hiddify]
+* Fix domain fronting. 
 
-* Showing alert before leaving apply settings page. [hiddify]
+* Showing alert before leaving apply settings page. 
 
-* Update. [hiddify]
+* Update. 
 
-* Lang update. [hiddify]
+* Lang update. 
 
-* Update. [hiddify]
+* Update. 
 
-* Fix. [hiddify]
+* Fix. 
 
-* Fix. [hiddify]
+* Fix. 
 
-* Fix fake. [hiddify]
+* Fix fake. 
 
-* Update. [hiddify]
+* Update. 
 
-* Fix bug. [hiddify]
+* Fix bug. 
 
-* Add temporary link. [hiddify]
+* Add temporary link. 
 
-* Fix bug. [hiddify]
+* Fix bug. 
 
-* Fix. [hiddify]
+* Fix. 
 
-* Update. [hiddify]
+* Update. 
 
-* Update. [hiddify]
+* Update. 
 
-* Add an option to select between monthly and total. [hiddify]
+* Add an option to select between monthly and total. 
 
-* Update translation. [hiddify]
+* Update translation. 
 
-* Add some configs. [hiddify]
+* Add some configs. 
 
-* Update. [hiddify]
+* Update. 
 
-* Update. [hiddify]
+* Update. 
 
-* Update translation. [hiddify]
+* Update translation. 
 
-* Add backup and restore. [hiddify]
+* Add backup and restore. 
 
-* Fix support link. [hiddify]
+* Fix support link. 
 
-* Fix admin link. [hiddify]
+* Fix admin link. 
 
-* Update. [hiddify]
+* Update. 
 
-* Fix bug in domain. [hiddify]
+* Fix bug in domain. 
 
-* Update. [hiddify]
+* Update. 
 
-* Fix ip removed. [hiddify]
+* Fix ip removed. 
 
-* Update lang. [hiddify]
+* Update lang. 
 
-* Validate domain. [hiddify]
+* Validate domain. 
 
-* Fix domian. [hiddify]
+* Fix domian. 
 
-* Add user error message. [hiddify]
+* Add user error message. 
 
-* Fix bug. [hiddify]
+* Fix bug. 
 
-* Update. [hiddify]
+* Update. 
 
-* Fix. [hiddify]
+* Fix. 
 
-* Add first setup. [hiddify]
+* Add first setup. 
 
-* Fix init bug. [hiddify]
+* Fix init bug. 
 
-* Update. [hiddify]
+* Update. 
 
-* Update. [hiddify]
+* Update. 
+
 
 
 ## 0.9.0 (2023-02-04)
 
-### Other
+#### Other
 
-* Update translations. [hiddify]
+* Update translations. 
 
-* Update. [hiddify]
+* Update. 
 
-* Add donation link. [hiddify]
+* Add donation link. 
 
-* Add apply config for users. [hiddify]
+* Add apply config for users. 
 
-* Update. [hiddify]
+* Update. 
 
-* Add branding link. [hiddify]
+* Add branding link. 
 
-* Update. [hiddify]
+* Update. 
 
-* Update ui. [hiddify]
+* Update ui. 
 
-* Full. [hiddify]
+* Full. 
 
-* Update. [hiddify]
+* Update. 
 
-* Add full install option. [hiddify]
+* Add full install option. 
 
-* Update. [hiddify]
+* Update. 
 
-* Update. [hiddify]
+* Update. 
 
-* Update telegram lib. [hiddify]
+* Update telegram lib. 
 
-* Quicksetup lang. [hiddify]
+* Quicksetup lang. 
 
-* Add admin language. [hiddify]
+* Add admin language. 
 
-* Update. [hiddify]
+* Update. 
 
-* Update admin lang. [hiddify]
+* Update admin lang. 
 
-* Fix delete user error. [hiddify]
+* Fix delete user error. 
 
-* Fix. [hiddify]
+* Fix. 
 
-* Update. [hiddify]
+* Update. 
 
-* Fix update db version. [hiddify]
+* Fix update db version. 
 
-* Update db. [hiddify]
+* Update db. 
 
-* Add log for initdb. [hiddify]
+* Add log for initdb. 
 
-* Update. [hiddify]
+* Update. 
 
-* Fixed. [hiddify]
+* Fixed. 
 
-* Fix user. [hiddify]
+* Fix user. 
 
-* Update translations. [hiddify]
+* Update translations. 
 
-* Update. [hiddify]
+* Update. 
 
-* Charts info. [hiddify]
+* Charts info. 
 
-* Update. [hiddify]
+* Update. 
 
-* Update. [hiddify]
+* Update. 
 
-* Add telegram lib. [hiddify]
+* Add telegram lib. 
 
-* Fix float. [hiddify]
+* Fix float. 
 
-* Fix sqlalchemy. [hiddify]
+* Fix sqlalchemy. 
 
-* Update. [hiddify]
+* Update. 
 
-* Remove some logs. [hiddify]
+* Remove some logs. 
 
-* Update. [hiddify]
+* Update. 
 
-* Add temporary rule for firewall to access. [hiddify]
+* Add temporary rule for firewall to access. 
 
-* Random port. [hiddify]
+* Random port. 
 
-* Fix not reset the usage. [hiddify]
+* Fix not reset the usage. 
 
-* Add icon, add temp port update message. [hiddify]
+* Add icon, add temp port update message. 
 
-* Update remove incomplete configs. [hiddify]
+* Update remove incomplete configs. 
 
-* Small fix. [hiddify]
+* Small fix. 
 
-* Fix user remove error and more checkings. [hiddify]
+* Fix user remove error and more checkings. 
 
-* Fix link. [hiddify]
+* Fix link. 
 
-* Fix link. [hiddify]
+* Fix link. 
 
-* Add api. [hiddify]
+* Add api. 
 
-* Fix usage shown. [hiddify]
+* Fix usage shown. 
 
-* Update. [hiddify]
+* Update. 
 
-* Add log finish message. [hiddify]
+* Add log finish message. 
 
-* Add default user link info message for quick setup. [hiddify]
+* Add default user link info message for quick setup. 
+
 
 
 ## 0.8.6 (2023-02-03)
 
-### Other
+#### Other
 
-* Update. [hiddify]
+* Update. 
+
 
 
 ## 0.8.5 (2023-02-03)
 
-### Other
+#### Other
 
-* Fix grpc link. [hiddify]
+* Fix grpc link. 
 
-* Fix normal clash link. [hiddify]
+* Fix normal clash link. 
 
-* Fix bug in versioning. [hiddify]
+* Fix bug in versioning. 
+
 
 
 ## 0.8.4 (2023-02-03)
 
-### Other
+#### Other
 
-* Fix bugs. [hiddify]
+* Fix bugs. 
+
 
 
 ## 0.8.3 (2023-02-03)
 
-### Other
+#### Other
 
-* Fix uuid. [hiddify]
+* Fix uuid. 
+
 
 
 ## 0.8.2 (2023-02-03)
 
-### Other
+#### Other
 
-* Fix vmess links. [hiddify]
+* Fix vmess links. 
 
-* Fix grpc. [hiddify]
+* Fix grpc. 
 
-* Fix ios links. [hiddify]
+* Fix ios links. 
 
-* Fix bug in telegram and not showing all emails. [hiddify]
+* Fix bug in telegram and not showing all emails. 
+
 
 
 ## 0.8.1 (2023-02-02)
 
-### Other
+#### Other
 
-* Fix bug in time. [hiddify]
+* Fix bug in time. 
+
 
 
 ## 0.8.0 (2023-02-02)
 
-### Other
+#### Other
 
-* Update. [hiddify]
+* Update. 
 
-* Update. [hiddify]
+* Update. 
 
-* Update. [hiddify]
+* Update. 
 
-* Update ui. [hiddify]
+* Update ui. 
 
-* Update style. [hiddify]
+* Update style. 
 
-* Update style. [hiddify]
+* Update style. 
 
-* Update. [hiddify]
+* Update. 
 
-* Update http-opts. [hiddify]
+* Update http-opts. 
 
-* Fix. [hiddify]
+* Fix. 
 
-* Update link maker. [hiddify]
+* Update link maker. 
 
-* Fix port bug. [hiddify]
+* Fix port bug. 
 
-* Update. [hiddify]
+* Update. 
 
-* Fix bug. [hiddify]
+* Fix bug. 
 
-* Remove vless and xtls and shadowtls for normal clash. [hiddify]
+* Remove vless and xtls and shadowtls for normal clash. 
+
 
 
 ## 0.7.0 (2023-02-02)
 
-### Other
+#### Other
 
-* Update. [hiddify]
+* Update. 
 
-* Update clashlinks. [hiddify]
+* Update clashlinks. 
 
-* Fix update usage. [hiddify]
+* Fix update usage. 
+
 
 
 ## 0.6.0 (2023-02-02)
 
-### Other
+#### Other
 
-* Update. [hiddify]
+* Update. 
 
-* New translations. [hiddify]
+* New translations. 
 
-* Fix. [hiddify]
+* Fix. 
 
-* Fix bug. [hiddify]
+* Fix bug. 
+
 
 
 ## 0.5.0 (2023-02-02)
 
-### Other
+#### Other
 
-* Update translation. [hiddify]
+* Update translation. 
 
-* Add auto update translations. [hiddify]
+* Add auto update translations. 
 
-* Fix import. [hiddify]
+* Fix import. 
 
-* Add mo files. [hiddify]
+* Add mo files. 
 
-* Trying to fix translation issues. [hiddify]
+* Trying to fix translation issues. 
 
-* Update translations. [hiddify]
+* Update translations. 
 
-* Update. [hiddify]
+* Update. 
 
-* Add translations. [hiddify]
+* Add translations. 
 
-* Update. [hiddify]
+* Update. 
 
-* Add link. [hiddify]
+* Add link. 
 
-* Add chinese lang. [hiddify]
+* Add chinese lang. 
 
-* Add auto translate. [hiddify]
+* Add auto translate. 
 
-* Fix. [hiddify]
+* Fix. 
 
-* Fix translations. [hiddify]
+* Fix translations. 
 
-* Remove changing proxy path. [hiddify]
+* Remove changing proxy path. 
 
-* Add success notification to domain. [hiddify]
+* Add success notification to domain. 
 
-* Remove category from config. [hiddify]
+* Remove category from config. 
 
-* Update. [hiddify]
+* Update. 
 
-* Update. [hiddify]
+* Update. 
 
-* Fix decoy site to domain. [hiddify]
+* Fix decoy site to domain. 
 
-* Update order. [hiddify]
+* Update order. 
 
-* Update. [hiddify]
+* Update. 
 
-* Reorgnizing. [hiddify]
+* Reorgnizing. 
 
-* Fix cli bug. [hiddify]
+* Fix cli bug. 
 
-* Update. [hiddify]
+* Update. 
 
-* Update. [hiddify]
+* Update. 
+
 
 
 ## 0.4.0 (2023-02-01)
 
-### Other
+#### Other
 
-* Update FUNDING.yml. [Hiddify]
+* Update FUNDING.yml. 
 
-* Update. [hiddify]
+* Update. 
 
-* Add selectable proxies. [hiddify]
+* Add selectable proxies. 
 
-* Selectable proxy. [hiddify]
+* Selectable proxy. 
 
-* Update. [hiddify]
+* Update. 
 
-* Latest update. [hiddify]
+* Latest update. 
 
-* Update. [hiddify]
+* Update. 
 
-* Adding tuic, shadowtls, ssr, ui improvment. [hiddify]
+* Adding tuic, shadowtls, ssr, ui improvment. 
 
-* Update user ui. [hiddify]
+* Update user ui. 
 
-* Update. [hiddify]
+* Update. 
+
 
 
 ## 0.3.0 (2023-01-22)
 
-### Other
+#### Other
 
-* Include static files. [hiddify]
+* Include static files. 
 
-* Update cli. [hiddify]
+* Update cli. 
 
-* Fix prob. [hiddify]
+* Fix prob. 
+
 
 
 ## 0.0.2 (2023-01-22)
 
-### Other
+#### Other
 
-* Update. [hiddify]
+* Update. 
 
-* Update. [hiddify]
+* Update. 
 
-* Update and reset automatically the usage. [hiddify]
+* Update and reset automatically the usage. 
+
 
 
 ## 0.0.1 (2023-01-21)
 
-### Other
+#### Other
 
-* Remove windows and mac. [hiddify]
+* Remove windows and mac. 
 
-* Update. [hiddify]
+* Update. 
 
-* Add update storage. [hiddify]
+* Add update storage. 
 
-* First working version. [hiddify]
+* First working version. 
 
-* Create default db. [hiddify]
+* Create default db. 
 
-* Update to bootstrap 5. [hiddify]
+* Update to bootstrap 5. 
 
-* ✅ Ready to clone and code. [hiddify]
+* ✅ Ready to clone and code. 
 
-* Initial commit. [Hiddify]
+* Initial commit. 
+
 
 
