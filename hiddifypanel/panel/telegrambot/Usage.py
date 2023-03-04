@@ -9,20 +9,14 @@ from hiddifypanel.panel.user.user import get_common_data
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
-    # with force_locale(message.language_code):        
     text = message.text
     uuid = text.split()[1] if len(text.split()) > 1 else None
-    print("start", uuid)
+
     if uuid:
-        # print("SSS")
-        # print("msg=",get_usage_msg(uuid))
-        # bot.reply_to(message,get_usage_msg(uuid))
         bot.reply_to(message, get_usage_msg(uuid), reply_markup=user_keyboard(uuid))
     else:
         bot.reply_to(message,
                      _("Welcome to hiddifybot.\n Please click on the link in the panel page to start or enter your user uuid"))
-        # uuid=User.query.first().uuid
-        # bot.reply_to(message,f"Demo: enter <pre>/start {uuid}</pre>")
 
 
 def user_keyboard(uuid):
