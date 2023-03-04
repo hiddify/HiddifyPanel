@@ -75,6 +75,22 @@ proxy-groups:
   
 
 
+
+% for d in  domains
+  - name: "{{d.alias or d.domain}}"
+    proxies:
+        - "load-balance-{{d.alias or d.domain}}"
+        - "auto-{{d.alias or d.domain}}"
+        - "sequential-{{d.alias or d.domain}}"
+    use:
+      - "P{{d.alias or d.domain}}"
+    type: url-test
+    url: http://cp.cloudflare.com
+    interval: 300
+    tolerance: 150
+    lazy: true
+%endfor
+
   - name: auto
     proxies:
 % for d in  domains
@@ -125,22 +141,7 @@ proxy-groups:
     %endfor    
     # use:
     #   - all_proxies   
-         
-
 % for d in  domains
-  - name: "{{d.alias or d.domain}}"
-    proxies:
-        - "load-balance-{{d.alias or d.domain}}"
-        - "auto-{{d.alias or d.domain}}"
-        - "sequential-{{d.alias or d.domain}}"
-    use:
-      - "P{{d.alias or d.domain}}"
-    type: url-test
-    url: http://cp.cloudflare.com
-    interval: 300
-    tolerance: 150
-    lazy: true
-
   - name: "auto-{{d.alias or d.domain}}"
     use:
       - "P{{d.alias or d.domain}}"
@@ -166,6 +167,8 @@ proxy-groups:
     use:
       - "P{{d.alias or d.domain}}"
   %endfor
+
+         
 
 {#link_maker.get_all_clash_configs(meta_or_normal,domains)#}
 
