@@ -14,6 +14,7 @@ from hiddifypanel.models import *
 from hiddifypanel.panel.user.user import get_common_data
 from hiddifypanel.panel import hiddify, hiddify_api
 from hiddifypanel.models import *
+import hiddifypanel.panel.telegrambot
 
 logger = telebot.logger
 
@@ -38,9 +39,6 @@ def register_bot():
         proxy_path = hconfig(ConfigEnum.proxy_path)
         user_secret = hconfig(ConfigEnum.admin_secret)
         bot.set_webhook(url=f"https://{domain}/{proxy_path}/{user_secret}/api/v1/tgbot/")
-
-
-import hiddifypanel.panel.telegrambot
 
 
 class TGBotResource(Resource):
