@@ -110,8 +110,7 @@ proxy-groups:
     url: 'http://cp.cloudflare.com'
     interval: 300
     use:
-      - all_proxies
-      - {{OnProxyIssue}}       
+      - all_proxies   
          
 
 % for d in  domains
@@ -139,7 +138,6 @@ proxy-groups:
     interval: 300
     use:
       - "{{d.alias or d.domain}}"
-      - {{OnProxyIssue}}       
   %endfor
 
 {{link_maker.get_all_clash_configs(meta_or_normal,domains)}}
@@ -203,6 +201,9 @@ rules:
   - IP-CIDR,10.10.34.0/24,PROXY
   - RULE-SET,tmpblocked,PROXY
   - RULE-SET,blocked,PROXY
+  # - IP-CIDR,10.10.34.0/24,{{OnProxyIssue}}
+  # - RULE-SET,tmpblocked,{{OnProxyIssue}}
+  # - RULE-SET,blocked,{{OnProxyIssue}}
   - GEOIP,IR,{{OnIranSites}}
   - DOMAIN-SUFFIX,.ir,{{OnIranSites}}
   - RULE-SET,open,{{OnIranSites}}
