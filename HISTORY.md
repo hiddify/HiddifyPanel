@@ -5,6 +5,8 @@
 
 ### New
 
+* Add description for adding alias. [hiddify]
+
 * Add custom name for domain (alias) [hiddify]
 
 * Allow users to select proxies from only one domain in clash. [hiddify]
@@ -28,6 +30,10 @@
 * Bug in usage reset time. [hiddify]
 
 * Bug in showing last day. [hiddify]
+
+### Other
+
+* Release: switch to develop. [hiddify]
 
 
 ## 1.0.0 (2023-02-28)
