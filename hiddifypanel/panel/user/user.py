@@ -98,7 +98,7 @@ def get_common_data(user_uuid,mode,no_domain=False,filter_domain=None):
     
     if filter_domain:
         domain=filter_domain
-        db_domain=Domain(domain=domain,mode=DomainType.direct,show_domains=[])
+        db_domain=Domain.query.filter(Domain.domain==domain).first() or Domain(domain=domain,mode=DomainType.direct,cdn_ip='',show_domains=[],child_id=0)
         domains=[db_domain]
     else:
         domain=urlparse(request.base_url).hostname if not no_domain else None
