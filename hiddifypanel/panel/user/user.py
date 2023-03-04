@@ -46,9 +46,10 @@ class UserView(FlaskView):
     @route('/clash/proxies.yml')
     def clash_proxies(self,meta_or_normal="normal"):
         mode=request.args.get("mode")
+        domain=request.args.get("domain",None)
         
         
-        c=get_common_data(g.user_uuid,mode)
+        c=get_common_data(g.user_uuid,mode,filter_domain=domain)
         resp= Response(render_template('clash_proxies.yml',meta_or_normal=meta_or_normal,**c))
         resp.mimetype="text/plain"
         
@@ -93,36 +94,40 @@ def do_base_64(str):
     resp=base64.b64encode(f'{str}'.encode("utf-8"))
     return resp.decode()
     
-def get_common_data(user_uuid,mode,no_domain=False):
+def get_common_data(user_uuid,mode,no_domain=False,filter_domain=None):
     
-    
-    domain=urlparse(request.base_url).hostname if not no_domain else None
-    if hconfig(ConfigEnum.is_parent):
-        db_domain=ParentDomain.query.filter(ParentDomain.domain==domain).first() or ParentDomain(domain=domain,show_domains=[])
-    else:
-        db_domain=Domain.query.filter(Domain.domain==domain).first() or Domain(domain=domain,mode=DomainType.direct,cdn_ip='',show_domains=[])
-    if not db_domain:
+    if filter_domain:
+        domain=filter_domain
         db_domain=Domain(domain=domain,mode=DomainType.direct,show_domains=[])
-        print("no domain")
-        flash(_("This domain does not exist in the panel!" + domain))
-    print("HI")
-    if mode =='multi':
-        domains=Domain.query.all()
-    elif mode =='new':
-        db_domain=Domain.query.filter(Domain.domain==domain).first()
-        domains=db_domain.show_domains or Domain.query.all()
-    else:
-        
         domains=[db_domain]
-        direct_host= domain
-
-        # if db_domain and db_domain.mode==DomainType.cdn:
-        #     direct_domain_db=Domain.query.filter(Domain.mode==DomainType.direct).first()
-            # if not direct_domain_db:
-            #     direct_host=urllib.request.urlopen('https://v4.ident.me/').read().decode('utf8')
-            #     direct_domain_db=Domain(domain=direct_host,mode=DomainType.direct)
+    else:
+        domain=urlparse(request.base_url).hostname if not no_domain else None
+        if hconfig(ConfigEnum.is_parent):
+            db_domain=ParentDomain.query.filter(ParentDomain.domain==domain).first() or ParentDomain(domain=domain,show_domains=[])
+        else:
+            db_domain=Domain.query.filter(Domain.domain==domain).first() or Domain(domain=domain,mode=DomainType.direct,cdn_ip='',show_domains=[])
+        if not db_domain:
+            db_domain=Domain(domain=domain,mode=DomainType.direct,show_domains=[])
+            print("no domain")
+            flash(_("This domain does not exist in the panel!" + domain))
+        print("HI")
+        if mode =='multi':
+            domains=Domain.query.all()
+        elif mode =='new':
+            db_domain=Domain.query.filter(Domain.domain==domain).first()
+            domains=db_domain.show_domains or Domain.query.all()
+        else:
             
-            # domains.append(direct_domain_db)
+            domains=[db_domain]
+            direct_host= domain
+
+            # if db_domain and db_domain.mode==DomainType.cdn:
+            #     direct_domain_db=Domain.query.filter(Domain.mode==DomainType.direct).first()
+                # if not direct_domain_db:
+                #     direct_host=urllib.request.urlopen('https://v4.ident.me/').read().decode('utf8')
+                #     direct_domain_db=Domain(domain=direct_host,mode=DomainType.direct)
+                
+                # domains.append(direct_domain_db)
         
         
 
