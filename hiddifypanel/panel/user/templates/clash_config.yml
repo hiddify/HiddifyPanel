@@ -60,12 +60,13 @@ proxy-groups:
       - sequential 
       - load-balance     
       % for d in  domains
-      - "auto-{{d.alias or d.domain}}"
-      - "sequential-{{d.alias or d.domain}}"
-      - "load-balance-{{d.alias or d.domain}}"
+      - "{{d.alias or d.domain}}"
+      # - "auto-{{d.alias or d.domain}}"
+      # - "sequential-{{d.alias or d.domain}}"
+      # - "load-balance-{{d.alias or d.domain}}"
       % endfor
-    use:
-      - all_proxies
+    # use:
+    #   - all_proxies
     type: select
 
 
@@ -84,8 +85,11 @@ proxy-groups:
     lazy: true
 
   - name: "load-balance"
-    use:
-      - all_proxies
+    % for d in  domains
+      - "{{d.alias or d.domain}}"
+    %endfor
+    # use:
+    #   - all_proxies
     type: load-balance
     url: http://cp.cloudflare.com
     interval: 300
@@ -114,6 +118,19 @@ proxy-groups:
          
 
 % for d in  domains
+    - name: "select-{{d.alias or d.domain}}"
+      proxies:
+        - "auto-{{d.alias or d.domain}}"
+        - "sequential-{{d.alias or d.domain}}"
+        - "load-balance-{{d.alias or d.domain}}"
+    use:
+      - "{{d.alias or d.domain}}"
+    type: url-test
+    url: http://cp.cloudflare.com
+    interval: 300
+    tolerance: 150
+    lazy: true
+
   - name: "auto-{{d.alias or d.domain}}"
     use:
       - "{{d.alias or d.domain}}"
