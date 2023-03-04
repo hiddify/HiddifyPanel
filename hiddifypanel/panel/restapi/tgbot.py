@@ -8,7 +8,6 @@ from flask_babel import force_locale
 from flask import abort, jsonify,request,url_for
 from flask import current_app as app
 from flask_restful import Resource
-# from flask_simplelogin import login_required
 import datetime
 from hiddifypanel.models import *
 from hiddifypanel.panel.user.user import get_common_data
