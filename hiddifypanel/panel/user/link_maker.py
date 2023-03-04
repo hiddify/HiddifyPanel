@@ -72,7 +72,7 @@ def make_proxy(proxy,domain_db):
         'transport':proxy.transport,
         'proxy_path':hconfig(ConfigEnum.proxy_path,child_id),
         'alpn':"h2",
-        'extra_info':f'{domain}',
+        'extra_info':f'{domain_db.alias or domain}',
         'fingerprint':hconfig(ConfigEnum.utls,child_id)
 
     }

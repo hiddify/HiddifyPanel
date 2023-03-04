@@ -49,7 +49,7 @@ class DomainAdmin(AdminLTEModelView):
             'validators': [Regexp(r"(^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d).){3}(25[0-5]|(2[0-4]|1\d|[1-9]|)\d)$)|^([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})$|^[a-fA-F0-9:]+$", message=__("Invalid IP or domain"))]
         }
     }
-    column_list = ["domain", "mode", "domain_ip", "cdn_ip"]
+    column_list = ["domain", "mode","alias", "domain_ip", "cdn_ip"]
     # column_editable_list=["domain"]
     # column_filters=["domain","mode"]
     # form_excluded_columns=['work_with']
@@ -59,7 +59,8 @@ class DomainAdmin(AdminLTEModelView):
         "mode": _("domain.mode"),
         "cdn_ip": _("config.cdn_forced_host.label"),
         'domain_ip': _('domain.ip'),
-        'show_domains':_('Show Domains')
+        'show_domains':_('Show Domains'),
+        'alias':_('Alias')
     }
 
     form_columns=['domain','mode','cdn_ip','show_domains']
