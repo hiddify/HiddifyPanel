@@ -39,6 +39,8 @@
 
 #### Fix
 
+* Hide release commits. 
+
 * Alias name in clash config. 
 
 * Bug in showing a specific domain. 
@@ -51,11 +53,7 @@
 
 #### Other
 
-* Release: switch to develop. 
-
-* Release: switch to develop. 
-
-* Release: switch to develop. 
+* Change release log format. 
 
 
 
@@ -80,8 +78,6 @@
 ## 0.9.111 (2023-02-28)
 
 #### Other
-
-* Release: switch to develop. 
 
 * Add dev branch. 
 
