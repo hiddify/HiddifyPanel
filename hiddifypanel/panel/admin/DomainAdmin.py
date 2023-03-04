@@ -142,8 +142,8 @@ class DomainAdmin(AdminLTEModelView):
             model.show_domains=[]
         # model.work_with = self.session.query(Domain).filter(
         #     Domain.id.in_(work_with_ids)).all()
-
-        hiddify.flash_config_success(restart_mode='apply', domain_changed=True)
+        if Domain.query.filter(Domain.domain==model.domain).count == 0:
+            hiddify.flash_config_success(restart_mode='apply', domain_changed=True)
 
     # def after_model_change(self,form, model, is_created):
     #     if model.show_domains.count==0:
