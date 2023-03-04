@@ -1,3 +1,4 @@
+import time
 import datetime
 import telebot
 import logging
@@ -33,7 +34,6 @@ def register_bot():
     if token:
         bot.token = hconfig(ConfigEnum.telegram_bot_token)
         bot.remove_webhook()
-        import time
         time.sleep(0.1)
         domain = (ParentDomain if hconfig(ConfigEnum.is_parent) else Domain).query.first().domain
         proxy_path = hconfig(ConfigEnum.proxy_path)
@@ -49,10 +49,7 @@ class TGBotResource(Resource):
     def post(self):
         try:
             if request.headers.get('content-type') == 'application/json':
-
                 json_string = request.get_data().decode('utf-8')
-
-                # print(json_string)
                 update = telebot.types.Update.de_json(json_string)
                 bot.process_new_updates([update])
                 return ''
