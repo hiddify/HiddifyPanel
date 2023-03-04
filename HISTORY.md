@@ -1,6 +1,35 @@
 # Changelog
 
 
+## (unreleased)
+
+### New
+
+* Add custom name for domain (alias) [hiddify]
+
+* Allow users to select proxies from only one domain in clash. [hiddify]
+
+* Add sequential, loadbalance and auto as an option to select specific domain in clash. [hiddify]
+
+* Add load balance in clash rules. [hiddify]
+
+* Telegram bot, We need contributors in this part. [hiddify]
+
+* Add simple telegram bot. [hiddify]
+
+### Changes
+
+* Add demo bot request. [hiddify]
+
+* Improve translations. [hiddify]
+
+### Fix
+
+* Bug in usage reset time. [hiddify]
+
+* Bug in showing last day. [hiddify]
+
+
 ## 1.0.0 (2023-02-28)
 
 ### New
