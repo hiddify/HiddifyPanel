@@ -48,14 +48,10 @@ def get_usage_msg(uuid):
 
 
 @bot.callback_query_handler(func=lambda call: call.data.startswith("update_usage"))
-# @bot.callback_query_handler(func=lambda call: True)
 def update_usage_callback(call):  # <- passes a CallbackQuery type object to your function
-    # with force_locale(message.language_code):
-    print("\n\ncallid:", call.id)
-
     text = call.data
     uuid = text.split()[1] if len(text.split()) > 1 else None
-    # print("uuid",uuid)
+
     if uuid:
         try:
             new_text = get_usage_msg(uuid)
