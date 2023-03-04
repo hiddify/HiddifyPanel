@@ -56,9 +56,9 @@ proxy-groups:
   - name: PROXY
     proxies:
       #- {{"auto" if OnProxyIssue=='DIRECT' else "automatic"}}
+      - load-balance     
       - automatic
       - sequential 
-      - load-balance     
       % for d in  domains
       - "{{d.alias or d.domain}}"
       # - "auto-{{d.alias or d.domain}}"
@@ -76,8 +76,13 @@ proxy-groups:
 
 
   - name: auto
-    use:
-      - all_proxies
+    proxies:
+% for d in  domains
+      - "auto-{{d.alias or d.domain}}"
+%endfor
+    # use:
+    #   - all_proxies
+
     type: url-test
     url: http://cp.cloudflare.com
     interval: 300
@@ -85,6 +90,7 @@ proxy-groups:
     lazy: true
 
   - name: "load-balance"
+    proxies:
     % for d in  domains
       - "{{d.alias or d.domain}}"
     %endfor
@@ -113,18 +119,22 @@ proxy-groups:
     type: fallback
     url: 'http://cp.cloudflare.com'
     interval: 300
-    use:
-      - all_proxies   
+    proxies:
+    % for d in  domains
+      - "sequential-{{d.alias or d.domain}}"
+    %endfor    
+    # use:
+    #   - all_proxies   
          
 
 % for d in  domains
-    - name: "select-{{d.alias or d.domain}}"
-      proxies:
+  - name: "{{d.alias or d.domain}}"
+    proxies:
+        - "load-balance-{{d.alias or d.domain}}"
         - "auto-{{d.alias or d.domain}}"
         - "sequential-{{d.alias or d.domain}}"
-        - "load-balance-{{d.alias or d.domain}}"
     use:
-      - "{{d.alias or d.domain}}"
+      - "P{{d.alias or d.domain}}"
     type: url-test
     url: http://cp.cloudflare.com
     interval: 300
@@ -133,7 +143,7 @@ proxy-groups:
 
   - name: "auto-{{d.alias or d.domain}}"
     use:
-      - "{{d.alias or d.domain}}"
+      - "P{{d.alias or d.domain}}"
     type: url-test
     url: http://cp.cloudflare.com
     interval: 300
@@ -142,7 +152,7 @@ proxy-groups:
 
   - name: "load-balance-{{d.alias or d.domain}}"
     use:
-      - "{{d.alias or d.domain}}"
+      - "P{{d.alias or d.domain}}"
     type: load-balance
     url: http://cp.cloudflare.com
     interval: 300
@@ -154,10 +164,10 @@ proxy-groups:
     url: 'http://cp.cloudflare.com'
     interval: 300
     use:
-      - "{{d.alias or d.domain}}"
+      - "P{{d.alias or d.domain}}"
   %endfor
 
-{{link_maker.get_all_clash_configs(meta_or_normal,domains)}}
+# {{link_maker.get_all_clash_configs(meta_or_normal,domains)}}
 
 proxy-providers:
   all_proxies:
@@ -169,7 +179,7 @@ proxy-providers:
       interval: 600
       url: http://www.gstatic.com/generate_204    
   % for d in  domains
-  {{d.alias or d.domain}}:
+  "P{{d.alias or d.domain}}":
     type: http
     url: "https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{(user.uuid)}}/clash/{{meta_or_normal}}/proxies.yml?mode={{mode}}&domain={{d.domain}}&{{hash}}"
     path: {{domain}}/{{(user.uuid)}}-{{meta_or_normal}}-{d.domain}-proxies{{hash}}.yaml
