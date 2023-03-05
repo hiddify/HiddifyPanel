@@ -118,7 +118,8 @@ def make_proxy(proxy,domain_db):
 
     if base["proto"] in ['v2ray','ss','ssr']:
         base['chipher']='chacha20-ietf-poly1305'
-        base['uuid']=f'{hconfig(ConfigEnum.shared_secret,child_id)}'
+        if "shadowtls" not in name:
+            base['uuid']=f'{hconfig(ConfigEnum.shared_secret,child_id)}'
 
     if base["proto"]=="ssr":
         base["ssr-obfs"]= "tls1.2_ticket_auth"
@@ -131,6 +132,7 @@ def make_proxy(proxy,domain_db):
         base['mode']='FakeTLS'
         return base
     elif "shadowtls" in name:
+        
         base['fakedomain']=hconfig(ConfigEnum.shadowtls_fakedomain,child_id)
         base['mode']='ShadowTLS'
         return base
