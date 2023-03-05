@@ -37,7 +37,11 @@ def prepare_welcome_message():
 
 @bot.message_handler(commands=['help'])
 def command_me(message):
-    bot.reply_to(message, prepare_help_message())
+    text = message.text
+    user_uuid = text.split()[1] if len(text.split()) > 1 else None
+    user = User.query.filter(User.uuid == f'{user_uuid}').first()
+
+    bot.reply_to(message, prepare_me_info(user))
 
 
 @bot.message_handler(commands=['help'])
