@@ -6,6 +6,11 @@ from hiddifypanel.models import User
 
 
 def prepare_me_info(user):
+    """
+    Prepare response to the "me" command
+    @param user: User instance
+    @return: A text message
+    """
     response = _("Dear {}\n".format(user.name) +
                  "You information:\n" +
                  "UUID: {}\n".format(user.uuid) +
