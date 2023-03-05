@@ -13,7 +13,7 @@ def prepare_me_info(user):
     """
 
     response = _("Dear {}\n".format(user.name) +
-                 "You information:\n" +
+                 "Your hiddify information is\n" +
                  "UUID: {}\n".format(user.uuid) +
                  "Last online date: {}\n".format(user.last_online) +
                  "Expire time: {}\n".format(user.expiry_time) +
