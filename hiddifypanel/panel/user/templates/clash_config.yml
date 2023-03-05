@@ -207,7 +207,7 @@ proxies:
     server: 127.0.0.1
     port: 3005
     cipher: chacha20-ietf-poly1305
-    password: {{str(g.user_uuid)}}
+    password: {{g.user_uuid}}
     udp_over_tcp: true  
 %endif
 rule-providers:
