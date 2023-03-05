@@ -7,6 +7,46 @@ from hiddifypanel.panel.user.user import get_common_data
 from ...models import User
 
 
+def prepare_help_message():
+    commands = {  # command description used in the "help" command
+        'start': 'Get started with the the bot',
+        'help': 'Gives you information about the available commands',
+        'info': 'Return information about your usages',
+        'me': 'Return information about your account'
+    }
+
+    response = "The following commands are available: \n"
+    for key in commands:  # generate help text out of the commands dictionary defined at the top
+        response += "/" + key + ": "
+        response += commands[key] + "\n"
+
+    return response
+
+
+def prepare_welcome_message():
+    response = _("Hooray \U0001F389 \U0001F389 \U0001F389 \n"
+                 "Welcome to hiddifybot.\n"
+                 "Start by clicking the link on the panel or entering your UUID.")
+
+    return response
+
+
+@bot.message_handler(commands=['help'])
+def command_help(message):
+    bot.reply_to(message, prepare_help_message())  # send the generated help page
+
+
+@bot.message_handler(commands=['start'])
+def send_welcome(message):
+    text = message.text
+    user_uuid = text.split()[1] if len(text.split()) > 1 else None
+
+    if user_uuid:
+        bot.reply_to(message, prepare_help_message())
+    else:
+        bot.reply_to(message, prepare_welcome_message())
+
+
 @bot.message_handler(commands=['info'])
 def send_info(message):
     text = message.text
