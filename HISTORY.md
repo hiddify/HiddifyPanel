@@ -1,9 +1,19 @@
 # Changelog
 
 
-## (unreleased)
+## 1.1.0 (2023-03-05)
 
 #### New
+
+* Enable tuic and shadowtls for public. 
+
+* Enable tuic for all. 
+
+* Add tuic !!! The fastest protocol with lowest latency. 
+
+* Add alias for telegram. 
+
+* Add support for shadowtls. 
 
 * Make proxies selectable for each domain. 
 
@@ -39,6 +49,30 @@
 
 #### Fix
 
+* Tuic will not shown in normal clash. 
+
+* Change tuic params. 
+
+* Bug in clash config for tuic. 
+
+* Clash config with tuic. 
+
+* Showing tuic only for direct domains. 
+
+* Tuic in proxies. 
+
+* Bug in clash profile. 
+
+* Not displaying green box in update. 
+
+* Db version. 
+
+* Add consistency in changing dbversion. 
+
+* Bug in enabling tuic and shadowtls. 
+
+* Telegram link bug. 
+
 * Hide release commits. 
 
 * Alias name in clash config. 
@@ -52,6 +86,8 @@
 * Bug in showing last day. 
 
 #### Other
+
+* Fix cert error in tuic. 
 
 * Change release log format. 
 
