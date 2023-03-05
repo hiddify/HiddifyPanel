@@ -7,6 +7,10 @@ from hiddifypanel.panel.user.user import get_common_data
 from ...models import User
 
 
+def prepare_me_info(user):
+    pass
+
+
 def prepare_help_message():
     commands = {  # command description used in the "help" command
         'start': 'Get started with the the bot',
@@ -32,8 +36,13 @@ def prepare_welcome_message():
 
 
 @bot.message_handler(commands=['help'])
+def command_me(message):
+    bot.reply_to(message, prepare_help_message())
+
+
+@bot.message_handler(commands=['help'])
 def command_help(message):
-    bot.reply_to(message, prepare_help_message())  # send the generated help page
+    bot.reply_to(message, prepare_help_message())
 
 
 @bot.message_handler(commands=['start'])
