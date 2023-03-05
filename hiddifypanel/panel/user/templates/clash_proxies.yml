@@ -2,7 +2,8 @@
 {{link_maker.get_all_clash_configs(meta_or_normal,domains)}}
 
 % if hconfig(ConfigEnum.tuic_enable)
-% for d in  [dd for dd in domains if dd.mode !="cdn"]
+% for d in  domains
+%if d.mode !="cdn"
   - name: tuic-not-usable-{{d.alias or d.domain}}
     server: d.domain
     port: 3478
@@ -20,6 +21,7 @@
     # fast-open: true
     skip-cert-verify: false
     # max-open-streams: 20 # default 100, too many open streams may hurt performance
+%endif    
 %endfor
 %endif
 % if False
