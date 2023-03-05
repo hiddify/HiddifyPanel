@@ -1,6 +1,14 @@
 # Changelog
 
 
+## 1.1.1 (2023-03-05)
+
+#### Fix
+
+* Bug in update when one usage used out usage. 
+
+
+
 ## 1.1.0 (2023-03-05)
 
 #### New
