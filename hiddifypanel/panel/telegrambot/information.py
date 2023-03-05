@@ -42,10 +42,10 @@ def prepare_help_message():
     return response
 
 
-def prepare_welcome_message():
+def prepare_hello_message():
     """
     Prepare response to the "hello" command
-    @return:
+    @return: A text message
     """
     response = _("Hooray \U0001F389 \U0001F389 \U0001F389 \n"
                  "Welcome to hiddifybot.\n"
@@ -70,7 +70,7 @@ def command_help(message):
 
 @bot.message_handler(commands=['hello'])
 def command_hello(message):
-    bot.reply_to(message, prepare_welcome_message())
+    bot.reply_to(message, prepare_hello_message())
 
 
 @bot.message_handler(commands=['info'])
