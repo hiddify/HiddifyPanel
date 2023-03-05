@@ -19,7 +19,7 @@ def prepare_me_info(user):
 
 def prepare_help_message():
     commands = {  # command description used in the "help" command
-        'start': 'Get started with the the bot',
+        'hello': 'Get started with the the bot',
         'help': 'Gives you information about the available commands',
         'info': 'Return information about your usages',
         'me': 'Return information about your account'
@@ -41,7 +41,7 @@ def prepare_welcome_message():
     return response
 
 
-@bot.message_handler(commands=['help'])
+@bot.message_handler(commands=['me'])
 def command_me(message):
     text = message.text
     user_uuid = text.split()[1] if len(text.split()) > 1 else None
@@ -55,8 +55,8 @@ def command_help(message):
     bot.reply_to(message, prepare_help_message())
 
 
-@bot.message_handler(commands=['start'])
-def command_start(message):
+@bot.message_handler(commands=['hello'])
+def command_hello(message):
     bot.reply_to(message, prepare_welcome_message())
 
 
