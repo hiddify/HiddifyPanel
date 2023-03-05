@@ -49,11 +49,7 @@ def command_help(message):
 def command_start(message):
     text = message.text
     user_uuid = text.split()[1] if len(text.split()) > 1 else None
-
-    if user_uuid:
-        bot.reply_to(message, prepare_help_message())
-    else:
-        bot.reply_to(message, prepare_welcome_message())
+    bot.reply_to(message, prepare_welcome_message())
 
 
 @bot.message_handler(commands=['info'])
