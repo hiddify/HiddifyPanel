@@ -23,6 +23,10 @@ def prepare_me_info(user):
 
 
 def prepare_help_message():
+    """
+    Prepare response to the "help" command
+    @return: A text message
+    """
     commands = {  # command description used in the "help" command
         'hello': 'Get started with the the bot',
         'help': 'Gives you information about the available commands',
