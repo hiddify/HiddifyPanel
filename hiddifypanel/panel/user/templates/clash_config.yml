@@ -54,7 +54,7 @@ proxy-groups:
       - automatic
       - sequential 
       % for d in  domains
-      % if hconfig(ConfigEnum.tuic_enable) and d.mode !="cdn"
+      % if hconfig(ConfigEnum.tuic_enable) and d.mode !="cdn" and meta_or_normal=='meta'
       - "tuic-{{d.alias or d.domain}}"
       %endif
       - "{{d.alias or d.domain}}"
@@ -79,7 +79,7 @@ proxy-groups:
         - "load-balance-{{d.alias or d.domain}}"
         - "auto-{{d.alias or d.domain}}"
         - "sequential-{{d.alias or d.domain}}"
-        % if hconfig(ConfigEnum.tuic_enable) and d.mode !="cdn"
+        % if hconfig(ConfigEnum.tuic_enable) and d.mode !="cdn" and meta_or_normal=='meta'
         - "tuic-{{d.alias or d.domain}}"
         %endif
     use:
@@ -142,7 +142,7 @@ proxy-groups:
 
 
 % for d in domains
-% if hconfig(ConfigEnum.tuic_enable) and d.mode !="cdn"
+% if hconfig(ConfigEnum.tuic_enable) and d.mode !="cdn" and meta_or_normal=='meta'
   - name: "tuic-{{d.alias or d.domain}}"
     type: relay
     proxies:
@@ -202,7 +202,7 @@ proxy-providers:
       url: http://www.gstatic.com/generate_204    
   %endfor
 
-% if hconfig(ConfigEnum.tuic_enable)
+% if hconfig(ConfigEnum.tuic_enable) and meta_or_normal=='meta'
 proxies:
   - name: "internal-not-usable-tuic-ss"
     type: ss
@@ -212,7 +212,7 @@ proxies:
     password: {{g.user_uuid}}
     udp_over_tcp: true  
 % for d in  domains    
-% if hconfig(ConfigEnum.tuic_enable) and d.mode !="cdn"
+% if hconfig(ConfigEnum.tuic_enable) and d.mode !="cdn" and meta_or_normal=='meta'
   - name: internal-not-usable-tuic-{{d.alias or d.domain}}
     server: {{d.domain}}
     port: 3478 
