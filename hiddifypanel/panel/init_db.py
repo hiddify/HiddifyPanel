@@ -83,9 +83,13 @@ def init_db():
 
 def _v15():
     try:
-        db.session.add(BoolConfig(key=ConfigEnum.tuic_enable,value=False))
-        db.session.add(BoolConfig(key=ConfigEnum.shadowtls_enable,value=False))
-        db.session.add(StrConfig(key=ConfigEnum.shadowtls_fakedomain, value="en.wikipedia.org"))
+        if BoolConfig.query.filter(BoolConfig.key==ConfigEnum.tuic_enable).count()==0:
+            db.session.add(BoolConfig(key=ConfigEnum.tuic_enable,value=False,child_id=0))
+        if BoolConfig.query.filter(BoolConfig.key==ConfigEnum.shadowtls_enable).count()==0:
+            db.session.add(BoolConfig(key=ConfigEnum.shadowtls_enable,value=False,child_id=0))
+        if StrConfig.query.filter(StrConfig.key==ConfigEnum.shadowtls_fakedomain).count()==0:
+            db.session.add(StrConfig(key=ConfigEnum.shadowtls_fakedomain, value="en.wikipedia.org",child_id=0))
+        db.session.commit()
     except Exception as e:
         print(e)
 
