@@ -63,7 +63,7 @@ def init_db():
         print(Child.query.filter(Child.id==0).first())
         db.session.add(Child(unique_id="self",id=0))
         db.session.commit()
-    db_actions={1:_v1,2:_v2,3:_v3,6:_v6,8:_v8,9:_v9,10:_v10,11:_v11,12:_v12,13:_v13,14:_v14}
+    db_actions={1:_v1,2:_v2,3:_v3,6:_v6,8:_v8,9:_v9,10:_v10,11:_v11,12:_v12,13:_v13,14:_v14,15:_v15}
     for ver,db_action in db_actions.items():
         if ver<=db_version:continue
         if start_version==0 and ver==10:continue
@@ -81,13 +81,15 @@ def init_db():
     db.session.commit()
     return BoolConfig.query.all()
 
-def _v16():
-    db.session.add(BoolConfig(key=ConfigEnum.tuic_enable,value=False))
-    # db.session.add(StrConfig(key=ConfigEnum.shadowtls_fakedomain, value="en.wikipedia.org"))
-
 def _v15():
-    db.session.add(BoolConfig(key=ConfigEnum.shadowtls_enable,value=False))
-    db.session.add(StrConfig(key=ConfigEnum.shadowtls_fakedomain, value="en.wikipedia.org"))
+    try:
+        db.session.add(BoolConfig(key=ConfigEnum.tuic_enable,value=False))
+        db.session.add(BoolConfig(key=ConfigEnum.shadowtls_enable,value=False))
+        db.session.add(StrConfig(key=ConfigEnum.shadowtls_fakedomain, value="en.wikipedia.org"))
+    except Exception as e:
+        print(e)
+
+        
 
 def _v14():
     db.session.add(StrConfig(key=ConfigEnum.utls,value="chrome",child_id=0))
