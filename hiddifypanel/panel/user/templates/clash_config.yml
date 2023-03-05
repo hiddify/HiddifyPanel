@@ -214,10 +214,10 @@ proxies:
 % for d in  domains    
 % if hconfig(ConfigEnum.tuic_enable) and d.mode !="cdn"
   - name: tuic-not-usable-{{d.alias or d.domain}}
-    server: d.domain
+    server: {{d.domain}}
     port: 3478 #playstation port
     type: tuic
-    token: hconfig(ConfigEnum.proxy_path,d.child_id)
+    token: {{hconfig(ConfigEnum.proxy_path,d.child_id)}}
     # ip: 127.0.0.1 # for overwriting the DNS lookup result of the server address set in option 'server'
     heartbeat-interval: 10000
     alpn: [h3]
