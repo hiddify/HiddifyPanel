@@ -47,8 +47,6 @@ def command_help(message):
 
 @bot.message_handler(commands=['start'])
 def command_start(message):
-    text = message.text
-    user_uuid = text.split()[1] if len(text.split()) > 1 else None
     bot.reply_to(message, prepare_welcome_message())
 
 
