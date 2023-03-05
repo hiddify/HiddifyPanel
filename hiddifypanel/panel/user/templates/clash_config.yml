@@ -149,23 +149,6 @@ proxy-groups:
       - tuic-not-usable-{{d.alias or d.domain}}
       - tuic-ss-not-usable
 
-  - name: tuic-not-usable-{{d.alias or d.domain}}
-    server: d.domain
-    port: 3478 #playstation port
-    type: tuic
-    token: hconfig(ConfigEnum.proxy_path,d.child_id)
-    # ip: 127.0.0.1 # for overwriting the DNS lookup result of the server address set in option 'server'
-    heartbeat-interval: 10000
-    alpn: [h3]
-    # disable-sni: true
-    reduce-rtt: true
-    # request-timeout: 8000
-    udp-relay-mode: native # Available: "native", "quic". Default: "native"
-    congestion-controller: bbr # Available: "cubic", "new_reno", "bbr". Default: "cubic"
-    max-udp-relay-packet-size: 1400
-    # fast-open: true
-    skip-cert-verify: false
-    # max-open-streams: 20 # default 100, too many open streams may hurt performance
 %endif
 
 
@@ -228,6 +211,27 @@ proxies:
     cipher: chacha20-ietf-poly1305
     password: {{g.user_uuid}}
     udp_over_tcp: true  
+% for d in  domains    
+% if hconfig(ConfigEnum.tuic_enable) and d.mode !="cdn"
+  - name: tuic-not-usable-{{d.alias or d.domain}}
+    server: d.domain
+    port: 3478 #playstation port
+    type: tuic
+    token: hconfig(ConfigEnum.proxy_path,d.child_id)
+    # ip: 127.0.0.1 # for overwriting the DNS lookup result of the server address set in option 'server'
+    heartbeat-interval: 10000
+    alpn: [h3]
+    # disable-sni: true
+    reduce-rtt: true
+    # request-timeout: 8000
+    udp-relay-mode: native # Available: "native", "quic". Default: "native"
+    congestion-controller: bbr # Available: "cubic", "new_reno", "bbr". Default: "cubic"
+    max-udp-relay-packet-size: 1400
+    # fast-open: true
+    skip-cert-verify: false
+    # max-open-streams: 20 # default 100, too many open streams may hurt performance
+%endif
+%endfor
 %endif
 rule-providers:
 
