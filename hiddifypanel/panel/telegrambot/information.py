@@ -11,6 +11,7 @@ def prepare_me_info(user):
     @param user: User instance
     @return: A text message
     """
+
     response = _("Dear {}\n".format(user.name) +
                  "You information:\n" +
                  "UUID: {}\n".format(user.uuid) +
@@ -27,6 +28,7 @@ def prepare_help_message():
     Prepare response to the "help" command
     @return: A text message
     """
+
     commands = {  # command description used in the "help" command
         'hello': 'Get started with the the bot',
         'help': 'Gives you information about the available commands',
@@ -47,6 +49,7 @@ def prepare_hello_message():
     Prepare response to the "hello" command
     @return: A text message
     """
+
     response = _("Hooray \U0001F389 \U0001F389 \U0001F389 \n"
                  "Welcome to hiddifybot.\n"
                  "Start by clicking the link on the panel or entering your UUID.")
@@ -60,6 +63,7 @@ def command_me(message):
     TelegramBot command "me"
     @param message:
     """
+
     text = message.text
     user_uuid = text.split()[1] if len(text.split()) > 1 else None
     user = User.query.filter(User.uuid == f'{user_uuid}').first()
@@ -73,6 +77,7 @@ def command_help(message):
     TelegramBot command "help"
     @param message:
     """
+
     bot.reply_to(message, prepare_help_message())
 
 
@@ -82,6 +87,7 @@ def command_hello(message):
     TelegramBot command "hello"
     @param message:
     """
+
     bot.reply_to(message, prepare_hello_message())
 
 
@@ -91,6 +97,7 @@ def command_info(message):
     TelegramBot command "info"
     @param message:
     """
+
     text = message.text
     user_uuid = text.split()[1] if len(text.split()) > 1 else None
     user = User.query.filter(User.uuid == f'{user_uuid}').first()
