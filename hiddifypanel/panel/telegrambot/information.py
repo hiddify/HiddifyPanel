@@ -29,15 +29,17 @@ def prepare_help_message():
     @return: A text message
     """
 
-    commands = {  # command description used in the "help" command
+    # command description used in the "help" command
+    commands = {
         'hello': 'Get started with the the bot',
         'help': 'Gives you information about the available commands',
-        'info': 'Return information about your usages',
+        'info': 'Return information about your usage',
         'me': 'Return information about your account'
     }
 
+    # generate help text out of the commands dictionary defined at the top
     response = "The following commands are available: \n"
-    for key in commands:  # generate help text out of the commands dictionary defined at the top
+    for key in commands:
         response += "/" + key + ": "
         response += commands[key] + "\n"
 
