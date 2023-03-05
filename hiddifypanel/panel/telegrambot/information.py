@@ -43,6 +43,10 @@ def prepare_help_message():
 
 
 def prepare_welcome_message():
+    """
+    Prepare response to the "hello" command
+    @return:
+    """
     response = _("Hooray \U0001F389 \U0001F389 \U0001F389 \n"
                  "Welcome to hiddifybot.\n"
                  "Start by clicking the link on the panel or entering your UUID.")
