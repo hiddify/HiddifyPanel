@@ -56,6 +56,10 @@ def prepare_hello_message():
 
 @bot.message_handler(commands=['me'])
 def command_me(message):
+    """
+    TelegramBot command "me"
+    @param message:
+    """
     text = message.text
     user_uuid = text.split()[1] if len(text.split()) > 1 else None
     user = User.query.filter(User.uuid == f'{user_uuid}').first()
@@ -65,16 +69,28 @@ def command_me(message):
 
 @bot.message_handler(commands=['help'])
 def command_help(message):
+    """
+    TelegramBot command "help"
+    @param message:
+    """
     bot.reply_to(message, prepare_help_message())
 
 
 @bot.message_handler(commands=['hello'])
 def command_hello(message):
+    """
+    TelegramBot command "hello"
+    @param message:
+    """
     bot.reply_to(message, prepare_hello_message())
 
 
 @bot.message_handler(commands=['info'])
 def command_info(message):
+    """
+    TelegramBot command "info"
+    @param message:
+    """
     text = message.text
     user_uuid = text.split()[1] if len(text.split()) > 1 else None
     user = User.query.filter(User.uuid == f'{user_uuid}').first()
