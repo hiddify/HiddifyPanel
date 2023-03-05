@@ -8,7 +8,15 @@ from ...models import User
 
 
 def prepare_me_info(user):
-    pass
+    response = _("Dear {}\n".format(user.name) +
+                 "You information:\n" +
+                 "UUID: {}\n".format(user.uuid) +
+                 "Last online date: {}\n".format(user.last_online) +
+                 "Expire time: {}\n".format(user.expiry_time) +
+                 "Usage class: {}\n".format(user.mode)
+                 )
+
+    return response
 
 
 def prepare_help_message():
