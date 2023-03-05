@@ -48,7 +48,7 @@ def command_start(message):
 
 
 @bot.message_handler(commands=['info'])
-def send_info(message):
+def command_info(message):
     text = message.text
     user_uuid = text.split()[1] if len(text.split()) > 1 else None
     user = User.query.filter(User.uuid == f'{user_uuid}').first()
