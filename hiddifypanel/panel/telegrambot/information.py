@@ -12,7 +12,7 @@ def prepare_me_info(user):
     @return: A text message
     """
 
-    response = _("Dear {}\n".format(user.name) +
+    response = _("Dear {}\n".format(user.name if user.name is not None else "user") +
                  "Your hiddify information is\n" +
                  "UUID: {}\n".format(user.uuid) +
                  "Last online date: {}\n".format(user.last_online) +
