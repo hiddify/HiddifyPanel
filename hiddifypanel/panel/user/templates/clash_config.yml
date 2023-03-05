@@ -10,7 +10,7 @@ external-controller: 127.0.0.1:9090
 # ipv6: false
 ipv6: true
 % if meta_or_normal=='meta'
-global-client-fingerprint: hconfig(ConfigEnum.utls)
+global-client-fingerprint: {{hconfig(ConfigEnum.utls)}}
 % endif
 mode: rule
 dns:
@@ -215,7 +215,7 @@ proxies:
 % if hconfig(ConfigEnum.tuic_enable) and d.mode !="cdn"
   - name: tuic-not-usable-{{d.alias or d.domain}}
     server: {{d.domain}}
-    port: 3478 #playstation port
+    port: 3478 
     type: tuic
     token: {{hconfig(ConfigEnum.proxy_path,d.child_id)}}
     # ip: 127.0.0.1 # for overwriting the DNS lookup result of the server address set in option 'server'
@@ -228,7 +228,7 @@ proxies:
     congestion-controller: bbr # Available: "cubic", "new_reno", "bbr". Default: "cubic"
     max-udp-relay-packet-size: 1400
     # fast-open: true
-    skip-cert-verify: false
+    skip-cert-verify: true
     # max-open-streams: 20 # default 100, too many open streams may hurt performance
 %endif
 %endfor
