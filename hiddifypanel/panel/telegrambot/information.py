@@ -1,10 +1,8 @@
-from telebot import types
 from flask_babelex import gettext as _
-from flask import current_app as app
 
 from . import bot
 from hiddifypanel.panel.user.user import get_common_data
-from ...models import User
+from hiddifypanel.models import User
 
 
 def prepare_me_info(user):
