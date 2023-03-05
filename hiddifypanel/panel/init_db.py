@@ -81,6 +81,10 @@ def init_db():
     db.session.commit()
     return BoolConfig.query.all()
 
+def _v16():
+    db.session.add(BoolConfig(key=ConfigEnum.tuic_enable,value=False))
+    # db.session.add(StrConfig(key=ConfigEnum.shadowtls_fakedomain, value="en.wikipedia.org"))
+
 def _v15():
     db.session.add(BoolConfig(key=ConfigEnum.shadowtls_enable,value=False))
     db.session.add(StrConfig(key=ConfigEnum.shadowtls_fakedomain, value="en.wikipedia.org"))
