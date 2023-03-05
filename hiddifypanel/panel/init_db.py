@@ -72,8 +72,8 @@ def init_db():
         
         print(f"Updated successfuly db from version {db_version} to {ver}")
         db_version=ver
-        set_hconfig(ConfigEnum.db_version,db_version,commit=False)
         db.session.commit()
+        set_hconfig(ConfigEnum.db_version,db_version,commit=False)
     # 
     if hconfig(ConfigEnum.is_parent) and ParentDomain.query.count()==0:
         external_ip=hiddify.get_ip(4)
