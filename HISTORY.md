@@ -1,6 +1,16 @@
 # Changelog
 
 
+## 1.1.2 (2023-03-05)
+
+#### New
+
+* New icon. 
+
+* Change backend uwsgi. 
+
+
+
 ## 1.1.1 (2023-03-05)
 
 #### Fix
