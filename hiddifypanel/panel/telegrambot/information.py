@@ -18,6 +18,6 @@ def send_info(message):
                    "Usage limit: {} \n".format(information['usage_limit_b']) +
                    "Current usage: {} \n".format(information['usage_current_b']) +
                    "Expires at: {} \n".format(information['expire_s']) +
-                   "Remaining days: {} \n".format(information['expire_days'])
+                   "Remaining days: {} \n".format(information['expire_days']) +
+                   "\n\n Happy using \U0001F389 \U0001F389 \U0001F389 \n"
                    ))
-
