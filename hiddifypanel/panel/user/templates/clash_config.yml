@@ -146,8 +146,8 @@ proxy-groups:
   - name: "tuic-{{d.alias or d.domain}}"
     type: relay
     proxies:
-      - tuic-not-usable-{{d.alias or d.domain}}
-      - tuic-ss-not-usable
+      - internal-not-usable-tuic-{{d.alias or d.domain}}
+      - internal-not-usable-tuic-ss
 
 %endif
 
@@ -204,7 +204,7 @@ proxy-providers:
 
 % if hconfig(ConfigEnum.tuic_enable)
 proxies:
-  - name: "tuic-ss-not-usable"
+  - name: "internal-not-usable-tuic-ss"
     type: ss
     server: 127.0.0.1
     port: 3005
@@ -213,7 +213,7 @@ proxies:
     udp_over_tcp: true  
 % for d in  domains    
 % if hconfig(ConfigEnum.tuic_enable) and d.mode !="cdn"
-  - name: tuic-not-usable-{{d.alias or d.domain}}
+  - name: internal-not-usable-tuic-{{d.alias or d.domain}}
     server: {{d.domain}}
     port: 3478 
     type: tuic
@@ -223,10 +223,10 @@ proxies:
     alpn: [h3]
     # disable-sni: true
     reduce-rtt: true
-    # request-timeout: 8000
-    udp-relay-mode: native # Available: "native", "quic". Default: "native"
+    request-timeout: 8000
+    udp-relay-mode: quic # Available: "native", "quic". Default: "native"
     congestion-controller: bbr # Available: "cubic", "new_reno", "bbr". Default: "cubic"
-    max-udp-relay-packet-size: 1400
+    max-udp-relay-packet-size: 1300
     # fast-open: true
     skip-cert-verify: true
     # max-open-streams: 20 # default 100, too many open streams may hurt performance
