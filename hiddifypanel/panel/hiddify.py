@@ -116,7 +116,15 @@ def get_available_proxies():
 def quick_apply_users():
     if hconfig(ConfigEnum.is_parent):
         return
-    exec_command("/opt/hiddify-config/install.sh apply_users &")
+    for user in User.query.all():
+        if is_user_active(user):
+            xray_api.add_client(user.uuid)
+        else:
+            xray_api.remove_client(user.uuid)
+
+    return {"status": 'success'}
+
+    # exec_command("/opt/hiddify-config/install.sh apply_users &")
 
 
 def flash_config_success(restart_mode='', domain_changed=True):
