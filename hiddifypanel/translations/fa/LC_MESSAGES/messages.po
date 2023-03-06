@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-04 09:29+0100\n"
-"PO-Revision-Date: 2023-03-04 02:29-0600\n"
+"POT-Creation-Date: 2023-03-06 17:13+0100\n"
+"PO-Revision-Date: 2023-03-06 10:13-0600\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -218,7 +218,7 @@ msgstr "مدیریت"
 msgid "Domain is not correctly mapped to this server!"
 msgstr "دامنه به درستی به این سرور وصل نشده است!"
 
-#: hiddifypanel/panel/admin/Dashboard.py:30
+#: hiddifypanel/panel/admin/Dashboard.py:31
 #, python-format
 msgid ""
 "It seems that you have not setup the system completely. <a class=\"btn "
@@ -231,7 +231,7 @@ msgstr ""
 # | msgid ""
 # | "It seems that you are using default domain (%(domain)s) which is not "
 # | "recommended. Please change or remove it from domain section."
-#: hiddifypanel/panel/admin/Dashboard.py:32
+#: hiddifypanel/panel/admin/Dashboard.py:33
 #, python-format
 msgid ""
 "It seems that you are using default domain (%(domain)s) which is not "
@@ -241,7 +241,7 @@ msgstr ""
 "-inline-block'>%(domain)s</span>) هستید؛ این کار توصیه نمی‌شود. لطفا از "
 "بخش دامنه‌ها آن را حذف یا تغییر دهید."
 
-#: hiddifypanel/panel/admin/Dashboard.py:36
+#: hiddifypanel/panel/admin/Dashboard.py:37
 #, python-format
 msgid ""
 "It seems that you have not created any users yet. Default user link: "
@@ -613,71 +613,79 @@ msgid "config.port 443 is required"
 msgstr "پورت ۴۴۳ همیشه باید در دسترس باشد."
 
 # | msgid "Actions"
-#: hiddifypanel/panel/admin/UserAdmin.py:49
+#: hiddifypanel/panel/admin/UserAdmin.py:50
 msgid "actions"
 msgstr "عملیات"
 
 # | msgid "Name"
-#: hiddifypanel/panel/admin/UserAdmin.py:50
+#: hiddifypanel/panel/admin/UserAdmin.py:51
 msgid "user.name"
 msgstr "نام"
 
 # | msgid "User Links"
-#: hiddifypanel/panel/admin/UserAdmin.py:51
+#: hiddifypanel/panel/admin/UserAdmin.py:52
 msgid "user.user_links"
 msgstr "لینک‌های کاربر"
 
 # | msgid "Usage Limit (GB)"
-#: hiddifypanel/panel/admin/UserAdmin.py:52
+#: hiddifypanel/panel/admin/UserAdmin.py:53
 msgid "user.usage_limit_GB"
 msgstr "محدودیت حجم (گیگابایت)"
 
 # | msgid "Monthly"
-#: hiddifypanel/panel/admin/UserAdmin.py:53
+#: hiddifypanel/panel/admin/UserAdmin.py:54
 msgid "Reset every month"
 msgstr "ماهانه"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:54
+#: hiddifypanel/panel/admin/UserAdmin.py:55
 msgid "Mode"
 msgstr "حالت تخصیص حجم"
 
 # | msgid "Current Usage (GB)"
-#: hiddifypanel/panel/admin/UserAdmin.py:55
+#: hiddifypanel/panel/admin/UserAdmin.py:56
 msgid "user.current_usage_GB"
 msgstr "حجم مصرفی (گیگابایت)"
 
+#: hiddifypanel/panel/admin/UserAdmin.py:57
+msgid "Start Date"
+msgstr "زمان شروع"
+
 # | msgid "Expire (days)"
-#: hiddifypanel/panel/admin/UserAdmin.py:56
+#: hiddifypanel/panel/admin/UserAdmin.py:58
 msgid "user.expiry_time"
 msgstr "انقضا (روز)"
 
 # | msgid "Last usage date reset"
-#: hiddifypanel/panel/admin/UserAdmin.py:57
+#: hiddifypanel/panel/admin/UserAdmin.py:59
 msgid "user.last_reset_time"
 msgstr "آخرین زمان ریست شدن حجم (روز پیش)"
 
 # | msgid "UUID"
-#: hiddifypanel/panel/admin/UserAdmin.py:58
+#: hiddifypanel/panel/admin/UserAdmin.py:60
 msgid "user.UUID"
 msgstr "UUID"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:59
+#: hiddifypanel/panel/admin/UserAdmin.py:61
 msgid "Note"
 msgstr "یادداشت"
 
 # | msgid "Last Connection"
-#: hiddifypanel/panel/admin/UserAdmin.py:60
+#: hiddifypanel/panel/admin/UserAdmin.py:62
 msgid "Last Online"
 msgstr "آخرین اتصال"
 
+#: hiddifypanel/panel/admin/UserAdmin.py:63
+msgid "Package Days"
+msgstr "تعداد روز بسته"
+
 # | msgid "You can add some text that is only visible to you."
-#: hiddifypanel/panel/admin/UserAdmin.py:72
+#: hiddifypanel/panel/admin/UserAdmin.py:77
 msgid "Add some text that is only visible to you."
 msgstr ""
 "در این قسمت یادداشتی اضافه کنید. (این یادداشت فقط برای شما قابل نمایش "
 "است.)"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:73
+#: hiddifypanel/panel/admin/UserAdmin.py:78
 msgid "Define the user mode. Should the usage reset every month?"
 msgstr ""
 "حالت تخصیص حجم کاربر را تعریف کنید. (بازه زمانی تخصیص و ریست حجم کاربر را"
@@ -686,7 +694,7 @@ msgstr ""
 # | msgid ""
 # | "If the monthly option is enabled, when this number reaches 30, the user "
 # | "usage will be reset (for weekly and daily this number is 7 and 1)"
-#: hiddifypanel/panel/admin/UserAdmin.py:74
+#: hiddifypanel/panel/admin/UserAdmin.py:79
 msgid ""
 "If monthly is enabled, the usage will be reset after 30 days from this "
 "date."
@@ -694,8 +702,28 @@ msgstr ""
 "اگر گزینه ماهانه فعال باشد، وقتی این عدد به ۳۰ برسد حجم کاربر ریست می‌شود"
 " (برای هفتگی و روزانه این عدد ۷ و ۱ است)"
 
+#: hiddifypanel/panel/admin/UserAdmin.py:80
+msgid ""
+"From when the user package will be started? Empty for start from first "
+"connection"
+msgstr "از چه زمانی پکیج کاربر محاسبه شود؟ برای محاسبه از اولین اتصال خالی بگذارید"
+
+# | msgid "How many days is this package?"
+#: hiddifypanel/panel/admin/UserAdmin.py:81
+msgid "How many days this package should be available?"
+msgstr "این بسته چند روزه است؟"
+
+#: hiddifypanel/panel/admin/UserAdmin.py:174
+msgid "Package not started yet."
+msgstr "بسته هنوز شروع نشده است."
+
+# | msgid "Package ends in "
+#: hiddifypanel/panel/admin/UserAdmin.py:177
+msgid "Remaining: "
+msgstr "زمان پایان بسته:"
+
 #: hiddifypanel/panel/admin/templates/backup.html:9
-#: hiddifypanel/templates/admin-layout.html:101
+#: hiddifypanel/templates/admin-layout.html:103
 msgid "Backup"
 msgstr "پشتیبان‌گیری"
 
@@ -1640,7 +1668,7 @@ msgstr ""
 "بروزرسانی دستی <a href=\"%(link)s\" class=\"btn btn-info\">اینجا</a> کلیک"
 " کنید."
 
-#: hiddifypanel/panel/telegrambot/Usage.py:20
+#: hiddifypanel/panel/telegrambot/Usage.py:24
 msgid ""
 "Welcome to hiddifybot.\n"
 " Please click on the link in the panel page to start or enter your user "
@@ -2415,83 +2443,87 @@ msgstr "اعمال تنظیمات"
 msgid "admin.menu.home"
 msgstr "ادمین"
 
+#: hiddifypanel/templates/admin-layout.html:65
+msgid "Telegram Bot"
+msgstr "بات تلگرام"
+
 # | msgid "Users"
-#: hiddifypanel/templates/admin-layout.html:66
 #: hiddifypanel/templates/admin-layout.html:68
+#: hiddifypanel/templates/admin-layout.html:70
 msgid "admin.menu.user"
 msgstr "کاربران"
 
-#: hiddifypanel/templates/admin-layout.html:66
+#: hiddifypanel/templates/admin-layout.html:68
 msgid "in parent panel"
 msgstr "در پنل مرکزی"
 
 # | msgid "Domains"
-#: hiddifypanel/templates/admin-layout.html:71
-#: hiddifypanel/templates/admin-layout.html:75
+#: hiddifypanel/templates/admin-layout.html:73
+#: hiddifypanel/templates/admin-layout.html:77
 msgid "admin.menu.domain"
 msgstr "دامنه‌ها"
 
 # | msgid "Proxies"
-#: hiddifypanel/templates/admin-layout.html:72
+#: hiddifypanel/templates/admin-layout.html:74
 msgid "admin.menu.proxy"
 msgstr "پروکسی‌ها"
 
 # | msgid "Settings"
-#: hiddifypanel/templates/admin-layout.html:77
+#: hiddifypanel/templates/admin-layout.html:79
 msgid "admin.menu.config"
 msgstr "تنظیمات"
 
 # | msgid "Actions"
-#: hiddifypanel/templates/admin-layout.html:87
+#: hiddifypanel/templates/admin-layout.html:89
 msgid "admin.actions.title"
 msgstr "اقدامات"
 
 # | msgid "Status"
-#: hiddifypanel/templates/admin-layout.html:89
+#: hiddifypanel/templates/admin-layout.html:91
 msgid "admin.actions.status"
 msgstr "وضعیت"
 
 # | msgid "View Logs"
-#: hiddifypanel/templates/admin-layout.html:90
+#: hiddifypanel/templates/admin-layout.html:92
 msgid "admin.actions.viewlogs"
 msgstr "نمایش لاگ"
 
 # | msgid "Apply configs"
-#: hiddifypanel/templates/admin-layout.html:91
+#: hiddifypanel/templates/admin-layout.html:93
 msgid "admin.actions.apply_configs"
 msgstr "اعمال تغییرات"
 
 # | msgid "Update System"
-#: hiddifypanel/templates/admin-layout.html:92
+#: hiddifypanel/templates/admin-layout.html:94
 msgid "admin.actions.update"
 msgstr "به‌روز‌ رسانی سیستم"
 
 # | msgid "Reinstall System"
-#: hiddifypanel/templates/admin-layout.html:94
+#: hiddifypanel/templates/admin-layout.html:96
 msgid "admin.actions.reinstall"
 msgstr "نصب مجدد سیستم"
 
 # | msgid "Restart System"
-#: hiddifypanel/templates/admin-layout.html:95
+#: hiddifypanel/templates/admin-layout.html:97
 msgid "admin.actions.reset"
 msgstr "ریستارت سیستم"
 
 # | msgid "Check Usage"
-#: hiddifypanel/templates/admin-layout.html:97
+#: hiddifypanel/templates/admin-layout.html:99
 msgid "User usage update"
 msgstr "چک کردن میزان مصرف"
 
 # | msgid "Support"
-#: hiddifypanel/templates/admin-layout.html:104
+#: hiddifypanel/templates/admin-layout.html:106
 msgid "admin.menu.support"
 msgstr "پشتیبانی"
 
 # | msgid "Telegram"
-#: hiddifypanel/templates/admin-layout.html:107
+#: hiddifypanel/templates/admin-layout.html:109
 msgid "admin.menu.telegram"
 msgstr "تلگرام"
 
-#: hiddifypanel/templates/admin-layout.html:109
+#: hiddifypanel/templates/admin-layout.html:111
 #: hiddifypanel/templates/donation.html:5
 msgid "Donation"
 msgstr "حمایت"

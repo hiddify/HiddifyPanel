@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-04 09:29+0100\n"
-"PO-Revision-Date: 2023-03-04 02:29-0600\n"
+"POT-Creation-Date: 2023-03-06 17:13+0100\n"
+"PO-Revision-Date: 2023-03-06 10:13-0600\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -212,7 +212,7 @@ msgstr "Admin"
 msgid "Domain is not correctly mapped to this server!"
 msgstr "Domain is not correctly mapped to this server!"
 
-#: hiddifypanel/panel/admin/Dashboard.py:30
+#: hiddifypanel/panel/admin/Dashboard.py:31
 #, python-format
 msgid ""
 "It seems that you have not setup the system completely. <a class=\"btn btn-"
@@ -224,7 +224,7 @@ msgstr ""
 # | msgid ""
 # | "It seems that you are using default domain (%(domain)s) which is not "
 # | "recommended. Please change or remove it from domain section."
-#: hiddifypanel/panel/admin/Dashboard.py:32
+#: hiddifypanel/panel/admin/Dashboard.py:33
 #, python-format
 msgid ""
 "It seems that you are using default domain (%(domain)s) which is not "
@@ -233,7 +233,7 @@ msgstr ""
 "It seems that you are using default domain (%(domain)s) which is not "
 "recommended. Please change or remove it from domain section."
 
-#: hiddifypanel/panel/admin/Dashboard.py:36
+#: hiddifypanel/panel/admin/Dashboard.py:37
 #, python-format
 msgid ""
 "It seems that you have not created any users yet. Default user link: "
@@ -597,84 +597,120 @@ msgid "config.port 443 is required"
 msgstr "Port 443 should always be presented. "
 
 # | msgid "Actions"
-#: hiddifypanel/panel/admin/UserAdmin.py:49
+#: hiddifypanel/panel/admin/UserAdmin.py:50
 msgid "actions"
 msgstr "Actions"
 
 # | msgid "Name"
-#: hiddifypanel/panel/admin/UserAdmin.py:50
+#: hiddifypanel/panel/admin/UserAdmin.py:51
 msgid "user.name"
 msgstr "Name"
 
 # | msgid "User Links"
-#: hiddifypanel/panel/admin/UserAdmin.py:51
+#: hiddifypanel/panel/admin/UserAdmin.py:52
 msgid "user.user_links"
 msgstr "User Links"
 
 # | msgid "Usage Limit (GB)"
-#: hiddifypanel/panel/admin/UserAdmin.py:52
+#: hiddifypanel/panel/admin/UserAdmin.py:53
 msgid "user.usage_limit_GB"
 msgstr "Usage Limit (GB)"
 
 # | msgid "Monthly"
-#: hiddifypanel/panel/admin/UserAdmin.py:53
+#: hiddifypanel/panel/admin/UserAdmin.py:54
 msgid "Reset every month"
 msgstr "Monthly"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:54
+#: hiddifypanel/panel/admin/UserAdmin.py:55
 msgid "Mode"
 msgstr "Mode"
 
 # | msgid "Current Usage (GB)"
-#: hiddifypanel/panel/admin/UserAdmin.py:55
+#: hiddifypanel/panel/admin/UserAdmin.py:56
 msgid "user.current_usage_GB"
 msgstr "Current Usage (GB)"
 
+#: hiddifypanel/panel/admin/UserAdmin.py:57
+#, fuzzy
+msgid "Start Date"
+msgstr "Start Date"
+
 # | msgid "Expire (days)"
-#: hiddifypanel/panel/admin/UserAdmin.py:56
+#: hiddifypanel/panel/admin/UserAdmin.py:58
 msgid "user.expiry_time"
 msgstr "Expire (days)"
 
 # | msgid "Last usage date reset"
-#: hiddifypanel/panel/admin/UserAdmin.py:57
+#: hiddifypanel/panel/admin/UserAdmin.py:59
 msgid "user.last_reset_time"
 msgstr "Last usage date reset"
 
 # | msgid "UUID"
-#: hiddifypanel/panel/admin/UserAdmin.py:58
+#: hiddifypanel/panel/admin/UserAdmin.py:60
 msgid "user.UUID"
 msgstr "UUID"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:59
+#: hiddifypanel/panel/admin/UserAdmin.py:61
 msgid "Note"
 msgstr "Note"
 
 # | msgid "Last Connection"
-#: hiddifypanel/panel/admin/UserAdmin.py:60
+#: hiddifypanel/panel/admin/UserAdmin.py:62
 msgid "Last Online"
 msgstr "Last Connection"
 
+#: hiddifypanel/panel/admin/UserAdmin.py:63
+#, fuzzy
+msgid "Package Days"
+msgstr "Package Days"
+
 # | msgid "You can add some text that is only visible to you."
-#: hiddifypanel/panel/admin/UserAdmin.py:72
+#: hiddifypanel/panel/admin/UserAdmin.py:77
 msgid "Add some text that is only visible to you."
 msgstr "You can add some text that is only visible to you."
 
-#: hiddifypanel/panel/admin/UserAdmin.py:73
+#: hiddifypanel/panel/admin/UserAdmin.py:78
 msgid "Define the user mode. Should the usage reset every month?"
 msgstr "Define the user mode. Should the usage reset every month?"
 
 # | msgid ""
 # | "If the monthly option is enabled, when this number reaches 30, the user "
 # | "usage will be reset (for weekly and daily this number is 7 and 1)"
-#: hiddifypanel/panel/admin/UserAdmin.py:74
+#: hiddifypanel/panel/admin/UserAdmin.py:79
 msgid ""
 "If monthly is enabled, the usage will be reset after 30 days from this date."
 msgstr ""
 "If the monthly option is enabled, when this number reaches 30, the user "
 "usage will be reset (for weekly and daily this number is 7 and 1)"
 
+#: hiddifypanel/panel/admin/UserAdmin.py:80
+#, fuzzy
+msgid ""
+"From when the user package will be started? Empty for start from first "
+"connection"
+msgstr ""
+"From when the user package will be started? Empty for start from first "
+"connection"
+
+# | msgid "How many days is this package?"
+#: hiddifypanel/panel/admin/UserAdmin.py:81
+#, fuzzy
+msgid "How many days this package should be available?"
+msgstr "How many days is this package?"
+
+#: hiddifypanel/panel/admin/UserAdmin.py:174
+#, fuzzy
+msgid "Package not started yet."
+msgstr "Package not started yet."
+
+# | msgid "Package ends in "
+#: hiddifypanel/panel/admin/UserAdmin.py:177
+#, fuzzy
+msgid "Remaining: "
+msgstr "Package ends in "
+
 #: hiddifypanel/panel/admin/templates/backup.html:9
-#: hiddifypanel/templates/admin-layout.html:101
+#: hiddifypanel/templates/admin-layout.html:103
 msgid "Backup"
 msgstr "Backup"
 
@@ -1590,7 +1626,7 @@ msgstr ""
 "User usage will be updated every 6 minutes. To update it now click <a "
 "href=\"%(link)s\" class=\"btn btn-info\">here</a>."
 
-#: hiddifypanel/panel/telegrambot/Usage.py:20
+#: hiddifypanel/panel/telegrambot/Usage.py:24
 #, fuzzy
 msgid ""
 "Welcome to hiddifybot.\n"
@@ -2338,83 +2374,88 @@ msgstr "Apply Configs"
 msgid "admin.menu.home"
 msgstr "Admin"
 
+#: hiddifypanel/templates/admin-layout.html:65
+#, fuzzy
+msgid "Telegram Bot"
+msgstr "Telegram Bot"
+
 # | msgid "Users"
-#: hiddifypanel/templates/admin-layout.html:66
 #: hiddifypanel/templates/admin-layout.html:68
+#: hiddifypanel/templates/admin-layout.html:70
 msgid "admin.menu.user"
 msgstr "Users"
 
-#: hiddifypanel/templates/admin-layout.html:66
+#: hiddifypanel/templates/admin-layout.html:68
 msgid "in parent panel"
 msgstr "in parent panel"
 
 # | msgid "Domains"
-#: hiddifypanel/templates/admin-layout.html:71
-#: hiddifypanel/templates/admin-layout.html:75
+#: hiddifypanel/templates/admin-layout.html:73
+#: hiddifypanel/templates/admin-layout.html:77
 msgid "admin.menu.domain"
 msgstr "Domains"
 
 # | msgid "Proxies"
-#: hiddifypanel/templates/admin-layout.html:72
+#: hiddifypanel/templates/admin-layout.html:74
 msgid "admin.menu.proxy"
 msgstr "Proxies"
 
 # | msgid "Settings"
-#: hiddifypanel/templates/admin-layout.html:77
+#: hiddifypanel/templates/admin-layout.html:79
 msgid "admin.menu.config"
 msgstr "Settings"
 
 # | msgid "Actions"
-#: hiddifypanel/templates/admin-layout.html:87
+#: hiddifypanel/templates/admin-layout.html:89
 msgid "admin.actions.title"
 msgstr "Actions"
 
 # | msgid "Status"
-#: hiddifypanel/templates/admin-layout.html:89
+#: hiddifypanel/templates/admin-layout.html:91
 msgid "admin.actions.status"
 msgstr "Status"
 
 # | msgid "View Logs"
-#: hiddifypanel/templates/admin-layout.html:90
+#: hiddifypanel/templates/admin-layout.html:92
 msgid "admin.actions.viewlogs"
 msgstr "View Logs"
 
 # | msgid "Apply configs"
-#: hiddifypanel/templates/admin-layout.html:91
+#: hiddifypanel/templates/admin-layout.html:93
 msgid "admin.actions.apply_configs"
 msgstr "Apply configs"
 
 # | msgid "Update System"
-#: hiddifypanel/templates/admin-layout.html:92
+#: hiddifypanel/templates/admin-layout.html:94
 msgid "admin.actions.update"
 msgstr "Update System"
 
 # | msgid "Reinstall System"
-#: hiddifypanel/templates/admin-layout.html:94
+#: hiddifypanel/templates/admin-layout.html:96
 msgid "admin.actions.reinstall"
 msgstr "Reinstall System"
 
 # | msgid "Restart System"
-#: hiddifypanel/templates/admin-layout.html:95
+#: hiddifypanel/templates/admin-layout.html:97
 msgid "admin.actions.reset"
 msgstr "Restart System"
 
 # | msgid "Check Usage"
-#: hiddifypanel/templates/admin-layout.html:97
+#: hiddifypanel/templates/admin-layout.html:99
 msgid "User usage update"
 msgstr "Check Usage"
 
 # | msgid "Support"
-#: hiddifypanel/templates/admin-layout.html:104
+#: hiddifypanel/templates/admin-layout.html:106
 msgid "admin.menu.support"
 msgstr "Support"
 
 # | msgid "Telegram"
-#: hiddifypanel/templates/admin-layout.html:107
+#: hiddifypanel/templates/admin-layout.html:109
 msgid "admin.menu.telegram"
 msgstr "Telegram"
 
-#: hiddifypanel/templates/admin-layout.html:109
+#: hiddifypanel/templates/admin-layout.html:111
 #: hiddifypanel/templates/donation.html:5
 msgid "Donation"
 msgstr "Donation"

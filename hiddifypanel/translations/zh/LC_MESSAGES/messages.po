@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-04 09:29+0100\n"
-"PO-Revision-Date: 2023-03-04 02:29-0600\n"
+"POT-Creation-Date: 2023-03-06 17:13+0100\n"
+"PO-Revision-Date: 2023-03-06 10:13-0600\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -205,7 +205,7 @@ msgstr "行政"
 msgid "Domain is not correctly mapped to this server!"
 msgstr "域未正确映射到此服务器！"
 
-#: hiddifypanel/panel/admin/Dashboard.py:30
+#: hiddifypanel/panel/admin/Dashboard.py:31
 #, python-format
 msgid ""
 "It seems that you have not setup the system completely. <a class=\"btn "
@@ -217,14 +217,14 @@ msgstr ""
 # | msgid ""
 # | "It seems that you are using default domain (%(domain)s) which is not "
 # | "recommended. Please change or remove it from domain section."
-#: hiddifypanel/panel/admin/Dashboard.py:32
+#: hiddifypanel/panel/admin/Dashboard.py:33
 #, python-format
 msgid ""
 "It seems that you are using default domain (%(domain)s) which is not "
 "recommended."
 msgstr "您似乎正在使用不推荐的默认域 (%(domain)s)。"
 
-#: hiddifypanel/panel/admin/Dashboard.py:36
+#: hiddifypanel/panel/admin/Dashboard.py:37
 #, python-format
 msgid ""
 "It seems that you have not created any users yet. Default user link: "
@@ -566,73 +566,81 @@ msgid "config.port 443 is required"
 msgstr "应始终显示端口 443。"
 
 # | msgid "Actions"
-#: hiddifypanel/panel/admin/UserAdmin.py:49
+#: hiddifypanel/panel/admin/UserAdmin.py:50
 msgid "actions"
 msgstr "动作"
 
 # | msgid "Name"
-#: hiddifypanel/panel/admin/UserAdmin.py:50
+#: hiddifypanel/panel/admin/UserAdmin.py:51
 msgid "user.name"
 msgstr "名称"
 
 # | msgid "User Links"
-#: hiddifypanel/panel/admin/UserAdmin.py:51
+#: hiddifypanel/panel/admin/UserAdmin.py:52
 msgid "user.user_links"
 msgstr "用户链接"
 
 # | msgid "Usage Limit (GB)"
-#: hiddifypanel/panel/admin/UserAdmin.py:52
+#: hiddifypanel/panel/admin/UserAdmin.py:53
 msgid "user.usage_limit_GB"
 msgstr "使用限制 (GB)"
 
 # | msgid "Monthly"
-#: hiddifypanel/panel/admin/UserAdmin.py:53
+#: hiddifypanel/panel/admin/UserAdmin.py:54
 msgid "Reset every month"
 msgstr "每月"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:54
+#: hiddifypanel/panel/admin/UserAdmin.py:55
 #, fuzzy
 msgid "Mode"
 msgstr "模式"
 
 # | msgid "Current Usage (GB)"
-#: hiddifypanel/panel/admin/UserAdmin.py:55
+#: hiddifypanel/panel/admin/UserAdmin.py:56
 msgid "user.current_usage_GB"
 msgstr "当前使用量 (GB)"
 
+#: hiddifypanel/panel/admin/UserAdmin.py:57
+msgid "Start Date"
+msgstr ""
+
 # | msgid "Expire (days)"
-#: hiddifypanel/panel/admin/UserAdmin.py:56
+#: hiddifypanel/panel/admin/UserAdmin.py:58
 msgid "user.expiry_time"
 msgstr "过期时间"
 
 # | msgid "Last usage date reset"
-#: hiddifypanel/panel/admin/UserAdmin.py:57
+#: hiddifypanel/panel/admin/UserAdmin.py:59
 msgid "user.last_reset_time"
 msgstr "最后使用日期重置"
 
 # | msgid "UUID"
-#: hiddifypanel/panel/admin/UserAdmin.py:58
+#: hiddifypanel/panel/admin/UserAdmin.py:60
 msgid "user.UUID"
 msgstr "UUID"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:59
+#: hiddifypanel/panel/admin/UserAdmin.py:61
 #, fuzzy
 msgid "Note"
 msgstr "笔记"
 
 # | msgid "Last Connection"
-#: hiddifypanel/panel/admin/UserAdmin.py:60
+#: hiddifypanel/panel/admin/UserAdmin.py:62
 #, fuzzy
 msgid "Last Online"
 msgstr "最后上线"
 
+#: hiddifypanel/panel/admin/UserAdmin.py:63
+msgid "Package Days"
+msgstr ""
+
 # | msgid "You can add some text that is only visible to you."
-#: hiddifypanel/panel/admin/UserAdmin.py:72
+#: hiddifypanel/panel/admin/UserAdmin.py:77
 #, fuzzy
 msgid "Add some text that is only visible to you."
 msgstr "添加一些仅对您可见的文本。"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:73
+#: hiddifypanel/panel/admin/UserAdmin.py:78
 #, fuzzy
 msgid "Define the user mode. Should the usage reset every month?"
 msgstr "定义用户模式。应该每个月重置使用量吗？"
@@ -640,15 +648,35 @@ msgstr "定义用户模式。应该每个月重置使用量吗？"
 # | msgid ""
 # | "If the monthly option is enabled, when this number reaches 30, the user "
 # | "usage will be reset (for weekly and daily this number is 7 and 1)"
-#: hiddifypanel/panel/admin/UserAdmin.py:74
+#: hiddifypanel/panel/admin/UserAdmin.py:79
 #, fuzzy
 msgid ""
 "If monthly is enabled, the usage will be reset after 30 days from this "
 "date."
 msgstr "如果启用每月选项，当这个数字达到 30 时，用户使用量将被重置（每周和每天这个数字是 7 和 1）"
 
+#: hiddifypanel/panel/admin/UserAdmin.py:80
+msgid ""
+"From when the user package will be started? Empty for start from first "
+"connection"
+msgstr ""
+
+# | msgid "How many days is this package?"
+#: hiddifypanel/panel/admin/UserAdmin.py:81
+msgid "How many days this package should be available?"
+msgstr ""
+
+#: hiddifypanel/panel/admin/UserAdmin.py:174
+msgid "Package not started yet."
+msgstr ""
+
+# | msgid "Package ends in "
+#: hiddifypanel/panel/admin/UserAdmin.py:177
+msgid "Remaining: "
+msgstr ""
+
 #: hiddifypanel/panel/admin/templates/backup.html:9
-#: hiddifypanel/templates/admin-layout.html:101
+#: hiddifypanel/templates/admin-layout.html:103
 msgid "Backup"
 msgstr "备份"
 
@@ -1518,7 +1546,7 @@ msgstr ""
 "用户使用情况将每 6 分钟更新一次。现在要更新它，请点击<a href=\"%(link)s\" class=\"btn btn-"
 "info\">此处</a>。"
 
-#: hiddifypanel/panel/telegrambot/Usage.py:20
+#: hiddifypanel/panel/telegrambot/Usage.py:24
 msgid ""
 "Welcome to hiddifybot.\n"
 " Please click on the link in the panel page to start or enter your user "
@@ -2259,84 +2287,88 @@ msgstr "应用配置"
 msgid "admin.menu.home"
 msgstr "行政"
 
+#: hiddifypanel/templates/admin-layout.html:65
+msgid "Telegram Bot"
+msgstr ""
+
 # | msgid "Users"
-#: hiddifypanel/templates/admin-layout.html:66
 #: hiddifypanel/templates/admin-layout.html:68
+#: hiddifypanel/templates/admin-layout.html:70
 msgid "admin.menu.user"
 msgstr "用户"
 
-#: hiddifypanel/templates/admin-layout.html:66
+#: hiddifypanel/templates/admin-layout.html:68
 #, fuzzy
 msgid "in parent panel"
 msgstr "在父面板中"
 
 # | msgid "Domains"
-#: hiddifypanel/templates/admin-layout.html:71
-#: hiddifypanel/templates/admin-layout.html:75
+#: hiddifypanel/templates/admin-layout.html:73
+#: hiddifypanel/templates/admin-layout.html:77
 msgid "admin.menu.domain"
 msgstr "域名"
 
 # | msgid "Proxies"
-#: hiddifypanel/templates/admin-layout.html:72
+#: hiddifypanel/templates/admin-layout.html:74
 msgid "admin.menu.proxy"
 msgstr "代理"
 
 # | msgid "Settings"
-#: hiddifypanel/templates/admin-layout.html:77
+#: hiddifypanel/templates/admin-layout.html:79
 msgid "admin.menu.config"
 msgstr "设置"
 
 # | msgid "Actions"
-#: hiddifypanel/templates/admin-layout.html:87
+#: hiddifypanel/templates/admin-layout.html:89
 msgid "admin.actions.title"
 msgstr "动作"
 
 # | msgid "Status"
-#: hiddifypanel/templates/admin-layout.html:89
+#: hiddifypanel/templates/admin-layout.html:91
 msgid "admin.actions.status"
 msgstr "地位"
 
 # | msgid "View Logs"
-#: hiddifypanel/templates/admin-layout.html:90
+#: hiddifypanel/templates/admin-layout.html:92
 msgid "admin.actions.viewlogs"
 msgstr "查看日志"
 
 # | msgid "Apply configs"
-#: hiddifypanel/templates/admin-layout.html:91
+#: hiddifypanel/templates/admin-layout.html:93
 msgid "admin.actions.apply_configs"
 msgstr "应用配置"
 
 # | msgid "Update System"
-#: hiddifypanel/templates/admin-layout.html:92
+#: hiddifypanel/templates/admin-layout.html:94
 msgid "admin.actions.update"
 msgstr "更新系统"
 
 # | msgid "Reinstall System"
-#: hiddifypanel/templates/admin-layout.html:94
+#: hiddifypanel/templates/admin-layout.html:96
 msgid "admin.actions.reinstall"
 msgstr "重装系统"
 
 # | msgid "Restart System"
-#: hiddifypanel/templates/admin-layout.html:95
+#: hiddifypanel/templates/admin-layout.html:97
 msgid "admin.actions.reset"
 msgstr "重启系统"
 
 # | msgid "Check Usage"
-#: hiddifypanel/templates/admin-layout.html:97
+#: hiddifypanel/templates/admin-layout.html:99
 msgid "User usage update"
 msgstr "检查使用情况"
 
 # | msgid "Support"
-#: hiddifypanel/templates/admin-layout.html:104
+#: hiddifypanel/templates/admin-layout.html:106
 msgid "admin.menu.support"
 msgstr "支持"
 
 # | msgid "Telegram"
-#: hiddifypanel/templates/admin-layout.html:107
+#: hiddifypanel/templates/admin-layout.html:109
 msgid "admin.menu.telegram"
 msgstr "电报"
 
-#: hiddifypanel/templates/admin-layout.html:109
+#: hiddifypanel/templates/admin-layout.html:111
 #: hiddifypanel/templates/donation.html:5
 msgid "Donation"
 msgstr "捐款"

@@ -12,12 +12,6 @@ from flask_babelex import gettext as __
 from hiddifypanel import xray_api
 from sqlalchemy.orm import Load 
 
-package_mode_dic={
-        UserMode.daily:1,
-        UserMode.weekly:7,
-        UserMode.monthly:30
-
-    }
 
 def update_local_usage():
         
@@ -40,16 +34,22 @@ def add_users_usage_uuid(uuids_bytes):
     
 def add_users_usage(dbusers_bytes):
     if not hconfig(ConfigEnum.is_parent) and hconfig(ConfigEnum.parent_panel):
-        return hiddify_api.add_user_usage_to_parent(dbusers_bytes);
+        hiddify_api.add_user_usage_to_parent(dbusers_bytes);
     res={}
     have_change=False
     for user,usage_bytes in dbusers_bytes.items():
-        if user.mode!=UserMode.no_reset and (datetime.date.today()-user.last_reset_time).days>=package_mode_dic.get(user.mode,1000):
-            user.last_reset_time=datetime.date.today()
-            if user.current_usage_GB > user.usage_limit_GB:
+        user_active_before=is_user_active(user)
+
+        if not user.last_reset_time or (user.last_reset_time-datetime.date.today())>0:
+            reset_days=days_to_reset(user)
+            if reset_days==0:
+                user.last_reset_time=datetime.date.today()
+                user.current_usage_GB=0
+
+        if not user_active_before:
+            if user.current_usage_GB < user.usage_limit_GB:
                 xray_api.add_client(user.uuid)
                 have_change=True
-            user.current_usage_GB=0
 
         if usage_bytes == None:
             res[user.uuid]="No value" 
@@ -58,11 +58,14 @@ def add_users_usage(dbusers_bytes):
             res[user.uuid]=in_gig
             user.current_usage_GB += in_gig
             user.last_online=datetime.datetime.now()
+            if user.start_date==None:
+                user.start_date=datetime.date.today()
 
-        if user.current_usage_GB > user.usage_limit_GB:
+        if user_active_before and not is_user_active(user):
             xray_api.remove_client(user.uuid)
             have_change=True
             res[user.uuid]=f"{res[user.uuid]} !OUT of USAGE! Client Removed"
+
     db.session.commit()
     if have_change:
         hiddify.quick_apply_users()
