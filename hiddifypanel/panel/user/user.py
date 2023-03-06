@@ -148,9 +148,10 @@ def get_common_data(user_uuid,mode,no_domain=False,filter_domain=None):
     from hiddifypanel.panel.telegrambot import bot
     g.locale= hconfig(ConfigEnum.lang)
     expire_days=remaining_days(user)
-    reset_days=reset_days=days_to_reset(user)
-    if reset_days<=expire_days:
+    reset_days=days_to_reset(user)
+    if reset_days>=expire_days:
         reset_days=1000
+    # print(reset_days,expire_days,reset_days<=expire_days)
     expire_s=int((datetime.date.today()+datetime.timedelta(days=expire_days)-datetime.date(1970, 1, 1)).total_seconds())
     return {
         # 'direct_host':direct_host,
