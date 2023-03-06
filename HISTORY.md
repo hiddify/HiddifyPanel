@@ -5,9 +5,19 @@
 
 #### New
 
+* Add disable to users. 
+
 * Add telegram bot command for create multiple account. 
 
 * Users expire time will now starts from their first connection. 
+
+#### Fix
+
+* Not showing reset time. 
+
+* Bug in date. 
+
+* Name in clash. 
 
 
 
