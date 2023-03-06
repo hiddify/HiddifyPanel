@@ -39,7 +39,7 @@ def add_client(uuid):
             for p,protocol in proto_map.items():
                 if p in t:
                     xray_client.add_client(t,f'{uuid}', f'{uuid}@hiddify.com',protocol=protocol,flow='xtls-rprx-vision',alter_id=0,cipher='chacha20_poly1305')
-            print(f"Success add  {uuid} {t}")
+                    print(f"Success add  {uuid} {t}")
         except Exception as e:
             print(f"error in add  {uuid} {t} {e}" )
             pass
