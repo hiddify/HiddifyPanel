@@ -25,7 +25,7 @@ def drop_db():
 
 def all_configs():
     import json
-    valid_users=[u.to_dict() for u in User.query.filter((User.usage_limit_GB>User.current_usage_GB)).all() if not u.start_date or u.start_date+u.package_days<=datetime.date.today()]
+    valid_users=[u.to_dict() for u in User.query.filter((User.usage_limit_GB>User.current_usage_GB)).all() if is_user_active(u)]
 
     configs={
         "users": valid_users,
