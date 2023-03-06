@@ -25,8 +25,20 @@ def add_client(uuid):
     tags=get_inbound_tags()
     for t in tags:
         try:
-            alter_id=0 if 'vmess' in t else None
-            xray_client.add_client(t,f'{uuid}', f'{uuid}@hiddify.com',alter_id=alter_id)
+            proto_map={
+                'vless':'vless',
+                'xtls':'vless',
+                'quic':'vless',
+                'trojan':'trojan',
+                'vmess':'vmess',
+                'ss':'shadowsocks',
+                'v2ray':'shadowsocks',
+                'kcp':'vless',
+                'dispatcher':'trojan',
+            }
+            for p,protocol in proto_map.items():
+                if p in t:
+                    xray_client.add_client(t,f'{uuid}', f'{uuid}@hiddify.com',protocol=protocol,flow='xtls-rprx-vision',alter_id=0,cipher='chacha20_poly1305')
             print(f"Success add  {uuid} {t} {e}")
         except Exception as e:
             print(f"error in add  {uuid} {t} {e}" )
