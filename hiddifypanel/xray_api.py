@@ -11,7 +11,9 @@ def get_inbound_tags():
         return
     try:
         xray_client=get_xray_client()
-        return [inb.name.split(">>>")[1] for inb in xray_client.stats_query('inbound')]
+        inbounds= [inb.name.split(">>>")[1] for inb in xray_client.stats_query('inbound')]
+        print(f"Success in get inbound tags {inbounds}" )
+        return inbounds
     except Exception as e:
         print(f"error in get inbound tags {e}" )
         return []
@@ -50,6 +52,7 @@ def get_usage(uuid,reset=False):
     xray_client=get_xray_client()
     d = xray_client.get_client_download_traffic(f'{uuid}@hiddify.com',reset=reset)
     u = xray_client.get_client_upload_traffic(f'{uuid}@hiddify.com',reset=reset)
+    print(f"Success {uuid} d={d} u={u}" )
     if d is None:
         return u
     if u is None:
