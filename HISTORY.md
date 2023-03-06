@@ -17,6 +17,8 @@
 
 #### Fix
 
+* Bug in cli. 
+
 * Not showing reset time. 
 
 * Bug in date. 
