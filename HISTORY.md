@@ -11,6 +11,10 @@
 
 * Users expire time will now starts from their first connection. 
 
+#### Changes
+
+* Add all proxies again in the clash config. 
+
 #### Fix
 
 * Not showing reset time. 
