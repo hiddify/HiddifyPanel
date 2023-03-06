@@ -5,13 +5,17 @@ from flask_babelex import gettext as _
 from flask import abort, jsonify,request,url_for
 from flask import current_app as app
 from hiddifypanel.panel.user.user import get_common_data
+from . import admin
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
     # with force_locale(message.language_code):        
         text=message.text
         uuid=text.split()[1] if len(text.split()) > 1 else None
         print("start", uuid)
-        if uuid:        
+        if uuid: 
+            if uuid==hconfig(ConfigEnum.admin_secret):
+                admin.start_admin(message)
+                return
             # print("SSS")
             # print("msg=",get_usage_msg(uuid))
             # bot.reply_to(message,get_usage_msg(uuid))

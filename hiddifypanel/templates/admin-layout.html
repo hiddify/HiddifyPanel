@@ -61,7 +61,9 @@
           <!-- Add icons to the links using the .nav-icon class
                  with font-awesome or any other icon font library -->
                  {{ render_nav_item('admin.Dashboard:index', icon('solid','house','nav-icon')+(_("Parent Panel") if hconfig(ConfigEnum.is_parent) else _('admin.menu.home'))) }}
-              
+                % if hconfig(ConfigEnum.telegram_bot_token) and bot
+                {{ render_nav_item("https://t.me/"+bot.get_me().username+"?start="+hconfig(ConfigEnum.admin_secret), icon('brands','telegram','nav-icon')+_('Telegram Bot')) }}
+                %endif              
                 % if hconfig(ConfigEnum.parent_panel)
                 {{ render_nav_item(hconfig(ConfigEnum.parent_panel)+"/admin/user/", icon('solid','user','nav-icon')+_('admin.menu.user'),_badge=_('in parent panel') ) }}
                 %else
