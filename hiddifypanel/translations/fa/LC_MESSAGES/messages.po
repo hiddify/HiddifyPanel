@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-06 17:13+0100\n"
-"PO-Revision-Date: 2023-03-06 10:13-0600\n"
+"POT-Creation-Date: 2023-03-06 17:45+0100\n"
+"PO-Revision-Date: 2023-03-06 10:45-0600\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -2111,7 +2111,7 @@ msgstr "لطفا یکی از موارد زیر را انتخاب کنید."
 # | msgid "QR Code"
 #: hiddifypanel/panel/user/templates/home/index.html:124
 #: hiddifypanel/panel/user/templates/home/multi.html:118
-#: hiddifypanel/panel/user/templates/home/usage.html:64
+#: hiddifypanel/panel/user/templates/home/usage.html:68
 msgid "QR code"
 msgstr "کیوآر کد"
 
@@ -2121,7 +2121,7 @@ msgstr "کیوآر کد"
 # | " field to display its QR Code."
 #: hiddifypanel/panel/user/templates/home/index.html:125
 #: hiddifypanel/panel/user/templates/home/multi.html:119
-#: hiddifypanel/panel/user/templates/home/usage.html:65
+#: hiddifypanel/panel/user/templates/home/usage.html:69
 msgid "user.home.qr-code.description"
 msgstr ""
 "برای کپی یا به اشتراک‌گذاری لینک‌ها، روی قسمت طوسی‌رنگ  که با شکل <i "
@@ -2131,7 +2131,7 @@ msgstr ""
 # | msgid "Display QR Code"
 #: hiddifypanel/panel/user/templates/home/index.html:133
 #: hiddifypanel/panel/user/templates/home/multi.html:127
-#: hiddifypanel/panel/user/templates/home/usage.html:73
+#: hiddifypanel/panel/user/templates/home/usage.html:77
 msgid "user.home.qr-code.display"
 msgstr "نمایش کیو آر کد"
 
@@ -2280,47 +2280,51 @@ msgstr ""
 msgid "user.home.usage.title"
 msgstr "حجم مصرف شده:"
 
+#: hiddifypanel/panel/user/templates/home/usage.html:10
+msgid "Disable"
+msgstr "غیرفعال"
+
 # | msgid "of"
-#: hiddifypanel/panel/user/templates/home/usage.html:9
+#: hiddifypanel/panel/user/templates/home/usage.html:12
 msgid "user.home.usage.from"
 msgstr "از"
 
 # | msgid "Monthly"
-#: hiddifypanel/panel/user/templates/home/usage.html:10
+#: hiddifypanel/panel/user/templates/home/usage.html:13
 msgid "user.home.usage.monthly"
 msgstr "ماهانه"
 
 # | msgid "Expire: "
-#: hiddifypanel/panel/user/templates/home/usage.html:16
+#: hiddifypanel/panel/user/templates/home/usage.html:19
 msgid "user.home.usage.expire"
 msgstr "پایان:"
 
 # | msgid "Traffic usage reset time:"
-#: hiddifypanel/panel/user/templates/home/usage.html:20
+#: hiddifypanel/panel/user/templates/home/usage.html:23
 msgid "Reset Usage Time:"
 msgstr "زمان صفر شدن حجم:"
 
 # | msgid "Days"
-#: hiddifypanel/panel/user/templates/home/usage.html:20
+#: hiddifypanel/panel/user/templates/home/usage.html:23
 msgid "days"
 msgstr "روز"
 
-#: hiddifypanel/panel/user/templates/home/usage.html:33
+#: hiddifypanel/panel/user/templates/home/usage.html:37
 msgid "View in Telegram"
 msgstr "مشاهده در تلگرام"
 
 # | msgid "Display usage details."
-#: hiddifypanel/panel/user/templates/home/usage.html:37
+#: hiddifypanel/panel/user/templates/home/usage.html:41
 msgid "user.home.usage.details"
 msgstr "نمایش جزئیات استفاده"
 
 # | msgid "Support"
-#: hiddifypanel/panel/user/templates/home/usage.html:46
+#: hiddifypanel/panel/user/templates/home/usage.html:50
 msgid "user.home.branding.title"
 msgstr "پشتیبانی"
 
 # | msgid "Support Page Link"
-#: hiddifypanel/panel/user/templates/home/usage.html:55
+#: hiddifypanel/panel/user/templates/home/usage.html:59
 msgid "user.home.branding.linktitle"
 msgstr "صفحه پشتیبانی"
 

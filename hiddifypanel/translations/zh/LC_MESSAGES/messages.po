@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-06 17:13+0100\n"
-"PO-Revision-Date: 2023-03-06 10:13-0600\n"
+"POT-Creation-Date: 2023-03-06 17:45+0100\n"
+"PO-Revision-Date: 2023-03-06 10:45-0600\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -1976,7 +1976,7 @@ msgstr "请选择项目。"
 # | msgid "QR Code"
 #: hiddifypanel/panel/user/templates/home/index.html:124
 #: hiddifypanel/panel/user/templates/home/multi.html:118
-#: hiddifypanel/panel/user/templates/home/usage.html:64
+#: hiddifypanel/panel/user/templates/home/usage.html:68
 msgid "QR code"
 msgstr "二维码"
 
@@ -1986,14 +1986,14 @@ msgstr "二维码"
 # | " field to display its QR Code."
 #: hiddifypanel/panel/user/templates/home/index.html:125
 #: hiddifypanel/panel/user/templates/home/multi.html:119
-#: hiddifypanel/panel/user/templates/home/usage.html:65
+#: hiddifypanel/panel/user/templates/home/usage.html:69
 msgid "user.home.qr-code.description"
 msgstr "要复制或共享链接，请点击灰色的 <i class='fa-solid fa-qrcode'></i> 字段以显示其二维码。"
 
 # | msgid "Display QR Code"
 #: hiddifypanel/panel/user/templates/home/index.html:133
 #: hiddifypanel/panel/user/templates/home/multi.html:127
-#: hiddifypanel/panel/user/templates/home/usage.html:73
+#: hiddifypanel/panel/user/templates/home/usage.html:77
 msgid "user.home.qr-code.display"
 msgstr "显示二维码"
 
@@ -2129,47 +2129,51 @@ msgstr "单击 %(link)s，然后，在电报中您可以看到一个包含 <b>Co
 msgid "user.home.usage.title"
 msgstr "流量使用"
 
+#: hiddifypanel/panel/user/templates/home/usage.html:10
+msgid "Disable"
+msgstr ""
+
 # | msgid "of"
-#: hiddifypanel/panel/user/templates/home/usage.html:9
+#: hiddifypanel/panel/user/templates/home/usage.html:12
 msgid "user.home.usage.from"
 msgstr "的"
 
 # | msgid "Monthly"
-#: hiddifypanel/panel/user/templates/home/usage.html:10
+#: hiddifypanel/panel/user/templates/home/usage.html:13
 msgid "user.home.usage.monthly"
 msgstr "每月"
 
 # | msgid "Expire: "
-#: hiddifypanel/panel/user/templates/home/usage.html:16
+#: hiddifypanel/panel/user/templates/home/usage.html:19
 msgid "user.home.usage.expire"
 msgstr "过期于："
 
 # | msgid "Traffic usage reset time:"
-#: hiddifypanel/panel/user/templates/home/usage.html:20
+#: hiddifypanel/panel/user/templates/home/usage.html:23
 msgid "Reset Usage Time:"
 msgstr "流量使用重置时间："
 
 # | msgid "Days"
-#: hiddifypanel/panel/user/templates/home/usage.html:20
+#: hiddifypanel/panel/user/templates/home/usage.html:23
 msgid "days"
 msgstr "天"
 
-#: hiddifypanel/panel/user/templates/home/usage.html:33
+#: hiddifypanel/panel/user/templates/home/usage.html:37
 msgid "View in Telegram"
 msgstr ""
 
 # | msgid "Display usage details."
-#: hiddifypanel/panel/user/templates/home/usage.html:37
+#: hiddifypanel/panel/user/templates/home/usage.html:41
 msgid "user.home.usage.details"
 msgstr "显示使用详情。"
 
 # | msgid "Support"
-#: hiddifypanel/panel/user/templates/home/usage.html:46
+#: hiddifypanel/panel/user/templates/home/usage.html:50
 msgid "user.home.branding.title"
 msgstr "支持"
 
 # | msgid "Support Page Link"
-#: hiddifypanel/panel/user/templates/home/usage.html:55
+#: hiddifypanel/panel/user/templates/home/usage.html:59
 msgid "user.home.branding.linktitle"
 msgstr "支持页面链接"
 
