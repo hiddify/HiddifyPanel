@@ -44,7 +44,14 @@ class User(db.Model, SerializerMixin):
 
 
 def is_user_active(u):
-    return u.usage_limit_GB>u.current_usage_GB and u.mode!=UserMode.disable and (not u.start_date or u.start_date+u.package_days>=datetime.date.today())    
+    if u.mode==UserMode.disable:
+        return False
+    if u.usage_limit_GB<u.current_usage_GB:
+        return False
+    if remaining_days(u)<0:
+        return False
+    return True
+    
 
 def remaining_days(u):
     if u.start_date:
