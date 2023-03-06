@@ -1,6 +1,16 @@
 # Changelog
 
 
+## (unreleased)
+
+#### New
+
+* Add telegram bot command for create multiple account. 
+
+* Users expire time will now starts from their first connection. 
+
+
+
 ## 1.1.2 (2023-03-05)
 
 #### New
