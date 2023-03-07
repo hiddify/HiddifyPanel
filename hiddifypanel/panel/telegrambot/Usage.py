@@ -1,7 +1,7 @@
 from telebot import types
 from flask_babelex import gettext as _
 from flask import current_app as app
-
+from hiddifypanel.models import  *
 from . import bot
 from hiddifypanel.panel.user.user import get_common_data
 
