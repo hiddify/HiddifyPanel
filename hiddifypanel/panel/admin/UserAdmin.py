@@ -204,7 +204,7 @@ class UserAdmin(AdminLTEModelView):
             raise ValidationError('Invalid UUID e.g.,'+ str(uuid.uuid4()))
         
         if form.reset_usage.data:
-            model.usage_current_GB=0
+            model.current_usage_GB=0
         if form.reset_days.data:
             model.start_date=None  
         
