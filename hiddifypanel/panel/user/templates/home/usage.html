@@ -1,11 +1,14 @@
 <div class="card-deck">
-    % set bg_color="danger" if ((expire_days<7) or (0.8 < user.current_usage_GB*100/(user.usage_limit_GB+0.000001))) else "info"
+    % set bg_color="danger" if (user.mode=='disable' or (expire_days<7) or (0.8 < user.current_usage_GB*100/(user.usage_limit_GB+0.000001))) else "info"
 
         <div class="card small-box bg-{{bg_color}} ">
             <div class="card-body">
             <div class="inner">
                 <h3>{{_('user.home.usage.title')}}</h3>
                 <div class="info-box-content">
+                    %if user.mode=='disable'
+                    <span class="info-box-text">{{_("Disable")}}</span>
+                    %else
                     <span class="info-box-text">{{user.current_usage_GB|round(3)}}GB <b>{{_('user.home.usage.from')}}</b>
                             {{user.usage_limit_GB}}GB  {{_('user.home.usage.monthly') if user.monthly else '' }}</span> 
                     <div class="progress">
@@ -19,6 +22,7 @@
                     <div>
                         <i class="fa-solid fa-calendar-days fa-margin"></i> <b>{{_('Reset Usage Time:')}}</b> {{reset_day}} {{_('days')}}                     
                     </div>
+                    %endif
                     %endif
                     
                 </div>

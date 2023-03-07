@@ -10,7 +10,7 @@ dynaconf
 click==8.1.3
 flask-restful
 sqlalchemy_utils
-xtlsapi
+xtlsapi==2.0.0
 python-dateutil
 flask-babelex
 babel
@@ -25,3 +25,4 @@ user_agents
 flask_wtf
 pyyaml
 telebot
+pyuwsgi
