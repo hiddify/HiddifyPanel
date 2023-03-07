@@ -1,6 +1,18 @@
 # Changelog
 
 
+## 1.4.2 (2023-03-07)
+
+#### New
+
+* Add /admin without / as correct path. 
+
+#### Fix
+
+* Bug in telegrambot. 
+
+
+
 ## 1.4.1 (2023-03-07)
 
 #### Fix
