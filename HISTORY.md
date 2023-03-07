@@ -1,6 +1,18 @@
 # Changelog
 
 
+## 1.3.0 (2023-03-07)
+
+#### New
+
+* Add reset user's package (usage and days) 
+
+#### Changes
+
+* Better displaying how to change user mode. 
+
+
+
 ## 1.2.2 (2023-03-07)
 
 #### New
