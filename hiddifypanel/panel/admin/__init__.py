@@ -1,4 +1,4 @@
-from flask import Blueprint,url_for,request,jsonify,g
+from flask import Blueprint,url_for,request,jsonify,g,redirect
 from flask_admin import Admin
 # from flask_sockets import Sockets
 
@@ -38,7 +38,9 @@ def init_app(app):
 
     admin.template_mode = "bootstrap4"
     
-    
+    @app.route('/<proxy_path>/<user_secret>/admin')
+    def auto_route():
+        return redirect(request.url.replace("http://","https://")+"/")
 
     
     # admin.init_app(app)
