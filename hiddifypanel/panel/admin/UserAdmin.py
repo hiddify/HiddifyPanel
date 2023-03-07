@@ -207,7 +207,13 @@ class UserAdmin(AdminLTEModelView):
             model.usage_current_GB=0
         if form.reset_days.data:
             model.start_date=None  
+        
+        old_user=User.query(User.id==model.id).first()
+        if old_user and old_user.uuid!=model.uuid:
+            xray_api.remove_client(old_user.uuid)
+
         # model.expiry_time=datetime.date.today()+datetime.timedelta(days=model.expiry_time)
+        
         
         # if model.current_usage_GB < model.usage_limit_GB:
         #     xray_api.add_client(model.uuid)
