@@ -160,7 +160,7 @@ def get_common_data(user_uuid,mode,no_domain=False,filter_domain=None):
         'user':user,
         'domain':domain,       
         'mode':mode,
-        'fake_ip':datetime.date.today().strftime("20.%y.%m.%d"),
+        'fake_ip_for_sub_link':datetime.date.today().strftime("20.%y.%m.%d:%H"),
         'usage_limit_b':int(user.usage_limit_GB*1024*1024*1024),
         'usage_current_b':int(user.current_usage_GB*1024*1024*1024),
         'expire_s':expire_s,
