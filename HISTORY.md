@@ -1,9 +1,15 @@
 # Changelog
 
 
-## (unreleased)
+## 1.2.0 (2023-03-07)
 
 #### New
+
+* Add hour in the fakeip. 
+
+* Add fetch date as ip in the subscription link. 
+
+* Add v2rayng as supported link for android. 
 
 * Hide decoy port setting :D. 
 
