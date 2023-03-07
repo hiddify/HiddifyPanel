@@ -1,8 +1,9 @@
+import datetime
+import uuid as uuid_mod
+
 from sqlalchemy_serializer import SerializerMixin
 from dateutil import relativedelta
 from hiddifypanel.panel.database import db
-import datetime
-import uuid as uuid_mod
 from enum import auto
 from strenum import StrEnum
 
