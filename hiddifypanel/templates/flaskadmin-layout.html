@@ -46,7 +46,14 @@
 
     <script>
 $("#show_domains").multipleSelect({width: '100%'});    
-        
+
+
+$('.form-group:not(:has(.custom-switch))').has('input[type="checkbox"]').each(function() {
+    var label = $(this).find('label').hide().text();
+    $(this).find('input[type="checkbox"]').wrap('<div class="custom-control custom-switch"></div>');
+    $(this).find('input[type="checkbox"]').addClass('custom-control-input');
+    $(this).find('.custom-control').append('<label class="custom-control-label" for="' + $(this).find('input[type="checkbox"]').attr('id') + '">' + label + '</label>');
+  });
     </script>
     
 {% endblock %}

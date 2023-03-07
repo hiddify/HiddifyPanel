@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-07 10:02+0100\n"
-"PO-Revision-Date: 2023-03-07 03:02-0600\n"
+"POT-Creation-Date: 2023-03-07 12:03+0100\n"
+"PO-Revision-Date: 2023-03-07 05:03-0600\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -612,80 +612,88 @@ msgstr ""
 msgid "config.port 443 is required"
 msgstr "پورت ۴۴۳ همیشه باید در دسترس باشد."
 
+#: hiddifypanel/panel/admin/UserAdmin.py:22
+msgid "Reset package days"
+msgstr "ریست زمان شروع بسته کاربر"
+
+#: hiddifypanel/panel/admin/UserAdmin.py:23
+msgid "Reset package usage"
+msgstr "ریست حجم مصرفی کاربر"
+
 # | msgid "Actions"
-#: hiddifypanel/panel/admin/UserAdmin.py:50
+#: hiddifypanel/panel/admin/UserAdmin.py:55
 msgid "actions"
 msgstr "عملیات"
 
 # | msgid "Name"
-#: hiddifypanel/panel/admin/UserAdmin.py:51
+#: hiddifypanel/panel/admin/UserAdmin.py:56
 msgid "user.name"
 msgstr "نام"
 
 # | msgid "User Links"
-#: hiddifypanel/panel/admin/UserAdmin.py:52
+#: hiddifypanel/panel/admin/UserAdmin.py:57
 msgid "user.user_links"
 msgstr "لینک‌های کاربر"
 
 # | msgid "Usage Limit (GB)"
-#: hiddifypanel/panel/admin/UserAdmin.py:53
+#: hiddifypanel/panel/admin/UserAdmin.py:58
 msgid "user.usage_limit_GB"
 msgstr "محدودیت حجم (گیگابایت)"
 
 # | msgid "Monthly"
-#: hiddifypanel/panel/admin/UserAdmin.py:54
+#: hiddifypanel/panel/admin/UserAdmin.py:59
 msgid "Reset every month"
 msgstr "ماهانه"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:55
+#: hiddifypanel/panel/admin/UserAdmin.py:60
 msgid "Mode"
 msgstr "حالت تخصیص حجم"
 
 # | msgid "Current Usage (GB)"
-#: hiddifypanel/panel/admin/UserAdmin.py:56
+#: hiddifypanel/panel/admin/UserAdmin.py:61
 msgid "user.current_usage_GB"
 msgstr "حجم مصرفی (گیگابایت)"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:57
+#: hiddifypanel/panel/admin/UserAdmin.py:62
 msgid "Start Date"
 msgstr "زمان شروع"
 
 # | msgid "Expire (days)"
-#: hiddifypanel/panel/admin/UserAdmin.py:58
+#: hiddifypanel/panel/admin/UserAdmin.py:63
 msgid "user.expiry_time"
 msgstr "انقضا (روز)"
 
 # | msgid "Last usage date reset"
-#: hiddifypanel/panel/admin/UserAdmin.py:59
+#: hiddifypanel/panel/admin/UserAdmin.py:64
 msgid "user.last_reset_time"
 msgstr "آخرین زمان ریست شدن حجم (روز پیش)"
 
 # | msgid "UUID"
-#: hiddifypanel/panel/admin/UserAdmin.py:60
+#: hiddifypanel/panel/admin/UserAdmin.py:65
 msgid "user.UUID"
 msgstr "UUID"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:61
+#: hiddifypanel/panel/admin/UserAdmin.py:66
 msgid "Note"
 msgstr "یادداشت"
 
 # | msgid "Last Connection"
-#: hiddifypanel/panel/admin/UserAdmin.py:62
+#: hiddifypanel/panel/admin/UserAdmin.py:67
 msgid "Last Online"
 msgstr "آخرین اتصال"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:63
+#: hiddifypanel/panel/admin/UserAdmin.py:68
 msgid "Package Days"
 msgstr "تعداد روز بسته"
 
 # | msgid "You can add some text that is only visible to you."
-#: hiddifypanel/panel/admin/UserAdmin.py:77
+#: hiddifypanel/panel/admin/UserAdmin.py:82
 msgid "Add some text that is only visible to you."
 msgstr ""
 "در این قسمت یادداشتی اضافه کنید. (این یادداشت فقط برای شما قابل نمایش "
 "است.)"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:78
+#: hiddifypanel/panel/admin/UserAdmin.py:83
 msgid "Define the user mode. Should the usage reset every month?"
 msgstr ""
 "حالت تخصیص حجم کاربر را تعریف کنید. (بازه زمانی تخصیص و ریست حجم کاربر را"
@@ -694,7 +702,7 @@ msgstr ""
 # | msgid ""
 # | "If the monthly option is enabled, when this number reaches 30, the user "
 # | "usage will be reset (for weekly and daily this number is 7 and 1)"
-#: hiddifypanel/panel/admin/UserAdmin.py:79
+#: hiddifypanel/panel/admin/UserAdmin.py:84
 msgid ""
 "If monthly is enabled, the usage will be reset after 30 days from this "
 "date."
@@ -702,23 +710,23 @@ msgstr ""
 "اگر گزینه ماهانه فعال باشد، وقتی این عدد به ۳۰ برسد حجم کاربر ریست می‌شود"
 " (برای هفتگی و روزانه این عدد ۷ و ۱ است)"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:80
+#: hiddifypanel/panel/admin/UserAdmin.py:85
 msgid ""
 "From when the user package will be started? Empty for start from first "
 "connection"
 msgstr "از چه زمانی پکیج کاربر محاسبه شود؟ برای محاسبه از اولین اتصال خالی بگذارید"
 
 # | msgid "How many days is this package?"
-#: hiddifypanel/panel/admin/UserAdmin.py:81
+#: hiddifypanel/panel/admin/UserAdmin.py:86
 msgid "How many days this package should be available?"
 msgstr "این بسته چند روزه است؟"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:174
+#: hiddifypanel/panel/admin/UserAdmin.py:180
 msgid "Package not started yet."
 msgstr "بسته هنوز شروع نشده است."
 
 # | msgid "Package ends in "
-#: hiddifypanel/panel/admin/UserAdmin.py:177
+#: hiddifypanel/panel/admin/UserAdmin.py:185
 msgid "Remaining: "
 msgstr "زمان پایان بسته:"
 
@@ -767,6 +775,19 @@ msgstr "سی‌دی‌ان"
 #: hiddifypanel/panel/admin/templates/configfake.html:5
 msgid "Create"
 msgstr "ایجاد"
+
+#: hiddifypanel/panel/admin/templates/configfake.html:5
+msgid "Save & Add More"
+msgstr "ذخیره و افزودن یکی دیگه"
+
+#: hiddifypanel/panel/admin/templates/configfake.html:5
+#: hiddifypanel/templates/donation.html:14
+msgid "Close"
+msgstr "بستن"
+
+#: hiddifypanel/panel/admin/templates/configfake.html:5
+msgid "Back"
+msgstr "بازگشت"
 
 # | msgid "Admin Secret"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1677,7 +1698,7 @@ msgstr ""
 "به ربات تلگرام هیدیفای خوش آمدید\n"
 "روی لینک مشاهده جزییات در تلگرام کلیک کنید تا حجم خود را مشاهده کنید"
 
-#: hiddifypanel/panel/user/user.py:112
+#: hiddifypanel/panel/user/user.py:115
 msgid "This domain does not exist in the panel!"
 msgstr "این دامنه در پنل وجود ندارد!"
 
@@ -2659,10 +2680,6 @@ msgstr ""
 "href=\"mailto:hiddify@gmail.com\">hiddify@gmail.com</a> با ما تماس "
 "بگیرید."
 
-#: hiddifypanel/templates/donation.html:14
-msgid "Close"
-msgstr "بستن"
-
 # | msgid "Close"
 #: hiddifypanel/templates/macros.html:28 hiddifypanel/templates/master.html:135
 msgid "close"
@@ -2859,4 +2876,7 @@ msgstr "عملیات"
 # | msgid "Should be a valid UUID"
 #~ msgid "Should be a valid uuid"
 #~ msgstr "یک UUID معتبر وارد کنید."
+
+#~ msgid "Reset package days and usage"
+#~ msgstr "ریست کردن بسته کاربر (حجم و روز)"
 

@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-07 10:02+0100\n"
-"PO-Revision-Date: 2023-03-07 03:02-0600\n"
+"POT-Creation-Date: 2023-03-07 12:03+0100\n"
+"PO-Revision-Date: 2023-03-07 05:03-0600\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -596,94 +596,104 @@ msgstr ""
 msgid "config.port 443 is required"
 msgstr "Port 443 should always be presented. "
 
+#: hiddifypanel/panel/admin/UserAdmin.py:22
+#, fuzzy
+msgid "Reset package days"
+msgstr "Reset package days"
+
+#: hiddifypanel/panel/admin/UserAdmin.py:23
+#, fuzzy
+msgid "Reset package usage"
+msgstr "Reset package usage"
+
 # | msgid "Actions"
-#: hiddifypanel/panel/admin/UserAdmin.py:50
+#: hiddifypanel/panel/admin/UserAdmin.py:55
 msgid "actions"
 msgstr "Actions"
 
 # | msgid "Name"
-#: hiddifypanel/panel/admin/UserAdmin.py:51
+#: hiddifypanel/panel/admin/UserAdmin.py:56
 msgid "user.name"
 msgstr "Name"
 
 # | msgid "User Links"
-#: hiddifypanel/panel/admin/UserAdmin.py:52
+#: hiddifypanel/panel/admin/UserAdmin.py:57
 msgid "user.user_links"
 msgstr "User Links"
 
 # | msgid "Usage Limit (GB)"
-#: hiddifypanel/panel/admin/UserAdmin.py:53
+#: hiddifypanel/panel/admin/UserAdmin.py:58
 msgid "user.usage_limit_GB"
 msgstr "Usage Limit (GB)"
 
 # | msgid "Monthly"
-#: hiddifypanel/panel/admin/UserAdmin.py:54
+#: hiddifypanel/panel/admin/UserAdmin.py:59
 msgid "Reset every month"
 msgstr "Monthly"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:55
+#: hiddifypanel/panel/admin/UserAdmin.py:60
 msgid "Mode"
 msgstr "Mode"
 
 # | msgid "Current Usage (GB)"
-#: hiddifypanel/panel/admin/UserAdmin.py:56
+#: hiddifypanel/panel/admin/UserAdmin.py:61
 msgid "user.current_usage_GB"
 msgstr "Current Usage (GB)"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:57
+#: hiddifypanel/panel/admin/UserAdmin.py:62
 #, fuzzy
 msgid "Start Date"
 msgstr "Start Date"
 
 # | msgid "Expire (days)"
-#: hiddifypanel/panel/admin/UserAdmin.py:58
+#: hiddifypanel/panel/admin/UserAdmin.py:63
 msgid "user.expiry_time"
 msgstr "Expire (days)"
 
 # | msgid "Last usage date reset"
-#: hiddifypanel/panel/admin/UserAdmin.py:59
+#: hiddifypanel/panel/admin/UserAdmin.py:64
 msgid "user.last_reset_time"
 msgstr "Last usage date reset"
 
 # | msgid "UUID"
-#: hiddifypanel/panel/admin/UserAdmin.py:60
+#: hiddifypanel/panel/admin/UserAdmin.py:65
 msgid "user.UUID"
 msgstr "UUID"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:61
+#: hiddifypanel/panel/admin/UserAdmin.py:66
 msgid "Note"
 msgstr "Note"
 
 # | msgid "Last Connection"
-#: hiddifypanel/panel/admin/UserAdmin.py:62
+#: hiddifypanel/panel/admin/UserAdmin.py:67
 msgid "Last Online"
 msgstr "Last Connection"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:63
+#: hiddifypanel/panel/admin/UserAdmin.py:68
 #, fuzzy
 msgid "Package Days"
 msgstr "Package Days"
 
 # | msgid "You can add some text that is only visible to you."
-#: hiddifypanel/panel/admin/UserAdmin.py:77
+#: hiddifypanel/panel/admin/UserAdmin.py:82
 msgid "Add some text that is only visible to you."
 msgstr "You can add some text that is only visible to you."
 
-#: hiddifypanel/panel/admin/UserAdmin.py:78
+#: hiddifypanel/panel/admin/UserAdmin.py:83
 msgid "Define the user mode. Should the usage reset every month?"
 msgstr "Define the user mode. Should the usage reset every month?"
 
 # | msgid ""
 # | "If the monthly option is enabled, when this number reaches 30, the user "
 # | "usage will be reset (for weekly and daily this number is 7 and 1)"
-#: hiddifypanel/panel/admin/UserAdmin.py:79
+#: hiddifypanel/panel/admin/UserAdmin.py:84
 msgid ""
 "If monthly is enabled, the usage will be reset after 30 days from this date."
 msgstr ""
 "If the monthly option is enabled, when this number reaches 30, the user "
 "usage will be reset (for weekly and daily this number is 7 and 1)"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:80
+#: hiddifypanel/panel/admin/UserAdmin.py:85
 #, fuzzy
 msgid ""
 "From when the user package will be started? Empty for start from first "
@@ -693,18 +703,18 @@ msgstr ""
 "connection"
 
 # | msgid "How many days is this package?"
-#: hiddifypanel/panel/admin/UserAdmin.py:81
+#: hiddifypanel/panel/admin/UserAdmin.py:86
 #, fuzzy
 msgid "How many days this package should be available?"
 msgstr "How many days is this package?"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:174
+#: hiddifypanel/panel/admin/UserAdmin.py:180
 #, fuzzy
 msgid "Package not started yet."
 msgstr "Package not started yet."
 
 # | msgid "Package ends in "
-#: hiddifypanel/panel/admin/UserAdmin.py:177
+#: hiddifypanel/panel/admin/UserAdmin.py:185
 #, fuzzy
 msgid "Remaining: "
 msgstr "Package ends in "
@@ -753,6 +763,21 @@ msgstr "CDN"
 #: hiddifypanel/panel/admin/templates/configfake.html:5
 msgid "Create"
 msgstr "Create"
+
+#: hiddifypanel/panel/admin/templates/configfake.html:5
+#, fuzzy
+msgid "Save & Add More"
+msgstr "Save & Add More"
+
+#: hiddifypanel/panel/admin/templates/configfake.html:5
+#: hiddifypanel/templates/donation.html:14
+msgid "Close"
+msgstr "Close"
+
+#: hiddifypanel/panel/admin/templates/configfake.html:5
+#, fuzzy
+msgid "Back"
+msgstr "Back"
 
 # | msgid "Admin Secret"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1635,7 +1660,7 @@ msgstr ""
 "Welcome to hiddifybot.\n"
 " Please click on the link in the panel page to start or enter your user uuid"
 
-#: hiddifypanel/panel/user/user.py:112
+#: hiddifypanel/panel/user/user.py:115
 msgid "This domain does not exist in the panel!"
 msgstr "This domain does not exist in the panel!"
 
@@ -2574,10 +2599,6 @@ msgstr ""
 "\n"
 "Please contact us at <a href=\"mailto:hiddify@gmail.com\">hiddify@gmail.com</a> if you can help us."
 
-#: hiddifypanel/templates/donation.html:14
-msgid "Close"
-msgstr "Close"
-
 # | msgid "Close"
 #: hiddifypanel/templates/macros.html:28
 #: hiddifypanel/templates/master.html:135
@@ -2755,3 +2776,6 @@ msgstr "Actions"
 # | msgid "Should be a valid UUID"
 #~ msgid "Should be a valid uuid"
 #~ msgstr "Should be a valid UUID"
+
+#~ msgid "Reset package days and usage"
+#~ msgstr "Reset package days and usage"
