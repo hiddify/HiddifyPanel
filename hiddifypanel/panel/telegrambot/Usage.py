@@ -36,9 +36,11 @@ def user_keyboard(uuid):
 def get_usage_msg(uuid):
     with app.app_context():
         user_data = get_common_data(uuid, 'multi')
+
         user = user_data['user']
         expire_rel = user_data['expire_rel']
         reset_day = user_data['reset_day']
+
         msg = f"""{_('Welcome %(user)s', user=user.name if user.name != "default" else "")}\n"""
         msg += f"""{_('user.home.usage.title')} {round(user.current_usage_GB, 3)}GB <b>{_('user.home.usage.from')}</b> {user.usage_limit_GB}GB  {_('user.home.usage.monthly') if user.monthly else ''}\n
         <b>{_('user.home.usage.expire')}</b> {expire_rel}"""
