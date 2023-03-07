@@ -68,9 +68,12 @@ def command_me(message):
 
     text = message.text
     user_uuid = text.split()[1] if len(text.split()) > 1 else None
-    user = User.query.filter(User.uuid == f'{user_uuid}').first()
+    if user_uuid:
+        user = User.query.filter(User.uuid == f'{user_uuid}').first()
 
-    bot.reply_to(message, prepare_me_info(user))
+        bot.reply_to(message, prepare_me_info(user))
+    else:
+        bot.reply_to(message,"Please enter user_uuid")
 
 
 @bot.message_handler(commands=['help'])
@@ -103,15 +106,18 @@ def command_info(message):
     text = message.text
     user_uuid = text.split()[1] if len(text.split()) > 1 else None
     print(user_uuid,text)
-    user = User.query.filter(User.uuid == f'{user_uuid}').first()
-    information = get_common_data(user_uuid, 'multi')
+    if user_uuid:
+        user = User.query.filter(User.uuid == f'{user_uuid}').first()
+        information = get_common_data(user_uuid, 'multi')
 
-    bot.reply_to(message,
-                 _("Your hiddify instance information \n" +
-                   "Domain: {} \n".format(information['domain']) +
-                   "Usage limit: {} GB\n".format(user.usage_limit_GB) +
-                   "Current usage: {} GB\n".format(user.current_usage_GB) +
-                   "Expires at: {} \n".format(information['expire_s']) +
-                   "Remaining days: {} \n".format(information['expire_days']) +
-                   "\n\n Happy using \U0001F389 \U0001F389 \U0001F389 \n"
-                   ))
+        bot.reply_to(message,
+                    _("Your hiddify instance information \n" +
+                    "Domain: {} \n".format(information['domain']) +
+                    "Usage limit: {} GB\n".format(user.usage_limit_GB) +
+                    "Current usage: {} GB\n".format(user.current_usage_GB) +
+                    "Expires at: {} \n".format(information['expire_s']) +
+                    "Remaining days: {} \n".format(information['expire_days']) +
+                    "\n\n Happy using \U0001F389 \U0001F389 \U0001F389 \n"
+                    ))
+    else:
+        bot.reply_to(message,"Please enter user_uuid")
