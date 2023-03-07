@@ -15,6 +15,8 @@ import user_agents
 
 class UserView(FlaskView):
 
+    @route('/old')
+    @route('/old/')
     def index(self):
         
         c=get_common_data(g.user_uuid,mode="")
@@ -34,6 +36,7 @@ class UserView(FlaskView):
 
     @route('/new/')
     @route('/new')
+    @route('/')
     def new(self):
         
         c=get_common_data(g.user_uuid,mode="new")
