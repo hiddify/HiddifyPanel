@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-07 12:10+0100\n"
+"POT-Creation-Date: 2023-03-07 12:39+0100\n"
 "PO-Revision-Date: 2023-03-07 05:10-0600\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
@@ -1567,11 +1567,36 @@ msgstr ""
 "用户使用情况将每 6 分钟更新一次。现在要更新它，请点击<a href=\"%(link)s\" class=\"btn btn-"
 "info\">此处</a>。"
 
-#: hiddifypanel/panel/telegrambot/Usage.py:24
+#: hiddifypanel/panel/telegrambot/Usage.py:21
+#: hiddifypanel/panel/telegrambot/information.py:55
 msgid ""
+"Hooray 🎉 🎉 🎉 \n"
 "Welcome to hiddifybot.\n"
-" Please click on the link in the panel page to start or enter your user "
-"uuid"
+"Start by clicking the link on the panel or entering your UUID."
+msgstr ""
+
+#: hiddifypanel/panel/telegrambot/information.py:20
+msgid ""
+"Dear {}\n"
+"\n"
+"Your hiddify information is\n"
+"UUID: {}\n"
+"Last online date: {}\n"
+"Expire time: {}\n"
+"Usage class: {}\n"
+msgstr ""
+
+#: hiddifypanel/panel/telegrambot/information.py:115
+msgid ""
+"Your hiddify instance information \n"
+"Domain: {} \n"
+"Usage limit: {} GB\n"
+"Current usage: {} GB\n"
+"Expires at: {} \n"
+"Remaining days: {} \n"
+"\n"
+"\n"
+" Happy using 🎉 🎉 🎉 \n"
 msgstr ""
 
 #: hiddifypanel/panel/user/user.py:115
@@ -2696,6 +2721,13 @@ msgstr ""
 # | msgid "Should be a valid UUID"
 #~ msgid "Should be a valid uuid"
 #~ msgstr "应该是一个有效的 UUID"
+
+#~ msgid ""
+#~ "Welcome to hiddifybot.\n"
+#~ " Please click on the link in "
+#~ "the panel page to start or enter"
+#~ " your user uuid"
+#~ msgstr ""
 
 #~ msgid "Reset package days and usage"
 #~ msgstr ""
