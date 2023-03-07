@@ -203,7 +203,6 @@ class UserAdmin(AdminLTEModelView):
         if not re.match("^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$", model.uuid):
             raise ValidationError('Invalid UUID e.g.,'+ str(uuid.uuid4()))
         
-        print(form.reset.__dict__)
         if form.reset_usage.data:
             model.usage_current_GB=0
         if form.reset_days.data:
