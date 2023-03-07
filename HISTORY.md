@@ -1,6 +1,117 @@
 # Changelog
 
 
+## 1.4.0 (2023-03-07)
+
+#### New
+
+* Show usage in user panel. 
+
+#### Fix
+
+* Add some log into bot. 
+
+* Telegram bot. 
+
+#### Other
+
+* Update translation. 
+
+* Merge pull request #7 from ehsanmqn/main. 
+  _Updating the telegram bot commands_
+
+* Merge branch 'main' into main. 
+
+* Text updated. 
+
+* Text updated. 
+
+* Text updated. 
+
+* Text updated. 
+
+* Docs added to telegram commands. 
+
+* Docs added to telegram commands. 
+
+* Doc added to prepare_welcome_message. 
+
+* Doc added to prepare_welcome_message. 
+
+* Doc added to prepare_help_message. 
+
+* Doc added to prepare_me_info. 
+
+* Start command changed to hello. 
+
+* Imports rearranged. 
+
+* Command_me completed. 
+
+* Command_me updated. 
+
+* Command_start updated. 
+
+* Command_start updated. 
+
+* Prepare_me_info added. 
+
+* Function name updated to command_info. 
+
+* Function name updated to command_start. 
+
+* Command_help added. 
+
+* Information bot updated. 
+
+* Information bot added. 
+
+* Information bot added. 
+
+* Useless imports removed. 
+
+* Welcome message updated. 
+
+* Welcome message updated. 
+
+* Imports reorganized. 
+
+* Text formatted according to PEP8. 
+
+* Useless imports removed. 
+
+* Useless lines removed from the update_usage_callback function. 
+
+* Useless lines removed from the get_usage_msg function. 
+
+* Useless lines removed from the send_welcome function. 
+
+* File reformatted according to PEP8. 
+
+* File reorganized. 
+
+* File reorganized. 
+
+* Useless commented get function removed. 
+
+* Useless imports removed. 
+
+* Import moved to top. 
+
+* Import moved to top. 
+
+* Useless comment removed. 
+
+* File reformatted according to PEP8. 
+
+* Imports reorganized for better code review. 
+
+* Useless commented import removed. 
+
+* .vscode removed from the project. 
+
+
+
 ## 1.3.0 (2023-03-07)
 
 #### New
