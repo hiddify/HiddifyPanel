@@ -1,5 +1,5 @@
 
-ss://YWVzLTI1Ni1jZmI6MEAxMjcuMC4wLjE6ODA#{{user.current_usage_GB|round(3)}}GB/{{user.usage_limit_GB}}GB___Remain:{{expire_days}}days 
+ss://YWVzLTI1Ni1jZmI6MEAxMjcuMC4wLjE6ODA#{{user.current_usage_GB|round(3)}}GB/{{user.usage_limit_GB}}GB Remain:{{expire_days}}days 
 
 % for d in domains:
 ####################################
