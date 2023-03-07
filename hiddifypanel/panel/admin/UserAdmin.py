@@ -185,8 +185,9 @@ class UserAdmin(AdminLTEModelView):
             remaining=remaining_days(form._obj)
             msg= _("Remaining: ")+ hiddify.format_timedelta(datetime.timedelta(days=remaining))
             form.reset_days.label.text+=f" ({msg})"
-
-            form.reset_usage.label.text+=f" ({_('user.home.usage.title')} {round(form._obj.current_usage_GB,3)}GB)"
+            usr_usage=f" ({_('user.home.usage.title')} {round(form._obj.current_usage_GB,3)}GB)"
+            form.reset_usage.label.text+=usr_usage
+            form.usage_limit_GB.label.text+=usr_usage
         form.package_days.label.text+=f" ({msg})"
 
     def get_edit_form(self):
