@@ -70,7 +70,7 @@ def init_db():
         print(Child.query.filter(Child.id==0).first())
         db.session.add(Child(unique_id="self",id=0))
         db.session.commit()
-    db_actions={1:_v1,2:_v2,3:_v3,6:_v6,8:_v8,9:_v9,10:_v10,11:_v11,12:_v12,13:_v13,14:_v14,16:_v16,17:_v17}
+    db_actions={1:_v1,2:_v2,3:_v3,6:_v6,8:_v8,9:_v9,10:_v10,11:_v11,12:_v12,13:_v13,14:_v14,16:_v16,17:_v17,18:_v18}
     for ver,db_action in db_actions.items():
         if ver<=db_version:continue
         if start_version==0 and ver==10:continue
@@ -87,6 +87,12 @@ def init_db():
         db.session.add(ParentDomain(domain=f"{external_ip}.sslip.io",show_domains=[]))
     db.session.commit()
     return BoolConfig.query.all()
+
+def _v18():
+    set_hconfig(ConfigEnum.path_trojan,get_random_string())
+    set_hconfig(ConfigEnum.path_vless,get_random_string())
+    set_hconfig(ConfigEnum.path_vmess,get_random_string())
+    set_hconfig(ConfigEnum.path_v2ray,get_random_string())
 
 def _v17():
     for u in User.query.all():
