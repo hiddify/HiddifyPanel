@@ -153,12 +153,14 @@ def get_common_data(user_uuid,mode,no_domain=False,filter_domain=None):
         reset_days=1000
     # print(reset_days,expire_days,reset_days<=expire_days)
     expire_s=int((datetime.date.today()+datetime.timedelta(days=expire_days)-datetime.date(1970, 1, 1)).total_seconds())
+    
+    
     return {
         # 'direct_host':direct_host,
         'user':user,
         'domain':domain,       
         'mode':mode,
-        
+        'fake_ip':datetime.date.today().strftime("20.%y.%m.%d"),
         'usage_limit_b':int(user.usage_limit_GB*1024*1024*1024),
         'usage_current_b':int(user.current_usage_GB*1024*1024*1024),
         'expire_s':expire_s,
