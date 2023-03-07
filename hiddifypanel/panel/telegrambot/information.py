@@ -99,9 +99,10 @@ def command_info(message):
     TelegramBot command "info"
     @param message:
     """
-
+    print(message)
     text = message.text
     user_uuid = text.split()[1] if len(text.split()) > 1 else None
+    print(user_uuid,text)
     user = User.query.filter(User.uuid == f'{user_uuid}').first()
     information = get_common_data(user_uuid, 'multi')
 
