@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-07 12:03+0100\n"
-"PO-Revision-Date: 2023-03-07 05:03-0600\n"
+"POT-Creation-Date: 2023-03-07 12:10+0100\n"
+"PO-Revision-Date: 2023-03-07 05:10-0600\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -647,7 +647,7 @@ msgstr "ماهانه"
 
 #: hiddifypanel/panel/admin/UserAdmin.py:60
 msgid "Mode"
-msgstr "حالت تخصیص حجم"
+msgstr "حالت کاربر"
 
 # | msgid "Current Usage (GB)"
 #: hiddifypanel/panel/admin/UserAdmin.py:61
@@ -696,8 +696,8 @@ msgstr ""
 #: hiddifypanel/panel/admin/UserAdmin.py:83
 msgid "Define the user mode. Should the usage reset every month?"
 msgstr ""
-"حالت تخصیص حجم کاربر را تعریف کنید. (بازه زمانی تخصیص و ریست حجم کاربر را"
-" مشخص کنید: عدم ریست، ماهانه، هفتگی یا روزانه)"
+"حالت کاربر را تعریف کنید. کاربر غیرفعال (disable) یا ریست حجم کاربر را "
+"مشخص کنید: عدم ریست، ماهانه، هفتگی یا روزانه)"
 
 # | msgid ""
 # | "If the monthly option is enabled, when this number reaches 30, the user "
@@ -726,7 +726,7 @@ msgid "Package not started yet."
 msgstr "بسته هنوز شروع نشده است."
 
 # | msgid "Package ends in "
-#: hiddifypanel/panel/admin/UserAdmin.py:185
+#: hiddifypanel/panel/admin/UserAdmin.py:186
 msgid "Remaining: "
 msgstr "زمان پایان بسته:"
 
