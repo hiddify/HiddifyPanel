@@ -5,6 +5,16 @@
 
 #### New
 
+* Hide decoy port setting :D. 
+
+* Speedup user add or remove using renewed api. 
+
+* Speedup xray fire user. 
+
+* Add expire days in subscription link. 
+
+* Add usage to subscription link. 
+
 * Add disable to users. 
 
 * Add telegram bot command for create multiple account. 
@@ -17,6 +27,16 @@
 
 #### Fix
 
+* Add space in subscription link. 
+
+* Log in xray api. 
+
+* Bug in xray api. 
+
+* Bug in update usage. 
+
+* Bug in calculating active users. 
+
 * Bug in cli. 
 
 * Not showing reset time. 
@@ -24,6 +44,14 @@
 * Bug in date. 
 
 * Name in clash. 
+
+#### Other
+
+* Fix exception in remove. 
+
+* Add log in xray api. 
+
+* Update xray log. 
 
 
 
