@@ -1,6 +1,14 @@
 # Changelog
 
 
+## 1.2.2 (2023-03-07)
+
+#### New
+
+* Change the default link. 
+
+
+
 ## 1.2.1 (2023-03-07)
 
 #### New
