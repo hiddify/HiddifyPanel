@@ -6,12 +6,15 @@ from . import bot
 from hiddifypanel.panel.user.user import get_common_data
 
 
+from . import admin
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
     text = message.text
     uuid = text.split()[1] if len(text.split()) > 1 else None
-
     if uuid:
+        if uuid==hconfig(ConfigEnum.admin_secret):
+            admin.start_admin(message)
+            return
         bot.reply_to(message, get_usage_msg(uuid), reply_markup=user_keyboard(uuid))
     else:
         bot.reply_to(message,

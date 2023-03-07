@@ -1,9 +1,125 @@
 # Changelog
 
 
-## (unreleased)
+## 1.3.0 (2023-03-07)
 
 #### New
+
+* Add reset user's package (usage and days) 
+
+#### Changes
+
+* Better displaying how to change user mode. 
+
+
+
+## 1.2.2 (2023-03-07)
+
+#### New
+
+* Change the default link. 
+
+
+
+## 1.2.1 (2023-03-07)
+
+#### New
+
+* New favicon. 
+
+
+
+## 1.2.0 (2023-03-07)
+
+#### New
+
+* Add hour in the fakeip. 
+
+* Add fetch date as ip in the subscription link. 
+
+* Add v2rayng as supported link for android. 
+
+* Hide decoy port setting :D. 
+
+* Speedup user add or remove using renewed api. 
+
+* Speedup xray fire user. 
+
+* Add expire days in subscription link. 
+
+* Add usage to subscription link. 
+
+* Add disable to users. 
+
+* Add telegram bot command for create multiple account. 
+
+* Users expire time will now starts from their first connection. 
+
+#### Changes
+
+* Add all proxies again in the clash config. 
+
+#### Fix
+
+* Add space in subscription link. 
+
+* Log in xray api. 
+
+* Bug in xray api. 
+
+* Bug in update usage. 
+
+* Bug in calculating active users. 
+
+* Bug in cli. 
+
+* Not showing reset time. 
+
+* Bug in date. 
+
+* Name in clash. 
+
+#### Other
+
+* Fix exception in remove. 
+
+* Add log in xray api. 
+
+* Update xray log. 
+
+
+
+## 1.1.2 (2023-03-05)
+
+#### New
+
+* New icon. 
+
+* Change backend uwsgi. 
+
+
+
+## 1.1.1 (2023-03-05)
+
+#### Fix
+
+* Bug in update when one usage used out usage. 
+
+
+
+## 1.1.0 (2023-03-05)
+
+#### New
+
+* Enable tuic and shadowtls for public. 
+
+* Enable tuic for all. 
+
+* Add tuic !!! The fastest protocol with lowest latency. 
+
+* Add alias for telegram. 
+
+* Add support for shadowtls. 
 
 * Make proxies selectable for each domain. 
 
@@ -39,6 +155,30 @@
 
 #### Fix
 
+* Tuic will not shown in normal clash. 
+
+* Change tuic params. 
+
+* Bug in clash config for tuic. 
+
+* Clash config with tuic. 
+
+* Showing tuic only for direct domains. 
+
+* Tuic in proxies. 
+
+* Bug in clash profile. 
+
+* Not displaying green box in update. 
+
+* Db version. 
+
+* Add consistency in changing dbversion. 
+
+* Bug in enabling tuic and shadowtls. 
+
+* Telegram link bug. 
+
 * Hide release commits. 
 
 * Alias name in clash config. 
@@ -52,6 +192,8 @@
 * Bug in showing last day. 
 
 #### Other
+
+* Fix cert error in tuic. 
 
 * Change release log format. 
 

@@ -9,6 +9,7 @@ from hiddifypanel.models import *
 from hiddifypanel.panel.hiddify import flash
 class Dashboard(FlaskView):
     def index(self):
+            from hiddifypanel.panel.telegrambot import bot
             if hconfig(ConfigEnum.is_parent):
                 childs=Child.query.filter(Child.id!=0).all()
                 for c in childs:
@@ -19,7 +20,7 @@ class Dashboard(FlaskView):
                         if d.is_active:
                             c.is_active=True
                 
-                return render_template('parent_dash.html',childs=childs)
+                return render_template('parent_dash.html',childs=childs,bot=bot)
         # try:
             def_user=None if len(User.query.all())>1 else User.query.filter(User.name=='default').first()
             domains=Domain.query.all()
@@ -40,4 +41,4 @@ class Dashboard(FlaskView):
             h24=datetime.datetime.now()-datetime.timedelta(days=1)
             onlines=User.query.filter(User.last_online>h24).count()
             total=User.query.count()
-            return render_template('index.html',onlines=onlines,total_users=total)
+            return render_template('index.html',onlines=onlines,total_users=total,bot=bot)

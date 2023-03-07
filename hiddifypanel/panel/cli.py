@@ -25,8 +25,10 @@ def drop_db():
 
 def all_configs():
     import json
+    valid_users=[u.to_dict() for u in User.query.filter((User.usage_limit_GB>User.current_usage_GB)).all() if is_user_active(u)]
+
     configs={
-        "users": [u.to_dict() for u in User.query.filter((User.usage_limit_GB>User.current_usage_GB)).filter(User.expiry_time>=datetime.date.today()).all()],
+        "users": valid_users,
         "domains": [hiddify.domain_dict(u) for u in Domain.query.all()],
         "parent_domains": [hiddify.parent_domain_dict(u) for u in ParentDomain.query.all()],
         "hconfigs": get_hconfigs()
@@ -102,7 +104,7 @@ def init_app(app):
         if "USER_SECRET" in config:
             secrets=config["USER_SECRET"].split(";")
             for i,s in enumerate(secrets):
-                data.append(User(name=f"default {i}",uuid=uuid.UUID(s),usage_limit_GB=9000,expiry_time=next10year))
+                data.append(User(name=f"default {i}",uuid=uuid.UUID(s),usage_limit_GB=9000,package_days=3650))
 
         if "MAIN_DOMAIN" in config:
             domains=config["MAIN_DOMAIN"].split(";")

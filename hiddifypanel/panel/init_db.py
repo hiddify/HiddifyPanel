@@ -20,6 +20,13 @@ def init_db():
     
     # db.engine.execute(f'ALTER TABLE child ADD COLUMN ip integer')
     try:
+        column_type = User.start_date.type.compile(db.engine.dialect)
+        db.engine.execute(f'ALTER TABLE user ADD COLUMN start_date {column_type}')
+        column_type = User.package_days.type.compile(db.engine.dialect)
+        db.engine.execute(f'ALTER TABLE user ADD COLUMN package_days {column_type}')
+    except:
+        pass
+    try:
         column_type = Child.unique_id.type.compile(db.engine.dialect)
         db.engine.execute(f'ALTER TABLE child ADD COLUMN unique_id {column_type}')
         column_type = Domain.alias.type.compile(db.engine.dialect)
@@ -63,7 +70,7 @@ def init_db():
         print(Child.query.filter(Child.id==0).first())
         db.session.add(Child(unique_id="self",id=0))
         db.session.commit()
-    db_actions={1:_v1,2:_v2,3:_v3,6:_v6,8:_v8,9:_v9,10:_v10,11:_v11,12:_v12,13:_v13,14:_v14}
+    db_actions={1:_v1,2:_v2,3:_v3,6:_v6,8:_v8,9:_v9,10:_v10,11:_v11,12:_v12,13:_v13,14:_v14,16:_v16,17:_v17}
     for ver,db_action in db_actions.items():
         if ver<=db_version:continue
         if start_version==0 and ver==10:continue
@@ -72,14 +79,42 @@ def init_db():
         
         print(f"Updated successfuly db from version {db_version} to {ver}")
         db_version=ver
-        set_hconfig(ConfigEnum.db_version,db_version,commit=False)
         db.session.commit()
+        set_hconfig(ConfigEnum.db_version,db_version,commit=False)
     # 
     if hconfig(ConfigEnum.is_parent) and ParentDomain.query.count()==0:
         external_ip=hiddify.get_ip(4)
         db.session.add(ParentDomain(domain=f"{external_ip}.sslip.io",show_domains=[]))
     db.session.commit()
     return BoolConfig.query.all()
+
+def _v17():
+    for u in User.query.all():
+        if u.expiry_time:
+            if not u.package_days:
+                if not u.last_reset_time:
+                    u.package_days=(u.expiry_time-datetime.date.today()).days
+                    u.start_date=datetime.date.today()
+                else:
+                    u.package_days=(u.expiry_time-u.last_reset_time).days
+                    u.start_date=u.last_reset_time
+            u.expiry_time=None
+            
+            
+
+
+def _v16():
+    try:
+        if BoolConfig.query.filter(BoolConfig.key==ConfigEnum.tuic_enable).count()==0:
+            db.session.add(BoolConfig(key=ConfigEnum.tuic_enable,value=False,child_id=0))
+        if BoolConfig.query.filter(BoolConfig.key==ConfigEnum.shadowtls_enable).count()==0:
+            db.session.add(BoolConfig(key=ConfigEnum.shadowtls_enable,value=False,child_id=0))
+        if StrConfig.query.filter(StrConfig.key==ConfigEnum.shadowtls_fakedomain).count()==0:
+            db.session.add(StrConfig(key=ConfigEnum.shadowtls_fakedomain, value="en.wikipedia.org",child_id=0))
+    except Exception as e:
+        print(e)
+
+        
 
 def _v14():
     db.session.add(StrConfig(key=ConfigEnum.utls,value="chrome",child_id=0))
@@ -118,7 +153,7 @@ def _v1():
         
         data = [
             StrConfig(key=ConfigEnum.db_version,value=1),
-            User(name="default",usage_limit_GB=9000,expiry_time=next10year),
+            User(name="default",usage_limit_GB=9000,package_days=3650),
             Domain(domain=external_ip+".sslip.io",mode=DomainType.direct),
             StrConfig(key=ConfigEnum.admin_secret,value=str(uuid.uuid4())),
             StrConfig(key=ConfigEnum.http_ports,value="80"),

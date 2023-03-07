@@ -18,18 +18,24 @@ from hiddifypanel.panel.hiddify import flash
 from wtforms.fields import StringField
 from flask_bootstrap import SwitchField
 class UserAdmin(AdminLTEModelView):
-    
+    form_extra_fields = {
+        'reset_days': SwitchField(_("Reset package days")),
+        'reset_usage': SwitchField(_("Reset package usage"))
+    }
     list_template = 'model/user_list.html'    
-    form_excluded_columns=['monthly','last_online']
+    form_excluded_columns=['monthly','last_online','expiry_time','last_reset_time','current_usage_GB','start_date']
     # edit_modal=True
     # create_modal=True
     # column_display_pk = True
     # can_export = True
     # form_overrides = dict(monthly=SwitchField)
-    form_overrides = dict(expiry_time=custom_widgets.DaysLeftField,last_reset_time=custom_widgets.LastResetField)
+    form_overrides = dict(start_date=custom_widgets.DaysLeftField)
+
+    # form_overrides = dict(expiry_time=custom_widgets.DaysLeftField,last_reset_time=custom_widgets.LastResetField)
     form_widget_args={
     'current_usage_GB':{'min':'0'}    ,
-    'usage_limit_GB':{'min':'0'}    
+    'usage_limit_GB':{'min':'0'}  ,
+    
     }
     form_args = {
     'uuid': {
@@ -43,7 +49,7 @@ class UserAdmin(AdminLTEModelView):
     # }
     }
     # column_labels={'uuid':_("user.UUID")}
-    # column_filters=["uuid","name","usage_limit_GB",'monthly',"current_usage_GB","expiry_time"]
+    # column_filters=["uuid","name","usage_limit_GB",'monthly',"current_usage_GB","start_date"]
     
     column_labels={
         "Actions":_("actions"),
@@ -53,12 +59,16 @@ class UserAdmin(AdminLTEModelView):
         "monthly":_("Reset every month"),
         "mode":_("Mode"),
         "current_usage_GB":_("user.current_usage_GB"),
+        "start_date":_("Start Date"),
         "expiry_time":_("user.expiry_time"),
         "last_reset_time":_("user.last_reset_time"),
         "uuid":_("user.UUID"),
         "comment":_("Note"),
-        'last_online':_('Last Online')
+        'last_online':_('Last Online'),
+        "package_days":_('Package Days'),
+        
      }
+    can_set_page_size=True
     column_searchable_list=[("uuid"),"name"]
     def search_placeholder(self):
         return f"{_('search')} {_('user.UUID')} {_('user.name')}"
@@ -71,7 +81,9 @@ class UserAdmin(AdminLTEModelView):
         # current_usage_GB="in GB"
         comment=_("Add some text that is only visible to you."),
         mode=_("Define the user mode. Should the usage reset every month?"),
-        last_reset_time=_("If monthly is enabled, the usage will be reset after 30 days from this date.")
+        last_reset_time=_("If monthly is enabled, the usage will be reset after 30 days from this date."),
+        start_date=_("From when the user package will be started? Empty for start from first connection"),
+        package_days=_("How many days this package should be available?")
     )
     # column_editable_list=["usage_limit_GB","current_usage_GB","expiry_time"]
     # form_extra_fields={
@@ -122,12 +134,13 @@ class UserAdmin(AdminLTEModelView):
         """)
 
     def _expire_formatter(view, context, model, name):
-        if not model.expiry_time: return "-"
+        remaining=remaining_days(model)
 
-        diff=(model.expiry_time-datetime.date.today())
+        diff=datetime.timedelta(days=remaining)
+        
         state='success' if diff.days>7 else ('warning' if diff.days>0 else 'danger') 
         formated=hiddify.format_timedelta(diff)
-        return Markup(f"<span class='badge badge-{state}'>{formated}</span>")
+        return Markup(f"<span class='badge badge-{state}'>{'*' if not model.start_date else ''} {formated} </span>")
         # return Markup(f"<span class='badge ltr badge-}'>{days}</span> "+_('days'))
 
     def _online_formatter(view, context, model, name):
@@ -161,16 +174,39 @@ class UserAdmin(AdminLTEModelView):
         
     # def is_accessible(self):
     #     return g.is_admin
-    # def on_form_prefill(self, form, id):
-    #     form.expiry_time=form.expiry_time-datetime.date.today()
+    def on_form_prefill(self, form, id):
+        
+        if not form._obj.start_date:
+            msg= _("Package not started yet.") 
+            # form.reset['class']="d-none"
+            delattr(form,'reset_days')
+            delattr(form,'reset_usage')
+        else:
+            remaining=remaining_days(form._obj)
+            msg= _("Remaining: ")+ hiddify.format_timedelta(datetime.timedelta(days=remaining))
+            form.reset_days.label.text+=f" ({msg})"
+
+            form.reset_usage.label.text+=f" ({_('user.home.usage.title')} {round(form._obj.current_usage_GB,3)}GB)"
+        form.package_days.label.text+=f" ({msg})"
+
+    def get_edit_form(self):
+        form = super().get_edit_form()
+        # print(form.__dict__)
+        # user=User.query.filter(User.uuid==form.uuid).first()
+        # if user and user.start_date:
+        #     form.reset = SwitchField("Reset")
+        return form
     def on_model_change(self, form, model, is_created):
         if len(User.query.all())%4==0:
             flash(('<div id="show-modal-donation"></div>'), ' d-none')
         if not re.match("^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$", model.uuid):
             raise ValidationError('Invalid UUID e.g.,'+ str(uuid.uuid4()))
-        else:
-            super().on_model_change(form, model, is_created)
         
+        print(form.reset.__dict__)
+        if form.reset_usage.data:
+            model.usage_current_GB=0
+        if form.reset_days.data:
+            model.start_date=None  
         # model.expiry_time=datetime.date.today()+datetime.timedelta(days=model.expiry_time)
         
         # if model.current_usage_GB < model.usage_limit_GB:
@@ -178,6 +214,7 @@ class UserAdmin(AdminLTEModelView):
         # else:
         #     xray_api.remove_client(model.uuid)
         # hiddify.flash_config_success()
+
         
     def after_model_change(self,form, model, is_created):
         hiddify.quick_apply_users()

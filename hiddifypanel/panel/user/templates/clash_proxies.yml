@@ -2,26 +2,6 @@
 {{link_maker.get_all_clash_configs(meta_or_normal,domains)}}
 
 
-
-
-% if hconfigs[ConfigEnum.tuic_enabled]
-  - name: tuic
-    server: {{direct_host}}
-    port: hconfigs[ConfigEnum.tuic_port]
-    type: tuic
-    token: {{hconfigs[ConfigEnum.proxy_path]}}
-    heartbeat-interval: 10000
-    alpn: [h3]
-    disable-sni: true
-    reduce-rtt: true
-    request-timeout: 8000
-    udp-relay-mode: native # Available: "native", "quic". Default: "native"
-    congestion-controller: bbr # Available: "cubic", "new_reno", "bbr". Default: "cubic"
-    max-udp-relay-packet-size: 1400
-    fast-open: true
-    skip-cert-verify: false
-% endif
-
 % if False
   - name: "ssr"
     type: ssr

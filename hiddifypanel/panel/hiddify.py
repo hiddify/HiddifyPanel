@@ -116,7 +116,15 @@ def get_available_proxies():
 def quick_apply_users():
     if hconfig(ConfigEnum.is_parent):
         return
-    exec_command("/opt/hiddify-config/install.sh apply_users &")
+    for user in User.query.all():
+        if is_user_active(user):
+            xray_api.add_client(user.uuid)
+        else:
+            xray_api.remove_client(user.uuid)
+
+    return {"status": 'success'}
+
+    # exec_command("/opt/hiddify-config/install.sh apply_users &")
 
 
 def flash_config_success(restart_mode='', domain_changed=True):
@@ -241,10 +249,11 @@ def check_need_reset(old_configs):
 def format_timedelta(delta, add_direction=True,granularity="days"):
     if granularity=="days" and delta.days==0:
         return _("0 - Last day")
+    locale=g.locale if g and hasattr(g, "locale") else hconfig(ConfigEnum.admin_lang)
     if delta.days < 7 or delta.days >= 60:
-        return babel_format_timedelta(delta, threshold=1, add_direction=add_direction, locale=g.locale)
+        return babel_format_timedelta(delta, threshold=1, add_direction=add_direction, locale=locale)
     if delta.days < 60:
-        return babel_format_timedelta(delta, granularity="day", threshold=10, add_direction=add_direction, locale=g.locale)
+        return babel_format_timedelta(delta, granularity="day", threshold=10, add_direction=add_direction, locale=locale)
 
 
 
@@ -371,17 +380,26 @@ def add_or_update_user(commit=True,**user):
         dbuser = User()
         dbuser.uuid = user['uuid']
         db.session.add(dbuser)
+    
+    if 'expiry_time' in user:
+        if 'last_reset_time' in user:
+            last_reset_time = datetime.datetime.strptime(user['last_reset_time'], '%Y-%m-%d')
+        else:
+            last_reset_time = datetime.date.today()
 
+        expiry_time = datetime.datetime.strptime(user['expiry_time'], '%Y-%m-%d')
+        dbuser.start_date=    last_reset_time
+        dbuser.package_days=(expiry_time-last_reset_time).days
+
+    elif 'package_days' in user:
+        dbuser.package_days=user['package_days']
+        dbuser.start_date=datetime.datetime.strptime(user['start_date'], '%Y-%m-%d')
     dbuser.current_usage_GB = user['current_usage_GB']
-    dbuser.expiry_time = datetime.datetime.strptime(
-        user['expiry_time'], '%Y-%m-%d')
-    dbuser.last_reset_time = datetime.datetime.strptime(
-        user['last_reset_time'], '%Y-%m-%d')
+    
     dbuser.usage_limit_GB = user['usage_limit_GB']
     dbuser.name = user['name']
     dbuser.comment = user.get('comment', '')
-    dbuser.mode = user.get('mode', user.get(
-        'monthly', 'false') == 'true')
+    dbuser.mode = user.get('mode', user.get('monthly', 'false') == 'true')
     # dbuser.last_online=user.get('last_online','')
     if commit:
         db.session.commit()
@@ -486,4 +504,6 @@ def set_db_from_json(json_data, override_child_id=None, set_users=True, set_doma
         if 'proxies' in json_data:
             bulk_register_proxies(json_data['proxies'],commit=False,override_child_id=override_child_id)
     db.session.commit()
+
+
 

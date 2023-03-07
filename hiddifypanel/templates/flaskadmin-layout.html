@@ -46,7 +46,14 @@
 
     <script>
 $("#show_domains").multipleSelect({width: '100%'});    
-        
+
+
+$('.form-group:not(:has(.custom-switch))').has('input[type="checkbox"]').each(function() {
+    var label = $(this).find('label').hide().text();
+    $(this).find('input[type="checkbox"]').wrap('<div class="custom-control custom-switch"></div>');
+    $(this).find('input[type="checkbox"]').addClass('custom-control-input');
+    $(this).find('.custom-control').append('<label class="custom-control-label" for="' + $(this).find('input[type="checkbox"]').attr('id') + '">' + label + '</label>');
+  });
     </script>
     
 {% endblock %}
@@ -69,7 +76,7 @@ $("#show_domains").multipleSelect({width: '100%'});
 {% block rtl_styles %}
     {{super()}}
     <style>
-        #expiry_time,#last_reset_time,#current_usage_GB,#usage_limit_GB {
+        #expiry_time,#last_reset_time,#current_usage_GB,#usage_limit_GB,#package_days,#start_date {
             direction: ltr;
             text-align: right;
         }
