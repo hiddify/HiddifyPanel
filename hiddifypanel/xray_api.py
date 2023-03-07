@@ -53,7 +53,7 @@ def remove_client(uuid):
     for t in tags:
         try:
             xray_client.remove_client(t, f'{uuid}@hiddify.com')
-            print(f"Success remove  {uuid} {t} {e}")
+            print(f"Success remove  {uuid} {t}")
         except Exception as e:
             print(f"error in remove  {uuid} {t} {e}" )
             pass        
