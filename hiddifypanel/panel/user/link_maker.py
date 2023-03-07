@@ -99,22 +99,14 @@ def make_proxy(proxy,domain_db):
         base['mode']='Fake'
     elif l3=="http" and not hconfig(ConfigEnum.http_proxy_enable,child_id):
         return None    
+    path={
+        'vless':f'{hconfigs[ConfigEnum.path_vless]}',
+        'trojan': f'{hconfigs[ConfigEnum.path_trojan]}',
+        'vmess':f'{hconfigs[ConfigEnum.path_vmess]}',
+        'v2ray':f'{hconfigs[ConfigEnum.path_v2ray]}'
+    }
 
-    ws_path={'vless':f'/{hconfigs[ConfigEnum.proxy_path]}/vlessws',
-            'trojan': f'/{hconfigs[ConfigEnum.proxy_path]}/trojanws',
-            'vmess':f'/{hconfigs[ConfigEnum.proxy_path]}/vmessws',
-            'v2ray':f'/{hconfigs[ConfigEnum.proxy_path]}/v2ray/'
-    }
-    tcp_path={'vless':f'/{hconfigs[ConfigEnum.proxy_path]}/vltc',
-            'trojan': f'/{hconfigs[ConfigEnum.proxy_path]}/trtc',
-            'vmess':f'/{hconfigs[ConfigEnum.proxy_path]}/vmtc'
-    }
     
-    grpc_service_name={
-        'vless':f'{hconfigs[ConfigEnum.proxy_path]}-vlgrpc',
-        'vmess':f'{hconfigs[ConfigEnum.proxy_path]}-vmgrpc',
-        'trojan': f'{hconfigs[ConfigEnum.proxy_path]}-trgrpc'
-    }    
 
     if base["proto"] in ['v2ray','ss','ssr']:
         base['chipher']='chacha20-ietf-poly1305'
@@ -142,18 +134,18 @@ def make_proxy(proxy,domain_db):
         return {**base, 'transport': 'tcp', 'l3': 'xtls', 'alpn':'h2'}
     if "tcp" in name:
         base['transport']='tcp'
-        base['path']=tcp_path[base["proto"]]
+        base['path']=path[base["proto"]]+'t'
         return base   
     if proxy.transport in ["ws","WS"]:
         base['transport']='ws'
-        base['path']=ws_path[base["proto"]]
+        base['path']=path[base["proto"]]+'w'
         base["host"]=domain
         return base
     
     if proxy.transport == "grpc":
         base['transport']='grpc'
         base['grpc_mode']="multi"
-        base['grpc_service_name']=grpc_service_name[base["proto"]]
+        base['grpc_service_name']=path[base["proto"]]+"g"
         return base
     
     if "h1" in name:
