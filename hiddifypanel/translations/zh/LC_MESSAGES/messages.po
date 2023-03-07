@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-06 17:45+0100\n"
-"PO-Revision-Date: 2023-03-06 10:45-0600\n"
+"POT-Creation-Date: 2023-03-07 10:02+0100\n"
+"PO-Revision-Date: 2023-03-07 03:02-0600\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Generated-By: Babel 2.11.0\n"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/panel/hiddify.py:128
+#: hiddifypanel/panel/hiddify.py:136
 msgid "admin.config.apply_configs"
 msgstr "应用配置"
 
@@ -23,12 +23,12 @@ msgstr "应用配置"
 # | "Configs have been changed successfully. Click %(link)s to apply the
 # configs."
 # | " It may take 2 minutes to apply."
-#: hiddifypanel/panel/hiddify.py:129
+#: hiddifypanel/panel/hiddify.py:137
 msgid "config.validation-success"
 msgstr "配置已成功更改。单击 %(link)s 以应用配置。申请可能需要 2 分钟。"
 
 # | msgid "Configs have been changed successfully."
-#: hiddifypanel/panel/hiddify.py:131
+#: hiddifypanel/panel/hiddify.py:139
 #, fuzzy
 msgid "config.validation-success-no-reset"
 msgstr "配置已成功更改。"
@@ -40,12 +40,12 @@ msgstr "配置已成功更改。"
 #: hiddifypanel/panel/admin/ChildAdmin.py:108
 #: hiddifypanel/panel/admin/DomainAdmin.py:112
 #: hiddifypanel/panel/admin/ParentDomainAdmin.py:108
-#: hiddifypanel/panel/admin/QuickSetup.py:115 hiddifypanel/panel/hiddify.py:226
+#: hiddifypanel/panel/admin/QuickSetup.py:115 hiddifypanel/panel/hiddify.py:234
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr "域名无法解析！你的域有问题"
 
 # | msgid "0 - Last Day"
-#: hiddifypanel/panel/hiddify.py:243
+#: hiddifypanel/panel/hiddify.py:251
 #, fuzzy
 msgid "0 - Last day"
 msgstr "0 - 最后一天"
@@ -1650,31 +1650,44 @@ msgstr "除了 vless"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:47
 #: hiddifypanel/panel/user/templates/home/all-configs.html:60
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:43
+#: hiddifypanel/panel/user/templates/home/android.html:79
 #: hiddifypanel/panel/user/templates/home/ios.html:27
 msgid "user.home.allconfig.link-configs"
 msgstr "订阅链接"
 
+#: hiddifypanel/panel/user/templates/home/android.html:2
+#: hiddifypanel/panel/user/templates/home/ios.html:3
+msgid "Please select one of the following applications:"
+msgstr ""
+
+# | msgid ""
+# | "Hiddify Android <span class=\"badge badge-success\">Recommended</span>"
+#: hiddifypanel/panel/user/templates/home/android.html:5
+msgid "Hiddify Android"
+msgstr ""
+
 # | msgid "Direct Download"
-#: hiddifypanel/panel/user/templates/home/android.html:4
+#: hiddifypanel/panel/user/templates/home/android.html:15
+#: hiddifypanel/panel/user/templates/home/android.html:60
 msgid "download"
 msgstr "直接下载"
 
 # | msgid "Google Play"
-#: hiddifypanel/panel/user/templates/home/android.html:11
+#: hiddifypanel/panel/user/templates/home/android.html:22
+#: hiddifypanel/panel/user/templates/home/android.html:67
 msgid "install from google play"
 msgstr "谷歌播放"
 
 # | msgid ""
 # | "Please install HiddifyAndroid from %(dl_link)s or %(play_link)s. \n"
 # | "\n"
+# | "<!--\n"
 # | "<div class=\"callout callout-danger\">\n"
-# | "    <b>Update HiddifyAndroid to version 0.10</b>\n"
-# | "</div>\n"
-# | "<div class=\"card card-info\">\n"
-# | "    <div class=\"card-header\">\n"
-# | "Is it safe to use HiddifyAndorid?\n"
-# | "    </div>\n"
-# | "    <div class=\"card-body\">\n"
+# | "    <b>Update HiddifyAndroid to version 0.11</b>\n"
+# | "</div>-->\n"
+# | "<details>\n"
+# | "<summary>Why HiddifyAndroid?</summary>\n"
+# | "<div class=\"callout callout-info\">\n"
 # | "        HiddifyAndroid is an open source fork of Clash that supports more
 # protocols.\n"
 # | "        <br>\n"
@@ -1700,7 +1713,9 @@ msgstr "谷歌播放"
 # to add another link for it.\n"
 # | "            \n"
 # | "        </details>\n"
-#: hiddifypanel/panel/user/templates/home/android.html:15
+# | "    </div>\n"
+# | "</details>\n"
+#: hiddifypanel/panel/user/templates/home/android.html:26
 msgid "user.home.android.intro"
 msgstr ""
 "请从 %(dl_link)s 或 %(play_link)s 安装 HiddifyAndroid。\n"
@@ -1747,6 +1762,18 @@ msgstr ""
 "        </详情>\n"
 "    </div>\n"
 "</div>"
+
+#: hiddifypanel/panel/user/templates/home/android.html:72
+msgid "V2rayNG"
+msgstr ""
+
+# | msgid ""
+# | "Please install V2rayNG from %(dl_link)s or %(play_link)s.\n"
+# | "Then copy the link below and paste it in V2rayNG according to the video
+# tutorial."
+#: hiddifypanel/panel/user/templates/home/android.html:75
+msgid "V2rayNG intro"
+msgstr ""
 
 #: hiddifypanel/panel/user/templates/home/base.html:36
 msgid "test"
@@ -2045,10 +2072,6 @@ msgstr ""
 "link\">下载存储</一个>\n"
 "        </div>"
 
-#: hiddifypanel/panel/user/templates/home/ios.html:3
-msgid "Please select one of the following applications:"
-msgstr ""
-
 # | msgid "fairVPN app"
 #: hiddifypanel/panel/user/templates/home/ios.html:19
 msgid "user.home.ios.others.title"
@@ -2198,11 +2221,9 @@ msgstr "Linux"
 # | "<br>\n"
 # | "%(hiddify_desktop_links)s\n"
 # | "\n"
-# | "<div class=\"card card-info\">\n"
-# | "    <div class=\"card-header\">\n"
-# | "Why HiddifyDesktop?\n"
-# | "    </div>\n"
-# | "    <div class=\"card-body\">\n"
+# | "<details>\n"
+# | "<summary>Why HiddifyDesktop?</summary>\n"
+# | "<div class=\"callout callout-info\">\n"
 # | "        HiddifyDesktop is an safe and open source fork of Clash that
 # supports more vless and utls fingerprinting.\n"
 # | "        <br>\n"

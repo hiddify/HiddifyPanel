@@ -1,3 +1,14 @@
+<div class="col">
+{{_("Please select one of the following applications:")}}
+<details  data-widget="collapse">
+    <summary class="callout callout-success">
+    {{_("Hiddify Android")}}
+    </summary>
+    
+          
+
+
+  
 {% macro hiddify_android_dl() -%}
 <div class="btn-group">
     <a href="/{{hconfigs[ConfigEnum.proxy_path]}}/gh/hiddify/HiddifyProxyAndroid/releases/download/v0.11/hiddify-2.6.6-h0.11-meta-alpha-universal-release.apk"
@@ -39,3 +50,33 @@
                                 <p>How to use clash for Android</p>
                             </figcaption>
                         </figure> -->
+
+</details>                        
+
+
+{% macro v2rayng_android_dl() -%}
+<div class="btn-group">
+    <a href="/{{hconfigs[ConfigEnum.proxy_path]}}/gh/2dust/v2rayNG/releases/download/1.7.38/v2rayNG_1.7.38.apk"
+        class="btn btn-primary orig-link">{{_('download')}}</a>
+</div>
+{%- endmacro -%}
+
+{% macro v2rayng_android_google_play() -%}
+ <div class="btn-group">
+    <a href="https://play.google.com/store/apps/details?id=com.v2ray.ang"
+        class="btn btn-primary orig-link">{{_('install from google play')}}</a>
+</div> 
+{%- endmacro -%}
+<details  data-widget="collapse">
+    <summary class="callout callout-success">
+    {{_("V2rayNG")}}
+    </summary>
+
+    {{_('V2rayNG intro',dl_link=hiddify_android_dl(),play_link=hiddify_android_google_play())}}
+
+    <div class="btn-group">
+        <a href="https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/all.txt?name=new_link_{{domain}}-{{mode}}&mode={{mode}}"
+          class="btn btn-light orig-link"> {{_('user.home.allconfig.link-configs')}} </a>
+      </div>
+</details>
+</div>

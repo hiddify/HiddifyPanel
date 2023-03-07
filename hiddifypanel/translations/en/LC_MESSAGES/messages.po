@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-06 17:45+0100\n"
-"PO-Revision-Date: 2023-03-06 10:45-0600\n"
+"POT-Creation-Date: 2023-03-07 10:02+0100\n"
+"PO-Revision-Date: 2023-03-07 03:02-0600\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -15,21 +15,21 @@ msgstr ""
 "Generated-By: Babel 2.11.0\n"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/panel/hiddify.py:128
+#: hiddifypanel/panel/hiddify.py:136
 msgid "admin.config.apply_configs"
 msgstr "Apply Configs"
 
 # | msgid ""
 # | "Configs have been changed successfully. Click %(link)s to apply the "
 # | "configs. It may take 2 minutes to apply."
-#: hiddifypanel/panel/hiddify.py:129
+#: hiddifypanel/panel/hiddify.py:137
 msgid "config.validation-success"
 msgstr ""
 "Configs have been changed successfully. Click %(link)s to apply the configs."
 " It may take 2 minutes to apply."
 
 # | msgid "Configs have been changed successfully."
-#: hiddifypanel/panel/hiddify.py:131
+#: hiddifypanel/panel/hiddify.py:139
 msgid "config.validation-success-no-reset"
 msgstr "Configs have been changed successfully."
 
@@ -40,14 +40,14 @@ msgstr "Configs have been changed successfully."
 #: hiddifypanel/panel/admin/DomainAdmin.py:112
 #: hiddifypanel/panel/admin/ParentDomainAdmin.py:108
 #: hiddifypanel/panel/admin/QuickSetup.py:115
-#: hiddifypanel/panel/hiddify.py:226
+#: hiddifypanel/panel/hiddify.py:234
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr ""
 "Domain can not be resolved! There is a problem in your domain. Please check "
 "your Domain configurations."
 
 # | msgid "0 - Last Day"
-#: hiddifypanel/panel/hiddify.py:243
+#: hiddifypanel/panel/hiddify.py:251
 msgid "0 - Last day"
 msgstr "0 - Last Day"
 
@@ -1731,31 +1731,46 @@ msgstr "Except vless"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:47
 #: hiddifypanel/panel/user/templates/home/all-configs.html:60
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:43
+#: hiddifypanel/panel/user/templates/home/android.html:79
 #: hiddifypanel/panel/user/templates/home/ios.html:27
 msgid "user.home.allconfig.link-configs"
 msgstr "Subscription Link"
 
+#: hiddifypanel/panel/user/templates/home/android.html:2
+#: hiddifypanel/panel/user/templates/home/ios.html:3
+#, fuzzy
+msgid "Please select one of the following applications:"
+msgstr "Please select one of the following applications:"
+
+# | msgid ""
+# | "Hiddify Android <span class=\"badge badge-success\">Recommended</span>"
+#: hiddifypanel/panel/user/templates/home/android.html:5
+#, fuzzy
+msgid "Hiddify Android"
+msgstr "Hiddify Android <span class=\"badge badge-success\">Recommended</span>"
+
 # | msgid "Direct Download"
-#: hiddifypanel/panel/user/templates/home/android.html:4
+#: hiddifypanel/panel/user/templates/home/android.html:15
+#: hiddifypanel/panel/user/templates/home/android.html:60
 msgid "download"
 msgstr "Direct Download"
 
 # | msgid "Google Play"
-#: hiddifypanel/panel/user/templates/home/android.html:11
+#: hiddifypanel/panel/user/templates/home/android.html:22
+#: hiddifypanel/panel/user/templates/home/android.html:67
 msgid "install from google play"
 msgstr "Google Play"
 
 # | msgid ""
 # | "Please install HiddifyAndroid from %(dl_link)s or %(play_link)s. \n"
 # | "\n"
+# | "<!--\n"
 # | "<div class=\"callout callout-danger\">\n"
-# | "    <b>Update HiddifyAndroid to version 0.10</b>\n"
-# | "</div>\n"
-# | "<div class=\"card card-info\">\n"
-# | "    <div class=\"card-header\">\n"
-# | "Is it safe to use HiddifyAndorid?\n"
-# | "    </div>\n"
-# | "    <div class=\"card-body\">\n"
+# | "    <b>Update HiddifyAndroid to version 0.11</b>\n"
+# | "</div>-->\n"
+# | "<details>\n"
+# | "<summary>Why HiddifyAndroid?</summary>\n"
+# | "<div class=\"callout callout-info\">\n"
 # | "        HiddifyAndroid is an open source fork of Clash that supports more
 # "
 # | "protocols.\n"
@@ -1783,20 +1798,21 @@ msgstr "Google Play"
 # | "to add another link for it.\n"
 # | "            \n"
 # | "        </details>\n"
-#: hiddifypanel/panel/user/templates/home/android.html:15
+# | "    </div>\n"
+# | "</details>\n"
+#: hiddifypanel/panel/user/templates/home/android.html:26
 msgid "user.home.android.intro"
 msgstr ""
 "Please install HiddifyAndroid from %(dl_link)s or %(play_link)s. \n"
 "\n"
+"<!--\n"
 "<div class=\"callout callout-danger\">\n"
-"    <b>Update HiddifyAndroid to version 0.10</b>\n"
-"</div>\n"
+"    <b>Update HiddifyAndroid to version 0.11</b>\n"
+"</div>-->\n"
+"<details>\n"
+"<summary>Why HiddifyAndroid?</summary>\n"
+"<div class=\"callout callout-info\">\n"
 "\n"
-"<div class=\"card card-info\">\n"
-"    <div class=\"card-header\">\n"
-"Is it safe to use HiddifyAndorid?\n"
-"    </div>\n"
-"    <div class=\"card-body\">\n"
 "        HiddifyAndroid is an open source fork of Clash that supports more protocols.\n"
 "        <br>\n"
 "        It's source codes exist in\n"
@@ -1823,7 +1839,23 @@ msgstr ""
 "\n"
 "        </details>\n"
 "    </div>\n"
-"</div>\n"
+"</details>\n"
+
+#: hiddifypanel/panel/user/templates/home/android.html:72
+#, fuzzy
+msgid "V2rayNG"
+msgstr "V2rayNG"
+
+# | msgid ""
+# | "Please install V2rayNG from %(dl_link)s or %(play_link)s.\n"
+# | "Then copy the link below and paste it in V2rayNG according to the video "
+# | "tutorial."
+#: hiddifypanel/panel/user/templates/home/android.html:75
+#, fuzzy
+msgid "V2rayNG intro"
+msgstr ""
+"Please install V2rayNG from %(dl_link)s or %(play_link)s.\n"
+"Then copy the link below and paste it in V2rayNG according to the video tutorial."
 
 #: hiddifypanel/panel/user/templates/home/base.html:36
 msgid "test"
@@ -2129,11 +2161,6 @@ msgstr ""
 "\n"
 "        </div>"
 
-#: hiddifypanel/panel/user/templates/home/ios.html:3
-#, fuzzy
-msgid "Please select one of the following applications:"
-msgstr "Please select one of the following applications:"
-
 # | msgid "fairVPN app"
 #: hiddifypanel/panel/user/templates/home/ios.html:19
 msgid "user.home.ios.others.title"
@@ -2287,11 +2314,9 @@ msgstr "Linux"
 # | "<br>\n"
 # | "%(hiddify_desktop_links)s\n"
 # | "\n"
-# | "<div class=\"card card-info\">\n"
-# | "    <div class=\"card-header\">\n"
-# | "Why HiddifyDesktop?\n"
-# | "    </div>\n"
-# | "    <div class=\"card-body\">\n"
+# | "<details>\n"
+# | "<summary>Why HiddifyDesktop?</summary>\n"
+# | "<div class=\"callout callout-info\">\n"
 # | "        HiddifyDesktop is an safe and open source fork of Clash that "
 # | "supports more vless and utls fingerprinting.\n"
 # | "        <br>\n"
@@ -2320,11 +2345,10 @@ msgstr ""
 "<br>\n"
 "%(hiddify_desktop_links)s\n"
 "\n"
-"<div class=\"card card-info\">\n"
-"    <div class=\"card-header\">\n"
-"Why HiddifyDesktop?\n"
-"    </div>\n"
-"    <div class=\"card-body\">\n"
+"<details>\n"
+"<summary>Why HiddifyDesktop?</summary>\n"
+"<div class=\"callout callout-info\">\n"
+"\n"
 "        HiddifyDesktop is an safe and open source fork of Clash that supports more vless and utls fingerprinting.\n"
 "        <br>\n"
 "        Its source codes exist in\n"
@@ -2341,9 +2365,8 @@ msgstr ""
 "            \n"
 "\n"
 "        </details>\n"
-"    </div>\n"
 "</div>\n"
-"\n"
+"        </details>\n"
 "<br>\n"
 "Now, according to your need, you can click on one of the buttons. By viewing the window in your browser, just click on the <b>Open</b> option to automatically add the server link to Hiddify Desktop.\n"
 "\n"
