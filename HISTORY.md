@@ -1,6 +1,14 @@
 # Changelog
 
 
+## 1.5.1 (2023-03-08)
+
+#### Fix
+
+* Bug in editing page. 
+
+
+
 ## 1.5.0 (2023-03-08)
 
 #### New
