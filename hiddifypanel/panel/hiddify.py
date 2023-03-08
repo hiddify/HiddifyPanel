@@ -393,7 +393,10 @@ def add_or_update_user(commit=True,**user):
 
     elif 'package_days' in user:
         dbuser.package_days=user['package_days']
-        dbuser.start_date=datetime.datetime.strptime(user['start_date'], '%Y-%m-%d')
+        if user.get('start_date',''):
+            dbuser.start_date=datetime.datetime.strptime(user['start_date'], '%Y-%m-%d')
+        else:
+            dbuser.start_date=None
     dbuser.current_usage_GB = user['current_usage_GB']
     
     dbuser.usage_limit_GB = user['usage_limit_GB']
