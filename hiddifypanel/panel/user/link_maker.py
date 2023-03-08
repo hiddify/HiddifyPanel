@@ -146,6 +146,7 @@ def make_proxy(proxy,domain_db):
         base['transport']='grpc'
         base['grpc_mode']="multi"
         base['grpc_service_name']=f'{path[base["proto"]]}g'
+        base['path']=f"{base['grpc_service_name']}"
         return base
     
     if "h1" in name:
@@ -161,7 +162,27 @@ def to_link(proxy):
     name_link=proxy["name"]+"_"+proxy['extra_info']
     if proxy['proto']=='vmess':
         vmess_type= 'http' if proxy["transport"]=='tcp' else 'none'
-        return pbase64(f'vmess://{{"v":"2", "ps":"{name_link}", "add":"{proxy["server"]}", "port":"{proxy["port"]}", "id":"{proxy["uuid"]}", "aid":"0", "scy":"auto", "net":"{proxy["transport"]}", "type":"none", "host":"{proxy.get("host","")}", "path":"{proxy["path"] if "path" in proxy else ""}", "tls":"{proxy["l3"]}", "sni":"{proxy["sni"]}","fp":"{proxy["fingerprint"]}"}}')
+        vmess_data={"v":"2",
+                     "ps":"{name_link}", 
+                     "add":f"{proxy['server']}",
+                      "port":"{proxy['port']}",
+                      "id":proxy["uuid"], 
+                      "aid":"0", 
+                      "scy":"auto", 
+                      "net":proxy["transport"], 
+                      "type":proxy['grpc_mode'] if 'grpc_mode' in proxy else "none", 
+                      "host":proxy.get("host",""), 
+                      "path":proxy["path"] if "path" in proxy else "",
+                      "tls":proxy["l3"], 
+                      "sni":proxy["sni"],
+                      "fp":proxy["fingerprint"]
+                      }
+
+
+        if "grpc"==proxy["transport"]:
+            infos+=f'&serviceName={proxy["grpc_service_name"]}&mode={proxy["grpc_mode"]}'
+
+        return pbase64(f'vmess://')
     if proxy['proto']=="ssr":
         baseurl=f'ssr://proxy["encryption"]:{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}'
         return None
