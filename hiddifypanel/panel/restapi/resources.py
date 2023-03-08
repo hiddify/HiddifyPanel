@@ -7,7 +7,6 @@ from urllib.parse import urlparse
 from hiddifypanel.panel import hiddify,hiddify_api
 class AllResource(Resource):
     def get(self):
-        products = User.query.all() or abort(204)
         response= jsonify(
             hiddify.dump_db_to_dict()            
         )

@@ -20,6 +20,12 @@ def drop_db():
 
 
 
+def backup():
+    dbdict=hiddify.dump_db_to_dict()
+    import json,os
+    os.makedirs('backup',exist_ok=True)
+    with open(f'backup/{datetime.datetime.now().replace(":","_").replace(" ","_")}.json','w') as fp:
+        json.dump(dbdict, fp)
 
 
 
@@ -68,7 +74,7 @@ def admin_path():
 def init_app(app):
     # add multiple commands in a bulk
     #print(app.config['SQLALCHEMY_DATABASE_URI'] )
-    for command in [init_db, drop_db, all_configs,update_usage,test,admin_links,admin_path]:
+    for command in [init_db, drop_db, all_configs,update_usage,test,admin_links,admin_path,backup]:
         app.cli.add_command(app.cli.command()(command))
 
     @app.cli.command()
