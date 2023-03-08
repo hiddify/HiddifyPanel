@@ -1,6 +1,24 @@
 # Changelog
 
 
+## 1.6.5 (2023-03-08)
+
+#### New
+
+* Add backup by cli. 
+
+#### Changes
+
+* Better backup file name format. 
+
+#### Fix
+
+* Change subscription link to trojan for better compatibility. 
+
+* When package days is not defined. 
+
+
+
 ## 1.6.0 (2023-03-08)
 
 #### New
