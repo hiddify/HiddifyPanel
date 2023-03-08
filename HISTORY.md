@@ -1,6 +1,20 @@
 # Changelog
 
 
+## 1.5.3 (2023-03-08)
+
+#### Changes
+
+* Add username to bot. 
+
+#### Fix
+
+* Bug in v2rayng link. 
+
+* Bug in launching app if telegram has error. 
+
+
+
 ## 1.5.2 (2023-03-08)
 
 #### Fix
