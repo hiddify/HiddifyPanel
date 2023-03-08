@@ -208,7 +208,7 @@ class UserAdmin(AdminLTEModelView):
         if form.reset_days.data:
             model.start_date=None  
         
-        old_user=User.query(User.id==model.id).first()
+        old_user=User.query.filter(User.id==model.id).first()
         if old_user and old_user.uuid!=model.uuid:
             xray_api.remove_client(old_user.uuid)
 
