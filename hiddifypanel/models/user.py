@@ -68,3 +68,11 @@ def days_to_reset(user):
     if user.start_date:
         return package_mode_dic.get(user.mode,10000)-(datetime.date.today()-user.start_date).days % package_mode_dic.get(user.mode,10000)
     return package_mode_dic.get(user.mode,10000)
+
+
+
+def user_by_uuid(uuid):
+    return User.query.filter(User.uuid==uuid).first()
+
+def user_by_id(id):
+    return User.query.filter(User.id==id).first()
