@@ -135,19 +135,19 @@ def make_proxy(proxy,domain_db):
         return {**base, 'transport': 'tcp', 'l3': 'xtls', 'alpn':'h2'}
     if "tcp" in name:
         base['transport']='tcp'
-        base['path']=f'/{path[base["proto"]]}t'
+        base['path']=f'/{path[base["proto"]]}{hconfigs[ConfigEnum.path_tcp]}'
         return base   
     if proxy.transport in ["ws","WS"]:
         base['transport']='ws'
-        base['path']=f'/{path[base["proto"]]}w'
+        base['path']=f'/{path[base["proto"]]}{hconfigs[ConfigEnum.path_ws]}'
         base["host"]=domain
         return base
     
     if proxy.transport == "grpc":
         base['transport']='grpc'
         base['grpc_mode']="multi"
-        base['grpc_service_name']=f'{path[base["proto"]]}g'
-        base['path']=f"{base['grpc_service_name']}"
+        base['grpc_service_name']=f'{path[base["proto"]]}{hconfigs[ConfigEnum.path_grpc]}'
+        base['path']=base['grpc_service_name']
         return base
     
     if "h1" in name:
@@ -162,6 +162,7 @@ def to_link(proxy):
 
     name_link=proxy["name"]+"_"+proxy['extra_info']
     if proxy['proto']=='vmess':
+        print(proxy)
         vmess_type= 'http' if proxy["transport"]=='tcp' else 'none'
         vmess_data={"v":"2",
                      "ps":name_link, 

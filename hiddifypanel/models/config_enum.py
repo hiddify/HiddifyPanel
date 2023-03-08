@@ -101,6 +101,11 @@ class ConfigEnum(StrEnum):
     path_trojan=auto()
     path_v2ray=auto()#deprecated
     path_ss=auto()
+
+    path_ws=auto()
+    path_tcp=auto()
+    path_grpc=auto()
+
     # cdn_forced_host=auto()
     @classmethod
     def _missing_(cls, value):
@@ -111,6 +116,10 @@ class ConfigEnum(StrEnum):
             self.path_vless:{'category': ConfigCategory.hidden},
             self.path_trojan:{'category': ConfigCategory.hidden},
             self.path_ss:{'category': ConfigCategory.hidden},
+            self.path_tcp:{'category': ConfigCategory.hidden},
+            self.path_ws:{'category': ConfigCategory.hidden},
+            self.path_grpc:{'category': ConfigCategory.hidden},
+            
 
             self.utls: {'category': ConfigCategory.proxies},
             self.package_mode: {'category': ConfigCategory.advanced,'show_in_parent':True},
