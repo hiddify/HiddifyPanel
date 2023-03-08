@@ -68,7 +68,7 @@ class UserAdmin(AdminLTEModelView):
         "package_days":_('Package Days'),
         
      }
-    can_set_page_size=True
+    # can_set_page_size=True
     column_searchable_list=[("uuid"),"name"]
     def search_placeholder(self):
         return f"{_('search')} {_('user.UUID')} {_('user.name')}"
