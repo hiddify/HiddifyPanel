@@ -381,8 +381,8 @@ def add_or_update_user(commit=True,**user):
         dbuser.uuid = user['uuid']
         db.session.add(dbuser)
     
-    if 'expiry_time' in user:
-        if 'last_reset_time' in user:
+    if user.get('expiry_time',''):
+        if user.get('last_reset_time',''):
             last_reset_time = datetime.datetime.strptime(user['last_reset_time'], '%Y-%m-%d')
         else:
             last_reset_time = datetime.date.today()
