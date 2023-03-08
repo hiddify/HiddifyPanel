@@ -24,7 +24,7 @@ def backup():
     dbdict=hiddify.dump_db_to_dict()
     import json,os
     os.makedirs('backup',exist_ok=True)
-    with open(f'backup/{datetime.datetime.now().replace(":","_").replace(" ","_")}.json','w') as fp:
+    with open(f'backup/{datetime.datetime.now().strftime("%Y_%m_%d__%H_%M_%S")}.json','w') as fp:
         json.dump(dbdict, fp)
 
 
