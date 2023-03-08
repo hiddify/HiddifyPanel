@@ -2,6 +2,7 @@ from flask import g
 import enum
 from hiddifypanel.models import User,Domain,BoolConfig,StrConfig,DomainType,ConfigEnum,get_hconfigs,get_hdomains,hconfig,Proxy
 import yaml
+import json
 from hiddifypanel.panel import hiddify
 def all_proxies():
     all_proxies=hiddify.get_available_proxies()
@@ -163,9 +164,9 @@ def to_link(proxy):
     if proxy['proto']=='vmess':
         vmess_type= 'http' if proxy["transport"]=='tcp' else 'none'
         vmess_data={"v":"2",
-                     "ps":"{name_link}", 
-                     "add":f"{proxy['server']}",
-                      "port":"{proxy['port']}",
+                     "ps":name_link, 
+                     "add":proxy['server'],
+                      "port":proxy['port'],
                       "id":proxy["uuid"], 
                       "aid":"0", 
                       "scy":"auto", 
@@ -179,10 +180,8 @@ def to_link(proxy):
                       }
 
 
-        if "grpc"==proxy["transport"]:
-            infos+=f'&serviceName={proxy["grpc_service_name"]}&mode={proxy["grpc_mode"]}'
 
-        return pbase64(f'vmess://')
+        return pbase64(f'vmess://{json.dumps(vmess_data)}')
     if proxy['proto']=="ssr":
         baseurl=f'ssr://proxy["encryption"]:{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}'
         return None
