@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-07 12:39+0100\n"
-"PO-Revision-Date: 2023-03-07 05:10-0600\n"
+"POT-Creation-Date: 2023-03-08 03:17+0100\n"
+"PO-Revision-Date: 2023-03-07 20:17-0600\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -898,6 +898,21 @@ msgstr "共享秘密"
 msgid "config.shared_secret.description"
 msgstr "有些代理目前不支持计费，所以我们必须为他们使用一个秘密。"
 
+# | msgid "UTLS"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.utls.label"
+msgstr "超低速"
+
+# | msgid ""
+# | "This option will simulate different browsers, therefore, GFW can not
+# detect "
+# | "your browsing."
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.utls.description"
+msgstr "这个选项会模拟不同的浏览器，因此，GTW 无法检测到您的浏览。"
+
 # | msgid "Proxies Settings"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.proxies.label"
@@ -1002,18 +1017,6 @@ msgstr "允许 HTTP 连接"
 msgid "config.http_proxy_enable.description"
 msgstr "通过允许，您的用户可以使用未加密的 http 端口连接到系统。 （不建议）"
 
-# | msgid "HTTP ports"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.http_ports.label"
-msgstr "HTTP 端口"
-
-# | msgid ""
-# | "Comma separated integers indicating the ports to use as unencrypted "
-# | "connections (port 80 is required).\n"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.http_ports.description"
-msgstr "逗号分隔的整数，指示用作未加密连接的端口（需要端口 80）。"
-
 # | msgid "HTTP Configuration"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.http.label"
@@ -1036,19 +1039,6 @@ msgstr "允许无效的 SNI"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.allow_invalid_sni.description"
 msgstr "如果您允许无效的 SNI，您可以使用任何域而不是您的原始域来访问代理（不推荐）。"
-
-# | msgid "TLS Ports"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.tls_ports.label"
-msgstr "TLS 端口"
-
-# | msgid ""
-# | "Comma separated integers indicating the ports to use as TLS connection
-# (port"
-# | " 443 is required).\n"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.tls_ports.description"
-msgstr "逗号分隔的整数，指示用作 TLS 连接的端口（需要端口 443）。"
 
 # | msgid "TLS Configuration"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1096,6 +1086,34 @@ msgstr "Shadowsocks 伪TLS"
 msgid "config.ssfaketls.description"
 msgstr "Shadowsocks fake tls 是一个简单的混淆工具，将日期封装在 TLS 数据包中"
 
+# | msgid "Shadow TLS"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.shadowtls_enable.label"
+msgstr "影子TLS"
+
+# | msgid ""
+# | "Shadow TLS is a new protocol with low performance but it can hide the
+# traffic from the government using faketls.\n"
+# | "Please note that for the moment ShadowTLS is not support accounting."
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.shadowtls_enable.description"
+msgstr ""
+"Shadow TLS 是一种性能较低的新协议，但它可以使用 faketls 隐藏来自政府的流量。\n"
+"请注意，目前 ShadowTLS 不支持计费。"
+
+# | msgid "ShadowTLS fakedomain"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.shadowtls_fakedomain.label"
+msgstr "ShadowTLS 假域"
+
+# | msgid ""
+# | "Please use a well known domain in your data center. For example, if you
+# are "
+# | "in azure data center, microsoft-update.com is a good example."
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.shadowtls_fakedomain.description"
+msgstr "请在您的数据中心使用众所周知的域。例如，如果您在 Azure 数据中心，microsoft-update.com 就是一个很好的例子。"
+
 # | msgid "ShadowTLS"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.shadowtls.label"
@@ -1113,6 +1131,16 @@ msgstr ""
 "将真实的 tls 握手暴露给防火墙的代理。\n"
 "\n"
 "它像木马一样工作，但不需要签名证书。防火墙将使用您选择的有效证书看到真正的 tls 握手。"
+
+# | msgid "Enable TUIC"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.tuic_enable.label"
+msgstr "启用 TUIC"
+
+# | msgid "It is a UDP based protocol similar to quic"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.tuic_enable.description"
+msgstr "它是一个类似于 quic 的基于 UDP 的协议"
 
 # | msgid "TUIC"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1192,6 +1220,18 @@ msgstr "电报机器人令牌"
 msgid "config.telegram_bot_token.description"
 msgstr "用于添加未来的电报机器人选项。还没有工作。"
 
+# | msgid "Package Update Mode"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.package_mode.label"
+msgstr "包更新模式"
+
+# | msgid "Specify whether you want released package or developed one."
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.package_mode.description"
+msgstr "指定是要发布包还是开发包。"
+
 # | msgid "Advanced Settings"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
@@ -1207,32 +1247,87 @@ msgstr "高级设置"
 msgid "config.advanced.description"
 msgstr "这部分有一些用户很少需要的配置，专为高级用户设计。"
 
-# | msgid "Package Update Mode"
+# | msgid "Trojan path"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-#, fuzzy
-msgid "config.package_mode.label"
-msgstr "包更新模式"
+msgid "config.path_trojan.label"
+msgstr ""
 
-# | msgid "Specify whether you want released package or developed one."
+# | msgid "For Trojan links"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-#, fuzzy
-msgid "config.package_mode.description"
-msgstr "指定是要发布包还是开发包。"
+msgid "config.path_trojan.description"
+msgstr ""
 
-# | msgid "UTLS"
+# | msgid "VLESS path"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-#, fuzzy
-msgid "config.utls.label"
-msgstr "超低速"
+msgid "config.path_vless.label"
+msgstr ""
+
+# | msgid "For the VLESS path"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.path_vless.description"
+msgstr ""
+
+# | msgid "VMESS route"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.path_vmess.label"
+msgstr ""
+
+# | msgid "For the VMESS link"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.path_vmess.description"
+msgstr ""
+
+# | msgid "Shadowsax path"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.path_ss.label"
+msgstr ""
+
+# | msgid "Shadowsax path in the links"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.path_ss.description"
+msgstr ""
+
+# | msgid "GRPC route"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.path_grpc.label"
+msgstr ""
+
+# | msgid "GRPC path in configs"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.path_grpc.description"
+msgstr ""
+
+# | msgid "TCP configuration path"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.path_tcp.label"
+msgstr ""
+
+# | msgid "For the proxy link"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.path_tcp.description"
+msgstr ""
+
+# | msgid "Path of websocket requests"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.path_ws.label"
+msgstr ""
+
+# | msgid "Specify the WS path"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.path_ws.description"
+msgstr ""
+
+# | msgid "Very Advanced"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.too_advanced.label"
+msgstr ""
 
 # | msgid ""
-# | "This option will simulate different browsers, therefore, GFW can not
-# detect "
-# | "your browsing."
+# | "Specify the proxy path. It is especially important if you use HTTP and
+# VMESS"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-#, fuzzy
-msgid "config.utls.description"
-msgstr "这个选项会模拟不同的浏览器，因此，GTW 无法检测到您的浏览。"
+msgid "config.too_advanced.description"
+msgstr ""
 
 # | msgid "Parent Panel"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1251,6 +1346,31 @@ msgstr ""
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.unique_id.description"
 msgstr ""
+
+# | msgid "TLS Ports"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.tls_ports.label"
+msgstr "TLS 端口"
+
+# | msgid ""
+# | "Comma separated integers indicating the ports to use as TLS connection
+# (port"
+# | " 443 is required).\n"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.tls_ports.description"
+msgstr "逗号分隔的整数，指示用作 TLS 连接的端口（需要端口 443）。"
+
+# | msgid "HTTP ports"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.http_ports.label"
+msgstr "HTTP 端口"
+
+# | msgid ""
+# | "Comma separated integers indicating the ports to use as unencrypted "
+# | "connections (port 80 is required).\n"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.http_ports.description"
+msgstr "逗号分隔的整数，指示用作未加密连接的端口（需要端口 80）。"
 
 # | msgid "KCP ports"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1283,44 +1403,6 @@ msgstr "洪流块配置"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.torrent_block.description"
 msgstr "可以在本节中设置 Torrent 块配置。"
-
-# | msgid "Shadow TLS"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.shadowtls_enable.label"
-msgstr "影子TLS"
-
-# | msgid ""
-# | "Shadow TLS is a new protocol with low performance but it can hide the
-# traffic from the government using faketls.\n"
-# | "Please note that for the moment ShadowTLS is not support accounting."
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.shadowtls_enable.description"
-msgstr ""
-"Shadow TLS 是一种性能较低的新协议，但它可以使用 faketls 隐藏来自政府的流量。\n"
-"请注意，目前 ShadowTLS 不支持计费。"
-
-# | msgid "ShadowTLS fakedomain"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.shadowtls_fakedomain.label"
-msgstr "ShadowTLS 假域"
-
-# | msgid ""
-# | "Please use a well known domain in your data center. For example, if you
-# are "
-# | "in azure data center, microsoft-update.com is a good example."
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.shadowtls_fakedomain.description"
-msgstr "请在您的数据中心使用众所周知的域。例如，如果您在 Azure 数据中心，microsoft-update.com 就是一个很好的例子。"
-
-# | msgid "Enable TUIC"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.tuic_enable.label"
-msgstr "启用 TUIC"
-
-# | msgid "It is a UDP based protocol similar to quic"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.tuic_enable.description"
-msgstr "它是一个类似于 quic 的基于 UDP 的协议"
 
 # | msgid "TUIC ports"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1378,6 +1460,14 @@ msgstr "找不到配置"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.not_found.description"
 msgstr "找不到配置"
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.path_v2ray.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.path_v2ray.description"
+msgstr ""
 
 # | msgid "CPU Usage"
 #: hiddifypanel/panel/admin/templates/index.html:12
@@ -1586,7 +1676,7 @@ msgid ""
 "Usage class: {}\n"
 msgstr ""
 
-#: hiddifypanel/panel/telegrambot/information.py:115
+#: hiddifypanel/panel/telegrambot/information.py:119
 msgid ""
 "Your hiddify instance information \n"
 "Domain: {} \n"
@@ -2570,13 +2660,13 @@ msgid "open"
 msgstr "打开"
 
 # | msgid "Link Copied to clipboard. "
-#: hiddifypanel/templates/master.html:189
+#: hiddifypanel/templates/master.html:190
 msgid "user.home.link.success-copy"
 msgstr "链接已复制到剪贴板。"
 
 # | msgid "Copy to clipboard:  Ctrl+C, Enter"
-#: hiddifypanel/templates/master.html:191
-#: hiddifypanel/templates/master.html:194
+#: hiddifypanel/templates/master.html:192
+#: hiddifypanel/templates/master.html:195
 msgid "user.home.link.manual-copy"
 msgstr "复制到剪贴板：Ctrl+C，回车"
 
