@@ -68,7 +68,7 @@ class UserAdmin(AdminLTEModelView):
         "package_days":_('Package Days'),
         
      }
-    can_set_page_size=True
+    # can_set_page_size=True
     column_searchable_list=[("uuid"),"name"]
     def search_placeholder(self):
         return f"{_('search')} {_('user.UUID')} {_('user.name')}"
@@ -204,10 +204,16 @@ class UserAdmin(AdminLTEModelView):
             raise ValidationError('Invalid UUID e.g.,'+ str(uuid.uuid4()))
         
         if form.reset_usage.data:
-            model.usage_current_GB=0
+            model.current_usage_GB=0
         if form.reset_days.data:
             model.start_date=None  
+        
+        old_user=user_by_id(model.id)
+        if old_user and old_user.uuid!=model.uuid:
+            xray_api.remove_client(old_user.uuid)
+
         # model.expiry_time=datetime.date.today()+datetime.timedelta(days=model.expiry_time)
+        
         
         # if model.current_usage_GB < model.usage_limit_GB:
         #     xray_api.add_client(model.uuid)
@@ -219,4 +225,5 @@ class UserAdmin(AdminLTEModelView):
     def after_model_change(self,form, model, is_created):
         hiddify.quick_apply_users()
     def after_model_delete(self,model):
+        xray_api.remove_client(model.uuid)
         hiddify.quick_apply_users()

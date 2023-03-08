@@ -2,6 +2,7 @@ from flask import g
 import enum
 from hiddifypanel.models import User,Domain,BoolConfig,StrConfig,DomainType,ConfigEnum,get_hconfigs,get_hdomains,hconfig,Proxy
 import yaml
+import json
 from hiddifypanel.panel import hiddify
 def all_proxies():
     all_proxies=hiddify.get_available_proxies()
@@ -103,7 +104,8 @@ def make_proxy(proxy,domain_db):
         'vless':f'{hconfigs[ConfigEnum.path_vless]}',
         'trojan': f'{hconfigs[ConfigEnum.path_trojan]}',
         'vmess':f'{hconfigs[ConfigEnum.path_vmess]}',
-        'v2ray':f'{hconfigs[ConfigEnum.path_v2ray]}'
+        'ss':f'{hconfigs[ConfigEnum.path_ss]}',
+        'v2ray':f'{hconfigs[ConfigEnum.path_ss]}'
     }
 
     
@@ -134,18 +136,19 @@ def make_proxy(proxy,domain_db):
         return {**base, 'transport': 'tcp', 'l3': 'xtls', 'alpn':'h2'}
     if "tcp" in name:
         base['transport']='tcp'
-        base['path']=path[base["proto"]]+'t'
+        base['path']=f'/{path[base["proto"]]}{hconfigs[ConfigEnum.path_tcp]}'
         return base   
     if proxy.transport in ["ws","WS"]:
         base['transport']='ws'
-        base['path']=path[base["proto"]]+'w'
+        base['path']=f'/{path[base["proto"]]}{hconfigs[ConfigEnum.path_ws]}'
         base["host"]=domain
         return base
     
     if proxy.transport == "grpc":
         base['transport']='grpc'
         base['grpc_mode']="multi"
-        base['grpc_service_name']=path[base["proto"]]+"g"
+        base['grpc_service_name']=f'{path[base["proto"]]}{hconfigs[ConfigEnum.path_grpc]}'
+        base['path']=base['grpc_service_name']
         return base
     
     if "h1" in name:
@@ -160,8 +163,27 @@ def to_link(proxy):
 
     name_link=proxy["name"]+"_"+proxy['extra_info']
     if proxy['proto']=='vmess':
+        print(proxy)
         vmess_type= 'http' if proxy["transport"]=='tcp' else 'none'
-        return pbase64(f'vmess://{{"v":"2", "ps":"{name_link}", "add":"{proxy["server"]}", "port":"{proxy["port"]}", "id":"{proxy["uuid"]}", "aid":"0", "scy":"auto", "net":"{proxy["transport"]}", "type":"none", "host":"{proxy.get("host","")}", "path":"{proxy["path"] if "path" in proxy else ""}", "tls":"{proxy["l3"]}", "sni":"{proxy["sni"]}","fp":"{proxy["fingerprint"]}"}}')
+        vmess_data={"v":"2",
+                     "ps":name_link, 
+                     "add":proxy['server'],
+                      "port":proxy['port'],
+                      "id":proxy["uuid"], 
+                      "aid":"0", 
+                      "scy":"auto", 
+                      "net":proxy["transport"], 
+                      "type":proxy['grpc_mode'] if 'grpc_mode' in proxy else "none", 
+                      "host":proxy.get("host",""), 
+                      "path":proxy["path"] if "path" in proxy else "",
+                      "tls":proxy["l3"], 
+                      "sni":proxy["sni"],
+                      "fp":proxy["fingerprint"]
+                      }
+
+
+
+        return pbase64(f'vmess://{json.dumps(vmess_data)}')
     if proxy['proto']=="ssr":
         baseurl=f'ssr://proxy["encryption"]:{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}'
         return None

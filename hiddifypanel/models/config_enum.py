@@ -32,6 +32,7 @@ class ConfigCategory(StrEnum):
     kcp=auto()
     hidden=auto()
     advanced=auto()
+    too_advanced=auto()
 
 class ConfigEnum(StrEnum):
     package_mode=auto()
@@ -99,18 +100,28 @@ class ConfigEnum(StrEnum):
     path_vmess=auto()
     path_vless=auto()
     path_trojan=auto()
-    path_v2ray=auto()
+    path_v2ray=auto()#deprecated
+    path_ss=auto()
+
+    path_ws=auto()
+    path_tcp=auto()
+    path_grpc=auto()
+
     # cdn_forced_host=auto()
     @classmethod
     def _missing_(cls, value):
       return cls.not_found #"key not found"
     def info(self):
         map = {
-            self.path_vmess:{'category': ConfigCategory.hidden},
-            self.path_vless:{'category': ConfigCategory.hidden},
-            self.path_trojan:{'category': ConfigCategory.hidden},
+            self.path_vmess:{'category': ConfigCategory.too_advanced},
+            self.path_vless:{'category': ConfigCategory.too_advanced},
+            self.path_trojan:{'category': ConfigCategory.too_advanced},
+            self.path_ss:{'category': ConfigCategory.hidden},
+            self.path_tcp:{'category': ConfigCategory.too_advanced},
+            self.path_ws:{'category': ConfigCategory.too_advanced},
+            self.path_grpc:{'category': ConfigCategory.too_advanced},
             self.path_v2ray:{'category': ConfigCategory.hidden},
-            
+
             self.utls: {'category': ConfigCategory.proxies},
             self.package_mode: {'category': ConfigCategory.advanced,'show_in_parent':True},
             self.telegram_bot_token: {'category': ConfigCategory.advanced,'show_in_parent':True},
@@ -130,7 +141,7 @@ class ConfigEnum(StrEnum):
             self.kcp_ports: {'category': ConfigCategory.kcp,'apply_mode':'apply'},
             self.kcp_enable: {'category': ConfigCategory.kcp,'type':bool,'apply_mode':'apply'},
             self.decoy_domain: {'category': ConfigCategory.general,'apply_mode':'apply'},
-            self.proxy_path: {'category': ConfigCategory.advanced,'apply_mode':'apply','show_in_parent':True},
+            self.proxy_path: {'category': ConfigCategory.too_advanced,'apply_mode':'apply','show_in_parent':True},
             self.firewall: {'category': ConfigCategory.general,'type':bool,'apply_mode':'apply'},
             self.netdata: {'category': ConfigCategory.general,'type':bool,'apply_mode':'apply'},
             self.http_proxy_enable: {'category': ConfigCategory.http,'type':bool},

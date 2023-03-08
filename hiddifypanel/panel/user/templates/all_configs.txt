@@ -1,5 +1,5 @@
 
-ss://aes-256-cfb:0@{{fake_ip_for_sub_link}}#{{user.current_usage_GB|round(3)}}GB/{{user.usage_limit_GB}}GB Remain:{{expire_days}}days 
+ss://bm9uZTot@{{fake_ip_for_sub_link}}#{{user.current_usage_GB|round(3)}}GB/{{user.usage_limit_GB}}GB%20Remain%3A{{expire_days}}days 
 
 % for d in domains:
 ####################################

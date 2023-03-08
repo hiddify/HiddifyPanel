@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-07 12:39+0100\n"
-"PO-Revision-Date: 2023-03-07 05:10-0600\n"
+"POT-Creation-Date: 2023-03-08 03:17+0100\n"
+"PO-Revision-Date: 2023-03-07 20:17-0600\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -964,6 +964,21 @@ msgstr ""
 "برخی از پروکسی‌ها در حال حاضر محاسبه حجم ترافیک را پشتیبانی نمی‌کنند، این"
 " رمز برای این دسته از پروکسی‌ها استفاده خواهد شد."
 
+# | msgid "UTLS"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.utls.label"
+msgstr "UTLS"
+
+# | msgid ""
+# | "This option will simulate different browsers, therefore, GFW can not
+# detect "
+# | "your browsing."
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.utls.description"
+msgstr ""
+"این گزینه مرورگرهای معروف را شبیه سازی میکند تا فیلترچی نتونه شما رو "
+"شناسایی کنه."
+
 # | msgid "Proxies Settings"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.proxies.label"
@@ -1086,20 +1101,6 @@ msgstr ""
 "با فعال کردن این گزینه، کاربران شما می‌توانند با پورت http  که یک پورت "
 "رمزگذاری نشده است، به سیستم متصل شوند. (توصیه نمیشود.)"
 
-# | msgid "HTTP ports"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.http_ports.label"
-msgstr "پورت‌های HTTP"
-
-# | msgid ""
-# | "Comma separated integers indicating the ports to use as unencrypted "
-# | "connections (port 80 is required).\n"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.http_ports.description"
-msgstr ""
-"پورت هایی که برای استفاده اتصال HTTP هستند. برای ورود چند پورت، آنها را "
-"با کاما از هم جدا کنید.  (پورت 80 اجباری است)."
-
 # | msgid "HTTP Configuration"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.http.label"
@@ -1124,21 +1125,6 @@ msgid "config.allow_invalid_sni.description"
 msgstr ""
 "اگر به SNI نامعتبر اجازه دهید، می‌توانید از هر دامنه‌ای به جای دامنه اصلی"
 " خود برای دسترسی به پروکسی استفاده کنید (توصیه نمی‌شود)."
-
-# | msgid "TLS Ports"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.tls_ports.label"
-msgstr "پورت‌های TLS"
-
-# | msgid ""
-# | "Comma separated integers indicating the ports to use as TLS connection
-# (port"
-# | " 443 is required).\n"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.tls_ports.description"
-msgstr ""
-"پورت هایی که برای استفاده اتصال TLS هستند. برای ورود چند پورت، آنها را با"
-" کاما از هم جدا کنید. (پورت 443 اجباری است)."
 
 # | msgid "TLS Configuration"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1191,6 +1177,39 @@ msgstr ""
 "شادوساکس FakeTLS یک روش مبهم سازی ساده هست که دیتا را در بسته  TLS کپسوله"
 " میکند تا فیلترچی فریب بخورد."
 
+# | msgid "Shadow TLS"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.shadowtls_enable.label"
+msgstr "Shadow TLS"
+
+# | msgid ""
+# | "Shadow TLS is a new protocol with low performance but it can hide the
+# traffic from the government using faketls.\n"
+# | "Please note that for the moment ShadowTLS is not support accounting."
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.shadowtls_enable.description"
+msgstr ""
+"Shadow TLS یک پروتکل جدید با کارایی پایین است اما می تواند با استفاده از "
+"faketls ترافیک را از فیلترچی پنهان کند.\n"
+"لطفاً توجه داشته باشید که در حال حاضر ShadowTLS محاسبه حجم ترافیک را "
+"پشتیبانی نمی‌کند."
+
+# | msgid "ShadowTLS fakedomain"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.shadowtls_fakedomain.label"
+msgstr "دامنه جعلی ShadowTLS"
+
+# | msgid ""
+# | "Please use a well known domain in your data center. For example, if you
+# are "
+# | "in azure data center, microsoft-update.com is a good example."
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.shadowtls_fakedomain.description"
+msgstr ""
+"لطفاً از یک دامنه شناخته شده در دیتاسنتر خود استفاده کنید. به عنوان مثال،"
+" اگر از دیتاسنتر azure استفاده می‌کنید، microsoft-update.com یک نمونه خوب"
+" است."
+
 # | msgid "ShadowTLS"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.shadowtls.label"
@@ -1209,6 +1228,16 @@ msgstr ""
 "\n"
 "مانند تروجان کار می کند اما نیازی به signing certificate ندارد. فایروال، "
 "tls handshake واقعی را با گواهی معتبری که انتخاب می کنید، می‌بیند."
+
+# | msgid "Enable TUIC"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.tuic_enable.label"
+msgstr "فعال کردن TUIC"
+
+# | msgid "It is a UDP based protocol similar to quic"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.tuic_enable.description"
+msgstr "این یک پروتکل مبتنی بر UDP شبیه به quic است"
 
 # | msgid "TUIC"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1289,6 +1318,18 @@ msgstr "توکن ربات تلگرام"
 msgid "config.telegram_bot_token.description"
 msgstr "برای افزودن قابلیت ربات تلگرام. (این بخش در آینده راه‌اندازی خواهد شد.)"
 
+# | msgid "Package Update Mode"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.package_mode.label"
+msgstr "حالت به روز رسانی"
+
+# | msgid "Specify whether you want released package or developed one."
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.package_mode.description"
+msgstr ""
+"در این قسمت می‌توانید مشخص کنید که آیا پکیج منتشر شده را می‌خواهید یا "
+"نسخه توسعه‌یافته آن را."
+
 # | msgid "Advanced Settings"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.advanced.label"
@@ -1304,32 +1345,89 @@ msgstr ""
 "در این قسمت تنظیماتی وجود دارد که مناسب کاربران حرفه‌ای است. درصورتی که "
 "اطلاعی از کارکرد آنها ندارید، لطفا به این تنظیمات دست نزنید."
 
-# | msgid "Package Update Mode"
+# | msgid "Trojan path"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.package_mode.label"
-msgstr "حالت به روز رسانی"
+msgid "config.path_trojan.label"
+msgstr "مسیر تروجان"
 
-# | msgid "Specify whether you want released package or developed one."
+# | msgid "For Trojan links"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.package_mode.description"
-msgstr ""
-"در این قسمت می‌توانید مشخص کنید که آیا پکیج منتشر شده را می‌خواهید یا "
-"نسخه توسعه‌یافته آن را."
+msgid "config.path_trojan.description"
+msgstr "برای لینکهای تروجان"
 
-# | msgid "UTLS"
+# | msgid "VLESS path"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.utls.label"
-msgstr "UTLS"
+msgid "config.path_vless.label"
+msgstr "مسیر VLESS"
+
+# | msgid "For the VLESS path"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.path_vless.description"
+msgstr "برای مسیر VLESS"
+
+# | msgid "VMESS route"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.path_vmess.label"
+msgstr "مسیر VMESS"
+
+# | msgid "For the VMESS link"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.path_vmess.description"
+msgstr "برای لینک VMESS"
+
+# | msgid "Shadowsax path"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.path_ss.label"
+msgstr "مسیر شدوساکس"
+
+# | msgid "Shadowsax path in the links"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.path_ss.description"
+msgstr "مسیر شدوساکس در لینکها"
+
+# | msgid "GRPC route"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.path_grpc.label"
+msgstr "مسیر GRPC"
+
+# | msgid "GRPC path in configs"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.path_grpc.description"
+msgstr "مسیر GRPC در کانفیگ ها"
+
+# | msgid "TCP configuration path"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.path_tcp.label"
+msgstr "مسیر کانفیگ های TCP"
+
+# | msgid "For the proxy link"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.path_tcp.description"
+msgstr "جهت لینک پروکسی"
+
+# | msgid "Path of websocket requests"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.path_ws.label"
+msgstr "مسیر ریکوست های وب سوکت"
+
+# | msgid "Specify the WS path"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.path_ws.description"
+msgstr "مسیر WS را مشخص کنید"
+
+# | msgid "Very Advanced"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.too_advanced.label"
+msgstr "خیلی پیشرفته"
 
 # | msgid ""
-# | "This option will simulate different browsers, therefore, GFW can not
-# detect "
-# | "your browsing."
+# | "Specify the proxy path. It is especially important if you use HTTP and
+# VMESS"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.utls.description"
+msgid "config.too_advanced.description"
 msgstr ""
-"این گزینه مرورگرهای معروف را شبیه سازی میکند تا فیلترچی نتونه شما رو "
-"شناسایی کنه."
+"مسیر پروکسی ها  را مشخص کنید. به ویژه اگه از HTTP و VMESS استفاده میکنید "
+"مهم است"
 
 # | msgid "Parent Panel"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1347,6 +1445,35 @@ msgstr ""
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.unique_id.description"
 msgstr ""
+
+# | msgid "TLS Ports"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.tls_ports.label"
+msgstr "پورت‌های TLS"
+
+# | msgid ""
+# | "Comma separated integers indicating the ports to use as TLS connection
+# (port"
+# | " 443 is required).\n"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.tls_ports.description"
+msgstr ""
+"پورت هایی که برای استفاده اتصال TLS هستند. برای ورود چند پورت، آنها را با"
+" کاما از هم جدا کنید. (پورت 443 اجباری است)."
+
+# | msgid "HTTP ports"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.http_ports.label"
+msgstr "پورت‌های HTTP"
+
+# | msgid ""
+# | "Comma separated integers indicating the ports to use as unencrypted "
+# | "connections (port 80 is required).\n"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.http_ports.description"
+msgstr ""
+"پورت هایی که برای استفاده اتصال HTTP هستند. برای ورود چند پورت، آنها را "
+"با کاما از هم جدا کنید.  (پورت 80 اجباری است)."
 
 # | msgid "KCP ports"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1381,49 +1508,6 @@ msgstr "تنظیمات Torrent Block"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.torrent_block.description"
 msgstr "در این قسمت تنظیمات Torrent Block قابل انجام است."
-
-# | msgid "Shadow TLS"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.shadowtls_enable.label"
-msgstr "Shadow TLS"
-
-# | msgid ""
-# | "Shadow TLS is a new protocol with low performance but it can hide the
-# traffic from the government using faketls.\n"
-# | "Please note that for the moment ShadowTLS is not support accounting."
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.shadowtls_enable.description"
-msgstr ""
-"Shadow TLS یک پروتکل جدید با کارایی پایین است اما می تواند با استفاده از "
-"faketls ترافیک را از فیلترچی پنهان کند.\n"
-"لطفاً توجه داشته باشید که در حال حاضر ShadowTLS محاسبه حجم ترافیک را "
-"پشتیبانی نمی‌کند."
-
-# | msgid "ShadowTLS fakedomain"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.shadowtls_fakedomain.label"
-msgstr "دامنه جعلی ShadowTLS"
-
-# | msgid ""
-# | "Please use a well known domain in your data center. For example, if you
-# are "
-# | "in azure data center, microsoft-update.com is a good example."
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.shadowtls_fakedomain.description"
-msgstr ""
-"لطفاً از یک دامنه شناخته شده در دیتاسنتر خود استفاده کنید. به عنوان مثال،"
-" اگر از دیتاسنتر azure استفاده می‌کنید، microsoft-update.com یک نمونه خوب"
-" است."
-
-# | msgid "Enable TUIC"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.tuic_enable.label"
-msgstr "فعال کردن TUIC"
-
-# | msgid "It is a UDP based protocol similar to quic"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.tuic_enable.description"
-msgstr "این یک پروتکل مبتنی بر UDP شبیه به quic است"
 
 # | msgid "TUIC ports"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1486,6 +1570,14 @@ msgstr "تنظیمات پیدا نشد."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.not_found.description"
 msgstr "تنظیمات پیدا نشد."
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.path_v2ray.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.path_v2ray.description"
+msgstr ""
 
 # | msgid "CPU Usage"
 #: hiddifypanel/panel/admin/templates/index.html:12
@@ -1708,7 +1800,7 @@ msgid ""
 "Usage class: {}\n"
 msgstr ""
 
-#: hiddifypanel/panel/telegrambot/information.py:115
+#: hiddifypanel/panel/telegrambot/information.py:119
 msgid ""
 "Your hiddify instance information \n"
 "Domain: {} \n"
@@ -2724,13 +2816,13 @@ msgid "open"
 msgstr "باز کردن"
 
 # | msgid "Link Copied to clipboard. "
-#: hiddifypanel/templates/master.html:189
+#: hiddifypanel/templates/master.html:190
 msgid "user.home.link.success-copy"
 msgstr "لینک کپی شد. "
 
 # | msgid "Copy to clipboard:  Ctrl+C, Enter"
-#: hiddifypanel/templates/master.html:191
-#: hiddifypanel/templates/master.html:194
+#: hiddifypanel/templates/master.html:192
+#: hiddifypanel/templates/master.html:195
 msgid "user.home.link.manual-copy"
 msgstr "برای کپی کردن به کلیپ‌بورد: دکمه Ctrl+C را بزنید."
 

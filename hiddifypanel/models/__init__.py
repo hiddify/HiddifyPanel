@@ -3,6 +3,6 @@ from .config import StrConfig,BoolConfig,get_hconfigs,get_hdomains,hconfig,hdoma
 
 from .domain import Domain,DomainType,ShowDomain
 from .proxy import Proxy
-from .user import User,UserMode,is_user_active,remaining_days,days_to_reset
+from .user import User,UserMode,is_user_active,remaining_days,days_to_reset,user_by_id,user_by_uuid
 from .child import Child
 from .parent_domain import ParentDomain
