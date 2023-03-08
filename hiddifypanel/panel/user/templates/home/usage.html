@@ -1,5 +1,5 @@
 <div class="card-deck">
-    % set bg_color="danger" if ((user.mode=='disable') or (expire_days<7) or (0.8 < user.current_usage_GB*100/(user.usage_limit_GB+0.000001))) else "info"
+    % set bg_color="danger" if user.mode=='disable' or expire_days<7 or (user.usage_limit_GB*0.8 < user.current_usage_GB) else "info"
 
         <div class="card small-box bg-{{bg_color}} ">
             <div class="card-body">
