@@ -99,7 +99,8 @@ class ConfigEnum(StrEnum):
     path_vmess=auto()
     path_vless=auto()
     path_trojan=auto()
-    path_v2ray=auto()
+    path_v2ray=auto()#deprecated
+    path_ss=auto()
     # cdn_forced_host=auto()
     @classmethod
     def _missing_(cls, value):
@@ -109,8 +110,8 @@ class ConfigEnum(StrEnum):
             self.path_vmess:{'category': ConfigCategory.hidden},
             self.path_vless:{'category': ConfigCategory.hidden},
             self.path_trojan:{'category': ConfigCategory.hidden},
-            self.path_v2ray:{'category': ConfigCategory.hidden},
-            
+            self.path_ss:{'category': ConfigCategory.hidden},
+
             self.utls: {'category': ConfigCategory.proxies},
             self.package_mode: {'category': ConfigCategory.advanced,'show_in_parent':True},
             self.telegram_bot_token: {'category': ConfigCategory.advanced,'show_in_parent':True},

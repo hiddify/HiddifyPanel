@@ -92,7 +92,7 @@ def _v18():
     set_hconfig(ConfigEnum.path_trojan,get_random_string())
     set_hconfig(ConfigEnum.path_vless,get_random_string())
     set_hconfig(ConfigEnum.path_vmess,get_random_string())
-    set_hconfig(ConfigEnum.path_v2ray,get_random_string())
+    set_hconfig(ConfigEnum.path_ss,get_random_string())
 
 def _v17():
     for u in User.query.all():
