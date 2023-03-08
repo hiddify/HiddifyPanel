@@ -1,6 +1,14 @@
 # Changelog
 
 
+## 1.6.6 (2023-03-08)
+
+#### Fix
+
+* Restore backup when no start days. 
+
+
+
 ## 1.6.5 (2023-03-08)
 
 #### New
