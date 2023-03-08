@@ -1,6 +1,58 @@
 # Changelog
 
 
+## 1.5.0 (2023-03-08)
+
+#### New
+
+* Make proxy path to be changed. 
+
+* Add multi remove. 
+
+* New path format. 
+
+* Better displaying usage in ios. 
+
+* Change proxy_path for more security. 
+
+* Add random path for vmess,vless,v2ray,trojan. 
+
+#### Changes
+
+* Change base proxy path to too advanced. 
+
+* V2ray to ss. 
+
+#### Fix
+
+* Bug in import users. 
+
+* Bug in editing users. 
+
+* Domain not showing in the domain section. 
+
+* Red color in user page. 
+
+* Theme bug. 
+
+* Vmess grpc link. 
+
+* Usage. 
+
+* Bug in grpc vmess. 
+
+* Wrong user usage update. 
+
+* Remove old user when change uuid. 
+
+* Bug not disconnecting a user on delete. 
+
+* Add_path. 
+
+* More stable green cadre. 
+
+
+
 ## 1.4.2 (2023-03-07)
 
 #### New
