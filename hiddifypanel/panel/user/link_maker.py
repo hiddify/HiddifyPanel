@@ -239,10 +239,6 @@ def to_clash(proxy,meta_or_normal):
     base["type"]= proxy["proto"]
     base["server"]= proxy["server"]
     base["port"]=proxy["port"]
-    base['tun']={
-      'enable': 'true',
-      'stack': 'system'
-    }
     if proxy["proto"]=="ssr":
         base["cipher"]= proxy["chipher"]
         base["password"]= proxy["uuid"]
