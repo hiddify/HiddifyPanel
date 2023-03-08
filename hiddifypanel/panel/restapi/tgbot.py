@@ -17,21 +17,26 @@ bot = telebot.TeleBot("", parse_mode="HTML", threaded=False, exception_handler=E
 bot.username=''
 
 def register_bot():
-    global bot
-    token = hconfig(ConfigEnum.telegram_bot_token)
-    if token:
-        bot.token = hconfig(ConfigEnum.telegram_bot_token)
-        try:
-            bot.username=bot.username
-        except:
-            pass
-        bot.remove_webhook()
-        time.sleep(0.1)
-        domain = (ParentDomain if hconfig(ConfigEnum.is_parent) else Domain).query.first().domain
-        proxy_path = hconfig(ConfigEnum.proxy_path)
-        user_secret = hconfig(ConfigEnum.admin_secret)
-        bot.set_webhook(url=f"https://{domain}/{proxy_path}/{user_secret}/api/v1/tgbot/")
-        
+    try:
+        global bot
+        token = hconfig(ConfigEnum.telegram_bot_token)
+        if token:
+            bot.token = hconfig(ConfigEnum.telegram_bot_token)
+            try:
+                bot.username=bot.username
+            except:
+                pass
+            bot.remove_webhook()
+            time.sleep(0.1)
+            domain = (ParentDomain if hconfig(ConfigEnum.is_parent) else Domain).query.first().domain
+            proxy_path = hconfig(ConfigEnum.proxy_path)
+            user_secret = hconfig(ConfigEnum.admin_secret)
+            bot.set_webhook(url=f"https://{domain}/{proxy_path}/{user_secret}/api/v1/tgbot/")
+    except Exception as e:
+        print(e)
+        import traceback
+        traceback.print_stack()
+
     
 
 
