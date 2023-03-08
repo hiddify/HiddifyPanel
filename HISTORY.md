@@ -1,6 +1,22 @@
 # Changelog
 
 
+## 1.6.7 (2023-03-08)
+
+#### New
+
+* Revert back to old clash config. 
+
+#### Changes
+
+* Update clash configs. 
+
+#### Fix
+
+* Bug in clash profiles. 
+
+
+
 ## 1.6.6 (2023-03-08)
 
 #### Fix
