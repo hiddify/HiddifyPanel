@@ -92,7 +92,7 @@ proxy-groups:
     url: 'http://cp.cloudflare.com'
     interval: 300
     proxies:
-        - "load-balance"
+        # - "load-balance"
         - auto
         - sequential
         - {{OnProxyIssue}}
