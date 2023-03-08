@@ -1,6 +1,45 @@
 # Changelog
 
 
+## 1.6.0 (2023-03-08)
+
+#### New
+
+* New telegram bot features. 
+
+* Update bot features. 
+
+#### Fix
+
+* Telegrambot. 
+
+#### Other
+
+* Merge branch 'main' of github.com:hiddify/HiddifyPanel. 
+
+* Merge pull request #9 from ehsanmqn/main. 
+  _Cleaning some codes based on PEP8 and adding description to the vital classes_
+
+* Merge branch 'main' into main. 
+
+* Short descriptions added to the classes and functions within the user.py file. 
+
+* Imports rearranged. 
+
+* Useless imports removed. 
+
+* File reorganized according to PEP8 principles for increasing code readability. 
+
+* File reorganized according to PEP8 principles for increasing code readability. 
+
+* Merge remote-tracking branch 'refs/remotes/origin/main' 
+
+* File reorganized according to PEP8 principles for increasing code readability. 
+
+* File reorganized according to PEP8 principles for increasing code readability. 
+
+
+
 ## 1.5.3 (2023-03-08)
 
 #### Changes
