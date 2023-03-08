@@ -1,4 +1,5 @@
 from . import bot
+from . import Usage
 from telebot import types
 from hiddifypanel.models import *
 import datetime
@@ -83,7 +84,8 @@ def create_package(call): # <- passes a CallbackQuery type object to your functi
             for i in range(1,count+1):
                 user=User(package_days=days,usage_limit_GB=gig,name=f"auto {i} {datetime.date.today()}")
                 db.session.add(user)
-                bot.send_message(call.message.chat.id,f"Days: {days}     Limit: {gig}GB     #{i}\n\n https://{domain.domain}/{hconfig(ConfigEnum.proxy_path)}/{user.uuid}/")
+                # bot.send_message(call.message.chat.id,f"Days: {days}     Limit: {gig}GB     #{i}\n\n https://{domain.domain}/{hconfig(ConfigEnum.proxy_path)}/{user.uuid}/",reply_markup=Usage.user_keyboard(user.uuid))
+                bot.send_message(call.message.chat.id,Usage.get_usage_msg(user.uuid),reply_markup=Usage.user_keyboard(user.uuid))
 
             db.session.commit()
             new_text="Finished..."

@@ -38,16 +38,22 @@ def user_keyboard(uuid):
 
 def get_usage_msg(uuid):
     with app.app_context():
+        
         user_data = get_common_data(uuid, 'multi')
         user = user_data['user']
         expire_rel = user_data['expire_rel']
         reset_day = user_data['reset_day']
-        msg = f"""{_('Welcome %(user)s', user=user.name if user.name != "default" else "")}\n"""
-        msg += f"""{_('user.home.usage.title')} {round(user.current_usage_GB, 3)}GB <b>{_('user.home.usage.from')}</b> {user.usage_limit_GB}GB  {_('user.home.usage.monthly') if user.monthly else ''}\n
-        <b>{_('user.home.usage.expire')}</b> {expire_rel}"""
+        domain=(ParentDomain if hconfig(ConfigEnum.is_parent) else Domain).query.first()
+        user_link=f"https://{domain.domain}/{hconfig(ConfigEnum.proxy_path)}/{user.uuid}/"
+        msg = f"""{_('<a href="%(user_link)s"> %(user)s</a>',user_link=user_link ,user=user.name if user.name != "default" else "")}\n\n"""
+         
+        msg += f"""{_('user.home.usage.title')} {round(user.current_usage_GB, 3)}GB <b>{_('user.home.usage.from')}</b> {user.usage_limit_GB}GB  {_('user.home.usage.monthly') if user.monthly else ''}\n"""
+        msg += f"""<b>{_('user.home.usage.expire')}</b> {expire_rel}"""
 
         if reset_day < 500:
             msg += f"""\n<b>{_('Reset Usage Time:')}</b> {reset_day} {_('days')}"""
+       
+        msg+=f"""\n\n <a href="{user_link}">Home Link</a>  -  <a href="https://t.me/{bot.username}?start={user.uuid}">Telegram Bot Link</a>"""
         return msg
 
 
