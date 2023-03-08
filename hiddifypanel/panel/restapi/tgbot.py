@@ -23,7 +23,7 @@ def register_bot():
         if token:
             bot.token = hconfig(ConfigEnum.telegram_bot_token)
             try:
-                bot.username=bot.username
+                bot.username=bot.get_me().username
             except:
                 pass
             bot.remove_webhook()
