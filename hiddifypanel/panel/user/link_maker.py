@@ -104,7 +104,8 @@ def make_proxy(proxy,domain_db):
         'vless':f'{hconfigs[ConfigEnum.path_vless]}',
         'trojan': f'{hconfigs[ConfigEnum.path_trojan]}',
         'vmess':f'{hconfigs[ConfigEnum.path_vmess]}',
-        'v2ray':f'{hconfigs[ConfigEnum.path_v2ray]}'
+        'ss':f'{hconfigs[ConfigEnum.path_ss]}',
+        'v2ray':f'{hconfigs[ConfigEnum.path_ss]}'
     }
 
     
