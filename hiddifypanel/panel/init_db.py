@@ -88,6 +88,13 @@ def init_db():
     db.session.commit()
     return BoolConfig.query.all()
 
+def _v20():
+    fake_domains=['speedtest.net','soft98.ir','www.canva.com']
+    external_ip=hiddify.get_ip(4)
+    for fd in fake_domains:
+        if not Domain.query.filter(Domain.domain==fd).first():
+            db.session.add(Domain(domain=fd,mode='fake',alias='http only',cdn_forced_host=external_ip))
+
 def _v19():
     set_hconfig(ConfigEnum.path_trojan,get_random_string(7,15))
     set_hconfig(ConfigEnum.path_vless,get_random_string(7,15))

@@ -7,6 +7,7 @@ from .DomainAdmin import DomainAdmin
 from .ConfigAdmin import ConfigAdmin
 from .ParentDomainAdmin import ParentDomainAdmin
 from .ProxyAdmin import ProxyAdmin
+from .ProxyDetailsAdmin import ProxyDetailsAdmin
 from .Actions import Actions
 from .Backup import Backup
 from .QuickSetup import QuickSetup
@@ -48,6 +49,8 @@ def init_app(app):
     admin.add_view(UserAdmin(User, db.session))
     admin.add_view(DomainAdmin(Domain, db.session))
     admin.add_view(ParentDomainAdmin(ParentDomain, db.session))
+    admin.add_view(ProxyDetailsAdmin(Proxy, db.session))
+    
     
     
     

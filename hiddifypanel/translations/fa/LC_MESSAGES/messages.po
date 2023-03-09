@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-08 03:17+0100\n"
-"PO-Revision-Date: 2023-03-07 20:17-0600\n"
+"POT-Creation-Date: 2023-03-09 10:46+0100\n"
+"PO-Revision-Date: 2023-03-09 03:46-0600\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -1650,8 +1650,12 @@ msgstr "دامنه"
 msgid "admin.proxy.global_config"
 msgstr "تنظیمات عمومی"
 
+#: hiddifypanel/panel/admin/templates/proxy.html:13
+msgid "Edit Proxy Names"
+msgstr "تغییر نام پروکسی‌ها"
+
 # | msgid "Detailed Configs"
-#: hiddifypanel/panel/admin/templates/proxy.html:21
+#: hiddifypanel/panel/admin/templates/proxy.html:23
 msgid "admin.proxy.detailed_config"
 msgstr "تنظیمات دقیق"
 

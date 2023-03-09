@@ -24,7 +24,7 @@ from flask_admin.form.fields import Select2TagsField,Select2Field
 
 class DomainAdmin(AdminLTEModelView):
     column_hide_backrefs = False
-
+    
     list_template = 'model/domain_list.html'
     # edit_modal = True
     # form_overrides = {'work_with': Select2Field}

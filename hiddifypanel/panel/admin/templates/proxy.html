@@ -10,6 +10,8 @@
 <div class="card">
     <div class="card-header">{{_("admin.proxy.global_config")}}</div>
     <div class="card-body">
+        <a class="btn btn-info" href="{{url_for('flask.proxy.index_view')}}">{{_("Edit Proxy Names")}}</a>
+        
         <div class="row">
             <div class="col-12 global-form">
                 {{render_form(global_config_form,extra_classes="card-columns")}}
