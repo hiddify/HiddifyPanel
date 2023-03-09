@@ -32,7 +32,11 @@ def pbase64(full_str):
 
 
 
-def make_proxy(proxy,domain_db):
+def make_proxy(proxy,domain_db,phttp=80,ptls=443):
+    if type(phttp)==str:
+        phttp=int(phttp) if phttp!="None" else None
+    if type(ptls)==str:
+        ptls=int(ptls) if ptls!="None" else None
     l3=proxy.l3
 
     domain=domain_db.domain
@@ -42,19 +46,24 @@ def make_proxy(proxy,domain_db):
     port=0
     
     if l3 in ["tls"]:
-        port=443
+        port = ptls
     elif l3 =="http":
-        port = 80
+        port = phttp
     elif l3 =="kcp":
         port = hconfig(ConfigEnum.kcp_ports,child_id).split(",")[0]
     elif l3 =="tuic":
         port = hconfig(ConfigEnum.tuic_port,child_id).split(",")[0]
     
+    if not port:return
     name=proxy.name   
-    is_cdn="CDN" in name
+       
+
+    is_cdn="CDN" in proxy.cdn
     if is_cdn and domain_db.mode!=DomainType.cdn:
         return
     if not is_cdn and domain_db.mode==DomainType.cdn:
+        return
+    if l3!='http'  and domain_db.mode==DomainType.fake:
         return
     
     cdn_forced_host= domain_db.cdn_ip or domain_db.domain
@@ -81,13 +90,13 @@ def make_proxy(proxy,domain_db):
     if base["proto"]=="trojan" and l3!="tls":
         return
 
-    if l3=="http" and  "XTLS" in name:
+    if l3=="http" and  "XTLS" in proxy.transport:
         return None
     if l3=="http" and base["proto"] in ["ss","ssr"]:
         return 
     
 
-    if "Fake" in name:
+    if "Fake" in proxy.cdn:
         if not hconfig(ConfigEnum.domain_fronting_domain,child_id):
             return
         if l3=="http" and not hconfig(ConfigEnum.domain_fronting_http_enable,child_id):
@@ -112,7 +121,7 @@ def make_proxy(proxy,domain_db):
 
     if base["proto"] in ['v2ray','ss','ssr']:
         base['chipher']='chacha20-ietf-poly1305'
-        if "shadowtls" not in name:
+        if "shadowtls" not in proxy.transport:
             base['uuid']=f'{hconfig(ConfigEnum.shared_secret,child_id)}'
 
     if base["proto"]=="ssr":
@@ -121,20 +130,20 @@ def make_proxy(proxy,domain_db):
         base["fakedomain"]=hconfigs[ConfigEnum.ssr_fakedomain]
         base["mode"]="FakeTLS"
         return base
-    elif "faketls" in name:
+    elif "faketls" in proxy.transport:
         base['fakedomain']=hconfig(ConfigEnum.ssfaketls_fakedomain,child_id)
         base['mode']='FakeTLS'
         return base
-    elif "shadowtls" in name:
+    elif "shadowtls" in proxy.transport:
         
         base['fakedomain']=hconfig(ConfigEnum.shadowtls_fakedomain,child_id)
         base['mode']='ShadowTLS'
         return base
     
-    if "XTLS" in name:
+    if "XTLS" in proxy.transport:
         base['flow']='xtls-rprx-vision'
         return {**base, 'transport': 'tcp', 'l3': 'xtls', 'alpn':'h2'}
-    if "tcp" in name:
+    if "tcp" in proxy.transport:
         base['transport']='tcp'
         base['path']=f'/{path[base["proto"]]}{hconfigs[ConfigEnum.path_tcp]}'
         return base   
@@ -151,7 +160,7 @@ def make_proxy(proxy,domain_db):
         base['path']=base['grpc_service_name']
         return base
     
-    if "h1" in name:
+    if "h1" in proxy.transport:
         base['transport']= 'tcp'
         base['alpn']='http/1.1'
         return base
@@ -235,8 +244,8 @@ def to_clash(proxy,meta_or_normal):
 
     base={}
     # vmess ws
-    base["name"]= proxy["name"]+" "+proxy['extra_info']
-    base["type"]= proxy["proto"]
+    base["name"]= f"""{proxy["name"]} {proxy['extra_info']} {proxy['port']}"""
+    base["type"]= str(proxy["proto"])
     base["server"]= proxy["server"]
     base["port"]=proxy["port"]
     if proxy["proto"]=="ssr":
@@ -325,11 +334,11 @@ def to_clash(proxy,meta_or_normal):
     
 
 
-def get_all_clash_configs(meta_or_normal,domains):
+def get_all_clash_configs(meta_or_normal,domains,phttp,ptls):
     allp=[]
     for d in domains:
      for type in all_proxies():
-        pinfo=make_proxy(type,d)
+        pinfo=make_proxy(type,d,phttp=phttp,ptls=ptls)
         if pinfo!=None:
             clash=to_clash(pinfo,meta_or_normal)
             if clash:

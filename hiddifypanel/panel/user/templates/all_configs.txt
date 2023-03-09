@@ -1,12 +1,16 @@
 
 trojan://1@{{fake_ip_for_sub_link}}#{{user.current_usage_GB|round(3)}}GB/{{user.usage_limit_GB}}GB%20Remain%3A{{expire_days}}days 
 
-% for d in domains:
+%for d in domains
+%for t in ['http','tls']
+%for port in hconfigs[ConfigEnum.http_ports if t=='http' else ConfigEnum.tls_ports].split(',')
+%set phttp=port if t=='http' else None
+%set ptls=port if t=='tls' else None
 ####################################
-## {{d.mode}}  {{d.domain}}  
+## {{d.mode}}  {{d.domain}}  {{t}}:{{port}}
 ####################################
 % for type in link_maker.all_proxies()
-% set pinfo=link_maker.make_proxy(type,d)
+% set pinfo=link_maker.make_proxy(type,d,phttp=phttp,ptls=ptls)
 % if pinfo!=None
 % set link=link_maker.to_link(pinfo)
 % if link!=None
@@ -16,7 +20,8 @@ trojan://1@{{fake_ip_for_sub_link}}#{{user.current_usage_GB|round(3)}}GB/{{user.
 %endif
 %endif
 % endfor
-
+% endfor
+% endfor
 {{''}}
 
 

@@ -10,7 +10,7 @@ external-controller: 127.0.0.1:9090
 # ipv6: false
 ipv6: true
 % if meta_or_normal=='meta'
-global-client-fingerprint: {{hconfig(ConfigEnum.utls)}}
+global-client-fingerprint: {{hconfigs[ConfigEnum.utls]}}
 % endif
 mode: rule
 dns:
@@ -52,7 +52,12 @@ proxy-groups:
       - automatic
       - sequential 
     use:
-      - all_proxies
+      %for phttp in hconfigs[ConfigEnum.http_ports].split(',')
+      - all_proxies_{{phttp}}
+      %endfor
+      %for ptls in hconfigs[ConfigEnum.tls_ports].split(',')
+      - all_proxies_{{ptls}}
+      %endfor
     type: select
 
 
@@ -82,12 +87,22 @@ proxy-groups:
     interval: 300
     proxies:
     use:
-      - all_proxies   
+      %for phttp in hconfigs[ConfigEnum.http_ports].split(',')
+      - all_proxies_{{phttp}}
+      %endfor
+      %for ptls in hconfigs[ConfigEnum.tls_ports].split(',')
+      - all_proxies_{{ptls}}
+      %endfor
 
   - name: auto
     proxies:
     use:
-      - all_proxies
+      %for phttp in hconfigs[ConfigEnum.http_ports].split(',')
+      - all_proxies_{{phttp}}
+      %endfor
+      %for ptls in hconfigs[ConfigEnum.tls_ports].split(',')
+      - all_proxies_{{ptls}}
+      %endfor
 
     type: url-test
     url: http://cp.cloudflare.com
@@ -95,20 +110,34 @@ proxy-groups:
     tolerance: 150
     lazy: true
 
+
      
+%if hconfigs[ConfigEnum.http_proxy_enable]
+%for phttp in hconfigs[ConfigEnum.http_ports].split(',')
+{{link_maker.get_all_clash_configs(meta_or_normal,domains,phttp=phttp,ptls=None)}}
+%endfor
+%endif
 
-{{link_maker.get_all_clash_configs(meta_or_normal,domains)}}
-
+%for ptls in hconfigs[ConfigEnum.tls_ports].split(',')
+{{link_maker.get_all_clash_configs(meta_or_normal,domains,phttp=None,ptls=ptls)}}
+%endfor
 proxy-providers:
-  all_proxies:
+
+  %for t in ['http','tls']
+  %for port in hconfigs[ConfigEnum.http_ports if t=='http' else ConfigEnum.tls_ports].split(',')
+  %set phttp=port if t=='http' else None
+  %set ptls=port if t=='tls' else None
+  all_proxies_{{port}}:
     type: http
-    url: "https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{(user.uuid)}}/clash/{{meta_or_normal}}/proxies.yml?mode={{mode}}&{{hash}}"
-    path: {{domain}}/{{(user.uuid)}}-{{meta_or_normal}}-proxies{{hash}}.yaml
+    url: "https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{(user.uuid)}}/clash/{{meta_or_normal}}/proxies.yml?mode={{mode}}&ptls={{ptls}}&phttp={{phttp}}&{{hash}}"
+    # path: {{domain}}/{{(user.uuid)}}-{{meta_or_normal}}-{{phttp}}-{{ptls}}-proxies{{hash}}.yaml
+    path: {{domain}}/{{phttp}}-{{ptls}}-{{hash}}.yaml
     health-check:
       enable: true
       interval: 600
       url: http://www.gstatic.com/generate_204    
-  
+  %endfor
+  %endfor
 rule-providers:
 
   blocked:
