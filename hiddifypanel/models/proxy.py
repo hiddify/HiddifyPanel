@@ -17,7 +17,7 @@ from enum import auto
 from strenum import StrEnum
 
 
-class ProxyTran/sport(StrEnum):
+class ProxyTransport(StrEnum):
     grpc=auto()
     XTLS=auto()
     faketls=auto()
