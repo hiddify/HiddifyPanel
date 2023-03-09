@@ -1,6 +1,14 @@
 # Changelog
 
 
+## 1.6.8 (2023-03-09)
+
+#### Fix
+
+* Bug in clash config. 
+
+
+
 ## 1.6.7 (2023-03-08)
 
 #### New
