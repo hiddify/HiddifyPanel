@@ -101,7 +101,7 @@ def _v20():
 
         for fd in fake_domains:
             if not Domain.query.filter(Domain.domain==fd).first():
-                db.session.add(Domain(domain=fd,mode='fake',alias='moved from domain fronting',cdn_forced_host=direct_host))    
+                db.session.add(Domain(domain=fd,mode='fake',alias='moved from domain fronting',cdn_ip=direct_host))    
 
 def _v19():
     set_hconfig(ConfigEnum.path_trojan,get_random_string(7,15))
