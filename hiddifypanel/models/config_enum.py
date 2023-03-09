@@ -136,8 +136,8 @@ class ConfigEnum(StrEnum):
             self.admin_secret: {'category': ConfigCategory.admin,'show_in_parent':True},
             self.lang: {'category': ConfigCategory.branding,'show_in_parent':True},
             self.admin_lang: {'category': ConfigCategory.admin,'show_in_parent':True},
-            self.tls_ports: {'category': ConfigCategory.hidden,'apply_mode':'apply'},#tls
-            self.http_ports: {'category': ConfigCategory.hidden,'apply_mode':'apply'},#http
+            self.tls_ports: {'category': ConfigCategory.tls,'apply_mode':'apply'},#tls
+            self.http_ports: {'category': ConfigCategory.http,'apply_mode':'apply'},#http
             self.kcp_ports: {'category': ConfigCategory.kcp,'apply_mode':'apply'},
             self.kcp_enable: {'category': ConfigCategory.kcp,'type':bool,'apply_mode':'apply'},
             self.decoy_domain: {'category': ConfigCategory.general,'apply_mode':'apply'},
