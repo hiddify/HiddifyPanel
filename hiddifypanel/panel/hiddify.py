@@ -124,7 +124,7 @@ def quick_apply_users():
 
     return {"status": 'success'}
 
-    # exec_command("/opt/hiddify-config/install.sh apply_users &")
+    exec_command("/opt/hiddify-config/install.sh apply_users &")
 
 
 def flash_config_success(restart_mode='', domain_changed=True):
