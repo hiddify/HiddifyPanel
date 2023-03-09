@@ -254,7 +254,7 @@ def to_clash(proxy,meta_or_normal):
     base["type"]= str(proxy["proto"])
     base["server"]= proxy["server"]
     base["port"]=proxy["port"]
-    base['alpn']=[proxy['alpn'].split(',')]
+    base['alpn']=proxy['alpn'].split(',')
     if proxy["proto"]=="ssr":
         base["cipher"]= proxy["chipher"]
         base["password"]= proxy["uuid"]
