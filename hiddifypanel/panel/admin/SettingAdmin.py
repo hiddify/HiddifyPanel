@@ -148,7 +148,7 @@ def get_config_form():
             elif c.key==ConfigEnum.package_mode:
                 field=wtf.fields.SelectField(_(f"config.{c.key}.label"),choices=[("release",_("Release")),("develop",_("Develop"))],description=_(f"config.{c.key}.description"),default=hconfig(c.key))
             elif c.key==ConfigEnum.utls:
-                field=wtf.fields.SelectField(_(f"config.{c.key}.label"),choices=[("chrome","Chrome"),("android","Android"),("safari","Safari"),("firefox","Firefox")],description=_(f"config.{c.key}.description"),default=hconfig(c.key))
+                field=wtf.fields.SelectField(_(f"config.{c.key}.label"),choices=[("none","None"),("chrome","Chrome"),("edge","Edge"),("ios","iOS"),("android","Android"),("safari","Safari"),("firefox","Firefox"),('random','random'),('randomized','randomized')],description=_(f"config.{c.key}.description"),default=hconfig(c.key))
             elif c.key==ConfigEnum.telegram_lib:
                 # if hconfig(ConfigEnum.telegram_lib)=='python':
                 #     continue6
