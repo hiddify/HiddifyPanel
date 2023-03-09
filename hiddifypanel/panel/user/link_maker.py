@@ -352,15 +352,17 @@ def to_clash(proxy,meta_or_normal):
 
 
 def get_all_clash_configs(meta_or_normal,domains):
+
+
+ allp=[]
+ for d in domains:
+  hconfigs=get_hconfigs(d.child_id)
   for t in (['http','tls'] if hconfigs[ConfigEnum.http_proxy_enable] else ['tls']):
    for port in hconfigs[ConfigEnum.http_ports if t=='http' else ConfigEnum.tls_ports].split(','):
     phttp=port if t=='http' else None
     ptls=port if t=='tls' else None
 
-
-    allp=[]
-    for d in domains:
-     for type in all_proxies():
+    for type in all_proxies():
         pinfo=make_proxy(type,d,phttp=phttp,ptls=ptls)
         if pinfo!=None:
             clash=to_clash(pinfo,meta_or_normal)
