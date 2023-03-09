@@ -1,7 +1,7 @@
 from flask_admin.contrib import sqla
 from hiddifypanel.panel.database import db
 from wtforms.validators import Regexp
-from hiddifypanel.models import User, Domain, DomainType, StrConfig, ConfigEnum, get_hconfigs,ShowDomain
+from hiddifypanel.models import *
 from wtforms.validators import Regexp, ValidationError
 from .adminlte import AdminLTEModelView
 from flask_babelex import gettext as __
