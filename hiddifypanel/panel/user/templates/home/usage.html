@@ -33,7 +33,7 @@
         </div>
             
         % if hconfig(ConfigEnum.telegram_bot_token)
-            <a href="https://t.me/{{bot.username}}?start={{user.uuid}}" class="card-footer">
+            <a href="tg://resolve?domain={{bot.username}}&start={{user.uuid}}" class="card-footer">
                 <i class="fa-brands fa-telegram"></i> {{_('View in Telegram')}}        
             </a>
             %else
