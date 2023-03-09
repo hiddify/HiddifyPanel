@@ -71,7 +71,7 @@ def init_db():
         print(Child.query.filter(Child.id==0).first())
         db.session.add(Child(unique_id="self",id=0))
         db.session.commit()
-    db_actions={1:_v1,2:_v2,3:_v3,6:_v6,8:_v8,9:_v9,10:_v10,11:_v11,12:_v12,13:_v13,14:_v14,16:_v16,17:_v17,19:_v19}
+    db_actions={1:_v1,2:_v2,3:_v3,6:_v6,8:_v8,9:_v9,10:_v10,11:_v11,12:_v12,13:_v13,14:_v14,16:_v16,17:_v17,19:_v19,20:_v20}
     for ver,db_action in db_actions.items():
         if ver<=db_version:continue
         if start_version==0 and ver==10:continue
@@ -90,11 +90,18 @@ def init_db():
     return BoolConfig.query.all()
 
 def _v20():
-    fake_domains=['speedtest.net','soft98.ir','www.canva.com']
-    external_ip=hiddify.get_ip(4)
-    for fd in fake_domains:
-        if not Domain.query.filter(Domain.domain==fd).first():
-            db.session.add(Domain(domain=fd,mode='fake',alias='http only',cdn_forced_host=external_ip))
+    if hconfig(ConfigEnum.domain_fronting_domain):
+        fake_domains=[hconfig(ConfigEnum.domain_fronting_domain)]
+        
+        direct_domain=Domain.query.all().filter(Domain.mode in [DomainType.direct,DomainType.relay]).first()
+        if direct_domain:
+            direct_host=direct_domain.domain
+        else:
+            direct_host=hiddify.get_ip(4)
+
+        for fd in fake_domains:
+            if not Domain.query.filter(Domain.domain==fd).first():
+                db.session.add(Domain(domain=fd,mode='fake',alias='moved from domain fronting',cdn_forced_host=direct_host))    
 
 def _v19():
     set_hconfig(ConfigEnum.path_trojan,get_random_string(7,15))
@@ -224,7 +231,10 @@ def _v1():
 
             *get_proxy_rows_v1()
         ]
-
+        fake_domains=['speedtest.net','soft98.ir','www.canva.com']
+        for fd in fake_domains:
+            if not Domain.query.filter(Domain.domain==fd).first():
+                db.session.add(Domain(domain=fd,mode='fake',alias='http only',cdn_forced_host=external_ip))
         # for c in ConfigEnum:
         #     if c in [d.key for d in data if type(d) in [BoolConfig,StrConfig]]:
         #         continue
