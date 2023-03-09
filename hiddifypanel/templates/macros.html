@@ -51,7 +51,7 @@
 
 {% macro render_nav_item(endpoint, text, _badge='', _use_li=False,extra_class="") %}
     {% set active = True if request.endpoint and request.endpoint == endpoint else False %}
-    {% set url = endpoint if endpoint.startswith('http') else url_for(endpoint, **kwargs) %}
+    {% set url = endpoint if "://" in endpoint else url_for(endpoint, **kwargs) %}
     {% if _use_li %}<li class="nav-item">{% endif %}
     <a class="{{extra_class}} {% if not _use_li %}nav-item {% endif %}nav-link{% if active %} active" aria-current="page{% endif %}"
        href="{{ url }}">
