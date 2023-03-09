@@ -1,5 +1,5 @@
 
-trojan://1@{{fake_ip_for_sub_link}}#{{user.current_usage_GB|round(3)}}GB/{{user.usage_limit_GB}}GB%20Remain%3A{{expire_days}}days 
+trojan://1@{{fake_ip_for_sub_link}}#{{user.current_usage_GB|round(3)}}/{{user.usage_limit_GB}}GB_Remain:{{expire_days}}days 
 
 %for d in domains
 %for t in (['http','tls'] if hconfigs[ConfigEnum.http_proxy_enable] else ['tls'])
