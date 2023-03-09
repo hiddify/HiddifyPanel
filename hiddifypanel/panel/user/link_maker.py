@@ -185,7 +185,7 @@ def to_link(proxy):
                       "port":proxy['port'],
                       "id":proxy["uuid"], 
                       "aid":"0", 
-                      "scy":"auto", 
+                      "scy":"chacha20-poly1305", 
                       "net":proxy["transport"], 
                       "type":vmess_type,
                       "host":proxy.get("host",""), 
