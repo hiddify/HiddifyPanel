@@ -112,16 +112,8 @@ proxy-groups:
 
 
      
-%if hconfigs[ConfigEnum.http_proxy_enable]
-%for phttp in hconfigs[ConfigEnum.http_ports].split(',')
-{{link_maker.get_all_clash_configs(meta_or_normal,domains,phttp=phttp,ptls=None)}}
-%endfor
-%endif
+{{link_maker.get_all_clash_configs(meta_or_normal,domains)}}
 
-%for ptls in hconfigs[ConfigEnum.tls_ports].split(',')
-{{link_maker.get_all_clash_configs(meta_or_normal,domains,phttp=None,ptls=ptls)}}
-%endfor
-proxy-providers:
 
   %for t in (['http','tls'] if hconfigs[ConfigEnum.http_proxy_enable] else ['tls'])
   %for port in hconfigs[ConfigEnum.http_ports if t=='http' else ConfigEnum.tls_ports].split(',')
