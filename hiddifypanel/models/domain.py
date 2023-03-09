@@ -46,3 +46,7 @@ class Domain(db.Model, SerializerMixin):
                                 )
     def __repr__(self):
         return f'{self.domain}'
+
+
+def get_domain(domain):
+    return Domain.query.filter(Domain.domain==model.domain).first()
