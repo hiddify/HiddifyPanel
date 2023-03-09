@@ -49,4 +49,4 @@ class Domain(db.Model, SerializerMixin):
 
 
 def get_domain(domain):
-    return Domain.query.filter(Domain.domain==model.domain).first()
+    return Domain.query.filter(Domain.domain==domain).first()
