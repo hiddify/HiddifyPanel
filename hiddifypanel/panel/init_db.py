@@ -20,6 +20,7 @@ def init_db():
     
     # db.engine.execute(f'ALTER TABLE child ADD COLUMN ip integer')
     try:
+        db.engine.execute(f'update proxy set transport="WS" where transport = "ws"')
         db.engine.execute(f'DELETE from proxy where transport = "h1"')
         column_type = User.start_date.type.compile(db.engine.dialect)
         db.engine.execute(f'ALTER TABLE user ADD COLUMN start_date {column_type}')
