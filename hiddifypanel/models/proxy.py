@@ -17,12 +17,12 @@ from enum import auto
 from strenum import StrEnum
 
 
-class ProxyTransport(StrEnum):
+class ProxyTran/sport(StrEnum):
     grpc=auto()
     XTLS=auto()
     faketls=auto()
     shadowtls=auto()
-    h1=auto()
+    # h1=auto()
     WS=auto()
     tcp=auto()
 
