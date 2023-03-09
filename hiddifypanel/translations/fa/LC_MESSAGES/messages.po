@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-09 10:46+0100\n"
-"PO-Revision-Date: 2023-03-09 03:46-0600\n"
+"POT-Creation-Date: 2023-03-09 18:05+0100\n"
+"PO-Revision-Date: 2023-03-09 11:05-0600\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -139,7 +139,7 @@ msgstr "برای بازگرداندن دامنه از این گزینه استف
 #: hiddifypanel/panel/admin/ProxyAdmin.py:117
 #: hiddifypanel/panel/admin/QuickSetup.py:78
 #: hiddifypanel/panel/admin/QuickSetup.py:105
-#: hiddifypanel/panel/admin/SettingAdmin.py:212
+#: hiddifypanel/panel/admin/SettingAdmin.py:219
 msgid "Submit"
 msgstr "ثبت"
 
@@ -351,7 +351,7 @@ msgstr "خطا! تنظیمات دامین فرانتینگ کامل نشده."
 # | msgid "There is an error in one of the fields."
 #: hiddifypanel/panel/admin/ProxyAdmin.py:63
 #: hiddifypanel/panel/admin/QuickSetup.py:71
-#: hiddifypanel/panel/admin/SettingAdmin.py:88
+#: hiddifypanel/panel/admin/SettingAdmin.py:94
 msgid "config.validation-error"
 msgstr "یکی از فیلدها دچار خطا شده است."
 
@@ -379,13 +379,13 @@ msgstr "زبان محیط مدیریت"
 
 # | msgid "English انگلیسی 英语"
 #: hiddifypanel/panel/admin/QuickSetup.py:76
-#: hiddifypanel/panel/admin/SettingAdmin.py:147
+#: hiddifypanel/panel/admin/SettingAdmin.py:153
 msgid "lang.en"
 msgstr "English انگلیسی 英语"
 
 # | msgid "Persian فارسی 波斯语"
 #: hiddifypanel/panel/admin/QuickSetup.py:76
-#: hiddifypanel/panel/admin/SettingAdmin.py:147
+#: hiddifypanel/panel/admin/SettingAdmin.py:153
 msgid "lang.fa"
 msgstr "Persian فارسی 波斯语"
 
@@ -398,16 +398,16 @@ msgstr "در این قسمت می‌توانید زبان بخش مدیریت ر
 # | msgid "Error! Invalid domain.  The domain format is www.google.com"
 #: hiddifypanel/panel/admin/QuickSetup.py:94
 #: hiddifypanel/panel/admin/QuickSetup.py:104
-#: hiddifypanel/panel/admin/SettingAdmin.py:165
-#: hiddifypanel/panel/admin/SettingAdmin.py:168
+#: hiddifypanel/panel/admin/SettingAdmin.py:171
+#: hiddifypanel/panel/admin/SettingAdmin.py:174
 msgid "config.Invalid domain"
 msgstr "خطا! دامنه نامعتبر! فرمت دامنه باید مثل www.google.com باشد."
 
 # | msgid "Domain is exist in domains section. Use another domain"
 #: hiddifypanel/panel/admin/QuickSetup.py:96
 #: hiddifypanel/panel/admin/QuickSetup.py:97
-#: hiddifypanel/panel/admin/SettingAdmin.py:172
-#: hiddifypanel/panel/admin/SettingAdmin.py:173
+#: hiddifypanel/panel/admin/SettingAdmin.py:178
+#: hiddifypanel/panel/admin/SettingAdmin.py:179
 msgid "config.Domain already used"
 msgstr "دامنه در بخش دامنه‌ها وجود دارد. از دامنه دیگری استفاده کنید."
 
@@ -432,15 +432,14 @@ msgid "config.firewall.label"
 msgstr "فایروال"
 
 # | msgid ""
-# | "Enabling firewall will open used ports (at least 22,443,80) and close all
-# "
-# | "other ports"
+# | "Enabling firewall will open used ports (at least 22,443,80 and ssh) and "
+# | "close all other ports"
 #: hiddifypanel/panel/admin/QuickSetup.py:101
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.firewall.description"
 msgstr ""
 "با فعال کردن فایروال، پورت‌های درحال استفاده باز خواهند شد (حداقل ۲۲، ۴۴۳"
-" و ۸۰) و سایر پورت‌ها بسته می‌شوند."
+" و ۸۰ و پورت ssh) و سایر پورت‌ها بسته می‌شوند."
 
 # | msgid "Block Iranian sites"
 #: hiddifypanel/panel/admin/QuickSetup.py:102
@@ -507,46 +506,50 @@ msgstr ""
 "دامنه (%(domain)s)-> IP=%(domain_ip)s با آی‌پی شما: ip=%(server_ip)s "
 "همخوانی ندارد. در حالت مستقیم (Direct Mode) این مورد الزامی است."
 
-#: hiddifypanel/panel/admin/SettingAdmin.py:64
-#: hiddifypanel/panel/admin/SettingAdmin.py:67
+#: hiddifypanel/panel/admin/SettingAdmin.py:62
+msgid "Port is already used! in"
+msgstr "پورت قبلا استفاده شده است در"
+
+#: hiddifypanel/panel/admin/SettingAdmin.py:70
+#: hiddifypanel/panel/admin/SettingAdmin.py:73
 msgid "Can not connect to parent panel!"
 msgstr "نمی توان به پنل مرکزی متصل شد!"
 
 # | msgid "Chinese چینی 中国人"
-#: hiddifypanel/panel/admin/SettingAdmin.py:147
+#: hiddifypanel/panel/admin/SettingAdmin.py:153
 msgid "lang.zh"
 msgstr "Chinese چینی 中国人"
 
-#: hiddifypanel/panel/admin/SettingAdmin.py:149
+#: hiddifypanel/panel/admin/SettingAdmin.py:155
 msgid "Release"
 msgstr "پایدار"
 
-#: hiddifypanel/panel/admin/SettingAdmin.py:149
+#: hiddifypanel/panel/admin/SettingAdmin.py:155
 msgid "Develop"
 msgstr "توسعه"
 
 # | msgid "Python: low performance"
-#: hiddifypanel/panel/admin/SettingAdmin.py:155
+#: hiddifypanel/panel/admin/SettingAdmin.py:161
 msgid "lib.telegram.python"
 msgstr "پایتون: عملکرد ضعیف"
 
 # | msgid "Go: high performance: No ad support"
-#: hiddifypanel/panel/admin/SettingAdmin.py:155
+#: hiddifypanel/panel/admin/SettingAdmin.py:161
 msgid "lib.telegram.go"
 msgstr "Go: عملکرد بالا، عدم پشتیبانی از تبلیغات"
 
 # | msgid "NOT Working: Original: high performance"
-#: hiddifypanel/panel/admin/SettingAdmin.py:155
+#: hiddifypanel/panel/admin/SettingAdmin.py:161
 msgid "lib.telegram.orignal"
 msgstr "کار نمیکند! اصلی: عملکرد قوی"
 
 # | msgid "NOT Working: Erlang: medium performance"
-#: hiddifypanel/panel/admin/SettingAdmin.py:155
+#: hiddifypanel/panel/admin/SettingAdmin.py:161
 msgid "lib.telegram.erlang"
 msgstr "کار نمیکند! Erlang: عملکرد متوسط"
 
 # | msgid "Telegram Proxy Library"
-#: hiddifypanel/panel/admin/SettingAdmin.py:156
+#: hiddifypanel/panel/admin/SettingAdmin.py:162
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.telegram_lib.label"
 msgstr "مدل پروکسی تلگرام"
@@ -557,7 +560,7 @@ msgstr "مدل پروکسی تلگرام"
 # | "python works in all servers, others may have some issue. Test proxy after
 # "
 # | "changing it."
-#: hiddifypanel/panel/admin/SettingAdmin.py:156
+#: hiddifypanel/panel/admin/SettingAdmin.py:162
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.telegram_lib.description"
 msgstr ""
@@ -565,52 +568,39 @@ msgstr ""
 "کنید که فقط پایتون در تمام سیستم ها درست کار میکند و بقیه ممکن است "
 "اشکالاتی داشته باشد. بعد از تغییر حتما تست کنید."
 
-#: hiddifypanel/panel/admin/SettingAdmin.py:177
+#: hiddifypanel/panel/admin/SettingAdmin.py:183
 msgid "Invalid admin link"
 msgstr "لینک ادمین نامعتبر است"
 
 # | msgid "Invalid Telegram bot token."
-#: hiddifypanel/panel/admin/SettingAdmin.py:179
+#: hiddifypanel/panel/admin/SettingAdmin.py:185
 msgid "config.Invalid telegram bot token"
 msgstr "توکن ربات تلگرام نامعتبر است."
 
 # | msgid ""
 # | "Invalid link. it should be on this format: (https or http://example.com)"
-#: hiddifypanel/panel/admin/SettingAdmin.py:181
+#: hiddifypanel/panel/admin/SettingAdmin.py:187
 msgid "config.Invalid brand link"
 msgstr "لینک پشتیبانی نامعتبر است. لطفا لینک را با فرمت معتبر وارد کنید."
 
 # | msgid ""
 # | "Invalid UUID secret. Example: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n"
 # | "\n"
-#: hiddifypanel/panel/admin/SettingAdmin.py:185
+#: hiddifypanel/panel/admin/SettingAdmin.py:191
 msgid "config.invalid uuid"
 msgstr "رمز UUID نامعتبر است. به عنوان مثال: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6"
 
 # | msgid "Invalid proxy path. It should be asci string (a-z A-Z 0-9)"
-#: hiddifypanel/panel/admin/SettingAdmin.py:189
+#: hiddifypanel/panel/admin/SettingAdmin.py:195
 msgid "config.Invalid proxy path"
 msgstr "مسیر پروکسی نامعتبر است. باید رشته متن asci باشد. ( شامل a-z A-Z 0-9)"
 
 # | msgid ""
 # | "Invalid port. It should be comma separated integer e.g., 1000,1001"
-#: hiddifypanel/panel/admin/SettingAdmin.py:193
+#: hiddifypanel/panel/admin/SettingAdmin.py:200
+#: hiddifypanel/panel/admin/SettingAdmin.py:203
 msgid "config.Invalid port"
 msgstr "پورت نامعتبر است. اعداد باید با کاما از هم جدا شود، مثلاً 1000,1001"
-
-# | msgid ""
-# | "Port 80 should always be presented. We use it for getting ssl
-# certificate"
-#: hiddifypanel/panel/admin/SettingAdmin.py:196
-msgid "config.port 80 is required"
-msgstr ""
-"پورت 80 همیشه باید در دسترس باشد. از آن برای دریافت سرتیفیکیت ssl استفاده"
-" می‌کنیم."
-
-# | msgid "Port 443 should always be presented. "
-#: hiddifypanel/panel/admin/SettingAdmin.py:199
-msgid "config.port 443 is required"
-msgstr "پورت ۴۴۳ همیشه باید در دسترس باشد."
 
 #: hiddifypanel/panel/admin/UserAdmin.py:22
 msgid "Reset package days"
@@ -1452,14 +1442,13 @@ msgid "config.tls_ports.label"
 msgstr "پورت‌های TLS"
 
 # | msgid ""
-# | "Comma separated integers indicating the ports to use as TLS connection
-# (port"
-# | " 443 is required).\n"
+# | "Comma separated integers indicating the ports to use as TLS connection  "
+# | "(port 443 will be used in anycase).\n"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.tls_ports.description"
 msgstr ""
 "پورت هایی که برای استفاده اتصال TLS هستند. برای ورود چند پورت، آنها را با"
-" کاما از هم جدا کنید. (پورت 443 اجباری است)."
+" کاما از هم جدا کنید. (پورت 443 در هر صورت استفاده میشود)."
 
 # | msgid "HTTP ports"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1468,12 +1457,12 @@ msgstr "پورت‌های HTTP"
 
 # | msgid ""
 # | "Comma separated integers indicating the ports to use as unencrypted "
-# | "connections (port 80 is required).\n"
+# | "connections (port 80 will be used in anycase).\n"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.http_ports.description"
 msgstr ""
 "پورت هایی که برای استفاده اتصال HTTP هستند. برای ورود چند پورت، آنها را "
-"با کاما از هم جدا کنید.  (پورت 80 اجباری است)."
+"با کاما از هم جدا کنید.  (پورت 80 در هر صورت استفاده می شود)."
 
 # | msgid "KCP ports"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1650,6 +1639,7 @@ msgstr "دامنه"
 msgid "admin.proxy.global_config"
 msgstr "تنظیمات عمومی"
 
+# | msgid "Renaming proxies"
 #: hiddifypanel/panel/admin/templates/proxy.html:13
 msgid "Edit Proxy Names"
 msgstr "تغییر نام پروکسی‌ها"
@@ -2847,6 +2837,19 @@ msgstr "عملیات"
 #~ "آدرس نامعتبر: یک وب‌سایت جعلی باید "
 #~ "نشانی اینترنتی کاملی داشته باشد، به "
 #~ "عنوان مثال، https://www.wikipedia.org/"
+
+# | msgid ""
+# | "Port 80 should always be presented. We use it for getting ssl
+# certificate"
+#~ msgid "config.port 80 is required"
+#~ msgstr ""
+#~ "پورت 80 همیشه باید در دسترس باشد."
+#~ " از آن برای دریافت سرتیفیکیت ssl "
+#~ "استفاده می‌کنیم."
+
+# | msgid "Port 443 should always be presented. "
+#~ msgid "config.port 443 is required"
+#~ msgstr "پورت ۴۴۳ همیشه باید در دسترس باشد."
 
 # | msgid "Monthly Usage Limit (GB)"
 #~ msgid "user.monthly_usage_limit_GB"

@@ -55,6 +55,12 @@ class SettingAdmin(FlaskView):
                             else:
                                 if "_domain" in k or k in [ConfigEnum.admin_secret]:
                                     v=v.lower()
+                                if "port" in k:
+                                    for p in v.split(","):
+                                        for k2,v2 in vs.items():
+                                            if "port" in k2 and k!=k2 and p in v2:
+                                                flash(_("Port is already used! in")+f" {k2} {k}",'error')
+                                                return render_template('config.html', form=form)    
                                 if k == ConfigEnum.parent_panel and v!='':
                                     # v=(v+"/").replace("/admin",'')
                                     v=re.sub("/admin/.*","",v)
@@ -190,14 +196,15 @@ def get_config_form():
                     render_kw['required']=""
 
                 if 'port' in c.key:
-                    validators.append(wtf.validators.Regexp("^(\d,?)*$",re.IGNORECASE,_("config.Invalid port")))
+                    if c.key in [ConfigEnum.http_ports,ConfigEnum.tls_ports]:
+                        validators.append(wtf.validators.Regexp("^(\d+)(,\d+)*$",re.IGNORECASE,_("config.Invalid port")))
+                        render_kw['required']=""
+                    else:    
+                        validators.append(wtf.validators.Regexp("^(\d+)(,\d+)*$|^$",re.IGNORECASE,_("config.Invalid port")))
 
-                if c.key==ConfigEnum.http_ports:
-                    validators.append(wtf.validators.Regexp("^(\d+,)*80(,\d+)*$",re.IGNORECASE,_("config.port 80 is required")))
-                    render_kw['required']=""
-                if c.key==ConfigEnum.tls_ports:
-                    validators.append(wtf.validators.Regexp("^(\d+,)*443(,\d+)*$",re.IGNORECASE,_("config.port 443 is required")))
-                    render_kw['required']=""
+                
+                    # validators.append(wtf.validators.Regexp("^(\d+)(,\d+)*$",re.IGNORECASE,_("config.port is required")))
+                    
                 for val in validators:
                     if hasattr(val,"regex"):
                         render_kw['pattern']=val.regex.pattern
