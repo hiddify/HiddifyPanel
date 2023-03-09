@@ -173,7 +173,11 @@ def to_link(proxy):
     name_link=proxy["name"]+"_"+proxy['extra_info']
     if proxy['proto']=='vmess':
         print(proxy)
-        vmess_type= 'http' if proxy["transport"]=='tcp' else 'none'
+        vmess_type= None
+        if proxy["transport"]=='tcp':
+            vmess_type='http'
+        if 'grpc_mode' in proxy:
+            vmess_type=proxy['grpc_mode']
         vmess_data={"v":"2",
                      "ps":name_link, 
                      "add":proxy['server'],
@@ -182,7 +186,7 @@ def to_link(proxy):
                       "aid":"0", 
                       "scy":"auto", 
                       "net":proxy["transport"], 
-                      "type":proxy['grpc_mode'] if 'grpc_mode' in proxy else "none", 
+                      "type":vmess_type,
                       "host":proxy.get("host",""), 
                       "path":proxy["path"] if "path" in proxy else "",
                       "tls":proxy["l3"], 
