@@ -122,7 +122,7 @@ class ConfigEnum(StrEnum):
             self.path_grpc:{'category': ConfigCategory.too_advanced},
             self.path_v2ray:{'category': ConfigCategory.hidden},
 
-            self.utls: {'category': ConfigCategory.proxies},
+            self.utls: {'category': ConfigCategory.tls},
             self.package_mode: {'category': ConfigCategory.advanced,'show_in_parent':True},
             self.telegram_bot_token: {'category': ConfigCategory.advanced,'show_in_parent':True},
             self.is_parent:{'category': ConfigCategory.hidden,'type':bool},
