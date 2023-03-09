@@ -40,6 +40,7 @@ class ProxyProto(StrEnum):
 class ProxyL3(StrEnum):
     tls=auto()
     tls_h2=auto()
+    tls_h2_h1=auto()
     http=auto()
     kcp=auto()
 

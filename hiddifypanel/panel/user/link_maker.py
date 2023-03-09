@@ -81,7 +81,7 @@ def make_proxy(proxy,domain_db,phttp=80,ptls=443):
         'proto':proxy.proto,
         'transport':proxy.transport,
         'proxy_path':hconfig(ConfigEnum.proxy_path,child_id),
-        'alpn':"h2",
+        'alpn':"h2" if proxy.l3=='tls_h2' else 'h2,http/1.1' if proxy.l3=='tls_h2_h1' else "http/1.1",
         'extra_info':f'{domain_db.alias or domain}',
         'fingerprint':hconfig(ConfigEnum.utls,child_id)
 
@@ -210,8 +210,9 @@ def to_link(proxy):
             return f'{baseurl}?plugin=v2ray-plugin%3Bmode%3Dwebsocket%3Bpath%3D{proxy["path"]}%3Bhost%3D{proxy["host"]}%3Btls&amp;udp-over-tcp=true#{name_link}'
     
     infos=f'&sni={proxy["sni"]}&type={proxy["transport"]}'
-    if proxy['alpn']!='h2':
-        infos+=f'&alpn=h2,http/1.1'
+    
+    infos+=f"&alpn={proxy['alpn']}"
+    
         # infos+=f'&alpn={proxy["alpn"]}'
     infos+=f'&path={proxy["path"]}' if "path" in proxy else ""
     infos+=f'&host={proxy["host"]}' if "host" in proxy else ""
@@ -252,6 +253,7 @@ def to_clash(proxy,meta_or_normal):
     base["type"]= str(proxy["proto"])
     base["server"]= proxy["server"]
     base["port"]=proxy["port"]
+    base['alpn']=[proxy['alpn'].split(',')]
     if proxy["proto"]=="ssr":
         base["cipher"]= proxy["chipher"]
         base["password"]= proxy["uuid"]
@@ -319,7 +321,7 @@ def to_clash(proxy,meta_or_normal):
         if "host" in proxy:
             base["ws-opts"]["headers"]={"Host":proxy["host"]}
 
-    if base["network"]=="tcp":
+    if base["network"]=="tcp" and proxy['alpn']!='h2':
         # if proxy['proto']=='vless':
         base["network"]="http"    
 
@@ -327,7 +329,17 @@ def to_clash(proxy,meta_or_normal):
             base["http-opts"]={
                 "path": [proxy["path"]]
             }
-        
+            if 'host' in proxy:
+                base["http-opts"]["host"]=[proxy["host"]]
+    if base["network"]=="tcp" and proxy['alpn']=='h2':
+        base["network"]="h2"    
+
+        if "path" in proxy:
+            base["h2-opts"]={
+                "path": proxy["path"]
+            }
+            if 'host' in proxy:
+                base["h2-opts"]["host"]=[proxy["host"]]
     if base["network"]=="grpc":
         base["grpc-opts"]={
         "grpc-service-name":proxy["grpc_service_name"]
