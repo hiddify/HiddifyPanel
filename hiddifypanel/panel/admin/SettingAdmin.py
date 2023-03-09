@@ -193,10 +193,10 @@ def get_config_form():
                     validators.append(wtf.validators.Regexp("^(\d,?)*$",re.IGNORECASE,_("config.Invalid port")))
 
                 if c.key==ConfigEnum.http_ports:
-                    validators.append(wtf.validators.Regexp("^(\d,?)*80(\d,?)*$",re.IGNORECASE,_("config.port 80 is required")))
+                    validators.append(wtf.validators.Regexp("^(\d+,)*80(,\d+)*$",re.IGNORECASE,_("config.port 80 is required")))
                     render_kw['required']=""
                 if c.key==ConfigEnum.tls_ports:
-                    validators.append(wtf.validators.Regexp("^(\d,?)*443(\d,?)*$",re.IGNORECASE,_("config.port 443 is required")))
+                    validators.append(wtf.validators.Regexp("^(\d+,)*443(,\d+)*$",re.IGNORECASE,_("config.port 443 is required")))
                     render_kw['required']=""
                 for val in validators:
                     if hasattr(val,"regex"):
