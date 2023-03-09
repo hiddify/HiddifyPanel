@@ -93,7 +93,7 @@ def _v20():
     if hconfig(ConfigEnum.domain_fronting_domain):
         fake_domains=[hconfig(ConfigEnum.domain_fronting_domain)]
         
-        direct_domain=Domain.query.all().filter(Domain.mode in [DomainType.direct,DomainType.relay]).first()
+        direct_domain=Domain.query.filter(Domain.mode in [DomainType.direct,DomainType.relay]).first()
         if direct_domain:
             direct_host=direct_domain.domain
         else:
