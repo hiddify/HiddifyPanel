@@ -1,6 +1,14 @@
 # Changelog
 
 
+## 2.0.4 (2023-03-10)
+
+#### Fix
+
+* Bug not updating users. 
+
+
+
 ## 2.0.3 (2023-03-10)
 
 #### Fix
