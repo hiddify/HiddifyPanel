@@ -179,7 +179,7 @@ class ConfigEnum(StrEnum):
 
             self.vmess_enable: {'category': ConfigCategory.proxies,'type':bool},
             self.domain_fronting_domain: {'category': ConfigCategory.domain_fronting},
-            self.domain_fronting_http_enable: {'category': ConfigCategory.domain_fronting,'type':bool},
+            self.domain_fronting_http_enable: {'category': ConfigCategory.hidden,'type':bool},
             self.domain_fronting_tls_enable: {'category': ConfigCategory.domain_fronting,'type':bool},
 
             self.db_version: {'category': ConfigCategory.hidden},

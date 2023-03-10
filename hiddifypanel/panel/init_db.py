@@ -72,7 +72,7 @@ def init_db():
         print(Child.query.filter(Child.id==0).first())
         db.session.add(Child(unique_id="self",id=0))
         db.session.commit()
-    db_actions={1:_v1,2:_v2,3:_v3,6:_v6,8:_v8,9:_v9,10:_v10,11:_v11,12:_v12,13:_v13,14:_v14,16:_v16,17:_v17,19:_v19,20:_v20}
+    db_actions={1:_v1,2:_v2,3:_v3,6:_v6,9:_v9,10:_v10,11:_v11,12:_v12,13:_v13,14:_v14,16:_v16,17:_v17,19:_v19,20:_v20,21:_v21}
     for ver,db_action in db_actions.items():
         if ver<=db_version:continue
         if start_version==0 and ver==10:continue
@@ -96,6 +96,9 @@ def _v21():
     set_hconfig(ConfigEnum.tls_ports,",".join(tls_ports))
     set_hconfig(ConfigEnum.http_ports,",".join(http_ports))
     
+    db.session.bulk_save_objects(get_proxy_rows_v1())
+
+
 def _v20():
     if hconfig(ConfigEnum.domain_fronting_domain):
         fake_domains=[hconfig(ConfigEnum.domain_fronting_domain)]
@@ -278,13 +281,7 @@ def _v6():
         *make_proxy_rows(["XTLS direct vless"])
     ])
 
-def _v8():
-    db.session.bulk_save_objects([
-        *make_proxy_rows([
-        "grpc direct vless",
-        "grpc direct trojan",
-        "grpc direct vmess"])
-    ])
+
 def _v9():
     try:
         column_type = User.mode.type.compile(db.engine.dialect)
@@ -332,9 +329,9 @@ def _v10():
 
 def get_proxy_rows_v1():
     return make_proxy_rows([   
-        'WS Fake vless',
-        'WS Fake trojan',
-        'WS Fake vmess',
+        # 'WS Fake vless',
+        # 'WS Fake trojan',
+        # 'WS Fake vmess',
         # 'grpc Fake vless',
         # 'grpc Fake trojan',
         # 'grpc Fake vmess',
@@ -352,6 +349,9 @@ def get_proxy_rows_v1():
         "tcp direct vless",
         "tcp direct trojan",
         "tcp direct vmess",
+        "grpc direct vless",
+        "grpc direct trojan",
+        "grpc direct vmess"
         # "h1 direct vless",
         # "h1 direct vmess",
         "faketls direct ss",
@@ -363,7 +363,7 @@ def get_proxy_rows_v1():
 
 def make_proxy_rows(cfgs):
     
-    for l3 in ["tls", "http", "kcp"]:
+    for l3 in ["tls_h2","tls", "http", "kcp"]:
         for c in cfgs:
             transport,cdn,proto=c.split(" ")
             if l3=="kcp" and cdn!="direct":
@@ -373,5 +373,5 @@ def make_proxy_rows(cfgs):
             if transport in ["grpc","XTLS","faketls"] and l3=="http":
                 continue
 
-
-            yield Proxy(l3=l3,transport=transport,cdn=cdn,proto=proto,enable=True,name=f'{l3} {c}')
+            if not Proxy.query.filter(Proxy.l3==l3,Proxy.transport==transport,Proxy.cdn==cdn,Proxy.proto==proto).first():
+                yield Proxy(l3=l3,transport=transport,cdn=cdn,proto=proto,enable=True,name=f'{l3} {c}')
