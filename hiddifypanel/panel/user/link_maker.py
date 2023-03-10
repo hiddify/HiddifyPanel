@@ -372,7 +372,6 @@ def get_clash_config_names(meta_or_normal, domains):
                     continue
 
                 for type in all_proxies():
-                    print(phttp, ptls)
                     pinfo = make_proxy(type, d, phttp=phttp, ptls=ptls)
                     if pinfo != None:
                         clash = to_clash(pinfo, meta_or_normal)
@@ -401,7 +400,6 @@ def get_all_clash_configs(meta_or_normal, domains):
                     continue
 
                 for type in all_proxies():
-                    print(phttp, ptls)
                     pinfo = make_proxy(type, d, phttp=phttp, ptls=ptls)
                     if pinfo != None:
                         clash = to_clash(pinfo, meta_or_normal)
