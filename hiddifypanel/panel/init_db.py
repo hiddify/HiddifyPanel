@@ -277,9 +277,9 @@ def _v6():
         Proxy.query.filter(Proxy.name=='tls XTLSVision direct trojan').delete()
     except:
         pass
-    db.session.bulk_save_objects([
-        *make_proxy_rows(["XTLS direct vless"])
-    ])
+    # db.session.bulk_save_objects([
+    #     *make_proxy_rows(["XTLS direct vless"])
+    # ])
 
 
 def _v9():
@@ -337,6 +337,7 @@ def get_proxy_rows_v1():
         # 'grpc Fake vmess',
         # "XTLS direct vless",
         # "XTLS direct trojan",
+        "XTLS direct vless"
         "WS direct vless",
         "WS direct trojan",
         "WS direct vmess",
@@ -368,7 +369,7 @@ def make_proxy_rows(cfgs):
             transport,cdn,proto=c.split(" ")
             if l3=="kcp" and cdn!="direct":
                 continue
-            if proto=="trojan" and l3 not in ["tls",'xtls']:
+            if proto=="trojan" and l3 not in ["tls",'xtls','tls_h2']:
                 continue
             if transport in ["grpc","XTLS","faketls"] and l3=="http":
                 continue
