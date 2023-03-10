@@ -100,7 +100,7 @@ class UserView(FlaskView):
         return jsonify({
         "name": f"Hiddify {name}",
         "short_name": f"{name}"[:12],
-        "theme_color": "#4b5beb",
+        "theme_color": "#f2f4fb",
         "background_color": "#f2f4fb",
         "display": "standalone",
         "scope": f"/",
