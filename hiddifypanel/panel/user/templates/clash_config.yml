@@ -114,7 +114,7 @@ proxy-groups:
      
 {{link_maker.get_all_clash_configs(meta_or_normal,domains)}}
 
-
+proxy-providers:
   %for t in (['http','tls'] if hconfigs[ConfigEnum.http_proxy_enable] else ['tls'])
   %for port in hconfigs[ConfigEnum.http_ports if t=='http' else ConfigEnum.tls_ports].split(',')
   %set phttp=port if t=='http' else None
