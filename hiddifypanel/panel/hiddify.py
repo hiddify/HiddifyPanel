@@ -94,6 +94,7 @@ def get_available_proxies():
         proxies = [c for c in proxies if 'Fake' not in c.cdn]
     if not hconfig(ConfigEnum.ssfaketls_enable):
         proxies = [c for c in proxies if 'faketls' != c.transport]
+    if not hconfig(ConfigEnum.v2ray_enable):
         proxies = [c for c in proxies if 'v2ray' != c.proto]
     if not hconfig(ConfigEnum.shadowtls_enable):
         proxies = [c for c in proxies if c.transport != 'shadowtls']
