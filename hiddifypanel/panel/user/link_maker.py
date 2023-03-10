@@ -88,7 +88,7 @@ def make_proxy(proxy, domain_db, phttp=80, ptls=443):
 
     }
 
-    if base["proto"] == "trojan" and l3 not in "tls":
+    if base["proto"] == "trojan" and "tls" not in l3:
         return
 
     if l3 == "http" and "XTLS" in proxy.transport:
@@ -288,7 +288,7 @@ def to_clash(proxy, meta_or_normal):
             base["type"] = "ss"
             base["plugin-opts"] = {
                 "mode": "websocket",
-                "tls": proxy["l3"] == "tls",
+                "tls": "tls" in proxy["l3"] ,
                 "skip-cert-verify": proxy["mode"] == "Fake" or proxy['allow_insecure'],
                 "host": proxy['sni'],
                 "path": proxy["path"]
@@ -301,7 +301,7 @@ def to_clash(proxy, meta_or_normal):
     else:
         base["uuid"] = proxy["uuid"]
         base["servername"] = proxy["sni"]
-        base["tls"] = proxy["l3"] == "tls"
+        base["tls"] = "tls" in proxy["l3"]
     if meta_or_normal == "meta":
         base['client-fingerprint'] = proxy['fingerprint']
     if "xtls" == proxy['l3']:
