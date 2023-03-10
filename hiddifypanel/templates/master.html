@@ -8,6 +8,18 @@
   {% block head_meta %}
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link href="{{url_for('static',filename='images/splash/iphone5_splash.png')}}" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" rel="apple-touch-startup-image" />
+<link href="{{url_for('static',filename='images/splash/iphone6_splash.png')}}" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" rel="apple-touch-startup-image" />
+<link href="{{url_for('static',filename='images/splash/iphoneplus_splash.png')}}" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" rel="apple-touch-startup-image" />
+<link href="{{url_for('static',filename='images/splash/iphonex_splash.png')}}" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" rel="apple-touch-startup-image" />
+<link href="{{url_for('static',filename='images/splash/iphonexr_splash.png')}}" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" rel="apple-touch-startup-image" />
+<link href="{{url_for('static',filename='images/splash/iphonexsmax_splash.png')}}" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" rel="apple-touch-startup-image" />
+<link href="{{url_for('static',filename='images/splash/ipad_splash.png')}}" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" rel="apple-touch-startup-image" />
+<link href="{{url_for('static',filename='images/splash/ipadpro1_splash.png')}}" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" rel="apple-touch-startup-image" />
+<link href="{{url_for('static',filename='images/splash/ipadpro3_splash.png')}}" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" rel="apple-touch-startup-image" />
+<link href="{{url_for('static',filename='images/splash/ipadpro2_splash.png')}}" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" rel="apple-touch-startup-image" />
   <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico')}}">
   <link rel="manifest" href="{{ url_for('user2.UserView:create_pwa_manifest')}}">
   
@@ -44,6 +56,13 @@
 
 </head>
 <body class="hold-transition layout-fixed {% block bodyclass %}sidebar-collapse{%endblock%}">
+  <div id="splash_screen">
+    <center>
+    <img  src="{{url_for('static', filename='images/hiddify.png')}}"/>
+    <a href="https://github.com/hiddify/hiddify-config/wiki"><h1 class="title">{{_('user.home.title')}}</h1></a>
+  </center>
+  </div>
+  
     {% block page_body %}
 <div class="wrapper">
     {% block nav_bar %}
@@ -144,7 +163,18 @@
 {% endblock %}
 
 {% block tail_js %}
-
+<script>
+    
+  setTimeout( function() {
+  var wrappers= document.getElementsByClassName("wrapper") ;
+  var splash_screen = document.getElementById("splash_screen") ;
+  document.body.removeChild(splash_screen) ;
+  for (var i = 0; i < wrappers.length; i++) {
+    wrappers[i].style.display = 'initial' ; 
+  }
+ 
+ } , '{{g.is_admin}}'=='True'? 0:1000  ) ;
+</script>
 <!-- jQuery -->
 <script src="{{ url_for('static', filename="plugins/jquery/jquery.min.js" ) }}"></script>
 <script src="{{ url_for('static', filename="js/popper.min.js" ) }}"></script> 

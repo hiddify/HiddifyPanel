@@ -101,7 +101,7 @@ class UserView(FlaskView):
         "name": f"Hiddify {name}",
         "short_name": f"{name}"[:12],
         "theme_color": "#4b5beb",
-        "background_color": "#fcebf4",
+        "background_color": "#f2f4fb",
         "display": "standalone",
         "scope": f"/",
         "start_url": f"https://{domain}"+url_for("admin.Dashboard:index" if g.is_admin else "user2.UserView:new_1"),
@@ -109,8 +109,10 @@ class UserView(FlaskView):
         "orientation": "any",
         "icons": [
             {
-                "src": url_for('static', filename='images/pwa-icon.png'),
-                "sizes": "256x256"
+                "src": url_for('static', filename='images/hiddify-dark.png'),
+                "sizes": "512x512",
+                "type": "image/png",
+                "purpose": "maskable any"
             }
         ]
         })
