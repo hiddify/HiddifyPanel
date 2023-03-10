@@ -123,9 +123,9 @@ def quick_apply_users():
         else:
             xray_api.remove_client(user.uuid)
 
+    exec_command("/opt/hiddify-config/install.sh apply_users &")
     return {"status": 'success'}
 
-    exec_command("/opt/hiddify-config/install.sh apply_users &")
 
 
 def flash_config_success(restart_mode='', domain_changed=True):
