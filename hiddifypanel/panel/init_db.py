@@ -244,7 +244,7 @@ def _v1():
         fake_domains=['speedtest.net','soft98.ir','www.canva.com']
         for fd in fake_domains:
             if not Domain.query.filter(Domain.domain==fd).first():
-                db.session.add(Domain(domain=fd,mode='fake',alias='http only',cdn_forced_host=external_ip))
+                db.session.add(Domain(domain=fd,mode='fake',alias='http only',cdn_ip=external_ip))
         # for c in ConfigEnum:
         #     if c in [d.key for d in data if type(d) in [BoolConfig,StrConfig]]:
         #         continue
