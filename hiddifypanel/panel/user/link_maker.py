@@ -87,7 +87,7 @@ def make_proxy(proxy,domain_db,phttp=80,ptls=443):
 
     }
 
-    if base["proto"]=="trojan" and l3!="tls":
+    if base["proto"]=="trojan" and l3 not in "tls":
         return
 
     if l3=="http" and  "XTLS" in proxy.transport:
@@ -190,7 +190,7 @@ def to_link(proxy):
                       "type":vmess_type,
                       "host":proxy.get("host",""), 
                       "path":proxy["path"] if "path" in proxy else "",
-                      "tls":proxy["l3"], 
+                      "tls":"tls" if "tls" in proxy["l3"] else "", 
                       "sni":proxy["sni"],
                       "fp":proxy["fingerprint"]
                       }
@@ -233,7 +233,7 @@ def to_link(proxy):
         return f'{baseurl}?flow={proxy["flow"]}&security=tls&type=tcp{infos}'
     if proxy['l3']=='http':
         return f'{baseurl}?security=none{infos}'
-    if proxy['l3']=='tls' :
+    if 'tls' in proxy['l3']:
         return f'{baseurl}?security=tls{infos}'
     
 
