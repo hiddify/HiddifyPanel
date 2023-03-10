@@ -43,7 +43,11 @@ def all_configs():
         d['domain']=d['domain'].lower()
         # del d['domain']['show_domains']
 
-    configs['hconfigs']['first_setup']=len(configs['domains'])==1 and 'sslip.io' in configs['domains'][0]['domain'] and len(configs['users'])==1 and configs['users'][0]['name']=="default"
+    def_user=None if len(User.query.all())>1 else User.query.filter(User.name=='default').first()
+    domains=Domain.query.all()
+    sslip_domains=[d.domain for d in domains if "sslip.io" in d.domain]
+    
+    configs['hconfigs']['first_setup']=def_user !=None and len(sslip_domains)>0
     # configs
 
     print(json.dumps(configs))
