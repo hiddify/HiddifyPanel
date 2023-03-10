@@ -1,6 +1,16 @@
 # Changelog
 
 
+## 2.0.2 (2023-03-10)
+
+#### Fix
+
+* Bug in init db. 
+
+* Not showing home title in homepage. 
+
+
+
 ## 2.0.1 (2023-03-10)
 
 #### Changes
