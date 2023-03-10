@@ -9,6 +9,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico')}}">
+  <link rel="manifest" href="{{ url_for('user2.UserView:create_pwa_manifest')}}">
   
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -104,7 +105,9 @@
     </ul>
     
   </footer>
-  
+  <button id="install-pwa-btn" class="btn btn-primary" style="display: none;">
+    Install App
+  </button>
 </div>
 <!-- ./wrapper -->
 
@@ -241,6 +244,9 @@
 {% endblock %}
 
 {% block tail %}
+{% macro pwa_install_btn() -%}
+<button class='btn btn-success' onclick='install_pwa()'>{{_("Install")}}</button>
+{%- endmacro -%}
 <script>
   $(document).ready(function () {
     
@@ -253,9 +259,51 @@
   //   })
   })
 
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+     .register("{{url_for('static',filename='js/pwa-sw.js')}}")
+     .then(() => { console.log('Service Worker Registered'); });
+ }
 
+ let deferredPrompt=null;
 
+window.addEventListener('beforeinstallprompt', (event) => {
+  console.log("On before install")
+  if (deferredPrompt==null){
+  toast=$(document).Toasts('create', {
+          class: 'bg-',
+          position: '{{'bottomRight' if get_locale()=='fa' else 'bottomLeft'}}' ,
+          image:"{{url_for('static', filename='images/pwa-icon.png')}}",
+          title: "{{_('Install Hiddify Application')}}",
+          body: `{{_("Please click on %(install)s to save the user page.",install=pwa_install_btn()|safe)}}`
+        })
+      }
+  // Prevent Chrome 67 and earlier from automatically showing the prompt
+  event.preventDefault();
+  // Stash the event so it can be triggered later
+  deferredPrompt = event;
+  // Update UI notify the user they can add to home screen
+  $('#install-pwa-btn').fadeIn();
+});
+
+install_pwa=() => {
+  // Show the prompt
+  deferredPrompt.prompt();
+  // Wait for the user to respond to the prompt
+  deferredPrompt.userChoice.then((choiceResult) => {
+    if (choiceResult.outcome === 'accepted') {
+      console.log('User accepted the install prompt');
+      // Hide the installation button
+      $('#install-pwa-btn').fadeOut();
+      toast.fadeOut();
+      
+    }
+    // deferredPrompt = null;
+  });
+};
+$('#install-pwa-btn').click(install_pwa)
 </script>
+<!-- <script src="{{url_for('static',filename='js/pwa-sw.js')}}" defer></script> -->
 {% endblock %}
 </body>
 </html>

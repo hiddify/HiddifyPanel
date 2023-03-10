@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-09 18:05+0100\n"
-"PO-Revision-Date: 2023-03-09 11:05-0600\n"
+"POT-Creation-Date: 2023-03-10 16:44+0100\n"
+"PO-Revision-Date: 2023-03-10 09:44-0600\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Generated-By: Babel 2.11.0\n"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/panel/hiddify.py:136
+#: hiddifypanel/panel/hiddify.py:137
 msgid "admin.config.apply_configs"
 msgstr "اعمال تنظیمات"
 
@@ -23,14 +23,14 @@ msgstr "اعمال تنظیمات"
 # | "Configs have been changed successfully. Click %(link)s to apply the
 # configs."
 # | " It may take 2 minutes to apply."
-#: hiddifypanel/panel/hiddify.py:137
+#: hiddifypanel/panel/hiddify.py:138
 msgid "config.validation-success"
 msgstr ""
 "تنظیمات با موفقیت ذخیره شدند. لطفا بر روی این لینک: %(link)s کلیک کنید تا"
 " بر روی سیستم اعمال شوند. این کار ممکن است 2 دقیقه طول بکشد.\n"
 
 # | msgid "Configs have been changed successfully."
-#: hiddifypanel/panel/hiddify.py:139
+#: hiddifypanel/panel/hiddify.py:140
 msgid "config.validation-success-no-reset"
 msgstr "تنظیمات با موفقیت تغییر کرد."
 
@@ -41,12 +41,12 @@ msgstr "تنظیمات با موفقیت تغییر کرد."
 #: hiddifypanel/panel/admin/ChildAdmin.py:108
 #: hiddifypanel/panel/admin/DomainAdmin.py:112
 #: hiddifypanel/panel/admin/ParentDomainAdmin.py:108
-#: hiddifypanel/panel/admin/QuickSetup.py:115 hiddifypanel/panel/hiddify.py:234
+#: hiddifypanel/panel/admin/QuickSetup.py:115 hiddifypanel/panel/hiddify.py:235
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr "دامنه قابل دسترسی نیست! در دامنه شما مشکلی وجود دارد."
 
 # | msgid "0 - Last Day"
-#: hiddifypanel/panel/hiddify.py:251
+#: hiddifypanel/panel/hiddify.py:252
 msgid "0 - Last day"
 msgstr "0 - آخرین روز"
 
@@ -127,7 +127,7 @@ msgstr "برای بازگرداندن کاربران از این گزینه اس
 
 #: hiddifypanel/panel/admin/Backup.py:62
 msgid "Restore Domain"
-msgstr "بازگردانی دامنه‌ها"
+msgstr "بازیابی دامنه‌ها"
 
 # | msgid "Select this option to restore your domains."
 #: hiddifypanel/panel/admin/Backup.py:62
@@ -333,8 +333,8 @@ msgid ""
 "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which "
 "is required in direct mode"
 msgstr ""
-"آی‌پی دامنه IP=%(domain_ip)s با آی‌پی ip=%(server_ip)s شما مطابقت ندارد "
-"که در حالت مستقیم مورد نیاز است."
+"آی‌پی دامنه IP=%(domain_ip)s با آی‌پی سرور شما ip=%(server_ip)s مطابقت "
+"ندارد. در حالت مستقیم، این دو باید یکی باشند."
 
 #: hiddifypanel/panel/admin/DomainAdmin.py:121
 #, python-format
@@ -611,79 +611,79 @@ msgid "Reset package usage"
 msgstr "ریست حجم مصرفی کاربر"
 
 # | msgid "Actions"
-#: hiddifypanel/panel/admin/UserAdmin.py:55
+#: hiddifypanel/panel/admin/UserAdmin.py:56
 msgid "actions"
 msgstr "عملیات"
 
 # | msgid "Name"
-#: hiddifypanel/panel/admin/UserAdmin.py:56
+#: hiddifypanel/panel/admin/UserAdmin.py:57
 msgid "user.name"
 msgstr "نام"
 
 # | msgid "User Links"
-#: hiddifypanel/panel/admin/UserAdmin.py:57
+#: hiddifypanel/panel/admin/UserAdmin.py:58
 msgid "user.user_links"
 msgstr "لینک‌های کاربر"
 
 # | msgid "Usage Limit (GB)"
-#: hiddifypanel/panel/admin/UserAdmin.py:58
+#: hiddifypanel/panel/admin/UserAdmin.py:59
 msgid "user.usage_limit_GB"
 msgstr "محدودیت حجم (گیگابایت)"
 
 # | msgid "Monthly"
-#: hiddifypanel/panel/admin/UserAdmin.py:59
+#: hiddifypanel/panel/admin/UserAdmin.py:60
 msgid "Reset every month"
 msgstr "ماهانه"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:60
+#: hiddifypanel/panel/admin/UserAdmin.py:61
 msgid "Mode"
 msgstr "حالت کاربر"
 
 # | msgid "Current Usage (GB)"
-#: hiddifypanel/panel/admin/UserAdmin.py:61
+#: hiddifypanel/panel/admin/UserAdmin.py:62
 msgid "user.current_usage_GB"
 msgstr "حجم مصرفی (گیگابایت)"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:62
+#: hiddifypanel/panel/admin/UserAdmin.py:63
 msgid "Start Date"
 msgstr "زمان شروع"
 
 # | msgid "Expire (days)"
-#: hiddifypanel/panel/admin/UserAdmin.py:63
+#: hiddifypanel/panel/admin/UserAdmin.py:64
 msgid "user.expiry_time"
 msgstr "انقضا (روز)"
 
 # | msgid "Last usage date reset"
-#: hiddifypanel/panel/admin/UserAdmin.py:64
+#: hiddifypanel/panel/admin/UserAdmin.py:65
 msgid "user.last_reset_time"
 msgstr "آخرین زمان ریست شدن حجم (روز پیش)"
 
 # | msgid "UUID"
-#: hiddifypanel/panel/admin/UserAdmin.py:65
+#: hiddifypanel/panel/admin/UserAdmin.py:66
 msgid "user.UUID"
 msgstr "UUID"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:66
+#: hiddifypanel/panel/admin/UserAdmin.py:67
 msgid "Note"
 msgstr "یادداشت"
 
 # | msgid "Last Connection"
-#: hiddifypanel/panel/admin/UserAdmin.py:67
+#: hiddifypanel/panel/admin/UserAdmin.py:68
 msgid "Last Online"
 msgstr "آخرین اتصال"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:68
+#: hiddifypanel/panel/admin/UserAdmin.py:69
 msgid "Package Days"
 msgstr "تعداد روز بسته"
 
 # | msgid "You can add some text that is only visible to you."
-#: hiddifypanel/panel/admin/UserAdmin.py:82
+#: hiddifypanel/panel/admin/UserAdmin.py:83
 msgid "Add some text that is only visible to you."
 msgstr ""
 "در این قسمت یادداشتی اضافه کنید. (این یادداشت فقط برای شما قابل نمایش "
 "است.)"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:83
+#: hiddifypanel/panel/admin/UserAdmin.py:84
 msgid "Define the user mode. Should the usage reset every month?"
 msgstr ""
 "حالت کاربر را تعریف کنید. کاربر غیرفعال (disable) یا ریست حجم کاربر را "
@@ -692,7 +692,7 @@ msgstr ""
 # | msgid ""
 # | "If the monthly option is enabled, when this number reaches 30, the user "
 # | "usage will be reset (for weekly and daily this number is 7 and 1)"
-#: hiddifypanel/panel/admin/UserAdmin.py:84
+#: hiddifypanel/panel/admin/UserAdmin.py:85
 msgid ""
 "If monthly is enabled, the usage will be reset after 30 days from this "
 "date."
@@ -700,23 +700,23 @@ msgstr ""
 "اگر گزینه ماهانه فعال باشد، وقتی این عدد به ۳۰ برسد حجم کاربر ریست می‌شود"
 " (برای هفتگی و روزانه این عدد ۷ و ۱ است)"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:85
+#: hiddifypanel/panel/admin/UserAdmin.py:86
 msgid ""
 "From when the user package will be started? Empty for start from first "
 "connection"
 msgstr "از چه زمانی پکیج کاربر محاسبه شود؟ برای محاسبه از اولین اتصال خالی بگذارید"
 
 # | msgid "How many days is this package?"
-#: hiddifypanel/panel/admin/UserAdmin.py:86
+#: hiddifypanel/panel/admin/UserAdmin.py:87
 msgid "How many days this package should be available?"
 msgstr "این بسته چند روزه است؟"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:180
+#: hiddifypanel/panel/admin/UserAdmin.py:181
 msgid "Package not started yet."
 msgstr "بسته هنوز شروع نشده است."
 
 # | msgid "Package ends in "
-#: hiddifypanel/panel/admin/UserAdmin.py:186
+#: hiddifypanel/panel/admin/UserAdmin.py:187
 msgid "Remaining: "
 msgstr "زمان پایان بسته:"
 
@@ -1807,7 +1807,7 @@ msgid ""
 " Happy using 🎉 🎉 🎉 \n"
 msgstr ""
 
-#: hiddifypanel/panel/user/user.py:115
+#: hiddifypanel/panel/user/user.py:141
 msgid "This domain does not exist in the panel!"
 msgstr "این دامنه در پنل وجود ندارد!"
 
@@ -2032,7 +2032,7 @@ msgstr ""
 "لطفاً V2rayNG را از %(dl_link)s یا %(play_link)s نصب کنید.\n"
 "سپس لینک زیر را کپی کرده و مطابق فیلم آموزش در V2rayNG قرار دهید."
 
-#: hiddifypanel/panel/user/templates/home/base.html:36
+#: hiddifypanel/panel/user/templates/home/base2.html:36
 msgid "test"
 msgstr "تست"
 
@@ -2144,7 +2144,7 @@ msgstr "لینک زیر را در مرورگرتان کپی کنید."
 
 # | msgid "Copy"
 #: hiddifypanel/panel/user/templates/home/doh.html:8
-#: hiddifypanel/templates/master.html:126
+#: hiddifypanel/templates/master.html:129
 msgid "copy"
 msgstr "کپی"
 
@@ -2197,79 +2197,81 @@ msgstr ""
 "     <b>استفاده از DNS امن</b> را فعال کنید.\n"
 "     انتخاب ارائه دهنده خدمات را انتخاب کنید."
 
-# | msgid "Hiddify Proxy"
+# | msgid "Hiddify"
 #: copy.html:2 hiddifypanel/panel/user/templates/home/index
-#: hiddifypanel/panel/user/templates/home/index.html:2
-#: hiddifypanel/panel/user/templates/home/index.html:7
+#: hiddifypanel/panel/user/templates/home/index_old.html:2
+#: hiddifypanel/panel/user/templates/home/index_old.html:8
 #: hiddifypanel/panel/user/templates/home/multi.html:2
 #: hiddifypanel/panel/user/templates/home/multi.html:7
+#: hiddifypanel/panel/user/templates/home/multi.html:8
 msgid "user.home.title"
-msgstr "پروکسی هیدیفای"
+msgstr "هیدیفای"
 
 # | msgid "Telegram"
 #: copy.html:27 hiddifypanel/panel/user/templates/home/index
-#: hiddifypanel/panel/user/templates/home/index.html:39
-#: hiddifypanel/panel/user/templates/home/multi.html:33
+#: hiddifypanel/panel/user/templates/home/index_old.html:40
+#: hiddifypanel/panel/user/templates/home/multi.html:34
 msgid "telegram"
 msgstr "تلگرام"
 
-#: hiddifypanel/panel/user/templates/home/index.html:7
+#: hiddifypanel/panel/user/templates/home/index_old.html:8
 #: hiddifypanel/panel/user/templates/home/multi.html:7
+#: hiddifypanel/panel/user/templates/home/multi.html:8
 #, python-format
 msgid "Welcome %(user)s"
 msgstr "%(user)s عزیز خوش آمدی."
 
 # | msgid "Android"
-#: hiddifypanel/panel/user/templates/home/index.html:42
-#: hiddifypanel/panel/user/templates/home/multi.html:36
+#: hiddifypanel/panel/user/templates/home/index_old.html:43
+#: hiddifypanel/panel/user/templates/home/multi.html:37
 msgid "android"
 msgstr "اندروید"
 
 # | msgid "iOS"
-#: hiddifypanel/panel/user/templates/home/index.html:44
-#: hiddifypanel/panel/user/templates/home/multi.html:38
+#: hiddifypanel/panel/user/templates/home/index_old.html:45
+#: hiddifypanel/panel/user/templates/home/multi.html:39
 msgid "ios"
 msgstr "آی‌او‌اس"
 
 # | msgid "Desktop"
-#: hiddifypanel/panel/user/templates/home/index.html:46
-#: hiddifypanel/panel/user/templates/home/multi.html:40
+#: hiddifypanel/panel/user/templates/home/index_old.html:47
+#: hiddifypanel/panel/user/templates/home/multi.html:41
 msgid "desktop"
 msgstr "دسکتاپ"
 
 # | msgid "Please select your operating system."
-#: hiddifypanel/panel/user/templates/home/index.html:53
-#: hiddifypanel/panel/user/templates/home/multi.html:47
+#: hiddifypanel/panel/user/templates/home/index_old.html:54
+#: hiddifypanel/panel/user/templates/home/multi.html:48
 msgid "user.home.select os"
 msgstr "لطفا سیستم عامل خود را انتخاب کنید."
 
 # | msgid "All Configs"
-#: hiddifypanel/panel/user/templates/home/index.html:88
-#: hiddifypanel/panel/user/templates/home/multi.html:82
+#: hiddifypanel/panel/user/templates/home/index_old.html:89
+#: hiddifypanel/panel/user/templates/home/multi.html:83
 msgid "user.home.all_configs"
 msgstr "تمام کانفیگ‌ها"
 
 # | msgid "Speedtest (detect dirty IP)"
-#: hiddifypanel/panel/user/templates/home/index.html:90
-#: hiddifypanel/panel/user/templates/home/multi.html:84
+#: hiddifypanel/panel/user/templates/home/index_old.html:91
+#: hiddifypanel/panel/user/templates/home/multi.html:85
 msgid "user.home.speedtest"
 msgstr "تست سرعت (شناسایی آی‌پی کثیف)"
 
 # | msgid "DNS over https"
-#: hiddifypanel/panel/user/templates/home/index.html:92
-#: hiddifypanel/panel/user/templates/home/multi.html:86
+#: hiddifypanel/panel/user/templates/home/index_old.html:93
+#: hiddifypanel/panel/user/templates/home/multi.html:87
 msgid "user.home.doh"
 msgstr "DNS روی HTTPS"
 
 # | msgid "Please select the item."
-#: hiddifypanel/panel/user/templates/home/index.html:98
-#: hiddifypanel/panel/user/templates/home/multi.html:92
+#: hiddifypanel/panel/user/templates/home/index_old.html:99
+#: hiddifypanel/panel/user/templates/home/multi.html:93
 msgid "user.home.select tool"
 msgstr "لطفا یکی از موارد زیر را انتخاب کنید."
 
 # | msgid "QR Code"
-#: hiddifypanel/panel/user/templates/home/index.html:124
-#: hiddifypanel/panel/user/templates/home/multi.html:118
+#: hiddifypanel/panel/user/templates/home/index_old.html:125
+#: hiddifypanel/panel/user/templates/home/multi.html:119
 #: hiddifypanel/panel/user/templates/home/usage.html:68
 msgid "QR code"
 msgstr "کیوآر کد"
@@ -2278,8 +2280,8 @@ msgstr "کیوآر کد"
 # | "To copy or share links, click on the gray <i class='fa-solid
 # fa-qrcode'></i>"
 # | " field to display its QR Code."
-#: hiddifypanel/panel/user/templates/home/index.html:125
-#: hiddifypanel/panel/user/templates/home/multi.html:119
+#: hiddifypanel/panel/user/templates/home/index_old.html:126
+#: hiddifypanel/panel/user/templates/home/multi.html:120
 #: hiddifypanel/panel/user/templates/home/usage.html:69
 msgid "user.home.qr-code.description"
 msgstr ""
@@ -2288,27 +2290,27 @@ msgstr ""
 "شود."
 
 # | msgid "Display QR Code"
-#: hiddifypanel/panel/user/templates/home/index.html:133
-#: hiddifypanel/panel/user/templates/home/multi.html:127
+#: hiddifypanel/panel/user/templates/home/index_old.html:134
+#: hiddifypanel/panel/user/templates/home/multi.html:128
 #: hiddifypanel/panel/user/templates/home/usage.html:77
 msgid "user.home.qr-code.display"
 msgstr "نمایش کیو آر کد"
 
 # | msgid "Next"
-#: hiddifypanel/panel/user/templates/home/index.html:343
-#: hiddifypanel/panel/user/templates/home/multi.html:337
+#: hiddifypanel/panel/user/templates/home/index_old.html:344
+#: hiddifypanel/panel/user/templates/home/multi.html:338
 msgid "next"
 msgstr "بعدی"
 
 # | msgid "Previous"
-#: hiddifypanel/panel/user/templates/home/index.html:344
-#: hiddifypanel/panel/user/templates/home/multi.html:338
+#: hiddifypanel/panel/user/templates/home/index_old.html:345
+#: hiddifypanel/panel/user/templates/home/multi.html:339
 msgid "previous"
 msgstr "قبلی"
 
 # | msgid "Search"
-#: hiddifypanel/panel/user/templates/home/index.html:354
-#: hiddifypanel/panel/user/templates/home/multi.html:348
+#: hiddifypanel/panel/user/templates/home/index_old.html:355
+#: hiddifypanel/panel/user/templates/home/multi.html:349
 msgid "search"
 msgstr "جستجو"
 
@@ -2790,35 +2792,48 @@ msgstr ""
 "بگیرید."
 
 # | msgid "Close"
-#: hiddifypanel/templates/macros.html:28 hiddifypanel/templates/master.html:135
+#: hiddifypanel/templates/macros.html:28 hiddifypanel/templates/master.html:138
 msgid "close"
 msgstr "بستن"
 
 # | msgid "Share to social media"
-#: hiddifypanel/templates/master.html:117
+#: hiddifypanel/templates/master.html:120
 msgid "user.home.share-title"
 msgstr "اشتراک‌گذاری"
 
 # | msgid "Link for social media"
-#: hiddifypanel/templates/master.html:127
+#: hiddifypanel/templates/master.html:130
 msgid "clickable copy"
 msgstr "لینک برای شبکه‌های اجتماعی"
 
 # | msgid "Open"
-#: hiddifypanel/templates/master.html:128
+#: hiddifypanel/templates/master.html:131
 msgid "open"
 msgstr "باز کردن"
 
 # | msgid "Link Copied to clipboard. "
-#: hiddifypanel/templates/master.html:190
+#: hiddifypanel/templates/master.html:193
 msgid "user.home.link.success-copy"
 msgstr "لینک کپی شد. "
 
 # | msgid "Copy to clipboard:  Ctrl+C, Enter"
-#: hiddifypanel/templates/master.html:192
 #: hiddifypanel/templates/master.html:195
+#: hiddifypanel/templates/master.html:198
 msgid "user.home.link.manual-copy"
 msgstr "برای کپی کردن به کلیپ‌بورد: دکمه Ctrl+C را بزنید."
+
+#: hiddifypanel/templates/master.html:248
+msgid "Install"
+msgstr "نصب"
+
+#: hiddifypanel/templates/master.html:277
+msgid "Install Hiddify Application"
+msgstr "نصب پنل هیدیفای"
+
+#: hiddifypanel/templates/master.html:278
+#, python-format
+msgid "Please click on %(install)s to save the user page."
+msgstr "روی %(install)s کلیک کنید تا صفحه کاربر ذخیره شود."
 
 #: hiddifypanel/templates/hiddify-flask-admin/list.html:65
 msgid "Count:"

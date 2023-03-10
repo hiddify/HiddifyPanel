@@ -1,5 +1,5 @@
 
-from flask import abort, render_template,request,Response,g
+from flask import abort, render_template,request,Response,g,url_for,jsonify
 from wtforms.validators import Regexp,ValidationError
 import urllib,uuid
 import datetime
@@ -92,6 +92,32 @@ class UserView(FlaskView):
         resp.headers['Subscription-Userinfo']=f"upload=0;download={c['usage_current_b']};total={c['usage_limit_b']};expire={c['expire_s']}"
         return resp
 
+    @route('/manifest.webmanifest')
+    def create_pwa_manifest(self):
+        
+        domain=urlparse(request.base_url).hostname
+        name=(domain if g.is_admin else g.user.name)
+        return jsonify({
+        "name": f"Hiddify {name}",
+        "short_name": f"{name}"[:12],
+        "theme_color": "#4b5beb",
+        "background_color": "#fcebf4",
+        "display": "standalone",
+        "scope": f"/",
+        "start_url": f"https://{domain}"+url_for("admin.Dashboard:index" if g.is_admin else "user2.UserView:new_1"),
+        "description": "Hiddify, for a free Internet",
+        "orientation": "any",
+        "icons": [
+            {
+                "src": url_for('static', filename='images/pwa-icon.png'),
+                "sizes": "256x256"
+            }
+        ]
+        })
+    
+    @route("/offline.html")
+    def offline():
+        return f"Not Connected <a href='/{hconfig(ConfigEnum.proxy_path)}/{g.user.uuid}/'>click for reload</a>"
 def do_base_64(str):
     import base64
     resp=base64.b64encode(f'{str}'.encode("utf-8"))
@@ -179,4 +205,3 @@ def get_common_data(user_uuid,mode,no_domain=False,filter_domain=None):
 
     }
     
-
