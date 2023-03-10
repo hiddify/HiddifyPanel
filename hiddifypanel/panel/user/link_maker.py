@@ -143,7 +143,7 @@ def make_proxy(proxy,domain_db,phttp=80,ptls=443):
     
     if "XTLS" in proxy.transport:
         base['flow']='xtls-rprx-vision'
-        return {**base, 'transport': 'tcp', 'l3': 'xtls', 'alpn':'h2'}
+        return {**base, 'transport': 'tcp', 'l3': 'xtls'}
     if "tcp" in proxy.transport:
         base['transport']='tcp'
         base['path']=f'/{path[base["proto"]]}{hconfigs[ConfigEnum.path_tcp]}'
