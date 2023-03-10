@@ -95,7 +95,8 @@ def make_proxy(proxy, domain_db, phttp=80, ptls=443):
         return None
     if l3 == "http" and base["proto"] in ["ss", "ssr"]:
         return
-
+    if proxy.proto in ProxyProto.vmess:
+        base['cipher']="chacha20-poly1305"
     if "Fake" in proxy.cdn:
         if not hconfigs[ConfigEnum.domain_fronting_domain]:
             return
@@ -119,7 +120,7 @@ def make_proxy(proxy, domain_db, phttp=80, ptls=443):
     }
 
     if base["proto"] in ['v2ray', 'ss', 'ssr']:
-        base['chipher'] = 'chacha20-ietf-poly1305'
+        base['cipher'] = 'chacha20-ietf-poly1305'
         if "shadowtls" not in proxy.transport:
             base['uuid'] = f'{hconfigs[ConfigEnum.shared_secret]}'
 
@@ -184,7 +185,7 @@ def to_link(proxy):
                       "port": proxy['port'],
                       "id": proxy["uuid"],
                       "aid": "0",
-                      "scy": "chacha20-poly1305",
+                      "scy": proxy['cipher'],
                       "net": proxy["transport"],
                       "type": vmess_type,
                       "host": proxy.get("host", ""),
@@ -259,7 +260,7 @@ def to_clash(proxy, meta_or_normal):
     base["port"] = proxy["port"]
     base['alpn'] = proxy['alpn'].split(',')
     if proxy["proto"] == "ssr":
-        base["cipher"] = proxy["chipher"]
+        base["cipher"] = proxy["cipher"]
         base["password"] = proxy["uuid"]
         base["udp"] = True
         base["obfs"] = proxy["ssr-obfs"]
@@ -267,7 +268,7 @@ def to_clash(proxy, meta_or_normal):
         base["obfs-param"] = proxy["fakedomain"]
         return base
     elif proxy["proto"] in ["ss", "v2ray"]:
-        base["cipher"] = proxy["chipher"]
+        base["cipher"] = proxy["cipher"]
         base["password"] = proxy["uuid"]
         base["udp_over_tcp"] = True
         if proxy["transport"] == "faketls":
@@ -310,7 +311,7 @@ def to_clash(proxy, meta_or_normal):
 
     if proxy["proto"] == "vmess":
         base["alterId"] = 0
-        base["cipher"] = proxy["chipher"]
+        base["cipher"] = proxy["cipher"]
     base["udp"] = True
 
     base["skip-cert-verify"] = proxy["mode"] == "Fake"
