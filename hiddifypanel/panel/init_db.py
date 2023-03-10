@@ -91,10 +91,10 @@ def init_db():
     return BoolConfig.query.all()
 
 def _v21():
-    http_ports=[p for p in hconfig(ConfigEnum.http_ports).split(",") if p!="80"]
-    tls_ports=[p for p in hconfig(ConfigEnum.tls_ports).split(",") if p!="443"]
-    set_hconfig(ConfigEnum.tls_ports,",".join(tls_ports))
-    set_hconfig(ConfigEnum.http_ports,",".join(http_ports))
+    # http_ports=[p for p in hconfig(ConfigEnum.http_ports).split(",") if p!="80"]
+    # tls_ports=[p for p in hconfig(ConfigEnum.tls_ports).split(",") if p!="443"]
+    # set_hconfig(ConfigEnum.tls_ports,",".join(tls_ports))
+    # set_hconfig(ConfigEnum.http_ports,",".join(http_ports))
     
     db.session.bulk_save_objects(get_proxy_rows_v1())
 
