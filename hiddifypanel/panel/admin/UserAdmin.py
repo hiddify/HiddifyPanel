@@ -24,6 +24,7 @@ class UserAdmin(AdminLTEModelView):
     }
     list_template = 'model/user_list.html'    
     form_excluded_columns=['monthly','last_online','expiry_time','last_reset_time','current_usage_GB','start_date']
+    page_size=50
     # edit_modal=True
     # create_modal=True
     # column_display_pk = True
