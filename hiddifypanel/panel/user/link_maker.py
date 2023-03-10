@@ -354,7 +354,9 @@ def to_clash(proxy, meta_or_normal):
 def get_all_clash_configs(meta_or_normal, domains):
     allphttp=request.args.get("phttp","").split(',')
     allptls=request.args.get("ptls","").split(',')
-
+    allptls.remove("")
+    allphttp.remove("")
+    
     allp = []
     for d in domains:
         hconfigs = get_hconfigs(d.child_id)
