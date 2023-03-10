@@ -337,7 +337,7 @@ def get_proxy_rows_v1():
         # 'grpc Fake vmess',
         # "XTLS direct vless",
         # "XTLS direct trojan",
-        "XTLS direct vless"
+        "XTLS direct vless",
         "WS direct vless",
         "WS direct trojan",
         "WS direct vmess",
