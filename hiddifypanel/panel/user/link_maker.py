@@ -310,7 +310,7 @@ def to_clash(proxy, meta_or_normal):
 
     if proxy["proto"] == "vmess":
         base["alterId"] = 0
-        base["cipher"] = "auto"
+        base["cipher"] = proxy["chipher"]
     base["udp"] = True
 
     base["skip-cert-verify"] = proxy["mode"] == "Fake"
