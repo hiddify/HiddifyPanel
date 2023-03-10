@@ -351,7 +351,7 @@ def get_proxy_rows_v1():
         "tcp direct vmess",
         "grpc direct vless",
         "grpc direct trojan",
-        "grpc direct vmess"
+        "grpc direct vmess",
         # "h1 direct vless",
         # "h1 direct vmess",
         "faketls direct ss",
