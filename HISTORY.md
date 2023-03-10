@@ -1,6 +1,18 @@
 # Changelog
 
 
+## 2.0.1 (2023-03-10)
+
+#### Changes
+
+* Update android hiddify app. 
+
+#### Fix
+
+* Update translations. 
+
+
+
 ## 2.0.0 (2023-03-10)
 
 #### New
