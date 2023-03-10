@@ -1,6 +1,138 @@
 # Changelog
 
 
+## 2.0.0 (2023-03-10)
+
+#### New
+
+* Add splash. 
+
+* Same format. 
+
+* Add splash screen. 
+
+* Adding panel app :) 
+
+* Increase user page size to 50. 
+
+* Add encryption to vmess. 
+
+* Add tls_h2 in sublinks. 
+
+* Add h2 protocols. 
+
+* Add encryption for vmess for better hidding traffic in http. 
+
+* You can now remove port 80 and 443 from the proxies. 
+
+* Convert old domain fronting configs to fake. 
+
+* Open bot directly in telegram. 
+
+* Open tgbot directly in telegram. 
+
+* Add h2 support. 
+
+* Add ios, none, edge, random to the utls settings. 
+
+* Do not show http if http is diabled. 
+
+* Add ports to all configs and in clash configs. 
+
+* Make proxynames editable. 
+
+* Add multiple ports. 
+
+* Support multiple ports. 
+
+#### Changes
+
+* Remove fingerprint. 
+
+* Add get_domain. 
+
+* Optimise link maker. 
+
+* Move utls config to tls config. 
+
+#### Fix
+
+* Disable some protocols in clash. 
+
+* Clash bugs. 
+
+* Add port. 
+
+* Bug in model. 
+
+* Cipher. 
+
+* Configs in clash. 
+
+* Clash links. 
+
+* Clash proxies. 
+
+* Ptls bug. 
+
+* Clash proxies. 
+
+* H2 links. 
+
+* Linkmaker. 
+
+* Import. 
+
+* Add vless xtls. 
+
+* H2 not showing. 
+
+* Show v2ray configs if enabled. 
+
+* Db. 
+
+* Ports. 
+
+* Typo. 
+
+* Alpn. 
+
+* Bug in clash. 
+
+* Bug in ws. 
+
+* Domain bug. 
+
+* Clash bug. 
+
+* Revert using api for disconnect connect users. 
+
+* Domain. 
+
+* Typo. 
+
+* Python bug. 
+
+* Typo. 
+
+* Not showing apply config dialog. 
+
+* Delete h1 in transport. 
+
+* Sublink for ios. 
+
+* Vmess host not in link. 
+
+#### Other
+
+* Fix support page. 
+
+* Remove extra log. 
+
+* Fix xtls alpn. 
+
+
+
 ## 1.6.8 (2023-03-09)
 
 #### Fix
