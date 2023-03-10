@@ -24,8 +24,8 @@ dns:
   prefer-h3: true #Enable DoH support for HTTP/3,
   % endif
   fake-ip-filter:
-     - '{{domain}}'
-     - '{{hconfigs[ConfigEnum.telegram_fakedomain]}}'
+     - "{{domain}}"
+     - "{{hconfigs[ConfigEnum.telegram_fakedomain]}}"
   default-nameserver:
     - 1.1.1.1
     - 8.8.8.8
@@ -51,13 +51,14 @@ proxy-groups:
     proxies:
       - automatic
       - sequential 
-    use:
-      %for phttp in hconfigs[ConfigEnum.http_ports].split(',')
-      - all_proxies_{{phttp}}
-      %endfor
-      %for ptls in hconfigs[ConfigEnum.tls_ports].split(',')
-      - all_proxies_{{ptls}}
-      %endfor
+      {{link_maker.get_clash_config_names(meta_or_normal,domains)|indent(6)}}
+    # use:
+    #   %for phttp in hconfigs[ConfigEnum.http_ports].split(',')
+    #   - all_proxies_{{phttp}}
+    #   %endfor
+    #   %for ptls in hconfigs[ConfigEnum.tls_ports].split(',')
+    #   - all_proxies_{{ptls}}
+    #   %endfor
     type: select
 
 
@@ -69,7 +70,7 @@ proxy-groups:
 
   - name: automatic
     type: fallback
-    url: 'http://cp.cloudflare.com'
+    url: "http://cp.cloudflare.com"
     interval: 300
     proxies:
         # - "load-balance"
@@ -83,26 +84,28 @@ proxy-groups:
 
   - name: sequential
     type: fallback
-    url: 'http://cp.cloudflare.com'
+    url: "http://cp.cloudflare.com"
     interval: 300
     proxies:
-    use:
-      %for phttp in hconfigs[ConfigEnum.http_ports].split(',')
-      - all_proxies_{{phttp}}
-      %endfor
-      %for ptls in hconfigs[ConfigEnum.tls_ports].split(',')
-      - all_proxies_{{ptls}}
-      %endfor
+      {{link_maker.get_clash_config_names(meta_or_normal,domains)|indent(6)}}
+    # use:
+    #   %for phttp in hconfigs[ConfigEnum.http_ports].split(',')
+    #   - all_proxies_{{phttp}}
+    #   %endfor
+    #   %for ptls in hconfigs[ConfigEnum.tls_ports].split(',')
+    #   - all_proxies_{{ptls}}
+    #   %endfor
 
   - name: auto
     proxies:
-    use:
-      %for phttp in hconfigs[ConfigEnum.http_ports].split(',')
-      - all_proxies_{{phttp}}
-      %endfor
-      %for ptls in hconfigs[ConfigEnum.tls_ports].split(',')
-      - all_proxies_{{ptls}}
-      %endfor
+      {{link_maker.get_clash_config_names(meta_or_normal,domains)|indent(6)}}
+    # use:
+    #   %for phttp in hconfigs[ConfigEnum.http_ports].split(',')
+    #   - all_proxies_{{phttp}}
+    #   %endfor
+    #   %for ptls in hconfigs[ConfigEnum.tls_ports].split(',')
+    #   - all_proxies_{{ptls}}
+    #   %endfor
 
     type: url-test
     url: http://cp.cloudflare.com
@@ -114,22 +117,22 @@ proxy-groups:
      
 {{link_maker.get_all_clash_configs(meta_or_normal,domains)}}
 
-proxy-providers:
-  %for t in (['http','tls'] if hconfigs[ConfigEnum.http_proxy_enable] else ['tls'])
-  %for port in hconfigs[ConfigEnum.http_ports if t=='http' else ConfigEnum.tls_ports].split(',')
-  %set phttp=port if t=='http' else None
-  %set ptls=port if t=='tls' else None
-  all_proxies_{{port}}:
-    type: http
-    url: "https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{(user.uuid)}}/clash/{{meta_or_normal}}/proxies.yml?mode={{mode}}&ptls={{ptls}}&phttp={{phttp}}&{{hash}}"
-    # path: {{domain}}/{{(user.uuid)}}-{{meta_or_normal}}-{{phttp}}-{{ptls}}-proxies{{hash}}.yaml
-    path: {{domain}}/{{phttp}}-{{ptls}}-{{hash}}.yaml
-    health-check:
-      enable: true
-      interval: 600
-      url: http://www.gstatic.com/generate_204    
-  %endfor
-  %endfor
+# proxy-providers:
+#   %for t in (['http','tls'] if hconfigs[ConfigEnum.http_proxy_enable] else ['tls'])
+#   %for port in hconfigs[ConfigEnum.http_ports if t=='http' else ConfigEnum.tls_ports].split(',')
+#   %set phttp=port if t=='http' else None
+#   %set ptls=port if t=='tls' else None
+#   all_proxies_{{port}}:
+#     type: http
+#     url: "https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{(user.uuid)}}/clash/{{meta_or_normal}}/proxies.yml?mode={{mode}}&ptls={{ptls}}&phttp={{phttp}}&{{hash}}"
+#     # path: {{domain}}/{{(user.uuid)}}-{{meta_or_normal}}-{{phttp}}-{{ptls}}-proxies{{hash}}.yaml
+#     path: {{domain}}/{{phttp}}-{{ptls}}-{{hash}}.yaml
+#     health-check:
+#       enable: true
+#       interval: 600
+#       url: http://www.gstatic.com/generate_204    
+#   %endfor
+#   %endfor
 rule-providers:
 
   blocked:

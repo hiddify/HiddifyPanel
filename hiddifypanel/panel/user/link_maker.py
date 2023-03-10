@@ -352,6 +352,36 @@ def to_clash(proxy, meta_or_normal):
     return base
 
 
+
+def get_clash_config_names(meta_or_normal, domains):
+    allphttp=[p for p in request.args.get("phttp","").split(',') if p]
+    allptls=[p for p in request.args.get("ptls","").split(',') if p]
+    
+    allp = []
+    for d in domains:
+        hconfigs = get_hconfigs(d.child_id)
+        for t in (['http', 'tls'] if hconfigs[ConfigEnum.http_proxy_enable] else ['tls']):
+
+            for port in hconfigs[ConfigEnum.http_ports if t == 'http' else ConfigEnum.tls_ports].split(','):
+
+                phttp = port if t == 'http' else None
+                ptls = port if t == 'tls' else None
+                if phttp and len(allphttp) and phttp not in allphttp:
+                    continue
+                if ptls and len(allptls) and ptls not in allptls:
+                    continue
+
+                for type in all_proxies():
+                    print(phttp, ptls)
+                    pinfo = make_proxy(type, d, phttp=phttp, ptls=ptls)
+                    if pinfo != None:
+                        clash = to_clash(pinfo, meta_or_normal)
+                        if clash:
+                            allp.append(clash['name'])
+
+    return yaml.dump(allp, sort_keys=False)
+
+
 def get_all_clash_configs(meta_or_normal, domains):
     allphttp=[p for p in request.args.get("phttp","").split(',') if p]
     allptls=[p for p in request.args.get("ptls","").split(',') if p]
