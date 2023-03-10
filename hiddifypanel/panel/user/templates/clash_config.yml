@@ -10,7 +10,7 @@ external-controller: 127.0.0.1:9090
 # ipv6: false
 ipv6: true
 % if meta_or_normal=='meta'
-global-client-fingerprint: {{hconfigs[ConfigEnum.utls]}}
+#global-client-fingerprint: {{hconfigs[ConfigEnum.utls]}}
 % endif
 mode: rule
 dns:
