@@ -45,7 +45,7 @@ def make_proxy(proxy,domain_db,phttp=80,ptls=443):
     hconfigs=get_hconfigs(child_id)
     port=0
     
-    if l3 in ["tls"]:
+    if l3 in [ProxyL3.tls,ProxyL3.tls_h2,ProxyL3.tls_h2_h1]:
         port = ptls
     elif l3 =="http":
         port = phttp
