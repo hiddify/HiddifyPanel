@@ -1,6 +1,6 @@
 from flask import g
 import enum
-from hiddifypanel.models import User,Domain,BoolConfig,StrConfig,DomainType,ConfigEnum,get_hconfigs,get_hdomains,hconfig,Proxy
+from hiddifypanel.models import *
 import yaml
 import json
 from hiddifypanel.panel import hiddify
