@@ -173,7 +173,8 @@
     wrappers[i].style.display = 'initial' ; 
   }
  
- } , '{{g.is_admin}}'=='True'? 0:1000  ) ;
+ } , '{{g.is_admin}}'=='True' || document.URL.indexOf("pwa")>0? 0:1000  ) ;
+
 </script>
 <!-- jQuery -->
 <script src="{{ url_for('static', filename="plugins/jquery/jquery.min.js" ) }}"></script>
