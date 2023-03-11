@@ -1,6 +1,14 @@
 # Changelog
 
 
+## 2.0.5 (2023-03-11)
+
+#### Changes
+
+* Remove  fingerprint. 
+
+
+
 ## 2.0.4 (2023-03-10)
 
 #### Fix
