@@ -27,7 +27,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install  gitchangelog pystache  
+          pip install  gitchangelog pystache   lastversion
       - name: Generate Changelog
         run: .github/release_message.sh > release_message.md
       - name: Release
@@ -47,7 +47,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install setuptools wheel twine pyarmor lastversion
+        pip install setuptools wheel twine pyarmor
     - name: Build and publish
       env:
         TWINE_USERNAME: __token__
