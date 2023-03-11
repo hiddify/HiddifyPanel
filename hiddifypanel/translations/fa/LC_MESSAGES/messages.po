@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-10 18:47+0100\n"
-"PO-Revision-Date: 2023-03-10 11:47-0600\n"
+"POT-Creation-Date: 2023-03-11 12:01+0100\n"
+"PO-Revision-Date: 2023-03-11 03:58-0600\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -1904,7 +1904,7 @@ msgstr "به جز vless"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:60
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:43
 #: hiddifypanel/panel/user/templates/home/android.html:79
-#: hiddifypanel/panel/user/templates/home/ios.html:27
+#: hiddifypanel/panel/user/templates/home/ios.html:30
 msgid "user.home.allconfig.link-configs"
 msgstr "لینک برای Subscription"
 
@@ -1971,7 +1971,8 @@ msgstr "گوگل‌پلی"
 #: hiddifypanel/panel/user/templates/home/android.html:26
 msgid "user.home.android.intro"
 msgstr ""
-"لطفاً HiddifyAndroid را از %(dl_link)s یا %(play_link)s نصب کنید.\n"
+"لطفاً HiddifyAndroid را از لینک‌(های) زیر نصب نمایید: <br>\n"
+"%(dl_link)s   یا    %(play_link)s \n"
 "<!--\n"
 "<div class=\"callout callout-danger\">\n"
 "    <b>اپ HiddifyAndroid را به ورژن 0.14 آپدیت کنید. </b>\n"
@@ -2069,7 +2070,7 @@ msgstr ""
 #: hiddifypanel/panel/user/templates/home/clash-links.html:11
 #: hiddifypanel/panel/user/templates/home/clash-links.html:23
 msgid "user.home.clash_configs.only_for_blocked_sites.btn"
-msgstr "نصب برای سایت‌های فیلتر"
+msgstr "پروفایل برای سایت‌های فیلتر"
 
 # | msgid "Alternative link for Clash"
 #: hiddifypanel/panel/user/templates/home/clash-links.html:14
@@ -2088,7 +2089,7 @@ msgstr "نصب کلش معمولی"
 # | msgid "Foreign sites proxy"
 #: hiddifypanel/panel/user/templates/home/clash-links.html:30
 msgid "user.home.clash_configs.foreign_sites.title"
-msgstr "پروکسی سایت‌های خارجی"
+msgstr "برای همه سایت‌های خارجی"
 
 # | msgid ""
 # | "Use proxy for all foreign sites (even not blocked ones).\n"
@@ -2098,8 +2099,8 @@ msgstr "پروکسی سایت‌های خارجی"
 #: hiddifypanel/panel/user/templates/home/clash-links.html:32
 msgid "user.home.clash_configs.foreign_sites.description"
 msgstr ""
-"استفاده از پروکسی برای همه سایت‌های خارجی (حتی سایت‌های غیر فیلتر) و "
-"سایت‌های ایرانی مستقیم وصل شوند.\n"
+"در این حالت همه سایت‌های خارجی (حتی سایت‌های غیر فیلتر) از پروکسی استفاده"
+" می‌کند و سایت‌های ایرانی مستقیم وصل خواهند شد.\n"
 "<div class=\"callout callout-warning\">\n"
 "در این این حالت همه سایت‌های خارجی (حتی فیلتر نشده‌ها)، از پروکسی عبور "
 "داده می‌شوند. برای دسترسی به بعضی از سایت‌های تحریم شده مفید است. \n"
@@ -2109,7 +2110,7 @@ msgstr ""
 #: hiddifypanel/panel/user/templates/home/clash-links.html:36
 #: hiddifypanel/panel/user/templates/home/clash-links.html:48
 msgid "user.home.clash_configs.foreign_sites.btn"
-msgstr "نصب برای سایت‌های خارجی"
+msgstr "پروفایل برای سایت‌های خارجی"
 
 # | msgid "Proxy for all sites"
 #: hiddifypanel/panel/user/templates/home/clash-links.html:56
@@ -2203,6 +2204,7 @@ msgstr ""
 #: hiddifypanel/panel/user/templates/home/index_old.html:8
 #: hiddifypanel/panel/user/templates/home/multi.html:2
 #: hiddifypanel/panel/user/templates/home/multi.html:10
+#: hiddifypanel/panel/user/templates/home/multi.html:12
 #: hiddifypanel/templates/master.html:62
 msgid "user.home.title"
 msgstr "هیدیفای"
@@ -2210,68 +2212,68 @@ msgstr "هیدیفای"
 # | msgid "Telegram"
 #: copy.html:27 hiddifypanel/panel/user/templates/home/index
 #: hiddifypanel/panel/user/templates/home/index_old.html:40
-#: hiddifypanel/panel/user/templates/home/multi.html:37
+#: hiddifypanel/panel/user/templates/home/multi.html:38
 msgid "telegram"
 msgstr "تلگرام"
 
 #: hiddifypanel/panel/user/templates/home/index_old.html:8
 #: hiddifypanel/panel/user/templates/home/multi.html:10
-#: hiddifypanel/panel/user/templates/home/multi.html:11
+#: hiddifypanel/panel/user/templates/home/multi.html:12
 #, python-format
 msgid "Welcome %(user)s"
 msgstr "%(user)s عزیز خوش آمدی."
 
 # | msgid "Android"
 #: hiddifypanel/panel/user/templates/home/index_old.html:43
-#: hiddifypanel/panel/user/templates/home/multi.html:40
+#: hiddifypanel/panel/user/templates/home/multi.html:41
 msgid "android"
 msgstr "اندروید"
 
 # | msgid "iOS"
 #: hiddifypanel/panel/user/templates/home/index_old.html:45
-#: hiddifypanel/panel/user/templates/home/multi.html:42
+#: hiddifypanel/panel/user/templates/home/multi.html:43
 msgid "ios"
 msgstr "آی‌او‌اس"
 
 # | msgid "Desktop"
 #: hiddifypanel/panel/user/templates/home/index_old.html:47
-#: hiddifypanel/panel/user/templates/home/multi.html:44
+#: hiddifypanel/panel/user/templates/home/multi.html:45
 msgid "desktop"
 msgstr "دسکتاپ"
 
 # | msgid "Please select your operating system."
 #: hiddifypanel/panel/user/templates/home/index_old.html:54
-#: hiddifypanel/panel/user/templates/home/multi.html:51
+#: hiddifypanel/panel/user/templates/home/multi.html:52
 msgid "user.home.select os"
 msgstr "لطفا سیستم عامل خود را انتخاب کنید."
 
 # | msgid "All Configs"
 #: hiddifypanel/panel/user/templates/home/index_old.html:89
-#: hiddifypanel/panel/user/templates/home/multi.html:86
+#: hiddifypanel/panel/user/templates/home/multi.html:87
 msgid "user.home.all_configs"
 msgstr "تمام کانفیگ‌ها"
 
 # | msgid "Speedtest (detect dirty IP)"
 #: hiddifypanel/panel/user/templates/home/index_old.html:91
-#: hiddifypanel/panel/user/templates/home/multi.html:88
+#: hiddifypanel/panel/user/templates/home/multi.html:89
 msgid "user.home.speedtest"
 msgstr "تست سرعت (شناسایی آی‌پی کثیف)"
 
 # | msgid "DNS over https"
 #: hiddifypanel/panel/user/templates/home/index_old.html:93
-#: hiddifypanel/panel/user/templates/home/multi.html:90
+#: hiddifypanel/panel/user/templates/home/multi.html:91
 msgid "user.home.doh"
 msgstr "DNS روی HTTPS"
 
 # | msgid "Please select the item."
 #: hiddifypanel/panel/user/templates/home/index_old.html:99
-#: hiddifypanel/panel/user/templates/home/multi.html:96
+#: hiddifypanel/panel/user/templates/home/multi.html:97
 msgid "user.home.select tool"
 msgstr "لطفا یکی از موارد زیر را انتخاب کنید."
 
 # | msgid "QR Code"
 #: hiddifypanel/panel/user/templates/home/index_old.html:125
-#: hiddifypanel/panel/user/templates/home/multi.html:122
+#: hiddifypanel/panel/user/templates/home/multi.html:123
 #: hiddifypanel/panel/user/templates/home/usage.html:68
 msgid "QR code"
 msgstr "کیوآر کد"
@@ -2281,7 +2283,7 @@ msgstr "کیوآر کد"
 # fa-qrcode'></i>"
 # | " field to display its QR Code."
 #: hiddifypanel/panel/user/templates/home/index_old.html:126
-#: hiddifypanel/panel/user/templates/home/multi.html:123
+#: hiddifypanel/panel/user/templates/home/multi.html:124
 #: hiddifypanel/panel/user/templates/home/usage.html:69
 msgid "user.home.qr-code.description"
 msgstr ""
@@ -2291,26 +2293,26 @@ msgstr ""
 
 # | msgid "Display QR Code"
 #: hiddifypanel/panel/user/templates/home/index_old.html:134
-#: hiddifypanel/panel/user/templates/home/multi.html:131
+#: hiddifypanel/panel/user/templates/home/multi.html:132
 #: hiddifypanel/panel/user/templates/home/usage.html:77
 msgid "user.home.qr-code.display"
 msgstr "نمایش کیو آر کد"
 
 # | msgid "Next"
 #: hiddifypanel/panel/user/templates/home/index_old.html:344
-#: hiddifypanel/panel/user/templates/home/multi.html:341
+#: hiddifypanel/panel/user/templates/home/multi.html:342
 msgid "next"
 msgstr "بعدی"
 
 # | msgid "Previous"
 #: hiddifypanel/panel/user/templates/home/index_old.html:345
-#: hiddifypanel/panel/user/templates/home/multi.html:342
+#: hiddifypanel/panel/user/templates/home/multi.html:343
 msgid "previous"
 msgstr "قبلی"
 
 # | msgid "Search"
 #: hiddifypanel/panel/user/templates/home/index_old.html:355
-#: hiddifypanel/panel/user/templates/home/multi.html:352
+#: hiddifypanel/panel/user/templates/home/multi.html:353
 msgid "search"
 msgstr "جستجو"
 
@@ -2335,7 +2337,7 @@ msgstr ""
 # | "        class=\"btn btn-primary orig-link\">shadowrocket</a> \n"
 # | "        </div>"
 #: copy.html:17 hiddifypanel/panel/user/templates/home/ios
-#: hiddifypanel/panel/user/templates/home/ios.html:9
+#: hiddifypanel/panel/user/templates/home/ios.html:11
 msgid "user.home.ios.stash.intro"
 msgstr ""
 "برای سیستم عامل iOS اپلیکیشن Stash و شدولینک یک اپ بسیار عالی است اما غیر"
@@ -2351,7 +2353,7 @@ msgstr ""
 "        </div>"
 
 # | msgid "fairVPN app"
-#: hiddifypanel/panel/user/templates/home/ios.html:19
+#: hiddifypanel/panel/user/templates/home/ios.html:22
 msgid "user.home.ios.others.title"
 msgstr "اپلیکیشن fairVPN"
 
@@ -2366,7 +2368,7 @@ msgstr "اپلیکیشن fairVPN"
 # | "</div>\n"
 # | "<br />\n"
 # | "Then apply one of the following configs:"
-#: hiddifypanel/panel/user/templates/home/ios.html:23
+#: hiddifypanel/panel/user/templates/home/ios.html:26
 msgid "user.home.ios.others.intro"
 msgstr ""
 "ابتدا یکی از این برنامه‌ها را نصب کنید:\n"
@@ -2532,8 +2534,8 @@ msgstr "لینوکس"
 #: hiddifypanel/panel/user/templates/home/windows.html:33
 msgid "user.home.windows.intro"
 msgstr ""
-"ابتدا نرم افزار هیدیفای دسکتاپ را با توجه به سیستم عامل خود دانلود و نصب "
-"کنید.\n"
+"ابتدا نرم افزار هیدیفای دسکتاپ را با توجه به سیستم عامل خود از لینکهای "
+"زیر دانلود و نصب کنید.\n"
 "<br>\n"
 "%(hiddify_desktop_links)s\n"
 "<details>\n"
@@ -2552,8 +2554,7 @@ msgstr ""
 "             %(normal_clash_link)s\n"
 "\n"
 "             <div class=\"alert alert-danger\">\n"
-"             Clash از پروتکل VLESS و شبیه سازی مرورگر را پشتیبانی نمی "
-"کند. بنابراین، باید لینک دیگری برای آن اضافه کنیم.\n"
+"             Clash از پروتکل VLESS و شبیه سازی مرورگر پشتیبانی نمی‌کند.\n"
 "             </div>\n"
 "            \n"
 "\n"
@@ -2562,9 +2563,10 @@ msgstr ""
 "         </details>\n"
 "\n"
 "<br>\n"
-"حال با توجه به نیاز خود می توانید روی یکی از دکمه ها کلیک کنید. با مشاهده"
-" پنجره در مرورگر خود، کافیست روی گزینه <b>Open</b> کلیک کنید تا لینک سرور"
-" به صورت خودکار به هیدیفای اضافه شود."
+"حال با توجه به نیاز خود می توانید پروفایل مورد نظر خود را با کلیک بر روی "
+"یکی از دکمه‌های زیر به نرم‌افزار وارد کنید. با مشاهده پنجره در مرورگر "
+"خود، کافیست روی گزینه <b>Open</b> کلیک کنید تا لینک سرور به صورت خودکار "
+"به هیدیفای اضافه شود."
 
 #: hiddifypanel/templates/500.html:7 hiddifypanel/templates/error.html:7
 msgid "Oops! Something went wrong."
@@ -2594,10 +2596,10 @@ msgstr "پنل مرکزی"
 msgid "admin.Actions:apply_configs"
 msgstr "اعمال تنظیمات"
 
-# | msgid "Admin"
+# | msgid "Dashboard"
 #: hiddifypanel/templates/admin-layout.html:63
 msgid "admin.menu.home"
-msgstr "ادمین"
+msgstr "داشبورد ادمین"
 
 #: hiddifypanel/templates/admin-layout.html:65
 msgid "Telegram Bot"
@@ -2822,18 +2824,17 @@ msgstr "لینک کپی شد. "
 msgid "user.home.link.manual-copy"
 msgstr "برای کپی کردن به کلیپ‌بورد: دکمه Ctrl+C را بزنید."
 
-# | msgid "Installation"
-#: hiddifypanel/templates/master.html:279
+#: hiddifypanel/templates/master.html:282
 msgid "Install"
 msgstr "نصب"
 
 # | msgid "Hifi panel installation"
-#: hiddifypanel/templates/master.html:308
+#: hiddifypanel/templates/master.html:362
 msgid "Install Hiddify Application"
 msgstr "نصب پنل هیدیفای"
 
 # | msgid "Click %(install)s to save the user page."
-#: hiddifypanel/templates/master.html:309
+#: hiddifypanel/templates/master.html:363
 #, python-format
 msgid "Please click on %(install)s to save the user page."
 msgstr "روی %(install)s کلیک کنید تا صفحه کاربر ذخیره شود."

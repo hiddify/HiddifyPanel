@@ -301,14 +301,16 @@
  }
 
  let deferredPrompt=null;
-function show_video(file){
-  $('#guide-video-mp4')[0].src="/{{hconfig(ConfigEnum.proxy_path)}}/videos/"+file+".mp4"
-  //$('#guide-modal').modal()
+
+function cancel_video(){
+  os="{{g.user_agent.browser.family}}"
+  is_safari=os.indexOf("Safari")>=0
   v=$('#guide-video')[0]
-  v.load()
-  v.requestFullscreen()
-  v.play()
-  $("#guide-video").on('ended', function(){
+  v.pause()
+    if (true || is_safari){
+      v.style.width="0px"
+      v.style.height="0px"
+    }
     if (document.exitFullscreen) {
         document.exitFullscreen(); // Standard
     } else if (document.webkitExitFullscreen) {
@@ -318,19 +320,53 @@ function show_video(file){
     } else if (document.msExitFullscreen) {
         document.msExitFullscreen(); // Old IE
     }
-});
+  
+}
+function show_video(file){
+  os="{{g.user_agent.browser.family}}"
+  is_safari=os.indexOf("Safari")>=0
+  $('#guide-video-mp4')[0].src="/{{hconfig(ConfigEnum.proxy_path)}}/videos/"+file+".mp4"
+  //$('#guide-modal').modal()
+  v=$('#guide-video')[0]
+  v.load()
+  is_safari=false
+  if (is_safari){
+    v.style.position="absolute"
+    v.style.width="100vw"
+    v.style.top="0px"
+    v.style.background="black"
+    v.style.height="100vh"
+  }
+  
+  
+  v.play()
+  $("#guide-video").on('ended', function(){
+  cancel_video();
+   });
+   v.addEventListener("fullscreenchange", function (event) {
+      if (document.fullscreenElement) {
+      } else {
+        cancel_video()
+    }
+  })
+  if (v.requestFullscreen)
+      v.requestFullscreen()
+  if (v.webkitEnterFullscreen)
+      v.webkitEnterFullscreen();
 }
  function show_prompt(){
   toast=$(document).Toasts('create', {
           class: 'bg-',
           position: '{{'bottomRight' if get_locale()=='fa' else 'bottomLeft'}}' ,
           image:"{{url_for('static', filename='images/pwa-icon.png')}}",
-          title: `{{_('Install Hiddify Application')}} <button class='btn btn-xs btn-info' onclick='show_video("webapp-ios")'><i class='fa-solid fa-question'></i></button>`,
+          title: `{{_('Install Hiddify Application')}} <button class='btn btn-xs btn-default' onclick='show_video("webapp-ios")'><i class='fa-solid fa-question'></i></button>`,
+          class:"toast-full",
           body: `{{_("Please click on %(install)s to save the user page.",install=pwa_install_btn()|safe)}}`
         })
   }
-%if g.user_agent.os.family=="iOS"
-  show_prompt()
+%if g.user_agent.os.family=="iOS" 
+  if (document.URL.indexOf("pwa")>0)
+    show_prompt()
 %endif
 window.addEventListener('beforeinstallprompt', (event) => {
   console.log("On before install")

@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-10 18:47+0100\n"
-"PO-Revision-Date: 2023-03-10 11:47-0600\n"
+"POT-Creation-Date: 2023-03-11 12:01+0100\n"
+"PO-Revision-Date: 2023-03-11 03:58-0600\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -1909,7 +1909,7 @@ msgstr "Except vless"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:60
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:43
 #: hiddifypanel/panel/user/templates/home/android.html:79
-#: hiddifypanel/panel/user/templates/home/ios.html:27
+#: hiddifypanel/panel/user/templates/home/ios.html:30
 msgid "user.home.allconfig.link-configs"
 msgstr "Subscription Link"
 
@@ -2197,6 +2197,7 @@ msgstr ""
 #: hiddifypanel/panel/user/templates/home/index_old.html:8
 #: hiddifypanel/panel/user/templates/home/multi.html:2
 #: hiddifypanel/panel/user/templates/home/multi.html:10
+#: hiddifypanel/panel/user/templates/home/multi.html:12
 #: hiddifypanel/templates/master.html:62
 msgid "user.home.title"
 msgstr "Hiddify"
@@ -2204,68 +2205,68 @@ msgstr "Hiddify"
 # | msgid "Telegram"
 #: copy.html:27 hiddifypanel/panel/user/templates/home/index
 #: hiddifypanel/panel/user/templates/home/index_old.html:40
-#: hiddifypanel/panel/user/templates/home/multi.html:37
+#: hiddifypanel/panel/user/templates/home/multi.html:38
 msgid "telegram"
 msgstr "Telegram"
 
 #: hiddifypanel/panel/user/templates/home/index_old.html:8
 #: hiddifypanel/panel/user/templates/home/multi.html:10
-#: hiddifypanel/panel/user/templates/home/multi.html:11
+#: hiddifypanel/panel/user/templates/home/multi.html:12
 #, python-format
 msgid "Welcome %(user)s"
 msgstr "Welcome %(user)s"
 
 # | msgid "Android"
 #: hiddifypanel/panel/user/templates/home/index_old.html:43
-#: hiddifypanel/panel/user/templates/home/multi.html:40
+#: hiddifypanel/panel/user/templates/home/multi.html:41
 msgid "android"
 msgstr "Android"
 
 # | msgid "iOS"
 #: hiddifypanel/panel/user/templates/home/index_old.html:45
-#: hiddifypanel/panel/user/templates/home/multi.html:42
+#: hiddifypanel/panel/user/templates/home/multi.html:43
 msgid "ios"
 msgstr "iOS"
 
 # | msgid "Desktop"
 #: hiddifypanel/panel/user/templates/home/index_old.html:47
-#: hiddifypanel/panel/user/templates/home/multi.html:44
+#: hiddifypanel/panel/user/templates/home/multi.html:45
 msgid "desktop"
 msgstr "Desktop"
 
 # | msgid "Please select your operating system."
 #: hiddifypanel/panel/user/templates/home/index_old.html:54
-#: hiddifypanel/panel/user/templates/home/multi.html:51
+#: hiddifypanel/panel/user/templates/home/multi.html:52
 msgid "user.home.select os"
 msgstr "Please select your operating system."
 
 # | msgid "All Configs"
 #: hiddifypanel/panel/user/templates/home/index_old.html:89
-#: hiddifypanel/panel/user/templates/home/multi.html:86
+#: hiddifypanel/panel/user/templates/home/multi.html:87
 msgid "user.home.all_configs"
 msgstr "All Configs"
 
 # | msgid "Speedtest (detect dirty IP)"
 #: hiddifypanel/panel/user/templates/home/index_old.html:91
-#: hiddifypanel/panel/user/templates/home/multi.html:88
+#: hiddifypanel/panel/user/templates/home/multi.html:89
 msgid "user.home.speedtest"
 msgstr "Speedtest (detect dirty IP)"
 
 # | msgid "DNS over https"
 #: hiddifypanel/panel/user/templates/home/index_old.html:93
-#: hiddifypanel/panel/user/templates/home/multi.html:90
+#: hiddifypanel/panel/user/templates/home/multi.html:91
 msgid "user.home.doh"
 msgstr "DNS over https"
 
 # | msgid "Please select the item."
 #: hiddifypanel/panel/user/templates/home/index_old.html:99
-#: hiddifypanel/panel/user/templates/home/multi.html:96
+#: hiddifypanel/panel/user/templates/home/multi.html:97
 msgid "user.home.select tool"
 msgstr "Please select the item."
 
 # | msgid "QR Code"
 #: hiddifypanel/panel/user/templates/home/index_old.html:125
-#: hiddifypanel/panel/user/templates/home/multi.html:122
+#: hiddifypanel/panel/user/templates/home/multi.html:123
 #: hiddifypanel/panel/user/templates/home/usage.html:68
 msgid "QR code"
 msgstr "QR Code"
@@ -2274,7 +2275,7 @@ msgstr "QR Code"
 # | "To copy or share links, click on the gray <i class='fa-solid fa-qrcode'>"
 # | "</i> field to display its QR Code."
 #: hiddifypanel/panel/user/templates/home/index_old.html:126
-#: hiddifypanel/panel/user/templates/home/multi.html:123
+#: hiddifypanel/panel/user/templates/home/multi.html:124
 #: hiddifypanel/panel/user/templates/home/usage.html:69
 msgid "user.home.qr-code.description"
 msgstr ""
@@ -2283,26 +2284,26 @@ msgstr ""
 
 # | msgid "Display QR Code"
 #: hiddifypanel/panel/user/templates/home/index_old.html:134
-#: hiddifypanel/panel/user/templates/home/multi.html:131
+#: hiddifypanel/panel/user/templates/home/multi.html:132
 #: hiddifypanel/panel/user/templates/home/usage.html:77
 msgid "user.home.qr-code.display"
 msgstr "Display QR Code"
 
 # | msgid "Next"
 #: hiddifypanel/panel/user/templates/home/index_old.html:344
-#: hiddifypanel/panel/user/templates/home/multi.html:341
+#: hiddifypanel/panel/user/templates/home/multi.html:342
 msgid "next"
 msgstr "Next"
 
 # | msgid "Previous"
 #: hiddifypanel/panel/user/templates/home/index_old.html:345
-#: hiddifypanel/panel/user/templates/home/multi.html:342
+#: hiddifypanel/panel/user/templates/home/multi.html:343
 msgid "previous"
 msgstr "Previous"
 
 # | msgid "Search"
 #: hiddifypanel/panel/user/templates/home/index_old.html:355
-#: hiddifypanel/panel/user/templates/home/multi.html:352
+#: hiddifypanel/panel/user/templates/home/multi.html:353
 msgid "search"
 msgstr "Search"
 
@@ -2327,7 +2328,7 @@ msgstr ""
 # | "        class=\"btn btn-primary orig-link\">shadowrocket</a> \n"
 # | "        </div>"
 #: copy.html:17 hiddifypanel/panel/user/templates/home/ios
-#: hiddifypanel/panel/user/templates/home/ios.html:9
+#: hiddifypanel/panel/user/templates/home/ios.html:11
 msgid "user.home.ios.stash.intro"
 msgstr ""
 "Stash is a great application. We think it worth buying.\n"
@@ -2341,7 +2342,7 @@ msgstr ""
 "        </div>"
 
 # | msgid "fairVPN app"
-#: hiddifypanel/panel/user/templates/home/ios.html:19
+#: hiddifypanel/panel/user/templates/home/ios.html:22
 msgid "user.home.ios.others.title"
 msgstr "fairVPN app"
 
@@ -2356,7 +2357,7 @@ msgstr "fairVPN app"
 # | "</div>\n"
 # | "<br />\n"
 # | "Then apply one of the following configs:"
-#: hiddifypanel/panel/user/templates/home/ios.html:23
+#: hiddifypanel/panel/user/templates/home/ios.html:26
 msgid "user.home.ios.others.intro"
 msgstr ""
 "First install one of the following applications:\n"
@@ -2576,10 +2577,10 @@ msgstr "Parent Panel"
 msgid "admin.Actions:apply_configs"
 msgstr "Apply Configs"
 
-# | msgid "Admin"
+# | msgid "Dashboard"
 #: hiddifypanel/templates/admin-layout.html:63
 msgid "admin.menu.home"
-msgstr "Admin"
+msgstr "Dashboard"
 
 #: hiddifypanel/templates/admin-layout.html:65
 #, fuzzy
@@ -2785,20 +2786,19 @@ msgstr "Link Copied to clipboard. "
 msgid "user.home.link.manual-copy"
 msgstr "Copy to clipboard:  Ctrl+C, Enter"
 
-# | msgid "Installation"
-#: hiddifypanel/templates/master.html:279
+#: hiddifypanel/templates/master.html:282
 #, fuzzy
 msgid "Install"
-msgstr "Installation"
+msgstr "Install"
 
 # | msgid "Hifi panel installation"
-#: hiddifypanel/templates/master.html:308
+#: hiddifypanel/templates/master.html:362
 #, fuzzy
 msgid "Install Hiddify Application"
 msgstr "Hifi panel installation"
 
 # | msgid "Click %(install)s to save the user page."
-#: hiddifypanel/templates/master.html:309
+#: hiddifypanel/templates/master.html:363
 #, fuzzy, python-format
 msgid "Please click on %(install)s to save the user page."
 msgstr "Click %(install)s to save the user page."
