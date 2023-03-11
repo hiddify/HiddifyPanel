@@ -276,7 +276,11 @@
 
 {% block tail %}
 {% macro pwa_install_btn() -%}
+%if ua.os.family=="iOS"
+<i class="fa-solid fa-arrow-up-from-bracket"></i>
+%else
 <button class='btn btn-success' onclick='install_pwa()'>{{_("Install")}}</button>
+%endif
 {%- endmacro -%}
 <script>
   $(document).ready(function () {
@@ -298,9 +302,7 @@
 
  let deferredPrompt=null;
 
-window.addEventListener('beforeinstallprompt', (event) => {
-  console.log("On before install")
-  if (deferredPrompt==null){
+ function show_prompt(){
   toast=$(document).Toasts('create', {
           class: 'bg-',
           position: '{{'bottomRight' if get_locale()=='fa' else 'bottomLeft'}}' ,
@@ -308,7 +310,13 @@ window.addEventListener('beforeinstallprompt', (event) => {
           title: "{{_('Install Hiddify Application')}}",
           body: `{{_("Please click on %(install)s to save the user page.",install=pwa_install_btn()|safe)}}`
         })
-      }
+  }
+%if ua.os.family=="iOS"
+  show_prompt()
+%endif
+window.addEventListener('beforeinstallprompt', (event) => {
+  console.log("On before install")
+  if (deferredPrompt==null) show_prompt()
   // Prevent Chrome 67 and earlier from automatically showing the prompt
   event.preventDefault();
   // Stash the event so it can be triggered later
@@ -316,6 +324,8 @@ window.addEventListener('beforeinstallprompt', (event) => {
   // Update UI notify the user they can add to home screen
   $('#install-pwa-btn').fadeIn();
 });
+
+
 
 install_pwa=() => {
   // Show the prompt
