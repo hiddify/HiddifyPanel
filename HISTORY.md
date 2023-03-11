@@ -1,21 +1,23 @@
 # Changelog
 
 
+## 2.1.4 (2023-03-11)
+
+#### Fix
+
+* Release bug. 
+
+
+
 ## 2.1.3 (2023-03-11)
 
 #### New
 
 * Update. 
 
-#### Changes
-
-* Show android webapp. 
-
 #### Fix
 
 * Exception in number of days. 
-
-* Add delay before finishing the request in applying actions. 
 
 #### Other
 
@@ -24,6 +26,18 @@
 * Update. 
 
 * Test. 
+
+
+
+## 2.1.2 (2023-03-11)
+
+#### Changes
+
+* Show android webapp. 
+
+#### Fix
+
+* Add delay before finishing the request in applying actions. 
 
 
 
