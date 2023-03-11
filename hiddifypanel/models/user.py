@@ -84,8 +84,10 @@ def days_to_reset(user):
     date is not available, the function returns the total days for the user's mode.
     """
     if user.start_date:
-        return package_mode_dic.get(user.mode,10000)-(datetime.date.today()-user.start_date).days % package_mode_dic.get(user.mode,10000)
-    return package_mode_dic.get(user.mode,10000)
+        days=package_mode_dic.get(user.mode,10000)-(datetime.date.today()-user.start_date).days % package_mode_dic.get(user.mode,10000)
+    else:
+        days= package_mode_dic.get(user.mode,10000)
+    return max(-100000,min(days,100000))
 
 
 
