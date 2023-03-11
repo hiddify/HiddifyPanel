@@ -359,13 +359,15 @@ function show_video(file){
           class: 'bg-',
           position: '{{'bottomRight' if get_locale()=='fa' else 'bottomLeft'}}' ,
           image:"{{url_for('static', filename='images/pwa-icon.png')}}",
-          title: `{{_('Install Hiddify Application')}} <button class='btn btn-xs btn-default' onclick='show_video("webapp-ios")'><i class='fa-solid fa-question'></i></button>`,
+          title: `{{_('Install Hiddify Application')}} <button class='btn btn-xs btn-default' onclick='show_video(is_ios?"webapp-ios":"webapp-android")'><i class='fa-solid fa-question'></i></button>`,
           class:"toast-full",
           body: `{{_("Please click on %(install)s to save the user page.",install=pwa_install_btn()|safe)}}`
         })
   }
+is_ios=false
 %if g.user_agent.os.family=="iOS" 
-  if (document.URL.indexOf("pwa")<0)
+is_ios=true
+if (document.URL.indexOf("pwa")<0)
     show_prompt()
 %endif
 window.addEventListener('beforeinstallprompt', (event) => {
