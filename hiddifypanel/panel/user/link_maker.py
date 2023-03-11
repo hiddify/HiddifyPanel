@@ -304,8 +304,8 @@ def to_clash(proxy, meta_or_normal):
         base["uuid"] = proxy["uuid"]
         base["servername"] = proxy["sni"]
         base["tls"] = "tls" in proxy["l3"]
-    if meta_or_normal == "meta":
-        base['client-fingerprint'] = proxy['fingerprint']
+    # if meta_or_normal == "meta":
+    #     base['client-fingerprint'] = proxy['fingerprint']
     if "xtls" == proxy['l3']:
         base["flow"] = proxy['flow']
         base["flow-show"] = True
