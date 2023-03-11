@@ -1,6 +1,26 @@
 # Changelog
 
 
+## 2.0.9 (2023-03-11)
+
+#### New
+
+* Update. 
+
+#### Fix
+
+* Exception in number of days. 
+
+#### Other
+
+* Pypi to hiddify-config. 
+
+* Update. 
+
+* Test. 
+
+
+
 ## 2.1.2 (2023-03-11)
 
 #### Changes
