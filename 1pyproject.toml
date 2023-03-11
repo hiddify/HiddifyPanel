@@ -1,0 +1,45 @@
+[project]
+name = "hiddifypanel"
+description = "hiddifypanel multi proxy panel"
+url = "https://github.com/hiddify/HiddifyPanel/"
+readme = "README.md"
+license = {file = "LICENSE"}
+dynamic = ["version","dependencies"]
+
+
+[tool.setuptools.package-data]
+hiddifypanel=["hiddifypanel/translations/*/LC_MESSAGES/*.mo"]
+
+
+[[tool.mypy.overrides]]
+module = ["markdown.*"]
+ignore_missing_imports = true
+
+[tool.hatch]
+dependency_file = "requirements.txt"
+
+authors = [
+    { name = "hiddify", email = "hiddify@gmail.com" }
+]
+
+[tool.setuptools.dynamic]
+version = {attr = "hiddifypanel.__version__"}
+
+[project.urls]
+Homepage = "https://github.com/hiddify/HiddifyPanel/"
+Documentation = "https://github.com/hiddify/hiddify-config/"
+
+[project.optional-dependencies]
+dev = [
+    "tox",
+    "pre-commit",
+    "bump2version"
+]
+[project.scripts]
+hiddifypanel = "hiddifypanel.__main__:main"
+
+[build-system]
+#requires = ["setuptools", "wheel", "pyarmor>7.2.0"]
+#build-backend = "pyarmor.build_meta"
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
