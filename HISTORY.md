@@ -1,6 +1,18 @@
 # Changelog
 
 
+## 2.1.2 (2023-03-11)
+
+#### Changes
+
+* Show android webapp. 
+
+#### Fix
+
+* Add delay before finishing the request in applying actions. 
+
+
+
 ## 2.1.1 (2023-03-11)
 
 #### Fix
