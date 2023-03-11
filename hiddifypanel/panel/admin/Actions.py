@@ -108,6 +108,8 @@ class Actions(FlaskView):
         )
 
         subprocess.Popen(f"{config.HIDDIFY_CONFIG_PATH}/{file}",cwd=f"{config.HIDDIFY_CONFIG_PATH}",start_new_session=True)
+        import time
+        time.sleep(1)
         return resp
 
 
@@ -124,6 +126,7 @@ class Actions(FlaskView):
         o = urlparse(request.base_url)
         domain=o.hostname
         subprocess.Popen(f"{config.HIDDIFY_CONFIG_PATH}/status.sh",cwd=f"{config.HIDDIFY_CONFIG_PATH}",start_new_session=True)
+        
         return render_template("result.html",
                             out_type="info",
                             out_msg=_("see the log in the bellow screen"),

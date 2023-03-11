@@ -172,11 +172,12 @@ class UserAdmin(AdminLTEModelView):
         xray_api.remove_client(model.uuid)
         # hiddify.flash_config_success()
 
-        
+
+    
     # def is_accessible(self):
     #     return g.is_admin
-    def on_form_prefill(self, form, id):
-        
+    def on_form_prefill(self, form, id=None):
+        print("================",form._obj.start_date)
         if not form._obj.start_date:
             msg= _("Package not started yet.") 
             # form.reset['class']="d-none"
