@@ -1,6 +1,16 @@
 # Changelog
 
 
+## 2.1.1 (2023-03-11)
+
+#### Fix
+
+* Showing toast on pwa. 
+
+* Video and toast. 
+
+
+
 ## 2.1.0 (2023-03-11)
 
 #### New
