@@ -1,6 +1,14 @@
 # Changelog
 
 
+## 2.1.0 (2023-03-11)
+
+#### New
+
+* Show notif on ios. 
+
+
+
 ## 2.0.5 (2023-03-11)
 
 #### Changes

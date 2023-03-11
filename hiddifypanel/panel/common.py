@@ -1,9 +1,10 @@
-from flask import g,jsonify,abort,render_template,request
+from flask import g,jsonify,abort,render_template,request,send_from_directory
 from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify
 import uuid
 from flask import g,send_from_directory,url_for
 import traceback
+import user_agents
 def init_app(app):    
     app.jinja_env.globals['ConfigEnum'] = ConfigEnum
     app.jinja_env.globals['DomainType'] = DomainType
@@ -32,7 +33,10 @@ def init_app(app):
             # values['proxy_path']=f'{g.proxy_path}'
             values['proxy_path']=hconfig(ConfigEnum.proxy_path)
 
-        
+    @app.route("/<proxy_path>/videos/<file>")
+    def videos(file):
+        print("file",file,app.config.HIDDIFY_CONFIG_PATH+'/hiddify-panel/videos/'+file)
+        return send_from_directory(app.config.HIDDIFY_CONFIG_PATH+'/hiddify-panel/videos/', file)
     # @app.template_filter()
     # def rel_datetime(value):
     #     diff=datetime.datetime.now()-value
@@ -46,11 +50,11 @@ def init_app(app):
         g.user=None
         g.user_uuid = None
         g.is_admin = False
-
+        g.user_agent =  user_agents.parse(request.user_agent.string)
         g.proxy_path =  values.pop('proxy_path', None) if values else None
         if g.proxy_path!=hconfig(ConfigEnum.proxy_path):
             abort(400,"Invalid Proxy Path")
-        if endpoint=='static':
+        if endpoint=='static' or endpoint=="videos":
             return
         tmp_secret=values.pop('user_secret', None) if values else None
         try:

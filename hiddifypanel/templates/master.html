@@ -1,6 +1,6 @@
 {% from 'bootstrap4/utils.html' import render_messages %}
 <!-- {% from 'macros.html' import render_toast %} -->
-
+{% from 'macros.html' import modal %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -130,7 +130,7 @@
 </div>
 <!-- ./wrapper -->
 
-
+{#modal("guide-modal","","<video id='guide-video' controls style='max-height: 100%; max-width: 100%;width6: auto; height: auto;'><source id='guide-video-mp4' type='video/mp4'></video>")#}
 
 <div class="modal fade" id="share-qr-code" role="dialog" aria-hidden="true" >
     <div class="modal-dialog" role="document">
@@ -276,7 +276,7 @@
 
 {% block tail %}
 {% macro pwa_install_btn() -%}
-%if ua.os.family=="iOS"
+%if g.user_agent.os.family=="iOS"
 <i class="fa-solid fa-arrow-up-from-bracket"></i>
 %else
 <button class='btn btn-success' onclick='install_pwa()'>{{_("Install")}}</button>
@@ -301,17 +301,35 @@
  }
 
  let deferredPrompt=null;
-
+function show_video(file){
+  $('#guide-video-mp4')[0].src="/{{hconfig(ConfigEnum.proxy_path)}}/videos/"+file+".mp4"
+  //$('#guide-modal').modal()
+  v=$('#guide-video')[0]
+  v.load()
+  v.requestFullscreen()
+  v.play()
+  $("#guide-video").on('ended', function(){
+    if (document.exitFullscreen) {
+        document.exitFullscreen(); // Standard
+    } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen(); // Blink
+    } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen(); // Gecko
+    } else if (document.msExitFullscreen) {
+        document.msExitFullscreen(); // Old IE
+    }
+});
+}
  function show_prompt(){
   toast=$(document).Toasts('create', {
           class: 'bg-',
           position: '{{'bottomRight' if get_locale()=='fa' else 'bottomLeft'}}' ,
           image:"{{url_for('static', filename='images/pwa-icon.png')}}",
-          title: "{{_('Install Hiddify Application')}}",
+          title: `{{_('Install Hiddify Application')}} <button class='btn btn-xs btn-info' onclick='show_video("webapp-ios")'><i class='fa-solid fa-question'></i></button>`,
           body: `{{_("Please click on %(install)s to save the user page.",install=pwa_install_btn()|safe)}}`
         })
   }
-%if ua.os.family=="iOS"
+%if g.user_agent.os.family=="iOS"
   show_prompt()
 %endif
 window.addEventListener('beforeinstallprompt', (event) => {
@@ -346,6 +364,7 @@ $('#install-pwa-btn').click(install_pwa)
 </script>
 <!-- <script src="{{url_for('static',filename='js/pwa-sw.js')}}" defer></script> -->
 {% endblock %}
+<video id='guide-video' controls style='max-height: 100%; max-width: 100%;width: 1px; height: 1px;'><source id='guide-video-mp4' type='video/mp4'></video>
 </body>
 </html>
 
