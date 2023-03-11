@@ -365,7 +365,7 @@ function show_video(file){
         })
   }
 %if g.user_agent.os.family=="iOS" 
-  if (document.URL.indexOf("pwa")>0)
+  if (document.URL.indexOf("pwa")<0)
     show_prompt()
 %endif
 window.addEventListener('beforeinstallprompt', (event) => {
