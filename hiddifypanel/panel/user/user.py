@@ -101,7 +101,7 @@ class UserView(FlaskView):
         "name": f"Hiddify {name}",
         "short_name": f"{name}"[:12],
         "theme_color": "#f2f4fb",
-        "background_color": "#f2f4fb",
+        "background_color": "#1a1b21",
         "display": "standalone",
         "scope": f"/",
         "start_url": f"https://{domain}"+url_for("admin.Dashboard:index" if g.is_admin else "user2.UserView:new_1")+"?pwa=true",

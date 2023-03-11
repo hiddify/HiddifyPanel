@@ -376,7 +376,7 @@ def add_or_update_domain(commit=True,child_id=0,**domain):
     if commit:
         db.session.commit()
 
-def add_or_update_user(commit=True,**user):
+def add_or_update_user1(commit=True,**user):
     dbuser = User.query.filter(User.uuid == user['uuid']).first()
 
     if not dbuser:

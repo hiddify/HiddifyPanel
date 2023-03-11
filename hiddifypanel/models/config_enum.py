@@ -35,12 +35,14 @@ class ConfigCategory(StrEnum):
     too_advanced=auto()
 
 class ConfigEnum(StrEnum):
+    license=auto()
     package_mode=auto()
     utls=auto()
     telegram_bot_token=auto()
     is_parent=auto()
     parent_panel=auto()
     unique_id=auto()
+    last_hash=auto()
     cdn_forced_host=auto() # removed
     lang = auto()
     admin_lang = auto()
@@ -113,6 +115,7 @@ class ConfigEnum(StrEnum):
       return cls.not_found #"key not found"
     def info(self):
         map = {
+            self.license:{'category': ConfigCategory.advanced},
             self.path_vmess:{'category': ConfigCategory.too_advanced},
             self.path_vless:{'category': ConfigCategory.too_advanced},
             self.path_trojan:{'category': ConfigCategory.too_advanced},
@@ -121,17 +124,18 @@ class ConfigEnum(StrEnum):
             self.path_ws:{'category': ConfigCategory.too_advanced},
             self.path_grpc:{'category': ConfigCategory.too_advanced},
             self.path_v2ray:{'category': ConfigCategory.hidden},
+            self.last_hash:{'category': ConfigCategory.hidden},
 
             self.utls: {'category': ConfigCategory.tls},
             self.package_mode: {'category': ConfigCategory.advanced,'show_in_parent':True},
-            self.telegram_bot_token: {'category': ConfigCategory.advanced,'show_in_parent':True},
+            self.telegram_bot_token: {'category': ConfigCategory.advanced,'show_in_parent':True,'permium':True},
             self.is_parent:{'category': ConfigCategory.hidden,'type':bool},
             self.parent_panel:{'category': ConfigCategory.advanced},
             self.unique_id:{'category': ConfigCategory.hidden,},
             self.cdn_forced_host:{'category': ConfigCategory.hidden,},
-            self.branding_title:{'category': ConfigCategory.branding,'show_in_parent':True},
-            self.branding_site:{'category': ConfigCategory.branding,'show_in_parent':True},
-            self.branding_freetext:{'category': ConfigCategory.branding,'show_in_parent':True},
+            self.branding_title:{'category': ConfigCategory.branding,'show_in_parent':True,'permium':True},
+            self.branding_site:{'category': ConfigCategory.branding,'show_in_parent':True,'permium':True},
+            self.branding_freetext:{'category': ConfigCategory.branding,'show_in_parent':True,'permium':True},
             self.not_found:{'category': ConfigCategory.hidden},
             self.admin_secret: {'category': ConfigCategory.admin,'show_in_parent':True},
             self.lang: {'category': ConfigCategory.branding,'show_in_parent':True},
