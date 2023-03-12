@@ -5,3 +5,11 @@ graft tests
 graft hiddifypanel
 graft hiddifypanel/static
 include hiddifypanel/static
+global-include  */templates/*
+
+#exclude hiddifypanel/base2.c
+#exclude hiddifypanel/base2.pyx
+global-exclude *.pyx
+global-exclude *.c
+global-exclude */__pycache__/*
+global-include *.so
