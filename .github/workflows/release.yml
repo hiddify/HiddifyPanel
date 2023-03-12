@@ -39,8 +39,7 @@ jobs:
   build_wheels:
     name: Build wheel for cp${{ matrix.python }}-${{ matrix.arch }}
     runs-on: ${{ matrix.os }}
-    needs: check_build_trigger
-    if: needs.check_build_trigger.outputs.build
+    needs: release
 
     strategy:
       # Ensure that a wheel builder finishes even if another fails
