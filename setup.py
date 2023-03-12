@@ -2,6 +2,7 @@
 import io
 import os
 from setuptools import find_packages, setup
+from Cython.Build import cythonize
 
 
 def read(*paths, **kwargs):
@@ -38,6 +39,8 @@ setup(
     long_description_content_type="text/markdown",
     author="hiddify",
     include_package_data=True,
+    # ext_modules=cythonize(["hiddifypanel/models/__init__.pyx","hiddifypanel/base2.pyx"]),    
+    ext_modules=cythonize(["hiddifypanel/base2.pyx"]),    
     
     packages=find_packages(exclude=["tests", ".github"]),
     install_requires=read_requirements("requirements.txt"),

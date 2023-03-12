@@ -12,7 +12,8 @@ def create_app(**config):
     app.jinja_env.line_statement_prefix = '%'
     flask_bootstrap.Bootstrap4(app)
     hiddifypanel.panel.database.init_app(app)
-
+    from .base2 import inference
+    inference(name="Bala")
     with app.app_context():
         init_db()
 
