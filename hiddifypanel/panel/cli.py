@@ -63,7 +63,7 @@ def admin_links():
         admin_secret=hconfig(ConfigEnum.admin_secret)
         server_ip=hiddify.get_ip(4)
         admin_links=f"Not Secure:\n   http://{server_ip}/{proxy_path}/{admin_secret}/admin/\n"
-        domains=[d.domain for d in Domain.query.all()]
+        domains=[d.domain for d in Domain.query.all() if d.mode != DomainType.fake]
         admin_links+=f"Secure:\n"
         # domains=[*domains,f'{server_ip}.sslip.io']
         for d in domains:
