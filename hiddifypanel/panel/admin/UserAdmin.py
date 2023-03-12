@@ -222,8 +222,8 @@ class UserAdmin(AdminLTEModelView):
         # else:
         #     xray_api.remove_client(model.uuid)
         # hiddify.flash_config_success()
-    def is_accessible(self):
-        return is_valid()
+    # def is_accessible(self):
+    #     return is_valid()
         
     def after_model_change(self,form, model, is_created):
         hiddify.quick_apply_users()
