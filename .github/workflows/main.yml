@@ -46,7 +46,9 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install project
-        run: make install
+        run: |
+          pip3 install cython
+          make install
       - name: Run tests
         run: make test
       - name: "Upload coverage to Codecov"

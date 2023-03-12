@@ -132,8 +132,7 @@ jobs:
       uses: pypa/cibuildwheel@v2.12.1
       env:
           CIBW_BEFORE_BUILD: pip install cython
-          CIBW_ARCHS_LINUX: "auto aarch64"
-    
+          CIBW_ARCHS_LINUX: "auto"
 
     - uses: actions/upload-artifact@v3
       with:
