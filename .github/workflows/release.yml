@@ -36,7 +36,7 @@ jobs:
           body_path: release_message.md
 
 
-build_wheels:
+  build_wheels:
     name: Build wheel for cp${{ matrix.python }}-${{ matrix.arch }}
     runs-on: ${{ matrix.os }}
     needs: check_build_trigger
