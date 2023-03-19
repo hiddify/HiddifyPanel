@@ -118,4 +118,4 @@ def validate_domain(form,field):
         if dip and myip!=dip:
                 raise ValidationError(_("Domain (%(domain)s)-> IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode",server_ip=myip,domain_ip=dip,domain=domain))
 def admin_link():
-        return "https://"+Domain.query.first().domain+hiddify.get_admin_path()
+        return "https://"+get_panel_domains().first().domain+hiddify.get_admin_path()
