@@ -4,6 +4,6 @@ requires-python = ">=3.8"
 requires = [
   "setuptools >= 40.9.0",
   "Cython",
-
+    "auditwheel-symbols"
 ]
 build-backend = "setuptools.build_meta"
