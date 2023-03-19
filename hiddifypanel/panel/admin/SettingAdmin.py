@@ -80,16 +80,16 @@ class SettingAdmin(FlaskView):
             flask_babel.refresh()
             flask_babelex.refresh()
             
-            if old_configs[ConfigEnum.proxy_path]!=hconfig(ConfigEnum.proxy_path):
-                from . import Actions
-                action=Actions()
-                return action.reinstall(complete_install=False,domain_changed=True)
+            
                 
-            hiddify.check_need_reset(old_configs)
+            register_bot()
+            
+            reset_action=hiddify.check_need_reset(old_configs)
+            if reset_action:
+                return reset_action
             
             if old_configs[ConfigEnum.admin_lang]!=hconfig(ConfigEnum.admin_lang):
                 form=get_config_form()
-            register_bot()
             return render_template('config.html', form=form)
         flash(_('config.validation-error'), 'danger')
         return render_template('config.html', form=form)

@@ -237,16 +237,21 @@ def validate_domain_exist(form, field):
             _("Domain can not be resolved! there is a problem in your domain"))
 
 
-def check_need_reset(old_configs):
+def check_need_reset(old_configs,do=False):
     restart_mode = ''
     for c in old_configs:
         if old_configs[c] != hconfig(c) and c.apply_mode():
             if restart_mode != 'reinstall':
                 restart_mode = c.apply_mode()
+
     # do_full_install=old_config[ConfigEnum.telegram_lib]!=hconfig(ConfigEnum.telegram_lib)
 
-    flash_config_success(restart_mode=restart_mode, domain_changed=False)
-
+    if do and restart_mode =='reinstall':
+        from hiddifypanel.admin.Actions import Actions
+        action=Actions()
+        return action.reinstall(complete_install=restart_mode =='reinstall', domain_changed=domain_changed)
+    else:
+        flash_config_success(restart_mode=restart_mode, domain_changed=False)
 
 
 def format_timedelta(delta, add_direction=True,granularity="days"):
