@@ -12,36 +12,23 @@ import random
 import uuid
 import urllib
 import string
-def init_db():
-    
-    
 
-    db.create_all()
+def init_db():
+    db.create_all()   
     
-    # db.engine.execute(f'ALTER TABLE child ADD COLUMN ip integer')
     try:
         db.engine.execute(f'update proxy set transport="WS" where transport = "ws"')
         db.engine.execute(f'DELETE from proxy where transport = "h1"')
-        column_type = User.start_date.type.compile(db.engine.dialect)
-        db.engine.execute(f'ALTER TABLE user ADD COLUMN start_date {column_type}')
-        column_type = User.package_days.type.compile(db.engine.dialect)
-        db.engine.execute(f'ALTER TABLE user ADD COLUMN package_days {column_type}')
     except:
         pass
-    try:
-        column_type = Child.unique_id.type.compile(db.engine.dialect)
-        db.engine.execute(f'ALTER TABLE child ADD COLUMN unique_id {column_type}')
-        column_type = Domain.alias.type.compile(db.engine.dialect)
-        db.engine.execute(f'ALTER TABLE domain ADD COLUMN alias {column_type}')
-        column_type = Domain.child_id.type.compile(db.engine.dialect)
-        db.engine.execute(f'ALTER TABLE domain ADD COLUMN child_id {column_type} DEFAULT 0')
-        column_type = Proxy.child_id.type.compile(db.engine.dialect)
-        db.engine.execute(f'ALTER TABLE proxy ADD COLUMN child_id {column_type} DEFAULT 0')
-        column_type = BoolConfig.child_id.type.compile(db.engine.dialect)
-        db.engine.execute(f'ALTER TABLE bool_config ADD COLUMN child_id {column_type} DEFAULT 0')
-        column_type = StrConfig.child_id.type.compile(db.engine.dialect)
-        db.engine.execute(f'ALTER TABLE str_config ADD COLUMN child_id {column_type} DEFAULT 0')
-    except:pass
+    add_column(User.start_date)
+    add_column(User.package_days)
+    add_column(Child.unique_id)
+    add_column(Domain.alias)
+    add_column(Domain.child_id)
+    add_column(Proxy.child_id)
+    add_column(BoolConfig.child_id)
+    add_column(StrConfig.child_id)
 
     if len(Domain.query.all())!=0 and BoolConfig.query.count()==0:
         db.engine.execute(f'DROP TABLE bool_config')
@@ -51,7 +38,7 @@ def init_db():
         db.engine.execute(f'ALTER TABLE str_config_old RENAME TO str_config')
 
     try:
-        db.engine.execute('ALTER TABLE user ADD COLUMN monthly BOOLEAN')
+        add_column(User.monthly)
         db.engine.execute('ALTER TABLE user RENAME COLUMN monthly_usage_limit_GB TO usage_limit_GB')       
     except:
         pass
@@ -60,11 +47,10 @@ def init_db():
         db.engine.execute(f'update bool_config set child_id=0 where child_id is NULL')
         db.engine.execute(f'update domain set child_id=0 where child_id is NULL')
         db.engine.execute(f'update proxy set child_id=0 where child_id is NULL')
-        column_type = Domain.cdn_ip.type.compile(db.engine.dialect)
-        db.engine.execute(f'ALTER TABLE domain ADD COLUMN cdn_ip {column_type}')
     except:
         pass
     
+    add_column(Domain.cdn_ip)
     db_version=int(hconfig(ConfigEnum.db_version) or 0) 
     start_version=db_version
     # print(f"Current DB version is {db_version}")
@@ -72,18 +58,22 @@ def init_db():
         print(Child.query.filter(Child.id==0).first())
         db.session.add(Child(unique_id="self",id=0))
         db.session.commit()
-    db_actions={1:_v1,2:_v2,3:_v3,6:_v6,9:_v9,10:_v10,11:_v11,12:_v12,13:_v13,14:_v14,16:_v16,17:_v17,19:_v19,20:_v20,21:_v21}
-    for ver,db_action in db_actions.items():
+    
+
+    for ver in range(1,100):
         if ver<=db_version:continue
+        db_action=locals().get(f'_{ver}',None)
+        if not db_action:continue
         if start_version==0 and ver==10:continue
+
         print(f"Updating db from version {db_version}")
         db_action()
-        
         print(f"Updated successfuly db from version {db_version} to {ver}")
+        
         db_version=ver
         db.session.commit()
         set_hconfig(ConfigEnum.db_version,db_version,commit=False)
-    # 
+    
     if hconfig(ConfigEnum.is_parent) and ParentDomain.query.count()==0:
         external_ip=hiddify.get_ip(4)
         db.session.add(ParentDomain(domain=f"{external_ip}.sslip.io",show_domains=[]))
@@ -91,11 +81,6 @@ def init_db():
     return BoolConfig.query.all()
 
 def _v21():
-    # http_ports=[p for p in hconfig(ConfigEnum.http_ports).split(",") if p!="80"]
-    # tls_ports=[p for p in hconfig(ConfigEnum.tls_ports).split(",") if p!="443"]
-    # set_hconfig(ConfigEnum.tls_ports,",".join(tls_ports))
-    # set_hconfig(ConfigEnum.http_ports,",".join(http_ports))
-    
     db.session.bulk_save_objects(get_proxy_rows_v1())
 
 
@@ -118,7 +103,6 @@ def _v19():
     set_hconfig(ConfigEnum.path_vless,get_random_string(7,15))
     set_hconfig(ConfigEnum.path_vmess,get_random_string(7,15))
     set_hconfig(ConfigEnum.path_ss,get_random_string(7,15))
-
     set_hconfig(ConfigEnum.path_grpc,get_random_string(7,15))
     set_hconfig(ConfigEnum.path_tcp,get_random_string(7,15))
     set_hconfig(ConfigEnum.path_ws,get_random_string(7,15))
@@ -138,26 +122,21 @@ def _v17():
             
             
 
-
 def _v16():
-    try:
-        if BoolConfig.query.filter(BoolConfig.key==ConfigEnum.tuic_enable).count()==0:
-            db.session.add(BoolConfig(key=ConfigEnum.tuic_enable,value=False,child_id=0))
-        if BoolConfig.query.filter(BoolConfig.key==ConfigEnum.shadowtls_enable).count()==0:
-            db.session.add(BoolConfig(key=ConfigEnum.shadowtls_enable,value=False,child_id=0))
-        if StrConfig.query.filter(StrConfig.key==ConfigEnum.shadowtls_fakedomain).count()==0:
-            db.session.add(StrConfig(key=ConfigEnum.shadowtls_fakedomain, value="en.wikipedia.org",child_id=0))
-    except Exception as e:
-        print(e)
+    
+    add_config_if_not_exist(ConfigEnum.tuic_enable,False)
+    add_config_if_not_exist(ConfigEnum.shadowtls_enable,False)
+    add_config_if_not_exist(ConfigEnum.shadowtls_fakedomain,"en.wikipedia.org")
+
 
         
 
 def _v14():
-    db.session.add(StrConfig(key=ConfigEnum.utls,value="chrome",child_id=0))
+    add_config_if_not_exist(ConfigEnum.utls,"chrome")
     
 def _v13():
-    db.session.add(StrConfig(key=ConfigEnum.telegram_bot_token,value="",child_id=0))
-    db.session.add(StrConfig(key=ConfigEnum.package_mode,value="release",child_id=0))
+    add_config_if_not_exist(ConfigEnum.telegram_bot_token,"")
+    add_config_if_not_exist(ConfigEnum.package_mode,"release")
 
 def _v12():
     db.engine.execute(f'drop TABLE child')
@@ -165,46 +144,34 @@ def _v12():
     db.session.add(Child(id=0,unique_id="default"))
 
 def _v11():
-    try:
-        column_type = User.last_online.type.compile(db.engine.dialect)
-        db.engine.execute(f'ALTER TABLE user ADD COLUMN last_online {column_type}')
-        # db.engine.execute(f'update user set last_online="1000-01-01 00:00:00" where last_online is NULL')
-    except:
-        pass
-    
+    add_column(User.last_online)
 
 
-def get_random_string(min_=10,max_=30):
-    # With combination of lower and upper case
-    length=random.randint(min_, max_)
-    characters = string.ascii_letters + string.digits
-    result_str = ''.join(random.choice(characters) for i in range(length))
-    return result_str
 
 
 def _v1():
         
         next10year = datetime.date.today() + relativedelta.relativedelta(years=6)
         external_ip=hiddify.get_ip(4)
-        
+        rnd_domains=get_random_domains(4)
         data = [
             StrConfig(key=ConfigEnum.db_version,value=1),
-            User(name="default",usage_limit_GB=9000,package_days=3650),
+            User(name="default",usage_limit_GB=3000,package_days=3650,mode=UserMode.weekly),
             Domain(domain=external_ip+".sslip.io",mode=DomainType.direct),
             StrConfig(key=ConfigEnum.admin_secret,value=str(uuid.uuid4())),
             StrConfig(key=ConfigEnum.http_ports,value="80"),
             StrConfig(key=ConfigEnum.tls_ports,value="443"),
             
-            StrConfig(key=ConfigEnum.decoy_domain,value="www.wikipedia.org"),
+            StrConfig(key=ConfigEnum.decoy_domain,value=rnd_domains[0]),
             StrConfig(key=ConfigEnum.proxy_path,value=get_random_string()),
-            BoolConfig(key=ConfigEnum.firewall,value=False),
+            BoolConfig(key=ConfigEnum.firewall,value=True),
             BoolConfig(key=ConfigEnum.netdata,value=True),
-            StrConfig(key=ConfigEnum.lang,value='en'),
+            StrConfig(key=ConfigEnum.lang,value='fa'),
             
             BoolConfig(key=ConfigEnum.block_iran_sites,value=True),
             BoolConfig(key=ConfigEnum.allow_invalid_sni,value=True),
-            # BoolConfig(key=ConfigEnum.kcp_enable,value=False),
-            # StrConfig(key=ConfigEnum.kcp_ports,value="88"),
+            BoolConfig(key=ConfigEnum.kcp_enable,value=False),
+            StrConfig(key=ConfigEnum.kcp_ports,value="88"),
             BoolConfig(key=ConfigEnum.auto_update,value=True),
             BoolConfig(key=ConfigEnum.speed_test,value=True),
             BoolConfig(key=ConfigEnum.only_ipv4,value=False),
@@ -216,22 +183,22 @@ def _v1():
             BoolConfig(key=ConfigEnum.telegram_enable,value=True),
             # StrConfig(key=ConfigEnum.telegram_secret,value=uuid.uuid4().hex),
             StrConfig(key=ConfigEnum.telegram_adtag,value=""),
-            StrConfig(key=ConfigEnum.telegram_fakedomain, value="www.wikipedia.org"),
+            StrConfig(key=ConfigEnum.telegram_fakedomain, value=rnd_domains[1]),
  
             BoolConfig(key=ConfigEnum.ssfaketls_enable,value=False),
             # StrConfig(key=ConfigEnum.ssfaketls_secret,value=str(uuid.uuid4())),
-            StrConfig(key=ConfigEnum.ssfaketls_fakedomain, value="fa.wikipedia.org"),
+            StrConfig(key=ConfigEnum.ssfaketls_fakedomain, value=rnd_domains[2]),
 
-            # BoolConfig(key=ConfigEnum.shadowtls_enable,value=False),
+            BoolConfig(key=ConfigEnum.shadowtls_enable,value=False),
             # StrConfig(key=ConfigEnum.shadowtls_secret,value=str(uuid.uuid4())),
-            # StrConfig(key=ConfigEnum.shadowtls_fakedomain, value="en.wikipedia.org"),
+            StrConfig(key=ConfigEnum.shadowtls_fakedomain, value=rnd_domains[3]),
 
-            # BoolConfig(key=ConfigEnum.ssr_enable,value=False),
-            # # StrConfig(key=ConfigEnum.ssr_secret,value=str(uuid.uuid4())),
-            # StrConfig(key=ConfigEnum.ssr_fakedomain, value="ar.wikipedia.org"),
+            BoolConfig(key=ConfigEnum.ssr_enable,value=False),
+            StrConfig(key=ConfigEnum.ssr_secret,value=str(uuid.uuid4())),
+            StrConfig(key=ConfigEnum.ssr_fakedomain, value=rnd_domains[4]),
 
-            # BoolConfig(key=ConfigEnum.tuic_enable,value=False),
-            # StrConfig(key=ConfigEnum.tuic_port,value=3048),
+            BoolConfig(key=ConfigEnum.tuic_enable,value=False),
+            StrConfig(key=ConfigEnum.tuic_port,value=3048),
 
             BoolConfig(key=ConfigEnum.domain_fronting_tls_enable,value=False),
             BoolConfig(key=ConfigEnum.domain_fronting_http_enable,value=False),
@@ -258,18 +225,15 @@ def _v1():
         db.session.bulk_save_objects(data)
 
 def _v2():
-    db.session.bulk_save_objects([
-            StrConfig(key=ConfigEnum.telegram_lib,value="python"),
-            StrConfig(key=ConfigEnum.admin_lang,value=hconfig(ConfigEnum.lang)),
-        ])
+    add_config_if_not_exist(ConfigEnum.telegram_lib, "python")
+    add_config_if_not_exist(ConfigEnum.admin_lang, hconfig(ConfigEnum.lang))
 
 def _v3():
-        db.session.bulk_save_objects([
-            StrConfig(key=ConfigEnum.branding_title,value=""),
-            StrConfig(key=ConfigEnum.branding_site,value=""),
-            StrConfig(key=ConfigEnum.branding_freetext,value=""),
-            BoolConfig(key=ConfigEnum.v2ray_enable,value=False),
-        ])
+    add_config_if_not_exist(ConfigEnum.branding_title, "")
+    add_config_if_not_exist(ConfigEnum.branding_site, "")
+    add_config_if_not_exist(ConfigEnum.branding_freetext, "")
+    add_config_if_not_exist(ConfigEnum.v2ray_enable, False)
+        
 
 def _v6():
     try:
@@ -284,31 +248,22 @@ def _v6():
 
 def _v9():
     try:
-        column_type = User.mode.type.compile(db.engine.dialect)
-        db.engine.execute(f'ALTER TABLE user ADD COLUMN mode {column_type}')
-        column_type = User.comment.type.compile(db.engine.dialect)
-        db.engine.execute(f'ALTER TABLE user ADD COLUMN comment {column_type}')
-        
+        add_column(User.mode)
+        add_column(User.comment)
         for u in User.query.all():
             u.mode= UserMode.monthly if u.monthly else UserMode.no_reset
     except:
         pass
     
-    db.session.bulk_save_objects(
-        [
-            BoolConfig(key=ConfigEnum.is_parent,value=False),
-            StrConfig(key=ConfigEnum.parent_panel,value=''),
-            StrConfig(key=ConfigEnum.unique_id,value=str(uuid.uuid4()))
-        ]
-    )
+    add_config_if_not_exist(ConfigEnum.is_parent, False)
+    add_config_if_not_exist(ConfigEnum.parent_panel, '')
+    add_config_if_not_exist(ConfigEnum.unique_id,str(uuid.uuid4()))
 
 def _v10():
     all_configs=get_hconfigs()
-    try:
-        
+    try:        
         db.engine.execute("ALTER TABLE `str_config` RENAME TO `str_config_old`")
         db.engine.execute("ALTER TABLE `bool_config` RENAME TO `bool_config_old`")
-        
     except:
         pass
     db.create_all()
@@ -373,6 +328,45 @@ def make_proxy_rows(cfgs):
                 continue
             if transport in ["grpc","XTLS","faketls"] and l3=="http":
                 continue
-
+            enable=l3!="http" or proto=="vmess"
             if not Proxy.query.filter(Proxy.l3==l3,Proxy.transport==transport,Proxy.cdn==cdn,Proxy.proto==proto).first():
-                yield Proxy(l3=l3,transport=transport,cdn=cdn,proto=proto,enable=True,name=f'{l3} {c}')
+                yield Proxy(l3=l3,transport=transport,cdn=cdn,proto=proto,enable=enable,name=f'{l3} {c}')
+
+
+def add_config_if_not_exist(key:ConfigEnum,val):
+    table=BoolConfig if key.type()==bool else StrConfig
+    if table.query.filter(table.key==key).count()==0:
+        db.session.add(table(key=key,value=val,child_id=0))
+def add_column(column):
+    try:
+        column_type = column.type.compile(db.engine.dialect)
+        db.engine.execute(f'ALTER TABLE {column.table.name} ADD COLUMN {column.name} {column_type}')
+    except:
+        pass
+
+
+def get_random_string(min_=10,max_=30):
+    # With combination of lower and upper case
+    length=random.randint(min_, max_)
+    characters = string.ascii_letters + string.digits
+    result_str = ''.join(random.choice(characters) for i in range(length))
+    return result_str
+
+def get_random_domains(count=1,retry=3):
+    try:
+        url="https://api.ooni.io/api/v1/measurements?probe_cc=IR&test_name=web_connectivity&anomaly=false&confirmed=false&failure=false&order_by=test_start_time&limit=1000"
+        import requests
+        data=requests.get(url).json()
+        from urllib.parse import urlparse
+        domains=[urlparse(d['input']).netloc.lower() for d in data['results'] if d['scores']['blocking_country']==0.0]
+        domains=[d for d in domains if not d.endswith(".ir")]
+        
+        return random.sample(domains, count)
+    except Exception as e:
+        print('Error, getting random domains... ',e,'retrying...',retry)
+        if retry<=0:
+            defdomains=["fa.wikipedia.org",'en.wikipedia.org','wikipedia.org','yahoo.com','en.yahoo.com']
+            print('Error, using default domains')
+            return defdomains.sample(domains, count)
+        return get_random_domains(count,retry-1)
+

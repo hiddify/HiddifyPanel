@@ -63,7 +63,7 @@ def admin_links():
         admin_secret=hconfig(ConfigEnum.admin_secret)
         server_ip=hiddify.get_ip(4)
         admin_links=f"Not Secure:\n   http://{server_ip}/{proxy_path}/{admin_secret}/admin/\n"
-        domains=[d.domain for d in Domain.query.all() if d.mode != DomainType.fake]
+        domains=get_panel_domains()
         admin_links+=f"Secure:\n"
         # domains=[*domains,f'{server_ip}.sslip.io']
         for d in domains:
@@ -84,11 +84,14 @@ def init_app(app):
     @app.cli.command()
     @click.option("--domain", "-d")
     def add_domain(domain):
-        if Domain.query.filter(Domain.domain==domain).first():
-            return "Domain already exist."    
+        table= ParentDomain if  hconfig(ConfigEnum.is_parent) else Domain
 
-        data = [Domain(domain=domain,mode=DomainType.direct)]
-        db.session.bulk_save_objects(data)
+        if table.query.filter(table.domain==domain).first():
+            return "Domain already exist."    
+        d=table(domain=domain)
+        if not hconfig(ConfigEnum.is_parent):
+            d.mode=DomainType.direct
+        db.session.add(d)
         db.session.commit()
         return "success"
         
