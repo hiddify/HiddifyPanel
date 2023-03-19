@@ -129,18 +129,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: convert to pyx
-      run: |
-      for l in $(cat ../.github/cython_files.txt)  ;do 
-       for f in $(find $l -name '*.py')  ;do 
-       if [[ $(basename $f) != "__init__.py" ]];then
-          mv $f ${f}x;
-       fi
-          
-          echo "#واقعا برای 5 دلار میخوای کرک میکنی؟ حاجی ارزش وقت خودت بیشتره. یه ایمیل بزن خودم بهت میدم نسخه کاملشو" > $(dirname $f)/read.py
-          echo "#You want to crack it only for 5\$?" >> $(dirname $f)/read.py
-        done
-         done
-
+      run: bash .github/cython_prepare.sh
     - name: Build wheels
       uses: pypa/cibuildwheel@v2.12.1
       env:
