@@ -1,10 +1,10 @@
 import click
 from flask.cli import FlaskGroup
 
-from . import create_app_wsgi
+from . import create_app_wsgi,create_cli_app
 
 
-@click.group(cls=FlaskGroup, create_app=create_app_wsgi)
+@click.group(cls=FlaskGroup, create_app=create_cli_app)
 def main():
     """Management script for the hiddifypanel application."""
 

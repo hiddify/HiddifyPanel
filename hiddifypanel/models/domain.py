@@ -1,10 +1,13 @@
 from sqlalchemy_serializer import SerializerMixin
-from flask import Flask
+from flask import Flask,flash,request
 from flask_sqlalchemy import SQLAlchemy
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
 from wtforms import SelectMultipleField
-
+from urllib.parse import urlparse
+from .config_enum import ConfigEnum,ConfigCategory
+from .config import hconfig
+from .parent_domain import ParentDomain
 from sqlalchemy.orm import backref
 
 from flask import Markup
@@ -48,11 +51,31 @@ class Domain(db.Model, SerializerMixin):
         return f'{self.domain}'
 
 
+def hdomains(mode):
+    domains = Domain.query.filter(Domain.mode == mode).all()
+    if domains:
+        return [d.domain for d in domains]
+    return []
+
+
+def hdomain(mode):
+    domains = hdomains(mode)
+    if domains:
+        return domains[0]
+    return None
+
+
+def get_hdomains():
+    return {mode: hdomains(mode) for mode in DomainType}
+
+
+
 def get_domain(domain):
     return Domain.query.filter(Domain.domain==domain).first()
 
 def get_panel_domains():
     if hconfig(ConfigEnum.is_parent):
+        
         return ParentDomain.query.all()    
     return Domain.query.filter(Domain.mode!=DomainType.fake).all()
 
@@ -65,6 +88,7 @@ def get_proxy_domains(domain):
 
 def get_proxy_domains_db(db_domain):
     if not db_domain:
+        domain=urlparse(request.base_url).hostname
         db_domain=Domain(domain=domain,mode=DomainType.direct,show_domains=[])
         print("no domain")
         flash(_("This domain does not exist in the panel!" + domain))
@@ -72,6 +96,8 @@ def get_proxy_domains_db(db_domain):
     return db_domain.show_domains or Domain.query.all()
 
 
-def get_current_proxy_domains():
-    domain=urlparse(request.base_url).hostname if not no_domain else None
+
+
+def get_current_proxy_domains(force_domain=None):
+    domain=force_domain or urlparse(request.base_url).hostname
     return get_proxy_domains(domain)

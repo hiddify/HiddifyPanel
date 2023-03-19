@@ -3,10 +3,14 @@ import os
 import json
 import sys
 from datetime import datetime
+from flask import request
 
-
-def inference(name="", tag=True):
-    print("test000000000000000000000000")
+def init_app(app):
+    @app.before_request
+    def test():
+        print(request.base_url)
+    pass   
+    # print(f"{app}")
     # print("Hello {}, the inference function has been successfully started".format(name))
     # attribute = str(datetime.now().strftime('%m-%d-%Y'))
     # response = "You license has been expired, please contact us."

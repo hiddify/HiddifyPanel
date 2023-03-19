@@ -38,7 +38,7 @@ def all_configs():
         "domains": [hiddify.domain_dict(u) for u in Domain.query.all()],
         "parent_domains": [hiddify.parent_domain_dict(u) for u in ParentDomain.query.all()],
         "hconfigs": get_hconfigs()
-        }
+    }
     for d in configs['domains']:
         d['domain']=d['domain'].lower()
         # del d['domain']['show_domains']

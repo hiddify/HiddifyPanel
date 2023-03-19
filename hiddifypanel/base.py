@@ -4,18 +4,19 @@ from dynaconf import FlaskDynaconf
 from flask import Flask, request, g
 from flask_babelex import Babel
 from hiddifypanel.panel.init_db import init_db
+import hiddifypanel
 
-
-def create_app(**config):
+def create_app(cli=False,**config):
     app = Flask(__name__, static_url_path="/<proxy_path>/static/", instance_relative_config=True)
     FlaskDynaconf(app)
     app.jinja_env.line_statement_prefix = '%'
+    app.is_cli=cli
     flask_bootstrap.Bootstrap4(app)
     hiddifypanel.panel.database.init_app(app)
-    from .base2 import inference
-    inference(name="Bala")
     with app.app_context():
         init_db()
+    from . import base2
+    base2.init_app(app)
 
     hiddifypanel.panel.common.init_app(app)
     hiddifypanel.panel.admin.init_app(app)
@@ -63,4 +64,13 @@ def create_app_wsgi():
     # to be passed to create_app
     # https://github.com/pallets/flask/issues/4170
     app = create_app()
+    return app
+
+
+def create_cli_app():
+    # workaround for Flask issue
+    # that doesn't allow **config
+    # to be passed to create_app
+    # https://github.com/pallets/flask/issues/4170
+    app = create_app(cli=True)
     return app

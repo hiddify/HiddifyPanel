@@ -18,7 +18,7 @@ from strenum import StrEnum
 
 
 from .config_enum import ConfigEnum,ConfigCategory
-from .domain import DomainType,Domain
+
 
 
 
@@ -35,23 +35,6 @@ class StrConfig(db.Model, SerializerMixin):
     key = db.Column(db.Enum(ConfigEnum), primary_key=True,   default=ConfigEnum.admin_secret)
     value = db.Column(db.String(2048))
 
-
-def hdomains(mode):
-    domains = Domain.query.filter(Domain.mode == mode).all()
-    if domains:
-        return [d.domain for d in domains]
-    return []
-
-
-def hdomain(mode):
-    domains = hdomains(mode)
-    if domains:
-        return domains[0]
-    return None
-
-
-def get_hdomains():
-    return {mode: hdomains(mode) for mode in DomainType}
 
 
 def hconfig(key: ConfigEnum,child_id=0):

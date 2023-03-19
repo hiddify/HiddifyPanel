@@ -2,7 +2,7 @@
 import pprint
 from flask_babelex import gettext as _
 import pathlib
-from hiddifypanel.models import  User,Domain,DomainType,StrConfig,ConfigEnum,hconfig
+from hiddifypanel.models import  *
 
 from datetime import datetime,timedelta,date
 import os,sys
