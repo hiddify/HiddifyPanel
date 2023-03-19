@@ -50,3 +50,28 @@ class Domain(db.Model, SerializerMixin):
 
 def get_domain(domain):
     return Domain.query.filter(Domain.domain==domain).first()
+
+def get_panel_domains():
+    if hconfig(ConfigEnum.is_parent):
+        return ParentDomain.query.all()    
+    return Domain.query.filter(Domain.mode!=DomainType.fake).all()
+
+def get_proxy_domains(domain):
+    if hconfig(ConfigEnum.is_parent):
+        db_domain=ParentDomain.query.filter(ParentDomain.domain==domain).first() or ParentDomain(domain=domain,show_domains=[])
+    else:
+        db_domain=Domain.query.filter(Domain.domain==domain).first() or Domain(domain=domain,mode=DomainType.direct,cdn_ip='',show_domains=[])
+    return get_proxy_domains_db(db_domain)
+
+def get_proxy_domains_db(db_domain):
+    if not db_domain:
+        db_domain=Domain(domain=domain,mode=DomainType.direct,show_domains=[])
+        print("no domain")
+        flash(_("This domain does not exist in the panel!" + domain))
+
+    return db_domain.show_domains or Domain.query.all()
+
+
+def get_current_proxy_domains():
+    domain=urlparse(request.base_url).hostname if not no_domain else None
+    return get_proxy_domains(domain)

@@ -112,10 +112,11 @@ class ConfigEnum(StrEnum):
     # cdn_forced_host=auto()
     @classmethod
     def _missing_(cls, value):
-      return cls.not_found #"key not found"
+          return cls.not_found #"key not found"
     def info(self):
         map = {
             self.license:{'category': ConfigCategory.advanced},
+            self.proxy_path: {'category': ConfigCategory.too_advanced,'apply_mode':'apply','show_in_parent':True},
             self.path_vmess:{'category': ConfigCategory.too_advanced},
             self.path_vless:{'category': ConfigCategory.too_advanced},
             self.path_trojan:{'category': ConfigCategory.too_advanced},
@@ -142,10 +143,9 @@ class ConfigEnum(StrEnum):
             self.admin_lang: {'category': ConfigCategory.admin,'show_in_parent':True},
             self.tls_ports: {'category': ConfigCategory.tls,'apply_mode':'apply'},#tls
             self.http_ports: {'category': ConfigCategory.http,'apply_mode':'apply'},#http
-            self.kcp_ports: {'category': ConfigCategory.kcp,'apply_mode':'apply'},
-            self.kcp_enable: {'category': ConfigCategory.kcp,'type':bool,'apply_mode':'apply'},
+            self.kcp_ports: {'category': ConfigCategory.hidden,'apply_mode':'apply'},
+            self.kcp_enable: {'category': ConfigCategory.hidden,'type':bool,'apply_mode':'apply'},
             self.decoy_domain: {'category': ConfigCategory.general,'apply_mode':'apply'},
-            self.proxy_path: {'category': ConfigCategory.too_advanced,'apply_mode':'apply','show_in_parent':True},
             self.firewall: {'category': ConfigCategory.general,'type':bool,'apply_mode':'apply'},
             self.netdata: {'category': ConfigCategory.general,'type':bool,'apply_mode':'apply'},
             self.http_proxy_enable: {'category': ConfigCategory.http,'type':bool},
@@ -177,9 +177,9 @@ class ConfigEnum(StrEnum):
             self.tuic_enable: {'category': ConfigCategory.tuic,'type':bool,'apply_mode':'apply'},
             self.tuic_port: {'category': ConfigCategory.tuic,'apply_mode':'apply'},
 
-            self.ssr_enable: {'category': ConfigCategory.ssr,'type':bool,'apply_mode':'apply'},
+            self.ssr_enable: {'category': ConfigCategory.hidden,'type':bool,'apply_mode':'apply'},
             # ssr_secret:{'category':'ssr'},
-            self.ssr_fakedomain: {'category': ConfigCategory.ssr,'apply_mode':'apply'},
+            self.ssr_fakedomain: {'category': ConfigCategory.hidden,'apply_mode':'apply'},
 
             self.vmess_enable: {'category': ConfigCategory.proxies,'type':bool},
             self.domain_fronting_domain: {'category': ConfigCategory.domain_fronting},
