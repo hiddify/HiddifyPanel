@@ -8,7 +8,8 @@ from hiddifypanel.panel.database import db
 @bot.message_handler(commands=['start'],func=lambda message: "admin" in message.text)
 def send_welcome(message):
     text = message.text
-    uuid = text.split()[2] if len(text.split()) > 2 else None
+    #print("dddd",text)
+    uuid = text.split()[1].split("_")[1] if len(text.split()) > 1 else None
     if uuid:
         if uuid==hconfig(ConfigEnum.admin_secret):
             start_admin(message)
