@@ -157,7 +157,7 @@ def _v1():
         
         next10year = datetime.date.today() + relativedelta.relativedelta(years=6)
         external_ip=hiddify.get_ip(4)
-        rnd_domains=get_random_domains(4)
+        rnd_domains=get_random_domains(5)
         data = [
             StrConfig(key=ConfigEnum.db_version,value=1),
             User(name="default",usage_limit_GB=3000,package_days=3650,mode=UserMode.weekly),
@@ -198,7 +198,7 @@ def _v1():
             StrConfig(key=ConfigEnum.shadowtls_fakedomain, value=rnd_domains[3]),
 
             BoolConfig(key=ConfigEnum.ssr_enable,value=False),
-            StrConfig(key=ConfigEnum.ssr_secret,value=str(uuid.uuid4())),
+            # StrConfig(key=ConfigEnum.ssr_secret,value=str(uuid.uuid4())),
             StrConfig(key=ConfigEnum.ssr_fakedomain, value=rnd_domains[4]),
 
             BoolConfig(key=ConfigEnum.tuic_enable,value=False),
