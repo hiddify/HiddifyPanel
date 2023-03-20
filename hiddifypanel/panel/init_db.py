@@ -1,6 +1,7 @@
 from hiddifypanel.models import  *
 from hiddifypanel.panel.database import db
-
+import sys
+        
 
 
 from hiddifypanel.panel.database import db
@@ -60,9 +61,10 @@ def init_db():
         db.session.commit()
     
 
-    for ver in range(1,100):
+    for ver in range(1,40):
         if ver<=db_version:continue
-        db_action=locals().get(f'_{ver}',None)
+        
+        db_action=sys.modules[__name__].__dict__.get(f'_v{ver}',None)
         if not db_action:continue
         if start_version==0 and ver==10:continue
 
@@ -80,6 +82,8 @@ def init_db():
     db.session.commit()
     return BoolConfig.query.all()
 
+def _v23():
+    pass
 def _v21():
     db.session.bulk_save_objects(get_proxy_rows_v1())
 
