@@ -1,9 +1,23 @@
 from . import bot
-from . import Usage
+
 from telebot import types
 from hiddifypanel.models import *
 import datetime
 from hiddifypanel.panel.database import db
+
+@bot.message_handler(commands=['start'],func=lambda message: "admin" in message.text)
+def send_welcome(message):
+    text = message.text
+    uuid = text.split()[2] if len(text.split()) > 2 else None
+    if uuid:
+        if uuid==hconfig(ConfigEnum.admin_secret):
+            start_admin(message)
+            return
+    bot.reply_to(message, "error")
+
+
+
+
 def start_admin(message):
 
     bot.reply_to(message,"Welcome to admin bot. Choose your action",reply_markup=admin_keyboard_main())
@@ -60,6 +74,7 @@ def admin_keyboard_count(old_action):
     )        
 @bot.callback_query_handler(func=lambda call: call.data.startswith(f'{admin_hash()}create_package'))
 def create_package(call): # <- passes a CallbackQuery type object to your function
+    from . import Usage
     try:
         splt=call.data.split(" ")
         if len(splt)==1:    

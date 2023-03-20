@@ -19,7 +19,7 @@ from hiddifypanel.panel.database import db
 from wtforms.fields import *
 from flask_classful import FlaskView
 from hiddifypanel.panel import hiddify,hiddify_api,custom_widgets
-from hiddifypanel.panel.telegrambot import register_bot
+
 class SettingAdmin(FlaskView):
     
 
@@ -81,7 +81,7 @@ class SettingAdmin(FlaskView):
             flask_babelex.refresh()
             
             
-                
+            from hiddifypanel.panel.telegrambot import register_bot
             register_bot()
             
             reset_action=hiddify.check_need_reset(old_configs)
