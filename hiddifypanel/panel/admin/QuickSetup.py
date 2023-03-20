@@ -1,4 +1,4 @@
-from hiddifypanel.models import BoolConfig,StrConfig,ConfigEnum,hconfig
+from hiddifypanel.models import *
 import flask_babel,flask_babelex
 
 # from flask_babelex import lazy_gettext as _
