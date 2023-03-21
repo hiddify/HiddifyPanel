@@ -52,6 +52,8 @@ def init_app(app):
         g.user_uuid = None
         g.is_admin = False
         g.user_agent = user_agents.parse(request.user_agent.string)
+        if g.user_agent.is_bot:
+            abort(400, "invalid")
         g.proxy_path = values.pop('proxy_path', None) if values else None
         if g.proxy_path != hconfig(ConfigEnum.proxy_path):
             abort(400, "Invalid Proxy Path")
