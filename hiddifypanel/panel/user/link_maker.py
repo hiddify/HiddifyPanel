@@ -85,7 +85,8 @@ def make_proxy(proxy, domain_db, phttp=80, ptls=443):
         'extra_info': f'{domain_db.alias or domain}',
         'fingerprint': hconfigs[ConfigEnum.utls],
         'allow_insecure': domain_db.mode == DomainType.fake or "Fake" in proxy.cdn,
-        'dbe':proxy
+        'dbe':proxy,
+        'dbdomain':domain_db
     }
 
     if base["proto"] == "trojan" and "tls" not in l3:
@@ -255,7 +256,7 @@ def to_clash(proxy, meta_or_normal):
         return
     base = {}
     # vmess ws
-    base["name"] = f"""{proxy["name"]} {proxy['extra_info']} {proxy['port']}"""
+    base["name"] = f"""{proxy["name"]} {proxy['extra_info']} {proxy['port']} {proxy["dbdomain"].id}"""
     base["type"] = str(proxy["proto"])
     base["server"] = proxy["server"]
     base["port"] = proxy["port"]
