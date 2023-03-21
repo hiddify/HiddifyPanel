@@ -108,6 +108,7 @@ def create_package(call): # <- passes a CallbackQuery type object to your functi
             new_text="Finished..."
             bot.edit_message_text(new_text, call.message.chat.id, call.message.message_id,reply_markup=admin_keyboard_main())
             bot.answer_callback_query(call.id, text="Ok", show_alert=False,cache_time =1)
+            hiddify.quick_apply_users()
         
     except Exception as e:
         print (e)
