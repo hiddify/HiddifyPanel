@@ -82,8 +82,9 @@ def init_db():
     db.session.commit()
     return BoolConfig.query.all()
 
-def _v23():
-    pass
+def _v24():
+    add_config_if_not_exist(ConfigEnum.country, "ir")
+
 def _v21():
     db.session.bulk_save_objects(get_proxy_rows_v1())
 

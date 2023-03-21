@@ -36,6 +36,7 @@ class ConfigCategory(StrEnum):
 
 class ConfigEnum(StrEnum):
     license=auto()
+    country=auto()
     package_mode=auto()
     utls=auto()
     telegram_bot_token=auto()
@@ -146,6 +147,7 @@ class ConfigEnum(StrEnum):
             self.kcp_ports: {'category': ConfigCategory.hidden,'apply_mode':'apply'},
             self.kcp_enable: {'category': ConfigCategory.hidden,'type':bool,'apply_mode':'apply'},
             self.decoy_domain: {'category': ConfigCategory.general,'apply_mode':'apply'},
+            self.country: {'category': ConfigCategory.general,'apply_mode':'restart'},
             self.firewall: {'category': ConfigCategory.general,'type':bool,'apply_mode':'apply'},
             self.netdata: {'category': ConfigCategory.general,'type':bool,'apply_mode':'apply'},
             self.http_proxy_enable: {'category': ConfigCategory.http,'type':bool},

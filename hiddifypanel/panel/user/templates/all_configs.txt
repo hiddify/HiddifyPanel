@@ -2,8 +2,8 @@
 #trojan://1@{{fake_ip_for_sub_link}}#{{user.current_usage_GB|round(3)}}/{{user.usage_limit_GB}}GB_Remain:{{expire_days}}days 
 
 %for d in domains
-%for t in (['http','tls'] if hconfigs[ConfigEnum.http_proxy_enable] else ['tls'])
-%for port in hconfigs[ConfigEnum.http_ports if t=='http' else ConfigEnum.tls_ports].split(',')
+%for t in (['http','tls'] if hconfig(ConfigEnum.http_proxy_enable,d.child_id) else ['tls'])
+%for port in hconfig(ConfigEnum.http_ports if t=='http' else ConfigEnum.tls_ports,d.child_id).split(',')
 %set phttp=port if t=='http' else None
 %set ptls=port if t=='tls' else None
 ####################################
