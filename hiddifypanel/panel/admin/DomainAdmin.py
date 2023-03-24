@@ -6,7 +6,7 @@ from wtforms.validators import Regexp, ValidationError
 from .adminlte import AdminLTEModelView
 from flask_babelex import gettext as __
 from flask_babelex import lazy_gettext as _
-from hiddifypanel.panel import hiddify,hiddify_api
+from hiddifypanel.panel import hiddify,hiddify_api,cf_api
 from flask import Markup
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
@@ -28,7 +28,12 @@ class DomainAdmin(AdminLTEModelView):
     list_template = 'model/domain_list.html'
     # edit_modal = True
     # form_overrides = {'work_with': Select2Field}
-
+    form_widget_args = {
+    'description': {
+        'rows': 100,
+        'style': 'font-family: monospace; direction:ltr'
+    }
+    }
     column_descriptions = dict(
         domain=_("domain.description"),
         mode=_("Direct mode means you want to use your server directly (for usual use), CDN means that you use your server on behind of a CDN provider."),
@@ -46,7 +51,7 @@ class DomainAdmin(AdminLTEModelView):
             'validators': [Regexp(r'^([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})$', message=__("Should be a valid domain"))]
         },
         "cdn_ip": {
-            'validators': [Regexp(r"(^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d).){3}(25[0-5]|(2[0-4]|1\d|[1-9]|)\d)$)|^([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})$|^[a-fA-F0-9:]+$", message=__("Invalid IP or domain"))]
+            'validators': [Regexp(r"(((((25[0-5]|(2[0-4]|1\d|[1-9]|)\d).){3}(25[0-5]|(2[0-4]|1\d|[1-9]|)\d))|^([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,}))[ \t\n,;]*\w{3}[ \t\n,;]*)*", message=__("Invalid IP or domain"))]
         }
     }
     column_list = ["domain", "mode","alias", "domain_ip", "cdn_ip"]
@@ -105,17 +110,26 @@ class DomainAdmin(AdminLTEModelView):
                 if model.domain == configs[c]:
                     raise ValidationError(
                         _("You have used this domain in: ")+_(f"config.{c}.label"))
-
+        myip = hiddify.get_ip(4)
+        
+        if hconfig(ConfigEnum.cloudflare):
+            if model.mode==DomainType.direct:
+                cf_api.add_or_update_domain(domain, myip,"A",proxied=False)
+            elif model.mode==DomainType.cdn or model.mode==DomainType.auto_cdn_ip:
+                cf_api.add_or_update_domain(domain, myip,"A",proxied=True)
+        # elif model.mode==DomainType.auto_cdn_ip:
+        #     raise ValidationError(_("You have to add your cloudflare api key to use this feature: "))
 
 
         dip = hiddify.get_domain_ip(model.domain)
+        
         if dip == None:
             
             
             raise ValidationError(
                 _("Domain can not be resolved! there is a problem in your domain"))
 
-        myip = hiddify.get_ip(4)
+        
         if model.mode == DomainType.direct and myip != dip:
             raise ValidationError(
                 _("Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode", server_ip=myip, domain_ip=dip))
