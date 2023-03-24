@@ -35,6 +35,7 @@ class ConfigCategory(StrEnum):
     too_advanced=auto()
 
 class ConfigEnum(StrEnum):
+    cloudflare=auto()
     license=auto()
     country=auto()
     package_mode=auto()
@@ -116,6 +117,7 @@ class ConfigEnum(StrEnum):
           return cls.not_found #"key not found"
     def info(self):
         map = {
+            self.cloudflare:{'category': ConfigCategory.advanced},
             self.license:{'category': ConfigCategory.advanced},
             self.proxy_path: {'category': ConfigCategory.too_advanced,'apply_mode':'apply','show_in_parent':True},
             self.path_vmess:{'category': ConfigCategory.too_advanced},

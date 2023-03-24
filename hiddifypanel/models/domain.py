@@ -22,8 +22,10 @@ from strenum import StrEnum
 class DomainType(StrEnum):
     direct = auto()
     cdn = auto()
+    auto_cdn_ip = auto()
     relay = auto()
     fake = auto()
+    
     # fake_cdn = "fake_cdn"
     # telegram_faketls = "telegram_faketls"
     # ss_faketls = "ss_faketls"
@@ -40,7 +42,7 @@ class Domain(db.Model, SerializerMixin):
     domain = db.Column(db.String(200), nullable=False, unique=True)
     alias = db.Column(db.String(200))
     mode = db.Column(db.Enum(DomainType), nullable=False)
-    cdn_ip = db.Column(db.String(200), nullable=True)
+    cdn_ip = db.Column(db.Text(2000), nullable=True)
     # show_all=db.Column(db.Boolean, nullable=True)
     show_domains = db.relationship('Domain', secondary=ShowDomain,
                                 primaryjoin=id==ShowDomain.c.domain_id,

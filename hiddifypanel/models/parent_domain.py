@@ -24,6 +24,7 @@ ShowDomainParent = db.Table('show_domain_parent',
 class ParentDomain(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     domain = db.Column(db.String(200), nullable=False, unique=True)
+    alias = db.Column(db.String(200), nullable=False, unique=False)
     show_domains = db.relationship('Domain', secondary=ShowDomainParent,
                                 # primaryjoin=id==ShowDomainParent.c.domain_id,
                                 # secondaryjoin=id==ShowDomainParent.c.related_id, 
