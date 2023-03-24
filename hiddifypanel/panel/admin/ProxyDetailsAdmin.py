@@ -6,7 +6,7 @@ from wtforms.validators import Regexp, ValidationError
 from .adminlte import AdminLTEModelView
 from flask_babelex import gettext as __
 from flask_babelex import lazy_gettext as _
-from hiddifypanel.panel import hiddify
+from hiddifypanel.panel import hiddify,hiddify_api
 from flask import Markup
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
@@ -26,8 +26,13 @@ class ProxyDetailsAdmin(AdminLTEModelView):
     column_hide_backrefs = True
     form_excluded_columns=['child']
     column_exclude_list =['child']
-    list_template = 'model/domain_list.html'
+    # list_template = 'model/domain_list.html'
     # edit_modal = True
     # form_overrides = {'work_with': Select2Field}
 
-    
+    def after_model_change(self, form, model, is_created):
+        if hconfig(ConfigEnum.parent_panel):
+            hiddify_api.sync_child_to_parent()
+    def after_model_delete(self, model):
+        if hconfig(ConfigEnum.parent_panel):
+            hiddify_api.sync_child_to_parent()

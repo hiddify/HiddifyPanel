@@ -25,7 +25,7 @@ def backup():
     import json,os
     os.makedirs('backup',exist_ok=True)
     with open(f'backup/{datetime.datetime.now().strftime("%Y_%m_%d__%H_%M_%S")}.json','w') as fp:
-        json.dump(dbdict, fp)
+        json.dump(dbdict, fp,indent=4, sort_keys=True, default=str)
 
 
 
@@ -67,7 +67,7 @@ def admin_links():
         admin_links+=f"Secure:\n"
         # domains=[*domains,f'{server_ip}.sslip.io']
         for d in domains:
-            admin_links+=f"   https://{d}/{proxy_path}/{admin_secret}/admin/\n"
+            admin_links+=f"   https://{d.domain}/{proxy_path}/{admin_secret}/admin/\n"
 
         print(admin_links)
 def admin_path():
@@ -106,7 +106,14 @@ def init_app(app):
     @click.option("--key", "-k")
     @click.option("--val", "-v")
     def set_setting(key,val):
+        old_hconfigs=get_hconfigs()
         hiddify.set_db_from_json({'hconfigs':[{'key':key,'value':val}]})
+        if key==ConfigEnum.is_parent and not old_hconfigs[key] and hconfig(key):
+            print("removing some useless options")
+            Domain.query.delete()
+            db.session.commit()
+            db.session.add(ParentDomain(domain=hiddify.get_ip(4)+".sslip.io"))
+            db.session.commit()
         return "success"
 
     @app.cli.command()

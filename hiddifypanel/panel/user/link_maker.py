@@ -6,8 +6,8 @@ import json
 from hiddifypanel.panel import hiddify
 
 
-def all_proxies():
-    all_proxies = hiddify.get_available_proxies()
+def all_proxies(child_id=0):
+    all_proxies = hiddify.get_available_proxies(child_id)
     all_proxies = [p for p in all_proxies if p.enable]
     # all_cfg=Proxy.query.filter(Proxy.enable==True).all()
     # if not hconfig(ConfigEnum.domain_fronting_domain):
@@ -373,7 +373,7 @@ def get_clash_config_names(meta_or_normal, domains):
                 if ptls and len(allptls) and ptls not in allptls:
                     continue
 
-                for type in all_proxies():
+                for type in all_proxies(d.child_id):
                     pinfo = make_proxy(type, d, phttp=phttp, ptls=ptls)
                     if pinfo != None:
                         clash = to_clash(pinfo, meta_or_normal)
@@ -401,7 +401,7 @@ def get_all_clash_configs(meta_or_normal, domains):
                 if ptls and len(allptls) and ptls not in allptls:
                     continue
 
-                for type in all_proxies():
+                for type in all_proxies(d.child_id):
                     pinfo = make_proxy(type, d, phttp=phttp, ptls=ptls)
                     if pinfo != None:
                         clash = to_clash(pinfo, meta_or_normal)

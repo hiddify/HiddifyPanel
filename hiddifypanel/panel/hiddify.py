@@ -87,26 +87,26 @@ def get_ip(version, retry=3):
         return get_ip(version, retry=retry-1)
 
 
-def get_available_proxies():
-    proxies = Proxy.query.all()
+def get_available_proxies(child_id):
+    proxies = Proxy.query.filter(Proxy.child_id==child_id).all()
 
-    if not hconfig(ConfigEnum.domain_fronting_domain):
+    if not hconfig(ConfigEnum.domain_fronting_domain,child_id):
         proxies = [c for c in proxies if 'Fake' not in c.cdn]
-    if not hconfig(ConfigEnum.ssfaketls_enable):
+    if not hconfig(ConfigEnum.ssfaketls_enable,child_id):
         proxies = [c for c in proxies if 'faketls' != c.transport]
-    if not hconfig(ConfigEnum.v2ray_enable):
+    if not hconfig(ConfigEnum.v2ray_enable,child_id):
         proxies = [c for c in proxies if 'v2ray' != c.proto]
-    if not hconfig(ConfigEnum.shadowtls_enable):
+    if not hconfig(ConfigEnum.shadowtls_enable,child_id):
         proxies = [c for c in proxies if c.transport != 'shadowtls']
-    if not hconfig(ConfigEnum.ssr_enable):
+    if not hconfig(ConfigEnum.ssr_enable,child_id):
         proxies = [c for c in proxies if 'ssr' != c.proto]
-    if not hconfig(ConfigEnum.vmess_enable):
+    if not hconfig(ConfigEnum.vmess_enable,child_id):
         proxies = [c for c in proxies if 'vmess' not in c.proto]
 
-    if not hconfig(ConfigEnum.kcp_enable):
+    if not hconfig(ConfigEnum.kcp_enable,child_id):
         proxies = [c for c in proxies if 'kcp' not in c.l3]
 
-    if not hconfig(ConfigEnum.http_proxy_enable):
+    if not hconfig(ConfigEnum.http_proxy_enable,child_id):
         proxies = [c for c in proxies if 'http' != c.l3]
 
     if not Domain.query.filter(Domain.mode == DomainType.cdn).first():
@@ -280,7 +280,7 @@ def format_timedelta(delta, add_direction=True,granularity="days"):
 
 
 def get_child(unique_id):
-    
+      
     if unique_id is None:
         return 0
     
@@ -320,7 +320,7 @@ def user_dict(d):
     return {
         'uuid':d.uuid,
         'name':d.name,
-        'last_online':d.last_online,
+        'last_online':str(d.last_online),
         'usage_limit_GB':d.usage_limit_GB,
         'package_days':d.package_days,
         'mode':d.mode,

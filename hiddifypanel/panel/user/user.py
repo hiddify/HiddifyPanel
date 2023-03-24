@@ -4,7 +4,7 @@ from wtforms.validators import Regexp,ValidationError
 import urllib,uuid
 import datetime
 from hiddifypanel.models import *
-from hiddifypanel.panel import hiddify
+from hiddifypanel.panel import hiddify,clean_ip
 from hiddifypanel.panel.hiddify  import auth
 from . import link_maker
 from flask_classful import FlaskView,route
@@ -168,6 +168,10 @@ def get_common_data(user_uuid,mode,no_domain=False,filter_domain=None):
         abort(401,"Invalid User")
     
 
+    for d in domains:
+        if d.mode==DomainType.auto_cdn_ip or d.cdn_ip:
+            d.cdn_ip=clean_ip.get_clean_ip(d.cdn_ip)
+
 
     
     package_mode_dic={
@@ -203,7 +207,8 @@ def get_common_data(user_uuid,mode,no_domain=False,filter_domain=None):
         'ConfigEnum':ConfigEnum,
         'link_maker':link_maker,
         'domains':domains,
-        "bot":bot
+        "bot":bot,
+        "db_domain":db_domain
 
     }
     

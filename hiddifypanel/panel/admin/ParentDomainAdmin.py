@@ -31,6 +31,7 @@ class ParentDomainAdmin(AdminLTEModelView):
 
     column_descriptions = dict(
         domain=_("domain.description"),
+        alias=_('The name shown in the configs for this domain.'),
         show_domains=_('You can select the configs with which domains show be shown in the user area. If you select all, automatically, all the new domains will be added for each users.')
         # current_usage_GB="in GB"
     )
@@ -45,7 +46,7 @@ class ParentDomainAdmin(AdminLTEModelView):
         },
         
     }
-    column_list = ["domain","show_domains_list"]
+    column_list = ["domain","alias","show_domains_list"]
     # column_editable_list=["domain"]
     # column_filters=["domain","mode"]
     # form_excluded_columns=['work_with']
@@ -53,12 +54,12 @@ class ParentDomainAdmin(AdminLTEModelView):
     column_labels = {
         "domain": _("domain.domain"),
         # "mode": _("domain.mode"),
-        
+        'alias':_('Alias'),        
         'show_domains':_('Show Domains'),
         'show_domains_list':_('Show Domains')
     }
 
-    form_columns=['domain','show_domains']
+    form_columns=['domain',"alias",'show_domains']
 
     def _domain_admin_link(view, context, model, name):
         admin_link = f'https://{model.domain}{hiddify.get_admin_path()}'

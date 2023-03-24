@@ -1,5 +1,6 @@
 from hiddifypanel.panel import hiddify
 from hiddifypanel.models import *
+import json
 def sync_child_to_parent(parent_link=None):
     parent_link= parent_link or hconfig(ConfigEnum.parent_panel)
     if not parent_link:
@@ -38,6 +39,7 @@ def send_to_parent_panel(retry=3,parent_link=None):
 
 
 def send_to_panel(url,method="GET",data=None):
+  try:
     import requests
     from requests.adapters import HTTPAdapter
     from requests.packages.urllib3.util.retry import Retry
@@ -64,3 +66,8 @@ def send_to_panel(url,method="GET",data=None):
     res= response.json()
     print(res)
     return res
+  except Exception as e:
+    print(e)
+    print(url)
+    print(headers)
+    print(json.dumps(data,indent=4,default=str))

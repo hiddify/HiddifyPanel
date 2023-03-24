@@ -17,7 +17,7 @@
     <tr>
       <td>
         <div class="btn-group">
-          <a href="clashmeta://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/meta/all.yml&name=meta_normal_{{domain}}-{{mode}}&mode={{mode}}"
+          <a href="clashmeta://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/meta/all.yml&name=mnormal_{{db_domain.alias or db_domain.domain}}-{{mode}}&mode={{mode}}"
             class="btn btn-light orig-link"> {{_('user.home.allconfig.hiddify-configs')}}</a>
         </div>
       </td>
@@ -30,7 +30,7 @@
     <tr>
       <td>
         <div class="btn-group">
-          <a href="clash://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/all.yml&name=new_normal_{{domain}}-{{mode}}&mode={{mode}}"
+          <a href="clash://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/all.yml&name=new_normal_{{db_domain.alias or db_domain.domain}}-{{mode}}&mode={{mode}}"
             class="btn btn-light orig-link"> {{_('user.home.allconfig.clash-configs')}}</a>
         </div>
       </td>
@@ -43,7 +43,7 @@
     <tr>
       <td>
         <div class="btn-group">
-          <a href="https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/all.txt?name=new_link_{{domain}}-{{mode}}&mode={{mode}}"
+          <a href="https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/all.txt?name={{db_domain.alias or db_domain.domain}}&mode={{mode}}"
             class="btn btn-light orig-link"> {{_('user.home.allconfig.link-configs')}}</a>
         </div>
       </td>
@@ -56,7 +56,7 @@
     <tr>
       <td>
         <div class="btn-group">
-          <a href="https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/all.txt?name=new_link_{{domain}}-{{mode}}&mode={{mode}}&base64=True"
+          <a href="https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/all.txt?name=new_link_{{db_domain.alias or db_domain.domain}}-{{mode}}&mode={{mode}}&base64=True"
             class="btn btn-light orig-link"> {{_('user.home.allconfig.link-configs')}} b64</a>
         </div>
       </td>
@@ -67,10 +67,13 @@
       <td><span class="badge badge-success">{{_('all')}}</span></td>
     </tr>
 
-    % for d in domains
-    % for type in link_maker.all_proxies()
+    %for d in domains
+    %for t in (['http','tls'] if hconfig(ConfigEnum.http_proxy_enable,d.child_id) else ['tls'])
+    %for port in hconfig(ConfigEnum.http_ports if t=='http' else ConfigEnum.tls_ports,d.child_id).split(',')
+    
+    % for type in link_maker.all_proxies(d.child_id)
 
-    {% set pinfo=link_maker.make_proxy(type,d) %}
+    {% set pinfo=link_maker.make_proxy(type,d,phttp=phttp,ptls=ptls) %}
     % if pinfo!=None
     <tr>
       <td>
@@ -86,6 +89,8 @@
     % endif
 
     %endfor
+    % endfor
+    % endfor
     %endfor
   </tbody>
 </table>

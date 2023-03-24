@@ -19,6 +19,7 @@ class SyncChildResource(Resource):
             raise Exception("Not a parent")
         print(request.headers)
         unique_id=request.headers['Unique-Id']
+        # unique_id=1
         print(panel_data)
         print("==================")
         
@@ -37,7 +38,8 @@ class SyncChildResource(Resource):
         return {'status':200,"msg":"ok"}
      except Exception as e:
             print(e)
-            return {'status':500,"msg":str(e)},500
+            print(request.json)
+            return {'status':500,"msg":f'{e} {request.json}'},500
 
 class AddUsageResource(Resource):
      def put(self):

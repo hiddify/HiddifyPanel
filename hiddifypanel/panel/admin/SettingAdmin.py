@@ -63,7 +63,7 @@ class SettingAdmin(FlaskView):
                                                 return render_template('config.html', form=form)    
                                 if k == ConfigEnum.parent_panel and v!='':
                                     # v=(v+"/").replace("/admin",'')
-                                    v=re.sub("/admin/.*","",v)
+                                    v=re.sub("(/admin/.*)","/",v)
 
                                     try:
                                         if hiddify_api.sync_child_to_parent(v)['status']!=200:
@@ -83,7 +83,8 @@ class SettingAdmin(FlaskView):
             
             from hiddifypanel.panel.telegrambot import register_bot
             register_bot()
-            
+            if hconfig(ConfigEnum.parent_panel):
+                hiddify_api.sync_child_to_parent()
             reset_action=hiddify.check_need_reset(old_configs)
             if reset_action:
                 return reset_action

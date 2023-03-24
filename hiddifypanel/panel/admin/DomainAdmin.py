@@ -6,7 +6,7 @@ from wtforms.validators import Regexp, ValidationError
 from .adminlte import AdminLTEModelView
 from flask_babelex import gettext as __
 from flask_babelex import lazy_gettext as _
-from hiddifypanel.panel import hiddify
+from hiddifypanel.panel import hiddify,hiddify_api
 from flask import Markup
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
@@ -106,8 +106,12 @@ class DomainAdmin(AdminLTEModelView):
                     raise ValidationError(
                         _("You have used this domain in: ")+_(f"config.{c}.label"))
 
+
+
         dip = hiddify.get_domain_ip(model.domain)
         if dip == None:
+            
+            
             raise ValidationError(
                 _("Domain can not be resolved! there is a problem in your domain"))
 
@@ -154,3 +158,9 @@ class DomainAdmin(AdminLTEModelView):
         if len(Domain.query.all()) <= 1:
             raise ValidationError(f"at least one domain should exist")
         hiddify.flash_config_success(restart_mode='apply', domain_changed=True)
+    def after_model_delete(self, model):
+        if hconfig(ConfigEnum.parent_panel):
+            hiddify_api.sync_child_to_parent()
+    def after_model_change(self, form, model, is_created):
+        if hconfig(ConfigEnum.parent_panel):
+            hiddify_api.sync_child_to_parent()

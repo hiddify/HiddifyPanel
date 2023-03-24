@@ -1,11 +1,12 @@
 from flask_admin.base import AdminIndexView,expose
 from hiddifypanel.panel.hiddify  import admin
-from flask import render_template,url_for,Markup
+from flask import render_template,url_for,Markup,request
 from flask_babelex import lazy_gettext as _
 from hiddifypanel.panel import hiddify
 import datetime
-from flask_classful import FlaskView
+from flask_classful import FlaskView,route
 from hiddifypanel.models import *
+from hiddifypanel.panel.database import db
 from hiddifypanel.panel.hiddify import flash
 class Dashboard(FlaskView):
     def index(self):
@@ -15,6 +16,7 @@ class Dashboard(FlaskView):
             for c in childs:
                 c.is_active=False
                 for d in c.domains:
+                    if d.mode==DomainType.fake:continue
                     remote=f"https://{d.domain}/{hconfig(ConfigEnum.proxy_path,c.id)}/{hconfig(ConfigEnum.admin_secret,c.id)}"
                     d.is_active= hiddify.check_connection_to_remote(remote)
                     if d.is_active:
@@ -42,3 +44,12 @@ class Dashboard(FlaskView):
         onlines=User.query.filter(User.last_online>h24).count()
         total=User.query.count()
         return render_template('index.html',onlines=onlines,total_users=total,bot=bot)
+
+    @route('remove_child', methods=['POST'])
+    def remove_child(self):
+        child_id=request.form['child_id']
+        child=Child.query.filter(Child.id==child_id).first()
+        db.session.delete(child)
+        db.session.commit()
+        flash(_("child has been removed!"), "success")
+        return self.index()

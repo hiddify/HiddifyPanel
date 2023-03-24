@@ -1,4 +1,4 @@
-% for type in link_maker.all_proxies()
+% for type in link_maker.all_proxies(d.child_id)
 {% set pinfo=link_maker.proxy_info(type) %}
 # {{type}} {{domain}}
 {{pinfo['url']}}
@@ -16,7 +16,7 @@
 # HTTP Not Secure
 # HTTP Not Secure
 
-% for type in link_maker.all_proxies()
+% for type in link_maker.all_proxies(d.child_id)
 {% set pinfo=link_maker.proxy_info(type,port=80,security="http") %}
 % if pinfo!=None
 # HTTP {{type}} {{domain}}

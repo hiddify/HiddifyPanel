@@ -22,6 +22,7 @@ def init_db():
         db.engine.execute(f'DELETE from proxy where transport = "h1"')
     except:
         pass
+    add_column(ParentDomain.alias)
     add_column(User.start_date)
     add_column(User.package_days)
     add_column(Child.unique_id)
@@ -84,6 +85,8 @@ def init_db():
 
 def _v24():
     add_config_if_not_exist(ConfigEnum.country, "ir")
+    add_config_if_not_exist(ConfigEnum.parent_panel, "")
+    add_config_if_not_exist(ConfigEnum.is_parent, False)
 
 def _v21():
     db.session.bulk_save_objects(get_proxy_rows_v1())
@@ -213,10 +216,10 @@ def _v1():
 
             *get_proxy_rows_v1()
         ]
-        fake_domains=['speedtest.net','soft98.ir','www.canva.com']
+        fake_domains=['speedtest.net']
         for fd in fake_domains:
             if not Domain.query.filter(Domain.domain==fd).first():
-                db.session.add(Domain(domain=fd,mode='fake',alias='http only',cdn_ip=external_ip))
+                db.session.add(Domain(domain=fd,mode='fake',alias='fake domain',cdn_ip=external_ip))
         # for c in ConfigEnum:
         #     if c in [d.key for d in data if type(d) in [BoolConfig,StrConfig]]:
         #         continue
@@ -333,6 +336,8 @@ def make_proxy_rows(cfgs):
                 continue
             if transport in ["grpc","XTLS","faketls"] and l3=="http":
                 continue
+            # if l3 == "tls_h2" and transport =="grpc":
+            #     continue
             enable=l3!="http" or proto=="vmess"
             if not Proxy.query.filter(Proxy.l3==l3,Proxy.transport==transport,Proxy.cdn==cdn,Proxy.proto==proto).first():
                 yield Proxy(l3=l3,transport=transport,cdn=cdn,proto=proto,enable=enable,name=f'{l3} {c}')
