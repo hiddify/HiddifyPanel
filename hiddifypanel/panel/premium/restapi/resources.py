@@ -7,14 +7,9 @@ from urllib.parse import urlparse
 from hiddifypanel.panel import hiddify,hiddify_api
 class AllResource(Resource):
     def get(self):
-        response= jsonify(
+        return jsonify(
             hiddify.dump_db_to_dict()            
         )
-        o = urlparse(request.base_url)
-        domain=o.hostname
-        response.headers.add('Content-disposition', f'attachment; filename=hiddify-{domain}-{datetime.datetime.now()}.json');
-
-        return response
 
 
 
@@ -31,6 +26,7 @@ class UserResource(Resource):
 
     def post(self):
         hiddify.add_or_update_user(**request.json)
+        hiddify.quick_apply_users()
         return jsonify({'status':200,'msg':'ok'})
 
 

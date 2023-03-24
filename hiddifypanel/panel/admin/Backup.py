@@ -21,13 +21,24 @@ from hiddifypanel.panel.hiddify import flash
 from flask_wtf.file import FileField, FileRequired
 import json
 
-from flask_classful import FlaskView
+from flask_classful import FlaskView,route
 
 class Backup(FlaskView):
 
     def index(self):
         return render_template('backup.html',restore_form=get_restore_form())
     
+    @route("/backupfile")
+    def backup(self):
+        response= jsonify(
+            hiddify.dump_db_to_dict()            
+        )
+        o = urlparse(request.base_url)
+        domain=o.hostname
+        response.headers.add('Content-disposition', f'attachment; filename=hiddify-{domain}-{datetime.datetime.now()}.json');
+
+        return response
+
 
     def post(self):
         restore_form=get_restore_form()

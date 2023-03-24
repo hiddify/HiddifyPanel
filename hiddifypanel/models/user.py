@@ -96,3 +96,42 @@ def user_by_uuid(uuid):
 
 def user_by_id(id):
     return User.query.filter(User.id==id).first()
+
+
+
+def add_or_update_user(commit=True,**user):
+    if not is_valid():return
+    dbuser = User.query.filter(User.uuid == user['uuid']).first()
+
+    if not dbuser:
+        dbuser = User()
+        dbuser.uuid = user['uuid']
+        if not is_valid():
+            return
+        db.session.add(dbuser)
+    
+    if user.get('expiry_time',''):
+        if user.get('last_reset_time',''):
+            last_reset_time = datetime.datetime.strptime(user['last_reset_time'], '%Y-%m-%d')
+        else:
+            last_reset_time = datetime.date.today()
+
+        expiry_time = datetime.datetime.strptime(user['expiry_time'], '%Y-%m-%d')
+        dbuser.start_date=    last_reset_time
+        dbuser.package_days=(expiry_time-last_reset_time).days
+
+    elif 'package_days' in user:
+        dbuser.package_days=user['package_days']
+        if user.get('start_date',''):
+            dbuser.start_date=datetime.datetime.strptime(user['start_date'], '%Y-%m-%d')
+        else:
+            dbuser.start_date=None
+    dbuser.current_usage_GB = user['current_usage_GB']
+    
+    dbuser.usage_limit_GB = user['usage_limit_GB']
+    dbuser.name = user['name']
+    dbuser.comment = user.get('comment', '')
+    dbuser.mode = user.get('mode', user.get('monthly', 'false') == 'true')
+    # dbuser.last_online=user.get('last_online','')
+    if commit:
+        db.session.commit()
