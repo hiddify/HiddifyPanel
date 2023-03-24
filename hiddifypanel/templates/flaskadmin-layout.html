@@ -78,6 +78,9 @@ $('.form-group:not(:has(.custom-switch)) > input[type="checkbox"]').each(functio
 {% block rtl_styles %}
     {{super()}}
     <style>
+        #cdn_ip{
+            direction: ltr;
+        }
         #expiry_time,#last_reset_time,#current_usage_GB,#usage_limit_GB,#package_days,#start_date {
             direction: ltr;
             text-align: right;
