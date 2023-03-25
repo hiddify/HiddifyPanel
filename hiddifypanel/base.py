@@ -6,10 +6,22 @@ from flask_babelex import Babel
 from hiddifypanel.panel.init_db import init_db
 import hiddifypanel
 from hiddifypanel.models import  *
-
+from dotenv import dotenv_values
 def create_app(cli=False,**config):
     app = Flask(__name__, static_url_path="/<proxy_path>/static/", instance_relative_config=True)
-    FlaskDynaconf(app)
+    import os
+    # os.environ['DOTENV_PATH']="/opt/vscode/workspace/HiddifyPanel/"
+    # FlaskDynaconf(app,load_dotenv=False)
+    for c,v in dotenv_values('app.cfg').items():
+        if v.isdecimal():
+            v= int(v)
+        else:
+            v=True if v.lower()=="true" else (False if v.lower()=="false" else v)
+
+        
+        app.config[c]=v
+        
+
     app.jinja_env.line_statement_prefix = '%'
     app.is_cli=cli
     flask_bootstrap.Bootstrap4(app)

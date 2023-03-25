@@ -1,7 +1,7 @@
 from hiddifypanel.models import  *
 from hiddifypanel.panel.database import db
 import sys
-        
+from hiddifypanel import Events        
 
 
 
@@ -72,7 +72,7 @@ def init_db():
 
         print(f"Updating db from version {db_version}")
         db_action()
-        Events.db_init_event.notify(db_version)
+        Events.db_init_event.notify(db_version=db_version)
         print(f"Updated successfuly db from version {db_version} to {ver}")
         
         db_version=ver
@@ -370,7 +370,7 @@ def get_random_domains(count=1,retry=3):
         irurl="https://api.ooni.io/api/v1/measurements?probe_cc=IR&test_name=web_connectivity&anomaly=false&confirmed=false&failure=false&order_by=test_start_time&limit=1000"
         # cnurl="https://api.ooni.io/api/v1/measurements?probe_cc=CN&test_name=web_connectivity&anomaly=false&confirmed=false&failure=false&order_by=test_start_time&limit=1000"
         import requests
-        data_ir=requests.get(url).json()
+        data_ir=requests.get(irurl).json()
         # data_cn=requests.get(url).json()
         from urllib.parse import urlparse
         domains=[urlparse(d['input']).netloc.lower() for d in data_ir['results'] if d['scores']['blocking_country']==0.0]
@@ -382,6 +382,6 @@ def get_random_domains(count=1,retry=3):
         if retry<=0:
             defdomains=["fa.wikipedia.org",'en.wikipedia.org','wikipedia.org','yahoo.com','en.yahoo.com']
             print('Error, using default domains')
-            return defdomains.sample(domains, count)
+            return random.sample(defdomains, count)
         return get_random_domains(count,retry-1)
 

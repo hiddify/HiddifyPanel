@@ -13,11 +13,10 @@ def get_inbound_tags():
         xray_client=get_xray_client()
         inbounds= [inb.name.split(">>>")[1] for inb in xray_client.stats_query('inbound')]
         print(f"Success in get inbound tags {inbounds}" )
-        return inbounds
     except Exception as e:
         print(f"error in get inbound tags {e}" )
-        return []
-
+        inbounds=[]
+    return inbounds
 def add_client(uuid):
     if hconfig(ConfigEnum.is_parent):
         return

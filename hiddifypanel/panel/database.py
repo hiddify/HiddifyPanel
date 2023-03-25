@@ -7,7 +7,7 @@ db.UUID=UUIDType
 
 def init_app(app):
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
-    # print(app.config['SQLALCHEMY_DATABASE_URI'])
+    print(app.config['SQLALCHEMY_DATABASE_URI'])
     db.init_app(app)
 
     # db.create_all(app)

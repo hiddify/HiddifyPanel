@@ -35,13 +35,13 @@ def init_app(app):
     # 
     # return
     # admin = Admin(endpoint="admin",index_view=Dashboard(),base_template='lte-master.html',static_url_path="/static/")    
+    flaskadmin.template_mode = "bootstrap4"
     flaskadmin.init_app(flask_bp)
     adminlte=AdminLTE3()
     adminlte.init_app(app)
-    
+
     Events.admin_prehook.notify(flaskadmin=flaskadmin,admin_bp=admin_bp)
 
-    flaskadmin.template_mode = "bootstrap4"
     
     @app.route('/<proxy_path>/<user_secret>/admin')
     def auto_route():
