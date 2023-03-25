@@ -5,6 +5,7 @@ from flask import Flask, request, g
 from flask_babelex import Babel
 from hiddifypanel.panel.init_db import init_db
 import hiddifypanel
+from hiddifypanel.models import  *
 
 def create_app(cli=False,**config):
     app = Flask(__name__, static_url_path="/<proxy_path>/static/", instance_relative_config=True)
@@ -15,14 +16,13 @@ def create_app(cli=False,**config):
     hiddifypanel.panel.database.init_app(app)
     with app.app_context():
         init_db()
-    from . import base2
-    base2.init_app(app)
+        
 
     hiddifypanel.panel.common.init_app(app)
     hiddifypanel.panel.admin.init_app(app)
     hiddifypanel.panel.user.init_app(app)
     hiddifypanel.panel.cli.init_app(app)
-    hiddifypanel.panel.restapi.init_app(app)
+    hiddifypanel.panel.commercial.init_app(app)
 
     app.config.update(config)  # Override with passed config
     app.config['WTF_CSRF_CHECK_DEFAULT'] = False

@@ -2,7 +2,7 @@
 
 
 
-{% block title %}Home | Admin |Hiddify{% endblock %}
+{% block title %}wHome | Admin |Hiddify{% endblock %}
 {% block body %}
 
 {% macro admin_btn(child,domain) -%}
@@ -19,9 +19,13 @@
         <h3 class="card-title">{{_('Childs')}}</h3>
     </div>
     <div class="card-body">
+        %if not childs
+        {{_("No children!")}}
+        %else
         <table>
             <tr><th></th><th></th> <th>{{_('Status')}}</th><th>{{_("Domain")}}</th></tr>
-
+            
+            
             %for child in childs
                 <tr><td>{{child.id}} </td>
                     <td>
@@ -44,6 +48,7 @@
                 </td></tr>
             %endfor
         </table>
+        %endif
     </div>
 
 </div>

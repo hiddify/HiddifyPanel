@@ -4,8 +4,7 @@
       <details  data-widget="collapse">
         <summary class="callout callout-success">
           {{_("user.home.ios.stash.title")}} 
-          <button class='btn btn-sm btn-default' onclick='show_video("ios-stash")'><i class="fa-solid fa-question"></i> Stash</button>
-          <button class='btn btn-sm btn-default' onclick='show_video("ios-shadowrocket")'><i class="fa-solid fa-question"></i> ShadowRocket</button>
+          
       </summary>
       <br>
       {{_("user.home.ios.stash.intro")}}
@@ -30,6 +29,7 @@
           class="btn btn-light orig-link"> {{_('user.home.allconfig.link-configs')}} b64</a>
       </div>
       <br>
+<!--       
       % for d in domains
       %for t in (['http','tls'] if hconfig(ConfigEnum.http_proxy_enable,d.child_id) else ['tls'])
       %for port in hconfig(ConfigEnum.http_ports if t=='http' else ConfigEnum.tls_ports,d.child_id).split(',')
@@ -44,7 +44,7 @@
       % endfor
       % endfor
       % endfor
-
+ -->
     </details>
     
 </div>

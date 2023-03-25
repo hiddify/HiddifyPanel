@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+from urllib.parse import urlparse
+
 from hiddifypanel.panel.database import db
 import uuid
 from flask_babelex import gettext as _
@@ -16,7 +18,7 @@ import urllib.request
 import subprocess
 import re
 from hiddifypanel.panel import hiddify
-from flask import current_app,render_template,request,Response,Markup,url_for
+from flask import current_app,render_template,request,Response,Markup,url_for,jsonify
 from hiddifypanel.panel.hiddify import flash
 from flask_wtf.file import FileField, FileRequired
 import json
@@ -29,13 +31,13 @@ class Backup(FlaskView):
         return render_template('backup.html',restore_form=get_restore_form())
     
     @route("/backupfile")
-    def backup(self):
+    def backupfile(self):
         response= jsonify(
             hiddify.dump_db_to_dict()            
         )
         o = urlparse(request.base_url)
         domain=o.hostname
-        response.headers.add('Content-disposition', f'attachment; filename=hiddify-{domain}-{datetime.datetime.now()}.json');
+        response.headers.add('Content-disposition', f'attachment; filename=hiddify-{domain}-{datetime.now()}.json');
 
         return response
 

@@ -49,8 +49,7 @@ class SettingAdmin(FlaskView):
                 if type(vs) is dict:
                     for k,v in vs.items():
             
-                        if k in [c for c in ConfigEnum]:
-                            if k.premium():continue
+                        if k in [c for c in ConfigEnum if not c.commercial()]:
                             if k in bool_types:
                                 BoolConfig.query.filter(BoolConfig.key==k,BoolConfig.child_id==0).first().value=v
                             else:
@@ -62,17 +61,6 @@ class SettingAdmin(FlaskView):
                                             if "port" in k2 and k!=k2 and p in v2:
                                                 flash(_("Port is already used! in")+f" {k2} {k}",'error')
                                                 return render_template('config.html', form=form)    
-                                if k == ConfigEnum.parent_panel and v!='':
-                                    # v=(v+"/").replace("/admin",'')
-                                    v=re.sub("(/admin/.*)","/",v)
-
-                                    try:
-                                        if hiddify_api.sync_child_to_parent(v)['status']!=200:
-                                            flash(_("Can not connect to parent panel!"),'error')
-                                            return render_template('config.html', form=form)
-                                    except:
-                                        flash(_("Can not connect to parent panel!"),'error')
-                                        return render_template('config.html', form=form)
                                 StrConfig.query.filter(StrConfig.key==k,StrConfig.child_id==0).first().value=v
 
                 # print(cat,vs)
@@ -81,11 +69,7 @@ class SettingAdmin(FlaskView):
             flask_babel.refresh()
             flask_babelex.refresh()
             
-            
-            from hiddifypanel.panel.telegrambot import register_bot
-            register_bot()
-            if hconfig(ConfigEnum.parent_panel):
-                hiddify_api.sync_child_to_parent()
+        
             reset_action=hiddify.check_need_reset(old_configs)
             if reset_action:
                 return reset_action
@@ -100,9 +84,6 @@ class SettingAdmin(FlaskView):
         
         
 
-        # form=HelloForm()
-        # # return render('config.html',form=form)
-        # return render_template('config.html',form=HelloForm())
         form=get_config_form()
         return render_template('config.html',form=form)
 
@@ -164,10 +145,8 @@ def get_config_form():
                 #     continue6
                 libs=[("python",_("lib.telegram.python")),("tgo",_("lib.telegram.go")),("orig",_("lib.telegram.orignal")),("erlang",_("lib.telegram.erlang"))]
                 field=wtf.fields.SelectField(_("config.telegram_lib.label"),choices=libs,description=_("config.telegram_lib.description"),default=hconfig(ConfigEnum.telegram_lib))
-            elif c.key==ConfigEnum.branding_freetext:
-                validators=[wtf.validators.Length(max=2048)]
-                render_kw={'class':"ltr",'maxlength':2048}
-                field= custom_widgets.CKTextAreaField(_(f'config.{c.key}.label'), validators, default=c.value, description=_(f'config.{c.key}.description'),render_kw=render_kw) 
+            elif c.key in [ConfigEnum.branding_freetext,ConfigEnum.branding_site,ConfigEnum.branding_title]:
+                continue
             else:
                 render_kw={'class':"ltr"}
                 validators=[]
@@ -183,14 +162,9 @@ def get_config_form():
                         validators.append(wtf.validators.NoneOf([cc.value.lower() for cc in StrConfig.query.filter(StrConfig.child_id==0).all() if cc.key!=c.key and  "fakedomain" in cc.key and cc.key!=ConfigEnum.decoy_domain],_("config.Domain already used")))
                     render_kw['required']=""
                 
-                if c.key ==ConfigEnum.parent_panel:
-                    validators.append(wtf.validators.Regexp("()|(http(s|)://([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})/.*)",re.IGNORECASE,_("Invalid admin link")))
-                if c.key == ConfigEnum.telegram_bot_token:
-                    validators.append(wtf.validators.Regexp("()|^([0-9]{8,12}:[a-zA-Z0-9_-]{30,40})|$",re.IGNORECASE,_("config.Invalid telegram bot token")))
-                if c.key==ConfigEnum.branding_site :
-                    validators.append(wtf.validators.Regexp("()|(http(s|)://([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})/?.*)",re.IGNORECASE,_("config.Invalid brand link")))
-                    # render_kw['required']=""
-
+                if c.key in [ConfigEnum.parent_panel,ConfigEnum.telegram_bot_token]:
+                    continue
+                
                 if 'secret' in c.key:
                     validators.append(wtf.validators.Regexp("^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",re.IGNORECASE,_('config.invalid uuid')))
                     render_kw['required']=""

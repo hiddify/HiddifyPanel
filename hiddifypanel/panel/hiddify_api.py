@@ -32,11 +32,8 @@ def add_user_usage_to_parent(dbusers_bytes,parent_link=None):
 
 
 
-def send_to_parent_panel(retry=3,parent_link=None):
-    
-    
+def send_to_parent_panel(parent_link=None):
     send_to_panel(parent_link)
-
 
 def send_to_panel(url,method="GET",data=None):
   try:

@@ -100,6 +100,7 @@ class UserAdmin(AdminLTEModelView):
     def _name_formatter(view, context, model, name):
         proxy_path=hconfig(ConfigEnum.proxy_path)
         if hconfig(ConfigEnum.is_parent):
+            from hiddifypanel.panel.commercial import ParentDomain
             d=ParentDomain.query.first()
         else:
             d=Domain.query.filter(Domain.mode!=DomainType.fake).first()
@@ -110,6 +111,7 @@ class UserAdmin(AdminLTEModelView):
             return model.name
     def _ul_formatter(view, context, model, name):
         if hconfig(ConfigEnum.is_parent):
+            from hiddifypanel.panel.commercial import ParentDomain
             domains=ParentDomain.query.all()
         else:    
             domains=Domain.query.filter(Domain.mode!=DomainType.fake).all()

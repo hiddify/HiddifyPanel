@@ -354,7 +354,7 @@ def dump_db_to_dict():
     return {"users": [user_dict(u) for u in User.query.all()],
             "domains": [domain_dict(u) for u in Domain.query.all()],
             "proxies": [proxy_dict(u) for u in Proxy.query.all()],
-            "parent_domains": [parent_domain_dict(u) for u in ParentDomain.query.all()],
+            "parent_domains": [] if not hconfig(ConfigEnum.license) else [parent_domain_dict(u) for u in ParentDomain.query.all()],
             "hconfigs": [*[config_dict(u) for u in BoolConfig.query.all()],
                          *[config_dict(u) for u in StrConfig.query.all()]]
             }
@@ -436,37 +436,6 @@ def add_or_update_user1(commit=True,**user):
     if commit:
         db.session.commit()
 
-def add_or_update_config(commit=True,child_id=0,override_unique_id=True,**config):
-    print(config)
-    c = config['key']
-    ckey = ConfigEnum(c)
-    if c == ConfigEnum.unique_id and not override_unique_id:
-        return
-    v = config['value']
-
-    print(c, ckey, ckey.type(), "child_id", child_id)
-    if ckey in [ConfigEnum.db_version]:
-        return
-    if ckey.type() == bool:
-        dbconf = BoolConfig.query.filter(
-            BoolConfig.key == ckey, BoolConfig.child_id == child_id).first()
-        # print(dbconf,dbconf.child_id)
-        print("====", dbconf)
-        if not dbconf:
-            dbconf = BoolConfig(key=ckey, child_id=child_id)
-            db.session.add(dbconf)
-
-        v = str(v).lower() == "true"
-    else:
-        dbconf = StrConfig.query.filter(
-            StrConfig.key == ckey, StrConfig.child_id == child_id).first()
-        print("====", dbconf)
-        if not dbconf:
-            dbconf = StrConfig(key=ckey, child_id=child_id)
-            db.session.add(dbconf)
-
-    dbconf.value = v
-    print(">>>>", dbconf)
 
 def bulk_register_parent_domains(parent_domains,commit=True,remove=False):
     for p in parent_domains:
@@ -521,9 +490,6 @@ def bulk_register_proxies(proxies,commit=True,override_child_id=None):
 
     
 def set_db_from_json(json_data, override_child_id=None, set_users=True, set_domains=True, set_proxies=True, set_settings=True, remove_domains=False, remove_users=False, override_unique_id=True):
-    
-    
-
     new_rows = []
     if set_users and 'users' in json_data:
         bulk_register_users(json_data['users'],commit=False,remove=remove_users)

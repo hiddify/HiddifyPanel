@@ -63,7 +63,9 @@ fieldset {
 {{super()}}
 <script>
 // $("fieldset .form-group").hide()
+% if not hconfig(ConfigEnum.is_parent)
 $("fieldset").filter(function() { return !($(this).children().children().is('.invalid-feedback')); }).find('.form-group').hide()
+%endif
 $("fieldset legend").click(function(e){
     $(this.parentNode).find('.form-group').toggle('fade')
     

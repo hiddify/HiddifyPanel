@@ -20,18 +20,11 @@ from wtforms.fields import *
 from flask_classful import FlaskView
 from hiddifypanel.panel import hiddify,hiddify_api,custom_widgets
 
-class PremiumSettings(FlaskView):
+class CommercialSettings(FlaskView):
     
 
 
     def index(self):
-        # return "d"
-        
-        
-
-        # form=HelloForm()
-        # # return render('config.html',form=form)
-        # return render_template('config.html',form=HelloForm())
         form=get_config_form()
         return render_template('config.html',form=form)
 
@@ -50,7 +43,7 @@ class PremiumSettings(FlaskView):
                     for k,v in vs.items():
             
                         if k in [c for c in ConfigEnum]:
-                            if not k.premium():continue
+                            if not k.commercial():continue
                             if k in bool_types:
                                 BoolConfig.query.filter(BoolConfig.key==k,BoolConfig.child_id==0).first().value=v
                             else:

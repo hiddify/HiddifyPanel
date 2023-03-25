@@ -107,13 +107,8 @@ def init_app(app):
     @click.option("--val", "-v")
     def set_setting(key,val):
         old_hconfigs=get_hconfigs()
-        hiddify.set_db_from_json({'hconfigs':[{'key':key,'value':val}]})
-        if key==ConfigEnum.is_parent and not old_hconfigs[key] and hconfig(key):
-            print("removing some useless options")
-            Domain.query.delete()
-            db.session.commit()
-            db.session.add(ParentDomain(domain=hiddify.get_ip(4)+".sslip.io"))
-            db.session.commit()
+        hiddify.add_or_update_config(key=key,value=val)
+
         return "success"
 
     @app.cli.command()

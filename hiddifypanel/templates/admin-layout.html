@@ -76,8 +76,17 @@
                  % if hconfig(ConfigEnum.is_parent)
                   {{ render_nav_item('flask.parentdomain.index_view', icon('solid','arrow-down-up-lock','nav-icon')+_('admin.menu.domain')) }}
                  %endif
-                 {{ render_nav_item('admin.SettingAdmin:index',icon('solid','gear','nav-icon')+ _('admin.menu.config')) }}
 
+                 
+                  
+                 
+
+                 {{ render_nav_item('admin.SettingAdmin:index',icon('solid','gear','nav-icon')+ _('admin.menu.config')) }}
+                 % if hconfig(ConfigEnum.license)
+                 {{ render_nav_item('admin.CommercialSettings:index', icon('solid','dumpster','nav-icon')+_('Commercial Settings')) }}
+                 %else
+                 {{ render_nav_item('admin.CommercialInfo:index', icon('solid','dumpster','nav-icon')+_('Commercial use')) }}
+                 %endif
 
 
           
@@ -104,7 +113,7 @@
           
           <a href="https://github.com/hiddify/hiddify-config/issues" target="_blank"
       class="nav-item nav-link">{{icon('solid','circle-question','nav-icon')+_('admin.menu.support')}}</a>
-          
+
     <a href="https://t.me/hiddify" target="_blank"
       class="nav-item nav-link">{{icon('brands','telegram','nav-icon')+_('admin.menu.telegram')}}</a>
       <a class="nav-item nav-link" role="button" data-toggle="modal" data-target="#modal-donation">

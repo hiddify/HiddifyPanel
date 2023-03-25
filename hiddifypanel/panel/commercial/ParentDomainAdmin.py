@@ -3,7 +3,7 @@ from hiddifypanel.panel.database import db
 from wtforms.validators import Regexp
 from hiddifypanel.models import *
 from wtforms.validators import Regexp, ValidationError
-from .adminlte import AdminLTEModelView
+from hiddifypanel.panel.admin.adminlte import AdminLTEModelView
 from flask_babelex import gettext as __
 from flask_babelex import lazy_gettext as _
 from hiddifypanel.panel import hiddify
@@ -13,7 +13,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
 from wtforms import SelectMultipleField
-
+from . import ParentDomain
 
 from wtforms.widgets import ListWidget, CheckboxInput
 from sqlalchemy.orm import backref

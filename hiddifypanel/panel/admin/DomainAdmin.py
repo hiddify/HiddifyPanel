@@ -112,37 +112,37 @@ class DomainAdmin(AdminLTEModelView):
                         _("You have used this domain in: ")+_(f"config.{c}.label"))
         myip = hiddify.get_ip(4)
         
+        skip_check=False
         if hconfig(ConfigEnum.cloudflare):
             if model.mode==DomainType.direct:
                 cf_api.add_or_update_domain(domain, myip,"A",proxied=False)
             elif model.mode==DomainType.cdn or model.mode==DomainType.auto_cdn_ip:
                 cf_api.add_or_update_domain(domain, myip,"A",proxied=True)
+            skip_check=True
         # elif model.mode==DomainType.auto_cdn_ip:
+            
         #     raise ValidationError(_("You have to add your cloudflare api key to use this feature: "))
 
 
         dip = hiddify.get_domain_ip(model.domain)
-        
-        if dip == None:
+        if not skip_check:
+            if dip == None :        
+                raise ValidationError(
+                    _("Domain can not be resolved! there is a problem in your domain"))
+
             
-            
-            raise ValidationError(
-                _("Domain can not be resolved! there is a problem in your domain"))
+            if model.mode == DomainType.direct and myip != dip:
+                raise ValidationError(
+                    _("Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode", server_ip=myip, domain_ip=dip))
 
-        
-        if model.mode == DomainType.direct and myip != dip:
-            raise ValidationError(
-                _("Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode", server_ip=myip, domain_ip=dip))
+            if dip == myip and model.mode in [DomainType.cdn, DomainType.relay, DomainType.fake]:
+                raise ValidationError(
+                    _("In CDN mode, Domain IP=%(domain_ip)s should be different to your ip=%(server_ip)s", server_ip=myip, domain_ip=dip))
 
-        if dip == myip and model.mode in [DomainType.cdn, DomainType.relay, DomainType.fake]:
-            raise ValidationError(
-                _("In CDN mode, Domain IP=%(domain_ip)s should be different to your ip=%(server_ip)s", server_ip=myip, domain_ip=dip))
-
-        # if model.mode in [DomainType.ss_faketls, DomainType.telegram_faketls]:
-        #     if len(Domain.query.filter(Domain.mode==model.mode and Domain.id!=model.id).all())>0:
-        #         ValidationError(f"another {model.mode} is exist")
+            # if model.mode in [DomainType.ss_faketls, DomainType.telegram_faketls]:
+            #     if len(Domain.query.filter(Domain.mode==model.mode and Domain.id!=model.id).all())>0:
+            #         ValidationError(f"another {model.mode} is exist")
         model.domain = model.domain.lower()
-
         if model.mode == DomainType.direct and model.cdn_ip:
             raise ValidationError(
                 f"Specifying CDN IP is only valid for CDN mode")
@@ -158,6 +158,8 @@ class DomainAdmin(AdminLTEModelView):
         # # Update the many-to-many relationship
         if len(model.show_domains)==Domain.query.count():
             model.show_domains=[]
+        if model.alias and not g.is_commercial:
+            model.alias= "@hiddify "+model.alias
         # model.work_with = self.session.query(Domain).filter(
         #     Domain.id.in_(work_with_ids)).all()
         if is_created or not get_domain(model.domain) :

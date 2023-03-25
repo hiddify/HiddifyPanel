@@ -134,6 +134,7 @@ def get_common_data(user_uuid,mode,no_domain=False,filter_domain=None):
     else:
         domain=urlparse(request.base_url).hostname if not no_domain else None
         if hconfig(ConfigEnum.is_parent):
+            from hiddifypanel.panel.commercial import ParentDomain
             db_domain=ParentDomain.query.filter(ParentDomain.domain==domain).first() or ParentDomain(domain=domain,show_domains=[])
         else:
             db_domain=Domain.query.filter(Domain.domain==domain).first() or Domain(domain=domain,mode=DomainType.direct,cdn_ip='',show_domains=[])
@@ -180,7 +181,10 @@ def get_common_data(user_uuid,mode,no_domain=False,filter_domain=None):
         UserMode.monthly:30
 
     }
-    from hiddifypanel.panel.telegrambot import bot
+    bot=None
+    if hconfig(ConfigEnum.license):
+        from hiddifypanel.panel.telegrambot import bot
+
     g.locale= hconfig(ConfigEnum.lang)
     expire_days=remaining_days(user)
     reset_days=days_to_reset(user)
@@ -208,7 +212,8 @@ def get_common_data(user_uuid,mode,no_domain=False,filter_domain=None):
         'link_maker':link_maker,
         'domains':domains,
         "bot":bot,
-        "db_domain":db_domain
+        "db_domain":db_domain,
+        "telegram_enable":hconfig(ConfigEnum.telegram_enable) and any([d for d in domains if d.mode!=DomainType.cdn ])
 
     }
     

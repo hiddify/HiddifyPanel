@@ -4,10 +4,10 @@ import sys
         
 
 
-from hiddifypanel.panel.database import db
+
 from dateutil import relativedelta
 import datetime
-from hiddifypanel.models import *
+
 from hiddifypanel.panel import hiddify
 import random
 import uuid
@@ -22,7 +22,8 @@ def init_db():
         db.engine.execute(f'DELETE from proxy where transport = "h1"')
     except:
         pass
-    add_column(ParentDomain.alias)
+    if hconfig(ConfigEnum.license):
+        add_column(ParentDomain.alias)
     add_column(User.start_date)
     add_column(User.package_days)
     add_column(Child.unique_id)
@@ -71,22 +72,24 @@ def init_db():
 
         print(f"Updating db from version {db_version}")
         db_action()
+        Events.db_init_event.notify(db_version)
         print(f"Updated successfuly db from version {db_version} to {ver}")
         
         db_version=ver
         db.session.commit()
         set_hconfig(ConfigEnum.db_version,db_version,commit=False)
     
-    if hconfig(ConfigEnum.is_parent) and ParentDomain.query.count()==0:
-        external_ip=hiddify.get_ip(4)
-        db.session.add(ParentDomain(domain=f"{external_ip}.sslip.io",show_domains=[]))
+    
     db.session.commit()
     return BoolConfig.query.all()
 
-def _v24():
+def _v25():
     add_config_if_not_exist(ConfigEnum.country, "ir")
     add_config_if_not_exist(ConfigEnum.parent_panel, "")
     add_config_if_not_exist(ConfigEnum.is_parent, False)
+    add_config_if_not_exist(ConfigEnum.license, "")
+    
+
 
 def _v21():
     db.session.bulk_save_objects(get_proxy_rows_v1())
@@ -364,11 +367,13 @@ def get_random_string(min_=10,max_=30):
 
 def get_random_domains(count=1,retry=3):
     try:
-        url="https://api.ooni.io/api/v1/measurements?probe_cc=IR&test_name=web_connectivity&anomaly=false&confirmed=false&failure=false&order_by=test_start_time&limit=1000"
+        irurl="https://api.ooni.io/api/v1/measurements?probe_cc=IR&test_name=web_connectivity&anomaly=false&confirmed=false&failure=false&order_by=test_start_time&limit=1000"
+        # cnurl="https://api.ooni.io/api/v1/measurements?probe_cc=CN&test_name=web_connectivity&anomaly=false&confirmed=false&failure=false&order_by=test_start_time&limit=1000"
         import requests
-        data=requests.get(url).json()
+        data_ir=requests.get(url).json()
+        # data_cn=requests.get(url).json()
         from urllib.parse import urlparse
-        domains=[urlparse(d['input']).netloc.lower() for d in data['results'] if d['scores']['blocking_country']==0.0]
+        domains=[urlparse(d['input']).netloc.lower() for d in data_ir['results'] if d['scores']['blocking_country']==0.0]
         domains=[d for d in domains if not d.endswith(".ir")]
         
         return random.sample(domains, count)

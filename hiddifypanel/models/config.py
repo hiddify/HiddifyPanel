@@ -15,7 +15,7 @@ import datetime
 import uuid as uuid_mod
 from enum import auto
 from strenum import StrEnum
-
+from hiddifypanel import Events
 
 from .config_enum import ConfigEnum,ConfigCategory
 
@@ -38,6 +38,7 @@ class StrConfig(db.Model, SerializerMixin):
 
 
 def hconfig(key: ConfigEnum,child_id=0):
+    
     try:
         str_conf = StrConfig.query.filter(StrConfig.key == key, StrConfig.child_id==child_id).first()
         if str_conf:
@@ -54,6 +55,7 @@ def hconfig(key: ConfigEnum,child_id=0):
         print(f'{key} not found ')
     except:
         print(f'{key} error!')
+        raise
 
     return None
 
@@ -70,10 +72,12 @@ def set_hconfig(key: ConfigEnum,value,child_id=0,commit=True):
             if not dbconf:
                 dbconf=StrConfig(key=key,value=value,child_id=child_id)
                 db.session.add(dbconf)
+        old_v=dbconf.value
         dbconf.value=value
+        Events.config_changed.notify(conf=dbconf,old_value=old_v)    
         if commit:
             db.session.commit()
-
+        
 
 def get_hconfigs(child_id=0):
     return {**{u.key: u.value for u in BoolConfig.query.filter(BoolConfig.child_id==child_id).all()},
@@ -82,3 +86,18 @@ def get_hconfigs(child_id=0):
             # ConfigEnum.ssfaketls_fakedomain:hdomain(DomainType.ss_faketls),
             # ConfigEnum.fake_cdn_domain:hdomain(DomainType.fake_cdn)
             }
+
+
+
+def add_or_update_config(commit=True,child_id=0,override_unique_id=True,**config):
+    print(config)
+    c = config['key']
+    ckey = ConfigEnum(c)
+    if c == ConfigEnum.unique_id and not override_unique_id:
+        return
+
+    v = str(config['value']).lower() == "true" if ckey.type()==bool else config['value'] 
+    if ckey in [ConfigEnum.db_version]:
+        return
+    set_hconfig(ckey, v,child_id,commit=commit)
+    

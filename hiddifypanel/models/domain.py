@@ -7,7 +7,7 @@ from wtforms import SelectMultipleField
 from urllib.parse import urlparse
 from .config_enum import ConfigEnum,ConfigCategory
 from .config import hconfig
-from .parent_domain import ParentDomain
+
 from sqlalchemy.orm import backref
 
 from flask import Markup
@@ -77,12 +77,13 @@ def get_domain(domain):
 
 def get_panel_domains():
     if hconfig(ConfigEnum.is_parent):
-        
+        from hiddifypanel.commercial.parent_domain import ParentDomain
         return ParentDomain.query.all()    
     return Domain.query.filter(Domain.mode!=DomainType.fake).all()
 
 def get_proxy_domains(domain):
     if hconfig(ConfigEnum.is_parent):
+        from hiddifypanel.commercial.parent_domain import ParentDomain
         db_domain=ParentDomain.query.filter(ParentDomain.domain==domain).first() or ParentDomain(domain=domain,show_domains=[])
     else:
         db_domain=Domain.query.filter(Domain.domain==domain).first() or Domain(domain=domain,mode=DomainType.direct,cdn_ip='',show_domains=[])
