@@ -170,6 +170,8 @@ def get_common_data(user_uuid,mode,no_domain=False,filter_domain=None):
     
 
     for d in domains:
+        if d.mode==DomainType.cdn:
+            continue
         if d.mode==DomainType.auto_cdn_ip or d.cdn_ip:
             d.cdn_ip=clean_ip.get_clean_ip(d.cdn_ip)
             print("autocdn ip mode ",d.cdn_ip)
