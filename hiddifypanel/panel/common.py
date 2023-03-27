@@ -75,5 +75,7 @@ def init_app(app):
             if endpoint and ("admin" in endpoint or "api" in endpoint):
                 # raise PermissionError("Access Denied")
                 abort(403, 'Access Denied')
+            if "admin" in request.base_url or "api" in request.base_url:
+                abort(403, 'Access Denied')
 
         # print(g.user)
