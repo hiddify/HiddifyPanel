@@ -85,7 +85,9 @@
                  % if hconfig(ConfigEnum.license)
                  {{ render_nav_item('admin.CommercialSettings:index', icon('solid','dumpster','nav-icon')+_('Commercial Settings')) }}
                  %else
+                 %if false
                  {{ render_nav_item('admin.CommercialInfo:index', icon('solid','dumpster','nav-icon')+_('Commercial use')) }}
+                 %endif
                  %endif
 
 

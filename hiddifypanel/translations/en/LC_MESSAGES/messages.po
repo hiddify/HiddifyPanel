@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-25 10:14+0100\n"
-"PO-Revision-Date: 2023-03-25 03:25-0500\n"
+"POT-Creation-Date: 2023-03-27 14:14+0200\n"
+"PO-Revision-Date: 2023-03-27 07:14-0500\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -48,7 +48,7 @@ msgstr "Configs have been changed successfully."
 #: hiddifypanel/panel/admin/ChildAdmin.py:108
 #: hiddifypanel/panel/admin/DomainAdmin.py:131
 #: hiddifypanel/panel/admin/QuickSetup.py:117
-#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:109
+#: hiddifypanel/panel/commercial2/ParentDomainAdmin.py:109
 #: hiddifypanel/panel/hiddify.py:237
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr ""
@@ -147,7 +147,7 @@ msgstr "Select this option to restore your domains."
 #: hiddifypanel/panel/admin/QuickSetup.py:80
 #: hiddifypanel/panel/admin/QuickSetup.py:107
 #: hiddifypanel/panel/admin/SettingAdmin.py:197
-#: hiddifypanel/panel/commercial/CommercialSettings.py:216
+#: hiddifypanel/panel/commercial2/CommercialSettings.py:216
 msgid "Submit"
 msgstr "Submit"
 
@@ -159,7 +159,7 @@ msgstr "Submit"
 #: hiddifypanel/panel/admin/ChildAdmin.py:33
 #: hiddifypanel/panel/admin/DomainAdmin.py:38
 #: hiddifypanel/panel/admin/QuickSetup.py:101
-#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:33
+#: hiddifypanel/panel/commercial2/ParentDomainAdmin.py:33
 msgid "domain.description"
 msgstr ""
 "Please fill in this field carefully and correctly. Otherwise, proxies will "
@@ -182,7 +182,7 @@ msgstr ""
 # | "new profiles."
 #: hiddifypanel/panel/admin/ChildAdmin.py:34
 #: hiddifypanel/panel/admin/DomainAdmin.py:41
-#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:35
+#: hiddifypanel/panel/commercial2/ParentDomainAdmin.py:35
 msgid ""
 "You can select the configs with which domains show be shown in the user "
 "area. If you select all, automatically, all the new domains will be added "
@@ -196,7 +196,7 @@ msgstr ""
 #: hiddifypanel/panel/admin/ChildAdmin.py:54
 #: hiddifypanel/panel/admin/DomainAdmin.py:63
 #: hiddifypanel/panel/admin/QuickSetup.py:101
-#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:55
+#: hiddifypanel/panel/commercial2/ParentDomainAdmin.py:55
 msgid "domain.domain"
 msgstr "Domain"
 
@@ -204,15 +204,15 @@ msgstr "Domain"
 #: hiddifypanel/panel/admin/ChildAdmin.py:57
 #: hiddifypanel/panel/admin/ChildAdmin.py:58
 #: hiddifypanel/panel/admin/DomainAdmin.py:67
-#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:58
-#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:59
+#: hiddifypanel/panel/commercial2/ParentDomainAdmin.py:58
+#: hiddifypanel/panel/commercial2/ParentDomainAdmin.py:59
 msgid "Show Domains"
 msgstr "Show Configs of Domains:"
 
 # | msgid "Admin"
 #: hiddifypanel/panel/admin/ChildAdmin.py:65
 #: hiddifypanel/panel/admin/DomainAdmin.py:77
-#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:66
+#: hiddifypanel/panel/commercial2/ParentDomainAdmin.py:66
 msgid "admin link"
 msgstr "Admin"
 
@@ -221,7 +221,7 @@ msgid "Domain is not correctly mapped to this server!"
 msgstr "Domain is not correctly mapped to this server!"
 
 #: hiddifypanel/panel/admin/Dashboard.py:37
-#: hiddifypanel/panel/commercial/CommercialDashboard.py:36
+#: hiddifypanel/panel/commercial2/CommercialDashboard.py:36
 #, python-format
 msgid ""
 "It seems that you have not setup the system completely. <a class=\"btn btn-"
@@ -234,7 +234,7 @@ msgstr ""
 # | "It seems that you are using default domain (%(domain)s) which is not "
 # | "recommended. Please change or remove it from domain section."
 #: hiddifypanel/panel/admin/Dashboard.py:39
-#: hiddifypanel/panel/commercial/CommercialDashboard.py:38
+#: hiddifypanel/panel/commercial2/CommercialDashboard.py:38
 #, python-format
 msgid ""
 "It seems that you are using default domain (%(domain)s) which is not "
@@ -244,7 +244,7 @@ msgstr ""
 "recommended. Please change or remove it from domain section."
 
 #: hiddifypanel/panel/admin/Dashboard.py:43
-#: hiddifypanel/panel/commercial/CommercialDashboard.py:42
+#: hiddifypanel/panel/commercial2/CommercialDashboard.py:42
 #, python-format
 msgid ""
 "It seems that you have not created any users yet. Default user link: "
@@ -254,7 +254,7 @@ msgstr ""
 "%(default_link)s"
 
 #: hiddifypanel/panel/admin/Dashboard.py:58
-#: hiddifypanel/panel/commercial/CommercialDashboard.py:57
+#: hiddifypanel/panel/commercial2/CommercialDashboard.py:57
 #, fuzzy
 msgid "child has been removed!"
 msgstr "child has been removed!"
@@ -264,6 +264,9 @@ msgstr "child has been removed!"
 # | "provider on a DNS Only mode. (CDN or Proxy mode OFF) <br>\n"
 # | "<b>CDN</b> mode: Choose this mode if you use your server's domain on a "
 # | "CDN provider. (Proxy mode ON)<br>\n"
+# | "<b>Auto CDN IP</b> mode: It is like CDN mode, except that the appropriate
+# "
+# | "IP is automatically set based on the IP provided by ircf.space<br>\n"
 # | "<b>Relay</b> mode: Choose this mode if you are using one or more "
 # | "Intermediary servers. <a href=\"https://github.com/hiddify/hiddify-"
 # | "config/discussions/129\" target=\"_blank\">Read More.</a>\n"
@@ -278,6 +281,7 @@ msgid ""
 msgstr ""
 "<b>Direct</b> mode: Choose this mode if you set your domain on your DNS provider on a DNS Only mode. (CDN or Proxy mode OFF) <br>\n"
 "<b>CDN</b> mode: Choose this mode if you use your server's domain on a CDN provider. (Proxy mode ON)<br>\n"
+"<b>Auto CDN IP</b> mode: It is like CDN mode, except that the appropriate IP is automatically set based on the IP provided by ircf.space<br>\n"
 "<b>Relay</b> mode: Choose this mode if you are using one or more Intermediary servers. <a href=\"https://github.com/hiddify/hiddify-config/discussions/129\" target=\"_blank\">Read More.</a>\n"
 "<br>\n"
 "<b>Fake</b> mode: Choose this mode if you want to use a fake domain (e.g., soft98.ir) to bypass SNI whitelist proxy. (Not recommended.)\n"
@@ -301,7 +305,7 @@ msgstr ""
 
 # | msgid "The name that will be shown in the configs for this domain."
 #: hiddifypanel/panel/admin/DomainAdmin.py:42
-#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:34
+#: hiddifypanel/panel/commercial2/ParentDomainAdmin.py:34
 msgid "The name shown in the configs for this domain."
 msgstr "The name that will be shown in the configs for this domain."
 
@@ -310,11 +314,11 @@ msgstr "The name that will be shown in the configs for this domain."
 msgid "domain.mode"
 msgstr "Mode"
 
-# | msgid "Force CDN Config to use Host"
+# | msgid "Force CDN Config to use following IPs"
 #: hiddifypanel/panel/admin/DomainAdmin.py:65
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.cdn_forced_host.label"
-msgstr "Force CDN Config to use Host"
+msgstr "Force CDN Config to use following IPs"
 
 # | msgid "IP"
 #: hiddifypanel/panel/admin/DomainAdmin.py:66
@@ -322,7 +326,7 @@ msgid "domain.ip"
 msgstr "IP"
 
 #: hiddifypanel/panel/admin/DomainAdmin.py:68
-#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:57
+#: hiddifypanel/panel/commercial2/ParentDomainAdmin.py:57
 msgid "Alias"
 msgstr "Alias"
 
@@ -361,7 +365,7 @@ msgstr "Error! Domain Fronting not set."
 #: hiddifypanel/panel/admin/ProxyAdmin.py:66
 #: hiddifypanel/panel/admin/QuickSetup.py:72
 #: hiddifypanel/panel/admin/SettingAdmin.py:80
-#: hiddifypanel/panel/commercial/CommercialSettings.py:89
+#: hiddifypanel/panel/commercial2/CommercialSettings.py:89
 msgid "config.validation-error"
 msgstr "There is an error in one of the fields."
 
@@ -390,14 +394,14 @@ msgstr "Admin panel language"
 # | msgid "English انگلیسی 英语"
 #: hiddifypanel/panel/admin/QuickSetup.py:77
 #: hiddifypanel/panel/admin/SettingAdmin.py:136
-#: hiddifypanel/panel/commercial/CommercialSettings.py:148
+#: hiddifypanel/panel/commercial2/CommercialSettings.py:148
 msgid "lang.en"
 msgstr "English انگلیسی 英语"
 
 # | msgid "Persian فارسی 波斯语"
 #: hiddifypanel/panel/admin/QuickSetup.py:77
 #: hiddifypanel/panel/admin/SettingAdmin.py:136
-#: hiddifypanel/panel/commercial/CommercialSettings.py:148
+#: hiddifypanel/panel/commercial2/CommercialSettings.py:148
 msgid "lang.fa"
 msgstr "Persian فارسی 波斯语"
 
@@ -416,13 +420,13 @@ msgstr "Country"
 
 #: hiddifypanel/panel/admin/QuickSetup.py:79
 #: hiddifypanel/panel/admin/SettingAdmin.py:138
-#: hiddifypanel/panel/commercial/CommercialSettings.py:150
+#: hiddifypanel/panel/commercial2/CommercialSettings.py:150
 msgid "Iran"
 msgstr "Iran"
 
 #: hiddifypanel/panel/admin/QuickSetup.py:79
 #: hiddifypanel/panel/admin/SettingAdmin.py:138
-#: hiddifypanel/panel/commercial/CommercialSettings.py:150
+#: hiddifypanel/panel/commercial2/CommercialSettings.py:150
 msgid "China"
 msgstr "China"
 
@@ -441,8 +445,8 @@ msgstr ""
 #: hiddifypanel/panel/admin/QuickSetup.py:106
 #: hiddifypanel/panel/admin/SettingAdmin.py:154
 #: hiddifypanel/panel/admin/SettingAdmin.py:157
-#: hiddifypanel/panel/commercial/CommercialSettings.py:168
-#: hiddifypanel/panel/commercial/CommercialSettings.py:171
+#: hiddifypanel/panel/commercial2/CommercialSettings.py:168
+#: hiddifypanel/panel/commercial2/CommercialSettings.py:171
 msgid "config.Invalid domain"
 msgstr "Error! Invalid domain.  The domain format is www.google.com"
 
@@ -451,8 +455,8 @@ msgstr "Error! Invalid domain.  The domain format is www.google.com"
 #: hiddifypanel/panel/admin/QuickSetup.py:99
 #: hiddifypanel/panel/admin/SettingAdmin.py:161
 #: hiddifypanel/panel/admin/SettingAdmin.py:162
-#: hiddifypanel/panel/commercial/CommercialSettings.py:175
-#: hiddifypanel/panel/commercial/CommercialSettings.py:176
+#: hiddifypanel/panel/commercial2/CommercialSettings.py:175
+#: hiddifypanel/panel/commercial2/CommercialSettings.py:176
 msgid "config.Domain already used"
 msgstr "Domain is exist in domains section. Use another domain"
 
@@ -552,54 +556,54 @@ msgstr ""
 
 # | msgid "Port is already used! in:"
 #: hiddifypanel/panel/admin/SettingAdmin.py:62
-#: hiddifypanel/panel/commercial/CommercialSettings.py:56
+#: hiddifypanel/panel/commercial2/CommercialSettings.py:56
 msgid "Port is already used! in"
 msgstr "Port is already used! in:"
 
 # | msgid "Chinese چینی 中国人"
 #: hiddifypanel/panel/admin/SettingAdmin.py:136
-#: hiddifypanel/panel/commercial/CommercialSettings.py:148
+#: hiddifypanel/panel/commercial2/CommercialSettings.py:148
 msgid "lang.zh"
 msgstr "Chinese چینی 中国人"
 
 #: hiddifypanel/panel/admin/SettingAdmin.py:140
-#: hiddifypanel/panel/commercial/CommercialSettings.py:152
+#: hiddifypanel/panel/commercial2/CommercialSettings.py:152
 msgid "Release"
 msgstr "Release"
 
 #: hiddifypanel/panel/admin/SettingAdmin.py:140
-#: hiddifypanel/panel/commercial/CommercialSettings.py:152
+#: hiddifypanel/panel/commercial2/CommercialSettings.py:152
 msgid "Develop"
 msgstr "Develop"
 
 # | msgid "Python: low performance"
 #: hiddifypanel/panel/admin/SettingAdmin.py:146
-#: hiddifypanel/panel/commercial/CommercialSettings.py:158
+#: hiddifypanel/panel/commercial2/CommercialSettings.py:158
 msgid "lib.telegram.python"
 msgstr "Python: low performance"
 
 # | msgid "Go: high performance: No ad support"
 #: hiddifypanel/panel/admin/SettingAdmin.py:146
-#: hiddifypanel/panel/commercial/CommercialSettings.py:158
+#: hiddifypanel/panel/commercial2/CommercialSettings.py:158
 msgid "lib.telegram.go"
 msgstr "Go: high performance: No ad support"
 
 # | msgid "NOT Working: Original: high performance"
 #: hiddifypanel/panel/admin/SettingAdmin.py:146
-#: hiddifypanel/panel/commercial/CommercialSettings.py:158
+#: hiddifypanel/panel/commercial2/CommercialSettings.py:158
 msgid "lib.telegram.orignal"
 msgstr "NOT Working: Original: high performance"
 
 # | msgid "NOT Working: Erlang: medium performance"
 #: hiddifypanel/panel/admin/SettingAdmin.py:146
-#: hiddifypanel/panel/commercial/CommercialSettings.py:158
+#: hiddifypanel/panel/commercial2/CommercialSettings.py:158
 msgid "lib.telegram.erlang"
 msgstr "NOT Working: Erlang: medium performance"
 
 # | msgid "Telegram Proxy Library"
 #: hiddifypanel/panel/admin/SettingAdmin.py:147
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-#: hiddifypanel/panel/commercial/CommercialSettings.py:159
+#: hiddifypanel/panel/commercial2/CommercialSettings.py:159
 msgid "config.telegram_lib.label"
 msgstr "Telegram Proxy Library"
 
@@ -610,7 +614,7 @@ msgstr "Telegram Proxy Library"
 # | "after changing it."
 #: hiddifypanel/panel/admin/SettingAdmin.py:147
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-#: hiddifypanel/panel/commercial/CommercialSettings.py:159
+#: hiddifypanel/panel/commercial2/CommercialSettings.py:159
 msgid "config.telegram_lib.description"
 msgstr ""
 "You can switch between different telegram libraries. Please note that only "
@@ -621,7 +625,7 @@ msgstr ""
 # | "Invalid UUID secret. Example: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n"
 # | "\n"
 #: hiddifypanel/panel/admin/SettingAdmin.py:169
-#: hiddifypanel/panel/commercial/CommercialSettings.py:188
+#: hiddifypanel/panel/commercial2/CommercialSettings.py:188
 msgid "config.invalid uuid"
 msgstr ""
 "Invalid UUID secret. Example: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n"
@@ -629,15 +633,15 @@ msgstr ""
 
 # | msgid "Invalid proxy path. It should be asci string (a-z A-Z 0-9)"
 #: hiddifypanel/panel/admin/SettingAdmin.py:173
-#: hiddifypanel/panel/commercial/CommercialSettings.py:192
+#: hiddifypanel/panel/commercial2/CommercialSettings.py:192
 msgid "config.Invalid proxy path"
 msgstr "Invalid proxy path. It should be asci string (a-z A-Z 0-9)"
 
 # | msgid "Invalid port. It should be comma separated integer e.g., 1000,1001"
 #: hiddifypanel/panel/admin/SettingAdmin.py:178
 #: hiddifypanel/panel/admin/SettingAdmin.py:181
-#: hiddifypanel/panel/commercial/CommercialSettings.py:197
-#: hiddifypanel/panel/commercial/CommercialSettings.py:200
+#: hiddifypanel/panel/commercial2/CommercialSettings.py:197
+#: hiddifypanel/panel/commercial2/CommercialSettings.py:200
 msgid "config.Invalid port"
 msgstr "Invalid port. It should be comma separated integer e.g., 1000,1001"
 
@@ -766,7 +770,7 @@ msgid "Remaining: "
 msgstr "Package ends in "
 
 #: hiddifypanel/panel/admin/templates/backup.html:9
-#: hiddifypanel/templates/admin-layout.html:112
+#: hiddifypanel/templates/admin-layout.html:114
 msgid "Backup"
 msgstr "Backup"
 
@@ -852,7 +856,7 @@ msgstr ""
 
 # | msgid "Settings"
 #: hiddifypanel/panel/admin/templates/config.html:11
-#: hiddifypanel/panel/commercial/templates/config.html:11
+#: hiddifypanel/panel/commercial2/templates/config.html:11
 msgid "admin.config.title"
 msgstr "Settings"
 
@@ -1875,29 +1879,29 @@ msgstr ""
 "User usage will be updated every 6 minutes. To update it now click <a "
 "href=\"%(link)s\" class=\"btn btn-info\">here</a>."
 
-#: hiddifypanel/panel/commercial/CommercialSettings.py:64
-#: hiddifypanel/panel/commercial/CommercialSettings.py:67
+#: hiddifypanel/panel/commercial2/CommercialSettings.py:64
+#: hiddifypanel/panel/commercial2/CommercialSettings.py:67
 msgid "Can not connect to parent panel!"
 msgstr "Can not connect to parent panel!"
 
-#: hiddifypanel/panel/commercial/CommercialSettings.py:180
+#: hiddifypanel/panel/commercial2/CommercialSettings.py:180
 msgid "Invalid admin link"
 msgstr "Invalid admin link"
 
 # | msgid "Invalid Telegram bot token."
-#: hiddifypanel/panel/commercial/CommercialSettings.py:182
+#: hiddifypanel/panel/commercial2/CommercialSettings.py:182
 msgid "config.Invalid telegram bot token"
 msgstr "Invalid Telegram bot token."
 
 # | msgid ""
 # | "Invalid link. it should be on this format: (https or http://example.com)"
-#: hiddifypanel/panel/commercial/CommercialSettings.py:184
+#: hiddifypanel/panel/commercial2/CommercialSettings.py:184
 msgid "config.Invalid brand link"
 msgstr ""
 "Invalid link. it should be on this format: (https or http://example.com)"
 
-#: hiddifypanel/panel/commercial/telegrambot/Usage.py:16
-#: hiddifypanel/panel/commercial/telegrambot/information.py:55
+#: hiddifypanel/panel/commercial2/telegrambot/Usage.py:16
+#: hiddifypanel/panel/commercial2/telegrambot/information.py:55
 msgid ""
 "Hooray 🎉 🎉 🎉 \n"
 "Welcome to hiddifybot.\n"
@@ -1907,7 +1911,7 @@ msgstr ""
 "Welcome to hiddifybot.\n"
 "Start by clicking the link on the panel or entering your UUID."
 
-#: hiddifypanel/panel/commercial/telegrambot/information.py:20
+#: hiddifypanel/panel/commercial2/telegrambot/information.py:20
 msgid ""
 "Dear {}\n"
 "\n"
@@ -1934,7 +1938,7 @@ msgstr ""
 # | "Remaining days: {} \n"
 # | "\n"
 # | "Good Luck! 🎉 🎉 🎉 \n"
-#: hiddifypanel/panel/commercial/telegrambot/information.py:119
+#: hiddifypanel/panel/commercial2/telegrambot/information.py:119
 msgid ""
 "Your hiddify instance information \n"
 "Domain: {} \n"
@@ -2765,66 +2769,65 @@ msgid "admin.menu.config"
 msgstr "Settings"
 
 #: hiddifypanel/templates/admin-layout.html:86
-#, fuzzy
 msgid "Commercial Settings"
 msgstr "Commercial Settings"
 
-#: hiddifypanel/templates/admin-layout.html:88
+#: hiddifypanel/templates/admin-layout.html:89
 #, fuzzy
 msgid "Commercial use"
 msgstr "Commercial use"
 
 # | msgid "Actions"
-#: hiddifypanel/templates/admin-layout.html:98
+#: hiddifypanel/templates/admin-layout.html:100
 msgid "admin.actions.title"
 msgstr "Actions"
 
 # | msgid "Status"
-#: hiddifypanel/templates/admin-layout.html:100
+#: hiddifypanel/templates/admin-layout.html:102
 msgid "admin.actions.status"
 msgstr "Status"
 
 # | msgid "View Logs"
-#: hiddifypanel/templates/admin-layout.html:101
+#: hiddifypanel/templates/admin-layout.html:103
 msgid "admin.actions.viewlogs"
 msgstr "View Logs"
 
 # | msgid "Apply configs"
-#: hiddifypanel/templates/admin-layout.html:102
+#: hiddifypanel/templates/admin-layout.html:104
 msgid "admin.actions.apply_configs"
 msgstr "Apply configs"
 
 # | msgid "Update System"
-#: hiddifypanel/templates/admin-layout.html:103
+#: hiddifypanel/templates/admin-layout.html:105
 msgid "admin.actions.update"
 msgstr "Update System"
 
 # | msgid "Reinstall System"
-#: hiddifypanel/templates/admin-layout.html:105
+#: hiddifypanel/templates/admin-layout.html:107
 msgid "admin.actions.reinstall"
 msgstr "Reinstall System"
 
 # | msgid "Restart System"
-#: hiddifypanel/templates/admin-layout.html:106
+#: hiddifypanel/templates/admin-layout.html:108
 msgid "admin.actions.reset"
 msgstr "Restart System"
 
 # | msgid "Check Usage"
-#: hiddifypanel/templates/admin-layout.html:108
+#: hiddifypanel/templates/admin-layout.html:110
 msgid "User usage update"
 msgstr "Check Usage"
 
 # | msgid "Support"
-#: hiddifypanel/templates/admin-layout.html:115
+#: hiddifypanel/templates/admin-layout.html:117
 msgid "admin.menu.support"
 msgstr "Support"
 
 # | msgid "Telegram"
-#: hiddifypanel/templates/admin-layout.html:118
+#: hiddifypanel/templates/admin-layout.html:120
 msgid "admin.menu.telegram"
 msgstr "Telegram"
 
-#: hiddifypanel/templates/admin-layout.html:120
+#: hiddifypanel/templates/admin-layout.html:122
 #: hiddifypanel/templates/donation.html:5
 msgid "Donation"
 msgstr "Donation"
@@ -2849,20 +2852,27 @@ msgstr "Donation"
 # | "class=\"fa-regular fa-copy\"></i></a>    \n"
 # | "<a data-copy=\"EQCWnykA-YhavOXgH3sf-uxtXLjy83_9n5bJPGRPE8r2247_\" "
 # | "role=\"button\" class=\"btn btn-info share-link\">TON</a> </div></li>\n"
-# | "    <a role=\"button\" data-"
-# | "copy=\"0xF15ec158318d7F5236d82d040102340B0974C3E0\" class=\"btn btn-"
-# | "secondary copy-link\"><i class=\"fa-regular fa-copy\"></i></a>    \n"
-# | "<a data-copy=\"0xF15ec158318d7F5236d82d040102340B0974C3E0\" "
-# | "role=\"button\" class=\"btn btn-info share-link\">Ethereum</a>
-# </div></li>"
-# | "    <a role=\"button\" data-copy=\"3Epy7jyUUCVb1w12MNTu2JFVVhmfpr4EGX\" "
+# | "    <a role=\"button\" data-copy=\"TXZtFUxyBPMSykAWogu7C4zmbjySKqMcDE\" "
 # | "class=\"btn btn-secondary copy-link\"><i class=\"fa-regular
 # fa-copy\"></i>"
 # | "</a>    \n"
-# | "<a data-copy=\"3Epy7jyUUCVb1w12MNTu2JFVVhmfpr4EGX\" role=\"button\" "
-# | "class=\"btn btn-info share-link\">Bitcoin</a> </div></li>\n"
-# | "    <a role=\"button\" data-copy=\"DJy27pQKwnhaRxWDbU6dG7UdHHif6yp8Jb\" "
-# | "<a data-copy=\"DJy27pQKwnhaRxWDbU6dG7UdHHif6yp8Jb\" role=\"button\" "
+# | "<a data-copy=\"TXZtFUxyBPMSykAWogu7C4zmbjySKqMcDE\" role=\"button\" "
+# | "class=\"btn btn-info share-link\">USDT (TRC20)</a> </div></li>\n"
+# | "    <a role=\"button\" data-copy=\"MCHoh7xwaDBBnQgANPpBtXiekagV6KpdrM\" "
+# | "<a data-copy=\"MCHoh7xwaDBBnQgANPpBtXiekagV6KpdrM\" role=\"button\" "
+# | "class=\"btn btn-info share-link\">LiteCoin</a> </div></li>\n"
+# | "    <a role=\"button\" data-"
+# | "copy=\"0xF5CFc65ee336B377C2a37EA3BCD0CaD0d0F0CbA0\" class=\"btn btn-"
+# | "secondary copy-link\"><i class=\"fa-regular fa-copy\"></i></a>    \n"
+# | "<a data-copy=\"0xF5CFc65ee336B377C2a37EA3BCD0CaD0d0F0CbA0\" "
+# | "role=\"button\" class=\"btn btn-info share-link\">Ethereum</a>
+# </div></li>"
+# | "copy=\"bc1qkfp7n3wxu2zc9mdy20cf27d5pujj65myww8f60\" class=\"btn btn-"
+# | "<a data-copy=\"bc1qkfp7n3wxu2zc9mdy20cf27d5pujj65myww8f60\" "
+# | "role=\"button\" class=\"btn btn-info share-link\">Bitcoin</a>
+# </div></li>"
+# | "    <a role=\"button\" data-copy=\"DPerFS2vCu5XnE3He32BaPVTkUDcKLsEaj\" "
+# | "<a data-copy=\"DPerFS2vCu5XnE3He32BaPVTkUDcKLsEaj\" role=\"button\" "
 # | "class=\"btn btn-info share-link\">Dogecoin</a> </div></li>\n"
 # | "</ul>\n"
 # | "We need also other help:\n"
@@ -2889,18 +2899,25 @@ msgstr ""
 "    <a role=\"button\" data-copy=\"EQCWnykA-YhavOXgH3sf-uxtXLjy83_9n5bJPGRPE8r2247_\" class=\"btn btn-secondary copy-link\"><i class=\"fa-regular fa-copy\"></i></a>    \n"
 "<a data-copy=\"EQCWnykA-YhavOXgH3sf-uxtXLjy83_9n5bJPGRPE8r2247_\" role=\"button\" class=\"btn btn-info share-link\">TON</a> </div></li>\n"
 "\n"
+"<li> <div class=\"btn-group\">\n"
+"    <a role=\"button\" data-copy=\"TXZtFUxyBPMSykAWogu7C4zmbjySKqMcDE\" class=\"btn btn-secondary copy-link\"><i class=\"fa-regular fa-copy\"></i></a>    \n"
+"<a data-copy=\"TXZtFUxyBPMSykAWogu7C4zmbjySKqMcDE\" role=\"button\" class=\"btn btn-info share-link\">USDT (TRC20)</a> </div></li>\n"
 "\n"
 "<li> <div class=\"btn-group\">\n"
-"    <a role=\"button\" data-copy=\"0xF15ec158318d7F5236d82d040102340B0974C3E0\" class=\"btn btn-secondary copy-link\"><i class=\"fa-regular fa-copy\"></i></a>    \n"
-"<a data-copy=\"0xF15ec158318d7F5236d82d040102340B0974C3E0\" role=\"button\" class=\"btn btn-info share-link\">Ethereum</a> </div></li>\n"
+"    <a role=\"button\" data-copy=\"MCHoh7xwaDBBnQgANPpBtXiekagV6KpdrM\" class=\"btn btn-secondary copy-link\"><i class=\"fa-regular fa-copy\"></i></a>    \n"
+"<a data-copy=\"MCHoh7xwaDBBnQgANPpBtXiekagV6KpdrM\" role=\"button\" class=\"btn btn-info share-link\">LiteCoin</a> </div></li>\n"
 "\n"
 "<li> <div class=\"btn-group\">\n"
-"    <a role=\"button\" data-copy=\"3Epy7jyUUCVb1w12MNTu2JFVVhmfpr4EGX\" class=\"btn btn-secondary copy-link\"><i class=\"fa-regular fa-copy\"></i></a>    \n"
-"<a data-copy=\"3Epy7jyUUCVb1w12MNTu2JFVVhmfpr4EGX\" role=\"button\" class=\"btn btn-info share-link\">Bitcoin</a> </div></li>\n"
+"    <a role=\"button\" data-copy=\"0xF5CFc65ee336B377C2a37EA3BCD0CaD0d0F0CbA0\" class=\"btn btn-secondary copy-link\"><i class=\"fa-regular fa-copy\"></i></a>    \n"
+"<a data-copy=\"0xF5CFc65ee336B377C2a37EA3BCD0CaD0d0F0CbA0\" role=\"button\" class=\"btn btn-info share-link\">Ethereum</a> </div></li>\n"
 "\n"
 "<li> <div class=\"btn-group\">\n"
-"    <a role=\"button\" data-copy=\"DJy27pQKwnhaRxWDbU6dG7UdHHif6yp8Jb\" class=\"btn btn-secondary copy-link\"><i class=\"fa-regular fa-copy\"></i></a>    \n"
-"<a data-copy=\"DJy27pQKwnhaRxWDbU6dG7UdHHif6yp8Jb\" role=\"button\" class=\"btn btn-info share-link\">Dogecoin</a> </div></li>\n"
+"    <a role=\"button\" data-copy=\"bc1qkfp7n3wxu2zc9mdy20cf27d5pujj65myww8f60\" class=\"btn btn-secondary copy-link\"><i class=\"fa-regular fa-copy\"></i></a>    \n"
+"<a data-copy=\"bc1qkfp7n3wxu2zc9mdy20cf27d5pujj65myww8f60\" role=\"button\" class=\"btn btn-info share-link\">Bitcoin</a> </div></li>\n"
+"\n"
+"<li> <div class=\"btn-group\">\n"
+"    <a role=\"button\" data-copy=\"DPerFS2vCu5XnE3He32BaPVTkUDcKLsEaj\" class=\"btn btn-secondary copy-link\"><i class=\"fa-regular fa-copy\"></i></a>    \n"
+"<a data-copy=\"DPerFS2vCu5XnE3He32BaPVTkUDcKLsEaj\" role=\"button\" class=\"btn btn-info share-link\">Dogecoin</a> </div></li>\n"
 "</ul>\n"
 "\n"
 "<br>\n"
