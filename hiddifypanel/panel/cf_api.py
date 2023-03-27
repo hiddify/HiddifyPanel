@@ -1,3 +1,5 @@
+from hiddifypanel.models import *
+import CloudFlare
 
 
 def add_or_update_domain(domain,ip,dns_type="A",proxied=True):

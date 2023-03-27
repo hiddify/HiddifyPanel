@@ -6,15 +6,18 @@ if [ "$(id -u)" -ne 0 ]; then
        exit 1
 fi
 source .env
-make release 
 
+do_release=0
+if [[ $do_release == 1 ]];then
+make release 
+fi
 rm -rf build/; rm -rf dist/;
-rm -rf tmp_release
-cp -rf ./ tmp_release
-cd tmp_release 
+rm -rf ../tmp_release
+cp -rf . ../tmp_release
+cd ../tmp_release 
 
 # $(find hiddifypanel/panel/api/  hiddifypanel/models/ hiddifypanel/panel/telegrambot/ -name "*.py")
-bash ../.github/cython_prepare.sh
+bash ../HiddifyPanel/.github/cython_prepare.sh
 
 export CIBW_SKIP='pp*'
 python3 setup.py  build_ext --inplace

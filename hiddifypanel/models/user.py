@@ -100,14 +100,14 @@ def user_by_id(id):
 
 
 def add_or_update_user(commit=True,**user):
-    if not is_valid():return
+    # if not is_valid():return
     dbuser = User.query.filter(User.uuid == user['uuid']).first()
 
     if not dbuser:
         dbuser = User()
         dbuser.uuid = user['uuid']
-        if not is_valid():
-            return
+        # if not is_valid():
+        #     return
         db.session.add(dbuser)
     
     if user.get('expiry_time',''):
