@@ -72,7 +72,7 @@ def get_clean_ip(ips):
     try:
         selected_server=random.sample(ips, 1)
         print("selected ",selected_server)
-        return hiddify.get_domain_ip(selected_server)
+        return hiddify.get_domain_ip(selected_server[0])
     except Exception as e:
         print(e)
         flash(_("Error! auto cdn ip can not be find, please contact admin."))
