@@ -67,14 +67,14 @@
       <td><span class="badge badge-success">{{_('all')}}</span></td>
     </tr>
 
-    %for d in domains
-    %for t in (['http','tls'] if hconfig(ConfigEnum.http_proxy_enable,d.child_id) else ['tls'])
-    %for port in hconfig(ConfigEnum.http_ports if t=='http' else ConfigEnum.tls_ports,d.child_id).split(',')
-    
-    % for type in link_maker.all_proxies(d.child_id)
-
-    {% set pinfo=link_maker.make_proxy(type,d,phttp=phttp,ptls=ptls) %}
-    % if pinfo!=None
+%for d in domains
+%for t in (['http','tls'] if hconfig(ConfigEnum.http_proxy_enable,d.child_id) else ['tls'])
+%for port in hconfig(ConfigEnum.http_ports if t=='http' else ConfigEnum.tls_ports,d.child_id).split(',')
+%set phttp=port if t=='http' else None
+%set ptls=port if t=='tls' else None
+% for type in link_maker.all_proxies(d.child_id)
+% set pinfo=link_maker.make_proxy(type,d,phttp=phttp,ptls=ptls)
+% if pinfo!=None
     <tr>
       <td>
         <div class="btn-group"><a href='{{link_maker.to_link(pinfo)}}'
@@ -86,12 +86,12 @@
       <td><span class="badge badge-warning">{{pinfo['transport']}}</span></td>
       <td><span class="badge badge-success">{{pinfo['l3']}}</span></td>
     </tr>
-    % endif
-
-    %endfor
-    % endfor
-    % endfor
-    %endfor
+    
+  %endif
+  % endfor
+  % endfor
+  % endfor
+  % endfor
   </tbody>
 </table>
 </div>
