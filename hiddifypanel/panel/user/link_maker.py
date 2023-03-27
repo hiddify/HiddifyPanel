@@ -62,10 +62,10 @@ def make_proxy(proxy, domain_db, phttp=80, ptls=443):
 
     is_cdn = ProxyCDN.CDN in proxy.cdn
     if is_cdn and domain_db.mode not in  [DomainType.cdn,DomainType.auto_cdn_ip]:
-        print("cdn proxy not in cdn domain", domain, name)
+        # print("cdn proxy not in cdn domain", domain, name)
         return
     if not is_cdn and domain_db.mode in  [DomainType.cdn,DomainType.auto_cdn_ip]:
-        print("not cdn proxy  in cdn domain", domain, name, proxy.cdn)
+        # print("not cdn proxy  in cdn domain", domain, name, proxy.cdn)
         return
 
     cdn_forced_host = domain_db.cdn_ip or domain_db.domain
