@@ -36,7 +36,7 @@ def all_configs():
     configs={
         "users": valid_users,
         "domains": [hiddify.domain_dict(u) for u in Domain.query.all()],
-        "parent_domains": [hiddify.parent_domain_dict(u) for u in ParentDomain.query.all()],
+        # "parent_domains": [hiddify.parent_domain_dict(u) for u in ParentDomain.query.all()],
         "hconfigs": get_hconfigs()
     }
     for d in configs['domains']:
