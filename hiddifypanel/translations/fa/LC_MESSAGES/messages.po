@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-27 17:46+0200\n"
-"PO-Revision-Date: 2023-03-27 10:46-0500\n"
+"POT-Creation-Date: 2023-03-27 23:07+0200\n"
+"PO-Revision-Date: 2023-03-27 16:06-0500\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -18,7 +18,11 @@ msgstr ""
 msgid "This domain does not exist in the panel!"
 msgstr "این دامنه در پنل وجود ندارد!"
 
-#: hiddifypanel/panel/clean_ip.py:65
+#: hiddifypanel/panel/clean_ip.py:71
+msgid "Error in morteza ip! auto cdn ip can not be find, please contact admin."
+msgstr ""
+
+#: hiddifypanel/panel/clean_ip.py:78
 msgid "Error! auto cdn ip can not be find, please contact admin."
 msgstr "خطا! آی پی اتوماتیک نتوانست پیدا شود. لطفا با مدیر تماس بگیرید"
 
@@ -356,6 +360,16 @@ msgid ""
 "In CDN mode, Domain IP=%(domain_ip)s should be different to your "
 "ip=%(server_ip)s"
 msgstr "در حالت CDN، IP=%(domain_ip)s باید با ip=%(server_ip)s شما متفاوت باشد."
+
+# | msgid ""
+# | "In CDN mode you can only apply one domain or one ip for forced host. use
+# "
+# | "auto cdn ip mode instead"
+#: hiddifypanel/panel/admin/DomainAdmin.py:154
+msgid "In CDN mode you can only apply one domain or one ip for forced host"
+msgstr ""
+"در حالت CDN شما فقط می توانید یک دامنه یا یک IP را برای هاست اجباری اعمال"
+" کنید میتوانید از حالت auto cdn ip استفاده کنید"
 
 # | msgid "Error! Domain Fronting not set."
 #: hiddifypanel/panel/admin/ProxyAdmin.py:38
@@ -2496,7 +2510,7 @@ msgstr ""
 # | "Otherwise, test with different proxies of this site and if the speed is
 # similar to the speed without the proxy, then you have found the best
 # protocol."
-#: hiddifypanel/panel/user/templates/home/speedtest.html:1
+#: hiddifypanel/panel/user/templates/home/speedtest.html:2
 msgid "user.home.speedtest.intro"
 msgstr ""
 "ابتدا سرعت را <b>بدون</b> اتصال به پروکسی تست کنید. اگر سرعت خوب نیست، به"
@@ -2507,17 +2521,17 @@ msgstr ""
 "کرده اید."
 
 # | msgid "Upload"
-#: hiddifypanel/panel/user/templates/home/speedtest.html:5
+#: hiddifypanel/panel/user/templates/home/speedtest.html:6
 msgid "user.home.speedtest.upload"
 msgstr "آپلود"
 
 # | msgid "Download"
-#: hiddifypanel/panel/user/templates/home/speedtest.html:7
+#: hiddifypanel/panel/user/templates/home/speedtest.html:8
 msgid "user.home.speedtest.download"
 msgstr "دانلود"
 
 # | msgid "Both ways"
-#: hiddifypanel/panel/user/templates/home/speedtest.html:9
+#: hiddifypanel/panel/user/templates/home/speedtest.html:10
 msgid "user.home.speedtest.two_ways"
 msgstr "هر دو (آپلود و دانلود)"
 

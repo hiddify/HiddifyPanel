@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-27 17:46+0200\n"
-"PO-Revision-Date: 2023-03-27 10:46-0500\n"
+"POT-Creation-Date: 2023-03-27 23:07+0200\n"
+"PO-Revision-Date: 2023-03-27 16:06-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -19,7 +19,11 @@ msgstr ""
 msgid "This domain does not exist in the panel!"
 msgstr "该域名在面板中不存在！"
 
-#: hiddifypanel/panel/clean_ip.py:65
+#: hiddifypanel/panel/clean_ip.py:71
+msgid "Error in morteza ip! auto cdn ip can not be find, please contact admin."
+msgstr ""
+
+#: hiddifypanel/panel/clean_ip.py:78
 msgid "Error! auto cdn ip can not be find, please contact admin."
 msgstr ""
 
@@ -334,6 +338,14 @@ msgid ""
 "In CDN mode, Domain IP=%(domain_ip)s should be different to your "
 "ip=%(server_ip)s"
 msgstr "在 CDN 模式下，Domain IP=%(domain_ip)s 应该与您的 ip=%(server_ip)s 不同"
+
+# | msgid ""
+# | "In CDN mode you can only apply one domain or one ip for forced host. use
+# "
+# | "auto cdn ip mode instead"
+#: hiddifypanel/panel/admin/DomainAdmin.py:154
+msgid "In CDN mode you can only apply one domain or one ip for forced host"
+msgstr ""
 
 # | msgid "Error! Domain Fronting not set."
 #: hiddifypanel/panel/admin/ProxyAdmin.py:38
@@ -2391,7 +2403,7 @@ msgstr ""
 # | "Otherwise, test with different proxies of this site and if the speed is
 # similar to the speed without the proxy, then you have found the best
 # protocol."
-#: hiddifypanel/panel/user/templates/home/speedtest.html:1
+#: hiddifypanel/panel/user/templates/home/speedtest.html:2
 msgid "user.home.speedtest.intro"
 msgstr ""
 "首先，测试<b>没有</b>代理的速度。如果速度不好，则说明此 ip 在您的 ISP 上是所谓的脏地址。\n"
@@ -2399,17 +2411,17 @@ msgstr ""
 "否则，用这个站点的不同代理测试，如果速度与没有代理的速度相似，那么你已经找到了最好的协议。"
 
 # | msgid "Upload"
-#: hiddifypanel/panel/user/templates/home/speedtest.html:5
+#: hiddifypanel/panel/user/templates/home/speedtest.html:6
 msgid "user.home.speedtest.upload"
 msgstr "上传"
 
 # | msgid "Download"
-#: hiddifypanel/panel/user/templates/home/speedtest.html:7
+#: hiddifypanel/panel/user/templates/home/speedtest.html:8
 msgid "user.home.speedtest.download"
 msgstr "下载"
 
 # | msgid "Both ways"
-#: hiddifypanel/panel/user/templates/home/speedtest.html:9
+#: hiddifypanel/panel/user/templates/home/speedtest.html:10
 msgid "user.home.speedtest.two_ways"
 msgstr "双向"
 

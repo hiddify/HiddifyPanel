@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-27 17:46+0200\n"
-"PO-Revision-Date: 2023-03-27 10:46-0500\n"
+"POT-Creation-Date: 2023-03-27 23:07+0200\n"
+"PO-Revision-Date: 2023-03-27 16:06-0500\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -18,7 +18,14 @@ msgstr ""
 msgid "This domain does not exist in the panel!"
 msgstr "This domain does not exist in the panel!"
 
-#: hiddifypanel/panel/clean_ip.py:65
+#: hiddifypanel/panel/clean_ip.py:71
+#, fuzzy
+msgid ""
+"Error in morteza ip! auto cdn ip can not be find, please contact admin."
+msgstr ""
+"Error in morteza ip! auto cdn ip can not be find, please contact admin."
+
+#: hiddifypanel/panel/clean_ip.py:78
 #, fuzzy
 msgid "Error! auto cdn ip can not be find, please contact admin."
 msgstr "Error! auto cdn ip can not be find, please contact admin."
@@ -341,6 +348,17 @@ msgid ""
 msgstr ""
 "In CDN mode, Domain IP=%(domain_ip)s should be different to your "
 "ip=%(server_ip)s"
+
+# | msgid ""
+# | "In CDN mode you can only apply one domain or one ip for forced host. use
+# "
+# | "auto cdn ip mode instead"
+#: hiddifypanel/panel/admin/DomainAdmin.py:154
+#, fuzzy
+msgid "In CDN mode you can only apply one domain or one ip for forced host"
+msgstr ""
+"In CDN mode you can only apply one domain or one ip for forced host. use "
+"auto cdn ip mode instead"
 
 # | msgid "Error! Domain Fronting not set."
 #: hiddifypanel/panel/admin/ProxyAdmin.py:38
@@ -2421,7 +2439,7 @@ msgstr ""
 # | "Otherwise, test with different proxies of this site and if the speed is "
 # | "similar to the speed without the proxy, then you have found the best "
 # | "protocol."
-#: hiddifypanel/panel/user/templates/home/speedtest.html:1
+#: hiddifypanel/panel/user/templates/home/speedtest.html:2
 msgid "user.home.speedtest.intro"
 msgstr ""
 "First, test the speed <b>without</b> the proxy. If the speed is not good, it means that this ip is so called dirty on your ISP.\n"
@@ -2429,17 +2447,17 @@ msgstr ""
 "Otherwise, test with different proxies of this site and if the speed is similar to the speed without the proxy, then you have found the best protocol."
 
 # | msgid "Upload"
-#: hiddifypanel/panel/user/templates/home/speedtest.html:5
+#: hiddifypanel/panel/user/templates/home/speedtest.html:6
 msgid "user.home.speedtest.upload"
 msgstr "Upload"
 
 # | msgid "Download"
-#: hiddifypanel/panel/user/templates/home/speedtest.html:7
+#: hiddifypanel/panel/user/templates/home/speedtest.html:8
 msgid "user.home.speedtest.download"
 msgstr "Download"
 
 # | msgid "Both ways"
-#: hiddifypanel/panel/user/templates/home/speedtest.html:9
+#: hiddifypanel/panel/user/templates/home/speedtest.html:10
 msgid "user.home.speedtest.two_ways"
 msgstr "Both ways"
 

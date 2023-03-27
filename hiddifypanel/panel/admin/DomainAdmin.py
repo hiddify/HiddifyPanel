@@ -147,6 +147,8 @@ class DomainAdmin(AdminLTEModelView):
             raise ValidationError(
                 f"Specifying CDN IP is only valid for CDN mode")
 
+            
+
         if model.mode == DomainType.fake and not model.cdn_ip:
             model.cdn_ip = myip
         
