@@ -42,7 +42,7 @@ class UserView(FlaskView):
         c=get_common_data(g.user_uuid,mode="new")
         
         user_agent =  user_agents.parse(request.user_agent.string)
-       
+
         return render_template('home/multi.html',**c,ua=user_agent)
 
     @route('/clash/<meta_or_normal>/proxies.yml')
@@ -172,6 +172,7 @@ def get_common_data(user_uuid,mode,no_domain=False,filter_domain=None):
     for d in domains:
         if d.mode==DomainType.auto_cdn_ip or d.cdn_ip:
             d.cdn_ip=clean_ip.get_clean_ip(d.cdn_ip)
+            print("autocdn ip mode ",d.cdn_ip)
 
 
     
@@ -213,7 +214,8 @@ def get_common_data(user_uuid,mode,no_domain=False,filter_domain=None):
         'domains':domains,
         "bot":bot,
         "db_domain":db_domain,
-        "telegram_enable":hconfig(ConfigEnum.telegram_enable) and any([d for d in domains if d.mode!=DomainType.cdn ])
+        "telegram_enable":hconfig(ConfigEnum.telegram_enable) and any([d for d in domains if d.mode!=DomainType.cdn ]),
+        "ip":clean_ip.get_real_user_ip()
 
     }
     

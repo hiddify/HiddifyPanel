@@ -109,7 +109,7 @@ def get_available_proxies(child_id):
     if not hconfig(ConfigEnum.http_proxy_enable,child_id):
         proxies = [c for c in proxies if 'http' != c.l3]
 
-    if not Domain.query.filter(Domain.mode == DomainType.cdn).first():
+    if not Domain.query.filter(Domain.mode.in_([DomainType.cdn,DomainType.auto_cdn_ip])).first():
         proxies = [c for c in proxies if c.cdn != "CDN"]
     return proxies
 

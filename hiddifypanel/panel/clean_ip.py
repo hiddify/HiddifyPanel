@@ -50,23 +50,29 @@ def get_real_user_ip():
         
     return request.remote_addr
 def get_clean_ip(ips):
-    try:
-        if not ips:
-            ips=default_ips
-
-        user_ip=get_real_user_ip()
-        asnres = ipasn.get(user_ip) if ipasn else {'autonomous_system_number':'unknown'}
-        asn = asnres['autonomous_system_number']
-        ips=re.split('[ \t\r\n;,]+',ips)
-        print(ips)
-        if any([ip for ip in ips if ip in asn_map.values()]):
+    if not ips:
+        ips=default_ips
+        
+    ips=re.split('[ \t\r\n;,]+',ips.strip())
+    is_morteza_format=any([format for format in asn_map.values() if format in ips])
+    print(ips)
+    if is_morteza_format:
+        try:
+            user_ip=get_real_user_ip()
+            asnres = ipasn.get(user_ip) if ipasn else {'autonomous_system_number':'unknown'}
+            asn = asnres['autonomous_system_number']
+            
             for i in range(0,len(ips),2):
                 if asn_map.get(asn,ips[1])== ips[i+1]:
+                    print("selected ",ips[i],ips[i+1])
                     return hiddify.get_domain_ip(ips[i])
-        else:
-            return hiddify.get_domain_ip(random.sample(ips, 1))
-        return None
+        except Exception as e:
+            print(e)
+            flash(_("Error in morteza ip! auto cdn ip can not be find, please contact admin."))
+    try:
+        selected_server=random.sample(ips, 1)
+        print("selected ",selected_server)
+        return hiddify.get_domain_ip(selected_server)
     except Exception as e:
         print(e)
         flash(_("Error! auto cdn ip can not be find, please contact admin."))
-    

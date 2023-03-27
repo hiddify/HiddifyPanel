@@ -60,10 +60,12 @@ def make_proxy(proxy, domain_db, phttp=80, ptls=443):
         return
     name = proxy.name
 
-    is_cdn = "CDN" in proxy.cdn
-    if is_cdn and domain_db.mode != DomainType.cdn:
+    is_cdn = ProxyCDN.CDN in proxy.cdn
+    if is_cdn and domain_db.mode not in  [DomainType.cdn,DomainType.auto_cdn_ip]:
+        print("cdn proxy not in cdn domain", domain, name)
         return
-    if not is_cdn and domain_db.mode == DomainType.cdn:
+    if not is_cdn and domain_db.mode in  [DomainType.cdn,DomainType.auto_cdn_ip]:
+        print("not cdn proxy  in cdn domain", domain, name, proxy.cdn)
         return
 
     cdn_forced_host = domain_db.cdn_ip or domain_db.domain
@@ -174,7 +176,7 @@ def to_link(proxy):
 
     name_link = proxy["name"]+"_"+proxy['extra_info']
     if proxy['proto'] == 'vmess':
-        print(proxy)
+        # print(proxy)
         vmess_type = None
         if proxy["transport"] == 'tcp':
             vmess_type = 'http'
