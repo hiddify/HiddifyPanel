@@ -159,7 +159,7 @@ class DomainAdmin(AdminLTEModelView):
         if len(model.show_domains)==Domain.query.count():
             model.show_domains=[]
         # if model.alias and not g.is_commercial:
-        #     model.alias= "@hiddify "+model.alias
+            #     model.alias= "@hiddify "+model.alias
         # model.work_with = self.session.query(Domain).filter(
         #     Domain.id.in_(work_with_ids)).all()
         if is_created or not get_domain(model.domain) :

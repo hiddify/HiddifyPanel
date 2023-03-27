@@ -43,12 +43,18 @@ asn_map={
     'AS394510':'ZTL',
     'AS49100':'PSM'
 }
+def get_real_user_ip():
+    for header in ['CF-Connecting-IP','ar-real-ip']:
+        if header in request.headers:
+            return request.headers.get(header)
+        
+    return request.remote_addr
 def get_clean_ip(ips):
     try:
         if not ips:
             ips=default_ips
 
-        user_ip=request.remote_addr
+        user_ip=get_real_user_ip()
         asnres = ipasn.get(user_ip) if ipasn else {'autonomous_system_number':'unknown'}
         asn = asnres['autonomous_system_number']
         ips=re.split('[ \t\r\n;,]+',ips)
