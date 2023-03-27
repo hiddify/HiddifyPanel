@@ -135,7 +135,7 @@ class DomainAdmin(AdminLTEModelView):
                 raise ValidationError(
                     _("Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode", server_ip=myip, domain_ip=dip))
 
-            if dip == myip and model.mode in [DomainType.cdn, DomainType.relay, DomainType.fake]:
+            if dip == myip and model.mode in [DomainType.cdn, DomainType.relay, DomainType.fake,DomainType.auto_cdn_ip]:
                 raise ValidationError(
                     _("In CDN mode, Domain IP=%(domain_ip)s should be different to your ip=%(server_ip)s", server_ip=myip, domain_ip=dip))
 
