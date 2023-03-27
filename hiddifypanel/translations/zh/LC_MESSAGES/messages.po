@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-27 14:14+0200\n"
-"PO-Revision-Date: 2023-03-27 07:14-0500\n"
+"POT-Creation-Date: 2023-03-27 17:46+0200\n"
+"PO-Revision-Date: 2023-03-27 10:46-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -48,9 +48,7 @@ msgstr "配置已成功更改。"
 # | "your Domain configurations."
 #: hiddifypanel/panel/admin/ChildAdmin.py:108
 #: hiddifypanel/panel/admin/DomainAdmin.py:131
-#: hiddifypanel/panel/admin/QuickSetup.py:117
-#: hiddifypanel/panel/commercial2/ParentDomainAdmin.py:109
-#: hiddifypanel/panel/hiddify.py:237
+#: hiddifypanel/panel/admin/QuickSetup.py:117 hiddifypanel/panel/hiddify.py:237
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr "域名无法解析！你的域有问题"
 
@@ -147,7 +145,6 @@ msgstr "选择此选项以恢复您的域。"
 #: hiddifypanel/panel/admin/QuickSetup.py:80
 #: hiddifypanel/panel/admin/QuickSetup.py:107
 #: hiddifypanel/panel/admin/SettingAdmin.py:197
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:216
 msgid "Submit"
 msgstr "提交"
 
@@ -162,7 +159,6 @@ msgstr "提交"
 #: hiddifypanel/panel/admin/ChildAdmin.py:33
 #: hiddifypanel/panel/admin/DomainAdmin.py:38
 #: hiddifypanel/panel/admin/QuickSetup.py:101
-#: hiddifypanel/panel/commercial2/ParentDomainAdmin.py:33
 msgid "domain.description"
 msgstr ""
 "这个字段应该是正确的。请访问<a href=\"https://github.com/hiddify/hiddify-"
@@ -179,7 +175,6 @@ msgstr ""
 # profiles."
 #: hiddifypanel/panel/admin/ChildAdmin.py:34
 #: hiddifypanel/panel/admin/DomainAdmin.py:41
-#: hiddifypanel/panel/commercial2/ParentDomainAdmin.py:35
 #, fuzzy
 msgid ""
 "You can select the configs with which domains show be shown in the user "
@@ -195,7 +190,6 @@ msgstr ""
 #: hiddifypanel/panel/admin/ChildAdmin.py:54
 #: hiddifypanel/panel/admin/DomainAdmin.py:63
 #: hiddifypanel/panel/admin/QuickSetup.py:101
-#: hiddifypanel/panel/commercial2/ParentDomainAdmin.py:55
 msgid "domain.domain"
 msgstr "领域"
 
@@ -203,8 +197,6 @@ msgstr "领域"
 #: hiddifypanel/panel/admin/ChildAdmin.py:57
 #: hiddifypanel/panel/admin/ChildAdmin.py:58
 #: hiddifypanel/panel/admin/DomainAdmin.py:67
-#: hiddifypanel/panel/commercial2/ParentDomainAdmin.py:58
-#: hiddifypanel/panel/commercial2/ParentDomainAdmin.py:59
 #, fuzzy
 msgid "Show Domains"
 msgstr "显示域的配置："
@@ -212,7 +204,6 @@ msgstr "显示域的配置："
 # | msgid "Admin"
 #: hiddifypanel/panel/admin/ChildAdmin.py:65
 #: hiddifypanel/panel/admin/DomainAdmin.py:77
-#: hiddifypanel/panel/commercial2/ParentDomainAdmin.py:66
 #, fuzzy
 msgid "admin link"
 msgstr "行政"
@@ -223,7 +214,6 @@ msgid "Domain is not correctly mapped to this server!"
 msgstr "域未正确映射到此服务器！"
 
 #: hiddifypanel/panel/admin/Dashboard.py:37
-#: hiddifypanel/panel/commercial2/CommercialDashboard.py:36
 #, python-format
 msgid ""
 "It seems that you have not setup the system completely. <a class=\"btn "
@@ -236,7 +226,6 @@ msgstr ""
 # | "It seems that you are using default domain (%(domain)s) which is not "
 # | "recommended. Please change or remove it from domain section."
 #: hiddifypanel/panel/admin/Dashboard.py:39
-#: hiddifypanel/panel/commercial2/CommercialDashboard.py:38
 #, python-format
 msgid ""
 "It seems that you are using default domain (%(domain)s) which is not "
@@ -244,7 +233,6 @@ msgid ""
 msgstr "您似乎正在使用不推荐的默认域 (%(domain)s)。"
 
 #: hiddifypanel/panel/admin/Dashboard.py:43
-#: hiddifypanel/panel/commercial2/CommercialDashboard.py:42
 #, python-format
 msgid ""
 "It seems that you have not created any users yet. Default user link: "
@@ -252,7 +240,6 @@ msgid ""
 msgstr "您似乎还没有创建任何用户。默认用户链接：%(default_link)s"
 
 #: hiddifypanel/panel/admin/Dashboard.py:58
-#: hiddifypanel/panel/commercial2/CommercialDashboard.py:57
 msgid "child has been removed!"
 msgstr ""
 
@@ -298,7 +285,6 @@ msgstr "在这部分中，您可以为您的 cdn 服务器使用特定的域或 
 
 # | msgid "The name that will be shown in the configs for this domain."
 #: hiddifypanel/panel/admin/DomainAdmin.py:42
-#: hiddifypanel/panel/commercial2/ParentDomainAdmin.py:34
 #, fuzzy
 msgid "The name shown in the configs for this domain."
 msgstr "将显示在此域的配置中的名称。"
@@ -321,7 +307,6 @@ msgid "domain.ip"
 msgstr "知识产权"
 
 #: hiddifypanel/panel/admin/DomainAdmin.py:68
-#: hiddifypanel/panel/commercial2/ParentDomainAdmin.py:57
 #, fuzzy
 msgid "Alias"
 msgstr "别名"
@@ -359,7 +344,6 @@ msgstr "错误！ 未设置域前端"
 #: hiddifypanel/panel/admin/ProxyAdmin.py:66
 #: hiddifypanel/panel/admin/QuickSetup.py:72
 #: hiddifypanel/panel/admin/SettingAdmin.py:80
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:89
 msgid "config.validation-error"
 msgstr "其中一个字段遇到错误"
 
@@ -388,14 +372,12 @@ msgstr "管理面板语言"
 # | msgid "English انگلیسی 英语"
 #: hiddifypanel/panel/admin/QuickSetup.py:77
 #: hiddifypanel/panel/admin/SettingAdmin.py:136
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:148
 msgid "lang.en"
 msgstr "English انگلیسی 英语"
 
 # | msgid "Persian فارسی 波斯语"
 #: hiddifypanel/panel/admin/QuickSetup.py:77
 #: hiddifypanel/panel/admin/SettingAdmin.py:136
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:148
 msgid "lang.fa"
 msgstr "Persian فارسی 波斯语"
 
@@ -413,14 +395,12 @@ msgstr ""
 
 #: hiddifypanel/panel/admin/QuickSetup.py:79
 #: hiddifypanel/panel/admin/SettingAdmin.py:138
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:150
 #, fuzzy
 msgid "Iran"
 msgstr "伊朗"
 
 #: hiddifypanel/panel/admin/QuickSetup.py:79
 #: hiddifypanel/panel/admin/SettingAdmin.py:138
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:150
 #, fuzzy
 msgid "China"
 msgstr "中国"
@@ -439,8 +419,6 @@ msgstr "它根据每个国家/地区的过滤条件为每个国家/地区应用�
 #: hiddifypanel/panel/admin/QuickSetup.py:106
 #: hiddifypanel/panel/admin/SettingAdmin.py:154
 #: hiddifypanel/panel/admin/SettingAdmin.py:157
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:168
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:171
 msgid "config.Invalid domain"
 msgstr "错误！域无效。域格式为 www.google.com"
 
@@ -449,8 +427,6 @@ msgstr "错误！域无效。域格式为 www.google.com"
 #: hiddifypanel/panel/admin/QuickSetup.py:99
 #: hiddifypanel/panel/admin/SettingAdmin.py:161
 #: hiddifypanel/panel/admin/SettingAdmin.py:162
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:175
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:176
 msgid "config.Domain already used"
 msgstr "域存在于域部分。使用另一个域"
 
@@ -540,57 +516,48 @@ msgstr "域 (%(domain)s)-> IP=%(domain_ip)s 与您的 ip=%(server_ip)s 不匹配
 
 # | msgid "Port is already used! in:"
 #: hiddifypanel/panel/admin/SettingAdmin.py:62
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:56
 #, fuzzy
 msgid "Port is already used! in"
 msgstr "端口已被占用！在："
 
 # | msgid "Chinese چینی 中国人"
 #: hiddifypanel/panel/admin/SettingAdmin.py:136
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:148
 msgid "lang.zh"
 msgstr "Chinese چینی 中国人"
 
 #: hiddifypanel/panel/admin/SettingAdmin.py:140
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:152
 #, fuzzy
 msgid "Release"
 msgstr "发布"
 
 #: hiddifypanel/panel/admin/SettingAdmin.py:140
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:152
 #, fuzzy
 msgid "Develop"
 msgstr "آخ犹"
 
 # | msgid "Python: low performance"
 #: hiddifypanel/panel/admin/SettingAdmin.py:146
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:158
 msgid "lib.telegram.python"
 msgstr "Python：低性能"
 
 # | msgid "Go: high performance: No ad support"
 #: hiddifypanel/panel/admin/SettingAdmin.py:146
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:158
 msgid "lib.telegram.go"
 msgstr "Go：高性能：无广告支持"
 
 # | msgid "NOT Working: Original: high performance"
 #: hiddifypanel/panel/admin/SettingAdmin.py:146
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:158
 msgid "lib.telegram.orignal"
 msgstr "原文：高性能"
 
 # | msgid "NOT Working: Erlang: medium performance"
 #: hiddifypanel/panel/admin/SettingAdmin.py:146
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:158
 msgid "lib.telegram.erlang"
 msgstr "Erlang：中等性能"
 
 # | msgid "Telegram Proxy Library"
 #: hiddifypanel/panel/admin/SettingAdmin.py:147
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:159
 msgid "config.telegram_lib.label"
 msgstr "电报代理库"
 
@@ -602,7 +569,6 @@ msgstr "电报代理库"
 # | "changing it."
 #: hiddifypanel/panel/admin/SettingAdmin.py:147
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:159
 msgid "config.telegram_lib.description"
 msgstr "您可以在不同的电报库之间切换。"
 
@@ -610,13 +576,11 @@ msgstr "您可以在不同的电报库之间切换。"
 # | "Invalid UUID secret. Example: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n"
 # | "\n"
 #: hiddifypanel/panel/admin/SettingAdmin.py:169
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:188
 msgid "config.invalid uuid"
 msgstr "UUID 密码无效。例如，6098ea35-8cb2-4a08-ba15-2be25bc49cb6"
 
 # | msgid "Invalid proxy path. It should be asci string (a-z A-Z 0-9)"
 #: hiddifypanel/panel/admin/SettingAdmin.py:173
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:192
 msgid "config.Invalid proxy path"
 msgstr "代理路径无效。它应该是 asci 字符串 (a-z A-Z 0-9)"
 
@@ -624,8 +588,6 @@ msgstr "代理路径无效。它应该是 asci 字符串 (a-z A-Z 0-9)"
 # | "Invalid port. It should be comma separated integer e.g., 1000,1001"
 #: hiddifypanel/panel/admin/SettingAdmin.py:178
 #: hiddifypanel/panel/admin/SettingAdmin.py:181
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:197
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:200
 msgid "config.Invalid port"
 msgstr "端口无效。它应该是逗号分隔的整数，例如 1000,1001"
 
@@ -846,7 +808,6 @@ msgstr ""
 
 # | msgid "Settings"
 #: hiddifypanel/panel/admin/templates/config.html:11
-#: hiddifypanel/panel/commercial2/templates/config.html:11
 msgid "admin.config.title"
 msgstr "设置"
 
@@ -1242,9 +1203,9 @@ msgid "config.shadowtls_enable.label"
 msgstr "影子TLS"
 
 # | msgid ""
-# | "ShadowTLS is a new protocol with low performance but it can hide the
-# traffic"
-# | " from the government using FakeTLS."
+# | "ShadowTLS is a new protocol but it can hide the traffic from the
+# government "
+# | "using FakeTLS."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.shadowtls_enable.description"
 msgstr ""
@@ -1852,92 +1813,6 @@ msgid ""
 msgstr ""
 "用户使用情况将每 6 分钟更新一次。现在要更新它，请点击<a href=\"%(link)s\" class=\"btn btn-"
 "info\">此处</a>。"
-
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:64
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:67
-#, fuzzy
-msgid "Can not connect to parent panel!"
-msgstr "无法连接到父面板！"
-
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:180
-#, fuzzy
-msgid "Invalid admin link"
-msgstr "管理员链接无效"
-
-# | msgid "Invalid Telegram bot token."
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:182
-#, fuzzy
-msgid "config.Invalid telegram bot token"
-msgstr "电报机器人令牌无效"
-
-# | msgid ""
-# | "Invalid link. it should be on this format: (https or http://example.com)"
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:184
-msgid "config.Invalid brand link"
-msgstr "品牌链接无效"
-
-#: hiddifypanel/panel/commercial2/telegrambot/Usage.py:16
-#: hiddifypanel/panel/commercial2/telegrambot/information.py:55
-#, fuzzy
-msgid ""
-"Hooray 🎉 🎉 🎉 \n"
-"Welcome to hiddifybot.\n"
-"Start by clicking the link on the panel or entering your UUID."
-msgstr ""
-"万岁🎉🎉🎉\n"
-"欢迎来到 hiddifybot。\n"
-"首先单击面板上的链接或输入您的 UUID。"
-
-#: hiddifypanel/panel/commercial2/telegrambot/information.py:20
-#, fuzzy
-msgid ""
-"Dear {}\n"
-"\n"
-"Your hiddify information is\n"
-"UUID: {}\n"
-"Last online date: {}\n"
-"Expire time: {}\n"
-"Usage class: {}\n"
-msgstr ""
-"亲爱的 {}\n"
-"\n"
-"您的隐藏信息是\n"
-"唯一标识符：{}\n"
-"上次在线日期：{}\n"
-"过期时间：{}\n"
-"使用类：{}"
-
-# | msgid ""
-# | "Your hiddify instance information \n"
-# | "Domain: {} \n"
-# | "Usage limit: {} GB\n"
-# | "Current usage: {} GB\n"
-# | "Expires at: {} \n"
-# | "Remaining days: {} \n"
-# | "\n"
-# | "Good Luck! 🎉 🎉 🎉 \n"
-#: hiddifypanel/panel/commercial2/telegrambot/information.py:119
-#, fuzzy
-msgid ""
-"Your hiddify instance information \n"
-"Domain: {} \n"
-"Usage limit: {} GB\n"
-"Current usage: {} GB\n"
-"Expires at: {} \n"
-"Remaining days: {} \n"
-"\n"
-"\n"
-" Happy using 🎉 🎉 🎉 \n"
-msgstr ""
-"您的隐藏实例信息\n"
-"领域： {}\n"
-"使用限制：{} GB\n"
-"当前使用量：{} GB\n"
-"过期时间：{}\n"
-"剩余天数：{}\n"
-"\n"
-"\n"
-"祝你好运！ 🎉 🎉 🎉"
 
 # | msgid "All Configs"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:1
@@ -3108,6 +2983,11 @@ msgstr "动作"
 #~ msgstr "错误！！！"
 
 # | msgid ""
+# | "Invalid link. it should be on this format: (https or http://example.com)"
+#~ msgid "config.Invalid brand link"
+#~ msgstr "品牌链接无效"
+
+# | msgid ""
 # | "Domain (%(domain))-> IP=%(domain_ip)s is not same as your
 # ip=%(server_ip)s ."
 # | " This is required in direct mode."
@@ -3130,6 +3010,16 @@ msgstr "动作"
 #~ msgid "Should be a valid uuid"
 #~ msgstr "应该是一个有效的 UUID"
 
+#~ msgid "Can not connect to parent panel!"
+#~ msgstr "无法连接到父面板！"
+
+#~ msgid "Invalid admin link"
+#~ msgstr "管理员链接无效"
+
+# | msgid "Invalid Telegram bot token."
+#~ msgid "config.Invalid telegram bot token"
+#~ msgstr "电报机器人令牌无效"
+
 # | msgid ""
 # | "Welcome to hiddifybot.\n"
 # | " Please click on the link in the panel page to start or enter your user
@@ -3144,4 +3034,60 @@ msgstr "动作"
 # | msgid "Reset package Days and Usage."
 #~ msgid "Reset package days and usage"
 #~ msgstr ""
+
+#~ msgid ""
+#~ "Hooray 🎉 🎉 🎉 \n"
+#~ "Welcome to hiddifybot.\n"
+#~ "Start by clicking the link on the panel or entering your UUID."
+#~ msgstr ""
+#~ "万岁🎉🎉🎉\n"
+#~ "欢迎来到 hiddifybot。\n"
+#~ "首先单击面板上的链接或输入您的 UUID。"
+
+#~ msgid ""
+#~ "Dear {}\n"
+#~ "\n"
+#~ "Your hiddify information is\n"
+#~ "UUID: {}\n"
+#~ "Last online date: {}\n"
+#~ "Expire time: {}\n"
+#~ "Usage class: {}\n"
+#~ msgstr ""
+#~ "亲爱的 {}\n"
+#~ "\n"
+#~ "您的隐藏信息是\n"
+#~ "唯一标识符：{}\n"
+#~ "上次在线日期：{}\n"
+#~ "过期时间：{}\n"
+#~ "使用类：{}"
+
+# | msgid ""
+# | "Your hiddify instance information \n"
+# | "Domain: {} \n"
+# | "Usage limit: {} GB\n"
+# | "Current usage: {} GB\n"
+# | "Expires at: {} \n"
+# | "Remaining days: {} \n"
+# | "\n"
+# | "Good Luck! 🎉 🎉 🎉 \n"
+#~ msgid ""
+#~ "Your hiddify instance information \n"
+#~ "Domain: {} \n"
+#~ "Usage limit: {} GB\n"
+#~ "Current usage: {} GB\n"
+#~ "Expires at: {} \n"
+#~ "Remaining days: {} \n"
+#~ "\n"
+#~ "\n"
+#~ " Happy using 🎉 🎉 🎉 \n"
+#~ msgstr ""
+#~ "您的隐藏实例信息\n"
+#~ "领域： {}\n"
+#~ "使用限制：{} GB\n"
+#~ "当前使用量：{} GB\n"
+#~ "过期时间：{}\n"
+#~ "剩余天数：{}\n"
+#~ "\n"
+#~ "\n"
+#~ "祝你好运！ 🎉 🎉 🎉"
 

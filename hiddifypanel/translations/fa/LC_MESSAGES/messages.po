@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-27 14:14+0200\n"
-"PO-Revision-Date: 2023-03-27 07:14-0500\n"
+"POT-Creation-Date: 2023-03-27 17:46+0200\n"
+"PO-Revision-Date: 2023-03-27 10:46-0500\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -48,9 +48,7 @@ msgstr "تنظیمات با موفقیت تغییر کرد."
 # | "your Domain configurations."
 #: hiddifypanel/panel/admin/ChildAdmin.py:108
 #: hiddifypanel/panel/admin/DomainAdmin.py:131
-#: hiddifypanel/panel/admin/QuickSetup.py:117
-#: hiddifypanel/panel/commercial2/ParentDomainAdmin.py:109
-#: hiddifypanel/panel/hiddify.py:237
+#: hiddifypanel/panel/admin/QuickSetup.py:117 hiddifypanel/panel/hiddify.py:237
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr "دامنه قابل دسترسی نیست! در دامنه شما مشکلی وجود دارد."
 
@@ -149,7 +147,6 @@ msgstr "برای بازگرداندن دامنه از این گزینه استف
 #: hiddifypanel/panel/admin/QuickSetup.py:80
 #: hiddifypanel/panel/admin/QuickSetup.py:107
 #: hiddifypanel/panel/admin/SettingAdmin.py:197
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:216
 msgid "Submit"
 msgstr "ثبت"
 
@@ -164,7 +161,6 @@ msgstr "ثبت"
 #: hiddifypanel/panel/admin/ChildAdmin.py:33
 #: hiddifypanel/panel/admin/DomainAdmin.py:38
 #: hiddifypanel/panel/admin/QuickSetup.py:101
-#: hiddifypanel/panel/commercial2/ParentDomainAdmin.py:33
 msgid "domain.description"
 msgstr ""
 "این فیلد باید با دقت و به درستی تکمیل شود. در غیر اینصورت پروکسی ها به "
@@ -185,7 +181,6 @@ msgstr ""
 # profiles."
 #: hiddifypanel/panel/admin/ChildAdmin.py:34
 #: hiddifypanel/panel/admin/DomainAdmin.py:41
-#: hiddifypanel/panel/commercial2/ParentDomainAdmin.py:35
 msgid ""
 "You can select the configs with which domains show be shown in the user "
 "area. If you select all, automatically, all the new domains will be added"
@@ -204,7 +199,6 @@ msgstr ""
 #: hiddifypanel/panel/admin/ChildAdmin.py:54
 #: hiddifypanel/panel/admin/DomainAdmin.py:63
 #: hiddifypanel/panel/admin/QuickSetup.py:101
-#: hiddifypanel/panel/commercial2/ParentDomainAdmin.py:55
 msgid "domain.domain"
 msgstr "دامنه"
 
@@ -212,15 +206,12 @@ msgstr "دامنه"
 #: hiddifypanel/panel/admin/ChildAdmin.py:57
 #: hiddifypanel/panel/admin/ChildAdmin.py:58
 #: hiddifypanel/panel/admin/DomainAdmin.py:67
-#: hiddifypanel/panel/commercial2/ParentDomainAdmin.py:58
-#: hiddifypanel/panel/commercial2/ParentDomainAdmin.py:59
 msgid "Show Domains"
 msgstr "نمایش کانفیگ‌های دامنه‌ی:"
 
 # | msgid "Admin"
 #: hiddifypanel/panel/admin/ChildAdmin.py:65
 #: hiddifypanel/panel/admin/DomainAdmin.py:77
-#: hiddifypanel/panel/commercial2/ParentDomainAdmin.py:66
 msgid "admin link"
 msgstr "مدیریت"
 
@@ -229,7 +220,6 @@ msgid "Domain is not correctly mapped to this server!"
 msgstr "دامنه به درستی به این سرور وصل نشده است!"
 
 #: hiddifypanel/panel/admin/Dashboard.py:37
-#: hiddifypanel/panel/commercial2/CommercialDashboard.py:36
 #, python-format
 msgid ""
 "It seems that you have not setup the system completely. <a class=\"btn "
@@ -243,7 +233,6 @@ msgstr ""
 # | "It seems that you are using default domain (%(domain)s) which is not "
 # | "recommended. Please change or remove it from domain section."
 #: hiddifypanel/panel/admin/Dashboard.py:39
-#: hiddifypanel/panel/commercial2/CommercialDashboard.py:38
 #, python-format
 msgid ""
 "It seems that you are using default domain (%(domain)s) which is not "
@@ -254,7 +243,6 @@ msgstr ""
 "بخش دامنه‌ها آن را حذف یا تغییر دهید."
 
 #: hiddifypanel/panel/admin/Dashboard.py:43
-#: hiddifypanel/panel/commercial2/CommercialDashboard.py:42
 #, python-format
 msgid ""
 "It seems that you have not created any users yet. Default user link: "
@@ -264,7 +252,6 @@ msgstr ""
 "%(default_link)s"
 
 #: hiddifypanel/panel/admin/Dashboard.py:58
-#: hiddifypanel/panel/commercial2/CommercialDashboard.py:57
 msgid "child has been removed!"
 msgstr "پنل زیر مجموعه حذف شد"
 
@@ -322,7 +309,6 @@ msgstr ""
 
 # | msgid "The name that will be shown in the configs for this domain."
 #: hiddifypanel/panel/admin/DomainAdmin.py:42
-#: hiddifypanel/panel/commercial2/ParentDomainAdmin.py:34
 msgid "The name shown in the configs for this domain."
 msgstr "نامی که در کانفیگ‌ها به جای دامنه نمایش داده شود"
 
@@ -343,7 +329,6 @@ msgid "domain.ip"
 msgstr "آی‌پی"
 
 #: hiddifypanel/panel/admin/DomainAdmin.py:68
-#: hiddifypanel/panel/commercial2/ParentDomainAdmin.py:57
 msgid "Alias"
 msgstr "نام نمایشی"
 
@@ -381,7 +366,6 @@ msgstr "خطا! تنظیمات دامین فرانتینگ کامل نشده."
 #: hiddifypanel/panel/admin/ProxyAdmin.py:66
 #: hiddifypanel/panel/admin/QuickSetup.py:72
 #: hiddifypanel/panel/admin/SettingAdmin.py:80
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:89
 msgid "config.validation-error"
 msgstr "یکی از فیلدها دچار خطا شده است."
 
@@ -410,14 +394,12 @@ msgstr "زبان محیط مدیریت"
 # | msgid "English انگلیسی 英语"
 #: hiddifypanel/panel/admin/QuickSetup.py:77
 #: hiddifypanel/panel/admin/SettingAdmin.py:136
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:148
 msgid "lang.en"
 msgstr "English انگلیسی 英语"
 
 # | msgid "Persian فارسی 波斯语"
 #: hiddifypanel/panel/admin/QuickSetup.py:77
 #: hiddifypanel/panel/admin/SettingAdmin.py:136
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:148
 msgid "lang.fa"
 msgstr "Persian فارسی 波斯语"
 
@@ -435,13 +417,11 @@ msgstr "کشور"
 
 #: hiddifypanel/panel/admin/QuickSetup.py:79
 #: hiddifypanel/panel/admin/SettingAdmin.py:138
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:150
 msgid "Iran"
 msgstr "ایران"
 
 #: hiddifypanel/panel/admin/QuickSetup.py:79
 #: hiddifypanel/panel/admin/SettingAdmin.py:138
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:150
 msgid "China"
 msgstr "چین"
 
@@ -459,8 +439,6 @@ msgstr "تنظیمات مناسب را برای هر کشور با توجه به
 #: hiddifypanel/panel/admin/QuickSetup.py:106
 #: hiddifypanel/panel/admin/SettingAdmin.py:154
 #: hiddifypanel/panel/admin/SettingAdmin.py:157
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:168
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:171
 msgid "config.Invalid domain"
 msgstr "خطا! دامنه نامعتبر! فرمت دامنه باید مثل www.google.com باشد."
 
@@ -469,8 +447,6 @@ msgstr "خطا! دامنه نامعتبر! فرمت دامنه باید مثل w
 #: hiddifypanel/panel/admin/QuickSetup.py:99
 #: hiddifypanel/panel/admin/SettingAdmin.py:161
 #: hiddifypanel/panel/admin/SettingAdmin.py:162
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:175
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:176
 msgid "config.Domain already used"
 msgstr "دامنه در بخش دامنه‌ها وجود دارد. از دامنه دیگری استفاده کنید."
 
@@ -572,54 +548,45 @@ msgstr ""
 
 # | msgid "Port is already used! in:"
 #: hiddifypanel/panel/admin/SettingAdmin.py:62
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:56
 msgid "Port is already used! in"
 msgstr "پورت قبلا استفاده شده است در"
 
 # | msgid "Chinese چینی 中国人"
 #: hiddifypanel/panel/admin/SettingAdmin.py:136
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:148
 msgid "lang.zh"
 msgstr "Chinese چینی 中国人"
 
 #: hiddifypanel/panel/admin/SettingAdmin.py:140
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:152
 msgid "Release"
 msgstr "پایدار"
 
 #: hiddifypanel/panel/admin/SettingAdmin.py:140
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:152
 msgid "Develop"
 msgstr "توسعه"
 
 # | msgid "Python: low performance"
 #: hiddifypanel/panel/admin/SettingAdmin.py:146
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:158
 msgid "lib.telegram.python"
 msgstr "پایتون: عملکرد ضعیف"
 
 # | msgid "Go: high performance: No ad support"
 #: hiddifypanel/panel/admin/SettingAdmin.py:146
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:158
 msgid "lib.telegram.go"
 msgstr "Go: عملکرد بالا، عدم پشتیبانی از تبلیغات"
 
 # | msgid "NOT Working: Original: high performance"
 #: hiddifypanel/panel/admin/SettingAdmin.py:146
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:158
 msgid "lib.telegram.orignal"
 msgstr "کار نمیکند! اصلی: عملکرد قوی"
 
 # | msgid "NOT Working: Erlang: medium performance"
 #: hiddifypanel/panel/admin/SettingAdmin.py:146
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:158
 msgid "lib.telegram.erlang"
 msgstr "کار نمیکند! Erlang: عملکرد متوسط"
 
 # | msgid "Telegram Proxy Library"
 #: hiddifypanel/panel/admin/SettingAdmin.py:147
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:159
 msgid "config.telegram_lib.label"
 msgstr "کتابخانه پروکسی تلگرام"
 
@@ -631,7 +598,6 @@ msgstr "کتابخانه پروکسی تلگرام"
 # | "changing it."
 #: hiddifypanel/panel/admin/SettingAdmin.py:147
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:159
 msgid "config.telegram_lib.description"
 msgstr ""
 "در این قسمت می‌توانید کتابخانه‌های مختلف تلگرام را انتخاب نمایید. توجه "
@@ -642,13 +608,11 @@ msgstr ""
 # | "Invalid UUID secret. Example: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n"
 # | "\n"
 #: hiddifypanel/panel/admin/SettingAdmin.py:169
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:188
 msgid "config.invalid uuid"
 msgstr "رمز UUID نامعتبر است. به عنوان مثال: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6"
 
 # | msgid "Invalid proxy path. It should be asci string (a-z A-Z 0-9)"
 #: hiddifypanel/panel/admin/SettingAdmin.py:173
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:192
 msgid "config.Invalid proxy path"
 msgstr "مسیر پروکسی نامعتبر است. باید رشته متن asci باشد. ( شامل a-z A-Z 0-9)"
 
@@ -656,8 +620,6 @@ msgstr "مسیر پروکسی نامعتبر است. باید رشته متن as
 # | "Invalid port. It should be comma separated integer e.g., 1000,1001"
 #: hiddifypanel/panel/admin/SettingAdmin.py:178
 #: hiddifypanel/panel/admin/SettingAdmin.py:181
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:197
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:200
 msgid "config.Invalid port"
 msgstr "پورت نامعتبر است. اعداد باید با کاما از هم جدا شود، مثلاً 1000,1001"
 
@@ -880,7 +842,6 @@ msgstr ""
 
 # | msgid "Settings"
 #: hiddifypanel/panel/admin/templates/config.html:11
-#: hiddifypanel/panel/commercial2/templates/config.html:11
 msgid "admin.config.title"
 msgstr "تنظیمات"
 
@@ -1317,14 +1278,14 @@ msgid "config.shadowtls_enable.label"
 msgstr "Shadow TLS"
 
 # | msgid ""
-# | "ShadowTLS is a new protocol with low performance but it can hide the
-# traffic"
-# | " from the government using FakeTLS."
+# | "ShadowTLS is a new protocol but it can hide the traffic from the
+# government "
+# | "using FakeTLS."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.shadowtls_enable.description"
 msgstr ""
-"Shadow TLS یک پروتکل جدید با کارایی پایین است اما می تواند با استفاده از "
-"faketls ترافیک را از فیلترچی پنهان کند.\n"
+"Shadow TLS یک پروتکل جدید است اما می تواند با استفاده از faketls ترافیک "
+"را از فیلترچی پنهان کند.\n"
 
 # | msgid "ShadowTLS fakedomain"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1928,85 +1889,6 @@ msgstr ""
 "حجم مصرفی کاربران بصورت خودکار هر ۶ دقیقه بروزرسانی می‌شود. برای "
 "بروزرسانی دستی <a href=\"%(link)s\" class=\"btn btn-info\">اینجا</a> کلیک"
 " کنید."
-
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:64
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:67
-msgid "Can not connect to parent panel!"
-msgstr "نمی توان به پنل مرکزی متصل شد!"
-
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:180
-msgid "Invalid admin link"
-msgstr "لینک ادمین نامعتبر است"
-
-# | msgid "Invalid Telegram bot token."
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:182
-msgid "config.Invalid telegram bot token"
-msgstr "توکن ربات تلگرام نامعتبر است."
-
-# | msgid ""
-# | "Invalid link. it should be on this format: (https or http://example.com)"
-#: hiddifypanel/panel/commercial2/CommercialSettings.py:184
-msgid "config.Invalid brand link"
-msgstr "لینک پشتیبانی نامعتبر است. لطفا لینک را با فرمت معتبر وارد کنید."
-
-#: hiddifypanel/panel/commercial2/telegrambot/Usage.py:16
-#: hiddifypanel/panel/commercial2/telegrambot/information.py:55
-msgid ""
-"Hooray 🎉 🎉 🎉 \n"
-"Welcome to hiddifybot.\n"
-"Start by clicking the link on the panel or entering your UUID."
-msgstr ""
-"هورا!!! 🎉 🎉 🎉 \n"
-"به ربات هایدیفای خوش آمدید.\n"
-"برای آغاز روی لینک مربوطه در پنل کلیک نموده یا UUID خود را وارد کنید."
-
-#: hiddifypanel/panel/commercial2/telegrambot/information.py:20
-msgid ""
-"Dear {}\n"
-"\n"
-"Your hiddify information is\n"
-"UUID: {}\n"
-"Last online date: {}\n"
-"Expire time: {}\n"
-"Usage class: {}\n"
-msgstr ""
-"{} عزیز\n"
-"اطلاعات شما در هایدیفای به شرح زیر است:\n"
-"UUID: {}\n"
-"آخرین آنلاین: {}\n"
-"انقضا: {}\n"
-"نوع مصرف: {}"
-
-# | msgid ""
-# | "Your hiddify instance information \n"
-# | "Domain: {} \n"
-# | "Usage limit: {} GB\n"
-# | "Current usage: {} GB\n"
-# | "Expires at: {} \n"
-# | "Remaining days: {} \n"
-# | "\n"
-# | "Good Luck! 🎉 🎉 🎉 \n"
-#: hiddifypanel/panel/commercial2/telegrambot/information.py:119
-msgid ""
-"Your hiddify instance information \n"
-"Domain: {} \n"
-"Usage limit: {} GB\n"
-"Current usage: {} GB\n"
-"Expires at: {} \n"
-"Remaining days: {} \n"
-"\n"
-"\n"
-" Happy using 🎉 🎉 🎉 \n"
-msgstr ""
-"اطلاعات اکانت هایدیفای شما:\n"
-"دامنه: {} \n"
-"مقدار حجم مجاز: {} گیگابایت\n"
-"حجم مصرف شده: {} گیگابایت\n"
-"انقضا: {} \n"
-"روزهای باقی‌مانده: {} \n"
-"\n"
-"\n"
-"با آرزوی موفقیت. 🎉 🎉 🎉 \n"
 
 # | msgid "All Configs"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:1
@@ -3248,6 +3130,11 @@ msgstr "عملیات"
 #~ msgstr "خطا!"
 
 # | msgid ""
+# | "Invalid link. it should be on this format: (https or http://example.com)"
+#~ msgid "config.Invalid brand link"
+#~ msgstr "لینک پشتیبانی نامعتبر است. لطفا لینک را با فرمت معتبر وارد کنید."
+
+# | msgid ""
 # | "Domain (%(domain))-> IP=%(domain_ip)s is not same as your
 # ip=%(server_ip)s ."
 # | " This is required in direct mode."
@@ -3272,6 +3159,16 @@ msgstr "عملیات"
 #~ msgid "Should be a valid uuid"
 #~ msgstr "یک UUID معتبر وارد کنید."
 
+#~ msgid "Can not connect to parent panel!"
+#~ msgstr "نمی توان به پنل مرکزی متصل شد!"
+
+#~ msgid "Invalid admin link"
+#~ msgstr "لینک ادمین نامعتبر است"
+
+# | msgid "Invalid Telegram bot token."
+#~ msgid "config.Invalid telegram bot token"
+#~ msgstr "توکن ربات تلگرام نامعتبر است."
+
 # | msgid ""
 # | "Welcome to hiddifybot.\n"
 # | " Please click on the link in the panel page to start or enter your user
@@ -3288,4 +3185,59 @@ msgstr "عملیات"
 # | msgid "Reset package Days and Usage."
 #~ msgid "Reset package days and usage"
 #~ msgstr "ریست کردن بسته کاربر (حجم و روز)"
+
+#~ msgid ""
+#~ "Hooray 🎉 🎉 🎉 \n"
+#~ "Welcome to hiddifybot.\n"
+#~ "Start by clicking the link on the panel or entering your UUID."
+#~ msgstr ""
+#~ "هورا!!! 🎉 🎉 🎉 \n"
+#~ "به ربات هایدیفای خوش آمدید.\n"
+#~ "برای آغاز روی لینک مربوطه در پنل کلیک نموده یا UUID خود را وارد کنید."
+
+#~ msgid ""
+#~ "Dear {}\n"
+#~ "\n"
+#~ "Your hiddify information is\n"
+#~ "UUID: {}\n"
+#~ "Last online date: {}\n"
+#~ "Expire time: {}\n"
+#~ "Usage class: {}\n"
+#~ msgstr ""
+#~ "{} عزیز\n"
+#~ "اطلاعات شما در هایدیفای به شرح زیر است:\n"
+#~ "UUID: {}\n"
+#~ "آخرین آنلاین: {}\n"
+#~ "انقضا: {}\n"
+#~ "نوع مصرف: {}"
+
+# | msgid ""
+# | "Your hiddify instance information \n"
+# | "Domain: {} \n"
+# | "Usage limit: {} GB\n"
+# | "Current usage: {} GB\n"
+# | "Expires at: {} \n"
+# | "Remaining days: {} \n"
+# | "\n"
+# | "Good Luck! 🎉 🎉 🎉 \n"
+#~ msgid ""
+#~ "Your hiddify instance information \n"
+#~ "Domain: {} \n"
+#~ "Usage limit: {} GB\n"
+#~ "Current usage: {} GB\n"
+#~ "Expires at: {} \n"
+#~ "Remaining days: {} \n"
+#~ "\n"
+#~ "\n"
+#~ " Happy using 🎉 🎉 🎉 \n"
+#~ msgstr ""
+#~ "اطلاعات اکانت هایدیفای شما:\n"
+#~ "دامنه: {} \n"
+#~ "مقدار حجم مجاز: {} گیگابایت\n"
+#~ "حجم مصرف شده: {} گیگابایت\n"
+#~ "انقضا: {} \n"
+#~ "روزهای باقی‌مانده: {} \n"
+#~ "\n"
+#~ "\n"
+#~ "با آرزوی موفقیت. 🎉 🎉 🎉 \n"
 

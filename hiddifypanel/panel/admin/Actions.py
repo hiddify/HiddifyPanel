@@ -24,7 +24,7 @@ class Actions(FlaskView):
     
     def reverselog(self,logfile):
         if logfile==None:return self.viewlogs()
-        config_dir=current_app.config.HIDDIFY_CONFIG_PATH
+        config_dir=current_app.config['HIDDIFY_CONFIG_PATH']
         
         with open(f'{config_dir}/log/system/{logfile}') as f:
             lines=[line for line in f]
@@ -43,7 +43,7 @@ class Actions(FlaskView):
 
     
     def viewlogs(self):
-        config_dir=current_app.config.HIDDIFY_CONFIG_PATH
+        config_dir=current_app.config['HIDDIFY_CONFIG_PATH']
         res=[]
         for filename in sorted(os.listdir(f'{config_dir}/log/system/')):
             res.append(f"<a href='{url_for('admin.Actions:reverselog',logfile=filename)}'>{filename}</a>") 
@@ -107,7 +107,7 @@ class Actions(FlaskView):
                             
         )
 
-        subprocess.Popen(f"{config.HIDDIFY_CONFIG_PATH}/{file}",cwd=f"{config.HIDDIFY_CONFIG_PATH}",start_new_session=True)
+        subprocess.Popen(f"{config['HIDDIFY_CONFIG_PATH']}/{file}",cwd=f"{config['HIDDIFY_CONFIG_PATH']}",start_new_session=True)
         import time
         time.sleep(1)
         return resp
@@ -125,7 +125,7 @@ class Actions(FlaskView):
         admin_secret=hconfig(ConfigEnum.admin_secret)
         o = urlparse(request.base_url)
         domain=o.hostname
-        subprocess.Popen(f"{config.HIDDIFY_CONFIG_PATH}/status.sh",cwd=f"{config.HIDDIFY_CONFIG_PATH}",start_new_session=True)
+        subprocess.Popen(f"{config['HIDDIFY_CONFIG_PATH']}/status.sh",cwd=f"{config['HIDDIFY_CONFIG_PATH']}",start_new_session=True)
         
         return render_template("result.html",
                             out_type="info",
@@ -147,7 +147,7 @@ class Actions(FlaskView):
         # os.system(f'cd {config_dir};./update.sh &')
 
         
-        subprocess.Popen(f"{config.HIDDIFY_CONFIG_PATH}/update.sh",cwd=f"{config.HIDDIFY_CONFIG_PATH}",start_new_session=True)
+        subprocess.Popen(f"{config['HIDDIFY_CONFIG_PATH']}/update.sh",cwd=f"{config['HIDDIFY_CONFIG_PATH']}",start_new_session=True)
         return render_template("result.html",
                             out_type="success",
                             out_msg=_("Success! Please wait around 5 minutes to make sure everything is updated."),

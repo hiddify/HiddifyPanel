@@ -124,7 +124,7 @@ def get_config_form():
     for cat in ConfigCategory:
         if cat=='hidden':continue
 
-        cat_configs=[c for c in configs if c.key.category()==cat and (not is_parent or c.key.show_in_parent())]
+        cat_configs=[c for c in configs if c.key.category()==cat and (not is_parent or c.key.show_in_parent()) and not c.key.commercial() ]
         if len(cat_configs)==0:continue
         
         class CategoryForm(FlaskForm):

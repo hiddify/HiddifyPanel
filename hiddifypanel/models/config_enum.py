@@ -193,15 +193,13 @@ class ConfigEnum(StrEnum):
             self.db_version: {'category': ConfigCategory.hidden},
         }
         return map[self]
-
+    def commercial(self):
+        return self.info().get('commercial',False)
     def category(self):
         return self.info()['category']
     def type(self):
-        info=self.info()
-        return info['type'] if 'type' in info else str
+        return self.info().get('type',str)
     def apply_mode(self):
-        info=self.info()
-        return info['apply_mode'] if 'apply_mode' in info else ''
+        return self.info().get('apply_mode','')
     def show_in_parent(self):
-        info=self.info()
-        return info['show_in_parent'] if 'show_in_parent' in info else False
+        return self.info().get('show_in_parent', False)

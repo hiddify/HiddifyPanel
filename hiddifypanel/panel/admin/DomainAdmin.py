@@ -8,7 +8,7 @@ from flask_babelex import gettext as __
 from flask_babelex import lazy_gettext as _
 from hiddifypanel.panel import hiddify,hiddify_api,cf_api
 from flask import Markup
-from flask import Flask
+from flask import Flask,g
 from flask_sqlalchemy import SQLAlchemy
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
