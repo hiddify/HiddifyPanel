@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-27 23:07+0200\n"
-"PO-Revision-Date: 2023-03-27 16:06-0500\n"
+"POT-Creation-Date: 2023-03-28 00:04+0200\n"
+"PO-Revision-Date: 2023-03-27 17:04-0500\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -18,14 +18,14 @@ msgstr ""
 msgid "This domain does not exist in the panel!"
 msgstr "This domain does not exist in the panel!"
 
-#: hiddifypanel/panel/clean_ip.py:71
+#: hiddifypanel/panel/clean_ip.py:73
 #, fuzzy
 msgid ""
 "Error in morteza ip! auto cdn ip can not be find, please contact admin."
 msgstr ""
 "Error in morteza ip! auto cdn ip can not be find, please contact admin."
 
-#: hiddifypanel/panel/clean_ip.py:78
+#: hiddifypanel/panel/clean_ip.py:82
 #, fuzzy
 msgid "Error! auto cdn ip can not be find, please contact admin."
 msgstr "Error! auto cdn ip can not be find, please contact admin."
@@ -261,7 +261,9 @@ msgstr "child has been removed!"
 # | "CDN provider. (Proxy mode ON)<br>\n"
 # | "<b>Auto CDN IP</b> mode: It is like CDN mode, except that the appropriate
 # "
-# | "IP is automatically set based on the IP provided by ircf.space<br>\n"
+# | "IP is automatically set based on the IP provided by ircf.space. In "
+# | "auto_cdn_ip  the ip will be resolved from domain but in cdn mode the "
+# | "domain will be returned<br>\n"
 # | "<b>Relay</b> mode: Choose this mode if you are using one or more "
 # | "Intermediary servers. <a href=\"https://github.com/hiddify/hiddify-"
 # | "config/discussions/129\" target=\"_blank\">Read More.</a>\n"
@@ -276,7 +278,7 @@ msgid ""
 msgstr ""
 "<b>Direct</b> mode: Choose this mode if you set your domain on your DNS provider on a DNS Only mode. (CDN or Proxy mode OFF) <br>\n"
 "<b>CDN</b> mode: Choose this mode if you use your server's domain on a CDN provider. (Proxy mode ON)<br>\n"
-"<b>Auto CDN IP</b> mode: It is like CDN mode, except that the appropriate IP is automatically set based on the IP provided by ircf.space<br>\n"
+"<b>Auto CDN IP</b> mode: It is like CDN mode, except that the appropriate IP is automatically set based on the IP provided by ircf.space. In auto_cdn_ip  the ip will be resolved from domain but in cdn mode the domain will be returned<br>\n"
 "<b>Relay</b> mode: Choose this mode if you are using one or more Intermediary servers. <a href=\"https://github.com/hiddify/hiddify-config/discussions/129\" target=\"_blank\">Read More.</a>\n"
 "<br>\n"
 "<b>Fake</b> mode: Choose this mode if you want to use a fake domain (e.g., soft98.ir) to bypass SNI whitelist proxy. (Not recommended.)\n"
@@ -348,17 +350,6 @@ msgid ""
 msgstr ""
 "In CDN mode, Domain IP=%(domain_ip)s should be different to your "
 "ip=%(server_ip)s"
-
-# | msgid ""
-# | "In CDN mode you can only apply one domain or one ip for forced host. use
-# "
-# | "auto cdn ip mode instead"
-#: hiddifypanel/panel/admin/DomainAdmin.py:154
-#, fuzzy
-msgid "In CDN mode you can only apply one domain or one ip for forced host"
-msgstr ""
-"In CDN mode you can only apply one domain or one ip for forced host. use "
-"auto cdn ip mode instead"
 
 # | msgid "Error! Domain Fronting not set."
 #: hiddifypanel/panel/admin/ProxyAdmin.py:38
@@ -3119,3 +3110,12 @@ msgstr "Actions"
 #~ "\n"
 #~ "\n"
 #~ "Good Luck! 🎉 🎉 🎉 \n"
+
+# | msgid ""
+# | "In CDN mode you can only apply one domain or one ip for forced host. use
+# "
+# | "auto cdn ip mode instead"
+#~ msgid "In CDN mode you can only apply one domain or one ip for forced host"
+#~ msgstr ""
+#~ "In CDN mode you can only apply one domain or one ip for forced host. use "
+#~ "auto cdn ip mode instead"

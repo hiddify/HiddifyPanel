@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-27 23:07+0200\n"
-"PO-Revision-Date: 2023-03-27 16:06-0500\n"
+"POT-Creation-Date: 2023-03-28 00:04+0200\n"
+"PO-Revision-Date: 2023-03-27 17:04-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -19,11 +19,11 @@ msgstr ""
 msgid "This domain does not exist in the panel!"
 msgstr "该域名在面板中不存在！"
 
-#: hiddifypanel/panel/clean_ip.py:71
+#: hiddifypanel/panel/clean_ip.py:73
 msgid "Error in morteza ip! auto cdn ip can not be find, please contact admin."
 msgstr ""
 
-#: hiddifypanel/panel/clean_ip.py:78
+#: hiddifypanel/panel/clean_ip.py:82
 msgid "Error! auto cdn ip can not be find, please contact admin."
 msgstr ""
 
@@ -253,7 +253,9 @@ msgstr ""
 # | "<b>CDN</b> mode: Choose this mode if you use your server's domain on a
 # CDN provider. (Proxy mode ON)<br>\n"
 # | "<b>Auto CDN IP</b> mode: It is like CDN mode, except that the appropriate
-# IP is automatically set based on the IP provided by ircf.space<br>\n"
+# IP is automatically set based on the IP provided by ircf.space. In
+# auto_cdn_ip  the ip will be resolved from domain but in cdn mode the domain
+# will be returned<br>\n"
 # | "<b>Relay</b> mode: Choose this mode if you are using one or more
 # Intermediary servers. <a
 # href=\"https://github.com/hiddify/hiddify-config/discussions/129\"
@@ -338,14 +340,6 @@ msgid ""
 "In CDN mode, Domain IP=%(domain_ip)s should be different to your "
 "ip=%(server_ip)s"
 msgstr "在 CDN 模式下，Domain IP=%(domain_ip)s 应该与您的 ip=%(server_ip)s 不同"
-
-# | msgid ""
-# | "In CDN mode you can only apply one domain or one ip for forced host. use
-# "
-# | "auto cdn ip mode instead"
-#: hiddifypanel/panel/admin/DomainAdmin.py:154
-msgid "In CDN mode you can only apply one domain or one ip for forced host"
-msgstr ""
 
 # | msgid "Error! Domain Fronting not set."
 #: hiddifypanel/panel/admin/ProxyAdmin.py:38
@@ -3102,4 +3096,11 @@ msgstr "动作"
 #~ "\n"
 #~ "\n"
 #~ "祝你好运！ 🎉 🎉 🎉"
+
+# | msgid ""
+# | "In CDN mode you can only apply one domain or one ip for forced host. use
+# "
+# | "auto cdn ip mode instead"
+#~ msgid "In CDN mode you can only apply one domain or one ip for forced host"
+#~ msgstr ""
 

@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-27 23:07+0200\n"
-"PO-Revision-Date: 2023-03-27 16:06-0500\n"
+"POT-Creation-Date: 2023-03-28 00:04+0200\n"
+"PO-Revision-Date: 2023-03-27 17:04-0500\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -18,11 +18,11 @@ msgstr ""
 msgid "This domain does not exist in the panel!"
 msgstr "این دامنه در پنل وجود ندارد!"
 
-#: hiddifypanel/panel/clean_ip.py:71
+#: hiddifypanel/panel/clean_ip.py:73
 msgid "Error in morteza ip! auto cdn ip can not be find, please contact admin."
 msgstr ""
 
-#: hiddifypanel/panel/clean_ip.py:78
+#: hiddifypanel/panel/clean_ip.py:82
 msgid "Error! auto cdn ip can not be find, please contact admin."
 msgstr "خطا! آی پی اتوماتیک نتوانست پیدا شود. لطفا با مدیر تماس بگیرید"
 
@@ -265,7 +265,9 @@ msgstr "پنل زیر مجموعه حذف شد"
 # | "<b>CDN</b> mode: Choose this mode if you use your server's domain on a
 # CDN provider. (Proxy mode ON)<br>\n"
 # | "<b>Auto CDN IP</b> mode: It is like CDN mode, except that the appropriate
-# IP is automatically set based on the IP provided by ircf.space<br>\n"
+# IP is automatically set based on the IP provided by ircf.space. In
+# auto_cdn_ip  the ip will be resolved from domain but in cdn mode the domain
+# will be returned<br>\n"
 # | "<b>Relay</b> mode: Choose this mode if you are using one or more
 # Intermediary servers. <a
 # href=\"https://github.com/hiddify/hiddify-config/discussions/129\"
@@ -284,7 +286,8 @@ msgstr ""
 "حالت <b>CDN</b>: اگر از دامنه خود در ارائه دهنده CDN استفاده می کنید، این"
 " حالت را انتخاب کنید. (حالت پروکسی روشن باشد.)<br>\n"
 "حالت <b>Auto CDN IP</b>: مانند حالت CDN است با این تفاوت که اتوماتیک آی "
-"پی مناسب بر اساس  آی پی ارائه شده توسط ircf.space ست می‌شود<br>\n"
+"پی مناسب بر اساس  آی پی ارائه شده توسط ircf.space ست می‌شود. در "
+"auto_cdn_ip به جای دامنه ip ثبت می شود<br>\n"
 "حالت <b>Relay</b>: اگر از یک یا چند سرور واسطه استفاده می کنید، این حالت "
 "را انتخاب کنید. <a href=\"https://github.com/hiddify/hiddify-"
 "config/discussions/129\" target=\"_blank\">بیشتر بخوانید.</a> \n"
@@ -360,16 +363,6 @@ msgid ""
 "In CDN mode, Domain IP=%(domain_ip)s should be different to your "
 "ip=%(server_ip)s"
 msgstr "در حالت CDN، IP=%(domain_ip)s باید با ip=%(server_ip)s شما متفاوت باشد."
-
-# | msgid ""
-# | "In CDN mode you can only apply one domain or one ip for forced host. use
-# "
-# | "auto cdn ip mode instead"
-#: hiddifypanel/panel/admin/DomainAdmin.py:154
-msgid "In CDN mode you can only apply one domain or one ip for forced host"
-msgstr ""
-"در حالت CDN شما فقط می توانید یک دامنه یا یک IP را برای هاست اجباری اعمال"
-" کنید میتوانید از حالت auto cdn ip استفاده کنید"
 
 # | msgid "Error! Domain Fronting not set."
 #: hiddifypanel/panel/admin/ProxyAdmin.py:38
@@ -3254,4 +3247,15 @@ msgstr "عملیات"
 #~ "\n"
 #~ "\n"
 #~ "با آرزوی موفقیت. 🎉 🎉 🎉 \n"
+
+# | msgid ""
+# | "In CDN mode you can only apply one domain or one ip for forced host. use
+# "
+# | "auto cdn ip mode instead"
+#~ msgid "In CDN mode you can only apply one domain or one ip for forced host"
+#~ msgstr ""
+#~ "در حالت CDN شما فقط می توانید "
+#~ "یک دامنه یا یک IP را برای "
+#~ "هاست اجباری اعمال کنید میتوانید از "
+#~ "حالت auto cdn ip استفاده کنید"
 
