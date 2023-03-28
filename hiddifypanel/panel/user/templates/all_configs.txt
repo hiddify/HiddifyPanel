@@ -1,5 +1,6 @@
-
 #trojan://1@{{fake_ip_for_sub_link}}#{{user.current_usage_GB|round(3)}}/{{user.usage_limit_GB}}GB_Remain:{{expire_days}}days 
+
+# Hiddify: {{ip_debug}}
 
 %for d in domains
 %for t in (['http','tls'] if hconfig(ConfigEnum.http_proxy_enable,d.child_id) else ['tls'])
