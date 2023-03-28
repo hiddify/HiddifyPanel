@@ -34,9 +34,9 @@ def init_app(app):
 
     @app.route("/<proxy_path>/videos/<file>")
     def videos(file):
-        print("file", file, app.config.HIDDIFY_CONFIG_PATH +
+        print("file", file, app.config['HIDDIFY_CONFIG_PATH'] +
               '/hiddify-panel/videos/'+file)
-        return send_from_directory(app.config.HIDDIFY_CONFIG_PATH+'/hiddify-panel/videos/', file)
+        return send_from_directory(app.config['HIDDIFY_CONFIG_PATH']+'/hiddify-panel/videos/', file)
     # @app.template_filter()
     # def rel_datetime(value):
     #     diff=datetime.datetime.now()-value
