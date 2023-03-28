@@ -43,6 +43,12 @@ asn_map={
     'AS394510':'ZTL',
     'AS49100':'PSM'
 }
+def get_real_user_ip_debug():
+    ip=get_real_user_ip()
+    asnres = ipasn.get(user_ip) if ipasn else {'autonomous_system_number':'unknown'}
+    asn = asnres['autonomous_system_number']
+    return f'{ip} {asn} {asn_map.get(asn,"unknown")}' 
+
 def get_real_user_ip():
     for header in ['CF-Connecting-IP','ar-real-ip']:
         if header in request.headers:
