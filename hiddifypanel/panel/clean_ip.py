@@ -27,21 +27,21 @@ ipasn = maxminddb.open_database('GeoLite2-ASN.mmdb') if os.path.exists('GeoLite2
 
 
 asn_map={
-    'AS58224':'ITC',
-    'AS197207':'MCI',
-    'AS12880':'ITC',
-    'AS44244':'MTN',
-    'AS31549':'RTL',
-    'AS16322':'PRS',
-    'AS56402':'HWB',
-    'AS41689':'AST',
-    'AS31549':'SHT',
-    'AS50810':'MBT',
-    'AS39308':'ASK',
-    'AS205207':'RSP',
-    'AS25184':'AFR',
-    'AS394510':'ZTL',
-    'AS49100':'PSM'
+    '58224':'ITC',
+    '197207':'MCI',
+    '12880':'ITC',
+    '44244':'MTN',
+    '31549':'RTL',
+    '16322':'PRS',
+    '56402':'HWB',
+    '41689':'AST',
+    '31549':'SHT',
+    '50810':'MBT',
+    '39308':'ASK',
+    '205207':'RSP',
+    '25184':'AFR',
+    '394510':'ZTL',
+    '49100':'PSM'
 }
 def get_real_user_ip_debug():
     user_ip=get_real_user_ip()
