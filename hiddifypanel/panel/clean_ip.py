@@ -43,11 +43,16 @@ asn_map={
     '394510':'ZTL',
     '49100':'PSM'
 }
+
+def get_asn_short_name(user_ip):
+    asnres = ipasn.get(user_ip) if ipasn else {'autonomous_system_number':'unknown'}
+    asn = f"{asnres['autonomous_system_number']}"
+    return asn_map.get(asn,"unknown")
 def get_real_user_ip_debug():
     user_ip=get_real_user_ip()
     asnres = ipasn.get(user_ip) if ipasn else {'autonomous_system_number':'unknown'}
     asn = f"{asnres['autonomous_system_number']}"
-    return f'{user_ip} {asn} {asn_map.get(asn,"unknown")}' 
+    return f'{user_ip} {asn} {get_asn_short_name(user_ip)}' 
 
 def get_real_user_ip():
     for header in ['CF-Connecting-IP','ar-real-ip']:
@@ -65,11 +70,10 @@ def get_clean_ip(ips,resolve=False):
     if is_morteza_format:
         try:
             user_ip=get_real_user_ip()
-            asnres = ipasn.get(user_ip) if ipasn else {'autonomous_system_number':'unknown'}
-            asn = asnres['autonomous_system_number']
+            asn_short = get_asn_short_name(user_ip)
             
             for i in range(0,len(ips),2):
-                if asn_map.get(asn,ips[1])== ips[i+1]:
+                if asn_short == ips[i+1]:
                     print("selected ",ips[i],ips[i+1])
                     if resolve:
                         return hiddify.get_domain_ip(ips[i])
