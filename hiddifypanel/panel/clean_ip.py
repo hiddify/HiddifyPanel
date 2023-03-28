@@ -46,7 +46,7 @@ asn_map={
 def get_real_user_ip_debug():
     user_ip=get_real_user_ip()
     asnres = ipasn.get(user_ip) if ipasn else {'autonomous_system_number':'unknown'}
-    asn = asnres['autonomous_system_number']
+    asn = f"{asnres['autonomous_system_number']}"
     return f'{user_ip} {asn} {asn_map.get(asn,"unknown")}' 
 
 def get_real_user_ip():
