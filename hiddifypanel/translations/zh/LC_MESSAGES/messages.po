@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-28 00:04+0200\n"
-"PO-Revision-Date: 2023-03-27 17:04-0500\n"
+"POT-Creation-Date: 2023-03-30 00:40+0200\n"
+"PO-Revision-Date: 2023-03-29 17:35-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -19,11 +19,11 @@ msgstr ""
 msgid "This domain does not exist in the panel!"
 msgstr "该域名在面板中不存在！"
 
-#: hiddifypanel/panel/clean_ip.py:73
+#: hiddifypanel/panel/clean_ip.py:95
 msgid "Error in morteza ip! auto cdn ip can not be find, please contact admin."
 msgstr ""
 
-#: hiddifypanel/panel/clean_ip.py:82
+#: hiddifypanel/panel/clean_ip.py:104
 msgid "Error! auto cdn ip can not be find, please contact admin."
 msgstr ""
 
@@ -1778,13 +1778,21 @@ msgstr ""
 msgid "Please copy the emergency link before leaving this page."
 msgstr "离开此页面前，请复制并保存紧急访问链接。"
 
+#: hiddifypanel/panel/admin/templates/result.html:30
+msgid "Please wait "
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/result.html:30
+msgid "seconds"
+msgstr ""
+
 # | msgid "Log"
-#: hiddifypanel/panel/admin/templates/result.html:31
+#: hiddifypanel/panel/admin/templates/result.html:36
 msgid "log"
 msgstr "日志"
 
 # | msgid "Click here to see the complete log."
-#: hiddifypanel/panel/admin/templates/result.html:32
+#: hiddifypanel/panel/admin/templates/result.html:37
 msgid "Click here to see the complete log"
 msgstr "单击此处查看完整日志。"
 
@@ -2388,6 +2396,18 @@ msgstr ""
 "\n"
 "<br />\n"
 "然后应用以下配置之一："
+
+# | msgid "Turn off VPN"
+#: hiddifypanel/panel/user/templates/home/multi.html:384
+msgid "Turn of VPN"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/home/multi.html:384
+#, python-format
+msgid ""
+"You should visit this page without VPN. Your country=%(your_country)s "
+"expected=%(expected_country)s"
+msgstr ""
 
 # | msgid ""
 # | "First, test the speed <b>without</b> the proxy. If the speed is not good,

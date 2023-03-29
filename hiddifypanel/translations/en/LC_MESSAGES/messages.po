@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-28 00:04+0200\n"
-"PO-Revision-Date: 2023-03-27 17:04-0500\n"
+"POT-Creation-Date: 2023-03-30 00:40+0200\n"
+"PO-Revision-Date: 2023-03-29 17:35-0500\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -18,14 +18,14 @@ msgstr ""
 msgid "This domain does not exist in the panel!"
 msgstr "This domain does not exist in the panel!"
 
-#: hiddifypanel/panel/clean_ip.py:73
+#: hiddifypanel/panel/clean_ip.py:95
 #, fuzzy
 msgid ""
 "Error in morteza ip! auto cdn ip can not be find, please contact admin."
 msgstr ""
 "Error in morteza ip! auto cdn ip can not be find, please contact admin."
 
-#: hiddifypanel/panel/clean_ip.py:82
+#: hiddifypanel/panel/clean_ip.py:104
 #, fuzzy
 msgid "Error! auto cdn ip can not be find, please contact admin."
 msgstr "Error! auto cdn ip can not be find, please contact admin."
@@ -1809,13 +1809,23 @@ msgid "Please copy the emergency link before leaving this page."
 msgstr ""
 "Please Copy and Save the emergency access link before leaving this page."
 
+#: hiddifypanel/panel/admin/templates/result.html:30
+#, fuzzy
+msgid "Please wait "
+msgstr "Please wait "
+
+#: hiddifypanel/panel/admin/templates/result.html:30
+#, fuzzy
+msgid "seconds"
+msgstr "seconds"
+
 # | msgid "Log"
-#: hiddifypanel/panel/admin/templates/result.html:31
+#: hiddifypanel/panel/admin/templates/result.html:36
 msgid "log"
 msgstr "Log"
 
 # | msgid "Click here to see the complete log."
-#: hiddifypanel/panel/admin/templates/result.html:32
+#: hiddifypanel/panel/admin/templates/result.html:37
 msgid "Click here to see the complete log"
 msgstr "Click here to see the complete log."
 
@@ -2419,6 +2429,21 @@ msgstr ""
 "\n"
 "<br />\n"
 "Then apply one of the following configs:"
+
+# | msgid "Turn off VPN"
+#: hiddifypanel/panel/user/templates/home/multi.html:384
+#, fuzzy
+msgid "Turn of VPN"
+msgstr "Turn off VPN"
+
+#: hiddifypanel/panel/user/templates/home/multi.html:384
+#, fuzzy, python-format
+msgid ""
+"You should visit this page without VPN. Your country=%(your_country)s "
+"expected=%(expected_country)s"
+msgstr ""
+"You should visit this page without VPN. Your country=%(your_country)s "
+"expected=%(expected_country)s"
 
 # | msgid ""
 # | "First, test the speed <b>without</b> the proxy. If the speed is not good,

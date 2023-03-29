@@ -23,7 +23,8 @@ import os
 import re
 import random
 from hiddifypanel.panel import hiddify
-ipasn = maxminddb.open_database('GeoLite2-ASN.mmdb') if os.path.exists('GeoLite2-ASN.mmdb') else None
+ipasn = maxminddb.open_database('GeoLite2-ASN.mmdb') if os.path.exists('GeoLite2-ASN.mmdb') else {}
+ipcountry = maxminddb.open_database('GeoLite2-Country.mmdb') if os.path.exists('GeoLite2-Country.mmdb') else {}
 
 
 asn_map={
@@ -31,7 +32,7 @@ asn_map={
     '197207':'MCI',
     '12880':'ITC',
     '44244':'MTN',
-    '31549':'RTL',
+    '57218':'RTL',
     '16322':'PRS',
     '56402':'HWB',
     '41689':'AST',
@@ -45,15 +46,22 @@ asn_map={
     '49100':'PSM'
 }
 
-def get_asn_short_name(user_ip):
+def get_asn_short_name(user_ip=None):
+    user_ip=user_ip or get_real_user_ip()
     asnres = ipasn.get(user_ip) if ipasn else {'autonomous_system_number':'unknown'}
     asn = f"{asnres.get('autonomous_system_number','unknown')}" if asnres else "unknown"
-    return asn_map.get(asn,"unknown")
-def get_real_user_ip_debug():
-    user_ip=get_real_user_ip()
-    asnres = ipasn.get(user_ip) if ipasn else {'autonomous_system_number':'unknown'}
+    return asn_map.get(asn,"unknown") 
+def get_country(user_ip=None):
+    user_ip=user_ip or get_real_user_ip()
+    return (ipcountry.get(user_ip) or {}).get('country',{}).get('iso_code','unknown')
+def get_real_user_ip_debug(user_ip=None):
+    user_ip=user_ip or get_real_user_ip()
+    asnres = ipasn.get(user_ip) or {}
     asn = f"{asnres.get('autonomous_system_number','unknown')}" if asnres else "unknown"
-    return f'{user_ip} {asn} {get_asn_short_name(user_ip)}' 
+    asn_dscr = f"{asnres.get('autonomous_system_organization','unknown')}" if asnres else "unknown"
+    asn_short=get_asn_short_name(user_ip)
+    country=get_country(user_ip)
+    return f'{user_ip} {country} {asn} {asn_short} {"ERROR" if asn_short=="unknown" else ""} fullname={asn_dscr}' 
 
 def get_real_user_ip():
     for header in ['CF-Connecting-IP','ar-real-ip']:
@@ -61,7 +69,7 @@ def get_real_user_ip():
             return request.headers.get(header)
         
     return request.remote_addr
-def get_clean_ip(ips,resolve=False):
+def get_clean_ip(ips,resolve=False,default_asn=None):
     if not ips:
         ips=default_ips
         
@@ -72,7 +80,10 @@ def get_clean_ip(ips,resolve=False):
         try:
             user_ip=get_real_user_ip()
             asn_short = get_asn_short_name(user_ip)
-            
+            country=get_country(user_ip)
+            if country!="IR" and default_asn:
+                asn_short=default_asn
+
             for i in range(0,len(ips),2):
                 if asn_short == ips[i+1]:
                     print("selected ",ips[i],ips[i+1])

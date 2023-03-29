@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-28 00:04+0200\n"
-"PO-Revision-Date: 2023-03-27 17:04-0500\n"
+"POT-Creation-Date: 2023-03-30 00:40+0200\n"
+"PO-Revision-Date: 2023-03-29 17:35-0500\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -18,11 +18,13 @@ msgstr ""
 msgid "This domain does not exist in the panel!"
 msgstr "این دامنه در پنل وجود ندارد!"
 
-#: hiddifypanel/panel/clean_ip.py:73
+#: hiddifypanel/panel/clean_ip.py:95
 msgid "Error in morteza ip! auto cdn ip can not be find, please contact admin."
 msgstr ""
+"خطا در آی پی مرتضی! آی پی cdn خودکار پیدا نمی شود، لطفا با ادمین تماس "
+"بگیرید."
 
-#: hiddifypanel/panel/clean_ip.py:82
+#: hiddifypanel/panel/clean_ip.py:104
 msgid "Error! auto cdn ip can not be find, please contact admin."
 msgstr "خطا! آی پی اتوماتیک نتوانست پیدا شود. لطفا با مدیر تماس بگیرید"
 
@@ -1851,13 +1853,21 @@ msgstr ""
 msgid "Please copy the emergency link before leaving this page."
 msgstr "لطفا قبل از ترک این صفحه لینک دسترسی اضطراری را کپی کنید."
 
+#: hiddifypanel/panel/admin/templates/result.html:30
+msgid "Please wait "
+msgstr "لطفا صبر کنید"
+
+#: hiddifypanel/panel/admin/templates/result.html:30
+msgid "seconds"
+msgstr "ثانیه"
+
 # | msgid "Log"
-#: hiddifypanel/panel/admin/templates/result.html:31
+#: hiddifypanel/panel/admin/templates/result.html:36
 msgid "log"
 msgstr "لاگ"
 
 # | msgid "Click here to see the complete log."
-#: hiddifypanel/panel/admin/templates/result.html:32
+#: hiddifypanel/panel/admin/templates/result.html:37
 msgid "Click here to see the complete log"
 msgstr "برای دیدن لاگ کامل، اینجا کلیک کنید."
 
@@ -2494,6 +2504,20 @@ msgstr ""
 "\n"
 "<br />\n"
 "سپس یکی از کانفیگ‌های زیر را اعمال کنید:"
+
+# | msgid "Turn off VPN"
+#: hiddifypanel/panel/user/templates/home/multi.html:384
+msgid "Turn of VPN"
+msgstr "وی پی ان را خاموش کنید"
+
+#: hiddifypanel/panel/user/templates/home/multi.html:384
+#, python-format
+msgid ""
+"You should visit this page without VPN. Your country=%(your_country)s "
+"expected=%(expected_country)s"
+msgstr ""
+"شما باید بدون VPN از این صفحه بازدید کنید. کشور شما=%(your_country)s مورد"
+" انتظار=%(expected_country)s"
 
 # | msgid ""
 # | "First, test the speed <b>without</b> the proxy. If the speed is not good,

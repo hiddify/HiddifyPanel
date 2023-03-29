@@ -1,6 +1,6 @@
 {% extends "master.html" %}
 {% block title %}{{hconfig(ConfigEnum.branding_title) or _('user.home.title')}}{% endblock %}
-
+{% from 'macros.html' import modal %}
 {% block body_header %}
 
 
@@ -380,4 +380,7 @@ responsive: {
     %endif
 </script>
 
+%if country.lower()!=hconfig(ConfigEnum.country)
+{{modal("country-alarm-modal",_("Turn of VPN"),_("You should visit this page without VPN. Your country=%(your_country)s expected=%(expected_country)s",your_country=country,expected_country=hconfig(ConfigEnum.country)),show=True)}}
+%endif
 {% endblock %}

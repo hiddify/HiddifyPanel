@@ -25,6 +25,11 @@
 {{modal('save_emergency',_('Save Link'),_("Please copy the emergency link before leaving this page."),temp_link(),show=False)}}
 %endif
 
+<div class="alert">
+
+  {{_("Please wait ")}} <label id="count-down">300</label> {{_("seconds")}}
+
+</div>
 
 % if log_path
 <div>
@@ -36,8 +41,10 @@
 <script>
 var x=document.getElementById("ilog");
 var orig_log_url=x.src
+
 function refresh(){
   x.contentWindow.location.replace(orig_log_url+"?random="+Math.random());
+  document.getElementById("count-down").innerHTML=parseInt(document.getElementById("count-down").innerHTML)-1
   //x.contentWindow.scrollTo( 0, 999999 );
 }
 setInterval(refresh,1000);

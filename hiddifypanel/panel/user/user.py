@@ -126,7 +126,7 @@ def do_base_64(str):
     return resp.decode()
     
 def get_common_data(user_uuid,mode,no_domain=False,filter_domain=None):
-    
+    default_asn=request.args.get("asn")
     if filter_domain:
         domain=filter_domain
         db_domain=Domain.query.filter(Domain.domain==domain).first() or Domain(domain=domain,mode=DomainType.direct,cdn_ip='',show_domains=[],child_id=0)
@@ -171,7 +171,7 @@ def get_common_data(user_uuid,mode,no_domain=False,filter_domain=None):
 
     for d in domains:
         if d.mode==DomainType.auto_cdn_ip or d.cdn_ip:
-            d.cdn_ip=clean_ip.get_clean_ip(d.cdn_ip, d.mode==DomainType.auto_cdn_ip)
+            d.cdn_ip=clean_ip.get_clean_ip(d.cdn_ip, d.mode==DomainType.auto_cdn_ip,default_asn)
             print("autocdn ip mode ",d.cdn_ip)
 
 
@@ -194,7 +194,7 @@ def get_common_data(user_uuid,mode,no_domain=False,filter_domain=None):
     # print(reset_days,expire_days,reset_days<=expire_days)
     expire_s=int((datetime.date.today()+datetime.timedelta(days=expire_days)-datetime.date(1970, 1, 1)).total_seconds())
     
-    
+    user_ip=clean_ip.get_real_user_ip()
     return {
         # 'direct_host':direct_host,
         'user':user,
@@ -215,8 +215,9 @@ def get_common_data(user_uuid,mode,no_domain=False,filter_domain=None):
         "bot":bot,
         "db_domain":db_domain,
         "telegram_enable":hconfig(ConfigEnum.telegram_enable) and any([d for d in domains if d.mode!=DomainType.cdn ]),
-        "ip":clean_ip.get_real_user_ip(),
-        "ip_debug":clean_ip.get_real_user_ip_debug()
-
+        "ip":user_ip,
+        "ip_debug":clean_ip.get_real_user_ip_debug(user_ip),
+        "asn":clean_ip.get_asn_short_name(user_ip),
+        "country":clean_ip.get_country(user_ip),
     }
     
