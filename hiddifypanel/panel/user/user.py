@@ -195,6 +195,7 @@ def get_common_data(user_uuid,mode,no_domain=False,filter_domain=None):
     expire_s=int((datetime.date.today()+datetime.timedelta(days=expire_days)-datetime.date(1970, 1, 1)).total_seconds())
     
     user_ip=clean_ip.get_real_user_ip()
+    has_cdn=Domain.query.filter(Domain.mode.in_([DomainType.cdn,DomainType.auto_cdn_ip])).first()
     return {
         # 'direct_host':direct_host,
         'user':user,

@@ -380,7 +380,7 @@ responsive: {
     %endif
 </script>
 
-%if country.lower()!=hconfig(ConfigEnum.country)
+%if country.lower()!=hconfig(ConfigEnum.country) and has_cdn
 {{modal("country-alarm-modal",_("Turn of VPN"),_("You should visit this page without VPN. Your country=%(your_country)s expected=%(expected_country)s",your_country=country,expected_country=hconfig(ConfigEnum.country)),show=True)}}
 %endif
 {% endblock %}
