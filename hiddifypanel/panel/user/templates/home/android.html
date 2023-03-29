@@ -75,7 +75,7 @@
     {{_('V2rayNG intro',dl_link=v2rayng_android_dl(),play_link=v2rayng_android_google_play())}}
 
     <div class="btn-group">
-        <a href="https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/all.txt?name={{db_domain.alias or db_domain.domain}}&asn={{asn}}&mode={{mode}}"
+        <a href="https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/all.txt?name={{db_domain.alias or db_domain.domain}}-{{asn}}&asn={{asn}}&mode={{mode}}"
           class="btn btn-light orig-link"> {{_('user.home.allconfig.link-configs')}} </a>
       </div>
 </details>
