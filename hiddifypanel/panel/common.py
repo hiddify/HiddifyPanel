@@ -19,7 +19,8 @@ def init_app(app):
             trace = traceback.format_exc()
             import lastversion
             last_version=lastversion.latest("hiddifypanel",at="pip")
-            has_update=last_version!=hiddifypanel.__version__
+            
+            has_update= f'{last_version}' != hiddifypanel.__version__
             return render_template('500.html', error=e, trace=trace,has_update=has_update,last_version=last_version), 500
         # if e.code in [400,401,403]:
         #     return render_template('access-denied.html',error=e), e.code
