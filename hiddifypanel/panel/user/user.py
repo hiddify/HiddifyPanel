@@ -168,9 +168,10 @@ def get_common_data(user_uuid,mode,no_domain=False,filter_domain=None):
     if user is None:
         abort(401,"Invalid User")
     
-
+    has_cdn=False
     for d in domains:
         if d.mode==DomainType.auto_cdn_ip or d.cdn_ip:
+            has_cdn=True
             d.cdn_ip=clean_ip.get_clean_ip(d.cdn_ip, d.mode==DomainType.auto_cdn_ip,default_asn)
             print("autocdn ip mode ",d.cdn_ip)
 
@@ -195,7 +196,6 @@ def get_common_data(user_uuid,mode,no_domain=False,filter_domain=None):
     expire_s=int((datetime.date.today()+datetime.timedelta(days=expire_days)-datetime.date(1970, 1, 1)).total_seconds())
     
     user_ip=clean_ip.get_real_user_ip()
-    has_cdn=Domain.query.filter(Domain.mode.in_([DomainType.cdn,DomainType.auto_cdn_ip])).first()
     return {
         # 'direct_host':direct_host,
         'user':user,
