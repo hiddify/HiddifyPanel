@@ -40,7 +40,7 @@ class UserView(FlaskView):
     @route('/')
     def new(self):
                 
-        c=get_common_data(g.user_uuid,mode="new")+d
+        c=get_common_data(g.user_uuid,mode="new")
         
         user_agent =  user_agents.parse(request.user_agent.string)
 
