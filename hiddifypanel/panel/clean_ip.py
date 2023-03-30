@@ -23,8 +23,11 @@ import os
 import re
 import random
 from hiddifypanel.panel import hiddify
-ipasn = maxminddb.open_database('GeoLite2-ASN.mmdb') if os.path.exists('GeoLite2-ASN.mmdb') else {}
-ipcountry = maxminddb.open_database('GeoLite2-Country.mmdb') if os.path.exists('GeoLite2-Country.mmdb') else {}
+try:
+    ipasn = maxminddb.open_database('GeoLite2-ASN.mmdb') if os.path.exists('GeoLite2-ASN.mmdb') else {}
+    ipcountry = maxminddb.open_database('GeoLite2-Country.mmdb') if os.path.exists('GeoLite2-Country.mmdb') else {}
+except Exception as e:
+    print("Error can not load maxminddb")
 
 
 asn_map={
@@ -69,36 +72,35 @@ def get_real_user_ip():
             return request.headers.get(header)
         
     return request.remote_addr
+
+def get_host_base_on_asn(ips,asn_short):
+    if len(ips)%2 !=0:
+        flash(_("Error! auto cdn ip can not be find, please contact admin."))
+    for i in range(0,len(ips),2):
+        if asn_short == ips[i+1]:
+            print("selected ",ips[i],ips[i+1])
+            return ips[i] 
+    return [ips][0]
+
 def get_clean_ip(ips,resolve=False,default_asn=None):
     if not ips:
         ips=default_ips
         
     ips=re.split('[ \t\r\n;,]+',ips.strip())
+    user_ip=get_real_user_ip()
+    asn_short = get_asn_short_name(user_ip)
+    country=get_country(user_ip)
+    print("Real user ip",get_real_user_ip_debug(), user_ip,asn_short,country)
     is_morteza_format=any([format for format in asn_map.values() if format in ips])
-    print(ips)
+    print("IPs",ips)
     if is_morteza_format:
-        try:
-            user_ip=get_real_user_ip()
-            asn_short = get_asn_short_name(user_ip)
-            country=get_country(user_ip)
-            if country!="IR" and default_asn:
-                asn_short=default_asn
+        if country.lower()!=hconfig(ConfigEnum.country) and default_asn:
+            asn_short=default_asn
+        selected_server=get_host_base_on_asn(ips, asn_short)
+    else:
+        selected_server=random.sample(ips, 1)[0]
 
-            for i in range(0,len(ips),2):
-                if asn_short == ips[i+1]:
-                    print("selected ",ips[i],ips[i+1])
-                    if resolve:
-                        return hiddify.get_domain_ip(ips[i])
-                    return ips[i]
-        except Exception as e:
-            print(e)
-            flash(_("Error in morteza ip! auto cdn ip can not be find, please contact admin."))
-    try:
-        selected_server=random.sample(ips, 1)
-        print("selected ",selected_server)
-        if resolve:
-            return hiddify.get_domain_ip(selected_server[0])
-        return selected_server[0]
-    except Exception as e:
-        print(e)
-        flash(_("Error! auto cdn ip can not be find, please contact admin."))
+    if resolve:
+        return hiddify.get_domain_ip(selected_server) or selected_server
+    return selected_server
+    

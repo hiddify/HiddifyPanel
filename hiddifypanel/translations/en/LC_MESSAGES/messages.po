@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-30 00:40+0200\n"
-"PO-Revision-Date: 2023-03-29 17:35-0500\n"
+"POT-Creation-Date: 2023-03-30 10:03+0200\n"
+"PO-Revision-Date: 2023-03-30 02:49-0500\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -18,14 +18,7 @@ msgstr ""
 msgid "This domain does not exist in the panel!"
 msgstr "This domain does not exist in the panel!"
 
-#: hiddifypanel/panel/clean_ip.py:95
-#, fuzzy
-msgid ""
-"Error in morteza ip! auto cdn ip can not be find, please contact admin."
-msgstr ""
-"Error in morteza ip! auto cdn ip can not be find, please contact admin."
-
-#: hiddifypanel/panel/clean_ip.py:104
+#: hiddifypanel/panel/clean_ip.py:78
 #, fuzzy
 msgid "Error! auto cdn ip can not be find, please contact admin."
 msgstr "Error! auto cdn ip can not be find, please contact admin."
@@ -55,14 +48,14 @@ msgstr "Configs have been changed successfully."
 #: hiddifypanel/panel/admin/ChildAdmin.py:108
 #: hiddifypanel/panel/admin/DomainAdmin.py:131
 #: hiddifypanel/panel/admin/QuickSetup.py:117
-#: hiddifypanel/panel/hiddify.py:237
+#: hiddifypanel/panel/hiddify.py:247
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr ""
 "Domain can not be resolved! There is a problem in your domain. Please check "
 "your Domain configurations."
 
 # | msgid "0 - Last Day"
-#: hiddifypanel/panel/hiddify.py:263
+#: hiddifypanel/panel/hiddify.py:273
 msgid "0 - Last day"
 msgstr "0 - Last Day"
 
@@ -2436,14 +2429,17 @@ msgstr ""
 msgid "Turn of VPN"
 msgstr "Turn off VPN"
 
+# | msgid ""
+# | "You should visit this page without VPN to use Auto CDN IP. Your "
+# | "country=%(your_country)s"
 #: hiddifypanel/panel/user/templates/home/multi.html:384
 #, fuzzy, python-format
 msgid ""
 "You should visit this page without VPN. Your country=%(your_country)s "
 "expected=%(expected_country)s"
 msgstr ""
-"You should visit this page without VPN. Your country=%(your_country)s "
-"expected=%(expected_country)s"
+"You should visit this page without VPN to use Auto CDN IP. Your "
+"country=%(your_country)s"
 
 # | msgid ""
 # | "First, test the speed <b>without</b> the proxy. If the speed is not good,
@@ -3135,6 +3131,11 @@ msgstr "Actions"
 #~ "\n"
 #~ "\n"
 #~ "Good Luck! 🎉 🎉 🎉 \n"
+
+# | msgid "Error in auto cdn ip! it can not be find, please contact admin."
+#~ msgid ""
+#~ "Error in morteza ip! auto cdn ip can not be find, please contact admin."
+#~ msgstr "Error in auto cdn ip! it can not be find, please contact admin."
 
 # | msgid ""
 # | "In CDN mode you can only apply one domain or one ip for forced host. use

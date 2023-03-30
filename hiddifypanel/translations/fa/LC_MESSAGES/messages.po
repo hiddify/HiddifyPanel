@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-30 00:40+0200\n"
-"PO-Revision-Date: 2023-03-29 17:35-0500\n"
+"POT-Creation-Date: 2023-03-30 10:03+0200\n"
+"PO-Revision-Date: 2023-03-30 02:49-0500\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -18,13 +18,7 @@ msgstr ""
 msgid "This domain does not exist in the panel!"
 msgstr "این دامنه در پنل وجود ندارد!"
 
-#: hiddifypanel/panel/clean_ip.py:95
-msgid "Error in morteza ip! auto cdn ip can not be find, please contact admin."
-msgstr ""
-"خطا در آی پی مرتضی! آی پی cdn خودکار پیدا نمی شود، لطفا با ادمین تماس "
-"بگیرید."
-
-#: hiddifypanel/panel/clean_ip.py:104
+#: hiddifypanel/panel/clean_ip.py:78
 msgid "Error! auto cdn ip can not be find, please contact admin."
 msgstr "خطا! آی پی اتوماتیک نتوانست پیدا شود. لطفا با مدیر تماس بگیرید"
 
@@ -54,12 +48,12 @@ msgstr "تنظیمات با موفقیت تغییر کرد."
 # | "your Domain configurations."
 #: hiddifypanel/panel/admin/ChildAdmin.py:108
 #: hiddifypanel/panel/admin/DomainAdmin.py:131
-#: hiddifypanel/panel/admin/QuickSetup.py:117 hiddifypanel/panel/hiddify.py:237
+#: hiddifypanel/panel/admin/QuickSetup.py:117 hiddifypanel/panel/hiddify.py:247
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr "دامنه قابل دسترسی نیست! در دامنه شما مشکلی وجود دارد."
 
 # | msgid "0 - Last Day"
-#: hiddifypanel/panel/hiddify.py:263
+#: hiddifypanel/panel/hiddify.py:273
 msgid "0 - Last day"
 msgstr "0 - آخرین روز"
 
@@ -2510,14 +2504,18 @@ msgstr ""
 msgid "Turn of VPN"
 msgstr "وی پی ان را خاموش کنید"
 
+# | msgid ""
+# | "You should visit this page without VPN to use Auto CDN IP. Your "
+# | "country=%(your_country)s"
 #: hiddifypanel/panel/user/templates/home/multi.html:384
 #, python-format
 msgid ""
 "You should visit this page without VPN. Your country=%(your_country)s "
 "expected=%(expected_country)s"
 msgstr ""
-"شما باید بدون VPN از این صفحه بازدید کنید. کشور شما=%(your_country)s مورد"
-" انتظار=%(expected_country)s"
+"شما باید بدون VPN از این صفحه بازدید تا سیستم بتواند آی پی مناسب را برای "
+"شما پیدا کند. \n"
+" کشور شما=%(your_country)s"
 
 # | msgid ""
 # | "First, test the speed <b>without</b> the proxy. If the speed is not good,
@@ -3271,6 +3269,11 @@ msgstr "عملیات"
 #~ "\n"
 #~ "\n"
 #~ "با آرزوی موفقیت. 🎉 🎉 🎉 \n"
+
+# | msgid ""
+# | "Error in auto cdn ip! it can not be find, please contact admin."
+#~ msgid "Error in morteza ip! auto cdn ip can not be find, please contact admin."
+#~ msgstr "خطا! آی پی cdn خودکار پیدا نمی شود، لطفا با ادمین تماس بگیرید."
 
 # | msgid ""
 # | "In CDN mode you can only apply one domain or one ip for forced host. use

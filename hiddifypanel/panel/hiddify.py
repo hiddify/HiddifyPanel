@@ -147,15 +147,25 @@ def flash_config_success(restart_mode='', domain_changed=True):
 # Function to display hostname and
 # IP address
 
-def get_domain_ip(domain):
+def get_domain_ip(domain,retry=3):
     import socket
     try:
-        return socket.gethostbyname(domain)
+        res=socket.gethostbyname(domain)
+        if not res:
+            res= socket.getaddrinfo(domain, None, socket.AF_INET)[0][4][0]
     except:
+         pass
+    if not res:
         try:
-            return socket.getaddrinfo(domain, None, socket.AF_INET6)
+            res= socket.getaddrinfo(domain, None, socket.AF_INET6)[0][4][0]
         except:
-            return None
+            pass
+
+    if res: 
+        return res
+    if retry<=0:
+        return None
+    return get_domain_ip(domain,retry=retry-1)
 
 
 def check_connection_to_remote(api_url):

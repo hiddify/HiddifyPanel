@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-30 00:40+0200\n"
-"PO-Revision-Date: 2023-03-29 17:35-0500\n"
+"POT-Creation-Date: 2023-03-30 10:03+0200\n"
+"PO-Revision-Date: 2023-03-30 02:49-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -19,11 +19,7 @@ msgstr ""
 msgid "This domain does not exist in the panel!"
 msgstr "该域名在面板中不存在！"
 
-#: hiddifypanel/panel/clean_ip.py:95
-msgid "Error in morteza ip! auto cdn ip can not be find, please contact admin."
-msgstr ""
-
-#: hiddifypanel/panel/clean_ip.py:104
+#: hiddifypanel/panel/clean_ip.py:78
 msgid "Error! auto cdn ip can not be find, please contact admin."
 msgstr ""
 
@@ -52,12 +48,12 @@ msgstr "配置已成功更改。"
 # | "your Domain configurations."
 #: hiddifypanel/panel/admin/ChildAdmin.py:108
 #: hiddifypanel/panel/admin/DomainAdmin.py:131
-#: hiddifypanel/panel/admin/QuickSetup.py:117 hiddifypanel/panel/hiddify.py:237
+#: hiddifypanel/panel/admin/QuickSetup.py:117 hiddifypanel/panel/hiddify.py:247
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr "域名无法解析！你的域有问题"
 
 # | msgid "0 - Last Day"
-#: hiddifypanel/panel/hiddify.py:263
+#: hiddifypanel/panel/hiddify.py:273
 #, fuzzy
 msgid "0 - Last day"
 msgstr "0 - 最后一天"
@@ -2402,6 +2398,9 @@ msgstr ""
 msgid "Turn of VPN"
 msgstr ""
 
+# | msgid ""
+# | "You should visit this page without VPN to use Auto CDN IP. Your "
+# | "country=%(your_country)s"
 #: hiddifypanel/panel/user/templates/home/multi.html:384
 #, python-format
 msgid ""
@@ -3116,6 +3115,11 @@ msgstr "动作"
 #~ "\n"
 #~ "\n"
 #~ "祝你好运！ 🎉 🎉 🎉"
+
+# | msgid ""
+# | "Error in auto cdn ip! it can not be find, please contact admin."
+#~ msgid "Error in morteza ip! auto cdn ip can not be find, please contact admin."
+#~ msgstr ""
 
 # | msgid ""
 # | "In CDN mode you can only apply one domain or one ip for forced host. use
