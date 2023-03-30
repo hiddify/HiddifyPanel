@@ -79,14 +79,21 @@ def get_real_user_ip():
 def get_host_base_on_asn(ips,asn_short):
     if type(ips)==str:
         ips=re.split('[ \t\r\n;,]+',ips.strip())
-
-    if len(ips)%2 !=0:
+    valid_hosts=[ip for ip in ips if len(ip)>5]
+    
+    if len(ips)%2 !=0 or len(valid_hosts)==0:
         flash(_("Error! auto cdn ip can not be find, please contact admin."))
+        if len(valid_hosts)==0:return
+
+    all_hosts=[]
     for i in range(0,len(ips),2):
         if asn_short == ips[i+1]:
             print("selected ",ips[i],ips[i+1])
-            return ips[i] 
-    return ips[0]
+            all_hosts.append(ips[i])
+    if len(all_hosts):
+        return random.sample(all_hosts, 1)[0]
+    
+    return random.sample(valid_hosts,1)[0]
 
 def get_clean_ip(ips,resolve=False,default_asn=None):
     if not ips:
