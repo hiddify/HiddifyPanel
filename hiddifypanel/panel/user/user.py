@@ -4,6 +4,7 @@ from wtforms.validators import Regexp,ValidationError
 import urllib,uuid
 import datetime
 from hiddifypanel.models import *
+from hiddifypanel.panel.database import db
 from hiddifypanel.panel import hiddify,clean_ip
 from hiddifypanel.panel.hiddify  import auth
 from . import link_maker
@@ -161,17 +162,18 @@ def get_common_data(user_uuid,mode,no_domain=False,filter_domain=None):
                 
                 # domains.append(direct_domain_db)
         
-        
+    
 
     # uuid_secret=str(uuid.UUID(user_secret))
     user=User.query.filter(User.uuid==f'{user_uuid}').first()
     if user is None:
         abort(401,"Invalid User")
     
-    has_cdn=False
+    has_auto_cdn=False
     for d in domains:
+        db.session.expunge(d)
         if d.mode==DomainType.auto_cdn_ip or d.cdn_ip:
-            has_cdn=True
+            has_auto_cdn=True
             d.cdn_ip=clean_ip.get_clean_ip(d.cdn_ip, d.mode==DomainType.auto_cdn_ip,default_asn)
             print("autocdn ip mode ",d.cdn_ip)
 
@@ -220,5 +222,6 @@ def get_common_data(user_uuid,mode,no_domain=False,filter_domain=None):
         "ip_debug":clean_ip.get_real_user_ip_debug(user_ip),
         "asn":clean_ip.get_asn_short_name(user_ip),
         "country":clean_ip.get_country(user_ip),
+        'has_auto_cdn':has_auto_cdn
     }
     

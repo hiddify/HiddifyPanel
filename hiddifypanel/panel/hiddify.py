@@ -149,6 +149,7 @@ def flash_config_success(restart_mode='', domain_changed=True):
 
 def get_domain_ip(domain,retry=3):
     import socket
+    res=None
     try:
         res=socket.gethostbyname(domain)
         if not res:

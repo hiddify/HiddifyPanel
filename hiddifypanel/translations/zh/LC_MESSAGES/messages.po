@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-30 10:03+0200\n"
-"PO-Revision-Date: 2023-03-30 02:49-0500\n"
+"POT-Creation-Date: 2023-03-30 10:58+0200\n"
+"PO-Revision-Date: 2023-03-30 03:58-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -14,12 +14,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.12.1\n"
 
-#: hiddifypanel/models/domain.py:97 hiddifypanel/panel/user/user.py:144
+#: hiddifypanel/models/domain.py:97 hiddifypanel/panel/user/user.py:145
 #, fuzzy
 msgid "This domain does not exist in the panel!"
 msgstr "该域名在面板中不存在！"
 
-#: hiddifypanel/panel/clean_ip.py:78
+#: hiddifypanel/panel/clean_ip.py:83
 msgid "Error! auto cdn ip can not be find, please contact admin."
 msgstr ""
 
@@ -48,12 +48,12 @@ msgstr "配置已成功更改。"
 # | "your Domain configurations."
 #: hiddifypanel/panel/admin/ChildAdmin.py:108
 #: hiddifypanel/panel/admin/DomainAdmin.py:131
-#: hiddifypanel/panel/admin/QuickSetup.py:117 hiddifypanel/panel/hiddify.py:247
+#: hiddifypanel/panel/admin/QuickSetup.py:117 hiddifypanel/panel/hiddify.py:248
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr "域名无法解析！你的域有问题"
 
 # | msgid "0 - Last Day"
-#: hiddifypanel/panel/hiddify.py:273
+#: hiddifypanel/panel/hiddify.py:274
 #, fuzzy
 msgid "0 - Last day"
 msgstr "0 - 最后一天"
@@ -2393,15 +2393,19 @@ msgstr ""
 "<br />\n"
 "然后应用以下配置之一："
 
+#: hiddifypanel/panel/user/templates/home/multi.html:386
+msgid "Check again"
+msgstr ""
+
 # | msgid "Turn off VPN"
-#: hiddifypanel/panel/user/templates/home/multi.html:384
+#: hiddifypanel/panel/user/templates/home/multi.html:389
 msgid "Turn of VPN"
 msgstr ""
 
 # | msgid ""
 # | "You should visit this page without VPN to use Auto CDN IP. Your "
 # | "country=%(your_country)s"
-#: hiddifypanel/panel/user/templates/home/multi.html:384
+#: hiddifypanel/panel/user/templates/home/multi.html:389
 #, python-format
 msgid ""
 "You should visit this page without VPN. Your country=%(your_country)s "
@@ -2829,7 +2833,7 @@ msgstr ""
 "联系我们。"
 
 # | msgid "Close"
-#: hiddifypanel/templates/macros.html:28 hiddifypanel/templates/master.html:161
+#: hiddifypanel/templates/macros.html:29 hiddifypanel/templates/master.html:161
 msgid "close"
 msgstr "关闭"
 

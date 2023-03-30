@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-30 10:03+0200\n"
-"PO-Revision-Date: 2023-03-30 02:49-0500\n"
+"POT-Creation-Date: 2023-03-30 10:58+0200\n"
+"PO-Revision-Date: 2023-03-30 03:58-0500\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -14,11 +14,11 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "Generated-By: Babel 2.12.1\n"
 
-#: hiddifypanel/models/domain.py:97 hiddifypanel/panel/user/user.py:144
+#: hiddifypanel/models/domain.py:97 hiddifypanel/panel/user/user.py:145
 msgid "This domain does not exist in the panel!"
 msgstr "This domain does not exist in the panel!"
 
-#: hiddifypanel/panel/clean_ip.py:78
+#: hiddifypanel/panel/clean_ip.py:83
 #, fuzzy
 msgid "Error! auto cdn ip can not be find, please contact admin."
 msgstr "Error! auto cdn ip can not be find, please contact admin."
@@ -48,14 +48,14 @@ msgstr "Configs have been changed successfully."
 #: hiddifypanel/panel/admin/ChildAdmin.py:108
 #: hiddifypanel/panel/admin/DomainAdmin.py:131
 #: hiddifypanel/panel/admin/QuickSetup.py:117
-#: hiddifypanel/panel/hiddify.py:247
+#: hiddifypanel/panel/hiddify.py:248
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr ""
 "Domain can not be resolved! There is a problem in your domain. Please check "
 "your Domain configurations."
 
 # | msgid "0 - Last Day"
-#: hiddifypanel/panel/hiddify.py:273
+#: hiddifypanel/panel/hiddify.py:274
 msgid "0 - Last day"
 msgstr "0 - Last Day"
 
@@ -2423,8 +2423,13 @@ msgstr ""
 "<br />\n"
 "Then apply one of the following configs:"
 
+#: hiddifypanel/panel/user/templates/home/multi.html:386
+#, fuzzy
+msgid "Check again"
+msgstr "Check again"
+
 # | msgid "Turn off VPN"
-#: hiddifypanel/panel/user/templates/home/multi.html:384
+#: hiddifypanel/panel/user/templates/home/multi.html:389
 #, fuzzy
 msgid "Turn of VPN"
 msgstr "Turn off VPN"
@@ -2432,7 +2437,7 @@ msgstr "Turn off VPN"
 # | msgid ""
 # | "You should visit this page without VPN to use Auto CDN IP. Your "
 # | "country=%(your_country)s"
-#: hiddifypanel/panel/user/templates/home/multi.html:384
+#: hiddifypanel/panel/user/templates/home/multi.html:389
 #, fuzzy, python-format
 msgid ""
 "You should visit this page without VPN. Your country=%(your_country)s "
@@ -2844,7 +2849,7 @@ msgstr ""
 "Please contact us at <a href=\"mailto:hiddify@gmail.com\">hiddify@gmail.com</a> if you can help us."
 
 # | msgid "Close"
-#: hiddifypanel/templates/macros.html:28
+#: hiddifypanel/templates/macros.html:29
 #: hiddifypanel/templates/master.html:161
 msgid "close"
 msgstr "Close"

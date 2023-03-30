@@ -1,3 +1,4 @@
+from hiddifypanel.models import *
 from flask_babelex import gettext as _
 default_ips="""
 mcix.ircf.space		MCI
@@ -64,7 +65,8 @@ def get_real_user_ip_debug(user_ip=None):
     asn_dscr = f"{asnres.get('autonomous_system_organization','unknown')}" if asnres else "unknown"
     asn_short=get_asn_short_name(user_ip)
     country=get_country(user_ip)
-    return f'{user_ip} {country} {asn} {asn_short} {"ERROR" if asn_short=="unknown" else ""} fullname={asn_dscr}' 
+    default=get_host_base_on_asn(default_ips,asn_short).replace(".ircf.space","")
+    return f'{user_ip} {country} {asn} {asn_short} {"ERROR" if asn_short=="unknown" else ""} fullname={asn_dscr} default:{default}' 
 
 def get_real_user_ip():
     for header in ['CF-Connecting-IP','ar-real-ip']:
@@ -74,13 +76,16 @@ def get_real_user_ip():
     return request.remote_addr
 
 def get_host_base_on_asn(ips,asn_short):
+    if type(ips)==str:
+        ips=re.split('[ \t\r\n;,]+',ips.strip())
+
     if len(ips)%2 !=0:
         flash(_("Error! auto cdn ip can not be find, please contact admin."))
     for i in range(0,len(ips),2):
         if asn_short == ips[i+1]:
             print("selected ",ips[i],ips[i+1])
             return ips[i] 
-    return [ips][0]
+    return ips[0]
 
 def get_clean_ip(ips,resolve=False,default_asn=None):
     if not ips:
@@ -99,7 +104,7 @@ def get_clean_ip(ips,resolve=False,default_asn=None):
         selected_server=get_host_base_on_asn(ips, asn_short)
     else:
         selected_server=random.sample(ips, 1)[0]
-
+    print("selected_server",selected_server)
     if resolve:
         return hiddify.get_domain_ip(selected_server) or selected_server
     return selected_server
