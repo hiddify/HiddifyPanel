@@ -5,15 +5,21 @@
         <h2 class="headline text-danger">500</h2>
         <div class="error-content">
             <h3><i class="fas fa-exclamation-triangle text-danger"></i> {{_('Oops! Something went wrong.')}} Hiddify Panel {{version}}</h3>
+            %if has_update
+            <h3> {{_('This version of hiddify panel is outdated. Please update it from admin area.')}} </h3>
+            %else
             <p>
                 {{_('Please contact hiddify@gmail.com with the details in this page.')}}
             </p>
+            %endif
         
         </div>
     </div>
+    %if not has_update
     <pre class="ltr">
 {{error}}
 {{trace}}
                     </pre>
+    %endif
 </section>
 {%endblock%}

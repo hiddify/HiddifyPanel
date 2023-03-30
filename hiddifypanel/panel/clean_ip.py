@@ -32,7 +32,7 @@ except Exception as e:
 
 
 asn_map={
-    '58224':'ITC',
+    '58224':'MKH',
     '197207':'MCI',
     '12880':'ITC',
     '44244':'MTN',

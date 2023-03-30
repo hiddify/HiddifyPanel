@@ -5,7 +5,7 @@ import uuid
 from flask import g, send_from_directory, url_for
 import traceback
 import user_agents
-
+import hiddifypanel
 
 def init_app(app):
     app.jinja_env.globals['ConfigEnum'] = ConfigEnum
@@ -17,7 +17,10 @@ def init_app(app):
     def internal_server_error(e):
         if not hasattr(e, 'code') or e.code == 500:
             trace = traceback.format_exc()
-            return render_template('500.html', error=e, trace=trace), 500
+            import lastversion
+            last_version=lastversion.latest("hiddifypanel",at="pip")
+            has_update=last_version!=hiddifypanel.__version__
+            return render_template('500.html', error=e, trace=trace,has_update=has_update,last_version=last_version), 500
         # if e.code in [400,401,403]:
         #     return render_template('access-denied.html',error=e), e.code
 
