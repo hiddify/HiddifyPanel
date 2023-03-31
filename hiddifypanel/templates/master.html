@@ -59,7 +59,7 @@
 {% endblock %}
 
 </head>
-<body class="hold-transition layout-fixed {% block bodyclass %}sidebar-collapse{%endblock%}">
+<body class="hold-transition layout-fixed {{"dark-mode" if g.darkmode else ""}} {% block bodyclass %}sidebar-collapse{%endblock%}">
   <div id="splash_screen">
     <center>
     <img  src="{{url_for('static', filename='images/hiddify.png')}}"/>

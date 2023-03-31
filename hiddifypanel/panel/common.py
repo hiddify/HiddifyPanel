@@ -2,7 +2,7 @@ from flask import g, jsonify, abort, render_template, request, send_from_directo
 from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify
 import uuid
-from flask import g, send_from_directory, url_for
+from flask import g, send_from_directory, url_for,session
 import traceback
 import user_agents
 import hiddifypanel
@@ -20,7 +20,7 @@ def init_app(app):
             import lastversion
             last_version=lastversion.latest("hiddifypanel",at="pip")
             
-            has_update= f'{last_version}' != hiddifypanel.__version__
+            has_update= "dev" not in hiddifypanel.__version__ and f'{last_version}' != hiddifypanel.__version__
             return render_template('500.html', error=e, trace=trace,has_update=has_update,last_version=last_version), 500
         # if e.code in [400,401,403]:
         #     return render_template('access-denied.html',error=e), e.code
@@ -55,6 +55,12 @@ def init_app(app):
         g.user = None
         g.user_uuid = None
         g.is_admin = False
+
+        
+        if request.args.get('darkmode')!=None:
+            session['darkmode'] = request.args.get('darkmode','').lower()=='true'
+        g.darkmode=session.get('darkmode', False)
+        
         g.user_agent = user_agents.parse(request.user_agent.string)
         if g.user_agent.is_bot:
             abort(400, "invalid")

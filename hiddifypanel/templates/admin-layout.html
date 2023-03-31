@@ -9,7 +9,7 @@
 {% block nav_bar %}
 {% include "donation.html" %}
 <!-- Navbar -->
-<nav class="main-header navbar navbar-expand {{"navbar-dark" if hconfig(ConfigEnum.is_parent) else "bg-white navbar-light"}} border-bottom">
+<nav class="main-header navbar navbar-expand {{"navbar-dark" if hconfig(ConfigEnum.is_parent) or g.darkmode else "bg-white navbar-light"}} border-bottom">
   <!-- Left navbar links -->
 
 
@@ -21,14 +21,25 @@
   %endif
 </a>
   </div>
+  <ul class="navbar-nav ml-auto">
+    %if g.darkmode
+    <a class="nav-link btn" href="?darkmode=false">
+      <i class="fa-solid fa-sun"></i>
+    </a>
+  %else
+  <a class="nav-link btn" href="?darkmode=true">
+    <i class="fa-solid fa-moon"></i>
+  </a>
+  %endif
   % if not hconfig(ConfigEnum.is_parent)
         
-  <ul class="navbar-nav ml-auto">
+  
     <a class="nav-link btn btn-outline-secondary form_post" href="{{url_for('admin.Actions:apply_configs')}}">
       {{icon('solid','bolt','nav-icon')}} {{_('admin.Actions:apply_configs')}}
     </a>  
-  </ul>
+  
   %endif
+</ul>
 </nav>
 <!-- /.navbar -->
 
