@@ -31,14 +31,17 @@ def add_users_usage_uuid(uuids_bytes):
     dbusers_bytes={u:uuids_bytes.get(u.uuid,0) for u in users}
     add_users_usage(dbusers_bytes)
 
+def is_already_valid(uuid):
+    xray_api.get_xray_client().add_client(t,f'{uuid}', f'{uuid}@hiddify.com',protocol=protocol,flow='xtls-rprx-vision',alter_id=0,cipher='chacha20_poly1305')
     
 def add_users_usage(dbusers_bytes):
     if not hconfig(ConfigEnum.is_parent) and hconfig(ConfigEnum.parent_panel):
         hiddify_api.add_user_usage_to_parent(dbusers_bytes);
     res={}
     have_change=False
+    before_enabled_users=xray_api.get_enabled_users()
     for user,usage_bytes in dbusers_bytes.items():
-        user_active_before=is_user_active(user)
+        # user_active_before=is_user_active(user)
 
         if not user.last_reset_time or (user.last_reset_time-datetime.date.today()).days>0:
             reset_days=days_to_reset(user)
@@ -46,8 +49,7 @@ def add_users_usage(dbusers_bytes):
                 user.last_reset_time=datetime.date.today()
                 user.current_usage_GB=0
 
-        if not user_active_before:
-            if user.current_usage_GB < user.usage_limit_GB:
+        if before_enabled_users[user.uuid]==0  and is_user_active(user):
                 xray_api.add_client(user.uuid)
                 have_change=True
 
@@ -61,14 +63,14 @@ def add_users_usage(dbusers_bytes):
             if user.start_date==None:
                 user.start_date=datetime.date.today()
 
-        if user_active_before and not is_user_active(user):
+        if before_enabled_users[user.uuid]==1 and not is_user_active(user):
             xray_api.remove_client(user.uuid)
             have_change=True
             res[user.uuid]=f"{res[user.uuid]} !OUT of USAGE! Client Removed"
 
     db.session.commit()
-    if have_change:
-        hiddify.quick_apply_users()
+    # if have_change:
+    #     hiddify.quick_apply_users()
 
     return {"status": 'success', "comments":res}
 

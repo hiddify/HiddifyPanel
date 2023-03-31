@@ -6,6 +6,27 @@ def get_xray_client():
         return
     return xtlsapi.XrayClient('127.0.0.1', 10085)
     
+def get_enabled_users():
+    if hconfig(ConfigEnum.is_parent):
+        return
+    xray_client=get_xray_client()
+    users=User.query.all()
+    t="xtls"
+    protocol="vless"
+    enabled={}
+    for u in users:
+        uuid=u.uuid
+        try:
+            xray_client.add_client(t,f'{uuid}', f'{uuid}@hiddify.com',protocol=protocol,flow='xtls-rprx-vision',alter_id=0,cipher='chacha20_poly1305')
+            xray_client.remove_client(t,f'{uuid}@hiddify.com')
+            enabled[uuid]=0            
+        except xtlsapi.exceptions.EmailAlreadyExists as e:
+            enabled[uuid]=1
+        except Exception as e:
+            print(f"error {e}")
+            enabled[uuid]=e
+    return enabled
+
 def get_inbound_tags():
     if hconfig(ConfigEnum.is_parent):
         return
