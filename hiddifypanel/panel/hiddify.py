@@ -2,7 +2,7 @@ import socket
 from sqlalchemy.orm import Load
 from babel.dates import format_timedelta as babel_format_timedelta
 from hiddifypanel import xray_api
-from hiddifypanel.panel import usage
+
 from flask_babelex import gettext as __
 from flask_babelex import lazy_gettext as _
 import urllib
@@ -118,6 +118,7 @@ def get_available_proxies(child_id):
 def quick_apply_users():
     if hconfig(ConfigEnum.is_parent):
         return
+    from hiddifypanel.panel import usage
     usage.update_local_usage()
     return
     # for user in User.query.all():

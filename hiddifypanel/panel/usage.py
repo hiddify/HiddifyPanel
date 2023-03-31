@@ -4,7 +4,7 @@ to_gig_d = 1000*1000*1000
 import datetime
 
 from hiddifypanel.panel.database import db
-from hiddifypanel.panel import hiddify,hiddify_api
+from hiddifypanel.panel import hiddify_api #hiddify
 from hiddifypanel.models import *
 import urllib
 from flask_babelex import lazy_gettext as _
