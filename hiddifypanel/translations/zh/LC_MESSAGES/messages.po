@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-30 10:58+0200\n"
-"PO-Revision-Date: 2023-03-30 03:58-0500\n"
+"POT-Creation-Date: 2023-03-31 13:22+0200\n"
+"PO-Revision-Date: 2023-03-31 06:21-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -19,7 +19,7 @@ msgstr ""
 msgid "This domain does not exist in the panel!"
 msgstr "该域名在面板中不存在！"
 
-#: hiddifypanel/panel/clean_ip.py:83
+#: hiddifypanel/panel/clean_ip.py:85
 msgid "Error! auto cdn ip can not be find, please contact admin."
 msgstr ""
 
@@ -2360,20 +2360,23 @@ msgstr ""
 "link\">下载存储</一个>\n"
 "        </div>"
 
-# | msgid "fairVPN app"
+# | msgid "WingsX  and fairVPN "
 #: hiddifypanel/panel/user/templates/home/ios.html:21
 msgid "user.home.ios.others.title"
 msgstr "其他应用程序（shadowlink、fairVPN、napsternetv）"
 
 # | msgid ""
 # | "First install one of the following applications:\n"
-# | "<div class=\"btn-group\">\n"
 # | "\n"
+# | "<div class=\"btn-group\">\n"
+# | "\t<a
+# href=\"https://apps.apple.com/ca/app/wings-x/id6446119727?platform=iphone\"\n"
+# | "        class=\"btn btn-primary orig-link\">WingsX</a>\n"
+# | "</div>\n"
 # | "\t<a href=\"https://apps.apple.com/us/app/fair-vpn/id1533873488\"\n"
 # | "        class=\"btn btn-primary orig-link\">fair-vpn</a>\n"
 # | "    <a href=\"https://apps.apple.com/us/app/napsternetv/id1629465476\"\n"
 # | "        class=\"btn btn-primary orig-link\">napsternetv</a>\n"
-# | "</div>\n"
 # | "<br />\n"
 # | "Then apply one of the following configs:"
 #: hiddifypanel/panel/user/templates/home/ios.html:25
@@ -2594,6 +2597,12 @@ msgid "Oops! Something went wrong."
 msgstr "哎呀！ 出了些问题。"
 
 #: hiddifypanel/templates/500.html:9
+msgid ""
+"This version of hiddify panel is outdated. Please update it from admin "
+"area."
+msgstr ""
+
+#: hiddifypanel/templates/500.html:12
 msgid "Please contact hiddify@gmail.com with the details in this page."
 msgstr "请使用本页中的详细信息联系 hiddify@gmail.com。"
 
