@@ -49,7 +49,9 @@
 <!-- Main Sidebar Container -->
 <aside id="main-sidebar" class="main-sidebar {{ "sidebar-light-info" if hconfig(ConfigEnum.is_parent) else "sidebar-dark-primary"}}  elevation-4">
   <!-- Brand Logo -->
-  <img src="/FgYtlo3R3tlNFNUQc2SEgfxhBd/static/images/hiddify.png?user_secret=8795e000-dff3-4393-9258-1d0374092b40" alt="AdminLTE Logo" class="brand-image img-circle elevation-3 brand-link" style="width: 70%;opacity: .8;margin: auto;">
+  
+  <img src="{{url_for('static',filename='images/hiddify.png')}}" class="brand-image img-circle elevation-3 brand-link" style="width: 70%;opacity: .8;margin: auto;"/>
+  
   <a href="https://github.com/hiddify/hiddify-config/wiki" class="brand-link d-none">
     <img src="{{url_for('static',filename='images/hiddify.png')}}" alt="AdminLTE Logo"
       class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -119,7 +121,7 @@
           <a href="https://github.com/hiddify/hiddify-config/issues" target="_blank"
       class=" nav-link">{{icon('solid','circle-question','nav-icon')+_('admin.menu.support')}}</a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item d-none">
     <a href="https://t.me/hiddify" target="_blank"
       class="nav-link">{{icon('brands','telegram','nav-icon')+_('admin.menu.telegram')}}</a>
     </li>

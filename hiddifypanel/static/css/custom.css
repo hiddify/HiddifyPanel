@@ -98,11 +98,12 @@ legend {
   }
 
 
-  @media (min-width: 767.98px){
-    .content-wrapper{
-    margin-left:80px !important;
-  }
-  }
+  .content-wrapper{
+    margin-left:100px !important;
+}
+.sidebar-collapse .content-wrapper{
+    margin-left:100px !important;
+}
   .sub-sidebar {
     display: none;
   opacity: 0;
@@ -140,6 +141,9 @@ legend {
   }
 .sub-sidebar {
   margin-left: 80px!important;
+}
+.main-header.navbar-expand{
+  margin-left: 100px!important;
 }
 .sidebar {
 
