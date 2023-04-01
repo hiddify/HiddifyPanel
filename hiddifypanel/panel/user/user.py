@@ -6,7 +6,7 @@ import datetime
 from hiddifypanel.models import *
 from hiddifypanel.panel.database import db
 from hiddifypanel.panel import hiddify,clean_ip
-from hiddifypanel.panel.hiddify  import auth
+
 from . import link_maker
 from flask_classful import FlaskView,route
 import random

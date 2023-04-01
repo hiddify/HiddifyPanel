@@ -1,7 +1,6 @@
 import socket
 from sqlalchemy.orm import Load
 from babel.dates import format_timedelta as babel_format_timedelta
-from hiddifypanel import xray_api
 
 from flask_babelex import gettext as __
 from flask_babelex import lazy_gettext as _

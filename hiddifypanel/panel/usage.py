@@ -4,7 +4,7 @@ to_gig_d = 1000*1000*1000
 import datetime
 
 from hiddifypanel.panel.database import db
-from hiddifypanel.panel import hiddify_api #hiddify
+# from hiddifypanel.panel import hiddify_api #hiddify
 from hiddifypanel.models import *
 import urllib
 from flask_babelex import lazy_gettext as _
@@ -36,6 +36,7 @@ def is_already_valid(uuid):
     
 def add_users_usage(dbusers_bytes):
     if not hconfig(ConfigEnum.is_parent) and hconfig(ConfigEnum.parent_panel):
+        from hiddifypanel.panel import hiddify_api
         hiddify_api.add_user_usage_to_parent(dbusers_bytes);
     res={}
     have_change=False

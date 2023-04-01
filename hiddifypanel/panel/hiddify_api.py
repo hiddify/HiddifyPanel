@@ -1,5 +1,5 @@
-from hiddifypanel.panel import hiddify
 from hiddifypanel.models import *
+from hiddifypanel.panel import hiddify
 import json
 def sync_child_to_parent(parent_link=None):
     parent_link= parent_link or hconfig(ConfigEnum.parent_panel)

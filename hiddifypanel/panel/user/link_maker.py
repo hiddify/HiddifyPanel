@@ -222,7 +222,8 @@ def to_link(proxy):
         infos += f'&serviceName={proxy["grpc_service_name"]}&mode={proxy["grpc_mode"]}'
     if 'vless' == proxy['proto']:
         infos += "&encryption=none"
-    infos += "&fp="+proxy['fingerprint']
+    if proxy.get('fingerprint','none')!='none':
+        infos += "&fp="+proxy['fingerprint']
     if proxy['l3'] != 'quic':
         infos += '&headerType=None'  # if not quic
     if proxy['mode'] == 'Fake' or proxy['allow_insecure']:

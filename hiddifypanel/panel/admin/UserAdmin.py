@@ -231,5 +231,4 @@ class UserAdmin(AdminLTEModelView):
         hiddify.quick_apply_users()
     def after_model_delete(self,model):
         xray_api.remove_client(model.uuid)
-        
         hiddify.quick_apply_users()
