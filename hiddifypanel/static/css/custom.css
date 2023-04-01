@@ -98,13 +98,14 @@ legend {
   }
 
 
-  .content-wrapper{
-    margin-left:100px !important;
+  .content-wrapper, .main-header.navbar-expand, .main-footer{
+    margin-left: 100px!important;
 }
-.sidebar-collapse .content-wrapper{
-    margin-left:100px !important;
+.sidebar-collapse .content-wrapper, .sidebar-collapse .main-header.navbar-expand, .sidebar-collapse .main-footer{
+    margin-left:0px !important;
 }
-  .sub-sidebar {
+
+.sub-sidebar {
     display: none;
   opacity: 0;
 
