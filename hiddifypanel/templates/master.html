@@ -50,6 +50,7 @@
   % if get_locale()=='fa'
   <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap4-rtl.min.css')}}">
   <link rel="stylesheet" href="{{url_for('static',filename='css/adminlte.fa.css')}}">
+  <link rel="stylesheet" href="{{url_for('static',filename='css/custom-rtl.css')}}">
   {% block rtl_styles %}
   {% endblock %}  
   % endif
@@ -215,7 +216,7 @@
 <script src="{{ url_for('static', filename='js/adminlte.js' ) }}"></script>
 <script src="{{url_for('static',filename='js/qrcode.js')}}"></script>
 <!-- <script src="{{url_for('static',filename='js/demo.js')}}"></script> -->
-
+<script src="{{url_for('static',filename='js/custom.js')}}"></script>
 
 
 <script>

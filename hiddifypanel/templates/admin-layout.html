@@ -9,7 +9,7 @@
 {% block nav_bar %}
 {% include "donation.html" %}
 <!-- Navbar -->
-<nav class="main-header navbar navbar-expand {{"navbar-dark" if hconfig(ConfigEnum.is_parent) or g.darkmode else "bg-white navbar-light"}} border-bottom">
+<nav class="main-header hold-transition sidebar-mini navbar navbar-expand {{"navbar-dark" if hconfig(ConfigEnum.is_parent) or g.darkmode else "bg-white navbar-light"}} border-bottom">
   <!-- Left navbar links -->
 
 
@@ -47,15 +47,16 @@
 
 
 <!-- Main Sidebar Container -->
-<aside class="main-sidebar {{ "sidebar-light-info" if hconfig(ConfigEnum.is_parent) else "sidebar-dark-primary"}}  elevation-4">
+<aside id="main-sidebar" class="main-sidebar {{ "sidebar-light-info" if hconfig(ConfigEnum.is_parent) else "sidebar-dark-primary"}}  elevation-4">
   <!-- Brand Logo -->
-  <a href="https://github.com/hiddify/hiddify-config/wiki" class="brand-link">
+  <img src="/FgYtlo3R3tlNFNUQc2SEgfxhBd/static/images/hiddify.png?user_secret=8795e000-dff3-4393-9258-1d0374092b40" alt="AdminLTE Logo" class="brand-image img-circle elevation-3 brand-link" style="width: 70%;opacity: .8;margin: auto;">
+  <a href="https://github.com/hiddify/hiddify-config/wiki" class="brand-link d-none">
     <img src="{{url_for('static',filename='images/hiddify.png')}}" alt="AdminLTE Logo"
       class="brand-image img-circle elevation-3" style="opacity: .8">
-    <span class="brand-text font-weight-light">{{_("master.page-title")}}</span> <span class="badge">{{version}}</span>
+    <span class="brand-text font-weight-light">{{_("master.page-title")}}</span> <span class="d-none badge">{{version}}</span>
     % if False and  hconfig(ConfigEnum.is_parent)
     <br>
-    <span class="badge">{{_("Parent Panel")}}</span>
+    <!-- <span class="badge">{{_("Parent Panel")}}</span> -->
     %endif  
   </a>
   
@@ -68,36 +69,37 @@
       
       <!-- Sidebar Menu -->
       <nav class="mt-2">
-        <div class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <div class="n3av nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                  with font-awesome or any other icon font library -->
-                 {{ render_nav_item('admin.Dashboard:index', icon('solid','house','nav-icon')+(_("Parent Panel") if hconfig(ConfigEnum.is_parent) else _('admin.menu.home'))) }}
+                 {{ render_nav_item('admin.Dashboard:index', icon('solid','house','nav-icon')+(_("Parent Panel") if hconfig(ConfigEnum.is_parent) else _('admin.menu.home')),_use_li=True) }}
                 % if hconfig(ConfigEnum.telegram_bot_token) and bot
-                {{ render_nav_item("tg://resolve?domain="+bot.username+"&start=admin_"+hconfig(ConfigEnum.admin_secret), icon('brands','telegram','nav-icon')+_('Telegram Bot')) }}
+                {{ render_nav_item("tg://resolve?domain="+bot.username+"&start=admin_"+hconfig(ConfigEnum.admin_secret), icon('brands','telegram','nav-icon')+_('Telegram Bot'),_use_li=True) }}
                 %endif              
                 % if hconfig(ConfigEnum.parent_panel)
-                {{ render_nav_item(hconfig(ConfigEnum.parent_panel)+"/admin/user/", icon('solid','user','nav-icon')+_('admin.menu.user'),_badge=_('in parent panel') ) }}
+                {{ render_nav_item(hconfig(ConfigEnum.parent_panel)+"/admin/user/", icon('solid','user','nav-icon')+_('admin.menu.user'),_badge=_('in parent panel') ,_use_li=True) }}
                 %else
-                {{ render_nav_item('flask.user.index_view', icon('solid','user','nav-icon')+_('admin.menu.user')) }}
+                {{ render_nav_item('flask.user.index_view', icon('solid','user','nav-icon')+_('admin.menu.user'),_use_li=True) }}
                 %endif
-                % if not hconfig(ConfigEnum.is_parent)
-                 {{ render_nav_item('flask.domain.index_view', icon('solid','link','nav-icon')+_('admin.menu.domain')) }}
-                 {{ render_nav_item('admin.ProxyAdmin:index', icon('solid','arrow-down-up-lock','nav-icon')+_('admin.menu.proxy')) }}
-                 %endif
+                
                  % if hconfig(ConfigEnum.is_parent)
-                  {{ render_nav_item('flask.parentdomain.index_view', icon('solid','arrow-down-up-lock','nav-icon')+_('admin.menu.domain')) }}
+                  {{ render_nav_item('flask.parentdomain.index_view', icon('solid','arrow-down-up-lock','nav-icon')+_('admin.menu.domain'),_use_li=True) }}
                  %endif
 
                  
                   
                  
+                 <li class="nav-item {{'menu-open' if action_active else ''}}" >
+            
+                  <a id= href="#" data-target="#setting-sidebar"
+                    class="nav-link">{{icon('solid','gear','nav-icon')+_('admin.menu.config')}}</a>
+                
+                </li>
 
-                 {{ render_nav_item('admin.SettingAdmin:index',icon('solid','gear','nav-icon')+ _('admin.menu.config')) }}
                  % if hconfig(ConfigEnum.license)
-                 {{ render_nav_item('admin.CommercialSettings:index', icon('solid','dumpster','nav-icon')+_('Commercial Settings')) }}
                  %else
                  %if false
-                 {{ render_nav_item('admin.CommercialInfo:index', icon('solid','dumpster','nav-icon')+_('Commercial use')) }}
+                 {{ render_nav_item('admin.CommercialInfo:index', icon('solid','dumpster','nav-icon')+_('Commercial use'),_use_li=True) }}
                  %endif
                  %endif
 
@@ -105,33 +107,27 @@
           
           {% set action_active = True if request.endpoint and "Actions:" in request.endpoint else False %}
 
-          <li class="nav-item {{'menu-open' if action_active else ''}}">
+          <li class="nav-item {{'menu-open' if action_active else ''}}" >
             
-            <a id= href="#"
+            <a id= href="#" data-target="#action-sidebar"
               class="nav-link">{{icon('solid','suitcase','nav-icon')+_('admin.actions.title')}} <i class="right fas fa-angle-left"></i></a>
-            <ul class="nav nav-treeview">
-              {{ render_nav_item('admin.Actions:status',icon('solid','signal','nav-icon')+ _('admin.actions.status'), _use_li=True) }}
-              {{ render_nav_item('admin.Actions:viewlogs',icon('solid','inbox','nav-icon')+ _('admin.actions.viewlogs'), _use_li=True) }}
-              {{ render_nav_item('admin.Actions:apply_configs',icon('solid','bolt','nav-icon')+ _('admin.actions.apply_configs'), _use_li=True,extra_class="form_post") }}
-              {{ render_nav_item('admin.Actions:update', icon('solid','arrow-up-from-bracket','nav-icon')+_('admin.actions.update'), _use_li=True,extra_class="form_post") }}
-              % if not hconfig(ConfigEnum.is_parent)
-              {{ render_nav_item('admin.Actions:reinstall', icon('solid','rotate','nav-icon')+_('admin.actions.reinstall'), _use_li=True,extra_class="form_post") }}
-              {{ render_nav_item('admin.Actions:reset', icon('solid','power-off','nav-icon')+_('admin.actions.reset'), _use_li=True,extra_class="form_post") }}
-              % endif
-              <!-- {{ render_nav_item('admin.Actions:update_usage', icon('solid','charging-station','nav-icon')+_('User usage update'), _use_li=True) }} -->
-            </ul>
+          
           </li>
           
-          {{ render_nav_item('admin.Backup:index',icon('solid','floppy-disk','nav-icon')+ _('Backup'), _use_li=True) }}
           
+          <li class="nav-item">
           <a href="https://github.com/hiddify/hiddify-config/issues" target="_blank"
-      class="nav-item nav-link">{{icon('solid','circle-question','nav-icon')+_('admin.menu.support')}}</a>
-
+      class=" nav-link">{{icon('solid','circle-question','nav-icon')+_('admin.menu.support')}}</a>
+    </li>
+    <li class="nav-item">
     <a href="https://t.me/hiddify" target="_blank"
-      class="nav-item nav-link">{{icon('brands','telegram','nav-icon')+_('admin.menu.telegram')}}</a>
+      class="nav-link">{{icon('brands','telegram','nav-icon')+_('admin.menu.telegram')}}</a>
+    </li>
+    <li class="nav-item">
       <a class="nav-item nav-link" role="button" data-toggle="modal" data-target="#modal-donation">
         <i class="fa-solid fa-heart nav-icon"></i>&nbsp;{{_("Donation")}}
       </a>
+    </li>
         </div>
         
       </nav>
@@ -140,6 +136,47 @@
   </div>
   <!-- /.sidebar -->
 </aside>
+
+
+
+    <!-- Sub Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4 sub-sidebar" >
+      <!-- Sidebar -->
+      <div class="sidebar">
+
+        <!-- Sub Sidebar Menu -->
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" id="sub-sidebar">
+            
+            <div class="nav-item" id="action-sidebar">
+              {{ render_nav_item('admin.Actions:status',icon('solid','signal','nav-icon')+ _('admin.actions.status'), _use_li=True) }}
+              {{ render_nav_item('admin.Actions:viewlogs',icon('solid','inbox','nav-icon')+ _('admin.actions.viewlogs'), _use_li=True) }}
+              {{ render_nav_item('admin.Actions:apply_configs',icon('solid','bolt','nav-icon')+ _('admin.actions.apply_configs'), _use_li=True,extra_class="form_post") }}
+              {{ render_nav_item('admin.Actions:update', icon('solid','arrow-up-from-bracket','nav-icon')+_('admin.actions.update'), _use_li=True,extra_class="form_post") }}
+              % if not hconfig(ConfigEnum.is_parent)
+              {{ render_nav_item('admin.Actions:reinstall', icon('solid','rotate','nav-icon')+_('admin.actions.reinstall'), _use_li=True,extra_class="form_post") }}
+              {{ render_nav_item('admin.Actions:reset', icon('solid','power-off','nav-icon')+_('admin.actions.reset'), _use_li=True,extra_class="form_post") }}
+              % endif
+            </div>
+            <div class="nav-item" id="setting-sidebar">
+              % if not hconfig(ConfigEnum.is_parent)
+              
+                 {{ render_nav_item('flask.domain.index_view', icon('solid','link','nav-icon')+_('admin.menu.domain'),_use_li=True) }}
+                 {{ render_nav_item('admin.ProxyAdmin:index', icon('solid','arrow-down-up-lock','nav-icon')+_('admin.menu.proxy'),_use_li=True) }}
+                 %endif
+                 {{ render_nav_item('admin.SettingAdmin:index',icon('solid','gear','nav-icon')+ _('admin.menu.config'),_use_li=True) }}
+                 % if hconfig(ConfigEnum.license)
+                 {{ render_nav_item('admin.CommercialSettings:index', icon('solid','dumpster','nav-icon')+_('Commercial Settings'),_use_li=True) }}
+                %endif
+                {{ render_nav_item('admin.Backup:index',icon('solid','floppy-disk','nav-icon')+ _('Backup'), _use_li=True) }}
+            </div>
+          </ul>
+        </nav>
+        <!-- /.sub-sidebar-menu -->
+      </div>
+
+      <!-- /.sidebar -->
+    </aside>
 
 {% endblock %}
 

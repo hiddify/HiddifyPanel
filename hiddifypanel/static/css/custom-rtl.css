@@ -1,0 +1,19 @@
+/*new design*/
+
+@media (min-width: 767.98px){
+    .content-wrapper{
+      margin-left:0px !important;
+      margin-right:80px !important;
+  }
+}
+
+.sub-sidebar {
+    margin-left: 0px;
+    margin-right: 80px!important;
+}
+.sidebar{
+    direction:rtl;
+}
+.brand-image{
+    float: unset;
+}

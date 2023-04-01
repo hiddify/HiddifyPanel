@@ -88,3 +88,66 @@ legend {
     max-width: 100vw!important;
     min-width: 99vw!important;
   }
+
+
+
+  /*new design*/
+
+  .sidebar-mini.sidebar-collapse .main-sidebar {
+    width: 80px;
+  }
+
+
+  @media (min-width: 767.98px){
+    .content-wrapper{
+    margin-left:80px !important;
+  }
+  }
+  .sub-sidebar {
+    display: none;
+  opacity: 0;
+
+ transform: translateX(-20px);
+  transition: all 0.3s ease-in-out;
+  }
+#main-sidebar{
+    width: 100px;
+}
+
+#main-sidebar .nav-sidebar>.nav-item>.nav-link {
+    width: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 5px;
+  }
+  .nav-item{
+    list-style-type: none;
+  }
+  
+.sub-sidebar .nav-item .nav-link:hover {
+  background-color: #494e53 !important;
+  color: #fff !important;
+}
+.sub-sidebar .nav-item .nav-link {
+  background-color: #343a40 !important;
+  color: #fff !important;
+}
+
+#main-sidebar .nav-sidebar>.nav-item>.nav-link .nav-icon {
+    margin-bottom: 5px;
+  }
+.sub-sidebar {
+  margin-left: 80px!important;
+}
+.sidebar {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: calc(100vh - 30px); /* Subtract the height of the brand logo */
+  
+  /* padding-bottom: 30px; Half the height of the brand logo */
+}
+
