@@ -372,8 +372,9 @@ function show_video(file){
 is_ios=false
 %if g.user_agent.os.family=="iOS" 
 is_ios=true
-if (document.URL.indexOf("pwa")<0)
+% if not g.pwa
     show_prompt()
+%endif
 %endif
 window.addEventListener('beforeinstallprompt', (event) => {
   console.log("On before install")

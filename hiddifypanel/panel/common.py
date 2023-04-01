@@ -60,6 +60,10 @@ def init_app(app):
         if request.args.get('darkmode')!=None:
             session['darkmode'] = request.args.get('darkmode','').lower()=='true'
         g.darkmode=session.get('darkmode', False)
+
+        if request.args.get('pwa')!=None:
+            session['pwa'] = request.args.get('pwa','').lower()=='true'
+        g.pwa=session.get('pwa', False)
         
         g.user_agent = user_agents.parse(request.user_agent.string)
         if g.user_agent.is_bot:
