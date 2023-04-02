@@ -3,16 +3,17 @@ import CloudFlare
 
 
 def add_or_update_domain(domain,ip,dns_type="A",proxied=True):
+    
     if hconfig(ConfigEnum.cloudflare):
-        cf=CloudFlare(token=hconfig(ConfigEnum.cloudflare))
+        cf=CloudFlare.CloudFlare(token=hconfig(ConfigEnum.cloudflare))
         zone=get_zone(cf, domain)
         if zone:
             dns=get_dns(cf,zone,domain)        
             data={'name':domain[:-len(zone['name'])], 'type':dns_type, 'content':ip,'proxied':proxied}
             if dns:
-                cf.zones.dns_records.post(zones['id'],dns['id'],data)
+                cf.zones.dns_records.post(zone['id'],dns['id'],data=data)
             else:
-                cf.zones.dns_records.post(zones['id'],data)
+                cf.zones.dns_records.post(zone['id'],data=data)
             return True
     return False
 

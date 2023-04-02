@@ -115,9 +115,9 @@ class DomainAdmin(AdminLTEModelView):
         skip_check=False
         if hconfig(ConfigEnum.cloudflare):
             if model.mode==DomainType.direct:
-                cf_api.add_or_update_domain(domain, myip,"A",proxied=False)
+                cf_api.add_or_update_domain(model.domain, myip,"A",proxied=False)
             elif model.mode==DomainType.cdn or model.mode==DomainType.auto_cdn_ip:
-                cf_api.add_or_update_domain(domain, myip,"A",proxied=True)
+                cf_api.add_or_update_domain(model.domain, myip,"A",proxied=True)
             skip_check=True
         # elif model.mode==DomainType.auto_cdn_ip:
             

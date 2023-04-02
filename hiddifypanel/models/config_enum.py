@@ -117,7 +117,7 @@ class ConfigEnum(StrEnum):
           return cls.not_found #"key not found"
     def info(self):
         map = {
-            self.cloudflare:{'category': ConfigCategory.advanced , 'commercial':True},
+            self.cloudflare:{'category': ConfigCategory.advanced , 'commercial':False},
             self.license:{'category': ConfigCategory.advanced, 'commercial':True},
             self.proxy_path: {'category': ConfigCategory.too_advanced,'apply_mode':'apply','show_in_parent':True},
             self.path_vmess:{'category': ConfigCategory.too_advanced},
