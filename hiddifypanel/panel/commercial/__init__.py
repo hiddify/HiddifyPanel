@@ -1,14 +1,13 @@
-
-
 from .ProxyDetailsAdmin import ProxyDetailsAdmin
 from .CommercialSettings import CommercialSettings
 from hiddifypanel.panel import hiddify
 from hiddifypanel.models import  *
 from hiddifypanel.panel.database import db
 from hiddifypanel import Events
-from . import restapi
+
 commercial=False
 def init_app(app):
+    from . import restapi
     restapi.init_app(app) 
     return 
     
