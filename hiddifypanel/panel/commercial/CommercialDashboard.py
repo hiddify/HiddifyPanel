@@ -8,12 +8,12 @@ from flask_classful import FlaskView,route
 from hiddifypanel.models import *
 from hiddifypanel.panel.database import db
 from hiddifypanel.panel.hiddify import flash
-class Dashboard(FlaskView):
+class CommercialDashboard(FlaskView):
     def index(self):
-        
+        return  ""
         bot=None
         # if hconfig(ConfigEnum.license):
-        from hiddifypanel.panel.commercial.telegrambot import bot
+        from hiddifypanel.panel.telegrambot import bot
             
         if hconfig(ConfigEnum.is_parent):
             childs=Child.query.filter(Child.id!=0).all()

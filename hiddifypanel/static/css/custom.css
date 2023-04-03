@@ -129,11 +129,11 @@ legend {
   }
   
 .sub-sidebar .nav-item .nav-link:hover {
-  background-color: #494e53 !important;
+  background-color: #044a91 !important;
   color: #fff !important;
 }
 .sub-sidebar .nav-item .nav-link {
-  background-color: #343a40 !important;
+  
   color: #fff !important;
 }
 
@@ -156,3 +156,11 @@ legend {
   /* padding-bottom: 30px; Half the height of the brand logo */
 }
 
+[class*="sidebar-dark-"] {
+  background-image: linear-gradient(195deg,#135085,#0b2642);
+  /* background-color: #0b2642; */
+}
+.sub-sidebar {
+  background-image: linear-gradient(195deg,#185f9d,#135085)!important;
+ 
+}

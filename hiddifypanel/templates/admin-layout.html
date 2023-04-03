@@ -75,9 +75,7 @@
           <!-- Add icons to the links using the .nav-icon class
                  with font-awesome or any other icon font library -->
                  {{ render_nav_item('admin.Dashboard:index', icon('solid','house','nav-icon')+(_("Parent Panel") if hconfig(ConfigEnum.is_parent) else _('admin.menu.home')),_use_li=True) }}
-                % if hconfig(ConfigEnum.telegram_bot_token) and bot
-                {{ render_nav_item("tg://resolve?domain="+bot.username+"&start=admin_"+hconfig(ConfigEnum.admin_secret), icon('brands','telegram','nav-icon')+_('Telegram Bot'),_use_li=True) }}
-                %endif              
+                
                 % if hconfig(ConfigEnum.parent_panel)
                 {{ render_nav_item(hconfig(ConfigEnum.parent_panel)+"/admin/user/", icon('solid','user','nav-icon')+_('admin.menu.user'),_badge=_('in parent panel') ,_use_li=True) }}
                 %else
@@ -118,7 +116,7 @@
           
           
           <li class="nav-item">
-          <a href="https://github.com/hiddify/hiddify-config/issues" target="_blank"
+          <a href="https://github.com/hiddify/hiddify-config/wiki/{'Home_fa' if get_locale()=='fa' else ''}}}" target="_blank"
       class=" nav-link">{{icon('solid','circle-question','nav-icon')+_('admin.menu.support')}}</a>
     </li>
     <li class="nav-item d-none">
@@ -167,10 +165,14 @@
                  {{ render_nav_item('admin.ProxyAdmin:index', icon('solid','arrow-down-up-lock','nav-icon')+_('admin.menu.proxy'),_use_li=True) }}
                  %endif
                  {{ render_nav_item('admin.SettingAdmin:index',icon('solid','gear','nav-icon')+ _('admin.menu.config'),_use_li=True) }}
-                 % if hconfig(ConfigEnum.license)
+                 
+                 % if 1 or  hconfig(ConfigEnum.license)
                  {{ render_nav_item('admin.CommercialSettings:index', icon('solid','dumpster','nav-icon')+_('Commercial Settings'),_use_li=True) }}
                 %endif
                 {{ render_nav_item('admin.Backup:index',icon('solid','floppy-disk','nav-icon')+ _('Backup'), _use_li=True) }}
+                % if hconfig(ConfigEnum.telegram_bot_token) and g.bot
+                {{ render_nav_item("tg://resolve?domain="+g.bot.username+"&start=admin_"+hconfig(ConfigEnum.admin_secret), icon('brands','telegram','nav-icon')+_('Telegram Bot'),_use_li=True) }}
+                %endif              
             </div>
           </ul>
         </nav>

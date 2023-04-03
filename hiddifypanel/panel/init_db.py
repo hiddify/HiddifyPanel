@@ -83,6 +83,9 @@ def init_db():
     db.session.commit()
     return BoolConfig.query.all()
 
+def _v26():
+    add_config_if_not_exist(ConfigEnum.cloudflare, "")
+
 def _v25():
     add_config_if_not_exist(ConfigEnum.country, "ir")
     add_config_if_not_exist(ConfigEnum.parent_panel, "")

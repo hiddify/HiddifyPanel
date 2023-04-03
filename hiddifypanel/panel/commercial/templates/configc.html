@@ -21,7 +21,7 @@
 
 <style>
     fieldset{
-        background-color: initial;
+        background-color: #fff;
         background-clip: border-box;
         border: 1 solid rgba(0, 0, 0, 0.125);
         border-radius: 0.25rem;
@@ -32,7 +32,7 @@
         width: 100%;
     }
     legend{
-        background-color: initial;
+        background-color: white;
         margin: 0px;
     }
     legend+div>label {
@@ -63,10 +63,7 @@ fieldset {
 {{super()}}
 <script>
 // $("fieldset .form-group").hide()
-
-if ($('.form-group').length>20 || $('.invalid-feedback').length>0)
-    $("fieldset").filter(function() { return !($(this).children().children().is('.invalid-feedback')); }).find('.form-group').hide()
-
+ //$("fieldset").filter(function() { return !($(this).children().children().is('.invalid-feedback')); }).find('.form-group').hide()
 $("fieldset legend").click(function(e){
     $(this.parentNode).find('.form-group').toggle('fade')
     

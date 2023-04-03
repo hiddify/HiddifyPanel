@@ -92,4 +92,7 @@ def init_app(app):
             if "admin" in bare_path or "api" in bare_path:
                 abort(403, 'Access Denied')
 
+        if hconfig(ConfigEnum.telegram_bot_token):
+            from hiddifypanel.panel.commercial.telegrambot import bot
+            g.bot=bot
         # print(g.user)

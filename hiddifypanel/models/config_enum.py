@@ -117,8 +117,10 @@ class ConfigEnum(StrEnum):
           return cls.not_found #"key not found"
     def info(self):
         map = {
-            self.cloudflare:{'category': ConfigCategory.advanced , 'commercial':False},
-            self.license:{'category': ConfigCategory.advanced, 'commercial':True},
+            self.lang: {'category': ConfigCategory.branding,'show_in_parent':True, 'commercial':True},
+            self.admin_lang: {'category': ConfigCategory.admin,'show_in_parent':True,'commercial':True},
+            self.cloudflare:{'category': ConfigCategory.advanced , 'commercial':True},
+            self.license:{'category': ConfigCategory.hidden, 'commercial':True},
             self.proxy_path: {'category': ConfigCategory.too_advanced,'apply_mode':'apply','show_in_parent':True},
             self.path_vmess:{'category': ConfigCategory.too_advanced},
             self.path_vless:{'category': ConfigCategory.too_advanced},
@@ -130,20 +132,19 @@ class ConfigEnum(StrEnum):
             self.path_v2ray:{'category': ConfigCategory.hidden},
             self.last_hash:{'category': ConfigCategory.hidden},
 
-            self.utls: {'category': ConfigCategory.tls},
-            self.package_mode: {'category': ConfigCategory.advanced,'show_in_parent':True},
-            self.telegram_bot_token: {'category': ConfigCategory.advanced,'show_in_parent':True,'permium':True},
+            self.utls: {'category': ConfigCategory.advanced,'commercial':True},
+            self.package_mode: {'category': ConfigCategory.advanced,'show_in_parent':True,'commercial':True},
+            self.telegram_bot_token: {'category': ConfigCategory.advanced,'show_in_parent':True,'commercial':True},
             self.is_parent:{'category': ConfigCategory.hidden,'type':bool},
-            self.parent_panel:{'category': ConfigCategory.advanced, 'commercial':True},
+            self.parent_panel:{'category': ConfigCategory.hidden, 'commercial':True},
             self.unique_id:{'category': ConfigCategory.hidden,},
             self.cdn_forced_host:{'category': ConfigCategory.hidden,},
-            self.branding_title:{'category': ConfigCategory.branding,'show_in_parent':True,'permium':True},
-            self.branding_site:{'category': ConfigCategory.branding,'show_in_parent':True,'permium':True},
-            self.branding_freetext:{'category': ConfigCategory.branding,'show_in_parent':True,'permium':True},
+            self.branding_title:{'category': ConfigCategory.branding,'show_in_parent':True,'commercial':True},
+            self.branding_site:{'category': ConfigCategory.branding,'show_in_parent':True,'commercial':True},
+            self.branding_freetext:{'category': ConfigCategory.branding,'show_in_parent':True,'commercial':True},
             self.not_found:{'category': ConfigCategory.hidden},
-            self.admin_secret: {'category': ConfigCategory.admin,'show_in_parent':True},
-            self.lang: {'category': ConfigCategory.branding,'show_in_parent':True},
-            self.admin_lang: {'category': ConfigCategory.admin,'show_in_parent':True},
+            self.admin_secret: {'category': ConfigCategory.admin,'show_in_parent':True,'commercial':True},
+            
             self.tls_ports: {'category': ConfigCategory.tls,'apply_mode':'apply'},#tls
             self.http_ports: {'category': ConfigCategory.http,'apply_mode':'apply'},#http
             self.kcp_ports: {'category': ConfigCategory.hidden,'apply_mode':'apply'},
@@ -194,6 +195,7 @@ class ConfigEnum(StrEnum):
         }
         return map[self]
     def commercial(self):
+        print(self,self.info().get('commercial',False))
         return self.info().get('commercial',False)
     def category(self):
         return self.info()['category']
