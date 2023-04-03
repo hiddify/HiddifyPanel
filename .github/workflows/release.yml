@@ -135,6 +135,8 @@ jobs:
       env:
           CIBW_BEFORE_BUILD: pip install cython
           CIBW_ARCHS_LINUX: "x86_64"
+          CIBW_BUILD: "*manylinux*"
+          CIBW_SKIP: 'pp*'
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
