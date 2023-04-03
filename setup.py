@@ -39,7 +39,7 @@ setup(
     long_description_content_type="text/markdown",
     author="hiddify",
     include_package_data=True,
-    ext_modules=cythonize(["hiddifypanel/*.pyx","hiddifypanel/*/*.pyx","hiddifypanel/*/*/*.pyx","hiddifypanel/*/*/*/*.pyx"]),    
+    ext_modules=cythonize(["hiddifypanel/*.pyx","hiddifypanel/*/*.pyx","hiddifypanel/*/*/*.pyx"]),    
     # ext_modules=cythonize(["hiddifypanel/*.pyx"]),    
     
     packages=find_packages(exclude=["tests", ".github"]),
