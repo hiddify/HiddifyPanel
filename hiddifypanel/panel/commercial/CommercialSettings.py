@@ -131,7 +131,8 @@ def get_config_form():
     configs=[*boolconfigs,*strconfigs]
     # categories=sorted([ c for c in {c.key.category():1 for c in configs}])
     # dict_configs={cat:[c for c in configs if c.category==cat] for cat in categories}
-    class DynamicForm(FlaskForm):pass
+    class DynamicForm(FlaskForm):
+        pass
     is_parent=hconfig(ConfigEnum.is_parent)
     for cat in ConfigCategory:
         if cat=='hidden':continue
