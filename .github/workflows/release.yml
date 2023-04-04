@@ -36,117 +36,123 @@ jobs:
           body_path: release_message.md
 
 
-  # build_wheels:
-  #   name: Build wheel for cp${{ matrix.python }}-${{ matrix.platform_id }}
-  #   runs-on: ${{ matrix.os }}
-  #   needs: release
-
-  #   strategy:
-  #     # Ensure that a wheel builder finishes even if another fails
-  #     fail-fast: false
-  #     matrix:
-  #       include:
-  #         - os: ubuntu-latest
-  #           python: "3.8"
-  #           arch: aarch64
-  #           platform_id: "manylinux2014_aarch64"
-  #         - os: ubuntu-latest
-  #           python: "3.9"
-  #           arch: aarch64
-  #           platform_id: "manylinux2014_aarch64"
-  #         - os: ubuntu-latest
-  #           python: "3.10"
-  #           arch: aarch64
-  #           platform_id: "manylinux2014_aarch64"
-  #         - os: ubuntu-latest
-  #           python: "3.11"
-  #           arch: aarch64
-  #           platform_id: "manylinux2014_aarch64"
-
-
-  #         - os: ubuntu-latest
-  #           python: "3.8"
-  #           platform_id: "manylinux2014_x86_64"
-  #         - os: ubuntu-latest
-  #           python: "3.9"
-  #           platform_id: "manylinux2014_x86_64"
-  #         - os: ubuntu-latest
-  #           python: "3.10"
-  #           platform_id: "manylinux2014_x86_64"
-
-  #         - os: ubuntu-latest
-  #           python: "3.11"
-  #           platform_id: "manylinux2014_x86_64"
-  #   steps:
-  #   - uses: actions/checkout@v1
-  #   - name: Set up Python
-  #     uses: actions/setup-python@v1
-  #     with:
-  #       arch: ${{ matrix.arch }}
-  #       python-version: '${{ matrix.python }}'
-  #   - name: Install dependencies
-  #     run: |
-  #       python -m pip install --upgrade pip
-  #       pip install setuptools wheel twine cython
-  #   - name: Build and publish
-  #     env:
-  #       TWINE_USERNAME: __token__
-  #       TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
-  #     run: |
-  #       cibuildwheel --platform linux --archs ${{ matrix.arch }} setup.py
-  #       python3 setup.py bdist_wheel --plat-name=${{ matrix.platform_id }} build_ext --inplace
-  #       twine upload dist/*
-
-
   build_wheels:
     name: Build wheel for cp${{ matrix.python }}-${{ matrix.platform_id }}
     runs-on: ${{ matrix.os }}
     needs: release
 
     strategy:
-
-      # Ensure that a wheel builder finishes even if another fails
       fail-fast: false
       matrix:
         include:
-          - os: ubuntu-latest
-            # python: "3.8"
-            # arch: aarch64
-            # platform_id: "manylinux2014_aarch64"
-          # - os: ubuntu-latest
-          #   python: "3.9"
-          #   arch: aarch64
-          #   platform_id: "manylinux2014_aarch64"
-          # - os: ubuntu-latest
-          #   python: "3.10"
-          #   arch: aarch64
-          #   platform_id: "manylinux2014_aarch64"
-          # - os: ubuntu-latest
-          #   python: "3.11"
-          #   arch: aarch64
-          #   platform_id: "manylinux2014_aarch64"
+  #         - os: ubuntu-latest
+  #           python: "3.8"
+  #           arch: aarch64
+  #           platform_id: "manylinux2014_aarch64"
+  #         - os: ubuntu-latest
+  #           python: "3.9"
+  #           arch: aarch64
+  #           platform_id: "manylinux2014_aarch64"
+  #         - os: ubuntu-latest
+  #           python: "3.10"
+  #           arch: aarch64
+  #           platform_id: "manylinux2014_aarch64"
+  #         - os: ubuntu-latest
+  #           python: "3.11"
+  #           arch: aarch64
+  #           platform_id: "manylinux2014_aarch64"
 
+
+          - os: ubuntu-latest
+            python: "3.8"
+            platform_id: "manylinux2014_x86_64"
+          - os: ubuntu-latest
+            python: "3.9"
+            platform_id: "manylinux2014_x86_64"
+          - os: ubuntu-latest
+            python: "3.10"
+            platform_id: "manylinux2014_x86_64"
+
+          - os: ubuntu-latest
+            python: "3.11"
+            platform_id: "manylinux2014_x86_64"
     steps:
-    - uses: actions/checkout@v3
-    - name: convert to pyx
-      run: bash .github/cython_prepare.sh
-    - name: Build wheels
-      uses: pypa/cibuildwheel@v2.12.1
-      env:
-          CIBW_BEFORE_BUILD: pip install cython
-          CIBW_ARCHS_LINUX: "x86_64"
-          CIBW_BUILD: "*manylinux*"
-          CIBW_SKIP: 'pp*'
+    - uses: actions/checkout@v1
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        arch: ${{ matrix.arch }}
+        python-version: '${{ matrix.python }}'
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install setuptools wheel twine pyarmor==7.7.4          
-    - name: publish
+        pip install setuptools wheel twine cython pyarmor==8.1.dev4 
+    - name: Build and publish
       env:
         TWINE_USERNAME: __token__
         TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
       run: |
-        twine upload wheelhouse/*
+        # cibuildwheel --platform linux --archs ${{ matrix.arch }} setup.py
+        .github/pyarmor.sh
+        python3 setup.py bdist_wheel --plat-name=${{ matrix.platform_id }} build_ext --inplace
+        twine upload dist/*
+
+
+  # build_wheels:
+  #   name: Build wheel for cp${{ matrix.python }}-${{ matrix.platform_id }}
+  #   runs-on: ${{ matrix.os }}
+  #   needs: release
+
+  #   strategy:
+
+  #     # Ensure that a wheel builder finishes even if another fails
+  #     fail-fast: false
+  #     matrix:
+  #       include:
+  #         - os: ubuntu-latest
+  #           # python: "3.8"
+  #           # arch: aarch64
+  #           # platform_id: "manylinux2014_aarch64"
+  #         # - os: ubuntu-latest
+  #         #   python: "3.9"
+  #         #   arch: aarch64
+  #         #   platform_id: "manylinux2014_aarch64"
+  #         # - os: ubuntu-latest
+  #         #   python: "3.10"
+  #         #   arch: aarch64
+  #         #   platform_id: "manylinux2014_aarch64"
+  #         # - os: ubuntu-latest
+  #         #   python: "3.11"
+  #         #   arch: aarch64
+  #         #   platform_id: "manylinux2014_aarch64"
+
+  #   steps:
+  #   - uses: actions/checkout@v3
+  #   - name: convert to pyx
+  #     run: bash .github/cython_prepare.sh
+  #   - uses: actions/setup-python@v4
+  #     with:
+  #       python-version: '3.9'
+  #     run: |
+  #       pip install pyarmor==3.8.dev4 cythonize
+
+  #   - name: Build wheels
+  #     uses: pypa/cibuildwheel@v2.12.1
+  #     env:
+  #         CIBW_BEFORE_BUILD: "pip install cython pyarmor==8.1.dev4 &&bash .github/pyarmor.sh"
+  #         CIBW_ARCHS_LINUX: "x86_64"
+  #         CIBW_BUILD: "*manylinux*"
+  #         CIBW_SKIP: 'pp*'
+  #   - name: Install dependencies
+  #     run: |
+  #       python -m pip install --upgrade pip
+  #       pip install setuptools wheel twine   
+  #   - name: publish
+  #     env:
+  #       TWINE_USERNAME: __token__
+  #       TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+  #     run: |
+  #       twine upload wheelhouse/*
     # - uses: actions/upload-artifact@v3
     #   with:
     #       path: ./wheelhouse/*.whl      

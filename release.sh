@@ -7,32 +7,43 @@ if [ "$(id -u)" -ne 0 ]; then
 fi
 source .env
 
-do_release=1
+do_release=0
 if [[ $do_release == 1 ]];then
 make release 
 fi
 rm -rf build/; rm -rf dist/;
 rm -rf ../tmp_release
-cp -rf . ../tmp_release
-cd ../tmp_release 
 
 # $(find hiddifypanel/panel/api/  hiddifypanel/models/ hiddifypanel/panel/telegrambot/ -name "*.py")
-bash ../HiddifyPanel/.github/cython_prepare.sh
+# bash ../HiddifyPanel/.github/cython_prepare.sh
 
-export CIBW_SKIP='pp*'
-python3 setup.py  build_ext --inplace
-cibuildwheel --platform linux --archs aarch64
+
 # python3 setup.py bdist_wheel build_ext
 # exit 1
 # if [[ $? == "0" ]];then
+mkdir -p ../tmp_release
 export TWINE_USERNAME=__token__
 export TWINE_PASSWORD=$TWINE_PASSWORD
+source ~/anaconda3/etc/profile.d/conda.sh
 
-pip install setuptools wheel twine cython cibuildwheel
-
-twine upload wheelhouse/*
-rm dist/*
-rm build/*
+for pythonversion in 3.8 3.9 3.10 3.11;do
+       
+       cp -rf . ../tmp_release/$pythonversion
+       pushd ../tmp_release/$pythonversion
+       
+       conda activate py$pythonversion
+       pip install setuptools wheel twine cython pyarmor==8.1.dev4
+       .github/pyarmor.sh
+       echo "hhhhhhhhhhhhhhhhha" $pythonversion
+       python3 --version
+       echo $(pwd)
+       ls
+       twine upload wheelhouse/*
+       rm dist/*
+       rm build/*
+       popd
+done
+conda deactivate
 
 
 # fi
