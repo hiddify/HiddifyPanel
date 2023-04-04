@@ -7,7 +7,7 @@ if [ "$(id -u)" -ne 0 ]; then
 fi
 source .env
 
-do_release=0
+do_release=1
 if [[ $do_release == 1 ]];then
 make release 
 fi

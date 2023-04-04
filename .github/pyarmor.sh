@@ -6,7 +6,7 @@ mv VERSION hiddifypanel/VERSION
 files=$(find . -name '*.py')
 for f in  $files ;do 
     echo $l $f
-    sed -i "s|Pyarmor 8.1.0 (trial), 000000,||g"
+    sed -i "s|Pyarmor 8.1.0 (trial), 000000,||g" $f
     cat $DI/comment.txt>> $f
 done
 
