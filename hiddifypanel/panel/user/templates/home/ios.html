@@ -29,22 +29,6 @@
           class="btn btn-light orig-link"> {{_('user.home.allconfig.link-configs')}} b64</a>
       </div>
       <br>
-<!--       
-      % for d in domains
-      %for t in (['http','tls'] if hconfig(ConfigEnum.http_proxy_enable,d.child_id) else ['tls'])
-      %for port in hconfig(ConfigEnum.http_ports if t=='http' else ConfigEnum.tls_ports,d.child_id).split(',')
-
-      <h5 ><span class="badge badge-success">{{d.mode}}</span> <p class="ltr badge">{{d.domain}}</p></h5>
-      % for type in link_maker.all_proxies(d.child_id)
-      {% set pinfo=link_maker.make_proxy(type,d,phttp=phttp,ptls=ptls) %}
-      % if pinfo!=None
-      <div class="btn-group"><a href='{{link_maker.to_link(pinfo)}}' class="btn btn-light orig-link">{{pinfo['name'].replace("_"," ")}}</a></div>
-      % endif
-      % endfor
-      % endfor
-      % endfor
-      % endfor
- -->
     </details>
     
 </div>

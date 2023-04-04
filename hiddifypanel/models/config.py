@@ -38,26 +38,28 @@ class StrConfig(db.Model, SerializerMixin):
 
 
 def hconfig(key: ConfigEnum,child_id=0):
-    
+    value=None
     try:
         str_conf = StrConfig.query.filter(StrConfig.key == key, StrConfig.child_id==child_id).first()
         if str_conf:
-            return str_conf.value
-        bool_conf = BoolConfig.query.filter(BoolConfig.key == key, BoolConfig.child_id==child_id).first()
-        if bool_conf:
-            return bool_conf.value
-        # if key == ConfigEnum.ssfaketls_fakedomain:
-        #     return hdomain(DomainType.ss_faketls)
-        # if key == ConfigEnum.telegram_fakedomain:
-        #     return hdomain(DomainType.telegram_faketls)
-        # if key == ConfigEnum.fake_cdn_domain:
-        #     return hdomain(DomainType.fake_cdn)
-        print(f'{key} not found ')
+            value= str_conf.value
+        else:
+            bool_conf = BoolConfig.query.filter(BoolConfig.key == key, BoolConfig.child_id==child_id).first()
+            if bool_conf:
+                value= bool_conf.value
+            else:
+                # if key == ConfigEnum.ssfaketls_fakedomain:
+                #     return hdomain(DomainType.ss_faketls)
+                # if key == ConfigEnum.telegram_fakedomain:
+                #     return hdomain(DomainType.telegram_faketls)
+                # if key == ConfigEnum.fake_cdn_domain:
+                #     return hdomain(DomainType.fake_cdn)
+                print(f'{key} not found ')
     except:
         print(f'{key} error!')
         raise
 
-    return None
+    return value
 
 
 def set_hconfig(key: ConfigEnum,value,child_id=0,commit=True):

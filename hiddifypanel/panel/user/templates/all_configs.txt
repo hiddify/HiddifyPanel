@@ -12,9 +12,9 @@
 ####################################
 % for type in link_maker.all_proxies(d.child_id)
 % set pinfo=link_maker.make_proxy(type,d,phttp=phttp,ptls=ptls)
-% if pinfo!=None
+% if 'msg' not in pinfo
 % set link=link_maker.to_link(pinfo)
-% if link!=None
+% if 'msg' not in link
 {{''}}
 # {{pinfo["name"]}} {{d.alias or d.domain}}
 {{link}}

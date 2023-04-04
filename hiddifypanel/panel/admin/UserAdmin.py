@@ -148,11 +148,11 @@ class UserAdmin(AdminLTEModelView):
 
     def _online_formatter(view, context, model, name):
         if not model.last_online:
-            return "-"
+            return Markup("-")
         diff=model.last_online-datetime.datetime.now()
         
         if diff.days<-1000:
-            return "-"
+            return Markup("-")
         
         state="danger" if diff.days<-3 else ("success" if diff.days>=-1 else "warning")
         return Markup(f"<span class='badge badge-{state}'>{hiddify.format_timedelta(diff,granularity='min')}</span>")

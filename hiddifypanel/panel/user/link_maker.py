@@ -56,17 +56,17 @@ def make_proxy(proxy, domain_db, phttp=80, ptls=443):
     elif l3 == "tuic":
         port = hconfigs[ConfigEnum.tuic_port].split(",")[0]
 
-    if not port:
-        return
     name = proxy.name
+    if not port:
+        return {'name': name, 'msg': "port not defined",'type':'error', 'proto': proxy.proto}
 
     is_cdn = ProxyCDN.CDN in proxy.cdn
     if is_cdn and domain_db.mode not in  [DomainType.cdn,DomainType.auto_cdn_ip]:
         # print("cdn proxy not in cdn domain", domain, name)
-        return
+        return {'name': name, 'msg': "cdn proxy not in cdn domain",'type':'debug', 'proto': proxy.proto}
     if not is_cdn and domain_db.mode in  [DomainType.cdn,DomainType.auto_cdn_ip]:
         # print("not cdn proxy  in cdn domain", domain, name, proxy.cdn)
-        return
+        return {'name': name, 'msg': "not cdn proxy  in cdn domain",'type':'debug', 'proto': proxy.proto}
 
     cdn_forced_host = domain_db.cdn_ip or domain_db.domain
 
@@ -92,28 +92,28 @@ def make_proxy(proxy, domain_db, phttp=80, ptls=443):
     }
 
     if base["proto"] == "trojan" and "tls" not in l3:
-        return
+        return {'name': name, 'msg': "trojan but not tls",'type':'warning', 'proto': proxy.proto}
 
     if l3 == "http" and "XTLS" in proxy.transport:
-        return None
+        return {'name': name, 'msg': "http and xtls???",'type':'warning', 'proto': proxy.proto}
     if l3 == "http" and base["proto"] in ["ss", "ssr"]:
-        return
+        return {'name': name, 'msg': "http and ss or ssr???",'type':'warning', 'proto': proxy.proto}
     if proxy.proto in ProxyProto.vmess:
         base['cipher']="chacha20-poly1305"
     if "Fake" in proxy.cdn:
         if not hconfigs[ConfigEnum.domain_fronting_domain]:
-            return
+            return {'name': name, 'msg': "no domain_fronting_domain",'type':'debug', 'proto': proxy.proto}
         if l3 == "http" and not hconfigs[ConfigEnum.domain_fronting_http_enable]:
-            return
+            return {'name': name, 'msg': "no http in domain_fronting_domain",'type':'debug', 'proto': proxy.proto}
         if l3 == "tls" and not hconfigs[ConfigEnum.domain_fronting_tls_enable]:
-            return
+            return {'name': name, 'msg': "no tls in domain_fronting_domain",'type':'debug', 'proto': proxy.proto}
         base['server'] = hconfigs[ConfigEnum.domain_fronting_domain]
         base['sni'] = hconfigs[ConfigEnum.domain_fronting_domain]
         # base["host"]=domain
         base['mode'] = 'Fake'
 
     elif l3 == "http" and not hconfigs[ConfigEnum.http_proxy_enable]:
-        return None
+        return {'name': name, 'msg': "http but http is disabled ",'type':'debug', 'proto': proxy.proto}
     path = {
         'vless': f'{hconfigs[ConfigEnum.path_vless]}',
         'trojan': f'{hconfigs[ConfigEnum.path_trojan]}',
@@ -167,7 +167,7 @@ def make_proxy(proxy, domain_db, phttp=80, ptls=443):
         base['transport'] = 'tcp'
         base['alpn'] = 'http/1.1'
         return base
-    return {'name': name, 'error': True, 'proto': proxy.proto}
+    return {'name': name, 'msg': 'not valid','type':'error', 'proto': proxy.proto}
 
 
 def to_link(proxy):
@@ -202,7 +202,7 @@ def to_link(proxy):
         return pbase64(f'vmess://{json.dumps(vmess_data)}')
     if proxy['proto'] == "ssr":
         baseurl = f'ssr://proxy["encryption"]:{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}'
-        return None
+        return baseurl
     if proxy['proto'] in ['ss', 'v2ray']:
         baseurl = f'ss://proxy["encryption"]:{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}'
         if proxy['mode'] == 'faketls':
@@ -238,26 +238,27 @@ def to_link(proxy):
         return f'{baseurl}?security=none{infos}'
     if 'tls' in proxy['l3']:
         return f'{baseurl}?security=tls{infos}'
-
+    return proxy
 
 def to_clash_yml(proxy):
     return yaml.dump(to_clash(proxy))
 
 
 def to_clash(proxy, meta_or_normal):
+    name=proxy['name']
     if proxy['l3'] == "kcp":
-        return
+        return {'name': name, 'msg': "clash not support kcp",'type':'debug'}
     if proxy.get('flow', '') == "xtls-rprx-vision":
-        return
+        return {'name': name, 'msg': "vision not supported",'type':'debug'}
     if meta_or_normal == "normal":
         if proxy['proto'] == "vless":
-            return
+            return {'name': name, 'msg': "vless not supported in clash",'type':'debug'}
         if proxy['l3'] == "xtls":
-            return
+            return {'name': name, 'msg': "xtls not supported in clash",'type':'debug'}
         if proxy['transport'] == "shadowtls":
-            return
+            return {'name': name, 'msg': "shadowtls not supported in clash",'type':'debug'}
     if proxy['l3']==ProxyL3.tls_h2 and proxy['proto'] in [ProxyProto.vmess,ProxyProto.vless] and proxy['dbe'].cdn==ProxyCDN.direct:
-        return
+        return {'name': name, 'msg': "bug tls_h2 vmess and vless in clash meta",'type':'warning'}
     base = {}
     # vmess ws
     base["name"] = f"""{proxy["name"]} {proxy['extra_info']} {proxy['port']} {proxy["dbdomain"].id}"""
@@ -379,9 +380,9 @@ def get_clash_config_names(meta_or_normal, domains):
 
                 for type in all_proxies(d.child_id):
                     pinfo = make_proxy(type, d, phttp=phttp, ptls=ptls)
-                    if pinfo != None:
+                    if 'msg' not in pinfo:
                         clash = to_clash(pinfo, meta_or_normal)
-                        if clash:
+                        if 'msg' not in clash:
                             allp.append(clash['name'])
 
     return yaml.dump(allp, sort_keys=False)
@@ -407,9 +408,9 @@ def get_all_clash_configs(meta_or_normal, domains):
 
                 for type in all_proxies(d.child_id):
                     pinfo = make_proxy(type, d, phttp=phttp, ptls=ptls)
-                    if pinfo != None:
+                    if 'msg' not in pinfo:
                         clash = to_clash(pinfo, meta_or_normal)
-                        if clash:
+                        if 'msg' not in clash:
                             allp.append(clash)
 
     return yaml.dump({"proxies": allp}, sort_keys=False)

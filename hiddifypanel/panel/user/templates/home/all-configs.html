@@ -74,7 +74,7 @@
 %set ptls=port if t=='tls' else None
 % for type in link_maker.all_proxies(d.child_id)
 % set pinfo=link_maker.make_proxy(type,d,phttp=phttp,ptls=ptls)
-% if pinfo!=None
+% if 'msg' not in  pinfo
     <tr>
       <td>
         <div class="btn-group"><a href='{{link_maker.to_link(pinfo)}}'

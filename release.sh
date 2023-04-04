@@ -34,11 +34,18 @@ for pythonversion in 3.8 3.9 3.10 3.11;do
        conda activate py$pythonversion
        pip install setuptools wheel twine cython pyarmor==8.1.dev4
        .github/pyarmor.sh
+       ls .github/
        echo "hhhhhhhhhhhhhhhhha" $pythonversion
        python3 --version
+       if [ $do_release == 0 ];then
+              pip install .
+              flask run
+              exit
+       fi
        echo $(pwd)
-       ls
-       twine upload wheelhouse/*
+       # ls
+       python3 setup.py bdist_wheel --plat-name=manylinux2014_aarch64 build_ext --inplace
+       twine upload dist/*
        rm dist/*
        rm build/*
        popd
