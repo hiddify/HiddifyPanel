@@ -44,7 +44,7 @@ def add_users_usage(dbusers_bytes):
     for user,usage_bytes in dbusers_bytes.items():
         # user_active_before=is_user_active(user)
 
-        if not user.last_reset_time or (user.last_reset_time-datetime.date.today()).days>0:
+        if not user.last_reset_time or (datetime.date.today()-user.last_reset_time).days>0:
             reset_days=days_to_reset(user)
             if reset_days==0:
                 user.last_reset_time=datetime.date.today()
