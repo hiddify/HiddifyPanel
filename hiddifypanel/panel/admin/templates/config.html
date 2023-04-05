@@ -8,7 +8,7 @@
 
 
 <div class="card">
-    <div class="card-header">{{_("admin.config.title")}}
+    <div class="card-header"><input id="search_settings" type="text" class="form-control" placeholder="{{_("Search Settings")}}">
     </div>
     <div class="card-body">
         <div class="row">
@@ -68,9 +68,49 @@ if ($('.form-group').length>20 || $('.invalid-feedback').length>0)
     $("fieldset").filter(function() { return !($(this).children().children().is('.invalid-feedback')); }).find('.form-group').hide()
 
 $("fieldset legend").click(function(e){
-    $(this.parentNode).find('.form-group').toggle('fade')
+    var has_hidden=$(this.parentNode).find('.form-group:hidden')
+    if (has_hidden.length>0)
+        $(this.parentNode).find('.form-group').show('fade')
+    else
+        $(this.parentNode).find('.form-group').hide('fade')
     
     
 })
+
+$(document).ready(function() {
+  $('#search_settings').on('input', function() {
+    var searchString = $(this).val().toLowerCase();
+    $('fieldset').each(function() {
+        field=$(this)
+        var fieldfoundMatch = false;
+        field.find('.form-group').each(function() {
+        var $labels = $(this).find('label');
+        var foundMatch = false;
+        $labels.each(function() {
+            var labelText = $(this).text().toLowerCase();
+            if (labelText.indexOf(searchString) !== -1) {
+            foundMatch = true;
+            fieldfoundMatch= true;
+            return false; // break out of loop early
+            }
+        });
+        if (foundMatch) {
+            $(this).show();
+        } else {
+            $(this).hide();
+        }
+      
+        });
+        if (fieldfoundMatch) {
+            $(this).show();
+        } else {
+            $(this).hide();
+        }
+    });
+    
+  });
+});
+
+
 </script>
 %endblock

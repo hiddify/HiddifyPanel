@@ -80,7 +80,7 @@
         <div class="btn-group"><a href='{{link_maker.to_link(pinfo)}}'
             class="btn btn-light orig-link">{{pinfo["name"].replace("_", " ")}}</a></div>
       </td>
-      <td><span class="badge badge-danger">{{pinfo["mode"]}}</span></td>
+      <td><span class="badge badge-danger"> {% if d.has_auto_ip  %}Auto {%endif%}{{pinfo["mode"]}}</span></td>
       <td><span class="badge ltr">{{d.domain}}</span></td>
       <td><span class="badge badge-info">{{pinfo["proto"]}}</span></td>
       <td><span class="badge badge-warning">{{pinfo['transport']}}</span></td>

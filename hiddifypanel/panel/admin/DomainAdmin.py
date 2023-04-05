@@ -48,7 +48,7 @@ class DomainAdmin(AdminLTEModelView):
     form_args = {
         
         'domain': {
-            'validators': [Regexp(r'^([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})$', message=__("Should be a valid domain"))]
+            'validators': [Regexp(r'^(\*\.)?([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})$', message=__("Should be a valid domain"))]
         },
         "cdn_ip": {
             'validators': [Regexp(r"(((((25[0-5]|(2[0-4]|1\d|[1-9]|)\d).){3}(25[0-5]|(2[0-4]|1\d|[1-9]|)\d))|^([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,}))[ \t\n,;]*\w{3}[ \t\n,;]*)*", message=__("Invalid IP or domain"))]
@@ -112,7 +112,12 @@ class DomainAdmin(AdminLTEModelView):
                         _("You have used this domain in: ")+_(f"config.{c}.label"))
         myip = hiddify.get_ip(4)
         
-        skip_check=False
+        if "*" in model.domain and model.mode not in [DomainType.cdn,DomainType.auto_cdn_ip]:
+            raise ValidationError(
+                    _("Domain can not be resolved! there is a problem in your domain"))
+
+            
+        skip_check="*" in model.domain
         if hconfig(ConfigEnum.cloudflare):
             if model.mode==DomainType.direct:
                 cf_api.add_or_update_domain(model.domain, myip,"A",proxied=False)
@@ -123,6 +128,8 @@ class DomainAdmin(AdminLTEModelView):
             
         #     raise ValidationError(_("You have to add your cloudflare api key to use this feature: "))
 
+        
+            
 
         dip = hiddify.get_domain_ip(model.domain)
         if not skip_check:
@@ -131,7 +138,7 @@ class DomainAdmin(AdminLTEModelView):
                     _("Domain can not be resolved! there is a problem in your domain"))
 
             
-            if model.mode == DomainType.direct and myip != dip:
+            if model.mode == DomainType.direct and (myip != dip and dip != hiddify.get_ip(6)):
                 raise ValidationError(
                     _("Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode", server_ip=myip, domain_ip=dip))
 

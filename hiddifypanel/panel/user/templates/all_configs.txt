@@ -8,7 +8,7 @@
 %set phttp=port if t=='http' else None
 %set ptls=port if t=='tls' else None
 ####################################
-## {{d.mode}}  {{d.alias or d.domain}}  {{t}}:{{port}}
+## {% if d.has_auto_ip  %}Auto {%endif%} {{d.mode}}  {{d.alias or d.domain}}  {{t}}:{{port}}
 ####################################
 % for type in link_maker.all_proxies(d.child_id)
 % set pinfo=link_maker.make_proxy(type,d,phttp=phttp,ptls=ptls)
@@ -16,7 +16,7 @@
 % set link=link_maker.to_link(pinfo)
 % if 'msg' not in link
 {{''}}
-# {{pinfo["name"]}} {{d.alias or d.domain}}
+# {{pinfo["name"]}} {{d.alias or d.domain}} 
 {{link}}
 %endif
 %endif

@@ -88,8 +88,8 @@
 
                  
                   
-                 
-                 <li class="nav-item {{'menu-open' if action_active else ''}}" >
+                 {% set settings_active = False if request.endpoint and ("user" in request.endpoint or "Actions:" in request.endpoint or "Dashboard" in request.endpoint) else True %}
+                 <li class="nav-item {{'menu-open' if settings_active else ''}}" >
             
                   <a id= href="#" data-target="#setting-sidebar"
                     class="nav-link">{{icon('solid','gear','nav-icon')+_('admin.menu.config')}}</a>

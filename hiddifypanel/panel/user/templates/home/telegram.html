@@ -14,7 +14,7 @@
 {{_('user.home.telegram.description',link="") }}
 
 % for d in domains:
-    % if d.mode !='cdn'
+    % if d.mode !='cdn' and d.mode !='auto_cdn_ip'
         {{tg_proxy_btn(d)}}
     % endif
 % endfor

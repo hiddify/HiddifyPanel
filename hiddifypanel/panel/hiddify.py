@@ -217,11 +217,14 @@ def get_user_link(uuid, domain, mode=''):
     res = ""
     if mode == "multi":
         res += "<div class='btn-group'>"
+    d=domain.domain
+    if "*" in d:
+        d=d.replace("*",get_random_string(5,15))
 
-    link = f"https://{domain.domain}/{proxy_path}/{uuid}/"
+    link = f"https://{d}/{proxy_path}/{uuid}/"
     link_multi = f"{link}multi"
-    if mode == 'new':
-        link = f"{link}new"
+    # if mode == 'new':
+    #     link = f"{link}new"
     text = domain.domain
 
     if hasattr(domain, 'mode') and domain.mode == DomainType.cdn:
@@ -280,7 +283,7 @@ def format_timedelta(delta, add_direction=True,granularity="days"):
         return babel_format_timedelta(delta, threshold=1, add_direction=add_direction, locale=locale)
     if delta.days < 60:
         return babel_format_timedelta(delta, granularity="day", threshold=10, add_direction=add_direction, locale=locale)
-
+    return delta.days
 
 
 
@@ -519,3 +522,12 @@ def set_db_from_json(json_data, override_child_id=None, set_users=True, set_doma
 
 
 
+
+def get_random_string(min_=10,max_=30):
+    # With combination of lower and upper case
+    import string
+    import random
+    length=random.randint(min_, max_)
+    characters = string.ascii_letters + string.digits
+    result_str = ''.join(random.choice(characters) for i in range(length))
+    return result_str

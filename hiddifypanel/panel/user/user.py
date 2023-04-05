@@ -172,11 +172,14 @@ def get_common_data(user_uuid,mode,no_domain=False,filter_domain=None):
     has_auto_cdn=False
     for d in domains:
         db.session.expunge(d)
+        d.has_auto_ip=False
         if d.mode==DomainType.auto_cdn_ip or d.cdn_ip:
             has_auto_cdn=True
-            d.cdn_ip=clean_ip.get_clean_ip(d.cdn_ip, d.mode==DomainType.auto_cdn_ip,default_asn)
+            d.has_auto_ip=d.mode==DomainType.auto_cdn_ip or "MTN" in d.cdn
+            d.cdn_ip=clean_ip.get_clean_ip(d.cdn_ip,d.mode==DomainType.auto_cdn_ip ,default_asn)
             print("autocdn ip mode ",d.cdn_ip)
-
+        if "*" in d.domain:
+            d.domain=d.domain.replace("*",hiddify.get_random_string(5,15))
 
     
     package_mode_dic={
@@ -217,7 +220,7 @@ def get_common_data(user_uuid,mode,no_domain=False,filter_domain=None):
         'domains':domains,
         "bot":bot,
         "db_domain":db_domain,
-        "telegram_enable":hconfig(ConfigEnum.telegram_enable) and any([d for d in domains if d.mode!=DomainType.cdn ]),
+        "telegram_enable":hconfig(ConfigEnum.telegram_enable) and any([d for d in domains if d.mode!=DomainType.cdn and d.mode!=DomainType.auto_cdn_ip ]),
         "ip":user_ip,
         "ip_debug":clean_ip.get_real_user_ip_debug(user_ip),
         "asn":clean_ip.get_asn_short_name(user_ip),
