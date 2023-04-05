@@ -228,6 +228,7 @@ class UserAdmin(AdminLTEModelView):
     #     return is_valid()
         
     def after_model_change(self,form, model, is_created):
+        model.package_days=min(model.package_days,10000)
         hiddify.quick_apply_users()
     def after_model_delete(self,model):
         xray_api.remove_client(model.uuid)

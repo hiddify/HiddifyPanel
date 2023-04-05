@@ -67,7 +67,7 @@ def remaining_days(u):
         return -1
     if u.start_date:
         return u.package_days - (datetime.date.today() - u.start_date).days
-    return u.package_days 
+    return min(u.package_days ,10000)
 
 
 package_mode_dic = {
