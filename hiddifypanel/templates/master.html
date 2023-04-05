@@ -405,6 +405,11 @@ install_pwa=() => {
   });
 };
 $('#install-pwa-btn').click(install_pwa)
+%if session.get('darkmode', "notset")=="notset"
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  document.location+="?darkmode=true"    
+}
+%endif
 </script>
 <!-- <script src="{{url_for('static',filename='js/pwa-sw.js')}}" defer></script> -->
 {% endblock %}
