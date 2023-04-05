@@ -80,6 +80,7 @@ $("fieldset legend").click(function(e){
 $(document).ready(function() {
   $('#search_settings').on('input', function() {
     var searchString = $(this).val().toLowerCase();
+
     $('fieldset').each(function() {
         field=$(this)
         var fieldfoundMatch = false;
@@ -103,9 +104,12 @@ $(document).ready(function() {
         });
         if (fieldfoundMatch) {
             $(this).show();
+            $(this).find(".form-group").first().show();
         } else {
             $(this).hide();
         }
+        if (searchString=="")
+            $("fieldset").filter(function() { return !($(this).children().children().is('.invalid-feedback')); }).find('.form-group').hide()
     });
     
   });
