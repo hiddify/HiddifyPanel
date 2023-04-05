@@ -25,12 +25,13 @@
 {{modal('save_emergency',_('Save Link'),_("Please copy the emergency link before leaving this page."),temp_link(),show=False)}}
 %endif
 
+%if not g.temp_admin_link
 <div class="alert">
 
   {{_("Please wait ")}} <label id="count-down">300</label> {{_("seconds")}}
 
 </div>
-
+%endif
 % if log_path
 <div>
 <h1>{{_('log')}}</h1>
