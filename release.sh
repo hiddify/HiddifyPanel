@@ -9,6 +9,7 @@ source .env
 
 do_release=${1:-0}
 if [[ $do_release == 1 ]];then
+git status
 make release 
 fi
 rm -rf build/; rm -rf dist/;

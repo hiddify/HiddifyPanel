@@ -604,7 +604,7 @@ import psutil
 def top_processes():
     # Get the process information
     processes = [p for p in psutil.process_iter(['name', 'memory_full_info', 'cpu_percent']) if p.info['name'] != '']
-    
+    num_cores = psutil.cpu_count()
     # Calculate memory usage, RAM usage, and CPU usage for each process
     memory_usage = {}
     ram_usage = {}
@@ -615,7 +615,7 @@ def top_processes():
         if mem_info is None:
             continue
         mem_usage = mem_info.uss
-        cpu_percent = p.info['cpu_percent']
+        cpu_percent = p.info['cpu_percent']/num_cores
         if name in memory_usage:
             memory_usage[name] += mem_usage / (1024 ** 3)
             ram_usage[name] += mem_info.rss / (1024 ** 3)

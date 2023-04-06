@@ -76,15 +76,19 @@
 
     {{info_box("fa-solid fa-users", _("Online Users"), onlines ~ " / "~ total_users, onlines/total_users, _('In 24 hours'))}}
     {{info_box("fa-solid fa-microchip", _("CPU"), 
-            ((stats['system']['load_avg_1min']*100)|int) ~ " % ", 
-            (stats['system']['load_avg_1min']*100)|int, 
-            _("Average")~": " ~ ((stats['system']['load_avg_15min']*100)|int) ~" %",
+            ((stats['system']['load_avg_5min']*100)|int) ~ " % ", 
+            (stats['system']['load_avg_5min']*100)|int, 
+            ('<i class="fa-solid fa-gauge"></i> '|safe) ~  stats['top5']['cpu'][0][0] ~ "&rlm; "|safe ~ ((stats['top5']['cpu'][0][1])|int) ~ "% &rlm;"|safe~
+            ('<i class="fa-solid fa-gauge"></i> '|safe) ~  stats['top5']['cpu'][1][0] ~ "&rlm; "|safe ~ ((stats['top5']['cpu'][1][1])|int) ~ "% &rlm;"|safe~
+            ('<i class="fa-solid fa-gauge"></i> '|safe) ~  stats['top5']['cpu'][2][0] ~ "&rlm; "|safe ~ ((stats['top5']['cpu'][2][1])|int) ~ "%",
             coloring=True
     )}}
     {{info_box("fa-solid fa-memory", _("RAM"), 
             (stats['system']['ram_used']|round(1)) ~ " / " ~ (stats['system']['ram_total']|round(1)) ~ "GB", 
             stats['system']['ram_used']*100/stats['system']['ram_total'], 
-            ('<i class="fa-solid fa-gauge"></i> '|safe) ~  stats['top5']['memory'][0][0] ~ ": " ~ ((stats['top5']['memory'][0][1]*100/stats['system']['ram_used'])|int) ~ "%",
+            ('<i class="fa-solid fa-gauge"></i> '|safe) ~  stats['top5']['memory'][0][0] ~ "&rlm; "|safe ~ ((stats['top5']['memory'][0][1]*100/stats['system']['ram_total'])|int) ~ "% &rlm;"|safe~
+            ('<i class="fa-solid fa-gauge"></i> '|safe) ~  stats['top5']['memory'][1][0] ~ "&rlm; "|safe ~ ((stats['top5']['memory'][1][1]*100/stats['system']['ram_total'])|int) ~ "% &rlm;"|safe~
+            ('<i class="fa-solid fa-gauge"></i> '|safe) ~  stats['top5']['memory'][2][0] ~ "&rlm; "|safe ~ ((stats['top5']['memory'][2][1]*100/stats['system']['ram_total'])|int) ~ "% ",
             coloring=True
     )}}
     {{info_box("fa-solid fa-network-wired", _("Network"), 
