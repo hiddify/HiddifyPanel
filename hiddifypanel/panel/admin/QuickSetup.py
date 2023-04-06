@@ -76,7 +76,7 @@ def get_lang_form(empty=False):
         class LangForm(FlaskForm):
                 admin_lang=wtf.fields.SelectField(_("config.admin_lang.label"),choices=[("en",_("lang.en")),("fa",_("lang.fa"))],description=_("config.admin_lang.description"),default=hconfig(ConfigEnum.admin_lang))
                 # lang=wtf.fields.SelectField(_("config.lang.label"),choices=[("en",_("lang.en")),("fa",_("lang.fa"))],description=_("config.lang.description"),default=hconfig(ConfigEnum.lang))
-                country=wtf.fields.SelectField(_("config.country.label"),choices=[("ir",_("Iran")),("zh",_("China"))],description=_("config.country.description"),default=hconfig(ConfigEnum.country))
+                country=wtf.fields.SelectField(_("config.country.label"),choices=[("ir",_("Iran")),("zh",_("China")),("other","Others")],description=_("config.country.description"),default=hconfig(ConfigEnum.country))
                 lang_submit=wtf.fields.SubmitField(_('Submit'))
         
         return LangForm(None)if empty else LangForm()
