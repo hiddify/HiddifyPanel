@@ -276,14 +276,15 @@ def check_need_reset(old_configs,do=False):
 
 
 def format_timedelta(delta, add_direction=True,granularity="days"):
+    res=delta.days
     if granularity=="days" and delta.days==0:
-        return _("0 - Last day")
+        res= _("0 - Last day")
     locale=g.locale if g and hasattr(g, "locale") else hconfig(ConfigEnum.admin_lang)
     if delta.days < 7 or delta.days >= 60:
-        return babel_format_timedelta(delta, threshold=1, add_direction=add_direction, locale=locale)
+        res= babel_format_timedelta(delta, threshold=1, add_direction=add_direction, locale=locale)
     if delta.days < 60:
-        return babel_format_timedelta(delta, granularity="day", threshold=10, add_direction=add_direction, locale=locale)
-    return delta.days
+        res= babel_format_timedelta(delta, granularity="day", threshold=10, add_direction=add_direction, locale=locale)
+    return res
 
 
 
