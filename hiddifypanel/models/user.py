@@ -66,7 +66,7 @@ def remaining_days(u):
     if not u.package_days:
         return -1
     if u.start_date:
-        return u.package_days - (datetime.date.today() - u.start_date).days
+        return min(u.package_days - (datetime.date.today() - u.start_date).days,10000)
     return min(u.package_days ,10000)
 
 
