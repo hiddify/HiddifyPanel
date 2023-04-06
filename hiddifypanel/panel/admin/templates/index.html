@@ -52,22 +52,22 @@
 {%- endmacro -%}
 <div class="row">
     {{info_box("fa-solid fa-chart-pie", _("Total Usage"), 
-            ((usage_history['total']['usage']//1024**3)) ~ " GB", 
+            ((usage_history['total']['usage']/1024**3)|round(1)) ~ " GB", 
             usage_history['total']['online']/total_users*100, 
             _("Online Users") ~": "~ usage_history['total']['online'] ~ " / "~ total_users
     )}}
     {{info_box("fa-solid fa-calendar-days", _("Month Usage"), 
-            ((usage_history['last_30_days']['usage']//1024**3)) ~ " GB", 
+            ((usage_history['last_30_days']['usage']/1024**3)|round(1)) ~ " GB", 
             usage_history['last_30_days']['online']/total_users*100, 
             _("Online Users") ~": "~ usage_history['last_30_days']['online'] ~ " / "~ total_users
     )}}
     {{info_box("fa-solid fa-calendar-day", _("Yesterday Usage"), 
-            ((usage_history['yesterday']['usage']//1024**3)) ~ " GB", 
+            ((usage_history['yesterday']['usage']/1024**3)|round(1)) ~ " GB", 
             usage_history['yesterday']['online']/total_users*100, 
             _("Online Users") ~": "~ usage_history['yesterday']['online'] ~ " / "~ total_users
     )}}
     {{info_box("fa-solid fa-calendar", _("Today Usage"), 
-            ((usage_history['today']['usage']//1024**3)) ~ " GB", 
+            ((usage_history['today']['usage']/1024**3)|round(1)) ~ " GB", 
             usage_history['today']['online']/total_users*100, 
             _("Online Users") ~": "~ usage_history['today']['online'] ~ " / "~ total_users
     )}}
@@ -84,7 +84,7 @@
             coloring=True
     )}}
     {{info_box("fa-solid fa-memory", _("RAM"), 
-            (stats['system']['ram_used']|round(1)) ~ " / " ~ (stats['system']['ram_total']|round(1)) ~ "GB", 
+            (stats['system']['ram_used']|round(1)) ~ " / " ~ (stats['system']['ram_total']|round(1)) ~ "GB (" ~((stats['system']['ram_used']*100/stats['system']['ram_total'])|int)~" %)", 
             stats['system']['ram_used']*100/stats['system']['ram_total'], 
             ('<i class="fa-solid fa-gauge"></i> '|safe) ~  stats['top5']['memory'][0][0] ~ "&rlm; "|safe ~ ((stats['top5']['memory'][0][1]*100/stats['system']['ram_total'])|int) ~ "% &rlm;"|safe~
             ('<i class="fa-solid fa-gauge"></i> '|safe) ~  stats['top5']['memory'][1][0] ~ "&rlm; "|safe ~ ((stats['top5']['memory'][1][1]*100/stats['system']['ram_total'])|int) ~ "% &rlm;"|safe~

@@ -211,7 +211,7 @@ class UserAdmin(AdminLTEModelView):
             model.current_usage_GB=0
         if form.reset_days.data:
             model.start_date=None  
-        
+        model.package_days=min(model.package_days,10000)
         old_user=user_by_id(model.id)
         if old_user and old_user.uuid!=model.uuid:
             xray_api.remove_client(old_user.uuid)
@@ -228,7 +228,6 @@ class UserAdmin(AdminLTEModelView):
     #     return is_valid()
         
     def after_model_change(self,form, model, is_created):
-        model.package_days=min(model.package_days,10000)
         hiddify.quick_apply_users()
     def after_model_delete(self,model):
         xray_api.remove_client(model.uuid)
