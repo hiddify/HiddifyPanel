@@ -62,8 +62,6 @@ def add_users_usage(dbusers_bytes):
                 xray_api.add_client(user.uuid)
                 have_change=True
         if usage_bytes == None:
-            usage_bytes=100000000;
-        if usage_bytes == None:
             res[user.uuid]="No value" 
         else:
             daily_usage.usage+=usage_bytes
