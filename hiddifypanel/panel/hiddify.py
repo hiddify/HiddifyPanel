@@ -612,6 +612,8 @@ def top_processes():
     for p in processes:
         name = p.info['name']
         mem_info = p.info['memory_full_info']
+        if mem_info is None:
+            continue
         mem_usage = mem_info.uss
         cpu_percent = p.info['cpu_percent']
         if name in memory_usage:
