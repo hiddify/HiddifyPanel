@@ -7,7 +7,7 @@
 {% block body %}
 {% macro info_box(id,icon,title,number,percentage,description,coloring=False) -%}
 <div class="col-md-4  col-sm-6">
-    <div id={{id}} class="info-box bg-gradient-secondary {{ ("bg-gradient-"+ ("danger" if percentage>90 else ("warning" if percentage>75 else ""))) if coloring else ""}}">
+    <div id={{id}} class="info-box bg-gradient-secondary {{ ("bg-gradient-"+ ("danger" if percentage>90 else ("warning" if percentage>75 else ""))) if coloring else ""}} {%if "disk"==id %} d-none d-md-flex {%endif%}">
         <span class="info-box-icon"><i class="{{icon}}"></i></span>
         <div class="info-box-content">
             <span class="info-box-text htitle">{{title}}</span>
