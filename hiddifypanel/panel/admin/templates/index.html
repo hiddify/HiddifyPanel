@@ -77,9 +77,9 @@
 
     
 
-    {{info_box("fa-solid fa-users", _("Online Users"), onlines ~ " / "~ total_users, onlines/total_users, _('In 24 hours'))}}
+    {{info_box("fa-solid fa-users", _("Online Users"), onlines ~ " / "~ total_users, onlines/total_users*100, _('In 24 hours'))}}
     {{info_box("fa-solid fa-microchip", _("CPU"), 
-            ((stats['system']['load_avg_5min']*100)|int) ~ " % ", 
+            ((stats['system']['load_avg_5min']*100)|int) ~ " % "  , 
             (stats['system']['load_avg_5min']*100)|int, 
             ('<i class="fa-solid fa-gauge"></i> '|safe) ~  stats['top5']['cpu'][0][0] ~ "&rlm; "|safe ~ ((stats['top5']['cpu'][0][1])|int) ~ "% &rlm;"|safe~
             ('<i class="fa-solid fa-gauge"></i> '|safe) ~  stats['top5']['cpu'][1][0] ~ "&rlm; "|safe ~ ((stats['top5']['cpu'][1][1])|int) ~ "% &rlm;"|safe~

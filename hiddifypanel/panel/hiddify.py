@@ -612,6 +612,8 @@ def top_processes():
     cpu_usage = {}
     for p in processes:
         name = p.info['name']
+        if "python3" in name or "uwsgi" in name:
+            name="Hiddify"
         mem_info = p.info['memory_full_info']
         if mem_info is None:
             continue
