@@ -95,6 +95,15 @@ $(document).ready(function() {
             return false; // break out of loop early
             }
         });
+        var $inputs = $(this).find('input');
+        $inputs.each(function() {
+            var labelText = $(this).attr('id').toLowerCase();
+            if (labelText.indexOf(searchString) !== -1) {
+            foundMatch = true;
+            fieldfoundMatch= true;
+            return false; // break out of loop early
+            }
+        });
         if (foundMatch) {
             $(this).show();
         } else {
