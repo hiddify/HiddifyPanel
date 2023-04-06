@@ -81,17 +81,17 @@
     {{info_box("cpu","fa-solid fa-microchip", _("CPU"), 
             ((stats['system']['load_avg_5min']*100)|int) ~ " % "  , 
             (stats['system']['load_avg_5min']*100)|int, 
-            ('<i class="fa-solid fa-gauge"></i> '|safe) ~  stats['top5']['cpu'][0][0] ~ "&rlm; "|safe ~ ((stats['top5']['cpu'][0][1])|int) ~ "% &rlm;"|safe~
-            ('<i class="fa-solid fa-gauge"></i> '|safe) ~  stats['top5']['cpu'][1][0] ~ "&rlm; "|safe ~ ((stats['top5']['cpu'][1][1])|int) ~ "% &rlm;"|safe~
-            ('<i class="fa-solid fa-gauge"></i> '|safe) ~  stats['top5']['cpu'][2][0] ~ "&rlm; "|safe ~ ((stats['top5']['cpu'][2][1])|int) ~ "%",
+            ('<i class="fa-solid fa-gauge"></i> '|safe) ~  stats['top5']['cpu'][0][0] ~ " "|safe ~ ((stats['top5']['cpu'][0][1])|int) ~ "% &rlm;"|safe~
+            ('<i class="fa-solid fa-gauge"></i> '|safe) ~  stats['top5']['cpu'][1][0] ~ " "|safe ~ ((stats['top5']['cpu'][1][1])|int) ~ "% &rlm;"|safe~
+            ('<i class="fa-solid fa-gauge"></i> '|safe) ~  stats['top5']['cpu'][2][0] ~ " "|safe ~ ((stats['top5']['cpu'][2][1])|int) ~ "%",
             coloring=True
     )}}
     {{info_box("ram","fa-solid fa-memory", _("RAM"), 
             (stats['system']['ram_used']|round(1)) ~ " / " ~ (stats['system']['ram_total']|round(1)) ~ "GB (" ~((stats['system']['ram_used']*100/stats['system']['ram_total'])|int)~" %)", 
             stats['system']['ram_used']*100/stats['system']['ram_total'], 
-            ('<i class="fa-solid fa-gauge"></i> '|safe) ~  stats['top5']['memory'][0][0] ~ "&rlm; "|safe ~ ((stats['top5']['memory'][0][1]*100/stats['system']['ram_total'])|int) ~ "% &rlm;"|safe~
-            ('<i class="fa-solid fa-gauge"></i> '|safe) ~  stats['top5']['memory'][1][0] ~ "&rlm; "|safe ~ ((stats['top5']['memory'][1][1]*100/stats['system']['ram_total'])|int) ~ "% &rlm;"|safe~
-            ('<i class="fa-solid fa-gauge"></i> '|safe) ~  stats['top5']['memory'][2][0] ~ "&rlm; "|safe ~ ((stats['top5']['memory'][2][1]*100/stats['system']['ram_total'])|int) ~ "% ",
+            ('<i class="fa-solid fa-gauge"></i> '|safe) ~  stats['top5']['memory'][0][0] ~ " "|safe ~ ((stats['top5']['memory'][0][1]*100/stats['system']['ram_total'])|int) ~ "% &rlm;"|safe~
+            ('<i class="fa-solid fa-gauge"></i> '|safe) ~  stats['top5']['memory'][1][0] ~ " "|safe ~ ((stats['top5']['memory'][1][1]*100/stats['system']['ram_total'])|int) ~ "% &rlm;"|safe~
+            ('<i class="fa-solid fa-gauge"></i> '|safe) ~  stats['top5']['memory'][2][0] ~ " "|safe ~ ((stats['top5']['memory'][2][1]*100/stats['system']['ram_total'])|int) ~ "% ",
             coloring=True
     )}}
     {{info_box("network","fa-solid fa-network-wired", _("Network"), 
@@ -124,7 +124,7 @@ function update_box(id,title,number,percentage,description,coloring){
     if (title!=undefined && title!="")
         $("#"+id).find(".htitle").html(title)
     $("#"+id).find(".hnumber").html(number)
-    $("#"+id).find(".hprogress").css('width',percentage)
+    $("#"+id).find(".hprogress").css('width',percentage+"%")
     $("#"+id).find(".hdescription").html(description)
     if (coloring==true){
         $("#"+id).removeClass()
@@ -181,8 +181,8 @@ info_box("online", "fa-solid fa-users", "Online Users",
 info_box("cpu", "fa-solid fa-microchip", "CPU",
     (stats['system']['load_avg_5min'] * 100).toFixed(0) + " %",
     (stats['system']['load_avg_5min'] * 100).toFixed(0),
-    "<i class='fa-solid fa-gauge'></i> " + stats['top5']['cpu'][0][0] + " &rlm;" + (stats['top5']['cpu'][0][1]).toFixed(0) + "% &#8206;" +
-    "<i class='fa-solid fa-gauge'></i> " + stats['top5']['cpu'][1][0] + " &rlm;" + (stats['top5']['cpu'][1][1]).toFixed(0) + "% &#8206;" +
+    "<i class='fa-solid fa-gauge'></i> " + stats['top5']['cpu'][0][0] + " &rlm;" + (stats['top5']['cpu'][0][1]).toFixed(0) + "% &rlm;" +
+    "<i class='fa-solid fa-gauge'></i> " + stats['top5']['cpu'][1][0] + " &rlm;" + (stats['top5']['cpu'][1][1]).toFixed(0) + "% &rlm;" +
     "<i class='fa-solid fa-gauge'></i> " + stats['top5']['cpu'][2][0] + " &rlm;" + (stats['top5']['cpu'][2][1]).toFixed(0) + "%",
     true
 );
@@ -190,8 +190,8 @@ info_box("cpu", "fa-solid fa-microchip", "CPU",
 info_box("ram", "fa-solid fa-memory", "RAM",
     stats['system']['ram_used'].toFixed(1) + " / " + stats['system']['ram_total'].toFixed(1) + "GB (" + (stats['system']['ram_used'] * 100 / stats['system']['ram_total']).toFixed(0) + " %)",
     stats['system']['ram_used'] * 100 / stats['system']['ram_total'].toFixed(0),
-    "<i class='fa-solid fa-gauge'></i> " + stats['top5']['memory'][0][0] + " &rlm;" + (stats['top5']['memory'][0][1] * 100 / stats['system']['ram_total']).toFixed(0) + "% ‎" +
-    "<i class='fa-solid fa-gauge'></i> " + stats['top5']['memory'][1][0] + " &rlm;" + (stats['top5']['memory'][1][1] * 100 / stats['system']['ram_total']).toFixed(0) + "% ‎" +
+    "<i class='fa-solid fa-gauge'></i> " + stats['top5']['memory'][0][0] + " &rlm;" + (stats['top5']['memory'][0][1] * 100 / stats['system']['ram_total']).toFixed(0) + "% &rlm;" +
+    "<i class='fa-solid fa-gauge'></i> " + stats['top5']['memory'][1][0] + " &rlm;" + (stats['top5']['memory'][1][1] * 100 / stats['system']['ram_total']).toFixed(0) + "% &rlm;" +
     "<i class='fa-solid fa-gauge'></i> " + stats['top5']['memory'][2][0] + " &rlm;" + (stats['top5']['memory'][2][1] * 100 / stats['system']['ram_total']).toFixed(0) + "% ",
     true
 );
