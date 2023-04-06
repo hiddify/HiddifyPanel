@@ -6,7 +6,7 @@
 
 {% block body %}
 {% macro info_box(id,icon,title,number,percentage,description,coloring=False) -%}
-<div class="col-xl-3 col-md-4  col-sm-6">
+<div class="col-md-4  col-sm-6">
     <div id={{id}} class="info-box bg-gradient-secondary {{ ("bg-gradient-"+ ("danger" if percentage>90 else ("warning" if percentage>75 else ""))) if coloring else ""}}">
         <span class="info-box-icon"><i class="{{icon}}"></i></span>
         <div class="info-box-content">
@@ -50,7 +50,7 @@
     </div>
 </div>
 {%- endmacro -%}
-<div class="row">
+<div class="row" >
     {{info_box("today","fa-solid fa-calendar", _("Today Usage"), 
             ((usage_history['today']['usage']/1024**3)|round(1)) ~ " GB", 
             usage_history['today']['online']/total_users*100, 
