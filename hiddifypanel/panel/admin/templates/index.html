@@ -30,22 +30,22 @@
     {{info_box("fa-solid fa-chart-pie", _("Total Usage"), 
             ((usage_history['total']['usage']//1024**3)) ~ " GB", 
             usage_history['total']['online']/total_users*100, 
-            _("Online") ~": "~ usage_history['total']['online'] ~ " / "~ total_users
+            _("Online Users") ~": "~ usage_history['total']['online'] ~ " / "~ total_users
     )}}
     {{info_box("fa-solid fa-calendar-days", _("Month Usage"), 
             ((usage_history['last_30_days']['usage']//1024**3)) ~ " GB", 
             usage_history['last_30_days']['online']/total_users*100, 
-            _("Online") ~": "~ usage_history['last_30_days']['online'] ~ " / "~ total_users
+            _("Online Users") ~": "~ usage_history['last_30_days']['online'] ~ " / "~ total_users
     )}}
     {{info_box("fa-solid fa-calendar-day", _("Yesterday Usage"), 
             ((usage_history['yesterday']['usage']//1024**3)) ~ " GB", 
             usage_history['yesterday']['online']/total_users*100, 
-            _("Online") ~": "~ usage_history['yesterday']['online'] ~ " / "~ total_users
+            _("Online Users") ~": "~ usage_history['yesterday']['online'] ~ " / "~ total_users
     )}}
     {{info_box("fa-solid fa-calendar", _("Today Usage"), 
             ((usage_history['today']['usage']//1024**3)) ~ " GB", 
             usage_history['today']['online']/total_users*100, 
-            _("Online") ~": "~ usage_history['today']['online'] ~ " / "~ total_users
+            _("Online Users") ~": "~ usage_history['today']['online'] ~ " / "~ total_users
     )}}
 
     
