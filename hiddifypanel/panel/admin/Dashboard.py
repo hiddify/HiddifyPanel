@@ -1,6 +1,6 @@
 from flask_admin.base import AdminIndexView,expose
 from hiddifypanel.panel.hiddify  import admin
-from flask import render_template,url_for,Markup,request
+from flask import render_template,url_for,Markup,request,jsonify
 from flask_babelex import lazy_gettext as _
 from hiddifypanel.panel import hiddify
 import datetime
@@ -9,6 +9,15 @@ from hiddifypanel.models import *
 from hiddifypanel.panel.database import db
 from hiddifypanel.panel.hiddify import flash
 class Dashboard(FlaskView):
+    def get_data(self):
+        h24=datetime.datetime.now()-datetime.timedelta(days=1)
+        return jsonify(dict(
+        onlines=User.query.filter(User.last_online>h24).count(),
+        total_users=User.query.count(),
+        stats={'system':hiddify.system_stats(), 'top5':hiddify.top_processes()},
+        usage_history=get_daily_usage_stats()
+        ))
+        
     def index(self):
         
         bot=None
