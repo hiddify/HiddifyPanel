@@ -6,7 +6,7 @@
 
 {% block body %}
 {% macro info_box(icon,title,number,percentage,description,coloring=False) -%}
-<div class="col-md-3  col-sm-6">
+<div class="col-xl-3 col-md-4  col-sm-6">
     <div class="info-box bg-gradient-secondary {{ ("bg-gradient-"+ ("danger" if percentage>90 else ("warning" if percentage>75 else ""))) if coloring else ""}}">
         <span class="info-box-icon"><i class="{{icon}}"></i></span>
         <div class="info-box-content">
@@ -26,7 +26,31 @@
     </div>
 </div>
 {%- endmacro -%}
-<div class="card-deck">
+
+
+{% macro info_box2(icon,title,number,percentage,description,coloring=False) -%}
+<div class="col-md-4  col-sm-6">
+    <div class="small-box bg-gradient-secondary {{ ("bg-gradient-"+ ("danger" if percentage>90 else ("warning" if percentage>75 else ""))) if coloring else ""}}">
+        <div class="inner">
+            <h3>{{title}}</h3>
+            <span
+                class="info-box-number ltr">{{number}}</span>
+                <div class="progress">
+                    <div class="progress-bar"
+                        style="width: {{percentage}}%">
+                    </div>
+                </div>
+                <span class="progress-description">
+                    {{description}}
+                </span>
+        </div>
+        <span class="icon"><i class="{{icon}}"></i></span>
+        
+
+    </div>
+</div>
+{%- endmacro -%}
+<div class="row">
     {{info_box("fa-solid fa-chart-pie", _("Total Usage"), 
             ((usage_history['total']['usage']//1024**3)) ~ " GB", 
             usage_history['total']['online']/total_users*100, 
@@ -60,7 +84,7 @@
     {{info_box("fa-solid fa-memory", _("RAM"), 
             (stats['system']['ram_used']|round(1)) ~ " / " ~ (stats['system']['ram_total']|round(1)) ~ "GB", 
             stats['system']['ram_used']*100/stats['system']['ram_total'], 
-            _("Highest") ~ ": " ~ stats['top5']['memory'][0][0] ~ ": " ~ ((stats['top5']['memory'][0][1]*100/stats['system']['ram_used'])|int) ~ "%",
+            ('<i class="fa-solid fa-gauge"></i> '|safe) ~  stats['top5']['memory'][0][0] ~ ": " ~ ((stats['top5']['memory'][0][1]*100/stats['system']['ram_used'])|int) ~ "%",
             coloring=True
     )}}
     {{info_box("fa-solid fa-network-wired", _("Network"), 
@@ -68,11 +92,11 @@
             0, 
             _("From Last Restart")
     )}}
-    {{info_box("fa-solid fa-signal", _("Connections/IP"), 
+    {#info_box("fa-solid fa-signal", _("Connections/IP"), 
             stats['system']['total_unique_ips'] ~ " / " ~ stats['system']['total_connections'], 
             stats['system']['total_unique_ips']*100/stats['system']['total_connections'], 
             _("CDN make it incorrect")
-    )}}
+    )#}
     {{info_box("fa-solid fa-hard-drive", _("Disk"), 
         (stats['system']['disk_used']|round(1)) ~ " / "~(stats['system']['disk_total']|round(1))~"GB", 
         stats['system']['disk_used']*100/stats['system']['disk_total'], 
