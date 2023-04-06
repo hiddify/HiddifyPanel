@@ -166,7 +166,7 @@
                  %endif
                  {{ render_nav_item('admin.SettingAdmin:index',icon('solid','gear','nav-icon')+ _('admin.menu.config'),_use_li=True) }}
                  
-                 % if 1 or  hconfig(ConfigEnum.license)
+                 % if 0 or  hconfig(ConfigEnum.license)
                  {{ render_nav_item('admin.CommercialSettings:index', icon('solid','dumpster','nav-icon')+_('Commercial Settings'),_use_li=True) }}
                 %endif
                 {{ render_nav_item('admin.Backup:index',icon('solid','floppy-disk','nav-icon')+ _('Backup'), _use_li=True) }}

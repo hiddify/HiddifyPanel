@@ -5,6 +5,6 @@ from .domain import Domain,DomainType,ShowDomain,get_domain,get_current_proxy_do
 from .proxy import Proxy,ProxyL3,ProxyCDN,ProxyProto,ProxyTransport
 from .user import User,UserMode,is_user_active,remaining_days,days_to_reset,user_by_id,user_by_uuid,add_or_update_user
 from .child import Child
-
+from .usage import DailyUsage,get_daily_usage_stats
 
 

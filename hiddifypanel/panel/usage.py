@@ -11,6 +11,7 @@ from flask_babelex import lazy_gettext as _
 from flask_babelex import gettext as __
 from hiddifypanel import xray_api
 from sqlalchemy.orm import Load 
+from sqlalchemy import func
 
 
 def update_local_usage():
@@ -41,6 +42,12 @@ def add_users_usage(dbusers_bytes):
     res={}
     have_change=False
     before_enabled_users=xray_api.get_enabled_users()
+    total_usage=DailyUsage.query.filter(DailyUsage.date==datetime.date.today()).first()
+    if not total_usage:
+        total_usage=DailyUsage()
+        db.session.add(total_usage)
+
+    total_usage.online=User.query.filter(func.DATE(User.last_online)==datetime.date.today()).count()
     for user,usage_bytes in dbusers_bytes.items():
         # user_active_before=is_user_active(user)
 
@@ -57,6 +64,7 @@ def add_users_usage(dbusers_bytes):
         if usage_bytes == None:
             res[user.uuid]="No value" 
         else:
+            total_usage.usage+=usage_bytes
             in_gig=(usage_bytes)/to_gig_d
             res[user.uuid]=in_gig
             user.current_usage_GB += in_gig

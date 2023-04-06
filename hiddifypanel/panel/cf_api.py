@@ -8,10 +8,10 @@ def add_or_update_domain(domain,ip,dns_type="A",proxied=True):
         cf=CloudFlare.CloudFlare(token=hconfig(ConfigEnum.cloudflare))
         zone=get_zone(cf, domain)
         if zone:
-            dns=get_dns(cf,zone,domain) or None
+            dns=get_dns(cf,zone,domain)
             data={'name':domain[:-len(zone['name'])], 'type':dns_type, 'content':ip,'proxied':proxied}
             if dns:
-                cf.zones.dns_records.post(zone['id'],dns['id'],data=data)
+                cf.zones.dns_records.put(zone['id'],dns['id'],data=data)
             else:
                 cf.zones.dns_records.post(zone['id'],data=data)
             return True

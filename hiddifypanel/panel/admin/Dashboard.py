@@ -47,7 +47,9 @@ class Dashboard(FlaskView):
         h24=datetime.datetime.now()-datetime.timedelta(days=1)
         onlines=User.query.filter(User.last_online>h24).count()
         total=User.query.count()
-        return render_template('index.html',onlines=onlines,total_users=total,bot=bot)
+        
+        stats={'system':hiddify.system_stats(), 'top5':hiddify.top_processes()}
+        return render_template('index.html',onlines=onlines,total_users=total,bot=bot,stats=stats,usage_history=get_daily_usage_stats())
 
     @route('remove_child', methods=['POST'])
     def remove_child(self):

@@ -5,6 +5,85 @@
 {% block title %}Home | Admin |Hiddify{% endblock %}
 
 {% block body %}
+{% macro info_box(icon,title,number,percentage,description,coloring=False) -%}
+<div class="col-md-3  col-sm-6">
+    <div class="info-box bg-gradient-secondary {{ ("bg-gradient-"+ ("danger" if percentage>90 else ("warning" if percentage>75 else ""))) if coloring else ""}}">
+        <span class="info-box-icon"><i class="{{icon}}"></i></span>
+        <div class="info-box-content">
+            <span class="info-box-text">{{title}}</span>
+            <span
+                class="info-box-number ltr">{{number}}</span>
+            <div class="progress">
+                <div class="progress-bar"
+                    style="width: {{percentage}}%">
+                </div>
+            </div>
+            <span class="progress-description">
+                {{description}}
+            </span>
+        </div>
+
+    </div>
+</div>
+{%- endmacro -%}
+<div class="card-deck">
+    {{info_box("fa-solid fa-chart-pie", _("Total Usage"), 
+            ((usage_history['total']['usage']//1024**3)) ~ " GB", 
+            usage_history['total']['online']/total_users*100, 
+            _("Online") ~": "~ usage_history['total']['online'] ~ " / "~ total_users
+    )}}
+    {{info_box("fa-solid fa-calendar-days", _("Month Usage"), 
+            ((usage_history['last_30_days']['usage']//1024**3)) ~ " GB", 
+            usage_history['last_30_days']['online']/total_users*100, 
+            _("Online") ~": "~ usage_history['last_30_days']['online'] ~ " / "~ total_users
+    )}}
+    {{info_box("fa-solid fa-calendar-day", _("Yesterday Usage"), 
+            ((usage_history['yesterday']['usage']//1024**3)) ~ " GB", 
+            usage_history['yesterday']['online']/total_users*100, 
+            _("Online") ~": "~ usage_history['yesterday']['online'] ~ " / "~ total_users
+    )}}
+    {{info_box("fa-solid fa-calendar", _("Today Usage"), 
+            ((usage_history['today']['usage']//1024**3)) ~ " GB", 
+            usage_history['today']['online']/total_users*100, 
+            _("Online") ~": "~ usage_history['today']['online'] ~ " / "~ total_users
+    )}}
+
+    
+
+    {{info_box("fa-solid fa-users", _("Online Users"), onlines ~ " / "~ total_users, onlines/total_users, _('In 24 hours'))}}
+    {{info_box("fa-solid fa-microchip", _("CPU"), 
+            ((stats['system']['load_avg_1min']*100)|int) ~ " % ", 
+            (stats['system']['load_avg_1min']*100)|int, 
+            _("Average")~": " ~ ((stats['system']['load_avg_15min']*100)|int) ~" %",
+            coloring=True
+    )}}
+    {{info_box("fa-solid fa-memory", _("RAM"), 
+            (stats['system']['ram_used']|round(1)) ~ " / " ~ (stats['system']['ram_total']|round(1)) ~ "GB", 
+            stats['system']['ram_used']*100/stats['system']['ram_total'], 
+            _("Highest") ~ ": " ~ stats['top5']['memory'][0][0] ~ ": " ~ ((stats['top5']['memory'][0][1]*100/stats['system']['ram_used'])|int) ~ "%",
+            coloring=True
+    )}}
+    {{info_box("fa-solid fa-network-wired", _("Network"), 
+            (stats['system']['net_sent_cumulative_GB']|round(1)) ~ "GB", 
+            0, 
+            _("From Last Restart")
+    )}}
+    {{info_box("fa-solid fa-signal", _("Connections/IP"), 
+            stats['system']['total_unique_ips'] ~ " / " ~ stats['system']['total_connections'], 
+            stats['system']['total_unique_ips']*100/stats['system']['total_connections'], 
+            _("CDN make it incorrect")
+    )}}
+    {{info_box("fa-solid fa-hard-drive", _("Disk"), 
+        (stats['system']['disk_used']|round(1)) ~ " / "~(stats['system']['disk_total']|round(1))~"GB", 
+        stats['system']['disk_used']*100/stats['system']['disk_total'], 
+        _("Hiddify") ~ ": " ~ (stats['system']['hiddify_used']|round(1)) ~ "GB",
+        coloring=True
+    )}}
+    
+    </div>
+
+</div>
+
 % if hconfig(ConfigEnum.netdata)
 <div class="card-deck">
     <div class="card card-danger">

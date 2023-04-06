@@ -119,11 +119,15 @@ class DomainAdmin(AdminLTEModelView):
             
         skip_check="*" in model.domain
         if hconfig(ConfigEnum.cloudflare):
-            if model.mode==DomainType.direct:
-                cf_api.add_or_update_domain(model.domain, myip,"A",proxied=False)
-            elif model.mode==DomainType.cdn or model.mode==DomainType.auto_cdn_ip:
-                cf_api.add_or_update_domain(model.domain, myip,"A",proxied=True)
-            skip_check=True
+            try:
+                if model.mode==DomainType.direct:
+                    cf_api.add_or_update_domain(model.domain, myip,"A",proxied=False)
+                elif model.mode==DomainType.cdn or model.mode==DomainType.auto_cdn_ip:
+                    cf_api.add_or_update_domain(model.domain, myip,"A",proxied=True)
+                skip_check=True
+            except Exception as e:
+                raise e
+                raise ValidationError(_("Can not connect to Cloudflare.")+f' {e}')
         # elif model.mode==DomainType.auto_cdn_ip:
             
         #     raise ValidationError(_("You have to add your cloudflare api key to use this feature: "))

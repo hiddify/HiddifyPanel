@@ -195,7 +195,7 @@ class ConfigEnum(StrEnum):
         }
         return map[self]
     def commercial(self):
-        print(self,self.info().get('commercial',False))
+        # print(self,self.info().get('commercial',False))
         return self.info().get('commercial',False)
     def category(self):
         return self.info()['category']

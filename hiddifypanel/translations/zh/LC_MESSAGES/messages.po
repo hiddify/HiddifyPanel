@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-03 20:16+0200\n"
-"PO-Revision-Date: 2023-04-03 13:16-0500\n"
+"POT-Creation-Date: 2023-04-06 11:43+0200\n"
+"PO-Revision-Date: 2023-04-06 04:43-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -47,13 +47,14 @@ msgstr "配置已成功更改。"
 # check "
 # | "your Domain configurations."
 #: hiddifypanel/panel/admin/ChildAdmin.py:108
-#: hiddifypanel/panel/admin/DomainAdmin.py:131
-#: hiddifypanel/panel/admin/QuickSetup.py:117 hiddifypanel/panel/hiddify.py:251
+#: hiddifypanel/panel/admin/DomainAdmin.py:117
+#: hiddifypanel/panel/admin/DomainAdmin.py:142
+#: hiddifypanel/panel/admin/QuickSetup.py:117 hiddifypanel/panel/hiddify.py:254
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr "域名无法解析！你的域有问题"
 
 # | msgid "0 - Last Day"
-#: hiddifypanel/panel/hiddify.py:277
+#: hiddifypanel/panel/hiddify.py:280
 #, fuzzy
 msgid "0 - Last day"
 msgstr "0 - 最后一天"
@@ -140,12 +141,12 @@ msgid "Restore Domain description"
 msgstr "选择此选项以恢复您的域。"
 
 #: hiddifypanel/panel/admin/Backup.py:76
-#: hiddifypanel/panel/admin/ProxyAdmin.py:93
-#: hiddifypanel/panel/admin/ProxyAdmin.py:120
+#: hiddifypanel/panel/admin/ProxyAdmin.py:94
+#: hiddifypanel/panel/admin/ProxyAdmin.py:124
 #: hiddifypanel/panel/admin/QuickSetup.py:80
 #: hiddifypanel/panel/admin/QuickSetup.py:107
-#: hiddifypanel/panel/admin/SettingAdmin.py:197
-#: hiddifypanel/panel/commercial/CommercialSettings.py:217
+#: hiddifypanel/panel/admin/SettingAdmin.py:218
+#: hiddifypanel/panel/commercial/CommercialSettings.py:218
 msgid "Submit"
 msgstr "提交"
 
@@ -243,7 +244,7 @@ msgid ""
 "%(default_link)s"
 msgstr "您似乎还没有创建任何用户。默认用户链接：%(default_link)s"
 
-#: hiddifypanel/panel/admin/Dashboard.py:58
+#: hiddifypanel/panel/admin/Dashboard.py:60
 #: hiddifypanel/panel/commercial/CommercialDashboard.py:58
 msgid "child has been removed!"
 msgstr ""
@@ -324,18 +325,23 @@ msgstr "别名"
 msgid "You have used this domain in: "
 msgstr "您已经在以下领域使用过此域名："
 
+#: hiddifypanel/panel/admin/DomainAdmin.py:130
+#, fuzzy
+msgid "Can not connect to Cloudflare."
+msgstr "无法连接到 Cloudflare。"
+
 # | msgid ""
 # | "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which
 # is "
 # | "required in direct mode."
-#: hiddifypanel/panel/admin/DomainAdmin.py:136
+#: hiddifypanel/panel/admin/DomainAdmin.py:147
 #, python-format
 msgid ""
 "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which "
 "is required in direct mode"
 msgstr "域 IP=%(domain_ip)s 与您的 ip=%(server_ip)s 不匹配，这在直接模式下是必需的"
 
-#: hiddifypanel/panel/admin/DomainAdmin.py:140
+#: hiddifypanel/panel/admin/DomainAdmin.py:151
 #, python-format
 msgid ""
 "In CDN mode, Domain IP=%(domain_ip)s should be different to your "
@@ -350,13 +356,13 @@ msgstr "错误！ 未设置域前端"
 # | msgid "There is an error in one of the fields."
 #: hiddifypanel/panel/admin/ProxyAdmin.py:66
 #: hiddifypanel/panel/admin/QuickSetup.py:72
-#: hiddifypanel/panel/admin/SettingAdmin.py:80
+#: hiddifypanel/panel/admin/SettingAdmin.py:89
 #: hiddifypanel/panel/commercial/CommercialSettings.py:89
 msgid "config.validation-error"
 msgstr "其中一个字段遇到错误"
 
 # | msgid "Domain Fronting"
-#: hiddifypanel/panel/admin/ProxyAdmin.py:117
+#: hiddifypanel/panel/admin/ProxyAdmin.py:121
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.domain_fronting.label"
 msgstr "域名前端"
@@ -379,15 +385,15 @@ msgstr "管理面板语言"
 
 # | msgid "English انگلیسی 英语"
 #: hiddifypanel/panel/admin/QuickSetup.py:77
-#: hiddifypanel/panel/admin/SettingAdmin.py:136
-#: hiddifypanel/panel/commercial/CommercialSettings.py:149
+#: hiddifypanel/panel/admin/SettingAdmin.py:150
+#: hiddifypanel/panel/commercial/CommercialSettings.py:150
 msgid "lang.en"
 msgstr "English انگلیسی 英语"
 
 # | msgid "Persian فارسی 波斯语"
 #: hiddifypanel/panel/admin/QuickSetup.py:77
-#: hiddifypanel/panel/admin/SettingAdmin.py:136
-#: hiddifypanel/panel/commercial/CommercialSettings.py:149
+#: hiddifypanel/panel/admin/SettingAdmin.py:150
+#: hiddifypanel/panel/commercial/CommercialSettings.py:150
 msgid "lang.fa"
 msgstr "Persian فارسی 波斯语"
 
@@ -404,15 +410,15 @@ msgid "config.country.label"
 msgstr ""
 
 #: hiddifypanel/panel/admin/QuickSetup.py:79
-#: hiddifypanel/panel/admin/SettingAdmin.py:138
-#: hiddifypanel/panel/commercial/CommercialSettings.py:151
+#: hiddifypanel/panel/admin/SettingAdmin.py:152
+#: hiddifypanel/panel/commercial/CommercialSettings.py:152
 #, fuzzy
 msgid "Iran"
 msgstr "伊朗"
 
 #: hiddifypanel/panel/admin/QuickSetup.py:79
-#: hiddifypanel/panel/admin/SettingAdmin.py:138
-#: hiddifypanel/panel/commercial/CommercialSettings.py:151
+#: hiddifypanel/panel/admin/SettingAdmin.py:152
+#: hiddifypanel/panel/commercial/CommercialSettings.py:152
 #, fuzzy
 msgid "China"
 msgstr "中国"
@@ -429,20 +435,20 @@ msgstr "它根据每个国家/地区的过滤条件为每个国家/地区应用�
 # | msgid "Error! Invalid domain.  The domain format is www.google.com"
 #: hiddifypanel/panel/admin/QuickSetup.py:96
 #: hiddifypanel/panel/admin/QuickSetup.py:106
-#: hiddifypanel/panel/admin/SettingAdmin.py:154
-#: hiddifypanel/panel/admin/SettingAdmin.py:157
-#: hiddifypanel/panel/commercial/CommercialSettings.py:169
-#: hiddifypanel/panel/commercial/CommercialSettings.py:172
+#: hiddifypanel/panel/admin/SettingAdmin.py:170
+#: hiddifypanel/panel/admin/SettingAdmin.py:173
+#: hiddifypanel/panel/commercial/CommercialSettings.py:170
+#: hiddifypanel/panel/commercial/CommercialSettings.py:173
 msgid "config.Invalid domain"
 msgstr "错误！域无效。域格式为 www.google.com"
 
 # | msgid "Domain is exist in domains section. Use another domain"
 #: hiddifypanel/panel/admin/QuickSetup.py:98
 #: hiddifypanel/panel/admin/QuickSetup.py:99
-#: hiddifypanel/panel/admin/SettingAdmin.py:161
-#: hiddifypanel/panel/admin/SettingAdmin.py:162
-#: hiddifypanel/panel/commercial/CommercialSettings.py:176
+#: hiddifypanel/panel/admin/SettingAdmin.py:177
+#: hiddifypanel/panel/admin/SettingAdmin.py:178
 #: hiddifypanel/panel/commercial/CommercialSettings.py:177
+#: hiddifypanel/panel/commercial/CommercialSettings.py:178
 msgid "config.Domain already used"
 msgstr "域存在于域部分。使用另一个域"
 
@@ -531,58 +537,66 @@ msgid ""
 msgstr "域 (%(domain)s)-> IP=%(domain_ip)s 与您的 ip=%(server_ip)s 不匹配，这在直接模式下是必需的。"
 
 # | msgid "Port is already used! in:"
-#: hiddifypanel/panel/admin/SettingAdmin.py:62
+#: hiddifypanel/panel/admin/SettingAdmin.py:56
 #: hiddifypanel/panel/commercial/CommercialSettings.py:56
 #, fuzzy
 msgid "Port is already used! in"
 msgstr "端口已被占用！在："
 
+#: hiddifypanel/panel/admin/SettingAdmin.py:64
+#: hiddifypanel/panel/admin/SettingAdmin.py:67
+#: hiddifypanel/panel/commercial/CommercialSettings.py:64
+#: hiddifypanel/panel/commercial/CommercialSettings.py:67
+#, fuzzy
+msgid "Can not connect to parent panel!"
+msgstr "无法连接到父面板！"
+
 # | msgid "Chinese چینی 中国人"
-#: hiddifypanel/panel/admin/SettingAdmin.py:136
-#: hiddifypanel/panel/commercial/CommercialSettings.py:149
+#: hiddifypanel/panel/admin/SettingAdmin.py:150
+#: hiddifypanel/panel/commercial/CommercialSettings.py:150
 msgid "lang.zh"
 msgstr "Chinese چینی 中国人"
 
-#: hiddifypanel/panel/admin/SettingAdmin.py:140
-#: hiddifypanel/panel/commercial/CommercialSettings.py:153
+#: hiddifypanel/panel/admin/SettingAdmin.py:154
+#: hiddifypanel/panel/commercial/CommercialSettings.py:154
 #, fuzzy
 msgid "Release"
 msgstr "发布"
 
-#: hiddifypanel/panel/admin/SettingAdmin.py:140
-#: hiddifypanel/panel/commercial/CommercialSettings.py:153
+#: hiddifypanel/panel/admin/SettingAdmin.py:154
+#: hiddifypanel/panel/commercial/CommercialSettings.py:154
 #, fuzzy
 msgid "Develop"
 msgstr "آخ犹"
 
 # | msgid "Python: low performance"
-#: hiddifypanel/panel/admin/SettingAdmin.py:146
-#: hiddifypanel/panel/commercial/CommercialSettings.py:159
+#: hiddifypanel/panel/admin/SettingAdmin.py:160
+#: hiddifypanel/panel/commercial/CommercialSettings.py:160
 msgid "lib.telegram.python"
 msgstr "Python：低性能"
 
 # | msgid "Go: high performance: No ad support"
-#: hiddifypanel/panel/admin/SettingAdmin.py:146
-#: hiddifypanel/panel/commercial/CommercialSettings.py:159
+#: hiddifypanel/panel/admin/SettingAdmin.py:160
+#: hiddifypanel/panel/commercial/CommercialSettings.py:160
 msgid "lib.telegram.go"
 msgstr "Go：高性能：无广告支持"
 
 # | msgid "NOT Working: Original: high performance"
-#: hiddifypanel/panel/admin/SettingAdmin.py:146
-#: hiddifypanel/panel/commercial/CommercialSettings.py:159
+#: hiddifypanel/panel/admin/SettingAdmin.py:160
+#: hiddifypanel/panel/commercial/CommercialSettings.py:160
 msgid "lib.telegram.orignal"
 msgstr "原文：高性能"
 
 # | msgid "NOT Working: Erlang: medium performance"
-#: hiddifypanel/panel/admin/SettingAdmin.py:146
-#: hiddifypanel/panel/commercial/CommercialSettings.py:159
+#: hiddifypanel/panel/admin/SettingAdmin.py:160
+#: hiddifypanel/panel/commercial/CommercialSettings.py:160
 msgid "lib.telegram.erlang"
 msgstr "Erlang：中等性能"
 
 # | msgid "Telegram Proxy Library"
-#: hiddifypanel/panel/admin/SettingAdmin.py:147
+#: hiddifypanel/panel/admin/SettingAdmin.py:161
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-#: hiddifypanel/panel/commercial/CommercialSettings.py:160
+#: hiddifypanel/panel/commercial/CommercialSettings.py:161
 msgid "config.telegram_lib.label"
 msgstr "电报代理库"
 
@@ -592,32 +606,52 @@ msgstr "电报代理库"
 # | "python works in all servers, others may have some issue. Test proxy after
 # "
 # | "changing it."
-#: hiddifypanel/panel/admin/SettingAdmin.py:147
+#: hiddifypanel/panel/admin/SettingAdmin.py:161
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-#: hiddifypanel/panel/commercial/CommercialSettings.py:160
+#: hiddifypanel/panel/commercial/CommercialSettings.py:161
 msgid "config.telegram_lib.description"
 msgstr "您可以在不同的电报库之间切换。"
+
+#: hiddifypanel/panel/admin/SettingAdmin.py:182
+#: hiddifypanel/panel/commercial/CommercialSettings.py:182
+#, fuzzy
+msgid "Invalid admin link"
+msgstr "管理员链接无效"
+
+# | msgid "Invalid Telegram bot token."
+#: hiddifypanel/panel/admin/SettingAdmin.py:184
+#: hiddifypanel/panel/commercial/CommercialSettings.py:184
+#, fuzzy
+msgid "config.Invalid telegram bot token"
+msgstr "电报机器人令牌无效"
+
+# | msgid ""
+# | "Invalid link. it should be on this format: (https or http://example.com)"
+#: hiddifypanel/panel/admin/SettingAdmin.py:186
+#: hiddifypanel/panel/commercial/CommercialSettings.py:186
+msgid "config.Invalid brand link"
+msgstr "品牌链接无效"
 
 # | msgid ""
 # | "Invalid UUID secret. Example: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n"
 # | "\n"
-#: hiddifypanel/panel/admin/SettingAdmin.py:169
-#: hiddifypanel/panel/commercial/CommercialSettings.py:189
+#: hiddifypanel/panel/admin/SettingAdmin.py:190
+#: hiddifypanel/panel/commercial/CommercialSettings.py:190
 msgid "config.invalid uuid"
 msgstr "UUID 密码无效。例如，6098ea35-8cb2-4a08-ba15-2be25bc49cb6"
 
 # | msgid "Invalid proxy path. It should be asci string (a-z A-Z 0-9)"
-#: hiddifypanel/panel/admin/SettingAdmin.py:173
-#: hiddifypanel/panel/commercial/CommercialSettings.py:193
+#: hiddifypanel/panel/admin/SettingAdmin.py:194
+#: hiddifypanel/panel/commercial/CommercialSettings.py:194
 msgid "config.Invalid proxy path"
 msgstr "代理路径无效。它应该是 asci 字符串 (a-z A-Z 0-9)"
 
 # | msgid ""
 # | "Invalid port. It should be comma separated integer e.g., 1000,1001"
-#: hiddifypanel/panel/admin/SettingAdmin.py:178
-#: hiddifypanel/panel/admin/SettingAdmin.py:181
-#: hiddifypanel/panel/commercial/CommercialSettings.py:198
-#: hiddifypanel/panel/commercial/CommercialSettings.py:201
+#: hiddifypanel/panel/admin/SettingAdmin.py:199
+#: hiddifypanel/panel/admin/SettingAdmin.py:202
+#: hiddifypanel/panel/commercial/CommercialSettings.py:199
+#: hiddifypanel/panel/commercial/CommercialSettings.py:202
 msgid "config.Invalid port"
 msgstr "端口无效。它应该是逗号分隔的整数，例如 1000,1001"
 
@@ -836,11 +870,10 @@ msgstr ""
 "href=\"tg://resolve?domain=HiddifyCommercial\">@HiddifyCommercial</a>。\n"
 "发消息获取商务用户专用版。"
 
-# | msgid "Settings"
 #: hiddifypanel/panel/admin/templates/config.html:11
-#: hiddifypanel/panel/commercial/templates/configc.html:11
-msgid "admin.config.title"
-msgstr "设置"
+#, fuzzy
+msgid "Search Settings"
+msgstr "搜索设置"
 
 # | msgid "CDN"
 #: hiddifypanel/panel/admin/templates/configfake.html:5
@@ -1370,8 +1403,11 @@ msgstr "云火焰 API"
 # | "Cloudflare-API\" target=\"_blank\">the instruction</a> and paste the "
 # | "cloudflare API key"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
 msgid "config.cloudflare.description"
 msgstr ""
+"请按照<a href=\"https://github.com/hiddify/hiddify-config/wiki/Get-"
+"Cloudflare-API\" target=\"_blank\">说明</a>并粘贴cloudflare API密钥"
 
 # | msgid "Advanced Settings"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1654,58 +1690,146 @@ msgstr "Shadowsocks路径"
 msgid "config.path_ss.description"
 msgstr "链接中的 Shadowsocks 路径"
 
+#: hiddifypanel/panel/admin/templates/index.html:30
+#, fuzzy
+msgid "Total Usage"
+msgstr "总使用量"
+
+#: hiddifypanel/panel/admin/templates/index.html:33
+#: hiddifypanel/panel/admin/templates/index.html:38
+#: hiddifypanel/panel/admin/templates/index.html:43
+#: hiddifypanel/panel/admin/templates/index.html:48
+#, fuzzy
+msgid "Online"
+msgstr "在线的"
+
+#: hiddifypanel/panel/admin/templates/index.html:35
+#, fuzzy
+msgid "Month Usage"
+msgstr "每月使用量"
+
+#: hiddifypanel/panel/admin/templates/index.html:40
+#, fuzzy
+msgid "Yesterday Usage"
+msgstr "昨天使用情况"
+
+#: hiddifypanel/panel/admin/templates/index.html:45
+#, fuzzy
+msgid "Today Usage"
+msgstr "今天的用法"
+
+#: hiddifypanel/panel/admin/templates/index.html:53
+#, fuzzy
+msgid "Online Users"
+msgstr "在线用户"
+
+#: hiddifypanel/panel/admin/templates/index.html:53
+#, fuzzy
+msgid "In 24 hours"
+msgstr "24小时内"
+
+#: hiddifypanel/panel/admin/templates/index.html:54
+#, fuzzy
+msgid "CPU"
+msgstr "中央处理器"
+
+#: hiddifypanel/panel/admin/templates/index.html:57
+#, fuzzy
+msgid "Average"
+msgstr "平均的"
+
+#: hiddifypanel/panel/admin/templates/index.html:60
+#, fuzzy
+msgid "RAM"
+msgstr "内存"
+
+#: hiddifypanel/panel/admin/templates/index.html:63
+#, fuzzy
+msgid "Highest"
+msgstr "最高"
+
+#: hiddifypanel/panel/admin/templates/index.html:66
+#, fuzzy
+msgid "Network"
+msgstr "网络"
+
+#: hiddifypanel/panel/admin/templates/index.html:69
+#, fuzzy
+msgid "From Last Restart"
+msgstr "从上次重启"
+
+#: hiddifypanel/panel/admin/templates/index.html:71
+#, fuzzy
+msgid "Connections/IP"
+msgstr "连接数/IP"
+
+#: hiddifypanel/panel/admin/templates/index.html:74
+#, fuzzy
+msgid "CDN make it incorrect"
+msgstr "CDN使它不正确"
+
+#: hiddifypanel/panel/admin/templates/index.html:76
+#, fuzzy
+msgid "Disk"
+msgstr "磁盘"
+
+#: hiddifypanel/panel/admin/templates/index.html:79
+#, fuzzy
+msgid "Hiddify"
+msgstr "隐藏"
+
 # | msgid "CPU Usage"
-#: hiddifypanel/panel/admin/templates/index.html:12
-#: hiddifypanel/panel/admin/templates/index.html:32
-#: hiddifypanel/panel/admin/templates/index.html:246
-#: hiddifypanel/panel/admin/templates/index.html:257
+#: hiddifypanel/panel/admin/templates/index.html:91
+#: hiddifypanel/panel/admin/templates/index.html:111
+#: hiddifypanel/panel/admin/templates/index.html:325
+#: hiddifypanel/panel/admin/templates/index.html:336
 msgid "admin.cpu_chart"
 msgstr "CPU使用率图表"
 
 # | msgid "RAM Usage"
-#: hiddifypanel/panel/admin/templates/index.html:46
-#: hiddifypanel/panel/admin/templates/index.html:67
-#: hiddifypanel/panel/admin/templates/index.html:79
-#: hiddifypanel/panel/admin/templates/index.html:113
-#: hiddifypanel/panel/admin/templates/index.html:145
+#: hiddifypanel/panel/admin/templates/index.html:125
+#: hiddifypanel/panel/admin/templates/index.html:146
+#: hiddifypanel/panel/admin/templates/index.html:158
+#: hiddifypanel/panel/admin/templates/index.html:192
+#: hiddifypanel/panel/admin/templates/index.html:224
 msgid "admin.ram_chart"
 msgstr "内存使用图表"
 
-#: hiddifypanel/panel/admin/templates/index.html:103
+#: hiddifypanel/panel/admin/templates/index.html:182
 #, fuzzy
 msgid "Online Users in 24 hours"
 msgstr "24小时在线用户"
 
 # | msgid "IPv4 connections"
-#: hiddifypanel/panel/admin/templates/index.html:134
+#: hiddifypanel/panel/admin/templates/index.html:213
 #, fuzzy
 msgid "admin.ipv4 connections"
 msgstr "IPv4 连接"
 
 # | msgid "IPv6 connections"
-#: hiddifypanel/panel/admin/templates/index.html:166
+#: hiddifypanel/panel/admin/templates/index.html:245
 #, fuzzy
 msgid "admin.ipv6 connections"
 msgstr "IPv6 连接"
 
 # | msgid "Network Usage"
-#: hiddifypanel/panel/admin/templates/index.html:179
-#: hiddifypanel/panel/admin/templates/index.html:212
-#: hiddifypanel/panel/admin/templates/index.html:223
+#: hiddifypanel/panel/admin/templates/index.html:258
+#: hiddifypanel/panel/admin/templates/index.html:291
+#: hiddifypanel/panel/admin/templates/index.html:302
 msgid "admin.network_chart"
 msgstr "网络使用"
 
 # | msgid "Protocol Usage Chart"
-#: hiddifypanel/panel/admin/templates/index.html:211
+#: hiddifypanel/panel/admin/templates/index.html:290
 msgid "admin.protocol_chart"
 msgstr "协议使用图表"
 
 # | msgid "Users Usage Chart"
-#: hiddifypanel/panel/admin/templates/index.html:245
+#: hiddifypanel/panel/admin/templates/index.html:324
 msgid "admin.user_chart"
 msgstr "用户使用图表"
 
-#: hiddifypanel/panel/admin/templates/index.html:278
+#: hiddifypanel/panel/admin/templates/index.html:357
 #, fuzzy
 msgid ""
 "You have disabled netdata in the setting. You need to enable it to see "
@@ -1798,21 +1922,21 @@ msgstr ""
 msgid "Please copy the emergency link before leaving this page."
 msgstr "离开此页面前，请复制并保存紧急访问链接。"
 
-#: hiddifypanel/panel/admin/templates/result.html:30
+#: hiddifypanel/panel/admin/templates/result.html:31
 msgid "Please wait "
 msgstr ""
 
-#: hiddifypanel/panel/admin/templates/result.html:30
+#: hiddifypanel/panel/admin/templates/result.html:31
 msgid "seconds"
 msgstr ""
 
 # | msgid "Log"
-#: hiddifypanel/panel/admin/templates/result.html:36
+#: hiddifypanel/panel/admin/templates/result.html:37
 msgid "log"
 msgstr "日志"
 
 # | msgid "Click here to see the complete log."
-#: hiddifypanel/panel/admin/templates/result.html:37
+#: hiddifypanel/panel/admin/templates/result.html:38
 msgid "Click here to see the complete log"
 msgstr "单击此处查看完整日志。"
 
@@ -1847,29 +1971,6 @@ msgid ""
 msgstr ""
 "用户使用情况将每 6 分钟更新一次。现在要更新它，请点击<a href=\"%(link)s\" class=\"btn btn-"
 "info\">此处</a>。"
-
-#: hiddifypanel/panel/commercial/CommercialSettings.py:64
-#: hiddifypanel/panel/commercial/CommercialSettings.py:67
-#, fuzzy
-msgid "Can not connect to parent panel!"
-msgstr "无法连接到父面板！"
-
-#: hiddifypanel/panel/commercial/CommercialSettings.py:181
-#, fuzzy
-msgid "Invalid admin link"
-msgstr "管理员链接无效"
-
-# | msgid "Invalid Telegram bot token."
-#: hiddifypanel/panel/commercial/CommercialSettings.py:183
-#, fuzzy
-msgid "config.Invalid telegram bot token"
-msgstr "电报机器人令牌无效"
-
-# | msgid ""
-# | "Invalid link. it should be on this format: (https or http://example.com)"
-#: hiddifypanel/panel/commercial/CommercialSettings.py:185
-msgid "config.Invalid brand link"
-msgstr "品牌链接无效"
 
 #: hiddifypanel/panel/commercial/telegrambot/Usage.py:16
 #: hiddifypanel/panel/commercial/telegrambot/information.py:55
@@ -1933,6 +2034,11 @@ msgstr ""
 "\n"
 "\n"
 "祝你好运！ 🎉 🎉 🎉"
+
+# | msgid "Settings"
+#: hiddifypanel/panel/commercial/templates/configc.html:11
+msgid "admin.config.title"
+msgstr "设置"
 
 # | msgid "Children"
 #: hiddifypanel/panel/commercial/templates/parent_dash.html:19
