@@ -112,7 +112,7 @@ legend {
  transform: translateX(-20px);
   transition: all 0.3s ease-in-out;
   }
-#main-sidebar{
+#main-sidebar,#main-sidebar .brand-link{
     width: 100px;
 }
 
@@ -162,5 +162,5 @@ legend {
 }
 .sub-sidebar {
   background-image: linear-gradient(195deg,#185f9d,#135085)!important;
- 
+  width:200px;
 }

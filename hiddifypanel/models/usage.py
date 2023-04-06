@@ -10,7 +10,7 @@ from sqlalchemy_serializer import SerializerMixin
 class DailyUsage(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     date = db.Column(db.Date, default=datetime.date.today())
-    usage = db.Column(db.BigInteger(), default=0, nullable=False)
+    usage = db.Column(db.BigInteger, default=0, nullable=False)
     online = db.Column(db.Integer, default=0, nullable=False)
     
 from sqlalchemy import column
@@ -44,8 +44,8 @@ def get_daily_usage_stats():
 
     # Return the usage stats as a dictionary
     return {
-        "today": {"usage": today_stats[0]//1024**3, "online": today_stats[1]},
-        "yesterday": {"usage": yesterday_stats[0]//1024**3, "online": yesterday_stats[1]},
-        "last_30_days": {"usage": last_30_days_stats[0]//1024**3, "online": last_30_days_stats[1]},
-        "total": {"usage": total_stats[0]//1024**3, "online": total_stats[1]}
+        "today": {"usage": today_stats[0], "online": today_stats[1]},
+        "yesterday": {"usage": yesterday_stats[0], "online": yesterday_stats[1]},
+        "last_30_days": {"usage": last_30_days_stats[0], "online": last_30_days_stats[1]},
+        "total": {"usage": total_stats[0], "online": total_stats[1]}
     }

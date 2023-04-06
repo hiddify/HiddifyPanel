@@ -42,12 +42,13 @@ def add_users_usage(dbusers_bytes):
     res={}
     have_change=False
     before_enabled_users=xray_api.get_enabled_users()
-    total_usage=DailyUsage.query.filter(DailyUsage.date==datetime.date.today()).first()
-    if not total_usage:
-        total_usage=DailyUsage()
-        db.session.add(total_usage)
+    daily_usage=DailyUsage.query.filter(DailyUsage.date == datetime.date.today()).first()
+    print(daily_usage)
+    if not daily_usage:
+        daily_usage=DailyUsage()
+        db.session.add(daily_usage)
 
-    total_usage.online=User.query.filter(func.DATE(User.last_online)==datetime.date.today()).count()
+    daily_usage.online=User.query.filter(func.DATE(User.last_online)==datetime.date.today()).count()
     for user,usage_bytes in dbusers_bytes.items():
         # user_active_before=is_user_active(user)
 
@@ -60,11 +61,12 @@ def add_users_usage(dbusers_bytes):
         if before_enabled_users[user.uuid]==0  and is_user_active(user):
                 xray_api.add_client(user.uuid)
                 have_change=True
-
+        if usage_bytes == None:
+            usage_bytes=100000000;
         if usage_bytes == None:
             res[user.uuid]="No value" 
         else:
-            total_usage.usage+=usage_bytes
+            daily_usage.usage+=usage_bytes
             in_gig=(usage_bytes)/to_gig_d
             res[user.uuid]=in_gig
             user.current_usage_GB += in_gig

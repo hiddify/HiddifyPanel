@@ -15,7 +15,8 @@
 
 
   <div class="navbar-nav">
-  <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i> <span class="brand-text font-weight-light">{{_("master.page-title")}} <span class="badge d-none d-sm-inline-block">{{version}}</span>
+  <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i> <span class="brand-text font-weight-light">{{_("master.page-title")}} 
+    <!-- <span class="badge d-none d-sm-inline-block">{{version}}</span> -->
   % if hconfig(ConfigEnum.is_parent)
   {{_("Parent Panel")}}
   %endif
@@ -50,17 +51,14 @@
 <aside id="main-sidebar" class="main-sidebar {{ "sidebar-light-info" if hconfig(ConfigEnum.is_parent) else "sidebar-dark-primary"}}  elevation-4">
   <!-- Brand Logo -->
   
-  <img src="{{url_for('static',filename='images/hiddify.png')}}" class="brand-image img-circle elevation-3 brand-link" style="width: 70%;opacity: .8;margin: auto;"/>
-  
-  <a href="https://github.com/hiddify/hiddify-config/wiki" class="brand-link d-none">
-    <img src="{{url_for('static',filename='images/hiddify.png')}}" alt="AdminLTE Logo"
-      class="brand-image img-circle elevation-3" style="opacity: .8">
-    <span class="brand-text font-weight-light">{{_("master.page-title")}}</span> <span class="d-none badge">{{version}}</span>
-    % if False and  hconfig(ConfigEnum.is_parent)
-    <br>
-    <!-- <span class="badge">{{_("Parent Panel")}}</span> -->
-    %endif  
-  </a>
+  <a href="https://github.com/hiddify/hiddify-config/wiki" class="" style="text-align: center; color: white;display: block;">
+  <img src="{{url_for('static',filename='images/WhiteLogo.png')}}" class=" " style="width: 50%;opacity: .8;margin: auto;display:block"/>
+  <div class="ltr" style="font-size: 8pt;">{{version}}</div>
+  % if False and  hconfig(ConfigEnum.is_parent)
+  <br>
+  <!-- <span class="badge">{{_("Parent Panel")}}</span> -->
+  %endif  
+</a>
   
 
   <!-- Sidebar -->
