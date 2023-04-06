@@ -63,11 +63,14 @@ def remaining_days(u):
     current date and the user's start date. The function returns the remaining days as an integer value. If the start
     date is not available, the function returns the total package days.
     """
+    res=-1
     if not u.package_days:
-        return -1
-    if u.start_date:
-        return min(u.package_days - (datetime.date.today() - u.start_date).days,10000)
-    return min(u.package_days ,10000)
+        res= -1
+    elif u.start_date:
+        res=u.package_days - (datetime.date.today() - u.start_date).days
+    else:
+        res=u.package_days 
+    return min(res,10000)
 
 
 package_mode_dic = {
