@@ -152,7 +152,7 @@ class ConfigEnum(StrEnum):
             self.decoy_domain: {'category': ConfigCategory.general,'apply_mode':'apply'},
             self.country: {'category': ConfigCategory.general,'apply_mode':'restart'},
             self.firewall: {'category': ConfigCategory.general,'type':bool,'apply_mode':'apply'},
-            self.netdata: {'category': ConfigCategory.general,'type':bool,'apply_mode':'apply'},
+            self.netdata: {'category': ConfigCategory.hidden,'type':bool,'apply_mode':'apply'},
             self.http_proxy_enable: {'category': ConfigCategory.http,'type':bool},
             self.block_iran_sites: {'category': ConfigCategory.proxies,'type':bool,'apply_mode':'apply'},
             self.allow_invalid_sni: {'category': ConfigCategory.tls,'type':bool,'apply_mode':'apply'},

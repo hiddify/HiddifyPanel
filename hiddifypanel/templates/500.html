@@ -17,6 +17,9 @@
     </div>
     %if not has_update
     <pre class="ltr">
+        {%if "codec can't encode characters" in error %}
+        Please restart the server.
+        {%endif%}
 {{error}}
 {{trace}}
                     </pre>

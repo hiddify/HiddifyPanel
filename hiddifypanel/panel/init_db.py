@@ -83,6 +83,9 @@ def init_db():
     db.session.commit()
     return BoolConfig.query.all()
 
+def _v27():
+    # add_config_if_not_exist(ConfigEnum.cloudflare, "")
+    set_hconfig(ConfigEnum.netdata, False)
 def _v26():
     add_config_if_not_exist(ConfigEnum.cloudflare, "")
 

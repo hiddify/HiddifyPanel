@@ -65,8 +65,8 @@ def add_client(uuid):
             p,protocol =proto(t)
             if not p:
                 continue
-            if False and protocol=="vless" and p!="xtls":
-                xray_client.add_client(t,f'{uuid}', f'{uuid}@hiddify.com',protocol=protocol,flow=None,)
+            if protocol=="vless" and p!="xtls":
+                xray_client.add_client(t,f'{uuid}', f'{uuid}@hiddify.com',protocol=protocol,flow='\0',)
             else:
                 xray_client.add_client(t,f'{uuid}', f'{uuid}@hiddify.com',protocol=protocol,flow='xtls-rprx-vision',alter_id=0,cipher='chacha20_poly1305')
             print(f"Success add  {uuid} {t}")
