@@ -204,6 +204,7 @@ def get_common_data(user_uuid,mode,no_domain=False,filter_domain=None):
     return {
         # 'direct_host':direct_host,
         'user':user,
+        'user_activate':is_user_active(user),
         'domain':domain,       
         'mode':mode,
         'fake_ip_for_sub_link':datetime.datetime.now().strftime(f"20.%y.%m.%d:{max(1,datetime.datetime.now().hour)}"),

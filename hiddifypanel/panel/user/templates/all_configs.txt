@@ -1,4 +1,6 @@
-#trojan://1@{{fake_ip_for_sub_link}}#{{user.current_usage_GB|round(3)}}/{{user.usage_limit_GB}}GB_Remain:{{expire_days}}days 
+trojan://1@{{fake_ip_for_sub_link}}#{{user.current_usage_GB|round(3)}}/{{user.usage_limit_GB}}GB_Remain:{{expire_days}}days 
+
+%if  user_activate
 
 # Hiddify auto ip: {{ip_debug}}
 
@@ -29,4 +31,6 @@
 
 % endfor
 
-
+%else
+trojan://1@{{fake_ip_for_sub_link}}#{{user.name}} package ended 
+%endif

@@ -5,9 +5,9 @@
 {% block title %}Home | Admin |Hiddify{% endblock %}
 
 {% block body %}
-{% macro info_box(id,icon,title,number,percentage,description,coloring=False) -%}
+{% macro info_box(id,icon,title,number,percentage,description,coloring=False,color_class='secondary') -%}
 <div class="col-md-4  col-sm-6">
-    <div id={{id}} class="info-box bg-gradient-secondary {{ ("bg-gradient-"+ ("danger" if percentage>90 else ("warning" if percentage>75 else ""))) if coloring else ""}} {%if "disk"==id %} d-none d-md-flex {%endif%}">
+    <div id={{id}} class="info-box bg-gradient-{{color_class}} {{ ("bg-gradient-"+ ("danger" if percentage>90 else ("warning" if percentage>75 else ""))) if coloring else ""}} {%if "disk"==id %} d-none d-md-flex {%endif%}">
         <span class="info-box-icon"><i class="{{icon}}"></i></span>
         <div class="info-box-content">
             <span class="info-box-text htitle">{{title}}</span>
@@ -54,22 +54,26 @@
     {{info_box("today","fa-solid fa-calendar", _("Today Usage"), 
             ((usage_history['today']['usage']/1024**3)|round(1)) ~ " GB", 
             usage_history['today']['online']/total_users*100, 
-            _("Online Users") ~": "~ usage_history['today']['online'] ~ " / "~ total_users
+            _("Online Users") ~": "~ usage_history['today']['online'] ~ " / "~ total_users,
+            color_class="lightblue"
     )}}
     {{info_box("yesterday","fa-solid fa-calendar-day", _("Yesterday Usage"), 
             ((usage_history['yesterday']['usage']/1024**3)|round(1)) ~ " GB", 
             usage_history['yesterday']['online']/total_users*100, 
-            _("Online Users") ~": "~ usage_history['yesterday']['online'] ~ " / "~ total_users
+            _("Online Users") ~": "~ usage_history['yesterday']['online'] ~ " / "~ total_users,
+            color_class="purple"
     )}}
     {{info_box("last_30_days","fa-solid fa-calendar-days", _("Month Usage"), 
             ((usage_history['last_30_days']['usage']/1024**3)|round(1)) ~ " GB", 
             usage_history['last_30_days']['online']/total_users*100, 
-            _("Online Users") ~": "~ usage_history['last_30_days']['online'] ~ " / "~ total_users
+            _("Online Users") ~": "~ usage_history['last_30_days']['online'] ~ " / "~ total_users,
+            color_class="maroon"
     )}}
     {{info_box("total","fa-solid fa-chart-pie", _("Total Usage"), 
             ((usage_history['total']['usage']/1024**3)|round(1)) ~ " GB", 
             usage_history['total']['online']/total_users*100, 
-            _("Online Users") ~": "~ usage_history['total']['online'] ~ " / "~ total_users
+            _("Online Users") ~": "~ usage_history['total']['online'] ~ " / "~ total_users,
+            color_class="navy"
     )}}
     
     
@@ -77,14 +81,21 @@
 
     
 
-    {{info_box("online","fa-solid fa-users", _("Online Users"), onlines ~ " / "~ total_users, onlines/total_users*100, _('In 24 hours'))}}
+    {{info_box("online","fa-solid fa-users",
+         _("Online Users"), 
+         onlines ~ " / "~ total_users, 
+         onlines/total_users*100, 
+         _('In 24 hours'),
+         color_class="olive"
+    )}}
     {{info_box("cpu","fa-solid fa-microchip", _("CPU"), 
             ((stats['system']['load_avg_5min']*100)|int) ~ " % "  , 
             (stats['system']['load_avg_5min']*100)|int, 
             ('<i class="fa-solid fa-gauge"></i> '|safe) ~  stats['top5']['cpu'][0][0] ~ " &rlm;"|safe ~ ((stats['top5']['cpu'][0][1])|int) ~ "% &rlm;"|safe~
             ('<i class="fa-solid fa-gauge"></i> '|safe) ~  stats['top5']['cpu'][1][0] ~ " &rlm;"|safe ~ ((stats['top5']['cpu'][1][1])|int) ~ "% &rlm;"|safe~
             ('<i class="fa-solid fa-gauge"></i> '|safe) ~  stats['top5']['cpu'][2][0] ~ " &rlm;"|safe ~ ((stats['top5']['cpu'][2][1])|int) ~ "%",
-            coloring=True
+            coloring=True,
+            color_class="info"
     )}}
     {{info_box("ram","fa-solid fa-memory", _("RAM"), 
             (stats['system']['ram_used']|round(1)) ~ " / " ~ (stats['system']['ram_total']|round(1)) ~ "GB (" ~((stats['system']['ram_used']*100/stats['system']['ram_total'])|int)~" %)", 
@@ -92,12 +103,14 @@
             ('<i class="fa-solid fa-gauge"></i> '|safe) ~  stats['top5']['memory'][0][0] ~ " &rlm;"|safe ~ ((stats['top5']['memory'][0][1]*100/stats['system']['ram_total'])|int) ~ "% &rlm;"|safe~
             ('<i class="fa-solid fa-gauge"></i> '|safe) ~  stats['top5']['memory'][1][0] ~ " &rlm;"|safe ~ ((stats['top5']['memory'][1][1]*100/stats['system']['ram_total'])|int) ~ "% &rlm;"|safe~
             ('<i class="fa-solid fa-gauge"></i> '|safe) ~  stats['top5']['memory'][2][0] ~ " &rlm;"|safe ~ ((stats['top5']['memory'][2][1]*100/stats['system']['ram_total'])|int) ~ "% ",
-            coloring=True
+            coloring=True,
+            color_class="secondary"
     )}}
     {{info_box("network","fa-solid fa-network-wired", _("Network"), 
             (stats['system']['net_sent_cumulative_GB']|round(1)) ~ "GB", 
             0, 
-            _("From Last Restart")
+            _("From Last Restart"),
+            color_class="secondary"
     )}}
     {#info_box("connections","fa-solid fa-signal", _("Connections/IP"), 
             stats['system']['total_unique_ips'] ~ " / " ~ stats['system']['total_connections'], 
@@ -108,7 +121,8 @@
         (stats['system']['disk_used']|round(1)) ~ " / "~(stats['system']['disk_total']|round(1))~"GB", 
         stats['system']['disk_used']*100/stats['system']['disk_total'], 
         _("Hiddify") ~ ": " ~ (stats['system']['hiddify_used']|round(1)) ~ "GB",
-        coloring=True
+        coloring=True,
+        color_class='secondary'
     )}}
     
     </div>
@@ -127,14 +141,15 @@ function update_box(id,title,number,percentage,description,coloring){
     $("#"+id).find(".hprogress").css('width',percentage+"%")
     $("#"+id).find(".hdescription").html(description)
     if (coloring==true){
-        $("#"+id).removeClass()
+        $("#"+id).removeClass('bg-gradient-danger')
+        $("#"+id).removeClass('bg-gradient-warning')
         $("#"+id).addClass("info-box")
         if (percentage>90){
             $("#"+id).addClass("bg-gradient-danger")
         }else if (percentage>75){
             $("#"+id).addClass("bg-gradient-warning")
         }else{
-            $("#"+id).addClass("bg-gradient-secondary")
+            // $("#"+id).addClass("bg-gradient-secondary")
         }
     }
 }
@@ -181,18 +196,18 @@ info_box("online", "fa-solid fa-users", "Online Users",
 info_box("cpu", "fa-solid fa-microchip", "CPU",
     (stats['system']['load_avg_5min'] * 100).toFixed(0) + " %",
     (stats['system']['load_avg_5min'] * 100).toFixed(0),
-    "<i class='fa-solid fa-gauge'></i> " + stats['top5']['cpu'][0][0] + " &rlm;" + (stats['top5']['cpu'][0][1]).toFixed(0) + "% &rlm;" +
-    "<i class='fa-solid fa-gauge'></i> " + stats['top5']['cpu'][1][0] + " &rlm;" + (stats['top5']['cpu'][1][1]).toFixed(0) + "% &rlm;" +
-    "<i class='fa-solid fa-gauge'></i> " + stats['top5']['cpu'][2][0] + " &rlm;" + (stats['top5']['cpu'][2][1]).toFixed(0) + "%",
+    "<i class='fa-solid fa-gauge'></i> " + stats['top5']['cpu'][0][0] + " &rlm;" + (stats['top5']['cpu'][0][1]).toFixed(0) + "% &rlm; " +
+    " <i class='fa-solid fa-gauge'></i> " + stats['top5']['cpu'][1][0] + " &rlm;" + (stats['top5']['cpu'][1][1]).toFixed(0) + "% &rlm; " +
+    " <i class='fa-solid fa-gauge'></i> " + stats['top5']['cpu'][2][0] + " &rlm;" + (stats['top5']['cpu'][2][1]).toFixed(0) + "%",
     true
 );
 
 info_box("ram", "fa-solid fa-memory", "RAM",
     stats['system']['ram_used'].toFixed(1) + " / " + stats['system']['ram_total'].toFixed(1) + "GB (" + (stats['system']['ram_used'] * 100 / stats['system']['ram_total']).toFixed(0) + " %)",
     stats['system']['ram_used'] * 100 / stats['system']['ram_total'].toFixed(0),
-    "<i class='fa-solid fa-gauge'></i> " + stats['top5']['memory'][0][0] + " &rlm;" + (stats['top5']['memory'][0][1] * 100 / stats['system']['ram_total']).toFixed(0) + "% &rlm;" +
-    "<i class='fa-solid fa-gauge'></i> " + stats['top5']['memory'][1][0] + " &rlm;" + (stats['top5']['memory'][1][1] * 100 / stats['system']['ram_total']).toFixed(0) + "% &rlm;" +
-    "<i class='fa-solid fa-gauge'></i> " + stats['top5']['memory'][2][0] + " &rlm;" + (stats['top5']['memory'][2][1] * 100 / stats['system']['ram_total']).toFixed(0) + "% ",
+    "<i class='fa-solid fa-gauge'></i> " + stats['top5']['memory'][0][0] + " &rlm;" + (stats['top5']['memory'][0][1] * 100 / stats['system']['ram_total']).toFixed(0) + "% &rlm; " +
+    " <i class='fa-solid fa-gauge'></i> " + stats['top5']['memory'][1][0] + " &rlm;" + (stats['top5']['memory'][1][1] * 100 / stats['system']['ram_total']).toFixed(0) + "% &rlm; " +
+    " <i class='fa-solid fa-gauge'></i> " + stats['top5']['memory'][2][0] + " &rlm;" + (stats['top5']['memory'][2][1] * 100 / stats['system']['ram_total']).toFixed(0) + "% ",
     true
 );
 
@@ -208,6 +223,7 @@ stats['system']['disk_used'] * 100 / stats['system']['disk_total'],
 "Hiddify" + ": " + stats['system']['hiddify_used'].toFixed(1) + "GB",
 true
 );
+ConvertNumberToPersion();
 }
 function info_box(id, icon_class, title, number,percentage,description,coloring) {
     update_box(id,undefined,number,percentage,description,coloring)

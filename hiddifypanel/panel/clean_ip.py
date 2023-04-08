@@ -71,11 +71,13 @@ def get_real_user_ip_debug(user_ip=None):
     return f'{user_ip} {country} {asn} {asn_short} {"ERROR" if asn_short=="unknown" else ""} fullname={asn_dscr} default:{default}' 
 
 def get_real_user_ip():
+    user_ip=request.remote_addr
     for header in ['CF-Connecting-IP','ar-real-ip']:
         if header in request.headers:
-            return request.headers.get(header)
+            user_ip= request.headers.get(header)
+            break
         
-    return request.remote_addr
+    return user_ip
 
 def get_host_base_on_asn(ips,asn_short):
     if type(ips)==str:
@@ -91,10 +93,12 @@ def get_host_base_on_asn(ips,asn_short):
         if asn_short == ips[i+1]:
             print("selected ",ips[i],ips[i+1])
             all_hosts.append(ips[i])
+
+    selected= random.sample(valid_hosts,1)[0]
     if len(all_hosts):
-        return random.sample(all_hosts, 1)[0]
+        selected= random.sample(all_hosts, 1)[0]
     
-    return random.sample(valid_hosts,1)[0]
+    return selected
 
 def get_clean_ip(ips,resolve=False,default_asn=None):
     if not ips:
@@ -116,6 +120,6 @@ def get_clean_ip(ips,resolve=False,default_asn=None):
     print("selected_server",selected_server)
     if resolve:
         from hiddifypanel.panel import hiddify
-        return hiddify.get_domain_ip(selected_server) or selected_server
+        selected_server=hiddify.get_domain_ip(selected_server) or selected_server
     return selected_server
     

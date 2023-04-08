@@ -79,12 +79,13 @@ def asset_url(path):
 
 
 def get_ip(version, retry=3):
+    ip=None
     try:
-        return urllib.request.urlopen(f'https://v{version}.ident.me/').read().decode('utf8')
+        ip=urllib.request.urlopen(f'https://v{version}.ident.me/').read().decode('utf8')
     except:
-        if retry == 0:
-            return None
-        return get_ip(version, retry=retry-1)
+        if retry > 0:
+            ip= get_ip(version, retry=retry-1)
+    return ip
 
 
 def get_available_proxies(child_id):
@@ -108,9 +109,11 @@ def get_available_proxies(child_id):
 
     if not hconfig(ConfigEnum.http_proxy_enable,child_id):
         proxies = [c for c in proxies if 'http' != c.l3]
-
+    
     if not Domain.query.filter(Domain.mode.in_([DomainType.cdn,DomainType.auto_cdn_ip])).first():
         proxies = [c for c in proxies if c.cdn != "CDN"]
+
+    proxies = [c for c in proxies if not ('vless' == c.proto and ProxyTransport.tcp ==c.transport and c.cdn==ProxyCDN.direct)]
     return proxies
 
 
@@ -164,12 +167,11 @@ def get_domain_ip(domain,retry=3):
             res= socket.getaddrinfo(domain, None, socket.AF_INET6)[0][4][0]
         except:
             pass
-
-    if res: 
-        return res
+    
     if retry<=0:
         return None
-    return get_domain_ip(domain,retry=retry-1)
+    
+    return res or get_domain_ip(domain,retry=retry-1)
 
 
 def check_connection_to_remote(api_url):
@@ -268,11 +270,10 @@ def check_need_reset(old_configs,do=False):
 
     # do_full_install=old_config[ConfigEnum.telegram_lib]!=hconfig(ConfigEnum.telegram_lib)
 
-    if do and restart_mode =='reinstall':
-        return reinstall_action(complete_install=True, domain_changed=domain_changed)
+    if not (do and restart_mode =='reinstall'):
+        return flash_config_success(restart_mode=restart_mode, domain_changed=False)
         
-    else:
-        flash_config_success(restart_mode=restart_mode, domain_changed=False)
+    return reinstall_action(complete_install=True, domain_changed=domain_changed)
 
 
 def format_timedelta(delta, add_direction=True,granularity="days"):

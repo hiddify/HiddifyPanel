@@ -53,17 +53,16 @@ def add_users_usage(dbusers_bytes):
         # user_active_before=is_user_active(user)
 
         if not user.last_reset_time or (datetime.date.today()-user.last_reset_time).days>0:
-            reset_days=days_to_reset(user)
-            if reset_days==0:
+            if days_to_reset(user)==0:
                 user.last_reset_time=datetime.date.today()
                 user.current_usage_GB=0
 
         if before_enabled_users[user.uuid]==0  and is_user_active(user):
                 xray_api.add_client(user.uuid)
                 have_change=True
-        if usage_bytes == None:
+        if type(usage_bytes) not in [int,long]:
             res[user.uuid]="No value" 
-        else:
+        elif usage_bytes>0:
             daily_usage.usage+=usage_bytes
             in_gig=(usage_bytes)/to_gig_d
             res[user.uuid]=in_gig

@@ -411,6 +411,9 @@ if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').match
 }
 %endif
 </script>
+% if get_locale()=='fa'
+<script src="{{url_for('static',filename='js/custom-rtl.js')}}"> </script>
+%endif
 <!-- <script src="{{url_for('static',filename='js/pwa-sw.js')}}" defer></script> -->
 {% endblock %}
 <video id='guide-video' controls style='max-height: 100%; max-width: 100%;width: 1px; height: 1px;'><source id='guide-video-mp4' type='video/mp4'></video>

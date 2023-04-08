@@ -1,6 +1,5 @@
 import xtlsapi
 from hiddifypanel.models import  *
-
 def get_xray_client():
     if hconfig(ConfigEnum.is_parent):
         return
@@ -37,15 +36,13 @@ def get_inbound_tags():
     except Exception as e:
         print(f"error in get inbound tags {e}" )
         inbounds=[]
-    return inbounds
+    return list(set(inbounds))
 def add_client(uuid):
     if hconfig(ConfigEnum.is_parent):
         return
     xray_client=get_xray_client()
     tags=get_inbound_tags()
-    for t in tags:
-        try:
-            proto_map={
+    proto_map={
                 'vless':'vless',
                 'xtls':'vless',
                 'quic':'vless',
@@ -56,13 +53,23 @@ def add_client(uuid):
                 'kcp':'vless',
                 'dispatcher':'trojan',
             }
-            for p,protocol in proto_map.items():
-                if p in t:
-                    if protocol=="vless" and p!="xtls":
-                        xray_client.add_client(t,f'{uuid}', f'{uuid}@hiddify.com',protocol=protocol,flow=None)
-                    else:
-                        xray_client.add_client(t,f'{uuid}', f'{uuid}@hiddify.com',protocol=protocol,flow='xtls-rprx-vision',alter_id=0,cipher='chacha20_poly1305')
-                    print(f"Success add  {uuid} {t}")
+    def proto(t):
+        res='',''
+        for p,protocol in proto_map.items():
+            if p in t:
+                res=p,protocol
+                break
+        return res
+    for t in tags:
+        try:
+            p,protocol =proto(t)
+            if not p:
+                continue
+            if False and protocol=="vless" and p!="xtls":
+                xray_client.add_client(t,f'{uuid}', f'{uuid}@hiddify.com',protocol=protocol,flow=None,)
+            else:
+                xray_client.add_client(t,f'{uuid}', f'{uuid}@hiddify.com',protocol=protocol,flow='xtls-rprx-vision',alter_id=0,cipher='chacha20_poly1305')
+            print(f"Success add  {uuid} {t}")
         except Exception as e:
             print(f"error in add  {uuid} {t} {e}" )
             pass
@@ -88,8 +95,15 @@ def get_usage(uuid,reset=False):
     d = xray_client.get_client_download_traffic(f'{uuid}@hiddify.com',reset=reset)
     u = xray_client.get_client_upload_traffic(f'{uuid}@hiddify.com',reset=reset)
     print(f"Success {uuid} d={d} u={u}" )
+    res=None
     if d is None:
-        return u
-    if u is None:
-        return d
-    return d+u
+        res= u
+    elif u is None:
+        res= d
+    else:
+        res= d+u
+    return res
+
+
+def hconfig(a):
+    pass

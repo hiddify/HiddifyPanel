@@ -48,13 +48,14 @@ def is_user_active(u):
     "disable", if their usage limit hasn't been exceeded, and if there are remaining days on their account. The
     function returns a boolean value indicating whether the user is active or not.
     """
+    is_active=True
     if u.mode == UserMode.disable:
-        return False
-    if u.usage_limit_GB < u.current_usage_GB:
-        return False
-    if remaining_days(u) < 0:
-        return False
-    return True
+        is_active= False
+    elif u.usage_limit_GB < u.current_usage_GB:
+        is_active= False
+    elif remaining_days(u) < 0:
+        is_active= False
+    return is_active
 
 
 def remaining_days(u):
