@@ -109,7 +109,7 @@ class UserAdmin(AdminLTEModelView):
         else:
             d=Domain.query.filter(Domain.mode!=DomainType.fake).first()
         if d:
-            link=f"<a target='_blank' href='https://{d.domain}/{proxy_path}/{model.uuid}/'>{model.name} <i class='fa-solid fa-arrow-up-right-from-square'></i></a>"
+            link=f"<a target='_blank' href='https://{d.domain}/{proxy_path}/{model.uuid}/#{model.name}'>{model.name} <i class='fa-solid fa-arrow-up-right-from-square'></i></a>"
             if model.is_active:
                 link= '<i class="fa-solid fa-circle-check text-success"></i> '+link
             else:
@@ -123,7 +123,7 @@ class UserAdmin(AdminLTEModelView):
             domains=ParentDomain.query.all()
         else:    
             domains=Domain.query.filter(Domain.mode!=DomainType.fake).all()
-        return Markup(" ".join([hiddify.get_user_link(model.uuid,d,'new') for d in domains]))
+        return Markup(" ".join([hiddify.get_user_link(model.uuid,d,'new',model.name) for d in domains]))
     
     def _uuid_formatter(view, context, model, name):
         return Markup(f"<span>{model.uuid}</span>")

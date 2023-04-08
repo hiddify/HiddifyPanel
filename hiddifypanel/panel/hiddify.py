@@ -214,7 +214,7 @@ def check_connection_for_domain(domain):
     return True
 
 
-def get_user_link(uuid, domain, mode=''):
+def get_user_link(uuid, domain, mode='',username=''):
     is_cdn= domain.mode == DomainType.cdn
     proxy_path = hconfig(ConfigEnum.proxy_path)
     res = ""
@@ -224,7 +224,7 @@ def get_user_link(uuid, domain, mode=''):
     if "*" in d:
         d=d.replace("*",get_random_string(5,15))
 
-    link = f"https://{d}/{proxy_path}/{uuid}/"
+    link = f"https://{d}/{proxy_path}/{uuid}/#{username}"
     link_multi = f"{link}multi"
     # if mode == 'new':
     #     link = f"{link}new"
