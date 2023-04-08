@@ -164,3 +164,8 @@ legend {
   background-image: linear-gradient(195deg,#185f9d,#135085)!important;
   width:200px;
 }
+
+.dark-mode .ms-choice{
+  background-color: #343a40;
+  color: white;
+}
