@@ -1,8 +1,7 @@
-trojan://1@{{fake_ip_for_sub_link}}#{{user.current_usage_GB|round(3)}}/{{user.usage_limit_GB}}GB_Remain:{{expire_days}}days 
-
-%if  user_activate
+#trojan://1@{{fake_ip_for_sub_link}}#{{user.current_usage_GB|round(3)}}/{{user.usage_limit_GB}}GB_Remain:{{expire_days}}days 
 
 # Hiddify auto ip: {{ip_debug}}
+%if  user_activate
 
 %for d in domains
 %for t in (['http','tls'] if hconfig(ConfigEnum.http_proxy_enable,d.child_id) else ['tls'])
@@ -32,5 +31,5 @@ trojan://1@{{fake_ip_for_sub_link}}#{{user.current_usage_GB|round(3)}}/{{user.us
 % endfor
 
 %else
-trojan://1@{{fake_ip_for_sub_link}}#{{user.name}} package ended 
+trojan://1@{{fake_ip_for_sub_link}}#Package_Ended 
 %endif
