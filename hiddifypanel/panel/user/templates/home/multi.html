@@ -393,7 +393,7 @@ responsive: {
     %endif
 </script>
 
-%if country.lower()!=hconfig(ConfigEnum.country) and has_auto_cdn
+%if has_auto_cdn and hconfig(ConfigEnum.country)!="other" and country.lower()!=hconfig(ConfigEnum.country) 
 {% macro reload() -%}
 <button onclick='document.location.reload()'  class='btn btn-primary'>
     {{_("Check again")}}
