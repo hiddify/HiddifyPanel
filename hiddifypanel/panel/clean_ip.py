@@ -72,7 +72,7 @@ def get_real_user_ip_debug(user_ip=None):
 
 def get_real_user_ip():
     user_ip=request.remote_addr
-    for header in ['CF-Connecting-IP','ar-real-ip']:
+    for header in ['CF-Connecting-IP','ar-real-ip','X-Forwarded-For']:
         if header in request.headers:
             user_ip= request.headers.get(header)
             break
