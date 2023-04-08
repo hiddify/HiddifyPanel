@@ -34,13 +34,18 @@ class User(db.Model, SerializerMixin):
     expiry_time = db.Column(db.Date, default=datetime.date.today() + relativedelta.relativedelta(months=6))
     usage_limit_GB = db.Column(db.Numeric(6, 9, asdecimal=False), default=1000, nullable=False)
     package_days = db.Column(db.Integer, default=90)
-    mode = db.Column(db.Enum(UserMode), default=UserMode.no_reset)
+    mode = db.Column(db.Enum(UserMode), default=UserMode.no_reset,nullable=False)
     monthly = db.Column(db.Boolean, default=False)
     start_date = db.Column(db.Date, nullable=True)
     current_usage_GB = db.Column(db.Numeric(6, 9, asdecimal=False), default=0, nullable=False)
     last_reset_time = db.Column(db.Date, default=datetime.date.today())
     comment = db.Column(db.String(512))
-
+    @property
+    def remaining_days(self):
+        return remaining_days(self)
+    @property
+    def is_active(self):
+        return is_user_active(self)
 
 def is_user_active(u):
     """
@@ -65,11 +70,13 @@ def remaining_days(u):
     date is not available, the function returns the total package days.
     """
     res=-1
-    if not u.package_days:
+    if u.package_days is None:
         res= -1
     elif u.start_date:
+        # print(datetime.date.today(), u.start_date,u.package_days, u.package_days - (datetime.date.today() - u.start_date).days)
         res=u.package_days - (datetime.date.today() - u.start_date).days
     else:
+        # print("else",u.package_days )
         res=u.package_days 
     return min(res,10000)
 

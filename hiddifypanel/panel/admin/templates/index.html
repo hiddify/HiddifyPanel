@@ -55,19 +55,19 @@
             ((usage_history['today']['usage']/1024**3)|round(1)) ~ " GB", 
             usage_history['today']['online']/total_users*100, 
             _("Online Users") ~": "~ usage_history['today']['online'] ~ " / "~ total_users,
-            color_class="lightblue"
+            color_class="purple"
     )}}
     {{info_box("yesterday","fa-solid fa-calendar-day", _("Yesterday Usage"), 
             ((usage_history['yesterday']['usage']/1024**3)|round(1)) ~ " GB", 
             usage_history['yesterday']['online']/total_users*100, 
             _("Online Users") ~": "~ usage_history['yesterday']['online'] ~ " / "~ total_users,
-            color_class="purple"
+            color_class="maroon"
     )}}
     {{info_box("last_30_days","fa-solid fa-calendar-days", _("Month Usage"), 
             ((usage_history['last_30_days']['usage']/1024**3)|round(1)) ~ " GB", 
             usage_history['last_30_days']['online']/total_users*100, 
             _("Online Users") ~": "~ usage_history['last_30_days']['online'] ~ " / "~ total_users,
-            color_class="maroon"
+            color_class="olive"
     )}}
     {{info_box("total","fa-solid fa-chart-pie", _("Total Usage"), 
             ((usage_history['total']['usage']/1024**3)|round(1)) ~ " GB", 
@@ -86,8 +86,15 @@
          onlines ~ " / "~ total_users, 
          onlines/total_users*100, 
          _('In 24 hours'),
-         color_class="olive"
+         color_class="lightblue"
     )}}
+    {{info_box("network","fa-solid fa-network-wired", _("Network"), 
+    '<i class="fa-solid fa-arrow-up  text-success"></i> ... Mb/s  &nbsp;&nbsp;<i class="fa-solid fa-arrow-down text-danger"></i> ...  Mb/s'|safe,
+        0, 
+        (stats['system']['net_sent_cumulative_GB']|round(1)) ~ "GB " ~_("From Last Restart"),
+        color_class="info"
+)}}
+
     {{info_box("cpu","fa-solid fa-microchip", _("CPU"), 
             ((stats['system']['load_avg_5min']*100)|int) ~ " % "  , 
             (stats['system']['load_avg_5min']*100)|int, 
@@ -95,7 +102,7 @@
             ('<i class="fa-solid fa-gauge"></i> '|safe) ~  stats['top5']['cpu'][1][0] ~ " &rlm;"|safe ~ ((stats['top5']['cpu'][1][1])|int) ~ "% &rlm;"|safe~
             ('<i class="fa-solid fa-gauge"></i> '|safe) ~  stats['top5']['cpu'][2][0] ~ " &rlm;"|safe ~ ((stats['top5']['cpu'][2][1])|int) ~ "%",
             coloring=True,
-            color_class="info"
+            color_class="teal"
     )}}
     {{info_box("ram","fa-solid fa-memory", _("RAM"), 
             (stats['system']['ram_used']|round(1)) ~ " / " ~ (stats['system']['ram_total']|round(1)) ~ "GB (" ~((stats['system']['ram_used']*100/stats['system']['ram_total'])|int)~" %)", 
@@ -104,13 +111,7 @@
             ('<i class="fa-solid fa-gauge"></i> '|safe) ~  stats['top5']['memory'][1][0] ~ " &rlm;"|safe ~ ((stats['top5']['memory'][1][1]*100/stats['system']['ram_total'])|int) ~ "% &rlm;"|safe~
             ('<i class="fa-solid fa-gauge"></i> '|safe) ~  stats['top5']['memory'][2][0] ~ " &rlm;"|safe ~ ((stats['top5']['memory'][2][1]*100/stats['system']['ram_total'])|int) ~ "% ",
             coloring=True,
-            color_class="secondary"
-    )}}
-    {{info_box("network","fa-solid fa-network-wired", _("Network"), 
-            (stats['system']['net_sent_cumulative_GB']|round(1)) ~ "GB", 
-            0, 
-            _("From Last Restart"),
-            color_class="secondary"
+            color_class="purple"
     )}}
     {#info_box("connections","fa-solid fa-signal", _("Connections/IP"), 
             stats['system']['total_unique_ips'] ~ " / " ~ stats['system']['total_connections'], 
@@ -134,6 +135,9 @@
 %block tail_js
 {{super()}}
 <script>
+    var last_bytes_sent="{{stats['system']['bytes_sent_cumulative']}}";
+    var last_bytes_recv="{{stats['system']['bytes_recv_cumulative']}}";
+    var refresh_s=4;
 function update_box(id,title,number,percentage,description,coloring){
     if (title!=undefined && title!="")
         $("#"+id).find(".htitle").html(title)
@@ -201,6 +205,13 @@ info_box("cpu", "fa-solid fa-microchip", "CPU",
     " <i class='fa-solid fa-gauge'></i> " + stats['top5']['cpu'][2][0] + " &rlm;" + (stats['top5']['cpu'][2][1]).toFixed(0) + "%",
     true
 );
+info_box("network", "fa-solid fa-network-wired", "Network",
+'<i class="fa-solid fa-arrow-up  text-success"></i> '+((stats['system']['bytes_sent_cumulative']-last_bytes_sent)*8/refresh_s/1024/1024).toFixed(3) + "Mb/s "+' &nbsp;&nbsp;<i class="fa-solid fa-arrow-down text-danger"></i>' + ((stats['system']['bytes_recv_cumulative']-last_bytes_recv)*8/refresh_s/1024/1024).toFixed(3) + " Mb/s",
+0,
+stats['system']['net_sent_cumulative_GB'].toFixed(1) + "GB "+"{{_('From Last Restart')}}"
+);
+last_bytes_sent=stats['system']['bytes_sent_cumulative'];
+last_bytes_recv=stats['system']['bytes_recv_cumulative'];
 
 info_box("ram", "fa-solid fa-memory", "RAM",
     stats['system']['ram_used'].toFixed(1) + " / " + stats['system']['ram_total'].toFixed(1) + "GB (" + (stats['system']['ram_used'] * 100 / stats['system']['ram_total']).toFixed(0) + " %)",
@@ -211,11 +222,11 @@ info_box("ram", "fa-solid fa-memory", "RAM",
     true
 );
 
-info_box("network", "fa-solid fa-network-wired", "Network",
-stats['system']['net_sent_cumulative_GB'].toFixed(1) + "GB",
-0,
-"{{_('From Last Restart')}}"
-);
+// info_box("network", "fa-solid fa-network-wired", "Network",
+// stats['system']['net_sent_cumulative_GB'].toFixed(1) + "GB",
+// 0,
+// "{{_('From Last Restart')}}"
+// );
 
 info_box("disk", "fa-solid fa-hard-drive", "Disk",
 stats['system']['disk_used'].toFixed(1) + " / " + stats['system']['disk_total'].toFixed(1) + "GB",
@@ -243,7 +254,7 @@ setInterval(function() {
       console.log(error);
     }
   });
-}, 10000); 
+}, refresh_s*1000); 
 
 </script>
 %endblock

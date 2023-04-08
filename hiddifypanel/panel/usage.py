@@ -60,9 +60,9 @@ def add_users_usage(dbusers_bytes):
         if before_enabled_users[user.uuid]==0  and is_user_active(user):
                 xray_api.add_client(user.uuid)
                 have_change=True
-        if type(usage_bytes) not in [int,long]:
-            res[user.uuid]="No value" 
-        elif usage_bytes>0:
+        if type(usage_bytes) !=int or usage_bytes==0:
+            res[user.uuid]="No usage" 
+        else:
             daily_usage.usage+=usage_bytes
             in_gig=(usage_bytes)/to_gig_d
             res[user.uuid]=in_gig

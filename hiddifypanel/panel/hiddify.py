@@ -215,6 +215,7 @@ def check_connection_for_domain(domain):
 
 
 def get_user_link(uuid, domain, mode=''):
+    is_cdn= domain.mode == DomainType.cdn
     proxy_path = hconfig(ConfigEnum.proxy_path)
     res = ""
     if mode == "multi":
@@ -228,13 +229,16 @@ def get_user_link(uuid, domain, mode=''):
     # if mode == 'new':
     #     link = f"{link}new"
     text = domain.domain
-
-    if hasattr(domain, 'mode') and domain.mode == DomainType.cdn:
-        text = f'<span class="badge badge-success" >{_("domain.cdn")}</span>'+text
+    color_cls='info'
+    if domain.mode in [DomainType.cdn,DomainType.auto_cdn_ip]:
+        auto_cdn=(domain.mode==DomainType.auto_cdn_ip) or ("MTN" in domain.cdn_ip)
+        color_cls="success" if auto_cdn else 'warning'
+        text = f'<span class="badge badge-secondary" >{"Auto" if auto_cdn else "CDN"}</span> '+text
+        
 
     if mode == "multi":
         res += f"<a class='btn btn-xs btn-secondary' target='_blank' href='{link_multi}' >{_('all')}</a>"
-    res += f"<a target='_blank' href='{link}' class='btn btn-xs btn-info ltr' ><i class='fa-solid fa-arrow-up-right-from-square'></i> {text}</a>"
+    res += f"<a target='_blank' href='{link}' class='btn btn-xs btn-{color_cls} ltr' ><i class='fa-solid fa-arrow-up-right-from-square d-none'></i> {text}</a>"
 
     if mode == "multi":
         res += "</div>"
@@ -278,12 +282,13 @@ def check_need_reset(old_configs,do=False):
 
 def format_timedelta(delta, add_direction=True,granularity="days"):
     res=delta.days
+    print(delta.days)
+    locale=g.locale if g and hasattr(g, "locale") else hconfig(ConfigEnum.admin_lang)
     if granularity=="days" and delta.days==0:
         res= _("0 - Last day")
-    locale=g.locale if g and hasattr(g, "locale") else hconfig(ConfigEnum.admin_lang)
-    if delta.days < 7 or delta.days >= 60:
+    elif delta.days < 7 or delta.days >= 60:
         res= babel_format_timedelta(delta, threshold=1, add_direction=add_direction, locale=locale)
-    if delta.days < 60:
+    elif delta.days < 60:
         res= babel_format_timedelta(delta, granularity="day", threshold=10, add_direction=add_direction, locale=locale)
     return res
 
@@ -587,11 +592,10 @@ def system_stats():
         "hiddify_used":hiddify_used,
         "bytes_sent": bytes_sent,
         "bytes_recv": bytes_recv,
-        "net_total_GB": (bytes_sent+bytes_recv)// 1024**3,
         "bytes_sent_cumulative":bytes_sent_cumulative,
         "bytes_recv_cumulative":bytes_recv_cumulative,
-        "net_sent_cumulative_GB":bytes_sent_cumulative// 1024**3,
-        "net_total_cumulative_GB":(bytes_sent_cumulative+bytes_recv_cumulative)// 1024**3,
+        "net_sent_cumulative_GB":bytes_sent_cumulative/ 1024**3,
+        "net_total_cumulative_GB":(bytes_sent_cumulative+bytes_recv_cumulative)/ 1024**3,
         "total_connections": total_connections,
         "total_unique_ips": total_unique_ips,
         "load_avg_1min": load_avg[0],

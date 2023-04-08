@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-06 11:43+0200\n"
-"PO-Revision-Date: 2023-04-06 04:43-0500\n"
+"POT-Creation-Date: 2023-04-08 14:32+0200\n"
+"PO-Revision-Date: 2023-04-08 07:32-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -14,30 +14,34 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.12.1\n"
 
+# | msgid "This Domain does not exist in the Panel !"
 #: hiddifypanel/models/domain.py:97 hiddifypanel/panel/user/user.py:145
 #, fuzzy
 msgid "This domain does not exist in the panel!"
 msgstr "该域名在面板中不存在！"
 
-#: hiddifypanel/panel/clean_ip.py:86
+# | msgid ""
+# | "Error in Auto CDN IP! it can not be find, Please Contact Admin."
+#: hiddifypanel/panel/clean_ip.py:88
+#, fuzzy
 msgid "Error! auto cdn ip can not be find, please contact admin."
-msgstr ""
+msgstr "自动 CDN IP 错误！找不到，请联系管理员。"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/panel/hiddify.py:142
+#: hiddifypanel/panel/hiddify.py:145
 msgid "admin.config.apply_configs"
 msgstr "应用配置"
 
 # | msgid ""
-# | "Configs have been changed successfully. Click %(link)s to apply the
-# configs."
+# | "Configs have been Changed Successfully. Click %(link)s to Apply the
+# Configs."
 # | " It may take 2 minutes to apply."
-#: hiddifypanel/panel/hiddify.py:143
+#: hiddifypanel/panel/hiddify.py:146
 msgid "config.validation-success"
 msgstr "配置已成功更改。单击 %(link)s 以应用配置。申请可能需要 2 分钟。"
 
 # | msgid "Configs have been changed successfully."
-#: hiddifypanel/panel/hiddify.py:145
+#: hiddifypanel/panel/hiddify.py:148
 #, fuzzy
 msgid "config.validation-success-no-reset"
 msgstr "配置已成功更改。"
@@ -49,18 +53,18 @@ msgstr "配置已成功更改。"
 #: hiddifypanel/panel/admin/ChildAdmin.py:108
 #: hiddifypanel/panel/admin/DomainAdmin.py:117
 #: hiddifypanel/panel/admin/DomainAdmin.py:142
-#: hiddifypanel/panel/admin/QuickSetup.py:117 hiddifypanel/panel/hiddify.py:254
+#: hiddifypanel/panel/admin/QuickSetup.py:117 hiddifypanel/panel/hiddify.py:260
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr "域名无法解析！你的域有问题"
 
-# | msgid "0 - Last Day"
-#: hiddifypanel/panel/hiddify.py:280
+# | msgid "Last Day"
+#: hiddifypanel/panel/hiddify.py:288
 #, fuzzy
 msgid "0 - Last day"
 msgstr "0 - 最后一天"
 
 # | msgid ""
-# | "Rebooting System... This may take afew minutes. Please wait..."
+# | "Rebooting System ... This May Take a few Minutes. Please Wait ..."
 #: hiddifypanel/panel/admin/Actions.py:59
 msgid "rebooting system may takes time please wait"
 msgstr "重新启动系统可能需要一些时间。请稍等..."
@@ -79,20 +83,22 @@ msgid ""
 msgstr "您的域已更改。请不要忘记复制管理链接，否则您将无法再访问该面板。"
 
 # | msgid ""
-# | "Please wait about 5 minutes to make sure everything is updated. During
+# | "Please Wait About 5 Minutes to Make Sure Everything is Updated. During
 # this "
-# | "time, please copy and save your proxy links which are:"
+# | "time, please copy and save your Proxy links which are:"
 #: hiddifypanel/panel/admin/Actions.py:104
 msgid ""
 "Success! Please wait around 4 minutes to make sure everything is updated."
 " During this time, please save your proxy links which are:"
 msgstr "成功！ 请等待大约 4 分钟，以确保所有内容都已更新。 在此期间，请保存您的代理链接:"
 
-# | msgid "See the log in the bellow screen"
+# | msgid "See The Log in The Bellow Screen"
 #: hiddifypanel/panel/admin/Actions.py:132
 msgid "see the log in the bellow screen"
 msgstr "请参阅以下屏幕中的日志："
 
+# | msgid ""
+# | "Success! Please Wait Around 5 Minutes to Make Sure Everything is Updated"
 #: hiddifypanel/panel/admin/Actions.py:153
 msgid "Success! Please wait around 5 minutes to make sure everything is updated."
 msgstr "成功！ 请等待大约 5 分钟，以确保所有内容都已更新。"
@@ -107,7 +113,7 @@ msgstr "配置文件不正确。"
 msgid "Restore File"
 msgstr "恢复文件："
 
-# | msgid "Choose the downloaded restore file."
+# | msgid "Choose The Downloaded Restore File"
 #: hiddifypanel/panel/admin/Backup.py:72
 msgid "Restore File Description"
 msgstr "选择下载的还原文件。"
@@ -117,6 +123,7 @@ msgstr "选择下载的还原文件。"
 msgid "Restore Settings"
 msgstr "恢复设置"
 
+# | msgid "Restore Settings Description"
 #: hiddifypanel/panel/admin/Backup.py:73
 #, fuzzy
 msgid "Restore Settings description"
@@ -126,7 +133,7 @@ msgstr "恢复设置说明"
 msgid "Restore Users"
 msgstr "恢复用户"
 
-# | msgid "Select this option to restore all users."
+# | msgid "Select This Option To Restore All Users"
 #: hiddifypanel/panel/admin/Backup.py:74
 msgid "Restore Users description"
 msgstr "选择此选项以恢复所有用户。"
@@ -135,7 +142,7 @@ msgstr "选择此选项以恢复所有用户。"
 msgid "Restore Domain"
 msgstr "还原域"
 
-# | msgid "Select this option to restore your domains."
+# | msgid "Select This Option To Restore Your Domains"
 #: hiddifypanel/panel/admin/Backup.py:75
 msgid "Restore Domain description"
 msgstr "选择此选项以恢复您的域。"
@@ -215,7 +222,7 @@ msgstr "行政"
 msgid "Domain is not correctly mapped to this server!"
 msgstr "域未正确映射到此服务器！"
 
-#: hiddifypanel/panel/admin/Dashboard.py:37
+#: hiddifypanel/panel/admin/Dashboard.py:46
 #: hiddifypanel/panel/commercial/CommercialDashboard.py:37
 #, python-format
 msgid ""
@@ -228,7 +235,7 @@ msgstr ""
 # | msgid ""
 # | "It seems that you are using default domain (%(domain)s) which is not "
 # | "recommended. Please change or remove it from domain section."
-#: hiddifypanel/panel/admin/Dashboard.py:39
+#: hiddifypanel/panel/admin/Dashboard.py:48
 #: hiddifypanel/panel/commercial/CommercialDashboard.py:39
 #, python-format
 msgid ""
@@ -236,7 +243,7 @@ msgid ""
 "recommended."
 msgstr "您似乎正在使用不推荐的默认域 (%(domain)s)。"
 
-#: hiddifypanel/panel/admin/Dashboard.py:43
+#: hiddifypanel/panel/admin/Dashboard.py:52
 #: hiddifypanel/panel/commercial/CommercialDashboard.py:43
 #, python-format
 msgid ""
@@ -244,27 +251,29 @@ msgid ""
 "%(default_link)s"
 msgstr "您似乎还没有创建任何用户。默认用户链接：%(default_link)s"
 
-#: hiddifypanel/panel/admin/Dashboard.py:60
+# | msgid "Child Has Been Removed!"
+#: hiddifypanel/panel/admin/Dashboard.py:69
 #: hiddifypanel/panel/commercial/CommercialDashboard.py:58
+#, fuzzy
 msgid "child has been removed!"
-msgstr ""
+msgstr "孩子已被删除！"
 
 # | msgid ""
-# | "<b>Direct</b> mode: Choose this mode if you set your domain on your DNS
-# provider on a DNS Only mode. (CDN or Proxy mode OFF) <br>\n"
-# | "<b>CDN</b> mode: Choose this mode if you use your server's domain on a
-# CDN provider. (Proxy mode ON)<br>\n"
-# | "<b>Auto CDN IP</b> mode: It is like CDN mode, except that the appropriate
+# | "<b>Direct</b> Mode: Choose this mode if you set your Domain on your DNS
+# Provider on a DNS Only mode. (CDN or Proxy Mode OFF) <br>\n"
+# | "<b>CDN</b> Mode: Choose this mode if you use your Server's Domain on a
+# CDN Provider. (Proxy Mode ON)<br>\n"
+# | "<b>Auto CDN IP</b> Mode: It is like CDN mode, except that the appropriate
 # IP is automatically set based on the IP provided by ircf.space. In
-# auto_cdn_ip  the ip will be resolved from domain but in cdn mode the domain
+# Auto_CDN_IP  the ip will be resolved from Domain but in CDN Mode the Domain
 # will be returned<br>\n"
-# | "<b>Relay</b> mode: Choose this mode if you are using one or more
-# Intermediary servers. <a
+# | "<b>Relay</b> Mode: Choose this mode if you are using one or more
+# Intermediary Servers. <a
 # href=\"https://github.com/hiddify/hiddify-config/discussions/129\"
-# target=\"_blank\">Read More.</a>\n"
+# target=\"_blank\">Read More</a>\n"
 # | "<br>\n"
-# | "<b>Fake</b> mode: Choose this mode if you want to use a fake domain
-# (e.g., soft98.ir) to bypass SNI whitelist proxy. (Not recommended.)\n"
+# | "<b>Fake</b> Mode: Choose this mode if you want to use a Fake Domain
+# (e.g., Soft98.ir) to Bypass SNI whitelist Proxy. (Not Recommended)\n"
 #: hiddifypanel/panel/admin/DomainAdmin.py:39
 #, fuzzy
 msgid ""
@@ -302,7 +311,7 @@ msgstr "将显示在此域的配置中的名称。"
 msgid "domain.mode"
 msgstr "模式"
 
-# | msgid "Force CDN Config to use following IPs"
+# | msgid "Force CDN Config to Use Following IPs"
 #: hiddifypanel/panel/admin/DomainAdmin.py:65
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
@@ -319,7 +328,7 @@ msgstr "知识产权"
 msgid "Alias"
 msgstr "别名"
 
-# | msgid "You have already used this domain in: "
+# | msgid "You have already used this Domain in: "
 #: hiddifypanel/panel/admin/DomainAdmin.py:112
 #, fuzzy
 msgid "You have used this domain in: "
@@ -331,9 +340,9 @@ msgid "Can not connect to Cloudflare."
 msgstr "无法连接到 Cloudflare。"
 
 # | msgid ""
-# | "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which
+# | "Domain IP=%(domain_ip)s is Not Matched With Your IP=%(server_ip)s which
 # is "
-# | "required in direct mode."
+# | "Required in Direct Mode."
 #: hiddifypanel/panel/admin/DomainAdmin.py:147
 #, python-format
 msgid ""
@@ -341,6 +350,9 @@ msgid ""
 "is required in direct mode"
 msgstr "域 IP=%(domain_ip)s 与您的 ip=%(server_ip)s 不匹配，这在直接模式下是必需的"
 
+# | msgid ""
+# | "In CDN Mode, Domain IP=%(domain_ip)s should be different to your "
+# | "IP=%(server_ip)s"
 #: hiddifypanel/panel/admin/DomainAdmin.py:151
 #, python-format
 msgid ""
@@ -377,7 +389,7 @@ msgstr "改语言成功"
 msgid "quicksetup.setlang.error"
 msgstr "更改语言时出错"
 
-# | msgid "Admin panel language"
+# | msgid "Admin Panel Language"
 #: hiddifypanel/panel/admin/QuickSetup.py:77
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.admin_lang.label"
@@ -397,7 +409,7 @@ msgstr "English انگلیسی 英语"
 msgid "lang.fa"
 msgstr "Persian فارسی 波斯语"
 
-# | msgid "Choose language for Admin area."
+# | msgid "Choose Language For Admin Area"
 #: hiddifypanel/panel/admin/QuickSetup.py:77
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.admin_lang.description"
@@ -432,7 +444,7 @@ msgstr "中国"
 msgid "config.country.description"
 msgstr "它根据每个国家/地区的过滤条件为每个国家/地区应用适当的设置"
 
-# | msgid "Error! Invalid domain.  The domain format is www.google.com"
+# | msgid "Error! Invalid Domain.  The Domain Format is www.google.com"
 #: hiddifypanel/panel/admin/QuickSetup.py:96
 #: hiddifypanel/panel/admin/QuickSetup.py:106
 #: hiddifypanel/panel/admin/SettingAdmin.py:170
@@ -459,8 +471,8 @@ msgid "config.telegram_enable.label"
 msgstr "启用 Telegram MT 代理"
 
 # | msgid ""
-# | "Telegram MT Proxy is used for encapsulate telegram proxy as a TLS
-# traffic"
+# | "Telegram MT Proxy is used for Encapsulate Telegram Proxy as a TLS
+# Traffic"
 #: hiddifypanel/panel/admin/QuickSetup.py:102
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.telegram_enable.description"
@@ -473,21 +485,21 @@ msgid "config.firewall.label"
 msgstr "防火墙"
 
 # | msgid ""
-# | "Enabling firewall will open used ports (at least 22,443,80 and ssh) and "
-# | "close all other ports"
+# | "Enabling Firewall will Open Used Ports (at Least 22,443,80 and SSH) and "
+# | "Close all Other Ports"
 #: hiddifypanel/panel/admin/QuickSetup.py:103
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.firewall.description"
 msgstr "启用防火墙将打开使用的端口（至少 22,443,80）并关闭所有其他端口"
 
-# | msgid "Block Iranian sites"
+# | msgid "Block Iranian Sites"
 #: hiddifypanel/panel/admin/QuickSetup.py:104
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.block_iran_sites.label"
 msgstr "封锁伊朗网站"
 
 # | msgid ""
-# | "Block Iranian sites to prevent detection by the government (Experimental:
+# | "Block Iranian Sites to prevent detection by the government (Experimental:
 # If"
 # | " there is a problem, please disable it and tell us.)"
 #: hiddifypanel/panel/admin/QuickSetup.py:104
@@ -495,7 +507,7 @@ msgstr "封锁伊朗网站"
 msgid "config.block_iran_sites.description"
 msgstr "屏蔽伊朗网站以防止被政府发现（实验：如果有问题，请禁用它并告诉我们。）"
 
-# | msgid "Enable vmess"
+# | msgid "Enable VMess"
 #: hiddifypanel/panel/admin/QuickSetup.py:105
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.vmess_enable.label"
@@ -517,7 +529,7 @@ msgid "config.decoy_domain.label"
 msgstr "诱饵网站"
 
 # | msgid ""
-# | "Fake site: simulates a site when someone visits your domain.\n"
+# | "Fake Site: simulates a site when someone visits your domain.\n"
 # | "Please do not use Iranian sites, Popular well known sites like: Google,
 # Yahoo, Wikipedia, etc."
 #: hiddifypanel/panel/admin/QuickSetup.py:106
@@ -526,9 +538,9 @@ msgid "config.decoy_domain.description"
 msgstr "假网站：当有人访问您的域时模拟网站"
 
 # | msgid ""
-# | "Domain (%(domain)s)-> IP=%(domain_ip)s is not same as your
-# ip=%(server_ip)s "
-# | ". This is required in direct mode."
+# | "Domain (%(domain)s)-> IP=%(domain_ip)s is Not Same as Your
+# IP=%(server_ip)s "
+# | ". This is Required in Direct Mode."
 #: hiddifypanel/panel/admin/QuickSetup.py:121
 #, python-format
 msgid ""
@@ -536,7 +548,7 @@ msgid ""
 "ip=%(server_ip)s which is required in direct mode"
 msgstr "域 (%(domain)s)-> IP=%(domain_ip)s 与您的 ip=%(server_ip)s 不匹配，这在直接模式下是必需的。"
 
-# | msgid "Port is already used! in:"
+# | msgid "Port is Already Used! in:"
 #: hiddifypanel/panel/admin/SettingAdmin.py:56
 #: hiddifypanel/panel/commercial/CommercialSettings.py:56
 #, fuzzy
@@ -557,6 +569,10 @@ msgstr "无法连接到父面板！"
 msgid "lang.zh"
 msgstr "Chinese چینی 中国人"
 
+#: hiddifypanel/panel/admin/SettingAdmin.py:152
+msgid "Others"
+msgstr ""
+
 #: hiddifypanel/panel/admin/SettingAdmin.py:154
 #: hiddifypanel/panel/commercial/CommercialSettings.py:154
 #, fuzzy
@@ -569,25 +585,25 @@ msgstr "发布"
 msgid "Develop"
 msgstr "آخ犹"
 
-# | msgid "Python: low performance"
+# | msgid "Python: Low Performance"
 #: hiddifypanel/panel/admin/SettingAdmin.py:160
 #: hiddifypanel/panel/commercial/CommercialSettings.py:160
 msgid "lib.telegram.python"
 msgstr "Python：低性能"
 
-# | msgid "Go: high performance: No ad support"
+# | msgid "Go: High Performance: No ad Support"
 #: hiddifypanel/panel/admin/SettingAdmin.py:160
 #: hiddifypanel/panel/commercial/CommercialSettings.py:160
 msgid "lib.telegram.go"
 msgstr "Go：高性能：无广告支持"
 
-# | msgid "NOT Working: Original: high performance"
+# | msgid "NOT Working - Original: High Performance"
 #: hiddifypanel/panel/admin/SettingAdmin.py:160
 #: hiddifypanel/panel/commercial/CommercialSettings.py:160
 msgid "lib.telegram.orignal"
 msgstr "原文：高性能"
 
-# | msgid "NOT Working: Erlang: medium performance"
+# | msgid "NOT Working - Erlang: Medium Performance"
 #: hiddifypanel/panel/admin/SettingAdmin.py:160
 #: hiddifypanel/panel/commercial/CommercialSettings.py:160
 msgid "lib.telegram.erlang"
@@ -612,13 +628,14 @@ msgstr "电报代理库"
 msgid "config.telegram_lib.description"
 msgstr "您可以在不同的电报库之间切换。"
 
+# | msgid "Invalid Admin Link"
 #: hiddifypanel/panel/admin/SettingAdmin.py:182
 #: hiddifypanel/panel/commercial/CommercialSettings.py:182
 #, fuzzy
 msgid "Invalid admin link"
 msgstr "管理员链接无效"
 
-# | msgid "Invalid Telegram bot token."
+# | msgid "Invalid Telegram Bot Token."
 #: hiddifypanel/panel/admin/SettingAdmin.py:184
 #: hiddifypanel/panel/commercial/CommercialSettings.py:184
 #, fuzzy
@@ -633,14 +650,14 @@ msgid "config.Invalid brand link"
 msgstr "品牌链接无效"
 
 # | msgid ""
-# | "Invalid UUID secret. Example: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n"
+# | "Invalid UUID Secret. Example: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n"
 # | "\n"
 #: hiddifypanel/panel/admin/SettingAdmin.py:190
 #: hiddifypanel/panel/commercial/CommercialSettings.py:190
 msgid "config.invalid uuid"
 msgstr "UUID 密码无效。例如，6098ea35-8cb2-4a08-ba15-2be25bc49cb6"
 
-# | msgid "Invalid proxy path. It should be asci string (a-z A-Z 0-9)"
+# | msgid "Invalid Proxy Path. It should be ASCI String (a-z A-Z 0-9)"
 #: hiddifypanel/panel/admin/SettingAdmin.py:194
 #: hiddifypanel/panel/commercial/CommercialSettings.py:194
 msgid "config.Invalid proxy path"
@@ -656,97 +673,101 @@ msgid "config.Invalid port"
 msgstr "端口无效。它应该是逗号分隔的整数，例如 1000,1001"
 
 # | msgid "Reset package's Days."
-#: hiddifypanel/panel/admin/UserAdmin.py:22
+#: hiddifypanel/panel/admin/UserAdmin.py:25
 #, fuzzy
 msgid "Reset package days"
 msgstr "重置包裹的天数。"
 
 # | msgid "Reset package's Usage."
-#: hiddifypanel/panel/admin/UserAdmin.py:23
+#: hiddifypanel/panel/admin/UserAdmin.py:26
 #, fuzzy
 msgid "Reset package usage"
 msgstr "重置包的使用。"
 
+#: hiddifypanel/panel/admin/UserAdmin.py:27
+msgid "Disable User"
+msgstr ""
+
 # | msgid "Actions"
-#: hiddifypanel/panel/admin/UserAdmin.py:56
+#: hiddifypanel/panel/admin/UserAdmin.py:60
 msgid "actions"
 msgstr "动作"
 
 # | msgid "Name"
-#: hiddifypanel/panel/admin/UserAdmin.py:57
+#: hiddifypanel/panel/admin/UserAdmin.py:61
 msgid "user.name"
 msgstr "名称"
 
 # | msgid "User Links"
-#: hiddifypanel/panel/admin/UserAdmin.py:58
+#: hiddifypanel/panel/admin/UserAdmin.py:62
 msgid "user.user_links"
 msgstr "用户链接"
 
 # | msgid "Usage Limit (GB)"
-#: hiddifypanel/panel/admin/UserAdmin.py:59
+#: hiddifypanel/panel/admin/UserAdmin.py:63
 msgid "user.usage_limit_GB"
 msgstr "使用限制 (GB)"
 
 # | msgid "Monthly"
-#: hiddifypanel/panel/admin/UserAdmin.py:60
+#: hiddifypanel/panel/admin/UserAdmin.py:64
 msgid "Reset every month"
 msgstr "每月"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:61
+#: hiddifypanel/panel/admin/UserAdmin.py:65
 #, fuzzy
 msgid "Mode"
 msgstr "模式"
 
 # | msgid "Current Usage (GB)"
-#: hiddifypanel/panel/admin/UserAdmin.py:62
+#: hiddifypanel/panel/admin/UserAdmin.py:66
 msgid "user.current_usage_GB"
 msgstr "当前使用量 (GB)"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:63
+#: hiddifypanel/panel/admin/UserAdmin.py:67
 #, fuzzy
 msgid "Start Date"
 msgstr "开始日期"
 
-# | msgid "Expire (days)"
-#: hiddifypanel/panel/admin/UserAdmin.py:64
+# | msgid "Expire (Days)"
+#: hiddifypanel/panel/admin/UserAdmin.py:68
 msgid "user.expiry_time"
 msgstr "过期时间"
 
 # | msgid "Last usage date reset"
-#: hiddifypanel/panel/admin/UserAdmin.py:65
+#: hiddifypanel/panel/admin/UserAdmin.py:69
 msgid "user.last_reset_time"
 msgstr "最后使用日期重置"
 
 # | msgid "UUID"
-#: hiddifypanel/panel/admin/UserAdmin.py:66
+#: hiddifypanel/panel/admin/UserAdmin.py:70
 msgid "user.UUID"
 msgstr "UUID"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:67
+#: hiddifypanel/panel/admin/UserAdmin.py:71
 #, fuzzy
 msgid "Note"
 msgstr "笔记"
 
 # | msgid "Last Connection"
-#: hiddifypanel/panel/admin/UserAdmin.py:68
+#: hiddifypanel/panel/admin/UserAdmin.py:72
 #, fuzzy
 msgid "Last Online"
 msgstr "最后上线"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:69
+#: hiddifypanel/panel/admin/UserAdmin.py:73
 #, fuzzy
 msgid "Package Days"
 msgstr "包天"
 
 # | msgid "You can add some text that is only visible to you."
-#: hiddifypanel/panel/admin/UserAdmin.py:83
+#: hiddifypanel/panel/admin/UserAdmin.py:87
 #, fuzzy
 msgid "Add some text that is only visible to you."
 msgstr "添加一些仅对您可见的文本。"
 
 # | msgid ""
 # | "The user's Package mode. Should the usage reset every Month, Week, etc.?"
-#: hiddifypanel/panel/admin/UserAdmin.py:84
+#: hiddifypanel/panel/admin/UserAdmin.py:88
 #, fuzzy
 msgid "Define the user mode. Should the usage reset every month?"
 msgstr "定义用户模式。应该每个月重置使用量吗？"
@@ -754,7 +775,7 @@ msgstr "定义用户模式。应该每个月重置使用量吗？"
 # | msgid ""
 # | "If the monthly option is enabled, when this number reaches 30, the user "
 # | "usage will be reset (for weekly and daily this number is 7 and 1)"
-#: hiddifypanel/panel/admin/UserAdmin.py:85
+#: hiddifypanel/panel/admin/UserAdmin.py:89
 #, fuzzy
 msgid ""
 "If monthly is enabled, the usage will be reset after 30 days from this "
@@ -765,7 +786,7 @@ msgstr "如果启用每月选项，当这个数字达到 30 时，用户使用�
 # | "Specify the starting date of the package. Leave empty to start from first
 # "
 # | "connection."
-#: hiddifypanel/panel/admin/UserAdmin.py:86
+#: hiddifypanel/panel/admin/UserAdmin.py:90
 #, fuzzy
 msgid ""
 "From when the user package will be started? Empty for start from first "
@@ -773,30 +794,30 @@ msgid ""
 msgstr "指定包的开始日期。留空以从第一个连接开始。"
 
 # | msgid "How many days is this package?"
-#: hiddifypanel/panel/admin/UserAdmin.py:87
+#: hiddifypanel/panel/admin/UserAdmin.py:91
 #, fuzzy
 msgid "How many days this package should be available?"
 msgstr "这个包裹有多少天？"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:184
+#: hiddifypanel/panel/admin/UserAdmin.py:192
 #, fuzzy
 msgid "Package not started yet."
 msgstr "套餐还没有开始。"
 
 # | msgid "Package ends in "
-#: hiddifypanel/panel/admin/UserAdmin.py:190
+#: hiddifypanel/panel/admin/UserAdmin.py:199
 #, fuzzy
 msgid "Remaining: "
 msgstr "包结束于"
 
 #: hiddifypanel/panel/admin/templates/backup.html:9
-#: hiddifypanel/templates/admin-layout.html:172
+#: hiddifypanel/templates/admin-layout.html:170
 msgid "Backup"
 msgstr "备份"
 
 # | msgid ""
-# | "You can download a json file format of the configurations by clicking on
-# the button below:\n"
+# | "You Can Download a JSON File Format of the Configurations by Clicking on
+# the Button Below\n"
 # | "<br>\n"
 # | "<a href='%(link)s' class='btn btn-primary'>Download Backup File</a>"
 #: hiddifypanel/panel/admin/templates/backup.html:14
@@ -811,7 +832,7 @@ msgid "Restore"
 msgstr "恢复"
 
 # | msgid ""
-# | "You can restore your configs from previously downloaded backup file."
+# | "You Can Restore Your Configs From Previously Downloaded Backup File"
 #: hiddifypanel/panel/admin/templates/backup.html:26
 msgid "You can restore your configs from previously downloaded configs"
 msgstr "您可以从以前下载的备份文件中恢复您的配置。"
@@ -905,7 +926,7 @@ msgstr "后退"
 msgid "config.admin_secret.label"
 msgstr "管理秘密"
 
-# | msgid "Admin Secret will be used for accessing admin panel"
+# | msgid "Admin Secret Will be Used for Accessing Admin Panel"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.admin_secret.description"
 msgstr "Admin Secret 将用于访问管理面板"
@@ -915,7 +936,7 @@ msgstr "Admin Secret 将用于访问管理面板"
 msgid "config.admin.label"
 msgstr "管理员设置"
 
-# | msgid "Admin section is for configuring admin related settings"
+# | msgid "Admin Section is for Configuring Admin Related Settings"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.admin.description"
 msgstr "管理部分用于配置管理相关设置"
@@ -926,7 +947,7 @@ msgstr "管理部分用于配置管理相关设置"
 msgid "config.lang.label"
 msgstr "语言"
 
-# | msgid "Choose language for Users area."
+# | msgid "Choose Language For Users Area"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.lang.description"
 msgstr "它将更改管理和用户语言"
@@ -937,37 +958,37 @@ msgid "config.branding_title.label"
 msgstr "用户页面标题"
 
 # | msgid ""
-# | "Enter a customized title to be shown on user page. (before user's Welcome
+# | "Enter a Customized Title to be shown on User Page. (Before User's Welcome
 # "
-# | "Text.)"
+# | "Text)"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.branding_title.description"
 msgstr "输入要在用户页面上显示的自定义标题。 （在用户的欢迎文本之前。）"
 
 # | msgid ""
-# | "Support link (Goes both on branding title and also on support section of
+# | "Support Link (Goes Both on Branding Title and also on support section of
 # "
-# | "user page.)"
+# | "User Page)"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.branding_site.label"
 msgstr "支持链接（同时出现在品牌标题和用户页面的支持部分。）"
 
 # | msgid ""
-# | "The link to be shown on Support section of user's page.\n"
-# | "You can put also your telegram channel or telegram PV here."
+# | "The Link to be shown on Support Section of User's Page.\n"
+# | "You can put also your Telegram Channel Or Telegram PV Here."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.branding_site.description"
 msgstr "要显示在用户页面的支持部分的链接。"
 
-# | msgid "Support section text"
+# | msgid "Support Section Text"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.branding_freetext.label"
 msgstr "支持部分文本"
 
 # | msgid ""
-# | "Branding text. This box's text will be shown on support section of user's
+# | "Branding Text. This Box's Text will be Shown On Support Section of User's
 # "
-# | "page. You can use html tags."
+# | "Page. You can use Html Tags."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.branding_freetext.description"
 msgstr "品牌文字。此框的文本将显示在用户页面的支持部分。您可以使用 html 标签。"
@@ -977,7 +998,7 @@ msgstr "品牌文字。此框的文本将显示在用户页面的支持部分。
 msgid "config.branding.label"
 msgstr "客制化"
 
-# | msgid "Customization settings for user page"
+# | msgid "Customization Settings for User Page"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.branding.description"
 msgstr "用户页面自定义设置"
@@ -988,7 +1009,7 @@ msgid "config.netdata.label"
 msgstr "网络数据"
 
 # | msgid ""
-# | "For displaying resources. Uses your server's CPU but it is not too much."
+# | "For Displaying Resources. Uses your Server's CPU but it is not too much."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.netdata.description"
 msgstr "用于显示资源。可能会使用您的 CPU，但不会太多。"
@@ -999,8 +1020,8 @@ msgid "config.auto_update.label"
 msgstr "自动更新"
 
 # | msgid ""
-# | "Every day at 3:00 am, we will check for a new update. If there is a new "
-# | "update available, we will update the system automatically."
+# | "Every Day at 3:00 AM, we will Check for a New Update. If there is a New "
+# | "Update Available, we will Update the System Automatically."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.auto_update.description"
 msgstr "每天凌晨 3:00，我们将检查是否有新更新。如果有可用的新更新，我们将自动更新系统。"
@@ -1022,7 +1043,7 @@ msgstr "允许您的用户进行速度测试。它可以帮助他们识别链接
 msgid "config.only_ipv4.label"
 msgstr "只有 IPv4"
 
-# | msgid "It will disable IPv6"
+# | msgid "It will Disable IPv6"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.only_ipv4.description"
 msgstr "它将禁用 IPv6"
@@ -1032,7 +1053,7 @@ msgstr "它将禁用 IPv6"
 msgid "config.general.label"
 msgstr "通用设置"
 
-# | msgid "It is general system configurations."
+# | msgid "It is General System Configurations"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.general.description"
 msgstr "这是一般的系统配置。"
@@ -1042,7 +1063,7 @@ msgstr "这是一般的系统配置。"
 msgid "config.v2ray_enable.label"
 msgstr "V2Ray 配置"
 
-# | msgid "V2Ray does not support accounting and not suggested. "
+# | msgid "V2Ray does not Support Accounting and not suggested. "
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.v2ray_enable.description"
 msgstr "V2Ray 配置可以在这个部分进行设置。"
@@ -1070,13 +1091,13 @@ msgstr "代理设置"
 msgid "config.proxies.description"
 msgstr "定义特定的代理设置"
 
-# | msgid "Enable TLS domain fronting"
+# | msgid "Enable TLS Domain Fronting"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.domain_fronting_tls_enable.label"
 msgstr "启用 TLS 域前端"
 
 # | msgid ""
-# | "In CloudFlare, TLS domain fronting is not supported. It will use port 443
+# | "In CloudFlare, TLS Domain Fronting is not supported. It will use port 443
 # to"
 # | " connect to CDN. "
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1135,12 +1156,12 @@ msgstr "请在您的数据中心使用众所周知的域。例如，如果您在
 msgid "config.telegram.label"
 msgstr "电报代理"
 
-# | msgid "A proxy designed for telegram to bypass telegram filtering"
+# | msgid "A proxy designed for Telegram to bypass Telegram filtering"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.telegram.description"
 msgstr "为电报设计的绕过电报过滤的代理"
 
-# | msgid "Allow HTTP connection"
+# | msgid "Allow HTTP Connection"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.http_proxy_enable.label"
 msgstr "允许 HTTP 连接"
@@ -1153,7 +1174,7 @@ msgstr "允许 HTTP 连接"
 msgid "config.http_proxy_enable.description"
 msgstr "通过允许，您的用户可以使用未加密的 http 端口连接到系统。 （不建议）"
 
-# | msgid "HTTP ports"
+# | msgid "HTTP Ports"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.http_ports.label"
 msgstr "HTTP 端口"
@@ -1175,7 +1196,7 @@ msgstr "HTTP配置"
 msgid "config.http.description"
 msgstr "可以在此部分设置 HTTP 配置。"
 
-# | msgid "Allow invalid SNI"
+# | msgid "Allow Invalid SNI"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.allow_invalid_sni.label"
 msgstr "允许无效的 SNI"
@@ -1210,17 +1231,17 @@ msgstr "TLS 配置"
 msgid "config.tls.description"
 msgstr "可以在本节中设置 TLS 配置。"
 
-# | msgid "Shadowsocks Fake TLS (simple obfs)"
+# | msgid "Shadowsocks Fake TLS (Simple OBFS)"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.ssfaketls_enable.label"
 msgstr "Shadowsocks 假 TLS（简单的 obfs）"
 
-# | msgid "simple obfs protocol is not recommended"
+# | msgid "Simple OBFS Protocol is Not Recommended"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.ssfaketls_enable.description"
 msgstr "不推荐使用简单的 obfs 协议"
 
-# | msgid "SS fakeTLS fakedomain"
+# | msgid "SS FakeTLS FakeDomain"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.ssfaketls_fakedomain.label"
 msgstr "SS fakeTLS 假域"
@@ -1239,7 +1260,7 @@ msgid "config.ssfaketls.label"
 msgstr "Shadowsocks 伪TLS"
 
 # | msgid ""
-# | "Shadowsocks fake tls is a simple obfusacting tool that encapsulate the
+# | "Shadowsocks Fake TLS is a simple Obfusacting tool that encapsulate the
 # date "
 # | "in TLS packet"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1252,7 +1273,7 @@ msgid "config.shadowtls_enable.label"
 msgstr "影子TLS"
 
 # | msgid ""
-# | "ShadowTLS is a new protocol but it can hide the traffic from the
+# | "ShadowTLS is a new Protocol but it can hide the traffic from the
 # government "
 # | "using FakeTLS."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1261,7 +1282,7 @@ msgstr ""
 "Shadow TLS 是一种性能较低的新协议，但它可以使用 faketls 隐藏来自政府的流量。\n"
 "请注意，目前 ShadowTLS 不支持计费。"
 
-# | msgid "ShadowTLS fakedomain"
+# | msgid "ShadowTLS FakeDomain"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.shadowtls_fakedomain.label"
 msgstr "ShadowTLS 假域"
@@ -1297,17 +1318,17 @@ msgstr ""
 msgid "config.tuic_enable.label"
 msgstr "启用 TUIC"
 
-# | msgid "It is a UDP based protocol similar to quic"
+# | msgid "It is a UDP based protocol similar to QUIC"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.tuic_enable.description"
 msgstr "它是一个类似于 quic 的基于 UDP 的协议"
 
-# | msgid "TUIC ports"
+# | msgid "TUIC Ports"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.tuic_port.label"
 msgstr "TUIC端口"
 
-# | msgid "Use comma to separate ports like 63000,60000"
+# | msgid "Use comma to separate Ports like 63000,60000"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.tuic_port.description"
 msgstr "使用逗号分隔端口，如 63000,60000"
@@ -1318,7 +1339,7 @@ msgid "config.tuic.label"
 msgstr "国际车联"
 
 # | msgid ""
-# | "Delicately-TUICed high-performance proxy is on top of the QUIC protocol.
+# | "Delicately-TUICed High-Performance Proxy is on top of the QUIC Protocol.
 # \n"
 # | "\n"
 # | "TUIC's goal is to minimize the handshake latency as much as possible"
@@ -1352,13 +1373,13 @@ msgstr "KCP"
 msgid "config.kcp.description"
 msgstr "需要完成"
 
-# | msgid "Telegram bot token."
+# | msgid "Telegram Bot Token."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.telegram_bot_token.label"
 msgstr "电报机器人令牌"
 
-# | msgid "To Add Telegram bot feature. (Under Development.)"
+# | msgid "To Add Telegram Bot Feature. (Under Development.)"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.telegram_bot_token.description"
@@ -1376,7 +1397,7 @@ msgstr "包更新模式"
 msgid "config.package_mode.description"
 msgstr "指定是要发布包还是开发包。"
 
-# | msgid "UTLS"
+# | msgid "uTLS"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.utls.label"
@@ -1401,7 +1422,7 @@ msgstr "云火焰 API"
 # | "Please follow <a
 # href=\"https://github.com/hiddify/hiddify-config/wiki/Get-"
 # | "Cloudflare-API\" target=\"_blank\">the instruction</a> and paste the "
-# | "cloudflare API key"
+# | "Cloudflare API Key"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.cloudflare.description"
@@ -1435,49 +1456,49 @@ msgstr "秘密代理路径"
 msgid "config.proxy_path.description"
 msgstr "我们使用秘密代理路径来隐藏我们对政府的代理。"
 
-# | msgid "Trojan path"
+# | msgid "Trojan Path"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.path_trojan.label"
 msgstr "木马路径"
 
-# | msgid "For Trojan links"
+# | msgid "For Trojan Links"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.path_trojan.description"
 msgstr "对于木马链接"
 
-# | msgid "VLESS path"
+# | msgid "VLESS Path"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.path_vless.label"
 msgstr "VLESS路径"
 
-# | msgid "For the VLESS path"
+# | msgid "For the VLESS Path"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.path_vless.description"
 msgstr "对于 VLESS 路径"
 
-# | msgid "VMESS path"
+# | msgid "VMess Path"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.path_vmess.label"
 msgstr "VMESS路径"
 
-# | msgid "For the VMESS link"
+# | msgid "For the VMess Link"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.path_vmess.description"
 msgstr "对于 VMESS 链接"
 
-# | msgid "GRPC path"
+# | msgid "gRPC Path"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.path_grpc.label"
 msgstr "GRPC路径"
 
-# | msgid "GRPC path in configs"
+# | msgid "gRPC Path in configs"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.path_grpc.description"
@@ -1489,13 +1510,13 @@ msgstr "配置中的 GRPC 路径"
 msgid "config.path_tcp.label"
 msgstr "TCP 配置路径"
 
-# | msgid "For the proxy link"
+# | msgid "For the Proxy link"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.path_tcp.description"
 msgstr "对于代理链接"
 
-# | msgid "Path of websocket requests"
+# | msgid "Path of Websocket requests"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.path_ws.label"
@@ -1576,14 +1597,14 @@ msgstr ""
 msgid "config.last_hash.description"
 msgstr ""
 
-# | msgid "KCP ports"
+# | msgid "KCP Ports"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.kcp_ports.label"
 msgstr "KCP端口"
 
 # | msgid ""
-# | "Comma separated integers indicating the ports to use as KCP
-# connection.\n"
+# | "Comma separated integers indicating the Ports to use as KCP
+# Connection.\n"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.kcp_ports.description"
 msgstr "逗号分隔的整数，指示用作 KCP 连接的端口。"
@@ -1622,7 +1643,7 @@ msgstr "启用 SSR"
 msgid "config.ssr_enable.description"
 msgstr "ShadowsocksR 是原始 Shadowsocks 项目的一个分支，据称在安全性和稳定性方面更胜一筹。未测试。不支持计费。"
 
-# | msgid "SSR fakedomain"
+# | msgid "SSR FakeDomain"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.ssr_fakedomain.label"
 msgstr "SSR 假域名"
@@ -1635,33 +1656,33 @@ msgstr "SSR 假域名"
 msgid "config.ssr_fakedomain.description"
 msgstr "请在您的数据中心使用众所周知的域。例如，如果你在 Azure 数据中心，microsoft-update.com 就是一个很好的例子"
 
-# | msgid "Enable HTTP domain fronting"
+# | msgid "Enable HTTP Domain Fronting"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.domain_fronting_http_enable.label"
 msgstr "启用 HTTP 域前端"
 
 # | msgid ""
-# | "Enabling HTTP domain fronting causes your domain to be block quickly."
+# | "Enabling HTTP Domain Fronting causes your domain to be block quickly."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.domain_fronting_http_enable.description"
 msgstr "启用 HTTP 域前端会导致您的域被快速阻止。"
 
-# | msgid "Database version label"
+# | msgid "Database Version Label"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.db_version.label"
 msgstr "数据库版本标签"
 
-# | msgid "Database version description"
+# | msgid "Database Version Description"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.db_version.description"
 msgstr "数据库版本标签"
 
-# | msgid "Config not found"
+# | msgid "Config Not Found"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.not_found.label"
 msgstr "找不到配置"
 
-# | msgid "Config not found"
+# | msgid "Config Not Found"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.not_found.description"
 msgstr "找不到配置"
@@ -1678,170 +1699,98 @@ msgstr "V2射线路径"
 msgid "config.path_v2ray.description"
 msgstr "设置 V2Ray 配置路径"
 
-# | msgid "Shadowsocks path"
+# | msgid "Shadowsocks Path"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.path_ss.label"
 msgstr "Shadowsocks路径"
 
-# | msgid "Shadowsocks path in the links"
+# | msgid "Shadowsocks Path in the links"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.path_ss.description"
 msgstr "链接中的 Shadowsocks 路径"
 
-#: hiddifypanel/panel/admin/templates/index.html:30
-#, fuzzy
-msgid "Total Usage"
-msgstr "总使用量"
-
-#: hiddifypanel/panel/admin/templates/index.html:33
-#: hiddifypanel/panel/admin/templates/index.html:38
-#: hiddifypanel/panel/admin/templates/index.html:43
-#: hiddifypanel/panel/admin/templates/index.html:48
-#, fuzzy
-msgid "Online"
-msgstr "在线的"
-
-#: hiddifypanel/panel/admin/templates/index.html:35
-#, fuzzy
-msgid "Month Usage"
-msgstr "每月使用量"
-
-#: hiddifypanel/panel/admin/templates/index.html:40
-#, fuzzy
-msgid "Yesterday Usage"
-msgstr "昨天使用情况"
-
-#: hiddifypanel/panel/admin/templates/index.html:45
+# | msgid "Today"
+#: hiddifypanel/panel/admin/templates/index.html:54
 #, fuzzy
 msgid "Today Usage"
 msgstr "今天的用法"
 
-#: hiddifypanel/panel/admin/templates/index.html:53
+#: hiddifypanel/panel/admin/templates/index.html:57
+#: hiddifypanel/panel/admin/templates/index.html:63
+#: hiddifypanel/panel/admin/templates/index.html:69
+#: hiddifypanel/panel/admin/templates/index.html:75
+#: hiddifypanel/panel/admin/templates/index.html:85
+#: hiddifypanel/panel/admin/templates/index.html:173
+#: hiddifypanel/panel/admin/templates/index.html:179
+#: hiddifypanel/panel/admin/templates/index.html:185
+#: hiddifypanel/panel/admin/templates/index.html:191
 #, fuzzy
 msgid "Online Users"
 msgstr "在线用户"
 
-#: hiddifypanel/panel/admin/templates/index.html:53
+# | msgid "Yesterday"
+#: hiddifypanel/panel/admin/templates/index.html:60
+#, fuzzy
+msgid "Yesterday Usage"
+msgstr "昨天使用情况"
+
+# | msgid "Monthly"
+#: hiddifypanel/panel/admin/templates/index.html:66
+#, fuzzy
+msgid "Month Usage"
+msgstr "每月使用量"
+
+#: hiddifypanel/panel/admin/templates/index.html:72
+#, fuzzy
+msgid "Total Usage"
+msgstr "总使用量"
+
+#: hiddifypanel/panel/admin/templates/index.html:88
+#: hiddifypanel/panel/admin/templates/index.html:197
 #, fuzzy
 msgid "In 24 hours"
 msgstr "24小时内"
 
-#: hiddifypanel/panel/admin/templates/index.html:54
-#, fuzzy
-msgid "CPU"
-msgstr "中央处理器"
-
-#: hiddifypanel/panel/admin/templates/index.html:57
-#, fuzzy
-msgid "Average"
-msgstr "平均的"
-
-#: hiddifypanel/panel/admin/templates/index.html:60
-#, fuzzy
-msgid "RAM"
-msgstr "内存"
-
-#: hiddifypanel/panel/admin/templates/index.html:63
-#, fuzzy
-msgid "Highest"
-msgstr "最高"
-
-#: hiddifypanel/panel/admin/templates/index.html:66
+#: hiddifypanel/panel/admin/templates/index.html:91
 #, fuzzy
 msgid "Network"
 msgstr "网络"
 
-#: hiddifypanel/panel/admin/templates/index.html:69
+#: hiddifypanel/panel/admin/templates/index.html:94
+#: hiddifypanel/panel/admin/templates/index.html:211
+#: hiddifypanel/panel/admin/templates/index.html:228
 #, fuzzy
 msgid "From Last Restart"
 msgstr "从上次重启"
 
-#: hiddifypanel/panel/admin/templates/index.html:71
+#: hiddifypanel/panel/admin/templates/index.html:98
 #, fuzzy
-msgid "Connections/IP"
-msgstr "连接数/IP"
+msgid "CPU"
+msgstr "中央处理器"
 
-#: hiddifypanel/panel/admin/templates/index.html:74
+#: hiddifypanel/panel/admin/templates/index.html:107
 #, fuzzy
-msgid "CDN make it incorrect"
-msgstr "CDN使它不正确"
+msgid "RAM"
+msgstr "内存"
 
-#: hiddifypanel/panel/admin/templates/index.html:76
+#: hiddifypanel/panel/admin/templates/index.html:121
 #, fuzzy
 msgid "Disk"
 msgstr "磁盘"
 
-#: hiddifypanel/panel/admin/templates/index.html:79
+#: hiddifypanel/panel/admin/templates/index.html:124
 #, fuzzy
 msgid "Hiddify"
 msgstr "隐藏"
-
-# | msgid "CPU Usage"
-#: hiddifypanel/panel/admin/templates/index.html:91
-#: hiddifypanel/panel/admin/templates/index.html:111
-#: hiddifypanel/panel/admin/templates/index.html:325
-#: hiddifypanel/panel/admin/templates/index.html:336
-msgid "admin.cpu_chart"
-msgstr "CPU使用率图表"
-
-# | msgid "RAM Usage"
-#: hiddifypanel/panel/admin/templates/index.html:125
-#: hiddifypanel/panel/admin/templates/index.html:146
-#: hiddifypanel/panel/admin/templates/index.html:158
-#: hiddifypanel/panel/admin/templates/index.html:192
-#: hiddifypanel/panel/admin/templates/index.html:224
-msgid "admin.ram_chart"
-msgstr "内存使用图表"
-
-#: hiddifypanel/panel/admin/templates/index.html:182
-#, fuzzy
-msgid "Online Users in 24 hours"
-msgstr "24小时在线用户"
-
-# | msgid "IPv4 connections"
-#: hiddifypanel/panel/admin/templates/index.html:213
-#, fuzzy
-msgid "admin.ipv4 connections"
-msgstr "IPv4 连接"
-
-# | msgid "IPv6 connections"
-#: hiddifypanel/panel/admin/templates/index.html:245
-#, fuzzy
-msgid "admin.ipv6 connections"
-msgstr "IPv6 连接"
-
-# | msgid "Network Usage"
-#: hiddifypanel/panel/admin/templates/index.html:258
-#: hiddifypanel/panel/admin/templates/index.html:291
-#: hiddifypanel/panel/admin/templates/index.html:302
-msgid "admin.network_chart"
-msgstr "网络使用"
-
-# | msgid "Protocol Usage Chart"
-#: hiddifypanel/panel/admin/templates/index.html:290
-msgid "admin.protocol_chart"
-msgstr "协议使用图表"
-
-# | msgid "Users Usage Chart"
-#: hiddifypanel/panel/admin/templates/index.html:324
-msgid "admin.user_chart"
-msgstr "用户使用图表"
-
-#: hiddifypanel/panel/admin/templates/index.html:357
-#, fuzzy
-msgid ""
-"You have disabled netdata in the setting. You need to enable it to see "
-"the information."
-msgstr "您已在设置中禁用网络数据。您需要启用它才能看到信息。"
 
 # | msgid "Global Configs"
 #: hiddifypanel/panel/admin/templates/proxy.html:11
 msgid "admin.proxy.global_config"
 msgstr "全局配置"
 
-# | msgid "Renaming proxies..."
+# | msgid "Renaming Proxies"
 #: hiddifypanel/panel/admin/templates/proxy.html:14
 #, fuzzy
 msgid "Edit Proxy Names"
@@ -1922,10 +1871,13 @@ msgstr ""
 msgid "Please copy the emergency link before leaving this page."
 msgstr "离开此页面前，请复制并保存紧急访问链接。"
 
+# | msgid "Please Wait "
 #: hiddifypanel/panel/admin/templates/result.html:31
+#, fuzzy
 msgid "Please wait "
-msgstr ""
+msgstr "请稍等"
 
+# | msgid "Seconds"
 #: hiddifypanel/panel/admin/templates/result.html:31
 msgid "seconds"
 msgstr ""
@@ -1935,7 +1887,7 @@ msgstr ""
 msgid "log"
 msgstr "日志"
 
-# | msgid "Click here to see the complete log."
+# | msgid "Click Here To See The Complete Log"
 #: hiddifypanel/panel/admin/templates/result.html:38
 msgid "Click here to see the complete log"
 msgstr "单击此处查看完整日志。"
@@ -1961,8 +1913,8 @@ msgstr ""
 "config/discussions/129\">阅读更多</a>。"
 
 # | msgid ""
-# | "User usage will be updated every 6 minutes. To update it now click <a "
-# | "href=\"%(link)s\" class=\"btn btn-info\">here</a>."
+# | "User Usage Will Be Updated Every 10 Minutes. To Update it Now Click <a "
+# | "href=\"%(link)s\" class=\"btn btn-info\">Here</a>"
 #: hiddifypanel/panel/admin/templates/model/user_list.html:7
 #, fuzzy, python-format
 msgid ""
@@ -1972,6 +1924,10 @@ msgstr ""
 "用户使用情况将每 6 分钟更新一次。现在要更新它，请点击<a href=\"%(link)s\" class=\"btn btn-"
 "info\">此处</a>。"
 
+# | msgid ""
+# | "Hooray 🎉 🎉 🎉 \n"
+# | "Welcome to HiddifyBot.\n"
+# | "Start by clicking the link on the panel or entering your UUID."
 #: hiddifypanel/panel/commercial/telegrambot/Usage.py:16
 #: hiddifypanel/panel/commercial/telegrambot/information.py:55
 #, fuzzy
@@ -1984,6 +1940,14 @@ msgstr ""
 "欢迎来到 hiddifybot。\n"
 "首先单击面板上的链接或输入您的 UUID。"
 
+# | msgid ""
+# | "Dear {}\n"
+# | "\n"
+# | "Your Hiddify information is\n"
+# | "UUID: {}\n"
+# | "Last Online Date: {}\n"
+# | "Expire Time: {}\n"
+# | "Usage Class: {}\n"
 #: hiddifypanel/panel/commercial/telegrambot/information.py:20
 #, fuzzy
 msgid ""
@@ -2004,10 +1968,10 @@ msgstr ""
 "使用类：{}"
 
 # | msgid ""
-# | "Your hiddify instance information \n"
+# | "Your Hiddify instance information \n"
 # | "Domain: {} \n"
-# | "Usage limit: {} GB\n"
-# | "Current usage: {} GB\n"
+# | "Usage Limit: {} GB\n"
+# | "Current Usage: {} GB\n"
 # | "Expires at: {} \n"
 # | "Remaining days: {} \n"
 # | "\n"
@@ -2046,9 +2010,11 @@ msgstr "设置"
 msgid "Childs"
 msgstr "孩子们"
 
+# | msgid "No Children!"
 #: hiddifypanel/panel/commercial/templates/parent_dash.html:23
+#, fuzzy
 msgid "No children!"
-msgstr ""
+msgstr "没有孩子！"
 
 #: hiddifypanel/panel/commercial/templates/parent_dash.html:26
 msgid "Status"
@@ -2142,7 +2108,7 @@ msgstr "全部"
 msgid "user.home.allconfig.clash-configs"
 msgstr "冲突配置"
 
-# | msgid "Except vless"
+# | msgid "Except VLess"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:39
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:35
 msgid "user.home.allconfigs.expect_vless"
@@ -2183,23 +2149,23 @@ msgid "install from google play"
 msgstr "谷歌播放"
 
 # | msgid ""
-# | "Please install HiddifyAndroid from %(dl_link)s or %(play_link)s. \n"
+# | "Please Install HiddifyAndroid From %(dl_link)s Or %(play_link)s. \n"
 # | "\n"
 # | "<!--\n"
 # | "<div class=\"callout callout-danger\">\n"
-# | "    <b>Update HiddifyAndroid to version 0.14</b>\n"
+# | "    <b>Update HiddifyAndroid to Version 0.14</b>\n"
 # | "</div>-->\n"
 # | "<details>\n"
 # | "<summary>Why HiddifyAndroid?</summary>\n"
 # | "<div class=\"callout callout-info\">\n"
-# | "        HiddifyAndroid is an open source fork of Clash that supports more
-# protocols.\n"
+# | "        HiddifyAndroid is an Open Source Fork Of Clash That Supports More
+# Protocols.\n"
 # | "        <br>\n"
-# | "        It's source codes exist in\n"
+# | "        It's Source Codes Exist in\n"
 # | "        <a
 # href=\"https://github.com/hiddify/HiddifyProxyAndroid\">GitHub</a>.\n"
 # | "        \n"
-# | "        Therefore, it is safe.\n"
+# | "        Therefore, it is Safe.\n"
 # | "        <details>\n"
 # | "            <summary>Alternative: Normal Clash</summary>\n"
 # | "            <div class=\"btn-group\">\n"
@@ -2213,7 +2179,7 @@ msgstr "谷歌播放"
 # | "                    class=\"btn btn-warning orig-link\">Direct
 # Download</a>\n"
 # | "            <div class=\"alert alert-danger\">\n"
-# | "            \tClash does not support VLESS protocol. Therefore, we need
+# | "            \tClash does Not Support VLess Protocol. Therefore, we need
 # to add another link for it.\n"
 # | "            \n"
 # | "        </details>\n"
@@ -2291,6 +2257,7 @@ msgstr ""
 "请从以下任一链接安装 V2rayNG：%(dl_link)s 或 %(play_link)s。\n"
 "然后复制下面的链接，按照视频教程粘贴到V2rayNG中。"
 
+# | msgid "Test"
 #: hiddifypanel/panel/user/templates/home/base2.html:36
 msgid "test"
 msgstr "测试"
@@ -2300,7 +2267,7 @@ msgstr "测试"
 msgid "user.home.clash_configs.intro"
 msgstr "现在根据您的需要，单击以下链接之一。"
 
-# | msgid "For only blocked sites"
+# | msgid "For only Blocked Sites"
 #: hiddifypanel/panel/user/templates/home/clash-links.html:5
 msgid "user.home.clash_configs.only_for_blocked_sites.title"
 msgstr "仅适用于被阻止的网站"
@@ -2319,7 +2286,7 @@ msgstr ""
 "                在这种模式下，您不会感觉到速度有任何变化。\n"
 "            </div>"
 
-# | msgid "Install for only blocked sites"
+# | msgid "Install for Only Blocked Sites"
 #: hiddifypanel/panel/user/templates/home/clash-links.html:11
 #: hiddifypanel/panel/user/templates/home/clash-links.html:23
 msgid "user.home.clash_configs.only_for_blocked_sites.btn"
@@ -2339,7 +2306,7 @@ msgstr "冲突的替代链接"
 msgid "user.home.clash_configs.link_for_normal_clash"
 msgstr "安装冲突"
 
-# | msgid "Foreign sites proxy"
+# | msgid "Foreign Sites Proxy"
 #: hiddifypanel/panel/user/templates/home/clash-links.html:30
 msgid "user.home.clash_configs.foreign_sites.title"
 msgstr "国外网站代理"
@@ -2357,13 +2324,13 @@ msgstr ""
 "这种模式在访问一些受制裁的网站时很有用。\n"
 "</div>"
 
-# | msgid "Install for foreign sites"
+# | msgid "Install for Foreign Sites"
 #: hiddifypanel/panel/user/templates/home/clash-links.html:36
 #: hiddifypanel/panel/user/templates/home/clash-links.html:48
 msgid "user.home.clash_configs.foreign_sites.btn"
 msgstr "国外网站安装"
 
-# | msgid "Proxy for all sites"
+# | msgid "Proxy for All Sites"
 #: hiddifypanel/panel/user/templates/home/clash-links.html:56
 msgid "user.home.clash_configs.all_sites.title"
 msgstr "所有网站的代理"
@@ -2381,7 +2348,7 @@ msgstr ""
 "    加载本地站点的速度将降低，并会危及您的隐私。\n"
 "</div>"
 
-# | msgid "Install Proxy for all sites."
+# | msgid "Install Proxy for all Sites."
 #: hiddifypanel/panel/user/templates/home/clash-links.html:62
 #: hiddifypanel/panel/user/templates/home/clash-links.html:74
 msgid "user.home.clash_configs.all_sites.btn"
@@ -2489,7 +2456,7 @@ msgstr "iOS"
 msgid "desktop"
 msgstr "桌面"
 
-# | msgid "Please select your operating system."
+# | msgid "Please Select Your Operating System."
 #: hiddifypanel/panel/user/templates/home/index_old.html:54
 #: hiddifypanel/panel/user/templates/home/multi.html:65
 msgid "user.home.select os"
@@ -2501,19 +2468,19 @@ msgstr "请选择您的操作系统。"
 msgid "user.home.all_configs"
 msgstr "所有配置"
 
-# | msgid "Speedtest (detect dirty IP)"
+# | msgid "Speedtest (Detect Dirty IP)"
 #: hiddifypanel/panel/user/templates/home/index_old.html:91
 #: hiddifypanel/panel/user/templates/home/multi.html:102
 msgid "user.home.speedtest"
 msgstr "Speedtest（检测脏IP）"
 
-# | msgid "DNS over https"
+# | msgid "DNS Over HTTPS"
 #: hiddifypanel/panel/user/templates/home/index_old.html:93
 #: hiddifypanel/panel/user/templates/home/multi.html:104
 msgid "user.home.doh"
 msgstr "通过 https 的 DNS"
 
-# | msgid "Please select the item."
+# | msgid "Please Select the item."
 #: hiddifypanel/panel/user/templates/home/index_old.html:99
 #: hiddifypanel/panel/user/templates/home/multi.html:110
 msgid "user.home.select tool"
@@ -2596,13 +2563,13 @@ msgstr ""
 "link\">下载存储</一个>\n"
 "        </div>"
 
-# | msgid "WingsX  and fairVPN "
+# | msgid "Wings X  and Fair VPN "
 #: hiddifypanel/panel/user/templates/home/ios.html:21
 msgid "user.home.ios.others.title"
 msgstr "其他应用程序（shadowlink、fairVPN、napsternetv）"
 
 # | msgid ""
-# | "First install one of the following applications:\n"
+# | "First install one of the following Applications:\n"
 # | "\n"
 # | "<div class=\"btn-group\">\n"
 # | "\t<a
@@ -2610,9 +2577,9 @@ msgstr "其他应用程序（shadowlink、fairVPN、napsternetv）"
 # | "        class=\"btn btn-primary orig-link\">WingsX</a>\n"
 # | "</div>\n"
 # | "\t<a href=\"https://apps.apple.com/us/app/fair-vpn/id1533873488\"\n"
-# | "        class=\"btn btn-primary orig-link\">fair-vpn</a>\n"
+# | "        class=\"btn btn-primary orig-link\">Fair-VPN</a>\n"
 # | "    <a href=\"https://apps.apple.com/us/app/napsternetv/id1629465476\"\n"
-# | "        class=\"btn btn-primary orig-link\">napsternetv</a>\n"
+# | "        class=\"btn btn-primary orig-link\">NapsternetV</a>\n"
 # | "<br />\n"
 # | "Then apply one of the following configs:"
 #: hiddifypanel/panel/user/templates/home/ios.html:25
@@ -2632,27 +2599,30 @@ msgstr ""
 "<br />\n"
 "然后应用以下配置之一："
 
+# | msgid "Check Again"
 #: hiddifypanel/panel/user/templates/home/multi.html:399
+#, fuzzy
 msgid "Check again"
-msgstr ""
+msgstr "再检查一遍"
 
-# | msgid "Turn off VPN"
+# | msgid "Turn Off VPN"
 #: hiddifypanel/panel/user/templates/home/multi.html:402
+#, fuzzy
 msgid "Turn of VPN"
-msgstr ""
+msgstr "关闭 VPN"
 
 # | msgid ""
-# | "You should visit this page without VPN to use Auto CDN IP. Your "
-# | "country=%(your_country)s"
+# | "You should visit this page without VPN to use Auto CDN IP. Your Country "
+# | "=%(your_country)s"
 #: hiddifypanel/panel/user/templates/home/multi.html:402
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "You should visit this page without VPN. Your country=%(your_country)s "
 "expected=%(expected_country)s"
-msgstr ""
+msgstr "您应该在没有 VPN 的情况下访问此页面以使用自动 CDN IP。你的国家 =%(your_country)s"
 
 # | msgid ""
-# | "First, test the speed <b>without</b> the proxy. If the speed is not good,
+# | "First, Test the Speed <b>without</b> the proxy. If the speed is not good,
 # it means that this ip is so called dirty on your ISP.\n"
 # | "If the speed was low without a proxy, don't waste your time to test this
 # proxy.\n"
@@ -2676,7 +2646,7 @@ msgstr "上传"
 msgid "user.home.speedtest.download"
 msgstr "下载"
 
-# | msgid "Both ways"
+# | msgid "Both Ways"
 #: hiddifypanel/panel/user/templates/home/speedtest.html:10
 msgid "user.home.speedtest.two_ways"
 msgstr "双向"
@@ -2703,7 +2673,7 @@ msgstr "流量使用"
 msgid "Disable"
 msgstr "停用"
 
-# | msgid "of"
+# | msgid "Of"
 #: hiddifypanel/panel/user/templates/home/usage.html:12
 msgid "user.home.usage.from"
 msgstr "的"
@@ -2718,7 +2688,7 @@ msgstr "每月"
 msgid "user.home.usage.expire"
 msgstr "过期于："
 
-# | msgid "Traffic usage reset time:"
+# | msgid "Traffic Usage Reset Time:"
 #: hiddifypanel/panel/user/templates/home/usage.html:23
 msgid "Reset Usage Time:"
 msgstr "流量使用重置时间："
@@ -2733,7 +2703,7 @@ msgstr "天"
 msgid "View in Telegram"
 msgstr "在电报中查看"
 
-# | msgid "Display usage details."
+# | msgid "Display Usage Details."
 #: hiddifypanel/panel/user/templates/home/usage.html:41
 msgid "user.home.usage.details"
 msgstr "显示使用详情。"
@@ -2832,129 +2802,135 @@ msgstr ""
 msgid "Oops! Something went wrong."
 msgstr "哎呀！ 出了些问题。"
 
+# | msgid ""
+# | "This Version of Hiddify Panel is Outdated. Please Update it from Admin
+# Area."
 #: hiddifypanel/templates/500.html:9
+#, fuzzy
 msgid ""
 "This version of hiddify panel is outdated. Please update it from admin "
 "area."
-msgstr ""
+msgstr "此版本的 Hiddify 面板已过时。请从管理区更新它。"
 
+# | msgid ""
+# | "Please Contact Hiddify@Gmail.Com with the Details in This Page."
 #: hiddifypanel/templates/500.html:12
 msgid "Please contact hiddify@gmail.com with the details in this page."
 msgstr "请使用本页中的详细信息联系 hiddify@gmail.com。"
 
 # | msgid "Hiddify Panel"
 #: hiddifypanel/templates/admin-layout.html:18
-#: hiddifypanel/templates/admin-layout.html:58
 #: hiddifypanel/templates/master.html:7
 msgid "master.page-title"
 msgstr "隐藏面板"
 
-#: hiddifypanel/templates/admin-layout.html:20
-#: hiddifypanel/templates/admin-layout.html:61
-#: hiddifypanel/templates/admin-layout.html:77
+#: hiddifypanel/templates/admin-layout.html:21
+#: hiddifypanel/templates/admin-layout.html:59
+#: hiddifypanel/templates/admin-layout.html:75
 #, fuzzy
 msgid "Parent Panel"
 msgstr "家长小组"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/templates/admin-layout.html:38
+#: hiddifypanel/templates/admin-layout.html:39
 msgid "admin.Actions:apply_configs"
 msgstr "应用配置"
 
 # | msgid "Dashboard"
-#: hiddifypanel/templates/admin-layout.html:77
+#: hiddifypanel/templates/admin-layout.html:75
 msgid "admin.menu.home"
 msgstr "行政"
 
 # | msgid "Users"
+#: hiddifypanel/templates/admin-layout.html:78
 #: hiddifypanel/templates/admin-layout.html:80
-#: hiddifypanel/templates/admin-layout.html:82
 msgid "admin.menu.user"
 msgstr "用户"
 
-#: hiddifypanel/templates/admin-layout.html:80
+# | msgid "In Parent Panel"
+#: hiddifypanel/templates/admin-layout.html:78
 #, fuzzy
 msgid "in parent panel"
 msgstr "在父面板中"
 
 # | msgid "Domains"
-#: hiddifypanel/templates/admin-layout.html:86
-#: hiddifypanel/templates/admin-layout.html:164
+#: hiddifypanel/templates/admin-layout.html:84
+#: hiddifypanel/templates/admin-layout.html:162
 msgid "admin.menu.domain"
 msgstr "域名"
 
 # | msgid "Settings"
-#: hiddifypanel/templates/admin-layout.html:95
-#: hiddifypanel/templates/admin-layout.html:167
+#: hiddifypanel/templates/admin-layout.html:93
+#: hiddifypanel/templates/admin-layout.html:165
 msgid "admin.menu.config"
 msgstr "设置"
 
-#: hiddifypanel/templates/admin-layout.html:102
+#: hiddifypanel/templates/admin-layout.html:100
 msgid "Commercial use"
 msgstr ""
 
 # | msgid "Actions"
-#: hiddifypanel/templates/admin-layout.html:113
+#: hiddifypanel/templates/admin-layout.html:111
 msgid "admin.actions.title"
 msgstr "动作"
 
 # | msgid "Help"
-#: hiddifypanel/templates/admin-layout.html:120
+#: hiddifypanel/templates/admin-layout.html:118
 msgid "admin.menu.support"
 msgstr "支持"
 
 # | msgid "Telegram"
-#: hiddifypanel/templates/admin-layout.html:124
+#: hiddifypanel/templates/admin-layout.html:122
 msgid "admin.menu.telegram"
 msgstr "电报"
 
-#: hiddifypanel/templates/admin-layout.html:128
+#: hiddifypanel/templates/admin-layout.html:126
 #: hiddifypanel/templates/donation.html:5
 msgid "Donation"
 msgstr "捐款"
 
 # | msgid "Status"
-#: hiddifypanel/templates/admin-layout.html:152
+#: hiddifypanel/templates/admin-layout.html:150
 msgid "admin.actions.status"
 msgstr "地位"
 
 # | msgid "View Logs"
-#: hiddifypanel/templates/admin-layout.html:153
+#: hiddifypanel/templates/admin-layout.html:151
 msgid "admin.actions.viewlogs"
 msgstr "查看日志"
 
-# | msgid "Apply configs"
-#: hiddifypanel/templates/admin-layout.html:154
+# | msgid "Apply Configs"
+#: hiddifypanel/templates/admin-layout.html:152
 msgid "admin.actions.apply_configs"
 msgstr "应用配置"
 
 # | msgid "Update System"
-#: hiddifypanel/templates/admin-layout.html:155
+#: hiddifypanel/templates/admin-layout.html:153
 msgid "admin.actions.update"
 msgstr "更新系统"
 
 # | msgid "Reinstall System"
-#: hiddifypanel/templates/admin-layout.html:157
+#: hiddifypanel/templates/admin-layout.html:155
 msgid "admin.actions.reinstall"
 msgstr "重装系统"
 
 # | msgid "Restart System"
-#: hiddifypanel/templates/admin-layout.html:158
+#: hiddifypanel/templates/admin-layout.html:156
 msgid "admin.actions.reset"
 msgstr "重启系统"
 
 # | msgid "Proxies"
-#: hiddifypanel/templates/admin-layout.html:165
+#: hiddifypanel/templates/admin-layout.html:163
 msgid "admin.menu.proxy"
 msgstr "代理"
 
 # | msgid "Common Settings"
-#: hiddifypanel/templates/admin-layout.html:170
+#: hiddifypanel/templates/admin-layout.html:168
 #, fuzzy
 msgid "Commercial Settings"
 msgstr "商业设置"
 
-#: hiddifypanel/templates/admin-layout.html:174
+#: hiddifypanel/templates/admin-layout.html:172
 #, fuzzy
 msgid "Telegram Bot"
 msgstr "电报机器人"
@@ -3079,12 +3055,12 @@ msgstr ""
 msgid "close"
 msgstr "关闭"
 
-# | msgid "Share to social media"
+# | msgid "Share to Social Media"
 #: hiddifypanel/templates/master.html:144
 msgid "user.home.share-title"
 msgstr "分享到社交媒体"
 
-# | msgid "Link for social media"
+# | msgid "Link for Social Media"
 #: hiddifypanel/templates/master.html:154
 msgid "clickable copy"
 msgstr "社交媒体链接"
@@ -3094,12 +3070,12 @@ msgstr "社交媒体链接"
 msgid "open"
 msgstr "打开"
 
-# | msgid "Link Copied to clipboard. "
+# | msgid "Link Copied to Clipboard. "
 #: hiddifypanel/templates/master.html:229
 msgid "user.home.link.success-copy"
 msgstr "链接已复制到剪贴板。"
 
-# | msgid "Copy to clipboard:  Ctrl+C, Enter"
+# | msgid "Copy to Clipboard:  Ctrl+C, Enter"
 #: hiddifypanel/templates/master.html:231
 #: hiddifypanel/templates/master.html:234
 msgid "user.home.link.manual-copy"
@@ -3110,7 +3086,7 @@ msgstr "复制到剪贴板：Ctrl+C，回车"
 msgid "Install"
 msgstr "安装"
 
-# | msgid "Hiddify panel installation"
+# | msgid "Hiddify Panel Installation"
 #: hiddifypanel/templates/master.html:367
 #, fuzzy
 msgid "Install Hiddify Application"
@@ -3133,7 +3109,7 @@ msgid "Actions"
 msgstr "动作"
 
 # | msgid ""
-# | "Invalid address: The decoy site's URL should be a complete URL. Example:
+# | "Invalid Address: The Decoy Site's URL should be a complete URL. Example:
 # "
 # | "https://www.wikipedia.org/\n"
 #~ msgid "config.Invalid decoy_site"
@@ -3161,7 +3137,7 @@ msgstr "动作"
 #~ msgid "config.decoy_site.description"
 #~ msgstr "假网站：当有人访问您的域时模拟网站"
 
-# | msgid "Ports settings"
+# | msgid "Ports Settings"
 #~ msgid "config.ports.label"
 #~ msgstr "端口设置"
 
@@ -3169,7 +3145,7 @@ msgstr "动作"
 #~ msgid "config.ports.description"
 #~ msgstr "您可以在该部分选择系统的不同端口"
 
-# | msgid "Allow HTTP connection"
+# | msgid "Allow HTTP Connection"
 #~ msgid "config.http_proxy.label"
 #~ msgstr "允许 HTTP 连接"
 
@@ -3179,6 +3155,26 @@ msgstr "动作"
 # | " port. (not recommended)"
 #~ msgid "config.http_proxy.description"
 #~ msgstr "通过允许，您的用户可以使用未加密的 http 端口连接到系统。 （不建议）"
+
+# | msgid "Protocol Usage Chart"
+#~ msgid "admin.protocol_chart"
+#~ msgstr "协议使用图表"
+
+# | msgid "Users Usage Chart"
+#~ msgid "admin.user_chart"
+#~ msgstr "用户使用图表"
+
+# | msgid "CPU Usage"
+#~ msgid "admin.cpu_chart"
+#~ msgstr "CPU使用率图表"
+
+# | msgid "RAM Usage"
+#~ msgid "admin.ram_chart"
+#~ msgstr "内存使用图表"
+
+# | msgid "Network Usage"
+#~ msgid "admin.network_chart"
+#~ msgstr "网络使用"
 
 # | msgid "Link copied to clipboard. "
 #~ msgid "user.home.link.success - copy"
@@ -3249,14 +3245,14 @@ msgstr "动作"
 #~ "href=\"%(default_link)s\">default user link</a>"
 #~ msgstr "您似乎还没有创建任何用户。 <a href=\"%(default_link)s\">默认用户链接</a>"
 
-# | msgid "Error!!"
+# | msgid "Error !!"
 #~ msgid "Error!!!"
 #~ msgstr "错误！！！"
 
 # | msgid ""
-# | "Domain (%(domain))-> IP=%(domain_ip)s is not same as your
-# ip=%(server_ip)s ."
-# | " This is required in direct mode."
+# | "Domain (%(domain)s)-> IP=%(domain_ip)s is Not Same as Your
+# IP=%(server_ip)s "
+# | ". This is Required in Direct Mode."
 #~ msgid ""
 #~ "Domain (%(domain))-> IP=%(domain_ip)s is not"
 #~ " matched with your ip=%(server_ip)s which"
@@ -3269,16 +3265,38 @@ msgstr "动作"
 #~ msgid "User usage update"
 #~ msgstr "检查使用情况"
 
-# | msgid "Invalid IP or domain"
+# | msgid "IPv4 Connections"
+#~ msgid "admin.ipv4 connections"
+#~ msgstr "IPv4 连接"
+
+# | msgid "Invalid IP or Domain"
 #~ msgid "config.Invalid IP or domain"
 #~ msgstr "IP 或域无效"
 
+# | msgid "Should be a valid Domain"
 #~ msgid "Should be a valid domain"
 #~ msgstr "应该是一个有效的域"
 
 # | msgid "Should be a valid UUID"
 #~ msgid "Should be a valid uuid"
 #~ msgstr "应该是一个有效的 UUID"
+
+# | msgid ""
+# | "You have Disabled Netdata in the setting. You need to enable it to see
+# the "
+# | "information."
+#~ msgid ""
+#~ "You have disabled netdata in the "
+#~ "setting. You need to enable it to"
+#~ " see the information."
+#~ msgstr "您已在设置中禁用网络数据。您需要启用它才能看到信息。"
+
+# | msgid "IPv6 Connections"
+#~ msgid "admin.ipv6 connections"
+#~ msgstr "IPv6 连接"
+
+#~ msgid "Online Users in 24 hours"
+#~ msgstr "24小时在线用户"
 
 # | msgid ""
 # | "Welcome to hiddifybot.\n"
@@ -3296,14 +3314,29 @@ msgstr "动作"
 #~ msgstr ""
 
 # | msgid ""
-# | "Error in auto cdn ip! it can not be find, please contact admin."
+# | "Error in Auto CDN IP! it can not be find, Please Contact Admin."
 #~ msgid "Error in morteza ip! auto cdn ip can not be find, please contact admin."
 #~ msgstr ""
 
 # | msgid ""
-# | "In CDN mode you can only apply one domain or one ip for forced host. use
+# | "In CDN Mode you can only apply one Domain or one IP for forced Host. use
 # "
-# | "auto cdn ip mode instead"
+# | "Auto CDN IP mode instead"
 #~ msgid "In CDN mode you can only apply one domain or one ip for forced host"
 #~ msgstr ""
+
+#~ msgid "Online"
+#~ msgstr "在线的"
+
+#~ msgid "Average"
+#~ msgstr "平均的"
+
+#~ msgid "Highest"
+#~ msgstr "最高"
+
+#~ msgid "Connections/IP"
+#~ msgstr "连接数/IP"
+
+#~ msgid "CDN make it incorrect"
+#~ msgstr "CDN使它不正确"
 
