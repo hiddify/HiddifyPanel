@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-09 10:28+0200\n"
-"PO-Revision-Date: 2023-04-09 03:12-0500\n"
+"POT-Creation-Date: 2023-04-09 11:40+0200\n"
+"PO-Revision-Date: 2023-04-09 04:32-0500\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -315,7 +315,9 @@ msgstr ""
 # | "\n"
 # | "If you use <a href=\"https://ircf.space/export.php\">this template </a>,
 # the relevant IP will be selected according to the user's operator, and if
-# you put a range of IPs The IP will be randomly selected from that range."
+# you put a range of IPs The IP will be randomly selected from that range.\n"
+# | "Use <a target=\"_blank\" href=\"https://ip-format.hiddify.com\">this
+# link</a> to set personal IPs."
 #: hiddifypanel/panel/admin/DomainAdmin.py:40
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.cdn_forced_host.description"
@@ -325,7 +327,9 @@ msgstr ""
 "در صورتی که در <a href=\"https://ircf.space/export.php\">این قالب </a> "
 "استفاده کنید با توجه به اوپراتور آی پی مربوطه انتخاب میشود و در صورتی که "
 "رنجی از آی پی ها را قرار دهید به صورت تصادفی آی پی از ان رنج انتخاب "
-"می‌شود."
+"می‌شود.\n"
+"جهت قراردادن آی پی های شخصی از <a target=\"_blank\" href=\"https://ip-"
+"format.hiddify.com\">این لینک</a> استفاده کنید."
 
 # | msgid "The name that will be shown in the configs for this domain."
 #: hiddifypanel/panel/admin/DomainAdmin.py:42
