@@ -1,6 +1,6 @@
 from flask_admin.base import AdminIndexView,expose
 from hiddifypanel.panel.hiddify  import admin
-from flask import render_template,url_for,Markup,request,jsonify
+from flask import render_template,url_for,Markup,request,jsonify,g
 from flask_babelex import lazy_gettext as _
 from hiddifypanel.panel import hiddify
 import datetime
