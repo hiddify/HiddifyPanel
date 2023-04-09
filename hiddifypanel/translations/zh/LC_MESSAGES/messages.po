@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-09 11:40+0200\n"
-"PO-Revision-Date: 2023-04-09 04:32-0500\n"
+"POT-Creation-Date: 2023-04-09 18:40+0200\n"
+"PO-Revision-Date: 2023-04-09 04:40-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -1720,75 +1720,75 @@ msgid "config.path_ss.description"
 msgstr "链接中的 Shadowsocks 路径"
 
 # | msgid "Today"
-#: hiddifypanel/panel/admin/templates/index.html:54
+#: hiddifypanel/panel/admin/templates/index.html:78
 #, fuzzy
 msgid "Today Usage"
 msgstr "今天的用法"
 
-#: hiddifypanel/panel/admin/templates/index.html:57
-#: hiddifypanel/panel/admin/templates/index.html:63
-#: hiddifypanel/panel/admin/templates/index.html:69
-#: hiddifypanel/panel/admin/templates/index.html:75
-#: hiddifypanel/panel/admin/templates/index.html:85
-#: hiddifypanel/panel/admin/templates/index.html:173
-#: hiddifypanel/panel/admin/templates/index.html:179
-#: hiddifypanel/panel/admin/templates/index.html:185
-#: hiddifypanel/panel/admin/templates/index.html:191
+#: hiddifypanel/panel/admin/templates/index.html:81
+#: hiddifypanel/panel/admin/templates/index.html:87
+#: hiddifypanel/panel/admin/templates/index.html:93
+#: hiddifypanel/panel/admin/templates/index.html:99
+#: hiddifypanel/panel/admin/templates/index.html:109
+#: hiddifypanel/panel/admin/templates/index.html:197
+#: hiddifypanel/panel/admin/templates/index.html:203
+#: hiddifypanel/panel/admin/templates/index.html:209
+#: hiddifypanel/panel/admin/templates/index.html:215
 #, fuzzy
 msgid "Online Users"
 msgstr "在线用户"
 
 # | msgid "Yesterday"
-#: hiddifypanel/panel/admin/templates/index.html:60
+#: hiddifypanel/panel/admin/templates/index.html:84
 #, fuzzy
 msgid "Yesterday Usage"
 msgstr "昨天使用情况"
 
 # | msgid "Monthly"
-#: hiddifypanel/panel/admin/templates/index.html:66
+#: hiddifypanel/panel/admin/templates/index.html:90
 #, fuzzy
 msgid "Month Usage"
 msgstr "每月使用量"
 
-#: hiddifypanel/panel/admin/templates/index.html:72
+#: hiddifypanel/panel/admin/templates/index.html:96
 #, fuzzy
 msgid "Total Usage"
 msgstr "总使用量"
 
-#: hiddifypanel/panel/admin/templates/index.html:88
-#: hiddifypanel/panel/admin/templates/index.html:197
+#: hiddifypanel/panel/admin/templates/index.html:112
+#: hiddifypanel/panel/admin/templates/index.html:221
 #, fuzzy
 msgid "In 24 hours"
 msgstr "24小时内"
 
-#: hiddifypanel/panel/admin/templates/index.html:91
+#: hiddifypanel/panel/admin/templates/index.html:115
 #, fuzzy
 msgid "Network"
 msgstr "网络"
 
-#: hiddifypanel/panel/admin/templates/index.html:94
-#: hiddifypanel/panel/admin/templates/index.html:211
-#: hiddifypanel/panel/admin/templates/index.html:228
+#: hiddifypanel/panel/admin/templates/index.html:118
+#: hiddifypanel/panel/admin/templates/index.html:235
+#: hiddifypanel/panel/admin/templates/index.html:252
 #, fuzzy
 msgid "From Last Restart"
 msgstr "从上次重启"
 
-#: hiddifypanel/panel/admin/templates/index.html:98
+#: hiddifypanel/panel/admin/templates/index.html:122
 #, fuzzy
 msgid "CPU"
 msgstr "中央处理器"
 
-#: hiddifypanel/panel/admin/templates/index.html:107
+#: hiddifypanel/panel/admin/templates/index.html:131
 #, fuzzy
 msgid "RAM"
 msgstr "内存"
 
-#: hiddifypanel/panel/admin/templates/index.html:121
+#: hiddifypanel/panel/admin/templates/index.html:145
 #, fuzzy
 msgid "Disk"
 msgstr "磁盘"
 
-#: hiddifypanel/panel/admin/templates/index.html:124
+#: hiddifypanel/panel/admin/templates/index.html:148
 #, fuzzy
 msgid "Hiddify"
 msgstr "隐藏"

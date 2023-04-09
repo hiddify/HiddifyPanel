@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-09 11:40+0200\n"
-"PO-Revision-Date: 2023-04-09 04:32-0500\n"
+"POT-Creation-Date: 2023-04-09 18:40+0200\n"
+"PO-Revision-Date: 2023-04-09 04:40-0500\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -1746,64 +1746,64 @@ msgid "config.path_ss.description"
 msgstr "Shadowsocks Path in the links"
 
 # | msgid "Today"
-#: hiddifypanel/panel/admin/templates/index.html:54
+#: hiddifypanel/panel/admin/templates/index.html:78
 msgid "Today Usage"
 msgstr "Today"
 
-#: hiddifypanel/panel/admin/templates/index.html:57
-#: hiddifypanel/panel/admin/templates/index.html:63
-#: hiddifypanel/panel/admin/templates/index.html:69
-#: hiddifypanel/panel/admin/templates/index.html:75
-#: hiddifypanel/panel/admin/templates/index.html:85
-#: hiddifypanel/panel/admin/templates/index.html:173
-#: hiddifypanel/panel/admin/templates/index.html:179
-#: hiddifypanel/panel/admin/templates/index.html:185
-#: hiddifypanel/panel/admin/templates/index.html:191
+#: hiddifypanel/panel/admin/templates/index.html:81
+#: hiddifypanel/panel/admin/templates/index.html:87
+#: hiddifypanel/panel/admin/templates/index.html:93
+#: hiddifypanel/panel/admin/templates/index.html:99
+#: hiddifypanel/panel/admin/templates/index.html:109
+#: hiddifypanel/panel/admin/templates/index.html:197
+#: hiddifypanel/panel/admin/templates/index.html:203
+#: hiddifypanel/panel/admin/templates/index.html:209
+#: hiddifypanel/panel/admin/templates/index.html:215
 msgid "Online Users"
 msgstr "Online Users"
 
 # | msgid "Yesterday"
-#: hiddifypanel/panel/admin/templates/index.html:60
+#: hiddifypanel/panel/admin/templates/index.html:84
 msgid "Yesterday Usage"
 msgstr "Yesterday"
 
 # | msgid "Monthly"
-#: hiddifypanel/panel/admin/templates/index.html:66
+#: hiddifypanel/panel/admin/templates/index.html:90
 msgid "Month Usage"
 msgstr "Monthly"
 
-#: hiddifypanel/panel/admin/templates/index.html:72
+#: hiddifypanel/panel/admin/templates/index.html:96
 msgid "Total Usage"
 msgstr "Total Usage"
 
-#: hiddifypanel/panel/admin/templates/index.html:88
-#: hiddifypanel/panel/admin/templates/index.html:197
+#: hiddifypanel/panel/admin/templates/index.html:112
+#: hiddifypanel/panel/admin/templates/index.html:221
 msgid "In 24 hours"
 msgstr "In 24 hours"
 
-#: hiddifypanel/panel/admin/templates/index.html:91
+#: hiddifypanel/panel/admin/templates/index.html:115
 msgid "Network"
 msgstr "Network"
 
-#: hiddifypanel/panel/admin/templates/index.html:94
-#: hiddifypanel/panel/admin/templates/index.html:211
-#: hiddifypanel/panel/admin/templates/index.html:228
+#: hiddifypanel/panel/admin/templates/index.html:118
+#: hiddifypanel/panel/admin/templates/index.html:235
+#: hiddifypanel/panel/admin/templates/index.html:252
 msgid "From Last Restart"
 msgstr "From Last Restart"
 
-#: hiddifypanel/panel/admin/templates/index.html:98
+#: hiddifypanel/panel/admin/templates/index.html:122
 msgid "CPU"
 msgstr "CPU"
 
-#: hiddifypanel/panel/admin/templates/index.html:107
+#: hiddifypanel/panel/admin/templates/index.html:131
 msgid "RAM"
 msgstr "RAM"
 
-#: hiddifypanel/panel/admin/templates/index.html:121
+#: hiddifypanel/panel/admin/templates/index.html:145
 msgid "Disk"
 msgstr "Disk"
 
-#: hiddifypanel/panel/admin/templates/index.html:124
+#: hiddifypanel/panel/admin/templates/index.html:148
 msgid "Hiddify"
 msgstr "Hiddify"
 
