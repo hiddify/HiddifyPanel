@@ -374,7 +374,7 @@ function show_video(file){
 is_ios=false
 %if g.user_agent.os.family=="iOS" 
 is_ios=true
-% if not g.pwa and request.endpoint and ("user2.UserView" in request.endpoint ||"admin.Dashboard" in request.endpoint)
+% if not g.pwa and request.endpoint and ("user2.UserView" in request.endpoint or "admin.Dashboard" in request.endpoint)
     show_prompt()
 %endif
 %endif
