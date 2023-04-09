@@ -118,7 +118,7 @@
          color_class="lightblue"
     )}}
     {{info_box("network","fa-solid fa-network-wired", _("Network"), 
-    ('<i class="fa-solid fa-arrow-up  text-success"></i> <i class="fa-solid fa-spinner loading-icon"></i> Mb/s  &nbsp;&nbsp;<i class="fa-solid fa-arrow-down text-danger"></i> <i class="fa-solid fa-spinner loading-icon"></i>  Mb/s')|safe,
+    ('<i class="fa-solid fa-arrow-up  text-orange"></i> <i class="fa-solid fa-spinner loading-icon"></i> <small>Mb/s</small>  &nbsp;&nbsp;<i class="fa-solid fa-arrow-down text-lime"></i> <i class="fa-solid fa-spinner loading-icon"></i> <small>Mb/s</small>')|safe,
         0, 
         (stats['system']['net_sent_cumulative_GB']|round(1)) ~ "GB " ~_("From Last Restart"),
         color_class="info"
@@ -242,13 +242,17 @@ info_box("cpu", "fa-solid fa-microchip", "CPU",
     " <i class='fa-solid fa-gauge'></i> " + stats['top5']['cpu'][2][0] + " &rlm;" + (stats['top5']['cpu'][2][1]).toFixed(0) + "%",
     true
 );
+sendstr=strband(((stats['system']['bytes_sent_cumulative']-last_bytes_sent)*8/refresh_s/1024/1024))
+recvstr=strband(((stats['system']['bytes_recv_cumulative']-last_bytes_recv)*8/refresh_s/1024/1024))
+last_bytes_sent=stats['system']['bytes_sent_cumulative'];
+last_bytes_recv=stats['system']['bytes_recv_cumulative'];
+
 info_box("network", "fa-solid fa-network-wired", "Network",
-'<i class="fa-solid fa-arrow-up  text-success"></i> '+((stats['system']['bytes_sent_cumulative']-last_bytes_sent)*8/refresh_s/1024/1024).toFixed(3) + "Mb/s "+' &nbsp;<i class="fa-solid fa-arrow-down text-danger"></i>' + ((stats['system']['bytes_recv_cumulative']-last_bytes_recv)*8/refresh_s/1024/1024).toFixed(3) + " Mb/s",
+'<i class="fa-solid fa-arrow-up  text-orange"></i> '+ sendstr+ " <small>Mb/s</small> "+' &nbsp;<i class="fa-solid fa-arrow-down text-lime"></i> ' +recvstr + " <small>Mb/s</small>",
 0,
 stats['system']['net_sent_cumulative_GB'].toFixed(1) + "GB "+"{{_('From Last Restart')}}"
 );
-last_bytes_sent=stats['system']['bytes_sent_cumulative'];
-last_bytes_recv=stats['system']['bytes_recv_cumulative'];
+
 
 info_box("ram", "fa-solid fa-memory", "RAM",
     stats['system']['ram_used'].toFixed(1) + " / " + stats['system']['ram_total'].toFixed(1) + "GB (" + (stats['system']['ram_used'] * 100 / stats['system']['ram_total']).toFixed(0) + " %)",
