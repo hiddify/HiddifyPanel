@@ -14,6 +14,11 @@
   -webkit-animation: fa-spin 2s infinite linear;
   animation: fa-spin 2s infinite linear;
 }
+.info-box .info-box-number
+{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 </style>
 
 {%macro loading() -%}
@@ -184,7 +189,15 @@ function update_box(id,title,number,percentage,description,coloring){
 
 // update_box("cpu","test","23%",.83,"DDDDDD",true)
 
-
+function strband(num){
+    if (num<1)
+        return num.toFixed(3)
+    if (num<10)
+        return num.toFixed(2)
+    if (num<100)
+        return num.toFixed(1)
+    return Math.round(num)
+}
 
 function update_from_json(data){
     usage_history=data['usage_history']
