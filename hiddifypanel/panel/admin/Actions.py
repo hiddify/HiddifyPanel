@@ -97,7 +97,7 @@ class Actions(FlaskView):
         # domains=[*domains,f'{server_ip}.sslip.io']
         for d in domains:
                 link=f'https://{d}/{proxy_path}/{admin_secret}/admin/'
-                admin_links+=f"<li><a class='badge ltr  share-link' href='{link}'>{link}</a></li>"
+                admin_links+=f"<li><a target='_blank' class='badge ltr' href='{link}'>{link}</a></li>"
 
         resp= render_template("result.html",
                             out_type="info",
