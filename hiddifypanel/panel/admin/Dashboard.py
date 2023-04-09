@@ -22,8 +22,10 @@ class Dashboard(FlaskView):
         
         bot=None
         # if hconfig(ConfigEnum.license):
-        from hiddifypanel.panel.commercial.telegrambot import bot
-            
+        
+        if hconfig(ConfigEnum.telegram_bot_token) and not (g.bot or  g.bot.username):
+            from hiddifypanel.panel.commercial.telegrambot import register_bot
+            register_bot()
         if hconfig(ConfigEnum.is_parent):
             childs=Child.query.filter(Child.id!=0).all()
             for c in childs:
