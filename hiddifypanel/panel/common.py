@@ -60,7 +60,8 @@ def init_app(app):
         if request.args.get('darkmode')!=None:
             session['darkmode'] = request.args.get('darkmode','').lower()=='true'
         g.darkmode=session.get('darkmode', False)
-
+        import random
+        g.install_pwa=random.random() <= 0.05
         if request.args.get('pwa')!=None:
             session['pwa'] = request.args.get('pwa','').lower()=='true'
         g.pwa=session.get('pwa', False)

@@ -372,6 +372,8 @@ function show_video(file){
         })
   }
 is_ios=false
+{% if g.install_pwa %}
+
 %if g.user_agent.os.family=="iOS" 
 is_ios=true
 % if not g.pwa and request.endpoint and ("user2.UserView" in request.endpoint or "admin.Dashboard" in request.endpoint)
@@ -412,6 +414,7 @@ if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').match
   document.location+="?darkmode=true"    
 }
 %endif
+{% endif %}
 </script>
 % if get_locale()=='fa'
 <script src="{{url_for('static',filename='js/custom-rtl.js')}}"> </script>
