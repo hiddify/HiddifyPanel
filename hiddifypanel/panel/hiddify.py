@@ -231,7 +231,7 @@ def get_user_link(uuid, domain, mode='',username=''):
     text = domain.domain
     color_cls='info'
     if domain.mode in [DomainType.cdn,DomainType.auto_cdn_ip]:
-        auto_cdn=(domain.mode==DomainType.auto_cdn_ip) or ("MTN" in domain.cdn_ip)
+        auto_cdn=(domain.mode==DomainType.auto_cdn_ip) or (domain.cdn_ip and "MTN" in domain.cdn_ip)
         color_cls="success" if auto_cdn else 'warning'
         text = f'<span class="badge badge-secondary" >{"Auto" if auto_cdn else "CDN"}</span> '+text
         

@@ -9,6 +9,6 @@ api = Api(bp)
 
 def init_app(app):   
     api.add_resource(TGBotResource, "/tgbot/")
-    with app.app_context():
-        register_bot()        
+    # with app.app_context():
+    #     register_bot()        
     app.register_blueprint(bp)

@@ -175,7 +175,7 @@ def get_common_data(user_uuid,mode,no_domain=False,filter_domain=None):
         d.has_auto_ip=False
         if d.mode==DomainType.auto_cdn_ip or d.cdn_ip:
             has_auto_cdn=True
-            d.has_auto_ip=d.mode==DomainType.auto_cdn_ip or "MTN" in d.cdn_ip
+            d.has_auto_ip=d.mode==DomainType.auto_cdn_ip or (d.cdn_ip and "MTN" in d.cdn_ip)
             d.cdn_ip=clean_ip.get_clean_ip(d.cdn_ip,d.mode==DomainType.auto_cdn_ip ,default_asn)
             print("autocdn ip mode ",d.cdn_ip)
         if "*" in d.domain:
