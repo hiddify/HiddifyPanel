@@ -5,6 +5,30 @@
 {% block title %}Home | Admin |Hiddify{% endblock %}
 
 {% block body %}
+<style>
+    .loading-icon {
+  position: relative;
+  /* width: 20px; */
+  /* height: 20px;  */
+  /* margin:50px auto; */
+  -webkit-animation: fa-spin 2s infinite linear;
+  animation: fa-spin 2s infinite linear;
+}
+</style>
+
+{%macro loading() -%}
+<svg version="1.1" id="L4" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
+    <circle fill="#fff" stroke="none" cx="6" cy="50" r="6">
+      <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" begin="0.1"></animate>    
+    </circle>
+    <circle fill="#fff" stroke="none" cx="26" cy="50" r="6">
+      <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" begin="0.2"></animate>       
+    </circle>
+    <circle fill="#fff" stroke="none" cx="46" cy="50" r="6">
+      <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" begin="0.3"></animate>     
+    </circle>
+  </svg>
+  {%- endmacro -%}
 {% macro info_box(id,icon,title,number,percentage,description,coloring=False,color_class='secondary') -%}
 <div class="col-md-4  col-sm-6">
     <div id={{id}} class="info-box bg-gradient-{{color_class}} {{ ("bg-gradient-"+ ("danger" if percentage>90 else ("warning" if percentage>75 else ""))) if coloring else ""}} {%if "disk"==id %} d-none d-md-flex {%endif%}">
@@ -89,7 +113,7 @@
          color_class="lightblue"
     )}}
     {{info_box("network","fa-solid fa-network-wired", _("Network"), 
-    '<i class="fa-solid fa-arrow-up  text-success"></i> ... Mb/s  &nbsp;&nbsp;<i class="fa-solid fa-arrow-down text-danger"></i> ...  Mb/s'|safe,
+    ('<i class="fa-solid fa-arrow-up  text-success"></i> <i class="fa-solid fa-spinner loading-icon"></i> Mb/s  &nbsp;&nbsp;<i class="fa-solid fa-arrow-down text-danger"></i> <i class="fa-solid fa-spinner loading-icon"></i>  Mb/s')|safe,
         0, 
         (stats['system']['net_sent_cumulative_GB']|round(1)) ~ "GB " ~_("From Last Restart"),
         color_class="info"
@@ -206,7 +230,7 @@ info_box("cpu", "fa-solid fa-microchip", "CPU",
     true
 );
 info_box("network", "fa-solid fa-network-wired", "Network",
-'<i class="fa-solid fa-arrow-up  text-success"></i> '+((stats['system']['bytes_sent_cumulative']-last_bytes_sent)*8/refresh_s/1024/1024).toFixed(3) + "Mb/s "+' &nbsp;&nbsp;<i class="fa-solid fa-arrow-down text-danger"></i>' + ((stats['system']['bytes_recv_cumulative']-last_bytes_recv)*8/refresh_s/1024/1024).toFixed(3) + " Mb/s",
+'<i class="fa-solid fa-arrow-up  text-success"></i> '+((stats['system']['bytes_sent_cumulative']-last_bytes_sent)*8/refresh_s/1024/1024).toFixed(3) + "Mb/s "+' &nbsp;<i class="fa-solid fa-arrow-down text-danger"></i>' + ((stats['system']['bytes_recv_cumulative']-last_bytes_recv)*8/refresh_s/1024/1024).toFixed(3) + " Mb/s",
 0,
 stats['system']['net_sent_cumulative_GB'].toFixed(1) + "GB "+"{{_('From Last Restart')}}"
 );

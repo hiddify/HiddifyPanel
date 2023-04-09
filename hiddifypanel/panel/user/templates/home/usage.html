@@ -32,11 +32,11 @@
             </div>
         </div>
             
-        % if hconfig(ConfigEnum.telegram_bot_token)
-            <a href="tg://resolve?domain={{bot.username}}&start={{user.uuid}}" class="card-footer">
+        % if hconfig(ConfigEnum.telegram_bot_token) and g.bot
+            <a href="tg://resolve?domain={{g.bot.username}}&start={{user.uuid}}" class="card-footer">
                 <i class="fa-brands fa-telegram"></i> {{_('View in Telegram')}}        
             </a>
-            %else
+         %else
             <a href="#" class="card-footer">
                 <i class="fas fa-chart-pie"></i> {{_('user.home.usage.details')}}        
             </a>
