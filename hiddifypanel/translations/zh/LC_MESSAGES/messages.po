@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-09 09:30+0200\n"
-"PO-Revision-Date: 2023-04-09 01:36-0500\n"
+"POT-Creation-Date: 2023-04-09 10:28+0200\n"
+"PO-Revision-Date: 2023-04-09 03:12-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -819,9 +819,12 @@ msgid "Backup"
 msgstr "备份"
 
 # | msgid ""
+# | "Automatic Backup Every 6 Hours. Path Of Automatic Backup Files On The
+# Server:\n"
+# | "<br>\n"
+# | "/opt/hiddify-config/hiddify-panel/backup\n"
 # | "You Can Download a JSON File Format of the Configurations by Clicking on
 # the Button Below\n"
-# | "<br>\n"
 # | "<a href='%(link)s' class='btn btn-primary'>Download Backup File</a>"
 #: hiddifypanel/panel/admin/templates/backup.html:14
 #, python-format
