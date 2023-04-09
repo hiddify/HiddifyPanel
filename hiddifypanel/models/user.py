@@ -95,12 +95,34 @@ def days_to_reset(user):
     user's start date and mode of usage. The function returns the remaining days as an integer value. If the start
     date is not available, the function returns the total days for the user's mode.
     """
+    # print("start_date",user.start_date, "pack",package_mode_dic.get(user.mode,10000), "total",(datetime.date.today()-user.start_date).days)
+    # if user.mode==UserMode.daily:
+    #     return 0
     if user.start_date:
         days=package_mode_dic.get(user.mode,10000)-(datetime.date.today()-user.start_date).days % package_mode_dic.get(user.mode,10000)
     else:
         days= package_mode_dic.get(user.mode,10000)
     return max(-100000,min(days,100000))
 
+
+def user_should_reset(user):
+    """
+    The "days_to_reset" function calculates the number of days until the user's data usage is reset, based on the
+    user's start date and mode of usage. The function returns the remaining days as an integer value. If the start
+    date is not available, the function returns the total days for the user's mode.
+    """
+    # print("start_date",user.start_date, "pack",package_mode_dic.get(user.mode,10000), "total",(datetime.date.today()-user.start_date).days)
+    # if user.mode==UserMode.daily:
+    #     return 0
+    res=True
+    if not user.last_reset_time:
+        res=True
+    elif not user.start_date or (datetime.date.today()-user.last_reset_time).days==0:
+        res=False
+    else:
+        res=((datetime.date.today()-user.start_date).days % package_mode_dic.get(user.mode,10000))==0
+    
+    return res
 
 
 def user_by_uuid(uuid):

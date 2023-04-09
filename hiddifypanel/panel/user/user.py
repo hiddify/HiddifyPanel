@@ -195,6 +195,8 @@ def get_common_data(user_uuid,mode,no_domain=False,filter_domain=None):
     g.locale= hconfig(ConfigEnum.lang)
     expire_days=remaining_days(user)
     reset_days=days_to_reset(user)
+    # print(reset_days)
+    # raise 
     if reset_days>=expire_days:
         reset_days=1000
     # print(reset_days,expire_days,reset_days<=expire_days)

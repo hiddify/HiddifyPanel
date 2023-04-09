@@ -1,6 +1,6 @@
 from flask import jsonify,g,url_for,Markup
 from flask import flash as flask_flash
-to_gig_d = 1000*1000*1000
+to_gig_d = 1024**3
 import datetime
 
 from hiddifypanel.panel.database import db
@@ -52,10 +52,9 @@ def add_users_usage(dbusers_bytes):
     for user,usage_bytes in dbusers_bytes.items():
         # user_active_before=is_user_active(user)
 
-        if not user.last_reset_time or (datetime.date.today()-user.last_reset_time).days>0:
-            if days_to_reset(user)==0:
-                user.last_reset_time=datetime.date.today()
-                user.current_usage_GB=0
+        if not user.last_reset_time or user_should_reset(user):
+            user.last_reset_time=datetime.date.today()
+            user.current_usage_GB=0
 
         if before_enabled_users[user.uuid]==0  and is_user_active(user):
                 xray_api.add_client(user.uuid)
