@@ -94,6 +94,8 @@ def init_app(app):
                 abort(403, 'Access Denied')
 
         if hconfig(ConfigEnum.telegram_bot_token):
-            from hiddifypanel.panel.commercial.telegrambot import bot
-            g.bot=bot
+            import hiddifypanel.panel.commercial.telegrambot as telegrambot
+            if (not telegrambot.bot) or (not  telegrambot.bot.username):
+                telegrambot.register_bot()
+            g.bot=telegrambot.bot
         # print(g.user)
