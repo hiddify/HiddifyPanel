@@ -26,7 +26,7 @@ def register_bot():
                 bot.username=bot.get_me().username
             except:
                 pass
-            bot.remove_webhook()
+            # bot.remove_webhook()
             time.sleep(0.1)
             domain = (ParentDomain if hconfig(ConfigEnum.is_parent) else Domain).query.first().domain
             proxy_path = hconfig(ConfigEnum.proxy_path)
