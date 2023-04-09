@@ -648,8 +648,14 @@ def top_processes():
 
 def get_folder_size(folder_path):
     total_size = 0
-    for dirpath, dirnames, filenames in os.walk(folder_path):
-        for file in filenames:
-            file_path = os.path.join(dirpath, file)
-            total_size += os.path.getsize(file_path)
+    try:
+        for dirpath, dirnames, filenames in os.walk(folder_path):
+            for file in filenames:
+                file_path = os.path.join(dirpath, file)
+                try:
+                    total_size += os.path.getsize(file_path)
+                except:
+                    pass
+    except:
+        pass
     return total_size
