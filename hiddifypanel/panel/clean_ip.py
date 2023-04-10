@@ -97,7 +97,7 @@ def get_host_base_on_asn(ips,asn_short):
     all_hosts=[]
     for i in range(0,len(ips),2):
         if asn_short == ips[i+1]:
-            print("selected ",ips[i],ips[i+1])
+            # print("selected ",ips[i],ips[i+1])
             all_hosts.append(ips[i])
 
     selected= random.sample(valid_hosts,1)[0]
@@ -114,16 +114,16 @@ def get_clean_ip(ips,resolve=False,default_asn=None):
     user_ip=get_real_user_ip()
     asn_short = get_asn_short_name(user_ip)
     country=get_country(user_ip)
-    print("Real user ip",get_real_user_ip_debug(), user_ip,asn_short,country)
+    # print("Real user ip",get_real_user_ip_debug(), user_ip,asn_short,country)
     is_morteza_format=any([format for format in asn_map.values() if format in ips])
-    print("IPs",ips)
+    # print("IPs",ips)
     if is_morteza_format:
         if country.lower()!=hconfig(ConfigEnum.country) and default_asn:
             asn_short=default_asn
         selected_server=get_host_base_on_asn(ips, asn_short)
     else:
         selected_server=random.sample(ips, 1)[0]
-    print("selected_server",selected_server)
+    # print("selected_server",selected_server)
     if resolve:
         from hiddifypanel.panel import hiddify
         selected_server=hiddify.get_domain_ip(selected_server) or selected_server
