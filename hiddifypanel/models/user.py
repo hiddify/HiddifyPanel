@@ -55,7 +55,9 @@ def is_user_active(u):
     function returns a boolean value indicating whether the user is active or not.
     """
     is_active=True
-    if u.mode == UserMode.disable:
+    if not u:
+        is_active=False
+    elif u.mode == UserMode.disable:
         is_active= False
     elif u.usage_limit_GB < u.current_usage_GB:
         is_active= False
