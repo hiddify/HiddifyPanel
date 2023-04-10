@@ -31,6 +31,7 @@ class SettingAdmin(FlaskView):
 
     def post(self):
         form=get_config_form()
+        reset_action=None
         if form.validate_on_submit():
             
 
@@ -45,8 +46,10 @@ class SettingAdmin(FlaskView):
                         if k in [c for c in ConfigEnum]:
                             #if not k.commercial():continue
                             if k in bool_types:
-                                BoolConfig.query.filter(BoolConfig.key==k,BoolConfig.child_id==0).first().value=v
+                                BoolConfig.query.filter(BoolConfig.key==k,BoolConfig.child_id==0).first().value= v==True
                             else:
+                                if type(v)!=str:
+                                    v=''
                                 if "_domain" in k or k in [ConfigEnum.admin_secret]:
                                     v=v.lower()
                                 if "port" in k:
@@ -80,24 +83,25 @@ class SettingAdmin(FlaskView):
             if hconfig(ConfigEnum.parent_panel):
                 hiddify_api.sync_child_to_parent()
             reset_action=hiddify.check_need_reset(old_configs)
-            if reset_action:
-                return reset_action
+            # if :
+            #     return reset_action
             
             if old_configs[ConfigEnum.admin_lang]!=hconfig(ConfigEnum.admin_lang):
                 form=get_config_form()
-            return render_template('config.html', form=form)
-        flash(_('config.validation-error'), 'danger')
-        return render_template('config.html', form=form)
+        else:
+            flash(_('config.validation-error'), 'danger')
+            
+        return reset_action or render_template('config.html', form=form)
 
         
         
         
 
-        # form=HelloForm()
-        # # return render('config.html',form=form)
-        # return render_template('config.html',form=HelloForm())
-        form=get_config_form()
-        return render_template('config.html',form=form)
+        # # form=HelloForm()
+        # # # return render('config.html',form=form)
+        # # return render_template('config.html',form=HelloForm())
+        # form=get_config_form()
+        # return render_template('config.html',form=form)
 
     def get_babel_string(self):
         res=""
