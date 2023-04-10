@@ -175,3 +175,8 @@ legend {
 .dark-mode .callout a{
   color:#b0b8bf 
 }
+@media only screen and (max-width: 600px) {
+  .main-footer .nav{
+justify-content: center !important;
+}
+}
