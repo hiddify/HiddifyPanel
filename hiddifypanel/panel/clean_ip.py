@@ -1,12 +1,13 @@
 from hiddifypanel.models import *
 from flask_babelex import gettext as _
 default_ips="""
-mcix.ircf.space		MCI
 mci.ircf.space		MCI
+mcix.ircf.space		MCI
 mtn.ircf.space		MTN
 mtnx.ircf.space		MTN
-rtl.ircf.space		RTL
 mkh.ircf.space		MKH
+mkhx.ircf.space		MKH
+rtl.ircf.space		RTL
 hwb.ircf.space		HWB
 ast.ircf.space		AST
 sht.ircf.space		SHT
@@ -17,6 +18,11 @@ rsp.ircf.space		RSP
 afn.ircf.space		AFN
 ztl.ircf.space		ZTL
 psm.ircf.space		PSM
+arx.ircf.space		ARX
+smt.ircf.space		SMT
+fnv.ircf.space		FNV
+dbn.ircf.space		DBN
+apt.ircf.space		APT
 """
 from flask import request,flash
 import maxminddb
