@@ -84,7 +84,7 @@
             ((usage_history['today']['usage']/1024**3)|round(1)) ~ " GB", 
             usage_history['today']['online']/total_users*100, 
             _("Online Users") ~": "~ usage_history['today']['online'] ~ " / "~ total_users,
-            color_class="purple"
+            color_class="orange"
     )}}
     {{info_box("yesterday","fa-solid fa-calendar-day", _("Yesterday Usage"), 
             ((usage_history['yesterday']['usage']/1024**3)|round(1)) ~ " GB", 
