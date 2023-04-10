@@ -28,7 +28,7 @@ def register_bot():
                 pass
             # bot.remove_webhook()
             time.sleep(0.1)
-            domain = (ParentDomain if hconfig(ConfigEnum.is_parent) else Domain).query.first().domain
+            domain = get_panel_domains()[0].domain
             proxy_path = hconfig(ConfigEnum.proxy_path)
             user_secret = hconfig(ConfigEnum.admin_secret)
             bot.set_webhook(url=f"https://{domain}/{proxy_path}/{user_secret}/api/v1/tgbot/")
