@@ -71,6 +71,10 @@ class UserView(FlaskView):
         resp= Response(render_template('clash_config.yml',typ=typ,meta_or_normal=meta_or_normal,**c,hash=hash_rnd))
         resp.mimetype="text/plain"
         resp.headers['Subscription-Userinfo']=f"upload=0;download={c['usage_current_b']};total={c['usage_limit_b']};expire={c['expire_s']}"
+        resp.headers['profile-web-page-url']=request.base_url.split("all.txt")[0].replace("http://","https://")
+        if hconfig(ConfigEnum.branding_site):
+            resp.headers['support-url']=hconfig(ConfigEnum.branding_site)
+        resp.headers['profile-update-interval']=1
         return resp
 
     @route('/all.txt')
@@ -91,11 +95,11 @@ class UserView(FlaskView):
         resp= Response(res)
         resp.mimetype="text/plain"
         resp.headers['Subscription-Userinfo']=f"upload=0;download={c['usage_current_b']};total={c['usage_limit_b']};expire={c['expire_s']}"
-        resp.headers['profile-web-page-url']=request.base_url.split("/all.txt")[0].replace("http://","https://")
+        resp.headers['profile-web-page-url']=request.base_url.split("all.txt")[0].replace("http://","https://")
         if hconfig(ConfigEnum.branding_site):
             resp.headers['support-url']=hconfig(ConfigEnum.branding_site)
         resp.headers['profile-update-interval']=1
-        resp.headers['content-disposition']=f'attachment; filename="{c["db_domain"].alias or c["db_domain"].domain} {c["user"].name}"'
+        # resp.headers['content-disposition']=f'attachment; filename="{c["db_domain"].alias or c["db_domain"].domain} {c["user"].name}"'
 
         return resp
 
