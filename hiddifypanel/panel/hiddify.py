@@ -304,19 +304,18 @@ def format_timedelta(delta, add_direction=True,granularity="days"):
 
 
 def get_child(unique_id):
-      
+    child_id=0  
     if unique_id is None:
-        return 0
-    
-    child = Child.query.filter(Child.unique_id == str(unique_id)).first()
-    
-    if not child:
-        child=Child(unique_id=str(unique_id))
-        db.session.add(child)
-        db.session.commit()
+        child_id= 0
+    else:
         child = Child.query.filter(Child.unique_id == str(unique_id)).first()
-    
-    return child.id
+        if not child:
+            child=Child(unique_id=str(unique_id))
+            db.session.add(child)
+            db.session.commit()
+            child = Child.query.filter(Child.unique_id == str(unique_id)).first()
+        child_id= child.id
+    return child_id
 
 
 
@@ -498,11 +497,11 @@ def bulk_register_users(users=[],commit=True,remove=False):
 def bulk_register_configs(hconfigs,commit=True,override_child_id=None,override_unique_id=True):
     print(hconfigs)
     for conf in hconfigs:
-        print(conf)
+        # print(conf)
         if conf['key']==ConfigEnum.unique_id and not override_unique_id:
             continue
         child_id=override_child_id if override_child_id is not None else get_child(conf.get('child_unique_id',None))
-        print(conf)
+        # print(conf)
         add_or_update_config(commit=False,child_id=child_id,**conf)
     if commit:
         db.session.commit()

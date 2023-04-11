@@ -63,7 +63,7 @@ def hconfig(key: ConfigEnum,child_id=0):
 
 
 def set_hconfig(key: ConfigEnum,value,child_id=0,commit=True):
-    
+        
         if key.type()==bool:
             dbconf = BoolConfig.query.filter(BoolConfig.key == key, BoolConfig.child_id==child_id).first()    
             if not dbconf:

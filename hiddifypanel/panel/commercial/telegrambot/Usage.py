@@ -6,9 +6,10 @@ from . import bot
 from hiddifypanel.panel.user.user import get_common_data
 
 @bot.message_handler(commands=['start'],func=lambda message: "admin" not in message.text)
+@bot.message_handler(func=lambda message: "admin" not in message.text and len(message.text)==36)
 def send_welcome(message):
     text = message.text
-    uuid = text.split()[1] if len(text.split()) > 1 else None
+    uuid = text.split()[-1] if len(text.split()) > 0 else None
     if uuid:
         bot.reply_to(message, get_usage_msg(uuid), reply_markup=user_keyboard(uuid))
     else:
@@ -52,7 +53,7 @@ def get_usage_msg(uuid):
             msg += f"""\n<b>{_('Reset Usage Time:')}</b> {reset_day} {_('days')}"""
        
         msg+=f"""\n\n <a href="{user_link}">Home Link</a>  -  <a href="https://t.me/{bot.username}?start={user.uuid}">Telegram Bot Link</a>"""
-        return msg
+    return msg
 
 
 @bot.callback_query_handler(func=lambda call: call.data.startswith("update_usage"))
