@@ -32,7 +32,7 @@ def get_daily_usage_stats():
         func.coalesce(func.sum(DailyUsage.usage), 0),
         func.coalesce(func.sum(DailyUsage.online), 0)
     ).filter(DailyUsage.date == yesterday).first()
-    users_online_yesterday = User.query.filter(User.last_online >= yesterday, User.last_online < today).count()
+    # users_online_yesterday = User.query.filter(User.last_online >= yesterday, User.last_online < today).count()
     # Last 30 days' usage and online count
     last_30_days_start = date.today() - timedelta(days=30)
     last_30_days_stats = db.session.query(
@@ -52,7 +52,7 @@ def get_daily_usage_stats():
     # Return the usage stats as a dictionary
     return {
         "today": {"usage": today_stats[0], "online": users_online_today},
-        "yesterday": {"usage": yesterday_stats[0], "online": users_online_yesterday},
+        "yesterday": {"usage": yesterday_stats[0], "online": yesterday_stats[1]},
         "last_30_days": {"usage": last_30_days_stats[0], "online": users_online_last_month},
         "total": {"usage": total_stats[0], "online": users_online_last_10_years}
     }
