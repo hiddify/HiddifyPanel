@@ -33,7 +33,7 @@ for pythonversion in 3.8 3.9 3.10 3.11;do
        pushd ../tmp_release/$pythonversion
        
        conda activate py$pythonversion
-       pip install setuptools wheel twine cython pyarmor==8.1.0
+       pip install setuptools wheel twine cython pyarmor==8.1.2
        .github/pyarmor.sh
        ls .github/
        echo "hhhhhhhhhhhhhhhhha" $pythonversion
