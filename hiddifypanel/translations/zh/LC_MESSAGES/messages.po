@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-15 16:35+0200\n"
-"PO-Revision-Date: 2023-04-15 09:35-0500\n"
+"POT-Creation-Date: 2023-04-15 20:40+0200\n"
+"PO-Revision-Date: 2023-04-15 13:40-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Generated-By: Babel 2.12.1\n"
 
 # | msgid "This domain does not exist in the Panel !"
-#: hiddifypanel/models/domain.py:108 hiddifypanel/panel/user/user.py:155
+#: hiddifypanel/models/domain.py:109 hiddifypanel/panel/user/user.py:155
 #, fuzzy
 msgid "This domain does not exist in the panel!"
 msgstr "该域名在面板中不存在！"
@@ -124,50 +124,54 @@ msgid "Success! Please wait around 5 minutes to make sure everything is updated.
 msgstr "成功！ 请等待大约 5 分钟，以确保所有内容都已更新。"
 
 # | msgid "Actions"
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:39
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:56
 #: hiddifypanel/panel/admin/UserAdmin.py:60
 msgid "actions"
 msgstr "动作"
 
 # | msgid "User links"
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:40
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:57
 #: hiddifypanel/panel/admin/UserAdmin.py:62
 msgid "user.user_links"
 msgstr "用户链接"
 
 # | msgid "Name"
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:41
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:58
 #: hiddifypanel/panel/admin/UserAdmin.py:61
 msgid "user.name"
 msgstr "名称"
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:42
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:59
 #: hiddifypanel/panel/admin/UserAdmin.py:65
 #, fuzzy
 msgid "Mode"
 msgstr "模式"
 
 # | msgid "UUID"
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:43
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:60
 #: hiddifypanel/panel/admin/UserAdmin.py:71
 msgid "user.UUID"
 msgstr "UUID"
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:44
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:61
 #: hiddifypanel/panel/admin/UserAdmin.py:72
 #, fuzzy
 msgid "Note"
 msgstr "笔记"
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:49
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:66
 #, fuzzy
 msgid "Add some text that is only visible to super_admin."
 msgstr "添加一些仅对 super_admin 可见的文本。"
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:50
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:67
 #, fuzzy
 msgid "Define the admin mode. "
 msgstr "定义管理模式。"
+
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:156
+msgid "Owner can not be deleted!"
+msgstr ""
 
 # | msgid "Config file is incorrect."
 #: hiddifypanel/panel/admin/Backup.py:68
@@ -296,10 +300,15 @@ msgstr "行政"
 msgid "Domain is not correctly mapped to this server!"
 msgstr "域未正确映射到此服务器！"
 
+#: hiddifypanel/panel/admin/Dashboard.py:16
+#: hiddifypanel/panel/admin/Dashboard.py:31
+msgid "Access Denied!"
+msgstr ""
+
 # | msgid ""
 # | "This Version of Hiddify Panel is Outdated. Please Update it from Admin
 # Area."
-#: hiddifypanel/panel/admin/Dashboard.py:28 hiddifypanel/templates/500.html:9
+#: hiddifypanel/panel/admin/Dashboard.py:25 hiddifypanel/templates/500.html:9
 #, fuzzy
 msgid ""
 "This version of hiddify panel is outdated. Please update it from admin "
@@ -317,7 +326,7 @@ msgstr ""
 "href=\"%(quick_setup)s\">点击这里</a>完成设置。"
 
 #: hiddifypanel/panel/admin/Dashboard.py:58
-#: hiddifypanel/panel/admin/Dashboard.py:61
+#: hiddifypanel/panel/admin/Dashboard.py:62
 #, fuzzy
 msgid ""
 "Please understand that parent panel is under test and the plan and the "
@@ -338,7 +347,7 @@ msgstr "您似乎正在使用不推荐的默认域 (%(domain)s)。"
 # | msgid ""
 # | "It seems that you have not created any users yet. default user link: "
 # | "%(default_link)s"
-#: hiddifypanel/panel/admin/Dashboard.py:65
+#: hiddifypanel/panel/admin/Dashboard.py:66
 #: hiddifypanel/panel/commercial/CommercialDashboard.py:43
 #, python-format
 msgid ""
@@ -347,7 +356,7 @@ msgid ""
 msgstr "您似乎还没有创建任何用户。默认用户链接：%(default_link)s"
 
 # | msgid "Child Has Been Removed!"
-#: hiddifypanel/panel/admin/Dashboard.py:82
+#: hiddifypanel/panel/admin/Dashboard.py:83
 #: hiddifypanel/panel/commercial/CommercialDashboard.py:58
 #, fuzzy
 msgid "child has been removed!"
@@ -409,6 +418,7 @@ msgstr "将显示在此域的配置中的名称。"
 msgid "This can be used for giving your users a permanent non blockable links."
 msgstr "这可用于为您的用户提供永久的不可阻止的链接。"
 
+# | msgid "Only for subscription link?"
 #: hiddifypanel/panel/admin/DomainAdmin.py:65
 #, fuzzy
 msgid "Only for sublink?"
@@ -1796,75 +1806,75 @@ msgid "config.path_ss.description"
 msgstr "链接中的 Shadowsocks 路径"
 
 # | msgid "Today"
-#: hiddifypanel/panel/admin/templates/index.html:83
+#: hiddifypanel/panel/admin/templates/index.html:74
 #, fuzzy
 msgid "Today Usage"
 msgstr "今天的用法"
 
-#: hiddifypanel/panel/admin/templates/index.html:86
-#: hiddifypanel/panel/admin/templates/index.html:92
-#: hiddifypanel/panel/admin/templates/index.html:98
-#: hiddifypanel/panel/admin/templates/index.html:104
-#: hiddifypanel/panel/admin/templates/index.html:114
-#: hiddifypanel/panel/admin/templates/index.html:213
-#: hiddifypanel/panel/admin/templates/index.html:219
-#: hiddifypanel/panel/admin/templates/index.html:225
-#: hiddifypanel/panel/admin/templates/index.html:231
+#: hiddifypanel/panel/admin/templates/index.html:77
+#: hiddifypanel/panel/admin/templates/index.html:83
+#: hiddifypanel/panel/admin/templates/index.html:89
+#: hiddifypanel/panel/admin/templates/index.html:95
+#: hiddifypanel/panel/admin/templates/index.html:105
+#: hiddifypanel/panel/admin/templates/index.html:203
+#: hiddifypanel/panel/admin/templates/index.html:209
+#: hiddifypanel/panel/admin/templates/index.html:215
+#: hiddifypanel/panel/admin/templates/index.html:221
 #, fuzzy
 msgid "Online Users"
 msgstr "在线用户"
 
 # | msgid "Yesterday"
-#: hiddifypanel/panel/admin/templates/index.html:89
+#: hiddifypanel/panel/admin/templates/index.html:80
 #, fuzzy
 msgid "Yesterday Usage"
 msgstr "昨天使用情况"
 
 # | msgid "Monthly"
-#: hiddifypanel/panel/admin/templates/index.html:95
+#: hiddifypanel/panel/admin/templates/index.html:86
 #, fuzzy
 msgid "Month Usage"
 msgstr "每月使用量"
 
-#: hiddifypanel/panel/admin/templates/index.html:101
+#: hiddifypanel/panel/admin/templates/index.html:92
 #, fuzzy
 msgid "Total Usage"
 msgstr "总使用量"
 
-#: hiddifypanel/panel/admin/templates/index.html:117
-#: hiddifypanel/panel/admin/templates/index.html:237
+#: hiddifypanel/panel/admin/templates/index.html:108
+#: hiddifypanel/panel/admin/templates/index.html:227
 #, fuzzy
 msgid "In 24 hours"
 msgstr "24小时内"
 
-#: hiddifypanel/panel/admin/templates/index.html:120
+#: hiddifypanel/panel/admin/templates/index.html:111
 #, fuzzy
 msgid "Network"
 msgstr "网络"
 
-#: hiddifypanel/panel/admin/templates/index.html:123
-#: hiddifypanel/panel/admin/templates/index.html:256
-#: hiddifypanel/panel/admin/templates/index.html:272
+#: hiddifypanel/panel/admin/templates/index.html:114
+#: hiddifypanel/panel/admin/templates/index.html:246
+#: hiddifypanel/panel/admin/templates/index.html:262
 #, fuzzy
 msgid "From Last Restart"
 msgstr "从上次重启"
 
-#: hiddifypanel/panel/admin/templates/index.html:127
+#: hiddifypanel/panel/admin/templates/index.html:118
 #, fuzzy
 msgid "CPU"
 msgstr "中央处理器"
 
-#: hiddifypanel/panel/admin/templates/index.html:136
+#: hiddifypanel/panel/admin/templates/index.html:127
 #, fuzzy
 msgid "RAM"
 msgstr "内存"
 
-#: hiddifypanel/panel/admin/templates/index.html:150
+#: hiddifypanel/panel/admin/templates/index.html:141
 #, fuzzy
 msgid "Disk"
 msgstr "磁盘"
 
-#: hiddifypanel/panel/admin/templates/index.html:153
+#: hiddifypanel/panel/admin/templates/index.html:144
 #, fuzzy
 msgid "Hiddify"
 msgstr "隐藏"
@@ -2930,70 +2940,70 @@ msgstr "用户"
 msgid "in parent panel"
 msgstr "在父面板中"
 
+#: hiddifypanel/templates/admin-layout.html:83
+#, fuzzy
+msgid "Admins"
+msgstr "管理员"
+
 # | msgid "Settings"
-#: hiddifypanel/templates/admin-layout.html:90
+#: hiddifypanel/templates/admin-layout.html:92
 #: hiddifypanel/templates/admin-layout.html:171
 msgid "admin.menu.config"
 msgstr "设置"
 
-#: hiddifypanel/templates/admin-layout.html:97
+#: hiddifypanel/templates/admin-layout.html:99
 msgid "Commercial use"
 msgstr ""
 
 # | msgid "Actions"
-#: hiddifypanel/templates/admin-layout.html:108
+#: hiddifypanel/templates/admin-layout.html:110
 msgid "admin.actions.title"
 msgstr "动作"
 
 # | msgid "Help"
-#: hiddifypanel/templates/admin-layout.html:115
+#: hiddifypanel/templates/admin-layout.html:117
 msgid "admin.menu.support"
 msgstr "支持"
 
 # | msgid "Telegram"
-#: hiddifypanel/templates/admin-layout.html:119
+#: hiddifypanel/templates/admin-layout.html:121
 msgid "admin.menu.telegram"
 msgstr "电报"
 
-#: hiddifypanel/templates/admin-layout.html:123
+#: hiddifypanel/templates/admin-layout.html:125
 #: hiddifypanel/templates/donation.html:5
 msgid "Donation"
 msgstr "捐款"
 
 # | msgid "Status"
-#: hiddifypanel/templates/admin-layout.html:147
+#: hiddifypanel/templates/admin-layout.html:149
 msgid "admin.actions.status"
 msgstr "地位"
 
 # | msgid "View Logs"
-#: hiddifypanel/templates/admin-layout.html:148
+#: hiddifypanel/templates/admin-layout.html:150
 msgid "admin.actions.viewlogs"
 msgstr "查看日志"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/templates/admin-layout.html:149
+#: hiddifypanel/templates/admin-layout.html:151
 msgid "admin.actions.apply_configs"
 msgstr "应用配置"
 
 # | msgid "Update"
-#: hiddifypanel/templates/admin-layout.html:150
+#: hiddifypanel/templates/admin-layout.html:152
 msgid "admin.actions.update"
 msgstr "更新系统"
 
 # | msgid "Reinstall"
-#: hiddifypanel/templates/admin-layout.html:152
+#: hiddifypanel/templates/admin-layout.html:154
 msgid "admin.actions.reinstall"
 msgstr "重装系统"
 
 # | msgid "Restart System"
-#: hiddifypanel/templates/admin-layout.html:153
+#: hiddifypanel/templates/admin-layout.html:155
 msgid "admin.actions.reset"
 msgstr "重启系统"
-
-#: hiddifypanel/templates/admin-layout.html:158
-#, fuzzy
-msgid "Admins"
-msgstr "管理员"
 
 # | msgid "Domains"
 #: hiddifypanel/templates/admin-layout.html:162
@@ -3419,4 +3429,7 @@ msgstr "动作"
 # | msgid "CDN Make It Incorrect"
 #~ msgid "CDN make it incorrect"
 #~ msgstr "CDN使它不正确"
+
+#~ msgid "Are you sure you want to do this action?"
+#~ msgstr "您确定要执行此操作吗？"
 

@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-15 16:35+0200\n"
-"PO-Revision-Date: 2023-04-15 09:35-0500\n"
+"POT-Creation-Date: 2023-04-15 20:40+0200\n"
+"PO-Revision-Date: 2023-04-15 13:40-0500\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Generated-By: Babel 2.12.1\n"
 
 # | msgid "This domain does not exist in the Panel !"
-#: hiddifypanel/models/domain.py:108 hiddifypanel/panel/user/user.py:155
+#: hiddifypanel/models/domain.py:109 hiddifypanel/panel/user/user.py:155
 msgid "This domain does not exist in the panel!"
 msgstr "This domain does not exist in the Panel !"
 
@@ -122,46 +122,51 @@ msgstr ""
 "Success! please wait around 5 minutes to make sure everything is updated"
 
 # | msgid "Actions"
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:39
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:56
 #: hiddifypanel/panel/admin/UserAdmin.py:60
 msgid "actions"
 msgstr "Actions"
 
 # | msgid "User links"
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:40
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:57
 #: hiddifypanel/panel/admin/UserAdmin.py:62
 msgid "user.user_links"
 msgstr "User links"
 
 # | msgid "Name"
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:41
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:58
 #: hiddifypanel/panel/admin/UserAdmin.py:61
 msgid "user.name"
 msgstr "Name"
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:42
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:59
 #: hiddifypanel/panel/admin/UserAdmin.py:65
 msgid "Mode"
 msgstr "Mode"
 
 # | msgid "UUID"
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:43
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:60
 #: hiddifypanel/panel/admin/UserAdmin.py:71
 msgid "user.UUID"
 msgstr "UUID"
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:44
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:61
 #: hiddifypanel/panel/admin/UserAdmin.py:72
 msgid "Note"
 msgstr "Note"
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:49
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:66
 msgid "Add some text that is only visible to super_admin."
 msgstr "Add some text that is only visible to super_admin."
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:50
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:67
 msgid "Define the admin mode. "
 msgstr "Define the admin mode. "
+
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:156
+#, fuzzy
+msgid "Owner can not be deleted!"
+msgstr "Owner can not be deleted!"
 
 # | msgid "Config file is incorrect."
 #: hiddifypanel/panel/admin/Backup.py:68
@@ -286,10 +291,16 @@ msgstr "Admin"
 msgid "Domain is not correctly mapped to this server!"
 msgstr "Domain is not correctly mapped to this server!"
 
+#: hiddifypanel/panel/admin/Dashboard.py:16
+#: hiddifypanel/panel/admin/Dashboard.py:31
+#, fuzzy
+msgid "Access Denied!"
+msgstr "Access Denied!"
+
 # | msgid ""
 # | "This Version of Hiddify Panel is Outdated. Please Update it from Admin "
 # | "Area."
-#: hiddifypanel/panel/admin/Dashboard.py:28 hiddifypanel/templates/500.html:9
+#: hiddifypanel/panel/admin/Dashboard.py:25 hiddifypanel/templates/500.html:9
 msgid ""
 "This version of hiddify panel is outdated. Please update it from admin area."
 msgstr ""
@@ -306,7 +317,7 @@ msgstr ""
 "success\" href=\"%(quick_setup)s\">Click here</a> to complete setup."
 
 #: hiddifypanel/panel/admin/Dashboard.py:58
-#: hiddifypanel/panel/admin/Dashboard.py:61
+#: hiddifypanel/panel/admin/Dashboard.py:62
 msgid ""
 "Please understand that parent panel is under test and the plan and the "
 "condition of use maybe change at anytime."
@@ -330,7 +341,7 @@ msgstr ""
 # | msgid ""
 # | "It seems that you have not created any users yet. default user link: "
 # | "%(default_link)s"
-#: hiddifypanel/panel/admin/Dashboard.py:65
+#: hiddifypanel/panel/admin/Dashboard.py:66
 #: hiddifypanel/panel/commercial/CommercialDashboard.py:43
 #, python-format
 msgid ""
@@ -341,7 +352,7 @@ msgstr ""
 "%(default_link)s"
 
 # | msgid "Child Has Been Removed!"
-#: hiddifypanel/panel/admin/Dashboard.py:82
+#: hiddifypanel/panel/admin/Dashboard.py:83
 #: hiddifypanel/panel/commercial/CommercialDashboard.py:58
 msgid "child has been removed!"
 msgstr "Child Has Been Removed!"
@@ -408,9 +419,10 @@ msgid ""
 msgstr ""
 "This can be used for giving your users a permanent non blockable links."
 
+# | msgid "Only for subscription link?"
 #: hiddifypanel/panel/admin/DomainAdmin.py:65
 msgid "Only for sublink?"
-msgstr "Only for sublink?"
+msgstr "Only for subscription link?"
 
 # | msgid "Mode"
 #: hiddifypanel/panel/admin/DomainAdmin.py:66
@@ -1808,64 +1820,64 @@ msgid "config.path_ss.description"
 msgstr "Shadowsocks Path in the links"
 
 # | msgid "Today"
-#: hiddifypanel/panel/admin/templates/index.html:83
+#: hiddifypanel/panel/admin/templates/index.html:74
 msgid "Today Usage"
 msgstr "Today"
 
-#: hiddifypanel/panel/admin/templates/index.html:86
-#: hiddifypanel/panel/admin/templates/index.html:92
-#: hiddifypanel/panel/admin/templates/index.html:98
-#: hiddifypanel/panel/admin/templates/index.html:104
-#: hiddifypanel/panel/admin/templates/index.html:114
-#: hiddifypanel/panel/admin/templates/index.html:213
-#: hiddifypanel/panel/admin/templates/index.html:219
-#: hiddifypanel/panel/admin/templates/index.html:225
-#: hiddifypanel/panel/admin/templates/index.html:231
+#: hiddifypanel/panel/admin/templates/index.html:77
+#: hiddifypanel/panel/admin/templates/index.html:83
+#: hiddifypanel/panel/admin/templates/index.html:89
+#: hiddifypanel/panel/admin/templates/index.html:95
+#: hiddifypanel/panel/admin/templates/index.html:105
+#: hiddifypanel/panel/admin/templates/index.html:203
+#: hiddifypanel/panel/admin/templates/index.html:209
+#: hiddifypanel/panel/admin/templates/index.html:215
+#: hiddifypanel/panel/admin/templates/index.html:221
 msgid "Online Users"
 msgstr "Online Users"
 
 # | msgid "Yesterday"
-#: hiddifypanel/panel/admin/templates/index.html:89
+#: hiddifypanel/panel/admin/templates/index.html:80
 msgid "Yesterday Usage"
 msgstr "Yesterday"
 
 # | msgid "Monthly"
-#: hiddifypanel/panel/admin/templates/index.html:95
+#: hiddifypanel/panel/admin/templates/index.html:86
 msgid "Month Usage"
 msgstr "Monthly"
 
-#: hiddifypanel/panel/admin/templates/index.html:101
+#: hiddifypanel/panel/admin/templates/index.html:92
 msgid "Total Usage"
 msgstr "Total Usage"
 
-#: hiddifypanel/panel/admin/templates/index.html:117
-#: hiddifypanel/panel/admin/templates/index.html:237
+#: hiddifypanel/panel/admin/templates/index.html:108
+#: hiddifypanel/panel/admin/templates/index.html:227
 msgid "In 24 hours"
 msgstr "In 24 hours"
 
-#: hiddifypanel/panel/admin/templates/index.html:120
+#: hiddifypanel/panel/admin/templates/index.html:111
 msgid "Network"
 msgstr "Network"
 
-#: hiddifypanel/panel/admin/templates/index.html:123
-#: hiddifypanel/panel/admin/templates/index.html:256
-#: hiddifypanel/panel/admin/templates/index.html:272
+#: hiddifypanel/panel/admin/templates/index.html:114
+#: hiddifypanel/panel/admin/templates/index.html:246
+#: hiddifypanel/panel/admin/templates/index.html:262
 msgid "From Last Restart"
 msgstr "From Last Restart"
 
-#: hiddifypanel/panel/admin/templates/index.html:127
+#: hiddifypanel/panel/admin/templates/index.html:118
 msgid "CPU"
 msgstr "CPU"
 
-#: hiddifypanel/panel/admin/templates/index.html:136
+#: hiddifypanel/panel/admin/templates/index.html:127
 msgid "RAM"
 msgstr "RAM"
 
-#: hiddifypanel/panel/admin/templates/index.html:150
+#: hiddifypanel/panel/admin/templates/index.html:141
 msgid "Disk"
 msgstr "Disk"
 
-#: hiddifypanel/panel/admin/templates/index.html:153
+#: hiddifypanel/panel/admin/templates/index.html:144
 msgid "Hiddify"
 msgstr "Hiddify"
 
@@ -2937,70 +2949,70 @@ msgstr "Users"
 msgid "in parent panel"
 msgstr "In Parent panel"
 
+#: hiddifypanel/templates/admin-layout.html:83
+msgid "Admins"
+msgstr "Admins"
+
 # | msgid "Settings"
-#: hiddifypanel/templates/admin-layout.html:90
+#: hiddifypanel/templates/admin-layout.html:92
 #: hiddifypanel/templates/admin-layout.html:171
 msgid "admin.menu.config"
 msgstr "Settings"
 
-#: hiddifypanel/templates/admin-layout.html:97
+#: hiddifypanel/templates/admin-layout.html:99
 #, fuzzy
 msgid "Commercial use"
 msgstr "Commercial use"
 
 # | msgid "Actions"
-#: hiddifypanel/templates/admin-layout.html:108
+#: hiddifypanel/templates/admin-layout.html:110
 msgid "admin.actions.title"
 msgstr "Actions"
 
 # | msgid "Help"
-#: hiddifypanel/templates/admin-layout.html:115
+#: hiddifypanel/templates/admin-layout.html:117
 msgid "admin.menu.support"
 msgstr "Help"
 
 # | msgid "Telegram"
-#: hiddifypanel/templates/admin-layout.html:119
+#: hiddifypanel/templates/admin-layout.html:121
 msgid "admin.menu.telegram"
 msgstr "Telegram"
 
-#: hiddifypanel/templates/admin-layout.html:123
+#: hiddifypanel/templates/admin-layout.html:125
 #: hiddifypanel/templates/donation.html:5
 msgid "Donation"
 msgstr "Donation"
 
 # | msgid "Status"
-#: hiddifypanel/templates/admin-layout.html:147
+#: hiddifypanel/templates/admin-layout.html:149
 msgid "admin.actions.status"
 msgstr "Status"
 
 # | msgid "View Logs"
-#: hiddifypanel/templates/admin-layout.html:148
+#: hiddifypanel/templates/admin-layout.html:150
 msgid "admin.actions.viewlogs"
 msgstr "View Logs"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/templates/admin-layout.html:149
+#: hiddifypanel/templates/admin-layout.html:151
 msgid "admin.actions.apply_configs"
 msgstr "Apply Configs"
 
 # | msgid "Update"
-#: hiddifypanel/templates/admin-layout.html:150
+#: hiddifypanel/templates/admin-layout.html:152
 msgid "admin.actions.update"
 msgstr "Update"
 
 # | msgid "Reinstall"
-#: hiddifypanel/templates/admin-layout.html:152
+#: hiddifypanel/templates/admin-layout.html:154
 msgid "admin.actions.reinstall"
 msgstr "Reinstall"
 
 # | msgid "Restart System"
-#: hiddifypanel/templates/admin-layout.html:153
+#: hiddifypanel/templates/admin-layout.html:155
 msgid "admin.actions.reset"
 msgstr "Restart System"
-
-#: hiddifypanel/templates/admin-layout.html:158
-msgid "Admins"
-msgstr "Admins"
 
 # | msgid "Domains"
 #: hiddifypanel/templates/admin-layout.html:162
@@ -3411,3 +3423,6 @@ msgstr "Actions"
 # | msgid "CDN Make It Incorrect"
 #~ msgid "CDN make it incorrect"
 #~ msgstr "CDN Make It Incorrect"
+
+#~ msgid "Are you sure you want to do this action?"
+#~ msgstr "Are you sure you want to do this action?"
