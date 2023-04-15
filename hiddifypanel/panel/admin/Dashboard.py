@@ -11,14 +11,11 @@ from hiddifypanel.panel.hiddify import flash
 import hiddifypanel
 class Dashboard(FlaskView):
     def get_data(self):
-        admin_id=request.args.get("admin_id") or g.admin.id if g.admin.mode!=AdminMode.super_admin else None
-        user_query=User.query
-        if admin_id:
-            user_query=user_query.filter(User.added_by==admin_id)
-        h24=datetime.datetime.now()-datetime.timedelta(days=1)
+        admin_id=request.args.get("admin_id") or g.admin.id
+        if admin_id not in g.admin.recursive_sub_admins_ids():
+            abort(403,_("Access Denied!"))
+
         return jsonify(dict(
-        onlines=user_query.filter(User.last_online>h24).count(),
-        total_users=user_query.count(),
         stats={'system':hiddify.system_stats(), 'top5':hiddify.top_processes()},
         usage_history=get_daily_usage_stats(admin_id)
         ))
@@ -29,7 +26,10 @@ class Dashboard(FlaskView):
         bot=None
         # if hconfig(ConfigEnum.license):
         childs=None
-        admin_id=request.args.get("admin_id") or g.admin.id if g.admin.mode!=AdminMode.super_admin else None
+        admin_id=request.args.get("admin_id") or g.admin.id
+        if admin_id not in g.admin.recursive_sub_admins_ids():
+            abort(403,_("Access Denied!"))
+
         child_id=request.args.get("child_id") or None
         user_query=User.query
         if admin_id:
@@ -54,11 +54,12 @@ class Dashboard(FlaskView):
         if def_user and sslip_domains:
             quick_setup=url_for("admin.QuickSetup:index")
             flash((_('It seems that you have not setup the system completely. <a class="btn btn-success" href="%(quick_setup)s">Click here</a> to complete setup.',quick_setup=quick_setup)),'warning')
-
-            flash(_("Please understand that parent panel is under test and the plan and the condition of use maybe change at anytime."), "danger")
+            if hconfig(ConfigEnum.is_parent):
+                flash(_("Please understand that parent panel is under test and the plan and the condition of use maybe change at anytime."), "danger")
         elif len(sslip_domains):
             flash((_('It seems that you are using default domain (%(domain)s) which is not recommended.',domain=sslip_domains[0])),'warning')
-            flash(_("Please understand that parent panel is under test and the plan and the condition of use maybe change at anytime."), "danger")
+            if hconfig(ConfigEnum.is_parent):
+                flash(_("Please understand that parent panel is under test and the plan and the condition of use maybe change at anytime."), "danger")
         elif def_user:
             d=domains[0]
             u=def_user.uuid
@@ -67,11 +68,11 @@ class Dashboard(FlaskView):
     # except:
     #     flash((_('Error!!!')),'info')
         h24=datetime.datetime.now()-datetime.timedelta(days=1)
-        onlines=user_query.filter(User.last_online>h24).count()
-        total=user_query.count()
+        
+        
         
         stats={'system':hiddify.system_stats(), 'top5':hiddify.top_processes()}
-        return render_template('index.html',onlines=onlines,total_users=total,bot=bot,stats=stats,usage_history=get_daily_usage_stats(admin_id,child_id),childs=childs)
+        return render_template('index.html',stats=stats,usage_history=get_daily_usage_stats(admin_id,child_id),childs=childs)
 
     @route('remove_child', methods=['POST'])
     def remove_child(self):

@@ -34,6 +34,17 @@ class AdminUser(db.Model, SerializerMixin):
     telegram_id=db.Column(db.String(512))
     users = db.relationship('User',backref='admin')
     usages = db.relationship('DailyUsage',backref='admin')
+    parent_admin_id = db.Column(db.Integer, db.ForeignKey('admin_user.id'),default=1)
+    parent_admin = db.relationship('AdminUser', remote_side=[id], backref='sub_admins')
+
+    def recursive_sub_admins_ids(self,depth=20):
+        sub_admin_ids = []
+        sub_admin_ids.append(self.id)
+        if depth>0:
+            for sub_admin in self.sub_admins:
+                sub_admin_ids += sub_admin.recursive_sub_admins_ids(depth-1)
+        return sub_admin_ids
+
     def __str__(self):
         return str(self.name)
 

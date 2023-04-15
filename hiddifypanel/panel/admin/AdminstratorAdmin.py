@@ -1,4 +1,5 @@
 from flask_admin.contrib import sqla
+
 from hiddifypanel.panel.database import db
 from wtforms.validators import Regexp
 from hiddifypanel.models import *
@@ -19,9 +20,26 @@ from wtforms.widgets import ListWidget, CheckboxInput
 from sqlalchemy.orm import backref
 # Define a custom field type for the related domains
 from flask_admin.form.fields import Select2TagsField,Select2Field
+from wtforms import SelectField
+
+class AdminModeField(SelectField):
+    def __init__(self, label=None, validators=None, **kwargs):
+        super(AdminModeField, self).__init__(label, validators, **kwargs)
+        if g.admin.mode==AdminMode.slave:
+            self.choices = [ (AdminMode.slave.value, 'Slave')]
+        elif g.admin.mode==AdminMode.admin:
+            self.choices = [ (AdminMode.slave.value, 'Slave'),(AdminMode.admin.value, 'Admin'),]
+        elif g.admin.mode==AdminMode.super_admin:
+            self.choices = [(AdminMode.slave.value, 'Slave'),(AdminMode.admin.value, 'Admin'),(AdminMode.super_admin.value, 'Super Admin')]
 
 
 
+class SubAdminsField(SelectField):
+    def __init__(self, label=None, validators=None,*args, **kwargs):
+        kwargs.pop("allow_blank")
+        super().__init__(label, validators,*args, **kwargs)
+        self.choices=[(admin.id,admin.name) for admin in g.admin.sub_admins]
+        self.choices+=[(g.admin.id,g.admin.name)]
 class AdminstratorAdmin(AdminLTEModelView):
     column_hide_backrefs = False
     column_list = ["name",'UserLinks','mode','comment','users']
@@ -29,11 +47,10 @@ class AdminstratorAdmin(AdminLTEModelView):
     list_template = 'model/admin_list.html'
     # edit_modal = True
     # form_overrides = {'work_with': Select2Field}
-    form_widget_args = {
-    'description': {
-        'rows': 100,
-        'style': 'font-family: monospace; direction:ltr'
-    }
+    
+    form_overrides = {
+        'mode': AdminModeField,
+        'parent_admin': SubAdminsField
     }
     column_labels = {
         "Actions":_("actions"),
@@ -71,6 +88,8 @@ class AdminstratorAdmin(AdminLTEModelView):
         d=get_panel_domains()[0]
         if d:
             link=f"<a target='_blank' href='https://{d.domain}/{proxy_path}/{model.uuid}/admin/#{model.name}'>{model.name} <i class='fa-solid fa-arrow-up-right-from-square'></i></a>"
+            if model.parent_admin:
+                return Markup(model.parent_admin.name +"&rlm; / &rlm;"+link)
             return Markup(link)
         else:
             return model.name
@@ -93,5 +112,61 @@ class AdminstratorAdmin(AdminLTEModelView):
         return f"{_('search')} {_('user.UUID')} {_('user.name')}"
 
 
-    def is_accessible(self):
-        return g.admin.mode==AdminMode.super_admin
+    # def is_accessible(self):
+    #     return g.admin.mode==AdminMode.super_admin
+
+
+    def get_query(self):
+            # Get the base query
+        query = super().get_query()
+
+        admin_ids=g.admin.recursive_sub_admins_ids()
+        query = query.filter(AdminUser.id.in_(admin_ids))
+
+        return query
+
+    # Override get_count_query() to include the filter condition in the count query
+    def get_count_query(self):
+        # Get the base count query
+        query = super().get_count_query()
+
+        admin_ids=g.admin.recursive_sub_admins_ids()
+        query = query.filter(AdminUser.id.in_(admin_ids))
+
+        return query
+
+
+    def on_model_change(self, form, model, is_created):
+        # if model.id==1:
+        #     model.parent_admin_id=0
+        #     model.parent_admin=None
+        # else:
+        #     model.parent_admin_id=1
+        #     model.parent_admin=AdminUser.query.filter(AdminUser.id==1).first()
+        if model.id!=1 and model.parent_admin==None:
+            model.parent_admin_id=g.admin.id
+            model.parent_admin=g.admin
+
+        if g.admin.mode!=AdminMode.super_admin and model.mode==AdminMode.super_admin:
+            raise ValidationError("Sub-Admin can not have more power!!!!")
+        if model.mode==AdminMode.slave and model.mode!=AdminMode.slave:
+            raise ValidationError("Sub-Admin can not have more power!!!!")
+    def on_model_delete(self, model):
+        if model.id==1:
+            raise ValidationError(_("Owner can not be deleted!"))
+
+
+
+    def get_query_for_parent_admin(self):
+        admin_user_id = self.get_pk_value()
+        sub_admins_ids = set(recursive_sub_admins_ids(AdminUser.query.get(admin_user_id)))
+        return AdminUser.query.filter(AdminUser.id.in_(sub_admins_ids)).with_entities(AdminUser.id, AdminUser.name)
+
+
+    def on_form_prefill(self, form, id=None):
+        if form._obj is not None and form._obj.id==1:
+            del form.parent_admin
+        
+        # if g.admin.mode==AdminMode.slave:
+        del form.mode
+        

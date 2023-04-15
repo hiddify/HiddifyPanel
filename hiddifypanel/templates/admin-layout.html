@@ -80,6 +80,8 @@
                 {{ render_nav_item('flask.user.index_view', icon('solid','user','nav-icon')+_('admin.menu.user'),_use_li=True) }}
                 %endif
                 
+                {{ render_nav_item('flask.adminuser.index_view', icon('solid','user-secret','nav-icon')+_('Admins'),_use_li=True) }}
+              
 
                  
                 % if g.admin.mode!="slave"    
@@ -154,9 +156,7 @@
               % endif
             </div>
             <div class="nav-item" id="setting-sidebar">
-              % if g.admin.mode=='super_admin'
-                {{ render_nav_item('flask.adminuser.index_view', icon('solid','user-secret','nav-icon')+_('Admins'),_use_li=True) }}
-              %endif
+              
 
               % if hconfig(ConfigEnum.is_parent)
               {{ render_nav_item('flask.parentdomain.index_view', icon('solid','arrow-down-up-lock','nav-icon')+_('admin.menu.domain'),_use_li=True) }}

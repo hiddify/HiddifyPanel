@@ -21,19 +21,8 @@
 }
 </style>
 
-{%macro loading() -%}
-<svg version="1.1" id="L4" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
-    <circle fill="#fff" stroke="none" cx="6" cy="50" r="6">
-      <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" begin="0.1"></animate>    
-    </circle>
-    <circle fill="#fff" stroke="none" cx="26" cy="50" r="6">
-      <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" begin="0.2"></animate>       
-    </circle>
-    <circle fill="#fff" stroke="none" cx="46" cy="50" r="6">
-      <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" begin="0.3"></animate>     
-    </circle>
-  </svg>
-  {%- endmacro -%}
+
+
 {% macro info_box(id,icon,title,number,percentage,description,coloring=False,color_class='secondary') -%}
 <div class="col-md-4  col-sm-6">
     <div id={{id}} class="info-box bg-gradient-{{color_class}} {{ ("bg-gradient-"+ ("danger" if percentage>90 else ("warning" if percentage>75 else ""))) if coloring else ""}} {%if "disk"==id %} d-none d-md-flex {%endif%}">
@@ -80,27 +69,29 @@
 </div>
 {%- endmacro -%}
 <div class="row" >
+    %set onlines=usage_history['h24']['online']
+    %set total_users=usage_history['total']['users']
     {{info_box("today","fa-solid fa-calendar", _("Today Usage"), 
             ((usage_history['today']['usage']/1024**3)|round(1)) ~ " GB", 
-            usage_history['today']['online']/total_users*100, 
+            usage_history['today']['online']/((1,total_users)|max)*100, 
             _("Online Users") ~": "~ usage_history['today']['online'] ~ " / "~ total_users,
             color_class="orange"
     )}}
     {{info_box("yesterday","fa-solid fa-calendar-day", _("Yesterday Usage"), 
             ((usage_history['yesterday']['usage']/1024**3)|round(1)) ~ " GB", 
-            usage_history['yesterday']['online']/total_users*100, 
+            usage_history['yesterday']['online']/((1,total_users)|max)*100, 
             _("Online Users") ~": "~ usage_history['yesterday']['online'] ~ " / "~ total_users,
             color_class="maroon"
     )}}
     {{info_box("last_30_days","fa-solid fa-calendar-days", _("Month Usage"), 
             ((usage_history['last_30_days']['usage']/1024**3)|round(1)) ~ " GB", 
-            usage_history['last_30_days']['online']/total_users*100, 
+            usage_history['last_30_days']['online']/((1,total_users)|max)*100, 
             _("Online Users") ~": "~ usage_history['last_30_days']['online'] ~ " / "~ total_users,
             color_class="olive"
     )}}
     {{info_box("total","fa-solid fa-chart-pie", _("Total Usage"), 
             ((usage_history['total']['usage']/1024**3)|round(1)) ~ " GB", 
-            usage_history['total']['online']/total_users*100, 
+            usage_history['total']['online']/((1,total_users)|max)*100, 
             _("Online Users") ~": "~ usage_history['total']['online'] ~ " / "~ total_users,
             color_class="navy"
     )}}
@@ -113,7 +104,7 @@
     {{info_box("online","fa-solid fa-users",
          _("Online Users"), 
          onlines ~ " / "~ total_users, 
-         onlines/total_users*100, 
+         onlines/((1,total_users)|max)*100, 
          _('In 24 hours'),
          color_class="lightblue"
     )}}
@@ -158,10 +149,9 @@
     </div>
 
 </div>
-
-
+% if hconfig(ConfigEnum.is_parent)
 {% include 'parent_dash.html' %}
-
+%endif
 {% endblock %}
 
 %block tail_js
@@ -204,36 +194,36 @@ function strband(num){
 
 function update_from_json(data){
     usage_history=data['usage_history']
-    onlines=data['onlines']
-    total_users=data['total_users']
+    onlines=usage_history['h24']['online']
+    total_users=usage_history['total']['users']
     stats=data['stats']
     info_box("today", "fa-solid fa-calendar", "Today Usage",
     ((usage_history['today']['usage'] / Math.pow(1024, 3)).toFixed(1)) + " GB",
-    usage_history['today']['online'] / total_users * 100,
+    usage_history['today']['online'] / Math.max(1,total_users) * 100,
     "{{_('Online Users')}}" + ": " + usage_history['today']['online'] + " / " + total_users
 );
 
 info_box("yesterday", "fa-solid fa-calendar-day", "Yesterday Usage",
     ((usage_history['yesterday']['usage'] / Math.pow(1024, 3)).toFixed(1)) + " GB",
-    usage_history['yesterday']['online'] / total_users * 100,
+    usage_history['yesterday']['online'] / Math.max(1,total_users) * 100,
     "{{_('Online Users')}}" + ": " + usage_history['yesterday']['online'] + " / " + total_users
 );
 
 info_box("last_30_days", "fa-solid fa-calendar-days", "Month Usage",
     ((usage_history['last_30_days']['usage'] / Math.pow(1024, 3)).toFixed(1)) + " GB",
-    usage_history['last_30_days']['online'] / total_users * 100,
+    usage_history['last_30_days']['online'] / Math.max(1,total_users) * 100,
     "{{_('Online Users')}}" + ": " + usage_history['last_30_days']['online'] + " / " + total_users
 );
 
 info_box("total", "fa-solid fa-chart-pie", "Total Usage",
     ((usage_history['total']['usage'] / Math.pow(1024, 3)).toFixed(1)) + " GB",
-    usage_history['total']['online'] / total_users * 100,
+    usage_history['total']['online'] / Math.max(1,total_users) * 100,
     "{{_('Online Users')}}" + ": " + usage_history['total']['online'] + " / " + total_users
 );
 
 info_box("online", "fa-solid fa-users", "Online Users",
     onlines + " / " + total_users,
-    onlines / total_users * 100,
+    onlines / Math.max(1,total_users) * 100,
     "{{_('In 24 hours')}}"
 );
 
@@ -286,7 +276,7 @@ function info_box(id, icon_class, title, number,percentage,description,coloring)
  
 setInterval(function() {
   $.ajax({
-    url: "{{url_for('admin.Dashboard:get_data')}}",
+    url: "{{url_for('admin.Dashboard:get_data',admin_id=request.args.get('admin_id'))}}",
     method: "GET",
     success: function(data) {
       console.log("Success!");

@@ -6,7 +6,7 @@ from flask import Flask,g
 from datetime import timedelta, date
 from hiddifypanel.panel.database import db
 from sqlalchemy_serializer import SerializerMixin
-from .admin import AdminMode
+from .admin import AdminMode,AdminUser
 class DailyUsage(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     date = db.Column(db.Date, default=datetime.date.today())
@@ -18,19 +18,19 @@ class DailyUsage(db.Model, SerializerMixin):
 from sqlalchemy import column
 
 def get_daily_usage_stats(admin_id=None,child_id=None):
-    if g.admin.mode==AdminMode.slave:
+    if not admin_id:
         admin_id=g.admin.id
-    
+    sub_admins=AdminUser.query.filter(AdminUser.id==admin_id).first().recursive_sub_admins_ids()
     def filter_daily_usage_admin(query):
         if admin_id:
-            query=query.filter(DailyUsage.admin_id==admin_id)
+            query=query.filter(DailyUsage.admin_id.in_(sub_admins))
         if child_id:
             query=query.filter(DailyUsage.child_id==child_id)
         return query    
 
     def filter_user_admin(query):
         if admin_id:
-            query=query.filter(User.added_by==admin_id)
+            query=query.filter(User.added_by.in_(sub_admins))
         
         return query    
 
@@ -43,6 +43,8 @@ def get_daily_usage_stats(admin_id=None,child_id=None):
     ).filter(DailyUsage.date == today)).first()
     users_online_today = filter_user_admin(User.query.filter(User.last_online >= today)).count()
     
+    h24=datetime.datetime.now()-datetime.timedelta(days=1)
+    users_online_h24 = filter_user_admin(User.query.filter(User.last_online >= h24)).count()
     
 
     # Yesterday's usage and online count
@@ -67,11 +69,13 @@ def get_daily_usage_stats(admin_id=None,child_id=None):
     )).first()
     ten_years_ago = today - timedelta(days=365*10)
     users_online_last_10_years = filter_user_admin(User.query.filter(User.last_online >= ten_years_ago)).count()
+    total_users = filter_user_admin(User.query).count()
 
     # Return the usage stats as a dictionary
     return {
         "today": {"usage": today_stats[0], "online": users_online_today},
+        "h24":{"usage":0,"online":users_online_h24},
         "yesterday": {"usage": yesterday_stats[0], "online": yesterday_stats[1]},
         "last_30_days": {"usage": last_30_days_stats[0], "online": users_online_last_month},
-        "total": {"usage": total_stats[0], "online": users_online_last_10_years}
+        "total": {"usage": total_stats[0], "online": users_online_last_10_years,"users":total_users}
     }
