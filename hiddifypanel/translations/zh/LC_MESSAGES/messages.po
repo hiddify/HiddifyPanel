@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-15 20:40+0200\n"
-"PO-Revision-Date: 2023-04-15 13:40-0500\n"
+"POT-Creation-Date: 2023-04-15 21:19+0200\n"
+"PO-Revision-Date: 2023-04-15 14:19-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -27,12 +27,12 @@ msgstr "该域名在面板中不存在！"
 msgid "Error! auto cdn ip can not be find, please contact admin."
 msgstr "自动 CDN IP 错误！找不到，请联系管理员。"
 
-#: hiddifypanel/panel/hiddify.py:74
+#: hiddifypanel/panel/hiddify.py:75
 msgid "Access Denied"
 msgstr ""
 
 # | msgid "Apply Configs"
-#: hiddifypanel/panel/hiddify.py:154
+#: hiddifypanel/panel/hiddify.py:155
 msgid "admin.config.apply_configs"
 msgstr "应用配置"
 
@@ -40,12 +40,12 @@ msgstr "应用配置"
 # | "Configs have been Changed Successfully. Click %(link)s to Apply the
 # Configs."
 # | " It may take 2 minutes to apply."
-#: hiddifypanel/panel/hiddify.py:155
+#: hiddifypanel/panel/hiddify.py:156
 msgid "config.validation-success"
 msgstr "配置已成功更改。单击 %(link)s 以应用配置。申请可能需要 2 分钟。"
 
 # | msgid "Configs have been changed successfully."
-#: hiddifypanel/panel/hiddify.py:157
+#: hiddifypanel/panel/hiddify.py:158
 #, fuzzy
 msgid "config.validation-success-no-reset"
 msgstr "配置已成功更改。"
@@ -55,16 +55,16 @@ msgstr "配置已成功更改。"
 # check "
 # | "your Domain configurations."
 #: hiddifypanel/panel/admin/ChildAdmin.py:108
-#: hiddifypanel/panel/admin/DomainAdmin.py:119
-#: hiddifypanel/panel/admin/DomainAdmin.py:144
+#: hiddifypanel/panel/admin/DomainAdmin.py:131
+#: hiddifypanel/panel/admin/DomainAdmin.py:156
 #: hiddifypanel/panel/admin/QuickSetup.py:117
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:109
-#: hiddifypanel/panel/hiddify.py:272
+#: hiddifypanel/panel/hiddify.py:273
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr "域名无法解析！你的域有问题"
 
 # | msgid "Last Day"
-#: hiddifypanel/panel/hiddify.py:300
+#: hiddifypanel/panel/hiddify2.py:24
 #, fuzzy
 msgid "0 - Last day"
 msgstr "0 - 最后一天"
@@ -159,17 +159,21 @@ msgstr "UUID"
 msgid "Note"
 msgstr "笔记"
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:66
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:62
+msgid "Users"
+msgstr ""
+
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:67
 #, fuzzy
 msgid "Add some text that is only visible to super_admin."
 msgstr "添加一些仅对 super_admin 可见的文本。"
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:67
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:68
 #, fuzzy
 msgid "Define the admin mode. "
 msgstr "定义管理模式。"
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:156
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:157
 msgid "Owner can not be deleted!"
 msgstr ""
 
@@ -271,7 +275,7 @@ msgstr ""
 
 # | msgid "Domain"
 #: hiddifypanel/panel/admin/ChildAdmin.py:54
-#: hiddifypanel/panel/admin/DomainAdmin.py:64
+#: hiddifypanel/panel/admin/DomainAdmin.py:66
 #: hiddifypanel/panel/admin/QuickSetup.py:101
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:55
 msgid "domain.domain"
@@ -280,7 +284,7 @@ msgstr "领域"
 # | msgid "Show configs of domains:"
 #: hiddifypanel/panel/admin/ChildAdmin.py:57
 #: hiddifypanel/panel/admin/ChildAdmin.py:58
-#: hiddifypanel/panel/admin/DomainAdmin.py:69
+#: hiddifypanel/panel/admin/DomainAdmin.py:71
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:58
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:59
 #, fuzzy
@@ -289,7 +293,7 @@ msgstr "显示域的配置："
 
 # | msgid "Admin"
 #: hiddifypanel/panel/admin/ChildAdmin.py:65
-#: hiddifypanel/panel/admin/DomainAdmin.py:79
+#: hiddifypanel/panel/admin/DomainAdmin.py:81
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:66
 #, fuzzy
 msgid "admin link"
@@ -419,41 +423,45 @@ msgid "This can be used for giving your users a permanent non blockable links."
 msgstr "这可用于为您的用户提供永久的不可阻止的链接。"
 
 # | msgid "Only for subscription link?"
-#: hiddifypanel/panel/admin/DomainAdmin.py:65
+#: hiddifypanel/panel/admin/DomainAdmin.py:67
 #, fuzzy
 msgid "Only for sublink?"
 msgstr "仅用于子链接？"
 
 # | msgid "Mode"
-#: hiddifypanel/panel/admin/DomainAdmin.py:66
+#: hiddifypanel/panel/admin/DomainAdmin.py:68
 msgid "domain.mode"
 msgstr "模式"
 
 # | msgid "Force cdn config to use following IPs"
-#: hiddifypanel/panel/admin/DomainAdmin.py:67
+#: hiddifypanel/panel/admin/DomainAdmin.py:69
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.cdn_forced_host.label"
 msgstr "强制 CDN 主机"
 
 # | msgid "IP"
-#: hiddifypanel/panel/admin/DomainAdmin.py:68
+#: hiddifypanel/panel/admin/DomainAdmin.py:70
 msgid "domain.ip"
 msgstr "知识产权"
 
-#: hiddifypanel/panel/admin/DomainAdmin.py:70
+#: hiddifypanel/panel/admin/DomainAdmin.py:72
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:57
 #, fuzzy
 msgid "Alias"
 msgstr "别名"
 
+#: hiddifypanel/panel/admin/DomainAdmin.py:98
+msgid "All"
+msgstr ""
+
 # | msgid "You have already used this domain in: "
-#: hiddifypanel/panel/admin/DomainAdmin.py:114
+#: hiddifypanel/panel/admin/DomainAdmin.py:126
 #, fuzzy
 msgid "You have used this domain in: "
 msgstr "您已经在以下领域使用过此域名："
 
-#: hiddifypanel/panel/admin/DomainAdmin.py:132
+#: hiddifypanel/panel/admin/DomainAdmin.py:144
 #, fuzzy
 msgid "Can not connect to Cloudflare."
 msgstr "无法连接到 Cloudflare。"
@@ -462,7 +470,7 @@ msgstr "无法连接到 Cloudflare。"
 # | "Domain IP = %(domain_ip)s is not matched with your IP = %(server_ip)s
 # which "
 # | "is required in direct mode"
-#: hiddifypanel/panel/admin/DomainAdmin.py:149
+#: hiddifypanel/panel/admin/DomainAdmin.py:161
 #, python-format
 msgid ""
 "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which "
@@ -472,7 +480,7 @@ msgstr "域 IP=%(domain_ip)s 与您的 ip=%(server_ip)s 不匹配，这在直接
 # | msgid ""
 # | "In CDN mode, domain IP =%(domain_ip)s should be different to your IP "
 # | "=%(server_ip)s"
-#: hiddifypanel/panel/admin/DomainAdmin.py:153
+#: hiddifypanel/panel/admin/DomainAdmin.py:165
 #, python-format
 msgid ""
 "In CDN mode, Domain IP=%(domain_ip)s should be different to your "
@@ -3027,6 +3035,11 @@ msgstr "商业设置"
 msgid "Telegram Bot"
 msgstr "电报机器人"
 
+#: hiddifypanel/templates/admin-layout.html:208
+#, fuzzy
+msgid "Are you sure you want to do this action?"
+msgstr "您确定要执行此操作吗？"
+
 # | msgid ""
 # | "We need your help In developing this project\n"
 # | "<br>\n"
@@ -3163,29 +3176,29 @@ msgid "open"
 msgstr "打开"
 
 # | msgid "Link Copied to Clipboard. "
-#: hiddifypanel/templates/master.html:231
+#: hiddifypanel/templates/master.html:233
 msgid "user.home.link.success-copy"
 msgstr "链接已复制到剪贴板。"
 
 # | msgid "Copy to Clipboard:  Ctrl+C, Enter"
-#: hiddifypanel/templates/master.html:233
-#: hiddifypanel/templates/master.html:236
+#: hiddifypanel/templates/master.html:235
+#: hiddifypanel/templates/master.html:238
 msgid "user.home.link.manual-copy"
 msgstr "复制到剪贴板：Ctrl+C，回车"
 
-#: hiddifypanel/templates/master.html:289
+#: hiddifypanel/templates/master.html:291
 #, fuzzy
 msgid "Install"
 msgstr "安装"
 
 # | msgid "Hiddify Panel Installation"
-#: hiddifypanel/templates/master.html:369
+#: hiddifypanel/templates/master.html:371
 #, fuzzy
 msgid "Install Hiddify Application"
 msgstr "隐藏面板安装"
 
 # | msgid "Click %(install)s to save the user page."
-#: hiddifypanel/templates/master.html:371
+#: hiddifypanel/templates/master.html:373
 #, fuzzy, python-format
 msgid "Please click on %(install)s to save the user page."
 msgstr "单击 %(install)s 保存用户页面。"
@@ -3429,7 +3442,4 @@ msgstr "动作"
 # | msgid "CDN Make It Incorrect"
 #~ msgid "CDN make it incorrect"
 #~ msgstr "CDN使它不正确"
-
-#~ msgid "Are you sure you want to do this action?"
-#~ msgstr "您确定要执行此操作吗？"
 

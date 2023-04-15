@@ -59,6 +59,7 @@ class AdminstratorAdmin(AdminLTEModelView):
         "mode":_("Mode"),
         "uuid":_("user.UUID"),
         "comment":_("Note"),
+        "users":_("Users"),
 
     }
     
@@ -97,7 +98,7 @@ class AdminstratorAdmin(AdminLTEModelView):
     def _users_formatter(view, context, model, name):
         last_day=datetime.datetime.now()-datetime.timedelta(days=1)
         onlines=[p for p in  model.users  if p.last_online and p.last_online>last_day]
-        return Markup(f"<a class='btn btn-xs' href='{url_for('flask.user.index_view',admin_id=model.id)}'>{len(model.users)} {_('Users')}<br> {len(onlines)} {_('Online Users')}</a>")
+        return Markup(f"<a class='btn btn-xs' href='{url_for('flask.user.index_view',admin_id=model.id)}'>{_('Users')}: {len(model.users)} <br> {_('Online Users')}: {len(onlines)} </a>")
         
         
         # return Markup(f"<span class='badge ltr badge-{'success' if days>7 else ('warning' if days>0 else 'danger') }'>{days}</span> "+_('days'))

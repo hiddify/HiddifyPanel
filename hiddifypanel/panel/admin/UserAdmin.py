@@ -162,7 +162,8 @@ class UserAdmin(AdminLTEModelView):
         
         if diff.days<-1000:
             return Markup("-")
-        
+        if diff.total_seconds()>-60*5:
+            return Markup(f"<span class='badge badge-success'>{_('Online')}</span>")
         state="danger" if diff.days<-3 else ("success" if diff.days>=-1 else "warning")
         return Markup(f"<span class='badge badge-{state}'>{hiddify.format_timedelta(diff,granularity='min')}</span>")
         

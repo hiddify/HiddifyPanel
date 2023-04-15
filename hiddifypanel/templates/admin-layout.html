@@ -32,7 +32,7 @@
     <i class="fa-solid fa-moon"></i>
   </a>
   %endif
-  % if not hconfig(ConfigEnum.is_parent)
+  % if 0 and not hconfig(ConfigEnum.is_parent)
         
   
     <a class="nav-link btn btn-outline-secondary form_post d-none d-md-flex" href="{{url_for('admin.Actions:apply_configs')}}">
@@ -204,9 +204,20 @@ $(document).ready(function () {
   $('.form_post').click(function (e) {
     e.preventDefault();
     console.log(this); console.log(e);
-    var link = this.href;
-    $("#action_form").attr("action",link)
-    $("#action_form").submit()
+    bootbox.confirm({
+    message: '{{_("Are you sure you want to do this action?")}}',
+    locale:'{{get_locale()}}',
+    callback: function(result) {
+      if (result) {
+        var link = this.href;
+      $("#action_form").attr("action",link)
+      $("#action_form").submit()
+      }
+    }
+  });
+  return false;
+
+    
   })
   // if ($('.').length){
   //   $("#modal-donation").modal()

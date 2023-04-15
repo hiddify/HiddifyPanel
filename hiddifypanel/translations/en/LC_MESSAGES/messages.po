@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-15 20:40+0200\n"
-"PO-Revision-Date: 2023-04-15 13:40-0500\n"
+"POT-Creation-Date: 2023-04-15 21:19+0200\n"
+"PO-Revision-Date: 2023-04-15 14:19-0500\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -24,27 +24,27 @@ msgstr "This domain does not exist in the Panel !"
 msgid "Error! auto cdn ip can not be find, please contact admin."
 msgstr "Error In Auto CDN IP! It Can Not Be Find, Please Contact Admin"
 
-#: hiddifypanel/panel/hiddify.py:74
+#: hiddifypanel/panel/hiddify.py:75
 #, fuzzy
 msgid "Access Denied"
 msgstr "Access Denied"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/panel/hiddify.py:154
+#: hiddifypanel/panel/hiddify.py:155
 msgid "admin.config.apply_configs"
 msgstr "Apply Configs"
 
 # | msgid ""
 # | "Configs have been Changed Successfully. Click %(link)s to Apply the "
 # | "Configs. It may take 2 minutes to apply."
-#: hiddifypanel/panel/hiddify.py:155
+#: hiddifypanel/panel/hiddify.py:156
 msgid "config.validation-success"
 msgstr ""
 "Configs have been Changed Successfully. Click %(link)s to Apply the Configs."
 " It may take 2 minutes to apply."
 
 # | msgid "Configs have been changed successfully."
-#: hiddifypanel/panel/hiddify.py:157
+#: hiddifypanel/panel/hiddify.py:158
 msgid "config.validation-success-no-reset"
 msgstr "Configs have been changed successfully."
 
@@ -52,18 +52,18 @@ msgstr "Configs have been changed successfully."
 # | "Domain can not be resolved! There is a problem in your domain. Please "
 # | "check your Domain configurations."
 #: hiddifypanel/panel/admin/ChildAdmin.py:108
-#: hiddifypanel/panel/admin/DomainAdmin.py:119
-#: hiddifypanel/panel/admin/DomainAdmin.py:144
+#: hiddifypanel/panel/admin/DomainAdmin.py:131
+#: hiddifypanel/panel/admin/DomainAdmin.py:156
 #: hiddifypanel/panel/admin/QuickSetup.py:117
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:109
-#: hiddifypanel/panel/hiddify.py:272
+#: hiddifypanel/panel/hiddify.py:273
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr ""
 "Domain can not be resolved! There is a problem in your domain. Please check "
 "your Domain configurations."
 
 # | msgid "Last Day"
-#: hiddifypanel/panel/hiddify.py:300
+#: hiddifypanel/panel/hiddify2.py:24
 msgid "0 - Last day"
 msgstr "Last Day"
 
@@ -155,15 +155,20 @@ msgstr "UUID"
 msgid "Note"
 msgstr "Note"
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:66
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:62
+#, fuzzy
+msgid "Users"
+msgstr "Users"
+
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:67
 msgid "Add some text that is only visible to super_admin."
 msgstr "Add some text that is only visible to super_admin."
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:67
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:68
 msgid "Define the admin mode. "
 msgstr "Define the admin mode. "
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:156
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:157
 #, fuzzy
 msgid "Owner can not be deleted!"
 msgstr "Owner can not be deleted!"
@@ -265,7 +270,7 @@ msgstr ""
 
 # | msgid "Domain"
 #: hiddifypanel/panel/admin/ChildAdmin.py:54
-#: hiddifypanel/panel/admin/DomainAdmin.py:64
+#: hiddifypanel/panel/admin/DomainAdmin.py:66
 #: hiddifypanel/panel/admin/QuickSetup.py:101
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:55
 msgid "domain.domain"
@@ -274,7 +279,7 @@ msgstr "Domain"
 # | msgid "Show configs of domains:"
 #: hiddifypanel/panel/admin/ChildAdmin.py:57
 #: hiddifypanel/panel/admin/ChildAdmin.py:58
-#: hiddifypanel/panel/admin/DomainAdmin.py:69
+#: hiddifypanel/panel/admin/DomainAdmin.py:71
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:58
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:59
 msgid "Show Domains"
@@ -282,7 +287,7 @@ msgstr "Show configs of domains:"
 
 # | msgid "Admin"
 #: hiddifypanel/panel/admin/ChildAdmin.py:65
-#: hiddifypanel/panel/admin/DomainAdmin.py:79
+#: hiddifypanel/panel/admin/DomainAdmin.py:81
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:66
 msgid "admin link"
 msgstr "Admin"
@@ -420,44 +425,49 @@ msgstr ""
 "This can be used for giving your users a permanent non blockable links."
 
 # | msgid "Only for subscription link?"
-#: hiddifypanel/panel/admin/DomainAdmin.py:65
+#: hiddifypanel/panel/admin/DomainAdmin.py:67
 msgid "Only for sublink?"
 msgstr "Only for subscription link?"
 
 # | msgid "Mode"
-#: hiddifypanel/panel/admin/DomainAdmin.py:66
+#: hiddifypanel/panel/admin/DomainAdmin.py:68
 msgid "domain.mode"
 msgstr "Mode"
 
 # | msgid "Force cdn config to use following IPs"
-#: hiddifypanel/panel/admin/DomainAdmin.py:67
+#: hiddifypanel/panel/admin/DomainAdmin.py:69
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.cdn_forced_host.label"
 msgstr "Force cdn config to use following IPs"
 
 # | msgid "IP"
-#: hiddifypanel/panel/admin/DomainAdmin.py:68
+#: hiddifypanel/panel/admin/DomainAdmin.py:70
 msgid "domain.ip"
 msgstr "IP"
 
-#: hiddifypanel/panel/admin/DomainAdmin.py:70
+#: hiddifypanel/panel/admin/DomainAdmin.py:72
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:57
 msgid "Alias"
 msgstr "Alias"
 
+#: hiddifypanel/panel/admin/DomainAdmin.py:98
+#, fuzzy
+msgid "All"
+msgstr "All"
+
 # | msgid "You have already used this domain in: "
-#: hiddifypanel/panel/admin/DomainAdmin.py:114
+#: hiddifypanel/panel/admin/DomainAdmin.py:126
 msgid "You have used this domain in: "
 msgstr "You have already used this domain in: "
 
-#: hiddifypanel/panel/admin/DomainAdmin.py:132
+#: hiddifypanel/panel/admin/DomainAdmin.py:144
 msgid "Can not connect to Cloudflare."
 msgstr "Can not connect to Cloudflare."
 
 # | msgid ""
 # | "Domain IP = %(domain_ip)s is not matched with your IP = %(server_ip)s "
 # | "which is required in direct mode"
-#: hiddifypanel/panel/admin/DomainAdmin.py:149
+#: hiddifypanel/panel/admin/DomainAdmin.py:161
 #, python-format
 msgid ""
 "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is "
@@ -469,7 +479,7 @@ msgstr ""
 # | msgid ""
 # | "In CDN mode, domain IP =%(domain_ip)s should be different to your IP "
 # | "=%(server_ip)s"
-#: hiddifypanel/panel/admin/DomainAdmin.py:153
+#: hiddifypanel/panel/admin/DomainAdmin.py:165
 #, python-format
 msgid ""
 "In CDN mode, Domain IP=%(domain_ip)s should be different to your "
@@ -3034,6 +3044,10 @@ msgstr "Common Settings"
 msgid "Telegram Bot"
 msgstr "Telegram Bot"
 
+#: hiddifypanel/templates/admin-layout.html:208
+msgid "Are you sure you want to do this action?"
+msgstr "Are you sure you want to do this action?"
+
 # | msgid ""
 # | "We need your help In developing this project\n"
 # | "<br>\n"
@@ -3156,27 +3170,27 @@ msgid "open"
 msgstr "Open"
 
 # | msgid "Link Copied to Clipboard. "
-#: hiddifypanel/templates/master.html:231
+#: hiddifypanel/templates/master.html:233
 msgid "user.home.link.success-copy"
 msgstr "Link Copied to Clipboard. "
 
 # | msgid "Copy to Clipboard:  Ctrl+C, Enter"
-#: hiddifypanel/templates/master.html:233
-#: hiddifypanel/templates/master.html:236
+#: hiddifypanel/templates/master.html:235
+#: hiddifypanel/templates/master.html:238
 msgid "user.home.link.manual-copy"
 msgstr "Copy to Clipboard:  Ctrl+C, Enter"
 
-#: hiddifypanel/templates/master.html:289
+#: hiddifypanel/templates/master.html:291
 msgid "Install"
 msgstr "Install"
 
 # | msgid "Hiddify Panel Installation"
-#: hiddifypanel/templates/master.html:369
+#: hiddifypanel/templates/master.html:371
 msgid "Install Hiddify Application"
 msgstr "Hiddify Panel Installation"
 
 # | msgid "Click %(install)s to save the user page."
-#: hiddifypanel/templates/master.html:371
+#: hiddifypanel/templates/master.html:373
 #, python-format
 msgid "Please click on %(install)s to save the user page."
 msgstr "Click %(install)s to save the user page."
@@ -3423,6 +3437,3 @@ msgstr "Actions"
 # | msgid "CDN Make It Incorrect"
 #~ msgid "CDN make it incorrect"
 #~ msgstr "CDN Make It Incorrect"
-
-#~ msgid "Are you sure you want to do this action?"
-#~ msgstr "Are you sure you want to do this action?"
