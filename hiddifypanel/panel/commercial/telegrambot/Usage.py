@@ -12,8 +12,9 @@ def send_usage(message):
 def send_welcome(message):
     text = message.text
     uuid = text.split()[-1] if len(text.split()) > 0 else None
-    if uuid:
-        user=User.query.filter(User.uuid==uuid).first()
+    user=User.query.filter(User.uuid==uuid).first()
+    if user:
+
         user.telegram_id=message.chat.id
         bot.reply_to(message, get_usage_msg(uuid), reply_markup=user_keyboard(uuid))
     else:

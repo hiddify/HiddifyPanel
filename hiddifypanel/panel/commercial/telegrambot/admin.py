@@ -27,7 +27,9 @@ def start_admin(message):
     bot.reply_to(message,"Welcome to admin bot. Choose your action",reply_markup=admin_keyboard_main())
 
 def get_admin_by_tgid(message):
-    return Admin.query.filter(Admin.telegram_id==message.chat.id).first()
+    
+    tgid=message.chat.id
+    return AdminUser.query.filter(AdminUser.telegram_id==tgid).first()
 
 def admin_keyboard_main():
 
@@ -89,7 +91,7 @@ def admin_keyboard_domain(old_action):
     )        
 @bot.callback_query_handler(func=lambda call: call.data.startswith(f'create_package'))
 def create_package(call): # <- passes a CallbackQuery type object to your function
-    admin=get_admin_by_tgid(call)
+    admin=get_admin_by_tgid(call.message)
     if not (admin):
         return
     from . import Usage
