@@ -39,7 +39,8 @@ class DomainAdmin(AdminLTEModelView):
         mode=_("Direct mode means you want to use your server directly (for usual use), CDN means that you use your server on behind of a CDN provider."),
         cdn_ip=_("config.cdn_forced_host.description"),
         show_domains=_('You can select the configs with which domains show be shown in the user area. If you select all, automatically, all the new domains will be added for each users.'),
-        alias=_('The name shown in the configs for this domain.')
+        alias=_('The name shown in the configs for this domain.'),
+        sub_link_only=_('This can be used for giving your users a permanent non blockable links.')
     )
     
     # create_modal = True
@@ -54,13 +55,14 @@ class DomainAdmin(AdminLTEModelView):
             'validators': [Regexp(r"(((((25[0-5]|(2[0-4]|1\d|[1-9]|)\d).){3}(25[0-5]|(2[0-4]|1\d|[1-9]|)\d))|^([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,}))[ \t\n,;]*\w{3}[ \t\n,;]*)*", message=__("Invalid IP or domain"))]
         }
     }
-    column_list = ["domain", "mode","alias", "domain_ip", "cdn_ip"]
+    column_list = ["domain",'sub_link_only', "mode","alias", "domain_ip", "cdn_ip"]
     # column_editable_list=["domain"]
     # column_filters=["domain","mode"]
     # form_excluded_columns=['work_with']
     column_searchable_list = ["domain", "mode"]
     column_labels = {
         "domain": _("domain.domain"),
+        'sub_link_only': _('Only for sublink?'),
         "mode": _("domain.mode"),
         "cdn_ip": _("config.cdn_forced_host.label"),
         'domain_ip': _('domain.ip'),
@@ -68,7 +70,7 @@ class DomainAdmin(AdminLTEModelView):
         'alias':_('Alias')
     }
 
-    form_columns=['domain','alias','mode','cdn_ip','show_domains']
+    form_columns=['domain','sub_link_only','alias','mode','cdn_ip','show_domains']
 
     def _domain_admin_link(view, context, model, name):
         if model.mode==DomainType.fake:

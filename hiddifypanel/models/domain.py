@@ -41,6 +41,7 @@ class Domain(db.Model, SerializerMixin):
     child_id= db.Column(db.Integer, db.ForeignKey('child.id'),default=0)
     domain = db.Column(db.String(200), nullable=False, unique=True)
     alias = db.Column(db.String(200))
+    sub_link_only= db.Column(db.Boolean)
     mode = db.Column(db.Enum(DomainType), nullable=False)
     cdn_ip = db.Column(db.Text(2000), nullable=True)
     # show_all=db.Column(db.Boolean, nullable=True)
@@ -77,7 +78,7 @@ def get_domain(domain):
 
 def get_panel_domains():
     if hconfig(ConfigEnum.is_parent):
-        from hiddifypanel.commercial.parent_domain import ParentDomain
+        from .parent_domain import ParentDomain
         return ParentDomain.query.all()    
     return Domain.query.filter(Domain.mode!=DomainType.fake).all()
 

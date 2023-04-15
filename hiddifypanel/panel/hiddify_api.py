@@ -10,21 +10,16 @@ def sync_child_to_parent(parent_link=None):
 
 def add_user_usage_to_parent(dbusers_bytes,parent_link=None):
     uuid_bytes={u.uuid:b for u,b in dbusers_bytes.items()}
-    new_user_data=send_to_panel(parent_link+"api/v1/add_usage/",'PUT',uuid_bytes)
-    
-
     uuid_status={u.uuid:is_user_active(u) for u in dbusers_bytes}
+    new_user_data=send_to_panel(parent_link+"api/v1/add_usage/",'PUT',uuid_bytes)
     hiddify.set_db_from_json(new_user_data,override_child=True,override_child_id=None,remove_users=True)
     have_change=False
     for u in User.query.all():
-        if u not in uuid_status:
-            have_change=True
-            break
-        if is_user_active(u)!=uuid_status[u]:
-            have_change=True
-            break
-    if have_change:
-        hiddify.quick_apply_users()
+        if is_user_active(u) and uuid_status.get(u.uuid,False):
+            xray_api.add_client(u.uuid)
+        elif not is_user_active(u) and uuid_status.get(u.uuid,True):
+            xray_api.remove_client(u.uuid)
+    
         
 
     

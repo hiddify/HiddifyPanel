@@ -25,6 +25,7 @@ def create_app(cli=False,**config):
     app.jinja_env.line_statement_prefix = '%'
     app.is_cli=cli
     flask_bootstrap.Bootstrap4(app)
+    
     hiddifypanel.panel.database.init_app(app)
     with app.app_context():
         init_db()
@@ -33,8 +34,8 @@ def create_app(cli=False,**config):
     hiddifypanel.panel.common.init_app(app)
     hiddifypanel.panel.admin.init_app(app)
     hiddifypanel.panel.user.init_app(app)
-    hiddifypanel.panel.cli.init_app(app)
     hiddifypanel.panel.commercial.init_app(app)
+    hiddifypanel.panel.cli.init_app(app)
 
     app.config.update(config)  # Override with passed config
     app.config['WTF_CSRF_CHECK_DEFAULT'] = False

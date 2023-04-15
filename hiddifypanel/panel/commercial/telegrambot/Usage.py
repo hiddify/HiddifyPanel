@@ -5,8 +5,10 @@ from hiddifypanel.models import  *
 from . import bot
 from hiddifypanel.panel.user.user import get_common_data
 
-@bot.message_handler(commands=['start'],func=lambda message: "admin" not in message.text)
 @bot.message_handler(func=lambda message: "admin" not in message.text and len(message.text)==36)
+def send_usage(message):
+    return send_welcome(message)
+@bot.message_handler(commands=['start'],func=lambda message: "admin" not in message.text)
 def send_welcome(message):
     text = message.text
     uuid = text.split()[-1] if len(text.split()) > 0 else None
@@ -41,7 +43,7 @@ def get_usage_msg(uuid):
         expire_rel = user_data['expire_rel']
         reset_day = user_data['reset_day']
 
-        domain=(ParentDomain if hconfig(ConfigEnum.is_parent) else Domain).query.first()
+        domain=get_panel_domains()[0]
         user_link=f"https://{domain.domain}/{hconfig(ConfigEnum.proxy_path)}/{user.uuid}/"
         msg = f"""{_('<a href="%(user_link)s"> %(user)s</a>',user_link=user_link ,user=user.name if user.name != "default" else "")}\n\n"""
          
@@ -64,8 +66,7 @@ def update_usage_callback(call):  # <- passes a CallbackQuery type object to you
     if uuid:
         try:
             new_text = get_usage_msg(uuid)
-            bot.edit_message_text(new_text, call.message.chat.id, call.message.message_id,
-                                  reply_markup=user_keyboard(uuid))
+            bot.edit_message_text(new_text, call.message.chat.id, call.message.message_id, reply_markup=user_keyboard(uuid))
             bot.answer_callback_query(call.id, text='Updated', show_alert=False, cache_time=1)
         except Exception as e:
             print(e)

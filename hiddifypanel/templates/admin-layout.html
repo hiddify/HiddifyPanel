@@ -9,7 +9,7 @@
 {% block nav_bar %}
 {% include "donation.html" %}
 <!-- Navbar -->
-<nav class="main-header hold-transition sidebar-mini-md navbar navbar-expand {{"navbar-dark" if hconfig(ConfigEnum.is_parent) or g.darkmode else "bg-white navbar-light"}} border-bottom">
+<nav class="main-header hold-transition sidebar-mini-md navbar navbar-expand {{"navbar-dark" if  g.darkmode else "bg-white navbar-light"}} border-bottom">
   <!-- Left navbar links -->
 
 
@@ -48,7 +48,7 @@
 
 
 <!-- Main Sidebar Container -->
-<aside id="main-sidebar" class="main-sidebar {{ "sidebar-light-info" if hconfig(ConfigEnum.is_parent) else "sidebar-dark-primary"}}  elevation-4">
+<aside id="main-sidebar" class="main-sidebar {{ "sidebar-dark-primary"}}  elevation-4">
   <!-- Brand Logo -->
   
   <a href="https://github.com/hiddify/hiddify-config/wiki" class="" style="text-align: center; color: white;display: block;">
@@ -80,9 +80,6 @@
                 {{ render_nav_item('flask.user.index_view', icon('solid','user','nav-icon')+_('admin.menu.user'),_use_li=True) }}
                 %endif
                 
-                 % if hconfig(ConfigEnum.is_parent)
-                  {{ render_nav_item('flask.parentdomain.index_view', icon('solid','arrow-down-up-lock','nav-icon')+_('admin.menu.domain'),_use_li=True) }}
-                 %endif
 
                  
                   
@@ -157,6 +154,11 @@
               % endif
             </div>
             <div class="nav-item" id="setting-sidebar">
+              
+              % if hconfig(ConfigEnum.is_parent)
+              {{ render_nav_item('flask.parentdomain.index_view', icon('solid','arrow-down-up-lock','nav-icon')+_('admin.menu.domain'),_use_li=True) }}
+             %endif
+             
               % if not hconfig(ConfigEnum.is_parent)
               
                  {{ render_nav_item('flask.domain.index_view', icon('solid','link','nav-icon')+_('admin.menu.domain'),_use_li=True) }}

@@ -13,8 +13,9 @@ import random
 import uuid
 import urllib
 import string
-
+from hiddifypanel import Events
 def init_db():
+    Events.db_prehook.notify()
     db.create_all()   
     
     try:
@@ -28,6 +29,7 @@ def init_db():
     add_column(User.package_days)
     add_column(Child.unique_id)
     add_column(Domain.alias)
+    add_column(Domain.sub_link_only)
     add_column(Domain.child_id)
     add_column(Proxy.child_id)
     add_column(BoolConfig.child_id)

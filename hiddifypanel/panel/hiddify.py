@@ -215,7 +215,7 @@ def check_connection_for_domain(domain):
 
 
 def get_user_link(uuid, domain, mode='',username=''):
-    is_cdn= domain.mode == DomainType.cdn
+    is_cdn= domain.mode == DomainType.cdn if type(domain)==Domain else False
     proxy_path = hconfig(ConfigEnum.proxy_path)
     res = ""
     if mode == "multi":
@@ -230,7 +230,8 @@ def get_user_link(uuid, domain, mode='',username=''):
     #     link = f"{link}new"
     text = domain.domain
     color_cls='info'
-    if domain.mode in [DomainType.cdn,DomainType.auto_cdn_ip]:
+    
+    if type(domain)==Domain and domain.mode in [DomainType.cdn,DomainType.auto_cdn_ip]:
         auto_cdn=(domain.mode==DomainType.auto_cdn_ip) or (domain.cdn_ip and "MTN" in domain.cdn_ip)
         color_cls="success" if auto_cdn else 'warning'
         text = f'<span class="badge badge-secondary" >{"Auto" if auto_cdn else "CDN"}</span> '+text

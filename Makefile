@@ -92,6 +92,8 @@ release:          ## Create a new tag for release.
 	@read -p "Version? (provide the next x.y.z semver) : " TAG	
 	@echo "$${TAG}" > hiddifypanel/VERSION
 	@echo "__version__='$${TAG}'" > hiddifypanel/VERSION.py
+	@echo "from datetime import datetime" >> hiddifypanel/VERSION.py
+	@echo "__release_date__= datetime.strptime('$$(date +%Y-%m-%d)','%Y-%m-%d')" >> hiddifypanel/VERSION.py
 	@git tag $${TAG}
 	@gitchangelog > HISTORY.md
 	@git tag -d $${TAG}

@@ -22,6 +22,7 @@ user_changed=Event('user_changed')
 domain_changed=Event('domain_changed')
 parentdomain_changed=Event('parentdomain_changed')
 admin_prehook=Event('admin_prehook')
+db_prehook=Event('db_prehook')
 
 
 db_init_event=Event('db_init')
