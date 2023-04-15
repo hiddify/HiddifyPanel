@@ -239,7 +239,7 @@ def get_user_link(uuid, domain, mode='',username=''):
     link_multi = f"{link}multi"
     # if mode == 'new':
     #     link = f"{link}new"
-    text = domain.domain
+    text = domain.alias or domain.domain
     color_cls='info'
     
     if type(domain)==Domain and domain.mode in [DomainType.cdn,DomainType.auto_cdn_ip]:
@@ -670,3 +670,13 @@ def get_folder_size(folder_path):
     except:
         pass
     return total_size
+
+def get_domain_btn_link(domain):
+        text = domain.alias or domain.domain
+        color_cls="info"
+        if domain.mode in [DomainType.cdn,DomainType.auto_cdn_ip]:
+            auto_cdn=(domain.mode==DomainType.auto_cdn_ip) or (domain.cdn_ip and "MTN" in domain.cdn_ip)
+            color_cls="success" if auto_cdn else 'warning'
+            text = f'<span class="badge badge-secondary" >{"Auto" if auto_cdn else "CDN"}</span> '+text
+        res = f"<a target='_blank' href='#' class='btn btn-xs btn-{color_cls} ltr' ><i class='fa-solid fa-arrow-up-right-from-square d-none'></i> {text}</a>"
+        return res

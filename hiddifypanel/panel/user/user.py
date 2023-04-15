@@ -158,7 +158,7 @@ def get_common_data(user_uuid,mode,no_domain=False,filter_domain=None):
             domains=Domain.query.all()
         elif mode =='new':
             # db_domain=Domain.query.filter(Domain.domain==domain).first()
-            domains=db_domain.show_domains or Domain.query.all()
+            domains=db_domain.show_domains or Domain.query.filter(Domain.sub_link_only!=True).all()
         else:
             
             domains=[db_domain]

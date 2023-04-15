@@ -47,7 +47,9 @@ class DomainAdmin(AdminLTEModelView):
     can_export = False
     form_widget_args={'show_domains':{'class':'form-control ltr'}}
     form_args = {
-        
+        'show_domains':{
+                'query_factory': lambda: Domain.query.filter(Domain.sub_link_only!=True),
+        },
         'domain': {
             'validators': [Regexp(r'^(\*\.)?([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})$', message=__("Should be a valid domain"))]
         },
@@ -55,7 +57,7 @@ class DomainAdmin(AdminLTEModelView):
             'validators': [Regexp(r"(((((25[0-5]|(2[0-4]|1\d|[1-9]|)\d).){3}(25[0-5]|(2[0-4]|1\d|[1-9]|)\d))|^([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,}))[ \t\n,;]*\w{3}[ \t\n,;]*)*", message=__("Invalid IP or domain"))]
         }
     }
-    column_list = ["domain",'sub_link_only', "mode","alias", "domain_ip", "cdn_ip"]
+    column_list = ["domain", "mode","alias", "domain_ip", "show_domains"]
     # column_editable_list=["domain"]
     # column_filters=["domain","mode"]
     # form_excluded_columns=['work_with']
@@ -70,7 +72,7 @@ class DomainAdmin(AdminLTEModelView):
         'alias':_('Alias')
     }
 
-    form_columns=['domain','sub_link_only','alias','mode','cdn_ip','show_domains']
+    form_columns=['domain','alias','mode','cdn_ip','sub_link_only','show_domains']
 
     def _domain_admin_link(view, context, model, name):
         if model.mode==DomainType.fake:
@@ -87,10 +89,20 @@ class DomainAdmin(AdminLTEModelView):
             badge_type = 'warning'
         else:
             badge_type = 'danger'
-        return Markup(f'<span class="badge badge-{badge_type}">{dip}</span>')
+        res=f'<span class="badge badge-{badge_type}">{dip}</span>'
+        if model.sub_link_only:
+            res+=f'<span class="badge badge-success">{_("SubLink")}</span>'
+        return Markup(res)
+    def _show_domains_formater(view, context, model, name):
+        if not len(model.show_domains):
+            return _("All")
+        else:
+            return Markup(" ".join([hiddify.get_domain_btn_link(d) for d in model.show_domains]))
+    
     column_formatters = {
         'domain_ip': _domain_ip,
-        'domain': _domain_admin_link
+        'domain': _domain_admin_link,
+        'show_domains': _show_domains_formater
     }
 
     def search_placeholder(self):
