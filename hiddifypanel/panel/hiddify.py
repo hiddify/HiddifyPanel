@@ -8,7 +8,7 @@ import urllib
 from hiddifypanel.models import *
 from hiddifypanel.panel.database import db
 import datetime
-from flask import jsonify, g, url_for, Markup
+from flask import jsonify, g, url_for, Markup,abort
 from wtforms.validators import ValidationError
 from flask import flash as flask_flash
 to_gig_d = 1000*1000*1000
@@ -34,7 +34,8 @@ def add_temporary_access():
 
 def get_admin_path():
     proxy_path = hconfig(ConfigEnum.proxy_path)
-    admin_secret = hconfig(ConfigEnum.admin_secret)
+        
+    admin_secret=g.admin.uuid or get_super_admin_secret()
     return (f"/{proxy_path}/{admin_secret}/admin/")
 
 
@@ -58,12 +59,20 @@ def auth(function):
     return wrapper
 
 
+def super_admin(function):
+    def wrapper(*args, **kwargs):
+        if g.admin.mode not in [AdminMode.super_admin]:
+            abort(403,__("Access Denied"))
+            return jsonify({"error": "auth failed"})
+
+        return function(*args,**kwargs)
+
+    return wrapper
 def admin(function):
     def wrapper(*args, **kwargs):
-        if g.user_uuid == None:
+        if g.admin.mode not in [AdminMode.admin,AdminMode.super_admin]:
+            abort(_("Access Denied"),403)
             return jsonify({"error": "auth failed"})
-        if not g.is_admin:
-            return jsonify({"error": "invalid admin"})
 
         return function()
 
@@ -225,6 +234,8 @@ def get_user_link(uuid, domain, mode='',username=''):
         d=d.replace("*",get_random_string(5,15))
 
     link = f"https://{d}/{proxy_path}/{uuid}/#{username}"
+    if mode=="admin":
+        link = f"https://{d}/{proxy_path}/{uuid}/admin/#{username}"
     link_multi = f"{link}multi"
     # if mode == 'new':
     #     link = f"{link}new"

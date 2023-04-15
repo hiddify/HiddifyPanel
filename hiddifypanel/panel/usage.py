@@ -39,6 +39,7 @@ def add_users_usage(dbusers_bytes):
     if not hconfig(ConfigEnum.is_parent) and hconfig(ConfigEnum.parent_panel):
         from hiddifypanel.panel import hiddify_api
         hiddify_api.add_user_usage_to_parent(dbusers_bytes);
+    
     res={}
     have_change=False
     before_enabled_users=xray_api.get_enabled_users()
@@ -58,6 +59,7 @@ def add_users_usage(dbusers_bytes):
 
         if before_enabled_users[user.uuid]==0  and is_user_active(user):
                 xray_api.add_client(user.uuid)
+                send_bot_message(user)
                 have_change=True
         if type(usage_bytes) !=int or usage_bytes==0:
             res[user.uuid]="No usage" 
@@ -83,3 +85,15 @@ def add_users_usage(dbusers_bytes):
 
 
 
+def send_bot_message(user):
+    if not (hconfig(ConfigEnum.telegram_bot_token) and not hconfig(ConfigEnum.parent_panel)):
+        return
+    if not user.telegram_id:
+        return
+    from hiddifypanel.panel.commercial.telegrambot import bot,Usage
+    try:
+        msg=Usage.get_usage_msg(user.uuid)
+        msg=_("User activated!") if is_user_active(user) else _("Package ended!")+"\n"+msg
+        bot.send_message(user.telegram_id, msg, reply_markup=Usage.user_keyboard(uuid))
+    except:
+        pass

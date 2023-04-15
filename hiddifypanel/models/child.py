@@ -24,3 +24,4 @@ class Child(db.Model, SerializerMixin):
     proxies = db.relationship('Proxy', cascade="all,delete",backref='child')
     boolconfigs = db.relationship('BoolConfig', cascade="all,delete",backref='child')
     strconfigs = db.relationship('StrConfig', cascade="all,delete",backref='child')
+    dailyusages = db.relationship('DailyUsage', cascade="all,delete",backref='child')

@@ -11,7 +11,7 @@ from hiddifypanel.panel import hiddify,hiddify_api
 
 
 import re
-from flask import render_template,current_app, Markup,url_for
+from flask import render_template,current_app, Markup,url_for,abort
 from hiddifypanel.panel.hiddify import flash
 from hiddifypanel.models import  User,Domain,DomainType,StrConfig,ConfigEnum,get_hconfigs
 from hiddifypanel.panel.database import db
@@ -21,10 +21,10 @@ from flask_classful import FlaskView
 from hiddifypanel.panel.hiddify import flash
 class ProxyAdmin(FlaskView):
 
+    @hiddify.super_admin
     def index(self):
-
         return render_template('proxy.html',global_config_form=get_global_config_form(), detailed_config_form=get_all_proxy_form() )
-
+    @hiddify.super_admin
     def post(self):
         global_config_form=get_global_config_form()
         all_proxy_form=get_all_proxy_form()

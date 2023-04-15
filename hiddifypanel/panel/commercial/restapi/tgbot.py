@@ -4,7 +4,7 @@ from flask import abort, request
 from flask_restful import Resource
 
 from hiddifypanel.models import *
-
+from hiddifypanel import Events
 logger = telebot.logger
 
 
@@ -16,7 +16,8 @@ class ExceptionHandler(telebot.ExceptionHandler):
 bot = telebot.TeleBot("", parse_mode="HTML", threaded=False, exception_handler=ExceptionHandler())
 bot.username=''
 
-def register_bot():
+
+def register_bot(set_hook=False):
     try:
         global bot
         token = hconfig(ConfigEnum.telegram_bot_token)
@@ -27,10 +28,11 @@ def register_bot():
             except:
                 pass
             # bot.remove_webhook()
-            time.sleep(0.1)
+            # time.sleep(0.1)
             domain = get_panel_domains()[0].domain
             proxy_path = hconfig(ConfigEnum.proxy_path)
-            user_secret = hconfig(ConfigEnum.admin_secret)
+
+            user_secret = get_super_admin_secret()
             bot.set_webhook(url=f"https://{domain}/{proxy_path}/{user_secret}/api/v1/tgbot/")
     except Exception as e:
         print(e)
@@ -38,8 +40,16 @@ def register_bot():
         traceback.print_stack()
 
     
-
-
+def init_app(app):
+    with app.app_context():
+        global bot
+        token = hconfig(ConfigEnum.telegram_bot_token)
+        if token:
+            bot.token = token
+            try:
+                bot.username=bot.get_me().username
+            except:
+                pass
 class TGBotResource(Resource):
     def post(self):
         try:

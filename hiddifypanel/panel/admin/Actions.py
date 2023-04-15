@@ -19,9 +19,11 @@ from flask_classful import FlaskView,route
 
 class Actions(FlaskView):
 
+    @hiddify.super_admin
     def index(self):
         return render_template('index.html')
     
+    @hiddify.super_admin
     def reverselog(self,logfile):
         if logfile==None:return self.viewlogs()
         config_dir=current_app.config['HIDDIFY_CONFIG_PATH']
@@ -41,7 +43,7 @@ class Actions(FlaskView):
             
             
 
-    
+    @hiddify.super_admin
     def viewlogs(self):
         config_dir=current_app.config['HIDDIFY_CONFIG_PATH']
         res=[]
@@ -50,18 +52,26 @@ class Actions(FlaskView):
         return Markup("<br>".join(res))
         
     @route('apply_configs', methods=['POST'])
+    @hiddify.super_admin
     def apply_configs(self):
         return self.reinstall(False)
 
     @route('reset', methods=['POST'])
     def reset(self):
+        return self.reset2()
+    
+    @hiddify.super_admin
+    def reset2(self):
         status=self.status()
         flash(_("rebooting system may takes time please wait"),'info')
-        subprocess.Popen(f"reboot",start_new_session=True)
+        subprocess.Popen(f"echo 'reboot'|at now + 3s ",start_new_session=True)
         return status
     
     @route('reinstall', methods=['POST'])
     def reinstall(self,complete_install=True,domain_changed=False):
+        return self.reinstall2(complete_install,domain_changed)
+    @hiddify.super_admin
+    def reinstall2(self,complete_install=True,domain_changed=False):
         if int(hconfig(ConfigEnum.db_version))<9:
             return ("Please update your panel before this action.")
         if hconfig(ConfigEnum.parent_panel):
@@ -89,7 +99,13 @@ class Actions(FlaskView):
         # os.system(f'cd {config_dir};{env} ./install.sh &')
         # rc = subprocess.call(f"cd {config_dir};./{file} & disown",shell=True)
         
-        admin_secret=hconfig(ConfigEnum.admin_secret)
+        admin=Admin.query.filter(Admin.mode==AdminMode.super_admin).first()
+        if not admin:
+            db.session.add(Admin(mode=AdminMode.super_admin))
+            db.session.commit()
+            admin=Admin.query.filter(Admin.mode==AdminMode.super_admin).first()
+            
+        admin_secret=admin.uuid
         proxy_path=hconfig(ConfigEnum.proxy_path)
         admin_links=f"<h5 >{_('Admin Links')}</h5><ul>"
         admin_links+=f"<li><span class='badge badge-danger'>{_('Not Secure')}</span>: <a class='badge ltr share-link' href='http://{server_ip}/{proxy_path}/{admin_secret}/admin/'>http://{server_ip}/{proxy_path}/{admin_secret}/admin/</a></li>"
@@ -113,7 +129,7 @@ class Actions(FlaskView):
         return resp
 
 
-    
+    @hiddify.super_admin
     def status(self):
         # hiddify.add_temporary_access()
         config=current_app.config
@@ -122,7 +138,7 @@ class Actions(FlaskView):
         # os.system(f'cd {config_dir};{env} ./install.sh &')
         # rc = subprocess.call(f"cd {config_dir};./{file} & disown",shell=True)
         from urllib.parse import urlparse
-        admin_secret=hconfig(ConfigEnum.admin_secret)
+
         o = urlparse(request.base_url)
         domain=o.hostname
         subprocess.Popen(f"{config['HIDDIFY_CONFIG_PATH']}/status.sh",cwd=f"{config['HIDDIFY_CONFIG_PATH']}",start_new_session=True)
@@ -135,8 +151,13 @@ class Actions(FlaskView):
 
 
 
+    # @hiddify.super_admin
     @route('update', methods=['POST'])
     def update(self):
+        return self.update2()
+
+    @hiddify.super_admin
+    def update2(self):
         hiddify.add_temporary_access()
         config=current_app.config
         cwd = os.getcwd()
@@ -157,7 +178,7 @@ class Actions(FlaskView):
         
 
 
-
+    @hiddify.super_admin
     def update_usage(self):
         
         

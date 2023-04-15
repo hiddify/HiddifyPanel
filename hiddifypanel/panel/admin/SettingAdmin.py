@@ -12,7 +12,7 @@ from flask_admin.base import expose
 
 
 import re
-from flask import render_template,current_app, Markup,url_for
+from flask import render_template,current_app, Markup,url_for,abort
 from hiddifypanel.panel.hiddify import flash
 from hiddifypanel.models import  *
 from hiddifypanel.panel.database import db
@@ -23,12 +23,12 @@ from hiddifypanel.panel import hiddify,hiddify_api,custom_widgets
 class SettingAdmin(FlaskView):
     
 
-
+    @hiddify.super_admin
     def index(self):
         form=get_config_form()
         return render_template('config.html',form=form)
 
-
+    @hiddify.super_admin
     def post(self):
         form=get_config_form()
         reset_action=None

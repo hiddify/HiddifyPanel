@@ -11,12 +11,16 @@ from hiddifypanel.panel.hiddify import flash
 import hiddifypanel
 class Dashboard(FlaskView):
     def get_data(self):
+        admin_id=request.args.get("admin_id") or g.admin.id if g.admin.mode!=AdminMode.super_admin else None
+        user_query=User.query
+        if admin_id:
+            user_query=user_query.filter(User.added_by==admin_id)
         h24=datetime.datetime.now()-datetime.timedelta(days=1)
         return jsonify(dict(
-        onlines=User.query.filter(User.last_online>h24).count(),
-        total_users=User.query.count(),
+        onlines=user_query.filter(User.last_online>h24).count(),
+        total_users=user_query.count(),
         stats={'system':hiddify.system_stats(), 'top5':hiddify.top_processes()},
-        usage_history=get_daily_usage_stats()
+        usage_history=get_daily_usage_stats(admin_id)
         ))
         
     def index(self):
@@ -25,7 +29,11 @@ class Dashboard(FlaskView):
         bot=None
         # if hconfig(ConfigEnum.license):
         childs=None
-        
+        admin_id=request.args.get("admin_id") or g.admin.id if g.admin.mode!=AdminMode.super_admin else None
+        child_id=request.args.get("child_id") or None
+        user_query=User.query
+        if admin_id:
+            user_query=user_query.filter(User.added_by==admin_id)
         if hconfig(ConfigEnum.is_parent):
             childs=Child.query.filter(Child.id!=0).all()
             for c in childs:
@@ -59,11 +67,11 @@ class Dashboard(FlaskView):
     # except:
     #     flash((_('Error!!!')),'info')
         h24=datetime.datetime.now()-datetime.timedelta(days=1)
-        onlines=User.query.filter(User.last_online>h24).count()
-        total=User.query.count()
+        onlines=user_query.filter(User.last_online>h24).count()
+        total=user_query.count()
         
         stats={'system':hiddify.system_stats(), 'top5':hiddify.top_processes()}
-        return render_template('index.html',onlines=onlines,total_users=total,bot=bot,stats=stats,usage_history=get_daily_usage_stats(),childs=childs)
+        return render_template('index.html',onlines=onlines,total_users=total,bot=bot,stats=stats,usage_history=get_daily_usage_stats(admin_id,child_id),childs=childs)
 
     @route('remove_child', methods=['POST'])
     def remove_child(self):

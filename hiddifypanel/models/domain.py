@@ -13,6 +13,7 @@ from sqlalchemy.orm import backref
 from flask import Markup
 from dateutil import relativedelta
 from hiddifypanel.panel.database import db
+
 import enum
 import datetime
 import uuid as uuid_mod
@@ -79,8 +80,17 @@ def get_domain(domain):
 def get_panel_domains():
     if hconfig(ConfigEnum.is_parent):
         from .parent_domain import ParentDomain
-        return ParentDomain.query.all()    
-    return Domain.query.filter(Domain.mode!=DomainType.fake).all()
+        domains= ParentDomain.query.all()    
+    else:
+        domains=Domain.query.filter(Domain.mode!=DomainType.fake).all()
+
+    if len(domains)==0:
+        if request:
+            domains=[Domain(domain=request.host)]
+        else:
+            from hiddifypanel.panel import hiddify
+            domains=[Domain(domain=hiddify.get_ip(4))]
+    return domains
 
 def get_proxy_domains(domain):
     if hconfig(ConfigEnum.is_parent):

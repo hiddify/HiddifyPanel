@@ -11,7 +11,10 @@ def send_welcome(message):
     #print("dddd",text)
     uuid = text.split()[1].split("_")[1] if len(text.split()) > 1 else None
     if uuid:
-        if uuid==hconfig(ConfigEnum.admin_secret):
+        admin_user=get_admin_user_db(uuid)
+        if admin_user:
+            admin_user.telegram_id=message.chat.id
+            db.session.commit()
             start_admin(message)
             return
     bot.reply_to(message, "error")
@@ -23,16 +26,15 @@ def start_admin(message):
 
     bot.reply_to(message,"Welcome to admin bot. Choose your action",reply_markup=admin_keyboard_main())
 
-def admin_hash():
-    return hash(hconfig(ConfigEnum.admin_secret))%100000
-    
+def get_admin_by_tgid(message):
+    return Admin.query.filter(Admin.telegram_id==message.chat.id).first()
 
 def admin_keyboard_main():
 
     return types.InlineKeyboardMarkup(keyboard=[[
                 types.InlineKeyboardButton(
                     text="Create Package",
-                    callback_data=f'{admin_hash()}create_package'
+                    callback_data=f'create_package'
                 )
             ]
         ]
@@ -73,8 +75,23 @@ def admin_keyboard_count(old_action):
         [keyboard(i*50) for i in range(1,5)]
         ]
     )        
-@bot.callback_query_handler(func=lambda call: call.data.startswith(f'{admin_hash()}create_package'))
+
+def admin_keyboard_domain(old_action):
+    def keyboard(domain):
+        return types.InlineKeyboardButton(
+                    text=f"{domain.alias or domain.domain}",
+                    callback_data=f"{old_action} {domain.id}"
+                )
+    return types.InlineKeyboardMarkup(keyboard=[
+        [keyboard(d)]
+        for d in get_panel_domains()
+        ]
+    )        
+@bot.callback_query_handler(func=lambda call: call.data.startswith(f'create_package'))
 def create_package(call): # <- passes a CallbackQuery type object to your function
+    admin=get_admin_by_tgid(call)
+    if not (admin):
+        return
     from . import Usage
     try:
         splt=call.data.split(" ")
@@ -91,18 +108,24 @@ def create_package(call): # <- passes a CallbackQuery type object to your functi
             bot.edit_message_text(new_text, call.message.chat.id, call.message.message_id,reply_markup=admin_keyboard_count(call.data))
             bot.answer_callback_query(call.id, text="Ok", show_alert=False,cache_time =1)
         elif len(splt)==4:
+            new_text="Domain? دامنه؟"
+            bot.edit_message_text(new_text, call.message.chat.id, call.message.message_id,reply_markup=admin_keyboard_domain(call.data))
+            bot.answer_callback_query(call.id, text="Ok", show_alert=False,cache_time =1)
+        elif len(splt)==5:
             gig=int(splt[1])
             days=int(splt[2])
             count=int(splt[3])
+            domain=int(splt[4])
             new_text="Wait... لطفا صبر کنید"
             bot.edit_message_text(new_text, call.message.chat.id, call.message.message_id,reply_markup=None)
-            domain=(ParentDomain if hconfig(ConfigEnum.is_parent) else Domain).query.first()
+            DT=(ParentDomain if hconfig(ConfigEnum.is_parent) else Domain)
+            domain=DT.query.filter(DT.id==domain).first()
             for i in range(1,count+1):
-                user=User(package_days=days,usage_limit_GB=gig,name=f"auto {i} {datetime.date.today()}")
+                user=User(package_days=days,usage_limit_GB=gig,name=f"auto {i} {datetime.date.today()}",added_by=admin.id)
                 db.session.add(user)
                 db.session.commit()    
                 # bot.send_message(call.message.chat.id,f"Days: {days}     Limit: {gig}GB     #{i}\n\n https://{domain.domain}/{hconfig(ConfigEnum.proxy_path)}/{user.uuid}/",reply_markup=Usage.user_keyboard(user.uuid))
-                bot.send_message(call.message.chat.id,Usage.get_usage_msg(user.uuid),reply_markup=Usage.user_keyboard(user.uuid))
+                bot.send_message(call.message.chat.id,Usage.get_usage_msg(user.uuid,domain),reply_markup=Usage.user_keyboard(user.uuid))
 
             # db.session.commit()
             new_text="Finished..."

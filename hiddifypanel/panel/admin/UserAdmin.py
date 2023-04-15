@@ -2,7 +2,7 @@ from flask_admin.contrib import sqla
 from hiddifypanel.panel.database import db
 import datetime
 from hiddifypanel.models import  *
-from flask import Markup,g
+from flask import Markup,g,request
 from wtforms.validators import Regexp,ValidationError
 import re,uuid
 from hiddifypanel import xray_api
@@ -18,16 +18,16 @@ from hiddifypanel.panel.hiddify import flash
 from wtforms.fields import StringField
 from flask_bootstrap import SwitchField
 class UserAdmin(AdminLTEModelView):
-    column_sortable_list=["name","current_usage_GB",'mode',"remaining_days","comment",'last_online',"uuid",'remaining_days']
+    column_sortable_list=["name","current_usage_GB",'mode',"remaining_days","comment",'last_online',"uuid",'remaining_days','admin']
     column_searchable_list=[("uuid"),"name"]
-    column_list = ["name","UserLinks","current_usage_GB","remaining_days","comment",'last_online','mode',"uuid"]
+    column_list = ["name","UserLinks","current_usage_GB","remaining_days","comment",'last_online','mode','admin',"uuid"]
     form_extra_fields = {
         'reset_days': SwitchField(_("Reset package days")),
         'reset_usage': SwitchField(_("Reset package usage")),
         'disable_user': SwitchField(_("Disable User"))
     }
     list_template = 'model/user_list.html'    
-    form_excluded_columns=['monthly','last_online','expiry_time','last_reset_time','current_usage_GB','start_date']
+    form_excluded_columns=['monthly','telegram_id','last_online','expiry_time','last_reset_time','current_usage_GB','start_date']
     page_size=50
     # edit_modal=True
     # create_modal=True
@@ -63,6 +63,7 @@ class UserAdmin(AdminLTEModelView):
         "usage_limit_GB":_("user.usage_limit_GB"),
         "monthly":_("Reset every month"),
         "mode":_("Mode"),
+        "admin":_("Added by"),
         "current_usage_GB":_("user.current_usage_GB"),
         "start_date":_("Start Date"),
         "remaining_days":_("user.expiry_time"),
@@ -230,7 +231,8 @@ class UserAdmin(AdminLTEModelView):
         old_user=user_by_id(model.id)
         if old_user and old_user.uuid!=model.uuid:
             xray_api.remove_client(old_user.uuid)
-
+        if not model.added_by:
+            model.added_by=g.admin.id
         # model.expiry_time=datetime.date.today()+datetime.timedelta(days=model.expiry_time)
         
         
@@ -263,6 +265,7 @@ class UserAdmin(AdminLTEModelView):
             data=sorted(data,key=lambda p: p.remaining_days,reverse=sort_desc)
             res=count,data
         else:
+            
             res=super().get_list(page, sort_column, sort_desc, search, filters,*args, **kwargs)
         return res
 
@@ -280,3 +283,27 @@ class UserAdmin(AdminLTEModelView):
         count = query.count()
         data = query.all()
         return count, data
+
+
+
+        # Override get_query() to filter rows based on a specific condition
+    def get_query(self):
+        # Get the base query
+        query = super().get_query()
+
+        admin_id=request.args.get("admin_id") or g.admin.id if g.admin.mode==AdminMode.slave else None
+        if admin_id:
+            query = query.filter(User.added_by==admin_id)
+
+        return query
+
+    # Override get_count_query() to include the filter condition in the count query
+    def get_count_query(self):
+        # Get the base count query
+        count_query = super().get_count_query()
+
+        admin_id=request.args.get("admin_id") or g.admin.id if g.admin.mode==AdminMode.slave else None
+        if admin_id:
+            count_query = count_query.filter(User.added_by==admin_id)
+
+        return count_query

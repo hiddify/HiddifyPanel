@@ -143,7 +143,7 @@ class ConfigEnum(StrEnum):
             self.branding_site:{'category': ConfigCategory.branding,'show_in_parent':True,'commercial':True},
             self.branding_freetext:{'category': ConfigCategory.branding,'show_in_parent':True,'commercial':True},
             self.not_found:{'category': ConfigCategory.hidden},
-            self.admin_secret: {'category': ConfigCategory.admin,'show_in_parent':True,'commercial':True},
+            self.admin_secret: {'category': ConfigCategory.hidden,'show_in_parent':True,'commercial':True},
             
             self.tls_ports: {'category': ConfigCategory.tls,'apply_mode':'apply'},#tls
             self.http_ports: {'category': ConfigCategory.http,'apply_mode':'apply'},#http

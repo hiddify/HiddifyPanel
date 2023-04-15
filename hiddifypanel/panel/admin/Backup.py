@@ -27,10 +27,12 @@ from flask_classful import FlaskView,route
 
 class Backup(FlaskView):
 
+    @hiddify.super_admin
     def index(self):
         return render_template('backup.html',restore_form=get_restore_form())
     
-    @route("/backupfile")
+    # @route("/backupfile")
+    @hiddify.super_admin
     def backupfile(self):
         response= jsonify(
             hiddify.dump_db_to_dict()            
@@ -41,7 +43,7 @@ class Backup(FlaskView):
 
         return response
 
-
+    @hiddify.super_admin
     def post(self):
         restore_form=get_restore_form()
         

@@ -13,6 +13,8 @@ def send_welcome(message):
     text = message.text
     uuid = text.split()[-1] if len(text.split()) > 0 else None
     if uuid:
+        user=User.query.filter(User.uuid==uuid).first()
+        user.telegram_id=message.chat.id
         bot.reply_to(message, get_usage_msg(uuid), reply_markup=user_keyboard(uuid))
     else:
         bot.reply_to(message,
@@ -34,7 +36,7 @@ def user_keyboard(uuid):
     )
 
 
-def get_usage_msg(uuid):
+def get_usage_msg(uuid,domain=None):
     with app.app_context():
         
         user_data = get_common_data(uuid, 'multi')
@@ -43,7 +45,7 @@ def get_usage_msg(uuid):
         expire_rel = user_data['expire_rel']
         reset_day = user_data['reset_day']
 
-        domain=get_panel_domains()[0]
+        domain=domain or get_panel_domains()[0]
         user_link=f"https://{domain.domain}/{hconfig(ConfigEnum.proxy_path)}/{user.uuid}/"
         msg = f"""{_('<a href="%(user_link)s"> %(user)s</a>',user_link=user_link ,user=user.name if user.name != "default" else "")}\n\n"""
          

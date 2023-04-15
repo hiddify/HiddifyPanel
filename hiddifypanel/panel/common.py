@@ -81,7 +81,8 @@ def init_app(app):
         except:
             # raise PermissionError("Invalid secret")
             abort(400, 'invalid user')
-        g.is_admin = g.user_uuid == uuid.UUID(hconfig(ConfigEnum.admin_secret))
+        g.admin = get_admin_user_db(tmp_secret)
+        g.is_admin=g.admin is not None
         bare_path=request.path.replace(g.proxy_path,"").replace(tmp_secret,"").lower()
         if not g.is_admin:
             g.user = User.query.filter(User.uuid == f'{g.user_uuid}').first()

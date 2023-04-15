@@ -8,7 +8,7 @@ from .DomainAdmin import DomainAdmin
 from .ConfigAdmin import ConfigAdmin
 from .commercial_info import CommercialInfo
 from .ProxyAdmin import ProxyAdmin
-
+from .AdminstratorAdmin import AdminstratorAdmin
 from .Actions import Actions
 from .Backup import Backup
 from .QuickSetup import QuickSetup
@@ -52,6 +52,7 @@ def init_app(app):
     
     flaskadmin.add_view(UserAdmin(User, db.session))
     flaskadmin.add_view(DomainAdmin(Domain, db.session))
+    flaskadmin.add_view(AdminstratorAdmin(AdminUser, db.session))
     
     
     

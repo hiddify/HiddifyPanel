@@ -24,8 +24,16 @@ def backup():
     dbdict=hiddify.dump_db_to_dict()
     import json,os
     os.makedirs('backup',exist_ok=True)
-    with open(f'backup/{datetime.datetime.now().strftime("%Y_%m_%d__%H_%M_%S")}.json','w') as fp:
+    dst=f'backup/{datetime.datetime.now().strftime("%Y_%m_%d__%H_%M_%S")}.json'
+    with open(dst,'w') as fp:
         json.dump(dbdict, fp,indent=4, sort_keys=True, default=str)
+
+    if hconfig(ConfigEnum.telegram_bot_token):
+        for admin in AdminUser.query.filter(AdminUser.mode==AdminMode.super_admin,AdminUser.telegram_id!=None).all():
+            from hiddifypanel.panel.commercial.telegrambot import bot
+            with open(dst, 'rb') as document:
+                bot.send_document(admin.telegram_id, document,visible_file_name=dst.replace("backup/", ""),caption="Backup \n"+admin_links())
+
 
 
 
@@ -60,7 +68,8 @@ def test():
 
 def admin_links():
         proxy_path=hconfig(ConfigEnum.proxy_path)
-        admin_secret=hconfig(ConfigEnum.admin_secret)
+        
+        admin_secret=get_super_admin_secret()
         server_ip=hiddify.get_ip(4)
         admin_links=f"Not Secure:\n   http://{server_ip}/{proxy_path}/{admin_secret}/admin/\n"
         domains=get_panel_domains()
@@ -70,9 +79,16 @@ def admin_links():
             admin_links+=f"   https://{d.domain}/{proxy_path}/{admin_secret}/admin/\n"
 
         print(admin_links)
+        return admin_links
 def admin_path():
         proxy_path=hconfig(ConfigEnum.proxy_path)
-        admin_secret=hconfig(ConfigEnum.admin_secret)        
+        admin=Admin.query.filter(Admin.mode==AdminMode.super_admin).first()
+        if not admin:
+            db.session.add(Admin(mode=AdminMode.super_admin))
+            db.session.commit()
+            admin=Admin.query.filter(Admin.mode==AdminMode.super_admin).first()
+            
+        admin_secret=admin.uuid
         print(f"/{proxy_path}/{admin_secret}/admin/")
 
 def init_app(app):

@@ -27,13 +27,17 @@ def init_db():
         add_column(ParentDomain.alias)
     add_column(User.start_date)
     add_column(User.package_days)
+    add_column(User.telegram_id)
     add_column(Child.unique_id)
     add_column(Domain.alias)
     add_column(Domain.sub_link_only)
     add_column(Domain.child_id)
     add_column(Proxy.child_id)
+    add_column(User.added_by)
     add_column(BoolConfig.child_id)
     add_column(StrConfig.child_id)
+    add_column(DailyUsage.admin_id)
+    add_column(DailyUsage.child_id)
 
     if len(Domain.query.all())!=0 and BoolConfig.query.count()==0:
         db.engine.execute(f'DROP TABLE bool_config')
@@ -48,6 +52,9 @@ def init_db():
     except:
         pass
     try:
+        db.engine.execute(f'update dailyusage set child_id=0 where child_id is NULL')
+        db.engine.execute(f'update dailyusage set admin_id=1 where admin_id is NULL')
+        db.engine.execute(f'update user set added_by=1 where added_by is NULL')
         db.engine.execute(f'update str_config set child_id=0 where child_id is NULL')
         db.engine.execute(f'update bool_config set child_id=0 where child_id is NULL')
         db.engine.execute(f'update domain set child_id=0 where child_id is NULL')
@@ -85,6 +92,10 @@ def init_db():
     db.session.commit()
     return BoolConfig.query.all()
 
+
+def _v28():
+    # add_config_if_not_exist(ConfigEnum.cloudflare, "")
+    db.session.add(AdminUser(id=1,uuid=hconfig(ConfigEnum.admin_secret),name="FirstAdmin",mode=AdminMode.super_admin,comment=""))
 def _v27():
     # add_config_if_not_exist(ConfigEnum.cloudflare, "")
     set_hconfig(ConfigEnum.netdata, False)
