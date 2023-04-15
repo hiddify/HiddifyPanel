@@ -1,7 +1,7 @@
 DI=$( dirname -- "$0"; )
 
 mv hiddifypanel/VERSION VERSION
-pyarmor gen -r -O . -e 60 --assert-call hiddifypanel
+pyarmor gen -r -O . -e 60 --assert-call hiddifypanel || exit(1)
 mv VERSION hiddifypanel/VERSION 
 files=$(find . -name '*.py')
 for f in  $files ;do 
