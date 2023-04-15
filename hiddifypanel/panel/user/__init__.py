@@ -4,7 +4,7 @@ from hiddifypanel.panel.database import db
 # from .resources import ProductItemResource, ProductResource
 from .user import *
 bp = Blueprint("user2", __name__, url_prefix="/<proxy_path>/<user_secret>/",template_folder="templates")
-
+from . import link_maker
 
 from flask import send_from_directory
 from .user import UserView

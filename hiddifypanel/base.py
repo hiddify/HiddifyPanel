@@ -80,10 +80,10 @@ def create_app_wsgi():
     return app
 
 
-def create_cli_app():
-    # workaround for Flask issue
-    # that doesn't allow **config
-    # to be passed to create_app
-    # https://github.com/pallets/flask/issues/4170
-    app = create_app(cli=True)
-    return app
+# def create_cli_app():
+#     # workaround for Flask issue
+#     # that doesn't allow **config
+#     # to be passed to create_app
+#     # https://github.com/pallets/flask/issues/4170
+#     app = create_app(cli=True)
+#     return app
