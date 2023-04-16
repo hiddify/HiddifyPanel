@@ -75,7 +75,7 @@ def admin(function):
             abort(_("Access Denied"),403)
             return jsonify({"error": "auth failed"})
 
-        return function()
+        return function(*args, **kwargs)
 
     return wrapper
 

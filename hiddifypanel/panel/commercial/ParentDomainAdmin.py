@@ -121,3 +121,6 @@ class ParentDomainAdmin(AdminLTEModelView):
         if len(ParentDomain.query.all()) <= 1:
             raise ValidationError(f"at least one domain should exist")
         hiddify.flash_config_success(restart_mode='apply', domain_changed=True)
+
+    def is_accessible(self):
+        return g.admin.mode in [AdminMode.admin,AdminMode.super_admin]

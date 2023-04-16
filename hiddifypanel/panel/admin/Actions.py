@@ -99,13 +99,7 @@ class Actions(FlaskView):
         # os.system(f'cd {config_dir};{env} ./install.sh &')
         # rc = subprocess.call(f"cd {config_dir};./{file} & disown",shell=True)
         
-        admin=Admin.query.filter(Admin.mode==AdminMode.super_admin).first()
-        if not admin:
-            db.session.add(Admin(mode=AdminMode.super_admin))
-            db.session.commit()
-            admin=Admin.query.filter(Admin.mode==AdminMode.super_admin).first()
-            
-        admin_secret=admin.uuid
+        admin_secret=get_super_admin_secret()
         proxy_path=hconfig(ConfigEnum.proxy_path)
         admin_links=f"<h5 >{_('Admin Links')}</h5><ul>"
         admin_links+=f"<li><span class='badge badge-danger'>{_('Not Secure')}</span>: <a class='badge ltr share-link' href='http://{server_ip}/{proxy_path}/{admin_secret}/admin/'>http://{server_ip}/{proxy_path}/{admin_secret}/admin/</a></li>"

@@ -21,10 +21,10 @@ from flask_classful import FlaskView
 from hiddifypanel.panel.hiddify import flash
 class ProxyAdmin(FlaskView):
 
-    @hiddify.super_admin
+    @hiddify.admin
     def index(self):
         return render_template('proxy.html',global_config_form=get_global_config_form(), detailed_config_form=get_all_proxy_form() )
-    @hiddify.super_admin
+    @hiddify.admin
     def post(self):
         global_config_form=get_global_config_form()
         all_proxy_form=get_all_proxy_form()

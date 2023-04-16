@@ -27,7 +27,7 @@ class UserAdmin(AdminLTEModelView):
         'disable_user': SwitchField(_("Disable User"))
     }
     list_template = 'model/user_list.html'    
-    form_excluded_columns=['monthly','telegram_id','last_online','expiry_time','last_reset_time','current_usage_GB','start_date']
+    form_excluded_columns=['monthly','telegram_id','last_online','expiry_time','last_reset_time','current_usage_GB','start_date','added_by','admin']
     page_size=50
     # edit_modal=True
     # create_modal=True
@@ -110,7 +110,7 @@ class UserAdmin(AdminLTEModelView):
         else:
             d=Domain.query.filter(Domain.mode!=DomainType.fake).first()
         if d:
-            link=f"<a target='_blank' href='https://{d.domain}/{proxy_path}/{model.uuid}/#{model.name}'>{model.name} <i class='fa-solid fa-arrow-up-right-from-square'></i></a>"
+            link=f"<a target='_blank' href='/{proxy_path}/{model.uuid}/#{model.name}'>{model.name} <i class='fa-solid fa-arrow-up-right-from-square'></i></a>"
             if model.is_active:
                 link= '<i class="fa-solid fa-circle-check text-success"></i> '+link
             else:
@@ -190,7 +190,7 @@ class UserAdmin(AdminLTEModelView):
     #     return g.is_admin
     def on_form_prefill(self, form, id=None):
         print("================",form._obj.start_date)
-        if form._obj.start_date is None:
+        if id==None or form._obj is None or form._obj.start_date is None:
             msg= _("Package not started yet.") 
             # form.reset['class']="d-none"
             delattr(form,'reset_days')
@@ -232,6 +232,7 @@ class UserAdmin(AdminLTEModelView):
         old_user=user_by_id(model.id)
         if old_user and old_user.uuid!=model.uuid:
             xray_api.remove_client(old_user.uuid)
+        
         if not model.added_by:
             model.added_by=g.admin.id
         # model.expiry_time=datetime.date.today()+datetime.timedelta(days=model.expiry_time)
