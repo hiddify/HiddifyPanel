@@ -11,6 +11,7 @@ import datetime
 from flask import jsonify, g, url_for, Markup,abort
 from wtforms.validators import ValidationError
 from flask import flash as flask_flash
+import random
 to_gig_d = 1000*1000*1000
 
 
@@ -142,3 +143,32 @@ def get_domain_btn_link(domain):
             text = f'<span class="badge badge-secondary" >{"Auto" if auto_cdn else "CDN"}</span> '+text
         res = f"<a target='_blank' href='#' class='btn btn-xs btn-{color_cls} ltr' ><i class='fa-solid fa-arrow-up-right-from-square d-none'></i> {text}</a>"
         return res
+
+
+def get_random_string(min_=10,max_=30):
+    # With combination of lower and upper case
+    length=random.randint(min_, max_)
+    characters = string.ascii_letters + string.digits
+    result_str = ''.join(random.choice(characters) for i in range(length))
+    return result_str
+
+def get_random_domains(count=1,retry=3):
+    try:
+        irurl="https://api.ooni.io/api/v1/measurements?probe_cc=IR&test_name=web_connectivity&anomaly=false&confirmed=false&failure=false&order_by=test_start_time&limit=1000"
+        # cnurl="https://api.ooni.io/api/v1/measurements?probe_cc=CN&test_name=web_connectivity&anomaly=false&confirmed=false&failure=false&order_by=test_start_time&limit=1000"
+        import requests
+        data_ir=requests.get(irurl).json()
+        # data_cn=requests.get(url).json()
+        from urllib.parse import urlparse
+        domains=[urlparse(d['input']).netloc.lower() for d in data_ir['results'] if d['scores']['blocking_country']==0.0]
+        domains=[d for d in domains if not d.endswith(".ir")]
+        
+        return random.sample(domains, count)
+    except Exception as e:
+        print('Error, getting random domains... ',e,'retrying...',retry)
+        if retry<=0:
+            defdomains=["fa.wikipedia.org",'en.wikipedia.org','wikipedia.org','yahoo.com','en.yahoo.com']
+            print('Error, using default domains')
+            return random.sample(defdomains, count)
+        return get_random_domains(count,retry-1)
+
