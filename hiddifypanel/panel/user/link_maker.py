@@ -4,7 +4,7 @@ from hiddifypanel.models import *
 import yaml
 import json
 from hiddifypanel.panel import hiddify
-
+import random
 
 def all_proxies(child_id=0):
     all_proxies = hiddify.get_available_proxies(child_id)
@@ -35,6 +35,8 @@ def pbase64(full_str):
 
 
 def make_proxy(proxy, domain_db, phttp=80, ptls=443):
+    def is_tls():
+        return 'tls' in l3 or "reality" in l3
     if type(phttp) == str:
         phttp = int(phttp) if phttp != "None" else None
     if type(ptls) == str:
@@ -47,7 +49,7 @@ def make_proxy(proxy, domain_db, phttp=80, ptls=443):
     hconfigs = get_hconfigs(child_id)
     port = 0
 
-    if l3 in [ProxyL3.tls, ProxyL3.tls_h2, ProxyL3.tls_h2_h1]:
+    if is_tls():
         port = ptls
     elif l3 == "http":
         port = phttp
@@ -69,7 +71,7 @@ def make_proxy(proxy, domain_db, phttp=80, ptls=443):
         return {'name': name, 'msg': "not cdn proxy  in cdn domain",'type':'debug', 'proto': proxy.proto}
 
     cdn_forced_host = domain_db.cdn_ip or domain_db.domain
-
+    alpn="h2" if proxy.l3 in ['tls_h2','reality'] else 'h2,http/1.1' if proxy.l3 == 'tls_h2_h1' else "http/1.1"
     base = {
         'name': name.replace(" ", "_"),
         'cdn': is_cdn,
@@ -83,23 +85,30 @@ def make_proxy(proxy, domain_db, phttp=80, ptls=443):
         'proto': proxy.proto,
         'transport': proxy.transport,
         'proxy_path': hconfigs[ConfigEnum.proxy_path],
-        'alpn': "h2" if proxy.l3 == 'tls_h2' else 'h2,http/1.1' if proxy.l3 == 'tls_h2_h1' else "http/1.1",
+        'alpn': alpn,
         'extra_info': f'{domain_db.alias or domain}',
         'fingerprint': hconfigs[ConfigEnum.utls],
         'allow_insecure': domain_db.mode == DomainType.fake or "Fake" in proxy.cdn,
         'dbe':proxy,
         'dbdomain':domain_db
     }
-
-    if base["proto"] == "trojan" and "tls" not in l3:
+    
+    if base["proto"] == "trojan" and not is_tls():
         return {'name': name, 'msg': "trojan but not tls",'type':'warning', 'proto': proxy.proto}
 
     if l3 == "http" and "XTLS" in proxy.transport:
         return {'name': name, 'msg': "http and xtls???",'type':'warning', 'proto': proxy.proto}
     if l3 == "http" and base["proto"] in ["ss", "ssr"]:
         return {'name': name, 'msg': "http and ss or ssr???",'type':'warning', 'proto': proxy.proto}
+
     if proxy.proto in ProxyProto.vmess:
         base['cipher']="chacha20-poly1305"
+
+    if l3 in ['reality']:
+        base['reality_short_id']=random.sample(hconfigs[ConfigEnum.reality_short_ids].split(','),1)[0]
+        base['reality_pbk']=hconfigs[ConfigEnum.reality_public_key]
+        base['sni']=random.sample(hconfigs[ConfigEnum.reality_server_names].split(","),1)[0]
+
     if "Fake" in proxy.cdn:
         if not hconfigs[ConfigEnum.domain_fronting_domain]:
             return {'name': name, 'msg': "no domain_fronting_domain",'type':'debug', 'proto': proxy.proto}
@@ -198,7 +207,10 @@ def to_link(proxy):
                       "sni": proxy["sni"],
                       "fp": proxy["fingerprint"]
                       }
-
+        if 'reality' in proxy["l3"]:
+            vmess_data['tls']="reality"
+            vmess_data['pbk']=proxy['reality_pbk']
+            vmess_data['sid']=proxy['reality_short_id']
         return pbase64(f'vmess://{json.dumps(vmess_data)}')
     if proxy['proto'] == "ssr":
         baseurl = f'ssr://proxy["encryption"]:{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}'
@@ -213,7 +225,7 @@ def to_link(proxy):
             return f'{baseurl}?plugin=v2ray-plugin%3Bmode%3Dwebsocket%3Bpath%3D{proxy["path"]}%3Bhost%3D{proxy["host"]}%3Btls&amp;udp-over-tcp=true#{name_link}'
 
     infos = f'&sni={proxy["sni"]}&type={proxy["transport"]}'
-
+    
     infos += f"&alpn={proxy['alpn']}"
 
     # infos+=f'&alpn={proxy["alpn"]}'
@@ -232,12 +244,16 @@ def to_link(proxy):
 
     infos += f'#{name_link}'
     baseurl = f'{proxy["proto"]}://{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}'
+    if 'reality' in proxy["l3"]:
+            return f"{baseurl}?security=reality&pbk={proxy['reality_pbk']}&sid={proxy['reality_short_id']}{infos}"
     if 'xtls' == proxy['l3']:
         return f'{baseurl}?flow={proxy["flow"]}&security=tls&type=tcp{infos}'
-    if proxy['l3'] == 'http':
-        return f'{baseurl}?security=none{infos}'
     if 'tls' in proxy['l3']:
         return f'{baseurl}?security=tls{infos}'
+            
+    
+    if proxy['l3'] == 'http':
+        return f'{baseurl}?security=none{infos}'
     return proxy
 
 def to_clash_yml(proxy):

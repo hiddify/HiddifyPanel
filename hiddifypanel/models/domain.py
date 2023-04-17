@@ -43,9 +43,9 @@ class Domain(db.Model, SerializerMixin):
     child_id= db.Column(db.Integer, db.ForeignKey('child.id'),default=0)
     domain = db.Column(db.String(200), nullable=False, unique=True)
     alias = db.Column(db.String(200))
-    sub_link_only= db.Column(db.Boolean)
-    mode = db.Column(db.Enum(DomainType), nullable=False)
-    cdn_ip = db.Column(db.Text(2000), nullable=True)
+    sub_link_only= db.Column(db.Boolean,nullable=False,default=False)
+    mode = db.Column(db.Enum(DomainType), nullable=False,default=DomainType.direct)
+    cdn_ip = db.Column(db.Text(2000), nullable=True,default='')
     # show_all=db.Column(db.Boolean, nullable=True)
     show_domains = db.relationship('Domain', secondary=ShowDomain,
                                 primaryjoin=id==ShowDomain.c.domain_id,

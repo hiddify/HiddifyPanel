@@ -18,6 +18,7 @@ def init_db():
 
     execute(f'update proxy set transport="WS" where transport = "ws"')
     execute(f'DELETE from proxy where transport = "h1"')
+    
 
     add_column(ParentDomain.alias)
     add_column(User.start_date)
@@ -52,6 +53,7 @@ def init_db():
     execute(f'update str_config set child_id=0 where child_id is NULL')
     execute(f'update bool_config set child_id=0 where child_id is NULL')
     execute(f'update domain set child_id=0 where child_id is NULL')
+    execute(f'update domain set sub_link_only=False where sub_link_only is NULL')
     execute(f'update proxy set child_id=0 where child_id is NULL')
     
     
@@ -87,6 +89,8 @@ def _v29():
     key_pair=hiddify.generate_x25519_keys()
     add_config_if_not_exist(ConfigEnum.reality_private_key,key_pair['private_key'])
     add_config_if_not_exist(ConfigEnum.reality_public_key,key_pair['public_key'])
+    db.session.bulk_save_objects(get_proxy_rows_v1())
+
     for i in range(1,10):
         for d in get_random_domains(50):
             if hiddify.is_domain_reality_friendly(d):
@@ -275,8 +279,7 @@ def get_proxy_rows_v1():
         # 'grpc Fake vmess',
         # "XTLS direct vless",
         # "XTLS direct trojan",
-        "XTLS direct vless",
-        "WS direct vless",
+        "XTLS direct vless",        "WS direct vless",
         "WS direct trojan",
         "WS direct vmess",
         "WS CDN vless",
@@ -301,10 +304,10 @@ def get_proxy_rows_v1():
     )
 
 def make_proxy_rows(cfgs):
-    for l3 in ["tls_h2","tls", "http", "kcp"]:
+    for l3 in ["tls_h2","tls", "http", "kcp","reality"]:
         for c in cfgs:
             transport,cdn,proto=c.split(" ")
-            if l3=="kcp" and cdn!="direct":
+            if l3 in ["kcp",'reality'] and cdn!="direct":
                 continue
             if proto=="trojan" and l3 not in ["tls",'xtls','tls_h2']:
                 continue

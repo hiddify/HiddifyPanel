@@ -144,16 +144,20 @@ def get_common_data(user_uuid,mode,no_domain=False,filter_domain=None):
         domains=[db_domain]
     else:
         domain=urlparse(request.base_url).hostname if not no_domain else None
-        if hconfig(ConfigEnum.is_parent):
-            from hiddifypanel.panel.commercial import ParentDomain
-            db_domain=ParentDomain.query.filter(ParentDomain.domain==domain).first() or ParentDomain(domain=domain,show_domains=[])
-        else:
-            db_domain=Domain.query.filter(Domain.domain==domain).first() or Domain(domain=domain,mode=DomainType.direct,cdn_ip='',show_domains=[])
+        DB=ParentDomain if hconfig(ConfigEnum.is_parent) else Domain
+        db_domain=DB.query.filter(DB.domain==domain).first()
+
         if not db_domain:
-            db_domain=Domain(domain=domain,mode=DomainType.direct,show_domains=[])
+            parts=domain.split('.')
+            parts[0]="*"
+            domain_new=".".join(parts)
+            db_domain=DB.query.filter(DB.domain==domain_new).first()
+
+        if not db_domain:
+            db_domain=DB(domain=domain,show_domains=[])
             print("no domain")
             flash(_("This domain does not exist in the panel!" + domain))
-        print("HI")
+        
         if mode =='multi':
             domains=Domain.query.all()
         elif mode =='new':

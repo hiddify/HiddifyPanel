@@ -1,13 +1,13 @@
 from flask_admin.contrib import sqla
 from hiddifypanel.panel.database import db
 from wtforms.validators import Regexp
-from hiddifypanel.models import User, Domain, DomainType, StrConfig, ConfigEnum, get_hconfigs,ShowDomain,hconfig
+from hiddifypanel.models import *
 from wtforms.validators import Regexp, ValidationError
 from hiddifypanel.panel.admin.adminlte import AdminLTEModelView
 from flask_babelex import gettext as __
 from flask_babelex import lazy_gettext as _
 from hiddifypanel.panel import hiddify,hiddify_api
-from flask import Markup
+from flask import Markup,g
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_admin import Admin

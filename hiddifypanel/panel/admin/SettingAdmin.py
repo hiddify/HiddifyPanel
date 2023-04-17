@@ -50,7 +50,7 @@ class SettingAdmin(FlaskView):
                             else:
                                 if type(v)!=str:
                                     v=''
-                                if "_domain" in k or k in [ConfigEnum.admin_secret]:
+                                if "_domain" in k or k in [ConfigEnum.admin_secret,ConfigEnum.reality_server_names]:
                                     v=v.lower()
                                 if "port" in k:
                                     for p in v.split(","):

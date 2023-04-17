@@ -21,6 +21,12 @@ from sqlalchemy.orm import backref
 from flask_admin.form.fields import Select2TagsField,Select2Field
 
 
+# class ConfigDomainsField(SelectField):
+#     def __init__(self, label=None, validators=None,*args, **kwargs):
+#         kwargs.pop("allow_blank")
+#         super().__init__(label, validators,*args, **kwargs)
+#         self.choices=[(d.id,d.domain) for d in Doamin.query.filter(Domain.sub_link_only!=True).all()]
+        
 
 class DomainAdmin(AdminLTEModelView):
     column_hide_backrefs = False
@@ -48,7 +54,7 @@ class DomainAdmin(AdminLTEModelView):
     form_widget_args={'show_domains':{'class':'form-control ltr'}}
     form_args = {
         'show_domains':{
-                'query_factory': lambda: Domain.query.filter(Domain.sub_link_only!=True),
+                'query_factory': lambda: Domain.query.filter(Domain.sub_link_only==False),
         },
         'domain': {
             'validators': [Regexp(r'^(\*\.)?([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})$', message=__("Should be a valid domain"))]
