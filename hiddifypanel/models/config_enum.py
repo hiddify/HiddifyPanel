@@ -33,8 +33,14 @@ class ConfigCategory(StrEnum):
     hidden=auto()
     advanced=auto()
     too_advanced=auto()
-
+    reality=auto()
 class ConfigEnum(StrEnum):
+    reality_short_ids=auto()
+    reality_fallback_domain=auto()
+    reality_server_names=auto()
+    reality_private_key=auto()
+    reality_public_key=auto()
+
     cloudflare=auto()
     license=auto()
     country=auto()
@@ -117,6 +123,11 @@ class ConfigEnum(StrEnum):
           return cls.not_found #"key not found"
     def info(self):
         map = {
+            self.reality_short_ids:{'category': ConfigCategory.reality},
+            self.reality_fallback_domain:{'category': ConfigCategory.reality},
+            self.reality_server_names:{'category': ConfigCategory.reality},
+            self.reality_private_key:{'category': ConfigCategory.reality},
+            self.reality_public_key:{'category': ConfigCategory.reality},
             self.lang: {'category': ConfigCategory.branding,'show_in_parent':True, 'commercial':True},
             self.admin_lang: {'category': ConfigCategory.admin,'show_in_parent':True,'commercial':True},
             self.cloudflare:{'category': ConfigCategory.hidden , 'commercial':True},

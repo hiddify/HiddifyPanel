@@ -172,3 +172,44 @@ def get_random_domains(count=1,retry=3):
             return random.sample(defdomains, count)
         return get_random_domains(count,retry-1)
 
+
+def is_domain_support_tls_13(domain):
+    import ssl
+    import socket
+
+    context = ssl.create_default_context()
+    with socket.create_connection((domain, port)) as sock:
+        with context.wrap_socket(sock, server_hostname=domain) as ssock:
+            return ssock.version()=="TLSv1.3"
+
+def is_domain_support_h2(domain):
+    try:
+        import h2.connection
+        import socket
+        import ssl
+        context = ssl.create_default_context(purpose=ssl.Purpose.SERVER_AUTH)
+        context.options |= (ssl.OP_NO_SSLv2 | ssl.OP_NO_SSLv3 | ssl.OP_NO_TLSv1 | ssl.OP_NO_TLSv1_1)
+        context.options |= ssl.OP_NO_COMPRESSION
+        context.set_ciphers("ECDHE+AESGCM:ECDHE+CHACHA20:DHE+AESGCM:DHE+CHACHA20")
+        context.set_alpn_protocols(["h2"])
+        with socket.create_connection((domain, port)) as sock:
+            with context.wrap_socket(sock, server_hostname=domain) as ssock:
+                return ssock.version()=="TLSv1.3"
+    except:
+        return False
+
+def is_domain_reality_friendly(domain):
+    return is_domain_support_h2(domain)
+
+def generate_x25519_keys():
+    # Run the "xray x25519" command and capture its output
+    cmd = "xray x25519"
+    import subprocess
+    output = subprocess.check_output(cmd, shell=True, text=True)
+
+    # Extract the private and public keys from the output
+    private_key = output.split("Private key: ")[1].split("\n")[0]
+    public_key = output.split("Public key: ")[1].split("\n")[0]
+
+    # Return the keys as a tuple
+    return {"private_key":private_key, "public_key":public_key}

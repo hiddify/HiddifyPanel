@@ -86,7 +86,8 @@ def user_dict(d):
         'start_date':date_to_json(d.start_date),
         'current_usage_GB':d.current_usage_GB,
         'last_reset_time':date_to_json(d.last_reset_time),
-        'comment':d.comment
+        'comment':d.comment,
+        'added_by':d.added_by
     }
 
 
