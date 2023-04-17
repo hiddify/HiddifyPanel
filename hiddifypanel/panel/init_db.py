@@ -84,13 +84,16 @@ def init_db():
     db.session.commit()
     return BoolConfig.query.all()
 
-def _v29():
+def _v30():
     add_config_if_not_exist(ConfigEnum.reality_short_ids, uuid.uuid4().hex[0:random.randint(0, 8)*2])
     key_pair=hiddify.generate_x25519_keys()
     add_config_if_not_exist(ConfigEnum.reality_private_key,key_pair['private_key'])
     add_config_if_not_exist(ConfigEnum.reality_public_key,key_pair['public_key'])
     db.session.bulk_save_objects(get_proxy_rows_v1())
-
+    try:
+        db.session.add(AdminUser(id=1,uuid=hconfig(ConfigEnum.admin_secret),name="FirstAdmin",mode=AdminMode.super_admin,comment=""))
+    except:
+        pass
     for i in range(1,10):
         for d in get_random_domains(50):
             if hiddify.is_domain_reality_friendly(d):
@@ -100,9 +103,8 @@ def _v29():
     add_config_if_not_exist(ConfigEnum.reality_fallback_domain, "yahoo.com")
     add_config_if_not_exist(ConfigEnum.reality_server_names, "yahoo.com")
 
-def _v28():
     # add_config_if_not_exist(ConfigEnum.cloudflare, "")
-    db.session.add(AdminUser(id=1,uuid=hconfig(ConfigEnum.admin_secret),name="FirstAdmin",mode=AdminMode.super_admin,comment=""))
+
 
 def _v27():
     # add_config_if_not_exist(ConfigEnum.cloudflare, "")
