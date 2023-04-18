@@ -44,7 +44,7 @@ def add_client(uuid):
     tags=get_inbound_tags()
     proto_map={
                 'vless':'vless',
-                'reality':'vless',
+                'realityin':'vless',
                 'xtls':'vless',
                 'quic':'vless',
                 'trojan':'trojan',
