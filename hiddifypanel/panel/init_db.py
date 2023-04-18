@@ -84,10 +84,9 @@ def init_db():
     db.session.commit()
     return BoolConfig.query.all()
 
-def _v32(): 
-    if hconfig(ConfigEnum.reality_fallback_domain)=='yahoo.com':
-        _v31()
-
+def _v32():
+    Proxy.query.filter(Proxy.l3==ProxyL3.reality).delete()
+    _v31()
 def _v31():
     add_config_if_not_exist(ConfigEnum.reality_short_ids, uuid.uuid4().hex[0:random.randint(0, 8)*2])
     key_pair=hiddify.generate_x25519_keys()
@@ -283,7 +282,8 @@ def get_proxy_rows_v1():
         # 'grpc Fake vmess',
         # "XTLS direct vless",
         # "XTLS direct trojan",
-        "XTLS direct vless",        "WS direct vless",
+        "XTLS direct vless",      
+        "WS direct vless",
         "WS direct trojan",
         "WS direct vmess",
         "WS CDN vless",
@@ -312,6 +312,8 @@ def make_proxy_rows(cfgs):
         for c in cfgs:
             transport,cdn,proto=c.split(" ")
             if l3 in ["kcp",'reality'] and cdn!="direct":
+                continue
+            if l3=="reality" and ((transport not in ['tcp','grpc','XTLS']) or proto !='vless'):
                 continue
             if proto=="trojan" and l3 not in ["tls",'xtls','tls_h2']:
                 continue

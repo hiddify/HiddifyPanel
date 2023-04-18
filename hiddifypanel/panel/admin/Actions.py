@@ -52,9 +52,11 @@ class Actions(FlaskView):
         return Markup("<br>".join(res))
         
     @route('apply_configs', methods=['POST'])
-    @hiddify.super_admin
     def apply_configs(self):
         return self.reinstall(False)
+
+    
+    
 
     @route('reset', methods=['POST'])
     def reset(self):

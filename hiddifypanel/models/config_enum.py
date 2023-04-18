@@ -35,9 +35,9 @@ class ConfigCategory(StrEnum):
     too_advanced=auto()
     reality=auto()
 class ConfigEnum(StrEnum):
-    reality_short_ids=auto()
     reality_fallback_domain=auto()
     reality_server_names=auto()
+    reality_short_ids=auto()
     reality_private_key=auto()
     reality_public_key=auto()
 
@@ -123,11 +123,11 @@ class ConfigEnum(StrEnum):
           return cls.not_found #"key not found"
     def info(self):
         map = {
-            self.reality_short_ids:{'category': ConfigCategory.reality},
-            self.reality_fallback_domain:{'category': ConfigCategory.reality},
-            self.reality_server_names:{'category': ConfigCategory.reality},
-            self.reality_private_key:{'category': ConfigCategory.reality},
-            self.reality_public_key:{'category': ConfigCategory.reality},
+            self.reality_fallback_domain:{'category': ConfigCategory.reality,'apply_mode':'apply'},
+            self.reality_server_names:{'category': ConfigCategory.reality,'apply_mode':'apply'},
+            self.reality_short_ids:{'category': ConfigCategory.reality,'apply_mode':'apply'},
+            self.reality_private_key:{'category': ConfigCategory.reality,'apply_mode':'apply'},
+            self.reality_public_key:{'category': ConfigCategory.reality,'apply_mode':'apply'},
             self.lang: {'category': ConfigCategory.branding,'show_in_parent':True, 'commercial':True},
             self.admin_lang: {'category': ConfigCategory.admin,'show_in_parent':True,'commercial':True},
             self.cloudflare:{'category': ConfigCategory.too_advanced , 'commercial':True},

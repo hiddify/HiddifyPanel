@@ -207,13 +207,13 @@ $(document).ready(function () {
     console.log(this); console.log(e);
     var link = this.href;
     $("#action_form").attr("action",link)
+    
     bootbox.confirm({
     message: '{{_("Are you sure you want to do this action?")}}',
     locale:'{{get_locale()}}',
     callback: function(result) {
-      if (result) {
-        
-      $("#action_form").submit()
+      if (result) {    
+        $("#action_form").submit()
       }
     }
   });

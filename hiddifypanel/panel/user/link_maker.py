@@ -96,7 +96,7 @@ def make_proxy(proxy, domain_db, phttp=80, ptls=443):
     if base["proto"] == "trojan" and not is_tls():
         return {'name': name, 'msg': "trojan but not tls",'type':'warning', 'proto': proxy.proto}
 
-    if l3 == "http" and "XTLS" in proxy.transport:
+    if l3 == "http" and ProxyTransport.XTLS in proxy.transport:
         return {'name': name, 'msg': "http and xtls???",'type':'warning', 'proto': proxy.proto}
     if l3 == "http" and base["proto"] in ["ss", "ssr"]:
         return {'name': name, 'msg': "http and ss or ssr???",'type':'warning', 'proto': proxy.proto}
@@ -152,9 +152,9 @@ def make_proxy(proxy, domain_db, phttp=80, ptls=443):
         base['mode'] = 'ShadowTLS'
         return base
 
-    if "XTLS" in proxy.transport:
+    if ProxyTransport.XTLS in proxy.transport:
         base['flow'] = 'xtls-rprx-vision'
-        return {**base, 'transport': 'tcp', 'l3': 'xtls'}
+        return {**base, 'transport': 'tcp'}
     if "tcp" in proxy.transport:
         base['transport'] = 'tcp'
         base['path'] = f'/{path[base["proto"]]}{hconfigs[ConfigEnum.path_tcp]}'
@@ -223,37 +223,35 @@ def to_link(proxy):
             return f'{baseurl}?plugin=shadow-tls%3Bpassword%3D{proxy["proxy_path"]}%3Bhost%3D{proxy["fakedomain"]}&amp;udp-over-tcp=true#{name_link}'
         if proxy['proto'] == 'v2ray':
             return f'{baseurl}?plugin=v2ray-plugin%3Bmode%3Dwebsocket%3Bpath%3D{proxy["path"]}%3Bhost%3D{proxy["host"]}%3Btls&amp;udp-over-tcp=true#{name_link}'
-
-    infos = f'&sni={proxy["sni"]}&type={proxy["transport"]}'
+    baseurl = f'{proxy["proto"]}://{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}?hiddify=1'
+    baseurl += f'&sni={proxy["sni"]}&type={proxy["transport"]}'
     
-    infos += f"&alpn={proxy['alpn']}"
+    baseurl += f"&alpn={proxy['alpn']}"
 
     # infos+=f'&alpn={proxy["alpn"]}'
-    infos += f'&path={proxy["path"]}' if "path" in proxy else ""
-    infos += f'&host={proxy["host"]}' if "host" in proxy else ""
+    baseurl  += f'&path={proxy["path"]}' if "path" in proxy else ""
+    baseurl  += f'&host={proxy["host"]}' if "host" in proxy else ""
     if "grpc" == proxy["transport"]:
-        infos += f'&serviceName={proxy["grpc_service_name"]}&mode={proxy["grpc_mode"]}'
+        baseurl  += f'&serviceName={proxy["grpc_service_name"]}&mode={proxy["grpc_mode"]}'
     if 'vless' == proxy['proto']:
-        infos += "&encryption=none"
+        baseurl  += "&encryption=none"
     if proxy.get('fingerprint','none')!='none':
-        infos += "&fp="+proxy['fingerprint']
+        baseurl  += "&fp="+proxy['fingerprint']
     if proxy['l3'] != 'quic':
-        infos += '&headerType=None'  # if not quic
+        baseurl  += '&headerType=None'  # if not quic
     if proxy['mode'] == 'Fake' or proxy['allow_insecure']:
-        infos += "&allowInsecure=true"
+        baseurl  += "&allowInsecure=true"
+    if ProxyTransport.XTLS in proxy['transport']:
+        baseurl+= f'&flow={proxy["flow"]}&type=tcp'
 
-    infos += f'#{name_link}'
-    baseurl = f'{proxy["proto"]}://{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}'
-    if 'reality' in proxy["l3"]:
-            return f"{baseurl}?security=reality&pbk={proxy['reality_pbk']}&sid={proxy['reality_short_id']}{infos}"
-    if 'xtls' == proxy['l3']:
-        return f'{baseurl}?flow={proxy["flow"]}&security=tls&type=tcp{infos}'
-    if 'tls' in proxy['l3']:
-        return f'{baseurl}?security=tls{infos}'
-            
+    infos = f'#{name_link}'
     
+    if 'reality' in proxy["l3"]:
+        return f"{baseurl}&security=reality&pbk={proxy['reality_pbk']}&sid={proxy['reality_short_id']}{infos}"
+    if 'tls' in proxy['l3']:
+        return f'{baseurl}&security=tls{infos}'
     if proxy['l3'] == 'http':
-        return f'{baseurl}?security=none{infos}'
+        return f'{baseurl}&security=none{infos}'
     return proxy
 
 def to_clash_yml(proxy):
@@ -269,7 +267,7 @@ def to_clash(proxy, meta_or_normal):
     if meta_or_normal == "normal":
         if proxy['proto'] == "vless":
             return {'name': name, 'msg': "vless not supported in clash",'type':'debug'}
-        if proxy['l3'] == "xtls":
+        if proxy['proto'] == ProxyProto.XTLS:
             return {'name': name, 'msg': "xtls not supported in clash",'type':'debug'}
         if proxy['transport'] == "shadowtls":
             return {'name': name, 'msg': "shadowtls not supported in clash",'type':'debug'}
@@ -328,7 +326,7 @@ def to_clash(proxy, meta_or_normal):
         base["tls"] = "tls" in proxy["l3"]
     # if meta_or_normal == "meta":
     #     base['client-fingerprint'] = proxy['fingerprint']
-    if "xtls" == proxy['l3']:
+    if ProxyTransport.XTLS in proxy.transport:
         base["flow"] = proxy['flow']
         base["flow-show"] = True
 
