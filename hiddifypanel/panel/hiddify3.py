@@ -193,10 +193,11 @@ def is_domain_support_h2(domain):
         context.options |= ssl.OP_NO_COMPRESSION
         context.set_ciphers("ECDHE+AESGCM:ECDHE+CHACHA20:DHE+AESGCM:DHE+CHACHA20")
         context.set_alpn_protocols(["h2"])
-        with socket.create_connection((domain, port)) as sock:
+        with socket.create_connection((domain, 443)) as sock:
             with context.wrap_socket(sock, server_hostname=domain) as ssock:
                 return ssock.version()=="TLSv1.3"
-    except:
+    except Exception as e:
+        print(f'{domain} {e}')
         return False
 
 def is_domain_reality_friendly(domain):
