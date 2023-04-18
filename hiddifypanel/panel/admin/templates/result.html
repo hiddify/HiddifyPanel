@@ -53,14 +53,14 @@ function refresh(){
 }
 setInterval(refresh,1000);
 %if g.temp_admin_link
-window.addEventListener('beforeunload', function (e) {
-  // Cancel the event
-  e.preventDefault(); // If you prevent default behavior in Mozilla Firefox prompt will always be shown
-  // Chrome requires returnValue to be set
-  $("#save_emergency").modal()
-  e.returnValue = 'Save';
-  return "save"
-});
+// window.addEventListener('beforeunload', function (e) {
+//   // Cancel the event
+//   e.preventDefault(); // If you prevent default behavior in Mozilla Firefox prompt will always be shown
+//   // Chrome requires returnValue to be set
+//   $("#save_emergency").modal()
+//   e.returnValue = 'Save';
+//   return "save"
+// });
 %endif
 </script>
 % endif
