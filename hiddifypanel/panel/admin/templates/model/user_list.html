@@ -39,3 +39,36 @@
     }
     </style>
 {% endblock %}
+{% block tail_js%}
+{{super()}}
+<script>
+    function show_send_message(id){
+        bootbox.prompt({
+            title: '{{_("Please type your message to send to the telegram:")}}',
+            inputType: 'textarea',
+            callback: function (result) {
+                console.log(result);                                    
+                $.ajax({
+                    type: "POST",
+                    url: '{{url_for("api.sendmsgresource")}}',
+                    
+                    data: JSON.stringify({'text':result,'id':id}),
+                    contentType: "application/json",
+                    dataType: "json",
+                    success: function(){
+                        $(document).Toasts('create', {
+                            class: 'bg-success',
+                            position: "{{'topRight' if get_locale()=='fa' else 'topLeft'}}" ,
+                            title: `{{_('Success')}}`,
+                            body: `{{_("The message has been sent.")}}`
+                            })    
+                    },
+                    
+                });
+
+            }
+        });
+    }
+
+</script>
+%endblock

@@ -366,7 +366,7 @@ function show_video(file){
  function show_prompt(){
   toast=$(document).Toasts('create', {
           class: 'bg-',
-          position: '{{'bottomRight' if get_locale()=='fa' else 'bottomLeft'}}' ,
+          position: "{{'bottomRight' if get_locale()=='fa' else 'bottomLeft'}}" ,
           image:"{{url_for('static', filename='images/pwa-icon.png')}}",
           title: `{{_('Install Hiddify Application')}} <button class='btn btn-xs btn-default' onclick='show_video(is_ios?"webapp-ios":"webapp-android")'><i class='fa-solid fa-question'></i></button>`,
           class:"toast-full",

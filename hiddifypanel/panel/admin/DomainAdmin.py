@@ -83,7 +83,10 @@ class DomainAdmin(AdminLTEModelView):
     def _domain_admin_link(view, context, model, name):
         if model.mode==DomainType.fake:
             return Markup(f"<span class='badge'>{model.domain}</span>")
-        admin_link = f'https://{model.domain}{hiddify.get_admin_path()}'
+        d=model.domain
+        if "*" in d:
+            d=d.replace("*",hiddify.get_random_string(5,15))
+        admin_link = f'https://{d}{hiddify.get_admin_path()}'
         return Markup(f'<div class="btn-group"><a href="{admin_link}" class="btn btn-xs btn-secondary">'+_("admin link")+f'</a><a href="{admin_link}" class="btn btn-xs btn-info ltr" target="_blank">{model.domain}</a></div>')
 
     def _domain_ip(view, context, model, name):

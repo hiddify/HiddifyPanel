@@ -104,26 +104,20 @@ class UserAdmin(AdminLTEModelView):
     
     def _name_formatter(view, context, model, name):
         proxy_path=hconfig(ConfigEnum.proxy_path)
-        if hconfig(ConfigEnum.is_parent):
-            from hiddifypanel.panel.commercial import ParentDomain
-            d=ParentDomain.query.first()
+        print("model.telegram_id",model.telegram_id)
+        extra=""
+        if hconfig(ConfigEnum.telegram_bot_token) and  model.telegram_id:
+            extra=f'<button class="btn btn-warning btn-xs " onclick="show_send_message({model.id})" ><i class="fa-solid fa-paper-plane"></i></button> '
+
+        link=f"<a target='_blank' href='/{proxy_path}/{model.uuid}/#{model.name}'>{model.name} <i class='fa-solid fa-arrow-up-right-from-square'></i></a>"
+        if model.is_active:
+            link= '<i class="fa-solid fa-circle-check text-success"></i> '+link
         else:
-            d=Domain.query.filter(Domain.mode!=DomainType.fake).first()
-        if d:
-            link=f"<a target='_blank' href='/{proxy_path}/{model.uuid}/#{model.name}'>{model.name} <i class='fa-solid fa-arrow-up-right-from-square'></i></a>"
-            if model.is_active:
-                link= '<i class="fa-solid fa-circle-check text-success"></i> '+link
-            else:
-                link= '<i class="fa-solid fa-circle-xmark text-danger"></i> '+link
-            return Markup(link)
-        else:
-            return model.name
+            link= '<i class="fa-solid fa-circle-xmark text-danger"></i> '+link
+        return Markup(extra+link)
+        
     def _ul_formatter(view, context, model, name):
-        if hconfig(ConfigEnum.is_parent):
-            from hiddifypanel.panel.commercial import ParentDomain
-            domains=ParentDomain.query.all()
-        else:    
-            domains=Domain.query.filter(Domain.mode!=DomainType.fake).all()
+        domains=get_panel_domains()
         return Markup(" ".join([hiddify.get_user_link(model.uuid,d,'new',model.name) for d in domains]))
     
     def _uuid_formatter(view, context, model, name):
@@ -162,7 +156,7 @@ class UserAdmin(AdminLTEModelView):
         
         if diff.days<-1000:
             return Markup("-")
-        if diff.total_seconds()>-60*5:
+        if diff.total_seconds()>-60*2:
             return Markup(f"<span class='badge badge-success'>{_('Online')}</span>")
         state="danger" if diff.days<-3 else ("success" if diff.days>=-1 else "warning")
         return Markup(f"<span class='badge badge-{state}'>{hiddify.format_timedelta(diff,granularity='min')}</span>")

@@ -4,7 +4,7 @@ from flask import current_app as app
 from hiddifypanel.models import  *
 from . import bot
 from hiddifypanel.panel.user.user import get_common_data
-
+from hiddifypanel.panel.database import db
 @bot.message_handler(func=lambda message: "admin" not in message.text and len(message.text)==36)
 def send_usage(message):
     return send_welcome(message)
@@ -16,6 +16,7 @@ def send_welcome(message):
     if user:
 
         user.telegram_id=message.chat.id
+        db.session.commit()
         bot.reply_to(message, get_usage_msg(uuid), reply_markup=user_keyboard(uuid))
     else:
         bot.reply_to(message,

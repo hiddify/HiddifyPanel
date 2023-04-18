@@ -25,7 +25,7 @@ from wtforms import SelectField
 class AdminModeField(SelectField):
     def __init__(self, label=None, validators=None, **kwargs):
         super(AdminModeField, self).__init__(label, validators, **kwargs)
-        if g.admin.mode==AdminMode.slave:
+        if g.admin.mode in [AdminMode.slave,AdminMode.admin]:
             self.choices = [ (AdminMode.slave.value, 'Slave')]
         elif g.admin.mode==AdminMode.admin:
             self.choices = [ (AdminMode.slave.value, 'Slave'),(AdminMode.admin.value, 'Admin'),]
@@ -62,6 +62,12 @@ class AdminstratorAdmin(AdminLTEModelView):
         "users":_("Users"),
 
     }
+    form_args = {
+    'uuid': {
+        'validators': [Regexp(r'^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$',message=__("Should be a valid uuid"))]
+    #     'label': 'First Name',
+    #     'validators': [required()]
+    }}
     
     column_descriptions = dict(
         comment=_("Add some text that is only visible to super_admin."),
@@ -165,9 +171,10 @@ class AdminstratorAdmin(AdminLTEModelView):
 
 
     def on_form_prefill(self, form, id=None):
-        if form._obj is not None and form._obj.id==1:
-            del form.parent_admin
+        # if form._obj is not None and form._obj.id==1:
+        #     print(form.__dict__)
+        #     del form.parent_admin
         
-        # if g.admin.mode==AdminMode.slave:
-        del form.mode
+        if g.admin.mode!=AdminMode.super_admin:
+            del form.mode
         

@@ -130,7 +130,7 @@ class ConfigEnum(StrEnum):
             self.reality_public_key:{'category': ConfigCategory.reality},
             self.lang: {'category': ConfigCategory.branding,'show_in_parent':True, 'commercial':True},
             self.admin_lang: {'category': ConfigCategory.admin,'show_in_parent':True,'commercial':True},
-            self.cloudflare:{'category': ConfigCategory.hidden , 'commercial':True},
+            self.cloudflare:{'category': ConfigCategory.too_advanced , 'commercial':True},
             self.license:{'category': ConfigCategory.hidden, 'commercial':True},
             self.proxy_path: {'category': ConfigCategory.too_advanced,'apply_mode':'apply','show_in_parent':True},
             self.path_vmess:{'category': ConfigCategory.too_advanced},
