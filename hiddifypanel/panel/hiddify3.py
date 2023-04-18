@@ -211,7 +211,7 @@ def debug_flash_if_not_in_the_same_asn(domain):
         asn_dip= ipasn.get(dip)
         # country_ipv4= ipcountry.get(ipv4)
         # country_dip= ipcountry.get(dip)
-        if asn_ipv4.get('autonomous_system_number')!=asn_dip.get('autonomous_system_number'):
+        if asn_ipv4.get('autonomous_system_organization')!=asn_dip.get('autonomous_system_organization'):
             flash(_("selected domain for REALITY is not in the same ASN. To better use of the protocol, it is better to find a domain in the same ASN." ) +f"<br> Server ASN={asn_ipv4.get('autonomous_system_organization','unknown')}<br>{domain}_ASN={asn_dip.get('autonomous_system_organization','unknown')}", "warning")
 
 def fallback_domain_compatible_with_servernames(fallback_domain,servername):
