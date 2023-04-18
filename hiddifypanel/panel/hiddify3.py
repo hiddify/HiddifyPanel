@@ -200,8 +200,17 @@ def is_domain_support_h2(domain):
         print(f'{domain} {e}')
         return False
 
-def is_domain_reality_friendly(domain):
-    return is_domain_support_h2(domain)
+def debug_flash_if_not_in_the_same_asn(domain):
+    from hiddifypanel.panel.clean_ip import ipasn
+    ipv4=get_ip(4)
+    dip=get_domain_ip(domain)
+    if ipasn :
+        asn_ipv4= ipasn.get(ipv4)
+        asn_dip= ipasn.get(dip)
+        # country_ipv4= ipcountry.get(ipv4)
+        # country_dip= ipcountry.get(dip)
+        if asn_ipv4.get('autonomous_system_number')!=asn_dip.get('autonomous_system_number'):
+            flash(_("selected domain for REALITY is not in the same ASN. To better use of the protocol, it is better to find a domain in the same ASN." ) +f" Server ASN={asn_ipv4.get('autonomous_system_organization','unknown')}, {domain}_ASN={asn_dip.get('autonomous_system_organization','unknown')}", "warning")
 
 def generate_x25519_keys():
     # Run the "xray x25519" command and capture its output

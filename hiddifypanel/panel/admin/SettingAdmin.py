@@ -58,6 +58,8 @@ class SettingAdmin(FlaskView):
                                         if not hiddify.is_domain_reality_friendly(d):
                                             flash(_("Domain is not REALITY friendly!")+" "+d,'error')
                                             return render_template('config.html', form=form)
+                                        hiddify.debug_flash_if_not_in_the_same_asn(d)
+
                                 if "port" in k:
                                     for p in v.split(","):
                                         for k2,v2 in vs.items():
