@@ -152,7 +152,8 @@ class DomainAdmin(AdminLTEModelView):
                 # raise e
                 raise ValidationError(_("Can not connect to Cloudflare.")+f' {e}')
         # elif model.mode==DomainType.auto_cdn_ip:
-            
+        if model.alias and not model.alias.replace("_","").isalnum():
+            flash(_("Using alias with special charachters may cause problem in some clients like FairVPN."),'warning')
         #     raise ValidationError(_("You have to add your cloudflare api key to use this feature: "))
 
         

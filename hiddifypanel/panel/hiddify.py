@@ -13,8 +13,6 @@ from wtforms.validators import ValidationError
 from flask import flash as flask_flash
 to_gig_d = 1000*1000*1000
 
-from .hiddify2 import *
-from .hiddify3 import *
 def add_temporary_access():
     import random
 
@@ -291,3 +289,5 @@ def check_need_reset(old_configs,do=False):
         return flash_config_success(restart_mode=restart_mode, domain_changed=False)
         
     return reinstall_action(complete_install=True, domain_changed=domain_changed)
+from .hiddify2 import *
+from .hiddify3 import *

@@ -13,8 +13,7 @@ from wtforms.validators import ValidationError
 from flask import flash as flask_flash
 to_gig_d = 1000*1000*1000
 
-from .hiddify3 import *
-from .hiddify import *
+
 
 def format_timedelta(delta, add_direction=True,granularity="days"):
     res=delta.days
@@ -278,3 +277,6 @@ def get_random_string(min_=10,max_=30):
 
 
 
+
+from .hiddify3 import *
+from .hiddify import *

@@ -20,8 +20,7 @@ to_gig_d = 1000*1000*1000
 import psutil
 import time
 import os
-from .hiddify2 import *
-from .hiddify import *
+
 def system_stats():
     # CPU usage
     cpu_percent = psutil.cpu_percent(interval=1)
@@ -200,6 +199,9 @@ def is_domain_support_h2(domain):
         print(f'{domain} {e}')
         return False
 
+def is_domain_reality_friendly(domain):
+    return is_domain_support_h2(domain)
+
 def debug_flash_if_not_in_the_same_asn(domain):
     from hiddifypanel.panel.clean_ip import ipasn
     ipv4=get_ip(4)
@@ -210,8 +212,7 @@ def debug_flash_if_not_in_the_same_asn(domain):
         # country_ipv4= ipcountry.get(ipv4)
         # country_dip= ipcountry.get(dip)
         if asn_ipv4.get('autonomous_system_number')!=asn_dip.get('autonomous_system_number'):
-            flash(_("selected domain for REALITY is not in the same ASN. To better use of the protocol, it is better to find a domain in the same ASN." ) +f" Server ASN={asn_ipv4.get('autonomous_system_organization','unknown')}, {domain}_ASN={asn_dip.get('autonomous_system_organization','unknown')}", "warning")
-
+            flash(_("selected domain for REALITY is not in the same ASN. To better use of the protocol, it is better to find a domain in the same ASN." ) +f"<br> Server ASN={asn_ipv4.get('autonomous_system_organization','unknown')}<br>{domain}_ASN={asn_dip.get('autonomous_system_organization','unknown')}", "warning")
 def generate_x25519_keys():
     # Run the "xray x25519" command and capture its output
     cmd = "xray x25519"
@@ -224,3 +225,6 @@ def generate_x25519_keys():
 
     # Return the keys as a tuple
     return {"private_key":private_key, "public_key":public_key}
+
+from .hiddify2 import *
+from .hiddify import *
