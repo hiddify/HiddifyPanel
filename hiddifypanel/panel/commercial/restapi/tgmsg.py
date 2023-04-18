@@ -39,7 +39,10 @@ class SendMsgResource(Resource):
                 
         
         for user in users:          
-            bot.send_message(user.telegram_id, msg['text'])
+            from hiddifypanel.panel.commercial.telegrambot import Usage
+            keyboard=Usage.user_keyboard(user.uuid)
+            txt= msg['text']+"\n\n"+Usage.get_usage_msg(user.uuid)
+            bot.send_message(user.telegram_id,txt,keyboard)
         return "success"
 
             
