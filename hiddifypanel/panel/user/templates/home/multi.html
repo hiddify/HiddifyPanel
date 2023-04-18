@@ -313,6 +313,25 @@
 
 <script>
     
+%if hconfig(ConfigEnum.telegram_bot_token) and g.bot and not g.user.telegram_id
+
+if (Cookies.get('show_connect_telegram')!='no'){
+bootbox.confirm({
+    title: '{{_("Want to enjoy more with telegram?")}}?',
+    message: '{{_("Please connect your telegram accout to the panel to be informed about latest news.")}}',
+    locale: '{{get_locale()}}',
+    callback: function (result) {
+        if (result){
+            document.location='tg://resolve?domain={{g.bot.username}}&start={{user.uuid}}'
+
+        }else{
+            Cookies.set('show_connect_telegram', 'no', { expires: 10 })
+        }
+        
+    }
+});
+}
+%endif
     
     function replace_info(str) {
     
@@ -391,6 +410,7 @@ responsive: {
   
     ConvertNumberToPersion();
     %endif
+
 </script>
 
 %if has_auto_cdn and hconfig(ConfigEnum.country)!="other" and country.lower()!=hconfig(ConfigEnum.country) 
@@ -401,5 +421,6 @@ responsive: {
 {%- endmacro -%}
 {{modal("country-alarm-modal",_("Turn of VPN"),_("You should visit this page without VPN. Your country=%(your_country)s expected=%(expected_country)s",your_country=country,expected_country=hconfig(ConfigEnum.country)),footer=reload(),show=True)}}
 %endif
+
 
 {% endblock %}

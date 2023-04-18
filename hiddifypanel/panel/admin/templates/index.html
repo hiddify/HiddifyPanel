@@ -69,7 +69,7 @@
 </div>
 {%- endmacro -%}
 <div class="row" >
-    %set onlines=usage_history['h24']['online']
+    %set onlines=usage_history['m5']['online']
     %set total_users=usage_history['total']['users']
     {{info_box("today","fa-solid fa-calendar", _("Today Usage"), 
             ((usage_history['today']['usage']/1024**3)|round(1)) ~ " GB", 
@@ -105,7 +105,7 @@
          _("Online Users"), 
          onlines ~ " / "~ total_users, 
          onlines/((1,total_users)|max)*100, 
-         _('In 24 hours'),
+         _('In 5 minutes'),
          color_class="lightblue"
     )}}
     {{info_box("network","fa-solid fa-network-wired", _("Network"), 
@@ -194,14 +194,14 @@ function strband(num){
 
 function update_from_json(data){
     usage_history=data['usage_history']
-    onlines=usage_history['h24']['online']
+    onlines=usage_history['m5']['online']
     total_users=usage_history['total']['users']
     stats=data['stats']
     info_box("today", "fa-solid fa-calendar", "Today Usage",
     ((usage_history['today']['usage'] / Math.pow(1024, 3)).toFixed(1)) + " GB",
     usage_history['today']['online'] / Math.max(1,total_users) * 100,
     "{{_('Online Users')}}" + ": " + usage_history['today']['online'] + " / " + total_users
-);
+    );
 
 info_box("yesterday", "fa-solid fa-calendar-day", "Yesterday Usage",
     ((usage_history['yesterday']['usage'] / Math.pow(1024, 3)).toFixed(1)) + " GB",
@@ -224,7 +224,7 @@ info_box("total", "fa-solid fa-chart-pie", "Total Usage",
 info_box("online", "fa-solid fa-users", "Online Users",
     onlines + " / " + total_users,
     onlines / Math.max(1,total_users) * 100,
-    "{{_('In 24 hours')}}"
+    "{{_('In 5 minutes')}}"
 );
 
 info_box("cpu", "fa-solid fa-microchip", "CPU",

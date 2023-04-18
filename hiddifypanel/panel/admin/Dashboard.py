@@ -67,7 +67,7 @@ class Dashboard(FlaskView):
         
     # except:
     #     flash((_('Error!!!')),'info')
-        h24=datetime.datetime.now()-datetime.timedelta(days=1)
+        
         
         
         

@@ -222,7 +222,7 @@
 <!-- <script src="{{url_for('static',filename='js/demo.js')}}"></script> -->
 <script src="{{url_for('static',filename='js/custom.js')}}"></script>
 
-
+<script src="{{url_for('static',filename='js/js.cookie.min.js')}}"> </script>
 <script>
   function copy_click(e) {
     e.preventDefault();
@@ -421,6 +421,8 @@ if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').match
 % if get_locale()=='fa'
 <script src="{{url_for('static',filename='js/custom-rtl.js',version=3)}}"> </script>
 %endif
+
+
 <!-- <script src="{{url_for('static',filename='js/pwa-sw.js')}}" defer></script> -->
 {% endblock %}
 <video id='guide-video' controls style='max-height: 100%; max-width: 100%;width: 1px; height: 1px;'><source id='guide-video-mp4' type='video/mp4'></video>

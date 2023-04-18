@@ -46,6 +46,8 @@ def get_daily_usage_stats(admin_id=None,child_id=None):
     h24=datetime.datetime.now()-datetime.timedelta(days=1)
     users_online_h24 = filter_user_admin(User.query.filter(User.last_online >= h24)).count()
     
+    m5=datetime.datetime.now()-datetime.timedelta(minutes=5)
+    users_online_m5 = filter_user_admin(User.query.filter(User.last_online >= m5)).count()
 
     # Yesterday's usage and online count
     yesterday = date.today() - timedelta(days=1)
@@ -75,6 +77,7 @@ def get_daily_usage_stats(admin_id=None,child_id=None):
     return {
         "today": {"usage": today_stats[0], "online": users_online_today},
         "h24":{"usage":0,"online":users_online_h24},
+        "m5":{"usage":0,"online":users_online_m5},
         "yesterday": {"usage": yesterday_stats[0], "online": yesterday_stats[1]},
         "last_30_days": {"usage": last_30_days_stats[0], "online": users_online_last_month},
         "total": {"usage": total_stats[0], "online": users_online_last_10_years,"users":total_users}

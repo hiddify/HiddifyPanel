@@ -149,7 +149,7 @@ class DomainAdmin(AdminLTEModelView):
                     cf_api.add_or_update_domain(model.domain, myip,"A",proxied=True)
                 skip_check=True
             except Exception as e:
-                raise e
+                # raise e
                 raise ValidationError(_("Can not connect to Cloudflare.")+f' {e}')
         # elif model.mode==DomainType.auto_cdn_ip:
             
