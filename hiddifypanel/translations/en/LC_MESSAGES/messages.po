@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-18 12:46+0200\n"
-"PO-Revision-Date: 2023-04-18 05:46-0500\n"
+"POT-Creation-Date: 2023-04-18 21:32+0200\n"
+"PO-Revision-Date: 2023-04-18 14:32-0500\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -76,12 +76,12 @@ msgid "Package ended!"
 msgstr "Package ended!"
 
 # | msgid "Rebooting system ... This may take a few minutes. please wait ..."
-#: hiddifypanel/panel/admin/Actions.py:66
+#: hiddifypanel/panel/admin/Actions.py:68
 msgid "rebooting system may takes time please wait"
 msgstr "Rebooting system ... This may take a few minutes. please wait ..."
 
 # | msgid "Can not sync child with parent panel."
-#: hiddifypanel/panel/admin/Actions.py:81
+#: hiddifypanel/panel/admin/Actions.py:83
 msgid "can not sync child with parent panel"
 msgstr "Can not sync child with parent panel."
 
@@ -89,7 +89,7 @@ msgstr "Can not sync child with parent panel."
 # | "Your domains changed. please do not forget to copy admin links, otherwise
 # "
 # | "you can not access to the panel anymore"
-#: hiddifypanel/panel/admin/Actions.py:87
+#: hiddifypanel/panel/admin/Actions.py:89
 msgid ""
 "Your domains changed. Please do not forget to copy admin links, otherwise "
 "you can not access to the panel anymore."
@@ -100,7 +100,7 @@ msgstr ""
 # | msgid ""
 # | "Please wait about 5 minutes to make sure everything is updated. during "
 # | "this time, please copy and save your proxy links which are:"
-#: hiddifypanel/panel/admin/Actions.py:114
+#: hiddifypanel/panel/admin/Actions.py:116
 msgid ""
 "Success! Please wait around 4 minutes to make sure everything is updated. "
 "During this time, please save your proxy links which are:"
@@ -109,13 +109,13 @@ msgstr ""
 "time, please copy and save your proxy links which are:"
 
 # | msgid "See the log in the bellow screen"
-#: hiddifypanel/panel/admin/Actions.py:142
+#: hiddifypanel/panel/admin/Actions.py:144
 msgid "see the log in the bellow screen"
 msgstr "See the log in the bellow screen"
 
 # | msgid ""
 # | "Success! please wait around 5 minutes to make sure everything is updated"
-#: hiddifypanel/panel/admin/Actions.py:168
+#: hiddifypanel/panel/admin/Actions.py:170
 msgid ""
 "Success! Please wait around 5 minutes to make sure everything is updated."
 msgstr ""
@@ -1922,8 +1922,8 @@ msgstr "Total Usage"
 
 #: hiddifypanel/panel/admin/templates/index.html:108
 #: hiddifypanel/panel/admin/templates/index.html:227
-msgid "In 24 hours"
-msgstr "In 24 hours"
+msgid "In 5 minutes"
+msgstr "In 5 minutes"
 
 #: hiddifypanel/panel/admin/templates/index.html:111
 msgid "Network"
@@ -2106,10 +2106,38 @@ msgstr ""
 "<br>\n"
 "If you have multiple ipv4 or ipv6 in your panel you have to add the domain pointed to them as relay."
 
+#: hiddifypanel/panel/admin/templates/model/user_list.html:8
+msgid "Send Message to User's Telegram"
+msgstr "Send Message to User's Telegram"
+
+#: hiddifypanel/panel/admin/templates/model/user_list.html:10
+msgid "All Users"
+msgstr "All Users"
+
+#: hiddifypanel/panel/admin/templates/model/user_list.html:11
+msgid "Expired Users"
+msgstr "Expired Users"
+
+#: hiddifypanel/panel/admin/templates/model/user_list.html:12
+msgid "Active Users"
+msgstr "Active Users"
+
+#: hiddifypanel/panel/admin/templates/model/user_list.html:14
+msgid "Offline more than 1 hour"
+msgstr "Offline more than 1 hour"
+
+#: hiddifypanel/panel/admin/templates/model/user_list.html:15
+msgid "Offline more than 1 day"
+msgstr "Offline more than 1 day"
+
+#: hiddifypanel/panel/admin/templates/model/user_list.html:16
+msgid "Offline more than 1 week"
+msgstr "Offline more than 1 week"
+
 # | msgid ""
 # | "User usage will be updated every 1 minutes. to update it now <a "
 # | "href=\"%(link)s\" class=\"btn btn-info\">click here</a>"
-#: hiddifypanel/panel/admin/templates/model/user_list.html:7
+#: hiddifypanel/panel/admin/templates/model/user_list.html:23
 #, python-format
 msgid ""
 "User usage will be updated every 6 minutes. To update it now click <a "
@@ -2119,15 +2147,19 @@ msgstr ""
 "href=\"%(link)s\" class=\"btn btn-info\">click here</a>"
 
 # | msgid "Please write your message to send to the telegram:"
-#: hiddifypanel/panel/admin/templates/model/user_list.html:47
+#: hiddifypanel/panel/admin/templates/model/user_list.html:63
 msgid "Please type your message to send to the telegram:"
 msgstr "Please write your message to send to the telegram:"
 
-#: hiddifypanel/panel/admin/templates/model/user_list.html:62
+#: hiddifypanel/panel/admin/templates/model/user_list.html:70
+msgid "Sending..."
+msgstr "Sending..."
+
+#: hiddifypanel/panel/admin/templates/model/user_list.html:88
 msgid "Success"
 msgstr "Success"
 
-#: hiddifypanel/panel/admin/templates/model/user_list.html:63
+#: hiddifypanel/panel/admin/templates/model/user_list.html:89
 msgid "The message has been sent."
 msgstr "The message has been sent."
 
@@ -2692,19 +2724,19 @@ msgstr "Display QR Code"
 
 # | msgid "Next"
 #: hiddifypanel/panel/user/templates/home/index_old.html:344
-#: hiddifypanel/panel/user/templates/home/multi.html:355
+#: hiddifypanel/panel/user/templates/home/multi.html:374
 msgid "next"
 msgstr "Next"
 
 # | msgid "Previous"
 #: hiddifypanel/panel/user/templates/home/index_old.html:345
-#: hiddifypanel/panel/user/templates/home/multi.html:356
+#: hiddifypanel/panel/user/templates/home/multi.html:375
 msgid "previous"
 msgstr "Previous"
 
 # | msgid "Search"
 #: hiddifypanel/panel/user/templates/home/index_old.html:355
-#: hiddifypanel/panel/user/templates/home/multi.html:366
+#: hiddifypanel/panel/user/templates/home/multi.html:385
 msgid "search"
 msgstr "Search"
 
@@ -2790,20 +2822,36 @@ msgstr ""
 "<br />\n"
 "Then apply one of the following configs:"
 
+# | msgid "Do you like Telegram?"
+#: hiddifypanel/panel/user/templates/home/multi.html:320
+msgid "Want to enjoy more with telegram?"
+msgstr "Do you like Telegram?"
+
+# | msgid ""
+# | "Please connect your telegram account to the panel to be informed about "
+# | "latest news."
+#: hiddifypanel/panel/user/templates/home/multi.html:321
+msgid ""
+"Please connect your telegram accout to the panel to be informed about latest"
+" news."
+msgstr ""
+"Please connect your telegram account to the panel to be informed about "
+"latest news."
+
 # | msgid "Check Again"
-#: hiddifypanel/panel/user/templates/home/multi.html:399
+#: hiddifypanel/panel/user/templates/home/multi.html:419
 msgid "Check again"
 msgstr "Check Again"
 
 # | msgid "Turn Off VPN"
-#: hiddifypanel/panel/user/templates/home/multi.html:402
+#: hiddifypanel/panel/user/templates/home/multi.html:422
 msgid "Turn of VPN"
 msgstr "Turn Off VPN"
 
 # | msgid ""
 # | "You Should Visit This Page Without VPN To Use Auto CDN IP. Your Country "
 # | "=%(your_country)s"
-#: hiddifypanel/panel/user/templates/home/multi.html:402
+#: hiddifypanel/panel/user/templates/home/multi.html:422
 #, python-format
 msgid ""
 "You should visit this page without VPN. Your country=%(your_country)s "
@@ -3117,7 +3165,7 @@ msgstr "Common Settings"
 msgid "Telegram Bot"
 msgstr "Telegram Bot"
 
-#: hiddifypanel/templates/admin-layout.html:211
+#: hiddifypanel/templates/admin-layout.html:212
 msgid "Are you sure you want to do this action?"
 msgstr "Are you sure you want to do this action?"
 
@@ -3497,6 +3545,9 @@ msgstr "Actions"
 
 #~ msgid "Online"
 #~ msgstr "Online"
+
+#~ msgid "In 24 hours"
+#~ msgstr "In 24 hours"
 
 #~ msgid "Average"
 #~ msgstr "Average"

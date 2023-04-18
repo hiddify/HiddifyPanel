@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-18 12:46+0200\n"
-"PO-Revision-Date: 2023-04-18 05:46-0500\n"
+"POT-Creation-Date: 2023-04-18 21:32+0200\n"
+"PO-Revision-Date: 2023-04-18 14:32-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -81,12 +81,12 @@ msgstr "套餐结束！"
 
 # | msgid ""
 # | "Rebooting system ... This may take a few minutes. please wait ..."
-#: hiddifypanel/panel/admin/Actions.py:66
+#: hiddifypanel/panel/admin/Actions.py:68
 msgid "rebooting system may takes time please wait"
 msgstr "重新启动系统可能需要一些时间。请稍等..."
 
 # | msgid "Can not sync child with parent panel."
-#: hiddifypanel/panel/admin/Actions.py:81
+#: hiddifypanel/panel/admin/Actions.py:83
 #, fuzzy
 msgid "can not sync child with parent panel"
 msgstr "无法将子面板与父面板同步。"
@@ -95,7 +95,7 @@ msgstr "无法将子面板与父面板同步。"
 # | "Your domains changed. please do not forget to copy admin links, otherwise
 # "
 # | "you can not access to the panel anymore"
-#: hiddifypanel/panel/admin/Actions.py:87
+#: hiddifypanel/panel/admin/Actions.py:89
 #, fuzzy
 msgid ""
 "Your domains changed. Please do not forget to copy admin links, otherwise"
@@ -106,20 +106,20 @@ msgstr "您的域已更改。请不要忘记复制管理链接，否则您将无
 # | "Please wait about 5 minutes to make sure everything is updated. during
 # this "
 # | "time, please copy and save your proxy links which are:"
-#: hiddifypanel/panel/admin/Actions.py:114
+#: hiddifypanel/panel/admin/Actions.py:116
 msgid ""
 "Success! Please wait around 4 minutes to make sure everything is updated."
 " During this time, please save your proxy links which are:"
 msgstr "成功！ 请等待大约 4 分钟，以确保所有内容都已更新。 在此期间，请保存您的代理链接:"
 
 # | msgid "See the log in the bellow screen"
-#: hiddifypanel/panel/admin/Actions.py:142
+#: hiddifypanel/panel/admin/Actions.py:144
 msgid "see the log in the bellow screen"
 msgstr "请参阅以下屏幕中的日志："
 
 # | msgid ""
 # | "Success! please wait around 5 minutes to make sure everything is updated"
-#: hiddifypanel/panel/admin/Actions.py:168
+#: hiddifypanel/panel/admin/Actions.py:170
 msgid "Success! Please wait around 5 minutes to make sure everything is updated."
 msgstr "成功！ 请等待大约 5 分钟，以确保所有内容都已更新。"
 
@@ -1931,8 +1931,8 @@ msgstr "总使用量"
 #: hiddifypanel/panel/admin/templates/index.html:108
 #: hiddifypanel/panel/admin/templates/index.html:227
 #, fuzzy
-msgid "In 24 hours"
-msgstr "24小时内"
+msgid "In 5 minutes"
+msgstr "5分钟后"
 
 #: hiddifypanel/panel/admin/templates/index.html:111
 #, fuzzy
@@ -2118,10 +2118,45 @@ msgstr ""
 "如果您想减少脏 IP 的可能性，您可以添加多个中继服务器<a href=\"https://github.com/hiddify/hiddify-"
 "config/discussions/129\">阅读更多</a>。"
 
+#: hiddifypanel/panel/admin/templates/model/user_list.html:8
+#, fuzzy
+msgid "Send Message to User's Telegram"
+msgstr "发送消息到用户的电报"
+
+#: hiddifypanel/panel/admin/templates/model/user_list.html:10
+#, fuzzy
+msgid "All Users"
+msgstr "全部用户"
+
+#: hiddifypanel/panel/admin/templates/model/user_list.html:11
+#, fuzzy
+msgid "Expired Users"
+msgstr "过期用户"
+
+#: hiddifypanel/panel/admin/templates/model/user_list.html:12
+#, fuzzy
+msgid "Active Users"
+msgstr "活跃用户"
+
+#: hiddifypanel/panel/admin/templates/model/user_list.html:14
+#, fuzzy
+msgid "Offline more than 1 hour"
+msgstr "离线超过1小时"
+
+#: hiddifypanel/panel/admin/templates/model/user_list.html:15
+#, fuzzy
+msgid "Offline more than 1 day"
+msgstr "离线超过1天"
+
+#: hiddifypanel/panel/admin/templates/model/user_list.html:16
+#, fuzzy
+msgid "Offline more than 1 week"
+msgstr "离线超过1周"
+
 # | msgid ""
 # | "User usage will be updated every 1 minutes. to update it now <a "
 # | "href=\"%(link)s\" class=\"btn btn-info\">click here</a>"
-#: hiddifypanel/panel/admin/templates/model/user_list.html:7
+#: hiddifypanel/panel/admin/templates/model/user_list.html:23
 #, fuzzy, python-format
 msgid ""
 "User usage will be updated every 6 minutes. To update it now click <a "
@@ -2131,17 +2166,22 @@ msgstr ""
 "info\">此处</a>。"
 
 # | msgid "Please write your message to send to the telegram:"
-#: hiddifypanel/panel/admin/templates/model/user_list.html:47
+#: hiddifypanel/panel/admin/templates/model/user_list.html:63
 #, fuzzy
 msgid "Please type your message to send to the telegram:"
 msgstr "请写下您要发送到电报的消息："
 
-#: hiddifypanel/panel/admin/templates/model/user_list.html:62
+#: hiddifypanel/panel/admin/templates/model/user_list.html:70
+#, fuzzy
+msgid "Sending..."
+msgstr "发送..."
+
+#: hiddifypanel/panel/admin/templates/model/user_list.html:88
 #, fuzzy
 msgid "Success"
 msgstr "成功"
 
-#: hiddifypanel/panel/admin/templates/model/user_list.html:63
+#: hiddifypanel/panel/admin/templates/model/user_list.html:89
 #, fuzzy
 msgid "The message has been sent."
 msgstr "消息已发送。"
@@ -2712,19 +2752,19 @@ msgstr "显示二维码"
 
 # | msgid "Next"
 #: hiddifypanel/panel/user/templates/home/index_old.html:344
-#: hiddifypanel/panel/user/templates/home/multi.html:355
+#: hiddifypanel/panel/user/templates/home/multi.html:374
 msgid "next"
 msgstr "下一个"
 
 # | msgid "Previous"
 #: hiddifypanel/panel/user/templates/home/index_old.html:345
-#: hiddifypanel/panel/user/templates/home/multi.html:356
+#: hiddifypanel/panel/user/templates/home/multi.html:375
 msgid "previous"
 msgstr "以前的"
 
 # | msgid "Search"
 #: hiddifypanel/panel/user/templates/home/index_old.html:355
-#: hiddifypanel/panel/user/templates/home/multi.html:366
+#: hiddifypanel/panel/user/templates/home/multi.html:385
 msgid "search"
 msgstr "搜索"
 
@@ -2799,14 +2839,30 @@ msgstr ""
 "<br />\n"
 "然后应用以下配置之一："
 
+# | msgid "Do you like Telegram?"
+#: hiddifypanel/panel/user/templates/home/multi.html:320
+#, fuzzy
+msgid "Want to enjoy more with telegram?"
+msgstr "你喜欢电报吗？"
+
+# | msgid ""
+# | "Please connect your telegram account to the panel to be informed about "
+# | "latest news."
+#: hiddifypanel/panel/user/templates/home/multi.html:321
+#, fuzzy
+msgid ""
+"Please connect your telegram accout to the panel to be informed about "
+"latest news."
+msgstr "请将您的电报帐户连接到面板以了解最新消息。"
+
 # | msgid "Check Again"
-#: hiddifypanel/panel/user/templates/home/multi.html:399
+#: hiddifypanel/panel/user/templates/home/multi.html:419
 #, fuzzy
 msgid "Check again"
 msgstr "再检查一遍"
 
 # | msgid "Turn Off VPN"
-#: hiddifypanel/panel/user/templates/home/multi.html:402
+#: hiddifypanel/panel/user/templates/home/multi.html:422
 #, fuzzy
 msgid "Turn of VPN"
 msgstr "关闭 VPN"
@@ -2814,7 +2870,7 @@ msgstr "关闭 VPN"
 # | msgid ""
 # | "You Should Visit This Page Without VPN To Use Auto CDN IP. Your Country "
 # | "=%(your_country)s"
-#: hiddifypanel/panel/user/templates/home/multi.html:402
+#: hiddifypanel/panel/user/templates/home/multi.html:422
 #, fuzzy, python-format
 msgid ""
 "You should visit this page without VPN. Your country=%(your_country)s "
@@ -3130,7 +3186,7 @@ msgstr "商业设置"
 msgid "Telegram Bot"
 msgstr "电报机器人"
 
-#: hiddifypanel/templates/admin-layout.html:211
+#: hiddifypanel/templates/admin-layout.html:212
 #, fuzzy
 msgid "Are you sure you want to do this action?"
 msgstr "您确定要执行此操作吗？"
@@ -3524,6 +3580,9 @@ msgstr "动作"
 
 #~ msgid "Online"
 #~ msgstr "在线的"
+
+#~ msgid "In 24 hours"
+#~ msgstr "24小时内"
 
 #~ msgid "Average"
 #~ msgstr "平均的"
