@@ -71,6 +71,7 @@ def make_proxy(proxy, domain_db, phttp=80, ptls=443):
         return {'name': name, 'msg': "not cdn proxy  in cdn domain",'type':'debug', 'proto': proxy.proto}
 
     cdn_forced_host = domain_db.cdn_ip or domain_db.domain
+    
     alpn="h2" if proxy.l3 in ['tls_h2','reality'] else 'h2,http/1.1' if proxy.l3 == 'tls_h2_h1' else "http/1.1"
     base = {
         'name': name.replace(" ", "_"),
@@ -108,6 +109,8 @@ def make_proxy(proxy, domain_db, phttp=80, ptls=443):
         base['reality_short_id']=random.sample(hconfigs[ConfigEnum.reality_short_ids].split(','),1)[0]
         base['reality_pbk']=hconfigs[ConfigEnum.reality_public_key]
         base['sni']=random.sample(hconfigs[ConfigEnum.reality_server_names].split(","),1)[0]
+        # if not domain_db.cdn_ip:
+        #     base['server']=hiddify.get_domain_ip(base['server'])
 
     if "Fake" in proxy.cdn:
         if not hconfigs[ConfigEnum.domain_fronting_domain]:
@@ -169,7 +172,7 @@ def make_proxy(proxy, domain_db, phttp=80, ptls=443):
         base['transport'] = 'grpc'
         base['grpc_mode'] = "multi"
         base['grpc_service_name'] = f'{path[base["proto"]]}{hconfigs[ConfigEnum.path_grpc]}'
-        base['path'] = base['grpc_service_name']
+        base['path'] = base['grpc_service_name'] 
         return base
 
     if "h1" in proxy.transport:
