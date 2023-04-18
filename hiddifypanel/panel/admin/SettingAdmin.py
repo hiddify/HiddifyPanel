@@ -38,49 +38,56 @@ class SettingAdmin(FlaskView):
             boolconfigs=BoolConfig.query.filter(BoolConfig.child_id==0).all()
             bool_types={c.key:'bool' for c in boolconfigs}
             old_configs=get_hconfigs()
+            changed_configs={}
             for cat,vs in form.data.items():#[c for c in ConfigEnum]:
             
                 if type(vs) is dict:
-                    for k,v in vs.items():
-            
-                        if k in [c for c in ConfigEnum]:
-                            #if not k.commercial():continue
-                            if k in bool_types:
-                                BoolConfig.query.filter(BoolConfig.key==k,BoolConfig.child_id==0).first().value= v==True
-                            else:
-                                if type(v)!=str:
-                                    v=''
-                                if "_domain" in k or k in [ConfigEnum.admin_secret,ConfigEnum.reality_server_names]:
-                                    v=v.lower()
-                                if k in [ConfigEnum.reality_server_names,ConfigEnum.reality_fallback_domain]:
-                                    for d in v.split(","):
-                                        if not d:continue
-                                        if not hiddify.is_domain_reality_friendly(d):
-                                            flash(_("Domain is not REALITY friendly!")+" "+d,'error')
-                                            return render_template('config.html', form=form)
-                                        hiddify.debug_flash_if_not_in_the_same_asn(d)
+                    for k in ConfigEnum:
+                        if k not in vs:continue
+                        v=vs[k]
+                        if k.type() == str:
+                            if "_domain" in k or k in [ConfigEnum.admin_secret,ConfigEnum.reality_server_names]:
+                                v=v.lower()
+                        
+                            if "port" in k:
+                                for p in v.split(","):
+                                    for k2,v2 in vs.items():
+                                        if "port" in k2 and k!=k2 and p in v2:
+                                            flash(_("Port is already used! in")+f" {k2} {k}",'error')
+                                            return render_template('config.html', form=form)    
+                            if k == ConfigEnum.parent_panel and v!='':
+                                # v=(v+"/").replace("/admin",'')
+                                v=re.sub("(/admin/.*)","/",v)
 
-                                if "port" in k:
-                                    for p in v.split(","):
-                                        for k2,v2 in vs.items():
-                                            if "port" in k2 and k!=k2 and p in v2:
-                                                flash(_("Port is already used! in")+f" {k2} {k}",'error')
-                                                return render_template('config.html', form=form)    
-                                if k == ConfigEnum.parent_panel and v!='':
-                                    # v=(v+"/").replace("/admin",'')
-                                    v=re.sub("(/admin/.*)","/",v)
-
-                                    try:
-                                        if hiddify_api.sync_child_to_parent(v)['status']!=200:
-                                            flash(_("Can not connect to parent panel!"),'error')
-                                            return render_template('config.html', form=form)
-                                    except:
+                                try:
+                                    if hiddify_api.sync_child_to_parent(v)['status']!=200:
                                         flash(_("Can not connect to parent panel!"),'error')
                                         return render_template('config.html', form=form)
-                                StrConfig.query.filter(StrConfig.key==k,StrConfig.child_id==0).first().value=v
-
+                                except:
+                                    flash(_("Can not connect to parent panel!"),'error')
+                                    return render_template('config.html', form=form)
+                            StrConfig.query.filter(StrConfig.key==k,StrConfig.child_id==0).first().value=v
+                        if old_configs[k]!=v:
+                            changed_configs[k]=v
+                            
                 # print(cat,vs)
 
+            merged_configs={**old_configs, **changed_configs}
+            for k in [ConfigEnum.reality_server_names,ConfigEnum.reality_fallback_domain]:
+                v=merged_configs[k]
+                for d in v.split(","):
+                    if not d:continue
+                    if not hiddify.is_domain_reality_friendly(d):
+                        flash(_("Domain is not REALITY friendly!")+" "+d,'error')
+                        return render_template('config.html', form=form)
+                    hiddify.debug_flash_if_not_in_the_same_asn(d)
+            fallback=merged_configs[ConfigEnum.reality_fallback_domain]
+            for d in merged_configs[ConfigEnum.reality_server_names].split(","):
+                if not hiddify.fallback_domain_compatible_with_servernames(fallback, d):
+                    flash(_("REALITY Fallback domain is not compaitble with server names!")+" "+d+" != "+fallback,'error')
+                    return render_template('config.html', form=form)
+            for k,v in changed_configs.items():
+                set_hconfig(k, v,0,False)
             db.session.commit()
             flask_babel.refresh()
             flask_babelex.refresh()

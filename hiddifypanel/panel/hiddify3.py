@@ -182,7 +182,7 @@ def is_domain_support_tls_13(domain):
         with context.wrap_socket(sock, server_hostname=domain) as ssock:
             return ssock.version()=="TLSv1.3"
 
-def is_domain_support_h2(domain):
+def is_domain_support_h2(sni,server=None):
     try:
         import h2.connection
         import socket
@@ -192,8 +192,8 @@ def is_domain_support_h2(domain):
         context.options |= ssl.OP_NO_COMPRESSION
         context.set_ciphers("ECDHE+AESGCM:ECDHE+CHACHA20:DHE+AESGCM:DHE+CHACHA20")
         context.set_alpn_protocols(["h2"])
-        with socket.create_connection((domain, 443)) as sock:
-            with context.wrap_socket(sock, server_hostname=domain) as ssock:
+        with socket.create_connection((server or sni, 443)) as sock:
+            with context.wrap_socket(sock, server_hostname=sni) as ssock:
                 return ssock.version()=="TLSv1.3"
     except Exception as e:
         print(f'{domain} {e}')
@@ -213,6 +213,10 @@ def debug_flash_if_not_in_the_same_asn(domain):
         # country_dip= ipcountry.get(dip)
         if asn_ipv4.get('autonomous_system_number')!=asn_dip.get('autonomous_system_number'):
             flash(_("selected domain for REALITY is not in the same ASN. To better use of the protocol, it is better to find a domain in the same ASN." ) +f"<br> Server ASN={asn_ipv4.get('autonomous_system_organization','unknown')}<br>{domain}_ASN={asn_dip.get('autonomous_system_organization','unknown')}", "warning")
+
+def fallback_domain_compatible_with_servernames(fallback_domain,servername):
+    return is_domain_support_h2(servername,fallback_domain)
+    
 def generate_x25519_keys():
     # Run the "xray x25519" command and capture its output
     cmd = "xray x25519"
