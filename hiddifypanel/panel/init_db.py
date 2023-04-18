@@ -84,7 +84,7 @@ def init_db():
     db.session.commit()
     return BoolConfig.query.all()
 
-def _v32():
+def _v33():
     Proxy.query.filter(Proxy.l3==ProxyL3.reality).delete()
     _v31()
 def _v31():
