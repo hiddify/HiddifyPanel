@@ -244,8 +244,8 @@ def to_link(proxy):
         baseurl  += '&headerType=None'  # if not quic
     if proxy['mode'] == 'Fake' or proxy['allow_insecure']:
         baseurl  += "&allowInsecure=true"
-    if ProxyTransport.XTLS in proxy['transport']:
-        baseurl+= f'&flow={proxy["flow"]}&type=tcp'
+    if  proxy['flow']:
+        baseurl+= f'&flow={proxy["flow"]}'
 
     infos = f'#{name_link}'
     
