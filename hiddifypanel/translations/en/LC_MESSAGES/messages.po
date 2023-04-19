@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-19 12:43+0200\n"
-"PO-Revision-Date: 2023-04-19 05:43-0500\n"
+"POT-Creation-Date: 2023-04-19 13:11+0200\n"
+"PO-Revision-Date: 2023-04-19 06:11-0500\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -2186,17 +2186,27 @@ msgstr ""
 msgid "Please type your message to send to the telegram:"
 msgstr "Please write your message to send to the telegram:"
 
-#: hiddifypanel/panel/admin/templates/model/user_list.html:70
+#: hiddifypanel/panel/admin/templates/model/user_list.html:71
 msgid "Sending..."
 msgstr "Sending..."
 
-#: hiddifypanel/panel/admin/templates/model/user_list.html:88
+#: hiddifypanel/panel/admin/templates/model/user_list.html:91
 msgid "Success"
 msgstr "Success"
 
-#: hiddifypanel/panel/admin/templates/model/user_list.html:89
+#: hiddifypanel/panel/admin/templates/model/user_list.html:92
 msgid "The message has been sent."
 msgstr "The message has been sent."
+
+#: hiddifypanel/panel/admin/templates/model/user_list.html:95
+#, fuzzy
+msgid "Hover the user to see the reason"
+msgstr "Hover the user to see the reason"
+
+#: hiddifypanel/panel/admin/templates/model/user_list.html:104
+#, fuzzy
+msgid "The message was not sent to"
+msgstr "The message was not sent to"
 
 # | msgid ""
 # | "Hooray 🎉 🎉 🎉 \n"
