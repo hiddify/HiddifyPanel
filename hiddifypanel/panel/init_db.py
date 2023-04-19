@@ -232,7 +232,7 @@ def _v1():
         # for fd in fake_domains:
         #     if not Domain.query.filter(Domain.domain==fd).first():
         #         db.session.add(Domain(domain=fd,mode='fake',alias='fake domain',cdn_ip=external_ip))
-        # db.session.bulk_save_objects(data)
+        db.session.bulk_save_objects(data)
 
 def _v7():
     try:
