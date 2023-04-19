@@ -270,7 +270,7 @@ def to_clash(proxy, meta_or_normal):
     if meta_or_normal == "normal":
         if proxy['proto'] == "vless":
             return {'name': name, 'msg': "vless not supported in clash",'type':'debug'}
-        if proxy['proto'] == ProxyProto.XTLS:
+        if proxy.get('flow'):
             return {'name': name, 'msg': "xtls not supported in clash",'type':'debug'}
         if proxy['transport'] == "shadowtls":
             return {'name': name, 'msg': "shadowtls not supported in clash",'type':'debug'}
