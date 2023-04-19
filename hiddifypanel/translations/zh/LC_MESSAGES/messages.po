@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-18 23:30+0200\n"
-"PO-Revision-Date: 2023-04-18 16:30-0500\n"
+"POT-Creation-Date: 2023-04-19 12:43+0200\n"
+"PO-Revision-Date: 2023-04-19 05:43-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -59,7 +59,7 @@ msgstr "配置已成功更改。"
 #: hiddifypanel/panel/admin/DomainAdmin.py:166
 #: hiddifypanel/panel/admin/QuickSetup.py:117
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:109
-#: hiddifypanel/panel/hiddify.py:271
+#: hiddifypanel/panel/hiddify.py:276
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr "域名无法解析！你的域有问题"
 
@@ -69,7 +69,7 @@ msgstr "域名无法解析！你的域有问题"
 msgid "0 - Last day"
 msgstr "0 - 最后一天"
 
-#: hiddifypanel/panel/hiddify3.py:215
+#: hiddifypanel/panel/hiddify3.py:220
 #, fuzzy
 msgid ""
 "selected domain for REALITY is not in the same ASN. To better use of the "
@@ -237,7 +237,7 @@ msgstr "选择此选项以恢复您的域。"
 #: hiddifypanel/panel/admin/ProxyAdmin.py:124
 #: hiddifypanel/panel/admin/QuickSetup.py:80
 #: hiddifypanel/panel/admin/QuickSetup.py:107
-#: hiddifypanel/panel/admin/SettingAdmin.py:238
+#: hiddifypanel/panel/admin/SettingAdmin.py:243
 #: hiddifypanel/panel/commercial/CommercialSettings.py:218
 msgid "Submit"
 msgstr "提交"
@@ -542,14 +542,14 @@ msgstr "管理面板语言"
 
 # | msgid "English انگلیسی 英语"
 #: hiddifypanel/panel/admin/QuickSetup.py:77
-#: hiddifypanel/panel/admin/SettingAdmin.py:169
+#: hiddifypanel/panel/admin/SettingAdmin.py:171
 #: hiddifypanel/panel/commercial/CommercialSettings.py:150
 msgid "lang.en"
 msgstr "English انگلیسی 英语"
 
 # | msgid "Persian فارسی 波斯语"
 #: hiddifypanel/panel/admin/QuickSetup.py:77
-#: hiddifypanel/panel/admin/SettingAdmin.py:169
+#: hiddifypanel/panel/admin/SettingAdmin.py:171
 #: hiddifypanel/panel/commercial/CommercialSettings.py:150
 msgid "lang.fa"
 msgstr "Persian فارسی 波斯语"
@@ -567,14 +567,14 @@ msgid "config.country.label"
 msgstr ""
 
 #: hiddifypanel/panel/admin/QuickSetup.py:79
-#: hiddifypanel/panel/admin/SettingAdmin.py:171
+#: hiddifypanel/panel/admin/SettingAdmin.py:173
 #: hiddifypanel/panel/commercial/CommercialSettings.py:152
 #, fuzzy
 msgid "Iran"
 msgstr "伊朗"
 
 #: hiddifypanel/panel/admin/QuickSetup.py:79
-#: hiddifypanel/panel/admin/SettingAdmin.py:171
+#: hiddifypanel/panel/admin/SettingAdmin.py:173
 #: hiddifypanel/panel/commercial/CommercialSettings.py:152
 #, fuzzy
 msgid "China"
@@ -591,8 +591,8 @@ msgstr "它根据每个国家/地区的过滤条件为每个国家/地区应用�
 
 # | msgid "Error! Invalid Domain.  The Domain Format is www.google.com"
 #: hiddifypanel/panel/admin/QuickSetup.py:96
-#: hiddifypanel/panel/admin/SettingAdmin.py:189
-#: hiddifypanel/panel/admin/SettingAdmin.py:192
+#: hiddifypanel/panel/admin/SettingAdmin.py:191
+#: hiddifypanel/panel/admin/SettingAdmin.py:194
 #: hiddifypanel/panel/commercial/CommercialSettings.py:170
 #: hiddifypanel/panel/commercial/CommercialSettings.py:173
 msgid "config.Invalid domain"
@@ -601,8 +601,8 @@ msgstr "错误！域无效。域格式为 www.google.com"
 # | msgid "Domain is exist in domains section. Use another domain"
 #: hiddifypanel/panel/admin/QuickSetup.py:98
 #: hiddifypanel/panel/admin/QuickSetup.py:99
-#: hiddifypanel/panel/admin/SettingAdmin.py:196
-#: hiddifypanel/panel/admin/SettingAdmin.py:197
+#: hiddifypanel/panel/admin/SettingAdmin.py:198
+#: hiddifypanel/panel/admin/SettingAdmin.py:199
 #: hiddifypanel/panel/commercial/CommercialSettings.py:177
 #: hiddifypanel/panel/commercial/CommercialSettings.py:178
 msgid "config.Domain already used"
@@ -701,54 +701,54 @@ msgid "REALITY Fallback domain is not compaitble with server names!"
 msgstr ""
 
 # | msgid "Chinese چینی 中国人"
-#: hiddifypanel/panel/admin/SettingAdmin.py:169
+#: hiddifypanel/panel/admin/SettingAdmin.py:171
 #: hiddifypanel/panel/commercial/CommercialSettings.py:150
 msgid "lang.zh"
 msgstr "Chinese چینی 中国人"
 
-#: hiddifypanel/panel/admin/SettingAdmin.py:171
+#: hiddifypanel/panel/admin/SettingAdmin.py:173
 #, fuzzy
 msgid "Others"
 msgstr "其他的"
 
-#: hiddifypanel/panel/admin/SettingAdmin.py:173
+#: hiddifypanel/panel/admin/SettingAdmin.py:175
 #: hiddifypanel/panel/commercial/CommercialSettings.py:154
 #, fuzzy
 msgid "Release"
 msgstr "发布"
 
-#: hiddifypanel/panel/admin/SettingAdmin.py:173
+#: hiddifypanel/panel/admin/SettingAdmin.py:175
 #: hiddifypanel/panel/commercial/CommercialSettings.py:154
 #, fuzzy
 msgid "Develop"
 msgstr "آخ犹"
 
 # | msgid "Python: low performance"
-#: hiddifypanel/panel/admin/SettingAdmin.py:179
+#: hiddifypanel/panel/admin/SettingAdmin.py:181
 #: hiddifypanel/panel/commercial/CommercialSettings.py:160
 msgid "lib.telegram.python"
 msgstr "Python：低性能"
 
 # | msgid "Go: high performance: no ad support"
-#: hiddifypanel/panel/admin/SettingAdmin.py:179
+#: hiddifypanel/panel/admin/SettingAdmin.py:181
 #: hiddifypanel/panel/commercial/CommercialSettings.py:160
 msgid "lib.telegram.go"
 msgstr "Go：高性能：无广告支持"
 
 # | msgid "Not Working - Original: High Performance"
-#: hiddifypanel/panel/admin/SettingAdmin.py:179
+#: hiddifypanel/panel/admin/SettingAdmin.py:181
 #: hiddifypanel/panel/commercial/CommercialSettings.py:160
 msgid "lib.telegram.orignal"
 msgstr "原文：高性能"
 
 # | msgid "NOT Working - Erlang: Medium Performance"
-#: hiddifypanel/panel/admin/SettingAdmin.py:179
+#: hiddifypanel/panel/admin/SettingAdmin.py:181
 #: hiddifypanel/panel/commercial/CommercialSettings.py:160
 msgid "lib.telegram.erlang"
 msgstr "Erlang：中等性能"
 
 # | msgid "Telegram proxy library"
-#: hiddifypanel/panel/admin/SettingAdmin.py:180
+#: hiddifypanel/panel/admin/SettingAdmin.py:182
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/panel/commercial/CommercialSettings.py:161
 msgid "config.telegram_lib.label"
@@ -760,25 +760,30 @@ msgstr "电报代理库"
 # | "python works in all servers, others may have some issue. Test proxy after
 # "
 # | "changing it."
-#: hiddifypanel/panel/admin/SettingAdmin.py:180
+#: hiddifypanel/panel/admin/SettingAdmin.py:182
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/panel/commercial/CommercialSettings.py:161
 msgid "config.telegram_lib.description"
 msgstr "您可以在不同的电报库之间切换。"
 
-#: hiddifypanel/panel/admin/SettingAdmin.py:200
+# | msgid "Test and Suggest Domain "
+#: hiddifypanel/panel/admin/SettingAdmin.py:202
+msgid "Example Domains"
+msgstr ""
+
+#: hiddifypanel/panel/admin/SettingAdmin.py:204
 #, fuzzy
 msgid "Invalid REALITY hostnames"
 msgstr "REALITY 主机名无效"
 
-#: hiddifypanel/panel/admin/SettingAdmin.py:202
+#: hiddifypanel/panel/admin/SettingAdmin.py:207
 #: hiddifypanel/panel/commercial/CommercialSettings.py:182
 #, fuzzy
 msgid "Invalid admin link"
 msgstr "管理员链接无效"
 
 # | msgid "Invalid Telegram bot token."
-#: hiddifypanel/panel/admin/SettingAdmin.py:204
+#: hiddifypanel/panel/admin/SettingAdmin.py:209
 #: hiddifypanel/panel/commercial/CommercialSettings.py:184
 #, fuzzy
 msgid "config.Invalid telegram bot token"
@@ -786,7 +791,7 @@ msgstr "电报机器人令牌无效"
 
 # | msgid ""
 # | "Invalid link. it should be on this format: (https or http://example.com)"
-#: hiddifypanel/panel/admin/SettingAdmin.py:206
+#: hiddifypanel/panel/admin/SettingAdmin.py:211
 #: hiddifypanel/panel/commercial/CommercialSettings.py:186
 msgid "config.Invalid brand link"
 msgstr "品牌链接无效"
@@ -794,21 +799,21 @@ msgstr "品牌链接无效"
 # | msgid ""
 # | "Invalid UUID secret. example: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n"
 # | "\n"
-#: hiddifypanel/panel/admin/SettingAdmin.py:210
+#: hiddifypanel/panel/admin/SettingAdmin.py:215
 #: hiddifypanel/panel/commercial/CommercialSettings.py:190
 msgid "config.invalid uuid"
 msgstr "UUID 密码无效。例如，6098ea35-8cb2-4a08-ba15-2be25bc49cb6"
 
 # | msgid "Invalid proxy path. It should be asci string (a-z A-Z 0-9)"
-#: hiddifypanel/panel/admin/SettingAdmin.py:214
+#: hiddifypanel/panel/admin/SettingAdmin.py:219
 #: hiddifypanel/panel/commercial/CommercialSettings.py:194
 msgid "config.Invalid proxy path"
 msgstr "代理路径无效。它应该是 asci 字符串 (a-z A-Z 0-9)"
 
 # | msgid ""
 # | "Invalid port. it should be comma separated Integer e.g.  1000,1001"
-#: hiddifypanel/panel/admin/SettingAdmin.py:219
-#: hiddifypanel/panel/admin/SettingAdmin.py:222
+#: hiddifypanel/panel/admin/SettingAdmin.py:224
+#: hiddifypanel/panel/admin/SettingAdmin.py:227
 #: hiddifypanel/panel/commercial/CommercialSettings.py:199
 #: hiddifypanel/panel/commercial/CommercialSettings.py:202
 msgid "config.Invalid port"

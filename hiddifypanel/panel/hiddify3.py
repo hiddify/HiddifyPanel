@@ -192,9 +192,14 @@ def is_domain_support_h2(sni,server=None):
         context.options |= ssl.OP_NO_COMPRESSION
         context.set_ciphers("ECDHE+AESGCM:ECDHE+CHACHA20:DHE+AESGCM:DHE+CHACHA20")
         context.set_alpn_protocols(["h2"])
+        start_time = time.monotonic()
         with socket.create_connection((server or sni, 443)) as sock:
             with context.wrap_socket(sock, server_hostname=sni) as ssock:
-                return ssock.version()=="TLSv1.3"
+                elapsed_time = time.monotonic() - start_time
+                valid= ssock.version()=="TLSv1.3"
+                if valid:
+                    return int(max(1,elapsed_time*1000))
+                return False
     except Exception as e:
         print(f'{domain} {e}')
         return False
@@ -230,5 +235,7 @@ def generate_x25519_keys():
     # Return the keys as a tuple
     return {"private_key":private_key, "public_key":public_key}
 
+
 from .hiddify2 import *
 from .hiddify import *
+

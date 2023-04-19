@@ -153,6 +153,7 @@ def get_config_form():
     class DynamicForm(FlaskForm):
         pass
     is_parent=hconfig(ConfigEnum.is_parent)
+    
     for cat in ConfigCategory:
         if cat=='hidden':continue
 
@@ -163,6 +164,7 @@ def get_config_form():
         class CategoryForm(FlaskForm):
             description_for_fieldset=wtf.fields.TextAreaField("",description=_(f'config.{cat}.description'),render_kw={"class":"d-none"})
         for c in cat_configs:
+            extra_info=''
             if c.key in bool_types:
                 field= SwitchField(_(f'config.{c.key}.label'), default=c.value,description=_(f'config.{c.key}.description')) 
             elif c.key==ConfigEnum.lang or c.key==ConfigEnum.admin_lang:
@@ -196,8 +198,11 @@ def get_config_form():
                         validators.append(wtf.validators.NoneOf([d.domain.lower() for d in Domain.query.all()],_("config.Domain already used")))
                         validators.append(wtf.validators.NoneOf([cc.value.lower() for cc in StrConfig.query.filter(StrConfig.child_id==0).all() if cc.key!=c.key and  "fakedomain" in cc.key and cc.key!=ConfigEnum.decoy_domain],_("config.Domain already used")))
                     render_kw['required']=""
+                if c.key ==ConfigEnum.reality_fallback_domain:
+                    extra_info=f" <a target='_blank' href='{url_for('admin.Actions:get_some_random_reality_friendly_domain',test_domain=c.value)}'>"+_('Example Domains')+"</a>"
                 if c.key ==ConfigEnum.reality_server_names:
                     validators.append(wtf.validators.Regexp("^([\w-]+\.)+[\w-]+(,\s*([\w-]+\.)+[\w-]+)*$",re.IGNORECASE,_("Invalid REALITY hostnames")))                
+                    
                 if c.key ==ConfigEnum.parent_panel:
                     validators.append(wtf.validators.Regexp("()|(http(s|)://([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})/.*)",re.IGNORECASE,_("Invalid admin link")))
                 if c.key == ConfigEnum.telegram_bot_token:
@@ -228,7 +233,7 @@ def get_config_form():
                     if hasattr(val,"regex"):
                         render_kw['pattern']=val.regex.pattern
                         render_kw['title']=val.message
-                field= wtf.fields.StringField(_(f'config.{c.key}.label'), validators, default=c.value, description=_(f'config.{c.key}.description'),render_kw=render_kw) 
+                field= wtf.fields.StringField(_(f'config.{c.key}.label'), validators, default=c.value, description=_(f'config.{c.key}.description')+extra_info,render_kw=render_kw) 
             setattr(CategoryForm,c.key , field)    
 
         multifield=wtf.fields.FormField(CategoryForm,Markup('<i class="fa-solid fa-plus"></i>&nbsp'+_(f'config.{cat}.label')))
