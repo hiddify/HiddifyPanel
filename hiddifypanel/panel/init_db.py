@@ -50,6 +50,7 @@ def init_db():
     execute(f'update admin_user set parent_admin_id=1 where parent_admin_id is NULL and 1!=id')
     execute(f'update dailyusage set child_id=0 where child_id is NULL')
     execute(f'update dailyusage set admin_id=1 where admin_id is NULL')
+    execute(f'update dailyusage set admin_id=1 where admin_id = 0')
     execute(f'update user set added_by=1 where added_by is NULL')
     execute(f'update str_config set child_id=0 where child_id is NULL')
     execute(f'update bool_config set child_id=0 where child_id is NULL')

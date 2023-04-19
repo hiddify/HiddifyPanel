@@ -14,6 +14,9 @@ class DailyUsage(db.Model, SerializerMixin):
     online = db.Column(db.Integer, default=0, nullable=False)
     admin_id=db.Column(db.Integer,db.ForeignKey('admin_user.id'), default=0, nullable=False)
     child_id=db.Column(db.Integer,db.ForeignKey('child.id'), default=0, nullable=False)
+
+    # def __str__(self):
+    #     return str([id,date,usage,online,admin_id,child_id])
     
 from sqlalchemy import column
 
@@ -21,11 +24,14 @@ def get_daily_usage_stats(admin_id=None,child_id=None):
     if not admin_id:
         admin_id=g.admin.id
     sub_admins=AdminUser.query.filter(AdminUser.id==admin_id).first().recursive_sub_admins_ids()
+    print(sub_admins)
     def filter_daily_usage_admin(query):
+        # print('before',admin_id,query.all())
         if admin_id:
             query=query.filter(DailyUsage.admin_id.in_(sub_admins))
         if child_id:
             query=query.filter(DailyUsage.child_id==child_id)
+        # print('after',admin_id,query.all())
         return query    
 
     def filter_user_admin(query):

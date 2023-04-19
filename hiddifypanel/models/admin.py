@@ -37,12 +37,16 @@ class AdminUser(db.Model, SerializerMixin):
     parent_admin_id = db.Column(db.Integer, db.ForeignKey('admin_user.id'),default=1)
     parent_admin = db.relationship('AdminUser', remote_side=[id], backref='sub_admins')
 
-    def recursive_sub_admins_ids(self,depth=20):
+    def recursive_sub_admins_ids(self, depth=20, seen=None):
+        if seen is None:
+            seen = set()
         sub_admin_ids = []
-        sub_admin_ids.append(self.id)
-        if depth>0:
+        if self.id not in seen:
+            sub_admin_ids.append(self.id)
+            seen.add(self.id)
+        if depth > 0:
             for sub_admin in self.sub_admins:
-                sub_admin_ids += sub_admin.recursive_sub_admins_ids(depth-1)
+                sub_admin_ids += sub_admin.recursive_sub_admins_ids(depth-1, seen=seen)
         return sub_admin_ids
 
     def __str__(self):

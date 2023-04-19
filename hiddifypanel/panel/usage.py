@@ -43,13 +43,15 @@ def add_users_usage(dbusers_bytes):
     res={}
     have_change=False
     before_enabled_users=xray_api.get_enabled_users()
-    daily_usage=DailyUsage.query.filter(DailyUsage.date == datetime.date.today()).first()
-    print(daily_usage)
-    if not daily_usage:
-        daily_usage=DailyUsage()
-        db.session.add(daily_usage)
+    daily_usage={}
+    today=datetime.date.today()
+    for adm in AdminUser.query.all():
+        daily_usage[adm.id]=DailyUsage.query.filter(DailyUsage.date == today).first()
+        if not daily_usage[adm.id]:
+            daily_usage[adm.id]=DailyUsage(admin_id=adm.id)
+            db.session.add(daily_usage[adm.id])
 
-    daily_usage.online=User.query.filter(func.DATE(User.last_online)==datetime.date.today()).count()
+        daily_usage[adm.id].online=User.query.filter(User.added_by==adm.id).filter(func.DATE(User.last_online)==today).count()
     for user,usage_bytes in dbusers_bytes.items():
         # user_active_before=is_user_active(user)
 
@@ -64,7 +66,7 @@ def add_users_usage(dbusers_bytes):
         if type(usage_bytes) !=int or usage_bytes==0:
             res[user.uuid]="No usage" 
         else:
-            daily_usage.usage+=usage_bytes
+            daily_usage.get(user.added_by,daily_usage[1]).usage+=usage_bytes
             in_gig=(usage_bytes)/to_gig_d
             res[user.uuid]=in_gig
             user.current_usage_GB += in_gig
