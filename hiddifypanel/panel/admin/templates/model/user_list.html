@@ -13,7 +13,7 @@
     <br>
     <button onclick="show_send_message('offline 1h')" type="button" class="btn btn-success" >{{_("Offline more than 1 hour")}}</button>    
     <button onclick="show_send_message('offline 1d')" type="button" class="btn btn-warning" >{{_("Offline more than 1 day")}}</button>    
-    <button onclick="show_send_message('offline 7d')" type="button" class="btn btn-danger" >{{_("Offline more than 1 week")}}</button>    
+    <button onclick="show_send_message('offline 1w')" type="button" class="btn btn-danger" >{{_("Offline more than 1 week")}}</button>    
 </details>
 </div>
     %endif
@@ -66,10 +66,9 @@
             callback: function (result) {
                 console.log(result);                                    
                 if (!result)return
-                let dialog = bootbox.dialog({
-                                
-                                message: '<p><i class="fas fa-spin fa-spinner"></i> {{_("Sending...")}}</p>'
-                                });
+                // let dialog = bootbox.dialog({           
+                //     message: '<p><i class="fas fa-spin fa-spinner"></i> {{_("Sending...")}}</p>'
+                // });
 
                 $.ajax({
                     type: "POST",
@@ -79,17 +78,24 @@
                     contentType: "application/json",
                     dataType: "json",
                     error:function(jqx,status,error){
-                        dialog.find('.bootbox-body').html(status+" "+error+" "+JSON.stringify(jqx));
+                        // dialog.modal('hide');
+                        // dialog.find('.bootbox-body').html(status+" "+error+" "+JSON.stringify(jqx));
+                        $(document).Toasts('create', {
+                                class: 'bg-danger',
+                                position: "{{'topRight' if get_locale()=='fa' else 'topLeft'}}" ,
+                                title: status +" "+error, 
+                                body: JSON.stringify(jqx)
+                            })    
                     },
                     success: function(data){
-                        dialog.modal('hide');
+                        // dialog.modal('hide');
                         if (data['msg']=='success'){
-                        $(document).Toasts('create', {
-                            class: 'bg-success',
-                            autohide:true,
-                            position: "{{'topRight' if get_locale()=='fa' else 'topLeft'}}" ,
-                            title: `{{_('Success')}}`,
-                            body: `{{_("The message has been sent.")}}`
+                            $(document).Toasts('create', {
+                                class: 'bg-success',
+                                autohide:true,
+                                position: "{{'topRight' if get_locale()=='fa' else 'topLeft'}}" ,
+                                title: `{{_('Success')}}`,
+                                body: `{{_("The message has been sent.")}}`
                             })    
                         }else{
                             res='{{_("Hover the user to see the reason")}}'
@@ -99,10 +105,10 @@
                             }
                             
                             $(document).Toasts('create', {
-                            class: 'bg-danger',
-                            position: "{{'topRight' if get_locale()=='fa' else 'topLeft'}}" ,
-                            title: `{{_('The message was not sent to')}}`,
-                            body: res
+                                class: 'bg-danger',
+                                position: "{{'topRight' if get_locale()=='fa' else 'topLeft'}}" ,
+                                title: `{{_('The message was not sent to')}}`,
+                                body: res
                             })    
                         }
                     },
