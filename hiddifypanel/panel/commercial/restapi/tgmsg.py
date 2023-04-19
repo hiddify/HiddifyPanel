@@ -16,7 +16,7 @@ class SendMsgResource(Resource):
         msg=request.json
         users=User.query.filter(User.telegram_id!=None)
         id=msg['id']
-        if id.isnumeric():
+        if type(id)==int or id.isnumeric():
             users=[users.filter(User.id==int(msg['id'])).first() or abort(403)]
         elif id=='all':
             users=users.all()
@@ -36,14 +36,23 @@ class SendMsgResource(Resource):
             elif id=='offline 1w':            
                 d7=datetime.datetime.now()-datetime.timedelta(days=7)
                 users=[u for u in users if is_user_active(u) and u.last_online<d7]
-                
-        
+            
+        res={}
         for user in users:          
-            from hiddifypanel.panel.commercial.telegrambot import Usage
-            keyboard=Usage.user_keyboard(user.uuid)
-            txt= msg['text']+"\n\n"+Usage.get_usage_msg(user.uuid)
-            bot.send_message(user.telegram_id,txt,reply_markup=keyboard)
-        return "success"
+            try:
+                from hiddifypanel.panel.commercial.telegrambot import Usage
+                keyboard=Usage.user_keyboard(user.uuid)
+                txt= msg['text']+"\n\n"+Usage.get_usage_msg(user.uuid)
+                print('sending to ',user )
+                bot.send_message(user.telegram_id,txt,reply_markup=keyboard)
+            except Exception as e:
+                import traceback
+                res[user.uuid]={'name':user.name,'error':f'{e}'}
+        if len(res)==0:
+            return {'msg':"success"}
+        else:
+            return {'msg':'error','res':res}
+            
 
             
 

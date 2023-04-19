@@ -65,6 +65,7 @@
             locale: '{{get_locale()}}',
             callback: function (result) {
                 console.log(result);                                    
+                if (!result)return
                 let dialog = bootbox.dialog({
                                 
                                 message: '<p><i class="fas fa-spin fa-spinner"></i> {{_("Sending...")}}</p>'
@@ -80,14 +81,30 @@
                     error:function(jqx,status,error){
                         dialog.find('.bootbox-body').html(status+" "+error+" "+JSON.stringify(jqx));
                     },
-                    success: function(){
+                    success: function(data){
                         dialog.modal('hide');
+                        if (data['msg']=='success'){
                         $(document).Toasts('create', {
                             class: 'bg-success',
+                            autohide:true,
                             position: "{{'topRight' if get_locale()=='fa' else 'topLeft'}}" ,
                             title: `{{_('Success')}}`,
                             body: `{{_("The message has been sent.")}}`
                             })    
+                        }else{
+                            res='{{_("Hover the user to see the reason")}}'
+                            for (const uuid in data['res']){
+                                element=data['res'][uuid]
+                                res+=`<span class='badge badge-info' title='${element["error"]}'>${element['name']}</span>`
+                            }
+                            
+                            $(document).Toasts('create', {
+                            class: 'bg-danger',
+                            position: "{{'topRight' if get_locale()=='fa' else 'topLeft'}}" ,
+                            title: `{{_('The message was not sent to')}}`,
+                            body: res
+                            })    
+                        }
                     },
                     
                 });
