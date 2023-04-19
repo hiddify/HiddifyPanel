@@ -25,12 +25,12 @@ from wtforms import SelectField
 class AdminModeField(SelectField):
     def __init__(self, label=None, validators=None, **kwargs):
         super(AdminModeField, self).__init__(label, validators, **kwargs)
-        if g.admin.mode in [AdminMode.slave,AdminMode.admin]:
-            self.choices = [ (AdminMode.slave.value, 'Slave')]
+        if g.admin.mode in [AdminMode.agent,AdminMode.admin]:
+            self.choices = [ (AdminMode.agent.value, 'agent')]
         elif g.admin.mode==AdminMode.admin:
-            self.choices = [ (AdminMode.slave.value, 'Slave'),(AdminMode.admin.value, 'Admin'),]
+            self.choices = [ (AdminMode.agent.value, 'agent'),(AdminMode.admin.value, 'Admin'),]
         elif g.admin.mode==AdminMode.super_admin:
-            self.choices = [(AdminMode.slave.value, 'Slave'),(AdminMode.admin.value, 'Admin'),(AdminMode.super_admin.value, 'Super Admin')]
+            self.choices = [(AdminMode.agent.value, 'agent'),(AdminMode.admin.value, 'Admin'),(AdminMode.super_admin.value, 'Super Admin')]
 
 
 
@@ -156,7 +156,7 @@ class AdminstratorAdmin(AdminLTEModelView):
 
         if g.admin.mode!=AdminMode.super_admin and model.mode==AdminMode.super_admin:
             raise ValidationError("Sub-Admin can not have more power!!!!")
-        if model.mode==AdminMode.slave and model.mode!=AdminMode.slave:
+        if model.mode==AdminMode.agent and model.mode!=AdminMode.agent:
             raise ValidationError("Sub-Admin can not have more power!!!!")
     def on_model_delete(self, model):
         if model.id==1:

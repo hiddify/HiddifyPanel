@@ -84,7 +84,7 @@
               
 
                  
-                % if g.admin.mode!="slave"    
+                % if g.admin.mode!="agent"    
                  {% set settings_active = False if request.endpoint and ("user" in request.endpoint or "Actions:" in request.endpoint or "Dashboard" in request.endpoint) else True %}
                  <li class="nav-item {{'menu-open' if settings_active else ''}}" >
             

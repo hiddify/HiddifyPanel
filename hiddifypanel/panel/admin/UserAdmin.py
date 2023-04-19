@@ -287,7 +287,7 @@ class UserAdmin(AdminLTEModelView):
         # Get the base query
         query = super().get_query()
 
-        admin_id=request.args.get("admin_id") or g.admin.id if g.admin.mode==AdminMode.slave else None
+        admin_id=request.args.get("admin_id") or g.admin.id if g.admin.mode==AdminMode.agent else None
         if admin_id:
             query = query.filter(User.added_by==admin_id)
 
@@ -298,7 +298,7 @@ class UserAdmin(AdminLTEModelView):
         # Get the base count query
         count_query = super().get_count_query()
 
-        admin_id=request.args.get("admin_id") or g.admin.id if g.admin.mode==AdminMode.slave else None
+        admin_id=request.args.get("admin_id") or g.admin.id if g.admin.mode==AdminMode.agent else None
         if admin_id:
             count_query = count_query.filter(User.added_by==admin_id)
 

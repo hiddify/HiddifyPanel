@@ -17,7 +17,7 @@ class AdminMode(StrEnum):
     """
     super_admin = auto()
     admin = auto()
-    slave = auto()
+    agent = auto()
     
 
 
@@ -29,7 +29,7 @@ class AdminUser(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     uuid = db.Column(db.String(36), default=lambda: str(uuid_mod.uuid4()), nullable=False, unique=True)
     name = db.Column(db.String(512), nullable=False)
-    mode = db.Column(db.Enum(AdminMode), default=AdminMode.slave,nullable=False)
+    mode = db.Column(db.Enum(AdminMode), default=AdminMode.agent,nullable=False)
     comment = db.Column(db.String(512))
     telegram_id=db.Column(db.String(512))
     users = db.relationship('User',backref='admin')
