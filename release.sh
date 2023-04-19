@@ -35,7 +35,7 @@ for pythonversion in 3.11 3.8 3.9 3.10 ;do
        conda activate py$pythonversion
        
        # pip install setuptools wheel twine cython pyarmor==8.1.0 pyarmor.cli.core==2.1.0
-       pip install setuptools wheel twine cython pyarmor==8.1.5 pyarmor.cli.core==2.1.5
+       pip install setuptools wheel twine cython pyarmor==8.1.6 pyarmor.cli.core==2.1.6
        .github/pyarmor.sh || exit 1
        ls .github/
        echo "hhhhhhhhhhhhhhhhha" $pythonversion

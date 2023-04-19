@@ -86,7 +86,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install setuptools wheel twine cython pyarmor==8.1.5 pyarmor.cli.core==2.1.5
+        pip install setuptools wheel twine cython pyarmor==8.1.6 pyarmor.cli.core==2.1.6
     - name: Build and publish
       env:
         TWINE_USERNAME: __token__
