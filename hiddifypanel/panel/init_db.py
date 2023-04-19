@@ -323,8 +323,10 @@ def make_proxy_rows(cfgs):
             # if l3 == "tls_h2" and transport =="grpc":
             #     continue
             enable=l3!="http" or proto=="vmess"
-            if not Proxy.query.filter(Proxy.l3==l3,Proxy.transport==transport,Proxy.cdn==cdn,Proxy.proto==proto).first():
-                yield Proxy(l3=l3,transport=transport,cdn=cdn,proto=proto,enable=enable,name=f'{l3} {c}')
+            name=f'{l3} {c}'
+            is_exist= Proxy.query.filter(Proxy.name==name).first() or Proxy.query.filter(Proxy.l3==l3,Proxy.transport==transport,Proxy.cdn==cdn,Proxy.proto==proto).first()        
+            if not is_exist:
+                yield Proxy(l3=l3,transport=transport,cdn=cdn,proto=proto,enable=enable,name=name)
 
 def add_config_if_not_exist(key:ConfigEnum,val):
     table=BoolConfig if key.type()==bool else StrConfig
