@@ -329,7 +329,7 @@ def to_clash(proxy, meta_or_normal):
         base["tls"] = "tls" in proxy["l3"]
     # if meta_or_normal == "meta":
     #     base['client-fingerprint'] = proxy['fingerprint']
-    if ProxyTransport.XTLS in proxy.transport:
+    if proxy.get('flow'):
         base["flow"] = proxy['flow']
         base["flow-show"] = True
 
