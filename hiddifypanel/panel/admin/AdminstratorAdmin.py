@@ -43,7 +43,7 @@ class SubAdminsField(SelectField):
 class AdminstratorAdmin(AdminLTEModelView):
     column_hide_backrefs = False
     column_list = ["name",'UserLinks','mode','comment','users']
-    form_columns = ["name",'mode','comment',"uuid"]
+    form_columns = ["name",'mode','can_add_admin','comment',"uuid"]
     list_template = 'model/admin_list.html'
     # edit_modal = True
     # form_overrides = {'work_with': Select2Field}
@@ -60,6 +60,7 @@ class AdminstratorAdmin(AdminLTEModelView):
         "uuid":_("user.UUID"),
         "comment":_("Note"),
         "users":_("Users"),
+        'can_add_admin':_("Can add sub admin")
 
     }
     form_args = {
@@ -79,8 +80,7 @@ class AdminstratorAdmin(AdminLTEModelView):
     # column_list = ["domain",'sub_link_only', "mode","alias", "domain_ip", "cdn_ip"]
     # column_editable_list=["domain"]
     # column_filters=["domain","mode"]
-    form_excluded_columns=['telegram_id']
-    column_exclude_list=['telegram_id']
+  
     
     column_searchable_list = ["name", "uuid"]
     
@@ -90,6 +90,9 @@ class AdminstratorAdmin(AdminLTEModelView):
         
         return Markup(" ".join([hiddify.get_user_link(model.uuid,d,'admin',model.name) for d in get_panel_domains()]))
     
+    @property
+    def can_create(self):
+        return g.admin.can_add_admin or g.admin.mode==AdminMode.super_admin
     def _name_formatter(view, context, model, name):
         proxy_path=hconfig(ConfigEnum.proxy_path)
         d=get_panel_domains()[0]
@@ -177,4 +180,5 @@ class AdminstratorAdmin(AdminLTEModelView):
         
         if g.admin.mode!=AdminMode.super_admin:
             del form.mode
+            del form.can_add_admin
         

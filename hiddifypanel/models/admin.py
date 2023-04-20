@@ -30,6 +30,7 @@ class AdminUser(db.Model, SerializerMixin):
     uuid = db.Column(db.String(36), default=lambda: str(uuid_mod.uuid4()), nullable=False, unique=True)
     name = db.Column(db.String(512), nullable=False)
     mode = db.Column(db.Enum(AdminMode), default=AdminMode.agent,nullable=False)
+    can_add_admin = db.Column(db.Boolean, default=False,nullable=False)
     comment = db.Column(db.String(512))
     telegram_id=db.Column(db.String(512))
     users = db.relationship('User',backref='admin')
@@ -52,6 +53,18 @@ class AdminUser(db.Model, SerializerMixin):
     def __str__(self):
         return str(self.name)
 
+    def to_dict(admin):
+        return {
+       'name':admin.name,
+       'comment':admin.comment,
+       'uuid' :admin.uuid,
+       'mode':admin.mode,
+       'can_add_admin':admin.can_add_admin,
+       'parent_admin_uuid':admin.parent_admin.uuid if admin.parent_admin else None,
+       'telegram_id':admin.telegram_id
+    }
+
+
 def get_super_admin_secret():
     admin=AdminUser.query.filter(AdminUser.mode==AdminMode.super_admin).first()
     if not admin:
@@ -65,3 +78,38 @@ def get_super_admin_secret():
 
 def get_admin_user_db(uuid):
     return AdminUser.query.filter(AdminUser.uuid==uuid).first()
+
+
+
+def add_or_update_admin(commit=True,**admin):
+    # if not is_valid():return
+    dbuser = AdminUser.query.filter(AdminUser.uuid == admin['uuid']).first()
+
+    if not dbuser:
+        dbuser = AdminUser(uuid = admin['uuid'])
+        # if not is_valid():
+        #     return
+        db.session.add(dbuser)
+    dbuser.name = admin['name']
+    if dbuser.id!=1:
+        parent_admin=get_admin_by_uuid(admin.get('parent_admin_uuid'),create=True)
+        dbuser.parent_admin_id=parent_admin.id
+    
+    dbuser.comment = admin.get('comment', '')
+    dbuser.mode = admin.get('mode', AdminMode.agent)
+    dbuser.telegram_id=admin.get('telegram_id')
+    dbuser.can_add_admin=admin.get('can_add_admin')==True
+    
+    # dbuser.last_online=user.get('last_online','')
+    if commit:
+        db.session.commit()
+
+
+def get_admin_by_uuid(uuid,create=False):
+    admin=AdminUser.query.filter(AdminUser.uuid==uuid).first()
+    if create and not admin:
+        dbuser = AdminUser(uuid=uuid,name="unknown",parent_admin_id=1)           
+        db.session.add(dbuser)
+        db.session.commit()
+        admin=AdminUser.query.filter(AdminUser.uuid==uuid).first()
+    return admin

@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-19 13:11+0200\n"
-"PO-Revision-Date: 2023-04-19 06:11-0500\n"
+"POT-Creation-Date: 2023-04-20 09:05+0200\n"
+"PO-Revision-Date: 2023-04-20 02:05-0500\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -75,11 +75,11 @@ msgstr ""
 "selected domain for REALITY is not in the same ASN. To better use of the "
 "protocol, it is better to find a domain in the same ASN."
 
-#: hiddifypanel/panel/usage.py:96
+#: hiddifypanel/panel/usage.py:98
 msgid "User activated!"
 msgstr "User activated!"
 
-#: hiddifypanel/panel/usage.py:96
+#: hiddifypanel/panel/usage.py:98
 msgid "Package ended!"
 msgstr "Package ended!"
 
@@ -167,15 +167,19 @@ msgstr "Note"
 msgid "Users"
 msgstr "Users"
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:73
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:63
+msgid "Can add sub admin"
+msgstr "Can add sub admin"
+
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:74
 msgid "Add some text that is only visible to super_admin."
 msgstr "Add some text that is only visible to super_admin."
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:74
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:75
 msgid "Define the admin mode. "
 msgstr "Define the admin mode. "
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:163
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:166
 msgid "Owner can not be deleted!"
 msgstr "Owner can not be deleted!"
 
@@ -463,18 +467,6 @@ msgstr "All"
 #: hiddifypanel/panel/admin/DomainAdmin.py:135
 msgid "You have used this domain in: "
 msgstr "You have already used this domain in: "
-
-#: hiddifypanel/panel/admin/DomainAdmin.py:153
-msgid "Can not connect to Cloudflare."
-msgstr "Can not connect to Cloudflare."
-
-#: hiddifypanel/panel/admin/DomainAdmin.py:156
-msgid ""
-"Using alias with special charachters may cause problem in some clients like "
-"FairVPN."
-msgstr ""
-"Using alias with special charachters may cause problem in some clients like "
-"FairVPN."
 
 # | msgid ""
 # | "Domain IP = %(domain_ip)s is not matched with your IP = %(server_ip)s "
@@ -2186,24 +2178,24 @@ msgstr ""
 msgid "Please type your message to send to the telegram:"
 msgstr "Please write your message to send to the telegram:"
 
-#: hiddifypanel/panel/admin/templates/model/user_list.html:71
+#: hiddifypanel/panel/admin/templates/model/user_list.html:70
 msgid "Sending..."
 msgstr "Sending..."
 
-#: hiddifypanel/panel/admin/templates/model/user_list.html:91
+#: hiddifypanel/panel/admin/templates/model/user_list.html:97
 msgid "Success"
 msgstr "Success"
 
-#: hiddifypanel/panel/admin/templates/model/user_list.html:92
+#: hiddifypanel/panel/admin/templates/model/user_list.html:98
 msgid "The message has been sent."
 msgstr "The message has been sent."
 
-#: hiddifypanel/panel/admin/templates/model/user_list.html:95
+#: hiddifypanel/panel/admin/templates/model/user_list.html:101
 #, fuzzy
 msgid "Hover the user to see the reason"
 msgstr "Hover the user to see the reason"
 
-#: hiddifypanel/panel/admin/templates/model/user_list.html:104
+#: hiddifypanel/panel/admin/templates/model/user_list.html:110
 #, fuzzy
 msgid "The message was not sent to"
 msgstr "The message was not sent to"
@@ -3588,6 +3580,9 @@ msgstr "Actions"
 #~ "In CDN Mode You Can Only Apply One Domain Or One IP For Forced Host. Use "
 #~ "Auto CDN IP Mode Instead"
 
+#~ msgid "Can not connect to Cloudflare."
+#~ msgstr "Can not connect to Cloudflare."
+
 #~ msgid "Online"
 #~ msgstr "Online"
 
@@ -3606,3 +3601,10 @@ msgstr "Actions"
 # | msgid "CDN Make It Incorrect"
 #~ msgid "CDN make it incorrect"
 #~ msgstr "CDN Make It Incorrect"
+
+#~ msgid ""
+#~ "Using alias with special charachters may cause problem in some clients like "
+#~ "FairVPN."
+#~ msgstr ""
+#~ "Using alias with special charachters may cause problem in some clients like "
+#~ "FairVPN."

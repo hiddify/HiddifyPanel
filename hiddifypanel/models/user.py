@@ -42,7 +42,7 @@ class User(db.Model, SerializerMixin):
     last_reset_time = db.Column(db.Date, default=datetime.date.today())
     comment = db.Column(db.String(512))
     telegram_id=db.Column(db.String(512))
-    added_by=db.Column(db.Integer,db.ForeignKey('admin_user.id'),default=0)
+    added_by=db.Column(db.Integer,db.ForeignKey('admin_user.id'),default=1)
     
     @property
     def remaining_days(self):
@@ -148,7 +148,13 @@ def add_or_update_user(commit=True,**user):
         # if not is_valid():
         #     return
         db.session.add(dbuser)
-    
+    if user.get('added_by_uuid'):
+        from .admin import get_admin_by_uuid
+        admin=get_admin_by_uuid(user.get('added_by_uuid'),create=True)
+        dbuser.added_by=admin.id
+    else:
+        dbuser.added_by = 1
+
     if user.get('expiry_time',''):
         if user.get('last_reset_time',''):
             last_reset_time = datetime.datetime.strptime(user['last_reset_time'], '%Y-%m-%d')
@@ -171,6 +177,8 @@ def add_or_update_user(commit=True,**user):
     dbuser.name = user['name']
     dbuser.comment = user.get('comment', '')
     dbuser.mode = user.get('mode', user.get('monthly', 'false') == 'true')
+    dbuser.telegram_id=user.get('telegram_id')
+    
     # dbuser.last_online=user.get('last_online','')
     if commit:
         db.session.commit()

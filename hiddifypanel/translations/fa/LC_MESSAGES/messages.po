@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-19 13:11+0200\n"
-"PO-Revision-Date: 2023-04-19 06:11-0500\n"
+"POT-Creation-Date: 2023-04-20 09:05+0200\n"
+"PO-Revision-Date: 2023-04-20 02:05-0500\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -76,11 +76,11 @@ msgstr ""
 "دامنه انتخاب شده برای REALITY در همان ASN نیست. برای استفاده بهتر از "
 "پروتکل، بهتر است یک دامنه در همان ASN پیدا کنید."
 
-#: hiddifypanel/panel/usage.py:96
+#: hiddifypanel/panel/usage.py:98
 msgid "User activated!"
 msgstr "پکیچ شما فعال شد"
 
-#: hiddifypanel/panel/usage.py:96
+#: hiddifypanel/panel/usage.py:98
 msgid "Package ended!"
 msgstr "پکیج شما به پایان رسید"
 
@@ -171,15 +171,20 @@ msgstr "یادداشت"
 msgid "Users"
 msgstr "کاربران"
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:73
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:63
+#, fuzzy
+msgid "Can add sub admin"
+msgstr "امکان اضافه کردن ادمین فرعی"
+
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:74
 msgid "Add some text that is only visible to super_admin."
 msgstr "متنی را اضافه کنید که فقط برای سوپرادمین ها قابل مشاهده هست"
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:74
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:75
 msgid "Define the admin mode. "
 msgstr "نوع ادمین را مشخص کنید"
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:163
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:166
 msgid "Owner can not be deleted!"
 msgstr "عزیز مدیر کلو میخوای پاک کنی آخه؟"
 
@@ -487,20 +492,6 @@ msgstr "همه"
 #: hiddifypanel/panel/admin/DomainAdmin.py:135
 msgid "You have used this domain in: "
 msgstr "شما از این دامنه در بخش زیر استفاده کرده اید: "
-
-#: hiddifypanel/panel/admin/DomainAdmin.py:153
-#, fuzzy
-msgid "Can not connect to Cloudflare."
-msgstr "نمی توان به Cloudflare متصل شد."
-
-#: hiddifypanel/panel/admin/DomainAdmin.py:156
-#, fuzzy
-msgid ""
-"Using alias with special charachters may cause problem in some clients "
-"like FairVPN."
-msgstr ""
-"استفاده از نام مستعار با نویسه های خاص ممکن است در برخی از مشتریان مانند "
-"FairVPN مشکل ایجاد کند."
 
 # | msgid ""
 # | "Domain IP = %(domain_ip)s is not matched with your IP = %(server_ip)s
@@ -2278,26 +2269,26 @@ msgstr ""
 msgid "Please type your message to send to the telegram:"
 msgstr "لطفا پیام خود را برای ارسال به تلگرام بنویسید:"
 
-#: hiddifypanel/panel/admin/templates/model/user_list.html:71
+#: hiddifypanel/panel/admin/templates/model/user_list.html:70
 #, fuzzy
 msgid "Sending..."
 msgstr "در حال ارسال..."
 
-#: hiddifypanel/panel/admin/templates/model/user_list.html:91
+#: hiddifypanel/panel/admin/templates/model/user_list.html:97
 #, fuzzy
 msgid "Success"
 msgstr "موفقیت"
 
-#: hiddifypanel/panel/admin/templates/model/user_list.html:92
+#: hiddifypanel/panel/admin/templates/model/user_list.html:98
 #, fuzzy
 msgid "The message has been sent."
 msgstr "پیام ارسال شده است."
 
-#: hiddifypanel/panel/admin/templates/model/user_list.html:95
+#: hiddifypanel/panel/admin/templates/model/user_list.html:101
 msgid "Hover the user to see the reason"
 msgstr "روی یوزر کلیک کنید تا دلیل آن را ببینید"
 
-#: hiddifypanel/panel/admin/templates/model/user_list.html:104
+#: hiddifypanel/panel/admin/templates/model/user_list.html:110
 msgid "The message was not sent to"
 msgstr "پیام نتوانست به کاربران زیر ارسال شود"
 
@@ -3787,6 +3778,9 @@ msgstr "عملیات"
 #~ "هاست اجباری اعمال کنید میتوانید از "
 #~ "حالت auto cdn ip استفاده کنید"
 
+#~ msgid "Can not connect to Cloudflare."
+#~ msgstr "نمی توان به Cloudflare متصل شد."
+
 #~ msgid "Online"
 #~ msgstr "آنلاین"
 
@@ -3805,4 +3799,13 @@ msgstr "عملیات"
 # | msgid "CDN Make It Incorrect"
 #~ msgid "CDN make it incorrect"
 #~ msgstr "CDN نادرستش می‌کنه"
+
+#~ msgid ""
+#~ "Using alias with special charachters may"
+#~ " cause problem in some clients like"
+#~ " FairVPN."
+#~ msgstr ""
+#~ "استفاده از نام مستعار با نویسه های"
+#~ " خاص ممکن است در برخی از "
+#~ "مشتریان مانند FairVPN مشکل ایجاد کند."
 

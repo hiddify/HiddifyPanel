@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-19 13:11+0200\n"
-"PO-Revision-Date: 2023-04-19 06:11-0500\n"
+"POT-Creation-Date: 2023-04-20 09:05+0200\n"
+"PO-Revision-Date: 2023-04-20 02:05-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -76,12 +76,12 @@ msgid ""
 "protocol, it is better to find a domain in the same ASN."
 msgstr "为 REALITY 选择的域不在同一个 ASN 中。为了更好地使用该协议，最好在同一 ASN 中找到一个域。"
 
-#: hiddifypanel/panel/usage.py:96
+#: hiddifypanel/panel/usage.py:98
 #, fuzzy
 msgid "User activated!"
 msgstr "用户激活！"
 
-#: hiddifypanel/panel/usage.py:96
+#: hiddifypanel/panel/usage.py:98
 #, fuzzy
 msgid "Package ended!"
 msgstr "套餐结束！"
@@ -171,17 +171,22 @@ msgstr "笔记"
 msgid "Users"
 msgstr "用户"
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:73
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:63
+#, fuzzy
+msgid "Can add sub admin"
+msgstr "可以添加子管理员"
+
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:74
 #, fuzzy
 msgid "Add some text that is only visible to super_admin."
 msgstr "添加一些仅对 super_admin 可见的文本。"
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:74
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:75
 #, fuzzy
 msgid "Define the admin mode. "
 msgstr "定义管理模式。"
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:163
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:166
 #, fuzzy
 msgid "Owner can not be deleted!"
 msgstr "楼主不能删除！"
@@ -471,18 +476,6 @@ msgstr "全部"
 #, fuzzy
 msgid "You have used this domain in: "
 msgstr "您已经在以下领域使用过此域名："
-
-#: hiddifypanel/panel/admin/DomainAdmin.py:153
-#, fuzzy
-msgid "Can not connect to Cloudflare."
-msgstr "无法连接到 Cloudflare。"
-
-#: hiddifypanel/panel/admin/DomainAdmin.py:156
-#, fuzzy
-msgid ""
-"Using alias with special charachters may cause problem in some clients "
-"like FairVPN."
-msgstr "使用带有特殊字符的别名可能会导致某些客户端出现问题，例如 FairVPN。"
 
 # | msgid ""
 # | "Domain IP = %(domain_ip)s is not matched with your IP = %(server_ip)s
@@ -2204,26 +2197,26 @@ msgstr ""
 msgid "Please type your message to send to the telegram:"
 msgstr "请写下您要发送到电报的消息："
 
-#: hiddifypanel/panel/admin/templates/model/user_list.html:71
+#: hiddifypanel/panel/admin/templates/model/user_list.html:70
 #, fuzzy
 msgid "Sending..."
 msgstr "发送..."
 
-#: hiddifypanel/panel/admin/templates/model/user_list.html:91
+#: hiddifypanel/panel/admin/templates/model/user_list.html:97
 #, fuzzy
 msgid "Success"
 msgstr "成功"
 
-#: hiddifypanel/panel/admin/templates/model/user_list.html:92
+#: hiddifypanel/panel/admin/templates/model/user_list.html:98
 #, fuzzy
 msgid "The message has been sent."
 msgstr "消息已发送。"
 
-#: hiddifypanel/panel/admin/templates/model/user_list.html:95
+#: hiddifypanel/panel/admin/templates/model/user_list.html:101
 msgid "Hover the user to see the reason"
 msgstr ""
 
-#: hiddifypanel/panel/admin/templates/model/user_list.html:104
+#: hiddifypanel/panel/admin/templates/model/user_list.html:110
 msgid "The message was not sent to"
 msgstr ""
 
@@ -3619,6 +3612,9 @@ msgstr "动作"
 #~ msgid "In CDN mode you can only apply one domain or one ip for forced host"
 #~ msgstr ""
 
+#~ msgid "Can not connect to Cloudflare."
+#~ msgstr "无法连接到 Cloudflare。"
+
 #~ msgid "Online"
 #~ msgstr "在线的"
 
@@ -3637,4 +3633,10 @@ msgstr "动作"
 # | msgid "CDN Make It Incorrect"
 #~ msgid "CDN make it incorrect"
 #~ msgstr "CDN使它不正确"
+
+#~ msgid ""
+#~ "Using alias with special charachters may"
+#~ " cause problem in some clients like"
+#~ " FairVPN."
+#~ msgstr "使用带有特殊字符的别名可能会导致某些客户端出现问题，例如 FairVPN。"
 
