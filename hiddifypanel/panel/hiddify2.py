@@ -86,7 +86,8 @@ def user_dict(d):
         'current_usage_GB':d.current_usage_GB,
         'last_reset_time':date_to_json(d.last_reset_time),
         'comment':d.comment,
-        'added_by':d.added_by
+        'added_by_uuid':d.admin.uuid,
+        'telegram_id':d.telegram_id
     }
 
 
@@ -114,6 +115,7 @@ def dump_db_to_dict():
             "domains": [domain_dict(u) for u in Domain.query.all()],
             "proxies": [proxy_dict(u) for u in Proxy.query.all()],
             "parent_domains": [] if not hconfig(ConfigEnum.license) else [parent_domain_dict(u) for u in ParentDomain.query.all()],
+            'admin_users':[d.to_dict() for d in AdminUser.query.all()],
             "hconfigs": [*[config_dict(u) for u in BoolConfig.query.all()],
                          *[config_dict(u) for u in StrConfig.query.all()]]
             }
@@ -230,6 +232,13 @@ def bulk_register_users(users=[],commit=True,remove=False):
                 db.session.delete(d)
     if commit:
         db.session.commit()
+
+
+def bulk_register_admins(users=[],commit=True):
+    for u in users:
+        add_or_update_admin(commit=False,**u)
+    if commit:
+        db.session.commit()
 def bulk_register_configs(hconfigs,commit=True,override_child_id=None,override_unique_id=True):
     print(hconfigs)
     for conf in hconfigs:
@@ -248,10 +257,12 @@ def bulk_register_proxies(proxies,commit=True,override_child_id=None):
         add_or_update_proxy(commit=False,child_id=child_id,**proxy)
 
     
-def set_db_from_json(json_data, override_child_id=None, set_users=True, set_domains=True, set_proxies=True, set_settings=True, remove_domains=False, remove_users=False, override_unique_id=True):
+def set_db_from_json(json_data, override_child_id=None, set_users=True, set_domains=True, set_proxies=True, set_settings=True, remove_domains=False, remove_users=False, override_unique_id=True,set_admins=True):
     new_rows = []
     if set_users and 'users' in json_data:
         bulk_register_users(json_data['users'],commit=False,remove=remove_users)
+    if set_admins and 'admin_users' in json_data:
+        bulk_register_admins(json_data['admin_users'],commit=False)
     if set_domains and 'domains' in json_data:
         bulk_register_domains(json_data['domains'],commit=False,remove=remove_domains,override_child_id=override_child_id)
     if set_domains and 'parent_domains' in json_data:
