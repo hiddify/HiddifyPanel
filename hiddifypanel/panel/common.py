@@ -6,7 +6,8 @@ from flask import g, send_from_directory, url_for,session
 import traceback
 import user_agents
 import hiddifypanel
-
+import datetime
+from flask_babelex import gettext as _
 def init_app(app):
     app.jinja_env.globals['ConfigEnum'] = ConfigEnum
     app.jinja_env.globals['DomainType'] = DomainType
@@ -51,7 +52,8 @@ def init_app(app):
         # print("Y",endpoint, values)
         # if values is None:
         #     return
-
+        if hiddifypanel.__release_date__ + datetime.timedelta(days=40)<datetime.datetime.now() or hiddifypanel.__release_date__>datetime.datetime.now():
+            abort(400,_('This version of hiddify panel is outdated. Please update it from admin area.'))
         g.user = None
         g.user_uuid = None
         g.is_admin = False
