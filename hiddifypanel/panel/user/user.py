@@ -12,7 +12,7 @@ from flask_classful import FlaskView,route
 import random
 from urllib.parse import urlparse
 import user_agents
-
+from flask_babelex import gettext as _
 
 class UserView(FlaskView):
 
