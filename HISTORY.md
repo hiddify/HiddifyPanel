@@ -1,6 +1,14 @@
 # Changelog
 
 
+## 4.2.9 (2023-04-21)
+
+#### New
+
+* Super user infinit users. 
+
+
+
 ## 4.2.8 (2023-04-21)
 
 #### Fix
