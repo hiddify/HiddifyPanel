@@ -178,6 +178,9 @@ def add_or_update_user(commit=True,**user):
     dbuser.mode = user.get('mode', user.get('monthly', 'false') == 'true')
     dbuser.telegram_id=user.get('telegram_id')
     
-    dbuser.last_online=user.get('last_online',datetime.datetime.min)
+    try:
+        dbuser.last_online=datetime.datetime.strptime(user.get('last_online'),"%Y-%m-%d %H:%M:%S")
+    except:
+        dbuser.last_online=datetime.datetime.min
     if commit:
         db.session.commit()

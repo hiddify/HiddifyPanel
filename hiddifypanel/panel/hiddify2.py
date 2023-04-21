@@ -73,12 +73,14 @@ def parent_domain_dict(d):
 
 def date_to_json(d):
     return d.strftime("%Y-%m-%d") if d else None
+def time_to_json(d):
+    return d.strftime("%Y-%m-%d %H:%M:%S") if d else None    
 
 def user_dict(d):
     return {
         'uuid':d.uuid,
         'name':d.name,
-        'last_online':str(d.last_online),
+        'last_online':time_to_json(d.last_online),
         'usage_limit_GB':d.usage_limit_GB,
         'package_days':d.package_days,
         'mode':d.mode,
