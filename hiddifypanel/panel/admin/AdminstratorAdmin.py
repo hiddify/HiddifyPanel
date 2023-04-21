@@ -233,6 +233,6 @@ class AdminstratorAdmin(AdminLTEModelView):
         elif form._obj.mode==AdminMode.super_admin:
             del form.max_users
             del form.max_active_users
-
+        
         
         

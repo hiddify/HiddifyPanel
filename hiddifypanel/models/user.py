@@ -143,8 +143,7 @@ def add_or_update_user(commit=True,**user):
     dbuser = User.query.filter(User.uuid == user['uuid']).first()
 
     if not dbuser:
-        dbuser = User()
-        dbuser.uuid = user['uuid']
+        dbuser = User(user['uuid'])
         # if not is_valid():
         #     return
         db.session.add(dbuser)
@@ -179,6 +178,6 @@ def add_or_update_user(commit=True,**user):
     dbuser.mode = user.get('mode', user.get('monthly', 'false') == 'true')
     dbuser.telegram_id=user.get('telegram_id')
     
-    # dbuser.last_online=user.get('last_online','')
+    dbuser.last_online=user.get('last_online',datetime.datetime.min)
     if commit:
         db.session.commit()
