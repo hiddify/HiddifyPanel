@@ -11,6 +11,7 @@ from .adminlte import AdminLTEModelView
 from flask_babelex import gettext as __
 from flask_babelex import lazy_gettext as _
 
+from wtforms.validators import NumberRange
 
 
 from hiddifypanel.panel import hiddify,custom_widgets
