@@ -84,7 +84,7 @@ def get_panel_domains():
         domains= ParentDomain.query.all()
     else:
         domains=Domain.query.filter(Domain.mode!=DomainType.fake).filter(Domain.sub_link_only==True).all()
-        if not len(domain):
+        if not len(domains):
             domains=Domain.query.filter(Domain.mode!=DomainType.fake).all()
 
     if len(domains)==0:
