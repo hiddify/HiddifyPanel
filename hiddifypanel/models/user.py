@@ -155,7 +155,7 @@ def is_user_active(u):
         is_active= False
     elif remaining_days(u) < 0:
         is_active= False
-    elif len(u.ips)>u.max_ips:
+    elif len(u.ips)>max(3,u.max_ips):
         is_active = False
     return is_active
 

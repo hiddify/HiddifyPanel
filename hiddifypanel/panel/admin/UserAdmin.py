@@ -43,6 +43,9 @@ class UserAdmin(AdminLTEModelView):
     
     }
     form_args = {
+    'max_ips':{
+        'validators':[NumberRange(min=3, max=10000)]
+    },
     'uuid': {
         'validators': [Regexp(r'^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$',message=__("Should be a valid uuid"))]
     #     'label': 'First Name',
@@ -72,6 +75,7 @@ class UserAdmin(AdminLTEModelView):
         "comment":_("Note"),
         'last_online':_('Last Online'),
         "package_days":_('Package Days'),
+        "max_ips":_('Max IPs'),
         
      }
     # can_set_page_size=True
@@ -218,6 +222,7 @@ class UserAdmin(AdminLTEModelView):
         #     form.reset = SwitchField("Reset")
         return form
     def on_model_change(self, form, model, is_created):
+        model.max_ips=max(3,model.max_ips)
         if len(User.query.all())%4==0:
             flash(('<div id="show-modal-donation"></div>'), ' d-none')
         if not re.match("^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$", model.uuid):
