@@ -3,7 +3,7 @@
 #python3 setup.py build_ext --inplace
 if [ "$(id -u)" -ne 0 ]; then
        echo 'This script must be run by root' >&2
-       exit 1
+       # exit 1
 fi
 source .env
 
@@ -25,13 +25,13 @@ rm -rf ../tmp_release
 mkdir -p ../tmp_release
 export TWINE_USERNAME=__token__
 export TWINE_PASSWORD=$TWINE_PASSWORD
-source ~/anaconda3/etc/profile.d/conda.sh
+source ~/miniconda3/etc/profile.d/conda.sh
 
 for pythonversion in 3.11 3.8 3.9 3.10 ;do
        
        cp -rf . ../tmp_release/$pythonversion
        pushd ../tmp_release/$pythonversion
-       
+      
        conda activate py$pythonversion
        
        # pip install setuptools wheel twine cython pyarmor==8.1.0 pyarmor.cli.core==2.1.0
@@ -41,7 +41,7 @@ for pythonversion in 3.11 3.8 3.9 3.10 ;do
        echo "hhhhhhhhhhhhhhhhha" $pythonversion
        python3 --version
        if [ $do_release == 0 ];then
-              pip install .
+              pip3 install .
               flask run
               exit
        fi
