@@ -20,6 +20,16 @@ class UserMode(StrEnum):
     weekly = auto()
     daily = auto()
     disable = auto()
+class UserDetail(db.Model, SerializerMixin):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    user_id = db.Column(db.Integer,db.ForeignKey('user.id'), default=0,nullable=False)
+    child_id = db.Column(db.Integer,db.ForeignKey('child.id'), default=0, nullable=False)
+    last_online = db.Column(db.DateTime, nullable=False, default=datetime.datetime.min)
+    current_usage_GB = db.Column(db.Numeric(6, 9, asdecimal=False), default=0, nullable=False)
+    connected_ips = db.Column(db.String, default='',nullable=False)
+    @property
+    def ips(self):
+        return [] if not self.connected_ips else self.connected_ips.split(",")
 
 
 class User(db.Model, SerializerMixin):
@@ -43,13 +53,23 @@ class User(db.Model, SerializerMixin):
     comment = db.Column(db.String(512))
     telegram_id=db.Column(db.String(512))
     added_by=db.Column(db.Integer,db.ForeignKey('admin_user.id'),default=0)
-    
+    max_ips = db.Column(db.Integer, default=1000,nullable=False)
+    details = db.relationship('UserDetails', cascade="all,delete",backref='user')
+
     @property
     def remaining_days(self):
         return remaining_days(self)
     @property
     def is_active(self):
         return is_user_active(self)
+
+    @property
+    def ips(self):
+        res={}
+        for detail in  self.details:
+            for ip in detail.ips:
+                res[ip]=1
+        return list(res.keys())
     @staticmethod
     def by_id(user_id):
         """
@@ -135,6 +155,8 @@ def is_user_active(u):
         is_active= False
     elif remaining_days(u) < 0:
         is_active= False
+    elif len(u.ips)>u.max_ips:
+        is_active = False
     return is_active
 
 

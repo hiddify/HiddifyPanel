@@ -109,11 +109,16 @@ class UserAdmin(AdminLTEModelView):
         if hconfig(ConfigEnum.telegram_bot_token) and  model.telegram_id:
             extra=f'<button class="btn btn-warning btn-xs " onclick="show_send_message({model.id})" ><i class="fa-solid fa-paper-plane"></i></button> '
 
-        link=f"<a target='_blank' href='/{proxy_path}/{model.uuid}/#{model.name}'>{model.name} <i class='fa-solid fa-arrow-up-right-from-square'></i></a>"
+        link=''
         if model.is_active:
-            link= '<i class="fa-solid fa-circle-check text-success"></i> '+link
+            link= '<i class="fa-solid fa-circle-check text-success"></i> '
+        elif len(model.ips):
+            link='<i class="fa-solid fa-users-slash text-danger" title="{_("Too many Connected IPs")}"></i>'
         else:
-            link= '<i class="fa-solid fa-circle-xmark text-danger"></i> '+link
+            link= '<i class="fa-solid fa-circle-xmark text-danger"></i> '
+            
+
+        link+=f"<a target='_blank' href='/{proxy_path}/{model.uuid}/#{model.name}'>{model.name} <i class='fa-solid fa-arrow-up-right-from-square'></i></a>"
         return Markup(extra+link)
         
     def _ul_formatter(view, context, model, name):

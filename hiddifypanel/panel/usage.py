@@ -20,22 +20,22 @@ def update_local_usage():
         have_change=False
         for user in User.query.all():
             d = xray_api.get_usage(user.uuid,reset=True)
-            res[user]=(d or 0)
+            res[user]={'usage':(d or 0), 'ips':''}
 
-        return add_users_usage(res)
+        return add_users_usage(res,1)
             
         # return {"status": 'success', "comments":res}
         
 
-def add_users_usage_uuid(uuids_bytes):
+def add_users_usage_uuid(uuids_bytes,child_id):
     users= User.query.filter(User.uuid.in_(keys(uuids)))
     dbusers_bytes={u:uuids_bytes.get(u.uuid,0) for u in users}
-    add_users_usage(dbusers_bytes)
+    add_users_usage(dbusers_bytes,child_id)
 
 def is_already_valid(uuid):
     xray_api.get_xray_client().add_client(t,f'{uuid}', f'{uuid}@hiddify.com',protocol=protocol,flow='xtls-rprx-vision',alter_id=0,cipher='chacha20_poly1305')
     
-def add_users_usage(dbusers_bytes):
+def add_users_usage(dbusers_bytes,child_id):
     if not hconfig(ConfigEnum.is_parent) and hconfig(ConfigEnum.parent_panel):
         from hiddifypanel.panel import hiddify_api
         hiddify_api.add_user_usage_to_parent(dbusers_bytes);
@@ -46,21 +46,27 @@ def add_users_usage(dbusers_bytes):
     daily_usage={}
     today=datetime.date.today()
     for adm in AdminUser.query.all():
-        daily_usage[adm.id]=DailyUsage.query.filter(DailyUsage.date == today,DailyUsage.admin_id==adm.id).first()
+        daily_usage[adm.id]=DailyUsage.query.filter(DailyUsage.date == today,DailyUsage.admin_id==adm.id,DailyUsage.child_id==child_id).first()
         if not daily_usage[adm.id]:
-            daily_usage[adm.id]=DailyUsage(admin_id=adm.id)
+            daily_usage[adm.id]=DailyUsage(admin_id=adm.id,child_id=child_id)
             db.session.add(daily_usage[adm.id])
-
         daily_usage[adm.id].online=User.query.filter(User.added_by==adm.id).filter(func.DATE(User.last_online)==today).count()
     # db.session.commit()
-    for user,usage_bytes in dbusers_bytes.items():
+    for user,uinfo in dbusers_bytes.items():
+        usage_bytes=uinfo['usage']
+        ips=uinfo['ips']
         # user_active_before=is_user_active(user)
-
+        detail=user.details.query.filter_by(child_id==child_id).first()
+        if not detail:
+            detail=UserDetail(user_id=user.id,child_id=child_id)
+            db.session.add(detail)
+        detail.connected_ips=ips
         if not user.last_reset_time or user_should_reset(user):
             user.last_reset_time=datetime.date.today()
             user.current_usage_GB=0
+            detail.current_usage_GB=0
 
-        if before_enabled_users[user.uuid]==0  and is_user_active(user):
+        if before_enabled_users[user.uuid]==0  and user.is_active:
                 xray_api.add_client(user.uuid)
                 send_bot_message(user)
                 have_change=True
@@ -71,7 +77,10 @@ def add_users_usage(dbusers_bytes):
             in_gig=(usage_bytes)/to_gig_d
             res[user.uuid]=in_gig
             user.current_usage_GB += in_gig
+            detail.current_usage_GB+= in_gig
             user.last_online=datetime.datetime.now()
+            detail.last_online=datetime.datetime.now()
+
             if user.start_date==None:
                 user.start_date=datetime.date.today()
 
