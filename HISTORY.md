@@ -1,6 +1,14 @@
 # Changelog
 
 
+## 4.2.6 (2023-04-21)
+
+#### New
+
+* Priority in sublink only link. 
+
+
+
 ## 4.2.5 (2023-04-21)
 
 #### Fix
