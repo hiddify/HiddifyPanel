@@ -29,7 +29,7 @@ class User(db.Model, SerializerMixin):
     """
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     uuid = db.Column(db.String(36), default=lambda: str(uuid_mod.uuid4()), nullable=False, unique=True)
-    name = db.Column(db.String(512), nullable=False)
+    name = db.Column(db.String(512), nullable=False,default='')
     last_online = db.Column(db.DateTime, nullable=False, default=datetime.datetime.min)
     #removed
     expiry_time = db.Column(db.Date, default=datetime.date.today() + relativedelta.relativedelta(months=6))
@@ -173,7 +173,7 @@ def add_or_update_user(commit=True,**user):
     dbuser.current_usage_GB = user['current_usage_GB']
     
     dbuser.usage_limit_GB = user['usage_limit_GB']
-    dbuser.name = user['name']
+    dbuser.name = user.get('name') or ''
     dbuser.comment = user.get('comment', '')
     dbuser.mode = user.get('mode', user.get('monthly', 'false') == 'true')
     dbuser.telegram_id=user.get('telegram_id')
