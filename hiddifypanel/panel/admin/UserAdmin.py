@@ -2,7 +2,7 @@ from flask_admin.contrib import sqla
 from hiddifypanel.panel.database import db
 import datetime
 from hiddifypanel.models import  *
-from flask import Markup,g,request
+from flask import Markup,g,request,url_for
 from wtforms.validators import Regexp,ValidationError
 import re,uuid
 from hiddifypanel import xray_api
@@ -54,7 +54,7 @@ class UserAdmin(AdminLTEModelView):
     # }
     }
     # column_labels={'uuid':_("user.UUID")}
-    # column_filters=["uuid","name","usage_limit_GB",'monthly',"current_usage_GB","start_date"]
+    # column_filters=["usage_limit_GB","current_usage_GB",'admin','is_active']
     
     column_labels={
         "Actions":_("actions"),
@@ -148,7 +148,8 @@ class UserAdmin(AdminLTEModelView):
         formated=hiddify.format_timedelta(diff)
         return Markup(f"<span class='badge badge-{state}'>{'*' if not model.start_date else ''} {formated} </span>")
         # return Markup(f"<span class='badge ltr badge-}'>{days}</span> "+_('days'))
-
+    def _admin_formatter(view, context, model, name):
+        return Markup(f"<a href={url_for('flask.user.index_view',admin_id=model.added_by)} class='btn btn-xs btn-default'>{model.admin.name}</a>")
     def _online_formatter(view, context, model, name):
         if not model.last_online:
             return Markup("-")
@@ -170,7 +171,8 @@ class UserAdmin(AdminLTEModelView):
         'uuid': _uuid_formatter,
         'current_usage_GB': _usage_formatter,
         "remaining_days":_expire_formatter,
-        'last_online':_online_formatter
+        'last_online':_online_formatter,
+        'admin':_admin_formatter
     }
     def on_model_delete(self, model):
         if len(User.query.all())<=1:
