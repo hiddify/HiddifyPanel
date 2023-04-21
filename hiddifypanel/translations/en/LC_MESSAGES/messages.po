@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-20 09:05+0200\n"
-"PO-Revision-Date: 2023-04-20 02:05-0500\n"
+"POT-Creation-Date: 2023-04-21 08:44+0200\n"
+"PO-Revision-Date: 2023-04-21 01:44-0500\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -23,6 +23,16 @@ msgstr "This domain does not exist in the Panel !"
 #: hiddifypanel/panel/clean_ip.py:94
 msgid "Error! auto cdn ip can not be find, please contact admin."
 msgstr "Error In Auto CDN IP! It Can Not Be Find, Please Contact Admin"
+
+# | msgid ""
+# | "This Version of Hiddify Panel is Outdated. Please Update it from Admin "
+# | "Area."
+#: hiddifypanel/panel/admin/Dashboard.py:25 hiddifypanel/panel/common.py:56
+#: hiddifypanel/templates/500.html:9
+msgid ""
+"This version of hiddify panel is outdated. Please update it from admin area."
+msgstr ""
+"This Version of Hiddify Panel is Outdated. Please Update it from Admin Area."
 
 #: hiddifypanel/panel/hiddify.py:73
 #, fuzzy
@@ -164,22 +174,39 @@ msgid "Note"
 msgstr "Note"
 
 #: hiddifypanel/panel/admin/AdminstratorAdmin.py:62
-msgid "Users"
-msgstr "Users"
+msgid "Max Active Users"
+msgstr "Max Active Users"
 
 #: hiddifypanel/panel/admin/AdminstratorAdmin.py:63
+msgid "Max Users"
+msgstr "Max Users"
+
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:64
+#: hiddifypanel/panel/admin/templates/index.html:77
+#: hiddifypanel/panel/admin/templates/index.html:83
+#: hiddifypanel/panel/admin/templates/index.html:89
+#: hiddifypanel/panel/admin/templates/index.html:95
+#: hiddifypanel/panel/admin/templates/index.html:105
+#: hiddifypanel/panel/admin/templates/index.html:203
+#: hiddifypanel/panel/admin/templates/index.html:209
+#: hiddifypanel/panel/admin/templates/index.html:215
+#: hiddifypanel/panel/admin/templates/index.html:221
+msgid "Online Users"
+msgstr "Online Users"
+
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:65
 msgid "Can add sub admin"
 msgstr "Can add sub admin"
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:74
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:76
 msgid "Add some text that is only visible to super_admin."
 msgstr "Add some text that is only visible to super_admin."
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:75
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:77
 msgid "Define the admin mode. "
 msgstr "Define the admin mode. "
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:166
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:211
 msgid "Owner can not be deleted!"
 msgstr "Owner can not be deleted!"
 
@@ -310,15 +337,6 @@ msgstr "Domain is not correctly mapped to this server!"
 #: hiddifypanel/panel/admin/Dashboard.py:31
 msgid "Access Denied!"
 msgstr "Access Denied!"
-
-# | msgid ""
-# | "This Version of Hiddify Panel is Outdated. Please Update it from Admin "
-# | "Area."
-#: hiddifypanel/panel/admin/Dashboard.py:25 hiddifypanel/templates/500.html:9
-msgid ""
-"This version of hiddify panel is outdated. Please update it from admin area."
-msgstr ""
-"This Version of Hiddify Panel is Outdated. Please Update it from Admin Area."
 
 #: hiddifypanel/panel/admin/Dashboard.py:56
 #: hiddifypanel/panel/commercial/CommercialDashboard.py:37
@@ -914,6 +932,15 @@ msgstr "Package not started yet."
 #: hiddifypanel/panel/admin/UserAdmin.py:195
 msgid "Remaining: "
 msgstr "Package ends in "
+
+#: hiddifypanel/panel/admin/UserAdmin.py:230
+#, python-format
+msgid ""
+"You have too much users! You can have only %(active)s active users and "
+"%(total)s users"
+msgstr ""
+"You have too much users! You can have only %(active)s active users and "
+"%(total)s users"
 
 #: hiddifypanel/panel/admin/templates/backup.html:9
 #: hiddifypanel/templates/admin-layout.html:176
@@ -1920,18 +1947,6 @@ msgstr "Shadowsocks Path in the links"
 #: hiddifypanel/panel/admin/templates/index.html:74
 msgid "Today Usage"
 msgstr "Today"
-
-#: hiddifypanel/panel/admin/templates/index.html:77
-#: hiddifypanel/panel/admin/templates/index.html:83
-#: hiddifypanel/panel/admin/templates/index.html:89
-#: hiddifypanel/panel/admin/templates/index.html:95
-#: hiddifypanel/panel/admin/templates/index.html:105
-#: hiddifypanel/panel/admin/templates/index.html:203
-#: hiddifypanel/panel/admin/templates/index.html:209
-#: hiddifypanel/panel/admin/templates/index.html:215
-#: hiddifypanel/panel/admin/templates/index.html:221
-msgid "Online Users"
-msgstr "Online Users"
 
 # | msgid "Yesterday"
 #: hiddifypanel/panel/admin/templates/index.html:80
@@ -3601,6 +3616,9 @@ msgstr "Actions"
 # | msgid "CDN Make It Incorrect"
 #~ msgid "CDN make it incorrect"
 #~ msgstr "CDN Make It Incorrect"
+
+#~ msgid "Users"
+#~ msgstr "Users"
 
 #~ msgid ""
 #~ "Using alias with special charachters may cause problem in some clients like "

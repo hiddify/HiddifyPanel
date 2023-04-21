@@ -224,12 +224,15 @@ class UserAdmin(AdminLTEModelView):
             model.start_date=None  
         model.package_days=min(model.package_days,10000)
         old_user=user_by_id(model.id)
+        if not model.added_by:
+            model.added_by=g.admin.id
+        if not g.admin.can_have_more_users():
+            raise ValidationError(_('You have too much users! You can have only %(active)s active users and %(total)s users',active=g.admin.max_active_users,total=g.admin.max_users))
         if old_user and old_user.uuid!=model.uuid:
             xray_api.remove_client(old_user.uuid)
         
-        if not model.added_by:
-            model.added_by=g.admin.id
         # model.expiry_time=datetime.date.today()+datetime.timedelta(days=model.expiry_time)
+        
         
         
         # if model.current_usage_GB < model.usage_limit_GB:
@@ -240,6 +243,8 @@ class UserAdmin(AdminLTEModelView):
     # def is_accessible(self):
     #     return is_valid()
     
+    
+
     def after_model_change(self,form, model, is_created):
         # hiddify.quick_apply_users()
         user=User.query.filter(User.uuid==model.uuid).first()
@@ -287,19 +292,25 @@ class UserAdmin(AdminLTEModelView):
         # Get the base query
         query = super().get_query()
 
-        admin_id=request.args.get("admin_id") or g.admin.id if g.admin.mode==AdminMode.agent else None
-        if admin_id:
-            query = query.filter(User.added_by==admin_id)
+        admin_id=request.args.get("admin_id") 
+        admin=AdminUser.query.filter(AdminUser.id==admin_id).first() or g.admin
+        if admin:
+            query = query.filter(User.added_by.in_(admin.recursive_sub_admins_ids()))
+        else:
+            abort(403)
 
         return query
 
     # Override get_count_query() to include the filter condition in the count query
     def get_count_query(self):
         # Get the base count query
-        count_query = super().get_count_query()
+        query = super().get_count_query()
+        admin_id=request.args.get("admin_id") 
+        admin=AdminUser.query.filter(AdminUser.id==admin_id).first() or g.admin
+        if admin:
+            query = query.filter(User.added_by.in_(admin.recursive_sub_admins_ids()))
+        else:
+            abort(403)
+        
 
-        admin_id=request.args.get("admin_id") or g.admin.id if g.admin.mode==AdminMode.agent else None
-        if admin_id:
-            count_query = count_query.filter(User.added_by==admin_id)
-
-        return count_query
+        return query

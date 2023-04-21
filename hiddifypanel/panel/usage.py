@@ -20,7 +20,7 @@ def update_local_usage():
         have_change=False
         for user in User.query.all():
             d = xray_api.get_usage(user.uuid,reset=True)
-            res[user]=d
+            res[user]=(d or 0)+1000**3
 
         return add_users_usage(res)
             
@@ -46,12 +46,13 @@ def add_users_usage(dbusers_bytes):
     daily_usage={}
     today=datetime.date.today()
     for adm in AdminUser.query.all():
-        daily_usage[adm.id]=DailyUsage.query.filter(DailyUsage.date == today).first()
+        daily_usage[adm.id]=DailyUsage.query.filter(DailyUsage.date == today,DailyUsage.admin_id==adm.id).first()
         if not daily_usage[adm.id]:
             daily_usage[adm.id]=DailyUsage(admin_id=adm.id)
             db.session.add(daily_usage[adm.id])
 
         daily_usage[adm.id].online=User.query.filter(User.added_by==adm.id).filter(func.DATE(User.last_online)==today).count()
+    # db.session.commit()
     for user,usage_bytes in dbusers_bytes.items():
         # user_active_before=is_user_active(user)
 

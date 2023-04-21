@@ -42,7 +42,7 @@ class User(db.Model, SerializerMixin):
     last_reset_time = db.Column(db.Date, default=datetime.date.today())
     comment = db.Column(db.String(512))
     telegram_id=db.Column(db.String(512))
-    added_by=db.Column(db.Integer,db.ForeignKey('admin_user.id'),default=1)
+    added_by=db.Column(db.Integer,db.ForeignKey('admin_user.id'),default=0)
     
     @property
     def remaining_days(self):

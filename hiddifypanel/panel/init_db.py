@@ -33,6 +33,8 @@ def init_db():
     add_column(User.added_by)
     add_column(AdminUser.parent_admin_id)
     add_column(AdminUser.can_add_admin)
+    add_column(AdminUser.max_active_users)
+    add_column(AdminUser.max_users)
     add_column(BoolConfig.child_id)
     add_column(StrConfig.child_id)
     add_column(DailyUsage.admin_id)
@@ -49,6 +51,7 @@ def init_db():
     
     execute('ALTER TABLE user RENAME COLUMN monthly_usage_limit_GB TO usage_limit_GB')       
     execute(f'update admin_user set parent_admin_id=1 where parent_admin_id is NULL and 1!=id')
+    execute(f'update admin_user set max_users=100,max_active_users=100 where max_users is NULL')
     execute(f'update dailyusage set child_id=0 where child_id is NULL')
     execute(f'update dailyusage set admin_id=1 where admin_id is NULL')
     execute(f'update dailyusage set admin_id=1 where admin_id = 0')

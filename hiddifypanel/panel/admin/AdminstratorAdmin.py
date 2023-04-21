@@ -42,8 +42,8 @@ class SubAdminsField(SelectField):
         self.choices+=[(g.admin.id,g.admin.name)]
 class AdminstratorAdmin(AdminLTEModelView):
     column_hide_backrefs = False
-    column_list = ["name",'UserLinks','mode','comment','users']
-    form_columns = ["name",'mode','can_add_admin','comment',"uuid"]
+    column_list = ["name",'UserLinks','mode','can_add_admin','max_active_users','max_users','online_users','comment']
+    form_columns = ["name",'mode','can_add_admin','max_active_users','max_users','comment',"uuid"]
     list_template = 'model/admin_list.html'
     # edit_modal = True
     # form_overrides = {'work_with': Select2Field}
@@ -59,7 +59,9 @@ class AdminstratorAdmin(AdminLTEModelView):
         "mode":_("Mode"),
         "uuid":_("user.UUID"),
         "comment":_("Note"),
-        "users":_("Users"),
+        'max_active_users':_("Max Active Users"),
+        'max_users':_('Max Users'),
+        "online_users":_("Online Users"),
         'can_add_admin':_("Can add sub admin")
 
     }
@@ -104,17 +106,58 @@ class AdminstratorAdmin(AdminLTEModelView):
         else:
             return model.name
 
-    def _users_formatter(view, context, model, name):
+    def _online_users_formatter(view, context, model, name):
         last_day=datetime.datetime.now()-datetime.timedelta(days=1)
-        onlines=[p for p in  model.users  if p.last_online and p.last_online>last_day]
-        return Markup(f"<a class='btn btn-xs' href='{url_for('flask.user.index_view',admin_id=model.id)}'>{_('Users')}: {len(model.users)} <br> {_('Online Users')}: {len(onlines)} </a>")
+        u=model.recursive_users_query().filter(User.last_online>last_day).count()
+        t=model.recursive_users_query().count()
+        # actives=[u for u in model.recursive_users_query().all() if is_user_active(u)]
+        # allusers=model.recursive_users_query().count()
+        # onlines=[p for p in  users  if p.last_online and p.last_online>last_day]
+        # return Markup(f"<a class='btn btn-xs btn-default' href='{url_for('flask.user.index_view',admin_id=model.id)}'> {_('Online')}: {onlines}</a>")
+        rate=round(u*100/(t+0.000001))
+        state= "danger" if u>=t else ('warning' if  rate>80 else 'success')
+        color= "#ff7e7e" if u>=t else ('#ffc107' if  rate>80 else '#9ee150')
+        return Markup(f"""
+        <div class="progress progress-lg position-relative" style="min-width: 100px;">
+          <div class="progress-bar progress-bar-striped" role="progressbar" style="width: {rate}%;background-color: {color};" aria-valuenow="{rate}" aria-valuemin="0" aria-valuemax="100"></div>
+              <span class='badge position-absolute' style="left:auto;right:auto;width: 100%;font-size:1em">{u} {_('user.home.usage.from')} {t}</span>
+
+        </div>
+        """)
+    def _max_users_formatter(view, context, model, name):
+        u=model.recursive_users_query().count()
+        t=model.max_users
+        rate=round(u*100/(t+0.000001))
+        state= "danger" if u>=t else ('warning' if  rate>80 else 'success')
+        color= "#ff7e7e" if u>=t else ('#ffc107' if  rate>80 else '#9ee150')
+        return Markup(f"""
+        <div class="progress progress-lg position-relative" style="min-width: 100px;">
+          <div class="progress-bar progress-bar-striped" role="progressbar" style="width: {rate}%;background-color: {color};" aria-valuenow="{rate}" aria-valuemin="0" aria-valuemax="100"></div>
+              <span class='badge position-absolute' style="left:auto;right:auto;width: 100%;font-size:1em">{u} {_('user.home.usage.from')} {t}</span>
+
+        </div>
+        """)
         
-        
-        # return Markup(f"<span class='badge ltr badge-{'success' if days>7 else ('warning' if days>0 else 'danger') }'>{days}</span> "+_('days'))
+    def _max_active_users_formatter(view, context, model, name):
+        actives=[u for u in model.recursive_users_query().all() if is_user_active(u)]
+        u=len(actives)
+        t=model.max_active_users
+        rate=round(u*100/(t+0.000001))
+        state= "danger" if u>=t else ('warning' if  rate>80 else 'success')
+        color= "#ff7e7e" if u>=t else ('#ffc107' if  rate>80 else '#9ee150')
+        return Markup(f"""
+        <div class="progress progress-lg position-relative" style="min-width: 100px;">
+          <div class="progress-bar progress-bar-striped" role="progressbar" style="width: {rate}%;background-color: {color};" aria-valuenow="{rate}" aria-valuemin="0" aria-valuemax="100"></div>
+              <span class='badge position-absolute' style="left:auto;right:auto;width: 100%;font-size:1em">{u} {_('user.home.usage.from')} {t}</span>
+
+        </div>
+        """)    
 
     column_formatters = {
         'name': _name_formatter,
-        'users': _users_formatter,
+        'online_users': _online_users_formatter,
+        'max_users': _max_users_formatter,
+        'max_active_users': _max_active_users_formatter,
         'UserLinks':_ul_formatter
         
     }
@@ -147,6 +190,7 @@ class AdminstratorAdmin(AdminLTEModelView):
 
 
     def on_model_change(self, form, model, is_created):
+        
         # if model.id==1:
         #     model.parent_admin_id=0
         #     model.parent_admin=None
@@ -161,8 +205,9 @@ class AdminstratorAdmin(AdminLTEModelView):
             raise ValidationError("Sub-Admin can not have more power!!!!")
         if model.mode==AdminMode.agent and model.mode!=AdminMode.agent:
             raise ValidationError("Sub-Admin can not have more power!!!!")
+        
     def on_model_delete(self, model):
-        if model.id==1:
+        if model.id==1 or model.id==g.admin.id:
             raise ValidationError(_("Owner can not be deleted!"))
 
 
@@ -181,4 +226,13 @@ class AdminstratorAdmin(AdminLTEModelView):
         if g.admin.mode!=AdminMode.super_admin:
             del form.mode
             del form.can_add_admin
+        if g.admin.id==form._obj.id:
+            del form.max_users
+            del form.max_active_users
+            del form.comment
+        elif form._obj.mode==AdminMode.super_admin:
+            del form.max_users
+            del form.max_active_users
+
+        
         

@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-20 09:05+0200\n"
-"PO-Revision-Date: 2023-04-20 02:05-0500\n"
+"POT-Creation-Date: 2023-04-21 08:44+0200\n"
+"PO-Revision-Date: 2023-04-21 01:44-0500\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -24,6 +24,16 @@ msgstr "این دامنه در پنل وجود ندارد!"
 #: hiddifypanel/panel/clean_ip.py:94
 msgid "Error! auto cdn ip can not be find, please contact admin."
 msgstr "خطا! آی پی اتوماتیک نتوانست پیدا شود. لطفا با مدیر تماس بگیرید"
+
+# | msgid ""
+# | "This Version of Hiddify Panel is Outdated. Please Update it from Admin
+# Area."
+#: hiddifypanel/panel/admin/Dashboard.py:25 hiddifypanel/panel/common.py:56
+#: hiddifypanel/templates/500.html:9
+msgid ""
+"This version of hiddify panel is outdated. Please update it from admin "
+"area."
+msgstr "این نسخه هیدیفای قدیمی شده است. لطفا از محیط ادمین آن را به روزرسانی کنید"
 
 #: hiddifypanel/panel/hiddify.py:73
 msgid "Access Denied"
@@ -168,23 +178,43 @@ msgid "Note"
 msgstr "یادداشت"
 
 #: hiddifypanel/panel/admin/AdminstratorAdmin.py:62
-msgid "Users"
-msgstr "کاربران"
+#, fuzzy
+msgid "Max Active Users"
+msgstr "حداکثر کاربران فعال"
 
 #: hiddifypanel/panel/admin/AdminstratorAdmin.py:63
+#, fuzzy
+msgid "Max Users"
+msgstr "حداکثر کاربران"
+
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:64
+#: hiddifypanel/panel/admin/templates/index.html:77
+#: hiddifypanel/panel/admin/templates/index.html:83
+#: hiddifypanel/panel/admin/templates/index.html:89
+#: hiddifypanel/panel/admin/templates/index.html:95
+#: hiddifypanel/panel/admin/templates/index.html:105
+#: hiddifypanel/panel/admin/templates/index.html:203
+#: hiddifypanel/panel/admin/templates/index.html:209
+#: hiddifypanel/panel/admin/templates/index.html:215
+#: hiddifypanel/panel/admin/templates/index.html:221
+#, fuzzy
+msgid "Online Users"
+msgstr "کاربران آنلاین"
+
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:65
 #, fuzzy
 msgid "Can add sub admin"
 msgstr "امکان اضافه کردن ادمین فرعی"
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:74
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:76
 msgid "Add some text that is only visible to super_admin."
 msgstr "متنی را اضافه کنید که فقط برای سوپرادمین ها قابل مشاهده هست"
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:75
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:77
 msgid "Define the admin mode. "
 msgstr "نوع ادمین را مشخص کنید"
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:166
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:211
 msgid "Owner can not be deleted!"
 msgstr "عزیز مدیر کلو میخوای پاک کنی آخه؟"
 
@@ -321,15 +351,6 @@ msgstr "دامنه به درستی به این سرور وصل نشده است!"
 #: hiddifypanel/panel/admin/Dashboard.py:31
 msgid "Access Denied!"
 msgstr "دسترسی غیرمجاز"
-
-# | msgid ""
-# | "This Version of Hiddify Panel is Outdated. Please Update it from Admin
-# Area."
-#: hiddifypanel/panel/admin/Dashboard.py:25 hiddifypanel/templates/500.html:9
-msgid ""
-"This version of hiddify panel is outdated. Please update it from admin "
-"area."
-msgstr "این نسخه هیدیفای قدیمی شده است. لطفا از محیط ادمین آن را به روزرسانی کنید"
 
 #: hiddifypanel/panel/admin/Dashboard.py:56
 #: hiddifypanel/panel/commercial/CommercialDashboard.py:37
@@ -939,6 +960,15 @@ msgstr "بسته هنوز شروع نشده است."
 #: hiddifypanel/panel/admin/UserAdmin.py:195
 msgid "Remaining: "
 msgstr "زمان پایان بسته:"
+
+#: hiddifypanel/panel/admin/UserAdmin.py:230
+#, fuzzy, python-format
+msgid ""
+"You have too much users! You can have only %(active)s active users and "
+"%(total)s users"
+msgstr ""
+"شما کاربران زیادی دارید! شما می توانید تنها %(active)s کاربر فعال و "
+"%(total)s کاربر داشته باشید"
 
 #: hiddifypanel/panel/admin/templates/backup.html:9
 #: hiddifypanel/templates/admin-layout.html:176
@@ -1987,19 +2017,6 @@ msgstr "مسیر شدوساکس در لینکها"
 #, fuzzy
 msgid "Today Usage"
 msgstr "استفاده امروز"
-
-#: hiddifypanel/panel/admin/templates/index.html:77
-#: hiddifypanel/panel/admin/templates/index.html:83
-#: hiddifypanel/panel/admin/templates/index.html:89
-#: hiddifypanel/panel/admin/templates/index.html:95
-#: hiddifypanel/panel/admin/templates/index.html:105
-#: hiddifypanel/panel/admin/templates/index.html:203
-#: hiddifypanel/panel/admin/templates/index.html:209
-#: hiddifypanel/panel/admin/templates/index.html:215
-#: hiddifypanel/panel/admin/templates/index.html:221
-#, fuzzy
-msgid "Online Users"
-msgstr "کاربران آنلاین"
 
 # | msgid "Yesterday"
 #: hiddifypanel/panel/admin/templates/index.html:80
@@ -3799,6 +3816,9 @@ msgstr "عملیات"
 # | msgid "CDN Make It Incorrect"
 #~ msgid "CDN make it incorrect"
 #~ msgstr "CDN نادرستش می‌کنه"
+
+#~ msgid "Users"
+#~ msgstr "کاربران"
 
 #~ msgid ""
 #~ "Using alias with special charachters may"

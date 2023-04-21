@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-20 09:05+0200\n"
-"PO-Revision-Date: 2023-04-20 02:05-0500\n"
+"POT-Creation-Date: 2023-04-21 08:44+0200\n"
+"PO-Revision-Date: 2023-04-21 01:44-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -26,6 +26,17 @@ msgstr "该域名在面板中不存在！"
 #, fuzzy
 msgid "Error! auto cdn ip can not be find, please contact admin."
 msgstr "自动 CDN IP 错误！找不到，请联系管理员。"
+
+# | msgid ""
+# | "This Version of Hiddify Panel is Outdated. Please Update it from Admin
+# Area."
+#: hiddifypanel/panel/admin/Dashboard.py:25 hiddifypanel/panel/common.py:56
+#: hiddifypanel/templates/500.html:9
+#, fuzzy
+msgid ""
+"This version of hiddify panel is outdated. Please update it from admin "
+"area."
+msgstr "此版本的 Hiddify 面板已过时。请从管理区更新它。"
 
 #: hiddifypanel/panel/hiddify.py:73
 msgid "Access Denied"
@@ -168,25 +179,44 @@ msgstr "笔记"
 
 #: hiddifypanel/panel/admin/AdminstratorAdmin.py:62
 #, fuzzy
-msgid "Users"
-msgstr "用户"
+msgid "Max Active Users"
+msgstr "最大活跃用户数"
 
 #: hiddifypanel/panel/admin/AdminstratorAdmin.py:63
+#, fuzzy
+msgid "Max Users"
+msgstr "最大用户数"
+
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:64
+#: hiddifypanel/panel/admin/templates/index.html:77
+#: hiddifypanel/panel/admin/templates/index.html:83
+#: hiddifypanel/panel/admin/templates/index.html:89
+#: hiddifypanel/panel/admin/templates/index.html:95
+#: hiddifypanel/panel/admin/templates/index.html:105
+#: hiddifypanel/panel/admin/templates/index.html:203
+#: hiddifypanel/panel/admin/templates/index.html:209
+#: hiddifypanel/panel/admin/templates/index.html:215
+#: hiddifypanel/panel/admin/templates/index.html:221
+#, fuzzy
+msgid "Online Users"
+msgstr "在线用户"
+
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:65
 #, fuzzy
 msgid "Can add sub admin"
 msgstr "可以添加子管理员"
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:74
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:76
 #, fuzzy
 msgid "Add some text that is only visible to super_admin."
 msgstr "添加一些仅对 super_admin 可见的文本。"
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:75
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:77
 #, fuzzy
 msgid "Define the admin mode. "
 msgstr "定义管理模式。"
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:166
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:211
 #, fuzzy
 msgid "Owner can not be deleted!"
 msgstr "楼主不能删除！"
@@ -323,16 +353,6 @@ msgstr "域未正确映射到此服务器！"
 #, fuzzy
 msgid "Access Denied!"
 msgstr "拒绝访问！"
-
-# | msgid ""
-# | "This Version of Hiddify Panel is Outdated. Please Update it from Admin
-# Area."
-#: hiddifypanel/panel/admin/Dashboard.py:25 hiddifypanel/templates/500.html:9
-#, fuzzy
-msgid ""
-"This version of hiddify panel is outdated. Please update it from admin "
-"area."
-msgstr "此版本的 Hiddify 面板已过时。请从管理区更新它。"
 
 #: hiddifypanel/panel/admin/Dashboard.py:56
 #: hiddifypanel/panel/commercial/CommercialDashboard.py:37
@@ -925,6 +945,13 @@ msgstr "套餐还没有开始。"
 #, fuzzy
 msgid "Remaining: "
 msgstr "包结束于"
+
+#: hiddifypanel/panel/admin/UserAdmin.py:230
+#, fuzzy, python-format
+msgid ""
+"You have too much users! You can have only %(active)s active users and "
+"%(total)s users"
+msgstr "你的用户太多了！您只能有 %(active)s 个活跃用户和 %(total)s 个用户"
 
 #: hiddifypanel/panel/admin/templates/backup.html:9
 #: hiddifypanel/templates/admin-layout.html:176
@@ -1923,19 +1950,6 @@ msgstr "链接中的 Shadowsocks 路径"
 #, fuzzy
 msgid "Today Usage"
 msgstr "今天的用法"
-
-#: hiddifypanel/panel/admin/templates/index.html:77
-#: hiddifypanel/panel/admin/templates/index.html:83
-#: hiddifypanel/panel/admin/templates/index.html:89
-#: hiddifypanel/panel/admin/templates/index.html:95
-#: hiddifypanel/panel/admin/templates/index.html:105
-#: hiddifypanel/panel/admin/templates/index.html:203
-#: hiddifypanel/panel/admin/templates/index.html:209
-#: hiddifypanel/panel/admin/templates/index.html:215
-#: hiddifypanel/panel/admin/templates/index.html:221
-#, fuzzy
-msgid "Online Users"
-msgstr "在线用户"
 
 # | msgid "Yesterday"
 #: hiddifypanel/panel/admin/templates/index.html:80
@@ -3633,6 +3647,9 @@ msgstr "动作"
 # | msgid "CDN Make It Incorrect"
 #~ msgid "CDN make it incorrect"
 #~ msgstr "CDN使它不正确"
+
+#~ msgid "Users"
+#~ msgstr "用户"
 
 #~ msgid ""
 #~ "Using alias with special charachters may"
