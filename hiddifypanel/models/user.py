@@ -143,7 +143,7 @@ def add_or_update_user(commit=True,**user):
     dbuser = User.query.filter(User.uuid == user['uuid']).first()
 
     if not dbuser:
-        dbuser = User(user['uuid'])
+        dbuser = User(uuid=user['uuid'])
         # if not is_valid():
         #     return
         db.session.add(dbuser)
