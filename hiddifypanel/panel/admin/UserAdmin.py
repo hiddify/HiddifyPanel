@@ -38,9 +38,8 @@ class UserAdmin(AdminLTEModelView):
 
     # form_overrides = dict(expiry_time=custom_widgets.DaysLeftField,last_reset_time=custom_widgets.LastResetField)
     form_widget_args={
-    'current_usage_GB':{'min':'0'}    ,
-    'usage_limit_GB':{'min':'0'}  ,
-    
+        'current_usage_GB':{'min':'0'}    ,
+        'usage_limit_GB':{'min':'0'}  ,
     }
     form_args = {
     'max_ips':{
