@@ -81,9 +81,11 @@ def get_domain(domain):
 def get_panel_domains():
     if hconfig(ConfigEnum.is_parent):
         from .parent_domain import ParentDomain
-        domains= ParentDomain.query.all()    
+        domains= ParentDomain.query.all()
     else:
-        domains=Domain.query.filter(Domain.mode!=DomainType.fake).all()
+        domains=Domain.query.filter(Domain.mode!=DomainType.fake).filter(Domain.sub_link_only==True).all()
+        if not len(domain):
+            domains=Domain.query.filter(Domain.mode!=DomainType.fake).all()
 
     if len(domains)==0:
         if request:
