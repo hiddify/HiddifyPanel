@@ -131,3 +131,10 @@ def get_admin_by_uuid(uuid,create=False):
         db.session.commit()
         admin=AdminUser.query.filter(AdminUser.uuid==uuid).first()
     return admin
+
+
+def bulk_register_admins(users=[],commit=True):
+    for u in users:
+        add_or_update_admin(commit=False,**u)
+    if commit:
+        db.session.commit()    

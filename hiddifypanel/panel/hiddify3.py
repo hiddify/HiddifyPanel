@@ -145,13 +145,6 @@ def get_domain_btn_link(domain):
         return res
 
 
-def get_random_string(min_=10,max_=30):
-    # With combination of lower and upper case
-    length=random.randint(min_, max_)
-    characters = string.ascii_letters + string.digits
-    result_str = ''.join(random.choice(characters) for i in range(length))
-    return result_str
-
 def get_random_domains(count=1,retry=3):
     try:
         irurl="https://api.ooni.io/api/v1/measurements?probe_cc=IR&test_name=web_connectivity&anomaly=false&confirmed=false&failure=false&order_by=test_start_time&limit=1000"

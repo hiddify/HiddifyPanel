@@ -50,6 +50,75 @@ class User(db.Model, SerializerMixin):
     @property
     def is_active(self):
         return is_user_active(self)
+    @staticmethod
+    def by_id(user_id):
+        """
+        Retrieves a user from the database by their ID.
+        """
+        return User.query.get(user_id)
+
+    @staticmethod
+    def by_uuid(user_uuid,create=False):
+        """
+        Retrieves a user from the database by their UUID.
+        """
+        dbuser= User.query.filter_by(uuid=user_uuid).first()
+        if not dbuser:
+            dbuser = User(uuid=user['uuid'])
+            db.session.add(dbuser)
+        return dbuser
+
+    @staticmethod
+    def from_dict(data):
+        """
+        Returns a new User object created from a dictionary.
+        """
+        
+        return User(
+            name=data.get('name', ''),
+            expiry_time=data.get('expiry_time', datetime.date.today() + relativedelta.relativedelta(months=6)),
+            usage_limit_GB=data.get('usage_limit_GB', 1000),
+            package_days=data.get('package_days', 90),
+            mode=UserMode[data.get('mode', 'no_reset')],
+            monthly=data.get('monthly', False),
+            start_date=data.get('start_date', None),
+            current_usage_GB=data.get('current_usage_GB', 0),
+            last_reset_time=data.get('last_reset_time', datetime.date.today()),
+            comment=data.get('comment', None),
+            telegram_id=data.get('telegram_id', None),
+            added_by=data.get('added_by', 0)
+        )
+
+    # @staticmethod
+    # def from_dict(data):
+
+    #     allowed_fields = {'name', 'expiry_time', 'usage_limit_GB', 'package_days', 'mode', 'monthly', 'start_date',
+    #                       'current_usage_GB', 'comment', 'telegram_id', 'added_by_uuid'}
+    #     filtered_data = {k: v for k, v in data.items() if k in allowed_fields}
+    #     if 'mode' in filtered_data:
+    #         filtered_data['mode'] = UserMode[filtered_data['mode']]
+    #     if 'expiry_time' in filtered_data:
+    #         filtered_data['expiry_time'] = datetime.fromisoformat(filtered_data['expiry_time']).date()
+    #     if 'start_date' in filtered_data and filtered_data['start_date']:
+    #         filtered_data['start_date'] = datetime.fromisoformat(filtered_data['start_date']).date()
+    #     return User(**filtered_data)
+    def to_dict(d):
+        from hiddifypanel.panel import hiddify
+        return {
+        'uuid':d.uuid,
+        'name':d.name,
+        'last_online':hiddify.time_to_json(d.last_online),
+        'usage_limit_GB':d.usage_limit_GB,
+        'package_days':d.package_days,
+        'mode':d.mode,
+        'start_date':hiddify.date_to_json(d.start_date),
+        'current_usage_GB':d.current_usage_GB,
+        'last_reset_time':hiddify.date_to_json(d.last_reset_time),
+        'comment':d.comment,
+        'added_by_uuid':d.admin.uuid,
+        'telegram_id':d.telegram_id
+    }
+    
 
 def is_user_active(u):
     """
@@ -140,13 +209,9 @@ def user_by_id(id):
 
 def add_or_update_user(commit=True,**user):
     # if not is_valid():return
-    dbuser = User.query.filter(User.uuid == user['uuid']).first()
-
-    if not dbuser:
-        dbuser = User(uuid=user['uuid'])
-        # if not is_valid():
-        #     return
-        db.session.add(dbuser)
+    from hiddifypanel.panel import hiddify
+    dbuser = User.by_uuid(user['uuid'], create=True)
+       
     if user.get('added_by_uuid'):
         from .admin import get_admin_by_uuid
         admin=get_admin_by_uuid(user.get('added_by_uuid'),create=True)
@@ -155,19 +220,16 @@ def add_or_update_user(commit=True,**user):
         dbuser.added_by = 1
 
     if user.get('expiry_time',''):
-        if user.get('last_reset_time',''):
-            last_reset_time = datetime.datetime.strptime(user['last_reset_time'], '%Y-%m-%d')
-        else:
-            last_reset_time = datetime.date.today()
+        last_reset_time = hiddify.json_to_date(user.get('last_reset_time','')) or datetime.date.today()
 
-        expiry_time = datetime.datetime.strptime(user['expiry_time'], '%Y-%m-%d')
+        expiry_time = hiddify.json_to_date(user['expiry_time'])
         dbuser.start_date=    last_reset_time
         dbuser.package_days=(expiry_time-last_reset_time).days
 
     elif 'package_days' in user:
         dbuser.package_days=user['package_days']
         if user.get('start_date',''):
-            dbuser.start_date=datetime.datetime.strptime(user['start_date'], '%Y-%m-%d')
+            dbuser.start_date=hiddify.json_to_date(user['start_date'])
         else:
             dbuser.start_date=None
     dbuser.current_usage_GB = user['current_usage_GB']
@@ -178,9 +240,20 @@ def add_or_update_user(commit=True,**user):
     dbuser.mode = user.get('mode', user.get('monthly', 'false') == 'true')
     dbuser.telegram_id=user.get('telegram_id')
     
-    try:
-        dbuser.last_online=datetime.datetime.strptime(user.get('last_online'),"%Y-%m-%d %H:%M:%S")
-    except:
-        dbuser.last_online=datetime.datetime.min
+    dbuser.last_online=hiddify.json_to_time(user.get('last_online')) or datetime.datetime.min
+    
+    if commit:
+        db.session.commit()
+
+
+
+def bulk_register_users(users=[],commit=True,remove=False):
+    for u in users:
+        add_or_update_user(commit=False,**u)
+    if remove:
+        dd = {u.uuid: 1 for u in users}
+        for d in User.query.all():
+            if d.uuid not in dd:
+                db.session.delete(d)
     if commit:
         db.session.commit()

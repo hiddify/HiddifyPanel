@@ -55,6 +55,17 @@ class Domain(db.Model, SerializerMixin):
     def __repr__(self):
         return f'{self.domain}'
 
+    def to_dict(d):
+        return {
+        'domain': d.domain,
+        'mode': d.mode,
+        'alias': d.alias,
+        'sub_link_only':d.sub_link_only,
+        'child_unique_id': d.child.unique_id if d.child else '',
+        'cdn_ip': d.cdn_ip,
+        'show_domains': [dd.domain for dd in d.show_domains]
+    }
+
 
 def hdomains(mode):
     domains = Domain.query.filter(Domain.mode == mode).all()
@@ -118,3 +129,37 @@ def get_proxy_domains_db(db_domain):
 def get_current_proxy_domains(force_domain=None):
     domain=force_domain or urlparse(request.base_url).hostname
     return get_proxy_domains(domain)
+
+
+def add_or_update_domain(commit=True,child_id=0,**domain):
+    from hiddifypanel.panel import hiddify
+    dbdomain = Domain.query.filter(Domain.domain == domain['domain']).first()
+    if not dbdomain:
+        dbdomain = Domain(domain=domain['domain'])
+        db.session.add(dbdomain)
+    dbdomain.child_id = child_id
+
+    dbdomain.mode = domain['mode']
+    dbdomain.cdn_ip = domain.get('cdn_ip', '')
+    dbdomain.alias = domain.get('alias', '')
+    show_domains = domain.get('show_domains', [])
+    dbdomain.show_domains = Domain.query.filter(Domain.domain.in_(show_domains)).all()
+    if commit:
+        db.session.commit()
+
+
+
+def bulk_register_domains(domains,commit=True,remove=False,override_child_id=None):
+    from hiddifypanel.panel import hiddify
+    child_ids={}
+    for domain in domains:
+        child_id=override_child_id if override_child_id is not None else hiddify.get_child(domain.get('child_unique_id',None))
+        child_ids[child_id]=1
+        add_or_update_domain(commit=False,child_id=child_id,**domain)
+    if remove and len(child_ids):
+        dd = {d['domain']: 1 for d in domains}
+        for d in Domain.query.filter(Domain.child_id.in_(child_ids)):
+            if d.domain not in dd:
+                db.session.delete(d)
+    if commit:
+        db.session.commit()

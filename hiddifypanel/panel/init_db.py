@@ -18,6 +18,7 @@ def init_db():
 
     execute(f'update proxy set transport="WS" where transport = "ws"')
     execute(f'update admin_user set mode="agent" where mode = "slave"')
+    execute(f'update admin_user set mode="super_admin" where id=1')
     execute(f'DELETE from proxy where transport = "h1"')
     
 

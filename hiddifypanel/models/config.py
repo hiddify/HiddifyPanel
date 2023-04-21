@@ -17,36 +17,46 @@ from enum import auto
 from strenum import StrEnum
 from hiddifypanel import Events
 
-from .config_enum import ConfigEnum,ConfigCategory
-
-
+from .config_enum import ConfigEnum, ConfigCategory
 
 
 class BoolConfig(db.Model, SerializerMixin):
-    child_id= db.Column(db.Integer,db.ForeignKey('child.id'), primary_key=True,default=0)
+    child_id = db.Column(db.Integer, db.ForeignKey('child.id'), primary_key=True, default=0)
     # category = db.Column(db.String(128), primary_key=True)
     key = db.Column(db.Enum(ConfigEnum), primary_key=True)
     value = db.Column(db.Boolean)
 
+    def to_dict(d):
+        return {
+            'key': d.key,
+            'value': d.value,
+            'child_unique_id': d.child.unique_id if d.child else ''
+        }
 
 class StrConfig(db.Model, SerializerMixin):
-    child_id= db.Column(db.Integer, db.ForeignKey('child.id'), primary_key=True,default=0)
+    child_id = db.Column(db.Integer, db.ForeignKey('child.id'), primary_key=True, default=0)
     # category = db.Column(db.String(128), primary_key=True)
-    key = db.Column(db.Enum(ConfigEnum), primary_key=True,   default=ConfigEnum.admin_secret)
+    key = db.Column(db.Enum(ConfigEnum), primary_key=True,default=ConfigEnum.admin_secret)
     value = db.Column(db.String(2048))
 
+    def to_dict(d):
+        return {
+            'key': d.key,
+            'value': d.value,
+            'child_unique_id': d.child.unique_id if d.child else ''
+        }
 
 
-def hconfig(key: ConfigEnum,child_id=0):
-    value=None
+def hconfig(key: ConfigEnum, child_id=0):
+    value = None
     try:
-        str_conf = StrConfig.query.filter(StrConfig.key == key, StrConfig.child_id==child_id).first()
+        str_conf = StrConfig.query.filter(StrConfig.key == key, StrConfig.child_id == child_id).first()
         if str_conf:
-            value= str_conf.value
+            value = str_conf.value
         else:
-            bool_conf = BoolConfig.query.filter(BoolConfig.key == key, BoolConfig.child_id==child_id).first()
+            bool_conf = BoolConfig.query.filter(BoolConfig.key == key, BoolConfig.child_id == child_id).first()
             if bool_conf:
-                value= bool_conf.value
+                value = bool_conf.value
             else:
                 # if key == ConfigEnum.ssfaketls_fakedomain:
                 #     return hdomain(DomainType.ss_faketls)
@@ -62,44 +72,56 @@ def hconfig(key: ConfigEnum,child_id=0):
     return value
 
 
-def set_hconfig(key: ConfigEnum,value,child_id=0,commit=True):
-        
-        if key.type()==bool:
-            dbconf = BoolConfig.query.filter(BoolConfig.key == key, BoolConfig.child_id==child_id).first()    
-            if not dbconf:
-                dbconf=BoolConfig(key=key,value=value,child_id=child_id)
-                db.session.add(dbconf)
-        else:
-            dbconf = StrConfig.query.filter(StrConfig.key == key, StrConfig.child_id==child_id).first()    
-            if not dbconf:
-                dbconf=StrConfig(key=key,value=value,child_id=child_id)
-                db.session.add(dbconf)
-        old_v=dbconf.value
-        dbconf.value=value
-        Events.config_changed.notify(conf=dbconf,old_value=old_v)    
-        if commit:
-            db.session.commit()
-        
+def set_hconfig(key: ConfigEnum, value, child_id=0, commit=True):
+
+    if key.type() == bool:
+        dbconf = BoolConfig.query.filter(BoolConfig.key == key, BoolConfig.child_id == child_id).first()
+        if not dbconf:
+            dbconf = BoolConfig(key=key, value=value, child_id=child_id)
+            db.session.add(dbconf)
+    else:
+        dbconf = StrConfig.query.filter(StrConfig.key == key, StrConfig.child_id == child_id).first()
+        if not dbconf:
+            dbconf = StrConfig(key=key, value=value, child_id=child_id)
+            db.session.add(dbconf)
+    old_v = dbconf.value
+    dbconf.value = value
+    Events.config_changed.notify(conf=dbconf, old_value=old_v)
+    if commit:
+        db.session.commit()
+
 
 def get_hconfigs(child_id=0):
-    return {**{u.key: u.value for u in BoolConfig.query.filter(BoolConfig.child_id==child_id).all()},
-            **{u.key: u.value for u in StrConfig.query.filter(StrConfig.child_id==child_id).all()},
+    return {**{u.key: u.value for u in BoolConfig.query.filter(BoolConfig.child_id == child_id).all()},
+            **{u.key: u.value for u in StrConfig.query.filter(StrConfig.child_id == child_id).all()},
             # ConfigEnum.telegram_fakedomain:hdomain(DomainType.telegram_faketls),
             # ConfigEnum.ssfaketls_fakedomain:hdomain(DomainType.ss_faketls),
             # ConfigEnum.fake_cdn_domain:hdomain(DomainType.fake_cdn)
             }
 
 
-
-def add_or_update_config(commit=True,child_id=0,override_unique_id=True,**config):
+def add_or_update_config(commit=True, child_id=0, override_unique_id=True, **config):
     print(config)
     c = config['key']
     ckey = ConfigEnum(c)
     if c == ConfigEnum.unique_id and not override_unique_id:
         return
 
-    v = str(config['value']).lower() == "true" if ckey.type()==bool else config['value'] 
+    v = str(config['value']).lower() == "true" if ckey.type() == bool else config['value']
     if ckey in [ConfigEnum.db_version]:
         return
-    set_hconfig(ckey, v,child_id,commit=commit)
-    
+    set_hconfig(ckey, v, child_id, commit=commit)
+
+
+
+def bulk_register_configs(hconfigs,commit=True,override_child_id=None,override_unique_id=True):
+    from hiddifypanel.panel import hiddify
+    for conf in hconfigs:
+        # print(conf)
+        if conf['key']==ConfigEnum.unique_id and not override_unique_id:
+            continue
+        child_id=override_child_id if override_child_id is not None else hiddify.get_child(conf.get('child_unique_id',None))
+        # print(conf)
+        add_or_update_config(commit=False,child_id=child_id,**conf)
+    if commit:
+        db.session.commit()

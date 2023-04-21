@@ -214,6 +214,14 @@ class AdminstratorAdmin(AdminLTEModelView):
     def on_model_delete(self, model):
         if model.id==1 or model.id==g.admin.id:
             raise ValidationError(_("Owner can not be deleted!"))
+        users=model.recursive_users_query().all()
+        for u in users:
+            u.added_by=g.admin.id
+        
+        DailyUsage.query.filter(DailyUsage.admin_id.in_(model.recursive_sub_admins_ids())).update({'admin_id':g.admin.id})
+        AdminUser.query.filter(AdminUser.id.in_(model.recursive_sub_admins_ids())).delete()
+
+        db.session.commit()
 
 
 
@@ -224,20 +232,23 @@ class AdminstratorAdmin(AdminLTEModelView):
 
 
     def on_form_prefill(self, form, id=None):
-        # if form._obj is not None and form._obj.id==1:
-        #     print(form.__dict__)
-        #     del form.parent_admin
+        
         
         if g.admin.mode!=AdminMode.super_admin:
             del form.mode
             del form.can_add_admin
+            
         if g.admin.id==form._obj.id:
             del form.max_users
             del form.max_active_users
             del form.comment
+            del form.can_add_admin
+            if getattr(form, 'mode'):
+                del form.mode
         elif form._obj.mode==AdminMode.super_admin:
             del form.max_users
             del form.max_active_users
+            del form.can_add_admin
         
         
         

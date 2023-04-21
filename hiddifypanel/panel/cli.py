@@ -39,11 +39,11 @@ def backup():
 
 def all_configs():
     import json
-    valid_users=[hiddify.user_dict(u) for u in User.query.filter((User.usage_limit_GB>User.current_usage_GB)).all() if is_user_active(u)]
+    valid_users=[u.to_dict() for u in User.query.filter((User.usage_limit_GB>User.current_usage_GB)).all() if is_user_active(u)]
 
     configs={
         "users": valid_users,
-        "domains": [hiddify.domain_dict(u) for u in Domain.query.all() if "*" not in u.domain],
+        "domains": [u.to_dict() for u in Domain.query.all() if "*" not in u.domain],
         # "parent_domains": [hiddify.parent_domain_dict(u) for u in ParentDomain.query.all()],
         "hconfigs": get_hconfigs()
     }
