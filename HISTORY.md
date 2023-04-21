@@ -1,6 +1,16 @@
 # Changelog
 
 
+## 4.2.4 (2023-04-21)
+
+#### Fix
+
+* Backup bug. 
+
+* Release issue. 
+
+
+
 ## 4.2.1 (2023-04-21)
 
 #### Fix
