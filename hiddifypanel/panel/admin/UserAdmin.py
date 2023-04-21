@@ -104,7 +104,7 @@ class UserAdmin(AdminLTEModelView):
     
     def _name_formatter(view, context, model, name):
         proxy_path=hconfig(ConfigEnum.proxy_path)
-        print("model.telegram_id",model.telegram_id)
+        # print("model.telegram_id",model.telegram_id)
         extra=""
         if hconfig(ConfigEnum.telegram_bot_token) and  model.telegram_id:
             extra=f'<button class="btn btn-warning btn-xs " onclick="show_send_message({model.id})" ><i class="fa-solid fa-paper-plane"></i></button> '
@@ -185,7 +185,7 @@ class UserAdmin(AdminLTEModelView):
     # def is_accessible(self):
     #     return g.is_admin
     def on_form_prefill(self, form, id=None):
-        print("================",form._obj.start_date)
+        # print("================",form._obj.start_date)
         if id==None or form._obj is None or form._obj.start_date is None:
             msg= _("Package not started yet.") 
             # form.reset['class']="d-none"
@@ -260,7 +260,7 @@ class UserAdmin(AdminLTEModelView):
 
     def get_list(self, page, sort_column, sort_desc, search, filters,*args, **kwargs):
         res=None
-        print('aaa',args, kwargs)
+        # print('aaa',args, kwargs)
         if 'remaining_days' == sort_column:
             query = self.session.query(self.model)
             count = query.count()
@@ -275,7 +275,7 @@ class UserAdmin(AdminLTEModelView):
         # Override the default get_list method to use the custom sort function
         query = self.session.query(self.model)
         if self._sortable_columns:
-            print("sor",self._sortable_columns['remaining_days'])
+            # print("sor",self._sortable_columns['remaining_days'])
             for column, direction in self._get_default_order():
                 # if column == 'remaining_days':
                 #     # Use the custom sort function for 'remaining_days'
