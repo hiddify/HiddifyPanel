@@ -126,6 +126,8 @@ class AdminstratorAdmin(AdminLTEModelView):
         """)
     def _max_users_formatter(view, context, model, name):
         u=model.recursive_users_query().count()
+        if model.mode== AdminMode.super_admin:
+            return f"{u} / ∞"
         t=model.max_users
         rate=round(u*100/(t+0.000001))
         state= "danger" if u>=t else ('warning' if  rate>80 else 'success')
@@ -139,8 +141,11 @@ class AdminstratorAdmin(AdminLTEModelView):
         """)
         
     def _max_active_users_formatter(view, context, model, name):
+        
         actives=[u for u in model.recursive_users_query().all() if is_user_active(u)]
         u=len(actives)
+        if model.mode== AdminMode.super_admin:
+            return f"{u} / ∞"
         t=model.max_active_users
         rate=round(u*100/(t+0.000001))
         state= "danger" if u>=t else ('warning' if  rate>80 else 'success')
