@@ -109,6 +109,8 @@ def make_proxy(proxy, domain_db, phttp=80, ptls=443):
         base['reality_short_id']=random.sample(hconfigs[ConfigEnum.reality_short_ids].split(','),1)[0]
         base['reality_pbk']=hconfigs[ConfigEnum.reality_public_key]
         base['sni']=random.sample(hconfigs[ConfigEnum.reality_server_names].split(","),1)[0]
+        if base.get('fingerprint','none')!='none':
+            base['fingerprint']="chrome"
         # if not domain_db.cdn_ip:
         #     base['server']=hiddify.get_domain_ip(base['server'])
 
@@ -265,8 +267,6 @@ def to_clash(proxy, meta_or_normal):
     name=proxy['name']
     if proxy['l3'] == "kcp":
         return {'name': name, 'msg': "clash not support kcp",'type':'debug'}
-    if proxy.get('flow', '') == "xtls-rprx-vision":
-        return {'name': name, 'msg': "vision not supported",'type':'debug'}
     if meta_or_normal == "normal":
         if proxy['proto'] == "vless":
             return {'name': name, 'msg': "vless not supported in clash",'type':'debug'}
@@ -305,7 +305,9 @@ def to_clash(proxy, meta_or_normal):
             base["plugin"] = "shadow-tls"
             base["plugin-opts"] = {
                 "host": proxy["fakedomain"],
-                "password": proxy["proxy_path"]
+                "password": proxy["proxy_path"],
+                "version": 3 # support 1/2/3
+
             }
 
         elif proxy["proto"] == "v2ray":
@@ -327,12 +329,18 @@ def to_clash(proxy, meta_or_normal):
         base["uuid"] = proxy["uuid"]
         base["servername"] = proxy["sni"]
         base["tls"] = "tls" in proxy["l3"]
-    # if meta_or_normal == "meta":
-    #     base['client-fingerprint'] = proxy['fingerprint']
+    if meta_or_normal == "meta":
+        base['client-fingerprint'] = proxy['fingerprint']
     if proxy.get('flow'):
         base["flow"] = proxy['flow']
-        base["flow-show"] = True
-
+        # base["flow-show"] = True
+    if proxy['l3']==ProxyL3.reality:
+        base["reality-opts"]={
+            "public-key":proxy['reality_pbk'],
+            "short-id":proxy['reality_short_id'],
+        }
+        
+      
     if proxy["proto"] == "vmess":
         base["alterId"] = 0
         base["cipher"] = proxy["cipher"]

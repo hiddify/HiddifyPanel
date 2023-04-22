@@ -32,6 +32,7 @@ def init_db():
     add_column(Domain.child_id)
     add_column(Proxy.child_id)
     add_column(User.added_by)
+    add_column(User.max_ips)
     add_column(AdminUser.parent_admin_id)
     add_column(AdminUser.can_add_admin)
     add_column(AdminUser.max_active_users)
@@ -58,6 +59,7 @@ def init_db():
     execute(f'update dailyusage set admin_id=1 where admin_id = 0')
     execute(f'update user set added_by=1 where added_by = 0')
     execute(f'update user set added_by=1 where added_by is NULL')
+    execute(f'update user set max_ips=10000 where max_ips is NULL')
     execute(f'update str_config set child_id=0 where child_id is NULL')
     execute(f'update bool_config set child_id=0 where child_id is NULL')
     execute(f'update domain set child_id=0 where child_id is NULL')
@@ -311,6 +313,8 @@ def get_proxy_rows_v1():
         "faketls direct ss",
         "WS direct v2ray",
         "shadowtls direct ss",
+        "restls1_2 direct ss",
+        "restls1_3 direct ss",
         "tcp direct ssr",
         "WS CDN v2ray"]
     )

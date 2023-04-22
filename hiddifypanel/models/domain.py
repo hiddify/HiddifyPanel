@@ -89,21 +89,21 @@ def get_hdomains():
 def get_domain(domain):
     return Domain.query.filter(Domain.domain==domain).first()
 
-def get_panel_domains():
+def get_panel_domains(always_add_ip=False,always_add_all_domains=False):
+    domains=[]
     if hconfig(ConfigEnum.is_parent):
         from .parent_domain import ParentDomain
         domains= ParentDomain.query.all()
     else:
         domains=Domain.query.filter(Domain.mode!=DomainType.fake).filter(Domain.sub_link_only==True).all()
-        if not len(domains):
+        if not len(domains) or always_add_all_domains:
             domains=Domain.query.filter(Domain.mode!=DomainType.fake).all()
 
-    if len(domains)==0:
-        if request:
-            domains=[Domain(domain=request.host)]
-        else:
-            from hiddifypanel.panel import hiddify
-            domains=[Domain(domain=hiddify.get_ip(4))]
+    if len(domains)==0 and request:
+        domains=[Domain(domain=request.host)]
+    if len(domains)==0 or always_add_ip:
+        from hiddifypanel.panel import hiddify
+        domains+=[Domain(domain=hiddify.get_ip(4))]
     return domains
 
 def get_proxy_domains(domain):

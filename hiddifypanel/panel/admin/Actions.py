@@ -12,7 +12,7 @@ import subprocess
 import re
 from hiddifypanel.panel import hiddify,usage
 from hiddifypanel.panel import hiddify_api
-from flask import current_app,render_template,request,Response,Markup,url_for
+from flask import current_app,render_template,request,Response,Markup,url_for,make_response
 from hiddifypanel.panel.hiddify import flash
 
 from flask_classful import FlaskView,route
@@ -38,8 +38,12 @@ class Actions(FlaskView):
             out=f"<a href='#' target='_blank'><div style='background-color:#b1eab1; padding: 10px;border: solid;'>Finished! For scrolling the log click here.</div></a>{out}"
 
 
-            
-        return out
+        
+        response = make_response(out)
+        response.headers['Access-Control-Allow-Origin'] = '*'
+        response.headers['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE'
+        response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+        return response
             
             
 
@@ -115,7 +119,11 @@ class Actions(FlaskView):
                             out_type="info",
                             out_msg=_("Success! Please wait around 4 minutes to make sure everything is updated. During this time, please save your proxy links which are:")+
                                     admin_links,
-                            log_path=(f"https://{domains[0]}" if domain_changed else "")+f"/{proxy_path}/{admin_secret}/admin/actions/reverselog/0-install.log/"
+                            log_path=get_logpath("0-install.log"),
+                            show_success=True,
+                            domains=get_panel_domains(always_add_all_domains=True,always_add_ip=True),
+                            
+
                             
         )
 
@@ -124,7 +132,8 @@ class Actions(FlaskView):
         time.sleep(1)
         return resp
 
-
+    
+        
     @hiddify.super_admin
     def status(self):
         # hiddify.add_temporary_access()
@@ -142,7 +151,10 @@ class Actions(FlaskView):
         return render_template("result.html",
                             out_type="info",
                             out_msg=_("see the log in the bellow screen"),
-                            log_path=url_for("admin.Actions:reverselog",logfile=f"status.log")
+                            log_path=get_logpath(f"status.log"),
+                            # log_path=f"status.log",
+                            show_success=False,
+                            domains=[d.domain.replace("*",hiddify.get_random_string(3,6)) for d in get_panel_domains(always_add_all_domains=True,always_add_ip=True)],
         )
 
 
@@ -168,7 +180,9 @@ class Actions(FlaskView):
         return render_template("result.html",
                             out_type="success",
                             out_msg=_("Success! Please wait around 5 minutes to make sure everything is updated."),
-                            log_path=url_for("admin.Actions:reverselog",logfile=f"update.log")
+                            show_success=True,
+                            log_path=get_logpath(f"update.log"),
+                            domains=[d.domain.replace("*",hiddify.get_random_string(3,6)) for d in get_panel_domains(always_add_all_domains=True,always_add_ip=True)],
         )
 
         
@@ -181,8 +195,11 @@ class Actions(FlaskView):
             server_asn=(ipasn.get(ipv4)or {}).get('autonomous_system_organization','unknown')
             res="<table><tr><th>Domain</th><th>IP</th><th>Country</th><th>ASN</th><th>Ping (ms)</th><th>TCP ping (ms)</th></tr>"
             res+=f"<tr><td>Your Server</td><td>{ipv4}</td><td>{server_country}</td><td>{server_asn}</td><td>0</td></tr>"
-            for d in [test_domain, *hiddify.get_random_domains(25)]:
+            import time
+            start=time.time()
+            for d in [test_domain, *hiddify.get_random_domains(30)]:
                 if not d:continue
+                if time.time()-start>20:break
                 print(d)
                 tcp_ping=hiddify.is_domain_reality_friendly(d)
                 if tcp_ping:
@@ -210,3 +227,7 @@ class Actions(FlaskView):
                             out_msg=f'<pre class="ltr">{json.dumps(usage.update_local_usage(),indent=2)}</pre>',
                             log_path=None
         )
+
+def get_logpath(logfile):
+        return f'{hiddify.get_admin_path()}actions/reverselog/{logfile}/'
+        

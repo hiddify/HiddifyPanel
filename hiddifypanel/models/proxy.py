@@ -22,6 +22,8 @@ class ProxyTransport(StrEnum):
     XTLS=auto()
     faketls=auto()
     shadowtls=auto()
+    restls1_2=auto()
+    restls1_3=auto()
     # h1=auto()
     WS=auto()
     tcp=auto()
@@ -44,6 +46,8 @@ class ProxyL3(StrEnum):
     reality=auto()
     http=auto()
     kcp=auto()
+    # hysteria=auto()
+
 
 class Proxy(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)

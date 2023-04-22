@@ -54,7 +54,7 @@ class User(db.Model, SerializerMixin):
     telegram_id=db.Column(db.String(512))
     added_by=db.Column(db.Integer,db.ForeignKey('admin_user.id'),default=0)
     max_ips = db.Column(db.Integer, default=1000,nullable=False)
-    details = db.relationship('UserDetails', cascade="all,delete",backref='user')
+    details = db.relationship('UserDetail', cascade="all,delete",backref='user')
 
     @property
     def remaining_days(self):

@@ -27,6 +27,7 @@ class ConfigCategory(StrEnum):
     tls=auto()
     ssfaketls=auto()
     shadowtls=auto()
+    restls=auto()
     tuic=auto()
     ssr=auto()
     kcp=auto()
@@ -41,6 +42,8 @@ class ConfigEnum(StrEnum):
     reality_private_key=auto()
     reality_public_key=auto()
 
+    restls1_2_domain=auto()
+    restls1_3_domain=auto()
     cloudflare=auto()
     license=auto()
     country=auto()
