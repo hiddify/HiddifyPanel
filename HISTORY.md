@@ -5,6 +5,8 @@
 
 #### New
 
+* Add disable button and new style. 
+
 * Better result page. 
 
 * Add minimum valid users. 
