@@ -17,7 +17,6 @@ to_gig_d = 1000*1000*1000
 
 def format_timedelta(delta, add_direction=True,granularity="days"):
     res=delta.days
-    print(delta.days)
     locale=g.locale if g and hasattr(g, "locale") else hconfig(ConfigEnum.admin_lang)
     if granularity=="days" and delta.days==0:
         res= _("0 - Last day")

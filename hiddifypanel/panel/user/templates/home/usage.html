@@ -24,9 +24,9 @@
                     </div>
                     %endif
                     %endif
-                    % if user.is_active
+                    % if not user.is_active
                         {{_("User is inactive")}}
-                        %if len(user.ips)>user.max_ips:
+                        %if (user.ips|length)>user.max_ips:
                             <br>
                             <i class="fa-solid fa-users-slash text-danger"></i> {{_("Too many Connected IPs")}}
                         %endif    
