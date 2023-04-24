@@ -19,7 +19,7 @@ class UserMode(StrEnum):
     monthly = auto()
     weekly = auto()
     daily = auto()
-    disable = auto()
+    # disable = auto()
 class UserDetail(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     user_id = db.Column(db.Integer,db.ForeignKey('user.id'), default=0,nullable=False)
@@ -55,6 +55,7 @@ class User(db.Model, SerializerMixin):
     added_by=db.Column(db.Integer,db.ForeignKey('admin_user.id'),default=0)
     max_ips = db.Column(db.Integer, default=1000,nullable=False)
     details = db.relationship('UserDetail', cascade="all,delete",backref='user')
+    enable = db.Column(db.Boolean, default=True,nullable=False)
 
     @property
     def remaining_days(self):
@@ -149,7 +150,7 @@ def is_user_active(u):
     is_active=True
     if not u:
         is_active=False
-    elif u.mode == UserMode.disable:
+    elif not u.enable:
         is_active= False
     elif u.usage_limit_GB < u.current_usage_GB:
         is_active= False
@@ -259,7 +260,14 @@ def add_or_update_user(commit=True,**user):
     dbuser.usage_limit_GB = user['usage_limit_GB']
     dbuser.name = user.get('name') or ''
     dbuser.comment = user.get('comment', '')
-    dbuser.mode = user.get('mode', user.get('monthly', 'false') == 'true')
+    dbuser.enable=user.get('enable',True)
+    mode = user.get('mode',UserMode.no_reset)
+    if mode=='disable':
+        mode = UserMode.no_reset
+        dbuser.enable=False
+
+    dbuser.mode=mode
+    
     dbuser.telegram_id=user.get('telegram_id')
     
     dbuser.last_online=hiddify.json_to_time(user.get('last_online')) or datetime.datetime.min

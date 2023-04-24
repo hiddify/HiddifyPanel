@@ -2,7 +2,7 @@ from flask_admin.contrib import sqla
 from hiddifypanel.panel.database import db
 import datetime
 from hiddifypanel.models import  *
-from flask import Markup,g,request,url_for
+from flask import Markup,g,request,url_for,abort
 from wtforms.validators import Regexp,ValidationError
 import re,uuid
 from hiddifypanel import xray_api
@@ -25,10 +25,10 @@ class UserAdmin(AdminLTEModelView):
     form_extra_fields = {
         'reset_days': SwitchField(_("Reset package days")),
         'reset_usage': SwitchField(_("Reset package usage")),
-        'disable_user': SwitchField(_("Disable User"))
+        # 'disable_user': SwitchField(_("Disable User"))
     }
     list_template = 'model/user_list.html'    
-    form_excluded_columns=['monthly','telegram_id','last_online','expiry_time','last_reset_time','current_usage_GB','start_date','added_by','admin','details']
+    form_excluded_columns=['monthly','telegram_id','last_online','expiry_time','last_reset_time','current_usage_GB','start_date','added_by','admin','details','max_ips']
     page_size=50
     # edit_modal=True
     # create_modal=True
@@ -76,6 +76,7 @@ class UserAdmin(AdminLTEModelView):
         'last_online':_('Last Online'),
         "package_days":_('Package Days'),
         "max_ips":_('Max IPs'),
+        "enable":_('Enable'),
         
      }
     # can_set_page_size=True
@@ -209,8 +210,8 @@ class UserAdmin(AdminLTEModelView):
             form.reset_usage.label.text+=usr_usage
             form.usage_limit_GB.label.text+=usr_usage
             
-        if form._obj.mode==UserMode.disable:
-            delattr(form,'disable_user')
+        # if form._obj.mode==UserMode.disable:
+        #     delattr(form,'disable_user')
         # form.disable_user.data=form._obj.mode==UserMode.disable
         form.package_days.label.text+=f" ({msg})"
 
@@ -222,7 +223,7 @@ class UserAdmin(AdminLTEModelView):
         #     form.reset = SwitchField("Reset")
         return form
     def on_model_change(self, form, model, is_created):
-        model.max_ips=max(3,model.max_ips)
+        model.max_ips=max(3,model.max_ips or 10000)
         if len(User.query.all())%4==0:
             flash(('<div id="show-modal-donation"></div>'), ' d-none')
         if not re.match("^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$", model.uuid):
@@ -230,8 +231,8 @@ class UserAdmin(AdminLTEModelView):
         
         if form.reset_usage.data:
             model.current_usage_GB=0
-        if form.disable_user.data:
-            model.mode=UserMode.disable
+        # if form.disable_user.data:
+        #     model.mode=UserMode.disable
         if form.reset_days.data:
             model.start_date=None  
         model.package_days=min(model.package_days,10000)
@@ -304,24 +305,27 @@ class UserAdmin(AdminLTEModelView):
         # Get the base query
         query = super().get_query()
 
-        admin_id=request.args.get("admin_id") 
-        admin=AdminUser.query.filter(AdminUser.id==admin_id).first() or g.admin
-        if admin:
-            query = query.filter(User.added_by.in_(admin.recursive_sub_admins_ids()))
-        else:
+        admin_id=int(request.args.get("admin_id") or g.admin.id)
+        if admin_id not in g.admin.recursive_sub_admins_ids():
+            abort(403)
+        admin=AdminUser.query.filter(AdminUser.id==admin_id).first()
+        if not admin:
             abort(403)
 
+        query = query.filter(User.added_by.in_(admin.recursive_sub_admins_ids()))
+        
+    
         return query
 
     # Override get_count_query() to include the filter condition in the count query
     def get_count_query(self):
         # Get the base count query
         query = super().get_count_query()
-        admin_id=request.args.get("admin_id") 
-        admin=AdminUser.query.filter(AdminUser.id==admin_id).first() or g.admin
-        if admin:
-            query = query.filter(User.added_by.in_(admin.recursive_sub_admins_ids()))
-        else:
+        admin_id=int(request.args.get("admin_id") or g.admin.id)
+        if admin_id not in g.admin.recursive_sub_admins_ids():
+            abort(403)
+        admin=AdminUser.query.filter(AdminUser.id==admin_id).first()
+        if not admin:
             abort(403)
         
 

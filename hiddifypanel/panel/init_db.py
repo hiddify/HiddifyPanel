@@ -42,6 +42,7 @@ def init_db():
     add_column(DailyUsage.admin_id)
     add_column(DailyUsage.child_id)
     add_column(User.monthly)
+    add_column(User.enable)
     add_column(Domain.cdn_ip)
 
     if len(Domain.query.all())!=0 and BoolConfig.query.count()==0:
@@ -58,6 +59,8 @@ def init_db():
     execute(f'update dailyusage set admin_id=1 where admin_id is NULL')
     execute(f'update dailyusage set admin_id=1 where admin_id = 0')
     execute(f'update user set added_by=1 where added_by = 0')
+    execute(f'update user set enable=True, mode="no_reset" where enable is NULL')
+    execute(f'update user set enable=False, mode="no_reset" where mode = "disable"')
     execute(f'update user set added_by=1 where added_by is NULL')
     execute(f'update user set max_ips=10000 where max_ips is NULL')
     execute(f'update str_config set child_id=0 where child_id is NULL')
@@ -93,6 +96,7 @@ def init_db():
     
     db.session.commit()
     return BoolConfig.query.all()
+
 
 def _v33():
     Proxy.query.filter(Proxy.l3==ProxyL3.reality).delete()

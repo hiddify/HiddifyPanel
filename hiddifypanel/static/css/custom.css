@@ -183,84 +183,121 @@ justify-content: center !important;
 
 
 
+[class*="sidebar-dark-"] .sidebar a{
+  color:#FFFFFF;
+}
 
+.dark-mode .main-footer {
+  background: #191974 linear-gradient(180deg, #191974, #191974) repeat-x !important;
+color: #191974;
+}
+.dark-mode .content-wrapper {
+  background: #0a0a24 linear-gradient(180deg, #0a0a24, #232390) repeat-x !important;
+color: #0a0a24;
+}
+.dark-mode .border-bottom {
+    border-bottom: 1px solid #0a0a24 !important;
+}
+.dark-mode .navbar-dark {
+  background: #0a0a24 linear-gradient(180deg, #0a0a24, #0a0a24) repeat-x !important;
+color: #0a0a24;
+}
 
+#main-sidebar{
+  background: #FFFFFF linear-gradient(180deg, #4560e8, #4560e8) repeat-x !important;
+color: #FFFFFF;
+}
+.main-sidebar.sub-sidebar{
+background: #FFFFFF linear-gradient(180deg, #33d2ee, #4560e8) repeat-x !important;
+color: #FFFFFF;
+  
+}
+
+.dark-mode #main-sidebar{
+  background: #FFFFFF linear-gradient(180deg, #191974, #191974) repeat-x !important;
+color: #FFFFFF;
+}
+.dark-mode .sub-sidebar{
+background: #FFFFFF linear-gradient(180deg, #0a0a27, #232390) repeat-x !important;
+color: #FFFFFF;
+  
+}
 #today {
-  background: #FFFFFF linear-gradient(180deg, #9f80ff, #7142ff) repeat-x !important;
+background: #FFFFFF linear-gradient(180deg, #9f80ff, #7142ff) repeat-x !important;
+color: #FFFFFF;
+}
+.dark-mode #today {
+background: #FFFFFF linear-gradient(180deg, #9f80ff, #7142ff) repeat-x !important;
+color: #FFFFFF;
+}
+#yesterday {
+background: #FFFFFF linear-gradient(180deg, #73a2ff, #246dff) repeat-x !important;
+color: #FFFFFF;
+}
+.dark-mode #yesterday {
+background: #FFFFFF linear-gradient(180deg, #73a2ff, #246dff) repeat-x !important;
+color: #FFFFFF;
+}
+#last_30_days {
+background: #FFFFFF linear-gradient(180deg, #54e547, #0fb100) repeat-x !important;
   color: #FFFFFF;
-  }
-  .dark-mode #today {
-  background: #FFFFFF linear-gradient(180deg, #9f80ff, #7142ff) repeat-x !important;
-  color: #FFFFFF;
-  }
-  #yesterday {
-  background: #FFFFFF linear-gradient(180deg, #73a2ff, #246dff) repeat-x !important;
-  color: #FFFFFF;
-  }
-  .dark-mode #yesterday {
-  background: #FFFFFF linear-gradient(180deg, #73a2ff, #246dff) repeat-x !important;
-  color: #FFFFFF;
-  }
-  #last_30_days {
-  background: #FFFFFF linear-gradient(180deg, #54e547, #0fb100) repeat-x !important;
-  color: #FFFFFF;
-  }
-  .dark-mode #last_30_days {
-  background: #FFFFFF linear-gradient(180deg, #54e547, #0fb100) repeat-x !important;
-  color: #FFFFFF;
-  }
-  
-  #total {
-  background: #FFFFFF linear-gradient(180deg, #ffa94d, #ff8402) repeat-x !important;
-  color: #FFFFFF;
-  }
-  .dark-mode #total {
-  background: #FFFFFF linear-gradient(180deg, #ffa94d, #ff8402) repeat-x !important;
-  color: #FFFFFF;
-  }
-  #online {
-  background: #FFFFFF linear-gradient(180deg, #04e0c1, #00a790) repeat-x !important;
-  color: #FFFFFF;
-  }
-  .dark-mode #online {
-  background: #FFFFFF linear-gradient(180deg, #04e0c1, #00a790) repeat-x !important;
-  color: #FFFFFF;
-  }
-  #network{
-  background: #FFFFFF linear-gradient(180deg, #ff6a6a, #ff3d3e) repeat-x !important;
-  color: #FFFFFF;
-  }
-  .dark-mode #network{
-  background: #FFFFFF linear-gradient(180deg, #ff6a6a, #ff4849) repeat-x !important;
-  color: #FFFFFF;
-  }
-  
-  #cpu{
-  background: #FFFFFF linear-gradient(180deg, #9a979a, #6a6a6a) repeat-x !important;
-  color: #FFFFFF;
-  }
-  
-  .dark-mode #cpu{
-  background: #FFFFFF linear-gradient(180deg, #9a979a, #6a6a6a) repeat-x !important;
-  color: #FFFFFF;
-  }
-  
-  #ram{
-  background: #FFFFFF linear-gradient(180deg, #ec8eff, #da22ff) repeat-x !important;
-  color: #FFFFFF;
-  }
-  
-  .dark-mode #ram{
-  background: #FFFFFF linear-gradient(180deg, #ec8eff, #da22ff) repeat-x !important;
-  color: #FFFFFF;
-  }
-  
-  #disk{
-  background: #FFFFFF linear-gradient(180deg, #54c2ff, #079ef2) repeat-x !important;
-  color: #FFFFFF;
-  }
-  
-  .dark-mode #disk{
-  background: #FFFFFF linear-gradient(180deg, #54c2ff, #079ef2) repeat-x !important;
-  color: #FFFFFF;
-  }
+}
+.dark-mode #last_30_days {
+background: #FFFFFF linear-gradient(180deg, #54e547, #0fb100) repeat-x !important;
+color: #FFFFFF;
+}
+
+#total {
+background: #FFFFFF linear-gradient(180deg, #ffa94d, #ff8402) repeat-x !important;
+color: #FFFFFF;
+}
+.dark-mode #total {
+background: #FFFFFF linear-gradient(180deg, #ffa94d, #ff8402) repeat-x !important;
+color: #FFFFFF;
+}
+#online {
+background: #FFFFFF linear-gradient(180deg, #04e0c1, #00a790) repeat-x !important;
+color: #FFFFFF;
+}
+.dark-mode #online {
+background: #FFFFFF linear-gradient(180deg, #04e0c1, #00a790) repeat-x !important;
+color: #FFFFFF;
+}
+#network{
+background: #FFFFFF linear-gradient(180deg, #ff6a6a, #ff3d3e) repeat-x !important;
+color: #FFFFFF;
+}
+.dark-mode #network{
+background: #FFFFFF linear-gradient(180deg, #ff6a6a, #ff4849) repeat-x !important;
+color: #FFFFFF;
+}
+
+#cpu{
+background: #FFFFFF linear-gradient(180deg, #9a979a, #6a6a6a) repeat-x !important;
+color: #FFFFFF;
+}
+
+.dark-mode #cpu{
+background: #FFFFFF linear-gradient(180deg, #9a979a, #6a6a6a) repeat-x !important;
+color: #FFFFFF;
+}
+
+#ram{
+background: #FFFFFF linear-gradient(180deg, #ec8eff, #da22ff) repeat-x !important;
+color: #FFFFFF;
+}
+
+.dark-mode #ram{
+background: #FFFFFF linear-gradient(180deg, #ec8eff, #da22ff) repeat-x !important;
+color: #FFFFFF;
+}
+
+#disk{
+background: #FFFFFF linear-gradient(180deg, #54c2ff, #079ef2) repeat-x !important;
+color: #FFFFFF;
+}
+
+.dark-mode #disk{
+background: #FFFFFF linear-gradient(180deg, #54c2ff, #079ef2) repeat-x !important;
+color: #FFFFFF;
+}

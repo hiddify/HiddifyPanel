@@ -6,7 +6,7 @@
             <div class="inner">
                 <h3>{{_('user.home.usage.title')}}</h3>
                 <div class="info-box-content">
-                    %if user.mode=='disable'
+                    %if not user.enable
                     <span class="info-box-text">{{_("Disable")}}</span>
                     %else
                     <span class="info-box-text">{{user.current_usage_GB|round(3)}}GB <b>{{_('user.home.usage.from')}}</b>
