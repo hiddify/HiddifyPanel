@@ -80,8 +80,8 @@
     sendRequestsSequentially(log_urls)
     .then(response => {
       console.log(response);
-      
-      x.innerHTML=(response)
+      if (x.innerHTML!=response)
+        x.innerHTML=response
       indx=response.indexOf("----Finished!---")
       if (!finished && indx>0 &&indx<100){
         set_progress(100)
