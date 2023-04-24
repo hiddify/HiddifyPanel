@@ -82,7 +82,8 @@
       console.log(response);
       
       x.innerHTML=(response)
-      if (!finished && response.indexOf("----Finished!---")>=0){
+      indx=response.indexOf("----Finished!---")
+      if (!finished && indx>=0 &&indx<50){
         set_progress(100)
         finished=true
         $("#progress").removeClass("bg-danger")
