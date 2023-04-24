@@ -121,7 +121,7 @@ class Actions(FlaskView):
                                     admin_links,
                             log_path=get_logpath("0-install.log"),
                             show_success=True,
-                            domains=get_panel_domains(always_add_all_domains=True,always_add_ip=True),
+                            domains=get_domains(),
                             
 
                             
@@ -154,7 +154,7 @@ class Actions(FlaskView):
                             log_path=get_logpath(f"status.log"),
                             # log_path=f"status.log",
                             show_success=False,
-                            domains=[d.domain.replace("*",hiddify.get_random_string(3,6)) for d in get_panel_domains(always_add_all_domains=True,always_add_ip=True)],
+                            domains=get_domains()
         )
 
 
@@ -182,7 +182,7 @@ class Actions(FlaskView):
                             out_msg=_("Success! Please wait around 5 minutes to make sure everything is updated."),
                             show_success=True,
                             log_path=get_logpath(f"update.log"),
-                            domains=[d.domain.replace("*",hiddify.get_random_string(3,6)) for d in get_panel_domains(always_add_all_domains=True,always_add_ip=True)],
+                            domains=get_domains(),
         )
 
         
@@ -231,3 +231,5 @@ class Actions(FlaskView):
 def get_logpath(logfile):
         return f'{hiddify.get_admin_path()}actions/reverselog/{logfile}/'
         
+def get_domains():
+    return [d.domain.replace("*",hiddify.get_random_string(3,6)) for d in get_panel_domains(always_add_all_domains=True,always_add_ip=True)]
