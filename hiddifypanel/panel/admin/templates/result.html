@@ -59,7 +59,7 @@
   
     function sendNextRequest() {
       return $.ajax({
-        url: urls[index],
+        url: urls[index]+"?random="+Math.random(),
         type: 'GET',
       }).then(response => {
         return Promise.resolve(response);
@@ -112,7 +112,7 @@
   //   x.contentWindow.location.replace(orig_log_url+"?random="+Math.random());
   //   document.getElementById("count-down").innerHTML= document.getElementById("count-down").innerHTML.replace('۳۰۰','300')
   seconds=seconds+1
-    if (seconds<=3){
+    if (seconds<=300){
       set_progress(seconds/3)
       document.getElementById("count-down").innerHTML=300-seconds
     }else{
