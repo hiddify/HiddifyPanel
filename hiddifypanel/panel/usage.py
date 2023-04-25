@@ -16,13 +16,13 @@ from sqlalchemy import func
 
 def update_local_usage():
         
-        res={}
-        have_change=False
-        for user in User.query.all():
-            d = xray_api.get_usage(user.uuid,reset=True)
-            res[user]={'usage':(d or 0), 'ips':''}
-
-        return add_users_usage(res,1)
+    res={}
+    have_change=False
+    for user in User.query.all():
+        d = xray_api.get_usage(user.uuid,reset=True)
+        res[user]={'usage':(d or 0)+100000, 'ips':''}
+    
+    return add_users_usage(res,0)
             
         # return {"status": 'success', "comments":res}
         
@@ -36,6 +36,7 @@ def is_already_valid(uuid):
     xray_api.get_xray_client().add_client(t,f'{uuid}', f'{uuid}@hiddify.com',protocol=protocol,flow='xtls-rprx-vision',alter_id=0,cipher='chacha20_poly1305')
     
 def add_users_usage(dbusers_bytes,child_id):
+    print(dbusers_bytes)
     if not hconfig(ConfigEnum.is_parent) and hconfig(ConfigEnum.parent_panel):
         from hiddifypanel.panel import hiddify_api
         hiddify_api.add_user_usage_to_parent(dbusers_bytes);
@@ -56,11 +57,13 @@ def add_users_usage(dbusers_bytes,child_id):
         usage_bytes=uinfo['usage']
         ips=uinfo['ips']
         # user_active_before=is_user_active(user)
-        detail=user.details.query.filter_by(child_id==child_id).first()
+        detail=user.details.filter(UserDetail.child_id==child_id).first()
         if not detail:
             detail=UserDetail(user_id=user.id,child_id=child_id)
+            detail.current_usage_GB=detail.current_usage_GB or 0
             db.session.add(detail)
         detail.connected_ips=ips
+        detail.current_usage_GB=detail.current_usage_GB or 0
         if not user.last_reset_time or user_should_reset(user):
             user.last_reset_time=datetime.date.today()
             user.current_usage_GB=0
