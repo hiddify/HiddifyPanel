@@ -17,6 +17,8 @@
 
 #### Fix
 
+* Bugs in update. 
+
 * Usage bug. 
 
 * Bug. 
