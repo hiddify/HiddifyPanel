@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-24 13:57+0200\n"
-"PO-Revision-Date: 2023-04-24 06:57-0500\n"
+"POT-Creation-Date: 2023-04-25 22:21+0200\n"
+"PO-Revision-Date: 2023-04-25 11:34-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -50,12 +50,12 @@ msgstr "应用配置"
 # | msgid ""
 # | "Configs have been Changed Successfully. Click %(link)s to Apply the
 # Configs."
-# | " It may take 2 minutes to apply."
+# | " It may take 2 Minutes to apply"
 #: hiddifypanel/panel/hiddify.py:154
 msgid "config.validation-success"
 msgstr "配置已成功更改。单击 %(link)s 以应用配置。申请可能需要 2 分钟。"
 
-# | msgid "Configs Have Been Changed Successfully"
+# | msgid " ✅ Configs Have Been Changed Successfully"
 #: hiddifypanel/panel/hiddify.py:156
 #, fuzzy
 msgid "config.validation-success-no-reset"
@@ -75,7 +75,7 @@ msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr "域名无法解析！你的域有问题"
 
 # | msgid "Last Day"
-#: hiddifypanel/panel/hiddify2.py:23
+#: hiddifypanel/panel/hiddify2.py:22
 #, fuzzy
 msgid "0 - Last day"
 msgstr "0 - 最后一天"
@@ -83,7 +83,7 @@ msgstr "0 - 最后一天"
 # | msgid ""
 # | "Selected Domain for REALITY is not in the same ASN. To better use of the
 # "
-# | "Protocol, it is better to find a Domain in the same ASN."
+# | "Protocol, it is better to find a Domain in the same ASN"
 #: hiddifypanel/panel/hiddify3.py:213
 #, fuzzy
 msgid ""
@@ -92,13 +92,13 @@ msgid ""
 msgstr "为 REALITY 选择的域不在同一个 ASN 中。为了更好地使用该协议，最好在同一 ASN 中找到一个域。"
 
 # | msgid "User Activated"
-#: hiddifypanel/panel/usage.py:108
+#: hiddifypanel/panel/usage.py:111
 #, fuzzy
 msgid "User activated!"
 msgstr "用户激活！"
 
 # | msgid "Package Ended"
-#: hiddifypanel/panel/usage.py:108
+#: hiddifypanel/panel/usage.py:111
 #, fuzzy
 msgid "Package ended!"
 msgstr "套餐结束！"
@@ -110,16 +110,16 @@ msgid "rebooting system may takes time please wait"
 msgstr "重新启动系统可能需要一些时间。请稍等..."
 
 # | msgid "Can not sync child with Parent Panel."
-#: hiddifypanel/panel/admin/Actions.py:87
+#: hiddifypanel/panel/admin/Actions.py:88
 #, fuzzy
 msgid "can not sync child with parent panel"
 msgstr "无法将子面板与父面板同步。"
 
 # | msgid ""
-# | "Your Domains changed. please do not forget to copy Admin links, otherwise
-# "
-# | "you can not access to the panel anymore"
-#: hiddifypanel/panel/admin/Actions.py:93
+# | "⚠️ Your Domains Changed. please do not forget to copy Admin links,
+# otherwise"
+# | " you can not access to the panel anymore"
+#: hiddifypanel/panel/admin/Actions.py:94
 #, fuzzy
 msgid ""
 "Your domains changed. Please do not forget to copy admin links, otherwise"
@@ -130,20 +130,20 @@ msgstr "您的域已更改。请不要忘记复制管理链接，否则您将无
 # | "Please wait about 5 minutes to make sure everything is updated. during
 # this "
 # | "time, please copy and save your Proxy links which are:"
-#: hiddifypanel/panel/admin/Actions.py:120
+#: hiddifypanel/panel/admin/Actions.py:121
 msgid ""
 "Success! Please wait around 4 minutes to make sure everything is updated."
 " During this time, please save your proxy links which are:"
 msgstr "成功！ 请等待大约 4 分钟，以确保所有内容都已更新。 在此期间，请保存您的代理链接:"
 
 # | msgid "See the log in the bellow screen"
-#: hiddifypanel/panel/admin/Actions.py:153
+#: hiddifypanel/panel/admin/Actions.py:154
 msgid "see the log in the bellow screen"
 msgstr "请参阅以下屏幕中的日志："
 
 # | msgid ""
 # | "Success! Please Wait around 5 minutes to make sure everything is updated"
-#: hiddifypanel/panel/admin/Actions.py:182
+#: hiddifypanel/panel/admin/Actions.py:183
 msgid "Success! Please wait around 5 minutes to make sure everything is updated."
 msgstr "成功！ 请等待大约 5 分钟，以确保所有内容都已更新。"
 
@@ -207,7 +207,7 @@ msgstr "最大用户数"
 msgid "Online Users"
 msgstr "在线用户"
 
-# | msgid "Can add Sub Admin"
+# | msgid "Can Add Sub Admin"
 #: hiddifypanel/panel/admin/AdminstratorAdmin.py:65
 #, fuzzy
 msgid "Can add sub admin"
@@ -219,7 +219,7 @@ msgstr "可以添加子管理员"
 msgid "Add some text that is only visible to super_admin."
 msgstr "添加一些仅对 super_admin 可见的文本。"
 
-# | msgid "Define the Admin Mode. "
+# | msgid "Define the Admin Mode"
 #: hiddifypanel/panel/admin/AdminstratorAdmin.py:77
 #, fuzzy
 msgid "Define the admin mode. "
@@ -232,50 +232,49 @@ msgid "Owner can not be deleted!"
 msgstr "楼主不能删除！"
 
 # | msgid "Config file is incorrect."
-#: hiddifypanel/panel/admin/Backup.py:68
+#: hiddifypanel/panel/admin/Backup.py:69
 msgid "Config file is incorrect"
 msgstr "配置文件不正确。"
 
-# | msgid "Restore file:"
-#: hiddifypanel/panel/admin/Backup.py:74
+#: hiddifypanel/panel/admin/Backup.py:75
 msgid "Restore File"
 msgstr "恢复文件："
 
 # | msgid "Choose the downloaded restore file"
-#: hiddifypanel/panel/admin/Backup.py:74
+#: hiddifypanel/panel/admin/Backup.py:75
 msgid "Restore File Description"
 msgstr "选择下载的还原文件。"
 
-#: hiddifypanel/panel/admin/Backup.py:75
+#: hiddifypanel/panel/admin/Backup.py:76
 #, fuzzy
 msgid "Restore Settings"
 msgstr "恢复设置"
 
-# | msgid "Restore Settings Description"
-#: hiddifypanel/panel/admin/Backup.py:75
+# | msgid "Restore all settings description"
+#: hiddifypanel/panel/admin/Backup.py:76
 #, fuzzy
 msgid "Restore Settings description"
 msgstr "恢复设置说明"
 
-#: hiddifypanel/panel/admin/Backup.py:76
+#: hiddifypanel/panel/admin/Backup.py:77
 msgid "Restore Users"
 msgstr "恢复用户"
 
 # | msgid "Select this option to restore All Users"
-#: hiddifypanel/panel/admin/Backup.py:76
+#: hiddifypanel/panel/admin/Backup.py:77
 msgid "Restore Users description"
 msgstr "选择此选项以恢复所有用户。"
 
-#: hiddifypanel/panel/admin/Backup.py:77
+#: hiddifypanel/panel/admin/Backup.py:78
 msgid "Restore Domain"
 msgstr "还原域"
 
 # | msgid "Select this option to restore your domains"
-#: hiddifypanel/panel/admin/Backup.py:77
+#: hiddifypanel/panel/admin/Backup.py:78
 msgid "Restore Domain description"
 msgstr "选择此选项以恢复您的域。"
 
-#: hiddifypanel/panel/admin/Backup.py:78
+#: hiddifypanel/panel/admin/Backup.py:79
 #: hiddifypanel/panel/admin/ProxyAdmin.py:94
 #: hiddifypanel/panel/admin/ProxyAdmin.py:124
 #: hiddifypanel/panel/admin/QuickSetup.py:80
@@ -333,7 +332,7 @@ msgstr ""
 msgid "domain.domain"
 msgstr "领域"
 
-# | msgid "Show configs of Domains:"
+# | msgid "Show Configs of Domains"
 #: hiddifypanel/panel/admin/ChildAdmin.py:57
 #: hiddifypanel/panel/admin/ChildAdmin.py:58
 #: hiddifypanel/panel/admin/DomainAdmin.py:77
@@ -568,14 +567,14 @@ msgstr "更改语言时出错"
 msgid "config.admin_lang.label"
 msgstr "管理面板语言"
 
-# | msgid "English انگلیسی 英语"
+# | msgid "🇺🇸 English انگلیسی 英语"
 #: hiddifypanel/panel/admin/QuickSetup.py:77
 #: hiddifypanel/panel/admin/SettingAdmin.py:171
 #: hiddifypanel/panel/commercial/CommercialSettings.py:150
 msgid "lang.en"
 msgstr "English انگلیسی 英语"
 
-# | msgid "Persian فارسی 波斯语"
+# | msgid "🇮🇷 Persian فارسی 波斯语"
 #: hiddifypanel/panel/admin/QuickSetup.py:77
 #: hiddifypanel/panel/admin/SettingAdmin.py:171
 #: hiddifypanel/panel/commercial/CommercialSettings.py:150
@@ -594,6 +593,7 @@ msgstr "为管理区域选择语言。"
 msgid "config.country.label"
 msgstr ""
 
+# | msgid "🇮🇷 Iran"
 #: hiddifypanel/panel/admin/QuickSetup.py:79
 #: hiddifypanel/panel/admin/SettingAdmin.py:173
 #: hiddifypanel/panel/commercial/CommercialSettings.py:152
@@ -601,6 +601,7 @@ msgstr ""
 msgid "Iran"
 msgstr "伊朗"
 
+# | msgid "🇨🇳 China"
 #: hiddifypanel/panel/admin/QuickSetup.py:79
 #: hiddifypanel/panel/admin/SettingAdmin.py:173
 #: hiddifypanel/panel/commercial/CommercialSettings.py:152
@@ -656,7 +657,7 @@ msgid "config.firewall.label"
 msgstr "防火墙"
 
 # | msgid ""
-# | "Enabling Firewall will open used Ports (at Least 22,443,80 and SSH) and "
+# | "Enabling Firewall will open used Ports (at least 22,443,80 and SSH) and "
 # | "close all other Ports"
 #: hiddifypanel/panel/admin/QuickSetup.py:103
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -730,7 +731,7 @@ msgstr "域名对现实不友好！"
 msgid "REALITY Fallback domain is not compaitble with server names!"
 msgstr "现实回退域与服务器名称不兼容！"
 
-# | msgid "Chinese چینی 中国人"
+# | msgid "🇨🇳 Chinese چینی 中国人"
 #: hiddifypanel/panel/admin/SettingAdmin.py:171
 #: hiddifypanel/panel/commercial/CommercialSettings.py:150
 msgid "lang.zh"
@@ -755,13 +756,13 @@ msgstr "发布"
 msgid "Develop"
 msgstr "آخ犹"
 
-# | msgid "Python : Low Performance"
+# | msgid "✅ Python : Low Performance"
 #: hiddifypanel/panel/admin/SettingAdmin.py:181
 #: hiddifypanel/panel/commercial/CommercialSettings.py:160
 msgid "lib.telegram.python"
 msgstr "Python：低性能"
 
-# | msgid "Go: High Performance: No ad Support"
+# | msgid "✅ Go: High Performance - No ad Support"
 #: hiddifypanel/panel/admin/SettingAdmin.py:181
 #: hiddifypanel/panel/commercial/CommercialSettings.py:160
 msgid "lib.telegram.go"
@@ -816,7 +817,7 @@ msgstr "REALITY 主机名无效"
 msgid "Invalid admin link"
 msgstr "管理员链接无效"
 
-# | msgid "Invalid Telegram Bot Token."
+# | msgid "Invalid Telegram Bot Token"
 #: hiddifypanel/panel/admin/SettingAdmin.py:209
 #: hiddifypanel/panel/commercial/CommercialSettings.py:184
 #, fuzzy
@@ -928,7 +929,7 @@ msgid "Add some text that is only visible to you."
 msgstr "添加一些仅对您可见的文本。"
 
 # | msgid ""
-# | "The user's package mode. should the usage reset every month, week, etc?"
+# | "The user's Package Mode. should the usage reset every Month, Week, etc"
 #: hiddifypanel/panel/admin/UserAdmin.py:94
 #, fuzzy
 msgid "Define the user mode. Should the usage reset every month?"
@@ -985,9 +986,12 @@ msgid "Backup"
 msgstr "备份"
 
 # | msgid ""
+# | "⚠️Hiddify Panel automatically takes a Backup every 6 Hours. The path of
+# the Backup files on the server:\n"
+# | "<br>\n"
+# | "/opt/hiddify-config/hiddify-panel/backup\n"
 # | "You can download a JSON file format of the configurations by clicking on
 # the button below\n"
-# | "<br>\n"
 # | "<a href='%(link)s' class='btn btn-primary'>Download Backup File</a>"
 #: hiddifypanel/panel/admin/templates/backup.html:14
 #, python-format
@@ -1139,7 +1143,7 @@ msgstr "支持链接（同时出现在品牌标题和用户页面的支持部分
 msgid "config.branding_site.description"
 msgstr "要显示在用户页面的支持部分的链接。"
 
-# | msgid "Support section text"
+# | msgid "Support Section Text"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.branding_freetext.label"
 msgstr "支持部分文本"
@@ -1174,7 +1178,7 @@ msgstr "自动更新"
 msgid "config.auto_update.description"
 msgstr "每天凌晨 3:00，我们将检查是否有新更新。如果有可用的新更新，我们将自动更新系统。"
 
-# | msgid "Speedtest"
+# | msgid "Speed Test"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.speed_test.label"
 msgstr "测速"
@@ -1191,7 +1195,7 @@ msgstr "允许您的用户进行速度测试。它可以帮助他们识别链接
 msgid "config.only_ipv4.label"
 msgstr "只有 IPv4"
 
-# | msgid "It will disable IPv6"
+# | msgid "It will Disable IPv6"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.only_ipv4.description"
 msgstr "它将禁用 IPv6"
@@ -1258,9 +1262,9 @@ msgid "config.domain_fronting_tls_enable.label"
 msgstr "启用 TLS 域前端"
 
 # | msgid ""
-# | "In CloudFlare, TLS Domain Fronting Is Not Supported. It Will Use Port 443
-# To"
-# | " Connect To CDN"
+# | "In CloudFlare, TLS Domain Fronting is not supported. it will use Port 443
+# to"
+# | " connect to CDN"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.domain_fronting_tls_enable.description"
 msgstr "它将使用端口 443 连接到 CDN"
@@ -1307,7 +1311,7 @@ msgstr "电报假域名"
 # | msgid ""
 # | "Please use a well known domain in your data center. for example, If you
 # are "
-# | "in azure data center, microsoft-update.com is a good example"
+# | "in Azure data center, microsoft-update.com is a good example"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.telegram_fakedomain.description"
 msgstr "请在您的数据中心使用众所周知的域。例如，如果您在 Azure 数据中心，microsoft-update.com 就是一个很好的例子。"
@@ -1410,7 +1414,7 @@ msgstr "SS fakeTLS 假域"
 # | msgid ""
 # | "Please use a well known domain in your data center. for example, If you
 # are "
-# | "in azure data center, microsoft-update.com Is a good example"
+# | "in Azure data center, microsoft-update.com Is a good example"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.ssfaketls_fakedomain.description"
 msgstr "请在您的数据中心使用众所周知的域。例如，如果您在 Azure 数据中心，microsoft-update.com 就是一个很好的例子。"
@@ -1529,14 +1533,14 @@ msgstr "超低速"
 msgid "config.utls.description"
 msgstr "这个选项会模拟不同的浏览器，因此，GTW 无法检测到您的浏览。"
 
-# | msgid "Telegram Bot Token."
+# | msgid "Telegram Bot Token"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.telegram_bot_token.label"
 msgstr "电报机器人令牌"
 
 # | msgid ""
-# | "To add Telegram bot feature. you need to create a bot with @Botfather and
+# | "To add Telegram bot feature. you need to create a bot with @BotFather and
 # "
 # | "enter the API code in this field"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1642,13 +1646,13 @@ msgstr "TCP 配置路径"
 msgid "config.path_tcp.description"
 msgstr "对于代理链接"
 
-# | msgid "Path of Websocket requests"
+# | msgid "Path of Websocket Requests"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.path_ws.label"
 msgstr "websocket 请求的路径"
 
-# | msgid "Specify the WS Path"
+# | msgid "Specify the Websocket Path"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.path_ws.description"
@@ -1681,7 +1685,7 @@ msgstr "非常高级的设置"
 # | msgid ""
 # | "Specify The Proxy Path. It is important especially if you are using HTTP
 # and"
-# | " VMESS."
+# | " VMess"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.too_advanced.description"
@@ -1744,7 +1748,7 @@ msgstr "GTW访问服务器名中的网站时，会重定向到该域名"
 msgid "config.reality_server_names.label"
 msgstr "服务器名称"
 
-# | msgid "You can add several Severnames in comma seperated format"
+# | msgid "You can add several Sever Names in comma seperated format"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.reality_server_names.description"
@@ -1911,7 +1915,7 @@ msgstr "SSR 假域名"
 # | msgid ""
 # | "Please use a well known domain In your data center. for example, If you
 # are "
-# | "In azure data center, microsoft-update.com Is a good example"
+# | "In Azure data center, microsoft-update.com Is a good example"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.ssr_fakedomain.description"
 msgstr "请在您的数据中心使用众所周知的域。例如，如果你在 Azure 数据中心，microsoft-update.com 就是一个很好的例子"
@@ -2022,6 +2026,7 @@ msgstr "中央处理器"
 msgid "RAM"
 msgstr "内存"
 
+# | msgid "Hard Disk"
 #: hiddifypanel/panel/admin/templates/index.html:141
 #, fuzzy
 msgid "Disk"
@@ -2168,12 +2173,13 @@ msgid "Click here to see the complete log"
 msgstr "单击此处查看完整日志。"
 
 #: hiddifypanel/panel/admin/templates/model/user_list.html:97
-#: hiddifypanel/panel/admin/templates/result.html:92
+#: hiddifypanel/panel/admin/templates/result.html:93
 #, fuzzy
 msgid "Success"
 msgstr "成功"
 
-#: hiddifypanel/panel/admin/templates/result.html:93
+# | msgid "✅ The Action Done Successfully. You can now leave this page"
+#: hiddifypanel/panel/admin/templates/result.html:94
 #, fuzzy
 msgid "The action done successfully. You can now leave this page."
 msgstr "操作成功完成。您现在可以离开此页面。"
@@ -2218,19 +2224,19 @@ msgstr "过期用户"
 msgid "Active Users"
 msgstr "活跃用户"
 
-# | msgid "Offline more than 1 Hour"
+# | msgid "Offline More Than 1 Hour"
 #: hiddifypanel/panel/admin/templates/model/user_list.html:14
 #, fuzzy
 msgid "Offline more than 1 hour"
 msgstr "离线超过1小时"
 
-# | msgid "Offline more than 1 Day"
+# | msgid "Offline More Than 1 Day"
 #: hiddifypanel/panel/admin/templates/model/user_list.html:15
 #, fuzzy
 msgid "Offline more than 1 day"
 msgstr "离线超过1天"
 
-# | msgid "Offline more than 1 Week"
+# | msgid "Offline More Than 1 Week"
 #: hiddifypanel/panel/admin/templates/model/user_list.html:16
 #, fuzzy
 msgid "Offline more than 1 week"
@@ -2561,7 +2567,7 @@ msgstr ""
 "</div>"
 
 # | msgid ""
-# | "V2rayNG <button class='btn btn-sm btn-default' "
+# | "v2rayNG <button class='btn btn-sm btn-default' "
 # | "onclick='show_video(\"android-v2rayng\")'><i class=\"fa-solid fa-"
 # | "question\"></i> </button>\n"
 #: hiddifypanel/panel/user/templates/home/android.html:72
@@ -2570,9 +2576,9 @@ msgid "V2rayNG"
 msgstr "V2rayNG"
 
 # | msgid ""
-# | "Please install V2rayNG from either of these links: %(dl_link)s or
+# | "Please install v2rayNG from either of these links: %(dl_link)s or
 # %(play_link)s.\n"
-# | "Then copy the link below and paste it in V2rayNG according to the video
+# | "Then copy the link below and paste it in v2rayNG according to the video
 # tutorial <button class='btn btn-sm btn-default'
 # onclick='show_video(\"android-v2rayng\")'><i class=\"fa-solid
 # fa-question\"></i> </button>.\n"
@@ -2675,7 +2681,7 @@ msgstr ""
 "    加载本地站点的速度将降低，并会危及您的隐私。\n"
 "</div>"
 
-# | msgid "Install Proxy for all Sites."
+# | msgid "Install Proxy for All Sites."
 #: hiddifypanel/panel/user/templates/home/clash-links.html:62
 #: hiddifypanel/panel/user/templates/home/clash-links.html:74
 msgid "user.home.clash_configs.all_sites.btn"
@@ -2795,7 +2801,7 @@ msgstr "请选择您的操作系统。"
 msgid "user.home.all_configs"
 msgstr "所有配置"
 
-# | msgid "Speedtest (Detect dirty IP)"
+# | msgid "Speed Test (Detect dirty IP)"
 #: hiddifypanel/panel/user/templates/home/index_old.html:91
 #: hiddifypanel/panel/user/templates/home/multi.html:102
 msgid "user.home.speedtest"
@@ -2861,7 +2867,7 @@ msgstr "搜索"
 # Stash</button>\n"
 # | "          <button class='btn btn-sm btn-default'
 # onclick='show_video(\"ios-shadowrocket\")'><i class=\"fa-solid
-# fa-question\"></i> ShadowRocket</button>\n"
+# fa-question\"></i> Shadowrocket</button>\n"
 # | " <span class=\"badge badge-success\">Recommended</span>"
 #: copy.html:6 hiddifypanel/panel/user/templates/home/ios
 #: hiddifypanel/panel/user/templates/home/ios.html:6
@@ -2869,15 +2875,18 @@ msgid "user.home.ios.stash.title"
 msgstr "收藏<span class=\"badge badge-success\">推荐</span>"
 
 # | msgid ""
-# | "Stash is a great application. We think it worth buying.\n"
-# | "\n"
-# | "        <div class=\"btn-group\">\n"
+# | "Stash & Shadowrocket is a great application. We think it worth buying.\n"
+# | "<br>\n"
+# | "  <div class=\"btn-group\">\n"
 # | "        <a
 # href=\"https://apps.apple.com/us/app/stash-rule-based-proxy/id1596063349\"
-# target=\"_blank\" class=\"btn btn-success orig-link\">Download stash</a>\n"
-# | "<a href=\"https://apps.apple.com/us/app/shadowrocket/id932747118\"\n"
-# | "        class=\"btn btn-primary orig-link\">shadowrocket</a> \n"
-# | "        </div>"
+# target=\"_blank\" class=\"btn btn-success orig-link\">Download Stash</a>\n"
+# | "        <a
+# href=\"https://apps.apple.com/us/app/shadowrocket/id932747118\"
+# target=\"_blank\" class=\"btn btn-primary orig-link\">Download
+# Shadowrocket</a> \n"
+# | "        </div>\n"
+# | "<br>"
 #: copy.html:17 hiddifypanel/panel/user/templates/home/ios
 #: hiddifypanel/panel/user/templates/home/ios.html:10
 msgid "user.home.ios.stash.intro"
@@ -2901,14 +2910,12 @@ msgstr "其他应用程序（shadowlink、fairVPN、napsternetv）"
 # | "<div class=\"btn-group\">\n"
 # | "\t<a
 # href=\"https://apps.apple.com/ca/app/wings-x/id6446119727?platform=iphone\"\n"
-# | "        class=\"btn btn-primary orig-link\">WingsX</a>\n"
+# | "        class=\"btn btn-primary orig-link\">Wings X</a>\n"
 # | "</div>\n"
 # | "\t<a href=\"https://apps.apple.com/us/app/fair-vpn/id1533873488\"\n"
-# | "        class=\"btn btn-primary orig-link\">Fair-VPN</a>\n"
-# | "    <a href=\"https://apps.apple.com/us/app/napsternetv/id1629465476\"\n"
-# | "        class=\"btn btn-primary orig-link\">NapsternetV</a>\n"
+# | "        class=\"btn btn-primary orig-link\">Fair VPN</a>\n"
 # | "<br />\n"
-# | "Then apply one of the following configs:"
+# | "Then apply the following configs:"
 #: hiddifypanel/panel/user/templates/home/ios.html:25
 msgid "user.home.ios.others.intro"
 msgstr ""
@@ -2926,7 +2933,7 @@ msgstr ""
 "<br />\n"
 "然后应用以下配置之一："
 
-# | msgid "Do you want to connect your Account to Telegram?"
+# | msgid "Connect Your Account to Telegram"
 #: hiddifypanel/panel/user/templates/home/multi.html:320
 #, fuzzy
 msgid "Want to enjoy more with telegram?"
@@ -2956,8 +2963,9 @@ msgid "Turn of VPN"
 msgstr "关闭 VPN"
 
 # | msgid ""
-# | "You Should Visit This Page Without VPN To Use Auto CDN IP. Your Country "
-# | "=%(your_country)s"
+# | "You Should Visit This Page Without VPN To Use Auto CDN IP.\n"
+# | "<br>\n"
+# | "Your Country = %(your_country)s"
 #: hiddifypanel/panel/user/templates/home/multi.html:422
 #, fuzzy, python-format
 msgid ""
@@ -3042,6 +3050,7 @@ msgstr "流量使用重置时间："
 msgid "days"
 msgstr "天"
 
+# | msgid "User Is Inactive"
 #: hiddifypanel/panel/user/templates/home/usage.html:28
 #, fuzzy
 msgid "User is inactive"
@@ -3284,6 +3293,7 @@ msgstr "商业设置"
 msgid "Telegram Bot"
 msgstr "电报机器人"
 
+# | msgid "⚠️ Are you sure you want to do this action?"
 #: hiddifypanel/templates/admin-layout.html:212
 #, fuzzy
 msgid "Are you sure you want to do this action?"
@@ -3298,7 +3308,7 @@ msgstr "您确定要执行此操作吗？"
 # | "\n"
 # | "Also, we need financial help to further develop this panel and our
 # service (we are non-profit).\n"
-# | "<h5>Other payment methods</h5>\n"
+# | "<h5>Other Payment Methods</h5>\n"
 # | "<ul>\n"
 # | "<li> <a target=\"_blank\"
 # href=\"https://opencollective.com/hiddify/contribute/backer-50556/checkout?interval=month&amount=25\"
@@ -3313,7 +3323,7 @@ msgstr "您确定要执行此操作吗？"
 # class=\"btn btn-secondary copy-link\"><i class=\"fa-regular
 # fa-copy\"></i></a>    \n"
 # | "<a data-copy=\"TXZtFUxyBPMSykAWogu7C4zmbjySKqMcDE\" role=\"button\"
-# class=\"btn btn-info share-link\">USDT (trc20)</a> </div></li>\n"
+# class=\"btn btn-info share-link\">USDT (TRC20)</a> </div></li>\n"
 # | "    <a role=\"button\" data-copy=\"MCHoh7xwaDBBnQgANPpBtXiekagV6KpdrM\"
 # class=\"btn btn-secondary copy-link\"><i class=\"fa-regular
 # fa-copy\"></i></a>    \n"
@@ -3337,10 +3347,10 @@ msgstr "您确定要执行此操作吗？"
 # class=\"btn btn-info share-link\">Dogecoin</a> </div></li>\n"
 # | "</ul>\n"
 # | "We need also other help:\n"
-# | "<li>Share hiddify panel with others</li>\n"
-# | "<li>Python developer</li>\n"
-# | "<li>Kotlin developer</li>\n"
-# | "<li>Content providers</li>\n"
+# | "<li>Share Hiddify Panel with others</li>\n"
+# | "<li>Python Developer</li>\n"
+# | "<li>Kotlin Developer</li>\n"
+# | "<li>Content Providers</li>\n"
 # | "Please contact us at <a
 # href=\"mailto:hiddify@gmail.com\">hiddify@gmail.com</a> if you can help us."
 #: hiddifypanel/templates/donation.html:11
@@ -3711,9 +3721,9 @@ msgstr "动作"
 #~ msgstr "用户"
 
 # | msgid ""
-# | "Using alias with special charachters may cause problem in some Clients
+# | "Using Alias with Special Charachters may cause problem in some Clients
 # like "
-# | "FairVPN."
+# | "Fair VPN"
 #~ msgid ""
 #~ "Using alias with special charachters may"
 #~ " cause problem in some clients like"
