@@ -328,17 +328,12 @@ def to_clash(proxy, meta_or_normal):
     else:
         base["uuid"] = proxy["uuid"]
         base["servername"] = proxy["sni"]
-        base["tls"] = "tls" in proxy["l3"]
+        base["tls"] = "tls" in proxy["l3"] or "reality" in proxy["l3"]
     if meta_or_normal == "meta":
         base['client-fingerprint'] = proxy['fingerprint']
     if proxy.get('flow'):
         base["flow"] = proxy['flow']
         # base["flow-show"] = True
-    if proxy['l3']==ProxyL3.reality:
-        base["reality-opts"]={
-            "public-key":proxy['reality_pbk'],
-            "short-id":proxy['reality_short_id'],
-        }
         
       
     if proxy["proto"] == "vmess":
@@ -358,8 +353,8 @@ def to_clash(proxy, meta_or_normal):
             base["ws-opts"]["headers"] = {"Host": proxy["host"]}
 
     if base["network"] == "tcp" and proxy['alpn'] != 'h2':
-        # if proxy['proto']=='vless':
-        base["network"] = "http"
+        if proxy['transport']!=ProxyTransport.XTLS:
+            base["network"] = "http"
 
         if "path" in proxy:
             base["http-opts"] = {
@@ -380,7 +375,14 @@ def to_clash(proxy, meta_or_normal):
         base["grpc-opts"] = {
             "grpc-service-name": proxy["grpc_service_name"]
         }
-
+    if proxy['l3']==ProxyL3.reality:
+        base["reality-opts"]={
+            "public-key":proxy['reality_pbk'],
+            "short-id":proxy['reality_short_id'],
+        }
+        if proxy['proto']!='grpc':
+            base["network"]= 'tcp'
+    
     return base
 
 
