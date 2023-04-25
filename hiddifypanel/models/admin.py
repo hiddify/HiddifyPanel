@@ -6,7 +6,7 @@ from dateutil import relativedelta
 from hiddifypanel.panel.database import db
 from enum import auto
 from strenum import StrEnum
-
+from flask import g,abort
 
 class AdminMode(StrEnum):
     """
@@ -110,7 +110,11 @@ def add_or_update_admin(commit=True,**admin):
         db.session.add(dbuser)
     dbuser.name = admin['name']
     if dbuser.id!=1:
-        parent_admin=get_admin_by_uuid(admin.get('parent_admin_uuid'),create=True)
+        parent=admin.get('parent_admin_uuid')
+        if parent==admin['uuid'] or not parent:
+            parent_admin=current_admin_or_owner()
+        else:
+            parent_admin=get_admin_by_uuid(parent,create=True)
         dbuser.parent_admin_id=parent_admin.id
     
     dbuser.comment = admin.get('comment', '')
@@ -125,8 +129,12 @@ def add_or_update_admin(commit=True,**admin):
 
 def get_admin_by_uuid(uuid,create=False):
     admin=AdminUser.query.filter(AdminUser.uuid==uuid).first()
+    # print(admin)
     if create and not admin:
-        dbuser = AdminUser(uuid=uuid,name="unknown",parent_admin_id=1)           
+        
+        # print(parent_id)
+        # raise (parent_id)
+        dbuser = AdminUser(uuid=uuid,name="unknown",parent_admin_id=current_admin_or_owner().id)           
         db.session.add(dbuser)
         db.session.commit()
         admin=AdminUser.query.filter(AdminUser.uuid==uuid).first()
@@ -138,3 +146,8 @@ def bulk_register_admins(users=[],commit=True):
         add_or_update_admin(commit=False,**u)
     if commit:
         db.session.commit()    
+
+def current_admin_or_owner():
+    if g and g.admin:
+        return g.admin
+    return AdminUser.query.filter(AdminUser.id==1).first() 

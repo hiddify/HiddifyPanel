@@ -85,7 +85,7 @@ class User(db.Model, SerializerMixin):
         """
         dbuser= User.query.filter_by(uuid=user_uuid).first()
         if not dbuser:
-            dbuser = User(uuid=user['uuid'])
+            dbuser = User(uuid=user_uuid)
             db.session.add(dbuser)
         return dbuser
 
