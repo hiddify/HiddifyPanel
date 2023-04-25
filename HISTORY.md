@@ -5,6 +5,8 @@
 
 #### New
 
+* Fix v2rayng. 
+
 * Add disable button and new style. 
 
 * Better result page. 
@@ -16,6 +18,8 @@
 * Organize better. 
 
 #### Fix
+
+* Reality and xtls clash. 
 
 * Bugs in update. 
 
@@ -38,6 +42,8 @@
 * Min users. 
 
 #### Other
+
+* Add hiddify links. 
 
 * Better backup. 
 
