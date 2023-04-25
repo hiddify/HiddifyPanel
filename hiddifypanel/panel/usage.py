@@ -20,7 +20,7 @@ def update_local_usage():
     have_change=False
     for user in User.query.all():
         d = xray_api.get_usage(user.uuid,reset=True)
-        res[user]={'usage':(d or 0)+100000, 'ips':''}
+        res[user]={'usage':(d or 0), 'ips':''}
     
     return add_users_usage(res,0)
             
