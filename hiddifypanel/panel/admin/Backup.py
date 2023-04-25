@@ -18,7 +18,7 @@ import urllib.request
 import subprocess
 import re
 from hiddifypanel.panel import hiddify
-from flask import current_app,render_template,request,Response,Markup,url_for,jsonify
+from flask import current_app,render_template,request,Response,Markup,url_for,jsonify,redirect,g
 from hiddifypanel.panel.hiddify import flash
 from flask_wtf.file import FileField, FileRequired
 import json
@@ -60,6 +60,7 @@ class Backup(FlaskView):
             )
 
             from flask_babel import refresh; refresh()
+            return redirect(f'/{hconfig(ConfigEnum.proxy_path)}/{g.admin.uuid}/admin/actions/reinstall2/', code=302)
             from . import Actions
             action=Actions()
             return action.reinstall(complete_install=True,domain_changed=True)

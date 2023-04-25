@@ -76,6 +76,7 @@ class Actions(FlaskView):
     @route('reinstall', methods=['POST'])
     def reinstall(self,complete_install=True,domain_changed=False):
         return self.reinstall2(complete_install,domain_changed)
+    
     @hiddify.super_admin
     def reinstall2(self,complete_install=True,domain_changed=False):
         if int(hconfig(ConfigEnum.db_version))<9:
