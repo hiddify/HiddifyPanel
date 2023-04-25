@@ -56,16 +56,19 @@
 
 {% macro v2rayng_android_dl() -%}
 <div class="btn-group">
-    <a href="/{{hconfigs[ConfigEnum.proxy_path]}}/gh/2dust/v2rayNG/releases/download/1.7.38/v2rayNG_1.7.38.apk"
+    <a href="/{{hconfigs[ConfigEnum.proxy_path]}}/gh/2dust/v2rayNG/releases/download/1.8.3/v2rayNG_1.8.3.apk"
         class="btn btn-primary orig-link">{{_('download')}}</a>
 </div>
 {%- endmacro -%}
 
 {% macro v2rayng_android_google_play() -%}
+%if False
  <div class="btn-group">
     <a href="https://play.google.com/store/apps/details?id=com.v2ray.ang"
         class="btn btn-primary orig-link">{{_('install from google play')}}</a>
 </div> 
+
+%endif
 {%- endmacro -%}
 <details  data-widget="collapse">
     <summary class="callout callout-success">
