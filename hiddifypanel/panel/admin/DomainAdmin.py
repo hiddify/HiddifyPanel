@@ -134,6 +134,7 @@ class DomainAdmin(AdminLTEModelView):
                     raise ValidationError(
                         _("You have used this domain in: ")+_(f"config.{c}.label"))
         myip = hiddify.get_ip(4)
+        myipv6 = hiddify.get_ip(6)
         
         if "*" in model.domain and model.mode not in [DomainType.cdn,DomainType.auto_cdn_ip]:
             raise ValidationError(
@@ -141,12 +142,13 @@ class DomainAdmin(AdminLTEModelView):
 
             
         skip_check="*" in model.domain
-        if hconfig(ConfigEnum.cloudflare):
+        if hconfig(ConfigEnum.cloudflare) and model.mode!=DomainType.Fake:
             try:
-                if model.mode==DomainType.direct:
-                    cf_api.add_or_update_domain(model.domain, myip,"A",proxied=False)
-                elif model.mode==DomainType.cdn or model.mode==DomainType.auto_cdn_ip:
-                    cf_api.add_or_update_domain(model.domain, myip,"A",proxied=True)
+                proxied=model.mode in [DomainType.cdn,DomainType.auto_cdn_ip]
+                cf_api.add_or_update_domain(model.domain, myip,"A",proxied=proxied)
+                if myipv6:
+                    cf_api.add_or_update_domain(model.domain, myipv6,"AAAA",proxied=proxied)
+                
                 skip_check=True
             except Exception as e:
                 # raise e
