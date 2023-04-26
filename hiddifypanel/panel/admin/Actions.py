@@ -70,7 +70,7 @@ class Actions(FlaskView):
     def reset2(self):
         status=self.status()
         flash(_("rebooting system may takes time please wait"),'info')
-        subprocess.Popen(f"echo 'reboot'|at now + 3s ",start_new_session=True)
+        os.system(f"echo 'reboot'|at now + 3s ")
         return status
     
     @route('reinstall', methods=['POST'])
