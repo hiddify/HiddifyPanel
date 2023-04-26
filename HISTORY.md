@@ -19,6 +19,10 @@
 
 #### Fix
 
+* Bugs. 
+
+* Bug. 
+
 * Reality and xtls clash. 
 
 * Bugs in update. 
