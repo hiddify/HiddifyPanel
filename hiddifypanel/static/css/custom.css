@@ -316,6 +316,9 @@ color: #FFFFFF;
 
 
 
+.hbtn{
+  border:0px;
+}
 .bg-h-purple {
   background: #FFFFFF linear-gradient(180deg, #9f80ff, #7142ff) repeat-x !important;
   color: #FFFFFF;
@@ -324,14 +327,38 @@ color: #FFFFFF;
   background: #FFFFFF linear-gradient(180deg, #9f80ff, #7142ff) repeat-x !important;
   color: #FFFFFF;
   }
-  a.bg-h-purple:hover, a.bg-h-purple:focus, button.bg-h-purple:hover, button.bg-h-purple:focus ,
-  a.bg-h-blue:hover, a.bg-h-blue:focus, button.bg-h-blue:hover, button.bg-h-blue:focus ,
-  a.bg-h-green:hover, a.bg-h-green:focus, button.bg-h-green:hover, button.bg-h-green:focus ,
-  a.bg-h-red:hover, a.bg-h-red:focus, button.bg-h-red:hover, button.bg-h-red:focus ,
-  a.bg-h-orange:hover, a.bg-h-orange:focus, button.bg-h-orange:hover, button.bg-h-orange:focus ,
-  a.bg-h-turquoise:hover, a.bg-h-turquoise:focus, button.bg-h-turquoise:hover, button.bg-h-turquoise:focus ,
-  a.bg-h-gray:hover, a.bg-h-gray:focus, button.bg-h-gray:hover, button.bg-h-gray:focus ,
-  a.bg-h-pink:hover, a.bg-h-pink:focus, button.bg-h-pink:hover, button.bg-h-pink:focus ,
+  a.bg-h-purple:hover, a.bg-h-purple:focus, button.bg-h-purple:hover, button.bg-h-purple:focus{
+    background: #232390 linear-gradient(180deg, #232390, #232390) repeat-x !important;;
+    color: #FFFFFF;
+  } 
+  a.bg-h-blue:hover, a.bg-h-blue:focus, button.bg-h-blue:hover, button.bg-h-blue:focus {
+    background: #232390 linear-gradient(180deg, #232390, #232390) repeat-x !important;;
+    color: #FFFFFF;
+  }
+  a.bg-h-green:hover, a.bg-h-green:focus, button.bg-h-green:hover, button.bg-h-green:focus {
+    background: #232390 linear-gradient(180deg, #232390, #232390) repeat-x !important;;
+    color: #FFFFFF;
+  }
+  a.bg-h-red:hover, a.bg-h-red:focus, button.bg-h-red:hover, button.bg-h-red:focus {
+    background: #232390 linear-gradient(180deg, #232390, #232390) repeat-x !important;;
+    color: #FFFFFF;
+  }
+  a.bg-h-orange:hover, a.bg-h-orange:focus, button.bg-h-orange:hover, button.bg-h-orange:focus {
+    background: #232390 linear-gradient(180deg, #232390, #232390) repeat-x !important;;
+    color: #FFFFFF;
+  }
+  a.bg-h-turquoise:hover, a.bg-h-turquoise:focus, button.bg-h-turquoise:hover, button.bg-h-turquoise:focus {
+    background: #232390 linear-gradient(180deg, #232390, #232390) repeat-x !important;;
+    color: #FFFFFF;
+  }
+  a.bg-h-gray:hover, a.bg-h-gray:focus, button.bg-h-gray:hover, button.bg-h-gray:focus {
+    background: #232390 linear-gradient(180deg, #232390, #232390) repeat-x !important;;
+    color: #FFFFFF;
+  }
+  a.bg-h-pink:hover, a.bg-h-pink:focus, button.bg-h-pink:hover, button.bg-h-pink:focus {
+    background: #232390 linear-gradient(180deg, #232390, #232390) repeat-x !important;;
+    color: #FFFFFF;
+  }
   a.bg-h-sky:hover, a.bg-h-sky:focus, button.bg-h-sky:hover, button.bg-h-sky:focus 
   {    
     background: #232390 linear-gradient(180deg, #232390, #232390) repeat-x !important;;
@@ -414,8 +441,20 @@ color: #FFFFFF;
     background:#0a0a27;
   }
 
+  .dark-mode .card .card{
+    background:#19195a;
+  }
 
   .dark-mode .form-control:not(.form-control-navbar):not(.form-control-sidebar), .dark-mode .custom-select, .dark-mode .custom-file-label, .dark-mode .custom-file-label::after, .dark-mode .custom-control-label::before, .dark-mode .input-group-text{
     background-color: #3c3e55;
     color: #fff;
   }
+  .dark-mode .callout{
+    color: #fff;
+    background-color: #121253;
+    
+  }
+  
+  .dark-mode .table-hover tbody tr:hover {
+    background-color: #232390;
+}

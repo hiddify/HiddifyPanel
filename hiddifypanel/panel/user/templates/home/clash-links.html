@@ -2,50 +2,50 @@
 %set ios=True
 <div class="card-deck">
     <div class="card card-success">
-        <div class="card-header">{{_("user.home.clash_configs.only_for_blocked_sites.title")}}</div>
+        <div class="card-header bg-h-green">{{_("user.home.clash_configs.only_for_blocked_sites.title")}}</div>
         <div class="card-body">
             {{_("user.home.clash_configs.only_for_blocked_sites.description")}}
             % if show_meta
             <div class="btn-group">
                 <a href="{{'clash' if ios else 'clashmeta'}}://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/meta/lite.yml?mode={{mode}}&asn={{asn}}&name={{asn}}_mlite_{{domain}}-{{mode}}"
-                    class="btn btn-success orig-link">{{_("user.home.clash_configs.only_for_blocked_sites.btn")}}</a>
+                    class="btn btn-success hbtn bg-h-green orig-link">{{_("user.home.clash_configs.only_for_blocked_sites.btn")}}</a>
             </div>
             <details>
                 <summary>{{_("user.home.clash_configs.alternative_for_normal_clash")}}</summary>
                 <div class="btn-group">
                     <a href="clash://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/lite.yml?mode={{mode}}&asn={{asn}}&name={{asn}}_lite_{{domain}}-{{mode}}"
-                        class="btn btn-secondary orig-link">{{_("user.home.clash_configs.link_for_normal_clash")}}</a>
+                        class="btn btn-secondary hbtn bg-h-gray orig-link">{{_("user.home.clash_configs.link_for_normal_clash")}}</a>
                 </div>
             </details>
             %else
             <div class="btn-group">
                 <a href="clash://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/lite.yml?mode={{mode}}&asn={{asn}}&name={{asn}}_lite_{{domain}}-{{mode}}"
-                    class="btn btn-success orig-link">{{_("user.home.clash_configs.only_for_blocked_sites.btn")}}</a>
+                    class="btn btn-success hbtn bg-h-green orig-link">{{_("user.home.clash_configs.only_for_blocked_sites.btn")}}</a>
             </div>
             %endif
         </div>
     </div>
 
     <div class="card card-warning">
-        <div class="card-header ">{{_("user.home.clash_configs.foreign_sites.title")}}</div>
+        <div class="card-header bg-h-orange">{{_("user.home.clash_configs.foreign_sites.title")}}</div>
         <div class="card-body">
             {{_("user.home.clash_configs.foreign_sites.description")}}
             % if show_meta
             <div class="btn-group">
                 <a href="{{'clash' if ios else 'clashmeta'}}://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/meta/normal.yml?mode={{mode}}&asn={{asn}}&name={{asn}}_mnormal_{{domain}}-{{mode}}"
-                    class="btn btn-warning orig-link">{{_("user.home.clash_configs.foreign_sites.btn")}}</a>
+                    class="btn btn-warning hbtn bg-h-orange orig-link">{{_("user.home.clash_configs.foreign_sites.btn")}}</a>
             </div>
             <details>
                 <summary>{{_("user.home.clash_configs.alternative_for_normal_clash")}}</summary>
                 <div class="btn-group">
                     <a href="clash://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/normal.yml?mode={{mode}}&asn={{asn}}&name={{asn}}_normal_{{domain}}-{{mode}}"
-                        class="btn btn-secondary orig-link">{{_("user.home.clash_configs.link_for_normal_clash")}}</a>
+                        class="btn btn-secondary hbtn bg-h-gray orig-link">{{_("user.home.clash_configs.link_for_normal_clash")}}</a>
                 </div>
             </details>
             %else
             <div class="btn-group">
                 <a href="clash://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/normal.yml?mode={{mode}}&asn={{asn}}&name={{asn}}_normal_{{domain}}-{{mode}}"
-                class="btn btn-warning orig-link">{{_("user.home.clash_configs.foreign_sites.btn")}}</a>
+                class="btn btn-warning hbtn bg-h-orange orig-link">{{_("user.home.clash_configs.foreign_sites.btn")}}</a>
             </div>
             % endif
         </div>
@@ -53,25 +53,25 @@
 
     % if not hconfigs[ConfigEnum.block_iran_sites]:
     <div class="card card-danger">
-        <div class="card-header">{{_("user.home.clash_configs.all_sites.title")}}</div>
+        <div class="card-header bg-g-red">{{_("user.home.clash_configs.all_sites.title")}}</div>
         <div class="card-body">
             {{_("user.home.clash_configs.all_sites.description")}}
             % if show_meta
             <div class="btn-group">
                 <a href="{{'clash' if ios else 'clashmeta'}}://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/meta/all.yml?mode={{mode}}&asn={{asn}}&name={{asn}}_mall_{{domain}}-{{mode}}"
-                    class="btn btn-danger orig-link">{{_("user.home.clash_configs.all_sites.btn")}}</a>
+                    class="btn btn-danger hbtn bg-h-red orig-link">{{_("user.home.clash_configs.all_sites.btn")}}</a>
             </div>
             <details>
                 <summary>{{_("user.home.clash_configs.alternative_for_normal_clash")}}</summary>
                 <div class="btn-group">
                     <a href="clash://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/all.yml?mode={{mode}}&asn={{asn}}&name={{asn}}_all_{{domain}}-{{mode}}"
-                        class="btn btn-secondary orig-link">{{_("user.home.clash_configs.link_for_normal_clash")}}</a>
+                        class="btn btn-secondary hbtn bg-h-gray orig-link">{{_("user.home.clash_configs.link_for_normal_clash")}}</a>
                 </div>
             </details>
             %else
             <div class="btn-group">
                 <a href="clash://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/all.yml?mode={{mode}}&asn={{asn}}&name={{asn}}_all_{{domain}}-{{mode}}"
-                    class="btn btn-danger orig-link">{{_("user.home.clash_configs.all_sites.btn")}}</a>
+                    class="btn btn-danger hbtn bg-h-red orig-link">{{_("user.home.clash_configs.all_sites.btn")}}</a>
             </div>
             %endif
         </div>
