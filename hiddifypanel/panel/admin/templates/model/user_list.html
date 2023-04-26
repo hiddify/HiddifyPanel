@@ -7,13 +7,13 @@
     <summary>    
     {{_("Send Message to User's Telegram")}}
 </summary>
-    <button onclick="show_send_message('all')" type="button" class="btn btn-secondary" >{{_("All Users")}}</button>    
-    <button onclick="show_send_message('expired')" type="button" class="btn btn-danger" >{{_("Expired Users")}}</button>    
-    <button onclick="show_send_message('active')" type="button" class="btn btn-success" >{{_("Active Users")}}</button>    
+    <button onclick="show_send_message('all')" type="button" class="btn btn-default bg-h-blue" >{{_("All Users")}}</button>    
+    <button onclick="show_send_message('expired')" type="button" class="btn btn-default bg-h-red" >{{_("Expired Users")}}</button>    
+    <button onclick="show_send_message('active')" type="button" class="btn btn-default bg-h-green" >{{_("Active Users")}}</button>    
     <br>
-    <button onclick="show_send_message('offline 1h')" type="button" class="btn btn-success" >{{_("Offline more than 1 hour")}}</button>    
-    <button onclick="show_send_message('offline 1d')" type="button" class="btn btn-warning" >{{_("Offline more than 1 day")}}</button>    
-    <button onclick="show_send_message('offline 1w')" type="button" class="btn btn-danger" >{{_("Offline more than 1 week")}}</button>    
+    <button onclick="show_send_message('offline 1h')" type="button" class="btn btn-default bg-h-orange" >{{_("Offline more than 1 hour")}}</button>    
+    <button onclick="show_send_message('offline 1d')" type="button" class="btn btn-default bg-h-red" >{{_("Offline more than 1 day")}}</button>    
+    <button onclick="show_send_message('offline 1w')" type="button" class="btn btn-default bg-h-gray" >{{_("Offline more than 1 week")}}</button>    
 </details>
 </div>
     %endif

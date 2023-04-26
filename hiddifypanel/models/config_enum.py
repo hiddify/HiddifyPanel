@@ -44,6 +44,7 @@ class ConfigEnum(StrEnum):
 
     restls1_2_domain=auto()
     restls1_3_domain=auto()
+    show_usage_in_sublink=auto()
     cloudflare=auto()
     license=auto()
     country=auto()
@@ -126,6 +127,7 @@ class ConfigEnum(StrEnum):
           return cls.not_found #"key not found"
     def info(self):
         map = {
+            self.show_usage_in_sublink:{'category': ConfigCategory.general,'type':bool},
             self.reality_fallback_domain:{'category': ConfigCategory.reality,'apply_mode':'apply'},
             self.reality_server_names:{'category': ConfigCategory.reality,'apply_mode':'apply'},
             self.reality_short_ids:{'category': ConfigCategory.reality,'apply_mode':'apply'},

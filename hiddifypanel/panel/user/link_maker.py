@@ -201,7 +201,7 @@ def to_link(proxy):
                       "add": proxy['server'],
                       "port": proxy['port'],
                       "id": proxy["uuid"],
-                      "aid": "0",
+                      "aid": 0,
                       "scy": proxy['cipher'],
                       "net": proxy["transport"],
                       "type": vmess_type or "none",

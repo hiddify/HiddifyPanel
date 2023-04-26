@@ -32,7 +32,8 @@ def backup():
         for admin in AdminUser.query.filter(AdminUser.mode==AdminMode.super_admin,AdminUser.telegram_id!=None).all():
             from hiddifypanel.panel.commercial.telegrambot import bot
             with open(dst, 'rb') as document:
-                bot.send_document(admin.telegram_id, document,visible_file_name=dst.replace("backup/", ""),caption="Backup \n"+admin_links())
+                caption=("Backup \n"+admin_links())
+                bot.send_document(admin.telegram_id, document,visible_file_name=dst.replace("backup/", ""),caption=caption[:min(len(caption),1000)])
 
 
 

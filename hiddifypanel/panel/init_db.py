@@ -98,6 +98,8 @@ def init_db():
     return BoolConfig.query.all()
 
 
+def _v34():
+    add_config_if_not_exist(ConfigEnum.show_usage_in_sublink,False)
 def _v33():
     Proxy.query.filter(Proxy.l3==ProxyL3.reality).delete()
     _v31()

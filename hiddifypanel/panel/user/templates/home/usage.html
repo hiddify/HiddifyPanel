@@ -1,7 +1,7 @@
 <div class="card-deck">
-    % set bg_color="danger" if user.mode=='disable' or expire_days<7 or (user.usage_limit_GB*0.8 < user.current_usage_GB) else "info"
+    % set bg_color="red" if user.mode=='disable' or expire_days<7 or (user.usage_limit_GB*0.8 < user.current_usage_GB) else "sky"
 
-        <div class="card small-box bg-{{bg_color}} bg-gradient-{{bg_color}} ">
+        <div class="card small-box bg-danger h-{{bg_color}}-bg ">
             <div class="card-body">
             <div class="inner">
                 <h3>{{_('user.home.usage.title')}}</h3>
@@ -68,7 +68,7 @@
         </div>
         %endif
 
-        <div  class="card small-box bg-warning bg-gradient-warning d-none d-sm-flex">
+        <div  class="card small-box bg-warning h-orange-bg  d-none d-sm-flex">
             <div class="card-body">
             <div class="inner">
                 <h3>{{_('QR code')}}</h3>

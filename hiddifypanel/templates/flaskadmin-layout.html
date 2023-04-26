@@ -61,12 +61,13 @@ $('.form-group:not(:has(.custom-switch)) > input[type="checkbox"]').each(functio
         $("#cdn_ip").parent().hide(); $("#mode").parent().hide();$("#show_domains").parent().show()
     }else{
         $("#cdn_ip").parent().show(); $("#mode").parent().show();$("#show_domains").parent().hide()
-    }
+    
 
-    if ($("#mode").val()=='direct'){
-        $("#cdn_ip").parent().hide(); 
-    }else{
-        $("#cdn_ip").parent().show(); 
+        if ($("#mode").val()=='direct'){
+            $("#cdn_ip").parent().hide(); 
+        }else{
+            $("#cdn_ip").parent().show(); 
+        }
     }
   }
   $("#sub_link_only").on('change',hide_domain_elements)
