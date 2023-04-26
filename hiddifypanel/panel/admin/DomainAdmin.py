@@ -142,7 +142,7 @@ class DomainAdmin(AdminLTEModelView):
 
             
         skip_check="*" in model.domain
-        if hconfig(ConfigEnum.cloudflare) and model.mode!=DomainType.Fake:
+        if hconfig(ConfigEnum.cloudflare) and model.mode!=DomainType.fake:
             try:
                 proxied=model.mode in [DomainType.cdn,DomainType.auto_cdn_ip]
                 cf_api.add_or_update_domain(model.domain, myip,"A",proxied=proxied)
