@@ -1,6 +1,14 @@
 # Changelog
 
 
+## 4.5.1 (2023-04-26)
+
+#### Other
+
+* Update hiddify clash. 
+
+
+
 ## 4.5.0 (2023-04-26)
 
 #### New
