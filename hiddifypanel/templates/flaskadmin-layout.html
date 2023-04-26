@@ -55,7 +55,23 @@ $('.form-group:not(:has(.custom-switch)) > input[type="checkbox"]').each(functio
     $(this).addClass('custom-control-input');
     $(this).parent('.custom-control').append('<label class="custom-control-label" for="' + $(this).attr('id') + '">' + label + '</label>');
   });
-  
+  function hide_domain_elements(){
+    console.log("test")
+    if ($("#sub_link_only").prop('checked')==true){
+        $("#cdn_ip").parent().hide(); $("#mode").parent().hide();$("#show_domains").parent().show()
+    }else{
+        $("#cdn_ip").parent().show(); $("#mode").parent().show();$("#show_domains").parent().hide()
+    }
+
+    if ($("#mode").val()=='direct'){
+        $("#cdn_ip").parent().hide(); 
+    }else{
+        $("#cdn_ip").parent().show(); 
+    }
+  }
+  $("#sub_link_only").on('change',hide_domain_elements)
+  $("#mode").on('change',hide_domain_elements)
+  hide_domain_elements()
   </script>
     
 {% endblock %}

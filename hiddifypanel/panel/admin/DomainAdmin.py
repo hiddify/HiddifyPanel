@@ -63,7 +63,7 @@ class DomainAdmin(AdminLTEModelView):
             'validators': [Regexp(r"(((((25[0-5]|(2[0-4]|1\d|[1-9]|)\d).){3}(25[0-5]|(2[0-4]|1\d|[1-9]|)\d))|^([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,}))[ \t\n,;]*\w{3}[ \t\n,;]*)*", message=__("Invalid IP or domain"))]
         }
     }
-    column_list = ["domain", "mode","alias", "domain_ip", "show_domains"]
+    column_list = ["domain", "alias", "mode","domain_ip", "show_domains"]
     # column_editable_list=["domain"]
     # column_filters=["domain","mode"]
     # form_excluded_columns=['work_with']
@@ -78,7 +78,7 @@ class DomainAdmin(AdminLTEModelView):
         'alias':_('Alias')
     }
 
-    form_columns=['domain','alias','mode','cdn_ip','sub_link_only','show_domains']
+    form_columns=['domain','alias','sub_link_only','mode','cdn_ip','show_domains']
 
     def _domain_admin_link(view, context, model, name):
         if model.mode==DomainType.fake:
