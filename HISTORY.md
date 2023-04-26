@@ -1,9 +1,11 @@
 # Changelog
 
 
-## (unreleased)
+## 4.5.0 (2023-04-26)
 
 #### New
+
+* Add ipv6 in cf api. 
 
 * Fix v2rayng. 
 
