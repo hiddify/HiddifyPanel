@@ -1,6 +1,18 @@
 # Changelog
 
 
+## 5.0.0 (2023-04-26)
+
+#### Fix
+
+* Domain type. 
+
+#### Other
+
+* Better adding domains. 
+
+
+
 ## 4.5.1 (2023-04-26)
 
 #### Other
