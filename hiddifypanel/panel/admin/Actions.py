@@ -200,7 +200,7 @@ class Actions(FlaskView):
             start=time.time()
             for d in [test_domain, *hiddify.get_random_domains(30)]:
                 if not d:continue
-                if time.time()-start>20:break
+                if time.time()-start>10:break
                 print(d)
                 tcp_ping=hiddify.is_domain_reality_friendly(d)
                 if tcp_ping:
