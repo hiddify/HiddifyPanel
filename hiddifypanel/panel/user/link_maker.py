@@ -238,6 +238,8 @@ def to_link(proxy):
     baseurl  += f'&host={proxy["host"]}' if "host" in proxy else ""
     if "grpc" == proxy["transport"]:
         baseurl  += f'&serviceName={proxy["grpc_service_name"]}&mode={proxy["grpc_mode"]}'
+        if ProxyTransport.WS == proxy["transport"]:
+            baseurl  += f'&fragment=random'
     if 'vless' == proxy['proto']:
         baseurl  += "&encryption=none"
     if proxy.get('fingerprint','none')!='none':
