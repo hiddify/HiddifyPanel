@@ -131,14 +131,12 @@ class DomainAdmin(AdminLTEModelView):
         for c in configs:
             if "domain" in c and ConfigEnum.decoy_domain != c:
                 if model.domain == configs[c]:
-                    raise ValidationError(
-                        _("You have used this domain in: ")+_(f"config.{c}.label"))
+                    raise ValidationError(_("You have used this domain in: ")+_(f"config.{c}.label"))
         myip = hiddify.get_ip(4)
         myipv6 = hiddify.get_ip(6)
         
         if "*" in model.domain and model.mode not in [DomainType.cdn,DomainType.auto_cdn_ip]:
-            raise ValidationError(
-                    _("Domain can not be resolved! there is a problem in your domain"))
+            raise ValidationError(_("Domain can not be resolved! there is a problem in your domain"))
 
             
         skip_check="*" in model.domain
@@ -162,29 +160,26 @@ class DomainAdmin(AdminLTEModelView):
             
 
         dip = hiddify.get_domain_ip(model.domain)
-        if not skip_check:
+        if model.sub_link_only:
             if dip == None :        
-                raise ValidationError(
-                    _("Domain can not be resolved! there is a problem in your domain"))
+                raise ValidationError(_("Domain can not be resolved! there is a problem in your domain")) 
+        elif not skip_check:
+            if dip == None :        
+                raise ValidationError(_("Domain can not be resolved! there is a problem in your domain"))
+            domain_ip_is_same_to_panel=myip == dip or dip == myipv6
 
-            
-            if model.mode == DomainType.direct and (myip != dip and dip != hiddify.get_ip(6)):
-                raise ValidationError(
-                    _("Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode", server_ip=myip, domain_ip=dip))
+            if model.mode == DomainType.direct and not domain_ip_is_same_to_panel:
+                raise ValidationError(_("Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode", server_ip=myip, domain_ip=dip))
 
-            if dip == myip and model.mode in [DomainType.cdn, DomainType.relay, DomainType.fake,DomainType.auto_cdn_ip]:
-                raise ValidationError(
-                    _("In CDN mode, Domain IP=%(domain_ip)s should be different to your ip=%(server_ip)s", server_ip=myip, domain_ip=dip))
+            if domain_ip_is_same_to_panel and model.mode in [DomainType.cdn, DomainType.relay, DomainType.fake,DomainType.auto_cdn_ip]:
+                raise ValidationError(_("In CDN mode, Domain IP=%(domain_ip)s should be different to your ip=%(server_ip)s", server_ip=myip, domain_ip=dip))
 
             # if model.mode in [DomainType.ss_faketls, DomainType.telegram_faketls]:
             #     if len(Domain.query.filter(Domain.mode==model.mode and Domain.id!=model.id).all())>0:
             #         ValidationError(f"another {model.mode} is exist")
         model.domain = model.domain.lower()
         if model.mode == DomainType.direct and model.cdn_ip:
-            raise ValidationError(
-                f"Specifying CDN IP is only valid for CDN mode")
-
-            
+            raise ValidationError(f"Specifying CDN IP is only valid for CDN mode")            
 
         if model.mode == DomainType.fake and not model.cdn_ip:
             model.cdn_ip = myip
