@@ -5,6 +5,8 @@
 
 #### New
 
+* Better. 
+
 * Add hiddify. 
 
 * Add fragment. 
