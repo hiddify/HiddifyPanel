@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-30 17:49+0200\n"
-"PO-Revision-Date: 2023-04-30 10:38-0500\n"
+"POT-Creation-Date: 2023-04-30 19:43+0200\n"
+"PO-Revision-Date: 2023-04-30 12:38-0500\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -172,16 +172,17 @@ msgstr "نام"
 msgid "Mode"
 msgstr "حالت کاربر"
 
-# | msgid "UUID"
+# | msgid "🔐 UUID"
 #: hiddifypanel/panel/admin/AdminstratorAdmin.py:60
 #: hiddifypanel/panel/admin/UserAdmin.py:74
 msgid "user.UUID"
-msgstr "UUID"
+msgstr "🔐 UUID"
 
+# | msgid "📝 Note"
 #: hiddifypanel/panel/admin/AdminstratorAdmin.py:61
 #: hiddifypanel/panel/admin/UserAdmin.py:75
 msgid "Note"
-msgstr "یادداشت"
+msgstr "📝 یادداشت"
 
 #: hiddifypanel/panel/admin/AdminstratorAdmin.py:62
 #, fuzzy
@@ -207,11 +208,10 @@ msgstr "حداکثر کاربران"
 msgid "Online Users"
 msgstr "کاربران آنلاین"
 
-# | msgid "Can Add Sub Admin"
+# | msgid "👥 Can Add Sub Admin"
 #: hiddifypanel/panel/admin/AdminstratorAdmin.py:65
-#, fuzzy
 msgid "Can add sub admin"
-msgstr "امکان اضافه کردن ادمین فرعی"
+msgstr "👥 امکان اضافه کردن ادمین فرعی"
 
 # | msgid "Add some Text that is only visible to Super Admin"
 #: hiddifypanel/panel/admin/AdminstratorAdmin.py:76
@@ -490,10 +490,10 @@ msgstr ""
 "این می تواند برای دادن لینک های غیرقابل مسدود و دائمی به کاربران شما "
 "استفاده شود."
 
-# | msgid "Use Only for Subscription Link"
+# | msgid "🌍 Use Only for Subscription Link"
 #: hiddifypanel/panel/admin/DomainAdmin.py:73
 msgid "Only for sublink?"
-msgstr "استفاده فقط برای لینک کانفیگ ها (سابسکریپشن)"
+msgstr "🌍 استفاده فقط برای لینک کانفیگ ها (سابسکریپشن)"
 
 # | msgid "Mode"
 #: hiddifypanel/panel/admin/DomainAdmin.py:74
@@ -621,7 +621,28 @@ msgstr "کشور"
 #: hiddifypanel/panel/admin/SettingAdmin.py:173
 #: hiddifypanel/panel/commercial/CommercialSettings.py:152
 msgid "Iran"
-msgstr "🇮🇷 ایران"
+msgstr ""
+"<!DOCTYPE html>\n"
+"<html>\n"
+"<head>\n"
+"<style>\n"
+"div {\n"
+"  width: 16px;\n"
+"  height: 16px;\n"
+"}\n"
+"\n"
+"#myDiv {\n"
+"  transform: rotate(180deg);\n"
+"}\n"
+"</style>\n"
+"</head>\n"
+"\n"
+"<div id=\"myDiv\">\n"
+"🇭🇺\n"
+"\n"
+"</body>\n"
+"</html>\n"
+" ایران"
 
 # | msgid "🇨🇳 China"
 #: hiddifypanel/panel/admin/QuickSetup.py:79
@@ -996,10 +1017,11 @@ msgstr ""
 "شما کاربران زیادی دارید! شما می توانید تنها %(active)s کاربر فعال و "
 "%(total)s کاربر داشته باشید"
 
+# | msgid "💾 Backup"
 #: hiddifypanel/panel/admin/templates/backup.html:9
 #: hiddifypanel/templates/admin-layout.html:176
 msgid "Backup"
-msgstr "پشتیبان‌گیری"
+msgstr "💾 پشتیبان‌گیری"
 
 # | msgid ""
 # | "⚠️Hiddify Panel automatically takes a Backup every 6 Hours. The path of
@@ -2166,20 +2188,20 @@ msgstr "وضعیت"
 msgid "Domain"
 msgstr "دامنه"
 
-# | msgid "Global Configs"
+# | msgid "⚙️ Global Configs"
 #: hiddifypanel/panel/admin/templates/proxy.html:11
 msgid "admin.proxy.global_config"
-msgstr "تنظیمات عمومی"
+msgstr "⚙️ تنظیمات عمومی"
 
 # | msgid "✏️ Modifying Proxies"
 #: hiddifypanel/panel/admin/templates/proxy.html:14
 msgid "Edit Proxy Names"
 msgstr "✏️ ویرایش پروکسی‌ها"
 
-# | msgid "Detailed Configs"
+# | msgid "⚙️ Detailed Configs"
 #: hiddifypanel/panel/admin/templates/proxy.html:24
 msgid "admin.proxy.detailed_config"
-msgstr "تنظیمات دقیق"
+msgstr "⚙️ تنظیمات دقیق"
 
 #: hiddifypanel/panel/admin/templates/quick_setup.html:8
 msgid "Save Link"
@@ -2357,7 +2379,7 @@ msgid "Offline more than 1 week"
 msgstr "آفلاین بیش از 1 هفته"
 
 # | msgid ""
-# | "User usage will be updated every 1 Minutes. to update it now <a "
+# | "♻️ User usage will be updated every 1 Minutes. to update it now <a "
 # | "href=\"%(link)s\" class=\"btn btn-info\">Click Here</a>"
 #: hiddifypanel/panel/admin/templates/model/user_list.html:23
 #, python-format
@@ -2365,8 +2387,9 @@ msgid ""
 "User usage will be updated every 6 minutes. To update it now click <a "
 "href=\"%(link)s\" class=\"btn btn-info\">here</a>"
 msgstr ""
-"حجم مصرفی کاربران بصورت خودکار هر دقیقه بروزرسانی می‌شود. برای بروزرسانی "
-"دستی <a href=\"%(link)s\" class=\"btn btn-info\">اینجا کلیک کنید</a>"
+"♻️ حجم مصرفی کاربران بصورت خودکار هر دقیقه بروزرسانی می‌شود. برای "
+"بروزرسانی دستی <a href=\"%(link)s\" class=\"btn btn-info\">اینجا کلیک "
+"کنید</a>"
 
 # | msgid "✏️  Please write your message to send to the Telegram:"
 #: hiddifypanel/panel/admin/templates/model/user_list.html:63
@@ -2567,11 +2590,16 @@ msgstr "به جز VLESS"
 msgid "user.home.allconfig.link-configs"
 msgstr "لینک برای Subscription"
 
+# | msgid ""
+# | "Please select one of the following applications:\n"
+# | "<br />"
 #: hiddifypanel/panel/user/templates/home/android.html:2
 #: hiddifypanel/panel/user/templates/home/ios.html:3
 #: hiddifypanel/panel/user/templates/home/windows.html:46
 msgid "Please select one of the following applications:"
-msgstr "لطفا یکی از برنامه های زیر را انتخاب کنید:"
+msgstr ""
+"لطفا یکی از برنامه های زیر را انتخاب کنید:\n"
+"<br />"
 
 # | msgid "Direct Download"
 #: hiddifypanel/panel/user/templates/home/android.html:8
@@ -2592,13 +2620,13 @@ msgid "HiddifyNG"
 msgstr "HiddifyNG <span class=\"badge badge-success\">پیشنهادی</span>"
 
 # | msgid ""
-# | "Please install HiddifyNG from either of these links: %(dl_link)s or
+# | "Please install HiddifyNG from either of these links: %(dl_link)s
 # %(play_link)s.\n"
 # | "Then click on the link below and open it in HiddifyNG."
 #: hiddifypanel/panel/user/templates/home/android.html:32
 msgid "HiddifyNG intro"
 msgstr ""
-"لطفاً HiddifyNG را از یکی از این پیوندها نصب کنید: %(dl_link)s یا "
+"لطفاً HiddifyNG را از یکی از این پیوندها نصب کنید: %(dl_link)s  "
 "%(play_link)s.\n"
 "سپس روی لینک زیر کلیک کنید و آن را در HiddifyNG باز کنید."
 
@@ -2617,23 +2645,25 @@ msgstr ""
 "نرم افزار قدیمی جایگزین  v2rayNG  <button class='btn btn-sm btn-default' "
 "onclick='show_video(\"android-v2rayng\")'><i class=\"fa-solid fa-"
 "question\"></i> </button>\n"
+"<br>"
 
 # | msgid ""
-# | "Please install v2rayNG from either of these links: %(dl_link)s or
+# | "Please install v2rayNG from either of these links: %(dl_link)s
 # %(play_link)s.\n"
 # | "Then copy the link below and paste it in v2rayNG according to the video
 # tutorial <button class='btn btn-sm btn-default'
 # onclick='show_video(\"android-v2rayng\")'><i class=\"fa-solid
 # fa-question\"></i> </button>.\n"
-# | "."
+# | "<br />"
 #: hiddifypanel/panel/user/templates/home/android.html:40
 msgid "V2rayNG intro"
 msgstr ""
-"لطفاً v2rayNG را از %(dl_link)s یا %(play_link)s نصب کنید.\n"
+"لطفاً v2rayNG را از %(dl_link)s   %(play_link)s نصب کنید.\n"
 "سپس لینک زیر را کپی کرده و مطابق فیلم آموزش <button class='btn btn-sm "
 "btn-default' onclick='show_video(\"android-v2rayng\")'><i class=\"fa-"
 "solid fa-question\"></i>  </button>\n"
-"در v2rayNG قرار دهید."
+"در v2rayNG قرار دهید.\n"
+"<br />"
 
 # | msgid "Hiddify Android "
 #: hiddifypanel/panel/user/templates/home/android.html:51
@@ -2847,13 +2877,14 @@ msgid "copy"
 msgstr "کپی"
 
 # | msgid ""
-# | "    <h4>Configure DoH on your browser</h4>\n"
+# | "<h4>Configure DoH on your browser</h4>\n"
 # | "    There are several browsers compatible with DNS over HTTPS (DoH). This
 # protocol lets\n"
 # | "    you encrypt your connection to 1.1.1.1 in order to protect your DNS
 # queries from privacy intrusions and tampering.\n"
 # | "\n"
 # | "    Some browsers might already have this setting enabled.\n"
+# | "<br>\n"
 # | "    <h5>​​Mozilla Firefox</h5>\n"
 # | "    Select the <b>menu</b> button > <b>Settings</b>.In the General menu,
 # scroll down to access <b>Network Settings</b>. Select <b>Settings</b>.
@@ -2863,13 +2894,12 @@ msgstr "کپی"
 # <b>Settings</b>.\n"
 # | "    Select <b>Privacy and security</b> > <b>Security</b>.\n"
 # | "    Scroll down and enable <b>Use secure DNS</b>.\n"
-# | "    \n"
+# | "    <br>\n"
 # | "    <h5>​​Microsoft Edge</h5>\n"
 # | "    Select <b>Privacy, Search, and Services</b>, and scroll down to
 # <b>Security</b>.\n"
 # | "    Enable <b>Use secure DNS</b>.\n"
-# | "    Select Choose a service provider.\n"
-# | "    "
+# | "    Select Choose a service provider."
 #: hiddifypanel/panel/user/templates/home/doh.html:13
 msgid "user.home.tool.doh.help"
 msgstr ""
@@ -2880,7 +2910,7 @@ msgstr ""
 "\n"
 "بعضی مرورگرها ممکن است این تنظیمات را از قبل داشته باشند. \n"
 "<br>\n"
-"  <h5>​​موزیلا فایرفاکس</h5>\n"
+"  <h5>​​Mozilla Firefox</h5>\n"
 "     دکمه <b>Menu</b> > <b>تنظیمات</b> را انتخاب کنید. در منوی عمومی، به "
 "پایین بروید تا به <b>تنظیمات شبکه</b> دسترسی پیدا کنید. <b>تنظیمات</b> را"
 " انتخاب کنید. <b>فعال کردن DNS از طریق HTTPS</b> را انتخاب کنید.\n"
@@ -2890,7 +2920,7 @@ msgstr ""
 "کنید.\n"
 "     <b>حریم خصوصی و امنیت</b> > <b>امنیت</b> را انتخاب کنید.\n"
 "     به پایین بروید و <b>استفاده از DNS امن</b> را فعال کنید.\n"
-"    <br>\n"
+"<br>\n"
 "     <h5>​Microsoft Edge</h5>\n"
 "     منوی <b>سه نقطه</b> را در مرورگر خود بزنید و <b>تنظیمات</b> انتخاب "
 "کنید.\n"
@@ -3192,14 +3222,16 @@ msgid "user.home.telegram.clickbtn"
 msgstr "پروکسی تلگرام"
 
 # | msgid ""
-# | "Click on one of the following link then, in the telegram you can see a "
-# | "window that contains <b>Connect Proxy</b>. Click on it and it will work."
+# | "Click on one of the following link then, in the telegram you can see a
+# window that contains <b>Connect Proxy</b>. Click on it and it will work.\n"
+# | "<br />"
 #: hiddifypanel/panel/user/templates/home/telegram.html:14
 msgid "user.home.telegram.description"
 msgstr ""
 "روی یکی از لینک‌های زیر کلیک کنید. سپس در تلگرام پنجره‌‌ای مشاهده می‌کنید"
 " که یک دکمه با نوشته <b>Connect Proxy</b> قابل مشاهده است. روی آن کلیک "
-"کنید تا پروکسی متصل شود."
+"کنید تا پروکسی متصل شود.\n"
+"<br />"
 
 # | msgid "Traffic Usage"
 #: hiddifypanel/panel/user/templates/home/usage.html:7

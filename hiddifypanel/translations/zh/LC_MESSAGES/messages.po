@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-30 17:49+0200\n"
-"PO-Revision-Date: 2023-04-30 10:38-0500\n"
+"POT-Creation-Date: 2023-04-30 19:43+0200\n"
+"PO-Revision-Date: 2023-04-30 12:38-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -172,12 +172,13 @@ msgstr "名称"
 msgid "Mode"
 msgstr "模式"
 
-# | msgid "UUID"
+# | msgid "🔐 UUID"
 #: hiddifypanel/panel/admin/AdminstratorAdmin.py:60
 #: hiddifypanel/panel/admin/UserAdmin.py:74
 msgid "user.UUID"
 msgstr "UUID"
 
+# | msgid "📝 Note"
 #: hiddifypanel/panel/admin/AdminstratorAdmin.py:61
 #: hiddifypanel/panel/admin/UserAdmin.py:75
 #, fuzzy
@@ -208,7 +209,7 @@ msgstr "最大用户数"
 msgid "Online Users"
 msgstr "在线用户"
 
-# | msgid "Can Add Sub Admin"
+# | msgid "👥 Can Add Sub Admin"
 #: hiddifypanel/panel/admin/AdminstratorAdmin.py:65
 #, fuzzy
 msgid "Can add sub admin"
@@ -472,7 +473,7 @@ msgstr "将显示在此域的配置中的名称。"
 msgid "This can be used for giving your users a permanent non blockable links."
 msgstr "这可用于为您的用户提供永久的不可阻止的链接。"
 
-# | msgid "Use Only for Subscription Link"
+# | msgid "🌍 Use Only for Subscription Link"
 #: hiddifypanel/panel/admin/DomainAdmin.py:73
 #, fuzzy
 msgid "Only for sublink?"
@@ -983,6 +984,7 @@ msgid ""
 "%(total)s users"
 msgstr "你的用户太多了！您只能有 %(active)s 个活跃用户和 %(total)s 个用户"
 
+# | msgid "💾 Backup"
 #: hiddifypanel/panel/admin/templates/backup.html:9
 #: hiddifypanel/templates/admin-layout.html:176
 msgid "Backup"
@@ -2104,7 +2106,7 @@ msgstr ""
 msgid "Domain"
 msgstr "领域"
 
-# | msgid "Global Configs"
+# | msgid "⚙️ Global Configs"
 #: hiddifypanel/panel/admin/templates/proxy.html:11
 msgid "admin.proxy.global_config"
 msgstr "全局配置"
@@ -2114,7 +2116,7 @@ msgstr "全局配置"
 msgid "Edit Proxy Names"
 msgstr "修改代理..."
 
-# | msgid "Detailed Configs"
+# | msgid "⚙️ Detailed Configs"
 #: hiddifypanel/panel/admin/templates/proxy.html:24
 msgid "admin.proxy.detailed_config"
 msgstr "详细配置"
@@ -2285,7 +2287,7 @@ msgid "Offline more than 1 week"
 msgstr "离线超过1周"
 
 # | msgid ""
-# | "User usage will be updated every 1 Minutes. to update it now <a "
+# | "♻️ User usage will be updated every 1 Minutes. to update it now <a "
 # | "href=\"%(link)s\" class=\"btn btn-info\">Click Here</a>"
 #: hiddifypanel/panel/admin/templates/model/user_list.html:23
 #, fuzzy, python-format
@@ -2498,6 +2500,9 @@ msgstr "除了 vless"
 msgid "user.home.allconfig.link-configs"
 msgstr "订阅链接"
 
+# | msgid ""
+# | "Please select one of the following applications:\n"
+# | "<br />"
 #: hiddifypanel/panel/user/templates/home/android.html:2
 #: hiddifypanel/panel/user/templates/home/ios.html:3
 #: hiddifypanel/panel/user/templates/home/windows.html:46
@@ -2524,12 +2529,15 @@ msgid "HiddifyNG"
 msgstr ""
 
 # | msgid ""
-# | "Please install HiddifyNG from either of these links: %(dl_link)s or
+# | "Please install HiddifyNG from either of these links: %(dl_link)s
 # %(play_link)s.\n"
 # | "Then click on the link below and open it in HiddifyNG."
 #: hiddifypanel/panel/user/templates/home/android.html:32
+#, fuzzy
 msgid "HiddifyNG intro"
 msgstr ""
+"请从以下任一链接安装 HiddifyNG：%(dl_link)s %(play_link)s。\n"
+"然后单击下面的链接并在 HiddifyNG 中打开它。"
 
 #: hiddifypanel/panel/user/templates/home/android.html:36
 #: hiddifypanel/panel/user/templates/home/windows.html:57
@@ -2546,13 +2554,13 @@ msgid "V2rayNG"
 msgstr "V2rayNG"
 
 # | msgid ""
-# | "Please install v2rayNG from either of these links: %(dl_link)s or
+# | "Please install v2rayNG from either of these links: %(dl_link)s
 # %(play_link)s.\n"
 # | "Then copy the link below and paste it in v2rayNG according to the video
 # tutorial <button class='btn btn-sm btn-default'
 # onclick='show_video(\"android-v2rayng\")'><i class=\"fa-solid
 # fa-question\"></i> </button>.\n"
-# | "."
+# | "<br />"
 #: hiddifypanel/panel/user/templates/home/android.html:40
 #, fuzzy
 msgid "V2rayNG intro"
@@ -2760,13 +2768,14 @@ msgid "copy"
 msgstr "复制"
 
 # | msgid ""
-# | "    <h4>Configure DoH on your browser</h4>\n"
+# | "<h4>Configure DoH on your browser</h4>\n"
 # | "    There are several browsers compatible with DNS over HTTPS (DoH). This
 # protocol lets\n"
 # | "    you encrypt your connection to 1.1.1.1 in order to protect your DNS
 # queries from privacy intrusions and tampering.\n"
 # | "\n"
 # | "    Some browsers might already have this setting enabled.\n"
+# | "<br>\n"
 # | "    <h5>​​Mozilla Firefox</h5>\n"
 # | "    Select the <b>menu</b> button > <b>Settings</b>.In the General menu,
 # scroll down to access <b>Network Settings</b>. Select <b>Settings</b>.
@@ -2776,13 +2785,12 @@ msgstr "复制"
 # <b>Settings</b>.\n"
 # | "    Select <b>Privacy and security</b> > <b>Security</b>.\n"
 # | "    Scroll down and enable <b>Use secure DNS</b>.\n"
-# | "    \n"
+# | "    <br>\n"
 # | "    <h5>​​Microsoft Edge</h5>\n"
 # | "    Select <b>Privacy, Search, and Services</b>, and scroll down to
 # <b>Security</b>.\n"
 # | "    Enable <b>Use secure DNS</b>.\n"
-# | "    Select Choose a service provider.\n"
-# | "    "
+# | "    Select Choose a service provider."
 #: hiddifypanel/panel/user/templates/home/doh.html:13
 msgid "user.home.tool.doh.help"
 msgstr ""
@@ -3071,8 +3079,9 @@ msgid "user.home.telegram.clickbtn"
 msgstr "电报代理"
 
 # | msgid ""
-# | "Click on one of the following link then, in the telegram you can see a "
-# | "window that contains <b>Connect Proxy</b>. Click on it and it will work."
+# | "Click on one of the following link then, in the telegram you can see a
+# window that contains <b>Connect Proxy</b>. Click on it and it will work.\n"
+# | "<br />"
 #: hiddifypanel/panel/user/templates/home/telegram.html:14
 msgid "user.home.telegram.description"
 msgstr "单击 %(link)s，然后，在电报中您可以看到一个包含 <b>Connect Proxy</b> 的窗口。单击它，它将起作用。"

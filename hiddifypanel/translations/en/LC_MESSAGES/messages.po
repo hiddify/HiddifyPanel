@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-30 17:49+0200\n"
-"PO-Revision-Date: 2023-04-30 10:38-0500\n"
+"POT-Creation-Date: 2023-04-30 19:43+0200\n"
+"PO-Revision-Date: 2023-04-30 12:38-0500\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -168,16 +168,17 @@ msgstr "Name"
 msgid "Mode"
 msgstr "Mode"
 
-# | msgid "UUID"
+# | msgid "🔐 UUID"
 #: hiddifypanel/panel/admin/AdminstratorAdmin.py:60
 #: hiddifypanel/panel/admin/UserAdmin.py:74
 msgid "user.UUID"
-msgstr "UUID"
+msgstr "🔐 UUID"
 
+# | msgid "📝 Note"
 #: hiddifypanel/panel/admin/AdminstratorAdmin.py:61
 #: hiddifypanel/panel/admin/UserAdmin.py:75
 msgid "Note"
-msgstr "Note"
+msgstr "📝 Note"
 
 #: hiddifypanel/panel/admin/AdminstratorAdmin.py:62
 msgid "Max Active Users"
@@ -200,10 +201,10 @@ msgstr "Max Users"
 msgid "Online Users"
 msgstr "Online Users"
 
-# | msgid "Can Add Sub Admin"
+# | msgid "👥 Can Add Sub Admin"
 #: hiddifypanel/panel/admin/AdminstratorAdmin.py:65
 msgid "Can add sub admin"
-msgstr "Can Add Sub Admin"
+msgstr "👥 Can Add Sub Admin"
 
 # | msgid "Add some Text that is only visible to Super Admin"
 #: hiddifypanel/panel/admin/AdminstratorAdmin.py:76
@@ -465,10 +466,10 @@ msgid ""
 msgstr ""
 "This can be used for giving your Users a permanent non Blockable Links."
 
-# | msgid "Use Only for Subscription Link"
+# | msgid "🌍 Use Only for Subscription Link"
 #: hiddifypanel/panel/admin/DomainAdmin.py:73
 msgid "Only for sublink?"
-msgstr "Use Only for Subscription Link"
+msgstr "🌍 Use Only for Subscription Link"
 
 # | msgid "Mode"
 #: hiddifypanel/panel/admin/DomainAdmin.py:74
@@ -968,10 +969,11 @@ msgstr ""
 "You have too much users! You can have only %(active)s active users and "
 "%(total)s users"
 
+# | msgid "💾 Backup"
 #: hiddifypanel/panel/admin/templates/backup.html:9
 #: hiddifypanel/templates/admin-layout.html:176
 msgid "Backup"
-msgstr "Backup"
+msgstr "💾 Backup"
 
 # | msgid ""
 # | "⚠️Hiddify Panel automatically takes a Backup every 6 Hours. The path of "
@@ -2097,20 +2099,20 @@ msgstr "Status"
 msgid "Domain"
 msgstr "Domain"
 
-# | msgid "Global Configs"
+# | msgid "⚙️ Global Configs"
 #: hiddifypanel/panel/admin/templates/proxy.html:11
 msgid "admin.proxy.global_config"
-msgstr "Global Configs"
+msgstr "⚙️ Global Configs"
 
 # | msgid "✏️ Modifying Proxies"
 #: hiddifypanel/panel/admin/templates/proxy.html:14
 msgid "Edit Proxy Names"
 msgstr "✏️ Modifying Proxies"
 
-# | msgid "Detailed Configs"
+# | msgid "⚙️ Detailed Configs"
 #: hiddifypanel/panel/admin/templates/proxy.html:24
 msgid "admin.proxy.detailed_config"
-msgstr "Detailed Configs"
+msgstr "⚙️ Detailed Configs"
 
 #: hiddifypanel/panel/admin/templates/quick_setup.html:8
 msgid "Save Link"
@@ -2273,7 +2275,7 @@ msgid "Offline more than 1 week"
 msgstr "Offline More Than 1 Week"
 
 # | msgid ""
-# | "User usage will be updated every 1 Minutes. to update it now <a "
+# | "♻️ User usage will be updated every 1 Minutes. to update it now <a "
 # | "href=\"%(link)s\" class=\"btn btn-info\">Click Here</a>"
 #: hiddifypanel/panel/admin/templates/model/user_list.html:23
 #, python-format
@@ -2281,7 +2283,7 @@ msgid ""
 "User usage will be updated every 6 minutes. To update it now click <a "
 "href=\"%(link)s\" class=\"btn btn-info\">here</a>"
 msgstr ""
-"User usage will be updated every 1 Minutes. to update it now <a "
+"♻️ User usage will be updated every 1 Minutes. to update it now <a "
 "href=\"%(link)s\" class=\"btn btn-info\">Click Here</a>"
 
 # | msgid "✏️  Please write your message to send to the Telegram:"
@@ -2482,11 +2484,16 @@ msgstr "Except VLess"
 msgid "user.home.allconfig.link-configs"
 msgstr "Subscription Link"
 
+# | msgid ""
+# | "Please select one of the following applications:\n"
+# | "<br />"
 #: hiddifypanel/panel/user/templates/home/android.html:2
 #: hiddifypanel/panel/user/templates/home/ios.html:3
 #: hiddifypanel/panel/user/templates/home/windows.html:46
 msgid "Please select one of the following applications:"
-msgstr "Please select one of the following applications:"
+msgstr ""
+"Please select one of the following applications:\n"
+"<br />"
 
 # | msgid "Direct Download"
 #: hiddifypanel/panel/user/templates/home/android.html:8
@@ -2508,14 +2515,13 @@ msgid "HiddifyNG"
 msgstr "HiddifyNG <span class=\"badge badge-success\">Recommended</span>"
 
 # | msgid ""
-# | "Please install HiddifyNG from either of these links: %(dl_link)s or "
+# | "Please install HiddifyNG from either of these links: %(dl_link)s  "
 # | "%(play_link)s.\n"
 # | "Then click on the link below and open it in HiddifyNG."
 #: hiddifypanel/panel/user/templates/home/android.html:32
-#, fuzzy
 msgid "HiddifyNG intro"
 msgstr ""
-"Please install HiddifyNG from either of these links: %(dl_link)s or %(play_link)s.\n"
+"Please install HiddifyNG from either of these links: %(dl_link)s  %(play_link)s.\n"
 "Then click on the link below and open it in HiddifyNG."
 
 #: hiddifypanel/panel/user/templates/home/android.html:36
@@ -2536,19 +2542,19 @@ msgstr ""
 "question\"></i> </button>\n"
 
 # | msgid ""
-# | "Please install v2rayNG from either of these links: %(dl_link)s or "
+# | "Please install v2rayNG from either of these links: %(dl_link)s  "
 # | "%(play_link)s.\n"
 # | "Then copy the link below and paste it in v2rayNG according to the video "
 # | "tutorial <button class='btn btn-sm btn-default' "
 # | "onclick='show_video(\"android-v2rayng\")'><i class=\"fa-solid fa-"
 # | "question\"></i> </button>.\n"
-# | "."
+# | "<br />"
 #: hiddifypanel/panel/user/templates/home/android.html:40
 msgid "V2rayNG intro"
 msgstr ""
-"Please install v2rayNG from either of these links: %(dl_link)s or %(play_link)s.\n"
+"Please install v2rayNG from either of these links: %(dl_link)s  %(play_link)s.\n"
 "Then copy the link below and paste it in v2rayNG according to the video tutorial <button class='btn btn-sm btn-default' onclick='show_video(\"android-v2rayng\")'><i class=\"fa-solid fa-question\"></i> </button>.\n"
-"."
+"<br />"
 
 # | msgid "Hiddify Android "
 #: hiddifypanel/panel/user/templates/home/android.html:51
@@ -2743,7 +2749,7 @@ msgid "copy"
 msgstr "Copy"
 
 # | msgid ""
-# | "    <h4>Configure DoH on your browser</h4>\n"
+# | "<h4>Configure DoH on your browser</h4>\n"
 # | "    There are several browsers compatible with DNS over HTTPS (DoH). This
 # "
 # | "protocol lets\n"
@@ -2751,6 +2757,7 @@ msgstr "Copy"
 # | "queries from privacy intrusions and tampering.\n"
 # | "\n"
 # | "    Some browsers might already have this setting enabled.\n"
+# | "<br>\n"
 # | "    <h5>​​Mozilla Firefox</h5>\n"
 # | "    Select the <b>menu</b> button > <b>Settings</b>.In the General menu,
 # "
@@ -2761,36 +2768,34 @@ msgstr "Copy"
 # <b>Settings</b>.\n"
 # | "    Select <b>Privacy and security</b> > <b>Security</b>.\n"
 # | "    Scroll down and enable <b>Use secure DNS</b>.\n"
-# | "    \n"
+# | "    <br>\n"
 # | "    <h5>​​Microsoft Edge</h5>\n"
 # | "    Select <b>Privacy, Search, and Services</b>, and scroll down to <b>"
 # | "Security</b>.\n"
 # | "    Enable <b>Use secure DNS</b>.\n"
-# | "    Select Choose a service provider.\n"
-# | "    "
+# | "    Select Choose a service provider."
 #: hiddifypanel/panel/user/templates/home/doh.html:13
 msgid "user.home.tool.doh.help"
 msgstr ""
-"    <h4>Configure DoH on your browser</h4>\n"
+"<h4>Configure DoH on your browser</h4>\n"
 "    There are several browsers compatible with DNS over HTTPS (DoH). This protocol lets\n"
 "    you encrypt your connection to 1.1.1.1 in order to protect your DNS queries from privacy intrusions and tampering.\n"
 "\n"
 "    Some browsers might already have this setting enabled.\n"
-"\n"
+"<br>\n"
 "    <h5>​​Mozilla Firefox</h5>\n"
 "    Select the <b>menu</b> button > <b>Settings</b>.In the General menu, scroll down to access <b>Network Settings</b>. Select <b>Settings</b>. Select <b>Enable DNS over HTTPS</b>.\n"
+"<br>\n"
 "    ​<h5>​Google Chrome</h5>\n"
 "    Select the <b>three-dot</b> menu in your browser > <b>Settings</b>.\n"
 "    Select <b>Privacy and security</b> > <b>Security</b>.\n"
 "    Scroll down and enable <b>Use secure DNS</b>.\n"
-"    \n"
+"    <br>\n"
 "    <h5>​​Microsoft Edge</h5>\n"
 "    Select the <b>three-dot</b> menu in your browser > <b>Settings</b>.\n"
 "    Select <b>Privacy, Search, and Services</b>, and scroll down to <b>Security</b>.\n"
 "    Enable <b>Use secure DNS</b>.\n"
-"    Select Choose a service provider.\n"
-"    \n"
-"    "
+"    Select Choose a service provider."
 
 # | msgid "Hiddify"
 #: copy.html:2 hiddifypanel/panel/user/templates/home/index
@@ -3068,12 +3073,14 @@ msgstr "Telegram Proxy"
 
 # | msgid ""
 # | "Click on one of the following link then, in the telegram you can see a "
-# | "window that contains <b>Connect Proxy</b>. Click on it and it will work."
+# | "window that contains <b>Connect Proxy</b>. Click on it and it will
+# work.\n"
+# | "<br />"
 #: hiddifypanel/panel/user/templates/home/telegram.html:14
 msgid "user.home.telegram.description"
 msgstr ""
-"Click on one of the following link then, in the telegram you can see a "
-"window that contains <b>Connect Proxy</b>. Click on it and it will work."
+"Click on one of the following link then, in the telegram you can see a window that contains <b>Connect Proxy</b>. Click on it and it will work.\n"
+"<br />"
 
 # | msgid "Traffic Usage"
 #: hiddifypanel/panel/user/templates/home/usage.html:7
