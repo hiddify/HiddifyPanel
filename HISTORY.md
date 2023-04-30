@@ -1,6 +1,22 @@
 # Changelog
 
 
+## (unreleased)
+
+#### New
+
+* Add hiddify. 
+
+* Add fragment. 
+
+* Allow cdn and relay to add as only panel domains. 
+
+#### Other
+
+* Only 10 second to propose domains. 
+
+
+
 ## 5.0.3 (2023-04-27)
 
 #### New
