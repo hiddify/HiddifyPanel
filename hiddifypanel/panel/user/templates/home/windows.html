@@ -30,6 +30,38 @@
 </div>
 {%- endmacro -%}
 
+{% macro HiddifyN_dl_link() -%}
+<div class="btn-group">
+    <a class="btn btn-primary"
+        href="/{{hconfigs[ConfigEnum.proxy_path]}}/gh/hiddify/HiddifyDesktopN/releases/latest/download/HiddifyN.zip">
+        <i class="fa-brands fa-windows fa-margin"></i> {{_('Windows')}}</a>
+    
+
+</div>
+{%- endmacro -%}
+
+
+
+<div class="col">
+    {{_("Please select one of the following applications:")}}
+    
+<details  data-widget="collapse">
+    <summary class="callout callout-success">
+    {{_("HiddigyN")}}
+    </summary>
+
+    {{_('HiddifyN intro',dl_link=HiddifyN_dl_link())}}
+
+    <div class="btn-group">
+        <a href="hiddify://install-sub?url=https%3A%2F%2F{{domain}}%2F{{hconfigs[ConfigEnum.proxy_path]}}%2F{{user.uuid}}%2Fall.txt%3Fname%3D{{(db_domain.alias or db_domain.domain|urlencode)}}-{{asn}}%26asn%3D{{asn}}%26mode%3D{{mode}}"
+          class="btn btn-light orig-link"> {{_('Click to Import')}} </a>
+      </div>
+</details>
+</div>
+<details  data-widget="collapse">
+    <summary class="callout callout-success">
+    {{_("HiddifyClash")}}
+    </summary>
 {{_("user.home.windows.intro",hiddify_desktop_links=HiddifyDesktop_dl_link(),normal_clash_link=clash_dl_link())}}
 
 
@@ -37,3 +69,4 @@
 {% with show_meta=True, ios=True %}
 {% include "home/clash-links.html" %}
 {% endwith %}
+</details>

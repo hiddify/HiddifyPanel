@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-26 22:33+0200\n"
-"PO-Revision-Date: 2023-04-26 15:33-0500\n"
+"POT-Creation-Date: 2023-04-30 07:23+0200\n"
+"PO-Revision-Date: 2023-04-30 00:15-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -66,7 +66,8 @@ msgstr "配置已成功更改。"
 # check "
 # | "your Domain configurations."
 #: hiddifypanel/panel/admin/ChildAdmin.py:108
-#: hiddifypanel/panel/admin/DomainAdmin.py:141
+#: hiddifypanel/panel/admin/DomainAdmin.py:139
+#: hiddifypanel/panel/admin/DomainAdmin.py:165
 #: hiddifypanel/panel/admin/DomainAdmin.py:168
 #: hiddifypanel/panel/admin/QuickSetup.py:117
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:109
@@ -506,7 +507,7 @@ msgid "All"
 msgstr "全部"
 
 # | msgid "You have already used this Domain in: "
-#: hiddifypanel/panel/admin/DomainAdmin.py:135
+#: hiddifypanel/panel/admin/DomainAdmin.py:134
 #, fuzzy
 msgid "You have used this domain in: "
 msgstr "您已经在以下领域使用过此域名："
@@ -515,7 +516,7 @@ msgstr "您已经在以下领域使用过此域名："
 # | "Domain IP = %(domain_ip)s is not matched with your IP = %(server_ip)s
 # which "
 # | "is required in Direct Mode"
-#: hiddifypanel/panel/admin/DomainAdmin.py:173
+#: hiddifypanel/panel/admin/DomainAdmin.py:172
 #, python-format
 msgid ""
 "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which "
@@ -525,7 +526,7 @@ msgstr "域 IP=%(domain_ip)s 与您的 ip=%(server_ip)s 不匹配，这在直接
 # | msgid ""
 # | "In CDN Mode, Domain IP =%(domain_ip)s should be different to your IP "
 # | "=%(server_ip)s"
-#: hiddifypanel/panel/admin/DomainAdmin.py:177
+#: hiddifypanel/panel/admin/DomainAdmin.py:175
 #, python-format
 msgid ""
 "In CDN mode, Domain IP=%(domain_ip)s should be different to your "
@@ -738,6 +739,7 @@ msgstr "域名对现实不友好！"
 msgid "REALITY Fallback domain is not compaitble with server names!"
 msgstr "现实回退域与服务器名称不兼容！"
 
+# | msgid "🇺🇳 Others"
 #: hiddifypanel/panel/admin/SettingAdmin.py:173
 #, fuzzy
 msgid "Others"
@@ -1791,18 +1793,19 @@ msgstr ""
 msgid "config.restls1_3_domain.description"
 msgstr ""
 
-# | msgid "Show usage in Sublink"
+# | msgid "Show Usage in Sublink"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.show_usage_in_sublink.label"
 msgstr "在子链接中显示用法"
 
 # | msgid ""
-# | "This option creates a fake config in the user's sub link that shows the "
-# | "user's remaining volume."
+# | "This option creates a Fake Config in the user's sub link that shows the "
+# | "user's remaining volume"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
 msgid "config.show_usage_in_sublink.description"
-msgstr ""
+msgstr "该选项在用户的子链接中创建一个 Fake Config，显示用户的剩余音量"
 
 # | msgid "License  Code"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -2106,7 +2109,7 @@ msgstr "领域"
 msgid "admin.proxy.global_config"
 msgstr "全局配置"
 
-# | msgid "Modifying Proxies"
+# | msgid "✏️ Modifying Proxies"
 #: hiddifypanel/panel/admin/templates/proxy.html:14
 msgid "Edit Proxy Names"
 msgstr "修改代理..."
@@ -2242,6 +2245,7 @@ msgstr ""
 "如果您想减少脏 IP 的可能性，您可以添加多个中继服务器<a href=\"https://github.com/hiddify/hiddify-"
 "config/discussions/129\">阅读更多</a>。"
 
+# | msgid "📣 Send Message to User's Telegram"
 #: hiddifypanel/panel/admin/templates/model/user_list.html:8
 #, fuzzy
 msgid "Send Message to User's Telegram"
@@ -2292,7 +2296,7 @@ msgstr ""
 "用户使用情况将每 6 分钟更新一次。现在要更新它，请点击<a href=\"%(link)s\" class=\"btn btn-"
 "info\">此处</a>。"
 
-# | msgid "Please write your message to send to the Telegram:"
+# | msgid "✏️  Please write your message to send to the Telegram:"
 #: hiddifypanel/panel/admin/templates/model/user_list.html:63
 #, fuzzy
 msgid "Please type your message to send to the telegram:"
@@ -2496,6 +2500,7 @@ msgstr "订阅链接"
 
 #: hiddifypanel/panel/user/templates/home/android.html:2
 #: hiddifypanel/panel/user/templates/home/ios.html:3
+#: hiddifypanel/panel/user/templates/home/windows.html:46
 #, fuzzy
 msgid "Please select one of the following applications:"
 msgstr "请选择以下应用程序之一："
@@ -2732,7 +2737,7 @@ msgstr "将下面的链接复制到您的浏览器中。"
 
 # | msgid "Copy"
 #: hiddifypanel/panel/user/templates/home/doh.html:8
-#: hiddifypanel/templates/master.html:155
+#: hiddifypanel/templates/master.html:160
 msgid "copy"
 msgstr "复制"
 
@@ -2791,7 +2796,7 @@ msgstr ""
 #: hiddifypanel/panel/user/templates/home/multi.html:2
 #: hiddifypanel/panel/user/templates/home/multi.html:10
 #: hiddifypanel/panel/user/templates/home/multi.html:22
-#: hiddifypanel/templates/master.html:67
+#: hiddifypanel/templates/master.html:72
 msgid "user.home.title"
 msgstr "隐藏代理"
 
@@ -3121,6 +3126,7 @@ msgstr "支持页面链接"
 
 #: hiddifypanel/panel/user/templates/home/windows.html:6
 #: hiddifypanel/panel/user/templates/home/windows.html:22
+#: hiddifypanel/panel/user/templates/home/windows.html:37
 msgid "Windows"
 msgstr "视窗"
 
@@ -3133,6 +3139,29 @@ msgstr "苹果系统"
 #: hiddifypanel/panel/user/templates/home/windows.html:28
 msgid "Linux"
 msgstr "Linux"
+
+# | msgid "HiddigyN <span class=\"badge badge-success\">Recommended</span>"
+#: hiddifypanel/panel/user/templates/home/windows.html:50
+msgid "HiddigyN"
+msgstr ""
+
+# | msgid ""
+# | "Please install HiddifyN from %(dl_link)s.\n"
+# | "Then click on the link below. It will do everything automatically."
+#: hiddifypanel/panel/user/templates/home/windows.html:53
+#, fuzzy
+msgid "HiddifyN intro"
+msgstr ""
+"请从 %(dl_link)s 安装 HiddifyN。\n"
+"然后单击下面的链接。它会自动执行所有操作。"
+
+#: hiddifypanel/panel/user/templates/home/windows.html:57
+msgid "Click to Import"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/home/windows.html:63
+msgid "HiddifyClash"
+msgstr ""
 
 # | msgid ""
 # | "First, download and install the Hiddify Desktop software according to
@@ -3163,7 +3192,7 @@ msgstr "Linux"
 # | "Now, according to your need, you can click on one of the buttons. By
 # viewing the window in your browser, just click on the <b>Open</b> option to
 # automatically add the server link to Hiddify Desktop.\n"
-#: hiddifypanel/panel/user/templates/home/windows.html:33
+#: hiddifypanel/panel/user/templates/home/windows.html:65
 msgid "user.home.windows.intro"
 msgstr ""
 "首先，根据您的操作系统下载并安装 HiddifyDesktop 软件。\n"
@@ -3453,49 +3482,49 @@ msgstr ""
 "联系我们。"
 
 # | msgid "Close"
-#: hiddifypanel/templates/macros.html:29 hiddifypanel/templates/master.html:164
+#: hiddifypanel/templates/macros.html:29 hiddifypanel/templates/master.html:169
 msgid "close"
 msgstr "关闭"
 
 # | msgid "Share to Social Media"
-#: hiddifypanel/templates/master.html:146
+#: hiddifypanel/templates/master.html:151
 msgid "user.home.share-title"
 msgstr "分享到社交媒体"
 
 # | msgid "Link for Social Media"
-#: hiddifypanel/templates/master.html:156
+#: hiddifypanel/templates/master.html:161
 msgid "clickable copy"
 msgstr "社交媒体链接"
 
 # | msgid "Open"
-#: hiddifypanel/templates/master.html:157
+#: hiddifypanel/templates/master.html:162
 msgid "open"
 msgstr "打开"
 
 # | msgid "Link Copied to Clipboard. "
-#: hiddifypanel/templates/master.html:233
+#: hiddifypanel/templates/master.html:238
 msgid "user.home.link.success-copy"
 msgstr "链接已复制到剪贴板。"
 
 # | msgid "Copy to Clipboard:  Ctrl+C, Enter"
-#: hiddifypanel/templates/master.html:235
-#: hiddifypanel/templates/master.html:238
+#: hiddifypanel/templates/master.html:240
+#: hiddifypanel/templates/master.html:243
 msgid "user.home.link.manual-copy"
 msgstr "复制到剪贴板：Ctrl+C，回车"
 
-#: hiddifypanel/templates/master.html:291
+#: hiddifypanel/templates/master.html:296
 #, fuzzy
 msgid "Install"
 msgstr "安装"
 
 # | msgid "Hiddify Panel Installation"
-#: hiddifypanel/templates/master.html:371
+#: hiddifypanel/templates/master.html:376
 #, fuzzy
 msgid "Install Hiddify Application"
 msgstr "隐藏面板安装"
 
 # | msgid "Click %(install)s to save the User Page."
-#: hiddifypanel/templates/master.html:373
+#: hiddifypanel/templates/master.html:378
 #, fuzzy, python-format
 msgid "Please click on %(install)s to save the user page."
 msgstr "单击 %(install)s 保存用户页面。"
@@ -3730,6 +3759,7 @@ msgstr "动作"
 #~ msgid "In CDN mode you can only apply one domain or one ip for forced host"
 #~ msgstr ""
 
+# | msgid "⚠️ Can not Connect to Cloudflare."
 #~ msgid "Can not connect to Cloudflare."
 #~ msgstr "无法连接到 Cloudflare。"
 

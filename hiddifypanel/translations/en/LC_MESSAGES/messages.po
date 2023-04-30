@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-26 22:33+0200\n"
-"PO-Revision-Date: 2023-04-26 15:33-0500\n"
+"POT-Creation-Date: 2023-04-30 07:23+0200\n"
+"PO-Revision-Date: 2023-04-30 00:15-0500\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -62,7 +62,8 @@ msgstr " ✅ Configs Have Been Changed Successfully"
 # | "Domain can not be resolved! There is a problem in your domain. Please "
 # | "check your Domain configurations."
 #: hiddifypanel/panel/admin/ChildAdmin.py:108
-#: hiddifypanel/panel/admin/DomainAdmin.py:141
+#: hiddifypanel/panel/admin/DomainAdmin.py:139
+#: hiddifypanel/panel/admin/DomainAdmin.py:165
 #: hiddifypanel/panel/admin/DomainAdmin.py:168
 #: hiddifypanel/panel/admin/QuickSetup.py:117
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:109
@@ -495,14 +496,14 @@ msgid "All"
 msgstr "All"
 
 # | msgid "You have already used this Domain in: "
-#: hiddifypanel/panel/admin/DomainAdmin.py:135
+#: hiddifypanel/panel/admin/DomainAdmin.py:134
 msgid "You have used this domain in: "
 msgstr "You have already used this Domain in: "
 
 # | msgid ""
 # | "Domain IP = %(domain_ip)s is not matched with your IP = %(server_ip)s "
 # | "which is required in Direct Mode"
-#: hiddifypanel/panel/admin/DomainAdmin.py:173
+#: hiddifypanel/panel/admin/DomainAdmin.py:172
 #, python-format
 msgid ""
 "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is "
@@ -514,7 +515,7 @@ msgstr ""
 # | msgid ""
 # | "In CDN Mode, Domain IP =%(domain_ip)s should be different to your IP "
 # | "=%(server_ip)s"
-#: hiddifypanel/panel/admin/DomainAdmin.py:177
+#: hiddifypanel/panel/admin/DomainAdmin.py:175
 #, python-format
 msgid ""
 "In CDN mode, Domain IP=%(domain_ip)s should be different to your "
@@ -733,9 +734,10 @@ msgstr "Domain is not REALITY friendly!"
 msgid "REALITY Fallback domain is not compaitble with server names!"
 msgstr "REALITY Fallback Domain is not compaitble with Server names!"
 
+# | msgid "🇺🇳 Others"
 #: hiddifypanel/panel/admin/SettingAdmin.py:173
 msgid "Others"
-msgstr "Others"
+msgstr "🇺🇳 Others"
 
 # | msgid "✅ Release"
 #: hiddifypanel/panel/admin/SettingAdmin.py:175
@@ -1795,20 +1797,19 @@ msgstr "config.restls1_3_domain.label"
 msgid "config.restls1_3_domain.description"
 msgstr "config.restls1_3_domain.description"
 
-# | msgid "Show usage in Sublink"
+# | msgid "Show Usage in Sublink"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.show_usage_in_sublink.label"
-msgstr "Show usage in Sublink"
+msgstr "Show Usage in Sublink"
 
 # | msgid ""
-# | "This option creates a fake config in the user's sub link that shows the "
-# | "user's remaining volume."
+# | "This option creates a Fake Config in the user's sub link that shows the "
+# | "user's remaining volume"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-#, fuzzy
 msgid "config.show_usage_in_sublink.description"
 msgstr ""
-"This option creates a fake config in the user's sub link that shows the "
-"user's remaining volume."
+"This option creates a Fake Config in the user's sub link that shows the "
+"user's remaining volume"
 
 # | msgid "License  Code"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -2101,10 +2102,10 @@ msgstr "Domain"
 msgid "admin.proxy.global_config"
 msgstr "Global Configs"
 
-# | msgid "Modifying Proxies"
+# | msgid "✏️ Modifying Proxies"
 #: hiddifypanel/panel/admin/templates/proxy.html:14
 msgid "Edit Proxy Names"
-msgstr "Modifying Proxies"
+msgstr "✏️ Modifying Proxies"
 
 # | msgid "Detailed Configs"
 #: hiddifypanel/panel/admin/templates/proxy.html:24
@@ -2239,9 +2240,10 @@ msgstr ""
 "<br>\n"
 "If you have Multiple IPv4 or IPv6 in your Panel you have to add the domain pointed to them as Relay."
 
+# | msgid "📣 Send Message to User's Telegram"
 #: hiddifypanel/panel/admin/templates/model/user_list.html:8
 msgid "Send Message to User's Telegram"
-msgstr "Send Message to User's Telegram"
+msgstr "📣 Send Message to User's Telegram"
 
 #: hiddifypanel/panel/admin/templates/model/user_list.html:10
 msgid "All Users"
@@ -2282,10 +2284,10 @@ msgstr ""
 "User usage will be updated every 1 Minutes. to update it now <a "
 "href=\"%(link)s\" class=\"btn btn-info\">Click Here</a>"
 
-# | msgid "Please write your message to send to the Telegram:"
+# | msgid "✏️  Please write your message to send to the Telegram:"
 #: hiddifypanel/panel/admin/templates/model/user_list.html:63
 msgid "Please type your message to send to the telegram:"
-msgstr "Please write your message to send to the Telegram:"
+msgstr "✏️  Please write your message to send to the Telegram:"
 
 # | msgid "Sending ..."
 #: hiddifypanel/panel/admin/templates/model/user_list.html:70
@@ -2482,6 +2484,7 @@ msgstr "Subscription Link"
 
 #: hiddifypanel/panel/user/templates/home/android.html:2
 #: hiddifypanel/panel/user/templates/home/ios.html:3
+#: hiddifypanel/panel/user/templates/home/windows.html:46
 msgid "Please select one of the following applications:"
 msgstr "Please select one of the following applications:"
 
@@ -2712,7 +2715,7 @@ msgstr "Copy the link bellow into your browser."
 
 # | msgid "Copy"
 #: hiddifypanel/panel/user/templates/home/doh.html:8
-#: hiddifypanel/templates/master.html:155
+#: hiddifypanel/templates/master.html:160
 msgid "copy"
 msgstr "Copy"
 
@@ -2773,7 +2776,7 @@ msgstr ""
 #: hiddifypanel/panel/user/templates/home/multi.html:2
 #: hiddifypanel/panel/user/templates/home/multi.html:10
 #: hiddifypanel/panel/user/templates/home/multi.html:22
-#: hiddifypanel/templates/master.html:67
+#: hiddifypanel/templates/master.html:72
 msgid "user.home.title"
 msgstr "Hiddify"
 
@@ -3110,6 +3113,7 @@ msgstr "Support Page Link"
 
 #: hiddifypanel/panel/user/templates/home/windows.html:6
 #: hiddifypanel/panel/user/templates/home/windows.html:22
+#: hiddifypanel/panel/user/templates/home/windows.html:37
 msgid "Windows"
 msgstr "Windows"
 
@@ -3122,6 +3126,31 @@ msgstr "macOS"
 #: hiddifypanel/panel/user/templates/home/windows.html:28
 msgid "Linux"
 msgstr "Linux"
+
+# | msgid "HiddigyN <span class=\"badge badge-success\">Recommended</span>"
+#: hiddifypanel/panel/user/templates/home/windows.html:50
+#, fuzzy
+msgid "HiddigyN"
+msgstr "HiddigyN <span class=\"badge badge-success\">Recommended</span>"
+
+# | msgid ""
+# | "Please install HiddifyN from %(dl_link)s.\n"
+# | "Then click on the link below. It will do everything automatically."
+#: hiddifypanel/panel/user/templates/home/windows.html:53
+msgid "HiddifyN intro"
+msgstr ""
+"Please install HiddifyN from %(dl_link)s.\n"
+"Then click on the link below. It will do everything automatically."
+
+#: hiddifypanel/panel/user/templates/home/windows.html:57
+#, fuzzy
+msgid "Click to Import"
+msgstr "Click to Import"
+
+#: hiddifypanel/panel/user/templates/home/windows.html:63
+#, fuzzy
+msgid "HiddifyClash"
+msgstr "HiddifyClash"
 
 # | msgid ""
 # | "First, download and install the Hiddify Desktop software according to "
@@ -3153,7 +3182,7 @@ msgstr "Linux"
 # | "viewing the window in your browser, just click on the <b>Open</b> option
 # "
 # | "to automatically add the server link to Hiddify Desktop.\n"
-#: hiddifypanel/panel/user/templates/home/windows.html:33
+#: hiddifypanel/panel/user/templates/home/windows.html:65
 msgid "user.home.windows.intro"
 msgstr ""
 "First, download and install the Hiddify Desktop software according to your operating system.\n"
@@ -3419,47 +3448,47 @@ msgstr ""
 
 # | msgid "Close"
 #: hiddifypanel/templates/macros.html:29
-#: hiddifypanel/templates/master.html:164
+#: hiddifypanel/templates/master.html:169
 msgid "close"
 msgstr "Close"
 
 # | msgid "Share to Social Media"
-#: hiddifypanel/templates/master.html:146
+#: hiddifypanel/templates/master.html:151
 msgid "user.home.share-title"
 msgstr "Share to Social Media"
 
 # | msgid "Link for Social Media"
-#: hiddifypanel/templates/master.html:156
+#: hiddifypanel/templates/master.html:161
 msgid "clickable copy"
 msgstr "Link for Social Media"
 
 # | msgid "Open"
-#: hiddifypanel/templates/master.html:157
+#: hiddifypanel/templates/master.html:162
 msgid "open"
 msgstr "Open"
 
 # | msgid "Link Copied to Clipboard. "
-#: hiddifypanel/templates/master.html:233
+#: hiddifypanel/templates/master.html:238
 msgid "user.home.link.success-copy"
 msgstr "Link Copied to Clipboard. "
 
 # | msgid "Copy to Clipboard:  Ctrl+C, Enter"
-#: hiddifypanel/templates/master.html:235
-#: hiddifypanel/templates/master.html:238
+#: hiddifypanel/templates/master.html:240
+#: hiddifypanel/templates/master.html:243
 msgid "user.home.link.manual-copy"
 msgstr "Copy to Clipboard:  Ctrl+C, Enter"
 
-#: hiddifypanel/templates/master.html:291
+#: hiddifypanel/templates/master.html:296
 msgid "Install"
 msgstr "Install"
 
 # | msgid "Hiddify Panel Installation"
-#: hiddifypanel/templates/master.html:371
+#: hiddifypanel/templates/master.html:376
 msgid "Install Hiddify Application"
 msgstr "Hiddify Panel Installation"
 
 # | msgid "Click %(install)s to save the User Page."
-#: hiddifypanel/templates/master.html:373
+#: hiddifypanel/templates/master.html:378
 #, python-format
 msgid "Please click on %(install)s to save the user page."
 msgstr "Click %(install)s to save the User Page."
@@ -3697,8 +3726,9 @@ msgstr "Actions"
 #~ "In CDN Mode You Can Only Apply One Domain Or One IP For Forced Host. Use "
 #~ "Auto CDN IP Mode Instead"
 
+# | msgid "⚠️ Can not Connect to Cloudflare."
 #~ msgid "Can not connect to Cloudflare."
-#~ msgstr "Can not connect to Cloudflare."
+#~ msgstr "⚠️ Can not Connect to Cloudflare."
 
 #~ msgid "Online"
 #~ msgstr "Online"
