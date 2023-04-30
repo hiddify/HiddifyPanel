@@ -5,6 +5,8 @@
 
 #### New
 
+* Add fragment. 
+
 * Add hiddify ng. 
 
 * Better. 
@@ -20,6 +22,8 @@
 * Color. 
 
 #### Other
+
+* Fix. 
 
 * Update lang. 
 
