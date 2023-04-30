@@ -238,7 +238,7 @@ def to_link(proxy):
     baseurl  += f'&host={proxy["host"]}' if "host" in proxy else ""
     if "grpc" == proxy["transport"]:
         baseurl  += f'&serviceName={proxy["grpc_service_name"]}&mode={proxy["grpc_mode"]}'
-    print(proxy['cdn'],proxy["transport"])
+    # print(proxy['cdn'],proxy["transport"])
     if "ws" == proxy["transport"] and proxy['cdn']:
         baseurl  += f'&fragment=sni'
     if 'vless' == proxy['proto']:
