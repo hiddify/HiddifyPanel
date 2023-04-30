@@ -1,4 +1,5 @@
 from hiddifypanel.models import *
+import sys
 from flask_babelex import gettext as _
 default_ips="""
 mci.ircf.space		MCI
@@ -34,8 +35,9 @@ try:
     ipasn = maxminddb.open_database('GeoLite2-ASN.mmdb') if os.path.exists('GeoLite2-ASN.mmdb') else {}
     ipcountry = maxminddb.open_database('GeoLite2-Country.mmdb') if os.path.exists('GeoLite2-Country.mmdb') else {}
 except Exception as e:
-    print("Error can not load maxminddb")
-
+    print("Error can not load maxminddb", file=sys.stderr)
+    ipasn={}
+    ipcountry={}
 
 asn_map={
     '58224':'MKH',

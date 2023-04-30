@@ -1,5 +1,5 @@
 %if hconfig(ConfigEnum.show_usage_in_sublink)
-trojan://1@{{fake_ip_for_sub_link}}#{{user.current_usage_GB|round(3)}}/{{user.usage_limit_GB}}GB_Remain:{{expire_days}}days 
+trojan://1@{{fake_ip_for_sub_link}}?sni=fake_ip_for_sub_link&security=tls#{{user.current_usage_GB|round(3)}}/{{user.usage_limit_GB}}GB_Remain:{{expire_days}}days 
 %endif
 # Hiddify auto ip: {{ip_debug}}
 %if  user_activate
