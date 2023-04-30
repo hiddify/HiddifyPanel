@@ -5,6 +5,8 @@
 
 #### New
 
+* Add hiddify ng. 
+
 * Better. 
 
 * Add hiddify. 
