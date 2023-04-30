@@ -15,7 +15,17 @@
 
 * Allow cdn and relay to add as only panel domains. 
 
+#### Fix
+
+* Color. 
+
 #### Other
+
+* Update lang. 
+
+* Temporary remove auto ip display. 
+
+* Update lang. 
 
 * Only 10 second to propose domains. 
 
