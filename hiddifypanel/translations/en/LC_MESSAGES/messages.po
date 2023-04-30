@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-30 07:23+0200\n"
-"PO-Revision-Date: 2023-04-30 00:15-0500\n"
+"POT-Creation-Date: 2023-04-30 15:52+0200\n"
+"PO-Revision-Date: 2023-04-30 08:52-0500\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -20,7 +20,7 @@ msgid "This domain does not exist in the panel!"
 msgstr "This Domain does not exist in the Panel !"
 
 # | msgid "Error In Auto CDN IP! It Can Not Be Find, Please Contact Admin"
-#: hiddifypanel/panel/clean_ip.py:94
+#: hiddifypanel/panel/clean_ip.py:96
 msgid "Error! auto cdn ip can not be find, please contact admin."
 msgstr "Error In Auto CDN IP! It Can Not Be Find, Please Contact Admin"
 
@@ -2477,7 +2477,7 @@ msgstr "Except VLess"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:47
 #: hiddifypanel/panel/user/templates/home/all-configs.html:60
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:43
-#: hiddifypanel/panel/user/templates/home/android.html:82
+#: hiddifypanel/panel/user/templates/home/android.html:43
 #: hiddifypanel/panel/user/templates/home/ios.html:29
 msgid "user.home.allconfig.link-configs"
 msgstr "Subscription Link"
@@ -2488,15 +2488,10 @@ msgstr "Subscription Link"
 msgid "Please select one of the following applications:"
 msgstr "Please select one of the following applications:"
 
-# | msgid ""
-# | "Hiddify Android <span class=\"badge badge-success\">Recommended</span>"
-#: hiddifypanel/panel/user/templates/home/android.html:5
-msgid "Hiddify Android"
-msgstr "Hiddify Android <span class=\"badge badge-success\">Recommended</span>"
-
 # | msgid "Direct Download"
-#: hiddifypanel/panel/user/templates/home/android.html:15
-#: hiddifypanel/panel/user/templates/home/android.html:60
+#: hiddifypanel/panel/user/templates/home/android.html:8
+#: hiddifypanel/panel/user/templates/home/android.html:14
+#: hiddifypanel/panel/user/templates/home/android.html:61
 msgid "download"
 msgstr "Direct Download"
 
@@ -2505,6 +2500,60 @@ msgstr "Direct Download"
 #: hiddifypanel/panel/user/templates/home/android.html:68
 msgid "install from google play"
 msgstr "Google Play"
+
+# | msgid "HiddifyNG <span class=\"badge badge-success\">Recommended</span>"
+#: hiddifypanel/panel/user/templates/home/android.html:29
+#, fuzzy
+msgid "HiddifyNG"
+msgstr "HiddifyNG <span class=\"badge badge-success\">Recommended</span>"
+
+# | msgid ""
+# | "Please install HiddifyNG from either of these links: %(dl_link)s or "
+# | "%(play_link)s.\n"
+# | "Then click on the link below and open it in HiddifyNG."
+#: hiddifypanel/panel/user/templates/home/android.html:32
+#, fuzzy
+msgid "HiddifyNG intro"
+msgstr ""
+"Please install HiddifyNG from either of these links: %(dl_link)s or %(play_link)s.\n"
+"Then click on the link below and open it in HiddifyNG."
+
+#: hiddifypanel/panel/user/templates/home/android.html:36
+#: hiddifypanel/panel/user/templates/home/windows.html:57
+#, fuzzy
+msgid "Click to Import"
+msgstr "Click to Import"
+
+# | msgid ""
+# | "Alternative v2rayNG <button class='btn btn-sm btn-default' "
+# | "onclick='show_video(\"android-v2rayng\")'><i class=\"fa-solid fa-"
+# | "question\"></i> </button>\n"
+#: hiddifypanel/panel/user/templates/home/android.html:39
+msgid "V2rayNG"
+msgstr ""
+"Alternative v2rayNG <button class='btn btn-sm btn-default' "
+"onclick='show_video(\"android-v2rayng\")'><i class=\"fa-solid fa-"
+"question\"></i> </button>\n"
+
+# | msgid ""
+# | "Please install v2rayNG from either of these links: %(dl_link)s or "
+# | "%(play_link)s.\n"
+# | "Then copy the link below and paste it in v2rayNG according to the video "
+# | "tutorial <button class='btn btn-sm btn-default' "
+# | "onclick='show_video(\"android-v2rayng\")'><i class=\"fa-solid fa-"
+# | "question\"></i> </button>.\n"
+# | "."
+#: hiddifypanel/panel/user/templates/home/android.html:40
+msgid "V2rayNG intro"
+msgstr ""
+"Please install v2rayNG from either of these links: %(dl_link)s or %(play_link)s.\n"
+"Then copy the link below and paste it in v2rayNG according to the video tutorial <button class='btn btn-sm btn-default' onclick='show_video(\"android-v2rayng\")'><i class=\"fa-solid fa-question\"></i> </button>.\n"
+"."
+
+# | msgid "Hiddify Android "
+#: hiddifypanel/panel/user/templates/home/android.html:51
+msgid "Hiddify Android"
+msgstr "Hiddify Android "
 
 # | msgid ""
 # | "Please install Hiddify Android from %(dl_link)s or %(play_link)s. \n"
@@ -2544,7 +2593,7 @@ msgstr "Google Play"
 # | "        </details>\n"
 # | "    </div>\n"
 # | "</details>\n"
-#: hiddifypanel/panel/user/templates/home/android.html:26
+#: hiddifypanel/panel/user/templates/home/android.html:72
 msgid "user.home.android.intro"
 msgstr ""
 "Please install Hiddify Android from %(dl_link)s or %(play_link)s. \n"
@@ -2584,32 +2633,6 @@ msgstr ""
 "        </details>\n"
 "    </div>\n"
 "</details>\n"
-
-# | msgid ""
-# | "v2rayNG <button class='btn btn-sm btn-default' "
-# | "onclick='show_video(\"android-v2rayng\")'><i class=\"fa-solid fa-"
-# | "question\"></i> </button>\n"
-#: hiddifypanel/panel/user/templates/home/android.html:75
-msgid "V2rayNG"
-msgstr ""
-"v2rayNG <button class='btn btn-sm btn-default' "
-"onclick='show_video(\"android-v2rayng\")'><i class=\"fa-solid fa-"
-"question\"></i> </button>\n"
-
-# | msgid ""
-# | "Please install v2rayNG from either of these links: %(dl_link)s or "
-# | "%(play_link)s.\n"
-# | "Then copy the link below and paste it in v2rayNG according to the video "
-# | "tutorial <button class='btn btn-sm btn-default' "
-# | "onclick='show_video(\"android-v2rayng\")'><i class=\"fa-solid fa-"
-# | "question\"></i> </button>.\n"
-# | "."
-#: hiddifypanel/panel/user/templates/home/android.html:78
-msgid "V2rayNG intro"
-msgstr ""
-"Please install v2rayNG from either of these links: %(dl_link)s or %(play_link)s.\n"
-"Then copy the link below and paste it in v2rayNG according to the video tutorial <button class='btn btn-sm btn-default' onclick='show_video(\"android-v2rayng\")'><i class=\"fa-solid fa-question\"></i> </button>.\n"
-"."
 
 # | msgid "Test"
 #: hiddifypanel/panel/user/templates/home/base2.html:36
@@ -3141,11 +3164,6 @@ msgid "HiddifyN intro"
 msgstr ""
 "Please install HiddifyN from %(dl_link)s.\n"
 "Then click on the link below. It will do everything automatically."
-
-#: hiddifypanel/panel/user/templates/home/windows.html:57
-#, fuzzy
-msgid "Click to Import"
-msgstr "Click to Import"
 
 #: hiddifypanel/panel/user/templates/home/windows.html:63
 #, fuzzy

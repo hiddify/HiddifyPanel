@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-30 07:23+0200\n"
-"PO-Revision-Date: 2023-04-30 00:15-0500\n"
+"POT-Creation-Date: 2023-04-30 15:52+0200\n"
+"PO-Revision-Date: 2023-04-30 08:52-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -22,7 +22,7 @@ msgstr "该域名在面板中不存在！"
 
 # | msgid ""
 # | "Error In Auto CDN IP! It Can Not Be Find, Please Contact Admin"
-#: hiddifypanel/panel/clean_ip.py:94
+#: hiddifypanel/panel/clean_ip.py:96
 #, fuzzy
 msgid "Error! auto cdn ip can not be find, please contact admin."
 msgstr "自动 CDN IP 错误！找不到，请联系管理员。"
@@ -2493,7 +2493,7 @@ msgstr "除了 vless"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:47
 #: hiddifypanel/panel/user/templates/home/all-configs.html:60
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:43
-#: hiddifypanel/panel/user/templates/home/android.html:82
+#: hiddifypanel/panel/user/templates/home/android.html:43
 #: hiddifypanel/panel/user/templates/home/ios.html:29
 msgid "user.home.allconfig.link-configs"
 msgstr "订阅链接"
@@ -2505,16 +2505,10 @@ msgstr "订阅链接"
 msgid "Please select one of the following applications:"
 msgstr "请选择以下应用程序之一："
 
-# | msgid ""
-# | "Hiddify Android <span class=\"badge badge-success\">Recommended</span>"
-#: hiddifypanel/panel/user/templates/home/android.html:5
-#, fuzzy
-msgid "Hiddify Android"
-msgstr "隐藏 Android <span class=\"badge badge-success\">推荐</span>"
-
 # | msgid "Direct Download"
-#: hiddifypanel/panel/user/templates/home/android.html:15
-#: hiddifypanel/panel/user/templates/home/android.html:60
+#: hiddifypanel/panel/user/templates/home/android.html:8
+#: hiddifypanel/panel/user/templates/home/android.html:14
+#: hiddifypanel/panel/user/templates/home/android.html:61
 msgid "download"
 msgstr "直接下载"
 
@@ -2523,6 +2517,54 @@ msgstr "直接下载"
 #: hiddifypanel/panel/user/templates/home/android.html:68
 msgid "install from google play"
 msgstr "谷歌播放"
+
+# | msgid "HiddifyNG <span class=\"badge badge-success\">Recommended</span>"
+#: hiddifypanel/panel/user/templates/home/android.html:29
+msgid "HiddifyNG"
+msgstr ""
+
+# | msgid ""
+# | "Please install HiddifyNG from either of these links: %(dl_link)s or
+# %(play_link)s.\n"
+# | "Then click on the link below and open it in HiddifyNG."
+#: hiddifypanel/panel/user/templates/home/android.html:32
+msgid "HiddifyNG intro"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/home/android.html:36
+#: hiddifypanel/panel/user/templates/home/windows.html:57
+msgid "Click to Import"
+msgstr ""
+
+# | msgid ""
+# | "Alternative v2rayNG <button class='btn btn-sm btn-default' "
+# | "onclick='show_video(\"android-v2rayng\")'><i class=\"fa-solid fa-"
+# | "question\"></i> </button>\n"
+#: hiddifypanel/panel/user/templates/home/android.html:39
+#, fuzzy
+msgid "V2rayNG"
+msgstr "V2rayNG"
+
+# | msgid ""
+# | "Please install v2rayNG from either of these links: %(dl_link)s or
+# %(play_link)s.\n"
+# | "Then copy the link below and paste it in v2rayNG according to the video
+# tutorial <button class='btn btn-sm btn-default'
+# onclick='show_video(\"android-v2rayng\")'><i class=\"fa-solid
+# fa-question\"></i> </button>.\n"
+# | "."
+#: hiddifypanel/panel/user/templates/home/android.html:40
+#, fuzzy
+msgid "V2rayNG intro"
+msgstr ""
+"请从以下任一链接安装 V2rayNG：%(dl_link)s 或 %(play_link)s。\n"
+"然后复制下面的链接，按照视频教程粘贴到V2rayNG中。"
+
+# | msgid "Hiddify Android "
+#: hiddifypanel/panel/user/templates/home/android.html:51
+#, fuzzy
+msgid "Hiddify Android"
+msgstr "隐藏 Android <span class=\"badge badge-success\">推荐</span>"
 
 # | msgid ""
 # | "Please install Hiddify Android from %(dl_link)s or %(play_link)s. \n"
@@ -2561,7 +2603,7 @@ msgstr "谷歌播放"
 # | "        </details>\n"
 # | "    </div>\n"
 # | "</details>\n"
-#: hiddifypanel/panel/user/templates/home/android.html:26
+#: hiddifypanel/panel/user/templates/home/android.html:72
 msgid "user.home.android.intro"
 msgstr ""
 "请从 %(dl_link)s 或 %(play_link)s 安装 HiddifyAndroid。\n"
@@ -2608,30 +2650,6 @@ msgstr ""
 "        </详情>\n"
 "    </div>\n"
 "</div>"
-
-# | msgid ""
-# | "v2rayNG <button class='btn btn-sm btn-default' "
-# | "onclick='show_video(\"android-v2rayng\")'><i class=\"fa-solid fa-"
-# | "question\"></i> </button>\n"
-#: hiddifypanel/panel/user/templates/home/android.html:75
-#, fuzzy
-msgid "V2rayNG"
-msgstr "V2rayNG"
-
-# | msgid ""
-# | "Please install v2rayNG from either of these links: %(dl_link)s or
-# %(play_link)s.\n"
-# | "Then copy the link below and paste it in v2rayNG according to the video
-# tutorial <button class='btn btn-sm btn-default'
-# onclick='show_video(\"android-v2rayng\")'><i class=\"fa-solid
-# fa-question\"></i> </button>.\n"
-# | "."
-#: hiddifypanel/panel/user/templates/home/android.html:78
-#, fuzzy
-msgid "V2rayNG intro"
-msgstr ""
-"请从以下任一链接安装 V2rayNG：%(dl_link)s 或 %(play_link)s。\n"
-"然后复制下面的链接，按照视频教程粘贴到V2rayNG中。"
 
 # | msgid "Test"
 #: hiddifypanel/panel/user/templates/home/base2.html:36
@@ -3154,10 +3172,6 @@ msgid "HiddifyN intro"
 msgstr ""
 "请从 %(dl_link)s 安装 HiddifyN。\n"
 "然后单击下面的链接。它会自动执行所有操作。"
-
-#: hiddifypanel/panel/user/templates/home/windows.html:57
-msgid "Click to Import"
-msgstr ""
 
 #: hiddifypanel/panel/user/templates/home/windows.html:63
 msgid "HiddifyClash"

@@ -1,5 +1,51 @@
 <div class="col">
 {{_("Please select one of the following applications:")}}
+
+
+{% macro hiddifyng_android_dl() -%}
+<div class="btn-group">
+    <a href="/{{hconfigs[ConfigEnum.proxy_path]}}/gh/Hiddify/HiddifyAndroidNG/releases/latest/download/HiddifyNG.apk"
+        class="btn btn-primary orig-link">{{_('download')}}</a>
+</div>
+{%- endmacro -%}
+{% macro v2rayng_android_dl() -%}
+<div class="btn-group">
+    <a href="/{{hconfigs[ConfigEnum.proxy_path]}}/gh/2dust/v2rayNG/releases/latest/download/v2rayNG_1.8.3.apk"
+        class="btn btn-primary orig-link">{{_('download')}}</a>
+</div>
+{%- endmacro -%}
+
+{% macro hiddifyng_android_google_play() -%}
+%if False
+ <div class="btn-group">
+    <a href="https://play.google.com/store/apps/details?id=ang.hiddify.com"
+        class="btn btn-primary orig-link">{{_('install from google play')}}</a>
+</div> 
+
+%endif
+{%- endmacro -%}
+<details  data-widget="collapse">
+    <summary class="callout callout-success">
+    {{_("HiddifyNG")}}
+    </summary>
+
+    {{_('HiddifyNG intro',dl_link=hiddifyng_android_dl(),play_link=hiddifyng_android_google_play())}}
+
+    <div class="btn-group">
+        <a href="hiddify://install-sub?url=https%3A%2F%2F{{domain}}%2F{{hconfigs[ConfigEnum.proxy_path]}}%2F{{user.uuid}}%2Fall.txt%3Fname%3D{{(db_domain.alias or db_domain.domain|urlencode)}}-{{asn}}%26asn%3D{{asn}}%26mode%3D{{mode}}"
+          class="btn btn-light orig-link"> {{_('Click to Import')}} </a>
+      </div>
+      <details>
+        <summary>{{_("V2rayNG")}}</summary>
+        {{_('V2rayNG intro',dl_link=v2rayng_android_dl(),play_link="")}}
+        <div class="btn-group">
+            <a href="https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/all.txt?name={{db_domain.alias or db_domain.domain}}-{{asn}}&asn={{asn}}&mode={{mode}}"
+              class="btn btn-light orig-link"> {{_('user.home.allconfig.link-configs')}} </a>
+          </div>
+      </details>
+</details>
+
+
 <details  data-widget="collapse">
     <summary class="callout callout-success">
     {{_("Hiddify Android")}}
@@ -52,34 +98,4 @@
                         </figure> -->
 
 </details>                        
-
-
-{% macro v2rayng_android_dl() -%}
-<div class="btn-group">
-    <a href="/{{hconfigs[ConfigEnum.proxy_path]}}/gh/2dust/v2rayNG/releases/download/1.8.3/v2rayNG_1.8.3.apk"
-        class="btn btn-primary orig-link">{{_('download')}}</a>
-</div>
-{%- endmacro -%}
-
-{% macro v2rayng_android_google_play() -%}
-%if False
- <div class="btn-group">
-    <a href="https://play.google.com/store/apps/details?id=com.v2ray.ang"
-        class="btn btn-primary orig-link">{{_('install from google play')}}</a>
-</div> 
-
-%endif
-{%- endmacro -%}
-<details  data-widget="collapse">
-    <summary class="callout callout-success">
-    {{_("V2rayNG")}}
-    </summary>
-
-    {{_('V2rayNG intro',dl_link=v2rayng_android_dl(),play_link=v2rayng_android_google_play())}}
-
-    <div class="btn-group">
-        <a href="https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/all.txt?name={{db_domain.alias or db_domain.domain}}-{{asn}}&asn={{asn}}&mode={{mode}}"
-          class="btn btn-light orig-link"> {{_('user.home.allconfig.link-configs')}} </a>
-      </div>
-</details>
 </div>
