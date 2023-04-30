@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-30 15:52+0200\n"
-"PO-Revision-Date: 2023-04-30 08:52-0500\n"
+"POT-Creation-Date: 2023-04-30 17:28+0200\n"
+"PO-Revision-Date: 2023-04-30 10:27-0500\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -590,12 +590,19 @@ msgstr "زبان پنل مدیریت"
 msgid "lang.en"
 msgstr "English 🇺🇸 انگلیسی 英语"
 
-# | msgid "🇮🇷 Persian فارسی 波斯语"
+# | msgid ""
+# | "<img src=\"https://user-"
+# |
+# "images.githubusercontent.com/125398461/234186932-52f1fa82-52c6-417f-8b37-08fe9250a55f.png\">"
+# | " Persian فارسی 波斯语"
 #: hiddifypanel/panel/admin/QuickSetup.py:77
 #: hiddifypanel/panel/admin/SettingAdmin.py:171
 #: hiddifypanel/panel/commercial/CommercialSettings.py:150
 msgid "lang.fa"
-msgstr "Persian 🇮🇷 فارسی 波斯语"
+msgstr ""
+"Persian <img src=\"https://user-"
+"images.githubusercontent.com/125398461/234186932-52f1fa82-52c6-417f-"
+"8b37-08fe9250a55f.png\">  فارسی 波斯语"
 
 # | msgid "🇨🇳 Chinese چینی 中国人"
 #: hiddifypanel/panel/admin/QuickSetup.py:77
@@ -616,12 +623,19 @@ msgstr "در این قسمت می‌توانید زبان پنل مدیریت ر
 msgid "config.country.label"
 msgstr "کشور"
 
-# | msgid "🇮🇷 Iran"
+# | msgid ""
+# | "<img src=\"https://user-"
+# |
+# "images.githubusercontent.com/125398461/234186932-52f1fa82-52c6-417f-8b37-08fe9250a55f.png\">"
+# | " Iran"
 #: hiddifypanel/panel/admin/QuickSetup.py:79
 #: hiddifypanel/panel/admin/SettingAdmin.py:173
 #: hiddifypanel/panel/commercial/CommercialSettings.py:152
 msgid "Iran"
-msgstr "🇮🇷 ایران"
+msgstr ""
+"<img src=\"https://user-"
+"images.githubusercontent.com/125398461/234186932-52f1fa82-52c6-417f-"
+"8b37-08fe9250a55f.png\"> ایران"
 
 # | msgid "🇨🇳 China"
 #: hiddifypanel/panel/admin/QuickSetup.py:79
@@ -2638,7 +2652,7 @@ msgstr ""
 # | msgid "Hiddify Android "
 #: hiddifypanel/panel/user/templates/home/android.html:51
 msgid "Hiddify Android"
-msgstr "هیدیفای اندروید <span class=\"badge badge-success\">پیشنهادی</span>"
+msgstr "هیدیفای کلش"
 
 # | msgid ""
 # | "Please install Hiddify Android from %(dl_link)s or %(play_link)s. \n"
@@ -3044,12 +3058,12 @@ msgstr ""
 # | "        <a
 # href=\"https://apps.apple.com/us/app/stash-rule-based-proxy/id1596063349\"
 # target=\"_blank\" class=\"btn btn-success orig-link\">Download Stash</a>\n"
+# | "        </div>\n"
 # | "        <a
 # href=\"https://apps.apple.com/us/app/shadowrocket/id932747118\"
 # target=\"_blank\" class=\"btn btn-primary orig-link\">Download
 # Shadowrocket</a> \n"
-# | "        </div>\n"
-# | "<br>"
+# | "        </div><br>"
 #: copy.html:17 hiddifypanel/panel/user/templates/home/ios
 #: hiddifypanel/panel/user/templates/home/ios.html:10
 msgid "user.home.ios.stash.intro"
@@ -3061,6 +3075,8 @@ msgstr ""
 "        <a href=\"https://apps.apple.com/us/app/stash-rule-based-"
 "proxy/id1596063349\" target=\"_blank\" class=\"btn btn-success orig-"
 "link\">دانلود Stash</a>\n"
+"        </div>\n"
+"  <div class=\"btn-group\">\n"
 "        <a "
 "href=\"https://apps.apple.com/us/app/shadowrocket/id932747118\" "
 "target=\"_blank\" class=\"btn btn-primary orig-link\">دانلود "
@@ -3084,7 +3100,8 @@ msgstr "برنامه Wings X و  Fair VPN"
 # | "\t<a href=\"https://apps.apple.com/us/app/fair-vpn/id1533873488\"\n"
 # | "        class=\"btn btn-primary orig-link\">Fair VPN</a>\n"
 # | "<br />\n"
-# | "Then apply the following configs:"
+# | "Then apply the following configs:\n"
+# | "<br />"
 #: hiddifypanel/panel/user/templates/home/ios.html:25
 msgid "user.home.ios.others.intro"
 msgstr ""
@@ -3105,7 +3122,8 @@ msgstr ""
 "</div>\n"
 "\n"
 "<br />\n"
-"سپس کانفیگ‌ زیر را در برنامه اعمال کنید:"
+"سپس کانفیگ‌ زیر را در برنامه اعمال کنید:\n"
+"<br />"
 
 # | msgid "Connect Your Account to Telegram"
 #: hiddifypanel/panel/user/templates/home/multi.html:320

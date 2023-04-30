@@ -168,7 +168,7 @@ def get_config_form():
             if c.key in bool_types:
                 field= SwitchField(_(f'config.{c.key}.label'), default=c.value,description=_(f'config.{c.key}.description')) 
             elif c.key==ConfigEnum.lang or c.key==ConfigEnum.admin_lang:
-                field=wtf.fields.SelectField(_(f"config.{c.key}.label"),choices=[("en",_("lang.en")),("fa",_("lang.fa")),("zh",_("lang.zh"))],description=_(f"config.{c.key}.description"),default=hconfig(c.key))
+                field=wtf.fields.SelectField(_(f"config.{c.key}.label"),choices=[("en",_("lang.en")),("fa",Markup(_("lang.fa"))),("zh",_("lang.zh"))],description=_(f"config.{c.key}.description"),default=hconfig(c.key))
             elif c.key==ConfigEnum.country :
                 field=wtf.fields.SelectField(_(f"config.{c.key}.label"),choices=[("ir",_("Iran")),("zh",_("China")),("other",_("Others"))],description=_(f"config.{c.key}.description"),default=hconfig(c.key))                
             elif c.key==ConfigEnum.package_mode:

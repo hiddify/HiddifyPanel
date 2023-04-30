@@ -25,7 +25,7 @@
 
 {% macro info_box(id,icon,title,number,percentage,description,coloring=False,color_class='secondary') -%}
 <div class="col-md-4  col-sm-6">
-    <div id={{id}} class="info-box bg-gradient-{{color_class}} {{ ("bg-gradient-"+ ("danger" if percentage>90 else ("warning" if percentage>75 else ""))) if coloring else ""}} {%if "disk"==id %} d-none d-md-flex {%endif%}">
+    <a id={{id}} class="info-box {{color_class}} {{ ("bg-gradient-"+ ("danger" if percentage>90 else ("warning" if percentage>75 else ""))) if coloring else ""}} {%if "disk"==id %} d-none d-md-flex {%endif%}">
         <span class="info-box-icon"><i class="{{icon}}"></i></span>
         <div class="info-box-content">
             <span class="info-box-text htitle">{{title}}</span>
@@ -41,7 +41,7 @@
             </span>
         </div>
 
-    </div>
+    </a>
 </div>
 {%- endmacro -%}
 
@@ -75,25 +75,25 @@
             ((usage_history['today']['usage']/1024**3)|round(1)) ~ " GB", 
             usage_history['today']['online']/((1,total_users)|max)*100, 
             _("Online Users") ~": "~ usage_history['today']['online'] ~ " / "~ total_users,
-            color_class="orange"
+            color_class="bg-h-purple"
     )}}
     {{info_box("yesterday","fa-solid fa-calendar-day", _("Yesterday Usage"), 
             ((usage_history['yesterday']['usage']/1024**3)|round(1)) ~ " GB", 
             usage_history['yesterday']['online']/((1,total_users)|max)*100, 
             _("Online Users") ~": "~ usage_history['yesterday']['online'] ~ " / "~ total_users,
-            color_class="maroon"
+            color_class="bg-h-blue"
     )}}
     {{info_box("last_30_days","fa-solid fa-calendar-days", _("Month Usage"), 
             ((usage_history['last_30_days']['usage']/1024**3)|round(1)) ~ " GB", 
             usage_history['last_30_days']['online']/((1,total_users)|max)*100, 
             _("Online Users") ~": "~ usage_history['last_30_days']['online'] ~ " / "~ total_users,
-            color_class="olive"
+            color_class="bg-h-green"
     )}}
     {{info_box("total","fa-solid fa-chart-pie", _("Total Usage"), 
             ((usage_history['total']['usage']/1024**3)|round(1)) ~ " GB", 
             usage_history['total']['online']/((1,total_users)|max)*100, 
             _("Online Users") ~": "~ usage_history['total']['online'] ~ " / "~ total_users,
-            color_class="navy"
+            color_class="bg-h-orange"
     )}}
     
     
@@ -106,13 +106,13 @@
          onlines ~ " / "~ total_users, 
          onlines/((1,total_users)|max)*100, 
          _('In 5 minutes'),
-         color_class="lightblue"
+         color_class="bg-h-turquoise"
     )}}
     {{info_box("network","fa-solid fa-network-wired", _("Network"), 
     ('<i class="fa-solid fa-arrow-up  text-orange"></i> <i class="fa-solid fa-spinner loading-icon"></i> <small>Mb/s</small>  &nbsp;&nbsp;<i class="fa-solid fa-arrow-down text-lime"></i> <i class="fa-solid fa-spinner loading-icon"></i> <small>Mb/s</small>')|safe,
         0, 
         (stats['system']['net_sent_cumulative_GB']|round(1)) ~ "GB " ~_("From Last Restart"),
-        color_class="info"
+        color_class="bg-h-red"
 )}}
 
     {{info_box("cpu","fa-solid fa-microchip", _("CPU"), 
@@ -122,7 +122,7 @@
             ('<i class="fa-solid fa-gauge"></i> '|safe) ~  stats['top5']['cpu'][1][0] ~ " &rlm;"|safe ~ ((stats['top5']['cpu'][1][1])|int) ~ "% &rlm;"|safe~
             ('<i class="fa-solid fa-gauge"></i> '|safe) ~  stats['top5']['cpu'][2][0] ~ " &rlm;"|safe ~ ((stats['top5']['cpu'][2][1])|int) ~ "%",
             coloring=True,
-            color_class="teal"
+            color_class="bg-h-grey"
     )}}
     {{info_box("ram","fa-solid fa-memory", _("RAM"), 
             (stats['system']['ram_used']|round(1)) ~ " / " ~ (stats['system']['ram_total']|round(1)) ~ "GB (" ~((stats['system']['ram_used']*100/stats['system']['ram_total'])|int)~" %)", 
@@ -131,7 +131,7 @@
             ('<i class="fa-solid fa-gauge"></i> '|safe) ~  stats['top5']['memory'][1][0] ~ " &rlm;"|safe ~ ((stats['top5']['memory'][1][1]*100/stats['system']['ram_total'])|int) ~ "% &rlm;"|safe~
             ('<i class="fa-solid fa-gauge"></i> '|safe) ~  stats['top5']['memory'][2][0] ~ " &rlm;"|safe ~ ((stats['top5']['memory'][2][1]*100/stats['system']['ram_total'])|int) ~ "% ",
             coloring=True,
-            color_class="purple"
+            color_class="bg-h-pink"
     )}}
     {#info_box("connections","fa-solid fa-signal", _("Connections/IP"), 
             stats['system']['total_unique_ips'] ~ " / " ~ stats['system']['total_connections'], 
@@ -143,7 +143,7 @@
         stats['system']['disk_used']*100/stats['system']['disk_total'], 
         _("Hiddify") ~ ": " ~ (stats['system']['hiddify_used']|round(1)) ~ "GB",
         coloring=True,
-        color_class='secondary'
+        color_class='bg-h-sky'
     )}}
     
     </div>

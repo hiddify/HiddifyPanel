@@ -1,7 +1,7 @@
 <div class="card-deck">
-    % set bg_color="red" if user.mode=='disable' or expire_days<7 or (user.usage_limit_GB*0.8 < user.current_usage_GB) else "sky"
-
-        <div class="card small-box bg-danger h-{{bg_color}}-bg ">
+    % set bg_color="red" if not user.is_active or expire_days<3 or (user.usage_limit_GB*0.8 < user.current_usage_GB) else "blue"
+        
+        <div class="card small-box bg-danger bg-h-{{bg_color}}">
             <div class="card-body">
             <div class="inner">
                 <h3>{{_('user.home.usage.title')}}</h3>
@@ -50,7 +50,7 @@
         </div>
 
         % if hconfig(ConfigEnum.branding_site) 
-        <div  class="card small-box bg-green bg-gradient-green">
+        <div  class="card small-box bg-green bg-gradient-green bg-h-green">
             <div class="card-body">
             <div class="inner">
                 <h3>{{hconfig(ConfigEnum.branding_title) or _('user.home.branding.title')}}</h3>
@@ -68,7 +68,7 @@
         </div>
         %endif
 
-        <div  class="card small-box bg-warning h-orange-bg  d-none d-sm-flex">
+        <div  class="card small-box bg-warning bg-h-orange  d-none d-sm-flex">
             <div class="card-body">
             <div class="inner">
                 <h3>{{_('QR code')}}</h3>
