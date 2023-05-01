@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-01 17:34+0200\n"
-"PO-Revision-Date: 2023-04-30 15:11-0500\n"
+"POT-Creation-Date: 2023-05-01 18:00+0200\n"
+"PO-Revision-Date: 2023-05-01 10:59-0500\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -756,11 +756,11 @@ msgstr "✅ Release"
 msgid "Develop"
 msgstr "⚠️ Develop"
 
-# | msgid "✅ Python : Low Performance"
+# | msgid "✅ <b>Python :</b> Low Performance"
 #: hiddifypanel/panel/admin/SettingAdmin.py:181
 #: hiddifypanel/panel/commercial/CommercialSettings.py:160
 msgid "lib.telegram.python"
-msgstr "✅ Python : Low Performance"
+msgstr "✅ <b>Python :</b> Low Performance"
 
 # | msgid "✅ Go: High Performance - No ad Support"
 #: hiddifypanel/panel/admin/SettingAdmin.py:181
@@ -3318,11 +3318,10 @@ msgstr "Help"
 msgid "admin.menu.telegram"
 msgstr "Telegram"
 
-# | msgid "🎁 Donation"
 #: hiddifypanel/templates/admin-layout.html:125
 #: hiddifypanel/templates/donation.html:5
 msgid "Donation"
-msgstr "🎁 Donation"
+msgstr "Donation"
 
 # | msgid "Status"
 #: hiddifypanel/templates/admin-layout.html:149
