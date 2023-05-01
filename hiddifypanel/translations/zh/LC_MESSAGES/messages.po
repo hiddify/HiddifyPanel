@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-30 19:43+0200\n"
-"PO-Revision-Date: 2023-04-30 12:38-0500\n"
+"POT-Creation-Date: 2023-05-01 17:34+0200\n"
+"PO-Revision-Date: 2023-04-30 15:11-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -137,13 +137,14 @@ msgid ""
 " During this time, please save your proxy links which are:"
 msgstr "成功！ 请等待大约 4 分钟，以确保所有内容都已更新。 在此期间，请保存您的代理链接:"
 
-# | msgid "See the log in the bellow screen"
+# | msgid "📑 See the log in the bellow screen"
 #: hiddifypanel/panel/admin/Actions.py:154
 msgid "see the log in the bellow screen"
 msgstr "请参阅以下屏幕中的日志："
 
 # | msgid ""
-# | "Success! Please Wait around 5 minutes to make sure everything is updated"
+# | "✔️ Success! Please Wait around 5 minutes to make sure everything is
+# updated"
 #: hiddifypanel/panel/admin/Actions.py:183
 msgid "Success! Please wait around 5 minutes to make sure everything is updated."
 msgstr "成功！ 请等待大约 5 分钟，以确保所有内容都已更新。"
@@ -172,7 +173,7 @@ msgstr "名称"
 msgid "Mode"
 msgstr "模式"
 
-# | msgid "🔐 UUID"
+# | msgid "UUID"
 #: hiddifypanel/panel/admin/AdminstratorAdmin.py:60
 #: hiddifypanel/panel/admin/UserAdmin.py:74
 msgid "user.UUID"
@@ -247,6 +248,7 @@ msgstr "恢复文件："
 msgid "Restore File Description"
 msgstr "选择下载的还原文件。"
 
+# | msgid "⚙️ Restore Settings"
 #: hiddifypanel/panel/admin/Backup.py:76
 #, fuzzy
 msgid "Restore Settings"
@@ -258,6 +260,7 @@ msgstr "恢复设置"
 msgid "Restore Settings description"
 msgstr "恢复设置说明"
 
+# | msgid "👥 Restore Users"
 #: hiddifypanel/panel/admin/Backup.py:77
 msgid "Restore Users"
 msgstr "恢复用户"
@@ -267,6 +270,7 @@ msgstr "恢复用户"
 msgid "Restore Users description"
 msgstr "选择此选项以恢复所有用户。"
 
+# | msgid "🌏 Restore Domain"
 #: hiddifypanel/panel/admin/Backup.py:78
 msgid "Restore Domain"
 msgstr "还原域"
@@ -984,19 +988,18 @@ msgid ""
 "%(total)s users"
 msgstr "你的用户太多了！您只能有 %(active)s 个活跃用户和 %(total)s 个用户"
 
-# | msgid "💾 Backup"
 #: hiddifypanel/panel/admin/templates/backup.html:9
 #: hiddifypanel/templates/admin-layout.html:176
 msgid "Backup"
 msgstr "备份"
 
 # | msgid ""
-# | "⚠️Hiddify Panel automatically takes a Backup every 6 Hours. The path of
+# | "🔄 Hiddify Panel automatically takes a Backup every 6 Hours. The path of
 # the Backup files on the server:\n"
 # | "<br>\n"
 # | "/opt/hiddify-config/hiddify-panel/backup\n"
-# | "You can download a JSON file format of the configurations by clicking on
-# the button below\n"
+# | "⚠️ You can download a JSON file format of the configurations by clicking
+# on the button below\n"
 # | "<a href='%(link)s' class='btn btn-primary'>Download Backup File</a>"
 #: hiddifypanel/panel/admin/templates/backup.html:14
 #, python-format
@@ -1005,6 +1008,7 @@ msgid ""
 "href='%(link)s' class='btn btn-primary'>here</a>"
 msgstr "您可以通过单击以下按钮下载配置的 json 格式："
 
+# | msgid "♻️ Restore"
 #: hiddifypanel/panel/admin/templates/backup.html:21
 msgid "Restore"
 msgstr "恢复"
@@ -1704,7 +1708,7 @@ msgstr "非常高级的设置"
 msgid "config.too_advanced.description"
 msgstr "指定代理路径。如果您使用 HTTP 和 VMESS，这一点尤其重要。"
 
-# | msgid "Short IDs"
+# | msgid "🆔 Short IDs"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.reality_short_ids.label"
@@ -1716,7 +1720,7 @@ msgstr "短 ID"
 msgid "config.reality_short_ids.description"
 msgstr "不要改变它"
 
-# | msgid "Private Key"
+# | msgid "🔑 Private Key"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.reality_private_key.label"
@@ -1728,7 +1732,7 @@ msgstr "私钥"
 msgid "config.reality_private_key.description"
 msgstr "不要改变它"
 
-# | msgid "Public Key"
+# | msgid "🔑 Public Key"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.reality_public_key.label"
@@ -1740,7 +1744,7 @@ msgstr "公钥"
 msgid "config.reality_public_key.description"
 msgstr "不要改变它"
 
-# | msgid "Fallback Domain"
+# | msgid "🌍 Fallback Domain"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.reality_fallback_domain.label"
@@ -1755,7 +1759,7 @@ msgstr "回退域"
 msgid "config.reality_fallback_domain.description"
 msgstr "GTW访问服务器名中的网站时，会重定向到该域名"
 
-# | msgid "Server Names"
+# | msgid "🌎 Server Names"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.reality_server_names.label"
@@ -2206,7 +2210,7 @@ msgstr "请稍等"
 msgid "seconds"
 msgstr ""
 
-# | msgid "Log"
+# | msgid "📄 Log"
 #: hiddifypanel/panel/admin/templates/result.html:39
 msgid "log"
 msgstr "日志"
@@ -3327,6 +3331,7 @@ msgstr "支持"
 msgid "admin.menu.telegram"
 msgstr "电报"
 
+# | msgid "🎁 Donation"
 #: hiddifypanel/templates/admin-layout.html:125
 #: hiddifypanel/templates/donation.html:5
 msgid "Donation"
@@ -3391,13 +3396,13 @@ msgid "Are you sure you want to do this action?"
 msgstr "您确定要执行此操作吗？"
 
 # | msgid ""
-# | "We need your help In Developing this Project\n"
+# | "✳️ We need your help In Developing this Project\n"
 # | "<br>\n"
 # | "If you are developer or content producer, please contact us at <a
 # href=\"mailto:hiddify@gmail.com\">hiddify@gmail.com</a>\n"
 # | "<br><br>\n"
 # | "\n"
-# | "Also, we need financial help to further develop this panel and our
+# | "ℹ️ Also, we need financial help to further develop this panel and our
 # service (we are non-profit).\n"
 # | "<h5>Other Payment Methods</h5>\n"
 # | "<ul>\n"
@@ -3438,10 +3443,10 @@ msgstr "您确定要执行此操作吗？"
 # class=\"btn btn-info share-link\">Dogecoin</a> </div></li>\n"
 # | "</ul>\n"
 # | "We need also other help:\n"
-# | "<li>Share Hiddify Panel with Others</li>\n"
-# | "<li>Python Developer</li>\n"
-# | "<li>Kotlin Developer</li>\n"
-# | "<li>Content Providers</li>\n"
+# | "<li>👥 Share Hiddify Panel with Others</li>\n"
+# | "<li>📝Python Developer</li>\n"
+# | "<li>📝Kotlin Developer</li>\n"
+# | "<li>🖥Content Providers</li>\n"
 # | "Please contact us at <a
 # href=\"mailto:hiddify@gmail.com\">hiddify@gmail.com</a> if you can help us."
 #: hiddifypanel/templates/donation.html:11
