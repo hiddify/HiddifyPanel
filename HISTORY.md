@@ -1,7 +1,7 @@
 # Changelog
 
 
-## (unreleased)
+## 6.0.0 (2023-05-01)
 
 #### New
 
@@ -22,6 +22,8 @@
 * Color. 
 
 #### Other
+
+* UPDATE LANG. 
 
 * Fix. 
 
