@@ -1,6 +1,14 @@
 # Changelog
 
 
+## 6.1.1 (2023-05-03)
+
+#### Fix
+
+* V2rayng download link. 
+
+
+
 ## 6.1.0 (2023-05-03)
 
 #### Other
