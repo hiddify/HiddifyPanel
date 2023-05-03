@@ -1,6 +1,14 @@
 # Changelog
 
 
+## 6.1.0 (2023-05-03)
+
+#### Other
+
+* Add profile title. 
+
+
+
 ## 6.0.1 (2023-05-01)
 
 #### Other
