@@ -239,8 +239,8 @@ def to_link(proxy):
     if "grpc" == proxy["transport"]:
         baseurl  += f'&serviceName={proxy["grpc_service_name"]}&mode={proxy["grpc_mode"]}'
     # print(proxy['cdn'],proxy["transport"])
-    # if "ws" == proxy["transport"] and proxy['cdn']:
-    #     baseurl  += f'&fragment=sni'
+    if "ws" == proxy["transport"] and proxy['cdn'] and request.args.get("fragment"):
+        baseurl  += f'&fragment='+request.args.get("fragment")
     if 'vless' == proxy['proto']:
         baseurl  += "&encryption=none"
     if proxy.get('fingerprint','none')!='none':
