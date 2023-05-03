@@ -1,6 +1,14 @@
 # Changelog
 
 
+## 6.1.3 (2023-05-03)
+
+#### New
+
+* Add fragment in url. 
+
+
+
 ## 6.1.2 (2023-05-03)
 
 #### Other
