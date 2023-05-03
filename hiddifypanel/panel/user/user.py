@@ -100,7 +100,7 @@ class UserView(FlaskView):
             resp.headers['support-url']=hconfig(ConfigEnum.branding_site)
         resp.headers['profile-update-interval']=1
         # resp.headers['content-disposition']=f'attachment; filename="{c["db_domain"].alias or c["db_domain"].domain} {c["user"].name}"'
-        resp.headers['profile-title']=f'{c["db_domain"].alias or c["db_domain"].domain} {c["user"].name}'
+        resp.headers['profile-title']='base64:'+do_base_64(f'{c["db_domain"].alias or c["db_domain"].domain} {c["user"].name}')
 
         return resp
 
