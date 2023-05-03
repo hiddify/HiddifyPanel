@@ -1,6 +1,14 @@
 # Changelog
 
 
+## 6.1.2 (2023-05-03)
+
+#### Other
+
+* Temp disable fragment. 
+
+
+
 ## 6.1.1 (2023-05-03)
 
 #### Fix
