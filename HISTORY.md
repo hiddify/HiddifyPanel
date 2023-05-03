@@ -1,6 +1,14 @@
 # Changelog
 
 
+## 6.1.4 (2023-05-03)
+
+#### Fix
+
+* Persian user profile. 
+
+
+
 ## 6.1.3 (2023-05-03)
 
 #### New
