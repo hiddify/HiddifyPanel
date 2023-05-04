@@ -1,6 +1,6 @@
 from flask_admin.base import AdminIndexView,expose
 from hiddifypanel.panel.hiddify  import admin
-from flask import render_template,url_for,Markup,request,jsonify,g
+from flask import render_template,url_for,Markup,request,jsonify,g,redirect
 from flask_babelex import lazy_gettext as _
 from hiddifypanel.panel import hiddify
 import datetime
@@ -21,6 +21,8 @@ class Dashboard(FlaskView):
         ))
         
     def index(self):
+        if hconfig(ConfigEnum.first_setup):
+            return redirect(url_for("admin.QuickSetup:index"))
         if hiddifypanel.__release_date__ +datetime.timedelta(days=20)<datetime.datetime.now():
             flash(_('This version of hiddify panel is outdated. Please update it from admin area.'),"danger")
         bot=None

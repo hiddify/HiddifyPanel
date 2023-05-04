@@ -36,6 +36,7 @@ class ConfigCategory(StrEnum):
     too_advanced=auto()
     reality=auto()
 class ConfigEnum(StrEnum):
+    first_setup=auto()
     reality_fallback_domain=auto()
     reality_server_names=auto()
     reality_short_ids=auto()
@@ -127,6 +128,9 @@ class ConfigEnum(StrEnum):
           return cls.not_found #"key not found"
     def info(self):
         map = {
+            self.restls1_2_domain:{'category': ConfigCategory.hidden},
+            self.restls1_3_domain:{'category': ConfigCategory.hidden},
+            self.first_setup:{'category': ConfigCategory.hidden,'type':bool},
             self.show_usage_in_sublink:{'category': ConfigCategory.general,'type':bool},
             self.reality_fallback_domain:{'category': ConfigCategory.reality,'apply_mode':'apply'},
             self.reality_server_names:{'category': ConfigCategory.reality,'apply_mode':'apply'},

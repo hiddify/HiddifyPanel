@@ -26,6 +26,7 @@ class QuickSetup(FlaskView):
                 return render_template('quick_setup.html', lang_form=get_lang_form(), form=get_quick_setup_form(),ipv4=hiddify.get_ip(4),ipv6=hiddify.get_ip(6),admin_link=admin_link(),show_domain_info=True)
         
         def post(self):
+                set_hconfig(first_setup, False)
                 quick_form=get_quick_setup_form()
                 lang_form=get_lang_form()
                 if lang_form.lang_submit.data:
