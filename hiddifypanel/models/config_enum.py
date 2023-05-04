@@ -37,6 +37,7 @@ class ConfigCategory(StrEnum):
     reality=auto()
 class ConfigEnum(StrEnum):
     first_setup=auto()
+    warp_enable=auto()
     reality_fallback_domain=auto()
     reality_server_names=auto()
     reality_short_ids=auto()
@@ -128,6 +129,7 @@ class ConfigEnum(StrEnum):
           return cls.not_found #"key not found"
     def info(self):
         map = {
+            self.warp_enable:{'category': ConfigCategory.general,'type':bool},
             self.restls1_2_domain:{'category': ConfigCategory.hidden},
             self.restls1_3_domain:{'category': ConfigCategory.hidden},
             self.first_setup:{'category': ConfigCategory.hidden,'type':bool},

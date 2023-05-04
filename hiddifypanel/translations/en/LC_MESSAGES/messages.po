@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-04 18:44+0200\n"
-"PO-Revision-Date: 2023-05-02 14:34-0500\n"
+"POT-Creation-Date: 2023-05-04 23:03+0200\n"
+"PO-Revision-Date: 2023-05-04 11:44-0500\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Generated-By: Babel 2.12.1\n"
 
 # | msgid "This Domain does not exist in the Panel !"
-#: hiddifypanel/models/domain.py:122 hiddifypanel/panel/user/user.py:160
+#: hiddifypanel/models/domain.py:122 hiddifypanel/panel/user/user.py:163
 msgid "This domain does not exist in the panel!"
 msgstr "This Domain does not exist in the Panel !"
 
@@ -1213,6 +1213,30 @@ msgstr "Only IPv4"
 msgid "config.only_ipv4.description"
 msgstr "It will Disable IPv6"
 
+# | msgid "Show Usage in Sublink"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.show_usage_in_sublink.label"
+msgstr "Show Usage in Sublink"
+
+# | msgid ""
+# | "This option creates a Fake Config in the user's sub link that shows the "
+# | "user's remaining volume"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.show_usage_in_sublink.description"
+msgstr ""
+"This option creates a Fake Config in the user's sub link that shows the "
+"user's remaining volume"
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.warp_enable.label"
+msgstr "config.warp_enable.label"
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.warp_enable.description"
+msgstr "config.warp_enable.description"
+
 # | msgid "Decoy Site"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.decoy_domain.label"
@@ -1729,26 +1753,6 @@ msgstr "🆔 Short IDs"
 msgid "config.reality_short_ids.description"
 msgstr "Do not change it"
 
-# | msgid "🔑 Private Key"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.reality_private_key.label"
-msgstr "🔑 Private Key"
-
-# | msgid "Do not change it"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.reality_private_key.description"
-msgstr "Do not change it"
-
-# | msgid "🔑 Public Key"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.reality_public_key.label"
-msgstr "🔑 Public Key"
-
-# | msgid "Do not change it"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.reality_public_key.description"
-msgstr "Do not change it"
-
 # | msgid "🌍 Fallback Domain"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.reality_fallback_domain.label"
@@ -1773,6 +1777,26 @@ msgstr "🌎 Server Names"
 msgid "config.reality_server_names.description"
 msgstr "You can add several Sever Names in comma seperated format"
 
+# | msgid "🔑 Private Key"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.reality_private_key.label"
+msgstr "🔑 Private Key"
+
+# | msgid "Do not change it"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.reality_private_key.description"
+msgstr "Do not change it"
+
+# | msgid "🔑 Public Key"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.reality_public_key.label"
+msgstr "🔑 Public Key"
+
+# | msgid "Do not change it"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.reality_public_key.description"
+msgstr "Do not change it"
+
 # | msgid "Reality"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.reality.label"
@@ -1782,6 +1806,16 @@ msgstr "Reality"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.reality.description"
 msgstr "REALITY eliminate the Server-Side TLS Fingerprint feature"
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.first_setup.label"
+msgstr "config.first_setup.label"
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.first_setup.description"
+msgstr "config.first_setup.description"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
@@ -1802,20 +1836,6 @@ msgstr "config.restls1_3_domain.label"
 #, fuzzy
 msgid "config.restls1_3_domain.description"
 msgstr "config.restls1_3_domain.description"
-
-# | msgid "Show Usage in Sublink"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.show_usage_in_sublink.label"
-msgstr "Show Usage in Sublink"
-
-# | msgid ""
-# | "This option creates a Fake Config in the user's sub link that shows the "
-# | "user's remaining volume"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.show_usage_in_sublink.description"
-msgstr ""
-"This option creates a Fake Config in the user's sub link that shows the "
-"user's remaining volume"
 
 # | msgid "License  Code"
 #: hiddifypanel/panel/admin/templates/configfake.html:6

@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-04 18:44+0200\n"
-"PO-Revision-Date: 2023-05-02 14:34-0500\n"
+"POT-Creation-Date: 2023-05-04 23:03+0200\n"
+"PO-Revision-Date: 2023-05-04 11:44-0500\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Generated-By: Babel 2.12.1\n"
 
 # | msgid "This Domain does not exist in the Panel !"
-#: hiddifypanel/models/domain.py:122 hiddifypanel/panel/user/user.py:160
+#: hiddifypanel/models/domain.py:122 hiddifypanel/panel/user/user.py:163
 msgid "This domain does not exist in the panel!"
 msgstr "این دامنه در پنل وجود ندارد!"
 
@@ -1249,6 +1249,28 @@ msgstr "فقط آی‌پی ورژن 4"
 msgid "config.only_ipv4.description"
 msgstr "IPv6 را غیر فعال می‌کند"
 
+# | msgid "Show Usage in Sublink"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.show_usage_in_sublink.label"
+msgstr "نمایش حجم و تاریخ انقضا در کانفیگ ها"
+
+# | msgid ""
+# | "This option creates a Fake Config in the user's sub link that shows the "
+# | "user's remaining volume"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.show_usage_in_sublink.description"
+msgstr ""
+"این گزینه یک کانفیگ فیک در لینک ساب کاربر ایجاد میکند که حجم باقیمانده و "
+"تاریخ انقضا کاربر را نشان می‌دهد"
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.warp_enable.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.warp_enable.description"
+msgstr ""
+
 # | msgid "Decoy Site"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.decoy_domain.label"
@@ -1786,26 +1808,6 @@ msgstr "🆔 شناسه های کوتاه"
 msgid "config.reality_short_ids.description"
 msgstr "این کد را تغییر ندهید"
 
-# | msgid "🔑 Private Key"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.reality_private_key.label"
-msgstr "🔑 کلید خصوصی"
-
-# | msgid "Do not change it"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.reality_private_key.description"
-msgstr "این کد را تغییر ندهید"
-
-# | msgid "🔑 Public Key"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.reality_public_key.label"
-msgstr "🔑 کلید عمومی"
-
-# | msgid "Do not change it"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.reality_public_key.description"
-msgstr "این کد را تغییر ندهید"
-
 # | msgid "🌍 Fallback Domain"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.reality_fallback_domain.label"
@@ -1833,6 +1835,26 @@ msgstr "🌎 نام سرور"
 msgid "config.reality_server_names.description"
 msgstr "شما می توانید چندین نام را در قالب جدا شده با کاما اضافه کنید"
 
+# | msgid "🔑 Private Key"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.reality_private_key.label"
+msgstr "🔑 کلید خصوصی"
+
+# | msgid "Do not change it"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.reality_private_key.description"
+msgstr "این کد را تغییر ندهید"
+
+# | msgid "🔑 Public Key"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.reality_public_key.label"
+msgstr "🔑 کلید عمومی"
+
+# | msgid "Do not change it"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.reality_public_key.description"
+msgstr "این کد را تغییر ندهید"
+
 # | msgid "Reality"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.reality.label"
@@ -1843,6 +1865,14 @@ msgstr "ریالیتی"
 #, fuzzy
 msgid "config.reality.description"
 msgstr "REALITY قابلیت اثر انگشت TLS سمت سرور را حذف می کند"
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.first_setup.label"
+msgstr ""
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.first_setup.description"
+msgstr ""
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.restls1_2_domain.label"
@@ -1859,20 +1889,6 @@ msgstr ""
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.restls1_3_domain.description"
 msgstr ""
-
-# | msgid "Show Usage in Sublink"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.show_usage_in_sublink.label"
-msgstr "نمایش حجم و تاریخ انقضا در کانفیگ ها"
-
-# | msgid ""
-# | "This option creates a Fake Config in the user's sub link that shows the "
-# | "user's remaining volume"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.show_usage_in_sublink.description"
-msgstr ""
-"این گزینه یک کانفیگ فیک در لینک ساب کاربر ایجاد میکند که حجم باقیمانده و "
-"تاریخ انقضا کاربر را نشان می‌دهد"
 
 # | msgid "License  Code"
 #: hiddifypanel/panel/admin/templates/configfake.html:6

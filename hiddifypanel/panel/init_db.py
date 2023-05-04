@@ -97,7 +97,8 @@ def init_db():
     db.session.commit()
     return BoolConfig.query.all()
 
-
+def _v35():
+    add_config_if_not_exist(ConfigEnum.warp_enable,False)
 def _v34():
     add_config_if_not_exist(ConfigEnum.show_usage_in_sublink,False)
 def _v33():
