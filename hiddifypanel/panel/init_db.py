@@ -97,6 +97,9 @@ def init_db():
     db.session.commit()
     return BoolConfig.query.all()
 
+def _v36():
+    add_config_if_not_exist(ConfigEnum.warp_plus_code,'')
+
 def _v35():
     add_config_if_not_exist(ConfigEnum.warp_enable,False)
 def _v34():
@@ -203,7 +206,6 @@ def _v1():
             BoolConfig(key=ConfigEnum.firewall,value=True),
             BoolConfig(key=ConfigEnum.netdata,value=True),
             StrConfig(key=ConfigEnum.lang,value='fa'),
-            
             BoolConfig(key=ConfigEnum.block_iran_sites,value=True),
             BoolConfig(key=ConfigEnum.allow_invalid_sni,value=True),
             BoolConfig(key=ConfigEnum.kcp_enable,value=False),
@@ -211,20 +213,16 @@ def _v1():
             BoolConfig(key=ConfigEnum.auto_update,value=True),
             BoolConfig(key=ConfigEnum.speed_test,value=True),
             BoolConfig(key=ConfigEnum.only_ipv4,value=False),
-
             BoolConfig(key=ConfigEnum.vmess_enable,value=True),
             BoolConfig(key=ConfigEnum.http_proxy_enable,value=True),
             StrConfig(key=ConfigEnum.shared_secret,value=str(uuid.uuid4())),
-
             BoolConfig(key=ConfigEnum.telegram_enable,value=True),
             # StrConfig(key=ConfigEnum.telegram_secret,value=uuid.uuid4().hex),
             StrConfig(key=ConfigEnum.telegram_adtag,value=""),
             StrConfig(key=ConfigEnum.telegram_fakedomain, value=rnd_domains[1]),
- 
             BoolConfig(key=ConfigEnum.ssfaketls_enable,value=False),
             # StrConfig(key=ConfigEnum.ssfaketls_secret,value=str(uuid.uuid4())),
             StrConfig(key=ConfigEnum.ssfaketls_fakedomain, value=rnd_domains[2]),
-
             BoolConfig(key=ConfigEnum.shadowtls_enable,value=False),
             # StrConfig(key=ConfigEnum.shadowtls_secret,value=str(uuid.uuid4())),
             StrConfig(key=ConfigEnum.shadowtls_fakedomain, value=rnd_domains[3]),

@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-04 23:09+0200\n"
-"PO-Revision-Date: 2023-05-04 16:06-0500\n"
+"POT-Creation-Date: 2023-05-04 23:38+0200\n"
+"PO-Revision-Date: 2023-05-04 16:38-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -1246,6 +1246,19 @@ msgstr "诱饵网站"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.decoy_domain.description"
 msgstr "假网站：当有人访问您的域时模拟网站"
+
+# | msgid "WARP plus code"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.warp_plus_code.label"
+msgstr ""
+
+# | msgid ""
+# | "Increases browsing speed. To get the code, go to <a
+# href=\"https://t.me/hiddify_board\"> here </a>\n"
+# | "send a message"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.warp_plus_code.description"
+msgstr ""
 
 # | msgid "General Settings"
 #: hiddifypanel/panel/admin/templates/configfake.html:6

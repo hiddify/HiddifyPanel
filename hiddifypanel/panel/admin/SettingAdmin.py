@@ -148,7 +148,9 @@ def get_config_form():
     boolconfigs=BoolConfig.query.filter(BoolConfig.child_id==0).all()
     bool_types={c.key:'bool' for c in boolconfigs}
 
+    
     configs=[*boolconfigs,*strconfigs]
+    configs_key={k.key:k for k in configs}
     # categories=sorted([ c for c in {c.key.category():1 for c in configs}])
     # dict_configs={cat:[c for c in configs if c.category==cat] for cat in categories}
     class DynamicForm(FlaskForm):
@@ -158,13 +160,15 @@ def get_config_form():
     for cat in ConfigCategory:
         if cat=='hidden':continue
 
-        cat_configs=[c for c in configs if c.key.category()==cat and  (not is_parent or c.key.show_in_parent()) ]
+        cat_configs=[c for c in ConfigEnum if c.category()==cat and  (not is_parent or c.show_in_parent()) ]
         
         if len(cat_configs)==0:continue
         
         class CategoryForm(FlaskForm):
             description_for_fieldset=wtf.fields.TextAreaField("",description=_(f'config.{cat}.description'),render_kw={"class":"d-none"})
-        for c in cat_configs:
+        for c2 in cat_configs:
+            if not (c2 in configs_key):continue
+            c=configs_key[c2]
             extra_info=''
             if c.key in bool_types:
                 field= SwitchField(_(f'config.{c.key}.label'), default=c.value,description=_(f'config.{c.key}.description')) 

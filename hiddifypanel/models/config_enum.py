@@ -38,6 +38,7 @@ class ConfigCategory(StrEnum):
 class ConfigEnum(StrEnum):
     first_setup=auto()
     warp_enable=auto()
+    warp_plus_code=auto()
     reality_fallback_domain=auto()
     reality_server_names=auto()
     reality_short_ids=auto()
@@ -130,6 +131,7 @@ class ConfigEnum(StrEnum):
     def info(self):
         map = {
             self.warp_enable:{'category': ConfigCategory.general,'type':bool},
+            self.warp_plus_code:{'category': ConfigCategory.general},
             self.restls1_2_domain:{'category': ConfigCategory.hidden},
             self.restls1_3_domain:{'category': ConfigCategory.hidden},
             self.first_setup:{'category': ConfigCategory.hidden,'type':bool},
