@@ -103,7 +103,7 @@ class UserView(FlaskView):
         profile_title=f'{c["db_domain"].alias or c["db_domain"].domain} {c["user"].name}'
         if c['has_auto_cdn']:
             profile_title+=f" {c['asn']}"
-        resp.headers['profile-title']='base64:'+do_base_64()
+        resp.headers['profile-title']='base64:'+do_base_64(profile_title)
 
         return resp
 
