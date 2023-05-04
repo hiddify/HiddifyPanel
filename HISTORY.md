@@ -1,6 +1,22 @@
 # Changelog
 
 
+## 6.2.0 (2023-05-04)
+
+#### New
+
+* Add button. 
+
+* Auto redirect to quick setup if not setup. 
+
+#### Fix
+
+* V2rayng. 
+
+* Bug. 
+
+
+
 ## 6.1.7 (2023-05-04)
 
 #### New
