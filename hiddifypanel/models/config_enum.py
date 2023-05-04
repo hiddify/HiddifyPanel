@@ -130,8 +130,8 @@ class ConfigEnum(StrEnum):
           return cls.not_found #"key not found"
     def info(self):
         map = {
-            self.warp_enable:{'category': ConfigCategory.general,'type':bool},
-            self.warp_plus_code:{'category': ConfigCategory.general},
+            self.warp_enable:{'category': ConfigCategory.general,'type':bool,'apply_mode':'restart'},
+            self.warp_plus_code:{'category': ConfigCategory.general,'apply_mode':'apply'},
             self.restls1_2_domain:{'category': ConfigCategory.hidden},
             self.restls1_3_domain:{'category': ConfigCategory.hidden},
             self.first_setup:{'category': ConfigCategory.hidden,'type':bool},
