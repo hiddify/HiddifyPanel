@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-01 18:00+0200\n"
-"PO-Revision-Date: 2023-05-01 10:59-0500\n"
+"POT-Creation-Date: 2023-05-04 18:44+0200\n"
+"PO-Revision-Date: 2023-05-02 14:34-0500\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Generated-By: Babel 2.12.1\n"
 
 # | msgid "This Domain does not exist in the Panel !"
-#: hiddifypanel/models/domain.py:122 hiddifypanel/panel/user/user.py:159
+#: hiddifypanel/models/domain.py:122 hiddifypanel/panel/user/user.py:160
 msgid "This domain does not exist in the panel!"
 msgstr "This Domain does not exist in the Panel !"
 
@@ -27,7 +27,7 @@ msgstr "Error In Auto CDN IP! It Can Not Be Find, Please Contact Admin"
 # | msgid ""
 # | "This Version of Hiddify Panel is Outdated. Please Update it from Admin "
 # | "Area."
-#: hiddifypanel/panel/admin/Dashboard.py:25 hiddifypanel/panel/common.py:56
+#: hiddifypanel/panel/admin/Dashboard.py:28 hiddifypanel/panel/common.py:56
 #: hiddifypanel/templates/500.html:9
 msgid ""
 "This version of hiddify panel is outdated. Please update it from admin area."
@@ -65,7 +65,7 @@ msgstr " ✅ Configs Have Been Changed Successfully"
 #: hiddifypanel/panel/admin/DomainAdmin.py:139
 #: hiddifypanel/panel/admin/DomainAdmin.py:165
 #: hiddifypanel/panel/admin/DomainAdmin.py:168
-#: hiddifypanel/panel/admin/QuickSetup.py:117
+#: hiddifypanel/panel/admin/QuickSetup.py:118
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:109
 #: hiddifypanel/panel/hiddify.py:276
 msgid "Domain can not be resolved! there is a problem in your domain"
@@ -269,9 +269,9 @@ msgstr "Select this option to restore your domains"
 #: hiddifypanel/panel/admin/Backup.py:79
 #: hiddifypanel/panel/admin/ProxyAdmin.py:94
 #: hiddifypanel/panel/admin/ProxyAdmin.py:124
-#: hiddifypanel/panel/admin/QuickSetup.py:80
-#: hiddifypanel/panel/admin/QuickSetup.py:107
-#: hiddifypanel/panel/admin/SettingAdmin.py:243
+#: hiddifypanel/panel/admin/QuickSetup.py:81
+#: hiddifypanel/panel/admin/QuickSetup.py:108
+#: hiddifypanel/panel/admin/SettingAdmin.py:244
 #: hiddifypanel/panel/commercial/CommercialSettings.py:218
 msgid "Submit"
 msgstr "Submit"
@@ -283,7 +283,7 @@ msgstr "Submit"
 # | "نصب#آموزش-ساخت-زیردامنه\"> Help</a> to learn how to create a subdomain."
 #: hiddifypanel/panel/admin/ChildAdmin.py:33
 #: hiddifypanel/panel/admin/DomainAdmin.py:44
-#: hiddifypanel/panel/admin/QuickSetup.py:101
+#: hiddifypanel/panel/admin/QuickSetup.py:102
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:33
 msgid "domain.description"
 msgstr ""
@@ -320,7 +320,7 @@ msgstr ""
 # | msgid "Domain"
 #: hiddifypanel/panel/admin/ChildAdmin.py:54
 #: hiddifypanel/panel/admin/DomainAdmin.py:72
-#: hiddifypanel/panel/admin/QuickSetup.py:101
+#: hiddifypanel/panel/admin/QuickSetup.py:102
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:55
 msgid "domain.domain"
 msgstr "Domain"
@@ -348,11 +348,11 @@ msgstr "Domain is not correctly mapped to this Server!"
 
 # | msgid "Access Denied"
 #: hiddifypanel/panel/admin/Dashboard.py:16
-#: hiddifypanel/panel/admin/Dashboard.py:31
+#: hiddifypanel/panel/admin/Dashboard.py:34
 msgid "Access Denied!"
 msgstr "Access Denied"
 
-#: hiddifypanel/panel/admin/Dashboard.py:56
+#: hiddifypanel/panel/admin/Dashboard.py:59
 #: hiddifypanel/panel/commercial/CommercialDashboard.py:37
 #, python-format
 msgid ""
@@ -365,8 +365,8 @@ msgstr ""
 # | msgid ""
 # | "Please understand that parent Panel is under test and the plan and the "
 # | "condition of use maybe change at anytime."
-#: hiddifypanel/panel/admin/Dashboard.py:58
-#: hiddifypanel/panel/admin/Dashboard.py:62
+#: hiddifypanel/panel/admin/Dashboard.py:61
+#: hiddifypanel/panel/admin/Dashboard.py:65
 msgid ""
 "Please understand that parent panel is under test and the plan and the "
 "condition of use maybe change at anytime."
@@ -377,7 +377,7 @@ msgstr ""
 # | msgid ""
 # | "It seems that you are using default domain (%(domain)s) which is not "
 # | "recommended. Please change or remove it from domain section."
-#: hiddifypanel/panel/admin/Dashboard.py:60
+#: hiddifypanel/panel/admin/Dashboard.py:63
 #: hiddifypanel/panel/commercial/CommercialDashboard.py:39
 #, python-format
 msgid ""
@@ -390,7 +390,7 @@ msgstr ""
 # | msgid ""
 # | "It seems that you have not created any users yet. default user link: "
 # | "%(default_link)s"
-#: hiddifypanel/panel/admin/Dashboard.py:66
+#: hiddifypanel/panel/admin/Dashboard.py:69
 #: hiddifypanel/panel/commercial/CommercialDashboard.py:43
 #, python-format
 msgid ""
@@ -401,7 +401,7 @@ msgstr ""
 "%(default_link)s"
 
 # | msgid "Child Has Been Removed!"
-#: hiddifypanel/panel/admin/Dashboard.py:83
+#: hiddifypanel/panel/admin/Dashboard.py:86
 #: hiddifypanel/panel/commercial/CommercialDashboard.py:58
 msgid "child has been removed!"
 msgstr "Child Has Been Removed!"
@@ -536,8 +536,8 @@ msgstr "Error! Domain Fronting not set."
 
 # | msgid "There is an error in one of the fields."
 #: hiddifypanel/panel/admin/ProxyAdmin.py:66
-#: hiddifypanel/panel/admin/QuickSetup.py:72
-#: hiddifypanel/panel/admin/SettingAdmin.py:107
+#: hiddifypanel/panel/admin/QuickSetup.py:73
+#: hiddifypanel/panel/admin/SettingAdmin.py:108
 #: hiddifypanel/panel/commercial/CommercialSettings.py:89
 msgid "config.validation-error"
 msgstr "There is an error in one of the fields."
@@ -549,65 +549,65 @@ msgid "config.domain_fronting.label"
 msgstr "Domain Fronting"
 
 # | msgid "Changing the Language was Successful."
-#: hiddifypanel/panel/admin/QuickSetup.py:43
+#: hiddifypanel/panel/admin/QuickSetup.py:44
 msgid "quicksetup.setlang.success"
 msgstr "Changing the Language was Successful."
 
 # | msgid "An error occurred while changing language."
-#: hiddifypanel/panel/admin/QuickSetup.py:45
+#: hiddifypanel/panel/admin/QuickSetup.py:46
 msgid "quicksetup.setlang.error"
 msgstr "An error occurred while changing language."
 
 # | msgid "Admin Panel Language"
-#: hiddifypanel/panel/admin/QuickSetup.py:77
+#: hiddifypanel/panel/admin/QuickSetup.py:78
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.admin_lang.label"
 msgstr "Admin Panel Language"
 
 # | msgid "🇺🇸 English انگلیسی 英语"
-#: hiddifypanel/panel/admin/QuickSetup.py:77
-#: hiddifypanel/panel/admin/SettingAdmin.py:171
+#: hiddifypanel/panel/admin/QuickSetup.py:78
+#: hiddifypanel/panel/admin/SettingAdmin.py:172
 #: hiddifypanel/panel/commercial/CommercialSettings.py:150
 msgid "lang.en"
 msgstr "🇺🇸 English انگلیسی 英语"
 
 # | msgid "🇮🇷 Persian فارسی 波斯语"
-#: hiddifypanel/panel/admin/QuickSetup.py:77
-#: hiddifypanel/panel/admin/SettingAdmin.py:171
+#: hiddifypanel/panel/admin/QuickSetup.py:78
+#: hiddifypanel/panel/admin/SettingAdmin.py:172
 #: hiddifypanel/panel/commercial/CommercialSettings.py:150
 msgid "lang.fa"
 msgstr "🇮🇷 Persian فارسی 波斯语"
 
 # | msgid "🇨🇳 Chinese چینی 中国人"
-#: hiddifypanel/panel/admin/QuickSetup.py:77
-#: hiddifypanel/panel/admin/SettingAdmin.py:171
+#: hiddifypanel/panel/admin/QuickSetup.py:78
+#: hiddifypanel/panel/admin/SettingAdmin.py:172
 #: hiddifypanel/panel/commercial/CommercialSettings.py:150
 msgid "lang.zh"
 msgstr "🇨🇳 Chinese چینی 中国人"
 
 # | msgid "Choose Language For Admin Area"
-#: hiddifypanel/panel/admin/QuickSetup.py:77
+#: hiddifypanel/panel/admin/QuickSetup.py:78
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.admin_lang.description"
 msgstr "Choose Language For Admin Area"
 
 # | msgid "Country"
-#: hiddifypanel/panel/admin/QuickSetup.py:79
+#: hiddifypanel/panel/admin/QuickSetup.py:80
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.country.label"
 msgstr "Country"
 
 # | msgid "🇮🇷 Iran"
-#: hiddifypanel/panel/admin/QuickSetup.py:79
-#: hiddifypanel/panel/admin/SettingAdmin.py:173
+#: hiddifypanel/panel/admin/QuickSetup.py:80
+#: hiddifypanel/panel/admin/SettingAdmin.py:174
 #: hiddifypanel/panel/commercial/CommercialSettings.py:152
 msgid "Iran"
 msgstr "🇮🇷 Iran"
 
 # | msgid "🇨🇳 China"
-#: hiddifypanel/panel/admin/QuickSetup.py:79
-#: hiddifypanel/panel/admin/SettingAdmin.py:173
+#: hiddifypanel/panel/admin/QuickSetup.py:80
+#: hiddifypanel/panel/admin/SettingAdmin.py:174
 #: hiddifypanel/panel/commercial/CommercialSettings.py:152
 msgid "China"
 msgstr "🇨🇳 China"
@@ -615,7 +615,7 @@ msgstr "🇨🇳 China"
 # | msgid ""
 # | "It applies the appropriate settings for each country according to the "
 # | "filtering conditions of that country"
-#: hiddifypanel/panel/admin/QuickSetup.py:79
+#: hiddifypanel/panel/admin/QuickSetup.py:80
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.country.description"
 msgstr ""
@@ -623,40 +623,40 @@ msgstr ""
 "filtering conditions of that country"
 
 # | msgid "Error! Invalid Domain.  The Domain Format is www.google.com"
-#: hiddifypanel/panel/admin/QuickSetup.py:96
-#: hiddifypanel/panel/admin/SettingAdmin.py:191
-#: hiddifypanel/panel/admin/SettingAdmin.py:194
+#: hiddifypanel/panel/admin/QuickSetup.py:97
+#: hiddifypanel/panel/admin/SettingAdmin.py:192
+#: hiddifypanel/panel/admin/SettingAdmin.py:195
 #: hiddifypanel/panel/commercial/CommercialSettings.py:170
 #: hiddifypanel/panel/commercial/CommercialSettings.py:173
 msgid "config.Invalid domain"
 msgstr "Error! Invalid Domain.  The Domain Format is www.google.com"
 
 # | msgid "Domain is exist in domains section. Use another Domain"
-#: hiddifypanel/panel/admin/QuickSetup.py:98
 #: hiddifypanel/panel/admin/QuickSetup.py:99
-#: hiddifypanel/panel/admin/SettingAdmin.py:198
+#: hiddifypanel/panel/admin/QuickSetup.py:100
 #: hiddifypanel/panel/admin/SettingAdmin.py:199
+#: hiddifypanel/panel/admin/SettingAdmin.py:200
 #: hiddifypanel/panel/commercial/CommercialSettings.py:177
 #: hiddifypanel/panel/commercial/CommercialSettings.py:178
 msgid "config.Domain already used"
 msgstr "Domain is exist in domains section. Use another Domain"
 
 # | msgid "Enable Telegram MTProto"
-#: hiddifypanel/panel/admin/QuickSetup.py:102
+#: hiddifypanel/panel/admin/QuickSetup.py:103
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.telegram_enable.label"
 msgstr "Enable Telegram MTProto"
 
 # | msgid ""
 # | "Telegram MTProto is used for Encapsulate Telegram Proxy as a tls traffic"
-#: hiddifypanel/panel/admin/QuickSetup.py:102
+#: hiddifypanel/panel/admin/QuickSetup.py:103
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.telegram_enable.description"
 msgstr ""
 "Telegram MTProto is used for Encapsulate Telegram Proxy as a tls traffic"
 
 # | msgid "Firewall"
-#: hiddifypanel/panel/admin/QuickSetup.py:103
+#: hiddifypanel/panel/admin/QuickSetup.py:104
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.firewall.label"
 msgstr "Firewall"
@@ -664,7 +664,7 @@ msgstr "Firewall"
 # | msgid ""
 # | "Enabling Firewall will open used Ports (at least 22,443,80 and SSH) and "
 # | "close all other Ports"
-#: hiddifypanel/panel/admin/QuickSetup.py:103
+#: hiddifypanel/panel/admin/QuickSetup.py:104
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.firewall.description"
 msgstr ""
@@ -672,7 +672,7 @@ msgstr ""
 "close all other Ports"
 
 # | msgid "Block Iranian Sites"
-#: hiddifypanel/panel/admin/QuickSetup.py:104
+#: hiddifypanel/panel/admin/QuickSetup.py:105
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.block_iran_sites.label"
 msgstr "Block Iranian Sites"
@@ -681,7 +681,7 @@ msgstr "Block Iranian Sites"
 # | "Block iranian sites to prevent detection by the government (Experimental:
 # "
 # | "If there is a problem, please disable it and tell us.)"
-#: hiddifypanel/panel/admin/QuickSetup.py:104
+#: hiddifypanel/panel/admin/QuickSetup.py:105
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.block_iran_sites.description"
 msgstr ""
@@ -689,7 +689,7 @@ msgstr ""
 " there is a problem, please disable it and tell us.)"
 
 # | msgid "Enable VMess"
-#: hiddifypanel/panel/admin/QuickSetup.py:105
+#: hiddifypanel/panel/admin/QuickSetup.py:106
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.vmess_enable.label"
 msgstr "Enable VMess"
@@ -697,7 +697,7 @@ msgstr "Enable VMess"
 # | msgid ""
 # | "It is reported by several people that VMess causes the system to be "
 # | "detected by the government. So it is Not Recommended"
-#: hiddifypanel/panel/admin/QuickSetup.py:105
+#: hiddifypanel/panel/admin/QuickSetup.py:106
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.vmess_enable.description"
 msgstr ""
@@ -707,7 +707,7 @@ msgstr ""
 # | msgid ""
 # | "Domain (%(domain)s)-> IP = %(domain_ip)s is not same as your IP = "
 # | "%(server_ip)s . this is required in Direct Mode"
-#: hiddifypanel/panel/admin/QuickSetup.py:121
+#: hiddifypanel/panel/admin/QuickSetup.py:122
 #, python-format
 msgid ""
 "Domain (%(domain)s)-> IP=%(domain_ip)s is not matched with your "
@@ -717,71 +717,71 @@ msgstr ""
 "%(server_ip)s . this is required in Direct Mode"
 
 # | msgid "Port is Already Used in:"
-#: hiddifypanel/panel/admin/SettingAdmin.py:56
+#: hiddifypanel/panel/admin/SettingAdmin.py:57
 #: hiddifypanel/panel/commercial/CommercialSettings.py:56
 msgid "Port is already used! in"
 msgstr "Port is Already Used in:"
 
 # | msgid "Can not connect to Parent Panel!"
-#: hiddifypanel/panel/admin/SettingAdmin.py:64
-#: hiddifypanel/panel/admin/SettingAdmin.py:67
+#: hiddifypanel/panel/admin/SettingAdmin.py:65
+#: hiddifypanel/panel/admin/SettingAdmin.py:68
 #: hiddifypanel/panel/commercial/CommercialSettings.py:64
 #: hiddifypanel/panel/commercial/CommercialSettings.py:67
 msgid "Can not connect to parent panel!"
 msgstr "Can not connect to Parent Panel!"
 
-#: hiddifypanel/panel/admin/SettingAdmin.py:81
+#: hiddifypanel/panel/admin/SettingAdmin.py:82
 msgid "Domain is not REALITY friendly!"
 msgstr "Domain is not REALITY friendly!"
 
 # | msgid "REALITY Fallback Domain is not compaitble with Server names!"
-#: hiddifypanel/panel/admin/SettingAdmin.py:87
+#: hiddifypanel/panel/admin/SettingAdmin.py:88
 msgid "REALITY Fallback domain is not compaitble with server names!"
 msgstr "REALITY Fallback Domain is not compaitble with Server names!"
 
 # | msgid "🇺🇳 Others"
-#: hiddifypanel/panel/admin/SettingAdmin.py:173
+#: hiddifypanel/panel/admin/SettingAdmin.py:174
 msgid "Others"
 msgstr "🇺🇳 Others"
 
 # | msgid "✅ Release"
-#: hiddifypanel/panel/admin/SettingAdmin.py:175
+#: hiddifypanel/panel/admin/SettingAdmin.py:176
 #: hiddifypanel/panel/commercial/CommercialSettings.py:154
 msgid "Release"
 msgstr "✅ Release"
 
 # | msgid "⚠️ Develop"
-#: hiddifypanel/panel/admin/SettingAdmin.py:175
+#: hiddifypanel/panel/admin/SettingAdmin.py:176
 #: hiddifypanel/panel/commercial/CommercialSettings.py:154
 msgid "Develop"
 msgstr "⚠️ Develop"
 
-# | msgid "✅ <b>Python :</b> Low Performance"
-#: hiddifypanel/panel/admin/SettingAdmin.py:181
+# | msgid "✅ Python : Low Performance"
+#: hiddifypanel/panel/admin/SettingAdmin.py:182
 #: hiddifypanel/panel/commercial/CommercialSettings.py:160
 msgid "lib.telegram.python"
-msgstr "✅ <b>Python :</b> Low Performance"
+msgstr "✅ Python : Low Performance"
 
-# | msgid "✅ Go: High Performance - No ad Support"
-#: hiddifypanel/panel/admin/SettingAdmin.py:181
+# | msgid "✅ Go : High Performance - No ad Support"
+#: hiddifypanel/panel/admin/SettingAdmin.py:182
 #: hiddifypanel/panel/commercial/CommercialSettings.py:160
 msgid "lib.telegram.go"
-msgstr "✅ Go: High Performance - No ad Support"
+msgstr "✅ Go : High Performance - No ad Support"
 
-# | msgid "⛔️ Not Working - Original: High Performance"
-#: hiddifypanel/panel/admin/SettingAdmin.py:181
+# | msgid "⛔️ Not Working - Original : High Performance"
+#: hiddifypanel/panel/admin/SettingAdmin.py:182
 #: hiddifypanel/panel/commercial/CommercialSettings.py:160
 msgid "lib.telegram.orignal"
-msgstr "⛔️ Not Working - Original: High Performance"
+msgstr "⛔️ Not Working - Original : High Performance"
 
-# | msgid "⛔️ NOT Working - Erlang: Medium Performance"
-#: hiddifypanel/panel/admin/SettingAdmin.py:181
+# | msgid "⛔️ NOT Working - Erlang : Medium Performance"
+#: hiddifypanel/panel/admin/SettingAdmin.py:182
 #: hiddifypanel/panel/commercial/CommercialSettings.py:160
 msgid "lib.telegram.erlang"
-msgstr "⛔️ NOT Working - Erlang: Medium Performance"
+msgstr "⛔️ NOT Working - Erlang : Medium Performance"
 
 # | msgid "Telegram Proxy Library"
-#: hiddifypanel/panel/admin/SettingAdmin.py:182
+#: hiddifypanel/panel/admin/SettingAdmin.py:183
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/panel/commercial/CommercialSettings.py:161
 msgid "config.telegram_lib.label"
@@ -792,7 +792,7 @@ msgstr "Telegram Proxy Library"
 # | "only Python works in all servers, others may have some issue. Test Proxy
 # "
 # | "after changing it."
-#: hiddifypanel/panel/admin/SettingAdmin.py:182
+#: hiddifypanel/panel/admin/SettingAdmin.py:183
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/panel/commercial/CommercialSettings.py:161
 msgid "config.telegram_lib.description"
@@ -802,31 +802,31 @@ msgstr ""
 "changing it."
 
 # | msgid "Test and Suggest Domain "
-#: hiddifypanel/panel/admin/SettingAdmin.py:202
+#: hiddifypanel/panel/admin/SettingAdmin.py:203
 #, fuzzy
 msgid "Example Domains"
 msgstr "Test and Suggest Domain "
 
 # | msgid "Invalid REALITY Hostnames"
-#: hiddifypanel/panel/admin/SettingAdmin.py:204
+#: hiddifypanel/panel/admin/SettingAdmin.py:205
 msgid "Invalid REALITY hostnames"
 msgstr "Invalid REALITY Hostnames"
 
 # | msgid "Invalid Admin Link"
-#: hiddifypanel/panel/admin/SettingAdmin.py:207
+#: hiddifypanel/panel/admin/SettingAdmin.py:208
 #: hiddifypanel/panel/commercial/CommercialSettings.py:182
 msgid "Invalid admin link"
 msgstr "Invalid Admin Link"
 
 # | msgid "Invalid Telegram Bot Token"
-#: hiddifypanel/panel/admin/SettingAdmin.py:209
+#: hiddifypanel/panel/admin/SettingAdmin.py:210
 #: hiddifypanel/panel/commercial/CommercialSettings.py:184
 msgid "config.Invalid telegram bot token"
 msgstr "Invalid Telegram Bot Token"
 
 # | msgid ""
 # | "Invalid Link. it should be on this format: (https or http://example.com)"
-#: hiddifypanel/panel/admin/SettingAdmin.py:211
+#: hiddifypanel/panel/admin/SettingAdmin.py:212
 #: hiddifypanel/panel/commercial/CommercialSettings.py:186
 msgid "config.Invalid brand link"
 msgstr ""
@@ -835,7 +835,7 @@ msgstr ""
 # | msgid ""
 # | "Invalid UUID secret. example: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n"
 # | "\n"
-#: hiddifypanel/panel/admin/SettingAdmin.py:215
+#: hiddifypanel/panel/admin/SettingAdmin.py:216
 #: hiddifypanel/panel/commercial/CommercialSettings.py:190
 msgid "config.invalid uuid"
 msgstr ""
@@ -843,14 +843,14 @@ msgstr ""
 "\n"
 
 # | msgid "Invalid Proxy Path. It should be ASCI string (a-z A-Z 0-9)"
-#: hiddifypanel/panel/admin/SettingAdmin.py:219
+#: hiddifypanel/panel/admin/SettingAdmin.py:220
 #: hiddifypanel/panel/commercial/CommercialSettings.py:194
 msgid "config.Invalid proxy path"
 msgstr "Invalid Proxy Path. It should be ASCI string (a-z A-Z 0-9)"
 
 # | msgid "Invalid Port. it should be comma separated Integer e.g.  2052,2053"
-#: hiddifypanel/panel/admin/SettingAdmin.py:224
-#: hiddifypanel/panel/admin/SettingAdmin.py:227
+#: hiddifypanel/panel/admin/SettingAdmin.py:225
+#: hiddifypanel/panel/admin/SettingAdmin.py:228
 #: hiddifypanel/panel/commercial/CommercialSettings.py:199
 #: hiddifypanel/panel/commercial/CommercialSettings.py:202
 msgid "config.Invalid port"
@@ -2566,7 +2566,7 @@ msgid "Hiddify Android"
 msgstr "Hiddify Android "
 
 # | msgid ""
-# | "Please install Hiddify Android from %(dl_link)s or %(play_link)s. \n"
+# | "Please install Hiddify Android from %(dl_link)s  %(play_link)s. \n"
 # | "\n"
 # | "<!--\n"
 # | "<div class=\"callout callout-danger\">\n"
@@ -2602,11 +2602,11 @@ msgstr "Hiddify Android "
 # | "            \n"
 # | "        </details>\n"
 # | "    </div>\n"
-# | "</details>\n"
+# | "</details>"
 #: hiddifypanel/panel/user/templates/home/android.html:72
 msgid "user.home.android.intro"
 msgstr ""
-"Please install Hiddify Android from %(dl_link)s or %(play_link)s. \n"
+"Please install Hiddify Android from %(dl_link)s  %(play_link)s. \n"
 "\n"
 "<!--\n"
 "<div class=\"callout callout-danger\">\n"
@@ -2642,7 +2642,7 @@ msgstr ""
 "\n"
 "        </details>\n"
 "    </div>\n"
-"</details>\n"
+"</details>"
 
 # | msgid "Test"
 #: hiddifypanel/panel/user/templates/home/base2.html:36

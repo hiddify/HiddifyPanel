@@ -30,7 +30,7 @@ class SettingAdmin(FlaskView):
 
     @hiddify.super_admin
     def post(self):
-        set_hconfig(first_setup, False)
+        set_hconfig(ConfigEnum.first_setup, False)
         form=get_config_form()
         reset_action=None
         if form.validate_on_submit():

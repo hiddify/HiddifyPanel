@@ -21,6 +21,7 @@ class Dashboard(FlaskView):
         ))
         
     def index(self):
+        print(hconfig(ConfigEnum.first_setup))
         if hconfig(ConfigEnum.first_setup):
             return redirect(url_for("admin.QuickSetup:index"))
         if hiddifypanel.__release_date__ +datetime.timedelta(days=20)<datetime.datetime.now():
