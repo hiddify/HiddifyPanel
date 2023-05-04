@@ -1,6 +1,18 @@
 # Changelog
 
 
+## 6.4.2 (2023-05-04)
+
+#### Changes
+
+* Fix shadowtls. 
+
+#### Other
+
+* Remove shadow tls from sub link. 
+
+
+
 ## 6.4.1 (2023-05-04)
 
 #### New
