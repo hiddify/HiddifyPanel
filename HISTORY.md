@@ -1,6 +1,14 @@
 # Changelog
 
 
+## 6.1.7 (2023-05-04)
+
+#### New
+
+* Add HiddifyNG google play link. 
+
+
+
 ## 6.1.6 (2023-05-04)
 
 #### Other
