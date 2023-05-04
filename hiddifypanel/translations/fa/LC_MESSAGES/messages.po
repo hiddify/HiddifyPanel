@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-04 23:03+0200\n"
-"PO-Revision-Date: 2023-05-04 11:44-0500\n"
+"POT-Creation-Date: 2023-05-04 23:09+0200\n"
+"PO-Revision-Date: 2023-05-04 16:06-0500\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -1263,13 +1263,15 @@ msgstr ""
 "این گزینه یک کانفیگ فیک در لینک ساب کاربر ایجاد میکند که حجم باقیمانده و "
 "تاریخ انقضا کاربر را نشان می‌دهد"
 
+# | msgid "Enable WARP"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.warp_enable.label"
-msgstr ""
+msgstr "فعالسازی WARP"
 
+# | msgid "WARP helps you bypass Google, Spotify and Netflix block"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.warp_enable.description"
-msgstr ""
+msgstr "WARP به شما کمک می کند تا بلاک گوگل، اسپاتیفای و نتفلیکس را دور بزنید"
 
 # | msgid "Decoy Site"
 #: hiddifypanel/panel/admin/templates/configfake.html:6

@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-04 23:03+0200\n"
-"PO-Revision-Date: 2023-05-04 11:44-0500\n"
+"POT-Creation-Date: 2023-05-04 23:09+0200\n"
+"PO-Revision-Date: 2023-05-04 16:06-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -1223,13 +1223,16 @@ msgstr "在子链接中显示用法"
 msgid "config.show_usage_in_sublink.description"
 msgstr "该选项在用户的子链接中创建一个 Fake Config，显示用户的剩余音量"
 
+# | msgid "Enable WARP"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.warp_enable.label"
 msgstr ""
 
+# | msgid "WARP helps you bypass Google, Spotify and Netflix block"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
 msgid "config.warp_enable.description"
-msgstr ""
+msgstr "WARP 帮助您绕过 Google、Spotify 和 Netflix 的封锁"
 
 # | msgid "Decoy Site"
 #: hiddifypanel/panel/admin/templates/configfake.html:6

@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-04 23:03+0200\n"
-"PO-Revision-Date: 2023-05-04 11:44-0500\n"
+"POT-Creation-Date: 2023-05-04 23:09+0200\n"
+"PO-Revision-Date: 2023-05-04 16:06-0500\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -1227,15 +1227,16 @@ msgstr ""
 "This option creates a Fake Config in the user's sub link that shows the "
 "user's remaining volume"
 
+# | msgid "Enable WARP"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.warp_enable.label"
-msgstr "config.warp_enable.label"
+msgstr "Enable WARP"
 
+# | msgid "WARP helps you bypass Google, Spotify and Netflix block"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
-#, fuzzy
 msgid "config.warp_enable.description"
-msgstr "config.warp_enable.description"
+msgstr "WARP helps you bypass Google, Spotify and Netflix block"
 
 # | msgid "Decoy Site"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
