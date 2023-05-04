@@ -112,7 +112,7 @@ class UserAdmin(AdminLTEModelView):
         # print("model.telegram_id",model.telegram_id)
         extra=""
         if hconfig(ConfigEnum.telegram_bot_token) and  model.telegram_id:
-            extra=f'<button class="btn btn-warning btn-xs " onclick="show_send_message({model.id})" ><i class="fa-solid fa-paper-plane"></i></button> '
+            extra=f'<button class="btn hbtn bg-h-blue btn-xs " onclick="show_send_message({model.id})" ><i class="fa-solid fa-paper-plane"></i></button> '
 
         link=''
         if model.is_active:

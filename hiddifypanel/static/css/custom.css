@@ -172,8 +172,11 @@ legend {
 .dark-mode pre{
   color:white
 }
-.dark-mode .callout a{
+.dark-mode .callout a:not(.btn){
   color:#b0b8bf 
+} 
+.callout a{
+  text-decoration: none;
 }
 @media only screen and (max-width: 600px) {
   .main-footer .nav{
@@ -191,7 +194,7 @@ justify-content: center !important;
   background: #232390 linear-gradient(180deg, #232390, #232390) repeat-x !important;
 border: #232390;
 }
-.dark-mode .content-wrapper {
+.dark-mode, .dark-mode .content-wrapper {
   background: #0a0a24 linear-gradient(180deg, #0a0a24, #232390) repeat-x !important;
 color: #0a0a24;
 }
