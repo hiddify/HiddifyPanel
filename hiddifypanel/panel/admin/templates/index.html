@@ -115,7 +115,7 @@
         color_class="bg-h-red"
 )}}
 
-    {{info_box("cpu","fa-solid fa-microchip", _("CPU"), 
+    {{info_box("cpu","fa-solid fa-microchip", _("CPU %(cores)s Cores", cores=stats['system']['num_cpus']), 
             ((stats['system']['load_avg_5min']*100)|int) ~ " % "  , 
             (stats['system']['load_avg_5min']*100)|int, 
             ('<i class="fa-solid fa-gauge"></i> '|safe) ~  stats['top5']['cpu'][0][0] ~ " &rlm;"|safe ~ ((stats['top5']['cpu'][0][1])|int) ~ "% &rlm;"|safe~
@@ -125,7 +125,7 @@
             color_class="bg-h-grey"
     )}}
     {{info_box("ram","fa-solid fa-memory", _("RAM"), 
-            (stats['system']['ram_used']|round(1)) ~ " / " ~ (stats['system']['ram_total']|round(1)) ~ "GB (" ~((stats['system']['ram_used']*100/stats['system']['ram_total'])|int)~" %)", 
+            (stats['system']['ram_used']|round(3)) ~ " / " ~ (stats['system']['ram_total']|round(3)) ~ "GB (" ~((stats['system']['ram_used']*100/stats['system']['ram_total'])|int)~" %)", 
             stats['system']['ram_used']*100/stats['system']['ram_total'], 
             ('<i class="fa-solid fa-gauge"></i> '|safe) ~  stats['top5']['memory'][0][0] ~ " &rlm;"|safe ~ ((stats['top5']['memory'][0][1]*100/stats['system']['ram_total'])|int) ~ "% &rlm;"|safe~
             ('<i class="fa-solid fa-gauge"></i> '|safe) ~  stats['top5']['memory'][1][0] ~ " &rlm;"|safe ~ ((stats['top5']['memory'][1][1]*100/stats['system']['ram_total'])|int) ~ "% &rlm;"|safe~

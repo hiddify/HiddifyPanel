@@ -109,6 +109,7 @@ def make_proxy(proxy, domain_db, phttp=80, ptls=443):
         base['reality_short_id']=random.sample(hconfigs[ConfigEnum.reality_short_ids].split(','),1)[0]
         base['reality_pbk']=hconfigs[ConfigEnum.reality_public_key]
         base['sni']=random.sample(hconfigs[ConfigEnum.reality_server_names].split(","),1)[0]
+        del base['host']
         if base.get('fingerprint','none')!='none':
             base['fingerprint']="chrome"
         # if not domain_db.cdn_ip:

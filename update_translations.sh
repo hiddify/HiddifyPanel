@@ -1,7 +1,10 @@
 #!/bin/bash
 source .env
 
+
 PATH=/config/.local/bin:$PATH
+
+python3 -c "import hiddifypanel;print(''.join([f'{{{{_(\"config.{c}.label\")}}}} {{{{_(\"config.{c}.description\")}}}}' for c in hiddifypanel.models.ConfigEnum]));print(''.join([f'{{{{_(\"config.{cat}.label\")}}}}{{{{_(\"config.{cat}.description\")}}}}' for cat in hiddifypanel.models.ConfigCategory]))" > hiddifypanel/templates/fake.html
 pybabel extract -F babel.cfg -o messages.pot hiddifypanel
 
 wget -O hiddifypanel/translations/en/LC_MESSAGES/messages.po  "https://localise.biz/api/export/locale/en-US.po?index=id&key=5Tqp1dLHQSk98s-twNF6RpwZu7lZSLLM"

@@ -75,6 +75,7 @@ def system_stats():
         "load_avg_1min": load_avg[0],
         "load_avg_5min": load_avg[1],
         "load_avg_15min": load_avg[2],
+        'num_cpus':num_cpus
     }
 
 

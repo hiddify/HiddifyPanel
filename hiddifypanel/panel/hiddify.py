@@ -98,7 +98,7 @@ def get_ip(version, retry=3):
 
 def get_available_proxies(child_id):
     proxies = Proxy.query.filter(Proxy.child_id==child_id).all()
-
+    proxies = [c for c in proxies if 'restls' not in c.transport]
     if not hconfig(ConfigEnum.domain_fronting_domain,child_id):
         proxies = [c for c in proxies if 'Fake' not in c.cdn]
     if not hconfig(ConfigEnum.ssfaketls_enable,child_id):

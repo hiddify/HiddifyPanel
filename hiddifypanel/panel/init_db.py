@@ -75,7 +75,7 @@ def init_db():
         db.session.add(Child(unique_id="self",id=0))
         db.session.commit()
     
-    for ver in range(1,40):
+    for ver in range(1,60):
         if ver<=db_version:continue
         
         db_action=sys.modules[__name__].__dict__.get(f'_v{ver}',None)
@@ -94,9 +94,9 @@ def init_db():
     db.session.commit()
     return BoolConfig.query.all()
 
-def _v37():
+def _v38():
+    add_config_if_not_exist(ConfigEnum.dns_server,"1.1.1.1")
     add_config_if_not_exist(ConfigEnum.warp_mode,"all" if hconfig(ConfigEnum.warp_enable) else "none")
-def _v36():
     add_config_if_not_exist(ConfigEnum.warp_plus_code,'')
 def _v34():
     add_config_if_not_exist(ConfigEnum.show_usage_in_sublink,False)
@@ -201,7 +201,7 @@ def _v1():
             StrConfig(key=ConfigEnum.proxy_path,value=get_random_string()),
             BoolConfig(key=ConfigEnum.firewall,value=True),
             BoolConfig(key=ConfigEnum.netdata,value=True),
-            StrConfig(key=ConfigEnum.lang,value='fa'),
+            StrConfig(key=ConfigEnum.lang,value='en'),
             BoolConfig(key=ConfigEnum.block_iran_sites,value=True),
             BoolConfig(key=ConfigEnum.allow_invalid_sni,value=True),
             BoolConfig(key=ConfigEnum.kcp_enable,value=False),

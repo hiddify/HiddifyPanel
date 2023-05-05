@@ -42,6 +42,7 @@ class ConfigEnum(StrEnum):
     warp_enable=auto()
     warp_mode=auto()
     warp_plus_code=auto()
+    dns_server=auto()
     reality_fallback_domain=auto()
     reality_server_names=auto()
     reality_short_ids=auto()
@@ -133,6 +134,7 @@ class ConfigEnum(StrEnum):
           return cls.not_found #"key not found"
     def info(self):
         map = {
+            self.dns_server:{'category': ConfigCategory.general,'apply_mode':'apply'},
             self.warp_enable:{'category': ConfigCategory.hidden,'type':bool,'apply_mode':'restart'},
             self.warp_mode:{'category': ConfigCategory.warp,'apply_mode':'apply'},
             self.warp_plus_code:{'category': ConfigCategory.warp,'apply_mode':'apply'},
@@ -162,7 +164,7 @@ class ConfigEnum(StrEnum):
 
             self.utls: {'category': ConfigCategory.advanced,'commercial':True},
             self.package_mode: {'category': ConfigCategory.advanced,'show_in_parent':True,'commercial':True},
-            self.telegram_bot_token: {'category': ConfigCategory.advanced,'show_in_parent':True,'commercial':True},
+            self.telegram_bot_token: {'category': ConfigCategory.telegram,'show_in_parent':True,'commercial':True},
             self.is_parent:{'category': ConfigCategory.hidden,'type':bool},
             self.parent_panel:{'category': ConfigCategory.hidden, 'commercial':True},
             self.unique_id:{'category': ConfigCategory.hidden,},
