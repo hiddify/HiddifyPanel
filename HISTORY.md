@@ -1,6 +1,14 @@
 # Changelog
 
 
+## 6.5.0 (2023-05-05)
+
+#### New
+
+* Add mode for warp. 
+
+
+
 ## 6.4.2 (2023-05-04)
 
 #### Changes
