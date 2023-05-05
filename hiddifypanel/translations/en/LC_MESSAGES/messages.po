@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-05 07:31+0200\n"
-"PO-Revision-Date: 2023-05-05 00:30-0500\n"
+"POT-Creation-Date: 2023-05-05 08:02+0200\n"
+"PO-Revision-Date: 2023-05-05 00:43-0500\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -101,19 +101,19 @@ msgid "Package ended!"
 msgstr "Package Ended"
 
 # | msgid "Rebooting System ... This may take a few minutes. Please Wait ..."
-#: hiddifypanel/panel/admin/Actions.py:72
+#: hiddifypanel/panel/admin/Actions.py:75
 msgid "rebooting system may takes time please wait"
 msgstr "Rebooting System ... This may take a few minutes. Please Wait ..."
 
 # | msgid "Can not sync child with Parent Panel."
-#: hiddifypanel/panel/admin/Actions.py:88
+#: hiddifypanel/panel/admin/Actions.py:91
 msgid "can not sync child with parent panel"
 msgstr "Can not sync child with Parent Panel."
 
 # | msgid ""
 # | "⚠️ Your Domains Changed. please do not forget to copy Admin links, "
 # | "otherwise you can not access to the panel anymore"
-#: hiddifypanel/panel/admin/Actions.py:94
+#: hiddifypanel/panel/admin/Actions.py:97
 msgid ""
 "Your domains changed. Please do not forget to copy admin links, otherwise "
 "you can not access to the panel anymore."
@@ -124,7 +124,7 @@ msgstr ""
 # | msgid ""
 # | "Please wait about 5 minutes to make sure everything is updated. during "
 # | "this time, please copy and save your Proxy links which are:"
-#: hiddifypanel/panel/admin/Actions.py:121
+#: hiddifypanel/panel/admin/Actions.py:124
 msgid ""
 "Success! Please wait around 4 minutes to make sure everything is updated. "
 "During this time, please save your proxy links which are:"
@@ -133,14 +133,14 @@ msgstr ""
 "time, please copy and save your Proxy links which are:"
 
 # | msgid "📑 See the log in the bellow screen"
-#: hiddifypanel/panel/admin/Actions.py:154
+#: hiddifypanel/panel/admin/Actions.py:157
 msgid "see the log in the bellow screen"
 msgstr "📑 See the log in the bellow screen"
 
 # | msgid ""
 # | "✔️ Success! Please Wait around 5 minutes to make sure everything is "
 # | "updated"
-#: hiddifypanel/panel/admin/Actions.py:183
+#: hiddifypanel/panel/admin/Actions.py:186
 msgid ""
 "Success! Please wait around 5 minutes to make sure everything is updated."
 msgstr ""
@@ -1784,10 +1784,11 @@ msgstr ""
 "google, spotify, netflix, openai, ipinfo.io\n"
 "They use WARP."
 
+# | msgid "WARP"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
 msgid "config.warp.label"
-msgstr "config.warp.label"
+msgstr "WARP"
 
 # | msgid ""
 # | "Warp is a tool that hides your server IP from the sites that your users "
