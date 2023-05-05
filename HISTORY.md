@@ -1,6 +1,18 @@
 # Changelog
 
 
+## 6.5.2 (2023-05-05)
+
+#### New
+
+* Add dns. 
+
+#### Fix
+
+* Colors and result dialog. 
+
+
+
 ## 6.5.1 (2023-05-05)
 
 #### New
