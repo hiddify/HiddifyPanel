@@ -25,6 +25,7 @@ class ConfigCategory(StrEnum):
     telegram=auto()
     http=auto()
     tls=auto()
+    
     ssfaketls=auto()
     shadowtls=auto()
     restls=auto()
@@ -34,10 +35,12 @@ class ConfigCategory(StrEnum):
     hidden=auto()
     advanced=auto()
     too_advanced=auto()
+    warp=auto()
     reality=auto()
 class ConfigEnum(StrEnum):
     first_setup=auto()
     warp_enable=auto()
+    warp_mode=auto()
     warp_plus_code=auto()
     reality_fallback_domain=auto()
     reality_server_names=auto()
@@ -130,8 +133,9 @@ class ConfigEnum(StrEnum):
           return cls.not_found #"key not found"
     def info(self):
         map = {
-            self.warp_enable:{'category': ConfigCategory.general,'type':bool,'apply_mode':'restart'},
-            self.warp_plus_code:{'category': ConfigCategory.general,'apply_mode':'apply'},
+            self.warp_enable:{'category': ConfigCategory.hidden,'type':bool,'apply_mode':'restart'},
+            self.warp_mode:{'category': ConfigCategory.warp,'apply_mode':'apply'},
+            self.warp_plus_code:{'category': ConfigCategory.warp,'apply_mode':'apply'},
             self.restls1_2_domain:{'category': ConfigCategory.hidden},
             self.restls1_3_domain:{'category': ConfigCategory.hidden},
             self.first_setup:{'category': ConfigCategory.hidden,'type':bool},

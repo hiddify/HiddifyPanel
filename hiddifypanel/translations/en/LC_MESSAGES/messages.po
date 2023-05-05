@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-04 23:38+0200\n"
-"PO-Revision-Date: 2023-05-04 16:38-0500\n"
+"POT-Creation-Date: 2023-05-05 07:31+0200\n"
+"PO-Revision-Date: 2023-05-05 00:30-0500\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -271,7 +271,7 @@ msgstr "Select this option to restore your domains"
 #: hiddifypanel/panel/admin/ProxyAdmin.py:124
 #: hiddifypanel/panel/admin/QuickSetup.py:81
 #: hiddifypanel/panel/admin/QuickSetup.py:108
-#: hiddifypanel/panel/admin/SettingAdmin.py:244
+#: hiddifypanel/panel/admin/SettingAdmin.py:250
 #: hiddifypanel/panel/commercial/CommercialSettings.py:218
 msgid "Submit"
 msgstr "Submit"
@@ -497,6 +497,7 @@ msgid "Alias"
 msgstr "Alias"
 
 #: hiddifypanel/panel/admin/DomainAdmin.py:107
+#: hiddifypanel/panel/admin/SettingAdmin.py:176
 msgid "All"
 msgstr "All"
 
@@ -566,21 +567,21 @@ msgstr "Admin Panel Language"
 
 # | msgid "🇺🇸 English انگلیسی 英语"
 #: hiddifypanel/panel/admin/QuickSetup.py:78
-#: hiddifypanel/panel/admin/SettingAdmin.py:172
+#: hiddifypanel/panel/admin/SettingAdmin.py:178
 #: hiddifypanel/panel/commercial/CommercialSettings.py:150
 msgid "lang.en"
 msgstr "🇺🇸 English انگلیسی 英语"
 
 # | msgid "🇮🇷 Persian فارسی 波斯语"
 #: hiddifypanel/panel/admin/QuickSetup.py:78
-#: hiddifypanel/panel/admin/SettingAdmin.py:172
+#: hiddifypanel/panel/admin/SettingAdmin.py:178
 #: hiddifypanel/panel/commercial/CommercialSettings.py:150
 msgid "lang.fa"
 msgstr "🇮🇷 Persian فارسی 波斯语"
 
 # | msgid "🇨🇳 Chinese چینی 中国人"
 #: hiddifypanel/panel/admin/QuickSetup.py:78
-#: hiddifypanel/panel/admin/SettingAdmin.py:172
+#: hiddifypanel/panel/admin/SettingAdmin.py:178
 #: hiddifypanel/panel/commercial/CommercialSettings.py:150
 msgid "lang.zh"
 msgstr "🇨🇳 Chinese چینی 中国人"
@@ -600,14 +601,14 @@ msgstr "Country"
 
 # | msgid "🇮🇷 Iran"
 #: hiddifypanel/panel/admin/QuickSetup.py:80
-#: hiddifypanel/panel/admin/SettingAdmin.py:174
+#: hiddifypanel/panel/admin/SettingAdmin.py:180
 #: hiddifypanel/panel/commercial/CommercialSettings.py:152
 msgid "Iran"
 msgstr "🇮🇷 Iran"
 
 # | msgid "🇨🇳 China"
 #: hiddifypanel/panel/admin/QuickSetup.py:80
-#: hiddifypanel/panel/admin/SettingAdmin.py:174
+#: hiddifypanel/panel/admin/SettingAdmin.py:180
 #: hiddifypanel/panel/commercial/CommercialSettings.py:152
 msgid "China"
 msgstr "🇨🇳 China"
@@ -624,8 +625,8 @@ msgstr ""
 
 # | msgid "Error! Invalid Domain.  The Domain Format is www.google.com"
 #: hiddifypanel/panel/admin/QuickSetup.py:97
-#: hiddifypanel/panel/admin/SettingAdmin.py:192
-#: hiddifypanel/panel/admin/SettingAdmin.py:195
+#: hiddifypanel/panel/admin/SettingAdmin.py:198
+#: hiddifypanel/panel/admin/SettingAdmin.py:201
 #: hiddifypanel/panel/commercial/CommercialSettings.py:170
 #: hiddifypanel/panel/commercial/CommercialSettings.py:173
 msgid "config.Invalid domain"
@@ -634,8 +635,8 @@ msgstr "Error! Invalid Domain.  The Domain Format is www.google.com"
 # | msgid "Domain is exist in domains section. Use another Domain"
 #: hiddifypanel/panel/admin/QuickSetup.py:99
 #: hiddifypanel/panel/admin/QuickSetup.py:100
-#: hiddifypanel/panel/admin/SettingAdmin.py:199
-#: hiddifypanel/panel/admin/SettingAdmin.py:200
+#: hiddifypanel/panel/admin/SettingAdmin.py:205
+#: hiddifypanel/panel/admin/SettingAdmin.py:206
 #: hiddifypanel/panel/commercial/CommercialSettings.py:177
 #: hiddifypanel/panel/commercial/CommercialSettings.py:178
 msgid "config.Domain already used"
@@ -739,49 +740,59 @@ msgstr "Domain is not REALITY friendly!"
 msgid "REALITY Fallback domain is not compaitble with server names!"
 msgstr "REALITY Fallback Domain is not compaitble with Server names!"
 
+#: hiddifypanel/panel/admin/SettingAdmin.py:176
+#: hiddifypanel/panel/user/templates/home/usage.html:10
+msgid "Disable"
+msgstr "Disable"
+
+#: hiddifypanel/panel/admin/SettingAdmin.py:176
+#, fuzzy
+msgid "Only Blocked and Local websites"
+msgstr "Only Blocked and Local websites"
+
 # | msgid "🇺🇳 Others"
-#: hiddifypanel/panel/admin/SettingAdmin.py:174
+#: hiddifypanel/panel/admin/SettingAdmin.py:180
 msgid "Others"
 msgstr "🇺🇳 Others"
 
 # | msgid "✅ Release"
-#: hiddifypanel/panel/admin/SettingAdmin.py:176
+#: hiddifypanel/panel/admin/SettingAdmin.py:182
 #: hiddifypanel/panel/commercial/CommercialSettings.py:154
 msgid "Release"
 msgstr "✅ Release"
 
 # | msgid "⚠️ Develop"
-#: hiddifypanel/panel/admin/SettingAdmin.py:176
+#: hiddifypanel/panel/admin/SettingAdmin.py:182
 #: hiddifypanel/panel/commercial/CommercialSettings.py:154
 msgid "Develop"
 msgstr "⚠️ Develop"
 
 # | msgid "✅ Python : Low Performance"
-#: hiddifypanel/panel/admin/SettingAdmin.py:182
+#: hiddifypanel/panel/admin/SettingAdmin.py:188
 #: hiddifypanel/panel/commercial/CommercialSettings.py:160
 msgid "lib.telegram.python"
 msgstr "✅ Python : Low Performance"
 
 # | msgid "✅ Go : High Performance - No ad Support"
-#: hiddifypanel/panel/admin/SettingAdmin.py:182
+#: hiddifypanel/panel/admin/SettingAdmin.py:188
 #: hiddifypanel/panel/commercial/CommercialSettings.py:160
 msgid "lib.telegram.go"
 msgstr "✅ Go : High Performance - No ad Support"
 
 # | msgid "⛔️ Not Working - Original : High Performance"
-#: hiddifypanel/panel/admin/SettingAdmin.py:182
+#: hiddifypanel/panel/admin/SettingAdmin.py:188
 #: hiddifypanel/panel/commercial/CommercialSettings.py:160
 msgid "lib.telegram.orignal"
 msgstr "⛔️ Not Working - Original : High Performance"
 
 # | msgid "⛔️ NOT Working - Erlang : Medium Performance"
-#: hiddifypanel/panel/admin/SettingAdmin.py:182
+#: hiddifypanel/panel/admin/SettingAdmin.py:188
 #: hiddifypanel/panel/commercial/CommercialSettings.py:160
 msgid "lib.telegram.erlang"
 msgstr "⛔️ NOT Working - Erlang : Medium Performance"
 
 # | msgid "Telegram Proxy Library"
-#: hiddifypanel/panel/admin/SettingAdmin.py:183
+#: hiddifypanel/panel/admin/SettingAdmin.py:189
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/panel/commercial/CommercialSettings.py:161
 msgid "config.telegram_lib.label"
@@ -792,7 +803,7 @@ msgstr "Telegram Proxy Library"
 # | "only Python works in all servers, others may have some issue. Test Proxy
 # "
 # | "after changing it."
-#: hiddifypanel/panel/admin/SettingAdmin.py:183
+#: hiddifypanel/panel/admin/SettingAdmin.py:189
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/panel/commercial/CommercialSettings.py:161
 msgid "config.telegram_lib.description"
@@ -802,31 +813,31 @@ msgstr ""
 "changing it."
 
 # | msgid "Test and Suggest Domain "
-#: hiddifypanel/panel/admin/SettingAdmin.py:203
+#: hiddifypanel/panel/admin/SettingAdmin.py:209
 #, fuzzy
 msgid "Example Domains"
 msgstr "Test and Suggest Domain "
 
 # | msgid "Invalid REALITY Hostnames"
-#: hiddifypanel/panel/admin/SettingAdmin.py:205
+#: hiddifypanel/panel/admin/SettingAdmin.py:211
 msgid "Invalid REALITY hostnames"
 msgstr "Invalid REALITY Hostnames"
 
 # | msgid "Invalid Admin Link"
-#: hiddifypanel/panel/admin/SettingAdmin.py:208
+#: hiddifypanel/panel/admin/SettingAdmin.py:214
 #: hiddifypanel/panel/commercial/CommercialSettings.py:182
 msgid "Invalid admin link"
 msgstr "Invalid Admin Link"
 
 # | msgid "Invalid Telegram Bot Token"
-#: hiddifypanel/panel/admin/SettingAdmin.py:210
+#: hiddifypanel/panel/admin/SettingAdmin.py:216
 #: hiddifypanel/panel/commercial/CommercialSettings.py:184
 msgid "config.Invalid telegram bot token"
 msgstr "Invalid Telegram Bot Token"
 
 # | msgid ""
 # | "Invalid Link. it should be on this format: (https or http://example.com)"
-#: hiddifypanel/panel/admin/SettingAdmin.py:212
+#: hiddifypanel/panel/admin/SettingAdmin.py:218
 #: hiddifypanel/panel/commercial/CommercialSettings.py:186
 msgid "config.Invalid brand link"
 msgstr ""
@@ -835,7 +846,7 @@ msgstr ""
 # | msgid ""
 # | "Invalid UUID secret. example: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n"
 # | "\n"
-#: hiddifypanel/panel/admin/SettingAdmin.py:216
+#: hiddifypanel/panel/admin/SettingAdmin.py:222
 #: hiddifypanel/panel/commercial/CommercialSettings.py:190
 msgid "config.invalid uuid"
 msgstr ""
@@ -843,14 +854,14 @@ msgstr ""
 "\n"
 
 # | msgid "Invalid Proxy Path. It should be ASCI string (a-z A-Z 0-9)"
-#: hiddifypanel/panel/admin/SettingAdmin.py:220
+#: hiddifypanel/panel/admin/SettingAdmin.py:226
 #: hiddifypanel/panel/commercial/CommercialSettings.py:194
 msgid "config.Invalid proxy path"
 msgstr "Invalid Proxy Path. It should be ASCI string (a-z A-Z 0-9)"
 
 # | msgid "Invalid Port. it should be comma separated Integer e.g.  2052,2053"
-#: hiddifypanel/panel/admin/SettingAdmin.py:225
-#: hiddifypanel/panel/admin/SettingAdmin.py:228
+#: hiddifypanel/panel/admin/SettingAdmin.py:231
+#: hiddifypanel/panel/admin/SettingAdmin.py:234
 #: hiddifypanel/panel/commercial/CommercialSettings.py:199
 #: hiddifypanel/panel/commercial/CommercialSettings.py:202
 msgid "config.Invalid port"
@@ -1227,17 +1238,6 @@ msgstr ""
 "This option creates a Fake Config in the user's sub link that shows the "
 "user's remaining volume"
 
-# | msgid "Enable WARP"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-#, fuzzy
-msgid "config.warp_enable.label"
-msgstr "Enable WARP"
-
-# | msgid "WARP helps you bypass Google, Spotify and Netflix block"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.warp_enable.description"
-msgstr "WARP helps you bypass Google, Spotify and Netflix block"
-
 # | msgid "Decoy Site"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.decoy_domain.label"
@@ -1252,23 +1252,6 @@ msgid "config.decoy_domain.description"
 msgstr ""
 "Fake Site: simulates a site when someone visits your Domain.\n"
 "Please do not use Iranian Sites, Popular well known sites like: Google, Yahoo, Wikipedia, etc"
-
-# | msgid "WARP plus code"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-#, fuzzy
-msgid "config.warp_plus_code.label"
-msgstr "WARP plus code"
-
-# | msgid ""
-# | "Increases browsing speed. To get the code, go to <a href=\"https://t."
-# | "me/hiddify_board\"> here </a>\n"
-# | "send a message"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-#, fuzzy
-msgid "config.warp_plus_code.description"
-msgstr ""
-"Increases browsing speed. To get the code, go to <a href=\"https://t.me/hiddify_board\"> here </a>\n"
-"send a message"
 
 # | msgid "General Settings"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1761,6 +1744,62 @@ msgstr ""
 "Specify The Proxy Path. It is important especially if you are using HTTP and"
 " VMess"
 
+# | msgid "WARP plus code"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.warp_plus_code.label"
+msgstr "WARP plus code"
+
+# | msgid ""
+# | "Increases browsing speed. To get the code, go to <a href=\"https://t."
+# | "me/hiddify_board\"> here </a>\n"
+# | "send a message\n"
+# | "<br>\n"
+# | "If there is an error in this code, the warp will be disabled."
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.warp_plus_code.description"
+msgstr ""
+"Increases browsing speed. To get the code, go to <a href=\"https://t.me/hiddify_board\"> here </a>\n"
+"send a message\n"
+"<br>\n"
+"If there is an error in this code, the warp will be disabled."
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.warp_mode.label"
+msgstr "config.warp_mode.label"
+
+# | msgid ""
+# | "All: All sites are removed from WARP\n"
+# | "Only domestic and blocked sites: only Iranian sites and\n"
+# | "google, spotify, netflix, openai, ipinfo.io\n"
+# | "They use WARP."
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.warp_mode.description"
+msgstr ""
+"All: All sites are removed from WARP\n"
+"Only domestic and blocked sites: only Iranian sites and\n"
+"google, spotify, netflix, openai, ipinfo.io\n"
+"They use WARP."
+
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.warp.label"
+msgstr "config.warp.label"
+
+# | msgid ""
+# | "Warp is a tool that hides your server IP from the sites that your users "
+# | "visit.\n"
+# | "For example, if you have a problem with Google, it may be fixed."
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.warp.description"
+msgstr ""
+"Warp is a tool that hides your server IP from the sites that your users visit.\n"
+"For example, if you have a problem with Google, it may be fixed."
+
 # | msgid "🆔 Short IDs"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 msgid "config.reality_short_ids.label"
@@ -1834,6 +1873,17 @@ msgstr "config.first_setup.label"
 #, fuzzy
 msgid "config.first_setup.description"
 msgstr "config.first_setup.description"
+
+# | msgid "Enable WARP"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#, fuzzy
+msgid "config.warp_enable.label"
+msgstr "Enable WARP"
+
+# | msgid "WARP helps you bypass Google, Spotify and Netflix block"
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+msgid "config.warp_enable.description"
+msgstr "WARP helps you bypass Google, Spotify and Netflix block"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #, fuzzy
@@ -3128,10 +3178,6 @@ msgstr ""
 #: hiddifypanel/panel/user/templates/home/usage.html:7
 msgid "user.home.usage.title"
 msgstr "Traffic Usage"
-
-#: hiddifypanel/panel/user/templates/home/usage.html:10
-msgid "Disable"
-msgstr "Disable"
 
 # | msgid "Of"
 #: hiddifypanel/panel/user/templates/home/usage.html:12

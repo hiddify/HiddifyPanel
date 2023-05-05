@@ -172,6 +172,8 @@ def get_config_form():
             extra_info=''
             if c.key in bool_types:
                 field= SwitchField(_(f'config.{c.key}.label'), default=c.value,description=_(f'config.{c.key}.description')) 
+            elif c.key==ConfigEnum.warp_mode:
+                field=wtf.fields.SelectField(_(f"config.{c.key}.label"),choices=[("disable",_("Disable")),("all",_("All")),("custom",_("Only Blocked and Local websites"))],description=_(f"config.{c.key}.description"),default=hconfig(c.key))
             elif c.key==ConfigEnum.lang or c.key==ConfigEnum.admin_lang:
                 field=wtf.fields.SelectField(_(f"config.{c.key}.label"),choices=[("en",_("lang.en")),("fa",Markup(_("lang.fa"))),("zh",_("lang.zh"))],description=_(f"config.{c.key}.description"),default=hconfig(c.key))
             elif c.key==ConfigEnum.country :
