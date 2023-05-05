@@ -16,7 +16,7 @@
 </div>
 {%- endmacro -%}  
 
-<div class="alert alert-warning">
+<div class="alert alert-warning d-none" id="temporary_port">
   {{_("We have opened a temporary port (for 4 hours) to access the panel in case of any issues. Please copy this link.")}}
   {{temp_link()}}
   </div>
@@ -38,7 +38,7 @@
 <div>
 <h1>{{_('log')}}</h1>
   <a href="{{log_path}}" target="_blank" >{{_('Click here to see the complete log')}}</a><br>
-  <pre id='ilog' style="width:100%;height:500px;direction: ltr;" ></pre>
+  <div id='ilog' style="width:100%;height:500px;direction: ltr;" ></div>
 </div>
 
 % endif
@@ -83,7 +83,7 @@
       if (x.innerHTML!=response)
         x.innerHTML=response
       indx=response.indexOf("----Finished!---")
-      if (!finished && indx>0 &&indx<100){
+      if (!finished && indx>0 &&indx<700 &&seconds>5){
         set_progress(100)
         finished=true
         $("#progress").removeClass("bg-danger")
@@ -119,6 +119,7 @@
     }else{
       $("#progress").addClass("bg-danger")
       document.getElementById("count-down").innerHTML="Error!"
+      $("#temporary_port").show()
     }
   //   //x.contentWindow.scrollTo( 0, 999999 );
   }
