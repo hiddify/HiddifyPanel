@@ -33,7 +33,10 @@ class Actions(FlaskView):
             logs="".join(lines[::-1])
         # resp= Response()
         # resp.mimetype="text/plain"
-        out=f'<pre style="background-color:black; color:white;padding:10px">{logs}</pre>'
+        from ansi2html import Ansi2HTMLConverter
+        conv = Ansi2HTMLConverter()
+
+        out=f'<div style="background-color:black; color:white;padding:10px">{conv.convert(logs)}</div>'
         # if len(lines)>5 and "----Finished!---" in "".join(lines[-min(10,len(lines)):]):
         #     out=f"<a href='#' target='_blank'><div style='background-color:#b1eab1; padding: 10px;border: solid;'>Finished! For scrolling the log click here.</div></a>{out}"
 
@@ -234,3 +237,5 @@ def get_logpath(logfile):
         
 def get_domains():
     return [d.domain.replace("*",hiddify.get_random_string(3,6)) for d in get_panel_domains(always_add_all_domains=True,always_add_ip=True)]
+
+
