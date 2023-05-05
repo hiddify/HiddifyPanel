@@ -1,6 +1,18 @@
 # Changelog
 
 
+## 6.5.1 (2023-05-05)
+
+#### New
+
+* Add color in output. 
+
+#### Other
+
+* Update: lang. 
+
+
+
 ## 6.5.0 (2023-05-05)
 
 #### New
