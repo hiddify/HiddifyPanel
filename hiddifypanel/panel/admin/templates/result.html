@@ -38,7 +38,7 @@
 <div>
 <h1>{{_('log')}}</h1>
   <a href="{{log_path}}" target="_blank" >{{_('Click here to see the complete log')}}</a><br>
-  <div id='ilog' style="width:100%;height:500px;direction: ltr;" ></div>
+  <div id='ilog' style="width:100%;height:500px;direction: ltr;overflow: auto;" ></div>
 </div>
 
 % endif
@@ -75,15 +75,16 @@
   
     return sendNextRequest();
   }
-  
+  var old=''
   function get_log(){
     sendRequestsSequentially(log_urls)
     .then(response => {
       console.log(response);
-      if (x.innerHTML!=response)
+      if (old!=response)
         x.innerHTML=response
-      indx=response.indexOf("----Finished!---")
-      if (!finished && indx>0 &&indx<700 &&seconds>5){
+      old=response
+      indx=x.innerText.indexOf("----Finished!---")
+      if (!finished && indx>0 &&indx<200 &&seconds>5){
         set_progress(100)
         finished=true
         $("#progress").removeClass("bg-danger")

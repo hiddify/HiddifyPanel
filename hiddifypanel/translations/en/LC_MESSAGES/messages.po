@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-05 23:14+0200\n"
-"PO-Revision-Date: 2023-05-05 16:14-0500\n"
+"POT-Creation-Date: 2023-05-06 02:28+0200\n"
+"PO-Revision-Date: 2023-05-05 17:56-0500\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -649,12 +649,12 @@ msgstr "Error! Invalid Domain.  The Domain Format is www.google.com"
 msgid "config.Domain already used"
 msgstr "Domain is exist in domains section. Use another Domain"
 
-# | msgid "Enable Telegram MTProto"
+# | msgid "✔️ Enable Telegram MTProto"
 #: hiddifypanel/panel/admin/QuickSetup.py:103
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.telegram_enable.label"
-msgstr "Enable Telegram MTProto"
+msgstr "✔️ Enable Telegram MTProto"
 
 # | msgid ""
 # | "Telegram MTProto is used for Encapsulate Telegram Proxy as a tls traffic"
@@ -884,15 +884,15 @@ msgstr "Invalid Proxy Path. It should be ASCI string (a-z A-Z 0-9)"
 msgid "config.Invalid port"
 msgstr "Invalid Port. it should be comma separated Integer e.g.  2052,2053"
 
-# | msgid "Reset Package's Days"
+# | msgid "📆 Reset Package's Days"
 #: hiddifypanel/panel/admin/UserAdmin.py:26
 msgid "Reset package days"
-msgstr "Reset Package's Days"
+msgstr "📆 Reset Package's Days"
 
-# | msgid "Reset Package's Usage"
+# | msgid "⏳ Reset Package's Usage"
 #: hiddifypanel/panel/admin/UserAdmin.py:27
 msgid "Reset package usage"
-msgstr "Reset Package's Usage"
+msgstr "⏳ Reset Package's Usage"
 
 # | msgid "Usage Limit (GB)"
 #: hiddifypanel/panel/admin/UserAdmin.py:66
@@ -1148,11 +1148,11 @@ msgstr "User Area Language"
 msgid "config.lang.description"
 msgstr "Choose Language For Users Area"
 
-# | msgid "User Page Title"
+# | msgid "👁‍🗨 User Page Title"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.branding_title.label"
-msgstr "User Page Title"
+msgstr "👁‍🗨 User Page Title"
 
 # | msgid ""
 # | "Enter a customized title to be shown on user page. (before yser's Welcome
@@ -1166,14 +1166,13 @@ msgstr ""
 "Text)"
 
 # | msgid ""
-# | "Support Link (goes both on branding title and also on support section of
-# "
-# | "user page)"
+# | "🆔 Support Link (goes both on branding title and also on support section "
+# | "of user page)"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.branding_site.label"
 msgstr ""
-"Support Link (goes both on branding title and also on support section of "
+"🆔 Support Link (goes both on branding title and also on support section of "
 "user page)"
 
 # | msgid ""
@@ -1186,11 +1185,11 @@ msgstr ""
 "The link to be shown on support section of user's page.\n"
 "You can put also your Telegram Channel or Telegram PV here."
 
-# | msgid "Support Section Text"
+# | msgid "📢 Support Section Text"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.branding_freetext.label"
-msgstr "Support Section Text"
+msgstr "📢 Support Section Text"
 
 # | msgid ""
 # | "Branding Text. this box's text will be shown on support section of User's
@@ -1259,11 +1258,11 @@ msgstr "4⃣ Only IPv4"
 msgid "config.only_ipv4.description"
 msgstr "It will Disable IPv6"
 
-# | msgid "Show Usage in Sublink"
+# | msgid "💬 Show Usage in Sublink"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.show_usage_in_sublink.label"
-msgstr "Show Usage in Sublink"
+msgstr "💬 Show Usage in Sublink"
 
 # | msgid ""
 # | "This option creates a Fake Config in the user's sub link that shows the "
@@ -1524,11 +1523,11 @@ msgstr "TLS Configuration"
 msgid "config.tls.description"
 msgstr "TLS Configurations could be set in this section."
 
-# | msgid "Shadowsocks FakeTLS (Simple OBFS)"
+# | msgid "🆎 Shadowsocks FakeTLS (Simple OBFS)"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.ssfaketls_enable.label"
-msgstr "Shadowsocks FakeTLS (Simple OBFS)"
+msgstr "🆎 Shadowsocks FakeTLS (Simple OBFS)"
 
 # | msgid "Simple OBFS Protocol is Not Recommended"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1536,11 +1535,11 @@ msgstr "Shadowsocks FakeTLS (Simple OBFS)"
 msgid "config.ssfaketls_enable.description"
 msgstr "Simple OBFS Protocol is Not Recommended"
 
-# | msgid "SS FakeTLS FakeDomain"
+# | msgid "🌍 SS FakeTLS FakeDomain"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.ssfaketls_fakedomain.label"
-msgstr "SS FakeTLS FakeDomain"
+msgstr "🌍 SS FakeTLS FakeDomain"
 
 # | msgid ""
 # | "Please use a well known domain in your data center. for example, If you "
@@ -1584,11 +1583,11 @@ msgstr ""
 "ShadowTLS Is a new Protocol but it can hide the traffic from the government "
 "using FakeTLS"
 
-# | msgid "ShadowTLS Fake Domain"
+# | msgid "🌍 ShadowTLS Fake Domain"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.shadowtls_fakedomain.label"
-msgstr "ShadowTLS Fake Domain"
+msgstr "🌍 ShadowTLS Fake Domain"
 
 # | msgid ""
 # | "Please use a well known domain in your data center. for example, If you "
@@ -1680,11 +1679,11 @@ msgstr "KCP"
 msgid "config.kcp.description"
 msgstr "KCP Configurations could be set in this section."
 
-# | msgid "uTLS"
+# | msgid "ℹ️ uTLS"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.utls.label"
-msgstr "uTLS"
+msgstr "ℹ️ uTLS"
 
 # | msgid ""
 # | "This Option Will Simulate Different Browsers, Therefore, GFW Can Not "
@@ -1696,11 +1695,11 @@ msgstr ""
 "This Option Will Simulate Different Browsers, Therefore, GFW Can Not Detect "
 "Your Browsing"
 
-# | msgid "Telegram Bot Token"
+# | msgid "🔐 Telegram Bot Token"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.telegram_bot_token.label"
-msgstr "Telegram Bot Token"
+msgstr "🔐 Telegram Bot Token"
 
 # | msgid ""
 # | "To add Telegram bot feature. you need to create a bot with @BotFather and
@@ -1713,11 +1712,11 @@ msgstr ""
 "To add Telegram bot feature. you need to create a bot with @BotFather and "
 "enter the API code in this field"
 
-# | msgid "Package Update Mode"
+# | msgid "🔄 Package Update Mode"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.package_mode.label"
-msgstr "Package Update Mode"
+msgstr "🔄 Package Update Mode"
 
 # | msgid "Specify whether you want released package or developed one"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1741,11 +1740,11 @@ msgstr ""
 "In this part, there are some advanced configs that are better not be changed"
 " unless you are an advanced user"
 
-# | msgid "Secret Proxy Path"
+# | msgid "ℹ️ Secret Proxy Path"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.proxy_path.label"
-msgstr "Secret Proxy Path"
+msgstr "ℹ️ Secret Proxy Path"
 
 # | msgid "We use secret proxy path to hide our proxies for the gouvernment"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1753,11 +1752,11 @@ msgstr "Secret Proxy Path"
 msgid "config.proxy_path.description"
 msgstr "We use secret proxy path to hide our proxies for the gouvernment"
 
-# | msgid "Trojan Path"
+# | msgid "ℹ️ Trojan Path"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.path_trojan.label"
-msgstr "Trojan Path"
+msgstr "ℹ️ Trojan Path"
 
 # | msgid "For Trojan Links"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1765,11 +1764,11 @@ msgstr "Trojan Path"
 msgid "config.path_trojan.description"
 msgstr "For Trojan Links"
 
-# | msgid "VLESS Path"
+# | msgid "ℹ️ VLESS Path"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.path_vless.label"
-msgstr "VLESS Path"
+msgstr "ℹ️ VLESS Path"
 
 # | msgid "For the VLESS Path"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1777,11 +1776,11 @@ msgstr "VLESS Path"
 msgid "config.path_vless.description"
 msgstr "For the VLESS Path"
 
-# | msgid "VMess Path"
+# | msgid "ℹ️ VMess Path"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.path_vmess.label"
-msgstr "VMess Path"
+msgstr "ℹ️ VMess Path"
 
 # | msgid "For the VMess Link"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1789,11 +1788,11 @@ msgstr "VMess Path"
 msgid "config.path_vmess.description"
 msgstr "For the VMess Link"
 
-# | msgid "gRPC Path"
+# | msgid "ℹ️ gRPC Path"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.path_grpc.label"
-msgstr "gRPC Path"
+msgstr "ℹ️ gRPC Path"
 
 # | msgid "gRPC Path In Configs"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1801,11 +1800,11 @@ msgstr "gRPC Path"
 msgid "config.path_grpc.description"
 msgstr "gRPC Path In Configs"
 
-# | msgid "TCP Configuration Path"
+# | msgid "ℹ️ TCP Configuration Path"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.path_tcp.label"
-msgstr "TCP Configuration Path"
+msgstr "ℹ️ TCP Configuration Path"
 
 # | msgid "For the Proxy Link"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1813,11 +1812,11 @@ msgstr "TCP Configuration Path"
 msgid "config.path_tcp.description"
 msgstr "For the Proxy Link"
 
-# | msgid "Path of Websocket Requests"
+# | msgid "ℹ️ Path of Websocket Requests"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.path_ws.label"
-msgstr "Path of Websocket Requests"
+msgstr "ℹ️ Path of Websocket Requests"
 
 # | msgid "Specify the Websocket Path"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1825,11 +1824,11 @@ msgstr "Path of Websocket Requests"
 msgid "config.path_ws.description"
 msgstr "Specify the Websocket Path"
 
-# | msgid "Cloudflare API"
+# | msgid "🔑 Cloudflare API"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.cloudflare.label"
-msgstr "Cloudflare API"
+msgstr "🔑 Cloudflare API"
 
 # | msgid ""
 # | "Please follow <a href=\"https://github.com/hiddify/hiddify-"
@@ -2486,12 +2485,12 @@ msgid "Click here to see the complete log"
 msgstr "Click here to see the complete log"
 
 #: hiddifypanel/panel/admin/templates/model/user_list.html:97
-#: hiddifypanel/panel/admin/templates/result.html:93
+#: hiddifypanel/panel/admin/templates/result.html:94
 msgid "Success"
 msgstr "Success"
 
 # | msgid "✅ The Action Done Successfully. You can now leave this page"
-#: hiddifypanel/panel/admin/templates/result.html:94
+#: hiddifypanel/panel/admin/templates/result.html:95
 msgid "The action done successfully. You can now leave this page."
 msgstr "✅ The Action Done Successfully. You can now leave this page"
 
@@ -3742,21 +3741,21 @@ msgstr ""
 "\n"
 "Please contact us at <a href=\"mailto:hiddify@gmail.com\">hiddify@gmail.com</a> if you can help us."
 
-# | msgid "DNS Server"
+# | msgid "🖥 DNS Server"
 #: hiddifypanel/templates/fake.html:1
 msgid "config.dns_server.label"
-msgstr "DNS Server"
+msgstr "🖥 DNS Server"
 
 # | msgid ""
-# | "Default 1.1.1.1 <br>\n"
-# | "Block Malware 1.1.1.2 <br>\n"
-# | "Block Porn 1.1.1.3\n"
+# | "✳️ Default 1.1.1.1 <br>\n"
+# | "🚧 Block Malware 1.1.1.2 <br>\n"
+# | "🔞 Block Porn 1.1.1.3\n"
 #: hiddifypanel/templates/fake.html:1
 msgid "config.dns_server.description"
 msgstr ""
-"Default 1.1.1.1 <br>\n"
-"Block Malware 1.1.1.2 <br>\n"
-"Block Porn 1.1.1.3\n"
+"✳️ Default 1.1.1.1 <br>\n"
+"🚧 Block Malware 1.1.1.2 <br>\n"
+"🔞 Block Porn 1.1.1.3\n"
 
 #: hiddifypanel/templates/fake.html:2
 #, fuzzy
