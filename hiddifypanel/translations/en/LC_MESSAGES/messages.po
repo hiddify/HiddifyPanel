@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-06 02:28+0200\n"
-"PO-Revision-Date: 2023-05-05 17:56-0500\n"
+"POT-Creation-Date: 2023-05-09 13:51+0200\n"
+"PO-Revision-Date: 2023-05-09 00:56-0500\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -683,12 +683,12 @@ msgstr ""
 "Enabling Firewall will open used Ports (at least 22,443,80 and SSH) and "
 "close all other Ports"
 
-# | msgid "⛔️ Block Iranian Sites"
+# | msgid "⛔️ Block domestic Sites"
 #: hiddifypanel/panel/admin/QuickSetup.py:105
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.block_iran_sites.label"
-msgstr "⛔️ Block Iranian Sites"
+msgstr "⛔️ Block domestic Sites"
 
 # | msgid ""
 # | "Block iranian sites to prevent detection by the government (Experimental:
@@ -702,12 +702,12 @@ msgstr ""
 "Block iranian sites to prevent detection by the government (Experimental: If"
 " there is a problem, please disable it and tell us.)"
 
-# | msgid "✔️ Enable VMess"
+# | msgid "♈️ Enable VMess"
 #: hiddifypanel/panel/admin/QuickSetup.py:106
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.vmess_enable.label"
-msgstr "✔️ Enable VMess"
+msgstr "♈️ Enable VMess"
 
 # | msgid ""
 # | "It is reported by several people that VMess causes the system to be "
@@ -1303,11 +1303,11 @@ msgstr "General Settings"
 msgid "config.general.description"
 msgstr "It is General System Configurations"
 
-# | msgid "✔️ Enable V2Ray "
+# | msgid "♈️ Enable V2Ray "
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.v2ray_enable.label"
-msgstr "✔️ Enable V2Ray "
+msgstr "♈️ Enable V2Ray "
 
 # | msgid "V2ray does not support accounting and not suggested"
 #: hiddifypanel/panel/admin/templates/configfake.html:6

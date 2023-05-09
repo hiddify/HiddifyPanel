@@ -273,9 +273,10 @@ class UserAdmin(AdminLTEModelView):
         res=None
         # print('aaa',args, kwargs)
         if 'remaining_days' == sort_column:
-            query = self.session.query(self.model)
-            count = query.count()
+            query = self.get_query()
+            
             data = query.all()
+            count = len(data)
             data=sorted(data,key=lambda p: p.remaining_days,reverse=sort_desc)
             res=count,data
         else:

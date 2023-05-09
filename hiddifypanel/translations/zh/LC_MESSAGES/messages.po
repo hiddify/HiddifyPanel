@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-06 02:28+0200\n"
-"PO-Revision-Date: 2023-05-05 17:56-0500\n"
+"POT-Creation-Date: 2023-05-09 13:51+0200\n"
+"PO-Revision-Date: 2023-05-09 00:56-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -689,7 +689,7 @@ msgstr "防火墙"
 msgid "config.firewall.description"
 msgstr "启用防火墙将打开使用的端口（至少 22,443,80）并关闭所有其他端口"
 
-# | msgid "⛔️ Block Iranian Sites"
+# | msgid "⛔️ Block domestic Sites"
 #: hiddifypanel/panel/admin/QuickSetup.py:105
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
@@ -706,7 +706,7 @@ msgstr "封锁伊朗网站"
 msgid "config.block_iran_sites.description"
 msgstr "屏蔽伊朗网站以防止被政府发现（实验：如果有问题，请禁用它并告诉我们。）"
 
-# | msgid "✔️ Enable VMess"
+# | msgid "♈️ Enable VMess"
 #: hiddifypanel/panel/admin/QuickSetup.py:106
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
@@ -1300,7 +1300,7 @@ msgstr "通用设置"
 msgid "config.general.description"
 msgstr "这是一般的系统配置。"
 
-# | msgid "✔️ Enable V2Ray "
+# | msgid "♈️ Enable V2Ray "
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.v2ray_enable.label"
@@ -1397,7 +1397,7 @@ msgstr "它用于在客户的聊天列表中显示赞助频道。要宣传频道
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.telegram_fakedomain.label"
-msgstr "电报假域名"
+msgstr "Telegram假域名"
 
 # | msgid ""
 # | "Please use a well known domain in your data center. for example, If you
@@ -1412,13 +1412,13 @@ msgstr "请在您的数据中心使用众所周知的域。例如，如果您在
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:2
 msgid "config.telegram.label"
-msgstr "电报代理"
+msgstr "Telegram代理"
 
 # | msgid "A proxy designed for Telegram to bypass Telegram filtering"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:2
 msgid "config.telegram.description"
-msgstr "为电报设计的绕过电报过滤的代理"
+msgstr "为了绕过Telegram屏蔽而设计的代理"
 
 # | msgid "☑️ Allow HTTP Connection"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -3103,7 +3103,7 @@ msgstr ""
 #: hiddifypanel/panel/user/templates/home/multi.html:22
 #: hiddifypanel/templates/master.html:72
 msgid "user.home.title"
-msgstr "隐藏代理"
+msgstr "Hiddify"
 
 # | msgid "Telegram"
 #: copy.html:27 hiddifypanel/panel/user/templates/home/index
@@ -3153,7 +3153,7 @@ msgstr "所有配置"
 #: hiddifypanel/panel/user/templates/home/index_old.html:91
 #: hiddifypanel/panel/user/templates/home/multi.html:102
 msgid "user.home.speedtest"
-msgstr "Speedtest（检测脏IP）"
+msgstr "Speedtest（检测受污染IP）"
 
 # | msgid "DNS Over HTTPS"
 #: hiddifypanel/panel/user/templates/home/index_old.html:93
@@ -3201,7 +3201,7 @@ msgstr "下一个"
 #: hiddifypanel/panel/user/templates/home/index_old.html:345
 #: hiddifypanel/panel/user/templates/home/multi.html:375
 msgid "previous"
-msgstr "以前的"
+msgstr "上一个"
 
 # | msgid "Search"
 #: hiddifypanel/panel/user/templates/home/index_old.html:355
@@ -3355,7 +3355,7 @@ msgstr "双向"
 # | msgid "Telegram Proxy"
 #: hiddifypanel/panel/user/templates/home/telegram.html:9
 msgid "user.home.telegram.clickbtn"
-msgstr "电报代理"
+msgstr "Telegram代理"
 
 # | msgid ""
 # | "Click on one of the following link then, in the telegram you can see a
@@ -3363,7 +3363,7 @@ msgstr "电报代理"
 # | "<br />"
 #: hiddifypanel/panel/user/templates/home/telegram.html:14
 msgid "user.home.telegram.description"
-msgstr "单击 %(link)s，然后，在电报中您可以看到一个包含 <b>Connect Proxy</b> 的窗口。单击它，它将起作用。"
+msgstr "单击 %(link)s，然后，在Telegram中您可以看到一个包含 <b>Connect Proxy</b> 的窗口。点击它，它将起作用。"
 
 # | msgid "Traffic Usage"
 #: hiddifypanel/panel/user/templates/home/usage.html:7
@@ -3539,7 +3539,7 @@ msgstr "请使用本页中的详细信息联系 hiddify@gmail.com。"
 #: hiddifypanel/templates/admin-layout.html:18
 #: hiddifypanel/templates/master.html:7
 msgid "master.page-title"
-msgstr "隐藏面板"
+msgstr "Hiddify面板"
 
 #: hiddifypanel/templates/admin-layout.html:21
 #: hiddifypanel/templates/admin-layout.html:59
@@ -3556,7 +3556,7 @@ msgstr "应用配置"
 # | msgid "Dashboard"
 #: hiddifypanel/templates/admin-layout.html:75
 msgid "admin.menu.home"
-msgstr "行政"
+msgstr "仪表板"
 
 # | msgid "Users"
 #: hiddifypanel/templates/admin-layout.html:78
@@ -3594,7 +3594,7 @@ msgstr "动作"
 # | msgid "Help"
 #: hiddifypanel/templates/admin-layout.html:117
 msgid "admin.menu.support"
-msgstr "支持"
+msgstr "帮助"
 
 # | msgid "Telegram"
 #: hiddifypanel/templates/admin-layout.html:121
