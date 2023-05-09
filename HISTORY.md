@@ -1,6 +1,22 @@
 # Changelog
 
 
+## 6.5.4 (2023-05-09)
+
+#### Fix
+
+* Bug in sort by expire date. 
+
+#### Other
+
+* Merge branch 'main' of github.com:hiddify1/HiddifyPanel. 
+
+* Update custom.css. 
+
+* Update custom.css. 
+
+
+
 ## 6.5.3 (2023-05-06)
 
 #### Other
