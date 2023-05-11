@@ -110,7 +110,7 @@ def _v31():
     add_config_if_not_exist(ConfigEnum.reality_public_key,key_pair['public_key'])
     db.session.bulk_save_objects(get_proxy_rows_v1())
     if not (AdminUser.query.filter(AdminUser.id==1).first()):
-        db.session.add(AdminUser(id=1,uuid=hconfig(ConfigEnum.admin_secret),name="FirstAdmin",mode=AdminMode.super_admin,comment=""))
+        db.session.add(AdminUser(id=1,uuid=hconfig(ConfigEnum.admin_secret),name="Owner",mode=AdminMode.super_admin,comment=""))
     for i in range(1,10):
         for d in get_random_domains(50):
             if hiddify.is_domain_reality_friendly(d):
