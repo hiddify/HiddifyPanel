@@ -175,7 +175,7 @@ def get_config_form():
             elif c.key==ConfigEnum.warp_mode:
                 field=wtf.fields.SelectField(_(f"config.{c.key}.label"),choices=[("disable",_("Disable")),("all",_("All")),("custom",_("Only Blocked and Local websites"))],description=_(f"config.{c.key}.description"),default=hconfig(c.key))
             elif c.key==ConfigEnum.lang or c.key==ConfigEnum.admin_lang:
-                field=wtf.fields.SelectField(_(f"config.{c.key}.label"),choices=[("en",_("lang.en")),("fa",Markup(_("lang.fa"))),("zh",_("lang.zh"))],description=_(f"config.{c.key}.description"),default=hconfig(c.key))
+                field=wtf.fields.SelectField(_(f"config.{c.key}.label"),choices=[("en",_("lang.en")),("fa",Markup(_("lang.fa"))),("zh",_("lang.zh")),("pt",_("lang.pt"))],description=_(f"config.{c.key}.description"),default=hconfig(c.key))
             elif c.key==ConfigEnum.country :
                 field=wtf.fields.SelectField(_(f"config.{c.key}.label"),choices=[("ir",_("Iran")),("zh",_("China")),("other",_("Others"))],description=_(f"config.{c.key}.description"),default=hconfig(c.key))                
             elif c.key==ConfigEnum.package_mode:
