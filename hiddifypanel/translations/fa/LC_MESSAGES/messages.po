@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-09 13:51+0200\n"
-"PO-Revision-Date: 2023-05-09 00:56-0500\n"
+"POT-Creation-Date: 2023-05-17 00:58+0200\n"
+"PO-Revision-Date: 2023-05-16 17:57-0500\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Generated-By: Babel 2.12.1\n"
 
 # | msgid "This Domain does not exist in the Panel !"
-#: hiddifypanel/models/domain.py:122 hiddifypanel/panel/user/user.py:163
+#: hiddifypanel/models/domain.py:124 hiddifypanel/panel/user/user.py:163
 msgid "This domain does not exist in the panel!"
 msgstr "این دامنه در پنل وجود ندارد!"
 
@@ -64,9 +64,9 @@ msgstr " ✅ تنظیمات با موفقیت تغییر کرد"
 # check "
 # | "your Domain configurations."
 #: hiddifypanel/panel/admin/ChildAdmin.py:108
-#: hiddifypanel/panel/admin/DomainAdmin.py:139
-#: hiddifypanel/panel/admin/DomainAdmin.py:165
-#: hiddifypanel/panel/admin/DomainAdmin.py:168
+#: hiddifypanel/panel/admin/DomainAdmin.py:141
+#: hiddifypanel/panel/admin/DomainAdmin.py:167
+#: hiddifypanel/panel/admin/DomainAdmin.py:170
 #: hiddifypanel/panel/admin/QuickSetup.py:118
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:109
 #: hiddifypanel/panel/hiddify.py:276
@@ -278,7 +278,7 @@ msgstr "برای بازگرداندن دامنه از این گزینه استف
 #: hiddifypanel/panel/admin/ProxyAdmin.py:124
 #: hiddifypanel/panel/admin/QuickSetup.py:81
 #: hiddifypanel/panel/admin/QuickSetup.py:108
-#: hiddifypanel/panel/admin/SettingAdmin.py:250
+#: hiddifypanel/panel/admin/SettingAdmin.py:252
 #: hiddifypanel/panel/commercial/CommercialSettings.py:218
 msgid "Submit"
 msgstr "ثبت"
@@ -295,6 +295,7 @@ msgstr "ثبت"
 #: hiddifypanel/panel/admin/DomainAdmin.py:44
 #: hiddifypanel/panel/admin/QuickSetup.py:102
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:33
+#: hiddifypanel/templates/flaskadmin-layout.html:84
 msgid "domain.description"
 msgstr ""
 "این فیلد باید با دقت و به درستی تکمیل شود. در غیر اینصورت پروکسی ها به "
@@ -332,16 +333,17 @@ msgstr ""
 
 # | msgid "Domain"
 #: hiddifypanel/panel/admin/ChildAdmin.py:54
-#: hiddifypanel/panel/admin/DomainAdmin.py:72
+#: hiddifypanel/panel/admin/DomainAdmin.py:73
 #: hiddifypanel/panel/admin/QuickSetup.py:102
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:55
+#: hiddifypanel/templates/flaskadmin-layout.html:83
 msgid "domain.domain"
 msgstr "دامنه"
 
 # | msgid "Show Configs of Domains"
 #: hiddifypanel/panel/admin/ChildAdmin.py:57
 #: hiddifypanel/panel/admin/ChildAdmin.py:58
-#: hiddifypanel/panel/admin/DomainAdmin.py:77
+#: hiddifypanel/panel/admin/DomainAdmin.py:79
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:58
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:59
 msgid "Show Domains"
@@ -349,7 +351,7 @@ msgstr "نمایش تنظیمات دامنه ها:"
 
 # | msgid "Admin"
 #: hiddifypanel/panel/admin/ChildAdmin.py:65
-#: hiddifypanel/panel/admin/DomainAdmin.py:90
+#: hiddifypanel/panel/admin/DomainAdmin.py:92
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:66
 msgid "admin link"
 msgstr "مدیریت"
@@ -422,40 +424,40 @@ msgid "child has been removed!"
 msgstr "پنل زیر مجموعه حذف شد"
 
 # | msgid ""
-# | "<b>Direct</b> Mode: choose this mode if you set your domain on your DNS
-# provider on a DNS only mode. (CDN or Proxy Mode Off) <br>\n"
-# | "<b>CDN</b> Mode: choose this mode if you use your server's domain on a
+# | "➡️ <b>Direct</b> Mode: choose this mode if you set your domain on your
+# DNS provider on a DNS only mode. (CDN or Proxy Mode Off) <br>\n"
+# | "🔀 <b>CDN</b> Mode: choose this mode if you use your server's domain on a
 # CDN provider. (Proxy Mode On)<br>\n"
-# | "<b>Auto CDN IP</b> Mode: It is like CDN mode, except that the appropriate
-# IP is automatically set based on the IP provided by ircf.space. In
-# Auto_CDN_IP  the IP will be resolved from domain but in cdn mode the domain
-# will be returned<br>\n"
-# | "<b>Relay</b> Mode: choose this mode if you are using one or more
+# | "☑️ <b>Auto CDN IP</b> Mode: It is like CDN mode, except that the
+# appropriate IP is automatically set based on the IP provided by ircf.space.
+# In Auto_CDN_IP  the IP will be resolved from domain but in cdn mode the
+# domain will be returned<br>\n"
+# | "♾️ <b>Relay</b> Mode: choose this mode if you are using one or more
 # Intermediary servers. <a
 # href=\"https://github.com/hiddify/hiddify-config/discussions/129\"
 # target=\"_blank\">Read More</a>\n"
 # | "<br>\n"
-# | "<b>Fake</b> Mode: choose this mode if you want to use a Fake Domain
+# | "🆎 <b>Fake</b> Mode: choose this mode if you want to use a Fake Domain
 # (e.g., Soft98.ir) to bypass SNI whitelist Proxy. (Not Recommended)\n"
 #: hiddifypanel/panel/admin/DomainAdmin.py:45
 msgid ""
 "Direct mode means you want to use your server directly (for usual use), "
 "CDN means that you use your server on behind of a CDN provider."
 msgstr ""
-"حالت <b>Direct</b>: اگر دامنه خود را روی ارائه دهنده DNS خود در حالت فقط "
-"DNS تنظیم کرده اید، این حالت را انتخاب کنید. (CDN یا پروکسی خاموش باشد.) "
-"<br>\n"
-"حالت <b>CDN</b>: اگر از دامنه خود در ارائه دهنده CDN استفاده می کنید، این"
-" حالت را انتخاب کنید. (حالت پروکسی روشن باشد.)<br>\n"
-"حالت <b>Auto CDN IP</b>: مانند حالت CDN است با این تفاوت که اتوماتیک آی "
-"پی مناسب بر اساس  آی پی ارائه شده توسط ircf.space ست می‌شود. در "
+"⬅️ حالت <b>Direct</b>: اگر دامنه خود را روی ارائه دهنده DNS خود در حالت "
+"فقط DNS تنظیم کرده اید، این حالت را انتخاب کنید. (CDN یا پروکسی خاموش "
+"باشد.) <br>\n"
+"🔀 حالت <b>CDN</b>: اگر از دامنه خود در ارائه دهنده CDN استفاده می کنید، "
+"این حالت را انتخاب کنید. (حالت پروکسی روشن باشد.)<br>\n"
+"☑️ حالت <b>Auto CDN IP</b>: مانند حالت CDN است با این تفاوت که اتوماتیک "
+"آی پی مناسب بر اساس  آی پی ارائه شده توسط ircf.space ست می‌شود. در "
 "Auto_CDN_IP به جای دامنه IP ثبت می شود<br>\n"
-"حالت <b>Relay</b>: اگر از یک یا چند سرور واسطه استفاده می کنید، این حالت "
-"را انتخاب کنید. <a href=\"https://github.com/hiddify/hiddify-"
+"♾️ حالت <b>Relay</b>: اگر از یک یا چند سرور واسطه استفاده می کنید، این "
+"حالت را انتخاب کنید. <a href=\"https://github.com/hiddify/hiddify-"
 "config/discussions/129\" target=\"_blank\">بیشتر بخوانید.</a> \n"
 "<br>\n"
-"حالت <b>Fake</b>: اگر می‌خواهید از یک دامنه جعلی (مانند Soft98.ir) برای "
-"دور زدن پروکسی لیست سفید SNI استفاده کنید، این حالت را انتخاب کنید. "
+"🆎 حالت <b>Fake</b>: اگر می‌خواهید از یک دامنه جعلی (مانند Soft98.ir) برای"
+" دور زدن پروکسی لیست سفید SNI استفاده کنید، این حالت را انتخاب کنید. "
 "(توصیه نمیشود.)"
 
 # | msgid ""
@@ -470,6 +472,7 @@ msgstr ""
 #: hiddifypanel/panel/admin/DomainAdmin.py:46
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
+#: hiddifypanel/templates/flaskadmin-layout.html:82
 msgid "config.cdn_forced_host.description"
 msgstr ""
 "در این قسمت می توانید از چندین دامنه یا IP اختصاصی برای CDN خود استفاده "
@@ -487,48 +490,66 @@ msgstr ""
 msgid "The name shown in the configs for this domain."
 msgstr "نامی که در کانفیگ‌ها به جای دامنه نمایش داده شود"
 
+# | msgid "You can add several Sever Names in comma seperated format"
+#: hiddifypanel/panel/admin/DomainAdmin.py:49
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#: hiddifypanel/templates/fake.html:1
+#: hiddifypanel/templates/flaskadmin-layout.html:76
+#, fuzzy
+msgid "config.reality_server_names.description"
+msgstr "شما می توانید چندین نام را در قالب جدا شده با کاما اضافه کنید"
+
 # | msgid ""
 # | "This can be used for giving your Users a permanent non Blockable Links."
-#: hiddifypanel/panel/admin/DomainAdmin.py:49
+#: hiddifypanel/panel/admin/DomainAdmin.py:50
 msgid "This can be used for giving your users a permanent non blockable links."
 msgstr ""
 "این می تواند برای دادن لینک های غیرقابل مسدود و دائمی به کاربران شما "
 "استفاده شود."
 
 # | msgid "🌍 Use Only for Subscription Link"
-#: hiddifypanel/panel/admin/DomainAdmin.py:73
+#: hiddifypanel/panel/admin/DomainAdmin.py:74
 msgid "Only for sublink?"
 msgstr "🌍 استفاده فقط برای لینک کانفیگ ها (سابسکریپشن)"
 
 # | msgid "Mode"
-#: hiddifypanel/panel/admin/DomainAdmin.py:74
+#: hiddifypanel/panel/admin/DomainAdmin.py:75
 msgid "domain.mode"
 msgstr "حالت"
 
 # | msgid "Force CDN config to use following IPs"
-#: hiddifypanel/panel/admin/DomainAdmin.py:75
+#: hiddifypanel/panel/admin/DomainAdmin.py:76
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
+#: hiddifypanel/templates/flaskadmin-layout.html:81
 msgid "config.cdn_forced_host.label"
 msgstr "اجبار به استفاده‌ از آی پی‌های زیر در  کانفیگ‌ CDN  "
 
 # | msgid "IP"
-#: hiddifypanel/panel/admin/DomainAdmin.py:76
+#: hiddifypanel/panel/admin/DomainAdmin.py:77
 msgid "domain.ip"
 msgstr "آی‌پی"
 
+# | msgid "🌎 Server Names"
 #: hiddifypanel/panel/admin/DomainAdmin.py:78
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#: hiddifypanel/templates/fake.html:1
+#: hiddifypanel/templates/flaskadmin-layout.html:75
+msgid "config.reality_server_names.label"
+msgstr "🌎 نام سرور"
+
+#: hiddifypanel/panel/admin/DomainAdmin.py:80
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:57
 msgid "Alias"
 msgstr "نام نمایشی"
 
-#: hiddifypanel/panel/admin/DomainAdmin.py:107
-#: hiddifypanel/panel/admin/SettingAdmin.py:176
+#: hiddifypanel/panel/admin/DomainAdmin.py:109
+#: hiddifypanel/panel/admin/SettingAdmin.py:178
 msgid "All"
 msgstr "همه"
 
 # | msgid "You have already used this Domain in: "
-#: hiddifypanel/panel/admin/DomainAdmin.py:134
+#: hiddifypanel/panel/admin/DomainAdmin.py:136
 msgid "You have used this domain in: "
 msgstr "شما از این دامنه در بخش زیر استفاده کرده اید: "
 
@@ -536,7 +557,7 @@ msgstr "شما از این دامنه در بخش زیر استفاده کرده
 # | "Domain IP = %(domain_ip)s is not matched with your IP = %(server_ip)s
 # which "
 # | "is required in Direct Mode"
-#: hiddifypanel/panel/admin/DomainAdmin.py:172
+#: hiddifypanel/panel/admin/DomainAdmin.py:174
 #, python-format
 msgid ""
 "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which "
@@ -548,7 +569,7 @@ msgstr ""
 # | msgid ""
 # | "In CDN Mode, Domain IP =%(domain_ip)s should be different to your IP "
 # | "=%(server_ip)s"
-#: hiddifypanel/panel/admin/DomainAdmin.py:175
+#: hiddifypanel/panel/admin/DomainAdmin.py:177
 #, python-format
 msgid ""
 "In CDN mode, Domain IP=%(domain_ip)s should be different to your "
@@ -568,12 +589,12 @@ msgstr "خطا! تنظیمات دامین فرانتینگ کامل نشده."
 msgid "config.validation-error"
 msgstr "یکی از فیلدها دچار خطا شده است."
 
-# | msgid "Domain Fronting"
+# | msgid "ℹ️ Domain Fronting"
 #: hiddifypanel/panel/admin/ProxyAdmin.py:121
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:2
 msgid "config.domain_fronting.label"
-msgstr "دامین فرانتینگ"
+msgstr "ℹ️ دامین فرانتینگ"
 
 # | msgid "Changing the Language was Successful."
 #: hiddifypanel/panel/admin/QuickSetup.py:44
@@ -585,33 +606,38 @@ msgstr "تغییر زبان با موفقیت انجام شد"
 msgid "quicksetup.setlang.error"
 msgstr "خطایی در تغییر زبان رخ داد"
 
-# | msgid "Admin Panel Language"
+# | msgid "🗺️ Admin Panel Language"
 #: hiddifypanel/panel/admin/QuickSetup.py:78
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.admin_lang.label"
-msgstr "زبان پنل مدیریت"
+msgstr "🗺️ زبان پنل مدیریت"
 
 # | msgid "🇺🇸 English انگلیسی 英语"
 #: hiddifypanel/panel/admin/QuickSetup.py:78
-#: hiddifypanel/panel/admin/SettingAdmin.py:178
+#: hiddifypanel/panel/admin/SettingAdmin.py:180
 #: hiddifypanel/panel/commercial/CommercialSettings.py:150
 msgid "lang.en"
 msgstr "English 🇺🇸 انگلیسی 英语"
 
 # | msgid "🇮🇷 Persian فارسی 波斯语"
 #: hiddifypanel/panel/admin/QuickSetup.py:78
-#: hiddifypanel/panel/admin/SettingAdmin.py:178
+#: hiddifypanel/panel/admin/SettingAdmin.py:180
 #: hiddifypanel/panel/commercial/CommercialSettings.py:150
 msgid "lang.fa"
 msgstr "Persian 🇮🇷 فارسی 波斯语"
 
 # | msgid "🇨🇳 Chinese چینی 中国人"
 #: hiddifypanel/panel/admin/QuickSetup.py:78
-#: hiddifypanel/panel/admin/SettingAdmin.py:178
+#: hiddifypanel/panel/admin/SettingAdmin.py:180
 #: hiddifypanel/panel/commercial/CommercialSettings.py:150
 msgid "lang.zh"
 msgstr "Chinese 🇨🇳 چینی 中国人"
+
+#: hiddifypanel/panel/admin/QuickSetup.py:78
+#: hiddifypanel/panel/admin/SettingAdmin.py:180
+msgid "lang.pt"
+msgstr ""
 
 # | msgid "Choose Language For Admin Area"
 #: hiddifypanel/panel/admin/QuickSetup.py:78
@@ -620,23 +646,23 @@ msgstr "Chinese 🇨🇳 چینی 中国人"
 msgid "config.admin_lang.description"
 msgstr "در این قسمت می‌توانید زبان پنل مدیریت را انتخاب کنید."
 
-# | msgid "Country"
+# | msgid "🌍 Country"
 #: hiddifypanel/panel/admin/QuickSetup.py:80
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.country.label"
-msgstr "کشور"
+msgstr "🌍 کشور"
 
 # | msgid "🇮🇷 Iran"
 #: hiddifypanel/panel/admin/QuickSetup.py:80
-#: hiddifypanel/panel/admin/SettingAdmin.py:180
+#: hiddifypanel/panel/admin/SettingAdmin.py:182
 #: hiddifypanel/panel/commercial/CommercialSettings.py:152
 msgid "Iran"
 msgstr "🇮🇷 ایران"
 
 # | msgid "🇨🇳 China"
 #: hiddifypanel/panel/admin/QuickSetup.py:80
-#: hiddifypanel/panel/admin/SettingAdmin.py:180
+#: hiddifypanel/panel/admin/SettingAdmin.py:182
 #: hiddifypanel/panel/commercial/CommercialSettings.py:152
 msgid "China"
 msgstr "🇨🇳 چین"
@@ -653,8 +679,8 @@ msgstr "تنظیمات مناسب را برای هر کشور با توجه به
 
 # | msgid "Error! Invalid Domain.  The Domain Format is www.google.com"
 #: hiddifypanel/panel/admin/QuickSetup.py:97
-#: hiddifypanel/panel/admin/SettingAdmin.py:198
-#: hiddifypanel/panel/admin/SettingAdmin.py:201
+#: hiddifypanel/panel/admin/SettingAdmin.py:200
+#: hiddifypanel/panel/admin/SettingAdmin.py:203
 #: hiddifypanel/panel/commercial/CommercialSettings.py:170
 #: hiddifypanel/panel/commercial/CommercialSettings.py:173
 msgid "config.Invalid domain"
@@ -663,8 +689,8 @@ msgstr "خطا! دامنه نامعتبر! فرمت دامنه باید مثل w
 # | msgid "Domain is exist in domains section. Use another Domain"
 #: hiddifypanel/panel/admin/QuickSetup.py:99
 #: hiddifypanel/panel/admin/QuickSetup.py:100
-#: hiddifypanel/panel/admin/SettingAdmin.py:205
-#: hiddifypanel/panel/admin/SettingAdmin.py:206
+#: hiddifypanel/panel/admin/SettingAdmin.py:207
+#: hiddifypanel/panel/admin/SettingAdmin.py:208
 #: hiddifypanel/panel/commercial/CommercialSettings.py:177
 #: hiddifypanel/panel/commercial/CommercialSettings.py:178
 msgid "config.Domain already used"
@@ -779,58 +805,66 @@ msgid "REALITY Fallback domain is not compaitble with server names!"
 msgstr "دامنه بازگشتی REALITY با نام سرور سازگار نیست!"
 
 #: hiddifypanel/panel/admin/SettingAdmin.py:176
+msgid "Xray"
+msgstr ""
+
+#: hiddifypanel/panel/admin/SettingAdmin.py:176
+msgid "SingBox"
+msgstr ""
+
+#: hiddifypanel/panel/admin/SettingAdmin.py:178
 #: hiddifypanel/panel/user/templates/home/usage.html:10
 msgid "Disable"
 msgstr "غیرفعال"
 
 # | msgid "☑️ Only Blocked and Local Websites"
-#: hiddifypanel/panel/admin/SettingAdmin.py:176
+#: hiddifypanel/panel/admin/SettingAdmin.py:178
 msgid "Only Blocked and Local websites"
 msgstr "☑️ فقط سایت‌های داخلی و مسدود شده‌ی خارجی"
 
 # | msgid "🇺🇳 Others"
-#: hiddifypanel/panel/admin/SettingAdmin.py:180
+#: hiddifypanel/panel/admin/SettingAdmin.py:182
 msgid "Others"
 msgstr "🇺🇳 سایر"
 
 # | msgid "✅ Release"
-#: hiddifypanel/panel/admin/SettingAdmin.py:182
+#: hiddifypanel/panel/admin/SettingAdmin.py:184
 #: hiddifypanel/panel/commercial/CommercialSettings.py:154
 msgid "Release"
 msgstr "✅ پایدار"
 
 # | msgid "⚠️ Develop"
-#: hiddifypanel/panel/admin/SettingAdmin.py:182
+#: hiddifypanel/panel/admin/SettingAdmin.py:184
 #: hiddifypanel/panel/commercial/CommercialSettings.py:154
 msgid "Develop"
 msgstr "⚠️ در حال توسعه"
 
 # | msgid "✅ Python : Low Performance"
-#: hiddifypanel/panel/admin/SettingAdmin.py:188
+#: hiddifypanel/panel/admin/SettingAdmin.py:190
 #: hiddifypanel/panel/commercial/CommercialSettings.py:160
 msgid "lib.telegram.python"
 msgstr "✅ پایتون : عملکرد ضعیف"
 
-# | msgid "✅ Go : High Performance - No ad Support"
-#: hiddifypanel/panel/admin/SettingAdmin.py:188
+# | msgid "✴️ Go : High Performance - No ad Support"
+#: hiddifypanel/panel/admin/SettingAdmin.py:190
 #: hiddifypanel/panel/commercial/CommercialSettings.py:160
 msgid "lib.telegram.go"
-msgstr "✅ Go : عملکرد بالا - عدم پشتیبانی از تبلیغات"
+msgstr "✴️ Go : عملکرد بالا - عدم پشتیبانی از تبلیغات"
 
 # | msgid "⛔️ Not Working - Original : High Performance"
-#: hiddifypanel/panel/admin/SettingAdmin.py:188
+#: hiddifypanel/panel/admin/SettingAdmin.py:190
 #: hiddifypanel/panel/commercial/CommercialSettings.py:160
 msgid "lib.telegram.orignal"
 msgstr "⛔️ کار نمیکند - اصلی : عملکرد قوی"
 
 # | msgid "⛔️ NOT Working - Erlang : Medium Performance"
-#: hiddifypanel/panel/admin/SettingAdmin.py:188
+#: hiddifypanel/panel/admin/SettingAdmin.py:190
 #: hiddifypanel/panel/commercial/CommercialSettings.py:160
 msgid "lib.telegram.erlang"
 msgstr "⛔️ کار نمیکند - Erlang : عملکرد متوسط"
 
 # | msgid "🔢  Telegram Proxy Library"
-#: hiddifypanel/panel/admin/SettingAdmin.py:189
+#: hiddifypanel/panel/admin/SettingAdmin.py:191
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/panel/commercial/CommercialSettings.py:161
 #: hiddifypanel/templates/fake.html:1
@@ -843,7 +877,7 @@ msgstr "🔢  کتابخانه پروکسی تلگرام"
 # | "Python works in all servers, others may have some issue. Test Proxy after
 # "
 # | "changing it."
-#: hiddifypanel/panel/admin/SettingAdmin.py:189
+#: hiddifypanel/panel/admin/SettingAdmin.py:191
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/panel/commercial/CommercialSettings.py:161
 #: hiddifypanel/templates/fake.html:1
@@ -854,31 +888,31 @@ msgstr ""
 "اشکالاتی داشته باشد. بعد از تغییر حتما تست کنید."
 
 # | msgid "Test and Suggest Domain "
-#: hiddifypanel/panel/admin/SettingAdmin.py:209
+#: hiddifypanel/panel/admin/SettingAdmin.py:211
 msgid "Example Domains"
 msgstr "بررسی و پیشنهاد دامنه"
 
 # | msgid "Invalid REALITY Hostnames"
-#: hiddifypanel/panel/admin/SettingAdmin.py:211
+#: hiddifypanel/panel/admin/SettingAdmin.py:213
 #, fuzzy
 msgid "Invalid REALITY hostnames"
 msgstr "نام‌های میزبان REALITY نامعتبر است"
 
 # | msgid "Invalid Admin Link"
-#: hiddifypanel/panel/admin/SettingAdmin.py:214
+#: hiddifypanel/panel/admin/SettingAdmin.py:216
 #: hiddifypanel/panel/commercial/CommercialSettings.py:182
 msgid "Invalid admin link"
 msgstr "لینک ادمین نامعتبر است"
 
 # | msgid "Invalid Telegram Bot Token"
-#: hiddifypanel/panel/admin/SettingAdmin.py:216
+#: hiddifypanel/panel/admin/SettingAdmin.py:218
 #: hiddifypanel/panel/commercial/CommercialSettings.py:184
 msgid "config.Invalid telegram bot token"
 msgstr "توکن ربات تلگرام نامعتبر است"
 
 # | msgid ""
 # | "Invalid Link. it should be on this format: (https or http://example.com)"
-#: hiddifypanel/panel/admin/SettingAdmin.py:218
+#: hiddifypanel/panel/admin/SettingAdmin.py:220
 #: hiddifypanel/panel/commercial/CommercialSettings.py:186
 msgid "config.Invalid brand link"
 msgstr "لینک پشتیبانی نامعتبر است. لطفا لینک را با فرمت معتبر وارد کنید."
@@ -886,21 +920,21 @@ msgstr "لینک پشتیبانی نامعتبر است. لطفا لینک را 
 # | msgid ""
 # | "Invalid UUID secret. example: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n"
 # | "\n"
-#: hiddifypanel/panel/admin/SettingAdmin.py:222
+#: hiddifypanel/panel/admin/SettingAdmin.py:224
 #: hiddifypanel/panel/commercial/CommercialSettings.py:190
 msgid "config.invalid uuid"
 msgstr "رمز UUID نامعتبر است. به عنوان مثال: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6"
 
 # | msgid "Invalid Proxy Path. It should be ASCI string (a-z A-Z 0-9)"
-#: hiddifypanel/panel/admin/SettingAdmin.py:226
+#: hiddifypanel/panel/admin/SettingAdmin.py:228
 #: hiddifypanel/panel/commercial/CommercialSettings.py:194
 msgid "config.Invalid proxy path"
 msgstr "مسیر پروکسی نامعتبر است. باید رشته متن asci باشد. ( شامل a-z A-Z 0-9)"
 
 # | msgid ""
 # | "Invalid Port. it should be comma separated Integer e.g.  2052,2053"
-#: hiddifypanel/panel/admin/SettingAdmin.py:231
-#: hiddifypanel/panel/admin/SettingAdmin.py:234
+#: hiddifypanel/panel/admin/SettingAdmin.py:233
+#: hiddifypanel/panel/admin/SettingAdmin.py:236
 #: hiddifypanel/panel/commercial/CommercialSettings.py:199
 #: hiddifypanel/panel/commercial/CommercialSettings.py:202
 msgid "config.Invalid port"
@@ -916,10 +950,10 @@ msgstr "📆 ریست زمان شروع بسته کاربر"
 msgid "Reset package usage"
 msgstr "⏳ ریست حجم مصرفی کاربر"
 
-# | msgid "Usage Limit (GB)"
+# | msgid "⌛️ Usage Limit (GB)"
 #: hiddifypanel/panel/admin/UserAdmin.py:66
 msgid "user.usage_limit_GB"
-msgstr "محدودیت حجم (گیگابایت)"
+msgstr "⌛️ محدودیت حجم (گیگابایت)"
 
 # | msgid "Monthly"
 #: hiddifypanel/panel/admin/UserAdmin.py:67
@@ -955,9 +989,10 @@ msgstr "آخرین زمان ریست شدن حجم (روز پیش)"
 msgid "Last Online"
 msgstr "آخرین اتصال"
 
+# | msgid "📆 Package Days"
 #: hiddifypanel/panel/admin/UserAdmin.py:77
 msgid "Package Days"
-msgstr "تعداد روز بسته"
+msgstr "📆 تعداد روز بسته"
 
 #: hiddifypanel/panel/admin/UserAdmin.py:78
 #, fuzzy
@@ -1171,12 +1206,12 @@ msgstr "تنظیمات ادمین"
 msgid "config.admin.description"
 msgstr "تنظیمات عمومی بخش مدیریت"
 
-# | msgid "User Area Language"
+# | msgid "🗺️ User Area Language"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/panel/admin/templates/quick_setup.html:47
 #: hiddifypanel/templates/fake.html:1
 msgid "config.lang.label"
-msgstr "زبان محیط کاربران"
+msgstr "🗺️ زبان محیط کاربران"
 
 # | msgid "Choose Language For Users Area"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1283,7 +1318,7 @@ msgstr ""
 "با فعالسازی این گزینه به کاربران اجازه تست سرعت می‌دهید. این کار به آن‌ها"
 " کمک می‌کند تا کیفیت سرور و کانفیگ‌ها را بسنجند"
 
-# | msgid "4⃣ Only IPv4"
+# | msgid "ℹ️ Only IPv4"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.only_ipv4.label"
@@ -1996,6 +2031,7 @@ msgstr "این کد را تغییر ندهید"
 # | msgid "🌍 Fallback Domain"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
+#: hiddifypanel/templates/flaskadmin-layout.html:77
 msgid "config.reality_fallback_domain.label"
 msgstr "🌍 دامنه بازگشتی"
 
@@ -2005,24 +2041,12 @@ msgstr "🌍 دامنه بازگشتی"
 # | " Domain"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
+#: hiddifypanel/templates/flaskadmin-layout.html:78
 #, fuzzy
 msgid "config.reality_fallback_domain.description"
 msgstr ""
 "هنگامی که GTW از وب‌سایت‌ها در نام سرور بازدید می‌کند، به این دامنه هدایت"
 " می‌شود"
-
-# | msgid "🌎 Server Names"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-#: hiddifypanel/templates/fake.html:1
-msgid "config.reality_server_names.label"
-msgstr "🌎 نام سرور"
-
-# | msgid "You can add several Sever Names in comma seperated format"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-#: hiddifypanel/templates/fake.html:1
-#, fuzzy
-msgid "config.reality_server_names.description"
-msgstr "شما می توانید چندین نام را در قالب جدا شده با کاما اضافه کنید"
 
 # | msgid "🔑 Private Key"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -3119,7 +3143,7 @@ msgstr "لینک زیر را در مرورگرتان کپی کنید."
 
 # | msgid "Copy"
 #: hiddifypanel/panel/user/templates/home/doh.html:8
-#: hiddifypanel/templates/master.html:160
+#: hiddifypanel/templates/master.html:162
 msgid "copy"
 msgstr "کپی"
 
@@ -3646,11 +3670,12 @@ msgstr ""
 msgid "Oops! Something went wrong."
 msgstr "خطایی رخ داده است!!"
 
+# | msgid "Please contact info@hiddify.com with the details in this page"
 #: hiddifypanel/templates/500.html:12
 msgid "Please contact hiddify@gmail.com with the details in this page."
 msgstr ""
-"لطفا با هیدیفای از طریق آدرس ایمیل hiddify@gmail.com و ذکر مشخصات این "
-"صفحه در ارتباط باشید."
+"لطفا با هیدیفای از طریق آدرس ایمیل info@hiddify.com و ذکر مشخصات این صفحه"
+" در ارتباط باشید."
 
 # | msgid "Hiddify Panel"
 #: hiddifypanel/templates/admin-layout.html:18
@@ -3779,7 +3804,7 @@ msgstr "⚠️ آیا مطمئن هستید که می خواهید این عمل
 # | "✳️ We need your help In Developing this Project\n"
 # | "<br>\n"
 # | "If you are developer or content producer, please contact us at <a
-# href=\"mailto:hiddify@gmail.com\">hiddify@gmail.com</a>\n"
+# href=\"mailto:info@hiddify.com\">info@hiddify.com</a>\n"
 # | "<br><br>\n"
 # | "\n"
 # | "ℹ️ Also, we need financial help to further develop this panel and our
@@ -3828,14 +3853,14 @@ msgstr "⚠️ آیا مطمئن هستید که می خواهید این عمل
 # | "<li>📝Kotlin Developer</li>\n"
 # | "<li>🖥Content Providers</li>\n"
 # | "Please contact us at <a
-# href=\"mailto:hiddify@gmail.com\">hiddify@gmail.com</a> if you can help us."
+# href=\"mailto:info@hiddify.com\">info@hiddify.com</a> if you can help us."
 #: hiddifypanel/templates/donation.html:11
 msgid "Donation.description"
 msgstr ""
 "✳️ برای توسعه این پروژه به کمک شما نیاز داریم.\n"
 "<br>\n"
 "اگر توانایی برنامه‌نویسی یا تولید محتوا را دارید، لطفاً با ما از طریق<a "
-"href=\"mailto:hiddify@gmail.com\">hiddify@gmail.com</a> تماس بگیرید.\n"
+"href=\"mailto:info@hiddify.com\">info@hiddify.com</a> تماس بگیرید.\n"
 "<br>\n"
 "<br>\n"
 "ℹ️ همچنین برای توسعه بیشتر این پنل و خدمات آن (ما غیرانتفاعی هستیم) به "
@@ -3905,8 +3930,24 @@ msgstr ""
 "</ul>\n"
 "\n"
 "اگر در زمینه‌های ذکر شده و یا هر زمینه دیگری می‌توانید به ما کمک کنید، "
-"لطفاً با آدرس <a href=\"mailto:hiddify@gmail.com\">hiddify@gmail.com</a> "
-"با ما تماس بگیرید."
+"لطفاً با آدرس <a href=\"mailto:info@hiddify.com\">info@hiddify.com</a> با"
+" ما تماس بگیرید."
+
+# | msgid "Core"
+#: hiddifypanel/templates/fake.html:1
+msgid "config.core_type.label"
+msgstr "هسته"
+
+# | msgid ""
+# | "XRay: Is a complete core.\n"
+# | "<br>\n"
+# | "Singbox: developed by sagernet. It is also a good core."
+#: hiddifypanel/templates/fake.html:1
+msgid "config.core_type.description"
+msgstr ""
+"XRay: یک هسته کامل است.\n"
+"<br>\n"
+"Singbox: توسعه یافته توسط sagernet. همچنین هسته خوبی است."
 
 # | msgid "🖥 DNS Server"
 #: hiddifypanel/templates/fake.html:1
@@ -3934,47 +3975,47 @@ msgid "config.hidden.description"
 msgstr ""
 
 # | msgid "Close"
-#: hiddifypanel/templates/macros.html:29 hiddifypanel/templates/master.html:169
+#: hiddifypanel/templates/macros.html:29 hiddifypanel/templates/master.html:171
 msgid "close"
 msgstr "بستن"
 
 # | msgid "Share to Social Media"
-#: hiddifypanel/templates/master.html:151
+#: hiddifypanel/templates/master.html:153
 msgid "user.home.share-title"
 msgstr "اشتراک‌گذاری"
 
 # | msgid "Link for Social Media"
-#: hiddifypanel/templates/master.html:161
+#: hiddifypanel/templates/master.html:163
 msgid "clickable copy"
 msgstr "لینک برای شبکه‌های اجتماعی"
 
 # | msgid "Open"
-#: hiddifypanel/templates/master.html:162
+#: hiddifypanel/templates/master.html:164
 msgid "open"
 msgstr "باز کردن"
 
 # | msgid "Link Copied to Clipboard. "
-#: hiddifypanel/templates/master.html:238
+#: hiddifypanel/templates/master.html:240
 msgid "user.home.link.success-copy"
 msgstr "لینک کپی شد. "
 
 # | msgid "Copy to Clipboard:  Ctrl+C, Enter"
-#: hiddifypanel/templates/master.html:240
-#: hiddifypanel/templates/master.html:243
+#: hiddifypanel/templates/master.html:242
+#: hiddifypanel/templates/master.html:245
 msgid "user.home.link.manual-copy"
 msgstr "برای کپی کردن به کلیپ‌بورد: دکمه Ctrl+C را بزنید."
 
-#: hiddifypanel/templates/master.html:296
+#: hiddifypanel/templates/master.html:298
 msgid "Install"
 msgstr "نصب"
 
 # | msgid "Hiddify Panel Installation"
-#: hiddifypanel/templates/master.html:376
+#: hiddifypanel/templates/master.html:378
 msgid "Install Hiddify Application"
 msgstr "نصب پنل هیدیفای"
 
 # | msgid "Click %(install)s to save the User Page."
-#: hiddifypanel/templates/master.html:378
+#: hiddifypanel/templates/master.html:380
 #, python-format
 msgid "Please click on %(install)s to save the user page."
 msgstr "روی %(install)s کلیک کنید تا صفحه کاربر ذخیره شود."

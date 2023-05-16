@@ -39,6 +39,7 @@ class ConfigCategory(StrEnum):
     reality=auto()
 class ConfigEnum(StrEnum):
     first_setup=auto()
+    core_type=auto()
     warp_enable=auto()
     warp_mode=auto()
     warp_plus_code=auto()
@@ -134,6 +135,7 @@ class ConfigEnum(StrEnum):
           return cls.not_found #"key not found"
     def info(self):
         map = {
+            self.core_type:{'category': ConfigCategory.advanced,'apply_mode':'apply'},
             self.dns_server:{'category': ConfigCategory.general,'apply_mode':'apply'},
             self.warp_enable:{'category': ConfigCategory.hidden,'type':bool,'apply_mode':'restart'},
             self.warp_mode:{'category': ConfigCategory.warp,'apply_mode':'apply'},
@@ -142,8 +144,8 @@ class ConfigEnum(StrEnum):
             self.restls1_3_domain:{'category': ConfigCategory.hidden},
             self.first_setup:{'category': ConfigCategory.hidden,'type':bool},
             self.show_usage_in_sublink:{'category': ConfigCategory.general,'type':bool},
-            self.reality_fallback_domain:{'category': ConfigCategory.reality,'apply_mode':'apply'},
-            self.reality_server_names:{'category': ConfigCategory.reality,'apply_mode':'apply'},
+            self.reality_fallback_domain:{'category': ConfigCategory.hidden,'apply_mode':'apply'},
+            self.reality_server_names:{'category': ConfigCategory.hidden,'apply_mode':'apply'},
             self.reality_short_ids:{'category': ConfigCategory.reality,'apply_mode':'apply'},
             self.reality_private_key:{'category': ConfigCategory.reality,'apply_mode':'apply'},
             self.reality_public_key:{'category': ConfigCategory.reality,'apply_mode':'apply'},

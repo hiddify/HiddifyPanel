@@ -46,6 +46,7 @@ class DomainAdmin(AdminLTEModelView):
         cdn_ip=_("config.cdn_forced_host.description"),
         show_domains=_('You can select the configs with which domains show be shown in the user area. If you select all, automatically, all the new domains will be added for each users.'),
         alias=_('The name shown in the configs for this domain.'),
+        servernames=_('config.reality_server_names.description'),
         sub_link_only=_('This can be used for giving your users a permanent non blockable links.')
     )
     
@@ -74,11 +75,12 @@ class DomainAdmin(AdminLTEModelView):
         "mode": _("domain.mode"),
         "cdn_ip": _("config.cdn_forced_host.label"),
         'domain_ip': _('domain.ip'),
+        'servernames':_('config.reality_server_names.label'),
         'show_domains':_('Show Domains'),
         'alias':_('Alias')
     }
 
-    form_columns=['domain','alias','sub_link_only','mode','cdn_ip','show_domains']
+    form_columns=['domain','alias','sub_link_only','mode','servernames','cdn_ip','show_domains']
 
     def _domain_admin_link(view, context, model, name):
         if model.mode==DomainType.fake:

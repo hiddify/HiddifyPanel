@@ -41,6 +41,7 @@ def init_db():
     add_column(User.monthly)
     add_column(User.enable)
     add_column(Domain.cdn_ip)
+    add_column(Domain.servernames)
 
     if len(Domain.query.all())!=0 and BoolConfig.query.count()==0:
         execute(f'DROP TABLE bool_config')
@@ -94,6 +95,8 @@ def init_db():
     db.session.commit()
     return BoolConfig.query.all()
 
+def _v39():
+    db.session.add(Domain(domain=hconfig(ConfigEnum.reality_fallback_domain),cdn_ip=hconfig(ConfigEnum.reality_server_names)))
 def _v38():
     add_config_if_not_exist(ConfigEnum.dns_server,"1.1.1.1")
     add_config_if_not_exist(ConfigEnum.warp_mode,"all" if hconfig(ConfigEnum.warp_enable) else "none")

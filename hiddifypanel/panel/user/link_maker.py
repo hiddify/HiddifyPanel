@@ -61,7 +61,8 @@ def make_proxy(proxy, domain_db, phttp=80, ptls=443):
     name = proxy.name
     if not port:
         return {'name': name, 'msg': "port not defined",'type':'error', 'proto': proxy.proto}
-
+    if "reality" in l3 and domain_db.mode!=DomainType.reality:
+        return {'name': name, 'msg': "reality proxy not in reality domain",'type':'debug', 'proto': proxy.proto}
     is_cdn = ProxyCDN.CDN in proxy.cdn
     if is_cdn and domain_db.mode not in  [DomainType.cdn,DomainType.auto_cdn_ip]:
         # print("cdn proxy not in cdn domain", domain, name)

@@ -26,6 +26,7 @@ class DomainType(StrEnum):
     auto_cdn_ip = auto()
     relay = auto()
     fake = auto()
+    reality = auto()
     # worker = auto()
     
     # fake_cdn = "fake_cdn"
@@ -46,6 +47,7 @@ class Domain(db.Model, SerializerMixin):
     sub_link_only= db.Column(db.Boolean,nullable=False,default=False)
     mode = db.Column(db.Enum(DomainType), nullable=False,default=DomainType.direct)
     cdn_ip = db.Column(db.Text(2000), nullable=True,default='')
+    servernames = db.Column(db.String(1000), nullable=True,default='')
     # show_all=db.Column(db.Boolean, nullable=True)
     show_domains = db.relationship('Domain', secondary=ShowDomain,
                                 primaryjoin=id==ShowDomain.c.domain_id,
