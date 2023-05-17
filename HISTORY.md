@@ -1,6 +1,38 @@
 # Changelog
 
 
+## (unreleased)
+
+#### New
+
+* Add core selector. 
+
+* Show error when autocdn format has problem. 
+
+* Add reality. 
+
+* Add worker domain. 
+
+* Add multi domain reality, add core selector. 
+
+* Add pt lang. 
+
+#### Changes
+
+* FirstAdmin->owner. 
+
+#### Fix
+
+* Sort bug. 
+
+#### Other
+
+* Add: X-Real-IP header. 
+
+* Remove extra text in footer. 
+
+
+
 ## 6.5.4 (2023-05-09)
 
 #### Fix
