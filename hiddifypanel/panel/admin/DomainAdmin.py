@@ -8,12 +8,12 @@ from flask_babelex import gettext as __
 from flask_babelex import lazy_gettext as _
 from hiddifypanel.panel import hiddify,hiddify_api,cf_api
 from flask import Markup
-from flask import Flask,g,flash
+from flask import Flask,g,flash,url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
 from wtforms import SelectMultipleField
-
+import re
 
 from wtforms.widgets import ListWidget, CheckboxInput
 from sqlalchemy.orm import backref
@@ -46,7 +46,7 @@ class DomainAdmin(AdminLTEModelView):
         cdn_ip=_("config.cdn_forced_host.description"),
         show_domains=_('You can select the configs with which domains show be shown in the user area. If you select all, automatically, all the new domains will be added for each users.'),
         alias=_('The name shown in the configs for this domain.'),
-        servernames=_('config.reality_server_names.description',test_url=url_for('admin.Actions:get_some_random_reality_friendly_domain',test_domain="yahoo.com"),
+        servernames=_('config.reality_server_names.description'),
         sub_link_only=_('This can be used for giving your users a permanent non blockable links.')
     )
     
@@ -62,6 +62,9 @@ class DomainAdmin(AdminLTEModelView):
         },
         "cdn_ip": {
             'validators': [Regexp(r"(((((25[0-5]|(2[0-4]|1\d|[1-9]|)\d).){3}(25[0-5]|(2[0-4]|1\d|[1-9]|)\d))|^([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,}))[ \t\n,;]*\w{3}[ \t\n,;]*)*", message=__("Invalid IP or domain"))]
+        },
+        "servernames":{
+            'validators': [Regexp(r"^([\w-]+\.)+[\w-]+(,\s*([\w-]+\.)+[\w-]+)*$",re.IGNORECASE,_("Invalid REALITY hostnames"))]
         }
     }
     column_list = ["domain", "alias", "mode","domain_ip", "show_domains"]
@@ -129,6 +132,9 @@ class DomainAdmin(AdminLTEModelView):
 
     def on_model_change(self, form, model, is_created):
         model.domain = model.domain.lower()
+        
+        
+        
         configs = get_hconfigs()
         for c in configs:
             if "domain" in c and ConfigEnum.decoy_domain != c:
@@ -198,6 +204,24 @@ class DomainAdmin(AdminLTEModelView):
             #     model.alias= "@hiddify "+model.alias
         # model.work_with = self.session.query(Domain).filter(
         #     Domain.id.in_(work_with_ids)).all()
+
+        if model.mode==DomainType.reality:
+            model.servernames=(model.servernames or model.domain).lower()
+            for v in [model.domain,model.servernames]:
+                for d in v.split(","):
+                    if not d:continue
+                    if not hiddify.is_domain_reality_friendly(d):
+                        # flash(_("Domain is not REALITY friendly!")+" "+d,'error')
+                        # return render_template('config.html', form=form)
+                        raise ValidationError(_("Domain is not REALITY friendly!")+" "+d)
+                    hiddify.debug_flash_if_not_in_the_same_asn(d)
+            
+            for d in model.servernames.split(","):
+                if not hiddify.fallback_domain_compatible_with_servernames(model.domain, d):                
+                    raise ValidationError(_("REALITY Fallback domain is not compaitble with server names!")+" "+d+" != "+model.domain)
+
+
+
         if is_created or not get_domain(model.domain) :
             # return hiddify.reinstall_action(complete_install=False, domain_changed=True)
             hiddify.flash_config_success(restart_mode='apply', domain_changed=True)

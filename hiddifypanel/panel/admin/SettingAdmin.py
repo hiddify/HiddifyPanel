@@ -74,19 +74,19 @@ class SettingAdmin(FlaskView):
                 # print(cat,vs)
 
             merged_configs={**old_configs, **changed_configs}
-            for k in [ConfigEnum.reality_server_names,ConfigEnum.reality_fallback_domain]:
-                v=merged_configs[k]
-                for d in v.split(","):
-                    if not d:continue
-                    if not hiddify.is_domain_reality_friendly(d):
-                        flash(_("Domain is not REALITY friendly!")+" "+d,'error')
-                        return render_template('config.html', form=form)
-                    hiddify.debug_flash_if_not_in_the_same_asn(d)
-            fallback=merged_configs[ConfigEnum.reality_fallback_domain]
-            for d in merged_configs[ConfigEnum.reality_server_names].split(","):
-                if not hiddify.fallback_domain_compatible_with_servernames(fallback, d):
-                    flash(_("REALITY Fallback domain is not compaitble with server names!")+" "+d+" != "+fallback,'error')
-                    return render_template('config.html', form=form)
+            # for k in [ConfigEnum.reality_server_names,ConfigEnum.reality_fallback_domain]:
+            #     v=merged_configs[k]
+            #     for d in v.split(","):
+            #         if not d:continue
+            #         if not hiddify.is_domain_reality_friendly(d):
+            #             flash(_("Domain is not REALITY friendly!")+" "+d,'error')
+            #             return render_template('config.html', form=form)
+            #         hiddify.debug_flash_if_not_in_the_same_asn(d)
+            # fallback=merged_configs[ConfigEnum.reality_fallback_domain]
+            # for d in merged_configs[ConfigEnum.reality_server_names].split(","):
+            #     if not hiddify.fallback_domain_compatible_with_servernames(fallback, d):
+            #         flash(_("REALITY Fallback domain is not compaitble with server names!")+" "+d+" != "+fallback,'error')
+            #         return render_template('config.html', form=form)
             for k,v in changed_configs.items():
                 set_hconfig(k, v,0,False)
             db.session.commit()
@@ -207,10 +207,10 @@ def get_config_form():
                         validators.append(wtf.validators.NoneOf([d.domain.lower() for d in Domain.query.all()],_("config.Domain already used")))
                         validators.append(wtf.validators.NoneOf([cc.value.lower() for cc in StrConfig.query.filter(StrConfig.child_id==0).all() if cc.key!=c.key and  "fakedomain" in cc.key and cc.key!=ConfigEnum.decoy_domain],_("config.Domain already used")))
                     render_kw['required']=""
-                if c.key ==ConfigEnum.reality_fallback_domain:
+                if c.key ==ConfigEnum.reality_short_ids:
                     extra_info=f" <a target='_blank' href='{url_for('admin.Actions:get_some_random_reality_friendly_domain',test_domain=c.value)}'>"+_('Example Domains')+"</a>"
-                if c.key ==ConfigEnum.reality_server_names:
-                    validators.append(wtf.validators.Regexp("^([\w-]+\.)+[\w-]+(,\s*([\w-]+\.)+[\w-]+)*$",re.IGNORECASE,_("Invalid REALITY hostnames")))                
+                # if c.key ==ConfigEnum.reality_server_names:
+                #     validators.append(wtf.validators.Regexp("^([\w-]+\.)+[\w-]+(,\s*([\w-]+\.)+[\w-]+)*$",re.IGNORECASE,_("Invalid REALITY hostnames")))                
                     
                 if c.key ==ConfigEnum.parent_panel:
                     validators.append(wtf.validators.Regexp("()|(http(s|)://([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})/.*)",re.IGNORECASE,_("Invalid admin link")))

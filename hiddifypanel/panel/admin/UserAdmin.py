@@ -321,13 +321,17 @@ class UserAdmin(AdminLTEModelView):
     # Override get_count_query() to include the filter condition in the count query
     def get_count_query(self):
         # Get the base count query
-        query = super().get_count_query()
-        admin_id=int(request.args.get("admin_id") or g.admin.id)
-        if admin_id not in g.admin.recursive_sub_admins_ids():
-            abort(403)
-        admin=AdminUser.query.filter(AdminUser.id==admin_id).first()
-        if not admin:
-            abort(403)
+        query=self.get_query()
+        from sqlalchemy import func
+
+        query=query.session.query(func.count(User.id))
+        # query = super().get_count_query()
+        # admin_id=int(request.args.get("admin_id") or g.admin.id)
+        # if admin_id not in g.admin.recursive_sub_admins_ids():
+        #     abort(403)
+        # admin=AdminUser.query.filter(AdminUser.id==admin_id).first()
+        # if not admin:
+        #     abort(403)
         
 
         return query
