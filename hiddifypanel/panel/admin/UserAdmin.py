@@ -19,7 +19,7 @@ from hiddifypanel.panel.hiddify import flash
 from wtforms.fields import StringField
 from flask_bootstrap import SwitchField
 class UserAdmin(AdminLTEModelView):
-    column_sortable_list=["name","current_usage_GB",'mode',"remaining_days","comment",'last_online',"uuid",'remaining_days','admin']
+    column_sortable_list=["name","current_usage_GB",'mode',"remaining_days","comment",'last_online',"uuid",'remaining_days']
     column_searchable_list=[("uuid"),"name"]
     column_list = ["name","UserLinks","current_usage_GB","remaining_days","comment",'last_online','mode','admin',"uuid"]
     form_extra_fields = {
