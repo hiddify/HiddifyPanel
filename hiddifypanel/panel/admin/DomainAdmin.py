@@ -220,12 +220,19 @@ class DomainAdmin(AdminLTEModelView):
                 if not hiddify.fallback_domain_compatible_with_servernames(model.domain, d):                
                     raise ValidationError(_("REALITY Fallback domain is not compaitble with server names!")+" "+d+" != "+model.domain)
 
+        if(model.cdn_ip):
+            from hiddifypanel.panel import clean_ip
+            try:
+                clean_ip.get_clean_ip(model.cdn_ip)
+            except:
+                raise ValidationError(_("Error in auto cdn format"))
 
 
         if is_created or not get_domain(model.domain) :
             # return hiddify.reinstall_action(complete_install=False, domain_changed=True)
             hiddify.flash_config_success(restart_mode='apply', domain_changed=True)
 
+        
     # def after_model_change(self,form, model, is_created):
     #     if model.show_domains.count==0:
     #         db.session.bulk_save_objects(ShowDomain(model.id,model.id))
