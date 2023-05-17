@@ -72,14 +72,12 @@ $('.form-group:not(:has(.custom-switch)) > input[type="checkbox"]').each(functio
         if ($("#mode").val()=='reality'){
             
             $("#servernames").parent().show(); 
-            // $("#cdn_ip").parent().find(".control-label").html(`{{_('config.reality_server_names.label')}}`)
-            // $("#cdn_ip").parent().find(".help-block").html(`{{_('config.reality_server_names.description')}}`)
+            
             $("#domain").parent().find(".control-label").html(`{{_('config.reality_fallback_domain.label')}}`)
             $("#domain").parent().find(".help-block").html(`{{_('config.reality_fallback_domain.description')}}`)
         }else{
             $("#servernames").parent().hide(); 
-            // $("#cdn_ip").parent().find(".control-label").html(`{{_('config.cdn_forced_host.label')}}`)
-            // $("#cdn_ip").parent().find(".help-block").html(`{{_('config.cdn_forced_host.description')}}`)
+            
             $("#domain").parent().find(".control-label").html(`{{_('domain.domain')}}`)
             $("#domain").parent().find(".help-block").html(`{{_('domain.description')}}`)
         }

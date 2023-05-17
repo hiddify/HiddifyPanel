@@ -46,7 +46,7 @@ class DomainAdmin(AdminLTEModelView):
         cdn_ip=_("config.cdn_forced_host.description"),
         show_domains=_('You can select the configs with which domains show be shown in the user area. If you select all, automatically, all the new domains will be added for each users.'),
         alias=_('The name shown in the configs for this domain.'),
-        servernames=_('config.reality_server_names.description'),
+        servernames=_('config.reality_server_names.description',test_url=url_for('admin.Actions:get_some_random_reality_friendly_domain',test_domain="yahoo.com"),
         sub_link_only=_('This can be used for giving your users a permanent non blockable links.')
     )
     

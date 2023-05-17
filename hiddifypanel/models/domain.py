@@ -27,7 +27,8 @@ class DomainType(StrEnum):
     relay = auto()
     fake = auto()
     reality = auto()
-    # worker = auto()
+    old_xtls_direct = auto()
+    worker = auto()
     
     # fake_cdn = "fake_cdn"
     # telegram_faketls = "telegram_faketls"

@@ -4,7 +4,7 @@ from hiddifypanel.models import *
 import yaml
 import json
 from hiddifypanel.panel import hiddify
-import random
+import random,re
 
 def all_proxies(child_id=0):
     all_proxies = hiddify.get_available_proxies(child_id)
@@ -63,14 +63,15 @@ def make_proxy(proxy, domain_db, phttp=80, ptls=443):
         return {'name': name, 'msg': "port not defined",'type':'error', 'proto': proxy.proto}
     if "reality" in l3 and domain_db.mode!=DomainType.reality:
         return {'name': name, 'msg': "reality proxy not in reality domain",'type':'debug', 'proto': proxy.proto}
-    is_cdn = ProxyCDN.CDN in proxy.cdn
-    if is_cdn and domain_db.mode not in  [DomainType.cdn,DomainType.auto_cdn_ip]:
+    is_cdn = ProxyCDN.CDN in proxy.cdn 
+    if is_cdn and domain_db.mode not in  [DomainType.cdn,DomainType.auto_cdn_ip,DomainType.worker]:
         # print("cdn proxy not in cdn domain", domain, name)
         return {'name': name, 'msg': "cdn proxy not in cdn domain",'type':'debug', 'proto': proxy.proto}
-    if not is_cdn and domain_db.mode in  [DomainType.cdn,DomainType.auto_cdn_ip]:
+    if not is_cdn and domain_db.mode in  [DomainType.cdn,DomainType.auto_cdn_ip,DomainType.worker]:
         # print("not cdn proxy  in cdn domain", domain, name, proxy.cdn)
         return {'name': name, 'msg': "not cdn proxy  in cdn domain",'type':'debug', 'proto': proxy.proto}
-
+    if domain_db.mode==DomainType.worker and proxy.Proto==ProxyProto.grpc:
+        return {'name': name, 'msg': "worker does not support grpc",'type':'debug', 'proto': proxy.proto}
     cdn_forced_host = domain_db.cdn_ip or domain_db.domain
     
     alpn="h2" if proxy.l3 in ['tls_h2','reality'] else 'h2,http/1.1' if proxy.l3 == 'tls_h2_h1' else "http/1.1"
@@ -109,7 +110,7 @@ def make_proxy(proxy, domain_db, phttp=80, ptls=443):
     if l3 in ['reality']:
         base['reality_short_id']=random.sample(hconfigs[ConfigEnum.reality_short_ids].split(','),1)[0]
         base['reality_pbk']=hconfigs[ConfigEnum.reality_public_key]
-        base['sni']=random.sample(hconfigs[ConfigEnum.reality_server_names].split(","),1)[0]
+        base['sni']=random.sample(re.split('[ \t\r\n;,]+',domain_db.servernames),1)[0]
         del base['host']
         if base.get('fingerprint','none')!='none':
             base['fingerprint']="chrome"
