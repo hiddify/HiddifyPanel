@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-17 03:04+0200\n"
-"PO-Revision-Date: 2023-05-16 19:42-0500\n"
+"POT-Creation-Date: 2023-05-17 09:05+0200\n"
+"PO-Revision-Date: 2023-05-16 20:04-0500\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -587,6 +587,10 @@ msgstr "دامنه سازگار با REALITY نیست!"
 #: hiddifypanel/panel/admin/DomainAdmin.py:221
 msgid "REALITY Fallback domain is not compaitble with server names!"
 msgstr "دامنه بازگشتی REALITY با نام سرور سازگار نیست!"
+
+#: hiddifypanel/panel/admin/DomainAdmin.py:228
+msgid "Error in auto cdn format"
+msgstr ""
 
 # | msgid "Error! Domain Fronting not set."
 #: hiddifypanel/panel/admin/ProxyAdmin.py:38

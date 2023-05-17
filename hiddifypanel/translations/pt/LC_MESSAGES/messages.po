@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPT\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-17 03:04+0200\n"
-"PO-Revision-Date: 2023-05-16 19:42-0500\n"
+"POT-Creation-Date: 2023-05-17 09:05+0200\n"
+"PO-Revision-Date: 2023-05-16 20:04-0500\n"
 "Last-Translator: lymanrudni\n"
 "Language: pt\n"
 "Language-Team: Portuguese\n"
@@ -644,6 +644,10 @@ msgstr "O domínio não é compatível com Reality!"
 #, fuzzy
 msgid "REALITY Fallback domain is not compaitble with server names!"
 msgstr "REALITY Fallback Domain não é compatível com nomes de servidores!"
+
+#: hiddifypanel/panel/admin/DomainAdmin.py:228
+msgid "Error in auto cdn format"
+msgstr ""
 
 # | msgid "Error! Domain Fronting not set."
 #: hiddifypanel/panel/admin/ProxyAdmin.py:38
