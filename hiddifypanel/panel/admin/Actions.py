@@ -30,7 +30,8 @@ class Actions(FlaskView):
         
         with open(f'{config_dir}/log/system/{logfile}') as f:
             lines=[line for line in f]
-            logs="".join(lines[::-1])
+            # logs="".join(lines[::-1])
+            logs="".join(lines)
         # resp= Response()
         # resp.mimetype="text/plain"
         from ansi2html import Ansi2HTMLConverter

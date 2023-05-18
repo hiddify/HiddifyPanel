@@ -100,7 +100,8 @@ def init_db():
 #v7.0.0
 def _v41(): 
     add_config_if_not_exist(ConfigEnum.core_type,"xray")
-    db.session.add(Domain(domain=hconfig(ConfigEnum.reality_fallback_domain),cdn_ip=hconfig(ConfigEnum.reality_server_names)))
+    if not (Domain.query.filter(Domain.domain==hconfig(ConfigEnum.reality_fallback_domain)).first()):
+        db.session.add(Domain(domain=hconfig(ConfigEnum.reality_fallback_domain),cdn_ip=hconfig(ConfigEnum.reality_server_names)))
     
 def _v38():
     add_config_if_not_exist(ConfigEnum.dns_server,"1.1.1.1")

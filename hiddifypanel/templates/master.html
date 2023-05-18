@@ -144,7 +144,7 @@
 </div>
 <!-- ./wrapper -->
 
-{#modal("guide-modal","","<video id='guide-video' controls style='max-height: 100%; max-width: 100%;width6: auto; height: auto;'><source id='guide-video-mp4' type='video/mp4'></video>")#}
+{#modal("guide-modal","","<video id='guide-video' controls style='max-height: 100%; max-width: 100%;width: auto; height: auto;'><source id='guide-video-mp4' type='video/mp4'></video>")#}
 
 <div class="modal fade" id="share-qr-code" role="dialog" aria-hidden="true" >
     <div class="modal-dialog" role="document">
@@ -235,6 +235,10 @@
     e.preventDefault();
     console.log(this); console.log(e);
     var link = this.getAttribute('data-copy')|| this.href;
+    if (link.startsWith("hiddify://")) {
+        parsedUrl = new URL(link);
+        link=parsedUrl.searchParams.get('url');          
+    }
     try {
       navigator.clipboard.writeText(link).then(function () {
         alert("{{_('user.home.link.success-copy')}} \n" + link);
