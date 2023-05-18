@@ -13,6 +13,8 @@ def init_db():
     Events.db_prehook.notify()
     db.create_all()   
 
+    
+
     execute(f'update proxy set transport="WS" where transport = "ws"')
     execute(f'update admin_user set mode="agent" where mode = "slave"')
     execute(f'update admin_user set mode="super_admin" where id=1')
@@ -95,9 +97,11 @@ def init_db():
     db.session.commit()
     return BoolConfig.query.all()
 
+#v7.0.0
 def _v41(): 
     add_config_if_not_exist(ConfigEnum.core_type,"xray")
     db.session.add(Domain(domain=hconfig(ConfigEnum.reality_fallback_domain),cdn_ip=hconfig(ConfigEnum.reality_server_names)))
+    
 def _v38():
     add_config_if_not_exist(ConfigEnum.dns_server,"1.1.1.1")
     add_config_if_not_exist(ConfigEnum.warp_mode,"all" if hconfig(ConfigEnum.warp_enable) else "none")

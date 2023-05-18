@@ -18,7 +18,12 @@ def drop_db():
     db.drop_all()
 
 
-
+def downgrade():
+    if(hconfig(ConfigEnum.db_version)=="41"):
+        set_hconfig(ConfigEnum.db_version, 39,commit=False)
+        StrConfig.query.filter(StrConfig.key==ConfigEnum.core_type).delete()
+        Domain.query.filter(Domain.mode.in_(['reality','old_xtls_direct','worker'])).delete()
+        db.session.commit()
 
 def backup():
     dbdict=hiddify.dump_db_to_dict()
@@ -95,7 +100,7 @@ def admin_path():
 def init_app(app):
     # add multiple commands in a bulk
     #print(app.config['SQLALCHEMY_DATABASE_URI'] )
-    for command in [init_db, drop_db, all_configs,update_usage,test,admin_links,admin_path,backup]:
+    for command in [init_db, drop_db, all_configs,update_usage,test,admin_links,admin_path,backup,downgrade]:
         app.cli.add_command(app.cli.command()(command))
 
     @app.cli.command()

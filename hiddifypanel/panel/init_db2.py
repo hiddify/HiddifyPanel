@@ -101,4 +101,6 @@ def execute(query):
     except:
         pass    
 
+
+# def remove_enums_without_related_ids_for_downgrade()
 from .init_db import *
