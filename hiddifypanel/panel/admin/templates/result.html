@@ -38,7 +38,7 @@
 <div>
 <h1>{{_('log')}}</h1>
   <a href="{{log_path}}" target="_blank" >{{_('Click here to see the complete log')}}</a><br>
-  <div id='ilog' style="width:100%;height:500px;direction: ltr;overflow: auto;" ></div>
+  <div id='ilog' style="width:100%;height:400px;direction: ltr;overflow: auto;" ></div>
 </div>
 
 % endif
@@ -76,12 +76,22 @@
     return sendNextRequest();
   }
   var old=''
+  function isScrollEnd(element) {
+    return (element.scrollTop + element.offsetHeight>= element.scrollHeight-100 )
+
+    // return element.scrollTop + element.clientHeight >= element.scrollHeight;
+  }
   function get_log(){
     sendRequestsSequentially(log_urls)
     .then(response => {
       console.log(response);
-      if (old!=response)
+      if (old!=response){
+        change_location=isScrollEnd(x)
         x.innerHTML=response
+        if(change_location)
+          x.scrollTop=x.scrollHeight
+      }
+      
       old=response
       indx=x.innerText.indexOf("----Finished!---")
       if (!finished && indx>0 &&indx<200 &&seconds>5){
