@@ -139,6 +139,7 @@ def is_public_ip(address):
     return True
 
 def get_interface_public_ip(version):
+    import netifaces
     addresses = []
     try:
         interfaces = netifaces.interfaces()
