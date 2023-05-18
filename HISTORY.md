@@ -5,6 +5,12 @@
 
 #### New
 
+* Add singbox api. 
+
+* Remove hiddify:// on copy. 
+
+* Do not inverse logs. 
+
 * Add downgrade. 
 
 * Add core selector. 
