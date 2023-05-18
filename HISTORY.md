@@ -5,6 +5,8 @@
 
 #### New
 
+* Add downgrade. 
+
 * Add core selector. 
 
 * Show error when autocdn format has problem. 
