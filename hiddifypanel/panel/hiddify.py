@@ -85,15 +85,88 @@ def abs_url(path):
 def asset_url(path):
     return f"/{g.proxy_path}/{path}"
 
+def get_direct_host_or_ip(version):
+    direct=Domain.query.filter(Domain.mode==DomainType.direct,Domain.sub_link_only==False).first()
+    if not (direct):
+        direct=Domain.query.filter(Domain.mode==DomainType.direct).first()
+    if direct:
+        direct=direct.domain
+    else:
+        direct=get_ip(version)
+    return direct
+    
 
 def get_ip(version, retry=3):
+    ips=get_interface_public_ip(version)
     ip=None
-    try:
-        ip=urllib.request.urlopen(f'https://v{version}.ident.me/').read().decode('utf8')
-    except:
-        if retry > 0:
-            ip= get_ip(version, retry=retry-1)
+    if(ips):
+        ip= random.sample(ips, 1)[0]
+    
+    if ip is None:
+        ip= get_socket_ip(version)
+
+    if ip is None:
+        try:
+            ip=urllib.request.urlopen(f'https://v{version}.ident.me/').read().decode('utf8')
+        except:
+           pass
+    if ip is None and retry > 0:
+        ip= get_ip(version, retry=retry-1)
     return ip
+
+def get_socket_public_ip(version):
+    try:
+        import socket
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        if version==6:
+            
+            s.connect(("2001:4860:4860::8888", 80))  
+        else:
+            s.connect(("8.8.8.8", 80))  
+        ip_address = s.getsockname()[0]
+        s.close()
+        return ip_address if is_public_ip(ip_address) else None
+    except socket.error:
+        return None
+
+
+def is_public_ip(address):
+    import netifaces
+    if address.startswith('127.') or address.startswith('169.254.') or address.startswith('10.') or address.startswith('192.168.') or address.startswith('172.'):
+        return False
+    if address.startswith('fe80:') or address.startswith('fd') or address.startswith('fc00:'):
+        return False
+    return True
+
+def get_interface_public_ip(version):
+    addresses = []
+    try:
+        interfaces = netifaces.interfaces()
+        for interface in interfaces:
+            if version == 4:
+                address_info = netifaces.ifaddresses(interface).get(netifaces.AF_INET, [])
+            elif version == 6:
+                address_info = netifaces.ifaddresses(interface).get(netifaces.AF_INET6, [])
+            else:
+                return None
+            
+            if address_info:
+                for addr in address_info:
+                    address = addr['addr']
+                    if (is_public_ip(address)):
+                        addresses.append(address)
+                    # if version == 4:
+                    #     if not address.startswith('127.') and not address.startswith('169.254.') and not address.startswith('10.') and not address.startswith('192.168.') and not address.startswith('172.'):
+                    #         addresses.append(address)
+                    # elif version == 6:
+                    #     if not address.startswith('fe80:') and not address.startswith('fd') and not address.startswith('fc00:'):
+                            # addresses.append(address)
+        
+        return addresses if addresses else None
+
+    except (OSError, KeyError):
+        return None
+
 
 
 def get_available_proxies(child_id):

@@ -72,7 +72,7 @@ def make_proxy(proxy, domain_db, phttp=80, ptls=443):
         return {'name': name, 'msg': "not cdn proxy  in cdn domain",'type':'debug', 'proto': proxy.proto}
     if domain_db.mode==DomainType.worker and proxy.Proto==ProxyProto.grpc:
         return {'name': name, 'msg': "worker does not support grpc",'type':'debug', 'proto': proxy.proto}
-    cdn_forced_host = domain_db.cdn_ip or domain_db.domain
+    cdn_forced_host = domain_db.cdn_ip or (domain_db.domain if domain_db.mode!=DomainType.reality else hiddify.get_direct_host_or_ip(4))
     
     alpn="h2" if proxy.l3 in ['tls_h2','reality'] else 'h2,http/1.1' if proxy.l3 == 'tls_h2_h1' else "http/1.1"
     base = {
@@ -111,6 +111,7 @@ def make_proxy(proxy, domain_db, phttp=80, ptls=443):
         base['reality_short_id']=random.sample(hconfigs[ConfigEnum.reality_short_ids].split(','),1)[0]
         base['reality_pbk']=hconfigs[ConfigEnum.reality_public_key]
         base['sni']=random.sample(re.split('[ \t\r\n;,]+',domain_db.servernames),1)[0]
+        
         del base['host']
         if base.get('fingerprint','none')!='none':
             base['fingerprint']="chrome"

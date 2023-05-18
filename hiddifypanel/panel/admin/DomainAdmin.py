@@ -137,9 +137,13 @@ class DomainAdmin(AdminLTEModelView):
         
         configs = get_hconfigs()
         for c in configs:
-            if "domain" in c and ConfigEnum.decoy_domain != c:
+            if "domain" in c and c not in [ConfigEnum.decoy_domain,ConfigEnum.reality_fallback_domain] and c.category!='hidden':
                 if model.domain == configs[c]:
                     raise ValidationError(_("You have used this domain in: ")+_(f"config.{c}.label"))
+
+        for d in Domain.query.filter(Domain.mode==DomainType.reality).all():
+            if(model.domain in d.servernames.split(",")):
+                raise ValidationError(_("You have used this domain in: ")+_(f"config.reality_server_names.label")+" in "+ d.domain)
         myip = hiddify.get_ip(4)
         myipv6 = hiddify.get_ip(6)
         
