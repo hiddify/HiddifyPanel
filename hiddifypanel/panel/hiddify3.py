@@ -187,7 +187,8 @@ def is_domain_support_h2(sni,server=None):
         context.set_ciphers("ECDHE+AESGCM:ECDHE+CHACHA20:DHE+AESGCM:DHE+CHACHA20")
         context.set_alpn_protocols(["h2"])
         start_time = time.monotonic()
-        with socket.create_connection((server or sni, 443)) as sock:
+        with socket.create_connection((server or sni, 443),timeout=2) as sock:
+            
             with context.wrap_socket(sock, server_hostname=sni) as ssock:
                 elapsed_time = time.monotonic() - start_time
                 valid= ssock.version()=="TLSv1.3"
@@ -199,12 +200,15 @@ def is_domain_support_h2(sni,server=None):
         return False
 
 def is_domain_reality_friendly(domain):
+    
     return is_domain_support_h2(domain)
 
 def debug_flash_if_not_in_the_same_asn(domain):
     from hiddifypanel.panel.clean_ip import ipasn
     ipv4=get_ip(4)
+    
     dip=get_domain_ip(domain)
+    
     if ipasn :
         asn_ipv4= ipasn.get(ipv4)
         asn_dip= ipasn.get(dip)

@@ -61,8 +61,12 @@ def make_proxy(proxy, domain_db, phttp=80, ptls=443):
     name = proxy.name
     if not port:
         return {'name': name, 'msg': "port not defined",'type':'error', 'proto': proxy.proto}
+    if "reality" not in l3 and domain_db.mode==DomainType.reality:
+        return {'name': name, 'msg': "reality proxy not in reality domain",'type':'debug', 'proto': proxy.proto}
+
     if "reality" in l3 and domain_db.mode!=DomainType.reality:
         return {'name': name, 'msg': "reality proxy not in reality domain",'type':'debug', 'proto': proxy.proto}
+
     is_cdn = ProxyCDN.CDN in proxy.cdn 
     if is_cdn and domain_db.mode not in  [DomainType.cdn,DomainType.auto_cdn_ip,DomainType.worker]:
         # print("cdn proxy not in cdn domain", domain, name)
@@ -110,7 +114,10 @@ def make_proxy(proxy, domain_db, phttp=80, ptls=443):
     if l3 in ['reality']:
         base['reality_short_id']=random.sample(hconfigs[ConfigEnum.reality_short_ids].split(','),1)[0]
         base['reality_pbk']=hconfigs[ConfigEnum.reality_public_key]
-        base['sni']=random.sample(re.split('[ \t\r\n;,]+',domain_db.servernames),1)[0]
+        if(domain_db.servernames):
+            base['sni']=random.sample(re.split('[ \t\r\n;,]+',domain_db.servernames),1)[0]
+        else:
+            base['sni']=domain_db.domain
         
         del base['host']
         if base.get('fingerprint','none')!='none':

@@ -103,11 +103,12 @@ def get_ip(version, retry=3):
         ip= random.sample(ips, 1)[0]
     
     if ip is None:
-        ip= get_socket_ip(version)
+        ip= get_socket_public_ip(version)
 
     if ip is None:
         try:
             ip=urllib.request.urlopen(f'https://v{version}.ident.me/').read().decode('utf8')
+            
         except:
            pass
     if ip is None and retry > 0:
@@ -125,6 +126,7 @@ def get_socket_public_ip(version):
             s.connect(("8.8.8.8", 80))  
         ip_address = s.getsockname()[0]
         s.close()
+        
         return ip_address if is_public_ip(ip_address) else None
     except socket.error:
         return None

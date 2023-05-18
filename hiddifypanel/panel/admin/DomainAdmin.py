@@ -141,8 +141,9 @@ class DomainAdmin(AdminLTEModelView):
                 if model.domain == configs[c]:
                     raise ValidationError(_("You have used this domain in: ")+_(f"config.{c}.label"))
 
-        for d in Domain.query.filter(Domain.mode==DomainType.reality).all():
-            if(model.domain in d.servernames.split(",")):
+        for td in Domain.query.filter(Domain.mode==DomainType.reality,Domain.domain!=model.domain).all():
+            print(td)
+            if td.servernames and (model.domain in td.servernames.split(",")):
                 raise ValidationError(_("You have used this domain in: ")+_(f"config.reality_server_names.label")+" in "+ d.domain)
         myip = hiddify.get_ip(4)
         myipv6 = hiddify.get_ip(6)
@@ -208,22 +209,26 @@ class DomainAdmin(AdminLTEModelView):
             #     model.alias= "@hiddify "+model.alias
         # model.work_with = self.session.query(Domain).filter(
         #     Domain.id.in_(work_with_ids)).all()
-
+        
         if model.mode==DomainType.reality:
             model.servernames=(model.servernames or model.domain).lower()
+
             for v in [model.domain,model.servernames]:
+                
                 for d in v.split(","):
                     if not d:continue
+                    
                     if not hiddify.is_domain_reality_friendly(d):
                         # flash(_("Domain is not REALITY friendly!")+" "+d,'error')
                         # return render_template('config.html', form=form)
                         raise ValidationError(_("Domain is not REALITY friendly!")+" "+d)
+                
                     hiddify.debug_flash_if_not_in_the_same_asn(d)
             
             for d in model.servernames.split(","):
                 if not hiddify.fallback_domain_compatible_with_servernames(model.domain, d):                
                     raise ValidationError(_("REALITY Fallback domain is not compaitble with server names!")+" "+d+" != "+model.domain)
-
+        
         if(model.cdn_ip):
             from hiddifypanel.panel import clean_ip
             try:
@@ -231,12 +236,11 @@ class DomainAdmin(AdminLTEModelView):
             except:
                 raise ValidationError(_("Error in auto cdn format"))
 
-
         if is_created or not get_domain(model.domain) :
             # return hiddify.reinstall_action(complete_install=False, domain_changed=True)
             hiddify.flash_config_success(restart_mode='apply', domain_changed=True)
 
-        
+    
     # def after_model_change(self,form, model, is_created):
     #     if model.show_domains.count==0:
     #         db.session.bulk_save_objects(ShowDomain(model.id,model.id))
