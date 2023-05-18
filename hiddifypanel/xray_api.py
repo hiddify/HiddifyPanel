@@ -106,5 +106,4 @@ def get_usage(uuid,reset=False):
     return res
 
 
-def hconfig(a):
-    pass
+
