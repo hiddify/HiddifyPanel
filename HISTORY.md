@@ -33,6 +33,10 @@
 
 #### Fix
 
+* Typo. 
+
+* Bug. 
+
 * Sort bug. 
 
 #### Other
