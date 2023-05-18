@@ -5,6 +5,8 @@
 
 #### New
 
+* Fix ip behind cdn. 
+
 * Add singbox api. 
 
 * Remove hiddify:// on copy. 
