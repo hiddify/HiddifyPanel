@@ -131,7 +131,6 @@ def get_socket_public_ip(version):
 
 
 def is_public_ip(address):
-    import netifaces
     if address.startswith('127.') or address.startswith('169.254.') or address.startswith('10.') or address.startswith('192.168.') or address.startswith('172.'):
         return False
     if address.startswith('fe80:') or address.startswith('fd') or address.startswith('fc00:'):
