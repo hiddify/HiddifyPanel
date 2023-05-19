@@ -14,7 +14,8 @@ def init_db():
     db.create_all()   
 
     
-
+    execute(f'update domain set mode="sub_link_only", sub_link_only=false where sub_link_only = true or mode=1  or mode="1"')
+    execute(f'update domain set mode="direct", sub_link_only=false where mode=0  or mode="0"')
     execute(f'update proxy set transport="WS" where transport = "ws"')
     execute(f'update admin_user set mode="agent" where mode = "slave"')
     execute(f'update admin_user set mode="super_admin" where id=1')
@@ -52,7 +53,7 @@ def init_db():
         execute(f'DROP TABLE str_config')
         execute(f'ALTER TABLE str_config_old RENAME TO str_config')
     
-    execute(f'update domain set mode="sub_link_only", sub_link_only=false where sub_link_only = true or mode=1  or mode="1"')
+    
 
     execute('ALTER TABLE user RENAME COLUMN monthly_usage_limit_GB TO usage_limit_GB')       
     execute(f'update admin_user set parent_admin_id=1 where parent_admin_id is NULL and 1!=id')
