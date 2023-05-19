@@ -5,6 +5,8 @@
 
 #### New
 
+* Gun mode for grpc. 
+
 * Fix ip behind cdn. 
 
 * Add singbox api. 
