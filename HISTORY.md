@@ -39,6 +39,8 @@
 
 #### Fix
 
+* Bug. 
+
 * Singbox only support one servername. 
 
 * New reality issues. 
