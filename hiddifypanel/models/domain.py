@@ -66,6 +66,7 @@ class Domain(db.Model, SerializerMixin):
         'sub_link_only':d.sub_link_only,
         'child_unique_id': d.child.unique_id if d.child else '',
         'cdn_ip': d.cdn_ip,
+        'servernames':d.servernames,
         'show_domains': [dd.domain for dd in d.show_domains]
     }
 
@@ -145,6 +146,7 @@ def add_or_update_domain(commit=True,child_id=0,**domain):
     dbdomain.mode = domain['mode']
     dbdomain.cdn_ip = domain.get('cdn_ip', '')
     dbdomain.alias = domain.get('alias', '')
+    dbdomain.servernames = domain.get('servernames', '')
     show_domains = domain.get('show_domains', [])
     dbdomain.show_domains = Domain.query.filter(Domain.domain.in_(show_domains)).all()
     if commit:

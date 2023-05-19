@@ -183,7 +183,8 @@ def make_proxy(proxy, domain_db, phttp=80, ptls=443):
 
     if proxy.transport == "grpc":
         base['transport'] = 'grpc'
-        base['grpc_mode'] = "multi"
+        # base['grpc_mode'] = "multi" if hconfigs[ConfigEnum.core_type]=='xray' else 'gun'
+        base['grpc_mode'] = 'gun'
         base['grpc_service_name'] = f'{path[base["proto"]]}{hconfigs[ConfigEnum.path_grpc]}'
         base['path'] = base['grpc_service_name'] 
         return base
