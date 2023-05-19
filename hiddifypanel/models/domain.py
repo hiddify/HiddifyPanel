@@ -101,7 +101,7 @@ def get_panel_domains(always_add_ip=False,always_add_all_domains=False):
     else:
         domains=Domain.query.filter(Domain.mode!=DomainType.fake).filter(Domain.sub_link_only==True).all()
         if not len(domains) or always_add_all_domains:
-            domains=Domain.query.filter(Domain.mode!=DomainType.fake).all()
+            domains=Domain.query.filter(Domain.mode.notin_([DomainType.fake,DomainType.reality])).all()
 
     if len(domains)==0 and request:
         domains=[Domain(domain=request.host)]

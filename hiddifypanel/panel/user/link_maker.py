@@ -115,7 +115,10 @@ def make_proxy(proxy, domain_db, phttp=80, ptls=443):
         base['reality_short_id']=random.sample(hconfigs[ConfigEnum.reality_short_ids].split(','),1)[0]
         base['reality_pbk']=hconfigs[ConfigEnum.reality_public_key]
         if(domain_db.servernames):
-            base['sni']=random.sample(re.split('[ \t\r\n;,]+',domain_db.servernames),1)[0]
+            all_servernames=re.split('[ \t\r\n;,]+',domain_db.servernames)
+            base['sni']=random.sample(all_servernames,1)[0]
+            if hconfigs[ConfigEnum.core_type]=="singbox":
+                base['sni']=all_servernames[0]
         else:
             base['sni']=domain_db.domain
         
