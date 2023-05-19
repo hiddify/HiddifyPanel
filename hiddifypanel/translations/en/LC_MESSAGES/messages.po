@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-17 09:05+0200\n"
-"PO-Revision-Date: 2023-05-16 20:04-0500\n"
+"POT-Creation-Date: 2023-05-19 17:33+0200\n"
+"PO-Revision-Date: 2023-05-19 10:30-0500\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Generated-By: Babel 2.12.1\n"
 
 # | msgid "This Domain does not exist in the Panel !"
-#: hiddifypanel/models/domain.py:125 hiddifypanel/panel/user/user.py:163
+#: hiddifypanel/models/domain.py:126 hiddifypanel/panel/user/user.py:163
 msgid "This domain does not exist in the panel!"
 msgstr "This Domain does not exist in the Panel !"
 
@@ -40,21 +40,21 @@ msgid "Access Denied"
 msgstr "Access Denied"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/panel/hiddify.py:153
+#: hiddifypanel/panel/hiddify.py:228
 msgid "admin.config.apply_configs"
 msgstr "Apply Configs"
 
 # | msgid ""
 # | "Configs have been Changed Successfully. Click %(link)s to Apply the "
 # | "Configs. It may take 2 Minutes to apply"
-#: hiddifypanel/panel/hiddify.py:154
+#: hiddifypanel/panel/hiddify.py:229
 msgid "config.validation-success"
 msgstr ""
 "Configs have been Changed Successfully. Click %(link)s to Apply the Configs."
 " It may take 2 Minutes to apply"
 
 # | msgid " ✅ Configs Have Been Changed Successfully"
-#: hiddifypanel/panel/hiddify.py:156
+#: hiddifypanel/panel/hiddify.py:231
 msgid "config.validation-success-no-reset"
 msgstr " ✅ Configs Have Been Changed Successfully"
 
@@ -62,12 +62,12 @@ msgstr " ✅ Configs Have Been Changed Successfully"
 # | "Domain can not be resolved! There is a problem in your domain. Please "
 # | "check your Domain configurations."
 #: hiddifypanel/panel/admin/ChildAdmin.py:108
-#: hiddifypanel/panel/admin/DomainAdmin.py:147
-#: hiddifypanel/panel/admin/DomainAdmin.py:173
-#: hiddifypanel/panel/admin/DomainAdmin.py:176
+#: hiddifypanel/panel/admin/DomainAdmin.py:152
+#: hiddifypanel/panel/admin/DomainAdmin.py:178
+#: hiddifypanel/panel/admin/DomainAdmin.py:181
 #: hiddifypanel/panel/admin/QuickSetup.py:118
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:109
-#: hiddifypanel/panel/hiddify.py:276
+#: hiddifypanel/panel/hiddify.py:351
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr ""
 "Domain can not be resolved! There is a problem in your domain. Please check "
@@ -82,7 +82,7 @@ msgstr "Last Day"
 # | "Selected Domain for REALITY is not in the same ASN. To better use of the
 # "
 # | "Protocol, it is better to find a Domain in the same ASN"
-#: hiddifypanel/panel/hiddify3.py:214
+#: hiddifypanel/panel/hiddify3.py:218
 msgid ""
 "selected domain for REALITY is not in the same ASN. To better use of the "
 "protocol, it is better to find a domain in the same ASN."
@@ -101,19 +101,19 @@ msgid "Package ended!"
 msgstr "Package Ended"
 
 # | msgid "Rebooting System ... This may take a few minutes. Please Wait ..."
-#: hiddifypanel/panel/admin/Actions.py:75
+#: hiddifypanel/panel/admin/Actions.py:76
 msgid "rebooting system may takes time please wait"
 msgstr "Rebooting System ... This may take a few minutes. Please Wait ..."
 
 # | msgid "Can not sync child with Parent Panel."
-#: hiddifypanel/panel/admin/Actions.py:91
+#: hiddifypanel/panel/admin/Actions.py:92
 msgid "can not sync child with parent panel"
 msgstr "Can not sync child with Parent Panel."
 
 # | msgid ""
 # | "⚠️ Your Domains Changed. please do not forget to copy Admin links, "
 # | "otherwise you can not access to the panel anymore"
-#: hiddifypanel/panel/admin/Actions.py:97
+#: hiddifypanel/panel/admin/Actions.py:98
 msgid ""
 "Your domains changed. Please do not forget to copy admin links, otherwise "
 "you can not access to the panel anymore."
@@ -124,7 +124,7 @@ msgstr ""
 # | msgid ""
 # | "Please wait about 5 minutes to make sure everything is updated. during "
 # | "this time, please copy and save your Proxy links which are:"
-#: hiddifypanel/panel/admin/Actions.py:124
+#: hiddifypanel/panel/admin/Actions.py:125
 msgid ""
 "Success! Please wait around 4 minutes to make sure everything is updated. "
 "During this time, please save your proxy links which are:"
@@ -133,14 +133,14 @@ msgstr ""
 "time, please copy and save your Proxy links which are:"
 
 # | msgid "📑 See the log in the bellow screen"
-#: hiddifypanel/panel/admin/Actions.py:157
+#: hiddifypanel/panel/admin/Actions.py:158
 msgid "see the log in the bellow screen"
 msgstr "📑 See the log in the bellow screen"
 
 # | msgid ""
 # | "✔️ Success! Please Wait around 5 minutes to make sure everything is "
 # | "updated"
-#: hiddifypanel/panel/admin/Actions.py:186
+#: hiddifypanel/panel/admin/Actions.py:187
 msgid ""
 "Success! Please wait around 5 minutes to make sure everything is updated."
 msgstr ""
@@ -212,10 +212,10 @@ msgstr "👥 Can Add Sub Admin"
 msgid "Add some text that is only visible to super_admin."
 msgstr "Add some Text that is only visible to Super Admin"
 
-# | msgid "Define the Admin Mode"
+# | msgid "🥇🥈🥉 Define the Admin Mode"
 #: hiddifypanel/panel/admin/AdminstratorAdmin.py:77
 msgid "Define the admin mode. "
-msgstr "Define the Admin Mode"
+msgstr "🥇🥈🥉 Define the Admin Mode"
 
 # | msgid "Owner Can Not Be Deleted!"
 #: hiddifypanel/panel/admin/AdminstratorAdmin.py:216
@@ -496,12 +496,12 @@ msgstr "🌍 Use Only for Subscription Link"
 msgid "domain.mode"
 msgstr "Mode"
 
-# | msgid "Force config to use following IPs"
+# | msgid "🔂 Force Config to Use Following IPs"
 #: hiddifypanel/panel/admin/DomainAdmin.py:79
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.cdn_forced_host.label"
-msgstr "Force config to use following IPs"
+msgstr "🔂 Force Config to Use Following IPs"
 
 # | msgid "IP"
 #: hiddifypanel/panel/admin/DomainAdmin.py:80
@@ -510,6 +510,7 @@ msgstr "IP"
 
 # | msgid "🌎 Reality Server Names"
 #: hiddifypanel/panel/admin/DomainAdmin.py:81
+#: hiddifypanel/panel/admin/DomainAdmin.py:147
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.reality_server_names.label"
@@ -527,13 +528,14 @@ msgstr "All"
 
 # | msgid "You have already used this Domain in: "
 #: hiddifypanel/panel/admin/DomainAdmin.py:142
+#: hiddifypanel/panel/admin/DomainAdmin.py:147
 msgid "You have used this domain in: "
 msgstr "You have already used this Domain in: "
 
 # | msgid ""
 # | "Domain IP = %(domain_ip)s is not matched with your IP = %(server_ip)s "
 # | "which is required in Direct Mode"
-#: hiddifypanel/panel/admin/DomainAdmin.py:180
+#: hiddifypanel/panel/admin/DomainAdmin.py:185
 #, python-format
 msgid ""
 "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is "
@@ -545,7 +547,7 @@ msgstr ""
 # | msgid ""
 # | "In CDN Mode, Domain IP =%(domain_ip)s should be different to your IP "
 # | "=%(server_ip)s"
-#: hiddifypanel/panel/admin/DomainAdmin.py:183
+#: hiddifypanel/panel/admin/DomainAdmin.py:188
 #, python-format
 msgid ""
 "In CDN mode, Domain IP=%(domain_ip)s should be different to your "
@@ -554,16 +556,16 @@ msgstr ""
 "In CDN Mode, Domain IP =%(domain_ip)s should be different to your IP "
 "=%(server_ip)s"
 
-#: hiddifypanel/panel/admin/DomainAdmin.py:216
+#: hiddifypanel/panel/admin/DomainAdmin.py:224
 msgid "Domain is not REALITY friendly!"
 msgstr "Domain is not REALITY friendly!"
 
 # | msgid "REALITY Fallback Domain is not compaitble with Server names!"
-#: hiddifypanel/panel/admin/DomainAdmin.py:221
+#: hiddifypanel/panel/admin/DomainAdmin.py:230
 msgid "REALITY Fallback domain is not compaitble with server names!"
 msgstr "REALITY Fallback Domain is not compaitble with Server names!"
 
-#: hiddifypanel/panel/admin/DomainAdmin.py:228
+#: hiddifypanel/panel/admin/DomainAdmin.py:237
 #, fuzzy
 msgid "Error in auto cdn format"
 msgstr "Error in auto cdn format"
@@ -581,12 +583,12 @@ msgstr "Error! Domain Fronting not set."
 msgid "config.validation-error"
 msgstr "There is an error in one of the fields."
 
-# | msgid "ℹ️ Domain Fronting"
+# | msgid "Domain Fronting"
 #: hiddifypanel/panel/admin/ProxyAdmin.py:121
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:2
 msgid "config.domain_fronting.label"
-msgstr "ℹ️ Domain Fronting"
+msgstr "Domain Fronting"
 
 # | msgid "Changing the Language was Successful."
 #: hiddifypanel/panel/admin/QuickSetup.py:44
@@ -626,11 +628,11 @@ msgstr "🇮🇷 Persian فارسی 波斯语"
 msgid "lang.zh"
 msgstr "🇨🇳 Chinese چینی 中国人"
 
+# | msgid "🇵🇹 Portugal پرتغالی 葡萄牙"
 #: hiddifypanel/panel/admin/QuickSetup.py:78
 #: hiddifypanel/panel/admin/SettingAdmin.py:180
-#, fuzzy
 msgid "lang.pt"
-msgstr "lang.pt"
+msgstr "🇵🇹 Portugal پرتغالی 葡萄牙"
 
 # | msgid "Choose Language For Admin Area"
 #: hiddifypanel/panel/admin/QuickSetup.py:78
@@ -724,15 +726,15 @@ msgstr ""
 "Enabling Firewall will open used Ports (at least 22,443,80 and SSH) and "
 "close all other Ports"
 
-# | msgid "⛔️ Block domestic Sites"
+# | msgid "⛔️ Block Domestic Sites"
 #: hiddifypanel/panel/admin/QuickSetup.py:105
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.block_iran_sites.label"
-msgstr "⛔️ Block domestic Sites"
+msgstr "⛔️ Block Domestic Sites"
 
 # | msgid ""
-# | "Block iranian sites to prevent detection by the government (Experimental:
+# | "Block Iranian Sites to prevent detection by the government (Experimental:
 # "
 # | "If there is a problem, please disable it and tell us.)"
 #: hiddifypanel/panel/admin/QuickSetup.py:105
@@ -740,7 +742,7 @@ msgstr "⛔️ Block domestic Sites"
 #: hiddifypanel/templates/fake.html:1
 msgid "config.block_iran_sites.description"
 msgstr ""
-"Block iranian sites to prevent detection by the government (Experimental: If"
+"Block Iranian Sites to prevent detection by the government (Experimental: If"
 " there is a problem, please disable it and tell us.)"
 
 # | msgid "♈️ Enable VMess"
@@ -787,15 +789,15 @@ msgstr "Port is Already Used in:"
 msgid "Can not connect to parent panel!"
 msgstr "Can not connect to Parent Panel!"
 
+# | msgid "☢️ Xray"
 #: hiddifypanel/panel/admin/SettingAdmin.py:176
-#, fuzzy
 msgid "Xray"
-msgstr "Xray"
+msgstr "☢️ Xray"
 
+# | msgid "📦 SingBox"
 #: hiddifypanel/panel/admin/SettingAdmin.py:176
-#, fuzzy
 msgid "SingBox"
-msgstr "SingBox"
+msgstr "📦 SingBox"
 
 #: hiddifypanel/panel/admin/SettingAdmin.py:178
 #: hiddifypanel/panel/user/templates/home/usage.html:10
@@ -979,9 +981,10 @@ msgstr "📆 Package Days"
 msgid "Max IPs"
 msgstr "Max IPs"
 
+# | msgid "❇️ Enable"
 #: hiddifypanel/panel/admin/UserAdmin.py:79
 msgid "Enable"
-msgstr "Enable"
+msgstr "❇️ Enable"
 
 # | msgid "You can add some text that Is only visible to you"
 #: hiddifypanel/panel/admin/UserAdmin.py:93
@@ -1313,11 +1316,11 @@ msgstr ""
 "This option creates a Fake Config in the user's sub link that shows the "
 "user's remaining volume"
 
-# | msgid "🔀 Decoy Site"
+# | msgid "📺 Decoy Site"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.decoy_domain.label"
-msgstr "🔀 Decoy Site"
+msgstr "📺 Decoy Site"
 
 # | msgid ""
 # | "Fake Site: simulates a site when someone visits your Domain.\n"
@@ -1399,11 +1402,11 @@ msgstr ""
 "In CloudFlare, TLS Domain Fronting is not supported. it will use Port 443 to"
 " connect to CDN"
 
-# | msgid "Domain Fronting"
+# | msgid "ℹ️ Domain Fronting"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.domain_fronting_domain.label"
-msgstr "Domain Fronting"
+msgstr "ℹ️ Domain Fronting"
 
 # | msgid ""
 # | "It is used to simulate another website instead of your website in SNI. "
@@ -1446,11 +1449,11 @@ msgstr ""
 "It is used to show a sponsored channel in the client's chat list. To advertise a channel get a tag from @MTProxybot .\n"
 "enter code 0123456789ABCDEF0123456789ABCDEF in that bot."
 
-# | msgid "🔀 Telegram Fake Domain"
+# | msgid "📺 Telegram Fake Domain"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.telegram_fakedomain.label"
-msgstr "🔀 Telegram Fake Domain"
+msgstr "📺 Telegram Fake Domain"
 
 # | msgid ""
 # | "Please use a well known domain in your data center. for example, If you "
@@ -1718,11 +1721,11 @@ msgstr "KCP"
 msgid "config.kcp.description"
 msgstr "KCP Configurations could be set in this section."
 
-# | msgid "ℹ️ uTLS"
+# | msgid "❇️ uTLS"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.utls.label"
-msgstr "ℹ️ uTLS"
+msgstr "❇️ uTLS"
 
 # | msgid ""
 # | "This Option Will Simulate Different Browsers, Therefore, GFW Can Not "
@@ -1926,18 +1929,18 @@ msgid "config.warp_mode.label"
 msgstr "✴️ WARP+ Mode"
 
 # | msgid ""
-# | "All: All Sites are Removed from WARP\n"
+# | "✴️ All : All Sites are Removed from WARP\n"
 # | "<br>\n"
-# | "Only Domestic and Blocked Sites: only Iranian sites and\n"
+# | "☑️ Only Domestic and Blocked Sites: Only Iranian Sites and\n"
 # | "Google, Spotify, Netflix, OpenAi, IPinfo.io\n"
 # | "They use WARP+"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.warp_mode.description"
 msgstr ""
-"All: All Sites are Removed from WARP\n"
+"✴️ All : All Sites are Removed from WARP\n"
 "<br>\n"
-"Only Domestic and Blocked Sites: only Iranian sites and\n"
+"☑️ Only Domestic and Blocked Sites: Only Iranian Sites and\n"
 "Google, Spotify, Netflix, OpenAi, IPinfo.io\n"
 "They use WARP+"
 
@@ -1966,11 +1969,11 @@ msgstr ""
 msgid "config.reality_short_ids.label"
 msgstr "🆔 Short IDs"
 
-# | msgid "Do not change it"
+# | msgid "Do Not Change It"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.reality_short_ids.description"
-msgstr "Do not change it"
+msgstr "Do Not Change It"
 
 # | msgid "🌍 Reality Fallback Domain"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1996,11 +1999,11 @@ msgstr ""
 msgid "config.reality_private_key.label"
 msgstr "🔑 Private Key"
 
-# | msgid "Do not change it"
+# | msgid "Do Not Change It"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.reality_private_key.description"
-msgstr "Do not change it"
+msgstr "Do Not Change It"
 
 # | msgid "🔑 Public Key"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -2008,11 +2011,11 @@ msgstr "Do not change it"
 msgid "config.reality_public_key.label"
 msgstr "🔑 Public Key"
 
-# | msgid "Do not change it"
+# | msgid "Do Not Change It"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.reality_public_key.description"
-msgstr "Do not change it"
+msgstr "Do Not Change It"
 
 # | msgid "Reality"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -2020,11 +2023,11 @@ msgstr "Do not change it"
 msgid "config.reality.label"
 msgstr "Reality"
 
-# | msgid "REALITY eliminate the Server-Side TLS Fingerprint feature"
+# | msgid "REALITY eliminate the Server-Side TLS Fingerprint Feature"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:2
 msgid "config.reality.description"
-msgstr "REALITY eliminate the Server-Side TLS Fingerprint feature"
+msgstr "REALITY eliminate the Server-Side TLS Fingerprint Feature"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
@@ -2514,33 +2517,34 @@ msgid "Click here to see the complete log"
 msgstr "Click here to see the complete log"
 
 #: hiddifypanel/panel/admin/templates/model/user_list.html:97
-#: hiddifypanel/panel/admin/templates/result.html:94
+#: hiddifypanel/panel/admin/templates/result.html:104
 msgid "Success"
 msgstr "Success"
 
 # | msgid "✅ The Action Done Successfully. You can now leave this page"
-#: hiddifypanel/panel/admin/templates/result.html:95
+#: hiddifypanel/panel/admin/templates/result.html:105
 msgid "The action done successfully. You can now leave this page."
 msgstr "✅ The Action Done Successfully. You can now leave this page"
 
 # | msgid ""
-# | "In this section, you can add your Domain. \n"
+# | "ℹ️ In this section, you can add your Domain. \n"
 # | "<br>\n"
-# | "If you want to lessen the probability of having dirty IP, you can add "
+# | "ℹ️ If you want to lessen the probability of having dirty IP, you can add
+# "
 # | "Multiple Relay Server <a href=\"https://github.com/hiddify/hiddify-"
 # | "config/discussions/129\">Read More</a>.\n"
-# | "If you have Multiple IPv4 or IPv6 in your Panel you have to add the "
+# | "ℹ️ If you have Multiple IPv4 or IPv6 in your Panel you have to add the "
 # | "domain pointed to them as Relay."
 #: hiddifypanel/panel/admin/templates/model/domain_list.html:7
 msgid ""
 "In this section, you can add your domain. You need to add at least one "
 "domain in direct mode."
 msgstr ""
-"In this section, you can add your Domain. \n"
+"ℹ️ In this section, you can add your Domain. \n"
 "<br>\n"
-"If you want to lessen the probability of having dirty IP, you can add Multiple Relay Server <a href=\"https://github.com/hiddify/hiddify-config/discussions/129\">Read More</a>.\n"
+"ℹ️ If you want to lessen the probability of having dirty IP, you can add Multiple Relay Server <a href=\"https://github.com/hiddify/hiddify-config/discussions/129\">Read More</a>.\n"
 "<br>\n"
-"If you have Multiple IPv4 or IPv6 in your Panel you have to add the domain pointed to them as Relay."
+"ℹ️ If you have Multiple IPv4 or IPv6 in your Panel you have to add the domain pointed to them as Relay."
 
 # | msgid "📣 Send Message to User's Telegram"
 #: hiddifypanel/panel/admin/templates/model/user_list.html:8
@@ -2575,7 +2579,7 @@ msgid "Offline more than 1 week"
 msgstr "Offline More Than 1 Week"
 
 # | msgid ""
-# | "♻️ User usage will be updated every 1 Minutes. to update it now <a "
+# | "🔄 User usage will be updated every 1 Minutes. to update it now <a "
 # | "href=\"%(link)s\" class=\"btn btn-info\">Click Here</a>"
 #: hiddifypanel/panel/admin/templates/model/user_list.html:23
 #, python-format
@@ -2583,7 +2587,7 @@ msgid ""
 "User usage will be updated every 6 minutes. To update it now click <a "
 "href=\"%(link)s\" class=\"btn btn-info\">here</a>"
 msgstr ""
-"♻️ User usage will be updated every 1 Minutes. to update it now <a "
+"🔄 User usage will be updated every 1 Minutes. to update it now <a "
 "href=\"%(link)s\" class=\"btn btn-info\">Click Here</a>"
 
 # | msgid "✏️  Please write your message to send to the Telegram:"
@@ -2785,14 +2789,16 @@ msgid "user.home.allconfig.link-configs"
 msgstr "Subscription Link"
 
 # | msgid ""
-# | "Please select one of the following applications:\n"
+# | "📍 Please select one of the following applications:\n"
+# | "<br />\n"
 # | "<br />"
 #: hiddifypanel/panel/user/templates/home/android.html:2
 #: hiddifypanel/panel/user/templates/home/ios.html:3
 #: hiddifypanel/panel/user/templates/home/windows.html:46
 msgid "Please select one of the following applications:"
 msgstr ""
-"Please select one of the following applications:\n"
+"📍 Please select one of the following applications:\n"
+"<br />\n"
 "<br />"
 
 # | msgid "Direct Download"
@@ -2815,14 +2821,20 @@ msgid "HiddifyNG"
 msgstr "HiddifyNG <span class=\"badge badge-success\">Recommended</span>"
 
 # | msgid ""
-# | "Please install HiddifyNG from either of these links: %(dl_link)s  "
-# | "%(play_link)s.\n"
-# | "Then click on the link below and open it in HiddifyNG."
+# | "📌 Please install HiddifyNG from either of these links:\n"
+# | "<br />\n"
+# | " %(dl_link)s  %(play_link)s\n"
+# | "Then click on the link below and open it in HiddifyNG.\n"
+# | "<br />"
 #: hiddifypanel/panel/user/templates/home/android.html:32
 msgid "HiddifyNG intro"
 msgstr ""
-"Please install HiddifyNG from either of these links: %(dl_link)s  %(play_link)s.\n"
-"Then click on the link below and open it in HiddifyNG."
+"📌 Please install HiddifyNG from either of these links:\n"
+"<br />\n"
+" %(dl_link)s  %(play_link)s\n"
+"<br />\n"
+"Then click on the link below and open it in HiddifyNG.\n"
+"<br />"
 
 #: hiddifypanel/panel/user/templates/home/android.html:36
 #: hiddifypanel/panel/user/templates/home/windows.html:57
@@ -2834,12 +2846,14 @@ msgstr "Click to Import"
 # | "Alternative v2rayNG <button class='btn btn-sm btn-default' "
 # | "onclick='show_video(\"android-v2rayng\")'><i class=\"fa-solid fa-"
 # | "question\"></i> </button>\n"
+# | "<br />\n"
+# | "<br />"
 #: hiddifypanel/panel/user/templates/home/android.html:39
 msgid "V2rayNG"
 msgstr ""
-"Alternative v2rayNG <button class='btn btn-sm btn-default' "
-"onclick='show_video(\"android-v2rayng\")'><i class=\"fa-solid fa-"
-"question\"></i> </button>\n"
+"Alternative v2rayNG <button class='btn btn-sm btn-default' onclick='show_video(\"android-v2rayng\")'><i class=\"fa-solid fa-question\"></i> </button>\n"
+"<br />\n"
+"<br />"
 
 # | msgid ""
 # | "Please install v2rayNG from either of these links: %(dl_link)s  "
@@ -2945,10 +2959,14 @@ msgstr ""
 msgid "test"
 msgstr "Test"
 
-# | msgid "Now based on your needs, click on one of the following links."
+# | msgid ""
+# | "Now based on your needs, click on one of the following links.\n"
+# | "<br />"
 #: hiddifypanel/panel/user/templates/home/clash-links.html:1
 msgid "user.home.clash_configs.intro"
-msgstr "Now based on your needs, click on one of the following links."
+msgstr ""
+"Now based on your needs, click on one of the following links.\n"
+"<br />"
 
 # | msgid "For only Blocked Sites"
 #: hiddifypanel/panel/user/templates/home/clash-links.html:5
@@ -3057,7 +3075,7 @@ msgstr "Copy"
 # | "queries from privacy intrusions and tampering.\n"
 # | "\n"
 # | "    Some browsers might already have this setting enabled.\n"
-# | "<br>\n"
+# | "<br />\n"
 # | "    <h5>​​Mozilla Firefox</h5>\n"
 # | "    Select the <b>menu</b> button > <b>Settings</b>.In the General menu,
 # "
@@ -3068,7 +3086,6 @@ msgstr "Copy"
 # <b>Settings</b>.\n"
 # | "    Select <b>Privacy and security</b> > <b>Security</b>.\n"
 # | "    Scroll down and enable <b>Use secure DNS</b>.\n"
-# | "    <br>\n"
 # | "    <h5>​​Microsoft Edge</h5>\n"
 # | "    Select <b>Privacy, Search, and Services</b>, and scroll down to <b>"
 # | "Security</b>.\n"
@@ -3082,15 +3099,15 @@ msgstr ""
 "    you encrypt your connection to 1.1.1.1 in order to protect your DNS queries from privacy intrusions and tampering.\n"
 "\n"
 "    Some browsers might already have this setting enabled.\n"
-"<br>\n"
+"<br />\n"
 "    <h5>​​Mozilla Firefox</h5>\n"
 "    Select the <b>menu</b> button > <b>Settings</b>.In the General menu, scroll down to access <b>Network Settings</b>. Select <b>Settings</b>. Select <b>Enable DNS over HTTPS</b>.\n"
-"<br>\n"
+"<br />\n"
 "    ​<h5>​Google Chrome</h5>\n"
 "    Select the <b>three-dot</b> menu in your browser > <b>Settings</b>.\n"
 "    Select <b>Privacy and security</b> > <b>Security</b>.\n"
 "    Scroll down and enable <b>Use secure DNS</b>.\n"
-"    <br>\n"
+"<br />\n"
 "    <h5>​​Microsoft Edge</h5>\n"
 "    Select the <b>three-dot</b> menu in your browser > <b>Settings</b>.\n"
 "    Select <b>Privacy, Search, and Services</b>, and scroll down to <b>Security</b>.\n"
@@ -3170,12 +3187,12 @@ msgstr "DNS Over HTTPS"
 msgid "user.home.select tool"
 msgstr "Please select the item."
 
-# | msgid "QR Code"
+# | msgid "🧾 QR Code"
 #: hiddifypanel/panel/user/templates/home/index_old.html:125
 #: hiddifypanel/panel/user/templates/home/multi.html:136
 #: hiddifypanel/panel/user/templates/home/usage.html:74
 msgid "QR code"
-msgstr "QR Code"
+msgstr "🧾 QR Code"
 
 # | msgid ""
 # | "To copy or share links, click on the gray <i class='fa-solid fa-qrcode'>"
@@ -3232,6 +3249,7 @@ msgstr ""
 # | msgid ""
 # | "Stash & Shadowrocket is a great application. We think it worth buying.\n"
 # | "<br>\n"
+# | "<br />\n"
 # | "  <div class=\"btn-group\">\n"
 # | "        <a href=\"https://apps.apple.com/us/app/stash-rule-based-"
 # | "proxy/id1596063349\" target=\"_blank\" class=\"btn btn-success orig-"
@@ -3240,32 +3258,34 @@ msgstr ""
 # | "        <a href=\"https://apps.apple."
 # | "com/us/app/shadowrocket/id932747118\" target=\"_blank\" class=\"btn btn-"
 # | "primary orig-link\">Download Shadowrocket</a> \n"
-# | "        </div><br>"
+# | "        </div><br>\n"
+# | "<br />"
 #: copy.html:17 hiddifypanel/panel/user/templates/home/ios
 #: hiddifypanel/panel/user/templates/home/ios.html:10
 msgid "user.home.ios.stash.intro"
 msgstr ""
 "Stash & Shadowrocket is a great application. We think it worth buying.\n"
 "<br>\n"
+"<br />\n"
 "  <div class=\"btn-group\">\n"
 "        <a href=\"https://apps.apple.com/us/app/stash-rule-based-proxy/id1596063349\" target=\"_blank\" class=\"btn btn-success orig-link\">Download Stash</a>\n"
 "        </div>\n"
 "  <div class=\"btn-group\">\n"
 "        <a href=\"https://apps.apple.com/us/app/shadowrocket/id932747118\" target=\"_blank\" class=\"btn btn-primary orig-link\">Download Shadowrocket</a> \n"
-"        </div><br>"
+"        </div><br>\n"
+"<br />"
 
-# | msgid "Wings X  and Fair VPN "
+# | msgid "FoXray and Fair VPN"
 #: hiddifypanel/panel/user/templates/home/ios.html:21
 msgid "user.home.ios.others.title"
-msgstr "Wings X  and Fair VPN "
+msgstr "FoXray and Fair VPN"
 
 # | msgid ""
 # | "First install one of the following Applications:\n"
 # | "\n"
 # | "<div class=\"btn-group\">\n"
-# | "\t<a href=\"https://apps.apple.com/ca/app/wings-x/id6446119727?"
-# | "platform=iphone\"\n"
-# | "        class=\"btn btn-primary orig-link\">Wings X</a>\n"
+# | "\t<a href=\"https://apps.apple.com/us/app/foxray/id6448898396\"\n"
+# | "        class=\"btn btn-primary orig-link\">FoXray</a>\n"
 # | "</div>\n"
 # | "\t<a href=\"https://apps.apple.com/us/app/fair-vpn/id1533873488\"\n"
 # | "        class=\"btn btn-primary orig-link\">Fair VPN</a>\n"
@@ -3279,8 +3299,8 @@ msgstr ""
 "\n"
 "<div class=\"btn-group\">\n"
 "\n"
-"\t<a href=\"https://apps.apple.com/ca/app/wings-x/id6446119727?platform=iphone\"\n"
-"        class=\"btn btn-primary orig-link\">Wings X</a>\n"
+"\t<a href=\"https://apps.apple.com/us/app/foxray/id6448898396\"\n"
+"        class=\"btn btn-primary orig-link\">FoXray</a>\n"
 "\n"
 "</div>\n"
 "\n"
@@ -3343,13 +3363,15 @@ msgstr ""
 # | "proxy.\n"
 # | "Otherwise, test with different proxies of this site and if the speed is "
 # | "similar to the speed without the proxy, then you have found the best "
-# | "protocol."
+# | "protocol.\n"
+# | "<br />"
 #: hiddifypanel/panel/user/templates/home/speedtest.html:2
 msgid "user.home.speedtest.intro"
 msgstr ""
 "First, Test the Speed <b>without</b> the proxy. If the speed is not good, it means that this ip is so called dirty on your ISP.\n"
 "If the speed was low without a proxy, don't waste your time to test this proxy.\n"
-"Otherwise, test with different proxies of this site and if the speed is similar to the speed without the proxy, then you have found the best protocol."
+"Otherwise, test with different proxies of this site and if the speed is similar to the speed without the proxy, then you have found the best protocol.\n"
+"<br />"
 
 # | msgid "Upload"
 #: hiddifypanel/panel/user/templates/home/speedtest.html:6
@@ -3382,10 +3404,10 @@ msgstr ""
 "Click on one of the following link then, in the telegram you can see a window that contains <b>Connect Proxy</b>. Click on it and it will work.\n"
 "<br />"
 
-# | msgid "Traffic Usage"
+# | msgid "⌛️ Traffic Usage"
 #: hiddifypanel/panel/user/templates/home/usage.html:7
 msgid "user.home.usage.title"
-msgstr "Traffic Usage"
+msgstr "⌛️ Traffic Usage"
 
 # | msgid "Of"
 #: hiddifypanel/panel/user/templates/home/usage.html:12
@@ -3464,12 +3486,14 @@ msgstr "HiddigyN <span class=\"badge badge-success\">Recommended</span>"
 
 # | msgid ""
 # | "Please install HiddifyN from %(dl_link)s.\n"
-# | "Then click on the link below. It will do everything automatically."
+# | "Then click on the link below. It will do everything automatically.\n"
+# | "<br />"
 #: hiddifypanel/panel/user/templates/home/windows.html:53
 msgid "HiddifyN intro"
 msgstr ""
 "Please install HiddifyN from %(dl_link)s.\n"
-"Then click on the link below. It will do everything automatically."
+"Then click on the link below. It will do everything automatically.\n"
+"<br />"
 
 #: hiddifypanel/panel/user/templates/home/windows.html:63
 #, fuzzy
@@ -3479,7 +3503,7 @@ msgstr "HiddifyClash"
 # | msgid ""
 # | "First, download and install the Hiddify Desktop software according to "
 # | "your operating system.\n"
-# | "<br>\n"
+# | "<br />\n"
 # | "%(hiddify_desktop_links)s\n"
 # | "\n"
 # | "<details>\n"
@@ -3505,12 +3529,12 @@ msgstr "HiddifyClash"
 # | "Now, according to your need, you can click on one of the buttons. By "
 # | "viewing the window in your browser, just click on the <b>Open</b> option
 # "
-# | "to automatically add the server link to Hiddify Desktop.\n"
+# | "to automatically add the server link to Hiddify Desktop."
 #: hiddifypanel/panel/user/templates/home/windows.html:65
 msgid "user.home.windows.intro"
 msgstr ""
 "First, download and install the Hiddify Desktop software according to your operating system.\n"
-"<br>\n"
+"<br />\n"
 "%(hiddify_desktop_links)s\n"
 "\n"
 "<details>\n"
@@ -3519,6 +3543,7 @@ msgstr ""
 "\n"
 "        Hiddify Desktop is an safe and open source fork of Clash that supports more VLESS  and UTLS Fingerprinting.\n"
 "        <br>\n"
+"<br />\n"
 "        Its source codes exist in\n"
 "        <a href=\"https://github.com/hiddify/HiddifyDesktop\">GitHub</a>.\n"
 "        \n"
@@ -3535,9 +3560,8 @@ msgstr ""
 "        </details>\n"
 "</div>\n"
 "        </details>\n"
-"<br>\n"
-"Now, according to your need, you can click on one of the buttons. By viewing the window in your browser, just click on the <b>Open</b> option to automatically add the server link to Hiddify Desktop.\n"
-"\n"
+"<br />\n"
+"Now, according to your need, you can click on one of the buttons. By viewing the window in your browser, just click on the <b>Open</b> option to automatically add the server link to Hiddify Desktop."
 
 # | msgid "Oops! something went wrong."
 #: hiddifypanel/templates/500.html:7 hiddifypanel/templates/error.html:7
@@ -3771,23 +3795,21 @@ msgstr ""
 "\n"
 "Please contact us at <a href=\"mailto:info@hiddify.com\">info@hiddify.com</a> if you can help us."
 
-# | msgid "Core"
+# | msgid "🎛️ Core"
 #: hiddifypanel/templates/fake.html:1
-#, fuzzy
 msgid "config.core_type.label"
-msgstr "Core"
+msgstr "🎛️ Core"
 
 # | msgid ""
-# | "XRay: Is a complete core.\n"
+# | "☢️ XRay : Is a Complete Core\n"
 # | "<br>\n"
-# | "Singbox: developed by sagernet. It is also a good core."
+# | "📦 Singbox : Developed by SagerNet. It is also a Good Core"
 #: hiddifypanel/templates/fake.html:1
-#, fuzzy
 msgid "config.core_type.description"
 msgstr ""
-"XRay: Is a complete core.\n"
+"☢️ XRay : Is a Complete Core\n"
 "<br>\n"
-"Singbox: developed by sagernet. It is also a good core."
+"📦 Singbox : Developed by SagerNet. It is also a Good Core"
 
 # | msgid "🖥 DNS Server"
 #: hiddifypanel/templates/fake.html:1
@@ -3837,27 +3859,27 @@ msgid "open"
 msgstr "Open"
 
 # | msgid "Link Copied to Clipboard. "
-#: hiddifypanel/templates/master.html:240
+#: hiddifypanel/templates/master.html:244
 msgid "user.home.link.success-copy"
 msgstr "Link Copied to Clipboard. "
 
 # | msgid "Copy to Clipboard:  Ctrl+C, Enter"
-#: hiddifypanel/templates/master.html:242
-#: hiddifypanel/templates/master.html:245
+#: hiddifypanel/templates/master.html:246
+#: hiddifypanel/templates/master.html:249
 msgid "user.home.link.manual-copy"
 msgstr "Copy to Clipboard:  Ctrl+C, Enter"
 
-#: hiddifypanel/templates/master.html:298
+#: hiddifypanel/templates/master.html:302
 msgid "Install"
 msgstr "Install"
 
 # | msgid "Hiddify Panel Installation"
-#: hiddifypanel/templates/master.html:378
+#: hiddifypanel/templates/master.html:382
 msgid "Install Hiddify Application"
 msgstr "Hiddify Panel Installation"
 
 # | msgid "Click %(install)s to save the User Page."
-#: hiddifypanel/templates/master.html:380
+#: hiddifypanel/templates/master.html:384
 #, python-format
 msgid "Please click on %(install)s to save the user page."
 msgstr "Click %(install)s to save the User Page."
@@ -3894,9 +3916,9 @@ msgstr "Actions"
 #~ msgid "user.monthly_usage_limit_GB"
 #~ msgstr "Monthly Usage Limit (GB)"
 
-# | msgid "🔀 Decoy Site"
+# | msgid "📺 Decoy Site"
 #~ msgid "config.decoy_site.label"
-#~ msgstr "🔀 Decoy Site"
+#~ msgstr "📺 Decoy Site"
 
 # | msgid "Fake Site: simulates a site when someone visits your domain"
 #~ msgid "config.decoy_site.description"

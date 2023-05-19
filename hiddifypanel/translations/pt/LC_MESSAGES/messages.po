@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPT\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-17 09:05+0200\n"
-"PO-Revision-Date: 2023-05-16 20:04-0500\n"
+"POT-Creation-Date: 2023-05-19 17:33+0200\n"
+"PO-Revision-Date: 2023-05-17 02:05-0500\n"
 "Last-Translator: lymanrudni\n"
 "Language: pt\n"
 "Language-Team: Portuguese\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Generated-By: Babel 2.12.1\n"
 
 # | msgid "This Domain does not exist in the Panel !"
-#: hiddifypanel/models/domain.py:125 hiddifypanel/panel/user/user.py:163
+#: hiddifypanel/models/domain.py:126 hiddifypanel/panel/user/user.py:163
 msgid "This domain does not exist in the panel!"
 msgstr "Este Domínio não existe no Painel!"
 
@@ -46,7 +46,7 @@ msgid "Access Denied"
 msgstr "Acesso negado"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/panel/hiddify.py:153
+#: hiddifypanel/panel/hiddify.py:228
 #, fuzzy
 msgid "admin.config.apply_configs"
 msgstr "Aplicar configurações"
@@ -55,7 +55,7 @@ msgstr "Aplicar configurações"
 # | "Configs have been Changed Successfully. Click %(link)s to Apply the
 # Configs."
 # | " It may take 2 Minutes to apply"
-#: hiddifypanel/panel/hiddify.py:154
+#: hiddifypanel/panel/hiddify.py:229
 #, fuzzy
 msgid "config.validation-success"
 msgstr ""
@@ -63,7 +63,7 @@ msgstr ""
 "aplicar as configurações. Pode levar 2 minutos para aplicar"
 
 # | msgid " ✅ Configs Have Been Changed Successfully"
-#: hiddifypanel/panel/hiddify.py:156
+#: hiddifypanel/panel/hiddify.py:231
 #, fuzzy
 msgid "config.validation-success-no-reset"
 msgstr "✅ As configurações foram alteradas com sucesso"
@@ -73,12 +73,12 @@ msgstr "✅ As configurações foram alteradas com sucesso"
 # check "
 # | "your Domain configurations."
 #: hiddifypanel/panel/admin/ChildAdmin.py:108
-#: hiddifypanel/panel/admin/DomainAdmin.py:147
-#: hiddifypanel/panel/admin/DomainAdmin.py:173
-#: hiddifypanel/panel/admin/DomainAdmin.py:176
+#: hiddifypanel/panel/admin/DomainAdmin.py:152
+#: hiddifypanel/panel/admin/DomainAdmin.py:178
+#: hiddifypanel/panel/admin/DomainAdmin.py:181
 #: hiddifypanel/panel/admin/QuickSetup.py:118
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:109
-#: hiddifypanel/panel/hiddify.py:276
+#: hiddifypanel/panel/hiddify.py:351
 #, fuzzy
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr ""
@@ -95,7 +95,7 @@ msgstr "Último dia"
 # | "Selected Domain for REALITY is not in the same ASN. To better use of the
 # "
 # | "Protocol, it is better to find a Domain in the same ASN"
-#: hiddifypanel/panel/hiddify3.py:214
+#: hiddifypanel/panel/hiddify3.py:218
 msgid ""
 "selected domain for REALITY is not in the same ASN. To better use of the "
 "protocol, it is better to find a domain in the same ASN."
@@ -116,7 +116,7 @@ msgstr "Package encerrado"
 
 # | msgid ""
 # | "Rebooting System ... This may take a few minutes. Please Wait ..."
-#: hiddifypanel/panel/admin/Actions.py:75
+#: hiddifypanel/panel/admin/Actions.py:76
 #, fuzzy
 msgid "rebooting system may takes time please wait"
 msgstr ""
@@ -124,7 +124,7 @@ msgstr ""
 "aguarde ..."
 
 # | msgid "Can not sync child with Parent Panel."
-#: hiddifypanel/panel/admin/Actions.py:91
+#: hiddifypanel/panel/admin/Actions.py:92
 #, fuzzy
 msgid "can not sync child with parent panel"
 msgstr "Não é possível sincronizar o filho com o painel pai."
@@ -133,7 +133,7 @@ msgstr "Não é possível sincronizar o filho com o painel pai."
 # | "⚠️ Your Domains Changed. please do not forget to copy Admin links,
 # otherwise"
 # | " you can not access to the panel anymore"
-#: hiddifypanel/panel/admin/Actions.py:97
+#: hiddifypanel/panel/admin/Actions.py:98
 #, fuzzy
 msgid ""
 "Your domains changed. Please do not forget to copy admin links, otherwise"
@@ -146,7 +146,7 @@ msgstr ""
 # | "Please wait about 5 minutes to make sure everything is updated. during
 # this "
 # | "time, please copy and save your Proxy links which are:"
-#: hiddifypanel/panel/admin/Actions.py:124
+#: hiddifypanel/panel/admin/Actions.py:125
 #, fuzzy
 msgid ""
 "Success! Please wait around 4 minutes to make sure everything is updated."
@@ -156,7 +156,7 @@ msgstr ""
 "durante esse período, copie e salve seus links de proxy, que são:"
 
 # | msgid "📑 See the log in the bellow screen"
-#: hiddifypanel/panel/admin/Actions.py:157
+#: hiddifypanel/panel/admin/Actions.py:158
 #, fuzzy
 msgid "see the log in the bellow screen"
 msgstr "📑 Veja o log na tela abaixo"
@@ -164,7 +164,7 @@ msgstr "📑 Veja o log na tela abaixo"
 # | msgid ""
 # | "✔️ Success! Please Wait around 5 minutes to make sure everything is
 # updated"
-#: hiddifypanel/panel/admin/Actions.py:186
+#: hiddifypanel/panel/admin/Actions.py:187
 #, fuzzy
 msgid "Success! Please wait around 5 minutes to make sure everything is updated."
 msgstr ""
@@ -586,6 +586,7 @@ msgstr "IP"
 
 # | msgid "🌎 Reality Server Names"
 #: hiddifypanel/panel/admin/DomainAdmin.py:81
+#: hiddifypanel/panel/admin/DomainAdmin.py:147
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
@@ -606,6 +607,7 @@ msgstr "Todos"
 
 # | msgid "You have already used this Domain in: "
 #: hiddifypanel/panel/admin/DomainAdmin.py:142
+#: hiddifypanel/panel/admin/DomainAdmin.py:147
 #, fuzzy
 msgid "You have used this domain in: "
 msgstr "Já utilizou este Domínio em:"
@@ -614,7 +616,7 @@ msgstr "Já utilizou este Domínio em:"
 # | "Domain IP = %(domain_ip)s is not matched with your IP = %(server_ip)s
 # which "
 # | "is required in Direct Mode"
-#: hiddifypanel/panel/admin/DomainAdmin.py:180
+#: hiddifypanel/panel/admin/DomainAdmin.py:185
 #, fuzzy, python-format
 msgid ""
 "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which "
@@ -626,7 +628,7 @@ msgstr ""
 # | msgid ""
 # | "In CDN Mode, Domain IP =%(domain_ip)s should be different to your IP "
 # | "=%(server_ip)s"
-#: hiddifypanel/panel/admin/DomainAdmin.py:183
+#: hiddifypanel/panel/admin/DomainAdmin.py:188
 #, fuzzy, python-format
 msgid ""
 "In CDN mode, Domain IP=%(domain_ip)s should be different to your "
@@ -635,17 +637,17 @@ msgstr ""
 "No modo CDN, o IP do domínio =%(domain_ip)s deve ser diferente do seu IP "
 "=%(server_ip)s"
 
-#: hiddifypanel/panel/admin/DomainAdmin.py:216
+#: hiddifypanel/panel/admin/DomainAdmin.py:224
 msgid "Domain is not REALITY friendly!"
 msgstr "O domínio não é compatível com Reality!"
 
 # | msgid "REALITY Fallback Domain is not compaitble with Server names!"
-#: hiddifypanel/panel/admin/DomainAdmin.py:221
+#: hiddifypanel/panel/admin/DomainAdmin.py:230
 #, fuzzy
 msgid "REALITY Fallback domain is not compaitble with server names!"
 msgstr "REALITY Fallback Domain não é compatível com nomes de servidores!"
 
-#: hiddifypanel/panel/admin/DomainAdmin.py:228
+#: hiddifypanel/panel/admin/DomainAdmin.py:237
 msgid "Error in auto cdn format"
 msgstr ""
 
@@ -718,8 +720,9 @@ msgstr "🇨🇳 Chinese چینی 中国人"
 
 #: hiddifypanel/panel/admin/QuickSetup.py:78
 #: hiddifypanel/panel/admin/SettingAdmin.py:180
+#, fuzzy
 msgid "lang.pt"
-msgstr ""
+msgstr "🇵🇹 Portugal پرتغالی 葡萄牙"
 
 # | msgid "Choose Language For Admin Area"
 #: hiddifypanel/panel/admin/QuickSetup.py:78
@@ -895,12 +898,14 @@ msgid "Can not connect to parent panel!"
 msgstr "Não é possível conectar ao painel principal!"
 
 #: hiddifypanel/panel/admin/SettingAdmin.py:176
+#, fuzzy
 msgid "Xray"
-msgstr ""
+msgstr "☢️ Raio X"
 
 #: hiddifypanel/panel/admin/SettingAdmin.py:176
+#, fuzzy
 msgid "SingBox"
-msgstr ""
+msgstr "📦 SingBox"
 
 #: hiddifypanel/panel/admin/SettingAdmin.py:178
 #: hiddifypanel/panel/user/templates/home/usage.html:10
@@ -2861,13 +2866,13 @@ msgid "Click here to see the complete log"
 msgstr "Clique aqui para ver o registro completo"
 
 #: hiddifypanel/panel/admin/templates/model/user_list.html:97
-#: hiddifypanel/panel/admin/templates/result.html:94
+#: hiddifypanel/panel/admin/templates/result.html:104
 #, fuzzy
 msgid "Success"
 msgstr "Sucesso"
 
 # | msgid "✅ The Action Done Successfully. You can now leave this page"
-#: hiddifypanel/panel/admin/templates/result.html:95
+#: hiddifypanel/panel/admin/templates/result.html:105
 #, fuzzy
 msgid "The action done successfully. You can now leave this page."
 msgstr "✅ A Ação Feita com Sucesso. Agora você pode sair desta página"
@@ -4310,16 +4315,21 @@ msgstr ""
 
 # | msgid "Core"
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.core_type.label"
-msgstr ""
+msgstr "🎛️ Núcleo"
 
 # | msgid ""
 # | "XRay: Is a complete core.\n"
 # | "<br>\n"
 # | "Singbox: developed by sagernet. It is also a good core."
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.core_type.description"
 msgstr ""
+"☢️ XRay: é um núcleo completo\n"
+"<br>\n"
+"📦 Singbox: Desenvolvido por SagerNet. Também é um bom núcleo"
 
 # | msgid "🖥 DNS Server"
 #: hiddifypanel/templates/fake.html:1
@@ -4370,31 +4380,31 @@ msgid "open"
 msgstr "Abrir"
 
 # | msgid "Link Copied to Clipboard. "
-#: hiddifypanel/templates/master.html:240
+#: hiddifypanel/templates/master.html:244
 #, fuzzy
 msgid "user.home.link.success-copy"
 msgstr "Link copiado para a área de transferência."
 
 # | msgid "Copy to Clipboard:  Ctrl+C, Enter"
-#: hiddifypanel/templates/master.html:242
-#: hiddifypanel/templates/master.html:245
+#: hiddifypanel/templates/master.html:246
+#: hiddifypanel/templates/master.html:249
 #, fuzzy
 msgid "user.home.link.manual-copy"
 msgstr "Copiar para a área de transferência: Ctrl+C, Enter"
 
-#: hiddifypanel/templates/master.html:298
+#: hiddifypanel/templates/master.html:302
 #, fuzzy
 msgid "Install"
 msgstr "Instalar"
 
 # | msgid "Hiddify Panel Installation"
-#: hiddifypanel/templates/master.html:378
+#: hiddifypanel/templates/master.html:382
 #, fuzzy
 msgid "Install Hiddify Application"
 msgstr "Instalação do Painel Hidify"
 
 # | msgid "Click %(install)s to save the User Page."
-#: hiddifypanel/templates/master.html:380
+#: hiddifypanel/templates/master.html:384
 #, fuzzy, python-format
 msgid "Please click on %(install)s to save the user page."
 msgstr "Clique em %(install)s para salvar a página do usuário."
