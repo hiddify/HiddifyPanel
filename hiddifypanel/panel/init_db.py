@@ -52,7 +52,7 @@ def init_db():
         execute(f'DROP TABLE str_config')
         execute(f'ALTER TABLE str_config_old RENAME TO str_config')
     
-    execute(f'update domain set mode=sub_link_only, sub_link_only=false where sub_link_only = true')
+    execute(f'update domain set mode="sub_link_only", sub_link_only=false where sub_link_only = true or mode=1')
 
     execute('ALTER TABLE user RENAME COLUMN monthly_usage_limit_GB TO usage_limit_GB')       
     execute(f'update admin_user set parent_admin_id=1 where parent_admin_id is NULL and 1!=id')
