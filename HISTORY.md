@@ -39,6 +39,8 @@
 
 #### Fix
 
+* Installation finished. 
+
 * Bug. 
 
 * Bug. 
