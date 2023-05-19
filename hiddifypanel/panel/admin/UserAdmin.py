@@ -35,17 +35,22 @@ class UserAdmin(AdminLTEModelView):
     # column_display_pk = True
     # can_export = True
     # form_overrides = dict(monthly=SwitchField)
-    form_overrides = dict(start_date=custom_widgets.DaysLeftField)
+    form_overrides = {
+        'start_date':custom_widgets.DaysLeftField,
+        'mode':custom_widgets.EnumSelectField
+    }
 
     # form_overrides = dict(expiry_time=custom_widgets.DaysLeftField,last_reset_time=custom_widgets.LastResetField)
     form_widget_args={
         'current_usage_GB':{'min':'0'}    ,
         'usage_limit_GB':{'min':'0'}  ,
+
     }
     form_args = {
     'max_ips':{
         'validators':[NumberRange(min=3, max=10000)]
     },
+    'mode':{'enum':UserMode},    
     'uuid': {
         'validators': [Regexp(r'^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$',message=__("Should be a valid uuid"))]
     #     'label': 'First Name',

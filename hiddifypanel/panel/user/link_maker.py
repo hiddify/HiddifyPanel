@@ -67,6 +67,12 @@ def make_proxy(proxy, domain_db, phttp=80, ptls=443):
     if "reality" in l3 and domain_db.mode!=DomainType.reality:
         return {'name': name, 'msg': "reality proxy not in reality domain",'type':'debug', 'proto': proxy.proto}
 
+    if "reality" in l3 and domain_db.grpc and ProxyTransport.grpc!=proxy.transport:
+        return {'name': name, 'msg': "reality proxy not in reality domain",'type':'debug', 'proto': proxy.proto}
+
+    if "reality" in l3 and (not domain_db.grpc) and ProxyTransport.grpc==proxy.transport:
+        return {'name': name, 'msg': "reality proxy not in reality domain",'type':'debug', 'proto': proxy.proto}
+        
     is_cdn = ProxyCDN.CDN in proxy.cdn 
     if is_cdn and domain_db.mode not in  [DomainType.cdn,DomainType.auto_cdn_ip,DomainType.worker]:
         # print("cdn proxy not in cdn domain", domain, name)
@@ -203,7 +209,7 @@ def to_link(proxy):
     if 'error' in proxy:
         return proxy
 
-    name_link = proxy["name"]+"_"+proxy['extra_info']
+    name_link = proxy['extra_info'] +"_"+ proxy["name"]
     if proxy['proto'] == 'vmess':
         # print(proxy)
         vmess_type = None
@@ -298,7 +304,7 @@ def to_clash(proxy, meta_or_normal):
         return {'name': name, 'msg': "bug tls_h2 vmess and vless in clash meta",'type':'warning'}
     base = {}
     # vmess ws
-    base["name"] = f"""{proxy["name"]} {proxy['extra_info']} {proxy['port']} {proxy["dbdomain"].id}"""
+    base["name"] = f"""{proxy['extra_info']} {proxy["name"]} {proxy['port']} {proxy["dbdomain"].id}"""
     base["type"] = str(proxy["proto"])
     base["server"] = proxy["server"]
     base["port"] = proxy["port"]

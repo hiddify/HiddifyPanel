@@ -98,6 +98,8 @@ release:          ## Create a new tag for release.
 	@gitchangelog > HISTORY.md
 	@git tag -d $${TAG}
 	@git add hiddifypanel/VERSION hiddifypanel/VERSION.py HISTORY.md
+	@bash ./update_translations.sh
+	@git add hiddifypanel/translations/*
 	@git commit -m "release: version $${TAG} 🚀"
 	@echo "creating git tag : $${TAG}"
 	@git tag $${TAG}

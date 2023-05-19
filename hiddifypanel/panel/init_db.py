@@ -20,7 +20,7 @@ def init_db():
     execute(f'update admin_user set mode="super_admin" where id=1')
     execute(f'DELETE from proxy where transport = "h1"')
     
-
+    add_column(Domain.grpc)
     add_column(ParentDomain.alias)
     add_column(User.start_date)
     add_column(User.package_days)
@@ -52,6 +52,8 @@ def init_db():
         execute(f'DROP TABLE str_config')
         execute(f'ALTER TABLE str_config_old RENAME TO str_config')
     
+    execute(f'update domain set mode=sub_link_only, sub_link_only=false where sub_link_only = true')
+
     execute('ALTER TABLE user RENAME COLUMN monthly_usage_limit_GB TO usage_limit_GB')       
     execute(f'update admin_user set parent_admin_id=1 where parent_admin_id is NULL and 1!=id')
     execute(f'update admin_user set max_users=100,max_active_users=100 where max_users is NULL')
@@ -96,6 +98,9 @@ def init_db():
     
     db.session.commit()
     return BoolConfig.query.all()
+
+
+# def _v42():
 
 #v7.0.0
 def _v41(): 

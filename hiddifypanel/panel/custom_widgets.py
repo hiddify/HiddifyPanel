@@ -12,7 +12,7 @@ from flask_babelex import gettext as __
 from flask_babelex import lazy_gettext as _
 from hiddifypanel.panel import hiddify
 from hiddifypanel.panel.hiddify import flash
-from wtforms.fields import StringField,IntegerField
+from wtforms.fields import StringField,IntegerField,SelectField
 from flask_bootstrap import SwitchField
 from wtforms import TextAreaField
 from wtforms.widgets import TextArea
@@ -69,3 +69,8 @@ class MessageAdmin(ModelView):
     form_overrides = {
         'body': CKTextAreaField
     }
+
+class EnumSelectField(SelectField):
+    def __init__(self, enum, *args, **kwargs):
+        choices = [(str(enum_value.value), _(enum_value.name)) for enum_value in enum]
+        super().__init__(*args, choices=choices, **kwargs)

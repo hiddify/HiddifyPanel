@@ -4,7 +4,14 @@ source .env
 
 PATH=/config/.local/bin:$PATH
 
-python3 -c "import hiddifypanel;print(''.join([f'{{{{_(\"config.{c}.label\")}}}} {{{{_(\"config.{c}.description\")}}}}' for c in hiddifypanel.models.ConfigEnum]));print(''.join([f'{{{{_(\"config.{cat}.label\")}}}}{{{{_(\"config.{cat}.description\")}}}}' for cat in hiddifypanel.models.ConfigCategory]))" > hiddifypanel/templates/fake.html
+python3 -c "
+import hiddifypanel;
+print(''.join([f'{{{{_(\"config.{c}.label\")}}}}{{{{_(\"config.{c}.description\")}}}}' for c in hiddifypanel.models.ConfigEnum]));print(''.join([f'{{{{_(\"config.{cat}.label\")}}}}{{{{_(\"config.{cat}.description\")}}}}' for cat in hiddifypanel.models.ConfigCategory]));
+def print_enum(en):
+  print(''.join([f'{{{{_(\"{item}\")}}}}' for item in en]))  
+print_enum(hiddifypanel.models.DomainType)
+print_enum(hiddifypanel.models.UserMode)
+" > hiddifypanel/templates/fake.html
 pybabel extract -F babel.cfg -o messages.pot hiddifypanel
 
 wget -O hiddifypanel/translations/en/LC_MESSAGES/messages.po  "https://localise.biz/api/export/locale/en-US.po?index=id&key=5Tqp1dLHQSk98s-twNF6RpwZu7lZSLLM"

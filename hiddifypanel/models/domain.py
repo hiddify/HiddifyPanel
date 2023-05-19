@@ -22,6 +22,7 @@ from strenum import StrEnum
 
 class DomainType(StrEnum):
     direct = auto()
+    sub_link_only = auto()
     cdn = auto()
     auto_cdn_ip = auto()
     relay = auto()
@@ -43,11 +44,12 @@ ShowDomain = db.Table('show_domain',
 class Domain(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     child_id= db.Column(db.Integer, db.ForeignKey('child.id'),default=0)
-    domain = db.Column(db.String(200), nullable=False, unique=True)
+    domain = db.Column(db.String(200), nullable=False, unique=False)
     alias = db.Column(db.String(200))
     sub_link_only= db.Column(db.Boolean,nullable=False,default=False)
     mode = db.Column(db.Enum(DomainType), nullable=False,default=DomainType.direct)
     cdn_ip = db.Column(db.Text(2000), nullable=True,default='')
+    grpc = db.Column(db.Boolean,nullable=True,default=False)
     servernames = db.Column(db.String(1000), nullable=True,default='')
     # show_all=db.Column(db.Boolean, nullable=True)
     show_domains = db.relationship('Domain', secondary=ShowDomain,

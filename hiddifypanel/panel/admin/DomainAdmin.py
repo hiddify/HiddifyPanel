@@ -6,7 +6,8 @@ from wtforms.validators import Regexp, ValidationError
 from .adminlte import AdminLTEModelView
 from flask_babelex import gettext as __
 from flask_babelex import lazy_gettext as _
-from hiddifypanel.panel import hiddify,hiddify_api,cf_api
+from hiddifypanel.panel import hiddify,hiddify_api,cf_api,custom_widgets
+
 from flask import Markup
 from flask import Flask,g,flash,url_for
 from flask_sqlalchemy import SQLAlchemy
@@ -33,7 +34,7 @@ class DomainAdmin(AdminLTEModelView):
     
     list_template = 'model/domain_list.html'
     # edit_modal = True
-    # form_overrides = {'work_with': Select2Field}
+    form_overrides = {    'mode':custom_widgets.EnumSelectField}
     form_widget_args = {
     'description': {
         'rows': 100,
@@ -47,13 +48,15 @@ class DomainAdmin(AdminLTEModelView):
         show_domains=_('You can select the configs with which domains show be shown in the user area. If you select all, automatically, all the new domains will be added for each users.'),
         alias=_('The name shown in the configs for this domain.'),
         servernames=_('config.reality_server_names.description'),
-        sub_link_only=_('This can be used for giving your users a permanent non blockable links.')
+        sub_link_only=_('This can be used for giving your users a permanent non blockable links.'),
+        grpc=_('gRPC is a H2 based protocol. Maybe it is faster for you!')
     )
     
     # create_modal = True
     can_export = False
     form_widget_args={'show_domains':{'class':'form-control ltr'}}
     form_args = {
+        'mode':{'enum':DomainType},   
         'show_domains':{
                 'query_factory': lambda: Domain.query.filter(Domain.sub_link_only==False),
         },
@@ -80,11 +83,12 @@ class DomainAdmin(AdminLTEModelView):
         'domain_ip': _('domain.ip'),
         'servernames':_('config.reality_server_names.label'),
         'show_domains':_('Show Domains'),
-        'alias':_('Alias')
+        'alias':_('Alias'),
+        'grpc':_('gRPC')
     }
 
-    form_columns=['domain','alias','sub_link_only','mode','servernames','cdn_ip','show_domains']
-
+    form_columns=['mode','domain','alias','servernames','grpc','cdn_ip','show_domains']
+    
     def _domain_admin_link(view, context, model, name):
         if model.mode==DomainType.fake:
             return Markup(f"<span class='badge'>{model.domain}</span>")
@@ -258,3 +262,8 @@ class DomainAdmin(AdminLTEModelView):
 
     def is_accessible(self):
         return g.admin.mode in [AdminMode.admin,AdminMode.super_admin]
+
+    # def form_choices(self, field, *args, **kwargs):
+    #     if field.type == "Enum":
+    #         return [(enum_value.name, _(enum_value.name)) for enum_value in field.type.__members__.values()]
+    #     return super().form_choices(field, *args, **kwargs)

@@ -6,7 +6,8 @@ from dateutil import relativedelta
 from hiddifypanel.panel.database import db
 from enum import auto
 from strenum import StrEnum
-
+from flask_babelex import gettext as __
+from flask_babelex import lazy_gettext as _
 
 class UserMode(StrEnum):
     """
@@ -19,6 +20,7 @@ class UserMode(StrEnum):
     monthly = auto()
     weekly = auto()
     daily = auto()
+    
     # disable = auto()
 class UserDetail(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
