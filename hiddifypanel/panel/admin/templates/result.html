@@ -36,9 +36,14 @@
 %endif
 % if log_path
 <div>
+  <!-- <details>
+    <summary> -->
 <h1>{{_('log')}}</h1>
-  <a href="{{log_path}}" target="_blank" >{{_('Click here to see the complete log')}}</a><br>
+  
+
+<a href="{{log_path}}" target="_blank" >{{_('Click here to see the complete log')}}</a><br>
   <div id='ilog' style="width:100%;height:400px;direction: ltr;overflow: auto;" ></div>
+<!-- </details> -->
 </div>
 
 % endif
@@ -94,7 +99,7 @@
       
       old=response
       indx=x.innerText.indexOf("----Finished!---")
-      if (!finished && indx>0 &&indx<200 &&seconds>5){
+      if (!finished && indx>0 &&(indx>x.innerText.length-200) &&seconds>5){
         set_progress(100)
         finished=true
         $("#progress").removeClass("bg-danger")
