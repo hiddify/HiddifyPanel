@@ -5,6 +5,8 @@
 
 #### New
 
+* Add notes for domain selection and add grpc reality. 
+
 * Update lang. 
 
 * Gun mode for grpc. 
