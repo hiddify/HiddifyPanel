@@ -5,6 +5,8 @@
 
 #### New
 
+* Update lang. 
+
 * Gun mode for grpc. 
 
 * Fix ip behind cdn. 
