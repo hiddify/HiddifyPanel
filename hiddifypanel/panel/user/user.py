@@ -74,10 +74,15 @@ class UserView(FlaskView):
             resp= Response(render_template('clash_config.yml',typ=typ,meta_or_normal=meta_or_normal,**c,hash=hash_rnd))
         resp.mimetype="text/plain"
         resp.headers['Subscription-Userinfo']=f"upload=0;download={c['usage_current_b']};total={c['usage_limit_b']};expire={c['expire_s']}"
-        resp.headers['profile-web-page-url']=request.base_url.split("all.txt")[0].replace("http://","https://")
+        resp.headers['profile-web-page-url']=request.base_url.split("clash")[0].replace("http://","https://")
         if hconfig(ConfigEnum.branding_site):
             resp.headers['support-url']=hconfig(ConfigEnum.branding_site)
         resp.headers['profile-update-interval']=1
+        
+        profile_title=f'{c["db_domain"].alias or c["db_domain"].domain} {c["user"].name}'
+        if c['has_auto_cdn']:
+            profile_title+=f" {c['asn']}"
+        resp.headers['profile-title']='base64:'+do_base_64(profile_title)
         return resp
 
     @route('/all.txt', methods=["GET","HEAD"])
