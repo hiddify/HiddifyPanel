@@ -59,8 +59,8 @@ class UserView(FlaskView):
         
         return resp
     
-    @route('/clash/<typ>.yml')
-    @route('/clash/<meta_or_normal>/<typ>.yml')
+    @route('/clash/<typ>.yml', methods=["GET","HEAD"])
+    @route('/clash/<meta_or_normal>/<typ>.yml', methods=["GET","HEAD"])
     def clash_config(self,meta_or_normal="normal",typ="all.yml"):
         mode=request.args.get("mode")
         
@@ -68,7 +68,10 @@ class UserView(FlaskView):
         
         
         hash_rnd=random.randint(0,1000000) #hash(f'{c}')
-        resp= Response(render_template('clash_config.yml',typ=typ,meta_or_normal=meta_or_normal,**c,hash=hash_rnd))
+        if request.method == 'HEAD':
+            resp= Response("")
+        else:
+            resp= Response(render_template('clash_config.yml',typ=typ,meta_or_normal=meta_or_normal,**c,hash=hash_rnd))
         resp.mimetype="text/plain"
         resp.headers['Subscription-Userinfo']=f"upload=0;download={c['usage_current_b']};total={c['usage_limit_b']};expire={c['expire_s']}"
         resp.headers['profile-web-page-url']=request.base_url.split("all.txt")[0].replace("http://","https://")
