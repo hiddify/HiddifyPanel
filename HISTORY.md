@@ -5,6 +5,10 @@
 
 #### New
 
+* Update backup with the new domains. 
+
+* Add singbox usage. 
+
 * Add notes for domain selection and add grpc reality. 
 
 * Update lang. 
@@ -38,6 +42,10 @@
 * FirstAdmin->owner. 
 
 #### Fix
+
+* Subonly links. 
+
+* Lastindexof. 
 
 * Installation finished. 
 

@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-20 01:16+0200\n"
-"PO-Revision-Date: 2023-05-19 17:57-0500\n"
+"POT-Creation-Date: 2023-05-20 09:23+0200\n"
+"PO-Revision-Date: 2023-05-19 18:16-0500\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Generated-By: Babel 2.12.1\n"
 
 # | msgid "This Domain does not exist in the Panel !"
-#: hiddifypanel/models/domain.py:128 hiddifypanel/panel/user/user.py:163
+#: hiddifypanel/models/domain.py:129 hiddifypanel/panel/user/user.py:163
 msgid "This domain does not exist in the panel!"
 msgstr "This Domain does not exist in the Panel !"
 
@@ -91,12 +91,12 @@ msgstr ""
 "Protocol, it is better to find a Domain in the same ASN"
 
 # | msgid "User Activated"
-#: hiddifypanel/panel/usage.py:111
+#: hiddifypanel/panel/usage.py:113
 msgid "User activated!"
 msgstr "User Activated"
 
 # | msgid "Package Ended"
-#: hiddifypanel/panel/usage.py:111
+#: hiddifypanel/panel/usage.py:113
 msgid "Package ended!"
 msgstr "Package Ended"
 
