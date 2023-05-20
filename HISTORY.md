@@ -5,6 +5,10 @@
 
 #### New
 
+* Update lang. 
+
+* Disable tcp mode. 
+
 * Add more things. 
 
 * Add head request. 
