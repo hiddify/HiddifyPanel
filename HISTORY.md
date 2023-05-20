@@ -5,6 +5,14 @@
 
 #### New
 
+* Add more things. 
+
+* Add head request. 
+
+* Add head request. 
+
+* Add head request. 
+
 * Update backup with the new domains. 
 
 * Add singbox usage. 
