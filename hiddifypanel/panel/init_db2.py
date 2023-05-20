@@ -77,7 +77,8 @@ def make_proxy_rows(cfgs):
                 continue
             # if l3 == "tls_h2" and transport =="grpc":
             #     continue
-            enable=l3!="http" or proto=="vmess"
+            enable=l3!="http" or proto=="vmess" 
+            enable= enable and transport!='tcp'
             name=f'{l3} {c}'
             is_exist= Proxy.query.filter(Proxy.name==name).first() or Proxy.query.filter(Proxy.l3==l3,Proxy.transport==transport,Proxy.cdn==cdn,Proxy.proto==proto).first()        
             if not is_exist:
