@@ -77,7 +77,7 @@ class UserView(FlaskView):
         resp.headers['profile-update-interval']=1
         return resp
 
-    @route('/all.txt', methods=['GET',"HEAD"])
+    @route('/all.txt', methods=["GET","HEAD"])
     def all_configs(self):
         mode=request.args.get("mode")
         base64=request.args.get("base64","").lower()=="true"
@@ -87,6 +87,7 @@ class UserView(FlaskView):
             resp=""
         else:
             resp= render_template('all_configs.txt',**c,base64=do_base_64)
+        
         res=""
         for line in resp.split("\n"):
             if "vmess://" in line:
