@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-20 14:44+0200\n"
-"PO-Revision-Date: 2023-05-20 03:29-0500\n"
+"POT-Creation-Date: 2023-05-21 00:05+0200\n"
+"PO-Revision-Date: 2023-05-20 16:59-0500\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -122,15 +122,16 @@ msgstr ""
 " you can not access to the panel anymore"
 
 # | msgid ""
-# | "Please wait about 5 minutes to make sure everything is updated. during "
+# | "⚠️ Please wait about 5 minutes to make sure everything is updated. during
+# "
 # | "this time, please copy and save your Proxy links which are:"
 #: hiddifypanel/panel/admin/Actions.py:125
 msgid ""
 "Success! Please wait around 4 minutes to make sure everything is updated. "
 "During this time, please save your proxy links which are:"
 msgstr ""
-"Please wait about 5 minutes to make sure everything is updated. during this "
-"time, please copy and save your Proxy links which are:"
+"⚠️ Please wait about 5 minutes to make sure everything is updated. during "
+"this time, please copy and save your Proxy links which are:"
 
 # | msgid "📑 See the log in the bellow screen"
 #: hiddifypanel/panel/admin/Actions.py:158
@@ -485,10 +486,10 @@ msgid ""
 msgstr ""
 "This can be used for giving your Users a permanent non Blockable Links."
 
+# | msgid "ℹ️ gRPC is a H2 based Protocol. Maybe it is faster for you!"
 #: hiddifypanel/panel/admin/DomainAdmin.py:52
-#, fuzzy
 msgid "gRPC is a H2 based protocol. Maybe it is faster for you!"
-msgstr "gRPC is a H2 based protocol. Maybe it is faster for you!"
+msgstr "ℹ️ gRPC is a H2 based Protocol. Maybe it is faster for you!"
 
 # | msgid "Invalid REALITY Hostnames"
 #: hiddifypanel/panel/admin/DomainAdmin.py:70
@@ -530,10 +531,10 @@ msgstr "🌎 Reality Server Names"
 msgid "Alias"
 msgstr "Alias"
 
+# | msgid "➿ gRPC"
 #: hiddifypanel/panel/admin/DomainAdmin.py:87
-#, fuzzy
 msgid "gRPC"
-msgstr "gRPC"
+msgstr "➿ gRPC"
 
 #: hiddifypanel/panel/admin/DomainAdmin.py:116
 #: hiddifypanel/panel/admin/SettingAdmin.py:178
@@ -642,11 +643,11 @@ msgstr "🇮🇷 Persian فارسی 波斯语"
 msgid "lang.zh"
 msgstr "🇨🇳 Chinese چینی 中国人"
 
-# | msgid "🇵🇹 Portugal پرتغالی 葡萄牙"
+# | msgid "🇵🇹 Portuguese پرتغالی 葡萄牙語"
 #: hiddifypanel/panel/admin/QuickSetup.py:78
 #: hiddifypanel/panel/admin/SettingAdmin.py:180
 msgid "lang.pt"
-msgstr "🇵🇹 Portugal پرتغالی 葡萄牙"
+msgstr "🇵🇹 Portuguese پرتغالی 葡萄牙語"
 
 # | msgid "Choose Language For Admin Area"
 #: hiddifypanel/panel/admin/QuickSetup.py:78
@@ -1064,7 +1065,7 @@ msgstr "Backup"
 
 # | msgid ""
 # | "🔄 Hiddify Panel automatically takes a Backup every 6 Hours. The path of "
-# | "the Backup files on the server:\n"
+# | "the Backup files on the server: ⬇️\n"
 # | "<br>\n"
 # | "/opt/hiddify-config/hiddify-panel/backup\n"
 # | "⚠️ You can download a JSON file format of the configurations by clicking
@@ -1077,7 +1078,7 @@ msgid ""
 "You can download a json formated of configurations by clicking <a "
 "href='%(link)s' class='btn btn-primary'>here</a>"
 msgstr ""
-"🔄 Hiddify Panel automatically takes a Backup every 6 Hours. The path of the Backup files on the server:\n"
+"🔄 Hiddify Panel automatically takes a Backup every 6 Hours. The path of the Backup files on the server: ⬇️\n"
 "<br>\n"
 "/opt/hiddify-config/hiddify-panel/backup\n"
 "<br>\n"
@@ -1093,11 +1094,12 @@ msgstr ""
 msgid "Restore"
 msgstr "♻️ Restore"
 
-# | msgid "You can restore your configs from previously downloaded backup
-# file"
+# | msgid ""
+# | "ℹ️ You can restore your configs from previously downloaded backup file"
 #: hiddifypanel/panel/admin/templates/backup.html:26
 msgid "You can restore your configs from previously downloaded configs"
-msgstr "You can restore your configs from previously downloaded backup file"
+msgstr ""
+"ℹ️ You can restore your configs from previously downloaded backup file"
 
 #: hiddifypanel/panel/admin/templates/commercial_info.html:7
 #, fuzzy
@@ -1314,11 +1316,11 @@ msgstr "ℹ️ Only IPv4"
 msgid "config.only_ipv4.description"
 msgstr "It will Disable IPv6"
 
-# | msgid "💬 Show Usage in Sublink"
+# | msgid "👁️‍🗨️ Show Usage in Sublink"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.show_usage_in_sublink.label"
-msgstr "💬 Show Usage in Sublink"
+msgstr "👁️‍🗨️ Show Usage in Sublink"
 
 # | msgid ""
 # | "This option creates a Fake Config in the user's sub link that shows the "
@@ -1623,11 +1625,11 @@ msgstr ""
 "Shadowsocks FakeTLS is a simple obfusacting tool that encapsulate the date "
 "In tls packet"
 
-# | msgid "ShadowTLS"
+# | msgid "☑️ ShadowTLS"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.shadowtls_enable.label"
-msgstr "ShadowTLS"
+msgstr "☑️ ShadowTLS"
 
 # | msgid ""
 # | "ShadowTLS Is a new Protocol but it can hide the traffic from the "
@@ -1922,19 +1924,19 @@ msgid "config.warp_plus_code.label"
 msgstr "🔑 WARP Plus Key"
 
 # | msgid ""
-# | "Increases browsing speed. To get the Key, go to <a href=\"https://t."
+# | "🔝 Increases browsing speed. To get the Key, go to <a href=\"https://t."
 # | "me/hiddify_board\"> here </a>\n"
 # | "send a message\n"
 # | "<br>\n"
-# | "If there is an error in this Key, the WARP will be disabled."
+# | "⚠️ If there is an error in this Key, the WARP will be disabled."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.warp_plus_code.description"
 msgstr ""
-"Increases browsing speed. To get the Key, go to <a href=\"https://t.me/hiddify_board\"> here </a>\n"
+"🔝 Increases browsing speed. To get the Key, go to <a href=\"https://t.me/hiddify_board\"> here </a>\n"
 "send a message\n"
 "<br>\n"
-"If there is an error in this Key, the WARP will be disabled."
+"⚠️ If there is an error in this Key, the WARP will be disabled."
 
 # | msgid "✴️ WARP+ Mode"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1997,14 +1999,14 @@ msgid "config.reality_fallback_domain.label"
 msgstr "🌍 Reality Fallback Domain"
 
 # | msgid ""
-# | "When the GFW visit the Websites in Server names, it will be redirect to "
+# | "When the GTW visit the Websites in Server names, it will be redirect to "
 # | "this Domain."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 #: hiddifypanel/templates/flaskadmin-layout.html:81
 msgid "config.reality_fallback_domain.description"
 msgstr ""
-"When the GFW visit the Websites in Server names, it will be redirect to this"
+"When the GTW visit the Websites in Server names, it will be redirect to this"
 " Domain."
 
 # | msgid "🔑 Private Key"
@@ -2541,24 +2543,24 @@ msgid "The action done successfully. You can now leave this page."
 msgstr "✅ The Action Done Successfully. You can now leave this page"
 
 # | msgid ""
-# | "ℹ️ In this section, you can add your Domain. \n"
+# | "1️⃣ In this section, you can add your Domain. \n"
 # | "<br>\n"
-# | "ℹ️ If you want to lessen the probability of having dirty IP, you can add
+# | "2️⃣ If you want to lessen the probability of having dirty IP, you can add
 # "
 # | "Multiple Relay Server <a href=\"https://github.com/hiddify/hiddify-"
 # | "config/discussions/129\">Read More</a>.\n"
-# | "ℹ️ If you have Multiple IPv4 or IPv6 in your Panel you have to add the "
+# | "3️⃣ If you have Multiple IPv4 or IPv6 in your Panel you have to add the "
 # | "domain pointed to them as Relay."
 #: hiddifypanel/panel/admin/templates/model/domain_list.html:7
 msgid ""
 "In this section, you can add your domain. You need to add at least one "
 "domain in direct mode."
 msgstr ""
-"ℹ️ In this section, you can add your Domain. \n"
+"1️⃣ In this section, you can add your Domain. \n"
 "<br>\n"
-"ℹ️ If you want to lessen the probability of having dirty IP, you can add Multiple Relay Server <a href=\"https://github.com/hiddify/hiddify-config/discussions/129\">Read More</a>.\n"
+"2️⃣ If you want to lessen the probability of having dirty IP, you can add Multiple Relay Server <a href=\"https://github.com/hiddify/hiddify-config/discussions/129\">Read More</a>.\n"
 "<br>\n"
-"ℹ️ If you have Multiple IPv4 or IPv6 in your Panel you have to add the domain pointed to them as Relay."
+"3️⃣ If you have Multiple IPv4 or IPv6 in your Panel you have to add the domain pointed to them as Relay."
 
 # | msgid "📣 Send Message to User's Telegram"
 #: hiddifypanel/panel/admin/templates/model/user_list.html:8
@@ -3851,80 +3853,70 @@ msgstr "config.hidden.label"
 msgid "config.hidden.description"
 msgstr "config.hidden.description"
 
-# | msgid "Direct"
+# | msgid "➡️ Direct"
 #: hiddifypanel/templates/fake.html:3
-#, fuzzy
 msgid "direct"
-msgstr "Direct"
+msgstr "➡️ Direct"
 
-# | msgid "Only for Subscription Link (can be direct, relay, or CDN)"
+# | msgid "📳 Only for Subscription Link (can be direct, relay, or CDN)"
 #: hiddifypanel/templates/fake.html:3
-#, fuzzy
 msgid "sub_link_only"
-msgstr "Only for Subscription Link (can be direct, relay, or CDN)"
+msgstr "📳 Only for Subscription Link (can be direct, relay, or CDN)"
 
-# | msgid "CDN (Cloudflare Proxy, ...)"
+# | msgid "🔀 CDN (Cloudflare Proxy, ...)"
 #: hiddifypanel/templates/fake.html:3
 msgid "cdn"
-msgstr "CDN (Cloudflare Proxy, ...)"
+msgstr "🔀 CDN (Cloudflare Proxy, ...)"
 
-# | msgid "Automatic CDN IP selector"
+# | msgid "☑️ Automatic CDN IP Selector"
 #: hiddifypanel/templates/fake.html:3
 msgid "auto_cdn_ip"
-msgstr "Automatic CDN IP selector"
+msgstr "☑️ Automatic CDN IP Selector"
 
-# | msgid "Relay (Connect using an intermediate node)"
+# | msgid "♾️ Relay (Connect Using an Intermediate Node)"
 #: hiddifypanel/templates/fake.html:3
-#, fuzzy
 msgid "relay"
-msgstr "Relay (Connect using an intermediate node)"
+msgstr "♾️ Relay (Connect Using an Intermediate Node)"
 
-# | msgid "Fake Site"
+# | msgid "🆎 Fake Site"
 #: hiddifypanel/templates/fake.html:3
-#, fuzzy
 msgid "fake"
-msgstr "Fake Site"
+msgstr "🆎 Fake Site"
 
-# | msgid "Reality"
+# | msgid "🔂 Reality"
 #: hiddifypanel/templates/fake.html:3
-#, fuzzy
 msgid "reality"
-msgstr "Reality"
+msgstr "🔂 Reality"
 
-# | msgid "Old Direct Mode (for trojan tcp, vless xtls)"
+# | msgid "🔙 Old Direct Mode (For Trojan TCP, VLess XTLS)"
 #: hiddifypanel/templates/fake.html:3
-#, fuzzy
 msgid "old_xtls_direct"
-msgstr "Old Direct Mode (for trojan tcp, vless xtls)"
+msgstr "🔙 Old Direct Mode (For Trojan TCP, VLess XTLS)"
 
-# | msgid "Cloudflare Worker"
+# | msgid "✴️ Cloudflare Worker"
 #: hiddifypanel/templates/fake.html:3
-#, fuzzy
 msgid "worker"
-msgstr "Cloudflare Worker"
+msgstr "✴️ Cloudflare Worker"
 
-# | msgid "Without Reset"
+# | msgid "⭐️ Without Reset"
 #: hiddifypanel/templates/fake.html:4
 msgid "no_reset"
-msgstr "Without Reset"
+msgstr "⭐️ Without Reset"
 
-# | msgid "Monthly"
+# | msgid "🗓️ Monthly"
 #: hiddifypanel/templates/fake.html:4
-#, fuzzy
 msgid "monthly"
-msgstr "Monthly"
+msgstr "🗓️ Monthly"
 
-# | msgid "Weekly"
+# | msgid "📅 Weekly"
 #: hiddifypanel/templates/fake.html:4
-#, fuzzy
 msgid "weekly"
-msgstr "Weekly"
+msgstr "📅 Weekly"
 
-# | msgid "Daily"
+# | msgid "⏰ Daily"
 #: hiddifypanel/templates/fake.html:4
-#, fuzzy
 msgid "daily"
-msgstr "Daily"
+msgstr "⏰ Daily"
 
 # | msgid "Close"
 #: hiddifypanel/templates/macros.html:29

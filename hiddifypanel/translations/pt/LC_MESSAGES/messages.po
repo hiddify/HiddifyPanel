@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPT\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-20 14:44+0200\n"
-"PO-Revision-Date: 2023-05-20 03:29-0500\n"
+"POT-Creation-Date: 2023-05-21 00:05+0200\n"
+"PO-Revision-Date: 2023-05-20 07:44-0500\n"
 "Last-Translator: lymanrudni\n"
 "Language: pt\n"
 "Language-Team: Portuguese\n"
@@ -556,8 +556,9 @@ msgstr ""
 " bloqueáveis."
 
 #: hiddifypanel/panel/admin/DomainAdmin.py:52
+#, fuzzy
 msgid "gRPC is a H2 based protocol. Maybe it is faster for you!"
-msgstr ""
+msgstr "ℹ️ gRPC é um protocolo baseado em H2. Talvez seja mais rápido para você!"
 
 # | msgid "Invalid REALITY Hostnames"
 #: hiddifypanel/panel/admin/DomainAdmin.py:70
@@ -606,8 +607,9 @@ msgid "Alias"
 msgstr "Pseudônimo"
 
 #: hiddifypanel/panel/admin/DomainAdmin.py:87
+#, fuzzy
 msgid "gRPC"
-msgstr ""
+msgstr "➿ gRPC"
 
 #: hiddifypanel/panel/admin/DomainAdmin.py:116
 #: hiddifypanel/panel/admin/SettingAdmin.py:178
@@ -4380,13 +4382,15 @@ msgstr "config.hidden.description"
 
 # | msgid "Direct"
 #: hiddifypanel/templates/fake.html:3
+#, fuzzy
 msgid "direct"
-msgstr ""
+msgstr "➡️ Direto"
 
 # | msgid "Only for Subscription Link (can be direct, relay, or CDN)"
 #: hiddifypanel/templates/fake.html:3
+#, fuzzy
 msgid "sub_link_only"
-msgstr ""
+msgstr "📳 Somente para Link de Assinatura (pode ser direto, relé ou CDN)"
 
 # | msgid "CDN (Cloudflare Proxy, ...)"
 #: hiddifypanel/templates/fake.html:3
@@ -4402,28 +4406,33 @@ msgstr "Seletor automático de CDN IP"
 
 # | msgid "Relay (Connect using an intermediate node)"
 #: hiddifypanel/templates/fake.html:3
+#, fuzzy
 msgid "relay"
-msgstr ""
+msgstr "♾️ Relay (Conectar usando um nó intermediário)"
 
 # | msgid "Fake Site"
 #: hiddifypanel/templates/fake.html:3
+#, fuzzy
 msgid "fake"
-msgstr ""
+msgstr "🆎 Site falso"
 
 # | msgid "Reality"
 #: hiddifypanel/templates/fake.html:3
+#, fuzzy
 msgid "reality"
-msgstr ""
+msgstr "🔂 Realidade"
 
 # | msgid "Old Direct Mode (for trojan tcp, vless xtls)"
 #: hiddifypanel/templates/fake.html:3
+#, fuzzy
 msgid "old_xtls_direct"
-msgstr ""
+msgstr "🔙 Modo direto antigo (para Trojan TCP, VLess XTLS)"
 
 # | msgid "Cloudflare Worker"
 #: hiddifypanel/templates/fake.html:3
+#, fuzzy
 msgid "worker"
-msgstr ""
+msgstr "✴️ Cloudflare Worker"
 
 # | msgid "Without Reset"
 #: hiddifypanel/templates/fake.html:4
@@ -4433,18 +4442,21 @@ msgstr "Sem Redefinir"
 
 # | msgid "Monthly"
 #: hiddifypanel/templates/fake.html:4
+#, fuzzy
 msgid "monthly"
-msgstr ""
+msgstr "🗓️ Mensal"
 
 # | msgid "Weekly"
 #: hiddifypanel/templates/fake.html:4
+#, fuzzy
 msgid "weekly"
-msgstr ""
+msgstr "📅 Semanal"
 
 # | msgid "Daily"
 #: hiddifypanel/templates/fake.html:4
+#, fuzzy
 msgid "daily"
-msgstr ""
+msgstr "⏰ Diariamente"
 
 # | msgid "Close"
 #: hiddifypanel/templates/macros.html:29 hiddifypanel/templates/master.html:171

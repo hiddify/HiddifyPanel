@@ -119,6 +119,7 @@ def make_proxy(proxy, domain_db, phttp=80, ptls=443):
 
     if l3 in ['reality']:
         base['reality_short_id']=random.sample(hconfigs[ConfigEnum.reality_short_ids].split(','),1)[0]
+        #base['flow']="xtls-rprx-vision"
         base['reality_pbk']=hconfigs[ConfigEnum.reality_public_key]
         if(domain_db.servernames):
             all_servernames=re.split('[ \t\r\n;,]+',domain_db.servernames)
