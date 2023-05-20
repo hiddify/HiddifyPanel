@@ -51,6 +51,8 @@
 
 #### Fix
 
+* Sublink only links. 
+
 * Singbox bug. 
 
 * Subonly links. 
