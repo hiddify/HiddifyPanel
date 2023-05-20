@@ -98,7 +98,7 @@
       }
       
       old=response
-      indx=x.innerText.indexOf("----Finished!---")
+      indx=x.innerText.lastIndexOf("----Finished!---")
       if (!finished && indx>0 &&(indx>x.innerText.length-200) &&seconds>5){
         set_progress(100)
         finished=true
