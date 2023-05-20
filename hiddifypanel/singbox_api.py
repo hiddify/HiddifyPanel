@@ -3,7 +3,7 @@ from hiddifypanel.models import  *
 def get_singbox_client():
     if hconfig(ConfigEnum.is_parent):
         return
-    return xtlsapi.SingboxClient('127.0.0.1', 10085)
+    return xtlsapi.SingboxClient('127.0.0.1', 10086)
     
 def get_enabled_users():
     if hconfig(ConfigEnum.is_parent):

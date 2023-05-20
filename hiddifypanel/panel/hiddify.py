@@ -204,8 +204,8 @@ def quick_apply_users():
     if hconfig(ConfigEnum.is_parent):
         return
     from hiddifypanel.panel import usage
-    usage.update_local_usage()
-    return
+    # usage.update_local_usage()
+    # return
     # for user in User.query.all():
     #     if is_user_active(user):
     #         xray_api.add_client(user.uuid)

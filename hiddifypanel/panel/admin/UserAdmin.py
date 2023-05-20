@@ -264,15 +264,17 @@ class UserAdmin(AdminLTEModelView):
     
 
     def after_model_change(self,form, model, is_created):
-        # hiddify.quick_apply_users()
+        
         user=User.query.filter(User.uuid==model.uuid).first()
         if is_user_active(user):
             xray_api.add_client(model.uuid)
         else:
             xray_api.remove_client(model.uuid)
+        hiddify.quick_apply_users()
     def after_model_delete(self,model):
         xray_api.remove_client(model.uuid)
-        # hiddify.quick_apply_users()
+        
+        hiddify.quick_apply_users()
 
     def get_list(self, page, sort_column, sort_desc, search, filters,*args, **kwargs):
         res=None

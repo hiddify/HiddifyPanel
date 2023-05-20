@@ -9,7 +9,7 @@ from hiddifypanel.models import *
 import urllib
 from flask_babelex import lazy_gettext as _
 from flask_babelex import gettext as __
-from hiddifypanel import xray_api
+from hiddifypanel import xray_api,singbox_api
 from sqlalchemy.orm import Load 
 from sqlalchemy import func
 
@@ -19,8 +19,10 @@ def update_local_usage():
     res={}
     have_change=False
     for user in User.query.all():
-        d = xray_api.get_usage(user.uuid,reset=True)
-        res[user]={'usage':(d or 0), 'ips':''}
+        d = xray_api.get_usage(user.uuid,reset=True)      
+        sd = singbox_api.get_usage(user.uuid,reset=True)      
+        res[user]={'usage':(d or 0)+(sd or 0), 'ips':''}
+        
     
     return add_users_usage(res,0)
             
@@ -93,8 +95,8 @@ def add_users_usage(dbusers_bytes,child_id):
             res[user.uuid]=f"{res[user.uuid]} !OUT of USAGE! Client Removed"
 
     db.session.commit()
-    # if have_change:
-    #     hiddify.quick_apply_users()
+    if have_change:
+        hiddify.quick_apply_users()
 
     return {"status": 'success', "comments":res}
 
