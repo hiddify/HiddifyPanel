@@ -45,7 +45,7 @@ class UserView(FlaskView):
         user_agent =  user_agents.parse(request.user_agent.string)
 
         return render_template('home/multi.html',**c,ua=user_agent)
-
+    
     @route('/clash/<meta_or_normal>/proxies.yml')
     @route('/clash/proxies.yml')
     def clash_proxies(self,meta_or_normal="normal"):
@@ -77,14 +77,16 @@ class UserView(FlaskView):
         resp.headers['profile-update-interval']=1
         return resp
 
-    @route('/all.txt')
+    @route('/all.txt', methods=['GET',"HEAD"])
     def all_configs(self):
         mode=request.args.get("mode")
         base64=request.args.get("base64","").lower()=="true"
         c=get_common_data(g.user_uuid,mode)
         # response.content_type = 'text/plain';
-        
-        resp= render_template('all_configs.txt',**c,base64=do_base_64)
+        if request.method == 'HEAD':
+            resp=""
+        else:
+            resp= render_template('all_configs.txt',**c,base64=do_base_64)
         res=""
         for line in resp.split("\n"):
             if "vmess://" in line:
@@ -104,6 +106,7 @@ class UserView(FlaskView):
         if c['has_auto_cdn']:
             profile_title+=f" {c['asn']}"
         resp.headers['profile-title']='base64:'+do_base_64(profile_title)
+
 
         return resp
 
