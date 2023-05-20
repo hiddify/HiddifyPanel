@@ -51,6 +51,8 @@
 
 #### Fix
 
+* Singbox bug. 
+
 * Subonly links. 
 
 * Lastindexof. 
