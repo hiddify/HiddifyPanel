@@ -22,6 +22,10 @@ def downgrade():
     if(hconfig(ConfigEnum.db_version)=="41"):
         set_hconfig(ConfigEnum.db_version, 39,commit=False)
         StrConfig.query.filter(StrConfig.key==ConfigEnum.core_type).delete()
+        for d in Domain.query.filter(Domain.mode==DomainType.sub_link_only).all():
+            d.sub_link_only=True
+            d.mode=DomainType.direct
+        db.session.commit()
         Domain.query.filter(Domain.mode.in_(['reality','old_xtls_direct','worker'])).delete()
         db.session.commit()
 
