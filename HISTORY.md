@@ -55,6 +55,8 @@
 
 #### Fix
 
+* Quick-setup bug. 
+
 * Sublink only links. 
 
 * Singbox bug. 
