@@ -55,6 +55,8 @@
 
 #### Fix
 
+* Worker bug. 
+
 * Downgrade. 
 
 * Quick-setup bug. 
