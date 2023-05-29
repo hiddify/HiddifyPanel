@@ -107,7 +107,7 @@
     
     {% block body %}{% endblock %}
 
-        
+    <div id="ytplayer" style="width: 1px; height: 1px;"></div>        
     <video id='guide-video' controls style='max-height: 100%; max-width: 100%;width: 1px; height: 1px;'><source id='guide-video-mp4' type='video/mp4'></video>
         <!-- END TYPOGRAPHY -->
       </div><!-- /.container-fluid -->
@@ -286,6 +286,17 @@
           body: `{{msg}}`
         })
       {% endfor %}
+
+
+      $("#guide-video").on('ended', function(){
+      cancel_video();
+      });
+      v.addEventListener("fullscreenchange", function (event) {
+          if (document.fullscreenElement) {
+          } else {
+            cancel_video()
+        }
+      })
     });
   
 </script>
@@ -323,13 +334,18 @@
  let deferredPrompt=null;
 
 function cancel_video(){
+  player.pauseVideo();
+
   os="{{g.user_agent.browser.family}}"
   is_safari=os.indexOf("Safari")>=0
   v=$('#guide-video')[0]
+  v2=$('#ytplayer')[0]
   v.pause()
     if (true || is_safari){
       v.style.width="0px"
       v.style.height="0px"
+      v2.style.width="0px"
+      v2.style.height="0px"
     }
     if (document.exitFullscreen) {
         document.exitFullscreen(); // Standard
@@ -342,13 +358,37 @@ function cancel_video(){
     }
   
 }
+const youtube_map = {
+  "features": "-a4tfRUsrNY",
+  "webapp-ios": "GBywNl2KZMM",
+  "webapp-android": "_-Iyr_RtIH0",
+  "ios-fair": "01m7w-I4JXE",
+  "ios-wingx": "qFKv4I-MNQc",
+  "ios-stash": "D0Xv54nRSY8",
+  "ios-shadowrocket": "F2bC_mtbYmQ",
+  "android-v2rayng": "6HncctDHXVs",
+  "android-hiddifyng": "7B0PO3HM6Vg",
+  "android-hiddifyclash": "8P887E-KMls",
+  "windows-hiddifyn": "o9L2sI2T53Q"
+};
 function show_video(file){
   os="{{g.user_agent.browser.family}}"
   is_safari=os.indexOf("Safari")>=0
-  $('#guide-video-mp4')[0].src="/{{hconfig(ConfigEnum.proxy_path)}}/videos/"+file+".mp4"
+
+  if(youtube_is_open && youtube_map[file]){
+    player.loadVideoById(youtube_map[file])
+    player.playVideo()
+    v=$("#ytplayer")[0]
+  }else{
+    $('#guide-video-mp4')[0].src="/{{hconfig(ConfigEnum.proxy_path)}}/videos/"+file+".mp4"
+    v=$('#guide-video')[0]
+    v.load()
+    v.play()
+  }
+  
+  
   //$('#guide-modal').modal()
-  v=$('#guide-video')[0]
-  v.load()
+  
   is_safari=false
   if (is_safari){
     v.style.position="absolute"
@@ -359,16 +399,8 @@ function show_video(file){
   }
   
   
-  v.play()
-  $("#guide-video").on('ended', function(){
-  cancel_video();
-   });
-   v.addEventListener("fullscreenchange", function (event) {
-      if (document.fullscreenElement) {
-      } else {
-        cancel_video()
-    }
-  })
+  
+  
   if (v.requestFullscreen)
       v.requestFullscreen()
   if (v.webkitEnterFullscreen)
@@ -428,7 +460,59 @@ if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').match
 }
 %endif
 {% endif %}
+
+
 </script>
+
+
+
+  <script type="text/javascript">
+    var youtube_is_open=false
+    var tag = document.createElement('script');
+    tag.id = 'iframe-demo';
+    tag.src = '//www.youtube.com/iframe_api';
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  
+    var player;
+    function onYouTubeIframeAPIReady() {
+      
+      player = new YT.Player('ytplayer', {
+        playerVars: { 'autoplay': 1, },
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange,
+          'onError': onPlayerError
+        }
+      });
+    }
+    function fullscreenPlayer(){
+        if (player.getIframe().requestFullscreen) {
+        player.getIframe().requestFullscreen();
+      } else if (player.getIframe().mozRequestFullScreen) {
+        player.getIframe().mozRequestFullScreen();
+      } else if (player.getIframe().webkitRequestFullscreen) {
+        player.getIframe().webkitRequestFullscreen();
+      } else if (player.getIframe().msRequestFullscreen) {
+        player.getIframe().msRequestFullscreen();
+      }
+    }
+    function onPlayerError(event) {
+      youtube_is_open=false
+    }
+    function onPlayerReady(event) {
+      youtube_is_open=true
+    }
+    // YouTube Player state change event
+    function onPlayerStateChange(event) {
+      if (event.data === YT.PlayerState.ENDED) {
+        cancel_video()
+        // Perform further actions or analytics tracking here
+      }
+    }
+   
+  </script
+
 % if get_locale()=='fa'
 <script src="{{url_for('static',filename='js/custom-rtl.js',version=5.1)}}"> </script>
 %endif

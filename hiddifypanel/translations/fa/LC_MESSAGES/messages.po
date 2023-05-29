@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-23 08:27+0200\n"
-"PO-Revision-Date: 2023-05-22 00:40-0500\n"
+"POT-Creation-Date: 2023-05-29 09:31+0200\n"
+"PO-Revision-Date: 2023-05-29 02:29-0500\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -278,7 +278,7 @@ msgstr "برای بازگرداندن دامنه از این گزینه استف
 #: hiddifypanel/panel/admin/ProxyAdmin.py:124
 #: hiddifypanel/panel/admin/QuickSetup.py:81
 #: hiddifypanel/panel/admin/QuickSetup.py:108
-#: hiddifypanel/panel/admin/SettingAdmin.py:252
+#: hiddifypanel/panel/admin/SettingAdmin.py:253
 #: hiddifypanel/panel/commercial/CommercialSettings.py:218
 msgid "Submit"
 msgstr "ثبت"
@@ -649,27 +649,27 @@ msgstr "🗺️ زبان پنل مدیریت"
 
 # | msgid "🇺🇸 English انگلیسی 英语"
 #: hiddifypanel/panel/admin/QuickSetup.py:78
-#: hiddifypanel/panel/admin/SettingAdmin.py:180
+#: hiddifypanel/panel/admin/SettingAdmin.py:181
 #: hiddifypanel/panel/commercial/CommercialSettings.py:150
 msgid "lang.en"
 msgstr "English 🇺🇸 انگلیسی 英语"
 
 # | msgid "🇮🇷 Persian فارسی 波斯语"
 #: hiddifypanel/panel/admin/QuickSetup.py:78
-#: hiddifypanel/panel/admin/SettingAdmin.py:180
+#: hiddifypanel/panel/admin/SettingAdmin.py:181
 #: hiddifypanel/panel/commercial/CommercialSettings.py:150
 msgid "lang.fa"
 msgstr "Persian 🇮🇷 فارسی 波斯语"
 
 # | msgid "🇵🇹 Portuguese پرتغالی 葡萄牙語"
 #: hiddifypanel/panel/admin/QuickSetup.py:78
-#: hiddifypanel/panel/admin/SettingAdmin.py:180
+#: hiddifypanel/panel/admin/SettingAdmin.py:181
 msgid "lang.pt"
 msgstr "Portuguese 🇵🇹 پرتغالی 葡萄牙語"
 
 # | msgid "🇨🇳 Chinese چینی 中国人"
 #: hiddifypanel/panel/admin/QuickSetup.py:78
-#: hiddifypanel/panel/admin/SettingAdmin.py:180
+#: hiddifypanel/panel/admin/SettingAdmin.py:181
 #: hiddifypanel/panel/commercial/CommercialSettings.py:150
 msgid "lang.zh"
 msgstr "Chinese 🇨🇳 چینی 中国人"
@@ -690,14 +690,14 @@ msgstr "🌍 کشور"
 
 # | msgid "🇮🇷 Iran"
 #: hiddifypanel/panel/admin/QuickSetup.py:80
-#: hiddifypanel/panel/admin/SettingAdmin.py:182
+#: hiddifypanel/panel/admin/SettingAdmin.py:183
 #: hiddifypanel/panel/commercial/CommercialSettings.py:152
 msgid "Iran"
 msgstr "🇮🇷 ایران"
 
 # | msgid "🇨🇳 China"
 #: hiddifypanel/panel/admin/QuickSetup.py:80
-#: hiddifypanel/panel/admin/SettingAdmin.py:182
+#: hiddifypanel/panel/admin/SettingAdmin.py:183
 #: hiddifypanel/panel/commercial/CommercialSettings.py:152
 msgid "China"
 msgstr "🇨🇳 چین"
@@ -714,8 +714,8 @@ msgstr "تنظیمات مناسب را برای هر کشور با توجه به
 
 # | msgid "Error! Invalid Domain.  The Domain Format is www.google.com"
 #: hiddifypanel/panel/admin/QuickSetup.py:97
-#: hiddifypanel/panel/admin/SettingAdmin.py:200
-#: hiddifypanel/panel/admin/SettingAdmin.py:203
+#: hiddifypanel/panel/admin/SettingAdmin.py:201
+#: hiddifypanel/panel/admin/SettingAdmin.py:204
 #: hiddifypanel/panel/commercial/CommercialSettings.py:170
 #: hiddifypanel/panel/commercial/CommercialSettings.py:173
 msgid "config.Invalid domain"
@@ -724,8 +724,8 @@ msgstr "خطا! دامنه نامعتبر! فرمت دامنه باید مثل w
 # | msgid "Domain is exist in domains section. Use another Domain"
 #: hiddifypanel/panel/admin/QuickSetup.py:99
 #: hiddifypanel/panel/admin/QuickSetup.py:100
-#: hiddifypanel/panel/admin/SettingAdmin.py:207
 #: hiddifypanel/panel/admin/SettingAdmin.py:208
+#: hiddifypanel/panel/admin/SettingAdmin.py:209
 #: hiddifypanel/panel/commercial/CommercialSettings.py:177
 #: hiddifypanel/panel/commercial/CommercialSettings.py:178
 msgid "config.Domain already used"
@@ -850,48 +850,48 @@ msgid "Only Blocked and Local websites"
 msgstr "☑️ فقط سایت‌های داخلی و مسدود شده‌ی خارجی"
 
 # | msgid "🇺🇳 Others"
-#: hiddifypanel/panel/admin/SettingAdmin.py:182
+#: hiddifypanel/panel/admin/SettingAdmin.py:183
 msgid "Others"
 msgstr "🇺🇳 سایر"
 
 # | msgid "✅ Release"
-#: hiddifypanel/panel/admin/SettingAdmin.py:184
+#: hiddifypanel/panel/admin/SettingAdmin.py:185
 #: hiddifypanel/panel/commercial/CommercialSettings.py:154
 msgid "Release"
 msgstr "✅ پایدار"
 
 # | msgid "⚠️ Develop"
-#: hiddifypanel/panel/admin/SettingAdmin.py:184
+#: hiddifypanel/panel/admin/SettingAdmin.py:185
 #: hiddifypanel/panel/commercial/CommercialSettings.py:154
 msgid "Develop"
 msgstr "⚠️ در حال توسعه"
 
 # | msgid "✅ Python : Low Performance"
-#: hiddifypanel/panel/admin/SettingAdmin.py:190
+#: hiddifypanel/panel/admin/SettingAdmin.py:191
 #: hiddifypanel/panel/commercial/CommercialSettings.py:160
 msgid "lib.telegram.python"
 msgstr "✅ پایتون : عملکرد ضعیف"
 
 # | msgid "✴️ Go : High Performance - No ad Support"
-#: hiddifypanel/panel/admin/SettingAdmin.py:190
+#: hiddifypanel/panel/admin/SettingAdmin.py:191
 #: hiddifypanel/panel/commercial/CommercialSettings.py:160
 msgid "lib.telegram.go"
 msgstr "✴️ Go : عملکرد بالا - عدم پشتیبانی از تبلیغات"
 
 # | msgid "⛔️ Not Working - Original : High Performance"
-#: hiddifypanel/panel/admin/SettingAdmin.py:190
+#: hiddifypanel/panel/admin/SettingAdmin.py:191
 #: hiddifypanel/panel/commercial/CommercialSettings.py:160
 msgid "lib.telegram.orignal"
 msgstr "⛔️ کار نمیکند - اصلی : عملکرد قوی"
 
 # | msgid "⛔️ NOT Working - Erlang : Medium Performance"
-#: hiddifypanel/panel/admin/SettingAdmin.py:190
+#: hiddifypanel/panel/admin/SettingAdmin.py:191
 #: hiddifypanel/panel/commercial/CommercialSettings.py:160
 msgid "lib.telegram.erlang"
 msgstr "⛔️ کار نمیکند - Erlang : عملکرد متوسط"
 
 # | msgid "🔢  Telegram Proxy Library"
-#: hiddifypanel/panel/admin/SettingAdmin.py:191
+#: hiddifypanel/panel/admin/SettingAdmin.py:192
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/panel/commercial/CommercialSettings.py:161
 #: hiddifypanel/templates/fake.html:1
@@ -904,7 +904,7 @@ msgstr "🔢  کتابخانه پروکسی تلگرام"
 # | "Python works in all servers, others may have some issue. Test Proxy after
 # "
 # | "changing it."
-#: hiddifypanel/panel/admin/SettingAdmin.py:191
+#: hiddifypanel/panel/admin/SettingAdmin.py:192
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/panel/commercial/CommercialSettings.py:161
 #: hiddifypanel/templates/fake.html:1
@@ -915,26 +915,26 @@ msgstr ""
 "اشکالاتی داشته باشد. بعد از تغییر حتما تست کنید."
 
 # | msgid "Test and Suggest Domain "
-#: hiddifypanel/panel/admin/SettingAdmin.py:211
+#: hiddifypanel/panel/admin/SettingAdmin.py:212
 #: hiddifypanel/templates/flaskadmin-layout.html:81
 msgid "Example Domains"
 msgstr "بررسی و پیشنهاد دامنه"
 
 # | msgid "Invalid Admin Link"
-#: hiddifypanel/panel/admin/SettingAdmin.py:216
+#: hiddifypanel/panel/admin/SettingAdmin.py:217
 #: hiddifypanel/panel/commercial/CommercialSettings.py:182
 msgid "Invalid admin link"
 msgstr "لینک ادمین نامعتبر است"
 
 # | msgid "Invalid Telegram Bot Token"
-#: hiddifypanel/panel/admin/SettingAdmin.py:218
+#: hiddifypanel/panel/admin/SettingAdmin.py:219
 #: hiddifypanel/panel/commercial/CommercialSettings.py:184
 msgid "config.Invalid telegram bot token"
 msgstr "توکن ربات تلگرام نامعتبر است"
 
 # | msgid ""
 # | "Invalid Link. it should be on this format: (https or http://example.com)"
-#: hiddifypanel/panel/admin/SettingAdmin.py:220
+#: hiddifypanel/panel/admin/SettingAdmin.py:221
 #: hiddifypanel/panel/commercial/CommercialSettings.py:186
 msgid "config.Invalid brand link"
 msgstr "لینک پشتیبانی نامعتبر است. لطفا لینک را با فرمت معتبر وارد کنید."
@@ -942,21 +942,21 @@ msgstr "لینک پشتیبانی نامعتبر است. لطفا لینک را 
 # | msgid ""
 # | "Invalid UUID secret. example: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n"
 # | "\n"
-#: hiddifypanel/panel/admin/SettingAdmin.py:224
+#: hiddifypanel/panel/admin/SettingAdmin.py:225
 #: hiddifypanel/panel/commercial/CommercialSettings.py:190
 msgid "config.invalid uuid"
 msgstr "رمز UUID نامعتبر است. به عنوان مثال: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6"
 
 # | msgid "Invalid Proxy Path. It should be ASCI string (a-z A-Z 0-9)"
-#: hiddifypanel/panel/admin/SettingAdmin.py:228
+#: hiddifypanel/panel/admin/SettingAdmin.py:229
 #: hiddifypanel/panel/commercial/CommercialSettings.py:194
 msgid "config.Invalid proxy path"
 msgstr "مسیر پروکسی نامعتبر است. باید رشته متن asci باشد. ( شامل a-z A-Z 0-9)"
 
 # | msgid ""
 # | "Invalid Port. it should be comma separated Integer e.g.  2052,2053"
-#: hiddifypanel/panel/admin/SettingAdmin.py:233
-#: hiddifypanel/panel/admin/SettingAdmin.py:236
+#: hiddifypanel/panel/admin/SettingAdmin.py:234
+#: hiddifypanel/panel/admin/SettingAdmin.py:237
 #: hiddifypanel/panel/commercial/CommercialSettings.py:199
 #: hiddifypanel/panel/commercial/CommercialSettings.py:202
 msgid "config.Invalid port"
@@ -4109,17 +4109,17 @@ msgstr "لینک کپی شد. "
 msgid "user.home.link.manual-copy"
 msgstr "برای کپی کردن به کلیپ‌بورد: دکمه Ctrl+C را بزنید."
 
-#: hiddifypanel/templates/master.html:302
+#: hiddifypanel/templates/master.html:313
 msgid "Install"
 msgstr "نصب"
 
 # | msgid "Hiddify Panel Installation"
-#: hiddifypanel/templates/master.html:382
+#: hiddifypanel/templates/master.html:414
 msgid "Install Hiddify Application"
 msgstr "نصب پنل هیدیفای"
 
 # | msgid "Click %(install)s to save the User Page."
-#: hiddifypanel/templates/master.html:384
+#: hiddifypanel/templates/master.html:416
 #, python-format
 msgid "Please click on %(install)s to save the user page."
 msgstr "روی %(install)s کلیک کنید تا صفحه کاربر ذخیره شود."
