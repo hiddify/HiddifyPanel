@@ -47,7 +47,7 @@ class SettingAdmin(FlaskView):
                         if k not in vs:continue
                         v=vs[k]
                         if k.type() == str:
-                            if "_domain" in k or k in [ConfigEnum.admin_secret,ConfigEnum.reality_server_names]:
+                            if "_domain" in k or "_fakedomain" in k:
                                 v=v.lower()
                         
                             if "port" in k:
@@ -200,7 +200,7 @@ def get_config_form():
                 if c.key==ConfigEnum.domain_fronting_domain:
                     validators.append(wtf.validators.Regexp("^([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})|$",re.IGNORECASE,_("config.Invalid domain")))
                     validators.append(hiddify.validate_domain_exist)
-                elif '_domain' in c.key:
+                elif '_domain' in c.key or "_fakedomain" in c.key:
                     validators.append(wtf.validators.Regexp("^([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})$",re.IGNORECASE,_("config.Invalid domain")))
                     validators.append(hiddify.validate_domain_exist)
 
