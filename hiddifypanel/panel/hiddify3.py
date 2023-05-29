@@ -108,6 +108,12 @@ def top_processes():
             ram_usage[name] = mem_info.rss / (1024 ** 3)
             cpu_usage[name] = cpu_percent
     
+    while len(cpu_usage)<5:
+        cpu_usage[" "*len(cpu_usage)]=0
+    while len(ram_usage)<5:
+        ram_usage[" "*len(ram_usage)]=0
+    while len(memory_usage)<5:
+        memory_usage[" "*len(memory_usage)]=0
     # Sort the processes by memory usage, RAM usage, and CPU usage
     top_memory = sorted(memory_usage.items(), key=lambda x: x[1], reverse=True)[:5]
     top_ram = sorted(ram_usage.items(), key=lambda x: x[1], reverse=True)[:5]
