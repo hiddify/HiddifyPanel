@@ -104,6 +104,12 @@ def init_db():
 # def _v42():
 
 #v7.0.0
+def _v42(): 
+    
+    for k in [ConfigEnum.telegram_fakedomain,ConfigEnum.ssfaketls_fakedomain,ConfigEnum.shadowtls_fakedomain]:
+        if not hconfig(k):
+            rnd_domains=get_random_domains(1)
+            add_config_if_not_exist(k, rnd_domains[0])
 def _v41(): 
     add_config_if_not_exist(ConfigEnum.core_type,"xray")
     if not (Domain.query.filter(Domain.domain==hconfig(ConfigEnum.reality_fallback_domain)).first()):
