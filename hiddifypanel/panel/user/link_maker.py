@@ -34,7 +34,7 @@ def pbase64(full_str):
     return "vmess://"+resp.decode()
 
 
-def make_proxy(proxy, domain_db, phttp=80, ptls=443):
+def make_proxy(proxy:Proxy, domain_db:Domain, phttp=80, ptls=443):
     def is_tls():
         return 'tls' in l3 or "reality" in l3
     if type(phttp) == str:
@@ -80,7 +80,7 @@ def make_proxy(proxy, domain_db, phttp=80, ptls=443):
     if not is_cdn and domain_db.mode in  [DomainType.cdn,DomainType.auto_cdn_ip,DomainType.worker]:
         # print("not cdn proxy  in cdn domain", domain, name, proxy.cdn)
         return {'name': name, 'msg': "not cdn proxy  in cdn domain",'type':'debug', 'proto': proxy.proto}
-    if domain_db.mode==DomainType.worker and proxy.proto==ProxyProto.grpc:
+    if domain_db.mode==DomainType.worker and proxy.transport==ProxyTransport.grpc:
         return {'name': name, 'msg': "worker does not support grpc",'type':'debug', 'proto': proxy.proto}
     cdn_forced_host = domain_db.cdn_ip or (domain_db.domain if domain_db.mode!=DomainType.reality else hiddify.get_direct_host_or_ip(4))
     
