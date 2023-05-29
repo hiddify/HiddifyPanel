@@ -5,6 +5,8 @@
 
 #### New
 
+* Update panel. 
+
 * Now get video from youtube if fail get it from local. 
 
 * Add rest api. 
