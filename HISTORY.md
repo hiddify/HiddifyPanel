@@ -5,6 +5,10 @@
 
 #### New
 
+* Now get video from youtube if fail get it from local. 
+
+* Add rest api. 
+
 * Update lang. 
 
 * Disable tcp mode. 
@@ -55,6 +59,8 @@
 
 #### Fix
 
+* Bug. 
+
 * Worker bug. 
 
 * Downgrade. 
@@ -88,6 +94,8 @@
 * Sort bug. 
 
 #### Other
+
+* Better display logs. 
 
 * Add: X-Real-IP header. 
 
