@@ -18,7 +18,7 @@ def add_temporary_access():
 
     random_port = random.randint(30000, 50000)
     exec_command(
-        f'/opt/hiddify-config/hiddify-panel/temporary_access.sh {random_port} &')
+        f'sudo /opt/hiddify-config/hiddify-panel/temporary_access.sh {random_port} &')
     # iptableparm=f'PREROUTING -p tcp --dport {random_port} -j REDIRECT --to-port 9000'
     # exec_command(f'iptables -t nat -I {iptableparm}')
     # exec_command(f'echo "iptables -t nat -D {iptableparm}" | at now + 4 hour')
@@ -212,7 +212,7 @@ def quick_apply_users():
     #     else:
     #         xray_api.remove_client(user.uuid)
 
-    exec_command("/opt/hiddify-config/install.sh apply_users &")
+    exec_command("sudo /opt/hiddify-config/install.sh apply_users &")
     import time
     time.sleep(1)
     return {"status": 'success'}
