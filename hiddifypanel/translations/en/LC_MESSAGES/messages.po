@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-29 19:01+0200\n"
-"PO-Revision-Date: 2023-05-29 11:07-0500\n"
+"POT-Creation-Date: 2023-05-30 01:03+0200\n"
+"PO-Revision-Date: 2023-05-29 12:01-0500\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Generated-By: Babel 2.12.1\n"
 
 # | msgid "This Domain does not exist in the Panel !"
-#: hiddifypanel/models/domain.py:129 hiddifypanel/panel/user/user.py:175
+#: hiddifypanel/models/domain.py:129 hiddifypanel/panel/user/user.py:176
 msgid "This domain does not exist in the panel!"
 msgstr "This Domain does not exist in the Panel !"
 
@@ -887,13 +887,6 @@ msgstr ""
 "You can switch between different Telegram Libraries. Please note that only "
 "Python works in all servers, others may have some issue. Test Proxy after "
 "changing it."
-
-# | msgid "Test and Suggest Domain "
-#: hiddifypanel/panel/admin/SettingAdmin.py:212
-#: hiddifypanel/templates/flaskadmin-layout.html:81
-#, fuzzy
-msgid "Example Domains"
-msgstr "Test and Suggest Domain "
 
 # | msgid "Invalid Admin Link"
 #: hiddifypanel/panel/admin/SettingAdmin.py:217
@@ -3917,6 +3910,12 @@ msgstr "📅 Weekly"
 #: hiddifypanel/templates/fake.html:4
 msgid "daily"
 msgstr "⏰ Daily"
+
+# | msgid "Test and Suggest Domain "
+#: hiddifypanel/templates/flaskadmin-layout.html:81
+#, fuzzy
+msgid "Example Domains"
+msgstr "Test and Suggest Domain "
 
 # | msgid "Close"
 #: hiddifypanel/templates/macros.html:29

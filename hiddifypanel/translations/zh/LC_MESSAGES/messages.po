@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-29 19:01+0200\n"
-"PO-Revision-Date: 2023-05-29 11:07-0500\n"
+"POT-Creation-Date: 2023-05-30 01:03+0200\n"
+"PO-Revision-Date: 2023-05-29 12:01-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Generated-By: Babel 2.12.1\n"
 
 # | msgid "This Domain does not exist in the Panel !"
-#: hiddifypanel/models/domain.py:129 hiddifypanel/panel/user/user.py:175
+#: hiddifypanel/models/domain.py:129 hiddifypanel/panel/user/user.py:176
 #, fuzzy
 msgid "This domain does not exist in the panel!"
 msgstr "该域名在面板中不存在！"
@@ -897,12 +897,6 @@ msgstr "电报代理库"
 #: hiddifypanel/templates/fake.html:1
 msgid "config.telegram_lib.description"
 msgstr "您可以在不同的电报库之间切换。"
-
-# | msgid "Test and Suggest Domain "
-#: hiddifypanel/panel/admin/SettingAdmin.py:212
-#: hiddifypanel/templates/flaskadmin-layout.html:81
-msgid "Example Domains"
-msgstr ""
 
 # | msgid "Invalid Admin Link"
 #: hiddifypanel/panel/admin/SettingAdmin.py:217
@@ -3954,6 +3948,11 @@ msgstr "📅每周"
 #, fuzzy
 msgid "daily"
 msgstr "⏰每日"
+
+# | msgid "Test and Suggest Domain "
+#: hiddifypanel/templates/flaskadmin-layout.html:81
+msgid "Example Domains"
+msgstr ""
 
 # | msgid "Close"
 #: hiddifypanel/templates/macros.html:29 hiddifypanel/templates/master.html:171

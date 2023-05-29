@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-29 19:01+0200\n"
-"PO-Revision-Date: 2023-05-29 11:07-0500\n"
+"POT-Creation-Date: 2023-05-30 01:03+0200\n"
+"PO-Revision-Date: 2023-05-29 12:01-0500\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Generated-By: Babel 2.12.1\n"
 
 # | msgid "This Domain does not exist in the Panel !"
-#: hiddifypanel/models/domain.py:129 hiddifypanel/panel/user/user.py:175
+#: hiddifypanel/models/domain.py:129 hiddifypanel/panel/user/user.py:176
 msgid "This domain does not exist in the panel!"
 msgstr "این دامنه در پنل وجود ندارد!"
 
@@ -913,12 +913,6 @@ msgstr ""
 "در این قسمت می‌توانید کتابخانه‌های مختلف تلگرام را انتخاب نمایید. توجه "
 "کنید که فقط پایتون در تمام سیستم ها درست کار میکند و بقیه ممکن است "
 "اشکالاتی داشته باشد. بعد از تغییر حتما تست کنید."
-
-# | msgid "Test and Suggest Domain "
-#: hiddifypanel/panel/admin/SettingAdmin.py:212
-#: hiddifypanel/templates/flaskadmin-layout.html:81
-msgid "Example Domains"
-msgstr "بررسی و پیشنهاد دامنه"
 
 # | msgid "Invalid Admin Link"
 #: hiddifypanel/panel/admin/SettingAdmin.py:217
@@ -4077,6 +4071,11 @@ msgstr "📅 هفتگی"
 #: hiddifypanel/templates/fake.html:4
 msgid "daily"
 msgstr "⏰ روزانه"
+
+# | msgid "Test and Suggest Domain "
+#: hiddifypanel/templates/flaskadmin-layout.html:81
+msgid "Example Domains"
+msgstr "بررسی و پیشنهاد دامنه"
 
 # | msgid "Close"
 #: hiddifypanel/templates/macros.html:29 hiddifypanel/templates/master.html:171
