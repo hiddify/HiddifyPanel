@@ -16,8 +16,8 @@ from flask_babelex import gettext as _
 
 class UserView(FlaskView):
 
-    @route('/old')
-    @route('/old/')
+    # @route('/old')
+    # @route('/old/')
     def index(self):
         
         c=get_common_data(g.user_uuid,mode="")
@@ -25,8 +25,8 @@ class UserView(FlaskView):
         
         
         return render_template('home/index.html',**c,ua=user_agent)
-    @route('/multi/')
-    @route('/multi')
+    # @route('/multi/')
+    # @route('/multi')
     def multi(self):
         
         c=get_common_data(g.user_uuid,mode="multi")
@@ -87,7 +87,7 @@ class UserView(FlaskView):
 
     @route('/all.txt', methods=["GET","HEAD"])
     def all_configs(self):
-        mode=request.args.get("mode")
+        mode="new" #request.args.get("mode")
         base64=request.args.get("base64","").lower()=="true"
         c=get_common_data(g.user_uuid,mode)
         # response.content_type = 'text/plain';
@@ -153,6 +153,7 @@ def do_base_64(str):
     return resp.decode()
     
 def get_common_data(user_uuid,mode,no_domain=False,filter_domain=None):
+    mode="new"
     default_asn=request.args.get("asn")
     if filter_domain:
         domain=filter_domain
