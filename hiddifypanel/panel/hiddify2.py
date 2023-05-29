@@ -103,6 +103,14 @@ def get_random_string(min_=10,max_=30):
 
 
 
+def get_warp_info():
+    import requests
+    proxies=dict(http='socks5://127.0.0.1:3000',
+                                 https='socks5://127.0.0.1:3000')
+    res=requests.get("https://cloudflare.com/cdn-cgi/trace",proxies=proxies,timeout=1).text
+    
+    dicres= {line.split("=")[0]:line.split("=")[0] for line in res}
+    return dicres
 
 
 from .hiddify3 import *
