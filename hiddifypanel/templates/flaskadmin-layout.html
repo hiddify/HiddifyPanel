@@ -76,12 +76,12 @@ $('.form-group:not(:has(.custom-switch)) > input[type="checkbox"]').each(functio
         if ($("#mode").val()=='reality'){
             
             $("#servernames").parent().show(); 
-            $("#grpc").parent().show()
+            $("#grpc").parent().parent().show()
             $("#domain").parent().find(".control-label").html(`{{_('config.reality_fallback_domain.label')}}`)
             $("#domain").parent().find(".help-block").html(`{{_('config.reality_fallback_domain.description')+("<a target='_blank' href='" +url_for('admin.Actions:get_some_random_reality_friendly_domain',test_domain=domain)+"'>"+_('Example Domains')+"</a>")}}`)
         }else{
             $("#servernames").parent().hide(); 
-            $("#grpc").parent().hide()
+            $("#grpc").parent().parent().hide()
             $("#domain").parent().find(".control-label").html(`{{_('domain.domain')}}`)
             $("#domain").parent().find(".help-block").html(`{{_('domain.description')}}`)
         }
