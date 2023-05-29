@@ -240,7 +240,8 @@ class DomainAdmin(AdminLTEModelView):
             except:
                 raise ValidationError(_("Error in auto cdn format"))
 
-        if is_created or not get_domain(model.domain) :
+        old_db_domain=get_domain(model.domain)
+        if is_created or not  old_db_domain or old_db_domain.mode!=model.mode:
             # return hiddify.reinstall_action(complete_install=False, domain_changed=True)
             hiddify.flash_config_success(restart_mode='apply', domain_changed=True)
 
@@ -267,3 +268,7 @@ class DomainAdmin(AdminLTEModelView):
     #     if field.type == "Enum":
     #         return [(enum_value.name, _(enum_value.name)) for enum_value in field.type.__members__.values()]
     #     return super().form_choices(field, *args, **kwargs)
+
+    # @property
+    # def server_ips(self):
+    #     return hiddify.get_ip(4)
