@@ -147,7 +147,7 @@ def add_or_update_domain(commit=True,child_id=0,**domain):
     dbdomain.child_id = child_id
 
     dbdomain.mode = domain['mode']
-    if(domain.get('sub_link_only','').lower()=='true'):
+    if(str(domain.get('sub_link_only',false)).lower()=='true'):
         dbdomain.mode=DomainType.sub_link_only
     dbdomain.cdn_ip = domain.get('cdn_ip', '')
     dbdomain.alias = domain.get('alias', '')
