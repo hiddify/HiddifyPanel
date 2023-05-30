@@ -1,6 +1,18 @@
 # Changelog
 
 
+## 7.0.5 (2023-05-30)
+
+#### Fix
+
+* Backup. 
+
+* Ping. 
+
+* Backup domains. 
+
+
+
 ## 7.0.4 (2023-05-30)
 
 #### Fix

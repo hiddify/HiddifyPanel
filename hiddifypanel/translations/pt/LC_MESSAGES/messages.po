@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPT\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-30 06:41+0200\n"
-"PO-Revision-Date: 2023-05-29 18:03-0500\n"
+"POT-Creation-Date: 2023-05-30 11:23+0200\n"
+"PO-Revision-Date: 2023-05-29 23:41-0500\n"
 "Last-Translator: lymanrudni\n"
 "Language: pt\n"
 "Language-Team: Portuguese\n"
@@ -29,8 +29,9 @@ msgstr ""
 "administrador"
 
 # | msgid ""
-# | "This Version of Hiddify Panel is Outdated. Please Update it from Admin
-# Area."
+# | "⚠️ This Version of Hiddify Panel is Outdated. Please Update it from Admin
+# "
+# | "Area."
 #: hiddifypanel/panel/admin/Dashboard.py:28 hiddifypanel/panel/common.py:56
 #: hiddifypanel/templates/500.html:9
 #, fuzzy
@@ -1178,7 +1179,7 @@ msgstr "Quantos dias é este pacote?"
 msgid "Package not started yet."
 msgstr "Pacote ainda não iniciado."
 
-# | msgid "Package ends in "
+# | msgid "Package Ends"
 #: hiddifypanel/panel/admin/UserAdmin.py:212
 #, fuzzy
 msgid "Remaining: "
@@ -3868,7 +3869,7 @@ msgstr ""
 " contém <b>Conectar Proxy</b>. Clique nele e funcionará.\n"
 "<br />"
 
-# | msgid "⌛️ Traffic Usage"
+# | msgid "Traffic Usage"
 #: hiddifypanel/panel/user/templates/home/usage.html:7
 #, fuzzy
 msgid "user.home.usage.title"
