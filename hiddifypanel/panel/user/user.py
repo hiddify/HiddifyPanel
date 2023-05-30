@@ -18,22 +18,22 @@ class UserView(FlaskView):
 
     # @route('/old')
     # @route('/old/')
-    def index(self):
+    # def index(self):
         
-        c=get_common_data(g.user_uuid,mode="")
-        user_agent =  user_agents.parse(request.user_agent.string)
+    #     c=get_common_data(g.user_uuid,mode="")
+    #     user_agent =  user_agents.parse(request.user_agent.string)
         
         
-        return render_template('home/index.html',**c,ua=user_agent)
+    #     return render_template('home/index.html',**c,ua=user_agent)
     # @route('/multi/')
     # @route('/multi')
-    def multi(self):
+    # def multi(self):
         
-        c=get_common_data(g.user_uuid,mode="multi")
+    #     c=get_common_data(g.user_uuid,mode="multi")
         
-        user_agent =  user_agents.parse(request.user_agent.string)
+    #     user_agent =  user_agents.parse(request.user_agent.string)
        
-        return render_template('home/multi.html',**c,ua=user_agent)
+    #     return render_template('home/multi.html',**c,ua=user_agent)
 
     @route('/new/')
     @route('/new')
