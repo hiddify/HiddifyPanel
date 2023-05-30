@@ -204,16 +204,20 @@ class Actions(FlaskView):
             start=time.time()
             for d in [test_domain, *hiddify.get_random_domains(30)]:
                 if not d:continue
-                if time.time()-start>10:break
+                if time.time()-start>20:break
                 print(d)
                 tcp_ping=hiddify.is_domain_reality_friendly(d)
                 if tcp_ping:
                     dip=hiddify.get_domain_ip(d)
                     dip_country=(ipcountry.get(dip) or {}).get('country',{}).get('iso_code','unknown')
                     if dip_country=="IR":continue
-                    response_time = ping3.ping(d, unit='ms')                     
-                    if response_time:
-                        response_time=int(response_time)
+                    response_time=-1
+                    try:
+                        response_time = ping3.ping(d, unit='ms')                     
+                        if response_time:
+                            response_time=int(response_time)
+                    except:
+                        pass
                     dip_asn=(ipasn.get(dip)or {}).get('autonomous_system_organization','unknown')
                     res+=f"<tr><td>{d}</td><td>{dip}</td><td>{dip_country}</td><td>{dip_asn}</td><td>{response_time}</td><td>{tcp_ping}<td></tr>"
                     
