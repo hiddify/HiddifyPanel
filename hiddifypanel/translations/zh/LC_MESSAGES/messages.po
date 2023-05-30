@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-30 01:03+0200\n"
-"PO-Revision-Date: 2023-05-29 12:01-0500\n"
+"POT-Creation-Date: 2023-05-30 06:41+0200\n"
+"PO-Revision-Date: 2023-05-29 21:24-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -28,8 +28,9 @@ msgid "Error! auto cdn ip can not be find, please contact admin."
 msgstr "自动 CDN IP 错误！找不到，请联系管理员。"
 
 # | msgid ""
-# | "This Version of Hiddify Panel is Outdated. Please Update it from Admin
-# Area."
+# | "⚠️ This Version of Hiddify Panel is Outdated. Please Update it from Admin
+# "
+# | "Area."
 #: hiddifypanel/panel/admin/Dashboard.py:28 hiddifypanel/panel/common.py:56
 #: hiddifypanel/templates/500.html:9
 #, fuzzy
@@ -1057,7 +1058,7 @@ msgstr "这个包裹有多少天？"
 msgid "Package not started yet."
 msgstr "套餐还没有开始。"
 
-# | msgid "Package ends in "
+# | msgid "Package Ends"
 #: hiddifypanel/panel/admin/UserAdmin.py:212
 #, fuzzy
 msgid "Remaining: "
@@ -3412,7 +3413,7 @@ msgstr "Telegram代理"
 msgid "user.home.telegram.description"
 msgstr "单击 %(link)s，然后，在Telegram中您可以看到一个包含 <b>Connect Proxy</b> 的窗口。点击它，它将起作用。"
 
-# | msgid "⌛️ Traffic Usage"
+# | msgid "Traffic Usage"
 #: hiddifypanel/panel/user/templates/home/usage.html:7
 msgid "user.home.usage.title"
 msgstr "流量使用"

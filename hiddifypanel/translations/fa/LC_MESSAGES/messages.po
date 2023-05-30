@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-30 01:03+0200\n"
-"PO-Revision-Date: 2023-05-29 12:01-0500\n"
+"POT-Creation-Date: 2023-05-30 06:41+0200\n"
+"PO-Revision-Date: 2023-05-29 21:24-0500\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -26,14 +26,17 @@ msgid "Error! auto cdn ip can not be find, please contact admin."
 msgstr "خطا! آی پی اتوماتیک نتوانست پیدا شود. لطفا با مدیر تماس بگیرید"
 
 # | msgid ""
-# | "This Version of Hiddify Panel is Outdated. Please Update it from Admin
-# Area."
+# | "⚠️ This Version of Hiddify Panel is Outdated. Please Update it from Admin
+# "
+# | "Area."
 #: hiddifypanel/panel/admin/Dashboard.py:28 hiddifypanel/panel/common.py:56
 #: hiddifypanel/templates/500.html:9
 msgid ""
 "This version of hiddify panel is outdated. Please update it from admin "
 "area."
-msgstr "این نسخه هیدیفای قدیمی شده است. لطفا از پنل ادمین آن را به روزرسانی کنید"
+msgstr ""
+"⚠️ این نسخه هیدیفای قدیمی شده است. لطفا از پنل ادمین آن را به روزرسانی "
+"کنید"
 
 #: hiddifypanel/panel/hiddify.py:73
 msgid "Access Denied"
@@ -1065,7 +1068,7 @@ msgstr "این بسته چند روزه است؟"
 msgid "Package not started yet."
 msgstr "بسته هنوز شروع نشده است."
 
-# | msgid "Package ends in "
+# | msgid "Package Ends"
 #: hiddifypanel/panel/admin/UserAdmin.py:212
 msgid "Remaining: "
 msgstr "زمان پایان بسته"
@@ -3533,10 +3536,10 @@ msgstr ""
 "کنید تا پروکسی متصل شود.\n"
 "<br />"
 
-# | msgid "⌛️ Traffic Usage"
+# | msgid "Traffic Usage"
 #: hiddifypanel/panel/user/templates/home/usage.html:7
 msgid "user.home.usage.title"
-msgstr "⌛️ حجم مصرف شده:"
+msgstr "حجم مصرف شده:"
 
 # | msgid "Of"
 #: hiddifypanel/panel/user/templates/home/usage.html:12
