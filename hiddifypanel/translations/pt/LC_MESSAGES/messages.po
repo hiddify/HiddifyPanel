@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPT\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-04 11:58+0200\n"
-"PO-Revision-Date: 2023-06-04 04:00-0500\n"
+"POT-Creation-Date: 2023-06-04 12:46+0200\n"
+"PO-Revision-Date: 2023-06-04 04:58-0500\n"
 "Last-Translator: lymanrudni\n"
 "Language: pt\n"
 "Language-Team: Portuguese\n"
@@ -334,7 +334,7 @@ msgstr "Enviar"
 #: hiddifypanel/panel/admin/DomainAdmin.py:45
 #: hiddifypanel/panel/admin/QuickSetup.py:102
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:33
-#: hiddifypanel/templates/flaskadmin-layout.html:96
+#: hiddifypanel/templates/flaskadmin-layout.html:127
 #, fuzzy
 msgid "domain.description"
 msgstr ""
@@ -376,7 +376,7 @@ msgstr ""
 #: hiddifypanel/panel/admin/DomainAdmin.py:79
 #: hiddifypanel/panel/admin/QuickSetup.py:102
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:55
-#: hiddifypanel/templates/flaskadmin-layout.html:95
+#: hiddifypanel/templates/flaskadmin-layout.html:126
 #, fuzzy
 msgid "domain.domain"
 msgstr "Domínio"
@@ -542,7 +542,7 @@ msgstr "O nome que será mostrado nas Configs deste Domínio."
 #: hiddifypanel/panel/admin/DomainAdmin.py:50
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
-#: hiddifypanel/templates/flaskadmin-layout.html:80
+#: hiddifypanel/templates/flaskadmin-layout.html:111
 msgid "config.reality_server_names.description"
 msgstr ""
 "Você pode adicionar vários nomes de servidor em  formato separados por "
@@ -599,7 +599,7 @@ msgstr "IP"
 #: hiddifypanel/panel/admin/DomainAdmin.py:151
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
-#: hiddifypanel/templates/flaskadmin-layout.html:79
+#: hiddifypanel/templates/flaskadmin-layout.html:110
 #, fuzzy
 msgid "config.reality_server_names.label"
 msgstr "🌎 Nomes de servidores"
@@ -2284,7 +2284,7 @@ msgstr "não mude isso"
 # | msgid "🌍 Reality Fallback Domain"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
-#: hiddifypanel/templates/flaskadmin-layout.html:83
+#: hiddifypanel/templates/flaskadmin-layout.html:114
 #, fuzzy
 msgid "config.reality_fallback_domain.label"
 msgstr "🌍 Domínio alternativo"
@@ -2295,7 +2295,7 @@ msgstr "🌍 Domínio alternativo"
 # | " Domain."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
-#: hiddifypanel/templates/flaskadmin-layout.html:84
+#: hiddifypanel/templates/flaskadmin-layout.html:115
 #, fuzzy
 msgid "config.reality_fallback_domain.description"
 msgstr ""
@@ -4467,16 +4467,32 @@ msgstr "📅 Semanal"
 msgid "daily"
 msgstr "⏰ Diariamente"
 
+#: hiddifypanel/templates/flaskadmin-layout.html:53
+msgid "Direct"
+msgstr ""
+
+#: hiddifypanel/templates/flaskadmin-layout.html:54
+msgid "Panel Link"
+msgstr ""
+
+#: hiddifypanel/templates/flaskadmin-layout.html:55
+msgid "Bridge Servers"
+msgstr ""
+
+#: hiddifypanel/templates/flaskadmin-layout.html:56
+msgid "Fake"
+msgstr ""
+
 # | msgid "Test and Suggest Domain "
-#: hiddifypanel/templates/flaskadmin-layout.html:84
+#: hiddifypanel/templates/flaskadmin-layout.html:115
 msgid "Example Domains"
 msgstr "Test and Suggest Domain "
 
-#: hiddifypanel/templates/flaskadmin-layout.html:88
+#: hiddifypanel/templates/flaskadmin-layout.html:119
 msgid "domain.domain_fronting.label"
 msgstr ""
 
-#: hiddifypanel/templates/flaskadmin-layout.html:89
+#: hiddifypanel/templates/flaskadmin-layout.html:120
 msgid "domain.domain_fronting.description"
 msgstr ""
 

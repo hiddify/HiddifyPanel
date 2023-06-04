@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-04 11:58+0200\n"
-"PO-Revision-Date: 2023-06-04 04:00-0500\n"
+"POT-Creation-Date: 2023-06-04 12:46+0200\n"
+"PO-Revision-Date: 2023-06-04 05:12-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -49,14 +49,14 @@ msgid "admin.config.apply_configs"
 msgstr "应用配置"
 
 # | msgid ""
-# | "Configs have been Changed Successfully. Click %(link)s to Apply the
-# Configs."
-# | " It may take 2 Minutes to apply"
+# | "Configs have been changed successfully. Click %(link)s to apply the
+# configs."
+# | " It may take 2 minutes to apply"
 #: hiddifypanel/panel/hiddify.py:229
 msgid "config.validation-success"
 msgstr "配置已成功更改。单击 %(link)s 以应用配置。申请可能需要 2 分钟。"
 
-# | msgid " ✅ Configs Have Been Changed Successfully"
+# | msgid " ✅ Configs have been changed successfully"
 #: hiddifypanel/panel/hiddify.py:231
 #, fuzzy
 msgid "config.validation-success-no-reset"
@@ -303,7 +303,7 @@ msgstr "提交"
 #: hiddifypanel/panel/admin/DomainAdmin.py:45
 #: hiddifypanel/panel/admin/QuickSetup.py:102
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:33
-#: hiddifypanel/templates/flaskadmin-layout.html:96
+#: hiddifypanel/templates/flaskadmin-layout.html:127
 msgid "domain.description"
 msgstr ""
 "这个字段应该是正确的。请访问<a href=\"https://github.com/hiddify/hiddify-"
@@ -337,7 +337,7 @@ msgstr ""
 #: hiddifypanel/panel/admin/DomainAdmin.py:79
 #: hiddifypanel/panel/admin/QuickSetup.py:102
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:55
-#: hiddifypanel/templates/flaskadmin-layout.html:95
+#: hiddifypanel/templates/flaskadmin-layout.html:126
 msgid "domain.domain"
 msgstr "领域"
 
@@ -480,7 +480,7 @@ msgstr "将显示在此域的配置中的名称。"
 #: hiddifypanel/panel/admin/DomainAdmin.py:50
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
-#: hiddifypanel/templates/flaskadmin-layout.html:80
+#: hiddifypanel/templates/flaskadmin-layout.html:111
 #, fuzzy
 msgid "config.reality_server_names.description"
 msgstr "您可以以逗号分隔格式添加多个服务器名"
@@ -533,7 +533,7 @@ msgstr "知识产权"
 #: hiddifypanel/panel/admin/DomainAdmin.py:151
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
-#: hiddifypanel/templates/flaskadmin-layout.html:79
+#: hiddifypanel/templates/flaskadmin-layout.html:110
 #, fuzzy
 msgid "config.reality_server_names.label"
 msgstr "服务器名称"
@@ -1994,7 +1994,7 @@ msgstr "不要改变它"
 # | msgid "🌍 Reality Fallback Domain"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
-#: hiddifypanel/templates/flaskadmin-layout.html:83
+#: hiddifypanel/templates/flaskadmin-layout.html:114
 #, fuzzy
 msgid "config.reality_fallback_domain.label"
 msgstr "回退域"
@@ -2005,7 +2005,7 @@ msgstr "回退域"
 # | " Domain."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
-#: hiddifypanel/templates/flaskadmin-layout.html:84
+#: hiddifypanel/templates/flaskadmin-layout.html:115
 #, fuzzy
 msgid "config.reality_fallback_domain.description"
 msgstr "GTW访问服务器名中的网站时，会重定向到该域名 "
@@ -3962,16 +3962,32 @@ msgstr "📅每周"
 msgid "daily"
 msgstr "⏰每日"
 
+#: hiddifypanel/templates/flaskadmin-layout.html:53
+msgid "Direct"
+msgstr ""
+
+#: hiddifypanel/templates/flaskadmin-layout.html:54
+msgid "Panel Link"
+msgstr ""
+
+#: hiddifypanel/templates/flaskadmin-layout.html:55
+msgid "Bridge Servers"
+msgstr ""
+
+#: hiddifypanel/templates/flaskadmin-layout.html:56
+msgid "Fake"
+msgstr ""
+
 # | msgid "Test and Suggest Domain "
-#: hiddifypanel/templates/flaskadmin-layout.html:84
+#: hiddifypanel/templates/flaskadmin-layout.html:115
 msgid "Example Domains"
 msgstr ""
 
-#: hiddifypanel/templates/flaskadmin-layout.html:88
+#: hiddifypanel/templates/flaskadmin-layout.html:119
 msgid "domain.domain_fronting.label"
 msgstr ""
 
-#: hiddifypanel/templates/flaskadmin-layout.html:89
+#: hiddifypanel/templates/flaskadmin-layout.html:120
 msgid "domain.domain_fronting.description"
 msgstr ""
 
