@@ -1,6 +1,22 @@
 # Changelog
 
 
+## 7.0.7 (2023-06-04)
+
+#### New
+
+* Remove gov websites from decoy sites. 
+
+* Add domain fronting to the domains. 
+
+#### Fix
+
+* Telegram section will be displayed only when the domain. 
+
+* Revert. 
+
+
+
 ## 7.0.6 (2023-05-30)
 
 #### Fix
