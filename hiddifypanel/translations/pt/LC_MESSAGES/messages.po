@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPT\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-04 12:46+0200\n"
-"PO-Revision-Date: 2023-06-04 04:58-0500\n"
+"POT-Creation-Date: 2023-06-04 19:37+0200\n"
+"PO-Revision-Date: 2023-06-04 05:46-0500\n"
 "Last-Translator: lymanrudni\n"
 "Language: pt\n"
 "Language-Team: Portuguese\n"
@@ -53,9 +53,9 @@ msgid "admin.config.apply_configs"
 msgstr "Aplicar configurações"
 
 # | msgid ""
-# | "Configs have been Changed Successfully. Click %(link)s to Apply the
-# Configs."
-# | " It may take 2 Minutes to apply"
+# | "Configs have been changed successfully. Click %(link)s to apply the
+# configs."
+# | " It may take 2 minutes to apply"
 #: hiddifypanel/panel/hiddify.py:229
 #, fuzzy
 msgid "config.validation-success"
@@ -63,7 +63,7 @@ msgstr ""
 "As configurações foram alteradas com sucesso. Clique em %(link)s para "
 "aplicar as configurações. Pode levar 2 minutos para aplicar"
 
-# | msgid " ✅ Configs Have Been Changed Successfully"
+# | msgid " ✅ Configs have been changed successfully"
 #: hiddifypanel/panel/hiddify.py:231
 #, fuzzy
 msgid "config.validation-success-no-reset"
