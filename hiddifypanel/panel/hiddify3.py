@@ -161,7 +161,7 @@ def get_random_domains(count=1,retry=3):
         # data_cn=requests.get(url).json()
         from urllib.parse import urlparse
         domains=[urlparse(d['input']).netloc.lower() for d in data_ir['results'] if d['scores']['blocking_country']==0.0]
-        domains=[d for d in domains if not d.endswith(".ir")]
+        domains=[d for d in domains if not d.endswith(".ir") and not ".gov" in d]
         
         return random.sample(domains, count)
     except Exception as e:
