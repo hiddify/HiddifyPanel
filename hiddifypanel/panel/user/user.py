@@ -254,7 +254,7 @@ def get_common_data(user_uuid,mode,no_domain=False,filter_domain=None):
         'domains':domains,
         "bot":bot,
         "db_domain":db_domain,
-        "telegram_enable":hconfig(ConfigEnum.telegram_enable) and any([d for d in domains if d.mode!=DomainType.cdn and d.mode!=DomainType.auto_cdn_ip ]),
+        "telegram_enable":hconfig(ConfigEnum.telegram_enable) and any([d for d in domains if d.mode in [DomainType.direct,DomainType.relay,DomainType.old_xtls_direct] ]),
         "ip":user_ip,
         "ip_debug":clean_ip.get_real_user_ip_debug(user_ip),
         "asn":clean_ip.get_asn_short_name(user_ip),
