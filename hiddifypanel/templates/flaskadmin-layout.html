@@ -48,6 +48,37 @@
 $("#show_domains").multipleSelect({width: '100%'});    
 
 
+var selectElement = document.getElementById("mode");
+var groups = [
+  { label: `{{_("Direct")}}`, options: ["direct", "old_xtls_direct"] },
+  { label: `{{_("Panel Link")}}`, options: ["sub_link_only"] },
+  { label: `{{_("Bridge Servers")}}`, options: ["cdn", "auto_cdn_ip","worker","relay"] },
+  { label: `{{_("Fake")}}`, options: ["reality", "fake"] }
+];
+
+var options = Array.from($("#mode option"));
+// Remove existing options
+while (selectElement.firstChild) {
+  selectElement.removeChild(selectElement.firstChild);
+}
+for (var i = 0; i < groups.length; i++) {
+  var group = groups[i];
+  var optgroup = document.createElement("optgroup");
+  optgroup.label = group.label;
+  
+
+  for (var j = 0; j < group.options.length; j++) {
+    for (var j = 0; j < options.length; j++) {
+        var option = options[j];
+        if (group.options.includes(option.value)) {
+        optgroup.appendChild(option.cloneNode(true));
+        }
+    }
+  }
+
+  selectElement.appendChild(optgroup);
+}
+
 $('.form-group:not(:has(.custom-switch)) > input[type="checkbox"]').each(function() {
     var parent = $(this).closest('.form-group');
     var label = parent.find('label').hide().text();
