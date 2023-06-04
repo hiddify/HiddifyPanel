@@ -101,7 +101,9 @@ def init_db():
     return BoolConfig.query.all()
 
 
-# def _v42():
+# def _v43():
+#     if not (Domain.query.filter(Domain.domain==hconfig(ConfigEnum.domain_fronting_domain)).first()):
+#         db.session.add(Domain(domain=hconfig(ConfigEnum.domain_fronting_domain),servernames=hconfig(ConfigEnum.domain_fronting_domain),mode=DomainType.cdn))
 
 #v7.0.0
 def _v42(): 

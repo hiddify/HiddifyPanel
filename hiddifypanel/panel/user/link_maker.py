@@ -93,7 +93,7 @@ def make_proxy(proxy:Proxy, domain_db:Domain, phttp=80, ptls=443):
         'host': domain,
         'port': port,
         'server': cdn_forced_host,
-        'sni': domain,
+        'sni': domain_db.servernames if is_cdn and domain_db.servernames else domain,
         'uuid': str(g.user_uuid),
         'proto': proxy.proto,
         'transport': proxy.transport,

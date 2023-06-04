@@ -26,10 +26,10 @@ class DomainType(StrEnum):
     cdn = auto()
     auto_cdn_ip = auto()
     relay = auto()
-    fake = auto()
     reality = auto()
     old_xtls_direct = auto()
     worker = auto()
+    fake = auto()
     
     # fake_cdn = "fake_cdn"
     # telegram_faketls = "telegram_faketls"
