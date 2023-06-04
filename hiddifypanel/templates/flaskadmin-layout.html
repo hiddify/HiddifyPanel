@@ -47,7 +47,7 @@
     <script>
 $("#show_domains").multipleSelect({width: '100%'});    
 
-
+if($("#domain").length>0){
 var selectElement = document.getElementById("mode");
 var groups = [
   { label: `{{_("Direct")}}`, options: ["direct", "old_xtls_direct"] },
@@ -78,7 +78,7 @@ for (var i = 0; i < groups.length; i++) {
 
   selectElement.appendChild(optgroup);
 }
-
+}
 $('.form-group:not(:has(.custom-switch)) > input[type="checkbox"]').each(function() {
     var parent = $(this).closest('.form-group');
     var label = parent.find('label').hide().text();
