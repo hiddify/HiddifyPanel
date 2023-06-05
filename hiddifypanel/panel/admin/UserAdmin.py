@@ -164,7 +164,7 @@ class UserAdmin(AdminLTEModelView):
         return Markup(f"<span class='badge badge-{state}'>{'*' if not model.start_date else ''} {formated} </span>")
         # return Markup(f"<span class='badge ltr badge-}'>{days}</span> "+_('days'))
     def _admin_formatter(view, context, model, name):
-        return Markup(f"<a href={url_for('flask.user.index_view',admin_id=model.added_by)} class='btn btn-xs btn-default'>{model.admin.name}</a>")
+        return Markup(f"<a href='{url_for('flask.user.index_view',admin_id=model.added_by)}' class='btn btn-xs btn-default'>{model.admin.name}</a>")
     def _online_formatter(view, context, model, name):
         if not model.last_online:
             return Markup("-")

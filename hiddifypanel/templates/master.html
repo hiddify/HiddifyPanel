@@ -466,7 +466,7 @@ if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').match
 
 
 
-  <script type="text/javascript">
+  <script defer type="text/javascript">
     var youtube_is_open=false
     var tag = document.createElement('script');
     tag.id = 'iframe-demo';
@@ -511,7 +511,7 @@ if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').match
       }
     }
    
-  </script
+  </script>
 
 % if get_locale()=='fa'
 <script src="{{url_for('static',filename='js/custom-rtl.js',version=5.1)}}"> </script>
