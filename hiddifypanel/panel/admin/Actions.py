@@ -73,9 +73,25 @@ class Actions(FlaskView):
     @hiddify.super_admin
     def reset2(self):
         status=self.status()
-        flash(_("rebooting system may takes time please wait"),'info')
-        os.system(f"echo 'reboot'|at now + 3s ")
-        return status
+        # flash(_("rebooting system may takes time please wait"),'info')
+        # os.system(f"echo 'reboot'|at now + 3s ")
+        
+
+        resp= render_template("result.html",
+                            out_type="info",
+                            out_msg="",
+                            log_path=get_logpath("restart.log"),
+                            show_success=True,
+                            domains=get_domains(),
+                            
+
+                            
+        )
+        file="restart.sh"
+        subprocess.Popen(f"sudo {config['HIDDIFY_CONFIG_PATH']}/{file}".split(" "),cwd=f"{config['HIDDIFY_CONFIG_PATH']}",start_new_session=True)
+        import time
+        time.sleep(1)
+        return resp
     
     @route('reinstall', methods=['POST'])
     def reinstall(self,complete_install=True,domain_changed=False):
