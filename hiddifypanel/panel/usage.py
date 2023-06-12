@@ -30,7 +30,7 @@ def update_local_usage():
         
 
 def add_users_usage_uuid(uuids_bytes,child_id):
-    users= User.query.filter(User.uuid.in_(keys(uuids)))
+    users= User.query.filter(User.uuid.in_(keys(uuids_bytes)))
     dbusers_bytes={u:uuids_bytes.get(u.uuid,0) for u in users}
     add_users_usage(dbusers_bytes,child_id)
 
