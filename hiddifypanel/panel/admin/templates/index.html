@@ -114,10 +114,12 @@
         (stats['system']['net_sent_cumulative_GB']|round(1)) ~ "GB " ~_("From Last Restart"),
         color_class="bg-h-red"
 )}}
-
+<!-- ((stats['system']['load_avg_1min']*100)|int) ~ " % "  , 
+(stats['system']['load_avg_1min']*100)|int,   -->
     {{info_box("cpu","fa-solid fa-microchip", _("CPU %(cores)s Cores", cores=stats['system']['num_cpus']), 
-            ((stats['system']['load_avg_5min']*100)|int) ~ " % "  , 
-            (stats['system']['load_avg_5min']*100)|int, 
+            
+            ((stats['system']['cpu_percent'])|int) ~ " % "  , 
+            (stats['system']['cpu_percent'])|int, 
             ('<i class="fa-solid fa-gauge"></i> '|safe) ~  stats['top5']['cpu'][0][0] ~ " &rlm;"|safe ~ ((stats['top5']['cpu'][0][1])|int) ~ "% &rlm;"|safe~
             ('<i class="fa-solid fa-gauge"></i> '|safe) ~  stats['top5']['cpu'][1][0] ~ " &rlm;"|safe ~ ((stats['top5']['cpu'][1][1])|int) ~ "% &rlm;"|safe~
             ('<i class="fa-solid fa-gauge"></i> '|safe) ~  stats['top5']['cpu'][2][0] ~ " &rlm;"|safe ~ ((stats['top5']['cpu'][2][1])|int) ~ "%",
@@ -228,8 +230,10 @@ info_box("online", "fa-solid fa-users", "Online Users",
 );
 
 info_box("cpu", "fa-solid fa-microchip", "CPU",
-    (stats['system']['load_avg_5min'] * 100).toFixed(0) + " %",
-    (stats['system']['load_avg_5min'] * 100).toFixed(0),
+    // (stats['system']['load_avg_5min'] * 100).toFixed(0) + " %",
+    // (stats['system']['load_avg_5min'] * 100).toFixed(0),
+    (stats['system']['cpu_percent'] ).toFixed(0) + " %",
+    (stats['system']['cpu_percent'] ).toFixed(0),
     "<i class='fa-solid fa-gauge'></i> " + stats['top5']['cpu'][0][0] + " &rlm;" + (stats['top5']['cpu'][0][1]).toFixed(0) + "% &rlm; " +
     " <i class='fa-solid fa-gauge'></i> " + stats['top5']['cpu'][1][0] + " &rlm;" + (stats['top5']['cpu'][1][1]).toFixed(0) + "% &rlm; " +
     " <i class='fa-solid fa-gauge'></i> " + stats['top5']['cpu'][2][0] + " &rlm;" + (stats['top5']['cpu'][2][1]).toFixed(0) + "%",
