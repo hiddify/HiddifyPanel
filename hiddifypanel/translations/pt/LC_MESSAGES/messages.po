@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPT\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-13 10:35+0200\n"
-"PO-Revision-Date: 2023-06-04 12:38-0500\n"
+"POT-Creation-Date: 2023-06-13 10:44+0200\n"
+"PO-Revision-Date: 2023-06-13 03:35-0500\n"
 "Last-Translator: lymanrudni\n"
 "Language: pt\n"
 "Language-Team: Portuguese\n"
@@ -219,10 +219,10 @@ msgstr "Máximo de usuários"
 #: hiddifypanel/panel/admin/templates/index.html:89
 #: hiddifypanel/panel/admin/templates/index.html:95
 #: hiddifypanel/panel/admin/templates/index.html:105
-#: hiddifypanel/panel/admin/templates/index.html:203
-#: hiddifypanel/panel/admin/templates/index.html:209
-#: hiddifypanel/panel/admin/templates/index.html:215
-#: hiddifypanel/panel/admin/templates/index.html:221
+#: hiddifypanel/panel/admin/templates/index.html:205
+#: hiddifypanel/panel/admin/templates/index.html:211
+#: hiddifypanel/panel/admin/templates/index.html:217
+#: hiddifypanel/panel/admin/templates/index.html:223
 msgid "Online Users"
 msgstr "Usuários online"
 
@@ -459,23 +459,34 @@ msgid "child has been removed!"
 msgstr "Child removido"
 
 # | msgid ""
-# | "➡️ <b>Direct</b> Mode: choose this mode if you set your domain on your
-# DNS provider on a DNS only mode. (CDN or Proxy Mode Off) <br>\n"
-# | "🔀 <b>CDN</b> Mode: choose this mode if you use your server's domain on a
-# CDN provider. (Proxy Mode On)<br>\n"
-# | "☑️ <b>Auto CDN IP</b> Mode: It is like CDN mode, except that the
-# appropriate IP is automatically set based on the IP provided by ircf.space.
-# In Auto_CDN_IP  the IP will be resolved from domain but in cdn mode the
-# domain will be returned<br>\n"
-# | "♾️ <b>Relay</b> Mode: choose this mode if you are using one or more
+# | "➡️ <b>Direct:</b> Select this mode if you configure your domain
+# exclusively on your DNS provider in DNS-only mode. (CDN or Proxy Mode Off)
+# <br>\n"
+# | "🔙 <b>Old Direct Mode:</b> This mode is similar to Direct mode but does
+# not utilize gRPC for communication. Select Old Mode if you prefer to
+# configure your domain on your DNS provider in DNS-only mode without
+# utilizing gRPC.\n"
+# | "<br>\n"
+# | "🔀 <b>CDN:</b> Select this mode if you use a CDN provider for your
+# server's domain. (Proxy Mode On)<br>\n"
+# | "☑️ <b>Automatic CDN IP Selector:</b> This mode functions similarly to CDN
+# mode but with an automated IP assignment based on the IP provided by <a
+# href=\"https://ircf.space\" target=\"_blank\">ircf.space</a>. In Auto CDN IP
+# mode, the IP address is resolved from the domain, while in CDN mode, the
+# domain is returned.<br>\n"
+# | "♾️ <b>Relay:</b> Select this mode if you are using one or more
 # Intermediary servers. <a
 # href=\"https://github.com/hiddify/hiddify-config/discussions/129\"
 # target=\"_blank\">Read More</a>\n"
-# | "<br>\n"
-# | "🆎 <b>Fake</b> Mode: choose this mode if you want to use a Fake Domain
+# | "✴️ <b>Cloudflare Worker:</b> This mode enables automatic creation of
+# workers for your domain in Cloudflare. Simplify the setup and management of
+# workers by registering this domain, as the necessary steps for worker
+# registration are handled automatically within Cloudflare.\n"
+# | "🔂 <b>Reality:</b> Utilize the Reality protocol to create multiple
+# domains.\n"
+# | "🆎 <b>Fake Site:</b> Select this mode if you want to use a fake Domain
 # (e.g., Soft98.ir) to bypass SNI whitelist Proxy. (Not Recommended)\n"
-# | "🔂 <b>Reality</b> Mode: choose this mode if you want to use Reality
-# protocol. Using this mode you can have multiple Reality domains."
+# | "<br>"
 #: hiddifypanel/panel/admin/DomainAdmin.py:46
 #, fuzzy
 msgid ""
@@ -909,7 +920,7 @@ msgstr "A porta já é usada em:"
 msgid "Can not connect to parent panel!"
 msgstr "Não é possível conectar ao painel principal!"
 
-# | msgid "☢️ Xray"
+# | msgid "☢️ XRay"
 #: hiddifypanel/panel/admin/SettingAdmin.py:176
 #, fuzzy
 msgid "Xray"
@@ -2683,7 +2694,7 @@ msgstr "Uso total"
 
 # | msgid "In 5 Minutes"
 #: hiddifypanel/panel/admin/templates/index.html:108
-#: hiddifypanel/panel/admin/templates/index.html:227
+#: hiddifypanel/panel/admin/templates/index.html:229
 msgid "In 5 minutes"
 msgstr "Em 5 minutos"
 
@@ -2693,30 +2704,30 @@ msgid "Network"
 msgstr "Rede"
 
 #: hiddifypanel/panel/admin/templates/index.html:114
-#: hiddifypanel/panel/admin/templates/index.html:246
-#: hiddifypanel/panel/admin/templates/index.html:262
+#: hiddifypanel/panel/admin/templates/index.html:250
+#: hiddifypanel/panel/admin/templates/index.html:266
 #, fuzzy
 msgid "From Last Restart"
 msgstr "Da última reinicialização"
 
 # | msgid "CPU %(cores)s Core"
-#: hiddifypanel/panel/admin/templates/index.html:118
+#: hiddifypanel/panel/admin/templates/index.html:119
 #, python-format
 msgid "CPU %(cores)s Cores"
 msgstr "CPU %(cores)s Núcleos "
 
-#: hiddifypanel/panel/admin/templates/index.html:127
+#: hiddifypanel/panel/admin/templates/index.html:129
 #, fuzzy
 msgid "RAM"
 msgstr "BATER"
 
 # | msgid "Hard Disk"
-#: hiddifypanel/panel/admin/templates/index.html:141
+#: hiddifypanel/panel/admin/templates/index.html:143
 #, fuzzy
 msgid "Disk"
 msgstr "Disco rígido"
 
-#: hiddifypanel/panel/admin/templates/index.html:144
+#: hiddifypanel/panel/admin/templates/index.html:146
 #, fuzzy
 msgid "Hiddify"
 msgstr "Ocultar"
@@ -4347,7 +4358,7 @@ msgstr "🎛️ Núcleo"
 # | msgid ""
 # | "☢️ XRay : Is a Complete Core\n"
 # | "<br>\n"
-# | "📦 Singbox : Developed by SagerNet. It is also a Good Core"
+# | "📦 Singbox : Developed by SagerNet. It is also a good core"
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
 msgid "config.core_type.description"
@@ -4386,7 +4397,7 @@ msgstr "config.hidden.description"
 msgid "direct"
 msgstr "➡️ Direto"
 
-# | msgid "📳 Only for Subscription Link (can be direct, relay, or CDN)"
+# | msgid "📳 Only for Subscription Link (can be Direct, Relay, or CDN)"
 #: hiddifypanel/templates/fake.html:3
 #, fuzzy
 msgid "sub_link_only"
@@ -4479,10 +4490,17 @@ msgstr ""
 msgid "Example Domains"
 msgstr "Test and Suggest Domain "
 
+# | msgid "🔒 Enable TLS Domain Fronting"
 #: hiddifypanel/templates/flaskadmin-layout.html:119
 msgid "domain.domain_fronting.label"
 msgstr ""
 
+# | msgid ""
+# | "It is used to simulate another website instead of your website in SNI.
+# therefore, GTW can not filter your Domain\n"
+# | "<a
+# href=\"https://github.com/hiddify/hiddify-config/wiki/%D8%A7%D8%B3%D8%AA%D9%81%D8%A7%D8%AF%D9%87-%D8%A7%D8%B2-%D8%AF%D8%A7%D9%85%DB%8C%D9%86-%D9%81%D8%B1%D8%A7%D9%86%D8%AA%DB%8C%D9%86%DA%AF\">Guide</a>.
+# ⚠️CloudFlare does not support Domain Fronting. "
 #: hiddifypanel/templates/flaskadmin-layout.html:120
 msgid "domain.domain_fronting.description"
 msgstr ""

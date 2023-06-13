@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-13 10:35+0200\n"
-"PO-Revision-Date: 2023-06-09 06:13-0500\n"
+"POT-Creation-Date: 2023-06-13 10:44+0200\n"
+"PO-Revision-Date: 2023-06-13 03:35-0500\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -198,10 +198,10 @@ msgstr "حداکثر کاربران"
 #: hiddifypanel/panel/admin/templates/index.html:89
 #: hiddifypanel/panel/admin/templates/index.html:95
 #: hiddifypanel/panel/admin/templates/index.html:105
-#: hiddifypanel/panel/admin/templates/index.html:203
-#: hiddifypanel/panel/admin/templates/index.html:209
-#: hiddifypanel/panel/admin/templates/index.html:215
-#: hiddifypanel/panel/admin/templates/index.html:221
+#: hiddifypanel/panel/admin/templates/index.html:205
+#: hiddifypanel/panel/admin/templates/index.html:211
+#: hiddifypanel/panel/admin/templates/index.html:217
+#: hiddifypanel/panel/admin/templates/index.html:223
 #, fuzzy
 msgid "Online Users"
 msgstr "کاربران آنلاین"
@@ -2428,7 +2428,7 @@ msgstr "استفاده کل"
 
 # | msgid "In 5 Minutes"
 #: hiddifypanel/panel/admin/templates/index.html:108
-#: hiddifypanel/panel/admin/templates/index.html:227
+#: hiddifypanel/panel/admin/templates/index.html:229
 #, fuzzy
 msgid "In 5 minutes"
 msgstr "در 5 دقیقه"
@@ -2439,29 +2439,29 @@ msgid "Network"
 msgstr "شبکه"
 
 #: hiddifypanel/panel/admin/templates/index.html:114
-#: hiddifypanel/panel/admin/templates/index.html:246
-#: hiddifypanel/panel/admin/templates/index.html:262
+#: hiddifypanel/panel/admin/templates/index.html:250
+#: hiddifypanel/panel/admin/templates/index.html:266
 #, fuzzy
 msgid "From Last Restart"
 msgstr "از آخرین راه اندازی"
 
 # | msgid "CPU %(cores)s Core"
-#: hiddifypanel/panel/admin/templates/index.html:118
+#: hiddifypanel/panel/admin/templates/index.html:119
 #, python-format
 msgid "CPU %(cores)s Cores"
 msgstr "پردازنده %(cores)s هسته"
 
-#: hiddifypanel/panel/admin/templates/index.html:127
+#: hiddifypanel/panel/admin/templates/index.html:129
 #, fuzzy
 msgid "RAM"
 msgstr "رم"
 
 # | msgid "Hard Disk"
-#: hiddifypanel/panel/admin/templates/index.html:141
+#: hiddifypanel/panel/admin/templates/index.html:143
 msgid "Disk"
 msgstr "هارد دیسک"
 
-#: hiddifypanel/panel/admin/templates/index.html:144
+#: hiddifypanel/panel/admin/templates/index.html:146
 #, fuzzy
 msgid "Hiddify"
 msgstr "هیدیفای"

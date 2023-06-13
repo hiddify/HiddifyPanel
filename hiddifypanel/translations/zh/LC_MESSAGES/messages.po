@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-13 10:35+0200\n"
-"PO-Revision-Date: 2023-06-09 06:13-0500\n"
+"POT-Creation-Date: 2023-06-13 10:44+0200\n"
+"PO-Revision-Date: 2023-06-13 03:35-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -197,10 +197,10 @@ msgstr "最大用户数"
 #: hiddifypanel/panel/admin/templates/index.html:89
 #: hiddifypanel/panel/admin/templates/index.html:95
 #: hiddifypanel/panel/admin/templates/index.html:105
-#: hiddifypanel/panel/admin/templates/index.html:203
-#: hiddifypanel/panel/admin/templates/index.html:209
-#: hiddifypanel/panel/admin/templates/index.html:215
-#: hiddifypanel/panel/admin/templates/index.html:221
+#: hiddifypanel/panel/admin/templates/index.html:205
+#: hiddifypanel/panel/admin/templates/index.html:211
+#: hiddifypanel/panel/admin/templates/index.html:217
+#: hiddifypanel/panel/admin/templates/index.html:223
 #, fuzzy
 msgid "Online Users"
 msgstr "在线用户"
@@ -2373,7 +2373,7 @@ msgstr "总使用量"
 
 # | msgid "In 5 Minutes"
 #: hiddifypanel/panel/admin/templates/index.html:108
-#: hiddifypanel/panel/admin/templates/index.html:227
+#: hiddifypanel/panel/admin/templates/index.html:229
 #, fuzzy
 msgid "In 5 minutes"
 msgstr "5分钟后"
@@ -2384,30 +2384,30 @@ msgid "Network"
 msgstr "网络"
 
 #: hiddifypanel/panel/admin/templates/index.html:114
-#: hiddifypanel/panel/admin/templates/index.html:246
-#: hiddifypanel/panel/admin/templates/index.html:262
+#: hiddifypanel/panel/admin/templates/index.html:250
+#: hiddifypanel/panel/admin/templates/index.html:266
 #, fuzzy
 msgid "From Last Restart"
 msgstr "从上次重启"
 
 # | msgid "CPU %(cores)s Core"
-#: hiddifypanel/panel/admin/templates/index.html:118
+#: hiddifypanel/panel/admin/templates/index.html:119
 #, fuzzy, python-format
 msgid "CPU %(cores)s Cores"
 msgstr "CPU %(cores)s 核心"
 
-#: hiddifypanel/panel/admin/templates/index.html:127
+#: hiddifypanel/panel/admin/templates/index.html:129
 #, fuzzy
 msgid "RAM"
 msgstr "内存"
 
 # | msgid "Hard Disk"
-#: hiddifypanel/panel/admin/templates/index.html:141
+#: hiddifypanel/panel/admin/templates/index.html:143
 #, fuzzy
 msgid "Disk"
 msgstr "磁盘"
 
-#: hiddifypanel/panel/admin/templates/index.html:144
+#: hiddifypanel/panel/admin/templates/index.html:146
 #, fuzzy
 msgid "Hiddify"
 msgstr "隐藏"
