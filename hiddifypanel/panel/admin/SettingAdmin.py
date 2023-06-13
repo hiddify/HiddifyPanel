@@ -9,7 +9,7 @@ from flask_bootstrap import SwitchField
 
 from flask_admin.base import expose
 # from gettext import gettext as _
-
+from hiddifypanel.panel.hiddify import get_random_domains
 
 import re
 from flask import render_template,current_app, Markup,url_for,abort
@@ -208,6 +208,8 @@ def get_config_form():
                         validators.append(wtf.validators.NoneOf([d.domain.lower() for d in Domain.query.all()],_("config.Domain already used")))
                         validators.append(wtf.validators.NoneOf([cc.value.lower() for cc in StrConfig.query.filter(StrConfig.child_id==0).all() if cc.key!=c.key and  "fakedomain" in cc.key and cc.key!=ConfigEnum.decoy_domain],_("config.Domain already used")))
                     render_kw['required']=""
+                    if len(c.value)<3:
+                        c.value=get_random_domains(1)[0]
                 # if c.key ==ConfigEnum.reality_short_ids:
                 #     extra_info=f" <a target='_blank' href='{url_for('admin.Actions:get_some_random_reality_friendly_domain',test_domain=c.value)}'>"+_('Example Domains')+"</a>"
                 # if c.key ==ConfigEnum.reality_server_names:
