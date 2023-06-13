@@ -1,6 +1,14 @@
 # Changelog
 
 
+## 7.1.2 (2023-06-13)
+
+#### Other
+
+* Update translation. 
+
+
+
 ## 7.1.1 (2023-06-13)
 
 #### Fix
