@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-13 10:44+0200\n"
-"PO-Revision-Date: 2023-06-13 03:35-0500\n"
+"POT-Creation-Date: 2023-06-13 12:27+0200\n"
+"PO-Revision-Date: 2023-06-13 05:27-0500\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -4121,7 +4121,7 @@ msgstr "🔒 فعال کردن دامین فرانتینگ در اتصال TLS"
 # | "It is used to simulate another website instead of your website in SNI.
 # therefore, GTW can not filter your Domain\n"
 # | "<a
-# href=\"https://github.com/hiddify/hiddify-config/wiki/%D8%A7%D8%B3%D8%AA%D9%81%D8%A7%D8%AF%D9%87-%D8%A7%D8%B2-%D8%AF%D8%A7%D9%85%DB%8C%D9%86-%D9%81%D8%B1%D8%A7%D9%86%D8%AA%DB%8C%D9%86%DA%AF\">Guide</a>.
+# href=\"https://github.com/hiddify/hiddify-config/wiki/Guide-for-domain-fronting\">Guide</a>.
 # ⚠️CloudFlare does not support Domain Fronting. "
 #: hiddifypanel/templates/flaskadmin-layout.html:120
 msgid "domain.domain_fronting.description"
@@ -4129,8 +4129,7 @@ msgstr ""
 "برای شبیه سازی وب سایت دیگری به جای وب سایت شما در SNI استفاده می شود. "
 "بنابراین، فیلترچی نمی تواند دامنه شما را فیلتر کند. \n"
 "<a href=\"https://github.com/hiddify/hiddify-"
-"config/wiki/%D8%A7%D8%B3%D8%AA%D9%81%D8%A7%D8%AF%D9%87-%D8%A7%D8%B2-%D8%AF%D8%A7%D9%85%DB%8C%D9%86-%D9%81%D8%B1%D8%A7%D9%86%D8%AA%DB%8C%D9%86%DA%AF\">آموزش"
-" ثبت </a>\n"
+"config/wiki/استفاده-از-دامین-فرانتینگ\">آموزش ثبت </a>\n"
 "\n"
 "⚠️CloudFlare از دامین فرانتینگ پشتیبانی نمی کند."
 
