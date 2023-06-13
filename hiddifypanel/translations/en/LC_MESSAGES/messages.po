@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-04 19:37+0200\n"
-"PO-Revision-Date: 2023-06-04 05:46-0500\n"
+"POT-Creation-Date: 2023-06-13 10:35+0200\n"
+"PO-Revision-Date: 2023-06-09 06:13-0500\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -102,20 +102,15 @@ msgstr "User Activated"
 msgid "Package ended!"
 msgstr "Package Ended"
 
-# | msgid "Rebooting System ... This may take a few minutes. Please Wait ..."
-#: hiddifypanel/panel/admin/Actions.py:76
-msgid "rebooting system may takes time please wait"
-msgstr "Rebooting System ... This may take a few minutes. Please Wait ..."
-
 # | msgid "Can not sync child with Parent Panel."
-#: hiddifypanel/panel/admin/Actions.py:92
+#: hiddifypanel/panel/admin/Actions.py:108
 msgid "can not sync child with parent panel"
 msgstr "Can not sync child with Parent Panel."
 
 # | msgid ""
 # | "⚠️ Your Domains Changed. please do not forget to copy Admin links, "
 # | "otherwise you can not access to the panel anymore"
-#: hiddifypanel/panel/admin/Actions.py:98
+#: hiddifypanel/panel/admin/Actions.py:114
 msgid ""
 "Your domains changed. Please do not forget to copy admin links, otherwise "
 "you can not access to the panel anymore."
@@ -127,7 +122,7 @@ msgstr ""
 # | "⚠️ Please wait about 5 minutes to make sure everything is updated. during
 # "
 # | "this time, please copy and save your Proxy links which are:"
-#: hiddifypanel/panel/admin/Actions.py:125
+#: hiddifypanel/panel/admin/Actions.py:141
 msgid ""
 "Success! Please wait around 4 minutes to make sure everything is updated. "
 "During this time, please save your proxy links which are:"
@@ -136,14 +131,14 @@ msgstr ""
 "this time, please copy and save your Proxy links which are:"
 
 # | msgid "📑 See the log in the bellow screen"
-#: hiddifypanel/panel/admin/Actions.py:158
+#: hiddifypanel/panel/admin/Actions.py:174
 msgid "see the log in the bellow screen"
 msgstr "📑 See the log in the bellow screen"
 
 # | msgid ""
 # | "✔️ Success! Please Wait around 5 minutes to make sure everything is "
 # | "updated"
-#: hiddifypanel/panel/admin/Actions.py:187
+#: hiddifypanel/panel/admin/Actions.py:203
 msgid ""
 "Success! Please wait around 5 minutes to make sure everything is updated."
 msgstr ""
@@ -274,7 +269,7 @@ msgstr "Select this option to restore your domains"
 #: hiddifypanel/panel/admin/ProxyAdmin.py:124
 #: hiddifypanel/panel/admin/QuickSetup.py:81
 #: hiddifypanel/panel/admin/QuickSetup.py:108
-#: hiddifypanel/panel/admin/SettingAdmin.py:254
+#: hiddifypanel/panel/admin/SettingAdmin.py:256
 #: hiddifypanel/panel/commercial/CommercialSettings.py:218
 msgid "Submit"
 msgstr "Submit"
@@ -412,37 +407,58 @@ msgid "child has been removed!"
 msgstr "Child Has Been Removed!"
 
 # | msgid ""
-# | "➡️ <b>Direct</b> Mode: choose this mode if you set your domain on your "
-# | "DNS provider on a DNS only mode. (CDN or Proxy Mode Off) <br>\n"
-# | "🔀 <b>CDN</b> Mode: choose this mode if you use your server's domain on a
+# | "➡️ <b>Direct:</b> Select this mode if you configure your domain "
+# | "exclusively on your DNS provider in DNS-only mode. (CDN or Proxy Mode
+# Off)"
+# | " <br>\n"
+# | "🔙 <b>Old Direct Mode:</b> This mode is similar to Direct mode but does "
+# | "not utilize gRPC for communication. Select Old Mode if you prefer to "
+# | "configure your domain on your DNS provider in DNS-only mode without "
+# | "utilizing gRPC.\n"
+# | "<br>\n"
+# | "🔀 <b>CDN:</b> Select this mode if you use a CDN provider for your "
+# | "server's domain. (Proxy Mode On)<br>\n"
+# | "☑️ <b>Automatic CDN IP Selector:</b> This mode functions similarly to CDN
 # "
-# | "CDN provider. (Proxy Mode On)<br>\n"
-# | "☑️ <b>Auto CDN IP</b> Mode: It is like CDN mode, except that the "
-# | "appropriate IP is automatically set based on the IP provided by ircf."
-# | "space. In Auto_CDN_IP  the IP will be resolved from domain but in cdn "
-# | "mode the domain will be returned<br>\n"
-# | "♾️ <b>Relay</b> Mode: choose this mode if you are using one or more "
+# | "mode but with an automated IP assignment based on the IP provided by <a "
+# | "href=\"https://ircf.space\" target=\"_blank\">ircf.space</a>. In Auto CDN
+# "
+# | "IP mode, the IP address is resolved from the domain, while in CDN mode, "
+# | "the domain is returned.<br>\n"
+# | "♾️ <b>Relay:</b> Select this mode if you are using one or more "
 # | "Intermediary servers. <a href=\"https://github.com/hiddify/hiddify-"
 # | "config/discussions/129\" target=\"_blank\">Read More</a>\n"
-# | "<br>\n"
-# | "🆎 <b>Fake</b> Mode: choose this mode if you want to use a Fake Domain
+# | "✴️ <b>Cloudflare Worker:</b> This mode enables automatic creation of "
+# | "workers for your domain in Cloudflare. Simplify the setup and management
+# "
+# | "of workers by registering this domain, as the necessary steps for worker
+# "
+# | "registration are handled automatically within Cloudflare.\n"
+# | "🔂 <b>Reality:</b> Utilize the Reality protocol to create multiple
+# domains."
+# | "\n"
+# | "🆎 <b>Fake Site:</b> Select this mode if you want to use a fake Domain
 # (e."
 # | "g., Soft98.ir) to bypass SNI whitelist Proxy. (Not Recommended)\n"
-# | "🔂 <b>Reality</b> Mode: choose this mode if you want to use Reality "
-# | "protocol. Using this mode you can have multiple Reality domains."
+# | "<br>"
 #: hiddifypanel/panel/admin/DomainAdmin.py:46
 msgid ""
 "Direct mode means you want to use your server directly (for usual use), CDN "
 "means that you use your server on behind of a CDN provider."
 msgstr ""
-"➡️ <b>Direct</b> Mode: choose this mode if you set your domain on your DNS provider on a DNS only mode. (CDN or Proxy Mode Off) <br>\n"
-"🔀 <b>CDN</b> Mode: choose this mode if you use your server's domain on a CDN provider. (Proxy Mode On)<br>\n"
-"☑️ <b>Auto CDN IP</b> Mode: It is like CDN mode, except that the appropriate IP is automatically set based on the IP provided by ircf.space. In Auto_CDN_IP  the IP will be resolved from domain but in cdn mode the domain will be returned<br>\n"
-"♾️ <b>Relay</b> Mode: choose this mode if you are using one or more Intermediary servers. <a href=\"https://github.com/hiddify/hiddify-config/discussions/129\" target=\"_blank\">Read More</a>\n"
+"➡️ <b>Direct:</b> Select this mode if you configure your domain exclusively on your DNS provider in DNS-only mode. (CDN or Proxy Mode Off) <br>\n"
+"🔙 <b>Old Direct Mode:</b> This mode is similar to Direct mode but does not utilize gRPC for communication. Select Old Mode if you prefer to configure your domain on your DNS provider in DNS-only mode without utilizing gRPC.\n"
 "<br>\n"
-"🆎 <b>Fake</b> Mode: choose this mode if you want to use a Fake Domain (e.g., Soft98.ir) to bypass SNI whitelist Proxy. (Not Recommended)\n"
+"🔀 <b>CDN:</b> Select this mode if you use a CDN provider for your server's domain. (Proxy Mode On)<br>\n"
+"☑️ <b>Automatic CDN IP Selector:</b> This mode functions similarly to CDN mode but with an automated IP assignment based on the IP provided by <a href=\"https://ircf.space\" target=\"_blank\">ircf.space</a>. In Auto CDN IP mode, the IP address is resolved from the domain, while in CDN mode, the domain is returned.<br>\n"
+"♾️ <b>Relay:</b> Select this mode if you are using one or more Intermediary servers. <a href=\"https://github.com/hiddify/hiddify-config/discussions/129\" target=\"_blank\">Read More</a>\n"
 "<br>\n"
-"🔂 <b>Reality</b> Mode: choose this mode if you want to use Reality protocol. Using this mode you can have multiple Reality domains."
+"✴️ <b>Cloudflare Worker:</b> This mode enables automatic creation of workers for your domain in Cloudflare. Simplify the setup and management of workers by registering this domain, as the necessary steps for worker registration are handled automatically within Cloudflare.\n"
+"<br>\n"
+"🔂 <b>Reality:</b> Utilize the Reality protocol to create multiple domains.\n"
+"<br>\n"
+"🆎 <b>Fake Site:</b> Select this mode if you want to use a fake Domain (e.g., Soft98.ir) to bypass SNI whitelist Proxy. (Not Recommended)\n"
+"<br>"
 
 # | msgid ""
 # | "In this part you can use a set of specific domains or IPs for your server
@@ -809,10 +825,10 @@ msgstr "Port is Already Used in:"
 msgid "Can not connect to parent panel!"
 msgstr "Can not connect to Parent Panel!"
 
-# | msgid "☢️ Xray"
+# | msgid "☢️ XRay"
 #: hiddifypanel/panel/admin/SettingAdmin.py:176
 msgid "Xray"
-msgstr "☢️ Xray"
+msgstr "☢️ XRay"
 
 # | msgid "📦 SingBox"
 #: hiddifypanel/panel/admin/SettingAdmin.py:176
@@ -894,20 +910,20 @@ msgstr ""
 "changing it."
 
 # | msgid "Invalid Admin Link"
-#: hiddifypanel/panel/admin/SettingAdmin.py:218
+#: hiddifypanel/panel/admin/SettingAdmin.py:220
 #: hiddifypanel/panel/commercial/CommercialSettings.py:182
 msgid "Invalid admin link"
 msgstr "Invalid Admin Link"
 
 # | msgid "Invalid Telegram Bot Token"
-#: hiddifypanel/panel/admin/SettingAdmin.py:220
+#: hiddifypanel/panel/admin/SettingAdmin.py:222
 #: hiddifypanel/panel/commercial/CommercialSettings.py:184
 msgid "config.Invalid telegram bot token"
 msgstr "Invalid Telegram Bot Token"
 
 # | msgid ""
 # | "Invalid Link. it should be on this format: (https or http://example.com)"
-#: hiddifypanel/panel/admin/SettingAdmin.py:222
+#: hiddifypanel/panel/admin/SettingAdmin.py:224
 #: hiddifypanel/panel/commercial/CommercialSettings.py:186
 msgid "config.Invalid brand link"
 msgstr ""
@@ -916,7 +932,7 @@ msgstr ""
 # | msgid ""
 # | "Invalid UUID secret. example: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n"
 # | "\n"
-#: hiddifypanel/panel/admin/SettingAdmin.py:226
+#: hiddifypanel/panel/admin/SettingAdmin.py:228
 #: hiddifypanel/panel/commercial/CommercialSettings.py:190
 msgid "config.invalid uuid"
 msgstr ""
@@ -924,14 +940,14 @@ msgstr ""
 "\n"
 
 # | msgid "Invalid Proxy Path. It should be ASCI string (a-z A-Z 0-9)"
-#: hiddifypanel/panel/admin/SettingAdmin.py:230
+#: hiddifypanel/panel/admin/SettingAdmin.py:232
 #: hiddifypanel/panel/commercial/CommercialSettings.py:194
 msgid "config.Invalid proxy path"
 msgstr "Invalid Proxy Path. It should be ASCI string (a-z A-Z 0-9)"
 
 # | msgid "Invalid Port. it should be comma separated Integer e.g.  2052,2053"
-#: hiddifypanel/panel/admin/SettingAdmin.py:235
-#: hiddifypanel/panel/admin/SettingAdmin.py:238
+#: hiddifypanel/panel/admin/SettingAdmin.py:237
+#: hiddifypanel/panel/admin/SettingAdmin.py:240
 #: hiddifypanel/panel/commercial/CommercialSettings.py:199
 #: hiddifypanel/panel/commercial/CommercialSettings.py:202
 msgid "config.Invalid port"
@@ -3824,13 +3840,13 @@ msgstr "🎛️ Core"
 # | msgid ""
 # | "☢️ XRay : Is a Complete Core\n"
 # | "<br>\n"
-# | "📦 Singbox : Developed by SagerNet. It is also a Good Core"
+# | "📦 Singbox : Developed by SagerNet. It is also a good core"
 #: hiddifypanel/templates/fake.html:1
 msgid "config.core_type.description"
 msgstr ""
 "☢️ XRay : Is a Complete Core\n"
 "<br>\n"
-"📦 Singbox : Developed by SagerNet. It is also a Good Core"
+"📦 Singbox : Developed by SagerNet. It is also a good core"
 
 # | msgid "🖥 DNS Server"
 #: hiddifypanel/templates/fake.html:1
@@ -3863,10 +3879,10 @@ msgstr "config.hidden.description"
 msgid "direct"
 msgstr "➡️ Direct"
 
-# | msgid "📳 Only for Subscription Link (can be direct, relay, or CDN)"
+# | msgid "📳 Only for Subscription Link (can be Direct, Relay, or CDN)"
 #: hiddifypanel/templates/fake.html:3
 msgid "sub_link_only"
-msgstr "📳 Only for Subscription Link (can be direct, relay, or CDN)"
+msgstr "📳 Only for Subscription Link (can be Direct, Relay, or CDN)"
 
 # | msgid "🔀 CDN (Cloudflare Proxy, ...)"
 #: hiddifypanel/templates/fake.html:3
@@ -3949,15 +3965,26 @@ msgstr "Fake"
 msgid "Example Domains"
 msgstr "Test and Suggest Domain "
 
+# | msgid "🔒 Enable TLS Domain Fronting"
 #: hiddifypanel/templates/flaskadmin-layout.html:119
 #, fuzzy
 msgid "domain.domain_fronting.label"
-msgstr "domain.domain_fronting.label"
+msgstr "🔒 Enable TLS Domain Fronting"
 
+# | msgid ""
+# | "It is used to simulate another website instead of your website in SNI. "
+# | "therefore, GTW can not filter your Domain\n"
+# | "<a href=\"https://github.com/hiddify/hiddify-"
+# | "config/wiki/%D8%A7%D8%B3%D8%AA%D9%81%D8%A7%D8%AF%D9%87-%D8%A7%D8%B2-"
+# | "%D8%AF%D8%A7%D9%85%DB%8C%D9%86-"
+# | "%D9%81%D8%B1%D8%A7%D9%86%D8%AA%DB%8C%D9%86%DA%AF\">Guide</a>. "
+# | "⚠️CloudFlare does not support Domain Fronting. "
 #: hiddifypanel/templates/flaskadmin-layout.html:120
 #, fuzzy
 msgid "domain.domain_fronting.description"
-msgstr "domain.domain_fronting.description"
+msgstr ""
+"It is used to simulate another website instead of your website in SNI. therefore, GTW can not filter your Domain\n"
+"<a href=\"https://github.com/hiddify/hiddify-config/wiki/%D8%A7%D8%B3%D8%AA%D9%81%D8%A7%D8%AF%D9%87-%D8%A7%D8%B2-%D8%AF%D8%A7%D9%85%DB%8C%D9%86-%D9%81%D8%B1%D8%A7%D9%86%D8%AA%DB%8C%D9%86%DA%AF\">Guide</a>. ⚠️CloudFlare does not support Domain Fronting. "
 
 # | msgid "Close"
 #: hiddifypanel/templates/macros.html:29
@@ -4054,9 +4081,9 @@ msgstr "Actions"
 #~ msgid "config.ports.description"
 #~ msgstr "You can select different ports of the system in the section"
 
-# | msgid "☑️ Allow HTTP Connection"
+# | msgid "Allow HTTP Connection"
 #~ msgid "config.http_proxy.label"
-#~ msgstr "☑️ Allow HTTP Connection"
+#~ msgstr "Allow HTTP Connection"
 
 # | msgid ""
 # | "By allowing this, your users can connect to the system with Unencrypted "
@@ -4131,6 +4158,10 @@ msgstr "Actions"
 # | msgid "Check"
 #~ msgid "check"
 #~ msgstr "Check"
+
+# | msgid "Rebooting System ... This may take a few minutes. Please Wait ..."
+#~ msgid "rebooting system may takes time please wait"
+#~ msgstr "Rebooting System ... This may take a few minutes. Please Wait ..."
 
 #~ msgid ""
 #~ "The default user link is %(link)s. To add or edit more users, please visit "

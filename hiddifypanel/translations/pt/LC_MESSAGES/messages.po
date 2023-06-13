@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPT\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-04 19:37+0200\n"
-"PO-Revision-Date: 2023-06-04 05:46-0500\n"
+"POT-Creation-Date: 2023-06-13 10:35+0200\n"
+"PO-Revision-Date: 2023-06-04 12:38-0500\n"
 "Last-Translator: lymanrudni\n"
 "Language: pt\n"
 "Language-Team: Portuguese\n"
@@ -115,17 +115,8 @@ msgstr "Usuário ativado"
 msgid "Package ended!"
 msgstr "Package encerrado"
 
-# | msgid ""
-# | "Rebooting System ... This may take a few minutes. Please Wait ..."
-#: hiddifypanel/panel/admin/Actions.py:76
-#, fuzzy
-msgid "rebooting system may takes time please wait"
-msgstr ""
-"Reiniciando o sistema... Isso pode levar alguns minutos. Por favor, "
-"aguarde ..."
-
 # | msgid "Can not sync child with Parent Panel."
-#: hiddifypanel/panel/admin/Actions.py:92
+#: hiddifypanel/panel/admin/Actions.py:108
 #, fuzzy
 msgid "can not sync child with parent panel"
 msgstr "Não é possível sincronizar o filho com o painel pai."
@@ -134,7 +125,7 @@ msgstr "Não é possível sincronizar o filho com o painel pai."
 # | "⚠️ Your Domains Changed. please do not forget to copy Admin links,
 # otherwise"
 # | " you can not access to the panel anymore"
-#: hiddifypanel/panel/admin/Actions.py:98
+#: hiddifypanel/panel/admin/Actions.py:114
 #, fuzzy
 msgid ""
 "Your domains changed. Please do not forget to copy admin links, otherwise"
@@ -147,7 +138,7 @@ msgstr ""
 # | "⚠️ Please wait about 5 minutes to make sure everything is updated. during
 # "
 # | "this time, please copy and save your Proxy links which are:"
-#: hiddifypanel/panel/admin/Actions.py:125
+#: hiddifypanel/panel/admin/Actions.py:141
 #, fuzzy
 msgid ""
 "Success! Please wait around 4 minutes to make sure everything is updated."
@@ -157,7 +148,7 @@ msgstr ""
 "durante esse período, copie e salve seus links de proxy, que são:"
 
 # | msgid "📑 See the log in the bellow screen"
-#: hiddifypanel/panel/admin/Actions.py:158
+#: hiddifypanel/panel/admin/Actions.py:174
 #, fuzzy
 msgid "see the log in the bellow screen"
 msgstr "📑 Veja o log na tela abaixo"
@@ -165,7 +156,7 @@ msgstr "📑 Veja o log na tela abaixo"
 # | msgid ""
 # | "✔️ Success! Please Wait around 5 minutes to make sure everything is
 # updated"
-#: hiddifypanel/panel/admin/Actions.py:187
+#: hiddifypanel/panel/admin/Actions.py:203
 #, fuzzy
 msgid "Success! Please wait around 5 minutes to make sure everything is updated."
 msgstr ""
@@ -316,7 +307,7 @@ msgstr "Selecione esta opção para restaurar seus domínios"
 #: hiddifypanel/panel/admin/ProxyAdmin.py:124
 #: hiddifypanel/panel/admin/QuickSetup.py:81
 #: hiddifypanel/panel/admin/QuickSetup.py:108
-#: hiddifypanel/panel/admin/SettingAdmin.py:254
+#: hiddifypanel/panel/admin/SettingAdmin.py:256
 #: hiddifypanel/panel/commercial/CommercialSettings.py:218
 #, fuzzy
 msgid "Submit"
@@ -1016,21 +1007,21 @@ msgstr ""
 "problema. Proxy de teste após alterá-lo."
 
 # | msgid "Invalid Admin Link"
-#: hiddifypanel/panel/admin/SettingAdmin.py:218
+#: hiddifypanel/panel/admin/SettingAdmin.py:220
 #: hiddifypanel/panel/commercial/CommercialSettings.py:182
 #, fuzzy
 msgid "Invalid admin link"
 msgstr "Link de administrador inválido"
 
 # | msgid "Invalid Telegram Bot Token"
-#: hiddifypanel/panel/admin/SettingAdmin.py:220
+#: hiddifypanel/panel/admin/SettingAdmin.py:222
 #: hiddifypanel/panel/commercial/CommercialSettings.py:184
 msgid "config.Invalid telegram bot token"
 msgstr "Token do bot telegram inválido"
 
 # | msgid ""
 # | "Invalid Link. it should be on this format: (https or http://example.com)"
-#: hiddifypanel/panel/admin/SettingAdmin.py:222
+#: hiddifypanel/panel/admin/SettingAdmin.py:224
 #: hiddifypanel/panel/commercial/CommercialSettings.py:186
 #, fuzzy
 msgid "config.Invalid brand link"
@@ -1039,13 +1030,13 @@ msgstr "Link inválido. deve estar neste formato: (https ou http://example.com)"
 # | msgid ""
 # | "Invalid UUID secret. example: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n"
 # | "\n"
-#: hiddifypanel/panel/admin/SettingAdmin.py:226
+#: hiddifypanel/panel/admin/SettingAdmin.py:228
 #: hiddifypanel/panel/commercial/CommercialSettings.py:190
 msgid "config.invalid uuid"
 msgstr "Secret UUID inválido. exemplo: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6"
 
 # | msgid "Invalid Proxy Path. It should be ASCI string (a-z A-Z 0-9)"
-#: hiddifypanel/panel/admin/SettingAdmin.py:230
+#: hiddifypanel/panel/admin/SettingAdmin.py:232
 #: hiddifypanel/panel/commercial/CommercialSettings.py:194
 #, fuzzy
 msgid "config.Invalid proxy path"
@@ -1053,8 +1044,8 @@ msgstr "Caminho de proxy inválido. Deve ser uma string ASCI (a-z A-Z 0-9)"
 
 # | msgid ""
 # | "Invalid Port. it should be comma separated Integer e.g.  2052,2053"
-#: hiddifypanel/panel/admin/SettingAdmin.py:235
-#: hiddifypanel/panel/admin/SettingAdmin.py:238
+#: hiddifypanel/panel/admin/SettingAdmin.py:237
+#: hiddifypanel/panel/admin/SettingAdmin.py:240
 #: hiddifypanel/panel/commercial/CommercialSettings.py:199
 #: hiddifypanel/panel/commercial/CommercialSettings.py:202
 #, fuzzy
@@ -4559,4 +4550,12 @@ msgstr "Contar:"
 #, fuzzy
 msgid "Actions"
 msgstr "Ações"
+
+# | msgid ""
+# | "Rebooting System ... This may take a few minutes. Please Wait ..."
+#~ msgid "rebooting system may takes time please wait"
+#~ msgstr ""
+#~ "Reiniciando o sistema... Isso pode levar"
+#~ " alguns minutos. Por favor, aguarde "
+#~ "..."
 

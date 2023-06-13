@@ -1,6 +1,22 @@
 # Changelog
 
 
+## 7.1.0 (2023-06-13)
+
+#### Fix
+
+* Setting not saved. 
+
+* Restart. 
+
+* Loading issues. 
+
+#### Other
+
+* Update. 
+
+
+
 ## 7.0.9 (2023-06-04)
 
 #### Fix
