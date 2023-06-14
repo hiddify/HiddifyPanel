@@ -88,6 +88,7 @@ class Actions(FlaskView):
                             
         )
         file="restart.sh"
+        config=current_app.config
         subprocess.Popen(f"sudo {config['HIDDIFY_CONFIG_PATH']}/{file}".split(" "),cwd=f"{config['HIDDIFY_CONFIG_PATH']}",start_new_session=True)
         import time
         time.sleep(1)
