@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPT\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-13 12:28+0200\n"
-"PO-Revision-Date: 2023-06-13 05:27-0500\n"
+"POT-Creation-Date: 2023-06-14 15:29+0200\n"
+"PO-Revision-Date: 2023-06-13 05:28-0500\n"
 "Last-Translator: lymanrudni\n"
 "Language: pt\n"
 "Language-Team: Portuguese\n"
@@ -116,7 +116,7 @@ msgid "Package ended!"
 msgstr "Package encerrado"
 
 # | msgid "Can not sync child with Parent Panel."
-#: hiddifypanel/panel/admin/Actions.py:108
+#: hiddifypanel/panel/admin/Actions.py:109
 #, fuzzy
 msgid "can not sync child with parent panel"
 msgstr "Não é possível sincronizar o filho com o painel pai."
@@ -125,7 +125,7 @@ msgstr "Não é possível sincronizar o filho com o painel pai."
 # | "⚠️ Your Domains Changed. please do not forget to copy Admin links,
 # otherwise"
 # | " you can not access to the panel anymore"
-#: hiddifypanel/panel/admin/Actions.py:114
+#: hiddifypanel/panel/admin/Actions.py:115
 #, fuzzy
 msgid ""
 "Your domains changed. Please do not forget to copy admin links, otherwise"
@@ -138,7 +138,7 @@ msgstr ""
 # | "⚠️ Please wait about 5 minutes to make sure everything is updated. during
 # "
 # | "this time, please copy and save your Proxy links which are:"
-#: hiddifypanel/panel/admin/Actions.py:141
+#: hiddifypanel/panel/admin/Actions.py:142
 #, fuzzy
 msgid ""
 "Success! Please wait around 4 minutes to make sure everything is updated."
@@ -148,7 +148,7 @@ msgstr ""
 "durante esse período, copie e salve seus links de proxy, que são:"
 
 # | msgid "📑 See the log in the bellow screen"
-#: hiddifypanel/panel/admin/Actions.py:174
+#: hiddifypanel/panel/admin/Actions.py:175
 #, fuzzy
 msgid "see the log in the bellow screen"
 msgstr "📑 Veja o log na tela abaixo"
@@ -156,7 +156,7 @@ msgstr "📑 Veja o log na tela abaixo"
 # | msgid ""
 # | "✔️ Success! Please Wait around 5 minutes to make sure everything is
 # updated"
-#: hiddifypanel/panel/admin/Actions.py:203
+#: hiddifypanel/panel/admin/Actions.py:204
 #, fuzzy
 msgid "Success! Please wait around 5 minutes to make sure everything is updated."
 msgstr ""

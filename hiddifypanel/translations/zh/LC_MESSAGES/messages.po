@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-13 12:28+0200\n"
-"PO-Revision-Date: 2023-06-13 05:27-0500\n"
+"POT-Creation-Date: 2023-06-14 15:29+0200\n"
+"PO-Revision-Date: 2023-06-13 05:28-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -106,7 +106,7 @@ msgid "Package ended!"
 msgstr "套餐结束！"
 
 # | msgid "Can not sync child with Parent Panel."
-#: hiddifypanel/panel/admin/Actions.py:108
+#: hiddifypanel/panel/admin/Actions.py:109
 #, fuzzy
 msgid "can not sync child with parent panel"
 msgstr "无法将子面板与父面板同步。"
@@ -115,7 +115,7 @@ msgstr "无法将子面板与父面板同步。"
 # | "⚠️ Your Domains Changed. please do not forget to copy Admin links,
 # otherwise"
 # | " you can not access to the panel anymore"
-#: hiddifypanel/panel/admin/Actions.py:114
+#: hiddifypanel/panel/admin/Actions.py:115
 #, fuzzy
 msgid ""
 "Your domains changed. Please do not forget to copy admin links, otherwise"
@@ -126,21 +126,21 @@ msgstr "您的域已更改。请不要忘记复制管理链接，否则您将无
 # | "⚠️ Please wait about 5 minutes to make sure everything is updated. during
 # "
 # | "this time, please copy and save your Proxy links which are:"
-#: hiddifypanel/panel/admin/Actions.py:141
+#: hiddifypanel/panel/admin/Actions.py:142
 msgid ""
 "Success! Please wait around 4 minutes to make sure everything is updated."
 " During this time, please save your proxy links which are:"
 msgstr "成功！ 请等待大约 4 分钟，以确保所有内容都已更新。 在此期间，请保存您的代理链接:"
 
 # | msgid "📑 See the log in the bellow screen"
-#: hiddifypanel/panel/admin/Actions.py:174
+#: hiddifypanel/panel/admin/Actions.py:175
 msgid "see the log in the bellow screen"
 msgstr "请参阅以下屏幕中的日志："
 
 # | msgid ""
 # | "✔️ Success! Please Wait around 5 minutes to make sure everything is
 # updated"
-#: hiddifypanel/panel/admin/Actions.py:203
+#: hiddifypanel/panel/admin/Actions.py:204
 msgid "Success! Please wait around 5 minutes to make sure everything is updated."
 msgstr "成功！ 请等待大约 5 分钟，以确保所有内容都已更新。"
 
