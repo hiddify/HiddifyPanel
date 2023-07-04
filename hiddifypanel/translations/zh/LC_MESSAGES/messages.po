@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-14 15:29+0200\n"
-"PO-Revision-Date: 2023-06-13 05:28-0500\n"
+"POT-Creation-Date: 2023-07-04 23:59+0200\n"
+"PO-Revision-Date: 2023-06-15 07:51-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -601,7 +601,7 @@ msgstr "域名对现实不友好！"
 msgid "REALITY Fallback domain is not compaitble with server names!"
 msgstr "现实回退域与服务器名称不兼容！"
 
-# | msgid "Error in Auto CDN Format"
+# | msgid "⚠️ Error in Auto CDN Format"
 #: hiddifypanel/panel/admin/DomainAdmin.py:241
 #, fuzzy
 msgid "Error in auto cdn format"
@@ -3506,10 +3506,11 @@ msgstr "苹果系统"
 msgid "Linux"
 msgstr "Linux"
 
-# | msgid "HiddigyN <span class=\"badge badge-success\">Recommended</span>"
+# | msgid "HiddifyN <span class=\"badge badge-success\">Recommended</span>"
 #: hiddifypanel/panel/user/templates/home/windows.html:50
+#, fuzzy
 msgid "HiddigyN"
-msgstr ""
+msgstr "HiddifyN <span class=\"badge badge-success\">推荐</span>"
 
 # | msgid ""
 # | "Please install HiddifyN from %(dl_link)s.\n"
@@ -3967,21 +3968,29 @@ msgstr "📅每周"
 msgid "daily"
 msgstr "⏰每日"
 
+# | msgid "➖ Direct"
 #: hiddifypanel/templates/flaskadmin-layout.html:53
+#, fuzzy
 msgid "Direct"
-msgstr ""
+msgstr "➖ 直接"
 
+# | msgid "➖ Panel Link"
 #: hiddifypanel/templates/flaskadmin-layout.html:54
+#, fuzzy
 msgid "Panel Link"
-msgstr ""
+msgstr "➖ 面板链接"
 
+# | msgid "➖ Bridge Servers"
 #: hiddifypanel/templates/flaskadmin-layout.html:55
+#, fuzzy
 msgid "Bridge Servers"
-msgstr ""
+msgstr "➖ 桥接服务器"
 
+# | msgid "➖ Fake"
 #: hiddifypanel/templates/flaskadmin-layout.html:56
+#, fuzzy
 msgid "Fake"
-msgstr ""
+msgstr "➖ 假货"
 
 # | msgid "Test and Suggest Domain "
 #: hiddifypanel/templates/flaskadmin-layout.html:115

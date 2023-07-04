@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPT\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-14 15:29+0200\n"
-"PO-Revision-Date: 2023-06-13 05:28-0500\n"
+"POT-Creation-Date: 2023-07-04 23:59+0200\n"
+"PO-Revision-Date: 2023-06-14 08:29-0500\n"
 "Last-Translator: lymanrudni\n"
 "Language: pt\n"
 "Language-Team: Portuguese\n"
@@ -4470,20 +4470,24 @@ msgid "daily"
 msgstr "⏰ Diariamente"
 
 #: hiddifypanel/templates/flaskadmin-layout.html:53
+#, fuzzy
 msgid "Direct"
-msgstr ""
+msgstr "➖ Direto"
 
 #: hiddifypanel/templates/flaskadmin-layout.html:54
+#, fuzzy
 msgid "Panel Link"
-msgstr ""
+msgstr "➖ Link do Painel"
 
 #: hiddifypanel/templates/flaskadmin-layout.html:55
+#, fuzzy
 msgid "Bridge Servers"
-msgstr ""
+msgstr "➖ Servidores Bridge"
 
 #: hiddifypanel/templates/flaskadmin-layout.html:56
+#, fuzzy
 msgid "Fake"
-msgstr ""
+msgstr "➖ Falso"
 
 # | msgid "Test and Suggest Domain "
 #: hiddifypanel/templates/flaskadmin-layout.html:115

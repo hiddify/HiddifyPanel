@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-14 15:29+0200\n"
-"PO-Revision-Date: 2023-06-13 05:28-0500\n"
+"POT-Creation-Date: 2023-07-04 23:59+0200\n"
+"PO-Revision-Date: 2023-06-15 07:51-0500\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -601,10 +601,10 @@ msgstr "Domain is Not REALITY Friendly!"
 msgid "REALITY Fallback domain is not compaitble with server names!"
 msgstr "REALITY Fallback Domain is not compaitble with Server names!"
 
-# | msgid "Error in Auto CDN Format"
+# | msgid "⚠️ Error in Auto CDN Format"
 #: hiddifypanel/panel/admin/DomainAdmin.py:241
 msgid "Error in auto cdn format"
-msgstr "Error in Auto CDN Format"
+msgstr "⚠️ Error in Auto CDN Format"
 
 # | msgid "Error! Domain Fronting not set."
 #: hiddifypanel/panel/admin/ProxyAdmin.py:38
@@ -3514,11 +3514,10 @@ msgstr "macOS"
 msgid "Linux"
 msgstr "Linux"
 
-# | msgid "HiddigyN <span class=\"badge badge-success\">Recommended</span>"
+# | msgid "HiddifyN <span class=\"badge badge-success\">Recommended</span>"
 #: hiddifypanel/panel/user/templates/home/windows.html:50
-#, fuzzy
 msgid "HiddigyN"
-msgstr "HiddigyN <span class=\"badge badge-success\">Recommended</span>"
+msgstr "HiddifyN <span class=\"badge badge-success\">Recommended</span>"
 
 # | msgid ""
 # | "Please install HiddifyN from %(dl_link)s.\n"
@@ -3939,25 +3938,25 @@ msgstr "📅 Weekly"
 msgid "daily"
 msgstr "⏰ Daily"
 
+# | msgid "➖ Direct"
 #: hiddifypanel/templates/flaskadmin-layout.html:53
-#, fuzzy
 msgid "Direct"
-msgstr "Direct"
+msgstr "➖ Direct"
 
+# | msgid "➖ Panel Link"
 #: hiddifypanel/templates/flaskadmin-layout.html:54
-#, fuzzy
 msgid "Panel Link"
-msgstr "Panel Link"
+msgstr "➖ Panel Link"
 
+# | msgid "➖ Bridge Servers"
 #: hiddifypanel/templates/flaskadmin-layout.html:55
-#, fuzzy
 msgid "Bridge Servers"
-msgstr "Bridge Servers"
+msgstr "➖ Bridge Servers"
 
+# | msgid "➖ Fake"
 #: hiddifypanel/templates/flaskadmin-layout.html:56
-#, fuzzy
 msgid "Fake"
-msgstr "Fake"
+msgstr "➖ Fake"
 
 # | msgid "Test and Suggest Domain "
 #: hiddifypanel/templates/flaskadmin-layout.html:115
