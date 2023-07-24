@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPT\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-04 23:59+0200\n"
-"PO-Revision-Date: 2023-06-14 08:29-0500\n"
+"POT-Creation-Date: 2023-07-24 06:05+0200\n"
+"PO-Revision-Date: 2023-07-04 16:59-0500\n"
 "Last-Translator: lymanrudni\n"
 "Language: pt\n"
 "Language-Team: Portuguese\n"
@@ -667,7 +667,7 @@ msgstr "O domínio não é compatível com Reality!"
 msgid "REALITY Fallback domain is not compaitble with server names!"
 msgstr "REALITY Fallback Domain não é compatível com nomes de servidores!"
 
-# | msgid "Error in Auto CDN Format"
+# | msgid "⚠️ Error in Auto CDN Format"
 #: hiddifypanel/panel/admin/DomainAdmin.py:241
 #, fuzzy
 msgid "Error in auto cdn format"
@@ -3971,7 +3971,7 @@ msgstr "Mac OS"
 msgid "Linux"
 msgstr "Linux"
 
-# | msgid "HiddigyN <span class=\"badge badge-success\">Recommended</span>"
+# | msgid "HiddifyN <span class=\"badge badge-success\">Recommended</span>"
 #: hiddifypanel/panel/user/templates/home/windows.html:50
 msgid "HiddigyN"
 msgstr "HiddigyN <span class=\"badge badge-success\">Recommended</span>"
@@ -4469,21 +4469,25 @@ msgstr "📅 Semanal"
 msgid "daily"
 msgstr "⏰ Diariamente"
 
+# | msgid "➖ Direct"
 #: hiddifypanel/templates/flaskadmin-layout.html:53
 #, fuzzy
 msgid "Direct"
 msgstr "➖ Direto"
 
+# | msgid "➖ Panel Link"
 #: hiddifypanel/templates/flaskadmin-layout.html:54
 #, fuzzy
 msgid "Panel Link"
 msgstr "➖ Link do Painel"
 
+# | msgid "➖ Bridge Servers"
 #: hiddifypanel/templates/flaskadmin-layout.html:55
 #, fuzzy
 msgid "Bridge Servers"
 msgstr "➖ Servidores Bridge"
 
+# | msgid "➖ Fake"
 #: hiddifypanel/templates/flaskadmin-layout.html:56
 #, fuzzy
 msgid "Fake"
