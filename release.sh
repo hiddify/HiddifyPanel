@@ -1,10 +1,10 @@
 #!/bin/bash
 
 #python3 setup.py build_ext --inplace
-if [ "$(id -u)" -ne 0 ]; then
-       echo 'This script must be run by root' >&2
-       # exit 1
-fi
+# if [ "$(id -u)" -ne 0 ]; then
+#        # echo 'This script must be run by root' >&2
+#        # exit 1
+# fi
 source .env
 
 do_release=${1:-0}
@@ -12,6 +12,7 @@ if [[ $do_release == 1 ]];then
 git status
 make release 
 fi
+exit 
 rm -rf build/; rm -rf dist/;
 rm -rf ../tmp_release
 
