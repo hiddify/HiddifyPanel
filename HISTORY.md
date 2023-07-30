@@ -1,6 +1,16 @@
 # Changelog
 
 
+## 7.1.8 (2023-07-30)
+
+#### Other
+
+* Update license. 
+
+* Update license. 
+
+
+
 ## 7.1.7 (2023-07-30)
 
 #### Other
