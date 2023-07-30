@@ -5,6 +5,7 @@
 # How to use it
 Please visit https://github.com/hiddify/hiddify-config/wiki for the installation.
 
+# Source Code: https://github.com/hiddify1/HiddifyPanel/
 <!--
 ## Installation
 
