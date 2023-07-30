@@ -6,7 +6,7 @@ from wtforms.validators import Regexp, ValidationError
 from .adminlte import AdminLTEModelView
 from flask_babelex import gettext as __
 from flask_babelex import lazy_gettext as _
-from hiddifypanel.panel import hiddify, hiddify_api, cf_api, custom_widgets
+from hiddifypanel.panel import hiddify, cf_api, custom_widgets
 
 from flask import Markup
 from flask import Flask, g, flash, url_for
@@ -250,12 +250,14 @@ class DomainAdmin(AdminLTEModelView):
         hiddify.flash_config_success(restart_mode='apply', domain_changed=True)
 
     def after_model_delete(self, model):
-        if hconfig(ConfigEnum.parent_panel):
-            hiddify_api.sync_child_to_parent()
+        # if hconfig(ConfigEnum.parent_panel):
+        #     hiddify_api.sync_child_to_parent()
+        pass
 
     def after_model_change(self, form, model, is_created):
-        if hconfig(ConfigEnum.parent_panel):
-            hiddify_api.sync_child_to_parent()
+        # if hconfig(ConfigEnum.parent_panel):
+        #     hiddify_api.sync_child_to_parent()
+        pass
 
     def is_accessible(self):
         return g.admin.mode in [AdminMode.admin, AdminMode.super_admin]

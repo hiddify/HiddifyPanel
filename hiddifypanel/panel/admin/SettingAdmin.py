@@ -19,7 +19,7 @@ from hiddifypanel.models import *
 from hiddifypanel.panel.database import db
 from wtforms.fields import *
 from flask_classful import FlaskView
-from hiddifypanel.panel import hiddify, hiddify_api, custom_widgets
+from hiddifypanel.panel import hiddify, custom_widgets
 
 
 class SettingAdmin(FlaskView):
@@ -61,13 +61,13 @@ class SettingAdmin(FlaskView):
                                 # v=(v+"/").replace("/admin",'')
                                 v = re.sub("(/admin/.*)", "/", v)
 
-                                try:
-                                    if hiddify_api.sync_child_to_parent(v)['status'] != 200:
-                                        flash(_("Can not connect to parent panel!"), 'error')
-                                        return render_template('config.html', form=form)
-                                except:
-                                    flash(_("Can not connect to parent panel!"), 'error')
-                                    return render_template('config.html', form=form)
+                                # try:
+                                #     # if hiddify_api.sync_child_to_parent(v)['status'] != 200:
+                                #     #     flash(_("Can not connect to parent panel!"), 'error')
+                                #     #     return render_template('config.html', form=form)
+                                # except:
+                                #     flash(_("Can not connect to parent panel!"), 'error')
+                                #     return render_template('config.html', form=form)
                             StrConfig.query.filter(StrConfig.key == k, StrConfig.child_id == 0).first().value = v
                         if old_configs[k] != v:
                             changed_configs[k] = v
@@ -96,8 +96,8 @@ class SettingAdmin(FlaskView):
 
             from hiddifypanel.panel.commercial.telegrambot import register_bot
             register_bot()
-            if hconfig(ConfigEnum.parent_panel):
-                hiddify_api.sync_child_to_parent()
+            # if hconfig(ConfigEnum.parent_panel):
+            #     hiddify_api.sync_child_to_parent()
             reset_action = hiddify.check_need_reset(old_configs)
             # if :
             #     return reset_action

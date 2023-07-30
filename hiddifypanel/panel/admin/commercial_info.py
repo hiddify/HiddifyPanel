@@ -12,7 +12,6 @@ import urllib.request
 import subprocess
 import re
 from hiddifypanel.panel import hiddify, usage
-from hiddifypanel.panel import hiddify_api
 from flask import current_app, render_template, request, Response, Markup, url_for
 from hiddifypanel.panel.hiddify import flash
 

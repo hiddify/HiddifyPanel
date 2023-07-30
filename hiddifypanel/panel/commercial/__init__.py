@@ -1,5 +1,5 @@
 from .ProxyDetailsAdmin import ProxyDetailsAdmin
-from .CommercialSettings import CommercialSettings
+# from .CommercialSettings import CommercialSettings
 from hiddifypanel.panel import hiddify
 from hiddifypanel.models import *
 from hiddifypanel.panel.database import db

@@ -7,7 +7,7 @@ from wtforms.validators import Regexp, ValidationError
 from .adminlte import AdminLTEModelView
 from flask_babelex import gettext as __
 from flask_babelex import lazy_gettext as _
-from hiddifypanel.panel import hiddify,hiddify_api,cf_api
+from hiddifypanel.panel import hiddify,cf_api
 from flask import Markup
 from flask import Flask,g,url_for
 from flask_sqlalchemy import SQLAlchemy
