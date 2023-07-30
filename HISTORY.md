@@ -1,6 +1,18 @@
 # Changelog
 
 
+## 7.1.6 (2023-07-30)
+
+#### New
+
+* Update to open source. 
+
+#### Other
+
+* Apply formating. 
+
+
+
 ## 7.1.3 (2023-06-14)
 
 #### New
