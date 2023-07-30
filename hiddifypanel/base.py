@@ -7,11 +7,10 @@ from hiddifypanel.panel.init_db import init_db
 import hiddifypanel
 from hiddifypanel.models import  *
 from dotenv import dotenv_values
+import os
 def create_app(cli=False,**config):
     app = Flask(__name__, static_url_path="/<proxy_path>/static/", instance_relative_config=True)
-    import os
-    # os.environ['DOTENV_PATH']="/opt/vscode/workspace/HiddifyPanel/"
-    # FlaskDynaconf(app,load_dotenv=False)
+
     for c,v in dotenv_values('app.cfg').items():
         if v.isdecimal():
             v= int(v)

@@ -2,12 +2,14 @@ from flask import g, jsonify, abort, render_template, request, send_from_directo
 from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify
 import uuid
-from flask import g, send_from_directory, url_for,session,Markup
+from flask import g, send_from_directory, url_for, session, Markup
 import traceback
 import user_agents
 import hiddifypanel
 import datetime
 from flask_babelex import gettext as _
+
+
 def init_app(app):
     app.jinja_env.globals['ConfigEnum'] = ConfigEnum
     app.jinja_env.globals['DomainType'] = DomainType
@@ -19,10 +21,10 @@ def init_app(app):
         if not hasattr(e, 'code') or e.code == 500:
             trace = traceback.format_exc()
             import lastversion
-            last_version=lastversion.latest("hiddifypanel",at="pip")
-            
-            has_update= "dev" not in hiddifypanel.__version__ and f'{last_version}' != hiddifypanel.__version__
-            return render_template('500.html', error=e, trace=trace,has_update=has_update,last_version=last_version), 500
+            last_version = lastversion.latest("hiddifypanel", at="pip")
+
+            has_update = "dev" not in hiddifypanel.__version__ and f'{last_version}' != hiddifypanel.__version__
+            return render_template('500.html', error=e, trace=trace, has_update=has_update, last_version=last_version), 500
         # if e.code in [400,401,403]:
         #     return render_template('access-denied.html',error=e), e.code
 
@@ -52,22 +54,21 @@ def init_app(app):
         # print("Y",endpoint, values)
         # if values is None:
         #     return
-        if hiddifypanel.__release_date__ + datetime.timedelta(days=40)<datetime.datetime.now() or hiddifypanel.__release_date__>datetime.datetime.now():
-            abort(400,_('This version of hiddify panel is outdated. Please update it from admin area.'))
+        # if hiddifypanel.__release_date__ + datetime.timedelta(days=40) < datetime.datetime.now() or hiddifypanel.__release_date__ > datetime.datetime.now():
+        #     abort(400, _('This version of hiddify panel is outdated. Please update it from admin area.'))
         g.user = None
         g.user_uuid = None
         g.is_admin = False
 
-        
-        if request.args.get('darkmode')!=None:
-            session['darkmode'] = request.args.get('darkmode','').lower()=='true'
-        g.darkmode=session.get('darkmode', False)
+        if request.args.get('darkmode') != None:
+            session['darkmode'] = request.args.get('darkmode', '').lower() == 'true'
+        g.darkmode = session.get('darkmode', False)
         import random
-        g.install_pwa=random.random() <= 0.05
-        if request.args.get('pwa')!=None:
-            session['pwa'] = request.args.get('pwa','').lower()=='true'
-        g.pwa=session.get('pwa', False)
-        
+        g.install_pwa = random.random() <= 0.05
+        if request.args.get('pwa') != None:
+            session['pwa'] = request.args.get('pwa', '').lower() == 'true'
+        g.pwa = session.get('pwa', False)
+
         g.user_agent = user_agents.parse(request.user_agent.string)
         if g.user_agent.is_bot:
             abort(400, "invalid")
@@ -86,8 +87,8 @@ def init_app(app):
             # raise PermissionError("Invalid secret")
             abort(400, 'invalid user')
         g.admin = get_admin_user_db(tmp_secret)
-        g.is_admin=g.admin is not None
-        bare_path=request.path.replace(g.proxy_path,"").replace(tmp_secret,"").lower()
+        g.is_admin = g.admin is not None
+        bare_path = request.path.replace(g.proxy_path, "").replace(tmp_secret, "").lower()
         if not g.is_admin:
             g.user = User.query.filter(User.uuid == f'{g.user_uuid}').first()
             if not g.user:
@@ -100,7 +101,7 @@ def init_app(app):
 
         if hconfig(ConfigEnum.telegram_bot_token):
             import hiddifypanel.panel.commercial.telegrambot as telegrambot
-            if (not telegrambot.bot) or (not  telegrambot.bot.username):
+            if (not telegrambot.bot) or (not telegrambot.bot.username):
                 telegrambot.register_bot()
-            g.bot=telegrambot.bot
+            g.bot = telegrambot.bot
         # print(g.user)

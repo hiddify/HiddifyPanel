@@ -33,10 +33,11 @@ class BoolConfig(db.Model, SerializerMixin):
             'child_unique_id': d.child.unique_id if d.child else ''
         }
 
+
 class StrConfig(db.Model, SerializerMixin):
     child_id = db.Column(db.Integer, db.ForeignKey('child.id'), primary_key=True, default=0)
     # category = db.Column(db.String(128), primary_key=True)
-    key = db.Column(db.Enum(ConfigEnum), primary_key=True,default=ConfigEnum.admin_secret)
+    key = db.Column(db.Enum(ConfigEnum), primary_key=True, default=ConfigEnum.admin_secret)
     value = db.Column(db.String(2048))
 
     def to_dict(d):
@@ -113,15 +114,14 @@ def add_or_update_config(commit=True, child_id=0, override_unique_id=True, **con
     set_hconfig(ckey, v, child_id, commit=commit)
 
 
-
-def bulk_register_configs(hconfigs,commit=True,override_child_id=None,override_unique_id=True):
+def bulk_register_configs(hconfigs, commit=True, override_child_id=None, override_unique_id=True):
     from hiddifypanel.panel import hiddify
     for conf in hconfigs:
         # print(conf)
-        if conf['key']==ConfigEnum.unique_id and not override_unique_id:
+        if conf['key'] == ConfigEnum.unique_id and not override_unique_id:
             continue
-        child_id=override_child_id if override_child_id is not None else hiddify.get_child(conf.get('child_unique_id',None))
+        child_id = override_child_id if override_child_id is not None else hiddify.get_child(conf.get('child_unique_id', None))
         # print(conf)
-        add_or_update_config(commit=False,child_id=child_id,**conf)
+        add_or_update_config(commit=False, child_id=child_id, **conf)
     if commit:
         db.session.commit()

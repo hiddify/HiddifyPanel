@@ -18,8 +18,7 @@ from wtforms import SelectMultipleField
 from wtforms.widgets import ListWidget, CheckboxInput
 from sqlalchemy.orm import backref
 # Define a custom field type for the related domains
-from flask_admin.form.fields import Select2TagsField,Select2Field
-
+from flask_admin.form.fields import Select2TagsField, Select2Field
 
 
 class ChildAdmin(AdminLTEModelView):
@@ -34,18 +33,18 @@ class ChildAdmin(AdminLTEModelView):
         show_domains=_('You can select the configs with which domains show be shown in the user area. If you select all, automatically, all the new domains will be added for each users.')
         # current_usage_GB="in GB"
     )
-    
+
     # create_modal = True
     can_export = False
-    form_widget_args={'show_domains':{'class':'form-control ltr'}}
+    form_widget_args = {'show_domains': {'class': 'form-control ltr'}}
     form_args = {
-        
+
         'domain': {
             'validators': [Regexp(r'^([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})$', message=__("Should be a valid domain"))]
         },
-        
+
     }
-    column_list = ["domain","show_domains_list"]
+    column_list = ["domain", "show_domains_list"]
     # column_editable_list=["domain"]
     # column_filters=["domain","mode"]
     # form_excluded_columns=['work_with']
@@ -53,12 +52,12 @@ class ChildAdmin(AdminLTEModelView):
     column_labels = {
         "domain": _("domain.domain"),
         # "mode": _("domain.mode"),
-        
-        'show_domains':_('Show Domains'),
-        'show_domains_list':_('Show Domains')
+
+        'show_domains': _('Show Domains'),
+        'show_domains_list': _('Show Domains')
     }
 
-    form_columns=['domain','show_domains']
+    form_columns = ['domain', 'show_domains']
 
     def _domain_admin_link(view, context, model, name):
         admin_link = f'https://{model.domain}{hiddify.get_admin_path()}'
@@ -74,19 +73,20 @@ class ChildAdmin(AdminLTEModelView):
         else:
             badge_type = 'danger'
         return Markup(f'<span class="badge badge-{badge_type}">{dip}</span>')
+
     def _show_domains(view, context, model, name):
         # return Markup(f'<span class="badge badge-{badge_type}">{dip}</span>')
-        res=""
+        res = ""
         for d in model.show_domains:
-            res+=f'<span class="badge">{d.domain}</span>'
+            res += f'<span class="badge">{d.domain}</span>'
         return Markup(res)
-            
+
     column_formatters = {
         # 'domain_ip': _domain_ip,
         'domain': _domain_admin_link,
         'show_domains_list': _show_domains
     }
-    
+
     def search_placeholder(self):
         return f"{_('search')} {_('domain.domain')}"
 
@@ -96,11 +96,9 @@ class ChildAdmin(AdminLTEModelView):
 
         # Pre-select the related domains in the checkbox list
         # form.show_domains = [d.id for d in Domain.query.all()]
-        
 
     def on_model_change(self, form, model, is_created):
         model.domain = model.domain.lower()
-        
 
         dip = hiddify.get_domain_ip(model.domain)
         if dip == None:
@@ -110,11 +108,10 @@ class ChildAdmin(AdminLTEModelView):
             raise ValidationError(
                 _("Domain is not correctly mapped to this server!"))
         print(model.show_domains)
-        if len(model.show_domains)==Domain.query.count():
-            model.show_domains=[]
+        if len(model.show_domains) == Domain.query.count():
+            model.show_domains = []
 
         hiddify.flash_config_success(restart_mode='apply', domain_changed=True)
-
 
     def on_model_delete(self, model):
         if len(ParentDomain.query.all()) <= 1:

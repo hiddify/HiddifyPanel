@@ -14,7 +14,7 @@ class ExceptionHandler(telebot.ExceptionHandler):
 
 
 bot = telebot.TeleBot("", parse_mode="HTML", threaded=False, exception_handler=ExceptionHandler())
-bot.username=''
+bot.username = ''
 
 
 def register_bot(set_hook=False):
@@ -24,7 +24,7 @@ def register_bot(set_hook=False):
         if token:
             bot.token = hconfig(ConfigEnum.telegram_bot_token)
             try:
-                bot.username=bot.get_me().username
+                bot.username = bot.get_me().username
             except:
                 pass
             # bot.remove_webhook()
@@ -39,7 +39,7 @@ def register_bot(set_hook=False):
         import traceback
         traceback.print_stack()
 
-    
+
 def init_app(app):
     with app.app_context():
         global bot
@@ -47,9 +47,11 @@ def init_app(app):
         if token:
             bot.token = token
             try:
-                bot.username=bot.get_me().username
+                bot.username = bot.get_me().username
             except:
                 pass
+
+
 class TGBotResource(Resource):
     def post(self):
         try:

@@ -1,24 +1,23 @@
-from flask import abort, jsonify,request
+from flask import abort, jsonify, request
 from flask_restful import Resource
 # from flask_simplelogin import login_required
 import datetime
 from hiddifypanel.models import *
 from urllib.parse import urlparse
-from hiddifypanel.panel import hiddify,hiddify_api
-from hiddifypanel import xray_api 
+from hiddifypanel.panel import hiddify, hiddify_api
+from hiddifypanel import xray_api
 # class AllResource(Resource):
 #     def get(self):
 #         return jsonify(
-#             hiddify.dump_db_to_dict()            
+#             hiddify.dump_db_to_dict()
 #         )
 
 
-
 class UserResource(Resource):
-    def get(self,uuid=None):
+    def get(self, uuid=None):
         if uuid:
-            product = User.query.filter(User.uuid==uuid).first() or abort(204)
-            return jsonify(product.to_dict())    
+            product = User.query.filter(User.uuid == uuid).first() or abort(204)
+            return jsonify(product.to_dict())
 
         products = User.query.all() or abort(204)
         return jsonify(
@@ -26,18 +25,19 @@ class UserResource(Resource):
         )
 
     def post(self):
-        data=request.json
+        data = request.json
         hiddify.add_or_update_user(**data)
         xray_api.add_client(data['uuid'])
         hiddify.quick_apply_users()
-        
-        return jsonify({'status':200,'msg':'ok'})
+
+        return jsonify({'status': 200, 'msg': 'ok'})
+
 
 class AdminUserResource(Resource):
-    def get(self,uuid=None):
+    def get(self, uuid=None):
         if uuid:
-            product = AdminUser.query.filter(AdminUser.uuid==uuid).first() or abort(204)
-            return jsonify(product.to_dict())    
+            product = AdminUser.query.filter(AdminUser.uuid == uuid).first() or abort(204)
+            return jsonify(product.to_dict())
 
         products = AdminUser.query.all() or abort(204)
         return jsonify(
@@ -45,18 +45,17 @@ class AdminUserResource(Resource):
         )
 
     def post(self):
-        data=request.json
+        data = request.json
         hiddify.add_or_update_admin(**data)
-    
-        
-        return jsonify({'status':200,'msg':'ok'})        
+
+        return jsonify({'status': 200, 'msg': 'ok'})
 
 
 # class DomainResource(Resource):
 #     def get(self,domain=None):
 #         if domain:
 #             product = Domain.query.filter(Domain.domain==domain).first() or abort(204)
-#             return jsonify(hiddify.domain_dict(product))    
+#             return jsonify(hiddify.domain_dict(product))
 #         products = Domain.query.all() or abort(204)
 #         return jsonify(
 #             [hiddify.domain_dict(product) for product in products]
@@ -69,7 +68,7 @@ class AdminUserResource(Resource):
 #     def get(self,parent_domain=None):
 #         if domain:
 #             product = ParentDomain.query.filter(ParentDomain.domain==domain).first() or abort(204)
-#             return jsonify(hiddify.parent_domain_dict(product))    
+#             return jsonify(hiddify.parent_domain_dict(product))
 #         products = ParentDomain.query.all() or abort(204)
 #         return jsonify(
 #             [hiddify.parent_domain_dict(product) for product in products]
@@ -90,6 +89,4 @@ class AdminUserResource(Resource):
 
 class HelloResource(Resource):
     def get(self):
-        return jsonify({"status": 200,"msg":"ok"})
-
-
+        return jsonify({"status": 200, "msg": "ok"})

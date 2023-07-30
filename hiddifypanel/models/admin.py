@@ -6,7 +6,8 @@ from dateutil import relativedelta
 from hiddifypanel.panel.database import db
 from enum import auto
 from strenum import StrEnum
-from flask import g,abort
+from flask import g, abort
+
 
 class AdminMode(StrEnum):
     """
@@ -18,7 +19,6 @@ class AdminMode(StrEnum):
     super_admin = auto()
     admin = auto()
     agent = auto()
-    
 
 
 class AdminUser(db.Model, SerializerMixin):
@@ -29,32 +29,33 @@ class AdminUser(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     uuid = db.Column(db.String(36), default=lambda: str(uuid_mod.uuid4()), nullable=False, unique=True)
     name = db.Column(db.String(512), nullable=False)
-    mode = db.Column(db.Enum(AdminMode), default=AdminMode.agent,nullable=False)
-    can_add_admin = db.Column(db.Boolean, default=False,nullable=False)
-    max_users=db.Column(db.Integer, default=100,nullable=False)
-    max_active_users=db.Column(db.Integer, default=100,nullable=False)
+    mode = db.Column(db.Enum(AdminMode), default=AdminMode.agent, nullable=False)
+    can_add_admin = db.Column(db.Boolean, default=False, nullable=False)
+    max_users = db.Column(db.Integer, default=100, nullable=False)
+    max_active_users = db.Column(db.Integer, default=100, nullable=False)
     comment = db.Column(db.String(512))
-    telegram_id=db.Column(db.String(512))
-    users = db.relationship('User',backref='admin')
-    usages = db.relationship('DailyUsage',backref='admin')
-    parent_admin_id = db.Column(db.Integer, db.ForeignKey('admin_user.id'),default=1)
+    telegram_id = db.Column(db.String(512))
+    users = db.relationship('User', backref='admin')
+    usages = db.relationship('DailyUsage', backref='admin')
+    parent_admin_id = db.Column(db.Integer, db.ForeignKey('admin_user.id'), default=1)
     parent_admin = db.relationship('AdminUser', remote_side=[id], backref='sub_admins')
+
     def recursive_users_query(self):
         from .user import User
-        admin_ids=self.recursive_sub_admins_ids()
+        admin_ids = self.recursive_sub_admins_ids()
         return User.query.filter(User.added_by.in_(admin_ids))
 
     def can_have_more_users(admin):
-        if admin.mode==AdminMode.super_admin:
+        if admin.mode == AdminMode.super_admin:
             return True
-        users_count=admin.recursive_users_query().count()
-        if admin.max_users<users_count:
+        users_count = admin.recursive_users_query().count()
+        if admin.max_users < users_count:
             return False
-        if users_count<=admin.max_active_users:
+        if users_count <= admin.max_active_users:
             return True
-        
-        actives=[u for u in admin.recursive_users_query().all() if u.is_active]
-        return len(actives)<=admin.max_active_users
+
+        actives = [u for u in admin.recursive_users_query().all() if u.is_active]
+        return len(actives) <= admin.max_active_users
 
     def recursive_sub_admins_ids(self, depth=20, seen=None):
         if seen is None:
@@ -73,81 +74,81 @@ class AdminUser(db.Model, SerializerMixin):
 
     def to_dict(admin):
         return {
-       'name':admin.name,
-       'comment':admin.comment,
-       'uuid' :admin.uuid,
-       'mode':admin.mode,
-       'can_add_admin':admin.can_add_admin,
-       'parent_admin_uuid':admin.parent_admin.uuid if admin.parent_admin else None,
-       'telegram_id':admin.telegram_id
-    }
+            'name': admin.name,
+            'comment': admin.comment,
+            'uuid': admin.uuid,
+            'mode': admin.mode,
+            'can_add_admin': admin.can_add_admin,
+            'parent_admin_uuid': admin.parent_admin.uuid if admin.parent_admin else None,
+            'telegram_id': admin.telegram_id
+        }
 
 
 def get_super_admin_secret():
-    admin=AdminUser.query.filter(AdminUser.mode==AdminMode.super_admin).first()
+    admin = AdminUser.query.filter(AdminUser.mode == AdminMode.super_admin).first()
     if not admin:
         db.session.add(AdminUser(mode=AdminMode.super_admin))
         db.session.commit()
-        admin=AdminUser.query.filter(AdminUser.mode==AdminMode.super_admin).first()
-        
-    admin_secret=admin.uuid
+        admin = AdminUser.query.filter(AdminUser.mode == AdminMode.super_admin).first()
+
+    admin_secret = admin.uuid
     return admin_secret
 
 
 def get_admin_user_db(uuid):
-    return AdminUser.query.filter(AdminUser.uuid==uuid).first()
+    return AdminUser.query.filter(AdminUser.uuid == uuid).first()
 
 
-
-def add_or_update_admin(commit=True,**admin):
+def add_or_update_admin(commit=True, **admin):
     # if not is_valid():return
     dbuser = AdminUser.query.filter(AdminUser.uuid == admin['uuid']).first()
 
     if not dbuser:
-        dbuser = AdminUser(uuid = admin['uuid'])
+        dbuser = AdminUser(uuid=admin['uuid'])
         # if not is_valid():
         #     return
         db.session.add(dbuser)
     dbuser.name = admin['name']
-    if dbuser.id!=1:
-        parent=admin.get('parent_admin_uuid')
-        if parent==admin['uuid'] or not parent:
-            parent_admin=current_admin_or_owner()
+    if dbuser.id != 1:
+        parent = admin.get('parent_admin_uuid')
+        if parent == admin['uuid'] or not parent:
+            parent_admin = current_admin_or_owner()
         else:
-            parent_admin=get_admin_by_uuid(parent,create=True)
-        dbuser.parent_admin_id=parent_admin.id
-    
+            parent_admin = get_admin_by_uuid(parent, create=True)
+        dbuser.parent_admin_id = parent_admin.id
+
     dbuser.comment = admin.get('comment', '')
     dbuser.mode = admin.get('mode', AdminMode.agent)
-    dbuser.telegram_id=admin.get('telegram_id')
-    dbuser.can_add_admin=admin.get('can_add_admin')==True
-    
+    dbuser.telegram_id = admin.get('telegram_id')
+    dbuser.can_add_admin = admin.get('can_add_admin') == True
+
     # dbuser.last_online=user.get('last_online','')
     if commit:
         db.session.commit()
 
 
-def get_admin_by_uuid(uuid,create=False):
-    admin=AdminUser.query.filter(AdminUser.uuid==uuid).first()
+def get_admin_by_uuid(uuid, create=False):
+    admin = AdminUser.query.filter(AdminUser.uuid == uuid).first()
     # print(admin)
     if create and not admin:
-        
+
         # print(parent_id)
         # raise (parent_id)
-        dbuser = AdminUser(uuid=uuid,name="unknown",parent_admin_id=current_admin_or_owner().id)           
+        dbuser = AdminUser(uuid=uuid, name="unknown", parent_admin_id=current_admin_or_owner().id)
         db.session.add(dbuser)
         db.session.commit()
-        admin=AdminUser.query.filter(AdminUser.uuid==uuid).first()
+        admin = AdminUser.query.filter(AdminUser.uuid == uuid).first()
     return admin
 
 
-def bulk_register_admins(users=[],commit=True):
+def bulk_register_admins(users=[], commit=True):
     for u in users:
-        add_or_update_admin(commit=False,**u)
+        add_or_update_admin(commit=False, **u)
     if commit:
-        db.session.commit()    
+        db.session.commit()
+
 
 def current_admin_or_owner():
     if g and g.admin:
         return g.admin
-    return AdminUser.query.filter(AdminUser.id==1).first() 
+    return AdminUser.query.filter(AdminUser.id == 1).first()

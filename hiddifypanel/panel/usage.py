@@ -1,105 +1,105 @@
-from flask import jsonify,g,url_for,Markup
+from sqlalchemy.orm import Load
+from hiddifypanel import xray_api, singbox_api
+from sqlalchemy import func
+from flask_babelex import gettext as __
+from flask_babelex import lazy_gettext as _
+import urllib
+from hiddifypanel.models import *
+from hiddifypanel.panel.database import db
+import datetime
+from flask import jsonify, g, url_for, Markup
 from flask import flash as flask_flash
 to_gig_d = 1024**3
-import datetime
 
-from hiddifypanel.panel.database import db
 # from hiddifypanel.panel import hiddify_api #hiddify
-from hiddifypanel.models import *
-import urllib
-from flask_babelex import lazy_gettext as _
-from flask_babelex import gettext as __
-from hiddifypanel import xray_api,singbox_api
-from sqlalchemy.orm import Load 
-from sqlalchemy import func
 
 
 def update_local_usage():
-        
-    res={}
-    have_change=False
-    for user in User.query.all():
-        d = xray_api.get_usage(user.uuid,reset=True)      
-        sd = singbox_api.get_usage(user.uuid,reset=True)      
-        res[user]={'usage':(d or 0)+(sd or 0), 'ips':''}
-        
-    
-    return add_users_usage(res,0)
-            
-        # return {"status": 'success', "comments":res}
-        
 
-def add_users_usage_uuid(uuids_bytes,child_id):
-    users= User.query.filter(User.uuid.in_(keys(uuids_bytes)))
-    dbusers_bytes={u:uuids_bytes.get(u.uuid,0) for u in users}
-    add_users_usage(dbusers_bytes,child_id)
+    res = {}
+    have_change = False
+    for user in User.query.all():
+        d = xray_api.get_usage(user.uuid, reset=True)
+        sd = singbox_api.get_usage(user.uuid, reset=True)
+        res[user] = {'usage': (d or 0)+(sd or 0), 'ips': ''}
+
+    return add_users_usage(res, 0)
+
+    # return {"status": 'success', "comments":res}
+
+
+def add_users_usage_uuid(uuids_bytes, child_id):
+    users = User.query.filter(User.uuid.in_(keys(uuids_bytes)))
+    dbusers_bytes = {u: uuids_bytes.get(u.uuid, 0) for u in users}
+    add_users_usage(dbusers_bytes, child_id)
+
 
 def is_already_valid(uuid):
-    xray_api.get_xray_client().add_client(t,f'{uuid}', f'{uuid}@hiddify.com',protocol=protocol,flow='xtls-rprx-vision',alter_id=0,cipher='chacha20_poly1305')
-    
-def add_users_usage(dbusers_bytes,child_id):
+    xray_api.get_xray_client().add_client(t, f'{uuid}', f'{uuid}@hiddify.com', protocol=protocol, flow='xtls-rprx-vision', alter_id=0, cipher='chacha20_poly1305')
+
+
+def add_users_usage(dbusers_bytes, child_id):
     print(dbusers_bytes)
     if not hconfig(ConfigEnum.is_parent) and hconfig(ConfigEnum.parent_panel):
         from hiddifypanel.panel import hiddify_api
-        hiddify_api.add_user_usage_to_parent(dbusers_bytes);
-    
-    res={}
-    have_change=False
-    before_enabled_users=xray_api.get_enabled_users()
-    daily_usage={}
-    today=datetime.date.today()
+        hiddify_api.add_user_usage_to_parent(dbusers_bytes)
+
+    res = {}
+    have_change = False
+    before_enabled_users = xray_api.get_enabled_users()
+    daily_usage = {}
+    today = datetime.date.today()
     for adm in AdminUser.query.all():
-        daily_usage[adm.id]=DailyUsage.query.filter(DailyUsage.date == today,DailyUsage.admin_id==adm.id,DailyUsage.child_id==child_id).first()
+        daily_usage[adm.id] = DailyUsage.query.filter(DailyUsage.date == today, DailyUsage.admin_id == adm.id, DailyUsage.child_id == child_id).first()
         if not daily_usage[adm.id]:
-            daily_usage[adm.id]=DailyUsage(admin_id=adm.id,child_id=child_id)
+            daily_usage[adm.id] = DailyUsage(admin_id=adm.id, child_id=child_id)
             db.session.add(daily_usage[adm.id])
-        daily_usage[adm.id].online=User.query.filter(User.added_by==adm.id).filter(func.DATE(User.last_online)==today).count()
+        daily_usage[adm.id].online = User.query.filter(User.added_by == adm.id).filter(func.DATE(User.last_online) == today).count()
     # db.session.commit()
-    for user,uinfo in dbusers_bytes.items():
-        usage_bytes=uinfo['usage']
-        ips=uinfo['ips']
+    for user, uinfo in dbusers_bytes.items():
+        usage_bytes = uinfo['usage']
+        ips = uinfo['ips']
         # user_active_before=is_user_active(user)
-        detail=user.details.filter(UserDetail.child_id==child_id).first()
+        detail = user.details.filter(UserDetail.child_id == child_id).first()
         if not detail:
-            detail=UserDetail(user_id=user.id,child_id=child_id)
-            detail.current_usage_GB=detail.current_usage_GB or 0
+            detail = UserDetail(user_id=user.id, child_id=child_id)
+            detail.current_usage_GB = detail.current_usage_GB or 0
             db.session.add(detail)
-        detail.connected_ips=ips
-        detail.current_usage_GB=detail.current_usage_GB or 0
+        detail.connected_ips = ips
+        detail.current_usage_GB = detail.current_usage_GB or 0
         if not user.last_reset_time or user_should_reset(user):
-            user.last_reset_time=datetime.date.today()
-            user.current_usage_GB=0
-            detail.current_usage_GB=0
+            user.last_reset_time = datetime.date.today()
+            user.current_usage_GB = 0
+            detail.current_usage_GB = 0
 
-        if before_enabled_users[user.uuid]==0  and user.is_active:
-                xray_api.add_client(user.uuid)
-                send_bot_message(user)
-                have_change=True
-        if type(usage_bytes) !=int or usage_bytes==0:
-            res[user.uuid]="No usage" 
+        if before_enabled_users[user.uuid] == 0 and user.is_active:
+            xray_api.add_client(user.uuid)
+            send_bot_message(user)
+            have_change = True
+        if type(usage_bytes) != int or usage_bytes == 0:
+            res[user.uuid] = "No usage"
         else:
-            daily_usage.get(user.added_by,daily_usage[1]).usage+=usage_bytes
-            in_gig=(usage_bytes)/to_gig_d
-            res[user.uuid]=in_gig
+            daily_usage.get(user.added_by, daily_usage[1]).usage += usage_bytes
+            in_gig = (usage_bytes)/to_gig_d
+            res[user.uuid] = in_gig
             user.current_usage_GB += in_gig
-            detail.current_usage_GB+= in_gig
-            user.last_online=datetime.datetime.now()
-            detail.last_online=datetime.datetime.now()
+            detail.current_usage_GB += in_gig
+            user.last_online = datetime.datetime.now()
+            detail.last_online = datetime.datetime.now()
 
-            if user.start_date==None:
-                user.start_date=datetime.date.today()
+            if user.start_date == None:
+                user.start_date = datetime.date.today()
 
-        if before_enabled_users[user.uuid]==1 and not is_user_active(user):
+        if before_enabled_users[user.uuid] == 1 and not is_user_active(user):
             xray_api.remove_client(user.uuid)
-            have_change=True
-            res[user.uuid]=f"{res[user.uuid]} !OUT of USAGE! Client Removed"
+            have_change = True
+            res[user.uuid] = f"{res[user.uuid]} !OUT of USAGE! Client Removed"
 
     db.session.commit()
     if have_change:
         hiddify.quick_apply_users()
 
-    return {"status": 'success', "comments":res}
-
+    return {"status": 'success', "comments": res}
 
 
 def send_bot_message(user):
@@ -107,10 +107,10 @@ def send_bot_message(user):
         return
     if not user.telegram_id:
         return
-    from hiddifypanel.panel.commercial.telegrambot import bot,Usage
+    from hiddifypanel.panel.commercial.telegrambot import bot, Usage
     try:
-        msg=Usage.get_usage_msg(user.uuid)
-        msg=_("User activated!") if is_user_active(user) else _("Package ended!")+"\n"+msg
+        msg = Usage.get_usage_msg(user.uuid)
+        msg = _("User activated!") if is_user_active(user) else _("Package ended!")+"\n"+msg
         bot.send_message(user.telegram_id, msg, reply_markup=Usage.user_keyboard(uuid))
     except:
         pass

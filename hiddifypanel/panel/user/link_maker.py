@@ -1,10 +1,12 @@
-from flask import g,request
+from flask import g, request
 import enum
 from hiddifypanel.models import *
 import yaml
 import json
 from hiddifypanel.panel import hiddify
-import random,re
+import random
+import re
+
 
 def all_proxies(child_id=0):
     all_proxies = hiddify.get_available_proxies(child_id)
@@ -34,7 +36,7 @@ def pbase64(full_str):
     return "vmess://"+resp.decode()
 
 
-def make_proxy(proxy:Proxy, domain_db:Domain, phttp=80, ptls=443):
+def make_proxy(proxy: Proxy, domain_db: Domain, phttp=80, ptls=443):
     def is_tls():
         return 'tls' in l3 or "reality" in l3
     if type(phttp) == str:
@@ -60,31 +62,31 @@ def make_proxy(proxy:Proxy, domain_db:Domain, phttp=80, ptls=443):
 
     name = proxy.name
     if not port:
-        return {'name': name, 'msg': "port not defined",'type':'error', 'proto': proxy.proto}
-    if "reality" not in l3 and domain_db.mode==DomainType.reality:
-        return {'name': name, 'msg': "reality proxy not in reality domain",'type':'debug', 'proto': proxy.proto}
+        return {'name': name, 'msg': "port not defined", 'type': 'error', 'proto': proxy.proto}
+    if "reality" not in l3 and domain_db.mode == DomainType.reality:
+        return {'name': name, 'msg': "reality proxy not in reality domain", 'type': 'debug', 'proto': proxy.proto}
 
-    if "reality" in l3 and domain_db.mode!=DomainType.reality:
-        return {'name': name, 'msg': "reality proxy not in reality domain",'type':'debug', 'proto': proxy.proto}
+    if "reality" in l3 and domain_db.mode != DomainType.reality:
+        return {'name': name, 'msg': "reality proxy not in reality domain", 'type': 'debug', 'proto': proxy.proto}
 
-    if "reality" in l3 and domain_db.grpc and ProxyTransport.grpc!=proxy.transport:
-        return {'name': name, 'msg': "reality proxy not in reality domain",'type':'debug', 'proto': proxy.proto}
+    if "reality" in l3 and domain_db.grpc and ProxyTransport.grpc != proxy.transport:
+        return {'name': name, 'msg': "reality proxy not in reality domain", 'type': 'debug', 'proto': proxy.proto}
 
-    if "reality" in l3 and (not domain_db.grpc) and ProxyTransport.grpc==proxy.transport:
-        return {'name': name, 'msg': "reality proxy not in reality domain",'type':'debug', 'proto': proxy.proto}
-        
-    is_cdn = ProxyCDN.CDN in proxy.cdn 
-    if is_cdn and domain_db.mode not in  [DomainType.cdn,DomainType.auto_cdn_ip,DomainType.worker]:
+    if "reality" in l3 and (not domain_db.grpc) and ProxyTransport.grpc == proxy.transport:
+        return {'name': name, 'msg': "reality proxy not in reality domain", 'type': 'debug', 'proto': proxy.proto}
+
+    is_cdn = ProxyCDN.CDN in proxy.cdn
+    if is_cdn and domain_db.mode not in [DomainType.cdn, DomainType.auto_cdn_ip, DomainType.worker]:
         # print("cdn proxy not in cdn domain", domain, name)
-        return {'name': name, 'msg': "cdn proxy not in cdn domain",'type':'debug', 'proto': proxy.proto}
-    if not is_cdn and domain_db.mode in  [DomainType.cdn,DomainType.auto_cdn_ip,DomainType.worker]:
+        return {'name': name, 'msg': "cdn proxy not in cdn domain", 'type': 'debug', 'proto': proxy.proto}
+    if not is_cdn and domain_db.mode in [DomainType.cdn, DomainType.auto_cdn_ip, DomainType.worker]:
         # print("not cdn proxy  in cdn domain", domain, name, proxy.cdn)
-        return {'name': name, 'msg': "not cdn proxy  in cdn domain",'type':'debug', 'proto': proxy.proto}
-    if domain_db.mode==DomainType.worker and proxy.transport==ProxyTransport.grpc:
-        return {'name': name, 'msg': "worker does not support grpc",'type':'debug', 'proto': proxy.proto}
-    cdn_forced_host = domain_db.cdn_ip or (domain_db.domain if domain_db.mode!=DomainType.reality else hiddify.get_direct_host_or_ip(4))
-    
-    alpn="h2" if proxy.l3 in ['tls_h2','reality'] else 'h2,http/1.1' if proxy.l3 == 'tls_h2_h1' else "http/1.1"
+        return {'name': name, 'msg': "not cdn proxy  in cdn domain", 'type': 'debug', 'proto': proxy.proto}
+    if domain_db.mode == DomainType.worker and proxy.transport == ProxyTransport.grpc:
+        return {'name': name, 'msg': "worker does not support grpc", 'type': 'debug', 'proto': proxy.proto}
+    cdn_forced_host = domain_db.cdn_ip or (domain_db.domain if domain_db.mode != DomainType.reality else hiddify.get_direct_host_or_ip(4))
+
+    alpn = "h2" if proxy.l3 in ['tls_h2', 'reality'] else 'h2,http/1.1' if proxy.l3 == 'tls_h2_h1' else "http/1.1"
     base = {
         'name': name.replace(" ", "_"),
         'cdn': is_cdn,
@@ -102,53 +104,53 @@ def make_proxy(proxy:Proxy, domain_db:Domain, phttp=80, ptls=443):
         'extra_info': f'{domain_db.alias or domain}',
         'fingerprint': hconfigs[ConfigEnum.utls],
         'allow_insecure': domain_db.mode == DomainType.fake or "Fake" in proxy.cdn,
-        'dbe':proxy,
-        'dbdomain':domain_db
+        'dbe': proxy,
+        'dbdomain': domain_db
     }
-    
+
     if base["proto"] == "trojan" and not is_tls():
-        return {'name': name, 'msg': "trojan but not tls",'type':'warning', 'proto': proxy.proto}
+        return {'name': name, 'msg': "trojan but not tls", 'type': 'warning', 'proto': proxy.proto}
 
     if l3 == "http" and ProxyTransport.XTLS in proxy.transport:
-        return {'name': name, 'msg': "http and xtls???",'type':'warning', 'proto': proxy.proto}
+        return {'name': name, 'msg': "http and xtls???", 'type': 'warning', 'proto': proxy.proto}
     if l3 == "http" and base["proto"] in ["ss", "ssr"]:
-        return {'name': name, 'msg': "http and ss or ssr???",'type':'warning', 'proto': proxy.proto}
+        return {'name': name, 'msg': "http and ss or ssr???", 'type': 'warning', 'proto': proxy.proto}
 
     if proxy.proto in ProxyProto.vmess:
-        base['cipher']="chacha20-poly1305"
+        base['cipher'] = "chacha20-poly1305"
 
     if l3 in ['reality']:
-        base['reality_short_id']=random.sample(hconfigs[ConfigEnum.reality_short_ids].split(','),1)[0]
-        #base['flow']="xtls-rprx-vision"
-        base['reality_pbk']=hconfigs[ConfigEnum.reality_public_key]
-        if(domain_db.servernames):
-            all_servernames=re.split('[ \t\r\n;,]+',domain_db.servernames)
-            base['sni']=random.sample(all_servernames,1)[0]
-            if hconfigs[ConfigEnum.core_type]=="singbox":
-                base['sni']=all_servernames[0]
+        base['reality_short_id'] = random.sample(hconfigs[ConfigEnum.reality_short_ids].split(','), 1)[0]
+        # base['flow']="xtls-rprx-vision"
+        base['reality_pbk'] = hconfigs[ConfigEnum.reality_public_key]
+        if (domain_db.servernames):
+            all_servernames = re.split('[ \t\r\n;,]+', domain_db.servernames)
+            base['sni'] = random.sample(all_servernames, 1)[0]
+            if hconfigs[ConfigEnum.core_type] == "singbox":
+                base['sni'] = all_servernames[0]
         else:
-            base['sni']=domain_db.domain
-        
+            base['sni'] = domain_db.domain
+
         del base['host']
-        if base.get('fingerprint','none')!='none':
-            base['fingerprint']="chrome"
+        if base.get('fingerprint', 'none') != 'none':
+            base['fingerprint'] = "chrome"
         # if not domain_db.cdn_ip:
         #     base['server']=hiddify.get_domain_ip(base['server'])
 
     if "Fake" in proxy.cdn:
         if not hconfigs[ConfigEnum.domain_fronting_domain]:
-            return {'name': name, 'msg': "no domain_fronting_domain",'type':'debug', 'proto': proxy.proto}
+            return {'name': name, 'msg': "no domain_fronting_domain", 'type': 'debug', 'proto': proxy.proto}
         if l3 == "http" and not hconfigs[ConfigEnum.domain_fronting_http_enable]:
-            return {'name': name, 'msg': "no http in domain_fronting_domain",'type':'debug', 'proto': proxy.proto}
+            return {'name': name, 'msg': "no http in domain_fronting_domain", 'type': 'debug', 'proto': proxy.proto}
         if l3 == "tls" and not hconfigs[ConfigEnum.domain_fronting_tls_enable]:
-            return {'name': name, 'msg': "no tls in domain_fronting_domain",'type':'debug', 'proto': proxy.proto}
+            return {'name': name, 'msg': "no tls in domain_fronting_domain", 'type': 'debug', 'proto': proxy.proto}
         base['server'] = hconfigs[ConfigEnum.domain_fronting_domain]
         base['sni'] = hconfigs[ConfigEnum.domain_fronting_domain]
         # base["host"]=domain
         base['mode'] = 'Fake'
 
     elif l3 == "http" and not hconfigs[ConfigEnum.http_proxy_enable]:
-        return {'name': name, 'msg': "http but http is disabled ",'type':'debug', 'proto': proxy.proto}
+        return {'name': name, 'msg': "http but http is disabled ", 'type': 'debug', 'proto': proxy.proto}
     path = {
         'vless': f'{hconfigs[ConfigEnum.path_vless]}',
         'trojan': f'{hconfigs[ConfigEnum.path_trojan]}',
@@ -196,21 +198,21 @@ def make_proxy(proxy:Proxy, domain_db:Domain, phttp=80, ptls=443):
         # base['grpc_mode'] = "multi" if hconfigs[ConfigEnum.core_type]=='xray' else 'gun'
         base['grpc_mode'] = 'gun'
         base['grpc_service_name'] = f'{path[base["proto"]]}{hconfigs[ConfigEnum.path_grpc]}'
-        base['path'] = base['grpc_service_name'] 
+        base['path'] = base['grpc_service_name']
         return base
 
     if "h1" in proxy.transport:
         base['transport'] = 'tcp'
         base['alpn'] = 'http/1.1'
         return base
-    return {'name': name, 'msg': 'not valid','type':'error', 'proto': proxy.proto}
+    return {'name': name, 'msg': 'not valid', 'type': 'error', 'proto': proxy.proto}
 
 
 def to_link(proxy):
     if 'error' in proxy:
         return proxy
 
-    name_link = proxy['extra_info'] +"_"+ proxy["name"]
+    name_link = proxy['extra_info'] + "_" + proxy["name"]
     if proxy['proto'] == 'vmess':
         # print(proxy)
         vmess_type = None
@@ -235,9 +237,9 @@ def to_link(proxy):
                       "fp": proxy["fingerprint"]
                       }
         if 'reality' in proxy["l3"]:
-            vmess_data['tls']="reality"
-            vmess_data['pbk']=proxy['reality_pbk']
-            vmess_data['sid']=proxy['reality_short_id']
+            vmess_data['tls'] = "reality"
+            vmess_data['pbk'] = proxy['reality_pbk']
+            vmess_data['sid'] = proxy['reality_short_id']
         return pbase64(f'vmess://{json.dumps(vmess_data)}')
     if proxy['proto'] == "ssr":
         baseurl = f'ssr://proxy["encryption"]:{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}'
@@ -252,32 +254,32 @@ def to_link(proxy):
             return f'{baseurl}?plugin=v2ray-plugin%3Bmode%3Dwebsocket%3Bpath%3D{proxy["path"]}%3Bhost%3D{proxy["host"]}%3Btls%3Budp-over-tcp=true#{name_link}'
     baseurl = f'{proxy["proto"]}://{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}?hiddify=1'
     baseurl += f'&sni={proxy["sni"]}&type={proxy["transport"]}'
-    
+
     baseurl += f"&alpn={proxy['alpn']}"
 
     # infos+=f'&alpn={proxy["alpn"]}'
-    baseurl  += f'&path={proxy["path"]}' if "path" in proxy else ""
-    baseurl  += f'&host={proxy["host"]}' if "host" in proxy else ""
+    baseurl += f'&path={proxy["path"]}' if "path" in proxy else ""
+    baseurl += f'&host={proxy["host"]}' if "host" in proxy else ""
     if "grpc" == proxy["transport"]:
-        baseurl  += f'&serviceName={proxy["grpc_service_name"]}&mode={proxy["grpc_mode"]}'
+        baseurl += f'&serviceName={proxy["grpc_service_name"]}&mode={proxy["grpc_mode"]}'
     # print(proxy['cdn'],proxy["transport"])
     if request.args.get("fragment"):
-        baseurl  += f'&fragment='+request.args.get("fragment")
+        baseurl += f'&fragment='+request.args.get("fragment")
     if "ws" == proxy["transport"] and proxy['cdn'] and request.args.get("fragment_v1"):
-        baseurl  += f'&fragment_v1='+request.args.get("fragment_v1")        
+        baseurl += f'&fragment_v1='+request.args.get("fragment_v1")
     if 'vless' == proxy['proto']:
-        baseurl  += "&encryption=none"
-    if proxy.get('fingerprint','none')!='none':
-        baseurl  += "&fp="+proxy['fingerprint']
+        baseurl += "&encryption=none"
+    if proxy.get('fingerprint', 'none') != 'none':
+        baseurl += "&fp="+proxy['fingerprint']
     if proxy['l3'] != 'quic':
-        baseurl  += '&headerType=None'  # if not quic
+        baseurl += '&headerType=None'  # if not quic
     if proxy['mode'] == 'Fake' or proxy['allow_insecure']:
-        baseurl  += "&allowInsecure=true"
-    if  proxy.get('flow'):
-        baseurl+= f'&flow={proxy["flow"]}'
+        baseurl += "&allowInsecure=true"
+    if proxy.get('flow'):
+        baseurl += f'&flow={proxy["flow"]}'
 
     infos = f'#{name_link}'
-    
+
     if 'reality' in proxy["l3"]:
         return f"{baseurl}&security=reality&pbk={proxy['reality_pbk']}&sid={proxy['reality_short_id']}{infos}"
     if 'tls' in proxy['l3']:
@@ -286,23 +288,24 @@ def to_link(proxy):
         return f'{baseurl}&security=none{infos}'
     return proxy
 
+
 def to_clash_yml(proxy):
     return yaml.dump(to_clash(proxy))
 
 
 def to_clash(proxy, meta_or_normal):
-    name=proxy['name']
+    name = proxy['name']
     if proxy['l3'] == "kcp":
-        return {'name': name, 'msg': "clash not support kcp",'type':'debug'}
+        return {'name': name, 'msg': "clash not support kcp", 'type': 'debug'}
     if meta_or_normal == "normal":
         if proxy['proto'] == "vless":
-            return {'name': name, 'msg': "vless not supported in clash",'type':'debug'}
+            return {'name': name, 'msg': "vless not supported in clash", 'type': 'debug'}
         if proxy.get('flow'):
-            return {'name': name, 'msg': "xtls not supported in clash",'type':'debug'}
+            return {'name': name, 'msg': "xtls not supported in clash", 'type': 'debug'}
         if proxy['transport'] == "shadowtls":
-            return {'name': name, 'msg': "shadowtls not supported in clash",'type':'debug'}
-    if proxy['l3']==ProxyL3.tls_h2 and proxy['proto'] in [ProxyProto.vmess,ProxyProto.vless] and proxy['dbe'].cdn==ProxyCDN.direct:
-        return {'name': name, 'msg': "bug tls_h2 vmess and vless in clash meta",'type':'warning'}
+            return {'name': name, 'msg': "shadowtls not supported in clash", 'type': 'debug'}
+    if proxy['l3'] == ProxyL3.tls_h2 and proxy['proto'] in [ProxyProto.vmess, ProxyProto.vless] and proxy['dbe'].cdn == ProxyCDN.direct:
+        return {'name': name, 'msg': "bug tls_h2 vmess and vless in clash meta", 'type': 'warning'}
     base = {}
     # vmess ws
     base["name"] = f"""{proxy['extra_info']} {proxy["name"]} {proxy['port']} {proxy["dbdomain"].id}"""
@@ -333,7 +336,7 @@ def to_clash(proxy, meta_or_normal):
             base["plugin-opts"] = {
                 "host": proxy["fakedomain"],
                 "password": proxy["proxy_path"],
-                "version": 3 # support 1/2/3
+                "version": 3  # support 1/2/3
 
             }
 
@@ -342,7 +345,7 @@ def to_clash(proxy, meta_or_normal):
             base["type"] = "ss"
             base["plugin-opts"] = {
                 "mode": "websocket",
-                "tls": "tls" in proxy["l3"] ,
+                "tls": "tls" in proxy["l3"],
                 "skip-cert-verify": proxy["mode"] == "Fake" or proxy['allow_insecure'],
                 "host": proxy['sni'],
                 "path": proxy["path"]
@@ -361,8 +364,7 @@ def to_clash(proxy, meta_or_normal):
     if proxy.get('flow'):
         base["flow"] = proxy['flow']
         # base["flow-show"] = True
-        
-      
+
     if proxy["proto"] == "vmess":
         base["alterId"] = 0
         base["cipher"] = proxy["cipher"]
@@ -380,7 +382,7 @@ def to_clash(proxy, meta_or_normal):
             base["ws-opts"]["headers"] = {"Host": proxy["host"]}
 
     if base["network"] == "tcp" and proxy['alpn'] != 'h2':
-        if proxy['transport']!=ProxyTransport.XTLS:
+        if proxy['transport'] != ProxyTransport.XTLS:
             base["network"] = "http"
 
         if "path" in proxy:
@@ -402,22 +404,21 @@ def to_clash(proxy, meta_or_normal):
         base["grpc-opts"] = {
             "grpc-service-name": proxy["grpc_service_name"]
         }
-    if proxy['l3']==ProxyL3.reality:
-        base["reality-opts"]={
-            "public-key":proxy['reality_pbk'],
-            "short-id":proxy['reality_short_id'],
+    if proxy['l3'] == ProxyL3.reality:
+        base["reality-opts"] = {
+            "public-key": proxy['reality_pbk'],
+            "short-id": proxy['reality_short_id'],
         }
-        if proxy['proto']!='grpc':
-            base["network"]= 'tcp'
-    
+        if proxy['proto'] != 'grpc':
+            base["network"] = 'tcp'
+
     return base
 
 
-
 def get_clash_config_names(meta_or_normal, domains):
-    allphttp=[p for p in request.args.get("phttp","").split(',') if p]
-    allptls=[p for p in request.args.get("ptls","").split(',') if p]
-    
+    allphttp = [p for p in request.args.get("phttp", "").split(',') if p]
+    allptls = [p for p in request.args.get("ptls", "").split(',') if p]
+
     allp = []
     for d in domains:
         hconfigs = get_hconfigs(d.child_id)
@@ -443,9 +444,9 @@ def get_clash_config_names(meta_or_normal, domains):
 
 
 def get_all_clash_configs(meta_or_normal, domains):
-    allphttp=[p for p in request.args.get("phttp","").split(',') if p]
-    allptls=[p for p in request.args.get("ptls","").split(',') if p]
-    
+    allphttp = [p for p in request.args.get("phttp", "").split(',') if p]
+    allptls = [p for p in request.args.get("ptls", "").split(',') if p]
+
     allp = []
     for d in domains:
         hconfigs = get_hconfigs(d.child_id)
