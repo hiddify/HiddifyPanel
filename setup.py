@@ -39,6 +39,8 @@ setup(
     long_description_content_type="text/markdown",
     author="hiddify",
     include_package_data=True,
+    license_files = ('LICENSE.md',),
+
     # ext_modules=cythonize(["hiddifypanel/*.pyx","hiddifypanel/*/*.pyx","hiddifypanel/*/*/*.pyx","hiddifypanel/*/*/*.pyx"]),    
     # ext_modules=cythonize(["hiddifypanel/*.pyx"]),    
     
