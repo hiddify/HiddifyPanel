@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Load
-from hiddifypanel import xray_api, singbox_api
+from hiddifypanel.drivers import user_driver
 from sqlalchemy import func
 from flask_babelex import gettext as __
 from flask_babelex import lazy_gettext as _
@@ -15,15 +15,8 @@ to_gig_d = 1024**3
 
 
 def update_local_usage():
-
-    res = {}
-    have_change = False
-    for user in User.query.all():
-        d = xray_api.get_usage(user.uuid, reset=True)
-        sd = singbox_api.get_usage(user.uuid, reset=True)
-        res[user] = {'usage': (d or 0)+(sd or 0), 'ips': ''}
-
-    return add_users_usage(res, 0)
+    res = user_driver.get_users_usage(reset=True)
+    return add_users_usage(res, child_id=0)
 
     # return {"status": 'success', "comments":res}
 
@@ -34,10 +27,6 @@ def add_users_usage_uuid(uuids_bytes, child_id):
     add_users_usage(dbusers_bytes, child_id)
 
 
-def is_already_valid(uuid):
-    xray_api.get_xray_client().add_client(t, f'{uuid}', f'{uuid}@hiddify.com', protocol=protocol, flow='xtls-rprx-vision', alter_id=0, cipher='chacha20_poly1305')
-
-
 def add_users_usage(dbusers_bytes, child_id):
     print(dbusers_bytes)
     if not hconfig(ConfigEnum.is_parent) and hconfig(ConfigEnum.parent_panel):
@@ -46,7 +35,7 @@ def add_users_usage(dbusers_bytes, child_id):
 
     res = {}
     have_change = False
-    before_enabled_users = xray_api.get_enabled_users()
+    before_enabled_users = user_driver.get_enabled_users()
     daily_usage = {}
     today = datetime.date.today()
     for adm in AdminUser.query.all():
@@ -73,7 +62,7 @@ def add_users_usage(dbusers_bytes, child_id):
             detail.current_usage_GB = 0
 
         if before_enabled_users[user.uuid] == 0 and user.is_active:
-            xray_api.add_client(user.uuid)
+            user_driver.add_client(user)
             send_bot_message(user)
             have_change = True
         if type(usage_bytes) != int or usage_bytes == 0:
@@ -91,7 +80,7 @@ def add_users_usage(dbusers_bytes, child_id):
                 user.start_date = datetime.date.today()
 
         if before_enabled_users[user.uuid] == 1 and not is_user_active(user):
-            xray_api.remove_client(user.uuid)
+            user_driver.remove_client(user)
             have_change = True
             res[user.uuid] = f"{res[user.uuid]} !OUT of USAGE! Client Removed"
 

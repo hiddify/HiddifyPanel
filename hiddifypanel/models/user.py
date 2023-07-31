@@ -61,6 +61,9 @@ class User(db.Model, SerializerMixin):
     max_ips = db.Column(db.Integer, default=1000, nullable=False)
     details = db.relationship('UserDetail', cascade="all,delete", backref='user',    lazy='dynamic',)
     enable = db.Column(db.Boolean, default=True, nullable=False)
+    ed25519_private_key=db.Column(db.String(100))
+    ed25519_public_key=db.Column(db.String(100))
+
 
     @property
     def remaining_days(self):

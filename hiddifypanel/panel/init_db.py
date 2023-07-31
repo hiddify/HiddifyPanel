@@ -108,11 +108,32 @@ def init_db():
     return BoolConfig.query.all()
 
 
+def _v44():
+    import ed25519
+    for u in User.query.all():
+
+        privkey = ed25519.Ed25519PrivateKey.generate()
+        pubkey = privkey.public_key()
+        priv_bytes = privkey.private_bytes(
+            encoding=serialization.Encoding.PEM,
+            format=serialization.PrivateFormat.OpenSSH,
+            encryption_algorithm=serialization.NoEncryption(),
+        )
+        pub_bytes = pubkey.public_bytes(
+            encoding=serialization.Encoding.OpenSSH,
+            format=serialization.PublicFormat.OpenSSH,
+        )
+        u.ed25519_private_key = priv_bytes.decode()
+        u.ed25519_public_key = pub_bytes.decode()
+    db.session.add(Proxy(l3='ssh', transport='ssh', cdn='direct', proto='ssh', enable=True, name="SSH"))
+    add_config_if_not_exist(ConfigEnum.ssh_server_redis_url, "unix:///opt/hiddify/other/redis/run.sock?db=ssh_liberty_bridge")
 # def _v43():
 #     if not (Domain.query.filter(Domain.domain==hconfig(ConfigEnum.domain_fronting_domain)).first()):
 #         db.session.add(Domain(domain=hconfig(ConfigEnum.domain_fronting_domain),servernames=hconfig(ConfigEnum.domain_fronting_domain),mode=DomainType.cdn))
 
 # v7.0.0
+
+
 def _v42():
 
     for k in [ConfigEnum.telegram_fakedomain, ConfigEnum.ssfaketls_fakedomain, ConfigEnum.shadowtls_fakedomain]:
@@ -366,7 +387,8 @@ def get_proxy_rows_v1():
         "restls1_2 direct ss",
         "restls1_3 direct ss",
         "tcp direct ssr",
-        "WS CDN v2ray"]
+        "WS CDN v2ray"
+    ]
     )
 
 

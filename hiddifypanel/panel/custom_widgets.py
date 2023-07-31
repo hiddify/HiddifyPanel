@@ -1,3 +1,12 @@
+from flask_admin.contrib.sqla import ModelView
+from wtforms.widgets import TextArea
+from wtforms import TextAreaField
+from flask_bootstrap import SwitchField
+from wtforms.fields import StringField, IntegerField, SelectField
+from hiddifypanel.panel.hiddify import flash
+from hiddifypanel.panel import hiddify
+from flask_babelex import lazy_gettext as _
+from flask_babelex import gettext as __
 from flask_admin.contrib import sqla
 from hiddifypanel.panel.database import db
 import datetime
@@ -6,17 +15,8 @@ from flask import Markup, g
 from wtforms.validators import Regexp, ValidationError
 import re
 import uuid
-from hiddifypanel import xray_api
+
 # from gettext import gettext as _
-from flask_babelex import gettext as __
-from flask_babelex import lazy_gettext as _
-from hiddifypanel.panel import hiddify
-from hiddifypanel.panel.hiddify import flash
-from wtforms.fields import StringField, IntegerField, SelectField
-from flask_bootstrap import SwitchField
-from wtforms import TextAreaField
-from wtforms.widgets import TextArea
-from flask_admin.contrib.sqla import ModelView
 
 
 class DaysLeftField(IntegerField):

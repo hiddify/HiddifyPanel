@@ -6,7 +6,7 @@ from flask import Markup, g, request, url_for, abort
 from wtforms.validators import Regexp, ValidationError
 import re
 import uuid
-from hiddifypanel import xray_api
+from hiddifypanel.drivers import user_driver
 from .adminlte import AdminLTEModelView
 # from gettext import gettext as _
 from flask_babelex import gettext as __
@@ -195,7 +195,7 @@ class UserAdmin(AdminLTEModelView):
     def on_model_delete(self, model):
         if len(User.query.all()) <= 1:
             raise ValidationError(f"at least one user should exist")
-        xray_api.remove_client(model.uuid)
+        user_driver.remove_client(model.uuid)
         # hiddify.flash_config_success()
 
     # def is_accessible(self):
@@ -251,7 +251,7 @@ class UserAdmin(AdminLTEModelView):
             raise ValidationError(_('You have too much users! You can have only %(active)s active users and %(total)s users',
                                   active=g.admin.max_active_users, total=g.admin.max_users))
         if old_user and old_user.uuid != model.uuid:
-            xray_api.remove_client(old_user.uuid)
+            user_driver.remove_client(old_user.uuid)
 
         # model.expiry_time=datetime.date.today()+datetime.timedelta(days=model.expiry_time)
 
@@ -267,13 +267,13 @@ class UserAdmin(AdminLTEModelView):
 
         user = User.query.filter(User.uuid == model.uuid).first()
         if is_user_active(user):
-            xray_api.add_client(model.uuid)
+            user_driver.add_client(model.uuid)
         else:
-            xray_api.remove_client(model.uuid)
+            user_driver.remove_client(model.uuid)
         hiddify.quick_apply_users()
 
     def after_model_delete(self, model):
-        xray_api.remove_client(model.uuid)
+        user_driver.remove_client(model.uuid)
 
         hiddify.quick_apply_users()
 

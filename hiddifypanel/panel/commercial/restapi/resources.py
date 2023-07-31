@@ -5,7 +5,7 @@ import datetime
 from hiddifypanel.models import *
 from urllib.parse import urlparse
 from hiddifypanel.panel import hiddify
-from hiddifypanel import xray_api
+from hiddifypanel.drivers import user_driver
 # class AllResource(Resource):
 #     def get(self):
 #         return jsonify(
@@ -27,7 +27,7 @@ class UserResource(Resource):
     def post(self):
         data = request.json
         hiddify.add_or_update_user(**data)
-        xray_api.add_client(data['uuid'])
+        user_driver.add_client(data['uuid'])
         hiddify.quick_apply_users()
 
         return jsonify({'status': 200, 'msg': 'ok'})
