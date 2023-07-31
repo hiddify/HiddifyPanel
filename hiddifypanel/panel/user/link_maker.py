@@ -409,10 +409,8 @@ def to_clash(proxy, meta_or_normal):
             "public-key": proxy['reality_pbk'],
             "short-id": proxy['reality_short_id'],
         }
-        if proxy['proto'] != 'grpc':
+        if proxy["transport"] != 'grpc':
             base["network"] = 'tcp'
-        else:
-            base["network"] = 'grpc'
 
     return base
 
