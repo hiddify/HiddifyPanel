@@ -411,6 +411,8 @@ def to_clash(proxy, meta_or_normal):
         }
         if proxy['proto'] != 'grpc':
             base["network"] = 'tcp'
+        else:
+            base["network"] = 'grpc'
 
     return base
 
