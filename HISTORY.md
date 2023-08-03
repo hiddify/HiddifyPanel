@@ -29,6 +29,8 @@
 
 #### Fix
 
+* Add remove bug. 
+
 * Ssh keys json. 
 
 * Bug. 
