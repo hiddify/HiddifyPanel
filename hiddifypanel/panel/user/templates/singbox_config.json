@@ -8,7 +8,7 @@
 		"servers": [
             {
 				"tag": "global",
-				"address": "8.8.8.8",
+				"address": "tcp://8.8.8.8",
 				"strategy": "prefer_ipv4",
 				"detour": "ssh-out"
 			},
