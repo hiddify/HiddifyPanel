@@ -25,6 +25,8 @@
 
 #### Fix
 
+* Ssh config. 
+
 * Bugs. 
 
 * Singbox api. 
