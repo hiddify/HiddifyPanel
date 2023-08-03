@@ -24,6 +24,7 @@ class SSHLibertyBridgeApi(DriverABS):
     def add_client(self, user):
         if hconfig(ConfigEnum.is_parent):
             return
+        print(f'Adding {user}')
         redis_client = self.get_ssh_redis_client()
         redis_client.sadd(USERS_SET, f'{user.uuid}::{user.ed25519_public_key}')
         redis_client.save()

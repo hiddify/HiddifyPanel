@@ -90,3 +90,8 @@ class AdminUserResource(Resource):
 class HelloResource(Resource):
     def get(self):
         return jsonify({"status": 200, "msg": "ok"})
+
+
+# class UpdateUsageResource(Resource):
+#     def get(self):
+#         return jsonify({"status": 200, "msg": "ok"})

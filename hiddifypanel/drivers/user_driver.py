@@ -1,5 +1,5 @@
 
-
+from sqlalchemy.orm import Load, joinedload
 from .ssh_liberty_bridge_api import SSHLibertyBridgeApi
 from .xray_api import XrayApi
 from .singbox_api import SingboxApi
@@ -19,19 +19,25 @@ def get_users_usage(reset=True):
 
 
 def get_enabled_users():
-    d = {}
+    from collections import defaultdict
+    d = defaultdict(int)
     for driver in drivers:
         for u, v in driver.get_enabled_users().items():
-            if not u in d or d[u]:
-                d[u] = v
-    return d
+            if not v:
+                continue
+            d[u] += 1
+
+    res = defaultdict(bool)
+    for u, v in d.items():
+        res[u] = v >= len(drivers)-1  # ignore singbox
+    return res
 
 
 def add_client(user):
     for driver in drivers:
-        d += driver.add_client(user)
+        driver.add_client(user)
 
 
 def remove_client(user):
     for driver in drivers:
-        d += driver.remove_client(user)
+        driver.remove_client(user)

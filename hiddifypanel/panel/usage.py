@@ -1,4 +1,7 @@
-from sqlalchemy.orm import Load
+from hiddifypanel.panel import hiddify
+from sqlalchemy.orm import Load, joinedload
+
+
 from hiddifypanel.drivers import user_driver
 from sqlalchemy import func
 from flask_babelex import gettext as __
@@ -10,8 +13,6 @@ import datetime
 from flask import jsonify, g, url_for, Markup
 from flask import flash as flask_flash
 to_gig_d = 1024**3
-
-# from hiddifypanel.panel import hiddify_api #hiddify
 
 
 def update_local_usage():
@@ -45,11 +46,12 @@ def add_users_usage(dbusers_bytes, child_id):
             db.session.add(daily_usage[adm.id])
         daily_usage[adm.id].online = User.query.filter(User.added_by == adm.id).filter(func.DATE(User.last_online) == today).count()
     # db.session.commit()
+    userDetails = {p.user_id: p for p in UserDetail.query.filter(UserDetail.child_id == child_id).all()}
     for user, uinfo in dbusers_bytes.items():
         usage_bytes = uinfo['usage']
         ips = uinfo['ips']
         # user_active_before=is_user_active(user)
-        detail = user.details.filter(UserDetail.child_id == child_id).first()
+        detail = userDetails.get(user.id)
         if not detail:
             detail = UserDetail(user_id=user.id, child_id=child_id)
             detail.current_usage_GB = detail.current_usage_GB or 0
@@ -85,7 +87,7 @@ def add_users_usage(dbusers_bytes, child_id):
             res[user.uuid] = f"{res[user.uuid]} !OUT of USAGE! Client Removed"
 
     db.session.commit()
-    if have_change:
+    if have_change and hconfig(ConfigEnum.core_type == 'singbox'):
         hiddify.quick_apply_users()
 
     return {"status": 'success', "comments": res}

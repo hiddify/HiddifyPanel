@@ -75,7 +75,7 @@ class User(db.Model, SerializerMixin):
     @property
     def ips(self):
         res = {}
-        for detail in self.details:
+        for detail in UserDetail.query.filter(UserDetail.user_id == self.id):
             for ip in detail.ips:
                 res[ip] = 1
         return list(res.keys())
