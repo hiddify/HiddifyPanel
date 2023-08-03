@@ -13,7 +13,7 @@
 				"detour": "ssh-out"
 			},
 			{
-				"tag": "global",
+				"tag": "global2",
 				"address": "https://1.1.1.1/dns-query",
 				"address_resolver": "local",
 				"strategy": "prefer_ipv4",
@@ -69,7 +69,7 @@
 			"server": "$server_addr",
 			"server_port": {{hconfigs[ConfigEnum.ssh_server_port]}},
 			"user": "{{user.uuid}}",
-			"private_key": "{{user.ed25519_private_key}}",
+			"private_key": "{{user.ed25519_private_key|replace('\n', '\\n')}}",
 			"host_key": {{host_keys}},
 			"client_version": "{{ssh_client_version}}"
 		},
