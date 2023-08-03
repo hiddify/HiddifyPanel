@@ -21,6 +21,8 @@
 
 #### Fix
 
+* Typo. 
+
 * Bug. 
 
 * Ssh liberty redis path. 
