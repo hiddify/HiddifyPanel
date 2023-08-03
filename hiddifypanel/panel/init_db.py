@@ -111,13 +111,14 @@ def init_db():
 
 
 def _v44():
-    
 
     for u in User.query.all():
-        priv,publ=hiddify.get_ed25519_private_public_pair()
+        priv, publ = hiddify.get_ed25519_private_public_pair()
         u.ed25519_private_key = priv
         u.ed25519_public_key = publ
-    db.session.add(Proxy(l3='ssh', transport='ssh', cdn='direct', proto='ssh', enable=True, name="SSH"))
+
+    if not Proxy.query.first(Proxy.name == "SSH"):
+        db.session.add(Proxy(l3='ssh', transport='ssh', cdn='direct', proto='ssh', enable=True, name="SSH"))
     add_config_if_not_exist(ConfigEnum.ssh_server_redis_url, "unix:///opt/hiddify-config/other/redis/run.sock?db=1")
     add_config_if_not_exist(ConfigEnum.ssh_server_port, random.randint(5000, 20000))
     add_config_if_not_exist(ConfigEnum.ssh_server_enable, False)
