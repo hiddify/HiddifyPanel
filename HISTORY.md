@@ -17,6 +17,8 @@
 
 #### Changes
 
+* Add dns to tcp. 
+
 * Update usage. 
 
 * Add restart on change ssh configs. 
