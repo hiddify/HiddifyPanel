@@ -110,6 +110,14 @@ def init_db():
     return BoolConfig.query.all()
 
 
+def _v49():
+
+    for u in User.query.all():
+        priv, publ = hiddify.get_ed25519_private_public_pair()
+        u.ed25519_private_key = priv
+        u.ed25519_public_key = publ
+
+
 def _v48():
     add_config_if_not_exist(ConfigEnum.ssh_server_enable, True)
     set_hconfig(ConfigEnum.ssh_server_enable, True)
@@ -120,11 +128,6 @@ def _v47():
 
 
 def _v45():
-
-    for u in User.query.all():
-        priv, publ = hiddify.get_ed25519_private_public_pair()
-        u.ed25519_private_key = priv
-        u.ed25519_public_key = publ
 
     if not Proxy.query.filter(Proxy.name == "SSH").first():
         db.session.add(Proxy(l3='ssh', transport='ssh', cdn='direct', proto='ssh', enable=True, name="SSH"))
