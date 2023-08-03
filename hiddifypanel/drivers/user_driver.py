@@ -18,18 +18,20 @@ def get_users_usage(reset=True):
     return res
 
 
-def get_enabled_users(self):
-    d = []
+def get_enabled_users():
+    d = {}
     for driver in drivers:
-        d += driver.get_enabled_users() or []
+        for u, v in driver.get_enabled_users().items():
+            if not u in d or d[u]:
+                d[u] = v
     return d
 
 
-def add_client(self, user):
+def add_client(user):
     for driver in drivers:
         d += driver.add_client(user)
 
 
-def remove_client(self, user):
+def remove_client(user):
     for driver in drivers:
         d += driver.remove_client(user)

@@ -9,7 +9,7 @@ USERS_USAGE = "ssh-server:users-usage"
 class SSHLibertyBridgeApi(DriverABS):
 
     def get_ssh_redis_client(self):
-        if not getattr(self, 'redis_client'):
+        if not hasattr(self, 'redis_client'):
             self.redis_client = redis.from_url(hconfig(ConfigEnum.ssh_server_redis_url), decode_responses=True)
 
         return self.redis_client
@@ -19,7 +19,7 @@ class SSHLibertyBridgeApi(DriverABS):
             return
         redis_client = self.get_ssh_redis_client()
         members = redis_client.smembers(USERS_SET)
-        return [m.split("::")[0] for m in members]
+        return {m.split("::")[0]: 1 for m in members}
 
     def add_client(self, user):
         if hconfig(ConfigEnum.is_parent):
@@ -39,6 +39,7 @@ class SSHLibertyBridgeApi(DriverABS):
     def get_usage(self, client_uuid: str, reset: bool = True) -> int:
         if hconfig(ConfigEnum.is_parent):
             return
+        redis_client = self.get_ssh_redis_client()
         value = redis_client.hget(USERS_USAGE, client_uuid)
 
         if value is None:
@@ -49,5 +50,5 @@ class SSHLibertyBridgeApi(DriverABS):
         if reset:
             redis_client.hincrby(USERS_USAGE, client_uuid, -value)
             redis_client.save()
-
+        print(f'ssh usage {client_uuid} {value}')
         return value

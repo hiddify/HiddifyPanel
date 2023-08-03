@@ -12,6 +12,7 @@ class SingboxApi(DriverABS):
     def get_enabled_users(self):
         if hconfig(ConfigEnum.is_parent):
             return
+        return {}
 
     def get_inbound_tags(self):
         if hconfig(ConfigEnum.is_parent):
@@ -41,7 +42,7 @@ class SingboxApi(DriverABS):
         xray_client = self.get_singbox_client()
         d = xray_client.get_client_download_traffic(f'{uuid}@hiddify.com', reset=reset)
         u = xray_client.get_client_upload_traffic(f'{uuid}@hiddify.com', reset=reset)
-        print(f"Success {uuid} d={d} u={u}")
+        print(f"singbox {uuid} d={d} u={u}")
         res = None
         if d is None:
             res = u
