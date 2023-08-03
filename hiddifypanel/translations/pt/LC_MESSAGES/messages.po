@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPT\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-03 16:43+0200\n"
-"PO-Revision-Date: 2023-08-03 09:31-0500\n"
+"POT-Creation-Date: 2023-08-03 18:28+0200\n"
+"PO-Revision-Date: 2023-08-03 09:44-0500\n"
 "Last-Translator: lymanrudni\n"
 "Language: pt\n"
 "Language-Team: Portuguese\n"
@@ -92,12 +92,12 @@ msgstr ""
 "com o mesmo ASN"
 
 # | msgid "User Activated"
-#: hiddifypanel/panel/usage.py:102
+#: hiddifypanel/panel/usage.py:104
 msgid "User activated!"
 msgstr "Usuário ativado"
 
 # | msgid "Package Ended"
-#: hiddifypanel/panel/usage.py:102
+#: hiddifypanel/panel/usage.py:104
 msgid "Package ended!"
 msgstr "Package encerrado"
 
@@ -3147,6 +3147,7 @@ msgstr "Link de assinatura"
 msgid "singbox: ssh"
 msgstr "caixa de som: ssh"
 
+# | msgid "SSH"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:64
 #: hiddifypanel/panel/user/templates/home/all-configs.html:65
 #: hiddifypanel/panel/user/templates/home/all-configs.html:66
@@ -4316,21 +4317,27 @@ msgstr ""
 "href=\"mailto:hiddify@gmail.com\">hiddify@gmail.com</a> se puder nos "
 "ajudar."
 
+# | msgid "SSH user database address"
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
 msgid "config.ssh_server_redis_url.label"
 msgstr "Endereço do banco de dados do usuário SSH"
 
+# | msgid "Not used"
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
 msgid "config.ssh_server_redis_url.description"
 msgstr "Não usado"
 
+# | msgid "SSH Proxy Port"
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
 msgid "config.ssh_server_port.label"
 msgstr "Porta Proxy SSH"
 
+# | msgid ""
+# | "This is completely different from your original ssh server. It is a "
+# | "dedicated program."
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
 msgid "config.ssh_server_port.description"
@@ -4338,11 +4345,13 @@ msgstr ""
 "Isso é completamente diferente do seu servidor ssh original. É um "
 "programa dedicado."
 
+# | msgid "Enable SSH Proxy"
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
 msgid "config.ssh_server_enable.label"
 msgstr "Ativar proxy SSH"
 
+# | msgid "SSH proxy is completely different than original ssh server."
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
 msgid "config.ssh_server_enable.description"
@@ -4382,11 +4391,18 @@ msgstr ""
 "🚧 Bloquear Malware 1.1.1.2 <br>\n"
 "🔞 Bloquear pornografia 1.1.1.3"
 
+# | msgid "SSH Proxy"
 #: hiddifypanel/templates/fake.html:2
 #, fuzzy
 msgid "config.ssh.label"
 msgstr "Proxy SSH"
 
+# | msgid ""
+# | "An SSH proxy, also known as an SSH tunnel or SSH port forwarding, is a "
+# | "secure method of creating a secure communication channel between two "
+# | "machines over an insecure network. We have a specific application which
+# is "
+# | "completely different from ssh server and can not execute any commands"
 #: hiddifypanel/templates/fake.html:2
 #, fuzzy
 msgid "config.ssh.description"
