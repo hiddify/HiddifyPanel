@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-30 16:43+0200\n"
-"PO-Revision-Date: 2023-07-30 09:30-0500\n"
+"POT-Creation-Date: 2023-08-03 10:13+0200\n"
+"PO-Revision-Date: 2023-07-30 09:43-0500\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Generated-By: Babel 2.12.1\n"
 
 # | msgid "This Domain does not exist in the Panel !"
-#: hiddifypanel/models/domain.py:134 hiddifypanel/panel/user/user.py:177
+#: hiddifypanel/models/domain.py:134 hiddifypanel/panel/user/user.py:165
 msgid "This domain does not exist in the panel!"
 msgstr "This Domain does not exist in the Panel !"
 
@@ -24,27 +24,27 @@ msgstr "This Domain does not exist in the Panel !"
 msgid "Error! auto cdn ip can not be find, please contact admin."
 msgstr "Error In Auto CDN IP! It Can Not Be Find, Please Contact Admin"
 
-#: hiddifypanel/panel/hiddify.py:76
+#: hiddifypanel/panel/hiddify.py:78
 #, fuzzy
 msgid "Access Denied"
 msgstr "Access Denied"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/panel/hiddify.py:221
+#: hiddifypanel/panel/hiddify.py:223
 msgid "admin.config.apply_configs"
 msgstr "Apply Configs"
 
 # | msgid ""
 # | "Configs have been changed successfully. Click %(link)s to apply the "
 # | "configs. It may take 2 minutes to apply"
-#: hiddifypanel/panel/hiddify.py:222
+#: hiddifypanel/panel/hiddify.py:224
 msgid "config.validation-success"
 msgstr ""
 "Configs have been changed successfully. Click %(link)s to apply the configs."
 " It may take 2 minutes to apply"
 
 # | msgid " ✅ Configs have been changed successfully"
-#: hiddifypanel/panel/hiddify.py:224
+#: hiddifypanel/panel/hiddify.py:226
 msgid "config.validation-success-no-reset"
 msgstr " ✅ Configs have been changed successfully"
 
@@ -57,14 +57,14 @@ msgstr " ✅ Configs have been changed successfully"
 #: hiddifypanel/panel/admin/DomainAdmin.py:179
 #: hiddifypanel/panel/admin/QuickSetup.py:126
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:107
-#: hiddifypanel/panel/hiddify.py:343
+#: hiddifypanel/panel/hiddify.py:345
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr ""
 "Domain can not be resolved! There is a problem in your domain. Please check "
 "your Domain configurations."
 
 # | msgid "Last Day"
-#: hiddifypanel/panel/hiddify.py:371
+#: hiddifypanel/panel/hiddify.py:373
 msgid "0 - Last day"
 msgstr "Last Day"
 
@@ -72,7 +72,7 @@ msgstr "Last Day"
 # | "Selected Domain for REALITY is not in the same ASN. To better use of the
 # "
 # | "Protocol, it is better to find a Domain in the same ASN"
-#: hiddifypanel/panel/hiddify.py:652
+#: hiddifypanel/panel/hiddify.py:654
 msgid ""
 "selected domain for REALITY is not in the same ASN. To better use of the "
 "protocol, it is better to find a domain in the same ASN."
@@ -81,12 +81,12 @@ msgstr ""
 "Protocol, it is better to find a Domain in the same ASN"
 
 # | msgid "User Activated"
-#: hiddifypanel/panel/usage.py:113
+#: hiddifypanel/panel/usage.py:102
 msgid "User activated!"
 msgstr "User Activated"
 
 # | msgid "Package Ended"
-#: hiddifypanel/panel/usage.py:113
+#: hiddifypanel/panel/usage.py:102
 msgid "Package ended!"
 msgstr "Package Ended"
 
@@ -2738,11 +2738,11 @@ msgstr "Hiddify Configs"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:52
 #: hiddifypanel/panel/user/templates/home/all-configs.html:53
 #: hiddifypanel/panel/user/templates/home/all-configs.html:54
-#: hiddifypanel/panel/user/templates/home/all-configs.html:63
-#: hiddifypanel/panel/user/templates/home/all-configs.html:64
-#: hiddifypanel/panel/user/templates/home/all-configs.html:65
-#: hiddifypanel/panel/user/templates/home/all-configs.html:66
-#: hiddifypanel/panel/user/templates/home/all-configs.html:67
+#: hiddifypanel/panel/user/templates/home/all-configs.html:77
+#: hiddifypanel/panel/user/templates/home/all-configs.html:78
+#: hiddifypanel/panel/user/templates/home/all-configs.html:79
+#: hiddifypanel/panel/user/templates/home/all-configs.html:80
+#: hiddifypanel/panel/user/templates/home/all-configs.html:81
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:22
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:23
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:24
@@ -2771,12 +2771,26 @@ msgstr "Except VLess"
 
 # | msgid "Subscription Link"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:47
-#: hiddifypanel/panel/user/templates/home/all-configs.html:60
+#: hiddifypanel/panel/user/templates/home/all-configs.html:74
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:43
 #: hiddifypanel/panel/user/templates/home/android.html:43
 #: hiddifypanel/panel/user/templates/home/ios.html:29
 msgid "user.home.allconfig.link-configs"
 msgstr "Subscription Link"
+
+#: hiddifypanel/panel/user/templates/home/all-configs.html:61
+#, fuzzy
+msgid "singbox: ssh"
+msgstr "singbox: ssh"
+
+#: hiddifypanel/panel/user/templates/home/all-configs.html:64
+#: hiddifypanel/panel/user/templates/home/all-configs.html:65
+#: hiddifypanel/panel/user/templates/home/all-configs.html:66
+#: hiddifypanel/panel/user/templates/home/all-configs.html:67
+#: hiddifypanel/panel/user/templates/home/all-configs.html:68
+#, fuzzy
+msgid "ssh"
+msgstr "ssh"
 
 # | msgid ""
 # | "📍 Please select one of the following applications:\n"
@@ -3786,6 +3800,36 @@ msgstr ""
 "\n"
 "Please contact us at <a href=\"mailto:info@hiddify.com\">info@hiddify.com</a> if you can help us."
 
+#: hiddifypanel/templates/fake.html:1
+#, fuzzy
+msgid "config.ssh_server_redis_url.label"
+msgstr "config.ssh_server_redis_url.label"
+
+#: hiddifypanel/templates/fake.html:1
+#, fuzzy
+msgid "config.ssh_server_redis_url.description"
+msgstr "config.ssh_server_redis_url.description"
+
+#: hiddifypanel/templates/fake.html:1
+#, fuzzy
+msgid "config.ssh_server_ports.label"
+msgstr "config.ssh_server_ports.label"
+
+#: hiddifypanel/templates/fake.html:1
+#, fuzzy
+msgid "config.ssh_server_ports.description"
+msgstr "config.ssh_server_ports.description"
+
+#: hiddifypanel/templates/fake.html:1
+#, fuzzy
+msgid "config.ssh_server_enable.label"
+msgstr "config.ssh_server_enable.label"
+
+#: hiddifypanel/templates/fake.html:1
+#, fuzzy
+msgid "config.ssh_server_enable.description"
+msgstr "config.ssh_server_enable.description"
+
 # | msgid "🎛️ Core"
 #: hiddifypanel/templates/fake.html:1
 msgid "config.core_type.label"
@@ -3817,6 +3861,16 @@ msgstr ""
 "✳️ Default 1.1.1.1 <br>\n"
 "🚧 Block Malware 1.1.1.2 <br>\n"
 "🔞 Block Porn 1.1.1.3\n"
+
+#: hiddifypanel/templates/fake.html:2
+#, fuzzy
+msgid "config.ssh.label"
+msgstr "config.ssh.label"
+
+#: hiddifypanel/templates/fake.html:2
+#, fuzzy
+msgid "config.ssh.description"
+msgstr "config.ssh.description"
 
 #: hiddifypanel/templates/fake.html:2
 #, fuzzy

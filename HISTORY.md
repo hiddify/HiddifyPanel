@@ -1,6 +1,41 @@
 # Changelog
 
 
+## (unreleased)
+
+#### New
+
+* Add caching for speed up some process. 
+
+* Add singbox config. 
+
+* Add singbox config for ssh. 
+
+* Add ssh server port. 
+
+* Add ssh user support. 
+
+#### Changes
+
+* Disable caching. 
+
+#### Fix
+
+* Ssh liberty redis path. 
+
+#### Other
+
+* Merge branch 'main' of github.com:hiddify1/HiddifyPanel. 
+
+* Merge pull request #14 from randomguy-on-internet/patch-1. 
+  _clash GRPC bug_
+
+* Update link_maker.py. 
+
+* Update link_maker.py. 
+
+
+
 ## 7.1.9 (2023-07-30)
 
 #### Fix
