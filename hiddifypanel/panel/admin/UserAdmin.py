@@ -31,7 +31,8 @@ class UserAdmin(AdminLTEModelView):
         # 'disable_user': SwitchField(_("Disable User"))
     }
     list_template = 'model/user_list.html'
-    form_excluded_columns = ['monthly', 'telegram_id', 'last_online', 'expiry_time', 'last_reset_time', 'current_usage_GB', 'start_date', 'added_by', 'admin', 'details', 'max_ips']
+    form_excluded_columns = ['monthly', 'telegram_id', 'last_online', 'expiry_time', 'last_reset_time', 'current_usage_GB',
+                             'start_date', 'added_by', 'admin', 'details', 'max_ips', 'ed25519_private_key', 'ed25519_public_key']
     page_size = 50
     # edit_modal=True
     # create_modal=True
