@@ -25,6 +25,8 @@
 
 #### Fix
 
+* Singbox comment. 
+
 * Singbox. 
 
 * Bool. 
