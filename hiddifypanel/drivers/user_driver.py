@@ -3,7 +3,7 @@
 from .ssh_liberty_bridge_api import SSHLibertyBridgeApi
 from .xray_api import XrayApi
 from .singbox_api import SingboxApi
-
+from hiddifypanel.models import *
 
 drivers = [XrayApi(), SingboxApi(), SSHLibertyBridgeApi()]
 
