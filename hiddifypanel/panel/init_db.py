@@ -110,6 +110,11 @@ def init_db():
     return BoolConfig.query.all()
 
 
+def _v46():
+    StrConfig.query.filter(StrConfig.key == ConfigEnum.ssh_server_enable).delete()
+    add_config_if_not_exist(ConfigEnum.ssh_server_enable, False)
+
+
 def _v45():
 
     for u in User.query.all():
