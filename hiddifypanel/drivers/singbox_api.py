@@ -13,7 +13,7 @@ class SingboxApi(DriverABS):
         if hconfig(ConfigEnum.is_parent):
             return
 
-    def get_inbound_tags():
+    def get_inbound_tags(self):
         if hconfig(ConfigEnum.is_parent):
             return
         try:
@@ -25,17 +25,17 @@ class SingboxApi(DriverABS):
             inbounds = []
         return list(set(inbounds))
 
-    def add_client(user):
+    def add_client(self, user):
         if hconfig(ConfigEnum.is_parent):
             return
         # raise NotImplementedError()
 
-    def remove_client(user):
+    def remove_client(self, user):
         if hconfig(ConfigEnum.is_parent):
             return
         # raise NotImplementedError()
 
-    def get_usage(uuid, reset=False):
+    def get_usage(self, uuid, reset=False):
         if hconfig(ConfigEnum.is_parent):
             return
         xray_client = self.get_singbox_client()
