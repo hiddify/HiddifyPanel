@@ -5,30 +5,29 @@ from flask import Flask, request, g
 from flask_babelex import Babel
 from hiddifypanel.panel.init_db import init_db
 import hiddifypanel
-from hiddifypanel.models import  *
+from hiddifypanel.models import *
 from dotenv import dotenv_values
 import os
-def create_app(cli=False,**config):
+
+
+def create_app(cli=False, **config):
     app = Flask(__name__, static_url_path="/<proxy_path>/static/", instance_relative_config=True)
 
-    for c,v in dotenv_values('app.cfg').items():
+    for c, v in dotenv_values('app.cfg').items():
         if v.isdecimal():
-            v= int(v)
+            v = int(v)
         else:
-            v=True if v.lower()=="true" else (False if v.lower()=="false" else v)
+            v = True if v.lower() == "true" else (False if v.lower() == "false" else v)
 
-        
-        app.config[c]=v
-        
+        app.config[c] = v
 
     app.jinja_env.line_statement_prefix = '%'
-    app.is_cli=cli
+    app.is_cli = cli
     flask_bootstrap.Bootstrap4(app)
-    
+
     hiddifypanel.panel.database.init_app(app)
     with app.app_context():
         init_db()
-        
 
     hiddifypanel.panel.common.init_app(app)
     hiddifypanel.panel.admin.init_app(app)
@@ -58,10 +57,14 @@ def create_app(cli=False,**config):
 
     @app.before_request
     def check_csrf():
-        if "/admin/user/" in request.base_url: return
-        if "/admin/domain/" in request.base_url: return
-        if "/admin/actions/" in request.base_url: return
-        if "/api/v1/" in request.base_url: return
+        if "/admin/user/" in request.base_url:
+            return
+        if "/admin/domain/" in request.base_url:
+            return
+        if "/admin/actions/" in request.base_url:
+            return
+        if "/api/v1/" in request.base_url:
+            return
         csrf.protect()
 
     app.jinja_env.globals['get_locale'] = get_locale

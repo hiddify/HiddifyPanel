@@ -1,11 +1,11 @@
 
 
-from . import ssh_liberty_bridge_api
-from . import xray_api
-from . import singbox_api
+from .ssh_liberty_bridge_api import SSHLibertyBridgeApi
+from .xray_api import XrayApi
+from .singbox_api import SingboxApi
 
 
-drivers = [xray_api(), singbox_api(), ssh_liberty_bridge_api()]
+drivers = [XrayApi(), SingboxApi(), SSHLibertyBridgeApi()]
 
 
 def get_users_usage(reset=True):
@@ -24,6 +24,7 @@ def get_enabled_users(self):
         d += driver.get_enabled_users() or []
     return d
 
-def add_client(self,user):
+
+def add_client(self, user):
     for driver in drivers:
         d += driver.add_client(user)

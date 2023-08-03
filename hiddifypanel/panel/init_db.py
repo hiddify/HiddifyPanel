@@ -30,6 +30,8 @@ def init_db():
 
     add_column(Domain.grpc)
     add_column(ParentDomain.alias)
+    add_column(User.ed25519_private_key)
+    add_column(User.ed25519_public_key)
     add_column(User.start_date)
     add_column(User.package_days)
     add_column(User.telegram_id)

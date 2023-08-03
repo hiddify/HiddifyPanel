@@ -1,12 +1,14 @@
 import socket
 from sqlalchemy.orm import Load
+import glob
+import json
 from babel.dates import format_timedelta as babel_format_timedelta
 from flask_babelex import gettext as __
 from flask_babelex import lazy_gettext as _
 from hiddifypanel.models import *
 from hiddifypanel.panel.database import db
 import datetime
-from flask import jsonify, g, url_for, Markup, abort
+from flask import jsonify, g, url_for, Markup, abort, current_app
 from flask import flash as flask_flash
 from wtforms.validators import ValidationError
 import requests
@@ -669,7 +671,7 @@ def generate_x25519_keys():
     return {"private_key": private_key, "public_key": public_key}
 
 
-def get_hostkeys(json=False):
+def get_hostkeys(dojson=False):
     key_files = glob.glob(current_app.config['HIDDIFY_CONFIG_PATH'] + "/other/ssh/host_key/*_key.pub")
     host_keys = []
     for file_name in key_files:
@@ -680,10 +682,10 @@ def get_hostkeys(json=False):
                 host_key = host_key[:2]  # strip the hostname part
             host_key = " ".join(host_key)
             host_keys.append(host_key)
-    if json:
+    if dojson:
         return json.dumps(host_keys)
     return host_keys
 
 
-def get_ssh_client_vetsion(user):
+def get_ssh_client_version(user):
     return 'SSH-2.0-OpenSSH_7.4p1'

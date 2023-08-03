@@ -70,8 +70,8 @@
 			"server_port": {{hconfigs[ConfigEnum.ssh_server_port]}},
 			"user": "{{user.uuid}}",
 			"private_key": "{{user.ed25519_private_key}}",
-			"host_key": {{hiddify.get_hostkeys(True)}},
-			"client_version": "{{hiddify.get_ssh_client_version(user)}}"
+			"host_key": {{host_keys}},
+			"client_version": "{{ssh_client_version}}"
 		},
 		{
 			"type": "direct",
