@@ -17,9 +17,19 @@
 
 #### Changes
 
+* Add restart on change ssh configs. 
+
+* Remove ssh key info. 
+
 * Disable caching. 
 
 #### Fix
+
+* Singbox. 
+
+* Bool. 
+
+* Remove client. 
 
 * Singbox error. 
 
