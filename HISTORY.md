@@ -21,6 +21,8 @@
 
 #### Fix
 
+* Singbox error. 
+
 * Config issue. 
 
 * Bug. 
