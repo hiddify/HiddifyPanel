@@ -1,4 +1,4 @@
-from hiddifypanel.Cache import cache
+# from hiddifypanel.cache import cache
 from sqlalchemy_serializer import SerializerMixin
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
@@ -49,7 +49,7 @@ class StrConfig(db.Model, SerializerMixin):
         }
 
 
-@cache.cache()
+# @cache.cache()
 def hconfig(key: ConfigEnum, child_id=0):
     value = None
     try:
