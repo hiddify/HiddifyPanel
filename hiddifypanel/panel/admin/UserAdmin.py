@@ -196,7 +196,7 @@ class UserAdmin(AdminLTEModelView):
     def on_model_delete(self, model):
         if len(User.query.all()) <= 1:
             raise ValidationError(f"at least one user should exist")
-        user_driver.remove_client(model.uuid)
+        user_driver.remove_client(model)
         # hiddify.flash_config_success()
 
     # def is_accessible(self):
@@ -252,7 +252,7 @@ class UserAdmin(AdminLTEModelView):
             raise ValidationError(_('You have too much users! You can have only %(active)s active users and %(total)s users',
                                   active=g.admin.max_active_users, total=g.admin.max_users))
         if old_user and old_user.uuid != model.uuid:
-            user_driver.remove_client(old_user.uuid)
+            user_driver.remove_client(old_user)
         if not model.ed25519_private_key:
             priv, publ = hiddify.get_ed25519_private_public_pair()
             model.ed25519_private_key = priv
@@ -271,13 +271,13 @@ class UserAdmin(AdminLTEModelView):
 
         user = User.query.filter(User.uuid == model.uuid).first()
         if is_user_active(user):
-            user_driver.add_client(model.uuid)
+            user_driver.add_client(model)
         else:
-            user_driver.remove_client(model.uuid)
+            user_driver.remove_client(model)
         hiddify.quick_apply_users()
 
     def after_model_delete(self, model):
-        user_driver.remove_client(model.uuid)
+        user_driver.remove_client(model)
 
         hiddify.quick_apply_users()
 
