@@ -126,8 +126,9 @@ def _v44():
         u.ed25519_private_key = priv_bytes.decode()
         u.ed25519_public_key = pub_bytes.decode()
     db.session.add(Proxy(l3='ssh', transport='ssh', cdn='direct', proto='ssh', enable=True, name="SSH"))
-    add_config_if_not_exist(ConfigEnum.ssh_server_redis_url, "unix:///opt/hiddify/other/redis/run.sock?db=0")
+    add_config_if_not_exist(ConfigEnum.ssh_server_redis_url, "unix:///opt/hiddify-config/other/redis/run.sock?db=1")
     add_config_if_not_exist(ConfigEnum.ssh_server_port, random.randint(5000, 20000))
+    add_config_if_not_exist(ConfigEnum.ssh_server_enable, False)
 # def _v43():
 #     if not (Domain.query.filter(Domain.domain==hconfig(ConfigEnum.domain_fronting_domain)).first()):
 #         db.session.add(Domain(domain=hconfig(ConfigEnum.domain_fronting_domain),servernames=hconfig(ConfigEnum.domain_fronting_domain),mode=DomainType.cdn))

@@ -43,6 +43,7 @@ class ConfigCategory(StrEnum):
 class ConfigEnum(StrEnum):
     ssh_server_redis_url = auto()
     ssh_server_ports = auto()
+    ssh_server_enable = auto()
     first_setup = auto()
     core_type = auto()
     warp_enable = auto()
@@ -143,6 +144,7 @@ class ConfigEnum(StrEnum):
         map = {
             self.ssh_server_redis_url: {'category': ConfigCategory.hidden},
             self.ssh_server_ports: {'category': ConfigCategory.ssh},
+            self.ssh_server_enable: {'category': ConfigCategory.ssh},
             self.core_type: {'category': ConfigCategory.advanced, 'apply_mode': 'apply'},
             self.dns_server: {'category': ConfigCategory.general, 'apply_mode': 'apply'},
             self.warp_enable: {'category': ConfigCategory.hidden, 'type': bool, 'apply_mode': 'restart'},

@@ -1,0 +1,110 @@
+{
+	"log": {
+		"disabled": false,
+		"level": "warn",
+		"timestamp": false
+	},
+	"dns": {
+		"servers": [
+            {
+				"tag": "global",
+				"address": "8.8.8.8",
+				"strategy": "prefer_ipv4",
+				"detour": "ssh-out"
+			},
+			{
+				"tag": "global",
+				"address": "https://1.1.1.1/dns-query",
+				"address_resolver": "local",
+				"strategy": "prefer_ipv4",
+				"detour": "ssh-out"
+			},
+			{
+				"tag": "local",
+				"address": "8.8.8.8",
+				"strategy": "prefer_ipv4",
+				"detour": "direct-out"
+			},
+			{
+				"tag": "block",
+				"address": "rcode://success"
+			}
+		],
+		"rules": [
+			{
+				"domain_suffix": [
+					".ir",
+					".edu",
+					".cn",
+					"microsoft.com",
+					"bale.ai",
+					"eitaa.com",
+					"google.com"
+				],
+				"server": "local"
+			}
+		],
+		"final": "global"
+	},
+	"inbounds": [
+		{
+			"type": "tun",
+			"tag": "tun-in",
+			"inet4_address": "172.43.0.1/30",
+			"inet6_address": "fdfe:dcba:9876::1/126", 
+			"mtu": 9000,
+			"endpoint_independent_nat": true,
+			"auto_route": true,
+			"strict_route": true,
+			"stack": "system",
+			"sniff": true,
+			"domain_strategy": "prefer_ipv6",
+			"sniff_override_destination": true
+		}
+	],
+	"outbounds": [
+		{
+			"type": "ssh",
+			"tag": "ssh-out",
+			"server": "$server_addr",
+			"server_port": {{hconfigs[ConfigEnum.ssh_server_port]}},
+			"user": "{{user.uuid}}",
+			"private_key": "{{user.ed25519_private_key}}",
+			"host_key": {{hiddify.get_hostkeys(True)}},
+			"client_version": "{{hiddify.get_ssh_client_version(user)}}"
+		},
+		{
+			"type": "direct",
+			"tag": "direct-out"
+		},
+		{
+			"type": "dns",
+			"tag": "dns-out"
+		}
+	],
+	"route": {
+		"rules": [
+			{
+				"domain_suffix": [
+					".ir",
+					".edu",
+					".cn",
+					"microsoft.com",
+					"bale.ai",
+					"eitaa.com",
+					"google.com"
+				],
+				"outbound": "direct-out"
+			},
+			{
+				"protocol": "dns",
+				"outbound": "dns-out"
+			},
+			{
+				"inbound": ["tun-in"],
+				"outbound": "ssh-out"
+			}
+		],
+		"auto_detect_interface": true
+	}
+}

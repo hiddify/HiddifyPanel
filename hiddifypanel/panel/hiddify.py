@@ -667,3 +667,23 @@ def generate_x25519_keys():
 
     # Return the keys as a tuple
     return {"private_key": private_key, "public_key": public_key}
+
+
+def get_hostkeys(json=False):
+    key_files = glob.glob(current_app.config['HIDDIFY_CONFIG_PATH'] + "/other/ssh/host_key/*_key.pub")
+    host_keys = []
+    for file_name in key_files:
+        with open(file_name, "r") as f:
+            host_key = f.read().strip()
+            host_key = host_key.split()
+            if len(host_key) > 2:
+                host_key = host_key[:2]  # strip the hostname part
+            host_key = " ".join(host_key)
+            host_keys.append(host_key)
+    if json:
+        return json.dumps(host_keys)
+    return host_keys
+
+
+def get_ssh_client_vetsion(user):
+    return 'SSH-2.0-OpenSSH_7.4p1'

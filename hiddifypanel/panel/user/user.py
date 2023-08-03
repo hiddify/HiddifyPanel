@@ -71,18 +71,36 @@ class UserView(FlaskView):
             resp = Response("")
         else:
             resp = Response(render_template('clash_config.yml', typ=typ, meta_or_normal=meta_or_normal, **c, hash=hash_rnd))
+
+        return self.add_headers(resp)
+
+    def add_headers(res):
+        resp = Response(res)
         resp.mimetype = "text/plain"
         resp.headers['Subscription-Userinfo'] = f"upload=0;download={c['usage_current_b']};total={c['usage_limit_b']};expire={c['expire_s']}"
-        resp.headers['profile-web-page-url'] = request.base_url.split("clash")[0].replace("http://", "https://")
+        resp.headers['profile-web-page-url'] = request.base_url.rsplit('/', 1)[0].replace("http://", "https://")+"/"
+
         if hconfig(ConfigEnum.branding_site):
             resp.headers['support-url'] = hconfig(ConfigEnum.branding_site)
         resp.headers['profile-update-interval'] = 1
-
+        # resp.headers['content-disposition']=f'attachment; filename="{c["db_domain"].alias or c["db_domain"].domain} {c["user"].name}"'
         profile_title = f'{c["db_domain"].alias or c["db_domain"].domain} {c["user"].name}'
         if c['has_auto_cdn']:
             profile_title += f" {c['asn']}"
         resp.headers['profile-title'] = 'base64:'+do_base_64(profile_title)
+
         return resp
+
+    @route('/singbox.json', methods=["GET", "HEAD"])
+    def singbox(self):
+        mode = "new"  # request.args.get("mode")
+        c = get_common_data(g.user_uuid, mode)
+        # response.content_type = 'text/plain';
+        if request.method == 'HEAD':
+            resp = ""
+        else:
+            resp = render_template('singbox.json', **c, base64=False)
+        return self.add_headers(resp)
 
     @route('/all.txt', methods=["GET", "HEAD"])
     def all_configs(self):
@@ -102,20 +120,7 @@ class UserView(FlaskView):
             res += line+"\n"
         if base64:
             res = do_base_64(res)
-        resp = Response(res)
-        resp.mimetype = "text/plain"
-        resp.headers['Subscription-Userinfo'] = f"upload=0;download={c['usage_current_b']};total={c['usage_limit_b']};expire={c['expire_s']}"
-        resp.headers['profile-web-page-url'] = request.base_url.split("all.txt")[0].replace("http://", "https://")
-        if hconfig(ConfigEnum.branding_site):
-            resp.headers['support-url'] = hconfig(ConfigEnum.branding_site)
-        resp.headers['profile-update-interval'] = 1
-        # resp.headers['content-disposition']=f'attachment; filename="{c["db_domain"].alias or c["db_domain"].domain} {c["user"].name}"'
-        profile_title = f'{c["db_domain"].alias or c["db_domain"].domain} {c["user"].name}'
-        if c['has_auto_cdn']:
-            profile_title += f" {c['asn']}"
-        resp.headers['profile-title'] = 'base64:'+do_base_64(profile_title)
-
-        return resp
+        return self.add_headers(res)
 
     @route('/manifest.webmanifest')
     def create_pwa_manifest(self):
