@@ -110,7 +110,7 @@ def init_db():
     return BoolConfig.query.all()
 
 
-def _v44():
+def _v45():
 
     for u in User.query.all():
         priv, publ = hiddify.get_ed25519_private_public_pair()

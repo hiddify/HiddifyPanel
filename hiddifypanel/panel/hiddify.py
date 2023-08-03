@@ -705,4 +705,4 @@ def get_ed25519_private_public_pair():
         encoding=serialization.Encoding.OpenSSH,
         format=serialization.PublicFormat.OpenSSH,
     )
-    return priv_bytes.decode(), pub_bytes.decode()
+    return priv_bytes.decode(), json.dumps(pub_bytes.decode())
