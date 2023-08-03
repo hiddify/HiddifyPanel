@@ -689,3 +689,20 @@ def get_hostkeys(dojson=False):
 
 def get_ssh_client_version(user):
     return 'SSH-2.0-OpenSSH_7.4p1'
+
+
+def get_ed25519_private_public_pair():
+    from cryptography.hazmat.primitives.asymmetric import ed25519
+    from cryptography.hazmat.primitives import serialization
+    privkey = ed25519.Ed25519PrivateKey.generate()
+    pubkey = privkey.public_key()
+    priv_bytes = privkey.private_bytes(
+        encoding=serialization.Encoding.PEM,
+        format=serialization.PrivateFormat.OpenSSH,
+        encryption_algorithm=serialization.NoEncryption(),
+    )
+    pub_bytes = pubkey.public_bytes(
+        encoding=serialization.Encoding.OpenSSH,
+        format=serialization.PublicFormat.OpenSSH,
+    )
+    return priv_bytes.decode(), pub_bytes.decode()

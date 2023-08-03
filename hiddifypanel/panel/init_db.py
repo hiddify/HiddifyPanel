@@ -111,22 +111,12 @@ def init_db():
 
 
 def _v44():
-    import ed25519
-    for u in User.query.all():
+    
 
-        privkey = ed25519.Ed25519PrivateKey.generate()
-        pubkey = privkey.public_key()
-        priv_bytes = privkey.private_bytes(
-            encoding=serialization.Encoding.PEM,
-            format=serialization.PrivateFormat.OpenSSH,
-            encryption_algorithm=serialization.NoEncryption(),
-        )
-        pub_bytes = pubkey.public_bytes(
-            encoding=serialization.Encoding.OpenSSH,
-            format=serialization.PublicFormat.OpenSSH,
-        )
-        u.ed25519_private_key = priv_bytes.decode()
-        u.ed25519_public_key = pub_bytes.decode()
+    for u in User.query.all():
+        priv,publ=hiddify.get_ed25519_private_public_pair()
+        u.ed25519_private_key = priv
+        u.ed25519_public_key = publ
     db.session.add(Proxy(l3='ssh', transport='ssh', cdn='direct', proto='ssh', enable=True, name="SSH"))
     add_config_if_not_exist(ConfigEnum.ssh_server_redis_url, "unix:///opt/hiddify-config/other/redis/run.sock?db=1")
     add_config_if_not_exist(ConfigEnum.ssh_server_port, random.randint(5000, 20000))

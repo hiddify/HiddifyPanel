@@ -252,7 +252,10 @@ class UserAdmin(AdminLTEModelView):
                                   active=g.admin.max_active_users, total=g.admin.max_users))
         if old_user and old_user.uuid != model.uuid:
             user_driver.remove_client(old_user.uuid)
-
+        if not model.ed25519_private_key:
+            priv, publ = hiddify.get_ed25519_private_public_pair()
+            model.ed25519_private_key = priv
+            model.ed25519_public_key = publ
         # model.expiry_time=datetime.date.today()+datetime.timedelta(days=model.expiry_time)
 
         # if model.current_usage_GB < model.usage_limit_GB:
