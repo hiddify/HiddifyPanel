@@ -28,3 +28,8 @@ def get_enabled_users(self):
 def add_client(self, user):
     for driver in drivers:
         d += driver.add_client(user)
+
+
+def remove_client(self, user):
+    for driver in drivers:
+        d += driver.remove_client(user)
