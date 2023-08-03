@@ -110,9 +110,13 @@ def init_db():
     return BoolConfig.query.all()
 
 
-def _v46():
+def _v48():
+    add_config_if_not_exist(ConfigEnum.ssh_server_enable, True)
+    set_hconfig(ConfigEnum.ssh_server_enable, True)
+
+
+def _v47():
     StrConfig.query.filter(StrConfig.key == ConfigEnum.ssh_server_enable).delete()
-    add_config_if_not_exist(ConfigEnum.ssh_server_enable, False)
 
 
 def _v45():
