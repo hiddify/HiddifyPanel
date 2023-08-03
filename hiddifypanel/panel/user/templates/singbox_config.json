@@ -69,7 +69,7 @@
 			"server": "{{domains[0].domain}}",
 			"server_port": {{hconfigs[ConfigEnum.ssh_server_port]}},
 			"user": "{{user.uuid}}",
-			"private_key": "{{user.ed25519_private_key|replace('\n', '\\n')}}", #{{user.ed25519_public_key|replace('\n', '\\n')}}
+			"private_key": "{{user.ed25519_private_key|replace('\n', '\\n')}}", //{{user.ed25519_public_key|replace('\n', '\\n')}}
 			"host_key": {{host_keys}},
 			"client_version": "{{ssh_client_version}}"
 		},
