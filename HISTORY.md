@@ -5,6 +5,8 @@
 
 #### New
 
+* Better singbox config. 
+
 * Add caching for speed up some process. 
 
 * Add singbox config. 
