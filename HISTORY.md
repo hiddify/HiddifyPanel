@@ -29,6 +29,8 @@
 
 #### Fix
 
+* Singbox config issue. 
+
 * Add remove bug. 
 
 * Ssh keys json. 
