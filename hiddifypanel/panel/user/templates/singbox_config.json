@@ -128,7 +128,7 @@
     "route": {
         "auto_detect_interface": true,
         "override_android_vpn": true,
-        "final": "proxy",
+        "final": "ssh-out",
         "geoip": {
             "download_url": "https:\/\/github.com\/malikshi\/sing-box-geo\/releases\/latest\/download\/geoip.db",
             "download_detour": "direct"
