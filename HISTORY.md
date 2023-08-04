@@ -19,6 +19,8 @@
 
 #### Changes
 
+* Disable ui download. 
+
 * Add dns to tcp. 
 
 * Update usage. 
@@ -30,6 +32,8 @@
 * Disable caching. 
 
 #### Fix
+
+* Bug. 
 
 * Singbox config issue. 
 
