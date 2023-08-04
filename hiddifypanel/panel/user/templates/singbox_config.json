@@ -8,9 +8,8 @@
 		"servers": [
             {
 				"tag": "global",
-				"address": "tcp://8.8.8.8",
-				"strategy": "prefer_ipv4",
-				"detour": "ssh-out"
+				"address": "8.8.8.8",
+				"strategy": "prefer_ipv4"
 			},
 			{
 				"tag": "global2",
@@ -58,7 +57,7 @@
 			"strict_route": true,
 			"stack": "system",
 			"sniff": true,
-			"domain_strategy": "prefer_ipv6",
+			"domain_strategy": "prefer_ipv4",
 			"sniff_override_destination": true
 		}
 	],

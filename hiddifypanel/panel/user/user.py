@@ -82,7 +82,7 @@ class UserView(FlaskView):
         if request.method == 'HEAD':
             resp = ""
         else:
-            resp = render_template('singbox_config.json', **c, host_keys=hiddify.get_hostkeys(True), ssh_client_version=hiddify.get_ssh_client_version(user), base64=False)
+            resp = render_template('singbox_config.json', **c, host_keys=hiddify.get_hostkeys(True), ssh_client_version=hiddify.get_ssh_client_version(user),ssh_ip=hiddify.get_ip(4), base64=False)
         return add_headers(resp, c)
 
     @route('/all.txt', methods=["GET", "HEAD"])

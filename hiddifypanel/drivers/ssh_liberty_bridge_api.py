@@ -34,7 +34,7 @@ class SSHLibertyBridgeApi(DriverABS):
             return
         redis_client = self.get_ssh_redis_client()
         redis_client.srem(USERS_SET, f'{user.uuid}::{user.ed25519_public_key}')
-        redis_client.srem(USERS_USAGE, user.uuid)
+        redis_client.hdel(USERS_USAGE, f'{user.uuid}')
         redis_client.save()
 
     def get_usage(self, client_uuid: str, reset: bool = True) -> int:
