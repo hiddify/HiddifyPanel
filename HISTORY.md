@@ -5,6 +5,8 @@
 
 #### New
 
+* Add unsigned https ip. 
+
 * Better singbox config. 
 
 * Add caching for speed up some process. 
