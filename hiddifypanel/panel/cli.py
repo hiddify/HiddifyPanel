@@ -85,9 +85,11 @@ def admin_links():
 
     admin_secret = get_super_admin_secret()
     server_ip = hiddify.get_ip(4)
-    admin_links = f"Not Secure:\n   http://{server_ip}/{proxy_path}/{admin_secret}/admin/\n"
+    admin_links = f"Not Secure (do not use it- only if others not work):\n   http://{server_ip}/{proxy_path}/{admin_secret}/admin/\n"
+
     domains = get_panel_domains()
     admin_links += f"Secure:\n"
+    admin_links += f"   (not signed) https://{server_ip}/{proxy_path}/{admin_secret}/admin/\n"
     # domains=[*domains,f'{server_ip}.sslip.io']
     for d in domains:
         admin_links += f"   https://{d.domain}/{proxy_path}/{admin_secret}/admin/\n"
