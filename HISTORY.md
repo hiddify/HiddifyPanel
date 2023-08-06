@@ -43,6 +43,8 @@
 
 #### Fix
 
+* Bug in singbox. 
+
 * Bug. 
 
 * Singbox config issue. 
