@@ -13,7 +13,10 @@ def get_users_usage(reset=True):
     for user in User.query.all():
         d = 0
         for driver in drivers:
-            d += driver.get_usage(user.uuid, reset=True) or 0
+            try:
+                d += driver.get_usage(user.uuid, reset=True) or 0
+            except:
+                print(f'ERROR! {driver.__class__.__name__} has error in get_usage for user={user.uuid}')
         res[user] = {'usage': d, 'ips': ''}
     return res
 
