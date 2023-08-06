@@ -6,7 +6,7 @@
 	},
 	"experimental": {
         "clash_api": {
-            "external_controller": "0.0.0.0:9090",
+            "external_controller": "127.0.0.1:9090",
 //            "external_ui": "yacd",
             //"external_ui_download_url": "https:\/\/github.com\/MetaCubeX\/Yacd-meta\/archive\/gh-pages.zip",
 //            "external_ui_download_detour": "direct",
@@ -19,30 +19,27 @@
 	"dns": {
         "servers": [
             {
-                "address": "https:\/\/{{domain}}\/{{hconfigs[ConfigEnum.proxy_path]}}\/dns\/dns-query",
-                "address_resolver": "dns-direct",
-                "strategy": "ipv4_only",
-                "tag": "dns-remote"
-            },
-            {
-                "address": "https:\/\/{{domain}}\/{{hconfigs[ConfigEnum.proxy_path]}}\/dns\/dns-query",
+                "address": "tcp://1.1.1.1",
                 "address_resolver": "dns-local",
-                "detour": "direct",
-                "strategy": "ipv4_only",
-                "tag": "dns-direct"
+                "strategy": "prefer_ipv4",
+                "tag": "dns-remote",
+                "detour": "ssh-out",
             },
             {
                 "address": "local",
                 "detour": "direct",
                 "tag": "dns-local"
             },
-            {
+           {
                 "address": "rcode:\/\/success",
                 "tag": "dns-block"
             }
         ],
 		"rules": [
             {
+                "domain":["{{domain}}"],
+                "server": "dns-direct"
+            },
                 "domain_suffix": [
                     "ir"
                 ],
@@ -50,22 +47,17 @@
             },
             {
                 "outbound": "direct",
-                "server": "dns-direct",
-                "rewrite_ttl": 20
-            },
-            {
-                "outbound": "any",
-                "server": "dns-direct",
-                "rewrite_ttl": 20
+                "server": "dns-direct"
             }
         ],
+        "final": "dns-remote"
         "reverse_mapping": true,
-        "strategy": "ipv4_only",
+        "strategy": "prefer_ipv4",
         "independent_cache": true
     },
 	"inbounds": [
 	{
-            "listen": "0.0.0.0",
+            "listen": "127.0.0.1",
             "listen_port": 6450,
             "override_address": "8.8.8.8",
             "override_port": 53,
@@ -75,7 +67,7 @@
 		{
             "type": "tun",
             "tag": "tun-in",
-            "domain_strategy": "",
+			"domain_strategy": "prefer_ipv4",
             "interface_name": "tun0",
             "inet4_address": "172.19.0.1\/30",
             "mtu": 9000,
@@ -87,8 +79,8 @@
             "sniff_override_destination": false
         },
 		{
-            "domain_strategy": "",
-            "listen": "0.0.0.0",
+			"domain_strategy": "prefer_ipv4",
+            "listen": "127.0.0.1",
             "listen_port": 2080,
             "sniff": true,
             "sniff_override_destination": false,
@@ -100,12 +92,12 @@
 		{
 			"type": "ssh",
 			"tag": "ssh-out",
+            //"client_version": "{{ssh_client_version}}",
 			"server": "{{domain}}",
 			"server_port": {{hconfigs[ConfigEnum.ssh_server_port]}},
 			"user": "{{user.uuid}}",
 			"private_key": "{{user.ed25519_private_key|replace('\n', '\\n')}}", //{{user.ed25519_public_key|replace('\n', '\\n')}}
-			"host_key": {{host_keys}},
-			"client_version": "{{ssh_client_version}}"
+			"host_key": {{host_keys}}
 		},
         {
             "tag": "direct",
