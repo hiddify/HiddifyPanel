@@ -13,7 +13,7 @@ from flask_admin.base import expose
 from hiddifypanel.panel.hiddify import get_random_domains
 
 import re
-from flask import render_template, current_app, Markup, url_for, abort
+from flask import render_template, current_app, Markup, url_for, abort, g
 from hiddifypanel.panel.hiddify import flash
 from hiddifypanel.models import *
 from hiddifypanel.panel.database import db
@@ -252,6 +252,8 @@ def get_config_form():
                     if hasattr(val, "regex"):
                         render_kw['pattern'] = val.regex.pattern
                         render_kw['title'] = val.message
+                if c.key == ConfigEnum.reality_public_key and g.admin.mode in [AdminMode.super_admin]:
+                    extra_info = f" <a href='{url_for('admin.Actions:change_reality_keys')}'>{_('Change')}</>"
                 field = wtf.fields.StringField(_(f'config.{c.key}.label'), validators, default=c.value,
                                                description=_(f'config.{c.key}.description')+extra_info, render_kw=render_kw)
             setattr(CategoryForm, c.key, field)

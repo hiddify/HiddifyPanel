@@ -12,7 +12,7 @@ import urllib.request
 import subprocess
 import re
 from hiddifypanel.panel import hiddify, usage
-from flask import current_app, render_template, request, Response, Markup, url_for, make_response
+from flask import current_app, render_template, request, Response, Markup, url_for, make_response, redirect
 from hiddifypanel.panel.hiddify import flash
 
 from flask_classful import FlaskView, route
@@ -146,6 +146,14 @@ class Actions(FlaskView):
         import time
         time.sleep(1)
         return resp
+
+    @hiddify.super_admin
+    def change_reality_keys(self):
+        key = hiddify.generate_x25519_keys()
+        set_hconfig(ConfigEnum.reality_private_key, key['private_key'])
+        set_hconfig(ConfigEnum.reality_public_key, key['public_key'])
+        hiddify.flash_config_success(restart_mode='apply', domain_changed=False)
+        return redirect(url_for('admin.SettingAdmin:index'))
 
     @hiddify.super_admin
     def status(self):
