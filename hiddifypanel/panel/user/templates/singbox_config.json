@@ -37,7 +37,8 @@
         ],
 		"rules": [
             {
-                "domain":["{{domain}}"],
+                "domain":["{{domain}}","github.com",
+                "objects.githubusercontent.com"],
                 "server": "dns-direct"
             },
                 "domain_suffix": [
@@ -50,7 +51,7 @@
                 "server": "dns-direct"
             }
         ],
-        "final": "dns-remote"
+        "final": "dns-remote",
         "reverse_mapping": true,
         "strategy": "prefer_ipv4",
         "independent_cache": true
@@ -121,11 +122,15 @@
         "auto_detect_interface": true,
         "override_android_vpn": true,
         "final": "ssh-out",
+        // "geoip": {
+        //             "download_url": "https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/gh/malikshi/sing-box-geo/releases/latest/download/geoip.db",
+        // //    "download_url": "https:\/\/github.com\/malikshi\/sing-box-geo\/releases\/latest\/download\/geoip.db",
+        //     "download_detour": "direct"
+        // },
         "geoip": {
-                    "download_url": "https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/gh/malikshi/sing-box-geo/releases/latest/download/geoip.db",
-        //    "download_url": "https:\/\/github.com\/malikshi\/sing-box-geo\/releases\/latest\/download\/geoip.db",
-            "download_detour": "direct"
-        },
+		    "download_url": "https:\/\/github.com\/malikshi\/sing-box-geo\/releases\/latest\/download\/geoip.db",
+		    "download_detour": "direct"
+		},
         // "geosite": {
         //     "download_url": "https:\/\/github.com\/malikshi\/v2ray-rules-dat\/releases\/latest\/download\/geosite.db",
         //     "download_detour": "direct"
