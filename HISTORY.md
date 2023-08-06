@@ -25,6 +25,8 @@
 
 #### Changes
 
+* Better singbox config. 
+
 * Handle exception for redis. 
 
 * Disable ui download. 
