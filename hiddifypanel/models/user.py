@@ -146,7 +146,9 @@ class User(db.Model, SerializerMixin):
             'last_reset_time': hiddify.date_to_json(d.last_reset_time),
             'comment': d.comment,
             'added_by_uuid': d.admin.uuid,
-            'telegram_id': d.telegram_id
+            'telegram_id': d.telegram_id,
+            'ed25519_private_key': d.ed25519_private_key,
+            'ed25519_public_key': d.ed25519_public_key
         }
 
 
@@ -270,6 +272,8 @@ def add_or_update_user(commit=True, **user):
     dbuser.name = user.get('name') or ''
     dbuser.comment = user.get('comment', '')
     dbuser.enable = user.get('enable', True)
+    dbuser.ed25519_private_key = user.get('ed25519_private_key', '')
+    dbuser.ed25519_public_key = user.get('ed25519_public_key', '')
     mode = user.get('mode', UserMode.no_reset)
     if mode == 'disable':
         mode = UserMode.no_reset
