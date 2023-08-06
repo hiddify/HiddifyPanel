@@ -23,14 +23,14 @@
                 "address_resolver": "dns-local",
                 "strategy": "prefer_ipv4",
                 "tag": "dns-remote",
-                "detour": "ssh-out",
+                "detour": "ssh-out"
             },
             {
                 "address": "local",
                 "detour": "direct",
                 "tag": "dns-local"
             },
-           {
+            {
                 "address": "rcode:\/\/success",
                 "tag": "dns-block"
             }
