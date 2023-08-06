@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPT\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-05 08:15+0200\n"
-"PO-Revision-Date: 2023-08-04 10:35-0500\n"
+"POT-Creation-Date: 2023-08-06 10:31+0200\n"
+"PO-Revision-Date: 2023-08-05 01:20-0500\n"
 "Last-Translator: lymanrudni\n"
 "Language: pt\n"
 "Language-Team: Portuguese\n"
@@ -128,7 +128,7 @@ msgstr ""
 "durante esse período, copie e salve seus links de proxy, que são:"
 
 # | msgid "📑 See the log in the bellow screen"
-#: hiddifypanel/panel/admin/Actions.py:166
+#: hiddifypanel/panel/admin/Actions.py:174
 #, fuzzy
 msgid "see the log in the bellow screen"
 msgstr "📑 Veja o log na tela abaixo"
@@ -136,7 +136,7 @@ msgstr "📑 Veja o log na tela abaixo"
 # | msgid ""
 # | "✔️ Success! Please Wait around 5 minutes to make sure everything is
 # updated"
-#: hiddifypanel/panel/admin/Actions.py:193
+#: hiddifypanel/panel/admin/Actions.py:201
 #, fuzzy
 msgid "Success! Please wait around 5 minutes to make sure everything is updated."
 msgstr ""
@@ -287,7 +287,7 @@ msgstr "Selecione esta opção para restaurar seus domínios"
 #: hiddifypanel/panel/admin/ProxyAdmin.py:126
 #: hiddifypanel/panel/admin/QuickSetup.py:85
 #: hiddifypanel/panel/admin/QuickSetup.py:117
-#: hiddifypanel/panel/admin/SettingAdmin.py:263
+#: hiddifypanel/panel/admin/SettingAdmin.py:265
 #, fuzzy
 msgid "Submit"
 msgstr "Enviar"

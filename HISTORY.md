@@ -5,6 +5,10 @@
 
 #### New
 
+* Add ssh keys to the backup. 
+
+* Add ability to change reality keys. 
+
 * Add unsigned https ip. 
 
 * Better singbox config. 
@@ -20,6 +24,8 @@
 * Add ssh user support. 
 
 #### Changes
+
+* Handle exception for redis. 
 
 * Disable ui download. 
 
@@ -87,6 +93,14 @@
 * Update link_maker.py. 
 
 * Update link_maker.py. 
+
+
+
+## 7.2.0 (2023-08-05)
+
+#### New
+
+* Add  compatibility for downgrade for ssh. 
 
 
 

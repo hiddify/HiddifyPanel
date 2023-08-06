@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-05 08:15+0200\n"
-"PO-Revision-Date: 2023-08-04 10:35-0500\n"
+"POT-Creation-Date: 2023-08-06 10:31+0200\n"
+"PO-Revision-Date: 2023-08-05 01:20-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -115,14 +115,14 @@ msgid ""
 msgstr "成功！ 请等待大约 4 分钟，以确保所有内容都已更新。 在此期间，请保存您的代理链接:"
 
 # | msgid "📑 See the log in the bellow screen"
-#: hiddifypanel/panel/admin/Actions.py:166
+#: hiddifypanel/panel/admin/Actions.py:174
 msgid "see the log in the bellow screen"
 msgstr "请参阅以下屏幕中的日志："
 
 # | msgid ""
 # | "✔️ Success! Please Wait around 5 minutes to make sure everything is
 # updated"
-#: hiddifypanel/panel/admin/Actions.py:193
+#: hiddifypanel/panel/admin/Actions.py:201
 msgid "Success! Please wait around 5 minutes to make sure everything is updated."
 msgstr "成功！ 请等待大约 5 分钟，以确保所有内容都已更新。"
 
@@ -262,7 +262,7 @@ msgstr "选择此选项以恢复您的域。"
 #: hiddifypanel/panel/admin/ProxyAdmin.py:126
 #: hiddifypanel/panel/admin/QuickSetup.py:85
 #: hiddifypanel/panel/admin/QuickSetup.py:117
-#: hiddifypanel/panel/admin/SettingAdmin.py:263
+#: hiddifypanel/panel/admin/SettingAdmin.py:265
 msgid "Submit"
 msgstr "提交"
 
