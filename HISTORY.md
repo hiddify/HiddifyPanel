@@ -43,6 +43,8 @@
 
 #### Fix
 
+* Singbox config. 
+
 * Bug. 
 
 * No commit message. 
