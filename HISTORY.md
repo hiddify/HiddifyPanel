@@ -43,6 +43,10 @@
 
 #### Fix
 
+* Release message bug. 
+
+* Clash config. 
+
 * Singbox config. 
 
 * Bug. 
