@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-10 20:37+0200\n"
-"PO-Revision-Date: 2023-08-10 03:09-0500\n"
+"POT-Creation-Date: 2023-08-10 21:01+0200\n"
+"PO-Revision-Date: 2023-08-10 13:38-0500\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Generated-By: Babel 2.12.1\n"
 
 # | msgid "This Domain does not exist in the Panel !"
-#: hiddifypanel/models/domain.py:134 hiddifypanel/panel/user/user.py:207
+#: hiddifypanel/models/domain.py:134 hiddifypanel/panel/user/user.py:209
 msgid "This domain does not exist in the panel!"
 msgstr "این دامنه در پنل وجود ندارد!"
 
@@ -2786,11 +2786,9 @@ msgstr "انتقال"
 msgid "user.home.allconfig.security"
 msgstr "امنیت"
 
-# | msgid "Hiddify Configs"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:21
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:19
-msgid "user.home.allconfig.hiddify-configs"
-msgstr "کانفیگ هیدیفای"
+msgid "auto"
+msgstr ""
 
 # | msgid "All"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:24
@@ -2800,18 +2798,23 @@ msgstr "کانفیگ هیدیفای"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:28
 #: hiddifypanel/panel/user/templates/home/all-configs.html:37
 #: hiddifypanel/panel/user/templates/home/all-configs.html:38
+#: hiddifypanel/panel/user/templates/home/all-configs.html:39
 #: hiddifypanel/panel/user/templates/home/all-configs.html:40
 #: hiddifypanel/panel/user/templates/home/all-configs.html:41
 #: hiddifypanel/panel/user/templates/home/all-configs.html:50
 #: hiddifypanel/panel/user/templates/home/all-configs.html:51
-#: hiddifypanel/panel/user/templates/home/all-configs.html:52
 #: hiddifypanel/panel/user/templates/home/all-configs.html:53
 #: hiddifypanel/panel/user/templates/home/all-configs.html:54
-#: hiddifypanel/panel/user/templates/home/all-configs.html:77
-#: hiddifypanel/panel/user/templates/home/all-configs.html:78
-#: hiddifypanel/panel/user/templates/home/all-configs.html:79
-#: hiddifypanel/panel/user/templates/home/all-configs.html:80
-#: hiddifypanel/panel/user/templates/home/all-configs.html:81
+#: hiddifypanel/panel/user/templates/home/all-configs.html:63
+#: hiddifypanel/panel/user/templates/home/all-configs.html:64
+#: hiddifypanel/panel/user/templates/home/all-configs.html:65
+#: hiddifypanel/panel/user/templates/home/all-configs.html:66
+#: hiddifypanel/panel/user/templates/home/all-configs.html:67
+#: hiddifypanel/panel/user/templates/home/all-configs.html:90
+#: hiddifypanel/panel/user/templates/home/all-configs.html:91
+#: hiddifypanel/panel/user/templates/home/all-configs.html:92
+#: hiddifypanel/panel/user/templates/home/all-configs.html:93
+#: hiddifypanel/panel/user/templates/home/all-configs.html:94
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:22
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:23
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:24
@@ -2826,38 +2829,44 @@ msgstr "کانفیگ هیدیفای"
 msgid "all"
 msgstr "همه"
 
-# | msgid "Clash Configs"
+# | msgid "Hiddify Configs"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:34
+#: hiddifypanel/panel/user/templates/home/all-configs_old.html:19
+msgid "user.home.allconfig.hiddify-configs"
+msgstr "کانفیگ هیدیفای"
+
+# | msgid "Clash Configs"
+#: hiddifypanel/panel/user/templates/home/all-configs.html:47
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:31
 msgid "user.home.allconfig.clash-configs"
 msgstr "کانفیگ‌های کلش"
 
 # | msgid "Except VLess"
-#: hiddifypanel/panel/user/templates/home/all-configs.html:39
+#: hiddifypanel/panel/user/templates/home/all-configs.html:52
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:35
 msgid "user.home.allconfigs.expect_vless"
 msgstr "به جز VLESS"
 
 # | msgid "Subscription Link"
-#: hiddifypanel/panel/user/templates/home/all-configs.html:47
-#: hiddifypanel/panel/user/templates/home/all-configs.html:74
+#: hiddifypanel/panel/user/templates/home/all-configs.html:60
+#: hiddifypanel/panel/user/templates/home/all-configs.html:87
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:43
 #: hiddifypanel/panel/user/templates/home/android.html:43
 #: hiddifypanel/panel/user/templates/home/ios.html:29
 msgid "user.home.allconfig.link-configs"
 msgstr "لینک برای Subscription"
 
-#: hiddifypanel/panel/user/templates/home/all-configs.html:61
+#: hiddifypanel/panel/user/templates/home/all-configs.html:74
 #, fuzzy
 msgid "singbox: ssh"
 msgstr "singbox: ssh"
 
 # | msgid "SSH"
-#: hiddifypanel/panel/user/templates/home/all-configs.html:64
-#: hiddifypanel/panel/user/templates/home/all-configs.html:65
-#: hiddifypanel/panel/user/templates/home/all-configs.html:66
-#: hiddifypanel/panel/user/templates/home/all-configs.html:67
-#: hiddifypanel/panel/user/templates/home/all-configs.html:68
+#: hiddifypanel/panel/user/templates/home/all-configs.html:77
+#: hiddifypanel/panel/user/templates/home/all-configs.html:78
+#: hiddifypanel/panel/user/templates/home/all-configs.html:79
+#: hiddifypanel/panel/user/templates/home/all-configs.html:80
+#: hiddifypanel/panel/user/templates/home/all-configs.html:81
 #, fuzzy
 msgid "ssh"
 msgstr "SSH"
@@ -3213,7 +3222,10 @@ msgstr ""
 "     انتخاب ارائه دهنده خدمات را انتخاب کنید."
 
 # | msgid "Hiddify"
-#: copy.html:2 hiddifypanel/panel/user/templates/home/index
+#: copy.html:2 hiddifypanel/panel/user/templates/home/home.html:2
+#: hiddifypanel/panel/user/templates/home/home.html:10
+#: hiddifypanel/panel/user/templates/home/home.html:22
+#: hiddifypanel/panel/user/templates/home/index
 #: hiddifypanel/panel/user/templates/home/index_old.html:2
 #: hiddifypanel/panel/user/templates/home/index_old.html:8
 #: hiddifypanel/panel/user/templates/home/multi.html:2
@@ -3223,13 +3235,8 @@ msgstr ""
 msgid "user.home.title"
 msgstr "هیدیفای"
 
-# | msgid "Telegram"
-#: copy.html:27 hiddifypanel/panel/user/templates/home/index
-#: hiddifypanel/panel/user/templates/home/index_old.html:40
-#: hiddifypanel/panel/user/templates/home/multi.html:51
-msgid "telegram"
-msgstr "تلگرام"
-
+#: hiddifypanel/panel/user/templates/home/home.html:10
+#: hiddifypanel/panel/user/templates/home/home.html:22
 #: hiddifypanel/panel/user/templates/home/index_old.html:8
 #: hiddifypanel/panel/user/templates/home/multi.html:10
 #: hiddifypanel/panel/user/templates/home/multi.html:22
@@ -3237,55 +3244,72 @@ msgstr "تلگرام"
 msgid "Welcome %(user)s"
 msgstr "%(user)s عزیز خوش آمدی"
 
+# | msgid "Telegram"
+#: copy.html:27 hiddifypanel/panel/user/templates/home/home.html:51
+#: hiddifypanel/panel/user/templates/home/index
+#: hiddifypanel/panel/user/templates/home/index_old.html:40
+#: hiddifypanel/panel/user/templates/home/multi.html:51
+msgid "telegram"
+msgstr "تلگرام"
+
 # | msgid "Android"
+#: hiddifypanel/panel/user/templates/home/home.html:54
 #: hiddifypanel/panel/user/templates/home/index_old.html:43
 #: hiddifypanel/panel/user/templates/home/multi.html:54
 msgid "android"
 msgstr "اندروید"
 
 # | msgid "iOS"
+#: hiddifypanel/panel/user/templates/home/home.html:56
 #: hiddifypanel/panel/user/templates/home/index_old.html:45
 #: hiddifypanel/panel/user/templates/home/multi.html:56
 msgid "ios"
 msgstr "آی‌او‌اس"
 
 # | msgid "Desktop"
+#: hiddifypanel/panel/user/templates/home/home.html:58
 #: hiddifypanel/panel/user/templates/home/index_old.html:47
 #: hiddifypanel/panel/user/templates/home/multi.html:58
 msgid "desktop"
 msgstr "دسکتاپ"
 
 # | msgid "Please Select Your Operating System."
+#: hiddifypanel/panel/user/templates/home/home.html:65
 #: hiddifypanel/panel/user/templates/home/index_old.html:54
 #: hiddifypanel/panel/user/templates/home/multi.html:65
 msgid "user.home.select os"
 msgstr "لطفا سیستم عامل خود را انتخاب کنید."
 
 # | msgid "All Configs"
+#: hiddifypanel/panel/user/templates/home/home.html:100
 #: hiddifypanel/panel/user/templates/home/index_old.html:89
 #: hiddifypanel/panel/user/templates/home/multi.html:100
 msgid "user.home.all_configs"
 msgstr "تمام کانفیگ‌ها"
 
 # | msgid "Speed Test (Detect dirty IP)"
+#: hiddifypanel/panel/user/templates/home/home.html:102
 #: hiddifypanel/panel/user/templates/home/index_old.html:91
 #: hiddifypanel/panel/user/templates/home/multi.html:102
 msgid "user.home.speedtest"
 msgstr "تست سرعت (شناسایی آی‌پی کثیف)"
 
 # | msgid "DNS Over HTTPS"
+#: hiddifypanel/panel/user/templates/home/home.html:104
 #: hiddifypanel/panel/user/templates/home/index_old.html:93
 #: hiddifypanel/panel/user/templates/home/multi.html:104
 msgid "user.home.doh"
 msgstr "DNS روی HTTPS"
 
 # | msgid "Please select the item."
+#: hiddifypanel/panel/user/templates/home/home.html:110
 #: hiddifypanel/panel/user/templates/home/index_old.html:99
 #: hiddifypanel/panel/user/templates/home/multi.html:110
 msgid "user.home.select tool"
 msgstr "لطفا یکی از موارد زیر را انتخاب کنید."
 
 # | msgid "🧾 QR Code"
+#: hiddifypanel/panel/user/templates/home/home.html:136
 #: hiddifypanel/panel/user/templates/home/index_old.html:125
 #: hiddifypanel/panel/user/templates/home/multi.html:136
 #: hiddifypanel/panel/user/templates/home/usage.html:74
@@ -3296,6 +3320,7 @@ msgstr "🧾 کیوآر کد"
 # | "To copy or share links, click on the gray <i class='fa-solid
 # fa-qrcode'></i>"
 # | " field to display its QR Code."
+#: hiddifypanel/panel/user/templates/home/home.html:137
 #: hiddifypanel/panel/user/templates/home/index_old.html:126
 #: hiddifypanel/panel/user/templates/home/multi.html:137
 #: hiddifypanel/panel/user/templates/home/usage.html:75
@@ -3306,29 +3331,80 @@ msgstr ""
 "داده شود."
 
 # | msgid "Display QR Code"
+#: hiddifypanel/panel/user/templates/home/home.html:145
 #: hiddifypanel/panel/user/templates/home/index_old.html:134
 #: hiddifypanel/panel/user/templates/home/multi.html:145
 #: hiddifypanel/panel/user/templates/home/usage.html:83
 msgid "user.home.qr-code.display"
 msgstr "نمایش کیو آر کد"
 
+# | msgid "ℹ️ Connect Your Account to Telegram"
+#: hiddifypanel/panel/user/templates/home/home.html:320
+#: hiddifypanel/panel/user/templates/home/multi.html:320
+msgid "Want to enjoy more with telegram?"
+msgstr "ℹ️ وصل کردن حساب کاربری به تلگرام"
+
+# | msgid ""
+# | "Please connect your Telegram account to the panel to know the latest
+# Status "
+# | "of your Subscription"
+#: hiddifypanel/panel/user/templates/home/home.html:321
+#: hiddifypanel/panel/user/templates/home/multi.html:321
+msgid ""
+"Please connect your telegram accout to the panel to be informed about "
+"latest news."
+msgstr ""
+"لطفا اکانت تلگرام خود را به پنل متصل کنید تا از آخرین وضعیت اشتراک خودتان"
+" مطلع شوید"
+
 # | msgid "Next"
+#: hiddifypanel/panel/user/templates/home/home.html:374
 #: hiddifypanel/panel/user/templates/home/index_old.html:344
 #: hiddifypanel/panel/user/templates/home/multi.html:374
 msgid "next"
 msgstr "بعدی"
 
 # | msgid "Previous"
+#: hiddifypanel/panel/user/templates/home/home.html:375
 #: hiddifypanel/panel/user/templates/home/index_old.html:345
 #: hiddifypanel/panel/user/templates/home/multi.html:375
 msgid "previous"
 msgstr "قبلی"
 
 # | msgid "Search"
+#: hiddifypanel/panel/user/templates/home/home.html:385
 #: hiddifypanel/panel/user/templates/home/index_old.html:355
 #: hiddifypanel/panel/user/templates/home/multi.html:385
 msgid "search"
 msgstr "جستجو"
+
+# | msgid "Check Again"
+#: hiddifypanel/panel/user/templates/home/home.html:419
+#: hiddifypanel/panel/user/templates/home/multi.html:419
+msgid "Check again"
+msgstr "بررسی مجدد"
+
+# | msgid "Turn Off VPN"
+#: hiddifypanel/panel/user/templates/home/home.html:422
+#: hiddifypanel/panel/user/templates/home/multi.html:422
+msgid "Turn of VPN"
+msgstr "فیلترشکن را خاموش کنید"
+
+# | msgid ""
+# | "You Should Visit This Page Without VPN To Use Auto CDN IP.\n"
+# | "<br>\n"
+# | "Your Country = %(your_country)s"
+#: hiddifypanel/panel/user/templates/home/home.html:422
+#: hiddifypanel/panel/user/templates/home/multi.html:422
+#, python-format
+msgid ""
+"You should visit this page without VPN. Your country=%(your_country)s "
+"expected=%(expected_country)s"
+msgstr ""
+"کاربر گرامی شما باید با فیلترشکن خاموش از این صفحه بازدید کنید تا سیستم "
+"بتواند آی پی مناسب را برای اینترنت شما پیدا کند.\n"
+"<br>\n"
+" کشور فعلی شما = %(your_country)s"
 
 # | msgid ""
 # | "<button class='btn btn-sm btn-default'
@@ -3425,48 +3501,6 @@ msgstr ""
 "<br />\n"
 "سپس کانفیگ‌ زیر را در برنامه اعمال کنید:\n"
 "<br />"
-
-# | msgid "ℹ️ Connect Your Account to Telegram"
-#: hiddifypanel/panel/user/templates/home/multi.html:320
-msgid "Want to enjoy more with telegram?"
-msgstr "ℹ️ وصل کردن حساب کاربری به تلگرام"
-
-# | msgid ""
-# | "Please connect your Telegram account to the panel to know the latest
-# Status "
-# | "of your Subscription"
-#: hiddifypanel/panel/user/templates/home/multi.html:321
-msgid ""
-"Please connect your telegram accout to the panel to be informed about "
-"latest news."
-msgstr ""
-"لطفا اکانت تلگرام خود را به پنل متصل کنید تا از آخرین وضعیت اشتراک خودتان"
-" مطلع شوید"
-
-# | msgid "Check Again"
-#: hiddifypanel/panel/user/templates/home/multi.html:419
-msgid "Check again"
-msgstr "بررسی مجدد"
-
-# | msgid "Turn Off VPN"
-#: hiddifypanel/panel/user/templates/home/multi.html:422
-msgid "Turn of VPN"
-msgstr "فیلترشکن را خاموش کنید"
-
-# | msgid ""
-# | "You Should Visit This Page Without VPN To Use Auto CDN IP.\n"
-# | "<br>\n"
-# | "Your Country = %(your_country)s"
-#: hiddifypanel/panel/user/templates/home/multi.html:422
-#, python-format
-msgid ""
-"You should visit this page without VPN. Your country=%(your_country)s "
-"expected=%(expected_country)s"
-msgstr ""
-"کاربر گرامی شما باید با فیلترشکن خاموش از این صفحه بازدید کنید تا سیستم "
-"بتواند آی پی مناسب را برای اینترنت شما پیدا کند.\n"
-"<br>\n"
-" کشور فعلی شما = %(your_country)s"
 
 # | msgid ""
 # | "First, Test the Speed <b>without</b> the proxy. If the speed is not good,

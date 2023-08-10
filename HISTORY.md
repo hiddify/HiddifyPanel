@@ -5,6 +5,8 @@
 
 #### New
 
+* Add auto button. 
+
 * Add auto sub. 
 
 * Add report analyser. 
@@ -28,6 +30,8 @@
 * Add ssh user support. 
 
 #### Changes
+
+* Remove access by https://ip if there is some domains. 
 
 * Better singbox config. 
 
