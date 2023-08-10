@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-10 10:08+0200\n"
-"PO-Revision-Date: 2023-08-07 00:34-0500\n"
+"POT-Creation-Date: 2023-08-10 20:37+0200\n"
+"PO-Revision-Date: 2023-08-10 03:09-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -15,14 +15,14 @@ msgstr ""
 "Generated-By: Babel 2.12.1\n"
 
 # | msgid "This Domain does not exist in the Panel !"
-#: hiddifypanel/models/domain.py:134 hiddifypanel/panel/user/user.py:165
+#: hiddifypanel/models/domain.py:134 hiddifypanel/panel/user/user.py:207
 #, fuzzy
 msgid "This domain does not exist in the panel!"
 msgstr "该域名在面板中不存在！"
 
 # | msgid ""
 # | "Error In Auto CDN IP! It Can Not Be Find, Please Contact Admin"
-#: hiddifypanel/panel/clean_ip.py:103
+#: hiddifypanel/panel/clean_ip.py:127
 #, fuzzy
 msgid "Error! auto cdn ip can not be find, please contact admin."
 msgstr "自动 CDN IP 错误！找不到，请联系管理员。"

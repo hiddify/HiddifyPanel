@@ -5,6 +5,10 @@
 
 #### New
 
+* Add auto sub. 
+
+* Add report analyser. 
+
 * Add ssh keys to the backup. 
 
 * Add ability to change reality keys. 
