@@ -68,9 +68,9 @@ class UserView(FlaskView):
 
         hash_rnd = random.randint(0, 1000000)  # hash(f'{c}')
         if request.method == 'HEAD':
-            resp = Response("")
+            resp = ""
         else:
-            resp = Response(render_template('clash_config.yml', typ=typ, meta_or_normal=meta_or_normal, **c, hash=hash_rnd))
+            resp = render_template('clash_config.yml', typ=typ, meta_or_normal=meta_or_normal, **c, hash=hash_rnd)
 
         return add_headers(resp, c)
 
