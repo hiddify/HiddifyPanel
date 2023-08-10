@@ -35,6 +35,13 @@ class UserView(FlaskView):
     #     user_agent =  user_agents.parse(request.user_agent.string)
 
     #     return render_template('home/multi.html',**c,ua=user_agent)
+    @route('/auto')
+    def auto_sub(self):
+        if re.match('^([Cc]lash-verge|[Cc]lash-?[Mm]eta)', request.user_agent.string):
+            return self.clash_config(meta_or_normal="meta")
+        elif re.match('^([Cc]lash|[Ss]tash)', user_agent):
+            return self.clash_config(meta_or_normal="normal")
+        return self.all_configs(base64=True)
 
     @route('/new/')
     @route('/new')
@@ -80,6 +87,7 @@ class UserView(FlaskView):
         db.session.add(report)
         db.session.commit()
         proxy_map = {p.name: p.id for p in Proxy.query.all()}
+
         for name, ping in data['pings']:
             detail = ReportDetail()
             detail.report_id = report.id
@@ -120,9 +128,9 @@ class UserView(FlaskView):
         return add_headers(resp, c)
 
     @route('/all.txt', methods=["GET", "HEAD"])
-    def all_configs(self):
+    def all_configs(self, base64=False):
         mode = "new"  # request.args.get("mode")
-        base64 = request.args.get("base64", "").lower() == "true"
+        base64 = base64 or request.args.get("base64", "").lower() == "true"
         c = get_common_data(g.user_uuid, mode)
         # response.content_type = 'text/plain';
         if request.method == 'HEAD':
