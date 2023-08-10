@@ -59,6 +59,39 @@ class UserView(FlaskView):
 
         return resp
 
+    @route('/report', methods=["POST"])
+    def report(self):
+        data = request.get_json()
+        user_ip = clean_ip.get_real_user_ip()
+        report = Report()
+        report.asn_id = clean_ip.get_asn_id(user_ip)
+        report.country = clean_ip.get_country(user_ip)
+
+        city_info = clean_ip.get_city(user_ip)
+        report.city = city_info['name']
+        report.latitude = city_info['latitude']
+        report.longitude = city_info['longitude']
+        report.accuracy_radius = city_info['accuracy_radius']
+
+        report.date = datetime.datetime.now()
+        sub_update_time = data['sub_update_time']
+        sub_url = data['sub_url']
+
+        db.session.add(report)
+        db.session.commit()
+        proxy_map = {p.name: p.id for p in Proxy.query.all()}
+        for name, ping in data['pings']:
+            detail = ReportDetail()
+            detail.report_id = report.id
+            detail.proxy_id = proxy_map.get(name, -1)
+            del proxy_map[name]
+            if detail.proxy_id < 0:
+                print("Error. Proxy not found!")
+                continue
+            detail.ping = ping
+            db.session.add(detail)
+        db.session.commit()
+
     @route('/clash/<typ>.yml', methods=["GET", "HEAD"])
     @route('/clash/<meta_or_normal>/<typ>.yml', methods=["GET", "HEAD"])
     def clash_config(self, meta_or_normal="normal", typ="all.yml"):
@@ -82,7 +115,8 @@ class UserView(FlaskView):
         if request.method == 'HEAD':
             resp = ""
         else:
-            resp = render_template('singbox_config.json', **c, host_keys=hiddify.get_hostkeys(True), ssh_client_version=hiddify.get_ssh_client_version(user),ssh_ip=hiddify.get_ip(4), base64=False)
+            resp = render_template('singbox_config.json', **c, host_keys=hiddify.get_hostkeys(True),
+                                   ssh_client_version=hiddify.get_ssh_client_version(user), ssh_ip=hiddify.get_ip(4), base64=False)
         return add_headers(resp, c)
 
     @route('/all.txt', methods=["GET", "HEAD"])

@@ -34,6 +34,7 @@ apt.ircf.space		APT
 try:
     ipasn = maxminddb.open_database('GeoLite2-ASN.mmdb') if os.path.exists('GeoLite2-ASN.mmdb') else {}
     ipcountry = maxminddb.open_database('GeoLite2-Country.mmdb') if os.path.exists('GeoLite2-Country.mmdb') else {}
+    ipcity = maxminddb.open_database('GeoLite2-City.mmdb') if os.path.exists('GeoLite2-City.mmdb') else {}
 except Exception as e:
     print("Error can not load maxminddb", file=sys.stderr)
     ipasn = {}
@@ -63,14 +64,37 @@ asn_map = {
 
 def get_asn_short_name(user_ip=None):
     user_ip = user_ip or get_real_user_ip()
-    asnres = ipasn.get(user_ip) if ipasn else {'autonomous_system_number': 'unknown'}
-    asn = f"{asnres.get('autonomous_system_number','unknown')}" if asnres else "unknown"
-    return asn_map.get(asn, "unknown")
+    try:
+        asn_id = get_asn_id(user_ip)
+        return asn_map.get(asn_id, "unknown")
+    except:
+        return "unknown"
+
+
+def get_asn_id(user_ip=None):
+    user_ip = user_ip or get_real_user_ip()
+    try:
+        asnres = ipasn.get(user_ip)
+        return asnres['autonomous_system_number']
+    except:
+        return "unknown"
 
 
 def get_country(user_ip=None):
-    user_ip = user_ip or get_real_user_ip()
-    return (ipcountry.get(user_ip) or {}).get('country', {}).get('iso_code', 'unknown')
+    try:
+        user_ip = user_ip or get_real_user_ip()
+        return (ipcountry.get(user_ip) or {}).get('country', {}).get('iso_code', 'unknown')
+    except:
+        return 'unknown'
+
+
+def get_city(user_ip=None):
+    try:
+        user_ip = user_ip or get_real_user_ip()
+        res = ipcity.get(user_ip)
+        return {'city': res.get('city').get('name'), 'latitude': res.get('latitude'), 'longitude': res.get('longitude'), 'accuracy_radius': res.get('accuracy_radius')}
+    except:
+        return 'unknown'
 
 
 def get_real_user_ip_debug(user_ip=None):
