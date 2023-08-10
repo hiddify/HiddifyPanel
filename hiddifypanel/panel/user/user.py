@@ -14,6 +14,7 @@ import random
 from urllib.parse import urlparse
 import user_agents
 from flask_babelex import gettext as _
+import re
 
 
 class UserView(FlaskView):
@@ -37,9 +38,10 @@ class UserView(FlaskView):
     #     return render_template('home/multi.html',**c,ua=user_agent)
     @route('/auto')
     def auto_sub(self):
-        if re.match('^([Cc]lash-verge|[Cc]lash-?[Mm]eta)', request.user_agent.string):
+        ua = request.user_agent.string
+        if re.match('^([Cc]lash-verge|[Cc]lash-?[Mm]eta)', ua):
             return self.clash_config(meta_or_normal="meta")
-        elif re.match('^([Cc]lash|[Ss]tash)', user_agent):
+        elif re.match('^([Cc]lash|[Ss]tash)', ua):
             return self.clash_config(meta_or_normal="normal")
         return self.all_configs(base64=True)
 
