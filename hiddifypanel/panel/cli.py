@@ -89,7 +89,9 @@ def admin_links():
 
     domains = get_panel_domains()
     admin_links += f"Secure:\n"
-    admin_links += f"   (not signed) https://{server_ip}/{proxy_path}/{admin_secret}/admin/\n"
+    if not any([d for d in domains if 'sslip.io' not in d]):
+        admin_links += f"   (not signed) https://{server_ip}/{proxy_path}/{admin_secret}/admin/\n"
+
     # domains=[*domains,f'{server_ip}.sslip.io']
     for d in domains:
         admin_links += f"   https://{d.domain}/{proxy_path}/{admin_secret}/admin/\n"
