@@ -133,7 +133,7 @@ def make_proxy(proxy: Proxy, domain_db: Domain, phttp=80, ptls=443):
 
         del base['host']
         if base.get('fingerprint', 'none') != 'none':
-            base['fingerprint'] = "chrome"
+            base['fingerprint'] = hconfigs[ConfigEnum.utls]
         # if not domain_db.cdn_ip:
         #     base['server']=hiddify.get_domain_ip(base['server'])
 
