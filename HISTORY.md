@@ -51,6 +51,8 @@
 
 #### Fix
 
+* Bug in reality when asn failed. 
+
 * Release message bug. 
 
 * Clash config. 

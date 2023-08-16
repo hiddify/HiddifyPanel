@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-10 21:01+0200\n"
-"PO-Revision-Date: 2023-08-10 13:38-0500\n"
+"POT-Creation-Date: 2023-08-16 13:16+0200\n"
+"PO-Revision-Date: 2023-08-13 19:30-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Generated-By: Babel 2.12.1\n"
 
 # | msgid "This Domain does not exist in the Panel !"
-#: hiddifypanel/models/domain.py:134 hiddifypanel/panel/user/user.py:209
+#: hiddifypanel/models/domain.py:134 hiddifypanel/panel/user/user.py:214
 #, fuzzy
 msgid "This domain does not exist in the panel!"
 msgstr "该域名在面板中不存在！"
@@ -74,7 +74,7 @@ msgstr "0 - 最后一天"
 # | "Selected Domain for REALITY is not in the same ASN. To better use of the
 # "
 # | "Protocol, it is better to find a Domain in the same ASN"
-#: hiddifypanel/panel/hiddify.py:654
+#: hiddifypanel/panel/hiddify.py:655
 #, fuzzy
 msgid ""
 "selected domain for REALITY is not in the same ASN. To better use of the "
@@ -2726,9 +2726,11 @@ msgstr "运输"
 msgid "user.home.allconfig.security"
 msgstr "安全"
 
+# | msgid "Auto"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:21
+#, fuzzy
 msgid "auto"
-msgstr ""
+msgstr "汽车"
 
 # | msgid "All"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:24
@@ -2796,6 +2798,7 @@ msgstr "除了 vless"
 msgid "user.home.allconfig.link-configs"
 msgstr "订阅链接"
 
+# | msgid "SingBox: SSH"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:74
 #, fuzzy
 msgid "singbox: ssh"
@@ -3133,7 +3136,8 @@ msgstr ""
 "    选择选择服务提供商。"
 
 # | msgid "Hiddify"
-#: copy.html:2 hiddifypanel/panel/user/templates/home/home.html:2
+#: copy.html:2 hiddifypanel/panel/user/templates/home/handle_smart.html:2
+#: hiddifypanel/panel/user/templates/home/home.html:2
 #: hiddifypanel/panel/user/templates/home/home.html:10
 #: hiddifypanel/panel/user/templates/home/home.html:22
 #: hiddifypanel/panel/user/templates/home/index
@@ -3855,33 +3859,33 @@ msgstr ""
 msgid "config.ssh_server_redis_url.label"
 msgstr "SSH用户数据库地址"
 
-# | msgid "Not used"
+# | msgid "Not Used"
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
 msgid "config.ssh_server_redis_url.description"
 msgstr "不曾用过"
 
-# | msgid "SSH Proxy Port"
+# | msgid "↔️ SSH Proxy Port"
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
 msgid "config.ssh_server_port.label"
 msgstr "SSH 代理端口"
 
 # | msgid ""
-# | "This is completely different from your original ssh server. It is a "
+# | "This is completely different from your original SSH server. It is a "
 # | "dedicated program."
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
 msgid "config.ssh_server_port.description"
 msgstr "这与你原来的 ssh 服务器完全不同。这是一个专用程序。"
 
-# | msgid "Enable SSH Proxy"
+# | msgid "✔️ Enable SSH Proxy"
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
 msgid "config.ssh_server_enable.label"
 msgstr "启用 SSH 代理"
 
-# | msgid "SSH proxy is completely different than original ssh server."
+# | msgid "SSH Proxy is completely different than original SSH Server"
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
 msgid "config.ssh_server_enable.description"
@@ -3929,7 +3933,8 @@ msgid "config.ssh.label"
 msgstr "SSH 代理"
 
 # | msgid ""
-# | "An SSH proxy, also known as an SSH tunnel or SSH port forwarding, is a "
+# | "ℹ️ An SSH proxy, also known as an SSH tunnel or SSH port forwarding, is a
+# "
 # | "secure method of creating a secure communication channel between two "
 # | "machines over an insecure network. We have a specific application which
 # is "

@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-10 21:01+0200\n"
-"PO-Revision-Date: 2023-08-10 13:38-0500\n"
+"POT-Creation-Date: 2023-08-16 13:16+0200\n"
+"PO-Revision-Date: 2023-08-13 19:30-0500\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Generated-By: Babel 2.12.1\n"
 
 # | msgid "This Domain does not exist in the Panel !"
-#: hiddifypanel/models/domain.py:134 hiddifypanel/panel/user/user.py:209
+#: hiddifypanel/models/domain.py:134 hiddifypanel/panel/user/user.py:214
 msgid "This domain does not exist in the panel!"
 msgstr "This Domain does not exist in the Panel !"
 
@@ -72,7 +72,7 @@ msgstr "Last Day"
 # | "Selected Domain for REALITY is not in the same ASN. To better use of the
 # "
 # | "Protocol, it is better to find a Domain in the same ASN"
-#: hiddifypanel/panel/hiddify.py:654
+#: hiddifypanel/panel/hiddify.py:655
 msgid ""
 "selected domain for REALITY is not in the same ASN. To better use of the "
 "protocol, it is better to find a domain in the same ASN."
@@ -2717,10 +2717,10 @@ msgstr "Transport"
 msgid "user.home.allconfig.security"
 msgstr "Security"
 
+# | msgid "Auto"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:21
-#, fuzzy
 msgid "auto"
-msgstr "auto"
+msgstr "Auto"
 
 # | msgid "All"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:24
@@ -2788,9 +2788,10 @@ msgstr "Except VLess"
 msgid "user.home.allconfig.link-configs"
 msgstr "Subscription Link"
 
+# | msgid "SingBox: SSH"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:74
 msgid "singbox: ssh"
-msgstr "singbox: ssh"
+msgstr "SingBox: SSH"
 
 # | msgid "SSH"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:77
@@ -3128,7 +3129,8 @@ msgstr ""
 "    Select Choose a service provider."
 
 # | msgid "Hiddify"
-#: copy.html:2 hiddifypanel/panel/user/templates/home/home.html:2
+#: copy.html:2 hiddifypanel/panel/user/templates/home/handle_smart.html:2
+#: hiddifypanel/panel/user/templates/home/home.html:2
 #: hiddifypanel/panel/user/templates/home/home.html:10
 #: hiddifypanel/panel/user/templates/home/home.html:22
 #: hiddifypanel/panel/user/templates/home/index
@@ -3839,34 +3841,34 @@ msgstr ""
 msgid "config.ssh_server_redis_url.label"
 msgstr "SSH user database address"
 
-# | msgid "Not used"
+# | msgid "Not Used"
 #: hiddifypanel/templates/fake.html:1
 msgid "config.ssh_server_redis_url.description"
-msgstr "Not used"
+msgstr "Not Used"
 
-# | msgid "SSH Proxy Port"
+# | msgid "↔️ SSH Proxy Port"
 #: hiddifypanel/templates/fake.html:1
 msgid "config.ssh_server_port.label"
-msgstr "SSH Proxy Port"
+msgstr "↔️ SSH Proxy Port"
 
 # | msgid ""
-# | "This is completely different from your original ssh server. It is a "
+# | "This is completely different from your original SSH server. It is a "
 # | "dedicated program."
 #: hiddifypanel/templates/fake.html:1
 msgid "config.ssh_server_port.description"
 msgstr ""
-"This is completely different from your original ssh server. It is a "
+"This is completely different from your original SSH server. It is a "
 "dedicated program."
 
-# | msgid "Enable SSH Proxy"
+# | msgid "✔️ Enable SSH Proxy"
 #: hiddifypanel/templates/fake.html:1
 msgid "config.ssh_server_enable.label"
-msgstr "Enable SSH Proxy"
+msgstr "✔️ Enable SSH Proxy"
 
-# | msgid "SSH proxy is completely different than original ssh server."
+# | msgid "SSH Proxy is completely different than original SSH Server"
 #: hiddifypanel/templates/fake.html:1
 msgid "config.ssh_server_enable.description"
-msgstr "SSH proxy is completely different than original ssh server."
+msgstr "SSH Proxy is completely different than original SSH Server"
 
 # | msgid "🎛️ Core"
 #: hiddifypanel/templates/fake.html:1
@@ -3906,14 +3908,15 @@ msgid "config.ssh.label"
 msgstr "SSH Proxy"
 
 # | msgid ""
-# | "An SSH proxy, also known as an SSH tunnel or SSH port forwarding, is a "
+# | "ℹ️ An SSH proxy, also known as an SSH tunnel or SSH port forwarding, is a
+# "
 # | "secure method of creating a secure communication channel between two "
 # | "machines over an insecure network. We have a specific application which "
 # | "is completely different from ssh server and can not execute any commands"
 #: hiddifypanel/templates/fake.html:2
 msgid "config.ssh.description"
 msgstr ""
-"An SSH proxy, also known as an SSH tunnel or SSH port forwarding, is a "
+"ℹ️ An SSH proxy, also known as an SSH tunnel or SSH port forwarding, is a "
 "secure method of creating a secure communication channel between two "
 "machines over an insecure network. We have a specific application which is "
 "completely different from ssh server and can not execute any commands"

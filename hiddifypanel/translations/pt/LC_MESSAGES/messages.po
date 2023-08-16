@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPT\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-10 21:01+0200\n"
-"PO-Revision-Date: 2023-08-10 13:38-0500\n"
+"POT-Creation-Date: 2023-08-16 13:16+0200\n"
+"PO-Revision-Date: 2023-08-10 14:01-0500\n"
 "Last-Translator: lymanrudni\n"
 "Language: pt\n"
 "Language-Team: Portuguese\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Generated-By: Babel 2.12.1\n"
 
 # | msgid "This Domain does not exist in the Panel !"
-#: hiddifypanel/models/domain.py:134 hiddifypanel/panel/user/user.py:209
+#: hiddifypanel/models/domain.py:134 hiddifypanel/panel/user/user.py:214
 msgid "This domain does not exist in the panel!"
 msgstr "Este Domínio não existe no Painel!"
 
@@ -82,7 +82,7 @@ msgstr "Último dia"
 # | "Selected Domain for REALITY is not in the same ASN. To better use of the
 # "
 # | "Protocol, it is better to find a Domain in the same ASN"
-#: hiddifypanel/panel/hiddify.py:654
+#: hiddifypanel/panel/hiddify.py:655
 msgid ""
 "selected domain for REALITY is not in the same ASN. To better use of the "
 "protocol, it is better to find a domain in the same ASN."
@@ -3077,8 +3077,9 @@ msgid "user.home.allconfig.security"
 msgstr "Segurança"
 
 #: hiddifypanel/panel/user/templates/home/all-configs.html:21
+#, fuzzy
 msgid "auto"
-msgstr ""
+msgstr "Auto"
 
 # | msgid "All"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:24
@@ -3528,7 +3529,8 @@ msgstr ""
 "    Selecione Escolher um provedor de serviços."
 
 # | msgid "Hiddify"
-#: copy.html:2 hiddifypanel/panel/user/templates/home/home.html:2
+#: copy.html:2 hiddifypanel/panel/user/templates/home/handle_smart.html:2
+#: hiddifypanel/panel/user/templates/home/home.html:2
 #: hiddifypanel/panel/user/templates/home/home.html:10
 #: hiddifypanel/panel/user/templates/home/home.html:22
 #: hiddifypanel/panel/user/templates/home/index
