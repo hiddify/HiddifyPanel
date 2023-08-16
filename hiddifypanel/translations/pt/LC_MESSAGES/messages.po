@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPT\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-16 13:16+0200\n"
-"PO-Revision-Date: 2023-08-10 14:01-0500\n"
+"POT-Creation-Date: 2023-08-16 16:34+0200\n"
+"PO-Revision-Date: 2023-08-16 06:16-0500\n"
 "Last-Translator: lymanrudni\n"
 "Language: pt\n"
 "Language-Team: Portuguese\n"
@@ -3076,6 +3076,7 @@ msgstr "Transporte"
 msgid "user.home.allconfig.security"
 msgstr "Segurança"
 
+# | msgid "Auto"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:21
 #, fuzzy
 msgid "auto"
@@ -3152,6 +3153,7 @@ msgstr "Exceto VMenos"
 msgid "user.home.allconfig.link-configs"
 msgstr "Link de assinatura"
 
+# | msgid "SingBox: SSH"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:74
 #, fuzzy
 msgid "singbox: ssh"
@@ -4359,20 +4361,20 @@ msgstr ""
 msgid "config.ssh_server_redis_url.label"
 msgstr "Endereço do banco de dados do usuário SSH"
 
-# | msgid "Not used"
+# | msgid "Not Used"
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
 msgid "config.ssh_server_redis_url.description"
 msgstr "Não usado"
 
-# | msgid "SSH Proxy Port"
+# | msgid "↔️ SSH Proxy Port"
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
 msgid "config.ssh_server_port.label"
 msgstr "Porta Proxy SSH"
 
 # | msgid ""
-# | "This is completely different from your original ssh server. It is a "
+# | "This is completely different from your original SSH server. It is a "
 # | "dedicated program."
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
@@ -4381,13 +4383,13 @@ msgstr ""
 "Isso é completamente diferente do seu servidor ssh original. É um "
 "programa dedicado."
 
-# | msgid "Enable SSH Proxy"
+# | msgid "✔️ Enable SSH Proxy"
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
 msgid "config.ssh_server_enable.label"
 msgstr "Ativar proxy SSH"
 
-# | msgid "SSH proxy is completely different than original ssh server."
+# | msgid "SSH Proxy is completely different than original SSH Server"
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
 msgid "config.ssh_server_enable.description"
@@ -4434,7 +4436,8 @@ msgid "config.ssh.label"
 msgstr "Proxy SSH"
 
 # | msgid ""
-# | "An SSH proxy, also known as an SSH tunnel or SSH port forwarding, is a "
+# | "ℹ️ An SSH proxy, also known as an SSH tunnel or SSH port forwarding, is a
+# "
 # | "secure method of creating a secure communication channel between two "
 # | "machines over an insecure network. We have a specific application which
 # is "

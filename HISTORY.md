@@ -109,6 +109,8 @@
 
 #### Other
 
+* Fix singbox ip. 
+
 * FIX: 
 
 * Merge branch 'main' of github.com:hiddify1/HiddifyPanel. 
