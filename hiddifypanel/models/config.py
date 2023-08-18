@@ -95,6 +95,7 @@ def set_hconfig(key: ConfigEnum, value, child_id=0, commit=True):
         db.session.commit()
 
 
+@cache.cache()
 def get_hconfigs(child_id=0):
     return {**{u.key: u.value for u in BoolConfig.query.filter(BoolConfig.child_id == child_id).all()},
             **{u.key: u.value for u in StrConfig.query.filter(StrConfig.child_id == child_id).all()},

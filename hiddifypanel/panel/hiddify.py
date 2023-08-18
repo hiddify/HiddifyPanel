@@ -1,4 +1,5 @@
 import socket
+from hiddifypanel.cache import cache
 from sqlalchemy.orm import Load
 import glob
 import json
@@ -90,6 +91,7 @@ def asset_url(path):
     return f"/{g.proxy_path}/{path}"
 
 
+@cache.cache(ttl=600)
 def get_direct_host_or_ip(version):
     direct = Domain.query.filter(Domain.mode == DomainType.direct, Domain.sub_link_only == False).first()
     if not (direct):
@@ -101,7 +103,8 @@ def get_direct_host_or_ip(version):
     return direct
 
 
-def get_ip(version, retry=3):
+@cache.cache(ttl=600)
+def get_ip(version, retry=5):
     ips = get_interface_public_ip(version)
     ip = None
     if (ips):
@@ -168,6 +171,7 @@ def get_interface_public_ip(version):
         return None
 
 
+@cache.cache(ttl=300)
 def get_available_proxies(child_id):
     proxies = Proxy.query.filter(Proxy.child_id == child_id).all()
     proxies = [c for c in proxies if 'restls' not in c.transport]
@@ -230,6 +234,7 @@ def flash_config_success(restart_mode='', domain_changed=True):
 
 # Function to display hostname and
 # IP address
+
 
 def get_domain_ip(dom, retry=3):
 
