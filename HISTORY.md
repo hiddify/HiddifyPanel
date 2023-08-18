@@ -5,6 +5,8 @@
 
 #### New
 
+* Speed up the panel. 
+
 * Speed up the panel by using redis. 
 
 * Add auto button. 
