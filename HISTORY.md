@@ -5,6 +5,8 @@
 
 #### New
 
+* Speed up the panel by using redis. 
+
 * Add auto button. 
 
 * Add auto sub. 
@@ -108,6 +110,14 @@
 * Ssh liberty redis path. 
 
 #### Other
+
+* Merge branch 'main' of github.com:hiddify1/HiddifyPanel. 
+
+* Merge pull request #17 from randomguy-on-internet/main. 
+  _Reality utls bug_
+
+* Utls bug. 
+  _fixing utls bug for reality configs_
 
 * Fix singbox ip. 
 
