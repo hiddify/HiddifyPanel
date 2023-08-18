@@ -1,4 +1,4 @@
-# from hiddifypanel.cache import cache
+from hiddifypanel.cache import cache
 from sqlalchemy_serializer import SerializerMixin
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
@@ -49,7 +49,7 @@ class StrConfig(db.Model, SerializerMixin):
         }
 
 
-# @cache.cache()
+@cache.cache()
 def hconfig(key: ConfigEnum, child_id=0):
     value = None
     try:
@@ -76,7 +76,8 @@ def hconfig(key: ConfigEnum, child_id=0):
 
 
 def set_hconfig(key: ConfigEnum, value, child_id=0, commit=True):
-    # hconfig.invalidate(key, child_id)
+    hconfig.invalidate(key, child_id)
+    get_hconfigs.invalidate(child_id)
     if key.type() == bool:
         dbconf = BoolConfig.query.filter(BoolConfig.key == key, BoolConfig.child_id == child_id).first()
         if not dbconf:
