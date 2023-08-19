@@ -359,6 +359,7 @@ def reinstall_action(complete_install=False, domain_change=False):
 def check_need_reset(old_configs, do=False):
     restart_mode = ''
     for c in old_configs:
+        # c=ConfigEnum(c)
         if old_configs[c] != hconfig(c) and c.apply_mode():
             if restart_mode != 'reinstall':
                 restart_mode = c.apply_mode()
