@@ -254,7 +254,7 @@ def get_domain_ip(dom, retry=3):
 
     if not res:
         try:
-            res = socket.getaddrinfo(dom, None, socket.AF_INET6)[0][4][0]
+            res = f"[{socket.getaddrinfo(dom, None, socket.AF_INET6)[0][4][0]}]" 
         except:
             pass
 
