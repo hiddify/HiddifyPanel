@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-19 09:59+0200\n"
-"PO-Revision-Date: 2023-08-19 02:07-0500\n"
+"POT-Creation-Date: 2023-08-19 10:56+0200\n"
+"PO-Revision-Date: 2023-08-19 02:59-0500\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -30,7 +30,7 @@ msgid "Access Denied"
 msgstr "دسترسی غیر مجاز"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/panel/hiddify.py:227
+#: hiddifypanel/panel/hiddify.py:229
 msgid "admin.config.apply_configs"
 msgstr "اعمال تنظیمات"
 
@@ -38,14 +38,14 @@ msgstr "اعمال تنظیمات"
 # | "Configs have been changed successfully. Click %(link)s to apply the
 # configs."
 # | " It may take 2 minutes to apply"
-#: hiddifypanel/panel/hiddify.py:228
+#: hiddifypanel/panel/hiddify.py:230
 msgid "config.validation-success"
 msgstr ""
 "تنظیمات با موفقیت ذخیره شدند. لطفا بر روی این لینک: %(link)s کلیک کنید تا"
 " بر روی سیستم اعمال شوند. این کار ممکن است 2 دقیقه طول بکشد"
 
 # | msgid " ✅ Configs have been changed successfully"
-#: hiddifypanel/panel/hiddify.py:230
+#: hiddifypanel/panel/hiddify.py:232
 msgid "config.validation-success-no-reset"
 msgstr " ✅ تنظیمات با موفقیت تغییر کرد"
 
@@ -59,12 +59,12 @@ msgstr " ✅ تنظیمات با موفقیت تغییر کرد"
 #: hiddifypanel/panel/admin/DomainAdmin.py:179
 #: hiddifypanel/panel/admin/QuickSetup.py:126
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:107
-#: hiddifypanel/panel/hiddify.py:350
+#: hiddifypanel/panel/hiddify.py:352
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr "دامنه قابل دسترسی نیست! در دامنه شما مشکلی وجود دارد."
 
 # | msgid "Last Day"
-#: hiddifypanel/panel/hiddify.py:379
+#: hiddifypanel/panel/hiddify.py:381
 msgid "0 - Last day"
 msgstr "آخرین روز"
 
@@ -72,7 +72,7 @@ msgstr "آخرین روز"
 # | "Selected Domain for REALITY is not in the same ASN. To better use of the
 # "
 # | "Protocol, it is better to find a Domain in the same ASN"
-#: hiddifypanel/panel/hiddify.py:661
+#: hiddifypanel/panel/hiddify.py:663
 msgid ""
 "selected domain for REALITY is not in the same ASN. To better use of the "
 "protocol, it is better to find a domain in the same ASN."
