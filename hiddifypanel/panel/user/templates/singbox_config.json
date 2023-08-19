@@ -40,7 +40,8 @@
                 "domain": [
                     "{{domain}}",
                     "github.com",
-                    "githubusercontent.com"
+                    "githubusercontent.com",
+                    "{{ssh_ip}}"
                 ],
                 "server": "dns-local"
             },
