@@ -110,6 +110,11 @@ def init_db():
     return BoolConfig.query.all()
 
 
+def _v50():
+    from hiddifypanel.cache import cache
+    cache.invalidate_all()
+
+
 def _v49():
 
     for u in User.query.all():
