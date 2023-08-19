@@ -5,6 +5,8 @@
 
 #### New
 
+* Reset cache on change any config. 
+
 * Change caching method to pickle. 
 
 * Speed up the panel. 
