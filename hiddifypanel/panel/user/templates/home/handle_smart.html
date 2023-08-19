@@ -1,0 +1,65 @@
+{% extends "master.html" %}
+{% block title %}{{hconfig(ConfigEnum.branding_title) or _('user.home.title')}}{% endblock %}
+{% from 'macros.html' import modal %}
+{% block body %}
+<script src="{{url_for('static',filename='js/custom-protocol-check.js',version=5.1)}}"> </script>
+Trying to open related app: "Clash" "V2ray" "Generic"
+
+<a id="btn_test" href="test" class="btn btn-success">Auto Open App</a>
+
+<div id="info"></div>
+<iframe id="link_handler" src="" style="width: 0px;height: 0px;"></iframe>
+
+{% endblock %}
+
+{% block tail_js %}
+{{super()}}
+<script src="{{url_for('static',filename='js/custom-protocol-check.js',version=5.1)}}"> </script>
+
+
+<script>
+    base = 'https%3A%2F%2F{{domain}}%2F{{hconfigs[ConfigEnum.proxy_path]}}%2F{{user.uuid}}%2Fauto'
+    links = ["hiddify://install-sub/?url=" + base, "clashmeta://install-config/?url=" + base, "clash://install-config?url=" + base, "v2ray://install-sub/?url=" + base, "foxray://yiguo.dev/sub/add/?url=" + base]
+
+    var idx = 0;
+    function open_next() {
+        window.customProtocolCheck(
+            links[idx % links.length],
+            function () {
+                document.getElementById('info').innerText += "NO SUPPORT " + links[idx % links.length].substring(0, 10)
+                idx++
+                open_next()
+            },
+            function () {
+                document.getElementById('info').innerText += ("link " + links[idx % links.length].substring(0, 10) + " supported!")
+                idx++
+            }, 1000
+        );
+    }
+    $(function () {
+        $("a[href]").click(function (event) {
+            event.preventDefault ? event.preventDefault() : (event.returnValue = false);
+
+            open_next()
+
+        });
+
+    });
+
+    iframe = document.getElementById("link_handler")
+
+    for (i = 0; i < links.length; i++) {
+        console.log(links[i])
+        try {
+            iframe.contentWindow.location.href = links[i];
+            // document.location = links[i]
+            document.getElementById('info').innerText = ("link " + links[i] + " supported!")
+            // break;
+        } catch (e) {
+            console.log(e)
+            if (e.name == "NS_ERROR_UNKNOWN_PROTOCOL") continue
+
+        }
+    }
+</script>
+{% endblock %}
