@@ -92,14 +92,16 @@ def asset_url(path):
 
 
 @cache.cache(ttl=600)
-def get_direct_host_or_ip(version):
+def get_direct_host_or_ip(prefer_version):
     direct = Domain.query.filter(Domain.mode == DomainType.direct, Domain.sub_link_only == False).first()
     if not (direct):
         direct = Domain.query.filter(Domain.mode == DomainType.direct).first()
     if direct:
         direct = direct.domain
     else:
-        direct = get_ip(version)
+        direct = get_ip(prefer_version)
+    if not direct:
+        direct = get_ip(4 if prefer_version == 6 else 6)
     return direct
 
 
