@@ -5,6 +5,8 @@
 
 #### New
 
+* Generate ssh key if empty. 
+
 * Reset cache on change any config. 
 
 * Change caching method to pickle. 
@@ -124,6 +126,10 @@
 * Ssh liberty redis path. 
 
 #### Other
+
+* Update. 
+
+* Update. 
 
 * Merge branch 'main' of github.com:hiddify1/HiddifyPanel. 
 
