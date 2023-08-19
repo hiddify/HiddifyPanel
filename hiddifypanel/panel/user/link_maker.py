@@ -205,6 +205,11 @@ def make_proxy(proxy: Proxy, domain_db: Domain, phttp=80, ptls=443):
         base['transport'] = 'tcp'
         base['alpn'] = 'http/1.1'
         return base
+    if ProxyProto.ssh == proxy.proto:
+        base['private_key'] = dbuser.ed25519_private_key
+        base['host_key'] = hiddify.get_hostkeys(True)
+        base['ssh_port'] = hconfig(ConfigEnum.ssh_server_port)
+        return base
     return {'name': name, 'msg': 'not valid', 'type': 'error', 'proto': proxy.proto}
 
 
@@ -241,11 +246,17 @@ def to_link(proxy):
             vmess_data['pbk'] = proxy['reality_pbk']
             vmess_data['sid'] = proxy['reality_short_id']
         return pbase64(f'vmess://{json.dumps(vmess_data)}')
+    if proxy['proto'] == 'ssh':
+        strenssh= hiddify.do_base_64(f'{proxy["uuid"]}:0:{proxy["private_key"]}::@{proxy["server"]}:{proxy["ssh_port"]}')
+        baseurl = f'ssh://{strenssh}#{name_link}'
+        baseurl+=f'\nssh://{proxy["uuid"]}@{proxy["server"]}:{proxy["ssh_port"]}/?pk='+hiddify.do_base_64(proxy["private_key"])+f"&hk={hiddify.get_hostkeys(True)}#{name_link}"
+
+        return baseurl
     if proxy['proto'] == "ssr":
-        baseurl = f'ssr://proxy["encryption"]:{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}'
+        baseurl = f'ssr://{proxy["encryption"]}:{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}'
         return baseurl
     if proxy['proto'] in ['ss', 'v2ray']:
-        baseurl = f'ss://proxy["encryption"]:{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}'
+        baseurl = f'ss://{proxy["encryption"]}:{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}'
         if proxy['mode'] == 'faketls':
             return f'{baseurl}?plugin=obfs-local%3Bobfs%3Dtls%3Bobfs-host%3D{proxy["fakedomain"]}%3Budp-over-tcp=true#{name_link}'
         # if proxy['mode'] == 'shadowtls':
@@ -294,9 +305,12 @@ def to_clash_yml(proxy):
 
 
 def to_clash(proxy, meta_or_normal):
+
     name = proxy['name']
     if proxy['l3'] == "kcp":
-        return {'name': name, 'msg': "clash not support kcp", 'type': 'debug'}
+        return {'name': name, 'msg': "clash does not support kcp", 'type': 'debug'}
+    if proxy['proto'] == "ssh":
+        return {'name': name, 'msg': "clash does not support ssh", 'type': 'debug'}
     if meta_or_normal == "normal":
         if proxy['proto'] == "vless":
             return {'name': name, 'msg': "vless not supported in clash", 'type': 'debug'}
@@ -415,10 +429,6 @@ def to_clash(proxy, meta_or_normal):
     return base
 
 
-
-    
-
-
 def get_clash_config_names(meta_or_normal, domains):
     allphttp = [p for p in request.args.get("phttp", "").split(',') if p]
     allptls = [p for p in request.args.get("ptls", "").split(',') if p]
@@ -473,6 +483,3 @@ def get_all_clash_configs(meta_or_normal, domains):
                             allp.append(clash)
 
     return yaml.dump({"proxies": allp}, sort_keys=False)
-
-
-

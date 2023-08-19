@@ -717,3 +717,9 @@ def get_ed25519_private_public_pair():
         format=serialization.PublicFormat.OpenSSH,
     )
     return priv_bytes.decode(), pub_bytes.decode()
+
+
+def do_base_64(str):
+    import base64
+    resp = base64.b64encode(f'{str}'.encode("utf-8"))
+    return resp.decode()
