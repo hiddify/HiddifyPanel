@@ -36,7 +36,7 @@ class UserView(FlaskView):
     #     user_agent =  user_agents.parse(request.user_agent.string)
 
     #     return render_template('home/multi.html',**c,ua=user_agent)
-    @route('/auto')
+    @route('/auto_sub')
     def auto_sub(self):
         ua = request.user_agent.string
         if re.match('^([Cc]lash-verge|[Cc]lash-?[Mm]eta)', ua):
@@ -44,6 +44,11 @@ class UserView(FlaskView):
         elif re.match('^([Cc]lash|[Ss]tash)', ua):
             return self.clash_config(meta_or_normal="normal")
         return self.all_configs(base64=True)
+
+    @route('/auto')
+    def auto_select(self):
+        c = get_common_data(g.user_uuid, mode="new")
+        return render_template('home/handle_smart.html', **c)
 
     @route('/new/')
     @route('/new')
@@ -126,7 +131,7 @@ class UserView(FlaskView):
             resp = ""
         else:
             resp = render_template('singbox_config.json', **c, host_keys=hiddify.get_hostkeys(True),
-                                   ssh_client_version=hiddify.get_ssh_client_version(user), ssh_ip=hiddify.get_ip(4), base64=False)
+                                   ssh_client_version=hiddify.get_ssh_client_version(user), ssh_ip=hiddify.get_direct_host_or_ip(4), base64=False)
         return add_headers(resp, c)
 
     @route('/all.txt', methods=["GET", "HEAD"])
