@@ -5,6 +5,8 @@
 
 #### New
 
+* Change caching method to pickle. 
+
 * Speed up the panel. 
 
 * Speed up the panel by using redis. 
