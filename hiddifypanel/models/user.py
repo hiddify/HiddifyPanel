@@ -272,8 +272,14 @@ def add_or_update_user(commit=True, **user):
     dbuser.name = user.get('name') or ''
     dbuser.comment = user.get('comment', '')
     dbuser.enable = user.get('enable', True)
-    dbuser.ed25519_private_key = user.get('ed25519_private_key', '')
-    dbuser.ed25519_public_key = user.get('ed25519_public_key', '')
+    if user.get('ed25519_private_key', ''):
+        dbuser.ed25519_private_key = user.get('ed25519_private_key', '')
+        dbuser.ed25519_public_key = user.get('ed25519_public_key', '')
+    if not dbuser.ed25519_private_key:
+        priv, publ = hiddify.get_ed25519_private_public_pair()
+        dbuser.ed25519_private_key = priv
+        dbuser.ed25519_public_key = publ
+
     mode = user.get('mode', UserMode.no_reset)
     if mode == 'disable':
         mode = UserMode.no_reset
