@@ -59,6 +59,8 @@
 
 #### Fix
 
+* Ssh ip domain bug. 
+
 * Ssh ip. 
 
 * Bug. 
