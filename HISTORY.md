@@ -127,6 +127,8 @@
 
 #### Other
 
+* Fix; v2ray bug. 
+
 * New; add ssh in sub link. 
 
 * Update. 
