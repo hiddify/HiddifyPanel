@@ -247,16 +247,16 @@ def to_link(proxy):
             vmess_data['sid'] = proxy['reality_short_id']
         return pbase64(f'vmess://{json.dumps(vmess_data)}')
     if proxy['proto'] == 'ssh':
-        strenssh= hiddify.do_base_64(f'{proxy["uuid"]}:0:{proxy["private_key"]}::@{proxy["server"]}:{proxy["ssh_port"]}')
+        strenssh = hiddify.do_base_64(f'{proxy["uuid"]}:0:{proxy["private_key"]}::@{proxy["server"]}:{proxy["ssh_port"]}')
         baseurl = f'ssh://{strenssh}#{name_link}'
-        baseurl+=f'\nssh://{proxy["uuid"]}@{proxy["server"]}:{proxy["ssh_port"]}/?pk='+hiddify.do_base_64(proxy["private_key"])+f"&hk={hiddify.get_hostkeys(True)}#{name_link}"
+        baseurl += f'\nssh://{proxy["uuid"]}@{proxy["server"]}:{proxy["ssh_port"]}/?pk='+hiddify.do_base_64(proxy["private_key"])+f"&hk={hiddify.get_hostkeys(True)}#{name_link}"
 
         return baseurl
     if proxy['proto'] == "ssr":
-        baseurl = f'ssr://{proxy["encryption"]}:{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}'
+        baseurl = f'ssr://{proxy["cipher"]}:{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}'
         return baseurl
     if proxy['proto'] in ['ss', 'v2ray']:
-        baseurl = f'ss://{proxy["encryption"]}:{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}'
+        baseurl = f'ss://{proxy["cipher"]}:{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}'
         if proxy['mode'] == 'faketls':
             return f'{baseurl}?plugin=obfs-local%3Bobfs%3Dtls%3Bobfs-host%3D{proxy["fakedomain"]}%3Budp-over-tcp=true#{name_link}'
         # if proxy['mode'] == 'shadowtls':
