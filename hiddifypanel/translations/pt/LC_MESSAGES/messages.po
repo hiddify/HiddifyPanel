@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPT\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-20 21:50+0200\n"
-"PO-Revision-Date: 2023-08-19 16:09-0500\n"
+"POT-Creation-Date: 2023-08-22 23:28+0200\n"
+"PO-Revision-Date: 2023-08-20 14:50-0500\n"
 "Last-Translator: lymanrudni\n"
 "Language: pt\n"
 "Language-Team: Portuguese\n"
@@ -774,6 +774,7 @@ msgstr ""
 
 # | msgid "Error! Invalid Domain.  The Domain Format is www.google.com"
 #: hiddifypanel/panel/admin/QuickSetup.py:104
+#: hiddifypanel/panel/admin/QuickSetup.py:116
 #: hiddifypanel/panel/admin/SettingAdmin.py:206
 #: hiddifypanel/panel/admin/SettingAdmin.py:209
 #, fuzzy
@@ -869,6 +870,28 @@ msgid "config.vmess_enable.description"
 msgstr ""
 "É relatado por várias pessoas que o VMess faz com que o sistema seja "
 "detectado pelo governo. Então não é recomendado"
+
+# | msgid "📺 Decoy Site"
+#: hiddifypanel/panel/admin/QuickSetup.py:116
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#: hiddifypanel/templates/fake.html:1
+#, fuzzy
+msgid "config.decoy_domain.label"
+msgstr "🔀 Site Decoy"
+
+# | msgid ""
+# | "Fake Site: simulates a site when someone visits your Domain.\n"
+# | "Please do not use Iranian Sites, Popular well known sites like: Google,
+# Yahoo, Wikipedia, etc"
+#: hiddifypanel/panel/admin/QuickSetup.py:116
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#: hiddifypanel/templates/fake.html:1
+#, fuzzy
+msgid "config.decoy_domain.description"
+msgstr ""
+"Site falso: simula um site quando alguém visita seu domínio.\n"
+"Por favor, não use sites iranianos, sites populares bem conhecidos como: "
+"Google, Yahoo, Wikipedia, etc."
 
 # | msgid ""
 # | "Domain (%(domain)s)-> IP = %(domain_ip)s is not same as your IP = "
@@ -1470,26 +1493,6 @@ msgid "config.show_usage_in_sublink.description"
 msgstr ""
 "Esta opção cria uma configuração falsa no sublink do usuário que mostra o"
 " volume restante do usuário"
-
-# | msgid "📺 Decoy Site"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-#: hiddifypanel/templates/fake.html:1
-#, fuzzy
-msgid "config.decoy_domain.label"
-msgstr "🔀 Site Decoy"
-
-# | msgid ""
-# | "Fake Site: simulates a site when someone visits your Domain.\n"
-# | "Please do not use Iranian Sites, Popular well known sites like: Google,
-# Yahoo, Wikipedia, etc"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-#: hiddifypanel/templates/fake.html:1
-#, fuzzy
-msgid "config.decoy_domain.description"
-msgstr ""
-"Site falso: simula um site quando alguém visita seu domínio.\n"
-"Por favor, não use sites iranianos, sites populares bem conhecidos como: "
-"Google, Yahoo, Wikipedia, etc."
 
 # | msgid "General Settings"
 #: hiddifypanel/panel/admin/templates/configfake.html:6

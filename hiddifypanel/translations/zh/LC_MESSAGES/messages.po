@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-20 21:50+0200\n"
-"PO-Revision-Date: 2023-08-19 16:09-0500\n"
+"POT-Creation-Date: 2023-08-22 23:28+0200\n"
+"PO-Revision-Date: 2023-08-21 02:52-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -696,6 +696,7 @@ msgstr "它根据每个国家/地区的过滤条件为每个国家/地区应用�
 
 # | msgid "Error! Invalid Domain.  The Domain Format is www.google.com"
 #: hiddifypanel/panel/admin/QuickSetup.py:104
+#: hiddifypanel/panel/admin/QuickSetup.py:116
 #: hiddifypanel/panel/admin/SettingAdmin.py:206
 #: hiddifypanel/panel/admin/SettingAdmin.py:209
 msgid "config.Invalid domain"
@@ -773,6 +774,26 @@ msgstr "启用 vmess"
 #: hiddifypanel/templates/fake.html:1
 msgid "config.vmess_enable.description"
 msgstr "几个人报告说 vmess 导致系统被政府检测到。所以不推荐"
+
+# | msgid "📺 Decoy Site"
+#: hiddifypanel/panel/admin/QuickSetup.py:116
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#: hiddifypanel/templates/fake.html:1
+msgid "config.decoy_domain.label"
+msgstr "诱饵网站"
+
+# | msgid ""
+# | "Fake Site: simulates a site when someone visits your domain directly.\n"
+# | "⚠️ Do not use financial, Iranian and famous sites or sites with login
+# such as Google, Yahoo, Wikipedia, PayPal.\n"
+# | "⛔ Be sure to check the site and make sure that it is the right site,
+# otherwise you may receive a phishing warning.\n"
+# | "⛔⛔ Check this domain again so that there is no problem in the future"
+#: hiddifypanel/panel/admin/QuickSetup.py:116
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#: hiddifypanel/templates/fake.html:1
+msgid "config.decoy_domain.description"
+msgstr "假网站：当有人访问您的域时模拟网站"
 
 # | msgid ""
 # | "Domain (%(domain)s)-> IP = %(domain_ip)s is not same as your IP = "
@@ -1288,21 +1309,6 @@ msgstr "在子链接中显示用法"
 #, fuzzy
 msgid "config.show_usage_in_sublink.description"
 msgstr "该选项在用户的子链接中创建一个 Fake Config，显示用户的剩余音量"
-
-# | msgid "📺 Decoy Site"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-#: hiddifypanel/templates/fake.html:1
-msgid "config.decoy_domain.label"
-msgstr "诱饵网站"
-
-# | msgid ""
-# | "Fake Site: simulates a site when someone visits your Domain.\n"
-# | "Please do not use Iranian Sites, Popular well known sites like: Google,
-# Yahoo, Wikipedia, etc"
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-#: hiddifypanel/templates/fake.html:1
-msgid "config.decoy_domain.description"
-msgstr "假网站：当有人访问您的域时模拟网站"
 
 # | msgid "General Settings"
 #: hiddifypanel/panel/admin/templates/configfake.html:6

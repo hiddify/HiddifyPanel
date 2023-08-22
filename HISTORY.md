@@ -5,6 +5,10 @@
 
 #### New
 
+* Add UDP support for SSH. 
+
+* Force user to double check decoy site. 
+
 * Generate ssh key if empty. 
 
 * Reset cache on change any config. 
