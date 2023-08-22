@@ -131,6 +131,16 @@
 
 #### Other
 
+* Merge branch 'main' of github.com:hiddify1/HiddifyPanel. 
+
+* Merge pull request #18 from randomguy-on-internet/main. 
+  _fixing IPv6 issue for resolving IPv6's behind domain in auto cdn_
+
+* Fixing IPv6 issue for resolving IPv6's behind domain in auto cdn. 
+  _adding brackets to avoid errors when converting domains to ipv6.
+
+aaaa:bbbb:cccc:dddd -> [aaaa:bbbb:cccc:dddd]_
+
 * Fix; v2ray bug. 
 
 * New; add ssh in sub link. 
