@@ -231,6 +231,7 @@
 
 <script src="{{url_for('static',filename='js/js.cookie.min.js')}}"> </script>
 <script>
+var v;
   function copy_click(e) {
     e.preventDefault();
     console.log(this); console.log(e);
@@ -291,6 +292,7 @@
       $("#guide-video").on('ended', function(){
       cancel_video();
       });
+      if (v!==undefined)
       v.addEventListener("fullscreenchange", function (event) {
           if (document.fullscreenElement) {
           } else {

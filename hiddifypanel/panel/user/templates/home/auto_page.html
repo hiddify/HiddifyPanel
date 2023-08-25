@@ -1,0 +1,142 @@
+{% extends "master.html" %}
+{% block title %}{{hconfig(ConfigEnum.branding_title) or _('user.home.title')}}{% endblock %}
+{% from 'macros.html' import modal %}
+{% block body %}
+Trying to open related app: "Clash" "V2ray" "Generic"
+
+<a id="btn_test" href="test" class="btn btn-success">Auto Open App</a>
+
+<div id="info"></div>
+<iframe id="link_handler" src="" style="width: 0px;height: 0px;"></iframe>
+{% set base = 'https%3A%2F%2F'+domain+'%2F'+hconfigs[ConfigEnum.proxy_path]+'%2F'+user.uuid+'%2Fauto_sub' %}
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Open in Application</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table>
+                    {% if ua.os.family=="Android" %}
+                    <tr>
+                        <td>Hiddify</td>
+                        <td><a class="btn btn-success copy-link" href="hiddify://install-sub/?url={{base}}">Open in Hiddify</a></td>
+                    </tr>
+                    <tr>
+                        <td>V2rayNG</td>
+                        <td><a class="btn btn-success copy-link" href="v2ray://install-sub/?url={{base}}">Open in V2rayNG</a></td>
+                    </tr>
+                    <tr>
+                        <td>Clash</td>
+                        <td><a class="btn btn-success copy-link" href="clash://install-config/?url={{base}}">Open in Clash</a></td>
+                    </tr>
+                    {% endif %}
+
+                    {% if ua.os.family=="Windows" %}
+                    <tr>
+                        <td>Hiddify</td>
+                        <td><a class="btn btn-success copy-link" href="hiddify://install-sub/?url={{base}}">Open in Hiddify</a></td>
+                    </tr>
+                    <tr>
+                        <td>V2rayN</td>
+                        <td><a class="btn btn-success orig-link" href="v2rayn://install-sub/?url={{base}}">Open in V2rayN</a></td>
+                    </tr>
+                    <tr>
+                        <td>Clash</td>
+                        <td>
+                            <div class="btn-group"><a class="btn btn-success share-link" href="clash://install-config/?url={{base}}">Open in Clash</a></div>
+                        </td>
+                    </tr>
+                    {% endif %}
+
+                    {% if ua.os.family=="iOS" %}
+                    <tr>
+                        <td>Foxray</td>
+                        <td><a href="foxray://yiguo.dev/sub/add/?url={{base}}">Open in Hiddify</a></td>
+                    </tr>
+                    {% endif %}
+
+                </table>
+
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-secondary" data-dismiss="modal">Close</a>
+                <a class="btn btn-primary copy-link">Copy Link</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block tail_js %}
+{{super()}}
+
+
+<script>
+    base = 'https%3A%2F%2F{{domain}}%2F{{hconfigs[ConfigEnum.proxy_path]}}%2F{{user.uuid}}%2Fauto_sub'
+    links = ["hiddify://install-sub/?url=" + base, "clashmeta://install-config/?url=" + base, "clash://install-config?url=" + base, "v2ray://install-sub/?url=" + base, "foxray://yiguo.dev/sub/add/?url=" + base]
+
+    var idx = -1;
+    function open_next() {
+        if (idx >= links.length - 1) {
+            idx = -1
+            return
+        }
+        idx++
+        let iframe = $('<iframe></iframe>').css('display', 'none');
+        $('body').append(iframe);
+        timer = setTimeout(function () {
+            // If the app didn't open, check the next scheme
+            if (!document.webkitHidden) {
+                document.getElementById('info').innerText += "NO SUPPORT " + links[idx % links.length].substring(0, 10)
+                // alert("No" + links[idx % links.length].substring(0, 10) + " app, Try Next Application?")
+                // open_next()
+
+            } else {
+                document.getElementById('info').innerText += ("link " + links[idx % links.length].substring(0, 10) + " supported!")
+            }
+        }, 500);
+        window.addEventListener('blur', function () {
+            clearTimeout(timer);
+        });
+        try {
+            iframe.attr('src', links[idx % links.length]);
+        } catch (e) {
+            console.log(e)
+            // alert("No " + links[idx % links.length].substring(0, 10) + " app, Try Next Application?")
+            document.getElementById('info').innerText += "NO SUPPORT " + links[idx % links.length].substring(0, 10)
+            if (e.name == "NS_ERROR_UNKNOWN_PROTOCOL") {
+                clearTimeout(timer)
+                // app_not_found()
+                // open_next()
+            }
+        }
+
+    }
+    $(function () {
+        $("a[href]").click(function (event) {
+            event.preventDefault ? event.preventDefault() : (event.returnValue = false);
+
+            open_next()
+            app_not_found()
+
+        });
+
+    });
+
+
+    function app_not_found() {
+
+        $('#exampleModal').modal({ show: true })
+
+
+    }
+
+
+</script>
+{% endblock %}

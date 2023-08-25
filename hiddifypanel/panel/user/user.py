@@ -38,27 +38,41 @@ class UserView(FlaskView):
     #     return render_template('home/multi.html',**c,ua=user_agent)
     @route('/auto_sub')
     def auto_sub(self):
+        return self.get_proper_config() or self.all_configs(base64=True)
+
+    def get_proper_config(self):
         ua = request.user_agent.string
-        if re.match('^([Cc]lash-verge|[Cc]lash-?[Mm]eta)', ua):
+        if re.match('^([Cc]lash-verge|[Cc]lash-?[Mm]eta)', ua) or 'NekoBox' in ua or 'NekoRay' in ua:
             return self.clash_config(meta_or_normal="meta")
-        elif re.match('^([Cc]lash|[Ss]tash)', ua):
+        if re.match('^([Cc]lash|[Ss]tash)', ua):
             return self.clash_config(meta_or_normal="normal")
-        return self.all_configs(base64=True)
+
+        if 'HiddifyNext' in ua or 'Dart' in ua:
+            return self.clash_config(meta_or_normal="meta")
+
+        if 'HiddifyNext' in ua or 'Dart' in ua or 'SFI' in ua or 'SFA' in ua:
+            return self.full_singbox()
+
+        if any([p in ua for p in ['FoXray', 'HiddifyNG', 'v2rayNG', 'SagerNet']]):
+            return self.all_configs(base64=True)
 
     @route('/auto')
     def auto_select(self):
         c = get_common_data(g.user_uuid, mode="new")
-        return render_template('home/handle_smart.html', **c)
+        user_agent = user_agents.parse(request.user_agent.string)
+        # return render_template('home/handle_smart.html', **c)
+        return render_template('home/auto_page.html', **c, ua=user_agent)
 
     @route('/new/')
     @route('/new')
     @route('/')
     def new(self):
+        conf = self.get_proper_config()
+        if conf:
+            return conf
 
         c = get_common_data(g.user_uuid, mode="new")
-
         user_agent = user_agents.parse(request.user_agent.string)
-
         return render_template('home/multi.html', **c, ua=user_agent)
 
     @route('/clash/<meta_or_normal>/proxies.yml')
