@@ -1,4 +1,4 @@
-from flask import g, request
+from flask import g, request, render_template
 import enum
 from hiddifypanel.models import *
 import yaml
@@ -36,7 +36,7 @@ def pbase64(full_str):
     return "vmess://"+resp.decode()
 
 
-def make_proxy(proxy: Proxy, domain_db: Domain, phttp=80, ptls=443):
+def make_proxy(proxy: Proxy, domain_db: Domain, phttp=80, ptls=443, pport=None):
     def is_tls():
         return 'tls' in l3 or "reality" in l3
     if type(phttp) == str:
@@ -59,6 +59,10 @@ def make_proxy(proxy: Proxy, domain_db: Domain, phttp=80, ptls=443):
         port = hconfigs[ConfigEnum.kcp_ports].split(",")[0]
     elif l3 == "tuic":
         port = hconfigs[ConfigEnum.tuic_port].split(",")[0]
+    elif l3 == 'ssh':
+        port = hconfigs[ConfigEnum.ssh_server_port]
+    if pport:
+        port = pport
 
     name = proxy.name
     if not port:
@@ -206,9 +210,9 @@ def make_proxy(proxy: Proxy, domain_db: Domain, phttp=80, ptls=443):
         base['alpn'] = 'http/1.1'
         return base
     if ProxyProto.ssh == proxy.proto:
-        base['private_key'] = dbuser.ed25519_private_key
-        base['host_key'] = hiddify.get_hostkeys(True)
-        base['ssh_port'] = hconfig(ConfigEnum.ssh_server_port)
+        base['private_key'] = g.user.ed25519_private_key
+        base['host_key'] = hiddify.get_hostkeys(False)
+        # base['ssh_port'] = hconfig(ConfigEnum.ssh_server_port)
         return base
     return {'name': name, 'msg': 'not valid', 'type': 'error', 'proto': proxy.proto}
 
@@ -247,9 +251,9 @@ def to_link(proxy):
             vmess_data['sid'] = proxy['reality_short_id']
         return pbase64(f'vmess://{json.dumps(vmess_data)}')
     if proxy['proto'] == 'ssh':
-        strenssh = hiddify.do_base_64(f'{proxy["uuid"]}:0:{proxy["private_key"]}::@{proxy["server"]}:{proxy["ssh_port"]}')
+        strenssh = hiddify.do_base_64(f'{proxy["uuid"]}:0:{proxy["private_key"]}::@{proxy["server"]}:{proxy["port"]}')
         baseurl = f'ssh://{strenssh}#{name_link}'
-        baseurl += f'\nssh://{proxy["uuid"]}@{proxy["server"]}:{proxy["ssh_port"]}/?pk='+hiddify.do_base_64(proxy["private_key"])+f"&hk={hiddify.get_hostkeys(True)}#{name_link}"
+        baseurl += f'\nssh://{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}/?pk='+hiddify.do_base_64(proxy["private_key"])+f"&hk={hiddify.get_hostkeys(True)}#{name_link}"
 
         return baseurl
     if proxy['proto'] == "ssr":
@@ -483,3 +487,251 @@ def get_all_clash_configs(meta_or_normal, domains):
                             allp.append(clash)
 
     return yaml.dump({"proxies": allp}, sort_keys=False)
+
+
+def to_singbox(proxy):
+    name = proxy['name']
+
+    all_base = []
+    if proxy['l3'] == "kcp":
+        return {'name': name, 'msg': "clash does not support kcp", 'type': 'debug'}
+
+    base = {}
+    all_base.append(base)
+    # vmess ws
+    base["tag"] = f"""{proxy['extra_info']} {proxy["name"]} {proxy['port']} {proxy["dbdomain"].id}"""
+    base["type"] = str(proxy["proto"])
+    base["server"] = proxy["server"]
+    base["server_port"] = int(proxy["port"])
+    # base['alpn'] = proxy['alpn'].split(',')
+    if proxy["proto"] == "ssr":
+        add_singbox_ssr(base, proxy)
+        return all_base
+    if proxy["proto"] in ["ss", "v2ray"]:
+        add_singbox_shadowsocks_base(all_base, proxy)
+        return all_base
+    if proxy["proto"] == "ssh":
+        add_singbox_ssh(all_base, proxy)
+        return all_base
+    if proxy["proto"] == "trojan":
+        base["password"] = proxy["uuid"]
+    elif proxy['proto'] in ['trojan', 'vmess', 'vless']:
+        base["uuid"] = proxy["uuid"]
+        add_singbox_multiplex(base)
+
+    add_singbox_tls(base, proxy)
+
+    if proxy.get('flow'):
+        base["flow"] = proxy['flow']
+        # base["flow-show"] = True
+
+    if proxy["proto"] == "vmess":
+        base["alter_id"] = 0
+        base["security"] = proxy["cipher"]
+
+    # base["udp"] = True
+    if proxy["proto"] in ["vmess", "vless"]:
+        base["packet_encoding"] = "xudp"  # udp packet encoding
+    add_singbox_transport(base, proxy)
+
+    return all_base
+
+
+def add_singbox_multiplex(base):
+    return
+    base['multiplex'] = {
+        "enabled": True,
+        "protocol": "h2mux",
+        "max_connections": 4,
+        "min_streams": 4,
+        "max_streams": 0,
+        "padding": false
+    }
+
+
+def add_singbox_udp_over_tcp(base):
+    base['udp_over_tcp'] = {
+        "enabled": True,
+        "version": 2
+    }
+
+
+def add_singbox_tls(base, proxy):
+    if not ("tls" in proxy["l3"] or "reality" in proxy["l3"]):
+        return
+    base["tls"] = {
+        "enabled": True,
+        "server_name": proxy["sni"],
+        "utls": {
+            "enabled": True,
+            "fingerprint": proxy.get('fingerprint', 'none')
+        }
+    }
+
+    if "reality" in proxy["l3"]:
+        base["tls"]["reality"] = {
+            "enabled": True,
+            "public_key": proxy['reality_pbk'],
+            "short_id": proxy['reality_short_id']
+        }
+    base["tls"]['insecure'] = proxy['allow_insecure'] or (proxy["mode"] == "Fake")
+    base["tls"]["alpn"] = proxy['alpn'].split(',')
+    # base['ech'] = {
+    #     "enabled": True,
+    # }
+
+
+def add_singbox_transport(base, proxy):
+    base["transport"] = {}
+    if proxy['transport'] in ["ws", "WS"]:
+        base["transport"] = {
+            "type": "ws",
+            "path": proxy["path"],
+            "early_data_header_name": "Sec-WebSocket-Protocol"
+        }
+        if "host" in proxy:
+            base["transport"]["headers"] = {"Host": proxy["host"]}
+
+    if proxy["transport"] == "tcp":
+        base["transport"] = {
+            "type": "http",
+            "path": proxy.get("path", ""),
+            # "method": "",
+            # "headers": {},
+            "idle_timeout": "15s",
+            "ping_timeout": "15s"
+        }
+
+        if 'host' in proxy:
+            base["transport"]["host"] = [proxy["host"]]
+
+    if proxy["transport"] == "grpc":
+        base["transport"] = {
+            "type": "grpc",
+            "service_name": proxy["grpc_service_name"],
+            "idle_timeout": "115s",
+            "ping_timeout": "15s",
+            # "permit_without_stream": false
+        }
+
+
+def add_singbox_ssr(base, proxy):
+
+    base["method"] = proxy["cipher"]
+    base["password"] = proxy["uuid"]
+    # base["udp"] = True
+    base["obfs"] = proxy["ssr-obfs"]
+    base["protocol"] = proxy["ssr-protocol"]
+    base["protocol-param"] = proxy["fakedomain"]
+
+
+def add_singbox_shadowsocks_base(all_base, proxy):
+    base = all_base[0]
+    base["method"] = proxy["cipher"]
+    base["password"] = proxy["uuid"]
+    add_singbox_udp_over_tcp(base)
+    add_singbox_multiplex(base)
+    if proxy["transport"] == "faketls":
+        base["plugin"] = "obfs-local"
+        base["plugin_opts"] = f'obfs=tls&obfs-host={proxy["fakedomain"]}'
+    if proxy['proto'] == 'v2ray':
+        base["plugin"] = "v2ray-plugin"
+        # "skip-cert-verify": proxy["mode"] == "Fake" or proxy['allow_insecure'],
+        base["plugin_opts"] = f'mode=websocket&path={proxy["path"]}&host={proxy["host"]}&tls'
+
+    if proxy["transport"] == "shadowtls":
+        base['detour'] = base['tag']+"_shadowtls-out"
+
+        shadowtls_base = {
+            "type": "shadowtls",
+            "tag": base['tag']+"_shadowtls-out",
+            "server": base['server'],
+            "server_port": base['server_port'],
+            "version": 3,
+            "password": proxy["proxy_path"],
+            "tls": {
+                "enabled": True,
+                "server_name": proxy["fakedomain"],
+
+            }
+        }
+        add_singbox_utls(shadowtls_base)
+        del base['server']
+        del base['server_port']
+        all_base.append(shadowtls_base)
+
+
+def add_singbox_ssh(all_base, proxy):
+    base = all_base[0]
+    # base["client_version"]= "{{ssh_client_version}}"
+    base["user"] = proxy['uuid']
+    base["private_key"] = proxy['private_key']  # .replace('\n', '\\n')
+
+    base["host_key"] = proxy.get('host_key', [])
+
+    socks_front = {
+        "type": "socks",
+        "tag": base['tag']+"+UDP",
+        "server": "127.0.0.1",
+        "server_port": 2000,
+        "version": "5",
+        "udp_over_tcp": True,
+        "network": "tcp",
+        "detour": base['tag']
+    }
+    all_base.append(socks_front)
+
+
+def make_full_singbox_config(domains, **kwargs):
+    base_config = json.loads(render_template('base_singbox_config.json'))
+    allphttp = [p for p in request.args.get("phttp", "").split(',') if p]
+    allptls = [p for p in request.args.get("ptls", "").split(',') if p]
+
+    allp = []
+    # raise Exception(domains)
+    for d in domains:
+
+        # raise Exception(base_config)
+        base_config['dns']['rules'][0]['domain'].append(d.domain)
+        hconfigs = get_hconfigs(d.child_id)
+        for type in all_proxies(d.child_id):
+            options = []
+            if type.proto in ['ssh']:
+                options = [{'pport': hconfigs[ConfigEnum.ssh_server_port]}]
+            else:
+                for t in (['http', 'tls'] if hconfigs[ConfigEnum.http_proxy_enable] else ['tls']):
+                    for port in hconfigs[ConfigEnum.http_ports if t == 'http' else ConfigEnum.tls_ports].split(','):
+                        phttp = port if t == 'http' else None
+                        ptls = port if t == 'tls' else None
+                        if phttp and len(allphttp) and phttp not in allphttp:
+                            continue
+                        if ptls and len(allptls) and ptls not in allptls:
+                            continue
+                        options.append({'phttp': phttp, 'ptls': ptls})
+
+            for opt in options:
+                pinfo = make_proxy(type, d, **opt)
+                if 'msg' not in pinfo:
+                    sing = to_singbox(pinfo)
+                    if 'msg' not in sing:
+                        allp += sing
+    base_config['outbounds'] += allp
+
+    select = {
+        "type": "selector",
+        "tag": "Select",
+        "outbounds": [p['tag'] for p in allp if 'shadowtls-out' not in p['tag']],
+        "default": "Auto"
+    }
+    select['outbounds'].insert(0, "Auto")
+    base_config['outbounds'].insert(0, select)
+    smart = {
+        "type": "urltest",
+        "tag": "Auto",
+        "outbounds": [p['tag'] for p in allp if 'shadowtls-out' not in p],
+        "url": "https://www.gstatic.com/generate_204",
+        "interval": "10m",
+        "tolerance": 200
+    }
+    base_config['outbounds'].insert(1, smart)
+    return json.dumps(base_config, indent=4)

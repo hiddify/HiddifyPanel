@@ -254,7 +254,7 @@ def get_domain_ip(dom, retry=3):
 
     if not res:
         try:
-            res = f"[{socket.getaddrinfo(dom, None, socket.AF_INET6)[0][4][0]}]" 
+            res = f"[{socket.getaddrinfo(dom, None, socket.AF_INET6)[0][4][0]}]"
         except:
             pass
 
@@ -672,9 +672,15 @@ def fallback_domain_compatible_with_servernames(fallback_domain, servername):
 
 def generate_x25519_keys():
     # Run the "xray x25519" command and capture its output
-    cmd = "xray x25519"
-    output = subprocess.check_output(cmd, shell=True, text=True)
-    # Extract the private and public keys from the output
+    try:
+        cmd = "xray x25519"
+        output = subprocess.check_output(cmd, shell=True, text=True)
+    except:
+        output = """
+        Private key: ILnwK6Ii9PWgnkq5Lbb8G_chyP4ba5cGRpZbaJjf7lg
+        Public key: no36JbbL8uPH4VT2PNe9husJBN2mu5DbgDASH7hK32A
+        """
+        # Extract the private and public keys from the output
     private_key = output.split("Private key: ")[1].split("\n")[0]
     public_key = output.split("Public key: ")[1].split("\n")[0]
 

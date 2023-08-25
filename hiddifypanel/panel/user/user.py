@@ -122,6 +122,19 @@ class UserView(FlaskView):
 
         return add_headers(resp, c)
 
+    @route('/full-singbox.json', methods=["GET", "HEAD"])
+    def full_singbox(self):
+        mode = "new"  # request.args.get("mode")
+        c = get_common_data(g.user_uuid, mode)
+        # response.content_type = 'text/plain';
+        if request.method == 'HEAD':
+            resp = ""
+        else:
+            resp = link_maker.make_full_singbox_config(**c)
+            # resp = render_template('singbox_config.json', **c, host_keys=hiddify.get_hostkeys(True),
+            #                        ssh_client_version=hiddify.get_ssh_client_version(user), ssh_ip=hiddify.get_direct_host_or_ip(4), base64=False)
+        return add_headers(resp, c)
+
     @route('/singbox.json', methods=["GET", "HEAD"])
     def singbox(self):
         mode = "new"  # request.args.get("mode")
