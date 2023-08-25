@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPT\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-25 13:09+0200\n"
-"PO-Revision-Date: 2023-08-22 16:30-0500\n"
+"POT-Creation-Date: 2023-08-25 13:38+0200\n"
+"PO-Revision-Date: 2023-08-25 06:10-0500\n"
 "Last-Translator: lymanrudni\n"
 "Language: pt\n"
 "Language-Team: Portuguese\n"
@@ -880,11 +880,12 @@ msgid "config.decoy_domain.label"
 msgstr "🔀 Site Decoy"
 
 # | msgid ""
-# | "Fake Site: simulates a site when someone visits your domain directly.\n"
+# | "Fake Site: simulates a site when someone visits your domain
+# directly.<br>\n"
 # | "⚠️ Do not use financial, Iranian and famous sites or sites with login
-# such as Google, Yahoo, Wikipedia, PayPal.\n"
+# such as Google, Yahoo, Wikipedia, PayPal.<br>\n"
 # | "⛔ Be sure to check the site and make sure that it is the right site,
-# otherwise you may receive a phishing warning.\n"
+# otherwise you may receive a phishing warning.<br>\n"
 # | "⛔⛔ Check this domain again so that there is no problem in the future"
 #: hiddifypanel/panel/admin/QuickSetup.py:116
 #: hiddifypanel/panel/admin/templates/configfake.html:6
