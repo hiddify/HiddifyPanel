@@ -33,7 +33,7 @@ def pbase64(full_str):
     str = full_str.split("vmess://")[1]
     import base64
     resp = base64.b64encode(f'{str}'.encode("utf-8"))
-    return "vmess://"+resp.decode()
+    return "vmess://"+resp
 
 
 def make_proxy(proxy: Proxy, domain_db: Domain, phttp=80, ptls=443, pport=None):
@@ -249,7 +249,9 @@ def to_link(proxy):
             vmess_data['tls'] = "reality"
             vmess_data['pbk'] = proxy['reality_pbk']
             vmess_data['sid'] = proxy['reality_short_id']
-        return pbase64(f'vmess://{json.dumps(vmess_data)}')
+        
+        return "vmess://" + hiddify.do_base_64(f'{json.dumps(vmess_data)}')
+        # return pbase64(f'vmess://{json.dumps(vmess_data)}')
     if proxy['proto'] == 'ssh':
         strenssh = hiddify.do_base_64(f'{proxy["uuid"]}:0:{proxy["private_key"]}::@{proxy["server"]}:{proxy["port"]}')
         baseurl = f'ssh://{strenssh}#{name_link}'
@@ -434,57 +436,21 @@ def to_clash(proxy, meta_or_normal):
 
 
 def get_clash_config_names(meta_or_normal, domains):
-    allphttp = [p for p in request.args.get("phttp", "").split(',') if p]
-    allptls = [p for p in request.args.get("ptls", "").split(',') if p]
-
     allp = []
-    for d in domains:
-        hconfigs = get_hconfigs(d.child_id)
-        for t in (['http', 'tls'] if hconfigs[ConfigEnum.http_proxy_enable] else ['tls']):
-
-            for port in hconfigs[ConfigEnum.http_ports if t == 'http' else ConfigEnum.tls_ports].split(','):
-
-                phttp = port if t == 'http' else None
-                ptls = port if t == 'tls' else None
-                if phttp and len(allphttp) and phttp not in allphttp:
-                    continue
-                if ptls and len(allptls) and ptls not in allptls:
-                    continue
-
-                for type in all_proxies(d.child_id):
-                    pinfo = make_proxy(type, d, phttp=phttp, ptls=ptls)
-                    if 'msg' not in pinfo:
-                        clash = to_clash(pinfo, meta_or_normal)
-                        if 'msg' not in clash:
-                            allp.append(clash['name'])
+    for pinfo in get_all_validated_proxies(domains):
+        clash = to_clash(pinfo, meta_or_normal)
+        if 'msg' not in clash:
+            allp.append(clash['name'])
 
     return yaml.dump(allp, sort_keys=False)
 
 
 def get_all_clash_configs(meta_or_normal, domains):
-    allphttp = [p for p in request.args.get("phttp", "").split(',') if p]
-    allptls = [p for p in request.args.get("ptls", "").split(',') if p]
-
     allp = []
-    for d in domains:
-        hconfigs = get_hconfigs(d.child_id)
-        for t in (['http', 'tls'] if hconfigs[ConfigEnum.http_proxy_enable] else ['tls']):
-
-            for port in hconfigs[ConfigEnum.http_ports if t == 'http' else ConfigEnum.tls_ports].split(','):
-
-                phttp = port if t == 'http' else None
-                ptls = port if t == 'tls' else None
-                if phttp and len(allphttp) and phttp not in allphttp:
-                    continue
-                if ptls and len(allptls) and ptls not in allptls:
-                    continue
-
-                for type in all_proxies(d.child_id):
-                    pinfo = make_proxy(type, d, phttp=phttp, ptls=ptls)
-                    if 'msg' not in pinfo:
-                        clash = to_clash(pinfo, meta_or_normal)
-                        if 'msg' not in clash:
-                            allp.append(clash)
+    for pinfo in get_all_validated_proxies(domains):
+        clash = to_clash(pinfo, meta_or_normal)
+        if 'msg' not in clash:
+            allp.append(clash)
 
     return yaml.dump({"proxies": allp}, sort_keys=False)
 
@@ -688,33 +654,12 @@ def make_full_singbox_config(domains, **kwargs):
     allptls = [p for p in request.args.get("ptls", "").split(',') if p]
 
     allp = []
-    # raise Exception(domains)
     for d in domains:
-
-        # raise Exception(base_config)
         base_config['dns']['rules'][0]['domain'].append(d.domain)
-        hconfigs = get_hconfigs(d.child_id)
-        for type in all_proxies(d.child_id):
-            options = []
-            if type.proto in ['ssh']:
-                options = [{'pport': hconfigs[ConfigEnum.ssh_server_port]}]
-            else:
-                for t in (['http', 'tls'] if hconfigs[ConfigEnum.http_proxy_enable] else ['tls']):
-                    for port in hconfigs[ConfigEnum.http_ports if t == 'http' else ConfigEnum.tls_ports].split(','):
-                        phttp = port if t == 'http' else None
-                        ptls = port if t == 'tls' else None
-                        if phttp and len(allphttp) and phttp not in allphttp:
-                            continue
-                        if ptls and len(allptls) and ptls not in allptls:
-                            continue
-                        options.append({'phttp': phttp, 'ptls': ptls})
-
-            for opt in options:
-                pinfo = make_proxy(type, d, **opt)
-                if 'msg' not in pinfo:
-                    sing = to_singbox(pinfo)
-                    if 'msg' not in sing:
-                        allp += sing
+    for pinfo in get_all_validated_proxies(domains):
+        sing = to_singbox(pinfo)
+        if 'msg' not in sing:
+            allp += sing
     base_config['outbounds'] += allp
 
     select = {
@@ -735,3 +680,50 @@ def make_full_singbox_config(domains, **kwargs):
     }
     base_config['outbounds'].insert(1, smart)
     return json.dumps(base_config, indent=4)
+
+
+def make_v2ray_configs(user, user_activate, domains, ip_debug, **kwargs):
+    res = []
+    if hconfig(ConfigEnum.show_usage_in_sublink):
+        fake_ip_for_sub_link = datetime.datetime.now().strftime(f"%H.%M--%Y.%m.%d.time:%H%M"),
+        res.append(f'trojan://1@{fake_ip_for_sub_link}?sni=fake_ip_for_sub_link&security=tls#{user.current_usage_GB|round(3)}/{user.usage_limit_GB}GB_Remain:{expire_days}days')
+    res.append(f'#Hiddify auto ip: {ip_debug}')
+
+    if not user_activate:
+        res.append('trojan://1@1.1.1.1#Package_Ended')
+        return "\n".join(res)
+
+    for pinfo in get_all_validated_proxies(domains):
+        link = to_link(pinfo)
+        if 'msg' not in link:
+            res.append(link)
+    return "\n".join(res)
+
+
+def get_all_validated_proxies(domains):
+    allp = []
+    allphttp = [p for p in request.args.get("phttp", "").split(',') if p]
+    allptls = [p for p in request.args.get("ptls", "").split(',') if p]
+    for d in domains:
+        # raise Exception(base_config)
+        hconfigs = get_hconfigs(d.child_id)
+        for type in all_proxies(d.child_id):
+            options = []
+            if type.proto in ['ssh']:
+                options = [{'pport': hconfigs[ConfigEnum.ssh_server_port]}]
+            else:
+                for t in (['http', 'tls'] if hconfigs[ConfigEnum.http_proxy_enable] else ['tls']):
+                    for port in hconfigs[ConfigEnum.http_ports if t == 'http' else ConfigEnum.tls_ports].split(','):
+                        phttp = port if t == 'http' else None
+                        ptls = port if t == 'tls' else None
+                        if phttp and len(allphttp) and phttp not in allphttp:
+                            continue
+                        if ptls and len(allptls) and ptls not in allptls:
+                            continue
+                        options.append({'phttp': phttp, 'ptls': ptls})
+
+            for opt in options:
+                pinfo = make_proxy(type, d, **opt)
+                if 'msg' not in pinfo:
+                    allp.append(pinfo)
+    return allp

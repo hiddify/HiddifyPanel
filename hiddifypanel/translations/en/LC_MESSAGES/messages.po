@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-26 18:13+0200\n"
-"PO-Revision-Date: 2023-08-26 11:12-0500\n"
+"POT-Creation-Date: 2023-08-26 18:59+0200\n"
+"PO-Revision-Date: 2023-08-26 11:59-0500\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -1169,6 +1169,7 @@ msgid "Save & Add More"
 msgstr "Save & Add More"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:5
+#: hiddifypanel/panel/user/templates/home/one_click.html:229
 #: hiddifypanel/templates/donation.html:14
 msgid "Close"
 msgstr "Close"
@@ -3445,6 +3446,24 @@ msgstr ""
 msgid "Download HiddifyNext"
 msgstr "Download HiddifyNext"
 
+#: hiddifypanel/panel/user/templates/home/one_click.html:51
+#: hiddifypanel/panel/user/templates/home/one_click.html:66
+#: hiddifypanel/panel/user/templates/home/one_click.html:71
+#: hiddifypanel/panel/user/templates/home/one_click.html:85
+#: hiddifypanel/panel/user/templates/home/one_click.html:100
+#: hiddifypanel/panel/user/templates/home/one_click.html:108
+#: hiddifypanel/panel/user/templates/home/one_click.html:122
+#: hiddifypanel/panel/user/templates/home/one_click.html:143
+#: hiddifypanel/panel/user/templates/home/one_click.html:157
+#: hiddifypanel/panel/user/templates/home/one_click.html:178
+#: hiddifypanel/panel/user/templates/home/one_click.html:183
+#: hiddifypanel/panel/user/templates/home/one_click.html:197
+#: hiddifypanel/panel/user/templates/home/one_click.html:204
+#: hiddifypanel/panel/user/templates/home/one_click.html:212
+#, fuzzy
+msgid "Import in"
+msgstr "Import in"
+
 #: hiddifypanel/panel/user/templates/home/one_click.html:55
 #: hiddifypanel/panel/user/templates/home/one_click.html:91
 #: hiddifypanel/panel/user/templates/home/one_click.html:126
@@ -3482,6 +3501,11 @@ msgstr "<i class=\"fa-solid fa-download\"></i> Download App"
 #, fuzzy
 msgid "QRCode"
 msgstr "<i class=\"fa-solid fa-qrcode\"></i> QRCode"
+
+#: hiddifypanel/panel/user/templates/home/one_click.html:230
+#, fuzzy
+msgid "Copy Link"
+msgstr "Copy Link"
 
 # | msgid ""
 # | "First, Test the Speed <b>without</b> the proxy. If the speed is not good,

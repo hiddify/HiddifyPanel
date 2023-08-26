@@ -1,4 +1,5 @@
 import socket
+import user_agents
 from hiddifypanel.cache import cache
 from sqlalchemy.orm import Load
 import glob
@@ -729,3 +730,36 @@ def do_base_64(str):
     import base64
     resp = base64.b64encode(f'{str}'.encode("utf-8"))
     return resp.decode()
+
+
+def get_user_agent():
+    return __parse_user_agent(request.user_agent.string)
+
+
+@cache.cache()
+def __parse_user_agent(ua):
+    uaa = user_agents.parse(request.user_agent.string)
+    res = {}
+    res["is_browser"] = re.match('^Mozilla', ua, re.IGNORECASE)
+    res['os'] = uaa.os.family
+    res['os_version'] = uaa.os.version
+    res['is_clash'] = re.match('^(Clash|Stash)', ua, re.IGNORECASE)
+    res['is_clash_meta'] = re.match('^(Clash-verge|Clash-?Meta|Stash|NekoBox|NekoRay|Pharos|hiddify-desktop)', ua, re.IGNORECASE)
+    res['is_singbox'] = re.match('^(HiddifyNext|Dart|SFI|SFA)', ua, re.IGNORECASE)
+    if (res['is_singbox']):
+        res['singbox_version'] = (1, 4, 0)
+    res['is_hiddify']=re.match('^(HiddifyNext)', ua, re.IGNORECASE)
+    if ['is_hiddify']:
+        res['hiddify_version']=uaa
+    res['is_v2ray'] = re.match('^(Hiddify|FoXray|Fair|v2rayNG|SagerNet|Shadowrocket|V2Box|Loon|Liberty)', ua, re.IGNORECASE)
+
+    if res['os'] == 'Other':
+        if re.match('^(FoXray|Fair|Shadowrocket|V2Box|Loon|Liberty)', ua, re.IGNORECASE):
+            res['os'] = 'iOS'
+            # res['os_version']
+
+    for a in ['Hiddify', 'FoXray', 'Fair', 'v2rayNG', 'SagerNet', 'Shadowrocket', 'V2Box', 'Loon', 'Liberty', 'Clash', 'Meta', 'Stash', 'SFI', 'SFA', 'HiddifyNext']:
+        if a.lower() in ua.lower():
+            res['app'] = a
+    if res["is_browser"]:
+        res['app'] = uaa.browser.family

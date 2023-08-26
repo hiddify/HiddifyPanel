@@ -57,12 +57,16 @@ class UserView(FlaskView):
 
     #     return render_template('home/multi.html',**c,ua=user_agent)
     @route('/')
-    @route('/sub')
     def auto_sub(self):
         ua = request.user_agent.string
         if re.match('^Mozilla', ua, re.IGNORECASE):
             return self.new()
         return self.get_proper_config() or self.all_configs(base64=True)
+
+    @route('/sub')
+    @route('/sub/')
+    def force_sub(self):
+        return self.get_proper_config() or self.all_configs(base64=False)
 
     def get_proper_config(self):
         ua = request.user_agent.string
@@ -196,16 +200,16 @@ class UserView(FlaskView):
         if request.method == 'HEAD':
             resp = ""
         else:
-            resp = render_template('all_configs.txt', **c, base64=do_base_64)
+            resp = link_maker.make_v2ray_configs(**c)  # render_template('all_configs.txt', **c, base64=do_base_64)
 
-        res = ""
-        for line in resp.split("\n"):
-            if "vmess://" in line:
-                line = "vmess://"+do_base_64(line.replace("vmess://", ""))
-            res += line+"\n"
+        # res = ""
+        # for line in resp.split("\n"):
+        #     if "vmess://" in line:
+        #         line = "vmess://"+do_base_64(line.replace("vmess://", ""))
+        #     res += line+"\n"
         if base64:
-            res = do_base_64(res)
-        return add_headers(res, c)
+            resp = do_base_64(resp)
+        return add_headers(resp, c)
 
     @ route('/manifest.webmanifest')
     def create_pwa_manifest(self):
