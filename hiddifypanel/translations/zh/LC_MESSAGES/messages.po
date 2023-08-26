@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-26 20:20+0200\n"
-"PO-Revision-Date: 2023-08-26 13:19-0500\n"
+"POT-Creation-Date: 2023-08-26 20:36+0200\n"
+"PO-Revision-Date: 2023-08-26 13:23-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -1162,7 +1162,7 @@ msgid "Save & Add More"
 msgstr "保存并添加更多"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:5
-#: hiddifypanel/panel/user/templates/home/one_click.html:237
+#: hiddifypanel/panel/user/templates/home/one_click.html:245
 #: hiddifypanel/templates/donation.html:14
 msgid "Close"
 msgstr "关闭"
@@ -2845,7 +2845,7 @@ msgstr "请选择以下应用程序之一："
 msgid "download"
 msgstr "直接下载"
 
-# | msgid "Google Play"
+# | msgid "<i class=\"fa-brands fa-google-play\"></i> Google Play"
 #: hiddifypanel/panel/user/templates/home/android.html:19
 #: hiddifypanel/panel/user/templates/home/android.html:65
 #: hiddifypanel/panel/user/templates/home/one_click.html:56
@@ -3429,6 +3429,9 @@ msgid ""
 msgstr ""
 
 #: hiddifypanel/panel/user/templates/home/one_click.html:44
+#: hiddifypanel/panel/user/templates/home/one_click.html:87
+#: hiddifypanel/panel/user/templates/home/one_click.html:127
+#: hiddifypanel/panel/user/templates/home/one_click.html:165
 msgid "Use HiddifyNext:"
 msgstr ""
 
@@ -3436,67 +3439,64 @@ msgstr ""
 #: hiddifypanel/panel/user/templates/home/one_click.html:53
 #: hiddifypanel/panel/user/templates/home/one_click.html:69
 #: hiddifypanel/panel/user/templates/home/one_click.html:78
-#: hiddifypanel/panel/user/templates/home/one_click.html:105
-#: hiddifypanel/panel/user/templates/home/one_click.html:114
-#: hiddifypanel/panel/user/templates/home/one_click.html:140
-#: hiddifypanel/panel/user/templates/home/one_click.html:149
-#: hiddifypanel/panel/user/templates/home/one_click.html:175
-#: hiddifypanel/panel/user/templates/home/one_click.html:184
-#: hiddifypanel/panel/user/templates/home/one_click.html:190
-#: hiddifypanel/panel/user/templates/home/one_click.html:204
-#: hiddifypanel/panel/user/templates/home/one_click.html:210
+#: hiddifypanel/panel/user/templates/home/one_click.html:94
+#: hiddifypanel/panel/user/templates/home/one_click.html:108
+#: hiddifypanel/panel/user/templates/home/one_click.html:117
+#: hiddifypanel/panel/user/templates/home/one_click.html:134
+#: hiddifypanel/panel/user/templates/home/one_click.html:146
+#: hiddifypanel/panel/user/templates/home/one_click.html:155
+#: hiddifypanel/panel/user/templates/home/one_click.html:171
+#: hiddifypanel/panel/user/templates/home/one_click.html:183
+#: hiddifypanel/panel/user/templates/home/one_click.html:192
+#: hiddifypanel/panel/user/templates/home/one_click.html:198
+#: hiddifypanel/panel/user/templates/home/one_click.html:212
+#: hiddifypanel/panel/user/templates/home/one_click.html:218
 msgid "Download App"
 msgstr ""
 
 # | msgid "Import in App"
 #: hiddifypanel/panel/user/templates/home/one_click.html:58
-#: hiddifypanel/panel/user/templates/home/one_click.html:205
-#: hiddifypanel/panel/user/templates/home/one_click.html:212
+#: hiddifypanel/panel/user/templates/home/one_click.html:96
+#: hiddifypanel/panel/user/templates/home/one_click.html:111
+#: hiddifypanel/panel/user/templates/home/one_click.html:119
+#: hiddifypanel/panel/user/templates/home/one_click.html:136
+#: hiddifypanel/panel/user/templates/home/one_click.html:157
+#: hiddifypanel/panel/user/templates/home/one_click.html:173
+#: hiddifypanel/panel/user/templates/home/one_click.html:194
+#: hiddifypanel/panel/user/templates/home/one_click.html:199
+#: hiddifypanel/panel/user/templates/home/one_click.html:213
 #: hiddifypanel/panel/user/templates/home/one_click.html:220
+#: hiddifypanel/panel/user/templates/home/one_click.html:228
 #, fuzzy
 msgid "Import"
 msgstr "在应用程序中导入"
 
 #: hiddifypanel/panel/user/templates/home/one_click.html:62
-#: hiddifypanel/panel/user/templates/home/one_click.html:99
-#: hiddifypanel/panel/user/templates/home/one_click.html:134
-#: hiddifypanel/panel/user/templates/home/one_click.html:169
-#: hiddifypanel/panel/user/templates/home/one_click.html:200
+#: hiddifypanel/panel/user/templates/home/one_click.html:102
+#: hiddifypanel/panel/user/templates/home/one_click.html:140
+#: hiddifypanel/panel/user/templates/home/one_click.html:177
+#: hiddifypanel/panel/user/templates/home/one_click.html:208
 msgid "More Applications"
 msgstr ""
 
 #: hiddifypanel/panel/user/templates/home/one_click.html:73
 #: hiddifypanel/panel/user/templates/home/one_click.html:79
-#: hiddifypanel/panel/user/templates/home/one_click.html:93
-#: hiddifypanel/panel/user/templates/home/one_click.html:108
-#: hiddifypanel/panel/user/templates/home/one_click.html:116
-#: hiddifypanel/panel/user/templates/home/one_click.html:130
-#: hiddifypanel/panel/user/templates/home/one_click.html:151
-#: hiddifypanel/panel/user/templates/home/one_click.html:165
-#: hiddifypanel/panel/user/templates/home/one_click.html:186
-#: hiddifypanel/panel/user/templates/home/one_click.html:191
 msgid "Import in"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/one_click.html:91
-#: hiddifypanel/panel/user/templates/home/one_click.html:128
-#: hiddifypanel/panel/user/templates/home/one_click.html:163
-msgid "Download HiddifyNext"
-msgstr ""
-
 # | msgid "<i class=\"fa-solid fa-download\"></i>  Download App"
-#: hiddifypanel/panel/user/templates/home/one_click.html:217
+#: hiddifypanel/panel/user/templates/home/one_click.html:225
 msgid ""
 "Download\n"
 "                                    App"
 msgstr ""
 
 # | msgid "<i class=\"fa-solid fa-qrcode\"></i> QRCode"
-#: hiddifypanel/panel/user/templates/home/one_click.html:227
+#: hiddifypanel/panel/user/templates/home/one_click.html:235
 msgid "QRCode"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/one_click.html:238
+#: hiddifypanel/panel/user/templates/home/one_click.html:246
 msgid "Copy Link"
 msgstr ""
 
@@ -4528,5 +4528,8 @@ msgstr "动作"
 #~ msgid ""
 #~ "You should visit this page without VPN. Your country=%(your_country)s\n"
 #~ "expected=%(expected_country)s"
+#~ msgstr ""
+
+#~ msgid "Download HiddifyNext"
 #~ msgstr ""
 
