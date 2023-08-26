@@ -2,15 +2,15 @@
 %set sub_encoded_url='https%3A%2F%2F'+domain+'%2F'+hconfigs[ConfigEnum.proxy_path]+'%2F'+user.uuid+'%2F'
 
 
-<div class="row  mb-2" style="margin: 10px;">
+<div class="row1  mb-2" style="margin-top: 10px;">
 
-    <div class="card small-box bg-danger bg-h-green col-12 col-md-6 mx-auto" style="margin:auto">
+    <div class="card small-box bg-danger bg-h-green col-12 col-md-6 mx-auto" style="margin:auto;">
         <a class="open_in_hiddify" href="{{sub_url}}">
             <div class="card-body">
 
 
                 <div class="inner">
-                    <h3>{{_('Click to Start Anti-Filter.')}}</h3>
+                    <h3 style="text-wrap:balance">{{_('Click to Start Anti-Filter.')}}</h3>
                     <div class="info-box-content">
                         {{_('Unified link for all application.')}}
                     </div>
@@ -40,15 +40,22 @@
                 <br><br>
 
                 {% if ua.os.family=="Android" %}
+                <h3>
+                    {{_('Use HiddifyNext:')}}
+                </h3>
+
                 <table>
                     <tr>
 
                         <td>
-                            <a href="https://play.google.com/store/apps/details?id=app.hiddify.com" class="btn col-12 btn-primary">{{_('install from google play')}}</a>
+
                             <a href="/{{hconfigs[ConfigEnum.proxy_path]}}/gh/Hiddify/HiddifyNext/releases/latest/download/hiddify-android-universal.apk"
-                                class="btn col-12 btn-primary ">{{_('Download HiddifyNext')}}</a>
+                                class="btn col-12 btn-primary ">{{_('Download App')}}</a>
                         </td>
-                        <td><a class="btn col-12 btn-success" href="hiddify://install-sub/?url={{sub_encoded_url}}">{{_('Import in')}} HiddifyNext</a></td>
+                        <td>
+                            <a href="https://play.google.com/store/apps/details?id=app.hiddify.com" class="btn col-12 btn-primary">{{_('install from google play')}}</a>
+                        </td>
+                        <td><a class="btn col-12 btn-success" href="hiddify://install-sub/?url={{sub_encoded_url}}">{{_('Import')}}</a></td>
                     </tr>
                 </table>
                 <details>
@@ -57,17 +64,18 @@
                         <tr>
                             <td>HiddifyNG / V2rayNG</td>
                             <td>
-                                <a href="https://play.google.com/store/apps/details?id=ang.hiddify.com" class="btn col-12 btn-primary">{{_('install from google play')}}</a>
+
                                 <a href="/{{hconfigs[ConfigEnum.proxy_path]}}/gh/Hiddify/HiddifyNG/releases/latest/download/HiddifyNG.apk"
-                                    class="btn col-12 btn-primary ">{{_('Download
-                                    App')}}</a>
+                                    class="btn col-12 btn-primary ">{{_('Download App')}}</a>
+                                <a href="https://play.google.com/store/apps/details?id=ang.hiddify.com" class="btn col-12 btn-primary">{{_('install from google play')}}</a>
                             </td>
 
                             <td><a class="btn col-12 btn-success" href="v2rayng://install-sub/?url={{sub_encoded_url}}">{{_('Import in')}} HiddifyNG</a></td>
                         </tr>
                         <tr>
                             <td>Clash / Meta</td>
-                            <td></td>
+                            <td><a href="/{{hconfigs[ConfigEnum.proxy_path]}}/gh/hiddify/HiddifyClashAndroid/releases/download/v2.7.3-h0.24/hiddify-2.7.3-h0.24-meta-alpha-universal-release.apk"
+                                    class="btn col-12 btn-primary ">{{_('Download App')}}</a></td>
                             <td><a class="btn col-12 btn-success" href="clash://install-config/?url={{sub_encoded_url}}">{{_('Import in')}} Clash</a></td>
                         </tr>
                     </table>
@@ -75,14 +83,17 @@
                 {% endif %}
 
                 {% if ua.os.family=="Windows" %}
+                <h3>
+                    {{_('Use HiddifyNext:')}}
+                </h3>
                 <table>
                     <tr>
 
                         <td>
                             <a href="/{{hconfigs[ConfigEnum.proxy_path]}}/gh/Hiddify/HiddifyNext/releases/download/draft/hiddify-windows-x64-setup.exe"
-                                class="btn col-12 btn-primary ">{{_('Download HiddifyNext')}}</a>
+                                class="btn col-12 btn-primary ">{{_('Download App')}}</a>
                         </td>
-                        <td><a class="btn col-12 btn-success" href="hiddify://install-sub/?url={{sub_encoded_url}}">{{_('Import in')}} HiddifyNext</a></td>
+                        <td><a class="btn col-12 btn-success" href="hiddify://install-sub/?url={{sub_encoded_url}}">{{_('Import')}}</a></td>
                     </tr>
                 </table>
 
@@ -97,7 +108,7 @@
                                     class="btn col-12 btn-primary ">{{_('Download App')}}</a>
                             </td>
 
-                            <td><a class="btn col-12 btn-success" href="hiddify://install-sub/?url={{sub_encoded_url}}">{{_('Import in')}} HiddifyN</a></td>
+                            <td><a class="btn col-12 btn-success" href="hiddify://install-sub/?url={{sub_encoded_url}}">{{_('Import')}}</a></td>
                         </tr>
                         <tr>
                             <td>Clash / Meta</td>
@@ -105,21 +116,24 @@
                                 <a href="/{{hconfigs[ConfigEnum.proxy_path]}}/gh/Hiddify/HiddifyClashDesktop/releases/latest/download/HiddifyClashDesktop_13.1.4_x64_en-US.msi"
                                     class="btn col-12 btn-primary ">{{_('Download App')}}</a>
                             </td>
-                            <td><a class="btn col-12 btn-success" href="clash://install-config/?url={{sub_encoded_url}}">{{_('Import in')}} HiddifyClash</a></td>
+                            <td><a class="btn col-12 btn-success" href="clash://install-config/?url={{sub_encoded_url}}">{{_('Import')}}</a></td>
                         </tr>
                     </table>
                 </details>
                 {% endif %}
 
-                {% if ua.os.family=="Linux" %}
+                {% if 'Linux' in self.ua_string and 'X11' in self.ua_string%}
+                <h3>
+                    {{_('Use HiddifyNext:')}}
+                </h3>
                 <table>
                     <tr>
 
                         <td>
                             <a href="/{{hconfigs[ConfigEnum.proxy_path]}}/gh/Hiddify/HiddifyNext/releases/download/draft/hiddify-linux-x64.AppImage"
-                                class="btn col-12 btn-primary ">{{_('Download HiddifyNext')}}</a>
+                                class="btn col-12 btn-primary ">{{_('Download App')}}</a>
                         </td>
-                        <td><a class="btn col-12 btn-success" href="hiddify://install-sub/?url={{sub_encoded_url}}">{{_('Import in')}} Hiddify</a></td>
+                        <td><a class="btn col-12 btn-success" href="hiddify://install-sub/?url={{sub_encoded_url}}">{{_('Import')}}</a></td>
                     </tr>
                 </table>
                 <details>
@@ -140,21 +154,23 @@
                                 <a href="/{{hconfigs[ConfigEnum.proxy_path]}}/gh/Hiddify/HiddifyClashDesktop/releases/latest/download/hiddify-clash-desktop_13.1.4_amd64.AppImage"
                                     class="btn col-12 btn-primary ">{{_('Download App')}}</a>
                             </td>
-                            <td><a class="btn col-12 btn-success" href="clash://install-config/?url={{sub_encoded_url}}">{{_('Import in')}} HiddifyClash</a></td>
+                            <td><a class="btn col-12 btn-success" href="clash://install-config/?url={{sub_encoded_url}}">{{_('Import')}}</a></td>
                         </tr>
                     </table>
                 </details>
                 {% endif %}
 
-                {% if ua.os.family=="macOS" %}
+                {% if ua.os.family=='Mac OS X' %}
+                <h3>
+                    {{_('Use HiddifyNext:')}}
+                </h3>
                 <table>
                     <tr>
-
                         <td>
                             <a href="/{{hconfigs[ConfigEnum.proxy_path]}}/gh/Hiddify/HiddifyNext/releases/download/draft/hiddify-macos-universal.dmg"
-                                class="btn col-12 btn-primary ">{{_('Download HiddifyNext')}}</a>
+                                class="btn col-12 btn-primary ">{{_('Download App')}}</a>
                         </td>
-                        <td><a class="btn col-12 btn-success" href="hiddify://install-sub/?url={{sub_encoded_url}}">{{_('Import in')}} HiddifyNext</a></td>
+                        <td><a class="btn col-12 btn-success" href="hiddify://install-sub/?url={{sub_encoded_url}}">{{_('Import')}}</a></td>
                     </tr>
                 </table>
                 <details>
@@ -175,12 +191,12 @@
                                 <a href="/{{hconfigs[ConfigEnum.proxy_path]}}/gh/Hiddify/HiddifyClashDesktop/releases/latest/download/HiddifyClashDesktop_13.1.4_x64.dmg"
                                     class="btn col-12 btn-primary ">{{_('Download App')}}</a>
                             </td>
-                            <td><a class="btn col-12 btn-success" href="clash://install-config/?url={{sub_encoded_url}}">{{_('Import in')}} HiddifyClash</a></td>
+                            <td><a class="btn col-12 btn-success" href="clash://install-config/?url={{sub_encoded_url}}">{{_('Import')}}</a></td>
                         </tr>
                         <tr>
                             <td>FoxRay</td>
-                            <td><a href="https://apps.apple.com/us/app/foxray/id6448898396" target="_blank" class="btn btn-success">{{_('Download App')}}</a></td>
-                            <td><a href="foxray://yiguo.dev/sub/add/?url={{base}}">{{_('Import in')}} FoxRay</a></td>
+                            <td><a href="https://apps.apple.com/us/app/foxray/id6448898396" target="_blank" class="btn btn-primary">{{_('Download App')}}</a></td>
+                            <td><a class="btn btn-success" href="foxray://yiguo.dev/sub/add/?url={{base}}">{{_('Import')}}</a></td>
                         </tr>
                     </table>
                 </details>
@@ -193,15 +209,15 @@
                     <table>
                         <tr>
                             <td>FoxRay</td>
-                            <td><a href="https://apps.apple.com/us/app/foxray/id6448898396" target="_blank" class="btn btn-success">{{_('Download App')}}</a></td>
-                            <td><a href="foxray://yiguo.dev/sub/add/?url={{base}}">{{_('Import in')}} FoxRay</a></td>
+                            <td><a href="https://apps.apple.com/us/app/foxray/id6448898396" target="_blank" class="btn btn-primary">{{_('Download App')}}</a></td>
+                            <td><a class="btn btn-success" href="foxray://yiguo.dev/sub/add/?url={{base}}">{{_('Import')}}</a></td>
                         </tr>
                         <tr>
                             <td>Shadowrocket</td>
                             <td>
                                 <a href="https://apps.apple.com/us/app/shadowrocket/id932747118" target="_blank" class="btn btn-primary">{{_('Download App')}}</a>
                             </td>
-                            <td><a class="btn col-12 btn-success" href="clash://install-config/?url={{sub_encoded_url}}">{{_('Import in')}} Clash</a></td>
+                            <td><a class="btn col-12 btn-success" href="clash://install-config/?url={{sub_encoded_url}}">{{_('Import')}}</a></td>
                         </tr>
                         <tr>
                             <td>Stash</td>
@@ -209,7 +225,7 @@
                                 <a href="https://apps.apple.com/us/app/stash-rule-based-proxy/id1596063349" target="_blank" class="btn btn-primary">{{_('Download
                                     App')}}</a>
                             </td>
-                            <td><a class="btn col-12 btn-success" href="clash://install-config/?url={{sub_encoded_url}}">{{_('Import in')}} Clash</a></td>
+                            <td><a class="btn col-12 btn-success" href="clash://install-config/?url={{sub_encoded_url}}">{{_('Import')}}</a></td>
                         </tr>
                     </table>
                 </details>
