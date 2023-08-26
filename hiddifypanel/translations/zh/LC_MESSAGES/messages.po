@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-26 20:36+0200\n"
-"PO-Revision-Date: 2023-08-26 13:23-0500\n"
+"POT-Creation-Date: 2023-08-26 20:47+0200\n"
+"PO-Revision-Date: 2023-08-26 13:36-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -60,12 +60,12 @@ msgstr "配置已成功更改。"
 #: hiddifypanel/panel/admin/DomainAdmin.py:179
 #: hiddifypanel/panel/admin/QuickSetup.py:126
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:107
-#: hiddifypanel/panel/hiddify.py:353
+#: hiddifypanel/panel/hiddify.py:354
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr "域名无法解析！你的域有问题"
 
 # | msgid "Last Day"
-#: hiddifypanel/panel/hiddify.py:382
+#: hiddifypanel/panel/hiddify.py:383
 #, fuzzy
 msgid "0 - Last day"
 msgstr "0 - 最后一天"
@@ -74,7 +74,7 @@ msgstr "0 - 最后一天"
 # | "Selected Domain for REALITY is not in the same ASN. To better use of the
 # "
 # | "Protocol, it is better to find a Domain in the same ASN"
-#: hiddifypanel/panel/hiddify.py:664
+#: hiddifypanel/panel/hiddify.py:665
 #, fuzzy
 msgid ""
 "selected domain for REALITY is not in the same ASN. To better use of the "
