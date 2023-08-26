@@ -19,6 +19,26 @@ import re
 
 class UserView(FlaskView):
 
+    @route('/test/')
+    def test(self):
+        ua = request.user_agent.string
+        if re.match('^Mozilla', ua, re.IGNORECASE):
+            return "Please do not open here"
+        conf = self.get_proper_config()
+
+        import json
+        ua = request.user_agent.string
+        uaa = user_agents.parse(request.user_agent.string)
+        with open('ua.txt', 'a') as f:
+            f.write("\n".join([
+                f'\n{datetime.datetime.now()} '+("Ok" if conf else "ERROR"),
+                ua,
+                f'os={uaa.os.family}-{uaa.os.version}({uaa.os.version_string}) br={uaa.browser.family} v={uaa.browser.version} vs={uaa.browser.version_string}   dev={uaa.device.family}-{uaa.device.brand}-{uaa.device.model}',
+                '\n'
+            ]))
+        if conf:
+            return conf
+        abort(500)
     # @route('/old')
     # @route('/old/')
     # def index(self):
@@ -36,36 +56,42 @@ class UserView(FlaskView):
     #     user_agent =  user_agents.parse(request.user_agent.string)
 
     #     return render_template('home/multi.html',**c,ua=user_agent)
-    @route('/auto_sub')
+    @route('/')
+    @route('/sub')
     def auto_sub(self):
+        ua = request.user_agent.string
+        if re.match('^Mozilla', ua, re.IGNORECASE):
+            return self.new()
         return self.get_proper_config() or self.all_configs(base64=True)
 
     def get_proper_config(self):
         ua = request.user_agent.string
-        if re.match('^([Cc]lash-verge|[Cc]lash-?[Mm]eta)', ua) or 'NekoBox' in ua or 'NekoRay' in ua:
+        if re.match('^Mozilla', ua, re.IGNORECASE):
+            return None
+        if re.match('^(Clash-verge|Clash-?Meta|Stash|NekoBox|NekoRay|Pharos|hiddify-desktop)', ua, re.IGNORECASE):
             return self.clash_config(meta_or_normal="meta")
-        if re.match('^([Cc]lash|[Ss]tash)', ua):
+        if re.match('^(Clash|Stash)', ua, re.IGNORECASE):
             return self.clash_config(meta_or_normal="normal")
 
         if 'HiddifyNext' in ua or 'Dart' in ua:
             return self.clash_config(meta_or_normal="meta")
-
-        if 'HiddifyNext' in ua or 'Dart' in ua or 'SFI' in ua or 'SFA' in ua:
+        if re.match('^(HiddifyNext|Dart|SFI|SFA)', ua, re.IGNORECASE):
             return self.full_singbox()
 
-        if any([p in ua for p in ['FoXray', 'HiddifyNG', 'v2rayNG', 'SagerNet']]):
+        # if any([p in ua for p in ['FoXray', 'HiddifyNG','Fair%20VPN' ,'v2rayNG', 'SagerNet']]):
+        if re.match('^(Hiddify|FoXray|Fair|v2rayNG|SagerNet|Shadowrocket|V2Box|Loon|Liberty)', ua, re.IGNORECASE):
             return self.all_configs(base64=True)
 
-    @route('/auto')
+    @ route('/auto')
     def auto_select(self):
         c = get_common_data(g.user_uuid, mode="new")
         user_agent = user_agents.parse(request.user_agent.string)
         # return render_template('home/handle_smart.html', **c)
         return render_template('home/auto_page.html', **c, ua=user_agent)
 
-    @route('/new/')
-    @route('/new')
-    @route('/')
+    @ route('/new/')
+    @ route('/new')
+    # @ route('/')
     def new(self):
         conf = self.get_proper_config()
         if conf:
@@ -75,8 +101,8 @@ class UserView(FlaskView):
         user_agent = user_agents.parse(request.user_agent.string)
         return render_template('home/multi.html', **c, ua=user_agent)
 
-    @route('/clash/<meta_or_normal>/proxies.yml')
-    @route('/clash/proxies.yml')
+    @ route('/clash/<meta_or_normal>/proxies.yml')
+    @ route('/clash/proxies.yml')
     def clash_proxies(self, meta_or_normal="normal"):
         mode = request.args.get("mode")
         domain = request.args.get("domain", None)
@@ -87,7 +113,7 @@ class UserView(FlaskView):
 
         return resp
 
-    @route('/report', methods=["POST"])
+    @ route('/report', methods=["POST"])
     def report(self):
         data = request.get_json()
         user_ip = clean_ip.get_real_user_ip()
@@ -121,8 +147,8 @@ class UserView(FlaskView):
             db.session.add(detail)
         db.session.commit()
 
-    @route('/clash/<typ>.yml', methods=["GET", "HEAD"])
-    @route('/clash/<meta_or_normal>/<typ>.yml', methods=["GET", "HEAD"])
+    @ route('/clash/<typ>.yml', methods=["GET", "HEAD"])
+    @ route('/clash/<meta_or_normal>/<typ>.yml', methods=["GET", "HEAD"])
     def clash_config(self, meta_or_normal="normal", typ="all.yml"):
         mode = request.args.get("mode")
 
@@ -136,7 +162,7 @@ class UserView(FlaskView):
 
         return add_headers(resp, c)
 
-    @route('/full-singbox.json', methods=["GET", "HEAD"])
+    @ route('/full-singbox.json', methods=["GET", "HEAD"])
     def full_singbox(self):
         mode = "new"  # request.args.get("mode")
         c = get_common_data(g.user_uuid, mode)
@@ -149,7 +175,7 @@ class UserView(FlaskView):
             #                        ssh_client_version=hiddify.get_ssh_client_version(user), ssh_ip=hiddify.get_direct_host_or_ip(4), base64=False)
         return add_headers(resp, c)
 
-    @route('/singbox.json', methods=["GET", "HEAD"])
+    @ route('/singbox.json', methods=["GET", "HEAD"])
     def singbox(self):
         mode = "new"  # request.args.get("mode")
         c = get_common_data(g.user_uuid, mode)
@@ -161,7 +187,7 @@ class UserView(FlaskView):
                                    ssh_client_version=hiddify.get_ssh_client_version(user), ssh_ip=hiddify.get_direct_host_or_ip(4), base64=False)
         return add_headers(resp, c)
 
-    @route('/all.txt', methods=["GET", "HEAD"])
+    @ route('/all.txt', methods=["GET", "HEAD"])
     def all_configs(self, base64=False):
         mode = "new"  # request.args.get("mode")
         base64 = base64 or request.args.get("base64", "").lower() == "true"
@@ -181,7 +207,7 @@ class UserView(FlaskView):
             res = do_base_64(res)
         return add_headers(res, c)
 
-    @route('/manifest.webmanifest')
+    @ route('/manifest.webmanifest')
     def create_pwa_manifest(self):
 
         domain = urlparse(request.base_url).hostname
@@ -206,7 +232,7 @@ class UserView(FlaskView):
             ]
         })
 
-    @route("/offline.html")
+    @ route("/offline.html")
     def offline():
         return f"Not Connected <a href='/{hconfig(ConfigEnum.proxy_path)}/{g.user.uuid}/'>click for reload</a>"
 

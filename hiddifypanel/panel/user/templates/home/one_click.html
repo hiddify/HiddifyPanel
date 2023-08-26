@@ -1,0 +1,256 @@
+% set sub_url="https://"+domain+"/"+hconfigs[ConfigEnum.proxy_path]+"/"+user.uuid+"/"
+%set sub_encoded_url='https%3A%2F%2F'+domain+'%2F'+hconfigs[ConfigEnum.proxy_path]+'%2F'+user.uuid+'%2F'
+
+
+<div class="row" style="margin: 10px;">
+
+    <div class="card small-box bg-danger bg-h-green col-12 col-md-6 mx-auto">
+        <a class="open_in_hiddify" href="{{sub_url}}">
+            <div class="card-body">
+
+
+                <div class="inner">
+                    <h3><i class="fa-solid fa-play"></i>{{_('Click to Start Anti-Filter.')}}</h3>
+                    <div class="info-box-content">
+                        {{_('Unified link for all application.')}}
+                    </div>
+                </div>
+
+            </div>
+        </a>
+
+    </div>
+
+
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="background-color: #fff;">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{_('Open in Application')}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                {{_("If the application do not open automatically, please click <a class='btn btn-primary copy-link' href='%(sub)s'>this universal link</a> to copy and paste it on
+                your application, or:",sub=sub_url)}}
+                <br><br>
+
+                {% if ua.os.family=="Android" %}
+                <table>
+                    <tr>
+
+                        <td>
+                            <a href="https://play.google.com/store/apps/details?id=app.hiddify.com" class="btn col-12 btn-primary">{{_('install from google play')}}</a>
+                            <a href="/{{hconfigs[ConfigEnum.proxy_path]}}/gh/Hiddify/HiddifyNext/releases/latest/download/hiddify-android-universal.apk"
+                                class="btn col-12 btn-primary ">{{_('Download HiddifyNext')}}</a>
+                        </td>
+                        <td><a class="btn col-12 btn-success" href="hiddify://install-sub/?url={{sub_encoded_url}}">Import in HiddifyNext</a></td>
+                    </tr>
+                </table>
+                <details>
+                    <summary>{{_('More Applications')}}</summary>
+                    <table>
+                        <tr>
+                            <td>HiddifyNG / V2rayNG</td>
+                            <td>
+                                <a href="https://play.google.com/store/apps/details?id=ang.hiddify.com" class="btn col-12 btn-primary">{{_('install from google play')}}</a>
+                                <a href="/{{hconfigs[ConfigEnum.proxy_path]}}/gh/Hiddify/HiddifyNG/releases/latest/download/HiddifyNG.apk"
+                                    class="btn col-12 btn-primary ">{{_('Download
+                                    App')}}</a>
+                            </td>
+
+                            <td><a class="btn col-12 btn-success" href="v2rayng://install-sub/?url={{sub_encoded_url}}">Import in HiddifyNG</a></td>
+                        </tr>
+                        <tr>
+                            <td>Clash / Meta</td>
+                            <td></td>
+                            <td><a class="btn col-12 btn-success" href="clash://install-config/?url={{sub_encoded_url}}">Import in Clash</a></td>
+                        </tr>
+                    </table>
+                </details>
+                {% endif %}
+
+                {% if ua.os.family=="Windows" %}
+                <table>
+                    <tr>
+
+                        <td>
+                            <a href="/{{hconfigs[ConfigEnum.proxy_path]}}/gh/Hiddify/HiddifyNext/releases/download/draft/hiddify-windows-x64-setup.exe"
+                                class="btn col-12 btn-primary ">{{_('Download HiddifyNext')}}</a>
+                        </td>
+                        <td><a class="btn col-12 btn-success" href="hiddify://install-sub/?url={{sub_encoded_url}}">Import in HiddifyNext</a></td>
+                    </tr>
+                </table>
+
+
+                <details>
+                    <summary>{{_('More Applications')}}</summary>
+                    <table>
+                        <tr>
+                            <td>HiddifyN</td>
+                            <td>
+                                <a href="/{{hconfigs[ConfigEnum.proxy_path]}}/gh/Hiddify/HiddifyN/releases/latest/download/win-x86.zip"
+                                    class="btn col-12 btn-primary ">{{_('Download App')}}</a>
+                            </td>
+
+                            <td><a class="btn col-12 btn-success" href="hiddify://install-sub/?url={{sub_encoded_url}}">Import in HiddifyN</a></td>
+                        </tr>
+                        <tr>
+                            <td>Clash / Meta</td>
+                            <td>
+                                <a href="/{{hconfigs[ConfigEnum.proxy_path]}}/gh/Hiddify/HiddifyClashDesktop/releases/latest/download/HiddifyClashDesktop_13.1.4_x64_en-US.msi"
+                                    class="btn col-12 btn-primary ">{{_('Download App')}}</a>
+                            </td>
+                            <td><a class="btn col-12 btn-success" href="clash://install-config/?url={{sub_encoded_url}}">Import in HiddifyClash</a></td>
+                        </tr>
+                    </table>
+                </details>
+                {% endif %}
+
+                {% if ua.os.family=="Linux" %}
+                <table>
+                    <tr>
+
+                        <td>
+                            <a href="/{{hconfigs[ConfigEnum.proxy_path]}}/gh/Hiddify/HiddifyNext/releases/download/draft/hiddify-linux-x64.AppImage"
+                                class="btn col-12 btn-primary ">{{_('Download HiddifyNext')}}</a>
+                        </td>
+                        <td><a class="btn col-12 btn-success" href="hiddify://install-sub/?url={{sub_encoded_url}}">Import in Hiddify</a></td>
+                    </tr>
+                </table>
+                <details>
+                    <summary>{{_('More Applications')}}</summary>
+                    <table>
+                        <!-- <tr>
+                        <td>HiddifyN</td>
+                        <td>
+                            <a href="/{{hconfigs[ConfigEnum.proxy_path]}}/gh/Hiddify/HiddifyN/releases/latest/download/win-x86.zip"
+                                class="btn col-12 btn-primary ">{{_('Download App')}}</a>
+                        </td>
+
+                        <td><a class="btn col-12 btn-success" href="hiddify://install-sub/?url={{sub_encoded_url}}">Import</a></td>
+                    </tr> -->
+                        <tr>
+                            <td>Clash / ClashMeta / HiddifyClash</td>
+                            <td>
+                                <a href="/{{hconfigs[ConfigEnum.proxy_path]}}/gh/Hiddify/HiddifyClashDesktop/releases/latest/download/hiddify-clash-desktop_13.1.4_amd64.AppImage"
+                                    class="btn col-12 btn-primary ">{{_('Download App')}}</a>
+                            </td>
+                            <td><a class="btn col-12 btn-success" href="clash://install-config/?url={{sub_encoded_url}}">Import in HiddifyClash</a></td>
+                        </tr>
+                    </table>
+                </details>
+                {% endif %}
+
+                {% if ua.os.family=="macOS" %}
+                <table>
+                    <tr>
+
+                        <td>
+                            <a href="/{{hconfigs[ConfigEnum.proxy_path]}}/gh/Hiddify/HiddifyNext/releases/download/draft/hiddify-macos-universal.dmg"
+                                class="btn col-12 btn-primary ">{{_('Download HiddifyNext')}}</a>
+                        </td>
+                        <td><a class="btn col-12 btn-success" href="hiddify://install-sub/?url={{sub_encoded_url}}">Import in HiddifyNext</a></td>
+                    </tr>
+                </table>
+                <details>
+                    <summary>{{_('More Applications')}}</summary>
+                    <table>
+                        <!-- <tr>
+                        <td>HiddifyN</td>
+                        <td>
+                            <a href="/{{hconfigs[ConfigEnum.proxy_path]}}/gh/Hiddify/HiddifyN/releases/latest/download/win-x86.zip"
+                                class="btn col-12 btn-primary ">{{_('Download App')}}</a>
+                        </td>
+
+                        <td><a class="btn col-12 btn-success" href="hiddify://install-sub/?url={{sub_encoded_url}}">Import</a></td>
+                    </tr> -->
+                        <tr>
+                            <td>Clash / Meta </td>
+                            <td>
+                                <a href="/{{hconfigs[ConfigEnum.proxy_path]}}/gh/Hiddify/HiddifyClashDesktop/releases/latest/download/HiddifyClashDesktop_13.1.4_x64.dmg"
+                                    class="btn col-12 btn-primary ">{{_('Download App')}}</a>
+                            </td>
+                            <td><a class="btn col-12 btn-success" href="clash://install-config/?url={{sub_encoded_url}}">Import in HiddifyClash</a></td>
+                        </tr>
+                        <tr>
+                            <td>FoxRay</td>
+                            <td><a href="https://apps.apple.com/us/app/foxray/id6448898396" target="_blank" class="btn btn-success">{{_('Download App')}}</a></td>
+                            <td><a href="foxray://yiguo.dev/sub/add/?url={{base}}">Import in FoxRay</a></td>
+                        </tr>
+                    </table>
+                </details>
+                {% endif %}
+
+
+                {% if ua.os.family=="iOS" %}
+                <details>
+                    <summary>{{_('More Applications')}}</summary>
+                    <table>
+                        <tr>
+                            <td>FoxRay</td>
+                            <td><a href="https://apps.apple.com/us/app/foxray/id6448898396" target="_blank" class="btn btn-success">{{_('Download App')}}</a></td>
+                            <td><a href="foxray://yiguo.dev/sub/add/?url={{base}}">Import in FoxRay</a></td>
+                        </tr>
+                        <tr>
+                            <td>Shadowrocket</td>
+                            <td>
+                                <a href="https://apps.apple.com/us/app/shadowrocket/id932747118" target="_blank" class="btn btn-primary">{{_('Download App')}}</a>
+                            </td>
+                            <td><a class="btn col-12 btn-success" href="clash://install-config/?url={{sub_encoded_url}}">Import in Clash</a></td>
+                        </tr>
+                        <tr>
+                            <td>Stash</td>
+                            <td>
+                                <a href="https://apps.apple.com/us/app/stash-rule-based-proxy/id1596063349" target="_blank" class="btn btn-primary">{{_('Download
+                                    App')}}</a>
+                            </td>
+                            <td><a class="btn col-12 btn-success" href="clash://install-config/?url={{sub_encoded_url}}">Import in Clash</a></td>
+                        </tr>
+                    </table>
+                </details>
+                {% endif %}
+
+                <details>
+                    <summary>{{_('QRCode')}}</summary>
+                    <center>
+                        <div id="qrcode-oneclick" class="mx-auto" style="margin:10px;"></div>
+                    </center>
+                </details>
+
+
+
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-secondary" data-dismiss="modal">Close</a>
+                <a href="{{sub_url}}" class="btn btn-primary copy-link">Copy Link</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    window.addEventListener("DOMContentLoaded", function () {
+
+        $('.open_in_hiddify').click(function (e) {
+            e.preventDefault()
+            let iframe = $('<iframe></iframe>').css('display', 'none');
+            $('body').append(iframe);
+            iframe.attr('src', "hiddify://install-sub/?url=" + encodeURI(this.href));
+            $('#exampleModal').modal({ show: true })
+        })
+
+        w = Math.min(window.innerWidth, window.innerHeight) * .5;
+        qrcode_oneclick = new QRCode(document.getElementById("qrcode-oneclick"), { width: w, height: w, correctLevel: 1 });
+        qrcode_oneclick.clear()
+        qrcode_oneclick.makeCode(document.location);
+    });
+
+</script>

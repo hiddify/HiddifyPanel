@@ -74,8 +74,8 @@ def init_app(app):
             abort(400, "invalid")
         g.proxy_path = values.pop('proxy_path', None) if values else None
         if g.proxy_path != hconfig(ConfigEnum.proxy_path):
-            if app.config['DEBUG']:
-                abort(400, Markup(f"Invalid Proxy Path <a href=/{hconfig(ConfigEnum.proxy_path)}/{get_super_admin_secret()}/admin>admin</a>"))
+            # if app.config['DEBUG']:
+            #     abort(400, Markup(f"Invalid Proxy Path <a href=/{hconfig(ConfigEnum.proxy_path)}/{get_super_admin_secret()}/admin>admin</a>"))
             abort(400, "Invalid Proxy Path")
         if endpoint == 'static' or endpoint == "videos":
             return
