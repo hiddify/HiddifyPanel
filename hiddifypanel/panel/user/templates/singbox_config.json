@@ -136,60 +136,51 @@
 		"auto_detect_interface": true,
 		"override_android_vpn": true,
 		"final": "SSH+UDP",
-		// "geoip": {
-			//             "download_url": "https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/gh/malikshi/sing-box-geo/releases/latest/download/geoip.db",
-			// //    "download_url": "https:\/\/github.com\/malikshi\/sing-box-geo\/releases\/latest\/download\/geoip.db",
-			//     "download_detour": "direct"
-			// },
-			"geoip": {
-				"download_url": "https:\/\/github.com\/malikshi\/sing-box-geo\/releases\/latest\/download\/geoip.db",
-				"download_detour": "direct"
-			},
-			// "geosite": {
-				//     "download_url": "https:\/\/github.com\/malikshi\/v2ray-rules-dat\/releases\/latest\/download\/geosite.db",
-				//     "download_detour": "direct"
-				// },
-				"rules": [
-					{
-						"outbound": "dns-out",
-						"port": [
-							53
-						]
-					},
-					{
-						"inbound": [
-							"dns-in"
-						],
-						"outbound": "dns-out"
-					},
-					{
-						"domain_suffix": [
-							"ir"
-						],
-						"outbound": "bypass"
-					},
-					{
-						"geoip": [
-							"ir"
-						],
-						"outbound": "bypass"
-					},
-					{
-						"protocol": "quic",
-						"port": [443],
-						"outbound": "block"
-					},
-					{
-						"ip_cidr": [
-							"224.0.0.0\/3",
-							"ff00::\/8"
-						],
-						"outbound": "block",
-						"source_ip_cidr": [
-							"224.0.0.0\/3",
-							"ff00::\/8"
-						]
-					}
+		"geoip": {
+			"download_url": "https:\/\/github.com\/malikshi\/sing-box-geo\/releases\/latest\/download\/geoip.db",
+			"download_detour": "direct"
+		},
+		"rules": [
+			{
+				"outbound": "dns-out",
+				"port": [
+					53
 				]
+			},
+			{
+				"inbound": [
+					"dns-in"
+				],
+				"outbound": "dns-out"
+			},
+			{
+				"domain_suffix": [
+					"ir"
+				],
+				"outbound": "bypass"
+			},
+			{
+				"geoip": [
+					"ir"
+				],
+				"outbound": "bypass"
+			},
+			{
+				"protocol": "quic",
+				"port": [443],
+				"outbound": "block"
+			},
+			{
+				"ip_cidr": [
+					"224.0.0.0\/3",
+					"ff00::\/8"
+				],
+				"outbound": "block",
+				"source_ip_cidr": [
+					"224.0.0.0\/3",
+					"ff00::\/8"
+				]
+			}
+		]
 	}
 }
