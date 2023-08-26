@@ -239,21 +239,22 @@ def flash_config_success(restart_mode='', domain_changed=True):
 # IP address
 
 
-def get_domain_ip(dom, retry=3):
+def get_domain_ip(dom, retry=3, version=None):
 
     res = None
-    try:
-        res = socket.gethostbyname(dom)
-    except:
-        pass
+    if not version:
+        try:
+            res = socket.gethostbyname(dom)
+        except:
+            pass
 
-    if not res:
+    if not res and version != 6:
         try:
             res = socket.getaddrinfo(dom, None, socket.AF_INET)[0][4][0]
         except:
             pass
 
-    if not res:
+    if not res and version != 4:
         try:
             res = f"[{socket.getaddrinfo(dom, None, socket.AF_INET6)[0][4][0]}]"
         except:
@@ -748,9 +749,9 @@ def __parse_user_agent(ua):
     res['is_singbox'] = re.match('^(HiddifyNext|Dart|SFI|SFA)', ua, re.IGNORECASE)
     if (res['is_singbox']):
         res['singbox_version'] = (1, 4, 0)
-    res['is_hiddify']=re.match('^(HiddifyNext)', ua, re.IGNORECASE)
+    res['is_hiddify'] = re.match('^(HiddifyNext)', ua, re.IGNORECASE)
     if ['is_hiddify']:
-        res['hiddify_version']=uaa
+        res['hiddify_version'] = uaa
     res['is_v2ray'] = re.match('^(Hiddify|FoXray|Fair|v2rayNG|SagerNet|Shadowrocket|V2Box|Loon|Liberty)', ua, re.IGNORECASE)
 
     if res['os'] == 'Other':

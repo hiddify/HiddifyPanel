@@ -6,6 +6,7 @@ import json
 from hiddifypanel.panel import hiddify
 import random
 import re
+import datetime
 
 
 def all_proxies(child_id=0):
@@ -249,7 +250,7 @@ def to_link(proxy):
             vmess_data['tls'] = "reality"
             vmess_data['pbk'] = proxy['reality_pbk']
             vmess_data['sid'] = proxy['reality_short_id']
-        
+
         return "vmess://" + hiddify.do_base_64(f'{json.dumps(vmess_data)}')
         # return pbase64(f'vmess://{json.dumps(vmess_data)}')
     if proxy['proto'] == 'ssh':
@@ -704,12 +705,21 @@ def get_all_validated_proxies(domains):
     allp = []
     allphttp = [p for p in request.args.get("phttp", "").split(',') if p]
     allptls = [p for p in request.args.get("ptls", "").split(',') if p]
+    added_ssh_ip = {}
     for d in domains:
         # raise Exception(base_config)
         hconfigs = get_hconfigs(d.child_id)
         for type in all_proxies(d.child_id):
             options = []
             if type.proto in ['ssh']:
+                ip = hiddify.get_domain_ip(d.domain, version=4)
+                if ip and ip in added_ssh_ip:
+                    continue
+                added_ssh_ip[ip] = 1
+                ip = hiddify.get_domain_ip(d.domain, version=6)
+                if ip and ip in added_ssh_ip:
+                    continue
+                added_ssh_ip[ip] = 1
                 options = [{'pport': hconfigs[ConfigEnum.ssh_server_port]}]
             else:
                 for t in (['http', 'tls'] if hconfigs[ConfigEnum.http_proxy_enable] else ['tls']):
