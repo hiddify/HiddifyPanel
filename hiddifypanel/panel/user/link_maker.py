@@ -687,7 +687,7 @@ def make_v2ray_configs(user, user_activate, domains, ip_debug, **kwargs):
     res = []
     if hconfig(ConfigEnum.show_usage_in_sublink):
         fake_ip_for_sub_link = datetime.datetime.now().strftime(f"%H.%M--%Y.%m.%d.time:%H%M"),
-        res.append(f'trojan://1@{fake_ip_for_sub_link}?sni=fake_ip_for_sub_link&security=tls#{user.current_usage_GB|round(3)}/{user.usage_limit_GB}GB_Remain:{expire_days}days')
+        res.append(f'trojan://1@{fake_ip_for_sub_link}?sni=fake_ip_for_sub_link&security=tls#{round(user.current_usage_GB,3)}/{user.usage_limit_GB}GB_Remain:{expire_days}days')
     res.append(f'#Hiddify auto ip: {ip_debug}')
 
     if not user_activate:
