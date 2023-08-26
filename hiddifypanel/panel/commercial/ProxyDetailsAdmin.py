@@ -32,6 +32,7 @@ class ProxyDetailsAdmin(AdminLTEModelView):
     def after_model_change(self, form, model, is_created):
         # if hconfig(ConfigEnum.parent_panel):
         #     hiddify_api.sync_child_to_parent()
+        hiddify.get_available_proxies.invalidate_all()
         pass
 
     def after_model_delete(self, model):

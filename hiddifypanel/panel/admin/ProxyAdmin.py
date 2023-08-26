@@ -41,6 +41,7 @@ class ProxyAdmin(FlaskView):
                         flash((_('config.domain-fronting-notsetup-error')), 'danger')
 
             # print(cat,vs)
+            hiddify.get_available_proxies.invalidate_all()
             db.session.commit()
             hiddify.check_need_reset(old_configs)
             all_proxy_form = get_all_proxy_form(True)
@@ -61,6 +62,7 @@ class ProxyAdmin(FlaskView):
 
                 # print(cat,vs)
             db.session.commit()
+            hiddify.get_available_proxies.invalidate_all()
             hiddify.flash_config_success(restart_mode='apply', domain_changed=False)
             # if hconfig(ConfigEnum.parent_panel):
             #     hiddify_api.sync_child_to_parent()
