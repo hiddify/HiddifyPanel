@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-26 18:02+0200\n"
-"PO-Revision-Date: 2023-08-26 09:19-0500\n"
+"POT-Creation-Date: 2023-08-26 18:13+0200\n"
+"PO-Revision-Date: 2023-08-26 11:12-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -3003,7 +3003,7 @@ msgstr ""
 #: hiddifypanel/panel/user/templates/home/index_old.html:8
 #: hiddifypanel/panel/user/templates/home/multi.html:2
 #: hiddifypanel/panel/user/templates/home/multi.html:10
-#: hiddifypanel/panel/user/templates/home/multi.html:23
+#: hiddifypanel/panel/user/templates/home/multi.html:22
 #: hiddifypanel/templates/master.html:72
 msgid "user.home.title"
 msgstr "Hiddify"
@@ -3169,7 +3169,7 @@ msgstr ""
 #: hiddifypanel/panel/user/templates/home/home.html:22
 #: hiddifypanel/panel/user/templates/home/index_old.html:8
 #: hiddifypanel/panel/user/templates/home/multi.html:10
-#: hiddifypanel/panel/user/templates/home/multi.html:24
+#: hiddifypanel/panel/user/templates/home/multi.html:22
 #, python-format
 msgid "Welcome %(user)s"
 msgstr "欢迎 %(user)s"
@@ -3178,70 +3178,70 @@ msgstr "欢迎 %(user)s"
 #: copy.html:27 hiddifypanel/panel/user/templates/home/home.html:51
 #: hiddifypanel/panel/user/templates/home/index
 #: hiddifypanel/panel/user/templates/home/index_old.html:40
-#: hiddifypanel/panel/user/templates/home/multi.html:55
+#: hiddifypanel/panel/user/templates/home/multi.html:51
 msgid "telegram"
 msgstr "电报"
 
 # | msgid "Android"
 #: hiddifypanel/panel/user/templates/home/home.html:54
 #: hiddifypanel/panel/user/templates/home/index_old.html:43
-#: hiddifypanel/panel/user/templates/home/multi.html:58
+#: hiddifypanel/panel/user/templates/home/multi.html:54
 msgid "android"
 msgstr "安卓"
 
 # | msgid "iOS"
 #: hiddifypanel/panel/user/templates/home/home.html:56
 #: hiddifypanel/panel/user/templates/home/index_old.html:45
-#: hiddifypanel/panel/user/templates/home/multi.html:60
+#: hiddifypanel/panel/user/templates/home/multi.html:56
 msgid "ios"
 msgstr "iOS"
 
 # | msgid "Desktop"
 #: hiddifypanel/panel/user/templates/home/home.html:58
 #: hiddifypanel/panel/user/templates/home/index_old.html:47
-#: hiddifypanel/panel/user/templates/home/multi.html:63
+#: hiddifypanel/panel/user/templates/home/multi.html:58
 msgid "desktop"
 msgstr "桌面"
 
 # | msgid "Please Select Your Operating System."
 #: hiddifypanel/panel/user/templates/home/home.html:65
 #: hiddifypanel/panel/user/templates/home/index_old.html:54
-#: hiddifypanel/panel/user/templates/home/multi.html:70
+#: hiddifypanel/panel/user/templates/home/multi.html:65
 msgid "user.home.select os"
 msgstr "请选择您的操作系统。"
 
 # | msgid "All Configs"
 #: hiddifypanel/panel/user/templates/home/home.html:100
 #: hiddifypanel/panel/user/templates/home/index_old.html:89
-#: hiddifypanel/panel/user/templates/home/multi.html:104
+#: hiddifypanel/panel/user/templates/home/multi.html:100
 msgid "user.home.all_configs"
 msgstr "所有配置"
 
 # | msgid "Speed Test (Detect dirty IP)"
 #: hiddifypanel/panel/user/templates/home/home.html:102
 #: hiddifypanel/panel/user/templates/home/index_old.html:91
-#: hiddifypanel/panel/user/templates/home/multi.html:107
+#: hiddifypanel/panel/user/templates/home/multi.html:102
 msgid "user.home.speedtest"
 msgstr "Speedtest（检测受污染IP）"
 
 # | msgid "DNS Over HTTPS"
 #: hiddifypanel/panel/user/templates/home/home.html:104
 #: hiddifypanel/panel/user/templates/home/index_old.html:93
-#: hiddifypanel/panel/user/templates/home/multi.html:108
+#: hiddifypanel/panel/user/templates/home/multi.html:104
 msgid "user.home.doh"
 msgstr "通过 https 的 DNS"
 
 # | msgid "Please select the item."
 #: hiddifypanel/panel/user/templates/home/home.html:110
 #: hiddifypanel/panel/user/templates/home/index_old.html:99
-#: hiddifypanel/panel/user/templates/home/multi.html:114
+#: hiddifypanel/panel/user/templates/home/multi.html:110
 msgid "user.home.select tool"
 msgstr "请选择项目。"
 
 # | msgid "🧾 QR Code"
 #: hiddifypanel/panel/user/templates/home/home.html:136
 #: hiddifypanel/panel/user/templates/home/index_old.html:125
-#: hiddifypanel/panel/user/templates/home/multi.html:140
+#: hiddifypanel/panel/user/templates/home/multi.html:136
 #: hiddifypanel/panel/user/templates/home/usage.html:74
 msgid "QR code"
 msgstr "二维码"
@@ -3252,7 +3252,7 @@ msgstr "二维码"
 # | " field to display its QR Code."
 #: hiddifypanel/panel/user/templates/home/home.html:137
 #: hiddifypanel/panel/user/templates/home/index_old.html:126
-#: hiddifypanel/panel/user/templates/home/multi.html:141
+#: hiddifypanel/panel/user/templates/home/multi.html:137
 #: hiddifypanel/panel/user/templates/home/usage.html:75
 msgid "user.home.qr-code.description"
 msgstr "要复制或共享链接，请点击灰色的 <i class='fa-solid fa-qrcode'></i> 字段以显示其二维码。"
@@ -3260,14 +3260,14 @@ msgstr "要复制或共享链接，请点击灰色的 <i class='fa-solid fa-qrco
 # | msgid "Display QR Code"
 #: hiddifypanel/panel/user/templates/home/home.html:145
 #: hiddifypanel/panel/user/templates/home/index_old.html:134
-#: hiddifypanel/panel/user/templates/home/multi.html:148
+#: hiddifypanel/panel/user/templates/home/multi.html:145
 #: hiddifypanel/panel/user/templates/home/usage.html:83
 msgid "user.home.qr-code.display"
 msgstr "显示二维码"
 
 # | msgid "ℹ️ Connect Your Account to Telegram"
 #: hiddifypanel/panel/user/templates/home/home.html:320
-#: hiddifypanel/panel/user/templates/home/multi.html:326
+#: hiddifypanel/panel/user/templates/home/multi.html:320
 #, fuzzy
 msgid "Want to enjoy more with telegram?"
 msgstr "你喜欢电报吗？"
@@ -3277,7 +3277,7 @@ msgstr "你喜欢电报吗？"
 # Status "
 # | "of your Subscription"
 #: hiddifypanel/panel/user/templates/home/home.html:321
-#: hiddifypanel/panel/user/templates/home/multi.html:327
+#: hiddifypanel/panel/user/templates/home/multi.html:321
 #, fuzzy
 msgid ""
 "Please connect your telegram accout to the panel to be informed about "
@@ -3287,34 +3287,34 @@ msgstr "请将您的电报帐户连接到面板以了解最新消息。"
 # | msgid "Next"
 #: hiddifypanel/panel/user/templates/home/home.html:374
 #: hiddifypanel/panel/user/templates/home/index_old.html:344
-#: hiddifypanel/panel/user/templates/home/multi.html:380
+#: hiddifypanel/panel/user/templates/home/multi.html:374
 msgid "next"
 msgstr "下一个"
 
 # | msgid "Previous"
 #: hiddifypanel/panel/user/templates/home/home.html:375
 #: hiddifypanel/panel/user/templates/home/index_old.html:345
-#: hiddifypanel/panel/user/templates/home/multi.html:381
+#: hiddifypanel/panel/user/templates/home/multi.html:375
 msgid "previous"
 msgstr "上一个"
 
 # | msgid "Search"
 #: hiddifypanel/panel/user/templates/home/home.html:385
 #: hiddifypanel/panel/user/templates/home/index_old.html:355
-#: hiddifypanel/panel/user/templates/home/multi.html:391
+#: hiddifypanel/panel/user/templates/home/multi.html:385
 msgid "search"
 msgstr "搜索"
 
 # | msgid "Check Again"
 #: hiddifypanel/panel/user/templates/home/home.html:419
-#: hiddifypanel/panel/user/templates/home/multi.html:425
+#: hiddifypanel/panel/user/templates/home/multi.html:419
 #, fuzzy
 msgid "Check again"
 msgstr "再检查一遍"
 
 # | msgid "Turn Off VPN"
 #: hiddifypanel/panel/user/templates/home/home.html:422
-#: hiddifypanel/panel/user/templates/home/multi.html:428
+#: hiddifypanel/panel/user/templates/home/multi.html:422
 #, fuzzy
 msgid "Turn of VPN"
 msgstr "关闭 VPN"
@@ -3324,6 +3324,7 @@ msgstr "关闭 VPN"
 # | "<br>\n"
 # | "Your Country = %(your_country)s"
 #: hiddifypanel/panel/user/templates/home/home.html:422
+#: hiddifypanel/panel/user/templates/home/multi.html:422
 #, fuzzy, python-format
 msgid ""
 "You should visit this page without VPN. Your country=%(your_country)s "
@@ -3404,13 +3405,7 @@ msgstr ""
 "<br />\n"
 "然后应用以下配置之一："
 
-#: hiddifypanel/panel/user/templates/home/multi.html:428
-#, python-format
-msgid ""
-"You should visit this page without VPN. Your country=%(your_country)s\n"
-"expected=%(expected_country)s"
-msgstr ""
-
+# | msgid "<i class=\"fa-solid fa-play\"></i> Click to Start Anti-Filter."
 #: hiddifypanel/panel/user/templates/home/one_click.html:13
 msgid "Click to Start Anti-Filter."
 msgstr ""
@@ -3447,6 +3442,7 @@ msgstr ""
 msgid "More Applications"
 msgstr ""
 
+# | msgid "<i class=\"fa-solid fa-download\"></i>  Download App"
 #: hiddifypanel/panel/user/templates/home/one_click.html:62
 #: hiddifypanel/panel/user/templates/home/one_click.html:209
 msgid ""
@@ -3454,6 +3450,7 @@ msgid ""
 "                                    App"
 msgstr ""
 
+# | msgid "<i class=\"fa-solid fa-download\"></i> Download App"
 #: hiddifypanel/panel/user/templates/home/one_click.html:97
 #: hiddifypanel/panel/user/templates/home/one_click.html:106
 #: hiddifypanel/panel/user/templates/home/one_click.html:132
@@ -3466,6 +3463,7 @@ msgstr ""
 msgid "Download App"
 msgstr ""
 
+# | msgid "<i class=\"fa-solid fa-qrcode\"></i> QRCode"
 #: hiddifypanel/panel/user/templates/home/one_click.html:219
 msgid "QRCode"
 msgstr ""
@@ -4493,5 +4491,10 @@ msgstr "动作"
 #~ msgstr ""
 
 #~ msgid "config.ssh_server_ports.description"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "You should visit this page without VPN. Your country=%(your_country)s\n"
+#~ "expected=%(expected_country)s"
 #~ msgstr ""
 

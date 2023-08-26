@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-26 18:02+0200\n"
-"PO-Revision-Date: 2023-08-26 09:19-0500\n"
+"POT-Creation-Date: 2023-08-26 18:13+0200\n"
+"PO-Revision-Date: 2023-08-26 11:12-0500\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -2996,7 +2996,7 @@ msgstr ""
 #: hiddifypanel/panel/user/templates/home/index_old.html:8
 #: hiddifypanel/panel/user/templates/home/multi.html:2
 #: hiddifypanel/panel/user/templates/home/multi.html:10
-#: hiddifypanel/panel/user/templates/home/multi.html:23
+#: hiddifypanel/panel/user/templates/home/multi.html:22
 #: hiddifypanel/templates/master.html:72
 msgid "user.home.title"
 msgstr "Hiddify"
@@ -3165,7 +3165,7 @@ msgstr ""
 #: hiddifypanel/panel/user/templates/home/home.html:22
 #: hiddifypanel/panel/user/templates/home/index_old.html:8
 #: hiddifypanel/panel/user/templates/home/multi.html:10
-#: hiddifypanel/panel/user/templates/home/multi.html:24
+#: hiddifypanel/panel/user/templates/home/multi.html:22
 #, python-format
 msgid "Welcome %(user)s"
 msgstr "Welcome %(user)s"
@@ -3174,70 +3174,70 @@ msgstr "Welcome %(user)s"
 #: copy.html:27 hiddifypanel/panel/user/templates/home/home.html:51
 #: hiddifypanel/panel/user/templates/home/index
 #: hiddifypanel/panel/user/templates/home/index_old.html:40
-#: hiddifypanel/panel/user/templates/home/multi.html:55
+#: hiddifypanel/panel/user/templates/home/multi.html:51
 msgid "telegram"
 msgstr "Telegram"
 
 # | msgid "Android"
 #: hiddifypanel/panel/user/templates/home/home.html:54
 #: hiddifypanel/panel/user/templates/home/index_old.html:43
-#: hiddifypanel/panel/user/templates/home/multi.html:58
+#: hiddifypanel/panel/user/templates/home/multi.html:54
 msgid "android"
 msgstr "Android"
 
 # | msgid "iOS"
 #: hiddifypanel/panel/user/templates/home/home.html:56
 #: hiddifypanel/panel/user/templates/home/index_old.html:45
-#: hiddifypanel/panel/user/templates/home/multi.html:60
+#: hiddifypanel/panel/user/templates/home/multi.html:56
 msgid "ios"
 msgstr "iOS"
 
 # | msgid "Desktop"
 #: hiddifypanel/panel/user/templates/home/home.html:58
 #: hiddifypanel/panel/user/templates/home/index_old.html:47
-#: hiddifypanel/panel/user/templates/home/multi.html:63
+#: hiddifypanel/panel/user/templates/home/multi.html:58
 msgid "desktop"
 msgstr "Desktop"
 
 # | msgid "Please Select Your Operating System."
 #: hiddifypanel/panel/user/templates/home/home.html:65
 #: hiddifypanel/panel/user/templates/home/index_old.html:54
-#: hiddifypanel/panel/user/templates/home/multi.html:70
+#: hiddifypanel/panel/user/templates/home/multi.html:65
 msgid "user.home.select os"
 msgstr "Please Select Your Operating System."
 
 # | msgid "All Configs"
 #: hiddifypanel/panel/user/templates/home/home.html:100
 #: hiddifypanel/panel/user/templates/home/index_old.html:89
-#: hiddifypanel/panel/user/templates/home/multi.html:104
+#: hiddifypanel/panel/user/templates/home/multi.html:100
 msgid "user.home.all_configs"
 msgstr "All Configs"
 
 # | msgid "Speed Test (Detect dirty IP)"
 #: hiddifypanel/panel/user/templates/home/home.html:102
 #: hiddifypanel/panel/user/templates/home/index_old.html:91
-#: hiddifypanel/panel/user/templates/home/multi.html:107
+#: hiddifypanel/panel/user/templates/home/multi.html:102
 msgid "user.home.speedtest"
 msgstr "Speed Test (Detect dirty IP)"
 
 # | msgid "DNS Over HTTPS"
 #: hiddifypanel/panel/user/templates/home/home.html:104
 #: hiddifypanel/panel/user/templates/home/index_old.html:93
-#: hiddifypanel/panel/user/templates/home/multi.html:108
+#: hiddifypanel/panel/user/templates/home/multi.html:104
 msgid "user.home.doh"
 msgstr "DNS Over HTTPS"
 
 # | msgid "Please select the item."
 #: hiddifypanel/panel/user/templates/home/home.html:110
 #: hiddifypanel/panel/user/templates/home/index_old.html:99
-#: hiddifypanel/panel/user/templates/home/multi.html:114
+#: hiddifypanel/panel/user/templates/home/multi.html:110
 msgid "user.home.select tool"
 msgstr "Please select the item."
 
 # | msgid "🧾 QR Code"
 #: hiddifypanel/panel/user/templates/home/home.html:136
 #: hiddifypanel/panel/user/templates/home/index_old.html:125
-#: hiddifypanel/panel/user/templates/home/multi.html:140
+#: hiddifypanel/panel/user/templates/home/multi.html:136
 #: hiddifypanel/panel/user/templates/home/usage.html:74
 msgid "QR code"
 msgstr "🧾 QR Code"
@@ -3247,7 +3247,7 @@ msgstr "🧾 QR Code"
 # | "</i> field to display its QR Code."
 #: hiddifypanel/panel/user/templates/home/home.html:137
 #: hiddifypanel/panel/user/templates/home/index_old.html:126
-#: hiddifypanel/panel/user/templates/home/multi.html:141
+#: hiddifypanel/panel/user/templates/home/multi.html:137
 #: hiddifypanel/panel/user/templates/home/usage.html:75
 msgid "user.home.qr-code.description"
 msgstr ""
@@ -3257,14 +3257,14 @@ msgstr ""
 # | msgid "Display QR Code"
 #: hiddifypanel/panel/user/templates/home/home.html:145
 #: hiddifypanel/panel/user/templates/home/index_old.html:134
-#: hiddifypanel/panel/user/templates/home/multi.html:148
+#: hiddifypanel/panel/user/templates/home/multi.html:145
 #: hiddifypanel/panel/user/templates/home/usage.html:83
 msgid "user.home.qr-code.display"
 msgstr "Display QR Code"
 
 # | msgid "ℹ️ Connect Your Account to Telegram"
 #: hiddifypanel/panel/user/templates/home/home.html:320
-#: hiddifypanel/panel/user/templates/home/multi.html:326
+#: hiddifypanel/panel/user/templates/home/multi.html:320
 msgid "Want to enjoy more with telegram?"
 msgstr "ℹ️ Connect Your Account to Telegram"
 
@@ -3272,7 +3272,7 @@ msgstr "ℹ️ Connect Your Account to Telegram"
 # | "Please connect your Telegram account to the panel to know the latest "
 # | "Status of your Subscription"
 #: hiddifypanel/panel/user/templates/home/home.html:321
-#: hiddifypanel/panel/user/templates/home/multi.html:327
+#: hiddifypanel/panel/user/templates/home/multi.html:321
 msgid ""
 "Please connect your telegram accout to the panel to be informed about latest"
 " news."
@@ -3283,33 +3283,33 @@ msgstr ""
 # | msgid "Next"
 #: hiddifypanel/panel/user/templates/home/home.html:374
 #: hiddifypanel/panel/user/templates/home/index_old.html:344
-#: hiddifypanel/panel/user/templates/home/multi.html:380
+#: hiddifypanel/panel/user/templates/home/multi.html:374
 msgid "next"
 msgstr "Next"
 
 # | msgid "Previous"
 #: hiddifypanel/panel/user/templates/home/home.html:375
 #: hiddifypanel/panel/user/templates/home/index_old.html:345
-#: hiddifypanel/panel/user/templates/home/multi.html:381
+#: hiddifypanel/panel/user/templates/home/multi.html:375
 msgid "previous"
 msgstr "Previous"
 
 # | msgid "Search"
 #: hiddifypanel/panel/user/templates/home/home.html:385
 #: hiddifypanel/panel/user/templates/home/index_old.html:355
-#: hiddifypanel/panel/user/templates/home/multi.html:391
+#: hiddifypanel/panel/user/templates/home/multi.html:385
 msgid "search"
 msgstr "Search"
 
 # | msgid "Check Again"
 #: hiddifypanel/panel/user/templates/home/home.html:419
-#: hiddifypanel/panel/user/templates/home/multi.html:425
+#: hiddifypanel/panel/user/templates/home/multi.html:419
 msgid "Check again"
 msgstr "Check Again"
 
 # | msgid "Turn Off VPN"
 #: hiddifypanel/panel/user/templates/home/home.html:422
-#: hiddifypanel/panel/user/templates/home/multi.html:428
+#: hiddifypanel/panel/user/templates/home/multi.html:422
 msgid "Turn of VPN"
 msgstr "Turn Off VPN"
 
@@ -3318,6 +3318,7 @@ msgstr "Turn Off VPN"
 # | "<br>\n"
 # | "Your Country = %(your_country)s"
 #: hiddifypanel/panel/user/templates/home/home.html:422
+#: hiddifypanel/panel/user/templates/home/multi.html:422
 #, python-format
 msgid ""
 "You should visit this page without VPN. Your country=%(your_country)s "
@@ -3411,19 +3412,11 @@ msgstr ""
 "Then apply the following configs:\n"
 "<br />"
 
-#: hiddifypanel/panel/user/templates/home/multi.html:428
-#, fuzzy, python-format
-msgid ""
-"You should visit this page without VPN. Your country=%(your_country)s\n"
-"expected=%(expected_country)s"
-msgstr ""
-"You should visit this page without VPN. Your country=%(your_country)s\n"
-"expected=%(expected_country)s"
-
+# | msgid "<i class=\"fa-solid fa-play\"></i> Click to Start Anti-Filter."
 #: hiddifypanel/panel/user/templates/home/one_click.html:13
 #, fuzzy
 msgid "Click to Start Anti-Filter."
-msgstr "Click to Start Anti-Filter."
+msgstr "<i class=\"fa-solid fa-play\"></i> Click to Start Anti-Filter."
 
 #: hiddifypanel/panel/user/templates/home/one_click.html:15
 #, fuzzy
@@ -3461,16 +3454,16 @@ msgstr "Download HiddifyNext"
 msgid "More Applications"
 msgstr "More Applications"
 
+# | msgid "<i class=\"fa-solid fa-download\"></i>  Download App"
 #: hiddifypanel/panel/user/templates/home/one_click.html:62
 #: hiddifypanel/panel/user/templates/home/one_click.html:209
 #, fuzzy
 msgid ""
 "Download\n"
 "                                    App"
-msgstr ""
-"Download\n"
-"                                    App"
+msgstr "<i class=\"fa-solid fa-download\"></i>  Download App"
 
+# | msgid "<i class=\"fa-solid fa-download\"></i> Download App"
 #: hiddifypanel/panel/user/templates/home/one_click.html:97
 #: hiddifypanel/panel/user/templates/home/one_click.html:106
 #: hiddifypanel/panel/user/templates/home/one_click.html:132
@@ -3482,12 +3475,13 @@ msgstr ""
 #: hiddifypanel/panel/user/templates/home/one_click.html:202
 #, fuzzy
 msgid "Download App"
-msgstr "Download App"
+msgstr "<i class=\"fa-solid fa-download\"></i> Download App"
 
+# | msgid "<i class=\"fa-solid fa-qrcode\"></i> QRCode"
 #: hiddifypanel/panel/user/templates/home/one_click.html:219
 #, fuzzy
 msgid "QRCode"
-msgstr "QRCode"
+msgstr "<i class=\"fa-solid fa-qrcode\"></i> QRCode"
 
 # | msgid ""
 # | "First, Test the Speed <b>without</b> the proxy. If the speed is not good,
@@ -4475,3 +4469,10 @@ msgstr "Actions"
 
 #~ msgid "config.ssh_server_ports.description"
 #~ msgstr "config.ssh_server_ports.description"
+
+#~ msgid ""
+#~ "You should visit this page without VPN. Your country=%(your_country)s\n"
+#~ "expected=%(expected_country)s"
+#~ msgstr ""
+#~ "You should visit this page without VPN. Your country=%(your_country)s\n"
+#~ "expected=%(expected_country)s"
