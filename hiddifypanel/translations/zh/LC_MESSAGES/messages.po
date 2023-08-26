@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-26 16:19+0200\n"
-"PO-Revision-Date: 2023-08-25 06:38-0500\n"
+"POT-Creation-Date: 2023-08-26 18:02+0200\n"
+"PO-Revision-Date: 2023-08-26 09:19-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -258,8 +258,8 @@ msgid "Restore Domain description"
 msgstr "选择此选项以恢复您的域。"
 
 #: hiddifypanel/panel/admin/Backup.py:82
-#: hiddifypanel/panel/admin/ProxyAdmin.py:95
-#: hiddifypanel/panel/admin/ProxyAdmin.py:126
+#: hiddifypanel/panel/admin/ProxyAdmin.py:97
+#: hiddifypanel/panel/admin/ProxyAdmin.py:128
 #: hiddifypanel/panel/admin/QuickSetup.py:85
 #: hiddifypanel/panel/admin/QuickSetup.py:117
 #: hiddifypanel/panel/admin/SettingAdmin.py:265
@@ -601,14 +601,14 @@ msgid "config.domain-fronting-notsetup-error"
 msgstr "错误！ 未设置域前端"
 
 # | msgid "There is an error in one of the fields."
-#: hiddifypanel/panel/admin/ProxyAdmin.py:69
+#: hiddifypanel/panel/admin/ProxyAdmin.py:71
 #: hiddifypanel/panel/admin/QuickSetup.py:74
 #: hiddifypanel/panel/admin/SettingAdmin.py:108
 msgid "config.validation-error"
 msgstr "其中一个字段遇到错误"
 
 # | msgid "🔒 Enable TLS Domain Fronting"
-#: hiddifypanel/panel/admin/ProxyAdmin.py:123
+#: hiddifypanel/panel/admin/ProxyAdmin.py:125
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:3
 msgid "config.domain_fronting.label"
@@ -2805,7 +2805,7 @@ msgstr "除了 vless"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:73
 #: hiddifypanel/panel/user/templates/home/all-configs.html:100
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:43
-#: hiddifypanel/panel/user/templates/home/android.html:43
+#: hiddifypanel/panel/user/templates/home/android.html:40
 #: hiddifypanel/panel/user/templates/home/ios.html:29
 msgid "user.home.allconfig.link-configs"
 msgstr "订阅链接"
@@ -2838,22 +2838,22 @@ msgid "Please select one of the following applications:"
 msgstr "请选择以下应用程序之一："
 
 # | msgid "Direct Download"
-#: hiddifypanel/panel/user/templates/home/android.html:8
-#: hiddifypanel/panel/user/templates/home/android.html:14
-#: hiddifypanel/panel/user/templates/home/android.html:61
+#: hiddifypanel/panel/user/templates/home/android.html:7
+#: hiddifypanel/panel/user/templates/home/android.html:12
+#: hiddifypanel/panel/user/templates/home/android.html:58
 msgid "download"
 msgstr "直接下载"
 
 # | msgid "Google Play"
-#: hiddifypanel/panel/user/templates/home/android.html:22
-#: hiddifypanel/panel/user/templates/home/android.html:68
+#: hiddifypanel/panel/user/templates/home/android.html:19
+#: hiddifypanel/panel/user/templates/home/android.html:65
 #: hiddifypanel/panel/user/templates/home/one_click.html:47
 #: hiddifypanel/panel/user/templates/home/one_click.html:60
 msgid "install from google play"
 msgstr "谷歌播放"
 
 # | msgid "HiddifyNG <span class=\"badge badge-success\">Recommended</span>"
-#: hiddifypanel/panel/user/templates/home/android.html:29
+#: hiddifypanel/panel/user/templates/home/android.html:26
 msgid "HiddifyNG"
 msgstr ""
 
@@ -2863,14 +2863,14 @@ msgstr ""
 # | " %(dl_link)s  %(play_link)s\n"
 # | "Then click on the link below and open it in HiddifyNG.\n"
 # | "<br />"
-#: hiddifypanel/panel/user/templates/home/android.html:32
+#: hiddifypanel/panel/user/templates/home/android.html:29
 #, fuzzy
 msgid "HiddifyNG intro"
 msgstr ""
 "请从以下任一链接安装 HiddifyNG：%(dl_link)s %(play_link)s。\n"
 "然后单击下面的链接并在 HiddifyNG 中打开它。"
 
-#: hiddifypanel/panel/user/templates/home/android.html:36
+#: hiddifypanel/panel/user/templates/home/android.html:33
 #: hiddifypanel/panel/user/templates/home/windows.html:57
 msgid "Click to Import"
 msgstr ""
@@ -2881,7 +2881,7 @@ msgstr ""
 # fa-question\"></i> </button>\n"
 # | "<br />\n"
 # | "<br />"
-#: hiddifypanel/panel/user/templates/home/android.html:39
+#: hiddifypanel/panel/user/templates/home/android.html:36
 #, fuzzy
 msgid "V2rayNG"
 msgstr "V2rayNG"
@@ -2894,7 +2894,7 @@ msgstr "V2rayNG"
 # onclick='show_video(\"android-v2rayng\")'><i class=\"fa-solid
 # fa-question\"></i> </button>.\n"
 # | "<br />"
-#: hiddifypanel/panel/user/templates/home/android.html:40
+#: hiddifypanel/panel/user/templates/home/android.html:37
 #, fuzzy
 msgid "V2rayNG intro"
 msgstr ""
@@ -2902,7 +2902,7 @@ msgstr ""
 "然后复制下面的链接，按照视频教程粘贴到V2rayNG中。"
 
 # | msgid "Hiddify Android "
-#: hiddifypanel/panel/user/templates/home/android.html:51
+#: hiddifypanel/panel/user/templates/home/android.html:48
 #, fuzzy
 msgid "Hiddify Android"
 msgstr "隐藏 Android <span class=\"badge badge-success\">推荐</span>"
@@ -2944,7 +2944,7 @@ msgstr "隐藏 Android <span class=\"badge badge-success\">推荐</span>"
 # | "        </details>\n"
 # | "    </div>\n"
 # | "</details>"
-#: hiddifypanel/panel/user/templates/home/android.html:72
+#: hiddifypanel/panel/user/templates/home/android.html:69
 msgid "user.home.android.intro"
 msgstr ""
 "请从 %(dl_link)s 或 %(play_link)s 安装 HiddifyAndroid。\n"

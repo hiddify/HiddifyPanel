@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-26 16:19+0200\n"
-"PO-Revision-Date: 2023-08-25 06:38-0500\n"
+"POT-Creation-Date: 2023-08-26 18:02+0200\n"
+"PO-Revision-Date: 2023-08-26 09:19-0500\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -253,8 +253,8 @@ msgid "Restore Domain description"
 msgstr "برای بازگرداندن دامنه از این گزینه استفاده کنید."
 
 #: hiddifypanel/panel/admin/Backup.py:82
-#: hiddifypanel/panel/admin/ProxyAdmin.py:95
-#: hiddifypanel/panel/admin/ProxyAdmin.py:126
+#: hiddifypanel/panel/admin/ProxyAdmin.py:97
+#: hiddifypanel/panel/admin/ProxyAdmin.py:128
 #: hiddifypanel/panel/admin/QuickSetup.py:85
 #: hiddifypanel/panel/admin/QuickSetup.py:117
 #: hiddifypanel/panel/admin/SettingAdmin.py:265
@@ -617,14 +617,14 @@ msgid "config.domain-fronting-notsetup-error"
 msgstr "خطا! تنظیمات دامین فرانتینگ کامل نشده."
 
 # | msgid "There is an error in one of the fields."
-#: hiddifypanel/panel/admin/ProxyAdmin.py:69
+#: hiddifypanel/panel/admin/ProxyAdmin.py:71
 #: hiddifypanel/panel/admin/QuickSetup.py:74
 #: hiddifypanel/panel/admin/SettingAdmin.py:108
 msgid "config.validation-error"
 msgstr "یکی از فیلدها دچار خطا شده است."
 
 # | msgid "🔒 Enable TLS Domain Fronting"
-#: hiddifypanel/panel/admin/ProxyAdmin.py:123
+#: hiddifypanel/panel/admin/ProxyAdmin.py:125
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:3
 msgid "config.domain_fronting.label"
@@ -2869,7 +2869,7 @@ msgstr "به جز VLESS"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:73
 #: hiddifypanel/panel/user/templates/home/all-configs.html:100
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:43
-#: hiddifypanel/panel/user/templates/home/android.html:43
+#: hiddifypanel/panel/user/templates/home/android.html:40
 #: hiddifypanel/panel/user/templates/home/ios.html:29
 msgid "user.home.allconfig.link-configs"
 msgstr "لینک برای Subscription"
@@ -2904,22 +2904,22 @@ msgstr ""
 "<br />"
 
 # | msgid "Direct Download"
-#: hiddifypanel/panel/user/templates/home/android.html:8
-#: hiddifypanel/panel/user/templates/home/android.html:14
-#: hiddifypanel/panel/user/templates/home/android.html:61
+#: hiddifypanel/panel/user/templates/home/android.html:7
+#: hiddifypanel/panel/user/templates/home/android.html:12
+#: hiddifypanel/panel/user/templates/home/android.html:58
 msgid "download"
 msgstr "دانلود مستقیم"
 
 # | msgid "Google Play"
-#: hiddifypanel/panel/user/templates/home/android.html:22
-#: hiddifypanel/panel/user/templates/home/android.html:68
+#: hiddifypanel/panel/user/templates/home/android.html:19
+#: hiddifypanel/panel/user/templates/home/android.html:65
 #: hiddifypanel/panel/user/templates/home/one_click.html:47
 #: hiddifypanel/panel/user/templates/home/one_click.html:60
 msgid "install from google play"
 msgstr "گوگل‌پلی"
 
 # | msgid "HiddifyNG <span class=\"badge badge-success\">Recommended</span>"
-#: hiddifypanel/panel/user/templates/home/android.html:29
+#: hiddifypanel/panel/user/templates/home/android.html:26
 msgid "HiddifyNG"
 msgstr "HiddifyNG <span class=\"badge badge-success\">پیشنهادی</span>"
 
@@ -2929,7 +2929,7 @@ msgstr "HiddifyNG <span class=\"badge badge-success\">پیشنهادی</span>"
 # | " %(dl_link)s  %(play_link)s\n"
 # | "Then click on the link below and open it in HiddifyNG.\n"
 # | "<br />"
-#: hiddifypanel/panel/user/templates/home/android.html:32
+#: hiddifypanel/panel/user/templates/home/android.html:29
 msgid "HiddifyNG intro"
 msgstr ""
 "📌 لطفاً HiddifyNG را از یکی از این لینک ها نصب کنید:\n"
@@ -2939,7 +2939,7 @@ msgstr ""
 "سپس روی لینک زیر کلیک کنید و آن را در HiddifyNG باز کنید.\n"
 "<br />"
 
-#: hiddifypanel/panel/user/templates/home/android.html:36
+#: hiddifypanel/panel/user/templates/home/android.html:33
 #: hiddifypanel/panel/user/templates/home/windows.html:57
 msgid "Click to Import"
 msgstr "کلیک برای افزودن کانفیگ"
@@ -2950,7 +2950,7 @@ msgstr "کلیک برای افزودن کانفیگ"
 # fa-question\"></i> </button>\n"
 # | "<br />\n"
 # | "<br />"
-#: hiddifypanel/panel/user/templates/home/android.html:39
+#: hiddifypanel/panel/user/templates/home/android.html:36
 msgid "V2rayNG"
 msgstr ""
 "نرم افزار جایگزین  v2rayNG  <button class='btn btn-sm btn-default' "
@@ -2966,7 +2966,7 @@ msgstr ""
 # onclick='show_video(\"android-v2rayng\")'><i class=\"fa-solid
 # fa-question\"></i> </button>.\n"
 # | "<br />"
-#: hiddifypanel/panel/user/templates/home/android.html:40
+#: hiddifypanel/panel/user/templates/home/android.html:37
 msgid "V2rayNG intro"
 msgstr ""
 "لطفاً v2rayNG را از %(dl_link)s   %(play_link)s نصب کنید.\n"
@@ -2977,7 +2977,7 @@ msgstr ""
 "<br />"
 
 # | msgid "Hiddify Android "
-#: hiddifypanel/panel/user/templates/home/android.html:51
+#: hiddifypanel/panel/user/templates/home/android.html:48
 msgid "Hiddify Android"
 msgstr "هیدیفای کلش"
 
@@ -3018,7 +3018,7 @@ msgstr "هیدیفای کلش"
 # | "        </details>\n"
 # | "    </div>\n"
 # | "</details>"
-#: hiddifypanel/panel/user/templates/home/android.html:72
+#: hiddifypanel/panel/user/templates/home/android.html:69
 msgid "user.home.android.intro"
 msgstr ""
 "لطفاً Hiddify Android را از لینک‌ زیر نصب نمایید: <br>\n"

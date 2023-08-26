@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPT\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-26 16:19+0200\n"
-"PO-Revision-Date: 2023-08-25 06:38-0500\n"
+"POT-Creation-Date: 2023-08-26 18:02+0200\n"
+"PO-Revision-Date: 2023-08-26 09:19-0500\n"
 "Last-Translator: lymanrudni\n"
 "Language: pt\n"
 "Language-Team: Portuguese\n"
@@ -283,8 +283,8 @@ msgid "Restore Domain description"
 msgstr "Selecione esta opção para restaurar seus domínios"
 
 #: hiddifypanel/panel/admin/Backup.py:82
-#: hiddifypanel/panel/admin/ProxyAdmin.py:95
-#: hiddifypanel/panel/admin/ProxyAdmin.py:126
+#: hiddifypanel/panel/admin/ProxyAdmin.py:97
+#: hiddifypanel/panel/admin/ProxyAdmin.py:128
 #: hiddifypanel/panel/admin/QuickSetup.py:85
 #: hiddifypanel/panel/admin/QuickSetup.py:117
 #: hiddifypanel/panel/admin/SettingAdmin.py:265
@@ -668,7 +668,7 @@ msgid "config.domain-fronting-notsetup-error"
 msgstr "Erro! Fronting de domínio não definido."
 
 # | msgid "There is an error in one of the fields."
-#: hiddifypanel/panel/admin/ProxyAdmin.py:69
+#: hiddifypanel/panel/admin/ProxyAdmin.py:71
 #: hiddifypanel/panel/admin/QuickSetup.py:74
 #: hiddifypanel/panel/admin/SettingAdmin.py:108
 #, fuzzy
@@ -676,7 +676,7 @@ msgid "config.validation-error"
 msgstr "Há um erro em um dos campos."
 
 # | msgid "🔒 Enable TLS Domain Fronting"
-#: hiddifypanel/panel/admin/ProxyAdmin.py:123
+#: hiddifypanel/panel/admin/ProxyAdmin.py:125
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:3
 #, fuzzy
@@ -3159,7 +3159,7 @@ msgstr "Exceto VMenos"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:73
 #: hiddifypanel/panel/user/templates/home/all-configs.html:100
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:43
-#: hiddifypanel/panel/user/templates/home/android.html:43
+#: hiddifypanel/panel/user/templates/home/android.html:40
 #: hiddifypanel/panel/user/templates/home/ios.html:29
 #, fuzzy
 msgid "user.home.allconfig.link-configs"
@@ -3195,16 +3195,16 @@ msgstr ""
 "<br />"
 
 # | msgid "Direct Download"
-#: hiddifypanel/panel/user/templates/home/android.html:8
-#: hiddifypanel/panel/user/templates/home/android.html:14
-#: hiddifypanel/panel/user/templates/home/android.html:61
+#: hiddifypanel/panel/user/templates/home/android.html:7
+#: hiddifypanel/panel/user/templates/home/android.html:12
+#: hiddifypanel/panel/user/templates/home/android.html:58
 #, fuzzy
 msgid "download"
 msgstr "Download direto"
 
 # | msgid "Google Play"
-#: hiddifypanel/panel/user/templates/home/android.html:22
-#: hiddifypanel/panel/user/templates/home/android.html:68
+#: hiddifypanel/panel/user/templates/home/android.html:19
+#: hiddifypanel/panel/user/templates/home/android.html:65
 #: hiddifypanel/panel/user/templates/home/one_click.html:47
 #: hiddifypanel/panel/user/templates/home/one_click.html:60
 #, fuzzy
@@ -3212,7 +3212,7 @@ msgid "install from google play"
 msgstr "Google Play"
 
 # | msgid "HiddifyNG <span class=\"badge badge-success\">Recommended</span>"
-#: hiddifypanel/panel/user/templates/home/android.html:29
+#: hiddifypanel/panel/user/templates/home/android.html:26
 msgid "HiddifyNG"
 msgstr "HiddifyNG <span class=\"badge badge-success\">Recommended</span>"
 
@@ -3222,7 +3222,7 @@ msgstr "HiddifyNG <span class=\"badge badge-success\">Recommended</span>"
 # | " %(dl_link)s  %(play_link)s\n"
 # | "Then click on the link below and open it in HiddifyNG.\n"
 # | "<br />"
-#: hiddifypanel/panel/user/templates/home/android.html:32
+#: hiddifypanel/panel/user/templates/home/android.html:29
 #, fuzzy
 msgid "HiddifyNG intro"
 msgstr ""
@@ -3230,7 +3230,7 @@ msgstr ""
 "%(play_link)s.\n"
 "Em seguida, clique no link abaixo e abra-o no HiddifyNG."
 
-#: hiddifypanel/panel/user/templates/home/android.html:36
+#: hiddifypanel/panel/user/templates/home/android.html:33
 #: hiddifypanel/panel/user/templates/home/windows.html:57
 msgid "Click to Import"
 msgstr "Click to Import"
@@ -3241,7 +3241,7 @@ msgstr "Click to Import"
 # fa-question\"></i> </button>\n"
 # | "<br />\n"
 # | "<br />"
-#: hiddifypanel/panel/user/templates/home/android.html:39
+#: hiddifypanel/panel/user/templates/home/android.html:36
 #, fuzzy
 msgid "V2rayNG"
 msgstr ""
@@ -3257,7 +3257,7 @@ msgstr ""
 # onclick='show_video(\"android-v2rayng\")'><i class=\"fa-solid
 # fa-question\"></i> </button>.\n"
 # | "<br />"
-#: hiddifypanel/panel/user/templates/home/android.html:40
+#: hiddifypanel/panel/user/templates/home/android.html:37
 #, fuzzy
 msgid "V2rayNG intro"
 msgstr ""
@@ -3269,7 +3269,7 @@ msgstr ""
 "<br />"
 
 # | msgid "Hiddify Android "
-#: hiddifypanel/panel/user/templates/home/android.html:51
+#: hiddifypanel/panel/user/templates/home/android.html:48
 #, fuzzy
 msgid "Hiddify Android"
 msgstr "Ocultar Android"
@@ -3311,7 +3311,7 @@ msgstr "Ocultar Android"
 # | "        </details>\n"
 # | "    </div>\n"
 # | "</details>"
-#: hiddifypanel/panel/user/templates/home/android.html:72
+#: hiddifypanel/panel/user/templates/home/android.html:69
 #, fuzzy
 msgid "user.home.android.intro"
 msgstr ""
