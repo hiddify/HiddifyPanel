@@ -688,26 +688,32 @@ def make_v2ray_configs(user, user_activate, domains, expire_days, ip_debug, db_d
 
     ua = hiddify.get_user_agent()
     if hconfig(ConfigEnum.show_usage_in_sublink):
-        
+
         if not ua['is_hiddify']:
-            name = 'Hiddify'
+
             fake_ip_for_sub_link = datetime.datetime.now().strftime(f"%H.%M--%Y.%m.%d.time:%H%M")
             # if ua['app'] == "Fair1":
             #     res.append(f'trojan://1@{fake_ip_for_sub_link}?sni=fake_ip_for_sub_link&security=tls#{round(user.current_usage_GB,3)}/{user.usage_limit_GB}GB_Remain:{expire_days}days')
             # else:
-            emoji = '⏳' if user_activate else '✖'
 
-            if hconfig(ConfigEnum.lang) == 'fa':
-                name=f'{emoji}{round(user.current_usage_GB,3)}/{user.usage_limit_GB}GB 📅باقی:{expire_days} روز'
-            else:
-                name = f'{emoji}{round(user.current_usage_GB,3)}/{user.usage_limit_GB}GB 📅Remain:{expire_days} days'
             profile_title = f'{db_domain.alias or db_domain.domain} {user.name}'
             if has_auto_cdn:
                 profile_title += f" {asn}"
 
             res.append(f'trojan://1@{fake_ip_for_sub_link}?sni=fake_ip_for_sub_link&security=tls#{hiddify.url_encode(profile_title)}')
-            res.append(
-                f'trojan://1@{fake_ip_for_sub_link}?sni=fake_ip_for_sub_link&security=tls#{hiddify.url_encode(name)}')
+
+            name = '⏳' if user_activate else '✖'
+            if user.usage_limit_GB < 100000:
+                name += f'{round(user.current_usage_GB,3)}/{user.usage_limit_GB}GB'
+            if expire_days < 1000:
+                if hconfig(ConfigEnum.lang) == 'fa':
+                    name += f' 📅باقی:{expire_days} روز'
+                else:
+                    name = f' 📅Remain:{expire_days} days'
+
+            name = name.strip()
+            if len(name) > 3:
+                res.append(f'trojan://1@{fake_ip_for_sub_link}?sni=fake_ip_for_sub_link&security=tls#{hiddify.url_encode(name)}')
 
     if ua['is_browser']:
         res.append(f'#Hiddify auto ip: {ip_debug}')
