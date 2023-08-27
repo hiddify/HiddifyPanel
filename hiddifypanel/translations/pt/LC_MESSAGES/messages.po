@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPT\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-26 21:06+0200\n"
-"PO-Revision-Date: 2023-08-26 13:47-0500\n"
+"POT-Creation-Date: 2023-08-27 11:25+0200\n"
+"PO-Revision-Date: 2023-08-26 14:06-0500\n"
 "Last-Translator: lymanrudni\n"
 "Language: pt\n"
 "Language-Team: Portuguese\n"
@@ -1313,7 +1313,7 @@ msgid "Save & Add More"
 msgstr "Salvar e adicionar mais"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:5
-#: hiddifypanel/panel/user/templates/home/one_click.html:245
+#: hiddifypanel/panel/user/templates/home/one_click.html:250
 #: hiddifypanel/templates/donation.html:14
 #, fuzzy
 msgid "Close"
@@ -3206,8 +3206,8 @@ msgstr "Download direto"
 # | msgid "<i class=\"fa-brands fa-google-play\"></i> Google Play"
 #: hiddifypanel/panel/user/templates/home/android.html:19
 #: hiddifypanel/panel/user/templates/home/android.html:65
-#: hiddifypanel/panel/user/templates/home/one_click.html:56
-#: hiddifypanel/panel/user/templates/home/one_click.html:70
+#: hiddifypanel/panel/user/templates/home/one_click.html:61
+#: hiddifypanel/panel/user/templates/home/one_click.html:75
 #, fuzzy
 msgid "install from google play"
 msgstr "Google Play"
@@ -3855,11 +3855,11 @@ msgstr ""
 msgid "Unified link for all application."
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/one_click.html:32
+#: hiddifypanel/panel/user/templates/home/one_click.html:37
 msgid "Open in Application"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/one_click.html:38
+#: hiddifypanel/panel/user/templates/home/one_click.html:43
 #, python-format
 msgid ""
 "If the application do not open automatically, please click <a class='btn "
@@ -3868,75 +3868,75 @@ msgid ""
 "                your application, or:"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/one_click.html:44
-#: hiddifypanel/panel/user/templates/home/one_click.html:87
-#: hiddifypanel/panel/user/templates/home/one_click.html:127
-#: hiddifypanel/panel/user/templates/home/one_click.html:165
+#: hiddifypanel/panel/user/templates/home/one_click.html:49
+#: hiddifypanel/panel/user/templates/home/one_click.html:92
+#: hiddifypanel/panel/user/templates/home/one_click.html:132
+#: hiddifypanel/panel/user/templates/home/one_click.html:170
 msgid "Use HiddifyNext:"
 msgstr ""
 
 # | msgid "<i class=\"fa-solid fa-download\"></i> Download App"
-#: hiddifypanel/panel/user/templates/home/one_click.html:53
-#: hiddifypanel/panel/user/templates/home/one_click.html:69
-#: hiddifypanel/panel/user/templates/home/one_click.html:78
-#: hiddifypanel/panel/user/templates/home/one_click.html:94
-#: hiddifypanel/panel/user/templates/home/one_click.html:108
-#: hiddifypanel/panel/user/templates/home/one_click.html:117
-#: hiddifypanel/panel/user/templates/home/one_click.html:134
-#: hiddifypanel/panel/user/templates/home/one_click.html:146
-#: hiddifypanel/panel/user/templates/home/one_click.html:155
-#: hiddifypanel/panel/user/templates/home/one_click.html:171
-#: hiddifypanel/panel/user/templates/home/one_click.html:183
-#: hiddifypanel/panel/user/templates/home/one_click.html:192
-#: hiddifypanel/panel/user/templates/home/one_click.html:198
-#: hiddifypanel/panel/user/templates/home/one_click.html:212
-#: hiddifypanel/panel/user/templates/home/one_click.html:218
+#: hiddifypanel/panel/user/templates/home/one_click.html:58
+#: hiddifypanel/panel/user/templates/home/one_click.html:74
+#: hiddifypanel/panel/user/templates/home/one_click.html:83
+#: hiddifypanel/panel/user/templates/home/one_click.html:99
+#: hiddifypanel/panel/user/templates/home/one_click.html:113
+#: hiddifypanel/panel/user/templates/home/one_click.html:122
+#: hiddifypanel/panel/user/templates/home/one_click.html:139
+#: hiddifypanel/panel/user/templates/home/one_click.html:151
+#: hiddifypanel/panel/user/templates/home/one_click.html:160
+#: hiddifypanel/panel/user/templates/home/one_click.html:176
+#: hiddifypanel/panel/user/templates/home/one_click.html:188
+#: hiddifypanel/panel/user/templates/home/one_click.html:197
+#: hiddifypanel/panel/user/templates/home/one_click.html:203
+#: hiddifypanel/panel/user/templates/home/one_click.html:217
+#: hiddifypanel/panel/user/templates/home/one_click.html:223
 msgid "Download App"
 msgstr ""
 
 # | msgid "Import in App"
-#: hiddifypanel/panel/user/templates/home/one_click.html:58
-#: hiddifypanel/panel/user/templates/home/one_click.html:96
-#: hiddifypanel/panel/user/templates/home/one_click.html:111
-#: hiddifypanel/panel/user/templates/home/one_click.html:119
-#: hiddifypanel/panel/user/templates/home/one_click.html:136
-#: hiddifypanel/panel/user/templates/home/one_click.html:157
-#: hiddifypanel/panel/user/templates/home/one_click.html:173
-#: hiddifypanel/panel/user/templates/home/one_click.html:194
+#: hiddifypanel/panel/user/templates/home/one_click.html:63
+#: hiddifypanel/panel/user/templates/home/one_click.html:101
+#: hiddifypanel/panel/user/templates/home/one_click.html:116
+#: hiddifypanel/panel/user/templates/home/one_click.html:124
+#: hiddifypanel/panel/user/templates/home/one_click.html:141
+#: hiddifypanel/panel/user/templates/home/one_click.html:162
+#: hiddifypanel/panel/user/templates/home/one_click.html:178
 #: hiddifypanel/panel/user/templates/home/one_click.html:199
-#: hiddifypanel/panel/user/templates/home/one_click.html:213
-#: hiddifypanel/panel/user/templates/home/one_click.html:220
-#: hiddifypanel/panel/user/templates/home/one_click.html:228
+#: hiddifypanel/panel/user/templates/home/one_click.html:204
+#: hiddifypanel/panel/user/templates/home/one_click.html:218
+#: hiddifypanel/panel/user/templates/home/one_click.html:225
+#: hiddifypanel/panel/user/templates/home/one_click.html:233
 #, fuzzy
 msgid "Import"
 msgstr "Importar no aplicativo"
 
-#: hiddifypanel/panel/user/templates/home/one_click.html:62
-#: hiddifypanel/panel/user/templates/home/one_click.html:102
-#: hiddifypanel/panel/user/templates/home/one_click.html:140
-#: hiddifypanel/panel/user/templates/home/one_click.html:177
-#: hiddifypanel/panel/user/templates/home/one_click.html:208
+#: hiddifypanel/panel/user/templates/home/one_click.html:67
+#: hiddifypanel/panel/user/templates/home/one_click.html:107
+#: hiddifypanel/panel/user/templates/home/one_click.html:145
+#: hiddifypanel/panel/user/templates/home/one_click.html:182
+#: hiddifypanel/panel/user/templates/home/one_click.html:213
 msgid "More Applications"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/one_click.html:73
-#: hiddifypanel/panel/user/templates/home/one_click.html:79
+#: hiddifypanel/panel/user/templates/home/one_click.html:78
+#: hiddifypanel/panel/user/templates/home/one_click.html:84
 msgid "Import in"
 msgstr ""
 
 # | msgid "<i class=\"fa-solid fa-download\"></i>  Download App"
-#: hiddifypanel/panel/user/templates/home/one_click.html:225
+#: hiddifypanel/panel/user/templates/home/one_click.html:230
 msgid ""
 "Download\n"
 "                                    App"
 msgstr ""
 
 # | msgid "<i class=\"fa-solid fa-qrcode\"></i> QRCode"
-#: hiddifypanel/panel/user/templates/home/one_click.html:235
+#: hiddifypanel/panel/user/templates/home/one_click.html:240
 msgid "QRCode"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/one_click.html:246
+#: hiddifypanel/panel/user/templates/home/one_click.html:251
 msgid "Copy Link"
 msgstr ""
 
@@ -4539,6 +4539,22 @@ msgstr ""
 "🚧 Bloquear Malware 1.1.1.2 <br>\n"
 "🔞 Bloquear pornografia 1.1.1.3"
 
+#: hiddifypanel/templates/fake.html:2
+msgid "config.hysteria_enable.label"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:2
+msgid "config.hysteria_enable.description"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:2
+msgid "config.hysteria_port.label"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:2
+msgid "config.hysteria_port.description"
+msgstr ""
+
 # | msgid "SSH Proxy"
 #: hiddifypanel/templates/fake.html:3
 #, fuzzy
@@ -4561,6 +4577,14 @@ msgstr ""
 "duas máquinas em uma rede insegura. Temos um aplicativo específico que é "
 "completamente diferente do servidor ssh e não pode executar nenhum "
 "comando"
+
+#: hiddifypanel/templates/fake.html:3
+msgid "config.hysteria.label"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:3
+msgid "config.hysteria.description"
+msgstr ""
 
 #: hiddifypanel/templates/fake.html:3
 msgid "config.hidden.label"
