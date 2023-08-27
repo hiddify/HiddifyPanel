@@ -10,8 +10,9 @@ from flask_babelex import lazy_gettext as _
 from hiddifypanel.models import *
 from hiddifypanel.panel.database import db
 import datetime
-from flask import jsonify, g, url_for, Markup, abort, current_app
+from flask import jsonify, g, url_for, Markup, abort, current_app, request
 from flask import flash as flask_flash
+import re
 from wtforms.validators import ValidationError
 import requests
 # from hiddifypanel.panel.admin.Actions import Actions
@@ -764,3 +765,4 @@ def __parse_user_agent(ua):
             res['app'] = a
     if res["is_browser"]:
         res['app'] = uaa.browser.family
+    return res

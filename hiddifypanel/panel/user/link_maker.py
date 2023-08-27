@@ -683,15 +683,34 @@ def make_full_singbox_config(domains, **kwargs):
     return json.dumps(base_config, indent=4)
 
 
-def make_v2ray_configs(user, user_activate, domains, ip_debug, **kwargs):
+def make_v2ray_configs(user, user_activate, domains, expire_days, ip_debug, **kwargs):
     res = []
+
+    ua = hiddify.get_user_agent()
     if hconfig(ConfigEnum.show_usage_in_sublink):
-        fake_ip_for_sub_link = datetime.datetime.now().strftime(f"%H.%M--%Y.%m.%d.time:%H%M"),
-        res.append(f'trojan://1@{fake_ip_for_sub_link}?sni=fake_ip_for_sub_link&security=tls#{round(user.current_usage_GB,3)}/{user.usage_limit_GB}GB_Remain:{expire_days}days')
-    res.append(f'#Hiddify auto ip: {ip_debug}')
+        if not ua['is_hiddify']:
+            fake_ip_for_sub_link = datetime.datetime.now().strftime(f"%H.%M--%Y.%m.%d.time:%H%M"),
+            if ua['app'] == "Fair":
+                res.append(f'trojan://1@{fake_ip_for_sub_link}?sni=fake_ip_for_sub_link&security=tls#{round(user.current_usage_GB,3)}/{user.usage_limit_GB}GB_Remain:{expire_days}days')
+            else:
+                emoji = '✅' if user_activate else '✖'
+                if hconfig(ConfigEnum.lang) == 'fa':
+                    res.append(f'trojan://1@{fake_ip_for_sub_link}?sni=fake_ip_for_sub_link&security=tls#{round(user.current_usage_GB,3)}/{user.usage_limit_GB}GB {emoji}باقی:{expire_days} روز')
+                else:
+                    res.append(
+                        f'trojan://1@{fake_ip_for_sub_link}?sni=fake_ip_for_sub_link&security=tls#{round(user.current_usage_GB,3)}/{user.usage_limit_GB}GB {emoji}Remain:{expire_days} days')
+
+    if ua['is_browser']:
+        res.append(f'#Hiddify auto ip: {ip_debug}')
 
     if not user_activate:
-        res.append('trojan://1@1.1.1.1#Package_Ended')
+        if ua['app'] == "Fair":
+            res.append('trojan://1@1.1.1.1#Package_Ended')
+        else:
+            if hconfig(ConfigEnum.lang) == 'fa':
+                res.append('trojan://1@1.1.1.1#✖بسته شما به پایان رسید')
+            else:
+                res.append('trojan://1@1.1.1.1#✖Package_Ended')
         return "\n".join(res)
 
     for pinfo in get_all_validated_proxies(domains):
@@ -705,26 +724,32 @@ def get_all_validated_proxies(domains):
     allp = []
     allphttp = [p for p in request.args.get("phttp", "").split(',') if p]
     allptls = [p for p in request.args.get("ptls", "").split(',') if p]
-    added_ip = {'ssh':{},'tuic':{},'hysteria':{}}
+    added_ip = {'ssh': {}, 'tuic': {}, 'hysteria': {}}
     for d in domains:
         # raise Exception(base_config)
         hconfigs = get_hconfigs(d.child_id)
         for type in all_proxies(d.child_id):
             options = []
-            if type.proto in ['ssh','tuic','hysteria']:
+            if type.proto in ['ssh', 'tuic', 'hysteria']:
+
                 ip = hiddify.get_domain_ip(d.domain, version=4)
-                if ip and ip in added_ip[type.proto]:
+                ip6 = hiddify.get_domain_ip(d.domain, version=6)
+
+                ips = [x for x in [ip, ip6]if x != None]
+
+                if all([x in added_ip[type.proto] for x in ips]):
+                    print('skiping ')
                     continue
-                added_ip[type.proto][ip] = 1
-                ip = hiddify.get_domain_ip(d.domain, version=6)
-                if ip and ip in added_ip[type.proto]:
-                    continue
-                added_ip[type.proto][ip] = 1
-                if type.proto=='ssh':
+                for x in ips:
+                    added_ip[type.proto][x] = 1
+
+                if type.proto == 'ssh':
+                    if d.mode == 'Fake':
+                        continue
                     options = [{'pport': hconfigs[ConfigEnum.ssh_server_port]}]
-                elif type.proto=='tuic':
+                elif type.proto == 'tuic':
                     options = [{'pport': hconfigs[ConfigEnum.tuic_port]}]
-                elif type.proto=='hysteria':
+                elif type.proto == 'hysteria':
                     options = [{'pport': hconfigs[ConfigEnum.hysteria_port]}]
             else:
                 for t in (['http', 'tls'] if hconfigs[ConfigEnum.http_proxy_enable] else ['tls']):
