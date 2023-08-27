@@ -222,7 +222,7 @@ def to_link(proxy):
     if 'error' in proxy:
         return proxy
 
-    name_link = proxy['extra_info'] + "_" + proxy["name"]
+    name_link = hiddify.url_encode(proxy['extra_info'] + "_" + proxy["name"])
     if proxy['proto'] == 'vmess':
         # print(proxy)
         vmess_type = None
@@ -683,28 +683,37 @@ def make_full_singbox_config(domains, **kwargs):
     return json.dumps(base_config, indent=4)
 
 
-def make_v2ray_configs(user, user_activate, domains, expire_days, ip_debug, **kwargs):
+def make_v2ray_configs(user, user_activate, domains, expire_days, ip_debug, db_domain, has_auto_cdn, asn, **kwargs):
     res = []
 
     ua = hiddify.get_user_agent()
     if hconfig(ConfigEnum.show_usage_in_sublink):
+        
         if not ua['is_hiddify']:
-            fake_ip_for_sub_link = datetime.datetime.now().strftime(f"%H.%M--%Y.%m.%d.time:%H%M"),
-            if ua['app'] == "Fair":
-                res.append(f'trojan://1@{fake_ip_for_sub_link}?sni=fake_ip_for_sub_link&security=tls#{round(user.current_usage_GB,3)}/{user.usage_limit_GB}GB_Remain:{expire_days}days')
+            name = 'Hiddify'
+            fake_ip_for_sub_link = datetime.datetime.now().strftime(f"%H.%M--%Y.%m.%d.time:%H%M")
+            # if ua['app'] == "Fair1":
+            #     res.append(f'trojan://1@{fake_ip_for_sub_link}?sni=fake_ip_for_sub_link&security=tls#{round(user.current_usage_GB,3)}/{user.usage_limit_GB}GB_Remain:{expire_days}days')
+            # else:
+            emoji = '⏳' if user_activate else '✖'
+
+            if hconfig(ConfigEnum.lang) == 'fa':
+                name=f'{emoji}{round(user.current_usage_GB,3)}/{user.usage_limit_GB}GB 📅باقی:{expire_days} روز'
             else:
-                emoji = '✅' if user_activate else '✖'
-                if hconfig(ConfigEnum.lang) == 'fa':
-                    res.append(f'trojan://1@{fake_ip_for_sub_link}?sni=fake_ip_for_sub_link&security=tls#{round(user.current_usage_GB,3)}/{user.usage_limit_GB}GB {emoji}باقی:{expire_days} روز')
-                else:
-                    res.append(
-                        f'trojan://1@{fake_ip_for_sub_link}?sni=fake_ip_for_sub_link&security=tls#{round(user.current_usage_GB,3)}/{user.usage_limit_GB}GB {emoji}Remain:{expire_days} days')
+                name = f'{emoji}{round(user.current_usage_GB,3)}/{user.usage_limit_GB}GB 📅Remain:{expire_days} days'
+            profile_title = f'{db_domain.alias or db_domain.domain} {user.name}'
+            if has_auto_cdn:
+                profile_title += f" {asn}"
+
+            res.append(f'trojan://1@{fake_ip_for_sub_link}?sni=fake_ip_for_sub_link&security=tls#{hiddify.url_encode(profile_title)}')
+            res.append(
+                f'trojan://1@{fake_ip_for_sub_link}?sni=fake_ip_for_sub_link&security=tls#{hiddify.url_encode(name)}')
 
     if ua['is_browser']:
         res.append(f'#Hiddify auto ip: {ip_debug}')
 
     if not user_activate:
-        if ua['app'] == "Fair":
+        if ua['app'] == "Fair1":
             res.append('trojan://1@1.1.1.1#Package_Ended')
         else:
             if hconfig(ConfigEnum.lang) == 'fa':

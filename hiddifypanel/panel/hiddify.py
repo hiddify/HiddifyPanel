@@ -766,3 +766,9 @@ def __parse_user_agent(ua):
     if res["is_browser"]:
         res['app'] = uaa.browser.family
     return res
+
+
+
+def url_encode(strr):
+    import urllib.parse
+    return urllib.parse.quote(strr)
