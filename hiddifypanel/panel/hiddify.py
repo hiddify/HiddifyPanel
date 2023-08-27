@@ -742,18 +742,18 @@ def get_user_agent():
 def __parse_user_agent(ua):
     uaa = user_agents.parse(request.user_agent.string)
     res = {}
-    res["is_browser"] = re.match('^Mozilla', ua, re.IGNORECASE)
+    res["is_browser"] = re.match('^Mozilla', ua, re.IGNORECASE) and True
     res['os'] = uaa.os.family
     res['os_version'] = uaa.os.version
-    res['is_clash'] = re.match('^(Clash|Stash)', ua, re.IGNORECASE)
-    res['is_clash_meta'] = re.match('^(Clash-verge|Clash-?Meta|Stash|NekoBox|NekoRay|Pharos|hiddify-desktop)', ua, re.IGNORECASE)
-    res['is_singbox'] = re.match('^(HiddifyNext|Dart|SFI|SFA)', ua, re.IGNORECASE)
+    res['is_clash'] = re.match('^(Clash|Stash)', ua, re.IGNORECASE) and True
+    res['is_clash_meta'] = re.match('^(Clash-verge|Clash-?Meta|Stash|NekoBox|NekoRay|Pharos|hiddify-desktop)', ua, re.IGNORECASE) and True
+    res['is_singbox'] = re.match('^(HiddifyNext|Dart|SFI|SFA)', ua, re.IGNORECASE) and True
     if (res['is_singbox']):
         res['singbox_version'] = (1, 4, 0)
-    res['is_hiddify'] = re.match('^(HiddifyNext)', ua, re.IGNORECASE)
+    res['is_hiddify'] = re.match('^(HiddifyNext)', ua, re.IGNORECASE) and True
     if ['is_hiddify']:
         res['hiddify_version'] = uaa
-    res['is_v2ray'] = re.match('^(Hiddify|FoXray|Fair|v2rayNG|SagerNet|Shadowrocket|V2Box|Loon|Liberty)', ua, re.IGNORECASE)
+    res['is_v2ray'] = re.match('^(Hiddify|FoXray|Fair|v2rayNG|SagerNet|Shadowrocket|V2Box|Loon|Liberty)', ua, re.IGNORECASE) and True
 
     if res['os'] == 'Other':
         if re.match('^(FoXray|Fair|Shadowrocket|V2Box|Loon|Liberty)', ua, re.IGNORECASE):
