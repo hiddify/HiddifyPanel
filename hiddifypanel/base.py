@@ -8,6 +8,7 @@ import hiddifypanel
 from hiddifypanel.models import *
 from dotenv import dotenv_values
 import os
+from hiddifypanel.panel import hiddify
 
 
 def create_app(cli=False, **config):
@@ -22,6 +23,8 @@ def create_app(cli=False, **config):
         app.config[c] = v
 
     app.jinja_env.line_statement_prefix = '%'
+    app.jinja_env.filters['b64encode'] = hiddify.do_base_64
+
     app.is_cli = cli
     flask_bootstrap.Bootstrap4(app)
 

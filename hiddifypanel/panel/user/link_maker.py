@@ -705,22 +705,27 @@ def get_all_validated_proxies(domains):
     allp = []
     allphttp = [p for p in request.args.get("phttp", "").split(',') if p]
     allptls = [p for p in request.args.get("ptls", "").split(',') if p]
-    added_ssh_ip = {}
+    added_ip = {'ssh':{},'tuic':{},'hysteria':{}}
     for d in domains:
         # raise Exception(base_config)
         hconfigs = get_hconfigs(d.child_id)
         for type in all_proxies(d.child_id):
             options = []
-            if type.proto in ['ssh']:
+            if type.proto in ['ssh','tuic','hysteria']:
                 ip = hiddify.get_domain_ip(d.domain, version=4)
-                if ip and ip in added_ssh_ip:
+                if ip and ip in added_ip[type.proto]:
                     continue
-                added_ssh_ip[ip] = 1
+                added_ip[type.proto][ip] = 1
                 ip = hiddify.get_domain_ip(d.domain, version=6)
-                if ip and ip in added_ssh_ip:
+                if ip and ip in added_ip[type.proto]:
                     continue
-                added_ssh_ip[ip] = 1
-                options = [{'pport': hconfigs[ConfigEnum.ssh_server_port]}]
+                added_ip[type.proto][ip] = 1
+                if type.proto=='ssh':
+                    options = [{'pport': hconfigs[ConfigEnum.ssh_server_port]}]
+                elif type.proto=='tuic':
+                    options = [{'pport': hconfigs[ConfigEnum.tuic_port]}]
+                elif type.proto=='hysteria':
+                    options = [{'pport': hconfigs[ConfigEnum.hysteria_port]}]
             else:
                 for t in (['http', 'tls'] if hconfigs[ConfigEnum.http_proxy_enable] else ['tls']):
                     for port in hconfigs[ConfigEnum.http_ports if t == 'http' else ConfigEnum.tls_ports].split(','):
