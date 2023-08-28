@@ -26,6 +26,7 @@ class ProxyTransport(StrEnum):
     WS = auto()
     tcp = auto()
     ssh = auto()
+    custom = auto()
 
 
 class ProxyCDN(StrEnum):
@@ -42,17 +43,20 @@ class ProxyProto(StrEnum):
     v2ray = auto()
     ssr = auto()
     ssh = auto()
+    tuic = auto()
+    hysteria = auto()
 
 
 class ProxyL3(StrEnum):
     tls = auto()
     tls_h2 = auto()
     tls_h2_h1 = auto()
+    h3_quic = auto()
     reality = auto()
     http = auto()
     kcp = auto()
     ssh = auto()
-    # hysteria=auto()
+    custom = auto()
 
 
 class Proxy(db.Model, SerializerMixin):

@@ -110,6 +110,23 @@ def init_db():
     return BoolConfig.query.all()
 
 
+# def _v50():
+#     add_config_if_not_exist(ConfigEnum.tuic_enable, True)
+#     add_config_if_not_exist(ConfigEnum.tuic_port, random.randint(5000, 20000))
+#     if not Proxy.query.filter(Proxy.name == "TUIC").first():
+#         db.session.add(Proxy(l3='custom', transport='custom', cdn='direct', proto='tuic', enable=True, name="TUIC"))
+
+#     if not Proxy.query.filter(Proxy.name == "Hysteria").first():
+#         db.session.add(Proxy(l3='custom', transport='custom', cdn='direct', proto='hysteria', enable=True, name="Hysteria"))
+
+#     add_config_if_not_exist(ConfigEnum.hysteria_enable, True)
+#     add_config_if_not_exist(ConfigEnum.hysteria_port, random.randint(5000, 20000))
+
+
+def _v50():
+    set_hconfig(ConfigEnum.show_usage_in_sublink, True)
+
+
 def _v49():
 
     for u in User.query.all():
@@ -161,8 +178,8 @@ def _v38():
     add_config_if_not_exist(ConfigEnum.warp_plus_code, '')
 
 
-def _v34():
-    add_config_if_not_exist(ConfigEnum.show_usage_in_sublink, False)
+# def _v34():
+#     add_config_if_not_exist(ConfigEnum.show_usage_in_sublink, True)
 
 
 def _v33():
@@ -400,14 +417,14 @@ def get_proxy_rows_v1():
 
 
 def make_proxy_rows(cfgs):
-    for l3 in ["tls_h2", "tls", "http", "kcp", "reality"]:
+    for l3 in ["h3_quic", "tls_h2", "tls", "http", "kcp", "reality"]:
         for c in cfgs:
             transport, cdn, proto = c.split(" ")
             if l3 in ["kcp", 'reality'] and cdn != "direct":
                 continue
             if l3 == "reality" and ((transport not in ['tcp', 'grpc', 'XTLS']) or proto != 'vless'):
                 continue
-            if proto == "trojan" and l3 not in ["tls", 'xtls', 'tls_h2']:
+            if proto == "trojan" and l3 not in ["tls", 'xtls', 'tls_h2', 'h3_quic']:
                 continue
             if transport in ["grpc", "XTLS", "faketls"] and l3 == "http":
                 continue

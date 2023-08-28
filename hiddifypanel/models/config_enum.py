@@ -31,6 +31,7 @@ class ConfigCategory(StrEnum):
     shadowtls = auto()
     restls = auto()
     tuic = auto()
+    hysteria = auto()
     ssr = auto()
     kcp = auto()
     hidden = auto()
@@ -110,6 +111,9 @@ class ConfigEnum(StrEnum):
     tuic_enable = auto()
     tuic_port = auto()
 
+    hysteria_enable = auto()
+    hysteria_port = auto()
+
     ssr_enable = auto()
     # ssr_secret="ssr_secret"
     ssr_fakedomain = auto()
@@ -136,7 +140,7 @@ class ConfigEnum(StrEnum):
     path_grpc = auto()
 
     # cdn_forced_host=auto()
-    @classmethod
+    @ classmethod
     def _missing_(cls, value):
         return cls.not_found  # "key not found"
 
@@ -221,8 +225,11 @@ class ConfigEnum(StrEnum):
             # shadowtls_secret:{'category':'shadowtls'},
             self.shadowtls_fakedomain: {'category': ConfigCategory.shadowtls, 'apply_mode': 'apply'},
 
-            self.tuic_enable: {'category': ConfigCategory.hidden, 'type': bool, 'apply_mode': 'apply'},
-            self.tuic_port: {'category': ConfigCategory.hidden, 'apply_mode': 'apply'},
+            self.tuic_enable: {'category': ConfigCategory.tuic, 'type': bool, 'apply_mode': 'apply'},
+            self.tuic_port: {'category': ConfigCategory.tuic, 'apply_mode': 'apply'},
+
+            self.hysteria_enable: {'category': ConfigCategory.hysteria, 'type': bool, 'apply_mode': 'apply'},
+            self.hysteria_port: {'category': ConfigCategory.hysteria, 'apply_mode': 'apply'},
 
             self.ssr_enable: {'category': ConfigCategory.hidden, 'type': bool, 'apply_mode': 'apply'},
             # ssr_secret:{'category':'ssr'},

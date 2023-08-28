@@ -222,7 +222,7 @@ def make_proxy(proxy: Proxy, domain_db: Domain, phttp=80, ptls=443, pport=None):
 def to_link(proxy):
     if 'error' in proxy:
         return proxy
-    orig_name_link = proxy['extra_info'] + "_" + proxy["name"]
+    orig_name_link = (proxy['extra_info'] + " " + proxy["name"]).strip()
     name_link = hiddify.url_encode(orig_name_link)
     if proxy['proto'] == 'vmess':
         # print(proxy)

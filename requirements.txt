@@ -37,6 +37,7 @@ ansi2html
 netifaces
 markupsafe
 redis
+#python-redis-cache @ git+https://github.com/taylorhakes/python-redis-cache@v2.2.0
 python-redis-cache
 cryptography>=41.0.0
 paramiko
