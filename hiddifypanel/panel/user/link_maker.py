@@ -94,7 +94,7 @@ def make_proxy(proxy: Proxy, domain_db: Domain, phttp=80, ptls=443, pport=None):
 
     alpn = "h2" if proxy.l3 in ['tls_h2', 'reality'] else 'h2,http/1.1' if proxy.l3 == 'tls_h2_h1' else "http/1.1"
     base = {
-        'name': name.replace(" ", "_"),
+        'name': name,
         'cdn': is_cdn,
         'mode': "CDN" if is_cdn else "direct",
         'l3': l3,
@@ -759,7 +759,7 @@ def get_all_validated_proxies(domains):
                     added_ip[type.proto][x] = 1
 
                 if type.proto == 'ssh':
-                    if d.mode == 'Fake':
+                    if d.mode == 'fake':
                         continue
                     options = [{'pport': hconfigs[ConfigEnum.ssh_server_port]}]
                 elif type.proto == 'tuic':
