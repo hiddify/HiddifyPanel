@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-27 20:17+0200\n"
-"PO-Revision-Date: 2023-08-27 12:43-0500\n"
+"POT-Creation-Date: 2023-08-28 07:53+0200\n"
+"PO-Revision-Date: 2023-08-28 00:53-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -28,8 +28,9 @@ msgid "Error! auto cdn ip can not be find, please contact admin."
 msgstr "自动 CDN IP 错误！找不到，请联系管理员。"
 
 #: hiddifypanel/panel/hiddify.py:81
+#, fuzzy
 msgid "Access Denied"
-msgstr ""
+msgstr "拒绝访问"
 
 # | msgid "Apply Configs"
 #: hiddifypanel/panel/hiddify.py:231
@@ -2389,8 +2390,9 @@ msgstr "没有孩子！"
 
 #: hiddifypanel/panel/admin/templates/parent_dash.html:20
 #: hiddifypanel/panel/commercial/templates/parent_dash.html:26
+#, fuzzy
 msgid "Status"
-msgstr ""
+msgstr "地位"
 
 #: hiddifypanel/panel/admin/templates/parent_dash.html:20
 #: hiddifypanel/panel/commercial/templates/parent_dash.html:26
@@ -2498,8 +2500,9 @@ msgstr "请稍等"
 
 # | msgid "Seconds"
 #: hiddifypanel/panel/admin/templates/result.html:31
+#, fuzzy
 msgid "seconds"
-msgstr ""
+msgstr "秒数"
 
 # | msgid "📄 Log"
 #: hiddifypanel/panel/admin/templates/result.html:41
@@ -2615,8 +2618,9 @@ msgid "Hover the user to see the reason"
 msgstr ""
 
 #: hiddifypanel/panel/admin/templates/model/user_list.html:110
+#, fuzzy
 msgid "The message was not sent to"
-msgstr ""
+msgstr "该消息未发送至"
 
 # | msgid ""
 # | "Hooray 🎉 🎉 🎉 \n"
@@ -2697,6 +2701,12 @@ msgstr ""
 #: hiddifypanel/panel/commercial/templates/configc.html:11
 msgid "admin.config.title"
 msgstr "设置"
+
+# | msgid "📅Remain: %(expire_days)s days"
+#: hiddifypanel/panel/user/link_maker.py:709
+#, fuzzy, python-format
+msgid "📅%(expire_days)s days"
+msgstr "📅剩余：%(expire_days)s 天"
 
 # | msgid "All Configs"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:1
@@ -2871,10 +2881,12 @@ msgstr ""
 "请从以下任一链接安装 HiddifyNG：%(dl_link)s %(play_link)s。\n"
 "然后单击下面的链接并在 HiddifyNG 中打开它。"
 
+# | msgid "Tap to Import"
 #: hiddifypanel/panel/user/templates/home/android.html:33
 #: hiddifypanel/panel/user/templates/home/windows.html:57
+#, fuzzy
 msgid "Click to Import"
-msgstr ""
+msgstr "点击导入"
 
 # | msgid ""
 # | "Alternative v2rayNG <button class='btn btn-sm btn-default'
@@ -3408,32 +3420,39 @@ msgstr ""
 
 # | msgid "<i class=\"fa-solid fa-play\"></i> Tap to Start Anti-Filter."
 #: hiddifypanel/panel/user/templates/home/one_click.html:13
+#, fuzzy
 msgid "Click to Start Anti-Filter."
-msgstr ""
+msgstr "<i class=\"fa-solid fa-play\"></i> 点击以启动反过滤。"
 
 #: hiddifypanel/panel/user/templates/home/one_click.html:15
+#, fuzzy
 msgid "Unified link for all application."
-msgstr ""
+msgstr "所有应用程序的统一链接。"
 
 #: hiddifypanel/panel/user/templates/home/one_click.html:37
+#, fuzzy
 msgid "Open in Application"
-msgstr ""
+msgstr "在应用程序中打开"
 
 #: hiddifypanel/panel/user/templates/home/one_click.html:43
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "If the application do not open automatically, please click <a class='btn "
 "btn-primary copy-link' href='%(sub)s'>this universal link</a> to copy and"
 " paste it on\n"
 "                your application, or:"
 msgstr ""
+"如果应用程序没有自动打开，请点击<a class='btn btn-primary copy-link' "
+"href='%(sub)s'>此通用链接</a>将其复制并粘贴到\n"
+"                您的申请，或者："
 
 #: hiddifypanel/panel/user/templates/home/one_click.html:49
 #: hiddifypanel/panel/user/templates/home/one_click.html:92
 #: hiddifypanel/panel/user/templates/home/one_click.html:132
 #: hiddifypanel/panel/user/templates/home/one_click.html:170
+#, fuzzy
 msgid "Use HiddifyNext:"
-msgstr ""
+msgstr "使用 HiddifyNext："
 
 # | msgid "<i class=\"fa-solid fa-download\"></i> Download App"
 #: hiddifypanel/panel/user/templates/home/one_click.html:58
@@ -3451,8 +3470,9 @@ msgstr ""
 #: hiddifypanel/panel/user/templates/home/one_click.html:203
 #: hiddifypanel/panel/user/templates/home/one_click.html:217
 #: hiddifypanel/panel/user/templates/home/one_click.html:223
+#, fuzzy
 msgid "Download App"
-msgstr ""
+msgstr "<i class=\"fa-solid fa-download\"></i> 下载应用程序"
 
 # | msgid "Import in App"
 #: hiddifypanel/panel/user/templates/home/one_click.html:63
@@ -3476,29 +3496,34 @@ msgstr "在应用程序中导入"
 #: hiddifypanel/panel/user/templates/home/one_click.html:145
 #: hiddifypanel/panel/user/templates/home/one_click.html:182
 #: hiddifypanel/panel/user/templates/home/one_click.html:213
+#, fuzzy
 msgid "More Applications"
-msgstr ""
+msgstr "更多应用"
 
 #: hiddifypanel/panel/user/templates/home/one_click.html:78
 #: hiddifypanel/panel/user/templates/home/one_click.html:84
+#, fuzzy
 msgid "Import in"
-msgstr ""
+msgstr "导入"
 
 # | msgid "<i class=\"fa-solid fa-download\"></i>  Download App"
 #: hiddifypanel/panel/user/templates/home/one_click.html:230
+#, fuzzy
 msgid ""
 "Download\n"
 "                                    App"
-msgstr ""
+msgstr "<i class=\"fa-solid fa-download\"></i> 下载应用程序"
 
 # | msgid "<i class=\"fa-solid fa-qrcode\"></i> QRCode"
 #: hiddifypanel/panel/user/templates/home/one_click.html:240
+#, fuzzy
 msgid "QRCode"
-msgstr ""
+msgstr "<i class=\"fa-solid fa-qrcode\"></i> 二维码"
 
 #: hiddifypanel/panel/user/templates/home/one_click.html:251
+#, fuzzy
 msgid "Copy Link"
-msgstr ""
+msgstr "复制链接"
 
 # | msgid ""
 # | "First, Test the Speed <b>without</b> the proxy. If the speed is not good,
@@ -4036,21 +4061,29 @@ msgstr ""
 "阻止恶意软件 1.1.1.2 <br>\n"
 "阻止色情 1.1.1.3"
 
+# | msgid "Enable Hysteria"
 #: hiddifypanel/templates/fake.html:2
+#, fuzzy
 msgid "config.hysteria_enable.label"
-msgstr ""
+msgstr "启用歇斯底里"
 
+# | msgid "To enable udp based hysteria protocol"
 #: hiddifypanel/templates/fake.html:2
+#, fuzzy
 msgid "config.hysteria_enable.description"
-msgstr ""
+msgstr "启用基于 udp 的歇斯底里协议"
 
+# | msgid "Hysteria Port"
 #: hiddifypanel/templates/fake.html:2
+#, fuzzy
 msgid "config.hysteria_port.label"
-msgstr ""
+msgstr "歇斯底里港"
 
+# | msgid "Hysteria UDP Port for example 5678"
 #: hiddifypanel/templates/fake.html:2
+#, fuzzy
 msgid "config.hysteria_port.description"
-msgstr ""
+msgstr "Hysteria UDP 端口，例如 5678"
 
 # | msgid "SSH Proxy"
 #: hiddifypanel/templates/fake.html:3
@@ -4072,13 +4105,20 @@ msgstr ""
 "SSH 代理也称为 SSH 隧道或 SSH 端口转发，是一种通过不安全网络在两台计算机之间创建安全通信通道的安全方法。我们有一个与 ssh "
 "服务器完全不同的特定应用程序，无法执行任何命令"
 
+# | msgid "Hysteria"
 #: hiddifypanel/templates/fake.html:3
+#, fuzzy
 msgid "config.hysteria.label"
-msgstr ""
+msgstr "歇斯底里"
 
+# | msgid ""
+# | "Hysteria is a feature-packed proxy & relay tool optimized for lossy, "
+# | "unstable connections (e.g. satellite networks, congested public Wi-Fi, "
+# | "connecting to foreign servers from China)"
 #: hiddifypanel/templates/fake.html:3
+#, fuzzy
 msgid "config.hysteria.description"
-msgstr ""
+msgstr "Hysteria 是一款功能齐全的代理和中继工具，针对有损、不稳定的连接（例如卫星网络、拥挤的公共 Wi-Fi、从中国连接到国外服务器）进行了优化"
 
 #: hiddifypanel/templates/fake.html:3
 msgid "config.hidden.label"
@@ -4192,8 +4232,9 @@ msgstr "➖ 假货"
 
 # | msgid "Test and Suggest Domain "
 #: hiddifypanel/templates/flaskadmin-layout.html:115
+#, fuzzy
 msgid "Example Domains"
-msgstr ""
+msgstr "测试并建议域"
 
 # | msgid "🔒 Enable TLS Domain Fronting"
 #: hiddifypanel/templates/flaskadmin-layout.html:119
@@ -4542,12 +4583,6 @@ msgstr "动作"
 #~ " cause problem in some clients like"
 #~ " FairVPN."
 #~ msgstr "使用带有特殊字符的别名可能会导致某些客户端出现问题，例如 FairVPN"
-
-#~ msgid "config.ssh_server_ports.label"
-#~ msgstr ""
-
-#~ msgid "config.ssh_server_ports.description"
-#~ msgstr ""
 
 #~ msgid ""
 #~ "You should visit this page without VPN. Your country=%(your_country)s\n"

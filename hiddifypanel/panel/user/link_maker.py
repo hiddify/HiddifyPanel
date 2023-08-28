@@ -221,8 +221,8 @@ def make_proxy(proxy: Proxy, domain_db: Domain, phttp=80, ptls=443, pport=None):
 def to_link(proxy):
     if 'error' in proxy:
         return proxy
-
-    name_link = hiddify.url_encode(proxy['extra_info'] + "_" + proxy["name"])
+    orig_name_link = proxy['extra_info'] + "_" + proxy["name"]
+    name_link = hiddify.url_encode(orig_name_link)
     if proxy['proto'] == 'vmess':
         # print(proxy)
         vmess_type = None
@@ -231,7 +231,7 @@ def to_link(proxy):
         if 'grpc_mode' in proxy:
             vmess_type = proxy['grpc_mode']
         vmess_data = {"v": "2",
-                      "ps": name_link,
+                      "ps": orig_name_link,
                       "add": proxy['server'],
                       "port": proxy['port'],
                       "id": proxy["uuid"],
@@ -697,7 +697,7 @@ def make_v2ray_configs(user, user_activate, domains, expire_days, ip_debug, db_d
             # else:
 
             profile_title = f'{db_domain.alias or db_domain.domain} {user.name}'
-            if has_auto_cdn:
+            if has_auto_cdn and asn != 'unknown':
                 profile_title += f" {asn}"
 
             res.append(f'trojan://1@{fake_ip_for_sub_link}?sni=fake_ip_for_sub_link&security=tls#{hiddify.url_encode(profile_title)}')
@@ -706,10 +706,7 @@ def make_v2ray_configs(user, user_activate, domains, expire_days, ip_debug, db_d
             if user.usage_limit_GB < 100000:
                 name += f'{round(user.current_usage_GB,3)}/{user.usage_limit_GB}GB'
             if expire_days < 1000:
-                if hconfig(ConfigEnum.lang) == 'fa':
-                    name += f' 📅باقی:{expire_days} روز'
-                else:
-                    name = f' 📅Remain:{expire_days} days'
+                name += " "+_(f'📅%(expire_days)s days', expire_days=expire_days)
 
             name = name.strip()
             if len(name) > 3:
@@ -719,13 +716,11 @@ def make_v2ray_configs(user, user_activate, domains, expire_days, ip_debug, db_d
         res.append(f'#Hiddify auto ip: {ip_debug}')
 
     if not user_activate:
-        if ua['app'] == "Fair1":
-            res.append('trojan://1@1.1.1.1#Package_Ended')
+
+        if hconfig(ConfigEnum.lang) == 'fa':
+            res.append('trojan://1@1.1.1.1#'+hiddify.url_encode('✖بسته شما به پایان رسید'))
         else:
-            if hconfig(ConfigEnum.lang) == 'fa':
-                res.append('trojan://1@1.1.1.1#✖بسته شما به پایان رسید')
-            else:
-                res.append('trojan://1@1.1.1.1#✖Package_Ended')
+            res.append('trojan://1@1.1.1.1#'+hiddify.url_encode('✖Package_Ended'))
         return "\n".join(res)
 
     for pinfo in get_all_validated_proxies(domains):

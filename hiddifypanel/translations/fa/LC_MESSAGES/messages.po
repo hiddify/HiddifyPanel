@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-27 20:17+0200\n"
-"PO-Revision-Date: 2023-08-27 12:43-0500\n"
+"POT-Creation-Date: 2023-08-28 07:53+0200\n"
+"PO-Revision-Date: 2023-08-28 00:53-0500\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -2762,6 +2762,12 @@ msgstr ""
 msgid "admin.config.title"
 msgstr "تنظیمات"
 
+# | msgid "📅Remain: %(expire_days)s days"
+#: hiddifypanel/panel/user/link_maker.py:709
+#, python-format
+msgid "📅%(expire_days)s days"
+msgstr "📅اعتبار %(expire_days)s روز"
+
 # | msgid "All Configs"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:1
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:1
@@ -2940,6 +2946,7 @@ msgstr ""
 "سپس روی لینک زیر کلیک کنید و آن را در HiddifyNG باز کنید.\n"
 "<br />"
 
+# | msgid "Tap to Import"
 #: hiddifypanel/panel/user/templates/home/android.html:33
 #: hiddifypanel/panel/user/templates/home/windows.html:57
 msgid "Click to Import"
@@ -4180,21 +4187,29 @@ msgstr ""
 "🚧 مسدود کردن بدافزار 1.1.1.2 <br>\n"
 "🔞 مسدود کردن پورن 1.1.1.3"
 
+# | msgid "Enable Hysteria"
 #: hiddifypanel/templates/fake.html:2
+#, fuzzy
 msgid "config.hysteria_enable.label"
-msgstr ""
+msgstr "هیستری را فعال کنید"
 
+# | msgid "To enable udp based hysteria protocol"
 #: hiddifypanel/templates/fake.html:2
+#, fuzzy
 msgid "config.hysteria_enable.description"
-msgstr ""
+msgstr "برای فعال کردن پروتکل هیستری مبتنی بر udp"
 
+# | msgid "Hysteria Port"
 #: hiddifypanel/templates/fake.html:2
+#, fuzzy
 msgid "config.hysteria_port.label"
-msgstr ""
+msgstr "بندر هیستری"
 
+# | msgid "Hysteria UDP Port for example 5678"
 #: hiddifypanel/templates/fake.html:2
+#, fuzzy
 msgid "config.hysteria_port.description"
-msgstr ""
+msgstr "پورت Hysteria UDP برای مثال 5678"
 
 # | msgid "SSH Proxy"
 #: hiddifypanel/templates/fake.html:3
@@ -4218,13 +4233,23 @@ msgstr ""
 "ما یک برنامه خاص داریم که کاملاً با سرور ssh متفاوت است و نمی تواند هیچ "
 "دستوری را اجرا کند"
 
+# | msgid "Hysteria"
 #: hiddifypanel/templates/fake.html:3
+#, fuzzy
 msgid "config.hysteria.label"
-msgstr ""
+msgstr "هیستری"
 
+# | msgid ""
+# | "Hysteria is a feature-packed proxy & relay tool optimized for lossy, "
+# | "unstable connections (e.g. satellite networks, congested public Wi-Fi, "
+# | "connecting to foreign servers from China)"
 #: hiddifypanel/templates/fake.html:3
+#, fuzzy
 msgid "config.hysteria.description"
 msgstr ""
+"Hysteria یک ابزار پراکسی و رله پر از ویژگی است که برای اتصالات با اتلاف و"
+" ناپایدار بهینه شده است (مانند شبکه های ماهواره ای، Wi-Fi عمومی متراکم، "
+"اتصال به سرورهای خارجی از چین)"
 
 #: hiddifypanel/templates/fake.html:3
 msgid "config.hidden.label"
@@ -4715,12 +4740,6 @@ msgstr "عملیات"
 #~ " خاص ممکن است در برخی از برنامه"
 #~ " ها مانند Fair VPN مشکل ایجاد "
 #~ "کند"
-
-#~ msgid "config.ssh_server_ports.label"
-#~ msgstr ""
-
-#~ msgid "config.ssh_server_ports.description"
-#~ msgstr ""
 
 #~ msgid ""
 #~ "You should visit this page without VPN. Your country=%(your_country)s\n"

@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-27 20:17+0200\n"
-"PO-Revision-Date: 2023-08-27 12:43-0500\n"
+"POT-Creation-Date: 2023-08-28 07:53+0200\n"
+"PO-Revision-Date: 2023-08-28 00:53-0500\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -25,7 +25,6 @@ msgid "Error! auto cdn ip can not be find, please contact admin."
 msgstr "Error In Auto CDN IP! It Can Not Be Find, Please Contact Admin"
 
 #: hiddifypanel/panel/hiddify.py:81
-#, fuzzy
 msgid "Access Denied"
 msgstr "Access Denied"
 
@@ -2391,7 +2390,6 @@ msgstr "No Children"
 
 #: hiddifypanel/panel/admin/templates/parent_dash.html:20
 #: hiddifypanel/panel/commercial/templates/parent_dash.html:26
-#, fuzzy
 msgid "Status"
 msgstr "Status"
 
@@ -2504,7 +2502,6 @@ msgstr "Please Wait "
 
 # | msgid "Seconds"
 #: hiddifypanel/panel/admin/templates/result.html:31
-#, fuzzy
 msgid "seconds"
 msgstr "Seconds"
 
@@ -2611,7 +2608,6 @@ msgid "Hover the user to see the reason"
 msgstr "Hover the user to see the reason"
 
 #: hiddifypanel/panel/admin/templates/model/user_list.html:110
-#, fuzzy
 msgid "The message was not sent to"
 msgstr "The message was not sent to"
 
@@ -2691,6 +2687,12 @@ msgstr ""
 #: hiddifypanel/panel/commercial/templates/configc.html:11
 msgid "admin.config.title"
 msgstr "Settings"
+
+# | msgid "📅Remain: %(expire_days)s days"
+#: hiddifypanel/panel/user/link_maker.py:709
+#, python-format
+msgid "📅%(expire_days)s days"
+msgstr "📅Remain: %(expire_days)s days"
 
 # | msgid "All Configs"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:1
@@ -2868,11 +2870,11 @@ msgstr ""
 "Then click on the link below and open it in HiddifyNG.\n"
 "<br />"
 
+# | msgid "Tap to Import"
 #: hiddifypanel/panel/user/templates/home/android.html:33
 #: hiddifypanel/panel/user/templates/home/windows.html:57
-#, fuzzy
 msgid "Click to Import"
-msgstr "Click to Import"
+msgstr "Tap to Import"
 
 # | msgid ""
 # | "Alternative v2rayNG <button class='btn btn-sm btn-default' "
@@ -3415,22 +3417,19 @@ msgstr ""
 
 # | msgid "<i class=\"fa-solid fa-play\"></i> Tap to Start Anti-Filter."
 #: hiddifypanel/panel/user/templates/home/one_click.html:13
-#, fuzzy
 msgid "Click to Start Anti-Filter."
 msgstr "<i class=\"fa-solid fa-play\"></i> Tap to Start Anti-Filter."
 
 #: hiddifypanel/panel/user/templates/home/one_click.html:15
-#, fuzzy
 msgid "Unified link for all application."
 msgstr "Unified link for all application."
 
 #: hiddifypanel/panel/user/templates/home/one_click.html:37
-#, fuzzy
 msgid "Open in Application"
 msgstr "Open in Application"
 
 #: hiddifypanel/panel/user/templates/home/one_click.html:43
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "If the application do not open automatically, please click <a class='btn btn-primary copy-link' href='%(sub)s'>this universal link</a> to copy and paste it on\n"
 "                your application, or:"
@@ -3442,7 +3441,6 @@ msgstr ""
 #: hiddifypanel/panel/user/templates/home/one_click.html:92
 #: hiddifypanel/panel/user/templates/home/one_click.html:132
 #: hiddifypanel/panel/user/templates/home/one_click.html:170
-#, fuzzy
 msgid "Use HiddifyNext:"
 msgstr "Use HiddifyNext:"
 
@@ -3462,7 +3460,6 @@ msgstr "Use HiddifyNext:"
 #: hiddifypanel/panel/user/templates/home/one_click.html:203
 #: hiddifypanel/panel/user/templates/home/one_click.html:217
 #: hiddifypanel/panel/user/templates/home/one_click.html:223
-#, fuzzy
 msgid "Download App"
 msgstr "<i class=\"fa-solid fa-download\"></i> Download App"
 
@@ -3487,19 +3484,16 @@ msgstr "Import in App"
 #: hiddifypanel/panel/user/templates/home/one_click.html:145
 #: hiddifypanel/panel/user/templates/home/one_click.html:182
 #: hiddifypanel/panel/user/templates/home/one_click.html:213
-#, fuzzy
 msgid "More Applications"
 msgstr "More Applications"
 
 #: hiddifypanel/panel/user/templates/home/one_click.html:78
 #: hiddifypanel/panel/user/templates/home/one_click.html:84
-#, fuzzy
 msgid "Import in"
 msgstr "Import in"
 
 # | msgid "<i class=\"fa-solid fa-download\"></i>  Download App"
 #: hiddifypanel/panel/user/templates/home/one_click.html:230
-#, fuzzy
 msgid ""
 "Download\n"
 "                                    App"
@@ -3507,12 +3501,10 @@ msgstr "<i class=\"fa-solid fa-download\"></i>  Download App"
 
 # | msgid "<i class=\"fa-solid fa-qrcode\"></i> QRCode"
 #: hiddifypanel/panel/user/templates/home/one_click.html:240
-#, fuzzy
 msgid "QRCode"
 msgstr "<i class=\"fa-solid fa-qrcode\"></i> QRCode"
 
 #: hiddifypanel/panel/user/templates/home/one_click.html:251
-#, fuzzy
 msgid "Copy Link"
 msgstr "Copy Link"
 
@@ -4024,25 +4016,25 @@ msgstr ""
 "🚧 Block Malware 1.1.1.2 <br>\n"
 "🔞 Block Porn 1.1.1.3\n"
 
+# | msgid "Enable Hysteria"
 #: hiddifypanel/templates/fake.html:2
-#, fuzzy
 msgid "config.hysteria_enable.label"
-msgstr "config.hysteria_enable.label"
+msgstr "Enable Hysteria"
 
+# | msgid "To enable udp based hysteria protocol"
 #: hiddifypanel/templates/fake.html:2
-#, fuzzy
 msgid "config.hysteria_enable.description"
-msgstr "config.hysteria_enable.description"
+msgstr "To enable udp based hysteria protocol"
 
+# | msgid "Hysteria Port"
 #: hiddifypanel/templates/fake.html:2
-#, fuzzy
 msgid "config.hysteria_port.label"
-msgstr "config.hysteria_port.label"
+msgstr "Hysteria Port"
 
+# | msgid "Hysteria UDP Port for example 5678"
 #: hiddifypanel/templates/fake.html:2
-#, fuzzy
 msgid "config.hysteria_port.description"
-msgstr "config.hysteria_port.description"
+msgstr "Hysteria UDP Port for example 5678"
 
 # | msgid "SSH Proxy"
 #: hiddifypanel/templates/fake.html:3
@@ -4063,15 +4055,21 @@ msgstr ""
 "machines over an insecure network. We have a specific application which is "
 "completely different from ssh server and can not execute any commands"
 
+# | msgid "Hysteria"
 #: hiddifypanel/templates/fake.html:3
-#, fuzzy
 msgid "config.hysteria.label"
-msgstr "config.hysteria.label"
+msgstr "Hysteria"
 
+# | msgid ""
+# | "Hysteria is a feature-packed proxy & relay tool optimized for lossy, "
+# | "unstable connections (e.g. satellite networks, congested public Wi-Fi, "
+# | "connecting to foreign servers from China)"
 #: hiddifypanel/templates/fake.html:3
-#, fuzzy
 msgid "config.hysteria.description"
-msgstr "config.hysteria.description"
+msgstr ""
+"Hysteria is a feature-packed proxy & relay tool optimized for lossy, "
+"unstable connections (e.g. satellite networks, congested public Wi-Fi, "
+"connecting to foreign servers from China)"
 
 #: hiddifypanel/templates/fake.html:3
 #, fuzzy
@@ -4170,7 +4168,6 @@ msgstr "➖ Fake"
 
 # | msgid "Test and Suggest Domain "
 #: hiddifypanel/templates/flaskadmin-layout.html:115
-#, fuzzy
 msgid "Example Domains"
 msgstr "Test and Suggest Domain "
 
@@ -4526,12 +4523,6 @@ msgstr "Actions"
 #~ msgstr ""
 #~ "Using Alias with Special Charachters may cause problem in some Clients like "
 #~ "Fair VPN"
-
-#~ msgid "config.ssh_server_ports.label"
-#~ msgstr "config.ssh_server_ports.label"
-
-#~ msgid "config.ssh_server_ports.description"
-#~ msgstr "config.ssh_server_ports.description"
 
 #~ msgid ""
 #~ "You should visit this page without VPN. Your country=%(your_country)s\n"

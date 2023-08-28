@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPT\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-27 20:17+0200\n"
-"PO-Revision-Date: 2023-08-27 12:43-0500\n"
+"POT-Creation-Date: 2023-08-28 07:53+0200\n"
+"PO-Revision-Date: 2023-08-28 00:46-0500\n"
 "Last-Translator: lymanrudni\n"
 "Language: pt\n"
 "Language-Team: Portuguese\n"
@@ -3042,6 +3042,11 @@ msgstr ""
 msgid "admin.config.title"
 msgstr "Configurações"
 
+#: hiddifypanel/panel/user/link_maker.py:709
+#, fuzzy, python-format
+msgid "📅%(expire_days)s days"
+msgstr "📅Remanescem: %(expire_days)s dias"
+
 # | msgid "All Configs"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:1
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:1
@@ -3848,32 +3853,40 @@ msgstr ""
 
 # | msgid "<i class=\"fa-solid fa-play\"></i> Tap to Start Anti-Filter."
 #: hiddifypanel/panel/user/templates/home/one_click.html:13
+#, fuzzy
 msgid "Click to Start Anti-Filter."
-msgstr ""
+msgstr "<i class=\"fa-solid fa-play\"></i> Toque para iniciar o Antifiltro."
 
 #: hiddifypanel/panel/user/templates/home/one_click.html:15
+#, fuzzy
 msgid "Unified link for all application."
-msgstr ""
+msgstr "Link unificado para todos os aplicativos."
 
 #: hiddifypanel/panel/user/templates/home/one_click.html:37
+#, fuzzy
 msgid "Open in Application"
-msgstr ""
+msgstr "Abrir no aplicativo"
 
 #: hiddifypanel/panel/user/templates/home/one_click.html:43
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "If the application do not open automatically, please click <a class='btn "
 "btn-primary copy-link' href='%(sub)s'>this universal link</a> to copy and"
 " paste it on\n"
 "                your application, or:"
 msgstr ""
+"Se o aplicativo não abrir automaticamente, clique <a class='btn btn-"
+"primary copy-link' href='%(sub)s'>neste link universal</a> para copiá-lo "
+"e colá-lo\n"
+"                sua aplicação ou:"
 
 #: hiddifypanel/panel/user/templates/home/one_click.html:49
 #: hiddifypanel/panel/user/templates/home/one_click.html:92
 #: hiddifypanel/panel/user/templates/home/one_click.html:132
 #: hiddifypanel/panel/user/templates/home/one_click.html:170
+#, fuzzy
 msgid "Use HiddifyNext:"
-msgstr ""
+msgstr "Use HiddifyNext:"
 
 # | msgid "<i class=\"fa-solid fa-download\"></i> Download App"
 #: hiddifypanel/panel/user/templates/home/one_click.html:58
@@ -3891,8 +3904,9 @@ msgstr ""
 #: hiddifypanel/panel/user/templates/home/one_click.html:203
 #: hiddifypanel/panel/user/templates/home/one_click.html:217
 #: hiddifypanel/panel/user/templates/home/one_click.html:223
+#, fuzzy
 msgid "Download App"
-msgstr ""
+msgstr "<i class=\"fa-solid fa-download\"></i> Baixar aplicativo"
 
 # | msgid "Import in App"
 #: hiddifypanel/panel/user/templates/home/one_click.html:63
@@ -3916,29 +3930,34 @@ msgstr "Importar no aplicativo"
 #: hiddifypanel/panel/user/templates/home/one_click.html:145
 #: hiddifypanel/panel/user/templates/home/one_click.html:182
 #: hiddifypanel/panel/user/templates/home/one_click.html:213
+#, fuzzy
 msgid "More Applications"
-msgstr ""
+msgstr "Mais aplicativos"
 
 #: hiddifypanel/panel/user/templates/home/one_click.html:78
 #: hiddifypanel/panel/user/templates/home/one_click.html:84
+#, fuzzy
 msgid "Import in"
-msgstr ""
+msgstr "Importar em"
 
 # | msgid "<i class=\"fa-solid fa-download\"></i>  Download App"
 #: hiddifypanel/panel/user/templates/home/one_click.html:230
+#, fuzzy
 msgid ""
 "Download\n"
 "                                    App"
-msgstr ""
+msgstr "<i class=\"fa-solid fa-download\"></i> Baixar aplicativo"
 
 # | msgid "<i class=\"fa-solid fa-qrcode\"></i> QRCode"
 #: hiddifypanel/panel/user/templates/home/one_click.html:240
+#, fuzzy
 msgid "QRCode"
-msgstr ""
+msgstr "<i class=\"fa-solid fa-qrcode\"></i> QRCode"
 
 #: hiddifypanel/panel/user/templates/home/one_click.html:251
+#, fuzzy
 msgid "Copy Link"
-msgstr ""
+msgstr "Link de cópia"
 
 # | msgid ""
 # | "First, Test the Speed <b>without</b> the proxy. If the speed is not good,
@@ -4540,20 +4559,24 @@ msgstr ""
 "🔞 Bloquear pornografia 1.1.1.3"
 
 #: hiddifypanel/templates/fake.html:2
+#, fuzzy
 msgid "config.hysteria_enable.label"
-msgstr ""
+msgstr "Habilitar Histeria"
 
 #: hiddifypanel/templates/fake.html:2
+#, fuzzy
 msgid "config.hysteria_enable.description"
-msgstr ""
+msgstr "Para ativar o protocolo de histeria baseado em udp"
 
 #: hiddifypanel/templates/fake.html:2
+#, fuzzy
 msgid "config.hysteria_port.label"
-msgstr ""
+msgstr "Porto de Histeria"
 
 #: hiddifypanel/templates/fake.html:2
+#, fuzzy
 msgid "config.hysteria_port.description"
-msgstr ""
+msgstr "Porta UDP de histeria, por exemplo 5678"
 
 # | msgid "SSH Proxy"
 #: hiddifypanel/templates/fake.html:3
@@ -4579,12 +4602,18 @@ msgstr ""
 "comando"
 
 #: hiddifypanel/templates/fake.html:3
+#, fuzzy
 msgid "config.hysteria.label"
-msgstr ""
+msgstr "Histeria"
 
 #: hiddifypanel/templates/fake.html:3
+#, fuzzy
 msgid "config.hysteria.description"
 msgstr ""
+"Hysteria é uma ferramenta de proxy e retransmissão repleta de recursos "
+"otimizada para conexões instáveis ​​e com perdas (por exemplo, redes de "
+"satélite, Wi-Fi público congestionado, conexão com servidores "
+"estrangeiros da China)"
 
 #: hiddifypanel/templates/fake.html:3
 msgid "config.hidden.label"

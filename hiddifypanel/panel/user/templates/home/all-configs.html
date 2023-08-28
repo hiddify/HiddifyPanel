@@ -1,4 +1,5 @@
 {{_("user.home.tool.all-configs")}}
+{%set base='https://'+domain+'/'+hconfigs[ConfigEnum.proxy_path]+"/"+user.uuid+"/"%}
 
 <div class="col">
   <table id="all-links" class="table table-bordered table-striped dt-responsive nowrap" style="width:100%">
@@ -17,7 +18,7 @@
       <tr>
         <td>
           <div class="btn-group">
-            <a href="https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/full-singbox.json?asn={{asn}}" class="btn btn-light orig-link">
+            <a href="{{base}}full-singbox.json?asn={{asn}}" class="btn btn-light orig-link">
               Full Singbox</a>
           </div>
         </td>
@@ -30,7 +31,7 @@
       <tr>
         <td>
           <div class="btn-group">
-            <a href="https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/auto?asn={{asn}}" class="btn btn-light orig-link">
+            <a href="{{base}}sub/?asn={{asn}}" class="btn btn-light orig-link">
               {{_('auto')}}</a>
           </div>
         </td>
@@ -43,7 +44,7 @@
       <tr>
         <td>
           <div class="btn-group">
-            <a href="clashmeta://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/meta/all.yml&name=mnormal_{{db_domain.alias or db_domain.domain}}-{{asn}}-{{mode}}&asn={{asn}}&mode={{mode}}"
+            <a href="clashmeta://install-config?url={{base}}clash/meta/all.yml&name=mnormal_{{db_domain.alias or db_domain.domain}}-{{asn}}-{{mode}}&asn={{asn}}&mode={{mode}}"
               class="btn btn-light orig-link"> {{_('user.home.allconfig.hiddify-configs')}}</a>
           </div>
         </td>
@@ -56,7 +57,7 @@
       <tr>
         <td>
           <div class="btn-group">
-            <a href="clash://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/all.yml&name=new_normal_{{db_domain.alias or db_domain.domain}}-{{asn}}-{{mode}}&asn={{asn}}&mode={{mode}}"
+            <a href="clash://install-config?url={{base}}clash/all.yml&name=new_normal_{{db_domain.alias or db_domain.domain}}-{{asn}}-{{mode}}&asn={{asn}}&mode={{mode}}"
               class="btn btn-light orig-link"> {{_('user.home.allconfig.clash-configs')}}</a>
           </div>
         </td>
@@ -69,8 +70,8 @@
       <tr>
         <td>
           <div class="btn-group">
-            <a href="https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/all.txt?name={{db_domain.alias or db_domain.domain}}-{{asn}}&asn={{asn}}&mode={{mode}}"
-              class="btn btn-light orig-link"> {{_('user.home.allconfig.link-configs')}}</a>
+            <a href="{{base}}all.txt?name={{db_domain.alias or db_domain.domain}}-{{asn}}&asn={{asn}}&mode={{mode}}" class="btn btn-light orig-link">
+              {{_('user.home.allconfig.link-configs')}}</a>
           </div>
         </td>
         <td><span class="badge badge-danger">{{_('all')}}</span></td>
@@ -83,8 +84,7 @@
       <tr>
         <td>
           <div class="btn-group">
-            <a href="https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/singbox.json?name={{db_domain.alias or db_domain.domain}}-{{asn}}&asn={{asn}}&mode={{mode}}"
-              class="btn btn-light orig-link"> {{_('singbox: ssh')}}</a>
+            <a href="{{base}}singbox.json?name={{db_domain.alias or db_domain.domain}}-{{asn}}&asn={{asn}}&mode={{mode}}" class="btn btn-light orig-link"> {{_('singbox: ssh')}}</a>
           </div>
         </td>
         <td><span class="badge badge-danger">{{_('ssh')}}</span></td>
@@ -96,8 +96,8 @@
       <tr>
         <td>
           <div class="btn-group">
-            <a href="https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/all.txt?name=new_link_{{db_domain.alias or db_domain.domain}}-{{asn}}-{{mode}}&asn={{asn}}&mode={{mode}}&base64=True"
-              class="btn btn-light orig-link"> {{_('user.home.allconfig.link-configs')}} b64</a>
+            <a href="{{base}}all.txt?name=new_link_{{db_domain.alias or db_domain.domain}}-{{asn}}-{{mode}}&asn={{asn}}&mode={{mode}}&base64=True" class="btn btn-light orig-link">
+              {{_('user.home.allconfig.link-configs')}} b64</a>
           </div>
         </td>
         <td><span class="badge badge-danger">{{_('all')}}</span></td>
@@ -107,30 +107,20 @@
         <td><span class="badge badge-success">{{_('all')}}</span></td>
       </tr>
 
-      %for d in domains
-      %for t in (['http','tls'] if hconfig(ConfigEnum.http_proxy_enable,d.child_id) else ['tls'])
-      %for port in hconfig(ConfigEnum.http_ports if t=='http' else ConfigEnum.tls_ports,d.child_id).split(',')
-      %set phttp=port if t=='http' else None
-      %set ptls=port if t=='tls' else None
-      % for type in link_maker.all_proxies(d.child_id)
-      % set pinfo=link_maker.make_proxy(type,d,phttp=phttp,ptls=ptls)
-      % if 'msg' not in pinfo
+      % for pinfo in link_maker.get_all_validated_proxies(domains)
       <tr>
         <td>
           <div class="btn-group"><a href='{{link_maker.to_link(pinfo)}}' class="btn btn-light orig-link">{{pinfo["name"].replace("_", " ")}}</a></div>
         </td>
-        <td><span class="badge badge-danger"> {% if d.has_auto_ip %}Auto {%endif%}{{pinfo["mode"]}}</span></td>
-        <td><span class="badge ltr">{{d.domain}}</span></td>
+        <td><span class="badge badge-danger"> {% if pinfo['dbdomain'].has_auto_ip %}Auto {%endif%}{{pinfo["mode"]}}</span></td>
+        <td><span class="badge ltr">{{pinfo['server']}}</span></td>
         <td><span class="badge badge-info">{{pinfo["proto"]}}</span></td>
         <td><span class="badge badge-warning">{{pinfo['transport']}}</span></td>
         <td><span class="badge badge-success">{{pinfo['l3']}}</span></td>
       </tr>
 
-      %endif
       % endfor
-      % endfor
-      % endfor
-      % endfor
+
     </tbody>
   </table>
 </div>
