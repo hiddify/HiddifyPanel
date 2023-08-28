@@ -19,6 +19,14 @@ import re
 
 class UserView(FlaskView):
 
+    @route('/short/')
+    def short_link(self):
+        short = hiddify.add_short_link("/"+hconfig(ConfigEnum.proxy_path)+"/"+g.user.uuid+"/")
+        ua = hiddify.get_user_agent()
+        if (ua['is_browser']):
+            return f"https://{urlparse(request.base_url).hostname}/{short}/<br><br>"+_("This link will expire in 5 minutes")
+        return short
+
     @route('/test/')
     def test(self):
         ua = request.user_agent.string
@@ -366,7 +374,7 @@ def add_headers(res, c):
     resp.headers['profile-update-interval'] = 1
     # resp.headers['content-disposition']=f'attachment; filename="{c["db_domain"].alias or c["db_domain"].domain} {c["user"].name}"'
     profile_title = f'{c["db_domain"].alias or c["db_domain"].domain} {c["user"].name}'
-    if c['has_auto_cdn']  and c['asn']!='unknown':
+    if c['has_auto_cdn'] and c['asn'] != 'unknown':
         profile_title += f" {c['asn']}"
     resp.headers['profile-title'] = 'base64:'+do_base_64(profile_title)
 

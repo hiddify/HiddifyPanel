@@ -41,6 +41,21 @@ def add_temporary_access():
     g.temp_admin_link = temp_admin_link
 
 
+def add_short_link(link, period_min=5):
+    # pattern = "\^/([^/]+)(/)?\?\$\ {return 302 " + re.escape(link) + ";}"
+    pattern = r"([^/]+)\("
+
+    with open(current_app.config['HIDDIFY_CONFIG_PATH']+"/nginx/parts/short-link.conf", 'r') as f:
+        for line in f:
+            if link in line:
+                return re.search(pattern, line).group(1)
+
+    short_code = get_random_string(6, 10).lower()
+    exec_command(
+        f'sudo /opt/hiddify-config/nginx/add2shortlink.sh {link} {short_code} {period_min} &')
+    return short_code
+
+
 def get_admin_path():
     proxy_path = hconfig(ConfigEnum.proxy_path)
     admin_secret = g.admin.uuid or get_super_admin_secret()
@@ -766,7 +781,6 @@ def __parse_user_agent(ua):
     if res["is_browser"]:
         res['app'] = uaa.browser.family
     return res
-
 
 
 def url_encode(strr):

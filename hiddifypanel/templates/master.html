@@ -148,7 +148,7 @@
 
 <div class="modal fade" id="share-qr-code" role="dialog" aria-hidden="true" >
     <div class="modal-dialog" role="document">
-        <div class="modal-content"  style="background:#fff">
+        <div class="modal-content" >
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLongTitle">{{_('user.home.share-title')}}</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -164,7 +164,7 @@
                     <a target="_blank" id="share-link-open" class="btn btn-secondary" href=""><i class="fa-solid fa-arrow-up-right-from-square"></i> {{_('open')}}</a>
                   </div>
                     <br />
-                    <div id="qrcode" style="margin:10px;"></div>
+                    <div id="qrcode" style="margin:10px;padding:10px;background:#fff"></div>
                 </center>
             </div>
             <div class="modal-footer">
@@ -177,7 +177,7 @@
 {% endblock %}
 
 {% block tail_js %}
-<script>
+<script type="text/javascript">
     
   setTimeout( function() {
   var wrappers= document.getElementsByClassName("wrapper") ;
@@ -230,7 +230,7 @@
 <script src="{{url_for('static',filename='js/custom.js')}}"></script>
 
 <script src="{{url_for('static',filename='js/js.cookie.min.js')}}"> </script>
-<script>
+<script  type="text/javascript">
 var v;
   function copy_click(e) {
     e.preventDefault();
@@ -315,7 +315,7 @@ var v;
 <button class='btn btn-success' onclick='install_pwa()'>{{_("Install")}}</button>
 %endif
 {%- endmacro -%}
-<script>
+<script defer type="text/javascript">
   $(document).ready(function () {
     
   $('a.copy-link').click(copy_click)
@@ -470,6 +470,7 @@ if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').match
 
   <script defer type="text/javascript">
     var youtube_is_open=false
+    %if not country or country.lower() not in  ['ir','cn']
     var tag = document.createElement('script');
     tag.id = 'iframe-demo';
     tag.src = '//www.youtube.com/iframe_api';
@@ -512,7 +513,7 @@ if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').match
         // Perform further actions or analytics tracking here
       }
     }
-   
+   %endif
   </script>
 
 % if get_locale()=='fa'

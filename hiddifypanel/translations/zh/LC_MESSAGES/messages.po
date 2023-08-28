@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-28 08:28+0200\n"
-"PO-Revision-Date: 2023-08-28 01:08-0500\n"
+"POT-Creation-Date: 2023-08-28 13:25+0200\n"
+"PO-Revision-Date: 2023-08-28 01:28-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Generated-By: Babel 2.12.1\n"
 
 # | msgid "This Domain does not exist in the Panel !"
-#: hiddifypanel/models/domain.py:134 hiddifypanel/panel/user/user.py:271
+#: hiddifypanel/models/domain.py:134 hiddifypanel/panel/user/user.py:279
 #, fuzzy
 msgid "This domain does not exist in the panel!"
 msgstr "该域名在面板中不存在！"
@@ -27,13 +27,13 @@ msgstr "该域名在面板中不存在！"
 msgid "Error! auto cdn ip can not be find, please contact admin."
 msgstr "自动 CDN IP 错误！找不到，请联系管理员。"
 
-#: hiddifypanel/panel/hiddify.py:81
+#: hiddifypanel/panel/hiddify.py:96
 #, fuzzy
 msgid "Access Denied"
 msgstr "拒绝访问"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/panel/hiddify.py:231
+#: hiddifypanel/panel/hiddify.py:246
 msgid "admin.config.apply_configs"
 msgstr "应用配置"
 
@@ -41,12 +41,12 @@ msgstr "应用配置"
 # | "Configs have been changed successfully. Click %(link)s to apply the
 # configs."
 # | " It may take 2 minutes to apply"
-#: hiddifypanel/panel/hiddify.py:232
+#: hiddifypanel/panel/hiddify.py:247
 msgid "config.validation-success"
 msgstr "配置已成功更改。单击 %(link)s 以应用配置。申请可能需要 2 分钟。"
 
 # | msgid " ✅ Configs have been changed successfully"
-#: hiddifypanel/panel/hiddify.py:234
+#: hiddifypanel/panel/hiddify.py:249
 #, fuzzy
 msgid "config.validation-success-no-reset"
 msgstr "配置已成功更改。"
@@ -61,12 +61,12 @@ msgstr "配置已成功更改。"
 #: hiddifypanel/panel/admin/DomainAdmin.py:179
 #: hiddifypanel/panel/admin/QuickSetup.py:126
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:107
-#: hiddifypanel/panel/hiddify.py:355
+#: hiddifypanel/panel/hiddify.py:370
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr "域名无法解析！你的域有问题"
 
 # | msgid "Last Day"
-#: hiddifypanel/panel/hiddify.py:384
+#: hiddifypanel/panel/hiddify.py:399
 #, fuzzy
 msgid "0 - Last day"
 msgstr "0 - 最后一天"
@@ -75,7 +75,7 @@ msgstr "0 - 最后一天"
 # | "Selected Domain for REALITY is not in the same ASN. To better use of the
 # "
 # | "Protocol, it is better to find a Domain in the same ASN"
-#: hiddifypanel/panel/hiddify.py:666
+#: hiddifypanel/panel/hiddify.py:681
 #, fuzzy
 msgid ""
 "selected domain for REALITY is not in the same ASN. To better use of the "
@@ -824,7 +824,7 @@ msgid "SingBox"
 msgstr "📦 SingBox"
 
 #: hiddifypanel/panel/admin/SettingAdmin.py:177
-#: hiddifypanel/panel/user/templates/home/usage.html:10
+#: hiddifypanel/panel/user/templates/home/usage.html:9
 #, fuzzy
 msgid "Disable"
 msgstr "停用"
@@ -1163,7 +1163,7 @@ msgid "Save & Add More"
 msgstr "保存并添加更多"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:5
-#: hiddifypanel/panel/user/templates/home/one_click.html:250
+#: hiddifypanel/panel/user/templates/home/one_click.html:260
 #: hiddifypanel/templates/donation.html:14
 msgid "Close"
 msgstr "关闭"
@@ -2708,6 +2708,10 @@ msgstr "设置"
 msgid "📅%(expire_days)s days"
 msgstr "📅剩余：%(expire_days)s 天"
 
+#: hiddifypanel/panel/user/user.py:27
+msgid "This link will expire in 5 minutes"
+msgstr ""
+
 # | msgid "All Configs"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:1
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:1
@@ -2858,8 +2862,8 @@ msgstr "直接下载"
 # | msgid "<i class=\"fa-brands fa-google-play\"></i> Google Play"
 #: hiddifypanel/panel/user/templates/home/android.html:19
 #: hiddifypanel/panel/user/templates/home/android.html:65
-#: hiddifypanel/panel/user/templates/home/one_click.html:61
-#: hiddifypanel/panel/user/templates/home/one_click.html:75
+#: hiddifypanel/panel/user/templates/home/one_click.html:71
+#: hiddifypanel/panel/user/templates/home/one_click.html:85
 msgid "install from google play"
 msgstr "谷歌播放"
 
@@ -3219,43 +3223,43 @@ msgstr "桌面"
 # | msgid "Please Select Your Operating System."
 #: hiddifypanel/panel/user/templates/home/home.html:65
 #: hiddifypanel/panel/user/templates/home/index_old.html:54
-#: hiddifypanel/panel/user/templates/home/multi.html:65
+#: hiddifypanel/panel/user/templates/home/multi.html:67
 msgid "user.home.select os"
 msgstr "请选择您的操作系统。"
 
 # | msgid "All Configs"
 #: hiddifypanel/panel/user/templates/home/home.html:100
 #: hiddifypanel/panel/user/templates/home/index_old.html:89
-#: hiddifypanel/panel/user/templates/home/multi.html:100
+#: hiddifypanel/panel/user/templates/home/multi.html:60
 msgid "user.home.all_configs"
 msgstr "所有配置"
 
 # | msgid "Speed Test (Detect dirty IP)"
 #: hiddifypanel/panel/user/templates/home/home.html:102
 #: hiddifypanel/panel/user/templates/home/index_old.html:91
-#: hiddifypanel/panel/user/templates/home/multi.html:102
+#: hiddifypanel/panel/user/templates/home/multi.html:106
 msgid "user.home.speedtest"
 msgstr "Speedtest（检测受污染IP）"
 
 # | msgid "DNS Over HTTPS"
 #: hiddifypanel/panel/user/templates/home/home.html:104
 #: hiddifypanel/panel/user/templates/home/index_old.html:93
-#: hiddifypanel/panel/user/templates/home/multi.html:104
+#: hiddifypanel/panel/user/templates/home/multi.html:108
 msgid "user.home.doh"
 msgstr "通过 https 的 DNS"
 
 # | msgid "Please select the item."
 #: hiddifypanel/panel/user/templates/home/home.html:110
 #: hiddifypanel/panel/user/templates/home/index_old.html:99
-#: hiddifypanel/panel/user/templates/home/multi.html:110
+#: hiddifypanel/panel/user/templates/home/multi.html:114
 msgid "user.home.select tool"
 msgstr "请选择项目。"
 
 # | msgid "🧾 QR Code"
 #: hiddifypanel/panel/user/templates/home/home.html:136
 #: hiddifypanel/panel/user/templates/home/index_old.html:125
-#: hiddifypanel/panel/user/templates/home/multi.html:136
-#: hiddifypanel/panel/user/templates/home/usage.html:74
+#: hiddifypanel/panel/user/templates/home/multi.html:138
+#: hiddifypanel/panel/user/templates/home/usage.html:71
 msgid "QR code"
 msgstr "二维码"
 
@@ -3265,22 +3269,22 @@ msgstr "二维码"
 # | " field to display its QR Code."
 #: hiddifypanel/panel/user/templates/home/home.html:137
 #: hiddifypanel/panel/user/templates/home/index_old.html:126
-#: hiddifypanel/panel/user/templates/home/multi.html:137
-#: hiddifypanel/panel/user/templates/home/usage.html:75
+#: hiddifypanel/panel/user/templates/home/multi.html:139
+#: hiddifypanel/panel/user/templates/home/usage.html:72
 msgid "user.home.qr-code.description"
 msgstr "要复制或共享链接，请点击灰色的 <i class='fa-solid fa-qrcode'></i> 字段以显示其二维码。"
 
 # | msgid "Display QR Code"
 #: hiddifypanel/panel/user/templates/home/home.html:145
 #: hiddifypanel/panel/user/templates/home/index_old.html:134
-#: hiddifypanel/panel/user/templates/home/multi.html:145
-#: hiddifypanel/panel/user/templates/home/usage.html:83
+#: hiddifypanel/panel/user/templates/home/multi.html:147
+#: hiddifypanel/panel/user/templates/home/usage.html:79
 msgid "user.home.qr-code.display"
 msgstr "显示二维码"
 
 # | msgid "ℹ️ Connect Your Account to Telegram"
 #: hiddifypanel/panel/user/templates/home/home.html:320
-#: hiddifypanel/panel/user/templates/home/multi.html:320
+#: hiddifypanel/panel/user/templates/home/multi.html:322
 #, fuzzy
 msgid "Want to enjoy more with telegram?"
 msgstr "你喜欢电报吗？"
@@ -3290,7 +3294,7 @@ msgstr "你喜欢电报吗？"
 # Status "
 # | "of your Subscription"
 #: hiddifypanel/panel/user/templates/home/home.html:321
-#: hiddifypanel/panel/user/templates/home/multi.html:321
+#: hiddifypanel/panel/user/templates/home/multi.html:323
 #, fuzzy
 msgid ""
 "Please connect your telegram accout to the panel to be informed about "
@@ -3300,34 +3304,34 @@ msgstr "请将您的电报帐户连接到面板以了解最新消息。"
 # | msgid "Next"
 #: hiddifypanel/panel/user/templates/home/home.html:374
 #: hiddifypanel/panel/user/templates/home/index_old.html:344
-#: hiddifypanel/panel/user/templates/home/multi.html:374
+#: hiddifypanel/panel/user/templates/home/multi.html:376
 msgid "next"
 msgstr "下一个"
 
 # | msgid "Previous"
 #: hiddifypanel/panel/user/templates/home/home.html:375
 #: hiddifypanel/panel/user/templates/home/index_old.html:345
-#: hiddifypanel/panel/user/templates/home/multi.html:375
+#: hiddifypanel/panel/user/templates/home/multi.html:377
 msgid "previous"
 msgstr "上一个"
 
 # | msgid "Search"
 #: hiddifypanel/panel/user/templates/home/home.html:385
 #: hiddifypanel/panel/user/templates/home/index_old.html:355
-#: hiddifypanel/panel/user/templates/home/multi.html:385
+#: hiddifypanel/panel/user/templates/home/multi.html:387
 msgid "search"
 msgstr "搜索"
 
 # | msgid "Check Again"
 #: hiddifypanel/panel/user/templates/home/home.html:419
-#: hiddifypanel/panel/user/templates/home/multi.html:419
+#: hiddifypanel/panel/user/templates/home/multi.html:421
 #, fuzzy
 msgid "Check again"
 msgstr "再检查一遍"
 
 # | msgid "Turn Off VPN"
 #: hiddifypanel/panel/user/templates/home/home.html:422
-#: hiddifypanel/panel/user/templates/home/multi.html:422
+#: hiddifypanel/panel/user/templates/home/multi.html:424
 #, fuzzy
 msgid "Turn of VPN"
 msgstr "关闭 VPN"
@@ -3337,7 +3341,7 @@ msgstr "关闭 VPN"
 # | "<br>\n"
 # | "Your Country = %(your_country)s"
 #: hiddifypanel/panel/user/templates/home/home.html:422
-#: hiddifypanel/panel/user/templates/home/multi.html:422
+#: hiddifypanel/panel/user/templates/home/multi.html:424
 #, fuzzy, python-format
 msgid ""
 "You should visit this page without VPN. Your country=%(your_country)s "
@@ -3429,85 +3433,88 @@ msgstr "<i class=\"fa-solid fa-play\"></i> 点击以启动反过滤。"
 msgid "Unified link for all application."
 msgstr "所有应用程序的统一链接。"
 
-#: hiddifypanel/panel/user/templates/home/one_click.html:37
+#: hiddifypanel/panel/user/templates/home/one_click.html:29
+#: hiddifypanel/panel/user/templates/home/one_click.html:303
+msgid "Temporary Short Link"
+msgstr ""
+
+#: hiddifypanel/panel/user/templates/home/one_click.html:46
 #, fuzzy
 msgid "Open in Application"
 msgstr "在应用程序中打开"
 
-#: hiddifypanel/panel/user/templates/home/one_click.html:43
-#, fuzzy, python-format
+#: hiddifypanel/panel/user/templates/home/one_click.html:52
+#, python-format
 msgid ""
 "If the application do not open automatically, please click <a class='btn "
 "btn-primary copy-link' href='%(sub)s'>this universal link</a> to copy and"
-" paste it on\n"
+" paste it\n"
+"                on\n"
 "                your application, or:"
 msgstr ""
-"如果应用程序没有自动打开，请点击<a class='btn btn-primary copy-link' "
-"href='%(sub)s'>此通用链接</a>将其复制并粘贴到\n"
-"                您的申请，或者："
 
-#: hiddifypanel/panel/user/templates/home/one_click.html:49
-#: hiddifypanel/panel/user/templates/home/one_click.html:92
-#: hiddifypanel/panel/user/templates/home/one_click.html:132
-#: hiddifypanel/panel/user/templates/home/one_click.html:170
+#: hiddifypanel/panel/user/templates/home/one_click.html:59
+#: hiddifypanel/panel/user/templates/home/one_click.html:102
+#: hiddifypanel/panel/user/templates/home/one_click.html:142
+#: hiddifypanel/panel/user/templates/home/one_click.html:180
 #, fuzzy
 msgid "Use HiddifyNext:"
 msgstr "使用 HiddifyNext："
 
 # | msgid "<i class=\"fa-solid fa-download\"></i> Download App"
-#: hiddifypanel/panel/user/templates/home/one_click.html:58
-#: hiddifypanel/panel/user/templates/home/one_click.html:74
-#: hiddifypanel/panel/user/templates/home/one_click.html:83
-#: hiddifypanel/panel/user/templates/home/one_click.html:99
-#: hiddifypanel/panel/user/templates/home/one_click.html:113
-#: hiddifypanel/panel/user/templates/home/one_click.html:122
-#: hiddifypanel/panel/user/templates/home/one_click.html:139
-#: hiddifypanel/panel/user/templates/home/one_click.html:151
-#: hiddifypanel/panel/user/templates/home/one_click.html:160
-#: hiddifypanel/panel/user/templates/home/one_click.html:176
-#: hiddifypanel/panel/user/templates/home/one_click.html:188
-#: hiddifypanel/panel/user/templates/home/one_click.html:197
-#: hiddifypanel/panel/user/templates/home/one_click.html:203
-#: hiddifypanel/panel/user/templates/home/one_click.html:217
-#: hiddifypanel/panel/user/templates/home/one_click.html:223
+#: hiddifypanel/panel/user/templates/home/one_click.html:68
+#: hiddifypanel/panel/user/templates/home/one_click.html:84
+#: hiddifypanel/panel/user/templates/home/one_click.html:93
+#: hiddifypanel/panel/user/templates/home/one_click.html:109
+#: hiddifypanel/panel/user/templates/home/one_click.html:123
+#: hiddifypanel/panel/user/templates/home/one_click.html:132
+#: hiddifypanel/panel/user/templates/home/one_click.html:149
+#: hiddifypanel/panel/user/templates/home/one_click.html:161
+#: hiddifypanel/panel/user/templates/home/one_click.html:170
+#: hiddifypanel/panel/user/templates/home/one_click.html:186
+#: hiddifypanel/panel/user/templates/home/one_click.html:198
+#: hiddifypanel/panel/user/templates/home/one_click.html:207
+#: hiddifypanel/panel/user/templates/home/one_click.html:213
+#: hiddifypanel/panel/user/templates/home/one_click.html:227
+#: hiddifypanel/panel/user/templates/home/one_click.html:233
 #, fuzzy
 msgid "Download App"
 msgstr "<i class=\"fa-solid fa-download\"></i> 下载应用程序"
 
 # | msgid "Import in App"
-#: hiddifypanel/panel/user/templates/home/one_click.html:63
-#: hiddifypanel/panel/user/templates/home/one_click.html:101
-#: hiddifypanel/panel/user/templates/home/one_click.html:116
-#: hiddifypanel/panel/user/templates/home/one_click.html:124
-#: hiddifypanel/panel/user/templates/home/one_click.html:141
-#: hiddifypanel/panel/user/templates/home/one_click.html:162
-#: hiddifypanel/panel/user/templates/home/one_click.html:178
-#: hiddifypanel/panel/user/templates/home/one_click.html:199
-#: hiddifypanel/panel/user/templates/home/one_click.html:204
-#: hiddifypanel/panel/user/templates/home/one_click.html:218
-#: hiddifypanel/panel/user/templates/home/one_click.html:225
-#: hiddifypanel/panel/user/templates/home/one_click.html:233
+#: hiddifypanel/panel/user/templates/home/one_click.html:73
+#: hiddifypanel/panel/user/templates/home/one_click.html:111
+#: hiddifypanel/panel/user/templates/home/one_click.html:126
+#: hiddifypanel/panel/user/templates/home/one_click.html:134
+#: hiddifypanel/panel/user/templates/home/one_click.html:151
+#: hiddifypanel/panel/user/templates/home/one_click.html:172
+#: hiddifypanel/panel/user/templates/home/one_click.html:188
+#: hiddifypanel/panel/user/templates/home/one_click.html:209
+#: hiddifypanel/panel/user/templates/home/one_click.html:214
+#: hiddifypanel/panel/user/templates/home/one_click.html:228
+#: hiddifypanel/panel/user/templates/home/one_click.html:235
+#: hiddifypanel/panel/user/templates/home/one_click.html:243
 #, fuzzy
 msgid "Import"
 msgstr "在应用程序中导入"
 
-#: hiddifypanel/panel/user/templates/home/one_click.html:67
-#: hiddifypanel/panel/user/templates/home/one_click.html:107
-#: hiddifypanel/panel/user/templates/home/one_click.html:145
-#: hiddifypanel/panel/user/templates/home/one_click.html:182
-#: hiddifypanel/panel/user/templates/home/one_click.html:213
+#: hiddifypanel/panel/user/templates/home/one_click.html:77
+#: hiddifypanel/panel/user/templates/home/one_click.html:117
+#: hiddifypanel/panel/user/templates/home/one_click.html:155
+#: hiddifypanel/panel/user/templates/home/one_click.html:192
+#: hiddifypanel/panel/user/templates/home/one_click.html:223
 #, fuzzy
 msgid "More Applications"
 msgstr "更多应用"
 
-#: hiddifypanel/panel/user/templates/home/one_click.html:78
-#: hiddifypanel/panel/user/templates/home/one_click.html:84
+#: hiddifypanel/panel/user/templates/home/one_click.html:88
+#: hiddifypanel/panel/user/templates/home/one_click.html:94
 #, fuzzy
 msgid "Import in"
 msgstr "导入"
 
 # | msgid "<i class=\"fa-solid fa-download\"></i>  Download App"
-#: hiddifypanel/panel/user/templates/home/one_click.html:230
+#: hiddifypanel/panel/user/templates/home/one_click.html:240
 #, fuzzy
 msgid ""
 "Download\n"
@@ -3515,12 +3522,12 @@ msgid ""
 msgstr "<i class=\"fa-solid fa-download\"></i> 下载应用程序"
 
 # | msgid "<i class=\"fa-solid fa-qrcode\"></i> QRCode"
-#: hiddifypanel/panel/user/templates/home/one_click.html:240
+#: hiddifypanel/panel/user/templates/home/one_click.html:250
 #, fuzzy
 msgid "QRCode"
 msgstr "<i class=\"fa-solid fa-qrcode\"></i> 二维码"
 
-#: hiddifypanel/panel/user/templates/home/one_click.html:251
+#: hiddifypanel/panel/user/templates/home/one_click.html:261
 #, fuzzy
 msgid "Copy Link"
 msgstr "复制链接"
@@ -3570,64 +3577,64 @@ msgid "user.home.telegram.description"
 msgstr "单击 %(link)s，然后，在Telegram中您可以看到一个包含 <b>Connect Proxy</b> 的窗口。点击它，它将起作用。"
 
 # | msgid "⏳ Traffic Usage"
-#: hiddifypanel/panel/user/templates/home/usage.html:7
+#: hiddifypanel/panel/user/templates/home/usage.html:6
 msgid "user.home.usage.title"
 msgstr "流量使用"
 
 # | msgid "Of"
-#: hiddifypanel/panel/user/templates/home/usage.html:12
+#: hiddifypanel/panel/user/templates/home/usage.html:11
 msgid "user.home.usage.from"
 msgstr "的"
 
 # | msgid "Monthly"
-#: hiddifypanel/panel/user/templates/home/usage.html:13
+#: hiddifypanel/panel/user/templates/home/usage.html:12
 msgid "user.home.usage.monthly"
 msgstr "每月"
 
 # | msgid "Expire: "
-#: hiddifypanel/panel/user/templates/home/usage.html:19
+#: hiddifypanel/panel/user/templates/home/usage.html:17
 msgid "user.home.usage.expire"
 msgstr "过期于："
 
 # | msgid "Traffic usage reset time:"
-#: hiddifypanel/panel/user/templates/home/usage.html:23
+#: hiddifypanel/panel/user/templates/home/usage.html:21
 msgid "Reset Usage Time:"
 msgstr "流量使用重置时间："
 
 # | msgid "Days"
-#: hiddifypanel/panel/user/templates/home/usage.html:23
+#: hiddifypanel/panel/user/templates/home/usage.html:21
 msgid "days"
 msgstr "天"
 
 # | msgid "User Is Inactive"
-#: hiddifypanel/panel/user/templates/home/usage.html:28
+#: hiddifypanel/panel/user/templates/home/usage.html:26
 #, fuzzy
 msgid "User is inactive"
 msgstr "用户不活跃"
 
 # | msgid "Too Many Connected IPs"
-#: hiddifypanel/panel/user/templates/home/usage.html:31
+#: hiddifypanel/panel/user/templates/home/usage.html:29
 #, fuzzy
 msgid "Too many Connected IPs"
 msgstr "连接的 IP 太多"
 
-#: hiddifypanel/panel/user/templates/home/usage.html:43
+#: hiddifypanel/panel/user/templates/home/usage.html:41
 #, fuzzy
 msgid "View in Telegram"
 msgstr "在电报中查看"
 
 # | msgid "Display Usage Details."
-#: hiddifypanel/panel/user/templates/home/usage.html:47
+#: hiddifypanel/panel/user/templates/home/usage.html:45
 msgid "user.home.usage.details"
 msgstr "显示使用详情。"
 
 # | msgid "Support"
-#: hiddifypanel/panel/user/templates/home/usage.html:56
+#: hiddifypanel/panel/user/templates/home/usage.html:54
 msgid "user.home.branding.title"
 msgstr "支持"
 
 # | msgid "Support Page Link"
-#: hiddifypanel/panel/user/templates/home/usage.html:65
+#: hiddifypanel/panel/user/templates/home/usage.html:62
 msgid "user.home.branding.linktitle"
 msgstr "支持页面链接"
 
@@ -4588,6 +4595,18 @@ msgstr "动作"
 #~ "You should visit this page without VPN. Your country=%(your_country)s\n"
 #~ "expected=%(expected_country)s"
 #~ msgstr ""
+
+#~ msgid ""
+#~ "If the application do not open "
+#~ "automatically, please click <a class='btn "
+#~ "btn-primary copy-link' href='%(sub)s'>this "
+#~ "universal link</a> to copy and paste "
+#~ "it on\n"
+#~ "                your application, or:"
+#~ msgstr ""
+#~ "如果应用程序没有自动打开，请点击<a class='btn btn-primary "
+#~ "copy-link' href='%(sub)s'>此通用链接</a>将其复制并粘贴到\n"
+#~ "                您的申请，或者："
 
 #~ msgid "Download HiddifyNext"
 #~ msgstr ""

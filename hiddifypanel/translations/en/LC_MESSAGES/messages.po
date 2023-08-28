@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-28 08:28+0200\n"
-"PO-Revision-Date: 2023-08-28 01:08-0500\n"
+"POT-Creation-Date: 2023-08-28 13:25+0200\n"
+"PO-Revision-Date: 2023-08-28 01:28-0500\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Generated-By: Babel 2.12.1\n"
 
 # | msgid "This Domain does not exist in the Panel !"
-#: hiddifypanel/models/domain.py:134 hiddifypanel/panel/user/user.py:271
+#: hiddifypanel/models/domain.py:134 hiddifypanel/panel/user/user.py:279
 msgid "This domain does not exist in the panel!"
 msgstr "This Domain does not exist in the Panel !"
 
@@ -24,26 +24,26 @@ msgstr "This Domain does not exist in the Panel !"
 msgid "Error! auto cdn ip can not be find, please contact admin."
 msgstr "Error In Auto CDN IP! It Can Not Be Find, Please Contact Admin"
 
-#: hiddifypanel/panel/hiddify.py:81
+#: hiddifypanel/panel/hiddify.py:96
 msgid "Access Denied"
 msgstr "Access Denied"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/panel/hiddify.py:231
+#: hiddifypanel/panel/hiddify.py:246
 msgid "admin.config.apply_configs"
 msgstr "Apply Configs"
 
 # | msgid ""
 # | "Configs have been changed successfully. Click %(link)s to apply the "
 # | "configs. It may take 2 minutes to apply"
-#: hiddifypanel/panel/hiddify.py:232
+#: hiddifypanel/panel/hiddify.py:247
 msgid "config.validation-success"
 msgstr ""
 "Configs have been changed successfully. Click %(link)s to apply the configs."
 " It may take 2 minutes to apply"
 
 # | msgid " ✅ Configs have been changed successfully"
-#: hiddifypanel/panel/hiddify.py:234
+#: hiddifypanel/panel/hiddify.py:249
 msgid "config.validation-success-no-reset"
 msgstr " ✅ Configs have been changed successfully"
 
@@ -56,14 +56,14 @@ msgstr " ✅ Configs have been changed successfully"
 #: hiddifypanel/panel/admin/DomainAdmin.py:179
 #: hiddifypanel/panel/admin/QuickSetup.py:126
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:107
-#: hiddifypanel/panel/hiddify.py:355
+#: hiddifypanel/panel/hiddify.py:370
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr ""
 "Domain can not be resolved! There is a problem in your domain. Please check "
 "your Domain configurations."
 
 # | msgid "Last Day"
-#: hiddifypanel/panel/hiddify.py:384
+#: hiddifypanel/panel/hiddify.py:399
 msgid "0 - Last day"
 msgstr "Last Day"
 
@@ -71,7 +71,7 @@ msgstr "Last Day"
 # | "Selected Domain for REALITY is not in the same ASN. To better use of the
 # "
 # | "Protocol, it is better to find a Domain in the same ASN"
-#: hiddifypanel/panel/hiddify.py:666
+#: hiddifypanel/panel/hiddify.py:681
 msgid ""
 "selected domain for REALITY is not in the same ASN. To better use of the "
 "protocol, it is better to find a domain in the same ASN."
@@ -832,7 +832,7 @@ msgid "SingBox"
 msgstr "📦 SingBox"
 
 #: hiddifypanel/panel/admin/SettingAdmin.py:177
-#: hiddifypanel/panel/user/templates/home/usage.html:10
+#: hiddifypanel/panel/user/templates/home/usage.html:9
 msgid "Disable"
 msgstr "Disable"
 
@@ -1168,7 +1168,7 @@ msgid "Save & Add More"
 msgstr "Save & Add More"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:5
-#: hiddifypanel/panel/user/templates/home/one_click.html:250
+#: hiddifypanel/panel/user/templates/home/one_click.html:260
 #: hiddifypanel/templates/donation.html:14
 msgid "Close"
 msgstr "Close"
@@ -2694,6 +2694,11 @@ msgstr "Settings"
 msgid "📅%(expire_days)s days"
 msgstr "📅Remain: %(expire_days)s days"
 
+#: hiddifypanel/panel/user/user.py:27
+#, fuzzy
+msgid "This link will expire in 5 minutes"
+msgstr "This link will expire in 5 minutes"
+
 # | msgid "All Configs"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:1
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:1
@@ -2843,8 +2848,8 @@ msgstr "Direct Download"
 # | msgid "<i class=\"fa-brands fa-google-play\"></i> Google Play"
 #: hiddifypanel/panel/user/templates/home/android.html:19
 #: hiddifypanel/panel/user/templates/home/android.html:65
-#: hiddifypanel/panel/user/templates/home/one_click.html:61
-#: hiddifypanel/panel/user/templates/home/one_click.html:75
+#: hiddifypanel/panel/user/templates/home/one_click.html:71
+#: hiddifypanel/panel/user/templates/home/one_click.html:85
 msgid "install from google play"
 msgstr "<i class=\"fa-brands fa-google-play\"></i> Google Play"
 
@@ -3205,43 +3210,43 @@ msgstr "Desktop"
 # | msgid "Please Select Your Operating System."
 #: hiddifypanel/panel/user/templates/home/home.html:65
 #: hiddifypanel/panel/user/templates/home/index_old.html:54
-#: hiddifypanel/panel/user/templates/home/multi.html:65
+#: hiddifypanel/panel/user/templates/home/multi.html:67
 msgid "user.home.select os"
 msgstr "Please Select Your Operating System."
 
 # | msgid "All Configs"
 #: hiddifypanel/panel/user/templates/home/home.html:100
 #: hiddifypanel/panel/user/templates/home/index_old.html:89
-#: hiddifypanel/panel/user/templates/home/multi.html:100
+#: hiddifypanel/panel/user/templates/home/multi.html:60
 msgid "user.home.all_configs"
 msgstr "All Configs"
 
 # | msgid "Speed Test (Detect dirty IP)"
 #: hiddifypanel/panel/user/templates/home/home.html:102
 #: hiddifypanel/panel/user/templates/home/index_old.html:91
-#: hiddifypanel/panel/user/templates/home/multi.html:102
+#: hiddifypanel/panel/user/templates/home/multi.html:106
 msgid "user.home.speedtest"
 msgstr "Speed Test (Detect dirty IP)"
 
 # | msgid "DNS Over HTTPS"
 #: hiddifypanel/panel/user/templates/home/home.html:104
 #: hiddifypanel/panel/user/templates/home/index_old.html:93
-#: hiddifypanel/panel/user/templates/home/multi.html:104
+#: hiddifypanel/panel/user/templates/home/multi.html:108
 msgid "user.home.doh"
 msgstr "DNS Over HTTPS"
 
 # | msgid "Please select the item."
 #: hiddifypanel/panel/user/templates/home/home.html:110
 #: hiddifypanel/panel/user/templates/home/index_old.html:99
-#: hiddifypanel/panel/user/templates/home/multi.html:110
+#: hiddifypanel/panel/user/templates/home/multi.html:114
 msgid "user.home.select tool"
 msgstr "Please select the item."
 
 # | msgid "🧾 QR Code"
 #: hiddifypanel/panel/user/templates/home/home.html:136
 #: hiddifypanel/panel/user/templates/home/index_old.html:125
-#: hiddifypanel/panel/user/templates/home/multi.html:136
-#: hiddifypanel/panel/user/templates/home/usage.html:74
+#: hiddifypanel/panel/user/templates/home/multi.html:138
+#: hiddifypanel/panel/user/templates/home/usage.html:71
 msgid "QR code"
 msgstr "🧾 QR Code"
 
@@ -3250,8 +3255,8 @@ msgstr "🧾 QR Code"
 # | "</i> field to display its QR Code."
 #: hiddifypanel/panel/user/templates/home/home.html:137
 #: hiddifypanel/panel/user/templates/home/index_old.html:126
-#: hiddifypanel/panel/user/templates/home/multi.html:137
-#: hiddifypanel/panel/user/templates/home/usage.html:75
+#: hiddifypanel/panel/user/templates/home/multi.html:139
+#: hiddifypanel/panel/user/templates/home/usage.html:72
 msgid "user.home.qr-code.description"
 msgstr ""
 "To copy or share links, click on the gray <i class='fa-solid fa-qrcode'></i>"
@@ -3260,14 +3265,14 @@ msgstr ""
 # | msgid "Display QR Code"
 #: hiddifypanel/panel/user/templates/home/home.html:145
 #: hiddifypanel/panel/user/templates/home/index_old.html:134
-#: hiddifypanel/panel/user/templates/home/multi.html:145
-#: hiddifypanel/panel/user/templates/home/usage.html:83
+#: hiddifypanel/panel/user/templates/home/multi.html:147
+#: hiddifypanel/panel/user/templates/home/usage.html:79
 msgid "user.home.qr-code.display"
 msgstr "Display QR Code"
 
 # | msgid "ℹ️ Connect Your Account to Telegram"
 #: hiddifypanel/panel/user/templates/home/home.html:320
-#: hiddifypanel/panel/user/templates/home/multi.html:320
+#: hiddifypanel/panel/user/templates/home/multi.html:322
 msgid "Want to enjoy more with telegram?"
 msgstr "ℹ️ Connect Your Account to Telegram"
 
@@ -3275,7 +3280,7 @@ msgstr "ℹ️ Connect Your Account to Telegram"
 # | "Please connect your Telegram account to the panel to know the latest "
 # | "Status of your Subscription"
 #: hiddifypanel/panel/user/templates/home/home.html:321
-#: hiddifypanel/panel/user/templates/home/multi.html:321
+#: hiddifypanel/panel/user/templates/home/multi.html:323
 msgid ""
 "Please connect your telegram accout to the panel to be informed about latest"
 " news."
@@ -3286,33 +3291,33 @@ msgstr ""
 # | msgid "Next"
 #: hiddifypanel/panel/user/templates/home/home.html:374
 #: hiddifypanel/panel/user/templates/home/index_old.html:344
-#: hiddifypanel/panel/user/templates/home/multi.html:374
+#: hiddifypanel/panel/user/templates/home/multi.html:376
 msgid "next"
 msgstr "Next"
 
 # | msgid "Previous"
 #: hiddifypanel/panel/user/templates/home/home.html:375
 #: hiddifypanel/panel/user/templates/home/index_old.html:345
-#: hiddifypanel/panel/user/templates/home/multi.html:375
+#: hiddifypanel/panel/user/templates/home/multi.html:377
 msgid "previous"
 msgstr "Previous"
 
 # | msgid "Search"
 #: hiddifypanel/panel/user/templates/home/home.html:385
 #: hiddifypanel/panel/user/templates/home/index_old.html:355
-#: hiddifypanel/panel/user/templates/home/multi.html:385
+#: hiddifypanel/panel/user/templates/home/multi.html:387
 msgid "search"
 msgstr "Search"
 
 # | msgid "Check Again"
 #: hiddifypanel/panel/user/templates/home/home.html:419
-#: hiddifypanel/panel/user/templates/home/multi.html:419
+#: hiddifypanel/panel/user/templates/home/multi.html:421
 msgid "Check again"
 msgstr "Check Again"
 
 # | msgid "Turn Off VPN"
 #: hiddifypanel/panel/user/templates/home/home.html:422
-#: hiddifypanel/panel/user/templates/home/multi.html:422
+#: hiddifypanel/panel/user/templates/home/multi.html:424
 msgid "Turn of VPN"
 msgstr "Turn Off VPN"
 
@@ -3321,7 +3326,7 @@ msgstr "Turn Off VPN"
 # | "<br>\n"
 # | "Your Country = %(your_country)s"
 #: hiddifypanel/panel/user/templates/home/home.html:422
-#: hiddifypanel/panel/user/templates/home/multi.html:422
+#: hiddifypanel/panel/user/templates/home/multi.html:424
 #, python-format
 msgid ""
 "You should visit this page without VPN. Your country=%(your_country)s "
@@ -3424,87 +3429,95 @@ msgstr "<i class=\"fa-solid fa-play\"></i> Tap to Start Anti-Filter."
 msgid "Unified link for all application."
 msgstr "Unified link for all application."
 
-#: hiddifypanel/panel/user/templates/home/one_click.html:37
+#: hiddifypanel/panel/user/templates/home/one_click.html:29
+#: hiddifypanel/panel/user/templates/home/one_click.html:303
+#, fuzzy
+msgid "Temporary Short Link"
+msgstr "Temporary Short Link"
+
+#: hiddifypanel/panel/user/templates/home/one_click.html:46
 msgid "Open in Application"
 msgstr "Open in Application"
 
-#: hiddifypanel/panel/user/templates/home/one_click.html:43
-#, python-format
+#: hiddifypanel/panel/user/templates/home/one_click.html:52
+#, python-format, fuzzy
 msgid ""
-"If the application do not open automatically, please click <a class='btn btn-primary copy-link' href='%(sub)s'>this universal link</a> to copy and paste it on\n"
+"If the application do not open automatically, please click <a class='btn btn-primary copy-link' href='%(sub)s'>this universal link</a> to copy and paste it\n"
+"                on\n"
 "                your application, or:"
 msgstr ""
-"If the application do not open automatically, please click <a class='btn btn-primary copy-link' href='%(sub)s'>this universal link</a> to copy and paste it on\n"
+"If the application do not open automatically, please click <a class='btn btn-primary copy-link' href='%(sub)s'>this universal link</a> to copy and paste it\n"
+"                on\n"
 "                your application, or:"
 
-#: hiddifypanel/panel/user/templates/home/one_click.html:49
-#: hiddifypanel/panel/user/templates/home/one_click.html:92
-#: hiddifypanel/panel/user/templates/home/one_click.html:132
-#: hiddifypanel/panel/user/templates/home/one_click.html:170
+#: hiddifypanel/panel/user/templates/home/one_click.html:59
+#: hiddifypanel/panel/user/templates/home/one_click.html:102
+#: hiddifypanel/panel/user/templates/home/one_click.html:142
+#: hiddifypanel/panel/user/templates/home/one_click.html:180
 msgid "Use HiddifyNext:"
 msgstr "Use HiddifyNext:"
 
 # | msgid "<i class=\"fa-solid fa-download\"></i> Download App"
-#: hiddifypanel/panel/user/templates/home/one_click.html:58
-#: hiddifypanel/panel/user/templates/home/one_click.html:74
-#: hiddifypanel/panel/user/templates/home/one_click.html:83
-#: hiddifypanel/panel/user/templates/home/one_click.html:99
-#: hiddifypanel/panel/user/templates/home/one_click.html:113
-#: hiddifypanel/panel/user/templates/home/one_click.html:122
-#: hiddifypanel/panel/user/templates/home/one_click.html:139
-#: hiddifypanel/panel/user/templates/home/one_click.html:151
-#: hiddifypanel/panel/user/templates/home/one_click.html:160
-#: hiddifypanel/panel/user/templates/home/one_click.html:176
-#: hiddifypanel/panel/user/templates/home/one_click.html:188
-#: hiddifypanel/panel/user/templates/home/one_click.html:197
-#: hiddifypanel/panel/user/templates/home/one_click.html:203
-#: hiddifypanel/panel/user/templates/home/one_click.html:217
-#: hiddifypanel/panel/user/templates/home/one_click.html:223
+#: hiddifypanel/panel/user/templates/home/one_click.html:68
+#: hiddifypanel/panel/user/templates/home/one_click.html:84
+#: hiddifypanel/panel/user/templates/home/one_click.html:93
+#: hiddifypanel/panel/user/templates/home/one_click.html:109
+#: hiddifypanel/panel/user/templates/home/one_click.html:123
+#: hiddifypanel/panel/user/templates/home/one_click.html:132
+#: hiddifypanel/panel/user/templates/home/one_click.html:149
+#: hiddifypanel/panel/user/templates/home/one_click.html:161
+#: hiddifypanel/panel/user/templates/home/one_click.html:170
+#: hiddifypanel/panel/user/templates/home/one_click.html:186
+#: hiddifypanel/panel/user/templates/home/one_click.html:198
+#: hiddifypanel/panel/user/templates/home/one_click.html:207
+#: hiddifypanel/panel/user/templates/home/one_click.html:213
+#: hiddifypanel/panel/user/templates/home/one_click.html:227
+#: hiddifypanel/panel/user/templates/home/one_click.html:233
 msgid "Download App"
 msgstr "<i class=\"fa-solid fa-download\"></i> Download App"
 
 # | msgid "Import in App"
-#: hiddifypanel/panel/user/templates/home/one_click.html:63
-#: hiddifypanel/panel/user/templates/home/one_click.html:101
-#: hiddifypanel/panel/user/templates/home/one_click.html:116
-#: hiddifypanel/panel/user/templates/home/one_click.html:124
-#: hiddifypanel/panel/user/templates/home/one_click.html:141
-#: hiddifypanel/panel/user/templates/home/one_click.html:162
-#: hiddifypanel/panel/user/templates/home/one_click.html:178
-#: hiddifypanel/panel/user/templates/home/one_click.html:199
-#: hiddifypanel/panel/user/templates/home/one_click.html:204
-#: hiddifypanel/panel/user/templates/home/one_click.html:218
-#: hiddifypanel/panel/user/templates/home/one_click.html:225
-#: hiddifypanel/panel/user/templates/home/one_click.html:233
+#: hiddifypanel/panel/user/templates/home/one_click.html:73
+#: hiddifypanel/panel/user/templates/home/one_click.html:111
+#: hiddifypanel/panel/user/templates/home/one_click.html:126
+#: hiddifypanel/panel/user/templates/home/one_click.html:134
+#: hiddifypanel/panel/user/templates/home/one_click.html:151
+#: hiddifypanel/panel/user/templates/home/one_click.html:172
+#: hiddifypanel/panel/user/templates/home/one_click.html:188
+#: hiddifypanel/panel/user/templates/home/one_click.html:209
+#: hiddifypanel/panel/user/templates/home/one_click.html:214
+#: hiddifypanel/panel/user/templates/home/one_click.html:228
+#: hiddifypanel/panel/user/templates/home/one_click.html:235
+#: hiddifypanel/panel/user/templates/home/one_click.html:243
 msgid "Import"
 msgstr "Import in App"
 
-#: hiddifypanel/panel/user/templates/home/one_click.html:67
-#: hiddifypanel/panel/user/templates/home/one_click.html:107
-#: hiddifypanel/panel/user/templates/home/one_click.html:145
-#: hiddifypanel/panel/user/templates/home/one_click.html:182
-#: hiddifypanel/panel/user/templates/home/one_click.html:213
+#: hiddifypanel/panel/user/templates/home/one_click.html:77
+#: hiddifypanel/panel/user/templates/home/one_click.html:117
+#: hiddifypanel/panel/user/templates/home/one_click.html:155
+#: hiddifypanel/panel/user/templates/home/one_click.html:192
+#: hiddifypanel/panel/user/templates/home/one_click.html:223
 msgid "More Applications"
 msgstr "More Applications"
 
-#: hiddifypanel/panel/user/templates/home/one_click.html:78
-#: hiddifypanel/panel/user/templates/home/one_click.html:84
+#: hiddifypanel/panel/user/templates/home/one_click.html:88
+#: hiddifypanel/panel/user/templates/home/one_click.html:94
 msgid "Import in"
 msgstr "Import in"
 
 # | msgid "<i class=\"fa-solid fa-download\"></i>  Download App"
-#: hiddifypanel/panel/user/templates/home/one_click.html:230
+#: hiddifypanel/panel/user/templates/home/one_click.html:240
 msgid ""
 "Download\n"
 "                                    App"
 msgstr "<i class=\"fa-solid fa-download\"></i>  Download App"
 
 # | msgid "<i class=\"fa-solid fa-qrcode\"></i> QRCode"
-#: hiddifypanel/panel/user/templates/home/one_click.html:240
+#: hiddifypanel/panel/user/templates/home/one_click.html:250
 msgid "QRCode"
 msgstr "<i class=\"fa-solid fa-qrcode\"></i> QRCode"
 
-#: hiddifypanel/panel/user/templates/home/one_click.html:251
+#: hiddifypanel/panel/user/templates/home/one_click.html:261
 msgid "Copy Link"
 msgstr "Copy Link"
 
@@ -3559,61 +3572,61 @@ msgstr ""
 "<br />"
 
 # | msgid "⏳ Traffic Usage"
-#: hiddifypanel/panel/user/templates/home/usage.html:7
+#: hiddifypanel/panel/user/templates/home/usage.html:6
 msgid "user.home.usage.title"
 msgstr "⏳ Traffic Usage"
 
 # | msgid "Of"
-#: hiddifypanel/panel/user/templates/home/usage.html:12
+#: hiddifypanel/panel/user/templates/home/usage.html:11
 msgid "user.home.usage.from"
 msgstr "Of"
 
 # | msgid "Monthly"
-#: hiddifypanel/panel/user/templates/home/usage.html:13
+#: hiddifypanel/panel/user/templates/home/usage.html:12
 msgid "user.home.usage.monthly"
 msgstr "Monthly"
 
 # | msgid "Expire: "
-#: hiddifypanel/panel/user/templates/home/usage.html:19
+#: hiddifypanel/panel/user/templates/home/usage.html:17
 msgid "user.home.usage.expire"
 msgstr "Expire: "
 
 # | msgid "Traffic usage reset time:"
-#: hiddifypanel/panel/user/templates/home/usage.html:23
+#: hiddifypanel/panel/user/templates/home/usage.html:21
 msgid "Reset Usage Time:"
 msgstr "Traffic usage reset time:"
 
 # | msgid "Days"
-#: hiddifypanel/panel/user/templates/home/usage.html:23
+#: hiddifypanel/panel/user/templates/home/usage.html:21
 msgid "days"
 msgstr "Days"
 
 # | msgid "User Is Inactive"
-#: hiddifypanel/panel/user/templates/home/usage.html:28
+#: hiddifypanel/panel/user/templates/home/usage.html:26
 msgid "User is inactive"
 msgstr "User Is Inactive"
 
 # | msgid "Too Many Connected IPs"
-#: hiddifypanel/panel/user/templates/home/usage.html:31
+#: hiddifypanel/panel/user/templates/home/usage.html:29
 msgid "Too many Connected IPs"
 msgstr "Too Many Connected IPs"
 
-#: hiddifypanel/panel/user/templates/home/usage.html:43
+#: hiddifypanel/panel/user/templates/home/usage.html:41
 msgid "View in Telegram"
 msgstr "View in Telegram"
 
 # | msgid "Display Usage Details."
-#: hiddifypanel/panel/user/templates/home/usage.html:47
+#: hiddifypanel/panel/user/templates/home/usage.html:45
 msgid "user.home.usage.details"
 msgstr "Display Usage Details."
 
 # | msgid "Support"
-#: hiddifypanel/panel/user/templates/home/usage.html:56
+#: hiddifypanel/panel/user/templates/home/usage.html:54
 msgid "user.home.branding.title"
 msgstr "Support"
 
 # | msgid "Support Page Link"
-#: hiddifypanel/panel/user/templates/home/usage.html:65
+#: hiddifypanel/panel/user/templates/home/usage.html:62
 msgid "user.home.branding.linktitle"
 msgstr "Support Page Link"
 
@@ -4530,6 +4543,13 @@ msgstr "Actions"
 #~ msgstr ""
 #~ "You should visit this page without VPN. Your country=%(your_country)s\n"
 #~ "expected=%(expected_country)s"
+
+#~ msgid ""
+#~ "If the application do not open automatically, please click <a class='btn btn-primary copy-link' href='%(sub)s'>this universal link</a> to copy and paste it on\n"
+#~ "                your application, or:"
+#~ msgstr ""
+#~ "If the application do not open automatically, please click <a class='btn btn-primary copy-link' href='%(sub)s'>this universal link</a> to copy and paste it on\n"
+#~ "                your application, or:"
 
 #~ msgid "Download HiddifyNext"
 #~ msgstr "Download HiddifyNext"

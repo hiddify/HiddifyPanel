@@ -3,36 +3,45 @@
 
 
 <div class="row1  mb-2" style="margin-top: 10px;">
-
-    <div class="card small-box bg-danger bg-h-green col-12 col-md-6 mx-auto" style="margin:auto;">
-        <a class="open_in_hiddify" href="{{sub_url}}">
-            <div class="card-body">
-
-
-                <div class="inner">
-                    <h4 style="text-wrap:balance">{{_('Click to Start Anti-Filter.')}}</h4>
-                    <div class="info-box-content">
-                        {{_('Unified link for all application.')}}
-                    </div>
-                </div>
-
-
-            </div>
-
-        </a>
+ 
+    <div class="card-deck">
+<div class="card small-box bg-success bg-h-red">
+<a class="open_in_hiddify" href="{{sub_url}}">
+    <div class="card-body">
+        <div class="inner">
+            
+            <h4 style="text-wrap:balance">{{_('Click to Start Anti-Filter.')}}</h4>
+                        <div class="info-box-content">
+                            {{_('Unified link for all application.')}}
+                        </div>
+        </div>
         <div class="icon">
             <i class="fa-solid fa-wifi"></i>
         </div>
-
     </div>
+    </a>
 
+</div>
+<div class="card small-box bg-success bg-h-pink ">
+<a class="short-link" href="{{sub_url}}">
+    <div class="card-body">
+        <div class="inner">
+           <h4> {{_('Temporary Short Link')}}</h4>
+        </div>
+        <div class="icon">
+            <i class="fa-solid fa-file-zipper"></i>
+        </div>
+    </div>
+    
+    </a>
 
+</div>
 </div>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content" style="background-color: #fff;">
+        <div class="modal-content" >
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">{{_('Open in Application')}}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -40,8 +49,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                {{_("If the application do not open automatically, please click <a class='btn btn-primary copy-link' href='%(sub)s'>this universal link</a> to copy and paste it on
-                your application, or:",sub=sub_url)}}
+                {{_("If the application do not open automatically, please click <a class='btn btn-primary copy-link' href='%(sub)s'>this universal link</a> to copy and paste it on your application, or:",sub=sub_url)}}
                 <br><br>
 
                 {% if ua.os.family=="Android" %}
@@ -239,7 +247,7 @@
                 <details>
                     <summary>{{_('QRCode')}}</summary>
                     <center>
-                        <div id="qrcode-oneclick" class="mx-auto" style="margin:10px;"></div>
+                        <div id="qrcode-oneclick" class="mx-auto" style="margin:10px;margin:10px;padding:10px;background:#fff"></div>
                     </center>
                 </details>
 
@@ -257,7 +265,7 @@
 
 
 
-<script>
+<script defer type="text/javascript">
     window.addEventListener("DOMContentLoaded", function () {
 
         $('.open_in_hiddify').click(function (e) {
@@ -272,6 +280,32 @@
         qrcode_oneclick = new QRCode(document.getElementById("qrcode-oneclick"), { width: w, height: w, correctLevel: 1 });
         qrcode_oneclick.clear()
         qrcode_oneclick.makeCode(document.location);
+
+
+        $('.short-link').click(function (e) {
+            e.preventDefault()
+            $.get('short/', function (data) {
+                 $("#short-link-Modal .modal-body").html(data);
+                $("#short-link-Modal").modal('show');
+            })
+        });
     });
 
 </script>
+
+
+<div class="modal fade" id="short-link-Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+  <div class="modal-content">
+  <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{_('Temporary Short Link')}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+      <div class="modal-body">
+        <!-- AJAX content will be loaded here -->
+      </div>
+  </div>
+</div>
+</div>

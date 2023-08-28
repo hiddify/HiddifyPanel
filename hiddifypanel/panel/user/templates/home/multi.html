@@ -56,6 +56,8 @@
                                 class="fa-brands fa-app-store-ios fa-margin"></i> {{_('ios')}}</a></li>
                     <li class="nav-item"><a class="nav-link {{"active" if ua.is_pc else ""}}" href="#windows" data-toggle="tab">
                         <i class="fa-brands fa-windows fa-margin1"></i> <i class="fa-brands fa-apple fa-margin1"></i> <i class="fa-brands fa-linux fa-margin1"></i> {{_('desktop')}}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#all_configs" data-toggle="tab"><i
+                                class="fa-solid fa-grip fa-margin"></i> {{_('user.home.all_configs')}}</a></li>
                     
                 </ul>
             </div><!-- /.card-header -->
@@ -78,6 +80,9 @@
                     <div class="tab-pane {{"active" if ua.is_pc else ""}}" id="windows">
                         {% include "home/windows.html" %}
                     </div>
+                    <div class="tab-pane" id="all_configs">
+                        {% include 'home/all-configs.html'%}
+                    </div>
                     <!-- /.tab-pane -->
                 </div>
                 <!-- /.tab-content -->
@@ -96,8 +101,7 @@
             <div class="card-header d-flex p-0">
                 <h3 class="card-title p-0"></h3>
                 <ul class="nav nav-pills p-2">
-                    <li class="nav-item"><a class="nav-link" href="#all_configs" data-toggle="tab"><i
-                                class="fa-solid fa-grip fa-margin"></i> {{_('user.home.all_configs')}}</a></li>
+                    
                     <li class="nav-item"><a class="nav-link" href="#speedtest" data-toggle="tab"><i
                                 class="fa-solid fa-gauge-high fa-margin"></i> {{_('user.home.speedtest')}}</a></li>
                     <li class="nav-item"><a class="nav-link" href="#doh" data-toggle="tab"><i
@@ -109,9 +113,7 @@
                     <div class="tab-pane active" id="default">
                         {{_('user.home.select tool')}}
                     </div>
-                    <div class="tab-pane" id="all_configs">
-                        {% include 'home/all-configs.html'%}
-                    </div>
+                    
                     <div class="tab-pane" id="speedtest">
                         {% include 'home/speedtest.html' %}
                     </div>
