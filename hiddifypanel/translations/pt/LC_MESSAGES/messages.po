@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPT\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-28 17:04+0200\n"
-"PO-Revision-Date: 2023-08-28 09:59-0500\n"
+"POT-Creation-Date: 2023-08-28 21:22+0200\n"
+"PO-Revision-Date: 2023-08-28 10:04-0500\n"
 "Last-Translator: lymanrudni\n"
 "Language: pt\n"
 "Language-Team: Portuguese\n"
@@ -3876,7 +3876,7 @@ msgid "Unified link for all application."
 msgstr "Link unificado para todos os aplicativos."
 
 #: hiddifypanel/panel/user/templates/home/one_click.html:29
-#: hiddifypanel/panel/user/templates/home/one_click.html:312
+#: hiddifypanel/panel/user/templates/home/one_click.html:278
 msgid "Temporary Short Link"
 msgstr ""
 
@@ -3890,9 +3890,10 @@ msgid "Open in Application"
 msgstr "Abrir no aplicativo"
 
 # | msgid ""
-# | "If the application do not open automatically, the proxy link is  already
-# "
-# | "copied and you need to only paste it on your application, or:"
+# | "✔️The proxy link is copied.\n"
+# | "<br>\n"
+# | "⚠️If the application do not open automatically, you need to only paste it
+# on your application, or:"
 #: hiddifypanel/panel/user/templates/home/one_click.html:55
 #, fuzzy, python-format
 msgid ""
