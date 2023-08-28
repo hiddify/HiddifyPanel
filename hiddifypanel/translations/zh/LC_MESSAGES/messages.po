@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-28 13:25+0200\n"
-"PO-Revision-Date: 2023-08-28 01:28-0500\n"
+"POT-Creation-Date: 2023-08-28 13:42+0200\n"
+"PO-Revision-Date: 2023-08-28 06:31-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -1163,7 +1163,7 @@ msgid "Save & Add More"
 msgstr "保存并添加更多"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:5
-#: hiddifypanel/panel/user/templates/home/one_click.html:260
+#: hiddifypanel/panel/user/templates/home/one_click.html:258
 #: hiddifypanel/templates/donation.html:14
 msgid "Close"
 msgstr "关闭"
@@ -2708,9 +2708,14 @@ msgstr "设置"
 msgid "📅%(expire_days)s days"
 msgstr "📅剩余：%(expire_days)s 天"
 
+# | msgid ""
+# | "Please open this link in a browser; it will expire in 5 minutes for
+# security"
+# | " reasons."
 #: hiddifypanel/panel/user/user.py:27
+#, fuzzy
 msgid "This link will expire in 5 minutes"
-msgstr ""
+msgstr "请在浏览器中打开此链接；出于安全原因，它将在 5 分钟后过期。"
 
 # | msgid "All Configs"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:1
@@ -2862,8 +2867,8 @@ msgstr "直接下载"
 # | msgid "<i class=\"fa-brands fa-google-play\"></i> Google Play"
 #: hiddifypanel/panel/user/templates/home/android.html:19
 #: hiddifypanel/panel/user/templates/home/android.html:65
-#: hiddifypanel/panel/user/templates/home/one_click.html:71
-#: hiddifypanel/panel/user/templates/home/one_click.html:85
+#: hiddifypanel/panel/user/templates/home/one_click.html:69
+#: hiddifypanel/panel/user/templates/home/one_click.html:83
 msgid "install from google play"
 msgstr "谷歌播放"
 
@@ -3434,7 +3439,7 @@ msgid "Unified link for all application."
 msgstr "所有应用程序的统一链接。"
 
 #: hiddifypanel/panel/user/templates/home/one_click.html:29
-#: hiddifypanel/panel/user/templates/home/one_click.html:303
+#: hiddifypanel/panel/user/templates/home/one_click.html:301
 msgid "Temporary Short Link"
 msgstr ""
 
@@ -3448,73 +3453,71 @@ msgstr "在应用程序中打开"
 msgid ""
 "If the application do not open automatically, please click <a class='btn "
 "btn-primary copy-link' href='%(sub)s'>this universal link</a> to copy and"
-" paste it\n"
-"                on\n"
-"                your application, or:"
+" paste it on your application, or:"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/one_click.html:59
-#: hiddifypanel/panel/user/templates/home/one_click.html:102
-#: hiddifypanel/panel/user/templates/home/one_click.html:142
-#: hiddifypanel/panel/user/templates/home/one_click.html:180
+#: hiddifypanel/panel/user/templates/home/one_click.html:57
+#: hiddifypanel/panel/user/templates/home/one_click.html:100
+#: hiddifypanel/panel/user/templates/home/one_click.html:140
+#: hiddifypanel/panel/user/templates/home/one_click.html:178
 #, fuzzy
 msgid "Use HiddifyNext:"
 msgstr "使用 HiddifyNext："
 
 # | msgid "<i class=\"fa-solid fa-download\"></i> Download App"
-#: hiddifypanel/panel/user/templates/home/one_click.html:68
-#: hiddifypanel/panel/user/templates/home/one_click.html:84
-#: hiddifypanel/panel/user/templates/home/one_click.html:93
-#: hiddifypanel/panel/user/templates/home/one_click.html:109
-#: hiddifypanel/panel/user/templates/home/one_click.html:123
-#: hiddifypanel/panel/user/templates/home/one_click.html:132
-#: hiddifypanel/panel/user/templates/home/one_click.html:149
-#: hiddifypanel/panel/user/templates/home/one_click.html:161
-#: hiddifypanel/panel/user/templates/home/one_click.html:170
-#: hiddifypanel/panel/user/templates/home/one_click.html:186
-#: hiddifypanel/panel/user/templates/home/one_click.html:198
-#: hiddifypanel/panel/user/templates/home/one_click.html:207
-#: hiddifypanel/panel/user/templates/home/one_click.html:213
-#: hiddifypanel/panel/user/templates/home/one_click.html:227
-#: hiddifypanel/panel/user/templates/home/one_click.html:233
+#: hiddifypanel/panel/user/templates/home/one_click.html:66
+#: hiddifypanel/panel/user/templates/home/one_click.html:82
+#: hiddifypanel/panel/user/templates/home/one_click.html:91
+#: hiddifypanel/panel/user/templates/home/one_click.html:107
+#: hiddifypanel/panel/user/templates/home/one_click.html:121
+#: hiddifypanel/panel/user/templates/home/one_click.html:130
+#: hiddifypanel/panel/user/templates/home/one_click.html:147
+#: hiddifypanel/panel/user/templates/home/one_click.html:159
+#: hiddifypanel/panel/user/templates/home/one_click.html:168
+#: hiddifypanel/panel/user/templates/home/one_click.html:184
+#: hiddifypanel/panel/user/templates/home/one_click.html:196
+#: hiddifypanel/panel/user/templates/home/one_click.html:205
+#: hiddifypanel/panel/user/templates/home/one_click.html:211
+#: hiddifypanel/panel/user/templates/home/one_click.html:225
+#: hiddifypanel/panel/user/templates/home/one_click.html:231
 #, fuzzy
 msgid "Download App"
 msgstr "<i class=\"fa-solid fa-download\"></i> 下载应用程序"
 
 # | msgid "Import in App"
-#: hiddifypanel/panel/user/templates/home/one_click.html:73
-#: hiddifypanel/panel/user/templates/home/one_click.html:111
-#: hiddifypanel/panel/user/templates/home/one_click.html:126
-#: hiddifypanel/panel/user/templates/home/one_click.html:134
-#: hiddifypanel/panel/user/templates/home/one_click.html:151
-#: hiddifypanel/panel/user/templates/home/one_click.html:172
-#: hiddifypanel/panel/user/templates/home/one_click.html:188
-#: hiddifypanel/panel/user/templates/home/one_click.html:209
-#: hiddifypanel/panel/user/templates/home/one_click.html:214
-#: hiddifypanel/panel/user/templates/home/one_click.html:228
-#: hiddifypanel/panel/user/templates/home/one_click.html:235
-#: hiddifypanel/panel/user/templates/home/one_click.html:243
+#: hiddifypanel/panel/user/templates/home/one_click.html:71
+#: hiddifypanel/panel/user/templates/home/one_click.html:109
+#: hiddifypanel/panel/user/templates/home/one_click.html:124
+#: hiddifypanel/panel/user/templates/home/one_click.html:132
+#: hiddifypanel/panel/user/templates/home/one_click.html:149
+#: hiddifypanel/panel/user/templates/home/one_click.html:170
+#: hiddifypanel/panel/user/templates/home/one_click.html:186
+#: hiddifypanel/panel/user/templates/home/one_click.html:207
+#: hiddifypanel/panel/user/templates/home/one_click.html:212
+#: hiddifypanel/panel/user/templates/home/one_click.html:226
+#: hiddifypanel/panel/user/templates/home/one_click.html:233
+#: hiddifypanel/panel/user/templates/home/one_click.html:241
 #, fuzzy
 msgid "Import"
 msgstr "在应用程序中导入"
 
-#: hiddifypanel/panel/user/templates/home/one_click.html:77
-#: hiddifypanel/panel/user/templates/home/one_click.html:117
-#: hiddifypanel/panel/user/templates/home/one_click.html:155
-#: hiddifypanel/panel/user/templates/home/one_click.html:192
-#: hiddifypanel/panel/user/templates/home/one_click.html:223
+#: hiddifypanel/panel/user/templates/home/one_click.html:75
+#: hiddifypanel/panel/user/templates/home/one_click.html:115
+#: hiddifypanel/panel/user/templates/home/one_click.html:153
+#: hiddifypanel/panel/user/templates/home/one_click.html:190
+#: hiddifypanel/panel/user/templates/home/one_click.html:221
 #, fuzzy
 msgid "More Applications"
 msgstr "更多应用"
 
-#: hiddifypanel/panel/user/templates/home/one_click.html:88
-#: hiddifypanel/panel/user/templates/home/one_click.html:94
+#: hiddifypanel/panel/user/templates/home/one_click.html:86
+#: hiddifypanel/panel/user/templates/home/one_click.html:92
 #, fuzzy
 msgid "Import in"
 msgstr "导入"
 
 # | msgid "<i class=\"fa-solid fa-download\"></i>  Download App"
-#: hiddifypanel/panel/user/templates/home/one_click.html:240
+#: hiddifypanel/panel/user/templates/home/one_click.html:238
 #, fuzzy
 msgid ""
 "Download\n"
@@ -3522,12 +3525,12 @@ msgid ""
 msgstr "<i class=\"fa-solid fa-download\"></i> 下载应用程序"
 
 # | msgid "<i class=\"fa-solid fa-qrcode\"></i> QRCode"
-#: hiddifypanel/panel/user/templates/home/one_click.html:250
+#: hiddifypanel/panel/user/templates/home/one_click.html:248
 #, fuzzy
 msgid "QRCode"
 msgstr "<i class=\"fa-solid fa-qrcode\"></i> 二维码"
 
-#: hiddifypanel/panel/user/templates/home/one_click.html:261
+#: hiddifypanel/panel/user/templates/home/one_click.html:259
 #, fuzzy
 msgid "Copy Link"
 msgstr "复制链接"
