@@ -705,8 +705,12 @@ def make_v2ray_configs(user, user_activate, domains, expire_days, ip_debug, db_d
             name = '⏳' if user_activate else '✖'
             if user.usage_limit_GB < 100000:
                 name += f'{round(user.current_usage_GB,3)}/{user.usage_limit_GB}GB'
+            else:
+                res.append("#Unlimited usage")
             if expire_days < 1000:
                 name += " "+_(f'📅%(expire_days)s days', expire_days=expire_days)
+            else:
+                res.append("#Unlimited Time")
 
             name = name.strip()
             if len(name) > 3:
