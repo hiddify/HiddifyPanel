@@ -71,7 +71,7 @@
                         <td>
                             <a href="https://play.google.com/store/apps/details?id=app.hiddify.com" class="btn col-12 btn-primary">{{_('install from google play')}}</a>
                         </td>
-                        <td><a class="btn col-12 btn-success" href="hiddify://install-sub/?url={{sub_encoded_url}}">{{_('Import')}}</a></td>
+                        <td><a class="btn col-12 btn-success" href="hiddify://install-config/?url={{sub_encoded_url}}">{{_('Import')}}</a></td>
                     </tr>
                 </table>
                 <details>
@@ -86,7 +86,7 @@
                                 <a href="https://play.google.com/store/apps/details?id=ang.hiddify.com" class="btn col-12 btn-primary">{{_('install from google play')}}</a>
                             </td>
 
-                            <td><a class="btn col-12 btn-success" href="v2rayng://install-sub/?url={{sub_encoded_url}}">{{_('Import in')}} HiddifyNG</a></td>
+                            <td><a class="btn col-12 btn-success" href="hiddify://install-sub/?url={{sub_encoded_url}}">{{_('Import in')}} HiddifyNG</a></td>
                         </tr>
                         <tr>
                             <td>Clash / Meta</td>
@@ -109,7 +109,7 @@
                             <a href="/{{hconfigs[ConfigEnum.proxy_path]}}/gh/hiddify/hiddify-next/releases/download/draft/hiddify-windows-x64-setup.exe"
                                 class="btn col-12 btn-primary ">{{_('Download App')}}</a>
                         </td>
-                        <td><a class="btn col-12 btn-success" href="hiddify://install-sub/?url={{sub_encoded_url}}">{{_('Import')}}</a></td>
+                        <td><a class="btn col-12 btn-success" href="hiddify://install-config/?url={{sub_encoded_url}}">{{_('Import')}}</a></td>
                     </tr>
                 </table>
 
@@ -149,7 +149,7 @@
                             <a href="/{{hconfigs[ConfigEnum.proxy_path]}}/gh/hiddify/hiddify-next/releases/download/draft/hiddify-linux-x64.AppImage.zip"
                                 class="btn col-12 btn-primary ">{{_('Download App')}}</a>
                         </td>
-                        <td><a class="btn col-12 btn-success" href="hiddify://install-sub/?url={{sub_encoded_url}}">{{_('Import')}}</a></td>
+                        <td><a class="btn col-12 btn-success" href="hiddify://install-config/?url={{sub_encoded_url}}">{{_('Import')}}</a></td>
                     </tr>
                 </table>
                 <details>
@@ -186,7 +186,7 @@
                             <a href="/{{hconfigs[ConfigEnum.proxy_path]}}/gh/hiddify/hiddify-next/releases/download/draft/hiddify-macos-universal.dmg"
                                 class="btn col-12 btn-primary ">{{_('Download App')}}</a>
                         </td>
-                        <td><a class="btn col-12 btn-success" href="hiddify://install-sub/?url={{sub_encoded_url}}">{{_('Import')}}</a></td>
+                        <td><a class="btn col-12 btn-success" href="hiddify://install-config/?url={{sub_encoded_url}}">{{_('Import')}}</a></td>
                     </tr>
                 </table>
                 <details>
@@ -291,36 +291,52 @@
 
 // ONE CLICK
 
-window.addEventListener("DOMContentLoaded", function () {
 
-  $('.open_in_hiddify').click(function (e) {
+
+//$('.open_in_hiddify').click(function (e) {
+document.querySelectorAll('.open_in_hiddify').forEach(function (element) {
+    element.addEventListener('click', function (e) {
     e.preventDefault()
-    try {
-      navigator.clipboard.writeText(this.href).then(function () {
-      }, function (err) {
-
-      });
-    } catch (error) {
-
-    }
     let iframe = $('<iframe></iframe>').css('display', 'none');
     $('body').append(iframe);
-    iframe.attr('src', "hiddify://install-sub/?url=" + encodeURI(this.href));
+    url="hiddify://install-sub/?url=" + encodeURI(this.href)
+    try {
+      navigator.clipboard.writeText(this.href).then(function () {
+        console.log("success")
+        iframe.attr('src', url);
+      }, function (err) {
+        console.log(err)
+        iframe.attr('src', url);
+      });
+    } catch (error) {
+        console.log(error)
+        iframe.attr('src', url);
+    }
+    
+    // 
     $('#exampleModal').modal({ show: true })
-  })
-
-  w = Math.min(window.innerWidth, window.innerHeight) * .5;
-  qrcode_oneclick = new QRCode(document.getElementById("qrcode-oneclick"), { width: w, height: w, correctLevel: 1 });
-  qrcode_oneclick.clear()
-  qrcode_oneclick.makeCode(document.location);
-
-
-  $('.short-link').click(function (e) {
-    e.preventDefault()
-    $.get('short/', function (data) {
-      $("#short-link-Modal .modal-body").html(data);
-      $("#short-link-Modal").modal('show');
-    })
+      let w = Math.min(window.innerWidth, window.innerHeight) * 0.5;
+      let qrcode_oneclick = new QRCode(document.getElementById("qrcode-oneclick"), {
+        width: w,
+        height: w,
+        correctLevel: 1
+      });
+        qrcode_oneclick.clear();
+        qrcode_oneclick.makeCode(document.location);
+    });
   });
-});
+  
+  
+  //   $('.short-link').click(function (e) {
+  document.querySelectorAll('.short-link').forEach(function (element) {
+    element.addEventListener('click', function (e) {
+        e.preventDefault()
+        $.get('short/', function (data) {
+            $("#short-link-Modal .modal-body").html(data);
+            $("#short-link-Modal").modal('show');
+        })
+      
+    });
+  });
+  
 </script>
