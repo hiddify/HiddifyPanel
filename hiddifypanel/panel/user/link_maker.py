@@ -7,6 +7,7 @@ from hiddifypanel.panel import hiddify
 import random
 import re
 import datetime
+from flask_babelex import gettext as _
 
 
 def all_proxies(child_id=0):
