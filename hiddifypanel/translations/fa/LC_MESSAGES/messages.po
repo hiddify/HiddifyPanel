@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-28 16:41+0200\n"
-"PO-Revision-Date: 2023-08-28 07:15-0500\n"
+"POT-Creation-Date: 2023-08-28 17:04+0200\n"
+"PO-Revision-Date: 2023-08-28 10:03-0500\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -3553,7 +3553,7 @@ msgid "Unified link for all application."
 msgstr "لینک یکسان برای همه برنامه‌ها"
 
 #: hiddifypanel/panel/user/templates/home/one_click.html:29
-#: hiddifypanel/panel/user/templates/home/one_click.html:304
+#: hiddifypanel/panel/user/templates/home/one_click.html:312
 msgid "Temporary Short Link"
 msgstr "لینک کوتاه موقت"
 
@@ -3565,6 +3565,11 @@ msgstr "برای راحتی انتقال این صفحه به پلتفورم د�
 msgid "Open in Application"
 msgstr "باز کردن در برنامه"
 
+# | msgid ""
+# | "✔️The proxy link is copied.\n"
+# | "<br>\n"
+# | "⚠️If the application do not open automatically, you need to only paste it
+# on your application, or:"
 #: hiddifypanel/panel/user/templates/home/one_click.html:55
 #, python-format
 msgid ""
@@ -3572,6 +3577,10 @@ msgid ""
 "btn-primary copy-link' href='%(sub)s'>this universal link</a> to copy and"
 " paste it on your application, or:"
 msgstr ""
+"✔️لینک پروکسی به صورت خودکار کپی شده است.\n"
+"<br>\n"
+"⚠️اگر برنامه فیلترشکن به طور خودکار باز نشد، باید به صورت دستی لینک "
+"پروکسی را در برنامه مورد نظر جایگذاری کنید،  یا:"
 
 #: hiddifypanel/panel/user/templates/home/one_click.html:60
 #: hiddifypanel/panel/user/templates/home/one_click.html:103

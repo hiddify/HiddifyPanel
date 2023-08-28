@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-28 16:41+0200\n"
-"PO-Revision-Date: 2023-08-28 07:15-0500\n"
+"POT-Creation-Date: 2023-08-28 17:04+0200\n"
+"PO-Revision-Date: 2023-08-28 10:03-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -3439,7 +3439,7 @@ msgid "Unified link for all application."
 msgstr "所有应用程序的统一链接。"
 
 #: hiddifypanel/panel/user/templates/home/one_click.html:29
-#: hiddifypanel/panel/user/templates/home/one_click.html:304
+#: hiddifypanel/panel/user/templates/home/one_click.html:312
 msgid "Temporary Short Link"
 msgstr ""
 
@@ -3452,13 +3452,21 @@ msgstr ""
 msgid "Open in Application"
 msgstr "在应用程序中打开"
 
+# | msgid ""
+# | "✔️The proxy link is copied.\n"
+# | "<br>\n"
+# | "⚠️If the application do not open automatically, you need to only paste it
+# on your application, or:"
 #: hiddifypanel/panel/user/templates/home/one_click.html:55
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "If the application do not open automatically, please click <a class='btn "
 "btn-primary copy-link' href='%(sub)s'>this universal link</a> to copy and"
 " paste it on your application, or:"
 msgstr ""
+"✔️代理链接已复制。\n"
+"<br>\n"
+"⚠️如果应用程序没有自动打开，您只需将其粘贴到您的应用程序上，或者："
 
 #: hiddifypanel/panel/user/templates/home/one_click.html:60
 #: hiddifypanel/panel/user/templates/home/one_click.html:103
