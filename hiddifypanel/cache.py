@@ -48,7 +48,8 @@ try:
     @cache.cache()
     def test():
         return 1
-    print("caching is working...", test())
+    test()
 except Exception as e:
-    print('Caching Error! Disabling cache', e)
+    import sys
+    print('Caching Error! Disabling cache', e, file=sys.stderr)
     cache = DisableCache()

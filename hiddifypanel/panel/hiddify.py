@@ -786,3 +786,8 @@ def __parse_user_agent(ua):
 def url_encode(strr):
     import urllib.parse
     return urllib.parse.quote(strr)
+
+
+def error(str):
+    import sys
+    print(str, file=sys.stderr)
