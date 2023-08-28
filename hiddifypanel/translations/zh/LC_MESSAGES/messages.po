@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-28 07:53+0200\n"
+"POT-Creation-Date: 2023-08-28 08:04+0200\n"
 "PO-Revision-Date: 2023-08-28 00:53-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
@@ -2396,7 +2396,7 @@ msgstr "地位"
 
 #: hiddifypanel/panel/admin/templates/parent_dash.html:20
 #: hiddifypanel/panel/commercial/templates/parent_dash.html:26
-#: hiddifypanel/panel/user/templates/home/all-configs.html:9
+#: hiddifypanel/panel/user/templates/home/all-configs.html:10
 #, fuzzy
 msgid "Domain"
 msgstr "领域"
@@ -2715,60 +2715,60 @@ msgid "user.home.tool.all-configs"
 msgstr "所有配置"
 
 # | msgid "Name and Link"
-#: hiddifypanel/panel/user/templates/home/all-configs.html:7
+#: hiddifypanel/panel/user/templates/home/all-configs.html:8
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:7
 msgid "user.home.allconfig.name"
 msgstr "名称和链接"
 
 # | msgid "Type"
-#: hiddifypanel/panel/user/templates/home/all-configs.html:8
+#: hiddifypanel/panel/user/templates/home/all-configs.html:9
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:8
 msgid "user.home.allconfig.type"
 msgstr "类型"
 
 # | msgid "Protocol"
-#: hiddifypanel/panel/user/templates/home/all-configs.html:10
+#: hiddifypanel/panel/user/templates/home/all-configs.html:11
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:9
 msgid "user.home.allconfig.protocol"
 msgstr "协议"
 
 # | msgid "Transport"
-#: hiddifypanel/panel/user/templates/home/all-configs.html:11
+#: hiddifypanel/panel/user/templates/home/all-configs.html:12
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:10
 msgid "user.home.allconfig.transport"
 msgstr "运输"
 
 # | msgid "Security"
-#: hiddifypanel/panel/user/templates/home/all-configs.html:12
+#: hiddifypanel/panel/user/templates/home/all-configs.html:13
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:11
 msgid "user.home.allconfig.security"
 msgstr "安全"
 
 # | msgid "All"
-#: hiddifypanel/panel/user/templates/home/all-configs.html:24
 #: hiddifypanel/panel/user/templates/home/all-configs.html:25
 #: hiddifypanel/panel/user/templates/home/all-configs.html:26
 #: hiddifypanel/panel/user/templates/home/all-configs.html:27
 #: hiddifypanel/panel/user/templates/home/all-configs.html:28
-#: hiddifypanel/panel/user/templates/home/all-configs.html:37
+#: hiddifypanel/panel/user/templates/home/all-configs.html:29
 #: hiddifypanel/panel/user/templates/home/all-configs.html:38
 #: hiddifypanel/panel/user/templates/home/all-configs.html:39
 #: hiddifypanel/panel/user/templates/home/all-configs.html:40
 #: hiddifypanel/panel/user/templates/home/all-configs.html:41
-#: hiddifypanel/panel/user/templates/home/all-configs.html:50
+#: hiddifypanel/panel/user/templates/home/all-configs.html:42
 #: hiddifypanel/panel/user/templates/home/all-configs.html:51
 #: hiddifypanel/panel/user/templates/home/all-configs.html:52
 #: hiddifypanel/panel/user/templates/home/all-configs.html:53
 #: hiddifypanel/panel/user/templates/home/all-configs.html:54
-#: hiddifypanel/panel/user/templates/home/all-configs.html:63
+#: hiddifypanel/panel/user/templates/home/all-configs.html:55
 #: hiddifypanel/panel/user/templates/home/all-configs.html:64
-#: hiddifypanel/panel/user/templates/home/all-configs.html:66
+#: hiddifypanel/panel/user/templates/home/all-configs.html:65
 #: hiddifypanel/panel/user/templates/home/all-configs.html:67
-#: hiddifypanel/panel/user/templates/home/all-configs.html:76
+#: hiddifypanel/panel/user/templates/home/all-configs.html:68
 #: hiddifypanel/panel/user/templates/home/all-configs.html:77
 #: hiddifypanel/panel/user/templates/home/all-configs.html:78
 #: hiddifypanel/panel/user/templates/home/all-configs.html:79
 #: hiddifypanel/panel/user/templates/home/all-configs.html:80
+#: hiddifypanel/panel/user/templates/home/all-configs.html:81
 #: hiddifypanel/panel/user/templates/home/all-configs.html:103
 #: hiddifypanel/panel/user/templates/home/all-configs.html:104
 #: hiddifypanel/panel/user/templates/home/all-configs.html:105
@@ -2789,31 +2789,31 @@ msgid "all"
 msgstr "全部"
 
 # | msgid "Auto"
-#: hiddifypanel/panel/user/templates/home/all-configs.html:34
+#: hiddifypanel/panel/user/templates/home/all-configs.html:35
 #, fuzzy
 msgid "auto"
 msgstr "汽车"
 
 # | msgid "Hiddify Configs"
-#: hiddifypanel/panel/user/templates/home/all-configs.html:47
+#: hiddifypanel/panel/user/templates/home/all-configs.html:48
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:19
 msgid "user.home.allconfig.hiddify-configs"
 msgstr "隐藏配置"
 
 # | msgid "Clash Configs"
-#: hiddifypanel/panel/user/templates/home/all-configs.html:60
+#: hiddifypanel/panel/user/templates/home/all-configs.html:61
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:31
 msgid "user.home.allconfig.clash-configs"
 msgstr "冲突配置"
 
 # | msgid "Except VLess"
-#: hiddifypanel/panel/user/templates/home/all-configs.html:65
+#: hiddifypanel/panel/user/templates/home/all-configs.html:66
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:35
 msgid "user.home.allconfigs.expect_vless"
 msgstr "除了 vless"
 
 # | msgid "Subscription Link"
-#: hiddifypanel/panel/user/templates/home/all-configs.html:73
+#: hiddifypanel/panel/user/templates/home/all-configs.html:74
 #: hiddifypanel/panel/user/templates/home/all-configs.html:100
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:43
 #: hiddifypanel/panel/user/templates/home/android.html:40

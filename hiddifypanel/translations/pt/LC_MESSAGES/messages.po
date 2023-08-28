@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPT\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-28 07:53+0200\n"
-"PO-Revision-Date: 2023-08-28 00:46-0500\n"
+"POT-Creation-Date: 2023-08-28 08:04+0200\n"
+"PO-Revision-Date: 2023-08-28 00:53-0500\n"
 "Last-Translator: lymanrudni\n"
 "Language: pt\n"
 "Language-Team: Portuguese\n"
@@ -2714,7 +2714,7 @@ msgstr "Status"
 
 #: hiddifypanel/panel/admin/templates/parent_dash.html:20
 #: hiddifypanel/panel/commercial/templates/parent_dash.html:26
-#: hiddifypanel/panel/user/templates/home/all-configs.html:9
+#: hiddifypanel/panel/user/templates/home/all-configs.html:10
 #, fuzzy
 msgid "Domain"
 msgstr "Domínio"
@@ -3042,6 +3042,7 @@ msgstr ""
 msgid "admin.config.title"
 msgstr "Configurações"
 
+# | msgid "📅Remain: %(expire_days)s days"
 #: hiddifypanel/panel/user/link_maker.py:709
 #, fuzzy, python-format
 msgid "📅%(expire_days)s days"
@@ -3055,65 +3056,65 @@ msgid "user.home.tool.all-configs"
 msgstr "Todas as configurações"
 
 # | msgid "Name and Link"
-#: hiddifypanel/panel/user/templates/home/all-configs.html:7
+#: hiddifypanel/panel/user/templates/home/all-configs.html:8
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:7
 #, fuzzy
 msgid "user.home.allconfig.name"
 msgstr "Nome e Link"
 
 # | msgid "Type"
-#: hiddifypanel/panel/user/templates/home/all-configs.html:8
+#: hiddifypanel/panel/user/templates/home/all-configs.html:9
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:8
 #, fuzzy
 msgid "user.home.allconfig.type"
 msgstr "Tipo"
 
 # | msgid "Protocol"
-#: hiddifypanel/panel/user/templates/home/all-configs.html:10
+#: hiddifypanel/panel/user/templates/home/all-configs.html:11
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:9
 #, fuzzy
 msgid "user.home.allconfig.protocol"
 msgstr "Protocolo"
 
 # | msgid "Transport"
-#: hiddifypanel/panel/user/templates/home/all-configs.html:11
+#: hiddifypanel/panel/user/templates/home/all-configs.html:12
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:10
 #, fuzzy
 msgid "user.home.allconfig.transport"
 msgstr "Transporte"
 
 # | msgid "Security"
-#: hiddifypanel/panel/user/templates/home/all-configs.html:12
+#: hiddifypanel/panel/user/templates/home/all-configs.html:13
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:11
 #, fuzzy
 msgid "user.home.allconfig.security"
 msgstr "Segurança"
 
 # | msgid "All"
-#: hiddifypanel/panel/user/templates/home/all-configs.html:24
 #: hiddifypanel/panel/user/templates/home/all-configs.html:25
 #: hiddifypanel/panel/user/templates/home/all-configs.html:26
 #: hiddifypanel/panel/user/templates/home/all-configs.html:27
 #: hiddifypanel/panel/user/templates/home/all-configs.html:28
-#: hiddifypanel/panel/user/templates/home/all-configs.html:37
+#: hiddifypanel/panel/user/templates/home/all-configs.html:29
 #: hiddifypanel/panel/user/templates/home/all-configs.html:38
 #: hiddifypanel/panel/user/templates/home/all-configs.html:39
 #: hiddifypanel/panel/user/templates/home/all-configs.html:40
 #: hiddifypanel/panel/user/templates/home/all-configs.html:41
-#: hiddifypanel/panel/user/templates/home/all-configs.html:50
+#: hiddifypanel/panel/user/templates/home/all-configs.html:42
 #: hiddifypanel/panel/user/templates/home/all-configs.html:51
 #: hiddifypanel/panel/user/templates/home/all-configs.html:52
 #: hiddifypanel/panel/user/templates/home/all-configs.html:53
 #: hiddifypanel/panel/user/templates/home/all-configs.html:54
-#: hiddifypanel/panel/user/templates/home/all-configs.html:63
+#: hiddifypanel/panel/user/templates/home/all-configs.html:55
 #: hiddifypanel/panel/user/templates/home/all-configs.html:64
-#: hiddifypanel/panel/user/templates/home/all-configs.html:66
+#: hiddifypanel/panel/user/templates/home/all-configs.html:65
 #: hiddifypanel/panel/user/templates/home/all-configs.html:67
-#: hiddifypanel/panel/user/templates/home/all-configs.html:76
+#: hiddifypanel/panel/user/templates/home/all-configs.html:68
 #: hiddifypanel/panel/user/templates/home/all-configs.html:77
 #: hiddifypanel/panel/user/templates/home/all-configs.html:78
 #: hiddifypanel/panel/user/templates/home/all-configs.html:79
 #: hiddifypanel/panel/user/templates/home/all-configs.html:80
+#: hiddifypanel/panel/user/templates/home/all-configs.html:81
 #: hiddifypanel/panel/user/templates/home/all-configs.html:103
 #: hiddifypanel/panel/user/templates/home/all-configs.html:104
 #: hiddifypanel/panel/user/templates/home/all-configs.html:105
@@ -3135,34 +3136,34 @@ msgid "all"
 msgstr "Todos"
 
 # | msgid "Auto"
-#: hiddifypanel/panel/user/templates/home/all-configs.html:34
+#: hiddifypanel/panel/user/templates/home/all-configs.html:35
 #, fuzzy
 msgid "auto"
 msgstr "Auto"
 
 # | msgid "Hiddify Configs"
-#: hiddifypanel/panel/user/templates/home/all-configs.html:47
+#: hiddifypanel/panel/user/templates/home/all-configs.html:48
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:19
 #, fuzzy
 msgid "user.home.allconfig.hiddify-configs"
 msgstr "Ocultar configurações"
 
 # | msgid "Clash Configs"
-#: hiddifypanel/panel/user/templates/home/all-configs.html:60
+#: hiddifypanel/panel/user/templates/home/all-configs.html:61
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:31
 #, fuzzy
 msgid "user.home.allconfig.clash-configs"
 msgstr "Configurações de confronto"
 
 # | msgid "Except VLess"
-#: hiddifypanel/panel/user/templates/home/all-configs.html:65
+#: hiddifypanel/panel/user/templates/home/all-configs.html:66
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:35
 #, fuzzy
 msgid "user.home.allconfigs.expect_vless"
 msgstr "Exceto VMenos"
 
 # | msgid "Subscription Link"
-#: hiddifypanel/panel/user/templates/home/all-configs.html:73
+#: hiddifypanel/panel/user/templates/home/all-configs.html:74
 #: hiddifypanel/panel/user/templates/home/all-configs.html:100
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:43
 #: hiddifypanel/panel/user/templates/home/android.html:40
@@ -3236,6 +3237,7 @@ msgstr ""
 "%(play_link)s.\n"
 "Em seguida, clique no link abaixo e abra-o no HiddifyNG."
 
+# | msgid "Tap to Import"
 #: hiddifypanel/panel/user/templates/home/android.html:33
 #: hiddifypanel/panel/user/templates/home/windows.html:57
 msgid "Click to Import"
@@ -4558,21 +4560,25 @@ msgstr ""
 "🚧 Bloquear Malware 1.1.1.2 <br>\n"
 "🔞 Bloquear pornografia 1.1.1.3"
 
+# | msgid "Enable Hysteria"
 #: hiddifypanel/templates/fake.html:2
 #, fuzzy
 msgid "config.hysteria_enable.label"
 msgstr "Habilitar Histeria"
 
+# | msgid "To enable udp based hysteria protocol"
 #: hiddifypanel/templates/fake.html:2
 #, fuzzy
 msgid "config.hysteria_enable.description"
 msgstr "Para ativar o protocolo de histeria baseado em udp"
 
+# | msgid "Hysteria Port"
 #: hiddifypanel/templates/fake.html:2
 #, fuzzy
 msgid "config.hysteria_port.label"
 msgstr "Porto de Histeria"
 
+# | msgid "Hysteria UDP Port for example 5678"
 #: hiddifypanel/templates/fake.html:2
 #, fuzzy
 msgid "config.hysteria_port.description"
@@ -4601,11 +4607,16 @@ msgstr ""
 "completamente diferente do servidor ssh e não pode executar nenhum "
 "comando"
 
+# | msgid "Hysteria"
 #: hiddifypanel/templates/fake.html:3
 #, fuzzy
 msgid "config.hysteria.label"
 msgstr "Histeria"
 
+# | msgid ""
+# | "Hysteria is a feature-packed proxy & relay tool optimized for lossy, "
+# | "unstable connections (e.g. satellite networks, congested public Wi-Fi, "
+# | "connecting to foreign servers from China)"
 #: hiddifypanel/templates/fake.html:3
 #, fuzzy
 msgid "config.hysteria.description"
