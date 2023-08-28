@@ -273,6 +273,14 @@
 
         $('.open_in_hiddify').click(function (e) {
             e.preventDefault()
+            try {
+                navigator.clipboard.writeText(this.href).then(function () {
+                }, function (err) {
+                  
+                });
+            } catch (error) {
+
+            }
             let iframe = $('<iframe></iframe>').css('display', 'none');
             $('body').append(iframe);
             iframe.attr('src', "hiddify://install-sub/?url=" + encodeURI(this.href));
