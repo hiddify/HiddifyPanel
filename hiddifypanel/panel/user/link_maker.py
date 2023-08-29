@@ -684,7 +684,7 @@ def make_full_singbox_config(domains, **kwargs):
     return json.dumps(base_config, indent=4)
 
 
-def make_v2ray_configs(user, user_activate, domains, expire_days, ip_debug, db_domain, has_auto_cdn, asn, **kwargs):
+def make_v2ray_configs(user, user_activate, domains, expire_days, ip_debug, db_domain, has_auto_cdn, asn, profile_title,**kwargs):
     res = []
 
     ua = hiddify.get_user_agent()
@@ -697,9 +697,7 @@ def make_v2ray_configs(user, user_activate, domains, expire_days, ip_debug, db_d
             #     res.append(f'trojan://1@{fake_ip_for_sub_link}?sni=fake_ip_for_sub_link&security=tls#{round(user.current_usage_GB,3)}/{user.usage_limit_GB}GB_Remain:{expire_days}days')
             # else:
 
-            profile_title = f'{db_domain.alias or db_domain.domain} {user.name}'
-            if has_auto_cdn and asn != 'unknown':
-                profile_title += f" {asn}"
+            
 
             res.append(f'trojan://1@{fake_ip_for_sub_link}?sni=fake_ip_for_sub_link&security=tls#{hiddify.url_encode(profile_title)}')
 

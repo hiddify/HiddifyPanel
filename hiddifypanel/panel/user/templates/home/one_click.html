@@ -226,7 +226,7 @@
                         <tr>
                             <td>FoxRay</td>
                             <td><a href="https://apps.apple.com/us/app/foxray/id6448898396" target="_blank" class="btn btn-primary">{{_('Download App')}}</a></td>
-                            <td><a class="btn btn-success" href="foxray://yiguo.dev/sub/add/?url={{base}}">{{_('Import')}}</a></td>
+                            <td><a class="btn btn-success" href="https://yiguo.dev/sub/add/?url={{sub_url|b64encode}}#{{profile_title}}">{{_('Import')}}</a></td>
                         </tr>
                         <tr>
                             <td>Shadowrocket</td>
@@ -238,11 +238,24 @@
                         <tr>
                             <td>Stash</td>
                             <td>
-                                <a href="https://apps.apple.com/us/app/stash-rule-based-proxy/id1596063349" target="_blank" class="btn btn-primary">{{_('Download
-                                    App')}}</a>
+                                <a href="https://apps.apple.com/us/app/stash-rule-based-proxy/id1596063349" target="_blank" class="btn btn-primary">
+                                {{_('Download App')}}
+                                </a>
                             </td>
-                            <td><a class="btn col-12 btn-success" href="clash://install-config/?url={{sub_encoded_url}}">{{_('Import')}}</a></td>
+                            <td><a class="btn col-12 btn-success" href="clash://install-config/?url={{sub_encoded_url}}">
+                            {{_('Import')}}
+                            </a></td>
                         </tr>
+                        <tr>
+                            <td>Loon</td>
+                            <td>
+                                <a href="https://apps.apple.com/app/id1373567447" target="_blank" class="btn btn-primary">
+                                {{_('Download App')}}
+                                </a>
+                            </td>
+                            <td><a class="btn col-12 btn-success" href="loon://import?nodelist={{sub_encoded_url}}">{{_('Import')}}</a></td>
+                        </tr>
+                        
                     </table>
                 </details>
                 {% endif %}

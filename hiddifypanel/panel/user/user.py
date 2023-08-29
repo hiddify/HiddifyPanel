@@ -334,8 +334,14 @@ def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
     expire_s = int((datetime.date.today()+datetime.timedelta(days=expire_days)-datetime.date(1970, 1, 1)).total_seconds())
 
     user_ip = clean_ip.get_real_user_ip()
+    asn = clean_ip.get_asn_short_name(user_ip)
+    profile_title = f'{db_domain.alias or db_domain.domain} {user.name}'
+    if has_auto_cdn and asn != 'unknown':
+        profile_title += f" {asn}"
+
     return {
         # 'direct_host':direct_host,
+        'profile_title': profile_title,
         'user': user,
         'user_activate': is_user_active(user),
         'domain': domain,
@@ -357,7 +363,7 @@ def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
         "telegram_enable": hconfig(ConfigEnum.telegram_enable) and any([d for d in domains if d.mode in [DomainType.direct, DomainType.relay, DomainType.old_xtls_direct]]),
         "ip": user_ip,
         "ip_debug": clean_ip.get_real_user_ip_debug(user_ip),
-        "asn": clean_ip.get_asn_short_name(user_ip),
+        "asn": asn,
         "country": clean_ip.get_country(user_ip),
         'has_auto_cdn': has_auto_cdn
     }
@@ -373,9 +379,7 @@ def add_headers(res, c):
         resp.headers['support-url'] = hconfig(ConfigEnum.branding_site)
     resp.headers['profile-update-interval'] = 1
     # resp.headers['content-disposition']=f'attachment; filename="{c["db_domain"].alias or c["db_domain"].domain} {c["user"].name}"'
-    profile_title = f'{c["db_domain"].alias or c["db_domain"].domain} {c["user"].name}'
-    if c['has_auto_cdn'] and c['asn'] != 'unknown':
-        profile_title += f" {c['asn']}"
-    resp.headers['profile-title'] = 'base64:'+do_base_64(profile_title)
+
+    resp.headers['profile-title'] = 'base64:'+do_base_64(c['profile_title'])
 
     return resp
