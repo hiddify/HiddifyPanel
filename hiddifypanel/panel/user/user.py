@@ -23,9 +23,9 @@ class UserView(FlaskView):
     def short_link(self):
         short = hiddify.add_short_link("/"+hconfig(ConfigEnum.proxy_path)+"/"+g.user.uuid+"/")
         ua = hiddify.get_user_agent()
-        if (ua['is_browser']):
-            return f"https://{urlparse(request.base_url).hostname}/{short}/<br><br>"+_("This link will expire in 5 minutes")
-        return short
+        # if (ua['is_browser']):
+        return f"<div style='direction:ltr'>https://{urlparse(request.base_url).hostname}/{short}/</a><br><br>"+_("This link will expire in 5 minutes")
+        # return short
 
     @route('/test/')
     def test(self):
