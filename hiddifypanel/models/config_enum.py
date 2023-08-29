@@ -225,11 +225,11 @@ class ConfigEnum(StrEnum):
             # shadowtls_secret:{'category':'shadowtls'},
             self.shadowtls_fakedomain: {'category': ConfigCategory.shadowtls, 'apply_mode': 'apply'},
 
-            self.tuic_enable: {'category': ConfigCategory.tuic, 'type': bool, 'apply_mode': 'apply'},
-            self.tuic_port: {'category': ConfigCategory.tuic, 'apply_mode': 'apply'},
+            self.tuic_enable: {'category': ConfigCategory.hidden, 'type': bool, 'apply_mode': 'apply'},
+            self.tuic_port: {'category': ConfigCategory.hidden, 'apply_mode': 'apply'},
 
-            self.hysteria_enable: {'category': ConfigCategory.hysteria, 'type': bool, 'apply_mode': 'apply'},
-            self.hysteria_port: {'category': ConfigCategory.hysteria, 'apply_mode': 'apply'},
+            self.hysteria_enable: {'category': ConfigCategory.hidden, 'type': bool, 'apply_mode': 'apply'},
+            self.hysteria_port: {'category': ConfigCategory.hidden, 'apply_mode': 'apply'},
 
             self.ssr_enable: {'category': ConfigCategory.hidden, 'type': bool, 'apply_mode': 'apply'},
             # ssr_secret:{'category':'ssr'},

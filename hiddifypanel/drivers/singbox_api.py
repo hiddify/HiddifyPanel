@@ -12,7 +12,7 @@ class SingboxApi(DriverABS):
     def get_enabled_users(self):
         if hconfig(ConfigEnum.is_parent):
             return
-        return {}
+        raise NotImplementedError()
 
     def get_inbound_tags(self):
         if hconfig(ConfigEnum.is_parent):
