@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-28 22:26+0200\n"
-"PO-Revision-Date: 2023-08-28 15:10-0500\n"
+"POT-Creation-Date: 2023-08-29 07:39+0200\n"
+"PO-Revision-Date: 2023-08-28 15:26-0500\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -1198,7 +1198,7 @@ msgid "Save & Add More"
 msgstr "ذخیره و افزودن مورد دیگر"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:5
-#: hiddifypanel/panel/user/templates/home/one_click.html:261
+#: hiddifypanel/panel/user/templates/home/one_click.html:274
 #: hiddifypanel/templates/donation.html:14
 msgid "Close"
 msgstr "بستن"
@@ -2763,7 +2763,7 @@ msgid "admin.config.title"
 msgstr "تنظیمات"
 
 # | msgid "📅Remain: %(expire_days)s days"
-#: hiddifypanel/panel/user/link_maker.py:712
+#: hiddifypanel/panel/user/link_maker.py:710
 #, python-format
 msgid "📅%(expire_days)s days"
 msgstr "📅اعتبار %(expire_days)s روز"
@@ -3553,7 +3553,7 @@ msgid "Unified link for all application."
 msgstr "لینک یکسان برای همه برنامه‌ها"
 
 #: hiddifypanel/panel/user/templates/home/one_click.html:29
-#: hiddifypanel/panel/user/templates/home/one_click.html:278
+#: hiddifypanel/panel/user/templates/home/one_click.html:291
 msgid "Temporary Short Link"
 msgstr "لینک کوتاه موقت"
 
@@ -3605,6 +3605,8 @@ msgstr "استفاده از HiddifyNext:"
 #: hiddifypanel/panel/user/templates/home/one_click.html:214
 #: hiddifypanel/panel/user/templates/home/one_click.html:228
 #: hiddifypanel/panel/user/templates/home/one_click.html:234
+#: hiddifypanel/panel/user/templates/home/one_click.html:242
+#: hiddifypanel/panel/user/templates/home/one_click.html:253
 msgid "Download App"
 msgstr "<i class=\"fa-solid fa-download\"></i> دانلود"
 
@@ -3620,7 +3622,8 @@ msgstr "<i class=\"fa-solid fa-download\"></i> دانلود"
 #: hiddifypanel/panel/user/templates/home/one_click.html:215
 #: hiddifypanel/panel/user/templates/home/one_click.html:229
 #: hiddifypanel/panel/user/templates/home/one_click.html:236
-#: hiddifypanel/panel/user/templates/home/one_click.html:244
+#: hiddifypanel/panel/user/templates/home/one_click.html:246
+#: hiddifypanel/panel/user/templates/home/one_click.html:256
 msgid "Import"
 msgstr "بارگذاری در برنامه"
 
@@ -3637,19 +3640,12 @@ msgstr "نرم افزارهای بیشتر"
 msgid "Import in"
 msgstr "بارگذاری در "
 
-# | msgid "<i class=\"fa-solid fa-download\"></i>  Download App"
-#: hiddifypanel/panel/user/templates/home/one_click.html:241
-msgid ""
-"Download\n"
-"                                    App"
-msgstr "<i class=\"fa-solid fa-download\"></i> دانلود"
-
 # | msgid "<i class=\"fa-solid fa-qrcode\"></i> QRCode"
-#: hiddifypanel/panel/user/templates/home/one_click.html:251
+#: hiddifypanel/panel/user/templates/home/one_click.html:264
 msgid "QRCode"
 msgstr "QR Code <i class=\"fa-solid fa-qrcode\"></i>"
 
-#: hiddifypanel/panel/user/templates/home/one_click.html:262
+#: hiddifypanel/panel/user/templates/home/one_click.html:275
 msgid "Copy Link"
 msgstr "کپی لینک"
 
@@ -4786,4 +4782,10 @@ msgstr "عملیات"
 
 #~ msgid "Download HiddifyNext"
 #~ msgstr "دانلود HiddifyNext"
+
+# | msgid "<i class=\"fa-solid fa-download\"></i>  Download App"
+#~ msgid ""
+#~ "Download\n"
+#~ "                                    App"
+#~ msgstr "<i class=\"fa-solid fa-download\"></i> دانلود"
 
