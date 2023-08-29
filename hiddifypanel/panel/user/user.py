@@ -27,7 +27,7 @@ class UserView(FlaskView):
         return f"<div style='direction:ltr'>https://{urlparse(request.base_url).hostname}/{short}/</a><br><br>"+_("This link will expire in 5 minutes")
         # return short
 
-    @route('/test/')
+    # @route('/test/')
     def test(self):
         ua = request.user_agent.string
         if re.match('^Mozilla', ua, re.IGNORECASE):
