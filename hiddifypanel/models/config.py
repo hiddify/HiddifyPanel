@@ -78,7 +78,10 @@ def hconfig(key: ConfigEnum, child_id=0):
 def set_hconfig(key: ConfigEnum, value, child_id=0, commit=True):
     # hconfig.invalidate(key, child_id)
     # get_hconfigs.invalidate(child_id)
-    hconfig.invalidate_all()
+    hconfig.invalidate(key, child_id)
+    if child_id == 0:
+        hconfig.invalidate(key)
+    # hconfig.invalidate_all()
     get_hconfigs.invalidate_all()
     if key.type() == bool:
         dbconf = BoolConfig.query.filter(BoolConfig.key == key, BoolConfig.child_id == child_id).first()
