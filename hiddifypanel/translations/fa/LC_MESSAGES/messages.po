@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-29 11:33+0200\n"
-"PO-Revision-Date: 2023-08-29 00:39-0500\n"
+"POT-Creation-Date: 2023-08-29 12:45+0200\n"
+"PO-Revision-Date: 2023-08-29 04:34-0500\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -1198,7 +1198,7 @@ msgid "Save & Add More"
 msgstr "ذخیره و افزودن مورد دیگر"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:5
-#: hiddifypanel/panel/user/templates/home/one_click.html:274
+#: hiddifypanel/panel/user/templates/home/one_click.html:275
 #: hiddifypanel/templates/donation.html:14
 msgid "Close"
 msgstr "بستن"
@@ -2930,8 +2930,8 @@ msgstr "دانلود مستقیم"
 # | msgid "<i class=\"fa-brands fa-google-play\"></i> Google Play"
 #: hiddifypanel/panel/user/templates/home/android.html:19
 #: hiddifypanel/panel/user/templates/home/android.html:65
-#: hiddifypanel/panel/user/templates/home/one_click.html:72
-#: hiddifypanel/panel/user/templates/home/one_click.html:86
+#: hiddifypanel/panel/user/templates/home/one_click.html:73
+#: hiddifypanel/panel/user/templates/home/one_click.html:87
 msgid "install from google play"
 msgstr "<i class=\"fa-brands fa-google-play\"></i> گوگل‌پلی"
 
@@ -3544,24 +3544,24 @@ msgstr ""
 "<br />"
 
 # | msgid "<i class=\"fa-solid fa-play\"></i> Tap to Start Anti-Filter."
-#: hiddifypanel/panel/user/templates/home/one_click.html:13
+#: hiddifypanel/panel/user/templates/home/one_click.html:14
 msgid "Click to Start Anti-Filter."
 msgstr "<i class=\"fa-solid fa-caret-left\"></i> کلیک برای اعمال فیلترشکن"
 
-#: hiddifypanel/panel/user/templates/home/one_click.html:15
+#: hiddifypanel/panel/user/templates/home/one_click.html:16
 msgid "Unified link for all application."
 msgstr "لینک یکسان برای همه برنامه‌ها"
 
-#: hiddifypanel/panel/user/templates/home/one_click.html:29
-#: hiddifypanel/panel/user/templates/home/one_click.html:291
+#: hiddifypanel/panel/user/templates/home/one_click.html:30
+#: hiddifypanel/panel/user/templates/home/one_click.html:292
 msgid "Temporary Short Link"
 msgstr "لینک کوتاه موقت"
 
-#: hiddifypanel/panel/user/templates/home/one_click.html:31
+#: hiddifypanel/panel/user/templates/home/one_click.html:32
 msgid "Simplifies the process of employing the link elsewhere."
 msgstr "برای راحتی انتقال این صفحه به پلتفورم دیگر."
 
-#: hiddifypanel/panel/user/templates/home/one_click.html:49
+#: hiddifypanel/panel/user/templates/home/one_click.html:50
 msgid "Open in Application"
 msgstr "باز کردن در برنامه"
 
@@ -3570,7 +3570,7 @@ msgstr "باز کردن در برنامه"
 # | "<br>\n"
 # | "⚠️If the application do not open automatically, you need to only paste it
 # on your application, or:"
-#: hiddifypanel/panel/user/templates/home/one_click.html:55
+#: hiddifypanel/panel/user/templates/home/one_click.html:56
 #, python-format
 msgid ""
 "If the application do not open automatically, please click <a class='btn "
@@ -3582,70 +3582,70 @@ msgstr ""
 "⚠️اگر برنامه فیلترشکن به طور خودکار باز نشد، باید به صورت دستی لینک "
 "پروکسی را در برنامه مورد نظر جایگذاری کنید،  یا:"
 
-#: hiddifypanel/panel/user/templates/home/one_click.html:60
-#: hiddifypanel/panel/user/templates/home/one_click.html:103
-#: hiddifypanel/panel/user/templates/home/one_click.html:143
-#: hiddifypanel/panel/user/templates/home/one_click.html:181
+#: hiddifypanel/panel/user/templates/home/one_click.html:61
+#: hiddifypanel/panel/user/templates/home/one_click.html:104
+#: hiddifypanel/panel/user/templates/home/one_click.html:144
+#: hiddifypanel/panel/user/templates/home/one_click.html:182
 msgid "Use HiddifyNext:"
 msgstr "استفاده از HiddifyNext:"
 
 # | msgid "<i class=\"fa-solid fa-download\"></i> Download App"
-#: hiddifypanel/panel/user/templates/home/one_click.html:69
-#: hiddifypanel/panel/user/templates/home/one_click.html:85
-#: hiddifypanel/panel/user/templates/home/one_click.html:94
-#: hiddifypanel/panel/user/templates/home/one_click.html:110
-#: hiddifypanel/panel/user/templates/home/one_click.html:124
-#: hiddifypanel/panel/user/templates/home/one_click.html:133
-#: hiddifypanel/panel/user/templates/home/one_click.html:150
-#: hiddifypanel/panel/user/templates/home/one_click.html:162
-#: hiddifypanel/panel/user/templates/home/one_click.html:171
-#: hiddifypanel/panel/user/templates/home/one_click.html:187
-#: hiddifypanel/panel/user/templates/home/one_click.html:199
-#: hiddifypanel/panel/user/templates/home/one_click.html:208
-#: hiddifypanel/panel/user/templates/home/one_click.html:214
-#: hiddifypanel/panel/user/templates/home/one_click.html:228
-#: hiddifypanel/panel/user/templates/home/one_click.html:234
-#: hiddifypanel/panel/user/templates/home/one_click.html:242
-#: hiddifypanel/panel/user/templates/home/one_click.html:253
+#: hiddifypanel/panel/user/templates/home/one_click.html:70
+#: hiddifypanel/panel/user/templates/home/one_click.html:86
+#: hiddifypanel/panel/user/templates/home/one_click.html:95
+#: hiddifypanel/panel/user/templates/home/one_click.html:111
+#: hiddifypanel/panel/user/templates/home/one_click.html:125
+#: hiddifypanel/panel/user/templates/home/one_click.html:134
+#: hiddifypanel/panel/user/templates/home/one_click.html:151
+#: hiddifypanel/panel/user/templates/home/one_click.html:163
+#: hiddifypanel/panel/user/templates/home/one_click.html:172
+#: hiddifypanel/panel/user/templates/home/one_click.html:188
+#: hiddifypanel/panel/user/templates/home/one_click.html:200
+#: hiddifypanel/panel/user/templates/home/one_click.html:209
+#: hiddifypanel/panel/user/templates/home/one_click.html:215
+#: hiddifypanel/panel/user/templates/home/one_click.html:229
+#: hiddifypanel/panel/user/templates/home/one_click.html:235
+#: hiddifypanel/panel/user/templates/home/one_click.html:243
+#: hiddifypanel/panel/user/templates/home/one_click.html:254
 msgid "Download App"
 msgstr "<i class=\"fa-solid fa-download\"></i> دانلود"
 
 # | msgid "Import in App"
-#: hiddifypanel/panel/user/templates/home/one_click.html:74
-#: hiddifypanel/panel/user/templates/home/one_click.html:112
-#: hiddifypanel/panel/user/templates/home/one_click.html:127
-#: hiddifypanel/panel/user/templates/home/one_click.html:135
-#: hiddifypanel/panel/user/templates/home/one_click.html:152
-#: hiddifypanel/panel/user/templates/home/one_click.html:173
-#: hiddifypanel/panel/user/templates/home/one_click.html:189
-#: hiddifypanel/panel/user/templates/home/one_click.html:210
-#: hiddifypanel/panel/user/templates/home/one_click.html:215
-#: hiddifypanel/panel/user/templates/home/one_click.html:229
-#: hiddifypanel/panel/user/templates/home/one_click.html:236
-#: hiddifypanel/panel/user/templates/home/one_click.html:246
-#: hiddifypanel/panel/user/templates/home/one_click.html:256
+#: hiddifypanel/panel/user/templates/home/one_click.html:75
+#: hiddifypanel/panel/user/templates/home/one_click.html:113
+#: hiddifypanel/panel/user/templates/home/one_click.html:128
+#: hiddifypanel/panel/user/templates/home/one_click.html:136
+#: hiddifypanel/panel/user/templates/home/one_click.html:153
+#: hiddifypanel/panel/user/templates/home/one_click.html:174
+#: hiddifypanel/panel/user/templates/home/one_click.html:190
+#: hiddifypanel/panel/user/templates/home/one_click.html:211
+#: hiddifypanel/panel/user/templates/home/one_click.html:216
+#: hiddifypanel/panel/user/templates/home/one_click.html:230
+#: hiddifypanel/panel/user/templates/home/one_click.html:237
+#: hiddifypanel/panel/user/templates/home/one_click.html:247
+#: hiddifypanel/panel/user/templates/home/one_click.html:257
 msgid "Import"
 msgstr "بارگذاری در برنامه"
 
-#: hiddifypanel/panel/user/templates/home/one_click.html:78
-#: hiddifypanel/panel/user/templates/home/one_click.html:118
-#: hiddifypanel/panel/user/templates/home/one_click.html:156
-#: hiddifypanel/panel/user/templates/home/one_click.html:193
-#: hiddifypanel/panel/user/templates/home/one_click.html:224
+#: hiddifypanel/panel/user/templates/home/one_click.html:79
+#: hiddifypanel/panel/user/templates/home/one_click.html:119
+#: hiddifypanel/panel/user/templates/home/one_click.html:157
+#: hiddifypanel/panel/user/templates/home/one_click.html:194
+#: hiddifypanel/panel/user/templates/home/one_click.html:225
 msgid "More Applications"
 msgstr "نرم افزارهای بیشتر"
 
-#: hiddifypanel/panel/user/templates/home/one_click.html:89
-#: hiddifypanel/panel/user/templates/home/one_click.html:95
+#: hiddifypanel/panel/user/templates/home/one_click.html:90
+#: hiddifypanel/panel/user/templates/home/one_click.html:96
 msgid "Import in"
 msgstr "بارگذاری در "
 
 # | msgid "<i class=\"fa-solid fa-qrcode\"></i> QRCode"
-#: hiddifypanel/panel/user/templates/home/one_click.html:264
+#: hiddifypanel/panel/user/templates/home/one_click.html:265
 msgid "QRCode"
 msgstr "QR Code <i class=\"fa-solid fa-qrcode\"></i>"
 
-#: hiddifypanel/panel/user/templates/home/one_click.html:275
+#: hiddifypanel/panel/user/templates/home/one_click.html:276
 msgid "Copy Link"
 msgstr "کپی لینک"
 
