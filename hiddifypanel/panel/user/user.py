@@ -85,8 +85,8 @@ class UserView(FlaskView):
         if re.match('^(Clash|Stash)', ua, re.IGNORECASE):
             return self.clash_config(meta_or_normal="normal")
 
-        if 'HiddifyNext' in ua or 'Dart' in ua:
-            return self.clash_config(meta_or_normal="meta")
+        # if 'HiddifyNext' in ua or 'Dart' in ua:
+        #     return self.clash_config(meta_or_normal="meta")
         if re.match('^(HiddifyNext|Dart|SFI|SFA)', ua, re.IGNORECASE):
             return self.full_singbox()
 
