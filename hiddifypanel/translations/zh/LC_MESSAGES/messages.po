@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-30 12:21+0200\n"
-"PO-Revision-Date: 2023-08-30 04:40-0500\n"
+"POT-Creation-Date: 2023-08-30 12:25+0200\n"
+"PO-Revision-Date: 2023-08-30 05:21-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Generated-By: Babel 2.12.1\n"
 
 # | msgid "This Domain does not exist in the Panel !"
-#: hiddifypanel/models/domain.py:134 hiddifypanel/panel/user/user.py:279
+#: hiddifypanel/models/domain.py:134 hiddifypanel/panel/user/user.py:281
 #, fuzzy
 msgid "This domain does not exist in the panel!"
 msgstr "该域名在面板中不存在！"
@@ -2778,11 +2778,11 @@ msgstr "安全"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:79
 #: hiddifypanel/panel/user/templates/home/all-configs.html:80
 #: hiddifypanel/panel/user/templates/home/all-configs.html:81
-#: hiddifypanel/panel/user/templates/home/all-configs.html:103
-#: hiddifypanel/panel/user/templates/home/all-configs.html:104
-#: hiddifypanel/panel/user/templates/home/all-configs.html:105
-#: hiddifypanel/panel/user/templates/home/all-configs.html:106
-#: hiddifypanel/panel/user/templates/home/all-configs.html:107
+#: hiddifypanel/panel/user/templates/home/all-configs.html:91
+#: hiddifypanel/panel/user/templates/home/all-configs.html:92
+#: hiddifypanel/panel/user/templates/home/all-configs.html:93
+#: hiddifypanel/panel/user/templates/home/all-configs.html:94
+#: hiddifypanel/panel/user/templates/home/all-configs.html:95
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:22
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:23
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:24
@@ -2823,28 +2823,12 @@ msgstr "除了 vless"
 
 # | msgid "Subscription Link"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:74
-#: hiddifypanel/panel/user/templates/home/all-configs.html:100
+#: hiddifypanel/panel/user/templates/home/all-configs.html:88
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:43
 #: hiddifypanel/panel/user/templates/home/android.html:40
 #: hiddifypanel/panel/user/templates/home/ios.html:29
 msgid "user.home.allconfig.link-configs"
 msgstr "订阅链接"
-
-# | msgid "SingBox: SSH"
-#: hiddifypanel/panel/user/templates/home/all-configs.html:87
-#, fuzzy
-msgid "singbox: ssh"
-msgstr "歌手：ssh"
-
-# | msgid "SSH"
-#: hiddifypanel/panel/user/templates/home/all-configs.html:90
-#: hiddifypanel/panel/user/templates/home/all-configs.html:91
-#: hiddifypanel/panel/user/templates/home/all-configs.html:92
-#: hiddifypanel/panel/user/templates/home/all-configs.html:93
-#: hiddifypanel/panel/user/templates/home/all-configs.html:94
-#, fuzzy
-msgid "ssh"
-msgstr "SSH"
 
 # | msgid ""
 # | "📍 Please select one of the following applications:\n"
@@ -4600,6 +4584,14 @@ msgstr "动作"
 #~ " cause problem in some clients like"
 #~ " FairVPN."
 #~ msgstr "使用带有特殊字符的别名可能会导致某些客户端出现问题，例如 FairVPN"
+
+# | msgid "SingBox: SSH"
+#~ msgid "singbox: ssh"
+#~ msgstr "歌手：ssh"
+
+# | msgid "SSH"
+#~ msgid "ssh"
+#~ msgstr "SSH"
 
 #~ msgid ""
 #~ "You should visit this page without VPN. Your country=%(your_country)s\n"
