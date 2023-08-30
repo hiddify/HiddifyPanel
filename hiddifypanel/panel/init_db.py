@@ -123,6 +123,10 @@ def init_db():
 #     add_config_if_not_exist(ConfigEnum.hysteria_port, random.randint(5000, 20000))
 
 
+def _v51():
+    Proxy.query.filter(Proxy.l3.in_([ProxyL3.h3_quic])).delete()
+
+
 def _v50():
     set_hconfig(ConfigEnum.show_usage_in_sublink, True)
 
@@ -417,7 +421,8 @@ def get_proxy_rows_v1():
 
 
 def make_proxy_rows(cfgs):
-    for l3 in ["h3_quic", "tls_h2", "tls", "http", "kcp", "reality"]:
+    # "h3_quic",
+    for l3 in ["tls_h2", "tls", "http", "kcp", "reality"]:
         for c in cfgs:
             transport, cdn, proto = c.split(" ")
             if l3 in ["kcp", 'reality'] and cdn != "direct":

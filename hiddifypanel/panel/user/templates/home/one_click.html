@@ -305,40 +305,43 @@
 
 // ONE CLICK
 
-
+var qr_code_generated=false
 
 //$('.open_in_hiddify').click(function (e) {
 document.querySelectorAll('.open_in_hiddify').forEach(function (element) {
     element.addEventListener('click', function (e) {
-    e.preventDefault()
-    let iframe = $('<iframe></iframe>').css('display', 'none');
-    $('body').append(iframe);
-    url="hiddify://install-sub/?url=" + encodeURI(this.href)
-    try {
-      navigator.clipboard.writeText(this.href).then(function () {
-        console.log("success")
-        iframe.attr('src', url);
-      }, function (err) {
-        console.log(err)
-        iframe.attr('src', url);
-      });
-    } catch (error) {
-        console.log(error)
-        iframe.attr('src', url);
-    }
-    
-    // 
-    $('#exampleModal').modal({ show: true })
-      let w = Math.min(window.innerWidth, window.innerHeight) * 0.5;
-      let qrcode_oneclick = new QRCode(document.getElementById("qrcode-oneclick"), {
-        width: w,
-        height: w,
-        correctLevel: 1
-      });
-        qrcode_oneclick.clear();
-        qrcode_oneclick.makeCode(document.location.href);
+        e.preventDefault()
+        let iframe = $('<iframe></iframe>').css('display', 'none');
+        $('body').append(iframe);
+        url="hiddify://install-sub/?url=" + encodeURI(this.href)
+        try {
+        navigator.clipboard.writeText(this.href).then(function () {
+            console.log("success")
+            iframe.attr('src', url);
+        }, function (err) {
+            console.log(err)
+            iframe.attr('src', url);
+        });
+        } catch (error) {
+            console.log(error)
+            iframe.attr('src', url);
+        }
+        
+        // 
+        $('#exampleModal').modal({ show: true })
+        if (!qr_code_generated){
+            let w = Math.min(window.innerWidth, window.innerHeight) * 0.5;
+            let qrcode_oneclick = new QRCode(document.getElementById("qrcode-oneclick"), {
+                width: w,
+                height: w,
+                correctLevel: 1
+            });
+            qrcode_oneclick.clear();
+            qrcode_oneclick.makeCode(document.location.href);
+            qr_code_generated=true
+        }
     });
-  });
+});
   
   
   //   $('.short-link').click(function (e) {
