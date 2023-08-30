@@ -78,7 +78,7 @@ def init_db():
     execute(f'update domain set child_id=0 where child_id is NULL')
     execute(f'update domain set sub_link_only=False where sub_link_only is NULL')
     execute(f'update proxy set child_id=0 where child_id is NULL')
-
+    hconfig.invalidate_all()
     db_version = int(hconfig(ConfigEnum.db_version) or 0)
     start_version = db_version
     # print(f"Current DB version is {db_version}")
@@ -89,7 +89,7 @@ def init_db():
         execute(f'update child set id=0 where unique_id="self"')
 
     if not AdminUser.query.filter(AdminUser.id == 1).first():
-        db.session.add(AdminUser(id=1, uuid=uuid.uuid4(), name="Owner", mode=AdminMode.super_admin, comment=""))
+        db.session.add(AdminUser(id=1, uuid=str(uuid.uuid4()), name="Owner", mode=AdminMode.super_admin, comment=""))
         db.session.commit()
         execute("update admin_user set id=1 where name='owner'")
 
