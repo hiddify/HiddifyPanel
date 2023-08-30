@@ -51,5 +51,6 @@ class SSHLibertyBridgeApi(DriverABS):
         if reset:
             redis_client.hincrby(USERS_USAGE, client_uuid, -value)
             redis_client.save()
-        print(f'ssh usage {client_uuid} {value}')
+        if value:
+            print(f'ssh usage {client_uuid} {value}')
         return value

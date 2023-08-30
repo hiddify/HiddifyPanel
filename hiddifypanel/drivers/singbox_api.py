@@ -42,7 +42,7 @@ class SingboxApi(DriverABS):
         xray_client = self.get_singbox_client()
         d = xray_client.get_client_download_traffic(f'{uuid}@hiddify.com', reset=reset)
         u = xray_client.get_client_upload_traffic(f'{uuid}@hiddify.com', reset=reset)
-        print(f"singbox {uuid} d={d} u={u}")
+
         res = None
         if d is None:
             res = u
@@ -50,4 +50,6 @@ class SingboxApi(DriverABS):
             res = d
         else:
             res = d + u
+        if res:
+            print(f"singbox {uuid} d={d} u={u} sum={res}")
         return res

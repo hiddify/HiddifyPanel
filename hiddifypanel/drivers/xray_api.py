@@ -82,9 +82,10 @@ class XrayApi(DriverABS):
                 print(f"error in add  {uuid} {t} {e}")
                 pass
 
-    def remove_client(self, uuid):
+    def remove_client(self, user):
         if hconfig(ConfigEnum.is_parent):
             return
+        uuid = user.uuid
         xray_client = self.get_xray_client()
         tags = self.get_inbound_tags()
 
@@ -102,7 +103,7 @@ class XrayApi(DriverABS):
         xray_client = self.get_xray_client()
         d = xray_client.get_client_download_traffic(f'{uuid}@hiddify.com', reset=reset)
         u = xray_client.get_client_upload_traffic(f'{uuid}@hiddify.com', reset=reset)
-        print(f"Xray usage {uuid} d={d} u={u}")
+        
         res = None
         if d is None:
             res = u
@@ -110,4 +111,6 @@ class XrayApi(DriverABS):
             res = d
         else:
             res = d + u
+        if res:
+            print(f"Xray usage {uuid} d={d} u={u} sum={res}")
         return res
