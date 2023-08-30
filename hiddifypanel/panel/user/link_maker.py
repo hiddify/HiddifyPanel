@@ -620,10 +620,13 @@ def add_singbox_shadowsocks_base(all_base, proxy):
             "tls": {
                 "enabled": True,
                 "server_name": proxy["fakedomain"],
-
+                "utls": {
+                            "enabled": True,
+                            "fingerprint": proxy.get('fingerprint', 'none')
+                }
             }
         }
-        add_singbox_utls(shadowtls_base)
+        # add_singbox_utls(shadowtls_base)
         del base['server']
         del base['server_port']
         all_base.append(shadowtls_base)
