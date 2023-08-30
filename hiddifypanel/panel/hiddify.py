@@ -15,7 +15,7 @@ from flask import flash as flask_flash
 import re
 from wtforms.validators import ValidationError
 import requests
-from hiddifypanel.panel.admin.Actions import Actions
+
 import string
 import random
 from babel.dates import format_timedelta as babel_format_timedelta
@@ -371,7 +371,7 @@ def validate_domain_exist(form, field):
 
 
 def reinstall_action(complete_install=False, domain_change=False, do_update=False):
-
+    from hiddifypanel.panel.admin.Actions import Actions
     action = Actions()
     if do_update:
         return action.update()
@@ -387,8 +387,8 @@ def check_need_reset(old_configs, do=False):
                 restart_mode = c.apply_mode()
 
     # do_full_install=old_config[ConfigEnum.telegram_lib]!=hconfig(ConfigEnum.telegram_lib)
-    if old_configs[ConfigEnum.package_mode]!=hconfig(ConfigEnum.package_mode):
-        return reinstall_action(do_update=True)    
+    if old_configs[ConfigEnum.package_mode] != hconfig(ConfigEnum.package_mode):
+        return reinstall_action(do_update=True)
     if not (do and restart_mode == 'reinstall'):
         return flash_config_success(restart_mode=restart_mode, domain_changed=False)
 
