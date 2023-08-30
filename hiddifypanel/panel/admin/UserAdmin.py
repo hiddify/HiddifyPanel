@@ -77,11 +77,11 @@ class UserAdmin(AdminLTEModelView):
         "Actions": _("actions"),
         "name": _("user.name"),
         "UserLinks": _("user.user_links"),
-        "usage_limit_GB": _("user.usage_limit_GB"),
+        "usage_limit": _("user.usage_limit_GB"),
         "monthly": _("Reset every month"),
         "mode": _("Mode"),
         "admin": _("Added by"),
-        "current_usage_GB": _("user.current_usage_GB"),
+        "current_usage": _("user.current_usage_GB"),
         "start_date": _("Start Date"),
         "remaining_days": _("user.expiry_time"),
         "last_reset_time": _("user.last_reset_time"),
@@ -221,7 +221,7 @@ class UserAdmin(AdminLTEModelView):
             form.reset_days.label.text += f" ({msg})"
             usr_usage = f" ({_('user.home.usage.title')} {round(form._obj.current_usage_GB,3)}GB)"
             form.reset_usage.label.text += usr_usage
-            form.usage_limit_GB.label.text += usr_usage
+            form.usage_limit.label.text += usr_usage
 
         # if form._obj.mode==UserMode.disable:
         #     delattr(form,'disable_user')

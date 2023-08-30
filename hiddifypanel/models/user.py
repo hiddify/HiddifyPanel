@@ -188,7 +188,7 @@ def is_user_active(u):
         is_active = False
     elif not u.enable:
         is_active = False
-    elif u.usage_limit_GB < u.current_usage_GB:
+    elif u.usage_limit < u.current_usage:
         is_active = False
     elif remaining_days(u) < 0:
         is_active = False
