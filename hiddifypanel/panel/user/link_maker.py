@@ -697,7 +697,7 @@ def make_v2ray_configs(user, user_activate, domains, expire_days, ip_debug, db_d
             #     res.append(f'trojan://1@{fake_ip_for_sub_link}?sni=fake_ip_for_sub_link&security=tls#{round(user.current_usage_GB,3)}/{user.usage_limit_GB}GB_Remain:{expire_days}days')
             # else:
 
-            res.append(f'trojan://1@{fake_ip_for_sub_link}?sni=fake_ip_for_sub_link&security=tls#{hiddify.url_encode(profile_title)}')
+            # res.append(f'trojan://1@{fake_ip_for_sub_link}?sni=fake_ip_for_sub_link&security=tls#{hiddify.url_encode(profile_title)}')
 
             name = '⏳' if user_activate else '✖'
             if user.usage_limit_GB < 100000:
@@ -709,9 +709,9 @@ def make_v2ray_configs(user, user_activate, domains, expire_days, ip_debug, db_d
             else:
                 res.append("#Unlimited Time")
 
-            # name = name.strip()
-            # if len(name) > 3:
-            #     res.append(f'trojan://1@{fake_ip_for_sub_link}?sni=fake_ip_for_sub_link&security=tls#{hiddify.url_encode(name)}')
+            name = name.strip()
+            if len(name) > 3:
+                res.append(f'trojan://1@{fake_ip_for_sub_link}?sni=fake_ip_for_sub_link&security=tls#{hiddify.url_encode(name)}')
 
     if ua['is_browser']:
         res.append(f'#Hiddify auto ip: {ip_debug}')
