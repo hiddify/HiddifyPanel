@@ -20,14 +20,11 @@ def drop_db():
 
 
 def downgrade():
-    if (hconfig(ConfigEnum.db_version) == "41"):
-        set_hconfig(ConfigEnum.db_version, 39, commit=False)
-        StrConfig.query.filter(StrConfig.key == ConfigEnum.core_type).delete()
-        for d in Domain.query.filter(Domain.mode == DomainType.sub_link_only).all():
-            d.sub_link_only = True
-            d.mode = DomainType.direct
-        db.session.commit()
-        Domain.query.filter(Domain.mode.in_(['reality', 'old_xtls_direct', 'worker'])).delete()
+    if (hconfig(ConfigEnum.db_version) >= "49"):
+        set_hconfig(ConfigEnum.db_version, 42, commit=False)
+        StrConfig.query.filter(StrConfig.key.in_([ConfigEnum.tuic_enable, ConfigEnum.tuic_port, ConfigEnum.hysteria_enable,
+                               ConfigEnum.hysteria_port, ConfigEnum.ssh_server_enable, ConfigEnum.ssh_server_port, ConfigEnum.ssh_server_redis_url])).delete()
+        Proxy.query.filter(Proxy.l3.in_([ProxyL3.ssh, ProxyL3.h3_quic, ProxyL3.custom])).delete()
         db.session.commit()
 
 
