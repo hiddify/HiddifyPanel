@@ -2,7 +2,7 @@ from flask_admin.contrib.sqla import ModelView
 from wtforms.widgets import TextArea
 from wtforms import TextAreaField
 from flask_bootstrap import SwitchField
-from wtforms.fields import StringField, IntegerField, SelectField
+from wtforms.fields import StringField, IntegerField, SelectField, DecimalField
 from hiddifypanel.panel.hiddify import flash
 from hiddifypanel.panel import hiddify
 from flask_babelex import lazy_gettext as _
@@ -78,3 +78,18 @@ class EnumSelectField(SelectField):
     def __init__(self, enum, *args, **kwargs):
         choices = [(str(enum_value.value), _(enum_value.name)) for enum_value in enum]
         super().__init__(*args, choices=choices, **kwargs)
+
+
+class UsageField(DecimalField):
+    def process_data(self, value):
+        if value is not None:
+            self.data = value/ONE_GIG
+        else:
+            self.data = None
+
+    def process_formdata(self, valuelist):
+
+        if valuelist and valuelist[0]:
+            self.data = int(float(valuelist[0])*ONE_GIG)
+        else:
+            self.data = None

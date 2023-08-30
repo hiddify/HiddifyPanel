@@ -7,6 +7,7 @@ from enum import auto
 from strenum import StrEnum
 from flask_babelex import gettext as __
 from flask_babelex import lazy_gettext as _
+ONE_GIG = 1024*1024*1024
 
 
 class UserMode(StrEnum):
@@ -29,8 +30,16 @@ class UserDetail(db.Model, SerializerMixin):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), default=0, nullable=False)
     child_id = db.Column(db.Integer, db.ForeignKey('child.id'), default=0, nullable=False)
     last_online = db.Column(db.DateTime, nullable=False, default=datetime.datetime.min)
-    current_usage_GB = db.Column(db.Numeric(6, 9, asdecimal=False), default=0, nullable=False)
-    connected_ips = db.Column(db.String, default='', nullable=False)
+    current_usage = db.Column(db.BigInteger, default=0, nullable=False)
+    connected_ips = db.Column(db.String(512), default='', nullable=False)
+
+    @property
+    def current_usage_GB(self):
+        return self.current_usage/ONE_GIG
+
+    @current_usage_GB.setter
+    def current_usage_GB(self, value):
+        self.current_usage = value*ONE_GIG
 
     @property
     def ips(self):
@@ -48,21 +57,37 @@ class User(db.Model, SerializerMixin):
     last_online = db.Column(db.DateTime, nullable=False, default=datetime.datetime.min)
     # removed
     expiry_time = db.Column(db.Date, default=datetime.date.today() + relativedelta.relativedelta(months=6))
-    usage_limit_GB = db.Column(db.Numeric(6, 9, asdecimal=False), default=1000, nullable=False)
+    usage_limit = db.Column(db.BigInteger, default=1000*ONE_GIG, nullable=False)
     package_days = db.Column(db.Integer, default=90, nullable=False)
     mode = db.Column(db.Enum(UserMode), default=UserMode.no_reset, nullable=False)
     monthly = db.Column(db.Boolean, default=False)  # removed
     start_date = db.Column(db.Date, nullable=True)
-    current_usage_GB = db.Column(db.Numeric(6, 9, asdecimal=False), default=0, nullable=False)
+    current_usage = db.Column(db.BigInteger, default=0, nullable=False)
     last_reset_time = db.Column(db.Date, default=datetime.date.today())
     comment = db.Column(db.String(512))
     telegram_id = db.Column(db.String(512))
-    added_by = db.Column(db.Integer, db.ForeignKey('admin_user.id'), default=0)
+    added_by = db.Column(db.Integer, db.ForeignKey('admin_user.id'), default=1)
     max_ips = db.Column(db.Integer, default=1000, nullable=False)
     details = db.relationship('UserDetail', cascade="all,delete", backref='user',    lazy='dynamic',)
     enable = db.Column(db.Boolean, default=True, nullable=False)
     ed25519_private_key = db.Column(db.String(500))
     ed25519_public_key = db.Column(db.String(100))
+
+    @property
+    def current_usage_GB(self):
+        return self.current_usage/ONE_GIG
+
+    @current_usage_GB.setter
+    def current_usage_GB(self, value):
+        self.current_usage = value*ONE_GIG
+
+    @property
+    def usage_limit_GB(self):
+        return self.usage_limit/ONE_GIG
+
+    @usage_limit_GB.setter
+    def usage_limit_GB(self, value):
+        self.usage_limit = value*ONE_GIG
 
     @property
     def remaining_days(self):
@@ -116,7 +141,7 @@ class User(db.Model, SerializerMixin):
             last_reset_time=data.get('last_reset_time', datetime.date.today()),
             comment=data.get('comment', None),
             telegram_id=data.get('telegram_id', None),
-            added_by=data.get('added_by', 0)
+            added_by=data.get('added_by', 1)
         )
 
     # @staticmethod

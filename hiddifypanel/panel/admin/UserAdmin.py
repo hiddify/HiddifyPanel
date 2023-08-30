@@ -31,7 +31,9 @@ class UserAdmin(AdminLTEModelView):
         # 'disable_user': SwitchField(_("Disable User"))
     }
     list_template = 'model/user_list.html'
-    form_excluded_columns = ['monthly', 'telegram_id', 'last_online', 'expiry_time', 'last_reset_time', 'current_usage_GB',
+
+    # form_columns = ["name", "current_usage_GB", "remaining_days", "comment", 'last_online', 'mode', 'admin', "uuid"]
+    form_excluded_columns = ['current_usage', 'monthly', 'telegram_id', 'last_online', 'expiry_time', 'last_reset_time', 'current_usage_GB',
                              'start_date', 'added_by', 'admin', 'details', 'max_ips', 'ed25519_private_key', 'ed25519_public_key']
     page_size = 50
     # edit_modal=True
@@ -41,13 +43,16 @@ class UserAdmin(AdminLTEModelView):
     # form_overrides = dict(monthly=SwitchField)
     form_overrides = {
         'start_date': custom_widgets.DaysLeftField,
-        'mode': custom_widgets.EnumSelectField
+        'mode': custom_widgets.EnumSelectField,
+        'usage_limit': custom_widgets.UsageField
     }
 
     # form_overrides = dict(expiry_time=custom_widgets.DaysLeftField,last_reset_time=custom_widgets.LastResetField)
     form_widget_args = {
         'current_usage_GB': {'min': '0'},
         'usage_limit_GB': {'min': '0'},
+        'current_usage': {'min': '0'},
+        'usage_limit': {'min': '0'},
 
     }
     form_args = {
@@ -232,6 +237,7 @@ class UserAdmin(AdminLTEModelView):
         return form
 
     def on_model_change(self, form, model, is_created):
+        return
         model.max_ips = max(3, model.max_ips or 10000)
         if len(User.query.all()) % 4 == 0:
             flash(('<div id="show-modal-donation"></div>'), ' d-none')
@@ -268,7 +274,7 @@ class UserAdmin(AdminLTEModelView):
     #     return is_valid()
 
     def after_model_change(self, form, model, is_created):
-
+        return
         user = User.query.filter(User.uuid == model.uuid).first()
         if is_user_active(user):
             user_driver.add_client(model)

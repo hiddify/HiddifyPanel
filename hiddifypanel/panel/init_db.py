@@ -68,7 +68,7 @@ def init_db():
     execute(f'update dailyusage set child_id=0 where child_id is NULL')
     execute(f'update dailyusage set admin_id=1 where admin_id is NULL')
     execute(f'update dailyusage set admin_id=1 where admin_id = 0')
-    execute(f'update user set added_by=1 where added_by = 0')
+    execute(f'update user set added_by=1 where added_by = 1')
     execute(f'update user set enable=True, mode="no_reset" where enable is NULL')
     execute(f'update user set enable=False, mode="no_reset" where mode = "disable"')
     execute(f'update user set added_by=1 where added_by is NULL')
@@ -86,6 +86,35 @@ def init_db():
         print(Child.query.filter(Child.id == 0).first())
         db.session.add(Child(unique_id="self", id=0))
         db.session.commit()
+        execute(f'update child set id=0 where unique_id="self"')
+
+    if not AdminUser.query.filter(AdminUser.id == 1).first():
+        db.session.add(AdminUser(id=1, uuid=uuid.uuid4(), name="Owner", mode=AdminMode.super_admin, comment=""))
+        db.session.commit()
+        execute("update admin_user set id=1 where name='owner'")
+
+    import os
+    panel_root = '/opt/hiddify-config/hiddify-panel/'
+    backup_root = f"{panel_root}backup/"
+    sqlite_db = f"{panel_root}hiddifypanel.db"
+
+    if os.path.isfile(sqlite_db):
+        os.rename(sqlite_db, sqlite_db+".old")
+        newest_file = max([(f, os.path.getmtime(os.path.join(backup_root, f)))
+                          for f in os.listdir(backup_root) if os.path.isfile(os.path.join(backup_root, f))], key=lambda x: x[1])
+        json_data = json.load(f'{backup_root}{newest_file}')
+        hiddify.set_db_from_json(json_data,
+                                 set_users=True,
+                                 set_domains=True,
+                                 remove_domains=True,
+                                 remove_users=True,
+                                 set_settings=True,
+                                 override_unique_id=True,
+                                 override_child_id=True,
+                                 set_admins=True
+                                 )
+        db_version = [d.value for d in json_data['hconfigs'] if d == "db_version"][0]
+        set_hconfig(ConfigEnum.db_version, db_version, commit=True)
 
     for ver in range(1, 60):
         if ver <= db_version:
@@ -199,6 +228,7 @@ def _v31():
     db.session.bulk_save_objects(get_proxy_rows_v1())
     if not (AdminUser.query.filter(AdminUser.id == 1).first()):
         db.session.add(AdminUser(id=1, uuid=hconfig(ConfigEnum.admin_secret), name="Owner", mode=AdminMode.super_admin, comment=""))
+        execute("update admin_user set id=1 where name='owner'")
     for i in range(1, 10):
         for d in get_random_domains(50):
             if hiddify.is_domain_reality_friendly(d):
@@ -283,11 +313,12 @@ def _v1():
     next10year = datetime.date.today() + relativedelta.relativedelta(years=6)
     external_ip = hiddify.get_ip(4)
     rnd_domains = get_random_domains(5)
+
     data = [
         StrConfig(key=ConfigEnum.db_version, value=1),
         User(name="default", usage_limit_GB=3000, package_days=3650, mode=UserMode.weekly),
         Domain(domain=external_ip+".sslip.io", mode=DomainType.direct),
-        StrConfig(key=ConfigEnum.admin_secret, value=str(uuid.uuid4())),
+        StrConfig(key=ConfigEnum.admin_secret, value=uuid.uuid4()),
         StrConfig(key=ConfigEnum.http_ports, value="80"),
         StrConfig(key=ConfigEnum.tls_ports, value="443"),
         BoolConfig(key=ConfigEnum.first_setup, value=True),
