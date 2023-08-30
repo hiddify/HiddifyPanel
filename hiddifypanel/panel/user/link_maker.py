@@ -684,7 +684,7 @@ def make_full_singbox_config(domains, **kwargs):
     return json.dumps(base_config, indent=4)
 
 
-def make_v2ray_configs(user, user_activate, domains, expire_days, ip_debug, db_domain, has_auto_cdn, asn, profile_title,**kwargs):
+def make_v2ray_configs(user, user_activate, domains, expire_days, ip_debug, db_domain, has_auto_cdn, asn, profile_title, **kwargs):
     res = []
 
     ua = hiddify.get_user_agent()
@@ -696,8 +696,6 @@ def make_v2ray_configs(user, user_activate, domains, expire_days, ip_debug, db_d
             # if ua['app'] == "Fair1":
             #     res.append(f'trojan://1@{fake_ip_for_sub_link}?sni=fake_ip_for_sub_link&security=tls#{round(user.current_usage_GB,3)}/{user.usage_limit_GB}GB_Remain:{expire_days}days')
             # else:
-
-            
 
             res.append(f'trojan://1@{fake_ip_for_sub_link}?sni=fake_ip_for_sub_link&security=tls#{hiddify.url_encode(profile_title)}')
 
@@ -711,9 +709,9 @@ def make_v2ray_configs(user, user_activate, domains, expire_days, ip_debug, db_d
             else:
                 res.append("#Unlimited Time")
 
-            name = name.strip()
-            if len(name) > 3:
-                res.append(f'trojan://1@{fake_ip_for_sub_link}?sni=fake_ip_for_sub_link&security=tls#{hiddify.url_encode(name)}')
+            # name = name.strip()
+            # if len(name) > 3:
+            #     res.append(f'trojan://1@{fake_ip_for_sub_link}?sni=fake_ip_for_sub_link&security=tls#{hiddify.url_encode(name)}')
 
     if ua['is_browser']:
         res.append(f'#Hiddify auto ip: {ip_debug}')
