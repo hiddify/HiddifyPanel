@@ -63,7 +63,8 @@ def add_users_usage(dbusers_bytes, child_id):
             user.current_usage_GB = 0
             detail.current_usage_GB = 0
 
-        if before_enabled_users[user.uuid] == 0 and user.is_active:
+        if not before_enabled_users[user.uuid] and user.is_active:
+            print("Enabling disabled client {user.uuid} ")
             user_driver.add_client(user)
             send_bot_message(user)
             have_change = True
@@ -81,7 +82,8 @@ def add_users_usage(dbusers_bytes, child_id):
             if user.start_date == None:
                 user.start_date = datetime.date.today()
 
-        if before_enabled_users[user.uuid] == 1 and not is_user_active(user):
+        if before_enabled_users[user.uuid] and not is_user_active(user):
+            print("Removing enabled client {user.uuid} ")
             user_driver.remove_client(user)
             have_change = True
             res[user.uuid] = f"{res[user.uuid]} !OUT of USAGE! Client Removed"
