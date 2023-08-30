@@ -15,7 +15,7 @@ from flask import flash as flask_flash
 import re
 from wtforms.validators import ValidationError
 import requests
-# from hiddifypanel.panel.admin.Actions import Actions
+from hiddifypanel.panel.admin.Actions import Actions
 import string
 import random
 from babel.dates import format_timedelta as babel_format_timedelta
