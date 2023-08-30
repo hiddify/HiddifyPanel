@@ -24,7 +24,7 @@
 
         </div>
         <div class="card small-box bg-success bg-h-pink ">
-            <a class="short-link" href="{{sub_url}}">
+            <a class="short-link" href="{{sub_url}}/short/">
                 <div class="card-body">
                     <div class="inner">
                         <h4> {{_('Temporary Short Link')}}</h4>
@@ -345,7 +345,7 @@ document.querySelectorAll('.open_in_hiddify').forEach(function (element) {
   document.querySelectorAll('.short-link').forEach(function (element) {
     element.addEventListener('click', function (e) {
         e.preventDefault()
-        $.get('short/', function (data) {
+        $.get(this.href, function (data) {
             $("#short-link-Modal .modal-body").html(data);
             $("#short-link-Modal").modal('show');
         })
