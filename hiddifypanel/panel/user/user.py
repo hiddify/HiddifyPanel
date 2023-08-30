@@ -189,6 +189,8 @@ class UserView(FlaskView):
 
     @ route('/singbox.json', methods=["GET", "HEAD"])
     def singbox(self):
+        if not hconfig(ConfigEnum.ssh_server_enable):
+            return "SSH server is disable in settings"
         mode = "new"  # request.args.get("mode")
         c = get_common_data(g.user_uuid, mode)
         # response.content_type = 'text/plain';

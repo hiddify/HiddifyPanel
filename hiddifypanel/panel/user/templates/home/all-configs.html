@@ -84,18 +84,6 @@
       <tr>
         <td>
           <div class="btn-group">
-            <a href="{{base}}singbox.json?name={{db_domain.alias or db_domain.domain}}-{{asn}}&asn={{asn}}&mode={{mode}}" class="btn btn-light orig-link"> {{_('singbox: ssh')}}</a>
-          </div>
-        </td>
-        <td><span class="badge badge-danger">{{_('ssh')}}</span></td>
-        <td><span class="badge ">{{_('ssh')}}</span></td>
-        <td><span class="badge badge-info">{{_('ssh')}}</span></td>
-        <td><span class="badge badge-warning">{{_('ssh')}}</span></td>
-        <td><span class="badge badge-success">{{_('ssh')}}</span></td>
-      </tr>
-      <tr>
-        <td>
-          <div class="btn-group">
             <a href="{{base}}all.txt?name=new_link_{{db_domain.alias or db_domain.domain}}-{{asn}}-{{mode}}&asn={{asn}}&mode={{mode}}&base64=True" class="btn btn-light orig-link">
               {{_('user.home.allconfig.link-configs')}} b64</a>
           </div>
