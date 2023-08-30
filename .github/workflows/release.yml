@@ -27,7 +27,7 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          prerelease: ${{ contains('dev', github.ref_name) }}
+          prerelease: ${{ contains(github.ref_name,'dev')
           body_path: release_message.md
 
   deploy:
