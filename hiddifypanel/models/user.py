@@ -324,7 +324,7 @@ def bulk_register_users(users=[], commit=True, remove=False):
     for u in users:
         add_or_update_user(commit=False, **u)
     if remove:
-        dd = {u.uuid: 1 for u in users}
+        dd = {u['uuid']: 1 for u in users}
         for d in User.query.all():
             if d.uuid not in dd:
                 db.session.delete(d)

@@ -149,6 +149,6 @@ def bulk_register_admins(users=[], commit=True):
 
 
 def current_admin_or_owner():
-    if g and g.admin:
+    if g and hasattr(g, 'admin') and g.admin:
         return g.admin
     return AdminUser.query.filter(AdminUser.id == 1).first()

@@ -1,6 +1,7 @@
 from hiddifypanel.models import *
 from hiddifypanel.panel.database import db
 import sys
+import json
 from hiddifypanel import Events
 from dateutil import relativedelta
 import datetime
@@ -99,22 +100,24 @@ def init_db():
     sqlite_db = f"{panel_root}hiddifypanel.db"
 
     if os.path.isfile(sqlite_db):
-        os.rename(sqlite_db, sqlite_db+".old")
+
         newest_file = max([(f, os.path.getmtime(os.path.join(backup_root, f)))
-                          for f in os.listdir(backup_root) if os.path.isfile(os.path.join(backup_root, f))], key=lambda x: x[1])
-        json_data = json.load(f'{backup_root}{newest_file}')
-        hiddify.set_db_from_json(json_data,
-                                 set_users=True,
-                                 set_domains=True,
-                                 remove_domains=True,
-                                 remove_users=True,
-                                 set_settings=True,
-                                 override_unique_id=True,
-                                 override_child_id=True,
-                                 set_admins=True
-                                 )
-        db_version = [d.value for d in json_data['hconfigs'] if d == "db_version"][0]
-        set_hconfig(ConfigEnum.db_version, db_version, commit=True)
+                          for f in os.listdir(backup_root) if os.path.isfile(os.path.join(backup_root, f))], key=lambda x: x[1])[0]
+        with open(f'{backup_root}{newest_file}', 'r') as f:
+            json_data = json.load(f)
+            hiddify.set_db_from_json(json_data,
+                                     set_users=True,
+                                     set_domains=True,
+                                     remove_domains=True,
+                                     remove_users=True,
+                                     set_settings=True,
+                                     override_unique_id=True,
+
+                                     set_admins=True
+                                     )
+            db_version = int([d['value'] for d in json_data['hconfigs'] if d['key'] == "db_version"][0])
+            os.rename(sqlite_db, sqlite_db+".old")
+            set_hconfig(ConfigEnum.db_version, db_version, commit=True)
 
     for ver in range(1, 60):
         if ver <= db_version:
