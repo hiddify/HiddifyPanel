@@ -21,7 +21,9 @@ jobs:
           # this fetches all history so that we can read each commit
           fetch-depth: 0
       - name: Generate Changelog
-        run: .github/release_message.sh > release_message.md
+        run: |
+          .github/release_message.sh > release_message.md
+          echo "ref_name=${{ github.ref_name }} ${{ github.ref-name }} ${{ contains('dev', github.ref_name) }} ${{ contains(github.ref_name,'dev') }}"
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
