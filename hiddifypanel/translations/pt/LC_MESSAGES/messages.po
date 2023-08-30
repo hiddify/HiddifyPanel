@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPT\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-30 15:50+0200\n"
-"PO-Revision-Date: 2023-08-30 07:38-0500\n"
+"POT-Creation-Date: 2023-08-30 18:03+0200\n"
+"PO-Revision-Date: 2023-08-30 08:50-0500\n"
 "Last-Translator: lymanrudni\n"
 "Language: pt\n"
 "Language-Team: Portuguese\n"
@@ -145,40 +145,40 @@ msgstr ""
 
 # | msgid "Actions"
 #: hiddifypanel/panel/admin/AdminstratorAdmin.py:56
-#: hiddifypanel/panel/admin/UserAdmin.py:72
+#: hiddifypanel/panel/admin/UserAdmin.py:77
 #, fuzzy
 msgid "actions"
 msgstr "Ações"
 
 # | msgid "User Links"
 #: hiddifypanel/panel/admin/AdminstratorAdmin.py:57
-#: hiddifypanel/panel/admin/UserAdmin.py:74
+#: hiddifypanel/panel/admin/UserAdmin.py:79
 #, fuzzy
 msgid "user.user_links"
 msgstr "Links de usuário"
 
 # | msgid "Name"
 #: hiddifypanel/panel/admin/AdminstratorAdmin.py:58
-#: hiddifypanel/panel/admin/UserAdmin.py:73
+#: hiddifypanel/panel/admin/UserAdmin.py:78
 #, fuzzy
 msgid "user.name"
 msgstr "Nome"
 
 #: hiddifypanel/panel/admin/AdminstratorAdmin.py:59
-#: hiddifypanel/panel/admin/UserAdmin.py:77
+#: hiddifypanel/panel/admin/UserAdmin.py:82
 #, fuzzy
 msgid "Mode"
 msgstr "Modo"
 
 # | msgid "UUID"
 #: hiddifypanel/panel/admin/AdminstratorAdmin.py:60
-#: hiddifypanel/panel/admin/UserAdmin.py:83
+#: hiddifypanel/panel/admin/UserAdmin.py:88
 msgid "user.UUID"
 msgstr "UUID"
 
 # | msgid "📝 Note"
 #: hiddifypanel/panel/admin/AdminstratorAdmin.py:61
-#: hiddifypanel/panel/admin/UserAdmin.py:84
+#: hiddifypanel/panel/admin/UserAdmin.py:89
 #, fuzzy
 msgid "Note"
 msgstr "📝 Observação"
@@ -1058,73 +1058,73 @@ msgid "Reset package usage"
 msgstr "⏳ Redefinir o uso do pacote"
 
 # | msgid "⌛️ Usage Limit (GB)"
-#: hiddifypanel/panel/admin/UserAdmin.py:75
+#: hiddifypanel/panel/admin/UserAdmin.py:80
 #, fuzzy
 msgid "user.usage_limit_GB"
 msgstr "Limite de uso (GB)"
 
 # | msgid "Monthly"
-#: hiddifypanel/panel/admin/UserAdmin.py:76
+#: hiddifypanel/panel/admin/UserAdmin.py:81
 #, fuzzy
 msgid "Reset every month"
 msgstr "Por mês"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:78
+#: hiddifypanel/panel/admin/UserAdmin.py:83
 #, fuzzy
 msgid "Added by"
 msgstr "Adicionado por"
 
 # | msgid "Current Usage (GB)"
-#: hiddifypanel/panel/admin/UserAdmin.py:79
+#: hiddifypanel/panel/admin/UserAdmin.py:84
 #, fuzzy
 msgid "user.current_usage_GB"
 msgstr "Uso atual (GB)"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:80
+#: hiddifypanel/panel/admin/UserAdmin.py:85
 #, fuzzy
 msgid "Start Date"
 msgstr "Data de início"
 
 # | msgid "Expire (Days)"
-#: hiddifypanel/panel/admin/UserAdmin.py:81
+#: hiddifypanel/panel/admin/UserAdmin.py:86
 #, fuzzy
 msgid "user.expiry_time"
 msgstr "Expiração (dias)"
 
 # | msgid "Last Usage Date Reset"
-#: hiddifypanel/panel/admin/UserAdmin.py:82
+#: hiddifypanel/panel/admin/UserAdmin.py:87
 msgid "user.last_reset_time"
 msgstr "Redefinir para a última vez que ouve uso."
 
 # | msgid "Last Connection"
-#: hiddifypanel/panel/admin/UserAdmin.py:85
+#: hiddifypanel/panel/admin/UserAdmin.py:90
 msgid "Last Online"
 msgstr "Última vez online"
 
 # | msgid "📆 Package Days"
-#: hiddifypanel/panel/admin/UserAdmin.py:86
+#: hiddifypanel/panel/admin/UserAdmin.py:91
 msgid "Package Days"
 msgstr "Dias do pacote"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:87
+#: hiddifypanel/panel/admin/UserAdmin.py:92
 msgid "Max IPs"
 msgstr "Máximo de IPs"
 
 # | msgid "❇️ Enable"
-#: hiddifypanel/panel/admin/UserAdmin.py:88
+#: hiddifypanel/panel/admin/UserAdmin.py:93
 #, fuzzy
 msgid "Enable"
 msgstr "Habilitar"
 
 # | msgid "You can add some text that Is only visible to you"
-#: hiddifypanel/panel/admin/UserAdmin.py:102
+#: hiddifypanel/panel/admin/UserAdmin.py:107
 #, fuzzy
 msgid "Add some text that is only visible to you."
 msgstr "Você pode adicionar algum texto, será visível apenas para voce"
 
 # | msgid ""
 # | "The user's Package Mode. should the usage reset every Month, Week, etc"
-#: hiddifypanel/panel/admin/UserAdmin.py:103
+#: hiddifypanel/panel/admin/UserAdmin.py:108
 #, fuzzy
 msgid "Define the user mode. Should the usage reset every month?"
 msgstr ""
@@ -1134,7 +1134,7 @@ msgstr ""
 # | msgid ""
 # | "If the monthly option is enabled, when this number reaches 30, the user "
 # | "usage will be reset (for weekly and daily this number is 7 and 1)"
-#: hiddifypanel/panel/admin/UserAdmin.py:104
+#: hiddifypanel/panel/admin/UserAdmin.py:109
 msgid ""
 "If monthly is enabled, the usage will be reset after 30 days from this "
 "date."
@@ -1146,7 +1146,7 @@ msgstr ""
 # | "Specify the starting date of the package. Leave empty to start from first
 # "
 # | "Connection."
-#: hiddifypanel/panel/admin/UserAdmin.py:105
+#: hiddifypanel/panel/admin/UserAdmin.py:110
 #, fuzzy
 msgid ""
 "From when the user package will be started? Empty for start from first "
@@ -1156,23 +1156,23 @@ msgstr ""
 "partir da primeira conexão."
 
 # | msgid "How Many Days Is This Package?"
-#: hiddifypanel/panel/admin/UserAdmin.py:106
+#: hiddifypanel/panel/admin/UserAdmin.py:111
 #, fuzzy
 msgid "How many days this package should be available?"
 msgstr "Quantos dias é este pacote?"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:208
+#: hiddifypanel/panel/admin/UserAdmin.py:213
 #, fuzzy
 msgid "Package not started yet."
 msgstr "Pacote ainda não iniciado."
 
 # | msgid "Package Ends"
-#: hiddifypanel/panel/admin/UserAdmin.py:215
+#: hiddifypanel/panel/admin/UserAdmin.py:220
 #, fuzzy
 msgid "Remaining: "
 msgstr "O pacote termina em"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:252
+#: hiddifypanel/panel/admin/UserAdmin.py:258
 #, fuzzy, python-format
 msgid ""
 "You have too much users! You can have only %(active)s active users and "
