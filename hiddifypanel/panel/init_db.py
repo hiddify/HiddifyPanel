@@ -20,7 +20,8 @@ import string
 def init_db():
     Events.db_prehook.notify()
     db.create_all()
-
+    hconfig.invalidate_all()
+    get_hconfigs.invalidate_all()
     execute(f'update domain set mode="sub_link_only", sub_link_only=false where sub_link_only = true or mode=1  or mode="1"')
     execute(f'update domain set mode="direct", sub_link_only=false where mode=0  or mode="0"')
     execute(f'update proxy set transport="WS" where transport = "ws"')
