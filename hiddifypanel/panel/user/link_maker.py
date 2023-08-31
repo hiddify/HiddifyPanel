@@ -468,7 +468,7 @@ def to_singbox(proxy):
     all_base.append(base)
     # vmess ws
     base["tag"] = f"""{proxy['extra_info']} {proxy["name"]} {proxy['port']} {proxy["dbdomain"].id}"""
-    base["type"] = str(proxy["proto"]) if proxy['proto']!='ss' else "shadowsocks"
+    base["type"] = str(proxy["proto"]) if proxy['proto'] != 'ss' else "shadowsocks"
     base["server"] = proxy["server"]
     base["server_port"] = int(proxy["port"])
     # base['alpn'] = proxy['alpn'].split(',')
@@ -654,6 +654,7 @@ def add_singbox_ssh(all_base, proxy):
 
 
 def make_full_singbox_config(domains, **kwargs):
+    ua = hiddify.get_user_agent()
     base_config = json.loads(render_template('base_singbox_config.json'))
     allphttp = [p for p in request.args.get("phttp", "").split(',') if p]
     allptls = [p for p in request.args.get("ptls", "").split(',') if p]
@@ -684,7 +685,10 @@ def make_full_singbox_config(domains, **kwargs):
         "tolerance": 200
     }
     base_config['outbounds'].insert(1, smart)
-    return json.dumps(base_config, indent=4)
+    res = json.dumps(base_config, indent=4)
+    if ua['is_hiddify']:
+        res = res[:-1]+',"experimental": {}}'
+    return res
 
 
 def make_v2ray_configs(user, user_activate, domains, expire_days, ip_debug, db_domain, has_auto_cdn, asn, profile_title, **kwargs):
