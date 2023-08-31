@@ -468,7 +468,7 @@ def to_singbox(proxy):
     all_base.append(base)
     # vmess ws
     base["tag"] = f"""{proxy['extra_info']} {proxy["name"]} {proxy['port']} {proxy["dbdomain"].id}"""
-    base["type"] = str(proxy["proto"])
+    base["type"] = str(proxy["proto"]) if proxy['proto']!='ss' else "shadowsocks"
     base["server"] = proxy["server"]
     base["server_port"] = int(proxy["port"])
     # base['alpn'] = proxy['alpn'].split(',')
