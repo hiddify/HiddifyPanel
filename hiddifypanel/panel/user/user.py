@@ -238,7 +238,7 @@ class UserView(FlaskView):
             "orientation": "any",
             "icons": [
                 {
-                    "src": url_for('static', filename='images/hiddify-dark.png'),
+                    "src": static_url_for(filename='images/hiddify-dark.png'),
                     "sizes": "512x512",
                     "type": "image/png",
                     "purpose": "maskable any"

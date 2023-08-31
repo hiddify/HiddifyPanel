@@ -2,7 +2,7 @@
 {% block title %}{{hconfig(ConfigEnum.branding_title) or _('user.home.title')}}{% endblock %}
 {% from 'macros.html' import modal %}
 {% block body %}
-<script src="{{url_for('static',filename='js/custom-protocol-check.js',version=5.1)}}"> </script>
+<script src="{{static_url_for(filename='js/custom-protocol-check.js',version=5.1)}}"> </script>
 Trying to open related app: "Clash" "V2ray" "Generic"
 
 <a id="btn_test" href="test" class="btn btn-success">Auto Open App</a>
@@ -14,7 +14,7 @@ Trying to open related app: "Clash" "V2ray" "Generic"
 
 {% block tail_js %}
 {{super()}}
-<script src="{{url_for('static',filename='js/custom-protocol-check.js',version=5.1)}}"> </script>
+<script src="{{static_url_for(filename='js/custom-protocol-check.js',version=5.1)}}"> </script>
 
 
 <script>

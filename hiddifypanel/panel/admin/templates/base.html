@@ -4,8 +4,9 @@ This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
 -->
 <html lang="en">
+
 <head>
-    {% block head %}
+  {% block head %}
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -14,16 +15,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   {% block styles %}
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="{{ url_for("static", filename="plugins/fontawesome-free/css/all.min.css") }}">
-  <link rel="stylesheet" href="{{url_for('static',filename='css/font-awesome.css')}}" type="text/css">
+  <link rel="stylesheet" href="{{ static_url_for( filename='plugins/fontawesome-free/css/all.min.css' ) }}">
+  <link rel="stylesheet" href="{{static_url_for(filename='css/font-awesome.css')}}" type="text/css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="{{ url_for("static", filename="css/adminlte.css") }}">
-  
-  <!-- <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap4-rtl.min.css')}}">
-  <link rel="stylesheet" href="{{url_for('static',filename='css/adminlte.fa.css')}}"> -->
+  <link rel="stylesheet" href="{{ static_url_for( filename='css/adminlte.css' ) }}">
+
+  <!-- <link rel="stylesheet" href="{{static_url_for(filename='css/bootstrap4-rtl.min.css')}}">
+  <link rel="stylesheet" href="{{static_url_for(filename='css/adminlte.fa.css')}}"> -->
   {% endblock %}
   {% endblock %}
 </head>
+
 <body class="hold-transition sidebar-collapse">
   <div class="wrapper">
     <!-- Navbar -->
@@ -40,7 +42,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <a href="#" class="nav-link">تماس</a>
         </li>
       </ul>
-  
+
       <!-- SEARCH FORM -->
       <form class="form-inline ml-3">
         <div class="input-group input-group-sm">
@@ -52,7 +54,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </div>
         </div>
       </form>
-  
+
       <!-- Right navbar links -->
       <ul class="navbar-nav mr-auto">
         <!-- Messages Dropdown Menu -->
@@ -146,7 +148,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       </ul>
     </nav>
     <!-- /.navbar -->
-  
+
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4 sidebar-offcanvas strech">
       <!-- Brand Logo -->
@@ -154,7 +156,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">پنل مدیریت</span>
       </a>
-  
+
       <!-- Sidebar -->
       <div class="sidebar">
         <div>
@@ -167,7 +169,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <a href="#" class="d-block">حسام موسوی</a>
             </div>
           </div>
-  
+
           <!-- Sidebar Menu -->
           <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -212,7 +214,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       </div>
       <!-- /.sidebar -->
     </aside>
-  
+
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
@@ -232,7 +234,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </div><!-- /.container-fluid -->
       </div>
       <!-- /.content-header -->
-  
+
       <!-- Main content -->
       <div class="content">
         <div class="container-fluid">
@@ -241,20 +243,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <div class="card">
                 <div class="card-body">
                   <h5 class="card-title mb-2 text-bold">عنوان کارت</h5>
-  
+
                   <p class="card-text">
-                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.
+                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است
+                    و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.
                   </p>
-  
+
                   <a href="#" class="card-link">لینک کارت</a>
                   <a href="#" class="card-link mr-2">لینک صفحه</a>
                 </div>
               </div>
-  
+
               <div class="card card-primary card-outline">
                 <div class="card-body">
                   <h5 class="card-title mb-2 text-bold">عنوان کارت</h5>
-  
+
                   <p class="card-text">
                     لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
                   </p>
@@ -271,19 +274,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </div>
                 <div class="card-body">
                   <h6 class="card-title mb-2 text-bold">عنوان کارت ویژه</h6>
-  
-                  <p class="card-text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است </p>
+
+                  <p class="card-text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و
+                    سطرآنچنان که لازم است </p>
                   <a href="#" class="btn btn-primary">برو به صفحه ایکس</a>
                 </div>
               </div>
-  
+
               <div class="card card-primary card-outline">
                 <div class="card-header">
                   <h5 class="m-0">ویژه</h5>
                 </div>
                 <div class="card-body">
                   <h6 class="card-title mb-2 text-bold">عنوان کارت ویژه</h6>
-  
+
                   <p class="card-text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
                   <a href="#" class="btn btn-primary">برو به صفحه ایکس</a>
                 </div>
@@ -297,7 +301,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
-  
+
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
       <!-- Control sidebar content goes here -->
@@ -307,7 +311,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       </div>
     </aside>
     <!-- /.control-sidebar -->
-  
+
     <!-- Main Footer -->
     <footer class="main-footer">
       <!-- To the right -->
@@ -319,29 +323,30 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </footer>
   </div>
   <!-- ./wrapper -->
-  
+
   <!-- REQUIRED SCRIPTS -->
-  
+
   <!-- jQuery -->
   <script src="plugins/jquery/jquery.min.js"></script>
   <!-- Bootstrap 4 -->
   <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- AdminLTE App -->
   <script src="dist/js/adminlte.min.js"></script>
-  
-  
-  
-<!-- REQUIRED SCRIPTS -->
 
-{% block scripts %}
-<!-- jQuery -->
-<script src="{{ url_for("static", filename="plugins/jquery/jquery.min.js") }}"></script>
-<!-- Bootstrap 4 -->
-<script src="{{ url_for("static", filename="plugins/bootstrap/js/bootstrap.bundle.min.js") }}"></script>
-<!-- AdminLTE App -->
-<script src="{{ url_for("static", filename="dist/js/adminlte.min.js") }}"></script>
-<script src="{{url_for('static',filename='js/qrcode.js')}}"></script>
-{% endblock %}
+
+
+  <!-- REQUIRED SCRIPTS -->
+
+  {% block scripts %}
+  <!-- jQuery -->
+  <script src="{{ static_url_for( filename='plugins/jquery/jquery.min.js' ) }}"></script>
+  <!-- Bootstrap 4 -->
+  <script src="{{ static_url_for( filename='plugins/bootstrap/js/bootstrap.bundle.min.js' ) }}"></script>
+  <!-- AdminLTE App -->
+  <script src="{{ static_url_for( filename='dist/js/adminlte.min.js' ) }}"></script>
+  <script src="{{static_url_for(filename='js/qrcode.js')}}"></script>
+  {% endblock %}
 
 </body>
+
 </html>

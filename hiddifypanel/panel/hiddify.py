@@ -794,3 +794,10 @@ def url_encode(strr):
 def error(str):
     import sys
     print(str, file=sys.stderr)
+
+
+
+def static_url_for(**values):
+    orig= url_for("static",**values)
+    return orig.split("user_secret")[0]
+    
