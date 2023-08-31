@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-30 21:20+0200\n"
-"PO-Revision-Date: 2023-08-30 13:50-0500\n"
+"POT-Creation-Date: 2023-08-31 07:57+0200\n"
+"PO-Revision-Date: 2023-08-30 14:20-0500\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -273,7 +273,7 @@ msgstr "ثبت"
 #: hiddifypanel/panel/admin/DomainAdmin.py:45
 #: hiddifypanel/panel/admin/QuickSetup.py:110
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:32
-#: hiddifypanel/templates/flaskadmin-layout.html:127
+#: hiddifypanel/templates/flaskadmin-layout.html:129
 msgid "domain.description"
 msgstr ""
 "این فیلد باید با دقت و به درستی تکمیل شود. در غیر اینصورت پروکسی ها به "
@@ -314,7 +314,7 @@ msgstr ""
 #: hiddifypanel/panel/admin/DomainAdmin.py:79
 #: hiddifypanel/panel/admin/QuickSetup.py:110
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:54
-#: hiddifypanel/templates/flaskadmin-layout.html:126
+#: hiddifypanel/templates/flaskadmin-layout.html:128
 msgid "domain.domain"
 msgstr "دامنه"
 
@@ -496,7 +496,7 @@ msgstr "نامی که در کانفیگ‌ها به جای دامنه نمایش
 #: hiddifypanel/panel/admin/DomainAdmin.py:50
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
-#: hiddifypanel/templates/flaskadmin-layout.html:111
+#: hiddifypanel/templates/flaskadmin-layout.html:113
 #, fuzzy
 msgid "config.reality_server_names.description"
 msgstr "شما می توانید چندین نام را در قالب جدا شده با کاما اضافه کنید"
@@ -547,7 +547,7 @@ msgstr "آی‌پی"
 #: hiddifypanel/panel/admin/DomainAdmin.py:149
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
-#: hiddifypanel/templates/flaskadmin-layout.html:110
+#: hiddifypanel/templates/flaskadmin-layout.html:112
 msgid "config.reality_server_names.label"
 msgstr "🌎 نام‌های سرور ریالیتی"
 
@@ -1076,7 +1076,7 @@ msgstr ""
 "%(total)s کاربر داشته باشید"
 
 #: hiddifypanel/panel/admin/templates/backup.html:9
-#: hiddifypanel/templates/admin-layout.html:176
+#: hiddifypanel/templates/admin-layout.html:175
 msgid "Backup"
 msgstr "پشتیبان‌گیری"
 
@@ -2028,7 +2028,7 @@ msgstr "این کد را تغییر ندهید"
 # | msgid "🌍 Reality Fallback Domain"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
-#: hiddifypanel/templates/flaskadmin-layout.html:114
+#: hiddifypanel/templates/flaskadmin-layout.html:116
 msgid "config.reality_fallback_domain.label"
 msgstr "🌍 دامنه بازگشتی ریالیتی"
 
@@ -2038,7 +2038,7 @@ msgstr "🌍 دامنه بازگشتی ریالیتی"
 # | " Domain."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
-#: hiddifypanel/templates/flaskadmin-layout.html:115
+#: hiddifypanel/templates/flaskadmin-layout.html:117
 msgid "config.reality_fallback_domain.description"
 msgstr ""
 "هنگامی که GTW از وب‌ سایت‌ها در نام سرور بازدید می‌کند، به این دامنه "
@@ -3088,7 +3088,7 @@ msgid "user.home.title"
 msgstr "هیدیفای"
 
 # | msgid "Test"
-#: hiddifypanel/panel/user/templates/home/base2.html:36
+#: hiddifypanel/panel/user/templates/home/base2.html:38
 msgid "test"
 msgstr "تست"
 
@@ -3886,24 +3886,24 @@ msgid "admin.menu.home"
 msgstr "داشبورد"
 
 # | msgid "Users"
-#: hiddifypanel/templates/admin-layout.html:78
-#: hiddifypanel/templates/admin-layout.html:80
+#: hiddifypanel/templates/admin-layout.html:79
+#: hiddifypanel/templates/admin-layout.html:81
 msgid "admin.menu.user"
 msgstr "کاربران"
 
 # | msgid "In Parent Panel"
-#: hiddifypanel/templates/admin-layout.html:78
+#: hiddifypanel/templates/admin-layout.html:79
 msgid "in parent panel"
 msgstr "در پنل مرکزی"
 
-#: hiddifypanel/templates/admin-layout.html:83
+#: hiddifypanel/templates/admin-layout.html:84
 #, fuzzy
 msgid "Admins"
 msgstr "ادمین ها"
 
 # | msgid "Settings"
 #: hiddifypanel/templates/admin-layout.html:92
-#: hiddifypanel/templates/admin-layout.html:171
+#: hiddifypanel/templates/admin-layout.html:170
 msgid "admin.menu.config"
 msgstr "تنظیمات"
 
@@ -3913,7 +3913,7 @@ msgid "Commercial use"
 msgstr "استفاده تجاری"
 
 # | msgid "Actions"
-#: hiddifypanel/templates/admin-layout.html:110
+#: hiddifypanel/templates/admin-layout.html:109
 msgid "admin.actions.title"
 msgstr "اقدامات"
 
@@ -3923,64 +3923,66 @@ msgid "admin.menu.support"
 msgstr "راهنما"
 
 # | msgid "Telegram"
-#: hiddifypanel/templates/admin-layout.html:121
+#: hiddifypanel/templates/admin-layout.html:120
 msgid "admin.menu.telegram"
 msgstr "تلگرام"
 
-#: hiddifypanel/templates/admin-layout.html:125
+#: hiddifypanel/templates/admin-layout.html:124
 #: hiddifypanel/templates/donation.html:5
 msgid "Donation"
 msgstr "حمایت"
 
 # | msgid "Status"
-#: hiddifypanel/templates/admin-layout.html:149
+#: hiddifypanel/templates/admin-layout.html:148
 msgid "admin.actions.status"
 msgstr "وضعیت"
 
 # | msgid "View Logs"
-#: hiddifypanel/templates/admin-layout.html:150
+#: hiddifypanel/templates/admin-layout.html:149
 msgid "admin.actions.viewlogs"
 msgstr "نمایش لاگ"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/templates/admin-layout.html:151
+#: hiddifypanel/templates/admin-layout.html:150
 msgid "admin.actions.apply_configs"
 msgstr "اعمال تغییرات"
 
 # | msgid "Update"
-#: hiddifypanel/templates/admin-layout.html:152
+#: hiddifypanel/templates/admin-layout.html:151
 msgid "admin.actions.update"
 msgstr "به‌روز‌ رسانی"
 
 # | msgid "Reinstall"
-#: hiddifypanel/templates/admin-layout.html:154
+#: hiddifypanel/templates/admin-layout.html:153
 msgid "admin.actions.reinstall"
 msgstr "نصب مجدد"
 
 # | msgid "Restart System"
-#: hiddifypanel/templates/admin-layout.html:155
+#: hiddifypanel/templates/admin-layout.html:154
 msgid "admin.actions.reset"
 msgstr "ریستارت سیستم"
 
 # | msgid "Domains"
-#: hiddifypanel/templates/admin-layout.html:162
-#: hiddifypanel/templates/admin-layout.html:167
+#: hiddifypanel/templates/admin-layout.html:161
+#: hiddifypanel/templates/admin-layout.html:166
 msgid "admin.menu.domain"
 msgstr "دامنه‌ها"
 
 # | msgid "Proxies"
-#: hiddifypanel/templates/admin-layout.html:168
+#: hiddifypanel/templates/admin-layout.html:167
 msgid "admin.menu.proxy"
 msgstr "پروکسی‌ها"
 
 # | msgid "Common Settings"
-#: hiddifypanel/templates/admin-layout.html:174
+#: hiddifypanel/templates/admin-layout.html:173
 msgid "Commercial Settings"
 msgstr "تنظیمات پرکاربرد"
 
-#: hiddifypanel/templates/admin-layout.html:179
-msgid "Telegram Bot"
-msgstr "بات تلگرام"
+#: hiddifypanel/templates/admin-layout.html:178
+msgid ""
+"Telegram\n"
+"          Bot"
+msgstr ""
 
 # | msgid "⚠️ Are you sure you want to do this action?"
 #: hiddifypanel/templates/admin-layout.html:212
@@ -4328,32 +4330,32 @@ msgid "daily"
 msgstr "⏰ روزانه"
 
 # | msgid "➖ Direct"
-#: hiddifypanel/templates/flaskadmin-layout.html:53
+#: hiddifypanel/templates/flaskadmin-layout.html:55
 msgid "Direct"
 msgstr "➖ مستقیم"
 
 # | msgid "➖ Panel Link"
-#: hiddifypanel/templates/flaskadmin-layout.html:54
+#: hiddifypanel/templates/flaskadmin-layout.html:56
 msgid "Panel Link"
 msgstr "➖ لینک پنل"
 
 # | msgid "➖ Bridge Servers"
-#: hiddifypanel/templates/flaskadmin-layout.html:55
+#: hiddifypanel/templates/flaskadmin-layout.html:57
 msgid "Bridge Servers"
 msgstr "➖ سرور های میانی"
 
 # | msgid "➖ Fake"
-#: hiddifypanel/templates/flaskadmin-layout.html:56
+#: hiddifypanel/templates/flaskadmin-layout.html:58
 msgid "Fake"
 msgstr "➖ جعلی"
 
 # | msgid "Test and Suggest Domain "
-#: hiddifypanel/templates/flaskadmin-layout.html:115
+#: hiddifypanel/templates/flaskadmin-layout.html:117
 msgid "Example Domains"
 msgstr "بررسی و پیشنهاد دامنه"
 
 # | msgid "🔒 Enable TLS Domain Fronting"
-#: hiddifypanel/templates/flaskadmin-layout.html:119
+#: hiddifypanel/templates/flaskadmin-layout.html:121
 msgid "domain.domain_fronting.label"
 msgstr "🔒 فعال کردن دامین فرانتینگ در اتصال TLS"
 
@@ -4363,7 +4365,7 @@ msgstr "🔒 فعال کردن دامین فرانتینگ در اتصال TLS"
 # | "<a
 # href=\"https://github.com/hiddify/hiddify-config/wiki/Guide-for-domain-fronting\">Guide</a>.
 # ⚠️CloudFlare does not support Domain Fronting. "
-#: hiddifypanel/templates/flaskadmin-layout.html:120
+#: hiddifypanel/templates/flaskadmin-layout.html:122
 msgid "domain.domain_fronting.description"
 msgstr ""
 "برای شبیه سازی وب سایت دیگری به جای وب سایت شما در SNI استفاده می شود. "
@@ -4677,6 +4679,9 @@ msgstr "عملیات"
 #~ "روی لینک مشاهده جزییات در تلگرام "
 #~ "کلیک کنید تا اعتبار و حجم خود "
 #~ "را مشاهده کنید."
+
+#~ msgid "Telegram Bot"
+#~ msgstr "بات تلگرام"
 
 # | msgid "Reset Package Days and Usage."
 #~ msgid "Reset package days and usage"

@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-30 21:20+0200\n"
-"PO-Revision-Date: 2023-08-30 13:50-0500\n"
+"POT-Creation-Date: 2023-08-31 07:57+0200\n"
+"PO-Revision-Date: 2023-08-30 14:20-0500\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -264,7 +264,7 @@ msgstr "Submit"
 #: hiddifypanel/panel/admin/DomainAdmin.py:45
 #: hiddifypanel/panel/admin/QuickSetup.py:110
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:32
-#: hiddifypanel/templates/flaskadmin-layout.html:127
+#: hiddifypanel/templates/flaskadmin-layout.html:129
 msgid "domain.description"
 msgstr ""
 "Please fill in this field carefully and correctly. Otherwise, proxies will "
@@ -302,7 +302,7 @@ msgstr ""
 #: hiddifypanel/panel/admin/DomainAdmin.py:79
 #: hiddifypanel/panel/admin/QuickSetup.py:110
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:54
-#: hiddifypanel/templates/flaskadmin-layout.html:126
+#: hiddifypanel/templates/flaskadmin-layout.html:128
 msgid "domain.domain"
 msgstr "Domain"
 
@@ -481,7 +481,7 @@ msgstr "The name that will be shown in the Configs for this Domain."
 #: hiddifypanel/panel/admin/DomainAdmin.py:50
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
-#: hiddifypanel/templates/flaskadmin-layout.html:111
+#: hiddifypanel/templates/flaskadmin-layout.html:113
 msgid "config.reality_server_names.description"
 msgstr "You can add several Sever Names in comma seperated format"
 
@@ -530,7 +530,7 @@ msgstr "IP"
 #: hiddifypanel/panel/admin/DomainAdmin.py:149
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
-#: hiddifypanel/templates/flaskadmin-layout.html:110
+#: hiddifypanel/templates/flaskadmin-layout.html:112
 msgid "config.reality_server_names.label"
 msgstr "🌎 Reality Server Names"
 
@@ -1054,7 +1054,7 @@ msgstr ""
 "%(total)s users"
 
 #: hiddifypanel/panel/admin/templates/backup.html:9
-#: hiddifypanel/templates/admin-layout.html:176
+#: hiddifypanel/templates/admin-layout.html:175
 msgid "Backup"
 msgstr "Backup"
 
@@ -1974,7 +1974,7 @@ msgstr "Do Not Change It"
 # | msgid "🌍 Reality Fallback Domain"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
-#: hiddifypanel/templates/flaskadmin-layout.html:114
+#: hiddifypanel/templates/flaskadmin-layout.html:116
 msgid "config.reality_fallback_domain.label"
 msgstr "🌍 Reality Fallback Domain"
 
@@ -1983,7 +1983,7 @@ msgstr "🌍 Reality Fallback Domain"
 # | "this Domain."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
-#: hiddifypanel/templates/flaskadmin-layout.html:115
+#: hiddifypanel/templates/flaskadmin-layout.html:117
 msgid "config.reality_fallback_domain.description"
 msgstr ""
 "When the GTW visit the Websites in Server names, it will be redirect to this"
@@ -3000,7 +3000,7 @@ msgid "user.home.title"
 msgstr "Hiddify"
 
 # | msgid "Test"
-#: hiddifypanel/panel/user/templates/home/base2.html:36
+#: hiddifypanel/panel/user/templates/home/base2.html:38
 msgid "test"
 msgstr "Test"
 
@@ -3760,23 +3760,23 @@ msgid "admin.menu.home"
 msgstr "Dashboard"
 
 # | msgid "Users"
-#: hiddifypanel/templates/admin-layout.html:78
-#: hiddifypanel/templates/admin-layout.html:80
+#: hiddifypanel/templates/admin-layout.html:79
+#: hiddifypanel/templates/admin-layout.html:81
 msgid "admin.menu.user"
 msgstr "Users"
 
 # | msgid "In Parent Panel"
-#: hiddifypanel/templates/admin-layout.html:78
+#: hiddifypanel/templates/admin-layout.html:79
 msgid "in parent panel"
 msgstr "In Parent Panel"
 
-#: hiddifypanel/templates/admin-layout.html:83
+#: hiddifypanel/templates/admin-layout.html:84
 msgid "Admins"
 msgstr "Admins"
 
 # | msgid "Settings"
 #: hiddifypanel/templates/admin-layout.html:92
-#: hiddifypanel/templates/admin-layout.html:171
+#: hiddifypanel/templates/admin-layout.html:170
 msgid "admin.menu.config"
 msgstr "Settings"
 
@@ -3786,7 +3786,7 @@ msgid "Commercial use"
 msgstr "Commercial Use"
 
 # | msgid "Actions"
-#: hiddifypanel/templates/admin-layout.html:110
+#: hiddifypanel/templates/admin-layout.html:109
 msgid "admin.actions.title"
 msgstr "Actions"
 
@@ -3796,64 +3796,69 @@ msgid "admin.menu.support"
 msgstr "Help"
 
 # | msgid "Telegram"
-#: hiddifypanel/templates/admin-layout.html:121
+#: hiddifypanel/templates/admin-layout.html:120
 msgid "admin.menu.telegram"
 msgstr "Telegram"
 
-#: hiddifypanel/templates/admin-layout.html:125
+#: hiddifypanel/templates/admin-layout.html:124
 #: hiddifypanel/templates/donation.html:5
 msgid "Donation"
 msgstr "Donation"
 
 # | msgid "Status"
-#: hiddifypanel/templates/admin-layout.html:149
+#: hiddifypanel/templates/admin-layout.html:148
 msgid "admin.actions.status"
 msgstr "Status"
 
 # | msgid "View Logs"
-#: hiddifypanel/templates/admin-layout.html:150
+#: hiddifypanel/templates/admin-layout.html:149
 msgid "admin.actions.viewlogs"
 msgstr "View Logs"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/templates/admin-layout.html:151
+#: hiddifypanel/templates/admin-layout.html:150
 msgid "admin.actions.apply_configs"
 msgstr "Apply Configs"
 
 # | msgid "Update"
-#: hiddifypanel/templates/admin-layout.html:152
+#: hiddifypanel/templates/admin-layout.html:151
 msgid "admin.actions.update"
 msgstr "Update"
 
 # | msgid "Reinstall"
-#: hiddifypanel/templates/admin-layout.html:154
+#: hiddifypanel/templates/admin-layout.html:153
 msgid "admin.actions.reinstall"
 msgstr "Reinstall"
 
 # | msgid "Restart System"
-#: hiddifypanel/templates/admin-layout.html:155
+#: hiddifypanel/templates/admin-layout.html:154
 msgid "admin.actions.reset"
 msgstr "Restart System"
 
 # | msgid "Domains"
-#: hiddifypanel/templates/admin-layout.html:162
-#: hiddifypanel/templates/admin-layout.html:167
+#: hiddifypanel/templates/admin-layout.html:161
+#: hiddifypanel/templates/admin-layout.html:166
 msgid "admin.menu.domain"
 msgstr "Domains"
 
 # | msgid "Proxies"
-#: hiddifypanel/templates/admin-layout.html:168
+#: hiddifypanel/templates/admin-layout.html:167
 msgid "admin.menu.proxy"
 msgstr "Proxies"
 
 # | msgid "Common Settings"
-#: hiddifypanel/templates/admin-layout.html:174
+#: hiddifypanel/templates/admin-layout.html:173
 msgid "Commercial Settings"
 msgstr "Common Settings"
 
-#: hiddifypanel/templates/admin-layout.html:179
-msgid "Telegram Bot"
-msgstr "Telegram Bot"
+#: hiddifypanel/templates/admin-layout.html:178
+#, fuzzy
+msgid ""
+"Telegram\n"
+"          Bot"
+msgstr ""
+"Telegram\n"
+"          Bot"
 
 # | msgid "⚠️ Are you sure you want to do this action?"
 #: hiddifypanel/templates/admin-layout.html:212
@@ -4157,32 +4162,32 @@ msgid "daily"
 msgstr "⏰ Daily"
 
 # | msgid "➖ Direct"
-#: hiddifypanel/templates/flaskadmin-layout.html:53
+#: hiddifypanel/templates/flaskadmin-layout.html:55
 msgid "Direct"
 msgstr "➖ Direct"
 
 # | msgid "➖ Panel Link"
-#: hiddifypanel/templates/flaskadmin-layout.html:54
+#: hiddifypanel/templates/flaskadmin-layout.html:56
 msgid "Panel Link"
 msgstr "➖ Panel Link"
 
 # | msgid "➖ Bridge Servers"
-#: hiddifypanel/templates/flaskadmin-layout.html:55
+#: hiddifypanel/templates/flaskadmin-layout.html:57
 msgid "Bridge Servers"
 msgstr "➖ Bridge Servers"
 
 # | msgid "➖ Fake"
-#: hiddifypanel/templates/flaskadmin-layout.html:56
+#: hiddifypanel/templates/flaskadmin-layout.html:58
 msgid "Fake"
 msgstr "➖ Fake"
 
 # | msgid "Test and Suggest Domain "
-#: hiddifypanel/templates/flaskadmin-layout.html:115
+#: hiddifypanel/templates/flaskadmin-layout.html:117
 msgid "Example Domains"
 msgstr "Test and Suggest Domain "
 
 # | msgid "🔒 Enable TLS Domain Fronting"
-#: hiddifypanel/templates/flaskadmin-layout.html:119
+#: hiddifypanel/templates/flaskadmin-layout.html:121
 #, fuzzy
 msgid "domain.domain_fronting.label"
 msgstr "🔒 Enable TLS Domain Fronting"
@@ -4193,7 +4198,7 @@ msgstr "🔒 Enable TLS Domain Fronting"
 # | "<a
 # href=\"https://github.com/hiddify/hiddify-config/wiki/Guide-for-domain-"
 # | "fronting\">Guide</a>. ⚠️CloudFlare does not support Domain Fronting. "
-#: hiddifypanel/templates/flaskadmin-layout.html:120
+#: hiddifypanel/templates/flaskadmin-layout.html:122
 #, fuzzy
 msgid "domain.domain_fronting.description"
 msgstr ""
@@ -4473,6 +4478,9 @@ msgstr "Actions"
 #~ msgstr ""
 #~ "Welcome to HiddifyBot.\n"
 #~ " Please click on the link in the Panel page to start or enter your user UUID."
+
+#~ msgid "Telegram Bot"
+#~ msgstr "Telegram Bot"
 
 # | msgid "Reset Package Days and Usage."
 #~ msgid "Reset package days and usage"
