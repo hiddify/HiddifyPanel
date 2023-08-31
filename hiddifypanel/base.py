@@ -70,8 +70,13 @@ def create_app(cli=False, **config):
             return
         csrf.protect()
 
+    @app.after_request
+    def apply_no_robot(response):
+        response.headers["X-Robots-Tag"] = "noindex, nofollow";
+        return response
     app.jinja_env.globals['get_locale'] = get_locale
     app.jinja_env.globals['version'] = hiddifypanel.__version__
+    app.jinja_env.globals['static_url_for'] = hiddify.static_url_for
 
     return app
 
