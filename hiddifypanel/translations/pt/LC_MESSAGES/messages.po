@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPT\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-31 08:38+0200\n"
-"PO-Revision-Date: 2023-08-31 00:57-0500\n"
+"POT-Creation-Date: 2023-08-31 10:35+0200\n"
+"PO-Revision-Date: 2023-08-31 01:38-0500\n"
 "Last-Translator: lymanrudni\n"
 "Language: pt\n"
 "Language-Team: Portuguese\n"
@@ -3126,11 +3126,11 @@ msgstr "Segurança"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:79
 #: hiddifypanel/panel/user/templates/home/all-configs.html:80
 #: hiddifypanel/panel/user/templates/home/all-configs.html:81
-#: hiddifypanel/panel/user/templates/home/all-configs.html:91
-#: hiddifypanel/panel/user/templates/home/all-configs.html:92
-#: hiddifypanel/panel/user/templates/home/all-configs.html:93
-#: hiddifypanel/panel/user/templates/home/all-configs.html:94
-#: hiddifypanel/panel/user/templates/home/all-configs.html:95
+#: hiddifypanel/panel/user/templates/home/all-configs.html:104
+#: hiddifypanel/panel/user/templates/home/all-configs.html:105
+#: hiddifypanel/panel/user/templates/home/all-configs.html:106
+#: hiddifypanel/panel/user/templates/home/all-configs.html:107
+#: hiddifypanel/panel/user/templates/home/all-configs.html:108
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:22
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:23
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:24
@@ -3175,13 +3175,29 @@ msgstr "Exceto VMenos"
 
 # | msgid "Subscription Link"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:74
-#: hiddifypanel/panel/user/templates/home/all-configs.html:88
+#: hiddifypanel/panel/user/templates/home/all-configs.html:101
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:43
 #: hiddifypanel/panel/user/templates/home/android.html:40
 #: hiddifypanel/panel/user/templates/home/ios.html:29
 #, fuzzy
 msgid "user.home.allconfig.link-configs"
 msgstr "Link de assinatura"
+
+# | msgid "SingBox: SSH"
+#: hiddifypanel/panel/user/templates/home/all-configs.html:87
+#, fuzzy
+msgid "singbox: ssh"
+msgstr "caixa de som: ssh"
+
+# | msgid "SSH"
+#: hiddifypanel/panel/user/templates/home/all-configs.html:90
+#: hiddifypanel/panel/user/templates/home/all-configs.html:91
+#: hiddifypanel/panel/user/templates/home/all-configs.html:92
+#: hiddifypanel/panel/user/templates/home/all-configs.html:93
+#: hiddifypanel/panel/user/templates/home/all-configs.html:94
+#, fuzzy
+msgid "ssh"
+msgstr "SSH"
 
 # | msgid ""
 # | "📍 Please select one of the following applications:\n"
@@ -4842,14 +4858,6 @@ msgstr "Ações"
 
 #~ msgid "Telegram Bot"
 #~ msgstr "Telegram Bot"
-
-# | msgid "SingBox: SSH"
-#~ msgid "singbox: ssh"
-#~ msgstr "caixa de som: ssh"
-
-# | msgid "SSH"
-#~ msgid "ssh"
-#~ msgstr "SSH"
 
 #~ msgid "config.ssh_server_ports.label"
 #~ msgstr ""
