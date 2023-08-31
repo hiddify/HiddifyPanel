@@ -796,8 +796,22 @@ def error(str):
     print(str, file=sys.stderr)
 
 
-
 def static_url_for(**values):
-    orig= url_for("static",**values)
+    orig = url_for("static", **values)
     return orig.split("user_secret")[0]
-    
+
+
+def get_latest_release_version(repo_name):
+    try:
+        url = f"https://github.com/hiddify/{repo_name}/releases/latest"
+        response = requests.head(url, allow_redirects=False)
+
+        location_header = response.headers.get("Location")
+        if location_header:
+            version = re.search(r"/([^/]+)/?$", location_header)
+            if version:
+                return version.group(1).replace('v', '')
+    except Exception as e:
+        return f'{e}'
+
+    return None

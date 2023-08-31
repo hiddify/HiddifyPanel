@@ -20,9 +20,8 @@ def init_app(app):
     def internal_server_error(e):
         if not hasattr(e, 'code') or e.code == 500:
             trace = traceback.format_exc()
-            import lastversion
-            last_version = lastversion.latest("hiddifypanel", at="pip")
 
+            last_version = hiddify.get_latest_release_version('hiddifypanel')
             has_update = "dev" not in hiddifypanel.__version__ and f'{last_version}' != hiddifypanel.__version__
             return render_template('500.html', error=e, trace=trace, has_update=has_update, last_version=last_version), 500
         # if e.code in [400,401,403]:
