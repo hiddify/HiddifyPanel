@@ -30,7 +30,7 @@ class UserDetail(db.Model, SerializerMixin):
     child_id = db.Column(db.Integer, db.ForeignKey('child.id'), default=0, nullable=False)
     last_online = db.Column(db.DateTime, nullable=False, default=datetime.datetime.min)
     current_usage_GB = db.Column(db.Numeric(6, 9, asdecimal=False), default=0, nullable=False)
-    connected_ips = db.Column(db.String, default='', nullable=False)
+    connected_ips = db.Column(db.String(512), default='', nullable=False)
 
     @property
     def ips(self):

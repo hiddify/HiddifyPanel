@@ -294,7 +294,7 @@ def _v1():
         BoolConfig(key=ConfigEnum.first_setup, value=True),
         StrConfig(key=ConfigEnum.decoy_domain, value=rnd_domains[0]),
         StrConfig(key=ConfigEnum.proxy_path, value=get_random_string()),
-        BoolConfig(key=ConfigEnum.firewall, value=True),
+        BoolConfig(key=ConfigEnum.firewall, value=False),
         BoolConfig(key=ConfigEnum.netdata, value=True),
         StrConfig(key=ConfigEnum.lang, value='en'),
         BoolConfig(key=ConfigEnum.block_iran_sites, value=True),
