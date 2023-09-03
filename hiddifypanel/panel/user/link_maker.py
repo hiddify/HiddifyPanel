@@ -550,6 +550,8 @@ def add_singbox_tls(base, proxy):
 
 
 def add_singbox_transport(base, proxy):
+    if base['l3'] == 'reality':
+        return
     base["transport"] = {}
     if proxy['transport'] in ["ws", "WS"]:
         base["transport"] = {
