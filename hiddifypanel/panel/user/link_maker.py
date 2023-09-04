@@ -468,7 +468,7 @@ def to_singbox(proxy):
     all_base.append(base)
     # vmess ws
     base["tag"] = f"""{proxy['extra_info']} {proxy["name"]} {proxy['port']} {proxy["dbdomain"].id}"""
-    base["type"] = str(proxy["proto"]) if proxy['proto'] != 'ss' else "shadowsocks"
+    base["type"] = str(proxy["proto"]) 
     base["server"] = proxy["server"]
     base["server_port"] = int(proxy["port"])
     # base['alpn'] = proxy['alpn'].split(',')
@@ -597,6 +597,7 @@ def add_singbox_ssr(base, proxy):
 
 def add_singbox_shadowsocks_base(all_base, proxy):
     base = all_base[0]
+    base["type"]="shadowsocks"
     base["method"] = proxy["cipher"]
     base["password"] = proxy["uuid"]
     add_singbox_udp_over_tcp(base)
@@ -605,6 +606,7 @@ def add_singbox_shadowsocks_base(all_base, proxy):
         base["plugin"] = "obfs-local"
         base["plugin_opts"] = f'obfs=tls&obfs-host={proxy["fakedomain"]}'
     if proxy['proto'] == 'v2ray':
+        base["proto"] = proxy["cipher"]
         base["plugin"] = "v2ray-plugin"
         # "skip-cert-verify": proxy["mode"] == "Fake" or proxy['allow_insecure'],
         base["plugin_opts"] = f'mode=websocket&path={proxy["path"]}&host={proxy["host"]}&tls'
