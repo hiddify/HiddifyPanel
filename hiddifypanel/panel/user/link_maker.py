@@ -709,8 +709,10 @@ def make_v2ray_configs(user, user_activate, domains, expire_days, ip_debug, db_d
             # res.append(f'trojan://1@{fake_ip_for_sub_link}?sni=fake_ip_for_sub_link&security=tls#{hiddify.url_encode(profile_title)}')
 
             name = '⏳' if user_activate else '✖'
-            if user.usage_limit_GB < 100000:
+            if user.usage_limit_GB < 1000:
                 name += f'{round(user.current_usage_GB,3)}/{user.usage_limit_GB}GB'
+            elif user.usage_limit_GB < 100000:
+                name += f'{round(user.current_usage_GB,3)}/{round(user.usage_limit_GB/1000,1)}GB'
             else:
                 res.append("#Unlimited usage")
             if expire_days < 1000:
