@@ -64,7 +64,7 @@ def get_admin_path():
 
 def exec_command(cmd, cwd=None):
     try:
-        os.system(cmd)
+        subprocess.Popen(cmd.split(" "))
     except Exception as e:
         print(e)
 
