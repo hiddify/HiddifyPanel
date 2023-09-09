@@ -66,7 +66,7 @@ def get_asn_short_name(user_ip=None):
     user_ip = user_ip or get_real_user_ip()
     try:
         asn_id = get_asn_id(user_ip)
-        return asn_map.get(asn_id, "unknown")
+        return asn_map.get(str(asn_id), "unknown")
     except:
         return "unknown"
 
