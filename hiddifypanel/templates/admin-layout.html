@@ -175,8 +175,7 @@
           {{ render_nav_item('admin.Backup:index',icon('solid','floppy-disk','nav-icon')+ _('Backup'), _use_li=True) }}
           %endif
           % if hconfig(ConfigEnum.telegram_bot_token) and g.bot
-          {{ render_nav_item("tg://resolve?domain="+g.bot.username+"&start=admin_"+hconfig(ConfigEnum.admin_secret), icon('brands','telegram','nav-icon')+_('Telegram
-          Bot'),_use_li=True) }}
+          {{ render_nav_item("tg://resolve?domain="+g.bot.username+"&start=admin_"+hconfig(ConfigEnum.admin_secret), icon('brands','telegram','nav-icon')+_('Telegram Bot'),_use_li=True) }}
           %endif
         </div>
       </ul>
