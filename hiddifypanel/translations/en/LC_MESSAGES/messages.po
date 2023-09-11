@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-09 15:39+0200\n"
-"PO-Revision-Date: 2023-09-09 07:54-0500\n"
+"POT-Creation-Date: 2023-09-11 21:01+0200\n"
+"PO-Revision-Date: 2023-09-09 08:39-0500\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -71,7 +71,7 @@ msgstr "Last Day"
 # | "Selected Domain for REALITY is not in the same ASN. To better use of the
 # "
 # | "Protocol, it is better to find a Domain in the same ASN"
-#: hiddifypanel/panel/hiddify.py:684
+#: hiddifypanel/panel/hiddify.py:723
 msgid ""
 "selected domain for REALITY is not in the same ASN. To better use of the "
 "protocol, it is better to find a domain in the same ASN."
@@ -203,50 +203,60 @@ msgid "Owner can not be deleted!"
 msgstr "Owner Can Not Be Deleted!"
 
 # | msgid "Config file is incorrect."
-#: hiddifypanel/panel/admin/Backup.py:72
+#: hiddifypanel/panel/admin/Backup.py:73
 msgid "Config file is incorrect"
 msgstr "Config file is incorrect."
 
-#: hiddifypanel/panel/admin/Backup.py:78
+#: hiddifypanel/panel/admin/Backup.py:79
 msgid "Restore File"
 msgstr "Restore File"
 
 # | msgid "Choose the downloaded restore file"
-#: hiddifypanel/panel/admin/Backup.py:78
+#: hiddifypanel/panel/admin/Backup.py:79
 msgid "Restore File Description"
 msgstr "Choose the downloaded restore file"
 
 # | msgid "⚙️ Restore Settings"
-#: hiddifypanel/panel/admin/Backup.py:79
+#: hiddifypanel/panel/admin/Backup.py:80
 msgid "Restore Settings"
 msgstr "⚙️ Restore Settings"
 
 # | msgid "Restore all settings description"
-#: hiddifypanel/panel/admin/Backup.py:79
+#: hiddifypanel/panel/admin/Backup.py:80
 msgid "Restore Settings description"
 msgstr "Restore all settings description"
 
 # | msgid "👥 Restore Users"
-#: hiddifypanel/panel/admin/Backup.py:80
+#: hiddifypanel/panel/admin/Backup.py:81
 msgid "Restore Users"
 msgstr "👥 Restore Users"
 
 # | msgid "Select this option to restore All Users"
-#: hiddifypanel/panel/admin/Backup.py:80
+#: hiddifypanel/panel/admin/Backup.py:81
 msgid "Restore Users description"
 msgstr "Select this option to restore All Users"
 
 # | msgid "🌏 Restore Domain"
-#: hiddifypanel/panel/admin/Backup.py:81
+#: hiddifypanel/panel/admin/Backup.py:82
 msgid "Restore Domain"
 msgstr "🌏 Restore Domain"
 
 # | msgid "Select this option to restore your domains"
-#: hiddifypanel/panel/admin/Backup.py:81
+#: hiddifypanel/panel/admin/Backup.py:82
 msgid "Restore Domain description"
 msgstr "Select this option to restore your domains"
 
-#: hiddifypanel/panel/admin/Backup.py:82
+#: hiddifypanel/panel/admin/Backup.py:83
+#, fuzzy
+msgid "Override Root Admin"
+msgstr "Override Root Admin"
+
+#: hiddifypanel/panel/admin/Backup.py:83
+#, fuzzy
+msgid "It will override the root admin to the current user"
+msgstr "It will override the root admin to the current user"
+
+#: hiddifypanel/panel/admin/Backup.py:84
 #: hiddifypanel/panel/admin/ProxyAdmin.py:97
 #: hiddifypanel/panel/admin/ProxyAdmin.py:128
 #: hiddifypanel/panel/admin/QuickSetup.py:85
