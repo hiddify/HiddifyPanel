@@ -92,7 +92,7 @@ def make_proxy(proxy: Proxy, domain_db: Domain, phttp=80, ptls=443, pport=None):
         return {'name': name, 'msg': "worker does not support grpc", 'type': 'debug', 'proto': proxy.proto}
     cdn_forced_host = domain_db.cdn_ip or (domain_db.domain if domain_db.mode != DomainType.reality else hiddify.get_direct_host_or_ip(4))
 
-    if reality in proxy.l3:
+    if 'reality' in proxy.l3:
         alpn = "h2" if proxy.transport in ['h2'] else 'http/1.1'
     else:
         alpn = "h2" if proxy.l3 in ['tls_h2'] else 'h2,http/1.1' if proxy.l3 == 'tls_h2_h1' else "http/1.1"
@@ -566,7 +566,7 @@ def add_singbox_transport(base, proxy):
         if "host" in proxy:
             base["transport"]["headers"] = {"Host": proxy["host"]}
 
-    if proxy["transport"] in ["tcp","h2"]:
+    if proxy["transport"] in ["tcp", "h2"]:
         base["transport"] = {
             "type": "http",
             "path": proxy.get("path", ""),
