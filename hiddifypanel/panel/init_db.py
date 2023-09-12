@@ -123,6 +123,8 @@ def init_db():
 #     add_config_if_not_exist(ConfigEnum.hysteria_enable, True)
 #     add_config_if_not_exist(ConfigEnum.hysteria_port, random.randint(5000, 20000))
 
+def _v52():
+    db.session.bulk_save_objects(get_proxy_rows_v1())
 
 def _v51():
     Proxy.query.filter(Proxy.l3.in_([ProxyL3.h3_quic])).delete()
@@ -396,6 +398,7 @@ def get_proxy_rows_v1():
         # 'grpc Fake vmess',
         # "XTLS direct vless",
         # "XTLS direct trojan",
+        "h2 direct vless",
         "XTLS direct vless",
         "WS direct vless",
         "WS direct trojan",
@@ -437,6 +440,8 @@ def make_proxy_rows(cfgs):
             if proto == "trojan" and l3 not in ["tls", 'xtls', 'tls_h2', 'h3_quic']:
                 continue
             if transport in ["grpc", "XTLS", "faketls"] and l3 == "http":
+                continue
+            if transport in ["h2"] and l3 != "reality":
                 continue
             # if l3 == "tls_h2" and transport =="grpc":
             #     continue
