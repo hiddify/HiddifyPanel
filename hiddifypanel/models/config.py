@@ -97,6 +97,7 @@ def set_hconfig(key: ConfigEnum, value, child_id=0, commit=True):
             db.session.add(dbconf)
     old_v = dbconf.value
     dbconf.value = value
+    print(f"changing {key} from {old_v} to {value}")
     Events.config_changed.notify(conf=dbconf, old_value=old_v)
     if commit:
         db.session.commit()
@@ -113,7 +114,6 @@ def get_hconfigs(child_id=0):
 
 
 def add_or_update_config(commit=True, child_id=0, override_unique_id=True, **config):
-    print(config)
     c = config['key']
     ckey = ConfigEnum(c)
     if c == ConfigEnum.unique_id and not override_unique_id:
