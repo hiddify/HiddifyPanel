@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-12 09:24+0200\n"
-"PO-Revision-Date: 2023-09-11 14:06-0500\n"
+"POT-Creation-Date: 2023-09-12 12:35+0200\n"
+"PO-Revision-Date: 2023-09-12 02:24-0500\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -2699,7 +2699,7 @@ msgid "admin.config.title"
 msgstr "Settings"
 
 # | msgid "📅Remain: %(expire_days)s days"
-#: hiddifypanel/panel/user/link_maker.py:720
+#: hiddifypanel/panel/user/link_maker.py:724
 #, python-format
 msgid "📅%(expire_days)s days"
 msgstr "📅Remain: %(expire_days)s days"
