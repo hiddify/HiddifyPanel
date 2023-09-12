@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-12 21:25+0200\n"
-"PO-Revision-Date: 2023-09-12 11:55-0500\n"
+"POT-Creation-Date: 2023-09-13 01:58+0200\n"
+"PO-Revision-Date: 2023-09-12 18:57-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -33,7 +33,7 @@ msgid "Access Denied"
 msgstr "拒绝访问"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/panel/hiddify.py:246
+#: hiddifypanel/panel/hiddify.py:198
 msgid "admin.config.apply_configs"
 msgstr "应用配置"
 
@@ -41,12 +41,12 @@ msgstr "应用配置"
 # | "Configs have been changed successfully. Click %(link)s to apply the
 # configs."
 # | " It may take 2 minutes to apply"
-#: hiddifypanel/panel/hiddify.py:247
+#: hiddifypanel/panel/hiddify.py:199
 msgid "config.validation-success"
 msgstr "配置已成功更改。单击 %(link)s 以应用配置。申请可能需要 2 分钟。"
 
 # | msgid " ✅ Configs have been changed successfully"
-#: hiddifypanel/panel/hiddify.py:249
+#: hiddifypanel/panel/hiddify.py:201
 #, fuzzy
 msgid "config.validation-success-no-reset"
 msgstr "配置已成功更改。"
@@ -61,12 +61,12 @@ msgstr "配置已成功更改。"
 #: hiddifypanel/panel/admin/DomainAdmin.py:179
 #: hiddifypanel/panel/admin/QuickSetup.py:126
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:107
-#: hiddifypanel/panel/hiddify.py:370
+#: hiddifypanel/panel/hiddify.py:292
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr "域名无法解析！你的域有问题"
 
 # | msgid "Last Day"
-#: hiddifypanel/panel/hiddify.py:402
+#: hiddifypanel/panel/hiddify.py:324
 #, fuzzy
 msgid "0 - Last day"
 msgstr "0 - 最后一天"
@@ -75,7 +75,7 @@ msgstr "0 - 最后一天"
 # | "Selected Domain for REALITY is not in the same ASN. To better use of the
 # "
 # | "Protocol, it is better to find a Domain in the same ASN"
-#: hiddifypanel/panel/hiddify.py:724
+#: hiddifypanel/panel/hiddify.py:604
 #, fuzzy
 msgid ""
 "selected domain for REALITY is not in the same ASN. To better use of the "
@@ -854,6 +854,10 @@ msgstr "其他的"
 #, fuzzy
 msgid "Release"
 msgstr "发布"
+
+#: hiddifypanel/panel/admin/SettingAdmin.py:187
+msgid "Beta"
+msgstr ""
 
 # | msgid "⚠️ Develop"
 #: hiddifypanel/panel/admin/SettingAdmin.py:188

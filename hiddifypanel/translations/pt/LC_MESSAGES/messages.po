@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPT\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-12 21:25+0200\n"
-"PO-Revision-Date: 2023-09-12 11:55-0500\n"
+"POT-Creation-Date: 2023-09-13 01:58+0200\n"
+"PO-Revision-Date: 2023-09-12 18:56-0500\n"
 "Last-Translator: lymanrudni\n"
 "Language: pt\n"
 "Language-Team: Portuguese\n"
@@ -33,7 +33,7 @@ msgid "Access Denied"
 msgstr "Acesso negado"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/panel/hiddify.py:246
+#: hiddifypanel/panel/hiddify.py:198
 #, fuzzy
 msgid "admin.config.apply_configs"
 msgstr "Aplicar configurações"
@@ -42,7 +42,7 @@ msgstr "Aplicar configurações"
 # | "Configs have been changed successfully. Click %(link)s to apply the
 # configs."
 # | " It may take 2 minutes to apply"
-#: hiddifypanel/panel/hiddify.py:247
+#: hiddifypanel/panel/hiddify.py:199
 #, fuzzy
 msgid "config.validation-success"
 msgstr ""
@@ -50,7 +50,7 @@ msgstr ""
 "aplicar as configurações. Pode levar 2 minutos para aplicar"
 
 # | msgid " ✅ Configs have been changed successfully"
-#: hiddifypanel/panel/hiddify.py:249
+#: hiddifypanel/panel/hiddify.py:201
 #, fuzzy
 msgid "config.validation-success-no-reset"
 msgstr "✅ As configurações foram alteradas com sucesso"
@@ -65,7 +65,7 @@ msgstr "✅ As configurações foram alteradas com sucesso"
 #: hiddifypanel/panel/admin/DomainAdmin.py:179
 #: hiddifypanel/panel/admin/QuickSetup.py:126
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:107
-#: hiddifypanel/panel/hiddify.py:370
+#: hiddifypanel/panel/hiddify.py:292
 #, fuzzy
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr ""
@@ -73,7 +73,7 @@ msgstr ""
 "Verifique as configurações do seu Domínio."
 
 # | msgid "Last Day"
-#: hiddifypanel/panel/hiddify.py:402
+#: hiddifypanel/panel/hiddify.py:324
 #, fuzzy
 msgid "0 - Last day"
 msgstr "Último dia"
@@ -82,7 +82,7 @@ msgstr "Último dia"
 # | "Selected Domain for REALITY is not in the same ASN. To better use of the
 # "
 # | "Protocol, it is better to find a Domain in the same ASN"
-#: hiddifypanel/panel/hiddify.py:724
+#: hiddifypanel/panel/hiddify.py:604
 msgid ""
 "selected domain for REALITY is not in the same ASN. To better use of the "
 "protocol, it is better to find a domain in the same ASN."
@@ -957,6 +957,10 @@ msgstr "🇺🇳 Outros"
 #, fuzzy
 msgid "Release"
 msgstr "✅ Liberação"
+
+#: hiddifypanel/panel/admin/SettingAdmin.py:187
+msgid "Beta"
+msgstr ""
 
 # | msgid "⚠️ Develop"
 #: hiddifypanel/panel/admin/SettingAdmin.py:188
