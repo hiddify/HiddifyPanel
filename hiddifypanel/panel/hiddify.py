@@ -469,20 +469,21 @@ def get_ids_without_parent(input_dict):
 
 def set_db_from_json(json_data, override_child_id=None, set_users=True, set_domains=True, set_proxies=True, set_settings=True, remove_domains=False, remove_users=False, override_unique_id=True, set_admins=True, override_root_admin=False):
     new_rows = []
-    if override_root_admin:
-        uuids_without_parent = get_ids_without_parent({u['uuid']: u for u in json_data['admin_users']})
-        all_admins = {u.uuid: u for u in AdminUser.query.all()}
-        uuids_without_parent = [uuid for uuid in uuids_without_parent if uuid not in all_admins]
-        if "admin_users" in json_data:
-            for u in json_data['admin_users']:
-                if u['uuid'] in uuids_without_parent:
-                    u['uuid'] = current_admin_or_owner().uuid
-                if u['parent_admin_uuid'] in uuids_without_parent:
-                    u['parent_admin_uuid'] = current_admin_or_owner().uuid
-        if "users" in json_data:
-            for u in json_data['users']:
-                if u['added_by_uuid'] in uuids_without_parent:
-                    u['added_by_uuid'] = current_admin_or_owner().uuid
+    
+    uuids_without_parent = get_ids_without_parent({u['uuid']: u for u in json_data['admin_users']})
+    all_admins = {u.uuid: u for u in AdminUser.query.all()}
+    uuids_without_parent = [uuid for uuid in uuids_without_parent if uuid not in all_admins]
+    if "admin_users" in json_data:
+        for u in json_data['admin_users']:
+            if override_root_admin and u['uuid'] in uuids_without_parent:
+                u['uuid'] = current_admin_or_owner().uuid
+            if u['parent_admin_uuid'] in uuids_without_parent:
+                u['parent_admin_uuid'] = current_admin_or_owner().uuid
+                
+    if "users" in json_data:
+        for u in json_data['users']:
+            if override_root_admin and u['added_by_uuid'] in uuids_without_parent:
+                u['added_by_uuid'] = current_admin_or_owner().uuid
 
     if set_admins and 'admin_users' in json_data:
         bulk_register_admins(json_data['admin_users'], commit=False)
