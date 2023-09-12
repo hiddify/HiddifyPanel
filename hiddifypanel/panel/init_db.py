@@ -101,7 +101,7 @@ def init_db():
     sqlite_db = f"{panel_root}hiddifypanel.db"
 
     if os.path.isfile(sqlite_db):
-
+        
         newest_file = max([(f, os.path.getmtime(os.path.join(backup_root, f)))
                           for f in os.listdir(backup_root) if os.path.isfile(os.path.join(backup_root, f))], key=lambda x: x[1])[0]
         with open(f'{backup_root}{newest_file}', 'r') as f:
@@ -113,8 +113,8 @@ def init_db():
                                      remove_users=True,
                                      set_settings=True,
                                      override_unique_id=True,
-
-                                     set_admins=True
+                                     set_admins=True,
+                                     override_root_admin=True
                                      )
             db_version = int([d['value'] for d in json_data['hconfigs'] if d['key'] == "db_version"][0])
             os.rename(sqlite_db, sqlite_db+".old")
