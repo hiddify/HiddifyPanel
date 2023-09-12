@@ -476,13 +476,13 @@ def set_db_from_json(json_data, override_child_id=None, set_users=True, set_doma
         if "admin_users" in json_data:
             for u in json_data['admin_users']:
                 if u['uuid'] in uuids_without_parent:
-                    u['uuid'] = g.admin.id
+                    u['uuid'] = current_admin_or_owner().uuid
                 if u['parent_admin_uuid'] in uuids_without_parent:
-                    u['parent_admin_uuid'] = g.admin.id
+                    u['parent_admin_uuid'] = current_admin_or_owner().uuid
         if "users" in json_data:
             for u in json_data['users']:
                 if u['added_by_uuid'] in uuids_without_parent:
-                    u['added_by_uuid'] = g.admin.id
+                    u['added_by_uuid'] = current_admin_or_owner().uuid
 
     if set_admins and 'admin_users' in json_data:
         bulk_register_admins(json_data['admin_users'], commit=False)
@@ -503,10 +503,10 @@ def set_db_from_json(json_data, override_child_id=None, set_users=True, set_doma
 
     for u in AdminUser.query.all():
         if u.parent_admin_id in uuids_without_parent:
-            u.parent_admin_id = g.admin.id
+            u.parent_admin_id = current_admin_or_owner().uuid
     for u in User.query.all():
         if u.added_by in uuids_without_parent:
-            u.added_by = g.admin.id
+            u.added_by = current_admin_or_owner().uuid
 
     db.session.commit()
 

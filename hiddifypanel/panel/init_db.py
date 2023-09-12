@@ -29,7 +29,7 @@ def init_db():
     execute(f'update admin_user set mode="agent" where mode = "slave"')
     execute(f'update admin_user set mode="super_admin" where id=1')
     execute(f'DELETE from proxy where transport = "h1"')
-
+    update_enum_column()
     add_column(Domain.grpc)
     add_column(ParentDomain.alias)
     add_column(User.ed25519_private_key)
@@ -101,7 +101,7 @@ def init_db():
     sqlite_db = f"{panel_root}hiddifypanel.db"
 
     if os.path.isfile(sqlite_db):
-        
+
         newest_file = max([(f, os.path.getmtime(os.path.join(backup_root, f)))
                           for f in os.listdir(backup_root) if os.path.isfile(os.path.join(backup_root, f))], key=lambda x: x[1])[0]
         with open(f'{backup_root}{newest_file}', 'r') as f:
@@ -157,6 +157,7 @@ def init_db():
 
 def _v52():
     db.session.bulk_save_objects(get_proxy_rows_v1())
+
 
 def _v51():
     Proxy.query.filter(Proxy.l3.in_([ProxyL3.h3_quic])).delete()
@@ -507,3 +508,32 @@ def execute(query):
         db.engine.execute(query)
     except:
         pass
+
+
+def add_new_enum_values():
+    columns = [
+        Proxy.l3, Proxy.proto, Proxy.cdn, Proxy.transport,
+        User.mode, Domain.mode, BoolConfig.key, StrConfig.key
+    ]
+    for col in columns:
+        enum_class = col.type.enum_class
+        column_name = col.name
+        table_name = col.table
+
+        # Get the existing values in the enum
+        existing_values = [e.value for e in enum_class]
+
+        # Get the values in the enum column in the database
+        result = db.engine.execute(f"SELECT DISTINCT `{column_name}` FROM {table_name}")
+        db_values = {row[0] for row in result}
+
+        # Find the new values that need to be added to the enum column in the database
+        new_values = set(existing_values) - db_values
+        if len(new_values) == 0:
+            continue
+
+        # Add the new value to the enum column in the database
+        enumstr = ','.join([f"'{a}'" for a in existing_values])
+        db.engine.execute(f"ALTER TABLE {table_name} MODIFY COLUMN `{column_name}` ENUM({enumstr});")
+
+        db.session.commit()
