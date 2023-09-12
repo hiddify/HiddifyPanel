@@ -253,7 +253,7 @@ def get_config_form():
                         render_kw['pattern'] = val.regex.pattern
                         render_kw['title'] = val.message
                 if c.key == ConfigEnum.reality_public_key and g.admin.mode in [AdminMode.super_admin]:
-                    extra_info = f" <a href='{url_for('admin.Actions:change_reality_keys')}'>{_('Change')}</>"
+                    extra_info = f" <a href='{url_for('admin.Actions:change_reality_keys')}'>{_('Change')}</a>"
                 field = wtf.fields.StringField(_(f'config.{c.key}.label'), validators, default=c.value,
                                                description=_(f'config.{c.key}.description')+extra_info, render_kw=render_kw)
             setattr(CategoryForm, c.key, field)

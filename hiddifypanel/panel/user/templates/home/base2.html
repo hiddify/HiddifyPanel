@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   {% block head %}
   <meta charset="utf-8">
@@ -10,88 +11,89 @@
   <!-- Bootstrap 4 -->
   {% block styles %}
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="{{ url_for('static', filename="plugins/font-awesome/css/font-awesome.min.css" ) }}">
-  <link rel="stylesheet" href="{{url_for('static',filename='css/font-awesome.css')}}" type="text/css">
+  <link rel="stylesheet" href="{{ static_url_for( filename='plugins/font-awesome/css/font-awesome.min.css' ) }}">
+  <link rel="stylesheet" href="{{static_url_for(filename='css/font-awesome.css')}}" type="text/css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="{{ url_for('static', filename="css/adminlte.css" ) }}">
+  <link rel="stylesheet" href="{{ static_url_for( filename='css/adminlte.css' ) }}">
 
-  <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap4-rtl.min.css')}}">
-  <link rel="stylesheet" href="{{url_for('static',filename='css/adminlte.fa.css')}}">
-  <link rel="stylesheet" href="{{url_for('static',filename='plugins/datatables/dataTables.bootstrap4.css')}}">
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.bootstrap4.min.css">  
+  <link rel="stylesheet" href="{{static_url_for(filename='css/bootstrap4-rtl.min.css')}}">
+  <link rel="stylesheet" href="{{static_url_for(filename='css/adminlte.fa.css')}}">
+  <link rel="stylesheet" href="{{static_url_for(filename='plugins/datatables/dataTables.bootstrap4.css')}}">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.bootstrap4.min.css">
   {% endblock %}
   {% endblock %}
 </head>
+
 <body class="hold-transition sidebar-collapse">
-<div class="wrapper">
-  <!-- /.navbar -->
+  <div class="wrapper">
+    <!-- /.navbar -->
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            {{_('test')}}
-            <h1 class="m-0 text-dark">گذرنده <a href="https://github.com/hiddify/hiddify-config/wiki">هایدیفای</a></h1>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              {{_('test')}}
+              <h1 class="m-0 text-dark">گذرنده <a href="https://github.com/hiddify/hiddify-config/wiki">هایدیفای</a></h1>
+            </div>
           </div>
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
+        </div><!-- /.container-fluid -->
+      </section>
 
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-        {% block content %}
-        {% endblock %}
-        <div class="row1">
-          
-        </div>
+      <!-- Main content -->
+      <section class="content">
+        <div class="container-fluid">
+          {% block content %}
+          {% endblock %}
+          <div class="row1">
 
-        
-        
-        <!-- END TYPOGRAPHY -->
-      </div><!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-  <footer class="main-footer d-flex flex-wrap justify-content-between align-items-center py-3 " dir="ltr">
-    <div class="col-md-4 d-flex align-items-center">
-      
-      <strong><span class="mb-3 mb-md-0 text-muted">© 2023 Hiddify <a
-        href="https://github.com/hiddify/hiddify-config/wiki">Source Code</a></span>
-        </strong>
+          </div>
+
+
+
+          <!-- END TYPOGRAPHY -->
+        </div><!-- /.container-fluid -->
+      </section>
+      <!-- /.content -->
     </div>
+    <!-- /.content-wrapper -->
+    <footer class="main-footer d-flex flex-wrap justify-content-between align-items-center py-3 " dir="ltr">
+      <div class="col-md-4 d-flex align-items-center">
 
-    <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-      <li class="ms-3"><a class="text-muted" href="https://twitter.com/intent/follow?screen_name=hiddify_com">
-          Twitter </a></li>
-      <li class="ms-3"><a class="text-muted" href="https://t.me/hiddify">Telegram</a></li>
-    </ul>
-    
-  </footer>
+        <strong><span class="mb-3 mb-md-0 text-muted">© 2023 Hiddify <a href="https://github.com/hiddify/hiddify-config/wiki">Source Code</a></span>
+        </strong>
+      </div>
 
-  <!-- /.control-sidebar -->
-</div>
-<!-- ./wrapper -->
-{% block scripts %}
-<!-- jQuery -->
-<script src="{{ url_for('static', filename="plugins/jquery/jquery.min.js" ) }}"></script>
-<!-- Bootstrap 4 -->
-<script src="{{ url_for('static', filename="plugins/bootstrap/js/bootstrap.bundle.min.js" ) }}"></script>
-<!-- <script src="{{ url_for('static', filename="js/popper.min.js" ) }}"></script> -->
+      <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+        <li class="ms-3"><a class="text-muted" href="https://twitter.com/intent/follow?screen_name=hiddify_com">
+            Twitter </a></li>
+        <li class="ms-3"><a class="text-muted" href="https://t.me/hiddify">Telegram</a></li>
+      </ul>
 
-<script src="{{ url_for('static', filename='plugins/datatables/jquery.dataTables.js' ) }}"></script>
-<script src="{{ url_for('static', filename='plugins/datatables/dataTables.bootstrap4.js' ) }}"></script>
-<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
-<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/responsive/2.4.0/js/responsive.bootstrap4.min.js"></script>
-<!-- AdminLTE App -->
-<script src="{{ url_for('static', filename='js/adminlte.js' ) }}"></script>
-<script src="{{url_for('static',filename='js/qrcode.js')}}"></script>
-<script src="{{url_for('static',filename='js/demo.js')}}"></script>
+    </footer>
 
-{% endblock %}
+    <!-- /.control-sidebar -->
+  </div>
+  <!-- ./wrapper -->
+  {% block scripts %}
+  <!-- jQuery -->
+  <script src="{{ static_url_for( filename='plugins/jquery/jquery.min.js' ) }}"></script>
+  <!-- Bootstrap 4 -->
+  <script src="{{ static_url_for( filename='plugins/bootstrap/js/bootstrap.bundle.min.js' ) }}"></script>
+  <!-- <script src="{{ static_url_for( filename="js/popper.min.js" ) }}"></script> -->
+
+  <script src="{{ static_url_for( filename='plugins/datatables/jquery.dataTables.js' ) }}"></script>
+  <script src="{{ static_url_for( filename='plugins/datatables/dataTables.bootstrap4.js' ) }}"></script>
+  <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
+  <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/responsive/2.4.0/js/responsive.bootstrap4.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="{{ static_url_for( filename='js/adminlte.js' ) }}"></script>
+  <script src="{{static_url_for(filename='js/qrcode.js')}}"></script>
+  <script src="{{static_url_for(filename='js/demo.js')}}"></script>
+
+  {% endblock %}
 </body>
+
 </html>

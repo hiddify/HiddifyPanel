@@ -92,7 +92,11 @@ def make_proxy(proxy: Proxy, domain_db: Domain, phttp=80, ptls=443, pport=None):
         return {'name': name, 'msg': "worker does not support grpc", 'type': 'debug', 'proto': proxy.proto}
     cdn_forced_host = domain_db.cdn_ip or (domain_db.domain if domain_db.mode != DomainType.reality else hiddify.get_direct_host_or_ip(4))
 
-    alpn = "h2" if proxy.l3 in ['tls_h2', 'reality'] else 'h2,http/1.1' if proxy.l3 == 'tls_h2_h1' else "http/1.1"
+    if 'reality' in proxy.l3:
+        alpn = "h2" if proxy.transport in ['h2'] else 'http/1.1'
+    else:
+        alpn = "h2" if proxy.l3 in ['tls_h2'] else 'h2,http/1.1' if proxy.l3 == 'tls_h2_h1' else "http/1.1"
+
     base = {
         'name': name,
         'cdn': is_cdn,
@@ -550,6 +554,8 @@ def add_singbox_tls(base, proxy):
 
 
 def add_singbox_transport(base, proxy):
+    if proxy['l3'] == 'reality':
+        return
     base["transport"] = {}
     if proxy['transport'] in ["ws", "WS"]:
         base["transport"] = {
@@ -560,7 +566,7 @@ def add_singbox_transport(base, proxy):
         if "host" in proxy:
             base["transport"]["headers"] = {"Host": proxy["host"]}
 
-    if proxy["transport"] == "tcp":
+    if proxy["transport"] in ["tcp", "h2"]:
         base["transport"] = {
             "type": "http",
             "path": proxy.get("path", ""),
@@ -595,6 +601,7 @@ def add_singbox_ssr(base, proxy):
 
 def add_singbox_shadowsocks_base(all_base, proxy):
     base = all_base[0]
+    base["type"] = "shadowsocks"
     base["method"] = proxy["cipher"]
     base["password"] = proxy["uuid"]
     add_singbox_udp_over_tcp(base)
@@ -621,8 +628,8 @@ def add_singbox_shadowsocks_base(all_base, proxy):
                 "enabled": True,
                 "server_name": proxy["fakedomain"],
                 "utls": {
-                            "enabled": True,
-                            "fingerprint": proxy.get('fingerprint', 'none')
+                    "enabled": True,
+                    "fingerprint": proxy.get('fingerprint', 'none')
                 }
             }
         }
@@ -654,6 +661,7 @@ def add_singbox_ssh(all_base, proxy):
 
 
 def make_full_singbox_config(domains, **kwargs):
+    ua = hiddify.get_user_agent()
     base_config = json.loads(render_template('base_singbox_config.json'))
     allphttp = [p for p in request.args.get("phttp", "").split(',') if p]
     allptls = [p for p in request.args.get("ptls", "").split(',') if p]
@@ -684,7 +692,10 @@ def make_full_singbox_config(domains, **kwargs):
         "tolerance": 200
     }
     base_config['outbounds'].insert(1, smart)
-    return json.dumps(base_config, indent=4)
+    res = json.dumps(base_config, indent=4)
+    if ua['is_hiddify']:
+        res = res[:-1]+',"experimental": {}}'
+    return res
 
 
 def make_v2ray_configs(user, user_activate, domains, expire_days, ip_debug, db_domain, has_auto_cdn, asn, profile_title, **kwargs):
@@ -703,8 +714,10 @@ def make_v2ray_configs(user, user_activate, domains, expire_days, ip_debug, db_d
             # res.append(f'trojan://1@{fake_ip_for_sub_link}?sni=fake_ip_for_sub_link&security=tls#{hiddify.url_encode(profile_title)}')
 
             name = '⏳' if user_activate else '✖'
-            if user.usage_limit_GB < 100000:
+            if user.usage_limit_GB < 1000:
                 name += f'{round(user.current_usage_GB,3)}/{user.usage_limit_GB}GB'
+            elif user.usage_limit_GB < 100000:
+                name += f'{round(user.current_usage_GB/1000,3)}/{round(user.usage_limit_GB/1000,1)}TB'
             else:
                 res.append("#Unlimited usage")
             if expire_days < 1000:

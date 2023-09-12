@@ -15,6 +15,7 @@ from hiddifypanel.drivers import user_driver
 
 class UserResource(Resource):
     def get(self, uuid=None):
+        uuid = request.args['uuid'] if 'uuid' in request.args else None
         if uuid:
             product = User.query.filter(User.uuid == uuid).first() or abort(204)
             return jsonify(product.to_dict())
@@ -35,6 +36,7 @@ class UserResource(Resource):
 
 class AdminUserResource(Resource):
     def get(self, uuid=None):
+        uuid = request.args['uuid'] if 'uuid' in request.args else None
         if uuid:
             product = AdminUser.query.filter(AdminUser.uuid == uuid).first() or abort(204)
             return jsonify(product.to_dict())

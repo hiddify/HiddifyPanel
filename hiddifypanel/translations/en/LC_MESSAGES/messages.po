@@ -3,8 +3,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
+<<<<<<< HEAD
 "POT-Creation-Date: 2023-08-30 19:54+0200\n"
 "PO-Revision-Date: 2023-08-30 11:51-0500\n"
+=======
+"POT-Creation-Date: 2023-09-12 16:28+0200\n"
+"PO-Revision-Date: 2023-09-12 05:35-0500\n"
+>>>>>>> v8
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -71,7 +76,7 @@ msgstr "Last Day"
 # | "Selected Domain for REALITY is not in the same ASN. To better use of the
 # "
 # | "Protocol, it is better to find a Domain in the same ASN"
-#: hiddifypanel/panel/hiddify.py:684
+#: hiddifypanel/panel/hiddify.py:723
 msgid ""
 "selected domain for REALITY is not in the same ASN. To better use of the "
 "protocol, it is better to find a domain in the same ASN."
@@ -203,50 +208,60 @@ msgid "Owner can not be deleted!"
 msgstr "Owner Can Not Be Deleted!"
 
 # | msgid "Config file is incorrect."
-#: hiddifypanel/panel/admin/Backup.py:72
+#: hiddifypanel/panel/admin/Backup.py:73
 msgid "Config file is incorrect"
 msgstr "Config file is incorrect."
 
-#: hiddifypanel/panel/admin/Backup.py:78
+#: hiddifypanel/panel/admin/Backup.py:79
 msgid "Restore File"
 msgstr "Restore File"
 
 # | msgid "Choose the downloaded restore file"
-#: hiddifypanel/panel/admin/Backup.py:78
+#: hiddifypanel/panel/admin/Backup.py:79
 msgid "Restore File Description"
 msgstr "Choose the downloaded restore file"
 
 # | msgid "⚙️ Restore Settings"
-#: hiddifypanel/panel/admin/Backup.py:79
+#: hiddifypanel/panel/admin/Backup.py:80
 msgid "Restore Settings"
 msgstr "⚙️ Restore Settings"
 
 # | msgid "Restore all settings description"
-#: hiddifypanel/panel/admin/Backup.py:79
+#: hiddifypanel/panel/admin/Backup.py:80
 msgid "Restore Settings description"
 msgstr "Restore all settings description"
 
 # | msgid "👥 Restore Users"
-#: hiddifypanel/panel/admin/Backup.py:80
+#: hiddifypanel/panel/admin/Backup.py:81
 msgid "Restore Users"
 msgstr "👥 Restore Users"
 
 # | msgid "Select this option to restore All Users"
-#: hiddifypanel/panel/admin/Backup.py:80
+#: hiddifypanel/panel/admin/Backup.py:81
 msgid "Restore Users description"
 msgstr "Select this option to restore All Users"
 
 # | msgid "🌏 Restore Domain"
-#: hiddifypanel/panel/admin/Backup.py:81
+#: hiddifypanel/panel/admin/Backup.py:82
 msgid "Restore Domain"
 msgstr "🌏 Restore Domain"
 
 # | msgid "Select this option to restore your domains"
-#: hiddifypanel/panel/admin/Backup.py:81
+#: hiddifypanel/panel/admin/Backup.py:82
 msgid "Restore Domain description"
 msgstr "Select this option to restore your domains"
 
-#: hiddifypanel/panel/admin/Backup.py:82
+#: hiddifypanel/panel/admin/Backup.py:83
+#, fuzzy
+msgid "Override Root Admin"
+msgstr "Override Root Admin"
+
+#: hiddifypanel/panel/admin/Backup.py:83
+#, fuzzy
+msgid "It will override the root admin to the current user"
+msgstr "It will override the root admin to the current user"
+
+#: hiddifypanel/panel/admin/Backup.py:84
 #: hiddifypanel/panel/admin/ProxyAdmin.py:97
 #: hiddifypanel/panel/admin/ProxyAdmin.py:128
 #: hiddifypanel/panel/admin/QuickSetup.py:85
@@ -264,7 +279,7 @@ msgstr "Submit"
 #: hiddifypanel/panel/admin/DomainAdmin.py:45
 #: hiddifypanel/panel/admin/QuickSetup.py:110
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:32
-#: hiddifypanel/templates/flaskadmin-layout.html:127
+#: hiddifypanel/templates/flaskadmin-layout.html:129
 msgid "domain.description"
 msgstr ""
 "Please fill in this field carefully and correctly. Otherwise, proxies will "
@@ -302,7 +317,7 @@ msgstr ""
 #: hiddifypanel/panel/admin/DomainAdmin.py:79
 #: hiddifypanel/panel/admin/QuickSetup.py:110
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:54
-#: hiddifypanel/templates/flaskadmin-layout.html:126
+#: hiddifypanel/templates/flaskadmin-layout.html:128
 msgid "domain.domain"
 msgstr "Domain"
 
@@ -481,7 +496,7 @@ msgstr "The name that will be shown in the Configs for this Domain."
 #: hiddifypanel/panel/admin/DomainAdmin.py:50
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
-#: hiddifypanel/templates/flaskadmin-layout.html:111
+#: hiddifypanel/templates/flaskadmin-layout.html:113
 msgid "config.reality_server_names.description"
 msgstr "You can add several Sever Names in comma seperated format"
 
@@ -530,7 +545,7 @@ msgstr "IP"
 #: hiddifypanel/panel/admin/DomainAdmin.py:149
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
-#: hiddifypanel/templates/flaskadmin-layout.html:110
+#: hiddifypanel/templates/flaskadmin-layout.html:112
 msgid "config.reality_server_names.label"
 msgstr "🌎 Reality Server Names"
 
@@ -1054,7 +1069,7 @@ msgstr ""
 "%(total)s users"
 
 #: hiddifypanel/panel/admin/templates/backup.html:9
-#: hiddifypanel/templates/admin-layout.html:176
+#: hiddifypanel/templates/admin-layout.html:175
 msgid "Backup"
 msgstr "Backup"
 
@@ -1168,7 +1183,7 @@ msgid "Save & Add More"
 msgstr "Save & Add More"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:5
-#: hiddifypanel/panel/user/templates/home/one_click.html:275
+#: hiddifypanel/panel/user/templates/home/one_click.html:280
 #: hiddifypanel/templates/donation.html:14
 msgid "Close"
 msgstr "Close"
@@ -1974,7 +1989,7 @@ msgstr "Do Not Change It"
 # | msgid "🌍 Reality Fallback Domain"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
-#: hiddifypanel/templates/flaskadmin-layout.html:114
+#: hiddifypanel/templates/flaskadmin-layout.html:116
 msgid "config.reality_fallback_domain.label"
 msgstr "🌍 Reality Fallback Domain"
 
@@ -1983,7 +1998,7 @@ msgstr "🌍 Reality Fallback Domain"
 # | "this Domain."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
-#: hiddifypanel/templates/flaskadmin-layout.html:115
+#: hiddifypanel/templates/flaskadmin-layout.html:117
 msgid "config.reality_fallback_domain.description"
 msgstr ""
 "When the GTW visit the Websites in Server names, it will be redirect to this"
@@ -2689,7 +2704,11 @@ msgid "admin.config.title"
 msgstr "Settings"
 
 # | msgid "📅Remain: %(expire_days)s days"
+<<<<<<< HEAD
 #: hiddifypanel/panel/user/link_maker.py:711
+=======
+#: hiddifypanel/panel/user/link_maker.py:724
+>>>>>>> v8
 #, python-format
 msgid "📅%(expire_days)s days"
 msgstr "📅Remain: %(expire_days)s days"
@@ -2764,11 +2783,11 @@ msgstr "Security"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:79
 #: hiddifypanel/panel/user/templates/home/all-configs.html:80
 #: hiddifypanel/panel/user/templates/home/all-configs.html:81
-#: hiddifypanel/panel/user/templates/home/all-configs.html:91
-#: hiddifypanel/panel/user/templates/home/all-configs.html:92
-#: hiddifypanel/panel/user/templates/home/all-configs.html:93
-#: hiddifypanel/panel/user/templates/home/all-configs.html:94
-#: hiddifypanel/panel/user/templates/home/all-configs.html:95
+#: hiddifypanel/panel/user/templates/home/all-configs.html:104
+#: hiddifypanel/panel/user/templates/home/all-configs.html:105
+#: hiddifypanel/panel/user/templates/home/all-configs.html:106
+#: hiddifypanel/panel/user/templates/home/all-configs.html:107
+#: hiddifypanel/panel/user/templates/home/all-configs.html:108
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:22
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:23
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:24
@@ -2808,12 +2827,26 @@ msgstr "Except VLess"
 
 # | msgid "Subscription Link"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:74
-#: hiddifypanel/panel/user/templates/home/all-configs.html:88
+#: hiddifypanel/panel/user/templates/home/all-configs.html:101
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:43
 #: hiddifypanel/panel/user/templates/home/android.html:40
 #: hiddifypanel/panel/user/templates/home/ios.html:29
 msgid "user.home.allconfig.link-configs"
 msgstr "Subscription Link"
+
+# | msgid "SingBox: SSH"
+#: hiddifypanel/panel/user/templates/home/all-configs.html:87
+msgid "singbox: ssh"
+msgstr "SingBox: SSH"
+
+# | msgid "SSH"
+#: hiddifypanel/panel/user/templates/home/all-configs.html:90
+#: hiddifypanel/panel/user/templates/home/all-configs.html:91
+#: hiddifypanel/panel/user/templates/home/all-configs.html:92
+#: hiddifypanel/panel/user/templates/home/all-configs.html:93
+#: hiddifypanel/panel/user/templates/home/all-configs.html:94
+msgid "ssh"
+msgstr "SSH"
 
 # | msgid ""
 # | "📍 Please select one of the following applications:\n"
@@ -3000,7 +3033,7 @@ msgid "user.home.title"
 msgstr "Hiddify"
 
 # | msgid "Test"
-#: hiddifypanel/panel/user/templates/home/base2.html:36
+#: hiddifypanel/panel/user/templates/home/base2.html:38
 msgid "test"
 msgstr "Test"
 
@@ -3420,7 +3453,7 @@ msgid "Unified link for all application."
 msgstr "Unified link for all application."
 
 #: hiddifypanel/panel/user/templates/home/one_click.html:30
-#: hiddifypanel/panel/user/templates/home/one_click.html:292
+#: hiddifypanel/panel/user/templates/home/one_click.html:297
 #, fuzzy
 msgid "Temporary Short Link"
 msgstr "Temporary Short Link"
@@ -3473,9 +3506,10 @@ msgstr "Use HiddifyNext:"
 #: hiddifypanel/panel/user/templates/home/one_click.html:209
 #: hiddifypanel/panel/user/templates/home/one_click.html:215
 #: hiddifypanel/panel/user/templates/home/one_click.html:229
-#: hiddifypanel/panel/user/templates/home/one_click.html:235
-#: hiddifypanel/panel/user/templates/home/one_click.html:243
-#: hiddifypanel/panel/user/templates/home/one_click.html:254
+#: hiddifypanel/panel/user/templates/home/one_click.html:234
+#: hiddifypanel/panel/user/templates/home/one_click.html:240
+#: hiddifypanel/panel/user/templates/home/one_click.html:248
+#: hiddifypanel/panel/user/templates/home/one_click.html:259
 msgid "Download App"
 msgstr "<i class=\"fa-solid fa-download\"></i> Download App"
 
@@ -3490,9 +3524,10 @@ msgstr "<i class=\"fa-solid fa-download\"></i> Download App"
 #: hiddifypanel/panel/user/templates/home/one_click.html:211
 #: hiddifypanel/panel/user/templates/home/one_click.html:216
 #: hiddifypanel/panel/user/templates/home/one_click.html:230
-#: hiddifypanel/panel/user/templates/home/one_click.html:237
-#: hiddifypanel/panel/user/templates/home/one_click.html:247
-#: hiddifypanel/panel/user/templates/home/one_click.html:257
+#: hiddifypanel/panel/user/templates/home/one_click.html:235
+#: hiddifypanel/panel/user/templates/home/one_click.html:242
+#: hiddifypanel/panel/user/templates/home/one_click.html:252
+#: hiddifypanel/panel/user/templates/home/one_click.html:262
 msgid "Import"
 msgstr "Import in App"
 
@@ -3510,11 +3545,11 @@ msgid "Import in"
 msgstr "Import in"
 
 # | msgid "<i class=\"fa-solid fa-qrcode\"></i> QRCode"
-#: hiddifypanel/panel/user/templates/home/one_click.html:265
+#: hiddifypanel/panel/user/templates/home/one_click.html:270
 msgid "QRCode"
 msgstr "<i class=\"fa-solid fa-qrcode\"></i> QRCode"
 
-#: hiddifypanel/panel/user/templates/home/one_click.html:276
+#: hiddifypanel/panel/user/templates/home/one_click.html:281
 msgid "Copy Link"
 msgstr "Copy Link"
 
@@ -3760,23 +3795,23 @@ msgid "admin.menu.home"
 msgstr "Dashboard"
 
 # | msgid "Users"
-#: hiddifypanel/templates/admin-layout.html:78
-#: hiddifypanel/templates/admin-layout.html:80
+#: hiddifypanel/templates/admin-layout.html:79
+#: hiddifypanel/templates/admin-layout.html:81
 msgid "admin.menu.user"
 msgstr "Users"
 
 # | msgid "In Parent Panel"
-#: hiddifypanel/templates/admin-layout.html:78
+#: hiddifypanel/templates/admin-layout.html:79
 msgid "in parent panel"
 msgstr "In Parent Panel"
 
-#: hiddifypanel/templates/admin-layout.html:83
+#: hiddifypanel/templates/admin-layout.html:84
 msgid "Admins"
 msgstr "Admins"
 
 # | msgid "Settings"
 #: hiddifypanel/templates/admin-layout.html:92
-#: hiddifypanel/templates/admin-layout.html:171
+#: hiddifypanel/templates/admin-layout.html:170
 msgid "admin.menu.config"
 msgstr "Settings"
 
@@ -3786,7 +3821,7 @@ msgid "Commercial use"
 msgstr "Commercial Use"
 
 # | msgid "Actions"
-#: hiddifypanel/templates/admin-layout.html:110
+#: hiddifypanel/templates/admin-layout.html:109
 msgid "admin.actions.title"
 msgstr "Actions"
 
@@ -3796,67 +3831,67 @@ msgid "admin.menu.support"
 msgstr "Help"
 
 # | msgid "Telegram"
-#: hiddifypanel/templates/admin-layout.html:121
+#: hiddifypanel/templates/admin-layout.html:120
 msgid "admin.menu.telegram"
 msgstr "Telegram"
 
-#: hiddifypanel/templates/admin-layout.html:125
+#: hiddifypanel/templates/admin-layout.html:124
 #: hiddifypanel/templates/donation.html:5
 msgid "Donation"
 msgstr "Donation"
 
 # | msgid "Status"
-#: hiddifypanel/templates/admin-layout.html:149
+#: hiddifypanel/templates/admin-layout.html:148
 msgid "admin.actions.status"
 msgstr "Status"
 
 # | msgid "View Logs"
-#: hiddifypanel/templates/admin-layout.html:150
+#: hiddifypanel/templates/admin-layout.html:149
 msgid "admin.actions.viewlogs"
 msgstr "View Logs"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/templates/admin-layout.html:151
+#: hiddifypanel/templates/admin-layout.html:150
 msgid "admin.actions.apply_configs"
 msgstr "Apply Configs"
 
 # | msgid "Update"
-#: hiddifypanel/templates/admin-layout.html:152
+#: hiddifypanel/templates/admin-layout.html:151
 msgid "admin.actions.update"
 msgstr "Update"
 
 # | msgid "Reinstall"
-#: hiddifypanel/templates/admin-layout.html:154
+#: hiddifypanel/templates/admin-layout.html:153
 msgid "admin.actions.reinstall"
 msgstr "Reinstall"
 
 # | msgid "Restart System"
-#: hiddifypanel/templates/admin-layout.html:155
+#: hiddifypanel/templates/admin-layout.html:154
 msgid "admin.actions.reset"
 msgstr "Restart System"
 
 # | msgid "Domains"
-#: hiddifypanel/templates/admin-layout.html:162
-#: hiddifypanel/templates/admin-layout.html:167
+#: hiddifypanel/templates/admin-layout.html:161
+#: hiddifypanel/templates/admin-layout.html:166
 msgid "admin.menu.domain"
 msgstr "Domains"
 
 # | msgid "Proxies"
-#: hiddifypanel/templates/admin-layout.html:168
+#: hiddifypanel/templates/admin-layout.html:167
 msgid "admin.menu.proxy"
 msgstr "Proxies"
 
 # | msgid "Common Settings"
-#: hiddifypanel/templates/admin-layout.html:174
+#: hiddifypanel/templates/admin-layout.html:173
 msgid "Commercial Settings"
 msgstr "Common Settings"
 
-#: hiddifypanel/templates/admin-layout.html:179
+#: hiddifypanel/templates/admin-layout.html:178
 msgid "Telegram Bot"
 msgstr "Telegram Bot"
 
 # | msgid "⚠️ Are you sure you want to do this action?"
-#: hiddifypanel/templates/admin-layout.html:212
+#: hiddifypanel/templates/admin-layout.html:211
 msgid "Are you sure you want to do this action?"
 msgstr "⚠️ Are you sure you want to do this action?"
 
@@ -4157,32 +4192,32 @@ msgid "daily"
 msgstr "⏰ Daily"
 
 # | msgid "➖ Direct"
-#: hiddifypanel/templates/flaskadmin-layout.html:53
+#: hiddifypanel/templates/flaskadmin-layout.html:55
 msgid "Direct"
 msgstr "➖ Direct"
 
 # | msgid "➖ Panel Link"
-#: hiddifypanel/templates/flaskadmin-layout.html:54
+#: hiddifypanel/templates/flaskadmin-layout.html:56
 msgid "Panel Link"
 msgstr "➖ Panel Link"
 
 # | msgid "➖ Bridge Servers"
-#: hiddifypanel/templates/flaskadmin-layout.html:55
+#: hiddifypanel/templates/flaskadmin-layout.html:57
 msgid "Bridge Servers"
 msgstr "➖ Bridge Servers"
 
 # | msgid "➖ Fake"
-#: hiddifypanel/templates/flaskadmin-layout.html:56
+#: hiddifypanel/templates/flaskadmin-layout.html:58
 msgid "Fake"
 msgstr "➖ Fake"
 
 # | msgid "Test and Suggest Domain "
-#: hiddifypanel/templates/flaskadmin-layout.html:115
+#: hiddifypanel/templates/flaskadmin-layout.html:117
 msgid "Example Domains"
 msgstr "Test and Suggest Domain "
 
 # | msgid "🔒 Enable TLS Domain Fronting"
-#: hiddifypanel/templates/flaskadmin-layout.html:119
+#: hiddifypanel/templates/flaskadmin-layout.html:121
 #, fuzzy
 msgid "domain.domain_fronting.label"
 msgstr "🔒 Enable TLS Domain Fronting"
@@ -4193,7 +4228,7 @@ msgstr "🔒 Enable TLS Domain Fronting"
 # | "<a
 # href=\"https://github.com/hiddify/hiddify-config/wiki/Guide-for-domain-"
 # | "fronting\">Guide</a>. ⚠️CloudFlare does not support Domain Fronting. "
-#: hiddifypanel/templates/flaskadmin-layout.html:120
+#: hiddifypanel/templates/flaskadmin-layout.html:122
 #, fuzzy
 msgid "domain.domain_fronting.description"
 msgstr ""
@@ -4534,14 +4569,6 @@ msgstr "Actions"
 #~ "Using Alias with Special Charachters may cause problem in some Clients like "
 #~ "Fair VPN"
 
-# | msgid "SingBox: SSH"
-#~ msgid "singbox: ssh"
-#~ msgstr "SingBox: SSH"
-
-# | msgid "SSH"
-#~ msgid "ssh"
-#~ msgstr "SSH"
-
 #~ msgid ""
 #~ "You should visit this page without VPN. Your country=%(your_country)s\n"
 #~ "expected=%(expected_country)s"
@@ -4564,3 +4591,10 @@ msgstr "Actions"
 #~ "Download\n"
 #~ "                                    App"
 #~ msgstr "<i class=\"fa-solid fa-download\"></i>  Download App"
+
+#~ msgid ""
+#~ "Telegram\n"
+#~ "          Bot"
+#~ msgstr ""
+#~ "Telegram\n"
+#~ "          Bot"

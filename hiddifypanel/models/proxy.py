@@ -16,6 +16,7 @@ from strenum import StrEnum
 
 
 class ProxyTransport(StrEnum):
+    h2 = auto()
     grpc = auto()
     XTLS = auto()
     faketls = auto()

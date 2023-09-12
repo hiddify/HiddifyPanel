@@ -21,7 +21,8 @@ import string
 def init_db():
     Events.db_prehook.notify()
     db.create_all()
-
+    hconfig.invalidate_all()
+    get_hconfigs.invalidate_all()
     execute(f'update domain set mode="sub_link_only", sub_link_only=false where sub_link_only = true or mode=1  or mode="1"')
     execute(f'update domain set mode="direct", sub_link_only=false where mode=0  or mode="0"')
     execute(f'update proxy set transport="WS" where transport = "ws"')
@@ -154,6 +155,8 @@ def init_db():
 #     add_config_if_not_exist(ConfigEnum.hysteria_enable, True)
 #     add_config_if_not_exist(ConfigEnum.hysteria_port, random.randint(5000, 20000))
 
+def _v52():
+    db.session.bulk_save_objects(get_proxy_rows_v1())
 
 def _v51():
     Proxy.query.filter(Proxy.l3.in_([ProxyL3.h3_quic])).delete()
@@ -185,7 +188,11 @@ def _v45():
     if not Proxy.query.filter(Proxy.name == "SSH").first():
         db.session.add(Proxy(l3='ssh', transport='ssh', cdn='direct', proto='ssh', enable=True, name="SSH"))
     add_config_if_not_exist(ConfigEnum.ssh_server_redis_url, "unix:///opt/hiddify-config/other/redis/run.sock?db=1")
-    add_config_if_not_exist(ConfigEnum.ssh_server_port, random.randint(5000, 20000))
+    while 1:
+        port = random.randint(5000, 40000)
+        if port not in [10085, 10086]:
+            break
+    add_config_if_not_exist(ConfigEnum.ssh_server_port, port)
     add_config_if_not_exist(ConfigEnum.ssh_server_enable, False)
 # def _v43():
 #     if not (Domain.query.filter(Domain.domain==hconfig(ConfigEnum.domain_fronting_domain)).first()):
@@ -327,7 +334,7 @@ def _v1():
         BoolConfig(key=ConfigEnum.first_setup, value=True),
         StrConfig(key=ConfigEnum.decoy_domain, value=rnd_domains[0]),
         StrConfig(key=ConfigEnum.proxy_path, value=get_random_string()),
-        BoolConfig(key=ConfigEnum.firewall, value=True),
+        BoolConfig(key=ConfigEnum.firewall, value=False),
         BoolConfig(key=ConfigEnum.netdata, value=True),
         StrConfig(key=ConfigEnum.lang, value='en'),
         BoolConfig(key=ConfigEnum.block_iran_sites, value=True),
@@ -425,6 +432,7 @@ def get_proxy_rows_v1():
         # 'grpc Fake vmess',
         # "XTLS direct vless",
         # "XTLS direct trojan",
+        "h2 direct vless",
         "XTLS direct vless",
         "WS direct vless",
         "WS direct trojan",
@@ -466,6 +474,8 @@ def make_proxy_rows(cfgs):
             if proto == "trojan" and l3 not in ["tls", 'xtls', 'tls_h2', 'h3_quic']:
                 continue
             if transport in ["grpc", "XTLS", "faketls"] and l3 == "http":
+                continue
+            if transport in ["h2"] and l3 != "reality":
                 continue
             # if l3 == "tls_h2" and transport =="grpc":
             #     continue

@@ -19,17 +19,17 @@
   %else
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   %endif
-<link href="{{url_for('static',filename='images/splash/iphone5_splash.png')}}" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" rel="apple-touch-startup-image" />
-<link href="{{url_for('static',filename='images/splash/iphone6_splash.png')}}" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" rel="apple-touch-startup-image" />
-<link href="{{url_for('static',filename='images/splash/iphoneplus_splash.png')}}" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" rel="apple-touch-startup-image" />
-<link href="{{url_for('static',filename='images/splash/iphonex_splash.png')}}" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" rel="apple-touch-startup-image" />
-<link href="{{url_for('static',filename='images/splash/iphonexr_splash.png')}}" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" rel="apple-touch-startup-image" />
-<link href="{{url_for('static',filename='images/splash/iphonexsmax_splash.png')}}" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" rel="apple-touch-startup-image" />
-<link href="{{url_for('static',filename='images/splash/ipad_splash.png')}}" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" rel="apple-touch-startup-image" />
-<link href="{{url_for('static',filename='images/splash/ipadpro1_splash.png')}}" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" rel="apple-touch-startup-image" />
-<link href="{{url_for('static',filename='images/splash/ipadpro3_splash.png')}}" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" rel="apple-touch-startup-image" />
-<link href="{{url_for('static',filename='images/splash/ipadpro2_splash.png')}}" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" rel="apple-touch-startup-image" />
-<link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico')}}">
+<link href="{{static_url_for(filename='images/splash/iphone5_splash.png')}}" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" rel="apple-touch-startup-image" />
+<link href="{{static_url_for(filename='images/splash/iphone6_splash.png')}}" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" rel="apple-touch-startup-image" />
+<link href="{{static_url_for(filename='images/splash/iphoneplus_splash.png')}}" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" rel="apple-touch-startup-image" />
+<link href="{{static_url_for(filename='images/splash/iphonex_splash.png')}}" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" rel="apple-touch-startup-image" />
+<link href="{{static_url_for(filename='images/splash/iphonexr_splash.png')}}" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" rel="apple-touch-startup-image" />
+<link href="{{static_url_for(filename='images/splash/iphonexsmax_splash.png')}}" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" rel="apple-touch-startup-image" />
+<link href="{{static_url_for(filename='images/splash/ipad_splash.png')}}" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" rel="apple-touch-startup-image" />
+<link href="{{static_url_for(filename='images/splash/ipadpro1_splash.png')}}" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" rel="apple-touch-startup-image" />
+<link href="{{static_url_for(filename='images/splash/ipadpro3_splash.png')}}" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" rel="apple-touch-startup-image" />
+<link href="{{static_url_for(filename='images/splash/ipadpro2_splash.png')}}" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" rel="apple-touch-startup-image" />
+<link rel="icon" type="image/x-icon" href="{{ static_url_for( filename='images/favicon.ico')}}">
 <link rel="manifest" href="{{ url_for('user2.UserView:create_pwa_manifest')}}">
   
   <!-- Tell the browser to be responsive to screen width -->
@@ -38,24 +38,24 @@
   <!-- Bootstrap 4 -->
   {% block styles %}
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="{{ url_for('static', filename="plugins/font-awesome/css/font-awesome.min.css" ) }}">
-  <link rel="stylesheet" href="{{url_for('static',filename='css/font-awesome.css')}}" type="text/css">
+  <link rel="stylesheet" href="{{static_url_for(filename='plugins/font-awesome/css/font-awesome.min.css' ) }}">
+  <link rel="stylesheet" href="{{static_url_for(filename='css/font-awesome.css')}}" type="text/css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="{{ url_for('static', filename="css/adminlte.css" ) }}">
+  <link rel="stylesheet" href="{{ static_url_for( filename='css/adminlte.css' ) }}">
 
 
-  <!-- <link rel="stylesheet" href="{{url_for('static',filename='plugins/datatables/dataTables.bootstrap4.css')}}">
-  <link rel="stylesheet" href="{{url_for('static',filename='plugins/datatables/extensions/Responsive/css/dataTables.responsive.css')}}">
-  <link rel="stylesheet" href="{{url_for('static',filename='plugins/datatables/extensions/Responsive/css/responsive.bootstrap4.min.css')}}"> -->
+  <!-- <link rel="stylesheet" href="{{static_url_for(filename='plugins/datatables/dataTables.bootstrap4.css')}}">
+  <link rel="stylesheet" href="{{static_url_for(filename='plugins/datatables/extensions/Responsive/css/dataTables.responsive.css')}}">
+  <link rel="stylesheet" href="{{static_url_for(filename='plugins/datatables/extensions/Responsive/css/responsive.bootstrap4.min.css')}}"> -->
 
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap4.min.css">
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.bootstrap4.min.css">
 
-  <link rel="stylesheet" href="{{ url_for('static', filename="css/custom.css",version=5.23 ) }}">  
+  <link rel="stylesheet" href="{{ static_url_for( filename='css/custom.css',version=5.23 ) }}">  
   % if get_locale()=='fa'
-  <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap4-rtl.min.css')}}">
-  <link rel="stylesheet" href="{{url_for('static',filename='css/adminlte.fa.css')}}">
-  <link rel="stylesheet" href="{{url_for('static',filename='css/custom-rtl.css',version=3)}}">
+  <link rel="stylesheet" href="{{static_url_for(filename='css/bootstrap4-rtl.min.css')}}">
+  <link rel="stylesheet" href="{{static_url_for(filename='css/adminlte.fa.css')}}">
+  <link rel="stylesheet" href="{{static_url_for(filename='css/custom-rtl.css',version=3)}}">
   {% block rtl_styles %}
   {% endblock %}  
   % endif
@@ -68,7 +68,7 @@
 <body class="hold-transition layout-fixed {{"dark-mode" if g.darkmode else ""}} {% block bodyclass %}sidebar-collapse{%endblock%}">
   <div id="splash_screen">
     <center>
-    <img  src="{{url_for('static', filename='images/hiddify.png')}}"/>
+    <img  src="{{static_url_for( filename='images/hiddify.png')}}"/>
     <a href="https://github.com/hiddify/hiddify-config/wiki"><h1 class="title">{{_('user.home.title')}}</h1><br>Powered by hiddify.com</a>
   </center>
   </div>
@@ -191,16 +191,16 @@
 
 </script>
 <!-- jQuery -->
-<script src="{{ url_for('static', filename="plugins/jquery/jquery.min.js" ) }}"></script>
-<script src="{{ url_for('static', filename="js/popper.min.js" ) }}"></script> 
-<script src="{{ url_for('static', filename="plugins/bootstrap/js/bootstrap.min.js" ) }}"></script>
+<script src="{{ static_url_for( filename='plugins/jquery/jquery.min.js' ) }}"></script>
+<script src="{{ static_url_for( filename='js/popper.min.js' ) }}"></script> 
+<script src="{{ static_url_for( filename='plugins/bootstrap/js/bootstrap.min.js' ) }}"></script>
 
 
 <!-- <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
 
-<script src="{{ url_for('static', filename="js/moment.min.js" ) }}"></script>
-<script src="{{ url_for('static', filename="js/bootbox.all.min.js" ) }}"></script>
-<!-- {#<script src="{{ url_for('static', filename="plugins/select2/select2.min.js" ) }}"></script>#} -->
+<script src="{{ static_url_for( filename='js/moment.min.js' ) }}"></script>
+<script src="{{ static_url_for( filename='js/bootbox.all.min.js' ) }}"></script>
+<!-- {#<script src="{{ static_url_for( filename="plugins/select2/select2.min.js" ) }}"></script>#} -->
 
 
 
@@ -208,12 +208,12 @@
 
 <!-- Bootstrap 4 -->
 
-<!-- <script src="{{ url_for('static', filename="plugins/bootstrap/js/bootstrap.bundle.min.js" ) }}"></script> -->
+<!-- <script src="{{ static_url_for( filename='plugins/bootstrap/js/bootstrap.bundle.min.js' ) }}"></script> -->
 
-<script src="{{ url_for('static', filename='plugins/datatables/jquery.dataTables.min.js' ) }}"></script>
-<script src="{{ url_for('static', filename='plugins/datatables/dataTables.bootstrap4.js' ) }}"></script>
-<script src="{{ url_for('static', filename='plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js' ) }}"></script>
-<script src="{{ url_for('static', filename='plugins/datatables/extensions/Responsive/js/responsive.bootstrap4.min.js' ) }}"></script>
+<script src="{{ static_url_for( filename='plugins/datatables/jquery.dataTables.min.js' ) }}"></script>
+<script src="{{ static_url_for( filename='plugins/datatables/dataTables.bootstrap4.js' ) }}"></script>
+<script src="{{ static_url_for( filename='plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js' ) }}"></script>
+<script src="{{ static_url_for( filename='plugins/datatables/extensions/Responsive/js/responsive.bootstrap4.min.js' ) }}"></script>
 
 <!-- <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap4.min.js"></script>
@@ -224,12 +224,12 @@
 
 
 <!-- AdminLTE App -->
-<script src="{{ url_for('static', filename='js/adminlte.js' ) }}"></script>
-<script src="{{url_for('static',filename='js/qrcode.js')}}"></script>
-<!-- <script src="{{url_for('static',filename='js/demo.js')}}"></script> -->
-<script src="{{url_for('static',filename='js/custom.js')}}"></script>
+<script src="{{ static_url_for( filename='js/adminlte.js' ) }}"></script>
+<script src="{{static_url_for(filename='js/qrcode.js')}}"></script>
+<!-- <script src="{{static_url_for(filename='js/demo.js')}}"></script> -->
+<script src="{{static_url_for(filename='js/custom.js')}}"></script>
 
-<script src="{{url_for('static',filename='js/js.cookie.min.js')}}"> </script>
+<script src="{{static_url_for(filename='js/js.cookie.min.js')}}"> </script>
 <script  type="text/javascript">
 var v;
   function copy_click(e) {
@@ -281,7 +281,7 @@ var v;
       {% for cat, msg in get_flashed_messages(with_categories=True) %}
       $(document).Toasts('create', {
           class: 'bg-{{cats.get(cat,cat)}}',
-          position: '{{'topLeft' if get_locale()=='fa' else 'topRight'}}' ,
+          position: "{{'topLeft' if get_locale()=='fa' else 'topRight'}}" ,
           
           
           body: `{{msg}}`
@@ -329,7 +329,7 @@ var v;
 
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker
-     .register("{{url_for('static',filename='js/pwa-sw.js')}}")
+     .register("{{static_url_for(filename='js/pwa-sw.js')}}")
      .then(() => { console.log('Service Worker Registered'); });
  }
 
@@ -412,7 +412,7 @@ function show_video(file){
   toast=$(document).Toasts('create', {
           class: 'bg-',
           position: "{{'bottomRight' if get_locale()=='fa' else 'bottomLeft'}}" ,
-          image:"{{url_for('static', filename='images/pwa-icon.png')}}",
+          image:"{{static_url_for( filename='images/pwa-icon.png')}}",
           title: `{{_('Install Hiddify Application')}} <button class='btn btn-xs btn-default' onclick='show_video(is_ios?"webapp-ios":"webapp-android")'><i class='fa-solid fa-question'></i></button>`,
           class:"toast-full",
           body: `{{_("Please click on %(install)s to save the user page.",install=pwa_install_btn()|safe)}}`
@@ -517,11 +517,11 @@ if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').match
   </script>
 
 % if get_locale()=='fa'
-<script src="{{url_for('static',filename='js/custom-rtl.js',version=5.1)}}"> </script>
+<script src="{{static_url_for(filename='js/custom-rtl.js',version=5.1)}}"> </script>
 %endif
 
 
-<!-- <script src="{{url_for('static',filename='js/pwa-sw.js')}}" defer></script> -->
+<!-- <script src="{{static_url_for(filename='js/pwa-sw.js')}}" defer></script> -->
 {% endblock %}
 </body>
 </html>

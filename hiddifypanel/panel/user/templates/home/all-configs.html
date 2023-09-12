@@ -80,7 +80,20 @@
         <td><span class="badge badge-warning">{{_('all')}}</span></td>
         <td><span class="badge badge-success">{{_('all')}}</span></td>
       </tr>
-
+      % if hconfig(ConfigEnum.ssh_server_enable)
+      <tr>
+        <td>
+          <div class="btn-group">
+            <a href="{{base}}singbox.json?name={{db_domain.alias or db_domain.domain}}-{{asn}}&asn={{asn}}&mode={{mode}}" class="btn btn-light orig-link"> {{_('singbox: ssh')}}</a>
+          </div>
+        </td>
+        <td><span class="badge badge-danger">{{_('ssh')}}</span></td>
+        <td><span class="badge ">{{_('ssh')}}</span></td>
+        <td><span class="badge badge-info">{{_('ssh')}}</span></td>
+        <td><span class="badge badge-warning">{{_('ssh')}}</span></td>
+        <td><span class="badge badge-success">{{_('ssh')}}</span></td>
+      </tr>
+      %endif
       <tr>
         <td>
           <div class="btn-group">

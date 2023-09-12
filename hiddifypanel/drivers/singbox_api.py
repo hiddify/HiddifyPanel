@@ -12,8 +12,12 @@ class SingboxApi(DriverABS):
     def get_enabled_users(self):
         if hconfig(ConfigEnum.is_parent):
             return
-        raise NotImplementedError()
 
+        with open(f"{config['HIDDIFY_CONFIG_PATH']}/singbox/configs/01_api.json") as f:
+            json_data = json.load(f)
+            return {u:1 for u in json_data['experimental']['v2ray_api']['stats']['users']}
+        # raise NotImplementedError()
+# 
     def get_inbound_tags(self):
         if hconfig(ConfigEnum.is_parent):
             return

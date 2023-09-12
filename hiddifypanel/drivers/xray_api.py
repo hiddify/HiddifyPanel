@@ -73,7 +73,7 @@ class XrayApi(DriverABS):
                 p, protocol = proto(t)
                 if not p:
                     continue
-                if protocol == "vless" and p != "xtls" and p != "realityin":
+                if (protocol == "vless" and p != "xtls" and p != "realityin") or "realityingrpc" in t:
                     xray_client.add_client(t, f'{uuid}', f'{uuid}@hiddify.com', protocol=protocol, flow='\0',)
                 else:
                     xray_client.add_client(t, f'{uuid}', f'{uuid}@hiddify.com', protocol=protocol, flow='xtls-rprx-vision', alter_id=0, cipher='chacha20_poly1305')
@@ -103,7 +103,7 @@ class XrayApi(DriverABS):
         xray_client = self.get_xray_client()
         d = xray_client.get_client_download_traffic(f'{uuid}@hiddify.com', reset=reset)
         u = xray_client.get_client_upload_traffic(f'{uuid}@hiddify.com', reset=reset)
-        
+
         res = None
         if d is None:
             res = u

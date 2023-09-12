@@ -3,17 +3,17 @@
   <!-- Bootstrap 4 -->
   {% block styles %}
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="{{ url_for('static', filename="plugins/font-awesome/css/font-awesome.min.css" ) }}">
-  <link rel="stylesheet" href="{{url_for('static',filename='css/font-awesome.css')}}" type="text/css">
+  <link rel="stylesheet" href="{{ static_url_for( filename="plugins/font-awesome/css/font-awesome.min.css" ) }}">
+  <link rel="stylesheet" href="{{static_url_for(filename='css/font-awesome.css')}}" type="text/css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="{{ url_for('static', filename="css/adminlte.css" ) }}">
+  <link rel="stylesheet" href="{{ static_url_for( filename="css/adminlte.css" ) }}">
 
   % if get_locale()=='fa'
-  <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap4-rtl.min.css')}}">
-  <link rel="stylesheet" href="{{url_for('static',filename='css/adminlte.fa.css')}}">
+  <link rel="stylesheet" href="{{static_url_for(filename='css/bootstrap4-rtl.min.css')}}">
+  <link rel="stylesheet" href="{{static_url_for(filename='css/adminlte.fa.css')}}">
   % endif
 
-  <link rel="stylesheet" href="{{url_for('static',filename='plugins/datatables/dataTables.bootstrap4.css')}}">
+  <link rel="stylesheet" href="{{static_url_for(filename='plugins/datatables/dataTables.bootstrap4.css')}}">
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.bootstrap4.min.css">  
 {% if admin_view.extra_css %}
 {% for css_url in admin_view.extra_css %}
@@ -183,7 +183,7 @@
 {% block tail_js %}
 
 <!-- jQuery -->
-<script src="{{ url_for('static', filename="plugins/jquery/jquery.min.js" ) }}"></script>
+<script src="{{ static_url_for( filename="plugins/jquery/jquery.min.js" ) }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -191,17 +191,17 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
 
 <!-- Bootstrap 4 -->
-<script src="{{ url_for('static', filename="plugins/bootstrap/js/bootstrap.bundle.min.js" ) }}"></script>
-<!-- <script src="{{ url_for('static', filename="js/popper.min.js" ) }}"></script> -->
+<script src="{{ static_url_for( filename="plugins/bootstrap/js/bootstrap.bundle.min.js" ) }}"></script>
+<!-- <script src="{{ static_url_for( filename="js/popper.min.js" ) }}"></script> -->
 
-<script src="{{ url_for('static', filename='plugins/datatables/jquery.dataTables.js' ) }}"></script>
-<script src="{{ url_for('static', filename='plugins/datatables/dataTables.bootstrap4.js' ) }}"></script>
+<script src="{{ static_url_for( filename='plugins/datatables/jquery.dataTables.js' ) }}"></script>
+<script src="{{ static_url_for( filename='plugins/datatables/dataTables.bootstrap4.js' ) }}"></script>
 <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
 <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/responsive/2.4.0/js/responsive.bootstrap4.min.js"></script>
 <!-- AdminLTE App -->
-<script src="{{ url_for('static', filename='js/adminlte.js' ) }}"></script>
-<script src="{{url_for('static',filename='js/qrcode.js')}}"></script>
-<!-- <script src="{{url_for('static',filename='js/demo.js')}}"></script> -->
+<script src="{{ static_url_for( filename='js/adminlte.js' ) }}"></script>
+<script src="{{static_url_for(filename='js/qrcode.js')}}"></script>
+<!-- <script src="{{static_url_for(filename='js/demo.js')}}"></script> -->
 {% if admin_view.extra_js %}
         {% for js_url in admin_view.extra_js %}
             <script src="{{ js_url }}" type="text/javascript"></script>

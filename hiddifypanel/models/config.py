@@ -49,7 +49,7 @@ class StrConfig(db.Model, SerializerMixin):
         }
 
 
-@cache.cache()
+@cache.cache(ttl=500)
 def hconfig(key: ConfigEnum, child_id=0):
     value = None
     try:
@@ -79,6 +79,8 @@ def set_hconfig(key: ConfigEnum, value, child_id=0, commit=True):
     # hconfig.invalidate(key, child_id)
     # get_hconfigs.invalidate(child_id)
     hconfig.invalidate(key, child_id)
+    hconfig.invalidate(key, child_id=child_id)
+    hconfig.invalidate(key=key, child_id=child_id)
     if child_id == 0:
         hconfig.invalidate(key)
     # hconfig.invalidate_all()
@@ -100,7 +102,7 @@ def set_hconfig(key: ConfigEnum, value, child_id=0, commit=True):
         db.session.commit()
 
 
-@cache.cache()
+@cache.cache(ttl=500)
 def get_hconfigs(child_id=0):
     return {**{u.key: u.value for u in BoolConfig.query.filter(BoolConfig.child_id == child_id).all()},
             **{u.key: u.value for u in StrConfig.query.filter(StrConfig.child_id == child_id).all()},

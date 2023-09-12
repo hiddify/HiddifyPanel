@@ -3,8 +3,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
+<<<<<<< HEAD
 "POT-Creation-Date: 2023-08-30 19:54+0200\n"
 "PO-Revision-Date: 2023-08-30 11:51-0500\n"
+=======
+"POT-Creation-Date: 2023-09-12 16:28+0200\n"
+"PO-Revision-Date: 2023-09-12 05:35-0500\n"
+>>>>>>> v8
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -75,7 +80,7 @@ msgstr "0 - 最后一天"
 # | "Selected Domain for REALITY is not in the same ASN. To better use of the
 # "
 # | "Protocol, it is better to find a Domain in the same ASN"
-#: hiddifypanel/panel/hiddify.py:684
+#: hiddifypanel/panel/hiddify.py:723
 #, fuzzy
 msgid ""
 "selected domain for REALITY is not in the same ASN. To better use of the "
@@ -213,52 +218,60 @@ msgid "Owner can not be deleted!"
 msgstr "楼主不能删除！"
 
 # | msgid "Config file is incorrect."
-#: hiddifypanel/panel/admin/Backup.py:72
+#: hiddifypanel/panel/admin/Backup.py:73
 msgid "Config file is incorrect"
 msgstr "配置文件不正确。"
 
-#: hiddifypanel/panel/admin/Backup.py:78
+#: hiddifypanel/panel/admin/Backup.py:79
 msgid "Restore File"
 msgstr "恢复文件："
 
 # | msgid "Choose the downloaded restore file"
-#: hiddifypanel/panel/admin/Backup.py:78
+#: hiddifypanel/panel/admin/Backup.py:79
 msgid "Restore File Description"
 msgstr "选择下载的还原文件。"
 
 # | msgid "⚙️ Restore Settings"
-#: hiddifypanel/panel/admin/Backup.py:79
+#: hiddifypanel/panel/admin/Backup.py:80
 #, fuzzy
 msgid "Restore Settings"
 msgstr "恢复设置"
 
 # | msgid "Restore all settings description"
-#: hiddifypanel/panel/admin/Backup.py:79
+#: hiddifypanel/panel/admin/Backup.py:80
 #, fuzzy
 msgid "Restore Settings description"
 msgstr "恢复设置说明"
 
 # | msgid "👥 Restore Users"
-#: hiddifypanel/panel/admin/Backup.py:80
+#: hiddifypanel/panel/admin/Backup.py:81
 msgid "Restore Users"
 msgstr "恢复用户"
 
 # | msgid "Select this option to restore All Users"
-#: hiddifypanel/panel/admin/Backup.py:80
+#: hiddifypanel/panel/admin/Backup.py:81
 msgid "Restore Users description"
 msgstr "选择此选项以恢复所有用户。"
 
 # | msgid "🌏 Restore Domain"
-#: hiddifypanel/panel/admin/Backup.py:81
+#: hiddifypanel/panel/admin/Backup.py:82
 msgid "Restore Domain"
 msgstr "还原域"
 
 # | msgid "Select this option to restore your domains"
-#: hiddifypanel/panel/admin/Backup.py:81
+#: hiddifypanel/panel/admin/Backup.py:82
 msgid "Restore Domain description"
 msgstr "选择此选项以恢复您的域。"
 
-#: hiddifypanel/panel/admin/Backup.py:82
+#: hiddifypanel/panel/admin/Backup.py:83
+msgid "Override Root Admin"
+msgstr ""
+
+#: hiddifypanel/panel/admin/Backup.py:83
+msgid "It will override the root admin to the current user"
+msgstr ""
+
+#: hiddifypanel/panel/admin/Backup.py:84
 #: hiddifypanel/panel/admin/ProxyAdmin.py:97
 #: hiddifypanel/panel/admin/ProxyAdmin.py:128
 #: hiddifypanel/panel/admin/QuickSetup.py:85
@@ -279,7 +292,7 @@ msgstr "提交"
 #: hiddifypanel/panel/admin/DomainAdmin.py:45
 #: hiddifypanel/panel/admin/QuickSetup.py:110
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:32
-#: hiddifypanel/templates/flaskadmin-layout.html:127
+#: hiddifypanel/templates/flaskadmin-layout.html:129
 msgid "domain.description"
 msgstr ""
 "这个字段应该是正确的。请访问<a href=\"https://github.com/hiddify/hiddify-"
@@ -313,7 +326,7 @@ msgstr ""
 #: hiddifypanel/panel/admin/DomainAdmin.py:79
 #: hiddifypanel/panel/admin/QuickSetup.py:110
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:54
-#: hiddifypanel/templates/flaskadmin-layout.html:126
+#: hiddifypanel/templates/flaskadmin-layout.html:128
 msgid "domain.domain"
 msgstr "领域"
 
@@ -474,7 +487,7 @@ msgstr "将显示在此域的配置中的名称。"
 #: hiddifypanel/panel/admin/DomainAdmin.py:50
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
-#: hiddifypanel/templates/flaskadmin-layout.html:111
+#: hiddifypanel/templates/flaskadmin-layout.html:113
 #, fuzzy
 msgid "config.reality_server_names.description"
 msgstr "您可以以逗号分隔格式添加多个服务器名"
@@ -527,7 +540,7 @@ msgstr "知识产权"
 #: hiddifypanel/panel/admin/DomainAdmin.py:149
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
-#: hiddifypanel/templates/flaskadmin-layout.html:110
+#: hiddifypanel/templates/flaskadmin-layout.html:112
 #, fuzzy
 msgid "config.reality_server_names.label"
 msgstr "服务器名称"
@@ -1058,7 +1071,7 @@ msgid ""
 msgstr "你的用户太多了！您只能有 %(active)s 个活跃用户和 %(total)s 个用户"
 
 #: hiddifypanel/panel/admin/templates/backup.html:9
-#: hiddifypanel/templates/admin-layout.html:176
+#: hiddifypanel/templates/admin-layout.html:175
 msgid "Backup"
 msgstr "备份"
 
@@ -1163,7 +1176,7 @@ msgid "Save & Add More"
 msgstr "保存并添加更多"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:5
-#: hiddifypanel/panel/user/templates/home/one_click.html:275
+#: hiddifypanel/panel/user/templates/home/one_click.html:280
 #: hiddifypanel/templates/donation.html:14
 msgid "Close"
 msgstr "关闭"
@@ -1961,7 +1974,7 @@ msgstr "不要改变它"
 # | msgid "🌍 Reality Fallback Domain"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
-#: hiddifypanel/templates/flaskadmin-layout.html:114
+#: hiddifypanel/templates/flaskadmin-layout.html:116
 #, fuzzy
 msgid "config.reality_fallback_domain.label"
 msgstr "回退域"
@@ -1972,7 +1985,7 @@ msgstr "回退域"
 # | " Domain."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
-#: hiddifypanel/templates/flaskadmin-layout.html:115
+#: hiddifypanel/templates/flaskadmin-layout.html:117
 #, fuzzy
 msgid "config.reality_fallback_domain.description"
 msgstr "GTW访问服务器名中的网站时，会重定向到该域名 "
@@ -2703,7 +2716,11 @@ msgid "admin.config.title"
 msgstr "设置"
 
 # | msgid "📅Remain: %(expire_days)s days"
+<<<<<<< HEAD
 #: hiddifypanel/panel/user/link_maker.py:711
+=======
+#: hiddifypanel/panel/user/link_maker.py:724
+>>>>>>> v8
 #, fuzzy, python-format
 msgid "📅%(expire_days)s days"
 msgstr "📅剩余：%(expire_days)s 天"
@@ -2778,11 +2795,11 @@ msgstr "安全"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:79
 #: hiddifypanel/panel/user/templates/home/all-configs.html:80
 #: hiddifypanel/panel/user/templates/home/all-configs.html:81
-#: hiddifypanel/panel/user/templates/home/all-configs.html:91
-#: hiddifypanel/panel/user/templates/home/all-configs.html:92
-#: hiddifypanel/panel/user/templates/home/all-configs.html:93
-#: hiddifypanel/panel/user/templates/home/all-configs.html:94
-#: hiddifypanel/panel/user/templates/home/all-configs.html:95
+#: hiddifypanel/panel/user/templates/home/all-configs.html:104
+#: hiddifypanel/panel/user/templates/home/all-configs.html:105
+#: hiddifypanel/panel/user/templates/home/all-configs.html:106
+#: hiddifypanel/panel/user/templates/home/all-configs.html:107
+#: hiddifypanel/panel/user/templates/home/all-configs.html:108
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:22
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:23
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:24
@@ -2823,12 +2840,28 @@ msgstr "除了 vless"
 
 # | msgid "Subscription Link"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:74
-#: hiddifypanel/panel/user/templates/home/all-configs.html:88
+#: hiddifypanel/panel/user/templates/home/all-configs.html:101
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:43
 #: hiddifypanel/panel/user/templates/home/android.html:40
 #: hiddifypanel/panel/user/templates/home/ios.html:29
 msgid "user.home.allconfig.link-configs"
 msgstr "订阅链接"
+
+# | msgid "SingBox: SSH"
+#: hiddifypanel/panel/user/templates/home/all-configs.html:87
+#, fuzzy
+msgid "singbox: ssh"
+msgstr "歌手：ssh"
+
+# | msgid "SSH"
+#: hiddifypanel/panel/user/templates/home/all-configs.html:90
+#: hiddifypanel/panel/user/templates/home/all-configs.html:91
+#: hiddifypanel/panel/user/templates/home/all-configs.html:92
+#: hiddifypanel/panel/user/templates/home/all-configs.html:93
+#: hiddifypanel/panel/user/templates/home/all-configs.html:94
+#, fuzzy
+msgid "ssh"
+msgstr "SSH"
 
 # | msgid ""
 # | "📍 Please select one of the following applications:\n"
@@ -3015,7 +3048,7 @@ msgid "user.home.title"
 msgstr "Hiddify"
 
 # | msgid "Test"
-#: hiddifypanel/panel/user/templates/home/base2.html:36
+#: hiddifypanel/panel/user/templates/home/base2.html:38
 msgid "test"
 msgstr "测试"
 
@@ -3423,7 +3456,7 @@ msgid "Unified link for all application."
 msgstr "所有应用程序的统一链接。"
 
 #: hiddifypanel/panel/user/templates/home/one_click.html:30
-#: hiddifypanel/panel/user/templates/home/one_click.html:292
+#: hiddifypanel/panel/user/templates/home/one_click.html:297
 msgid "Temporary Short Link"
 msgstr ""
 
@@ -3475,9 +3508,10 @@ msgstr "使用 HiddifyNext："
 #: hiddifypanel/panel/user/templates/home/one_click.html:209
 #: hiddifypanel/panel/user/templates/home/one_click.html:215
 #: hiddifypanel/panel/user/templates/home/one_click.html:229
-#: hiddifypanel/panel/user/templates/home/one_click.html:235
-#: hiddifypanel/panel/user/templates/home/one_click.html:243
-#: hiddifypanel/panel/user/templates/home/one_click.html:254
+#: hiddifypanel/panel/user/templates/home/one_click.html:234
+#: hiddifypanel/panel/user/templates/home/one_click.html:240
+#: hiddifypanel/panel/user/templates/home/one_click.html:248
+#: hiddifypanel/panel/user/templates/home/one_click.html:259
 #, fuzzy
 msgid "Download App"
 msgstr "<i class=\"fa-solid fa-download\"></i> 下载应用程序"
@@ -3493,9 +3527,10 @@ msgstr "<i class=\"fa-solid fa-download\"></i> 下载应用程序"
 #: hiddifypanel/panel/user/templates/home/one_click.html:211
 #: hiddifypanel/panel/user/templates/home/one_click.html:216
 #: hiddifypanel/panel/user/templates/home/one_click.html:230
-#: hiddifypanel/panel/user/templates/home/one_click.html:237
-#: hiddifypanel/panel/user/templates/home/one_click.html:247
-#: hiddifypanel/panel/user/templates/home/one_click.html:257
+#: hiddifypanel/panel/user/templates/home/one_click.html:235
+#: hiddifypanel/panel/user/templates/home/one_click.html:242
+#: hiddifypanel/panel/user/templates/home/one_click.html:252
+#: hiddifypanel/panel/user/templates/home/one_click.html:262
 #, fuzzy
 msgid "Import"
 msgstr "在应用程序中导入"
@@ -3516,12 +3551,12 @@ msgid "Import in"
 msgstr "导入"
 
 # | msgid "<i class=\"fa-solid fa-qrcode\"></i> QRCode"
-#: hiddifypanel/panel/user/templates/home/one_click.html:265
+#: hiddifypanel/panel/user/templates/home/one_click.html:270
 #, fuzzy
 msgid "QRCode"
 msgstr "<i class=\"fa-solid fa-qrcode\"></i> 二维码"
 
-#: hiddifypanel/panel/user/templates/home/one_click.html:276
+#: hiddifypanel/panel/user/templates/home/one_click.html:281
 #, fuzzy
 msgid "Copy Link"
 msgstr "复制链接"
@@ -3768,25 +3803,25 @@ msgid "admin.menu.home"
 msgstr "仪表板"
 
 # | msgid "Users"
-#: hiddifypanel/templates/admin-layout.html:78
-#: hiddifypanel/templates/admin-layout.html:80
+#: hiddifypanel/templates/admin-layout.html:79
+#: hiddifypanel/templates/admin-layout.html:81
 msgid "admin.menu.user"
 msgstr "用户"
 
 # | msgid "In Parent Panel"
-#: hiddifypanel/templates/admin-layout.html:78
+#: hiddifypanel/templates/admin-layout.html:79
 #, fuzzy
 msgid "in parent panel"
 msgstr "在父面板中"
 
-#: hiddifypanel/templates/admin-layout.html:83
+#: hiddifypanel/templates/admin-layout.html:84
 #, fuzzy
 msgid "Admins"
 msgstr "管理员"
 
 # | msgid "Settings"
 #: hiddifypanel/templates/admin-layout.html:92
-#: hiddifypanel/templates/admin-layout.html:171
+#: hiddifypanel/templates/admin-layout.html:170
 msgid "admin.menu.config"
 msgstr "设置"
 
@@ -3797,7 +3832,7 @@ msgid "Commercial use"
 msgstr "商业用途"
 
 # | msgid "Actions"
-#: hiddifypanel/templates/admin-layout.html:110
+#: hiddifypanel/templates/admin-layout.html:109
 msgid "admin.actions.title"
 msgstr "动作"
 
@@ -3807,69 +3842,69 @@ msgid "admin.menu.support"
 msgstr "帮助"
 
 # | msgid "Telegram"
-#: hiddifypanel/templates/admin-layout.html:121
+#: hiddifypanel/templates/admin-layout.html:120
 msgid "admin.menu.telegram"
 msgstr "电报"
 
-#: hiddifypanel/templates/admin-layout.html:125
+#: hiddifypanel/templates/admin-layout.html:124
 #: hiddifypanel/templates/donation.html:5
 msgid "Donation"
 msgstr "捐款"
 
 # | msgid "Status"
-#: hiddifypanel/templates/admin-layout.html:149
+#: hiddifypanel/templates/admin-layout.html:148
 msgid "admin.actions.status"
 msgstr "地位"
 
 # | msgid "View Logs"
-#: hiddifypanel/templates/admin-layout.html:150
+#: hiddifypanel/templates/admin-layout.html:149
 msgid "admin.actions.viewlogs"
 msgstr "查看日志"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/templates/admin-layout.html:151
+#: hiddifypanel/templates/admin-layout.html:150
 msgid "admin.actions.apply_configs"
 msgstr "应用配置"
 
 # | msgid "Update"
-#: hiddifypanel/templates/admin-layout.html:152
+#: hiddifypanel/templates/admin-layout.html:151
 msgid "admin.actions.update"
 msgstr "更新系统"
 
 # | msgid "Reinstall"
-#: hiddifypanel/templates/admin-layout.html:154
+#: hiddifypanel/templates/admin-layout.html:153
 msgid "admin.actions.reinstall"
 msgstr "重装系统"
 
 # | msgid "Restart System"
-#: hiddifypanel/templates/admin-layout.html:155
+#: hiddifypanel/templates/admin-layout.html:154
 msgid "admin.actions.reset"
 msgstr "重启系统"
 
 # | msgid "Domains"
-#: hiddifypanel/templates/admin-layout.html:162
-#: hiddifypanel/templates/admin-layout.html:167
+#: hiddifypanel/templates/admin-layout.html:161
+#: hiddifypanel/templates/admin-layout.html:166
 msgid "admin.menu.domain"
 msgstr "域名"
 
 # | msgid "Proxies"
-#: hiddifypanel/templates/admin-layout.html:168
+#: hiddifypanel/templates/admin-layout.html:167
 msgid "admin.menu.proxy"
 msgstr "代理"
 
 # | msgid "Common Settings"
-#: hiddifypanel/templates/admin-layout.html:174
+#: hiddifypanel/templates/admin-layout.html:173
 #, fuzzy
 msgid "Commercial Settings"
 msgstr "商业设置"
 
-#: hiddifypanel/templates/admin-layout.html:179
+#: hiddifypanel/templates/admin-layout.html:178
 #, fuzzy
 msgid "Telegram Bot"
 msgstr "电报机器人"
 
 # | msgid "⚠️ Are you sure you want to do this action?"
-#: hiddifypanel/templates/admin-layout.html:212
+#: hiddifypanel/templates/admin-layout.html:211
 #, fuzzy
 msgid "Are you sure you want to do this action?"
 msgstr "您确定要执行此操作吗？"
@@ -4208,37 +4243,37 @@ msgid "daily"
 msgstr "⏰每日"
 
 # | msgid "➖ Direct"
-#: hiddifypanel/templates/flaskadmin-layout.html:53
+#: hiddifypanel/templates/flaskadmin-layout.html:55
 #, fuzzy
 msgid "Direct"
 msgstr "➖ 直接"
 
 # | msgid "➖ Panel Link"
-#: hiddifypanel/templates/flaskadmin-layout.html:54
+#: hiddifypanel/templates/flaskadmin-layout.html:56
 #, fuzzy
 msgid "Panel Link"
 msgstr "➖ 面板链接"
 
 # | msgid "➖ Bridge Servers"
-#: hiddifypanel/templates/flaskadmin-layout.html:55
+#: hiddifypanel/templates/flaskadmin-layout.html:57
 #, fuzzy
 msgid "Bridge Servers"
 msgstr "➖ 桥接服务器"
 
 # | msgid "➖ Fake"
-#: hiddifypanel/templates/flaskadmin-layout.html:56
+#: hiddifypanel/templates/flaskadmin-layout.html:58
 #, fuzzy
 msgid "Fake"
 msgstr "➖ 假货"
 
 # | msgid "Test and Suggest Domain "
-#: hiddifypanel/templates/flaskadmin-layout.html:115
+#: hiddifypanel/templates/flaskadmin-layout.html:117
 #, fuzzy
 msgid "Example Domains"
 msgstr "测试并建议域"
 
 # | msgid "🔒 Enable TLS Domain Fronting"
-#: hiddifypanel/templates/flaskadmin-layout.html:119
+#: hiddifypanel/templates/flaskadmin-layout.html:121
 msgid "domain.domain_fronting.label"
 msgstr ""
 
@@ -4248,7 +4283,7 @@ msgstr ""
 # | "<a
 # href=\"https://github.com/hiddify/hiddify-config/wiki/Guide-for-domain-fronting\">Guide</a>.
 # ⚠️CloudFlare does not support Domain Fronting. "
-#: hiddifypanel/templates/flaskadmin-layout.html:120
+#: hiddifypanel/templates/flaskadmin-layout.html:122
 msgid "domain.domain_fronting.description"
 msgstr ""
 
@@ -4585,14 +4620,6 @@ msgstr "动作"
 #~ " FairVPN."
 #~ msgstr "使用带有特殊字符的别名可能会导致某些客户端出现问题，例如 FairVPN"
 
-# | msgid "SingBox: SSH"
-#~ msgid "singbox: ssh"
-#~ msgstr "歌手：ssh"
-
-# | msgid "SSH"
-#~ msgid "ssh"
-#~ msgstr "SSH"
-
 #~ msgid ""
 #~ "You should visit this page without VPN. Your country=%(your_country)s\n"
 #~ "expected=%(expected_country)s"
@@ -4618,4 +4645,9 @@ msgstr "动作"
 #~ "Download\n"
 #~ "                                    App"
 #~ msgstr "<i class=\"fa-solid fa-download\"></i> 下载应用程序"
+
+#~ msgid ""
+#~ "Telegram\n"
+#~ "          Bot"
+#~ msgstr ""
 

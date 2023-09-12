@@ -95,16 +95,16 @@
         }
     ],
     "outbounds": [
-    {
-			"type": "socks",
-			"tag": "SSH+UDP",
-			"server": "127.0.0.1",
-			"server_port": 2000,
-			"version": "5",
-			"udp_over_tcp": true,
-			"network": "tcp",
-			"detour": "ssh-out"
-		},
+        {
+            "type": "socks",
+            "tag": "SSH+UDP",
+            "server": "127.0.0.1",
+            "server_port": 2000,
+            "version": "5",
+            "udp_over_tcp": true,
+            "network": "tcp",
+            "detour": "ssh-out"
+        },
         {
             "type": "ssh",
             "tag": "ssh-out",
@@ -141,10 +141,10 @@
         // //    "download_url": "https:\/\/github.com\/malikshi\/sing-box-geo\/releases\/latest\/download\/geoip.db",
         //     "download_detour": "direct"
         // },
-        "geoip": {
-            "download_url": "https:\/\/github.com\/malikshi\/sing-box-geo\/releases\/latest\/download\/geoip.db",
-            "download_detour": "direct"
-        },
+        // "geoip": {
+        //     "download_url": "https:\/\/github.com\/malikshi\/sing-box-geo\/releases\/latest\/download\/geoip.db",
+        //     "download_detour": "direct"
+        // },
         // "geosite": {
         //     "download_url": "https:\/\/github.com\/malikshi\/v2ray-rules-dat\/releases\/latest\/download\/geosite.db",
         //     "download_detour": "direct"
@@ -173,6 +173,11 @@
                     "ir"
                 ],
                 "outbound": "bypass"
+            },
+            {
+                "protocol": "quic",
+                "port": [443],
+                "outbound": "block"
             },
             {
                 "ip_cidr": [

@@ -47,6 +47,13 @@
                 "outbound": "bypass"
             },
             {
+                "protocol": "quic",
+                "port": [
+                    443
+                ],
+                "outbound": "block"
+            },
+            {
                 "ip_cidr": [
                     "224.0.0.0\/3",
                     "ff00::\/8"

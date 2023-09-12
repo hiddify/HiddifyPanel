@@ -87,7 +87,7 @@ class AdminUser(db.Model, SerializerMixin):
 def get_super_admin_secret():
     admin = AdminUser.query.filter(AdminUser.mode == AdminMode.super_admin).first()
     if not admin:
-        db.session.add(AdminUser(mode=AdminMode.super_admin))
+        db.session.add(AdminUser(mode=AdminMode.super_admin, name="Owner"))
         db.session.commit()
         admin = AdminUser.query.filter(AdminUser.mode == AdminMode.super_admin).first()
 
