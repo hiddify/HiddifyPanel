@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-11 21:01+0200\n"
-"PO-Revision-Date: 2023-09-09 08:39-0500\n"
+"POT-Creation-Date: 2023-09-12 09:24+0200\n"
+"PO-Revision-Date: 2023-09-11 14:06-0500\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -3878,16 +3878,11 @@ msgid "Commercial Settings"
 msgstr "Common Settings"
 
 #: hiddifypanel/templates/admin-layout.html:178
-#, fuzzy
-msgid ""
-"Telegram\n"
-"          Bot"
-msgstr ""
-"Telegram\n"
-"          Bot"
+msgid "Telegram Bot"
+msgstr "Telegram Bot"
 
 # | msgid "⚠️ Are you sure you want to do this action?"
-#: hiddifypanel/templates/admin-layout.html:212
+#: hiddifypanel/templates/admin-layout.html:211
 msgid "Are you sure you want to do this action?"
 msgstr "⚠️ Are you sure you want to do this action?"
 
@@ -4505,9 +4500,6 @@ msgstr "Actions"
 #~ "Welcome to HiddifyBot.\n"
 #~ " Please click on the link in the Panel page to start or enter your user UUID."
 
-#~ msgid "Telegram Bot"
-#~ msgstr "Telegram Bot"
-
 # | msgid "Reset Package Days and Usage."
 #~ msgid "Reset package days and usage"
 #~ msgstr "Reset Package Days and Usage."
@@ -4590,3 +4582,10 @@ msgstr "Actions"
 #~ "Download\n"
 #~ "                                    App"
 #~ msgstr "<i class=\"fa-solid fa-download\"></i>  Download App"
+
+#~ msgid ""
+#~ "Telegram\n"
+#~ "          Bot"
+#~ msgstr ""
+#~ "Telegram\n"
+#~ "          Bot"

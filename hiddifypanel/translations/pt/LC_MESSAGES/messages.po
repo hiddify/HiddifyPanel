@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPT\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-11 21:01+0200\n"
-"PO-Revision-Date: 2023-09-09 08:39-0500\n"
+"POT-Creation-Date: 2023-09-12 09:24+0200\n"
+"PO-Revision-Date: 2023-09-11 14:01-0500\n"
 "Last-Translator: lymanrudni\n"
 "Language: pt\n"
 "Language-Team: Portuguese\n"
@@ -4373,13 +4373,12 @@ msgid "Commercial Settings"
 msgstr "Configurações padrão"
 
 #: hiddifypanel/templates/admin-layout.html:178
-msgid ""
-"Telegram\n"
-"          Bot"
-msgstr ""
+#, fuzzy
+msgid "Telegram Bot"
+msgstr "Telegram Bot"
 
 # | msgid "⚠️ Are you sure you want to do this action?"
-#: hiddifypanel/templates/admin-layout.html:212
+#: hiddifypanel/templates/admin-layout.html:211
 #, fuzzy
 msgid "Are you sure you want to do this action?"
 msgstr "⚠️Tem certeza que deseja fazer esta ação?"
@@ -4866,9 +4865,6 @@ msgstr "Ações"
 #~ msgid "Can not connect to parent panel!"
 #~ msgstr "Não é possível conectar ao painel principal!"
 
-#~ msgid "Telegram Bot"
-#~ msgstr "Telegram Bot"
-
 #~ msgid "config.ssh_server_ports.label"
 #~ msgstr ""
 
@@ -4912,5 +4908,10 @@ msgstr "Ações"
 #~ "it\n"
 #~ "                on\n"
 #~ "                your application, or:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Telegram\n"
+#~ "          Bot"
 #~ msgstr ""
 

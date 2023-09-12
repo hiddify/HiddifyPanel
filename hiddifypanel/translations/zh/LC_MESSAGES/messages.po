@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-11 21:01+0200\n"
-"PO-Revision-Date: 2023-09-09 08:39-0500\n"
+"POT-Creation-Date: 2023-09-12 09:24+0200\n"
+"PO-Revision-Date: 2023-09-11 14:06-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -3890,13 +3890,12 @@ msgid "Commercial Settings"
 msgstr "商业设置"
 
 #: hiddifypanel/templates/admin-layout.html:178
-msgid ""
-"Telegram\n"
-"          Bot"
-msgstr ""
+#, fuzzy
+msgid "Telegram Bot"
+msgstr "电报机器人"
 
 # | msgid "⚠️ Are you sure you want to do this action?"
-#: hiddifypanel/templates/admin-layout.html:212
+#: hiddifypanel/templates/admin-layout.html:211
 #, fuzzy
 msgid "Are you sure you want to do this action?"
 msgstr "您确定要执行此操作吗？"
@@ -4554,9 +4553,6 @@ msgstr "动作"
 #~ " your user uuid"
 #~ msgstr ""
 
-#~ msgid "Telegram Bot"
-#~ msgstr "电报机器人"
-
 # | msgid "Reset Package Days and Usage."
 #~ msgid "Reset package days and usage"
 #~ msgstr ""
@@ -4640,4 +4636,9 @@ msgstr "动作"
 #~ "Download\n"
 #~ "                                    App"
 #~ msgstr "<i class=\"fa-solid fa-download\"></i> 下载应用程序"
+
+#~ msgid ""
+#~ "Telegram\n"
+#~ "          Bot"
+#~ msgstr ""
 
