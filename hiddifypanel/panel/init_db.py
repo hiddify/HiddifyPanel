@@ -35,7 +35,6 @@ def init_db():
         execute(f'update admin_user set mode="agent" where mode = "slave"')
         execute(f'update admin_user set mode="super_admin" where id=1')
         execute(f'DELETE from proxy where transport = "h1"')
-        update_enum_column()
         add_column(Domain.grpc)
         add_column(ParentDomain.alias)
         add_column(User.ed25519_private_key)
@@ -87,6 +86,8 @@ def init_db():
         execute(f'update domain set sub_link_only=False where sub_link_only is NULL')
         execute(f'update proxy set child_id=0 where child_id is NULL')
 
+    add_new_enum_values()
+
     if not Child.query.filter(Child.id == 0).first():
         print(Child.query.filter(Child.id == 0).first())
         db.session.add(Child(unique_id="self", id=0))
@@ -136,6 +137,10 @@ def init_db():
 
 #     add_config_if_not_exist(ConfigEnum.hysteria_enable, True)
 #     add_config_if_not_exist(ConfigEnum.hysteria_port, random.randint(5000, 20000))
+
+def _v53():
+    print("development")
+
 
 def _v52():
     db.session.bulk_save_objects(get_proxy_rows_v1())
@@ -540,7 +545,7 @@ def upgrade_database():
         newest_file = max([(f, os.path.getmtime(os.path.join(backup_root, f)))
                           for f in os.listdir(backup_root) if os.path.isfile(os.path.join(backup_root, f))], key=lambda x: x[1])[0]
         with open(f'{backup_root}{newest_file}', 'r') as f:
-            hiddify.error("importing configs from {newest_file}")
+            hiddify.error(f"importing configs from {newest_file}")
             json_data = json.load(f)
             hiddify.set_db_from_json(json_data,
                                      set_users=True,

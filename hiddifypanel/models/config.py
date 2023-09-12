@@ -17,6 +17,7 @@ import uuid as uuid_mod
 from enum import auto
 from strenum import StrEnum
 from hiddifypanel import Events
+from hiddifypanel.panel import hiddify
 
 from .config_enum import ConfigEnum, ConfigCategory
 
@@ -67,9 +68,9 @@ def hconfig(key: ConfigEnum, child_id=0):
                 #     return hdomain(DomainType.telegram_faketls)
                 # if key == ConfigEnum.fake_cdn_domain:
                 #     return hdomain(DomainType.fake_cdn)
-                print(f'{key} not found ')
+                hiddify.error(f'{key} not found ')
     except:
-        print(f'{key} error!')
+        hiddify.error(f'{key} error!')
         raise
 
     return value
@@ -85,19 +86,23 @@ def set_hconfig(key: ConfigEnum, value, child_id=0, commit=True):
         hconfig.invalidate(key)
     # hconfig.invalidate_all()
     get_hconfigs.invalidate_all()
+    old_v = None
     if key.type() == bool:
         dbconf = BoolConfig.query.filter(BoolConfig.key == key, BoolConfig.child_id == child_id).first()
         if not dbconf:
             dbconf = BoolConfig(key=key, value=value, child_id=child_id)
             db.session.add(dbconf)
+        else:
+            old_v = dbconf.value
     else:
         dbconf = StrConfig.query.filter(StrConfig.key == key, StrConfig.child_id == child_id).first()
         if not dbconf:
             dbconf = StrConfig(key=key, value=value, child_id=child_id)
             db.session.add(dbconf)
-    old_v = dbconf.value
+        else:
+            old_v = dbconf.value
     dbconf.value = value
-    print(f"changing {key} from {old_v} to {value}")
+    hiddify.error(f"changing {key} from {old_v} to {value}")
     Events.config_changed.notify(conf=dbconf, old_value=old_v)
     if commit:
         db.session.commit()

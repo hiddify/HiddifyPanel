@@ -79,7 +79,7 @@ class User(db.Model, SerializerMixin):
 
     @current_usage_GB.setter
     def current_usage_GB(self, value):
-        self.current_usage = value*ONE_GIG
+        self.current_usage = min(1000000*ONE_GIG, value*ONE_GIG)
 
     @property
     def usage_limit_GB(self):
@@ -87,7 +87,7 @@ class User(db.Model, SerializerMixin):
 
     @usage_limit_GB.setter
     def usage_limit_GB(self, value):
-        self.usage_limit = value*ONE_GIG
+        self.usage_limit = min(1000000*ONE_GIG, value*ONE_GIG)
 
     @property
     def remaining_days(self):
