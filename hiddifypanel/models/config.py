@@ -17,7 +17,7 @@ import uuid as uuid_mod
 from enum import auto
 from strenum import StrEnum
 from hiddifypanel import Events
-from hiddifypanel.panel import hiddify
+from hiddifypanel.utils import error
 
 from .config_enum import ConfigEnum, ConfigCategory
 
@@ -68,9 +68,9 @@ def hconfig(key: ConfigEnum, child_id=0):
                 #     return hdomain(DomainType.telegram_faketls)
                 # if key == ConfigEnum.fake_cdn_domain:
                 #     return hdomain(DomainType.fake_cdn)
-                hiddify.error(f'{key} not found ')
+                error(f'{key} not found ')
     except:
-        hiddify.error(f'{key} error!')
+        error(f'{key} error!')
         raise
 
     return value
@@ -102,7 +102,7 @@ def set_hconfig(key: ConfigEnum, value, child_id=0, commit=True):
         else:
             old_v = dbconf.value
     dbconf.value = value
-    hiddify.error(f"changing {key} from {old_v} to {value}")
+    error(f"changing {key} from {old_v} to {value}")
     Events.config_changed.notify(conf=dbconf, old_value=old_v)
     if commit:
         db.session.commit()
