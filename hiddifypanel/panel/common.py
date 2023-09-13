@@ -23,6 +23,8 @@ def init_app(app):
 
             last_version = hiddify.get_latest_release_version('hiddifypanel')
             has_update = "dev" not in hiddifypanel.__version__ and f'{last_version}' != hiddifypanel.__version__
+            if "T" in hiddifypanel.__version__:
+                has_update = False
             return render_template('500.html', error=e, trace=trace, has_update=has_update, last_version=last_version), 500
         # if e.code in [400,401,403]:
         #     return render_template('access-denied.html',error=e), e.code
