@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPT\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-13 02:55+0200\n"
-"PO-Revision-Date: 2023-09-12 19:46-0500\n"
+"POT-Creation-Date: 2023-09-13 11:55+0200\n"
+"PO-Revision-Date: 2023-09-13 03:12-0500\n"
 "Last-Translator: lymanrudni\n"
 "Language: pt\n"
 "Language-Team: Portuguese\n"
@@ -958,9 +958,11 @@ msgstr "🇺🇳 Outros"
 msgid "Release"
 msgstr "✅ Liberação"
 
+# | msgid "☑️ Beta"
 #: hiddifypanel/panel/admin/SettingAdmin.py:187
+#, fuzzy
 msgid "Beta"
-msgstr ""
+msgstr "☑️Beta"
 
 # | msgid "⚠️ Develop"
 #: hiddifypanel/panel/admin/SettingAdmin.py:188
@@ -3054,7 +3056,7 @@ msgstr ""
 msgid "admin.config.title"
 msgstr "Configurações"
 
-# | msgid "📅Remain: %(expire_days)s days"
+# | msgid "📅Remain: %(expire_days)s Days"
 #: hiddifypanel/panel/user/link_maker.py:724
 #, fuzzy, python-format
 msgid "📅%(expire_days)s days"
@@ -3902,7 +3904,7 @@ msgid "Open in Application"
 msgstr "Abrir no aplicativo"
 
 # | msgid ""
-# | "✔️The proxy link is copied.\n"
+# | "✔️The Proxy link is copied.\n"
 # | "<br>\n"
 # | "⚠️If the application do not open automatically, you need to only paste it
 # on your application, or:"
