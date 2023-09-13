@@ -277,9 +277,8 @@ class UserAdmin(AdminLTEModelView):
         hiddify.quick_apply_users()
 
     def after_model_delete(self, model):
-        # user_driver.remove_client(model)
-        pass
-        # hiddify.quick_apply_users()
+        user_driver.remove_client(model)
+        hiddify.quick_apply_users()
 
     def get_list(self, page, sort_column, sort_desc, search, filters, *args, **kwargs):
         res = None
@@ -334,8 +333,17 @@ class UserAdmin(AdminLTEModelView):
         query = self.get_query()
         from sqlalchemy import func
 
-        query = query.session.query(func.count(User.id))
-        # query = super().get_count_query()
+        # query = query.session.query(func.count(User.id))
+        query = super().get_count_query()
+        admin_id = int(request.args.get("admin_id") or g.admin.id)
+        if admin_id not in g.admin.recursive_sub_admins_ids():
+            abort(403)
+        admin = AdminUser.query.filter(AdminUser.id == admin_id).first()
+        if not admin:
+            abort(403)
+
+        query = query.filter(User.added_by.in_(admin.recursive_sub_admins_ids()))
+
         # admin_id=int(request.args.get("admin_id") or g.admin.id)
         # if admin_id not in g.admin.recursive_sub_admins_ids():
         #     abort(403)
