@@ -59,8 +59,10 @@ def make_proxy(proxy: Proxy, domain_db: Domain, phttp=80, ptls=443, pport=None):
         port = phttp
     elif l3 == "kcp":
         port = hconfigs[ConfigEnum.kcp_ports].split(",")[0]
-    elif l3 == "tuic":
-        port = hconfigs[ConfigEnum.tuic_port].split(",")[0]
+    elif proxy.proto == "tuic":
+        port = int(hconfigs[ConfigEnum.tuic_port])+domain_db.id
+    elif proxy.proto == "hystria":
+        port = int(hconfigs[ConfigEnum.hysteria_port])+domain_db.id
     elif l3 == 'ssh':
         port = hconfigs[ConfigEnum.ssh_server_port]
     if pport:
@@ -117,6 +119,9 @@ def make_proxy(proxy: Proxy, domain_db: Domain, phttp=80, ptls=443, pport=None):
         'dbe': proxy,
         'dbdomain': domain_db
     }
+    if proxy.proto in ['tuic', 'hystria']:
+        base['alpn'] = "h3"
+        return base
 
     if base["proto"] == "trojan" and not is_tls():
         return {'name': name, 'msg': "trojan but not tls", 'type': 'warning', 'proto': proxy.proto}
@@ -487,7 +492,8 @@ def to_singbox(proxy):
         return all_base
     if proxy["proto"] == "trojan":
         base["password"] = proxy["uuid"]
-    elif proxy['proto'] in ['trojan', 'vmess', 'vless']:
+
+    if proxy['proto'] in ['trojan', 'vmess', 'vless']:
         base["uuid"] = proxy["uuid"]
         add_singbox_multiplex(base)
 
@@ -504,9 +510,33 @@ def to_singbox(proxy):
     # base["udp"] = True
     if proxy["proto"] in ["vmess", "vless"]:
         base["packet_encoding"] = "xudp"  # udp packet encoding
+
+    if proxy["proto"] == "tuic":
+        add_tuic(base, proxy)
+    if proxy["proto"] == "hystria":
+        add_hystria(base, proxy)
     add_singbox_transport(base, proxy)
 
     return all_base
+
+
+def add_tuic(base, proxy):
+    base['congestion_control'] = "bbr"
+    base['udp_relay_mode'] = 'native'
+    base['zero_rtt_handshake'] = True
+    base['heartbeat'] = "10s"
+    base['password'] = proxy['uuid']
+    base['uuid'] = proxy['uuid']
+
+
+def add_hystria(base, proxy):
+    base['up_mbps'] = 100
+    base['down_mbps'] = 100
+    base['obfs'] = {
+        "type": "salamander",
+        "password": hconfig(ConfigEnum.proxy_path)
+    }
+    base['password'] = proxy['uuid']
 
 
 def add_singbox_multiplex(base):

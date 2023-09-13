@@ -138,8 +138,16 @@ def init_db():
 #     add_config_if_not_exist(ConfigEnum.hysteria_enable, True)
 #     add_config_if_not_exist(ConfigEnum.hysteria_port, random.randint(5000, 20000))
 
-def _v53():
-    print("development")
+
+def _v54():
+    tuic_port = random.randint(20000, 30000)
+    hystria_port = random.randint(10000, 20000)
+    set_hconfig(ConfigEnum.tuic_port, tuic_port)
+    set_hconfig(ConfigEnum.hysteria_port, hystria_port)
+    set_hconfig(ConfigEnum.tuic_enable, True)
+    set_hconfig(ConfigEnum.hysteria_enable, True)
+    db.session.add(Proxy(l3='custom', transport='custom', cdn='direct', proto='tuic', enable=True, name="TUIC"))
+    db.session.add(Proxy(l3='custom', transport='custom', cdn='direct', proto='hystria2', enable=True, name="Hystria2"))
 
 
 def _v52():
@@ -350,8 +358,8 @@ def _v1():
         # StrConfig(key=ConfigEnum.ssr_secret,value=str(uuid.uuid4())),
         StrConfig(key=ConfigEnum.ssr_fakedomain, value=rnd_domains[4]),
 
-        BoolConfig(key=ConfigEnum.tuic_enable, value=False),
-        StrConfig(key=ConfigEnum.tuic_port, value=3048),
+        # BoolConfig(key=ConfigEnum.tuic_enable, value=False),
+        # StrConfig(key=ConfigEnum.tuic_port, value=3048),
 
         BoolConfig(key=ConfigEnum.domain_fronting_tls_enable, value=False),
         BoolConfig(key=ConfigEnum.domain_fronting_http_enable, value=False),
