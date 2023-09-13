@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPT\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-12 16:28+0200\n"
-"PO-Revision-Date: 2023-09-12 05:35-0500\n"
+"POT-Creation-Date: 2023-09-13 02:46+0200\n"
+"PO-Revision-Date: 2023-09-12 18:58-0500\n"
 "Last-Translator: lymanrudni\n"
 "Language: pt\n"
 "Language-Team: Portuguese\n"
@@ -82,7 +82,7 @@ msgstr "Último dia"
 # | "Selected Domain for REALITY is not in the same ASN. To better use of the
 # "
 # | "Protocol, it is better to find a Domain in the same ASN"
-#: hiddifypanel/panel/hiddify.py:723
+#: hiddifypanel/panel/hiddify.py:732
 msgid ""
 "selected domain for REALITY is not in the same ASN. To better use of the "
 "protocol, it is better to find a domain in the same ASN."
@@ -957,6 +957,10 @@ msgstr "🇺🇳 Outros"
 #, fuzzy
 msgid "Release"
 msgstr "✅ Liberação"
+
+#: hiddifypanel/panel/admin/SettingAdmin.py:187
+msgid "Beta"
+msgstr ""
 
 # | msgid "⚠️ Develop"
 #: hiddifypanel/panel/admin/SettingAdmin.py:188
