@@ -357,13 +357,19 @@ def dump_db_to_dict():
 
 
 def get_ids_without_parent(input_dict):
+    selector = "uuid"
     # Get all parent_uuids in a set for faster lookup
-    parent_uuids = {item.get('parent_admin_uuid') or item.get('parent_admin_id') for key, item in input_dict.items()
-                    if item.get('parent_uuid') is not None and item.get('parent_admin_uuid') != item.get('uuid')}
-    uuids = {v['uuid']: v for u, v in input_dict.items()}
+    parent_uuids = {item.get(f'parent_admin_uuid') for item in input_dict.values()
+                    if item.get(f'parent_admin_uuid') is not None
+                    and item.get(f'parent_admin_uuid') != item.get('uuid')}
+    print("PARENTS", parent_uuids)
+    uuids = {v['uuid']: v for v in input_dict.values()}
     # Find all uuids that do not have a parent_uuid in the dict
-    uuids_without_parent = [key for key, item in input_dict.items() if item.get('parent_uuid') is None or item.get('parent_admin_uuid')
-                            == item.get('uuid') or item['parent_admin_uuid'] not in uuids]
+    uuids_without_parent = [key for key, item in input_dict.items()
+                            if item.get(f'parent_admin_uuid') is None
+                            or item.get(f'parent_admin_uuid') == item.get('uuid')
+                            or item[f'parent_admin_uuid'] not in uuids]
+    print("abondon uuids", uuids_without_parent)
 
     return uuids_without_parent
 
@@ -372,18 +378,20 @@ def set_db_from_json(json_data, override_child_id=None, set_users=True, set_doma
     new_rows = []
 
     uuids_without_parent = get_ids_without_parent({u['uuid']: u for u in json_data['admin_users']})
+    print('uuids_without_parent===============', uuids_without_parent)
     all_admins = {u.uuid: u for u in AdminUser.query.all()}
     uuids_without_parent = [uuid for uuid in uuids_without_parent if uuid not in all_admins]
+    print('uuids_not admin exist===============', uuids_without_parent)
+
     if "admin_users" in json_data:
         for u in json_data['admin_users']:
             if override_root_admin and u['uuid'] in uuids_without_parent:
                 u['uuid'] = current_admin_or_owner().uuid
             if u['parent_admin_uuid'] in uuids_without_parent:
                 u['parent_admin_uuid'] = current_admin_or_owner().uuid
-
-    if "users" in json_data:
+    if "users" in json_data and override_root_admin:
         for u in json_data['users']:
-            if override_root_admin and u['added_by_uuid'] in uuids_without_parent:
+            if u['added_by_uuid'] in uuids_without_parent:
                 u['added_by_uuid'] = current_admin_or_owner().uuid
 
     if set_admins and 'admin_users' in json_data:
@@ -399,16 +407,16 @@ def set_db_from_json(json_data, override_child_id=None, set_users=True, set_doma
         if 'proxies' in json_data:
             bulk_register_proxies(json_data['proxies'], commit=False, override_child_id=override_child_id)
 
-    uuids_without_parent = get_ids_without_parent({u.id: u.to_dict() for u in AdminUser.query.all()})
-    owner = AdminUser.query.filter(AdminUser.id == 1).first() or AdminUser.query.filter(AdminUser.mode == AdminMode.super_admin).first()
-    uuids_without_parent = [id for id in uuids_without_parent if id != owner.id]
+    ids_without_parent = get_ids_without_parent({u.id: u.to_dict() for u in AdminUser.query.all()})
+    owner = get_super_admin()
+    ids_without_parent = [id for id in ids_without_parent if id != owner.id]
 
     for u in AdminUser.query.all():
-        if u.parent_admin_id in uuids_without_parent:
-            u.parent_admin_id = current_admin_or_owner().id
-    for u in User.query.all():
-        if u.added_by in uuids_without_parent:
-            u.added_by = current_admin_or_owner().id
+        if u.parent_admin_id in ids_without_parent:
+            u.parent_admin_id = owner.id
+    # for u in User.query.all():
+    #     if u.added_by in uuids_without_parent:
+    #         u.added_by = g.admin.id
 
     db.session.commit()
 
