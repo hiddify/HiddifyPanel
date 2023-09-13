@@ -277,9 +277,9 @@ class UserAdmin(AdminLTEModelView):
         hiddify.quick_apply_users()
 
     def after_model_delete(self, model):
-        user_driver.remove_client(model)
-
-        hiddify.quick_apply_users()
+        # user_driver.remove_client(model)
+        pass
+        # hiddify.quick_apply_users()
 
     def get_list(self, page, sort_column, sort_desc, search, filters, *args, **kwargs):
         res = None
