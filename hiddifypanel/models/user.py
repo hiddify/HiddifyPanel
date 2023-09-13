@@ -35,11 +35,11 @@ class UserDetail(db.Model, SerializerMixin):
 
     @property
     def current_usage_GB(self):
-        return self.current_usage/ONE_GIG
+        return (self.current_usage or 0)/ONE_GIG
 
     @current_usage_GB.setter
     def current_usage_GB(self, value):
-        self.current_usage = value*ONE_GIG
+        self.current_usage = (value or 0)*ONE_GIG
 
     @property
     def ips(self):
@@ -75,19 +75,19 @@ class User(db.Model, SerializerMixin):
 
     @property
     def current_usage_GB(self):
-        return self.current_usage/ONE_GIG
+        return (self.current_usage or 0)/ONE_GIG
 
     @current_usage_GB.setter
     def current_usage_GB(self, value):
-        self.current_usage = min(1000000*ONE_GIG, value*ONE_GIG)
+        self.current_usage = min(1000000*ONE_GIG, (value or 0)*ONE_GIG)
 
     @property
     def usage_limit_GB(self):
-        return self.usage_limit/ONE_GIG
+        return (self.usage_limit or 0)/ONE_GIG
 
     @usage_limit_GB.setter
     def usage_limit_GB(self, value):
-        self.usage_limit = min(1000000*ONE_GIG, value*ONE_GIG)
+        self.usage_limit = min(1000000*ONE_GIG, (value or 0)*ONE_GIG)
 
     @property
     def remaining_days(self):
