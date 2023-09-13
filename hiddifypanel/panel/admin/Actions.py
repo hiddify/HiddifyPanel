@@ -83,7 +83,7 @@ class Actions(FlaskView):
                                )
         file = "restart.sh"
         config = current_app.config
-        subprocess.Popen(f"sudo {config['HIDDIFY_CONFIG_PATH']}/{file}".split(" "), cwd=f"{config['HIDDIFY_CONFIG_PATH']}", start_new_session=True)
+        subprocess.Popen(f"sudo {config['HIDDIFY_CONFIG_PATH']}/{file} --no-gui".split(" "), cwd=f"{config['HIDDIFY_CONFIG_PATH']}", start_new_session=True)
         import time
         time.sleep(1)
         return resp
@@ -142,7 +142,7 @@ class Actions(FlaskView):
 
                                )
 
-        subprocess.Popen(f"sudo {config['HIDDIFY_CONFIG_PATH']}/{file}".split(" "), cwd=f"{config['HIDDIFY_CONFIG_PATH']}", start_new_session=True)
+        subprocess.Popen(f"sudo {config['HIDDIFY_CONFIG_PATH']}/{file} --no-gui".split(" "), cwd=f"{config['HIDDIFY_CONFIG_PATH']}", start_new_session=True)
         import time
         time.sleep(1)
         return resp
@@ -167,7 +167,7 @@ class Actions(FlaskView):
 
         o = urlparse(request.base_url)
         domain = o.hostname
-        subprocess.Popen(f"sudo {config['HIDDIFY_CONFIG_PATH']}/status.sh".split(" "), cwd=f"{config['HIDDIFY_CONFIG_PATH']}", start_new_session=True)
+        subprocess.Popen(f"sudo {config['HIDDIFY_CONFIG_PATH']}/status.sh --no-gui".split(" "), cwd=f"{config['HIDDIFY_CONFIG_PATH']}", start_new_session=True)
 
         return render_template("result.html",
                                out_type="info",
@@ -195,7 +195,7 @@ class Actions(FlaskView):
         # rc = subprocess.call(f"cd {config_dir};./update.sh & disown",shell=True)
         # os.system(f'cd {config_dir};./update.sh &')
 
-        subprocess.Popen(f"sudo {config['HIDDIFY_CONFIG_PATH']}/update.sh".split(" "), cwd=f"{config['HIDDIFY_CONFIG_PATH']}", start_new_session=True)
+        subprocess.Popen(f"sudo {config['HIDDIFY_CONFIG_PATH']}/update.sh --no-gui".split(" "), cwd=f"{config['HIDDIFY_CONFIG_PATH']}", start_new_session=True)
         return render_template("result.html",
                                out_type="success",
                                out_msg=_("Success! Please wait around 5 minutes to make sure everything is updated."),
