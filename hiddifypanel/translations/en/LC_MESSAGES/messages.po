@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-13 02:46+0200\n"
-"PO-Revision-Date: 2023-09-12 18:58-0500\n"
+"POT-Creation-Date: 2023-09-13 10:12+0200\n"
+"PO-Revision-Date: 2023-09-12 23:26-0500\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -861,10 +861,10 @@ msgstr "🇺🇳 Others"
 msgid "Release"
 msgstr "✅ Release"
 
+# | msgid "☑️ Beta"
 #: hiddifypanel/panel/admin/SettingAdmin.py:187
-#, fuzzy
 msgid "Beta"
-msgstr "Beta"
+msgstr "☑️ Beta"
 
 # | msgid "⚠️ Develop"
 #: hiddifypanel/panel/admin/SettingAdmin.py:188
@@ -2703,11 +2703,11 @@ msgstr ""
 msgid "admin.config.title"
 msgstr "Settings"
 
-# | msgid "📅Remain: %(expire_days)s days"
+# | msgid "📅Remain: %(expire_days)s Days"
 #: hiddifypanel/panel/user/link_maker.py:724
 #, python-format
 msgid "📅%(expire_days)s days"
-msgstr "📅Remain: %(expire_days)s days"
+msgstr "📅Remain: %(expire_days)s Days"
 
 # | msgid ""
 # | "Please open this link in a browser; it will expire in 5 minutes for "
@@ -3464,7 +3464,7 @@ msgid "Open in Application"
 msgstr "Open in Application"
 
 # | msgid ""
-# | "✔️The proxy link is copied.\n"
+# | "✔️The Proxy link is copied.\n"
 # | "<br>\n"
 # | "⚠️If the application do not open automatically, you need to only paste it
 # "
@@ -3476,7 +3476,7 @@ msgid ""
 "btn-primary copy-link' href='%(sub)s'>this universal link</a> to copy and "
 "paste it on your application, or:"
 msgstr ""
-"✔️The proxy link is copied.\n"
+"✔️The Proxy link is copied.\n"
 "<br>\n"
 "⚠️If the application do not open automatically, you need to only paste it on your application, or:"
 
