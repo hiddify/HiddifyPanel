@@ -1,6 +1,7 @@
 import xtlsapi
 from hiddifypanel.models import *
 from .abstract_driver import DriverABS
+from flask import current_app
 
 
 class SingboxApi(DriverABS):
@@ -12,12 +13,13 @@ class SingboxApi(DriverABS):
     def get_enabled_users(self):
         if hconfig(ConfigEnum.is_parent):
             return
-
-        with open(f"{config['HIDDIFY_CONFIG_PATH']}/singbox/configs/01_api.json") as f:
+        config_dir = current_app.config['HIDDIFY_CONFIG_PATH']
+        with open(f"{config_dir}/singbox/configs/01_api.json") as f:
             json_data = json.load(f)
-            return {u:1 for u in json_data['experimental']['v2ray_api']['stats']['users']}
+            return {u.split("@")[0]: 1 for u in json_data['experimental']['v2ray_api']['stats']['users']}
         # raise NotImplementedError()
-# 
+#
+
     def get_inbound_tags(self):
         if hconfig(ConfigEnum.is_parent):
             return

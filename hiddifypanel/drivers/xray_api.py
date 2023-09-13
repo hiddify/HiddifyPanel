@@ -52,13 +52,13 @@ class XrayApi(DriverABS):
             'vless': 'vless',
             'realityin': 'vless',
             'xtls': 'vless',
-                    'quic': 'vless',
-                    'trojan': 'trojan',
-                    'vmess': 'vmess',
-                    'ss': 'shadowsocks',
-                    'v2ray': 'shadowsocks',
-                    'kcp': 'vless',
-                    'dispatcher': 'trojan',
+            'quic': 'vless',
+            'trojan': 'trojan',
+            'vmess': 'vmess',
+            'ss': 'shadowsocks',
+            'v2ray': 'shadowsocks',
+            'kcp': 'vless',
+            'dispatcher': 'trojan',
         }
 
         def proto(t):
@@ -77,9 +77,9 @@ class XrayApi(DriverABS):
                     xray_client.add_client(t, f'{uuid}', f'{uuid}@hiddify.com', protocol=protocol, flow='\0',)
                 else:
                     xray_client.add_client(t, f'{uuid}', f'{uuid}@hiddify.com', protocol=protocol, flow='xtls-rprx-vision', alter_id=0, cipher='chacha20_poly1305')
-                print(f"Success add  {uuid} {t}")
+                # print(f"Success add  {uuid} {t}")
             except Exception as e:
-                print(f"error in add  {uuid} {t} {e}")
+                # print(f"error in add  {uuid} {t} {e}")
                 pass
 
     def remove_client(self, user):
