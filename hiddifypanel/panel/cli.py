@@ -115,7 +115,7 @@ def hysteria_domain_port():
     if not hconfig(ConfigEnum.hysteria_enable):
         return
     out = []
-    for domain in enumerate(Domain.query.filter(Domain.mode.in_([DomainType.direct, DomainType.relay])).all()):
+    for i, domain in enumerate(Domain.query.filter(Domain.mode.in_([DomainType.direct, DomainType.relay])).all()):
         out.append(f"{domain.domain}:{int(hconfig(ConfigEnum.hysteria_port))+domain.id}")
     print(";".join(out))
 
