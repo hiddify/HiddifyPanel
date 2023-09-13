@@ -147,7 +147,7 @@ def _v54():
     set_hconfig(ConfigEnum.tuic_enable, True)
     set_hconfig(ConfigEnum.hysteria_enable, True)
     db.session.add(Proxy(l3='custom', transport='custom', cdn='direct', proto='tuic', enable=True, name="TUIC"))
-    db.session.add(Proxy(l3='custom', transport='custom', cdn='direct', proto='hystria2', enable=True, name="Hystria2"))
+    db.session.add(Proxy(l3='custom', transport='custom', cdn='direct', proto='hysteria2', enable=True, name="Hysteria2"))
 
 
 def _v52():
@@ -519,11 +519,19 @@ def add_new_enum_values():
         existing_values = [e.value for e in enum_class]
 
         # Get the values in the enum column in the database
-        result = db.engine.execute(f"SELECT DISTINCT `{column_name}` FROM {table_name}")
-        db_values = {row[0] for row in result}
+        # result = db.engine.execute(f"SELECT DISTINCT `{column_name}` FROM {table_name}")
+        # db_values = {row[0] for row in result}
+        result = db.engine.execute(f"SHOW COLUMNS FROM {table_name} LIKE '{column_name}';")
+        db_values = []
+
+        for row in result:
+            if "enum" in row[1]:
+                db_values = row[1][5:-1].split(",")
+                break
+        db_values = [value.strip("'") for value in db_values]
 
         # Find the new values that need to be added to the enum column in the database
-        new_values = set(existing_values) - db_values
+        new_values = set(existing_values) - set(db_values)
         if len(new_values) == 0:
             continue
 
