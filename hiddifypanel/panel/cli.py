@@ -115,7 +115,7 @@ def hysteria_domain_port():
     if not hconfig(ConfigEnum.hysteria_enable):
         return
     out = []
-    for i, domain in enumerate(Domain.query.filter(Domain.mode.in_([DomainType.direct, DomainType.relay])).all()):
+    for i, domain in enumerate(Domain.query.filter(Domain.mode.in_([DomainType.direct, DomainType.relay, DomainType.fake])).all()):
         out.append(f"{domain.domain}:{int(hconfig(ConfigEnum.hysteria_port))+domain.id}")
     print(";".join(out))
 
@@ -124,7 +124,7 @@ def tuic_domain_port():
     if not hconfig(ConfigEnum.tuic_enable):
         return
     out = []
-    for i, domain in enumerate(Domain.query.filter(Domain.mode.in_([DomainType.direct, DomainType.relay])).all()):
+    for i, domain in enumerate(Domain.query.filter(Domain.mode.in_([DomainType.direct, DomainType.relay, DomainType.fake])).all()):
         out.append(f"{domain}:{int(hconfig(ConfigEnum.tuic_port))+domain.id}")
     print(";".join(out))
 
