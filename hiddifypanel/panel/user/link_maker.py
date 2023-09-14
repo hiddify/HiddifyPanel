@@ -578,12 +578,13 @@ def add_singbox_tls(base, proxy):
         return
     base["tls"] = {
         "enabled": True,
-        "server_name": proxy["sni"],
-        "utls": {
+        "server_name": proxy["sni"]
+    }
+    if proxy['type'] not in ["tuic", "hysteria2"]:
+        base["tls"]["utls"] = {
             "enabled": True,
             "fingerprint": proxy.get('fingerprint', 'none')
         }
-    }
 
     if "reality" in proxy["l3"]:
         base["tls"]["reality"] = {
