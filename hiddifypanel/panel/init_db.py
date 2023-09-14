@@ -139,15 +139,16 @@ def init_db():
 #     add_config_if_not_exist(ConfigEnum.hysteria_port, random.randint(5000, 20000))
 
 
-def _v54():
+def _v55():
     tuic_port = random.randint(20000, 30000)
     hystria_port = random.randint(10000, 20000)
     set_hconfig(ConfigEnum.tuic_port, tuic_port)
     set_hconfig(ConfigEnum.hysteria_port, hystria_port)
     set_hconfig(ConfigEnum.tuic_enable, True)
     set_hconfig(ConfigEnum.hysteria_enable, True)
-    db.session.add(Proxy(l3='custom', transport='custom', cdn='direct', proto='tuic', enable=True, name="TUIC"))
-    db.session.add(Proxy(l3='custom', transport='custom', cdn='direct', proto='hysteria2', enable=True, name="Hysteria2"))
+    Proxy.query.filter(Proxy.proto.in_(["tuic", "hysteria2", "hysteria"])).delete()
+    db.session.add(Proxy(l3='tls', transport='custom', cdn='direct', proto='tuic', enable=True, name="TUIC"))
+    db.session.add(Proxy(l3='tls', transport='custom', cdn='direct', proto='hysteria2', enable=True, name="Hysteria2"))
 
 
 def _v52():

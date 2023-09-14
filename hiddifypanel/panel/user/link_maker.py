@@ -61,12 +61,10 @@ def make_proxy(proxy: Proxy, domain_db: Domain, phttp=80, ptls=443, pport=None):
         port = hconfigs[ConfigEnum.kcp_ports].split(",")[0]
     elif proxy.proto == "tuic":
         port = int(hconfigs[ConfigEnum.tuic_port])+domain_db.id
-    elif proxy.proto == "hystria":
+    elif proxy.proto == "hysteria2":
         port = int(hconfigs[ConfigEnum.hysteria_port])+domain_db.id
     elif l3 == 'ssh':
         port = hconfigs[ConfigEnum.ssh_server_port]
-    if pport:
-        port = pport
 
     name = proxy.name
     if not port:
@@ -119,7 +117,7 @@ def make_proxy(proxy: Proxy, domain_db: Domain, phttp=80, ptls=443, pport=None):
         'dbe': proxy,
         'dbdomain': domain_db
     }
-    if proxy.proto in ['tuic', 'hystria']:
+    if proxy.proto in ['tuic', 'hysteria2']:
         base['alpn'] = "h3"
         return base
 
@@ -492,8 +490,9 @@ def to_singbox(proxy):
         return all_base
     if proxy["proto"] == "trojan":
         base["password"] = proxy["uuid"]
+        add_singbox_multiplex(base)
 
-    if proxy['proto'] in ['trojan', 'vmess', 'vless']:
+    if proxy['proto'] in ['vmess', 'vless']:
         base["uuid"] = proxy["uuid"]
         add_singbox_multiplex(base)
 
@@ -513,9 +512,10 @@ def to_singbox(proxy):
 
     if proxy["proto"] == "tuic":
         add_tuic(base, proxy)
-    if proxy["proto"] == "hystria":
-        add_hystria(base, proxy)
-    add_singbox_transport(base, proxy)
+    elif proxy["proto"] == "hysteria2":
+        add_hysteria(base, proxy)
+    else:
+        add_singbox_transport(base, proxy)
 
     return all_base
 
@@ -529,7 +529,7 @@ def add_tuic(base, proxy):
     base['uuid'] = proxy['uuid']
 
 
-def add_hystria(base, proxy):
+def add_hysteria(base, proxy):
     base['up_mbps'] = 100
     base['down_mbps'] = 100
     base['obfs'] = {
@@ -781,22 +781,23 @@ def get_all_validated_proxies(domains):
     allp = []
     allphttp = [p for p in request.args.get("phttp", "").split(',') if p]
     allptls = [p for p in request.args.get("ptls", "").split(',') if p]
-    added_ip = {'ssh': {}, 'tuic': {}, 'hysteria': {}}
+    added_ip = {'ssh': {}, 'tuic': {}, 'hysteria2': {}}
     for d in domains:
         # raise Exception(base_config)
         hconfigs = get_hconfigs(d.child_id)
         for type in all_proxies(d.child_id):
             options = []
-            if type.proto in ['ssh', 'tuic', 'hysteria']:
+            if type.proto in ['ssh', 'tuic', 'hysteria2']:
 
                 ip = hiddify.get_domain_ip(d.domain, version=4)
                 ip6 = hiddify.get_domain_ip(d.domain, version=6)
 
                 ips = [x for x in [ip, ip6]if x != None]
 
-                if all([x in added_ip[type.proto] for x in ips]):
+                if type.proto == 'ssh' and all([x in added_ip[type.proto] for x in ips]):
                     print('skiping ')
                     continue
+
                 for x in ips:
                     added_ip[type.proto][x] = 1
 
@@ -806,7 +807,7 @@ def get_all_validated_proxies(domains):
                     options = [{'pport': hconfigs[ConfigEnum.ssh_server_port]}]
                 elif type.proto == 'tuic':
                     options = [{'pport': hconfigs[ConfigEnum.tuic_port]}]
-                elif type.proto == 'hysteria':
+                elif type.proto == 'hysteria2':
                     options = [{'pport': hconfigs[ConfigEnum.hysteria_port]}]
             else:
                 for t in (['http', 'tls'] if hconfigs[ConfigEnum.http_proxy_enable] else ['tls']):
