@@ -580,7 +580,7 @@ def add_singbox_tls(base, proxy):
         "enabled": True,
         "server_name": proxy["sni"]
     }
-    if proxy['type'] not in ["tuic", "hysteria2"]:
+    if proxy['proto'] not in ["tuic", "hysteria2"]:
         base["tls"]["utls"] = {
             "enabled": True,
             "fingerprint": proxy.get('fingerprint', 'none')
