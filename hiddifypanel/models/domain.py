@@ -1,24 +1,13 @@
-from sqlalchemy_serializer import SerializerMixin
-from flask import Flask, flash, request
-from flask_sqlalchemy import SQLAlchemy
-from flask_admin import Admin
-from flask_admin.contrib.sqla import ModelView
-from wtforms import SelectMultipleField
-from urllib.parse import urlparse
-from .config_enum import ConfigEnum, ConfigCategory
-from .config import hconfig
-
-from sqlalchemy.orm import backref
-
-from flask import Markup
-from dateutil import relativedelta
-from hiddifypanel.panel.database import db
-
-import enum
-import datetime
-import uuid as uuid_mod
 from enum import auto
+from urllib.parse import urlparse
+
+from flask import flash, request
+from sqlalchemy_serializer import SerializerMixin
 from strenum import StrEnum
+
+from hiddifypanel.panel.database import db
+from .config import hconfig
+from .config_enum import ConfigEnum
 
 
 class DomainType(StrEnum):
@@ -142,7 +131,6 @@ def get_current_proxy_domains(force_domain=None):
 
 
 def add_or_update_domain(commit=True, child_id=0, **domain):
-    from hiddifypanel.panel import hiddify
     dbdomain = Domain.query.filter(Domain.domain == domain['domain']).first()
     if not dbdomain:
         dbdomain = Domain(domain=domain['domain'])

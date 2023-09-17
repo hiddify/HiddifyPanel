@@ -1,18 +1,9 @@
-from sqlalchemy_serializer import SerializerMixin
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-from flask_admin import Admin
-from flask_admin.contrib.sqla import ModelView
-from wtforms import SelectMultipleField
-from sqlalchemy.orm import backref
-from flask import Markup
-from dateutil import relativedelta
-from hiddifypanel.panel.database import db
-import enum
-import datetime
-import uuid as uuid_mod
 from enum import auto
+
+from sqlalchemy_serializer import SerializerMixin
 from strenum import StrEnum
+
+from hiddifypanel.panel.database import db
 
 
 class ProxyTransport(StrEnum):
@@ -84,7 +75,6 @@ class Proxy(db.Model, SerializerMixin):
 
 
 def add_or_update_proxy(commit=True, child_id=0, **proxy):
-    from hiddifypanel.panel import hiddify
     dbproxy = Proxy.query.filter(Proxy.name == proxy['name']).first()
     if not dbproxy:
         dbproxy = Proxy()
