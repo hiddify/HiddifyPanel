@@ -30,6 +30,12 @@ import subprocess
 import netifaces
 import time
 from hiddifypanel.utils import *
+
+from cryptography.hazmat.primitives import serialization
+from cryptography.hazmat.primitives.asymmetric import x25519
+
+import base64
+
 to_gig_d = 1000*1000*1000
 
 
@@ -620,21 +626,22 @@ def fallback_domain_compatible_with_servernames(fallback_domain, servername):
 
 
 def generate_x25519_keys():
-    # Run the "xray x25519" command and capture its output
-    try:
-        cmd = "xray x25519"
-        output = subprocess.check_output(cmd, shell=True, text=True)
-    except:
-        output = """
-        Private key: ILnwK6Ii9PWgnkq5Lbb8G_chyP4ba5cGRpZbaJjf7lg
-        Public key: no36JbbL8uPH4VT2PNe9husJBN2mu5DbgDASH7hK32A
-        """
-        # Extract the private and public keys from the output
-    private_key = output.split("Private key: ")[1].split("\n")[0]
-    public_key = output.split("Public key: ")[1].split("\n")[0]
+    priv = x25519.X25519PrivateKey.generate()
+    pub = priv.public_key()
+    priv_bytes = priv.private_bytes(
+        encoding=serialization.Encoding.Raw,
+        format=serialization.PrivateFormat.Raw,
+        encryption_algorithm=serialization.NoEncryption()
+    )
+    pub_bytes = pub.public_bytes(
+        encoding=serialization.Encoding.Raw,
+        format=serialization.PublicFormat.Raw
+    )
+    import base64
+    pub_str = base64.urlsafe_b64encode(pub_bytes).decode()[:-1]
+    priv_str = base64.urlsafe_b64encode(priv_bytes).decode()[:-1]
 
-    # Return the keys as a tuple
-    return {"private_key": private_key, "public_key": public_key}
+    return {'private_key': priv_str, 'public_key': pub_str}
 
 
 def get_hostkeys(dojson=False):
