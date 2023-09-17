@@ -1,17 +1,13 @@
+import datetime
+import uuid
+
 import click
+from dateutil import relativedelta
 
-
+from hiddifypanel.models import *
+from hiddifypanel.panel import hiddify, usage
 from hiddifypanel.panel.database import db
 from hiddifypanel.panel.init_db import init_db
-from hiddifypanel.models import *
-
-from hiddifypanel.panel import hiddify, usage
-import random
-import uuid
-import urllib
-import string
-from dateutil import relativedelta
-import datetime
 
 
 def drop_db():

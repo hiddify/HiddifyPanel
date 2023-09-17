@@ -1,22 +1,18 @@
-from hiddifypanel.models import *
-from hiddifypanel.panel.database import db
-import sys
-import os
-import json
-from hiddifypanel import Events
-from dateutil import relativedelta
 import datetime
-from hiddifypanel.panel import hiddify
-from hiddifypanel.panel.hiddify import get_random_domains, get_random_string
+import json
+import os
 import random
+import sys
 import uuid
-import urllib
-import string
+
+from dateutil import relativedelta
+
 from hiddifypanel import Events
-import random
-import uuid
-import urllib
-import string
+from hiddifypanel.models import *
+from hiddifypanel.panel import hiddify
+from hiddifypanel.panel.database import db
+from hiddifypanel.panel.hiddify import get_random_domains, get_random_string
+
 MAX_DB_VERSION = 60
 
 

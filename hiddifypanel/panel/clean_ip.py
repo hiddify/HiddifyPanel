@@ -1,12 +1,15 @@
-from flask import request, flash
+import os
 import random
 import re
-import os
-import maxminddb
-from hiddifypanel.models import *
 import sys
+
+import maxminddb
+from flask import request, flash
 from flask_babelex import gettext as _
-default_ips = """
+
+from hiddifypanel.models import *
+
+DEFAULT_IPs = """
 mci.ircf.space		MCI
 mcix.ircf.space		MCI
 mtn.ircf.space		MTN
@@ -104,7 +107,7 @@ def get_real_user_ip_debug(user_ip=None):
     asn_dscr = f"{asnres.get('autonomous_system_organization','unknown')}" if asnres else "unknown"
     asn_short = get_asn_short_name(user_ip)
     country = get_country(user_ip)
-    default = get_host_base_on_asn(default_ips, asn_short).replace(".ircf.space", "")
+    default = get_host_base_on_asn(DEFAULT_IPs, asn_short).replace(".ircf.space", "")
     return f'{user_ip} {country} {asn} {asn_short} {"ERROR" if asn_short=="unknown" else ""} fullname={asn_dscr} default:{default}'
 
 
@@ -143,7 +146,7 @@ def get_host_base_on_asn(ips, asn_short):
 
 def get_clean_ip(ips, resolve=False, default_asn=None):
     if not ips:
-        ips = default_ips
+        ips = DEFAULT_IPs
 
     ips = re.split('[ \t\r\n;,]+', ips.strip())
     user_ip = get_real_user_ip()
