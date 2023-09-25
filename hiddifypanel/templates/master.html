@@ -486,7 +486,7 @@ if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').match
 
 
   <script defer type="text/javascript">
-    var youtube_is_open = !['ir', 'cn', '-'].includes("{{country or '-'|lower}}")
+    var youtube_is_open = !['ir', 'cn', '-'].includes("{{(country or '-')|lower}}")
 
     if (youtube_is_open) {
 
