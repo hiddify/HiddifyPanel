@@ -1,25 +1,18 @@
-from flask_admin.contrib import sqla
-from hiddifypanel.panel.database import db
-from wtforms.validators import Regexp
 from hiddifypanel.models import *
-from wtforms.validators import Regexp, ValidationError
-from .adminlte import AdminLTEModelView
-from flask_babelex import gettext as __
-from flask_babelex import lazy_gettext as _
-from hiddifypanel.panel import hiddify, cf_api, custom_widgets
-
-from flask import Markup
-from flask import Flask, g, flash, url_for
-from flask_sqlalchemy import SQLAlchemy
-from flask_admin import Admin
-from flask_admin.contrib.sqla import ModelView
-from wtforms import SelectMultipleField
 import re
 
-from wtforms.widgets import ListWidget, CheckboxInput
-from sqlalchemy.orm import backref
+from flask import Markup
+from flask import g, flash
+from flask_babelex import gettext as __
+from flask_babelex import lazy_gettext as _
+from wtforms.validators import Regexp, ValidationError
+
+from hiddifypanel.models import *
+from hiddifypanel.panel import hiddify, cf_api, custom_widgets
+from .adminlte import AdminLTEModelView
+
+
 # Define a custom field type for the related domains
-from flask_admin.form.fields import Select2TagsField, Select2Field
 
 
 # class ConfigDomainsField(SelectField):

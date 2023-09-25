@@ -1,13 +1,13 @@
-from flask import g, jsonify, abort, render_template, request, send_from_directory
+import traceback
+import uuid
+
+import user_agents
+from flask import abort, render_template, request
+from flask import g, send_from_directory, session, Markup
+
+import hiddifypanel
 from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify
-import uuid
-from flask import g, send_from_directory, url_for, session, Markup
-import traceback
-import user_agents
-import hiddifypanel
-import datetime
-from flask_babelex import gettext as _
 
 
 def init_app(app):
