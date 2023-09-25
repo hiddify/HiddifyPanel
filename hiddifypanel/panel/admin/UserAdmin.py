@@ -22,9 +22,9 @@ from flask_bootstrap import SwitchField
 
 
 class UserAdmin(AdminLTEModelView):
-    column_sortable_list = ["name", "current_usage_GB", 'mode', "remaining_days", "comment", 'last_online', "uuid", 'remaining_days']
+    column_sortable_list = ["name", "current_usage", 'mode', "remaining_days", "comment", 'last_online', "uuid", 'remaining_days']
     column_searchable_list = [("uuid"), "name"]
-    column_list = ["name", "UserLinks", "current_usage_GB", "remaining_days", "comment", 'last_online', 'mode', 'admin', "uuid"]
+    column_list = ["name", "UserLinks", "current_usage", "remaining_days", "comment", 'last_online', 'mode', 'admin', "uuid"]
     form_extra_fields = {
         'reset_days': SwitchField(_("Reset package days")),
         'reset_usage': SwitchField(_("Reset package usage")),
@@ -192,7 +192,7 @@ class UserAdmin(AdminLTEModelView):
         'name': _name_formatter,
         'UserLinks': _ul_formatter,
         'uuid': _uuid_formatter,
-        'current_usage_GB': _usage_formatter,
+        'current_usage': _usage_formatter,
         "remaining_days": _expire_formatter,
         'last_online': _online_formatter,
         'admin': _admin_formatter
@@ -286,19 +286,35 @@ class UserAdmin(AdminLTEModelView):
         user_driver.remove_client(model)
         hiddify.quick_apply_users()
 
-    def get_list(self, page, sort_column, sort_desc, search, filters, *args, **kwargs):
+    def get_list(self, page, sort_column, sort_desc, search, filters, page_size=50, *args, **kwargs):
         res = None
         # print('aaa',args, kwargs)
-        if 'remaining_days' == sort_column:
+        if sort_column == 'remaining_days':
             query = self.get_query()
+
+            if search:
+                from sqlalchemy import or_
+
+                # Assume 'name' is a field in your model you want to search in.
+                search_conditions = or_(self.model.name.contains(search), self.model.uuid.contains(search))
+
+                query = query.filter(search_conditions)
 
             data = query.all()
             count = len(data)
+
+            # Sorting the data
             data = sorted(data, key=lambda p: p.remaining_days, reverse=sort_desc)
+
+            # Applying pagination
+            start = page * page_size
+            end = start + page_size
+            data = data[start: end]
+
             res = count, data
         else:
 
-            res = super().get_list(page, sort_column, sort_desc, search, filters, *args, **kwargs)
+            res = super().get_list(page, sort_column, sort_desc, search=search, filters=filters, page_size=page_size, *args, **kwargs)
         return res
 
         # Override the default get_list method to use the custom sort function
