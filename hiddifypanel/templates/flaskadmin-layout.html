@@ -12,7 +12,8 @@
 {% endif %}
 
 <style>
-    #domain {
+    #domain,
+    #servernames {
         direction: ltr
     }
 
@@ -92,8 +93,14 @@
         console.log("test")
         if ($("#mode").val() == "sub_link_only") {
             $("#cdn_ip").parent().hide();
+            $("#cdn_ip").val("")
             //$("#mode").parent().hide();
             $("#show_domains").parent().show()
+            $("#servernames").parent().hide();
+            $("#domain").parent().find(".control-label").html(`{{_('domain.domain')}}`)
+            $("#domain").parent().find(".help-block").html(`{{_('domain.description')}}`)
+
+            $("#grpc").parent().parent().hide()
         } else {
             $("#cdn_ip").parent().show();
             //$("#mode").parent().show();
@@ -108,7 +115,7 @@
             {% autoescape false %}
             if ($("#mode").val() == 'reality') {
 
-                $("#servernames").parent().show();
+                $("#servernames").parent().hide();
                 $("#servernames").parent().find(".control-label").html(`{{_('config.reality_server_names.label')}}`)
                 $("#servernames").parent().find(".help-block").html(`{{_('config.reality_server_names.description')}}`)
 
@@ -123,6 +130,7 @@
                 } else {
                     $("#servernames").parent().hide();
                 }
+                $("#cdn_ip").val("")
 
                 $("#grpc").parent().parent().hide()
                 $("#domain").parent().find(".control-label").html(`{{_('domain.domain')}}`)
