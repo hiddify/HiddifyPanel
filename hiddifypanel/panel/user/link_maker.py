@@ -279,7 +279,12 @@ def to_link(proxy):
         if proxy['proto'] == 'v2ray':
             return f'{baseurl}?plugin=v2ray-plugin%3Bmode%3Dwebsocket%3Bpath%3D{proxy["path"]}%3Bhost%3D{proxy["host"]}%3Btls%3Budp-over-tcp=true#{name_link}'
     if proxy['proto'] == 'tuic':
-        baseurl = f'tuic://{proxy["uuid"]}:{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}?congestion_control=cubic&udp_relay_mode=native&sni={proxy["sni"]}'
+        baseurl = f'tuic://{proxy["uuid"]}:{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}?congestion_control=cubic&udp_relay_mode=native&sni={proxy["sni"]}&alpn=h3'
+        if proxy['mode'] == 'Fake' or proxy['allow_insecure']:
+            baseurl += "&allow_insecure=1"
+        return f"{baseurl}#{name_link}"
+    if proxy['proto'] == 'hysteria2':
+        baseurl = f'hysteria://{proxy["uuid"]}:{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}?congestion_control=cubic&udp_relay_mode=native&sni={proxy["sni"]}&alpn=h3'
         if proxy['mode'] == 'Fake' or proxy['allow_insecure']:
             baseurl += "&allow_insecure=1"
         return f"{baseurl}#{name_link}"
