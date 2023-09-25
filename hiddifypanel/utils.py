@@ -61,15 +61,10 @@ def get_latest_release_version(repo_name):
     return None
 
 
-
-
 def do_base_64(str):
     import base64
     resp = base64.b64encode(f'{str}'.encode("utf-8"))
     return resp.decode()
-
-
-    
 
 
 def get_folder_size(folder_path):
@@ -87,15 +82,12 @@ def get_folder_size(folder_path):
     return total_size
 
 
-
-
 def get_random_string(min_=10, max_=30):
     # With combination of lower and upper case
     length = random.randint(min_, max_)
     characters = string.ascii_letters + string.digits
     result_str = ''.join(random.choice(characters) for i in range(length))
     return result_str
-
 
 
 def date_to_json(d):
@@ -125,8 +117,6 @@ def flash(message, category):
     return flask_flash(Markup(message), category)
 
 
-
-
 def get_domain_ip(dom, retry=3, version=None):
 
     res = None
@@ -154,8 +144,6 @@ def get_domain_ip(dom, retry=3, version=None):
     return res or get_domain_ip(dom, retry=retry-1)
 
 
-
-
 def get_socket_public_ip(version):
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -175,6 +163,8 @@ def is_public_ip(address):
     if address.startswith('127.') or address.startswith('169.254.') or address.startswith('10.') or address.startswith('192.168.') or address.startswith('172.'):
         return False
     if address.startswith('fe80:') or address.startswith('fd') or address.startswith('fc00:'):
+        return False
+    if address.startswith('::') or address.startswith('fd') or address.startswith('fc00:'):
         return False
     return True
 
@@ -201,4 +191,3 @@ def get_interface_public_ip(version):
 
     except (OSError, KeyError):
         return None
-
