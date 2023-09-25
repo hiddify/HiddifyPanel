@@ -326,11 +326,11 @@
 
   {% block tail %}
   {% macro pwa_install_btn() -%}
-  %if g.user_agent.os.family=="iOS"
+  {% if g.user_agent.os.family == "iOS" %}
   <i class="fa-solid fa-arrow-up-from-bracket"></i>
-  %else
+  {% else %}
   <button class='btn btn-success' onclick='install_pwa()'>{{_("Install")}}</button>
-  %endif
+  {% endif %}
   {%- endmacro -%}
   <script defer type="text/javascript">
     $(document).ready(function () {
@@ -486,7 +486,7 @@ if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').match
 
 
   <script defer type="text/javascript">
-    var youtube_is_open = !['ir', 'cn'].includes("{{country|lower}}"
+    var youtube_is_open = !['ir', 'cn', '-'].includes("{{country or '-'|lower}}")
 
     if (youtube_is_open) {
 
