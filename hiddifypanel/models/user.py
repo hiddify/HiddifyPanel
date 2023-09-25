@@ -1,12 +1,13 @@
 import datetime
 import uuid as uuid_mod
-from sqlalchemy_serializer import SerializerMixin
-from dateutil import relativedelta
-from hiddifypanel.panel.database import db
 from enum import auto
+
+from dateutil import relativedelta
+from sqlalchemy_serializer import SerializerMixin
 from strenum import StrEnum
-from flask_babelex import gettext as __
-from flask_babelex import lazy_gettext as _
+
+from hiddifypanel.panel.database import db
+
 ONE_GIG = 1024*1024*1024
 
 
@@ -265,6 +266,13 @@ def user_by_uuid(uuid):
 def user_by_id(id):
     return User.query.filter(User.id == id).first()
 
+### aliz dev
+def remove_user(commit=True, **uuid):
+    dbuser = User.by_uuid(uuid)
+    db.session.delete(dbuser)
+    if commit:
+        db.session.commit()
+### end aliz dev
 
 def add_or_update_user(commit=True, **user):
     # if not is_valid():return

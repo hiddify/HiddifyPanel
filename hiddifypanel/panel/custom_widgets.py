@@ -1,20 +1,13 @@
-from flask_admin.contrib.sqla import ModelView
-from wtforms.widgets import TextArea
-from wtforms import TextAreaField
-from flask_bootstrap import SwitchField
-from wtforms.fields import StringField, IntegerField, SelectField, DecimalField
-from hiddifypanel.panel.hiddify import flash
-from hiddifypanel.panel import hiddify
-from flask_babelex import lazy_gettext as _
-from flask_babelex import gettext as __
-from flask_admin.contrib import sqla
-from hiddifypanel.panel.database import db
 import datetime
+
+from flask_admin.contrib.sqla import ModelView
+from flask_babelex import lazy_gettext as _
+from wtforms import TextAreaField
+from wtforms.fields import IntegerField, SelectField, DecimalField
+from wtforms.widgets import TextArea
+
 from hiddifypanel.models import *
-from flask import Markup, g
-from wtforms.validators import Regexp, ValidationError
-import re
-import uuid
+
 
 # from gettext import gettext as _
 
