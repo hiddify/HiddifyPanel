@@ -162,5 +162,11 @@ def bulk_register_domains(domains, commit=True, remove=False, override_child_id=
         for d in Domain.query.filter(Domain.child_id.in_(child_ids)):
             if d.domain not in dd:
                 db.session.delete(d)
+
+    # if commit:
+    db.session.commit()
+    for domain in domains:
+        child_id = override_child_id if override_child_id is not None else hiddify.get_child(domain.get('child_unique_id', None))
+        add_or_update_domain(commit=False, child_id=child_id, **domain)
     if commit:
         db.session.commit()
