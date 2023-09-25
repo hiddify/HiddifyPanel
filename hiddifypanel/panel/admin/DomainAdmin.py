@@ -202,6 +202,14 @@ class DomainAdmin(AdminLTEModelView):
         #     Domain.id.in_(work_with_ids)).all()
 
         if model.mode == DomainType.reality:
+            model.servernames = (model.domain).lower()
+            if not hiddify.is_domain_reality_friendly(model.domain):
+                # flash(_("Domain is not REALITY friendly!")+" "+d,'error')
+                # return render_template('config.html', form=form)
+                raise ValidationError(_("Domain is not REALITY friendly!")+" "+d)
+
+                hiddify.debug_flash_if_not_in_the_same_asn(model.domain)
+        if False:
             model.servernames = (model.servernames or model.domain).lower()
 
             for v in [model.domain, model.servernames]:
