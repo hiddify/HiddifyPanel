@@ -3,6 +3,7 @@
 {% from 'macros.html' import modal %}
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>{% block title %}{% endblock %}| {{_("master.page-title")}}</title>
   {% block head_meta %}
@@ -19,19 +20,29 @@
   %else
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   %endif
-<link href="{{static_url_for(filename='images/splash/iphone5_splash.png')}}" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" rel="apple-touch-startup-image" />
-<link href="{{static_url_for(filename='images/splash/iphone6_splash.png')}}" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" rel="apple-touch-startup-image" />
-<link href="{{static_url_for(filename='images/splash/iphoneplus_splash.png')}}" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" rel="apple-touch-startup-image" />
-<link href="{{static_url_for(filename='images/splash/iphonex_splash.png')}}" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" rel="apple-touch-startup-image" />
-<link href="{{static_url_for(filename='images/splash/iphonexr_splash.png')}}" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" rel="apple-touch-startup-image" />
-<link href="{{static_url_for(filename='images/splash/iphonexsmax_splash.png')}}" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" rel="apple-touch-startup-image" />
-<link href="{{static_url_for(filename='images/splash/ipad_splash.png')}}" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" rel="apple-touch-startup-image" />
-<link href="{{static_url_for(filename='images/splash/ipadpro1_splash.png')}}" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" rel="apple-touch-startup-image" />
-<link href="{{static_url_for(filename='images/splash/ipadpro3_splash.png')}}" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" rel="apple-touch-startup-image" />
-<link href="{{static_url_for(filename='images/splash/ipadpro2_splash.png')}}" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" rel="apple-touch-startup-image" />
-<link rel="icon" type="image/x-icon" href="{{ static_url_for( filename='images/favicon.ico')}}">
-<link rel="manifest" href="{{ url_for('user2.UserView:create_pwa_manifest')}}">
-  
+  <link href="{{static_url_for(filename='images/splash/iphone5_splash.png')}}"
+    media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" rel="apple-touch-startup-image" />
+  <link href="{{static_url_for(filename='images/splash/iphone6_splash.png')}}"
+    media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" rel="apple-touch-startup-image" />
+  <link href="{{static_url_for(filename='images/splash/iphoneplus_splash.png')}}"
+    media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" rel="apple-touch-startup-image" />
+  <link href="{{static_url_for(filename='images/splash/iphonex_splash.png')}}"
+    media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" rel="apple-touch-startup-image" />
+  <link href="{{static_url_for(filename='images/splash/iphonexr_splash.png')}}"
+    media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" rel="apple-touch-startup-image" />
+  <link href="{{static_url_for(filename='images/splash/iphonexsmax_splash.png')}}"
+    media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" rel="apple-touch-startup-image" />
+  <link href="{{static_url_for(filename='images/splash/ipad_splash.png')}}"
+    media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" rel="apple-touch-startup-image" />
+  <link href="{{static_url_for(filename='images/splash/ipadpro1_splash.png')}}"
+    media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" rel="apple-touch-startup-image" />
+  <link href="{{static_url_for(filename='images/splash/ipadpro3_splash.png')}}"
+    media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" rel="apple-touch-startup-image" />
+  <link href="{{static_url_for(filename='images/splash/ipadpro2_splash.png')}}"
+    media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" rel="apple-touch-startup-image" />
+  <link rel="icon" type="image/x-icon" href="{{ static_url_for( filename='images/favicon.ico')}}">
+  <link rel="manifest" href="{{ url_for('user2.UserView:create_pwa_manifest')}}">
+
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {% endblock %}
@@ -49,173 +60,179 @@
   <link rel="stylesheet" href="{{static_url_for(filename='plugins/datatables/extensions/Responsive/css/responsive.bootstrap4.min.css')}}"> -->
 
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap4.min.css">
-	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.bootstrap4.min.css">
 
-  <link rel="stylesheet" href="{{ static_url_for( filename='css/custom.css',version=5.23 ) }}">  
+  <link rel="stylesheet" href="{{ static_url_for( filename='css/custom.css',version=5.23 ) }}">
   % if get_locale()=='fa'
   <link rel="stylesheet" href="{{static_url_for(filename='css/bootstrap4-rtl.min.css')}}">
   <link rel="stylesheet" href="{{static_url_for(filename='css/adminlte.fa.css')}}">
   <link rel="stylesheet" href="{{static_url_for(filename='css/custom-rtl.css',version=3)}}">
   {% block rtl_styles %}
-  {% endblock %}  
+  {% endblock %}
   % endif
-{% endblock %}
+  {% endblock %}
 
-{% block head_tail %}
-{% endblock %}
+  {% block head_tail %}
+  {% endblock %}
 
 </head>
-<body class="hold-transition layout-fixed {{"dark-mode" if g.darkmode else ""}} {% block bodyclass %}sidebar-collapse{%endblock%}">
+
+<body class="hold-transition layout-fixed {{" dark-mode" if g.darkmode else "" }} {% block bodyclass %}sidebar-collapse{%endblock%}">
   <div id="splash_screen">
     <center>
-    <img  src="{{static_url_for( filename='images/hiddify.png')}}"/>
-    <a href="https://github.com/hiddify/hiddify-config/wiki"><h1 class="title">{{_('user.home.title')}}</h1><br>Powered by hiddify.com</a>
-  </center>
+      <img src="{{static_url_for( filename='images/hiddify.png')}}" />
+      <a href="https://github.com/hiddify/hiddify-config/wiki">
+        <h1 class="title">{{_('user.home.title')}}</h1><br>Powered by hiddify.com
+      </a>
+    </center>
   </div>
-  
-    {% block page_body %}
-<div class="wrapper">
+
+  {% block page_body %}
+  <div class="wrapper">
     {% block nav_bar %}
     {% endblock %}
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        
-        <div class="content-header">
-          <div class="container-fluid">
-            {% block body_header%}
-            
-            {%endblock%}
-          </div><!-- /.container-fluid -->
-        </div>
-        <!-- /.content-header -->
-    
-    
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
 
-    <!-- Main content -->
-    <div class="content">
-      <div class="container-fluid">
+      <div class="content-header">
+        <div class="container-fluid">
+          {% block body_header%}
 
-        
-        {% block messages %}
-        {# layout.messages() #}
-        {# render_messages() #}
+          {%endblock%}
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.content-header -->
 
-    {% endblock %}
 
-    
-    {% block body %}{% endblock %}
 
-    <div id="ytplayer" style="width: 1px; height: 1px;"></div>        
-    <video id='guide-video' controls style='max-height: 100%; max-width: 100%;width: 1px; height: 1px;'><source id='guide-video-mp4' type='video/mp4'></video>
-        <!-- END TYPOGRAPHY -->
-      </div><!-- /.container-fluid -->
+      <!-- Main content -->
+      <div class="content">
+        <div class="container-fluid">
+
+
+          {% block messages %}
+          {# layout.messages() #}
+          {# render_messages() #}
+
+          {% endblock %}
+
+
+          {% block body %}{% endblock %}
+
+          <div id="ytplayer" style="width: 1px; height: 1px;"></div>
+          <video id='guide-video' controls style='max-height: 100%; max-width: 100%;width: 1px; height: 1px;'>
+            <source id='guide-video-mp4' type='video/mp4'>
+          </video>
+          <!-- END TYPOGRAPHY -->
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.content -->
     </div>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-  <!-- Control Sidebar -->
-  
-  <!-- /.control-sidebar -->
+    <!-- /.content-wrapper -->
+    <!-- Control Sidebar -->
 
-  <footer class="main-footer d-flex flex-wrap justify-content-between align-items-center " dir="ltr">
-    <div class="nav col-md-8 d-flex align-items-center">
-      
-      <strong><span class="mb-3 mb-md-0 text-muted">© 2023 Hiddify {{"Central" if hconfig(ConfigEnum.is_parent) else ""}} <span class="badge">{{version}}</span> 
-        </span> 
+    <!-- /.control-sidebar -->
+
+    <footer class="main-footer d-flex flex-wrap justify-content-between align-items-center " dir="ltr">
+      <div class="nav col-md-8 d-flex align-items-center">
+
+        <strong><span class="mb-3 mb-md-0 text-muted">© 2023 Hiddify {{"Central" if hconfig(ConfigEnum.is_parent) else ""}} <span class="badge">{{version}}</span>
+          </span>
         </strong>
-    </div>
+      </div>
 
-    <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-      <li class="ms-3"><a class="text-secondary"
-        href="https://github.com/hiddify/hiddify-config/wiki"><i class="fa-brands fa-github"></i></a></li>
-      <li class="ms-3"><a class="text-danger" href="https://youtube.com/@hiddify/videos">
-        &nbsp; <i class="fa-brands fa-square-youtube fa-margin"></i>  </a></li> 
-      <li class="ms-3"><a class="text-primary" href="https://twitter.com/intent/follow?screen_name=hiddify_com">
-        &nbsp; <i class="fa-brands fa-square-twitter fa-margin"></i> </a></li>  
-      <li class="ms-3"><a class="text-primary" href="https://t.me/hiddify">&nbsp; <i class="fa-brands fa-telegram fa-margin"></i> </a></li>
-    </ul>
-    
-  </footer>
-  <button id="install-pwa-btn" class="btn btn-primary" style="display: none;">
-    Install App
-  </button>
-</div>
-<!-- ./wrapper -->
+      <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+        <li class="ms-3"><a class="text-secondary" href="https://github.com/hiddify/hiddify-config/wiki"><i class="fa-brands fa-github"></i></a></li>
+        <li class="ms-3"><a class="text-danger" href="https://youtube.com/@hiddify/videos">
+            &nbsp; <i class="fa-brands fa-square-youtube fa-margin"></i> </a></li>
+        <li class="ms-3"><a class="text-primary" href="https://twitter.com/intent/follow?screen_name=hiddify_com">
+            &nbsp; <i class="fa-brands fa-square-twitter fa-margin"></i> </a></li>
+        <li class="ms-3"><a class="text-primary" href="https://t.me/hiddify">&nbsp; <i class="fa-brands fa-telegram fa-margin"></i> </a></li>
+      </ul>
 
-{#modal("guide-modal","","<video id='guide-video' controls style='max-height: 100%; max-width: 100%;width: auto; height: auto;'><source id='guide-video-mp4' type='video/mp4'></video>")#}
+    </footer>
+    <button id="install-pwa-btn" class="btn btn-primary" style="display: none;">
+      Install App
+    </button>
+  </div>
+  <!-- ./wrapper -->
 
-<div class="modal fade" id="share-qr-code" role="dialog" aria-hidden="true" >
+  {#modal("guide-modal","","<video id='guide-video' controls style='max-height: 100%; max-width: 100%;width: auto; height: auto;'>
+    <source id='guide-video-mp4' type='video/mp4'>
+  </video>")#}
+
+  <div class="modal fade" id="share-qr-code" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content" >
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">{{_('user.home.share-title')}}</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-              </button>
-                
-            </div>
-            <div class="modal-body">
-                <center>
-                  <div class="btn-group">
-                    <a id='qrcode-link' class="btn btn-primary copy-link" href=""><i class="fa-regular fa-copy"></i> {{_("copy")}} </a>
-                    <a id="share-link-redirect" class="btn btn-success copy-link" href=""><i class="fa-solid fa-share-from-square"></i> {{_('clickable copy')}}</a>
-                    <a target="_blank" id="share-link-open" class="btn btn-secondary" href=""><i class="fa-solid fa-arrow-up-right-from-square"></i> {{_('open')}}</a>
-                  </div>
-                    <br />
-                    <div id="qrcode" style="margin:10px;padding:10px;background:#fff"></div>
-                </center>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary close" data-dismiss="modal">{{_('close')}}</button>
-            </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">{{_('user.home.share-title')}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+
         </div>
+        <div class="modal-body">
+          <center>
+            <div class="btn-group">
+              <a id='qrcode-link' class="btn btn-primary copy-link" href=""><i class="fa-regular fa-copy"></i> {{_("copy")}} </a>
+              <a id="share-link-redirect" class="btn btn-success copy-link" href=""><i class="fa-solid fa-share-from-square"></i> {{_('clickable copy')}}</a>
+              <a target="_blank" id="share-link-open" class="btn btn-secondary" href=""><i class="fa-solid fa-arrow-up-right-from-square"></i> {{_('open')}}</a>
+            </div>
+            <br />
+            <div id="qrcode" style="margin:10px;padding:10px;background:#fff"></div>
+          </center>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary close" data-dismiss="modal">{{_('close')}}</button>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
 
-{% endblock %}
+  {% endblock %}
 
-{% block tail_js %}
-<script type="text/javascript">
-    
-  setTimeout( function() {
-  var wrappers= document.getElementsByClassName("wrapper") ;
-  var splash_screen = document.getElementById("splash_screen") ;
-  document.body.removeChild(splash_screen) ;
-  for (var i = 0; i < wrappers.length; i++) {
-    wrappers[i].style.display = 'initial' ; 
-  }
- 
- } , '{{g.is_admin}}'=='True' || document.URL.indexOf("pwa")>0? 0:1000  ) ;
+  {% block tail_js %}
+  <script type="text/javascript">
 
-</script>
-<!-- jQuery -->
-<script src="{{ static_url_for( filename='plugins/jquery/jquery.min.js' ) }}"></script>
-<script src="{{ static_url_for( filename='js/popper.min.js' ) }}"></script> 
-<script src="{{ static_url_for( filename='plugins/bootstrap/js/bootstrap.min.js' ) }}"></script>
+    setTimeout(function () {
+      var wrappers = document.getElementsByClassName("wrapper");
+      var splash_screen = document.getElementById("splash_screen");
+      document.body.removeChild(splash_screen);
+      for (var i = 0; i < wrappers.length; i++) {
+        wrappers[i].style.display = 'initial';
+      }
 
+    }, '{{g.is_admin}}' == 'True' || document.URL.indexOf("pwa") > 0 ? 0 : 1000);
 
-<!-- <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
-
-<script src="{{ static_url_for( filename='js/moment.min.js' ) }}"></script>
-<script src="{{ static_url_for( filename='js/bootbox.all.min.js' ) }}"></script>
-<!-- {#<script src="{{ static_url_for( filename="plugins/select2/select2.min.js" ) }}"></script>#} -->
+  </script>
+  <!-- jQuery -->
+  <script src="{{ static_url_for( filename='plugins/jquery/jquery.min.js' ) }}"></script>
+  <script src="{{ static_url_for( filename='js/popper.min.js' ) }}"></script>
+  <script src="{{ static_url_for( filename='plugins/bootstrap/js/bootstrap.min.js' ) }}"></script>
 
 
+  <!-- <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
+
+  <script src="{{ static_url_for( filename='js/moment.min.js' ) }}"></script>
+  <script src="{{ static_url_for( filename='js/bootbox.all.min.js' ) }}"></script>
+  <!-- {#<script src="{{ static_url_for( filename="plugins/select2/select2.min.js" ) }}"></script>#} -->
 
 
 
-<!-- Bootstrap 4 -->
 
-<!-- <script src="{{ static_url_for( filename='plugins/bootstrap/js/bootstrap.bundle.min.js' ) }}"></script> -->
 
-<script src="{{ static_url_for( filename='plugins/datatables/jquery.dataTables.min.js' ) }}"></script>
-<script src="{{ static_url_for( filename='plugins/datatables/dataTables.bootstrap4.js' ) }}"></script>
-<script src="{{ static_url_for( filename='plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js' ) }}"></script>
-<script src="{{ static_url_for( filename='plugins/datatables/extensions/Responsive/js/responsive.bootstrap4.min.js' ) }}"></script>
+  <!-- Bootstrap 4 -->
 
-<!-- <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+  <!-- <script src="{{ static_url_for( filename='plugins/bootstrap/js/bootstrap.bundle.min.js' ) }}"></script> -->
+
+  <script src="{{ static_url_for( filename='plugins/datatables/jquery.dataTables.min.js' ) }}"></script>
+  <script src="{{ static_url_for( filename='plugins/datatables/dataTables.bootstrap4.js' ) }}"></script>
+  <script src="{{ static_url_for( filename='plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js' ) }}"></script>
+  <script src="{{ static_url_for( filename='plugins/datatables/extensions/Responsive/js/responsive.bootstrap4.min.js' ) }}"></script>
+
+  <!-- <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap4.min.js"></script>
 <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
 <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/responsive/2.4.0/js/responsive.bootstrap4.min.js"></script> -->
@@ -223,306 +240,308 @@
 
 
 
-<!-- AdminLTE App -->
-<script src="{{ static_url_for( filename='js/adminlte.js' ) }}"></script>
-<script src="{{static_url_for(filename='js/qrcode.js')}}"></script>
-<!-- <script src="{{static_url_for(filename='js/demo.js')}}"></script> -->
-<script src="{{static_url_for(filename='js/custom.js')}}"></script>
+  <!-- AdminLTE App -->
+  <script src="{{ static_url_for( filename='js/adminlte.js' ) }}"></script>
+  <script src="{{static_url_for(filename='js/qrcode.js')}}"></script>
+  <!-- <script src="{{static_url_for(filename='js/demo.js')}}"></script> -->
+  <script src="{{static_url_for(filename='js/custom.js')}}"></script>
 
-<script src="{{static_url_for(filename='js/js.cookie.min.js')}}"> </script>
-<script  type="text/javascript">
-var v;
-  function copy_click(e) {
-    e.preventDefault();
-    console.log(this); console.log(e);
-    var link = this.getAttribute('data-copy')|| this.href;
-    if (link.startsWith("hiddify://")) {
+  <script src="{{static_url_for(filename='js/js.cookie.min.js')}}"> </script>
+  <script type="text/javascript">
+    var v;
+    function copy_click(e) {
+      e.preventDefault();
+      console.log(this); console.log(e);
+      var link = this.getAttribute('data-copy') || this.href;
+      if (link.startsWith("hiddify://")) {
         parsedUrl = new URL(link);
-        link=parsedUrl.searchParams.get('url');          
-    }
-    try {
-      navigator.clipboard.writeText(link).then(function () {
-        alert("{{_('user.home.link.success-copy')}} \n" + link);
-      }, function (err) {
+        link = parsedUrl.searchParams.get('url');
+      }
+      try {
+        navigator.clipboard.writeText(link).then(function () {
+          alert("{{_('user.home.link.success-copy')}} \n" + link);
+        }, function (err) {
+          window.prompt("{{_('user.home.link.manual-copy')}}: Ctrl+C, Enter", link);
+        });
+      } catch (error) {
         window.prompt("{{_('user.home.link.manual-copy')}}: Ctrl+C, Enter", link);
-      });
-    } catch (error) {
-      window.prompt("{{_('user.home.link.manual-copy')}}: Ctrl+C, Enter", link);
+      }
     }
-  }
-  
-  w = Math.min(window.innerWidth, window.innerHeight) * .5;
-  qrcode = new QRCode(document.getElementById("qrcode"), { width: w, height: w, correctLevel: 1 });
-  function share_click(e) {
-        e.preventDefault();
-        
-        var link = this.getAttribute('data-copy')|| this.href;
-        qrcode.clear()
-        qrcode.makeCode(link);
-        hrefshare = "https://{{domain}}/{{hconfig(ConfigEnum.proxy_path)}}/redirect/" + link.replaceAll('://', '%3A%2F%2F')
-        $('#qrcode-link')[0].href = link
-        $('#share-link-open')[0].href = link
-        $('#share-link-redirect')[0].href = hrefshare
-        $('#share-link-open').show()
-        if (link.startsWith("http"))
-            $('#share-link-redirect').hide()
-        else
-            $('#share-link-redirect').show()
 
-        if (this.getAttribute('data-copy')){
-          $('#share-link-redirect').hide()
-          $('#share-link-open').hide()
-        }
-        $('#share-qr-code').modal('show');
+    w = Math.min(window.innerWidth, window.innerHeight) * .5;
+    qrcode = new QRCode(document.getElementById("qrcode"), { width: w, height: w, correctLevel: 1 });
+    function share_click(e) {
+      e.preventDefault();
+
+      var link = this.getAttribute('data-copy') || this.href;
+      qrcode.clear()
+      qrcode.makeCode(link);
+      hrefshare = "https://{{domain}}/{{hconfig(ConfigEnum.proxy_path)}}/redirect/" + link.replaceAll('://', '%3A%2F%2F')
+      $('#qrcode-link')[0].href = link
+      $('#share-link-open')[0].href = link
+      $('#share-link-redirect')[0].href = hrefshare
+      $('#share-link-open').show()
+      if (link.startsWith("http"))
+        $('#share-link-redirect').hide()
+      else
+        $('#share-link-redirect').show()
+
+      if (this.getAttribute('data-copy')) {
+        $('#share-link-redirect').hide()
+        $('#share-link-open').hide()
+      }
+      $('#share-qr-code').modal('show');
     }
 
     $(document).ready(function () {
-      % set cats={'error':'danger'}
-      {% for cat, msg in get_flashed_messages(with_categories=True) %}
+      % set cats = { 'error': 'danger' }
+      {% for cat, msg in get_flashed_messages(with_categories = True) %}
       $(document).Toasts('create', {
-          class: 'bg-{{cats.get(cat,cat)}}',
-          position: "{{'topLeft' if get_locale()=='fa' else 'topRight'}}" ,
-          
-          
-          body: `{{msg}}`
-        })
+        class: 'bg-{{cats.get(cat,cat)}}',
+        position: "{{'topLeft' if get_locale()=='fa' else 'topRight'}}",
+
+
+        body: `{{msg}}`
+      })
       {% endfor %}
 
 
-      $("#guide-video").on('ended', function(){
-      cancel_video();
+      $("#guide-video").on('ended', function () {
+        cancel_video();
       });
-      if (v!==undefined)
-      v.addEventListener("fullscreenchange", function (event) {
+      if (v !== undefined)
+        v.addEventListener("fullscreenchange", function (event) {
           if (document.fullscreenElement) {
           } else {
             cancel_video()
-        }
-      })
-    });
-  
-</script>
-
-
-
-{% endblock %}
-
-{% block tail %}
-{% macro pwa_install_btn() -%}
-%if g.user_agent.os.family=="iOS"
-<i class="fa-solid fa-arrow-up-from-bracket"></i>
-%else
-<button class='btn btn-success' onclick='install_pwa()'>{{_("Install")}}</button>
-%endif
-{%- endmacro -%}
-<script defer type="text/javascript">
-  $(document).ready(function () {
-    
-  $('a.copy-link').click(copy_click)
-  $('a.share-link').click(share_click)
-  //   $("input").each((i,e)=>{
-  //     if (e.getAttribute('title')){
-  //       e.parentNode.append
-  //     }
-  //   })
-  })
-
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker
-     .register("{{static_url_for(filename='js/pwa-sw.js')}}")
-     .then(() => { console.log('Service Worker Registered'); });
- }
-
- let deferredPrompt=null;
-
-function cancel_video(){
-  player.pauseVideo();
-
-  os="{{g.user_agent.browser.family}}"
-  is_safari=os.indexOf("Safari")>=0
-  v=$('#guide-video')[0]
-  v2=$('#ytplayer')[0]
-  v.pause()
-    if (true || is_safari){
-      v.style.width="0px"
-      v.style.height="0px"
-      v2.style.width="0px"
-      v2.style.height="0px"
-    }
-    if (document.exitFullscreen) {
-        document.exitFullscreen(); // Standard
-    } else if (document.webkitExitFullscreen) {
-        document.webkitExitFullscreen(); // Blink
-    } else if (document.mozCancelFullScreen) {
-        document.mozCancelFullScreen(); // Gecko
-    } else if (document.msExitFullscreen) {
-        document.msExitFullscreen(); // Old IE
-    }
-  
-}
-const youtube_map = {
-  "features": "-a4tfRUsrNY",
-  "webapp-ios": "GBywNl2KZMM",
-  "webapp-android": "_-Iyr_RtIH0",
-  "ios-fair": "01m7w-I4JXE",
-  "ios-wingx": "qFKv4I-MNQc",
-  "ios-stash": "D0Xv54nRSY8",
-  "ios-shadowrocket": "F2bC_mtbYmQ",
-  "android-v2rayng": "6HncctDHXVs",
-  "android-hiddifyng": "7B0PO3HM6Vg",
-  "android-hiddifyclash": "8P887E-KMls",
-  "windows-hiddifyn": "o9L2sI2T53Q"
-};
-function show_video(file){
-  os="{{g.user_agent.browser.family}}"
-  is_safari=os.indexOf("Safari")>=0
-
-  if(youtube_is_open && youtube_map[file]){
-    player.loadVideoById(youtube_map[file])
-    player.playVideo()
-    v=$("#ytplayer")[0]
-  }else{
-    $('#guide-video-mp4')[0].src="/{{hconfig(ConfigEnum.proxy_path)}}/videos/"+file+".mp4"
-    v=$('#guide-video')[0]
-    v.load()
-    v.play()
-  }
-  
-  
-  //$('#guide-modal').modal()
-  
-  is_safari=false
-  if (is_safari){
-    v.style.position="absolute"
-    v.style.width="100vw"
-    v.style.top="0px"
-    v.style.background="black"
-    v.style.height="100vh"
-  }
-  
-  
-  
-  
-  if (v.requestFullscreen)
-      v.requestFullscreen()
-  if (v.webkitEnterFullscreen)
-      v.webkitEnterFullscreen();
-}
- function show_prompt(){
-  toast=$(document).Toasts('create', {
-          class: 'bg-',
-          position: "{{'bottomRight' if get_locale()=='fa' else 'bottomLeft'}}" ,
-          image:"{{static_url_for( filename='images/pwa-icon.png')}}",
-          title: `{{_('Install Hiddify Application')}} <button class='btn btn-xs btn-default' onclick='show_video(is_ios?"webapp-ios":"webapp-android")'><i class='fa-solid fa-question'></i></button>`,
-          class:"toast-full",
-          body: `{{_("Please click on %(install)s to save the user page.",install=pwa_install_btn()|safe)}}`
+          }
         })
-  }
-is_ios=false
-{% if g.install_pwa %}
+    });
 
-%if g.user_agent.os.family=="iOS" 
-is_ios=true
-% if not g.pwa and request.endpoint and ("user2.UserView" in request.endpoint or "admin.Dashboard" in request.endpoint)
-    show_prompt()
-%endif
-%endif
-window.addEventListener('beforeinstallprompt', (event) => {
-  console.log("On before install")
-  if (deferredPrompt==null) show_prompt()
-  // Prevent Chrome 67 and earlier from automatically showing the prompt
-  event.preventDefault();
-  // Stash the event so it can be triggered later
-  deferredPrompt = event;
-  // Update UI notify the user they can add to home screen
-  $('#install-pwa-btn').fadeIn();
-});
+  </script>
 
 
 
-install_pwa=() => {
-  // Show the prompt
-  deferredPrompt.prompt();
-  // Wait for the user to respond to the prompt
-  deferredPrompt.userChoice.then((choiceResult) => {
-    if (choiceResult.outcome === 'accepted') {
-      console.log('User accepted the install prompt');
-      // Hide the installation button
-      $('#install-pwa-btn').fadeOut();
-      toast.fadeOut();
-      
+  {% endblock %}
+
+  {% block tail %}
+  {% macro pwa_install_btn() -%}
+  %if g.user_agent.os.family=="iOS"
+  <i class="fa-solid fa-arrow-up-from-bracket"></i>
+  %else
+  <button class='btn btn-success' onclick='install_pwa()'>{{_("Install")}}</button>
+  %endif
+  {%- endmacro -%}
+  <script defer type="text/javascript">
+    $(document).ready(function () {
+
+      $('a.copy-link').click(copy_click)
+      $('a.share-link').click(share_click)
+      //   $("input").each((i,e)=>{
+      //     if (e.getAttribute('title')){
+      //       e.parentNode.append
+      //     }
+      //   })
+    })
+
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker
+        .register("{{static_url_for(filename='js/pwa-sw.js')}}")
+        .then(() => { console.log('Service Worker Registered'); });
     }
-    // deferredPrompt = null;
-  });
-};
-$('#install-pwa-btn').click(install_pwa)
-%if session.get('darkmode', "notset")=="notset"
+
+    let deferredPrompt = null;
+
+    function cancel_video() {
+      player.pauseVideo();
+
+      os = "{{g.user_agent.browser.family}}"
+      is_safari = os.indexOf("Safari") >= 0
+      v = $('#guide-video')[0]
+      v2 = $('#ytplayer')[0]
+      v.pause()
+      if (true || is_safari) {
+        v.style.width = "0px"
+        v.style.height = "0px"
+        v2.style.width = "0px"
+        v2.style.height = "0px"
+      }
+      if (document.exitFullscreen) {
+        document.exitFullscreen(); // Standard
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen(); // Blink
+      } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen(); // Gecko
+      } else if (document.msExitFullscreen) {
+        document.msExitFullscreen(); // Old IE
+      }
+
+    }
+    const youtube_map = {
+      "features": "-a4tfRUsrNY",
+      "webapp-ios": "GBywNl2KZMM",
+      "webapp-android": "_-Iyr_RtIH0",
+      "ios-fair": "01m7w-I4JXE",
+      "ios-wingx": "qFKv4I-MNQc",
+      "ios-stash": "D0Xv54nRSY8",
+      "ios-shadowrocket": "F2bC_mtbYmQ",
+      "android-v2rayng": "6HncctDHXVs",
+      "android-hiddifyng": "7B0PO3HM6Vg",
+      "android-hiddifyclash": "8P887E-KMls",
+      "windows-hiddifyn": "o9L2sI2T53Q"
+    };
+    function show_video(file) {
+      os = "{{g.user_agent.browser.family}}"
+      is_safari = os.indexOf("Safari") >= 0
+
+      if (youtube_is_open && youtube_map[file]) {
+        player.loadVideoById(youtube_map[file])
+        player.playVideo()
+        v = $("#ytplayer")[0]
+      } else {
+        $('#guide-video-mp4')[0].src = "/{{hconfig(ConfigEnum.proxy_path)}}/videos/" + file + ".mp4"
+        v = $('#guide-video')[0]
+        v.load()
+        v.play()
+      }
+
+
+      //$('#guide-modal').modal()
+
+      is_safari = false
+      if (is_safari) {
+        v.style.position = "absolute"
+        v.style.width = "100vw"
+        v.style.top = "0px"
+        v.style.background = "black"
+        v.style.height = "100vh"
+      }
+
+
+
+
+      if (v.requestFullscreen)
+        v.requestFullscreen()
+      if (v.webkitEnterFullscreen)
+        v.webkitEnterFullscreen();
+    }
+    function show_prompt() {
+      toast = $(document).Toasts('create', {
+        class: 'bg-',
+        position: "{{'bottomRight' if get_locale()=='fa' else 'bottomLeft'}}",
+        image: "{{static_url_for( filename='images/pwa-icon.png')}}",
+        title: `{{_('Install Hiddify Application')}} <button class='btn btn-xs btn-default' onclick='show_video(is_ios?"webapp-ios":"webapp-android")'><i class='fa-solid fa-question'></i></button>`,
+        class: "toast-full",
+        body: `{{_("Please click on %(install)s to save the user page.",install=pwa_install_btn()|safe)}}`
+      })
+    }
+    is_ios = false
+    {% if g.install_pwa %}
+
+%if g.user_agent.os.family == "iOS" 
+is_ios = true
+        % if not g.pwa and request.endpoint and("user2.UserView" in request.endpoint or "admin.Dashboard" in request.endpoint)
+    show_prompt()
+      % endif
+      % endif
+    window.addEventListener('beforeinstallprompt', (event) => {
+      console.log("On before install")
+      if (deferredPrompt == null) show_prompt()
+      // Prevent Chrome 67 and earlier from automatically showing the prompt
+      event.preventDefault();
+      // Stash the event so it can be triggered later
+      deferredPrompt = event;
+      // Update UI notify the user they can add to home screen
+      $('#install-pwa-btn').fadeIn();
+    });
+
+
+
+    install_pwa = () => {
+      // Show the prompt
+      deferredPrompt.prompt();
+      // Wait for the user to respond to the prompt
+      deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User accepted the install prompt');
+          // Hide the installation button
+          $('#install-pwa-btn').fadeOut();
+          toast.fadeOut();
+
+        }
+        // deferredPrompt = null;
+      });
+    };
+    $('#install-pwa-btn').click(install_pwa)
+      %if session.get('darkmode', "notset") == "notset"
 if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-  document.location+="?darkmode=true"    
-}
-%endif
-{% endif %}
+        document.location += "?darkmode=true"
+      }
+% endif
+    {% endif %}
 
 
-</script>
+  </script>
 
 
 
   <script defer type="text/javascript">
-    var youtube_is_open=false
-    %if not country or country.lower() not in  ['ir','cn']
-    var tag = document.createElement('script');
-    tag.id = 'iframe-demo';
-    tag.src = '//www.youtube.com/iframe_api';
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-  
-    var player;
-    function onYouTubeIframeAPIReady() {
-      
-      player = new YT.Player('ytplayer', {
-        playerVars: { 'autoplay': 1, },
-        events: {
-          'onReady': onPlayerReady,
-          'onStateChange': onPlayerStateChange,
-          'onError': onPlayerError
-        }
-      });
-    }
-    function fullscreenPlayer(){
+    var youtube_is_open = !['ir', 'cn'].includes("{{country|lower}}"
+
+    if (youtube_is_open) {
+
+      var tag = document.createElement('script');
+      tag.id = 'iframe-demo';
+      tag.src = '//www.youtube.com/iframe_api';
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      var player;
+      function onYouTubeIframeAPIReady() {
+
+        player = new YT.Player('ytplayer', {
+          playerVars: { 'autoplay': 1, },
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange,
+            'onError': onPlayerError
+          }
+        });
+      }
+      function fullscreenPlayer() {
         if (player.getIframe().requestFullscreen) {
-        player.getIframe().requestFullscreen();
-      } else if (player.getIframe().mozRequestFullScreen) {
-        player.getIframe().mozRequestFullScreen();
-      } else if (player.getIframe().webkitRequestFullscreen) {
-        player.getIframe().webkitRequestFullscreen();
-      } else if (player.getIframe().msRequestFullscreen) {
-        player.getIframe().msRequestFullscreen();
+          player.getIframe().requestFullscreen();
+        } else if (player.getIframe().mozRequestFullScreen) {
+          player.getIframe().mozRequestFullScreen();
+        } else if (player.getIframe().webkitRequestFullscreen) {
+          player.getIframe().webkitRequestFullscreen();
+        } else if (player.getIframe().msRequestFullscreen) {
+          player.getIframe().msRequestFullscreen();
+        }
+      }
+      function onPlayerError(event) {
+        youtube_is_open = false
+      }
+      function onPlayerReady(event) {
+        youtube_is_open = true
+      }
+      // YouTube Player state change event
+      function onPlayerStateChange(event) {
+        if (event.data === YT.PlayerState.ENDED) {
+          cancel_video()
+          // Perform further actions or analytics tracking here
+        }
       }
     }
-    function onPlayerError(event) {
-      youtube_is_open=false
-    }
-    function onPlayerReady(event) {
-      youtube_is_open=true
-    }
-    // YouTube Player state change event
-    function onPlayerStateChange(event) {
-      if (event.data === YT.PlayerState.ENDED) {
-        cancel_video()
-        // Perform further actions or analytics tracking here
-      }
-    }
-   %endif
   </script>
 
-% if get_locale()=='fa'
-<script src="{{static_url_for(filename='js/custom-rtl.js',version=5.1)}}"> </script>
-%endif
+  % if get_locale()=='fa'
+  <script src="{{static_url_for(filename='js/custom-rtl.js',version=5.1)}}"> </script>
+  %endif
 
 
-<!-- <script src="{{static_url_for(filename='js/pwa-sw.js')}}" defer></script> -->
-{% endblock %}
+  <!-- <script src="{{static_url_for(filename='js/pwa-sw.js')}}" defer></script> -->
+  {% endblock %}
 </body>
-</html>
 
+</html>
