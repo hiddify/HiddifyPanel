@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-13 10:12+0200\n"
-"PO-Revision-Date: 2023-09-12 23:26-0500\n"
+"POT-Creation-Date: 2023-10-02 10:35+0200\n"
+"PO-Revision-Date: 2023-09-30 02:58-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -213,60 +213,60 @@ msgid "Owner can not be deleted!"
 msgstr "楼主不能删除！"
 
 # | msgid "Config file is incorrect."
-#: hiddifypanel/panel/admin/Backup.py:73
+#: hiddifypanel/panel/admin/Backup.py:75
 msgid "Config file is incorrect"
 msgstr "配置文件不正确。"
 
-#: hiddifypanel/panel/admin/Backup.py:79
+#: hiddifypanel/panel/admin/Backup.py:81
 msgid "Restore File"
 msgstr "恢复文件："
 
 # | msgid "Choose the downloaded restore file"
-#: hiddifypanel/panel/admin/Backup.py:79
+#: hiddifypanel/panel/admin/Backup.py:81
 msgid "Restore File Description"
 msgstr "选择下载的还原文件。"
 
 # | msgid "⚙️ Restore Settings"
-#: hiddifypanel/panel/admin/Backup.py:80
+#: hiddifypanel/panel/admin/Backup.py:82
 #, fuzzy
 msgid "Restore Settings"
 msgstr "恢复设置"
 
 # | msgid "Restore all settings description"
-#: hiddifypanel/panel/admin/Backup.py:80
+#: hiddifypanel/panel/admin/Backup.py:82
 #, fuzzy
 msgid "Restore Settings description"
 msgstr "恢复设置说明"
 
 # | msgid "👥 Restore Users"
-#: hiddifypanel/panel/admin/Backup.py:81
+#: hiddifypanel/panel/admin/Backup.py:83
 msgid "Restore Users"
 msgstr "恢复用户"
 
 # | msgid "Select this option to restore All Users"
-#: hiddifypanel/panel/admin/Backup.py:81
+#: hiddifypanel/panel/admin/Backup.py:83
 msgid "Restore Users description"
 msgstr "选择此选项以恢复所有用户。"
 
 # | msgid "🌏 Restore Domain"
-#: hiddifypanel/panel/admin/Backup.py:82
+#: hiddifypanel/panel/admin/Backup.py:84
 msgid "Restore Domain"
 msgstr "还原域"
 
 # | msgid "Select this option to restore your domains"
-#: hiddifypanel/panel/admin/Backup.py:82
+#: hiddifypanel/panel/admin/Backup.py:84
 msgid "Restore Domain description"
 msgstr "选择此选项以恢复您的域。"
 
-#: hiddifypanel/panel/admin/Backup.py:83
+#: hiddifypanel/panel/admin/Backup.py:85
 msgid "Override Root Admin"
 msgstr ""
 
-#: hiddifypanel/panel/admin/Backup.py:83
+#: hiddifypanel/panel/admin/Backup.py:85
 msgid "It will override the root admin to the current user"
 msgstr ""
 
-#: hiddifypanel/panel/admin/Backup.py:84
+#: hiddifypanel/panel/admin/Backup.py:86
 #: hiddifypanel/panel/admin/ProxyAdmin.py:97
 #: hiddifypanel/panel/admin/ProxyAdmin.py:128
 #: hiddifypanel/panel/admin/QuickSetup.py:85
@@ -2716,7 +2716,7 @@ msgstr ""
 msgid "admin.config.title"
 msgstr "设置"
 
-# | msgid "📅Remain: %(expire_days)s Days"
+# | msgid "📅%(expire_days)s Days Remain"
 #: hiddifypanel/panel/user/link_maker.py:724
 #, fuzzy, python-format
 msgid "📅%(expire_days)s days"
@@ -3441,25 +3441,30 @@ msgstr ""
 "<br />\n"
 "然后应用以下配置之一："
 
-# | msgid "<i class=\"fa-solid fa-play\"></i> Tap to Start Anti-Filter."
+# | msgid "<i class=\"fa-solid fa-play\"></i> Tap to Start Anti-Filter"
 #: hiddifypanel/panel/user/templates/home/one_click.html:14
 #, fuzzy
 msgid "Click to Start Anti-Filter."
 msgstr "<i class=\"fa-solid fa-play\"></i> 点击以启动反过滤。"
 
+# | msgid "Unified link for all application"
 #: hiddifypanel/panel/user/templates/home/one_click.html:16
 #, fuzzy
 msgid "Unified link for all application."
 msgstr "所有应用程序的统一链接。"
 
+# | msgid "⏱️ Temporary Short Link"
 #: hiddifypanel/panel/user/templates/home/one_click.html:30
 #: hiddifypanel/panel/user/templates/home/one_click.html:297
+#, fuzzy
 msgid "Temporary Short Link"
-msgstr ""
+msgstr "⏱️临时短链接"
 
+# | msgid "Simplifies the process of employing the link elsewhere"
 #: hiddifypanel/panel/user/templates/home/one_click.html:32
+#, fuzzy
 msgid "Simplifies the process of employing the link elsewhere."
-msgstr ""
+msgstr "简化了在其他地方使用链接的过程"
 
 #: hiddifypanel/panel/user/templates/home/one_click.html:50
 #, fuzzy
@@ -3467,10 +3472,10 @@ msgid "Open in Application"
 msgstr "在应用程序中打开"
 
 # | msgid ""
-# | "✔️The Proxy link is copied.\n"
+# | "✔️ The Proxy link is copied\n"
 # | "<br>\n"
-# | "⚠️If the application do not open automatically, you need to only paste it
-# on your application, or:"
+# | "⚠️ If the application do not open automatically, you need to only paste
+# it on your application, or:"
 #: hiddifypanel/panel/user/templates/home/one_click.html:56
 #, fuzzy, python-format
 msgid ""
@@ -3649,7 +3654,7 @@ msgstr "连接的 IP 太多"
 msgid "View in Telegram"
 msgstr "在电报中查看"
 
-# | msgid "Display Usage Details."
+# | msgid "Display Usage Details"
 #: hiddifypanel/panel/user/templates/home/usage.html:45
 msgid "user.home.usage.details"
 msgstr "显示使用详情。"
@@ -4100,7 +4105,7 @@ msgstr ""
 msgid "config.hysteria_enable.label"
 msgstr "启用歇斯底里"
 
-# | msgid "To enable udp based hysteria protocol"
+# | msgid "To enable UDP based Hysteria Protocol"
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
 msgid "config.hysteria_enable.description"
@@ -4617,6 +4622,9 @@ msgstr "动作"
 #~ " FairVPN."
 #~ msgstr "使用带有特殊字符的别名可能会导致某些客户端出现问题，例如 FairVPN"
 
+# | msgid ""
+# | "You should visit this page without VPN Your Country=%(your_country)s\n"
+# | "Expected=%(expected_country)s"
 #~ msgid ""
 #~ "You should visit this page without VPN. Your country=%(your_country)s\n"
 #~ "expected=%(expected_country)s"

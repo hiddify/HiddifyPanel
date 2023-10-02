@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-13 10:12+0200\n"
-"PO-Revision-Date: 2023-09-12 23:26-0500\n"
+"POT-Creation-Date: 2023-10-02 10:35+0200\n"
+"PO-Revision-Date: 2023-09-30 02:58-0500\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -203,60 +203,60 @@ msgid "Owner can not be deleted!"
 msgstr "Owner Can Not Be Deleted!"
 
 # | msgid "Config file is incorrect."
-#: hiddifypanel/panel/admin/Backup.py:73
+#: hiddifypanel/panel/admin/Backup.py:75
 msgid "Config file is incorrect"
 msgstr "Config file is incorrect."
 
-#: hiddifypanel/panel/admin/Backup.py:79
+#: hiddifypanel/panel/admin/Backup.py:81
 msgid "Restore File"
 msgstr "Restore File"
 
 # | msgid "Choose the downloaded restore file"
-#: hiddifypanel/panel/admin/Backup.py:79
+#: hiddifypanel/panel/admin/Backup.py:81
 msgid "Restore File Description"
 msgstr "Choose the downloaded restore file"
 
 # | msgid "⚙️ Restore Settings"
-#: hiddifypanel/panel/admin/Backup.py:80
+#: hiddifypanel/panel/admin/Backup.py:82
 msgid "Restore Settings"
 msgstr "⚙️ Restore Settings"
 
 # | msgid "Restore all settings description"
-#: hiddifypanel/panel/admin/Backup.py:80
+#: hiddifypanel/panel/admin/Backup.py:82
 msgid "Restore Settings description"
 msgstr "Restore all settings description"
 
 # | msgid "👥 Restore Users"
-#: hiddifypanel/panel/admin/Backup.py:81
+#: hiddifypanel/panel/admin/Backup.py:83
 msgid "Restore Users"
 msgstr "👥 Restore Users"
 
 # | msgid "Select this option to restore All Users"
-#: hiddifypanel/panel/admin/Backup.py:81
+#: hiddifypanel/panel/admin/Backup.py:83
 msgid "Restore Users description"
 msgstr "Select this option to restore All Users"
 
 # | msgid "🌏 Restore Domain"
-#: hiddifypanel/panel/admin/Backup.py:82
+#: hiddifypanel/panel/admin/Backup.py:84
 msgid "Restore Domain"
 msgstr "🌏 Restore Domain"
 
 # | msgid "Select this option to restore your domains"
-#: hiddifypanel/panel/admin/Backup.py:82
+#: hiddifypanel/panel/admin/Backup.py:84
 msgid "Restore Domain description"
 msgstr "Select this option to restore your domains"
 
-#: hiddifypanel/panel/admin/Backup.py:83
+#: hiddifypanel/panel/admin/Backup.py:85
 #, fuzzy
 msgid "Override Root Admin"
 msgstr "Override Root Admin"
 
-#: hiddifypanel/panel/admin/Backup.py:83
+#: hiddifypanel/panel/admin/Backup.py:85
 #, fuzzy
 msgid "It will override the root admin to the current user"
 msgstr "It will override the root admin to the current user"
 
-#: hiddifypanel/panel/admin/Backup.py:84
+#: hiddifypanel/panel/admin/Backup.py:86
 #: hiddifypanel/panel/admin/ProxyAdmin.py:97
 #: hiddifypanel/panel/admin/ProxyAdmin.py:128
 #: hiddifypanel/panel/admin/QuickSetup.py:85
@@ -2703,11 +2703,11 @@ msgstr ""
 msgid "admin.config.title"
 msgstr "Settings"
 
-# | msgid "📅Remain: %(expire_days)s Days"
+# | msgid "📅%(expire_days)s Days Remain"
 #: hiddifypanel/panel/user/link_maker.py:724
 #, python-format
 msgid "📅%(expire_days)s days"
-msgstr "📅Remain: %(expire_days)s Days"
+msgstr "📅%(expire_days)s Days Remain"
 
 # | msgid ""
 # | "Please open this link in a browser; it will expire in 5 minutes for "
@@ -3439,36 +3439,36 @@ msgstr ""
 "Then apply the following configs:\n"
 "<br />"
 
-# | msgid "<i class=\"fa-solid fa-play\"></i> Tap to Start Anti-Filter."
+# | msgid "<i class=\"fa-solid fa-play\"></i> Tap to Start Anti-Filter"
 #: hiddifypanel/panel/user/templates/home/one_click.html:14
 msgid "Click to Start Anti-Filter."
-msgstr "<i class=\"fa-solid fa-play\"></i> Tap to Start Anti-Filter."
+msgstr "<i class=\"fa-solid fa-play\"></i> Tap to Start Anti-Filter"
 
+# | msgid "Unified link for all application"
 #: hiddifypanel/panel/user/templates/home/one_click.html:16
 msgid "Unified link for all application."
-msgstr "Unified link for all application."
+msgstr "Unified link for all application"
 
+# | msgid "⏱️ Temporary Short Link"
 #: hiddifypanel/panel/user/templates/home/one_click.html:30
 #: hiddifypanel/panel/user/templates/home/one_click.html:297
-#, fuzzy
 msgid "Temporary Short Link"
-msgstr "Temporary Short Link"
+msgstr "⏱️ Temporary Short Link"
 
+# | msgid "Simplifies the process of employing the link elsewhere"
 #: hiddifypanel/panel/user/templates/home/one_click.html:32
-#, fuzzy
 msgid "Simplifies the process of employing the link elsewhere."
-msgstr "Simplifies the process of employing the link elsewhere."
+msgstr "Simplifies the process of employing the link elsewhere"
 
 #: hiddifypanel/panel/user/templates/home/one_click.html:50
 msgid "Open in Application"
 msgstr "Open in Application"
 
 # | msgid ""
-# | "✔️The Proxy link is copied.\n"
+# | "✔️ The Proxy link is copied\n"
 # | "<br>\n"
-# | "⚠️If the application do not open automatically, you need to only paste it
-# "
-# | "on your application, or:"
+# | "⚠️ If the application do not open automatically, you need to only paste "
+# | "it on your application, or:"
 #: hiddifypanel/panel/user/templates/home/one_click.html:56
 #, python-format
 msgid ""
@@ -3476,9 +3476,9 @@ msgid ""
 "btn-primary copy-link' href='%(sub)s'>this universal link</a> to copy and "
 "paste it on your application, or:"
 msgstr ""
-"✔️The Proxy link is copied.\n"
+"✔️ The Proxy link is copied\n"
 "<br>\n"
-"⚠️If the application do not open automatically, you need to only paste it on your application, or:"
+"⚠️ If the application do not open automatically, you need to only paste it on your application, or:"
 
 #: hiddifypanel/panel/user/templates/home/one_click.html:61
 #: hiddifypanel/panel/user/templates/home/one_click.html:104
@@ -3643,10 +3643,10 @@ msgstr "Too Many Connected IPs"
 msgid "View in Telegram"
 msgstr "View in Telegram"
 
-# | msgid "Display Usage Details."
+# | msgid "Display Usage Details"
 #: hiddifypanel/panel/user/templates/home/usage.html:45
 msgid "user.home.usage.details"
-msgstr "Display Usage Details."
+msgstr "Display Usage Details"
 
 # | msgid "Support"
 #: hiddifypanel/panel/user/templates/home/usage.html:54
@@ -4062,10 +4062,10 @@ msgstr ""
 msgid "config.hysteria_enable.label"
 msgstr "Enable Hysteria"
 
-# | msgid "To enable udp based hysteria protocol"
+# | msgid "To enable UDP based Hysteria Protocol"
 #: hiddifypanel/templates/fake.html:1
 msgid "config.hysteria_enable.description"
-msgstr "To enable udp based hysteria protocol"
+msgstr "To enable UDP based Hysteria Protocol"
 
 # | msgid "Hysteria Port"
 #: hiddifypanel/templates/fake.html:1
@@ -4565,12 +4565,15 @@ msgstr "Actions"
 #~ "Using Alias with Special Charachters may cause problem in some Clients like "
 #~ "Fair VPN"
 
+# | msgid ""
+# | "You should visit this page without VPN Your Country=%(your_country)s\n"
+# | "Expected=%(expected_country)s"
 #~ msgid ""
 #~ "You should visit this page without VPN. Your country=%(your_country)s\n"
 #~ "expected=%(expected_country)s"
 #~ msgstr ""
-#~ "You should visit this page without VPN. Your country=%(your_country)s\n"
-#~ "expected=%(expected_country)s"
+#~ "You should visit this page without VPN Your Country=%(your_country)s\n"
+#~ "Expected=%(expected_country)s"
 
 #~ msgid ""
 #~ "If the application do not open automatically, please click <a class='btn btn-primary copy-link' href='%(sub)s'>this universal link</a> to copy and paste it on\n"

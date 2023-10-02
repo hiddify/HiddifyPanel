@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-13 10:12+0200\n"
-"PO-Revision-Date: 2023-09-12 23:26-0500\n"
+"POT-Creation-Date: 2023-10-02 10:35+0200\n"
+"PO-Revision-Date: 2023-09-30 02:58-0500\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -209,60 +209,60 @@ msgid "Owner can not be deleted!"
 msgstr "مدیر کل را نمیتوانید حذف کنید!"
 
 # | msgid "Config file is incorrect."
-#: hiddifypanel/panel/admin/Backup.py:73
+#: hiddifypanel/panel/admin/Backup.py:75
 msgid "Config file is incorrect"
 msgstr "فایل کانفیگ اشتباه است."
 
-#: hiddifypanel/panel/admin/Backup.py:79
+#: hiddifypanel/panel/admin/Backup.py:81
 msgid "Restore File"
 msgstr "فایل بازیابی"
 
 # | msgid "Choose the downloaded restore file"
-#: hiddifypanel/panel/admin/Backup.py:79
+#: hiddifypanel/panel/admin/Backup.py:81
 msgid "Restore File Description"
 msgstr "برای بازگردانی، فایل دانلود شده (بک آپ) را از سیستم خود انتخاب کنید."
 
 # | msgid "⚙️ Restore Settings"
-#: hiddifypanel/panel/admin/Backup.py:80
+#: hiddifypanel/panel/admin/Backup.py:82
 msgid "Restore Settings"
 msgstr "⚙️ بازیابی تنظیمات"
 
 # | msgid "Restore all settings description"
-#: hiddifypanel/panel/admin/Backup.py:80
+#: hiddifypanel/panel/admin/Backup.py:82
 msgid "Restore Settings description"
 msgstr "در این قسمت می‌توانید تنظیمات قبلی را بازیابی نمایید."
 
 # | msgid "👥 Restore Users"
-#: hiddifypanel/panel/admin/Backup.py:81
+#: hiddifypanel/panel/admin/Backup.py:83
 msgid "Restore Users"
 msgstr "👥 بازیابی کاربران"
 
 # | msgid "Select this option to restore All Users"
-#: hiddifypanel/panel/admin/Backup.py:81
+#: hiddifypanel/panel/admin/Backup.py:83
 msgid "Restore Users description"
 msgstr "برای بازگرداندن کاربران از این گزینه استفاده کنید."
 
 # | msgid "🌏 Restore Domain"
-#: hiddifypanel/panel/admin/Backup.py:82
+#: hiddifypanel/panel/admin/Backup.py:84
 msgid "Restore Domain"
 msgstr "🌏 بازیابی دامنه‌ها"
 
 # | msgid "Select this option to restore your domains"
-#: hiddifypanel/panel/admin/Backup.py:82
+#: hiddifypanel/panel/admin/Backup.py:84
 msgid "Restore Domain description"
 msgstr "برای بازگرداندن دامنه از این گزینه استفاده کنید."
 
-#: hiddifypanel/panel/admin/Backup.py:83
+#: hiddifypanel/panel/admin/Backup.py:85
 msgid "Override Root Admin"
 msgstr "جایگذاری ادمین اصلی"
 
-#: hiddifypanel/panel/admin/Backup.py:83
+#: hiddifypanel/panel/admin/Backup.py:85
 msgid "It will override the root admin to the current user"
 msgstr ""
 "این گزینه باعث جایگزین شده ادمین هایی که در پنل نیستند را با ادمین فعلی "
 "یکی کند"
 
-#: hiddifypanel/panel/admin/Backup.py:84
+#: hiddifypanel/panel/admin/Backup.py:86
 #: hiddifypanel/panel/admin/ProxyAdmin.py:97
 #: hiddifypanel/panel/admin/ProxyAdmin.py:128
 #: hiddifypanel/panel/admin/QuickSetup.py:85
@@ -2777,11 +2777,11 @@ msgstr ""
 msgid "admin.config.title"
 msgstr "تنظیمات"
 
-# | msgid "📅Remain: %(expire_days)s Days"
+# | msgid "📅%(expire_days)s Days Remain"
 #: hiddifypanel/panel/user/link_maker.py:724
 #, python-format
 msgid "📅%(expire_days)s days"
-msgstr "📅اعتبار %(expire_days)s روز"
+msgstr "📅%(expire_days)s روز اعتبار"
 
 # | msgid ""
 # | "Please open this link in a browser; it will expire in 5 minutes for
@@ -2790,8 +2790,8 @@ msgstr "📅اعتبار %(expire_days)s روز"
 #: hiddifypanel/panel/user/user.py:27
 msgid "This link will expire in 5 minutes"
 msgstr ""
-"لطفا این لینک را در یک مرورگر باز کنید. به دلایل امنیتی 5 دقیقه دیگر "
-"منقضی می شود."
+"لطفا این لینک را در یک مرورگر باز کنید. به دلایل امنیتی ۵ دقیقه دیگر "
+"منقضی می شود"
 
 # | msgid "All Configs"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:1
@@ -2908,9 +2908,8 @@ msgstr "لینک برای Subscription"
 
 # | msgid "SingBox: SSH"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:87
-#, fuzzy
 msgid "singbox: ssh"
-msgstr "singbox: ssh"
+msgstr "SingBox: SSH"
 
 # | msgid "SSH"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:90
@@ -3558,33 +3557,36 @@ msgstr ""
 "سپس کانفیگ‌ زیر را در برنامه اعمال کنید:\n"
 "<br />"
 
-# | msgid "<i class=\"fa-solid fa-play\"></i> Tap to Start Anti-Filter."
+# | msgid "<i class=\"fa-solid fa-play\"></i> Tap to Start Anti-Filter"
 #: hiddifypanel/panel/user/templates/home/one_click.html:14
 msgid "Click to Start Anti-Filter."
 msgstr "<i class=\"fa-solid fa-caret-left\"></i> کلیک برای اعمال فیلترشکن"
 
+# | msgid "Unified link for all application"
 #: hiddifypanel/panel/user/templates/home/one_click.html:16
 msgid "Unified link for all application."
 msgstr "لینک یکسان برای همه برنامه‌ها"
 
+# | msgid "⏱️ Temporary Short Link"
 #: hiddifypanel/panel/user/templates/home/one_click.html:30
 #: hiddifypanel/panel/user/templates/home/one_click.html:297
 msgid "Temporary Short Link"
-msgstr "لینک کوتاه موقت"
+msgstr "⏱️ لینک کوتاه موقت"
 
+# | msgid "Simplifies the process of employing the link elsewhere"
 #: hiddifypanel/panel/user/templates/home/one_click.html:32
 msgid "Simplifies the process of employing the link elsewhere."
-msgstr "برای راحتی انتقال این صفحه به پلتفورم دیگر."
+msgstr "برای راحتی انتقال این صفحه به ‌پلتفرم دیگر"
 
 #: hiddifypanel/panel/user/templates/home/one_click.html:50
 msgid "Open in Application"
 msgstr "باز کردن در برنامه"
 
 # | msgid ""
-# | "✔️The Proxy link is copied.\n"
+# | "✔️ The Proxy link is copied\n"
 # | "<br>\n"
-# | "⚠️If the application do not open automatically, you need to only paste it
-# on your application, or:"
+# | "⚠️ If the application do not open automatically, you need to only paste
+# it on your application, or:"
 #: hiddifypanel/panel/user/templates/home/one_click.html:56
 #, python-format
 msgid ""
@@ -3592,9 +3594,9 @@ msgid ""
 "btn-primary copy-link' href='%(sub)s'>this universal link</a> to copy and"
 " paste it on your application, or:"
 msgstr ""
-"✔️لینک پروکسی به صورت خودکار کپی شده است.\n"
+"✔️ لینک پروکسی به صورت خودکار کپی شده است.\n"
 "<br>\n"
-"⚠️اگر برنامه فیلترشکن به طور خودکار باز نشد، باید به صورت دستی لینک "
+"⚠️ اگر برنامه فیلترشکن به طور خودکار باز نشد، باید به صورت دستی لینک "
 "پروکسی را در برنامه مورد نظر جایگذاری کنید،  یا:"
 
 #: hiddifypanel/panel/user/templates/home/one_click.html:61
@@ -3764,7 +3766,7 @@ msgstr "تعداد IP های متصل بسیار زیاد است"
 msgid "View in Telegram"
 msgstr "مشاهده جزییات در تلگرام"
 
-# | msgid "Display Usage Details."
+# | msgid "Display Usage Details"
 #: hiddifypanel/panel/user/templates/home/usage.html:45
 msgid "user.home.usage.details"
 msgstr "نمایش جزئیات استفاده"
@@ -4175,15 +4177,13 @@ msgstr "پورت پروکسی SSH"
 # | "This is completely different from your original SSH server. It is a "
 # | "dedicated program."
 #: hiddifypanel/templates/fake.html:1
-#, fuzzy
 msgid "config.ssh_server_port.description"
-msgstr "این کاملا با سرور اصلی ssh شما متفاوت است. این یک برنامه اختصاصی است."
+msgstr "این کاملا با سرور اصلی SSH شما متفاوت است. این یک برنامه اختصاصی است."
 
 # | msgid "✔️ Enable SSH Proxy"
 #: hiddifypanel/templates/fake.html:1
-#, fuzzy
 msgid "config.ssh_server_enable.label"
-msgstr "پروکسی SSH را فعال کنید"
+msgstr "✔️ پروکسی SSH را فعال کنید"
 
 # | msgid "SSH Proxy is completely different than original SSH Server"
 #: hiddifypanel/templates/fake.html:1
@@ -4225,21 +4225,18 @@ msgstr ""
 
 # | msgid "Enable Hysteria"
 #: hiddifypanel/templates/fake.html:1
-#, fuzzy
 msgid "config.hysteria_enable.label"
-msgstr "هیستری را فعال کنید"
+msgstr "هیستریا را فعال کنید"
 
-# | msgid "To enable udp based hysteria protocol"
+# | msgid "To enable UDP based Hysteria Protocol"
 #: hiddifypanel/templates/fake.html:1
-#, fuzzy
 msgid "config.hysteria_enable.description"
-msgstr "برای فعال کردن پروتکل هیستری مبتنی بر udp"
+msgstr "برای فعال کردن پروتکل هیستریا مبتنی بر UDP"
 
 # | msgid "Hysteria Port"
 #: hiddifypanel/templates/fake.html:1
-#, fuzzy
 msgid "config.hysteria_port.label"
-msgstr "بندر هیستری"
+msgstr "پورت هیستریا"
 
 # | msgid "Hysteria UDP Port for example 5678"
 #: hiddifypanel/templates/fake.html:1
@@ -4271,19 +4268,17 @@ msgstr ""
 
 # | msgid "Hysteria"
 #: hiddifypanel/templates/fake.html:2
-#, fuzzy
 msgid "config.hysteria.label"
-msgstr "هیستری"
+msgstr "هیستریا"
 
 # | msgid ""
 # | "Hysteria is a feature-packed proxy & relay tool optimized for lossy, "
 # | "unstable connections (e.g. satellite networks, congested public Wi-Fi, "
 # | "connecting to foreign servers from China)"
 #: hiddifypanel/templates/fake.html:2
-#, fuzzy
 msgid "config.hysteria.description"
 msgstr ""
-"Hysteria یک ابزار پراکسی و رله پر از ویژگی است که برای اتصالات با اتلاف و"
+"Hysteria یک ابزار پروکسی و رله پر از ویژگی است که برای اتصالات با اتلاف و"
 " ناپایدار بهینه شده است (مانند شبکه های ماهواره ای، Wi-Fi عمومی متراکم، "
 "اتصال به سرورهای خارجی از چین)"
 
@@ -4777,6 +4772,9 @@ msgstr "عملیات"
 #~ " ها مانند Fair VPN مشکل ایجاد "
 #~ "کند"
 
+# | msgid ""
+# | "You should visit this page without VPN Your Country=%(your_country)s\n"
+# | "Expected=%(expected_country)s"
 #~ msgid ""
 #~ "You should visit this page without VPN. Your country=%(your_country)s\n"
 #~ "expected=%(expected_country)s"
