@@ -13,7 +13,7 @@ sqlalchemy_utils
 xtlsapi==3.1.2
 python-dateutil~=2.8.2
 flask-babelex
-babel~=2.12.1
+babel==2.12.1
 StrEnum~=0.4.15
 python-dotenv~=1.0.0
 flask_classful
@@ -45,3 +45,4 @@ pymysql
 setuptools~=65.5.1
 WTForms~=3.0.1
 requests~=2.31.0
+async_timeout
