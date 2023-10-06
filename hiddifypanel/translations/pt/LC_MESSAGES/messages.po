@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPT\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-30 09:57+0200\n"
-"PO-Revision-Date: 2023-09-14 15:20-0500\n"
+"POT-Creation-Date: 2023-10-06 20:29+0200\n"
+"PO-Revision-Date: 2023-10-06 13:25-0500\n"
 "Last-Translator: lymanrudni\n"
 "Language: pt\n"
 "Language-Team: Portuguese\n"
@@ -3053,7 +3053,7 @@ msgstr ""
 msgid "admin.config.title"
 msgstr "Configurações"
 
-# | msgid "📅Remain: %(expire_days)s Days"
+# | msgid "📅%(expire_days)s Days Remain"
 #: hiddifypanel/panel/user/link_maker.py:775
 #, fuzzy, python-format
 msgid "📅%(expire_days)s days"
@@ -3875,23 +3875,26 @@ msgstr ""
 "Em seguida, aplique as seguintes configurações:\n"
 "<br />"
 
-# | msgid "<i class=\"fa-solid fa-play\"></i> Tap to Start Anti-Filter."
+# | msgid "<i class=\"fa-solid fa-play\"></i> Tap to Start Anti-Filter"
 #: hiddifypanel/panel/user/templates/home/one_click.html:14
 #, fuzzy
 msgid "Click to Start Anti-Filter."
 msgstr "<i class=\"fa-solid fa-play\"></i> Toque para iniciar o Antifiltro."
 
+# | msgid "Unified link for all application"
 #: hiddifypanel/panel/user/templates/home/one_click.html:16
 #, fuzzy
 msgid "Unified link for all application."
 msgstr "Link unificado para todos os aplicativos."
 
+# | msgid "⏱️ Temporary Short Link"
 #: hiddifypanel/panel/user/templates/home/one_click.html:30
 #: hiddifypanel/panel/user/templates/home/one_click.html:297
 #, fuzzy
 msgid "Temporary Short Link"
 msgstr "⏱️ Link curto temporário"
 
+# | msgid "Simplifies the process of employing the link elsewhere"
 #: hiddifypanel/panel/user/templates/home/one_click.html:32
 #, fuzzy
 msgid "Simplifies the process of employing the link elsewhere."
@@ -3903,10 +3906,10 @@ msgid "Open in Application"
 msgstr "Abrir no aplicativo"
 
 # | msgid ""
-# | "✔️The Proxy link is copied.\n"
+# | "✔️ The Proxy link is copied\n"
 # | "<br>\n"
-# | "⚠️If the application do not open automatically, you need to only paste it
-# on your application, or:"
+# | "⚠️ If the application do not open automatically, you need to only paste
+# it on your application, or:"
 #: hiddifypanel/panel/user/templates/home/one_click.html:56
 #, fuzzy, python-format
 msgid ""
@@ -4105,7 +4108,7 @@ msgstr "Muitos IPs conectados"
 msgid "View in Telegram"
 msgstr "Ver no Telegram"
 
-# | msgid "Display Usage Details."
+# | msgid "Display Usage Details"
 #: hiddifypanel/panel/user/templates/home/usage.html:45
 #, fuzzy
 msgid "user.home.usage.details"
@@ -4600,7 +4603,7 @@ msgstr ""
 msgid "config.hysteria_enable.label"
 msgstr "Habilitar Histeria"
 
-# | msgid "To enable udp based hysteria protocol"
+# | msgid "To enable UDP based Hysteria Protocol"
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
 msgid "config.hysteria_enable.description"
