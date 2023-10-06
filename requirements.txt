@@ -12,8 +12,8 @@ flask-restful
 sqlalchemy_utils
 xtlsapi==3.1.2
 python-dateutil
-flask-babelex
-babel
+flask-babelex==0.9.4
+babel==2.12.1
 StrEnum
 python-dotenv
 flask_classful
@@ -41,3 +41,4 @@ redis
 python-redis-cache
 cryptography>=41.0.0
 paramiko
+async_timeout
