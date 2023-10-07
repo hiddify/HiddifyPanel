@@ -347,7 +347,7 @@ def to_clash(proxy, meta_or_normal):
         return {'name': name, 'msg': "bug tls_h2 vmess and vless in clash meta", 'type': 'warning'}
     base = {}
     # vmess ws
-    base["name"] = f"""{proxy['extra_info']} {proxy["name"]} {proxy['port']} {proxy["dbdomain"].id}"""
+    base["name"] = f"""{proxy['extra_info']} {proxy["name"]} § {proxy['port']} {proxy["dbdomain"].id}"""
     base["type"] = str(proxy["proto"])
     base["server"] = proxy["server"]
     base["port"] = proxy["port"]
@@ -494,7 +494,7 @@ def to_singbox(proxy):
     base = {}
     all_base.append(base)
     # vmess ws
-    base["tag"] = f"""{proxy['extra_info']} {proxy["name"]} {proxy['port']} {proxy["dbdomain"].id}"""
+    base["tag"] = f"""{proxy['extra_info']} {proxy["name"]} § {proxy['port']} {proxy["dbdomain"].id}"""
     base["type"] = str(proxy["proto"])
     base["server"] = proxy["server"]
     base["server_port"] = int(proxy["port"])
