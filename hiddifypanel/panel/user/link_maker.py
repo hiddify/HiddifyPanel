@@ -284,9 +284,9 @@ def to_link(proxy):
             baseurl += "&allow_insecure=1"
         return f"{baseurl}#{name_link}"
     if proxy['proto'] == 'hysteria2':
-        baseurl = f'hysteria2://{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}?hiddify=1&sni={proxy["sni"]}&type=custom&alpn=h3&host={proxy["sni"]}&fp={proxy["fingerprint"]}&headerType=None&security=tls'
+        baseurl = f'hy2://{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}?hiddify=1&sni={proxy["sni"]}&obfs=salamander&obfs-password={hconfig(ConfigEnum.proxy_path)}&host={proxy["sni"]}&security=tls'
         if proxy['mode'] == 'Fake' or proxy['allow_insecure']:
-            baseurl += "&allow_insecure=1"
+            baseurl += "&insecure=1"
         return f"{baseurl}#{name_link}"
 
     baseurl = f'{proxy["proto"]}://{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}?hiddify=1'
