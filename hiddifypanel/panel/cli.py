@@ -55,6 +55,7 @@ def all_configs():
     }
     for d in configs['domains']:
         d['domain'] = d['domain'].lower()
+        d['ssl'] = d.mode in ['direct', 'cdn', 'worker', 'relay', 'auto_cdn_ip', 'old_xtls_direct', 'sub_link_only']
         # del d['domain']['show_domains']
 
     def_user = None if len(User.query.all()) > 1 else User.query.filter(User.name == 'default').first()
@@ -63,6 +64,17 @@ def all_configs():
 
     configs['hconfigs']['first_setup'] = def_user != None and len(sslip_domains) > 0
     # configs
+    configs['hysteria2'] = configs['tuic'] = {}
+    if hconfig(ConfigEnum.hysteria_enable):
+        configs['hysteria2'] = {
+            domain.domain: int(hconfig(ConfigEnum.hysteria_port))+domain.id
+            for i, domain in enumerate(Domain.query.filter(Domain.mode.in_([DomainType.direct, DomainType.relay, DomainType.fake])).all())
+        }
+    if hconfig(ConfigEnum.tuic_enable):
+        configs['tuic'] = {
+            domain.domain: int(hconfig(ConfigEnum.tuic_port))+domain.id
+            for i, domain in enumerate(Domain.query.filter(Domain.mode.in_([DomainType.direct, DomainType.relay, DomainType.fake])).all())
+        }
 
     print(json.dumps(configs))
 
@@ -131,8 +143,8 @@ def init_app(app):
     for command in [hysteria_domain_port, tuic_domain_port, init_db, drop_db, all_configs, update_usage, test, admin_links, admin_path, backup, downgrade]:
         app.cli.add_command(app.cli.command()(command))
 
-    @app.cli.command()
-    @click.option("--domain", "-d")
+    @ app.cli.command()
+    @ click.option("--domain", "-d")
     def add_domain(domain):
         table = ParentDomain if hconfig(ConfigEnum.is_parent) else Domain
 
@@ -145,24 +157,24 @@ def init_app(app):
         db.session.commit()
         return "success"
 
-    @app.cli.command()
-    @click.option("--admin_secret", "-a")
+    @ app.cli.command()
+    @ click.option("--admin_secret", "-a")
     def set_admin_secret(admin_secret):
         StrConfig.query.filter(StrConfig.key == ConfigEnum.admin_secret).update({'value': admin_secret})
         db.session.commit()
         return "success"
 
-    @app.cli.command()
-    @click.option("--key", "-k")
-    @click.option("--val", "-v")
+    @ app.cli.command()
+    @ click.option("--key", "-k")
+    @ click.option("--val", "-v")
     def set_setting(key, val):
         old_hconfigs = get_hconfigs()
         hiddify.add_or_update_config(key=key, value=val)
 
         return "success"
 
-    @app.cli.command()
-    @click.option("--config", "-c")
+    @ app.cli.command()
+    @ click.option("--config", "-c")
     def import_config(config):
         next10year = datetime.date.today() + relativedelta.relativedelta(years=10)
         data = []
