@@ -55,7 +55,7 @@ def all_configs():
     }
     for d in configs['domains']:
         d['domain'] = d['domain'].lower()
-        d['ssl'] = d.mode in ['direct', 'cdn', 'worker', 'relay', 'auto_cdn_ip', 'old_xtls_direct', 'sub_link_only']
+        d['ssl'] = d['mode'] in ['direct', 'cdn', 'worker', 'relay', 'auto_cdn_ip', 'old_xtls_direct', 'sub_link_only']
         # del d['domain']['show_domains']
 
     def_user = None if len(User.query.all()) > 1 else User.query.filter(User.name == 'default').first()
