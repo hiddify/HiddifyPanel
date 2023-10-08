@@ -70,12 +70,21 @@ def all_configs():
             domain.domain: int(hconfig(ConfigEnum.hysteria_port))+domain.id
             for i, domain in enumerate(Domain.query.filter(Domain.mode.in_([DomainType.direct, DomainType.relay, DomainType.fake])).all())
         }
+
     if hconfig(ConfigEnum.tuic_enable):
         configs['tuic'] = {
             domain.domain: int(hconfig(ConfigEnum.tuic_port))+domain.id
             for i, domain in enumerate(Domain.query.filter(Domain.mode.in_([DomainType.direct, DomainType.relay, DomainType.fake])).all())
         }
 
+    configs['reality'] = {
+        domain.domain: int(hconfig(ConfigEnum.reality_port))+domain.id
+        for i, domain in enumerate(Domain.query.filter(Domain.mode.in_([DomainType.reality])).all())
+    }
+    configs['realitygrpc'] = {
+        domain.domain: int(hconfig(ConfigEnum.reality_port))+domain.id
+        for i, domain in enumerate(Domain.query.filter(Domain.mode.in_([DomainType.realitygrpc])).all())
+    }
     print(json.dumps(configs))
 
 

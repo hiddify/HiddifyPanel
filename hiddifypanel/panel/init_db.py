@@ -134,6 +134,9 @@ def init_db():
 #     add_config_if_not_exist(ConfigEnum.hysteria_enable, True)
 #     add_config_if_not_exist(ConfigEnum.hysteria_port, random.randint(5000, 20000))
 
+def _v56():
+    reality_port = random.randint(20000, 30000)
+    set_hconfig(ConfigEnum.reality_port, reality_port)
 
 def _v55():
     tuic_port = random.randint(20000, 30000)

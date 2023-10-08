@@ -40,6 +40,7 @@ class Domain(db.Model, SerializerMixin):
     sub_link_only = db.Column(db.Boolean, nullable=False, default=False)
     mode = db.Column(db.Enum(DomainType), nullable=False, default=DomainType.direct)
     cdn_ip = db.Column(db.Text(2000), nullable=True, default='')
+    # port_index=db.Column(db.Integer, nullable=True, default=0)
     grpc = db.Column(db.Boolean, nullable=True, default=False)
     servernames = db.Column(db.String(1000), nullable=True, default='')
     # show_all=db.Column(db.Boolean, nullable=True)

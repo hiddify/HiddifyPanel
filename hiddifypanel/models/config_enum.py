@@ -42,6 +42,7 @@ class ConfigEnum(StrEnum):
     reality_short_ids = auto()
     reality_private_key = auto()
     reality_public_key = auto()
+    reality_port = auto()
 
     restls1_2_domain = auto()
     restls1_3_domain = auto()
@@ -133,6 +134,7 @@ class ConfigEnum(StrEnum):
     def info(self):
         map = {
             self.ssh_server_redis_url: {'category': ConfigCategory.hidden},
+            self.reality_port: {'category': ConfigCategory.reality, 'apply_mode': 'apply'},
             self.ssh_server_port: {'category': ConfigCategory.ssh, 'apply_mode': 'apply'},
             self.ssh_server_enable: {'category': ConfigCategory.ssh, 'type': bool, 'apply_mode': 'apply'},
             self.core_type: {'category': ConfigCategory.advanced, 'apply_mode': 'apply'},
