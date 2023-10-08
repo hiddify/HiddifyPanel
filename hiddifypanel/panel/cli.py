@@ -79,7 +79,7 @@ def all_configs():
 
     configs['reality'] = {
         domain.domain: int(hconfig(ConfigEnum.reality_port))+domain.id
-        for i, domain in enumerate(Domain.query.filter(Domain.mode.in_([DomainType.reality])).filter(Domain.grpc == True).all())
+        for i, domain in enumerate(Domain.query.filter(Domain.mode.in_([DomainType.reality])).filter(Domain.grpc == False).all())
     }
     configs['realitygrpc'] = {
         domain.domain: int(hconfig(ConfigEnum.reality_port))+domain.id
