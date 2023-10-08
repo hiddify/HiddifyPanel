@@ -237,7 +237,6 @@ class UserAdmin(AdminLTEModelView):
         return form
 
     def on_model_change(self, form, model, is_created):
-        return
         model.max_ips = max(3, model.max_ips or 10000)
         if len(User.query.all()) % 4 == 0:
             flash(('<div id="show-modal-donation"></div>'), ' d-none')
@@ -274,7 +273,6 @@ class UserAdmin(AdminLTEModelView):
     #     return is_valid()
 
     def after_model_change(self, form, model, is_created):
-        return
         user = User.query.filter(User.uuid == model.uuid).first()
         if is_user_active(user):
             user_driver.add_client(model)
