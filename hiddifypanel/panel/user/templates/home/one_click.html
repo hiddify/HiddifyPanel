@@ -53,7 +53,8 @@
                 </button>
             </div>
             <div class="modal-body">
-                {{_("If the application do not open automatically, please click <a class='btn btn-primary copy-link' href='%(sub)s'>this universal link</a> to copy and paste it on your application, or:",sub=sub_url)}}
+                {{_("If the application do not open automatically, please click <a class='btn btn-primary copy-link' href='%(sub)s'>this universal link</a> to copy and paste it on
+                your application, or:",sub=sub_url)}}
                 <br><br>
 
                 {% if ua.os.family=="Android" %}
@@ -69,9 +70,9 @@
                             <a href="{{base_download_url}}/hiddify/hiddify-next/releases/latest/download/hiddify-android-universal.apk"
                                 class="btn col-12 btn-primary ">{{_('Download App')}}</a>
                         </td>
-                        <!--<td>
+                        <td>
                             <a href="https://play.google.com/store/apps/details?id=app.hiddify.com" class="btn col-12 btn-primary">{{_('install from google play')}}</a>
-                        </td>-->
+                        </td>
                         <td><a class="btn col-12 btn-success" href="hiddify://install-config/?url={{sub_encoded_url}}">{{_('Import')}}</a></td>
                     </tr>
                 </table>
@@ -82,8 +83,7 @@
                             <td>HiddifyNG / V2rayNG</td>
                             <td>
 
-                                <a href="{{base_download_url}}/Hiddify/HiddifyNG/releases/latest/download/HiddifyNG.apk"
-                                    class="btn col-12 btn-primary ">{{_('Download App')}}</a>
+                                <a href="{{base_download_url}}/Hiddify/HiddifyNG/releases/latest/download/HiddifyNG.apk" class="btn col-12 btn-primary ">{{_('Download App')}}</a>
                                 <a href="https://play.google.com/store/apps/details?id=ang.hiddify.com" class="btn col-12 btn-primary">{{_('install from google play')}}</a>
                             </td>
 
@@ -107,7 +107,7 @@
                     <tr>
 
                         <td>
-                            <a href="{{base_download_url}}/hiddify/hiddify-next/releases/latest/download/hiddify-windows-x64-setup.exe"
+                            <a href="{{base_download_url}}/hiddify/hiddify-next/releases/latest/download/hiddify-windows-x64-setup.zip"
                                 class="btn col-12 btn-primary ">{{_('Download App')}}</a>
                         </td>
                         <td><a class="btn col-12 btn-success" href="hiddify://install-config/?url={{sub_encoded_url}}">{{_('Import')}}</a></td>
@@ -121,8 +121,7 @@
                         <tr>
                             <td>HiddifyN</td>
                             <td>
-                                <a href="{{base_download_url}}/Hiddify/HiddifyN/releases/latest/download/win-x86.zip"
-                                    class="btn col-12 btn-primary ">{{_('Download App')}}</a>
+                                <a href="{{base_download_url}}/Hiddify/HiddifyN/releases/latest/download/win-x86.zip" class="btn col-12 btn-primary ">{{_('Download App')}}</a>
                             </td>
 
                             <td><a class="btn col-12 btn-success" href="hiddify://install-sub/?url={{sub_encoded_url}}">{{_('Import')}}</a></td>
@@ -147,8 +146,8 @@
                     <tr>
 
                         <td>
-                            <a href="{{base_download_url}}/hiddify/hiddify-next/releases/latest/download/hiddify-linux-x64.AppImage.zip"
-                                class="btn col-12 btn-primary ">{{_('Download App')}}</a>
+                            <a href="{{base_download_url}}/hiddify/hiddify-next/releases/latest/download/hiddify-linux-x64.zip" class="btn col-12 btn-primary ">{{_('Download
+                                App')}}</a>
                         </td>
                         <td><a class="btn col-12 btn-success" href="hiddify://install-config/?url={{sub_encoded_url}}">{{_('Import')}}</a></td>
                     </tr>
@@ -184,8 +183,8 @@
                 <table>
                     <tr>
                         <td>
-                            <a href="{{base_download_url}}/hiddify/hiddify-next/releases/latest/download/hiddify-macos-universal.dmg"
-                                class="btn col-12 btn-primary ">{{_('Download App')}}</a>
+                            <a href="{{base_download_url}}/hiddify/hiddify-next/releases/latest/download/hiddify-macos-universal.zip" class="btn col-12 btn-primary ">{{_('Download
+                                App')}}</a>
                         </td>
                         <td><a class="btn col-12 btn-success" href="hiddify://install-config/?url={{sub_encoded_url}}">{{_('Import')}}</a></td>
                     </tr>
@@ -245,23 +244,23 @@
                             <td>Stash</td>
                             <td>
                                 <a href="https://apps.apple.com/us/app/stash-rule-based-proxy/id1596063349" target="_blank" class="btn btn-primary">
-                                {{_('Download App')}}
+                                    {{_('Download App')}}
                                 </a>
                             </td>
                             <td><a class="btn col-12 btn-success" href="clash://install-config/?url={{sub_encoded_url}}">
-                            {{_('Import')}}
-                            </a></td>
+                                    {{_('Import')}}
+                                </a></td>
                         </tr>
                         <tr>
                             <td>Loon</td>
                             <td>
                                 <a href="https://apps.apple.com/app/id1373567447" target="_blank" class="btn btn-primary">
-                                {{_('Download App')}}
+                                    {{_('Download App')}}
                                 </a>
                             </td>
                             <td><a class="btn col-12 btn-success" href="loon://import?nodelist={{sub_encoded_url}}">{{_('Import')}}</a></td>
                         </tr>
-                        
+
                     </table>
                 </details>
                 {% endif %}
@@ -308,57 +307,57 @@
 
 <script data-cfasync="false" type="text/javascript">
 
-// ONE CLICK
+    // ONE CLICK
 
-var qr_code_generated=false
+    var qr_code_generated = false
 
-//$('.open_in_hiddify').click(function (e) {
-document.querySelectorAll('.open_in_hiddify').forEach(function (element) {
-    element.addEventListener('click', function (e) {
-        e.preventDefault()
-        let iframe = $('<iframe></iframe>').css('display', 'none');
-        $('body').append(iframe);
-        url="hiddify://install-sub/?url=" + encodeURI(this.href)
-        try {
-        navigator.clipboard.writeText(this.href).then(function () {
-            console.log("success")
-            iframe.attr('src', url);
-        }, function (err) {
-            console.log(err)
-            iframe.attr('src', url);
+    //$('.open_in_hiddify').click(function (e) {
+    document.querySelectorAll('.open_in_hiddify').forEach(function (element) {
+        element.addEventListener('click', function (e) {
+            e.preventDefault()
+            let iframe = $('<iframe></iframe>').css('display', 'none');
+            $('body').append(iframe);
+            url = "hiddify://install-sub/?url=" + encodeURI(this.href)
+            try {
+                navigator.clipboard.writeText(this.href).then(function () {
+                    console.log("success")
+                    iframe.attr('src', url);
+                }, function (err) {
+                    console.log(err)
+                    iframe.attr('src', url);
+                });
+            } catch (error) {
+                console.log(error)
+                iframe.attr('src', url);
+            }
+
+            // 
+            $('#exampleModal').modal({ show: true })
+            if (!qr_code_generated) {
+                let w = Math.min(window.innerWidth, window.innerHeight) * 0.5;
+                let qrcode_oneclick = new QRCode(document.getElementById("qrcode-oneclick"), {
+                    width: w,
+                    height: w,
+                    correctLevel: 1
+                });
+                qrcode_oneclick.clear();
+                qrcode_oneclick.makeCode(document.location.href);
+                qr_code_generated = true
+            }
         });
-        } catch (error) {
-            console.log(error)
-            iframe.attr('src', url);
-        }
-        
-        // 
-        $('#exampleModal').modal({ show: true })
-        if (!qr_code_generated){
-            let w = Math.min(window.innerWidth, window.innerHeight) * 0.5;
-            let qrcode_oneclick = new QRCode(document.getElementById("qrcode-oneclick"), {
-                width: w,
-                height: w,
-                correctLevel: 1
-            });
-            qrcode_oneclick.clear();
-            qrcode_oneclick.makeCode(document.location.href);
-            qr_code_generated=true
-        }
     });
-});
-  
-  
-  //   $('.short-link').click(function (e) {
-  document.querySelectorAll('.short-link').forEach(function (element) {
-    element.addEventListener('click', function (e) {
-        e.preventDefault()
-        $.get(this.href, function (data) {
-            $("#short-link-Modal .modal-body").html(data);
-            $("#short-link-Modal").modal('show');
-        })
-      
+
+
+    //   $('.short-link').click(function (e) {
+    document.querySelectorAll('.short-link').forEach(function (element) {
+        element.addEventListener('click', function (e) {
+            e.preventDefault()
+            $.get(this.href, function (data) {
+                $("#short-link-Modal .modal-body").html(data);
+                $("#short-link-Modal").modal('show');
+            })
+
+        });
     });
-  });
-  
+
 </script>
