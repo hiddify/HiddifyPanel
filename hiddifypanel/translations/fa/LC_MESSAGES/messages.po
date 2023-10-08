@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-06 20:29+0200\n"
-"PO-Revision-Date: 2023-10-06 13:25-0500\n"
+"POT-Creation-Date: 2023-10-08 12:35+0200\n"
+"PO-Revision-Date: 2023-10-08 05:31-0500\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -1164,7 +1164,7 @@ msgid "Save & Add More"
 msgstr "ذخیره و افزودن مورد دیگر"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:5
-#: hiddifypanel/panel/user/templates/home/one_click.html:280
+#: hiddifypanel/panel/user/templates/home/one_click.html:279
 #: hiddifypanel/templates/donation.html:14
 msgid "Close"
 msgstr "بستن"
@@ -2941,7 +2941,7 @@ msgstr "دانلود مستقیم"
 # | msgid "<i class=\"fa-brands fa-google-play\"></i> Google Play"
 #: hiddifypanel/panel/user/templates/home/android.html:19
 #: hiddifypanel/panel/user/templates/home/android.html:65
-#: hiddifypanel/panel/user/templates/home/one_click.html:73
+#: hiddifypanel/panel/user/templates/home/one_click.html:74
 #: hiddifypanel/panel/user/templates/home/one_click.html:87
 msgid "install from google play"
 msgstr "<i class=\"fa-brands fa-google-play\"></i> گوگل‌پلی"
@@ -3566,7 +3566,7 @@ msgstr "لینک یکسان برای همه برنامه‌ها"
 
 # | msgid "⏱️ Temporary Short Link"
 #: hiddifypanel/panel/user/templates/home/one_click.html:30
-#: hiddifypanel/panel/user/templates/home/one_click.html:297
+#: hiddifypanel/panel/user/templates/home/one_click.html:296
 msgid "Temporary Short Link"
 msgstr "⏱️ لینک کوتاه موقت"
 
@@ -3579,75 +3579,69 @@ msgstr "برای راحتی انتقال این صفحه به ‌پلتفرم د
 msgid "Open in Application"
 msgstr "باز کردن در برنامه"
 
-# | msgid ""
-# | "✔️ The Proxy link is copied\n"
-# | "<br>\n"
-# | "⚠️ If the application do not open automatically, you need to only paste
-# it on your application, or:"
 #: hiddifypanel/panel/user/templates/home/one_click.html:56
 #, python-format
 msgid ""
 "If the application do not open automatically, please click <a class='btn "
 "btn-primary copy-link' href='%(sub)s'>this universal link</a> to copy and"
-" paste it on your application, or:"
+" paste it on\n"
+"                your application, or:"
 msgstr ""
-"✔️ لینک پروکسی به صورت خودکار کپی شده است.\n"
-"<br>\n"
-"⚠️ اگر برنامه فیلترشکن به طور خودکار باز نشد، باید به صورت دستی لینک "
-"پروکسی را در برنامه مورد نظر جایگذاری کنید،  یا:"
+"اگر برنامه به صورت خودکار باز نشد، بر روی \n"
+"<a class='btn btn-primary copy-link' href='%(sub)s'>این دکمه</a> کلیک "
+"کنید  تا لینک پروکسی کپی شود و سپس در برنامه مورد نظر آن را قراردهید و "
+"یا:"
 
-#: hiddifypanel/panel/user/templates/home/one_click.html:61
+#: hiddifypanel/panel/user/templates/home/one_click.html:62
 #: hiddifypanel/panel/user/templates/home/one_click.html:104
-#: hiddifypanel/panel/user/templates/home/one_click.html:144
-#: hiddifypanel/panel/user/templates/home/one_click.html:182
+#: hiddifypanel/panel/user/templates/home/one_click.html:143
+#: hiddifypanel/panel/user/templates/home/one_click.html:181
 msgid "Use HiddifyNext:"
 msgstr "استفاده از HiddifyNext:"
 
 # | msgid "<i class=\"fa-solid fa-download\"></i> Download App"
-#: hiddifypanel/panel/user/templates/home/one_click.html:70
+#: hiddifypanel/panel/user/templates/home/one_click.html:71
 #: hiddifypanel/panel/user/templates/home/one_click.html:86
 #: hiddifypanel/panel/user/templates/home/one_click.html:95
 #: hiddifypanel/panel/user/templates/home/one_click.html:111
-#: hiddifypanel/panel/user/templates/home/one_click.html:125
-#: hiddifypanel/panel/user/templates/home/one_click.html:134
-#: hiddifypanel/panel/user/templates/home/one_click.html:151
-#: hiddifypanel/panel/user/templates/home/one_click.html:163
-#: hiddifypanel/panel/user/templates/home/one_click.html:172
-#: hiddifypanel/panel/user/templates/home/one_click.html:188
-#: hiddifypanel/panel/user/templates/home/one_click.html:200
-#: hiddifypanel/panel/user/templates/home/one_click.html:209
-#: hiddifypanel/panel/user/templates/home/one_click.html:215
-#: hiddifypanel/panel/user/templates/home/one_click.html:229
-#: hiddifypanel/panel/user/templates/home/one_click.html:234
-#: hiddifypanel/panel/user/templates/home/one_click.html:240
-#: hiddifypanel/panel/user/templates/home/one_click.html:248
-#: hiddifypanel/panel/user/templates/home/one_click.html:259
+#: hiddifypanel/panel/user/templates/home/one_click.html:124
+#: hiddifypanel/panel/user/templates/home/one_click.html:133
+#: hiddifypanel/panel/user/templates/home/one_click.html:162
+#: hiddifypanel/panel/user/templates/home/one_click.html:171
+#: hiddifypanel/panel/user/templates/home/one_click.html:199
+#: hiddifypanel/panel/user/templates/home/one_click.html:208
+#: hiddifypanel/panel/user/templates/home/one_click.html:214
+#: hiddifypanel/panel/user/templates/home/one_click.html:228
+#: hiddifypanel/panel/user/templates/home/one_click.html:233
+#: hiddifypanel/panel/user/templates/home/one_click.html:239
+#: hiddifypanel/panel/user/templates/home/one_click.html:247
+#: hiddifypanel/panel/user/templates/home/one_click.html:258
 msgid "Download App"
 msgstr "<i class=\"fa-solid fa-download\"></i> دانلود"
 
 # | msgid "Import in App"
-#: hiddifypanel/panel/user/templates/home/one_click.html:75
+#: hiddifypanel/panel/user/templates/home/one_click.html:76
 #: hiddifypanel/panel/user/templates/home/one_click.html:113
-#: hiddifypanel/panel/user/templates/home/one_click.html:128
-#: hiddifypanel/panel/user/templates/home/one_click.html:136
-#: hiddifypanel/panel/user/templates/home/one_click.html:153
-#: hiddifypanel/panel/user/templates/home/one_click.html:174
-#: hiddifypanel/panel/user/templates/home/one_click.html:190
-#: hiddifypanel/panel/user/templates/home/one_click.html:211
-#: hiddifypanel/panel/user/templates/home/one_click.html:216
-#: hiddifypanel/panel/user/templates/home/one_click.html:230
-#: hiddifypanel/panel/user/templates/home/one_click.html:235
-#: hiddifypanel/panel/user/templates/home/one_click.html:242
-#: hiddifypanel/panel/user/templates/home/one_click.html:252
-#: hiddifypanel/panel/user/templates/home/one_click.html:262
+#: hiddifypanel/panel/user/templates/home/one_click.html:127
+#: hiddifypanel/panel/user/templates/home/one_click.html:135
+#: hiddifypanel/panel/user/templates/home/one_click.html:152
+#: hiddifypanel/panel/user/templates/home/one_click.html:173
+#: hiddifypanel/panel/user/templates/home/one_click.html:189
+#: hiddifypanel/panel/user/templates/home/one_click.html:210
+#: hiddifypanel/panel/user/templates/home/one_click.html:215
+#: hiddifypanel/panel/user/templates/home/one_click.html:229
+#: hiddifypanel/panel/user/templates/home/one_click.html:234
+#: hiddifypanel/panel/user/templates/home/one_click.html:241
+#: hiddifypanel/panel/user/templates/home/one_click.html:251
+#: hiddifypanel/panel/user/templates/home/one_click.html:261
 msgid "Import"
 msgstr "بارگذاری در برنامه"
 
-#: hiddifypanel/panel/user/templates/home/one_click.html:79
+#: hiddifypanel/panel/user/templates/home/one_click.html:80
 #: hiddifypanel/panel/user/templates/home/one_click.html:119
-#: hiddifypanel/panel/user/templates/home/one_click.html:157
-#: hiddifypanel/panel/user/templates/home/one_click.html:194
-#: hiddifypanel/panel/user/templates/home/one_click.html:225
+#: hiddifypanel/panel/user/templates/home/one_click.html:156
+#: hiddifypanel/panel/user/templates/home/one_click.html:193
+#: hiddifypanel/panel/user/templates/home/one_click.html:224
 msgid "More Applications"
 msgstr "نرم افزارهای بیشتر"
 
@@ -3656,12 +3650,19 @@ msgstr "نرم افزارهای بیشتر"
 msgid "Import in"
 msgstr "بارگذاری در "
 
+#: hiddifypanel/panel/user/templates/home/one_click.html:149
+#: hiddifypanel/panel/user/templates/home/one_click.html:186
+msgid ""
+"Download\n"
+"                                App"
+msgstr ""
+
 # | msgid "<i class=\"fa-solid fa-qrcode\"></i> QRCode"
-#: hiddifypanel/panel/user/templates/home/one_click.html:270
+#: hiddifypanel/panel/user/templates/home/one_click.html:269
 msgid "QRCode"
 msgstr "QR Code <i class=\"fa-solid fa-qrcode\"></i>"
 
-#: hiddifypanel/panel/user/templates/home/one_click.html:281
+#: hiddifypanel/panel/user/templates/home/one_click.html:280
 msgid "Copy Link"
 msgstr "کپی لینک"
 
@@ -4777,21 +4778,6 @@ msgstr "عملیات"
 #~ "expected=%(expected_country)s"
 #~ msgstr ""
 
-#~ msgid ""
-#~ "If the application do not open "
-#~ "automatically, please click <a class='btn "
-#~ "btn-primary copy-link' href='%(sub)s'>this "
-#~ "universal link</a> to copy and paste "
-#~ "it on\n"
-#~ "                your application, or:"
-#~ msgstr ""
-#~ "اگر برنامه به صورت خودکار باز نشد، بر روی \n"
-#~ "<a class='btn btn-primary copy-link' "
-#~ "href='%(sub)s'>این دکمه</a> کلیک کنید  تا "
-#~ "لینک پروکسی کپی شود و سپس در "
-#~ "برنامه مورد نظر آن را قراردهید و"
-#~ " یا:"
-
 #~ msgid "Download HiddifyNext"
 #~ msgstr "دانلود HiddifyNext"
 
@@ -4800,6 +4786,25 @@ msgstr "عملیات"
 #~ "Download\n"
 #~ "                                    App"
 #~ msgstr "<i class=\"fa-solid fa-download\"></i> دانلود"
+
+# | msgid ""
+# | "✔️ The Proxy link is copied\n"
+# | "<br>\n"
+# | "⚠️ If the application do not open automatically, you need to only paste
+# it on your application, or:"
+#~ msgid ""
+#~ "If the application do not open "
+#~ "automatically, please click <a class='btn "
+#~ "btn-primary copy-link' href='%(sub)s'>this "
+#~ "universal link</a> to copy and paste "
+#~ "it on your application, or:"
+#~ msgstr ""
+#~ "✔️ لینک پروکسی به صورت خودکار کپی شده است.\n"
+#~ "<br>\n"
+#~ "⚠️ اگر برنامه فیلترشکن به طور "
+#~ "خودکار باز نشد، باید به صورت دستی"
+#~ " لینک پروکسی را در برنامه مورد "
+#~ "نظر جایگذاری کنید،  یا:"
 
 #~ msgid ""
 #~ "Telegram\n"
