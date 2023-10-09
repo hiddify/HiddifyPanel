@@ -88,11 +88,13 @@ class Domain(db.Model, SerializerMixin):
             return 0
         return int(hconfig(ConfigEnum.hysteria_port))+self.port_index
 
+    @property
     def internal_port_tuic(self):
         if self.mode not in [DomainType.direct, DomainType.relay, DomainType.fake]:
             return 0
         return int(hconfig(ConfigEnum.tuic_port))+self.port_index
 
+    @property
     def internal_port_reality(self):
         if self.mode != DomainType.reality:
             return 0

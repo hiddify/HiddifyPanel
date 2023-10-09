@@ -63,7 +63,8 @@ def all_configs():
 
     configs['hconfigs']['first_setup'] = def_user != None and len(sslip_domains) > 0
 
-    print(json.dumps(configs))
+    # print(configs)
+    print(json.dumps(configs, indent=4))
 
 
 def update_usage():
