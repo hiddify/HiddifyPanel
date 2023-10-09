@@ -54,8 +54,8 @@ class Domain(db.Model, SerializerMixin):
         return f'{self.domain}'
 
     def to_dict(d, dump_ports=False):
-        return {
-            'domain': d.domain,
+        data = {
+            'domain': d.domain.lower(),
             'mode': d.mode,
             'alias': d.alias,
             # 'sub_link_only':d.sub_link_only,
@@ -64,11 +64,15 @@ class Domain(db.Model, SerializerMixin):
             'servernames': d.servernames,
             'grpc': d.grpc,
             'show_domains': [dd.domain for dd in d.show_domains],
-            "internal_port_hysteria2": d.internal_port_hysteria2,
-            "internal_port_tuic": d.internal_port_tuic,
-            "internal_port_reality": d.internal_port_reality
-
         }
+
+        if dump_ports:
+            data["internal_port_hysteria2"] = d.internal_port_hysteria2
+            data["internal_port_tuic"] = d.internal_port_tuic
+            data["internal_port_reality"] = d.internal_port_reality
+            data["need_valid_ssl"] = d.need_valid_ssl
+
+        return data
 
     @property
     def need_valid_ssl(self):

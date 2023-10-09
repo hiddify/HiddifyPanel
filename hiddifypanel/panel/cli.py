@@ -53,10 +53,9 @@ def all_configs():
         # "parent_domains": [hiddify.parent_domain_dict(u) for u in ParentDomain.query.all()],
         "hconfigs": get_hconfigs()
     }
-    for d in configs['domains']:
-        d['domain'] = d['domain'].lower()
-        d['ssl'] = d.need_valid_ssl
-        # del d['domain']['show_domains']
+    # for d in configs['domains']:
+
+    #     # del d['domain']['show_domains']
 
     def_user = None if len(User.query.all()) > 1 else User.query.filter(User.name == 'default').first()
     domains = Domain.query.all()
