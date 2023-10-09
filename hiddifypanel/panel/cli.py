@@ -49,13 +49,13 @@ def all_configs():
 
     configs = {
         "users": valid_users,
-        "domains": [u.to_dict() for u in Domain.query.all() if "*" not in u.domain],
+        "domains": [u.to_dict(dump_ports=True) for u in Domain.query.all() if "*" not in u.domain],
         # "parent_domains": [hiddify.parent_domain_dict(u) for u in ParentDomain.query.all()],
         "hconfigs": get_hconfigs()
     }
     for d in configs['domains']:
         d['domain'] = d['domain'].lower()
-        d['ssl'] = d['mode'] in ['direct', 'cdn', 'worker', 'relay', 'auto_cdn_ip', 'old_xtls_direct', 'sub_link_only']
+        d['ssl'] = d.need_valid_ssl
         # del d['domain']['show_domains']
 
     def_user = None if len(User.query.all()) > 1 else User.query.filter(User.name == 'default').first()
@@ -63,28 +63,7 @@ def all_configs():
     sslip_domains = [d.domain for d in domains if "sslip.io" in d.domain]
 
     configs['hconfigs']['first_setup'] = def_user != None and len(sslip_domains) > 0
-    # configs
-    configs['hysteria2'] = configs['tuic'] = {}
-    if hconfig(ConfigEnum.hysteria_enable):
-        configs['hysteria2'] = {
-            domain.domain: int(hconfig(ConfigEnum.hysteria_port))+domain.id
-            for i, domain in enumerate(Domain.query.filter(Domain.mode.in_([DomainType.direct, DomainType.relay, DomainType.fake])).all())
-        }
 
-    if hconfig(ConfigEnum.tuic_enable):
-        configs['tuic'] = {
-            domain.domain: int(hconfig(ConfigEnum.tuic_port))+domain.id
-            for i, domain in enumerate(Domain.query.filter(Domain.mode.in_([DomainType.direct, DomainType.relay, DomainType.fake])).all())
-        }
-
-    configs['reality'] = {
-        domain.domain: int(hconfig(ConfigEnum.reality_port))+domain.id
-        for i, domain in enumerate(Domain.query.filter(Domain.mode.in_([DomainType.reality])).filter(Domain.grpc == False).all())
-    }
-    configs['realitygrpc'] = {
-        domain.domain: int(hconfig(ConfigEnum.reality_port))+domain.id
-        for i, domain in enumerate(Domain.query.filter(Domain.mode.in_([DomainType.reality])).filter(Domain.grpc == True).all())
-    }
     print(json.dumps(configs))
 
 

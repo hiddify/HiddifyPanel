@@ -53,7 +53,7 @@ class Domain(db.Model, SerializerMixin):
     def __repr__(self):
         return f'{self.domain}'
 
-    def to_dict(d):
+    def to_dict(d, dump_ports=False):
         return {
             'domain': d.domain,
             'mode': d.mode,
@@ -63,8 +63,36 @@ class Domain(db.Model, SerializerMixin):
             'cdn_ip': d.cdn_ip,
             'servernames': d.servernames,
             'grpc': d.grpc,
-            'show_domains': [dd.domain for dd in d.show_domains]
+            'show_domains': [dd.domain for dd in d.show_domains],
+            "internal_port_hysteria2": d.internal_port_hysteria2,
+            "internal_port_tuic": d.internal_port_tuic,
+            "internal_port_reality": d.internal_port_reality
+
         }
+
+    @property
+    def need_valid_ssl(self):
+        return self.mode in ['direct', 'cdn', 'worker', 'relay', 'auto_cdn_ip', 'old_xtls_direct', 'sub_link_only']
+
+    @property
+    def port_index(self):
+        return self.id
+
+    @property
+    def internal_port_hysteria2(self):
+        if d.mode not in [DomainType.direct, DomainType.relay, DomainType.fake]:
+            return 0
+        return int(hconfig(ConfigEnum.hysteria_port))+self.port_index
+
+    def internal_port_tuic(self):
+        if d.mode not in [DomainType.direct, DomainType.relay, DomainType.fake]:
+            return 0
+        return int(hconfig(ConfigEnum.tuic_port))+self.port_index
+
+    def internal_port_reality(self):
+        if d.mode != DomainType.reality:
+            return 0
+        return int(hconfig(ConfigEnum.reality_port))+self.port_index
 
 
 def hdomains(mode):

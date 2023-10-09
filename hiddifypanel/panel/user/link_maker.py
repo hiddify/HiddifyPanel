@@ -56,9 +56,9 @@ def make_proxy(proxy: Proxy, domain_db: Domain, phttp=80, ptls=443, pport=None):
     if l3 == "kcp":
         port = hconfigs[ConfigEnum.kcp_ports].split(",")[0]
     elif proxy.proto == "tuic":
-        port = int(hconfigs[ConfigEnum.tuic_port])+domain_db.id
+        port = domain_db.internal_port_tuic
     elif proxy.proto == "hysteria2":
-        port = int(hconfigs[ConfigEnum.hysteria_port])+domain_db.id
+        port = domain_db.internal_port_hysteria2
     elif l3 == 'ssh':
         port = hconfigs[ConfigEnum.ssh_server_port]
     elif is_tls():
