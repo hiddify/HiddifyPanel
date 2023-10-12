@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: HiddifyPT\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-06 12:20-0500\n"
-"PO-Revision-Date: 2023-10-12 03:00-0500\n"
+"PO-Revision-Date: 2023-10-12 15:08-0500\n"
 "Last-Translator: lymanrudni\n"
 "Language-Team: Russian\n"
 "Language: ru\n"
@@ -69,7 +69,7 @@ msgstr "✅ Конфигурации успешно изменены"
 #: hiddifypanel/panel/admin/DomainAdmin.py:154
 #: hiddifypanel/panel/admin/DomainAdmin.py:176
 #: hiddifypanel/panel/admin/DomainAdmin.py:179
-#: hiddifypanel/panel/admin/QuickSetup.py:126
+#: hiddifypanel/panel/admin/QuickSetup.py:127
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:107
 #: hiddifypanel/panel/hiddify.py:370 loco:64568c8d11f32d138907df99
 #| msgid ""
@@ -285,7 +285,7 @@ msgstr "Выберите этот вариант, чтобы восстанов�
 #: hiddifypanel/panel/admin/ProxyAdmin.py:97
 #: hiddifypanel/panel/admin/ProxyAdmin.py:128
 #: hiddifypanel/panel/admin/QuickSetup.py:85
-#: hiddifypanel/panel/admin/QuickSetup.py:117
+#: hiddifypanel/panel/admin/QuickSetup.py:118
 #: hiddifypanel/panel/admin/SettingAdmin.py:265 loco:64568c8d11f32d138907dfba
 msgid "Submit"
 msgstr "Подтвердить"
@@ -636,7 +636,7 @@ msgstr ""
 "условиями фильтрации этой страны."
 
 #: hiddifypanel/panel/admin/QuickSetup.py:104
-#: hiddifypanel/panel/admin/QuickSetup.py:116
+#: hiddifypanel/panel/admin/QuickSetup.py:117
 #: hiddifypanel/panel/admin/SettingAdmin.py:206
 #: hiddifypanel/panel/admin/SettingAdmin.py:209 loco:64568c8d11f32d138907dfe2
 #| msgid "Error! Invalid Domain.  The Domain Format is www.google.com"
@@ -723,7 +723,7 @@ msgstr ""
 "Несколько человек сообщили, что VMess позволляет правительствам обнаруживать"
 " систему.  Не рекомендуется"
 
-#: hiddifypanel/panel/admin/QuickSetup.py:130 loco:64568c8d11f32d138907dfec
+#: hiddifypanel/panel/admin/QuickSetup.py:131 loco:64568c8d11f32d138907dfec
 #, python-format
 #| msgid ""
 #| "Domain (%(domain)s)-> IP = %(domain_ip)s is not same as your IP = "
@@ -4802,3 +4802,9 @@ msgstr ""
 #: hiddifypanel/templates/fake.html:1 loco:652644972e089e77ba0eadc4
 msgid "config.reality_port.description"
 msgstr ""
+
+#: hiddifypanel/panel/admin/QuickSetup.py:81
+#: hiddifypanel/panel/admin/SettingAdmin.py:182 loco:6527aef847743be7c40f5953
+#| msgid "🇷🇺 Russian روسی Русский"
+msgid "lang.ru"
+msgstr "🇷🇺 Russian روسی Русский"
