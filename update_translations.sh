@@ -19,6 +19,7 @@ wget -O hiddifypanel/translations/en/LC_MESSAGES/messages.po  "https://localise.
 wget -O hiddifypanel/translations/fa/LC_MESSAGES/messages.po "https://localise.biz/api/export/locale/fa.po?index=id&key=5Tqp1dLHQSk98s-twNF6RpwZu7lZSLLM"
 wget -O hiddifypanel/translations/zh/LC_MESSAGES/messages.po "https://localise.biz/api/export/locale/zh.po?index=id&key=5Tqp1dLHQSk98s-twNF6RpwZu7lZSLLM"
 wget -O hiddifypanel/translations/pt/LC_MESSAGES/messages.po "https://localise.biz/api/export/locale/pt.po?index=id&key=Y1DZZCqzlzT8rgfKImXbNzr-jTLB6c7H"
+wget -O hiddifypanel/translations/ru/LC_MESSAGES/messages.po "https://localise.biz/api/export/locale/ru.po?index=id&key=Y1DZZCqzlzT8rgfKImXbNzr-jTLB6c7H"
 
 pybabel update -N -i messages.pot -d hiddifypanel/translations -l en
 
@@ -28,10 +29,12 @@ python3 auto_translate.py fa en
 python3 auto_translate.py en fa
 python3 auto_translate.py en zh
 python3 auto_translate.py en pt
+python3 auto_translate.py en ru
 
 pybabel update -N -i messages.pot -d hiddifypanel/translations -l fa
 pybabel update -N -i messages.pot -d hiddifypanel/translations -l zh
 pybabel update -N -i messages.pot -d hiddifypanel/translations -l pt
+pybabel update -N -i messages.pot -d hiddifypanel/translations -l ru
 pybabel compile -f -d hiddifypanel/translations 
 
 function update_localise(){
@@ -56,3 +59,4 @@ update_localise zh
 
 update_localise2 en
 update_localise2 pt
+update_localise2 ru

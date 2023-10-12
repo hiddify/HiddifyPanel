@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-08 12:35+0200\n"
-"PO-Revision-Date: 2023-10-08 05:31-0500\n"
+"POT-Creation-Date: 2023-10-11 08:49+0200\n"
+"PO-Revision-Date: 2023-10-11 01:47-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Generated-By: Babel 2.12.1\n"
 
 # | msgid "This Domain does not exist in the Panel !"
-#: hiddifypanel/models/domain.py:123 hiddifypanel/panel/user/user.py:281
+#: hiddifypanel/models/domain.py:158 hiddifypanel/panel/user/user.py:281
 #, fuzzy
 msgid "This domain does not exist in the panel!"
 msgstr "该域名在面板中不存在！"
@@ -1019,7 +1019,7 @@ msgstr "套餐还没有开始。"
 msgid "Remaining: "
 msgstr "包结束于"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:258
+#: hiddifypanel/panel/admin/UserAdmin.py:257
 #, fuzzy, python-format
 msgid ""
 "You have too much users! You can have only %(active)s active users and "
@@ -4096,6 +4096,14 @@ msgstr ""
 "默认 1.1.1.1 <br>\n"
 "阻止恶意软件 1.1.1.2 <br>\n"
 "阻止色情 1.1.1.3"
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.reality_port.label"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.reality_port.description"
+msgstr ""
 
 # | msgid "Enable Hysteria"
 #: hiddifypanel/templates/fake.html:1
