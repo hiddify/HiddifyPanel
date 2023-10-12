@@ -78,7 +78,7 @@ class QuickSetup(FlaskView):
 def get_lang_form(empty=False):
     class LangForm(FlaskForm):
         admin_lang = wtf.fields.SelectField(_("config.admin_lang.label"), choices=[("en", _("lang.en")), ("fa", _("lang.fa")), ("pt", _(
-            "lang.pt")), ("zh", _("lang.zh"))], description=_("config.admin_lang.description"), default=hconfig(ConfigEnum.admin_lang))
+            "lang.pt")), ("zh", _("lang.zh"), ("ru", _("lang.ru")))], description=_("config.admin_lang.description"), default=hconfig(ConfigEnum.admin_lang))
         # lang=wtf.fields.SelectField(_("config.lang.label"),choices=[("en",_("lang.en")),("fa",_("lang.fa"))],description=_("config.lang.description"),default=hconfig(ConfigEnum.lang))
         country = wtf.fields.SelectField(_("config.country.label"), choices=[("ir", _("Iran")), ("zh", _(
             "China")), ("other", "Others")], description=_("config.country.description"), default=hconfig(ConfigEnum.country))
@@ -113,7 +113,8 @@ def get_quick_setup_form(empty=False):
         enable_firewall = SwitchField(_("config.firewall.label"), description=_("config.firewall.description"), default=hconfig(ConfigEnum.firewall))
         block_iran_sites = SwitchField(_("config.block_iran_sites.label"), description=_("config.block_iran_sites.description"), default=hconfig(ConfigEnum.block_iran_sites))
         enable_vmess = SwitchField(_("config.vmess_enable.label"), description=_("config.vmess_enable.description"), default=hconfig(ConfigEnum.vmess_enable))
-        decoy_domain=wtf.fields.StringField(_("config.decoy_domain.label"),description=_("config.decoy_domain.description"),default=hconfig(ConfigEnum.decoy_domain),validators=[wtf.validators.Regexp(domain_regex,re.IGNORECASE,_("config.Invalid domain")),hiddify.validate_domain_exist])
+        decoy_domain = wtf.fields.StringField(_("config.decoy_domain.label"), description=_("config.decoy_domain.description"), default=hconfig(
+            ConfigEnum.decoy_domain), validators=[wtf.validators.Regexp(domain_regex, re.IGNORECASE, _("config.Invalid domain")), hiddify.validate_domain_exist])
         submit = wtf.fields.SubmitField(_('Submit'))
 
     return QuickSetupForm(None) if empty else QuickSetupForm()
