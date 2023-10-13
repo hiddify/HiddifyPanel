@@ -3051,7 +3051,7 @@ msgstr "测试"
 # | "<br />"
 #: hiddifypanel/panel/user/templates/home/clash-links.html:1
 msgid "user.home.clash_configs.intro"
-msgstr "现在根据您的需要，单击以下链接之一。"
+msgstr "按照您自己的需要，单击以下链接之一。"
 
 # | msgid "For only Blocked Sites"
 #: hiddifypanel/panel/user/templates/home/clash-links.html:5
@@ -3375,7 +3375,10 @@ msgstr "您应该在没有 VPN 的情况下访问此页面以使用自动 CDN IP
 #: copy.html:6 hiddifypanel/panel/user/templates/home/ios
 #: hiddifypanel/panel/user/templates/home/ios.html:6
 msgid "user.home.ios.stash.title"
-msgstr "收藏<span class=\"badge badge-success\">推荐</span>"
+msgstr ""
+"<button class='btn btn-sm btn-default' onclick='show_video(\"ios-stash\")'><i class=\"fa-solid fa-question\"></i> Stash</button>\n"
+"          <button class='btn btn-sm btn-default' onclick='show_video(\"ios-shadowrocket\")'><i class=\"fa-solid fa-question\"></i> Shadowrocket</button>\n"
+" <span class=\"badge badge-success\">推荐</span>"
 
 # | msgid ""
 # | "Stash & Shadowrocket is a great application. We think it worth buying.\n"
@@ -3396,13 +3399,16 @@ msgstr "收藏<span class=\"badge badge-success\">推荐</span>"
 #: hiddifypanel/panel/user/templates/home/ios.html:10
 msgid "user.home.ios.stash.intro"
 msgstr ""
-"Stash 是一个很棒的应用程序。我们认为值得购买。\n"
-"\n"
-"        <div class=\"btn-group\">\n"
-"        <a href=\"https://apps.ap0ple.com/us/app/stash-rule-based-"
-"proxy/id1596063349\" target=\"_blank\" class=\"btn btn-success orig-"
-"link\">下载存储</一个>\n"
-"        </div>"
+"Stash和Shadowrocket两个应用都很棒。值得购买其中一个（注意：需要中国大陆以外的App Store账户才能下载）\n"
+"<br>\n"
+"<br />\n"
+"  <div class=\"btn-group\">\n"
+"        <a href=\"https://apps.apple.com/us/app/stash-rule-based-proxy/id1596063349\" target=\"_blank\" class=\"btn btn-success orig-link\">下载 Stash</a>\n"
+"        </div>\n"
+"  <div class=\"btn-group\">\n"
+"        <a href=\"https://apps.apple.com/us/app/shadowrocket/id932747118\" target=\"_blank\" class=\"btn btn-primary orig-link\">下载 Shadowrocket</a> \n"
+"        </div><br>\n"
+"<br />"
 
 # | msgid "FoXray and Fair VPN"
 #: hiddifypanel/panel/user/templates/home/ios.html:21
