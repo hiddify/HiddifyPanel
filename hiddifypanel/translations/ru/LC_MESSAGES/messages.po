@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: HiddifyPT\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-06 12:20-0500\n"
-"PO-Revision-Date: 2023-10-12 15:08-0500\n"
+"PO-Revision-Date: 2023-10-13 06:35-0500\n"
 "Last-Translator: lymanrudni\n"
 "Language-Team: Russian\n"
 "Language: ru\n"
@@ -111,11 +111,13 @@ msgstr "Пакет закончился"
 #| "Rebooting System ... This may take a few minutes. Please Wait ..."
 msgid "rebooting system may takes time please wait"
 msgstr ""
+"Перезагрузка системы ... Это может занять несколько минут. пожалуйста, "
+"подождите..."
 
 #: hiddifypanel/panel/admin/Actions.py:104 loco:64568c8d11f32d138907df9f
 #| msgid "Can not sync child with Parent Panel."
 msgid "can not sync child with parent panel"
-msgstr ""
+msgstr "Не удается синхронизировать дочернюю панель с родительской."
 
 #: hiddifypanel/panel/admin/Actions.py:108 loco:64568c8d11f32d138907dfa0
 #| msgid ""
@@ -1044,7 +1046,7 @@ msgstr ""
 #: hiddifypanel/panel/admin/templates/commercial_info.html:7
 #: loco:64568c8d11f32d138907e01d
 msgid "Why Going to Premium?"
-msgstr ""
+msgstr "Зачем переходить на Премиум?"
 
 #: hiddifypanel/panel/admin/templates/commercial_info.html:9
 #: loco:64568c8d11f32d138907e01e
@@ -1108,22 +1110,19 @@ msgstr "CDN"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:5
 #: loco:64568c8d11f32d138907e021
-#, fuzzy
 msgid "Create"
-msgstr "Создавать"
+msgstr "Создать"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:5
 #: loco:64568c8d11f32d138907e022
-#, fuzzy
 msgid "Save & Add More"
-msgstr "Сохранить и добавить больше"
+msgstr "Сохранить и добавить еще"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:5
 #: hiddifypanel/panel/user/templates/home/one_click.html:279
 #: hiddifypanel/templates/donation.html:14 loco:64568c8d11f32d138907e023
-#, fuzzy
 msgid "Close"
-msgstr "Закрывать"
+msgstr "Закрыть"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:5
 #: loco:64568c8d11f32d138907e024
@@ -1707,10 +1706,9 @@ msgstr ""
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:2 loco:64568c8d11f32d138907e068
-#, fuzzy
 #| msgid "TUIC"
 msgid "config.tuic.label"
-msgstr "ТУИК"
+msgstr "TUIC"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:2 loco:64568c8d11f32d138907e069
@@ -1727,10 +1725,9 @@ msgstr ""
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:2 loco:64568c8d11f32d138907e06a
-#, fuzzy
 #| msgid "SSR"
 msgid "config.ssr.label"
-msgstr "ССР"
+msgstr "SSR"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:2 loco:64568c8d11f32d138907e06b
@@ -1745,10 +1742,9 @@ msgstr ""
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:2 loco:64568c8d11f32d138907e06c
-#, fuzzy
 #| msgid "KCP"
 msgid "config.kcp.label"
-msgstr "ККП"
+msgstr "KCP"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:2 loco:64568c8d11f32d138907e06d
@@ -1858,10 +1854,9 @@ msgstr "Для троянских ссылок"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1 loco:64568c8d11f32d138907e07a
-#, fuzzy
 #| msgid "ℹ️ VLESS Path"
 msgid "config.path_vless.label"
-msgstr "ℹ️ Путь ВЛЕСС"
+msgstr "ℹ️ Путь VLESS"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1 loco:64568c8d11f32d138907e07b
@@ -2011,10 +2006,9 @@ msgstr ""
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:2 loco:64568c8d11f32d138907e08c
-#, fuzzy
 #| msgid "WARP➕"
 msgid "config.warp.label"
-msgstr "ДЕФОРМАЦИЯ➕"
+msgstr "WARP➕"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:2 loco:64568c8d11f32d138907e08d
@@ -2290,10 +2284,9 @@ msgstr "Это протокол на основе UDP."
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1 loco:64568c8d11f32d138907e0b2
-#, fuzzy
 #| msgid "Netdata"
 msgid "config.netdata.label"
-msgstr "Нетданные"
+msgstr "Сетевые данные"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1 loco:64568c8d11f32d138907e0b3
@@ -2321,10 +2314,9 @@ msgstr "В этом разделе можно установить конфиг�
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1 loco:64568c8d11f32d138907e0b6
-#, fuzzy
 #| msgid "Enable TUIC"
 msgid "config.tuic_enable.label"
-msgstr "Включить ТУИК"
+msgstr "Включить TUIC"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1 loco:64568c8d11f32d138907e0b7
@@ -2509,16 +2501,15 @@ msgstr "С последнего перезапуска"
 
 #: hiddifypanel/panel/admin/templates/index.html:119
 #: loco:64568c8d11f32d138907e0cf
-#, fuzzy, python-format
+#, python-format
 #| msgid "CPU %(cores)s Core"
 msgid "CPU %(cores)s Cores"
-msgstr "ЦП %(ядер)с Ядро"
+msgstr "ЦП %(cores)s Ядро"
 
 #: hiddifypanel/panel/admin/templates/index.html:129
 #: loco:64568c8d11f32d138907e0d0
-#, fuzzy
 msgid "RAM"
-msgstr "БАРАН"
+msgstr "ОЗУ"
 
 #: hiddifypanel/panel/admin/templates/index.html:143
 #: loco:64568c8d11f32d138907e0d1
@@ -2529,9 +2520,8 @@ msgstr "Жесткий диск"
 
 #: hiddifypanel/panel/admin/templates/index.html:146
 #: loco:64568c8d11f32d138907e0d2
-#, fuzzy
 msgid "Hiddify"
-msgstr "Скрыть"
+msgstr "Скрытый"
 
 #: hiddifypanel/panel/admin/templates/parent_dash.html:13
 #: hiddifypanel/panel/commercial/templates/parent_dash.html:19
@@ -2552,9 +2542,8 @@ msgstr "Нет детей"
 #: hiddifypanel/panel/admin/templates/parent_dash.html:20
 #: hiddifypanel/panel/commercial/templates/parent_dash.html:26
 #: loco:64568c8d11f32d138907e0d5
-#, fuzzy
 msgid "Status"
-msgstr "Положение дел"
+msgstr "Статус"
 
 #: hiddifypanel/panel/admin/templates/parent_dash.html:20
 #: hiddifypanel/panel/commercial/templates/parent_dash.html:26
@@ -2815,7 +2804,7 @@ msgstr "Сообщение отправлено."
 #: hiddifypanel/panel/admin/templates/model/user_list.html:101
 #: loco:64568c8d11f32d138907e0f4
 msgid "Hover the user to see the reason"
-msgstr ""
+msgstr "Наведите курсор на пользователя, чтобы увидеть причину"
 
 #: hiddifypanel/panel/admin/templates/model/user_list.html:110
 #: loco:64568c8d11f32d138907e0f5
@@ -3133,10 +3122,9 @@ msgstr ""
 
 #: hiddifypanel/panel/user/templates/home/android.html:48
 #: loco:64568c8d11f32d138907e10d
-#, fuzzy
 #| msgid "Hiddify Android "
 msgid "Hiddify Android"
-msgstr "Скрыть Android"
+msgstr "Hiddify Android"
 
 #: hiddifypanel/panel/user/templates/home/android.html:69
 #: loco:64568c8d11f32d138907e10e
@@ -3426,10 +3414,9 @@ msgstr "Скрыть"
 #: hiddifypanel/panel/user/templates/home/index_old.html:40
 #: hiddifypanel/panel/user/templates/home/multi.html:51
 #: loco:64568c8d11f32d138907e120
-#, fuzzy
 #| msgid "Telegram"
 msgid "telegram"
-msgstr "Телеграмма"
+msgstr "Телеграмм"
 
 #: hiddifypanel/panel/user/templates/home/home.html:10
 #: hiddifypanel/panel/user/templates/home/home.html:22
@@ -3445,10 +3432,9 @@ msgstr "Добро пожаловать %(пользователь)s"
 #: hiddifypanel/panel/user/templates/home/index_old.html:43
 #: hiddifypanel/panel/user/templates/home/multi.html:54
 #: loco:64568c8d11f32d138907e122
-#, fuzzy
 #| msgid "Android"
 msgid "android"
-msgstr "Андроид"
+msgstr "Android"
 
 #: hiddifypanel/panel/user/templates/home/home.html:56
 #: hiddifypanel/panel/user/templates/home/index_old.html:45
@@ -3463,10 +3449,9 @@ msgstr "iOS"
 #: hiddifypanel/panel/user/templates/home/index_old.html:47
 #: hiddifypanel/panel/user/templates/home/multi.html:58
 #: loco:64568c8d11f32d138907e124
-#, fuzzy
 #| msgid "Desktop"
 msgid "desktop"
-msgstr "Рабочий стол"
+msgstr "ПК"
 
 #: hiddifypanel/panel/user/templates/home/home.html:65
 #: hiddifypanel/panel/user/templates/home/index_old.html:54
@@ -3751,10 +3736,9 @@ msgstr "Скачать"
 
 #: hiddifypanel/panel/user/templates/home/speedtest.html:10
 #: loco:64568c8d11f32d138907e13c
-#, fuzzy
 #| msgid "Both Ways"
 msgid "user.home.speedtest.two_ways"
-msgstr "В обе стороны"
+msgstr "Оба способа"
 
 #: hiddifypanel/panel/user/templates/home/telegram.html:9
 #: loco:64568c8d11f32d138907e13d
@@ -3845,10 +3829,9 @@ msgstr "Отображение сведений об использовании"
 
 #: hiddifypanel/panel/user/templates/home/usage.html:54
 #: loco:64568c8d11f32d138907e149
-#, fuzzy
 #| msgid "Support"
 msgid "user.home.branding.title"
-msgstr "Поддерживать"
+msgstr "Поддержка"
 
 #: hiddifypanel/panel/user/templates/home/usage.html:62
 #: loco:64568c8d11f32d138907e14a
@@ -3861,9 +3844,8 @@ msgstr "Ссылка на страницу поддержки"
 #: hiddifypanel/panel/user/templates/home/windows.html:22
 #: hiddifypanel/panel/user/templates/home/windows.html:37
 #: loco:64568c8d11f32d138907e14b
-#, fuzzy
 msgid "Windows"
-msgstr "Окна"
+msgstr "Windows ПК"
 
 #: hiddifypanel/panel/user/templates/home/windows.html:9
 #: hiddifypanel/panel/user/templates/home/windows.html:25
@@ -3875,16 +3857,14 @@ msgstr "macOS"
 #: hiddifypanel/panel/user/templates/home/windows.html:12
 #: hiddifypanel/panel/user/templates/home/windows.html:28
 #: loco:64568c8d11f32d138907e14d
-#, fuzzy
 msgid "Linux"
-msgstr "Линукс"
+msgstr "Linux ОС"
 
 #: hiddifypanel/panel/user/templates/home/windows.html:50
 #: loco:64568c8d11f32d138907e14e
-#, fuzzy
 #| msgid "HiddifyN <span class=\"badge badge-success\">Recommended</span>"
 msgid "HiddigyN"
-msgstr "HiddifyN <span class=\"badge Badge-success\">Рекомендуется</span>"
+msgstr "Рекомендуется<span class=\"badge Badge-success\">HiddifyN</span>"
 
 #: hiddifypanel/panel/user/templates/home/windows.html:53
 #: loco:64568c8d11f32d138907e14f
@@ -3986,10 +3966,9 @@ msgstr ""
 
 #: hiddifypanel/templates/admin-layout.html:18
 #: hiddifypanel/templates/master.html:7 loco:64568c8d11f32d138907e154
-#, fuzzy
 #| msgid "Hiddify Panel"
 msgid "master.page-title"
-msgstr "Скрыть панель"
+msgstr "Hiddify панель"
 
 #: hiddifypanel/templates/admin-layout.html:21
 #: hiddifypanel/templates/admin-layout.html:59
@@ -4005,10 +3984,9 @@ msgid "admin.Actions:apply_configs"
 msgstr "Применить конфигурации"
 
 #: hiddifypanel/templates/admin-layout.html:75 loco:64568c8d11f32d138907e157
-#, fuzzy
 #| msgid "Dashboard"
 msgid "admin.menu.home"
-msgstr "Панель приборов"
+msgstr "Статистика сервера"
 
 #: hiddifypanel/templates/admin-layout.html:79
 #: hiddifypanel/templates/admin-layout.html:81 loco:64568c8d11f32d138907e158
@@ -4018,10 +3996,9 @@ msgid "admin.menu.user"
 msgstr "Пользователи"
 
 #: hiddifypanel/templates/admin-layout.html:79 loco:64568c8d11f32d138907e159
-#, fuzzy
 #| msgid "In Parent Panel"
 msgid "in parent panel"
-msgstr "В родительской панели"
+msgstr "Родительский контроль"
 
 #: hiddifypanel/templates/admin-layout.html:84 loco:64568c8d11f32d138907e15a
 #, fuzzy
@@ -4054,10 +4031,9 @@ msgid "admin.menu.support"
 msgstr "Помощь"
 
 #: hiddifypanel/templates/admin-layout.html:120 loco:64568c8d11f32d138907e15f
-#, fuzzy
 #| msgid "Telegram"
 msgid "admin.menu.telegram"
-msgstr "Телеграмма"
+msgstr "Telegram"
 
 #: hiddifypanel/templates/admin-layout.html:124
 #: hiddifypanel/templates/donation.html:5 loco:64568c8d11f32d138907e160
@@ -4066,10 +4042,9 @@ msgid "Donation"
 msgstr "Пожертвование"
 
 #: hiddifypanel/templates/admin-layout.html:148 loco:64568c8d11f32d138907e161
-#, fuzzy
 #| msgid "Status"
 msgid "admin.actions.status"
-msgstr "Положение дел"
+msgstr "Статус"
 
 #: hiddifypanel/templates/admin-layout.html:149 loco:64568c8d11f32d138907e162
 #, fuzzy
@@ -4084,10 +4059,9 @@ msgid "admin.actions.apply_configs"
 msgstr "Применить конфигурации"
 
 #: hiddifypanel/templates/admin-layout.html:151 loco:64568c8d11f32d138907e164
-#, fuzzy
 #| msgid "Update"
 msgid "admin.actions.update"
-msgstr "Обновлять"
+msgstr "Обновление"
 
 #: hiddifypanel/templates/admin-layout.html:153 loco:64568c8d11f32d138907e165
 #, fuzzy
@@ -4257,10 +4231,9 @@ msgstr ""
 
 #: hiddifypanel/templates/macros.html:29
 #: hiddifypanel/templates/master.html:171 loco:64568c8d11f32d138907e171
-#, fuzzy
 #| msgid "Close"
 msgid "close"
-msgstr "Закрывать"
+msgstr "Закрыть"
 
 #: hiddifypanel/templates/master.html:153 loco:64568c8d11f32d138907e172
 #, fuzzy
@@ -4312,9 +4285,8 @@ msgstr "Нажмите %(install)s, чтобы сохранить страниц
 
 #: hiddifypanel/templates/hiddify-flask-admin/list.html:65
 #: loco:64568c8d11f32d138907e17a
-#, fuzzy
 msgid "Count:"
-msgstr "Считать:"
+msgstr "Количество:"
 
 #: hiddifypanel/templates/hiddify-flask-admin/list.html:91
 #: loco:64568c8d11f32d138907e17b
@@ -4440,7 +4412,7 @@ msgstr "➿ gRPC"
 #: loco:647c4f015b4a52d93b02bbd2
 #| msgid "🔒 Enable TLS Domain Fronting"
 msgid "domain.domain_fronting.label"
-msgstr ""
+msgstr "Включить подключение к домену TLS"
 
 #: hiddifypanel/templates/flaskadmin-layout.html:122
 #: loco:647c4f015b4a52d93b02bbd3
@@ -4449,6 +4421,8 @@ msgstr ""
 #| "<a href=\"https://github.com/hiddify/hiddify-config/wiki/Guide-for-domain-fronting\">Guide</a>. ⚠️CloudFlare does not support Domain Fronting. "
 msgid "domain.domain_fronting.description"
 msgstr ""
+"Он используется для имитации другого веб-сайта вместо вашего веб-сайта в SNI. следовательно, GTW не может отфильтровать ваш домен\n"
+"<<a href=\"https://github.com/hibbity/hibbity-config/wiki/Guide-for-domain-fronting \">Руководство</a>. ⚠CloudFlare не поддерживает подключение к домену."
 
 #: hiddifypanel/templates/flaskadmin-layout.html:55
 #: loco:647c6b7d138c0ab892099ea2
@@ -4563,6 +4537,8 @@ msgid ""
 "You should visit this page without VPN. Your country=%(your_country)s\n"
 "expected=%(expected_country)s"
 msgstr ""
+"Вы должны посетить эту страницу без VPN. Ваша страна=%(your_country)s\n"
+"ожидаемый=%(ожидаемая_страна)s"
 
 #: hiddifypanel/panel/user/templates/home/one_click.html:14
 #: loco:64ea09fde8598ac9c7025933
@@ -4597,7 +4573,7 @@ msgstr ""
 #: hiddifypanel/panel/user/templates/home/one_click.html:163
 #: loco:64ea09fde8598ac9c7025937
 msgid "Download HiddifyNext"
-msgstr ""
+msgstr "Скачайте HiddifyNext"
 
 #: hiddifypanel/panel/user/templates/home/one_click.html:80
 #: hiddifypanel/panel/user/templates/home/one_click.html:119
@@ -4614,7 +4590,7 @@ msgstr "Больше приложений"
 msgid ""
 "Download\n"
 "                                    App"
-msgstr ""
+msgstr "Скачать приложение "
 
 #: hiddifypanel/panel/user/templates/home/one_click.html:71
 #: hiddifypanel/panel/user/templates/home/one_click.html:86
@@ -4748,6 +4724,9 @@ msgid ""
 "                on\n"
 "                your application, or:"
 msgstr ""
+"Если приложение не открывается автоматически, пожалуйста, нажмите <a class='btn btn-primary copy-link' href='%(sub)s'>на эту универсальную ссылку</a>, чтобы скопировать и вставить ее\n"
+"                в\n"
+"вашем приложении, или:"
 
 #: hiddifypanel/panel/user/templates/home/one_click.html:56
 #: loco:64ec883b8da1075d0a041f82
@@ -4761,26 +4740,28 @@ msgid ""
 "btn-primary copy-link' href='%(sub)s'>this universal link</a> to copy and "
 "paste it on your application, or:"
 msgstr ""
+"Если приложение не открывается автоматически, то вам нужно вставить ссылку в"
+" свое приложение, или:"
 
 #: hiddifypanel/panel/user/templates/home/one_click.html:32
 #: loco:64ec8f721a5f8b1f100f7e42
 #| msgid "Simplifies the process of employing the link elsewhere"
 msgid "Simplifies the process of employing the link elsewhere."
-msgstr "Упрощает процесс использования ссылки в другом месте"
+msgstr "Упрощает процесс использования ссылки в других местах"
 
 #: hiddifypanel/templates/admin-layout.html:178 loco:64f02bc3e7f94cc7410cef02
 msgid ""
 "Telegram\n"
 "          Bot"
-msgstr ""
+msgstr "Телеграм Бот"
 
 #: hiddifypanel/panel/admin/Backup.py:85 loco:64ff641df0f2ee23360e2be2
 msgid "Override Root Admin"
-msgstr "Override Root Admin"
+msgstr "Переопределение администратора"
 
 #: hiddifypanel/panel/admin/Backup.py:85 loco:64ff641df0f2ee23360e2be3
 msgid "It will override the root admin to the current user"
-msgstr ""
+msgstr "Переопределение прав администратора на текущего пользователя"
 
 #: hiddifypanel/panel/admin/SettingAdmin.py:187 loco:6500fac29aa7f2841406b702
 #| msgid "☑️ Beta"
@@ -4793,7 +4774,7 @@ msgstr "☑️ Бета"
 msgid ""
 "Download\n"
 "                                App"
-msgstr "Скачать App"
+msgstr "Скачать Приложение"
 
 #: hiddifypanel/templates/fake.html:1 loco:652644972e089e77ba0eadc3
 msgid "config.reality_port.label"

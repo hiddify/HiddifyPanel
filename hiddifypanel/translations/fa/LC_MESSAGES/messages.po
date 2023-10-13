@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-12 22:10+0200\n"
-"PO-Revision-Date: 2023-10-12 15:08-0500\n"
+"POT-Creation-Date: 2023-10-13 13:45+0200\n"
+"PO-Revision-Date: 2023-10-13 06:44-0500\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -3488,7 +3488,8 @@ msgstr ""
 " <span class=\"badge badge-success\">پیشنهادی</span>"
 
 # | msgid ""
-# | "Stash & Shadowrocket is a great application. We think it worth buying.\n"
+# | "Stash & Shadowrocket are both great applications. Either one is worth
+# buying.\n"
 # | "<br>\n"
 # | "<br />\n"
 # | "  <div class=\"btn-group\">\n"
@@ -3563,12 +3564,12 @@ msgstr ""
 "سپس کانفیگ‌ زیر را در برنامه اعمال کنید:\n"
 "<br />"
 
-# | msgid "<i class=\"fa-solid fa-play\"></i> Tap to Start Anti-Filter"
+# | msgid "<i class=\"fa-solid fa-play\"></i> Tap to Set up Anti-Filter"
 #: hiddifypanel/panel/user/templates/home/one_click.html:14
 msgid "Click to Start Anti-Filter."
 msgstr "<i class=\"fa-solid fa-caret-left\"></i> کلیک برای اعمال فیلترشکن"
 
-# | msgid "Unified link for all application"
+# | msgid "One-click setup link for all applications (recommended)."
 #: hiddifypanel/panel/user/templates/home/one_click.html:16
 msgid "Unified link for all application."
 msgstr "لینک یکسان برای همه برنامه‌ها"
@@ -3588,6 +3589,11 @@ msgstr "برای راحتی انتقال این صفحه به ‌پلتفرم د
 msgid "Open in Application"
 msgstr "باز کردن در برنامه"
 
+# | msgid ""
+# | "If the Hiddify application does not open automatically, please click <a "
+# | "class='btn btn-primary copy-link' href='%(sub)s'>this universal link</a>
+# to "
+# | "copy and paste it in the Hiddify application, or:"
 #: hiddifypanel/panel/user/templates/home/one_click.html:56
 #, python-format
 msgid ""
