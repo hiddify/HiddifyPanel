@@ -3439,12 +3439,12 @@ msgstr ""
 # | msgid "<i class=\"fa-solid fa-play\"></i> Tap to Start Anti-Filter"
 #: hiddifypanel/panel/user/templates/home/one_click.html:14
 msgid "Click to Start Anti-Filter."
-msgstr "<i class=\"fa-solid fa-play\"></i> Tap to Start Anti-Filter"
+msgstr "<i class=\"fa-solid fa-play\"></i> Tap to Set up Anti-Filter"
 
 # | msgid "Unified link for all application"
 #: hiddifypanel/panel/user/templates/home/one_click.html:16
 msgid "Unified link for all application."
-msgstr "Unified link for all application"
+msgstr "One-click setup link for all applications (recommended)."
 
 # | msgid "⏱️ Temporary Short Link"
 #: hiddifypanel/panel/user/templates/home/one_click.html:30
@@ -3467,8 +3467,8 @@ msgid ""
 "If the application do not open automatically, please click <a class='btn btn-primary copy-link' href='%(sub)s'>this universal link</a> to copy and paste it on\n"
 "                your application, or:"
 msgstr ""
-"If the application do not open automatically, please click <a class='btn btn-primary copy-link' href='%(sub)s'>this universal link</a> to copy and paste it on\n"
-"                your application, or:"
+"If the Hiddify application does not open automatically, please click <a class='btn btn-primary copy-link' href='%(sub)s'>this universal link</a> to copy and paste it in\n"
+"                the Hiddify application, or:"
 
 #: hiddifypanel/panel/user/templates/home/one_click.html:62
 #: hiddifypanel/panel/user/templates/home/one_click.html:104
