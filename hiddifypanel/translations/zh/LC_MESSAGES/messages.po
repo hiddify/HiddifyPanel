@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-11 08:49+0200\n"
-"PO-Revision-Date: 2023-10-11 01:47-0500\n"
+"POT-Creation-Date: 2023-10-13 13:45+0200\n"
+"PO-Revision-Date: 2023-10-13 06:45-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -665,7 +665,7 @@ msgstr "🇵🇹 Portuguese پرتغالی 葡萄牙語"
 #: hiddifypanel/panel/admin/QuickSetup.py:81
 #: hiddifypanel/panel/admin/SettingAdmin.py:181
 msgid "lang.zh"
-msgstr "Chinese چینی 简体中文"
+msgstr "🇨🇳 Chinese چینی 简体中文"
 
 # | msgid "Choose Language For Admin Area"
 #: hiddifypanel/panel/admin/QuickSetup.py:81
@@ -3376,12 +3376,16 @@ msgstr "您应该在没有 VPN 的情况下访问此页面以使用自动 CDN IP
 #: hiddifypanel/panel/user/templates/home/ios.html:6
 msgid "user.home.ios.stash.title"
 msgstr ""
-"<button class='btn btn-sm btn-default' onclick='show_video(\"ios-stash\")'><i class=\"fa-solid fa-question\"></i> Stash</button>\n"
-"          <button class='btn btn-sm btn-default' onclick='show_video(\"ios-shadowrocket\")'><i class=\"fa-solid fa-question\"></i> Shadowrocket</button>\n"
-" <span class=\"badge badge-success\">推荐</span>"
+"<button class='btn btn-sm btn-default' onclick='show_video(\"ios-"
+"stash\")'><i class=\"fa-solid fa-question\"></i> Stash</button>\n"
+"<button class='btn btn-sm btn-default' onclick='show_video(\"ios-"
+"shadowrocket\")'><i class=\"fa-solid fa-question\"></i> "
+"Shadowrocket</button>\n"
+"<span class=\"badge badge-success\">推荐</span>"
 
 # | msgid ""
-# | "Stash & Shadowrocket is a great application. We think it worth buying.\n"
+# | "Stash & Shadowrocket are both great applications. Either one is worth
+# buying.\n"
 # | "<br>\n"
 # | "<br />\n"
 # | "  <div class=\"btn-group\">\n"
@@ -3403,10 +3407,15 @@ msgstr ""
 "<br>\n"
 "<br />\n"
 "  <div class=\"btn-group\">\n"
-"        <a href=\"https://apps.apple.com/us/app/stash-rule-based-proxy/id1596063349\" target=\"_blank\" class=\"btn btn-success orig-link\">下载 Stash</a>\n"
+"        <a href=\"https://apps.apple.com/us/app/stash-rule-based-"
+"proxy/id1596063349\" target=\"_blank\" class=\"btn btn-success orig-"
+"link\">下载 Stash</a>\n"
 "        </div>\n"
 "  <div class=\"btn-group\">\n"
-"        <a href=\"https://apps.apple.com/us/app/shadowrocket/id932747118\" target=\"_blank\" class=\"btn btn-primary orig-link\">下载 Shadowrocket</a> \n"
+"        <a "
+"href=\"https://apps.apple.com/us/app/shadowrocket/id932747118\" "
+"target=\"_blank\" class=\"btn btn-primary orig-link\">下载 Shadowrocket</a>"
+" \n"
 "        </div><br>\n"
 "<br />"
 
@@ -3444,13 +3453,13 @@ msgstr ""
 "<br />\n"
 "然后应用以下配置之一："
 
-# | msgid "<i class=\"fa-solid fa-play\"></i> Tap to Start Anti-Filter"
+# | msgid "<i class=\"fa-solid fa-play\"></i> Tap to Set up Anti-Filter"
 #: hiddifypanel/panel/user/templates/home/one_click.html:14
 #, fuzzy
 msgid "Click to Start Anti-Filter."
 msgstr "<i class=\"fa-solid fa-play\"></i> 点击以启动反过滤。"
 
-# | msgid "Unified link for all application"
+# | msgid "One-click setup link for all applications (recommended)."
 #: hiddifypanel/panel/user/templates/home/one_click.html:16
 #, fuzzy
 msgid "Unified link for all application."
@@ -3474,6 +3483,11 @@ msgstr "简化了在其他地方使用链接的过程"
 msgid "Open in Application"
 msgstr "在应用程序中打开"
 
+# | msgid ""
+# | "If the Hiddify application does not open automatically, please click <a "
+# | "class='btn btn-primary copy-link' href='%(sub)s'>this universal link</a>
+# to "
+# | "copy and paste it in the Hiddify application, or:"
 #: hiddifypanel/panel/user/templates/home/one_click.html:56
 #, fuzzy, python-format
 msgid ""
@@ -4671,4 +4685,8 @@ msgstr "动作"
 #~ "Telegram\n"
 #~ "          Bot"
 #~ msgstr ""
+
+# | msgid "🇷🇺 Russian روسی Русский"
+#~ msgid "lang.ru"
+#~ msgstr "🇷🇺 Russian روسی Русский"
 
