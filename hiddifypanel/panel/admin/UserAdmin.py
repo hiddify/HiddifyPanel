@@ -251,7 +251,7 @@ class UserAdmin(AdminLTEModelView):
             model.start_date = None
         model.package_days = min(model.package_days, 10000)
         old_user = user_by_id(model.id)
-        if not model.added_by:
+        if not model.added_by or model.added_by == 1:
             model.added_by = g.admin.id
         if not g.admin.can_have_more_users():
             raise ValidationError(_('You have too much users! You can have only %(active)s active users and %(total)s users',
