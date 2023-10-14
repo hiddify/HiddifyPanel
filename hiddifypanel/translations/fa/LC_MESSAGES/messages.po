@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-13 13:45+0200\n"
-"PO-Revision-Date: 2023-10-13 06:45-0500\n"
+"POT-Creation-Date: 2023-10-14 09:16+0200\n"
+"PO-Revision-Date: 2023-10-14 02:13-0500\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -820,6 +820,11 @@ msgstr "غیرفعال"
 #: hiddifypanel/panel/admin/SettingAdmin.py:177
 msgid "Only Blocked and Local websites"
 msgstr "☑️ فقط سایت‌های داخلی و مسدود شده‌ی خارجی"
+
+# | msgid "🇷🇺 Russian روسی Русский"
+#: hiddifypanel/panel/admin/SettingAdmin.py:182
+msgid "lang.ru"
+msgstr "🇷🇺 Russian روسی Русский"
 
 # | msgid "🇺🇳 Others"
 #: hiddifypanel/panel/admin/SettingAdmin.py:185
@@ -4824,8 +4829,4 @@ msgstr "عملیات"
 #~ "Telegram\n"
 #~ "          Bot"
 #~ msgstr ""
-
-# | msgid "🇷🇺 Russian روسی Русский"
-#~ msgid "lang.ru"
-#~ msgstr "🇷🇺 Russian روسی Русский"
 

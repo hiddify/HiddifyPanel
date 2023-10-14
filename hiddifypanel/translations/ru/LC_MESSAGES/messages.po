@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPT\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-13 13:45+0200\n"
-"PO-Revision-Date: 2023-10-13 06:45-0500\n"
+"POT-Creation-Date: 2023-10-14 09:16+0200\n"
+"PO-Revision-Date: 2023-10-14 02:15-0500\n"
 "Last-Translator: lymanrudni\n"
 "Language: ru\n"
 "Language-Team: Russian\n"
@@ -839,6 +839,11 @@ msgstr "Отключить"
 #: hiddifypanel/panel/admin/SettingAdmin.py:177
 msgid "Only Blocked and Local websites"
 msgstr "☑️ Только заблокированные и локальные сайты"
+
+# | msgid "🇷🇺 Russian روسی Русский"
+#: hiddifypanel/panel/admin/SettingAdmin.py:182
+msgid "lang.ru"
+msgstr "🇷🇺 Russian روسی Русский"
 
 # | msgid "🇺🇳 Others"
 #: hiddifypanel/panel/admin/SettingAdmin.py:185
@@ -3534,9 +3539,9 @@ msgstr ""
 #: hiddifypanel/panel/user/templates/home/index_old.html:8
 #: hiddifypanel/panel/user/templates/home/multi.html:10
 #: hiddifypanel/panel/user/templates/home/multi.html:22
-#, fuzzy, python-format
+#, python-format
 msgid "Welcome %(user)s"
-msgstr "Добро пожаловать %(пользователь)s"
+msgstr "Добро пожаловать %(user)s"
 
 # | msgid "Telegram"
 #: copy.html:27 hiddifypanel/panel/user/templates/home/home.html:51
@@ -3705,7 +3710,7 @@ msgstr "Выключить VPN"
 # | "Your Country = %(your_country)s"
 #: hiddifypanel/panel/user/templates/home/home.html:422
 #: hiddifypanel/panel/user/templates/home/multi.html:424
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "You should visit this page without VPN. Your country=%(your_country)s "
 "expected=%(expected_country)s"
@@ -3713,7 +3718,7 @@ msgstr ""
 "Вам следует посетить эту страницу без VPN, чтобы использовать Auto CDN "
 "IP.\n"
 "<br>\n"
-"Ваша страна = %(ваша_страна)s"
+"Ваша страна = %(your_country)s"
 
 # | msgid ""
 # | "<button class='btn btn-sm btn-default'
@@ -4124,7 +4129,6 @@ msgstr ""
 # viewing the window in your browser, just click on the <b>Open</b> option to
 # automatically add the server link to Hiddify Desktop."
 #: hiddifypanel/panel/user/templates/home/windows.html:65
-#, fuzzy
 msgid "user.home.windows.intro"
 msgstr ""
 "Сначала загрузите и установите программное обеспечение Hiddify Desktop в "
@@ -4134,7 +4138,7 @@ msgstr ""
 "\n"
 "<подробности>\n"
 "<summary>Почему Hiddify Desktop?</summary>\n"
-"<div class=\"выноска-информация-выноска\">\n"
+"<div class=\"callout callout-info\">\n"
 "\n"
 "        Hiddify Desktop — это безопасная версия Clash с открытым исходным"
 " кодом, которая поддерживает больше отпечатков пальцев VLESS и UTLS.\n"
@@ -4147,7 +4151,7 @@ msgstr ""
 "\n"
 "        <подробности>\n"
 "            <summary>Альтернатива: обычное столкновение</summary>\n"
-"            %(normal_clash_link)с\n"
+"            %(normal_clash_link)s\n"
 "\n"
 "            <div class=\"alert alert-danger\">\n"
 "            Clash не поддерживает снятие отпечатков пальцев браузером и "
@@ -4788,7 +4792,7 @@ msgstr "Действия"
 #~ "expected=%(expected_country)s"
 #~ msgstr ""
 #~ "Вы должны посетить эту страницу без VPN. Ваша страна=%(your_country)s\n"
-#~ "ожидаемый=%(ожидаемая_страна)s"
+#~ "ожидаемый=%(expected_country)s"
 
 #~ msgid "Download HiddifyNext"
 #~ msgstr "Скачайте HiddifyNext"
@@ -4836,8 +4840,4 @@ msgstr "Действия"
 #~ "Telegram\n"
 #~ "          Bot"
 #~ msgstr "Телеграм Бот"
-
-# | msgid "🇷🇺 Russian روسی Русский"
-#~ msgid "lang.ru"
-#~ msgstr "🇷🇺 Russian روسی Русский"
 
