@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-14 09:16+0200\n"
-"PO-Revision-Date: 2023-10-14 02:13-0500\n"
+"POT-Creation-Date: 2023-10-14 09:21+0200\n"
+"PO-Revision-Date: 2023-10-14 02:16-0500\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -684,6 +684,12 @@ msgstr "Portuguese 🇵🇹 پرتغالی 葡萄牙語"
 msgid "lang.zh"
 msgstr "🇨🇳 Chinese چینی 简体中文"
 
+# | msgid "🇷🇺 Russian روسی Русский"
+#: hiddifypanel/panel/admin/QuickSetup.py:81
+#: hiddifypanel/panel/admin/SettingAdmin.py:182
+msgid "lang.ru"
+msgstr "🇷🇺 Russian روسی Русский"
+
 # | msgid "Choose Language For Admin Area"
 #: hiddifypanel/panel/admin/QuickSetup.py:81
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -820,11 +826,6 @@ msgstr "غیرفعال"
 #: hiddifypanel/panel/admin/SettingAdmin.py:177
 msgid "Only Blocked and Local websites"
 msgstr "☑️ فقط سایت‌های داخلی و مسدود شده‌ی خارجی"
-
-# | msgid "🇷🇺 Russian روسی Русский"
-#: hiddifypanel/panel/admin/SettingAdmin.py:182
-msgid "lang.ru"
-msgstr "🇷🇺 Russian روسی Русский"
 
 # | msgid "🇺🇳 Others"
 #: hiddifypanel/panel/admin/SettingAdmin.py:185
