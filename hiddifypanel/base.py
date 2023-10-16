@@ -14,7 +14,7 @@ from hiddifypanel.panel import hiddify
 def create_app(cli=False, **config):
     app = Flask(__name__, static_url_path="/<proxy_path>/static/", instance_relative_config=True)
 
-    for c, v in dotenv_values(os.environ["HIDDIFY_CFG_PATH"] or 'app.cfg').items():
+    for c, v in dotenv_values(os.environ.get("HIDDIFY_CFG_PATH", 'app.cfg')).items():
         if v.isdecimal():
             v = int(v)
         else:
