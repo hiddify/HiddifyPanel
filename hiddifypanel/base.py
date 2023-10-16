@@ -14,7 +14,7 @@ from hiddifypanel.panel import hiddify
 def create_app(cli=False, **config):
     app = Flask(__name__, static_url_path="/<proxy_path>/static/", instance_relative_config=True)
 
-    for c, v in dotenv_values('app.cfg').items():
+    for c, v in dotenv_values(os.environ["HIDDIFY_CFG_PATH"] or 'app.cfg').items():
         if v.isdecimal():
             v = int(v)
         else:
@@ -72,7 +72,7 @@ def create_app(cli=False, **config):
 
     @app.after_request
     def apply_no_robot(response):
-        response.headers["X-Robots-Tag"] = "noindex, nofollow";
+        response.headers["X-Robots-Tag"] = "noindex, nofollow"
         return response
     app.jinja_env.globals['get_locale'] = get_locale
     app.jinja_env.globals['version'] = hiddifypanel.__version__
