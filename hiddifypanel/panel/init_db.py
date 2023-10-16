@@ -138,6 +138,7 @@ def _v56():
     reality_port = random.randint(20000, 30000)
     set_hconfig(ConfigEnum.reality_port, reality_port)
 
+
 def _v55():
     tuic_port = random.randint(20000, 30000)
     hystria_port = random.randint(10000, 20000)
@@ -552,10 +553,13 @@ def latest_db_version():
 
 def upgrade_database():
 
-    panel_root = '/opt/hiddify-config/hiddify-panel/'
+    panel_root = '/opt/hiddify-server/hiddify-panel/'
     backup_root = f"{panel_root}backup/"
     sqlite_db = f"{panel_root}hiddifypanel.db"
-
+    if not os.path.isdir(backup_root) or len(os.listdir(backup_root)) == 0:
+        os.rename(sqlite_db, sqlite_db+".old")
+        print("no backup found...")
+        return
     if os.path.isfile(sqlite_db):
         hiddify.error("Finding Old Version Database... importing configs from latest backup")
         newest_file = max([(f, os.path.getmtime(os.path.join(backup_root, f)))
