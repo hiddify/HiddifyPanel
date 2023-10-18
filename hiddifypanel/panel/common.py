@@ -7,8 +7,9 @@ from flask import g, send_from_directory, session, Markup
 
 import hiddifypanel
 from hiddifypanel.models import *
-from hiddifypanel.panel import hiddify
-
+from hiddifypanel.panel import hiddify, github_issue_generator
+from sys import version as python_version
+from platform import platform
 
 def init_app(app):
     app.jinja_env.globals['ConfigEnum'] = ConfigEnum
@@ -18,16 +19,74 @@ def init_app(app):
 
     @app.errorhandler(Exception)
     def internal_server_error(e):
-        if not hasattr(e, 'code') or e.code == 500:
+        if not hasattr(e, 'code') or e.code != 500:
             trace = traceback.format_exc()
+            trace = remove_unrelated_stacktrace_details(trace)
+            issue_body = f"""
+# Internal Error Stacktrace:
+**Error Message**:   {str(e)}
+```
+{trace}
+```
+## Details:
+**Hiddify Version**: {hiddifypanel.__version__}
+**Python Version**:  {python_version}
+**OS**:              {platform()}
+            """
+
+            # Add user agent if exists
+            if hasattr(g,'user_agent') and str(g.user_agent):
+                issue_body += f"**User Agent**: {str(g.user_agent)}"
+
+            # Create github issue link
+            issue_link = generate_github_issue_link(e, issue_body)
+            # Remove proxy path and uuid from stacktrace details
+            remove_sensetive_data_from_github_issue_link(issue_link)
 
             last_version = hiddify.get_latest_release_version('hiddifypanel')
             has_update = "T" not in hiddifypanel.__version__ and "dev" not in hiddifypanel.__version__ and f'{last_version}' != hiddifypanel.__version__
-            return render_template('500.html', error=e, trace=trace, has_update=has_update, last_version=last_version), 500
+            return render_template('500.html', error=e, trace=trace, has_update=has_update, last_version=last_version, issue_link=issue_link), 500
         # if e.code in [400,401,403]:
         #     return render_template('access-denied.html',error=e), e.code
 
         return render_template('error.html', error=e), e.code
+
+    def remove_sensetive_data_from_github_issue_link(issue_link):
+        if hasattr(g,'user_uuid') and g.user_uuid != None:
+            issue_link.replace(g.user_uuid,'*******************')
+        if hconfig(ConfigEnum.proxy_path) and hconfig(ConfigEnum.proxy_path) != None:
+            issue_link.replace(hconfig(ConfigEnum.proxy_path),'**********')
+
+    def remove_unrelated_stacktrace_details(stacktrace:str):
+        lines = stacktrace.splitlines()
+        if len(lines) < 1:
+            return ""
+
+        output = ''
+        skip_next_line = False
+        for i,line in enumerate(lines):
+            if i == 0:
+                output += line + '\n'
+                continue
+            if skip_next_line == True:
+                skip_next_line = False
+                continue
+            if line.strip().startswith('File'):
+                if 'hiddify' in line.lower():
+                    output += line + '\n'
+                    output += lines[i + 1] + '\n'
+                skip_next_line = True
+
+        return output
+    def generate_github_issue_link(e, issue_body):
+        opts = {
+                "user": 'hiddify',
+                "repo": 'Hiddify-Server',
+                "title": f"Internal server error: {e.name}",
+                "body": issue_body,
+            }
+        issue_link = str(github_issue_generator.IssueUrl(opts).get_url())
+        return issue_link
 
     @app.url_defaults
     def add_proxy_path_user(endpoint, values):
@@ -60,7 +119,8 @@ def init_app(app):
         g.is_admin = False
 
         if request.args.get('darkmode') != None:
-            session['darkmode'] = request.args.get('darkmode', '').lower() == 'true'
+            session['darkmode'] = request.args.get(
+                'darkmode', '').lower() == 'true'
         g.darkmode = session.get('darkmode', False)
         import random
         g.install_pwa = random.random() <= 0.05
@@ -74,7 +134,8 @@ def init_app(app):
         g.proxy_path = values.pop('proxy_path', None) if values else None
         if g.proxy_path != hconfig(ConfigEnum.proxy_path):
             if app.config['DEBUG']:
-                abort(400, Markup(f"Invalid Proxy Path <a href=/{hconfig(ConfigEnum.proxy_path)}/{get_super_admin_secret()}/admin>admin</a>"))
+                abort(400, Markup(
+                    f"Invalid Proxy Path <a href=/{hconfig(ConfigEnum.proxy_path)}/{get_super_admin_secret()}/admin>admin</a>"))
             abort(400, "Invalid Proxy Path")
         if endpoint == 'static' or endpoint == "videos":
             return
@@ -87,7 +148,8 @@ def init_app(app):
             abort(400, 'invalid user')
         g.admin = get_admin_user_db(tmp_secret)
         g.is_admin = g.admin is not None
-        bare_path = request.path.replace(g.proxy_path, "").replace(tmp_secret, "").lower()
+        bare_path = request.path.replace(
+            g.proxy_path, "").replace(tmp_secret, "").lower()
         if not g.is_admin:
             g.user = User.query.filter(User.uuid == f'{g.user_uuid}').first()
             if not g.user:
