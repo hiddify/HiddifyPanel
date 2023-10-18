@@ -3023,7 +3023,7 @@ msgstr "为所有网站安装"
 
 # | msgid "Copy the link bellow into your browser."
 #: hiddifypanel/panel/user/templates/home/doh.html:1
-msgid "user.home.tool.doh"
+msgid "user.home.tool.doh.title"
 msgstr "将下面的链接复制到您的浏览器中。"
 
 # | msgid "Copy"
@@ -3137,7 +3137,7 @@ msgstr "所有配置"
 #: hiddifypanel/panel/user/templates/home/home.html:102
 #: hiddifypanel/panel/user/templates/home/index_old.html:91
 #: hiddifypanel/panel/user/templates/home/multi.html:106
-msgid "user.home.speedtest"
+msgid "user.home.speedtest.title"
 msgstr "测速（检测受污染IP）"
 
 # | msgid "DNS Over HTTPS"
@@ -3732,7 +3732,7 @@ msgstr "Telegram"
 
 #: hiddifypanel/templates/admin-layout.html:124
 #: hiddifypanel/templates/donation.html:5
-msgid "Donation"
+msgid "Donation.title"
 msgstr "捐赠"
 
 # | msgid "Status"

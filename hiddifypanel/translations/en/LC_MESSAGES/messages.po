@@ -3134,7 +3134,7 @@ msgstr "Install Proxy for All Sites."
 
 # | msgid "Copy the link bellow into your browser."
 #: hiddifypanel/panel/user/templates/home/doh.html:1
-msgid "user.home.tool.doh"
+msgid "user.home.tool.doh.title"
 msgstr "Copy the link bellow into your browser."
 
 # | msgid "Copy"
@@ -3247,7 +3247,7 @@ msgstr "All Configs"
 #: hiddifypanel/panel/user/templates/home/home.html:102
 #: hiddifypanel/panel/user/templates/home/index_old.html:91
 #: hiddifypanel/panel/user/templates/home/multi.html:106
-msgid "user.home.speedtest"
+msgid "user.home.speedtest.title"
 msgstr "Speed Test (Detect dirty IP)"
 
 # | msgid "DNS Over HTTPS"
@@ -3844,8 +3844,8 @@ msgstr "Telegram"
 
 #: hiddifypanel/templates/admin-layout.html:124
 #: hiddifypanel/templates/donation.html:5
-msgid "Donation"
-msgstr "Donation"
+msgid "Donation.title"
+msgstr "Donation.title"
 
 # | msgid "Status"
 #: hiddifypanel/templates/admin-layout.html:148

@@ -3532,7 +3532,7 @@ msgstr "Instale o proxy para todos os sites."
 # | msgid "Copy the link bellow into your browser."
 #: hiddifypanel/panel/user/templates/home/doh.html:1
 #, fuzzy
-msgid "user.home.tool.doh"
+msgid "user.home.tool.doh.title"
 msgstr "Copie o link abaixo em seu navegador."
 
 # | msgid "Copy"
@@ -3657,7 +3657,7 @@ msgstr "Todas as configurações"
 #: hiddifypanel/panel/user/templates/home/index_old.html:91
 #: hiddifypanel/panel/user/templates/home/multi.html:106
 #, fuzzy
-msgid "user.home.speedtest"
+msgid "user.home.speedtest.title"
 msgstr "Teste de velocidade (detectar IP sujo)"
 
 # | msgid "DNS Over HTTPS"
@@ -4335,7 +4335,7 @@ msgstr "Telegram"
 #: hiddifypanel/templates/admin-layout.html:124
 #: hiddifypanel/templates/donation.html:5
 #, fuzzy
-msgid "Donation"
+msgid "Donation.title"
 msgstr "Doação"
 
 # | msgid "Status"

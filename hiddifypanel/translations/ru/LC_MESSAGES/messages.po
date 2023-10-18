@@ -3471,7 +3471,7 @@ msgstr "Установите прокси для всех сайтов."
 # | msgid "Copy the link bellow into your browser."
 #: hiddifypanel/panel/user/templates/home/doh.html:1
 #, fuzzy
-msgid "user.home.tool.doh"
+msgid "user.home.tool.doh.title"
 msgstr "Скопируйте ссылку ниже в свой браузер."
 
 # | msgid "Copy"
@@ -3595,7 +3595,7 @@ msgstr "Все конфигурации"
 #: hiddifypanel/panel/user/templates/home/index_old.html:91
 #: hiddifypanel/panel/user/templates/home/multi.html:106
 #, fuzzy
-msgid "user.home.speedtest"
+msgid "user.home.speedtest.title"
 msgstr "Тест скорости (обнаружение грязного IP-адреса)"
 
 # | msgid "DNS Over HTTPS"
@@ -4256,7 +4256,7 @@ msgstr "Telegram"
 #: hiddifypanel/templates/admin-layout.html:124
 #: hiddifypanel/templates/donation.html:5
 #, fuzzy
-msgid "Donation"
+msgid "Donation.title"
 msgstr "Пожертвование"
 
 # | msgid "Status"

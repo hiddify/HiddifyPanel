@@ -41,6 +41,7 @@ def create_app(cli=False, **config):
     app.config.update(config)  # Override with passed config
     app.config['WTF_CSRF_CHECK_DEFAULT'] = False
 
+    # app.config['BABEL_TRANSLATION_DIRECTORIES'] = '/workspace/Hiddify-Server/hiddify-panel/src/translations.i18n'
     babel = Babel(app)
 
     @babel.localeselector

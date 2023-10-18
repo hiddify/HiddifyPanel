@@ -20,7 +20,7 @@ def init_app(app):
 
     @app.errorhandler(Exception)
     def internal_server_error(e):
-        if not hasattr(e, 'code') or e.code != 500:
+        if not hasattr(e, 'code') or e.code == 500:
             trace = traceback.format_exc()
             trace = remove_unrelated_stacktrace_details(trace)
             issue_body = f"""
@@ -47,8 +47,8 @@ def init_app(app):
             last_version = hiddify.get_latest_release_version('hiddifypanel')
             has_update = "T" not in hiddifypanel.__version__ and "dev" not in hiddifypanel.__version__ and f'{last_version}' != hiddifypanel.__version__
             return render_template('500.html', error=e, trace=trace, has_update=has_update, last_version=last_version, issue_link=issue_link), 500
-        # if e.code in [400,401,403]:
-        #     return render_template('access-denied.html',error=e), e.code
+        # if e.code in [400, 401, 403]:
+        #     return render_template('access-denied.html', error=e), e.code
 
         return render_template('error.html', error=e), e.code
 

@@ -39,16 +39,16 @@ setup(
     long_description_content_type="text/markdown",
     author="hiddify",
     include_package_data=True,
-    license_files = ('LICENSE.md',),
+    license_files=('LICENSE.md',),
 
-    # ext_modules=cythonize(["hiddifypanel/*.pyx","hiddifypanel/*/*.pyx","hiddifypanel/*/*/*.pyx","hiddifypanel/*/*/*.pyx"]),    
-    # ext_modules=cythonize(["hiddifypanel/*.pyx"]),    
-    
+    # ext_modules=cythonize(["hiddifypanel/*.pyx","hiddifypanel/*/*.pyx","hiddifypanel/*/*/*.pyx","hiddifypanel/*/*/*.pyx"]),
+    # ext_modules=cythonize(["hiddifypanel/*.pyx"]),
+
     packages=find_packages(exclude=["tests", ".github"]),
     install_requires=read_requirements("requirements.txt"),
-    package_data={'hiddifypanel': ['hiddifypanel/translations/*/LC_MESSAGES/*.mo'],
-                '': ['hiddifypanel/translations/*/LC_MESSAGES/*.mo'],
-                'hiddifypanel': ['translations/*/LC_MESSAGES/*.mo']},
+    package_data={'hiddifypanel': ['hiddifypanel/translations/*/LC_MESSAGES/*.mo', 'hiddifypanel/translations.i18n/*.json'],
+                  '': ['hiddifypanel/translations/*/LC_MESSAGES/*.mo'],
+                  'hiddifypanel': ['translations/*/LC_MESSAGES/*.mo']},
 
     entry_points={
         "console_scripts": ["hiddifypanel = hiddifypanel.__main__:main"]
