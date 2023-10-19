@@ -54,7 +54,7 @@ def init_app(app):
 
     def remove_sensetive_data_from_github_issue_link(issue_link):
         if hasattr(g, 'user_uuid') and g.user_uuid:
-            issue_link.replace(g.user_uuid, '*******************')
+            issue_link.replace(f'{g.user_uuid}', '*******************')
         if hconfig(ConfigEnum.proxy_path) and hconfig(ConfigEnum.proxy_path):
             issue_link.replace(hconfig(ConfigEnum.proxy_path), '**********')
 
