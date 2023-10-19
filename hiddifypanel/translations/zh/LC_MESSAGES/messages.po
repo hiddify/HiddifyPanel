@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-14 09:22+0200\n"
-"PO-Revision-Date: 2023-10-14 02:21-0500\n"
+"POT-Creation-Date: 2023-10-19 14:25+0200\n"
+"PO-Revision-Date: 2023-10-14 05:19-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -3540,7 +3540,7 @@ msgstr "用户未激活"
 # | msgid "Too Many Connected IPs"
 #: hiddifypanel/panel/user/templates/home/usage.html:29
 msgid "Too many Connected IPs"
-msgstr "连接的 IP 数太多"
+msgstr "连接的 IP 数过多"
 
 #: hiddifypanel/panel/user/templates/home/usage.html:41
 msgid "View in Telegram"
@@ -4047,7 +4047,7 @@ msgstr "config.hidden.description"
 # | msgid "➡️ Direct"
 #: hiddifypanel/templates/fake.html:3
 msgid "direct"
-msgstr "➡️直连"
+msgstr "➡️ 直连"
 
 # | msgid "📳 Only for Subscription Link (can be Direct, Relay, or CDN)"
 #: hiddifypanel/templates/fake.html:3
@@ -4062,7 +4062,7 @@ msgstr "🔀 CDN（Cloudflare 代理，...）"
 # | msgid "☑️ Automatic CDN IP Selector"
 #: hiddifypanel/templates/fake.html:3
 msgid "auto_cdn_ip"
-msgstr "☑️ 自动 CDN IP 选择器"
+msgstr "☑️ 自动优选 CDN IP"
 
 # | msgid "♾️ Relay (Connect Using an Intermediate Node)"
 #: hiddifypanel/templates/fake.html:3
@@ -4087,7 +4087,7 @@ msgstr "✴️ Cloudflare Worker"
 # | msgid "🆎 Fake Site"
 #: hiddifypanel/templates/fake.html:3
 msgid "fake"
-msgstr "🆎 假网站"
+msgstr "🆎 伪装"
 
 # | msgid "⭐️ Without Reset"
 #: hiddifypanel/templates/fake.html:4
@@ -4097,17 +4097,17 @@ msgstr "⭐️ 不重设"
 # | msgid "🗓️ Monthly"
 #: hiddifypanel/templates/fake.html:4
 msgid "monthly"
-msgstr "🗓️每月"
+msgstr "🗓️ 每月"
 
 # | msgid "📅 Weekly"
 #: hiddifypanel/templates/fake.html:4
 msgid "weekly"
-msgstr "📅每周"
+msgstr "📅 每周"
 
 # | msgid "⏰ Daily"
 #: hiddifypanel/templates/fake.html:4
 msgid "daily"
-msgstr "⏰每日"
+msgstr "⏰ 每日"
 
 # | msgid "➖ Direct"
 #: hiddifypanel/templates/flaskadmin-layout.html:55
@@ -4127,7 +4127,7 @@ msgstr "➖ 桥接服务器"
 # | msgid "➖ Fake"
 #: hiddifypanel/templates/flaskadmin-layout.html:58
 msgid "Fake"
-msgstr "➖ 假的"
+msgstr "➖ 伪装"
 
 # | msgid "Test and Suggest Domain "
 #: hiddifypanel/templates/flaskadmin-layout.html:117
