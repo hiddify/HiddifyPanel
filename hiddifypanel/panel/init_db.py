@@ -184,7 +184,7 @@ def _v45():
 
     if not Proxy.query.filter(Proxy.name == "SSH").first():
         db.session.add(Proxy(l3='ssh', transport='ssh', cdn='direct', proto='ssh', enable=True, name="SSH"))
-    add_config_if_not_exist(ConfigEnum.ssh_server_redis_url, "unix:///opt/hiddify-config/other/redis/run.sock?db=1")
+    add_config_if_not_exist(ConfigEnum.ssh_server_redis_url, "unix:///opt/hiddify-manager/other/redis/run.sock?db=1")
     while 1:
         port = random.randint(5000, 40000)
         if port not in [10085, 10086]:

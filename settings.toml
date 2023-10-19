@@ -1,6 +1,6 @@
 [default]
 DEBUG = false
-HIDDIFY_CONFIG_PATH="/opt/hiddify-config/"
+HIDDIFY_CONFIG_PATH="/opt/hiddify-manager/"
 FLASK_ADMIN_TEMPLATE_MODE = "bootstrap4"
 FLASK_ADMIN_SWATCH = 'cerulean'
 SQLALCHEMY_DATABASE_URI = 'sqlite:///development.db'

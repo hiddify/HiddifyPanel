@@ -51,7 +51,7 @@
 <aside id="main-sidebar" class="main-sidebar {{ " sidebar-dark-primary"}} elevation-4">
   <!-- Brand Logo -->
 
-  <a href="https://github.com/hiddify/hiddify-config/wiki" class="" style="text-align: center; color: white;display: block;">
+  <a href="https://github.com/hiddify/hiddify-manager/wiki" class="" style="text-align: center; color: white;display: block;">
     <img src="{{static_url_for(filename='images/WhiteLogo.png')}}" class=" " style="width: 50%;opacity: .8;margin: auto;display:block" />
     <div class="ltr" style="font-size: 8pt;">{{version}}</div>
     % if False and hconfig(ConfigEnum.is_parent)
@@ -113,7 +113,7 @@
           %endif
 
           <li class="nav-item">
-            <a href="https://github.com/hiddify/hiddify-config/wiki/{{'%D9%87%D9%85%D9%87-%D8%A2%D9%85%D9%88%D8%B2%D8%B4%E2%80%8C%D9%87%D8%A7-%D9%88-%D9%88%DB%8C%D8%AF%D8%A6%D9%88%D9%87%D8%A7' if get_locale()=='fa' else 'All-tutorials-and-videos'}}"
+            <a href="https://github.com/hiddify/hiddify-manager/wiki/{{'%D9%87%D9%85%D9%87-%D8%A2%D9%85%D9%88%D8%B2%D8%B4%E2%80%8C%D9%87%D8%A7-%D9%88-%D9%88%DB%8C%D8%AF%D8%A6%D9%88%D9%87%D8%A7' if get_locale()=='fa' else 'All-tutorials-and-videos'}}"
               target="_blank" class=" nav-link">{{icon('solid','circle-question','nav-icon')+_('admin.menu.support')}}</a>
           </li>
           <li class="nav-item d-none">

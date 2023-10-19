@@ -258,7 +258,8 @@ class DomainAdmin(AdminLTEModelView):
     def after_model_change(self, form, model, is_created):
         # if hconfig(ConfigEnum.parent_panel):
         #     hiddify_api.sync_child_to_parent()
-        pass
+        if model.mode in [DomainType.direct, DomainType.cdn, DomainType.worker, DomainType.relay, DomainType.auto_cdn_ip, DomainType.old_xtls_direct, DomainType.sub_link_only]:
+            hiddify.exec_command(f"sudo /opt/hiddify-manager/acme.sh/get_cert.sh {model.domain}")
 
     def is_accessible(self):
         return g.admin.mode in [AdminMode.admin, AdminMode.super_admin]

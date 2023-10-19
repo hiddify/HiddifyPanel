@@ -276,7 +276,7 @@ msgstr "ثبت"
 # will "
 # | "run into problems. Please visit <a "
 # |
-# "href=\"https://github.com/hiddify/hiddify-config/wiki/راهنمای-تنظیم-دامنه-و-"
+# "href=\"https://github.com/hiddify/hiddify-manager/wiki/راهنمای-تنظیم-دامنه-و-"
 # | "نهایی-کردن-نصب#آموزش-ساخت-زیردامنه\"> Help</a> to learn how to create a "
 # | "subdomain."
 #: hiddifypanel/panel/admin/ChildAdmin.py:32
@@ -439,7 +439,7 @@ msgstr "پنل زیر مجموعه حذف شد"
 # domain is returned.<br>\n"
 # | "♾️ <b>Relay:</b> Select this mode if you are using one or more
 # Intermediary servers. <a
-# href=\"https://github.com/hiddify/hiddify-config/discussions/129\"
+# href=\"https://github.com/hiddify/hiddify-manager/discussions/129\"
 # target=\"_blank\">Read More</a>\n"
 # | "✴️ <b>Cloudflare Worker:</b> This mode enables automatic creation of
 # workers for your domain in Cloudflare. Simplify the setup and management of
@@ -1056,7 +1056,7 @@ msgstr "پشتیبان‌گیری"
 # | "🔄 Hiddify Panel automatically takes a Backup every 6 Hours. The path of
 # the Backup files on the server: ⬇️\n"
 # | "<br>\n"
-# | "/opt/hiddify-config/hiddify-panel/backup\n"
+# | "/opt/hiddify-manager/hiddify-panel/backup\n"
 # | "⚠️ You can download a JSON file format of the configurations by clicking
 # on the button below\n"
 # | "<a href='%(link)s' class='btn btn-primary'>Download Backup File</a>"
@@ -1069,7 +1069,7 @@ msgstr ""
 "🔄 پنل هیدیفای به صورت خودکار هر ۶ ساعت یک Backup میگیرد. مسیر فایل های "
 "Backup روی سرور: ⬇️\n"
 "<br>\n"
-"/opt/hiddify-config/hiddify-panel/backup\n"
+"/opt/hiddify-manager/hiddify-panel/backup\n"
 "<br>\n"
 "<br>\n"
 "<br>\n"
@@ -1452,7 +1452,7 @@ msgstr ""
 # | "It is used to simulate another website instead of your website in SNI.
 # therefore, GTW can not filter your Domain\n"
 # | "<a
-# href=\"https://github.com/hiddify/hiddify-config/wiki/%D8%A7%D8%B3%D8%AA%D9%81%D8%A7%D8%AF%D9%87-%D8%A7%D8%B2-%D8%AF%D8%A7%D9%85%DB%8C%D9%86-%D9%81%D8%B1%D8%A7%D9%86%D8%AA%DB%8C%D9%86%DA%AF\">Guide</a>.
+# href=\"https://github.com/hiddify/hiddify-manager/wiki/%D8%A7%D8%B3%D8%AA%D9%81%D8%A7%D8%AF%D9%87-%D8%A7%D8%B2-%D8%AF%D8%A7%D9%85%DB%8C%D9%86-%D9%81%D8%B1%D8%A7%D9%86%D8%AA%DB%8C%D9%86%DA%AF\">Guide</a>.
 # ⚠️CloudFlare does not support Domain Fronting. "
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:2
@@ -1940,7 +1940,7 @@ msgstr "🔑 کلید توسعه کلودفلر"
 
 # | msgid ""
 # | "Please follow <a
-# href=\"https://github.com/hiddify/hiddify-config/wiki/Get-"
+# href=\"https://github.com/hiddify/hiddify-manager/wiki/Get-"
 # | "Cloudflare-API\" target=\"_blank\">the instruction</a> and paste the "
 # | "Cloudflare API Key"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -2609,7 +2609,7 @@ msgstr "✅ عملیات با موفقیت انجام شد. اکنون می تو
 # | "<br>\n"
 # | "2️⃣ If you want to lessen the probability of having dirty IP, you can add
 # Multiple Relay Server <a
-# href=\"https://github.com/hiddify/hiddify-config/discussions/129\">Read
+# href=\"https://github.com/hiddify/hiddify-manager/discussions/129\">Read
 # More</a>.\n"
 # | "3️⃣ If you have Multiple IPv4 or IPv6 in your Panel you have to add the
 # domain pointed to them as Relay."
@@ -2885,7 +2885,7 @@ msgstr "خودکار"
 # | msgid "Hiddify Configs"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:48
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:19
-msgid "user.home.allconfig.hiddify-configs"
+msgid "user.home.allconfig.hiddify-managers"
 msgstr "کانفیگ هیدیفای"
 
 # | msgid "Clash Configs"
@@ -4407,7 +4407,7 @@ msgstr "🔒 فعال کردن دامین فرانتینگ در اتصال TLS"
 # | "It is used to simulate another website instead of your website in SNI.
 # therefore, GTW can not filter your Domain\n"
 # | "<a
-# href=\"https://github.com/hiddify/hiddify-config/wiki/Guide-for-domain-fronting\">Guide</a>.
+# href=\"https://github.com/hiddify/hiddify-manager/wiki/Guide-for-domain-fronting\">Guide</a>.
 # ⚠️CloudFlare does not support Domain Fronting. "
 #: hiddifypanel/templates/flaskadmin-layout.html:129
 msgid "domain.domain_fronting.description"

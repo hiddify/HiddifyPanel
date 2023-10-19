@@ -14,7 +14,7 @@ to_gig_d = 1000*1000*1000
 def add_temporary_access():
     random_port = random.randint(30000, 50000)
     exec_command(
-        f'sudo /opt/hiddify-config/hiddify-panel/temporary_access.sh {random_port} &')
+        f'sudo /opt/hiddify-manager/hiddify-panel/temporary_access.sh {random_port} &')
     temp_admin_link = f"http://{get_ip(4)}:{random_port}{get_admin_path()}"
     g.temp_admin_link = temp_admin_link
 
@@ -30,7 +30,7 @@ def add_short_link(link, period_min=5):
 
     short_code = get_random_string(6, 10).lower()
     exec_command(
-        f'sudo /opt/hiddify-config/nginx/add2shortlink.sh {link} {short_code} {period_min} &')
+        f'sudo /opt/hiddify-manager/nginx/add2shortlink.sh {link} {short_code} {period_min} &')
     return short_code
 
 
@@ -120,6 +120,7 @@ def get_ip(version, retry=5):
         ip = get_ip(version, retry=retry-1)
     return ip
 
+
 @cache.cache(ttl=300)
 def get_available_proxies(child_id):
     proxies = Proxy.query.filter(Proxy.child_id == child_id).all()
@@ -162,7 +163,7 @@ def quick_apply_users():
     #     else:
     #         xray_api.remove_client(user.uuid)
 
-    exec_command("sudo /opt/hiddify-config/install.sh apply_users &")
+    exec_command("sudo /opt/hiddify-manager/install.sh apply_users &")
 
     time.sleep(1)
     return {"status": 'success'}
@@ -183,7 +184,6 @@ def flash_config_success(restart_mode='', domain_changed=True):
 
 # Function to display hostname and
 # IP address
-
 
 
 def check_connection_to_remote(api_url):
@@ -259,7 +259,6 @@ def get_user_link(uuid, domain, mode='', username=''):
     return res
 
 
-
 def validate_domain_exist(form, field):
     domain = field.data
     if not domain:
@@ -320,7 +319,6 @@ def get_child(unique_id):
             child = Child.query.filter(Child.unique_id == str(unique_id)).first()
         child_id = child.id
     return child_id
-
 
 
 def dump_db_to_dict():
@@ -399,7 +397,6 @@ def set_db_from_json(json_data, override_child_id=None, set_users=True, set_doma
     db.session.commit()
 
 
-
 def get_warp_info():
     proxies = dict(http='socks5://127.0.0.1:3000',
                    https='socks5://127.0.0.1:3000')
@@ -423,7 +420,7 @@ def system_stats():
     disk_used = disk_stats.used / 1024**3
     disk_total = disk_stats.total / 1024**3
 
-    hiddify_used = get_folder_size('/opt/hiddify-config/') / 1024**3
+    hiddify_used = get_folder_size('/opt/hiddify-manager/') / 1024**3
 
     # Network usage
     net_stats = psutil.net_io_counters()
@@ -509,7 +506,6 @@ def top_processes():
         "ram": top_ram,
         "cpu": top_cpu
     }
-
 
 
 def get_domain_btn_link(domain):
@@ -691,5 +687,3 @@ def __parse_user_agent(ua):
     if res["is_browser"]:
         res['app'] = uaa.browser.family
     return res
-
-

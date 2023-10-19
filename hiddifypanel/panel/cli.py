@@ -23,7 +23,7 @@ def downgrade():
         Proxy.query.filter(Proxy.l3.in_([ProxyL3.ssh, ProxyL3.h3_quic, ProxyL3.custom])).delete()
         db.session.commit()
         import os
-        os.rename("/opt/hiddify-config/hiddify-panel/hiddifypanel.db.old", "/opt/hiddify-config/hiddify-panel/hiddifypanel.db")
+        os.rename("/opt/hiddify-manager/hiddify-panel/hiddifypanel.db.old", "/opt/hiddify-manager/hiddify-panel/hiddifypanel.db")
 
 
 def backup():
