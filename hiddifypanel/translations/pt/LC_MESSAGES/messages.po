@@ -305,7 +305,7 @@ msgstr "Enviar"
 # will "
 # | "run into problems. Please visit <a "
 # |
-# "href=\"https://github.com/hiddify/hiddify-config/wiki/راهنمای-تنظیم-دامنه-و-"
+# "href=\"https://github.com/hiddify/hiddify-manager/wiki/راهنمای-تنظیم-دامنه-و-"
 # | "نهایی-کردن-نصب#آموزش-ساخت-زیردامنه\"> Help</a> to learn how to create a "
 # | "subdomain."
 #: hiddifypanel/panel/admin/ChildAdmin.py:32
@@ -474,7 +474,7 @@ msgstr "Child removido"
 # domain is returned.<br>\n"
 # | "♾️ <b>Relay:</b> Select this mode if you are using one or more
 # Intermediary servers. <a
-# href=\"https://github.com/hiddify/hiddify-config/discussions/129\"
+# href=\"https://github.com/hiddify/hiddify-manager/discussions/129\"
 # target=\"_blank\">Read More</a>\n"
 # | "✴️ <b>Cloudflare Worker:</b> This mode enables automatic creation of
 # workers for your domain in Cloudflare. Simplify the setup and management of
@@ -1152,7 +1152,7 @@ msgstr "Backup"
 # | "🔄 Hiddify Panel automatically takes a Backup every 6 Hours. The path of
 # the Backup files on the server: ⬇️\n"
 # | "<br>\n"
-# | "/opt/hiddify-config/hiddify-panel/backup\n"
+# | "/opt/hiddify-manager/hiddify-panel/backup\n"
 # | "⚠️ You can download a JSON file format of the configurations by clicking
 # on the button below\n"
 # | "<a href='%(link)s' class='btn btn-primary'>Download Backup File</a>"
@@ -1165,7 +1165,7 @@ msgstr ""
 "🔄 O painel Hiddify faz um backup automaticamente a cada 6 horas. O "
 "caminho dos arquivos de backup no servidor:\n"
 "<br>\n"
-"/opt/hiddify-config/hiddify-panel/backup\n"
+"/opt/hiddify-manager/hiddify-panel/backup\n"
 "<br>\n"
 "<br>\n"
 "<br>\n"
@@ -1599,7 +1599,7 @@ msgstr ""
 # | "It is used to simulate another website instead of your website in SNI.
 # therefore, GTW can not filter your Domain\n"
 # | "<a
-# href=\"https://github.com/hiddify/hiddify-config/wiki/%D8%A7%D8%B3%D8%AA%D9%81%D8%A7%D8%AF%D9%87-%D8%A7%D8%B2-%D8%AF%D8%A7%D9%85%DB%8C%D9%86-%D9%81%D8%B1%D8%A7%D9%86%D8%AA%DB%8C%D9%86%DA%AF\">Guide</a>.
+# href=\"https://github.com/hiddify/hiddify-manager/wiki/%D8%A7%D8%B3%D8%AA%D9%81%D8%A7%D8%AF%D9%87-%D8%A7%D8%B2-%D8%AF%D8%A7%D9%85%DB%8C%D9%86-%D9%81%D8%B1%D8%A7%D9%86%D8%AA%DB%8C%D9%86%DA%AF\">Guide</a>.
 # ⚠️CloudFlare does not support Domain Fronting. "
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:2
@@ -2145,7 +2145,7 @@ msgstr "🔑 API Cloudflare"
 
 # | msgid ""
 # | "Please follow <a
-# href=\"https://github.com/hiddify/hiddify-config/wiki/Get-"
+# href=\"https://github.com/hiddify/hiddify-manager/wiki/Get-"
 # | "Cloudflare-API\" target=\"_blank\">the instruction</a> and paste the "
 # | "Cloudflare API Key"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -2153,7 +2153,7 @@ msgstr "🔑 API Cloudflare"
 #, fuzzy
 msgid "config.cloudflare.description"
 msgstr ""
-"Por favor, siga <a href=\"https://github.com/hiddify/hiddify-config/wiki"
+"Por favor, siga <a href=\"https://github.com/hiddify/hiddify-manager/wiki"
 "/Get-Cloudflare-API\" target=\"_blank\">a instrução</a> e cole a chave de"
 " API Cloudflare"
 
@@ -2884,7 +2884,7 @@ msgstr "✅ A Ação Feita com Sucesso. Agora você pode sair desta página"
 # | "<br>\n"
 # | "2️⃣ If you want to lessen the probability of having dirty IP, you can add
 # Multiple Relay Server <a
-# href=\"https://github.com/hiddify/hiddify-config/discussions/129\">Read
+# href=\"https://github.com/hiddify/hiddify-manager/discussions/129\">Read
 # More</a>.\n"
 # | "3️⃣ If you have Multiple IPv4 or IPv6 in your Panel you have to add the
 # domain pointed to them as Relay."
@@ -3172,7 +3172,7 @@ msgstr "Auto"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:48
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:19
 #, fuzzy
-msgid "user.home.allconfig.hiddify-configs"
+msgid "user.home.allconfig.hiddify-managers"
 msgstr "Ocultar configurações"
 
 # | msgid "Clash Configs"
@@ -3532,7 +3532,7 @@ msgstr "Instale o proxy para todos os sites."
 # | msgid "Copy the link bellow into your browser."
 #: hiddifypanel/panel/user/templates/home/doh.html:1
 #, fuzzy
-msgid "user.home.tool.doh"
+msgid "user.home.tool.doh.title"
 msgstr "Copie o link abaixo em seu navegador."
 
 # | msgid "Copy"
@@ -3657,7 +3657,7 @@ msgstr "Todas as configurações"
 #: hiddifypanel/panel/user/templates/home/index_old.html:91
 #: hiddifypanel/panel/user/templates/home/multi.html:106
 #, fuzzy
-msgid "user.home.speedtest"
+msgid "user.home.speedtest.title"
 msgstr "Teste de velocidade (detectar IP sujo)"
 
 # | msgid "DNS Over HTTPS"
@@ -4335,7 +4335,7 @@ msgstr "Telegram"
 #: hiddifypanel/templates/admin-layout.html:124
 #: hiddifypanel/templates/donation.html:5
 #, fuzzy
-msgid "Donation"
+msgid "Donation.title"
 msgstr "Doação"
 
 # | msgid "Status"
@@ -4807,7 +4807,7 @@ msgstr ""
 # | "It is used to simulate another website instead of your website in SNI.
 # therefore, GTW can not filter your Domain\n"
 # | "<a
-# href=\"https://github.com/hiddify/hiddify-config/wiki/Guide-for-domain-fronting\">Guide</a>.
+# href=\"https://github.com/hiddify/hiddify-manager/wiki/Guide-for-domain-fronting\">Guide</a>.
 # ⚠️CloudFlare does not support Domain Fronting. "
 #: hiddifypanel/templates/flaskadmin-layout.html:129
 msgid "domain.domain_fronting.description"

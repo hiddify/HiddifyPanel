@@ -11,6 +11,7 @@ from hiddifypanel.panel import hiddify, github_issue_generator
 from sys import version as python_version
 from platform import platform
 
+
 def init_app(app):
     app.jinja_env.globals['ConfigEnum'] = ConfigEnum
     app.jinja_env.globals['DomainType'] = DomainType
@@ -19,7 +20,7 @@ def init_app(app):
 
     @app.errorhandler(Exception)
     def internal_server_error(e):
-        if not hasattr(e, 'code') or e.code != 500:
+        if not hasattr(e, 'code') or e.code == 500:
             trace = traceback.format_exc()
             trace = remove_unrelated_stacktrace_details(trace)
             issue_body = f"""
@@ -35,7 +36,7 @@ def init_app(app):
             """
 
             # Add user agent if exists
-            if hasattr(g,'user_agent') and str(g.user_agent):
+            if hasattr(g, 'user_agent') and str(g.user_agent):
                 issue_body += f"**User Agent**: {str(g.user_agent)}"
 
             # Create github issue link
@@ -46,25 +47,25 @@ def init_app(app):
             last_version = hiddify.get_latest_release_version('hiddifypanel')
             has_update = "T" not in hiddifypanel.__version__ and "dev" not in hiddifypanel.__version__ and f'{last_version}' != hiddifypanel.__version__
             return render_template('500.html', error=e, trace=trace, has_update=has_update, last_version=last_version, issue_link=issue_link), 500
-        # if e.code in [400,401,403]:
-        #     return render_template('access-denied.html',error=e), e.code
+        # if e.code in [400, 401, 403]:
+        #     return render_template('access-denied.html', error=e), e.code
 
         return render_template('error.html', error=e), e.code
 
     def remove_sensetive_data_from_github_issue_link(issue_link):
-        if hasattr(g,'user_uuid') and g.user_uuid != None:
-            issue_link.replace(g.user_uuid,'*******************')
-        if hconfig(ConfigEnum.proxy_path) and hconfig(ConfigEnum.proxy_path) != None:
-            issue_link.replace(hconfig(ConfigEnum.proxy_path),'**********')
+        if hasattr(g, 'user_uuid') and g.user_uuid:
+            issue_link.replace(f'{g.user_uuid}', '*******************')
+        if hconfig(ConfigEnum.proxy_path) and hconfig(ConfigEnum.proxy_path):
+            issue_link.replace(hconfig(ConfigEnum.proxy_path), '**********')
 
-    def remove_unrelated_stacktrace_details(stacktrace:str):
+    def remove_unrelated_stacktrace_details(stacktrace: str):
         lines = stacktrace.splitlines()
         if len(lines) < 1:
             return ""
 
         output = ''
         skip_next_line = False
-        for i,line in enumerate(lines):
+        for i, line in enumerate(lines):
             if i == 0:
                 output += line + '\n'
                 continue
@@ -78,13 +79,14 @@ def init_app(app):
                 skip_next_line = True
 
         return output
+
     def generate_github_issue_link(e, issue_body):
         opts = {
-                "user": 'hiddify',
-                "repo": 'Hiddify-Server',
-                "title": f"Internal server error: {e.name}",
-                "body": issue_body,
-            }
+            "user": 'hiddify',
+            "repo": 'Hiddify-Manager',
+            "title": f"Internal server error: {e.name}",
+            "body": issue_body,
+        }
         issue_link = str(github_issue_generator.IssueUrl(opts).get_url())
         return issue_link
 

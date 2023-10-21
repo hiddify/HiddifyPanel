@@ -2,7 +2,7 @@ from redis_cache import RedisCache
 from functools import wraps
 import redis
 from pickle import dumps, loads
-redis_client = redis.from_url('unix:///opt/hiddify-config/other/redis/run.sock?db=0')
+redis_client = redis.from_url('unix:///opt/hiddify-manager/other/redis/run.sock?db=0')
 
 
 def exception_handler(e, original_fn, args, kwargs):

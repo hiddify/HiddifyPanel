@@ -260,7 +260,7 @@ msgstr "提交"
 # will "
 # | "run into problems. Please visit <a "
 # |
-# "href=\"https://github.com/hiddify/hiddify-config/wiki/راهنمای-تنظیم-دامنه-و-"
+# "href=\"https://github.com/hiddify/hiddify-manager/wiki/راهنمای-تنظیم-دامنه-و-"
 # | "نهایی-کردن-نصب#آموزش-ساخت-زیردامنه\"> Help</a> to learn how to create a "
 # | "subdomain."
 #: hiddifypanel/panel/admin/ChildAdmin.py:32
@@ -405,7 +405,7 @@ msgstr "子节点已被删除！"
 # domain is returned.<br>\n"
 # | "♾️ <b>Relay:</b> Select this mode if you are using one or more
 # Intermediary servers. <a
-# href=\"https://github.com/hiddify/hiddify-config/discussions/129\"
+# href=\"https://github.com/hiddify/hiddify-manager/discussions/129\"
 # target=\"_blank\">Read More</a>\n"
 # | "✴️ <b>Cloudflare Worker:</b> This mode enables automatic creation of
 # workers for your domain in Cloudflare. Simplify the setup and management of
@@ -429,7 +429,7 @@ msgstr ""
 " target=\"_blank\"> ircf.space </a>提供的 IP 的来自动优选 CDN IP。 在自动优选 CDN IP "
 "模式下，从域名解析 IP 地址；在CDN 模式下，只返回域名。<br>\n"
 "♾️ <b>中继模式：</b>如果您使用一个或多个中间服务器，请选择此模式。 <a "
-"href=\"https://github.com/hiddify/hiddify-config/discussions/129\" "
+"href=\"https://github.com/hiddify/hiddify-manager/discussions/129\" "
 "target=\"_blank\">阅读更多</a>\n"
 "<br>\n"
 "✴️ <b>Cloudflare Worker：</b>此模式可以在 Cloudflare 中自动为您的域名创建 "
@@ -991,7 +991,7 @@ msgstr "备份"
 # | "🔄 Hiddify Panel automatically takes a Backup every 6 Hours. The path of
 # the Backup files on the server: ⬇️\n"
 # | "<br>\n"
-# | "/opt/hiddify-config/hiddify-panel/backup\n"
+# | "/opt/hiddify-manager/hiddify-panel/backup\n"
 # | "⚠️ You can download a JSON file format of the configurations by clicking
 # on the button below\n"
 # | "<a href='%(link)s' class='btn btn-primary'>Download Backup File</a>"
@@ -1003,7 +1003,7 @@ msgid ""
 msgstr ""
 "🔄 Hiddify Panel 每 6 小时自动进行一次备份。备份文件在服务器上的路径：⬇️\n"
 "<br>\n"
-"/opt/hiddify-config/hiddify-panel/backup\n"
+"/opt/hiddify-manager/hiddify-panel/backup\n"
 "<br>\n"
 "<br>\n"
 "<br>\n"
@@ -1350,7 +1350,7 @@ msgstr "它用于将您的网站在 SNI 中伪装成另一个网站。这样防�
 # | "It is used to simulate another website instead of your website in SNI.
 # therefore, GTW can not filter your Domain\n"
 # | "<a
-# href=\"https://github.com/hiddify/hiddify-config/wiki/%D8%A7%D8%B3%D8%AA%D9%81%D8%A7%D8%AF%D9%87-%D8%A7%D8%B2-%D8%AF%D8%A7%D9%85%DB%8C%D9%86-%D9%81%D8%B1%D8%A7%D9%86%D8%AA%DB%8C%D9%86%DA%AF\">Guide</a>.
+# href=\"https://github.com/hiddify/hiddify-manager/wiki/%D8%A7%D8%B3%D8%AA%D9%81%D8%A7%D8%AF%D9%87-%D8%A7%D8%B2-%D8%AF%D8%A7%D9%85%DB%8C%D9%86-%D9%81%D8%B1%D8%A7%D9%86%D8%AA%DB%8C%D9%86%DA%AF\">Guide</a>.
 # ⚠️CloudFlare does not support Domain Fronting. "
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:2
@@ -1798,14 +1798,14 @@ msgstr "🔑 Cloudflare API"
 
 # | msgid ""
 # | "Please follow <a
-# href=\"https://github.com/hiddify/hiddify-config/wiki/Get-"
+# href=\"https://github.com/hiddify/hiddify-manager/wiki/Get-"
 # | "Cloudflare-API\" target=\"_blank\">the instruction</a> and paste the "
 # | "Cloudflare API Key"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.cloudflare.description"
 msgstr ""
-"请按照<a href=\"https://github.com/hiddify/hiddify-config/wiki/Get-"
+"请按照<a href=\"https://github.com/hiddify/hiddify-manager/wiki/Get-"
 "Cloudflare-API\" target=\"_blank\">说明</a>粘贴 Cloudflare API 密钥"
 
 # | msgid "Very Advanced Settings"
@@ -2432,7 +2432,7 @@ msgstr "✅ 操作已完成。您现在可以离开此页面。"
 # | "<br>\n"
 # | "2️⃣ If you want to lessen the probability of having dirty IP, you can add
 # Multiple Relay Server <a
-# href=\"https://github.com/hiddify/hiddify-config/discussions/129\">Read
+# href=\"https://github.com/hiddify/hiddify-manager/discussions/129\">Read
 # More</a>.\n"
 # | "3️⃣ If you have Multiple IPv4 or IPv6 in your Panel you have to add the
 # domain pointed to them as Relay."
@@ -2444,7 +2444,7 @@ msgstr ""
 "1️⃣ 在此处，您可以添加您的域名。\n"
 "<br>\n"
 "2️⃣ 如果您想减少脏 IP 的可能性，您可以添加多个中继服务器<a href=\"https://github.com/hiddify"
-"/hiddify-config/discussions/129\">阅读更多</a>。\n"
+"/hiddify-manager/discussions/129\">阅读更多</a>。\n"
 "<br>\n"
 "3️⃣ 如果您的面板中有多个 IPv4 或 IPv6，则必须将指向它们的域名添加为中继域名。"
 
@@ -2691,7 +2691,7 @@ msgstr "自动"
 # | msgid "Hiddify Configs"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:48
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:19
-msgid "user.home.allconfig.hiddify-configs"
+msgid "user.home.allconfig.hiddify-managers"
 msgstr "Hiddify 配置"
 
 # | msgid "Clash Configs"
@@ -3023,7 +3023,7 @@ msgstr "为所有网站安装"
 
 # | msgid "Copy the link bellow into your browser."
 #: hiddifypanel/panel/user/templates/home/doh.html:1
-msgid "user.home.tool.doh"
+msgid "user.home.tool.doh.title"
 msgstr "将下面的链接复制到您的浏览器中。"
 
 # | msgid "Copy"
@@ -3137,7 +3137,7 @@ msgstr "所有配置"
 #: hiddifypanel/panel/user/templates/home/home.html:102
 #: hiddifypanel/panel/user/templates/home/index_old.html:91
 #: hiddifypanel/panel/user/templates/home/multi.html:106
-msgid "user.home.speedtest"
+msgid "user.home.speedtest.title"
 msgstr "测速（检测受污染IP）"
 
 # | msgid "DNS Over HTTPS"
@@ -3732,7 +3732,7 @@ msgstr "Telegram"
 
 #: hiddifypanel/templates/admin-layout.html:124
 #: hiddifypanel/templates/donation.html:5
-msgid "Donation"
+msgid "Donation.title"
 msgstr "捐赠"
 
 # | msgid "Status"
@@ -4148,13 +4148,13 @@ msgstr "🔒 启用 TLS 域名前置"
 # | "It is used to simulate another website instead of your website in SNI.
 # therefore, GTW can not filter your Domain\n"
 # | "<a
-# href=\"https://github.com/hiddify/hiddify-config/wiki/Guide-for-domain-fronting\">Guide</a>.
+# href=\"https://github.com/hiddify/hiddify-manager/wiki/Guide-for-domain-fronting\">Guide</a>.
 # ⚠️CloudFlare does not support Domain Fronting. "
 #: hiddifypanel/templates/flaskadmin-layout.html:129
 msgid "domain.domain_fronting.description"
 msgstr ""
 "使用混淆域名代替您的域名，因此防火墙无法封锁您的域名\n"
-"<a href=\"https://github.com/hiddify/hiddify-config/wiki/Guide-for-"
+"<a href=\"https://github.com/hiddify/hiddify-manager/wiki/Guide-for-"
 "domain-fronting\">说明</a>。 ⚠️CloudFlare 不支持域名前置。"
 
 # | msgid "Close"

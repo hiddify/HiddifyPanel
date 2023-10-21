@@ -184,7 +184,7 @@ def _v45():
 
     if not Proxy.query.filter(Proxy.name == "SSH").first():
         db.session.add(Proxy(l3='ssh', transport='ssh', cdn='direct', proto='ssh', enable=True, name="SSH"))
-    add_config_if_not_exist(ConfigEnum.ssh_server_redis_url, "unix:///opt/hiddify-config/other/redis/run.sock?db=1")
+    add_config_if_not_exist(ConfigEnum.ssh_server_redis_url, "unix:///opt/hiddify-manager/other/redis/run.sock?db=1")
     while 1:
         port = random.randint(5000, 40000)
         if port not in [10085, 10086]:
@@ -553,7 +553,7 @@ def latest_db_version():
 
 def upgrade_database():
 
-    panel_root = '/opt/hiddify-server/hiddify-panel/'
+    panel_root = '/opt/hiddify-manager/hiddify-panel/'
     backup_root = f"{panel_root}backup/"
     sqlite_db = f"{panel_root}hiddifypanel.db"
     if not os.path.isdir(backup_root) or len(os.listdir(backup_root)) == 0:
