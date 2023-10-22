@@ -163,7 +163,7 @@ def quick_apply_users():
     #     else:
     #         xray_api.remove_client(user.uuid)
 
-    exec_command("sudo /opt/hiddify-manager/install.sh apply_users &")
+    exec_command("sudo /opt/hiddify-manager/install.sh apply_users --no-gui")
 
     time.sleep(1)
     return {"status": 'success'}
@@ -614,12 +614,13 @@ def generate_x25519_keys():
 
 def get_random_decoy_domain():
     for i in range(10):
-        domains=get_random_domains(10)
+        domains = get_random_domains(10)
         for d in domains:
             if is_domain_use_letsencrypt(d):
                 return d
-    
+
     return "bbc.com"
+
 
 def is_domain_use_letsencrypt(domain):
     """
@@ -635,8 +636,8 @@ def is_domain_use_letsencrypt(domain):
         with context.wrap_socket(sock, server_hostname=website_url) as ssock:
             certificate = ssock.getpeercert()
 
-    issuer = dict(x[0] for x in certificate.get("issuer",[]))
-    
+    issuer = dict(x[0] for x in certificate.get("issuer", []))
+
     return issuer['organizationName'] == "Let's Encrypt"
 
 
