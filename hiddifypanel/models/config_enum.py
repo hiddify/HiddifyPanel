@@ -36,6 +36,7 @@ class ConfigEnum(StrEnum):
     warp_enable = auto()
     warp_mode = auto()
     warp_plus_code = auto()
+    warp_sites = auto()
     dns_server = auto()
     reality_fallback_domain = auto()
     reality_server_names = auto()
@@ -133,6 +134,7 @@ class ConfigEnum(StrEnum):
 
     def info(self):
         map = {
+            self.warp_sites: {'category': ConfigCategory.warp, 'apply_mode': 'apply'},
             self.ssh_server_redis_url: {'category': ConfigCategory.hidden},
             self.reality_port: {'category': ConfigCategory.reality, 'apply_mode': 'apply'},
             self.ssh_server_port: {'category': ConfigCategory.ssh, 'apply_mode': 'apply'},
