@@ -612,6 +612,34 @@ def generate_x25519_keys():
     return {'private_key': priv_str, 'public_key': pub_str}
 
 
+def get_random_decoy_domain():
+    for i in range(10):
+        domains=get_random_domains(10)
+        for d in domains:
+            if is_domain_use_letsencrypt(d):
+                return d
+    
+    return "bbc.com"
+
+def is_domain_use_letsencrypt(domain):
+    """
+    This function is used to filter the payment and big companies to 
+    avoid phishing detection
+    """
+    import ssl
+    import socket
+
+    # Create a socket connection to the website
+    with socket.create_connection((domain, 443)) as sock:
+        context = ssl.create_default_context()
+        with context.wrap_socket(sock, server_hostname=website_url) as ssock:
+            certificate = ssock.getpeercert()
+
+    issuer = dict(x[0] for x in certificate.get("issuer",[]))
+    
+    return issuer['organizationName'] == "Let's Encrypt"
+
+
 def get_hostkeys(dojson=False):
     key_files = glob.glob(current_app.config['HIDDIFY_CONFIG_PATH'] + "/other/ssh/host_key/*_key.pub")
     host_keys = []

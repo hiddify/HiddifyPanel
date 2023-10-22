@@ -329,7 +329,7 @@ def _v1():
         StrConfig(key=ConfigEnum.http_ports, value="80"),
         StrConfig(key=ConfigEnum.tls_ports, value="443"),
         BoolConfig(key=ConfigEnum.first_setup, value=True),
-        StrConfig(key=ConfigEnum.decoy_domain, value=rnd_domains[0]),
+        StrConfig(key=ConfigEnum.decoy_domain, value=hiddify.get_random_decoy_domain()),
         StrConfig(key=ConfigEnum.proxy_path, value=get_random_string()),
         BoolConfig(key=ConfigEnum.firewall, value=False),
         BoolConfig(key=ConfigEnum.netdata, value=True),
