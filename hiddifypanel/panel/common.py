@@ -17,6 +17,7 @@ def init_app(app):
     app.jinja_env.globals['DomainType'] = DomainType
     app.jinja_env.globals['UserMode'] = UserMode
     app.jinja_env.globals['hconfig'] = hconfig
+    app.jinja_env.globals['g'] = g
 
     @app.errorhandler(Exception)
     def internal_server_error(e):
