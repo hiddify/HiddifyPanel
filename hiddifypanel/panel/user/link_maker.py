@@ -93,9 +93,9 @@ def make_proxy(proxy: Proxy, domain_db: Domain, phttp=80, ptls=443, pport=None):
     cdn_forced_host = domain_db.cdn_ip or (domain_db.domain if domain_db.mode != DomainType.reality else hiddify.get_direct_host_or_ip(4))
 
     if 'reality' in proxy.l3:
-        alpn = "h2" if proxy.transport in ['h2'] else 'http/1.1'
+        alpn = "h2" if proxy.transport in ['h2', "grpc"] else 'http/1.1'
     else:
-        alpn = "h2" if proxy.l3 in ['tls_h2', 'grpc'] else 'h2,http/1.1' if proxy.l3 == 'tls_h2_h1' else "http/1.1"
+        alpn = "h2" if proxy.l3 in ['tls_h2'] or proxy.transport in ["grpc", 'h2'] else 'h2,http/1.1' if proxy.l3 == 'tls_h2_h1' else "http/1.1"
 
     if domain_db.mode != DomainType.old_xtls_direct and "tls" in proxy.l3 and proxy.cdn == ProxyCDN.direct and proxy.transport in [ProxyTransport.tcp, ProxyTransport.XTLS]:
         return {'name': name, 'msg': "only  old_xtls_direct  support this", 'type': 'debug', 'proto': proxy.proto}
