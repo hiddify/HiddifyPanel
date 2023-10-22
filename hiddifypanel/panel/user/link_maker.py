@@ -608,7 +608,7 @@ def add_singbox_tls(base, proxy):
 
 
 def add_singbox_transport(base, proxy):
-    if proxy['l3'] == 'reality':
+    if proxy['l3'] == 'reality' and proxy['transport'] not in ["grpc"]:
         return
     base["transport"] = {}
     if proxy['transport'] in ["ws", "WS"]:
