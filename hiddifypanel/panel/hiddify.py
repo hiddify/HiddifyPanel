@@ -350,11 +350,19 @@ def get_ids_without_parent(input_dict):
     return uuids_without_parent
 
 
-def set_db_from_json(json_data, override_child_id=None, set_users=True, set_domains=True, set_proxies=True, set_settings=True, remove_domains=False, remove_users=False, override_unique_id=True, set_admins=True, override_root_admin=False):
+def set_db_from_json(json_data, override_child_id=None, set_users=True, set_domains=True, set_proxies=True, set_settings=True, remove_domains=False, remove_users=False, override_unique_id=True, set_admins=True, override_root_admin=False, replace_owner_admin=False):
     new_rows = []
 
     uuids_without_parent = get_ids_without_parent({u['uuid']: u for u in json_data['admin_users']})
     print('uuids_without_parent===============', uuids_without_parent)
+    if replace_owner_admin and len(uuids_without_parent):
+        new_owner_uuid = uuids_without_parent[0]
+        old_owner = AdminUser.query.filter(AdminUser.id == 1).first()
+        old_uuid_admin = AdminUser.query.filter(AdminUser.uuid == new_owner_uuid).first()
+        if old_owner and not old_uuid_admin:
+            old_owner.uuid = new_owner_uuid
+            db.session.commit()
+
     all_admins = {u.uuid: u for u in AdminUser.query.all()}
     uuids_without_parent = [uuid for uuid in uuids_without_parent if uuid not in all_admins]
     print('uuids_not admin exist===============', uuids_without_parent)

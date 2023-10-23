@@ -578,7 +578,8 @@ def upgrade_database():
                                      override_unique_id=True,
                                      set_admins=True,
                                      override_root_admin=True,
-                                     override_child_id=0
+                                     override_child_id=0,
+                                     replace_owner=True
                                      )
             db_version = int([d['value'] for d in json_data['hconfigs'] if d['key'] == "db_version"][0])
             os.rename(sqlite_db, sqlite_db+".old")
