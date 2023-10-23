@@ -335,33 +335,6 @@ bootbox.confirm({
 }
 %endif
     
-    function replace_info(str) {
-    
-        if (str.includes('vmess://')) {
-            splt = str.split('vmess://')
-            return "vmess://" + btoa(splt[1])
-        }
-
-        if (str.includes('vmess%3A%2F%2F')) {
-            splt = str.split('vmess%3A%2F%2F')
-            return splt[0] + "vmess%3A%2F%2F" + btoa(splt[1])
-        }
-        return str;
-    }
-
-
-    codes = document.getElementsByTagName('code');
-    for (i = 0; i < codes.length; i++) {
-        codes[i].innerHTML = replace_info(codes[i].innerHTML);
-    }
-
-    as = $('a.orig-link');
-    for (i = 0; i < as.length; i++) {
-        //console.log(as[i].href)
-        as[i].href = replace_info(as[i].href);
-        as[i].innerHTML = replace_info(as[i].innerHTML);
-    }
-
     $(function () {
     
     $('#all-links').DataTable({

@@ -195,6 +195,10 @@ def get_config_form():
                 libs = [("python", _("lib.telegram.python")), ("tgo", _("lib.telegram.go")), ("orig", _("lib.telegram.orignal")), ("erlang", _("lib.telegram.erlang"))]
                 field = wtf.fields.SelectField(_("config.telegram_lib.label"), choices=libs, description=_(
                     "config.telegram_lib.description"), default=hconfig(ConfigEnum.telegram_lib))
+            elif c.key == ConfigEnum.warp_sites:
+                validators = [wtf.validators.Length(max=2048)]
+                render_kw = {'class': "ltr", 'maxlength': 2048}
+                field = wtf.fields.TextAreaField(_(f'config.{c.key}.label'), validators, default=c.value, description=_(f'config.{c.key}.description'), render_kw=render_kw)
             elif c.key == ConfigEnum.branding_freetext:
                 validators = [wtf.validators.Length(max=2048)]
                 render_kw = {'class': "ltr", 'maxlength': 2048}

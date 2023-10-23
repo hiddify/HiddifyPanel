@@ -36,6 +36,7 @@ class ConfigEnum(StrEnum):
     warp_enable = auto()
     warp_mode = auto()
     warp_plus_code = auto()
+    warp_sites = auto()
     dns_server = auto()
     reality_fallback_domain = auto()
     reality_server_names = auto()
@@ -133,6 +134,7 @@ class ConfigEnum(StrEnum):
 
     def info(self):
         map = {
+            self.warp_sites: {'category': ConfigCategory.warp, 'apply_mode': 'apply'},
             self.ssh_server_redis_url: {'category': ConfigCategory.hidden},
             self.reality_port: {'category': ConfigCategory.reality, 'apply_mode': 'apply'},
             self.ssh_server_port: {'category': ConfigCategory.ssh, 'apply_mode': 'apply'},
@@ -203,11 +205,11 @@ class ConfigEnum(StrEnum):
             self.telegram_fakedomain: {'category': ConfigCategory.telegram, 'apply_mode': 'apply'},
             self.telegram_lib: {'category': ConfigCategory.telegram, 'apply_mode': 'reinstall'},
 
-            self.v2ray_enable: {'category': ConfigCategory.proxies, 'type': bool, 'apply_mode': 'apply'},
+            self.v2ray_enable: {'category': ConfigCategory.hidden, 'type': bool, 'apply_mode': 'apply'},
 
-            self.ssfaketls_enable: {'category': ConfigCategory.ssfaketls, 'type': bool, 'apply_mode': 'apply'},
+            self.ssfaketls_enable: {'category': ConfigCategory.hidden, 'type': bool, 'apply_mode': 'apply'},
             # ssfaketls_secret:{'category':'ssfaketls'},
-            self.ssfaketls_fakedomain: {'category': ConfigCategory.ssfaketls, 'apply_mode': 'apply'},
+            self.ssfaketls_fakedomain: {'category': ConfigCategory.hidden, 'apply_mode': 'apply'},
 
             self.shadowtls_enable: {'category': ConfigCategory.shadowtls, 'type': bool, 'apply_mode': 'apply'},
             # shadowtls_secret:{'category':'shadowtls'},

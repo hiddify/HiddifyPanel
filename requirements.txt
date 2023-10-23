@@ -22,6 +22,7 @@ flask-restful==0.3.9
 Flask-WTF==1.1.1
 gunicorn==20.1.0
 h2~=4.1.0
+json5==0.9.14
 lastversion==3.3.2
 MarkupSafe==2.0.1
 maxminddb~=2.4.0
@@ -38,6 +39,7 @@ pyyaml~=6.0.1
 redis~=5.0.0
 requests~=2.31.0
 setuptools~=65.5.1
+six==1.16.0
 SQLAlchemy-Utils==0.41.1
 sqlalchemy==1.4.46
 SQLAlchemy-serializer==1.4.1

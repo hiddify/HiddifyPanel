@@ -134,6 +134,10 @@ def init_db():
 #     add_config_if_not_exist(ConfigEnum.hysteria_enable, True)
 #     add_config_if_not_exist(ConfigEnum.hysteria_port, random.randint(5000, 20000))
 
+def _v57():
+    add_config_if_not_exist(ConfigEnum.warp_sites, "")
+
+
 def _v56():
     reality_port = random.randint(20000, 30000)
     set_hconfig(ConfigEnum.reality_port, reality_port)
@@ -329,7 +333,7 @@ def _v1():
         StrConfig(key=ConfigEnum.http_ports, value="80"),
         StrConfig(key=ConfigEnum.tls_ports, value="443"),
         BoolConfig(key=ConfigEnum.first_setup, value=True),
-        StrConfig(key=ConfigEnum.decoy_domain, value=rnd_domains[0]),
+        StrConfig(key=ConfigEnum.decoy_domain, value=hiddify.get_random_decoy_domain()),
         StrConfig(key=ConfigEnum.proxy_path, value=get_random_string()),
         BoolConfig(key=ConfigEnum.firewall, value=False),
         BoolConfig(key=ConfigEnum.netdata, value=True),
@@ -557,7 +561,8 @@ def upgrade_database():
     backup_root = f"{panel_root}backup/"
     sqlite_db = f"{panel_root}hiddifypanel.db"
     if not os.path.isdir(backup_root) or len(os.listdir(backup_root)) == 0:
-        os.rename(sqlite_db, sqlite_db+".old")
+        if os.path.isfile(sqlite_db):
+            os.rename(sqlite_db, sqlite_db+".old")
         print("no backup found...")
         return
     if os.path.isfile(sqlite_db):
@@ -576,7 +581,8 @@ def upgrade_database():
                                      override_unique_id=True,
                                      set_admins=True,
                                      override_root_admin=True,
-                                     override_child_id=0
+                                     override_child_id=0,
+                                     replace_owner_admin=True
                                      )
             db_version = int([d['value'] for d in json_data['hconfigs'] if d['key'] == "db_version"][0])
             os.rename(sqlite_db, sqlite_db+".old")

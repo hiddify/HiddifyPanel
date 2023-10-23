@@ -17,6 +17,7 @@ def init_app(app):
     app.jinja_env.globals['DomainType'] = DomainType
     app.jinja_env.globals['UserMode'] = UserMode
     app.jinja_env.globals['hconfig'] = hconfig
+    app.jinja_env.globals['g'] = g
 
     @app.errorhandler(Exception)
     def internal_server_error(e):
@@ -84,7 +85,7 @@ def init_app(app):
         opts = {
             "user": 'hiddify',
             "repo": 'Hiddify-Manager',
-            "title": f"Internal server error: {e.name}",
+            "title": f"Internal server error: {e}",
             "body": issue_body,
         }
         issue_link = str(github_issue_generator.IssueUrl(opts).get_url())

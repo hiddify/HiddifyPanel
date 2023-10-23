@@ -47,20 +47,24 @@
 %endif
 </div>
 
-% if hconfig(ConfigEnum.branding_site)
+% if hconfig(ConfigEnum.branding_freetext)
 <div class="card small-box bg-green bg-gradient-green bg-h-green">
     <div class="card-body">
         <div class="inner">
+            % if  hconfig(ConfigEnum.branding_title)
             <h3>{{hconfig(ConfigEnum.branding_title) or _('user.home.branding.title')}}</h3>
+            %endif
             <p>{{hconfig(ConfigEnum.branding_freetext)|safe}}</p>
         </div>
         <div class="icon">
             <i class="fa-solid fa-question fa-margin"></i>
         </div>
     </div>
+    % if  hconfig(ConfigEnum.branding_site)
     <a href="{{hconfig(ConfigEnum.branding_site)}}" class="card-footer" target="_blank">
         <i class="fa-solid fa-up-right-from-square"></i> {{_('user.home.branding.linktitle')}}
     </a>
+    %endif    
 
 </div>
 %endif

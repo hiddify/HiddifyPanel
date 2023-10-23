@@ -63,7 +63,20 @@ def all_configs():
 
     configs['hconfigs']['first_setup'] = def_user != None and len(sslip_domains) > 0
 
-    # print(configs)
+    path = f'/{hconfig(ConfigEnum.proxy_path)}/{get_super_admin_secret()}/admin/'
+
+    server_ip = hiddify.get_ip(4)
+    configs['admin_path'] = path
+    configs['panel_links'] = []
+    configs['panel_links'].append(f"http://{server_ip}{path}")
+    configs['panel_links'].append(f"https://{server_ip}{path}")
+    domains = get_panel_domains()
+    if not any([d for d in domains if 'sslip.io' not in d.domain]):
+        configs['panel_links'].append(f"https://{server_ip}{path}")
+
+    for d in domains:
+        configs['panel_links'].append(f"https://{d.domain}{path}")
+
     print(json.dumps(configs, indent=4))
 
 
