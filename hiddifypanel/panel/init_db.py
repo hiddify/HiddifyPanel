@@ -136,6 +136,8 @@ def init_db():
 
 def _v57():
     add_config_if_not_exist(ConfigEnum.warp_sites, "")
+
+
 def _v56():
     reality_port = random.randint(20000, 30000)
     set_hconfig(ConfigEnum.reality_port, reality_port)
@@ -559,7 +561,8 @@ def upgrade_database():
     backup_root = f"{panel_root}backup/"
     sqlite_db = f"{panel_root}hiddifypanel.db"
     if not os.path.isdir(backup_root) or len(os.listdir(backup_root)) == 0:
-        os.rename(sqlite_db, sqlite_db+".old")
+        if os.path.isfile(sqlite_db):
+            os.rename(sqlite_db, sqlite_db+".old")
         print("no backup found...")
         return
     if os.path.isfile(sqlite_db):
