@@ -5,6 +5,8 @@
 
 #### New
 
+* Add admin path to config. 
+
 * Add admin links. 
 
 * Hide incorrect mode proxies. 
@@ -42,6 +44,8 @@
 * Update hiddify next download link. 
 
 #### Fix
+
+* Bug in decoy selector. 
 
 * Bug in clean install. 
 
