@@ -71,8 +71,8 @@ def all_configs():
     configs['panel_links'].append(f"http://{server_ip}{path}")
     configs['panel_links'].append(f"https://{server_ip}{path}")
     domains = get_panel_domains()
-    if not any([d for d in domains if 'sslip.io' not in d.domain]):
-        configs['panel_links'].append(f"https://{server_ip}{path}")
+    # if not any([d for d in domains if 'sslip.io' not in d.domain]):
+    #     configs['panel_links'].append(f"https://{server_ip}{path}")
 
     for d in domains:
         configs['panel_links'].append(f"https://{d.domain}{path}")
