@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-14 09:21+0200\n"
-"PO-Revision-Date: 2023-10-14 02:16-0500\n"
+"POT-Creation-Date: 2023-10-23 11:52+0200\n"
+"PO-Revision-Date: 2023-10-19 11:41-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -30,7 +30,7 @@ msgid "Access Denied"
 msgstr "拒绝访问"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/panel/hiddify.py:176
+#: hiddifypanel/panel/hiddify.py:177
 msgid "admin.config.apply_configs"
 msgstr "应用配置"
 
@@ -38,12 +38,12 @@ msgstr "应用配置"
 # | "Configs have been changed successfully. Click %(link)s to apply the
 # configs."
 # | " It may take 2 minutes to apply"
-#: hiddifypanel/panel/hiddify.py:177
+#: hiddifypanel/panel/hiddify.py:178
 msgid "config.validation-success"
 msgstr "配置已成功更改。单击 %(link)s 以应用配置。应用可能需要 2 分钟。"
 
 # | msgid " ✅ Configs have been changed successfully"
-#: hiddifypanel/panel/hiddify.py:179
+#: hiddifypanel/panel/hiddify.py:180
 msgid "config.validation-success-no-reset"
 msgstr " ✅ 配置已成功更改"
 
@@ -57,12 +57,12 @@ msgstr " ✅ 配置已成功更改"
 #: hiddifypanel/panel/admin/DomainAdmin.py:172
 #: hiddifypanel/panel/admin/QuickSetup.py:127
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:107
-#: hiddifypanel/panel/hiddify.py:270
+#: hiddifypanel/panel/hiddify.py:269
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr "域名无法解析！你的域名有问题。请检查你的域名配置。"
 
 # | msgid "Last Day"
-#: hiddifypanel/panel/hiddify.py:302
+#: hiddifypanel/panel/hiddify.py:301
 msgid "0 - Last day"
 msgstr "最后一天"
 
@@ -70,7 +70,7 @@ msgstr "最后一天"
 # | "Selected Domain for REALITY is not in the same ASN. To better use of the
 # "
 # | "Protocol, it is better to find a Domain in the same ASN"
-#: hiddifypanel/panel/hiddify.py:590
+#: hiddifypanel/panel/hiddify.py:594
 msgid ""
 "selected domain for REALITY is not in the same ASN. To better use of the "
 "protocol, it is better to find a domain in the same ASN."
@@ -251,7 +251,7 @@ msgstr "当前用户将获取管理员权限"
 #: hiddifypanel/panel/admin/ProxyAdmin.py:128
 #: hiddifypanel/panel/admin/QuickSetup.py:85
 #: hiddifypanel/panel/admin/QuickSetup.py:118
-#: hiddifypanel/panel/admin/SettingAdmin.py:265
+#: hiddifypanel/panel/admin/SettingAdmin.py:269
 msgid "Submit"
 msgstr "提交"
 
@@ -260,7 +260,7 @@ msgstr "提交"
 # will "
 # | "run into problems. Please visit <a "
 # |
-# "href=\"https://github.com/hiddify/hiddify-manager/wiki/راهنمای-تنظیم-دامنه-و-"
+# "href=\"https://github.com/hiddify/hiddify-config/wiki/راهنمای-تنظیم-دامنه-و-"
 # | "نهایی-کردن-نصب#آموزش-ساخت-زیردامنه\"> Help</a> to learn how to create a "
 # | "subdomain."
 #: hiddifypanel/panel/admin/ChildAdmin.py:32
@@ -405,7 +405,7 @@ msgstr "子节点已被删除！"
 # domain is returned.<br>\n"
 # | "♾️ <b>Relay:</b> Select this mode if you are using one or more
 # Intermediary servers. <a
-# href=\"https://github.com/hiddify/hiddify-manager/discussions/129\"
+# href=\"https://github.com/hiddify/hiddify-config/discussions/129\"
 # target=\"_blank\">Read More</a>\n"
 # | "✴️ <b>Cloudflare Worker:</b> This mode enables automatic creation of
 # workers for your domain in Cloudflare. Simplify the setup and management of
@@ -429,7 +429,7 @@ msgstr ""
 " target=\"_blank\"> ircf.space </a>提供的 IP 的来自动优选 CDN IP。 在自动优选 CDN IP "
 "模式下，从域名解析 IP 地址；在CDN 模式下，只返回域名。<br>\n"
 "♾️ <b>中继模式：</b>如果您使用一个或多个中间服务器，请选择此模式。 <a "
-"href=\"https://github.com/hiddify/hiddify-manager/discussions/129\" "
+"href=\"https://github.com/hiddify/hiddify-config/discussions/129\" "
 "target=\"_blank\">阅读更多</a>\n"
 "<br>\n"
 "✴️ <b>Cloudflare Worker：</b>此模式可以在 Cloudflare 中自动为您的域名创建 "
@@ -685,16 +685,16 @@ msgstr "它根据不同国家/地区的网络封锁情况，为该国家/地区�
 # | msgid "Error! Invalid Domain.  The Domain Format is www.google.com"
 #: hiddifypanel/panel/admin/QuickSetup.py:104
 #: hiddifypanel/panel/admin/QuickSetup.py:117
-#: hiddifypanel/panel/admin/SettingAdmin.py:206
-#: hiddifypanel/panel/admin/SettingAdmin.py:209
+#: hiddifypanel/panel/admin/SettingAdmin.py:210
+#: hiddifypanel/panel/admin/SettingAdmin.py:213
 msgid "config.Invalid domain"
 msgstr "错误！域名无效。域名格式为 www.google.com"
 
 # | msgid "Domain is exist in domains section. Use another Domain"
 #: hiddifypanel/panel/admin/QuickSetup.py:106
 #: hiddifypanel/panel/admin/QuickSetup.py:108
-#: hiddifypanel/panel/admin/SettingAdmin.py:213
-#: hiddifypanel/panel/admin/SettingAdmin.py:215
+#: hiddifypanel/panel/admin/SettingAdmin.py:217
+#: hiddifypanel/panel/admin/SettingAdmin.py:219
 msgid "config.Domain already used"
 msgstr "域名已存在于域名部分。请使用另一个域名"
 
@@ -835,37 +835,37 @@ msgid "config.telegram_lib.description"
 msgstr "您可以在不同的 Telegram 库之间切换。请注意，只有 Python 可以在所有服务器上运行，其他服务器可能会出现一些问题。更改后请测试代理。"
 
 # | msgid "Invalid Admin Link"
-#: hiddifypanel/panel/admin/SettingAdmin.py:226
+#: hiddifypanel/panel/admin/SettingAdmin.py:230
 msgid "Invalid admin link"
 msgstr "管理员链接无效"
 
 # | msgid "Invalid Telegram Bot Token"
-#: hiddifypanel/panel/admin/SettingAdmin.py:228
+#: hiddifypanel/panel/admin/SettingAdmin.py:232
 msgid "config.Invalid telegram bot token"
 msgstr "无效的 Telegram 机器人 Token"
 
 # | msgid ""
 # | "Invalid Link. it should be on this format: (https or http://example.com)"
-#: hiddifypanel/panel/admin/SettingAdmin.py:230
+#: hiddifypanel/panel/admin/SettingAdmin.py:234
 msgid "config.Invalid brand link"
 msgstr "无效的链接。它应该采用以下格式：（https 或 http://example.com）"
 
 # | msgid ""
 # | "Invalid UUID secret. example: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n"
 # | "\n"
-#: hiddifypanel/panel/admin/SettingAdmin.py:235
+#: hiddifypanel/panel/admin/SettingAdmin.py:239
 msgid "config.invalid uuid"
 msgstr "UUID 无效。示例：6098ea35-8cb2-4a08-ba15-2be25bc49cb6"
 
 # | msgid "Invalid Proxy Path. It should be ASCI string (a-z A-Z 0-9)"
-#: hiddifypanel/panel/admin/SettingAdmin.py:239
+#: hiddifypanel/panel/admin/SettingAdmin.py:243
 msgid "config.Invalid proxy path"
 msgstr "代理路径无效。它应该是 ASCI 码字符串 (a-z A-Z 0-9)"
 
 # | msgid ""
 # | "Invalid Port. it should be comma separated Integer e.g.  2052,2053"
-#: hiddifypanel/panel/admin/SettingAdmin.py:244
-#: hiddifypanel/panel/admin/SettingAdmin.py:247
+#: hiddifypanel/panel/admin/SettingAdmin.py:248
+#: hiddifypanel/panel/admin/SettingAdmin.py:251
 msgid "config.Invalid port"
 msgstr "无效端口。它应该是逗号分隔的整数，例如 2052,2053"
 
@@ -991,7 +991,7 @@ msgstr "备份"
 # | "🔄 Hiddify Panel automatically takes a Backup every 6 Hours. The path of
 # the Backup files on the server: ⬇️\n"
 # | "<br>\n"
-# | "/opt/hiddify-manager/hiddify-panel/backup\n"
+# | "/opt/hiddify-config/hiddify-panel/backup\n"
 # | "⚠️ You can download a JSON file format of the configurations by clicking
 # on the button below\n"
 # | "<a href='%(link)s' class='btn btn-primary'>Download Backup File</a>"
@@ -1003,7 +1003,7 @@ msgid ""
 msgstr ""
 "🔄 Hiddify Panel 每 6 小时自动进行一次备份。备份文件在服务器上的路径：⬇️\n"
 "<br>\n"
-"/opt/hiddify-manager/hiddify-panel/backup\n"
+"/opt/hiddify-config/hiddify-panel/backup\n"
 "<br>\n"
 "<br>\n"
 "<br>\n"
@@ -1350,7 +1350,7 @@ msgstr "它用于将您的网站在 SNI 中伪装成另一个网站。这样防�
 # | "It is used to simulate another website instead of your website in SNI.
 # therefore, GTW can not filter your Domain\n"
 # | "<a
-# href=\"https://github.com/hiddify/hiddify-manager/wiki/%D8%A7%D8%B3%D8%AA%D9%81%D8%A7%D8%AF%D9%87-%D8%A7%D8%B2-%D8%AF%D8%A7%D9%85%DB%8C%D9%86-%D9%81%D8%B1%D8%A7%D9%86%D8%AA%DB%8C%D9%86%DA%AF\">Guide</a>.
+# href=\"https://github.com/hiddify/hiddify-config/wiki/%D8%A7%D8%B3%D8%AA%D9%81%D8%A7%D8%AF%D9%87-%D8%A7%D8%B2-%D8%AF%D8%A7%D9%85%DB%8C%D9%86-%D9%81%D8%B1%D8%A7%D9%86%D8%AA%DB%8C%D9%86%DA%AF\">Guide</a>.
 # ⚠️CloudFlare does not support Domain Fronting. "
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:2
@@ -1798,14 +1798,14 @@ msgstr "🔑 Cloudflare API"
 
 # | msgid ""
 # | "Please follow <a
-# href=\"https://github.com/hiddify/hiddify-manager/wiki/Get-"
+# href=\"https://github.com/hiddify/hiddify-config/wiki/Get-"
 # | "Cloudflare-API\" target=\"_blank\">the instruction</a> and paste the "
 # | "Cloudflare API Key"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.cloudflare.description"
 msgstr ""
-"请按照<a href=\"https://github.com/hiddify/hiddify-manager/wiki/Get-"
+"请按照<a href=\"https://github.com/hiddify/hiddify-config/wiki/Get-"
 "Cloudflare-API\" target=\"_blank\">说明</a>粘贴 Cloudflare API 密钥"
 
 # | msgid "Very Advanced Settings"
@@ -1821,7 +1821,7 @@ msgstr "专家设置"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:2
 msgid "config.too_advanced.description"
-msgstr "指定代理路径。如果您使用 HTTP 和 VMESS，这一点尤其重要。"
+msgstr "指定代理路径。如果您使用 HTTP 和 VMess，这一点尤其重要。"
 
 # | msgid "🔑 WARP Plus Key"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -2432,7 +2432,7 @@ msgstr "✅ 操作已完成。您现在可以离开此页面。"
 # | "<br>\n"
 # | "2️⃣ If you want to lessen the probability of having dirty IP, you can add
 # Multiple Relay Server <a
-# href=\"https://github.com/hiddify/hiddify-manager/discussions/129\">Read
+# href=\"https://github.com/hiddify/hiddify-config/discussions/129\">Read
 # More</a>.\n"
 # | "3️⃣ If you have Multiple IPv4 or IPv6 in your Panel you have to add the
 # domain pointed to them as Relay."
@@ -2444,7 +2444,7 @@ msgstr ""
 "1️⃣ 在此处，您可以添加您的域名。\n"
 "<br>\n"
 "2️⃣ 如果您想减少脏 IP 的可能性，您可以添加多个中继服务器<a href=\"https://github.com/hiddify"
-"/hiddify-manager/discussions/129\">阅读更多</a>。\n"
+"/hiddify-config/discussions/129\">阅读更多</a>。\n"
 "<br>\n"
 "3️⃣ 如果您的面板中有多个 IPv4 或 IPv6，则必须将指向它们的域名添加为中继域名。"
 
@@ -2590,7 +2590,7 @@ msgid "admin.config.title"
 msgstr "设置"
 
 # | msgid "📅%(expire_days)s Days Remain"
-#: hiddifypanel/panel/user/link_maker.py:775
+#: hiddifypanel/panel/user/link_maker.py:778
 #, python-format
 msgid "📅%(expire_days)s days"
 msgstr "📅剩余：%(expire_days)s 天"
@@ -2688,11 +2688,10 @@ msgstr "全部"
 msgid "auto"
 msgstr "自动"
 
-# | msgid "Hiddify Configs"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:48
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:19
 msgid "user.home.allconfig.hiddify-managers"
-msgstr "Hiddify 配置"
+msgstr ""
 
 # | msgid "Clash Configs"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:61
@@ -3021,10 +3020,9 @@ msgstr ""
 msgid "user.home.clash_configs.all_sites.btn"
 msgstr "为所有网站安装"
 
-# | msgid "Copy the link bellow into your browser."
 #: hiddifypanel/panel/user/templates/home/doh.html:1
 msgid "user.home.tool.doh.title"
-msgstr "将下面的链接复制到您的浏览器中。"
+msgstr ""
 
 # | msgid "Copy"
 #: hiddifypanel/panel/user/templates/home/doh.html:8
@@ -3137,7 +3135,7 @@ msgstr "所有配置"
 #: hiddifypanel/panel/user/templates/home/home.html:102
 #: hiddifypanel/panel/user/templates/home/index_old.html:91
 #: hiddifypanel/panel/user/templates/home/multi.html:106
-msgid "user.home.speedtest.title"
+msgid "user.home.speedtest"
 msgstr "测速（检测受污染IP）"
 
 # | msgid "DNS Over HTTPS"
@@ -3158,7 +3156,7 @@ msgstr "请选择项目。"
 #: hiddifypanel/panel/user/templates/home/home.html:136
 #: hiddifypanel/panel/user/templates/home/index_old.html:125
 #: hiddifypanel/panel/user/templates/home/multi.html:138
-#: hiddifypanel/panel/user/templates/home/usage.html:71
+#: hiddifypanel/panel/user/templates/home/usage.html:75
 msgid "QR code"
 msgstr "🧾 二维码"
 
@@ -3169,7 +3167,7 @@ msgstr "🧾 二维码"
 #: hiddifypanel/panel/user/templates/home/home.html:137
 #: hiddifypanel/panel/user/templates/home/index_old.html:126
 #: hiddifypanel/panel/user/templates/home/multi.html:139
-#: hiddifypanel/panel/user/templates/home/usage.html:72
+#: hiddifypanel/panel/user/templates/home/usage.html:76
 msgid "user.home.qr-code.description"
 msgstr "要复制或共享链接，请点击以下灰色<i class='fa-solid fa-qrcode'></i>字段以显示二维码。"
 
@@ -3177,7 +3175,7 @@ msgstr "要复制或共享链接，请点击以下灰色<i class='fa-solid fa-qr
 #: hiddifypanel/panel/user/templates/home/home.html:145
 #: hiddifypanel/panel/user/templates/home/index_old.html:134
 #: hiddifypanel/panel/user/templates/home/multi.html:147
-#: hiddifypanel/panel/user/templates/home/usage.html:79
+#: hiddifypanel/panel/user/templates/home/usage.html:83
 msgid "user.home.qr-code.display"
 msgstr "显示二维码"
 
@@ -3199,35 +3197,35 @@ msgid ""
 msgstr "请将您的 Telegram 帐户连接到面板以获取您订阅的最新消息。"
 
 # | msgid "Next"
-#: hiddifypanel/panel/user/templates/home/home.html:374
+#: hiddifypanel/panel/user/templates/home/home.html:349
 #: hiddifypanel/panel/user/templates/home/index_old.html:344
-#: hiddifypanel/panel/user/templates/home/multi.html:376
+#: hiddifypanel/panel/user/templates/home/multi.html:349
 msgid "next"
 msgstr "下一个"
 
 # | msgid "Previous"
-#: hiddifypanel/panel/user/templates/home/home.html:375
+#: hiddifypanel/panel/user/templates/home/home.html:350
 #: hiddifypanel/panel/user/templates/home/index_old.html:345
-#: hiddifypanel/panel/user/templates/home/multi.html:377
+#: hiddifypanel/panel/user/templates/home/multi.html:350
 msgid "previous"
 msgstr "上一个"
 
 # | msgid "Search"
-#: hiddifypanel/panel/user/templates/home/home.html:385
+#: hiddifypanel/panel/user/templates/home/home.html:360
 #: hiddifypanel/panel/user/templates/home/index_old.html:355
-#: hiddifypanel/panel/user/templates/home/multi.html:387
+#: hiddifypanel/panel/user/templates/home/multi.html:360
 msgid "search"
 msgstr "搜索"
 
 # | msgid "Check Again"
-#: hiddifypanel/panel/user/templates/home/home.html:419
-#: hiddifypanel/panel/user/templates/home/multi.html:421
+#: hiddifypanel/panel/user/templates/home/home.html:394
+#: hiddifypanel/panel/user/templates/home/multi.html:394
 msgid "Check again"
 msgstr "重新检查"
 
 # | msgid "Turn Off VPN"
-#: hiddifypanel/panel/user/templates/home/home.html:422
-#: hiddifypanel/panel/user/templates/home/multi.html:424
+#: hiddifypanel/panel/user/templates/home/home.html:397
+#: hiddifypanel/panel/user/templates/home/multi.html:397
 msgid "Turn of VPN"
 msgstr "关闭 VPN"
 
@@ -3235,8 +3233,8 @@ msgstr "关闭 VPN"
 # | "You Should Visit This Page Without VPN To Use Auto CDN IP.\n"
 # | "<br>\n"
 # | "Your Country = %(your_country)s"
-#: hiddifypanel/panel/user/templates/home/home.html:422
-#: hiddifypanel/panel/user/templates/home/multi.html:424
+#: hiddifypanel/panel/user/templates/home/home.html:397
+#: hiddifypanel/panel/user/templates/home/multi.html:397
 #, python-format
 msgid ""
 "You should visit this page without VPN. Your country=%(your_country)s "
@@ -3537,7 +3535,7 @@ msgstr "用户未激活"
 # | msgid "Too Many Connected IPs"
 #: hiddifypanel/panel/user/templates/home/usage.html:29
 msgid "Too many Connected IPs"
-msgstr "连接的 IP 数太多"
+msgstr "连接的 IP 数过多"
 
 #: hiddifypanel/panel/user/templates/home/usage.html:41
 msgid "View in Telegram"
@@ -3549,12 +3547,12 @@ msgid "user.home.usage.details"
 msgstr "显示使用详情。"
 
 # | msgid "Support"
-#: hiddifypanel/panel/user/templates/home/usage.html:54
+#: hiddifypanel/panel/user/templates/home/usage.html:55
 msgid "user.home.branding.title"
 msgstr "支持"
 
 # | msgid "Support Page Link"
-#: hiddifypanel/panel/user/templates/home/usage.html:62
+#: hiddifypanel/panel/user/templates/home/usage.html:65
 msgid "user.home.branding.linktitle"
 msgstr "支持页面链接"
 
@@ -3662,10 +3660,9 @@ msgstr ""
 msgid "Oops! Something went wrong."
 msgstr "哎呀！ 出了些问题。"
 
-# | msgid "Please contact info@hiddify.com with the details in this page"
 #: hiddifypanel/templates/500.html:12
-msgid "Please contact hiddify@gmail.com with the details in this page."
-msgstr "请使用本页中的详细信息联系 hiddify@gmail.com。"
+msgid "Please create an issue on Github."
+msgstr ""
 
 # | msgid "Hiddify Panel"
 #: hiddifypanel/templates/admin-layout.html:18
@@ -3733,7 +3730,7 @@ msgstr "Telegram"
 #: hiddifypanel/templates/admin-layout.html:124
 #: hiddifypanel/templates/donation.html:5
 msgid "Donation.title"
-msgstr "捐赠"
+msgstr ""
 
 # | msgid "Status"
 #: hiddifypanel/templates/admin-layout.html:148
@@ -3966,6 +3963,14 @@ msgstr ""
 "<br>\n"
 "📦 Singbox：由 SagerNet 开发。这也是一个很好的核心"
 
+#: hiddifypanel/templates/fake.html:1
+msgid "config.warp_sites.label"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.warp_sites.description"
+msgstr ""
+
 # | msgid "🖥 DNS Server"
 #: hiddifypanel/templates/fake.html:1
 msgid "config.dns_server.label"
@@ -4052,7 +4057,7 @@ msgstr "config.hidden.description"
 # | msgid "➡️ Direct"
 #: hiddifypanel/templates/fake.html:3
 msgid "direct"
-msgstr "➡️直连"
+msgstr "➡️ 直连"
 
 # | msgid "📳 Only for Subscription Link (can be Direct, Relay, or CDN)"
 #: hiddifypanel/templates/fake.html:3
@@ -4067,7 +4072,7 @@ msgstr "🔀 CDN（Cloudflare 代理，...）"
 # | msgid "☑️ Automatic CDN IP Selector"
 #: hiddifypanel/templates/fake.html:3
 msgid "auto_cdn_ip"
-msgstr "☑️ 自动 CDN IP 选择器"
+msgstr "☑️ 自动优选 CDN IP"
 
 # | msgid "♾️ Relay (Connect Using an Intermediate Node)"
 #: hiddifypanel/templates/fake.html:3
@@ -4092,7 +4097,7 @@ msgstr "✴️ Cloudflare Worker"
 # | msgid "🆎 Fake Site"
 #: hiddifypanel/templates/fake.html:3
 msgid "fake"
-msgstr "🆎 假网站"
+msgstr "🆎 伪装"
 
 # | msgid "⭐️ Without Reset"
 #: hiddifypanel/templates/fake.html:4
@@ -4102,17 +4107,17 @@ msgstr "⭐️ 不重设"
 # | msgid "🗓️ Monthly"
 #: hiddifypanel/templates/fake.html:4
 msgid "monthly"
-msgstr "🗓️每月"
+msgstr "🗓️ 每月"
 
 # | msgid "📅 Weekly"
 #: hiddifypanel/templates/fake.html:4
 msgid "weekly"
-msgstr "📅每周"
+msgstr "📅 每周"
 
 # | msgid "⏰ Daily"
 #: hiddifypanel/templates/fake.html:4
 msgid "daily"
-msgstr "⏰每日"
+msgstr "⏰ 每日"
 
 # | msgid "➖ Direct"
 #: hiddifypanel/templates/flaskadmin-layout.html:56
@@ -4132,7 +4137,7 @@ msgstr "➖ 桥接服务器"
 # | msgid "➖ Fake"
 #: hiddifypanel/templates/flaskadmin-layout.html:59
 msgid "Fake"
-msgstr "➖ 假的"
+msgstr "➖ 伪装"
 
 # | msgid "Test and Suggest Domain "
 #: hiddifypanel/templates/flaskadmin-layout.html:124
@@ -4148,13 +4153,13 @@ msgstr "🔒 启用 TLS 域名前置"
 # | "It is used to simulate another website instead of your website in SNI.
 # therefore, GTW can not filter your Domain\n"
 # | "<a
-# href=\"https://github.com/hiddify/hiddify-manager/wiki/Guide-for-domain-fronting\">Guide</a>.
+# href=\"https://github.com/hiddify/hiddify-config/wiki/Guide-for-domain-fronting\">Guide</a>.
 # ⚠️CloudFlare does not support Domain Fronting. "
 #: hiddifypanel/templates/flaskadmin-layout.html:129
 msgid "domain.domain_fronting.description"
 msgstr ""
 "使用混淆域名代替您的域名，因此防火墙无法封锁您的域名\n"
-"<a href=\"https://github.com/hiddify/hiddify-manager/wiki/Guide-for-"
+"<a href=\"https://github.com/hiddify/hiddify-config/wiki/Guide-for-"
 "domain-fronting\">说明</a>。 ⚠️CloudFlare 不支持域名前置。"
 
 # | msgid "Close"
@@ -4259,6 +4264,14 @@ msgstr "动作"
 #~ msgid "config.http_proxy.description"
 #~ msgstr "通过允许该选项，您的用户可以使用未加密的 HTTP 端口连接到系统。 （不建议）"
 
+# | msgid "Hiddify Configs"
+#~ msgid "user.home.allconfig.hiddify-configs"
+#~ msgstr "Hiddify 配置"
+
+# | msgid "Copy the link bellow into your browser."
+#~ msgid "user.home.tool.doh"
+#~ msgstr "将下面的链接复制到您的浏览器中。"
+
 # | msgid "Protocol Usage Chart"
 #~ msgid "admin.protocol_chart"
 #~ msgstr "协议使用情况图表"
@@ -4359,6 +4372,9 @@ msgstr "动作"
 #~ msgid "Error!!!"
 #~ msgstr "错误！！！"
 
+#~ msgid "Donation"
+#~ msgstr "捐赠"
+
 # | msgid ""
 # | "Domain (%(domain)s)-> IP = %(domain_ip)s is not same as your IP = "
 # | "%(server_ip)s . this is required in Direct Mode"
@@ -4369,6 +4385,10 @@ msgstr "动作"
 #~ msgstr ""
 #~ "域名 (%(domain)s)-> IP=%(domain_ip)s 与您的 "
 #~ "IP=%(server_ip)s 不匹配，这在直连模式下是必需的。"
+
+# | msgid "Please contact info@hiddify.com with the details in this page"
+#~ msgid "Please contact hiddify@gmail.com with the details in this page."
+#~ msgstr "请使用本页中的详细信息联系 hiddify@gmail.com。"
 
 # | msgid "Check Usage"
 #~ msgid "User usage update"
