@@ -87,7 +87,9 @@ dev:          ## Create a new tag for release.
 	@git push -u origin HEAD
 .PHONY: release
 release:          ## Create a new tag for release.
-	@echo "previous version was $$(git describe --tags $$(git rev-list --tags --max-count=1))"
+	@echo "previous tag was $$(git describe --tags $$(git rev-list --tags --max-count=1))"
+	@echo "release last version $(lastversion hiddifypanel)"
+	@echo "beta last version $(lastversion --pre hiddifypanel)"
 	@echo "WARNING: This operation will create s version tag and push to github"
 	@read -p "Version? (provide the next x.y.z semver) : " TAG	
 	@echo "$${TAG}" > hiddifypanel/VERSION
