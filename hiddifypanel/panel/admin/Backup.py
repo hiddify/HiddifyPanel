@@ -47,9 +47,11 @@ class Backup(FlaskView):
 
     @hiddify.super_admin
     def post(self):
+
         restore_form = get_restore_form()
 
         if restore_form.validate_on_submit():
+            set_hconfig(ConfigEnum.first_setup, False)
             file = restore_form.restore_file.data
             json_data = json.load(file)
 

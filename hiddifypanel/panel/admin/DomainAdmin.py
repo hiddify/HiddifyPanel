@@ -256,6 +256,8 @@ class DomainAdmin(AdminLTEModelView):
         pass
 
     def after_model_change(self, form, model, is_created):
+        if hconfig(ConfigEnum.first_setup):
+            set_hconfig(ConfigEnum.first_setup, False)
         # if hconfig(ConfigEnum.parent_panel):
         #     hiddify_api.sync_child_to_parent()
         if model.mode in [DomainType.direct, DomainType.cdn, DomainType.worker, DomainType.relay, DomainType.auto_cdn_ip, DomainType.old_xtls_direct, DomainType.sub_link_only]:
