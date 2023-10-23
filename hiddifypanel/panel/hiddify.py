@@ -641,7 +641,7 @@ def is_domain_use_letsencrypt(domain):
     # Create a socket connection to the website
     with socket.create_connection((domain, 443)) as sock:
         context = ssl.create_default_context()
-        with context.wrap_socket(sock, server_hostname=website_url) as ssock:
+        with context.wrap_socket(sock, server_hostname=domain) as ssock:
             certificate = ssock.getpeercert()
 
     issuer = dict(x[0] for x in certificate.get("issuer", []))
