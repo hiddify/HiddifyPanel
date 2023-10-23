@@ -45,6 +45,10 @@
 
 #### Fix
 
+* Admin link. 
+
+* Admin link bug. 
+
 * Bug in decoy selector. 
 
 * Bug in clean install. 
