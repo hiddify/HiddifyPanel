@@ -199,7 +199,7 @@ def init_app(app):
         issue_body = f"""
 # Bug:
 **Description**:     "Describe your problem"
-ی
+
 ## Details:
 **Hiddify Version**: {gd['hiddify_version']}
 **Python Version**:  {gd['python_version']}
