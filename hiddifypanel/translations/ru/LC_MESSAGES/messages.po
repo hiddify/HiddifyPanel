@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPT\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-23 16:22+0200\n"
+"POT-Creation-Date: 2023-10-24 00:30+0200\n"
 "PO-Revision-Date: 2023-10-19 07:25-0500\n"
 "Last-Translator: lymanrudni\n"
 "Language: ru\n"
@@ -209,58 +209,58 @@ msgid "Owner can not be deleted!"
 msgstr "Владелец не может быть удален!"
 
 # | msgid "Config file is incorrect."
-#: hiddifypanel/panel/admin/Backup.py:73
+#: hiddifypanel/panel/admin/Backup.py:75
 msgid "Config file is incorrect"
 msgstr "Конфигурационный файл неверен"
 
-#: hiddifypanel/panel/admin/Backup.py:79
+#: hiddifypanel/panel/admin/Backup.py:81
 msgid "Restore File"
 msgstr "Восстановить файл"
 
 # | msgid "Choose the downloaded restore file"
-#: hiddifypanel/panel/admin/Backup.py:79
+#: hiddifypanel/panel/admin/Backup.py:81
 msgid "Restore File Description"
 msgstr "Выберите загруженный файл бекапа."
 
 # | msgid "⚙️ Restore Settings"
-#: hiddifypanel/panel/admin/Backup.py:80
+#: hiddifypanel/panel/admin/Backup.py:82
 msgid "Restore Settings"
 msgstr "⚙️ Восстановить настройки"
 
 # | msgid "Restore all settings description"
-#: hiddifypanel/panel/admin/Backup.py:80
+#: hiddifypanel/panel/admin/Backup.py:82
 msgid "Restore Settings description"
 msgstr "Восстановить все описания настроек"
 
 # | msgid "👥 Restore Users"
-#: hiddifypanel/panel/admin/Backup.py:81
+#: hiddifypanel/panel/admin/Backup.py:83
 msgid "Restore Users"
 msgstr "👥 Восстановление пользователей"
 
 # | msgid "Select this option to restore All Users"
-#: hiddifypanel/panel/admin/Backup.py:81
+#: hiddifypanel/panel/admin/Backup.py:83
 msgid "Restore Users description"
 msgstr "Выберите этот вариант, чтобы восстановить всех пользователей"
 
 # | msgid "🌏 Restore Domain"
-#: hiddifypanel/panel/admin/Backup.py:82
+#: hiddifypanel/panel/admin/Backup.py:84
 msgid "Restore Domain"
 msgstr "🌏 Восстановить домен"
 
 # | msgid "Select this option to restore your domains"
-#: hiddifypanel/panel/admin/Backup.py:82
+#: hiddifypanel/panel/admin/Backup.py:84
 msgid "Restore Domain description"
 msgstr "Выберите этот вариант, чтобы восстановить ваши домены"
 
-#: hiddifypanel/panel/admin/Backup.py:83
+#: hiddifypanel/panel/admin/Backup.py:85
 msgid "Override Root Admin"
 msgstr "Переопределение администратора"
 
-#: hiddifypanel/panel/admin/Backup.py:83
+#: hiddifypanel/panel/admin/Backup.py:85
 msgid "It will override the root admin to the current user"
 msgstr "Переопределение прав администратора на текущего пользователя"
 
-#: hiddifypanel/panel/admin/Backup.py:84
+#: hiddifypanel/panel/admin/Backup.py:86
 #: hiddifypanel/panel/admin/ProxyAdmin.py:97
 #: hiddifypanel/panel/admin/ProxyAdmin.py:128
 #: hiddifypanel/panel/admin/QuickSetup.py:85

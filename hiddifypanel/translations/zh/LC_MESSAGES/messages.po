@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-23 16:22+0200\n"
+"POT-Creation-Date: 2023-10-24 00:30+0200\n"
 "PO-Revision-Date: 2023-10-19 11:41-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
@@ -195,58 +195,58 @@ msgid "Owner can not be deleted!"
 msgstr "不能删除所有者！"
 
 # | msgid "Config file is incorrect."
-#: hiddifypanel/panel/admin/Backup.py:73
+#: hiddifypanel/panel/admin/Backup.py:75
 msgid "Config file is incorrect"
 msgstr "配置文件不正确。"
 
-#: hiddifypanel/panel/admin/Backup.py:79
+#: hiddifypanel/panel/admin/Backup.py:81
 msgid "Restore File"
 msgstr "恢复文件"
 
 # | msgid "Choose the downloaded restore file"
-#: hiddifypanel/panel/admin/Backup.py:79
+#: hiddifypanel/panel/admin/Backup.py:81
 msgid "Restore File Description"
 msgstr "选择下载的恢复文件。"
 
 # | msgid "⚙️ Restore Settings"
-#: hiddifypanel/panel/admin/Backup.py:80
+#: hiddifypanel/panel/admin/Backup.py:82
 msgid "Restore Settings"
 msgstr "⚙️ 恢复设置"
 
 # | msgid "Restore all settings description"
-#: hiddifypanel/panel/admin/Backup.py:80
+#: hiddifypanel/panel/admin/Backup.py:82
 msgid "Restore Settings description"
 msgstr "恢复设置说明"
 
 # | msgid "👥 Restore Users"
-#: hiddifypanel/panel/admin/Backup.py:81
+#: hiddifypanel/panel/admin/Backup.py:83
 msgid "Restore Users"
 msgstr "👥 恢复用户"
 
 # | msgid "Select this option to restore All Users"
-#: hiddifypanel/panel/admin/Backup.py:81
+#: hiddifypanel/panel/admin/Backup.py:83
 msgid "Restore Users description"
 msgstr "选择此选项以恢复所有用户"
 
 # | msgid "🌏 Restore Domain"
-#: hiddifypanel/panel/admin/Backup.py:82
+#: hiddifypanel/panel/admin/Backup.py:84
 msgid "Restore Domain"
 msgstr "🌏 还原域名"
 
 # | msgid "Select this option to restore your domains"
-#: hiddifypanel/panel/admin/Backup.py:82
+#: hiddifypanel/panel/admin/Backup.py:84
 msgid "Restore Domain description"
 msgstr "选择此选项以恢复您的域名"
 
-#: hiddifypanel/panel/admin/Backup.py:83
+#: hiddifypanel/panel/admin/Backup.py:85
 msgid "Override Root Admin"
 msgstr "获取管理员权限"
 
-#: hiddifypanel/panel/admin/Backup.py:83
+#: hiddifypanel/panel/admin/Backup.py:85
 msgid "It will override the root admin to the current user"
 msgstr "当前用户将获取管理员权限"
 
-#: hiddifypanel/panel/admin/Backup.py:84
+#: hiddifypanel/panel/admin/Backup.py:86
 #: hiddifypanel/panel/admin/ProxyAdmin.py:97
 #: hiddifypanel/panel/admin/ProxyAdmin.py:128
 #: hiddifypanel/panel/admin/QuickSetup.py:85
