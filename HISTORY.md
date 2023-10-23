@@ -43,6 +43,8 @@
 
 #### Fix
 
+* Bug in clean install. 
+
 * Typo. 
 
 * Not preserving admin uuid when upgrade. 
