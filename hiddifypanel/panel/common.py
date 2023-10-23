@@ -76,7 +76,8 @@ def init_app(app):
             if line.strip().startswith('File'):
                 if 'hiddify' in line.lower():
                     output += line + '\n'
-                    output += lines[i + 1] + '\n'
+                    if i < len(lines)-1:
+                        output += lines[i + 1] + '\n'
                 skip_next_line = True
 
         return output
