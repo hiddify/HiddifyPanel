@@ -66,6 +66,7 @@ def all_configs():
     path = f'{hconfig(ConfigEnum.proxy_path)}/{get_super_admin_secret()}/admin/'
 
     server_ip = hiddify.get_ip(4)
+    configs['admin_path'] = path
     configs['panel_links'] = []
     configs['panel_links'].append("http://{server_ip}/{path}")
     configs['panel_links'].append("https://{server_ip}/{path}")
