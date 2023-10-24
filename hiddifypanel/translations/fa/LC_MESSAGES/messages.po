@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-24 00:30+0200\n"
-"PO-Revision-Date: 2023-10-19 11:41-0500\n"
+"POT-Creation-Date: 2023-10-24 13:11+0200\n"
+"PO-Revision-Date: 2023-10-24 00:09-0500\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -2882,10 +2882,12 @@ msgstr "همه"
 msgid "auto"
 msgstr "خودکار"
 
+# | msgid "All Config Hiddify Managers"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:48
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:19
+#, fuzzy
 msgid "user.home.allconfig.hiddify-managers"
-msgstr ""
+msgstr "همه مدیران Config Hiddify"
 
 # | msgid "Clash Configs"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:61
@@ -3899,9 +3901,11 @@ msgstr ""
 msgid "Oops! Something went wrong."
 msgstr "خطایی رخ داده است!!"
 
+# | msgid "Please create an issue on Github"
 #: hiddifypanel/templates/500.html:12
+#, fuzzy
 msgid "Please create an issue on Github."
-msgstr ""
+msgstr "لطفاً یک مشکل در Github ایجاد کنید"
 
 # | msgid "Hiddify Panel"
 #: hiddifypanel/templates/admin-layout.html:18
@@ -3967,10 +3971,12 @@ msgstr "راهنما"
 msgid "admin.menu.telegram"
 msgstr "تلگرام"
 
+# | msgid "Donation"
 #: hiddifypanel/templates/admin-layout.html:124
 #: hiddifypanel/templates/donation.html:5
+#, fuzzy
 msgid "Donation.title"
-msgstr ""
+msgstr "اهداء"
 
 # | msgid "Status"
 #: hiddifypanel/templates/admin-layout.html:148

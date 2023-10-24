@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-24 00:30+0200\n"
-"PO-Revision-Date: 2023-10-19 11:41-0500\n"
+"POT-Creation-Date: 2023-10-24 13:11+0200\n"
+"PO-Revision-Date: 2023-10-24 00:09-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -2688,10 +2688,11 @@ msgstr "全部"
 msgid "auto"
 msgstr "自动"
 
+# | msgid "All Config Hiddify Managers"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:48
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:19
 msgid "user.home.allconfig.hiddify-managers"
-msgstr ""
+msgstr "user.home.allconfig.hiddify-managers"
 
 # | msgid "Clash Configs"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:61
@@ -3022,7 +3023,7 @@ msgstr "为所有网站安装"
 
 #: hiddifypanel/panel/user/templates/home/doh.html:1
 msgid "user.home.tool.doh.title"
-msgstr ""
+msgstr "user.home.tool.doh.title"
 
 # | msgid "Copy"
 #: hiddifypanel/panel/user/templates/home/doh.html:8
@@ -3660,9 +3661,10 @@ msgstr ""
 msgid "Oops! Something went wrong."
 msgstr "哎呀！ 出了些问题。"
 
+# | msgid "Please create an issue on Github"
 #: hiddifypanel/templates/500.html:12
 msgid "Please create an issue on Github."
-msgstr ""
+msgstr "请在 Github 上创建一个 issue 。"
 
 # | msgid "Hiddify Panel"
 #: hiddifypanel/templates/admin-layout.html:18
@@ -3727,10 +3729,11 @@ msgstr "帮助"
 msgid "admin.menu.telegram"
 msgstr "Telegram"
 
+# | msgid "Donation"
 #: hiddifypanel/templates/admin-layout.html:124
 #: hiddifypanel/templates/donation.html:5
 msgid "Donation.title"
-msgstr ""
+msgstr "Donation.title"
 
 # | msgid "Status"
 #: hiddifypanel/templates/admin-layout.html:148
@@ -3965,11 +3968,11 @@ msgstr ""
 
 #: hiddifypanel/templates/fake.html:1
 msgid "config.warp_sites.label"
-msgstr ""
+msgstr "config.warp_sites.label"
 
 #: hiddifypanel/templates/fake.html:1
 msgid "config.warp_sites.description"
-msgstr ""
+msgstr "config.warp_sites.description"
 
 # | msgid "🖥 DNS Server"
 #: hiddifypanel/templates/fake.html:1
