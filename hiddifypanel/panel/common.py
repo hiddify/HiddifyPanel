@@ -185,7 +185,7 @@ def init_app(app):
             """
 
         # Create github issue link
-        issue_link = generate_github_issue_link(f"Internal server error: {error.name}",issue_body)
+        issue_link = generate_github_issue_link(f"Internal server error: {error.name if hasattr(error,'name') and error.name != None and error.name else 'Unknown'}",issue_body)
         
         if remove_sensetive_data:
             remove_sensetive_data_from_github_issue_link(issue_link)
