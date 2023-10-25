@@ -459,10 +459,12 @@ def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
         UserMode.monthly: 30
 
     }
-    bot = None
-    #if hconfig(ConfigEnum.license):
-    import hiddifypanel.panel.commercial.telegrambot as tg
-    bot = tg.bot
+    if hasattr(g,'bot') and g.bot != None:
+        if hconfig(ConfigEnum.telegram_enable):
+            import hiddifypanel.panel.commercial.telegrambot as telegrambot
+            if (not telegrambot.bot) or (not telegrambot.bot.username):
+                telegrambot.register_bot()
+                g.bot = telegrambot.bot
 
     g.locale = hconfig(ConfigEnum.lang)
     expire_days = remaining_days(user)
