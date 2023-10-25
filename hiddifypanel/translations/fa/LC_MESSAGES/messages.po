@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-23 16:22+0200\n"
-"PO-Revision-Date: 2023-10-19 11:41-0500\n"
+"POT-Creation-Date: 2023-10-24 13:11+0200\n"
+"PO-Revision-Date: 2023-10-24 00:09-0500\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -209,60 +209,60 @@ msgid "Owner can not be deleted!"
 msgstr "مدیر کل را نمیتوانید حذف کنید!"
 
 # | msgid "Config file is incorrect."
-#: hiddifypanel/panel/admin/Backup.py:73
+#: hiddifypanel/panel/admin/Backup.py:75
 msgid "Config file is incorrect"
 msgstr "فایل کانفیگ اشتباه است."
 
-#: hiddifypanel/panel/admin/Backup.py:79
+#: hiddifypanel/panel/admin/Backup.py:81
 msgid "Restore File"
 msgstr "فایل بازیابی"
 
 # | msgid "Choose the downloaded restore file"
-#: hiddifypanel/panel/admin/Backup.py:79
+#: hiddifypanel/panel/admin/Backup.py:81
 msgid "Restore File Description"
 msgstr "برای بازگردانی، فایل دانلود شده (بک آپ) را از سیستم خود انتخاب کنید."
 
 # | msgid "⚙️ Restore Settings"
-#: hiddifypanel/panel/admin/Backup.py:80
+#: hiddifypanel/panel/admin/Backup.py:82
 msgid "Restore Settings"
 msgstr "⚙️ بازیابی تنظیمات"
 
 # | msgid "Restore all settings description"
-#: hiddifypanel/panel/admin/Backup.py:80
+#: hiddifypanel/panel/admin/Backup.py:82
 msgid "Restore Settings description"
 msgstr "در این قسمت می‌توانید تنظیمات قبلی را بازیابی نمایید."
 
 # | msgid "👥 Restore Users"
-#: hiddifypanel/panel/admin/Backup.py:81
+#: hiddifypanel/panel/admin/Backup.py:83
 msgid "Restore Users"
 msgstr "👥 بازیابی کاربران"
 
 # | msgid "Select this option to restore All Users"
-#: hiddifypanel/panel/admin/Backup.py:81
+#: hiddifypanel/panel/admin/Backup.py:83
 msgid "Restore Users description"
 msgstr "برای بازگرداندن کاربران از این گزینه استفاده کنید."
 
 # | msgid "🌏 Restore Domain"
-#: hiddifypanel/panel/admin/Backup.py:82
+#: hiddifypanel/panel/admin/Backup.py:84
 msgid "Restore Domain"
 msgstr "🌏 بازیابی دامنه‌ها"
 
 # | msgid "Select this option to restore your domains"
-#: hiddifypanel/panel/admin/Backup.py:82
+#: hiddifypanel/panel/admin/Backup.py:84
 msgid "Restore Domain description"
 msgstr "برای بازگرداندن دامنه از این گزینه استفاده کنید."
 
-#: hiddifypanel/panel/admin/Backup.py:83
+#: hiddifypanel/panel/admin/Backup.py:85
 msgid "Override Root Admin"
 msgstr "جایگذاری ادمین اصلی"
 
-#: hiddifypanel/panel/admin/Backup.py:83
+#: hiddifypanel/panel/admin/Backup.py:85
 msgid "It will override the root admin to the current user"
 msgstr ""
 "این گزینه باعث جایگزین شده ادمین هایی که در پنل نیستند را با ادمین فعلی "
 "یکی کند"
 
-#: hiddifypanel/panel/admin/Backup.py:84
+#: hiddifypanel/panel/admin/Backup.py:86
 #: hiddifypanel/panel/admin/ProxyAdmin.py:97
 #: hiddifypanel/panel/admin/ProxyAdmin.py:128
 #: hiddifypanel/panel/admin/QuickSetup.py:85
@@ -2882,10 +2882,12 @@ msgstr "همه"
 msgid "auto"
 msgstr "خودکار"
 
+# | msgid "All Config Hiddify Managers"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:48
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:19
+#, fuzzy
 msgid "user.home.allconfig.hiddify-managers"
-msgstr ""
+msgstr "همه مدیران Config Hiddify"
 
 # | msgid "Clash Configs"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:61
@@ -3899,9 +3901,11 @@ msgstr ""
 msgid "Oops! Something went wrong."
 msgstr "خطایی رخ داده است!!"
 
+# | msgid "Please create an issue on Github"
 #: hiddifypanel/templates/500.html:12
+#, fuzzy
 msgid "Please create an issue on Github."
-msgstr ""
+msgstr "لطفاً یک مشکل در Github ایجاد کنید"
 
 # | msgid "Hiddify Panel"
 #: hiddifypanel/templates/admin-layout.html:18
@@ -3967,10 +3971,12 @@ msgstr "راهنما"
 msgid "admin.menu.telegram"
 msgstr "تلگرام"
 
+# | msgid "Donation"
 #: hiddifypanel/templates/admin-layout.html:124
 #: hiddifypanel/templates/donation.html:5
+#, fuzzy
 msgid "Donation.title"
-msgstr ""
+msgstr "اهداء"
 
 # | msgid "Status"
 #: hiddifypanel/templates/admin-layout.html:148

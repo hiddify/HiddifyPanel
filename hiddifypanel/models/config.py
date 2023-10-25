@@ -122,7 +122,7 @@ def bulk_register_configs(hconfigs, commit=True, override_child_id=None, overrid
         if conf['key'] == ConfigEnum.unique_id and not override_unique_id:
             continue
         child_id = override_child_id if override_child_id is not None else hiddify.get_child(conf.get('child_unique_id', None))
-        # print(conf)
+        # print(conf, child_id, conf.get('child_unique_id', None), override_child_id)
         add_or_update_config(commit=False, child_id=child_id, **conf)
     if commit:
         db.session.commit()

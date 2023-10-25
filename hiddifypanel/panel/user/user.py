@@ -7,7 +7,6 @@ import datetime
 from hiddifypanel.models import *
 from hiddifypanel.panel.database import db
 from hiddifypanel.panel import hiddify, clean_ip
-
 from . import link_maker
 from flask_classful import FlaskView, route
 import random
@@ -19,15 +18,147 @@ import re
 
 class UserView(FlaskView):
 
-    @route('/short/')
+    #region api
+    @route('/short')
     def short_link(self):
-        short = hiddify.add_short_link("/"+hconfig(ConfigEnum.proxy_path)+"/"+g.user.uuid+"/")
-        ua = hiddify.get_user_agent()
-        # if (ua['is_browser']):
-        return f"<div style='direction:ltr'>https://{urlparse(request.base_url).hostname}/{short}/</a><br><br>"+_("This link will expire in 5 minutes")
-        # return short
+        short = hiddify.add_short_link(
+            "/"+hconfig(ConfigEnum.proxy_path)+"/"+g.user.uuid+"/")
+        data = {
+            "short_link": short
+        }
+        return jsonify(data)
 
-    # @route('/test/')
+    @route('/info')
+    def info(self):
+        c = get_common_data(g.user_uuid, 'new')
+        data = {
+            'profile_title': c['profile_title'],
+            'profile_url': f"{c['domain']}/{g.proxy_path}/{g.user_uuid}/#{g.user.name}",
+            'profile_usage_current': g.user.current_usage_GB,
+            'profile_usage_total': g.user.usage_limit_GB,
+            'profile_remaining_days': g.user.remaining_days,
+            'profile_reset_days': days_to_reset(g.user),
+            'telegram_bot_url': f"https://t.me/{c['bot'].username}?start={g.user_uuid}" if c['bot'] != None else "",
+            'admin_message': hconfig(ConfigEnum.branding_freetext),
+            'admin_message_url': hconfig(ConfigEnum.branding_site)
+        }
+
+        return jsonify(data)
+
+    @route('/mtproxies')
+    def mtproxies(self):
+        # get domains
+        domains = []
+        hdomains = get_hdomains()
+        if len(hdomains[DomainType.direct]):
+            domains += hdomains[DomainType.direct]
+        if len(hdomains[DomainType.relay]):
+            domains += hdomains[DomainType.relay]
+        data = {
+            "servers": []
+        }
+        for d in domains:
+            # create server link
+            hexuuid = hconfig(ConfigEnum.shared_secret).replace('-', '')
+            telegram_faketls_domain_hex = hconfig(
+                ConfigEnum.telegram_fakedomain).encode('utf-8').hex()
+            server_link = f'tg://proxy?server={d}&port=443&secret=ee{hexuuid}{telegram_faketls_domain_hex}'
+            # add server to data
+            data['servers'].append(server_link)
+
+        return jsonify(data)
+
+    @route('/all-configs')
+    def all_configs(self):
+        def create_item(name, type, domain, protocol, transport, security, link):
+            return {
+                'name': name,
+                'type': type,
+                'domain': domain,
+                'protocol': protocol,
+                'transport': transport,
+                'security': security,
+                'link': link
+            }
+
+        items = []
+        base_url = f"{urlparse(request.base_url).hostname}/{g.proxy_path}/{g.user_uuid}/"
+        c = get_common_data(g.user_uuid, 'new')
+
+        # Add Auto
+        items.append(
+            create_item(
+                "Auto", "All", "All", "All", "All", "All",
+                f"{base_url}sub/?asn={c['asn']}")
+        )
+
+        # Add Full Singbox
+        items.append(
+            create_item(
+                "Full Singbox", "All", "All", "All", "All", "All",
+                f"{base_url}full-singbox.json?asn={c['asn']}"
+            )
+        )
+
+        # Add Clash Meta
+        items.append(
+            create_item(
+                "Clash Meta", "All", "All", "All", "All", "All",
+                f"clashmeta://install-config?url={base_url}clash/meta/all.yml&name=mnormal_{c['db_domain'].alias or c['db_domain'].domain}-{c['asn']}-{c['mode']}&asn={c['asn']}&mode={c['mode']}"
+            )
+        )
+
+        # Add Clash
+        items.append(
+            create_item(
+                "Clash", "All", "All", "Except VLess", "All", "All",
+                f"clash://install-config?url={base_url}clash/all.yml&name=new_normal_{c['db_domain'].alias or c['db_domain'].domain}-{c['asn']}-{c['mode']}&asn={c['asn']}&mode={c['mode']}"
+            )
+        )
+
+        # Add Singbox: SSh
+        if hconfig(ConfigEnum.ssh_server_enable):
+            items.append(
+                create_item(
+                    "Singbox: SSH", "SSH", "SSH", "SSH", "SSH", "SSH",
+                    f"{base_url}singbox.json?name={c['db_domain'].alias or c['db_domain'].domain}-{c['asn']}&asn={c['asn']}&mode={c['mode']}"
+                )
+            )
+
+        # Add Subscription link
+        items.append(
+            create_item(
+                "Subscription link", "All", "All", "All", "All", "All",
+                f"{base_url}all.txt?name={c['db_domain'].alias or c['db_domain'].domain}-{c['asn']}&asn={c['asn']}&mode={c['mode']}"
+            )
+        )
+
+        # Add Subscription link base64
+        items.append(
+            create_item(
+                "Subscription link b64", "All", "All", "All", "All", "All",
+                f"{base_url}all.txt?name=new_link_{c['db_domain'].alias or c['db_domain'].domain}-{c['asn']}-{c['mode']}&asn={c['asn']}&mode={c['mode']}&base64=True"
+            )
+        )
+
+        for pinfo in link_maker.get_all_validated_proxies(c['domains']):
+            items.append(
+                create_item(
+                    pinfo["name"].replace("_", " "),
+                    f"{'Auto ' if pinfo['dbdomain'].has_auto_ip else ''}{pinfo['mode']}",
+                    pinfo['server'],
+                    pinfo['proto'],
+                    pinfo['transport'],
+                    pinfo['l3'],
+                    f"{link_maker.to_link(pinfo)}"
+                )
+            )
+
+        return jsonify(items)
+
+    #endregion
+
+    @route('/test/')
     def test(self):
         ua = request.user_agent.string
         if re.match('^Mozilla', ua, re.IGNORECASE):
@@ -120,7 +251,8 @@ class UserView(FlaskView):
         domain = request.args.get("domain", None)
 
         c = get_common_data(g.user_uuid, mode, filter_domain=domain)
-        resp = Response(render_template('clash_proxies.yml', meta_or_normal=meta_or_normal, **c))
+        resp = Response(render_template('clash_proxies.yml',
+                        meta_or_normal=meta_or_normal, **c))
         resp.mimetype = "text/plain"
 
         return resp
@@ -170,7 +302,8 @@ class UserView(FlaskView):
         if request.method == 'HEAD':
             resp = ""
         else:
-            resp = render_template('clash_config.yml', typ=typ, meta_or_normal=meta_or_normal, **c, hash=hash_rnd)
+            resp = render_template(
+                'clash_config.yml', typ=typ, meta_or_normal=meta_or_normal, **c, hash=hash_rnd)
 
         return add_headers(resp, c)
 
@@ -210,7 +343,8 @@ class UserView(FlaskView):
         if request.method == 'HEAD':
             resp = ""
         else:
-            resp = link_maker.make_v2ray_configs(**c)  # render_template('all_configs.txt', **c, base64=do_base_64)
+            # render_template('all_configs.txt', **c, base64=do_base_64)
+            resp = link_maker.make_v2ray_configs(**c)
 
         # res = ""
         # for line in resp.split("\n"):
@@ -262,7 +396,8 @@ def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
     default_asn = request.args.get("asn")
     if filter_domain:
         domain = filter_domain
-        db_domain = Domain.query.filter(Domain.domain == domain).first() or Domain(domain=domain, mode=DomainType.direct, cdn_ip='', show_domains=[], child_id=0)
+        db_domain = Domain.query.filter(Domain.domain == domain).first() or Domain(
+            domain=domain, mode=DomainType.direct, cdn_ip='', show_domains=[], child_id=0)
         domains = [db_domain]
     else:
         domain = urlparse(request.base_url).hostname if not no_domain else None
@@ -284,7 +419,8 @@ def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
             domains = Domain.query.all()
         elif mode == 'new':
             # db_domain=Domain.query.filter(Domain.domain==domain).first()
-            domains = db_domain.show_domains or Domain.query.filter(Domain.sub_link_only != True).all()
+            domains = db_domain.show_domains or Domain.query.filter(
+                Domain.sub_link_only != True).all()
         else:
 
             domains = [db_domain]
@@ -309,8 +445,10 @@ def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
         d.has_auto_ip = False
         if d.mode == DomainType.auto_cdn_ip or d.cdn_ip:
             has_auto_cdn = True
-            d.has_auto_ip = d.mode == DomainType.auto_cdn_ip or (d.cdn_ip and "MTN" in d.cdn_ip)
-            d.cdn_ip = clean_ip.get_clean_ip(d.cdn_ip, d.mode == DomainType.auto_cdn_ip, default_asn)
+            d.has_auto_ip = d.mode == DomainType.auto_cdn_ip or (
+                d.cdn_ip and "MTN" in d.cdn_ip)
+            d.cdn_ip = clean_ip.get_clean_ip(
+                d.cdn_ip, d.mode == DomainType.auto_cdn_ip, default_asn)
             print("autocdn ip mode ", d.cdn_ip)
         if "*" in d.domain:
             d.domain = d.domain.replace("*", hiddify.get_random_string(5, 15))
@@ -322,8 +460,9 @@ def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
 
     }
     bot = None
-    if hconfig(ConfigEnum.license):
-        from hiddifypanel.panel.telegrambot import bot
+    #if hconfig(ConfigEnum.license):
+    import hiddifypanel.panel.commercial.telegrambot as tg
+    bot = tg.bot
 
     g.locale = hconfig(ConfigEnum.lang)
     expire_days = remaining_days(user)
@@ -333,7 +472,8 @@ def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
     if reset_days >= expire_days:
         reset_days = 1000
     # print(reset_days,expire_days,reset_days<=expire_days)
-    expire_s = int((datetime.date.today()+datetime.timedelta(days=expire_days)-datetime.date(1970, 1, 1)).total_seconds())
+    expire_s = int((datetime.date.today(
+    )+datetime.timedelta(days=expire_days)-datetime.date(1970, 1, 1)).total_seconds())
 
     user_ip = clean_ip.get_real_user_ip()
     asn = clean_ip.get_asn_short_name(user_ip)
@@ -375,7 +515,8 @@ def add_headers(res, c):
     resp = Response(res)
     resp.mimetype = "text/plain"
     resp.headers['Subscription-Userinfo'] = f"upload=0;download={c['usage_current_b']};total={c['usage_limit_b']};expire={c['expire_s']}"
-    resp.headers['profile-web-page-url'] = request.base_url.rsplit('/', 1)[0].replace("http://", "https://")+"/"
+    resp.headers['profile-web-page-url'] = request.base_url.rsplit(
+        '/', 1)[0].replace("http://", "https://")+"/"
 
     if hconfig(ConfigEnum.branding_site):
         resp.headers['support-url'] = hconfig(ConfigEnum.branding_site)

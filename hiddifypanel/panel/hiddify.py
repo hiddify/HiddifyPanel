@@ -308,7 +308,7 @@ def format_timedelta(delta, add_direction=True, granularity="days"):
 
 def get_child(unique_id):
     child_id = 0
-    if unique_id is None:
+    if unique_id is None or unique_id == "default":
         child_id = 0
     else:
         child = Child.query.filter(Child.unique_id == str(unique_id)).first()
@@ -387,7 +387,7 @@ def set_db_from_json(json_data, override_child_id=None, set_users=True, set_doma
     if set_domains and 'parent_domains' in json_data:
         bulk_register_parent_domains(json_data['parent_domains'], commit=False, remove=remove_domains)
     if set_settings and 'hconfigs' in json_data:
-        bulk_register_configs(json_data["hconfigs"], commit=False, override_child_id=override_child_id, override_unique_id=override_unique_id)
+        bulk_register_configs(json_data["hconfigs"], commit=True, override_child_id=override_child_id, override_unique_id=override_unique_id)
         if 'proxies' in json_data:
             bulk_register_proxies(json_data['proxies'], commit=False, override_child_id=override_child_id)
 

@@ -5,6 +5,10 @@
 
 #### New
 
+* Fix quick stup stuck after restore backup. 
+
+* Add last version of release and beta in make. 
+
 * Add admin path to config. 
 
 * Add admin links. 
@@ -44,6 +48,12 @@
 * Update hiddify next download link. 
 
 #### Fix
+
+* Backup restore. 
+
+* Bug in report issue. 
+
+* Multiple ip. 
 
 * Admin link. 
 

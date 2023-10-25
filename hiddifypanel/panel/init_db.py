@@ -313,12 +313,6 @@ def _v17():
             u.expiry_time = None
 
 
-def _v12():
-    add_column(User.last_online)
-    execute(f'drop TABLE child')
-    db.create_all()
-    db.session.add(Child(id=0, unique_id="default"))
-
 
 def _v1():
     next10year = datetime.date.today() + relativedelta.relativedelta(years=6)
