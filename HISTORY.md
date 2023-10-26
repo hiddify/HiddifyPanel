@@ -19,6 +19,8 @@
 
 * Add warp custom sites. 
 
+* Add issue from menu. 
+
 * Add custom CFG path. 
 
 * Fix bug when no backup exist. 
@@ -49,11 +51,17 @@
 
 #### Fix
 
+* Bug in user.py. 
+
+* Get telegram bot in get_common_data method. 
+
 * Backup restore. 
 
 * Bug in report issue. 
 
 * Multiple ip. 
+
+* Common.py bug. 
 
 * Admin link. 
 
@@ -155,6 +163,18 @@
 
 #### Other
 
+* Review code. 
+
+* Merge pull request #42 from Iam54r1n4/main. 
+
+* Merge github.com:hiddify/HiddifyPanel Add user.py api. 
+
+* Fix typo. 
+
+* Refactor github issue things. 
+
+* Merge branch 'main' of github.com:Iam54r1n4/HiddifyPanel. 
+
 * Add json5. 
 
 * Hide v2ray configs. 
@@ -164,6 +184,8 @@
 * Add six. 
 
 * Add default warp_sites. 
+
+* Merge branch 'main' of github.com:Iam54r1n4/HiddifyPanel. 
 
 * Fix version in the dependencies. 
 
