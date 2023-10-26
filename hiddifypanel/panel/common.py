@@ -25,7 +25,7 @@ def init_app(app):
             trace = traceback.format_exc()
 
             # Create github issue link
-            issue_link = generate_github_issue_link_for_500_error(e,trace)
+            issue_link = generate_github_issue_link_for_500_error(e, trace)
 
             last_version = hiddify.get_latest_release_version('hiddifypanel')
             has_update = "T" not in hiddifypanel.__version__ and "dev" not in hiddifypanel.__version__ and f'{last_version}' != hiddifypanel.__version__
@@ -122,6 +122,9 @@ def init_app(app):
             if (not telegrambot.bot) or (not telegrambot.bot.username):
                 telegrambot.register_bot()
             g.bot = telegrambot.bot
+        else:
+            g.bot = None
+
         # print(g.user)
 
     def github_issue_details():
@@ -132,11 +135,11 @@ def init_app(app):
             'user_agent': 'Unknown'
         }
         if hasattr(g, 'user_agent') and str(g.user_agent):
-                details['user_agent'] = g.user_agent.ua_string
+            details['user_agent'] = g.user_agent.ua_string
         return details
-   
-    def generate_github_issue_link_for_500_error(error,traceback,remove_sensetive_data=True, remove_unrelated_traceback_datails=True):
-        
+
+    def generate_github_issue_link_for_500_error(error, traceback, remove_sensetive_data=True, remove_unrelated_traceback_datails=True):
+
         def remove_sensetive_data_from_github_issue_link(issue_link):
             if hasattr(g, 'user_uuid') and g.user_uuid:
                 issue_link.replace(f'{g.user_uuid}', '*******************')
@@ -165,12 +168,11 @@ def init_app(app):
 
             return output
 
-        
         if remove_unrelated_traceback_datails:
             traceback = remove_unrelated_traceback_details(traceback)
 
         gd = github_issue_details()
-        
+
         issue_body = f"""
 # Internal Error Stacktrace:
 **Error Message**:   {str(error)}
@@ -185,13 +187,13 @@ def init_app(app):
             """
 
         # Create github issue link
-        issue_link = generate_github_issue_link(f"Internal server error: {error.name if hasattr(error,'name') and error.name != None and error.name else 'Unknown'}",issue_body)
-        
+        issue_link = generate_github_issue_link(f"Internal server error: {error.name if hasattr(error,'name') and error.name != None and error.name else 'Unknown'}", issue_body)
+
         if remove_sensetive_data:
             remove_sensetive_data_from_github_issue_link(issue_link)
-        
+
         return issue_link
- 
+
     def generate_github_issue_link_for_admin_sidebar():
 
         gd = github_issue_details()
@@ -206,11 +208,9 @@ def init_app(app):
 **OS**:              {gd['os_details']}
 **User Agent**:      {gd['user_agent'] if gd['user_agent'] else "Unknown"}
                 """
-            
+
         # Create github issue link
-        issue_link = generate_github_issue_link('Please fill the title properly',issue_body)
+        issue_link = generate_github_issue_link('Please fill the title properly', issue_body)
         return issue_link
-
-
 
     app.jinja_env.globals['generate_github_issue_link_for_admin_sidebar'] = generate_github_issue_link_for_admin_sidebar

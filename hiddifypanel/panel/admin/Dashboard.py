@@ -25,7 +25,7 @@ class Dashboard(FlaskView):
         ))
 
     def index(self):
-        print(hconfig(ConfigEnum.first_setup))
+        
         if hconfig(ConfigEnum.first_setup):
             return redirect(url_for("admin.QuickSetup:index"))
         if hiddifypanel.__release_date__ + datetime.timedelta(days=20) < datetime.datetime.now():
@@ -72,7 +72,7 @@ class Dashboard(FlaskView):
             d = domains[0]
             u = def_user.uuid
             flash((_('It seems that you have not created any users yet. Default user link: %(default_link)s', default_link=hiddify.get_user_link(u, d))), 'secondary')
-        if is_ssh_password_authentication_enabled():
+        if hiddify.is_ssh_password_authentication_enabled():
             flash(_('ssh.password-login.warning.'), "warning")
 
     # except:
@@ -90,12 +90,3 @@ class Dashboard(FlaskView):
         flash(_("child has been removed!"), "success")
         return self.index()
 
-def is_ssh_password_authentication_enabled():
-    if os.path.isfile('/etc/ssh/sshd_config'):
-        content = ''
-        with open('/etc/ssh/sshd_config','r') as f:
-            for l in f.readlines():
-                if re.search("^PasswordAuthentication\s+yes",l):
-                    return True
-
-    return False

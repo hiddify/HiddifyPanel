@@ -724,3 +724,17 @@ def __parse_user_agent(ua):
     if res["is_browser"]:
         res['app'] = uaa.browser.family
     return res
+
+
+def is_ssh_password_authentication_enabled():
+    if os.path.isfile('/etc/ssh/sshd_config'):
+        content = ''
+        with open('/etc/ssh/sshd_config', 'r') as f:
+            for line in f.readlines():
+                line = line.strip()
+                if line.startswith('#'):
+                    continue
+                if re.search("^PasswordAuthentication\s+no", line, re.IGNORECASE):
+                    return False
+
+    return True

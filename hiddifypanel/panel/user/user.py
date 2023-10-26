@@ -18,7 +18,7 @@ import re
 
 class UserView(FlaskView):
 
-    #region api
+    # region api
     @route('/short/')
     @route('/short')
     def short_link(self):
@@ -26,7 +26,7 @@ class UserView(FlaskView):
             "/"+hconfig(ConfigEnum.proxy_path)+"/"+g.user.uuid+"/")
         full_url = f"https://{urlparse(request.base_url).hostname}/{short}"
         data = {
-            "short": short,
+            "short": f"/{short}",
             "url": full_url
         }
         return jsonify(data)
@@ -37,14 +37,17 @@ class UserView(FlaskView):
         c = get_common_data(g.user_uuid, 'new')
         data = {
             'profile_title': c['profile_title'],
-            'profile_url': f"{c['domain']}/{g.proxy_path}/{g.user_uuid}/#{g.user.name}",
+            'profile_url': f"https://{urlparse(request.base_url).hostname}/{g.proxy_path}/{g.user_uuid}/#{g.user.name}",
             'profile_usage_current': g.user.current_usage_GB,
             'profile_usage_total': g.user.usage_limit_GB,
             'profile_remaining_days': g.user.remaining_days,
             'profile_reset_days': days_to_reset(g.user),
-            'telegram_bot_url': f"https://t.me/{c['bot'].username}?start={g.user_uuid}" if c['bot'] != None else "",
-            'admin_message': hconfig(ConfigEnum.branding_freetext),
-            'admin_message_url': hconfig(ConfigEnum.branding_site)
+            'telegram_bot_url': f"https://t.me/{c['bot'].username}?start={g.user_uuid}" if c['bot'] else "",
+            'admin_message_html': hconfig(ConfigEnum.branding_freetext),
+            'admin_message_url': hconfig(ConfigEnum.branding_site),
+            'brand_title': hconfig(ConfigEnum.branding_title),
+            'brand_icon_url': "",
+            'doh': f"https://{urlparse(request.base_url).hostname}/{g.proxy_path}/dns/dns-query"
         }
 
         return jsonify(data)
@@ -59,9 +62,8 @@ class UserView(FlaskView):
             domains += hdomains[DomainType.direct]
         if len(hdomains[DomainType.relay]):
             domains += hdomains[DomainType.relay]
-        data = {
-            "servers": []
-        }
+        mtproxies = []
+        # TODO: Remove duplicated domains mapped to a same ipv4 and v6
         for d in domains:
             # create server link
             hexuuid = hconfig(ConfigEnum.shared_secret).replace('-', '')
@@ -69,11 +71,10 @@ class UserView(FlaskView):
                 ConfigEnum.telegram_fakedomain).encode('utf-8').hex()
             server_link = f'tg://proxy?server={d}&port=443&secret=ee{hexuuid}{telegram_faketls_domain_hex}'
             # add server to data
-            data['servers'].append(server_link)
+            mtproxies.append(server_link)
 
-        return jsonify(data)
+        return jsonify(mtproxies)
 
-    
     @route('/all-configs/')
     @route('/all-configs')
     def configs(self):
@@ -89,7 +90,7 @@ class UserView(FlaskView):
             }
 
         items = []
-        base_url = f"{urlparse(request.base_url).hostname}/{g.proxy_path}/{g.user_uuid}/"
+        base_url = f"https://{urlparse(request.base_url).hostname}/{g.proxy_path}/{g.user_uuid}/"
         c = get_common_data(g.user_uuid, 'new')
 
         # Add Auto
@@ -163,7 +164,7 @@ class UserView(FlaskView):
 
         return jsonify(items)
 
-    #endregion
+    # endregion
 
     @route('/test/')
     def test(self):
@@ -466,12 +467,6 @@ def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
         UserMode.monthly: 30
 
     }
-    if hasattr(g,'bot') and g.bot != None:
-        if hconfig(ConfigEnum.telegram_enable):
-            import hiddifypanel.panel.commercial.telegrambot as telegrambot
-            if (not telegrambot.bot) or (not telegrambot.bot.username):
-                telegrambot.register_bot()
-                g.bot = telegrambot.bot
 
     g.locale = hconfig(ConfigEnum.lang)
     expire_days = remaining_days(user)

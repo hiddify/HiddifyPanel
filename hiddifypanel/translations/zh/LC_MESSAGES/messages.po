@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-24 13:11+0200\n"
-"PO-Revision-Date: 2023-10-24 00:09-0500\n"
+"POT-Creation-Date: 2023-10-26 12:00+0200\n"
+"PO-Revision-Date: 2023-10-26 05:00-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Generated-By: Babel 2.12.1\n"
 
 # | msgid "This Domain does not exist in the Panel !"
-#: hiddifypanel/models/domain.py:158 hiddifypanel/panel/user/user.py:281
+#: hiddifypanel/models/domain.py:158 hiddifypanel/panel/user/user.py:424
 msgid "This domain does not exist in the panel!"
 msgstr "该域名在面板中不存在！"
 
@@ -238,10 +238,13 @@ msgstr "🌏 还原域名"
 msgid "Restore Domain description"
 msgstr "选择此选项以恢复您的域名"
 
+# | msgid "Override Owner in Backup"
 #: hiddifypanel/panel/admin/Backup.py:85
 msgid "Override Root Admin"
 msgstr "获取管理员权限"
 
+# | msgid ""
+# | "It will override the owner admin of the backup file to the current user"
 #: hiddifypanel/panel/admin/Backup.py:85
 msgid "It will override the root admin to the current user"
 msgstr "当前用户将获取管理员权限"
@@ -328,8 +331,8 @@ msgid "Domain is not correctly mapped to this server!"
 msgstr "域名未正确指向该服务器！"
 
 # | msgid "Access Denied"
-#: hiddifypanel/panel/admin/Dashboard.py:18
-#: hiddifypanel/panel/admin/Dashboard.py:36
+#: hiddifypanel/panel/admin/Dashboard.py:20
+#: hiddifypanel/panel/admin/Dashboard.py:38
 msgid "Access Denied!"
 msgstr "拒绝访问"
 
@@ -337,13 +340,13 @@ msgstr "拒绝访问"
 # | "⚠️ This version of Hiddify Panel is outdated. please update it from admin
 # "
 # | "area."
-#: hiddifypanel/panel/admin/Dashboard.py:30 hiddifypanel/templates/500.html:9
+#: hiddifypanel/panel/admin/Dashboard.py:32 hiddifypanel/templates/500.html:9
 msgid ""
 "This version of hiddify panel is outdated. Please update it from admin "
 "area."
 msgstr "⚠️ 该版本的 Hiddify 面板已过时。请从管理区更新面板。"
 
-#: hiddifypanel/panel/admin/Dashboard.py:62
+#: hiddifypanel/panel/admin/Dashboard.py:64
 #, python-format
 msgid ""
 "It seems that you have not setup the system completely. <a class=\"btn "
@@ -355,8 +358,8 @@ msgstr ""
 # | msgid ""
 # | "Please understand that parent Panel is under test and the plan and the "
 # | "condition of use maybe change at anytime."
-#: hiddifypanel/panel/admin/Dashboard.py:64
-#: hiddifypanel/panel/admin/Dashboard.py:68
+#: hiddifypanel/panel/admin/Dashboard.py:66
+#: hiddifypanel/panel/admin/Dashboard.py:70
 msgid ""
 "Please understand that parent panel is under test and the plan and the "
 "condition of use maybe change at anytime."
@@ -365,7 +368,7 @@ msgstr "面板正在测试中，计划和使用条件可能随时更改，敬请
 # | msgid ""
 # | "It seems that you are using default domain (%(domain)s) which is not "
 # | "recommended. Please change or remove it from domain section."
-#: hiddifypanel/panel/admin/Dashboard.py:66
+#: hiddifypanel/panel/admin/Dashboard.py:68
 #, python-format
 msgid ""
 "It seems that you are using default domain (%(domain)s) which is not "
@@ -375,15 +378,31 @@ msgstr "看起来您正在使用默认域名 (%(domain)s) ，这是不推荐的�
 # | msgid ""
 # | "It seems that you have not created any users yet. default user link: "
 # | "%(default_link)s"
-#: hiddifypanel/panel/admin/Dashboard.py:72
+#: hiddifypanel/panel/admin/Dashboard.py:74
 #, python-format
 msgid ""
 "It seems that you have not created any users yet. Default user link: "
 "%(default_link)s"
 msgstr "您似乎还没有创建任何用户。默认用户链接：%(default_link)s"
 
+# | msgid ""
+# | "Your server is vulnerable to abuses because PasswordAuthentication is "
+# | "enabled in your SSH. To secure your server, please switch to key "
+# | "authentication mechanism and turn off PasswordAuthentication. <a "
+# |
+# "href=\"https://github.com/hiddify/Hiddify-Manager/wiki/Disable-SSH-Password-"
+# | "Authentication\">read more... </a>"
+#: hiddifypanel/panel/admin/Dashboard.py:76
+#, fuzzy
+msgid "ssh.password-login.warning."
+msgstr ""
+"您的服务器很容易受到滥用，因为您的 SSH "
+"中启用了密码身份验证。为了保护您的服务器，请切换到密钥身份验证机制并关闭PasswordAuthentication。 <a "
+"href=\"https://github.com/hiddify/Hiddify-Manager/wiki/Disable-SSH-"
+"Password-Authentication\">了解更多... </a>"
+
 # | msgid "Child Has Been Removed!"
-#: hiddifypanel/panel/admin/Dashboard.py:86
+#: hiddifypanel/panel/admin/Dashboard.py:90
 msgid "child has been removed!"
 msgstr "子节点已被删除！"
 
@@ -983,7 +1002,7 @@ msgid ""
 msgstr "你的用户太多了！您只能有 %(active)s 个活跃用户和 %(total)s 个用户"
 
 #: hiddifypanel/panel/admin/templates/backup.html:9
-#: hiddifypanel/templates/admin-layout.html:175
+#: hiddifypanel/templates/admin-layout.html:181
 msgid "Backup"
 msgstr "备份"
 
@@ -2595,14 +2614,6 @@ msgstr "设置"
 msgid "📅%(expire_days)s days"
 msgstr "📅剩余：%(expire_days)s 天"
 
-# | msgid ""
-# | "Please open this link in a browser; it will expire in 5 minutes for
-# security"
-# | " reasons."
-#: hiddifypanel/panel/user/user.py:27
-msgid "This link will expire in 5 minutes"
-msgstr "请在浏览器中打开此链接；出于安全原因，它将在 5 分钟后过期。"
-
 # | msgid "All Configs"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:1
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:1
@@ -3021,6 +3032,7 @@ msgstr ""
 msgid "user.home.clash_configs.all_sites.btn"
 msgstr "为所有网站安装"
 
+# | msgid "DNS over HTTPS"
 #: hiddifypanel/panel/user/templates/home/doh.html:1
 msgid "user.home.tool.doh.title"
 msgstr "user.home.tool.doh.title"
@@ -3435,6 +3447,7 @@ msgstr "更多应用"
 msgid "Import in"
 msgstr "导入"
 
+# | msgid "Download App"
 #: hiddifypanel/panel/user/templates/home/one_click.html:149
 #: hiddifypanel/panel/user/templates/home/one_click.html:186
 msgid ""
@@ -3705,7 +3718,7 @@ msgstr "管理员"
 
 # | msgid "Settings"
 #: hiddifypanel/templates/admin-layout.html:92
-#: hiddifypanel/templates/admin-layout.html:170
+#: hiddifypanel/templates/admin-layout.html:176
 msgid "admin.menu.config"
 msgstr "设置"
 
@@ -3729,64 +3742,70 @@ msgstr "帮助"
 msgid "admin.menu.telegram"
 msgstr "Telegram"
 
+# | msgid "Bug/Feature"
+#: hiddifypanel/templates/admin-layout.html:125
+#, fuzzy
+msgid "Bug"
+msgstr "错误或功能"
+
 # | msgid "Donation"
-#: hiddifypanel/templates/admin-layout.html:124
+#: hiddifypanel/templates/admin-layout.html:130
 #: hiddifypanel/templates/donation.html:5
 msgid "Donation.title"
 msgstr "Donation.title"
 
 # | msgid "Status"
-#: hiddifypanel/templates/admin-layout.html:148
+#: hiddifypanel/templates/admin-layout.html:154
 msgid "admin.actions.status"
 msgstr "状态"
 
 # | msgid "View Logs"
-#: hiddifypanel/templates/admin-layout.html:149
+#: hiddifypanel/templates/admin-layout.html:155
 msgid "admin.actions.viewlogs"
 msgstr "查看日志"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/templates/admin-layout.html:150
+#: hiddifypanel/templates/admin-layout.html:156
 msgid "admin.actions.apply_configs"
 msgstr "应用配置"
 
 # | msgid "Update"
-#: hiddifypanel/templates/admin-layout.html:151
+#: hiddifypanel/templates/admin-layout.html:157
 msgid "admin.actions.update"
 msgstr "更新系统"
 
 # | msgid "Reinstall"
-#: hiddifypanel/templates/admin-layout.html:153
+#: hiddifypanel/templates/admin-layout.html:159
 msgid "admin.actions.reinstall"
 msgstr "重装系统"
 
 # | msgid "Restart System"
-#: hiddifypanel/templates/admin-layout.html:154
+#: hiddifypanel/templates/admin-layout.html:160
 msgid "admin.actions.reset"
 msgstr "重启系统"
 
 # | msgid "Domains"
-#: hiddifypanel/templates/admin-layout.html:161
-#: hiddifypanel/templates/admin-layout.html:166
+#: hiddifypanel/templates/admin-layout.html:167
+#: hiddifypanel/templates/admin-layout.html:172
 msgid "admin.menu.domain"
 msgstr "域名"
 
 # | msgid "Proxies"
-#: hiddifypanel/templates/admin-layout.html:167
+#: hiddifypanel/templates/admin-layout.html:173
 msgid "admin.menu.proxy"
 msgstr "代理"
 
 # | msgid "Common Settings"
-#: hiddifypanel/templates/admin-layout.html:173
+#: hiddifypanel/templates/admin-layout.html:179
 msgid "Commercial Settings"
 msgstr "通用设置"
 
-#: hiddifypanel/templates/admin-layout.html:178
+#: hiddifypanel/templates/admin-layout.html:184
 msgid "Telegram Bot"
 msgstr "Telegram 机器人"
 
 # | msgid "⚠️ Are you sure you want to do this action?"
-#: hiddifypanel/templates/admin-layout.html:211
+#: hiddifypanel/templates/admin-layout.html:217
 msgid "Are you sure you want to do this action?"
 msgstr "⚠️ 您确定要执行此操作吗？"
 
@@ -3966,10 +3985,14 @@ msgstr ""
 "<br>\n"
 "📦 Singbox：由 SagerNet 开发。这也是一个很好的核心"
 
+# | msgid "Additional Warp Sites"
 #: hiddifypanel/templates/fake.html:1
 msgid "config.warp_sites.label"
 msgstr "config.warp_sites.label"
 
+# | msgid ""
+# | "Add additional sites to pass through warp (only when warp mode is not
+# None)"
 #: hiddifypanel/templates/fake.html:1
 msgid "config.warp_sites.description"
 msgstr "config.warp_sites.description"
@@ -3990,15 +4013,20 @@ msgstr ""
 "🚧 阻止恶意软件 1.1.1.2 <br>\n"
 "🔞 阻止色情 1.1.1.3"
 
+# | msgid "Direct Reality Port"
 #: hiddifypanel/templates/fake.html:1
 msgid "config.reality_port.label"
 msgstr "config.reality_port.label"
 
+# | msgid ""
+# | "You can set a customized port for your reality server to reduce the
+# system's"
+# | " overhead. (Allow direct connection to proxies should be yes)"
 #: hiddifypanel/templates/fake.html:1
 msgid "config.reality_port.description"
 msgstr "config.reality_port.description"
 
-# | msgid "Enable Hysteria"
+# | msgid "Enable Hysteria2"
 #: hiddifypanel/templates/fake.html:1
 msgid "config.hysteria_enable.label"
 msgstr "启用 Hysteria"
@@ -4008,7 +4036,7 @@ msgstr "启用 Hysteria"
 msgid "config.hysteria_enable.description"
 msgstr "启用基于 UDP 的 Hysteria 协议"
 
-# | msgid "Hysteria Port"
+# | msgid "Hysteria2 Port"
 #: hiddifypanel/templates/fake.html:1
 msgid "config.hysteria_port.label"
 msgstr "Hysteria 端口"
@@ -4530,6 +4558,13 @@ msgstr "动作"
 #~ msgstr "<i class=\"fa-solid fa-download\"></i> 下载应用"
 
 # | msgid ""
+# | "Please open this link in a browser; it will expire in 5 minutes for
+# security"
+# | " reasons."
+#~ msgid "This link will expire in 5 minutes"
+#~ msgstr "请在浏览器中打开此链接；出于安全原因，它将在 5 分钟后过期。"
+
+# | msgid ""
 # | "✔️ The Proxy link is copied\n"
 # | "<br>\n"
 # | "⚠️ If the application do not open automatically, you need to only paste
@@ -4545,6 +4580,7 @@ msgstr "动作"
 #~ "<br>\n"
 #~ "⚠️ 如果应用程序没有自动打开，您只需将其粘贴到您的应用程序上，或者："
 
+# | msgid "Telegram Bot"
 #~ msgid ""
 #~ "Telegram\n"
 #~ "          Bot"
