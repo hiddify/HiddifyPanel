@@ -19,15 +19,19 @@ import re
 class UserView(FlaskView):
 
     #region api
+    @route('/short/')
     @route('/short')
     def short_link(self):
         short = hiddify.add_short_link(
             "/"+hconfig(ConfigEnum.proxy_path)+"/"+g.user.uuid+"/")
+        full_url = f"https://{urlparse(request.base_url).hostname}/{short}"
         data = {
-            "short_link": short
+            "short": short,
+            "url": full_url
         }
         return jsonify(data)
 
+    @route('/info/')
     @route('/info')
     def info(self):
         c = get_common_data(g.user_uuid, 'new')
@@ -45,6 +49,7 @@ class UserView(FlaskView):
 
         return jsonify(data)
 
+    @route('/mtproxies/')
     @route('/mtproxies')
     def mtproxies(self):
         # get domains
@@ -68,8 +73,10 @@ class UserView(FlaskView):
 
         return jsonify(data)
 
+    
+    @route('/all-configs/')
     @route('/all-configs')
-    def all_configs(self):
+    def configs(self):
         def create_item(name, type, domain, protocol, transport, security, link):
             return {
                 'name': name,
@@ -502,7 +509,7 @@ def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
         'ConfigEnum': ConfigEnum,
         'link_maker': link_maker,
         'domains': domains,
-        "bot": bot,
+        "bot": g.bot,
         "db_domain": db_domain,
         "telegram_enable": hconfig(ConfigEnum.telegram_enable) and any([d for d in domains if d.mode in [DomainType.direct, DomainType.relay, DomainType.old_xtls_direct]]),
         "ip": user_ip,
