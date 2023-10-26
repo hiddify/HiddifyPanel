@@ -120,6 +120,12 @@
             <a href="https://t.me/hiddify" target="_blank" class="nav-link">{{icon('brands','telegram','nav-icon')+_('admin.menu.telegram')}}</a>
           </li>
           <li class="nav-item">
+            {% set issue_link = generate_github_issue_link_for_admin_sidebar() %}
+            <a href="{{issue_link}}" class="nav-item nav-link" role="button">
+              <i class="fa-solid fa-bug nav-icon"></i>&nbsp;{{_("Bug")}}
+            </a>
+          </li>
+          <li class="nav-item">
             <a class="nav-item nav-link" role="button" data-toggle="modal" data-target="#modal-donation">
               <i class="fa-solid fa-heart nav-icon"></i>&nbsp;{{_("Donation.title")}}
             </a>

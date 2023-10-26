@@ -23,27 +23,9 @@ def init_app(app):
     def internal_server_error(e):
         if not hasattr(e, 'code') or e.code == 500:
             trace = traceback.format_exc()
-            trace = remove_unrelated_stacktrace_details(trace)
-            issue_body = f"""
-# Internal Error Stacktrace:
-**Error Message**:   {str(e)}
-```
-{trace}
-```
-## Details:
-**Hiddify Version**: {hiddifypanel.__version__}
-**Python Version**:  {python_version}
-**OS**:              {platform()}
-            """
-
-            # Add user agent if exists
-            if hasattr(g, 'user_agent') and str(g.user_agent):
-                issue_body += f"**User Agent**: {str(g.user_agent)}"
 
             # Create github issue link
-            issue_link = generate_github_issue_link(e, issue_body)
-            # Remove proxy path and uuid from stacktrace details
-            remove_sensetive_data_from_github_issue_link(issue_link)
+            issue_link = generate_github_issue_link_for_500_error(e,trace)
 
             last_version = hiddify.get_latest_release_version('hiddifypanel')
             has_update = "T" not in hiddifypanel.__version__ and "dev" not in hiddifypanel.__version__ and f'{last_version}' != hiddifypanel.__version__
@@ -53,40 +35,11 @@ def init_app(app):
 
         return render_template('error.html', error=e), e.code
 
-    def remove_sensetive_data_from_github_issue_link(issue_link):
-        if hasattr(g, 'user_uuid') and g.user_uuid:
-            issue_link.replace(f'{g.user_uuid}', '*******************')
-        if hconfig(ConfigEnum.proxy_path) and hconfig(ConfigEnum.proxy_path):
-            issue_link.replace(hconfig(ConfigEnum.proxy_path), '**********')
-
-    def remove_unrelated_stacktrace_details(stacktrace: str):
-        lines = stacktrace.splitlines()
-        if len(lines) < 1:
-            return ""
-
-        output = ''
-        skip_next_line = False
-        for i, line in enumerate(lines):
-            if i == 0:
-                output += line + '\n'
-                continue
-            if skip_next_line == True:
-                skip_next_line = False
-                continue
-            if line.strip().startswith('File'):
-                if 'hiddify' in line.lower():
-                    output += line + '\n'
-                    if i < len(lines)-1:
-                        output += lines[i + 1] + '\n'
-                skip_next_line = True
-
-        return output
-
-    def generate_github_issue_link(e, issue_body):
+    def generate_github_issue_link(title, issue_body):
         opts = {
             "user": 'hiddify',
             "repo": 'Hiddify-Manager',
-            "title": f"Internal server error: {e}",
+            "title": title,
             "body": issue_body,
         }
         issue_link = str(github_issue_generator.IssueUrl(opts).get_url())
@@ -170,3 +123,94 @@ def init_app(app):
                 telegrambot.register_bot()
             g.bot = telegrambot.bot
         # print(g.user)
+
+    def github_issue_details():
+        details = {
+            'hiddify_version': f'{hiddifypanel.__version__}',
+            'python_version': f'{python_version}',
+            'os_details': f'{platform()}',
+            'user_agent': 'Unknown'
+        }
+        if hasattr(g, 'user_agent') and str(g.user_agent):
+                details['user_agent'] = g.user_agent.ua_string
+        return details
+   
+    def generate_github_issue_link_for_500_error(error,traceback,remove_sensetive_data=True, remove_unrelated_traceback_datails=True):
+        
+        def remove_sensetive_data_from_github_issue_link(issue_link):
+            if hasattr(g, 'user_uuid') and g.user_uuid:
+                issue_link.replace(f'{g.user_uuid}', '*******************')
+            if hconfig(ConfigEnum.proxy_path) and hconfig(ConfigEnum.proxy_path):
+                issue_link.replace(hconfig(ConfigEnum.proxy_path), '**********')
+
+        def remove_unrelated_traceback_details(stacktrace: str):
+            lines = stacktrace.splitlines()
+            if len(lines) < 1:
+                return ""
+
+            output = ''
+            skip_next_line = False
+            for i, line in enumerate(lines):
+                if i == 0:
+                    output += line + '\n'
+                    continue
+                if skip_next_line == True:
+                    skip_next_line = False
+                    continue
+                if line.strip().startswith('File'):
+                    if 'hiddify' in line.lower():
+                        output += line + '\n'
+                        output += lines[i + 1] + '\n'
+                    skip_next_line = True
+
+            return output
+
+        
+        if remove_unrelated_traceback_datails:
+            traceback = remove_unrelated_traceback_details(traceback)
+
+        gd = github_issue_details()
+        
+        issue_body = f"""
+# Internal Error Stacktrace:
+**Error Message**:   {str(error)}
+```
+{traceback}
+```
+## Details:
+**Hiddify Version**: {gd['hiddify_version']}
+**Python Version**:  {gd['python_version']}
+**OS**:              {gd['os_details']}
+**User Agent**:      {gd['user_agent'] if gd['user_agent'] else "Unknown"}
+            """
+
+        # Create github issue link
+        issue_link = generate_github_issue_link(f"Internal server error: {error.name if hasattr(error,'name') and error.name != None and error.name else 'Unknown'}",issue_body)
+        
+        if remove_sensetive_data:
+            remove_sensetive_data_from_github_issue_link(issue_link)
+        
+        return issue_link
+ 
+    def generate_github_issue_link_for_admin_sidebar():
+
+        gd = github_issue_details()
+
+        issue_body = f"""
+# Bug:
+**Description**:     "Describe your problem"
+
+## Details:
+**Hiddify Version**: {gd['hiddify_version']}
+**Python Version**:  {gd['python_version']}
+**OS**:              {gd['os_details']}
+**User Agent**:      {gd['user_agent'] if gd['user_agent'] else "Unknown"}
+                """
+            
+        # Create github issue link
+        issue_link = generate_github_issue_link('Please fill the title properly',issue_body)
+        return issue_link
+
+
+
+    app.jinja_env.globals['generate_github_issue_link_for_admin_sidebar'] = generate_github_issue_link_for_admin_sidebar
