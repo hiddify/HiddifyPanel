@@ -56,22 +56,17 @@ class UserView(FlaskView):
     @route('/mtproxies')
     def mtproxies(self):
         # get domains
-        domains = []
-        hdomains = get_hdomains()
-        if len(hdomains[DomainType.direct]):
-            domains += hdomains[DomainType.direct]
-        if len(hdomains[DomainType.relay]):
-            domains += hdomains[DomainType.relay]
+        c = get_common_data(g.user_uuid, 'new')
         mtproxies = []
         # TODO: Remove duplicated domains mapped to a same ipv4 and v6
-        for d in domains:
+        for d in c['domains']:
             # create server link
-            hexuuid = hconfig(ConfigEnum.shared_secret).replace('-', '')
+            hexuuid = hconfig(ConfigEnum.shared_secret, d.child_id).replace('-', '')
             telegram_faketls_domain_hex = hconfig(
-                ConfigEnum.telegram_fakedomain).encode('utf-8').hex()
-            server_link = f'tg://proxy?server={d}&port=443&secret=ee{hexuuid}{telegram_faketls_domain_hex}'
+                ConfigEnum.telegram_fakedomain, d.child_id).encode('utf-8').hex()
+            server_link = f'tg://proxy?server={d.domain}&port=443&secret=ee{hexuuid}{telegram_faketls_domain_hex}'
             # add server to data
-            mtproxies.append(server_link)
+            mtproxies.append({'title': d.alias or d.domain, 'link': server_link})
 
         return jsonify(mtproxies)
 
