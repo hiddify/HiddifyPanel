@@ -263,7 +263,7 @@ class DomainAdmin(AdminLTEModelView):
             set_hconfig(ConfigEnum.first_setup, False)
         # if hconfig(ConfigEnum.parent_panel):
         #     hiddify_api.sync_child_to_parent()
-        if model.need_valid_ssl():
+        if model.need_valid_ssl:
             hiddify.exec_command(f"sudo /opt/hiddify-manager/acme.sh/get_cert.sh {model.domain}")
 
     def is_accessible(self):
