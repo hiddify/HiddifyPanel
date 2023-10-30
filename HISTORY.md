@@ -51,6 +51,8 @@
 
 #### Fix
 
+* Bug in new domain. 
+
 * Domains not removed. 
 
 * Domains in mtproxy. 
