@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-26 12:05+0200\n"
-"PO-Revision-Date: 2023-10-26 05:01-0500\n"
+"POT-Creation-Date: 2023-10-30 09:11+0100\n"
+"PO-Revision-Date: 2023-10-26 06:24-0500\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Generated-By: Babel 2.12.1\n"
 
 # | msgid "This Domain does not exist in the Panel !"
-#: hiddifypanel/models/domain.py:158 hiddifypanel/panel/user/user.py:424
+#: hiddifypanel/models/domain.py:159 hiddifypanel/panel/user/user.py:418
 msgid "This domain does not exist in the panel!"
 msgstr "This Domain does not exist in the Panel !"
 
@@ -1426,28 +1426,28 @@ msgstr "ℹ️ Domain Fronting"
 
 # | msgid ""
 # | "It is used to simulate another website instead of your website in SNI. "
-# | "therefore, GTW Can not filter your domain"
+# | "therefore, GFW Can not filter your domain."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.domain_fronting_domain.description"
 msgstr ""
 "It is used to simulate another website instead of your website in SNI. "
-"therefore, GTW Can not filter your domain"
+"therefore, GFW Can not filter your domain."
 
 # | msgid ""
 # | "It is used to simulate another website instead of your website in SNI. "
-# | "therefore, GTW can not filter your Domain\n"
+# | "therefore, GFW can not filter your Domain\n"
 # | "<a href=\"https://github.com/hiddify/hiddify-"
 # | "config/wiki/%D8%A7%D8%B3%D8%AA%D9%81%D8%A7%D8%AF%D9%87-%D8%A7%D8%B2-"
 # | "%D8%AF%D8%A7%D9%85%DB%8C%D9%86-"
 # | "%D9%81%D8%B1%D8%A7%D9%86%D8%AA%DB%8C%D9%86%DA%AF\">Guide</a>. "
-# | "⚠️CloudFlare does not support Domain Fronting. "
+# | "⚠️CloudFlare does not support Domain Fronting."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:2
 msgid "config.domain_fronting.description"
 msgstr ""
-"It is used to simulate another website instead of your website in SNI. therefore, GTW can not filter your Domain\n"
-"<a href=\"https://github.com/hiddify/hiddify-config/wiki/%D8%A7%D8%B3%D8%AA%D9%81%D8%A7%D8%AF%D9%87-%D8%A7%D8%B2-%D8%AF%D8%A7%D9%85%DB%8C%D9%86-%D9%81%D8%B1%D8%A7%D9%86%D8%AA%DB%8C%D9%86%DA%AF\">Guide</a>. ⚠️CloudFlare does not support Domain Fronting. "
+"It is used to simulate another website instead of your website in SNI. therefore, GFW can not filter your Domain\n"
+"<a href=\"https://github.com/hiddify/hiddify-config/wiki/%D8%A7%D8%B3%D8%AA%D9%81%D8%A7%D8%AF%D9%87-%D8%A7%D8%B2-%D8%AF%D8%A7%D9%85%DB%8C%D9%86-%D9%81%D8%B1%D8%A7%D9%86%D8%AA%DB%8C%D9%86%DA%AF\">Guide</a>. ⚠️CloudFlare does not support Domain Fronting."
 
 # | msgid "✔️ Enable Telegram MTProto"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -2014,14 +2014,14 @@ msgid "config.reality_fallback_domain.label"
 msgstr "🌍 Reality Fallback Domain"
 
 # | msgid ""
-# | "When the GTW visit the Websites in Server names, it will be redirect to "
+# | "When the GFW visit the Websites in Server names, it will be redirect to "
 # | "this Domain."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 #: hiddifypanel/templates/flaskadmin-layout.html:124
 msgid "config.reality_fallback_domain.description"
 msgstr ""
-"When the GTW visit the Websites in Server names, it will be redirect to this"
+"When the GFW visit the Websites in Server names, it will be redirect to this"
 " Domain."
 
 # | msgid "🔑 Private Key"
@@ -4270,16 +4270,15 @@ msgstr "🔒 Enable TLS Domain Fronting"
 
 # | msgid ""
 # | "It is used to simulate another website instead of your website in SNI. "
-# | "therefore, GTW can not filter your Domain\n"
+# | "therefore, GFW can not filter your Domain\n"
 # | "<a
 # href=\"https://github.com/hiddify/hiddify-config/wiki/Guide-for-domain-"
-# | "fronting\">Guide</a>. ⚠️CloudFlare does not support Domain Fronting. "
+# | "fronting\">Guide</a>. ⚠️CloudFlare does not support Domain Fronting."
 #: hiddifypanel/templates/flaskadmin-layout.html:129
-#, fuzzy
 msgid "domain.domain_fronting.description"
 msgstr ""
-"It is used to simulate another website instead of your website in SNI. therefore, GTW can not filter your Domain\n"
-"<a href=\"https://github.com/hiddify/hiddify-config/wiki/Guide-for-domain-fronting\">Guide</a>. ⚠️CloudFlare does not support Domain Fronting. "
+"It is used to simulate another website instead of your website in SNI. therefore, GFW can not filter your Domain\n"
+"<a href=\"https://github.com/hiddify/hiddify-config/wiki/Guide-for-domain-fronting\">Guide</a>. ⚠️CloudFlare does not support Domain Fronting."
 
 # | msgid "Close"
 #: hiddifypanel/templates/macros.html:29

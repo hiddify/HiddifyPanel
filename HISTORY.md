@@ -51,6 +51,10 @@
 
 #### Fix
 
+* Domains not removed. 
+
+* Domains in mtproxy. 
+
 * Bug in user.py. 
 
 * Get telegram bot in get_common_data method. 
@@ -162,6 +166,8 @@
 * Bugs. 
 
 #### Other
+
+* Better mtproxy. 
 
 * Review code. 
 

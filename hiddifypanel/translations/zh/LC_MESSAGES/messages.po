@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-26 12:05+0200\n"
-"PO-Revision-Date: 2023-10-26 05:01-0500\n"
+"POT-Creation-Date: 2023-10-30 09:11+0100\n"
+"PO-Revision-Date: 2023-10-26 06:24-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Generated-By: Babel 2.12.1\n"
 
 # | msgid "This Domain does not exist in the Panel !"
-#: hiddifypanel/models/domain.py:158 hiddifypanel/panel/user/user.py:424
+#: hiddifypanel/models/domain.py:159 hiddifypanel/panel/user/user.py:418
 msgid "This domain does not exist in the panel!"
 msgstr "该域名在面板中不存在！"
 
@@ -393,11 +393,10 @@ msgstr "您似乎还没有创建任何用户。默认用户链接：%(default_li
 # "href=\"https://github.com/hiddify/Hiddify-Manager/wiki/Disable-SSH-Password-"
 # | "Authentication\">read more... </a>"
 #: hiddifypanel/panel/admin/Dashboard.py:76
-#, fuzzy
 msgid "ssh.password-login.warning."
 msgstr ""
-"您的服务器很容易受到滥用，因为您的 SSH "
-"中启用了密码身份验证。为了保护您的服务器，请切换到密钥身份验证机制并关闭PasswordAuthentication。 <a "
+"由于您的服务器启用了 SSH "
+"密码身份验证机制，因此很容易受到侵入导致被滥用。为了保护您的服务器，请切换到密钥身份验证机制，并关闭密码身份验证机制。 <a "
 "href=\"https://github.com/hiddify/Hiddify-Manager/wiki/Disable-SSH-"
 "Password-Authentication\">了解更多... </a>"
 
@@ -1359,7 +1358,7 @@ msgstr "ℹ️ 域名前置"
 
 # | msgid ""
 # | "It is used to simulate another website instead of your website in SNI. "
-# | "therefore, GTW Can not filter your domain"
+# | "therefore, GFW Can not filter your domain."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.domain_fronting_domain.description"
@@ -1367,10 +1366,10 @@ msgstr "它用于将您的网站在 SNI 中伪装成另一个网站。这样防�
 
 # | msgid ""
 # | "It is used to simulate another website instead of your website in SNI.
-# therefore, GTW can not filter your Domain\n"
+# therefore, GFW can not filter your Domain\n"
 # | "<a
 # href=\"https://github.com/hiddify/hiddify-config/wiki/%D8%A7%D8%B3%D8%AA%D9%81%D8%A7%D8%AF%D9%87-%D8%A7%D8%B2-%D8%AF%D8%A7%D9%85%DB%8C%D9%86-%D9%81%D8%B1%D8%A7%D9%86%D8%AA%DB%8C%D9%86%DA%AF\">Guide</a>.
-# ⚠️CloudFlare does not support Domain Fronting. "
+# ⚠️CloudFlare does not support Domain Fronting."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:2
 msgid "config.domain_fronting.description"
@@ -1914,7 +1913,7 @@ msgstr "🆔 短 ID"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.reality_short_ids.description"
-msgstr "请勿改变"
+msgstr "请勿更改"
 
 # | msgid "🌍 Reality Fallback Domain"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1924,14 +1923,14 @@ msgid "config.reality_fallback_domain.label"
 msgstr "🌍 Reality 回落域名"
 
 # | msgid ""
-# | "When the GTW visit the Websites in Server names, it will be redirect to
+# | "When the GFW visit the Websites in Server names, it will be redirect to
 # this"
 # | " Domain."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 #: hiddifypanel/templates/flaskadmin-layout.html:124
 msgid "config.reality_fallback_domain.description"
-msgstr "GTW访问服务器名中的网站时，会重定向到该域名。"
+msgstr "防火墙访问服务器中的网站时，会重定向到该域名。"
 
 # | msgid "🔑 Private Key"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1967,7 +1966,7 @@ msgstr "Reality"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:2
 msgid "config.reality.description"
-msgstr "REALITY 消除了服务端的 TLS 指纹"
+msgstr "REALITY 消除了服务端的 TLS 指纹特征"
 
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
@@ -2703,7 +2702,7 @@ msgstr "自动"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:48
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:19
 msgid "user.home.allconfig.hiddify-managers"
-msgstr "user.home.allconfig.hiddify-managers"
+msgstr "所有 Hiddify Managers 配置"
 
 # | msgid "Clash Configs"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:61
@@ -3035,7 +3034,7 @@ msgstr "为所有网站安装"
 # | msgid "DNS over HTTPS"
 #: hiddifypanel/panel/user/templates/home/doh.html:1
 msgid "user.home.tool.doh.title"
-msgstr "user.home.tool.doh.title"
+msgstr "DNS over HTTPS"
 
 # | msgid "Copy"
 #: hiddifypanel/panel/user/templates/home/doh.html:8
@@ -3744,15 +3743,14 @@ msgstr "Telegram"
 
 # | msgid "Bug/Feature"
 #: hiddifypanel/templates/admin-layout.html:125
-#, fuzzy
 msgid "Bug"
-msgstr "错误或功能"
+msgstr "错误/功能"
 
 # | msgid "Donation"
 #: hiddifypanel/templates/admin-layout.html:130
 #: hiddifypanel/templates/donation.html:5
 msgid "Donation.title"
-msgstr "Donation.title"
+msgstr "捐赠"
 
 # | msgid "Status"
 #: hiddifypanel/templates/admin-layout.html:154
@@ -3988,14 +3986,14 @@ msgstr ""
 # | msgid "Additional Warp Sites"
 #: hiddifypanel/templates/fake.html:1
 msgid "config.warp_sites.label"
-msgstr "config.warp_sites.label"
+msgstr "增加 Warp 站点"
 
 # | msgid ""
 # | "Add additional sites to pass through warp (only when warp mode is not
 # None)"
 #: hiddifypanel/templates/fake.html:1
 msgid "config.warp_sites.description"
-msgstr "config.warp_sites.description"
+msgstr "增加通过 Warp 的额外站点（仅当 Warp 模式不为空时）"
 
 # | msgid "🖥 DNS Server"
 #: hiddifypanel/templates/fake.html:1
@@ -4016,7 +4014,7 @@ msgstr ""
 # | msgid "Direct Reality Port"
 #: hiddifypanel/templates/fake.html:1
 msgid "config.reality_port.label"
-msgstr "config.reality_port.label"
+msgstr "直连 Reality 端口"
 
 # | msgid ""
 # | "You can set a customized port for your reality server to reduce the
@@ -4024,7 +4022,7 @@ msgstr "config.reality_port.label"
 # | " overhead. (Allow direct connection to proxies should be yes)"
 #: hiddifypanel/templates/fake.html:1
 msgid "config.reality_port.description"
-msgstr "config.reality_port.description"
+msgstr "您可以设置一个 Reality 服务的自定义端口，以节省系统开销。（允许直接连接到代理应该设置为 是）"
 
 # | msgid "Enable Hysteria2"
 #: hiddifypanel/templates/fake.html:1
@@ -4182,10 +4180,10 @@ msgstr "🔒 启用 TLS 域名前置"
 
 # | msgid ""
 # | "It is used to simulate another website instead of your website in SNI.
-# therefore, GTW can not filter your Domain\n"
+# therefore, GFW can not filter your Domain\n"
 # | "<a
 # href=\"https://github.com/hiddify/hiddify-config/wiki/Guide-for-domain-fronting\">Guide</a>.
-# ⚠️CloudFlare does not support Domain Fronting. "
+# ⚠️CloudFlare does not support Domain Fronting."
 #: hiddifypanel/templates/flaskadmin-layout.html:129
 msgid "domain.domain_fronting.description"
 msgstr ""
@@ -4584,5 +4582,5 @@ msgstr "动作"
 #~ msgid ""
 #~ "Telegram\n"
 #~ "          Bot"
-#~ msgstr "Telegram Bot"
+#~ msgstr "Telegram 机器人"
 
