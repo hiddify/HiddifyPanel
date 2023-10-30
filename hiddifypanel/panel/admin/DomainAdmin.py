@@ -1,6 +1,6 @@
 from hiddifypanel.models import *
 import re
-
+from hiddifypanel.panel.database import db
 from flask import Markup
 from flask import g, flash
 from flask_babelex import gettext as __
@@ -248,6 +248,9 @@ class DomainAdmin(AdminLTEModelView):
     def on_model_delete(self, model):
         if len(Domain.query.all()) <= 1:
             raise ValidationError(f"at least one domain should exist")
+        # ShowDomain.query.filter_by(related_id == model.id).delete()
+        model.showed_by_domains = []
+        # db.session.commit()
         hiddify.flash_config_success(restart_mode='apply', domain_changed=True)
 
     def after_model_delete(self, model):
@@ -260,7 +263,7 @@ class DomainAdmin(AdminLTEModelView):
             set_hconfig(ConfigEnum.first_setup, False)
         # if hconfig(ConfigEnum.parent_panel):
         #     hiddify_api.sync_child_to_parent()
-        if model.mode in [DomainType.direct, DomainType.cdn, DomainType.worker, DomainType.relay, DomainType.auto_cdn_ip, DomainType.old_xtls_direct, DomainType.sub_link_only]:
+        if model.need_valid_ssl():
             hiddify.exec_command(f"sudo /opt/hiddify-manager/acme.sh/get_cert.sh {model.domain}")
 
     def is_accessible(self):

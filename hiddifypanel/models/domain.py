@@ -8,6 +8,7 @@ from strenum import StrEnum
 from hiddifypanel.panel.database import db
 from .config import hconfig
 from .config_enum import ConfigEnum
+from sqlalchemy.orm import backref
 
 
 class DomainType(StrEnum):
@@ -47,7 +48,7 @@ class Domain(db.Model, SerializerMixin):
     show_domains = db.relationship('Domain', secondary=ShowDomain,
                                    primaryjoin=id == ShowDomain.c.domain_id,
                                    secondaryjoin=id == ShowDomain.c.related_id,
-                                   # backref=backref('show_domains', lazy='dynamic')
+                                   backref=backref('showed_by_domains', lazy='dynamic')
                                    )
 
     def __repr__(self):
@@ -76,7 +77,7 @@ class Domain(db.Model, SerializerMixin):
 
     @property
     def need_valid_ssl(self):
-        return self.mode in ['direct', 'cdn', 'worker', 'relay', 'auto_cdn_ip', 'old_xtls_direct', 'sub_link_only']
+        return self.mode in [DomainType.direct, DomainType.cdn, DomainType.worker, DomainType.relay, DomainType.auto_cdn_ip, DomainType.old_xtls_direct, DomainType.sub_link_only]
 
     @property
     def port_index(self):
