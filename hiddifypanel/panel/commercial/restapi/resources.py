@@ -14,6 +14,8 @@ from hiddifypanel.drivers import user_driver
 
 
 class UserResource(Resource):
+    decorators = [hiddify.super_admin]
+
     def get(self, uuid=None):
         uuid = request.args['uuid'] if 'uuid' in request.args else None
         if uuid:
@@ -27,19 +29,19 @@ class UserResource(Resource):
 
     def post(self):
         data = request.json
-        ### because add_client method accepts a user object not uuid the api returns 502 error.I have a possible fix for this
+        # because add_client method accepts a user object not uuid the api returns 502 error.I have a possible fix for this
         user = User.query.filter(User.uuid == data['uuid']).first() or abort(204)
         hiddify.add_or_update_user(**data)
         user_driver.add_client(user)
         hiddify.quick_apply_users()
 
         return jsonify({'status': 200, 'msg': 'ok'})
-    
-        ### start aliz dev
-    ### desc : it is better to have a delete method to manage users more programatically :)
+
+        # start aliz dev
+    # desc : it is better to have a delete method to manage users more programatically :)
     def delete(self, uuid=None):
         uuid = request.args['uuid'] if 'uuid' in request.args else None
-        if uuid:     
+        if uuid:
             user = User.query.filter(User.uuid == uuid).first() or abort(204)
             if user is not None:
                 hiddify.remove_user(uuid)
@@ -47,13 +49,15 @@ class UserResource(Resource):
                 hiddify.quick_apply_users()
                 return jsonify({'status': 200, 'msg': 'ok'})
             else:
-                return jsonify({'status': 204, 'msg': 'user not found'})     
+                return jsonify({'status': 204, 'msg': 'user not found'})
         else:
             return jsonify({'status': 204, 'msg': 'uuid not found'})
-    ### end aliz dev
+    # end aliz dev
 
 
 class AdminUserResource(Resource):
+    decorators = [hiddify.super_admin]
+
     def get(self, uuid=None):
         uuid = request.args['uuid'] if 'uuid' in request.args else None
         if uuid:
