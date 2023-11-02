@@ -51,6 +51,8 @@
 
 #### Fix
 
+* Security concern. 
+
 * Permission issue. 
 
 * Bug in new domain. 
@@ -301,6 +303,14 @@
 * Convert old db to new. 
 
 * Add pysql req. 
+
+
+
+## 8.7.0 (2023-11-02)
+
+#### Fix
+
+* Api issues and resolve security issue. 
 
 
 
