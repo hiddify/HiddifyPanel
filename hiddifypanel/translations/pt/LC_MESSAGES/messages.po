@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPT\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-19 14:25+0200\n"
-"PO-Revision-Date: 2023-10-14 02:22-0500\n"
+"POT-Creation-Date: 2023-11-02 10:32+0100\n"
+"PO-Revision-Date: 2023-11-02 03:57-0500\n"
 "Last-Translator: lymanrudni\n"
 "Language: pt\n"
 "Language-Team: Portuguese\n"
@@ -13,6 +13,12 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.12.1\n"
+
+# | msgid "Owner Can Not Be Deleted!"
+#: hiddifypanel/models/admin.py:74
+#, fuzzy
+msgid "Owner can not be deleted!"
+msgstr "O proprietário não pode ser excluído!"
 
 # | msgid "This Domain does not exist in the Panel !"
 #: hiddifypanel/models/domain.py:134 hiddifypanel/panel/user/user.py:281
@@ -144,56 +150,56 @@ msgstr ""
 "atualizado"
 
 # | msgid "Actions"
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:56
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:58
 #: hiddifypanel/panel/admin/UserAdmin.py:72
 #, fuzzy
 msgid "actions"
 msgstr "Ações"
 
 # | msgid "User Links"
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:57
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:59
 #: hiddifypanel/panel/admin/UserAdmin.py:74
 #, fuzzy
 msgid "user.user_links"
 msgstr "Links de usuário"
 
 # | msgid "Name"
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:58
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:60
 #: hiddifypanel/panel/admin/UserAdmin.py:73
 #, fuzzy
 msgid "user.name"
 msgstr "Nome"
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:59
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:61
 #: hiddifypanel/panel/admin/UserAdmin.py:77
 #, fuzzy
 msgid "Mode"
 msgstr "Modo"
 
 # | msgid "UUID"
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:60
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:62
 #: hiddifypanel/panel/admin/UserAdmin.py:83
 msgid "user.UUID"
 msgstr "UUID"
 
 # | msgid "📝 Note"
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:61
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:63
 #: hiddifypanel/panel/admin/UserAdmin.py:84
 #, fuzzy
 msgid "Note"
 msgstr "📝 Observação"
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:62
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:64
 #, fuzzy
 msgid "Max Active Users"
 msgstr "Máximo de usuários ativos"
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:63
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:65
 #, fuzzy
 msgid "Max Users"
 msgstr "Máximo de usuários"
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:64
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:66
 #: hiddifypanel/panel/admin/templates/index.html:77
 #: hiddifypanel/panel/admin/templates/index.html:83
 #: hiddifypanel/panel/admin/templates/index.html:89
@@ -207,28 +213,22 @@ msgid "Online Users"
 msgstr "Usuários online"
 
 # | msgid "👥 Can Add Sub Admin"
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:65
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:67
 #, fuzzy
 msgid "Can add sub admin"
 msgstr "👥 Pode adicionar subadministrador"
 
 # | msgid "Add some Text that is only visible to Super Admin"
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:76
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:78
 #, fuzzy
 msgid "Add some text that is only visible to super_admin."
 msgstr "Adicione algum texto que seja visível apenas para o superadministrador"
 
 # | msgid "🥇🥈🥉 Define the Admin Mode"
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:77
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:79
 #, fuzzy
 msgid "Define the admin mode. "
 msgstr "Definir o Modo Admin"
-
-# | msgid "Owner Can Not Be Deleted!"
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:216
-#, fuzzy
-msgid "Owner can not be deleted!"
-msgstr "O proprietário não pode ser excluído!"
 
 # | msgid "Config file is incorrect."
 #: hiddifypanel/panel/admin/Backup.py:75
@@ -282,13 +282,20 @@ msgstr "🌏 Restaurar domínio"
 msgid "Restore Domain description"
 msgstr "Selecione esta opção para restaurar seus domínios"
 
+# | msgid "Override Owner in Backup"
 #: hiddifypanel/panel/admin/Backup.py:85
+#, fuzzy
 msgid "Override Root Admin"
-msgstr ""
+msgstr "Substituir proprietário no backup"
 
+# | msgid ""
+# | "It will override the owner admin of the backup file to the current user"
 #: hiddifypanel/panel/admin/Backup.py:85
+#, fuzzy
 msgid "It will override the root admin to the current user"
 msgstr ""
+"Ele substituirá o administrador proprietário do arquivo de backup pelo "
+"usuário atual"
 
 #: hiddifypanel/panel/admin/Backup.py:86
 #: hiddifypanel/panel/admin/ProxyAdmin.py:97
@@ -1606,7 +1613,7 @@ msgstr "Frente de domínio"
 
 # | msgid ""
 # | "It is used to simulate another website instead of your website in SNI. "
-# | "therefore, GTW Can not filter your domain"
+# | "therefore, GFW Can not filter your domain."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
@@ -1617,10 +1624,10 @@ msgstr ""
 
 # | msgid ""
 # | "It is used to simulate another website instead of your website in SNI.
-# therefore, GTW can not filter your Domain\n"
+# therefore, GFW can not filter your Domain\n"
 # | "<a
 # href=\"https://github.com/hiddify/hiddify-config/wiki/%D8%A7%D8%B3%D8%AA%D9%81%D8%A7%D8%AF%D9%87-%D8%A7%D8%B2-%D8%AF%D8%A7%D9%85%DB%8C%D9%86-%D9%81%D8%B1%D8%A7%D9%86%D8%AA%DB%8C%D9%86%DA%AF\">Guide</a>.
-# ⚠️CloudFlare does not support Domain Fronting. "
+# ⚠️CloudFlare does not support Domain Fronting."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:2
 #, fuzzy
@@ -2272,7 +2279,7 @@ msgid "config.reality_fallback_domain.label"
 msgstr "🌍 Domínio alternativo"
 
 # | msgid ""
-# | "When the GTW visit the Websites in Server names, it will be redirect to
+# | "When the GFW visit the Websites in Server names, it will be redirect to
 # this"
 # | " Domain."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -3995,12 +4002,14 @@ msgstr "Mais aplicativos"
 msgid "Import in"
 msgstr "Importar em"
 
+# | msgid "Download App"
 #: hiddifypanel/panel/user/templates/home/one_click.html:149
 #: hiddifypanel/panel/user/templates/home/one_click.html:186
+#, fuzzy
 msgid ""
 "Download\n"
 "                                App"
-msgstr ""
+msgstr "Baixar aplicativo"
 
 # | msgid "<i class=\"fa-solid fa-qrcode\"></i> QRCode"
 #: hiddifypanel/panel/user/templates/home/one_click.html:269
@@ -4612,7 +4621,7 @@ msgstr ""
 "🚧 Bloquear Malware 1.1.1.2 <br>\n"
 "🔞 Bloquear pornografia 1.1.1.3"
 
-# | msgid "Enable Hysteria"
+# | msgid "Enable Hysteria2"
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
 msgid "config.hysteria_enable.label"
@@ -4624,7 +4633,7 @@ msgstr "Habilitar Histeria"
 msgid "config.hysteria_enable.description"
 msgstr "Para ativar o protocolo de histeria baseado em udp"
 
-# | msgid "Hysteria Port"
+# | msgid "Hysteria2 Port"
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
 msgid "config.hysteria_port.label"
@@ -4800,13 +4809,18 @@ msgstr ""
 
 # | msgid ""
 # | "It is used to simulate another website instead of your website in SNI.
-# therefore, GTW can not filter your Domain\n"
+# therefore, GFW can not filter your Domain\n"
 # | "<a
 # href=\"https://github.com/hiddify/hiddify-config/wiki/Guide-for-domain-fronting\">Guide</a>.
-# ⚠️CloudFlare does not support Domain Fronting. "
+# ⚠️CloudFlare does not support Domain Fronting."
 #: hiddifypanel/templates/flaskadmin-layout.html:122
+#, fuzzy
 msgid "domain.domain_fronting.description"
 msgstr ""
+"É usado para simular outro site em vez do seu site no SNI. portanto, o "
+"GFW não pode filtrar seu domínio\n"
+"<a href=\"https://github.com/hiddify/hiddify-config/wiki/Guide-for-"
+"domain-fronting\">Guia</a>. ⚠️CloudFlare não suporta fronting de domínio."
 
 # | msgid "Close"
 #: hiddifypanel/templates/macros.html:29 hiddifypanel/templates/master.html:171
@@ -4941,9 +4955,71 @@ msgstr "Ações"
 #~ "          Bot"
 #~ msgstr ""
 
+# | msgid "Direct Reality Port"
 #~ msgid "config.reality_port.label"
-#~ msgstr ""
+#~ msgstr "Porto de Realidade Direta"
 
+# | msgid ""
+# | "You can set a customized port for your reality server to reduce the
+# system's"
+# | " overhead. (Allow direct connection to proxies should be yes)"
 #~ msgid "config.reality_port.description"
 #~ msgstr ""
+#~ "Você pode definir uma porta "
+#~ "personalizada para seu servidor de "
+#~ "realidade para reduzir a sobrecarga do"
+#~ " sistema. (Permitir conexão direta com "
+#~ "proxies deve ser sim)"
+
+# | msgid "All Config Hiddify Managers"
+#~ msgid "user.home.allconfig.hiddify-managers"
+#~ msgstr "Todos os gerenciadores de configuração do Hiddify"
+
+# | msgid "DNS over HTTPS"
+#~ msgid "user.home.tool.doh.title"
+#~ msgstr "DNS sobre HTTPS"
+
+# | msgid "Please create an issue on Github"
+#~ msgid "Please create an issue on Github."
+#~ msgstr "Por favor, crie um problema no Github"
+
+# | msgid "Donation"
+#~ msgid "Donation.title"
+#~ msgstr "Doação"
+
+# | msgid "Additional Warp Sites"
+#~ msgid "config.warp_sites.label"
+#~ msgstr "Sites Warp Adicionais"
+
+# | msgid ""
+# | "Add additional sites to pass through warp (only when warp mode is not
+# None)"
+#~ msgid "config.warp_sites.description"
+#~ msgstr ""
+#~ "Adicione sites adicionais para passar "
+#~ "pelo warp (somente quando o modo "
+#~ "warp não for Nenhum)"
+
+# | msgid ""
+# | "Your server is vulnerable to abuses because PasswordAuthentication is "
+# | "enabled in your SSH. To secure your server, please switch to key "
+# | "authentication mechanism and turn off PasswordAuthentication. <a "
+# |
+# "href=\"https://github.com/hiddify/Hiddify-Manager/wiki/Disable-SSH-Password-"
+# | "Authentication\">read more... </a>"
+#~ msgid "ssh.password-login.warning."
+#~ msgstr ""
+#~ "Seu servidor está vulnerável a abusos"
+#~ " porque PasswordAuthentication está habilitado"
+#~ " em seu SSH. Para proteger seu "
+#~ "servidor, mude para o mecanismo de "
+#~ "autenticação de chave e desative "
+#~ "PasswordAuthentication. <a "
+#~ "href=\"https://github.com/hiddify/Hiddify-Manager/wiki"
+#~ "/Disable-SSH-Password-Authentication\">leia "
+#~ "mais... </a>"
+
+# | msgid "Bug/Feature"
+#~ msgid "Bug"
+#~ msgstr "Bug/recurso"
 
