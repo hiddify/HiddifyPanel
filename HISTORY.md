@@ -51,6 +51,8 @@
 
 #### Fix
 
+* Permission issue. 
+
 * Bug in new domain. 
 
 * Domains not removed. 
