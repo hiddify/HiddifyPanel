@@ -16,25 +16,29 @@ from hiddifypanel.drivers import user_driver
 class UserResource(Resource):
     decorators = [hiddify.super_admin]
 
-    def get(self, uuid=None):
-        uuid = request.args['uuid'] if 'uuid' in request.args else None
+    def get(self):
+        uuid = request.args.get('uuid')
         if uuid:
-            product = User.query.filter(User.uuid == uuid).first() or abort(204)
-            return jsonify(product.to_dict())
+            user = user_by_uuid(uuid) or abort(404, "user not found")
+            return jsonify(user.to_dict())
 
-        products = User.query.all() or abort(204)
-        return jsonify(
-            [product.to_dict() for product in products]
-        )
+        users = User.query.all() or abort(502, "WTF!")
+        return jsonify([user.to_dict() for user in users])
 
     def post(self):
         data = request.json
-        # because add_client method accepts a user object not uuid the api returns 502 error.I have a possible fix for this
-        user = User.query.filter(User.uuid == data['uuid']).first() or abort(204)
+        uuid = data.get('uuid') or abort(422, "Parameter issue: 'uuid'")
         hiddify.add_or_update_user(**data)
+        user = user_by_uuid(uuid) or abort(502, "unknown issue! user is not added")
         user_driver.add_client(user)
         hiddify.quick_apply_users()
+        return jsonify({'status': 200, 'msg': 'ok'})
 
+    def delete(self):
+        uuid = request.args.get('uuid') or abort(422, "Parameter issue: 'uuid'")
+        user = user_by_uuid(uuid) or abort(404, "user not found")
+        user.remove()
+        hiddify.quick_apply_users()
         return jsonify({'status': 200, 'msg': 'ok'})
 
         # start aliz dev
@@ -59,20 +63,25 @@ class AdminUserResource(Resource):
     decorators = [hiddify.super_admin]
 
     def get(self, uuid=None):
-        uuid = request.args['uuid'] if 'uuid' in request.args else None
+        uuid = request.args.get('uuid')
         if uuid:
-            product = AdminUser.query.filter(AdminUser.uuid == uuid).first() or abort(204)
-            return jsonify(product.to_dict())
+            admin = get_admin_user_db(uuid) or abort(404, "user not found")
+            return jsonify(admin.to_dict())
 
-        products = AdminUser.query.all() or abort(204)
-        return jsonify(
-            [product.to_dict() for product in products]
-        )
+        admins = AdminUser.query.all() or abort(502, "WTF!")
+        return jsonify([admin.to_dict() for admin in admins])
 
     def post(self):
         data = request.json
+        uuid = data.get('uuid') or abort(422, "Parameter issue: 'uuid'")
         hiddify.add_or_update_admin(**data)
 
+        return jsonify({'status': 200, 'msg': 'ok'})
+
+    def delete(self):
+        uuid = request.args.get('uuid') or abort(422, "Parameter issue: 'uuid'")
+        admin = get_admin_user_db(uuid) or abort(404, "admin not found")
+        admin.remove()
         return jsonify({'status': 200, 'msg': 'ok'})
 
 

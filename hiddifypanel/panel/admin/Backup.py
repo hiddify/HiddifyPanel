@@ -53,6 +53,8 @@ class Backup(FlaskView):
         if restore_form.validate_on_submit():
             set_hconfig(ConfigEnum.first_setup, False)
             file = restore_form.restore_file.data
+            if isinstance(file, list):
+                file = file[0]
             json_data = json.load(file)
 
             hiddify.set_db_from_json(json_data,

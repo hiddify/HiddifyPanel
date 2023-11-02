@@ -41,7 +41,7 @@ def get_enabled_users():
     return res
 
 
-def add_client(user):
+def add_client(user: User):
     for driver in drivers:
         try:
             driver.add_client(user)
@@ -49,7 +49,7 @@ def add_client(user):
             hiddify.error(f'ERROR! {driver.__class__.__name__} has error {e} in add client for user={user.uuid}')
 
 
-def remove_client(user):
+def remove_client(user: User):
     for driver in drivers:
         try:
             driver.remove_client(user)

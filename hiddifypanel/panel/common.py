@@ -27,11 +27,14 @@ def init_app(app):
             # Create github issue link
             issue_link = generate_github_issue_link_for_500_error(e, trace)
 
-            last_version = hiddify.get_latest_release_version('hiddifypanel')
-            has_update = "T" not in hiddifypanel.__version__ and "dev" not in hiddifypanel.__version__ and f'{last_version}' != hiddifypanel.__version__
-            return render_template('500.html', error=e, trace=trace, has_update=has_update, last_version=last_version, issue_link=issue_link), 500
-        # if e.code in [400, 401, 403]:
-        #     return render_template('access-denied.html', error=e), e.code
+            last_version = hiddify.get_latest_release_version('hiddifypanel')//TODO: add dev update check
+            if "T" in hiddifypanel.__version__:
+                has_update = False
+            else:
+                has_update = "dev" not in hiddifypanel.__version__ and f'{last_version}' != hiddifypanel.__version__
+            return render_template('500.html', error=e, trace=trace, has_update=has_update, last_version=last_version), 500
+        # if e.code in [400,401,403]:
+        #     return render_template('access-denied.html',error=e), e.code
 
         return render_template('error.html', error=e), e.code
 

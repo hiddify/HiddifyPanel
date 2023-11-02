@@ -68,6 +68,18 @@ class AdminUser(db.Model, SerializerMixin):
                 sub_admin_ids += sub_admin.recursive_sub_admins_ids(depth-1, seen=seen)
         return sub_admin_ids
 
+    def remove(model):
+        if model.id == 1 or model.id == g.admin.id:
+            raise ValidationError(_("Owner can not be deleted!"))
+        users=model.recursive_users_query().all()
+        for u in users:
+            u.added_by=g.admin.id
+        
+        DailyUsage.query.filter(DailyUsage.admin_id.in_(model.recursive_sub_admins_ids())).update({'admin_id':g.admin.id})
+        AdminUser.query.filter(AdminUser.id.in_(model.recursive_sub_admins_ids())).delete()
+
+        db.session.commit()
+
     def __str__(self):
         return str(self.name)
 

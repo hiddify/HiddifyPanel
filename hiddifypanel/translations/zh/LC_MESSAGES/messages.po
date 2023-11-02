@@ -3,8 +3,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
+<<<<<<< HEAD
 "POT-Creation-Date: 2023-11-02 09:56+0100\n"
 "PO-Revision-Date: 2023-10-30 11:24-0500\n"
+=======
+"POT-Creation-Date: 2023-11-02 10:32+0100\n"
+"PO-Revision-Date: 2023-11-02 03:57-0500\n"
+>>>>>>> origin/v8
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -14,18 +19,35 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.12.1\n"
 
+# | msgid "Owner Can Not Be Deleted!"
+#: hiddifypanel/models/admin.py:74
+msgid "Owner can not be deleted!"
+msgstr "不能删除所有者！"
+
 # | msgid "This Domain does not exist in the Panel !"
+<<<<<<< HEAD
 #: hiddifypanel/models/domain.py:159 hiddifypanel/panel/user/user.py:418
+=======
+#: hiddifypanel/models/domain.py:134 hiddifypanel/panel/user/user.py:281
+>>>>>>> origin/v8
 msgid "This domain does not exist in the panel!"
 msgstr "该域名在面板中不存在！"
 
 # | msgid ""
 # | "Error In Auto CDN IP! It Can Not Be Find, Please Contact Admin"
+<<<<<<< HEAD
 #: hiddifypanel/panel/clean_ip.py:130
 msgid "Error! auto cdn ip can not be find, please contact admin."
 msgstr "自动 CDN IP 错误！找不到自动 CDN IP，请联系管理员"
 
 #: hiddifypanel/panel/hiddify.py:74
+=======
+#: hiddifypanel/panel/clean_ip.py:127
+msgid "Error! auto cdn ip can not be find, please contact admin."
+msgstr "自动 CDN IP 错误！找不到自动 CDN IP，请联系管理员"
+
+#: hiddifypanel/panel/hiddify.py:96
+>>>>>>> origin/v8
 msgid "Access Denied"
 msgstr "拒绝访问"
 
@@ -43,7 +65,11 @@ msgid "config.validation-success"
 msgstr "配置已成功更改。单击 %(link)s 以应用配置。应用可能需要 2 分钟。"
 
 # | msgid " ✅ Configs have been changed successfully"
+<<<<<<< HEAD
 #: hiddifypanel/panel/hiddify.py:180
+=======
+#: hiddifypanel/panel/hiddify.py:249
+>>>>>>> origin/v8
 msgid "config.validation-success-no-reset"
 msgstr " ✅ 配置已成功更改"
 
@@ -52,9 +78,15 @@ msgstr " ✅ 配置已成功更改"
 # check "
 # | "your Domain configurations."
 #: hiddifypanel/panel/admin/ChildAdmin.py:106
+<<<<<<< HEAD
 #: hiddifypanel/panel/admin/DomainAdmin.py:147
 #: hiddifypanel/panel/admin/DomainAdmin.py:169
 #: hiddifypanel/panel/admin/DomainAdmin.py:172
+=======
+#: hiddifypanel/panel/admin/DomainAdmin.py:154
+#: hiddifypanel/panel/admin/DomainAdmin.py:176
+#: hiddifypanel/panel/admin/DomainAdmin.py:179
+>>>>>>> origin/v8
 #: hiddifypanel/panel/admin/QuickSetup.py:127
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:107
 #: hiddifypanel/panel/hiddify.py:269
@@ -62,7 +94,11 @@ msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr "域名无法解析！你的域名有问题。请检查你的域名配置。"
 
 # | msgid "Last Day"
+<<<<<<< HEAD
 #: hiddifypanel/panel/hiddify.py:301
+=======
+#: hiddifypanel/panel/hiddify.py:402
+>>>>>>> origin/v8
 msgid "0 - Last day"
 msgstr "最后一天"
 
@@ -70,19 +106,31 @@ msgstr "最后一天"
 # | "Selected Domain for REALITY is not in the same ASN. To better use of the
 # "
 # | "Protocol, it is better to find a Domain in the same ASN"
+<<<<<<< HEAD
 #: hiddifypanel/panel/hiddify.py:594
+=======
+#: hiddifypanel/panel/hiddify.py:732
+>>>>>>> origin/v8
 msgid ""
 "selected domain for REALITY is not in the same ASN. To better use of the "
 "protocol, it is better to find a domain in the same ASN."
 msgstr "为 REALITY 选择的域名不在同一个 ASN 中。为了更好地使用该协议，最好使用一个在同一 ASN 中的域名。"
 
 # | msgid "User Activated"
+<<<<<<< HEAD
 #: hiddifypanel/panel/usage.py:102
+=======
+#: hiddifypanel/panel/usage.py:106
+>>>>>>> origin/v8
 msgid "User activated!"
 msgstr "用户已激活"
 
 # | msgid "Package Ended"
+<<<<<<< HEAD
 #: hiddifypanel/panel/usage.py:102
+=======
+#: hiddifypanel/panel/usage.py:106
+>>>>>>> origin/v8
 msgid "Package ended!"
 msgstr "套餐结束"
 
@@ -119,18 +167,29 @@ msgid "Success! Please wait around 5 minutes to make sure everything is updated.
 msgstr "✔️ 成功！ 请等待大约 5 分钟，以确保所有内容更新完成。"
 
 # | msgid "Actions"
+<<<<<<< HEAD
 #: hiddifypanel/panel/admin/AdminstratorAdmin.py:56
 #: hiddifypanel/panel/admin/UserAdmin.py:77
+=======
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:58
+#: hiddifypanel/panel/admin/UserAdmin.py:72
+>>>>>>> origin/v8
 msgid "actions"
 msgstr "动作"
 
 # | msgid "User Links"
+<<<<<<< HEAD
 #: hiddifypanel/panel/admin/AdminstratorAdmin.py:57
 #: hiddifypanel/panel/admin/UserAdmin.py:79
+=======
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:59
+#: hiddifypanel/panel/admin/UserAdmin.py:74
+>>>>>>> origin/v8
 msgid "user.user_links"
 msgstr "用户链接"
 
 # | msgid "Name"
+<<<<<<< HEAD
 #: hiddifypanel/panel/admin/AdminstratorAdmin.py:58
 #: hiddifypanel/panel/admin/UserAdmin.py:78
 msgid "user.name"
@@ -138,16 +197,31 @@ msgstr "名称"
 
 #: hiddifypanel/panel/admin/AdminstratorAdmin.py:59
 #: hiddifypanel/panel/admin/UserAdmin.py:82
+=======
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:60
+#: hiddifypanel/panel/admin/UserAdmin.py:73
+msgid "user.name"
+msgstr "名称"
+
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:61
+#: hiddifypanel/panel/admin/UserAdmin.py:77
+>>>>>>> origin/v8
 msgid "Mode"
 msgstr "模式"
 
 # | msgid "UUID"
+<<<<<<< HEAD
 #: hiddifypanel/panel/admin/AdminstratorAdmin.py:60
 #: hiddifypanel/panel/admin/UserAdmin.py:88
+=======
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:62
+#: hiddifypanel/panel/admin/UserAdmin.py:83
+>>>>>>> origin/v8
 msgid "user.UUID"
 msgstr "UUID"
 
 # | msgid "📝 Note"
+<<<<<<< HEAD
 #: hiddifypanel/panel/admin/AdminstratorAdmin.py:61
 #: hiddifypanel/panel/admin/UserAdmin.py:89
 msgid "Note"
@@ -158,10 +232,22 @@ msgid "Max Active Users"
 msgstr "最大活跃用户数"
 
 #: hiddifypanel/panel/admin/AdminstratorAdmin.py:63
+=======
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:63
+#: hiddifypanel/panel/admin/UserAdmin.py:84
+msgid "Note"
+msgstr "📝 笔记"
+
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:64
+msgid "Max Active Users"
+msgstr "最大活跃用户数"
+
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:65
+>>>>>>> origin/v8
 msgid "Max Users"
 msgstr "最大用户数"
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:64
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:66
 #: hiddifypanel/panel/admin/templates/index.html:77
 #: hiddifypanel/panel/admin/templates/index.html:83
 #: hiddifypanel/panel/admin/templates/index.html:89
@@ -175,16 +261,25 @@ msgid "Online Users"
 msgstr "在线用户"
 
 # | msgid "👥 Can Add Sub Admin"
+<<<<<<< HEAD
 #: hiddifypanel/panel/admin/AdminstratorAdmin.py:65
+=======
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:67
+>>>>>>> origin/v8
 msgid "Can add sub admin"
 msgstr "👥 可以添加订阅管理员"
 
 # | msgid "Add some Text that is only visible to Super Admin"
+<<<<<<< HEAD
 #: hiddifypanel/panel/admin/AdminstratorAdmin.py:76
+=======
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:78
+>>>>>>> origin/v8
 msgid "Add some text that is only visible to super_admin."
 msgstr "添加一些仅对超级管理员可见的文本"
 
 # | msgid "🥇🥈🥉 Define the Admin Mode"
+<<<<<<< HEAD
 #: hiddifypanel/panel/admin/AdminstratorAdmin.py:77
 msgid "Define the admin mode. "
 msgstr "🥇🥈🥉 定义管理模式"
@@ -193,6 +288,11 @@ msgstr "🥇🥈🥉 定义管理模式"
 #: hiddifypanel/panel/admin/AdminstratorAdmin.py:216
 msgid "Owner can not be deleted!"
 msgstr "不能删除所有者！"
+=======
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:79
+msgid "Define the admin mode. "
+msgstr "🥇🥈🥉 定义管理模式"
+>>>>>>> origin/v8
 
 # | msgid "Config file is incorrect."
 #: hiddifypanel/panel/admin/Backup.py:75
@@ -254,7 +354,11 @@ msgstr "当前用户将获取管理员权限"
 #: hiddifypanel/panel/admin/ProxyAdmin.py:128
 #: hiddifypanel/panel/admin/QuickSetup.py:85
 #: hiddifypanel/panel/admin/QuickSetup.py:118
+<<<<<<< HEAD
 #: hiddifypanel/panel/admin/SettingAdmin.py:269
+=======
+#: hiddifypanel/panel/admin/SettingAdmin.py:265
+>>>>>>> origin/v8
 msgid "Submit"
 msgstr "提交"
 
@@ -331,8 +435,13 @@ msgid "Domain is not correctly mapped to this server!"
 msgstr "域名未正确指向该服务器！"
 
 # | msgid "Access Denied"
+<<<<<<< HEAD
 #: hiddifypanel/panel/admin/Dashboard.py:20
 #: hiddifypanel/panel/admin/Dashboard.py:38
+=======
+#: hiddifypanel/panel/admin/Dashboard.py:18
+#: hiddifypanel/panel/admin/Dashboard.py:36
+>>>>>>> origin/v8
 msgid "Access Denied!"
 msgstr "拒绝访问"
 
@@ -340,7 +449,11 @@ msgstr "拒绝访问"
 # | "⚠️ This version of Hiddify Panel is outdated. please update it from admin
 # "
 # | "area."
+<<<<<<< HEAD
 #: hiddifypanel/panel/admin/Dashboard.py:32 hiddifypanel/templates/500.html:9
+=======
+#: hiddifypanel/panel/admin/Dashboard.py:30 hiddifypanel/templates/500.html:9
+>>>>>>> origin/v8
 msgid ""
 "This version of hiddify panel is outdated. Please update it from admin "
 "area."
@@ -358,8 +471,13 @@ msgstr ""
 # | msgid ""
 # | "Please understand that parent Panel is under test and the plan and the "
 # | "condition of use maybe change at anytime."
+<<<<<<< HEAD
 #: hiddifypanel/panel/admin/Dashboard.py:66
 #: hiddifypanel/panel/admin/Dashboard.py:70
+=======
+#: hiddifypanel/panel/admin/Dashboard.py:64
+#: hiddifypanel/panel/admin/Dashboard.py:68
+>>>>>>> origin/v8
 msgid ""
 "Please understand that parent panel is under test and the plan and the "
 "condition of use maybe change at anytime."
@@ -401,7 +519,11 @@ msgstr ""
 "Password-Authentication\">了解更多... </a>"
 
 # | msgid "Child Has Been Removed!"
+<<<<<<< HEAD
 #: hiddifypanel/panel/admin/Dashboard.py:90
+=======
+#: hiddifypanel/panel/admin/Dashboard.py:86
+>>>>>>> origin/v8
 msgid "child has been removed!"
 msgstr "子节点已被删除！"
 
@@ -434,7 +556,11 @@ msgstr "子节点已被删除！"
 # | "🆎 <b>Fake Site:</b> Select this mode if you want to use a fake Domain
 # (e.g., Soft98.ir) to bypass SNI whitelist Proxy. (Not Recommended)\n"
 # | "<br>"
+<<<<<<< HEAD
 #: hiddifypanel/panel/admin/DomainAdmin.py:39
+=======
+#: hiddifypanel/panel/admin/DomainAdmin.py:46
+>>>>>>> origin/v8
 msgid ""
 "Direct mode means you want to use your server directly (for usual use), "
 "CDN means that you use your server on behind of a CDN provider."
@@ -490,28 +616,48 @@ msgstr "将在此域名配置中显示的名称。"
 #: hiddifypanel/panel/admin/DomainAdmin.py:43
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
+<<<<<<< HEAD
 #: hiddifypanel/templates/flaskadmin-layout.html:120
+=======
+#: hiddifypanel/templates/flaskadmin-layout.html:113
+>>>>>>> origin/v8
 msgid "config.reality_server_names.description"
 msgstr "您可以用逗号分隔来添加多个服务名"
 
 # | msgid ""
 # | "This can be used for giving your Users a permanent non Blockable Links."
+<<<<<<< HEAD
 #: hiddifypanel/panel/admin/DomainAdmin.py:44
+=======
+#: hiddifypanel/panel/admin/DomainAdmin.py:51
+>>>>>>> origin/v8
 msgid "This can be used for giving your users a permanent non blockable links."
 msgstr "可为您的用户提供一个永久的未封锁链接。"
 
 # | msgid "ℹ️ gRPC is a H2 based Protocol. Maybe it is faster for you!"
+<<<<<<< HEAD
 #: hiddifypanel/panel/admin/DomainAdmin.py:45
+=======
+#: hiddifypanel/panel/admin/DomainAdmin.py:52
+>>>>>>> origin/v8
 msgid "gRPC is a H2 based protocol. Maybe it is faster for you!"
 msgstr "ℹ️ gRPC 是一个基于 H2 的协议。也许它对你来说更快！"
 
 # | msgid "Invalid REALITY Hostnames"
+<<<<<<< HEAD
 #: hiddifypanel/panel/admin/DomainAdmin.py:63
+=======
+#: hiddifypanel/panel/admin/DomainAdmin.py:70
+>>>>>>> origin/v8
 msgid "Invalid REALITY hostnames"
 msgstr "无效的 REALITY 主机名"
 
 # | msgid "🌍 Use Only for Subscription Link"
+<<<<<<< HEAD
 #: hiddifypanel/panel/admin/DomainAdmin.py:73
+=======
+#: hiddifypanel/panel/admin/DomainAdmin.py:80
+>>>>>>> origin/v8
 msgid "Only for sublink?"
 msgstr "🌍 仅用于定语链接"
 
@@ -537,7 +683,11 @@ msgstr "知识产权"
 #: hiddifypanel/panel/admin/DomainAdmin.py:142
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
+<<<<<<< HEAD
 #: hiddifypanel/templates/flaskadmin-layout.html:119
+=======
+#: hiddifypanel/templates/flaskadmin-layout.html:112
+>>>>>>> origin/v8
 msgid "config.reality_server_names.label"
 msgstr "🌎 Reality 服务名称"
 
@@ -547,7 +697,11 @@ msgid "Alias"
 msgstr "别名"
 
 # | msgid "➿ gRPC"
+<<<<<<< HEAD
 #: hiddifypanel/panel/admin/DomainAdmin.py:80
+=======
+#: hiddifypanel/panel/admin/DomainAdmin.py:87
+>>>>>>> origin/v8
 msgid "gRPC"
 msgstr "➿ gRPC"
 
@@ -557,8 +711,13 @@ msgid "All"
 msgstr "全部"
 
 # | msgid "You have already used this Domain in: "
+<<<<<<< HEAD
 #: hiddifypanel/panel/admin/DomainAdmin.py:137
 #: hiddifypanel/panel/admin/DomainAdmin.py:142
+=======
+#: hiddifypanel/panel/admin/DomainAdmin.py:144
+#: hiddifypanel/panel/admin/DomainAdmin.py:149
+>>>>>>> origin/v8
 msgid "You have used this domain in: "
 msgstr "您已经在以下情况使用过该域名："
 
@@ -584,18 +743,30 @@ msgid ""
 msgstr "在 CDN 模式下，域名 IP=%(domain_ip)s 应该与您的 IP=%(server_ip)s 不同"
 
 # | msgid "Domain is Not REALITY Friendly!"
+<<<<<<< HEAD
 #: hiddifypanel/panel/admin/DomainAdmin.py:209
 #: hiddifypanel/panel/admin/DomainAdmin.py:224
+=======
+#: hiddifypanel/panel/admin/DomainAdmin.py:223
+>>>>>>> origin/v8
 msgid "Domain is not REALITY friendly!"
 msgstr "域名不支持 REALITY ！"
 
 # | msgid "REALITY Fallback Domain is not compaitble with Server names!"
+<<<<<<< HEAD
 #: hiddifypanel/panel/admin/DomainAdmin.py:230
+=======
+#: hiddifypanel/panel/admin/DomainAdmin.py:229
+>>>>>>> origin/v8
 msgid "REALITY Fallback domain is not compaitble with server names!"
 msgstr "REALITY 回落域名与服务器名称不匹配！"
 
 # | msgid "⚠️ Error in Auto CDN Format"
+<<<<<<< HEAD
 #: hiddifypanel/panel/admin/DomainAdmin.py:237
+=======
+#: hiddifypanel/panel/admin/DomainAdmin.py:236
+>>>>>>> origin/v8
 msgid "Error in auto cdn format"
 msgstr "⚠️ 自动 CDN 格式错误"
 
@@ -703,8 +874,13 @@ msgstr "它根据不同国家/地区的网络封锁情况，为该国家/地区�
 # | msgid "Error! Invalid Domain.  The Domain Format is www.google.com"
 #: hiddifypanel/panel/admin/QuickSetup.py:104
 #: hiddifypanel/panel/admin/QuickSetup.py:117
+<<<<<<< HEAD
 #: hiddifypanel/panel/admin/SettingAdmin.py:210
 #: hiddifypanel/panel/admin/SettingAdmin.py:213
+=======
+#: hiddifypanel/panel/admin/SettingAdmin.py:206
+#: hiddifypanel/panel/admin/SettingAdmin.py:209
+>>>>>>> origin/v8
 msgid "config.Invalid domain"
 msgstr "错误！域名无效。域名格式为 www.google.com"
 
@@ -715,6 +891,40 @@ msgstr "错误！域名无效。域名格式为 www.google.com"
 #: hiddifypanel/panel/admin/SettingAdmin.py:219
 msgid "config.Domain already used"
 msgstr "域名已存在于域名部分。请使用另一个域名"
+<<<<<<< HEAD
+=======
+
+# | msgid "✔️ Enable Telegram MTProto"
+#: hiddifypanel/panel/admin/QuickSetup.py:112
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#: hiddifypanel/templates/fake.html:1
+msgid "config.telegram_enable.label"
+msgstr "✔️ 启用 Telegram MTProto 代理"
+
+# | msgid ""
+# | "Telegram MTProto is used for Encapsulate Telegram Proxy as a tls traffic"
+#: hiddifypanel/panel/admin/QuickSetup.py:112
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#: hiddifypanel/templates/fake.html:1
+msgid "config.telegram_enable.description"
+msgstr "Telegram MTProto 代理用于将 Telegram 代理封装为 TLS 流量"
+
+# | msgid "🛡️ Firewall"
+#: hiddifypanel/panel/admin/QuickSetup.py:113
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#: hiddifypanel/templates/fake.html:1
+msgid "config.firewall.label"
+msgstr "🛡️ 防火墙"
+
+# | msgid ""
+# | "Enabling Firewall will open used Ports (at least 22,443,80 and SSH) and "
+# | "close all other Ports"
+#: hiddifypanel/panel/admin/QuickSetup.py:113
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#: hiddifypanel/templates/fake.html:1
+msgid "config.firewall.description"
+msgstr "启用防火墙将打开使用的端口（至少 22、443、80 和 SSH）并关闭所有其他端口"
+>>>>>>> origin/v8
 
 # | msgid "⛔️ Block Domestic Sites"
 #: hiddifypanel/panel/admin/QuickSetup.py:114
@@ -733,6 +943,26 @@ msgstr "⛔️ 封锁国内网站"
 msgid "config.block_iran_sites.description"
 msgstr "屏蔽伊朗网站以防止被政府发现（实验：如果有问题，请禁用它并告诉我们。）"
 
+<<<<<<< HEAD
+=======
+# | msgid "♈️ Enable VMess"
+#: hiddifypanel/panel/admin/QuickSetup.py:115
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#: hiddifypanel/templates/fake.html:1
+msgid "config.vmess_enable.label"
+msgstr "♈️ 启用 VMess"
+
+# | msgid ""
+# | "It is reported by several people that VMess causes the system to be
+# detected"
+# | " by the government. So it is Not Recommended"
+#: hiddifypanel/panel/admin/QuickSetup.py:115
+#: hiddifypanel/panel/admin/templates/configfake.html:6
+#: hiddifypanel/templates/fake.html:1
+msgid "config.vmess_enable.description"
+msgstr "少数人报告说 VMess 导致系统被政府检测到。所以不推荐"
+
+>>>>>>> origin/v8
 # | msgid "📺 Decoy Site"
 #: hiddifypanel/panel/admin/QuickSetup.py:116
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -853,12 +1083,20 @@ msgid "config.telegram_lib.description"
 msgstr "您可以在不同的 Telegram 库之间切换。请注意，只有 Python 可以在所有服务器上运行，其他服务器可能会出现一些问题。更改后请测试代理。"
 
 # | msgid "Invalid Admin Link"
+<<<<<<< HEAD
 #: hiddifypanel/panel/admin/SettingAdmin.py:230
+=======
+#: hiddifypanel/panel/admin/SettingAdmin.py:226
+>>>>>>> origin/v8
 msgid "Invalid admin link"
 msgstr "管理员链接无效"
 
 # | msgid "Invalid Telegram Bot Token"
+<<<<<<< HEAD
 #: hiddifypanel/panel/admin/SettingAdmin.py:232
+=======
+#: hiddifypanel/panel/admin/SettingAdmin.py:228
+>>>>>>> origin/v8
 msgid "config.Invalid telegram bot token"
 msgstr "无效的 Telegram 机器人 Token"
 
@@ -907,7 +1145,11 @@ msgstr "⌛️ 流量限制 (GB)"
 msgid "Reset every month"
 msgstr "每月"
 
+<<<<<<< HEAD
 #: hiddifypanel/panel/admin/UserAdmin.py:83
+=======
+#: hiddifypanel/panel/admin/UserAdmin.py:78
+>>>>>>> origin/v8
 msgid "Added by"
 msgstr "添加者"
 
@@ -916,7 +1158,11 @@ msgstr "添加者"
 msgid "user.current_usage_GB"
 msgstr "当前用量 (GB)"
 
+<<<<<<< HEAD
 #: hiddifypanel/panel/admin/UserAdmin.py:85
+=======
+#: hiddifypanel/panel/admin/UserAdmin.py:80
+>>>>>>> origin/v8
 msgid "Start Date"
 msgstr "开始日期"
 
@@ -931,39 +1177,67 @@ msgid "user.last_reset_time"
 msgstr "最后使用日期重置"
 
 # | msgid "Last Connection"
+<<<<<<< HEAD
 #: hiddifypanel/panel/admin/UserAdmin.py:90
+=======
+#: hiddifypanel/panel/admin/UserAdmin.py:85
+>>>>>>> origin/v8
 msgid "Last Online"
 msgstr "最后连接"
 
 # | msgid "📆 Package Days"
+<<<<<<< HEAD
 #: hiddifypanel/panel/admin/UserAdmin.py:91
 msgid "Package Days"
 msgstr "📆 套餐时间"
 
 #: hiddifypanel/panel/admin/UserAdmin.py:92
+=======
+#: hiddifypanel/panel/admin/UserAdmin.py:86
+msgid "Package Days"
+msgstr "📆 套餐时间"
+
+#: hiddifypanel/panel/admin/UserAdmin.py:87
+>>>>>>> origin/v8
 msgid "Max IPs"
 msgstr "最大 IP 数"
 
 # | msgid "❇️ Enable"
+<<<<<<< HEAD
 #: hiddifypanel/panel/admin/UserAdmin.py:93
+=======
+#: hiddifypanel/panel/admin/UserAdmin.py:88
+>>>>>>> origin/v8
 msgid "Enable"
 msgstr "❇️ 启用"
 
 # | msgid "You can add some text that Is only visible to you"
+<<<<<<< HEAD
 #: hiddifypanel/panel/admin/UserAdmin.py:107
+=======
+#: hiddifypanel/panel/admin/UserAdmin.py:102
+>>>>>>> origin/v8
 msgid "Add some text that is only visible to you."
 msgstr "添加一些仅对您可见的文本"
 
 # | msgid ""
 # | "The user's Package Mode. should the usage reset every Month, Week, etc"
+<<<<<<< HEAD
 #: hiddifypanel/panel/admin/UserAdmin.py:108
+=======
+#: hiddifypanel/panel/admin/UserAdmin.py:103
+>>>>>>> origin/v8
 msgid "Define the user mode. Should the usage reset every month?"
 msgstr "定义用户套餐流量重置模式，如每月重置、每周重置等？"
 
 # | msgid ""
 # | "If the monthly option is enabled, when this number reaches 30, the user "
 # | "usage will be reset (for weekly and daily this number is 7 and 1)"
+<<<<<<< HEAD
 #: hiddifypanel/panel/admin/UserAdmin.py:109
+=======
+#: hiddifypanel/panel/admin/UserAdmin.py:104
+>>>>>>> origin/v8
 msgid ""
 "If monthly is enabled, the usage will be reset after 30 days from this "
 "date."
@@ -973,27 +1247,47 @@ msgstr "如果启用每月选项，当这个数字达到 30 时，用户流量�
 # | "Specify the starting date of the package. Leave empty to start from first
 # "
 # | "Connection."
+<<<<<<< HEAD
 #: hiddifypanel/panel/admin/UserAdmin.py:110
+=======
+#: hiddifypanel/panel/admin/UserAdmin.py:105
+>>>>>>> origin/v8
 msgid ""
 "From when the user package will be started? Empty for start from first "
 "connection"
 msgstr "指定套餐的开始日期。留空以从第一次连接开始计算。"
 
 # | msgid "How Many Days Is This Package?"
+<<<<<<< HEAD
 #: hiddifypanel/panel/admin/UserAdmin.py:111
 msgid "How many days this package should be available?"
 msgstr "这个套餐是多少时间？"
 
 #: hiddifypanel/panel/admin/UserAdmin.py:213
+=======
+#: hiddifypanel/panel/admin/UserAdmin.py:106
+msgid "How many days this package should be available?"
+msgstr "这个套餐是多少时间？"
+
+#: hiddifypanel/panel/admin/UserAdmin.py:208
+>>>>>>> origin/v8
 msgid "Package not started yet."
 msgstr "套餐还没有开始。"
 
 # | msgid "Package Ends"
+<<<<<<< HEAD
 #: hiddifypanel/panel/admin/UserAdmin.py:220
 msgid "Remaining: "
 msgstr "套餐结束"
 
 #: hiddifypanel/panel/admin/UserAdmin.py:257
+=======
+#: hiddifypanel/panel/admin/UserAdmin.py:215
+msgid "Remaining: "
+msgstr "套餐结束"
+
+#: hiddifypanel/panel/admin/UserAdmin.py:252
+>>>>>>> origin/v8
 #, python-format
 msgid ""
 "You have too much users! You can have only %(active)s active users and "
@@ -1280,6 +1574,7 @@ msgstr "通用设置"
 #: hiddifypanel/templates/fake.html:2
 msgid "config.general.description"
 msgstr "通用的系统配置"
+<<<<<<< HEAD
 
 # | msgid "♈️ Enable VMess"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1295,6 +1590,8 @@ msgstr "♈️ 启用 VMess"
 #: hiddifypanel/templates/fake.html:1
 msgid "config.vmess_enable.description"
 msgstr "少数人报告说 VMess 导致系统被政府检测到。所以不推荐"
+=======
+>>>>>>> origin/v8
 
 # | msgid "♈️ Enable V2Ray "
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1378,6 +1675,7 @@ msgstr ""
 "<a href=\"https://github.com/hiddify/hiddify-"
 "config/wiki/%D8%A7%D8%B3%D8%AA%D9%81%D8%A7%D8%AF%D9%87-%D8%A7%D8%B2-%D8%AF%D8%A7%D9%85%DB%8C%D9%86-%D9%81%D8%B1%D8%A7%D9%86%D8%AA%DB%8C%D9%86%DA%AF\">教程</a>."
 " ⚠️ CloudFlare 不支持域名前置。"
+<<<<<<< HEAD
 
 # | msgid "✔️ Enable Telegram MTProto"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1391,6 +1689,8 @@ msgstr "✔️ 启用 Telegram MTProto 代理"
 #: hiddifypanel/templates/fake.html:1
 msgid "config.telegram_enable.description"
 msgstr "Telegram MTProto 代理用于将 Telegram 代理封装为 TLS 流量"
+=======
+>>>>>>> origin/v8
 
 # | msgid "📍 Telegram AD Tag"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1918,7 +2218,11 @@ msgstr "请勿更改"
 # | msgid "🌍 Reality Fallback Domain"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
+<<<<<<< HEAD
 #: hiddifypanel/templates/flaskadmin-layout.html:123
+=======
+#: hiddifypanel/templates/flaskadmin-layout.html:116
+>>>>>>> origin/v8
 msgid "config.reality_fallback_domain.label"
 msgstr "🌍 Reality 回落域名"
 
@@ -1928,7 +2232,11 @@ msgstr "🌍 Reality 回落域名"
 # | " Domain."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
+<<<<<<< HEAD
 #: hiddifypanel/templates/flaskadmin-layout.html:124
+=======
+#: hiddifypanel/templates/flaskadmin-layout.html:117
+>>>>>>> origin/v8
 msgid "config.reality_fallback_domain.description"
 msgstr "防火墙访问服务器中的网站时，会重定向到该域名。"
 
@@ -2608,11 +2916,26 @@ msgid "admin.config.title"
 msgstr "设置"
 
 # | msgid "📅%(expire_days)s Days Remain"
+<<<<<<< HEAD
 #: hiddifypanel/panel/user/link_maker.py:778
+=======
+#: hiddifypanel/panel/user/link_maker.py:724
+>>>>>>> origin/v8
 #, python-format
 msgid "📅%(expire_days)s days"
 msgstr "📅剩余：%(expire_days)s 天"
 
+<<<<<<< HEAD
+=======
+# | msgid ""
+# | "Please open this link in a browser; it will expire in 5 minutes for
+# security"
+# | " reasons."
+#: hiddifypanel/panel/user/user.py:27
+msgid "This link will expire in 5 minutes"
+msgstr "请在浏览器中打开此链接；出于安全原因，它将在 5 分钟后过期。"
+
+>>>>>>> origin/v8
 # | msgid "All Configs"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:1
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:1
@@ -2701,8 +3024,13 @@ msgstr "自动"
 # | msgid "All Config Hiddify Managers"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:48
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:19
+<<<<<<< HEAD
 msgid "user.home.allconfig.hiddify-managers"
 msgstr "所有 Hiddify Managers 配置"
+=======
+msgid "user.home.allconfig.hiddify-configs"
+msgstr "Hiddify 配置"
+>>>>>>> origin/v8
 
 # | msgid "Clash Configs"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:61
@@ -3230,14 +3558,24 @@ msgid "search"
 msgstr "搜索"
 
 # | msgid "Check Again"
+<<<<<<< HEAD
 #: hiddifypanel/panel/user/templates/home/home.html:394
 #: hiddifypanel/panel/user/templates/home/multi.html:394
+=======
+#: hiddifypanel/panel/user/templates/home/home.html:419
+#: hiddifypanel/panel/user/templates/home/multi.html:421
+>>>>>>> origin/v8
 msgid "Check again"
 msgstr "重新检查"
 
 # | msgid "Turn Off VPN"
+<<<<<<< HEAD
 #: hiddifypanel/panel/user/templates/home/home.html:397
 #: hiddifypanel/panel/user/templates/home/multi.html:397
+=======
+#: hiddifypanel/panel/user/templates/home/home.html:422
+#: hiddifypanel/panel/user/templates/home/multi.html:424
+>>>>>>> origin/v8
 msgid "Turn of VPN"
 msgstr "关闭 VPN"
 
@@ -3245,8 +3583,13 @@ msgstr "关闭 VPN"
 # | "You Should Visit This Page Without VPN To Use Auto CDN IP.\n"
 # | "<br>\n"
 # | "Your Country = %(your_country)s"
+<<<<<<< HEAD
 #: hiddifypanel/panel/user/templates/home/home.html:397
 #: hiddifypanel/panel/user/templates/home/multi.html:397
+=======
+#: hiddifypanel/panel/user/templates/home/home.html:422
+#: hiddifypanel/panel/user/templates/home/multi.html:424
+>>>>>>> origin/v8
 #, python-format
 msgid ""
 "You should visit this page without VPN. Your country=%(your_country)s "
@@ -3749,7 +4092,11 @@ msgstr "错误/功能"
 # | msgid "Donation"
 #: hiddifypanel/templates/admin-layout.html:130
 #: hiddifypanel/templates/donation.html:5
+<<<<<<< HEAD
 msgid "Donation.title"
+=======
+msgid "Donation"
+>>>>>>> origin/v8
 msgstr "捐赠"
 
 # | msgid "Status"
@@ -3794,16 +4141,28 @@ msgid "admin.menu.proxy"
 msgstr "代理"
 
 # | msgid "Common Settings"
+<<<<<<< HEAD
 #: hiddifypanel/templates/admin-layout.html:179
 msgid "Commercial Settings"
 msgstr "通用设置"
 
 #: hiddifypanel/templates/admin-layout.html:184
+=======
+#: hiddifypanel/templates/admin-layout.html:173
+msgid "Commercial Settings"
+msgstr "通用设置"
+
+#: hiddifypanel/templates/admin-layout.html:178
+>>>>>>> origin/v8
 msgid "Telegram Bot"
 msgstr "Telegram 机器人"
 
 # | msgid "⚠️ Are you sure you want to do this action?"
+<<<<<<< HEAD
 #: hiddifypanel/templates/admin-layout.html:217
+=======
+#: hiddifypanel/templates/admin-layout.html:211
+>>>>>>> origin/v8
 msgid "Are you sure you want to do this action?"
 msgstr "⚠️ 您确定要执行此操作吗？"
 
@@ -4011,6 +4370,7 @@ msgstr ""
 "🚧 阻止恶意软件 1.1.1.2 <br>\n"
 "🔞 阻止色情 1.1.1.3"
 
+<<<<<<< HEAD
 # | msgid "Direct Reality Port"
 #: hiddifypanel/templates/fake.html:1
 msgid "config.reality_port.label"
@@ -4024,6 +4384,8 @@ msgstr "直连 Reality 端口"
 msgid "config.reality_port.description"
 msgstr "您可以设置一个 Reality 服务的自定义端口，以节省系统开销。（允许直接连接到代理应该设置为 是）"
 
+=======
+>>>>>>> origin/v8
 # | msgid "Enable Hysteria2"
 #: hiddifypanel/templates/fake.html:1
 msgid "config.hysteria_enable.label"
@@ -4149,27 +4511,47 @@ msgid "daily"
 msgstr "⏰ 每日"
 
 # | msgid "➖ Direct"
+<<<<<<< HEAD
 #: hiddifypanel/templates/flaskadmin-layout.html:56
+=======
+#: hiddifypanel/templates/flaskadmin-layout.html:55
+>>>>>>> origin/v8
 msgid "Direct"
 msgstr "➖ 直连"
 
 # | msgid "➖ Panel Link"
+<<<<<<< HEAD
 #: hiddifypanel/templates/flaskadmin-layout.html:57
+=======
+#: hiddifypanel/templates/flaskadmin-layout.html:56
+>>>>>>> origin/v8
 msgid "Panel Link"
 msgstr "➖ 面板链接"
 
 # | msgid "➖ Bridge Servers"
+<<<<<<< HEAD
 #: hiddifypanel/templates/flaskadmin-layout.html:58
+=======
+#: hiddifypanel/templates/flaskadmin-layout.html:57
+>>>>>>> origin/v8
 msgid "Bridge Servers"
 msgstr "➖ 桥接服务器"
 
 # | msgid "➖ Fake"
+<<<<<<< HEAD
 #: hiddifypanel/templates/flaskadmin-layout.html:59
+=======
+#: hiddifypanel/templates/flaskadmin-layout.html:58
+>>>>>>> origin/v8
 msgid "Fake"
 msgstr "➖ 伪装"
 
 # | msgid "Test and Suggest Domain "
+<<<<<<< HEAD
 #: hiddifypanel/templates/flaskadmin-layout.html:124
+=======
+#: hiddifypanel/templates/flaskadmin-layout.html:117
+>>>>>>> origin/v8
 msgid "Example Domains"
 msgstr "测试和建议域名"
 
@@ -4184,7 +4566,11 @@ msgstr "🔒 启用 TLS 域名前置"
 # | "<a
 # href=\"https://github.com/hiddify/hiddify-config/wiki/Guide-for-domain-fronting\">Guide</a>.
 # ⚠️CloudFlare does not support Domain Fronting."
+<<<<<<< HEAD
 #: hiddifypanel/templates/flaskadmin-layout.html:129
+=======
+#: hiddifypanel/templates/flaskadmin-layout.html:122
+>>>>>>> origin/v8
 msgid "domain.domain_fronting.description"
 msgstr ""
 "使用混淆域名代替您的域名，因此防火墙无法封锁您的域名\n"
@@ -4222,17 +4608,29 @@ msgstr "链接已复制到剪贴板。"
 msgid "user.home.link.manual-copy"
 msgstr "复制到剪贴板：Ctrl+C，Enter"
 
+<<<<<<< HEAD
 #: hiddifypanel/templates/master.html:332
+=======
+#: hiddifypanel/templates/master.html:315
+>>>>>>> origin/v8
 msgid "Install"
 msgstr "安装"
 
 # | msgid "Hiddify Panel Installation"
+<<<<<<< HEAD
 #: hiddifypanel/templates/master.html:433
+=======
+#: hiddifypanel/templates/master.html:416
+>>>>>>> origin/v8
 msgid "Install Hiddify Application"
 msgstr "Hiddify 面板安装"
 
 # | msgid "Click %(install)s to save the User Page."
+<<<<<<< HEAD
 #: hiddifypanel/templates/master.html:435
+=======
+#: hiddifypanel/templates/master.html:418
+>>>>>>> origin/v8
 #, python-format
 msgid "Please click on %(install)s to save the user page."
 msgstr "单击 %(install)s 保存用户页面。"
@@ -4292,6 +4690,7 @@ msgstr "动作"
 # | " Port. (Not Recommended)"
 #~ msgid "config.http_proxy.description"
 #~ msgstr "通过允许该选项，您的用户可以使用未加密的 HTTP 端口连接到系统。 （不建议）"
+<<<<<<< HEAD
 
 # | msgid "Hiddify Configs"
 #~ msgid "user.home.allconfig.hiddify-configs"
@@ -4300,6 +4699,8 @@ msgstr "动作"
 # | msgid "Copy the link bellow into your browser."
 #~ msgid "user.home.tool.doh"
 #~ msgstr "将下面的链接复制到您的浏览器中。"
+=======
+>>>>>>> origin/v8
 
 # | msgid "Protocol Usage Chart"
 #~ msgid "admin.protocol_chart"
@@ -4414,10 +4815,13 @@ msgstr "动作"
 #~ msgstr ""
 #~ "域名 (%(domain)s)-> IP=%(domain_ip)s 与您的 "
 #~ "IP=%(server_ip)s 不匹配，这在直连模式下是必需的。"
+<<<<<<< HEAD
 
 # | msgid "Please contact info@hiddify.com with the details in this page"
 #~ msgid "Please contact hiddify@gmail.com with the details in this page."
 #~ msgstr "请使用本页中的详细信息联系 hiddify@gmail.com。"
+=======
+>>>>>>> origin/v8
 
 # | msgid "Check Usage"
 #~ msgid "User usage update"
@@ -4556,6 +4960,7 @@ msgstr "动作"
 #~ msgstr "<i class=\"fa-solid fa-download\"></i> 下载应用"
 
 # | msgid ""
+<<<<<<< HEAD
 # | "Please open this link in a browser; it will expire in 5 minutes for
 # security"
 # | " reasons."
@@ -4563,6 +4968,8 @@ msgstr "动作"
 #~ msgstr "请在浏览器中打开此链接；出于安全原因，它将在 5 分钟后过期。"
 
 # | msgid ""
+=======
+>>>>>>> origin/v8
 # | "✔️ The Proxy link is copied\n"
 # | "<br>\n"
 # | "⚠️ If the application do not open automatically, you need to only paste
@@ -4583,4 +4990,63 @@ msgstr "动作"
 #~ "Telegram\n"
 #~ "          Bot"
 #~ msgstr "Telegram 机器人"
+<<<<<<< HEAD
+=======
+
+# | msgid "Direct Reality Port"
+#~ msgid "config.reality_port.label"
+#~ msgstr "直连 Reality 端口"
+
+# | msgid ""
+# | "You can set a customized port for your reality server to reduce the
+# system's"
+# | " overhead. (Allow direct connection to proxies should be yes)"
+#~ msgid "config.reality_port.description"
+#~ msgstr "您可以设置一个 Reality 服务的自定义端口，以节省系统开销。（允许直接连接到代理应该设置为 是）"
+
+# | msgid "All Config Hiddify Managers"
+#~ msgid "user.home.allconfig.hiddify-managers"
+#~ msgstr "所有 Hiddify Managers 配置"
+
+# | msgid "DNS over HTTPS"
+#~ msgid "user.home.tool.doh.title"
+#~ msgstr "DNS over HTTPS"
+
+# | msgid "Please create an issue on Github"
+#~ msgid "Please create an issue on Github."
+#~ msgstr "请在 Github 上创建一个 issue 。"
+
+# | msgid "Donation"
+#~ msgid "Donation.title"
+#~ msgstr "捐赠"
+
+# | msgid "Additional Warp Sites"
+#~ msgid "config.warp_sites.label"
+#~ msgstr "增加 Warp 站点"
+
+# | msgid ""
+# | "Add additional sites to pass through warp (only when warp mode is not
+# None)"
+#~ msgid "config.warp_sites.description"
+#~ msgstr "增加通过 Warp 的额外站点（仅当 Warp 模式不为空时）"
+
+# | msgid ""
+# | "Your server is vulnerable to abuses because PasswordAuthentication is "
+# | "enabled in your SSH. To secure your server, please switch to key "
+# | "authentication mechanism and turn off PasswordAuthentication. <a "
+# |
+# "href=\"https://github.com/hiddify/Hiddify-Manager/wiki/Disable-SSH-Password-"
+# | "Authentication\">read more... </a>"
+#~ msgid "ssh.password-login.warning."
+#~ msgstr ""
+#~ "由于您的服务器启用了 SSH "
+#~ "密码身份验证机制，因此很容易受到侵入导致被滥用。为了保护您的服务器，请切换到密钥身份验证机制，并关闭密码身份验证机制。 <a"
+#~ " href=\"https://github.com/hiddify/Hiddify-Manager/wiki"
+#~ "/Disable-SSH-Password-Authentication\">了解更多... "
+#~ "</a>"
+
+# | msgid "Bug/Feature"
+#~ msgid "Bug"
+#~ msgstr "错误/功能"
+>>>>>>> origin/v8
 

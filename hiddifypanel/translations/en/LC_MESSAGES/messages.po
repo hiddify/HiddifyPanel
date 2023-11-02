@@ -3,8 +3,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
+<<<<<<< HEAD
 "POT-Creation-Date: 2023-11-02 09:56+0100\n"
 "PO-Revision-Date: 2023-10-30 11:24-0500\n"
+=======
+"POT-Creation-Date: 2023-11-02 10:32+0100\n"
+"PO-Revision-Date: 2023-11-02 03:57-0500\n"
+>>>>>>> origin/v8
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -13,6 +18,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "Generated-By: Babel 2.12.1\n"
+
+# | msgid "Owner Can Not Be Deleted!"
+#: hiddifypanel/models/admin.py:74
+msgid "Owner can not be deleted!"
+msgstr "Owner Can Not Be Deleted!"
 
 # | msgid "This Domain does not exist in the Panel !"
 #: hiddifypanel/models/domain.py:159 hiddifypanel/panel/user/user.py:418
@@ -51,9 +61,15 @@ msgstr " ✅ Configs have been changed successfully"
 # | "Domain can not be resolved! There is a problem in your domain. Please "
 # | "check your Domain configurations."
 #: hiddifypanel/panel/admin/ChildAdmin.py:106
+<<<<<<< HEAD
 #: hiddifypanel/panel/admin/DomainAdmin.py:147
 #: hiddifypanel/panel/admin/DomainAdmin.py:169
 #: hiddifypanel/panel/admin/DomainAdmin.py:172
+=======
+#: hiddifypanel/panel/admin/DomainAdmin.py:154
+#: hiddifypanel/panel/admin/DomainAdmin.py:176
+#: hiddifypanel/panel/admin/DomainAdmin.py:179
+>>>>>>> origin/v8
 #: hiddifypanel/panel/admin/QuickSetup.py:127
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:107
 #: hiddifypanel/panel/hiddify.py:269
@@ -127,18 +143,29 @@ msgstr ""
 "✔️ Success! Please Wait around 5 minutes to make sure everything is updated"
 
 # | msgid "Actions"
+<<<<<<< HEAD
 #: hiddifypanel/panel/admin/AdminstratorAdmin.py:56
 #: hiddifypanel/panel/admin/UserAdmin.py:77
+=======
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:58
+#: hiddifypanel/panel/admin/UserAdmin.py:72
+>>>>>>> origin/v8
 msgid "actions"
 msgstr "Actions"
 
 # | msgid "User Links"
+<<<<<<< HEAD
 #: hiddifypanel/panel/admin/AdminstratorAdmin.py:57
 #: hiddifypanel/panel/admin/UserAdmin.py:79
+=======
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:59
+#: hiddifypanel/panel/admin/UserAdmin.py:74
+>>>>>>> origin/v8
 msgid "user.user_links"
 msgstr "User Links"
 
 # | msgid "Name"
+<<<<<<< HEAD
 #: hiddifypanel/panel/admin/AdminstratorAdmin.py:58
 #: hiddifypanel/panel/admin/UserAdmin.py:78
 msgid "user.name"
@@ -146,30 +173,49 @@ msgstr "Name"
 
 #: hiddifypanel/panel/admin/AdminstratorAdmin.py:59
 #: hiddifypanel/panel/admin/UserAdmin.py:82
+=======
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:60
+#: hiddifypanel/panel/admin/UserAdmin.py:73
+msgid "user.name"
+msgstr "Name"
+
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:61
+#: hiddifypanel/panel/admin/UserAdmin.py:77
+>>>>>>> origin/v8
 msgid "Mode"
 msgstr "Mode"
 
 # | msgid "UUID"
+<<<<<<< HEAD
 #: hiddifypanel/panel/admin/AdminstratorAdmin.py:60
 #: hiddifypanel/panel/admin/UserAdmin.py:88
+=======
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:62
+#: hiddifypanel/panel/admin/UserAdmin.py:83
+>>>>>>> origin/v8
 msgid "user.UUID"
 msgstr "UUID"
 
 # | msgid "📝 Note"
+<<<<<<< HEAD
 #: hiddifypanel/panel/admin/AdminstratorAdmin.py:61
 #: hiddifypanel/panel/admin/UserAdmin.py:89
+=======
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:63
+#: hiddifypanel/panel/admin/UserAdmin.py:84
+>>>>>>> origin/v8
 msgid "Note"
 msgstr "📝 Note"
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:62
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:64
 msgid "Max Active Users"
 msgstr "Max Active Users"
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:63
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:65
 msgid "Max Users"
 msgstr "Max Users"
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:64
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:66
 #: hiddifypanel/panel/admin/templates/index.html:77
 #: hiddifypanel/panel/admin/templates/index.html:83
 #: hiddifypanel/panel/admin/templates/index.html:89
@@ -183,24 +229,19 @@ msgid "Online Users"
 msgstr "Online Users"
 
 # | msgid "👥 Can Add Sub Admin"
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:65
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:67
 msgid "Can add sub admin"
 msgstr "👥 Can Add Sub Admin"
 
 # | msgid "Add some Text that is only visible to Super Admin"
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:76
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:78
 msgid "Add some text that is only visible to super_admin."
 msgstr "Add some Text that is only visible to Super Admin"
 
 # | msgid "🥇🥈🥉 Define the Admin Mode"
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:77
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:79
 msgid "Define the admin mode. "
 msgstr "🥇🥈🥉 Define the Admin Mode"
-
-# | msgid "Owner Can Not Be Deleted!"
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:216
-msgid "Owner can not be deleted!"
-msgstr "Owner Can Not Be Deleted!"
 
 # | msgid "Config file is incorrect."
 #: hiddifypanel/panel/admin/Backup.py:75
@@ -263,7 +304,11 @@ msgstr ""
 #: hiddifypanel/panel/admin/ProxyAdmin.py:128
 #: hiddifypanel/panel/admin/QuickSetup.py:85
 #: hiddifypanel/panel/admin/QuickSetup.py:118
+<<<<<<< HEAD
 #: hiddifypanel/panel/admin/SettingAdmin.py:269
+=======
+#: hiddifypanel/panel/admin/SettingAdmin.py:265
+>>>>>>> origin/v8
 msgid "Submit"
 msgstr "Submit"
 
@@ -730,8 +775,13 @@ msgstr ""
 # | msgid "Error! Invalid Domain.  The Domain Format is www.google.com"
 #: hiddifypanel/panel/admin/QuickSetup.py:104
 #: hiddifypanel/panel/admin/QuickSetup.py:117
+<<<<<<< HEAD
 #: hiddifypanel/panel/admin/SettingAdmin.py:210
 #: hiddifypanel/panel/admin/SettingAdmin.py:213
+=======
+#: hiddifypanel/panel/admin/SettingAdmin.py:206
+#: hiddifypanel/panel/admin/SettingAdmin.py:209
+>>>>>>> origin/v8
 msgid "config.Invalid domain"
 msgstr "Error! Invalid Domain.  The Domain Format is www.google.com"
 
@@ -1448,6 +1498,7 @@ msgid "config.domain_fronting.description"
 msgstr ""
 "It is used to simulate another website instead of your website in SNI. therefore, GFW can not filter your Domain\n"
 "<a href=\"https://github.com/hiddify/hiddify-config/wiki/%D8%A7%D8%B3%D8%AA%D9%81%D8%A7%D8%AF%D9%87-%D8%A7%D8%B2-%D8%AF%D8%A7%D9%85%DB%8C%D9%86-%D9%81%D8%B1%D8%A7%D9%86%D8%AA%DB%8C%D9%86%DA%AF\">Guide</a>. ⚠️CloudFlare does not support Domain Fronting."
+<<<<<<< HEAD
 
 # | msgid "✔️ Enable Telegram MTProto"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -1462,6 +1513,8 @@ msgstr "✔️ Enable Telegram MTProto"
 msgid "config.telegram_enable.description"
 msgstr ""
 "Telegram MTProto is used for Encapsulate Telegram Proxy as a tls traffic"
+=======
+>>>>>>> origin/v8
 
 # | msgid "📍 Telegram AD Tag"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -2724,10 +2777,26 @@ msgid "admin.config.title"
 msgstr "Settings"
 
 # | msgid "📅%(expire_days)s Days Remain"
+<<<<<<< HEAD
 #: hiddifypanel/panel/user/link_maker.py:778
 #, python-format
 msgid "📅%(expire_days)s days"
 msgstr "📅%(expire_days)s Days Remain"
+=======
+#: hiddifypanel/panel/user/link_maker.py:724
+#, python-format
+msgid "📅%(expire_days)s days"
+msgstr "📅%(expire_days)s Days Remain"
+
+# | msgid ""
+# | "Please open this link in a browser; it will expire in 5 minutes for "
+# | "security reasons."
+#: hiddifypanel/panel/user/user.py:27
+msgid "This link will expire in 5 minutes"
+msgstr ""
+"Please open this link in a browser; it will expire in 5 minutes for security"
+" reasons."
+>>>>>>> origin/v8
 
 # | msgid "All Configs"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:1
@@ -4093,6 +4162,7 @@ msgstr ""
 "🚧 Block Malware 1.1.1.2 <br>\n"
 "🔞 Block Porn 1.1.1.3\n"
 
+<<<<<<< HEAD
 # | msgid "Direct Reality Port"
 #: hiddifypanel/templates/fake.html:1
 msgid "config.reality_port.label"
@@ -4107,6 +4177,8 @@ msgstr ""
 "You can set a customized port for your reality server to reduce the system's"
 " overhead. (Allow direct connection to proxies should be yes)"
 
+=======
+>>>>>>> origin/v8
 # | msgid "Enable Hysteria2"
 #: hiddifypanel/templates/fake.html:1
 msgid "config.hysteria_enable.label"
@@ -4274,7 +4346,11 @@ msgstr "🔒 Enable TLS Domain Fronting"
 # | "<a
 # href=\"https://github.com/hiddify/hiddify-config/wiki/Guide-for-domain-"
 # | "fronting\">Guide</a>. ⚠️CloudFlare does not support Domain Fronting."
+<<<<<<< HEAD
 #: hiddifypanel/templates/flaskadmin-layout.html:129
+=======
+#: hiddifypanel/templates/flaskadmin-layout.html:122
+>>>>>>> origin/v8
 msgid "domain.domain_fronting.description"
 msgstr ""
 "It is used to simulate another website instead of your website in SNI. therefore, GFW can not filter your Domain\n"
@@ -4649,6 +4725,7 @@ msgstr "Actions"
 #~ msgstr "<i class=\"fa-solid fa-download\"></i>  Download App"
 
 # | msgid ""
+<<<<<<< HEAD
 # | "Please open this link in a browser; it will expire in 5 minutes for "
 # | "security reasons."
 #~ msgid "This link will expire in 5 minutes"
@@ -4657,6 +4734,8 @@ msgstr "Actions"
 #~ " reasons."
 
 # | msgid ""
+=======
+>>>>>>> origin/v8
 # | "✔️ The Proxy link is copied\n"
 # | "<br>\n"
 # | "⚠️ If the application do not open automatically, you need to only paste "
@@ -4675,3 +4754,63 @@ msgstr "Actions"
 #~ "Telegram\n"
 #~ "          Bot"
 #~ msgstr "Telegram Bot"
+<<<<<<< HEAD
+=======
+
+# | msgid "Direct Reality Port"
+#~ msgid "config.reality_port.label"
+#~ msgstr "Direct Reality Port"
+
+# | msgid ""
+# | "You can set a customized port for your reality server to reduce the "
+# | "system's overhead. (Allow direct connection to proxies should be yes)"
+#~ msgid "config.reality_port.description"
+#~ msgstr ""
+#~ "You can set a customized port for your reality server to reduce the system's"
+#~ " overhead. (Allow direct connection to proxies should be yes)"
+
+# | msgid "All Config Hiddify Managers"
+#~ msgid "user.home.allconfig.hiddify-managers"
+#~ msgstr "All Config Hiddify Managers"
+
+# | msgid "DNS over HTTPS"
+#~ msgid "user.home.tool.doh.title"
+#~ msgstr "DNS over HTTPS"
+
+# | msgid "Please create an issue on Github"
+#~ msgid "Please create an issue on Github."
+#~ msgstr "Please create an issue on Github"
+
+# | msgid "Donation"
+#~ msgid "Donation.title"
+#~ msgstr "Donation"
+
+# | msgid "Additional Warp Sites"
+#~ msgid "config.warp_sites.label"
+#~ msgstr "Additional Warp Sites"
+
+# | msgid ""
+# | "Add additional sites to pass through warp (only when warp mode is not "
+# | "None)"
+#~ msgid "config.warp_sites.description"
+#~ msgstr ""
+#~ "Add additional sites to pass through warp (only when warp mode is not None)"
+
+# | msgid ""
+# | "Your server is vulnerable to abuses because PasswordAuthentication is "
+# | "enabled in your SSH. To secure your server, please switch to key "
+# | "authentication mechanism and turn off PasswordAuthentication. <a "
+# | "href=\"https://github.com/hiddify/Hiddify-Manager/wiki/Disable-SSH-"
+# | "Password-Authentication\">read more... </a>"
+#~ msgid "ssh.password-login.warning."
+#~ msgstr ""
+#~ "Your server is vulnerable to abuses because PasswordAuthentication is "
+#~ "enabled in your SSH. To secure your server, please switch to key "
+#~ "authentication mechanism and turn off PasswordAuthentication. <a "
+#~ "href=\"https://github.com/hiddify/Hiddify-Manager/wiki/Disable-SSH-Password-"
+#~ "Authentication\">read more... </a>"
+
+# | msgid "Bug/Feature"
+#~ msgid "Bug"
+#~ msgstr "Bug/Feature"
+>>>>>>> origin/v8
