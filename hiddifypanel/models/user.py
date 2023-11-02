@@ -152,6 +152,14 @@ class User(db.Model, SerializerMixin):
         }
 
 
+def remove(user: User, commit=True):
+    from hiddifypanel.drivers import user_driver
+    user_driver.remove_client(user)
+    user.delete()
+    if commit:
+        db.session.commit()
+
+
 def is_user_active(u):
     """
     The "is_user_active" function checks if the input user object "u" is active by verifying if their mode is not
