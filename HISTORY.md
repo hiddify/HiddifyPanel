@@ -51,6 +51,8 @@
 
 #### Fix
 
+* Bug. 
+
 * Security concern. 
 
 * Permission issue. 
@@ -303,6 +305,14 @@
 * Convert old db to new. 
 
 * Add pysql req. 
+
+
+
+## 8.7.1 (2023-11-02)
+
+#### Fix
+
+* Bug. 
 
 
 
