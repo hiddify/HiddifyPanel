@@ -9,8 +9,14 @@ commercial = False
 
 
 def init_app(app):
-    from . import restapi
-    restapi.init_app(app)
+    from .restapi import v1 as restapi_v1
+    restapi_v1.init_app(app)
+    from .restapi.v2 import admin as api_v2_admin
+    from .restapi.v2 import user as api_v2_user
+    from .restapi.v2 import hello as api_v2_hello
+    api_v2_admin.init_app(app)
+    api_v2_user.init_app(app)
+    api_v2_hello.init_app(app)
     return
 
 

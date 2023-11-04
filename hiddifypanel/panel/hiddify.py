@@ -7,6 +7,7 @@ from hiddifypanel.cache import cache
 from hiddifypanel.models import *
 from hiddifypanel.panel.database import db
 from hiddifypanel.utils import *
+from wtforms.validators import Regexp, ValidationError
 
 to_gig_d = 1000*1000*1000
 
@@ -47,11 +48,13 @@ def exec_command(cmd, cwd=None):
         print(e)
 
 
-def auth(function):
+def user_auth(function):
     def wrapper(*args, **kwargs):
         if g.user_uuid == None:
             return jsonify({"error": "auth failed"})
-        if not admin and g.is_admin:
+        if not g.user:
+            return jsonify({"error": "user not found"})
+        if g.admin and g.is_admin:
             return jsonify({"error": "admin can not access user page. add /admin/ to your url"})
         return function()
 

@@ -98,10 +98,11 @@ def json_to_date(date_str):
     try:
         return datetime.datetime.strptime(date_str, '%Y-%m-%d')
     except:
-        return None
+        return date_str
 
 
 def time_to_json(d):
+
     return d.strftime("%Y-%m-%d %H:%M:%S") if d else None
 
 
@@ -109,7 +110,7 @@ def json_to_time(time_str):
     try:
         return datetime.datetime.strptime(time_str, "%Y-%m-%d %H:%M:%S")
     except:
-        return None
+        return time_str
 
 
 def flash(message, category):

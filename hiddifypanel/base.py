@@ -4,16 +4,22 @@ from dynaconf import FlaskDynaconf
 from flask import Flask, request, g
 from flask_babelex import Babel
 from hiddifypanel.panel.init_db import init_db
-import hiddifypanel
+
 from hiddifypanel.models import *
 from dotenv import dotenv_values
 import os
 from hiddifypanel.panel import hiddify
+from apiflask import APIFlask
+from werkzeug.middleware.proxy_fix import ProxyFix
 
 
 def create_app(cli=False, **config):
-    app = Flask(__name__, static_url_path="/<proxy_path>/static/", instance_relative_config=True)
-
+    app = APIFlask(__name__, static_url_path="/<proxy_path>/static/", instance_relative_config=True, version='2.0.0',
+                   openapi_blueprint_url_prefix="/<proxy_path>/<user_secret>/api", docs_ui='elements', json_errors=True, enable_openapi=True)
+    # app = Flask(__name__, static_url_path="/<proxy_path>/static/", instance_relative_config=True)
+    app.wsgi_app = ProxyFix(
+        app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1
+    )
     for c, v in dotenv_values(os.environ.get("HIDDIFY_CFG_PATH", 'app.cfg')).items():
         if v.isdecimal():
             v = int(v)
@@ -67,7 +73,7 @@ def create_app(cli=False, **config):
             return
         if "/admin/actions/" in request.base_url:
             return
-        if "/api/v1/" in request.base_url:
+        if "/api/" in request.base_url:
             return
         csrf.protect()
 

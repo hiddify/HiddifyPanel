@@ -19,11 +19,11 @@ from hiddifypanel.models import *
 from .Dashboard import Dashboard
 
 from flask_admin.menu import MenuLink
-
+from apiflask import APIBlueprint
 import uuid
 from flask_adminlte3 import AdminLTE3
-flask_bp = Blueprint("flask", __name__, url_prefix=f"/<proxy_path>/<user_secret>/", template_folder="templates")
-admin_bp = Blueprint("admin", __name__, url_prefix=f"/<proxy_path>/<user_secret>/admin/", template_folder="templates")
+flask_bp = APIBlueprint("flask", __name__, url_prefix=f"/<proxy_path>/<user_secret>/", template_folder="templates", enable_openapi=False)
+admin_bp = APIBlueprint("admin", __name__, url_prefix=f"/<proxy_path>/<user_secret>/admin/", template_folder="templates", enable_openapi=False)
 flaskadmin = Admin(endpoint="admin", base_template='flaskadmin-layout.html')
 # from extensions import socketio
 
@@ -43,6 +43,7 @@ def init_app(app):
     Events.admin_prehook.notify(flaskadmin=flaskadmin, admin_bp=admin_bp)
 
     @app.route('/<proxy_path>/<user_secret>/admin')
+    @app.doc(hide=True)
     def auto_route():
         return redirect(request.url.replace("http://", "https://")+"/")
 
@@ -64,7 +65,7 @@ def init_app(app):
     # admin_bp.add_url_rule('/admin/quicksetup/',endpoint="quicksetup",view_func=QuickSetup.index,methods=["GET"])
     # admin_bp.add_url_rule('/admin/quicksetup/',endpoint="quicksetup-save", view_func=QuickSetup.save,methods=["POST"])
 
-    app.add_url_rule("/<proxy_path>/<user_secret>/admin/static/<filename>/", endpoint="admin.static")  # fix bug in admin with blueprint
+    # app.add_url_rule("/<proxy_path>/<user_secret>/admin/static/<filename>/", endpoint="admin.static")  # fix bug in admin with blueprint
 
     flask_bp.debug = True
     app.register_blueprint(admin_bp)

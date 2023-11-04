@@ -158,18 +158,18 @@ class User(db.Model, SerializerMixin):
     #     if 'start_date' in filtered_data and filtered_data['start_date']:
     #         filtered_data['start_date'] = datetime.fromisoformat(filtered_data['start_date']).date()
     #     return User(**filtered_data)
-    def to_dict(d):
+    def to_dict(d, convert_date=True):
         from hiddifypanel.panel import hiddify
         return {
             'uuid': d.uuid,
             'name': d.name,
-            'last_online': hiddify.time_to_json(d.last_online),
+            'last_online': hiddify.time_to_json(d.last_online) if convert_date else d.last_online,
             'usage_limit_GB': d.usage_limit_GB,
             'package_days': d.package_days,
             'mode': d.mode,
-            'start_date': hiddify.date_to_json(d.start_date),
+            'start_date': hiddify.date_to_json(d.start_date)if convert_date else d.start_date,
             'current_usage_GB': d.current_usage_GB,
-            'last_reset_time': hiddify.date_to_json(d.last_reset_time),
+            'last_reset_time': hiddify.date_to_json(d.last_reset_time) if convert_date else d.last_reset_time,
             'comment': d.comment,
             'added_by_uuid': d.admin.uuid,
             'telegram_id': d.telegram_id,
@@ -274,13 +274,16 @@ def user_by_uuid(uuid):
 def user_by_id(id):
     return User.query.filter(User.id == id).first()
 
-### aliz dev
+# aliz dev
+
+
 def remove_user(commit=True, **uuid):
     dbuser = User.by_uuid(uuid)
     db.session.delete(dbuser)
     if commit:
         db.session.commit()
-### end aliz dev
+# end aliz dev
+
 
 def add_or_update_user(commit=True, **user):
     # if not is_valid():return

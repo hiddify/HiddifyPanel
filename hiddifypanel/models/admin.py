@@ -7,6 +7,11 @@ from strenum import StrEnum
 
 from hiddifypanel.panel.database import db
 
+from wtforms.validators import Regexp, ValidationError
+from apiflask import abort
+from flask_babelex import gettext as __
+from flask_babelex import lazy_gettext as _
+
 
 class AdminMode(StrEnum):
     """
@@ -70,12 +75,13 @@ class AdminUser(db.Model, SerializerMixin):
 
     def remove(model):
         if model.id == 1 or model.id == g.admin.id:
-            raise ValidationError(_("Owner can not be deleted!"))
-        users=model.recursive_users_query().all()
+            # raise ValidationError(_("Owner can not be deleted!"))
+            abort(422, __("Owner can not be deleted!"))
+        users = model.recursive_users_query().all()
         for u in users:
-            u.added_by=g.admin.id
-        
-        DailyUsage.query.filter(DailyUsage.admin_id.in_(model.recursive_sub_admins_ids())).update({'admin_id':g.admin.id})
+            u.added_by = g.admin.id
+
+        DailyUsage.query.filter(DailyUsage.admin_id.in_(model.recursive_sub_admins_ids())).update({'admin_id': g.admin.id})
         AdminUser.query.filter(AdminUser.id.in_(model.recursive_sub_admins_ids())).delete()
 
         db.session.commit()
@@ -139,6 +145,7 @@ def add_or_update_admin(commit=True, **admin):
     # dbuser.last_online=user.get('last_online','')
     if commit:
         db.session.commit()
+    return dbuser
 
 
 def get_admin_by_uuid(uuid, create=False):

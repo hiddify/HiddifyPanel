@@ -2,7 +2,7 @@ import traceback
 import uuid
 
 import user_agents
-from flask import abort, render_template, request
+from flask import abort, render_template, request, jsonify
 from flask import g, send_from_directory, session, Markup
 
 import hiddifypanel
@@ -21,17 +21,19 @@ def init_app(app):
 
     @app.errorhandler(Exception)
     def internal_server_error(e):
+
         if not hasattr(e, 'code') or e.code == 500:
             trace = traceback.format_exc()
 
             # Create github issue link
             issue_link = generate_github_issue_link_for_500_error(e, trace)
 
-            last_version = hiddify.get_latest_release_version('hiddifypanel')#TODO: add dev update check
+            last_version = hiddify.get_latest_release_version('hiddifypanel')  # TODO: add dev update check
             if "T" in hiddifypanel.__version__:
                 has_update = False
             else:
                 has_update = "dev" not in hiddifypanel.__version__ and f'{last_version}' != hiddifypanel.__version__
+
             return render_template('500.html', error=e, trace=trace, has_update=has_update, last_version=last_version), 500
         # if e.code in [400,401,403]:
         #     return render_template('access-denied.html',error=e), e.code
@@ -48,6 +50,18 @@ def init_app(app):
         issue_link = str(github_issue_generator.IssueUrl(opts).get_url())
         return issue_link
 
+    @app.spec_processor
+    def set_default_path_values(spec):
+        for path in spec['paths'].values():
+            for operation in path.values():
+                if 'parameters' in operation:
+                    for parameter in operation['parameters']:
+                        if parameter['name'] == 'proxy_path':
+                            parameter['schema'] = {'type': 'string', 'default': g.proxy_path}
+                        elif parameter['name'] == 'user_secret':
+                            parameter['schema'] = {'type': 'string', 'default': g.user_uuid}
+        return spec
+
     @app.url_defaults
     def add_proxy_path_user(endpoint, values):
 
@@ -58,6 +72,7 @@ def init_app(app):
             values['proxy_path'] = hconfig(ConfigEnum.proxy_path)
 
     @app.route("/<proxy_path>/videos/<file>")
+    @app.doc(hide=True)
     def videos(file):
         print("file", file, app.config['HIDDIFY_CONFIG_PATH'] +
               '/hiddify-panel/videos/'+file)
@@ -69,7 +84,7 @@ def init_app(app):
 
     @app.url_value_preprocessor
     def pull_secret_code(endpoint, values):
-        # print("Y",endpoint, values)
+        # print("Y",endpoint, values)6
         # if values is None:
         #     return
         # if hiddifypanel.__release_date__ + datetime.timedelta(days=40) < datetime.datetime.now() or hiddifypanel.__release_date__ > datetime.datetime.now():
