@@ -47,7 +47,8 @@ class UserView(FlaskView):
             'admin_message_url': hconfig(ConfigEnum.branding_site),
             'brand_title': hconfig(ConfigEnum.branding_title),
             'brand_icon_url': "",
-            'doh': f"https://{urlparse(request.base_url).hostname}/{g.proxy_path}/dns/dns-query"
+            'doh': f"https://{urlparse(request.base_url).hostname}/{g.proxy_path}/dns/dns-query",
+            'def_lang': hconfig(ConfigEnum.lang)
         }
 
         return jsonify(data)
@@ -75,12 +76,13 @@ class UserView(FlaskView):
         def create_item(name, type, domain, protocol, transport, security, link):
             return {
                 'name': name,
-                'type': type,
                 'domain': domain,
+                'link': link,
+                'tags': set(type, protocol, transport, security),
+                'type': type,
                 'protocol': protocol,
                 'transport': transport,
                 'security': security,
-                'link': link
             }
 
         items = []
