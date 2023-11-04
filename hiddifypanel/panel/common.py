@@ -107,6 +107,7 @@ def init_app(app):
         if g.user_agent.is_bot:
             abort(400, "invalid")
         g.proxy_path = values.pop('proxy_path', None) if values else None
+
         if g.proxy_path != hconfig(ConfigEnum.proxy_path):
             if app.config['DEBUG']:
                 abort(400, Markup(

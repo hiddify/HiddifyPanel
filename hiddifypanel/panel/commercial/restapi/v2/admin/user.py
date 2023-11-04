@@ -63,7 +63,7 @@ class UserDTO(Schema):
     added_by_uuid = UUID(
         required=True,
         description="UUID of the admin who added this user",
-        validate=OneOf([p.uuid for p in AdminUser.query.all()])
+        # validate=OneOf([p.uuid for p in AdminUser.query.all()])
     )
     telegram_id = Integer(
         required=False,

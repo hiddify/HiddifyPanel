@@ -27,7 +27,9 @@ class AdminDTO(Schema):
     uuid = UUID(required=True, description='The unique identifier for the admin')
     mode = Enum(AdminMode, required=True, description='The mode for the admin')
     can_add_admin = Boolean(required=True, description='Whether the admin can add other admins')
-    parent_admin_uuid = UUID(description='The unique identifier for the parent admin', allow_none=True, validate=OneOf([p.uuid for p in AdminUser.query.all()]))
+    parent_admin_uuid = UUID(description='The unique identifier for the parent admin', allow_none=True,
+                             # validate=OneOf([p.uuid for p in AdminUser.query.all()])
+                             )
     telegram_id = Integer(required=True, description='The Telegram ID associated with the admin')
 
 

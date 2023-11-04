@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-02 13:45+0100\n"
-"PO-Revision-Date: 2023-11-02 07:35-0500\n"
+"POT-Creation-Date: 2023-11-05 00:43+0100\n"
+"PO-Revision-Date: 2023-11-04 18:42-0500\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -14,13 +14,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.12.1\n"
 
-# | msgid "Owner Can Not Be Deleted!"
-#: hiddifypanel/models/admin.py:73
-msgid "Owner can not be deleted!"
-msgstr "مدیر کل را نمیتوانید حذف کنید!"
-
 # | msgid "This Domain does not exist in the Panel !"
-#: hiddifypanel/models/domain.py:159 hiddifypanel/panel/user/user.py:418
+#: hiddifypanel/models/domain.py:159 hiddifypanel/panel/user/user.py:420
 msgid "This domain does not exist in the panel!"
 msgstr "این دامنه در پنل وجود ندارد!"
 
@@ -30,12 +25,12 @@ msgstr "این دامنه در پنل وجود ندارد!"
 msgid "Error! auto cdn ip can not be find, please contact admin."
 msgstr "خطا! آی پی اتوماتیک نتوانست پیدا شود. لطفا با مدیر تماس بگیرید"
 
-#: hiddifypanel/panel/hiddify.py:74
+#: hiddifypanel/panel/hiddify.py:77
 msgid "Access Denied"
 msgstr "دسترسی غیر مجاز"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/panel/hiddify.py:177
+#: hiddifypanel/panel/hiddify.py:180
 msgid "admin.config.apply_configs"
 msgstr "اعمال تنظیمات"
 
@@ -43,14 +38,14 @@ msgstr "اعمال تنظیمات"
 # | "Configs have been changed successfully. Click %(link)s to apply the
 # configs."
 # | " It may take 2 minutes to apply"
-#: hiddifypanel/panel/hiddify.py:178
+#: hiddifypanel/panel/hiddify.py:181
 msgid "config.validation-success"
 msgstr ""
 "تنظیمات با موفقیت ذخیره شدند. لطفا بر روی این لینک: %(link)s کلیک کنید تا"
 " بر روی سیستم اعمال شوند. این کار ممکن است 2 دقیقه طول بکشد"
 
 # | msgid " ✅ Configs have been changed successfully"
-#: hiddifypanel/panel/hiddify.py:180
+#: hiddifypanel/panel/hiddify.py:183
 msgid "config.validation-success-no-reset"
 msgstr " ✅ تنظیمات با موفقیت تغییر کرد"
 
@@ -64,12 +59,12 @@ msgstr " ✅ تنظیمات با موفقیت تغییر کرد"
 #: hiddifypanel/panel/admin/DomainAdmin.py:172
 #: hiddifypanel/panel/admin/QuickSetup.py:127
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:107
-#: hiddifypanel/panel/hiddify.py:269
+#: hiddifypanel/panel/hiddify.py:272
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr "دامنه قابل دسترسی نیست! در دامنه شما مشکلی وجود دارد."
 
 # | msgid "Last Day"
-#: hiddifypanel/panel/hiddify.py:301
+#: hiddifypanel/panel/hiddify.py:304
 msgid "0 - Last day"
 msgstr "آخرین روز"
 
@@ -77,7 +72,7 @@ msgstr "آخرین روز"
 # | "Selected Domain for REALITY is not in the same ASN. To better use of the
 # "
 # | "Protocol, it is better to find a Domain in the same ASN"
-#: hiddifypanel/panel/hiddify.py:594
+#: hiddifypanel/panel/hiddify.py:597
 msgid ""
 "selected domain for REALITY is not in the same ASN. To better use of the "
 "protocol, it is better to find a domain in the same ASN."
@@ -1068,7 +1063,7 @@ msgstr ""
 "%(total)s کاربر داشته باشید"
 
 #: hiddifypanel/panel/admin/templates/backup.html:9
-#: hiddifypanel/templates/admin-layout.html:181
+#: hiddifypanel/templates/admin-layout.html:178
 msgid "Backup"
 msgstr "پشتیبان‌گیری"
 
@@ -2895,9 +2890,8 @@ msgstr "خودکار"
 # | msgid "All Config Hiddify Managers"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:48
 #: hiddifypanel/panel/user/templates/home/all-configs_old.html:19
-#, fuzzy
 msgid "user.home.allconfig.hiddify-managers"
-msgstr "همه مدیران Config Hiddify"
+msgstr "همه کانفیگ های مدیران هیدیفای"
 
 # | msgid "Clash Configs"
 #: hiddifypanel/panel/user/templates/home/all-configs.html:61
@@ -3961,7 +3955,7 @@ msgstr "ادمین ها"
 
 # | msgid "Settings"
 #: hiddifypanel/templates/admin-layout.html:92
-#: hiddifypanel/templates/admin-layout.html:176
+#: hiddifypanel/templates/admin-layout.html:173
 msgid "admin.menu.config"
 msgstr "تنظیمات"
 
@@ -3971,84 +3965,90 @@ msgid "Commercial use"
 msgstr "استفاده تجاری"
 
 # | msgid "Actions"
-#: hiddifypanel/templates/admin-layout.html:109
+#: hiddifypanel/templates/admin-layout.html:106
 msgid "admin.actions.title"
 msgstr "اقدامات"
 
 # | msgid "Help"
-#: hiddifypanel/templates/admin-layout.html:117
+#: hiddifypanel/templates/admin-layout.html:114
 msgid "admin.menu.support"
 msgstr "راهنما"
 
 # | msgid "Telegram"
-#: hiddifypanel/templates/admin-layout.html:120
+#: hiddifypanel/templates/admin-layout.html:117
 msgid "admin.menu.telegram"
 msgstr "تلگرام"
 
 # | msgid "Bug/Feature"
-#: hiddifypanel/templates/admin-layout.html:125
+#: hiddifypanel/templates/admin-layout.html:122
 msgid "Bug"
 msgstr "باگ/پیشنهاد"
 
 # | msgid "Donation"
-#: hiddifypanel/templates/admin-layout.html:130
+#: hiddifypanel/templates/admin-layout.html:127
 #: hiddifypanel/templates/donation.html:5
 #, fuzzy
 msgid "Donation.title"
 msgstr "اهداء"
 
 # | msgid "Status"
-#: hiddifypanel/templates/admin-layout.html:154
+#: hiddifypanel/templates/admin-layout.html:151
 msgid "admin.actions.status"
 msgstr "وضعیت"
 
 # | msgid "View Logs"
-#: hiddifypanel/templates/admin-layout.html:155
+#: hiddifypanel/templates/admin-layout.html:152
 msgid "admin.actions.viewlogs"
 msgstr "نمایش لاگ"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/templates/admin-layout.html:156
+#: hiddifypanel/templates/admin-layout.html:153
 msgid "admin.actions.apply_configs"
 msgstr "اعمال تغییرات"
 
 # | msgid "Update"
-#: hiddifypanel/templates/admin-layout.html:157
+#: hiddifypanel/templates/admin-layout.html:154
 msgid "admin.actions.update"
 msgstr "به‌روز‌ رسانی"
 
 # | msgid "Reinstall"
-#: hiddifypanel/templates/admin-layout.html:159
+#: hiddifypanel/templates/admin-layout.html:156
 msgid "admin.actions.reinstall"
 msgstr "نصب مجدد"
 
 # | msgid "Restart System"
-#: hiddifypanel/templates/admin-layout.html:160
+#: hiddifypanel/templates/admin-layout.html:157
 msgid "admin.actions.reset"
 msgstr "ریستارت سیستم"
 
 # | msgid "Domains"
-#: hiddifypanel/templates/admin-layout.html:167
-#: hiddifypanel/templates/admin-layout.html:172
+#: hiddifypanel/templates/admin-layout.html:164
+#: hiddifypanel/templates/admin-layout.html:169
 msgid "admin.menu.domain"
 msgstr "دامنه‌ها"
 
 # | msgid "Proxies"
-#: hiddifypanel/templates/admin-layout.html:173
+#: hiddifypanel/templates/admin-layout.html:170
 msgid "admin.menu.proxy"
 msgstr "پروکسی‌ها"
 
 # | msgid "Common Settings"
-#: hiddifypanel/templates/admin-layout.html:179
+#: hiddifypanel/templates/admin-layout.html:176
 msgid "Commercial Settings"
 msgstr "تنظیمات پرکاربرد"
 
-#: hiddifypanel/templates/admin-layout.html:184
+#: hiddifypanel/templates/admin-layout.html:181
 msgid "Telegram Bot"
 msgstr "بات تلگرام"
 
+# | msgid "API"
+#: hiddifypanel/templates/admin-layout.html:185
+#, fuzzy
+msgid "admin.menu.api"
+msgstr "API"
+
 # | msgid "⚠️ Are you sure you want to do this action?"
-#: hiddifypanel/templates/admin-layout.html:217
+#: hiddifypanel/templates/admin-layout.html:219
 msgid "Are you sure you want to do this action?"
 msgstr "⚠️ آیا مطمئن هستید که می خواهید این عمل را انجام دهید؟"
 
@@ -4239,9 +4239,8 @@ msgstr ""
 
 # | msgid "Additional Warp Sites"
 #: hiddifypanel/templates/fake.html:1
-#, fuzzy
 msgid "config.warp_sites.label"
-msgstr "سایت های Warp اضافی"
+msgstr "سایت های اضافی برای WARP"
 
 # | msgid ""
 # | "Add additional sites to pass through warp (only when warp mode is not
@@ -4271,19 +4270,17 @@ msgstr ""
 
 # | msgid "Direct Reality Port"
 #: hiddifypanel/templates/fake.html:1
-#, fuzzy
 msgid "config.reality_port.label"
-msgstr "بندر واقعیت مستقیم"
+msgstr "پورت ریالیتی"
 
 # | msgid ""
 # | "You can set a customized port for your reality server to reduce the
 # system's"
 # | " overhead. (Allow direct connection to proxies should be yes)"
 #: hiddifypanel/templates/fake.html:1
-#, fuzzy
 msgid "config.reality_port.description"
 msgstr ""
-"شما می توانید یک پورت سفارشی برای سرور واقعیت خود تنظیم کنید تا سربار "
+"شما می توانید یک پورت سفارشی برای سرور ریالیتی خود تنظیم کنید تا پردازش "
 "سیستم را کاهش دهید. (اجازه اتصال مستقیم به پروکسی ها باید بله باشد)"
 
 # | msgid "Enable Hysteria2"
@@ -4835,6 +4832,10 @@ msgstr "عملیات"
 
 #~ msgid "Disable User"
 #~ msgstr "غیر فعال کردن کاربر"
+
+# | msgid "Owner Can Not Be Deleted!"
+#~ msgid "Owner can not be deleted!"
+#~ msgstr "مدیر کل را نمیتوانید حذف کنید!"
 
 #~ msgid "Users"
 #~ msgstr "کاربران"

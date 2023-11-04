@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPT\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-02 13:45+0100\n"
-"PO-Revision-Date: 2023-11-02 07:35-0500\n"
+"POT-Creation-Date: 2023-11-05 00:43+0100\n"
+"PO-Revision-Date: 2023-11-04 18:42-0500\n"
 "Last-Translator: lymanrudni\n"
 "Language: pt\n"
 "Language-Team: Portuguese\n"
@@ -14,14 +14,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.12.1\n"
 
-# | msgid "Owner Can Not Be Deleted!"
-#: hiddifypanel/models/admin.py:73
-#, fuzzy
-msgid "Owner can not be deleted!"
-msgstr "O proprietário não pode ser excluído!"
-
 # | msgid "This Domain does not exist in the Panel !"
-#: hiddifypanel/models/domain.py:159 hiddifypanel/panel/user/user.py:418
+#: hiddifypanel/models/domain.py:159 hiddifypanel/panel/user/user.py:420
 msgid "This domain does not exist in the panel!"
 msgstr "Este Domínio não existe no Painel!"
 
@@ -34,12 +28,12 @@ msgstr ""
 "Erro no Auto CDN IP! Não pode ser encontrado, entre em contato com o "
 "administrador"
 
-#: hiddifypanel/panel/hiddify.py:74
+#: hiddifypanel/panel/hiddify.py:77
 msgid "Access Denied"
 msgstr "Acesso negado"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/panel/hiddify.py:177
+#: hiddifypanel/panel/hiddify.py:180
 #, fuzzy
 msgid "admin.config.apply_configs"
 msgstr "Aplicar configurações"
@@ -48,7 +42,7 @@ msgstr "Aplicar configurações"
 # | "Configs have been changed successfully. Click %(link)s to apply the
 # configs."
 # | " It may take 2 minutes to apply"
-#: hiddifypanel/panel/hiddify.py:178
+#: hiddifypanel/panel/hiddify.py:181
 #, fuzzy
 msgid "config.validation-success"
 msgstr ""
@@ -56,7 +50,7 @@ msgstr ""
 "aplicar as configurações. Pode levar 2 minutos para aplicar"
 
 # | msgid " ✅ Configs have been changed successfully"
-#: hiddifypanel/panel/hiddify.py:180
+#: hiddifypanel/panel/hiddify.py:183
 #, fuzzy
 msgid "config.validation-success-no-reset"
 msgstr "✅ As configurações foram alteradas com sucesso"
@@ -71,7 +65,7 @@ msgstr "✅ As configurações foram alteradas com sucesso"
 #: hiddifypanel/panel/admin/DomainAdmin.py:172
 #: hiddifypanel/panel/admin/QuickSetup.py:127
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:107
-#: hiddifypanel/panel/hiddify.py:269
+#: hiddifypanel/panel/hiddify.py:272
 #, fuzzy
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr ""
@@ -79,7 +73,7 @@ msgstr ""
 "Verifique as configurações do seu Domínio."
 
 # | msgid "Last Day"
-#: hiddifypanel/panel/hiddify.py:301
+#: hiddifypanel/panel/hiddify.py:304
 #, fuzzy
 msgid "0 - Last day"
 msgstr "Último dia"
@@ -88,7 +82,7 @@ msgstr "Último dia"
 # | "Selected Domain for REALITY is not in the same ASN. To better use of the
 # "
 # | "Protocol, it is better to find a Domain in the same ASN"
-#: hiddifypanel/panel/hiddify.py:594
+#: hiddifypanel/panel/hiddify.py:597
 msgid ""
 "selected domain for REALITY is not in the same ASN. To better use of the "
 "protocol, it is better to find a domain in the same ASN."
@@ -1168,7 +1162,7 @@ msgstr ""
 " e %(total)s usuários"
 
 #: hiddifypanel/panel/admin/templates/backup.html:9
-#: hiddifypanel/templates/admin-layout.html:181
+#: hiddifypanel/templates/admin-layout.html:178
 msgid "Backup"
 msgstr "Backup"
 
@@ -4319,7 +4313,7 @@ msgstr "Administradores"
 
 # | msgid "Settings"
 #: hiddifypanel/templates/admin-layout.html:92
-#: hiddifypanel/templates/admin-layout.html:176
+#: hiddifypanel/templates/admin-layout.html:173
 #, fuzzy
 msgid "admin.menu.config"
 msgstr "Configurações"
@@ -4331,96 +4325,101 @@ msgid "Commercial use"
 msgstr "Uso comercial"
 
 # | msgid "Actions"
-#: hiddifypanel/templates/admin-layout.html:109
+#: hiddifypanel/templates/admin-layout.html:106
 #, fuzzy
 msgid "admin.actions.title"
 msgstr "Ações"
 
 # | msgid "Help"
-#: hiddifypanel/templates/admin-layout.html:117
+#: hiddifypanel/templates/admin-layout.html:114
 #, fuzzy
 msgid "admin.menu.support"
 msgstr "Ajuda"
 
 # | msgid "Telegram"
-#: hiddifypanel/templates/admin-layout.html:120
+#: hiddifypanel/templates/admin-layout.html:117
 msgid "admin.menu.telegram"
 msgstr "Telegram"
 
 # | msgid "Bug/Feature"
-#: hiddifypanel/templates/admin-layout.html:125
+#: hiddifypanel/templates/admin-layout.html:122
 #, fuzzy
 msgid "Bug"
 msgstr "Bug/recurso"
 
 # | msgid "Donation"
-#: hiddifypanel/templates/admin-layout.html:130
+#: hiddifypanel/templates/admin-layout.html:127
 #: hiddifypanel/templates/donation.html:5
 #, fuzzy
 msgid "Donation.title"
 msgstr "Doação"
 
 # | msgid "Status"
-#: hiddifypanel/templates/admin-layout.html:154
+#: hiddifypanel/templates/admin-layout.html:151
 #, fuzzy
 msgid "admin.actions.status"
 msgstr "Status"
 
 # | msgid "View Logs"
-#: hiddifypanel/templates/admin-layout.html:155
+#: hiddifypanel/templates/admin-layout.html:152
 msgid "admin.actions.viewlogs"
 msgstr "Ver registros de logs"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/templates/admin-layout.html:156
+#: hiddifypanel/templates/admin-layout.html:153
 #, fuzzy
 msgid "admin.actions.apply_configs"
 msgstr "Aplicar configurações"
 
 # | msgid "Update"
-#: hiddifypanel/templates/admin-layout.html:157
+#: hiddifypanel/templates/admin-layout.html:154
 #, fuzzy
 msgid "admin.actions.update"
 msgstr "Atualizar"
 
 # | msgid "Reinstall"
-#: hiddifypanel/templates/admin-layout.html:159
+#: hiddifypanel/templates/admin-layout.html:156
 #, fuzzy
 msgid "admin.actions.reinstall"
 msgstr "Reinstalar"
 
 # | msgid "Restart System"
-#: hiddifypanel/templates/admin-layout.html:160
+#: hiddifypanel/templates/admin-layout.html:157
 #, fuzzy
 msgid "admin.actions.reset"
 msgstr "Reiniciar sistema"
 
 # | msgid "Domains"
-#: hiddifypanel/templates/admin-layout.html:167
-#: hiddifypanel/templates/admin-layout.html:172
+#: hiddifypanel/templates/admin-layout.html:164
+#: hiddifypanel/templates/admin-layout.html:169
 #, fuzzy
 msgid "admin.menu.domain"
 msgstr "domínios"
 
 # | msgid "Proxies"
-#: hiddifypanel/templates/admin-layout.html:173
+#: hiddifypanel/templates/admin-layout.html:170
 #, fuzzy
 msgid "admin.menu.proxy"
 msgstr "Proxies"
 
 # | msgid "Common Settings"
-#: hiddifypanel/templates/admin-layout.html:179
+#: hiddifypanel/templates/admin-layout.html:176
 #, fuzzy
 msgid "Commercial Settings"
 msgstr "Configurações padrão"
 
-#: hiddifypanel/templates/admin-layout.html:184
+#: hiddifypanel/templates/admin-layout.html:181
 #, fuzzy
 msgid "Telegram Bot"
 msgstr "Telegram Bot"
 
+#: hiddifypanel/templates/admin-layout.html:185
+#, fuzzy
+msgid "admin.menu.api"
+msgstr "API"
+
 # | msgid "⚠️ Are you sure you want to do this action?"
-#: hiddifypanel/templates/admin-layout.html:217
+#: hiddifypanel/templates/admin-layout.html:219
 #, fuzzy
 msgid "Are you sure you want to do this action?"
 msgstr "⚠️Tem certeza que deseja fazer esta ação?"
@@ -4941,6 +4940,10 @@ msgstr "Ações"
 # | msgid "Can not sync child with Parent Panel."
 #~ msgid "can not sync child with parent panel"
 #~ msgstr "Não é possível sincronizar o filho com o painel pai."
+
+# | msgid "Owner Can Not Be Deleted!"
+#~ msgid "Owner can not be deleted!"
+#~ msgstr "O proprietário não pode ser excluído!"
 
 # | msgid "Can not connect to Parent Panel!"
 #~ msgid "Can not connect to parent panel!"

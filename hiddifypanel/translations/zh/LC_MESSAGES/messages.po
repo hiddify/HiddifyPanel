@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-02 13:45+0100\n"
-"PO-Revision-Date: 2023-11-02 07:35-0500\n"
+"POT-Creation-Date: 2023-11-05 00:43+0100\n"
+"PO-Revision-Date: 2023-11-04 18:42-0500\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -14,13 +14,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.12.1\n"
 
-# | msgid "Owner Can Not Be Deleted!"
-#: hiddifypanel/models/admin.py:73
-msgid "Owner can not be deleted!"
-msgstr "不能删除所有者！"
-
 # | msgid "This Domain does not exist in the Panel !"
-#: hiddifypanel/models/domain.py:159 hiddifypanel/panel/user/user.py:418
+#: hiddifypanel/models/domain.py:159 hiddifypanel/panel/user/user.py:420
 msgid "This domain does not exist in the panel!"
 msgstr "该域名在面板中不存在！"
 
@@ -30,12 +25,12 @@ msgstr "该域名在面板中不存在！"
 msgid "Error! auto cdn ip can not be find, please contact admin."
 msgstr "自动 CDN IP 错误！找不到自动 CDN IP，请联系管理员"
 
-#: hiddifypanel/panel/hiddify.py:74
+#: hiddifypanel/panel/hiddify.py:77
 msgid "Access Denied"
 msgstr "拒绝访问"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/panel/hiddify.py:177
+#: hiddifypanel/panel/hiddify.py:180
 msgid "admin.config.apply_configs"
 msgstr "应用配置"
 
@@ -43,12 +38,12 @@ msgstr "应用配置"
 # | "Configs have been changed successfully. Click %(link)s to apply the
 # configs."
 # | " It may take 2 minutes to apply"
-#: hiddifypanel/panel/hiddify.py:178
+#: hiddifypanel/panel/hiddify.py:181
 msgid "config.validation-success"
 msgstr "配置已成功更改。单击 %(link)s 以应用配置。应用可能需要 2 分钟。"
 
 # | msgid " ✅ Configs have been changed successfully"
-#: hiddifypanel/panel/hiddify.py:180
+#: hiddifypanel/panel/hiddify.py:183
 msgid "config.validation-success-no-reset"
 msgstr " ✅ 配置已成功更改"
 
@@ -62,12 +57,12 @@ msgstr " ✅ 配置已成功更改"
 #: hiddifypanel/panel/admin/DomainAdmin.py:172
 #: hiddifypanel/panel/admin/QuickSetup.py:127
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:107
-#: hiddifypanel/panel/hiddify.py:269
+#: hiddifypanel/panel/hiddify.py:272
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr "域名无法解析！你的域名有问题。请检查你的域名配置。"
 
 # | msgid "Last Day"
-#: hiddifypanel/panel/hiddify.py:301
+#: hiddifypanel/panel/hiddify.py:304
 msgid "0 - Last day"
 msgstr "最后一天"
 
@@ -75,7 +70,7 @@ msgstr "最后一天"
 # | "Selected Domain for REALITY is not in the same ASN. To better use of the
 # "
 # | "Protocol, it is better to find a Domain in the same ASN"
-#: hiddifypanel/panel/hiddify.py:594
+#: hiddifypanel/panel/hiddify.py:597
 msgid ""
 "selected domain for REALITY is not in the same ASN. To better use of the "
 "protocol, it is better to find a domain in the same ASN."
@@ -1001,7 +996,7 @@ msgid ""
 msgstr "你的用户太多了！您只能有 %(active)s 个活跃用户和 %(total)s 个用户"
 
 #: hiddifypanel/panel/admin/templates/backup.html:9
-#: hiddifypanel/templates/admin-layout.html:181
+#: hiddifypanel/templates/admin-layout.html:178
 msgid "Backup"
 msgstr "备份"
 
@@ -3717,7 +3712,7 @@ msgstr "管理员"
 
 # | msgid "Settings"
 #: hiddifypanel/templates/admin-layout.html:92
-#: hiddifypanel/templates/admin-layout.html:176
+#: hiddifypanel/templates/admin-layout.html:173
 msgid "admin.menu.config"
 msgstr "设置"
 
@@ -3727,83 +3722,89 @@ msgid "Commercial use"
 msgstr "商业用途"
 
 # | msgid "Actions"
-#: hiddifypanel/templates/admin-layout.html:109
+#: hiddifypanel/templates/admin-layout.html:106
 msgid "admin.actions.title"
 msgstr "动作"
 
 # | msgid "Help"
-#: hiddifypanel/templates/admin-layout.html:117
+#: hiddifypanel/templates/admin-layout.html:114
 msgid "admin.menu.support"
 msgstr "帮助"
 
 # | msgid "Telegram"
-#: hiddifypanel/templates/admin-layout.html:120
+#: hiddifypanel/templates/admin-layout.html:117
 msgid "admin.menu.telegram"
 msgstr "Telegram"
 
 # | msgid "Bug/Feature"
-#: hiddifypanel/templates/admin-layout.html:125
+#: hiddifypanel/templates/admin-layout.html:122
 msgid "Bug"
 msgstr "错误/功能"
 
 # | msgid "Donation"
-#: hiddifypanel/templates/admin-layout.html:130
+#: hiddifypanel/templates/admin-layout.html:127
 #: hiddifypanel/templates/donation.html:5
 msgid "Donation.title"
 msgstr "捐赠"
 
 # | msgid "Status"
-#: hiddifypanel/templates/admin-layout.html:154
+#: hiddifypanel/templates/admin-layout.html:151
 msgid "admin.actions.status"
 msgstr "状态"
 
 # | msgid "View Logs"
-#: hiddifypanel/templates/admin-layout.html:155
+#: hiddifypanel/templates/admin-layout.html:152
 msgid "admin.actions.viewlogs"
 msgstr "查看日志"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/templates/admin-layout.html:156
+#: hiddifypanel/templates/admin-layout.html:153
 msgid "admin.actions.apply_configs"
 msgstr "应用配置"
 
 # | msgid "Update"
-#: hiddifypanel/templates/admin-layout.html:157
+#: hiddifypanel/templates/admin-layout.html:154
 msgid "admin.actions.update"
 msgstr "更新系统"
 
 # | msgid "Reinstall"
-#: hiddifypanel/templates/admin-layout.html:159
+#: hiddifypanel/templates/admin-layout.html:156
 msgid "admin.actions.reinstall"
 msgstr "重装系统"
 
 # | msgid "Restart System"
-#: hiddifypanel/templates/admin-layout.html:160
+#: hiddifypanel/templates/admin-layout.html:157
 msgid "admin.actions.reset"
 msgstr "重启系统"
 
 # | msgid "Domains"
-#: hiddifypanel/templates/admin-layout.html:167
-#: hiddifypanel/templates/admin-layout.html:172
+#: hiddifypanel/templates/admin-layout.html:164
+#: hiddifypanel/templates/admin-layout.html:169
 msgid "admin.menu.domain"
 msgstr "域名"
 
 # | msgid "Proxies"
-#: hiddifypanel/templates/admin-layout.html:173
+#: hiddifypanel/templates/admin-layout.html:170
 msgid "admin.menu.proxy"
 msgstr "代理"
 
 # | msgid "Common Settings"
-#: hiddifypanel/templates/admin-layout.html:179
+#: hiddifypanel/templates/admin-layout.html:176
 msgid "Commercial Settings"
 msgstr "通用设置"
 
-#: hiddifypanel/templates/admin-layout.html:184
+#: hiddifypanel/templates/admin-layout.html:181
 msgid "Telegram Bot"
 msgstr "Telegram 机器人"
 
+# | msgid "API"
+#: hiddifypanel/templates/admin-layout.html:185
+#, fuzzy
+msgid "admin.menu.api"
+msgstr "应用程序编程接口"
+
 # | msgid "⚠️ Are you sure you want to do this action?"
-#: hiddifypanel/templates/admin-layout.html:217
+#: hiddifypanel/templates/admin-layout.html:219
 msgid "Are you sure you want to do this action?"
 msgstr "⚠️ 您确定要执行此操作吗？"
 
@@ -4522,6 +4523,10 @@ msgstr "动作"
 
 #~ msgid "Disable User"
 #~ msgstr "禁用用户"
+
+# | msgid "Owner Can Not Be Deleted!"
+#~ msgid "Owner can not be deleted!"
+#~ msgstr "不能删除所有者！"
 
 #~ msgid "Users"
 #~ msgstr "用户"
