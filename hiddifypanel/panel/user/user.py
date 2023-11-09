@@ -78,7 +78,7 @@ class UserView(FlaskView):
                 'name': name,
                 'domain': domain,
                 'link': link,
-                'tags': set(type, protocol, transport, security),
+                #'tags': set(type, protocol, transport, security),
                 'type': type,
                 'protocol': protocol,
                 'transport': transport,

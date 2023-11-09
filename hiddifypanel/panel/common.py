@@ -130,10 +130,10 @@ def init_app(app):
             g.user = User.query.filter(User.uuid == f'{g.user_uuid}').first()
             if not g.user:
                 abort(401, 'invalid user')
-            if endpoint and ("admin" in endpoint or "api" in endpoint):
+            if endpoint and ("admin" in endpoint or "api/v1" in endpoint):
                 # raise PermissionError("Access Denied")
                 abort(403, 'Access Denied')
-            if "admin" in bare_path or "api" in bare_path:
+            if "admin" in bare_path or "api/v1" in bare_path:
                 abort(403, 'Access Denied')
 
         if hconfig(ConfigEnum.telegram_bot_token):
