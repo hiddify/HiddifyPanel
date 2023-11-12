@@ -7,6 +7,7 @@ from sqlalchemy_serializer import SerializerMixin
 from strenum import StrEnum
 
 from hiddifypanel.panel.database import db
+from hiddifypanel.models import Lang
 
 ONE_GIG = 1024*1024*1024
 
@@ -24,12 +25,7 @@ class UserMode(StrEnum):
     daily = auto()
 
     # disable = auto()
-class UserLang(StrEnum):
-    en = auto()
-    fa = auto()
-    ru = auto()
-    pt = auto()
-    zh = auto()
+
 
 class UserDetail(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -76,7 +72,7 @@ class User(db.Model, SerializerMixin):
     max_ips = db.Column(db.Integer, default=1000, nullable=False)
     details = db.relationship('UserDetail', cascade="all,delete", backref='user',    lazy='dynamic',)
     enable = db.Column(db.Boolean, default=True, nullable=False)
-    lang = db.Column(db.Enum(UserLang),nullable=False, default='en')
+    lang = db.Column(db.Enum(Lang), default=None)
     ed25519_private_key = db.Column(db.String(500))
     ed25519_public_key = db.Column(db.String(100))
 

@@ -2,7 +2,13 @@ from enum import auto
 
 from strenum import StrEnum
 
-
+class Lang(StrEnum):
+    en = auto()
+    fa = auto()
+    ru = auto()
+    pt = auto()
+    zh = auto()
+    
 class ConfigCategory(StrEnum):
     admin = auto()
     branding = auto()

@@ -1,4 +1,4 @@
-from .config_enum import ConfigCategory, ConfigEnum
+from .config_enum import ConfigCategory, ConfigEnum,Lang
 from .config import StrConfig, BoolConfig, get_hconfigs, hconfig, set_hconfig, add_or_update_config, bulk_register_configs
 
 from .parent_domain import ParentDomain, add_or_update_parent_domains, bulk_register_parent_domains
