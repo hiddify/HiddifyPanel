@@ -46,7 +46,7 @@ class InfoAPI(MethodView):
         dto.brand_title = hconfig(ConfigEnum.branding_title)
         dto.brand_icon_url = ""
         dto.doh = f"https://{urlparse(request.base_url).hostname}/{g.proxy_path}/dns/dns-query"
-        dto.lang = c['user'].lang
+        dto.lang = c['user'].lang if c['user'].lang else hconfig(ConfigEnum.lang)
         return dto
 
     @app.input(UserInfoChangableDTO,arg_name='data')
@@ -65,6 +65,8 @@ class InfoAPI(MethodView):
             
         if data['language']:
             user = user_by_uuid(g.user_uuid)
+            if user.lang is None:
+                user.lang = hconfig(ConfigEnum.lang)
             if user.lang != data['language']:
                 user.lang = data['language']
                 db.session.commit()
