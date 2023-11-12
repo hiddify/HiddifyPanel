@@ -64,13 +64,10 @@ class InfoAPI(MethodView):
 
             
         if data['language']:
-            if data['language'] in SUPPORTED_LANGUAGE:
-                user = user_by_uuid(g.user_uuid)
-                if user.lang != data['language']:
-                    user.lang = data['language']
-                    db.session.commit()
-            else:
-                return {'message': f'language is not supported\nsupported languages: {" | ".join(SUPPORTED_LANGUAGE)}'}
+            user = user_by_uuid(g.user_uuid)
+            if user.lang != data['language']:
+                user.lang = data['language']
+                db.session.commit()
         return {'message': 'ok'}
     
 class MTProxiesAPI(MethodView):
