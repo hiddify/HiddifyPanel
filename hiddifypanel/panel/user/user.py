@@ -24,12 +24,8 @@ class UserView(FlaskView):
     def short_link(self):
         short = hiddify.add_short_link(
             "/"+hconfig(ConfigEnum.proxy_path)+"/"+g.user.uuid+"/")
-        full_url = f"https://{urlparse(request.base_url).hostname}/{short}"
-        data = {
-            "short": f"/{short}",
-            "url": full_url
-        }
-        return jsonify(data)
+        
+        return f"<div style='direction:ltr'>https://{urlparse(request.base_url).hostname}/{short}/</a><br><br>"+_("This link will expire in 5 minutes")
 
     @route('/info/')
     @route('/info')
@@ -78,7 +74,7 @@ class UserView(FlaskView):
                 'name': name,
                 'domain': domain,
                 'link': link,
-                'tags': set(type, protocol, transport, security),
+                #'tags': set(type, protocol, transport, security),
                 'type': type,
                 'protocol': protocol,
                 'transport': transport,

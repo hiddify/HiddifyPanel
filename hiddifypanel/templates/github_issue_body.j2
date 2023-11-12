@@ -1,0 +1,15 @@
+{% if error %}
+# Internal Error Stacktrace:
+**Error Message**:   {{ error }}
+```
+{{ traceback }}
+```
+{%else%}
+# Bug/Feature:
+**Description**:     Describe bug or needed feature
+{%endif%}
+## Details:
+**Hiddify Version**: {{ issue_details['hiddify_version'] }}
+**Python Version**:  {{ issue_details['python_version'] }}
+**OS**:              {{ issue_details['os_details'] }}
+**User Agent**:      {{ issue_details['user_agent'] if issue_details['user_agent'] else "Unknown" }}

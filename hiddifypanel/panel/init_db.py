@@ -57,6 +57,7 @@ def init_db():
         add_column(User.enable)
         add_column(Domain.cdn_ip)
         add_column(Domain.servernames)
+        add_column(User.lang)
 
         if len(Domain.query.all()) != 0 and BoolConfig.query.count() == 0:
             execute(f'DROP TABLE bool_config')

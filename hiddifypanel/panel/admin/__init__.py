@@ -65,7 +65,7 @@ def init_app(app):
     # admin_bp.add_url_rule('/admin/quicksetup/',endpoint="quicksetup",view_func=QuickSetup.index,methods=["GET"])
     # admin_bp.add_url_rule('/admin/quicksetup/',endpoint="quicksetup-save", view_func=QuickSetup.save,methods=["POST"])
 
-    # app.add_url_rule("/<proxy_path>/<user_secret>/admin/static/<filename>/", endpoint="admin.static")  # fix bug in admin with blueprint
+    app.add_url_rule("/<proxy_path>/<user_secret>/admin/static/<filename>/", endpoint="admin.static")  # fix bug in admin with blueprint
 
     flask_bp.debug = True
     app.register_blueprint(admin_bp)
