@@ -2,6 +2,8 @@ from apiflask import APIFlask, Schema, abort
 from apiflask.fields import Integer, String, Float, URL
 from apiflask.validators import Length, OneOf
 
+SUPPORTED_LANGUAGE = ['en', 'fa', 'ru', 'pt', 'zh']
+
 class ProfileDTO(Schema):
     profile_title = String(required=True)
     profile_url = URL(required=True)
@@ -16,7 +18,7 @@ class ProfileDTO(Schema):
     brand_title = String()
     brand_icon_url = URL()
     doh = URL()
-    lang = String(validate=OneOf(['en', 'fa', 'ru', 'pt', 'zh']))
+    lang = String(validate=OneOf(SUPPORTED_LANGUAGE))
 
 class ConfigDTO(Schema):
     name = String(required=True)
@@ -37,5 +39,5 @@ class ShortDTO(Schema):
     full_url = String(required=True)
 
 class UserInfoChangableDTO(Schema):
-    language = String(required=False, validate=OneOf(['en', 'fa', 'ru', 'pt', 'zh']))
+    language = String(required=False, validate=OneOf(SUPPORTED_LANGUAGE))
     telegram_id = Integer(required=False)
