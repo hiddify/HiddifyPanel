@@ -36,6 +36,9 @@ def create_app(cli=False, **config):
 
     hiddifypanel.panel.database.init_app(app)
     with app.app_context():
+        hiddifypanel.panel.database.init_migration(app)
+        hiddifypanel.panel.database.migrate()
+        hiddifypanel.panel.database.upgrade()
         init_db()
 
     hiddifypanel.panel.common.init_app(app)
