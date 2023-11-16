@@ -24,6 +24,7 @@ def init_db():
     if db_version == latest_db_version():
         return
     Events.db_prehook.notify()
+    add_column(User.lang)
     if db_version < 52:
         execute(f'update domain set mode="sub_link_only", sub_link_only=false where sub_link_only = true or mode=1  or mode="1"')
         execute(f'update domain set mode="direct", sub_link_only=false where mode=0  or mode="0"')
@@ -312,7 +313,6 @@ def _v17():
                     u.package_days = (u.expiry_time-u.last_reset_time).days
                     u.start_date = u.last_reset_time
             u.expiry_time = None
-
 
 
 def _v1():
