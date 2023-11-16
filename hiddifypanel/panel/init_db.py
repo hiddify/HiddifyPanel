@@ -21,10 +21,10 @@ def init_db():
     hconfig.invalidate_all()
     get_hconfigs.invalidate_all()
     db_version = int(hconfig(ConfigEnum.db_version) or 0)
+    add_column(User.lang)
     if db_version == latest_db_version():
         return
     Events.db_prehook.notify()
-    add_column(User.lang)
     if db_version < 52:
         execute(f'update domain set mode="sub_link_only", sub_link_only=false where sub_link_only = true or mode=1  or mode="1"')
         execute(f'update domain set mode="direct", sub_link_only=false where mode=0  or mode="0"')
