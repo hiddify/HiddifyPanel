@@ -1,6 +1,6 @@
 from apiflask import Schema
 from apiflask.fields import Integer, String, UUID, Boolean, Enum, Float, Date, Time
-from hiddifypanel.models import AdminMode,UserMode
+from hiddifypanel.models import AdminMode,UserMode,Lang
 
 class AdminDTO(Schema):
     name = String(required=True, description='The name of the admin')
@@ -12,6 +12,7 @@ class AdminDTO(Schema):
                              # validate=OneOf([p.uuid for p in AdminUser.query.all()])
                              )
     telegram_id = Integer(required=True, description='The Telegram ID associated with the admin')
+    lang = Enum(Lang,required=True)
 
 
 

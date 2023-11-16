@@ -22,7 +22,17 @@ class AdminInfoApi(MethodView):
         # in this case g.user_uuid is equal to admin uuid
         admin_uuid = g.user_uuid
         admin = get_admin_user_db(admin_uuid) or abort(404, "user not found")
-        return admin.to_dict()
+
+        dto = AdminDTO()
+        dto.name = admin.name
+        dto.comment = admin.comment
+        dto.uuid = admin.uuid
+        dto.mode = admin.mode
+        dto.can_add_admin = admin.can_add_admin
+        dto.parent_admin_uuid = AdminUser.query.filter(AdminUser.id == admin.parent_admin_id).first().uuid or 'None'
+        dto.telegram_id = admin.telegram_id
+        dto.lang =  Lang(hconfig(ConfigEnum.admin_lang))
+        return dto
 class AdminUsersApi(MethodView):
     decorators = [hiddify.super_admin]
 
