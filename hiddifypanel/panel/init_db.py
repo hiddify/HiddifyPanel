@@ -21,6 +21,7 @@ def init_db():
     hconfig.invalidate_all()
     get_hconfigs.invalidate_all()
     db_version = int(hconfig(ConfigEnum.db_version) or 0)
+    add_column(User.lang)
     if db_version == latest_db_version():
         return
     Events.db_prehook.notify()
@@ -312,7 +313,6 @@ def _v17():
                     u.package_days = (u.expiry_time-u.last_reset_time).days
                     u.start_date = u.last_reset_time
             u.expiry_time = None
-
 
 
 def _v1():
