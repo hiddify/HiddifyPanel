@@ -1,5 +1,5 @@
 from apiflask import Schema
-from apiflask.fields import Integer, String, UUID, Boolean, Enum, Float, Date, Time
+from apiflask.fields import Integer, String, UUID, Boolean, Enum, Float, Date, Time,Dict
 from hiddifypanel.models import AdminMode,UserMode,Lang
 
 class AdminDTO(Schema):
@@ -14,7 +14,9 @@ class AdminDTO(Schema):
     telegram_id = Integer(required=True, description='The Telegram ID associated with the admin')
     lang = Enum(Lang,required=True)
 
-
+class ServerStatus(Schema):
+    stats = Dict()
+    usage_history = Dict()
 
 
 class UserDTO(Schema):

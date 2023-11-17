@@ -70,3 +70,17 @@ class AdminUserApi(MethodView):
         admin = get_admin_user_db(uuid) or abort(404, "admin not found")
         admin.remove()
         return {'status': 200, 'msg': 'ok'}
+    
+class AdminServerStatus(MethodView):
+    decorators = [hiddify.super_admin]
+
+    @app.output(ServerStatus)
+    def get(self):
+        dto = ServerStatus()
+        dto.stats = {
+            'system': hiddify.system_stats(),
+            'top5': hiddify.top_processes()
+        }
+        admin_id = request.args.get("admin_id") or g.admin.id
+        dto.usage_history = get_daily_usage_stats(admin_id)
+        return dto

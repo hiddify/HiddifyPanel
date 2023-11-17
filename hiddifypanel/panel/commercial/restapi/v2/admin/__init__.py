@@ -11,8 +11,9 @@ bp = APIBlueprint("api_admin", __name__, url_prefix="/<proxy_path>/<user_secret>
 def init_app(app):
 
     with app.app_context():
-        from .admin_user import AdminUsersApi, AdminUserApi,AdminInfoApi
+        from .admin_user import AdminUsersApi, AdminUserApi,AdminInfoApi,AdminServerStatus
         bp.add_url_rule('/me/',view_func=AdminInfoApi)
+        bp.add_url_rule('/server_status/',view_func=AdminServerStatus)
         bp.add_url_rule('/admin_user/', view_func=AdminUsersApi)
         bp.add_url_rule('/admin_user/<uuid:uuid>', view_func=AdminUserApi)
 
