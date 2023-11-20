@@ -12,8 +12,8 @@ from hiddifypanel.panel import hiddify, github_issue_generator
 from sys import version as python_version
 from platform import platform
 
-
-def init_app(app):
+from apiflask import APIFlask
+def init_app(app:APIFlask):
     app.jinja_env.globals['ConfigEnum'] = ConfigEnum
     app.jinja_env.globals['DomainType'] = DomainType
     app.jinja_env.globals['UserMode'] = UserMode
@@ -60,7 +60,7 @@ def init_app(app):
                         if parameter['name'] == 'proxy_path':
                             parameter['schema'] = {'type': 'string', 'default': g.proxy_path}
                         # elif parameter['name'] == 'user_secret':
-                            # parameter['schema'] = {'type': 'string', 'default': g.user_uuid}
+                        #     parameter['schema'] = {'type': 'string', 'default': g.user_uuid}
         return spec
 
     @app.url_defaults
