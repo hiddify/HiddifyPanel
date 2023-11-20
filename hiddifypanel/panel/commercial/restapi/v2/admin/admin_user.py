@@ -17,13 +17,13 @@ from hiddifypanel.panel.commercial.restapi.v2.admin.DTO import *
 
 class AdminInfoApi(MethodView):
     decorators = [hiddify.super_admin]
-    @app.output(AdminDTO)
+    @app.output(AdminSchema)
     def get(self):
         # in this case g.user_uuid is equal to admin uuid
         admin_uuid = g.user_uuid
         admin = get_admin_user_db(admin_uuid) or abort(404, "user not found")
 
-        dto = AdminDTO()
+        dto = AdminSchema()
         dto.name = admin.name
         dto.comment = admin.comment
         dto.uuid = admin.uuid
@@ -36,13 +36,13 @@ class AdminInfoApi(MethodView):
 class AdminUsersApi(MethodView):
     decorators = [hiddify.super_admin]
 
-    @app.output(AdminDTO(many=True))
+    @app.output(AdminSchema(many=True))
     def get(self):
         admins = AdminUser.query.all() or abort(502, "WTF!")
         return [admin.to_dict() for admin in admins]
 
-    @app.input(AdminDTO, arg_name='data')
-    @app.output(AdminDTO)
+    @app.input(AdminSchema, arg_name='data')
+    @app.output(AdminSchema)
     def put(self, data):
         # data = request.json
         # uuid = data.get('uuid') or abort(422, "Parameter issue: 'uuid'")
@@ -54,13 +54,13 @@ class AdminUsersApi(MethodView):
 class AdminUserApi(MethodView):
     decorators = [hiddify.super_admin]
 
-    @app.output(AdminDTO)
+    @app.output(AdminSchema)
     def get(self, uuid):
 
         admin = get_admin_user_db(uuid) or abort(404, "user not found")
         return admin.to_dict()
 
-    @app.input(AdminDTO, arg_name='data')
+    @app.input(AdminSchema, arg_name='data')
     def patch(self, uuid, data):
         data['uuid'] = uuid
         hiddify.add_or_update_admin(**data)

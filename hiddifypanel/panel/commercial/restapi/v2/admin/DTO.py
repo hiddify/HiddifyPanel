@@ -2,7 +2,7 @@ from apiflask import Schema
 from apiflask.fields import Integer, String, UUID, Boolean, Enum, Float, Date, Time,Dict
 from hiddifypanel.models import AdminMode,UserMode,Lang
 
-class AdminDTO(Schema):
+class AdminSchema(Schema):
     name = String(required=True, description='The name of the admin')
     comment = String(required=False, description='A comment related to the admin')
     uuid = UUID(required=True, description='The unique identifier for the admin')
