@@ -125,8 +125,11 @@ class UserAdmin(AdminLTEModelView):
         proxy_path = hconfig(ConfigEnum.proxy_path)
         # print("model.telegram_id",model.telegram_id)
         extra = ""
-        if hconfig(ConfigEnum.telegram_bot_token) and model.telegram_id:
-            extra = f'<button class="btn hbtn bg-h-blue btn-xs " onclick="show_send_message({model.id})" ><i class="fa-solid fa-paper-plane"></i></button> '
+        if hconfig(ConfigEnum.telegram_bot_token):
+            if model.telegram_id:
+                extra = f'<button class="btn hbtn bg-h-blue btn-xs " onclick="show_send_message({model.id})" ><i class="fa-solid fa-paper-plane"></i></button> '
+            else:
+                extra = f'<button class="btn hbtn bg-h-grey btn-xs disabled"><i class="fa-solid fa-paper-plane"></i></button> '
 
         link = ''
         if model.is_active:
