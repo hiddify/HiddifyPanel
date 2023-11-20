@@ -49,7 +49,7 @@ def create_app(cli=False, **config):
 
     app.jinja_env.line_statement_prefix = '%'
     app.jinja_env.filters['b64encode'] = hiddify.do_base_64
-
+    app.view_functions['admin.static']={}#fix bug in apiflask
     app.is_cli = cli
     flask_bootstrap.Bootstrap4(app)
 
