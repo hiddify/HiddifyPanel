@@ -59,8 +59,8 @@ def init_app(app):
                     for parameter in operation['parameters']:
                         if parameter['name'] == 'proxy_path':
                             parameter['schema'] = {'type': 'string', 'default': g.proxy_path}
-                        elif parameter['name'] == 'user_secret':
-                            parameter['schema'] = {'type': 'string', 'default': g.user_uuid}
+                        # elif parameter['name'] == 'user_secret':
+                            # parameter['schema'] = {'type': 'string', 'default': g.user_uuid}
         return spec
 
     @app.url_defaults
