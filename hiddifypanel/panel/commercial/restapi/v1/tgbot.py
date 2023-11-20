@@ -1,6 +1,7 @@
 import time
 import telebot
-from flask import abort, request
+from flask import  request
+from apiflask import abort
 from flask_restful import Resource
 
 from hiddifypanel.models import *

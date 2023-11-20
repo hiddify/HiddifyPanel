@@ -13,7 +13,8 @@ from flask_admin.base import expose
 from hiddifypanel.panel.hiddify import get_random_domains
 
 import re
-from flask import render_template, current_app, Markup, url_for, abort, g
+from flask import render_template, current_app, Markup, url_for, g
+from apiflask import abort
 from hiddifypanel.panel.hiddify import flash
 from hiddifypanel.models import *
 from hiddifypanel.panel.database import db
