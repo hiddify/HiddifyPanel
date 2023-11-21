@@ -1,4 +1,5 @@
 import socket
+from uuid import UUID
 import user_agents
 from sqlalchemy.orm import Load
 import glob
@@ -36,6 +37,12 @@ def url_encode(strr):
     import urllib.parse
     return urllib.parse.quote(strr)
 
+def is_uuid_valid(uuid,version):
+    try:
+        uuid_obj = UUID(uuid, version=version)
+    except ValueError:
+        return False
+    return str(uuid_obj) == uuid
 
 def error(str):
 
