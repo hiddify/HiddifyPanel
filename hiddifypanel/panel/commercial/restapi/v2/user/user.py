@@ -1,5 +1,4 @@
 from urllib.parse import urlparse
-import httpagentparser
 from flask_restful import Resource
 from hiddifypanel.models.config import StrConfig, hconfig
 from hiddifypanel.models.config_enum import ConfigEnum
