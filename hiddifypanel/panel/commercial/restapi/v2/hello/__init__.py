@@ -12,5 +12,5 @@ def init_app(app):
 
     with app.app_context():
         from .hello import Hello
-        bp.add_url_rule('/hello/', view_func=Hello.as_view('hello'))
+        bp.add_url_rule('/', view_func=Hello.as_view('hello'))
     app.register_blueprint(bp)
