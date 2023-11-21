@@ -200,5 +200,6 @@ class ShortAPI(MethodView):
         dto = ShortSchema()
         dto.full_url = full_url
         dto.short = short
-        dto.expire_in = expire_in
+        # expire_in is in seconds
+        dto.expire_in = expire_in * 60
         return dto
