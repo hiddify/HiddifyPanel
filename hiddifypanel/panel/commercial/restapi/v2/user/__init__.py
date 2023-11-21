@@ -12,10 +12,11 @@ bp = APIBlueprint("api_user", __name__, url_prefix="/<proxy_path>/<user_secret>/
 
 def init_app(app):
     with app.app_context():
-        from .user import InfoAPI,MTProxiesAPI,AllConfigsAPI,ShortAPI
+        from .user import InfoAPI,MTProxiesAPI,AllConfigsAPI,ShortAPI,AppAPI
         bp.add_url_rule("/me/", view_func=InfoAPI)
         bp.add_url_rule("/mtproxies/", view_func=MTProxiesAPI)
         bp.add_url_rule("/all-configs/", view_func=AllConfigsAPI)
         bp.add_url_rule("/short/", view_func=ShortAPI)
+        bp.add_url_rule('/apps/',view_func=AppAPI)
 
     app.register_blueprint(bp)

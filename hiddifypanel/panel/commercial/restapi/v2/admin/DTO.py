@@ -19,7 +19,7 @@ class ServerStatus(Schema):
     usage_history = Dict()
 
 
-class UserDTO(Schema):
+class UserSchema(Schema):
     uuid = UUID(required=True, description="Unique identifier for the user")
     name = String(required=True, description="Name of the user")
 

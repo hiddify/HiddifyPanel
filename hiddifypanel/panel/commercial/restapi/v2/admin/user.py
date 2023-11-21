@@ -15,13 +15,13 @@ from hiddifypanel.panel.commercial.restapi.v2.admin.DTO import *
 class UsersApi(MethodView):
     decorators = [hiddify.super_admin]
 
-    @app.output(UserDTO(many=True))
+    @app.output(UserSchema(many=True))
     def get(self):
         users = User.query.all() or abort(502, "WTF!")
         return [user.to_dict(False) for user in users]
 
-    @app.input(UserDTO, arg_name="data")
-    @app.output(UserDTO)
+    @app.input(UserSchema, arg_name="data")
+    @app.output(UserSchema)
     def put(self, data):
         hiddify.add_or_update_user(**data)
         user = user_by_uuid(data['uuid']) or abort(502, "unknown issue! user is not added")
@@ -33,12 +33,12 @@ class UsersApi(MethodView):
 class UserApi(MethodView):
     decorators = [hiddify.super_admin]
 
-    @app.output(UserDTO)
+    @app.output(UserSchema)
     def get(self, uuid):
         user = user_by_uuid(uuid) or abort(404, "user not found")
         return user.to_dict(False)
 
-    @app.input(UserDTO, arg_name="data")
+    @app.input(UserSchema, arg_name="data")
     def patch(self, uuid, data):
         data = request.json
         uuid = data.get('uuid') or abort(422, "Parameter issue: 'uuid'")

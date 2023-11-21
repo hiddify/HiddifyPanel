@@ -44,7 +44,10 @@ def static_url_for(**values):
     orig = url_for("static", **values)
     return orig.split("user_secret")[0]
 
-
+def get_latest_release_url(repo):
+            latest_url = requests.get(f'{repo}/releases/latest').url.strip()
+            version = latest_url.split('tag/')[1].strip()
+            return (latest_url,version)
 def get_latest_release_version(repo_name):
     try:
         url = f"https://github.com/hiddify/{repo_name}/releases/latest"
