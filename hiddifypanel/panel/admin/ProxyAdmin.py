@@ -11,7 +11,8 @@ from hiddifypanel.panel import hiddify
 
 
 import re
-from flask import render_template, current_app, Markup, url_for, abort
+from flask import render_template, current_app, Markup, url_for
+from apiflask import abort
 from hiddifypanel.panel.hiddify import flash
 from hiddifypanel.models import User, Domain, DomainType, StrConfig, ConfigEnum, get_hconfigs
 from hiddifypanel.panel.database import db

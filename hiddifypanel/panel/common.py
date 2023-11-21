@@ -2,18 +2,19 @@ import traceback
 import uuid
 
 import user_agents
-from flask import abort, render_template, request, jsonify
+from flask import  render_template, request, jsonify
 from flask import g, send_from_directory, session, Markup
 from jinja2 import Environment, FileSystemLoader
-
+from flask_babelex import gettext as _
 import hiddifypanel
 from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify, github_issue_generator
 from sys import version as python_version
 from platform import platform
+from werkzeug.exceptions import HTTPException as WerkzeugHTTPException
 
-
-def init_app(app):
+from apiflask import APIFlask,HTTPError,abort
+def init_app(app:APIFlask):
     app.jinja_env.globals['ConfigEnum'] = ConfigEnum
     app.jinja_env.globals['DomainType'] = DomainType
     app.jinja_env.globals['UserMode'] = UserMode
@@ -22,8 +23,41 @@ def init_app(app):
 
     @app.errorhandler(Exception)
     def internal_server_error(e):
+        # print(request.headers)
+        last_version = hiddify.get_latest_release_version('hiddifypanel')  # TODO: add dev update check
+        if "T" in hiddifypanel.__version__:
+            has_update = False
+        else:
+            has_update = "dev" not in hiddifypanel.__version__ and f'{last_version}' != hiddifypanel.__version__
 
-        if not hasattr(e, 'code') or e.code == 500:
+
+        if not request.accept_mimetypes.accept_html:
+            if has_update:
+                return jsonify({
+                    'message':'This version of Hiddify Panel is outdated. please update it from admin area.',
+                    }),500
+            
+            return jsonify({'message':str(e),
+                            'detail':[f'{filename}:{line} {function}: {text}' for filename, line, function, text  in traceback.extract_tb(e.__traceback__)],
+                            'version':hiddifypanel.__version__,
+                            }),500
+            
+        
+        trace = traceback.format_exc()
+
+        # Create github issue link
+        issue_link = generate_github_issue_link_for_500_error(e, trace)
+
+        
+
+        return render_template('500.html', error=e, trace=trace, has_update=has_update, last_version=last_version,issue_link= issue_link), 500
+        
+    @app.errorhandler(HTTPError)
+    def internal_server_error(e):
+        # print(request.headers)
+        if not request.accept_mimetypes.accept_html:
+            return app.error_callback(e)
+        if e.status_code == 500:
             trace = traceback.format_exc()
 
             # Create github issue link
@@ -36,10 +70,10 @@ def init_app(app):
                 has_update = "dev" not in hiddifypanel.__version__ and f'{last_version}' != hiddifypanel.__version__
 
             return render_template('500.html', error=e, trace=trace, has_update=has_update, last_version=last_version,issue_link= issue_link), 500
-        # if e.code in [400,401,403]:
-        #     return render_template('access-denied.html',error=e), e.code
+        # if e.status_code in [400,401,403]:
+        #     return render_template('access-denied.html',error=e), e.status_code
 
-        return render_template('error.html', error=e), e.code
+        return render_template('error.html', error=e), e.status_code
 
     def generate_github_issue_link(title, issue_body):
         opts = {
@@ -59,8 +93,8 @@ def init_app(app):
                     for parameter in operation['parameters']:
                         if parameter['name'] == 'proxy_path':
                             parameter['schema'] = {'type': 'string', 'default': g.proxy_path}
-                        elif parameter['name'] == 'user_secret':
-                            parameter['schema'] = {'type': 'string', 'default': g.user_uuid}
+                        # elif parameter['name'] == 'user_secret':
+                        #     parameter['schema'] = {'type': 'string', 'default': g.user_uuid}
         return spec
 
     @app.url_defaults
@@ -105,6 +139,7 @@ def init_app(app):
         g.pwa = session.get('pwa', False)
 
         g.user_agent = user_agents.parse(request.user_agent.string)
+        
         if g.user_agent.is_bot:
             abort(400, "invalid")
         g.proxy_path = values.pop('proxy_path', None) if values else None

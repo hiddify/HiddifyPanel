@@ -2,7 +2,8 @@ import datetime
 import os
 import re
 
-from flask import render_template, url_for, request, jsonify, g, redirect, abort
+from flask import render_template, url_for, request, jsonify, g, redirect
+from apiflask import abort
 from flask_babelex import lazy_gettext as _
 from flask_classful import FlaskView, route
 

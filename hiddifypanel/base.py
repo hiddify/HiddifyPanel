@@ -14,12 +14,31 @@ from werkzeug.middleware.proxy_fix import ProxyFix
 
 
 def create_app(cli=False, **config):
+    
     app = APIFlask(__name__, static_url_path="/<proxy_path>/static/", instance_relative_config=True, version='2.0.0', title="Hiddify API",
                    openapi_blueprint_url_prefix="/<proxy_path>/<user_secret>/api", docs_ui='elements', json_errors=False, enable_openapi=True)
     # app = Flask(__name__, static_url_path="/<proxy_path>/static/", instance_relative_config=True)
     app.wsgi_app = ProxyFix(
         app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1
     )
+    app.servers = {
+        'name': 'current',
+        'url': '',
+    }
+    app.info = {
+        'description': 'Hiddify is a free and open source software. It is as it is.',
+        'termsOfService': 'http://hiddify.com',
+        'contact': {
+            'name': 'API Support',
+            'url': 'http://www.hiddify.com/support',
+            'email': 'panel@hiddify.com'
+        },
+        'license': {
+            'name': 'Creative Commons Zero v1.0 Universal',
+            'url': 'https://github.com/hiddify/Hiddify-Manager/blob/main/LICENSE'
+        }
+    }
+
     for c, v in dotenv_values(os.environ.get("HIDDIFY_CFG_PATH", 'app.cfg')).items():
         if v.isdecimal():
             v = int(v)
@@ -30,12 +49,15 @@ def create_app(cli=False, **config):
 
     app.jinja_env.line_statement_prefix = '%'
     app.jinja_env.filters['b64encode'] = hiddify.do_base_64
-
+    app.view_functions['admin.static']={}#fix bug in apiflask
     app.is_cli = cli
     flask_bootstrap.Bootstrap4(app)
 
     hiddifypanel.panel.database.init_app(app)
     with app.app_context():
+        # hiddifypanel.panel.database.init_migration(app)
+        # hiddifypanel.panel.database.migrate()
+        # hiddifypanel.panel.database.upgrade()
         init_db()
 
     hiddifypanel.panel.common.init_app(app)

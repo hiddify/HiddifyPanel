@@ -1,44 +1,48 @@
-from flask import abort, jsonify, request
+from flask import jsonify, request
 from flask_restful import Resource
 # from flask_simplelogin import login_required
-import datetime
 from hiddifypanel.models import *
 from urllib.parse import urlparse
 from hiddifypanel.panel import hiddify
-from hiddifypanel.drivers import user_driver
 
 from flask.views import MethodView
 
 from flask import current_app as app
-from apiflask import APIFlask, Schema, abort
-from apiflask.validators import Length, OneOf
-from apiflask.fields import Integer, String, UUID, Boolean, Enum, Float, Date, Time
+from flask import g
+from apiflask import abort
 
 from hiddifypanel.models import *
+from hiddifypanel.panel.commercial.restapi.v2.admin.DTO import *
 
 
-class AdminDTO(Schema):
-    name = String(required=True, description='The name of the admin')
-    comment = String(required=False, description='A comment related to the admin')
-    uuid = UUID(required=True, description='The unique identifier for the admin')
-    mode = Enum(AdminMode, required=True, description='The mode for the admin')
-    can_add_admin = Boolean(required=True, description='Whether the admin can add other admins')
-    parent_admin_uuid = UUID(description='The unique identifier for the parent admin', allow_none=True,
-                             # validate=OneOf([p.uuid for p in AdminUser.query.all()])
-                             )
-    telegram_id = Integer(required=True, description='The Telegram ID associated with the admin')
+class AdminInfoApi(MethodView):
+    decorators = [hiddify.super_admin]
+    @app.output(AdminSchema)
+    def get(self):
+        # in this case g.user_uuid is equal to admin uuid
+        admin_uuid = g.user_uuid
+        admin = get_admin_user_db(admin_uuid) or abort(404, "user not found")
 
-
+        dto = AdminSchema()
+        dto.name = admin.name
+        dto.comment = admin.comment
+        dto.uuid = admin.uuid
+        dto.mode = admin.mode
+        dto.can_add_admin = admin.can_add_admin
+        dto.parent_admin_uuid = AdminUser.query.filter(AdminUser.id == admin.parent_admin_id).first().uuid or 'None'
+        dto.telegram_id = admin.telegram_id
+        dto.lang =  Lang(hconfig(ConfigEnum.admin_lang))
+        return dto
 class AdminUsersApi(MethodView):
     decorators = [hiddify.super_admin]
 
-    @app.output(AdminDTO(many=True))
+    @app.output(AdminSchema(many=True))
     def get(self):
         admins = AdminUser.query.all() or abort(502, "WTF!")
         return [admin.to_dict() for admin in admins]
 
-    @app.input(AdminDTO, arg_name='data')
-    @app.output(AdminDTO)
+    @app.input(AdminSchema, arg_name='data')
+    @app.output(AdminSchema)
     def put(self, data):
         # data = request.json
         # uuid = data.get('uuid') or abort(422, "Parameter issue: 'uuid'")
@@ -50,13 +54,13 @@ class AdminUsersApi(MethodView):
 class AdminUserApi(MethodView):
     decorators = [hiddify.super_admin]
 
-    @app.output(AdminDTO)
+    @app.output(AdminSchema)
     def get(self, uuid):
 
         admin = get_admin_user_db(uuid) or abort(404, "user not found")
         return admin.to_dict()
 
-    @app.input(AdminDTO, arg_name='data')
+    @app.input(AdminSchema, arg_name='data')
     def patch(self, uuid, data):
         data['uuid'] = uuid
         hiddify.add_or_update_admin(**data)
@@ -66,3 +70,17 @@ class AdminUserApi(MethodView):
         admin = get_admin_user_db(uuid) or abort(404, "admin not found")
         admin.remove()
         return {'status': 200, 'msg': 'ok'}
+    
+class AdminServerStatus(MethodView):
+    decorators = [hiddify.super_admin]
+
+    @app.output(ServerStatus)
+    def get(self):
+        dto = ServerStatus()
+        dto.stats = {
+            'system': hiddify.system_stats(),
+            'top5': hiddify.top_processes()
+        }
+        admin_id = request.args.get("admin_id") or g.admin.id
+        dto.usage_history = get_daily_usage_stats(admin_id)
+        return dto

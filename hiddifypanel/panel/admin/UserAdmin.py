@@ -2,7 +2,8 @@ from flask_admin.contrib import sqla
 from hiddifypanel.panel.database import db
 import datetime
 from hiddifypanel.models import *
-from flask import Markup, g, request, url_for, abort
+from flask import Markup, g, request, url_for
+from apiflask import abort
 from wtforms.validators import Regexp, ValidationError
 import re
 import uuid
