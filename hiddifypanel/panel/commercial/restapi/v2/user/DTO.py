@@ -1,9 +1,5 @@
 from apiflask import Schema
 from apiflask.fields import Integer, String, Float, URL, Enum,List,Dict,Nested,Time
-from apiflask.validators import Length, OneOf
-from strenum import StrEnum
-from enum import auto
-from enum import Enum as StdEnum
 from hiddifypanel.models import Lang
 
 
@@ -45,43 +41,3 @@ class ShortSchema(Schema):
 class UserInfoChangableSchema(Schema):
     language = Enum(Lang,required=False)
     telegram_id = Integer(required=False)
-
-
-#region App Api DTOs
-class AppInstallType(StdEnum):
-    GOOGLE_PLAY = auto()
-    APP_STORE = auto()
-    APPIMAGE = auto()
-    SNAPCRAFT = auto()
-    MICROSOFT_STORE = auto()
-    APK = auto()
-    DMG = auto()
-    SETUP = auto()
-    PORTABLE = auto()
-    OTHER = auto()
-
-class AppInstall(Schema):
-    title = String()
-    type = Enum(AppInstallType)
-    url = URL()
-# class DeeplinkType(Enum):
-#     general = auto()
-#     all_sites = auto()
-#     blocked_sites = auto()
-#     foreign_sites = auto()
-class AppSchema(Schema):
-    title = String(required=True)
-    description = String()
-    icon_url = URL()
-    guide_url = URL()
-    deeplink = URL()
-    install = List(Nested(AppInstall()))
-
-# this class is not a Data Transfer Object, It's just an enum
-class Platform(StdEnum):
-    android = auto()
-    ios = auto()
-    windows = auto()
-    linux = auto()
-    mac = auto()
-#endregion
