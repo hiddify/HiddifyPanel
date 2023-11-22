@@ -8,7 +8,7 @@ from hiddifypanel.models import *
 from hiddifypanel.panel.database import db
 from hiddifypanel.utils import *
 from wtforms.validators import Regexp, ValidationError
-from datetime import datetime,timedelta
+from datetime import datetime, timedelta
 
 to_gig_d = 1000*1000*1000
 
@@ -19,21 +19,18 @@ def add_temporary_access():
         f'sudo /opt/hiddify-manager/hiddify-panel/temporary_access.sh {random_port} &')
     temp_admin_link = f"http://{get_ip(4)}:{random_port}{get_admin_path()}"
     g.temp_admin_link = temp_admin_link
-    
-def add_short_link(link,period_min=5):
-    short_code,expire_date = add_short_link_imp(link,period_min)
-    return short_code,( (expire_date - datetime.now()) + timedelta(minutes=period_min) ).seconds
+
 
 @cache.cache(ttl=600)
 # TODO: check this function functionality
-def add_short_link_imp(link, period_min=5):
+def add_short_link(link: str, period_min: int = 5) -> (str, datetime):
     # pattern = "\^/([^/]+)(/)?\?\$\ {return 302 " + re.escape(link) + ";}"
     pattern = r"([^/]+)\("
 
     with open(current_app.config['HIDDIFY_CONFIG_PATH']+"/nginx/parts/short-link.conf", 'r') as f:
         for line in f:
             if link in line:
-                return re.search(pattern, line).group(1),datetime.now()
+                return re.search(pattern, line).group(1), datetime.now() + timedelta(minutes=period_min)
 
     short_code = get_random_string(6, 10).lower()
     exec_command(
