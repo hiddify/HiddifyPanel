@@ -1,5 +1,5 @@
 from apiflask import Schema
-from apiflask.fields import Integer, String, Float, URL, Enum,List,Dict,Nested,Time
+from apiflask.fields import Integer, String, Float, URL, Enum, List, Dict, Nested, Time
 from hiddifypanel.models import Lang
 
 
@@ -17,7 +17,8 @@ class ProfileSchema(Schema):
     brand_title = String()
     brand_icon_url = URL()
     doh = URL()
-    lang = Enum(Lang,required=True)
+    lang = Enum(Lang, required=True)
+
 
 class ConfigSchema(Schema):
     name = String(required=True)
@@ -28,16 +29,18 @@ class ConfigSchema(Schema):
     security = String(required=True)
     type = String(required=True)
 
+
 class MtproxySchema(Schema):
     link = String(required=True)
     title = String(required=True)
 
 
 class ShortSchema(Schema):
-    short = String(required=True)
-    full_url = String(required=True)
-    expire_in = Integer(required=True)
+    short = String(required=True, description="the short url slug")
+    full_url = String(required=True, description="full short url")
+    expire_in = Integer(required=True, description="expire_in is in seconds")
+
 
 class UserInfoChangableSchema(Schema):
-    language = Enum(Lang,required=False)
+    language = Enum(Lang, required=False)
     telegram_id = Integer(required=False)

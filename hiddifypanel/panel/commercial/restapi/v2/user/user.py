@@ -14,7 +14,7 @@ from flask import url_for
 from flask import current_app as app
 from flask import g, request
 from apiflask import APIFlask, Schema, abort
-from apiflask.fields import Integer, String, Float, URL,Dict
+from apiflask.fields import Integer, String, Float, URL, Dict
 from apiflask.validators import Length, OneOf
 from flask_babelex import lazy_gettext as _
 from urllib.parse import quote_plus
@@ -23,11 +23,7 @@ from urllib.parse import quote_plus
 from hiddifypanel.panel.commercial.restapi.v2.user.DTO import *
 from hiddifypanel.panel.user import link_maker
 from hiddifypanel.panel.user.user import get_common_data
-from hiddifypanel.utils import get_latest_release_url,do_base_64
-
-
-
-
+from hiddifypanel.utils import get_latest_release_url, do_base_64
 
 
 class InfoAPI(MethodView):
@@ -46,7 +42,7 @@ class InfoAPI(MethodView):
         dto.profile_reset_days = days_to_reset(g.user)
         dto.telegram_bot_url = f"https://t.me/{c['bot'].username}?start={g.user_uuid}" if c['bot'] else ""
         dto.telegram_id = c['user'].telegram_id
-        dto.admin_message_html =  hconfig(ConfigEnum.branding_freetext)
+        dto.admin_message_html = hconfig(ConfigEnum.branding_freetext)
         dto.admin_message_url = hconfig(ConfigEnum.branding_site)
         dto.brand_title = hconfig(ConfigEnum.branding_title)
         dto.brand_icon_url = ""
@@ -54,29 +50,30 @@ class InfoAPI(MethodView):
         dto.lang = c['user'].lang
         return dto
 
-    @app.input(UserInfoChangableSchema,arg_name='data')
-    def patch(self,data):
+    @app.input(UserInfoChangableSchema, arg_name='data')
+    def patch(self, data):
         if data['telegram_id']:
             try:
                 tg_id = int(data['telegram_id'])
             except:
-                return {'message':'The telegram id field is invalid'}
-            
+                return {'message': 'The telegram id field is invalid'}
+
             user = user_by_uuid(g.user_uuid)
             if user.telegram_id != tg_id:
                 user.telegram_id = tg_id
                 db.session.commit()
 
-            
         if data['language']:
             user = user_by_uuid(g.user_uuid)
             if user.lang != data['language']:
                 user.lang = data['language']
                 db.session.commit()
         return {'message': 'ok'}
-    
+
+
 class MTProxiesAPI(MethodView):
     decorators = [hiddify.user_auth]
+
     @app.output(MtproxySchema(many=True))
     def get(self):
         # get domains
@@ -94,7 +91,6 @@ class MTProxiesAPI(MethodView):
             dto.link = server_link
             dtos.append(dto)
         return dtos
-
 
 
 class AllConfigsAPI(MethodView):
@@ -194,11 +190,11 @@ class ShortAPI(MethodView):
 
     @app.output(ShortSchema)
     def get(self):
-        short,expire_in = hiddify.add_short_link("/"+hconfig(ConfigEnum.proxy_path)+"/"+str(g.user_uuid)+"/")
+        short, expire_date = hiddify.add_short_link("/"+hconfig(ConfigEnum.proxy_path)+"/"+str(g.user_uuid)+"/")
         full_url = f"https://{urlparse(request.base_url).hostname}/{short}"
         dto = ShortSchema()
         dto.full_url = full_url
         dto.short = short
         # expire_in is in seconds
-        dto.expire_in = expire_in
+        dto.expire_in = (expire_date - datetime.now()) .seconds
         return dto
