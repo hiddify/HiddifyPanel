@@ -7,8 +7,8 @@ from hiddifypanel.panel import hiddify
 from hiddifypanel.models import get_daily_usage_stats
 
 class ServerStatus(Schema):
-    stats = Dict()
-    usage_history = Dict()
+    stats = Dict(required=True,description="System stats")
+    usage_history = Dict(required=True,description="System usage history")
 
 
 class AdminServerStatusApi(MethodView):

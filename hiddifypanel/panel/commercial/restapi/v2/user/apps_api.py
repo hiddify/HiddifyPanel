@@ -32,16 +32,16 @@ class AppInstallType(StrEnum):
 
 class AppInstall(Schema):
     title = String()
-    type = Enum(AppInstallType)
-    url = URL()
+    type = Enum(AppInstallType,required=True,description='The platform that provides the app to download')
+    url = URL(required=True,description='The url to download the app')
 
 class AppSchema(Schema):
-    title = String(required=True)
-    description = String()
-    icon_url = URL()
-    guide_url = URL()
-    deeplink = URL()
-    install = List(Nested(AppInstall()))
+    title = String(required=True,description='The title of the app')
+    description = String(required=True,description='The description of the app')
+    icon_url = URL(required=True,description='The icon url of the app')
+    guide_url = URL(description='The guide url of the app')
+    deeplink = URL(required=True,description='The deeplink of the app to imoprt configs')
+    install = List(Nested(AppInstall()),required=True,description='The install url of the app')
 
 # this class is not a Data Transfer Object, It's just an enum
 class Platform(StrEnum):
@@ -54,7 +54,7 @@ class Platform(StrEnum):
     auto = auto()
 
 class AppInSchema(Schema):
-    platform = Enum(Platform,load_default=Platform.auto,required=False)
+    platform = Enum(Platform,load_default=Platform.auto,required=False,description='The platform (Operating System) to know what clients should be send. Possible values are: all, android, ios, windows, linux, mac, auto.')
 #endregion
 
 
