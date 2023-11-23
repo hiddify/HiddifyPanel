@@ -1,12 +1,10 @@
 from hiddifypanel.panel import hiddify
-
-from flask_classful import FlaskView, route
-from flask.views import MethodView,View
+from flask.views import MethodView
 from flask import url_for
 from flask import current_app as app
 from flask import g, request
 from apiflask import Schema, abort
-from apiflask.fields import String,URL,Enum
+from apiflask.fields import String,URL,Enum,List,Nested
 from flask_babelex import lazy_gettext as _
 from urllib.parse import quote_plus,urlparse
 import user_agents
@@ -14,7 +12,6 @@ from strenum import StrEnum
 from enum import auto
 
 
-from hiddifypanel.panel.commercial.restapi.v2.user.DTO import *
 from hiddifypanel.panel.user.user import get_common_data
 from hiddifypanel.utils import get_latest_release_url,do_base_64
 
@@ -33,20 +30,16 @@ class AppInstallType(StrEnum):
 
 class AppInstall(Schema):
     title = String()
-    type = Enum(AppInstallType)
-    url = URL()
-# class DeeplinkType(Enum):
-#     general = auto()
-#     all_sites = auto()
-#     blocked_sites = auto()
-#     foreign_sites = auto()
+    type = Enum(AppInstallType,required=True,description='The platform that provides the app to download')
+    url = URL(required=True,description='The url to download the app')
+
 class AppSchema(Schema):
-    title = String(required=True)
-    description = String()
-    icon_url = URL()
-    guide_url = URL()
-    deeplink = URL()
-    install = List(Nested(AppInstall()))
+    title = String(required=True,description='The title of the app')
+    description = String(required=True,description='The description of the app')
+    icon_url = URL(required=True,description='The icon url of the app')
+    guide_url = URL(description='The guide url of the app')
+    deeplink = URL(required=True,description='The deeplink of the app to imoprt configs')
+    install = List(Nested(AppInstall()),required=True,description='The install url of the app')
 
 # this class is not a Data Transfer Object, It's just an enum
 class Platform(StrEnum):
@@ -59,7 +52,7 @@ class Platform(StrEnum):
     auto = auto()
 
 class AppInSchema(Schema):
-    platform = Enum(Platform,load_default=Platform.auto,required=False)
+    platform = Enum(Platform,load_default=Platform.auto,required=False,description='The platform (Operating System) to know what clients should be send. Possible values are: all, android, ios, windows, linux, mac, auto.')
 #endregion
 
 
