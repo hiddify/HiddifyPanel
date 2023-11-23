@@ -6,7 +6,7 @@ from flask import url_for
 from flask import current_app as app
 from flask import g, request
 from apiflask import Schema, abort
-from apiflask.fields import String,URL,Enum
+from apiflask.fields import String,URL,Enum,List,Nested
 from flask_babelex import lazy_gettext as _
 from urllib.parse import quote_plus,urlparse
 import user_agents
@@ -14,7 +14,6 @@ from strenum import StrEnum
 from enum import auto
 
 
-from hiddifypanel.panel.commercial.restapi.v2.user.DTO import *
 from hiddifypanel.panel.user.user import get_common_data
 from hiddifypanel.utils import get_latest_release_url,do_base_64
 
@@ -35,11 +34,7 @@ class AppInstall(Schema):
     title = String()
     type = Enum(AppInstallType)
     url = URL()
-# class DeeplinkType(Enum):
-#     general = auto()
-#     all_sites = auto()
-#     blocked_sites = auto()
-#     foreign_sites = auto()
+
 class AppSchema(Schema):
     title = String(required=True)
     description = String()
