@@ -1,7 +1,5 @@
 from hiddifypanel.panel import hiddify
-
-from flask_classful import FlaskView, route
-from flask.views import MethodView,View
+from flask.views import MethodView
 from flask import url_for
 from flask import current_app as app
 from flask import g, request
