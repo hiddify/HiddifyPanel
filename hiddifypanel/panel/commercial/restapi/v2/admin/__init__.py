@@ -1,8 +1,3 @@
-from flask_apispec import FlaskApiSpec
-from flask_apispec.extension import FlaskApiSpec
-from marshmallow import Schema, fields
-
-from flask import Blueprint
 from apiflask import APIBlueprint
 
 bp = APIBlueprint("api_admin", __name__, url_prefix="/<proxy_path>/<user_secret>/api/v2/admin/", enable_openapi=True)
