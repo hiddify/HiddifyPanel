@@ -1,22 +1,15 @@
-from apiflask import Schema
-from apiflask.fields import Integer, String, UUID, Boolean, Enum, Float, Date, Time,Dict
-from hiddifypanel.models import AdminMode,UserMode,Lang
+from flask import jsonify, request
+# from flask_simplelogin import login_required
+from hiddifypanel.models import *
+from hiddifypanel.panel import hiddify
+from hiddifypanel.drivers import user_driver
+from hiddifypanel.panel import hiddify
 
-class AdminSchema(Schema):
-    name = String(required=True, description='The name of the admin')
-    comment = String(required=False, description='A comment related to the admin')
-    uuid = UUID(required=True, description='The unique identifier for the admin')
-    mode = Enum(AdminMode, required=True, description='The mode for the admin')
-    can_add_admin = Boolean(required=True, description='Whether the admin can add other admins')
-    parent_admin_uuid = UUID(description='The unique identifier for the parent admin', allow_none=True,
-                             # validate=OneOf([p.uuid for p in AdminUser.query.all()])
-                             )
-    telegram_id = Integer(required=True, description='The Telegram ID associated with the admin')
-    lang = Enum(Lang,required=True)
+from flask.views import MethodView
 
-class ServerStatus(Schema):
-    stats = Dict()
-    usage_history = Dict()
+from flask import current_app as app
+from apiflask import abort,Schema
+from apiflask.fields import UUID,String,Float,Enum,Date,Time,Integer
 
 
 class UserSchema(Schema):
@@ -73,3 +66,28 @@ class UserSchema(Schema):
         description="If empty, it will be created automatically,The user's public key using the Ed25519 algorithm"
     )
 
+
+
+class UserApi(MethodView):
+    decorators = [hiddify.super_admin]
+
+    @app.output(UserSchema)
+    def get(self, uuid):
+        user = user_by_uuid(uuid) or abort(404, "user not found")
+        return user.to_dict(False)
+
+    @app.input(UserSchema, arg_name="data")
+    def patch(self, uuid, data):
+        data = request.json
+        uuid = data.get('uuid') or abort(422, "Parameter issue: 'uuid'")
+        hiddify.add_or_update_user(**data)
+        user = user_by_uuid(uuid) or abort(502, "unknown issue! user is not added")
+        user_driver.add_client(user)
+        hiddify.quick_apply_users()
+        return {'status': 200, 'msg': 'ok'}
+
+    def delete(self, uuid):
+        user = user_by_uuid(uuid) or abort(404, "user not found")
+        user.remove()
+        hiddify.quick_apply_users()
+        return {'status': 200, 'msg': 'ok'}
