@@ -17,7 +17,10 @@ MAX_DB_VERSION = 60
 
 
 def init_db():
-    #db.create_all()
+    # db.init_migration(app)
+    # db.migrate()
+    # db.upgrade()
+    # db.create_all()
     hconfig.invalidate_all()
     get_hconfigs.invalidate_all()
     db_version = int(hconfig(ConfigEnum.db_version) or 0)
@@ -407,7 +410,7 @@ def _v10():
     all_configs = get_hconfigs()
     execute("ALTER TABLE `str_config` RENAME TO `str_config_old`")
     execute("ALTER TABLE `bool_config` RENAME TO `bool_config_old`")
-    #db.create_all()
+    # db.create_all()
     rows = []
     for c, v in all_configs.items():
         if c.type() == bool:

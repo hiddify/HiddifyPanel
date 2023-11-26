@@ -1,7 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy_utils import UUIDType
-import flask_migrate
-from flask_migrate import upgrade
+# import flask_migrate
+# from flask_migrate import upgrade
 import re
 import os
 
