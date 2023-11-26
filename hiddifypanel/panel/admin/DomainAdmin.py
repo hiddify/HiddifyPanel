@@ -146,6 +146,9 @@ class DomainAdmin(AdminLTEModelView):
         ipv4_list = hiddify.get_interface_public_ip(4)
         ipv6_list = hiddify.get_interface_public_ip(6)
 
+        ipv4_list.append(myip)
+        ipv6_list.append(myipv6)
+
         if "*" in model.domain and model.mode not in [DomainType.cdn, DomainType.auto_cdn_ip]:
             raise ValidationError(_("Domain can not be resolved! there is a problem in your domain"))
 
