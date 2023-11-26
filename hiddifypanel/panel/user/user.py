@@ -1,5 +1,5 @@
 
-from flask import  render_template, request, Response, g, url_for, jsonify, flash
+from flask import render_template, request, Response, g, url_for, jsonify, flash
 from apiflask import abort
 from wtforms.validators import Regexp, ValidationError
 import urllib
@@ -25,7 +25,7 @@ class UserView(FlaskView):
     def short_link(self):
         short = hiddify.add_short_link(
             "/"+hconfig(ConfigEnum.proxy_path)+"/"+g.user.uuid+"/")
-        
+
         return f"<div style='direction:ltr'>https://{urlparse(request.base_url).hostname}/{short}/</a><br><br>"+_("This link will expire in 5 minutes")
 
     @route('/info/')
@@ -75,7 +75,7 @@ class UserView(FlaskView):
                 'name': name,
                 'domain': domain,
                 'link': link,
-                #'tags': set(type, protocol, transport, security),
+                # 'tags': set(type, protocol, transport, security),
                 'type': type,
                 'protocol': protocol,
                 'transport': transport,
@@ -243,7 +243,8 @@ class UserView(FlaskView):
 
         c = get_common_data(g.user_uuid, mode="new")
         user_agent = user_agents.parse(request.user_agent.string)
-        return render_template('home/multi.html', **c, ua=user_agent)
+        # return render_template('home/multi.html', **c, ua=user_agent)
+        return render_template('new.html', **c, ua=user_agent)
 
     @ route('/clash/<meta_or_normal>/proxies.yml')
     @ route('/clash/proxies.yml')
