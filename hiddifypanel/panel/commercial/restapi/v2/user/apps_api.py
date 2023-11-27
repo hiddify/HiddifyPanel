@@ -115,7 +115,7 @@ class AppAPI(MethodView):
                 foxray_dto = self.__get_foxray_app_dto()
                 streisand_dto = self.__get_streisand_app_dto()
                 loon_dto = self.__get_loon_app_dto()
-                apps_data += ([stash_dto,shadowrocket_dto,foxray_dto,streisand_dto,loon_dto])              
+                apps_data += ([streisand_dto,stash_dto,shadowrocket_dto,foxray_dto,loon_dto])              
             case Platform.linux:
                 hiddify_clash_dto = self.__get_hiddify_clash_app_dto()
                 hiddify_next_dto = self.__get_hiddify_next_app_dto()

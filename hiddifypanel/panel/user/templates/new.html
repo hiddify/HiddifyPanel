@@ -2,7 +2,8 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <meta name="apple-itunes-app" content="app-id=id6450534064, app-argument={{profile_url}}">
+    {%set base='https://'+domain+'/'+hconfigs[ConfigEnum.proxy_path]+"/"+user.uuid+"/"%}
+    <meta name="apple-itunes-app" content="app-id=6450534064, app-argument=streisand://import/{{base}}">
 
     <link rel="icon" type="image/png" href="{{ static_url_for( filename='new/assets/hiddify-logo-7617d937.png' ) }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
