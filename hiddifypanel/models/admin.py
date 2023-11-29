@@ -2,6 +2,7 @@ import uuid as uuid_mod
 from enum import auto
 
 from flask import g
+from hiddifypanel.models.usage import DailyUsage
 from sqlalchemy_serializer import SerializerMixin
 from strenum import StrEnum
 

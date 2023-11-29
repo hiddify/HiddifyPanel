@@ -6,7 +6,7 @@ from sqlalchemy import func
 from sqlalchemy_serializer import SerializerMixin
 
 from hiddifypanel.panel.database import db
-from .admin import AdminUser
+
 
 
 class DailyUsage(db.Model, SerializerMixin):
@@ -22,6 +22,7 @@ class DailyUsage(db.Model, SerializerMixin):
 
 
 def get_daily_usage_stats(admin_id=None, child_id=None):
+    from .admin import AdminUser
     if not admin_id:
         admin_id = g.admin.id
     sub_admins = AdminUser.query.filter(AdminUser.id == admin_id).first().recursive_sub_admins_ids()

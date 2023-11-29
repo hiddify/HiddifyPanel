@@ -139,9 +139,15 @@ class DomainAdmin(AdminLTEModelView):
         for td in Domain.query.filter(Domain.mode == DomainType.reality, Domain.domain != model.domain).all():
             print(td)
             if td.servernames and (model.domain in td.servernames.split(",")):
-                raise ValidationError(_("You have used this domain in: ")+_(f"config.reality_server_names.label")+" in " + d.domain)
+                raise ValidationError(_("You have used this domain in: ")+_(f"config.reality_server_names.label")+" in " + td.domain)
+
         myip = hiddify.get_ip(4)
         myipv6 = hiddify.get_ip(6)
+        ipv4_list = hiddify.get_interface_public_ip(4)
+        ipv6_list = hiddify.get_interface_public_ip(6)
+
+        ipv4_list.append(myip)
+        ipv6_list.append(myipv6)
 
         if "*" in model.domain and model.mode not in [DomainType.cdn, DomainType.auto_cdn_ip]:
             raise ValidationError(_("Domain can not be resolved! there is a problem in your domain"))
@@ -170,12 +176,16 @@ class DomainAdmin(AdminLTEModelView):
         elif not skip_check:
             if dip == None:
                 raise ValidationError(_("Domain can not be resolved! there is a problem in your domain"))
-            domain_ip_is_same_to_panel = myip == dip or dip == myipv6
 
-            if model.mode == DomainType.direct and not domain_ip_is_same_to_panel:
+            domain_ip_is_same_as_panel = False
+            domain_ip_is_same_as_panel |= dip in ipv4_list
+            for ipv6 in ipv6_list:
+                domain_ip_is_same_as_panel |= hiddify.are_ipv6_addresses_equal(dip, ipv6)
+
+            if model.mode == DomainType.direct and not domain_ip_is_same_as_panel:
                 raise ValidationError(_("Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode", server_ip=myip, domain_ip=dip))
 
-            if domain_ip_is_same_to_panel and model.mode in [DomainType.cdn, DomainType.relay, DomainType.fake, DomainType.auto_cdn_ip]:
+            if domain_ip_is_same_as_panel and model.mode in [DomainType.cdn, DomainType.relay, DomainType.fake, DomainType.auto_cdn_ip]:
                 raise ValidationError(_("In CDN mode, Domain IP=%(domain_ip)s should be different to your ip=%(server_ip)s", server_ip=myip, domain_ip=dip))
 
             # if model.mode in [DomainType.ss_faketls, DomainType.telegram_faketls]:

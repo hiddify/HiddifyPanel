@@ -2,7 +2,7 @@ import traceback
 import uuid
 
 import user_agents
-from flask import  render_template, request, jsonify
+from flask import render_template, request, jsonify
 from flask import g, send_from_directory, session, Markup
 from jinja2 import Environment, FileSystemLoader
 from flask_babelex import gettext as _
@@ -13,8 +13,10 @@ from sys import version as python_version
 from platform import platform
 from werkzeug.exceptions import HTTPException as WerkzeugHTTPException
 
-from apiflask import APIFlask,HTTPError,abort
-def init_app(app:APIFlask):
+from apiflask import APIFlask, HTTPError, abort
+
+
+def init_app(app: APIFlask):
     app.jinja_env.globals['ConfigEnum'] = ConfigEnum
     app.jinja_env.globals['DomainType'] = DomainType
     app.jinja_env.globals['UserMode'] = UserMode
@@ -30,28 +32,24 @@ def init_app(app:APIFlask):
         else:
             has_update = "dev" not in hiddifypanel.__version__ and f'{last_version}' != hiddifypanel.__version__
 
-
         if not request.accept_mimetypes.accept_html:
             if has_update:
                 return jsonify({
-                    'message':'This version of Hiddify Panel is outdated. please update it from admin area.',
-                    }),500
-            
-            return jsonify({'message':str(e),
-                            'detail':[f'{filename}:{line} {function}: {text}' for filename, line, function, text  in traceback.extract_tb(e.__traceback__)],
-                            'version':hiddifypanel.__version__,
-                            }),500
-            
-        
+                    'message': 'This version of Hiddify Panel is outdated. please update it from admin area.',
+                }), 500
+
+            return jsonify({'message': str(e),
+                            'detail': [f'{filename}:{line} {function}: {text}' for filename, line, function, text in traceback.extract_tb(e.__traceback__)],
+                            'version': hiddifypanel.__version__,
+                            }), 500
+
         trace = traceback.format_exc()
 
         # Create github issue link
         issue_link = generate_github_issue_link_for_500_error(e, trace)
 
-        
+        return render_template('500.html', error=e, trace=trace, has_update=has_update, last_version=last_version, issue_link=issue_link), 500
 
-        return render_template('500.html', error=e, trace=trace, has_update=has_update, last_version=last_version,issue_link= issue_link), 500
-        
     @app.errorhandler(HTTPError)
     def internal_server_error(e):
         # print(request.headers)
@@ -69,7 +67,7 @@ def init_app(app:APIFlask):
             else:
                 has_update = "dev" not in hiddifypanel.__version__ and f'{last_version}' != hiddifypanel.__version__
 
-            return render_template('500.html', error=e, trace=trace, has_update=has_update, last_version=last_version,issue_link= issue_link), 500
+            return render_template('500.html', error=e, trace=trace, has_update=has_update, last_version=last_version, issue_link=issue_link), 500
         # if e.status_code in [400,401,403]:
         #     return render_template('access-denied.html',error=e), e.status_code
 
@@ -139,7 +137,7 @@ def init_app(app:APIFlask):
         g.pwa = session.get('pwa', False)
 
         g.user_agent = user_agents.parse(request.user_agent.string)
-        
+
         if g.user_agent.is_bot:
             abort(400, "invalid")
         g.proxy_path = values.pop('proxy_path', None) if values else None
@@ -218,7 +216,8 @@ def init_app(app:APIFlask):
                 if line.strip().startswith('File'):
                     if 'hiddify' in line.lower():
                         output += line + '\n'
-                        output += lines[i + 1] + '\n'
+                        if len(lines) > i+1:
+                            output += lines[i + 1] + '\n'
                     skip_next_line = True
 
             return output
@@ -228,7 +227,7 @@ def init_app(app:APIFlask):
 
         issue_details = github_issue_details()
 
-        issue_body = render_template('github_issue_body.j2',issue_details=issue_details,error=error,traceback=traceback)
+        issue_body = render_template('github_issue_body.j2', issue_details=issue_details, error=error, traceback=traceback)
 
         # Create github issue link
         issue_link = generate_github_issue_link(f"Internal server error: {error.name if hasattr(error,'name') and error.name != None and error.name else 'Unknown'}", issue_body)
@@ -240,7 +239,7 @@ def init_app(app:APIFlask):
 
     def generate_github_issue_link_for_admin_sidebar():
 
-        issue_body = render_template('github_issue_body.j2',issue_details=github_issue_details())
+        issue_body = render_template('github_issue_body.j2', issue_details=github_issue_details())
 
         # Create github issue link
         issue_link = generate_github_issue_link('Please fill the title properly', issue_body)

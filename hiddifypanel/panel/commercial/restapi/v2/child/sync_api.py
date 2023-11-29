@@ -9,18 +9,15 @@ from flask import current_app as app
 from hiddifypanel.panel import hiddify
 from hiddifypanel.models import hconfig
 from hiddifypanel.models.config_enum import ConfigEnum
-from .register_api import ChildInputSchema
 from hiddifypanel.panel.commercial.restapi.v2.parent.sync_api import SyncSchema,SyncDataSchema
 
 
 class SyncApi(MethodView):
     decorators = [hiddify.super_admin]
-
-    @app.input(ChildInputSchema,arg_name='data')
-    def put(self,data):
-        p_link = data.get('parent_link') or hconfig(ConfigEnum.parent_panel)
+    def put(self):
+        p_link = hconfig(ConfigEnum.parent_panel)
         if not p_link:
-            abort(400,"Parameter issue: 'The parent link is required'")
+            abort(400,"The parent link is not set")
 
         # make proper panel api link
         p_link = p_link.removesuffix('/') + '/api/v2/parent/sync/'

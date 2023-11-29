@@ -6,22 +6,17 @@ from hiddifypanel.models.config import hconfig
 from hiddifypanel.models import AdminUser,User,Proxy,Domain,StrConfig,BoolConfig
 from hiddifypanel.panel import hiddify
 from hiddifypanel.models.config_enum import ConfigEnum
-import apiflask.fields as fields
 from hiddifypanel.panel.commercial.restapi.v2.parent.register_api import RegisterDataSchema, RegisterSchema
 import requests
 
 
-class ChildInputSchema(Schema):
-    parent_link = fields.String(required=True,description="The child's parent link (e.g. https://panel.hiddify.com/<proxy_path>/<uuid>/)")
-
 class RegisterApi(MethodView):
     decorators = [hiddify.super_admin]
-    @app.input(ChildInputSchema,arg_name='data')
-    def put(self,data):
+    def put(self):
         # get parent link its format is "https://panel.hiddify.com/<proxy_path>/<uuid>/"
-        p_link = data.get('parent_link') or hconfig(ConfigEnum.parent_panel)
+        p_link = hconfig(ConfigEnum.parent_panel)
         if not p_link:
-            abort(400,"Parameter issue: 'The parent link is required'")
+            abort(400,"The parent link is not set")
         # make proper panel api link
         p_link = p_link.removesuffix('/') + '/api/v2/parent/register/'
 

@@ -1,4 +1,6 @@
 from typing import List, Tuple
+import ipaddress
+
 from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric import x25519
 from flask_babelex import gettext as __
@@ -9,6 +11,8 @@ from hiddifypanel.models import *
 from hiddifypanel.panel.database import db
 from hiddifypanel.utils import *
 from wtforms.validators import ValidationError
+from hiddifypanel.Events import domain_changed
+from wtforms.validators import Regexp, ValidationError
 from datetime import datetime, timedelta
 
 to_gig_d = 1000*1000*1000
@@ -126,6 +130,28 @@ def get_ip(version, retry=5):
     if ip is None and retry > 0:
         ip = get_ip(version, retry=retry-1)
     return ip
+
+
+def normalize_ipv6(address):
+    if type(address) == str and len(address) > 0:
+        if address[0] == '[' and address[-1] == ']':
+            return address[1:-1]
+
+    return address
+
+def are_ipv6_addresses_equal(address1, address2):
+    try:
+        address1 = normalize_ipv6(address1)
+        address2 = normalize_ipv6(address2)
+
+        ipv6_addr1 = ipaddress.ip_address(address1)
+        ipv6_addr2 = ipaddress.ip_address(address2)
+
+        return ipv6_addr1 == ipv6_addr2
+
+    except ValueError as e:
+        print(f"Invalid IPv6 address: {e}")
+        return False
 
 
 @cache.cache(ttl=300)
