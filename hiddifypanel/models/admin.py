@@ -80,7 +80,7 @@ class AdminUser(db.Model, SerializerMixin):
         users = model.recursive_users_query().all()
         for u in users:
             u.added_by = g.admin.id
-
+        from hiddifypanel.models.usage import DailyUsage
         DailyUsage.query.filter(DailyUsage.admin_id.in_(model.recursive_sub_admins_ids())).update({'admin_id': g.admin.id})
         AdminUser.query.filter(AdminUser.id.in_(model.recursive_sub_admins_ids())).delete()
 
@@ -100,6 +100,17 @@ class AdminUser(db.Model, SerializerMixin):
             'telegram_id': admin.telegram_id
         }
 
+    # @staticmethod
+    # def form_schema(schema):
+    #     return schema.dump(AdminUser())
+    
+    def to_schema(self):
+        admin_dcit = self.to_dict()
+        from hiddifypanel.models.config import hconfig
+        from hiddifypanel.models.config_enum import ConfigEnum
+        admin_dcit['lang'] = hconfig(ConfigEnum.admin_lang)
+        from hiddifypanel.panel.commercial.restapi.v2.admin.admin_user_api import AdminSchema
+        return AdminSchema().load(admin_dcit)
 
 def get_super_admin_secret():
     return get_super_admin().uuid

@@ -20,6 +20,15 @@ class BoolConfig(db.Model, SerializerMixin):
             'child_unique_id': d.child.unique_id if d.child else ''
         }
 
+    @staticmethod
+    def from_schema(schema):
+        return schema.dump(BoolConfig())
+    def to_schema(self):
+        conf_dict = self.to_dict()
+        #TODO: if we change the child_unique_id field value to panel unique_id(hconfig(ConfigEnum.unique_id)) in db, we need to remove this
+        conf_dict['child_unique_id'] = hconfig(ConfigEnum.unique_id)
+        from hiddifypanel.panel.commercial.restapi.v2.parent.register_api import BoolConfigSchema
+        return BoolConfigSchema().load(conf_dict)
 
 class StrConfig(db.Model, SerializerMixin):
     child_id = db.Column(db.Integer, db.ForeignKey('child.id'), primary_key=True, default=0)
@@ -34,6 +43,15 @@ class StrConfig(db.Model, SerializerMixin):
             'child_unique_id': d.child.unique_id if d.child else ''
         }
 
+    @staticmethod
+    def from_schema(schema):
+        return schema.dump(StrConfig())
+    def to_schema(self):
+        conf_dict = self.to_dict()
+        #TODO: if we change the child_unique_id field value to panel unique_id(hconfig(ConfigEnum.unique_id)) in db, we need to remove this
+        conf_dict['child_unique_id'] = hconfig(ConfigEnum.unique_id)
+        from hiddifypanel.panel.commercial.restapi.v2.parent.register_api import StrConfigSchema
+        return StrConfigSchema().load(conf_dict)
 
 @cache.cache(ttl=500)
 def hconfig(key: ConfigEnum, child_id=0):

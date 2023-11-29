@@ -118,6 +118,32 @@ def json_to_time(time_str):
         return datetime.datetime.strptime(time_str, "%Y-%m-%d %H:%M:%S")
     except:
         return time_str
+def fix_time_format(time_str):
+    'Convert "1-00-00 00:00:00" to "0001-00-00 00:00:00"'
+    t = time_str
+    char_index = t.find('-')
+    if len(t[:char_index]) != 4:
+        if len(t[:char_index]) == 3:
+            t = '0' + t
+        elif len(t[:char_index]) == 2:
+            t = '00' + t
+        elif len(t[:char_index]) == 1:
+            t = '000' + t
+    return t
+#TODO: propably need to remove the function
+def convert_bool_to_string(item):
+        if item['value'] == True:
+            item['value'] = 'True'
+        elif item['value'] == False:
+            item['value'] = 'False'
+
+def mix_str_configs_and_bool_configs(data:dict):
+    # mix str_configs and bool_configs to in a list
+        data['hconfigs'] = []
+        for s_c in data.get('str_configs',None):
+            data['hconfigs'].append(s_c)
+        for b_c in data.get('bool_configs',None):
+            data['hconfigs'].append(b_c)
 
 
 def flash(message, category):

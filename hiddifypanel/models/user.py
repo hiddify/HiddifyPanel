@@ -108,6 +108,19 @@ class User(db.Model, SerializerMixin):
                 res[ip] = 1
         return list(res.keys())
 
+    @ips.setter
+    def ips(self,value):
+        if value:
+            if isinstance(value,list):
+                detail = UserDetail.query.filter(UserDetail.user_id == self.id).first()
+                detail.connected_ips = ",".join(value)
+                db.session.commit()
+            elif isinstance(value,str):
+                detail = UserDetail.query.filter(UserDetail.user_id == self.id).first()
+                detail.connected_ips = value
+            else:
+                raise TypeError('ips must be a list or string')
+        
     @staticmethod
     def by_id(user_id):
         """
@@ -179,7 +192,18 @@ class User(db.Model, SerializerMixin):
             'ed25519_public_key': d.ed25519_public_key
         }
 
+    @staticmethod
+    def form_schema(schema):
+        return schema.dump(User())
 
+    def to_schema(self):
+        user_dict = self.to_dict()
+        # fix user last_online format
+        from hiddifypanel.panel import hiddify
+        user_dict['last_online'] = hiddify.fix_time_format(user_dict['last_online'])
+        user_dict['last_online'] = self.last_online.strftime('%Y-%m-%d %H:%M:%S')
+        from hiddifypanel.panel.commercial.restapi.v2.admin.user_api import UserSchema
+        return UserSchema().load(user_dict)
 def remove(user: User, commit=True):
     from hiddifypanel.drivers import user_driver
     user_driver.remove_client(user)

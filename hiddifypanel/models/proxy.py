@@ -73,6 +73,18 @@ class Proxy(db.Model, SerializerMixin):
             'child_unique_id': d.child.unique_id if d.child else ''
         }
 
+    @staticmethod
+    def from_schema(schema):
+        return schema.dump(Proxy())
+
+    def to_schema(self):
+        proxy_dict = self.to_dict()
+        #TODO: if we change the child_unique_id field value to panel unique_id(hconfig(ConfigEnum.unique_id)) in db, we need to remove this
+        from hiddifypanel.models.config import hconfig
+        from hiddifypanel.models.config_enum import ConfigEnum
+        proxy_dict['child_unique_id'] = hconfig(ConfigEnum.unique_id)
+        from hiddifypanel.panel.commercial.restapi.v2.parent.register_api import ProxySchema
+        return ProxySchema().load(proxy_dict)
 
 def add_or_update_proxy(commit=True, child_id=0, **proxy):
     dbproxy = Proxy.query.filter(Proxy.name == proxy['name']).first()

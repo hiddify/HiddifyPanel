@@ -1,3 +1,4 @@
+from typing import List, Tuple
 from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric import x25519
 from flask_babelex import gettext as __
@@ -7,7 +8,7 @@ from hiddifypanel.cache import cache
 from hiddifypanel.models import *
 from hiddifypanel.panel.database import db
 from hiddifypanel.utils import *
-from wtforms.validators import Regexp, ValidationError
+from wtforms.validators import ValidationError
 from datetime import datetime, timedelta
 
 to_gig_d = 1000*1000*1000
@@ -23,7 +24,7 @@ def add_temporary_access():
 
 @cache.cache(ttl=600)
 # TODO: check this function functionality
-def add_short_link(link: str, period_min: int = 5) -> (str, datetime):
+def add_short_link(link: str, period_min: int = 5) -> Tuple[str, datetime]:
     # pattern = "\^/([^/]+)(/)?\?\$\ {return 302 " + re.escape(link) + ";}"
     pattern = r"([^/]+)\("
 
@@ -66,7 +67,7 @@ def user_auth(function):
 
 def super_admin(function):
     def wrapper(*args, **kwargs):
-        if g.admin.mode not in [AdminMode.super_admin]:
+        if not g.admin or not g.admin.mode or g.admin.mode not in [AdminMode.super_admin]:
             abort(403, __("Access Denied"))
             return jsonify({"error": "auth failed"})
         return function(*args, **kwargs)
@@ -337,6 +338,15 @@ def dump_db_to_dict():
                          *[u.to_dict() for u in StrConfig.query.all()]]
             }
 
+def seperate_str_conf_from_bool_conf(hconfigs) -> Tuple[List[StrConfig], List[BoolConfig]]:
+    str_confs = []
+    bool_confs = []
+    for _, value in hconfigs.items():
+        if isinstance(value, bool):
+            bool_confs.append(value)
+        elif isinstance(value, str):
+            str_confs.append(value)
+    return (str_confs,bool_confs)
 
 def get_ids_without_parent(input_dict):
     selector = "uuid"
@@ -357,17 +367,39 @@ def get_ids_without_parent(input_dict):
 
 
 def set_db_from_json(json_data, override_child_id=None, set_users=True, set_domains=True, set_proxies=True, set_settings=True, remove_domains=False, remove_users=False, override_unique_id=True, set_admins=True, override_root_admin=False, replace_owner_admin=False):
+    """
+    Sets the database from JSON data.
+
+    Args:
+        json_data (dict): The JSON data to set the database from.
+        override_child_id (str, optional): The child ID to override. Defaults to None.
+        set_users (bool, optional): Whether to set the users. Defaults to True.
+        set_domains (bool, optional): Whether to set the domains. Defaults to True.
+        set_proxies (bool, optional): Whether to set the proxies. Defaults to True.
+        set_settings (bool, optional): Whether to set the settings. Defaults to True.
+        remove_domains (bool, optional): Whether to remove the domains. Defaults to False.
+        remove_users (bool, optional): Whether to remove the users. Defaults to False.
+        override_unique_id (bool, optional): Whether to override the unique ID. Defaults to True.
+        set_admins (bool, optional): Whether to set the admins. Defaults to True.
+        override_root_admin (bool, optional): Whether to override the root admin. Defaults to False.
+        replace_owner_admin (bool, optional): Whether to replace the owner admin. Defaults to False.
+
+    Returns:
+        None
+    """
     new_rows = []
 
-    uuids_without_parent = get_ids_without_parent({u['uuid']: u for u in json_data['admin_users']})
-    print('uuids_without_parent===============', uuids_without_parent)
-    if replace_owner_admin and len(uuids_without_parent):
-        new_owner_uuid = uuids_without_parent[0]
-        old_owner = AdminUser.query.filter(AdminUser.id == 1).first()
-        old_uuid_admin = AdminUser.query.filter(AdminUser.uuid == new_owner_uuid).first()
-        if old_owner and not old_uuid_admin:
-            old_owner.uuid = new_owner_uuid
-            db.session.commit()
+    uuids_without_parent = []
+    if 'admin_users' in json_data:
+        uuids_without_parent = get_ids_without_parent({u['uuid']: u for u in json_data['admin_users']})
+        print('uuids_without_parent===============', uuids_without_parent)
+        if replace_owner_admin and len(uuids_without_parent):
+            new_owner_uuid = uuids_without_parent[0]
+            old_owner = AdminUser.query.filter(AdminUser.id == 1).first()
+            old_uuid_admin = AdminUser.query.filter(AdminUser.uuid == new_owner_uuid).first()
+            if old_owner and not old_uuid_admin:
+                old_owner.uuid = new_owner_uuid
+                db.session.commit()
 
     all_admins = {u.uuid: u for u in AdminUser.query.all()}
     uuids_without_parent = [uuid for uuid in uuids_without_parent if uuid not in all_admins]
