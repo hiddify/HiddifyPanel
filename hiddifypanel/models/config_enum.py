@@ -178,7 +178,7 @@ class ConfigEnum(StrEnum):
             self.package_mode: {'category': ConfigCategory.advanced, 'show_in_parent': True, 'commercial': True},
             self.telegram_bot_token: {'category': ConfigCategory.telegram, 'show_in_parent': True, 'commercial': True},
             self.is_parent: {'category': ConfigCategory.hidden, 'type': bool},
-            self.parent_panel: {'category': ConfigCategory.hidden, 'commercial': True},
+            self.parent_panel: {'category': ConfigCategory.too_advanced, 'commercial': True},
             self.unique_id: {'category': ConfigCategory.hidden, },
             self.cdn_forced_host: {'category': ConfigCategory.hidden, },
             self.branding_title: {'category': ConfigCategory.branding, 'show_in_parent': True, 'commercial': True},
