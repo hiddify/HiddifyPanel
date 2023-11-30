@@ -82,8 +82,6 @@ class Domain(db.Model, SerializerMixin):
         domain_dict = self.to_dict()
         # add sub_link_only field
         domain_dict['sub_link_only'] = True if domain_dict['mode'] == DomainType.sub_link_only else False
-        #TODO: if we change the child_unique_id field value to panel unique_id(hconfig(ConfigEnum.unique_id)) in db, we need to remove this
-        domain_dict['child_unique_id'] = hconfig(ConfigEnum.unique_id)
         from hiddifypanel.panel.commercial.restapi.v2.parent.register_api import DomainSchema
         return DomainSchema().load(domain_dict)
     @property

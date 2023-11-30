@@ -45,29 +45,3 @@ class SyncApi(MethodView):
         res.panel_data.bool_configs = [bool_config.to_schema() for bool_config in BoolConfig.query.all()]
 
         return res.dump(res)
-    def __modify_panel_data_for_api(self,panel_data):
-        # remove unnecessary fields
-        panel_data.pop('users',None)
-        panel_data.pop('admin_users',None)
-        panel_data.pop('parent_domains',None)
-
-        # add sub_link_only field
-        for d in panel_data['domains']:
-            d['sub_link_only'] = True if d['mode'] == DomainType.sub_link_only else False
-
-        #TODO: if we change the child_unique_id field value to panel unique_id(hconfig(ConfigEnum.unique_id)) in db, we need to remove this
-        # fix child_unique_id field (convert its value to hconfig(ConfigEnum.unique_id))
-        for item in panel_data['domains']:
-            self.__fix_child_id_self_value(item)
-        for item in panel_data['proxies']:
-            self.__fix_child_id_self_value(item)
-        for item in panel_data['hconfigs']:
-            self.__fix_child_id_self_value(item)
-
-        # convert hconfigs values to string
-        for item in panel_data['hconfigs']:
-            hiddify.convert_bool_to_string(item)
-    
-    def __fix_child_id_self_value(self,item):
-        if item['child_unique_id'] == 'self':
-            item['child_unique_id'] = hconfig(ConfigEnum.unique_id)

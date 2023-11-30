@@ -34,7 +34,7 @@ class UsageApi(MethodView):
         for u in users_info:
             dbuser = User.by_uuid(u['uuid'])
             dbuser.current_usage = u['usage']
-            #TODO: add connected_ips
+            #TODO: check adding connected_ips
             dbuser.ips = u['connected_ips']
             data['users'].append(dbuser.to_dict())
 

@@ -130,12 +130,6 @@ def fix_time_format(time_str):
         elif len(t[:char_index]) == 1:
             t = '000' + t
     return t
-#TODO: propably need to remove the function
-def convert_bool_to_string(item):
-        if item['value'] == True:
-            item['value'] = 'True'
-        elif item['value'] == False:
-            item['value'] = 'False'
 
 def mix_str_configs_and_bool_configs(data:dict):
     # mix str_configs and bool_configs to in a list

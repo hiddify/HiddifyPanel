@@ -25,8 +25,6 @@ class BoolConfig(db.Model, SerializerMixin):
         return schema.dump(BoolConfig())
     def to_schema(self):
         conf_dict = self.to_dict()
-        #TODO: if we change the child_unique_id field value to panel unique_id(hconfig(ConfigEnum.unique_id)) in db, we need to remove this
-        conf_dict['child_unique_id'] = hconfig(ConfigEnum.unique_id)
         from hiddifypanel.panel.commercial.restapi.v2.parent.register_api import BoolConfigSchema
         return BoolConfigSchema().load(conf_dict)
 
@@ -48,8 +46,6 @@ class StrConfig(db.Model, SerializerMixin):
         return schema.dump(StrConfig())
     def to_schema(self):
         conf_dict = self.to_dict()
-        #TODO: if we change the child_unique_id field value to panel unique_id(hconfig(ConfigEnum.unique_id)) in db, we need to remove this
-        conf_dict['child_unique_id'] = hconfig(ConfigEnum.unique_id)
         from hiddifypanel.panel.commercial.restapi.v2.parent.register_api import StrConfigSchema
         return StrConfigSchema().load(conf_dict)
 
