@@ -20,7 +20,7 @@ def init_db():
     # db.init_migration(app)
     # db.migrate()
     # db.upgrade()
-    # db.create_all()
+    db.create_all()
     hconfig.invalidate_all()
     get_hconfigs.invalidate_all()
     db_version = int(hconfig(ConfigEnum.db_version) or 0)
@@ -91,7 +91,7 @@ def init_db():
 
     if not Child.query.filter(Child.id == 0).first():
         print(Child.query.filter(Child.id == 0).first())
-        db.session.add(Child(unique_id="self", id=0))
+        db.session.add(Child(unique_id='self', id=0))
         db.session.commit()
         execute(f'update child set id=0 where unique_id="self"')
 
@@ -139,6 +139,9 @@ def init_db():
 #     add_config_if_not_exist(ConfigEnum.hysteria_enable, True)
 #     add_config_if_not_exist(ConfigEnum.hysteria_port, random.randint(5000, 20000))
 
+def _v58():
+    if Child.query.filter(Child.id == 0).first().unique_id != hconfig(ConfigEnum.unique_id):
+        execute(f'update child set unique_id="{hconfig(ConfigEnum.unique_id)}" where id=0')
 def _v57():
     add_config_if_not_exist(ConfigEnum.warp_sites, "")
 
