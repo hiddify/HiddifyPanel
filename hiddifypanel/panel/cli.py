@@ -239,5 +239,5 @@ def init_app(app):
         try:
             import_data(xui_db_path)
             return 'success'
-        except:
-            return "failed"
+        except Exception as e:
+            return f'failed to import xui data: Error:{e}'
