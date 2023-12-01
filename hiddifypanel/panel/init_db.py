@@ -20,7 +20,7 @@ def init_db():
     # db.init_migration(app)
     # db.migrate()
     # db.upgrade()
-    # db.create_all()
+    db.create_all()
     hconfig.invalidate_all()
     get_hconfigs.invalidate_all()
     db_version = int(hconfig(ConfigEnum.db_version) or 0)
