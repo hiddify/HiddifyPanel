@@ -4,6 +4,7 @@ from typing import List
 import uuid as uuid_mod
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
+from hiddifypanel.models.admin import AdminUser
 import hiddifypanel.utils as utils
 from hiddifypanel.models.user import User
 from hiddifypanel.models.domain import Domain,DomainType
@@ -59,11 +60,12 @@ def __get_users_and_reality_domains(db_path):
                     # add user 
                     users[id] = {
                         'name': c.get('email') or f'Imported ({user_count})',
-                        'expiry_time': c.get('exipryTime') or 0,
+                        'expiry_time': c.get('expiryTime') or 0,
                         'max_usage_bytes': c.get('totalGB') or 0,
                         'telegram_id': c.get('tgId') or 0,
                         # TODO: Don't know it's unit size. Change whatever unit size it is to bytes
                         'current_usage_bytes': current_usage,
+                        'enable': c.get('enable') or None,
                     }
                 user_count += 1
                 
@@ -94,7 +96,8 @@ def __get_users_and_reality_domains(db_path):
         user.usage_limit = values['max_usage_bytes']
         user.current_usage = values['current_usage_bytes']
         user.telegram_id = str(values['telegram_id'])
-
+        user.enable = values['enable']
+        user.comment = "imported from x-ui"
         hiddify_users.append(user)
 
     # convert domains to hiddify models
@@ -112,6 +115,8 @@ def __get_users_and_reality_domains(db_path):
 def import_data(db_path):
     try:
         hiddify_users, hiddify_reality_domains = __get_users_and_reality_domains(db_path)
+        for hu in hiddify_users:
+            hu.admin = AdminUser.query.first()
         
         # add to hiddify
         hiddify.bulk_register_users([u.to_dict() for u in hiddify_users])
