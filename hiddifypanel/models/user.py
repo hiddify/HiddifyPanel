@@ -201,7 +201,7 @@ class User(db.Model, SerializerMixin):
         # fix user last_online format
         from hiddifypanel.panel import hiddify
         user_dict['last_online'] = hiddify.fix_time_format(user_dict['last_online'])
-        user_dict['last_online'] = self.last_online.strftime('%Y-%m-%d %H:%M:%S')
+        #user_dict['last_online'] = self.last_online.strftime('%Y-%m-%d %H:%M:%S')
         from hiddifypanel.panel.commercial.restapi.v2.admin.user_api import UserSchema
         return UserSchema().load(user_dict)
 def remove(user: User, commit=True):

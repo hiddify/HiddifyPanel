@@ -18,12 +18,13 @@ def update_local_usage():
     # return {"status": 'success', "comments":res}
 
 
+# TODO:Rewrite this function
 def add_users_usage_uuid(uuids_bytes, child_id):
     users = User.query.filter(User.uuid.in_(keys(uuids_bytes)))
     dbusers_bytes = {u: uuids_bytes.get(u.uuid, 0) for u in users}
     add_users_usage(dbusers_bytes, child_id)
 
-
+# TODO:Rewrite this function
 def add_users_usage(dbusers_bytes, child_id):
     print(dbusers_bytes)
     if not hconfig(ConfigEnum.is_parent) and hconfig(ConfigEnum.parent_panel):
