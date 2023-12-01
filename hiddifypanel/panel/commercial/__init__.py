@@ -15,9 +15,7 @@ def init_app(app):
     from .restapi.v2 import user as api_v2_user
     from .restapi.v2 import hello as api_v2_hello
     from .restapi.v2 import parent as api_v2_parent
-    from .restapi.v2 import child as api_v2_child
     api_v2_parent.init_app(app)
-    api_v2_child.init_app(app)
     api_v2_admin.init_app(app)
     api_v2_user.init_app(app)
     api_v2_hello.init_app(app)
