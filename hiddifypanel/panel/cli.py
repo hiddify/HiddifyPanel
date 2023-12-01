@@ -8,7 +8,7 @@ from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify, usage
 from hiddifypanel.panel.database import db
 from hiddifypanel.panel.init_db import init_db
-
+from hiddifypanel.panel.importer.xui import import_data
 
 def drop_db():
     """Cleans database"""
@@ -232,3 +232,12 @@ def init_app(app):
         if len(data):
             db.session.bulk_save_objects(data)
         db.session.commit()
+
+    @ app.cli.command()
+    @ click.option("--xui_db_path", "-x")
+    def xui_importer(xui_db_path):
+        try:
+            import_data(xui_db_path)
+            return 'success'
+        except:
+            return "failed"
