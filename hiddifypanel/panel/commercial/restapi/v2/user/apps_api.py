@@ -13,7 +13,7 @@ from enum import auto
 
 
 from hiddifypanel.panel.user.user import get_common_data
-from hiddifypanel.utils import get_latest_release_url,do_base_64
+from hiddifypanel.hutils.utils import get_latest_release_url,do_base_64
 
 #region App Api DTOs
 class AppInstallType(StrEnum):

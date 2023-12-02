@@ -5,7 +5,7 @@ import uuid as uuid_mod
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 from hiddifypanel.models.admin import AdminUser
-import hiddifypanel.utils as utils
+import hiddifypanel.hutils.utils as utils
 from hiddifypanel.models.user import User
 from hiddifypanel.models.domain import Domain,DomainType
 from hiddifypanel.panel import hiddify

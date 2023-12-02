@@ -1,5 +1,5 @@
 from flask_admin.contrib import sqla
-from hiddifypanel.ip_utils import ip_utils
+from hiddifypanel.hutils import ip
 from hiddifypanel.panel.database import db
 from wtforms.validators import Regexp
 from hiddifypanel.models import *
@@ -65,8 +65,8 @@ class ChildAdmin(AdminLTEModelView):
         return Markup(f'<div class="btn-group"><a href="{admin_link}" class="btn btn-xs btn-secondary">'+_("admin link")+f'</a><a href="{admin_link}" class="btn btn-xs btn-info ltr" target="_blank">{model.domain}</a></div>')
 
     def _domain_ip(view, context, model, name):
-        dip = ip_utils.get_domain_ip(model.domain)
-        myip = ip_utils.get_ip(4)
+        dip = ip.get_domain_ip(model.domain)
+        myip = ip.get_ip(ip.AF_INET)
         if myip == dip and model.mode == DomainType.direct:
             badge_type = ''
         elif dip and model.mode != DomainType.direct and myip != dip:
@@ -101,7 +101,7 @@ class ChildAdmin(AdminLTEModelView):
     def on_model_change(self, form, model, is_created):
         model.domain = model.domain.lower()
 
-        dip = ip_utils.get_domain_ip(model.domain)
+        dip = ip.get_domain_ip(model.domain)
         if dip == None:
             raise ValidationError(
                 _("Domain can not be resolved! there is a problem in your domain"))

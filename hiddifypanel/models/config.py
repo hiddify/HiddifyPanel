@@ -3,7 +3,7 @@ from sqlalchemy_serializer import SerializerMixin
 from hiddifypanel import Events
 from hiddifypanel.cache import cache
 from hiddifypanel.panel.database import db
-from hiddifypanel.utils import error
+from hiddifypanel.hutils.utils import error
 from .config_enum import ConfigEnum
 
 

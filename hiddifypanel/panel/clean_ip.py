@@ -2,7 +2,7 @@ import os
 import random
 import re
 import sys
-from hiddifypanel.ip_utils import ip_utils
+from hiddifypanel.hutils import ip
 
 import maxminddb
 from flask import request, flash
@@ -165,5 +165,5 @@ def get_clean_ip(ips, resolve=False, default_asn=None):
     # print("selected_server",selected_server)
     if resolve:
         from hiddifypanel.panel import hiddify
-        selected_server = ip_utils.get_domain_ip(selected_server) or selected_server
+        selected_server = ip.get_domain_ip(selected_server) or selected_server
     return selected_server

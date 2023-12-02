@@ -6,7 +6,7 @@ from sqlalchemy_serializer import SerializerMixin
 from strenum import StrEnum
 
 from hiddifypanel.panel.database import db
-from hiddifypanel.ip_utils import ip_utils
+from hiddifypanel.hutils import ip
 from .config import hconfig
 from .config_enum import ConfigEnum
 from sqlalchemy.orm import backref
@@ -139,7 +139,7 @@ def get_panel_domains(always_add_ip=False, always_add_all_domains=False):
         domains = [Domain(domain=request.host)]
     if len(domains) == 0 or always_add_ip:
         from hiddifypanel.panel import hiddify
-        domains += [Domain(domain=ip_utils.get_ip(4))]
+        domains += [Domain(domain=ip.get_ip(ip.AF_INET))]
     return domains
 
 

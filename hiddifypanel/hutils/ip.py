@@ -1,87 +1,54 @@
 import random
 import socket
 import ipaddress
+from typing import List,Union
 import netifaces
 import urllib
-
-from hiddifypanel.models.domain import Domain, DomainType
+import ipaddress
 from hiddifypanel.cache import cache
+from socket import AF_INET,AF_INET6
 
-def normalize_ipv6(address):
-    if type(address) == str and len(address) > 0:
-        if address[0] == '[' and address[-1] == ']':
-            return address[1:-1]
-
-    return address
-
-def are_ipv6_addresses_equal(address1, address2):
-    try:
-        address1 = normalize_ipv6(address1)
-        address2 = normalize_ipv6(address2)
-
-        ipv6_addr1 = ipaddress.ip_address(address1)
-        ipv6_addr2 = ipaddress.ip_address(address2)
-
-        return ipv6_addr1 == ipv6_addr2
-
-    except ValueError as e:
-        print(f"Invalid IPv6 address: {e}")
-        return False
-
-
-def get_domain_ip(dom, retry=3, version=None):
-
+def get_domain_ip(domain:str, retry:int=3, version:Union[AF_INET,AF_INET6]=None) -> Union[ipaddress.IPv4Address, ipaddress.IPv6Address, None]:
     res = None
     if not version:
         try:
-            res = socket.gethostbyname(dom)
+            res = socket.gethostbyname(domain)
         except:
             pass
 
-    if not res and version != 6:
+    if not res and version != AF_INET6:
         try:
-            res = socket.getaddrinfo(dom, None, socket.AF_INET)[0][4][0]
+            res = socket.getaddrinfo(domain, None, socket.AF_INET)[0][4][0]
         except:
             pass
 
-    if not res and version != 4:
+    if not res and version != AF_INET:
         try:
-            res = f"[{socket.getaddrinfo(dom, None, socket.AF_INET6)[0][4][0]}]"
+            res = f"[{socket.getaddrinfo(domain, None, socket.AF_INET6)[0][4][0]}]"
         except:
             pass
 
     if retry <= 0:
         return None
+    
+    return ipaddress.ip_address(res) or get_domain_ip(domain, retry=retry-1)
 
-    return res or get_domain_ip(dom, retry=retry-1)
 
-
-def get_socket_public_ip(version):
+def get_socket_public_ip(version:Union[AF_INET,AF_INET6]) -> Union[ipaddress.IPv4Address, ipaddress.IPv6Address, None]:
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        if version == 6:
+        if version == AF_INET6:
             s.connect(("2001:4860:4860::8888", 80))
         else:
             s.connect(("8.8.8.8", 80))
-        ip_address = s.getsockname()[0]
+        ip_address = ipaddress.ip_address(s.getsockname()[0])
         s.close()
-
-        return ip_address if is_public_ip(ip_address) else None
+        return ip_address if ip_address.is_global else None
     except socket.error:
         return None
 
 
-def is_public_ip(address):
-    if address.startswith('127.') or address.startswith('169.254.') or address.startswith('10.') or address.startswith('192.168.') or address.startswith('172.'):
-        return False
-    if address.startswith('fe80:') or address.startswith('fd') or address.startswith('fc00:'):
-        return False
-    if address.startswith('::') or address.startswith('fd') or address.startswith('fc00:'):
-        return False
-    return True
-
-
-def get_interface_public_ip(version):
+def get_interface_public_ip(version:Union[AF_INET,AF_INET6]) -> List[Union[ipaddress.IPv4Address, ipaddress.IPv6Address]]:
     addresses = []
     try:
         interfaces = netifaces.interfaces()
@@ -95,8 +62,8 @@ def get_interface_public_ip(version):
 
             if address_info:
                 for addr in address_info:
-                    address = addr['addr']
-                    if (is_public_ip(address)):
+                    address = ipaddress.ip_address(addr['addr'])
+                    if address.is_global:
                         addresses.append(address)
 
         return addresses
@@ -105,29 +72,29 @@ def get_interface_public_ip(version):
         return []
 
 @cache.cache(ttl=600)
-def get_ips(version):
-    res = []
+def get_ips(version:Union[AF_INET,AF_INET6]) -> List[Union[ipaddress.IPv4Address, ipaddress.IPv6Address]]:
+    addrs = []
     i_ips = get_interface_public_ip(version)
     if i_ips:
-        res = i_ips
+        addrs = i_ips
     
     s_ip = get_socket_public_ip(version)
     if s_ip:
-        res.append(s_ip)
+        addrs.append(s_ip)
     
     # send request
     try:
         ip = urllib.request.urlopen(f'https://v{version}.ident.me/').read().decode('utf8')
         if ip:
-            res.append(ip)
+            addrs.append(ipaddress.ip_address(ip))
     except:
         pass
     
     # remove duplicates
-    return list(set(res))
+    return list(set(addrs))
 
 @cache.cache(ttl=600)
-def get_ip(version, retry=5):
+def get_ip(version:Union[AF_INET,AF_INET6], retry:int=5) -> Union[ipaddress.IPv4Address, ipaddress.IPv6Address]:
     ips = get_interface_public_ip(version)
     ip = None
     if (ips):
@@ -139,7 +106,8 @@ def get_ip(version, retry=5):
     if ip is None:
         try:
             ip = urllib.request.urlopen(f'https://v{version}.ident.me/').read().decode('utf8')
-
+            if ip:
+                ip = ipaddress.ip_address(ip)
         except:
             pass
     if ip is None and retry > 0:
