@@ -7,21 +7,6 @@ import urllib
 from hiddifypanel.models.domain import Domain, DomainType
 from hiddifypanel.cache import cache
 
-@cache.cache(ttl=600)
-def get_direct_host_or_ip(prefer_version):
-    direct = Domain.query.filter(Domain.mode == DomainType.direct, Domain.sub_link_only == False).first()
-    if not (direct):
-        direct = Domain.query.filter(Domain.mode == DomainType.direct).first()
-    if direct:
-        direct = direct.domain
-    else:
-        direct = get_ip(prefer_version)
-    if not direct:
-        direct = get_ip(4 if prefer_version == 6 else 6)
-    return direct
-
-
-
 def normalize_ipv6(address):
     if type(address) == str and len(address) > 0:
         if address[0] == '[' and address[-1] == ']':
@@ -119,7 +104,7 @@ def get_interface_public_ip(version):
     except (OSError, KeyError):
         return []
 
-
+@cache.cache(ttl=600)
 def get_ips(version):
     res = []
     i_ips = get_interface_public_ip(version)

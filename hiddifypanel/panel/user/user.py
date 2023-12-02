@@ -1,7 +1,6 @@
 
 from flask import render_template, request, Response, g, url_for, jsonify, flash
 from apiflask import abort
-from hiddifypanel.ip_utils.ip_utils import get_direct_host_or_ip
 from wtforms.validators import Regexp, ValidationError
 import urllib
 import uuid
@@ -334,7 +333,7 @@ class UserView(FlaskView):
             resp = ""
         else:
             resp = render_template('singbox_config.json', **c, host_keys=hiddify.get_hostkeys(True),
-                                   ssh_client_version=hiddify.get_ssh_client_version(user), ssh_ip=get_direct_host_or_ip(4), base64=False)
+                                   ssh_client_version=hiddify.get_ssh_client_version(user), ssh_ip=hiddify.get_direct_host_or_ip(4), base64=False)
         return add_headers(resp, c)
 
     @ route('/all.txt', methods=["GET", "HEAD"])
