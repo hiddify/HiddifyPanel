@@ -144,8 +144,6 @@ class DomainAdmin(AdminLTEModelView):
 
         ipv4_list = ip_utils.get_ips(4)
         ipv6_list = ip_utils.get_ips(6)
-        myip = ipv4_list[0]
-        myipv6 = ipv6_list[0]
        
 
 
@@ -156,9 +154,9 @@ class DomainAdmin(AdminLTEModelView):
         if hconfig(ConfigEnum.cloudflare) and model.mode != DomainType.fake:
             try:
                 proxied = model.mode in [DomainType.cdn, DomainType.auto_cdn_ip]
-                cf_api.add_or_update_domain(model.domain, myip, "A", proxied=proxied)
-                if myipv6:
-                    cf_api.add_or_update_domain(model.domain, myipv6, "AAAA", proxied=proxied)
+                cf_api.add_or_update_domain(model.domain, ipv4_list[0], "A", proxied=proxied)
+                if ipv6_list[0]:
+                    cf_api.add_or_update_domain(model.domain, ipv6_list[0], "AAAA", proxied=proxied)
 
                 skip_check = True
             except Exception as e:
@@ -183,11 +181,11 @@ class DomainAdmin(AdminLTEModelView):
                 domain_ip_is_same_as_panel |= hiddify.are_ipv6_addresses_equal(dip, ipv6)
 
             if model.mode == DomainType.direct and not domain_ip_is_same_as_panel:
-                flash(__(f"Domain IP={dip} is not matched with your ip={myip} which is required in direct mode"),'warning')
+                flash(__(f"Domain IP={dip} is not matched with your ip={ipv4_list.join(', ')} which is required in direct mode"),'warning')
                 #raise ValidationError(_("Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode", server_ip=myip, domain_ip=dip))
 
             if domain_ip_is_same_as_panel and model.mode in [DomainType.cdn, DomainType.relay, DomainType.fake, DomainType.auto_cdn_ip]:
-                flash(__(f"In CDN mode, Domain IP={dip} should be different to your ip={myip}",'warning'))
+                flash(__(f"In CDN mode, Domain IP={dip} should be different to your ip={ipv4_list.join(', ')}",'warning'))
                 #raise ValidationError(_("In CDN mode, Domain IP=%(domain_ip)s should be different to your ip=%(server_ip)s", server_ip=myip, domain_ip=dip))
 
             # if model.mode in [DomainType.ss_faketls, DomainType.telegram_faketls]:
@@ -198,7 +196,7 @@ class DomainAdmin(AdminLTEModelView):
             raise ValidationError(f"Specifying CDN IP is only valid for CDN mode")
 
         if model.mode == DomainType.fake and not model.cdn_ip:
-            model.cdn_ip = myip
+            model.cdn_ip = ipv4_list[0]
 
         # if model.mode==DomainType.fake and model.cdn_ip!=myip:
         #     raise ValidationError(f"Specifying CDN IP is only valid for CDN mode")
