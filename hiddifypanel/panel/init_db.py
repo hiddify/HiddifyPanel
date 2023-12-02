@@ -7,7 +7,7 @@ import uuid
 
 from dateutil import relativedelta
 
-from hiddifypanel import Events
+from hiddifypanel import Events, ip_utils
 from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify
 from hiddifypanel.panel.database import db
@@ -282,7 +282,7 @@ def _v20():
         if direct_domain:
             direct_host = direct_domain.domain
         else:
-            direct_host = hiddify.get_ip(4)
+            direct_host = ip_utils.get_ip(4)
 
         for fd in fake_domains:
             if not Domain.query.filter(Domain.domain == fd).first():
@@ -320,7 +320,7 @@ def _v17():
 
 def _v1():
     next10year = datetime.date.today() + relativedelta.relativedelta(years=6)
-    external_ip = hiddify.get_ip(4)
+    external_ip = ip_utils.get_ip(4)
     rnd_domains = get_random_domains(5)
 
     data = [

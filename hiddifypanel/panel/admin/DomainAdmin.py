@@ -10,7 +10,7 @@ from wtforms.validators import Regexp, ValidationError
 from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify, cf_api, custom_widgets
 from .adminlte import AdminLTEModelView
-from hiddifypanel import ip_utils
+from hiddifypanel.ip_utils import ip_utils
 
 
 # Define a custom field type for the related domains
@@ -93,8 +93,8 @@ class DomainAdmin(AdminLTEModelView):
         return Markup(f'<div class="btn-group"><a href="{admin_link}" class="btn btn-xs btn-secondary">'+_("admin link")+f'</a><a href="{admin_link}" class="btn btn-xs btn-info ltr" target="_blank">{model.domain}</a></div>')
 
     def _domain_ip(view, context, model, name):
-        dip = hiddify.get_domain_ip(model.domain)
-        myip = hiddify.get_ip(4)
+        dip = ip_utils.get_domain_ip(model.domain)
+        myip = ip_utils.get_ip(4)
         if myip == dip and model.mode == DomainType.direct:
             badge_type = ''
         elif dip and model.mode != DomainType.direct and myip != dip:
@@ -167,7 +167,7 @@ class DomainAdmin(AdminLTEModelView):
             flash(__("Using alias with special charachters may cause problem in some clients like FairVPN."), 'warning')
         #     raise ValidationError(_("You have to add your cloudflare api key to use this feature: "))
 
-        dip = hiddify.get_domain_ip(model.domain)
+        dip = ip_utils.get_domain_ip(model.domain)
         if model.sub_link_only:
             if dip == None:
                 raise ValidationError(_("Domain can not be resolved! there is a problem in your domain"))
@@ -178,7 +178,7 @@ class DomainAdmin(AdminLTEModelView):
             domain_ip_is_same_as_panel = False
             domain_ip_is_same_as_panel |= dip in ipv4_list
             for ipv6 in ipv6_list:
-                domain_ip_is_same_as_panel |= hiddify.are_ipv6_addresses_equal(dip, ipv6)
+                domain_ip_is_same_as_panel |= ip_utils.are_ipv6_addresses_equal(dip, ipv6)
 
             if model.mode == DomainType.direct and not domain_ip_is_same_as_panel:
                 flash(__(f"Domain IP={dip} is not matched with your ip={ipv4_list.join(', ')} which is required in direct mode"),'warning')

@@ -1,5 +1,6 @@
 from flask import g, request, render_template
 import enum
+from hiddifypanel.ip_utils import ip_utils
 from hiddifypanel.models import *
 import yaml
 import json
@@ -90,7 +91,7 @@ def make_proxy(proxy: Proxy, domain_db: Domain, phttp=80, ptls=443, pport=None):
         return {'name': name, 'msg': "not cdn proxy  in cdn domain", 'type': 'debug', 'proto': proxy.proto}
     if domain_db.mode == DomainType.worker and proxy.transport == ProxyTransport.grpc:
         return {'name': name, 'msg': "worker does not support grpc", 'type': 'debug', 'proto': proxy.proto}
-    cdn_forced_host = domain_db.cdn_ip or (domain_db.domain if domain_db.mode != DomainType.reality else hiddify.get_direct_host_or_ip(4))
+    cdn_forced_host = domain_db.cdn_ip or (domain_db.domain if domain_db.mode != DomainType.reality else ip_utils.get_direct_host_or_ip(4))
 
     if 'reality' in proxy.l3:
         alpn = "h2" if proxy.transport in ['h2', "grpc"] else 'http/1.1'
@@ -813,8 +814,8 @@ def get_all_validated_proxies(domains):
             options = []
             if type.proto in ['ssh', 'tuic', 'hysteria2']:
 
-                ip = hiddify.get_domain_ip(d.domain, version=4)
-                ip6 = hiddify.get_domain_ip(d.domain, version=6)
+                ip = ip_utils.get_domain_ip(d.domain, version=4)
+                ip6 = ip_utils.get_domain_ip(d.domain, version=6)
 
                 ips = [x for x in [ip, ip6]if x != None]
 

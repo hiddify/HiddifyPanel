@@ -1,5 +1,4 @@
-import ipaddress
-
+from typing import Tuple
 from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric import x25519
 from flask_babelex import gettext as __
@@ -12,6 +11,7 @@ from hiddifypanel.utils import *
 from hiddifypanel.Events import domain_changed
 from wtforms.validators import Regexp, ValidationError
 from datetime import datetime, timedelta
+from hiddifypanel.ip_utils import ip_utils
 
 to_gig_d = 1000*1000*1000
 
@@ -20,13 +20,13 @@ def add_temporary_access():
     random_port = random.randint(30000, 50000)
     exec_command(
         f'sudo /opt/hiddify-manager/hiddify-panel/temporary_access.sh {random_port} &')
-    temp_admin_link = f"http://{get_ip(4)}:{random_port}{get_admin_path()}"
+    temp_admin_link = f"http://{ip_utils.get_ip(4)}:{random_port}{get_admin_path()}"
     g.temp_admin_link = temp_admin_link
 
 
 @cache.cache(ttl=600)
 # TODO: check this function functionality
-def add_short_link(link: str, period_min: int = 5) -> (str, datetime):
+def add_short_link(link: str, period_min: int = 5) -> Tuple[str, datetime]:
     # pattern = "\^/([^/]+)(/)?\?\$\ {return 302 " + re.escape(link) + ";}"
     pattern = r"([^/]+)\("
 
@@ -93,64 +93,6 @@ def abs_url(path):
 
 def asset_url(path):
     return f"/{g.proxy_path}/{path}"
-
-
-@cache.cache(ttl=600)
-def get_direct_host_or_ip(prefer_version):
-    direct = Domain.query.filter(Domain.mode == DomainType.direct, Domain.sub_link_only == False).first()
-    if not (direct):
-        direct = Domain.query.filter(Domain.mode == DomainType.direct).first()
-    if direct:
-        direct = direct.domain
-    else:
-        direct = get_ip(prefer_version)
-    if not direct:
-        direct = get_ip(4 if prefer_version == 6 else 6)
-    return direct
-
-
-@cache.cache(ttl=600)
-def get_ip(version, retry=5):
-    ips = get_interface_public_ip(version)
-    ip = None
-    if (ips):
-        ip = random.sample(ips, 1)[0]
-
-    if ip is None:
-        ip = get_socket_public_ip(version)
-
-    if ip is None:
-        try:
-            ip = urllib.request.urlopen(f'https://v{version}.ident.me/').read().decode('utf8')
-
-        except:
-            pass
-    if ip is None and retry > 0:
-        ip = get_ip(version, retry=retry-1)
-    return ip
-
-
-def normalize_ipv6(address):
-    if type(address) == str and len(address) > 0:
-        if address[0] == '[' and address[-1] == ']':
-            return address[1:-1]
-
-    return address
-
-def are_ipv6_addresses_equal(address1, address2):
-    try:
-        address1 = normalize_ipv6(address1)
-        address2 = normalize_ipv6(address2)
-
-        ipv6_addr1 = ipaddress.ip_address(address1)
-        ipv6_addr2 = ipaddress.ip_address(address2)
-
-        return ipv6_addr1 == ipv6_addr2
-
-    except ValueError as e:
-        print(f"Invalid IPv6 address: {e}")
-        return False
-
 
 @cache.cache(ttl=300)
 def get_available_proxies(child_id):
@@ -248,9 +190,9 @@ def check_connection_for_domain(domain):
             return res['status'] == 200
         except:
             try:
-                print(f"http://{get_domain_ip(domain)}/{path}")
+                print(f"http://{ip_utils.get_domain_ip(domain)}/{path}")
                 res = requests.get(
-                    f"http://{get_domain_ip(domain)}/{path}", verify=False, timeout=10).json()
+                    f"http://{ip_utils.get_domain_ip(domain)}/{path}", verify=False, timeout=10).json()
                 return res['status'] == 200
             except:
                 return False
@@ -294,7 +236,7 @@ def validate_domain_exist(form, field):
     domain = field.data
     if not domain:
         return
-    dip = get_domain_ip(domain)
+    dip = ip_utils.get_domain_ip(domain)
     if dip == None:
         raise ValidationError(
             _("Domain can not be resolved! there is a problem in your domain"))
@@ -613,8 +555,8 @@ def is_domain_reality_friendly(domain):
 
 def debug_flash_if_not_in_the_same_asn(domain):
     from hiddifypanel.panel.clean_ip import ipasn
-    ipv4 = get_ip(4)
-    dip = get_domain_ip(domain)
+    ipv4 = ip_utils.get_ip(4)
+    dip = ip_utils.get_domain_ip(domain)
     try:
         if ipasn:
             asn_ipv4 = ipasn.get(ipv4)
