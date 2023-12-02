@@ -1,13 +1,13 @@
 import random
 import socket
 import ipaddress
-from typing import List,Union
+from typing import List, Literal,Union
 import netifaces
 import urllib
 import ipaddress
 from hiddifypanel.cache import cache
 
-def get_domain_ip(domain:str, retry:int=3, version:int=None) -> Union[ipaddress.IPv4Address, ipaddress.IPv6Address, None]:
+def get_domain_ip(domain:str, retry:int=3, version:Literal[4,6]=None) -> Union[ipaddress.IPv4Address, ipaddress.IPv6Address, None]:
     res = None
     if not version:
         try:
@@ -33,7 +33,7 @@ def get_domain_ip(domain:str, retry:int=3, version:int=None) -> Union[ipaddress.
     return ipaddress.ip_address(res) or get_domain_ip(domain, retry=retry-1)
 
 
-def get_socket_public_ip(version:int) -> Union[ipaddress.IPv4Address, ipaddress.IPv6Address, None]:
+def get_socket_public_ip(version: Literal[4,6]) -> Union[ipaddress.IPv4Address, ipaddress.IPv6Address, None]:
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         if version == 6:
@@ -47,7 +47,7 @@ def get_socket_public_ip(version:int) -> Union[ipaddress.IPv4Address, ipaddress.
         return None
 
 
-def get_interface_public_ip(version:int) -> List[Union[ipaddress.IPv4Address, ipaddress.IPv6Address]]:
+def get_interface_public_ip(version:Literal[4,6]) -> List[Union[ipaddress.IPv4Address, ipaddress.IPv6Address]]:
     addresses = []
     try:
         interfaces = netifaces.interfaces()
@@ -71,7 +71,7 @@ def get_interface_public_ip(version:int) -> List[Union[ipaddress.IPv4Address, ip
         return []
 
 @cache.cache(ttl=600)
-def get_ips(version:int) -> List[Union[ipaddress.IPv4Address, ipaddress.IPv6Address]]:
+def get_ips(version:Literal[4,6]) -> List[Union[ipaddress.IPv4Address, ipaddress.IPv6Address]]:
     addrs = []
     i_ips = get_interface_public_ip(version)
     if i_ips:
@@ -93,7 +93,7 @@ def get_ips(version:int) -> List[Union[ipaddress.IPv4Address, ipaddress.IPv6Addr
     return list(set(addrs))
 
 @cache.cache(ttl=600)
-def get_ip(version:int, retry:int=5) -> Union[ipaddress.IPv4Address, ipaddress.IPv6Address]:
+def get_ip(version:Literal[4,6], retry:int=5) -> Union[ipaddress.IPv4Address, ipaddress.IPv6Address]:
     ips = get_interface_public_ip(version)
     ip = None
     if ips:
