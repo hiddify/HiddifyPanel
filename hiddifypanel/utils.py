@@ -194,7 +194,7 @@ def get_interface_public_ip(version):
             elif version == 6:
                 address_info = netifaces.ifaddresses(interface).get(netifaces.AF_INET6, [])
             else:
-                return None
+                continue
 
             if address_info:
                 for addr in address_info:
@@ -202,7 +202,7 @@ def get_interface_public_ip(version):
                     if (is_public_ip(address)):
                         addresses.append(address)
 
-        return addresses if addresses else None
+        return addresses
 
     except (OSError, KeyError):
-        return None
+        return []
