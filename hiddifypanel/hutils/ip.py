@@ -6,9 +6,8 @@ import netifaces
 import urllib
 import ipaddress
 from hiddifypanel.cache import cache
-from socket import AF_INET,AF_INET6
 
-def get_domain_ip(domain:str, retry:int=3, version:Union[AF_INET,AF_INET6]=None) -> Union[ipaddress.IPv4Address, ipaddress.IPv6Address, None]:
+def get_domain_ip(domain:str, retry:int=3, version:int=None) -> Union[ipaddress.IPv4Address, ipaddress.IPv6Address, None]:
     res = None
     if not version:
         try:
@@ -16,13 +15,13 @@ def get_domain_ip(domain:str, retry:int=3, version:Union[AF_INET,AF_INET6]=None)
         except:
             pass
 
-    if not res and version != AF_INET6:
+    if not res and version != 6:
         try:
             res = socket.getaddrinfo(domain, None, socket.AF_INET)[0][4][0]
         except:
             pass
 
-    if not res and version != AF_INET:
+    if not res and version != 4:
         try:
             res = f"[{socket.getaddrinfo(domain, None, socket.AF_INET6)[0][4][0]}]"
         except:
@@ -34,10 +33,10 @@ def get_domain_ip(domain:str, retry:int=3, version:Union[AF_INET,AF_INET6]=None)
     return ipaddress.ip_address(res) or get_domain_ip(domain, retry=retry-1)
 
 
-def get_socket_public_ip(version:Union[AF_INET,AF_INET6]) -> Union[ipaddress.IPv4Address, ipaddress.IPv6Address, None]:
+def get_socket_public_ip(version:int) -> Union[ipaddress.IPv4Address, ipaddress.IPv6Address, None]:
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        if version == AF_INET6:
+        if version == 6:
             s.connect(("2001:4860:4860::8888", 80))
         else:
             s.connect(("8.8.8.8", 80))
@@ -48,7 +47,7 @@ def get_socket_public_ip(version:Union[AF_INET,AF_INET6]) -> Union[ipaddress.IPv
         return None
 
 
-def get_interface_public_ip(version:Union[AF_INET,AF_INET6]) -> List[Union[ipaddress.IPv4Address, ipaddress.IPv6Address]]:
+def get_interface_public_ip(version:int) -> List[Union[ipaddress.IPv4Address, ipaddress.IPv6Address]]:
     addresses = []
     try:
         interfaces = netifaces.interfaces()
@@ -72,7 +71,7 @@ def get_interface_public_ip(version:Union[AF_INET,AF_INET6]) -> List[Union[ipadd
         return []
 
 @cache.cache(ttl=600)
-def get_ips(version:Union[AF_INET,AF_INET6]) -> List[Union[ipaddress.IPv4Address, ipaddress.IPv6Address]]:
+def get_ips(version:int) -> List[Union[ipaddress.IPv4Address, ipaddress.IPv6Address]]:
     addrs = []
     i_ips = get_interface_public_ip(version)
     if i_ips:
@@ -94,10 +93,10 @@ def get_ips(version:Union[AF_INET,AF_INET6]) -> List[Union[ipaddress.IPv4Address
     return list(set(addrs))
 
 @cache.cache(ttl=600)
-def get_ip(version:Union[AF_INET,AF_INET6], retry:int=5) -> Union[ipaddress.IPv4Address, ipaddress.IPv6Address]:
+def get_ip(version:int, retry:int=5) -> Union[ipaddress.IPv4Address, ipaddress.IPv6Address]:
     ips = get_interface_public_ip(version)
     ip = None
-    if (ips):
+    if ips:
         ip = random.sample(ips, 1)[0]
 
     if ip is None:

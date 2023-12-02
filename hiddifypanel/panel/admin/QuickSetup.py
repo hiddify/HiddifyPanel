@@ -26,7 +26,7 @@ from flask_classful import FlaskView
 class QuickSetup(FlaskView):
 
     def index(self):
-        return render_template('quick_setup.html', lang_form=get_lang_form(), form=get_quick_setup_form(), ipv4=hutils.ip.get_ip(hutils.ip.AF_INET), ipv6=hutils.ip.get_ip(hutils.ip.AF_INET6), admin_link=admin_link(), show_domain_info=True)
+        return render_template('quick_setup.html', lang_form=get_lang_form(), form=get_quick_setup_form(), ipv4=hutils.ip.get_ip(4), ipv6=hutils.ip.get_ip(6), admin_link=admin_link(), show_domain_info=True)
 
     def post(self):
         set_hconfig(ConfigEnum.first_setup, False)
@@ -48,10 +48,10 @@ class QuickSetup(FlaskView):
             else:
                 flash((_('quicksetup.setlang.error')), 'danger')
 
-            return render_template('quick_setup.html', form=get_quick_setup_form(True), lang_form=get_lang_form(), admin_link=admin_link(), ipv4=hutils.ip.get_ip(hutils.ip.AF_INET), ipv6=hutils.ip.get_ip(hutils.ip.AF_INET6), show_domain_info=False)
+            return render_template('quick_setup.html', form=get_quick_setup_form(True), lang_form=get_lang_form(), admin_link=admin_link(), ipv4=hutils.ip.get_ip(4), ipv6=hutils.ip.get_ip(46), show_domain_info=False)
 
         if quick_form.validate_on_submit():
-            sslip_dm = Domain.query.filter(Domain.domain == f'{hutils.ip.get_ip(hutils.ip.AF_INET)}.sslip.io').delete()
+            sslip_dm = Domain.query.filter(Domain.domain == f'{hutils.ip.get_ip(4)}.sslip.io').delete()
             db.session.add(Domain(domain=quick_form.domain.data.lower(), mode=DomainType.direct))
             hiddify.bulk_register_configs([
                 # {"key": ConfigEnum.telegram_enable, "value": quick_form.enable_telegram.data == True},
@@ -73,7 +73,7 @@ class QuickSetup(FlaskView):
             return action.reinstall(domain_changed=True)
         else:
             flash(_('config.validation-error'), 'danger')
-        return render_template('quick_setup.html', form=quick_form, lang_form=get_lang_form(True), ipv4=hutils.ip.get_ip(hutils.ip.AF_INET), ipv6=hutils.ip.get_ip(hutils.ip.AF_INET6), admin_link=admin_link(), show_domain_info=False)
+        return render_template('quick_setup.html', form=quick_form, lang_form=get_lang_form(True), ipv4=hutils.ip.get_ip(4), ipv6=hutils.ip.get_ip(46), admin_link=admin_link(), show_domain_info=False)
 
 
 def get_lang_form(empty=False):
@@ -127,7 +127,7 @@ def validate_domain(form, field):
     if dip == None:
         raise ValidationError(_("Domain can not be resolved! there is a problem in your domain"))
 
-    myip = hutils.ip.get_ip(hutils.ip.AF_INET)
+    myip = hutils.ip.get_ip(4)
     if dip and myip != dip:
         raise ValidationError(_("Domain (%(domain)s)-> IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode",
                               server_ip=myip, domain_ip=dip, domain=domain))
@@ -138,4 +138,4 @@ def admin_link():
     if len(domains):
         return "https://"+domains[0].domain+hiddify.get_admin_path()
     else:
-        return "https://"+hutils.ip.get_ip(hutils.ip.AF_INET)+hiddify.get_admin_path()
+        return "https://"+hutils.ip.get_ip(4)+hiddify.get_admin_path()

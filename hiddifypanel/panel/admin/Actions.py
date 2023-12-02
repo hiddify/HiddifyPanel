@@ -209,7 +209,7 @@ class Actions(FlaskView):
         test_domain = request.args.get("test_domain")
         import ping3
         from hiddifypanel.hutils.auto_ip_selector import ipasn, ipcountry
-        ipv4 = hutils.ip.get_ip(hutils.ip.AF_INET)
+        ipv4 = hutils.ip.get_ip(4)
         server_country = (ipcountry.get(ipv4) or {}).get('country', {}).get('iso_code', 'unknown')
         server_asn = (ipasn.get(ipv4) or {}).get('autonomous_system_organization', 'unknown')
         res = "<table><tr><th>Domain</th><th>IP</th><th>Country</th><th>ASN</th><th>Ping (ms)</th><th>TCP ping (ms)</th></tr>"

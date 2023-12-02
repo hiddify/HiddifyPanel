@@ -95,7 +95,7 @@ class DomainAdmin(AdminLTEModelView):
 
     def _domain_ip(view, context, model, name):
         dip = hutils.ip.get_domain_ip(model.domain)
-        myip = hutils.ip.get_ip(hutils.ip.AF_INET)
+        myip = hutils.ip.get_ip(4)
         if myip == dip and model.mode == DomainType.direct:
             badge_type = ''
         elif dip and model.mode != DomainType.direct and myip != dip:
@@ -143,10 +143,11 @@ class DomainAdmin(AdminLTEModelView):
             if td.servernames and (model.domain in td.servernames.split(",")):
                 raise ValidationError(_("You have used this domain in: ")+_(f"config.reality_server_names.label")+" in " + td.domain)
 
-        ipv4_list = hutils.ip.get_ips(hutils.ip.AF_INET)
-        ipv6_list = hutils.ip.get_ips(hutils.ip.AF_INET6)
+        ipv4_list = hutils.ip.get_ips(4)
+        ipv6_list = hutils.ip.get_ips(6)
        
-
+        if not ipv4_list and not ipv6_list:
+            raise ValidationError(_("Couldn't find your ip addresses"))
 
         if "*" in model.domain and model.mode not in [DomainType.cdn, DomainType.auto_cdn_ip]:
             raise ValidationError(_("Domain can not be resolved! there is a problem in your domain"))
@@ -156,7 +157,7 @@ class DomainAdmin(AdminLTEModelView):
             try:
                 proxied = model.mode in [DomainType.cdn, DomainType.auto_cdn_ip]
                 cf_api.add_or_update_domain(model.domain, ipv4_list[0], "A", proxied=proxied)
-                if ipv6_list[0]:
+                if ipv6_list:
                     cf_api.add_or_update_domain(model.domain, ipv6_list[0], "AAAA", proxied=proxied)
 
                 skip_check = True
@@ -243,7 +244,7 @@ class DomainAdmin(AdminLTEModelView):
         if (model.cdn_ip):
             from hiddifypanel.hutils import auto_ip_selector
             try:
-                auto_ip_selector.get_clean_ip(model.cdn_ip)
+                auto_ip_selector.get_clean_ip(str(model.cdn_ip))
             except:
                 raise ValidationError(_("Error in auto cdn format"))
 

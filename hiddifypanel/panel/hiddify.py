@@ -20,7 +20,7 @@ def add_temporary_access():
     random_port = random.randint(30000, 50000)
     exec_command(
         f'sudo /opt/hiddify-manager/hiddify-panel/temporary_access.sh {random_port} &')
-    temp_admin_link = f"http://{hutils.ip.get_ip(hutils.ip.AF_INET)}:{random_port}{get_admin_path()}"
+    temp_admin_link = f"http://{hutils.ip.get_ip(4)}:{random_port}{get_admin_path()}"
     g.temp_admin_link = temp_admin_link
 
 
@@ -555,7 +555,7 @@ def is_domain_reality_friendly(domain):
 
 def debug_flash_if_not_in_the_same_asn(domain):
     from hiddifypanel.hutils.auto_ip_selector import ipasn
-    ipv4 = hutils.ip.get_ip(hutils.ip.AF_INET)
+    ipv4 = hutils.ip.get_ip(4)
     dip = hutils.ip.get_domain_ip(domain)
     try:
         if ipasn:
@@ -713,7 +713,7 @@ def is_ssh_password_authentication_enabled():
     return True
 
 @cache.cache(ttl=600)
-def get_direct_host_or_ip(prefer_version:Union[hutils.ip.AF_INET,hutils.ip.AF_INET6]):
+def get_direct_host_or_ip(prefer_version:int):
     direct = Domain.query.filter(Domain.mode == DomainType.direct, Domain.sub_link_only == False).first()
     if not (direct):
         direct = Domain.query.filter(Domain.mode == DomainType.direct).first()
