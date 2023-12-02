@@ -11,7 +11,7 @@ from wtforms.validators import Regexp, ValidationError
 from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify, cf_api, custom_widgets
 from .adminlte import AdminLTEModelView
-from hiddifypanel.hutils import ip
+from hiddifypanel import hutils
 
 
 # Define a custom field type for the related domains
@@ -94,8 +94,8 @@ class DomainAdmin(AdminLTEModelView):
         return Markup(f'<div class="btn-group"><a href="{admin_link}" class="btn btn-xs btn-secondary">'+_("admin link")+f'</a><a href="{admin_link}" class="btn btn-xs btn-info ltr" target="_blank">{model.domain}</a></div>')
 
     def _domain_ip(view, context, model, name):
-        dip = ip.get_domain_ip(model.domain)
-        myip = ip.get_ip(ip.AF_INET)
+        dip = hutils.ip.get_domain_ip(model.domain)
+        myip = hutils.ip.get_ip(hutils.ip.AF_INET)
         if myip == dip and model.mode == DomainType.direct:
             badge_type = ''
         elif dip and model.mode != DomainType.direct and myip != dip:
@@ -143,8 +143,8 @@ class DomainAdmin(AdminLTEModelView):
             if td.servernames and (model.domain in td.servernames.split(",")):
                 raise ValidationError(_("You have used this domain in: ")+_(f"config.reality_server_names.label")+" in " + td.domain)
 
-        ipv4_list = ip.get_ips(ip.AF_INET)
-        ipv6_list = ip.get_ips(ip.AF_INET6)
+        ipv4_list = hutils.ip.get_ips(hutils.ip.AF_INET)
+        ipv6_list = hutils.ip.get_ips(hutils.ip.AF_INET6)
        
 
 
@@ -168,7 +168,7 @@ class DomainAdmin(AdminLTEModelView):
             flash(__("Using alias with special charachters may cause problem in some clients like FairVPN."), 'warning')
         #     raise ValidationError(_("You have to add your cloudflare api key to use this feature: "))
 
-        dip = ip.get_domain_ip(model.domain)
+        dip = hutils.ip.get_domain_ip(model.domain)
         if model.sub_link_only:
             if dip == None:
                 raise ValidationError(_("Domain can not be resolved! there is a problem in your domain"))
@@ -241,9 +241,9 @@ class DomainAdmin(AdminLTEModelView):
                     raise ValidationError(_("REALITY Fallback domain is not compaitble with server names!")+" "+d+" != "+model.domain)
 
         if (model.cdn_ip):
-            from hiddifypanel.panel import clean_ip
+            from hiddifypanel.hutils import auto_ip_selector
             try:
-                clean_ip.get_clean_ip(model.cdn_ip)
+                auto_ip_selector.get_clean_ip(model.cdn_ip)
             except:
                 raise ValidationError(_("Error in auto cdn format"))
 

@@ -2,7 +2,7 @@
 import pprint
 from flask_babelex import gettext as _
 import pathlib
-from hiddifypanel.hutils import ip
+from hiddifypanel import hutils
 from hiddifypanel.models import *
 
 from datetime import datetime, timedelta, date
@@ -208,8 +208,8 @@ class Actions(FlaskView):
     def get_some_random_reality_friendly_domain(self):
         test_domain = request.args.get("test_domain")
         import ping3
-        from hiddifypanel.panel.clean_ip import ipasn, ipcountry
-        ipv4 = ip.get_ip(ip.AF_INET)
+        from hiddifypanel.hutils.auto_ip_selector import ipasn, ipcountry
+        ipv4 = hutils.ip.get_ip(hutils.ip.AF_INET)
         server_country = (ipcountry.get(ipv4) or {}).get('country', {}).get('iso_code', 'unknown')
         server_asn = (ipasn.get(ipv4) or {}).get('autonomous_system_organization', 'unknown')
         res = "<table><tr><th>Domain</th><th>IP</th><th>Country</th><th>ASN</th><th>Ping (ms)</th><th>TCP ping (ms)</th></tr>"
@@ -224,7 +224,7 @@ class Actions(FlaskView):
             print(d)
             tcp_ping = hiddify.is_domain_reality_friendly(d)
             if tcp_ping:
-                dip = ip.get_domain_ip(d)
+                dip = hutils.ip.get_domain_ip(d)
                 dip_country = (ipcountry.get(dip) or {}).get('country', {}).get('iso_code', 'unknown')
                 if dip_country == "IR":
                     continue

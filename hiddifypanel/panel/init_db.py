@@ -282,7 +282,7 @@ def _v20():
         if direct_domain:
             direct_host = direct_domain.domain
         else:
-            direct_host = hutils.get_ip(hutils.AF_INET)
+            direct_host = hutils.ip.get_ip(hutils.AF_INET)
 
         for fd in fake_domains:
             if not Domain.query.filter(Domain.domain == fd).first():
@@ -320,7 +320,7 @@ def _v17():
 
 def _v1():
     next10year = datetime.date.today() + relativedelta.relativedelta(years=6)
-    external_ip = hutils.get_ip(hutils.AF_INET)
+    external_ip = hutils.get_ip.ip(hutils.AF_INET)
     rnd_domains = get_random_domains(5)
 
     data = [

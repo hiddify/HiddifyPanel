@@ -8,11 +8,10 @@ from hiddifypanel.cache import cache
 from hiddifypanel.models import *
 from hiddifypanel.panel.database import db
 from hiddifypanel.hutils.utils import *
-from hiddifypanel.hutils import 
 from hiddifypanel.Events import domain_changed
 from wtforms.validators import Regexp, ValidationError
 from datetime import datetime, timedelta
-from hiddifypanel.hutils import ip
+from hiddifypanel import hutils
 
 to_gig_d = 1000*1000*1000
 
@@ -21,7 +20,7 @@ def add_temporary_access():
     random_port = random.randint(30000, 50000)
     exec_command(
         f'sudo /opt/hiddify-manager/hiddify-panel/temporary_access.sh {random_port} &')
-    temp_admin_link = f"http://{ip.get_ip(ip.AF_INET)}:{random_port}{get_admin_path()}"
+    temp_admin_link = f"http://{hutils.ip.get_ip(hutils.ip.AF_INET)}:{random_port}{get_admin_path()}"
     g.temp_admin_link = temp_admin_link
 
 
@@ -191,9 +190,9 @@ def check_connection_for_domain(domain):
             return res['status'] == 200
         except:
             try:
-                print(f"http://{ip.get_domain_ip(domain)}/{path}")
+                print(f"http://{hutils.ip.get_domain_ip(domain)}/{path}")
                 res = requests.get(
-                    f"http://{ip.get_domain_ip(domain)}/{path}", verify=False, timeout=10).json()
+                    f"http://{hutils.ip.get_domain_ip(domain)}/{path}", verify=False, timeout=10).json()
                 return res['status'] == 200
             except:
                 return False
@@ -237,7 +236,7 @@ def validate_domain_exist(form, field):
     domain = field.data
     if not domain:
         return
-    dip = ip.get_domain_ip(domain)
+    dip = hutils.ip.get_domain_ip(domain)
     if dip == None:
         raise ValidationError(
             _("Domain can not be resolved! there is a problem in your domain"))
@@ -555,9 +554,9 @@ def is_domain_reality_friendly(domain):
 
 
 def debug_flash_if_not_in_the_same_asn(domain):
-    from hiddifypanel.panel.clean_ip import ipasn
-    ipv4 = ip.get_ip(ip.AF_INET)
-    dip = ip.get_domain_ip(domain)
+    from hiddifypanel.hutils.auto_ip_selector import ipasn
+    ipv4 = hutils.ip.get_ip(hutils.ip.AF_INET)
+    dip = hutils.ip.get_domain_ip(domain)
     try:
         if ipasn:
             asn_ipv4 = ipasn.get(ipv4)
@@ -714,14 +713,14 @@ def is_ssh_password_authentication_enabled():
     return True
 
 @cache.cache(ttl=600)
-def get_direct_host_or_ip(prefer_version:Union[socket.AF_INET,socket.AF_INET6]):
+def get_direct_host_or_ip(prefer_version:Union[hutils.ip.AF_INET,hutils.ip.AF_INET6]):
     direct = Domain.query.filter(Domain.mode == DomainType.direct, Domain.sub_link_only == False).first()
     if not (direct):
         direct = Domain.query.filter(Domain.mode == DomainType.direct).first()
     if direct:
         direct = direct.domain
     else:
-        direct = ip.get_ip(prefer_version)
+        direct = hutils.ip.get_ip(prefer_version)
     if not direct:
-        direct = ip.get_ip(socket.AF_INET if prefer_version == socket.AF_INET6 else socket.AF_INET6)
+        direct = hutils.ip.get_ip(socket.AF_INET if prefer_version == socket.AF_INET6 else socket.AF_INET6)
     return direct

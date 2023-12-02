@@ -66,7 +66,7 @@ def all_configs():
 
     path = f'/{hconfig(ConfigEnum.proxy_path)}/{get_super_admin_secret()}/admin/'
 
-    server_ip = hutils.get_ip(hutils.AF_INET)
+    server_ip = hutils.ip.get_ip(hutils.ip.AF_INET)
     configs['admin_path'] = path
     configs['panel_links'] = []
     configs['panel_links'].append(f"http://{server_ip}{path}")
@@ -93,7 +93,7 @@ def admin_links():
     proxy_path = hconfig(ConfigEnum.proxy_path)
 
     admin_secret = get_super_admin_secret()
-    server_ip = hutils.get_ip(hutils.AF_INET)
+    server_ip = hutils.ip.get_ip(hutils.ip.AF_INET)
     admin_links = f"Not Secure (do not use it- only if others not work):\n   http://{server_ip}/{proxy_path}/{admin_secret}/admin/\n"
 
     domains = get_panel_domains()
