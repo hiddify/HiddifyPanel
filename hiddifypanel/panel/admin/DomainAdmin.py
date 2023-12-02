@@ -1,3 +1,4 @@
+import ipaddress
 from hiddifypanel.models import *
 import re
 from hiddifypanel.panel.database import db
@@ -10,6 +11,7 @@ from wtforms.validators import Regexp, ValidationError
 from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify, cf_api, custom_widgets
 from .adminlte import AdminLTEModelView
+from hiddifypanel import hutils
 
 
 # Define a custom field type for the related domains
@@ -92,8 +94,8 @@ class DomainAdmin(AdminLTEModelView):
         return Markup(f'<div class="btn-group"><a href="{admin_link}" class="btn btn-xs btn-secondary">'+_("admin link")+f'</a><a href="{admin_link}" class="btn btn-xs btn-info ltr" target="_blank">{model.domain}</a></div>')
 
     def _domain_ip(view, context, model, name):
-        dip = hiddify.get_domain_ip(model.domain)
-        myip = hiddify.get_ip(4)
+        dip = hutils.ip.get_domain_ip(model.domain)
+        myip = hutils.ip.get_ip(4)
         if myip == dip and model.mode == DomainType.direct:
             badge_type = ''
         elif dip and model.mode != DomainType.direct and myip != dip:
@@ -141,13 +143,11 @@ class DomainAdmin(AdminLTEModelView):
             if td.servernames and (model.domain in td.servernames.split(",")):
                 raise ValidationError(_("You have used this domain in: ")+_(f"config.reality_server_names.label")+" in " + td.domain)
 
-        myip = hiddify.get_ip(4)
-        myipv6 = hiddify.get_ip(6)
-        ipv4_list = hiddify.get_interface_public_ip(4)
-        ipv6_list = hiddify.get_interface_public_ip(6)
-
-        ipv4_list.append(myip)
-        ipv6_list.append(myipv6)
+        ipv4_list = hutils.ip.get_ips(4)
+        ipv6_list = hutils.ip.get_ips(6)
+       
+        if not ipv4_list and not ipv6_list:
+            raise ValidationError(_("Couldn't find your ip addresses"))
 
         if "*" in model.domain and model.mode not in [DomainType.cdn, DomainType.auto_cdn_ip]:
             raise ValidationError(_("Domain can not be resolved! there is a problem in your domain"))
@@ -156,9 +156,9 @@ class DomainAdmin(AdminLTEModelView):
         if hconfig(ConfigEnum.cloudflare) and model.mode != DomainType.fake:
             try:
                 proxied = model.mode in [DomainType.cdn, DomainType.auto_cdn_ip]
-                cf_api.add_or_update_domain(model.domain, myip, "A", proxied=proxied)
-                if myipv6:
-                    cf_api.add_or_update_domain(model.domain, myipv6, "AAAA", proxied=proxied)
+                cf_api.add_or_update_domain(model.domain, ipv4_list[0], "A", proxied=proxied)
+                if ipv6_list:
+                    cf_api.add_or_update_domain(model.domain, ipv6_list[0], "AAAA", proxied=proxied)
 
                 skip_check = True
             except Exception as e:
@@ -169,7 +169,7 @@ class DomainAdmin(AdminLTEModelView):
             flash(__("Using alias with special charachters may cause problem in some clients like FairVPN."), 'warning')
         #     raise ValidationError(_("You have to add your cloudflare api key to use this feature: "))
 
-        dip = hiddify.get_domain_ip(model.domain)
+        dip = hutils.ip.get_domain_ip(model.domain)
         if model.sub_link_only:
             if dip == None:
                 raise ValidationError(_("Domain can not be resolved! there is a problem in your domain"))
@@ -180,13 +180,15 @@ class DomainAdmin(AdminLTEModelView):
             domain_ip_is_same_as_panel = False
             domain_ip_is_same_as_panel |= dip in ipv4_list
             for ipv6 in ipv6_list:
-                domain_ip_is_same_as_panel |= hiddify.are_ipv6_addresses_equal(dip, ipv6)
+                domain_ip_is_same_as_panel |= ipaddress.ip_address(dip) == ipaddress.ip_address(ipv6)
 
             if model.mode == DomainType.direct and not domain_ip_is_same_as_panel:
-                raise ValidationError(_("Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode", server_ip=myip, domain_ip=dip))
+                flash(__(f"Domain IP={dip} is not matched with your ip={ipv4_list.join(', ')} which is required in direct mode"),'warning')
+                #raise ValidationError(_("Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode", server_ip=myip, domain_ip=dip))
 
             if domain_ip_is_same_as_panel and model.mode in [DomainType.cdn, DomainType.relay, DomainType.fake, DomainType.auto_cdn_ip]:
-                raise ValidationError(_("In CDN mode, Domain IP=%(domain_ip)s should be different to your ip=%(server_ip)s", server_ip=myip, domain_ip=dip))
+                flash(__(f"In CDN mode, Domain IP={dip} should be different to your ip={ipv4_list.join(', ')}",'warning'))
+                #raise ValidationError(_("In CDN mode, Domain IP=%(domain_ip)s should be different to your ip=%(server_ip)s", server_ip=myip, domain_ip=dip))
 
             # if model.mode in [DomainType.ss_faketls, DomainType.telegram_faketls]:
             #     if len(Domain.query.filter(Domain.mode==model.mode and Domain.id!=model.id).all())>0:
@@ -196,7 +198,7 @@ class DomainAdmin(AdminLTEModelView):
             raise ValidationError(f"Specifying CDN IP is only valid for CDN mode")
 
         if model.mode == DomainType.fake and not model.cdn_ip:
-            model.cdn_ip = myip
+            model.cdn_ip = ipv4_list[0]
 
         # if model.mode==DomainType.fake and model.cdn_ip!=myip:
         #     raise ValidationError(f"Specifying CDN IP is only valid for CDN mode")
@@ -240,9 +242,9 @@ class DomainAdmin(AdminLTEModelView):
                     raise ValidationError(_("REALITY Fallback domain is not compaitble with server names!")+" "+d+" != "+model.domain)
 
         if (model.cdn_ip):
-            from hiddifypanel.panel import clean_ip
+            from hiddifypanel.hutils import auto_ip_selector
             try:
-                clean_ip.get_clean_ip(model.cdn_ip)
+                auto_ip_selector.get_clean_ip(str(model.cdn_ip))
             except:
                 raise ValidationError(_("Error in auto cdn format"))
 

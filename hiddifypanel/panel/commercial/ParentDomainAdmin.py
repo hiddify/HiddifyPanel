@@ -1,4 +1,5 @@
 from flask_admin.contrib import sqla
+from hiddifypanel import hutils
 from hiddifypanel.panel.database import db
 from wtforms.validators import Regexp
 from hiddifypanel.models import *
@@ -7,7 +8,7 @@ from hiddifypanel.panel.admin.adminlte import AdminLTEModelView
 from flask_babelex import gettext as __
 from flask_babelex import lazy_gettext as _
 from hiddifypanel.panel import hiddify
-from flask import Markup
+from flask import Markup, g
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_admin import Admin
@@ -65,8 +66,8 @@ class ParentDomainAdmin(AdminLTEModelView):
         return Markup(f'<div class="btn-group"><a href="{admin_link}" class="btn btn-xs btn-secondary">'+_("admin link")+f'</a><a href="{admin_link}" class="btn btn-xs btn-info ltr" target="_blank">{model.domain}</a></div>')
 
     def _domain_ip(view, context, model, name):
-        dip = hiddify.get_domain_ip(model.domain)
-        myip = hiddify.get_ip(4)
+        dip = hutils.ip.get_domain_ip(model.domain)
+        myip = hutils.ip.get_ip(4)
         if myip == dip and model.mode == DomainType.direct:
             badge_type = ''
         elif dip and model.mode != DomainType.direct and myip != dip:
@@ -101,7 +102,7 @@ class ParentDomainAdmin(AdminLTEModelView):
     def on_model_change(self, form, model, is_created):
         model.domain = model.domain.lower()
 
-        dip = hiddify.get_domain_ip(model.domain)
+        dip = hutils.ip.get_domain_ip(model.domain)
         if dip == None:
             raise ValidationError(
                 _("Domain can not be resolved! there is a problem in your domain"))
