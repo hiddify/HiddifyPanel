@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPT\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-27 21:58+0100\n"
-"PO-Revision-Date: 2023-11-27 03:15-0600\n"
+"POT-Creation-Date: 2023-12-03 20:50+0100\n"
+"PO-Revision-Date: 2023-11-27 14:59-0600\n"
 "Last-Translator: lymanrudni\n"
 "Language: pt\n"
 "Language-Team: Portuguese\n"
@@ -14,26 +14,26 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.12.1\n"
 
-# | msgid "This Domain does not exist in the Panel !"
-#: hiddifypanel/models/domain.py:159 hiddifypanel/panel/user/user.py:418
-msgid "This domain does not exist in the panel!"
-msgstr "Este Domínio não existe no Painel!"
-
 # | msgid ""
 # | "Error In Auto CDN IP! It Can Not Be Find, Please Contact Admin"
-#: hiddifypanel/panel/clean_ip.py:130
+#: hiddifypanel/hutils/auto_ip_selector.py:131
 #, fuzzy
 msgid "Error! auto cdn ip can not be find, please contact admin."
 msgstr ""
 "Erro no Auto CDN IP! Não pode ser encontrado, entre em contato com o "
 "administrador"
 
+# | msgid "This Domain does not exist in the Panel !"
+#: hiddifypanel/models/domain.py:160 hiddifypanel/panel/user/user.py:419
+msgid "This domain does not exist in the panel!"
+msgstr "Este Domínio não existe no Painel!"
+
 #: hiddifypanel/panel/hiddify.py:83
 msgid "Access Denied"
 msgstr "Acesso negado"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/panel/hiddify.py:208
+#: hiddifypanel/panel/hiddify.py:150
 #, fuzzy
 msgid "admin.config.apply_configs"
 msgstr "Aplicar configurações"
@@ -42,7 +42,7 @@ msgstr "Aplicar configurações"
 # | "Configs have been changed successfully. Click %(link)s to apply the
 # configs."
 # | " It may take 2 minutes to apply"
-#: hiddifypanel/panel/hiddify.py:209
+#: hiddifypanel/panel/hiddify.py:151
 #, fuzzy
 msgid "config.validation-success"
 msgstr ""
@@ -50,7 +50,7 @@ msgstr ""
 "aplicar as configurações. Pode levar 2 minutos para aplicar"
 
 # | msgid " ✅ Configs have been changed successfully"
-#: hiddifypanel/panel/hiddify.py:211
+#: hiddifypanel/panel/hiddify.py:153
 #, fuzzy
 msgid "config.validation-success-no-reset"
 msgstr "✅ As configurações foram alteradas com sucesso"
@@ -59,13 +59,13 @@ msgstr "✅ As configurações foram alteradas com sucesso"
 # | "Domain can not be resolved! There is a problem in your domain. Please
 # check "
 # | "your Domain configurations."
-#: hiddifypanel/panel/admin/ChildAdmin.py:106
+#: hiddifypanel/panel/admin/ChildAdmin.py:107
 #: hiddifypanel/panel/admin/DomainAdmin.py:153
 #: hiddifypanel/panel/admin/DomainAdmin.py:175
 #: hiddifypanel/panel/admin/DomainAdmin.py:178
-#: hiddifypanel/panel/admin/QuickSetup.py:127
-#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:107
-#: hiddifypanel/panel/hiddify.py:300
+#: hiddifypanel/panel/admin/QuickSetup.py:128
+#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:108
+#: hiddifypanel/panel/hiddify.py:242
 #, fuzzy
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr ""
@@ -73,7 +73,7 @@ msgstr ""
 "Verifique as configurações do seu Domínio."
 
 # | msgid "Last Day"
-#: hiddifypanel/panel/hiddify.py:332
+#: hiddifypanel/panel/hiddify.py:274
 #, fuzzy
 msgid "0 - Last day"
 msgstr "Último dia"
@@ -82,7 +82,7 @@ msgstr "Último dia"
 # | "Selected Domain for REALITY is not in the same ASN. To better use of the
 # "
 # | "Protocol, it is better to find a Domain in the same ASN"
-#: hiddifypanel/panel/hiddify.py:625
+#: hiddifypanel/panel/hiddify.py:567
 msgid ""
 "selected domain for REALITY is not in the same ASN. To better use of the "
 "protocol, it is better to find a domain in the same ASN."
@@ -105,7 +105,7 @@ msgstr "Package encerrado"
 # | "⚠️ Your Domains Changed. please do not forget to copy Admin links,
 # otherwise"
 # | " you can not access to the panel anymore"
-#: hiddifypanel/panel/admin/Actions.py:108
+#: hiddifypanel/panel/admin/Actions.py:109
 #, fuzzy
 msgid ""
 "Your domains changed. Please do not forget to copy admin links, otherwise"
@@ -118,7 +118,7 @@ msgstr ""
 # | "⚠️ Please wait about 5 minutes to make sure everything is updated. during
 # "
 # | "this time, please copy and save your Proxy links which are:"
-#: hiddifypanel/panel/admin/Actions.py:135
+#: hiddifypanel/panel/admin/Actions.py:136
 #, fuzzy
 msgid ""
 "Success! Please wait around 4 minutes to make sure everything is updated."
@@ -128,7 +128,7 @@ msgstr ""
 "durante esse período, copie e salve seus links de proxy, que são:"
 
 # | msgid "📑 See the log in the bellow screen"
-#: hiddifypanel/panel/admin/Actions.py:174
+#: hiddifypanel/panel/admin/Actions.py:175
 #, fuzzy
 msgid "see the log in the bellow screen"
 msgstr "📑 Veja o log na tela abaixo"
@@ -136,7 +136,7 @@ msgstr "📑 Veja o log na tela abaixo"
 # | msgid ""
 # | "✔️ Success! Please Wait around 5 minutes to make sure everything is
 # updated"
-#: hiddifypanel/panel/admin/Actions.py:201
+#: hiddifypanel/panel/admin/Actions.py:202
 #, fuzzy
 msgid "Success! Please wait around 5 minutes to make sure everything is updated."
 msgstr ""
@@ -294,8 +294,8 @@ msgstr ""
 #: hiddifypanel/panel/admin/Backup.py:88
 #: hiddifypanel/panel/admin/ProxyAdmin.py:98
 #: hiddifypanel/panel/admin/ProxyAdmin.py:129
-#: hiddifypanel/panel/admin/QuickSetup.py:85
-#: hiddifypanel/panel/admin/QuickSetup.py:118
+#: hiddifypanel/panel/admin/QuickSetup.py:86
+#: hiddifypanel/panel/admin/QuickSetup.py:119
 #: hiddifypanel/panel/admin/SettingAdmin.py:270
 #, fuzzy
 msgid "Submit"
@@ -309,10 +309,10 @@ msgstr "Enviar"
 # "href=\"https://github.com/hiddify/hiddify-config/wiki/راهنمای-تنظیم-دامنه-و-"
 # | "نهایی-کردن-نصب#آموزش-ساخت-زیردامنه\"> Help</a> to learn how to create a "
 # | "subdomain."
-#: hiddifypanel/panel/admin/ChildAdmin.py:32
-#: hiddifypanel/panel/admin/DomainAdmin.py:38
-#: hiddifypanel/panel/admin/QuickSetup.py:110
-#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:32
+#: hiddifypanel/panel/admin/ChildAdmin.py:33
+#: hiddifypanel/panel/admin/DomainAdmin.py:40
+#: hiddifypanel/panel/admin/QuickSetup.py:111
+#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:33
 #: hiddifypanel/templates/flaskadmin-layout.html:101
 #: hiddifypanel/templates/flaskadmin-layout.html:137
 #, fuzzy
@@ -333,9 +333,9 @@ msgstr ""
 # since the use of this IP is not for proxy and it is a simple website, this
 # domain and IP will never be blocked and your users can easily update new
 # profiles."
-#: hiddifypanel/panel/admin/ChildAdmin.py:33
-#: hiddifypanel/panel/admin/DomainAdmin.py:41
-#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:34
+#: hiddifypanel/panel/admin/ChildAdmin.py:34
+#: hiddifypanel/panel/admin/DomainAdmin.py:43
+#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:35
 #, fuzzy
 msgid ""
 "You can select the configs with which domains show be shown in the user "
@@ -352,10 +352,10 @@ msgstr ""
 "atualizar novos perfis."
 
 # | msgid "Domain"
-#: hiddifypanel/panel/admin/ChildAdmin.py:53
-#: hiddifypanel/panel/admin/DomainAdmin.py:72
-#: hiddifypanel/panel/admin/QuickSetup.py:110
-#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:54
+#: hiddifypanel/panel/admin/ChildAdmin.py:54
+#: hiddifypanel/panel/admin/DomainAdmin.py:74
+#: hiddifypanel/panel/admin/QuickSetup.py:111
+#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:55
 #: hiddifypanel/templates/flaskadmin-layout.html:100
 #: hiddifypanel/templates/flaskadmin-layout.html:136
 #, fuzzy
@@ -363,24 +363,24 @@ msgid "domain.domain"
 msgstr "Domínio"
 
 # | msgid "Show Configs of Domains"
-#: hiddifypanel/panel/admin/ChildAdmin.py:56
 #: hiddifypanel/panel/admin/ChildAdmin.py:57
-#: hiddifypanel/panel/admin/DomainAdmin.py:78
-#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:57
+#: hiddifypanel/panel/admin/ChildAdmin.py:58
+#: hiddifypanel/panel/admin/DomainAdmin.py:80
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:58
+#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:59
 #, fuzzy
 msgid "Show Domains"
 msgstr "Mostrar configurações de domínios"
 
 # | msgid "Admin"
-#: hiddifypanel/panel/admin/ChildAdmin.py:64
-#: hiddifypanel/panel/admin/DomainAdmin.py:92
-#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:65
+#: hiddifypanel/panel/admin/ChildAdmin.py:65
+#: hiddifypanel/panel/admin/DomainAdmin.py:94
+#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:66
 msgid "admin link"
 msgstr "Link do administrador"
 
 # | msgid "Domain is not correctly mapped to this Server!"
-#: hiddifypanel/panel/admin/ChildAdmin.py:109
+#: hiddifypanel/panel/admin/ChildAdmin.py:110
 #, fuzzy
 msgid "Domain is not correctly mapped to this server!"
 msgstr "O domínio não está mapeado corretamente para este servidor!"
@@ -503,7 +503,7 @@ msgstr "Child removido"
 # | "🆎 <b>Fake Site:</b> Select this mode if you want to use a fake Domain
 # (e.g., Soft98.ir) to bypass SNI whitelist Proxy. (Not Recommended)\n"
 # | "<br>"
-#: hiddifypanel/panel/admin/DomainAdmin.py:39
+#: hiddifypanel/panel/admin/DomainAdmin.py:41
 #, fuzzy
 msgid ""
 "Direct mode means you want to use your server directly (for usual use), "
@@ -533,7 +533,7 @@ msgstr ""
 # you put a range of IPs The IP will be randomly selected from that range.\n"
 # | "Use <a target=\"_blank\" href=\"https://ip-format.hiddify.com\">this
 # link</a> to set personal IPs."
-#: hiddifypanel/panel/admin/DomainAdmin.py:40
+#: hiddifypanel/panel/admin/DomainAdmin.py:42
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
@@ -550,14 +550,14 @@ msgstr ""
 "link</a> para definir IPs pessoais."
 
 # | msgid "The name that will be shown in the Configs for this Domain."
-#: hiddifypanel/panel/admin/DomainAdmin.py:42
-#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:33
+#: hiddifypanel/panel/admin/DomainAdmin.py:44
+#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:34
 #, fuzzy
 msgid "The name shown in the configs for this domain."
 msgstr "O nome que será mostrado nas Configs deste Domínio."
 
 # | msgid "You can add several Sever Names in comma seperated format"
-#: hiddifypanel/panel/admin/DomainAdmin.py:43
+#: hiddifypanel/panel/admin/DomainAdmin.py:45
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 #: hiddifypanel/templates/flaskadmin-layout.html:120
@@ -568,7 +568,7 @@ msgstr ""
 
 # | msgid ""
 # | "This can be used for giving your Users a permanent non Blockable Links."
-#: hiddifypanel/panel/admin/DomainAdmin.py:44
+#: hiddifypanel/panel/admin/DomainAdmin.py:46
 #, fuzzy
 msgid "This can be used for giving your users a permanent non blockable links."
 msgstr ""
@@ -576,30 +576,30 @@ msgstr ""
 " bloqueáveis."
 
 # | msgid "ℹ️ gRPC is a H2 based Protocol. Maybe it is faster for you!"
-#: hiddifypanel/panel/admin/DomainAdmin.py:45
+#: hiddifypanel/panel/admin/DomainAdmin.py:47
 #, fuzzy
 msgid "gRPC is a H2 based protocol. Maybe it is faster for you!"
 msgstr "ℹ️ gRPC é um protocolo baseado em H2. Talvez seja mais rápido para você!"
 
 # | msgid "Invalid REALITY Hostnames"
-#: hiddifypanel/panel/admin/DomainAdmin.py:63
+#: hiddifypanel/panel/admin/DomainAdmin.py:65
 msgid "Invalid REALITY hostnames"
 msgstr "Nomes de host REALITY inválidos"
 
 # | msgid "🌍 Use Only for Subscription Link"
-#: hiddifypanel/panel/admin/DomainAdmin.py:73
+#: hiddifypanel/panel/admin/DomainAdmin.py:75
 #, fuzzy
 msgid "Only for sublink?"
 msgstr "🌍 Use apenas para link de assinatura"
 
 # | msgid "Mode"
-#: hiddifypanel/panel/admin/DomainAdmin.py:74
+#: hiddifypanel/panel/admin/DomainAdmin.py:76
 #, fuzzy
 msgid "domain.mode"
 msgstr "Modo"
 
 # | msgid "🔂 Force Config to Use Following IPs"
-#: hiddifypanel/panel/admin/DomainAdmin.py:75
+#: hiddifypanel/panel/admin/DomainAdmin.py:77
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
@@ -607,14 +607,14 @@ msgid "config.cdn_forced_host.label"
 msgstr "Forçar a configuração do CDN para usar os seguintes IPs"
 
 # | msgid "IP"
-#: hiddifypanel/panel/admin/DomainAdmin.py:76
+#: hiddifypanel/panel/admin/DomainAdmin.py:78
 #, fuzzy
 msgid "domain.ip"
 msgstr "IP"
 
 # | msgid "🌎 Reality Server Names"
-#: hiddifypanel/panel/admin/DomainAdmin.py:77
-#: hiddifypanel/panel/admin/DomainAdmin.py:142
+#: hiddifypanel/panel/admin/DomainAdmin.py:79
+#: hiddifypanel/panel/admin/DomainAdmin.py:144
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 #: hiddifypanel/templates/flaskadmin-layout.html:119
@@ -622,70 +622,49 @@ msgstr "IP"
 msgid "config.reality_server_names.label"
 msgstr "🌎 Nomes de servidores"
 
-#: hiddifypanel/panel/admin/DomainAdmin.py:79
-#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:56
+#: hiddifypanel/panel/admin/DomainAdmin.py:81
+#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:57
 #, fuzzy
 msgid "Alias"
 msgstr "Pseudônimo"
 
 # | msgid "➿ gRPC"
-#: hiddifypanel/panel/admin/DomainAdmin.py:80
+#: hiddifypanel/panel/admin/DomainAdmin.py:82
 #, fuzzy
 msgid "gRPC"
 msgstr "➿ gRPC"
 
-#: hiddifypanel/panel/admin/DomainAdmin.py:110
+#: hiddifypanel/panel/admin/DomainAdmin.py:112
 #: hiddifypanel/panel/admin/SettingAdmin.py:178
 #, fuzzy
 msgid "All"
 msgstr "Todos"
 
 # | msgid "You have already used this Domain in: "
-#: hiddifypanel/panel/admin/DomainAdmin.py:137
-#: hiddifypanel/panel/admin/DomainAdmin.py:142
+#: hiddifypanel/panel/admin/DomainAdmin.py:139
+#: hiddifypanel/panel/admin/DomainAdmin.py:144
 #, fuzzy
 msgid "You have used this domain in: "
 msgstr "Já utilizou este Domínio em:"
 
-# | msgid ""
-# | "Domain IP = %(domain_ip)s is not matched with your IP = %(server_ip)s
-# which "
-# | "is required in Direct Mode"
-#: hiddifypanel/panel/admin/DomainAdmin.py:186
-#, fuzzy, python-format
-msgid ""
-"Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which "
-"is required in direct mode"
+#: hiddifypanel/panel/admin/DomainAdmin.py:150
+msgid "Couldn't find your ip addresses"
 msgstr ""
-"Domain IP = %(domain_ip)s não corresponde ao seu IP = %(server_ip)s que é"
-" necessário no modo direto"
-
-# | msgid ""
-# | "In CDN Mode, Domain IP =%(domain_ip)s should be different to your IP "
-# | "=%(server_ip)s"
-#: hiddifypanel/panel/admin/DomainAdmin.py:189
-#, fuzzy, python-format
-msgid ""
-"In CDN mode, Domain IP=%(domain_ip)s should be different to your "
-"ip=%(server_ip)s"
-msgstr ""
-"No modo CDN, o IP do domínio =%(domain_ip)s deve ser diferente do seu IP "
-"=%(server_ip)s"
 
 # | msgid "Domain is Not REALITY Friendly!"
-#: hiddifypanel/panel/admin/DomainAdmin.py:219
-#: hiddifypanel/panel/admin/DomainAdmin.py:234
+#: hiddifypanel/panel/admin/DomainAdmin.py:221
+#: hiddifypanel/panel/admin/DomainAdmin.py:236
 msgid "Domain is not REALITY friendly!"
 msgstr "O domínio não é compatível com Reality!"
 
 # | msgid "REALITY Fallback Domain is not compaitble with Server names!"
-#: hiddifypanel/panel/admin/DomainAdmin.py:240
+#: hiddifypanel/panel/admin/DomainAdmin.py:242
 #, fuzzy
 msgid "REALITY Fallback domain is not compaitble with server names!"
 msgstr "REALITY Fallback Domain não é compatível com nomes de servidores!"
 
 # | msgid "⚠️ Error in Auto CDN Format"
-#: hiddifypanel/panel/admin/DomainAdmin.py:247
+#: hiddifypanel/panel/admin/DomainAdmin.py:249
 #, fuzzy
 msgid "Error in auto cdn format"
 msgstr "Erro no formato CDN automático"
@@ -698,7 +677,7 @@ msgstr "Erro! Fronting de domínio não definido."
 
 # | msgid "There is an error in one of the fields."
 #: hiddifypanel/panel/admin/ProxyAdmin.py:72
-#: hiddifypanel/panel/admin/QuickSetup.py:74
+#: hiddifypanel/panel/admin/QuickSetup.py:75
 #: hiddifypanel/panel/admin/SettingAdmin.py:109
 #, fuzzy
 msgid "config.validation-error"
@@ -713,19 +692,19 @@ msgid "config.domain_fronting.label"
 msgstr "Frente de domínio"
 
 # | msgid "Changing the Language was Successful."
-#: hiddifypanel/panel/admin/QuickSetup.py:46
+#: hiddifypanel/panel/admin/QuickSetup.py:47
 #, fuzzy
 msgid "quicksetup.setlang.success"
 msgstr "A alteração do idioma foi bem-sucedida."
 
 # | msgid "An error occurred while changing language."
-#: hiddifypanel/panel/admin/QuickSetup.py:48
+#: hiddifypanel/panel/admin/QuickSetup.py:49
 #, fuzzy
 msgid "quicksetup.setlang.error"
 msgstr "Ocorreu um erro ao alterar o idioma."
 
 # | msgid "🗺️ Admin Panel Language"
-#: hiddifypanel/panel/admin/QuickSetup.py:80
+#: hiddifypanel/panel/admin/QuickSetup.py:81
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
@@ -733,40 +712,40 @@ msgid "config.admin_lang.label"
 msgstr "Idioma do Painel Administrativo"
 
 # | msgid "🇺🇸 English انگلیسی 英语"
-#: hiddifypanel/panel/admin/QuickSetup.py:80
+#: hiddifypanel/panel/admin/QuickSetup.py:81
 #: hiddifypanel/panel/admin/SettingAdmin.py:182
 #, fuzzy
 msgid "lang.en"
 msgstr "🇺🇸 Inglês انگلیسی 英语"
 
 # | msgid "🇮🇷 Persian فارسی 波斯语"
-#: hiddifypanel/panel/admin/QuickSetup.py:80
+#: hiddifypanel/panel/admin/QuickSetup.py:81
 #: hiddifypanel/panel/admin/SettingAdmin.py:182
 #, fuzzy
 msgid "lang.fa"
 msgstr "🇮🇷 Persian فارسی 波斯语"
 
 # | msgid "🇵🇹 Portuguese پرتغالی 葡萄牙語"
-#: hiddifypanel/panel/admin/QuickSetup.py:80
+#: hiddifypanel/panel/admin/QuickSetup.py:81
 #: hiddifypanel/panel/admin/SettingAdmin.py:183
 #, fuzzy
 msgid "lang.pt"
 msgstr "🇵🇹 Portugal پرتغالی 葡萄牙"
 
 # | msgid "🇨🇳 Chinese چینی 简体中文"
-#: hiddifypanel/panel/admin/QuickSetup.py:81
+#: hiddifypanel/panel/admin/QuickSetup.py:82
 #: hiddifypanel/panel/admin/SettingAdmin.py:182
 msgid "lang.zh"
 msgstr "🇨🇳 Chinese چینی 简体中文"
 
 # | msgid "🇷🇺 Russian روسی Русский"
-#: hiddifypanel/panel/admin/QuickSetup.py:81
+#: hiddifypanel/panel/admin/QuickSetup.py:82
 #: hiddifypanel/panel/admin/SettingAdmin.py:183
 msgid "lang.ru"
 msgstr "🇷🇺 Russian روسی Русский"
 
 # | msgid "Choose Language For Admin Area"
-#: hiddifypanel/panel/admin/QuickSetup.py:81
+#: hiddifypanel/panel/admin/QuickSetup.py:82
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
@@ -774,21 +753,21 @@ msgid "config.admin_lang.description"
 msgstr "Escolha o idioma para a área administrativa"
 
 # | msgid "🌍 Country"
-#: hiddifypanel/panel/admin/QuickSetup.py:83
+#: hiddifypanel/panel/admin/QuickSetup.py:84
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.country.label"
 msgstr "Country"
 
 # | msgid "🇮🇷 Iran"
-#: hiddifypanel/panel/admin/QuickSetup.py:83
+#: hiddifypanel/panel/admin/QuickSetup.py:84
 #: hiddifypanel/panel/admin/SettingAdmin.py:185
 #, fuzzy
 msgid "Iran"
 msgstr "🇮🇷 Irã"
 
 # | msgid "🇨🇳 China"
-#: hiddifypanel/panel/admin/QuickSetup.py:83
+#: hiddifypanel/panel/admin/QuickSetup.py:84
 #: hiddifypanel/panel/admin/SettingAdmin.py:185
 #, fuzzy
 msgid "China"
@@ -797,7 +776,7 @@ msgstr "🇨🇳 China"
 # | msgid ""
 # | "It applies the appropriate settings for each country according to the "
 # | "filtering conditions of that country"
-#: hiddifypanel/panel/admin/QuickSetup.py:84
+#: hiddifypanel/panel/admin/QuickSetup.py:85
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
@@ -807,8 +786,8 @@ msgstr ""
 "condições de filtragem desse país"
 
 # | msgid "Error! Invalid Domain.  The Domain Format is www.google.com"
-#: hiddifypanel/panel/admin/QuickSetup.py:104
-#: hiddifypanel/panel/admin/QuickSetup.py:117
+#: hiddifypanel/panel/admin/QuickSetup.py:105
+#: hiddifypanel/panel/admin/QuickSetup.py:118
 #: hiddifypanel/panel/admin/SettingAdmin.py:211
 #: hiddifypanel/panel/admin/SettingAdmin.py:214
 #, fuzzy
@@ -816,8 +795,8 @@ msgid "config.Invalid domain"
 msgstr "Erro! Domínio inválido. O formato do domínio é www.google.com"
 
 # | msgid "Domain is exist in domains section. Use another Domain"
-#: hiddifypanel/panel/admin/QuickSetup.py:106
-#: hiddifypanel/panel/admin/QuickSetup.py:108
+#: hiddifypanel/panel/admin/QuickSetup.py:107
+#: hiddifypanel/panel/admin/QuickSetup.py:109
 #: hiddifypanel/panel/admin/SettingAdmin.py:218
 #: hiddifypanel/panel/admin/SettingAdmin.py:220
 #, fuzzy
@@ -825,7 +804,7 @@ msgid "config.Domain already used"
 msgstr "O domínio existe na seção de domínios. Usar outro domínio"
 
 # | msgid "⛔️ Block Domestic Sites"
-#: hiddifypanel/panel/admin/QuickSetup.py:114
+#: hiddifypanel/panel/admin/QuickSetup.py:115
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
@@ -833,7 +812,7 @@ msgid "config.block_iran_sites.label"
 msgstr "⛔️ Bloquear sites iranianos"
 
 # | msgid "Block domestic Sites to prevent detection by the government"
-#: hiddifypanel/panel/admin/QuickSetup.py:114
+#: hiddifypanel/panel/admin/QuickSetup.py:115
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
@@ -843,7 +822,7 @@ msgstr ""
 "(Experimental: se houver algum problema, desative-o e informe-nos.)"
 
 # | msgid "📺 Decoy Site"
-#: hiddifypanel/panel/admin/QuickSetup.py:116
+#: hiddifypanel/panel/admin/QuickSetup.py:117
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
@@ -858,7 +837,7 @@ msgstr "🔀 Site Decoy"
 # | "⛔ Be sure to check the site and make sure that it is the right site,
 # otherwise you may receive a phishing warning.<br>\n"
 # | "⛔⛔ Check this domain again so that there is no problem in the future"
-#: hiddifypanel/panel/admin/QuickSetup.py:116
+#: hiddifypanel/panel/admin/QuickSetup.py:117
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
@@ -871,7 +850,7 @@ msgstr ""
 # | msgid ""
 # | "Domain (%(domain)s)-> IP = %(domain_ip)s is not same as your IP = "
 # | "%(server_ip)s . this is required in Direct Mode"
-#: hiddifypanel/panel/admin/QuickSetup.py:131
+#: hiddifypanel/panel/admin/QuickSetup.py:132
 #, fuzzy, python-format
 msgid ""
 "Domain (%(domain)s)-> IP=%(domain_ip)s is not matched with your "
@@ -2995,112 +2974,134 @@ msgstr "The message was not sent to"
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:165
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:331
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:333
+#, fuzzy
 msgid "app.hiddify.next.title"
-msgstr ""
+msgstr "Hiddificar próximo"
 
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:167
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:199
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:201
+#, fuzzy
 msgid "app.hiddifyn.title"
-msgstr ""
+msgstr "HiddificarN"
 
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:169
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:211
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:213
+#, fuzzy
 msgid "app.v2rayng.title"
-msgstr ""
+msgstr "V2RayNG"
 
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:171
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:225
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:227
+#, fuzzy
 msgid "app.hiddifyng.title"
-msgstr ""
+msgstr "HiddifyNG"
 
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:173
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:238
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:240
+#, fuzzy
 msgid "app.hiddify-android.title"
-msgstr ""
+msgstr "Hidificar Android"
 
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:175
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:250
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:252
+#, fuzzy
 msgid "app.foxray.title"
-msgstr ""
+msgstr "Raio X"
 
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:177
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:262
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:264
+#, fuzzy
 msgid "app.shadowrocket.title"
-msgstr ""
+msgstr "Foguete Sombrio"
 
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:179
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:273
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:275
+#, fuzzy
 msgid "app.streisand.title"
-msgstr ""
+msgstr "Streisand"
 
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:181
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:283
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:285
+#, fuzzy
 msgid "app.loon.title"
-msgstr ""
+msgstr "mergulhão"
 
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:183
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:292
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:294
+#, fuzzy
 msgid "app.stash.title"
-msgstr ""
+msgstr "Esconderijo"
 
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:185
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:304
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:306
+#, fuzzy
 msgid "app.hiddify.clash.title"
-msgstr ""
+msgstr "Hidificar confronto"
 
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:200
+#, fuzzy
 msgid "app.hiddifyn.description"
-msgstr ""
+msgstr "Descrição do HiddifyN"
 
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:212
+#, fuzzy
 msgid "app.v2rayng.description"
-msgstr ""
+msgstr "Descrição do V2RayNG"
 
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:226
+#, fuzzy
 msgid "app.hiddifyng.description"
-msgstr ""
+msgstr "Descrição do HiddifyNG"
 
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:239
+#, fuzzy
 msgid "app.hiddify-android.description"
-msgstr ""
+msgstr "Descrição do Hiddify Android"
 
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:251
+#, fuzzy
 msgid "app.foxray.description"
-msgstr ""
+msgstr "Descrição do FoXray"
 
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:263
+#, fuzzy
 msgid "app.shadowrocket.description"
-msgstr ""
+msgstr "Descrição do Foguete Sombrio"
 
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:274
+#, fuzzy
 msgid "app.streisand.description"
-msgstr ""
+msgstr "Descrição"
 
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:284
+#, fuzzy
 msgid "app.loon.description"
-msgstr ""
+msgstr "Descrição do mergulhão"
 
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:293
+#, fuzzy
 msgid "app.stash.description"
-msgstr ""
+msgstr "Descrição do estoque"
 
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:305
+#, fuzzy
 msgid "app.hiddify.clash.description"
-msgstr ""
+msgstr "Descrição do Hiddify Clash"
 
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:332
+#, fuzzy
 msgid "app.hiddify.next.description"
-msgstr ""
+msgstr "Hiddify Próxima Descrição"
 
 # | msgid ""
 # | "Hooray 🎉 🎉 🎉 \n"
@@ -3184,7 +3185,7 @@ msgid "admin.config.title"
 msgstr "Configurações"
 
 # | msgid "📅%(expire_days)s Days Remain"
-#: hiddifypanel/panel/user/link_maker.py:778
+#: hiddifypanel/panel/user/link_maker.py:779
 #, fuzzy, python-format
 msgid "📅%(expire_days)s days"
 msgstr "📅Remanescem: %(expire_days)s dias"
@@ -3193,7 +3194,7 @@ msgstr "📅Remanescem: %(expire_days)s dias"
 # | "Please open this link in a browser; it will expire in 5 minutes for
 # security"
 # | " reasons."
-#: hiddifypanel/panel/user/user.py:29
+#: hiddifypanel/panel/user/user.py:30
 #, fuzzy
 msgid "This link will expire in 5 minutes"
 msgstr ""
@@ -5063,6 +5064,31 @@ msgstr "Ações"
 # | msgid "Owner Can Not Be Deleted!"
 #~ msgid "Owner can not be deleted!"
 #~ msgstr "O proprietário não pode ser excluído!"
+
+# | msgid ""
+# | "Domain IP = %(domain_ip)s is not matched with your IP = %(server_ip)s
+# which "
+# | "is required in Direct Mode"
+#~ msgid ""
+#~ "Domain IP=%(domain_ip)s is not matched "
+#~ "with your ip=%(server_ip)s which is "
+#~ "required in direct mode"
+#~ msgstr ""
+#~ "Domain IP = %(domain_ip)s não "
+#~ "corresponde ao seu IP = %(server_ip)s"
+#~ " que é necessário no modo direto"
+
+# | msgid ""
+# | "In CDN Mode, Domain IP =%(domain_ip)s should be different to your IP "
+# | "=%(server_ip)s"
+#~ msgid ""
+#~ "In CDN mode, Domain IP=%(domain_ip)s "
+#~ "should be different to your "
+#~ "ip=%(server_ip)s"
+#~ msgstr ""
+#~ "No modo CDN, o IP do domínio "
+#~ "=%(domain_ip)s deve ser diferente do seu"
+#~ " IP =%(server_ip)s"
 
 # | msgid "Can not connect to Parent Panel!"
 #~ msgid "Can not connect to parent panel!"
