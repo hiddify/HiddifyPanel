@@ -1,13 +1,14 @@
 import random
 import socket
 import ipaddress
-from typing import List, Literal,Union
+from typing import List, Literal, Union
 import netifaces
 import urllib
 import ipaddress
 from hiddifypanel.cache import cache
 
-def get_domain_ip(domain:str, retry:int=3, version:Literal[4,6]=None) -> Union[ipaddress.IPv4Address, ipaddress.IPv6Address, None]:
+
+def get_domain_ip(domain: str, retry: int = 3, version: Literal[4, 6] = None) -> Union[ipaddress.IPv4Address, ipaddress.IPv6Address, None]:
     res = None
     if not version:
         try:
@@ -24,16 +25,19 @@ def get_domain_ip(domain:str, retry:int=3, version:Literal[4,6]=None) -> Union[i
     if not res and version != 4:
         try:
             res = f"[{socket.getaddrinfo(domain, None, socket.AF_INET6)[0][4][0]}]"
+
+            res = res[1:-1]
+
         except:
             pass
 
-    if retry <= 0:
+    if retry <= 0 or not res:
         return None
-    
+
     return ipaddress.ip_address(res) or get_domain_ip(domain, retry=retry-1)
 
 
-def get_socket_public_ip(version: Literal[4,6]) -> Union[ipaddress.IPv4Address, ipaddress.IPv6Address, None]:
+def get_socket_public_ip(version: Literal[4, 6]) -> Union[ipaddress.IPv4Address, ipaddress.IPv6Address, None]:
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         if version == 6:
@@ -47,7 +51,7 @@ def get_socket_public_ip(version: Literal[4,6]) -> Union[ipaddress.IPv4Address, 
         return None
 
 
-def get_interface_public_ip(version:Literal[4,6]) -> List[Union[ipaddress.IPv4Address, ipaddress.IPv6Address]]:
+def get_interface_public_ip(version: Literal[4, 6]) -> List[Union[ipaddress.IPv4Address, ipaddress.IPv6Address]]:
     addresses = []
     try:
         interfaces = netifaces.interfaces()
@@ -70,17 +74,18 @@ def get_interface_public_ip(version:Literal[4,6]) -> List[Union[ipaddress.IPv4Ad
     except (OSError, KeyError):
         return []
 
+
 @cache.cache(ttl=600)
-def get_ips(version:Literal[4,6]) -> List[Union[ipaddress.IPv4Address, ipaddress.IPv6Address]]:
+def get_ips(version: Literal[4, 6]) -> List[Union[ipaddress.IPv4Address, ipaddress.IPv6Address]]:
     addrs = []
     i_ips = get_interface_public_ip(version)
     if i_ips:
         addrs = i_ips
-    
+
     s_ip = get_socket_public_ip(version)
     if s_ip:
         addrs.append(s_ip)
-    
+
     # send request
     try:
         ip = urllib.request.urlopen(f'https://v{version}.ident.me/').read().decode('utf8')
@@ -88,12 +93,13 @@ def get_ips(version:Literal[4,6]) -> List[Union[ipaddress.IPv4Address, ipaddress
             addrs.append(ipaddress.ip_address(ip))
     except:
         pass
-    
+
     # remove duplicates
     return list(set(addrs))
 
+
 @cache.cache(ttl=600)
-def get_ip(version:Literal[4,6], retry:int=5) -> Union[ipaddress.IPv4Address, ipaddress.IPv6Address]:
+def get_ip(version: Literal[4, 6], retry: int = 5) -> Union[ipaddress.IPv4Address, ipaddress.IPv6Address]:
     ips = get_interface_public_ip(version)
     ip = None
     if ips:

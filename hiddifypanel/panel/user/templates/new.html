@@ -4,15 +4,39 @@
     <meta charset="UTF-8" />
     {%set base='https://'+domain+'/'+hconfigs[ConfigEnum.proxy_path]+"/"+user.uuid+"/"%}
     <meta name="apple-itunes-app" content="app-id=6450534064, app-argument=streisand://import/{{base}}">
-
-    <link rel="icon" type="image/png" href="{{ static_url_for( filename='new/assets/hiddify-logo-7617d937.png' ) }}" />
+    
+    <link rel="icon" type="image/png" href="../static/new/assets/hiddify-logo-7617d937.png" />
+    <link rel="stylesheet" href="node_modules/smartbanner.js/dist/smartbanner.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Start SmartBanner configuration -->
+    <meta name="smartbanner:title" content="Smart Application">
+    <meta name="smartbanner:author" content="SmartBanner Contributors">
+    <meta name="smartbanner:price" content="FREE">
+    <meta name="smartbanner:price-suffix-apple" content=" - On the App Store">
+    <meta name="smartbanner:price-suffix-google" content=" - In Google Play">
+    <meta name="smartbanner:icon-apple" content="./src../static/new/assets/icons/applestore.png">
+    <meta name="smartbanner:icon-google" content="./src../static/new/assets/icons/playstore.png">
+    <meta name="smartbanner:button" content="VIEW">
+    <meta name="smartbanner:button-url-apple" content="https://ios/application-url">
+    <meta name="smartbanner:button-url-google" content="https://android/application-url">
+    <meta name="smartbanner:enabled-platforms" content="android,ios">
+    <meta name="smartbanner:close-label" content="Close">
+    <!-- End SmartBanner configuration -->
+
     <title>Hiddify | Panel</title>
-    <script type="module" crossorigin src="{{ static_url_for( filename='new/assets/index-91c3f38e.js' ) }}"></script>
-    <link rel="stylesheet" href="{{ static_url_for( filename='new/assets/index-576afb2c.css' ) }}">
+    <script type="module" crossorigin src="../static/new/assets/index-0a6d55a4.js"></script>
+    <link rel="stylesheet" href="../static/new/assets/index-c8d680ec.css">
   </head>
   <body>
     <div id="root"></div>
     
+    <script src="node_modules/smartbanner.js/dist/smartbanner.min.js"></script>
+    <script>
+      window.userUuid = '{{user.uuid}}';
+      window.userUuid = '{{user.uuid}}';
+      window.appVersion = '{{version}}';
+      window.deepLink = "hiddify://import/{{base}}"
+    </script>
   </body>
 </html>

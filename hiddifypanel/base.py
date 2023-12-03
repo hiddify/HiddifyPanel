@@ -14,7 +14,7 @@ from werkzeug.middleware.proxy_fix import ProxyFix
 
 
 def create_app(cli=False, **config):
-    
+
     app = APIFlask(__name__, static_url_path="/<proxy_path>/static/", instance_relative_config=True, version='2.0.0', title="Hiddify API",
                    openapi_blueprint_url_prefix="/<proxy_path>/<user_secret>/api", docs_ui='elements', json_errors=False, enable_openapi=True)
     # app = Flask(__name__, static_url_path="/<proxy_path>/static/", instance_relative_config=True)
@@ -49,7 +49,7 @@ def create_app(cli=False, **config):
 
     app.jinja_env.line_statement_prefix = '%'
     app.jinja_env.filters['b64encode'] = hiddify.do_base_64
-    app.view_functions['admin.static']={}#fix bug in apiflask
+    app.view_functions['admin.static'] = {}  # fix bug in apiflask
     app.is_cli = cli
     flask_bootstrap.Bootstrap4(app)
 
