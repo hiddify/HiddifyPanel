@@ -12,14 +12,18 @@ from hiddifypanel.Events import domain_changed
 from wtforms.validators import Regexp, ValidationError
 from datetime import datetime, timedelta
 from hiddifypanel import hutils
+from hiddifypanel.panel.run_commander import commander,Command
 
 to_gig_d = 1000*1000*1000
 
 
 def add_temporary_access():
     random_port = random.randint(30000, 50000)
-    exec_command(
-        f'sudo /opt/hiddify-manager/hiddify-panel/temporary_access.sh {random_port} &')
+    # exec_command(
+    #     f'sudo /opt/hiddify-manager/hiddify-panel/temporary_access.sh {random_port} &')
+    
+    # run temporary_access.sh
+    commander(Command.temporary_access,port=random_port)
     temp_admin_link = f"http://{hutils.ip.get_ip(4)}:{random_port}{get_admin_path()}"
     g.temp_admin_link = temp_admin_link
 
@@ -36,8 +40,11 @@ def add_short_link(link: str, period_min: int = 5) -> Tuple[str, datetime]:
                 return re.search(pattern, line).group(1), datetime.now() + timedelta(minutes=period_min)
 
     short_code = get_random_string(6, 10).lower()
-    exec_command(
-        f'sudo /opt/hiddify-manager/nginx/add2shortlink.sh {link} {short_code} {period_min} &')
+    # exec_command(
+    #     f'sudo /opt/hiddify-manager/nginx/add2shortlink.sh {link} {short_code} {period_min} &')
+
+    commander(Command.temporary_short_link,url=link,slug=short_code,period=period_min)
+
     return short_code, datetime.now() + timedelta(minutes=period_min)
 
 
