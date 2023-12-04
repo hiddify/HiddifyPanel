@@ -100,13 +100,12 @@ class AppAPI(MethodView):
                 hiddify_next_dto = self.__get_hiddify_next_app_dto()
                 hiddifyng_dto = self.__get_hiddifyng_app_dto()
                 v2rayng_dto = self.__get_v2rayng_app_dto()
-                hiddify_android_dto = self.__get_hiddify_android_app_dto()
-                apps_data += ([hiddify_next_dto,hiddifyng_dto,v2rayng_dto,hiddify_android_dto])
+                hiddify_clash_android_dto = self.__get_hiddify_clash_android_app_dto()
+                nekobox_dto = self.__get_nekobox_app_dto()
+                apps_data += ([hiddify_next_dto,hiddifyng_dto,v2rayng_dto,hiddify_clash_android_dto,nekobox_dto])
             case Platform.windows:
                 hiddify_next_dto = self.__get_hiddify_next_app_dto()
-                hiddifyng_dto = self.__get_hiddifyng_app_dto()
-                v2rayng_dto = self.__get_v2rayng_app_dto()
-                hiddify_clash_dto = self.__get_hiddify_clash_app_dto()
+                hiddify_clash_dto = self.__get_hiddify_clash_desktop_app_dto()
                 hiddifyn_dto = self.__get_hiddifyn_app_dto()
                 apps_data += ([hiddify_next_dto,hiddifyng_dto,hiddify_clash_dto,hiddifyn_dto])
             case Platform.ios:
@@ -117,12 +116,11 @@ class AppAPI(MethodView):
                 loon_dto = self.__get_loon_app_dto()
                 apps_data += ([streisand_dto,stash_dto,shadowrocket_dto,foxray_dto,loon_dto])              
             case Platform.linux:
-                hiddify_clash_dto = self.__get_hiddify_clash_app_dto()
                 hiddify_next_dto = self.__get_hiddify_next_app_dto()
-                hiddifyn_dto = self.__get_hiddifyn_app_dto()
-                apps_data += ([hiddify_next_dto,hiddify_clash_dto,hiddifyn_dto])
+                hiddify_clash_dto = self.__get_hiddify_clash_desktop_app_dto()
+                apps_data += ([hiddify_next_dto,hiddify_clash_dto,])
             case Platform.mac:
-                hiddify_clash_dto = self.__get_hiddify_clash_app_dto()
+                hiddify_clash_dto = self.__get_hiddify_clash_desktop_app_dto()
                 hiddify_next_dto = self.__get_hiddify_next_app_dto()
                 apps_data += ([hiddify_next_dto,hiddify_clash_dto])
 
@@ -146,13 +144,13 @@ class AppAPI(MethodView):
         hiddifyn_app_dto = self.__get_hiddifyn_app_dto()
         v2rayng_app_dto = self.__get_v2rayng_app_dto()
         hiddifyng_app_dto = self.__get_hiddifyng_app_dto()
-        hiddify_android_app_dto = self.__get_hiddify_android_app_dto()
+        hiddify_android_app_dto = self.__get_hiddify_clash_android_app_dto()
         foxray_app_dto = self.__get_foxray_app_dto()
         shadowrocket_app_dto = self.__get_shadowrocket_app_dto()
         streisand_app_dto = self.__get_streisand_app_dto()
         loon_app_dto = self.__get_loon_app_dto()
         stash_app_dto = self.__get_stash_app_dto()
-        hiddify_clash_app_dto = self.__get_hiddify_clash_app_dto()
+        hiddify_clash_app_dto = self.__get_hiddify_clash_desktop_app_dto()
         hiddify_next_app_dto = self.__get_hiddify_next_app_dto()
         return [
                 hiddifyn_app_dto,v2rayng_app_dto,hiddifyng_app_dto,hiddify_android_app_dto,
@@ -170,7 +168,7 @@ class AppAPI(MethodView):
             url = base + url_for('static',filename='apps-icon/v2rayng.ico')
         elif app_name == _('app.hiddifyng.title'):
             url = base + url_for('static',filename='apps-icon/hiddifyng.ico')
-        elif app_name == _('app.hiddify-android.title'):
+        elif app_name == _('app.hiddify-clash-android.title'):
             url = base + url_for('static',filename='apps-icon/hiddify_android.ico')
         elif app_name == _('app.foxray.title'):
             url = base + url_for('static',filename='apps-icon/foxray.ico')
@@ -182,11 +180,13 @@ class AppAPI(MethodView):
             url = base + url_for('static',filename='apps-icon/loon.ico')
         elif app_name == _('app.stash.title'):
             url = base + url_for('static',filename='apps-icon/stash.ico')
-        elif app_name == _('app.hiddify.clash.title'):
+        elif app_name == _('app.hiddify-clash-desktop.title'):
             url = base + url_for('static',filename='apps-icon/hiddify_clash.ico')
+        elif app_name == _('app.nekobox.title'):
+            url = base + url_for(endpoint='static',filename='apps-icon/nekobox.ico')
 
         return url
-    
+
     def __get_app_install_dto(self,install_type:AppInstallType,url,title=''):
             install_dto = AppInstall()
             install_dto.title = title
@@ -203,9 +203,21 @@ class AppAPI(MethodView):
         dto.deeplink = f'hiddify://install-sub?url={self.subscription_link_url}'
 
         ins_url = f'{self.hiddify_github_repo}/HiddifyN/releases/latest/download/HiddifyN.zip'
-        dto.install = [self.__get_app_install_dto(AppInstallType.apk,ins_url)]
+        dto.install = [self.__get_app_install_dto(AppInstallType.portable,ins_url)]
         return dto
 
+    def __get_nekobox_app_dto(self):
+        dto = AppSchema()
+        dto.title = _('app.nekobox.title')
+        dto.description = _('app.nekobox.description')
+        dto.icon_url = self.__get_app_icon_url(_('app.nekobox.title'))
+        dto.guide_url = ''
+        dto.deeplink = f'clash://install-config?url={self.user_panel_encoded_url}'
+
+        latest_url, version = get_latest_release_url(f'https://github.com/MatsuriDayo/NekoBoxForAndroid')
+        ins_url = latest_url.split('releases/')[0] + f'releases/download/{version}/NB4A-{version}-x86_64.apk'
+        dto.install = [self.__get_app_install_dto(AppInstallType.apk,ins_url)]
+        return dto
     def __get_v2rayng_app_dto(self):
         dto = AppSchema()
         dto.title = _('app.v2rayng.title')
@@ -216,8 +228,9 @@ class AppAPI(MethodView):
                             
         # make v2rayng latest version url download
         latest_url, version = get_latest_release_url(f'https://github.com/2dust/v2rayNG/')
-        ins_url = latest_url.split('releases/')[0] + f'releases/download/{version}/v2rayNG_{version}.apk'
-        dto.install = [self.__get_app_install_dto(AppInstallType.apk,ins_url),]
+        github_ins_url = latest_url.split('releases/')[0] + f'releases/download/{version}/v2rayNG_{version}.apk'
+        google_play_ins_url = 'https://play.google.com/store/apps/details?id=com.v2ray.ang'
+        dto.install = [self.__get_app_install_dto(AppInstallType.apk,github_ins_url),self.__get_app_install_dto(AppInstallType.google_play, google_play_ins_url)]
         return dto
 
     def __get_hiddifyng_app_dto(self):
@@ -227,17 +240,19 @@ class AppAPI(MethodView):
         dto.icon_url = self.__get_app_icon_url(_('app.hiddifyng.title'))
         dto.guide_url = 'https://www.youtube.com/watch?v=qDbI72J-INM'
         dto.deeplink = f'hiddify://install-sub/?url={self.user_panel_encoded_url}'
-                            
+        
+
         latest_url,version = get_latest_release_url(f'{self.hiddify_github_repo}/HiddifyNG/')
-        ins_url = latest_url.split('releases/')[0] + f'releases/download/{version}/HiddifyNG.apk'
-        dto.install = [self.__get_app_install_dto(AppInstallType.apk,ins_url),]
+        github_ins_url = latest_url.split('releases/')[0] + f'releases/download/{version}/HiddifyNG.apk'
+        google_play_ins_url = 'https://play.google.com/store/apps/details?id=ang.hiddify.com'
+        dto.install = [self.__get_app_install_dto(AppInstallType.apk,github_ins_url),self.__get_app_install_dto(AppInstallType.google_play, google_play_ins_url)]
         return dto
 
-    def __get_hiddify_android_app_dto(self):
+    def __get_hiddify_clash_android_app_dto(self):
         dto = AppSchema()
-        dto.title = _('app.hiddify-android.title')
-        dto.description = _('app.hiddify-android.description')
-        dto.icon_url = self.__get_app_icon_url(_('app.hiddify-android.title'))
+        dto.title = _('app.hiddify-clash-android.title')
+        dto.description = _('app.hiddify-clash-android.description')
+        dto.icon_url = self.__get_app_icon_url(_('app.hiddify-clash-android.title'))
         dto.guide_url = 'https://www.youtube.com/watch?v=mUTfYd1_UCM'
         dto.deeplink = f'clash://install-config/?url={self.user_panel_encoded_url}'
         latest_url,version = get_latest_release_url(f'{self.hiddify_github_repo}/HiddifyClashAndroid/')
@@ -299,31 +314,49 @@ class AppAPI(MethodView):
         dto.install = [self.__get_app_install_dto(AppInstallType.app_store,ins_url),]
         return dto
 
-    def __get_hiddify_clash_app_dto(self):
+    def __get_hiddify_clash_desktop_app_dto(self):
         dto = AppSchema()
-        dto.title = _('app.hiddify.clash.title')
-        dto.description = _('app.hiddify.clash.description')
-        dto.icon_url = self.__get_app_icon_url(_('app.hiddify.clash.title'))
+        dto.title = _('app.hiddify-clash-desktop.title')
+        dto.description = _('app.hiddify-clash-desktop.description')
+        dto.icon_url = self.__get_app_icon_url(_('app.hiddify-clash-desktop.title'))
         dto.guide_url = 'https://www.youtube.com/watch?v=omGIz97mbzM'
         dto.deeplink = f'clash://install-config/?url={self.user_panel_encoded_url}'
-
+        dto.install = []
+            
         # make hiddify clash latest version url download
         latest_url, version = get_latest_release_url(f'{self.hiddify_github_repo}/hiddifydesktop')
         version = version.replace('v','')
-        ins_url = ''
-        ins_type = None
-        match self.platform:
-            case Platform.windows:
-                ins_url = latest_url.split('releases/')[0] + f'releases/download/{version}/HiddifyClashDesktop_{version}_x64_en-US.msi'
-                ins_type = AppInstallType.setup
-            case Platform.linux:
-                ins_url = latest_url.split('releases/')[0] + f'releases/download/{version}/hiddify-clash-desktop_{version}_amd64.AppImage'
-                ins_type = AppInstallType.appimage
-            case Platform.mac:
-                ins_url = latest_url.split('releases/')[0] + f'releases/download/{version}/HiddifyClashDesktop_{version}x64.dmg'
-                ins_type = AppInstallType.dmg
 
-        dto.install = [self.__get_app_install_dto(ins_type,ins_url)]
+        platform = self.platform
+
+        if self.platform == Platform.all:
+            platform = [Platform.windows,Platform.linux,Platform.mac]
+        
+        if isinstance(platform, list):
+            for p in platform:
+                match p:
+                    case Platform.windows:
+                        ins_url = latest_url.split('releases/')[0] + f'releases/download/{version}/HiddifyClashDesktop_{version}_x64_en-US.msi'
+                        dto.install.append(self.__get_app_install_dto(AppInstallType.setup,ins_url))
+                    case Platform.linux:
+                        ins_url = latest_url.split('releases/')[0] + f'releases/download/{version}/hiddify-clash-desktop_{version}_amd64.AppImage'
+                        dto.install.append(self.__get_app_install_dto(AppInstallType.appimage,ins_url))
+                    case Platform.mac:
+                        ins_url = latest_url.split('releases/')[0] + f'releases/download/{version}/HiddifyClashDesktop_{version}x64.dmg'
+                        dto.install.append(self.__get_app_install_dto(AppInstallType.dmg,ins_url))
+        else:
+            match platform:
+                case Platform.windows:
+                    ins_url = latest_url.split('releases/')[0] + f'releases/download/{version}/HiddifyClashDesktop_{version}_x64_en-US.msi'
+                    dto.install.append(self.__get_app_install_dto(AppInstallType.setup,ins_url))
+                case Platform.linux:
+                    ins_url = latest_url.split('releases/')[0] + f'releases/download/{version}/hiddify-clash-desktop_{version}_amd64.AppImage'
+                    dto.install.append(self.__get_app_install_dto(AppInstallType.appimage,ins_url))
+                case Platform.mac:
+                    ins_url = latest_url.split('releases/')[0] + f'releases/download/{version}/HiddifyClashDesktop_{version}x64.dmg'
+                    dto.install.append(self.__get_app_install_dto(AppInstallType.dmg,ins_url))
+            
+                
         return dto
 
     def __get_hiddify_next_app_dto(self):
@@ -336,15 +369,19 @@ class AppAPI(MethodView):
 
         # availabe installatoin types
         installation_types = []
-        match self.platform:
-            case Platform.android:
-                installation_types = [AppInstallType.apk,AppInstallType.google_play]
-            case Platform.windows:
-                installation_types = [AppInstallType.setup,AppInstallType.portable]
-            case Platform.linux:
-                installation_types = [AppInstallType.appimage]
-            case Platform.mac:
-                installation_types = [AppInstallType.dmg]
+        if self.platform == Platform.all:
+            installation_types = [AppInstallType.apk,AppInstallType.google_play,AppInstallType.setup,AppInstallType.portable,AppInstallType.appimage,AppInstallType.dmg]
+        else:
+            match self.platform:
+                case Platform.android:
+                    installation_types = [AppInstallType.apk,AppInstallType.google_play]
+                case Platform.windows:
+                    installation_types = [AppInstallType.setup,AppInstallType.portable]
+                case Platform.linux:
+                    installation_types = [AppInstallType.appimage]
+                case Platform.mac:
+                    installation_types = [AppInstallType.dmg]
+            
 
         install_dtos = []
         for install_type in installation_types:

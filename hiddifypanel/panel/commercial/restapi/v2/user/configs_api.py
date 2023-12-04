@@ -25,7 +25,7 @@ class AllConfigsAPI(MethodView):
 
     @app.output(ConfigSchema(many=True))
     def get(self):
-        def create_item(name, type, domain, protocol, transport, security, link):
+        def create_item(name, domain, type, protocol, transport, security, link):
             dto = ConfigSchema()
             dto.name = name
             dto.type = type
@@ -43,14 +43,14 @@ class AllConfigsAPI(MethodView):
         # Add Auto
         items.append(
             create_item(
-                "Auto", "All", "All", "All", "All", "All",
+                "Auto", "ALL", "ALL", "", "", "",
                 f"{base_url}sub/?asn={c['asn']}")
         )
 
         # Add Full Singbox
         items.append(
             create_item(
-                "Full Singbox", "All", "All", "All", "All", "All",
+                "Full Singbox", "ALL", "ALL", "", "", "",
                 f"{base_url}full-singbox.json?asn={c['asn']}"
             )
         )
@@ -58,7 +58,7 @@ class AllConfigsAPI(MethodView):
         # Add Clash Meta
         items.append(
             create_item(
-                "Clash Meta", "All", "All", "All", "All", "All",
+                "Clash Meta", "ALL", "ALL", "", "", "",
                 f"clashmeta://install-config?url={base_url}clash/meta/all.yml&name=mnormal_{c['db_domain'].alias or c['db_domain'].domain}-{c['asn']}-{c['mode']}&asn={c['asn']}&mode={c['mode']}"
             )
         )
@@ -66,7 +66,7 @@ class AllConfigsAPI(MethodView):
         # Add Clash
         items.append(
             create_item(
-                "Clash", "All", "All", "Except VLess", "All", "All",
+                "Clash", "ALL", "Except VLess", "", "", "",
                 f"clash://install-config?url={base_url}clash/all.yml&name=new_normal_{c['db_domain'].alias or c['db_domain'].domain}-{c['asn']}-{c['mode']}&asn={c['asn']}&mode={c['mode']}"
             )
         )
@@ -75,7 +75,7 @@ class AllConfigsAPI(MethodView):
         if hconfig(ConfigEnum.ssh_server_enable):
             items.append(
                 create_item(
-                    "Singbox: SSH", "SSH", "SSH", "SSH", "SSH", "SSH",
+                    "Singbox: SSH", "SSH", "SHH", "", "", "",
                     f"{base_url}singbox.json?name={c['db_domain'].alias or c['db_domain'].domain}-{c['asn']}&asn={c['asn']}&mode={c['mode']}"
                 )
             )
@@ -83,7 +83,7 @@ class AllConfigsAPI(MethodView):
         # Add Subscription link
         items.append(
             create_item(
-                "Subscription link", "All", "All", "All", "All", "All",
+                "Subscription link", "ALL", "ALL", "", "", "",
                 f"{base_url}all.txt?name={c['db_domain'].alias or c['db_domain'].domain}-{c['asn']}&asn={c['asn']}&mode={c['mode']}"
             )
         )
@@ -91,7 +91,7 @@ class AllConfigsAPI(MethodView):
         # Add Subscription link base64
         items.append(
             create_item(
-                "Subscription link b64", "All", "All", "All", "All", "All",
+                "Subscription link b64", "ALL", "ALL", "", "", "",
                 f"{base_url}all.txt?name=new_link_{c['db_domain'].alias or c['db_domain'].domain}-{c['asn']}-{c['mode']}&asn={c['asn']}&mode={c['mode']}&base64=True"
             )
         )
