@@ -25,5 +25,5 @@ class ShortAPI(MethodView):
         dto.full_url = full_url
         dto.short = short
         # expire_in is in seconds
-        dto.expire_in = (expire_date - datetime.now()) .seconds
+        dto.expire_in = (expire_date - datetime.now()).seconds
         return dto

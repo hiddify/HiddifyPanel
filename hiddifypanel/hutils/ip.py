@@ -33,8 +33,8 @@ def get_domain_ip(domain: str, retry: int = 3, version: Literal[4, 6] = None) ->
 
     if retry <= 0 or not res:
         return None
-
-    return ipaddress.ip_address(res) or get_domain_ip(domain, retry=retry-1)
+    
+    return ipaddress.ip_address(res) or get_domain_ip(domain, retry=retry-1) if res else None
 
 
 def get_socket_public_ip(version: Literal[4, 6]) -> Union[ipaddress.IPv4Address, ipaddress.IPv6Address, None]:
