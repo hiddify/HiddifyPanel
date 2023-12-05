@@ -16,6 +16,7 @@ class Command(StrEnum):
     temporary_access = 'temporary-access'
     update_usage = 'update-usage'
     get_cert = 'get-cert'
+    apply_users = 'apply-users'
 
 
 def commander(command: Command, **kwargs: str | int) -> None:
@@ -46,6 +47,8 @@ def commander(command: Command, **kwargs: str | int) -> None:
         base_cmd.append('status')
     elif command == Command.restart_services:
         base_cmd.append('restart-services')
+    elif command == Command.apply_users:
+        base_cmd.append('apply-users')
     elif command == Command.temporary_short_link:
         url = str(kwargs.get('url', ''))
         slug = str(kwargs.get('slug', ''))
