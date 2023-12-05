@@ -12,7 +12,7 @@ from hiddifypanel.Events import domain_changed
 from wtforms.validators import Regexp, ValidationError
 from datetime import datetime, timedelta
 from hiddifypanel import hutils
-from hiddifypanel.panel.run_commander import commander,Command
+from hiddifypanel.panel.run_commander import commander, Command
 
 to_gig_d = 1000*1000*1000
 
@@ -21,9 +21,9 @@ def add_temporary_access():
     random_port = random.randint(30000, 50000)
     # exec_command(
     #     f'sudo /opt/hiddify-manager/hiddify-panel/temporary_access.sh {random_port} &')
-    
+
     # run temporary_access.sh
-    commander(Command.temporary_access,port=random_port)
+    commander(Command.temporary_access, port=random_port)
     temp_admin_link = f"http://{hutils.ip.get_ip(4)}:{random_port}{get_admin_path()}"
     g.temp_admin_link = temp_admin_link
 
@@ -43,7 +43,7 @@ def add_short_link(link: str, period_min: int = 5) -> Tuple[str, datetime]:
     # exec_command(
     #     f'sudo /opt/hiddify-manager/nginx/add2shortlink.sh {link} {short_code} {period_min} &')
 
-    commander(Command.temporary_short_link,url=link,slug=short_code,period=period_min)
+    commander(Command.temporary_short_link, url=link, slug=short_code, period=period_min)
 
     return short_code, datetime.now() + timedelta(minutes=period_min)
 
@@ -101,6 +101,7 @@ def abs_url(path):
 def asset_url(path):
     return f"/{g.proxy_path}/{path}"
 
+
 @cache.cache(ttl=300)
 def get_available_proxies(child_id):
     proxies = Proxy.query.filter(Proxy.child_id == child_id).all()
@@ -143,7 +144,10 @@ def quick_apply_users():
     #     else:
     #         xray_api.remove_client(user.uuid)
 
-    exec_command("sudo /opt/hiddify-manager/install.sh apply_users --no-gui")
+    # exec_command("sudo /opt/hiddify-manager/install.sh apply_users --no-gui")
+
+    # run install.sh apply_users
+    commander(Command.apply_users)
 
     time.sleep(1)
     return {"status": 'success'}
@@ -330,7 +334,8 @@ def get_ids_without_parent(input_dict):
     return uuids_without_parent
 
 
-def set_db_from_json(json_data, override_child_id=None, set_users=True, set_domains=True, set_proxies=True, set_settings=True, remove_domains=False, remove_users=False, override_unique_id=True, set_admins=True, override_root_admin=False, replace_owner_admin=False):
+def set_db_from_json(json_data, override_child_id=None, set_users=True, set_domains=True, set_proxies=True, set_settings=True, remove_domains=False, remove_users=False,
+                     override_unique_id=True, set_admins=True, override_root_admin=False, replace_owner_admin=False):
     new_rows = []
 
     uuids_without_parent = get_ids_without_parent({u['uuid']: u for u in json_data['admin_users']})
@@ -719,8 +724,9 @@ def is_ssh_password_authentication_enabled():
 
     return True
 
+
 @cache.cache(ttl=600)
-def get_direct_host_or_ip(prefer_version:int):
+def get_direct_host_or_ip(prefer_version: int):
     direct = Domain.query.filter(Domain.mode == DomainType.direct, Domain.sub_link_only == False).first()
     if not (direct):
         direct = Domain.query.filter(Domain.mode == DomainType.direct).first()
