@@ -2,6 +2,7 @@ from typing import List
 from strenum import StrEnum
 from flask import current_app
 import subprocess
+import os
 
 
 class Command(StrEnum):
@@ -29,7 +30,11 @@ def commander(
                   port for the temporary-access command.
     """
     base_cmd: List[str] = [
-        f"sudo {current_app.config['HIDDIFY_CONFIG_PATH']}/common/commander.py"]
+        'sudo',
+        'python3',
+        os.path.join(
+            current_app.config['HIDDIFY_CONFIG_PATH'], 'common/commander.py')
+    ]
 
     if command == Command.apply:
         base_cmd.append('apply')
