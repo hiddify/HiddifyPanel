@@ -11,6 +11,7 @@ from hiddifypanel.panel.database import db
 from hiddifypanel.panel.init_db import init_db
 from hiddifypanel.panel.importer.xui import import_data
 
+
 def drop_db():
     """Cleans database"""
     db.drop_all()
@@ -239,6 +240,6 @@ def init_app(app):
     def xui_importer(xui_db_path):
         try:
             import_data(xui_db_path)
-            return 'success'
+            print('success')
         except Exception as e:
-            return f'failed to import xui data: Error:{e}'
+            print(f'failed to import xui data: Error: {e}')
