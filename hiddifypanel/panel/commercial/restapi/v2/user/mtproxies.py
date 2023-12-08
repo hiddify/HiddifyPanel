@@ -1,5 +1,5 @@
 from flask.views import MethodView
-from apiflask import Schema
+from apiflask import Schema, abort
 from flask import g
 from flask import current_app as app
 from apiflask.fields import String
@@ -20,6 +20,9 @@ class MTProxiesAPI(MethodView):
 
     @app.output(MtproxySchema(many=True))
     def get(self):
+        # check mtproxie is enable
+        if not hconfig(ConfigEnum.telegram_enable, g.user_uuid):
+            abort(status_code=404,message="Telegram mtproxy is not enable")
         # get domains
         c = get_common_data(g.user_uuid, 'new')
         dtos = []
