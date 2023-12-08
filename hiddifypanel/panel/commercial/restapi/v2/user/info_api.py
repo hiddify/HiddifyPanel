@@ -2,7 +2,7 @@ from urllib.parse import urlparse
 from flask.views import MethodView
 from apiflask import Schema
 from apiflask.fields import Integer, String, Float, URL, Enum
-from flask import g,request
+from flask import g, request
 from flask import current_app as app
 
 from hiddifypanel.models import Lang
@@ -12,6 +12,7 @@ from hiddifypanel.models.config_enum import ConfigEnum
 from hiddifypanel.panel import hiddify
 from hiddifypanel.panel.database import db
 from hiddifypanel.panel.user.user import get_common_data
+
 
 class ProfileSchema(Schema):
     profile_title = String(required=True)
@@ -29,6 +30,7 @@ class ProfileSchema(Schema):
     doh = URL()
     lang = Enum(Lang, required=True)
 
+
 class UserInfoChangableSchema(Schema):
     language = Enum(Lang, required=False)
     telegram_id = Integer(required=False)
@@ -42,7 +44,7 @@ class InfoAPI(MethodView):
         c = get_common_data(g.user_uuid, 'new')
 
         dto = ProfileSchema()
-        dto.profile_title = c['profile_title']
+        dto.profile_title = c['user'].name if c.get('user') and c.get('user').name else c['profile_title'].split(' ')[1]
         dto.profile_url = f"https://{urlparse(request.base_url).hostname}/{g.proxy_path}/{g.user_uuid}/#{g.user.name}"
         dto.profile_usage_current = g.user.current_usage_GB
         dto.profile_usage_total = g.user.usage_limit_GB
@@ -77,4 +79,3 @@ class InfoAPI(MethodView):
                 user.lang = data['language']
                 db.session.commit()
         return {'message': 'ok'}
-
