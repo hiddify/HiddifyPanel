@@ -330,12 +330,11 @@ def get_ids_without_parent(input_dict):
                             or item.get(f'parent_admin_uuid') == item.get('uuid')
                             or item[f'parent_admin_uuid'] not in uuids]
     print("abondon uuids", uuids_without_parent)
-
     return uuids_without_parent
 
 
 def set_db_from_json(json_data, override_child_id=None, set_users=True, set_domains=True, set_proxies=True, set_settings=True, remove_domains=False, remove_users=False,
-                     override_unique_id=True, set_admins=True, override_root_admin=False, replace_owner_admin=False):
+                     override_unique_id=True, set_admins=True, override_root_admin=False, replace_owner_admin=False, fix_admin_hierarchy=True):
     new_rows = []
 
     uuids_without_parent = get_ids_without_parent({u['uuid']: u for u in json_data['admin_users']})
@@ -358,6 +357,18 @@ def set_db_from_json(json_data, override_child_id=None, set_users=True, set_doma
                 u['uuid'] = current_admin_or_owner().uuid
             if u['parent_admin_uuid'] in uuids_without_parent:
                 u['parent_admin_uuid'] = current_admin_or_owner().uuid
+        # fix admins hierarchy
+        if fix_admin_hierarchy and len(json_data['admin_users']) > 2:
+            hierarchy_is_ok = False
+            for u in json_data['admin_users']:
+                if u['uuid'] == current_admin_or_owner().uuid:
+                    continue
+                if u['parent_admin_uuid'] == current_admin_or_owner().uuid:
+                    hierarchy_is_ok = True
+                    break
+            if not hierarchy_is_ok:
+                json_data['admin_users'][1]['parent_admin_uuid'] = current_admin_or_owner().uuid
+
     if "users" in json_data and override_root_admin:
         for u in json_data['users']:
             if u['added_by_uuid'] in uuids_without_parent:
