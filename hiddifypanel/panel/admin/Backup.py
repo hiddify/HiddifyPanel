@@ -63,7 +63,8 @@ class Backup(FlaskView):
                                      set_settings=restore_form.enable_config_restore.data,
                                      override_unique_id=False,
                                      override_child_id=None,
-                                     override_root_admin=restore_form.override_root_admin.data
+                                     override_root_admin=restore_form.override_root_admin.data,
+                                     replace_owner_admin=restore_form.override_root_admin.data
                                      )
 
             from flask_babel import refresh
