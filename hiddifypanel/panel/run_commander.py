@@ -32,7 +32,6 @@ def commander(command: Command, **kwargs: str | int) -> None:
     """
     base_cmd: List[str] = [
         'sudo',
-        'python3',
         os.path.join(
             current_app.config['HIDDIFY_CONFIG_PATH'], 'common/commander.py')
     ]
