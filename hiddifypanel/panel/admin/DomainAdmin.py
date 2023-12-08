@@ -6,6 +6,7 @@ from flask import Markup
 from flask import g, flash
 from flask_babelex import gettext as __
 from flask_babelex import lazy_gettext as _
+from hiddifypanel.panel.run_commander import Command, commander
 from wtforms.validators import Regexp, ValidationError
 
 from hiddifypanel.models import *
@@ -40,12 +41,12 @@ class DomainAdmin(AdminLTEModelView):
         domain=_("domain.description"),
         mode=_("Direct mode means you want to use your server directly (for usual use), CDN means that you use your server on behind of a CDN provider."),
         cdn_ip=_("config.cdn_forced_host.description"),
-        show_domains=_('You can select the configs with which domains show be shown in the user area. If you select all, automatically, all the new domains will be added for each users.'),
+        show_domains=_(
+            'You can select the configs with which domains show be shown in the user area. If you select all, automatically, all the new domains will be added for each users.'),
         alias=_('The name shown in the configs for this domain.'),
         servernames=_('config.reality_server_names.description'),
         sub_link_only=_('This can be used for giving your users a permanent non blockable links.'),
-        grpc=_('gRPC is a H2 based protocol. Maybe it is faster for you!')
-    )
+        grpc=_('gRPC is a H2 based protocol. Maybe it is faster for you!'))
 
     # create_modal = True
     can_export = False
@@ -91,7 +92,9 @@ class DomainAdmin(AdminLTEModelView):
         if "*" in d:
             d = d.replace("*", hiddify.get_random_string(5, 15))
         admin_link = f'https://{d}{hiddify.get_admin_path()}'
-        return Markup(f'<div class="btn-group"><a href="{admin_link}" class="btn btn-xs btn-secondary">'+_("admin link")+f'</a><a href="{admin_link}" class="btn btn-xs btn-info ltr" target="_blank">{model.domain}</a></div>')
+        return Markup(
+            f'<div class="btn-group"><a href="{admin_link}" class="btn btn-xs btn-secondary">' + _("admin link") +
+            f'</a><a href="{admin_link}" class="btn btn-xs btn-info ltr" target="_blank">{model.domain}</a></div>')
 
     def _domain_ip(view, context, model, name):
         dip = hutils.ip.get_domain_ip(model.domain)
@@ -145,7 +148,7 @@ class DomainAdmin(AdminLTEModelView):
 
         ipv4_list = hutils.ip.get_ips(4)
         ipv6_list = hutils.ip.get_ips(6)
-       
+
         if not ipv4_list and not ipv6_list:
             raise ValidationError(_("Couldn't find your ip addresses"))
 
@@ -183,12 +186,12 @@ class DomainAdmin(AdminLTEModelView):
                 domain_ip_is_same_as_panel |= ipaddress.ip_address(dip) == ipaddress.ip_address(ipv6)
 
             if model.mode == DomainType.direct and not domain_ip_is_same_as_panel:
-                flash(__(f"Domain IP={dip} is not matched with your ip={ipv4_list.join(', ')} which is required in direct mode"),'warning')
-                #raise ValidationError(_("Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode", server_ip=myip, domain_ip=dip))
+                flash(__(f"Domain IP={dip} is not matched with your ip={ipv4_list.join(', ')} which is required in direct mode"), 'warning')
+                # raise ValidationError(_("Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode", server_ip=myip, domain_ip=dip))
 
             if domain_ip_is_same_as_panel and model.mode in [DomainType.cdn, DomainType.relay, DomainType.fake, DomainType.auto_cdn_ip]:
-                flash(__(f"In CDN mode, Domain IP={dip} should be different to your ip={ipv4_list.join(', ')}",'warning'))
-                #raise ValidationError(_("In CDN mode, Domain IP=%(domain_ip)s should be different to your ip=%(server_ip)s", server_ip=myip, domain_ip=dip))
+                flash(__(f"In CDN mode, Domain IP={dip} should be different to your ip={ipv4_list.join(', ')}", 'warning'))
+                # raise ValidationError(_("In CDN mode, Domain IP=%(domain_ip)s should be different to your ip=%(server_ip)s", server_ip=myip, domain_ip=dip))
 
             # if model.mode in [DomainType.ss_faketls, DomainType.telegram_faketls]:
             #     if len(Domain.query.filter(Domain.mode==model.mode and Domain.id!=model.id).all())>0:
@@ -276,7 +279,9 @@ class DomainAdmin(AdminLTEModelView):
         # if hconfig(ConfigEnum.parent_panel):
         #     hiddify_api.sync_child_to_parent()
         if model.need_valid_ssl:
-            hiddify.exec_command(f"sudo /opt/hiddify-manager/acme.sh/get_cert.sh {model.domain}")
+            # hiddify.exec_command(f"sudo /opt/hiddify-manager/acme.sh/get_cert.sh {model.domain}")
+            # run get_cert.sh
+            commander(Command.get_cert, domain=model.domain)
 
     def is_accessible(self):
         return g.admin.mode in [AdminMode.admin, AdminMode.super_admin]
