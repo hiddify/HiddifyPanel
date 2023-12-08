@@ -1,4 +1,5 @@
 import socket
+from uuid import UUID
 import user_agents
 from sqlalchemy.orm import Load
 import glob
@@ -36,6 +37,12 @@ def url_encode(strr):
     import urllib.parse
     return urllib.parse.quote(strr)
 
+def is_uuid_valid(uuid,version):
+    try:
+        uuid_obj = UUID(uuid, version=version)
+    except ValueError:
+        return False
+    return str(uuid_obj) == uuid
 
 def error(str):
 
@@ -143,79 +150,3 @@ def mix_str_configs_and_bool_configs(data:dict):
 def flash(message, category):
     print(message)
     return flask_flash(Markup(message), category)
-
-
-def get_domain_ip(dom, retry=3, version=None):
-
-    res = None
-    if not version:
-        try:
-            res = socket.gethostbyname(dom)
-        except:
-            pass
-
-    if not res and version != 6:
-        try:
-            res = socket.getaddrinfo(dom, None, socket.AF_INET)[0][4][0]
-        except:
-            pass
-
-    if not res and version != 4:
-        try:
-            res = f"[{socket.getaddrinfo(dom, None, socket.AF_INET6)[0][4][0]}]"
-        except:
-            pass
-
-    if retry <= 0:
-        return None
-
-    return res or get_domain_ip(dom, retry=retry-1)
-
-
-def get_socket_public_ip(version):
-    try:
-        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        if version == 6:
-            s.connect(("2001:4860:4860::8888", 80))
-        else:
-            s.connect(("8.8.8.8", 80))
-        ip_address = s.getsockname()[0]
-        s.close()
-
-        return ip_address if is_public_ip(ip_address) else None
-    except socket.error:
-        return None
-
-
-def is_public_ip(address):
-    if address.startswith('127.') or address.startswith('169.254.') or address.startswith('10.') or address.startswith('192.168.') or address.startswith('172.'):
-        return False
-    if address.startswith('fe80:') or address.startswith('fd') or address.startswith('fc00:'):
-        return False
-    if address.startswith('::') or address.startswith('fd') or address.startswith('fc00:'):
-        return False
-    return True
-
-
-def get_interface_public_ip(version):
-    addresses = []
-    try:
-        interfaces = netifaces.interfaces()
-        for interface in interfaces:
-            if version == 4:
-                address_info = netifaces.ifaddresses(interface).get(netifaces.AF_INET, [])
-            elif version == 6:
-                address_info = netifaces.ifaddresses(interface).get(netifaces.AF_INET6, [])
-            else:
-                return None
-
-            if address_info:
-                for addr in address_info:
-                    address = addr['addr']
-                    if (is_public_ip(address)):
-                        addresses.append(address)
-
-        return addresses if addresses else None
-
-    except (OSError, KeyError):
-        return None

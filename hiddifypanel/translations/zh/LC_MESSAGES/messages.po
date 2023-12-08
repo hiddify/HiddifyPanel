@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-27 21:58+0100\n"
-"PO-Revision-Date: 2023-11-27 03:15-0600\n"
+"POT-Creation-Date: 2023-12-03 20:50+0100\n"
+"PO-Revision-Date: 2023-12-01 05:49-0600\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -14,23 +14,23 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.12.1\n"
 
-# | msgid "This Domain does not exist in the Panel !"
-#: hiddifypanel/models/domain.py:159 hiddifypanel/panel/user/user.py:418
-msgid "This domain does not exist in the panel!"
-msgstr "该域名在面板中不存在！"
-
 # | msgid ""
 # | "Error In Auto CDN IP! It Can Not Be Find, Please Contact Admin"
-#: hiddifypanel/panel/clean_ip.py:130
+#: hiddifypanel/hutils/auto_ip_selector.py:131
 msgid "Error! auto cdn ip can not be find, please contact admin."
 msgstr "自动 CDN IP 错误！找不到自动 CDN IP，请联系管理员"
+
+# | msgid "This Domain does not exist in the Panel !"
+#: hiddifypanel/models/domain.py:160 hiddifypanel/panel/user/user.py:419
+msgid "This domain does not exist in the panel!"
+msgstr "该域名在面板中不存在！"
 
 #: hiddifypanel/panel/hiddify.py:83
 msgid "Access Denied"
 msgstr "拒绝访问"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/panel/hiddify.py:208
+#: hiddifypanel/panel/hiddify.py:150
 msgid "admin.config.apply_configs"
 msgstr "应用配置"
 
@@ -38,12 +38,12 @@ msgstr "应用配置"
 # | "Configs have been changed successfully. Click %(link)s to apply the
 # configs."
 # | " It may take 2 minutes to apply"
-#: hiddifypanel/panel/hiddify.py:209
+#: hiddifypanel/panel/hiddify.py:151
 msgid "config.validation-success"
 msgstr "配置已成功更改。单击 %(link)s 以应用配置。应用可能需要 2 分钟。"
 
 # | msgid " ✅ Configs have been changed successfully"
-#: hiddifypanel/panel/hiddify.py:211
+#: hiddifypanel/panel/hiddify.py:153
 msgid "config.validation-success-no-reset"
 msgstr " ✅ 配置已成功更改"
 
@@ -51,18 +51,18 @@ msgstr " ✅ 配置已成功更改"
 # | "Domain can not be resolved! There is a problem in your domain. Please
 # check "
 # | "your Domain configurations."
-#: hiddifypanel/panel/admin/ChildAdmin.py:106
+#: hiddifypanel/panel/admin/ChildAdmin.py:107
 #: hiddifypanel/panel/admin/DomainAdmin.py:153
 #: hiddifypanel/panel/admin/DomainAdmin.py:175
 #: hiddifypanel/panel/admin/DomainAdmin.py:178
-#: hiddifypanel/panel/admin/QuickSetup.py:127
-#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:107
-#: hiddifypanel/panel/hiddify.py:300
+#: hiddifypanel/panel/admin/QuickSetup.py:128
+#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:108
+#: hiddifypanel/panel/hiddify.py:242
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr "域名无法解析！你的域名有问题。请检查你的域名配置。"
 
 # | msgid "Last Day"
-#: hiddifypanel/panel/hiddify.py:332
+#: hiddifypanel/panel/hiddify.py:274
 msgid "0 - Last day"
 msgstr "最后一天"
 
@@ -70,7 +70,7 @@ msgstr "最后一天"
 # | "Selected Domain for REALITY is not in the same ASN. To better use of the
 # "
 # | "Protocol, it is better to find a Domain in the same ASN"
-#: hiddifypanel/panel/hiddify.py:625
+#: hiddifypanel/panel/hiddify.py:567
 msgid ""
 "selected domain for REALITY is not in the same ASN. To better use of the "
 "protocol, it is better to find a domain in the same ASN."
@@ -90,7 +90,7 @@ msgstr "套餐结束"
 # | "⚠️ Your Domains Changed. please do not forget to copy Admin links,
 # otherwise"
 # | " you can not access to the panel anymore"
-#: hiddifypanel/panel/admin/Actions.py:108
+#: hiddifypanel/panel/admin/Actions.py:109
 msgid ""
 "Your domains changed. Please do not forget to copy admin links, otherwise"
 " you can not access to the panel anymore."
@@ -100,21 +100,21 @@ msgstr "⚠️ 域名已更改。请不要忘记复制管理链接，否则您�
 # | "⚠️ Please wait about 5 minutes to make sure everything is updated. during
 # "
 # | "this time, please copy and save your Proxy links which are:"
-#: hiddifypanel/panel/admin/Actions.py:135
+#: hiddifypanel/panel/admin/Actions.py:136
 msgid ""
 "Success! Please wait around 4 minutes to make sure everything is updated."
 " During this time, please save your proxy links which are:"
 msgstr "⚠️ 请等待大约 5 分钟以确保所有内容更新完成。在此期间，请复制并保存您的代理链接："
 
 # | msgid "📑 See the log in the bellow screen"
-#: hiddifypanel/panel/admin/Actions.py:174
+#: hiddifypanel/panel/admin/Actions.py:175
 msgid "see the log in the bellow screen"
 msgstr "📑 请参阅以下日志："
 
 # | msgid ""
 # | "✔️ Success! Please Wait around 5 minutes to make sure everything is
 # updated"
-#: hiddifypanel/panel/admin/Actions.py:201
+#: hiddifypanel/panel/admin/Actions.py:202
 msgid "Success! Please wait around 5 minutes to make sure everything is updated."
 msgstr "✔️ 成功！ 请等待大约 5 分钟，以确保所有内容更新完成。"
 
@@ -233,7 +233,7 @@ msgstr "🌏 还原域名"
 msgid "Restore Domain description"
 msgstr "选择此选项以恢复您的域名"
 
-# | msgid "Override Owner in Backup"
+# | msgid "🔁 Override Owner in Backup"
 #: hiddifypanel/panel/admin/Backup.py:87
 msgid "Override Root Admin"
 msgstr "获取管理员权限"
@@ -247,8 +247,8 @@ msgstr "当前用户将获取管理员权限"
 #: hiddifypanel/panel/admin/Backup.py:88
 #: hiddifypanel/panel/admin/ProxyAdmin.py:98
 #: hiddifypanel/panel/admin/ProxyAdmin.py:129
-#: hiddifypanel/panel/admin/QuickSetup.py:85
-#: hiddifypanel/panel/admin/QuickSetup.py:118
+#: hiddifypanel/panel/admin/QuickSetup.py:86
+#: hiddifypanel/panel/admin/QuickSetup.py:119
 #: hiddifypanel/panel/admin/SettingAdmin.py:270
 msgid "Submit"
 msgstr "提交"
@@ -261,10 +261,10 @@ msgstr "提交"
 # "href=\"https://github.com/hiddify/hiddify-config/wiki/راهنمای-تنظیم-دامنه-و-"
 # | "نهایی-کردن-نصب#آموزش-ساخت-زیردامنه\"> Help</a> to learn how to create a "
 # | "subdomain."
-#: hiddifypanel/panel/admin/ChildAdmin.py:32
-#: hiddifypanel/panel/admin/DomainAdmin.py:38
-#: hiddifypanel/panel/admin/QuickSetup.py:110
-#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:32
+#: hiddifypanel/panel/admin/ChildAdmin.py:33
+#: hiddifypanel/panel/admin/DomainAdmin.py:40
+#: hiddifypanel/panel/admin/QuickSetup.py:111
+#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:33
 #: hiddifypanel/templates/flaskadmin-layout.html:101
 #: hiddifypanel/templates/flaskadmin-layout.html:137
 msgid "domain.description"
@@ -281,9 +281,9 @@ msgstr ""
 # since the use of this IP is not for proxy and it is a simple website, this
 # domain and IP will never be blocked and your users can easily update new
 # profiles."
-#: hiddifypanel/panel/admin/ChildAdmin.py:33
-#: hiddifypanel/panel/admin/DomainAdmin.py:41
-#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:34
+#: hiddifypanel/panel/admin/ChildAdmin.py:34
+#: hiddifypanel/panel/admin/DomainAdmin.py:43
+#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:35
 msgid ""
 "You can select the configs with which domains show be shown in the user "
 "area. If you select all, automatically, all the new domains will be added"
@@ -295,33 +295,33 @@ msgstr ""
 "未用于代理，而只是创建一个简单的网站，因此该域名和 IP 永远不会被阻止，您的用户可以轻松更新配置文件。"
 
 # | msgid "Domain"
-#: hiddifypanel/panel/admin/ChildAdmin.py:53
-#: hiddifypanel/panel/admin/DomainAdmin.py:72
-#: hiddifypanel/panel/admin/QuickSetup.py:110
-#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:54
+#: hiddifypanel/panel/admin/ChildAdmin.py:54
+#: hiddifypanel/panel/admin/DomainAdmin.py:74
+#: hiddifypanel/panel/admin/QuickSetup.py:111
+#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:55
 #: hiddifypanel/templates/flaskadmin-layout.html:100
 #: hiddifypanel/templates/flaskadmin-layout.html:136
 msgid "domain.domain"
 msgstr "域名"
 
 # | msgid "Show Configs of Domains"
-#: hiddifypanel/panel/admin/ChildAdmin.py:56
 #: hiddifypanel/panel/admin/ChildAdmin.py:57
-#: hiddifypanel/panel/admin/DomainAdmin.py:78
-#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:57
+#: hiddifypanel/panel/admin/ChildAdmin.py:58
+#: hiddifypanel/panel/admin/DomainAdmin.py:80
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:58
+#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:59
 msgid "Show Domains"
 msgstr "显示域名配置"
 
 # | msgid "Admin"
-#: hiddifypanel/panel/admin/ChildAdmin.py:64
-#: hiddifypanel/panel/admin/DomainAdmin.py:92
-#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:65
+#: hiddifypanel/panel/admin/ChildAdmin.py:65
+#: hiddifypanel/panel/admin/DomainAdmin.py:94
+#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:66
 msgid "admin link"
 msgstr "管理员"
 
 # | msgid "Domain is not correctly mapped to this Server!"
-#: hiddifypanel/panel/admin/ChildAdmin.py:109
+#: hiddifypanel/panel/admin/ChildAdmin.py:110
 msgid "Domain is not correctly mapped to this server!"
 msgstr "域名未正确指向该服务器！"
 
@@ -429,7 +429,7 @@ msgstr "子节点已被删除！"
 # | "🆎 <b>Fake Site:</b> Select this mode if you want to use a fake Domain
 # (e.g., Soft98.ir) to bypass SNI whitelist Proxy. (Not Recommended)\n"
 # | "<br>"
-#: hiddifypanel/panel/admin/DomainAdmin.py:39
+#: hiddifypanel/panel/admin/DomainAdmin.py:41
 msgid ""
 "Direct mode means you want to use your server directly (for usual use), "
 "CDN means that you use your server on behind of a CDN provider."
@@ -463,7 +463,7 @@ msgstr ""
 # you put a range of IPs The IP will be randomly selected from that range.\n"
 # | "Use <a target=\"_blank\" href=\"https://ip-format.hiddify.com\">this
 # link</a> to set personal IPs."
-#: hiddifypanel/panel/admin/DomainAdmin.py:40
+#: hiddifypanel/panel/admin/DomainAdmin.py:42
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.cdn_forced_host.description"
@@ -476,13 +476,13 @@ msgstr ""
 "format.hiddify.com\">该链接</a>来设置个人 IP。"
 
 # | msgid "The name that will be shown in the Configs for this Domain."
-#: hiddifypanel/panel/admin/DomainAdmin.py:42
-#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:33
+#: hiddifypanel/panel/admin/DomainAdmin.py:44
+#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:34
 msgid "The name shown in the configs for this domain."
 msgstr "将在此域名配置中显示的名称。"
 
 # | msgid "You can add several Sever Names in comma seperated format"
-#: hiddifypanel/panel/admin/DomainAdmin.py:43
+#: hiddifypanel/panel/admin/DomainAdmin.py:45
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 #: hiddifypanel/templates/flaskadmin-layout.html:120
@@ -491,106 +491,89 @@ msgstr "您可以用逗号分隔来添加多个服务名"
 
 # | msgid ""
 # | "This can be used for giving your Users a permanent non Blockable Links."
-#: hiddifypanel/panel/admin/DomainAdmin.py:44
+#: hiddifypanel/panel/admin/DomainAdmin.py:46
 msgid "This can be used for giving your users a permanent non blockable links."
 msgstr "可为您的用户提供一个永久的未封锁链接。"
 
 # | msgid "ℹ️ gRPC is a H2 based Protocol. Maybe it is faster for you!"
-#: hiddifypanel/panel/admin/DomainAdmin.py:45
+#: hiddifypanel/panel/admin/DomainAdmin.py:47
 msgid "gRPC is a H2 based protocol. Maybe it is faster for you!"
 msgstr "ℹ️ gRPC 是一个基于 H2 的协议。也许它对你来说更快！"
 
 # | msgid "Invalid REALITY Hostnames"
-#: hiddifypanel/panel/admin/DomainAdmin.py:63
+#: hiddifypanel/panel/admin/DomainAdmin.py:65
 msgid "Invalid REALITY hostnames"
 msgstr "无效的 REALITY 主机名"
 
 # | msgid "🌍 Use Only for Subscription Link"
-#: hiddifypanel/panel/admin/DomainAdmin.py:73
+#: hiddifypanel/panel/admin/DomainAdmin.py:75
 msgid "Only for sublink?"
 msgstr "🌍 仅用于定语链接"
 
 # | msgid "Mode"
-#: hiddifypanel/panel/admin/DomainAdmin.py:74
+#: hiddifypanel/panel/admin/DomainAdmin.py:76
 msgid "domain.mode"
 msgstr "模式"
 
 # | msgid "🔂 Force Config to Use Following IPs"
-#: hiddifypanel/panel/admin/DomainAdmin.py:75
+#: hiddifypanel/panel/admin/DomainAdmin.py:77
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.cdn_forced_host.label"
 msgstr "🔂 强制配置使用以下 IP"
 
 # | msgid "IP"
-#: hiddifypanel/panel/admin/DomainAdmin.py:76
+#: hiddifypanel/panel/admin/DomainAdmin.py:78
 msgid "domain.ip"
 msgstr "知识产权"
 
 # | msgid "🌎 Reality Server Names"
-#: hiddifypanel/panel/admin/DomainAdmin.py:77
-#: hiddifypanel/panel/admin/DomainAdmin.py:142
+#: hiddifypanel/panel/admin/DomainAdmin.py:79
+#: hiddifypanel/panel/admin/DomainAdmin.py:144
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 #: hiddifypanel/templates/flaskadmin-layout.html:119
 msgid "config.reality_server_names.label"
 msgstr "🌎 Reality 服务名称"
 
-#: hiddifypanel/panel/admin/DomainAdmin.py:79
-#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:56
+#: hiddifypanel/panel/admin/DomainAdmin.py:81
+#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:57
 msgid "Alias"
 msgstr "别名"
 
 # | msgid "➿ gRPC"
-#: hiddifypanel/panel/admin/DomainAdmin.py:80
+#: hiddifypanel/panel/admin/DomainAdmin.py:82
 msgid "gRPC"
 msgstr "➿ gRPC"
 
-#: hiddifypanel/panel/admin/DomainAdmin.py:110
+#: hiddifypanel/panel/admin/DomainAdmin.py:112
 #: hiddifypanel/panel/admin/SettingAdmin.py:178
 msgid "All"
 msgstr "全部"
 
 # | msgid "You have already used this Domain in: "
-#: hiddifypanel/panel/admin/DomainAdmin.py:137
-#: hiddifypanel/panel/admin/DomainAdmin.py:142
+#: hiddifypanel/panel/admin/DomainAdmin.py:139
+#: hiddifypanel/panel/admin/DomainAdmin.py:144
 msgid "You have used this domain in: "
 msgstr "您已经在以下情况使用过该域名："
 
-# | msgid ""
-# | "Domain IP = %(domain_ip)s is not matched with your IP = %(server_ip)s
-# which "
-# | "is required in Direct Mode"
-#: hiddifypanel/panel/admin/DomainAdmin.py:186
-#, python-format
-msgid ""
-"Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which "
-"is required in direct mode"
-msgstr "域名 IP=%(domain_ip)s 与您的 IP=%(server_ip)s 不匹配，这在直连模式下是必需的"
-
-# | msgid ""
-# | "In CDN Mode, Domain IP =%(domain_ip)s should be different to your IP "
-# | "=%(server_ip)s"
-#: hiddifypanel/panel/admin/DomainAdmin.py:189
-#, python-format
-msgid ""
-"In CDN mode, Domain IP=%(domain_ip)s should be different to your "
-"ip=%(server_ip)s"
-msgstr "在 CDN 模式下，域名 IP=%(domain_ip)s 应该与您的 IP=%(server_ip)s 不同"
+#: hiddifypanel/panel/admin/DomainAdmin.py:150
+msgid "Couldn't find your ip addresses"
+msgstr ""
 
 # | msgid "Domain is Not REALITY Friendly!"
-#: hiddifypanel/panel/admin/DomainAdmin.py:219
-#: hiddifypanel/panel/admin/DomainAdmin.py:234
+#: hiddifypanel/panel/admin/DomainAdmin.py:221
+#: hiddifypanel/panel/admin/DomainAdmin.py:236
 msgid "Domain is not REALITY friendly!"
 msgstr "域名不支持 REALITY ！"
 
 # | msgid "REALITY Fallback Domain is not compaitble with Server names!"
-#: hiddifypanel/panel/admin/DomainAdmin.py:240
+#: hiddifypanel/panel/admin/DomainAdmin.py:242
 msgid "REALITY Fallback domain is not compaitble with server names!"
 msgstr "REALITY 回落域名与服务器名称不匹配！"
 
 # | msgid "⚠️ Error in Auto CDN Format"
-#: hiddifypanel/panel/admin/DomainAdmin.py:247
+#: hiddifypanel/panel/admin/DomainAdmin.py:249
 msgid "Error in auto cdn format"
 msgstr "⚠️ 自动 CDN 格式错误"
 
@@ -601,7 +584,7 @@ msgstr "错误！未设置域名前置。"
 
 # | msgid "There is an error in one of the fields."
 #: hiddifypanel/panel/admin/ProxyAdmin.py:72
-#: hiddifypanel/panel/admin/QuickSetup.py:74
+#: hiddifypanel/panel/admin/QuickSetup.py:75
 #: hiddifypanel/panel/admin/SettingAdmin.py:109
 msgid "config.validation-error"
 msgstr "有一个字段遇到错误"
@@ -614,74 +597,74 @@ msgid "config.domain_fronting.label"
 msgstr "🔒 启用 TLS 域名前置"
 
 # | msgid "Changing the Language was Successful."
-#: hiddifypanel/panel/admin/QuickSetup.py:46
+#: hiddifypanel/panel/admin/QuickSetup.py:47
 msgid "quicksetup.setlang.success"
 msgstr "更改语言成功"
 
 # | msgid "An error occurred while changing language."
-#: hiddifypanel/panel/admin/QuickSetup.py:48
+#: hiddifypanel/panel/admin/QuickSetup.py:49
 msgid "quicksetup.setlang.error"
 msgstr "更改语言时出错"
 
 # | msgid "🗺️ Admin Panel Language"
-#: hiddifypanel/panel/admin/QuickSetup.py:80
+#: hiddifypanel/panel/admin/QuickSetup.py:81
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.admin_lang.label"
 msgstr "🗺️ 管理面板语言"
 
 # | msgid "🇺🇸 English انگلیسی 英语"
-#: hiddifypanel/panel/admin/QuickSetup.py:80
+#: hiddifypanel/panel/admin/QuickSetup.py:81
 #: hiddifypanel/panel/admin/SettingAdmin.py:182
 msgid "lang.en"
 msgstr "English انگلیسی 英语"
 
 # | msgid "🇮🇷 Persian فارسی 波斯语"
-#: hiddifypanel/panel/admin/QuickSetup.py:80
+#: hiddifypanel/panel/admin/QuickSetup.py:81
 #: hiddifypanel/panel/admin/SettingAdmin.py:182
 msgid "lang.fa"
 msgstr "Persian فارسی 波斯语"
 
 # | msgid "🇵🇹 Portuguese پرتغالی 葡萄牙語"
-#: hiddifypanel/panel/admin/QuickSetup.py:80
+#: hiddifypanel/panel/admin/QuickSetup.py:81
 #: hiddifypanel/panel/admin/SettingAdmin.py:183
 msgid "lang.pt"
 msgstr "🇵🇹 Portuguese پرتغالی 葡萄牙語"
 
 # | msgid "🇨🇳 Chinese چینی 简体中文"
-#: hiddifypanel/panel/admin/QuickSetup.py:81
+#: hiddifypanel/panel/admin/QuickSetup.py:82
 #: hiddifypanel/panel/admin/SettingAdmin.py:182
 msgid "lang.zh"
 msgstr "🇨🇳 Chinese چینی 简体中文"
 
 # | msgid "🇷🇺 Russian روسی Русский"
-#: hiddifypanel/panel/admin/QuickSetup.py:81
+#: hiddifypanel/panel/admin/QuickSetup.py:82
 #: hiddifypanel/panel/admin/SettingAdmin.py:183
 msgid "lang.ru"
 msgstr "🇷🇺 Russian روسی Русский 俄语"
 
 # | msgid "Choose Language For Admin Area"
-#: hiddifypanel/panel/admin/QuickSetup.py:81
+#: hiddifypanel/panel/admin/QuickSetup.py:82
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.admin_lang.description"
 msgstr "为管理区域选择语言。"
 
 # | msgid "🌍 Country"
-#: hiddifypanel/panel/admin/QuickSetup.py:83
+#: hiddifypanel/panel/admin/QuickSetup.py:84
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.country.label"
 msgstr "🌍国家"
 
 # | msgid "🇮🇷 Iran"
-#: hiddifypanel/panel/admin/QuickSetup.py:83
+#: hiddifypanel/panel/admin/QuickSetup.py:84
 #: hiddifypanel/panel/admin/SettingAdmin.py:185
 msgid "Iran"
 msgstr "🇮🇷 伊朗"
 
 # | msgid "🇨🇳 China"
-#: hiddifypanel/panel/admin/QuickSetup.py:83
+#: hiddifypanel/panel/admin/QuickSetup.py:84
 #: hiddifypanel/panel/admin/SettingAdmin.py:185
 msgid "China"
 msgstr "🇨🇳 中国"
@@ -689,44 +672,44 @@ msgstr "🇨🇳 中国"
 # | msgid ""
 # | "It applies the appropriate settings for each country according to the "
 # | "filtering conditions of that country"
-#: hiddifypanel/panel/admin/QuickSetup.py:84
+#: hiddifypanel/panel/admin/QuickSetup.py:85
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.country.description"
 msgstr "它根据不同国家/地区的网络封锁情况，为该国家/地区启用相应设置"
 
 # | msgid "Error! Invalid Domain.  The Domain Format is www.google.com"
-#: hiddifypanel/panel/admin/QuickSetup.py:104
-#: hiddifypanel/panel/admin/QuickSetup.py:117
+#: hiddifypanel/panel/admin/QuickSetup.py:105
+#: hiddifypanel/panel/admin/QuickSetup.py:118
 #: hiddifypanel/panel/admin/SettingAdmin.py:211
 #: hiddifypanel/panel/admin/SettingAdmin.py:214
 msgid "config.Invalid domain"
 msgstr "错误！域名无效。域名格式为 www.google.com"
 
 # | msgid "Domain is exist in domains section. Use another Domain"
-#: hiddifypanel/panel/admin/QuickSetup.py:106
-#: hiddifypanel/panel/admin/QuickSetup.py:108
+#: hiddifypanel/panel/admin/QuickSetup.py:107
+#: hiddifypanel/panel/admin/QuickSetup.py:109
 #: hiddifypanel/panel/admin/SettingAdmin.py:218
 #: hiddifypanel/panel/admin/SettingAdmin.py:220
 msgid "config.Domain already used"
 msgstr "域名已存在于域名部分。请使用另一个域名"
 
 # | msgid "⛔️ Block Domestic Sites"
-#: hiddifypanel/panel/admin/QuickSetup.py:114
+#: hiddifypanel/panel/admin/QuickSetup.py:115
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.block_iran_sites.label"
 msgstr "⛔️ 封锁国内网站"
 
 # | msgid "Block domestic Sites to prevent detection by the government"
-#: hiddifypanel/panel/admin/QuickSetup.py:114
+#: hiddifypanel/panel/admin/QuickSetup.py:115
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.block_iran_sites.description"
 msgstr "屏蔽伊朗网站以防止被政府发现（实验：如果有问题，请禁用它并告诉我们。）"
 
 # | msgid "📺 Decoy Site"
-#: hiddifypanel/panel/admin/QuickSetup.py:116
+#: hiddifypanel/panel/admin/QuickSetup.py:117
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.decoy_domain.label"
@@ -740,7 +723,7 @@ msgstr "📺 诱饵网站"
 # | "⛔ Be sure to check the site and make sure that it is the right site,
 # otherwise you may receive a phishing warning.<br>\n"
 # | "⛔⛔ Check this domain again so that there is no problem in the future"
-#: hiddifypanel/panel/admin/QuickSetup.py:116
+#: hiddifypanel/panel/admin/QuickSetup.py:117
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.decoy_domain.description"
@@ -753,7 +736,7 @@ msgstr ""
 # | msgid ""
 # | "Domain (%(domain)s)-> IP = %(domain_ip)s is not same as your IP = "
 # | "%(server_ip)s . this is required in Direct Mode"
-#: hiddifypanel/panel/admin/QuickSetup.py:131
+#: hiddifypanel/panel/admin/QuickSetup.py:132
 #, python-format
 msgid ""
 "Domain (%(domain)s)-> IP=%(domain_ip)s is not matched with your "
@@ -1840,9 +1823,9 @@ msgid "config.warp_plus_code.label"
 msgstr "🔑 WARP Plus 密钥"
 
 # | msgid ""
-# | "🔝 Increases browsing speed. To get the Key, go to <a
-# href=\"https://t.me/hiddify_board\"> here </a>\n"
-# | "send a message\n"
+# | "🔝 Increases browsing speed. To get the Key, go to the <a
+# href=\"https://1.1.1.1/\"> 1.1.1.1 </a>\n"
+# | "app and purchase the original KEY from Cloudflare\n"
 # | "<br>\n"
 # | "⚠️ If there is an error in this Key, the WARP will be disabled."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
@@ -2522,115 +2505,159 @@ msgstr "悬停查询原因"
 msgid "The message was not sent to"
 msgstr "该消息未发送至"
 
+# | msgid "Hiddify Next"
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:165
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:331
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:333
+#, fuzzy
 msgid "app.hiddify.next.title"
-msgstr ""
+msgstr "下一个"
 
+# | msgid "HiddifyN"
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:167
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:199
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:201
+#, fuzzy
 msgid "app.hiddifyn.title"
-msgstr ""
+msgstr "希迪菲尼"
 
+# | msgid "V2RayNG"
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:169
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:211
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:213
+#, fuzzy
 msgid "app.v2rayng.title"
-msgstr ""
+msgstr "V2RayNG"
 
+# | msgid "HiddifyNG"
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:171
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:225
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:227
+#, fuzzy
 msgid "app.hiddifyng.title"
-msgstr ""
+msgstr "HiddifyNG"
 
+# | msgid "Hiddify Android"
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:173
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:238
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:240
+#, fuzzy
 msgid "app.hiddify-android.title"
-msgstr ""
+msgstr "Android 系统"
 
+# | msgid "FoXray"
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:175
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:250
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:252
+#, fuzzy
 msgid "app.foxray.title"
-msgstr ""
+msgstr "福克斯X射线"
 
+# | msgid "Shadowrocket"
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:177
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:262
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:264
+#, fuzzy
 msgid "app.shadowrocket.title"
-msgstr ""
+msgstr "暗影火箭"
 
+# | msgid "Streisand"
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:179
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:273
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:275
+#, fuzzy
 msgid "app.streisand.title"
-msgstr ""
+msgstr "史翠珊"
 
+# | msgid "Loon"
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:181
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:283
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:285
+#, fuzzy
 msgid "app.loon.title"
-msgstr ""
+msgstr "龙"
 
+# | msgid "Stash"
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:183
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:292
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:294
+#, fuzzy
 msgid "app.stash.title"
-msgstr ""
+msgstr "藏"
 
+# | msgid "Hiddify Clash"
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:185
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:304
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:306
+#, fuzzy
 msgid "app.hiddify.clash.title"
-msgstr ""
+msgstr "希迪冲突"
 
+# | msgid "HiddifyN Description"
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:200
+#, fuzzy
 msgid "app.hiddifyn.description"
-msgstr ""
+msgstr "HiddifyN 描述"
 
+# | msgid "V2RayNG Description"
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:212
+#, fuzzy
 msgid "app.v2rayng.description"
-msgstr ""
+msgstr "V2RayNG 说明"
 
+# | msgid "HiddifyNG Description"
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:226
+#, fuzzy
 msgid "app.hiddifyng.description"
-msgstr ""
+msgstr "HiddifyNG 说明"
 
+# | msgid "Hiddify Android Description"
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:239
+#, fuzzy
 msgid "app.hiddify-android.description"
-msgstr ""
+msgstr "Hiddify Android 说明"
 
+# | msgid "FoXray Description"
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:251
+#, fuzzy
 msgid "app.foxray.description"
-msgstr ""
+msgstr "福克斯射线描述"
 
+# | msgid "Shadowrocket Description"
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:263
+#, fuzzy
 msgid "app.shadowrocket.description"
-msgstr ""
+msgstr "暗影火箭描述"
 
+# | msgid "Streisand Description"
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:274
+#, fuzzy
 msgid "app.streisand.description"
-msgstr ""
+msgstr "史翠珊描述"
 
+# | msgid "Loon Description"
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:284
+#, fuzzy
 msgid "app.loon.description"
-msgstr ""
+msgstr "潜鸟描述"
 
+# | msgid "Stash Description"
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:293
+#, fuzzy
 msgid "app.stash.description"
-msgstr ""
+msgstr "藏匿描述"
 
+# | msgid "Hiddify Clash Description"
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:305
+#, fuzzy
 msgid "app.hiddify.clash.description"
-msgstr ""
+msgstr "Hiddify 冲突说明"
 
+# | msgid "Hiddify Next Description"
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:332
+#, fuzzy
 msgid "app.hiddify.next.description"
-msgstr ""
+msgstr "Hiddify 下一个说明"
 
 # | msgid ""
 # | "Hooray 🎉 🎉 🎉 \n"
@@ -2710,7 +2737,7 @@ msgid "admin.config.title"
 msgstr "设置"
 
 # | msgid "📅%(expire_days)s Days Remain"
-#: hiddifypanel/panel/user/link_maker.py:778
+#: hiddifypanel/panel/user/link_maker.py:779
 #, python-format
 msgid "📅%(expire_days)s days"
 msgstr "📅剩余：%(expire_days)s 天"
@@ -2719,7 +2746,7 @@ msgstr "📅剩余：%(expire_days)s 天"
 # | "Please open this link in a browser; it will expire in 5 minutes for
 # security"
 # | " reasons."
-#: hiddifypanel/panel/user/user.py:29
+#: hiddifypanel/panel/user/user.py:30
 msgid "This link will expire in 5 minutes"
 msgstr "请在浏览器中打开此链接；出于安全原因，它将在 5 分钟后过期。"
 
@@ -4099,7 +4126,7 @@ msgstr ""
 "<br>\n"
 "📦 Singbox：由 SagerNet 开发。这也是一个很好的核心"
 
-# | msgid "Additional Warp Sites"
+# | msgid "🆚 Additional Warp Sites"
 #: hiddifypanel/templates/fake.html:1
 msgid "config.warp_sites.label"
 msgstr "增加 Warp 站点"
@@ -4127,7 +4154,7 @@ msgstr ""
 "🚧 阻止恶意软件 1.1.1.2 <br>\n"
 "🔞 阻止色情 1.1.1.3"
 
-# | msgid "Direct Reality Port"
+# | msgid "↔️  Direct Reality Port"
 #: hiddifypanel/templates/fake.html:1
 msgid "config.reality_port.label"
 msgstr "直连 Reality 端口"
@@ -4486,6 +4513,25 @@ msgstr "动作"
 # | "Rebooting System ... This may take a few minutes. Please Wait ..."
 #~ msgid "rebooting system may takes time please wait"
 #~ msgstr "重新启动系统可能需要一些时间。请稍等..."
+
+# | msgid ""
+# | "Domain IP = %(domain_ip)s is not matched with your IP = %(server_ip)s
+# which "
+# | "is required in Direct Mode"
+#~ msgid ""
+#~ "Domain IP=%(domain_ip)s is not matched "
+#~ "with your ip=%(server_ip)s which is "
+#~ "required in direct mode"
+#~ msgstr "域名 IP=%(domain_ip)s 与您的 IP=%(server_ip)s 不匹配，这在直连模式下是必需的"
+
+# | msgid ""
+# | "In CDN Mode, Domain IP =%(domain_ip)s should be different to your IP "
+# | "=%(server_ip)s"
+#~ msgid ""
+#~ "In CDN mode, Domain IP=%(domain_ip)s "
+#~ "should be different to your "
+#~ "ip=%(server_ip)s"
+#~ msgstr "在 CDN 模式下，域名 IP=%(domain_ip)s 应该与您的 IP=%(server_ip)s 不同"
 
 #~ msgid ""
 #~ "The default user link is %(link)s. "

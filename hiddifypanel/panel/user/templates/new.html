@@ -4,15 +4,23 @@
     <meta charset="UTF-8" />
     {%set base='https://'+domain+'/'+hconfigs[ConfigEnum.proxy_path]+"/"+user.uuid+"/"%}
     <meta name="apple-itunes-app" content="app-id=6450534064, app-argument=streisand://import/{{base}}">
-
-    <link rel="icon" type="image/png" href="{{ static_url_for( filename='new/assets/hiddify-logo-7617d937.png' ) }}" />
+    
+    <link rel="icon" type="image/png" href="../static/new/assets/hiddify-logo-7617d937.png" />
+    <link rel="stylesheet" href="node_modules/smartbanner.js/dist/smartbanner.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Hiddify | Panel</title>
-    <script type="module" crossorigin src="{{ static_url_for( filename='new/assets/index-91c3f38e.js' ) }}"></script>
-    <link rel="stylesheet" href="{{ static_url_for( filename='new/assets/index-576afb2c.css' ) }}">
+    <script type="module" crossorigin src="../static/new/assets/index-ba8485db.js"></script>
+    <link rel="stylesheet" href="../static/new/assets/index-421b8480.css">
   </head>
   <body>
     <div id="root"></div>
     
+    <script src="node_modules/smartbanner.js/dist/smartbanner.min.js"></script>
+    <script>
+      window.userUuid = '{{user.uuid}}';
+      window.appVersion = '{{version}}';
+      window.deepLink = "hiddify://import/{{base}}"
+    </script>
   </body>
 </html>

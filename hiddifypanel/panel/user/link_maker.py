@@ -1,5 +1,6 @@
 from flask import g, request, render_template
 import enum
+from hiddifypanel import hutils
 from hiddifypanel.models import *
 import yaml
 import json
@@ -813,8 +814,8 @@ def get_all_validated_proxies(domains):
             options = []
             if type.proto in ['ssh', 'tuic', 'hysteria2']:
 
-                ip = hiddify.get_domain_ip(d.domain, version=4)
-                ip6 = hiddify.get_domain_ip(d.domain, version=6)
+                ip = hutils.ip.get_domain_ip(d.domain, version=4)
+                ip6 = hutils.ip.get_domain_ip(d.domain, version=6)
 
                 ips = [x for x in [ip, ip6]if x != None]
 

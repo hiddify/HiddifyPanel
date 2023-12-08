@@ -9,20 +9,25 @@ from flask_babelex import lazy_gettext as _
 from hiddifypanel.cache import cache
 from hiddifypanel.models import *
 from hiddifypanel.panel.database import db
-from hiddifypanel.utils import *
+from hiddifypanel.hutils.utils import *
 from wtforms.validators import ValidationError
 from hiddifypanel.Events import domain_changed
 from wtforms.validators import Regexp, ValidationError
 from datetime import datetime, timedelta
+from hiddifypanel import hutils
+from hiddifypanel.panel.run_commander import commander, Command
 
 to_gig_d = 1000*1000*1000
 
 
 def add_temporary_access():
     random_port = random.randint(30000, 50000)
-    exec_command(
-        f'sudo /opt/hiddify-manager/hiddify-panel/temporary_access.sh {random_port} &')
-    temp_admin_link = f"http://{get_ip(4)}:{random_port}{get_admin_path()}"
+    # exec_command(
+    #     f'sudo /opt/hiddify-manager/hiddify-panel/temporary_access.sh {random_port} &')
+
+    # run temporary_access.sh
+    commander(Command.temporary_access, port=random_port)
+    temp_admin_link = f"http://{hutils.ip.get_ip(4)}:{random_port}{get_admin_path()}"
     g.temp_admin_link = temp_admin_link
 
 
@@ -38,8 +43,11 @@ def add_short_link(link: str, period_min: int = 5) -> Tuple[str, datetime]:
                 return re.search(pattern, line).group(1), datetime.now() + timedelta(minutes=period_min)
 
     short_code = get_random_string(6, 10).lower()
-    exec_command(
-        f'sudo /opt/hiddify-manager/nginx/add2shortlink.sh {link} {short_code} {period_min} &')
+    # exec_command(
+    #     f'sudo /opt/hiddify-manager/nginx/add2shortlink.sh {link} {short_code} {period_min} &')
+
+    commander(Command.temporary_short_link, url=link, slug=short_code, period=period_min)
+
     return short_code, datetime.now() + timedelta(minutes=period_min)
 
 
@@ -97,63 +105,6 @@ def asset_url(path):
     return f"/{g.proxy_path}/{path}"
 
 
-@cache.cache(ttl=600)
-def get_direct_host_or_ip(prefer_version):
-    direct = Domain.query.filter(Domain.mode == DomainType.direct, Domain.sub_link_only == False).first()
-    if not (direct):
-        direct = Domain.query.filter(Domain.mode == DomainType.direct).first()
-    if direct:
-        direct = direct.domain
-    else:
-        direct = get_ip(prefer_version)
-    if not direct:
-        direct = get_ip(4 if prefer_version == 6 else 6)
-    return direct
-
-
-@cache.cache(ttl=600)
-def get_ip(version, retry=5):
-    ips = get_interface_public_ip(version)
-    ip = None
-    if (ips):
-        ip = random.sample(ips, 1)[0]
-
-    if ip is None:
-        ip = get_socket_public_ip(version)
-
-    if ip is None:
-        try:
-            ip = urllib.request.urlopen(f'https://v{version}.ident.me/').read().decode('utf8')
-
-        except:
-            pass
-    if ip is None and retry > 0:
-        ip = get_ip(version, retry=retry-1)
-    return ip
-
-
-def normalize_ipv6(address):
-    if type(address) == str and len(address) > 0:
-        if address[0] == '[' and address[-1] == ']':
-            return address[1:-1]
-
-    return address
-
-def are_ipv6_addresses_equal(address1, address2):
-    try:
-        address1 = normalize_ipv6(address1)
-        address2 = normalize_ipv6(address2)
-
-        ipv6_addr1 = ipaddress.ip_address(address1)
-        ipv6_addr2 = ipaddress.ip_address(address2)
-
-        return ipv6_addr1 == ipv6_addr2
-
-    except ValueError as e:
-        print(f"Invalid IPv6 address: {e}")
-        return False
-
-
 @cache.cache(ttl=300)
 def get_available_proxies(child_id):
     proxies = Proxy.query.filter(Proxy.child_id == child_id).all()
@@ -196,7 +147,10 @@ def quick_apply_users():
     #     else:
     #         xray_api.remove_client(user.uuid)
 
-    exec_command("sudo /opt/hiddify-manager/install.sh apply_users --no-gui")
+    # exec_command("sudo /opt/hiddify-manager/install.sh apply_users --no-gui")
+
+    # run install.sh apply_users
+    commander(Command.apply_users)
 
     time.sleep(1)
     return {"status": 'success'}
@@ -250,9 +204,9 @@ def check_connection_for_domain(domain):
             return res['status'] == 200
         except:
             try:
-                print(f"http://{get_domain_ip(domain)}/{path}")
+                print(f"http://{hutils.ip.get_domain_ip(domain)}/{path}")
                 res = requests.get(
-                    f"http://{get_domain_ip(domain)}/{path}", verify=False, timeout=10).json()
+                    f"http://{hutils.ip.get_domain_ip(domain)}/{path}", verify=False, timeout=10).json()
                 return res['status'] == 200
             except:
                 return False
@@ -296,7 +250,7 @@ def validate_domain_exist(form, field):
     domain = field.data
     if not domain:
         return
-    dip = get_domain_ip(domain)
+    dip = hutils.ip.get_domain_ip(domain)
     if dip == None:
         raise ValidationError(
             _("Domain can not be resolved! there is a problem in your domain"))
@@ -364,6 +318,7 @@ def dump_db_to_dict():
                          *[u.to_dict() for u in StrConfig.query.all()]]
             }
 
+
 def seperate_str_conf_from_bool_conf(hconfigs) -> Tuple[List[StrConfig], List[BoolConfig]]:
     str_confs = []
     bool_confs = []
@@ -372,7 +327,8 @@ def seperate_str_conf_from_bool_conf(hconfigs) -> Tuple[List[StrConfig], List[Bo
             bool_confs.append(value)
         elif isinstance(value, str):
             str_confs.append(value)
-    return (str_confs,bool_confs)
+    return (str_confs, bool_confs)
+
 
 def get_ids_without_parent(input_dict):
     selector = "uuid"
@@ -388,31 +344,11 @@ def get_ids_without_parent(input_dict):
                             or item.get(f'parent_admin_uuid') == item.get('uuid')
                             or item[f'parent_admin_uuid'] not in uuids]
     print("abondon uuids", uuids_without_parent)
-
     return uuids_without_parent
 
 
-def set_db_from_json(json_data, override_child_id=None, set_users=True, set_domains=True, set_proxies=True, set_settings=True, remove_domains=False, remove_users=False, override_unique_id=True, set_admins=True, override_root_admin=False, replace_owner_admin=False):
-    """
-    Sets the database from JSON data.
-
-    Args:
-        json_data (dict): The JSON data to set the database from.
-        override_child_id (str, optional): The child ID to override. Defaults to None.
-        set_users (bool, optional): Whether to set the users. Defaults to True.
-        set_domains (bool, optional): Whether to set the domains. Defaults to True.
-        set_proxies (bool, optional): Whether to set the proxies. Defaults to True.
-        set_settings (bool, optional): Whether to set the settings. Defaults to True.
-        remove_domains (bool, optional): Whether to remove the domains. Defaults to False.
-        remove_users (bool, optional): Whether to remove the users. Defaults to False.
-        override_unique_id (bool, optional): Whether to override the unique ID. Defaults to True.
-        set_admins (bool, optional): Whether to set the admins. Defaults to True.
-        override_root_admin (bool, optional): Whether to override the root admin. Defaults to False.
-        replace_owner_admin (bool, optional): Whether to replace the owner admin. Defaults to False.
-
-    Returns:
-        None
-    """
+def set_db_from_json(json_data, override_child_id=None, set_users=True, set_domains=True, set_proxies=True, set_settings=True, remove_domains=False, remove_users=False,
+                     override_unique_id=True, set_admins=True, override_root_admin=False, replace_owner_admin=False):
     new_rows = []
 
     uuids_without_parent = []
@@ -437,6 +373,18 @@ def set_db_from_json(json_data, override_child_id=None, set_users=True, set_doma
                 u['uuid'] = current_admin_or_owner().uuid
             if u['parent_admin_uuid'] in uuids_without_parent:
                 u['parent_admin_uuid'] = current_admin_or_owner().uuid
+        # fix admins hierarchy
+        if fix_admin_hierarchy and len(json_data['admin_users']) > 2:
+            hierarchy_is_ok = False
+            for u in json_data['admin_users']:
+                if u['uuid'] == current_admin_or_owner().uuid:
+                    continue
+                if u['parent_admin_uuid'] == current_admin_or_owner().uuid:
+                    hierarchy_is_ok = True
+                    break
+            if not hierarchy_is_ok:
+                json_data['admin_users'][1]['parent_admin_uuid'] = current_admin_or_owner().uuid
+
     if "users" in json_data and override_root_admin:
         for u in json_data['users']:
             if u['added_by_uuid'] in uuids_without_parent:
@@ -645,9 +593,9 @@ def is_domain_reality_friendly(domain):
 
 
 def debug_flash_if_not_in_the_same_asn(domain):
-    from hiddifypanel.panel.clean_ip import ipasn
-    ipv4 = get_ip(4)
-    dip = get_domain_ip(domain)
+    from hiddifypanel.hutils.auto_ip_selector import ipasn
+    ipv4 = hutils.ip.get_ip(4)
+    dip = hutils.ip.get_domain_ip(domain)
     try:
         if ipasn:
             asn_ipv4 = ipasn.get(ipv4)
@@ -802,3 +750,17 @@ def is_ssh_password_authentication_enabled():
                     return False
 
     return True
+
+
+@cache.cache(ttl=600)
+def get_direct_host_or_ip(prefer_version: int):
+    direct = Domain.query.filter(Domain.mode == DomainType.direct, Domain.sub_link_only == False).first()
+    if not (direct):
+        direct = Domain.query.filter(Domain.mode == DomainType.direct).first()
+    if direct:
+        direct = direct.domain
+    else:
+        direct = hutils.ip.get_ip(prefer_version)
+    if not direct:
+        direct = hutils.ip.get_ip(socket.AF_INET if prefer_version == socket.AF_INET6 else socket.AF_INET6)
+    return direct

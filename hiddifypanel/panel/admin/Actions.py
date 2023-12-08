@@ -2,21 +2,23 @@
 import pprint
 from flask_babelex import gettext as _
 import pathlib
-from hiddifypanel.models import *
-
 from datetime import datetime, timedelta, date
+from typing import Optional
 import os
 import sys
 import json
 import urllib.request
 import subprocess
 import re
-from hiddifypanel.panel import hiddify, usage
-from flask import current_app, render_template, request, Response, Markup, url_for, make_response, redirect
-from hiddifypanel.panel.hiddify import flash
 
 from flask_classful import FlaskView, route
+from flask import current_app, render_template, request, Response, Markup, url_for, make_response, redirect
 
+from hiddifypanel import hutils
+from hiddifypanel.models import *
+from hiddifypanel.panel import hiddify, usage
+from hiddifypanel.panel.run_commander import commander,Command
+from hiddifypanel.panel.hiddify import flash
 
 class Actions(FlaskView):
 
@@ -78,12 +80,14 @@ class Actions(FlaskView):
                                show_success=True,
                                domains=get_domains(),
 
-
-
                                )
-        file = "restart.sh"
-        config = current_app.config
-        subprocess.Popen(f"sudo {config['HIDDIFY_CONFIG_PATH']}/{file} --no-gui".split(" "), cwd=f"{config['HIDDIFY_CONFIG_PATH']}", start_new_session=True)
+        # file = "restart.sh"
+        # config = current_app.config
+        # subprocess.Popen(f"sudo {config['HIDDIFY_CONFIG_PATH']}/{file} --no-gui".split(" "), cwd=f"{config['HIDDIFY_CONFIG_PATH']}", start_new_session=True)
+        
+        # run restart.sh
+        commander(Command.restart_services)
+
         import time
         time.sleep(1)
         return resp
@@ -108,7 +112,6 @@ class Actions(FlaskView):
             flash((_('Your domains changed. Please do not forget to copy admin links, otherwise you can not access to the panel anymore.')), 'info')
         # flash(f'complete_install={complete_install} domain_changed={domain_changed} ', 'info')
         # return render_template("result.html")
-        config = current_app.config
         hiddify.add_temporary_access()
         file = "install.sh" if complete_install else "apply_configs.sh"
         try:
@@ -137,12 +140,14 @@ class Actions(FlaskView):
                                log_path=get_logpath("0-install.log"),
                                show_success=True,
                                domains=get_domains(),
-
-
-
                                )
 
-        subprocess.Popen(f"sudo {config['HIDDIFY_CONFIG_PATH']}/{file} --no-gui".split(" "), cwd=f"{config['HIDDIFY_CONFIG_PATH']}", start_new_session=True)
+        
+        #subprocess.Popen(f"sudo {config['HIDDIFY_CONFIG_PATH']}/{file} --no-gui".split(" "), cwd=f"{config['HIDDIFY_CONFIG_PATH']}", start_new_session=True)
+
+        # run install.sh or apply_configs.sh
+        commander(Command.install if complete_install else Command.apply)
+        
         import time
         time.sleep(1)
         return resp
@@ -158,17 +163,18 @@ class Actions(FlaskView):
     @hiddify.super_admin
     def status(self):
         # hiddify.add_temporary_access()
-        config = current_app.config
         # configs=read_configs()
         # subprocess.Popen(f"{config_dir}/update.sh",env=my_env,cwd=f"{config_dir}")
         # os.system(f'cd {config_dir};{env} ./install.sh &')
         # rc = subprocess.call(f"cd {config_dir};./{file} & disown",shell=True)
+
+        #subprocess.Popen(f"sudo {config['HIDDIFY_CONFIG_PATH']}/status.sh --no-gui".split(" "), cwd=f"{config['HIDDIFY_CONFIG_PATH']}", start_new_session=True)
+        
+        # run status.sh
+        commander(Command.status)
+
         from urllib.parse import urlparse
-
-        o = urlparse(request.base_url)
-        domain = o.hostname
-        subprocess.Popen(f"sudo {config['HIDDIFY_CONFIG_PATH']}/status.sh --no-gui".split(" "), cwd=f"{config['HIDDIFY_CONFIG_PATH']}", start_new_session=True)
-
+        domain = urlparse(request.base_url).hostname
         return render_template("result.html",
                                out_type="info",
                                out_msg=_("see the log in the bellow screen"),
@@ -187,15 +193,17 @@ class Actions(FlaskView):
     @hiddify.super_admin
     def update2(self):
         hiddify.add_temporary_access()
-        config = current_app.config
-        cwd = os.getcwd()
 
         # os.chdir(config_dir)
         # rc = subprocess.call(f"./install.sh &",shell=True)
         # rc = subprocess.call(f"cd {config_dir};./update.sh & disown",shell=True)
         # os.system(f'cd {config_dir};./update.sh &')
 
-        subprocess.Popen(f"sudo {config['HIDDIFY_CONFIG_PATH']}/update.sh --no-gui".split(" "), cwd=f"{config['HIDDIFY_CONFIG_PATH']}", start_new_session=True)
+        #subprocess.Popen(f"sudo {config['HIDDIFY_CONFIG_PATH']}/update.sh --no-gui".split(" "), cwd=f"{config['HIDDIFY_CONFIG_PATH']}", start_new_session=True)
+
+        # run update.sh
+        commander(Command.update)
+
         return render_template("result.html",
                                out_type="success",
                                out_msg=_("Success! Please wait around 5 minutes to make sure everything is updated."),
@@ -207,8 +215,8 @@ class Actions(FlaskView):
     def get_some_random_reality_friendly_domain(self):
         test_domain = request.args.get("test_domain")
         import ping3
-        from hiddifypanel.panel.clean_ip import ipasn, ipcountry
-        ipv4 = hiddify.get_ip(4)
+        from hiddifypanel.hutils.auto_ip_selector import ipasn, ipcountry
+        ipv4 = hutils.ip.get_ip(4)
         server_country = (ipcountry.get(ipv4) or {}).get('country', {}).get('iso_code', 'unknown')
         server_asn = (ipasn.get(ipv4) or {}).get('autonomous_system_organization', 'unknown')
         res = "<table><tr><th>Domain</th><th>IP</th><th>Country</th><th>ASN</th><th>Ping (ms)</th><th>TCP ping (ms)</th></tr>"
@@ -223,7 +231,7 @@ class Actions(FlaskView):
             print(d)
             tcp_ping = hiddify.is_domain_reality_friendly(d)
             if tcp_ping:
-                dip = hiddify.get_domain_ip(d)
+                dip = hutils.ip.get_domain_ip(d)
                 dip_country = (ipcountry.get(dip) or {}).get('country', {}).get('iso_code', 'unknown')
                 if dip_country == "IR":
                     continue
@@ -256,4 +264,4 @@ def get_logpath(logfile):
 
 
 def get_domains():
-    return [d.domain.replace("*", hiddify.get_random_string(3, 6)) for d in get_panel_domains(always_add_all_domains=True, always_add_ip=True)]
+    return [str(d.domain).replace("*", hiddify.get_random_string(3, 6)) for d in get_panel_domains(always_add_all_domains=True, always_add_ip=True)]

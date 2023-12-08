@@ -3,7 +3,7 @@ from .ProxyDetailsAdmin import ProxyDetailsAdmin
 from hiddifypanel.panel import hiddify
 from hiddifypanel.models import *
 from hiddifypanel.panel.database import db
-from hiddifypanel import Events
+from hiddifypanel import Events, hutils
 
 commercial = False
 
@@ -32,9 +32,9 @@ def config_changed_event(conf, old_value):
             set_hconfig(ConfigEnum.is_parent, False)
         if not old_value and conf.value:
             Domain.query.delete()
-            new_domain = hiddify.get_ip(4)+".sslip.io"
+            new_domain = hutils.get_ip(hutils.AF_INET)+".sslip.io"
             if not ParentDomain.query.filter(ParentDomain.domain == new_domain).first():
-                db.session.add(ParentDomain(domain=hiddify.get_ip(4)+".sslip.io"))
+                db.session.add(ParentDomain(domain=hutils.get_ip(hutils.AF_INET)+".sslip.io"))
                 db.session.commit()
 
 

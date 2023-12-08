@@ -3,11 +3,13 @@ import uuid
 
 import click
 from dateutil import relativedelta
+from hiddifypanel import hutils
 
 from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify, usage
 from hiddifypanel.panel.database import db
 from hiddifypanel.panel.init_db import init_db
+from hiddifypanel.panel.importer.xui import import_data
 
 
 def drop_db():
@@ -65,7 +67,7 @@ def all_configs():
 
     path = f'/{hconfig(ConfigEnum.proxy_path)}/{get_super_admin_secret()}/admin/'
 
-    server_ip = hiddify.get_ip(4)
+    server_ip = hutils.ip.get_ip(4)
     configs['admin_path'] = path
     configs['panel_links'] = []
     configs['panel_links'].append(f"http://{server_ip}{path}")
@@ -92,7 +94,7 @@ def admin_links():
     proxy_path = hconfig(ConfigEnum.proxy_path)
 
     admin_secret = get_super_admin_secret()
-    server_ip = hiddify.get_ip(4)
+    server_ip = hutils.ip.get_ip(4)
     admin_links = f"Not Secure (do not use it- only if others not work):\n   http://{server_ip}/{proxy_path}/{admin_secret}/admin/\n"
 
     domains = get_panel_domains()
@@ -232,3 +234,12 @@ def init_app(app):
         if len(data):
             db.session.bulk_save_objects(data)
         db.session.commit()
+
+    @ app.cli.command()
+    @ click.option("--xui_db_path", "-x")
+    def xui_importer(xui_db_path):
+        try:
+            import_data(xui_db_path)
+            print('success')
+        except Exception as e:
+            print(f'failed to import xui data: Error: {e}')
