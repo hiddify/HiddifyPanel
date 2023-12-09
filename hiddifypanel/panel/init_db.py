@@ -122,6 +122,8 @@ def init_db():
         db_version = ver
         db.session.commit()
         set_hconfig(ConfigEnum.db_version, db_version, commit=False)
+        p_link = ''
+        set_hconfig(ConfigEnum.parent_panel, p_link, commit=False)
 
     db.session.commit()
     return BoolConfig.query.all()
@@ -142,6 +144,8 @@ def init_db():
 def _v58():
     if Child.query.filter(Child.id == 0).first().unique_id != hconfig(ConfigEnum.unique_id):
         execute(f'update child set unique_id="{hconfig(ConfigEnum.unique_id)}" where id=0')
+
+
 def _v57():
     add_config_if_not_exist(ConfigEnum.warp_sites, "")
 

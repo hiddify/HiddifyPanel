@@ -7,7 +7,7 @@ from flask_bootstrap import SwitchField
 
 from flask_admin.base import expose
 # from gettext import gettext as _
-from hiddifypanel.panel import hiddify
+from hiddifypanel.panel import hiddify, hiddify_api
 
 
 import re
@@ -65,8 +65,8 @@ class ProxyAdmin(FlaskView):
             db.session.commit()
             hiddify.get_available_proxies.invalidate_all()
             hiddify.flash_config_success(restart_mode='apply', domain_changed=False)
-            # if hconfig(ConfigEnum.parent_panel):
-            #     hiddify_api.sync_child_to_parent()
+            if hconfig(ConfigEnum.parent_panel):
+                hiddify_api.sync_child_to_parent()
             global_config_form = get_global_config_form(True)
         else:
             flash((_('config.validation-error')), 'danger')

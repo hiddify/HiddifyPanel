@@ -16,9 +16,10 @@ from flask import current_app, render_template, request, Response, Markup, url_f
 
 from hiddifypanel import hutils
 from hiddifypanel.models import *
-from hiddifypanel.panel import hiddify, usage
-from hiddifypanel.panel.run_commander import commander,Command
+from hiddifypanel.panel import hiddify, hiddify_api, usage
+from hiddifypanel.panel.run_commander import commander, Command
 from hiddifypanel.panel.hiddify import flash
+
 
 class Actions(FlaskView):
 
@@ -84,7 +85,7 @@ class Actions(FlaskView):
         # file = "restart.sh"
         # config = current_app.config
         # subprocess.Popen(f"sudo {config['HIDDIFY_CONFIG_PATH']}/{file} --no-gui".split(" "), cwd=f"{config['HIDDIFY_CONFIG_PATH']}", start_new_session=True)
-        
+
         # run restart.sh
         commander(Command.restart_services)
 
@@ -100,11 +101,11 @@ class Actions(FlaskView):
     def reinstall2(self, complete_install=True, domain_changed=False):
         if int(hconfig(ConfigEnum.db_version)) < 9:
             return ("Please update your panel before this action.")
-        # if hconfig(ConfigEnum.parent_panel):
-        #     try:
-        #         hiddify_api.sync_child_to_parent()
-        #     except e as Exception:
-        #         flash(_('can not sync child with parent panel')+" "+e)
+        if hconfig(ConfigEnum.parent_panel):
+            try:
+                hiddify_api.sync_child_to_parent()
+            except Exception as e:
+                flash(_('can not sync child with parent panel')+" " + str(e), 'warning')
 
         domain_changed = request.args.get("domain_changed", str(domain_changed)).lower() == "true"
         complete_install = request.args.get("complete_install", str(complete_install)).lower() == "true"
@@ -142,12 +143,11 @@ class Actions(FlaskView):
                                domains=get_domains(),
                                )
 
-        
-        #subprocess.Popen(f"sudo {config['HIDDIFY_CONFIG_PATH']}/{file} --no-gui".split(" "), cwd=f"{config['HIDDIFY_CONFIG_PATH']}", start_new_session=True)
+        # subprocess.Popen(f"sudo {config['HIDDIFY_CONFIG_PATH']}/{file} --no-gui".split(" "), cwd=f"{config['HIDDIFY_CONFIG_PATH']}", start_new_session=True)
 
         # run install.sh or apply_configs.sh
         commander(Command.install if complete_install else Command.apply)
-        
+
         import time
         time.sleep(1)
         return resp
@@ -168,8 +168,8 @@ class Actions(FlaskView):
         # os.system(f'cd {config_dir};{env} ./install.sh &')
         # rc = subprocess.call(f"cd {config_dir};./{file} & disown",shell=True)
 
-        #subprocess.Popen(f"sudo {config['HIDDIFY_CONFIG_PATH']}/status.sh --no-gui".split(" "), cwd=f"{config['HIDDIFY_CONFIG_PATH']}", start_new_session=True)
-        
+        # subprocess.Popen(f"sudo {config['HIDDIFY_CONFIG_PATH']}/status.sh --no-gui".split(" "), cwd=f"{config['HIDDIFY_CONFIG_PATH']}", start_new_session=True)
+
         # run status.sh
         commander(Command.status)
 
@@ -199,7 +199,7 @@ class Actions(FlaskView):
         # rc = subprocess.call(f"cd {config_dir};./update.sh & disown",shell=True)
         # os.system(f'cd {config_dir};./update.sh &')
 
-        #subprocess.Popen(f"sudo {config['HIDDIFY_CONFIG_PATH']}/update.sh --no-gui".split(" "), cwd=f"{config['HIDDIFY_CONFIG_PATH']}", start_new_session=True)
+        # subprocess.Popen(f"sudo {config['HIDDIFY_CONFIG_PATH']}/update.sh --no-gui".split(" "), cwd=f"{config['HIDDIFY_CONFIG_PATH']}", start_new_session=True)
 
         # run update.sh
         commander(Command.update)
