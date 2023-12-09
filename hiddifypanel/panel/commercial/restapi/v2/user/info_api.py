@@ -44,6 +44,7 @@ class InfoAPI(MethodView):
         c = get_common_data(g.user_uuid, 'new')
 
         dto = ProfileSchema()
+        # user is exist for sure
         dto.profile_title = c['user'].name
         dto.profile_url = f"https://{urlparse(request.base_url).hostname}/{g.proxy_path}/{g.user_uuid}/#{g.user.name}"
         dto.profile_usage_current = g.user.current_usage_GB

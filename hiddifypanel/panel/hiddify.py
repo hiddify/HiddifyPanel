@@ -28,10 +28,16 @@ def add_temporary_access():
     g.temp_admin_link = temp_admin_link
 
 
-@cache.cache(ttl=600)
-# TODO: check this function functionality
-def add_short_link(link: str, period_min: int = 5) -> Tuple[str, datetime]:
+def add_short_link(link: str, period_min: int = 5) -> Tuple[str, int]:
+    short_code, expire_date = add_short_link_imp(link, period_min)
+    return short_code, (expire_date - datetime.now()).seconds
+
+
+@cache.cache(ttl=300)
+# TODO: Change ttl dynamically
+def add_short_link_imp(link: str, period_min: int = 5) -> Tuple[str, datetime]:
     # pattern = "\^/([^/]+)(/)?\?\$\ {return 302 " + re.escape(link) + ";}"
+
     pattern = r"([^/]+)\("
 
     with open(current_app.config['HIDDIFY_CONFIG_PATH']+"/nginx/parts/short-link.conf", 'r') as f:
@@ -736,7 +742,7 @@ def is_ssh_password_authentication_enabled():
     return True
 
 
-@cache.cache(ttl=600)
+@cache.cache(ttl=300)
 def get_direct_host_or_ip(prefer_version: int):
     direct = Domain.query.filter(Domain.mode == DomainType.direct, Domain.sub_link_only == False).first()
     if not (direct):
