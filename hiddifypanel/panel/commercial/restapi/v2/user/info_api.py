@@ -44,7 +44,8 @@ class InfoAPI(MethodView):
         c = get_common_data(g.user_uuid, 'new')
 
         dto = ProfileSchema()
-        dto.profile_title = c['user'].name if c.get('user') and c.get('user').name else c['profile_title'].split(' ')[1]
+        # user is exist for sure
+        dto.profile_title = c['user'].name
         dto.profile_url = f"https://{urlparse(request.base_url).hostname}/{g.proxy_path}/{g.user_uuid}/#{g.user.name}"
         dto.profile_usage_current = g.user.current_usage_GB
         dto.profile_usage_total = g.user.usage_limit_GB
