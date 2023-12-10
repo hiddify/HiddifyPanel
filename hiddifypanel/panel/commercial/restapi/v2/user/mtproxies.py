@@ -10,19 +10,23 @@ from hiddifypanel.models.domain import DomainType
 
 from hiddifypanel.panel.user.user import get_common_data
 from hiddifypanel.panel import hiddify
+from hiddifypanel.panel.authentication import api_auth
+
 
 class MtproxySchema(Schema):
     link = String(required=True)
     title = String(required=True)
 
+
 class MTProxiesAPI(MethodView):
     decorators = [hiddify.user_auth]
 
     @app.output(MtproxySchema(many=True))
+    @app.auth_required(api_auth)
     def get(self):
         # check mtproxie is enable
         if not hconfig(ConfigEnum.telegram_enable, g.user_uuid):
-            abort(status_code=404,message="Telegram mtproxy is not enable")
+            abort(status_code=404, message="Telegram mtproxy is not enable")
         # get domains
         c = get_common_data(g.user_uuid, 'new')
         dtos = []

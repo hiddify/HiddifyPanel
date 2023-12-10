@@ -12,6 +12,7 @@ from hiddifypanel.models.config_enum import ConfigEnum
 from hiddifypanel.panel import hiddify
 from hiddifypanel.panel.database import db
 from hiddifypanel.panel.user.user import get_common_data
+from hiddifypanel.panel.authentication import api_auth
 
 
 class ProfileSchema(Schema):
@@ -40,6 +41,7 @@ class InfoAPI(MethodView):
     decorators = [hiddify.user_auth]
 
     @app.output(ProfileSchema)
+    @app.auth_required(api_auth)
     def get(self):
         c = get_common_data(g.user_uuid, 'new')
 
@@ -62,6 +64,7 @@ class InfoAPI(MethodView):
         return dto
 
     @app.input(UserInfoChangableSchema, arg_name='data')
+    @app.auth_required(api_auth)
     def patch(self, data):
         if data['telegram_id']:
             try:

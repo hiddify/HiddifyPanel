@@ -2,13 +2,14 @@ from urllib.parse import urlparse
 from flask import g, request
 from flask import current_app as app
 from flask.views import MethodView
-from hiddifypanel.models.config import  hconfig
+from hiddifypanel.models.config import hconfig
 from hiddifypanel.models.config_enum import ConfigEnum
 from hiddifypanel.panel import hiddify
 from apiflask import Schema
 from apiflask.fields import String
 from hiddifypanel.panel.user.user import get_common_data
 from hiddifypanel.panel.user import link_maker
+from hiddifypanel.panel.authentication import api_auth
 
 
 class ConfigSchema(Schema):
@@ -20,10 +21,12 @@ class ConfigSchema(Schema):
     security = String(required=True)
     type = String(required=True)
 
+
 class AllConfigsAPI(MethodView):
     decorators = [hiddify.user_auth]
 
     @app.output(ConfigSchema(many=True))
+    @app.auth_required(api_auth)
     def get(self):
         def create_item(name, domain, type, protocol, transport, security, link):
             dto = ConfigSchema()
@@ -110,4 +113,3 @@ class AllConfigsAPI(MethodView):
             )
 
         return items
-

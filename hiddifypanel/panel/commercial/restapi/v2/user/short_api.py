@@ -9,6 +9,7 @@ from flask.views import MethodView
 from hiddifypanel.models.config import hconfig
 from hiddifypanel.models.config_enum import ConfigEnum
 from hiddifypanel.panel import hiddify
+from hiddifypanel.panel.authentication import api_auth
 
 
 class ShortSchema(Schema):
@@ -21,6 +22,7 @@ class ShortAPI(MethodView):
     decorators = [hiddify.user_auth]
 
     @app.output(ShortSchema)
+    @app.auth_required(api_auth)
     def get(self):
         short, expire_in = hiddify.add_short_link("/"+hconfig(ConfigEnum.proxy_path)+"/"+str(g.user_uuid)+"/")
         full_url = f"https://{urlparse(request.base_url).hostname}/{short}"
