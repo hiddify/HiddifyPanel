@@ -1,36 +1,33 @@
 #!/usr/bin/env python3
-import pprint
 from flask_babelex import gettext as _
-import pathlib
-from datetime import datetime, timedelta, date
-from typing import Optional
 import os
-import sys
-import json
 import urllib.request
-import subprocess
-import re
 
 from flask_classful import FlaskView, route
-from flask import current_app, render_template, request, Response, Markup, url_for, make_response, redirect
+from flask import render_template, request, Markup, url_for, make_response, redirect
+from flask import current_app as app
 
 from hiddifypanel import hutils
 from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify, usage
-from hiddifypanel.panel.run_commander import commander,Command
+from hiddifypanel.panel.run_commander import commander, Command
 from hiddifypanel.panel.hiddify import flash
+from hiddifypanel.panel.authentication import basic_auth
+
 
 class Actions(FlaskView):
 
-    @hiddify.super_admin
+    # @hiddify.super_admin
+    @app.auth_required(basic_auth, roles=['super_admin'])
     def index(self):
         return render_template('index.html')
 
-    @hiddify.super_admin
+    # @hiddify.super_admin
+    @app.auth_required(basic_auth, roles=['super_admin'])
     def reverselog(self, logfile):
         if logfile == None:
             return self.viewlogs()
-        config_dir = current_app.config['HIDDIFY_CONFIG_PATH']
+        config_dir = app.config['HIDDIFY_CONFIG_PATH']
 
         with open(f'{config_dir}/log/system/{logfile}') as f:
             lines = [line for line in f]
@@ -51,23 +48,27 @@ class Actions(FlaskView):
         response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
         return response
 
-    @hiddify.super_admin
+    # @hiddify.super_admin
+    @app.auth_required(basic_auth, roles=['super_admin'])
     def viewlogs(self):
-        config_dir = current_app.config['HIDDIFY_CONFIG_PATH']
+        config_dir = app.config['HIDDIFY_CONFIG_PATH']
         res = []
         for filename in sorted(os.listdir(f'{config_dir}/log/system/')):
             res.append(f"<a href='{url_for('admin.Actions:reverselog',logfile=filename)}'>{filename}</a>")
         return Markup("<br>".join(res))
 
     @route('apply_configs', methods=['POST'])
+    @app.auth_required(basic_auth, roles=['super_admin'])
     def apply_configs(self):
         return self.reinstall(False)
 
     @route('reset', methods=['POST'])
+    @app.auth_required(basic_auth, roles=['super_admin'])
     def reset(self):
         return self.reset2()
 
-    @hiddify.super_admin
+    # @hiddify.super_admin
+    @app.auth_required(basic_auth, roles=['super_admin'])
     def reset2(self):
         status = self.status()
         # flash(_("rebooting system may takes time please wait"),'info')
@@ -84,7 +85,7 @@ class Actions(FlaskView):
         # file = "restart.sh"
         # config = current_app.config
         # subprocess.Popen(f"sudo {config['HIDDIFY_CONFIG_PATH']}/{file} --no-gui".split(" "), cwd=f"{config['HIDDIFY_CONFIG_PATH']}", start_new_session=True)
-        
+
         # run restart.sh
         commander(Command.restart_services)
 
@@ -93,10 +94,12 @@ class Actions(FlaskView):
         return resp
 
     @route('reinstall', methods=['POST'])
+    @app.auth_required(basic_auth, roles=['super_admin'])
     def reinstall(self, complete_install=True, domain_changed=False):
         return self.reinstall2(complete_install, domain_changed)
 
-    @hiddify.super_admin
+    # @hiddify.super_admin
+    @app.auth_required(basic_auth, roles=['super_admin'])
     def reinstall2(self, complete_install=True, domain_changed=False):
         if int(hconfig(ConfigEnum.db_version)) < 9:
             return ("Please update your panel before this action.")
@@ -142,17 +145,17 @@ class Actions(FlaskView):
                                domains=get_domains(),
                                )
 
-        
-        #subprocess.Popen(f"sudo {config['HIDDIFY_CONFIG_PATH']}/{file} --no-gui".split(" "), cwd=f"{config['HIDDIFY_CONFIG_PATH']}", start_new_session=True)
+        # subprocess.Popen(f"sudo {config['HIDDIFY_CONFIG_PATH']}/{file} --no-gui".split(" "), cwd=f"{config['HIDDIFY_CONFIG_PATH']}", start_new_session=True)
 
         # run install.sh or apply_configs.sh
         commander(Command.install if complete_install else Command.apply)
-        
+
         import time
         time.sleep(1)
         return resp
 
-    @hiddify.super_admin
+    # @hiddify.super_admin
+    @app.auth_required(basic_auth, roles=['super_admin'])
     def change_reality_keys(self):
         key = hiddify.generate_x25519_keys()
         set_hconfig(ConfigEnum.reality_private_key, key['private_key'])
@@ -160,7 +163,8 @@ class Actions(FlaskView):
         hiddify.flash_config_success(restart_mode='apply', domain_changed=False)
         return redirect(url_for('admin.SettingAdmin:index'))
 
-    @hiddify.super_admin
+    # @hiddify.super_admin
+    @app.auth_required(basic_auth, roles=['super_admin'])
     def status(self):
         # hiddify.add_temporary_access()
         # configs=read_configs()
@@ -168,8 +172,8 @@ class Actions(FlaskView):
         # os.system(f'cd {config_dir};{env} ./install.sh &')
         # rc = subprocess.call(f"cd {config_dir};./{file} & disown",shell=True)
 
-        #subprocess.Popen(f"sudo {config['HIDDIFY_CONFIG_PATH']}/status.sh --no-gui".split(" "), cwd=f"{config['HIDDIFY_CONFIG_PATH']}", start_new_session=True)
-        
+        # subprocess.Popen(f"sudo {config['HIDDIFY_CONFIG_PATH']}/status.sh --no-gui".split(" "), cwd=f"{config['HIDDIFY_CONFIG_PATH']}", start_new_session=True)
+
         # run status.sh
         commander(Command.status)
 
@@ -187,10 +191,11 @@ class Actions(FlaskView):
     # @hiddify.super_admin
 
     @route('update', methods=['POST'])
+    @app.auth_required(basic_auth, roles=['super_admin'])
     def update(self):
         return self.update2()
 
-    @hiddify.super_admin
+    # @hiddify.super_admin
     def update2(self):
         hiddify.add_temporary_access()
 
@@ -199,7 +204,7 @@ class Actions(FlaskView):
         # rc = subprocess.call(f"cd {config_dir};./update.sh & disown",shell=True)
         # os.system(f'cd {config_dir};./update.sh &')
 
-        #subprocess.Popen(f"sudo {config['HIDDIFY_CONFIG_PATH']}/update.sh --no-gui".split(" "), cwd=f"{config['HIDDIFY_CONFIG_PATH']}", start_new_session=True)
+        # subprocess.Popen(f"sudo {config['HIDDIFY_CONFIG_PATH']}/update.sh --no-gui".split(" "), cwd=f"{config['HIDDIFY_CONFIG_PATH']}", start_new_session=True)
 
         # run update.sh
         commander(Command.update)
@@ -247,7 +252,8 @@ class Actions(FlaskView):
 
         return res+"</table>"
 
-    @hiddify.super_admin
+    # @hiddify.super_admin
+    @app.auth_required(basic_auth, roles=['super_admin'])
     def update_usage(self):
 
         import json

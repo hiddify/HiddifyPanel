@@ -1,40 +1,33 @@
 #!/usr/bin/env python3
 from urllib.parse import urlparse
-
-from hiddifypanel.panel.database import db
-import uuid
 from flask_babelex import gettext as _
 from flask_bootstrap import SwitchField
 # from flask_babelex import gettext as _
 import wtforms as wtf
 from flask_wtf import FlaskForm
-import pathlib
-from hiddifypanel.models import *
-from hiddifypanel.panel import hiddify
-from datetime import datetime, timedelta, date
-import os
-import sys
+from datetime import datetime
 import json
-import urllib.request
-import subprocess
-import re
-from hiddifypanel.panel import hiddify
-from flask import current_app, render_template, request, Response, Markup, url_for, jsonify, redirect, g
+import json
+from flask import render_template, request, jsonify, redirect, g
+from flask import current_app as app
 from hiddifypanel.panel.hiddify import flash
 from flask_wtf.file import FileField, FileRequired
-import json
-
 from flask_classful import FlaskView, route
+
+from hiddifypanel.panel.database import db
+from hiddifypanel.panel import hiddify
+from hiddifypanel.models import *
+from hiddifypanel.panel import hiddify
+from hiddifypanel.panel.authentication import basic_auth
 
 
 class Backup(FlaskView):
+    decorators = [app.auth_required(basic_auth, roles=['super_admin'])]
 
-    @hiddify.super_admin
     def index(self):
         return render_template('backup.html', restore_form=get_restore_form())
 
     # @route("/backupfile")
-    @hiddify.super_admin
     def backupfile(self):
         response = jsonify(
             hiddify.dump_db_to_dict()
@@ -45,7 +38,6 @@ class Backup(FlaskView):
 
         return response
 
-    @hiddify.super_admin
     def post(self):
 
         restore_form = get_restore_form()

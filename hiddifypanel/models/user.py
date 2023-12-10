@@ -272,12 +272,16 @@ def user_should_reset(user):
     return res
 
 
-def user_by_uuid(uuid):
+def get_user_by_uuid(uuid) -> User | None:
     return User.query.filter(User.uuid == uuid).first()
 
 
-def user_by_id(id):
+def user_by_id(id) -> User | None:
     return User.query.filter(User.id == id).first()
+
+
+def get_user_by_username(username) -> User | None:
+    return User.query.filter(User.username == username).first()
 
 # aliz dev
 

@@ -1,6 +1,4 @@
-from flask_admin.contrib import sqla
 from hiddifypanel import hutils
-from hiddifypanel.panel.database import db
 from wtforms.validators import Regexp
 from hiddifypanel.models import *
 from wtforms.validators import Regexp, ValidationError
@@ -9,17 +7,6 @@ from flask_babelex import gettext as __
 from flask_babelex import lazy_gettext as _
 from hiddifypanel.panel import hiddify
 from flask import Markup
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-from flask_admin import Admin
-from flask_admin.contrib.sqla import ModelView
-from wtforms import SelectMultipleField
-
-
-from wtforms.widgets import ListWidget, CheckboxInput
-from sqlalchemy.orm import backref
-# Define a custom field type for the related domains
-from flask_admin.form.fields import Select2TagsField, Select2Field
 
 
 class ChildAdmin(AdminLTEModelView):
@@ -62,7 +49,8 @@ class ChildAdmin(AdminLTEModelView):
 
     def _domain_admin_link(view, context, model, name):
         admin_link = f'https://{model.domain}{hiddify.get_admin_path()}'
-        return Markup(f'<div class="btn-group"><a href="{admin_link}" class="btn btn-xs btn-secondary">'+_("admin link")+f'</a><a href="{admin_link}" class="btn btn-xs btn-info ltr" target="_blank">{model.domain}</a></div>')
+        return Markup(f'<div class="btn-group"><a href="{admin_link}" class="btn btn-xs btn-secondary">' + _("admin link") +
+                      f'</a><a href="{admin_link}" class="btn btn-xs btn-info ltr" target="_blank">{model.domain}</a></div>')
 
     def _domain_ip(view, context, model, name):
         dip = hutils.ip.get_domain_ip(model.domain)

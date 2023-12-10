@@ -152,7 +152,7 @@ def add_or_update_admin(commit=True, **admin):
     return dbuser
 
 
-def get_admin_by_uuid(uuid, create=False):
+def get_admin_by_uuid(uuid, create=False) -> AdminUser | None:
     admin = AdminUser.query.filter(AdminUser.uuid == uuid).first()
     # print(admin)
     if create and not admin:
@@ -164,6 +164,10 @@ def get_admin_by_uuid(uuid, create=False):
         db.session.commit()
         admin = AdminUser.query.filter(AdminUser.uuid == uuid).first()
     return admin
+
+
+def get_admin_by_username(username) -> AdminUser | None:
+    return AdminUser.query.filter(AdminUser.username == username).first()
 
 
 def bulk_register_admins(users=[], commit=True):

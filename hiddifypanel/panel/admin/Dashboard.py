@@ -1,8 +1,8 @@
 import datetime
-import os
-import re
+
 
 from flask import render_template, url_for, request, jsonify, g, redirect
+from flask import current_app as app
 from apiflask import abort
 from flask_babelex import lazy_gettext as _
 from flask_classful import FlaskView, route
@@ -12,6 +12,7 @@ from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify
 from hiddifypanel.panel.database import db
 from hiddifypanel.panel.hiddify import flash
+from hiddifypanel.panel.authentication import basic_auth
 
 
 class Dashboard(FlaskView):
@@ -25,8 +26,9 @@ class Dashboard(FlaskView):
             usage_history=get_daily_usage_stats(admin_id)
         ))
 
+    @app.auth_required(basic_auth, roles=['super_admin', 'admin'])
     def index(self):
-        
+
         if hconfig(ConfigEnum.first_setup):
             return redirect(url_for("admin.QuickSetup:index"))
         if hiddifypanel.__release_date__ + datetime.timedelta(days=20) < datetime.datetime.now():
@@ -90,4 +92,3 @@ class Dashboard(FlaskView):
         db.session.commit()
         flash(_("child has been removed!"), "success")
         return self.index()
-

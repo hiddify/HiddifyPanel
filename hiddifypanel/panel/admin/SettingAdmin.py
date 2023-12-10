@@ -1,36 +1,38 @@
 import flask_babel
 import flask_babelex
-from hiddifypanel.models import BoolConfig, StrConfig, ConfigEnum, hconfig, ConfigCategory
-from wtforms.validators import Regexp, ValidationError
 from flask_babelex import lazy_gettext as _
 # from flask_babelex import gettext as _
+from flask import render_template, Markup, url_for, g
+from flask import current_app as app
 import wtforms as wtf
-from flask_wtf import FlaskForm, CSRFProtect
 from flask_bootstrap import SwitchField
 
-from flask_admin.base import expose
 # from gettext import gettext as _
-from hiddifypanel.panel.hiddify import get_random_domains
+from flask_classful import FlaskView
+from wtforms.fields import *
+from flask_wtf import FlaskForm
 
 import re
-from flask import render_template, current_app, Markup, url_for, g
-from apiflask import abort
-from hiddifypanel.panel.hiddify import flash
+
+from hiddifypanel.models import BoolConfig, StrConfig, ConfigEnum, hconfig, ConfigCategory
 from hiddifypanel.models import *
 from hiddifypanel.panel.database import db
-from wtforms.fields import *
-from flask_classful import FlaskView
+from hiddifypanel.panel.hiddify import flash
+from hiddifypanel.panel.hiddify import get_random_domains
 from hiddifypanel.panel import hiddify, custom_widgets
+from hiddifypanel.panel.authentication import basic_auth
 
 
 class SettingAdmin(FlaskView):
 
-    @hiddify.super_admin
+    # @hiddify.super_admin
+    @app.auth_required(basic_auth, roles=['super_admin'])
     def index(self):
         form = get_config_form()
         return render_template('config.html', form=form)
 
-    @hiddify.super_admin
+    # @hiddify.super_admin
+    @app.auth_required(basic_auth, roles=['super_admin'])
     def post(self):
         set_hconfig(ConfigEnum.first_setup, False)
         form = get_config_form()
@@ -188,8 +190,19 @@ def get_config_form():
                 field = wtf.fields.SelectField(_(f"config.{c.key}.label"), choices=[("release", _("Release")), ("beta", _("Beta")),
                                                ("develop", _("Develop"))], description=_(f"config.{c.key}.description"), default=hconfig(c.key))
             elif c.key == ConfigEnum.utls:
-                field = wtf.fields.SelectField(_(f"config.{c.key}.label"), choices=[("none", "None"), ("chrome", "Chrome"), ("edge", "Edge"), ("ios", "iOS"), ("android", "Android"), (
-                    "safari", "Safari"), ("firefox", "Firefox"), ('random', 'random'), ('randomized', 'randomized')], description=_(f"config.{c.key}.description"), default=hconfig(c.key))
+                field = wtf.fields.SelectField(
+                    _(f"config.{c.key}.label"),
+                    choices=[("none", "None"),
+                             ("chrome", "Chrome"),
+                             ("edge", "Edge"),
+                             ("ios", "iOS"),
+                             ("android", "Android"),
+                             ("safari", "Safari"),
+                             ("firefox", "Firefox"),
+                             ('random', 'random'),
+                             ('randomized', 'randomized')],
+                    description=_(f"config.{c.key}.description"),
+                    default=hconfig(c.key))
             elif c.key == ConfigEnum.telegram_lib:
                 # if hconfig(ConfigEnum.telegram_lib)=='python':
                 #     continue6
