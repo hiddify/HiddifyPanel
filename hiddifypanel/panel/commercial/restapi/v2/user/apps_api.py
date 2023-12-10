@@ -67,7 +67,7 @@ class AppInSchema(Schema):
 
 
 class AppAPI(MethodView):
-    decorators = [hiddify.user_auth]
+    decorators = [app.auth_required(api_auth, roles=['user'])]
 
     def __init__(self) -> None:
         super().__init__()
@@ -89,7 +89,6 @@ class AppAPI(MethodView):
 
     @app.input(AppInSchema, arg_name='data', location="query")
     @app.output(AppSchema(many=True))
-    @app.auth_required(api_auth)
     def get(self, data):
         # parse user agent
         if data['platform'] == Platform.auto:

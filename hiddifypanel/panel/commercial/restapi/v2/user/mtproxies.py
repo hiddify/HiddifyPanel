@@ -19,10 +19,9 @@ class MtproxySchema(Schema):
 
 
 class MTProxiesAPI(MethodView):
-    decorators = [hiddify.user_auth]
+    decorators = [app.auth_required(api_auth, roles=['user'])]
 
     @app.output(MtproxySchema(many=True))
-    @app.auth_required(api_auth)
     def get(self):
         # check mtproxie is enable
         if not hconfig(ConfigEnum.telegram_enable, g.user_uuid):

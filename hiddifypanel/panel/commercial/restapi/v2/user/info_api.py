@@ -6,7 +6,7 @@ from flask import g, request
 from flask import current_app as app
 
 from hiddifypanel.models import Lang
-from hiddifypanel.models.user import days_to_reset, user_by_uuid
+from hiddifypanel.models.user import days_to_reset, get_user_by_uuid
 from hiddifypanel.models.config import hconfig
 from hiddifypanel.models.config_enum import ConfigEnum
 from hiddifypanel.panel import hiddify
@@ -38,10 +38,9 @@ class UserInfoChangableSchema(Schema):
 
 
 class InfoAPI(MethodView):
-    decorators = [hiddify.user_auth]
+    decorators = [app.auth_required(api_auth, roles=['user'])]
 
     @app.output(ProfileSchema)
-    @app.auth_required(api_auth)
     def get(self):
         c = get_common_data(g.user_uuid, 'new')
 
@@ -64,7 +63,6 @@ class InfoAPI(MethodView):
         return dto
 
     @app.input(UserInfoChangableSchema, arg_name='data')
-    @app.auth_required(api_auth)
     def patch(self, data):
         if data['telegram_id']:
             try:
@@ -72,13 +70,13 @@ class InfoAPI(MethodView):
             except:
                 return {'message': 'The telegram id field is invalid'}
 
-            user = user_by_uuid(g.user_uuid)
+            user = get_user_by_uuid(g.user_uuid)
             if user.telegram_id != tg_id:
                 user.telegram_id = tg_id
                 db.session.commit()
 
         if data['language']:
-            user = user_by_uuid(g.user_uuid)
+            user = get_user_by_uuid(g.user_uuid)
             if user.lang != data['language']:
                 user.lang = data['language']
                 db.session.commit()

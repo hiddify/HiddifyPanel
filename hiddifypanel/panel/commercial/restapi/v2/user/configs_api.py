@@ -23,10 +23,9 @@ class ConfigSchema(Schema):
 
 
 class AllConfigsAPI(MethodView):
-    decorators = [hiddify.user_auth]
+    decorators = [app.auth_required(api_auth, roles=['user'])]
 
     @app.output(ConfigSchema(many=True))
-    @app.auth_required(api_auth)
     def get(self):
         def create_item(name, domain, type, protocol, transport, security, link):
             dto = ConfigSchema()
