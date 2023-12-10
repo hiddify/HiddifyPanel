@@ -1,4 +1,4 @@
-from flask import  jsonify, request
+from flask import jsonify, request
 from apiflask import abort
 from flask_restful import Resource
 # from flask_simplelogin import login_required
@@ -20,7 +20,7 @@ class UserResource(Resource):
     def get(self):
         uuid = request.args.get('uuid')
         if uuid:
-            user = user_by_uuid(uuid) or abort(404, "user not found")
+            user = get_user_by_uuid(uuid) or abort(404, "user not found")
             return jsonify(user.to_dict())
 
         users = User.query.all() or abort(502, "WTF!")
@@ -30,14 +30,14 @@ class UserResource(Resource):
         data = request.json
         uuid = data.get('uuid') or abort(422, "Parameter issue: 'uuid'")
         hiddify.add_or_update_user(**data)
-        user = user_by_uuid(uuid) or abort(502, "unknown issue! user is not added")
+        user = get_user_by_uuid(uuid) or abort(502, "unknown issue! user is not added")
         user_driver.add_client(user)
         hiddify.quick_apply_users()
         return jsonify({'status': 200, 'msg': 'ok'})
 
     def delete(self):
         uuid = request.args.get('uuid') or abort(422, "Parameter issue: 'uuid'")
-        user = user_by_uuid(uuid) or abort(404, "user not found")
+        user = get_user_by_uuid(uuid) or abort(404, "user not found")
         user.remove()
         hiddify.quick_apply_users()
         return jsonify({'status': 200, 'msg': 'ok'})
