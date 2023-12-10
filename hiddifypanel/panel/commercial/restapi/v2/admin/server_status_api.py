@@ -5,14 +5,16 @@ from apiflask.fields import Dict
 from apiflask import Schema
 from hiddifypanel.panel import hiddify
 from hiddifypanel.models import get_daily_usage_stats
+from hiddifypanel.panel.authentication import api_auth
+
 
 class ServerStatus(Schema):
-    stats = Dict(required=True,description="System stats")
-    usage_history = Dict(required=True,description="System usage history")
+    stats = Dict(required=True, description="System stats")
+    usage_history = Dict(required=True, description="System usage history")
 
 
 class AdminServerStatusApi(MethodView):
-    decorators = [hiddify.super_admin]
+    decorators = [app.auth_required(api_auth, roles=['super_admin', 'admin'])]
 
     @app.output(ServerStatus)
     def get(self):

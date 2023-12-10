@@ -1,18 +1,16 @@
-from flask import jsonify, request
-from flask_restful import Resource
-# from flask_simplelogin import login_required
-from hiddifypanel.models import *
-from hiddifypanel.panel import hiddify
 
-from flask.views import MethodView
-
+from apiflask.fields import Integer, String, UUID, Boolean, Enum
 from flask import current_app as app
+from flask.views import MethodView
+from apiflask import Schema
 from apiflask import abort
 
+
 from hiddifypanel.models import *
-from apiflask import Schema
-from apiflask.fields import Integer, String, UUID, Boolean, Enum
-from hiddifypanel.models import AdminMode,Lang
+from hiddifypanel.models import *
+from hiddifypanel.panel import hiddify
+from hiddifypanel.models import AdminMode, Lang
+from hiddifypanel.panel.authentication import api_auth
 
 
 class AdminSchema(Schema):
@@ -25,12 +23,11 @@ class AdminSchema(Schema):
                              # validate=OneOf([p.uuid for p in AdminUser.query.all()])
                              )
     telegram_id = Integer(required=True, description='The Telegram ID associated with the admin')
-    lang = Enum(Lang,required=True)
-
+    lang = Enum(Lang, required=True)
 
 
 class AdminUserApi(MethodView):
-    decorators = [hiddify.super_admin]
+    decorators = [app.auth_required(api_auth, roles=['super_admin', 'admin'])]
 
     @app.output(AdminSchema)
     def get(self, uuid):
@@ -48,4 +45,3 @@ class AdminUserApi(MethodView):
         admin = get_admin_user_db(uuid) or abort(404, "admin not found")
         admin.remove()
         return {'status': 200, 'msg': 'ok'}
-    

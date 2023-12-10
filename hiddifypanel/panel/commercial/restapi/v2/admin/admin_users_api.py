@@ -4,9 +4,11 @@ from flask.views import MethodView
 from .admin_user_api import AdminSchema
 from hiddifypanel.models import AdminUser
 from hiddifypanel.panel import hiddify
+from hiddifypanel.panel.authentication import api_auth
+
 
 class AdminUsersApi(MethodView):
-    decorators = [hiddify.super_admin]
+    decorators = [app.auth_required(api_auth, roles=['super_admin', 'admin'])]
 
     @app.output(AdminSchema(many=True))
     def get(self):
