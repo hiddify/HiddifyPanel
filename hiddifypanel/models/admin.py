@@ -2,6 +2,7 @@ import uuid as uuid_mod
 from enum import auto
 
 from flask import g
+from hiddifypanel import hutils
 from hiddifypanel.models.usage import DailyUsage
 from sqlalchemy_serializer import SerializerMixin
 from strenum import StrEnum
@@ -34,6 +35,8 @@ class AdminUser(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     uuid = db.Column(db.String(36), default=lambda: str(uuid_mod.uuid4()), nullable=False, unique=True)
     name = db.Column(db.String(512), nullable=False)
+    username = db.Column(db.String(16), nullable=True, default='')
+    password = db.Column(db.String(16), nullable=True, default='')
     mode = db.Column(db.Enum(AdminMode), default=AdminMode.agent, nullable=False)
     can_add_admin = db.Column(db.Boolean, default=False, nullable=False)
     max_users = db.Column(db.Integer, default=100, nullable=False)
@@ -174,3 +177,41 @@ def current_admin_or_owner():
     if g and hasattr(g, 'admin') and g.admin:
         return g.admin
     return AdminUser.query.filter(AdminUser.id == 1).first()
+
+
+def fill_username(admin: AdminUser) -> None:
+    minimum_username_length = 10
+    if not admin.username or len(admin.username) < 10:
+        base_username = ''
+        rand_str = ''
+        # if the username chats isn't only string.ascii_letters, it's invalid
+        # because we can't set non ascii characters in the http header (https://stackoverflow.com/questions/7242316/what-encoding-should-i-use-for-http-basic-authentication)
+        if admin.name and hutils.utils.is_assci_alphanumeric(admin.name):
+            # user actual name
+            base_username = admin.name.replace(' ', '_')
+            if len(base_username) > minimum_username_length - 1:
+                # check if the name is unique, if  it's not we add some random char to it
+                while AdminUser.query.filter(AdminUser.username == base_username + rand_str).first():
+                    rand_str = hutils.utils.get_random_string(2, 4)
+            else:
+                needed_length = minimum_username_length - len(base_username)
+                rand_str = hutils.utils.get_random_string(needed_length, needed_length)
+                while AdminUser.query.filter(AdminUser.username == base_username + rand_str).first():
+                    rand_str = hutils.utils.get_random_string(needed_length, needed_length)
+        else:
+            base_username = hutils.utils.get_random_string(minimum_username_length, minimum_username_length)
+            while AdminUser.query.filter(AdminUser.username == base_username + rand_str).first():
+                rand_str = hutils.utils.get_random_string(minimum_username_length, minimum_username_length)
+
+        admin.username = base_username + rand_str if rand_str else base_username
+
+
+def fill_password(admin: AdminUser) -> None:
+    # TODO: hash the password
+    if not admin.password or len(admin.password) < 16:
+        base_passwd = hutils.utils.get_random_password()
+        rand_str = ''
+        # if passwd is duplicated, we create another one
+        while AdminUser.query.filter(AdminUser.password == base_passwd + rand_str).first():
+            rand_str = hutils.utils.get_random_password()
+        admin.password = base_passwd + rand_str

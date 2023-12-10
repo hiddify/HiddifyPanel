@@ -37,12 +37,14 @@ def url_encode(strr):
     import urllib.parse
     return urllib.parse.quote(strr)
 
-def is_uuid_valid(uuid,version):
+
+def is_uuid_valid(uuid, version):
     try:
         uuid_obj = UUID(uuid, version=version)
     except ValueError:
         return False
     return str(uuid_obj) == uuid
+
 
 def error(str):
 
@@ -53,11 +55,14 @@ def static_url_for(**values):
     orig = url_for("static", **values)
     return orig.split("user_secret")[0]
 
+
 @cache.cache(ttl=60000)
 def get_latest_release_url(repo):
-            latest_url = requests.get(f'{repo}/releases/latest').url.strip()
-            version = latest_url.split('tag/')[1].strip()
-            return (latest_url,version)
+    latest_url = requests.get(f'{repo}/releases/latest').url.strip()
+    version = latest_url.split('tag/')[1].strip()
+    return (latest_url, version)
+
+
 @cache.cache(ttl=600)
 def get_latest_release_version(repo_name):
     try:
@@ -102,6 +107,22 @@ def get_random_string(min_=10, max_=30):
     characters = string.ascii_letters + string.digits
     result_str = ''.join(random.choice(characters) for i in range(length))
     return result_str
+
+
+def get_random_password(length: int = 16) -> str:
+    '''Retunrns a random password with fixed length'''
+    characters = string.ascii_letters + string.digits  # + '-'
+    while True:
+        passwd = ''.join(random.choice(characters) for i in range(length))
+        if (any(c.islower() for c in passwd) and any(c.isupper() for c in passwd) and sum(c.isdigit() for c in passwd) > 1):
+            return passwd
+
+
+def is_assci_alphanumeric(str):
+    for c in str:
+        if c not in string.ascii_letters + string.digits:
+            return False
+    return True
 
 
 def date_to_json(d):

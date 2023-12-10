@@ -2,6 +2,7 @@ import datetime
 import json
 import os
 import random
+import string
 import sys
 import uuid
 
@@ -25,6 +26,11 @@ def init_db():
     get_hconfigs.invalidate_all()
     db_version = int(hconfig(ConfigEnum.db_version) or 0)
     add_column(User.lang)
+    add_column(User.username)
+    add_column(User.password)
+    add_column(AdminUser.username)
+    add_column(AdminUser.password)
+
     if db_version == latest_db_version():
         return
     Events.db_prehook.notify()
@@ -138,6 +144,22 @@ def init_db():
 
 #     add_config_if_not_exist(ConfigEnum.hysteria_enable, True)
 #     add_config_if_not_exist(ConfigEnum.hysteria_port, random.randint(5000, 20000))
+def _v59():
+    # set user model username and password
+    for u in User.query.all():
+        user.fill_username(u)
+        user.fill_password(u)
+
+    # set admin model username and password
+    for a in AdminUser.query.all():
+        admin.fill_username(a)
+        admin.fill_password(a)
+
+
+def __fix_username_and_password(model_type: AdminUser | User):
+
+    pass
+
 
 def _v57():
     add_config_if_not_exist(ConfigEnum.warp_sites, "")

@@ -14,8 +14,10 @@ def verify_api_auth_token(token):
         return AdminUser.query.filter(AdminUser.uuid == token).first()
 
 
-# @basic_auth.verify_password
-# def verify_basic_auth_password(username, password):
-#     user = User.query.filter(User.username == username).first()
-#     if user and user.check_password(password):
-#         return user
+@basic_auth.verify_password
+def verify_basic_auth_password(username, password):
+    user = User.query.filter(User.username == username, User.password == password).first()
+    if user:
+        return user
+    else:
+        return AdminUser.query.filter(AdminUser.username == username, AdminUser.password == password).first()
