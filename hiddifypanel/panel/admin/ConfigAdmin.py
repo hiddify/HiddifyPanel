@@ -1,9 +1,9 @@
-from hiddifypanel.models import ConfigEnum, Domain
 import re
 import uuid
 
 from wtforms.validators import ValidationError
 
+from hiddifypanel.panel.authentication import AccountRole, standalone_verify
 from hiddifypanel.models import ConfigEnum, Domain
 from .adminlte import AdminLTEModelView
 
@@ -21,6 +21,9 @@ class ConfigAdmin(AdminLTEModelView):
             'readonly': True
         },
     }
+
+    def is_accessible(self):
+        return standalone_verify({AccountRole.super_admin, AccountRole.admin})
 
     @staticmethod
     def _is_valid_uuid(val: str, version: int | None = None):
@@ -41,7 +44,7 @@ class ConfigAdmin(AdminLTEModelView):
             if not self._is_valid_uuid(model.value):
                 raise ValidationError('Invalid UUID e.g.,' + str(uuid.uuid4()))
 
-        if model.key in [ConfigEnum.telegram_secret]:
+        if model.key in [ConfigEnum.telegratelem_secret]:
             if not re.match("^[0-9a-fA-F]{32}$", model.value):
                 raise ValidationError('Invalid UUID e.g.,' + uuid.uuid4().hex)
 

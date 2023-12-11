@@ -1,25 +1,22 @@
-from flask_admin.contrib import sqla
-from hiddifypanel.panel.database import db
 import datetime
-from hiddifypanel.models import *
-from flask import Markup, g, request, url_for
-from apiflask import abort
-from wtforms.validators import Regexp, ValidationError
-import re
 import uuid
-from hiddifypanel.drivers import user_driver
-from .adminlte import AdminLTEModelView
-# from gettext import gettext as _
-from flask_babelex import gettext as __
+import re
+
+from wtforms.validators import Regexp, ValidationError
+from flask import Markup, g, request, url_for
 from flask_babelex import lazy_gettext as _
-
 from wtforms.validators import NumberRange
+from .adminlte import AdminLTEModelView
+from flask_babelex import gettext as __
+from apiflask import abort
 
 
+from hiddifypanel.panel.authentication import standalone_verify, AccountRole
 from hiddifypanel.panel import hiddify, custom_widgets
 from hiddifypanel.panel.hiddify import flash
-from wtforms.fields import StringField
+from hiddifypanel.drivers import user_driver
 from flask_bootstrap import SwitchField
+from hiddifypanel.models import *
 
 
 class UserAdmin(AdminLTEModelView):
@@ -208,8 +205,8 @@ class UserAdmin(AdminLTEModelView):
         user_driver.remove_client(model)
         # hiddify.flash_config_success()
 
-    # def is_accessible(self):
-    #     return g.is_admin
+    def is_accessible(self):
+        return standalone_verify({AccountRole.super_admin, AccountRole.admin})
 
     def on_form_prefill(self, form, id=None):
         # print("================",form._obj.start_date)
@@ -273,8 +270,6 @@ class UserAdmin(AdminLTEModelView):
         # else:
         #     xray_api.remove_client(model.uuid)
         # hiddify.flash_config_success()
-    # def is_accessible(self):
-    #     return is_valid()
 
     def after_model_change(self, form, model, is_created):
         if hconfig(ConfigEnum.first_setup):

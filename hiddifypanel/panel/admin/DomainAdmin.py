@@ -1,9 +1,9 @@
 import ipaddress
 from hiddifypanel.models import *
 import re
-from hiddifypanel.panel.database import db
+from hiddifypanel.panel.authentication import AccountRole, standalone_verify
 from flask import Markup
-from flask import g, flash
+from flask import flash
 from flask_babelex import gettext as __
 from flask_babelex import lazy_gettext as _
 from hiddifypanel.panel.run_commander import Command, commander
@@ -284,7 +284,7 @@ class DomainAdmin(AdminLTEModelView):
             commander(Command.get_cert, domain=model.domain)
 
     def is_accessible(self):
-        return g.admin.mode in [AdminMode.admin, AdminMode.super_admin]
+        return standalone_verify([AccountRole.super_admin, AccountRole.admin])
 
     # def form_choices(self, field, *args, **kwargs):
     #     if field.type == "Enum":

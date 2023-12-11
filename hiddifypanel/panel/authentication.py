@@ -1,15 +1,48 @@
+from typing import Set
 from apiflask import HTTPBasicAuth, HTTPTokenAuth
 from hiddifypanel.models.user import User, get_user_by_uuid
 from hiddifypanel.models.admin import AdminUser, get_admin_by_uuid
 from flask import session
+from enum import auto
+from strenum import StrEnum
 
 basic_auth = HTTPBasicAuth()
 api_auth = HTTPTokenAuth("ApiKey")
 
 
+class AccountRole(StrEnum):
+    user = 'user'
+    admin = 'admin'
+    super_admin = 'super_admin'
+    agent = 'agent'
+
+
+def set_authentication_in_session(account: User | AdminUser) -> None:
+    session['account'] = {
+        'uuid': account.uuid,
+        'role': get_user_role(account),
+        # 'username': res.username,
+    }
+
+
+def verify_from_session(roles: Set[AccountRole] = set()) -> User | AdminUser | None:
+    if session.get('account'):
+        if roles:
+            if session['account']['role'] in roles:
+                if AccountRole.user in roles:
+                    return get_user_by_uuid(session['account']['uuid'])
+                else:
+                    return get_admin_by_uuid(session['account']['uuid'])
+        else:
+            if session['account']['role'] == AccountRole.user:
+                return get_user_by_uuid(session['account']['uuid'])
+            else:
+                return get_admin_by_uuid(session['account']['uuid'])
+
+
 @api_auth.get_user_roles
 @basic_auth.get_user_roles
-def get_user_role(user) -> str | None:
+def get_user_role(user) -> AccountRole | None:
     '''Returns user/admin role
      Allowed roles are:
      - for user:
@@ -20,32 +53,45 @@ def get_user_role(user) -> str | None:
         - agent
     '''
     if isinstance(user, User):
-        return 'user'
+        return AccountRole.user
     elif isinstance(user, AdminUser):
-        return str(user.mode)
+        match user.mode:
+            case 'super_admin':
+                return AccountRole.super_admin
+            case 'admin':
+                return AccountRole.admin
+            case 'agent':
+                return AccountRole.agent
 
 
 @basic_auth.verify_password
-def verify_basic_auth_password(username, password) -> str | None:
-    if session.get('account'):
-        if session['account']['role'] == 'user':
-            return get_user_by_uuid(session['account']['uuid'])
-        else:
-            return get_admin_by_uuid(session['account']['uuid'])
+def verify_basic_auth_password(username, password, check_session=True, roles: Set[AccountRole] = set()) -> AdminUser | User | None:
+    if check_session:
+        account = verify_from_session(roles)
+        if account:
+            return account
 
     username = username.strip()
     password = password.strip()
-    res = User.query.filter(User.username == username, User.password == password).first()
-    if not res:
-        res = AdminUser.query.filter(AdminUser.username == username, AdminUser.password == password).first()
+    account = None
+    if roles:
+        if AccountRole.user in roles:
+            account = User.query.filter(User.username == username, User.password == password).first()
+        else:
+            account = AdminUser.query.filter(AdminUser.username == username, AdminUser.password == password).first()
+    else:
+        account = User.query.filter(User.username == username, User.password == password).first()
+        if not account:
+            account = AdminUser.query.filter(AdminUser.username == username, AdminUser.password == password).first()
 
-    if res:
-        session['account'] = {
-            'uuid': res.uuid,
-            'role': get_user_role(res),
-            # 'username': res.username,
-        }
-    return res
+    if account:
+        if roles:
+            if account.mode in roles:
+                set_authentication_in_session(account)
+                return account
+        else:
+            set_authentication_in_session(account)
+            return account
 
 
 @api_auth.verify_token
@@ -54,5 +100,17 @@ def verify_api_auth_token(token) -> User | AdminUser | None:
     user = get_user_by_uuid(token)
     return user if user else get_admin_by_uuid(token)
 
+
+def standalone_verify(roles: Set[AccountRole]) -> bool:
+    '''This funciton is for ModelView-based views authentication'''
+    if verify_from_session(roles):
+        return True
+
+    auth = basic_auth.get_auth()
+    if auth:
+        account = verify_basic_auth_password(auth.username, auth.password, check_session=False, roles=roles)
+        if account:
+            return True
+    return False
 
 # ADD ERROR HANDLING TO AUTHENTICATIONS
