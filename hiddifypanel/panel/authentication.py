@@ -26,6 +26,8 @@ def get_user_role(user) -> str | None:
 
 @basic_auth.verify_password
 def verify_basic_auth_password(username, password) -> str | None:
+    username = username.strip()
+    password = password.strip()
     user = User.query.filter(User.username == username, User.password == password).first()
     if user:
         return user
