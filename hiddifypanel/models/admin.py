@@ -190,7 +190,7 @@ def fill_username(admin: AdminUser) -> None:
         rand_str = ''
         # if the username chats isn't only string.ascii_letters, it's invalid
         # because we can't set non ascii characters in the http header (https://stackoverflow.com/questions/7242316/what-encoding-should-i-use-for-http-basic-authentication)
-        if admin.name and hutils.utils.is_assci_alphanumeric(admin.name):
+        if admin.name:
             # user actual name
             base_username = admin.name.replace(' ', '_')
             if len(base_username) > minimum_username_length - 1:
