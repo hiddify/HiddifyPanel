@@ -4,18 +4,20 @@ from flask import url_for
 from flask import current_app as app
 from flask import g, request
 from apiflask import Schema, abort
-from apiflask.fields import String,URL,Enum,List,Nested
+from apiflask.fields import String, URL, Enum, List, Nested
 from flask_babelex import lazy_gettext as _
-from urllib.parse import quote_plus,urlparse
+from urllib.parse import quote_plus, urlparse
 import user_agents
 from strenum import StrEnum
 from enum import auto
 
 
 from hiddifypanel.panel.user.user import get_common_data
-from hiddifypanel.hutils.utils import get_latest_release_url,do_base_64
+from hiddifypanel.hutils.utils import get_latest_release_url, do_base_64
 
-#region App Api DTOs
+# region App Api DTOs
+
+
 class AppInstallType(StrEnum):
     google_play = auto()
     app_store = auto()
@@ -28,20 +30,24 @@ class AppInstallType(StrEnum):
     portable = auto()
     other = auto()
 
+
 class AppInstall(Schema):
     title = String()
-    type = Enum(AppInstallType,required=True,description='The platform that provides the app to download')
-    url = URL(required=True,description='The url to download the app')
+    type = Enum(AppInstallType, required=True, description='The platform that provides the app to download')
+    url = URL(required=True, description='The url to download the app')
+
 
 class AppSchema(Schema):
-    title = String(required=True,description='The title of the app')
-    description = String(required=True,description='The description of the app')
-    icon_url = URL(required=True,description='The icon url of the app')
+    title = String(required=True, description='The title of the app')
+    description = String(required=True, description='The description of the app')
+    icon_url = URL(required=True, description='The icon url of the app')
     guide_url = URL(description='The guide url of the app')
-    deeplink = URL(required=True,description='The deeplink of the app to imoprt configs')
-    install = List(Nested(AppInstall()),required=True,description='The install url of the app')
+    deeplink = URL(required=True, description='The deeplink of the app to imoprt configs')
+    install = List(Nested(AppInstall()), required=True, description='The install url of the app')
 
 # this class is not a Data Transfer Object, It's just an enum
+
+
 class Platform(StrEnum):
     all = auto()
     android = auto()
@@ -51,10 +57,12 @@ class Platform(StrEnum):
     mac = auto()
     auto = auto()
 
-class AppInSchema(Schema):
-    platform = Enum(Platform,load_default=Platform.auto,required=False,description='The platform (Operating System) to know what clients should be send. Possible values are: all, android, ios, windows, linux, mac, auto.')
-#endregion
 
+class AppInSchema(Schema):
+    platform = Enum(
+        Platform, load_default=Platform.auto, required=False,
+        description='The platform (Operating System) to know what clients should be send. Possible values are: all, android, ios, windows, linux, mac, auto.')
+# endregion
 
 
 class AppAPI(MethodView):
@@ -77,22 +85,22 @@ class AppAPI(MethodView):
         # self.clash_meta_all_sites = f"https://{domain}/{g.proxy_path}/{g.user_uuid}/clash/meta/all.yml?mode={c['mode']}&asn={c['asn']}&name={c['asn']}_mall_{domain}-{c['mode']}"
         # self.clash_meta_foreign_sites = f"https://{domain}/{g.proxy_path}/{g.user_uuid}/clash/meta/normal.yml?mode={c['mode']}&asn={c['asn']}&name={c['asn']}_mnormal_{domain}-{c['mode']}"
         self.clash_meta_blocked_sites = f"https://{domain}/{g.proxy_path}/{g.user_uuid}/clash/meta/lite.yml?mode={c['mode']}&asn={c['asn']}&name={c['asn']}_mlite_{domain}-{c['mode']}"
-    
+
     @app.input(AppInSchema, arg_name='data', location="query")
     @app.output(AppSchema(many=True))
-    def get(self,data):
+    def get(self, data):
         # parse user agent
         if data['platform'] == Platform.auto:
             platfrom = self.__get_ua_platform()
             if not platfrom:
-                abort(400,'Your selected platform is invalid!')
+                abort(400, 'Your selected platform is invalid!')
             self.platform = platfrom
         else:
             self.platform = data['platform']
 
         # output data
         apps_data = []
-        
+
         match self.platform:
             case Platform.all:
                 apps_data = self.__get_all_apps_dto()
@@ -102,27 +110,27 @@ class AppAPI(MethodView):
                 v2rayng_dto = self.__get_v2rayng_app_dto()
                 hiddify_clash_android_dto = self.__get_hiddify_clash_android_app_dto()
                 nekobox_dto = self.__get_nekobox_app_dto()
-                apps_data += ([hiddify_next_dto,hiddifyng_dto,v2rayng_dto,hiddify_clash_android_dto,nekobox_dto])
+                apps_data += ([hiddify_next_dto, hiddifyng_dto, v2rayng_dto, hiddify_clash_android_dto, nekobox_dto])
             case Platform.windows:
                 hiddify_next_dto = self.__get_hiddify_next_app_dto()
                 hiddify_clash_dto = self.__get_hiddify_clash_desktop_app_dto()
                 hiddifyn_dto = self.__get_hiddifyn_app_dto()
-                apps_data += ([hiddify_next_dto,hiddifyng_dto,hiddify_clash_dto,hiddifyn_dto])
+                apps_data += ([hiddify_next_dto, hiddify_clash_dto, hiddifyn_dto])
             case Platform.ios:
                 stash_dto = self.__get_stash_app_dto()
                 shadowrocket_dto = self.__get_shadowrocket_app_dto()
                 foxray_dto = self.__get_foxray_app_dto()
                 streisand_dto = self.__get_streisand_app_dto()
                 loon_dto = self.__get_loon_app_dto()
-                apps_data += ([streisand_dto,stash_dto,shadowrocket_dto,foxray_dto,loon_dto])              
+                apps_data += ([streisand_dto, stash_dto, shadowrocket_dto, foxray_dto, loon_dto])
             case Platform.linux:
                 hiddify_next_dto = self.__get_hiddify_next_app_dto()
                 hiddify_clash_dto = self.__get_hiddify_clash_desktop_app_dto()
-                apps_data += ([hiddify_next_dto,hiddify_clash_dto,])
+                apps_data += ([hiddify_next_dto, hiddify_clash_dto,])
             case Platform.mac:
                 hiddify_clash_dto = self.__get_hiddify_clash_desktop_app_dto()
                 hiddify_next_dto = self.__get_hiddify_next_app_dto()
-                apps_data += ([hiddify_next_dto,hiddify_clash_dto])
+                apps_data += ([hiddify_next_dto, hiddify_clash_dto])
 
         return apps_data
 
@@ -140,6 +148,7 @@ class AppAPI(MethodView):
             return Platform.linux
 
         return None
+
     def __get_all_apps_dto(self):
         hiddifyn_app_dto = self.__get_hiddifyn_app_dto()
         v2rayng_app_dto = self.__get_v2rayng_app_dto()
@@ -153,47 +162,48 @@ class AppAPI(MethodView):
         hiddify_clash_app_dto = self.__get_hiddify_clash_desktop_app_dto()
         hiddify_next_app_dto = self.__get_hiddify_next_app_dto()
         return [
-                hiddifyn_app_dto,v2rayng_app_dto,hiddifyng_app_dto,hiddify_android_app_dto,
-                foxray_app_dto,shadowrocket_app_dto,streisand_app_dto,
-                loon_app_dto,stash_app_dto,hiddify_clash_app_dto,hiddify_next_app_dto
-            ]
-    def __get_app_icon_url(self,app_name):
+            hiddifyn_app_dto, v2rayng_app_dto, hiddifyng_app_dto, hiddify_android_app_dto,
+            foxray_app_dto, shadowrocket_app_dto, streisand_app_dto,
+            loon_app_dto, stash_app_dto, hiddify_clash_app_dto, hiddify_next_app_dto
+        ]
+
+    def __get_app_icon_url(self, app_name):
         base = f'https://{urlparse(request.base_url).hostname}'
         url = ''
         if app_name == _('app.hiddify.next.title'):
-            url = base + url_for('static',filename='apps-icon/hiddify_next.ico')
+            url = base + url_for('static', filename='apps-icon/hiddify_next.ico')
         elif app_name == _('app.hiddifyn.title'):
-            url = base + url_for('static',filename='apps-icon/hiddifyn.ico')
+            url = base + url_for('static', filename='apps-icon/hiddifyn.ico')
         elif app_name == _('app.v2rayng.title'):
-            url = base + url_for('static',filename='apps-icon/v2rayng.ico')
+            url = base + url_for('static', filename='apps-icon/v2rayng.ico')
         elif app_name == _('app.hiddifyng.title'):
-            url = base + url_for('static',filename='apps-icon/hiddifyng.ico')
+            url = base + url_for('static', filename='apps-icon/hiddifyng.ico')
         elif app_name == _('app.hiddify-clash-android.title'):
-            url = base + url_for('static',filename='apps-icon/hiddify_android.ico')
+            url = base + url_for('static', filename='apps-icon/hiddify_android.ico')
         elif app_name == _('app.foxray.title'):
-            url = base + url_for('static',filename='apps-icon/foxray.ico')
+            url = base + url_for('static', filename='apps-icon/foxray.ico')
         elif app_name == _('app.shadowrocket.title'):
-            url = base + url_for('static',filename='apps-icon/shadowrocket.ico')
+            url = base + url_for('static', filename='apps-icon/shadowrocket.ico')
         elif app_name == _('app.streisand.title'):
-            url = base + url_for('static',filename='apps-icon/streisand.ico')
+            url = base + url_for('static', filename='apps-icon/streisand.ico')
         elif app_name == _('app.loon.title'):
-            url = base + url_for('static',filename='apps-icon/loon.ico')
+            url = base + url_for('static', filename='apps-icon/loon.ico')
         elif app_name == _('app.stash.title'):
-            url = base + url_for('static',filename='apps-icon/stash.ico')
+            url = base + url_for('static', filename='apps-icon/stash.ico')
         elif app_name == _('app.hiddify-clash-desktop.title'):
-            url = base + url_for('static',filename='apps-icon/hiddify_clash.ico')
+            url = base + url_for('static', filename='apps-icon/hiddify_clash.ico')
         elif app_name == _('app.nekobox.title'):
-            url = base + url_for(endpoint='static',filename='apps-icon/nekobox.ico')
+            url = base + url_for(endpoint='static', filename='apps-icon/nekobox.ico')
 
         return url
 
-    def __get_app_install_dto(self,install_type:AppInstallType,url,title=''):
-            install_dto = AppInstall()
-            install_dto.title = title
-            install_dto.type = install_type
-            install_dto.url = url
-            return install_dto
-    
+    def __get_app_install_dto(self, install_type: AppInstallType, url, title=''):
+        install_dto = AppInstall()
+        install_dto.title = title
+        install_dto.type = install_type
+        install_dto.url = url
+        return install_dto
+
     def __get_hiddifyn_app_dto(self):
         dto = AppSchema()
         dto.title = _('app.hiddifyn.title')
@@ -203,7 +213,7 @@ class AppAPI(MethodView):
         dto.deeplink = f'hiddify://install-sub?url={self.subscription_link_url}'
 
         ins_url = f'{self.hiddify_github_repo}/HiddifyN/releases/latest/download/HiddifyN.zip'
-        dto.install = [self.__get_app_install_dto(AppInstallType.portable,ins_url)]
+        dto.install = [self.__get_app_install_dto(AppInstallType.portable, ins_url)]
         return dto
 
     def __get_nekobox_app_dto(self):
@@ -216,8 +226,9 @@ class AppAPI(MethodView):
 
         latest_url, version = get_latest_release_url(f'https://github.com/MatsuriDayo/NekoBoxForAndroid')
         ins_url = latest_url.split('releases/')[0] + f'releases/download/{version}/NB4A-{version}-x86_64.apk'
-        dto.install = [self.__get_app_install_dto(AppInstallType.apk,ins_url)]
+        dto.install = [self.__get_app_install_dto(AppInstallType.apk, ins_url)]
         return dto
+
     def __get_v2rayng_app_dto(self):
         dto = AppSchema()
         dto.title = _('app.v2rayng.title')
@@ -225,12 +236,12 @@ class AppAPI(MethodView):
         dto.icon_url = self.__get_app_icon_url(_('app.v2rayng.title'))
         dto.guide_url = 'https://www.youtube.com/watch?v=6HncctDHXVs'
         dto.deeplink = f'v2rayng://install-sub/?url={self.user_panel_encoded_url}'
-                            
+
         # make v2rayng latest version url download
         latest_url, version = get_latest_release_url(f'https://github.com/2dust/v2rayNG/')
         github_ins_url = latest_url.split('releases/')[0] + f'releases/download/{version}/v2rayNG_{version}.apk'
         google_play_ins_url = 'https://play.google.com/store/apps/details?id=com.v2ray.ang'
-        dto.install = [self.__get_app_install_dto(AppInstallType.apk,github_ins_url),self.__get_app_install_dto(AppInstallType.google_play, google_play_ins_url)]
+        dto.install = [self.__get_app_install_dto(AppInstallType.apk, github_ins_url), self.__get_app_install_dto(AppInstallType.google_play, google_play_ins_url)]
         return dto
 
     def __get_hiddifyng_app_dto(self):
@@ -240,12 +251,11 @@ class AppAPI(MethodView):
         dto.icon_url = self.__get_app_icon_url(_('app.hiddifyng.title'))
         dto.guide_url = 'https://www.youtube.com/watch?v=qDbI72J-INM'
         dto.deeplink = f'hiddify://install-sub/?url={self.user_panel_encoded_url}'
-        
 
-        latest_url,version = get_latest_release_url(f'{self.hiddify_github_repo}/HiddifyNG/')
+        latest_url, version = get_latest_release_url(f'{self.hiddify_github_repo}/HiddifyNG/')
         github_ins_url = latest_url.split('releases/')[0] + f'releases/download/{version}/HiddifyNG.apk'
         google_play_ins_url = 'https://play.google.com/store/apps/details?id=ang.hiddify.com'
-        dto.install = [self.__get_app_install_dto(AppInstallType.apk,github_ins_url),self.__get_app_install_dto(AppInstallType.google_play, google_play_ins_url)]
+        dto.install = [self.__get_app_install_dto(AppInstallType.apk, github_ins_url), self.__get_app_install_dto(AppInstallType.google_play, google_play_ins_url)]
         return dto
 
     def __get_hiddify_clash_android_app_dto(self):
@@ -255,9 +265,9 @@ class AppAPI(MethodView):
         dto.icon_url = self.__get_app_icon_url(_('app.hiddify-clash-android.title'))
         dto.guide_url = 'https://www.youtube.com/watch?v=mUTfYd1_UCM'
         dto.deeplink = f'clash://install-config/?url={self.user_panel_encoded_url}'
-        latest_url,version = get_latest_release_url(f'{self.hiddify_github_repo}/HiddifyClashAndroid/')
+        latest_url, version = get_latest_release_url(f'{self.hiddify_github_repo}/HiddifyClashAndroid/')
         ins_url = latest_url.split('releases/')[0] + f'releases/download/{version}/hiddify-{version}-meta-alpha-universal-release.apk'
-        dto.install = [self.__get_app_install_dto(AppInstallType.apk,ins_url),]
+        dto.install = [self.__get_app_install_dto(AppInstallType.apk, ins_url),]
         return dto
 
     def __get_foxray_app_dto(self):
@@ -269,7 +279,7 @@ class AppAPI(MethodView):
         dto.deeplink = f'https://yiguo.dev/sub/add/?url={do_base_64(self.subscription_link_encoded_url)}#{self.profile_title}'
 
         ins_url = 'https://apps.apple.com/us/app/foxray/id6448898396'
-        dto.install = [self.__get_app_install_dto(AppInstallType.app_store,ins_url),]
+        dto.install = [self.__get_app_install_dto(AppInstallType.app_store, ins_url),]
         return dto
 
     def __get_shadowrocket_app_dto(self):
@@ -281,8 +291,9 @@ class AppAPI(MethodView):
         dto.deeplink = f'sub://{do_base_64(self.user_panel_url)}'
 
         ins_url = 'https://apps.apple.com/us/app/shadowrocket/id932747118'
-        dto.install = [self.__get_app_install_dto(AppInstallType.app_store,ins_url),]
+        dto.install = [self.__get_app_install_dto(AppInstallType.app_store, ins_url),]
         return dto
+
     def __get_streisand_app_dto(self):
         dto = AppSchema()
         dto.title = _('app.streisand.title')
@@ -291,8 +302,9 @@ class AppAPI(MethodView):
         dto.guide_url = 'https://www.youtube.com/watch?v=jaMkZTLH2QY'
         dto.deeplink = f'streisand://import/{self.user_panel_url}#{self.profile_title}'
         ins_url = 'https://apps.apple.com/app/id6450534064'
-        dto.install = [self.__get_app_install_dto(AppInstallType.app_store,ins_url),]
+        dto.install = [self.__get_app_install_dto(AppInstallType.app_store, ins_url),]
         return dto
+
     def __get_loon_app_dto(self):
         dto = AppSchema()
         dto.title = _('app.loon.title')
@@ -301,7 +313,8 @@ class AppAPI(MethodView):
         dto.guide_url = ''
         dto.deeplink = f'loon://import?nodelist={self.user_panel_encoded_url}'
         ins_url = 'https://apps.apple.com/app/id1373567447'
-        dto.install = [self.__get_app_install_dto(AppInstallType.app_store,ins_url)]
+        dto.install = [self.__get_app_install_dto(AppInstallType.app_store, ins_url)]
+
     def __get_stash_app_dto(self):
         dto = AppSchema()
         dto.title = _('app.stash.title')
@@ -311,7 +324,7 @@ class AppAPI(MethodView):
         dto.deeplink = f'clash://install-config/?url={self.user_panel_encoded_url}'
 
         ins_url = 'https://apps.apple.com/us/app/stash-rule-based-proxy/id1596063349'
-        dto.install = [self.__get_app_install_dto(AppInstallType.app_store,ins_url),]
+        dto.install = [self.__get_app_install_dto(AppInstallType.app_store, ins_url),]
         return dto
 
     def __get_hiddify_clash_desktop_app_dto(self):
@@ -322,41 +335,40 @@ class AppAPI(MethodView):
         dto.guide_url = 'https://www.youtube.com/watch?v=omGIz97mbzM'
         dto.deeplink = f'clash://install-config/?url={self.user_panel_encoded_url}'
         dto.install = []
-            
+
         # make hiddify clash latest version url download
         latest_url, version = get_latest_release_url(f'{self.hiddify_github_repo}/hiddifydesktop')
-        version = version.replace('v','')
+        version = version.replace('v', '')
 
         platform = self.platform
 
         if self.platform == Platform.all:
-            platform = [Platform.windows,Platform.linux,Platform.mac]
-        
+            platform = [Platform.windows, Platform.linux, Platform.mac]
+
         if isinstance(platform, list):
             for p in platform:
                 match p:
                     case Platform.windows:
                         ins_url = latest_url.split('releases/')[0] + f'releases/download/{version}/HiddifyClashDesktop_{version}_x64_en-US.msi'
-                        dto.install.append(self.__get_app_install_dto(AppInstallType.setup,ins_url))
+                        dto.install.append(self.__get_app_install_dto(AppInstallType.setup, ins_url))
                     case Platform.linux:
                         ins_url = latest_url.split('releases/')[0] + f'releases/download/{version}/hiddify-clash-desktop_{version}_amd64.AppImage'
-                        dto.install.append(self.__get_app_install_dto(AppInstallType.appimage,ins_url))
+                        dto.install.append(self.__get_app_install_dto(AppInstallType.appimage, ins_url))
                     case Platform.mac:
                         ins_url = latest_url.split('releases/')[0] + f'releases/download/{version}/HiddifyClashDesktop_{version}x64.dmg'
-                        dto.install.append(self.__get_app_install_dto(AppInstallType.dmg,ins_url))
+                        dto.install.append(self.__get_app_install_dto(AppInstallType.dmg, ins_url))
         else:
             match platform:
                 case Platform.windows:
                     ins_url = latest_url.split('releases/')[0] + f'releases/download/{version}/HiddifyClashDesktop_{version}_x64_en-US.msi'
-                    dto.install.append(self.__get_app_install_dto(AppInstallType.setup,ins_url))
+                    dto.install.append(self.__get_app_install_dto(AppInstallType.setup, ins_url))
                 case Platform.linux:
                     ins_url = latest_url.split('releases/')[0] + f'releases/download/{version}/hiddify-clash-desktop_{version}_amd64.AppImage'
-                    dto.install.append(self.__get_app_install_dto(AppInstallType.appimage,ins_url))
+                    dto.install.append(self.__get_app_install_dto(AppInstallType.appimage, ins_url))
                 case Platform.mac:
                     ins_url = latest_url.split('releases/')[0] + f'releases/download/{version}/HiddifyClashDesktop_{version}x64.dmg'
-                    dto.install.append(self.__get_app_install_dto(AppInstallType.dmg,ins_url))
-            
-                
+                    dto.install.append(self.__get_app_install_dto(AppInstallType.dmg, ins_url))
+
         return dto
 
     def __get_hiddify_next_app_dto(self):
@@ -370,18 +382,17 @@ class AppAPI(MethodView):
         # availabe installatoin types
         installation_types = []
         if self.platform == Platform.all:
-            installation_types = [AppInstallType.apk,AppInstallType.google_play,AppInstallType.setup,AppInstallType.portable,AppInstallType.appimage,AppInstallType.dmg]
+            installation_types = [AppInstallType.apk, AppInstallType.google_play, AppInstallType.setup, AppInstallType.portable, AppInstallType.appimage, AppInstallType.dmg]
         else:
             match self.platform:
                 case Platform.android:
-                    installation_types = [AppInstallType.apk,AppInstallType.google_play]
+                    installation_types = [AppInstallType.apk, AppInstallType.google_play]
                 case Platform.windows:
-                    installation_types = [AppInstallType.setup,AppInstallType.portable]
+                    installation_types = [AppInstallType.setup, AppInstallType.portable]
                 case Platform.linux:
                     installation_types = [AppInstallType.appimage]
                 case Platform.mac:
                     installation_types = [AppInstallType.dmg]
-            
 
         install_dtos = []
         for install_type in installation_types:
@@ -400,11 +411,9 @@ class AppAPI(MethodView):
                     ins_url = f'{self.hiddify_github_repo}/hiddify-next/releases/latest/download/hiddify-linux-x64.zip'
                 case AppInstallType.dmg:
                     ins_url = f'{self.hiddify_github_repo}/hiddify-next/releases/latest/download/hiddify-macos-universal.zip'
-            
-            install_dto = self.__get_app_install_dto(install_type,ins_url)
+
+            install_dto = self.__get_app_install_dto(install_type, ins_url)
             install_dtos.append(install_dto)
-        
+
         dto.install = install_dtos
         return dto
-        
-    
