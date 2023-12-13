@@ -1,4 +1,4 @@
-from flask import request, redirect
+from flask import render_template, request, redirect, g
 from flask_admin import Admin
 from hiddifypanel import Events
 from .DomainAdmin import DomainAdmin
@@ -8,7 +8,6 @@ from hiddifypanel.panel.database import db
 from hiddifypanel.models import *
 from apiflask import APIBlueprint
 from flask_adminlte3 import AdminLTE3
-
 
 flask_bp = APIBlueprint("flask", __name__, url_prefix=f"/<proxy_path>/<user_secret>/", template_folder="templates", enable_openapi=False)
 admin_bp = APIBlueprint("admin", __name__, url_prefix=f"/<proxy_path>/<user_secret>/admin/", template_folder="templates", enable_openapi=False)
@@ -33,6 +32,15 @@ def init_app(app):
     @app.doc(hide=True)
     def auto_route():
         return redirect(request.url.replace("http://", "https://")+"/")
+
+    @app.route('/<proxy_path>/<user_secret>/admin/')
+    @app.doc(hide=True)
+    def backward_compatibality():
+        # TODO: show a page that redirects to the new admin page
+        # TODO: handle none -browser requests
+        # return redirect(request.url_root.rstrip('/') + f"/{g.proxy_path}/admin/")
+
+        return render_template('redirect_to_admin.html', admin_link=request.url_root.replace('http://', 'https://').rstrip('/') + f"/{g.proxy_path}/admin/")
 
     # flaskadmin.init_app(app)
 
