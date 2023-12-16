@@ -10,7 +10,7 @@ from .user_api import UserSchema
 
 
 class UsersApi(MethodView):
-    decorators = [app.auth_required(api_auth, roles=['super_admin', 'admin'])]
+    decorators = [hiddify.admin]
 
     @app.output(UserSchema(many=True))
     def get(self):

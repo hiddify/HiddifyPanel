@@ -1,5 +1,6 @@
 import re
 import uuid
+from hiddifypanel.panel import hiddify
 
 from wtforms.validators import ValidationError
 
@@ -22,8 +23,9 @@ class ConfigAdmin(AdminLTEModelView):
         },
     }
 
+    @hiddify.admin
     def is_accessible(self):
-        return standalone_verify({AccountRole.super_admin, AccountRole.admin})
+        return True
 
     @staticmethod
     def _is_valid_uuid(val: str, version: int | None = None):

@@ -27,7 +27,7 @@ class AdminSchema(Schema):
 
 
 class AdminUserApi(MethodView):
-    decorators = [app.auth_required(api_auth, roles=['super_admin', 'admin'])]
+    decorators = [hiddify.admin]
 
     @app.output(AdminSchema)
     def get(self, uuid):

@@ -17,13 +17,11 @@ from hiddifypanel.panel.authentication import basic_auth
 
 class Actions(FlaskView):
 
-    # @hiddify.super_admin
-    @app.auth_required(basic_auth, roles=['super_admin'])
+    @hiddify.super_admin
     def index(self):
         return render_template('index.html')
 
     # @hiddify.super_admin
-    @app.auth_required(basic_auth, roles=['super_admin'])
     def reverselog(self, logfile):
         if logfile == None:
             return self.viewlogs()
@@ -48,8 +46,7 @@ class Actions(FlaskView):
         response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
         return response
 
-    # @hiddify.super_admin
-    @app.auth_required(basic_auth, roles=['super_admin'])
+    @hiddify.admin
     def viewlogs(self):
         config_dir = app.config['HIDDIFY_CONFIG_PATH']
         res = []
@@ -57,18 +54,17 @@ class Actions(FlaskView):
             res.append(f"<a href='{url_for('admin.Actions:reverselog',logfile=filename)}'>{filename}</a>")
         return Markup("<br>".join(res))
 
+    @hiddify.super_admin
     @route('apply_configs', methods=['POST'])
-    @app.auth_required(basic_auth, roles=['super_admin'])
     def apply_configs(self):
         return self.reinstall(False)
 
+    @hiddify.super_admin
     @route('reset', methods=['POST'])
-    @app.auth_required(basic_auth, roles=['super_admin'])
     def reset(self):
         return self.reset2()
 
-    # @hiddify.super_admin
-    @app.auth_required(basic_auth, roles=['super_admin'])
+    @hiddify.super_admin
     def reset2(self):
         status = self.status()
         # flash(_("rebooting system may takes time please wait"),'info')
@@ -93,13 +89,13 @@ class Actions(FlaskView):
         time.sleep(1)
         return resp
 
+    @hiddify.super_admin
     @route('reinstall', methods=['POST'])
-    @app.auth_required(basic_auth, roles=['super_admin'])
     def reinstall(self, complete_install=True, domain_changed=False):
         return self.reinstall2(complete_install, domain_changed)
 
     # @hiddify.super_admin
-    @app.auth_required(basic_auth, roles=['super_admin'])
+    @hiddify.super_admin
     def reinstall2(self, complete_install=True, domain_changed=False):
         if int(hconfig(ConfigEnum.db_version)) < 9:
             return ("Please update your panel before this action.")
@@ -154,8 +150,7 @@ class Actions(FlaskView):
         time.sleep(1)
         return resp
 
-    # @hiddify.super_admin
-    @app.auth_required(basic_auth, roles=['super_admin'])
+    @hiddify.super_admin
     def change_reality_keys(self):
         key = hiddify.generate_x25519_keys()
         set_hconfig(ConfigEnum.reality_private_key, key['private_key'])
@@ -163,8 +158,7 @@ class Actions(FlaskView):
         hiddify.flash_config_success(restart_mode='apply', domain_changed=False)
         return redirect(url_for('admin.SettingAdmin:index'))
 
-    # @hiddify.super_admin
-    @app.auth_required(basic_auth, roles=['super_admin'])
+    @hiddify.super_admin
     def status(self):
         # hiddify.add_temporary_access()
         # configs=read_configs()
@@ -188,14 +182,11 @@ class Actions(FlaskView):
                                domains=get_domains()
                                )
 
-    # @hiddify.super_admin
-
     @route('update', methods=['POST'])
-    @app.auth_required(basic_auth, roles=['super_admin'])
+    @hiddify.super_admin
     def update(self):
         return self.update2()
 
-    # @hiddify.super_admin
     def update2(self):
         hiddify.add_temporary_access()
 
@@ -252,8 +243,7 @@ class Actions(FlaskView):
 
         return res+"</table>"
 
-    # @hiddify.super_admin
-    @app.auth_required(basic_auth, roles=['super_admin'])
+    @hiddify.super_admin
     def update_usage(self):
 
         import json

@@ -24,9 +24,16 @@ from flask_classful import FlaskView
 
 
 class QuickSetup(FlaskView):
+    decorators = [hiddify.admin]
 
     def index(self):
-        return render_template('quick_setup.html', lang_form=get_lang_form(), form=get_quick_setup_form(), ipv4=hutils.ip.get_ip(4), ipv6=hutils.ip.get_ip(6), admin_link=admin_link(), show_domain_info=True)
+        return render_template(
+            'quick_setup.html', lang_form=get_lang_form(),
+            form=get_quick_setup_form(),
+            ipv4=hutils.ip.get_ip(4),
+            ipv6=hutils.ip.get_ip(6),
+            admin_link=admin_link(),
+            show_domain_info=True)
 
     def post(self):
         set_hconfig(ConfigEnum.first_setup, False)
@@ -48,7 +55,13 @@ class QuickSetup(FlaskView):
             else:
                 flash((_('quicksetup.setlang.error')), 'danger')
 
-            return render_template('quick_setup.html', form=get_quick_setup_form(True), lang_form=get_lang_form(), admin_link=admin_link(), ipv4=hutils.ip.get_ip(4), ipv6=hutils.ip.get_ip(6), show_domain_info=False)
+            return render_template(
+                'quick_setup.html', form=get_quick_setup_form(True),
+                lang_form=get_lang_form(),
+                admin_link=admin_link(),
+                ipv4=hutils.ip.get_ip(4),
+                ipv6=hutils.ip.get_ip(6),
+                show_domain_info=False)
 
         if quick_form.validate_on_submit():
             sslip_dm = Domain.query.filter(Domain.domain == f'{hutils.ip.get_ip(4)}.sslip.io').delete()
@@ -73,7 +86,12 @@ class QuickSetup(FlaskView):
             return action.reinstall(domain_changed=True)
         else:
             flash(_('config.validation-error'), 'danger')
-        return render_template('quick_setup.html', form=quick_form, lang_form=get_lang_form(True), ipv4=hutils.ip.get_ip(4), ipv6=hutils.ip.get_ip(6), admin_link=admin_link(), show_domain_info=False)
+        return render_template(
+            'quick_setup.html', form=quick_form, lang_form=get_lang_form(True),
+            ipv4=hutils.ip.get_ip(4),
+            ipv6=hutils.ip.get_ip(6),
+            admin_link=admin_link(),
+            show_domain_info=False)
 
 
 def get_lang_form(empty=False):
