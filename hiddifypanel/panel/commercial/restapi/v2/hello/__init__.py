@@ -5,7 +5,7 @@ from marshmallow import Schema, fields
 from flask import Blueprint
 from apiflask import APIBlueprint
 
-bp = APIBlueprint("api_hello", __name__, url_prefix="/<proxy_path>/<user_secret>/api/v2/hello/", enable_openapi=True)
+bp = APIBlueprint("api_hello", __name__, url_prefix="/<proxy_path>/api/v2/hello/", enable_openapi=True)
 
 
 def init_app(app):

@@ -9,8 +9,8 @@ from hiddifypanel.models import *
 from apiflask import APIBlueprint
 from flask_adminlte3 import AdminLTE3
 
-flask_bp = APIBlueprint("flask", __name__, url_prefix=f"/<proxy_path>/<user_secret>/", template_folder="templates", enable_openapi=False)
-admin_bp = APIBlueprint("admin", __name__, url_prefix=f"/<proxy_path>/<user_secret>/admin/", template_folder="templates", enable_openapi=False)
+flask_bp = APIBlueprint("flask", __name__, url_prefix=f"/<proxy_path>/", template_folder="templates", enable_openapi=False)
+admin_bp = APIBlueprint("admin", __name__, url_prefix=f"/<proxy_path>/admin/", template_folder="templates", enable_openapi=False)
 flaskadmin = Admin(endpoint="admin", base_template='flaskadmin-layout.html')
 
 
@@ -28,21 +28,10 @@ def init_app(app):
 
     Events.admin_prehook.notify(flaskadmin=flaskadmin, admin_bp=admin_bp)
 
-    @app.route('/<proxy_path>/<user_secret>/admin')
+    @app.route('/<proxy_path>/admin')
     @app.doc(hide=True)
-    def auto_route():
+    def auto_route(proxy_path=None, user_secret=None):
         return redirect(request.url.replace("http://", "https://")+"/")
-
-    @app.route('/<proxy_path>/<user_secret>/admin/')
-    @app.doc(hide=True)
-    def backward_compatibality():
-        # TODO: show a page that redirects to the new admin page
-        # TODO: handle none -browser requests
-        # return redirect(request.url_root.rstrip('/') + f"/{g.proxy_path}/admin/")
-
-        return render_template('redirect_to_admin.html', admin_link=request.url_root.replace('http://', 'https://').rstrip('/') + f"/{g.proxy_path}/admin/")
-
-    # flaskadmin.init_app(app)
 
     flaskadmin.add_view(UserAdmin(User, db.session))
     flaskadmin.add_view(DomainAdmin(Domain, db.session))
@@ -67,7 +56,7 @@ def init_app(app):
     # admin_bp.add_url_rule('/admin/quicksetup/',endpoint="quicksetup",view_func=QuickSetup.index,methods=["GET"])
     # admin_bp.add_url_rule('/admin/quicksetup/',endpoint="quicksetup-save", view_func=QuickSetup.save,methods=["POST"])
 
-    app.add_url_rule("/<proxy_path>/<user_secret>/admin/static/<filename>/", endpoint="admin.static")  # fix bug in admin with blueprint
+    app.add_url_rule("/<proxy_path>/admin/static/<filename>/", endpoint="admin.static")  # fix bug in admin with blueprint
 
     flask_bp.debug = True
     app.register_blueprint(admin_bp)

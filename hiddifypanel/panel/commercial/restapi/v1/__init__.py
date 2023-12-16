@@ -9,7 +9,7 @@ from .tgbot import bot, register_bot, TGBotResource
 from . import tgbot
 from .tgmsg import SendMsgResource
 from .resources import *
-bp = APIBlueprint("api", __name__, url_prefix="/<proxy_path>/<user_secret>/api/v1", tag="api_v1", enable_openapi=False)
+bp = APIBlueprint("api", __name__, url_prefix="/<proxy_path>/api/v1", tag="api_v1", enable_openapi=False)
 api = Api(bp)
 
 
