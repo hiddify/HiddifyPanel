@@ -16,32 +16,56 @@ class AccountRole(StrEnum):
     agent = 'agent'
 
 
-def set_authentication_in_session(account: User | AdminUser) -> None:
+@basic_auth.verify_password
+def verify_basic_auth_password(username, password) -> AdminUser | User | None:
+    username = username.strip()
+    password = password.strip()
+    if username and password:
+        return User.query.filter(
+            User.username == username, User.password == password).first() or AdminUser.query.filter(
+            AdminUser.username == username, AdminUser.password == password).first()
+
+
+@api_auth.verify_token
+def verify_api_auth_token(token) -> User | AdminUser | None:
+    # for now, token is the same as uuid
+    token = token.strip()
+    if token:
+        return get_user_by_uuid(token) or get_admin_by_uuid(token)
+
+    # we dont' set session for api auth
+    # if check_session:Admin
+    #     account = verify_from_session(roles)
+    #     if account:
+    #         return account
+
+
+def set_admin_authentication_in_session(admin: AdminUser) -> None:
     session['account'] = {
-        'uuid': account.uuid,
-        'role': get_user_role(account),
+        'uuid': admin.uuid,
+        'role': get_account_role(admin),
         # 'username': res.username,
     }
 
 
-def verify_from_session(roles: Set[AccountRole] = set()) -> User | AdminUser | None:
+def set_user_authentication_in_session(user: User) -> None:
+    session['user_sign'] = {'uuid': user.uuid}
+
+
+def verify_admin_authentication_from_session() -> User | AdminUser | None:
     if session.get('account'):
-        if roles:
-            if session['account']['role'] in roles:
-                if AccountRole.user in roles:
-                    return get_user_by_uuid(session['account']['uuid'])
-                else:
-                    return get_admin_by_uuid(session['account']['uuid'])
-        else:
-            if session['account']['role'] == AccountRole.user:
-                return get_user_by_uuid(session['account']['uuid'])
-            else:
-                return get_admin_by_uuid(session['account']['uuid'])
+        return get_user_by_uuid(session['account']['uuid']) or get_admin_by_uuid(session['account']['uuid'])
 
 
+def verify_user_authentication_from_session() -> User | AdminUser | None:
+    if session.get('user_sign'):
+        return get_user_by_uuid(session['user_sign']['uuid'])
+
+
+# actually this is not used, we authenticate the client and set in the flask.g object, then in views we re-authenticate with their roles to see if they have access to the view or not
 @api_auth.get_user_roles
 @basic_auth.get_user_roles
-def get_user_role(user) -> AccountRole | None:
+def get_account_role(account) -> AccountRole | None:
     '''Returns user/admin role
      Allowed roles are:
      - for user:
@@ -51,10 +75,10 @@ def get_user_role(user) -> AccountRole | None:
         - admin
         - agent
     '''
-    if isinstance(user, User):
+    if isinstance(account, User):
         return AccountRole.user
-    elif isinstance(user, AdminUser):
-        match user.mode:
+    elif isinstance(account, AdminUser):
+        match account.mode:
             case 'super_admin':
                 return AccountRole.super_admin
             case 'admin':
@@ -63,55 +87,37 @@ def get_user_role(user) -> AccountRole | None:
                 return AccountRole.agent
 
 
-@basic_auth.verify_password
-def verify_basic_auth_password(username, password, check_session=True, roles: Set[AccountRole] = set()) -> AdminUser | User | None:
-    username = username.strip()
-    password = password.strip()
-    if username and password:
-        account = None
-        if roles:
-            if AccountRole.user in roles:
-                account = User.query.filter(User.username == username, User.password == password).first()
-            else:
-                account = AdminUser.query.filter(AdminUser.username == username, AdminUser.password == password).first()
-        else:
-            account = User.query.filter(User.username == username, User.password == password).first()
-            if not account:
-                account = AdminUser.query.filter(AdminUser.username == username, AdminUser.password == password).first()
+def standalone_admin_basic_auth_verification() -> AdminUser | None:
+    auth = basic_auth.get_auth()
 
-        if account:
-            if roles:
-                if account.mode in roles:
-                    set_authentication_in_session(account)
-                    return account
-            else:
-                set_authentication_in_session(account)
-                return account
-
-    if check_session:
-        account = verify_from_session(roles)
+    if auth:
+        account = verify_basic_auth_password(auth.username, auth.password)
         if account:
             return account
 
-
-@api_auth.verify_token
-def verify_api_auth_token(token) -> User | AdminUser | None:
-    # for now, token is the same as uuid
-    user = get_user_by_uuid(token)
-    return user if user else get_admin_by_uuid(token)
+    return verify_admin_authentication_from_session()
 
 
-def standalone_verify(roles: Set[AccountRole]) -> bool:
-    '''This funciton is for ModelView-based views authentication'''
-
+def standalone_user_basic_auth_verification() -> User | None:
     auth = basic_auth.get_auth()
-    if auth:
-        account = verify_basic_auth_password(auth.username, auth.password, check_session=False, roles=roles)
-        if account:
-            return True
 
-    if verify_from_session(roles):
-        return True
-    return False
+    if auth and auth.username and auth.password:
+        user = verify_basic_auth_password(auth.username, auth.password)
+        if user:
+            set_user_authentication_in_session(user)
+            return user
+    return verify_user_authentication_from_session()
+
+
+def standalone_api_auth_verify():
+    auth = api_auth.get_auth()
+    try:
+        if hasattr(auth, 'token'):
+            account = verify_api_auth_token(auth.token, check_session=False)
+            if account:
+                return account
+    except AttributeError:
+        return None
+
 
 # ADD ERROR HANDLING TO AUTHENTICATIONS
