@@ -1,32 +1,15 @@
-import socket
+from urllib.parse import urlparse
 from uuid import UUID
-import user_agents
-from sqlalchemy.orm import Load
-import glob
-import json
-from babel.dates import format_timedelta as babel_format_timedelta
-from flask_babelex import gettext as __
 from flask_babelex import lazy_gettext as _
-import datetime
-from flask import jsonify, g, url_for, Markup, abort, current_app, request
+from datetime import datetime
+from flask import url_for, Markup
 from flask import flash as flask_flash
 import re
-from wtforms.validators import ValidationError
 import requests
 
 import string
 import random
-from babel.dates import format_timedelta as babel_format_timedelta
-import urllib
-import time
 import os
-import psutil
-from urllib.parse import urlparse
-import ssl
-import h2.connection
-import subprocess
-import netifaces
-import time
 import sys
 
 from hiddifypanel.cache import cache
@@ -131,7 +114,7 @@ def date_to_json(d):
 
 def json_to_date(date_str):
     try:
-        return datetime.datetime.strptime(date_str, '%Y-%m-%d')
+        return datetime.strptime(date_str, '%Y-%m-%d')
     except:
         return date_str
 
@@ -143,7 +126,7 @@ def time_to_json(d):
 
 def json_to_time(time_str):
     try:
-        return datetime.datetime.strptime(time_str, "%Y-%m-%d %H:%M:%S")
+        return datetime.strptime(time_str, "%Y-%m-%d %H:%M:%S")
     except:
         return time_str
 
@@ -151,3 +134,23 @@ def json_to_time(time_str):
 def flash(message, category):
     print(message)
     return flask_flash(Markup(message), category)
+
+
+def get_proxy_path_from_url(url: str) -> str | None:
+    url_path = urlparse(url).path
+    proxy_path = url_path.lstrip('/').split('/')[0] or None
+    return proxy_path
+
+
+def is_uuid_in_url_path(path: str) -> bool:
+    for section in path.split('/'):
+        if is_uuid_valid(section, 4):
+            return True
+    return False
+
+
+def get_uuid_from_url_path(path: str) -> str | None:
+    for section in path.split('/'):
+        if is_uuid_valid(section, 4):
+            return section
+    return None
