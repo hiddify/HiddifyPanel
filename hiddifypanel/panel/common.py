@@ -1,17 +1,15 @@
 import traceback
-import uuid
-
 import user_agents
-from flask import render_template, request, jsonify
+from flask import render_template, request, jsonify, redirect
 from flask import g, send_from_directory, session, Markup
-from jinja2 import Environment, FileSystemLoader
 from flask_babelex import gettext as _
 import hiddifypanel
 from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify, github_issue_generator
 from sys import version as python_version
 from platform import platform
-from werkzeug.exceptions import HTTPException as WerkzeugHTTPException
+import hiddifypanel.panel.authentication as auth
+import hiddifypanel.hutils as hutils
 
 from apiflask import APIFlask, HTTPError, abort
 
@@ -92,14 +90,14 @@ def init_app(app: APIFlask):
                         if parameter['name'] == 'proxy_path':
                             parameter['schema'] = {'type': 'string', 'default': g.proxy_path}
                         # elif parameter['name'] == 'user_secret':
-                        #     parameter['schema'] = {'type': 'string', 'default': g.user_uuid}
+                        #     parameter['schema'] = {'type': 'string', 'default': g.account_uuid}
         return spec
 
     @app.url_defaults
     def add_proxy_path_user(endpoint, values):
 
         if 'user_secret' not in values and hasattr(g, 'user_uuid'):
-            values['user_secret'] = f'{g.user_uuid}'
+            values['user_secret'] = f'{g.account_uuid}'
         if 'proxy_path' not in values:
             # values['proxy_path']=f'{g.proxy_path}'
             values['proxy_path'] = hconfig(ConfigEnum.proxy_path)
@@ -115,61 +113,40 @@ def init_app(app: APIFlask):
     #     diff=datetime.datetime.now()-value
     #     return format_timedelta(diff, add_direction=True, locale=hconfig(ConfigEnum.lang))
 
-    @app.url_value_preprocessor
-    def pull_secret_code(endpoint, values):
-        # print("Y",endpoint, values)6
-        # if values is None:
-        #     return
-        # if hiddifypanel.__release_date__ + datetime.timedelta(days=40) < datetime.datetime.now() or hiddifypanel.__release_date__ > datetime.datetime.now():
-        #     abort(400, _('This version of hiddify panel is outdated. Please update it from admin area.'))
-        g.user = None
-        g.user_uuid = None
-        g.is_admin = False
+    @app.before_request
+    def base_middleware():
+        if request.endpoint == 'static' or request.endpoint == "videos":
+            return
 
+        # validate request made by human (just check user agent, there's no capcha)
+        g.user_agent = user_agents.parse(request.user_agent.string)
+        if g.user_agent.is_bot:
+            abort(400, "invalid")
+
+        # validate proxy path
+        g.proxy_path = hutils.utils.get_proxy_path_from_url(request.url)
+        if not g.proxy_path:
+            abort(400, "invalid")
+        if g.proxy_path != hconfig(ConfigEnum.proxy_path):
+            if app.config['DEBUG']:
+                abort(400, Markup(
+                    f"Invalid Proxy Path <a href=/{hconfig(ConfigEnum.proxy_path)}/{get_super_admin_secret()}/admin>admin</a>"))
+            abort(400, "Invalid Proxy Path")
+
+        # setup dark mode
         if request.args.get('darkmode') != None:
             session['darkmode'] = request.args.get(
                 'darkmode', '').lower() == 'true'
         g.darkmode = session.get('darkmode', False)
+
+        # setup pwa
         import random
         g.install_pwa = random.random() <= 0.05
         if request.args.get('pwa') != None:
             session['pwa'] = request.args.get('pwa', '').lower() == 'true'
         g.pwa = session.get('pwa', False)
 
-        g.user_agent = user_agents.parse(request.user_agent.string)
-
-        if g.user_agent.is_bot:
-            abort(400, "invalid")
-        g.proxy_path = values.pop('proxy_path', None) if values else None
-
-        if g.proxy_path != hconfig(ConfigEnum.proxy_path):
-            if app.config['DEBUG']:
-                abort(400, Markup(
-                    f"Invalid Proxy Path <a href=/{hconfig(ConfigEnum.proxy_path)}/{get_super_admin_secret()}/admin>admin</a>"))
-            abort(400, "Invalid Proxy Path")
-        if endpoint == 'static' or endpoint == "videos":
-            return
-        tmp_secret = values.pop('user_secret', None) if values else None
-        try:
-            if tmp_secret:
-                g.user_uuid = uuid.UUID(tmp_secret)
-        except:
-            # raise PermissionError("Invalid secret")
-            abort(400, 'invalid user')
-        g.admin = get_admin_user_db(tmp_secret)
-        g.is_admin = g.admin is not None
-        bare_path = request.path.replace(
-            g.proxy_path, "").replace(tmp_secret, "").lower()
-        if not g.is_admin:
-            g.user = User.query.filter(User.uuid == f'{g.user_uuid}').first()
-            if not g.user:
-                abort(401, 'invalid user')
-            if endpoint and ("admin" in endpoint or "api/v1" in endpoint):
-                # raise PermissionError("Access Denied")
-                abort(403, 'Access Denied')
-            if "admin" in bare_path or "api/v1" in bare_path:
-                abort(403, 'Access Denied')
-
+        # setup telegram bot
         if hconfig(ConfigEnum.telegram_bot_token):
             import hiddifypanel.panel.commercial.telegrambot as telegrambot
             if (not telegrambot.bot) or (not telegrambot.bot.username):
@@ -177,6 +154,146 @@ def init_app(app: APIFlask):
             g.bot = telegrambot.bot
         else:
             g.bot = None
+
+    @app.before_request
+    def api_auth_middleware():
+        '''In every api request(whether is for the admin or the user) the client should provide api key and we check it'''
+        if 'api' not in request.path:  # type: ignore
+            return
+
+        # get authenticated account
+        account: AdminUser | User | None = auth.standalone_api_auth_verify()
+        if not account:
+            return abort(401)
+        # get account role
+        role = auth.get_account_role(account)
+        if not role:
+            return abort(401)
+        # setup authenticated account things (uuid, is_admin, etc.)
+        g.account = account
+        g.account_uuid = account.uuid
+        g.is_admin = False if role == auth.AccountRole.user else True
+
+    @app.before_request
+    def backward_compatibile_middleware():
+        if hutils.utils.is_uuid_in_url_path(request.path):
+            if g.proxy_path != hconfig(ConfigEnum.proxy_path):
+                # this will make a fingerprint for panel. we should redirect the request to decoy website.
+                # abort(400, "invalid proxy path")
+                redirect(hconfig(ConfigEnum.decoy_domain))
+
+            if '/admin/' in request.path:
+                # we check if there is such uuid or not, because we don't want to redirect to admin panel if there is no such uuid
+                # otherwise anyone can provide any secret to get access to admin panel
+                uuid = hutils.utils.get_uuid_from_url_path(request.path) or abort(400, 'invalid request')
+                if get_admin_by_uuid(uuid):
+                    return render_template('redirect_to_admin.html', admin_link=f'{request.url_root.rstrip("/").replace("http", "https")}/{g.proxy_path}/admin/')
+                else:
+                    abort(400, 'invalid request')
+            else:
+                uuid = hutils.utils.get_uuid_from_url_path(request.path) or abort(400, 'invalid request')
+                if user := get_user_by_uuid(uuid):
+                    return render_template('redirect_to_user.html', user_link=f'{request.url_root.rstrip("/").replace("http", "https")}/{g.proxy_path}/#{user.name}')
+                else:
+                    abort(400, 'invalid request')
+
+    @app.before_request
+    def basic_auth_middleware():
+        '''if the request is for user panel(user page), we try to authenticate the user with basic auth or the client session data, we do that for admin panel too'''
+        if 'api' in request.path:  # type: ignore
+            return
+
+        account: AdminUser | User | None = None
+
+        # if we don't have endpoint, we can't detect the request is for admin panel or user panel, so we can't authenticate
+        if not request.endpoint:
+            abort(400, "invalid request")
+
+        if request.endpoint and 'UserView' in request.endpoint:
+            account = auth.standalone_user_basic_auth_verification()
+        else:
+            account = auth.standalone_admin_basic_auth_verification()
+        # get authenticated account
+        if not account:
+            return abort(401)
+        # get account role
+        role = auth.get_account_role(account)
+        if not role:
+            return abort(401)
+        # setup authenticated account things (uuid, is_admin, etc.)
+        g.account = account
+        g.account_uuid = account.uuid
+        g.is_admin = False if role == auth.AccountRole.user else True
+
+    # @app.auth_required(basic_auth, roles=['super_admin', 'admin', 'agent', 'user'])
+
+    @app.url_value_preprocessor
+    def pull_secret_code(endpoint, values):
+        # just remove proxy_path
+        # by doing that we don't need to get it in every view function, we have it in g.proxy_path. it's done in base_middleware function
+        if values:
+            values.pop('proxy_path', None)
+            values.pop('user_secret', None)
+        # print("Y",endpoint, values)6
+        # if values is None:
+        #     return
+        # if hiddifypanel.__release_date__ + datetime.timedelta(days=40) < datetime.datetime.now() or hiddifypanel.__release_date__ > datetime.datetime.now():
+        #     abort(400, _('This version of hiddify panel is outdated. Please update it from admin area.'))
+        # g.user = None
+        # g.account_uuid = None
+        # g.is_admin = False
+
+        # if request.args.get('darkmode') != None:
+        #     session['darkmode'] = request.args.get(
+        #         'darkmode', '').lower() == 'true'
+        # g.darkmode = session.get('darkmode', False)
+        # import random
+        # g.install_pwa = random.random() <= 0.05
+        # if request.args.get('pwa') != None:
+        #     session['pwa'] = request.args.get('pwa', '').lower() == 'true'
+        # g.pwa = session.get('pwa', False)
+
+        # g.user_agent = user_agents.parse(request.user_agent.string)
+
+        # if g.user_agent.is_bot:
+        #     abort(400, "invalid")
+        # g.proxy_path = values.pop('proxy_path', None) if values else None
+
+        # if g.proxy_path != hconfig(ConfigEnum.proxy_path):
+        #     if app.config['DEBUG']:
+        #         abort(400, Markup(
+        #             f"Invalid Proxy Path <a href=/{hconfig(ConfigEnum.proxy_path)}/{get_super_admin_secret()}/admin>admin</a>"))
+        #     abort(400, "Invalid Proxy Path")
+        # if endpoint == 'static' or endpoint == "videos":
+        #     return
+        # tmp_secret = values.pop('user_secret', None) if values else None
+        # try:
+        #     if tmp_secret:
+        #         g.account_uuid = uuid.UUID(tmp_secret)
+        # except:
+        #     # raise PermissionError("Invalid secret")
+        #     abort(400, 'invalid user')
+        # g.account = get_admin_user_db(tmp_secret)
+        # g.is_admin = g.account is not None
+        # bare_path = request.path.replace(
+        #     g.proxy_path, "").replace(tmp_secret, "").lower()
+        # if not g.is_admin:
+        #     g.user = User.query.filter(User.uuid == f'{g.account_uuid}').first()
+        #     if not g.user:
+        #         abort(401, 'invalid user')
+        #     if endpoint and ("admin" in endpoint or "api/v1" in endpoint):
+        #         # raise PermissionError("Access Denied")
+        #         abort(403, 'Access Denied')
+        #     if "admin" in bare_path or "api/v1" in bare_path:
+        #         abort(403, 'Access Denied')
+
+        # if hconfig(ConfigEnum.telegram_bot_token):
+        #     import hiddifypanel.panel.commercial.telegrambot as telegrambot
+        #     if (not telegrambot.bot) or (not telegrambot.bot.username):
+        #         telegrambot.register_bot()
+        #     g.bot = telegrambot.bot
+        # else:
+        #     g.bot = None
 
         # print(g.user)
 
@@ -194,8 +311,8 @@ def init_app(app: APIFlask):
     def generate_github_issue_link_for_500_error(error, traceback, remove_sensetive_data=True, remove_unrelated_traceback_datails=True):
 
         def remove_sensetive_data_from_github_issue_link(issue_link):
-            if hasattr(g, 'user_uuid') and g.user_uuid:
-                issue_link.replace(f'{g.user_uuid}', '*******************')
+            if hasattr(g, 'user_uuid') and g.account_uuid:
+                issue_link.replace(f'{g.account_uuid}', '*******************')
             if hconfig(ConfigEnum.proxy_path) and hconfig(ConfigEnum.proxy_path):
                 issue_link.replace(hconfig(ConfigEnum.proxy_path), '**********')
 
