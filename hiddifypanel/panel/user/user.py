@@ -25,22 +25,22 @@ class UserView(FlaskView):
     @route('/short')
     def short_link(self):
         short = hiddify.add_short_link(
-            "/"+hconfig(ConfigEnum.proxy_path)+"/"+g.user.uuid+"/")
+            "/"+hconfig(ConfigEnum.proxy_path)+"/"+g.account_uuid+"/")
 
         return f"<div style='direction:ltr'>https://{urlparse(request.base_url).hostname}/{short}/</a><br><br>"+_("This link will expire in 5 minutes")
 
     @route('/info/')
     @route('/info')
     def info(self):
-        c = get_common_data(g.user_uuid, 'new')
+        c = get_common_data(g.account_uuid, 'new')
         data = {
             'profile_title': c['profile_title'],
-            'profile_url': f"https://{urlparse(request.base_url).hostname}/{g.proxy_path}/{g.user_uuid}/#{g.user.name}",
-            'profile_usage_current': g.user.current_usage_GB,
-            'profile_usage_total': g.user.usage_limit_GB,
-            'profile_remaining_days': g.user.remaining_days,
-            'profile_reset_days': days_to_reset(g.user),
-            'telegram_bot_url': f"https://t.me/{c['bot'].username}?start={g.user_uuid}" if c['bot'] else "",
+            'profile_url': f"https://{urlparse(request.base_url).hostname}/{g.proxy_path}/{g.account_uuid}/#{g.account.name}",
+            'profile_usage_current': g.account.current_usage_GB,
+            'profile_usage_total': g.account.usage_limit_GB,
+            'profile_remaining_days': g.account.remaining_days,
+            'profile_reset_days': days_to_reset(g.account),
+            'telegram_bot_url': f"https://t.me/{c['bot'].username}?start={g.account_uuid}" if c['bot'] else "",
             'admin_message_html': hconfig(ConfigEnum.branding_freetext),
             'admin_message_url': hconfig(ConfigEnum.branding_site),
             'brand_title': hconfig(ConfigEnum.branding_title),
@@ -55,7 +55,7 @@ class UserView(FlaskView):
     @route('/mtproxies')
     def mtproxies(self):
         # get domains
-        c = get_common_data(g.user_uuid, 'new')
+        c = get_common_data(g.account_uuid, 'new')
         mtproxies = []
         # TODO: Remove duplicated domains mapped to a same ipv4 and v6
         for d in c['domains']:
@@ -84,8 +84,8 @@ class UserView(FlaskView):
             }
 
         items = []
-        base_url = f"https://{urlparse(request.base_url).hostname}/{g.proxy_path}/{g.user_uuid}/"
-        c = get_common_data(g.user_uuid, 'new')
+        base_url = f"https://{urlparse(request.base_url).hostname}/{g.proxy_path}/{g.account_uuid}/"
+        c = get_common_data(g.account_uuid, 'new')
 
         # Add Auto
         items.append(
@@ -184,7 +184,7 @@ class UserView(FlaskView):
     # @route('/old/')
     # def index(self):
 
-    #     c=get_common_data(g.user_uuid,mode="")
+    #     c=get_common_data(g.account_uuid,mode="")
     #     user_agent =  user_agents.parse(request.user_agent.string)
 
     #     return render_template('home/index.html',**c,ua=user_agent)
@@ -192,7 +192,7 @@ class UserView(FlaskView):
     # @route('/multi')
     # def multi(self):
 
-    #     c=get_common_data(g.user_uuid,mode="multi")
+    #     c=get_common_data(g.account_uuid,mode="multi")
 
     #     user_agent =  user_agents.parse(request.user_agent.string)
 
@@ -229,7 +229,7 @@ class UserView(FlaskView):
 
     @ route('/auto')
     def auto_select(self):
-        c = get_common_data(g.user_uuid, mode="new")
+        c = get_common_data(g.account_uuid, mode="new")
         user_agent = user_agents.parse(request.user_agent.string)
         # return render_template('home/handle_smart.html', **c)
         return render_template('home/auto_page.html', **c, ua=user_agent)
@@ -242,7 +242,7 @@ class UserView(FlaskView):
         if conf:
             return conf
 
-        c = get_common_data(g.user_uuid, mode="new")
+        c = get_common_data(g.account_uuid, mode="new")
         user_agent = user_agents.parse(request.user_agent.string)
         # return render_template('home/multi.html', **c, ua=user_agent)
         return render_template('new.html', **c, ua=user_agent)
@@ -253,7 +253,7 @@ class UserView(FlaskView):
         mode = request.args.get("mode")
         domain = request.args.get("domain", None)
 
-        c = get_common_data(g.user_uuid, mode, filter_domain=domain)
+        c = get_common_data(g.account_uuid, mode, filter_domain=domain)
         resp = Response(render_template('clash_proxies.yml',
                         meta_or_normal=meta_or_normal, **c))
         resp.mimetype = "text/plain"
@@ -299,7 +299,7 @@ class UserView(FlaskView):
     def clash_config(self, meta_or_normal="normal", typ="all.yml"):
         mode = request.args.get("mode")
 
-        c = get_common_data(g.user_uuid, mode)
+        c = get_common_data(g.account_uuid, mode)
 
         hash_rnd = random.randint(0, 1000000)  # hash(f'{c}')
         if request.method == 'HEAD':
@@ -313,7 +313,7 @@ class UserView(FlaskView):
     @ route('/full-singbox.json', methods=["GET", "HEAD"])
     def full_singbox(self):
         mode = "new"  # request.args.get("mode")
-        c = get_common_data(g.user_uuid, mode)
+        c = get_common_data(g.account_uuid, mode)
         # response.content_type = 'text/plain';
         if request.method == 'HEAD':
             resp = ""
@@ -328,7 +328,7 @@ class UserView(FlaskView):
         if not hconfig(ConfigEnum.ssh_server_enable):
             return "SSH server is disable in settings"
         mode = "new"  # request.args.get("mode")
-        c = get_common_data(g.user_uuid, mode)
+        c = get_common_data(g.account_uuid, mode)
         # response.content_type = 'text/plain';
         if request.method == 'HEAD':
             resp = ""
@@ -341,7 +341,7 @@ class UserView(FlaskView):
     def all_configs(self, base64=False):
         mode = "new"  # request.args.get("mode")
         base64 = base64 or request.args.get("base64", "").lower() == "true"
-        c = get_common_data(g.user_uuid, mode)
+        c = get_common_data(g.account_uuid, mode)
         # response.content_type = 'text/plain';
         if request.method == 'HEAD':
             resp = ""
@@ -385,7 +385,7 @@ class UserView(FlaskView):
 
     @ route("/offline.html")
     def offline():
-        return f"Not Connected <a href='/{hconfig(ConfigEnum.proxy_path)}/{g.user.uuid}/'>click for reload</a>"
+        return f"Not Connected <a href='/{hconfig(ConfigEnum.proxy_path)}/{g.account.uuid}/'>click for reload</a>"
 
 
 def do_base_64(str):

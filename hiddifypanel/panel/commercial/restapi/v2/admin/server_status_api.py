@@ -14,7 +14,7 @@ class ServerStatus(Schema):
 
 
 class AdminServerStatusApi(MethodView):
-    decorators = [app.auth_required(api_auth, roles=['super_admin', 'admin'])]
+    decorators = [hiddify.admin]
 
     @app.output(ServerStatus)
     def get(self):
@@ -23,6 +23,6 @@ class AdminServerStatusApi(MethodView):
             'system': hiddify.system_stats(),
             'top5': hiddify.top_processes()
         }
-        admin_id = request.args.get("admin_id") or g.admin.id
+        admin_id = request.args.get("admin_id") or g.account.id
         dto.usage_history = get_daily_usage_stats(admin_id)
         return dto

@@ -22,7 +22,7 @@ from hiddifypanel.panel.authentication import basic_auth
 
 
 class Backup(FlaskView):
-    decorators = [app.auth_required(basic_auth, roles=['super_admin'])]
+    decorators = [hiddify.super_admin]
 
     def index(self):
         return render_template('backup.html', restore_form=get_restore_form())
@@ -61,7 +61,7 @@ class Backup(FlaskView):
 
             from flask_babel import refresh
             refresh()
-            return redirect(f'/{hconfig(ConfigEnum.proxy_path)}/{g.admin.uuid}/admin/actions/reinstall2/', code=302)
+            return redirect(f'/{hconfig(ConfigEnum.proxy_path)}/{g.account.uuid}/admin/actions/reinstall2/', code=302)
             from . import Actions
             action = Actions()
             return action.reinstall(complete_install=True, domain_changed=True)

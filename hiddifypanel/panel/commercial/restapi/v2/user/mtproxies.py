@@ -19,15 +19,15 @@ class MtproxySchema(Schema):
 
 
 class MTProxiesAPI(MethodView):
-    decorators = [app.auth_required(api_auth, roles=['user'])]
+    decorators = [hiddify.user_auth]
 
     @app.output(MtproxySchema(many=True))
     def get(self):
         # check mtproxie is enable
-        if not hconfig(ConfigEnum.telegram_enable, g.user_uuid):
+        if not hconfig(ConfigEnum.telegram_enable, g.account_uuid):
             abort(status_code=404, message="Telegram mtproxy is not enable")
         # get domains
-        c = get_common_data(g.user_uuid, 'new')
+        c = get_common_data(g.account_uuid, 'new')
         dtos = []
         # TODO: Remove duplicated domains mapped to a same ipv4 and v6
         for d in c['domains']:

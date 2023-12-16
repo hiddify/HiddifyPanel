@@ -23,7 +23,7 @@ class ConfigSchema(Schema):
 
 
 class AllConfigsAPI(MethodView):
-    decorators = [app.auth_required(api_auth, roles=['user'])]
+    decorators = [hiddify.user_auth]
 
     @app.output(ConfigSchema(many=True))
     def get(self):
@@ -39,8 +39,8 @@ class AllConfigsAPI(MethodView):
             return dto
 
         items = []
-        base_url = f"https://{urlparse(request.base_url).hostname}/{g.proxy_path}/{g.user_uuid}/"
-        c = get_common_data(g.user_uuid, 'new')
+        base_url = f"https://{urlparse(request.base_url).hostname}/{g.proxy_path}/{g.account_uuid}/"
+        c = get_common_data(g.account_uuid, 'new')
 
         # Add Auto
         items.append(

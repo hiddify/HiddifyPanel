@@ -8,7 +8,6 @@ from sqlalchemy_serializer import SerializerMixin
 from hiddifypanel.panel.database import db
 
 
-
 class DailyUsage(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     date = db.Column(db.Date, default=datetime.date.today())
@@ -24,7 +23,7 @@ class DailyUsage(db.Model, SerializerMixin):
 def get_daily_usage_stats(admin_id=None, child_id=None):
     from .admin import AdminUser
     if not admin_id:
-        admin_id = g.admin.id
+        admin_id = g.account.id
     sub_admins = AdminUser.query.filter(AdminUser.id == admin_id).first().recursive_sub_admins_ids()
     print(sub_admins)
 

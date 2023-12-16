@@ -1,16 +1,21 @@
-from typing import Tuple, Union
+import subprocess
+import psutil
+from typing import Tuple
 from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric import x25519
+from flask import abort, g, jsonify
 from flask_babelex import gettext as __
 from flask_babelex import lazy_gettext as _
+from wtforms.validators import ValidationError
+
+from datetime import timedelta
+from babel.dates import format_timedelta as babel_format_timedelta
 
 from hiddifypanel.cache import cache
 from hiddifypanel.models import *
 from hiddifypanel.panel.database import db
 from hiddifypanel.hutils.utils import *
 from hiddifypanel.Events import domain_changed
-from wtforms.validators import Regexp, ValidationError
-from datetime import datetime, timedelta
 from hiddifypanel import hutils
 from hiddifypanel.panel.run_commander import commander, Command
 
@@ -56,8 +61,8 @@ def add_short_link_imp(link: str, period_min: int = 5) -> Tuple[str, datetime]:
 
 def get_admin_path():
     proxy_path = hconfig(ConfigEnum.proxy_path)
-    admin_secret = g.admin.uuid or get_super_admin_secret()
-    return (f"/{proxy_path}/{admin_secret}/admin/")
+    # admin_secret = g.account.uuid or get_super_admin_secret()
+    return (f"/{proxy_path}/admin/")
 
 
 def exec_command(cmd, cwd=None):
@@ -69,11 +74,11 @@ def exec_command(cmd, cwd=None):
 
 def user_auth(function):
     def wrapper(*args, **kwargs):
-        if g.user_uuid == None:
+        if g.account_uuid == None:
             return jsonify({"error": "auth failed"})
-        if not g.user:
+        if not g.account:
             return jsonify({"error": "user not found"})
-        if g.admin and g.is_admin:
+        if g.account and g.is_admin:
             return jsonify({"error": "admin can not access user page. add /admin/ to your url"})
         return function()
 
@@ -82,9 +87,9 @@ def user_auth(function):
 
 def super_admin(function):
     def wrapper(*args, **kwargs):
-        if g.admin.mode not in [AdminMode.super_admin]:
+        if g.account.mode not in [AdminMode.super_admin]:
             abort(403, __("Access Denied"))
-            return jsonify({"error": "auth failed"})
+            # return jsonify({"error": "auth failed"})
         return function(*args, **kwargs)
 
     return wrapper
@@ -92,16 +97,16 @@ def super_admin(function):
 
 def admin(function):
     def wrapper(*args, **kwargs):
-        if g.admin.mode not in [AdminMode.admin, AdminMode.super_admin]:
-            abort(_("Access Denied"), 403)
-            return jsonify({"error": "auth failed"})
+        if g.account.mode not in [AdminMode.admin, AdminMode.super_admin]:
+            abort(403, __("Access Denied"))
+            # return jsonify({"error": "auth failed"})
 
         return function(*args, **kwargs)
     return wrapper
 
 
 def abs_url(path):
-    return f"/{g.proxy_path}/{g.user_uuid}/{path}"
+    return f"/{g.proxy_path}/{g.account_uuid}/{path}"
 
 
 def asset_url(path):
@@ -402,7 +407,7 @@ def set_db_from_json(json_data, override_child_id=None, set_users=True, set_doma
             u.parent_admin_id = owner.id
     # for u in User.query.all():
     #     if u.added_by in uuids_without_parent:
-    #         u.added_by = g.admin.id
+    #         u.added_by = g.account.id
 
     db.session.commit()
 

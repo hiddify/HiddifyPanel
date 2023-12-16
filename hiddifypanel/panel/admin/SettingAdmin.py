@@ -25,14 +25,13 @@ from hiddifypanel.panel.authentication import basic_auth
 
 class SettingAdmin(FlaskView):
 
-    # @hiddify.super_admin
-    @app.auth_required(basic_auth, roles=['super_admin'])
+    @hiddify.super_admin
     def index(self):
         form = get_config_form()
         return render_template('config.html', form=form)
 
     # @hiddify.super_admin
-    @app.auth_required(basic_auth, roles=['super_admin'])
+    @hiddify.super_admin
     def post(self):
         set_hconfig(ConfigEnum.first_setup, False)
         form = get_config_form()
@@ -270,7 +269,7 @@ def get_config_form():
                     if hasattr(val, "regex"):
                         render_kw['pattern'] = val.regex.pattern
                         render_kw['title'] = val.message
-                if c.key == ConfigEnum.reality_public_key and g.admin.mode in [AdminMode.super_admin]:
+                if c.key == ConfigEnum.reality_public_key and g.account.mode in [AdminMode.super_admin]:
                     extra_info = f" <a href='{url_for('admin.Actions:change_reality_keys')}'>{_('Change')}</a>"
                 field = wtf.fields.StringField(_(f'config.{c.key}.label'), validators, default=c.value,
                                                description=_(f'config.{c.key}.description')+extra_info, render_kw=render_kw)

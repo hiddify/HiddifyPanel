@@ -11,7 +11,6 @@ from flask_babelex import gettext as __
 from apiflask import abort
 
 
-from hiddifypanel.panel.authentication import standalone_verify, AccountRole
 from hiddifypanel.panel import hiddify, custom_widgets
 from hiddifypanel.panel.hiddify import flash
 from hiddifypanel.drivers import user_driver
@@ -205,8 +204,9 @@ class UserAdmin(AdminLTEModelView):
         user_driver.remove_client(model)
         # hiddify.flash_config_success()
 
+    @hiddify.admin
     def is_accessible(self):
-        return standalone_verify({AccountRole.super_admin, AccountRole.admin})
+        return True
 
     def on_form_prefill(self, form, id=None):
         # print("================",form._obj.start_date)
@@ -253,10 +253,10 @@ class UserAdmin(AdminLTEModelView):
         model.package_days = min(model.package_days, 10000)
         old_user = user_by_id(model.id)
         if not model.added_by or model.added_by == 1:
-            model.added_by = g.admin.id
-        if not g.admin.can_have_more_users():
+            model.added_by = g.account.id
+        if not g.account.can_have_more_users():
             raise ValidationError(_('You have too much users! You can have only %(active)s active users and %(total)s users',
-                                  active=g.admin.max_active_users, total=g.admin.max_users))
+                                  active=g.account.max_active_users, total=g.account.max_users))
         if old_user and old_user.uuid != model.uuid:
             user_driver.remove_client(old_user)
         if not model.ed25519_private_key:
@@ -337,8 +337,8 @@ class UserAdmin(AdminLTEModelView):
         # Get the base query
         query = super().get_query()
 
-        admin_id = int(request.args.get("admin_id") or g.admin.id)
-        if admin_id not in g.admin.recursive_sub_admins_ids():
+        admin_id = int(request.args.get("admin_id") or g.account.id)
+        if admin_id not in g.account.recursive_sub_admins_ids():
             abort(403)
         admin = AdminUser.query.filter(AdminUser.id == admin_id).first()
         if not admin:
@@ -356,8 +356,8 @@ class UserAdmin(AdminLTEModelView):
 
         # query = query.session.query(func.count(User.id))
         query = super().get_count_query()
-        admin_id = int(request.args.get("admin_id") or g.admin.id)
-        if admin_id not in g.admin.recursive_sub_admins_ids():
+        admin_id = int(request.args.get("admin_id") or g.account.id)
+        if admin_id not in g.account.recursive_sub_admins_ids():
             abort(403)
         admin = AdminUser.query.filter(AdminUser.id == admin_id).first()
         if not admin:
@@ -365,8 +365,8 @@ class UserAdmin(AdminLTEModelView):
 
         query = query.filter(User.added_by.in_(admin.recursive_sub_admins_ids()))
 
-        # admin_id=int(request.args.get("admin_id") or g.admin.id)
-        # if admin_id not in g.admin.recursive_sub_admins_ids():
+        # admin_id=int(request.args.get("admin_id") or g.account.id)
+        # if admin_id not in g.account.recursive_sub_admins_ids():
         #     abort(403)
         # admin=AdminUser.query.filter(AdminUser.id==admin_id).first()
         # if not admin:

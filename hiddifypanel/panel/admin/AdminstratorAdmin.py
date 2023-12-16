@@ -14,11 +14,11 @@ from wtforms import SelectField
 class AdminModeField(SelectField):
     def __init__(self, label=None, validators=None, **kwargs):
         super(AdminModeField, self).__init__(label, validators, **kwargs)
-        if g.admin.mode in [AdminMode.agent, AdminMode.admin]:
+        if g.account.mode in [AdminMode.agent, AdminMode.admin]:
             self.choices = [(AdminMode.agent.value, 'agent')]
-        elif g.admin.mode == AdminMode.admin:
+        elif g.account.mode == AdminMode.admin:
             self.choices = [(AdminMode.agent.value, 'agent'), (AdminMode.admin.value, 'Admin'),]
-        elif g.admin.mode == AdminMode.super_admin:
+        elif g.account.mode == AdminMode.super_admin:
             self.choices = [(AdminMode.agent.value, 'agent'), (AdminMode.admin.value, 'Admin'), (AdminMode.super_admin.value, 'Super Admin')]
 
 
@@ -26,8 +26,8 @@ class SubAdminsField(SelectField):
     def __init__(self, label=None, validators=None, *args, **kwargs):
         kwargs.pop("allow_blank")
         super().__init__(label, validators, *args, **kwargs)
-        self.choices = [(admin.id, admin.name) for admin in g.admin.sub_admins]
-        self.choices += [(g.admin.id, g.admin.name)]
+        self.choices = [(admin.id, admin.name) for admin in g.account.sub_admins]
+        self.choices += [(g.account.id, g.account.name)]
 
 
 class AdminstratorAdmin(AdminLTEModelView):
@@ -83,7 +83,7 @@ class AdminstratorAdmin(AdminLTEModelView):
 
     @property
     def can_create(self):
-        return g.admin.can_add_admin or g.admin.mode == AdminMode.super_admin
+        return g.account.can_add_admin or g.account.mode == AdminMode.super_admin
 
     def _name_formatter(view, context, model, name):
         proxy_path = hconfig(ConfigEnum.proxy_path)
@@ -161,14 +161,15 @@ class AdminstratorAdmin(AdminLTEModelView):
     def search_placeholder(self):
         return f"{_('search')} {_('user.UUID')} {_('user.name')}"
 
-    # def is_accessible(self):
-    #     return g.admin.mode==AdminMode.super_admin
+    @hiddify.admin
+    def is_accessible(self):
+        return True
 
     def get_query(self):
         # Get the base query
         query = super().get_query()
 
-        admin_ids = g.admin.recursive_sub_admins_ids()
+        admin_ids = g.account.recursive_sub_admins_ids()
         query = query.filter(AdminUser.id.in_(admin_ids))
 
         return query
@@ -178,7 +179,7 @@ class AdminstratorAdmin(AdminLTEModelView):
         # Get the base count query
         query = super().get_count_query()
 
-        admin_ids = g.admin.recursive_sub_admins_ids()
+        admin_ids = g.account.recursive_sub_admins_ids()
         query = query.filter(AdminUser.id.in_(admin_ids))
 
         return query
@@ -192,10 +193,10 @@ class AdminstratorAdmin(AdminLTEModelView):
         #     model.parent_admin_id=1
         #     model.parent_admin=AdminUser.query.filter(AdminUser.id==1).first()
         if model.id != 1 and model.parent_admin == None:
-            model.parent_admin_id = g.admin.id
-            model.parent_admin = g.admin
+            model.parent_admin_id = g.account.id
+            model.parent_admin = g.account
 
-        if g.admin.mode != AdminMode.super_admin and model.mode == AdminMode.super_admin:
+        if g.account.mode != AdminMode.super_admin and model.mode == AdminMode.super_admin:
             raise ValidationError("Sub-Admin can not have more power!!!!")
         if model.mode == AdminMode.agent and model.mode != AdminMode.agent:
             raise ValidationError("Sub-Admin can not have more power!!!!")
@@ -210,11 +211,11 @@ class AdminstratorAdmin(AdminLTEModelView):
 
     def on_form_prefill(self, form, id=None):
 
-        if g.admin.mode != AdminMode.super_admin:
+        if g.account.mode != AdminMode.super_admin:
             del form.mode
             del form.can_add_admin
 
-        if g.admin.id == form._obj.id:
+        if g.account.id == form._obj.id:
             del form.max_users
             del form.max_active_users
             del form.comment

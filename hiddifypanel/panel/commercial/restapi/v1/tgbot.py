@@ -1,6 +1,6 @@
 import time
 import telebot
-from flask import  request
+from flask import request
 from apiflask import abort
 from flask_restful import Resource
 
@@ -34,7 +34,7 @@ def register_bot(set_hook=False):
             proxy_path = hconfig(ConfigEnum.proxy_path)
 
             user_secret = get_super_admin_secret()
-            bot.set_webhook(url=f"https://{domain}/{proxy_path}/{user_secret}/api/v1/tgbot/")
+            bot.set_webhook(url=f"https://{domain}/{proxy_path}/api/v1/tgbot/")
     except Exception as e:
         print(e)
         import traceback

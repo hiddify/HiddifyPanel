@@ -12,13 +12,12 @@ from .admin_user_api import AdminSchema
 
 
 class AdminInfoApi(MethodView):
-    decorators = [app.auth_required(api_auth, roles=['super_admin', 'admin'])]
+    decorators = [hiddify.admin]
 
     @app.output(AdminSchema)
-    # @app.auth_required(api_auth, roles=['super_admin', 'admin'])
     def get(self):
-        # in this case g.user_uuid is equal to admin uuid
-        admin_uuid = g.user_uuid
+        # in this case g.account_uuid is equal to admin uuid
+        admin_uuid = g.account_uuid
         admin = get_admin_user_db(admin_uuid) or abort(404, "user not found")
 
         dto = AdminSchema()

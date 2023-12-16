@@ -78,14 +78,14 @@ class AdminUser(db.Model, SerializerMixin):
         return sub_admin_ids
 
     def remove(model):
-        if model.id == 1 or model.id == g.admin.id:
+        if model.id == 1 or model.id == g.account.id:
             # raise ValidationError(_("Owner can not be deleted!"))
             abort(422, __("Owner can not be deleted!"))
         users = model.recursive_users_query().all()
         for u in users:
-            u.added_by = g.admin.id
+            u.added_by = g.account.id
 
-        DailyUsage.query.filter(DailyUsage.admin_id.in_(model.recursive_sub_admins_ids())).update({'admin_id': g.admin.id})
+        DailyUsage.query.filter(DailyUsage.admin_id.in_(model.recursive_sub_admins_ids())).update({'admin_id': g.account.id})
         AdminUser.query.filter(AdminUser.id.in_(model.recursive_sub_admins_ids())).delete()
 
         db.session.commit()
@@ -178,8 +178,8 @@ def bulk_register_admins(users=[], commit=True):
 
 
 def current_admin_or_owner():
-    if g and hasattr(g, 'admin') and g.admin:
-        return g.admin
+    if g and hasattr(g, 'account') and g.account and isinstance(g.account, AdminUser):
+        return g.account
     return AdminUser.query.filter(AdminUser.id == 1).first()
 
 

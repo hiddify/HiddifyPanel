@@ -16,9 +16,10 @@ from hiddifypanel.panel.authentication import basic_auth
 
 
 class Dashboard(FlaskView):
+    @hiddify.admin
     def get_data(self):
-        admin_id = request.args.get("admin_id") or g.admin.id
-        if admin_id not in g.admin.recursive_sub_admins_ids():
+        admin_id = request.args.get("admin_id") or g.account.id
+        if admin_id not in g.account.recursive_sub_admins_ids():
             abort(403, _("Access Denied!"))
 
         return jsonify(dict(
@@ -26,7 +27,7 @@ class Dashboard(FlaskView):
             usage_history=get_daily_usage_stats(admin_id)
         ))
 
-    @app.auth_required(basic_auth, roles=['super_admin', 'admin'])
+    @hiddify.admin
     def index(self):
 
         if hconfig(ConfigEnum.first_setup):
@@ -36,8 +37,8 @@ class Dashboard(FlaskView):
         bot = None
         # if hconfig(ConfigEnum.license):
         childs = None
-        admin_id = request.args.get("admin_id") or g.admin.id
-        if admin_id not in g.admin.recursive_sub_admins_ids():
+        admin_id = request.args.get("admin_id") or g.account.id
+        if admin_id not in g.account.recursive_sub_admins_ids():
             abort(403, _("Access Denied!"))
 
         child_id = request.args.get("child_id") or None
@@ -84,6 +85,7 @@ class Dashboard(FlaskView):
         stats = {'system': hiddify.system_stats(), 'top5': hiddify.top_processes()}
         return render_template('index.html', stats=stats, usage_history=get_daily_usage_stats(admin_id, child_id), childs=childs)
 
+    @hiddify.super_admin
     @route('remove_child', methods=['POST'])
     def remove_child(self):
         child_id = request.form['child_id']

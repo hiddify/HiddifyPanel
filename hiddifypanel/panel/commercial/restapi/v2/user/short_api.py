@@ -19,11 +19,11 @@ class ShortSchema(Schema):
 
 
 class ShortAPI(MethodView):
-    decorators = [app.auth_required(api_auth, roles=['user'])]
+    decorators = [hiddify.user_auth]
 
     @app.output(ShortSchema)
     def get(self):
-        short, expire_in = hiddify.add_short_link("/"+hconfig(ConfigEnum.proxy_path)+"/"+str(g.user_uuid)+"/")
+        short, expire_in = hiddify.add_short_link("/"+hconfig(ConfigEnum.proxy_path)+"/"+str(g.account_uuid)+"/")
         full_url = f"https://{urlparse(request.base_url).hostname}/{short}"
         dto = ShortSchema()
         dto.full_url = full_url
