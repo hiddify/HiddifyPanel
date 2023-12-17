@@ -62,7 +62,7 @@ def verify_user_authentication_from_session() -> User | AdminUser | None:
         return get_user_by_uuid(session['user_sign']['uuid'])
 
 
-# actually this is not used, we authenticate the client and set in the flask.g object, then in views we re-authenticate with their roles to see if they have access to the view or not
+# actually this is not used, we authenticate the client and setup it in the flask.g object, then in views we re-authenticate with their roles to see if they have access to the view or not
 @api_auth.get_user_roles
 @basic_auth.get_user_roles
 def get_account_role(account) -> AccountRole | None:
@@ -92,7 +92,7 @@ def standalone_admin_basic_auth_verification() -> AdminUser | None:
 
     if auth:
         account = verify_basic_auth_password(auth.username, auth.password)
-        if account:
+        if account and isinstance(account, AdminUser):
             set_admin_authentication_in_session(account)
             return account
 
@@ -104,7 +104,7 @@ def standalone_user_basic_auth_verification() -> User | None:
 
     if auth and auth.username and auth.password:
         user = verify_basic_auth_password(auth.username, auth.password)
-        if user:
+        if user and isinstance(user, User):
             set_user_authentication_in_session(user)
             return user
     return verify_user_authentication_from_session()
