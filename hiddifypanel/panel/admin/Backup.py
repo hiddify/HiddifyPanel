@@ -61,7 +61,7 @@ class Backup(FlaskView):
 
             from flask_babel import refresh
             refresh()
-            return redirect(f'/{hconfig(ConfigEnum.proxy_path)}/{g.account.uuid}/admin/actions/reinstall2/', code=302)
+            return redirect(f'/{hconfig(ConfigEnum.proxy_path)}/admin/actions/reinstall2/', code=302)
             from . import Actions
             action = Actions()
             return action.reinstall(complete_install=True, domain_changed=True)

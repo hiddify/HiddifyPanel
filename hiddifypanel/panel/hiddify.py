@@ -231,9 +231,9 @@ def get_user_link(uuid, domain, mode='', username=''):
     if "*" in d:
         d = d.replace("*", get_random_string(5, 15))
 
-    link = f"https://{d}/{proxy_path}/{uuid}/#{username}"
+    link = f"https://{d}/{proxy_path}/#{username}"
     if mode == "admin":
-        link = f"https://{d}/{proxy_path}/{uuid}/admin/#{username}"
+        link = f"https://{d}/{proxy_path}/admin/#{username}"
     link_multi = f"{link}multi"
     # if mode == 'new':
     #     link = f"{link}new"

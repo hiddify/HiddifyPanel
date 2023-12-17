@@ -125,11 +125,11 @@ class Actions(FlaskView):
         admin_secret = get_super_admin_secret()
         proxy_path = hconfig(ConfigEnum.proxy_path)
         admin_links = f"<h5 >{_('Admin Links')}</h5><ul>"
-        admin_links += f"<li><span class='badge badge-danger'>{_('Not Secure')}</span>: <a class='badge ltr share-link' href='http://{server_ip}/{proxy_path}/{admin_secret}/admin/'>http://{server_ip}/{proxy_path}/{admin_secret}/admin/</a></li>"
+        admin_links += f"<li><span class='badge badge-danger'>{_('Not Secure')}</span>: <a class='badge ltr share-link' href='http://{server_ip}/{proxy_path}/admin/'>http://{server_ip}/{proxy_path}/admin/</a></li>"
         domains = get_panel_domains()
         # domains=[*domains,f'{server_ip}.sslip.io']
         for d in domains:
-            link = f'https://{d}/{proxy_path}/{admin_secret}/admin/'
+            link = f'https://{d}/{proxy_path}/admin/'
             admin_links += f"<li><a target='_blank' class='badge ltr' href='{link}'>{link}</a></li>"
 
         resp = render_template("result.html",

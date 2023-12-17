@@ -65,7 +65,7 @@ def all_configs():
 
     configs['hconfigs']['first_setup'] = def_user != None and len(sslip_domains) > 0
 
-    path = f'/{hconfig(ConfigEnum.proxy_path)}/{get_super_admin_secret()}/admin/'
+    path = f'/{hconfig(ConfigEnum.proxy_path)}/admin/'
 
     server_ip = hutils.ip.get_ip(4)
     configs['admin_path'] = path
@@ -93,18 +93,17 @@ def test():
 def admin_links():
     proxy_path = hconfig(ConfigEnum.proxy_path)
 
-    admin_secret = get_super_admin_secret()
     server_ip = hutils.ip.get_ip(4)
-    admin_links = f"Not Secure (do not use it- only if others not work):\n   http://{server_ip}/{proxy_path}/{admin_secret}/admin/\n"
+    admin_links = f"Not Secure (do not use it- only if others not work):\n   http://{server_ip}/{proxy_path}/admin/\n"
 
     domains = get_panel_domains()
     admin_links += f"Secure:\n"
     if not any([d for d in domains if 'sslip.io' not in d.domain]):
-        admin_links += f"   (not signed) https://{server_ip}/{proxy_path}/{admin_secret}/admin/\n"
+        admin_links += f"   (not signed) https://{server_ip}/{proxy_path}/admin/\n"
 
     # domains=[*domains,f'{server_ip}.sslip.io']
     for d in domains:
-        admin_links += f"   https://{d.domain}/{proxy_path}/{admin_secret}/admin/\n"
+        admin_links += f"   https://{d.domain}/{proxy_path}/admin/\n"
 
     print(admin_links)
     return admin_links
@@ -118,8 +117,7 @@ def admin_path():
         db.session.commit()
         admin = Admin.query.filter(Admin.mode == AdminMode.super_admin).first()
 
-    admin_secret = admin.uuid
-    print(f"/{proxy_path}/{admin_secret}/admin/")
+    print(f"/{proxy_path}/admin/")
 
 
 def hysteria_domain_port():
