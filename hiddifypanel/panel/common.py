@@ -130,7 +130,7 @@ def init_app(app: APIFlask):
         if g.proxy_path != hconfig(ConfigEnum.proxy_path):
             if app.config['DEBUG']:
                 abort(400, Markup(
-                    f"Invalid Proxy Path <a href=/{hconfig(ConfigEnum.proxy_path)}/{get_super_admin_secret()}/admin>admin</a>"))
+                    f"Invalid Proxy Path <a href=/{hconfig(ConfigEnum.proxy_path)}/admin>admin</a>"))
             abort(400, "Invalid Proxy Path")
 
         # setup dark mode
