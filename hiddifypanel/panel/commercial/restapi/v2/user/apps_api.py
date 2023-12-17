@@ -4,7 +4,7 @@ from flask import url_for
 from flask import current_app as app
 from flask import g, request
 from apiflask import Schema, abort
-from apiflask.fields import String, URL, Enum, List, Nested
+from apiflask.fields import String,  URL,  Enum,  List,  Nested
 from flask_babelex import lazy_gettext as _
 from urllib.parse import quote_plus, urlparse
 import user_agents
@@ -14,7 +14,6 @@ from enum import auto
 
 from hiddifypanel.panel.user.user import get_common_data
 from hiddifypanel.hutils.utils import get_latest_release_url, do_base_64
-from hiddifypanel.panel.authentication import api_auth
 
 # region App Api DTOs
 
@@ -116,7 +115,7 @@ class AppAPI(MethodView):
                 hiddify_next_dto = self.__get_hiddify_next_app_dto()
                 hiddify_clash_dto = self.__get_hiddify_clash_desktop_app_dto()
                 hiddifyn_dto = self.__get_hiddifyn_app_dto()
-                apps_data += ([hiddify_next_dto, hiddifyng_dto, hiddify_clash_dto, hiddifyn_dto])
+                apps_data += ([hiddify_next_dto, hiddify_clash_dto, hiddifyn_dto])
             case Platform.ios:
                 stash_dto = self.__get_stash_app_dto()
                 shadowrocket_dto = self.__get_shadowrocket_app_dto()
