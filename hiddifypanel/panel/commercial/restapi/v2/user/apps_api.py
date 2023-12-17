@@ -88,6 +88,7 @@ class AppAPI(MethodView):
 
     @app.input(AppInSchema, arg_name='data', location="query")
     @app.output(AppSchema(many=True))
+    @hiddify.user_auth
     def get(self, data):
         # parse user agent
         if data['platform'] == Platform.auto:
