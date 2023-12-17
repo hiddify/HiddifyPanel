@@ -175,7 +175,7 @@ def init_app(app: APIFlask):
         g.is_admin = False if role == auth.AccountRole.user else True
 
     @app.before_request
-    def backward_compatibile_middleware():
+    def backward_compatibility_middleware():
         if hutils.utils.is_uuid_in_url_path(request.path):
             if g.proxy_path != hconfig(ConfigEnum.proxy_path):
                 # this will make a fingerprint for panel. we should redirect the request to decoy website.
