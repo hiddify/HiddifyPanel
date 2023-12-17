@@ -93,6 +93,7 @@ def standalone_admin_basic_auth_verification() -> AdminUser | None:
     if auth:
         account = verify_basic_auth_password(auth.username, auth.password)
         if account:
+            set_admin_authentication_in_session(account)
             return account
 
     return verify_admin_authentication_from_session()
