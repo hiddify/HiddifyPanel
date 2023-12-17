@@ -1,16 +1,18 @@
 import flask_bootstrap
 import hiddifypanel
-from dynaconf import FlaskDynaconf
-from flask import Flask, request, g
+from flask import request, g
 from flask_babelex import Babel
-from hiddifypanel.panel.init_db import init_db
+from flask_session import Session
+import datetime
 
-from hiddifypanel.models import *
 from dotenv import dotenv_values
 import os
 from hiddifypanel.panel import hiddify
 from apiflask import APIFlask
 from werkzeug.middleware.proxy_fix import ProxyFix
+from hiddifypanel.models import *
+from hiddifypanel.panel.init_db import init_db
+from hiddifypanel.cache import redis_client
 
 
 def create_app(cli=False, **config):
@@ -24,7 +26,7 @@ def create_app(cli=False, **config):
     app.servers = {
         'name': 'current',
         'url': '',
-    }
+    }  # type: ignore
     app.info = {
         'description': 'Hiddify is a free and open source software. It is as it is.',
         'termsOfService': 'http://hiddify.com',
@@ -46,6 +48,12 @@ def create_app(cli=False, **config):
             v = True if v.lower() == "true" else (False if v.lower() == "false" else v)
 
         app.config[c] = v
+
+    # setup flask server-side session
+    app.config['SESSION_TYPE'] = 'redis'
+    app.config['SESSION_REDIS'] = redis_client
+    app.config['PERMANENT_SESSION_LIFETIME'] = datetime.timedelta(days=7)
+    Session(app)
 
     app.jinja_env.line_statement_prefix = '%'
     app.jinja_env.filters['b64encode'] = hiddify.do_base_64
