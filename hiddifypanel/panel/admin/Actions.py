@@ -4,15 +4,15 @@ import os
 import urllib.request
 
 from flask_classful import FlaskView, route
-from flask import render_template, request, Markup, url_for, make_response, redirect
+from flask import render_template, request, Markup, url_for, make_response, redirect, g
 from flask import current_app as app
+# from flask_cors import cross_origin
 
 from hiddifypanel import hutils
 from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify, usage
 from hiddifypanel.panel.run_commander import commander, Command
 from hiddifypanel.panel.hiddify import flash
-from hiddifypanel.panel.authentication import basic_auth
 
 
 class Actions(FlaskView):
@@ -22,6 +22,7 @@ class Actions(FlaskView):
         return render_template('index.html')
 
     # @hiddify.super_admin
+    # @cross_origin()
     def reverselog(self, logfile):
         if logfile == None:
             return self.viewlogs()
@@ -55,7 +56,7 @@ class Actions(FlaskView):
         return Markup("<br>".join(res))
 
     @hiddify.super_admin
-    @route('apply_configs', methods=['POST'])
+    @route('apply_configs', methods=['POST', 'GET'])
     def apply_configs(self):
         return self.reinstall(False)
 
@@ -170,16 +171,16 @@ class Actions(FlaskView):
 
         # run status.sh
         commander(Command.status)
-
-        from urllib.parse import urlparse
-        domain = urlparse(request.base_url).hostname
+        # TODO: send real apikey
+        api_key = g.account_uuid
         return render_template("result.html",
                                out_type="info",
                                out_msg=_("see the log in the bellow screen"),
                                log_path=get_logpath(f"status.log"),
-                               # log_path=f"status.log",
                                show_success=False,
-                               domains=get_domains()
+                               domains=get_domains(),
+                               api_key=api_key,
+                               proxy_path=g.proxy_path,
                                )
 
     @route('update', methods=['POST'])

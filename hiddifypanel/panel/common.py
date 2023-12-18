@@ -158,9 +158,11 @@ def init_app(app: APIFlask):
     @app.before_request
     def api_auth_middleware():
         '''In every api request(whether is for the admin or the user) the client should provide api key and we check it'''
-        if 'api' not in request.path:  # type: ignore
+        if '/api/v1/' not in request.path and '/api/v2/' not in request.path:
             return
-
+        # skip the CORS preflight request
+        if request.method == 'OPTIONS' and request.headers.get('Sec-Fetch-Mode') == 'cors':
+            return
         # get authenticated account
         account: AdminUser | User | None = auth.standalone_api_auth_verify()
         if not account:
@@ -208,14 +210,10 @@ def init_app(app: APIFlask):
     @app.before_request
     def basic_auth_middleware():
         '''if the request is for user panel(user page), we try to authenticate the user with basic auth or the client session data, we do that for admin panel too'''
-        if 'api' in request.path:  # type: ignore
+        if '/api/v1/' in request.path or '/api/v2/' in request.path:  # type: ignore
             return
 
         account: AdminUser | User | None = None
-
-        # if we don't have endpoint, we can't detect the request is for admin panel or user panel, so we can't authenticate
-        if not request.endpoint:
-            abort(400, "invalid request")
 
         if request.endpoint and 'UserView' in request.endpoint:
             account = auth.standalone_user_basic_auth_verification()
