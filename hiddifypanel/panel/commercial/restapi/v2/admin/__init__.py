@@ -10,10 +10,12 @@ def init_app(app):
         from .server_status_api import AdminServerStatusApi
         from .admin_user_api import AdminUserApi
         from .admin_users_api import AdminUsersApi
+        from .admin_log_api import AdminLogApi
         bp.add_url_rule('/me/', view_func=AdminInfoApi)
         bp.add_url_rule('/server_status/', view_func=AdminServerStatusApi)
         bp.add_url_rule('/admin_user/<uuid:uuid>', view_func=AdminUserApi)
         bp.add_url_rule('/admin_user/', view_func=AdminUsersApi)
+        bp.add_url_rule('/log/', view_func=AdminLogApi)
 
         from .user_api import UserApi
         from .users_api import UsersApi
