@@ -41,11 +41,12 @@ def verify_api_auth_token(token) -> User | AdminUser | None:
 
 
 def set_admin_authentication_in_session(admin: AdminUser) -> None:
-    session['account'] = {
-        'uuid': admin.uuid,
-        'role': get_account_role(admin),
-        # 'username': res.username,
-    }
+    if not session.get('account'):
+        session['account'] = {
+            'uuid': admin.uuid,
+            'role': get_account_role(admin),
+            # 'username': res.username,
+        }
 
 
 def set_user_authentication_in_session(user: User) -> None:
