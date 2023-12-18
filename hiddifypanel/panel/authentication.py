@@ -115,7 +115,7 @@ def standalone_api_auth_verify():
     auth = api_auth.get_auth()
     try:
         if hasattr(auth, 'token'):
-            account = verify_api_auth_token(auth.token, check_session=False)
+            account = verify_api_auth_token(auth.token)
             if account:
                 return account
     except AttributeError:
