@@ -2,10 +2,7 @@
 {% block title %}{{hconfig(ConfigEnum.branding_title) or _('user.home.title')}}{% endblock %}
 {% from 'macros.html' import modal %}
 {% block body_header %}
-<h3>
-    <a href="{{admin_link}}" target=_blank style="color:black;"> User page route is redirected to: {{user_link}}
-    </a></br>
-</h3>
+
 {% macro reload() -%}
 <a href="{{new_link}}" class='btn btn-primary'>
     <i class="fa-regular fa-copy"></i> {{_("copy")}}
