@@ -185,15 +185,16 @@ def init_app(app: APIFlask):
             if '/admin/' in request.path:
                 # we check if there is such uuid or not, because we don't want to redirect to admin panel if there is no such uuid
                 # otherwise anyone can provide any secret to get access to admin panel
+                
                 uuid = hutils.utils.get_uuid_from_url_path(request.path) or abort(400, 'invalid request')
-                if get_admin_by_uuid(uuid):
-                    return render_template('redirect_to_admin.html', admin_link=f'{request.url_root.rstrip("/").replace("http", "https")}/{g.proxy_path}/admin/')
+                if admin:=get_admin_by_uuid(uuid):
+                    return render_template('redirect_to_new_format.html', new_link=f'https://{admin.username}:{admin.password}@{request.host}/{g.proxy_path}/admin/')
                 else:
                     abort(400, 'invalid request')
             else:
                 uuid = hutils.utils.get_uuid_from_url_path(request.path) or abort(400, 'invalid request')
                 if user := get_user_by_uuid(uuid):
-                    return render_template('redirect_to_user.html', user_link=f'{request.url_root.rstrip("/").replace("http", "https")}/{g.proxy_path}/#{user.name}')
+                    return render_template('redirect_to_new_format.html', new_link=f'https://{user.username}:{user.password}@{request.host}/{g.proxy_path}/')
                 else:
                     abort(400, 'invalid request')
 
