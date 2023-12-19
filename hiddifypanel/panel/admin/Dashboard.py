@@ -2,7 +2,7 @@ import datetime
 
 
 from flask import render_template, url_for, request, jsonify, g, redirect
-from flask_login import login_required
+from hiddifypanel.panel.auth import login_required
 from apiflask import abort
 from flask_babelex import lazy_gettext as _
 from flask_classful import FlaskView, route
@@ -15,8 +15,7 @@ from hiddifypanel.panel.hiddify import flash
 
 
 class Dashboard(FlaskView):
-    @login_required
-    @hiddify.admin
+    @login_required(roles={Role.admin})
     def get_data(self):
         admin_id = request.args.get("admin_id") or g.account.id
         if admin_id not in g.account.recursive_sub_admins_ids():
@@ -27,8 +26,7 @@ class Dashboard(FlaskView):
             usage_history=get_daily_usage_stats(admin_id)
         ))
 
-    @login_required
-    @hiddify.admin
+    @login_required(roles={Role.admin})
     def index(self):
 
         if hconfig(ConfigEnum.first_setup):
@@ -86,8 +84,7 @@ class Dashboard(FlaskView):
         stats = {'system': hiddify.system_stats(), 'top5': hiddify.top_processes()}
         return render_template('index.html', stats=stats, usage_history=get_daily_usage_stats(admin_id, child_id), childs=childs)
 
-    @login_required
-    @hiddify.super_admin
+    @login_required(roles={Role.admin})
     @route('remove_child', methods=['POST'])
     def remove_child(self):
         child_id = request.form['child_id']

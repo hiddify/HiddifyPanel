@@ -22,8 +22,7 @@ class ConfigAdmin(AdminLTEModelView):
         },
     }
 
-    @login_required
-    @hiddify.admin
+    @login_required(roles={Role.admin})
     def is_accessible(self):
         return True
 

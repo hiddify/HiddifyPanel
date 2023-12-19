@@ -1,4 +1,4 @@
-from flask_login import login_required
+from hiddifypanel.panel.auth import login_required
 from hiddifypanel import hutils
 from wtforms.validators import Regexp
 from hiddifypanel.models import *
@@ -108,7 +108,6 @@ class ChildAdmin(AdminLTEModelView):
             raise ValidationError(f"at least one domain should exist")
         hiddify.flash_config_success(restart_mode='apply', domain_changed=True)
 
-    @login_required
-    @hiddify.admin
+    @login_required(roles={Role.admin})
     def is_accessible(self):
         return True

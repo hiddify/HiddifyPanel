@@ -1,9 +1,9 @@
 from flask_babelex import gettext as _
+from hiddifypanel.models.role import Role
 import wtforms as wtf
 from flask_wtf import FlaskForm
 from flask_bootstrap import SwitchField
 from flask import render_template
-from flask import current_app as app
 
 
 from hiddifypanel.models import ConfigEnum, get_hconfigs, BoolConfig, ConfigEnum, hconfig, Proxy
@@ -14,11 +14,11 @@ from hiddifypanel.panel import hiddify
 from flask_classful import FlaskView
 from hiddifypanel.panel.hiddify import flash
 from hiddifypanel.panel import hiddify
-from flask_login import login_required
+from hiddifypanel.panel.auth import login_required
 
 
 class ProxyAdmin(FlaskView):
-    decorators = [login_required, hiddify.super_admin]
+    decorators = [login_required({Role.super_admin})]
 
     def index(self):
         return render_template('proxy.html', global_config_form=get_global_config_form(), detailed_config_form=get_all_proxy_form())

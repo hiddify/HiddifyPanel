@@ -4,7 +4,7 @@ from flask_babelex import lazy_gettext as _
 # from flask_babelex import gettext as _
 from flask import render_template, Markup, url_for, g
 from flask import current_app as app
-from flask_login import login_required
+from hiddifypanel.panel.auth import login_required
 import wtforms as wtf
 from flask_bootstrap import SwitchField
 
@@ -25,14 +25,12 @@ from hiddifypanel.panel import hiddify, custom_widgets
 
 class SettingAdmin(FlaskView):
 
-    @login_required
-    @hiddify.super_admin
+    @login_required(roles={Role.super_admin})
     def index(self):
         form = get_config_form()
         return render_template('config.html', form=form)
 
-    @login_required
-    @hiddify.super_admin
+    @login_required(roles={Role.super_admin})
     def post(self):
         set_hconfig(ConfigEnum.first_setup, False)
         form = get_config_form()
