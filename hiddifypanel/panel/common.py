@@ -176,28 +176,20 @@ def init_app(app: APIFlask):
 
     @app.before_request
     def backward_compatibility_middleware():
-        if hutils.utils.is_uuid_in_url_path(request.path):
-            if g.proxy_path != hconfig(ConfigEnum.proxy_path):
-                # this will make a fingerprint for panel. we should redirect the request to decoy website.
-                # abort(400, "invalid proxy path")
-                redirect(hconfig(ConfigEnum.decoy_domain))
-
-            if '/admin/' in request.path:
-                # we check if there is such uuid or not, because we don't want to redirect to admin panel if there is no such uuid
-                # otherwise anyone can provide any secret to get access to admin panel
+        if g.proxy_path != hconfig(ConfigEnum.proxy_path):
+            # this will make a fingerprint for panel. we should redirect the request to decoy website.
+            abort(400, "invalid proxy path")
+        uuid = hutils.utils.get_uuid_from_url_path(request.path)
+        if uuid:         
+            user=get_user_by_uuid(uuid) or get_admin_by_uuid(uuid) or abort(400, 'invalid request')
+            new_link=f'https://{user.username}:{user.password}@{request.host}/{g.proxy_path}/'
+            if 'Mozilla' in request.user_agent.string:
+                return redirect(new_link,301)
+            
+            if  "/admin/" in request.path:
+                new_link+="admin/"
+            return render_template('redirect_to_new_format.html', new_link=new_link)
                 
-                uuid = hutils.utils.get_uuid_from_url_path(request.path) or abort(400, 'invalid request')
-                if admin:=get_admin_by_uuid(uuid):
-                    return render_template('redirect_to_new_format.html', new_link=f'https://{admin.username}:{admin.password}@{request.host}/{g.proxy_path}/admin/')
-                else:
-                    abort(400, 'invalid request')
-            else:
-                uuid = hutils.utils.get_uuid_from_url_path(request.path) or abort(400, 'invalid request')
-                if user := get_user_by_uuid(uuid):
-                    return render_template('redirect_to_new_format.html', new_link=f'https://{user.username}:{user.password}@{request.host}/{g.proxy_path}/')
-                else:
-                    abort(400, 'invalid request')
-
     @app.before_request
     def basic_auth_middleware():
         '''if the request is for user panel(user page), we try to authenticate the user with basic auth or the client session data, we do that for admin panel too'''
