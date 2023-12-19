@@ -1,4 +1,5 @@
 import base64
+from typing import Tuple
 from strenum import StrEnum
 from urllib.parse import urlparse
 from uuid import UUID
@@ -158,36 +159,6 @@ def get_uuid_from_url_path(path: str) -> str | None:
     return None
 
 
-class AccountRole(StrEnum):
-    user = 'user'
-    admin = 'admin'
-    super_admin = 'super_admin'
-    agent = 'agent'
-
-
-def get_account_role(account) -> AccountRole | None:
-    '''Returns user/admin role
-     Allowed roles are:
-     - for user:
-        - user
-     - for admin:
-        - super_admin
-        - admin
-        - agent
-    '''
-    from hiddifypanel.models import AdminUser, User
-    if isinstance(account, User):
-        return AccountRole.user
-    if isinstance(account, AdminUser):
-        match account.mode:
-            case 'super_admin':
-                return AccountRole.super_admin
-            case 'admin':
-                return AccountRole.admin
-            case 'agent':
-                return AccountRole.agent
-
-
 def get_apikey_from_auth_header(auth_header: str) -> str | None:
     if auth_header.startswith('ApiKey'):
         return auth_header.split('ApiKey ')[1].strip()
@@ -208,3 +179,15 @@ def parse_basic_auth_header(auth_header: str) -> tuple[str, str] | None:
         return None
     username, password = map(lambda item: item.strip(), base64.urlsafe_b64decode(header_value[1].strip()).decode('utf-8').split(':'))
     return (username, password) if username and password else None
+
+
+def parse_auth_id(raw_id) -> Tuple[type | None, str | None]:
+    splitted = raw_id.split('_')
+    if len(splitted) < 2:
+        return None, None
+    admin_or_user, id = splitted
+    from hiddifypanel.models import AdminUser, User
+    account_type = type(User) if admin_or_user == 'user' else type(AdminUser)
+    if not id or not account_type:
+        return None, None
+    return account_type, id
