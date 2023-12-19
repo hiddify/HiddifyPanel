@@ -1,3 +1,5 @@
+import base64
+from strenum import StrEnum
 from urllib.parse import urlparse
 from uuid import UUID
 from flask_babelex import lazy_gettext as _
@@ -154,3 +156,55 @@ def get_uuid_from_url_path(path: str) -> str | None:
         if is_uuid_valid(section, 4):
             return section
     return None
+
+
+class AccountRole(StrEnum):
+    user = 'user'
+    admin = 'admin'
+    super_admin = 'super_admin'
+    agent = 'agent'
+
+
+def get_account_role(account) -> AccountRole | None:
+    '''Returns user/admin role
+     Allowed roles are:
+     - for user:
+        - user
+     - for admin:
+        - super_admin
+        - admin
+        - agent
+    '''
+    from hiddifypanel.models import AdminUser, User
+    if isinstance(account, User):
+        return AccountRole.user
+    if isinstance(account, AdminUser):
+        match account.mode:
+            case 'super_admin':
+                return AccountRole.super_admin
+            case 'admin':
+                return AccountRole.admin
+            case 'agent':
+                return AccountRole.agent
+
+
+def get_apikey_from_auth_header(auth_header: str) -> str | None:
+    if auth_header.startswith('ApiKey'):
+        return auth_header.split('ApiKey ')[1].strip()
+    return None
+
+
+def get_basic_auth_from_auth_header(auth_header: str) -> str | None:
+    if auth_header.startswith('Basic'):
+        return auth_header.split('Basic ')[1].strip()
+    return None
+
+
+def parse_basic_auth_header(auth_header: str) -> tuple[str, str] | None:
+    if not auth_header.startswith('Basic'):
+        return None
+    header_value = auth_header.split('Basic ')
+    if len(header_value) < 2:
+        return None
+    username, password = map(lambda item: item.strip(), base64.urlsafe_b64decode(header_value[1].strip()).decode('utf-8').split(':'))
+    return (username, password) if username and password else None
