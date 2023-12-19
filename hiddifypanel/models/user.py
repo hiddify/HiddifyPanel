@@ -10,6 +10,7 @@ from strenum import StrEnum
 
 from hiddifypanel.panel.database import db
 from hiddifypanel.models import Lang
+from hiddifypanel.models.role import Role
 
 ONE_GIG = 1024*1024*1024
 
@@ -111,6 +112,13 @@ class User(db.Model, SerializerMixin, FlaskLoginUserMixin):
             for ip in detail.ips:
                 res[ip] = 1
         return list(res.keys())
+
+    @property
+    def role(self):
+        return Role.user
+
+    def get_id(self):
+        return f'user_{self.id}'
 
     @staticmethod
     def by_id(user_id):
