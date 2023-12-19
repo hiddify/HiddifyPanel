@@ -5,6 +5,7 @@ import urllib.request
 
 from flask_classful import FlaskView, route
 from flask import render_template, request, Markup, url_for, make_response, redirect
+from flask_login import login_required
 from flask import current_app as app
 
 from hiddifypanel import hutils
@@ -16,6 +17,7 @@ from hiddifypanel.panel.hiddify import flash
 
 class Actions(FlaskView):
 
+    @login_required
     @hiddify.super_admin
     def index(self):
         return render_template('index.html')
@@ -45,6 +47,7 @@ class Actions(FlaskView):
         response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
         return response
 
+    @login_required
     @hiddify.admin
     def viewlogs(self):
         config_dir = app.config['HIDDIFY_CONFIG_PATH']
@@ -53,16 +56,19 @@ class Actions(FlaskView):
             res.append(f"<a href='{url_for('admin.Actions:reverselog',logfile=filename)}'>{filename}</a>")
         return Markup("<br>".join(res))
 
+    @login_required
     @hiddify.super_admin
     @route('apply_configs', methods=['POST'])
     def apply_configs(self):
         return self.reinstall(False)
 
+    @login_required
     @hiddify.super_admin
     @route('reset', methods=['POST'])
     def reset(self):
         return self.reset2()
 
+    @login_required
     @hiddify.super_admin
     def reset2(self):
         status = self.status()
@@ -88,12 +94,13 @@ class Actions(FlaskView):
         time.sleep(1)
         return resp
 
+    @login_required
     @hiddify.super_admin
     @route('reinstall', methods=['POST'])
     def reinstall(self, complete_install=True, domain_changed=False):
         return self.reinstall2(complete_install, domain_changed)
 
-    # @hiddify.super_admin
+    @login_required
     @hiddify.super_admin
     def reinstall2(self, complete_install=True, domain_changed=False):
         if int(hconfig(ConfigEnum.db_version)) < 9:
@@ -149,6 +156,7 @@ class Actions(FlaskView):
         time.sleep(1)
         return resp
 
+    @login_required
     @hiddify.super_admin
     def change_reality_keys(self):
         key = hiddify.generate_x25519_keys()
@@ -157,6 +165,7 @@ class Actions(FlaskView):
         hiddify.flash_config_success(restart_mode='apply', domain_changed=False)
         return redirect(url_for('admin.SettingAdmin:index'))
 
+    @login_required
     @hiddify.super_admin
     def status(self):
         # hiddify.add_temporary_access()
@@ -182,6 +191,7 @@ class Actions(FlaskView):
                                )
 
     @route('update', methods=['POST'])
+    @login_required
     @hiddify.super_admin
     def update(self):
         return self.update2()
@@ -242,6 +252,7 @@ class Actions(FlaskView):
 
         return res+"</table>"
 
+    @login_required
     @hiddify.super_admin
     def update_usage(self):
 

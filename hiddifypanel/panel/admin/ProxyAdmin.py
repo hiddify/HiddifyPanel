@@ -14,10 +14,11 @@ from hiddifypanel.panel import hiddify
 from flask_classful import FlaskView
 from hiddifypanel.panel.hiddify import flash
 from hiddifypanel.panel import hiddify
+from flask_login import login_required
 
 
 class ProxyAdmin(FlaskView):
-    decorators = [hiddify.super_admin]
+    decorators = [login_required, hiddify.super_admin]
 
     def index(self):
         return render_template('proxy.html', global_config_form=get_global_config_form(), detailed_config_form=get_all_proxy_form())

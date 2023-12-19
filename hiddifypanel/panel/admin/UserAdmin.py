@@ -1,6 +1,7 @@
 import datetime
 import uuid
 import re
+from flask_login import login_required
 
 from wtforms.validators import Regexp, ValidationError
 from flask import Markup, g, request, url_for
@@ -204,6 +205,7 @@ class UserAdmin(AdminLTEModelView):
         user_driver.remove_client(model)
         # hiddify.flash_config_success()
 
+    @login_required
     @hiddify.admin
     def is_accessible(self):
         return True

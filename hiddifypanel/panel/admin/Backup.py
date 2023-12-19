@@ -9,18 +9,17 @@ from datetime import datetime
 import json
 import json
 from flask import render_template, request, jsonify, redirect, g
-from flask import current_app as app
+from flask_login import login_required
 from hiddifypanel.panel.hiddify import flash
 from flask_wtf.file import FileField, FileRequired
 from flask_classful import FlaskView
 
 from hiddifypanel.panel import hiddify
 from hiddifypanel.models import *
-from hiddifypanel.panel import hiddify
 
 
 class Backup(FlaskView):
-    decorators = [hiddify.super_admin]
+    decorators = [login_required, hiddify.super_admin]
 
     def index(self):
         return render_template('backup.html', restore_form=get_restore_form())
