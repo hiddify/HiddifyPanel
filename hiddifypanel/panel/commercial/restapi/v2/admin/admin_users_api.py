@@ -4,7 +4,6 @@ from flask.views import MethodView
 from .admin_user_api import AdminSchema
 from hiddifypanel.models import AdminUser
 from hiddifypanel.panel import hiddify
-from hiddifypanel.panel.authentication import api_auth
 
 
 class AdminUsersApi(MethodView):

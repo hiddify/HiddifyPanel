@@ -20,7 +20,6 @@ from hiddifypanel.panel.database import db
 from hiddifypanel.panel.hiddify import flash
 from hiddifypanel.panel.hiddify import get_random_domains
 from hiddifypanel.panel import hiddify, custom_widgets
-from hiddifypanel.panel.authentication import basic_auth
 
 
 class SettingAdmin(FlaskView):

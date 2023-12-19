@@ -12,7 +12,6 @@ from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify
 from hiddifypanel.panel.database import db
 from hiddifypanel.panel.hiddify import flash
-from hiddifypanel.panel.authentication import basic_auth
 
 
 class Dashboard(FlaskView):

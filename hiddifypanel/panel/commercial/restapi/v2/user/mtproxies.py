@@ -10,7 +10,6 @@ from hiddifypanel.models.domain import DomainType
 
 from hiddifypanel.panel.user.user import get_common_data
 from hiddifypanel.panel import hiddify
-from hiddifypanel.panel.authentication import api_auth
 
 
 class MtproxySchema(Schema):

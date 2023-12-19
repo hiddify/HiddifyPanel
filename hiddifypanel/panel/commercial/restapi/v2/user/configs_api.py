@@ -9,7 +9,6 @@ from apiflask import Schema
 from apiflask.fields import String
 from hiddifypanel.panel.user.user import get_common_data
 from hiddifypanel.panel.user import link_maker
-from hiddifypanel.panel.authentication import api_auth
 
 
 class ConfigSchema(Schema):

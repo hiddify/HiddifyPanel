@@ -8,7 +8,6 @@ from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify
 from hiddifypanel.drivers import user_driver
 from hiddifypanel.panel import hiddify
-from hiddifypanel.panel.authentication import api_auth
 from apiflask.fields import UUID, String, Float, Enum, Date, Time, Integer
 
 

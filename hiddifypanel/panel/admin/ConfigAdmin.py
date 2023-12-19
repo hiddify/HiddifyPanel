@@ -4,7 +4,6 @@ from hiddifypanel.panel import hiddify
 
 from wtforms.validators import ValidationError
 
-from hiddifypanel.panel.authentication import AccountRole, standalone_verify
 from hiddifypanel.models import ConfigEnum, Domain
 from .adminlte import AdminLTEModelView
 

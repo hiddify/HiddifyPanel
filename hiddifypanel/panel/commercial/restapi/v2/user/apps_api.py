@@ -14,7 +14,6 @@ from enum import auto
 
 from hiddifypanel.panel.user.user import get_common_data
 from hiddifypanel.hutils.utils import get_latest_release_url, do_base_64
-from hiddifypanel.panel.authentication import api_auth
 
 # region App Api DTOs
 

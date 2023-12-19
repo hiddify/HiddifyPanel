@@ -5,7 +5,6 @@ from hiddifypanel.models.user import get_user_by_uuid
 from hiddifypanel.panel import hiddify
 from hiddifypanel.drivers import user_driver
 from hiddifypanel.models import User
-from hiddifypanel.panel.authentication import api_auth
 from .user_api import UserSchema
 
 

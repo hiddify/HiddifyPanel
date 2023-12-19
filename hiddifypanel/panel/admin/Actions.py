@@ -12,7 +12,6 @@ from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify, usage
 from hiddifypanel.panel.run_commander import commander, Command
 from hiddifypanel.panel.hiddify import flash
-from hiddifypanel.panel.authentication import basic_auth
 
 
 class Actions(FlaskView):

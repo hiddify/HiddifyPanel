@@ -12,13 +12,11 @@ from flask import render_template, request, jsonify, redirect, g
 from flask import current_app as app
 from hiddifypanel.panel.hiddify import flash
 from flask_wtf.file import FileField, FileRequired
-from flask_classful import FlaskView, route
+from flask_classful import FlaskView
 
-from hiddifypanel.panel.database import db
 from hiddifypanel.panel import hiddify
 from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify
-from hiddifypanel.panel.authentication import basic_auth
 
 
 class Backup(FlaskView):
