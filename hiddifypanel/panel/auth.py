@@ -36,9 +36,11 @@ def init_app(app):
             return
 
         account = None
+        is_api_request = False
         if 'api' in request.blueprint:
             if apikey := hutils.utils.get_apikey_from_auth_header(auth_header):
                 account = get_user_by_uuid(apikey) or get_admin_by_uuid(apikey)
+                is_api_request = True
         else:
             if username_password := hutils.utils.parse_basic_auth_header(auth_header):
                 if request.blueprint == 'user2':
@@ -50,8 +52,8 @@ def init_app(app):
             g.account = account
             g.account_uuid = account.uuid
             g.is_admin = False if account.role == 'user' else True
-
-            login_user(account)
+            if not is_api_request:
+                login_user(account)
         return account
 
 

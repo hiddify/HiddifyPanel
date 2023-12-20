@@ -197,25 +197,25 @@ def init_app(app: APIFlask):
 
     #     account: AdminUser | User | None = None
 
-    #     # if we don't have endpoint, we can't detect the request is for admin panel or user panel, so we can't authenticate
-    #     if not request.endpoint:
-    #         abort(400, "invalid request")
+        # # if we don't have endpoint, we can't detect the request is for admin panel or user panel, so we can't authenticate
+        # if not request.endpoint:
+        #     abort(400, "invalid request")
 
-    #     if request.endpoint and 'UserView' in request.endpoint:
-    #         account = auth.standalone_user_basic_auth_verification()
-    #     else:
-    #         account = auth.standalone_admin_basic_auth_verification()
-    #     # get authenticated account
-    #     if not account:
-    #         return abort(401)
-    #     # get account role
-    #     role = auth.get_account_role(account)
-    #     if not role:
-    #         return abort(401)
-    #     # setup authenticated account things (uuid, is_admin, etc.)
-    #     g.account = account
-    #     g.account_uuid = account.uuid
-    #     g.is_admin = False if role == auth.AccountRole.user else True
+        # if request.endpoint and 'UserView' in request.endpoint:
+        #     account = auth.standalone_user_basic_auth_verification()
+        # else:
+        #     account = auth.standalone_admin_basic_auth_verification()
+        # # get authenticated account
+        # if not account:
+        #     return abort(401)
+        # # get account role
+        # role = auth.get_account_role(account)
+        # if not role:
+        #     return abort(401)
+        # # setup authenticated account things (uuid, is_admin, etc.)
+        # g.account = account
+        # g.account_uuid = account.uuid
+        # g.is_admin = False if role == auth.AccountRole.user else True
 
     # @app.auth_required(basic_auth, roles=['super_admin', 'admin', 'agent', 'user'])
 

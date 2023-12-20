@@ -4,7 +4,7 @@ import os
 import urllib.request
 
 from flask_classful import FlaskView, route
-from flask import render_template, request, Markup, url_for, make_response, redirect
+from flask import render_template, request, Markup, url_for, make_response, redirect, g
 from hiddifypanel.panel.auth import login_required
 from flask import current_app as app
 # from flask_cors import cross_origin

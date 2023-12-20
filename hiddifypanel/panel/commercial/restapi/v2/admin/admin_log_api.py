@@ -1,10 +1,12 @@
 from apiflask import Schema, fields, abort
 from flask.views import MethodView
+from hiddifypanel.models.role import Role
 from hiddifypanel.panel import hiddify
 from flask import current_app as app
 from flask_cors import cross_origin
 import os
 from ansi2html import Ansi2HTMLConverter
+from hiddifypanel.panel.auth import login_required
 
 
 class AdminLogfileSchema(Schema):
@@ -12,7 +14,7 @@ class AdminLogfileSchema(Schema):
 
 
 class AdminLogApi(MethodView):
-    decorators = [hiddify.super_admin]
+    decorators = [login_required({Role.super_admin})]
 
     @app.input(AdminLogfileSchema, arg_name="data", location='form')
     @app.output(fields.String(description="The html of the log"))

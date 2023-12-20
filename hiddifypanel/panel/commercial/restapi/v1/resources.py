@@ -56,7 +56,7 @@ class UserResource(Resource):
 
 
 class AdminUserResource(Resource):
-    decorators = [hiddify.super_admin]
+    decorators = [login_required({Role.super_admin})]
 
     def get(self, uuid=None):
         uuid = request.args.get('uuid')
