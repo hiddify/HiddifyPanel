@@ -7,10 +7,8 @@ from apiflask import abort
 
 
 from hiddifypanel.models import *
-from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify
 from hiddifypanel.models import AdminMode, Lang
-from hiddifypanel.panel.authentication import api_auth
 
 
 class AdminSchema(Schema):

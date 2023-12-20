@@ -4,18 +4,13 @@ from flask_restful import Resource
 # from flask_simplelogin import login_required
 import datetime
 from hiddifypanel.models import *
-from urllib.parse import urlparse
+from hiddifypanel.panel.auth import login_required
 from hiddifypanel.panel import hiddify
 from hiddifypanel.drivers import user_driver
-# class AllResource(Resource):
-#     def get(self):
-#         return jsonify(
-#             hiddify.dump_db_to_dict()
-#         )
 
 
 class UserResource(Resource):
-    decorators = [hiddify.super_admin]
+    decorators = [login_required({Role.super_admin})]
 
     def get(self):
         uuid = request.args.get('uuid')

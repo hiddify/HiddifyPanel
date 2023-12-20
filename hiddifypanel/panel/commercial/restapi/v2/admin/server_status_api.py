@@ -5,7 +5,6 @@ from apiflask.fields import Dict
 from apiflask import Schema
 from hiddifypanel.panel import hiddify
 from hiddifypanel.models import get_daily_usage_stats
-from hiddifypanel.panel.authentication import api_auth
 
 
 class ServerStatus(Schema):

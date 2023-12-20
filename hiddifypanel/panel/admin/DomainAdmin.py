@@ -1,4 +1,5 @@
 import ipaddress
+from hiddifypanel.panel.auth import login_required
 from hiddifypanel.models import *
 import re
 from flask import Markup
@@ -282,7 +283,7 @@ class DomainAdmin(AdminLTEModelView):
             # run get_cert.sh
             commander(Command.get_cert, domain=model.domain)
 
-    @hiddify.admin
+    @login_required(roles={Role.admin})
     def is_accessible(self):
         return True
 

@@ -8,7 +8,6 @@ from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify, github_issue_generator
 from sys import version as python_version
 from platform import platform
-import hiddifypanel.panel.authentication as auth
 import hiddifypanel.hutils as hutils
 
 from apiflask import APIFlask, HTTPError, abort
@@ -149,90 +148,74 @@ def init_app(app: APIFlask):
         # setup telegram bot
         if hconfig(ConfigEnum.telegram_bot_token):
             import hiddifypanel.panel.commercial.telegrambot as telegrambot
-            if (not telegrambot.bot) or (not telegrambot.bot.username):
+            if (not telegrambot.bot) or (not telegrambot.bot.username):  # type: ignore
                 telegrambot.register_bot()
             g.bot = telegrambot.bot
         else:
             g.bot = None
 
-    @app.before_request
-    def api_auth_middleware():
-        '''In every api request(whether is for the admin or the user) the client should provide api key and we check it'''
-        if '/api/v1/' not in request.path and '/api/v2/' not in request.path:
-            return
-        # skip the CORS preflight request
-        if request.method == 'OPTIONS' and request.headers.get('Sec-Fetch-Mode') == 'cors':
-            return
-        # get authenticated account
-        account: AdminUser | User | None = auth.standalone_api_auth_verify()
-        if not account:
-            return abort(401)
-        # get account role
-        role = auth.get_account_role(account)
-        if not role:
-            return abort(401)
-        # setup authenticated account things (uuid, is_admin, etc.)
-        g.account = account
-        g.account_uuid = account.uuid
-        g.is_admin = False if role == auth.AccountRole.user else True
+    # @app.before_request
+    # def api_auth_middleware():
+    #     '''In every api request(whether is for the admin or the user) the client should provide api key and we check it'''
+    #     if 'api' not in request.path:  # type: ignore
+    #         return
+
+    #     # get authenticated account
+    #     account: AdminUser | User | None = auth.standalone_api_auth_verify()
+    #     if not account:
+    #         return abort(401)
+    #     # get account role
+    #     role = auth.get_account_role(account)
+    #     if not role:
+    #         return abort(401)
+    #     # setup authenticated account things (uuid, is_admin, etc.)
+    #     g.account = account
+    #     g.account_uuid = account.uuid
+    #     g.is_admin = False if role == auth.AccountRole.user else True
 
     @app.before_request
     def backward_compatibility_middleware():
-        if hutils.utils.is_uuid_in_url_path(request.path):
-            # check that if proxy path is valid or not. because don't want to redirect to admin panel if client provided a non-sense proxy path
-            if g.proxy_path != hconfig(ConfigEnum.proxy_path):
-                # this will make a fingerprint for panel. should redirect the request to decoy website.
-                # abort(400, "invalid proxy path")
-                redirect(hconfig(ConfigEnum.decoy_domain), code=301)
+        if g.proxy_path != hconfig(ConfigEnum.proxy_path):
+            # this will make a fingerprint for panel. we should redirect the request to decoy website.
+            abort(400, "invalid proxy path")
+        uuid = hutils.utils.get_uuid_from_url_path(request.path)
+        if uuid:
+            user = get_user_by_uuid(uuid) or get_admin_by_uuid(uuid) or abort(400, 'invalid request')
+            new_link = f'https://{user.username}:{user.password}@{request.host}/{g.proxy_path}/'
+            if 'Mozilla' in request.user_agent.string:
+                return redirect(new_link, 301)
 
-            uuid = hutils.utils.get_uuid_from_url_path(request.path) or abort(400, 'invalid request')
-            if '/api/' in request.path:
-                return redirect(f"{request.url.replace('http://','https://').replace(uuid,'').replace('//','/')}", code=301)  # type: ignore
+            if "/admin/" in request.path:
+                new_link += "admin/"
+            return render_template('redirect_to_new_format.html', new_link=new_link)
 
-            if '/admin/' in request.path:
-                # check if there is such uuid or not, because don't want to redirect to admin panel if there is no such uuid
-                # otherwise anyone can provide any secret to get access to admin panel
-                if not get_admin_by_uuid(uuid):
-                    abort(400, 'invalid request')
-                admin_link = f'{request.url_root.replace("http://", "https://").rstrip("/")}/{g.proxy_path}/admin/'
-                if g.user_agent.get_browser():
-                    return render_template('redirect_to_admin.html', admin_link=admin_link), 302
-                else:
-                    return redirect(admin_link, code=301)
-            else:
-                user = get_user_by_uuid(uuid) or abort(400, 'invalid request')
-                user_link = f'{request.url_root.replace("http", "https").rstrip("/")}/{g.proxy_path}/#{user.name}'  # type: ignore
-                if g.user_agent.get_browser():
-                    return render_template('redirect_to_user.html', user_link=user_link), 302
-                else:
-                    return redirect(user_link, code=301)
+    # @app.before_request
+    # def basic_auth_middleware():
+    #     '''if the request is for user panel(user page), we try to authenticate the user with basic auth or the client session data, we do that for admin panel too'''
+    #     if 'api' in request.path:  # type: ignore
+    #         return
 
-    @app.before_request
-    def basic_auth_middleware():
-        '''if the request is for user panel(user page), we try to authenticate the user with basic auth or the client session data, we do that for admin panel too'''
-        if '/api/v1/' in request.path or '/api/v2/' in request.path:  # type: ignore
-            return
+    #     account: AdminUser | User | None = None
 
-        account: AdminUser | User | None = None
+    #     # if we don't have endpoint, we can't detect the request is for admin panel or user panel, so we can't authenticate
+    #     if not request.endpoint:
+    #         abort(400, "invalid request")
 
-        if request.endpoint and 'UserView' in request.endpoint:
-            account = auth.standalone_user_basic_auth_verification()
-        else:
-            account = auth.standalone_admin_basic_auth_verification()
-        # get authenticated account
-        if not account:
-            return abort(401)
-
-        # TODO: if the client is not authenticate, redirect to login page
-
-        # get account role
-        role = auth.get_account_role(account)
-        if not role:
-            return abort(401)
-        # setup authenticated account things (uuid, is_admin, etc.)
-        g.account = account
-        g.account_uuid = account.uuid
-        g.is_admin = False if role == auth.AccountRole.user else True
+    #     if request.endpoint and 'UserView' in request.endpoint:
+    #         account = auth.standalone_user_basic_auth_verification()
+    #     else:
+    #         account = auth.standalone_admin_basic_auth_verification()
+    #     # get authenticated account
+    #     if not account:
+    #         return abort(401)
+    #     # get account role
+    #     role = auth.get_account_role(account)
+    #     if not role:
+    #         return abort(401)
+    #     # setup authenticated account things (uuid, is_admin, etc.)
+    #     g.account = account
+    #     g.account_uuid = account.uuid
+    #     g.is_admin = False if role == auth.AccountRole.user else True
 
     # @app.auth_required(basic_auth, roles=['super_admin', 'admin', 'agent', 'user'])
 

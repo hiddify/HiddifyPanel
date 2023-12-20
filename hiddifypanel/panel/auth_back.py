@@ -1,5 +1,7 @@
 from typing import Set
 from apiflask import HTTPBasicAuth, HTTPTokenAuth
+from flask_httpauth import MultiAuth
+
 from hiddifypanel.models.user import User, get_user_by_uuid
 from hiddifypanel.models.admin import AdminUser, get_admin_by_uuid
 from flask import session
@@ -7,6 +9,7 @@ from strenum import StrEnum
 
 basic_auth = HTTPBasicAuth()
 api_auth = HTTPTokenAuth("ApiKey")
+multi_auth = MultiAuth(basic_auth, api_auth)
 
 
 class AccountRole(StrEnum):
@@ -18,8 +21,8 @@ class AccountRole(StrEnum):
 
 @basic_auth.verify_password
 def verify_basic_auth_password(username, password) -> AdminUser | User | None:
-    username = username.strip()
-    password = password.strip()
+    # username = username.strip()
+    # password = password.strip()
     if username and password:
         return User.query.filter(
             User.username == username, User.password == password).first() or AdminUser.query.filter(
@@ -29,7 +32,7 @@ def verify_basic_auth_password(username, password) -> AdminUser | User | None:
 @api_auth.verify_token
 def verify_api_auth_token(token) -> User | AdminUser | None:
     # for now, token is the same as uuid
-    token = token.strip()
+    # token = token.strip()
     if token:
         return get_user_by_uuid(token) or get_admin_by_uuid(token)
 
@@ -78,7 +81,7 @@ def get_account_role(account) -> AccountRole | None:
     '''
     if isinstance(account, User):
         return AccountRole.user
-    elif isinstance(account, AdminUser):
+    if isinstance(account, AdminUser):
         match account.mode:
             case 'super_admin':
                 return AccountRole.super_admin

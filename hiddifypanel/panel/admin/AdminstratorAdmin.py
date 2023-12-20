@@ -1,3 +1,4 @@
+from hiddifypanel.panel.auth import login_required
 from wtforms.validators import Regexp
 from hiddifypanel.models import *
 from wtforms.validators import Regexp, ValidationError
@@ -161,7 +162,7 @@ class AdminstratorAdmin(AdminLTEModelView):
     def search_placeholder(self):
         return f"{_('search')} {_('user.UUID')} {_('user.name')}"
 
-    @hiddify.admin
+    @login_required(roles={Role.admin})
     def is_accessible(self):
         return True
 

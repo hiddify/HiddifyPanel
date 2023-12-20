@@ -5,3 +5,4 @@ from . import cli
 from . import database
 from . import common
 from . import commercial
+from . import auth

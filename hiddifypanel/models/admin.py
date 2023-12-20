@@ -3,13 +3,14 @@ from enum import auto
 
 from flask import g
 from hiddifypanel import hutils
+from hiddifypanel.models.role import Role
 from hiddifypanel.models.usage import DailyUsage
 from sqlalchemy_serializer import SerializerMixin
+from flask_login import UserMixin as FlaskLoginUserMixin
 from strenum import StrEnum
 
 from hiddifypanel.panel.database import db
 
-from wtforms.validators import Regexp, ValidationError
 from apiflask import abort
 from flask_babelex import gettext as __
 from flask_babelex import lazy_gettext as _
@@ -27,7 +28,7 @@ class AdminMode(StrEnum):
     agent = auto()
 
 
-class AdminUser(db.Model, SerializerMixin):
+class AdminUser(db.Model, SerializerMixin, FlaskLoginUserMixin):
     """
     This is a model class for a user in a database that includes columns for their ID, UUID, name, online status,
     account expiration date, usage limit, package days, mode, start date, current usage, last reset time, and comment.
@@ -47,6 +48,19 @@ class AdminUser(db.Model, SerializerMixin):
     usages = db.relationship('DailyUsage', backref='admin')
     parent_admin_id = db.Column(db.Integer, db.ForeignKey('admin_user.id'), default=1)
     parent_admin = db.relationship('AdminUser', remote_side=[id], backref='sub_admins')
+
+    @property
+    def role(self):
+        match self.mode:
+            case AdminMode.super_admin:
+                return Role.super_admin
+            case AdminMode.admin:
+                return Role.admin
+            case AdminMode.agent:
+                return Role.agent
+
+    def get_id(self):
+        return f'admin_{self.id}'
 
     def recursive_users_query(self):
         from .user import User

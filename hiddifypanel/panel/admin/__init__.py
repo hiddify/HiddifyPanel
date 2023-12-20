@@ -37,21 +37,20 @@ def init_app(app):
     flaskadmin.add_view(DomainAdmin(Domain, db.session))
     flaskadmin.add_view(AdminstratorAdmin(AdminUser, db.session))
 
-    with app.app_context():
-        from .Dashboard import Dashboard
-        from .SettingAdmin import SettingAdmin
-        from .commercial_info import CommercialInfo
-        from .ProxyAdmin import ProxyAdmin
-        from .Actions import Actions
-        from .Backup import Backup
-        from .QuickSetup import QuickSetup
-        Dashboard.register(admin_bp, route_base="/")
-        SettingAdmin.register(admin_bp)
-        ProxyAdmin.register(admin_bp)
-        Actions.register(admin_bp)
-        CommercialInfo.register(admin_bp)
-        QuickSetup.register(admin_bp)
-        Backup.register(admin_bp)
+    from .Dashboard import Dashboard
+    from .SettingAdmin import SettingAdmin
+    from .commercial_info import CommercialInfo
+    from .ProxyAdmin import ProxyAdmin
+    from .Actions import Actions
+    from .Backup import Backup
+    from .QuickSetup import QuickSetup
+    Dashboard.register(admin_bp, route_base="/")
+    SettingAdmin.register(admin_bp)
+    ProxyAdmin.register(admin_bp)
+    Actions.register(admin_bp)
+    CommercialInfo.register(admin_bp)
+    QuickSetup.register(admin_bp)
+    Backup.register(admin_bp)
 
     # admin_bp.add_url_rule('/admin/quicksetup/',endpoint="quicksetup",view_func=QuickSetup.index,methods=["GET"])
     # admin_bp.add_url_rule('/admin/quicksetup/',endpoint="quicksetup-save", view_func=QuickSetup.save,methods=["POST"])

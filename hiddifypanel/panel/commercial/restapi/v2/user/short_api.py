@@ -4,12 +4,10 @@ from apiflask import Schema
 from flask import g, request
 from apiflask.fields import String, Integer
 from flask import current_app as app
-from datetime import datetime
 from flask.views import MethodView
 from hiddifypanel.models.config import hconfig
 from hiddifypanel.models.config_enum import ConfigEnum
 from hiddifypanel.panel import hiddify
-from hiddifypanel.panel.authentication import api_auth
 
 
 class ShortSchema(Schema):

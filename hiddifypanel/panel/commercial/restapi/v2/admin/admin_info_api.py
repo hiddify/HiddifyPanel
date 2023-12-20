@@ -7,7 +7,6 @@ from hiddifypanel.models.admin import AdminUser, get_admin_user_db
 from hiddifypanel.models.config_enum import ConfigEnum, Lang
 from hiddifypanel.models.config import hconfig
 from hiddifypanel.panel import hiddify
-from hiddifypanel.panel.authentication import api_auth
 from .admin_user_api import AdminSchema
 
 
