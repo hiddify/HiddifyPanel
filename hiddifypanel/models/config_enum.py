@@ -168,7 +168,7 @@ class ConfigEnum(StrEnum):
             self.admin_lang: {'category': ConfigCategory.admin, 'show_in_parent': True, 'commercial': True},
             self.cloudflare: {'category': ConfigCategory.too_advanced, 'commercial': True},
             self.license: {'category': ConfigCategory.hidden, 'commercial': True},
-            self.proxy_path: {'category': ConfigCategory.too_advanced, 'apply_mode': 'apply', 'show_in_parent': True},
+            self.proxy_path: {'category': ConfigCategory.hidden, 'apply_mode': 'apply', 'show_in_parent': True},
             self.proxy_path_admin: {'category': ConfigCategory.too_advanced, 'apply_mode': 'apply', 'show_in_parent': True},
             self.proxy_path_client: {'category': ConfigCategory.too_advanced, 'apply_mode': 'apply', 'show_in_parent': True},
 
