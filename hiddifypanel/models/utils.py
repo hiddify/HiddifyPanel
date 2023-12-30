@@ -3,12 +3,15 @@ from hiddifypanel import hutils
 
 def fill_username(model) -> None:
     minimum_username_length = 10
-    if not model.username or len(model.username) < 10:
+    if not model.username or len(model.username) < minimum_username_length:
         base_username = ''
         rand_str = ''
-        # if the username chats isn't only string.ascii_letters, it's invalid
-        # because we can't set non ascii characters in the http header (https://stackoverflow.com/questions/7242316/what-encoding-should-i-use-for-http-basic-authentication)
-        if model.name:
+        if not model.name:
+            base_username = hutils.utils.get_random_string(minimum_username_length, minimum_username_length)
+            model.username = base_username + rand_str
+            while not model.is_username_unique():
+                rand_str = hutils.utils.get_random_string(minimum_username_length, minimum_username_length)
+        else:
             # user actual name
             base_username = model.name.replace(' ', '_')
             if len(base_username) > minimum_username_length - 1:
@@ -22,11 +25,6 @@ def fill_username(model) -> None:
                 model.username = base_username + rand_str
                 while not model.is_username_unique():
                     rand_str = hutils.utils.get_random_string(needed_length, needed_length)
-        else:
-            base_username = hutils.utils.get_random_string(minimum_username_length, minimum_username_length)
-            model.username = base_username + rand_str
-            while not model.is_username_unique():
-                rand_str = hutils.utils.get_random_string(minimum_username_length, minimum_username_length)
 
 
 def fill_password(model) -> None:
