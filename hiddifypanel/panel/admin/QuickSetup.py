@@ -1,3 +1,4 @@
+from hiddifypanel.panel.auth import login_required
 from hiddifypanel import hutils
 from hiddifypanel.models import *
 import flask_babel
@@ -9,13 +10,12 @@ import wtforms as wtf
 from flask_wtf import FlaskForm
 from flask_bootstrap import SwitchField
 from hiddifypanel.panel import hiddify
-from flask_admin.base import expose
 # from gettext import gettext as _
-from wtforms.validators import Regexp, ValidationError
+from wtforms.validators import ValidationError
 
 import re
-from flask import render_template, current_app, Markup, redirect, url_for
-from hiddifypanel.models import User, Domain, DomainType, StrConfig, ConfigEnum, get_hconfigs
+from flask import render_template
+from hiddifypanel.models import Domain, DomainType, StrConfig, ConfigEnum, get_hconfigs
 from hiddifypanel.panel.database import db
 from wtforms.fields import *
 
@@ -24,7 +24,7 @@ from flask_classful import FlaskView
 
 
 class QuickSetup(FlaskView):
-    decorators = [hiddify.admin]
+    decorators = [login_required({Role.super_admin})]
 
     def index(self):
         return render_template(
