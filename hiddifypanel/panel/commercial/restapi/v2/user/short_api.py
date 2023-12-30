@@ -24,7 +24,7 @@ class ShortAPI(MethodView):
     @app.output(ShortSchema)
     def get(self):
         short, expire_in = hiddify.add_short_link(
-            f'https://{urlparse(request.host)}/{hconfig(ConfigEnum.proxy_path_admin)}/')
+            f'https://{request.host}/{hconfig(ConfigEnum.proxy_path_admin)}/')
         full_url = f"https://{urlparse(request.base_url).hostname}/{short}"
         dto = ShortSchema()
         dto.full_url = full_url
