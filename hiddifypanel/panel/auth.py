@@ -14,10 +14,10 @@ def init_app(app):
     login_manager.init_app(app)
 
     @login_manager.user_loader
-    def user_loader_auth(id: str) -> User | AdminUser | None:
+    def cookie_auth(id: str) -> User | AdminUser | None:
         # first of all check if user sent Authorization header, our priority is with Authorization header
         if not hiddify.is_api_call(request.path) and request.headers.get("Authorization"):
-            return request_loader_auth(request)
+            return header_auth(request)
 
         # parse id
         role, id = hutils.utils.parse_auth_id(id)  # type: ignore
@@ -36,7 +36,7 @@ def init_app(app):
         return account
 
     @login_manager.request_loader
-    def request_loader_auth(request) -> User | AdminUser | None:
+    def header_auth(request) -> User | AdminUser | None:
         auth_header: str = request.headers.get("Authorization")
         if not auth_header:
             return
