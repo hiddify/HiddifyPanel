@@ -23,9 +23,8 @@ class ShortAPI(MethodView):
 
     @app.output(ShortSchema)
     def get(self):
-        # TODO: check credentials of this url, does it work?
         short, expire_in = hiddify.add_short_link(
-            f'https://{g.account.username}:{g.account.password}@{urlparse(request.host)}/{hconfig(ConfigEnum.proxy_path_admin)}/#{g.account.name}')
+            f'https://{urlparse(request.host)}/{hconfig(ConfigEnum.proxy_path_admin)}/#{g.account.name}')
         full_url = f"https://{urlparse(request.base_url).hostname}/{short}"
         dto = ShortSchema()
         dto.full_url = full_url
