@@ -2,16 +2,17 @@ from flask import current_app as app
 from flask import g
 from flask.views import MethodView
 from apiflask import abort
-
+from hiddifypanel.panel.auth import login_required
 from hiddifypanel.models.admin import AdminUser, get_admin_user_db
 from hiddifypanel.models.config_enum import ConfigEnum, Lang
 from hiddifypanel.models.config import hconfig
+from hiddifypanel.models.role import Role
 from hiddifypanel.panel import hiddify
 from .admin_user_api import AdminSchema
 
 
 class AdminInfoApi(MethodView):
-    decorators = [hiddify.admin]
+    decorators = [login_required({Role.admin})]
 
     @app.output(AdminSchema)
     def get(self):

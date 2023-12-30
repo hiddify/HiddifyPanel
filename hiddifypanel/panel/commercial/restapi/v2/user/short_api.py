@@ -5,8 +5,10 @@ from flask import g, request
 from apiflask.fields import String, Integer
 from flask import current_app as app
 from flask.views import MethodView
+from hiddifypanel.panel.auth import login_required
 from hiddifypanel.models.config import hconfig
 from hiddifypanel.models.config_enum import ConfigEnum
+from hiddifypanel.models.role import Role
 from hiddifypanel.panel import hiddify
 
 
@@ -17,7 +19,7 @@ class ShortSchema(Schema):
 
 
 class ShortAPI(MethodView):
-    decorators = [hiddify.user_auth]
+    decorators = [login_required({Role.user})]
 
     @app.output(ShortSchema)
     def get(self):

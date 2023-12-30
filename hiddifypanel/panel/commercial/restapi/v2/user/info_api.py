@@ -4,12 +4,13 @@ from apiflask import Schema
 from apiflask.fields import Integer, String, Float, URL, Enum
 from flask import g, request
 from flask import current_app as app
+from hiddifypanel.panel.auth import login_required
 
 from hiddifypanel.models import Lang
+from hiddifypanel.models.role import Role
 from hiddifypanel.models.user import days_to_reset, get_user_by_uuid
 from hiddifypanel.models.config import hconfig
 from hiddifypanel.models.config_enum import ConfigEnum
-from hiddifypanel.panel import hiddify
 from hiddifypanel.panel.database import db
 from hiddifypanel.panel.user.user import get_common_data
 
@@ -37,7 +38,7 @@ class UserInfoChangableSchema(Schema):
 
 
 class InfoAPI(MethodView):
-    decorators = [hiddify.user_auth]
+    decorators = [login_required({Role.user})]
 
     @app.output(ProfileSchema)
     def get(self):

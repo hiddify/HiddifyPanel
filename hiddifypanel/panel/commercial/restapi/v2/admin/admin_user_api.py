@@ -4,8 +4,7 @@ from flask import current_app as app
 from flask.views import MethodView
 from apiflask import Schema
 from apiflask import abort
-
-
+from hiddifypanel.panel.auth import login_required
 from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify
 from hiddifypanel.models import AdminMode, Lang
@@ -25,7 +24,7 @@ class AdminSchema(Schema):
 
 
 class AdminUserApi(MethodView):
-    decorators = [hiddify.admin]
+    decorators = [login_required({Role.admin})]
 
     @app.output(AdminSchema)
     def get(self, uuid):

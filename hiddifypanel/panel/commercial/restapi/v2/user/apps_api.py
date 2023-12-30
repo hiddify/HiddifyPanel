@@ -10,10 +10,10 @@ from urllib.parse import quote_plus, urlparse
 import user_agents
 from strenum import StrEnum
 from enum import auto
-
-
 from hiddifypanel.panel.user.user import get_common_data
 from hiddifypanel.hutils.utils import get_latest_release_url, do_base_64
+from hiddifypanel.models.role import Role
+from hiddifypanel.panel.auth import login_required
 
 # region App Api DTOs
 
@@ -66,7 +66,7 @@ class AppInSchema(Schema):
 
 
 class AppAPI(MethodView):
-    decorators = [hiddify.user_auth]
+    decorators = [login_required({Role.user})]
 
     def __init__(self) -> None:
         super().__init__()
@@ -88,7 +88,7 @@ class AppAPI(MethodView):
 
     @app.input(AppInSchema, arg_name='data', location="query")
     @app.output(AppSchema(many=True))
-    @hiddify.user_auth
+    @login_required({Role.user})
     def get(self, data):
         # parse user agent
         if data['platform'] == Platform.auto:

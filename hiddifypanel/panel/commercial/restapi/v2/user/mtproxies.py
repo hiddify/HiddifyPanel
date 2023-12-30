@@ -3,13 +3,14 @@ from apiflask import Schema, abort
 from flask import g
 from flask import current_app as app
 from apiflask.fields import String
+from hiddifypanel.panel.auth import login_required
 
 from hiddifypanel.models.config import hconfig
 from hiddifypanel.models.config_enum import ConfigEnum
 from hiddifypanel.models.domain import DomainType
+from hiddifypanel.models.role import Role
 
 from hiddifypanel.panel.user.user import get_common_data
-from hiddifypanel.panel import hiddify
 
 
 class MtproxySchema(Schema):
@@ -18,7 +19,7 @@ class MtproxySchema(Schema):
 
 
 class MTProxiesAPI(MethodView):
-    decorators = [hiddify.user_auth]
+    decorators = [login_required({Role.user})]
 
     @app.output(MtproxySchema(many=True))
     def get(self):

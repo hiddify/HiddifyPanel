@@ -3,6 +3,8 @@ from flask import g
 from flask.views import MethodView
 from apiflask.fields import Dict
 from apiflask import Schema
+from hiddifypanel.panel.auth import login_required
+from hiddifypanel.models.role import Role
 from hiddifypanel.panel import hiddify
 from hiddifypanel.models import get_daily_usage_stats
 
@@ -13,7 +15,7 @@ class ServerStatus(Schema):
 
 
 class AdminServerStatusApi(MethodView):
-    decorators = [hiddify.admin]
+    decorators = [login_required({Role.admin})]
 
     @app.output(ServerStatus)
     def get(self):

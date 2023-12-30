@@ -2,9 +2,10 @@ from urllib.parse import urlparse
 from flask import g, request
 from flask import current_app as app
 from flask.views import MethodView
+from hiddifypanel.panel.auth import login_required
 from hiddifypanel.models.config import hconfig
 from hiddifypanel.models.config_enum import ConfigEnum
-from hiddifypanel.panel import hiddify
+from hiddifypanel.models.role import Role
 from apiflask import Schema
 from apiflask.fields import String
 from hiddifypanel.panel.user.user import get_common_data
@@ -22,7 +23,7 @@ class ConfigSchema(Schema):
 
 
 class AllConfigsAPI(MethodView):
-    decorators = [hiddify.user_auth]
+    decorators = [login_required({Role.user})]
 
     @app.output(ConfigSchema(many=True))
     def get(self):
