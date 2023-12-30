@@ -36,7 +36,7 @@ def init_app(app):
         if account:
             g.account = account
             # g.account_uuid = account.uuid
-            g.is_admin = False if account.role == Role.user else True
+            g.is_admin = True if account.role in {Role.super_admin, Role.admin} else False
         return account
 
     @login_manager.request_loader
@@ -62,7 +62,7 @@ def init_app(app):
         if account:
             g.account = account
             # g.account_uuid = account.uuid
-            g.is_admin = False if account.role == 'user' else True
+            g.is_admin = True if account.role in {Role.super_admin, Role.admin} else False  # False if account.role == 'user' else True
             if not is_api_call:
                 login_user(account)
         return account
