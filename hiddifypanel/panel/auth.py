@@ -176,5 +176,9 @@ def init_app(app):
     @login_manager.unauthorized_handler
     def unauthorized():
         # TODO: show the login page
-
-        abort(401, "Unauthorized")
+        # return request.base_url
+        if g.user_agent.browser:
+            return redirect(f'/{request.path.split("/")[1]}/?force=1&redirect={request.path}')
+        else:
+            abort(401, "Unauthorized")
+        # return f'/{request.path.split("/")[1]}/?force=1&redirect={request.path}'

@@ -198,15 +198,19 @@ class UserView(FlaskView):
 
     #     return render_template('home/multi.html',**c,ua=user_agent)
 
-    @route('/')
-    @login_required()
-    # login
-    def login(self):
-        # redirect based on authenticated account
-        if hiddify.is_admin_proxy_path() and g.account.role in {Role.super_admin, Role.admin, Role.agent}:
-            return redirect(url_for('admin.Dashboard:index'))
-        elif hiddify.is_client_proxy_path():
-            return self.auto_sub()
+    # @route('/')
+    # # @login_required()
+    # # login
+    # def login(self):
+    #     return ""
+    #     # redirect based on authenticated account
+    #     if hiddify.is_admin_proxy_path() and g.account.role in {Role.super_admin, Role.admin, Role.agent}:
+    #         return redirect(url_for('admin.Dashboard:index'))
+    #     elif hiddify.is_client_proxy_path():
+    #         return self.auto_sub()
+
+    def index(self):
+        return self.auto_sub()
 
     def auto_sub(self):
         ua = request.user_agent.string
@@ -535,8 +539,7 @@ def add_headers(res, c):
     resp = Response(res)
     resp.mimetype = "text/plain"
     resp.headers['Subscription-Userinfo'] = f"upload=0;download={c['usage_current_b']};total={c['usage_limit_b']};expire={c['expire_s']}"
-    resp.headers['profile-web-page-url'] = request.base_url.rsplit(
-        '/', 1)[0].replace("http://", "https://")+"/"
+    resp.headers['profile-web-page-url'] = request.base_url.rsplit('/', 1)[0].replace("http://", "https://")+"/"
 
     if hconfig(ConfigEnum.branding_site):
         resp.headers['support-url'] = hconfig(ConfigEnum.branding_site)
