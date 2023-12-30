@@ -5,8 +5,10 @@ from flask import g
 from hiddifypanel import hutils
 from hiddifypanel.models.role import Role
 from hiddifypanel.models.usage import DailyUsage
+from hiddifypanel.models.utils import fill_username, fill_password
 from sqlalchemy_serializer import SerializerMixin
 from flask_login import UserMixin as FlaskLoginUserMixin
+from sqlalchemy import event
 from strenum import StrEnum
 
 from hiddifypanel.panel.database import db
@@ -61,6 +63,12 @@ class AdminUser(db.Model, SerializerMixin, FlaskLoginUserMixin):
 
     def get_id(self):
         return f'admin_{self.id}'
+
+    def is_username_unique(self):
+        return AdminUser.query.filter_by(username=self.username).first() is None
+
+    def is_password_unique(self):
+        return AdminUser.query.filter_by(password=self.password).first() is None
 
     def recursive_users_query(self):
         from .user import User
@@ -197,39 +205,7 @@ def current_admin_or_owner():
     return AdminUser.query.filter(AdminUser.id == 1).first()
 
 
-def fill_username(admin: AdminUser) -> None:
-    minimum_username_length = 10
-    if not admin.username or len(admin.username) < 10:
-        base_username = ''
-        rand_str = ''
-        # if the username chats isn't only string.ascii_letters, it's invalid
-        # because we can't set non ascii characters in the http header (https://stackoverflow.com/questions/7242316/what-encoding-should-i-use-for-http-basic-authentication)
-        if admin.name:
-            # user actual name
-            base_username = admin.name.replace(' ', '_')
-            if len(base_username) > minimum_username_length - 1:
-                # check if the name is unique, if  it's not we add some random char to it
-                while AdminUser.query.filter(AdminUser.username == base_username + rand_str).first():
-                    rand_str = hutils.utils.get_random_string(2, 4)
-            else:
-                needed_length = minimum_username_length - len(base_username)
-                rand_str = hutils.utils.get_random_string(needed_length, needed_length)
-                while AdminUser.query.filter(AdminUser.username == base_username + rand_str).first():
-                    rand_str = hutils.utils.get_random_string(needed_length, needed_length)
-        else:
-            base_username = hutils.utils.get_random_string(minimum_username_length, minimum_username_length)
-            while AdminUser.query.filter(AdminUser.username == base_username + rand_str).first():
-                rand_str = hutils.utils.get_random_string(minimum_username_length, minimum_username_length)
-
-        admin.username = base_username + rand_str if rand_str else base_username
-
-
-def fill_password(admin: AdminUser) -> None:
-    # TODO: hash the password
-    if not admin.password or len(admin.password) < 16:
-        base_passwd = hutils.utils.get_random_password()
-        rand_str = ''
-        # if passwd is duplicated, we create another one
-        while AdminUser.query.filter(AdminUser.password == base_passwd + rand_str).first():
-            rand_str = hutils.utils.get_random_password()
-        admin.password = base_passwd + rand_str
+@event.listens_for(AdminUser, "before_insert")
+def before_insert(mapper, connection, target):
+    fill_username(target)
+    fill_password(target)
