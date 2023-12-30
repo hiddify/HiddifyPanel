@@ -22,6 +22,7 @@ class Actions(FlaskView):
     def index(self):
         return render_template('index.html')
 
+    # TODO: delete this function
     @login_required(roles={Role.super_admin})
     def reverselog(self, logfile):
         if logfile == None:
@@ -50,10 +51,11 @@ class Actions(FlaskView):
     @login_required(roles={Role.super_admin})
     def viewlogs(self):
         config_dir = app.config['HIDDIFY_CONFIG_PATH']
-        res = []
+
+        log_files = []
         for filename in sorted(os.listdir(f'{config_dir}/log/system/')):
-            res.append(f"<a href='{url_for('admin.Actions:reverselog',logfile=filename)}'>{filename}</a>")
-        return Markup("<br>".join(res))
+            log_files.append(filename)
+        return render_template('view_logs.html', log_files=log_files, api_key=hiddify.current_account_api_key())
 
     @login_required(roles={Role.super_admin})
     @route('apply_configs', methods=['POST'])
