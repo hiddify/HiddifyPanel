@@ -180,14 +180,15 @@ def init_app(app: APIFlask):
             abort(400, "invalid proxy path")
         uuid = hutils.utils.get_uuid_from_url_path(request.path)
         if uuid:
-            user = get_user_by_uuid(uuid) or get_admin_by_uuid(uuid) or abort(400, 'invalid request')
-            new_link = f'https://{user.username}:{user.password}@{request.host}/{g.proxy_path}/'
-            if 'Mozilla' in request.user_agent.string:
-                return redirect(new_link, 301)
-
+            account = get_user_by_uuid(uuid) or get_admin_by_uuid(uuid) or abort(400, 'invalid request')
+            new_link = f'https://{account.username}:{account.password}@{request.host}/{g.proxy_path}/'
             if "/admin/" in request.path:
                 new_link += "admin/"
-            return render_template('redirect_to_new_format.html', new_link=new_link)
+
+            # if request made by a browser, show new format page else redirect to new format
+            if g.user_agent.browser:
+                return render_template('redirect_to_new_format.html', new_link=new_link)
+            return redirect(new_link, 301)
 
     # @app.before_request
     # def basic_auth_middleware():
