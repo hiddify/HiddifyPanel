@@ -205,6 +205,10 @@ def current_admin_or_owner():
     return AdminUser.query.filter(AdminUser.id == 1).first()
 
 
+def get_admin_by_username_password(username, password) -> AdminUser | None:
+    return AdminUser.query.filter(AdminUser.username == username, AdminUser.password == password).first()
+
+
 @event.listens_for(AdminUser, "before_insert")
 def before_insert(mapper, connection, target):
     fill_username(target)

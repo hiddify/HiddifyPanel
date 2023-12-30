@@ -377,6 +377,10 @@ def bulk_register_users(users=[], commit=True, remove=False):
         db.session.commit()
 
 
+def get_user_by_username_password(username, password) -> User | None:
+    return User.query.filter(User.username == username, User.password == password).first()
+
+
 @event.listens_for(User, 'before_insert')
 def on_user_insert(mapper, connection, target):
     fill_username(target)
