@@ -42,6 +42,8 @@ def init_app(app):
 
         account = None
         is_api_request = False
+        if not request.blueprint:
+            return
         if 'api' in request.blueprint:
             if apikey := hutils.utils.get_apikey_from_auth_header(auth_header):
                 account = get_user_by_uuid(apikey) or get_admin_by_uuid(apikey)
