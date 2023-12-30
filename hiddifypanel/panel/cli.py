@@ -65,7 +65,7 @@ def all_configs():
 
     configs['hconfigs']['first_setup'] = def_user != None and len(sslip_domains) > 0
 
-    path = f'/{hconfig(ConfigEnum.proxy_path_admin)}/admin/'
+    path = f'/{hconfig(ConfigEnum.proxy_path_admin)}/'
 
     server_ip = hutils.ip.get_ip(4)
     configs['admin_path'] = path
@@ -92,20 +92,20 @@ def test():
 
 
 def admin_links():
-    proxy_path = hconfig(ConfigEnum.proxy_path_admin)
 
     server_ip = hutils.ip.get_ip(4)
     owner = get_super_admin()
-    admin_links = f"Not Secure (do not use it - only if others not work):\n   http://{owner.username}:{owner.password}@{server_ip}/{proxy_path}/admin/\n"
+    proxy_path = hconfig(ConfigEnum.proxy_path_admin)
+    admin_links = f"Not Secure (do not use it - only if others not work):\n   http://{owner.username}:{owner.password}@{server_ip}/{proxy_path}/\n"
 
     domains = get_panel_domains()
     admin_links += f"Secure:\n"
     if not any([d for d in domains if 'sslip.io' not in d.domain]):
-        admin_links += f"   (not signed) https://{owner.username}:{owner.password}@{server_ip}/{proxy_path}/admin/\n"
+        admin_links += f"   (not signed) https://{owner.username}:{owner.password}@{server_ip}/{proxy_path}/\n"
 
     # domains=[*domains,f'{server_ip}.sslip.io']
     for d in domains:
-        admin_links += f"   https://{owner.username}:{owner.password}@{d.domain}/{proxy_path}/admin/\n"
+        admin_links += f"   https://{owner.username}:{owner.password}@{d.domain}/{proxy_path}/\n"
 
     print(admin_links)
     return admin_links

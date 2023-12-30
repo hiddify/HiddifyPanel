@@ -80,7 +80,7 @@ class AdminstratorAdmin(AdminLTEModelView):
 
     def _ul_formatter(view, context, model, name):
 
-        return Markup(" ".join([hiddify.get_user_link(model.uuid, d, 'admin', model.name) for d in get_panel_domains()]))
+        return Markup(" ".join([hiddify.get_user_link(model.uuid, d, 'admin', model.name).replace('/admin/', '/', 1) for d in get_panel_domains()]))
 
     @property
     def can_create(self):
@@ -90,7 +90,7 @@ class AdminstratorAdmin(AdminLTEModelView):
         admin_proxy_path = hconfig(ConfigEnum.proxy_path_admin)
         d = get_panel_domains()[0]
         if d:
-            link = f"<a target='_blank' href='https://{model.username}:{model.password}@{d}/{admin_proxy_path}/admin/#{model.name}'>{model.name} <i class='fa-solid fa-arrow-up-right-from-square'></i></a>"
+            link = f"<a target='_blank' href='https://{model.username}:{model.password}@{d}/{admin_proxy_path}/#{model.name}'>{model.name} <i class='fa-solid fa-arrow-up-right-from-square'></i></a>"
             if model.parent_admin:
                 return Markup(model.parent_admin.name + "&rlm;&lrm; / &rlm;&lrm;"+link)
             return Markup(link)
