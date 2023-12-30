@@ -1,4 +1,5 @@
 from hiddifypanel import hutils
+from slugify import slugify
 
 
 def fill_username(model) -> None:
@@ -13,7 +14,7 @@ def fill_username(model) -> None:
                 rand_str = hutils.utils.get_random_string(minimum_username_length, minimum_username_length)
         else:
             # user actual name
-            base_username = model.name.replace(' ', '_')
+            base_username = slugify(model.name, separator='_')
             if len(base_username) > minimum_username_length - 1:
                 # check if the name is unique, if  it's not we add some random char to it
                 model.username = base_username + rand_str
