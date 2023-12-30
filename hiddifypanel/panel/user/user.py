@@ -2,9 +2,6 @@
 from flask import render_template, request, Response, g, url_for, jsonify, flash
 from apiflask import abort
 from hiddifypanel.hutils import auto_ip_selector
-from wtforms.validators import Regexp, ValidationError
-import urllib
-import uuid
 import datetime
 from hiddifypanel.models import *
 from hiddifypanel.panel.database import db
@@ -16,6 +13,7 @@ from urllib.parse import urlparse
 import user_agents
 from flask_babelex import gettext as _
 import re
+from hiddifypanel.panel.auth import login_required
 
 
 class UserView(FlaskView):
@@ -161,6 +159,7 @@ class UserView(FlaskView):
     # endregion
 
     @route('/test/')
+    @login_required(roles={Role.user})
     def test(self):
         ua = request.user_agent.string
         if re.match('^Mozilla', ua, re.IGNORECASE):
@@ -198,6 +197,7 @@ class UserView(FlaskView):
 
     #     return render_template('home/multi.html',**c,ua=user_agent)
     @route('/')
+    @login_required(roles={Role.user})
     def auto_sub(self):
         ua = request.user_agent.string
         if re.match('^Mozilla', ua, re.IGNORECASE):
@@ -206,6 +206,7 @@ class UserView(FlaskView):
 
     @route('/sub')
     @route('/sub/')
+    @login_required(roles={Role.user})
     def force_sub(self):
         return self.get_proper_config() or self.all_configs(base64=False)
 
@@ -228,6 +229,7 @@ class UserView(FlaskView):
             return self.all_configs(base64=True)
 
     @ route('/auto')
+    @login_required(roles={Role.user})
     def auto_select(self):
         c = get_common_data(g.account_uuid, mode="new")
         user_agent = user_agents.parse(request.user_agent.string)
@@ -236,6 +238,7 @@ class UserView(FlaskView):
 
     @ route('/new/')
     @ route('/new')
+    @login_required(roles={Role.user})
     # @ route('/')
     def new(self):
         conf = self.get_proper_config()
@@ -249,6 +252,7 @@ class UserView(FlaskView):
 
     @ route('/clash/<meta_or_normal>/proxies.yml')
     @ route('/clash/proxies.yml')
+    @login_required(roles={Role.user})
     def clash_proxies(self, meta_or_normal="normal"):
         mode = request.args.get("mode")
         domain = request.args.get("domain", None)
@@ -261,6 +265,7 @@ class UserView(FlaskView):
         return resp
 
     @ route('/report', methods=["POST"])
+    @login_required(roles={Role.user})
     def report(self):
         data = request.get_json()
         user_ip = auto_ip_selector.get_real_user_ip()
@@ -296,6 +301,7 @@ class UserView(FlaskView):
 
     @ route('/clash/<typ>.yml', methods=["GET", "HEAD"])
     @ route('/clash/<meta_or_normal>/<typ>.yml', methods=["GET", "HEAD"])
+    @login_required(roles={Role.user})
     def clash_config(self, meta_or_normal="normal", typ="all.yml"):
         mode = request.args.get("mode")
 
@@ -311,6 +317,7 @@ class UserView(FlaskView):
         return add_headers(resp, c)
 
     @ route('/full-singbox.json', methods=["GET", "HEAD"])
+    @login_required(roles={Role.user})
     def full_singbox(self):
         mode = "new"  # request.args.get("mode")
         c = get_common_data(g.account_uuid, mode)
@@ -324,6 +331,7 @@ class UserView(FlaskView):
         return add_headers(resp, c)
 
     @ route('/singbox.json', methods=["GET", "HEAD"])
+    @login_required(roles={Role.user})
     def singbox(self):
         if not hconfig(ConfigEnum.ssh_server_enable):
             return "SSH server is disable in settings"
@@ -338,6 +346,7 @@ class UserView(FlaskView):
         return add_headers(resp, c)
 
     @ route('/all.txt', methods=["GET", "HEAD"])
+    @login_required(roles={Role.user})
     def all_configs(self, base64=False):
         mode = "new"  # request.args.get("mode")
         base64 = base64 or request.args.get("base64", "").lower() == "true"
@@ -359,6 +368,7 @@ class UserView(FlaskView):
         return add_headers(resp, c)
 
     @ route('/manifest.webmanifest')
+    @login_required(roles={Role.user})
     def create_pwa_manifest(self):
 
         domain = urlparse(request.base_url).hostname
@@ -383,6 +393,7 @@ class UserView(FlaskView):
             ]
         })
 
+    @login_required(roles={Role.user})
     @ route("/offline.html")
     def offline():
         return f"Not Connected <a href='/{hconfig(ConfigEnum.proxy_path)}/{g.account.uuid}/'>click for reload</a>"
