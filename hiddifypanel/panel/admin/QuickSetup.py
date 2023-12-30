@@ -64,7 +64,7 @@ class QuickSetup(FlaskView):
                 show_domain_info=False)
 
         if quick_form.validate_on_submit():
-            _ = Domain.query.filter(Domain.domain == f'{hutils.ip.get_ip(4)}.sslip.io').delete()
+            Domain.query.filter(Domain.domain == f'{hutils.ip.get_ip(4)}.sslip.io').delete()
             db.session.add(Domain(domain=quick_form.domain.data.lower(), mode=DomainType.direct))
             hiddify.bulk_register_configs([
                 # {"key": ConfigEnum.telegram_enable, "value": quick_form.enable_telegram.data == True},
@@ -82,7 +82,7 @@ class QuickSetup(FlaskView):
             # flash((_('The default user link is %(link)s. To add or edit more users, please visit users from menu.',link=userlink)),'info')
 
             from . import Actions
-            action = Actions()
+            action = Actions.Actions()
             return action.reinstall(domain_changed=True)
         else:
             flash(_('config.validation-error'), 'danger')
