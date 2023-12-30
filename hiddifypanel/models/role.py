@@ -10,6 +10,6 @@ class Role(StrEnum):
     user = "user"
 
 
-class GeneralRole(StrEnum):
+class AccountType(StrEnum):
     admin = "admin"
     user = "user"

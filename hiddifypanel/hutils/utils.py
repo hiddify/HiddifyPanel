@@ -208,8 +208,8 @@ def parse_login_id(raw_id) -> Tuple[Any | None, str | None]:
     if len(splitted) < 2:
         return None, None
     admin_or_user, id = splitted
-    from hiddifypanel.models.role import GeneralRole
-    account_type = GeneralRole.admin if admin_or_user == 'admin' else GeneralRole.user
+    from hiddifypanel.models.role import AccountType
+    account_type = AccountType.admin if admin_or_user == 'admin' else AccountType.user
     if not id or not account_type:
         return None, None
     return account_type, id

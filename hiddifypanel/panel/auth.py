@@ -5,7 +5,7 @@ import hiddifypanel.hutils as hutils
 from flask import g, redirect, request, session
 from apiflask import abort
 from flask import current_app
-from hiddifypanel.models import AdminUser, User, get_admin_by_uuid, Role, get_user_by_uuid, get_user_by_username_password, get_admin_by_username_password, GeneralRole
+from hiddifypanel.models import AdminUser, User, get_admin_by_uuid, Role, get_user_by_uuid, get_user_by_username_password, get_admin_by_username_password, AccountType
 import hiddifypanel.panel.hiddify as hiddify
 
 
@@ -125,11 +125,11 @@ def init_app(app):
                 return header_auth(request)
 
         # parse id
-        role, id = hutils.utils.parse_login_id(id)  # type: ignore
-        if not role or not id:
+        acc_type, id = hutils.utils.parse_login_id(id)  # type: ignore
+        if not acc_type or not id:
             return
 
-        if role == GeneralRole.admin:
+        if acc_type == AccountType.admin:
             account = AdminUser.query.filter(AdminUser.id == id).first()
         else:
             account = User.query.filter(User.id == id).first()
