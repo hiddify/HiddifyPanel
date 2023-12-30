@@ -58,7 +58,7 @@
   var seconds = 0
   domains = '{{",".join(domains)}}'.split(",")
   log_api_path = '/api/v2/admin/log/'
-  log_urls = domains.map(p => "https://" + p + "/" + '{{ proxy_path }}' + log_api_path)
+  log_urls = domains.map(p => "https://" + p + "/" + '{{ g.proxy_path }}' + log_api_path)
   function sendRequestsSequentially(urls) {
     let index = 0;
 
