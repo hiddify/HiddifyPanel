@@ -196,7 +196,7 @@ def parse_auth_id(raw_id) -> Tuple[Any | None, str | None]:
         return None, None
     admin_or_user, id = splitted
     from hiddifypanel.models.role import Role
-    account_type = Role.user if admin_or_user == 'user' else Role.admin
+    account_type = Role.admin if admin_or_user == 'admin' else Role.user
     if not id or not account_type:
         return None, None
     return account_type, id
