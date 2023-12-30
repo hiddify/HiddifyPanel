@@ -17,14 +17,14 @@ def init_app(app):
     def cookie_auth(id: str) -> User | AdminUser | None:
         # first of all check if user sent Authorization header, our priority is with Authorization header (this is valid just for non-api requests)
         if not hiddify.is_api_call(request.path):
-            if request.headers.get("Authorization"):
+            # if client requested user panel/admin panel, force it login with Authorization header
+            if hiddify.is_admin_panel_call(request):
                 return header_auth(request)
-            # if client requested user panel, force it login with Authorization header
             if hiddify.is_user_panel_call(request):
                 return header_auth(request)
 
         # parse id
-        role, id = hutils.utils.parse_auth_id(id)  # type: ignore
+        role, id = hutils.utils.parse_login_id(id)  # type: ignore
         if not role or not id:
             return
 
@@ -54,10 +54,10 @@ def init_app(app):
                 is_api_call = True
         else:
             if username_password := hutils.utils.parse_basic_auth_header(auth_header):
-                if request.blueprint == 'user2':
-                    account = User.query.filter(User.username == username_password[0], User.password == username_password[1]).first()
-                else:
+                if hiddify.is_admin_panel_call(request):
                     account = AdminUser.query.filter(AdminUser.username == username_password[0], AdminUser.password == username_password[1]).first()
+                elif hiddify.is_user_panel_call(request):
+                    account = User.query.filter(User.username == username_password[0], User.password == username_password[1]).first()
 
         if account:
             g.account = account

@@ -180,7 +180,7 @@ def parse_basic_auth_header(auth_header: str) -> tuple[str, str] | None:
     return (username, password) if username and password else None
 
 
-def parse_auth_id(raw_id) -> Tuple[Any | None, str | None]:
+def parse_login_id(raw_id) -> Tuple[Any | None, str | None]:
     """
     Parses the given raw ID to extract the account type and ID.
     Args:
