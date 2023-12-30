@@ -181,6 +181,11 @@ def init_app(app: APIFlask):
         uuid = hutils.utils.get_uuid_from_url_path(request.path)
         if uuid:
             account = get_user_by_uuid(uuid) or get_admin_by_uuid(uuid) or abort(400, 'invalid request')
+            # redirect api calls
+            if hiddify.is_api_call(request.path):
+                new_link = f'{request.url.replace(f"/{uuid}","").replace("http://","https://")}/'
+                return redirect(new_link, 301)
+
             new_link = f'https://{account.username}:{account.password}@{request.host}/{g.proxy_path}/'
             if "/admin/" in request.path:
                 new_link += "admin/"
