@@ -1,6 +1,7 @@
 import time
+from hiddifypanel.panel import hiddify
 import telebot
-from flask import  request
+from flask import request
 from apiflask import abort
 from flask_restful import Resource
 
@@ -31,10 +32,11 @@ def register_bot(set_hook=False):
             # bot.remove_webhook()
             # time.sleep(0.1)
             domain = get_panel_domains()[0].domain
-            proxy_path = hconfig(ConfigEnum.proxy_path)
+            admin_proxy_path = hconfig(ConfigEnum.proxy_path_admin)
 
-            user_secret = get_super_admin_secret()
-            bot.set_webhook(url=f"https://{domain}/{proxy_path}/{user_secret}/api/v1/tgbot/")
+            user_secret = get_super_admin_uuid()
+            if set_hook:
+                bot.set_webhook(url=f"https://{domain}/{admin_proxy_path}/api/v1/{user_secret}/tgbot/",)
     except Exception as e:
         print(e)
         import traceback
@@ -54,7 +56,8 @@ def init_app(app):
 
 
 class TGBotResource(Resource):
-    def post(self):
+    @hiddify.api_v1_auth
+    def post(self, admin_uuid):
         try:
             if request.headers.get('content-type') == 'application/json':
                 json_string = request.get_data().decode('utf-8')

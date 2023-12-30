@@ -3,116 +3,121 @@
 {% block body %}
 %if hconfig(ConfigEnum.telegram_bot_token) and g.bot
 <div class="callout callout-success">
-<details>
-    <summary>    
-    {{_("Send Message to User's Telegram")}}
-</summary>
-    <button onclick="show_send_message('all')" type="button" class="btn hbtn bg-h-blue" >{{_("All Users")}}</button>    
-    <button onclick="show_send_message('expired')" type="button" class="btn hbtn bg-h-red" >{{_("Expired Users")}}</button>    
-    <button onclick="show_send_message('active')" type="button" class="btn hbtn bg-h-green" >{{_("Active Users")}}</button>    
-    <br>
-    <button onclick="show_send_message('offline 1h')" type="button" class="btn  hbtn bg-h-orange" >{{_("Offline more than 1 hour")}}</button>    
-    <button onclick="show_send_message('offline 1d')" type="button" class="btn  hbtn bg-h-red" >{{_("Offline more than 1 day")}}</button>    
-    <button onclick="show_send_message('offline 1w')" type="button" class="btn hbtn bg-h-grey" >{{_("Offline more than 1 week")}}</button>    
-</details>
+    <details>
+        <summary>
+            {{_("Send Message to User's Telegram")}}
+        </summary>
+        <button onclick="show_send_message('all')" type="button" class="btn hbtn bg-h-blue">{{_("All Users")}}</button>
+        <button onclick="show_send_message('expired')" type="button" class="btn hbtn bg-h-red">{{_("Expired Users")}}</button>
+        <button onclick="show_send_message('active')" type="button" class="btn hbtn bg-h-green">{{_("Active Users")}}</button>
+        <br>
+        <button onclick="show_send_message('offline 1h')" type="button" class="btn  hbtn bg-h-orange">{{_("Offline more than 1 hour")}}</button>
+        <button onclick="show_send_message('offline 1d')" type="button" class="btn  hbtn bg-h-red">{{_("Offline more than 1 day")}}</button>
+        <button onclick="show_send_message('offline 1w')" type="button" class="btn hbtn bg-h-grey">{{_("Offline more than 1 week")}}</button>
+    </details>
 </div>
-    %endif
-    {{super()}}
+%endif
+{{super()}}
 
-    <div class="callout callout-success">
-        {{_('User usage will be updated every 6 minutes. To update it now click <a href="%(link)s" class="btn btn-info">here</a>',link=url_for("admin.Actions:update_usage"))}}
-        
-    </div>
-    <style>
-        .table td{
-            vertical-align: middle;
-        }
-        .col-name{
-            white-space: nowrap;
-        }
-    .col-expiry_time{
+<div class="callout callout-success">
+    {{_('User usage will be updated every 6 minutes. To update it now click <a href="%(link)s" class="btn btn-info">here</a>',link=url_for("admin.Actions:update_usage"))}}
+
+</div>
+<style>
+    .table td {
+        vertical-align: middle;
+    }
+
+    .col-name {
         white-space: nowrap;
     }
-    
-    td.col-domain{
+
+    .col-expiry_time {
+        white-space: nowrap;
+    }
+
+    td.col-domain {
         /* direction:ltr */
     }
-    .col-UserLinks a{
+
+    .col-UserLinks a {
         text-overflow: ellipsis;
-    white-space: nowrap;
-    max-width: 100px;
-    overflow: hidden;
+        white-space: nowrap;
+        max-width: 100px;
+        overflow: hidden;
     }
-    .col-uuid span{
+
+    .col-uuid span {
         text-overflow: ellipsis;
-    white-space: nowrap;
-    width: 80px;
-    overflow: hidden;
-    display: inline-block;
+        white-space: nowrap;
+        width: 80px;
+        overflow: hidden;
+        display: inline-block;
     }
-    .table td{
+
+    .table td {
         text-align: start;
     }
-    </style>
+</style>
 {% endblock %}
 {% block tail_js%}
 {{super()}}
 <script>
-    function show_send_message(id){
+    function show_send_message(id) {
         bootbox.prompt({
             title: '{{_("Please type your message to send to the telegram:")}}',
             inputType: 'textarea',
             locale: '{{get_locale()}}',
             callback: function (result) {
-                console.log(result);                                    
-                if (!result)return
+                console.log(result);
+                if (!result) return
                 // let dialog = bootbox.dialog({           
                 //     message: '<p><i class="fas fa-spin fa-spinner"></i> {{_("Sending...")}}</p>'
                 // });
 
                 $.ajax({
                     type: "POST",
-                    url: '{{url_for("api.sendmsgresource")}}',
-                    
-                    data: JSON.stringify({'text':result,'id':id}),
+                    url: '{{url_for("api_v1.sendmsgresource")}}',
+
+                    data: JSON.stringify({ 'text': result, 'id': id }),
                     contentType: "application/json",
                     dataType: "json",
-                    error:function(jqx,status,error){
+                    error: function (jqx, status, error) {
                         // dialog.modal('hide');
                         // dialog.find('.bootbox-body').html(status+" "+error+" "+JSON.stringify(jqx));
                         $(document).Toasts('create', {
-                                class: 'bg-danger',
-                                position: "{{'topRight' if get_locale()=='fa' else 'topLeft'}}" ,
-                                title: status +" "+error, 
-                                body: JSON.stringify(jqx)
-                            })    
+                            class: 'bg-danger',
+                            position: "{{'topRight' if get_locale()=='fa' else 'topLeft'}}",
+                            title: status + " " + error,
+                            body: JSON.stringify(jqx)
+                        })
                     },
-                    success: function(data){
+                    success: function (data) {
                         // dialog.modal('hide');
-                        if (data['msg']=='success'){
+                        if (data['msg'] == 'success') {
                             $(document).Toasts('create', {
                                 class: 'bg-success',
-                                autohide:true,
-                                position: "{{'topRight' if get_locale()=='fa' else 'topLeft'}}" ,
+                                autohide: true,
+                                position: "{{'topRight' if get_locale()=='fa' else 'topLeft'}}",
                                 title: `{{_('Success')}}`,
                                 body: `{{_("The message has been sent.")}}`
-                            })    
-                        }else{
-                            res='{{_("Hover the user to see the reason")}}'
-                            for (const uuid in data['res']){
-                                element=data['res'][uuid]
-                                res+=`<span class='badge badge-info' title='${element["error"]}'>${element['name']}</span>`
+                            })
+                        } else {
+                            res = '{{_("Hover the user to see the reason")}}'
+                            for (const uuid in data['res']) {
+                                element = data['res'][uuid]
+                                res += `<span class='badge badge-info' title='${element["error"]}'>${element['name']}</span>`
                             }
-                            
+
                             $(document).Toasts('create', {
                                 class: 'bg-danger',
-                                position: "{{'topRight' if get_locale()=='fa' else 'topLeft'}}" ,
+                                position: "{{'topRight' if get_locale()=='fa' else 'topLeft'}}",
                                 title: `{{_('The message was not sent to')}}`,
                                 body: res
-                            })    
+                            })
                         }
                     },
-                    
+
                 });
 
             }

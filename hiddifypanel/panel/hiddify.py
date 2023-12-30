@@ -1,16 +1,24 @@
-from typing import Tuple, Union
+import glob
+import json
+import subprocess
+import psutil
+from typing import Tuple
 from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric import x25519
+from flask import abort, current_app, g, jsonify, request
 from flask_babelex import gettext as __
 from flask_babelex import lazy_gettext as _
+from wtforms.validators import ValidationError
+from apiflask import abort as apiflask_abort
+
+from datetime import timedelta
+from babel.dates import format_timedelta as babel_format_timedelta
 
 from hiddifypanel.cache import cache
 from hiddifypanel.models import *
 from hiddifypanel.panel.database import db
 from hiddifypanel.hutils.utils import *
 from hiddifypanel.Events import domain_changed
-from wtforms.validators import Regexp, ValidationError
-from datetime import datetime, timedelta
 from hiddifypanel import hutils
 from hiddifypanel.panel.run_commander import commander, Command
 
@@ -28,6 +36,7 @@ def add_temporary_access():
     g.temp_admin_link = temp_admin_link
 
 
+# with user panel url format we don't really need this function
 def add_short_link(link: str, period_min: int = 5) -> Tuple[str, int]:
     short_code, expire_date = add_short_link_imp(link, period_min)
     return short_code, (expire_date - datetime.now()).seconds
@@ -55,9 +64,9 @@ def add_short_link_imp(link: str, period_min: int = 5) -> Tuple[str, datetime]:
 
 
 def get_admin_path():
-    proxy_path = hconfig(ConfigEnum.proxy_path)
-    admin_secret = g.admin.uuid or get_super_admin_secret()
-    return (f"/{proxy_path}/{admin_secret}/admin/")
+    proxy_path = hconfig(ConfigEnum.proxy_path_admin)
+    # admin_secret = g.account.uuid or get_super_admin_secret()
+    return (f"/{proxy_path}/admin/")
 
 
 def exec_command(cmd, cwd=None):
@@ -69,11 +78,11 @@ def exec_command(cmd, cwd=None):
 
 def user_auth(function):
     def wrapper(*args, **kwargs):
-        if g.user_uuid == None:
+        if g.account.uuid == None:
             return jsonify({"error": "auth failed"})
-        if not g.user:
+        if not g.account:
             return jsonify({"error": "user not found"})
-        if g.admin and g.is_admin:
+        if g.account and g.is_admin:
             return jsonify({"error": "admin can not access user page. add /admin/ to your url"})
         return function()
 
@@ -82,9 +91,9 @@ def user_auth(function):
 
 def super_admin(function):
     def wrapper(*args, **kwargs):
-        if g.admin.mode not in [AdminMode.super_admin]:
+        if g.account.mode not in [AdminMode.super_admin]:
             abort(403, __("Access Denied"))
-            return jsonify({"error": "auth failed"})
+            # return jsonify({"error": "auth failed"})
         return function(*args, **kwargs)
 
     return wrapper
@@ -92,19 +101,152 @@ def super_admin(function):
 
 def admin(function):
     def wrapper(*args, **kwargs):
-        if g.admin.mode not in [AdminMode.admin, AdminMode.super_admin]:
-            abort(_("Access Denied"), 403)
-            return jsonify({"error": "auth failed"})
+        if g.account.mode not in [AdminMode.admin, AdminMode.super_admin]:
+            abort(403, __("Access Denied"))
+            # return jsonify({"error": "auth failed"})
 
         return function(*args, **kwargs)
     return wrapper
 
 
-def abs_url(path):
-    return f"/{g.proxy_path}/{g.user_uuid}/{path}"
+def api_v1_auth(function):
+    def wrapper(*args, **kwargs):
+        a_uuid = kwargs.get('admin_uuid')
+        if not a_uuid or a_uuid != get_super_admin_uuid():
+            apiflask_abort(403, 'invalid request')
+        return function(*args, **kwargs)
+    return wrapper
 
 
-def asset_url(path):
+def current_account_api_key():
+    # TODO: send real apikey
+    return g.account.uuid
+
+
+def current_account_user_pass() -> Tuple[str, str]:
+    return g.account.username, g.account.password
+
+
+def is_api_call(req_path: str) -> bool:
+    return 'api/v1/' in req_path or 'api/v2/' in req_path
+
+
+def is_user_api_call() -> bool:
+    if request.blueprint and request.blueprint == 'api_user':
+        return True
+    user_api_call_format = '/api/v2/user/'
+    if user_api_call_format in request.path:
+        return True
+    return False
+
+
+def is_admin_api_call() -> bool:
+    if request.blueprint and request.blueprint == 'api_admin' or request.blueprint == 'api_v1':
+        return True
+    admin_api_call_format = '/api/v2/admin/'
+    if admin_api_call_format in request.path:
+        return True
+    return False
+
+
+def is_user_panel_call(deprecated_format=False) -> bool:
+    if request.blueprint and request.blueprint == 'user2':
+        return True
+    if deprecated_format:
+        user_panel_url = f'{request.host}/{hconfig(ConfigEnum.proxy_path)}/'
+    else:
+        user_panel_url = f'{request.host}/{hconfig(ConfigEnum.proxy_path_client)}/'
+    if f'{request.host}{request.path}' == user_panel_url:
+        return True
+    return False
+
+
+def is_admin_panel_call(deprecated_format=False) -> bool:
+    if request.blueprint and request.blueprint == 'admin':
+        return True
+    if deprecated_format:
+        admin_panel_prefix = f'{request.host}/{hconfig(ConfigEnum.proxy_path)}/admin/'
+    else:
+        admin_panel_prefix = f'{request.host}/{hconfig(ConfigEnum.proxy_path_admin)}/admin/'
+    if f'{request.host}{request.path}'.startswith(admin_panel_prefix):
+        return True
+    return False
+
+
+def is_api_v1_call(endpoint=None) -> bool:
+    if (request.blueprint and 'api_v1' in request.blueprint):
+        return True
+    elif endpoint and 'api_v1' in endpoint:
+        return True
+    elif request.endpoint and 'api_v1' in request.endpoint:
+        return True
+
+    api_v1_path = f'{request.host}/{hconfig(ConfigEnum.proxy_path_admin)}/api/v1/{get_super_admin_uuid()}/'
+    if f'{request.host}{request.path}'.startswith(api_v1_path):
+        return True
+    return False
+
+
+def is_telegram_call() -> bool:
+    if request.endpoint and (request.endpoint == 'tgbot' or request.endpoint == 'send_msg'):
+        return True
+    if request.blueprint and request.blueprint == 'api_v1' and ('tgbot' in request.path or 'send_msg' in request.path):
+        return True
+    if '/tgbot/' in request.path or 'send_msg/' in request.path:
+        return True
+    return False
+
+
+def is_admin_home_call() -> bool:
+    admin_home = f'{request.host}/{hconfig(ConfigEnum.proxy_path_admin)}/admin/'
+    if f'{request.host}{request.path}' == admin_home:
+        return True
+    return False
+
+
+def is_login_call() -> bool:
+    base_path = f'{request.host}'
+    requested_url = f'{request.host}{request.path}'
+    if requested_url == f'{base_path}/{hconfig(ConfigEnum.proxy_path_admin)}/' or requested_url == f'{base_path}/{hconfig(ConfigEnum.proxy_path_client)}/':
+        return True
+    return False
+
+
+def is_admin_proxy_path() -> bool:
+    return get_proxy_path_from_url(request.url) == hconfig(ConfigEnum.proxy_path_admin)
+
+
+def is_client_proxy_path() -> bool:
+    return get_proxy_path_from_url(request.url) == hconfig(ConfigEnum.proxy_path_client)
+
+
+def proxy_path_validator(proxy_path):
+    # DEPRECATED PROXY_PATH HANDLED BY BACKWARD COMPATIBILITY MIDDLEWARE
+    # does not nginx handle proxy path validation?
+
+    if not proxy_path:
+        return abort(400, 'invalid request')
+
+    dbg_mode = True if current_app.config['DEBUG'] else False
+    admin_proxy_path = hconfig(ConfigEnum.proxy_path_admin)
+    client_proxy_path = hconfig(ConfigEnum.proxy_path_client)
+
+    if proxy_path != admin_proxy_path and proxy_path != client_proxy_path:
+        return abort(400, Markup(f"Invalid Proxy Path <a href=/{admin_proxy_path}/admin>Admin Panel</a>")) if dbg_mode else abort(400, 'invalid request')
+
+    if is_admin_panel_call() and proxy_path != admin_proxy_path:
+        return abort(400, Markup(f"Invalid Proxy Path <a href=/{admin_proxy_path}/admin>Admin Panel</a>")) if dbg_mode else abort(400, 'invalid request')
+    if is_user_panel_call() and proxy_path != client_proxy_path:
+        return abort(400, Markup(f"Invalid Proxy Path <a href=/{client_proxy_path}/admin>User Panel</a>")) if dbg_mode else abort(400, 'invalid request')
+
+    if is_api_call(request.path):
+        if is_admin_api_call() and proxy_path != admin_proxy_path:
+            return abort(400, Markup(f"Invalid Proxy Path <a href=/{admin_proxy_path}/admin>Admin Panel</a>")) if dbg_mode else abort(400, 'invalid request')
+        if is_user_api_call() and proxy_path != client_proxy_path:
+            return abort(400, Markup(f"Invalid Proxy Path <a href=/{client_proxy_path}/admin>User Panel</a>")) if dbg_mode else abort(400, 'invalid request')
+
+
+def asset_url(path) -> str:
     return f"/{g.proxy_path}/{path}"
 
 
@@ -155,7 +297,7 @@ def quick_apply_users():
     # run install.sh apply_users
     commander(Command.apply_users)
 
-    time.sleep(1)
+    # time.sleep(1)
     return {"status": 'success'}
 
 
@@ -190,7 +332,7 @@ def check_connection_to_remote(api_url):
 
 def check_connection_for_domain(domain):
 
-    proxy_path = hconfig(ConfigEnum.proxy_path)
+    proxy_path = hconfig(ConfigEnum.proxy_path_admin)
     admin_secret = hconfig(ConfigEnum.admin_secret)
     path = f"{proxy_path}/{admin_secret}/api/v1/hello/"
     try:
@@ -218,17 +360,15 @@ def check_connection_for_domain(domain):
 
 def get_user_link(uuid, domain, mode='', username=''):
     is_cdn = domain.mode == DomainType.cdn if type(domain) == Domain else False
-    proxy_path = hconfig(ConfigEnum.proxy_path)
     res = ""
     if mode == "multi":
         res += "<div class='btn-group'>"
     d = domain.domain
     if "*" in d:
         d = d.replace("*", get_random_string(5, 15))
-
-    link = f"https://{d}/{proxy_path}/{uuid}/#{username}"
-    if mode == "admin":
-        link = f"https://{d}/{proxy_path}/{uuid}/admin/#{username}"
+    proxy_path = hconfig(ConfigEnum.proxy_path_admin) if mode == 'admin' else hconfig(ConfigEnum.proxy_path_client)
+    account = AdminUser.query.filter(AdminUser.uuid == uuid).first() if mode == 'admin' else User.query.filter(User.uuid == uuid).first()
+    link = f"https://{account.username}:{account.password}@{d}/{proxy_path}/admin/#{username}" if mode == 'admin' else f"https://{account.username}:{account.password}@{d}/{proxy_path}/#{username}"
     link_multi = f"{link}multi"
     # if mode == 'new':
     #     link = f"{link}new"
@@ -402,7 +542,7 @@ def set_db_from_json(json_data, override_child_id=None, set_users=True, set_doma
             u.parent_admin_id = owner.id
     # for u in User.query.all():
     #     if u.added_by in uuids_without_parent:
-    #         u.added_by = g.admin.id
+    #         u.added_by = g.account.id
 
     db.session.commit()
 

@@ -1,14 +1,17 @@
 from flask.views import MethodView
 from flask import current_app as app
 from apiflask import abort
-from hiddifypanel.models.user import user_by_uuid
+from hiddifypanel.panel.auth import login_required
+from hiddifypanel.models.role import Role
+from hiddifypanel.models.user import get_user_by_uuid
 from hiddifypanel.panel import hiddify
 from hiddifypanel.drivers import user_driver
 from hiddifypanel.models import User
 from .user_api import UserSchema
 
+
 class UsersApi(MethodView):
-    decorators = [hiddify.super_admin]
+    decorators = [login_required({Role.admin})]
 
     @app.output(UserSchema(many=True))
     def get(self):
@@ -19,7 +22,7 @@ class UsersApi(MethodView):
     @app.output(UserSchema)
     def put(self, data):
         hiddify.add_or_update_user(**data)
-        user = user_by_uuid(data['uuid']) or abort(502, "unknown issue! user is not added")
+        user = get_user_by_uuid(data['uuid']) or abort(502, "unknown issue! user is not added")
         user_driver.add_client(user)
         hiddify.quick_apply_users()
         return user.to_dict(False)

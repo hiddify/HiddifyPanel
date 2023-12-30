@@ -1,0 +1,14 @@
+{% extends "master.html" %}
+{% block title %}{{hconfig(ConfigEnum.branding_title) or _('user.home.title')}}{% endblock %}
+{% from 'macros.html' import modal %}
+{% block body_header %}
+
+{% macro copy_link() -%}
+<a href="{{new_link}}" class='btn btn-primary'>
+    <i class="fa-regular fa-copy"></i> {{_("copy")}}
+</a>
+{%- endmacro -%}
+{{modal("link-alarm-modal",_("Link is changed!"),_("The page has been moved to href=%(new_link)s",new_link=new_link),footer=copy_link(),show=True)}}
+
+
+{% endblock %}

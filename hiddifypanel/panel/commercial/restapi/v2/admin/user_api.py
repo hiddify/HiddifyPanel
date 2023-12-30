@@ -1,15 +1,13 @@
-from flask import jsonify, request
-# from flask_simplelogin import login_required
+from flask import request
+from flask.views import MethodView
+from flask import current_app as app
+from apiflask import abort, Schema
+from hiddifypanel.panel.auth import login_required
 from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify
 from hiddifypanel.drivers import user_driver
 from hiddifypanel.panel import hiddify
-
-from flask.views import MethodView
-
-from flask import current_app as app
-from apiflask import abort,Schema
-from apiflask.fields import UUID,String,Float,Enum,Date,Time,Integer
+from apiflask.fields import UUID, String, Float, Enum, Date, Time, Integer
 
 
 class UserSchema(Schema):
@@ -67,13 +65,12 @@ class UserSchema(Schema):
     )
 
 
-
 class UserApi(MethodView):
-    decorators = [hiddify.super_admin]
+    decorators = [login_required({Role.admin})]
 
     @app.output(UserSchema)
     def get(self, uuid):
-        user = user_by_uuid(uuid) or abort(404, "user not found")
+        user = get_user_by_uuid(uuid) or abort(404, "user not found")
         return user.to_dict(False)
 
     @app.input(UserSchema, arg_name="data")
@@ -81,13 +78,13 @@ class UserApi(MethodView):
         data = request.json
         uuid = data.get('uuid') or abort(422, "Parameter issue: 'uuid'")
         hiddify.add_or_update_user(**data)
-        user = user_by_uuid(uuid) or abort(502, "unknown issue! user is not added")
+        user = get_user_by_uuid(uuid) or abort(502, "unknown issue! user is not added")
         user_driver.add_client(user)
         hiddify.quick_apply_users()
         return {'status': 200, 'msg': 'ok'}
 
     def delete(self, uuid):
-        user = user_by_uuid(uuid) or abort(404, "user not found")
+        user = get_user_by_uuid(uuid) or abort(404, "user not found")
         user.remove()
         hiddify.quick_apply_users()
         return {'status': 200, 'msg': 'ok'}

@@ -1,43 +1,38 @@
-from flask import  jsonify, request
+from flask import jsonify, request
 from apiflask import abort
 from flask_restful import Resource
 # from flask_simplelogin import login_required
 import datetime
 from hiddifypanel.models import *
-from urllib.parse import urlparse
+from hiddifypanel.panel.auth import login_required
 from hiddifypanel.panel import hiddify
 from hiddifypanel.drivers import user_driver
-# class AllResource(Resource):
-#     def get(self):
-#         return jsonify(
-#             hiddify.dump_db_to_dict()
-#         )
 
 
 class UserResource(Resource):
-    decorators = [hiddify.super_admin]
+    decorators = [login_required({Role.super_admin})]
 
     def get(self):
         uuid = request.args.get('uuid')
         if uuid:
-            user = user_by_uuid(uuid) or abort(404, "user not found")
+            user = get_user_by_uuid(uuid) or abort(404, "user not found")
             return jsonify(user.to_dict())
 
         users = User.query.all() or abort(502, "WTF!")
-        return jsonify([user.to_dict() for user in users])
+        return jsonify([user.to_dict() for user in users])  # type: ignore
 
     def post(self):
         data = request.json
         uuid = data.get('uuid') or abort(422, "Parameter issue: 'uuid'")
         hiddify.add_or_update_user(**data)
-        user = user_by_uuid(uuid) or abort(502, "unknown issue! user is not added")
+        user = get_user_by_uuid(uuid) or abort(502, "unknown issue! user is not added")
         user_driver.add_client(user)
         hiddify.quick_apply_users()
         return jsonify({'status': 200, 'msg': 'ok'})
 
     def delete(self):
         uuid = request.args.get('uuid') or abort(422, "Parameter issue: 'uuid'")
-        user = user_by_uuid(uuid) or abort(404, "user not found")
+        user = get_user_by_uuid(uuid) or abort(404, "user not found")
         user.remove()
         hiddify.quick_apply_users()
         return jsonify({'status': 200, 'msg': 'ok'})
@@ -61,12 +56,12 @@ class UserResource(Resource):
 
 
 class AdminUserResource(Resource):
-    decorators = [hiddify.super_admin]
+    decorators = [login_required({Role.super_admin})]
 
     def get(self, uuid=None):
         uuid = request.args.get('uuid')
         if uuid:
-            admin = get_admin_user_db(uuid) or abort(404, "user not found")
+            admin = get_admin_by_uuid(uuid) or abort(404, "user not found")
             return jsonify(admin.to_dict())
 
         admins = AdminUser.query.all() or abort(502, "WTF!")
@@ -81,7 +76,7 @@ class AdminUserResource(Resource):
 
     def delete(self):
         uuid = request.args.get('uuid') or abort(422, "Parameter issue: 'uuid'")
-        admin = get_admin_user_db(uuid) or abort(404, "admin not found")
+        admin = get_admin_by_uuid(uuid) or abort(404, "admin not found")
         admin.remove()
         return jsonify({'status': 200, 'msg': 'ok'})
 

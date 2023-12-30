@@ -1,36 +1,33 @@
 #!/usr/bin/env python3
-import pprint
 from flask_babelex import gettext as _
-import pathlib
-from datetime import datetime, timedelta, date
-from typing import Optional
 import os
-import sys
-import json
 import urllib.request
-import subprocess
-import re
 
 from flask_classful import FlaskView, route
-from flask import current_app, render_template, request, Response, Markup, url_for, make_response, redirect
+from flask import render_template, request, Markup, url_for, make_response, redirect, g
+from hiddifypanel.panel.auth import login_required
+from flask import current_app as app
+# from flask_cors import cross_origin
 
 from hiddifypanel import hutils
 from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify, usage
-from hiddifypanel.panel.run_commander import commander,Command
+from hiddifypanel.panel.run_commander import commander, Command
 from hiddifypanel.panel.hiddify import flash
+
 
 class Actions(FlaskView):
 
-    @hiddify.super_admin
+    @login_required(roles={Role.super_admin})
     def index(self):
         return render_template('index.html')
 
-    @hiddify.super_admin
+    # TODO: delete this function
+    @login_required(roles={Role.super_admin})
     def reverselog(self, logfile):
         if logfile == None:
             return self.viewlogs()
-        config_dir = current_app.config['HIDDIFY_CONFIG_PATH']
+        config_dir = app.config['HIDDIFY_CONFIG_PATH']
 
         with open(f'{config_dir}/log/system/{logfile}') as f:
             lines = [line for line in f]
@@ -51,52 +48,51 @@ class Actions(FlaskView):
         response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
         return response
 
-    @hiddify.super_admin
+    @login_required(roles={Role.super_admin})
     def viewlogs(self):
-        config_dir = current_app.config['HIDDIFY_CONFIG_PATH']
-        res = []
-        for filename in sorted(os.listdir(f'{config_dir}/log/system/')):
-            res.append(f"<a href='{url_for('admin.Actions:reverselog',logfile=filename)}'>{filename}</a>")
-        return Markup("<br>".join(res))
+        config_dir = app.config['HIDDIFY_CONFIG_PATH']
 
+        log_files = []
+        for filename in sorted(os.listdir(f'{config_dir}/log/system/')):
+            log_files.append(filename)
+        return render_template('view_logs.html', log_files=log_files)
+
+    @login_required(roles={Role.super_admin})
     @route('apply_configs', methods=['POST'])
     def apply_configs(self):
         return self.reinstall(False)
 
+    # @login_required(roles={Role.super_admin})
     @route('reset', methods=['POST'])
+    @login_required(roles={Role.super_admin})
     def reset(self):
         return self.reset2()
 
-    @hiddify.super_admin
+    @login_required(roles={Role.super_admin})
     def reset2(self):
         status = self.status()
-        # flash(_("rebooting system may takes time please wait"),'info')
-        # os.system(f"echo 'reboot'|at now + 3s ")
 
-        resp = render_template("result.html",
-                               out_type="info",
-                               out_msg="",
-                               log_path=get_logpath("restart.log"),
-                               show_success=True,
-                               domains=get_domains(),
-
-                               )
-        # file = "restart.sh"
-        # config = current_app.config
-        # subprocess.Popen(f"sudo {config['HIDDIFY_CONFIG_PATH']}/{file} --no-gui".split(" "), cwd=f"{config['HIDDIFY_CONFIG_PATH']}", start_new_session=True)
-        
         # run restart.sh
         commander(Command.restart_services)
 
-        import time
-        time.sleep(1)
-        return resp
+        # flask don't response at all while using time.sleep
+        # import time
+        # time.sleep(1)
 
+        return render_template("result.html",
+                               out_type="info",
+                               out_msg="",
+                               log_file_url=get_log_api_url(),
+                               log_file='restart.log',
+                               show_success=True,
+                               domains=get_domains())
+
+    @login_required(roles={Role.super_admin})
     @route('reinstall', methods=['POST'])
     def reinstall(self, complete_install=True, domain_changed=False):
         return self.reinstall2(complete_install, domain_changed)
 
-    @hiddify.super_admin
+    @login_required(roles={Role.super_admin})
     def reinstall2(self, complete_install=True, domain_changed=False):
         if int(hconfig(ConfigEnum.db_version)) < 9:
             return ("Please update your panel before this action.")
@@ -119,40 +115,36 @@ class Actions(FlaskView):
         except:
             server_ip = "server_ip"
 
-        # subprocess.Popen(f"{config_dir}/update.sh",env=my_env,cwd=f"{config_dir}")
-        # os.system(f'cd {config_dir};{env} ./install.sh &')
-        # rc = subprocess.call(f"cd {config_dir};./{file} & disown",shell=True)
-
-        admin_secret = get_super_admin_secret()
-        proxy_path = hconfig(ConfigEnum.proxy_path)
+        admin_proxy_path = hconfig(ConfigEnum.proxy_path_admin)
         admin_links = f"<h5 >{_('Admin Links')}</h5><ul>"
-        admin_links += f"<li><span class='badge badge-danger'>{_('Not Secure')}</span>: <a class='badge ltr share-link' href='http://{server_ip}/{proxy_path}/{admin_secret}/admin/'>http://{server_ip}/{proxy_path}/{admin_secret}/admin/</a></li>"
+        username, password = hiddify.current_account_user_pass()
+        admin_links += f"<li><span class='badge badge-danger'>{_('Not Secure')}</span>: <a class='badge ltr share-link' href='http://{username}:{password}@{server_ip}/{admin_proxy_path}/admin/'>http://{username}:{password}@{server_ip}/{admin_proxy_path}/admin/</a></li>"
         domains = get_panel_domains()
         # domains=[*domains,f'{server_ip}.sslip.io']
+
         for d in domains:
-            link = f'https://{d}/{proxy_path}/{admin_secret}/admin/'
+            link = f'https://{username}:{password}@{d}/{admin_proxy_path}/admin/'
             admin_links += f"<li><a target='_blank' class='badge ltr' href='{link}'>{link}</a></li>"
 
         resp = render_template("result.html",
                                out_type="info",
                                out_msg=_("Success! Please wait around 4 minutes to make sure everything is updated. During this time, please save your proxy links which are:") +
                                admin_links,
-                               log_path=get_logpath("0-install.log"),
+                               log_file_url=get_log_api_url(),
+                               log_file="0-install.log",
                                show_success=True,
-                               domains=get_domains(),
-                               )
+                               domains=get_domains())
 
-        
-        #subprocess.Popen(f"sudo {config['HIDDIFY_CONFIG_PATH']}/{file} --no-gui".split(" "), cwd=f"{config['HIDDIFY_CONFIG_PATH']}", start_new_session=True)
+        # subprocess.Popen(f"sudo {config['HIDDIFY_CONFIG_PATH']}/{file} --no-gui".split(" "), cwd=f"{config['HIDDIFY_CONFIG_PATH']}", start_new_session=True)
 
         # run install.sh or apply_configs.sh
         commander(Command.install if complete_install else Command.apply)
-        
-        import time
-        time.sleep(1)
+
+        # import time
+        # time.sleep(1)
         return resp
 
-    @hiddify.super_admin
+    @login_required(roles={Role.super_admin})
     def change_reality_keys(self):
         key = hiddify.generate_x25519_keys()
         set_hconfig(ConfigEnum.reality_private_key, key['private_key'])
@@ -160,47 +152,25 @@ class Actions(FlaskView):
         hiddify.flash_config_success(restart_mode='apply', domain_changed=False)
         return redirect(url_for('admin.SettingAdmin:index'))
 
-    @hiddify.super_admin
+    @login_required(roles={Role.super_admin})
     def status(self):
-        # hiddify.add_temporary_access()
-        # configs=read_configs()
-        # subprocess.Popen(f"{config_dir}/update.sh",env=my_env,cwd=f"{config_dir}")
-        # os.system(f'cd {config_dir};{env} ./install.sh &')
-        # rc = subprocess.call(f"cd {config_dir};./{file} & disown",shell=True)
-
-        #subprocess.Popen(f"sudo {config['HIDDIFY_CONFIG_PATH']}/status.sh --no-gui".split(" "), cwd=f"{config['HIDDIFY_CONFIG_PATH']}", start_new_session=True)
-        
         # run status.sh
         commander(Command.status)
-
-        from urllib.parse import urlparse
-        domain = urlparse(request.base_url).hostname
         return render_template("result.html",
                                out_type="info",
                                out_msg=_("see the log in the bellow screen"),
-                               log_path=get_logpath(f"status.log"),
-                               # log_path=f"status.log",
+                               log_file_url=get_log_api_url(),
+                               log_file="status.log",
                                show_success=False,
-                               domains=get_domains()
-                               )
-
-    # @hiddify.super_admin
+                               domains=get_domains())
 
     @route('update', methods=['POST'])
+    @login_required(roles={Role.super_admin})
     def update(self):
         return self.update2()
 
-    @hiddify.super_admin
     def update2(self):
         hiddify.add_temporary_access()
-
-        # os.chdir(config_dir)
-        # rc = subprocess.call(f"./install.sh &",shell=True)
-        # rc = subprocess.call(f"cd {config_dir};./update.sh & disown",shell=True)
-        # os.system(f'cd {config_dir};./update.sh &')
-
-        #subprocess.Popen(f"sudo {config['HIDDIFY_CONFIG_PATH']}/update.sh --no-gui".split(" "), cwd=f"{config['HIDDIFY_CONFIG_PATH']}", start_new_session=True)
-
         # run update.sh
         commander(Command.update)
 
@@ -208,9 +178,9 @@ class Actions(FlaskView):
                                out_type="success",
                                out_msg=_("Success! Please wait around 5 minutes to make sure everything is updated."),
                                show_success=True,
-                               log_path=get_logpath(f"update.log"),
-                               domains=get_domains(),
-                               )
+                               log_file_url=get_log_api_url(),
+                               log_file="update.log",
+                               domains=get_domains())
 
     def get_some_random_reality_friendly_domain(self):
         test_domain = request.args.get("test_domain")
@@ -247,7 +217,7 @@ class Actions(FlaskView):
 
         return res+"</table>"
 
-    @hiddify.super_admin
+    @login_required(roles={Role.super_admin})
     def update_usage(self):
 
         import json
@@ -255,12 +225,12 @@ class Actions(FlaskView):
         return render_template("result.html",
                                out_type="info",
                                out_msg=f'<pre class="ltr">{json.dumps(usage.update_local_usage(),indent=2)}</pre>',
-                               log_path=None
+                               log_file_url=None
                                )
 
 
-def get_logpath(logfile):
-    return f'{hiddify.get_admin_path()}actions/reverselog/{logfile}/'
+def get_log_api_url():
+    return f'/{g.proxy_path}/api/v2/admin/log/'
 
 
 def get_domains():

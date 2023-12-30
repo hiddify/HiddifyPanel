@@ -1,13 +1,16 @@
 import datetime
-import uuid as uuid_mod
 from enum import auto
 
+from flask_login import UserMixin as FlaskLoginUserMixin
 from dateutil import relativedelta
 from sqlalchemy_serializer import SerializerMixin
 from strenum import StrEnum
+from sqlalchemy import event
 
 from hiddifypanel.panel.database import db
 from hiddifypanel.models import Lang
+from hiddifypanel.models.utils import fill_password, fill_username
+from .base_account import BaseAccount
 
 ONE_GIG = 1024*1024*1024
 
@@ -48,14 +51,12 @@ class UserDetail(db.Model, SerializerMixin):
         return [] if not self.connected_ips else self.connected_ips.split(",")
 
 
-class User(db.Model, SerializerMixin):
+class User(BaseAccount, db.Model, SerializerMixin, FlaskLoginUserMixin):
     """
     This is a model class for a user in a database that includes columns for their ID, UUID, name, online status,
     account expiration date, usage limit, package days, mode, start date, current usage, last reset time, and comment.
     """
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    uuid = db.Column(db.String(36), default=lambda: str(uuid_mod.uuid4()), nullable=False, unique=True)
-    name = db.Column(db.String(512), nullable=False, default='')
     last_online = db.Column(db.DateTime, nullable=False, default=datetime.datetime.min)
     # removed
     expiry_time = db.Column(db.Date, default=datetime.date.today() + relativedelta.relativedelta(months=6))
@@ -66,8 +67,6 @@ class User(db.Model, SerializerMixin):
     start_date = db.Column(db.Date, nullable=True)
     current_usage = db.Column(db.BigInteger, default=0, nullable=False)
     last_reset_time = db.Column(db.Date, default=datetime.date.today())
-    comment = db.Column(db.String(512))
-    telegram_id = db.Column(db.String(512))
     added_by = db.Column(db.Integer, db.ForeignKey('admin_user.id'), default=1)
     max_ips = db.Column(db.Integer, default=1000, nullable=False)
     details = db.relationship('UserDetail', cascade="all,delete", backref='user',    lazy='dynamic',)
@@ -75,6 +74,13 @@ class User(db.Model, SerializerMixin):
     lang = db.Column(db.Enum(Lang), default=None)
     ed25519_private_key = db.Column(db.String(500))
     ed25519_public_key = db.Column(db.String(100))
+    # These columns are created by BaseAccount
+    # uuid = db.Column(db.String(36), default=lambda: str(uuid_mod.uuid4()), nullable=False, unique=True)
+    # name = db.Column(db.String(512), nullable=False, default='')
+    # username = db.Column(db.String(16), nullable=True, default='')
+    # password = db.Column(db.String(16), nullable=True, default='')
+    # comment = db.Column(db.String(512))
+    # telegram_id = db.Column(db.String(512))
 
     @property
     def current_usage_GB(self):
@@ -180,7 +186,7 @@ class User(db.Model, SerializerMixin):
         }
 
 
-def remove(user: User, commit=True):
+def remove(user: User, commit=True) -> None:
     from hiddifypanel.drivers import user_driver
     user_driver.remove_client(user)
     user.delete()
@@ -269,12 +275,16 @@ def user_should_reset(user):
     return res
 
 
-def user_by_uuid(uuid):
+def get_user_by_uuid(uuid) -> User | None:
     return User.query.filter(User.uuid == uuid).first()
 
 
-def user_by_id(id):
+def user_by_id(id) -> User | None:
     return User.query.filter(User.id == id).first()
+
+
+def get_user_by_username(username) -> User | None:
+    return User.query.filter(User.username == username).first()
 
 # aliz dev
 
@@ -351,3 +361,13 @@ def bulk_register_users(users=[], commit=True, remove=False):
                 db.session.delete(d)
     if commit:
         db.session.commit()
+
+
+def get_user_by_username_password(username, password) -> User | None:
+    return User.query.filter(User.username == username, User.password == password).first()
+
+
+@event.listens_for(User, 'before_insert')
+def on_user_insert(mapper, connection, target):
+    fill_username(target)
+    fill_password(target)

@@ -2,6 +2,7 @@ import datetime
 import json
 import os
 import random
+import string
 import sys
 import uuid
 
@@ -12,8 +13,9 @@ from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify
 from hiddifypanel.panel.database import db
 from hiddifypanel.panel.hiddify import get_random_domains, get_random_string
+import hiddifypanel.models.utils as model_utils
 
-MAX_DB_VERSION = 60
+MAX_DB_VERSION = 70
 
 
 def init_db():
@@ -25,6 +27,11 @@ def init_db():
     get_hconfigs.invalidate_all()
     db_version = int(hconfig(ConfigEnum.db_version) or 0)
     add_column(User.lang)
+    add_column(User.username)
+    add_column(User.password)
+    add_column(AdminUser.username)
+    add_column(AdminUser.password)
+
     if db_version == latest_db_version():
         return
     Events.db_prehook.notify()
@@ -138,6 +145,23 @@ def init_db():
 
 #     add_config_if_not_exist(ConfigEnum.hysteria_enable, True)
 #     add_config_if_not_exist(ConfigEnum.hysteria_port, random.randint(5000, 20000))
+
+def _v60():
+    add_config_if_not_exist(ConfigEnum.proxy_path_admin, get_random_string())
+    add_config_if_not_exist(ConfigEnum.proxy_path_client, get_random_string())
+
+
+def _v59():
+    # set user model username and password
+    for u in User.query.all():
+        model_utils.fill_username(u)
+        model_utils.fill_password(u)
+
+    # set admin model username and password
+    for a in AdminUser.query.all():
+        model_utils.fill_username(a)
+        model_utils.fill_password(a)
+
 
 def _v57():
     add_config_if_not_exist(ConfigEnum.warp_sites, "")
@@ -319,7 +343,6 @@ def _v17():
 
 
 def _v1():
-    next10year = datetime.date.today() + relativedelta.relativedelta(years=6)
     external_ip = str(hutils.ip.get_ip(4))
     rnd_domains = get_random_domains(5)
 

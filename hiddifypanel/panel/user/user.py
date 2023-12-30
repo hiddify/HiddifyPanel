@@ -1,10 +1,7 @@
 
-from flask import render_template, request, Response, g, url_for, jsonify, flash
+from flask import redirect, render_template, request, Response, g, url_for, jsonify, flash
 from apiflask import abort
 from hiddifypanel.hutils import auto_ip_selector
-from wtforms.validators import Regexp, ValidationError
-import urllib
-import uuid
 import datetime
 from hiddifypanel.models import *
 from hiddifypanel.panel.database import db
@@ -16,6 +13,7 @@ from urllib.parse import urlparse
 import user_agents
 from flask_babelex import gettext as _
 import re
+from hiddifypanel.panel.auth import login_required
 
 
 class UserView(FlaskView):
@@ -23,24 +21,25 @@ class UserView(FlaskView):
     # region api
     @route('/short/')
     @route('/short')
+    # TODO: delete this function and use /short/ api instead
     def short_link(self):
-        short = hiddify.add_short_link(
-            "/"+hconfig(ConfigEnum.proxy_path)+"/"+g.user.uuid+"/")
+        short = hiddify.add_short_link(f'https://{g.account.username}:{g.account.password}@{urlparse(request.base_url).hostname}/{g.proxy_path}/#{g.account.name}')
 
         return f"<div style='direction:ltr'>https://{urlparse(request.base_url).hostname}/{short}/</a><br><br>"+_("This link will expire in 5 minutes")
 
     @route('/info/')
     @route('/info')
+    # TODO: delete this function and use /me/ api instead
     def info(self):
-        c = get_common_data(g.user_uuid, 'new')
+        c = get_common_data(g.account.uuid, 'new')
         data = {
             'profile_title': c['profile_title'],
-            'profile_url': f"https://{urlparse(request.base_url).hostname}/{g.proxy_path}/{g.user_uuid}/#{g.user.name}",
-            'profile_usage_current': g.user.current_usage_GB,
-            'profile_usage_total': g.user.usage_limit_GB,
-            'profile_remaining_days': g.user.remaining_days,
-            'profile_reset_days': days_to_reset(g.user),
-            'telegram_bot_url': f"https://t.me/{c['bot'].username}?start={g.user_uuid}" if c['bot'] else "",
+            'profile_url': f"https://{g.account.username}:{g.account.password}{urlparse(request.base_url).hostname}/{g.proxy_path}/#{g.account.name}",
+            'profile_usage_current': g.account.current_usage_GB,
+            'profile_usage_total': g.account.usage_limit_GB,
+            'profile_remaining_days': g.account.remaining_days,
+            'profile_reset_days': days_to_reset(g.account),
+            'telegram_bot_url': f"https://t.me/{c['bot'].username}?start={g.account.uuid}" if c['bot'] else "",
             'admin_message_html': hconfig(ConfigEnum.branding_freetext),
             'admin_message_url': hconfig(ConfigEnum.branding_site),
             'brand_title': hconfig(ConfigEnum.branding_title),
@@ -55,7 +54,7 @@ class UserView(FlaskView):
     @route('/mtproxies')
     def mtproxies(self):
         # get domains
-        c = get_common_data(g.user_uuid, 'new')
+        c = get_common_data(g.account.uuid, 'new')
         mtproxies = []
         # TODO: Remove duplicated domains mapped to a same ipv4 and v6
         for d in c['domains']:
@@ -84,8 +83,8 @@ class UserView(FlaskView):
             }
 
         items = []
-        base_url = f"https://{urlparse(request.base_url).hostname}/{g.proxy_path}/{g.user_uuid}/"
-        c = get_common_data(g.user_uuid, 'new')
+        base_url = f"https://{g.account.username}:{g.account.password}{urlparse(request.base_url).hostname}/{g.proxy_path}/"
+        c = get_common_data(g.account.uuid, 'new')
 
         # Add Auto
         items.append(
@@ -161,6 +160,7 @@ class UserView(FlaskView):
     # endregion
 
     @route('/test/')
+    @login_required(roles={Role.user})
     def test(self):
         ua = request.user_agent.string
         if re.match('^Mozilla', ua, re.IGNORECASE):
@@ -184,7 +184,7 @@ class UserView(FlaskView):
     # @route('/old/')
     # def index(self):
 
-    #     c=get_common_data(g.user_uuid,mode="")
+    #     c=get_common_data(g.account_uuid,mode="")
     #     user_agent =  user_agents.parse(request.user_agent.string)
 
     #     return render_template('home/index.html',**c,ua=user_agent)
@@ -192,12 +192,22 @@ class UserView(FlaskView):
     # @route('/multi')
     # def multi(self):
 
-    #     c=get_common_data(g.user_uuid,mode="multi")
+    #     c=get_common_data(g.account_uuid,mode="multi")
 
     #     user_agent =  user_agents.parse(request.user_agent.string)
 
     #     return render_template('home/multi.html',**c,ua=user_agent)
+
     @route('/')
+    @login_required()
+    # login
+    def login(self):
+        # redirect based on authenticated account
+        if hiddify.is_admin_proxy_path() and g.account.role in {Role.super_admin, Role.admin, Role.agent}:
+            return redirect(url_for('admin.Dashboard:index'))
+        elif hiddify.is_client_proxy_path():
+            return self.auto_sub()
+
     def auto_sub(self):
         ua = request.user_agent.string
         if re.match('^Mozilla', ua, re.IGNORECASE):
@@ -206,6 +216,7 @@ class UserView(FlaskView):
 
     @route('/sub')
     @route('/sub/')
+    @login_required(roles={Role.user})
     def force_sub(self):
         return self.get_proper_config() or self.all_configs(base64=False)
 
@@ -228,32 +239,35 @@ class UserView(FlaskView):
             return self.all_configs(base64=True)
 
     @ route('/auto')
+    @login_required(roles={Role.user})
     def auto_select(self):
-        c = get_common_data(g.user_uuid, mode="new")
+        c = get_common_data(g.account.uuid, mode="new")
         user_agent = user_agents.parse(request.user_agent.string)
         # return render_template('home/handle_smart.html', **c)
         return render_template('home/auto_page.html', **c, ua=user_agent)
 
     @ route('/new/')
     @ route('/new')
+    @login_required(roles={Role.user})
     # @ route('/')
     def new(self):
         conf = self.get_proper_config()
         if conf:
             return conf
 
-        c = get_common_data(g.user_uuid, mode="new")
+        c = get_common_data(g.account.uuid, mode="new")
         user_agent = user_agents.parse(request.user_agent.string)
         # return render_template('home/multi.html', **c, ua=user_agent)
         return render_template('new.html', **c, ua=user_agent)
 
     @ route('/clash/<meta_or_normal>/proxies.yml')
     @ route('/clash/proxies.yml')
+    @login_required(roles={Role.user})
     def clash_proxies(self, meta_or_normal="normal"):
         mode = request.args.get("mode")
         domain = request.args.get("domain", None)
 
-        c = get_common_data(g.user_uuid, mode, filter_domain=domain)
+        c = get_common_data(g.account.uuid, mode, filter_domain=domain)
         resp = Response(render_template('clash_proxies.yml',
                         meta_or_normal=meta_or_normal, **c))
         resp.mimetype = "text/plain"
@@ -261,6 +275,7 @@ class UserView(FlaskView):
         return resp
 
     @ route('/report', methods=["POST"])
+    @login_required(roles={Role.user})
     def report(self):
         data = request.get_json()
         user_ip = auto_ip_selector.get_real_user_ip()
@@ -296,10 +311,11 @@ class UserView(FlaskView):
 
     @ route('/clash/<typ>.yml', methods=["GET", "HEAD"])
     @ route('/clash/<meta_or_normal>/<typ>.yml', methods=["GET", "HEAD"])
+    @login_required(roles={Role.user})
     def clash_config(self, meta_or_normal="normal", typ="all.yml"):
         mode = request.args.get("mode")
 
-        c = get_common_data(g.user_uuid, mode)
+        c = get_common_data(g.account.uuid, mode)
 
         hash_rnd = random.randint(0, 1000000)  # hash(f'{c}')
         if request.method == 'HEAD':
@@ -311,9 +327,10 @@ class UserView(FlaskView):
         return add_headers(resp, c)
 
     @ route('/full-singbox.json', methods=["GET", "HEAD"])
+    @login_required(roles={Role.user})
     def full_singbox(self):
         mode = "new"  # request.args.get("mode")
-        c = get_common_data(g.user_uuid, mode)
+        c = get_common_data(g.account.uuid, mode)
         # response.content_type = 'text/plain';
         if request.method == 'HEAD':
             resp = ""
@@ -324,11 +341,12 @@ class UserView(FlaskView):
         return add_headers(resp, c)
 
     @ route('/singbox.json', methods=["GET", "HEAD"])
+    @login_required(roles={Role.user})
     def singbox(self):
         if not hconfig(ConfigEnum.ssh_server_enable):
             return "SSH server is disable in settings"
         mode = "new"  # request.args.get("mode")
-        c = get_common_data(g.user_uuid, mode)
+        c = get_common_data(g.account.uuid, mode)
         # response.content_type = 'text/plain';
         if request.method == 'HEAD':
             resp = ""
@@ -338,10 +356,11 @@ class UserView(FlaskView):
         return add_headers(resp, c)
 
     @ route('/all.txt', methods=["GET", "HEAD"])
+    @login_required(roles={Role.user})
     def all_configs(self, base64=False):
         mode = "new"  # request.args.get("mode")
         base64 = base64 or request.args.get("base64", "").lower() == "true"
-        c = get_common_data(g.user_uuid, mode)
+        c = get_common_data(g.account.uuid, mode)
         # response.content_type = 'text/plain';
         if request.method == 'HEAD':
             resp = ""
@@ -359,6 +378,7 @@ class UserView(FlaskView):
         return add_headers(resp, c)
 
     @ route('/manifest.webmanifest')
+    @login_required(roles={Role.user})
     def create_pwa_manifest(self):
 
         domain = urlparse(request.base_url).hostname
@@ -383,9 +403,10 @@ class UserView(FlaskView):
             ]
         })
 
+    @login_required(roles={Role.user})
     @ route("/offline.html")
     def offline():
-        return f"Not Connected <a href='/{hconfig(ConfigEnum.proxy_path)}/{g.user.uuid}/'>click for reload</a>"
+        return f"Not Connected <a href='/{hconfig(ConfigEnum.proxy_path_client)}/{g.account.uuid}/'>click for reload</a>"
 
 
 def do_base_64(str):

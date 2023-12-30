@@ -1,25 +1,22 @@
-from flask_admin.contrib import sqla
-from hiddifypanel.panel.database import db
 import datetime
-from hiddifypanel.models import *
-from flask import Markup, g, request, url_for
-from apiflask import abort
-from wtforms.validators import Regexp, ValidationError
-import re
 import uuid
-from hiddifypanel.drivers import user_driver
-from .adminlte import AdminLTEModelView
-# from gettext import gettext as _
-from flask_babelex import gettext as __
-from flask_babelex import lazy_gettext as _
+import re
+from hiddifypanel.panel.auth import login_required
 
+from wtforms.validators import Regexp, ValidationError
+from flask import Markup, g, request, url_for
+from flask_babelex import lazy_gettext as _
 from wtforms.validators import NumberRange
+from .adminlte import AdminLTEModelView
+from flask_babelex import gettext as __
+from apiflask import abort
 
 
 from hiddifypanel.panel import hiddify, custom_widgets
 from hiddifypanel.panel.hiddify import flash
-from wtforms.fields import StringField
+from hiddifypanel.drivers import user_driver
 from flask_bootstrap import SwitchField
+from hiddifypanel.models import *
 
 
 class UserAdmin(AdminLTEModelView):
@@ -122,7 +119,6 @@ class UserAdmin(AdminLTEModelView):
     #     model.password = generate_password_hash(model.password)
 
     def _name_formatter(view, context, model, name):
-        proxy_path = hconfig(ConfigEnum.proxy_path)
         # print("model.telegram_id",model.telegram_id)
         extra = ""
         if hconfig(ConfigEnum.telegram_bot_token):
@@ -139,7 +135,9 @@ class UserAdmin(AdminLTEModelView):
         else:
             link = '<i class="fa-solid fa-circle-xmark text-danger"></i> '
 
-        link += f"<a target='_blank' href='/{proxy_path}/{model.uuid}/#{model.name}'>{model.name} <i class='fa-solid fa-arrow-up-right-from-square'></i></a>"
+        d = get_panel_domains()[0]
+        client_proxy_path = hconfig(ConfigEnum.proxy_path_client)
+        link += f"<a target='_blank' href='https://{model.username}:{model.password}@{d}/{client_proxy_path}/#{model.name}'>{model.name} <i class='fa-solid fa-arrow-up-right-from-square'></i></a>"
         return Markup(extra+link)
 
     def _ul_formatter(view, context, model, name):
@@ -208,8 +206,9 @@ class UserAdmin(AdminLTEModelView):
         user_driver.remove_client(model)
         # hiddify.flash_config_success()
 
-    # def is_accessible(self):
-    #     return g.is_admin
+    @login_required(roles={Role.admin})
+    def is_accessible(self):
+        return True
 
     def on_form_prefill(self, form, id=None):
         # print("================",form._obj.start_date)
@@ -256,10 +255,10 @@ class UserAdmin(AdminLTEModelView):
         model.package_days = min(model.package_days, 10000)
         old_user = user_by_id(model.id)
         if not model.added_by or model.added_by == 1:
-            model.added_by = g.admin.id
-        if not g.admin.can_have_more_users():
+            model.added_by = g.account.id
+        if not g.account.can_have_more_users():
             raise ValidationError(_('You have too much users! You can have only %(active)s active users and %(total)s users',
-                                  active=g.admin.max_active_users, total=g.admin.max_users))
+                                  active=g.account.max_active_users, total=g.account.max_users))
         if old_user and old_user.uuid != model.uuid:
             user_driver.remove_client(old_user)
         if not model.ed25519_private_key:
@@ -273,8 +272,6 @@ class UserAdmin(AdminLTEModelView):
         # else:
         #     xray_api.remove_client(model.uuid)
         # hiddify.flash_config_success()
-    # def is_accessible(self):
-    #     return is_valid()
 
     def after_model_change(self, form, model, is_created):
         if hconfig(ConfigEnum.first_setup):
@@ -342,8 +339,8 @@ class UserAdmin(AdminLTEModelView):
         # Get the base query
         query = super().get_query()
 
-        admin_id = int(request.args.get("admin_id") or g.admin.id)
-        if admin_id not in g.admin.recursive_sub_admins_ids():
+        admin_id = int(request.args.get("admin_id") or g.account.id)
+        if admin_id not in g.account.recursive_sub_admins_ids():
             abort(403)
         admin = AdminUser.query.filter(AdminUser.id == admin_id).first()
         if not admin:
@@ -361,8 +358,8 @@ class UserAdmin(AdminLTEModelView):
 
         # query = query.session.query(func.count(User.id))
         query = super().get_count_query()
-        admin_id = int(request.args.get("admin_id") or g.admin.id)
-        if admin_id not in g.admin.recursive_sub_admins_ids():
+        admin_id = int(request.args.get("admin_id") or g.account.id)
+        if admin_id not in g.account.recursive_sub_admins_ids():
             abort(403)
         admin = AdminUser.query.filter(AdminUser.id == admin_id).first()
         if not admin:
@@ -370,8 +367,8 @@ class UserAdmin(AdminLTEModelView):
 
         query = query.filter(User.added_by.in_(admin.recursive_sub_admins_ids()))
 
-        # admin_id=int(request.args.get("admin_id") or g.admin.id)
-        # if admin_id not in g.admin.recursive_sub_admins_ids():
+        # admin_id=int(request.args.get("admin_id") or g.account.id)
+        # if admin_id not in g.account.recursive_sub_admins_ids():
         #     abort(403)
         # admin=AdminUser.query.filter(AdminUser.id==admin_id).first()
         # if not admin:

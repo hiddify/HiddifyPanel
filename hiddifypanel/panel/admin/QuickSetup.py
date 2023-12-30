@@ -1,3 +1,4 @@
+from hiddifypanel.panel.auth import login_required
 from hiddifypanel import hutils
 from hiddifypanel.models import *
 import flask_babel
@@ -9,13 +10,12 @@ import wtforms as wtf
 from flask_wtf import FlaskForm
 from flask_bootstrap import SwitchField
 from hiddifypanel.panel import hiddify
-from flask_admin.base import expose
 # from gettext import gettext as _
-from wtforms.validators import Regexp, ValidationError
+from wtforms.validators import ValidationError
 
 import re
-from flask import render_template, current_app, Markup, redirect, url_for
-from hiddifypanel.models import User, Domain, DomainType, StrConfig, ConfigEnum, get_hconfigs
+from flask import render_template
+from hiddifypanel.models import Domain, DomainType, StrConfig, ConfigEnum, get_hconfigs
 from hiddifypanel.panel.database import db
 from wtforms.fields import *
 
@@ -24,9 +24,16 @@ from flask_classful import FlaskView
 
 
 class QuickSetup(FlaskView):
+    decorators = [login_required({Role.super_admin})]
 
     def index(self):
-        return render_template('quick_setup.html', lang_form=get_lang_form(), form=get_quick_setup_form(), ipv4=hutils.ip.get_ip(4), ipv6=hutils.ip.get_ip(6), admin_link=admin_link(), show_domain_info=True)
+        return render_template(
+            'quick_setup.html', lang_form=get_lang_form(),
+            form=get_quick_setup_form(),
+            ipv4=hutils.ip.get_ip(4),
+            ipv6=hutils.ip.get_ip(6),
+            admin_link=admin_link(),
+            show_domain_info=True)
 
     def post(self):
         set_hconfig(ConfigEnum.first_setup, False)
@@ -48,10 +55,16 @@ class QuickSetup(FlaskView):
             else:
                 flash((_('quicksetup.setlang.error')), 'danger')
 
-            return render_template('quick_setup.html', form=get_quick_setup_form(True), lang_form=get_lang_form(), admin_link=admin_link(), ipv4=hutils.ip.get_ip(4), ipv6=hutils.ip.get_ip(6), show_domain_info=False)
+            return render_template(
+                'quick_setup.html', form=get_quick_setup_form(True),
+                lang_form=get_lang_form(),
+                admin_link=admin_link(),
+                ipv4=hutils.ip.get_ip(4),
+                ipv6=hutils.ip.get_ip(6),
+                show_domain_info=False)
 
         if quick_form.validate_on_submit():
-            sslip_dm = Domain.query.filter(Domain.domain == f'{hutils.ip.get_ip(4)}.sslip.io').delete()
+            Domain.query.filter(Domain.domain == f'{hutils.ip.get_ip(4)}.sslip.io').delete()
             db.session.add(Domain(domain=quick_form.domain.data.lower(), mode=DomainType.direct))
             hiddify.bulk_register_configs([
                 # {"key": ConfigEnum.telegram_enable, "value": quick_form.enable_telegram.data == True},
@@ -63,17 +76,22 @@ class QuickSetup(FlaskView):
 
             db.session.commit()
             # hiddify.flash_config_success()
-            proxy_path = hconfig(ConfigEnum.proxy_path)
+            # proxy_path = hconfig(ConfigEnum.proxy_path_admin)
             # uuid=User.query.first().uuid
             # userlink=f"<a class='btn btn-secondary share-link' target='_blank' href='https://{quick_form.domain.data}/{proxy_path}/{uuid}/'>{_('default user link')}</a>"
             # flash((_('The default user link is %(link)s. To add or edit more users, please visit users from menu.',link=userlink)),'info')
 
             from . import Actions
-            action = Actions()
+            action = Actions.Actions()
             return action.reinstall(domain_changed=True)
         else:
             flash(_('config.validation-error'), 'danger')
-        return render_template('quick_setup.html', form=quick_form, lang_form=get_lang_form(True), ipv4=hutils.ip.get_ip(4), ipv6=hutils.ip.get_ip(6), admin_link=admin_link(), show_domain_info=False)
+        return render_template(
+            'quick_setup.html', form=quick_form, lang_form=get_lang_form(True),
+            ipv4=hutils.ip.get_ip(4),
+            ipv6=hutils.ip.get_ip(6),
+            admin_link=admin_link(),
+            show_domain_info=False)
 
 
 def get_lang_form(empty=False):

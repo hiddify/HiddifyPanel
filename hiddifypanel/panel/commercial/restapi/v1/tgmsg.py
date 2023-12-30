@@ -1,20 +1,22 @@
-from flask import  jsonify, request
+from flask import request
 from apiflask import abort
 from flask_restful import Resource
 # from flask_simplelogin import login_required
 import datetime
 from hiddifypanel.panel.database import db
 from hiddifypanel.models import *
-from urllib.parse import urlparse
+from hiddifypanel.panel.auth import login_required
 from hiddifypanel.panel import hiddify, usage
 from .tgbot import bot
 
 
 class SendMsgResource(Resource):
-    def post(self):
+    # decorators = [login_required({Role.super_admin})]
+    @hiddify.api_v1_auth
+    def post(self, admin_uuid):
 
-        if not hconfig(ConfigEnum.telegram_bot_token):
-            abort(400)
+        if not hconfig(ConfigEnum.telegram_bot_token) or not bot:
+            abort(400, 'invalid request')
 
         msg = request.json
         users = User.query.filter(User.telegram_id != None)

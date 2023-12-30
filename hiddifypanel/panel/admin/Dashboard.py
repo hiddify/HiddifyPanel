@@ -1,8 +1,8 @@
 import datetime
-import os
-import re
+
 
 from flask import render_template, url_for, request, jsonify, g, redirect
+from hiddifypanel.panel.auth import login_required
 from apiflask import abort
 from flask_babelex import lazy_gettext as _
 from flask_classful import FlaskView, route
@@ -15,18 +15,21 @@ from hiddifypanel.panel.hiddify import flash
 
 
 class Dashboard(FlaskView):
-    def get_data(self):
-        admin_id = request.args.get("admin_id") or g.admin.id
-        if admin_id not in g.admin.recursive_sub_admins_ids():
-            abort(403, _("Access Denied!"))
+    # TODO: delete this method
+    # @login_required(roles={Role.admin})
+    # def get_data(self):
+    #     admin_id = request.args.get("admin_id") or g.account.id
+    #     if admin_id not in g.account.recursive_sub_admins_ids():
+    #         abort(403, _("Access Denied!"))
 
-        return jsonify(dict(
-            stats={'system': hiddify.system_stats(), 'top5': hiddify.top_processes()},
-            usage_history=get_daily_usage_stats(admin_id)
-        ))
+    #     return jsonify(dict(
+    #         stats={'system': hiddify.system_stats(), 'top5': hiddify.top_processes()},
+    #         usage_history=get_daily_usage_stats(admin_id)
+    #     ))
 
+    @login_required(roles={Role.admin})
     def index(self):
-        
+
         if hconfig(ConfigEnum.first_setup):
             return redirect(url_for("admin.QuickSetup:index"))
         if hiddifypanel.__release_date__ + datetime.timedelta(days=20) < datetime.datetime.now():
@@ -34,8 +37,8 @@ class Dashboard(FlaskView):
         bot = None
         # if hconfig(ConfigEnum.license):
         childs = None
-        admin_id = request.args.get("admin_id") or g.admin.id
-        if admin_id not in g.admin.recursive_sub_admins_ids():
+        admin_id = request.args.get("admin_id") or g.account.id
+        if admin_id not in g.account.recursive_sub_admins_ids():
             abort(403, _("Access Denied!"))
 
         child_id = request.args.get("child_id") or None
@@ -49,7 +52,7 @@ class Dashboard(FlaskView):
                 for d in c.domains:
                     if d.mode == DomainType.fake:
                         continue
-                    remote = f"https://{d.domain}/{hconfig(ConfigEnum.proxy_path,c.id)}/{hconfig(ConfigEnum.admin_secret,c.id)}"
+                    remote = f"https://{d.domain}/{hconfig(ConfigEnum.proxy_path_admin,c.id)}/{hconfig(ConfigEnum.admin_secret,c.id)}"
                     d.is_active = hiddify.check_connection_to_remote(remote)
                     if d.is_active:
                         c.is_active = True
@@ -82,6 +85,7 @@ class Dashboard(FlaskView):
         stats = {'system': hiddify.system_stats(), 'top5': hiddify.top_processes()}
         return render_template('index.html', stats=stats, usage_history=get_daily_usage_stats(admin_id, child_id), childs=childs)
 
+    @login_required(roles={Role.admin})
     @route('remove_child', methods=['POST'])
     def remove_child(self):
         child_id = request.form['child_id']
@@ -90,4 +94,3 @@ class Dashboard(FlaskView):
         db.session.commit()
         flash(_("child has been removed!"), "success")
         return self.index()
-

@@ -3,28 +3,31 @@ from apiflask import Schema, abort
 from flask import g
 from flask import current_app as app
 from apiflask.fields import String
+from hiddifypanel.panel.auth import login_required
 
 from hiddifypanel.models.config import hconfig
 from hiddifypanel.models.config_enum import ConfigEnum
 from hiddifypanel.models.domain import DomainType
+from hiddifypanel.models.role import Role
 
 from hiddifypanel.panel.user.user import get_common_data
-from hiddifypanel.panel import hiddify
+
 
 class MtproxySchema(Schema):
     link = String(required=True)
     title = String(required=True)
 
+
 class MTProxiesAPI(MethodView):
-    decorators = [hiddify.user_auth]
+    decorators = [login_required({Role.user})]
 
     @app.output(MtproxySchema(many=True))
     def get(self):
         # check mtproxie is enable
-        if not hconfig(ConfigEnum.telegram_enable, g.user_uuid):
-            abort(status_code=404,message="Telegram mtproxy is not enable")
+        if not hconfig(ConfigEnum.telegram_enable, g.account.uuid):
+            abort(status_code=404, message="Telegram mtproxy is not enable")
         # get domains
-        c = get_common_data(g.user_uuid, 'new')
+        c = get_common_data(g.account.uuid, 'new')
         dtos = []
         # TODO: Remove duplicated domains mapped to a same ipv4 and v6
         for d in c['domains']:

@@ -1,17 +1,17 @@
-import uuid as uuid_mod
 from enum import auto
-
 from flask import g
 from hiddifypanel.models.usage import DailyUsage
+from hiddifypanel.models.utils import fill_username, fill_password
 from sqlalchemy_serializer import SerializerMixin
+from flask_login import UserMixin as FlaskLoginUserMixin
+from sqlalchemy import event
 from strenum import StrEnum
-
-from hiddifypanel.panel.database import db
-
-from wtforms.validators import Regexp, ValidationError
 from apiflask import abort
 from flask_babelex import gettext as __
 from flask_babelex import lazy_gettext as _
+
+from hiddifypanel.panel.database import db
+from .base_account import BaseAccount
 
 
 class AdminMode(StrEnum):
@@ -26,24 +26,27 @@ class AdminMode(StrEnum):
     agent = auto()
 
 
-class AdminUser(db.Model, SerializerMixin):
+class AdminUser(BaseAccount, db.Model, SerializerMixin, FlaskLoginUserMixin):
     """
     This is a model class for a user in a database that includes columns for their ID, UUID, name, online status,
     account expiration date, usage limit, package days, mode, start date, current usage, last reset time, and comment.
     """
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    uuid = db.Column(db.String(36), default=lambda: str(uuid_mod.uuid4()), nullable=False, unique=True)
-    name = db.Column(db.String(512), nullable=False)
     mode = db.Column(db.Enum(AdminMode), default=AdminMode.agent, nullable=False)
     can_add_admin = db.Column(db.Boolean, default=False, nullable=False)
     max_users = db.Column(db.Integer, default=100, nullable=False)
     max_active_users = db.Column(db.Integer, default=100, nullable=False)
-    comment = db.Column(db.String(512))
-    telegram_id = db.Column(db.String(512))
     users = db.relationship('User', backref='admin')
     usages = db.relationship('DailyUsage', backref='admin')
     parent_admin_id = db.Column(db.Integer, db.ForeignKey('admin_user.id'), default=1)
     parent_admin = db.relationship('AdminUser', remote_side=[id], backref='sub_admins')
+    # These columns are created by BaseAccount
+    # uuid = db.Column(db.String(36), default=lambda: str(uuid_mod.uuid4()), nullable=False, unique=True)
+    # name = db.Column(db.String(512), nullable=False)
+    # username = db.Column(db.String(16), nullable=True, default='')
+    # password = db.Column(db.String(16), nullable=True, default='')
+    # comment = db.Column(db.String(512))
+    # telegram_id = db.Column(db.String(512))
 
     def recursive_users_query(self):
         from .user import User
@@ -75,14 +78,14 @@ class AdminUser(db.Model, SerializerMixin):
         return sub_admin_ids
 
     def remove(model):
-        if model.id == 1 or model.id == g.admin.id:
+        if model.id == 1 or model.id == g.account.id:
             # raise ValidationError(_("Owner can not be deleted!"))
             abort(422, __("Owner can not be deleted!"))
         users = model.recursive_users_query().all()
         for u in users:
-            u.added_by = g.admin.id
+            u.added_by = g.account.id
 
-        DailyUsage.query.filter(DailyUsage.admin_id.in_(model.recursive_sub_admins_ids())).update({'admin_id': g.admin.id})
+        DailyUsage.query.filter(DailyUsage.admin_id.in_(model.recursive_sub_admins_ids())).update({'admin_id': g.account.id})
         AdminUser.query.filter(AdminUser.id.in_(model.recursive_sub_admins_ids())).delete()
 
         db.session.commit()
@@ -102,11 +105,11 @@ class AdminUser(db.Model, SerializerMixin):
         }
 
 
-def get_super_admin_secret():
+def get_super_admin_uuid():
     return get_super_admin().uuid
 
 
-def get_super_admin():
+def get_super_admin() -> AdminUser:
     admin = AdminUser.query.filter(AdminUser.mode == AdminMode.super_admin).first()
     if not admin:
         db.session.add(AdminUser(mode=AdminMode.super_admin, name="Owner"))
@@ -114,10 +117,6 @@ def get_super_admin():
         admin = AdminUser.query.filter(AdminUser.mode == AdminMode.super_admin).first()
 
     return admin
-
-
-def get_admin_user_db(uuid):
-    return AdminUser.query.filter(AdminUser.uuid == uuid).first()
 
 
 def add_or_update_admin(commit=True, **admin):
@@ -149,7 +148,7 @@ def add_or_update_admin(commit=True, **admin):
     return dbuser
 
 
-def get_admin_by_uuid(uuid, create=False):
+def get_admin_by_uuid(uuid, create=False) -> AdminUser | None:
     admin = AdminUser.query.filter(AdminUser.uuid == uuid).first()
     # print(admin)
     if create and not admin:
@@ -163,6 +162,10 @@ def get_admin_by_uuid(uuid, create=False):
     return admin
 
 
+def get_admin_by_username(username) -> AdminUser | None:
+    return AdminUser.query.filter(AdminUser.username == username).first()
+
+
 def bulk_register_admins(users=[], commit=True):
     for u in users:
         add_or_update_admin(commit=False, **u)
@@ -171,6 +174,16 @@ def bulk_register_admins(users=[], commit=True):
 
 
 def current_admin_or_owner():
-    if g and hasattr(g, 'admin') and g.admin:
-        return g.admin
+    if g and hasattr(g, 'account') and g.account and isinstance(g.account, AdminUser):
+        return g.account
     return AdminUser.query.filter(AdminUser.id == 1).first()
+
+
+def get_admin_by_username_password(username, password) -> AdminUser | None:
+    return AdminUser.query.filter(AdminUser.username == username, AdminUser.password == password).first()
+
+
+@event.listens_for(AdminUser, "before_insert")
+def before_insert(mapper, connection, target):
+    fill_username(target)
+    fill_password(target)

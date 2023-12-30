@@ -4,10 +4,11 @@ from apiflask import Schema
 from flask import g, request
 from apiflask.fields import String, Integer
 from flask import current_app as app
-from datetime import datetime
 from flask.views import MethodView
+from hiddifypanel.panel.auth import login_required
 from hiddifypanel.models.config import hconfig
 from hiddifypanel.models.config_enum import ConfigEnum
+from hiddifypanel.models.role import Role
 from hiddifypanel.panel import hiddify
 
 
@@ -18,11 +19,12 @@ class ShortSchema(Schema):
 
 
 class ShortAPI(MethodView):
-    decorators = [hiddify.user_auth]
+    decorators = [login_required({Role.user})]
 
     @app.output(ShortSchema)
     def get(self):
-        short, expire_in = hiddify.add_short_link("/"+hconfig(ConfigEnum.proxy_path)+"/"+str(g.user_uuid)+"/")
+        short, expire_in = hiddify.add_short_link(
+            f'https://{request.host}/{hconfig(ConfigEnum.proxy_path_admin)}/')
         full_url = f"https://{urlparse(request.base_url).hostname}/{short}"
         dto = ShortSchema()
         dto.full_url = full_url

@@ -4,12 +4,13 @@ from apiflask import Schema
 from apiflask.fields import Integer, String, Float, URL, Enum
 from flask import g, request
 from flask import current_app as app
+from hiddifypanel.panel.auth import login_required
 
 from hiddifypanel.models import Lang
-from hiddifypanel.models.user import days_to_reset, user_by_uuid
+from hiddifypanel.models.role import Role
+from hiddifypanel.models.user import days_to_reset, get_user_by_uuid
 from hiddifypanel.models.config import hconfig
 from hiddifypanel.models.config_enum import ConfigEnum
-from hiddifypanel.panel import hiddify
 from hiddifypanel.panel.database import db
 from hiddifypanel.panel.user.user import get_common_data
 
@@ -37,27 +38,27 @@ class UserInfoChangableSchema(Schema):
 
 
 class InfoAPI(MethodView):
-    decorators = [hiddify.user_auth]
+    decorators = [login_required({Role.user})]
 
     @app.output(ProfileSchema)
     def get(self):
-        c = get_common_data(g.user_uuid, 'new')
+        c = get_common_data(g.account.uuid, 'new')
 
         dto = ProfileSchema()
         # user is exist for sure
         dto.profile_title = c['user'].name
-        dto.profile_url = f"https://{urlparse(request.base_url).hostname}/{g.proxy_path}/{g.user_uuid}/#{g.user.name}"
-        dto.profile_usage_current = g.user.current_usage_GB
-        dto.profile_usage_total = g.user.usage_limit_GB
-        dto.profile_remaining_days = g.user.remaining_days
-        dto.profile_reset_days = days_to_reset(g.user)
-        dto.telegram_bot_url = f"https://t.me/{c['bot'].username}?start={g.user_uuid}" if c['bot'] else ""
-        dto.telegram_id = c['user'].telegram_id
+        dto.profile_url = f"https://{g.account.username}:{g.account.password}@{urlparse(request.base_url).hostname}/{g.proxy_path}/#{g.account.name}"
+        dto.profile_usage_current = g.account.current_usage_GB
+        dto.profile_usage_total = g.account.usage_limit_GB
+        dto.profile_remaining_days = g.account.remaining_days
+        dto.profile_reset_days = days_to_reset(g.account)
+        dto.telegram_bot_url = f"https://t.me/{c['bot'].username}?start={g.account.uuid}" if c['bot'] else ""
+        dto.telegram_id = c['user'].telegram_id or 0
         dto.admin_message_html = hconfig(ConfigEnum.branding_freetext)
         dto.admin_message_url = hconfig(ConfigEnum.branding_site)
         dto.brand_title = hconfig(ConfigEnum.branding_title)
         dto.brand_icon_url = ""
-        dto.doh = f"https://{urlparse(request.base_url).hostname}/{g.proxy_path}/dns/dns-query"
+        dto.doh = f"https://{g.account.username}:{g.account.password}@{urlparse(request.base_url).hostname}/{g.proxy_path}/dns/dns-query"
         dto.lang = c['user'].lang
         return dto
 
@@ -69,13 +70,13 @@ class InfoAPI(MethodView):
             except:
                 return {'message': 'The telegram id field is invalid'}
 
-            user = user_by_uuid(g.user_uuid)
+            user = get_user_by_uuid(g.account.uuid)
             if user.telegram_id != tg_id:
                 user.telegram_id = tg_id
                 db.session.commit()
 
         if data['language']:
-            user = user_by_uuid(g.user_uuid)
+            user = get_user_by_uuid(g.account.uuid)
             if user.lang != data['language']:
                 user.lang = data['language']
                 db.session.commit()

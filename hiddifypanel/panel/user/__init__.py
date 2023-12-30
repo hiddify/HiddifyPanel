@@ -7,7 +7,7 @@ from hiddifypanel.panel.database import db
 # from .resources import ProductItemResource, ProductResource
 from .user import *
 from apiflask import APIBlueprint
-bp = APIBlueprint("user2", __name__, url_prefix="/<proxy_path>/<user_secret>/", template_folder="templates", enable_openapi=False)
+bp = APIBlueprint("user2", __name__, url_prefix="/<proxy_path>/", template_folder="templates", enable_openapi=False)
 
 
 def send_static(path):
@@ -15,7 +15,17 @@ def send_static(path):
 
 
 def init_app(app):
+    # @app.route('/<proxy_path>/<user_secret>')
+    # @bp.route('/<proxy_path>/<user_secret>/')
+    # @app.doc(hide=True)
+    # def backward_compatibality():
+    #     # TODO: handle none -browser requests
+    #     # return redirect(request.url_root.rstrip('/') + f"/{g.proxy_path}/admin/")
+
+    #     return render_template('redirect_to_user.html', user_link=request.url_root.replace('http://', 'https://').rstrip('/') + f"/{g.proxy_path}/#{g.account.name}")
+
     UserView.register(bp, route_base="/")
+
     # bp.add_url_rule("/", view_func=index)
     # bp.add_url_rule("/<lang>", view_func=index)
     # bp.add_url_rule("/clash/<meta_or_normal>/<mode>.yml", view_func=clash_config)

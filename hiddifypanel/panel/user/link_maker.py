@@ -110,7 +110,7 @@ def make_proxy(proxy: Proxy, domain_db: Domain, phttp=80, ptls=443, pport=None):
         'port': port,
         'server': cdn_forced_host,
         'sni': domain_db.servernames if is_cdn and domain_db.servernames else domain,
-        'uuid': str(g.user_uuid),
+        'uuid': str(g.account.uuid),
         'proto': proxy.proto,
         'transport': proxy.transport,
         'proxy_path': hconfigs[ConfigEnum.proxy_path],
@@ -223,7 +223,7 @@ def make_proxy(proxy: Proxy, domain_db: Domain, phttp=80, ptls=443, pport=None):
         base['alpn'] = 'http/1.1'
         return base
     if ProxyProto.ssh == proxy.proto:
-        base['private_key'] = g.user.ed25519_private_key
+        base['private_key'] = g.account.ed25519_private_key
         base['host_key'] = hiddify.get_hostkeys(False)
         # base['ssh_port'] = hconfig(ConfigEnum.ssh_server_port)
         return base

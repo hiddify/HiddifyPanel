@@ -1,6 +1,8 @@
-from hiddifypanel.models import ConfigEnum, Domain
 import re
 import uuid
+from hiddifypanel.models.role import Role
+from hiddifypanel.panel import hiddify
+from hiddifypanel.panel.auth import login_required
 
 from wtforms.validators import ValidationError
 
@@ -21,6 +23,10 @@ class ConfigAdmin(AdminLTEModelView):
             'readonly': True
         },
     }
+
+    @login_required(roles={Role.admin})
+    def is_accessible(self):
+        return True
 
     @staticmethod
     def _is_valid_uuid(val: str, version: int | None = None):

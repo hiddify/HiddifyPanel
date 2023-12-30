@@ -1,22 +1,25 @@
 import flask_bootstrap
 import hiddifypanel
-from dynaconf import FlaskDynaconf
-from flask import Flask, request, g
+from flask import request, g
 from flask_babelex import Babel
-from hiddifypanel.panel.init_db import init_db
+from flask_session import Session
+from flask_cors import CORS
+import datetime
 
-from hiddifypanel.models import *
 from dotenv import dotenv_values
 import os
 from hiddifypanel.panel import hiddify
 from apiflask import APIFlask
 from werkzeug.middleware.proxy_fix import ProxyFix
+from hiddifypanel.models import *
+from hiddifypanel.panel.init_db import init_db
+from hiddifypanel.cache import redis_client
 
 
 def create_app(cli=False, **config):
 
     app = APIFlask(__name__, static_url_path="/<proxy_path>/static/", instance_relative_config=True, version='2.0.0', title="Hiddify API",
-                   openapi_blueprint_url_prefix="/<proxy_path>/<user_secret>/api", docs_ui='elements', json_errors=False, enable_openapi=True)
+                   openapi_blueprint_url_prefix="/<proxy_path>/api", docs_ui='elements', json_errors=False, enable_openapi=True)
     # app = Flask(__name__, static_url_path="/<proxy_path>/static/", instance_relative_config=True)
     app.wsgi_app = ProxyFix(
         app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1
@@ -24,7 +27,7 @@ def create_app(cli=False, **config):
     app.servers = {
         'name': 'current',
         'url': '',
-    }
+    }  # type: ignore
     app.info = {
         'description': 'Hiddify is a free and open source software. It is as it is.',
         'termsOfService': 'http://hiddify.com',
@@ -47,6 +50,15 @@ def create_app(cli=False, **config):
 
         app.config[c] = v
 
+    # setup flask server-side session
+    # app.config['APPLICATION_ROOT'] = './'
+    # app.config['SESSION_COOKIE_DOMAIN'] = '/'
+    app.config['SESSION_TYPE'] = 'redis'
+    app.config['SESSION_REDIS'] = redis_client
+    app.config['SESSION_PERMANENT'] = False
+    app.config['PERMANENT_SESSION_LIFETIME'] = datetime.timedelta(days=7)
+    Session(app)
+
     app.jinja_env.line_statement_prefix = '%'
     app.jinja_env.filters['b64encode'] = hiddify.do_base_64
     app.view_functions['admin.static'] = {}  # fix bug in apiflask
@@ -57,6 +69,7 @@ def create_app(cli=False, **config):
     with app.app_context():
         init_db()
 
+    hiddifypanel.panel.auth.init_app(app)
     hiddifypanel.panel.common.init_app(app)
     hiddifypanel.panel.admin.init_app(app)
     hiddifypanel.panel.user.init_app(app)
@@ -99,7 +112,10 @@ def create_app(cli=False, **config):
     @app.after_request
     def apply_no_robot(response):
         response.headers["X-Robots-Tag"] = "noindex, nofollow"
+        if response.status_code == 401:
+            response.headers['WWW-Authenticate'] = 'Basic realm="Hiddify"'
         return response
+
     app.jinja_env.globals['get_locale'] = get_locale
     app.jinja_env.globals['version'] = hiddifypanel.__version__
     app.jinja_env.globals['static_url_for'] = hiddify.static_url_for

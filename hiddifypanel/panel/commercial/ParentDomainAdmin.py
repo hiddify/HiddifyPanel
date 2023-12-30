@@ -63,7 +63,8 @@ class ParentDomainAdmin(AdminLTEModelView):
 
     def _domain_admin_link(view, context, model, name):
         admin_link = f'https://{model.domain}{hiddify.get_admin_path()}'
-        return Markup(f'<div class="btn-group"><a href="{admin_link}" class="btn btn-xs btn-secondary">'+_("admin link")+f'</a><a href="{admin_link}" class="btn btn-xs btn-info ltr" target="_blank">{model.domain}</a></div>')
+        return Markup(f'<div class="btn-group"><a href="{admin_link}" class="btn btn-xs btn-secondary">' + _("admin link") +
+                      f'</a><a href="{admin_link}" class="btn btn-xs btn-info ltr" target="_blank">{model.domain}</a></div>')
 
     def _domain_ip(view, context, model, name):
         dip = hutils.ip.get_domain_ip(model.domain)
@@ -121,4 +122,4 @@ class ParentDomainAdmin(AdminLTEModelView):
         hiddify.flash_config_success(restart_mode='apply', domain_changed=True)
 
     def is_accessible(self):
-        return g.admin.mode in [AdminMode.admin, AdminMode.super_admin]
+        return g.account.mode in [AdminMode.admin, AdminMode.super_admin]
