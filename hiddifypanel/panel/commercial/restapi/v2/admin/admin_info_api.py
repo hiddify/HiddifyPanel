@@ -7,7 +7,6 @@ from hiddifypanel.models.admin import AdminUser, get_admin_by_uuid
 from hiddifypanel.models.config_enum import ConfigEnum, Lang
 from hiddifypanel.models.config import hconfig
 from hiddifypanel.models.role import Role
-from hiddifypanel.panel import hiddify
 from .admin_user_api import AdminSchema
 
 
@@ -25,6 +24,6 @@ class AdminInfoApi(MethodView):
         dto.mode = admin.mode
         dto.can_add_admin = admin.can_add_admin
         dto.parent_admin_uuid = AdminUser.query.filter(AdminUser.id == admin.parent_admin_id).first().uuid or 'None'
-        dto.telegram_id = admin.telegram_id
+        dto.telegram_id = admin.telegram_id or 0
         dto.lang = Lang(hconfig(ConfigEnum.admin_lang))
         return dto
