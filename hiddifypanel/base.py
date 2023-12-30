@@ -3,7 +3,7 @@ import hiddifypanel
 from flask import request, g
 from flask_babelex import Babel
 from flask_session import Session
-from flask_cors import CORS
+
 import datetime
 
 from dotenv import dotenv_values
