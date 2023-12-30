@@ -21,19 +21,20 @@ class UserView(FlaskView):
     # region api
     @route('/short/')
     @route('/short')
+    # TODO: delete this function and use /short/ api instead
     def short_link(self):
-        short = hiddify.add_short_link(
-            "/"+hconfig(ConfigEnum.proxy_path)+"/"+g.account_uuid+"/")
+        short = hiddify.add_short_link(f'https://{g.account.username}:{g.account.password}@{urlparse(request.base_url).hostname}/{g.proxy_path}/#{g.account.name}')
 
         return f"<div style='direction:ltr'>https://{urlparse(request.base_url).hostname}/{short}/</a><br><br>"+_("This link will expire in 5 minutes")
 
     @route('/info/')
     @route('/info')
+    # TODO: delete this function and use /me/ api instead
     def info(self):
         c = get_common_data(g.account_uuid, 'new')
         data = {
             'profile_title': c['profile_title'],
-            'profile_url': f"https://{urlparse(request.base_url).hostname}/{g.proxy_path}/{g.account_uuid}/#{g.account.name}",
+            'profile_url': f"https://{g.account.username}:{g.account.password}{urlparse(request.base_url).hostname}/{g.proxy_path}/#{g.account.name}",
             'profile_usage_current': g.account.current_usage_GB,
             'profile_usage_total': g.account.usage_limit_GB,
             'profile_remaining_days': g.account.remaining_days,
@@ -82,7 +83,7 @@ class UserView(FlaskView):
             }
 
         items = []
-        base_url = f"https://{urlparse(request.base_url).hostname}/{g.proxy_path}/{g.account_uuid}/"
+        base_url = f"https://{g.account.username}:{g.account.password}{urlparse(request.base_url).hostname}/{g.proxy_path}/"
         c = get_common_data(g.account_uuid, 'new')
 
         # Add Auto

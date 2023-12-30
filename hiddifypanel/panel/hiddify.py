@@ -36,6 +36,7 @@ def add_temporary_access():
     g.temp_admin_link = temp_admin_link
 
 
+# with user panel url format we don't really need this function
 def add_short_link(link: str, period_min: int = 5) -> Tuple[str, int]:
     short_code, expire_date = add_short_link_imp(link, period_min)
     return short_code, (expire_date - datetime.now()).seconds
@@ -77,7 +78,7 @@ def exec_command(cmd, cwd=None):
 
 def user_auth(function):
     def wrapper(*args, **kwargs):
-        if g.account_uuid == None:
+        if g.account.uuid == None:
             return jsonify({"error": "auth failed"})
         if not g.account:
             return jsonify({"error": "user not found"})

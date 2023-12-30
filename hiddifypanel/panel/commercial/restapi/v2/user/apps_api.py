@@ -72,19 +72,19 @@ class AppAPI(MethodView):
         super().__init__()
         self.hiddify_github_repo = 'https://github.com/hiddify'
 
-        self.user_panel_url = f"https://{urlparse(request.base_url).hostname}/{g.proxy_path}/{g.account_uuid}/"
+        self.user_panel_url = f"https://{urlparse(request.base_url).hostname}/{g.proxy_path}/"
         self.user_panel_encoded_url = quote_plus(self.user_panel_url)
         c = get_common_data(g.account_uuid, 'new')
         self.subscription_link_url = f"{self.user_panel_url}all.txt?name={c['db_domain'].alias or c['db_domain'].domain}-{c['asn']}&asn={c['asn']}&mode={c['mode']}"
         self.subscription_link_encoded_url = do_base_64(self.subscription_link_url)
         domain = c['db_domain'].alias or c['db_domain'].domain
         self.profile_title = c['profile_title']
-        # self.clash_all_sites = f"https://{domain}/{g.proxy_path}/{g.account_uuid}/clash/all.yml?mode={c['mode']}&asn={c['asn']}&name={c['asn']}_all_{domain}-{c['mode']}"
-        # self.clash_foreign_sites = f"https://{domain}/{g.proxy_path}/{g.account_uuid}/clash/normal.yml?mode={c['mode']}&asn={c['asn']}&name={c['asn']}_normal_{domain}-{c['mode']}"
-        # self.clash_blocked_sites = f"https://{domain}/{g.proxy_path}/{g.account_uuid}/clash/lite.yml?mode={c['mode']}&asn={c['asn']}&name={c['asn']}_lite_{c['db_domain'].alias or c['db_domain'].domain}-{c['mode']}"
-        # self.clash_meta_all_sites = f"https://{domain}/{g.proxy_path}/{g.account_uuid}/clash/meta/all.yml?mode={c['mode']}&asn={c['asn']}&name={c['asn']}_mall_{domain}-{c['mode']}"
-        # self.clash_meta_foreign_sites = f"https://{domain}/{g.proxy_path}/{g.account_uuid}/clash/meta/normal.yml?mode={c['mode']}&asn={c['asn']}&name={c['asn']}_mnormal_{domain}-{c['mode']}"
-        self.clash_meta_blocked_sites = f"https://{domain}/{g.proxy_path}/{g.account_uuid}/clash/meta/lite.yml?mode={c['mode']}&asn={c['asn']}&name={c['asn']}_mlite_{domain}-{c['mode']}"
+        # self.clash_all_sites = f"https://{domain}/{g.proxy_path}/clash/all.yml?mode={c['mode']}&asn={c['asn']}&name={c['asn']}_all_{domain}-{c['mode']}"
+        # self.clash_foreign_sites = f"https://{domain}/{g.proxy_path}/clash/normal.yml?mode={c['mode']}&asn={c['asn']}&name={c['asn']}_normal_{domain}-{c['mode']}"
+        # self.clash_blocked_sites = f"https://{domain}/{g.proxy_path}/clash/lite.yml?mode={c['mode']}&asn={c['asn']}&name={c['asn']}_lite_{c['db_domain'].alias or c['db_domain'].domain}-{c['mode']}"
+        # self.clash_meta_all_sites = f"https://{domain}/{g.proxy_path}/clash/meta/all.yml?mode={c['mode']}&asn={c['asn']}&name={c['asn']}_mall_{domain}-{c['mode']}"
+        # self.clash_meta_foreign_sites = f"https://{domain}/{g.proxy_path}/clash/meta/normal.yml?mode={c['mode']}&asn={c['asn']}&name={c['asn']}_mnormal_{domain}-{c['mode']}"
+        self.clash_meta_blocked_sites = f"https://{domain}/{g.proxy_path}/clash/meta/lite.yml?mode={c['mode']}&asn={c['asn']}&name={c['asn']}_mlite_{domain}-{c['mode']}"
 
     @app.input(AppInSchema, arg_name='data', location="query")
     @app.output(AppSchema(many=True))

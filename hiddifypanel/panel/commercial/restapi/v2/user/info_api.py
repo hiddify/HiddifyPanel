@@ -47,7 +47,7 @@ class InfoAPI(MethodView):
         dto = ProfileSchema()
         # user is exist for sure
         dto.profile_title = c['user'].name
-        dto.profile_url = f"https://{g.account.username}:{g.account.password}@{urlparse(request.base_url).hostname}/{g.proxy_path}/{g.account_uuid}/#{g.account.name}"
+        dto.profile_url = f"https://{g.account.username}:{g.account.password}@{urlparse(request.base_url).hostname}/{g.proxy_path}/#{g.account.name}"
         dto.profile_usage_current = g.account.current_usage_GB
         dto.profile_usage_total = g.account.usage_limit_GB
         dto.profile_remaining_days = g.account.remaining_days
