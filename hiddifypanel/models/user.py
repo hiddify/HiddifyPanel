@@ -1,18 +1,16 @@
 import datetime
-import uuid as uuid_mod
 from enum import auto
 
 from flask_login import UserMixin as FlaskLoginUserMixin
 from dateutil import relativedelta
-from hiddifypanel import hutils
 from sqlalchemy_serializer import SerializerMixin
 from strenum import StrEnum
 from sqlalchemy import event
 
 from hiddifypanel.panel.database import db
 from hiddifypanel.models import Lang
-from hiddifypanel.models.role import Role
 from hiddifypanel.models.utils import fill_password, fill_username
+from .base_account import BaseAccount
 
 ONE_GIG = 1024*1024*1024
 
@@ -53,16 +51,12 @@ class UserDetail(db.Model, SerializerMixin):
         return [] if not self.connected_ips else self.connected_ips.split(",")
 
 
-class User(db.Model, SerializerMixin, FlaskLoginUserMixin):
+class User(BaseAccount, db.Model, SerializerMixin, FlaskLoginUserMixin):
     """
     This is a model class for a user in a database that includes columns for their ID, UUID, name, online status,
     account expiration date, usage limit, package days, mode, start date, current usage, last reset time, and comment.
     """
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    uuid = db.Column(db.String(36), default=lambda: str(uuid_mod.uuid4()), nullable=False, unique=True)
-    name = db.Column(db.String(512), nullable=False, default='')
-    username = db.Column(db.String(16), nullable=True, default='')
-    password = db.Column(db.String(16), nullable=True, default='')
     last_online = db.Column(db.DateTime, nullable=False, default=datetime.datetime.min)
     # removed
     expiry_time = db.Column(db.Date, default=datetime.date.today() + relativedelta.relativedelta(months=6))
@@ -73,8 +67,6 @@ class User(db.Model, SerializerMixin, FlaskLoginUserMixin):
     start_date = db.Column(db.Date, nullable=True)
     current_usage = db.Column(db.BigInteger, default=0, nullable=False)
     last_reset_time = db.Column(db.Date, default=datetime.date.today())
-    comment = db.Column(db.String(512))
-    telegram_id = db.Column(db.String(512))
     added_by = db.Column(db.Integer, db.ForeignKey('admin_user.id'), default=1)
     max_ips = db.Column(db.Integer, default=1000, nullable=False)
     details = db.relationship('UserDetail', cascade="all,delete", backref='user',    lazy='dynamic',)
@@ -82,6 +74,13 @@ class User(db.Model, SerializerMixin, FlaskLoginUserMixin):
     lang = db.Column(db.Enum(Lang), default=None)
     ed25519_private_key = db.Column(db.String(500))
     ed25519_public_key = db.Column(db.String(100))
+    # These columns are created by BaseAccount
+    # uuid = db.Column(db.String(36), default=lambda: str(uuid_mod.uuid4()), nullable=False, unique=True)
+    # name = db.Column(db.String(512), nullable=False, default='')
+    # username = db.Column(db.String(16), nullable=True, default='')
+    # password = db.Column(db.String(16), nullable=True, default='')
+    # comment = db.Column(db.String(512))
+    # telegram_id = db.Column(db.String(512))
 
     @property
     def current_usage_GB(self):
@@ -114,19 +113,6 @@ class User(db.Model, SerializerMixin, FlaskLoginUserMixin):
             for ip in detail.ips:
                 res[ip] = 1
         return list(res.keys())
-
-    @property
-    def role(self):
-        return Role.user
-
-    def get_id(self):
-        return f'user_{self.id}'
-
-    def is_username_unique(self):
-        return User.query.filter_by(username=self.username).first() is None
-
-    def is_password_unique(self):
-        return User.query.filter_by(password=self.password).first() is None
 
     @staticmethod
     def by_id(user_id):

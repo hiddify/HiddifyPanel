@@ -1,21 +1,17 @@
-import uuid as uuid_mod
 from enum import auto
-
 from flask import g
-from hiddifypanel import hutils
-from hiddifypanel.models.role import Role
 from hiddifypanel.models.usage import DailyUsage
 from hiddifypanel.models.utils import fill_username, fill_password
 from sqlalchemy_serializer import SerializerMixin
 from flask_login import UserMixin as FlaskLoginUserMixin
 from sqlalchemy import event
 from strenum import StrEnum
-
-from hiddifypanel.panel.database import db
-
 from apiflask import abort
 from flask_babelex import gettext as __
 from flask_babelex import lazy_gettext as _
+
+from hiddifypanel.panel.database import db
+from .base_account import BaseAccount
 
 
 class AdminMode(StrEnum):
@@ -30,45 +26,27 @@ class AdminMode(StrEnum):
     agent = auto()
 
 
-class AdminUser(db.Model, SerializerMixin, FlaskLoginUserMixin):
+class AdminUser(BaseAccount, db.Model, SerializerMixin, FlaskLoginUserMixin):
     """
     This is a model class for a user in a database that includes columns for their ID, UUID, name, online status,
     account expiration date, usage limit, package days, mode, start date, current usage, last reset time, and comment.
     """
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    uuid = db.Column(db.String(36), default=lambda: str(uuid_mod.uuid4()), nullable=False, unique=True)
-    name = db.Column(db.String(512), nullable=False)
-    username = db.Column(db.String(16), nullable=True, default='')
-    password = db.Column(db.String(16), nullable=True, default='')
     mode = db.Column(db.Enum(AdminMode), default=AdminMode.agent, nullable=False)
     can_add_admin = db.Column(db.Boolean, default=False, nullable=False)
     max_users = db.Column(db.Integer, default=100, nullable=False)
     max_active_users = db.Column(db.Integer, default=100, nullable=False)
-    comment = db.Column(db.String(512))
-    telegram_id = db.Column(db.String(512))
     users = db.relationship('User', backref='admin')
     usages = db.relationship('DailyUsage', backref='admin')
     parent_admin_id = db.Column(db.Integer, db.ForeignKey('admin_user.id'), default=1)
     parent_admin = db.relationship('AdminUser', remote_side=[id], backref='sub_admins')
-
-    @property
-    def role(self):
-        match self.mode:
-            case AdminMode.super_admin:
-                return Role.super_admin
-            case AdminMode.admin:
-                return Role.admin
-            case AdminMode.agent:
-                return Role.agent
-
-    def get_id(self):
-        return f'admin_{self.id}'
-
-    def is_username_unique(self):
-        return AdminUser.query.filter_by(username=self.username).first() is None
-
-    def is_password_unique(self):
-        return AdminUser.query.filter_by(password=self.password).first() is None
+    # These columns are created by BaseAccount
+    # uuid = db.Column(db.String(36), default=lambda: str(uuid_mod.uuid4()), nullable=False, unique=True)
+    # name = db.Column(db.String(512), nullable=False)
+    # username = db.Column(db.String(16), nullable=True, default='')
+    # password = db.Column(db.String(16), nullable=True, default='')
+    # comment = db.Column(db.String(512))
+    # telegram_id = db.Column(db.String(512))
 
     def recursive_users_query(self):
         from .user import User
