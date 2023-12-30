@@ -1,7 +1,7 @@
 import traceback
 import user_agents
 from flask import render_template, request, jsonify, redirect
-from flask import g, send_from_directory, session, Markup
+from flask import g, send_from_directory, session
 from flask_babelex import gettext as _
 import hiddifypanel
 from hiddifypanel.models import *
@@ -98,23 +98,21 @@ def init_app(app: APIFlask):
         # by doing that we don't need to get proxy_path in every view function, we have it in g.proxy_path. it's done in base_middleware function
         if values:
             values.pop('proxy_path', None)
-            values.pop('user_secret', None)
+            # values.pop('admin_uuid', None)
 
     @app.url_defaults
     def add_proxy_path_user(endpoint, values):
-
-        # TODO: delete this
-        # if 'user_secret' not in values and hasattr(g, 'user_uuid'):
-        #     values['user_secret'] = f'{g.account_uuid}'
         if 'proxy_path' not in values:
             if 'static' in endpoint:
                 values['proxy_path'] = hconfig(ConfigEnum.proxy_path)
                 return
-
             if hiddify.is_user_panel_call():
                 values['proxy_path'] = hconfig(ConfigEnum.proxy_path_client)
             else:
                 values['proxy_path'] = hconfig(ConfigEnum.proxy_path_admin)
+
+        if hiddify.is_api_v1_call(endpoint=endpoint) and 'admin_uuid' not in values:
+            values['admin_uuid'] = get_super_admin_uuid()
 
     @app.route("/<proxy_path>/videos/<file>")
     @app.doc(hide=True)
@@ -167,20 +165,21 @@ def init_app(app: APIFlask):
 
         # handle uuid url format
         if uuid := hutils.utils.get_uuid_from_url_path(request.path):
-            incorrect_request = True
-            account = get_user_by_uuid(uuid) or get_admin_by_uuid(uuid) or abort(400, 'invalid request')
-            if new_link:
-                if hiddify.is_api_call(request.path):
-                    new_link = new_link.replace(f'/{uuid}', '')
-                new_link = hutils.utils.add_basic_auth_to_url(new_link, account.username, account.password)
-            else:
-                if hiddify.is_api_call(request.path):
-                    new_link = request.url.replace(f'/{uuid}', '')
+            if not hiddify.is_api_v1_call():
+                incorrect_request = True
+                account = get_user_by_uuid(uuid) or get_admin_by_uuid(uuid) or abort(400, 'invalid request')
+                if new_link:
+                    if hiddify.is_api_call(request.path):
+                        new_link = new_link.replace(f'/{uuid}', '')
                     new_link = hutils.utils.add_basic_auth_to_url(new_link, account.username, account.password)
                 else:
-                    new_link = f'https://{account.username}:{account.password}@{request.host}/{proxy_path}/'
-                    if "/admin/" in request.path:
-                        new_link += "admin/"
+                    if hiddify.is_api_call(request.path):
+                        new_link = request.url.replace(f'/{uuid}', '')
+                        new_link = hutils.utils.add_basic_auth_to_url(new_link, account.username, account.password)
+                    else:
+                        new_link = f'https://{account.username}:{account.password}@{request.host}/{proxy_path}/'
+                        if "/admin/" in request.path:
+                            new_link += "admin/"
 
         if incorrect_request:
             new_link = new_link.replace('http://', 'https://')
@@ -228,7 +227,7 @@ def init_app(app: APIFlask):
         if hconfig(ConfigEnum.telegram_bot_token):
             import hiddifypanel.panel.commercial.telegrambot as telegrambot
             if (not telegrambot.bot) or (not telegrambot.bot.username):  # type: ignore
-                telegrambot.register_bot()
+                telegrambot.register_bot(set_hook=True)
             g.bot = telegrambot.bot
         else:
             g.bot = None

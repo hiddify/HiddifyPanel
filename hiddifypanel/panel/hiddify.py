@@ -1,15 +1,15 @@
 import glob
 import json
 import subprocess
-import uuid
 import psutil
 from typing import Tuple
 from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric import x25519
-from flask import abort, current_app, g, jsonify, request, session
+from flask import abort, current_app, g, jsonify, request
 from flask_babelex import gettext as __
 from flask_babelex import lazy_gettext as _
 from wtforms.validators import ValidationError
+from apiflask import abort as apiflask_abort
 
 from datetime import timedelta
 from babel.dates import format_timedelta as babel_format_timedelta
@@ -109,6 +109,15 @@ def admin(function):
     return wrapper
 
 
+def api_v1_auth(function):
+    def wrapper(*args, **kwargs):
+        a_uuid = kwargs.get('admin_uuid')
+        if not a_uuid or a_uuid != get_super_admin_uuid():
+            apiflask_abort(403, 'invalid request')
+        return function(*args, **kwargs)
+    return wrapper
+
+
 def current_account_api_key():
     # TODO: send real apikey
     return g.account.uuid
@@ -160,6 +169,20 @@ def is_admin_panel_call(deprecated_format=False) -> bool:
     else:
         admin_panel_prefix = f'{request.host}/{hconfig(ConfigEnum.proxy_path_admin)}/admin/'
     if f'{request.host}{request.path}'.startswith(admin_panel_prefix):
+        return True
+    return False
+
+
+def is_api_v1_call(endpoint=None) -> bool:
+    if (request.blueprint and 'api_v1' in request.blueprint):
+        return True
+    elif endpoint and 'api_v1' in endpoint:
+        return True
+    elif request.endpoint and 'api_v1' in request.endpoint:
+        return True
+
+    api_v1_path = f'{request.host}/{hconfig(ConfigEnum.proxy_path_admin)}/api/v1/{get_super_admin_uuid()}/'
+    if f'{request.host}{request.path}'.startswith(api_v1_path):
         return True
     return False
 

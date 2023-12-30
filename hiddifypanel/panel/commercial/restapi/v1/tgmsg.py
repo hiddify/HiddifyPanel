@@ -11,12 +11,12 @@ from .tgbot import bot
 
 
 class SendMsgResource(Resource):
-    decorators = [login_required({Role.super_admin})]
+    # decorators = [login_required({Role.super_admin})]
+    @hiddify.api_v1_auth
+    def post(self, admin_uuid):
 
-    def post(self):
-
-        if not hconfig(ConfigEnum.telegram_bot_token):
-            abort(400)
+        if not hconfig(ConfigEnum.telegram_bot_token) or not bot:
+            abort(400, 'invalid request')
 
         msg = request.json
         users = User.query.filter(User.telegram_id != None)

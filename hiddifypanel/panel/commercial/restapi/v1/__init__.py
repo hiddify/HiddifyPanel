@@ -15,8 +15,8 @@ api = Api(bp)
 
 def init_app(app):
     tgbot.init_app(app)
-    api.add_resource(TGBotResource, "/tgbot/")
-    api.add_resource(SendMsgResource, "/send_msg/")
+    api.add_resource(TGBotResource, "/<admin_uuid>/tgbot/")
+    api.add_resource(SendMsgResource, "/<admin_uuid>/send_msg/")
     api.add_resource(UserResource, "/user/")
     api.add_resource(AdminUserResource, "/admin/")
 

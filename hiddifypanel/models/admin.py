@@ -127,7 +127,7 @@ class AdminUser(db.Model, SerializerMixin, FlaskLoginUserMixin):
         }
 
 
-def get_super_admin_secret():
+def get_super_admin_uuid():
     return get_super_admin().uuid
 
 
