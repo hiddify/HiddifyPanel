@@ -114,35 +114,80 @@ def current_account_api_key():
     return g.account.uuid
 
 
-def current_account_user_pass():
+def current_account_user_pass() -> Tuple[str, str]:
     return g.account.username, g.account.password
 
 
-def is_api_call(req_path: str):
+def is_api_call(req_path: str) -> bool:
     return 'api/v1/' in req_path or 'api/v2/' in req_path
 
 
-def is_user_panel_call(request):
+def is_user_api_call() -> bool:
+    if request.blueprint and request.blueprint == 'api_user':
+        return True
+    user_api_call_format = '/api/v2/user/'
+    if user_api_call_format in request.path:
+        return True
+    return False
+
+
+def is_admin_api_call() -> bool:
+    if request.blueprint and request.blueprint == 'api_admin' or request.blueprint == 'api_v1':
+        return True
+    admin_api_call_format = '/api/v2/admin/'
+    if admin_api_call_format in request.path:
+        return True
+    return False
+
+
+def is_user_panel_call(deprecated_format=False) -> bool:
     if request.blueprint and request.blueprint == 'user2':
         return True
-
-    user_panel_url = f'{request.host}/{g.proxy_path}/'
+    if deprecated_format:
+        user_panel_url = f'{request.host}/{hconfig(ConfigEnum.proxy_path)}/'
+    else:
+        user_panel_url = f'{request.host}/{hconfig(ConfigEnum.proxy_path_client)}/'
     if f'{request.host}{request.path}' == user_panel_url:
         return True
     return False
 
 
-def is_admin_panel_call(request):
+def is_admin_panel_call(deprecated_format=False) -> bool:
     if request.blueprint and request.blueprint == 'admin':
         return True
-
-    admin_panel_url = f'{request.host}/{g.proxy_path}/admin/'
-    if f'{request.host}{request.path}' == admin_panel_url:
+    if deprecated_format:
+        admin_panel_prefix = f'{request.host}/{hconfig(ConfigEnum.proxy_path)}/admin/'
+    else:
+        admin_panel_prefix = f'{request.host}/{hconfig(ConfigEnum.proxy_path_admin)}/admin/'
+    if f'{request.host}{request.path}'.startswith(admin_panel_prefix):
         return True
     return False
 
 
-def asset_url(path):
+def proxy_path_validator(proxy_path):
+    # DEPRECATED PROXY_PATH HANDLED BY BACKWARD COMPATIBILITY MIDDLEWARE
+    # does not nginx handle proxy path validation?
+
+    if not proxy_path:
+        return abort(400, 'invalid request')
+
+    dbg_mode = True if current_app.config['DEBUG'] else False
+    admin_proxy_path = hconfig(ConfigEnum.proxy_path_admin)
+    client_proxy_path = hconfig(ConfigEnum.proxy_path_client)
+
+    if is_api_call(request.path):
+        if is_admin_api_call() and proxy_path != admin_proxy_path:
+            return abort(400, Markup(f"Invalid Proxy Path <a href=/{admin_proxy_path}/admin>Admin Panel</a>")) if dbg_mode else abort(400, 'invalid request')
+        if is_user_api_call() and proxy_path != client_proxy_path:
+            return abort(400, Markup(f"Invalid Proxy Path <a href=/{client_proxy_path}/admin>User Panel</a>")) if dbg_mode else abort(400, 'invalid request')
+
+    if is_admin_panel_call() and proxy_path != admin_proxy_path:
+        return abort(400, Markup(f"Invalid Proxy Path <a href=/{admin_proxy_path}/admin>Admin Panel</a>")) if dbg_mode else abort(400, 'invalid request')
+    if is_user_panel_call() and proxy_path != client_proxy_path:
+        return abort(400, Markup(f"Invalid Proxy Path <a href=/{client_proxy_path}/admin>User Panel</a>")) if dbg_mode else abort(400, 'invalid request')
+
+
+def asset_url(path) -> str:
     return f"/{g.proxy_path}/{path}"
 
 

@@ -92,6 +92,14 @@ def init_app(app: APIFlask):
                         #     parameter['schema'] = {'type': 'string', 'default': g.account_uuid}
         return spec
 
+    @app.url_value_preprocessor
+    def pull_secret_code(endpoint, values):
+        # just remove proxy_path
+        # by doing that we don't need to get proxy_path in every view function, we have it in g.proxy_path. it's done in base_middleware function
+        if values:
+            values.pop('proxy_path', None)
+            values.pop('user_secret', None)
+
     @app.url_defaults
     def add_proxy_path_user(endpoint, values):
 
@@ -114,6 +122,69 @@ def init_app(app: APIFlask):
     #     return format_timedelta(diff, add_direction=True, locale=hconfig(ConfigEnum.lang))
 
     @app.before_request
+    def backward_compatibility_middleware():
+        # get needed variables
+        proxy_path = hiddify.get_proxy_path_from_url(request.url)
+        if not proxy_path:
+            abort(400, "invalid")
+        user_agent = user_agents.parse(request.user_agent.string)
+        # need this variable in redirect_to_new_format view
+        g.user_agent = user_agent
+        if user_agent.is_bot:
+            abort(400, "invalid")
+
+        # get proxy paths
+        deprecated_proxy_path = hconfig(ConfigEnum.proxy_path)
+        admin_proxy_path = hconfig(ConfigEnum.proxy_path_admin)
+        client_proxy_path = hconfig(ConfigEnum.proxy_path_client)
+
+        is_api_call = False
+        incorrect_request = False
+        new_link = ''
+        # handle deprecated proxy path
+
+        if proxy_path == deprecated_proxy_path:
+            incorrect_request = True
+            # request.url = request.url.replace('http://', 'https://')
+            if hiddify.is_admin_panel_call(deprecated_format=True):
+                new_link = f'https://{request.host}/{admin_proxy_path}/admin/'
+            elif hiddify.is_user_panel_call(deprecated_format=True):
+                new_link = f'https://{request.host}/{client_proxy_path}/'
+            elif hiddify.is_api_call(request.path):
+                if hiddify.is_admin_api_call():
+                    new_link = request.url.replace(deprecated_proxy_path, admin_proxy_path)
+                elif hiddify.is_user_api_call():
+                    new_link = request.url.replace(deprecated_proxy_path, client_proxy_path)
+                else:
+                    return abort(400, 'invalid request')
+                is_api_call = True
+            else:
+                return abort(400, 'invalid request')
+
+        # handle uuid url format
+        if uuid := hutils.utils.get_uuid_from_url_path(request.path):
+            incorrect_request = True
+            account = get_user_by_uuid(uuid) or get_admin_by_uuid(uuid) or abort(400, 'invalid request')
+            if not new_link:
+                new_link = f'https://{account.username}:{account.password}@{request.host}/{proxy_path}/'
+                if "/admin/" in request.path:
+                    new_link += "admin/"
+            else:
+                if 'https://' in new_link:
+                    new_link = new_link.replace('https://', f'https://{account.username}:{account.password}@')
+                elif 'http://' in new_link:
+                    new_link = new_link.replace('http://', f'http://{account.username}:{account.password}@')
+                else:
+                    abort(400, 'DEBUG: WTF, how did this happen? there is no "https://" or "http://" in new_link')
+        if incorrect_request:
+            new_link = new_link.replace('http://', 'https://')
+            # if request made by a browser, show new format page else redirect to new format
+            # redirect api calls always
+            if not is_api_call and user_agent.browser:
+                return render_template('redirect_to_new_format.html', new_link=new_link)
+            return redirect(new_link, 301)
+
+    @app.before_request
     def base_middleware():
         if request.endpoint == 'static' or request.endpoint == "videos":
             return
@@ -124,14 +195,15 @@ def init_app(app: APIFlask):
             abort(400, "invalid")
 
         # validate proxy path
+
         g.proxy_path = hutils.utils.get_proxy_path_from_url(request.url)
-        if not g.proxy_path:
-            abort(400, "invalid")
-        if g.proxy_path != hconfig(ConfigEnum.proxy_path):
-            if app.config['DEBUG']:
-                abort(400, Markup(
-                    f"Invalid Proxy Path <a href=/{hconfig(ConfigEnum.proxy_path)}/admin>admin</a>"))
-            abort(400, "Invalid Proxy Path")
+        hiddify.proxy_path_validator(g.proxy_path)
+
+        # if g.proxy_path != hconfig(ConfigEnum.proxy_path):
+        #     if app.config['DEBUG']:
+        #         abort(400, Markup(
+        #             f"Invalid Proxy Path <a href=/{hconfig(ConfigEnum.proxy_path)}/admin>admin</a>"))
+        #     abort(400, "Invalid Proxy Path")
 
         # setup dark mode
         if request.args.get('darkmode') != None:
@@ -154,85 +226,6 @@ def init_app(app: APIFlask):
             g.bot = telegrambot.bot
         else:
             g.bot = None
-
-    # @app.before_request
-    # def api_auth_middleware():
-    #     '''In every api request(whether is for the admin or the user) the client should provide api key and we check it'''
-    #     if 'api' not in request.path:  # type: ignore
-    #         return
-
-    #     # get authenticated account
-    #     account: AdminUser | User | None = auth.standalone_api_auth_verify()
-    #     if not account:
-    #         return abort(401)
-    #     # get account role
-    #     role = auth.get_account_role(account)
-    #     if not role:
-    #         return abort(401)
-    #     # setup authenticated account things (uuid, is_admin, etc.)
-    #     g.account = account
-    #     g.account_uuid = account.uuid
-    #     g.is_admin = False if role == auth.AccountRole.user else True
-
-    @app.before_request
-    def backward_compatibility_middleware():
-        if g.proxy_path != hconfig(ConfigEnum.proxy_path):
-            # this will make a fingerprint for panel. we should redirect the request to decoy website.
-            abort(400, "invalid proxy path")
-        uuid = hutils.utils.get_uuid_from_url_path(request.path)
-        if uuid:
-            account = get_user_by_uuid(uuid) or get_admin_by_uuid(uuid) or abort(400, 'invalid request')
-            # redirect api calls
-            if hiddify.is_api_call(request.path):
-                new_link = f'{request.url.replace(f"/{uuid}","").replace("http://","https://")}/'
-                return redirect(new_link, 301)
-
-            new_link = f'https://{account.username}:{account.password}@{request.host}/{g.proxy_path}/'
-            if "/admin/" in request.path:
-                new_link += "admin/"
-
-            # if request made by a browser, show new format page else redirect to new format
-            if g.user_agent.browser:
-                return render_template('redirect_to_new_format.html', new_link=new_link)
-            return redirect(new_link, 301)
-
-    # @app.before_request
-    # def basic_auth_middleware():
-    #     '''if the request is for user panel(user page), we try to authenticate the user with basic auth or the client session data, we do that for admin panel too'''
-    #     if 'api' in request.path:  # type: ignore
-    #         return
-
-    #     account: AdminUser | User | None = None
-
-        # # if we don't have endpoint, we can't detect the request is for admin panel or user panel, so we can't authenticate
-        # if not request.endpoint:
-        #     abort(400, "invalid request")
-
-        # if request.endpoint and 'UserView' in request.endpoint:
-        #     account = auth.standalone_user_basic_auth_verification()
-        # else:
-        #     account = auth.standalone_admin_basic_auth_verification()
-        # # get authenticated account
-        # if not account:
-        #     return abort(401)
-        # # get account role
-        # role = auth.get_account_role(account)
-        # if not role:
-        #     return abort(401)
-        # # setup authenticated account things (uuid, is_admin, etc.)
-        # g.account = account
-        # g.account_uuid = account.uuid
-        # g.is_admin = False if role == auth.AccountRole.user else True
-
-    # @app.auth_required(basic_auth, roles=['super_admin', 'admin', 'agent', 'user'])
-
-    @app.url_value_preprocessor
-    def pull_secret_code(endpoint, values):
-        # just remove proxy_path
-        # by doing that we don't need to get proxy_path in every view function, we have it in g.proxy_path. it's done in base_middleware function
-        if values:
-            values.pop('proxy_path', None)
-            values.pop('user_secret', None)
 
     def github_issue_details():
         details = {
