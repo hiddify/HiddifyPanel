@@ -241,10 +241,8 @@ def get_user_link(uuid, domain, mode='', username=''):
     if "*" in d:
         d = d.replace("*", get_random_string(5, 15))
 
-    auth_username, auth_password = current_account_user_pass()
-    link = f"https://{auth_username}:{auth_password}@{d}/{proxy_path}/#{username}"
-    if mode == "admin":
-        link = f"https://{auth_username}:{auth_password}@{d}/{proxy_path}/admin/#{username}"
+    account = AdminUser.query.filter(AdminUser.uuid == uuid).first() if mode == 'admin' else User.query.filter(User.uuid == uuid).first()
+    link = f"https://{account.username}:{account.password}@{d}/{proxy_path}/admin/#{username}" if mode == 'admin' else f"https://{account.username}:{account.password}@{d}/{proxy_path}/#{username}"
     link_multi = f"{link}multi"
     # if mode == 'new':
     #     link = f"{link}new"
