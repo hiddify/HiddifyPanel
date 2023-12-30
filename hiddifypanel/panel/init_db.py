@@ -345,7 +345,6 @@ def _v17():
 
 
 def _v1():
-    next10year = datetime.date.today() + relativedelta.relativedelta(years=6)
     external_ip = str(hutils.ip.get_ip(4))
     rnd_domains = get_random_domains(5)
 
