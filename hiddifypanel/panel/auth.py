@@ -15,9 +15,13 @@ def init_app(app):
 
     @login_manager.user_loader
     def cookie_auth(id: str) -> User | AdminUser | None:
-        # first of all check if user sent Authorization header, our priority is with Authorization header
-        if request.headers.get("Authorization") and not hiddify.is_api_call(request.path):
-            return header_auth(request)
+        # first of all check if user sent Authorization header, our priority is with Authorization header (this is valid just for non-api requests)
+        if not hiddify.is_api_call(request.path):
+            if request.headers.get("Authorization"):
+                return header_auth(request)
+            # if client requested user panel, force it login with Authorization header
+            if hiddify.is_user_panel_call(request):
+                return header_auth(request)
 
         # parse id
         role, id = hutils.utils.parse_auth_id(id)  # type: ignore

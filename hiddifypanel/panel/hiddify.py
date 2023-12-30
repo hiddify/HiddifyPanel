@@ -5,7 +5,7 @@ import psutil
 from typing import Tuple
 from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric import x25519
-from flask import abort, current_app, g, jsonify
+from flask import abort, current_app, g, jsonify, request
 from flask_babelex import gettext as __
 from flask_babelex import lazy_gettext as _
 from wtforms.validators import ValidationError
@@ -118,6 +118,16 @@ def current_account_user_pass():
 
 def is_api_call(req_path: str):
     return 'api/v1/' in req_path or 'api/v2/' in req_path
+
+
+def is_user_panel_call(request):
+    # if request.blueprint and request.blueprint == 'user2':
+    #     return True
+
+    user_panel_url = f'{request.host}/{g.proxy_path}/'
+    if f'{request.host}{request.path}' == user_panel_url:
+        return True
+    return False
 
 
 def abs_url(path):
