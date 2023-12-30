@@ -90,7 +90,8 @@ class AdminstratorAdmin(AdminLTEModelView):
         proxy_path = hconfig(ConfigEnum.proxy_path)
         d = get_panel_domains()[0]
         if d:
-            link = f"<a target='_blank' href='/{proxy_path}/admin/#{model.name}'>{model.name} <i class='fa-solid fa-arrow-up-right-from-square'></i></a>"
+            username, password = hiddify.current_account_user_pass()
+            link = f"<a target='_blank' href='https://{username}:{password}@{d}/{proxy_path}/admin/#{model.name}'>{model.name} <i class='fa-solid fa-arrow-up-right-from-square'></i></a>"
             if model.parent_admin:
                 return Markup(model.parent_admin.name + "&rlm;&lrm; / &rlm;&lrm;"+link)
             return Markup(link)
