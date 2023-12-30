@@ -125,7 +125,7 @@ class User(BaseAccount):
         """
         Retrieves a user from the database by their UUID.
         """
-        dbuser = User.query.filter_by(uuid=user_uuid).first()
+        dbuser = User.query.filter(User.uuid == user_uuid).first()
         if not dbuser:
             dbuser = User(uuid=user_uuid)
             db.session.add(dbuser)

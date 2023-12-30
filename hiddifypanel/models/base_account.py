@@ -27,9 +27,9 @@ class BaseAccount(db.Model, SerializerMixin, FlaskLoginUserMixin):
 
         model = None
         if isinstance(self, AdminUser):
-            model = AdminUser.query.filter_by(username=self.username).first()
+            model = AdminUser.query.filter(AdminUser.username == self.username).first()
         else:
-            model = User.query.filter_by(username=self.username).first()
+            model = User.query.filter(User.username == self.username).first()
 
         if model and model.id != self.id:
             return False
@@ -40,9 +40,9 @@ class BaseAccount(db.Model, SerializerMixin, FlaskLoginUserMixin):
         from hiddifypanel.models.admin import AdminUser
         model = None
         if isinstance(self, AdminUser):
-            model = AdminUser.query.filter_by(password=self.password).first()
+            model = AdminUser.query.filter(AdminUser.password == self.password).first()
         else:
-            model = User.query.filter_by(password=self.password).first()
+            model = User.query.filter(User.password == self.password).first()
 
         if model and model.id != self.id:
             return False
@@ -73,12 +73,3 @@ class BaseAccount(db.Model, SerializerMixin, FlaskLoginUserMixin):
                     return Role.agent
         if isinstance(self, User):
             return Role.user
-
-    # @staticmethod
-    # def get_by_id(id: str):
-    #     from hiddifypanel.models.user import User
-    #     from hiddifypanel.models.admin import AdminUser
-    #     if isinstance(self, AdminUser):
-    #         return AdminUser.query.filter(AdminUser.id == id).first()
-    #     if isinstance(self, User):
-    #         return User.query.filter_by(User.id == id).first()
