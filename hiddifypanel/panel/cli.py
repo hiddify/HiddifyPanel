@@ -69,15 +69,16 @@ def all_configs():
 
     server_ip = hutils.ip.get_ip(4)
     configs['admin_path'] = path
+    owner = get_super_admin()
     configs['panel_links'] = []
-    configs['panel_links'].append(f"http://{server_ip}{path}")
-    configs['panel_links'].append(f"https://{server_ip}{path}")
+    configs['panel_links'].append(f"http://{owner.username}:{owner.password}@{server_ip}{path}")
+    configs['panel_links'].append(f"https://{owner.username}:{owner.password}@{server_ip}{path}")
     domains = get_panel_domains()
     # if not any([d for d in domains if 'sslip.io' not in d.domain]):
     #     configs['panel_links'].append(f"https://{server_ip}{path}")
 
     for d in domains:
-        configs['panel_links'].append(f"https://{d.domain}{path}")
+        configs['panel_links'].append(f"https://{owner.username}:{owner.password}@{d.domain}{path}")
 
     print(json.dumps(configs, indent=4))
 
@@ -94,16 +95,17 @@ def admin_links():
     proxy_path = hconfig(ConfigEnum.proxy_path)
 
     server_ip = hutils.ip.get_ip(4)
-    admin_links = f"Not Secure (do not use it- only if others not work):\n   http://{server_ip}/{proxy_path}/admin/\n"
+    owner = get_super_admin()
+    admin_links = f"Not Secure (do not use it - only if others not work):\n   http://{owner.username}:{owner.password}@{server_ip}/{proxy_path}/admin/\n"
 
     domains = get_panel_domains()
     admin_links += f"Secure:\n"
     if not any([d for d in domains if 'sslip.io' not in d.domain]):
-        admin_links += f"   (not signed) https://{server_ip}/{proxy_path}/admin/\n"
+        admin_links += f"   (not signed) https://{owner.username}:{owner.password}@{server_ip}/{proxy_path}/admin/\n"
 
     # domains=[*domains,f'{server_ip}.sslip.io']
     for d in domains:
-        admin_links += f"   https://{d.domain}/{proxy_path}/admin/\n"
+        admin_links += f"   https://{owner.username}:{owner.password}@{d.domain}/{proxy_path}/admin/\n"
 
     print(admin_links)
     return admin_links
@@ -111,11 +113,11 @@ def admin_links():
 
 def admin_path():
     proxy_path = hconfig(ConfigEnum.proxy_path)
-    admin = Admin.query.filter(Admin.mode == AdminMode.super_admin).first()
+    admin = AdminUser.query.filter(AdminUser.mode == AdminMode.super_admin).first()
     if not admin:
-        db.session.add(Admin(mode=AdminMode.super_admin))
+        db.session.add(AdminUser(mode=AdminMode.super_admin))
         db.session.commit()
-        admin = Admin.query.filter(Admin.mode == AdminMode.super_admin).first()
+        admin = AdminUser.query.filter(AdminUser.mode == AdminMode.super_admin).first()
 
     print(f"/{proxy_path}/admin/")
 
