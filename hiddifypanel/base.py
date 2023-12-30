@@ -114,7 +114,7 @@ def create_app(cli=False, **config):
     def apply_no_robot(response):
         response.headers["X-Robots-Tag"] = "noindex, nofollow"
         if response.status_code == 401:
-            response.headers['WWW-Authenticate'] = 'Basic realm="Hiddify Secret Space"'
+            response.headers['WWW-Authenticate'] = 'Basic realm="Hiddify"'
         return response
 
     app.jinja_env.globals['get_locale'] = get_locale
