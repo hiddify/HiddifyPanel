@@ -2,8 +2,6 @@ from enum import auto
 from flask import g
 from hiddifypanel.models.usage import DailyUsage
 from hiddifypanel.models.utils import fill_username, fill_password
-from sqlalchemy_serializer import SerializerMixin
-from flask_login import UserMixin as FlaskLoginUserMixin
 from sqlalchemy import event
 from strenum import StrEnum
 from apiflask import abort
@@ -26,7 +24,7 @@ class AdminMode(StrEnum):
     agent = auto()
 
 
-class AdminUser(BaseAccount, db.Model, SerializerMixin, FlaskLoginUserMixin):
+class AdminUser(BaseAccount):
     """
     This is a model class for a user in a database that includes columns for their ID, UUID, name, online status,
     account expiration date, usage limit, package days, mode, start date, current usage, last reset time, and comment.
@@ -47,6 +45,9 @@ class AdminUser(BaseAccount, db.Model, SerializerMixin, FlaskLoginUserMixin):
     # password = db.Column(db.String(16), nullable=True, default='')
     # comment = db.Column(db.String(512))
     # telegram_id = db.Column(db.String(512))
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
 
     def recursive_users_query(self):
         from .user import User
