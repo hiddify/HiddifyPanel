@@ -61,7 +61,7 @@ class AdminUserResource(Resource):
     def get(self, uuid=None):
         uuid = request.args.get('uuid')
         if uuid:
-            admin = get_admin_user_db(uuid) or abort(404, "user not found")
+            admin = get_admin_by_uuid(uuid) or abort(404, "user not found")
             return jsonify(admin.to_dict())
 
         admins = AdminUser.query.all() or abort(502, "WTF!")
@@ -76,7 +76,7 @@ class AdminUserResource(Resource):
 
     def delete(self):
         uuid = request.args.get('uuid') or abort(422, "Parameter issue: 'uuid'")
-        admin = get_admin_user_db(uuid) or abort(404, "admin not found")
+        admin = get_admin_by_uuid(uuid) or abort(404, "admin not found")
         admin.remove()
         return jsonify({'status': 200, 'msg': 'ok'})
 

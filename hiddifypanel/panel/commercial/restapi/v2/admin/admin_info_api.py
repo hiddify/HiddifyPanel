@@ -3,7 +3,7 @@ from flask import g
 from flask.views import MethodView
 from apiflask import abort
 from hiddifypanel.panel.auth import login_required
-from hiddifypanel.models.admin import AdminUser, get_admin_user_db
+from hiddifypanel.models.admin import AdminUser, get_admin_by_uuid
 from hiddifypanel.models.config_enum import ConfigEnum, Lang
 from hiddifypanel.models.config import hconfig
 from hiddifypanel.models.role import Role
@@ -16,7 +16,7 @@ class AdminInfoApi(MethodView):
 
     @app.output(AdminSchema)
     def get(self):
-        admin = get_admin_user_db(g.account.uuid) or abort(404, "user not found")
+        admin = get_admin_by_uuid(g.account.uuid) or abort(404, "user not found")
 
         dto = AdminSchema()
         dto.name = admin.name

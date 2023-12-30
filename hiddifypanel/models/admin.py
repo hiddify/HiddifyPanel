@@ -141,10 +141,6 @@ def get_super_admin() -> AdminUser:
     return admin
 
 
-def get_admin_user_db(uuid):
-    return AdminUser.query.filter(AdminUser.uuid == uuid).first()
-
-
 def add_or_update_admin(commit=True, **admin):
     # if not is_valid():return
     dbuser = AdminUser.query.filter(AdminUser.uuid == admin['uuid']).first()
