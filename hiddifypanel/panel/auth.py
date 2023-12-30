@@ -1,7 +1,8 @@
 from functools import wraps
-from flask_login import LoginManager, login_user, current_user
+from flask_login import LoginManager, current_user, user_accessed, user_logged_in,  COOKIE_NAME, AUTH_HEADER_NAME
+from flask_login.utils import _get_user
 import hiddifypanel.hutils as hutils
-from flask import g, request
+from flask import g, request, session
 from apiflask import abort
 from flask import current_app
 from hiddifypanel.models import AdminUser, User, get_admin_by_uuid, Role
@@ -9,18 +10,117 @@ from hiddifypanel.models.user import get_user_by_uuid
 import hiddifypanel.panel.hiddify as hiddify
 
 
+class CustumLoginManager(LoginManager):
+    def _load_user(self):
+        if self._user_callback is None and self._request_callback is None:
+            raise Exception(
+                "Missing user_loader or request_loader. Refer to "
+                "http://flask-login.readthedocs.io/#how-it-works "
+                "for more info."
+            )
+
+        user_accessed.send(current_app._get_current_object())  # type: ignore
+
+        # Check SESSION_PROTECTION
+        if self._session_protection_failed():
+            return self._update_request_context_with_user()
+
+        user = None
+
+        account_id = ''
+        # Load user from Flask Session
+        if hiddify.is_api_call(request.path):
+            if hiddify.is_user_api_call():
+                account_id = session.get("_user_id")
+            else:
+                account_id = session.get("_admin_id")
+        elif hiddify.is_user_panel_call():
+            account_id = session.get("_user_id")
+        else:
+            account_id = session.get("_admin_id")
+
+        if account_id is not None and self._user_callback is not None:
+            user = self._user_callback(account_id)
+
+        # Load user from Remember Me Cookie or Request Loader
+        if user is None:
+            config = current_app.config
+            cookie_name = config.get("REMEMBER_COOKIE_NAME", COOKIE_NAME)
+            header_name = config.get("AUTH_HEADER_NAME", AUTH_HEADER_NAME)
+            has_cookie = (
+                cookie_name in request.cookies and session.get("_remember") != "clear"
+            )
+            if has_cookie:
+                cookie = request.cookies[cookie_name]
+                user = self._load_user_from_remember_cookie(cookie)
+            elif self._request_callback:
+                user = self._load_user_from_request(request)
+            elif header_name in request.headers:
+                header = request.headers[header_name]
+                user = self._load_user_from_header(header)
+
+        return self._update_request_context_with_user(user)
+
+
+def login_user(user: AdminUser | User, remember=False, duration=None, force=False, fresh=True):
+    if not force and not user.is_active:
+        return False
+
+    account_id = getattr(user, current_app.login_manager.id_attribute)()  # type: ignore
+    if user.role in {Role.super_admin, Role.admin, Role.agent}:
+        session["_admin_id"] = account_id
+    else:
+        session["_user_id"] = account_id
+    session["_fresh"] = fresh
+    session["_id"] = current_app.login_manager._session_identifier_generator()  # type: ignore
+
+    if remember:
+        session["_remember"] = "set"
+        if duration is not None:
+            try:
+                # equal to timedelta.total_seconds() but works with Python 2.6
+                session["_remember_seconds"] = (
+                    duration.microseconds
+                    + (duration.seconds + duration.days * 24 * 3600) * 10**6
+                ) / 10.0**6
+            except AttributeError as e:
+                raise Exception(
+                    f"duration must be a datetime.timedelta, instead got: {duration}"
+                ) from e
+
+    current_app.login_manager._update_request_context_with_user(user)  # type: ignore
+    user_logged_in.send(current_app._get_current_object(), user=_get_user())  # type: ignore
+    return True
+
+
+def login_required(roles: set[Role] | None = None):
+    def wrapper(fn):
+        @wraps(fn)
+        def decorated_view(*args, **kwargs):
+            if not current_user.is_authenticated:
+                return current_app.login_manager.unauthorized()  # type: ignore
+            if roles:
+                # super_admin role has admin role permission too
+                if Role.admin in roles and Role.super_admin not in roles:
+                    roles.add(Role.super_admin)
+                account_role = current_user.role
+                if account_role not in roles:
+                    return current_app.login_manager.unauthorized()  # type: ignore
+            return fn(*args, **kwargs)
+        return decorated_view
+    return wrapper
+
+
 def init_app(app):
-    login_manager = LoginManager()
+    # login_manager = LoginManager()
+    login_manager = CustumLoginManager()
     login_manager.init_app(app)
 
     @login_manager.user_loader
     def cookie_auth(id: str) -> User | AdminUser | None:
-        # first of all check if user sent Authorization header, our priority is with Authorization header (this is valid just for non-api requests)
         if not hiddify.is_api_call(request.path):
-            # if client requested user panel/admin panel, force it login with Authorization header
-            if hiddify.is_admin_panel_call():
-                return header_auth(request)
-            if hiddify.is_user_panel_call():
+            # for handle new login
+            if request.headers.get("Authorization"):
                 return header_auth(request)
 
         # parse id
@@ -41,6 +141,7 @@ def init_app(app):
 
     @login_manager.request_loader
     def header_auth(request) -> User | AdminUser | None:
+        sssssssssssss = session
         auth_header: str = request.headers.get("Authorization")
         if not auth_header:
             return
@@ -72,21 +173,3 @@ def init_app(app):
         # TODO: show the login page
 
         abort(401, "Unauthorized")
-
-
-def login_required(roles: set[Role] | None = None):
-    def wrapper(fn):
-        @wraps(fn)
-        def decorated_view(*args, **kwargs):
-            if not current_user.is_authenticated:
-                return current_app.login_manager.unauthorized()  # type: ignore
-            if roles:
-                # super_admin role has admin role permission too
-                if Role.admin in roles and Role.super_admin not in roles:
-                    roles.add(Role.super_admin)
-                account_role = current_user.role
-                if account_role not in roles:
-                    return current_app.login_manager.unauthorized()  # type: ignore
-            return fn(*args, **kwargs)
-        return decorated_view
-    return wrapper

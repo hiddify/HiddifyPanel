@@ -51,10 +51,11 @@ def create_app(cli=False, **config):
         app.config[c] = v
 
     # setup flask server-side session
+    # app.config['APPLICATION_ROOT'] = './'
+    # app.config['SESSION_COOKIE_DOMAIN'] = '/'
     app.config['SESSION_TYPE'] = 'redis'
     app.config['SESSION_REDIS'] = redis_client
     app.config['SESSION_PERMANENT'] = False
-    app.config['SESSION_COOKIE_DOMAIN'] = False
     app.config['PERMANENT_SESSION_LIFETIME'] = datetime.timedelta(days=7)
     Session(app)
 
