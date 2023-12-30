@@ -105,6 +105,11 @@ def admin(function):
     return wrapper
 
 
+def current_account_api_key():
+    # TODO: send real apikey
+    return g.account.uuid
+
+
 def abs_url(path):
     return f"/{g.proxy_path}/{g.account_uuid}/{path}"
 
