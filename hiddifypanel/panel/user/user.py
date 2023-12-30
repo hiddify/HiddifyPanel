@@ -1,5 +1,5 @@
 
-from flask import render_template, request, Response, g, url_for, jsonify, flash
+from flask import redirect, render_template, request, Response, g, url_for, jsonify, flash
 from apiflask import abort
 from hiddifypanel.hutils import auto_ip_selector
 import datetime
@@ -197,8 +197,17 @@ class UserView(FlaskView):
     #     user_agent =  user_agents.parse(request.user_agent.string)
 
     #     return render_template('home/multi.html',**c,ua=user_agent)
+
     @route('/')
-    @login_required(roles={Role.user})
+    @login_required()
+    # login
+    def login(self):
+        # redirect based on authenticated account
+        if hiddify.is_admin_proxy_path() and g.account.role in {Role.super_admin, Role.admin, Role.agent}:
+            return redirect(url_for('admin.Dashboard:index'))
+        elif hiddify.is_client_proxy_path():
+            return self.auto_sub()
+
     def auto_sub(self):
         ua = request.user_agent.string
         if re.match('^Mozilla', ua, re.IGNORECASE):

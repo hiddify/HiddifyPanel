@@ -164,6 +164,29 @@ def is_admin_panel_call(deprecated_format=False) -> bool:
     return False
 
 
+def is_admin_home_call() -> bool:
+    admin_home = f'{request.host}/{hconfig(ConfigEnum.proxy_path_admin)}/admin/'
+    if f'{request.host}{request.path}' == admin_home:
+        return True
+    return False
+
+
+def is_login_call() -> bool:
+    base_path = f'{request.host}'
+    requested_url = f'{request.host}{request.path}'
+    if requested_url == f'{base_path}/{hconfig(ConfigEnum.proxy_path_admin)}/' or requested_url == f'{base_path}/{hconfig(ConfigEnum.proxy_path_client)}/':
+        return True
+    return False
+
+
+def is_admin_proxy_path() -> bool:
+    return get_proxy_path_from_url(request.url) == hconfig(ConfigEnum.proxy_path_admin)
+
+
+def is_client_proxy_path() -> bool:
+    return get_proxy_path_from_url(request.url) == hconfig(ConfigEnum.proxy_path_client)
+
+
 def proxy_path_validator(proxy_path):
     # DEPRECATED PROXY_PATH HANDLED BY BACKWARD COMPATIBILITY MIDDLEWARE
     # does not nginx handle proxy path validation?
@@ -175,16 +198,19 @@ def proxy_path_validator(proxy_path):
     admin_proxy_path = hconfig(ConfigEnum.proxy_path_admin)
     client_proxy_path = hconfig(ConfigEnum.proxy_path_client)
 
-    if is_api_call(request.path):
-        if is_admin_api_call() and proxy_path != admin_proxy_path:
-            return abort(400, Markup(f"Invalid Proxy Path <a href=/{admin_proxy_path}/admin>Admin Panel</a>")) if dbg_mode else abort(400, 'invalid request')
-        if is_user_api_call() and proxy_path != client_proxy_path:
-            return abort(400, Markup(f"Invalid Proxy Path <a href=/{client_proxy_path}/admin>User Panel</a>")) if dbg_mode else abort(400, 'invalid request')
-
-    if is_admin_panel_call() and proxy_path != admin_proxy_path:
+    if proxy_path != admin_proxy_path and proxy_path != client_proxy_path:
         return abort(400, Markup(f"Invalid Proxy Path <a href=/{admin_proxy_path}/admin>Admin Panel</a>")) if dbg_mode else abort(400, 'invalid request')
-    if is_user_panel_call() and proxy_path != client_proxy_path:
-        return abort(400, Markup(f"Invalid Proxy Path <a href=/{client_proxy_path}/admin>User Panel</a>")) if dbg_mode else abort(400, 'invalid request')
+
+    # if is_api_call(request.path):
+    #     if is_admin_api_call() and proxy_path != admin_proxy_path:
+    #         return abort(400, Markup(f"Invalid Proxy Path <a href=/{admin_proxy_path}/admin>Admin Panel</a>")) if dbg_mode else abort(400, 'invalid request')
+    #     if is_user_api_call() and proxy_path != client_proxy_path:
+    #         return abort(400, Markup(f"Invalid Proxy Path <a href=/{client_proxy_path}/admin>User Panel</a>")) if dbg_mode else abort(400, 'invalid request')
+
+    # if is_admin_panel_call() and proxy_path != admin_proxy_path:
+    #     return abort(400, Markup(f"Invalid Proxy Path <a href=/{admin_proxy_path}/admin>Admin Panel</a>")) if dbg_mode else abort(400, 'invalid request')
+    # if is_user_panel_call() and proxy_path != client_proxy_path:
+    #     return abort(400, Markup(f"Invalid Proxy Path <a href=/{client_proxy_path}/admin>User Panel</a>")) if dbg_mode else abort(400, 'invalid request')
 
 
 def asset_url(path) -> str:

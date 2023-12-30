@@ -2,11 +2,10 @@ from functools import wraps
 from flask_login import LoginManager, current_user, user_accessed, user_logged_in,  COOKIE_NAME, AUTH_HEADER_NAME
 from flask_login.utils import _get_user
 import hiddifypanel.hutils as hutils
-from flask import g, request, session
+from flask import g, redirect, request, session
 from apiflask import abort
 from flask import current_app
-from hiddifypanel.models import AdminUser, User, get_admin_by_uuid, Role
-from hiddifypanel.models.user import get_user_by_uuid
+from hiddifypanel.models import AdminUser, User, get_admin_by_uuid, Role, get_user_by_uuid, get_user_by_username_password, get_admin_by_username_password
 import hiddifypanel.panel.hiddify as hiddify
 
 
@@ -119,8 +118,10 @@ def init_app(app):
     @login_manager.user_loader
     def cookie_auth(id: str) -> User | AdminUser | None:
         if not hiddify.is_api_call(request.path):
+            # if request.headers.get("Authorization"):
+            #     return header_auth(request)
             # for handle new login
-            if request.headers.get("Authorization"):
+            if hiddify.is_login_call():
                 return header_auth(request)
 
         # parse id
@@ -154,10 +155,14 @@ def init_app(app):
                 is_api_call = True
         else:
             if username_password := hutils.utils.parse_basic_auth_header(auth_header):
-                if hiddify.is_admin_panel_call():
-                    account = AdminUser.query.filter(AdminUser.username == username_password[0], AdminUser.password == username_password[1]).first()
+                uname = username_password[0]
+                pword = username_password[1]
+                if hiddify.is_login_call():
+                    account = get_admin_by_username_password(uname, pword) if hiddify.is_admin_proxy_path() else get_user_by_username_password(uname, pword)
+                elif hiddify.is_admin_panel_call():
+                    account = get_admin_by_username_password(uname, pword)
                 elif hiddify.is_user_panel_call():
-                    account = User.query.filter(User.username == username_password[0], User.password == username_password[1]).first()
+                    account = get_user_by_username_password(uname, pword)
 
         if account:
             g.account = account
@@ -165,6 +170,7 @@ def init_app(app):
             g.is_admin = True if account.role in {Role.super_admin, Role.admin} else False  # False if account.role == 'user' else True
             if not is_api_call:
                 login_user(account)
+
         return account
 
     @login_manager.unauthorized_handler
