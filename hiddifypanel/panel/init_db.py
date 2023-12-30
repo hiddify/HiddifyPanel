@@ -153,13 +153,8 @@ def _v59():
 
     # set admin model username and password
     for a in AdminUser.query.all():
-        model_utils.fill_username(u)
-        model_utils.fill_password(u)
-
-
-def __fix_username_and_password(model_type: AdminUser | User):
-
-    pass
+        model_utils.fill_username(a)
+        model_utils.fill_password(a)
 
 
 def _v57():
