@@ -60,35 +60,32 @@ class Actions(FlaskView):
     def apply_configs(self):
         return self.reinstall(False)
 
-    @login_required(roles={Role.super_admin})
+    # @login_required(roles={Role.super_admin})
     @route('reset', methods=['POST'])
+    @login_required(roles={Role.super_admin})
     def reset(self):
         return self.reset2()
 
     @login_required(roles={Role.super_admin})
     def reset2(self):
         status = self.status()
-        # flash(_("rebooting system may takes time please wait"),'info')
-        # os.system(f"echo 'reboot'|at now + 3s ")
-
-        resp = render_template("result.html",
-                               out_type="info",
-                               out_msg="",
-                               log_path=get_logpath("restart.log"),
-                               show_success=True,
-                               domains=get_domains(),
-
-                               )
-        # file = "restart.sh"
-        # config = current_app.config
-        # subprocess.Popen(f"sudo {config['HIDDIFY_CONFIG_PATH']}/{file} --no-gui".split(" "), cwd=f"{config['HIDDIFY_CONFIG_PATH']}", start_new_session=True)
 
         # run restart.sh
         commander(Command.restart_services)
 
-        import time
-        time.sleep(1)
-        return resp
+        # flask don't response at all while using time.sleep
+        # import time
+        # time.sleep(1)
+
+        return render_template("result.html",
+                               out_type="info",
+                               out_msg="",
+                               log_file_url=get_log_api_url(),
+                               log_file='restart.log',
+                               show_success=True,
+                               domains=get_domains(),
+                               api_key=hiddify.current_account_api_key(),
+                               proxy_path=g.proxy_path)
 
     @login_required(roles={Role.super_admin})
     @route('reinstall', methods=['POST'])
@@ -118,11 +115,6 @@ class Actions(FlaskView):
         except:
             server_ip = "server_ip"
 
-        # subprocess.Popen(f"{config_dir}/update.sh",env=my_env,cwd=f"{config_dir}")
-        # os.system(f'cd {config_dir};{env} ./install.sh &')
-        # rc = subprocess.call(f"cd {config_dir};./{file} & disown",shell=True)
-
-        admin_secret = get_super_admin_secret()
         proxy_path = hconfig(ConfigEnum.proxy_path)
         admin_links = f"<h5 >{_('Admin Links')}</h5><ul>"
         admin_links += f"<li><span class='badge badge-danger'>{_('Not Secure')}</span>: <a class='badge ltr share-link' href='http://{server_ip}/{proxy_path}/admin/'>http://{server_ip}/{proxy_path}/admin/</a></li>"
@@ -131,23 +123,24 @@ class Actions(FlaskView):
         for d in domains:
             link = f'https://{d}/{proxy_path}/admin/'
             admin_links += f"<li><a target='_blank' class='badge ltr' href='{link}'>{link}</a></li>"
-
         resp = render_template("result.html",
                                out_type="info",
                                out_msg=_("Success! Please wait around 4 minutes to make sure everything is updated. During this time, please save your proxy links which are:") +
                                admin_links,
-                               log_path=get_logpath("0-install.log"),
+                               log_file_url=get_log_api_url(),
+                               log_file="0-install.log",
                                show_success=True,
                                domains=get_domains(),
-                               )
+                               api_key=hiddify.current_account_api_key(),
+                               proxy_path=g.proxy_path)
 
         # subprocess.Popen(f"sudo {config['HIDDIFY_CONFIG_PATH']}/{file} --no-gui".split(" "), cwd=f"{config['HIDDIFY_CONFIG_PATH']}", start_new_session=True)
 
         # run install.sh or apply_configs.sh
         commander(Command.install if complete_install else Command.apply)
 
-        import time
-        time.sleep(1)
+        # import time
+        # time.sleep(1)
         return resp
 
     @login_required(roles={Role.super_admin})
@@ -160,25 +153,16 @@ class Actions(FlaskView):
 
     @login_required(roles={Role.super_admin})
     def status(self):
-        # hiddify.add_temporary_access()
-        # configs=read_configs()
-        # subprocess.Popen(f"{config_dir}/update.sh",env=my_env,cwd=f"{config_dir}")
-        # os.system(f'cd {config_dir};{env} ./install.sh &')
-        # rc = subprocess.call(f"cd {config_dir};./{file} & disown",shell=True)
-
-        # subprocess.Popen(f"sudo {config['HIDDIFY_CONFIG_PATH']}/status.sh --no-gui".split(" "), cwd=f"{config['HIDDIFY_CONFIG_PATH']}", start_new_session=True)
-
         # run status.sh
         commander(Command.status)
-        # TODO: send real apikey
-        api_key = g.account_uuid
         return render_template("result.html",
                                out_type="info",
                                out_msg=_("see the log in the bellow screen"),
-                               log_path=get_logpath(f"status.log"),
+                               log_file_url=get_log_api_url(),
+                               log_file="status.log",
                                show_success=False,
                                domains=get_domains(),
-                               api_key=api_key,
+                               api_key=hiddify.current_account_api_key(),
                                proxy_path=g.proxy_path,
                                )
 
@@ -204,9 +188,11 @@ class Actions(FlaskView):
                                out_type="success",
                                out_msg=_("Success! Please wait around 5 minutes to make sure everything is updated."),
                                show_success=True,
-                               log_path=get_logpath(f"update.log"),
+                               log_file_url=get_log_api_url(),
+                               log_file="update.log",
                                domains=get_domains(),
-                               )
+                               api_key=hiddify.current_account_api_key(),
+                               proxy_path=g.proxy_path)
 
     def get_some_random_reality_friendly_domain(self):
         test_domain = request.args.get("test_domain")
@@ -251,12 +237,13 @@ class Actions(FlaskView):
         return render_template("result.html",
                                out_type="info",
                                out_msg=f'<pre class="ltr">{json.dumps(usage.update_local_usage(),indent=2)}</pre>',
-                               log_path=None
+                               log_file_url=None
                                )
 
 
-def get_logpath(logfile):
-    return f'{hiddify.get_admin_path()}actions/reverselog/{logfile}/'
+def get_log_api_url():
+    # return f'{hiddify.get_admin_path()}actions/reverselog/{logfile}/'
+    return f'/{g.proxy_path}/api/v2/admin/log/'
 
 
 def get_domains():
