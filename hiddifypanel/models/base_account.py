@@ -35,19 +35,6 @@ class BaseAccount(db.Model, SerializerMixin, FlaskLoginUserMixin):
             return False
         return True
 
-    def is_password_unique(self) -> bool:
-        from hiddifypanel.models.user import User
-        from hiddifypanel.models.admin import AdminUser
-        model = None
-        if isinstance(self, AdminUser):
-            model = AdminUser.query.filter(AdminUser.password == self.password).first()
-        else:
-            model = User.query.filter(User.password == self.password).first()
-
-        if model and model.id != self.id:
-            return False
-        return True
-
     def get_id(self) -> str | None:
         """
         Get the ID of the account. (*only for flask_login)

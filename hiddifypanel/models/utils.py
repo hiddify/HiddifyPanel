@@ -30,9 +30,4 @@ def fill_username(model) -> None:
 def fill_password(model) -> None:
     # TODO: hash the password
     if not model.password or len(model.password) < 16:
-        base_passwd = hutils.utils.get_random_password()
-        rand_str = ''
-        # if passwd is duplicated, we create another one
-        model.password = base_passwd + rand_str
-        while not model.is_password_unique():
-            rand_str = hutils.utils.get_random_password()
+        model.password = hutils.utils.get_random_password(length=16)
