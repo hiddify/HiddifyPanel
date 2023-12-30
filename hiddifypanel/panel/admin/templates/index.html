@@ -276,7 +276,7 @@
 
     setInterval(function () {
         $.ajax({
-            url: "{{url_for('admin.Dashboard:get_data',admin_id=request.args.get('admin_id'))}}",
+            url: "{{url_for('api_admin.AdminServerStatusApi',admin_id=request.args.get('admin_id'))}}",
             method: "GET",
             success: function (data) {
                 console.log("Success!");

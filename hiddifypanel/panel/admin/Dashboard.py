@@ -15,16 +15,17 @@ from hiddifypanel.panel.hiddify import flash
 
 
 class Dashboard(FlaskView):
-    @login_required(roles={Role.admin})
-    def get_data(self):
-        admin_id = request.args.get("admin_id") or g.account.id
-        if admin_id not in g.account.recursive_sub_admins_ids():
-            abort(403, _("Access Denied!"))
+    # TODO: delete this method
+    # @login_required(roles={Role.admin})
+    # def get_data(self):
+    #     admin_id = request.args.get("admin_id") or g.account.id
+    #     if admin_id not in g.account.recursive_sub_admins_ids():
+    #         abort(403, _("Access Denied!"))
 
-        return jsonify(dict(
-            stats={'system': hiddify.system_stats(), 'top5': hiddify.top_processes()},
-            usage_history=get_daily_usage_stats(admin_id)
-        ))
+    #     return jsonify(dict(
+    #         stats={'system': hiddify.system_stats(), 'top5': hiddify.top_processes()},
+    #         usage_history=get_daily_usage_stats(admin_id)
+    #     ))
 
     @login_required(roles={Role.admin})
     def index(self):
