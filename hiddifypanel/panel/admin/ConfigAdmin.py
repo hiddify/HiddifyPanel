@@ -1,6 +1,8 @@
 import re
 import uuid
+from hiddifypanel.models.role import Role
 from hiddifypanel.panel import hiddify
+from hiddifypanel.panel.auth import login_required
 
 from wtforms.validators import ValidationError
 
@@ -45,7 +47,7 @@ class ConfigAdmin(AdminLTEModelView):
             if not self._is_valid_uuid(model.value):
                 raise ValidationError('Invalid UUID e.g.,' + str(uuid.uuid4()))
 
-        if model.key in [ConfigEnum.telegratelem_secret]:
+        if model.key in [ConfigEnum.telegram_secret]:
             if not re.match("^[0-9a-fA-F]{32}$", model.value):
                 raise ValidationError('Invalid UUID e.g.,' + uuid.uuid4().hex)
 
