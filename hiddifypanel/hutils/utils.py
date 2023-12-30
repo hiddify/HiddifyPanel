@@ -200,3 +200,12 @@ def parse_login_id(raw_id) -> Tuple[Any | None, str | None]:
     if not id or not account_type:
         return None, None
     return account_type, id
+
+
+def add_basic_auth_to_url(url: str, username: str, password: str) -> str:
+    if 'https://' in url:
+        return url.replace('https://', f'https://{username}:{password}@')
+    elif 'http:// ' in url:
+        return url.replace('http://', f'http://{username}:{password}@')
+    else:
+        return url

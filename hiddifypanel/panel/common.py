@@ -107,8 +107,14 @@ def init_app(app: APIFlask):
         # if 'user_secret' not in values and hasattr(g, 'user_uuid'):
         #     values['user_secret'] = f'{g.account_uuid}'
         if 'proxy_path' not in values:
-            # values['proxy_path']=f'{g.proxy_path}'
-            values['proxy_path'] = hconfig(ConfigEnum.proxy_path)
+            if 'static' in endpoint:
+                values['proxy_path'] = hconfig(ConfigEnum.proxy_path)
+                return
+
+            if hiddify.is_user_panel_call():
+                values['proxy_path'] = hconfig(ConfigEnum.proxy_path_client)
+            else:
+                values['proxy_path'] = hconfig(ConfigEnum.proxy_path_admin)
 
     @app.route("/<proxy_path>/videos/<file>")
     @app.doc(hide=True)
@@ -138,11 +144,10 @@ def init_app(app: APIFlask):
         admin_proxy_path = hconfig(ConfigEnum.proxy_path_admin)
         client_proxy_path = hconfig(ConfigEnum.proxy_path_client)
 
-        is_api_call = False
         incorrect_request = False
         new_link = ''
-        # handle deprecated proxy path
 
+        # handle deprecated proxy path
         if proxy_path == deprecated_proxy_path:
             incorrect_request = True
             # request.url = request.url.replace('http://', 'https://')
@@ -157,7 +162,6 @@ def init_app(app: APIFlask):
                     new_link = request.url.replace(deprecated_proxy_path, client_proxy_path)
                 else:
                     return abort(400, 'invalid request')
-                is_api_call = True
             else:
                 return abort(400, 'invalid request')
 
@@ -165,22 +169,24 @@ def init_app(app: APIFlask):
         if uuid := hutils.utils.get_uuid_from_url_path(request.path):
             incorrect_request = True
             account = get_user_by_uuid(uuid) or get_admin_by_uuid(uuid) or abort(400, 'invalid request')
-            if not new_link:
-                new_link = f'https://{account.username}:{account.password}@{request.host}/{proxy_path}/'
-                if "/admin/" in request.path:
-                    new_link += "admin/"
+            if new_link:
+                if hiddify.is_api_call(request.path):
+                    new_link = new_link.replace(f'/{uuid}', '')
+                new_link = hutils.utils.add_basic_auth_to_url(new_link, account.username, account.password)
             else:
-                if 'https://' in new_link:
-                    new_link = new_link.replace('https://', f'https://{account.username}:{account.password}@')
-                elif 'http://' in new_link:
-                    new_link = new_link.replace('http://', f'http://{account.username}:{account.password}@')
+                if hiddify.is_api_call(request.path):
+                    new_link = request.url.replace(f'/{uuid}', '')
+                    new_link = hutils.utils.add_basic_auth_to_url(new_link, account.username, account.password)
                 else:
-                    abort(400, 'DEBUG: WTF, how did this happen? there is no "https://" or "http://" in new_link')
+                    new_link = f'https://{account.username}:{account.password}@{request.host}/{proxy_path}/'
+                    if "/admin/" in request.path:
+                        new_link += "admin/"
+
         if incorrect_request:
             new_link = new_link.replace('http://', 'https://')
             # if request made by a browser, show new format page else redirect to new format
             # redirect api calls always
-            if not is_api_call and user_agent.browser:
+            if not hiddify.is_api_call(request.path) and user_agent.browser:
                 return render_template('redirect_to_new_format.html', new_link=new_link)
             return redirect(new_link, 301)
 
