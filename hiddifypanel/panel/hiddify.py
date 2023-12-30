@@ -234,16 +234,16 @@ def proxy_path_validator(proxy_path):
     if proxy_path != admin_proxy_path and proxy_path != client_proxy_path:
         return abort(400, Markup(f"Invalid Proxy Path <a href=/{admin_proxy_path}/admin>Admin Panel</a>")) if dbg_mode else abort(400, 'invalid request')
 
-    # if is_api_call(request.path):
-    #     if is_admin_api_call() and proxy_path != admin_proxy_path:
-    #         return abort(400, Markup(f"Invalid Proxy Path <a href=/{admin_proxy_path}/admin>Admin Panel</a>")) if dbg_mode else abort(400, 'invalid request')
-    #     if is_user_api_call() and proxy_path != client_proxy_path:
-    #         return abort(400, Markup(f"Invalid Proxy Path <a href=/{client_proxy_path}/admin>User Panel</a>")) if dbg_mode else abort(400, 'invalid request')
+    if is_admin_panel_call() and proxy_path != admin_proxy_path:
+        return abort(400, Markup(f"Invalid Proxy Path <a href=/{admin_proxy_path}/admin>Admin Panel</a>")) if dbg_mode else abort(400, 'invalid request')
+    if is_user_panel_call() and proxy_path != client_proxy_path:
+        return abort(400, Markup(f"Invalid Proxy Path <a href=/{client_proxy_path}/admin>User Panel</a>")) if dbg_mode else abort(400, 'invalid request')
 
-    # if is_admin_panel_call() and proxy_path != admin_proxy_path:
-    #     return abort(400, Markup(f"Invalid Proxy Path <a href=/{admin_proxy_path}/admin>Admin Panel</a>")) if dbg_mode else abort(400, 'invalid request')
-    # if is_user_panel_call() and proxy_path != client_proxy_path:
-    #     return abort(400, Markup(f"Invalid Proxy Path <a href=/{client_proxy_path}/admin>User Panel</a>")) if dbg_mode else abort(400, 'invalid request')
+    if is_api_call(request.path):
+        if is_admin_api_call() and proxy_path != admin_proxy_path:
+            return abort(400, Markup(f"Invalid Proxy Path <a href=/{admin_proxy_path}/admin>Admin Panel</a>")) if dbg_mode else abort(400, 'invalid request')
+        if is_user_api_call() and proxy_path != client_proxy_path:
+            return abort(400, Markup(f"Invalid Proxy Path <a href=/{client_proxy_path}/admin>User Panel</a>")) if dbg_mode else abort(400, 'invalid request')
 
 
 def asset_url(path) -> str:
