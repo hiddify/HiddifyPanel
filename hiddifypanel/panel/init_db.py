@@ -147,10 +147,8 @@ def init_db():
 #     add_config_if_not_exist(ConfigEnum.hysteria_port, random.randint(5000, 20000))
 
 def _v60():
-    add_config_if_not_exist(ConfigEnum.proxy_path_super_admin, get_random_string())
     add_config_if_not_exist(ConfigEnum.proxy_path_admin, get_random_string())
-    add_config_if_not_exist(ConfigEnum.proxy_path_agent, get_random_string())
-    add_config_if_not_exist(ConfigEnum.proxy_path_user, get_random_string())
+    add_config_if_not_exist(ConfigEnum.proxy_path_client, get_random_string())
 
 
 def _v59():
