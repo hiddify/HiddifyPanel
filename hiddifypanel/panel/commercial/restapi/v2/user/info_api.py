@@ -42,7 +42,7 @@ class InfoAPI(MethodView):
 
     @app.output(ProfileSchema)
     def get(self):
-        c = get_common_data(g.account_uuid, 'new')
+        c = get_common_data(g.account.uuid, 'new')
 
         dto = ProfileSchema()
         # user is exist for sure
@@ -52,7 +52,7 @@ class InfoAPI(MethodView):
         dto.profile_usage_total = g.account.usage_limit_GB
         dto.profile_remaining_days = g.account.remaining_days
         dto.profile_reset_days = days_to_reset(g.account)
-        dto.telegram_bot_url = f"https://t.me/{c['bot'].username}?start={g.account_uuid}" if c['bot'] else ""
+        dto.telegram_bot_url = f"https://t.me/{c['bot'].username}?start={g.account.uuid}" if c['bot'] else ""
         dto.telegram_id = c['user'].telegram_id
         dto.admin_message_html = hconfig(ConfigEnum.branding_freetext)
         dto.admin_message_url = hconfig(ConfigEnum.branding_site)
@@ -70,13 +70,13 @@ class InfoAPI(MethodView):
             except:
                 return {'message': 'The telegram id field is invalid'}
 
-            user = get_user_by_uuid(g.account_uuid)
+            user = get_user_by_uuid(g.account.uuid)
             if user.telegram_id != tg_id:
                 user.telegram_id = tg_id
                 db.session.commit()
 
         if data['language']:
-            user = get_user_by_uuid(g.account_uuid)
+            user = get_user_by_uuid(g.account.uuid)
             if user.lang != data['language']:
                 user.lang = data['language']
                 db.session.commit()

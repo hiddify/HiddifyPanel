@@ -35,7 +35,7 @@ def init_app(app):
 
         if account:
             g.account = account
-            g.account_uuid = account.uuid
+            # g.account_uuid = account.uuid
             g.is_admin = False if account.role == Role.user else True
         return account
 
@@ -61,7 +61,7 @@ def init_app(app):
 
         if account:
             g.account = account
-            g.account_uuid = account.uuid
+            # g.account_uuid = account.uuid
             g.is_admin = False if account.role == 'user' else True
             if not is_api_call:
                 login_user(account)

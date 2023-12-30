@@ -16,9 +16,7 @@ class AdminInfoApi(MethodView):
 
     @app.output(AdminSchema)
     def get(self):
-        # in this case g.account_uuid is equal to admin uuid
-        admin_uuid = g.account_uuid
-        admin = get_admin_user_db(admin_uuid) or abort(404, "user not found")
+        admin = get_admin_user_db(g.account.uuid) or abort(404, "user not found")
 
         dto = AdminSchema()
         dto.name = admin.name

@@ -110,7 +110,7 @@ def make_proxy(proxy: Proxy, domain_db: Domain, phttp=80, ptls=443, pport=None):
         'port': port,
         'server': cdn_forced_host,
         'sni': domain_db.servernames if is_cdn and domain_db.servernames else domain,
-        'uuid': str(g.account_uuid),
+        'uuid': str(g.account.uuid),
         'proto': proxy.proto,
         'transport': proxy.transport,
         'proxy_path': hconfigs[ConfigEnum.proxy_path],

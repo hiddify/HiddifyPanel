@@ -209,7 +209,7 @@ proxies:
     server: 127.0.0.1
     port: 3005
     cipher: chacha20-ietf-poly1305
-    password: {{g.account_uuid}}
+    password: {{g.account.uuid}}
     udp_over_tcp: true  
 % for d in  domains    
 % if hconfig(ConfigEnum.tuic_enable) and d.mode !="cdn" and meta_or_normal=='meta'

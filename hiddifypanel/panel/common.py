@@ -95,8 +95,9 @@ def init_app(app: APIFlask):
     @app.url_defaults
     def add_proxy_path_user(endpoint, values):
 
-        if 'user_secret' not in values and hasattr(g, 'user_uuid'):
-            values['user_secret'] = f'{g.account_uuid}'
+        # TODO: delete this
+        # if 'user_secret' not in values and hasattr(g, 'user_uuid'):
+        #     values['user_secret'] = f'{g.account_uuid}'
         if 'proxy_path' not in values:
             # values['proxy_path']=f'{g.proxy_path}'
             values['proxy_path'] = hconfig(ConfigEnum.proxy_path)
@@ -247,8 +248,8 @@ def init_app(app: APIFlask):
     def generate_github_issue_link_for_500_error(error, traceback, remove_sensetive_data=True, remove_unrelated_traceback_datails=True):
 
         def remove_sensetive_data_from_github_issue_link(issue_link):
-            if hasattr(g, 'user_uuid') and g.account_uuid:
-                issue_link.replace(f'{g.account_uuid}', '*******************')
+            if hasattr(g, 'acount') and hasattr(g.account, 'uuid') and g.account.uuid:
+                issue_link.replace(f'{g.account.uuid}', '*******************')
             if hconfig(ConfigEnum.proxy_path) and hconfig(ConfigEnum.proxy_path):
                 issue_link.replace(hconfig(ConfigEnum.proxy_path), '**********')
 

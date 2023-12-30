@@ -31,7 +31,7 @@ class UserView(FlaskView):
     @route('/info')
     # TODO: delete this function and use /me/ api instead
     def info(self):
-        c = get_common_data(g.account_uuid, 'new')
+        c = get_common_data(g.account.uuid, 'new')
         data = {
             'profile_title': c['profile_title'],
             'profile_url': f"https://{g.account.username}:{g.account.password}{urlparse(request.base_url).hostname}/{g.proxy_path}/#{g.account.name}",
@@ -39,7 +39,7 @@ class UserView(FlaskView):
             'profile_usage_total': g.account.usage_limit_GB,
             'profile_remaining_days': g.account.remaining_days,
             'profile_reset_days': days_to_reset(g.account),
-            'telegram_bot_url': f"https://t.me/{c['bot'].username}?start={g.account_uuid}" if c['bot'] else "",
+            'telegram_bot_url': f"https://t.me/{c['bot'].username}?start={g.account.uuid}" if c['bot'] else "",
             'admin_message_html': hconfig(ConfigEnum.branding_freetext),
             'admin_message_url': hconfig(ConfigEnum.branding_site),
             'brand_title': hconfig(ConfigEnum.branding_title),
@@ -54,7 +54,7 @@ class UserView(FlaskView):
     @route('/mtproxies')
     def mtproxies(self):
         # get domains
-        c = get_common_data(g.account_uuid, 'new')
+        c = get_common_data(g.account.uuid, 'new')
         mtproxies = []
         # TODO: Remove duplicated domains mapped to a same ipv4 and v6
         for d in c['domains']:
@@ -84,7 +84,7 @@ class UserView(FlaskView):
 
         items = []
         base_url = f"https://{g.account.username}:{g.account.password}{urlparse(request.base_url).hostname}/{g.proxy_path}/"
-        c = get_common_data(g.account_uuid, 'new')
+        c = get_common_data(g.account.uuid, 'new')
 
         # Add Auto
         items.append(
@@ -232,7 +232,7 @@ class UserView(FlaskView):
     @ route('/auto')
     @login_required(roles={Role.user})
     def auto_select(self):
-        c = get_common_data(g.account_uuid, mode="new")
+        c = get_common_data(g.account.uuid, mode="new")
         user_agent = user_agents.parse(request.user_agent.string)
         # return render_template('home/handle_smart.html', **c)
         return render_template('home/auto_page.html', **c, ua=user_agent)
@@ -246,7 +246,7 @@ class UserView(FlaskView):
         if conf:
             return conf
 
-        c = get_common_data(g.account_uuid, mode="new")
+        c = get_common_data(g.account.uuid, mode="new")
         user_agent = user_agents.parse(request.user_agent.string)
         # return render_template('home/multi.html', **c, ua=user_agent)
         return render_template('new.html', **c, ua=user_agent)
@@ -258,7 +258,7 @@ class UserView(FlaskView):
         mode = request.args.get("mode")
         domain = request.args.get("domain", None)
 
-        c = get_common_data(g.account_uuid, mode, filter_domain=domain)
+        c = get_common_data(g.account.uuid, mode, filter_domain=domain)
         resp = Response(render_template('clash_proxies.yml',
                         meta_or_normal=meta_or_normal, **c))
         resp.mimetype = "text/plain"
@@ -306,7 +306,7 @@ class UserView(FlaskView):
     def clash_config(self, meta_or_normal="normal", typ="all.yml"):
         mode = request.args.get("mode")
 
-        c = get_common_data(g.account_uuid, mode)
+        c = get_common_data(g.account.uuid, mode)
 
         hash_rnd = random.randint(0, 1000000)  # hash(f'{c}')
         if request.method == 'HEAD':
@@ -321,7 +321,7 @@ class UserView(FlaskView):
     @login_required(roles={Role.user})
     def full_singbox(self):
         mode = "new"  # request.args.get("mode")
-        c = get_common_data(g.account_uuid, mode)
+        c = get_common_data(g.account.uuid, mode)
         # response.content_type = 'text/plain';
         if request.method == 'HEAD':
             resp = ""
@@ -337,7 +337,7 @@ class UserView(FlaskView):
         if not hconfig(ConfigEnum.ssh_server_enable):
             return "SSH server is disable in settings"
         mode = "new"  # request.args.get("mode")
-        c = get_common_data(g.account_uuid, mode)
+        c = get_common_data(g.account.uuid, mode)
         # response.content_type = 'text/plain';
         if request.method == 'HEAD':
             resp = ""
@@ -351,7 +351,7 @@ class UserView(FlaskView):
     def all_configs(self, base64=False):
         mode = "new"  # request.args.get("mode")
         base64 = base64 or request.args.get("base64", "").lower() == "true"
-        c = get_common_data(g.account_uuid, mode)
+        c = get_common_data(g.account.uuid, mode)
         # response.content_type = 'text/plain';
         if request.method == 'HEAD':
             resp = ""

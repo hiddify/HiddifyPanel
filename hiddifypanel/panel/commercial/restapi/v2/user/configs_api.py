@@ -40,7 +40,7 @@ class AllConfigsAPI(MethodView):
 
         items = []
         base_url = f"https://{urlparse(request.base_url).hostname}/{g.proxy_path}/"
-        c = get_common_data(g.account_uuid, 'new')
+        c = get_common_data(g.account.uuid, 'new')
 
         # Add Auto
         items.append(
