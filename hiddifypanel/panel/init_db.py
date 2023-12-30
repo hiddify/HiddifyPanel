@@ -13,6 +13,7 @@ from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify
 from hiddifypanel.panel.database import db
 from hiddifypanel.panel.hiddify import get_random_domains, get_random_string
+import hiddifypanel.models.utils as model_utils
 
 MAX_DB_VERSION = 60
 
@@ -147,13 +148,13 @@ def init_db():
 def _v59():
     # set user model username and password
     for u in User.query.all():
-        user.fill_username(u)
-        user.fill_password(u)
+        model_utils.fill_username(u)
+        model_utils.fill_password(u)
 
     # set admin model username and password
     for a in AdminUser.query.all():
-        admin.fill_username(a)
-        admin.fill_password(a)
+        model_utils.fill_username(u)
+        model_utils.fill_password(u)
 
 
 def __fix_username_and_password(model_type: AdminUser | User):
