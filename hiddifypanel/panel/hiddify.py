@@ -1,4 +1,5 @@
 import glob
+import json
 import subprocess
 import psutil
 from typing import Tuple
@@ -113,6 +114,10 @@ def current_account_api_key():
 
 def current_account_user_pass():
     return g.account.username, g.account.password
+
+
+def is_api_call(req_path: str):
+    return 'api/v1/' in req_path or 'api/v2/' in req_path
 
 
 def abs_url(path):

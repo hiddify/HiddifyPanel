@@ -1,6 +1,5 @@
 import base64
-from typing import Tuple
-from strenum import StrEnum
+from typing import Any, Tuple
 from urllib.parse import urlparse
 from uuid import UUID
 from flask_babelex import lazy_gettext as _
@@ -181,13 +180,23 @@ def parse_basic_auth_header(auth_header: str) -> tuple[str, str] | None:
     return (username, password) if username and password else None
 
 
-def parse_auth_id(raw_id) -> Tuple[type | None, str | None]:
+def parse_auth_id(raw_id) -> Tuple[Any | None, str | None]:
+    """
+    Parses the given raw ID to extract the account type and ID.
+    Args:
+        raw_id (str): The raw ID to be parsed.
+    Returns:
+        Tuple[Any | None, str | None]: A tuple containing the account type and ID.
+            The account type is of type Role (either Role.user or Role.admin)
+            and the ID is a string. If the raw ID cannot be parsed, None is returned
+            for both the account type and ID.
+    """
     splitted = raw_id.split('_')
     if len(splitted) < 2:
         return None, None
     admin_or_user, id = splitted
-    from hiddifypanel.models import AdminUser, User
-    account_type = type(User) if admin_or_user == 'user' else type(AdminUser)
+    from hiddifypanel.models.role import Role
+    account_type = Role.user if admin_or_user == 'user' else Role.admin
     if not id or not account_type:
         return None, None
     return account_type, id

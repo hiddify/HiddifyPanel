@@ -6,6 +6,7 @@ from apiflask import abort
 from flask import current_app
 from hiddifypanel.models import AdminUser, User, get_admin_by_uuid, Role
 from hiddifypanel.models.user import get_user_by_uuid
+import hiddifypanel.panel.hiddify as hiddify
 
 
 def init_app(app):
@@ -15,15 +16,15 @@ def init_app(app):
     @login_manager.user_loader
     def user_loader_auth(id: str) -> User | AdminUser | None:
         # first of all check if user sent Authorization header, our priority is with Authorization header
-        if request.headers.get("Authorization"):
+        if not hiddify.is_api_call(request.path) and request.headers.get("Authorization"):
             return request_loader_auth(request)
 
         # parse id
-        account_type, id = hutils.utils.parse_auth_id(id)  # type: ignore
-        if not account_type or not id:
+        role, id = hutils.utils.parse_auth_id(id)  # type: ignore
+        if not role or not id:
             return
 
-        if account_type == type(AdminUser):
+        if role == Role.admin:
             account = AdminUser.query.filter(AdminUser.id == id).first()
         else:
             account = User.query.filter(User.id == id).first()
@@ -41,13 +42,12 @@ def init_app(app):
             return
 
         account = None
-        is_api_request = False
-        if not request.blueprint:
-            return
-        if 'api' in request.blueprint:
+        is_api_call = False
+
+        if hiddify.is_api_call(request.path):
             if apikey := hutils.utils.get_apikey_from_auth_header(auth_header):
                 account = get_user_by_uuid(apikey) or get_admin_by_uuid(apikey)
-                is_api_request = True
+                is_api_call = True
         else:
             if username_password := hutils.utils.parse_basic_auth_header(auth_header):
                 if request.blueprint == 'user2':
@@ -59,7 +59,7 @@ def init_app(app):
             g.account = account
             g.account_uuid = account.uuid
             g.is_admin = False if account.role == 'user' else True
-            if not is_api_request:
+            if not is_api_call:
                 login_user(account)
         return account
 
