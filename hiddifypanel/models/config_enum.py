@@ -2,13 +2,15 @@ from enum import auto
 
 from strenum import StrEnum
 
+
 class Lang(StrEnum):
     en = auto()
     fa = auto()
     ru = auto()
     pt = auto()
     zh = auto()
-    
+
+
 class ConfigCategory(StrEnum):
     admin = auto()
     branding = auto()
@@ -73,7 +75,12 @@ class ConfigEnum(StrEnum):
     kcp_ports = auto()
     kcp_enable = auto()
     decoy_domain = auto()
+    # will be deprecated
     proxy_path = auto()
+    proxy_path_super_admin = auto()
+    proxy_path_admin = auto()
+    proxy_path_agent = auto()
+    proxy_path_user = auto()
     firewall = auto()
     netdata = auto()
     http_proxy_enable = auto()
@@ -164,6 +171,11 @@ class ConfigEnum(StrEnum):
             self.cloudflare: {'category': ConfigCategory.too_advanced, 'commercial': True},
             self.license: {'category': ConfigCategory.hidden, 'commercial': True},
             self.proxy_path: {'category': ConfigCategory.too_advanced, 'apply_mode': 'apply', 'show_in_parent': True},
+            self.proxy_path_super_admin: {'category': ConfigCategory.too_advanced, 'apply_mode': 'apply', 'show_in_parent': True},
+            self.proxy_path_admin: {'category': ConfigCategory.too_advanced, 'apply_mode': 'apply', 'show_in_parent': True},
+            self.proxy_path_agent: {'category': ConfigCategory.too_advanced, 'apply_mode': 'apply', 'show_in_parent': True},
+            self.proxy_path_user: {'category': ConfigCategory.too_advanced, 'apply_mode': 'apply', 'show_in_parent': True},
+
             self.path_vmess: {'category': ConfigCategory.too_advanced},
             self.path_vless: {'category': ConfigCategory.too_advanced},
             self.path_trojan: {'category': ConfigCategory.too_advanced},

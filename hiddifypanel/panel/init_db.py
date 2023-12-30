@@ -15,7 +15,7 @@ from hiddifypanel.panel.database import db
 from hiddifypanel.panel.hiddify import get_random_domains, get_random_string
 import hiddifypanel.models.utils as model_utils
 
-MAX_DB_VERSION = 60
+MAX_DB_VERSION = 70
 
 
 def init_db():
@@ -145,6 +145,14 @@ def init_db():
 
 #     add_config_if_not_exist(ConfigEnum.hysteria_enable, True)
 #     add_config_if_not_exist(ConfigEnum.hysteria_port, random.randint(5000, 20000))
+
+def _v60():
+    add_config_if_not_exist(ConfigEnum.proxy_path_super_admin, get_random_string())
+    add_config_if_not_exist(ConfigEnum.proxy_path_admin, get_random_string())
+    add_config_if_not_exist(ConfigEnum.proxy_path_agent, get_random_string())
+    add_config_if_not_exist(ConfigEnum.proxy_path_user, get_random_string())
+
+
 def _v59():
     # set user model username and password
     for u in User.query.all():
