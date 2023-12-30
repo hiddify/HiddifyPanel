@@ -165,7 +165,7 @@ def init_app(app: APIFlask):
 
         # handle uuid url format
         if uuid := hutils.utils.get_uuid_from_url_path(request.path):
-            if not hiddify.is_api_v1_call():
+            if not hiddify.is_telegram_call():
                 incorrect_request = True
                 account = get_user_by_uuid(uuid) or get_admin_by_uuid(uuid) or abort(400, 'invalid request')
                 if new_link:

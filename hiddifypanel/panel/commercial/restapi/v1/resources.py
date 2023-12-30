@@ -19,7 +19,7 @@ class UserResource(Resource):
             return jsonify(user.to_dict())
 
         users = User.query.all() or abort(502, "WTF!")
-        return jsonify([user.to_dict() for user in users])
+        return jsonify([user.to_dict() for user in users])  # type: ignore
 
     def post(self):
         data = request.json

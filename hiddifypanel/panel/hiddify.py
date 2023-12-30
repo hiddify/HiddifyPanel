@@ -187,6 +187,16 @@ def is_api_v1_call(endpoint=None) -> bool:
     return False
 
 
+def is_telegram_call() -> bool:
+    if request.endpoint and (request.endpoint == 'tgbot' or request.endpoint == 'send_msg'):
+        return True
+    if request.blueprint and request.blueprint == 'api_v1' and ('tgbot' in request.path or 'send_msg' in request.path):
+        return True
+    if '/tgbot/' in request.path or 'send_msg/' in request.path:
+        return True
+    return False
+
+
 def is_admin_home_call() -> bool:
     admin_home = f'{request.host}/{hconfig(ConfigEnum.proxy_path_admin)}/admin/'
     if f'{request.host}{request.path}' == admin_home:
