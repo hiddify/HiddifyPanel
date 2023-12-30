@@ -141,7 +141,6 @@ def init_app(app):
 
     @login_manager.request_loader
     def header_auth(request) -> User | AdminUser | None:
-        sssssssssssss = session
         auth_header: str = request.headers.get("Authorization")
         if not auth_header:
             return
