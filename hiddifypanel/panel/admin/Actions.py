@@ -118,11 +118,11 @@ class Actions(FlaskView):
 
         proxy_path = hconfig(ConfigEnum.proxy_path)
         admin_links = f"<h5 >{_('Admin Links')}</h5><ul>"
-        admin_links += f"<li><span class='badge badge-danger'>{_('Not Secure')}</span>: <a class='badge ltr share-link' href='http://{server_ip}/{proxy_path}/admin/'>http://{server_ip}/{proxy_path}/admin/</a></li>"
+        username, password = hiddify.current_account_user_pass()
+        admin_links += f"<li><span class='badge badge-danger'>{_('Not Secure')}</span>: <a class='badge ltr share-link' href='http://{username}:{password}@{server_ip}/{proxy_path}/admin/'>http://{username}:{password}@{server_ip}/{proxy_path}/admin/</a></li>"
         domains = get_panel_domains()
         # domains=[*domains,f'{server_ip}.sslip.io']
 
-        username, password = hiddify.current_account_user_pass()
         for d in domains:
             link = f'https://{username}:{password}@{d}/{proxy_path}/admin/'
             admin_links += f"<li><a target='_blank' class='badge ltr' href='{link}'>{link}</a></li>"
