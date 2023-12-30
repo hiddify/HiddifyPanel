@@ -18,7 +18,8 @@ class AdminLogApi(MethodView):
 
     @app.input(AdminLogfileSchema, arg_name="data", location='form')
     @app.output(fields.String(description="The html of the log"))
-    @cross_origin()
+    # enable CORS for javascript calls
+    @cross_origin(supports_credentials=True)
     def post(self, data):
         file = data.get('file') or abort(400, "Parameter issue: 'file'")
         file_path = f"{app.config['HIDDIFY_CONFIG_PATH']}/log/system/{file}"

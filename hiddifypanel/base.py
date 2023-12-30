@@ -20,8 +20,6 @@ def create_app(cli=False, **config):
 
     app = APIFlask(__name__, static_url_path="/<proxy_path>/static/", instance_relative_config=True, version='2.0.0', title="Hiddify API",
                    openapi_blueprint_url_prefix="/<proxy_path>/api", docs_ui='elements', json_errors=False, enable_openapi=True)
-    # setup CORS for javascript calls
-    cors = CORS(app)
     # app = Flask(__name__, static_url_path="/<proxy_path>/static/", instance_relative_config=True)
     app.wsgi_app = ProxyFix(
         app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1
