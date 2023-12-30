@@ -8,3 +8,8 @@ class Role(StrEnum):
     admin = "admin"
     agent = "agent"
     user = "user"
+
+
+class AccountType(StrEnum):
+    admin = "admin"
+    user = "user"

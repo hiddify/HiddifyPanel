@@ -1,7 +1,6 @@
 import datetime
 from enum import auto
 
-from flask_login import UserMixin as FlaskLoginUserMixin
 from dateutil import relativedelta
 from sqlalchemy_serializer import SerializerMixin
 from strenum import StrEnum
@@ -51,7 +50,7 @@ class UserDetail(db.Model, SerializerMixin):
         return [] if not self.connected_ips else self.connected_ips.split(",")
 
 
-class User(BaseAccount, db.Model, SerializerMixin, FlaskLoginUserMixin):
+class User(BaseAccount):
     """
     This is a model class for a user in a database that includes columns for their ID, UUID, name, online status,
     account expiration date, usage limit, package days, mode, start date, current usage, last reset time, and comment.
@@ -126,7 +125,7 @@ class User(BaseAccount, db.Model, SerializerMixin, FlaskLoginUserMixin):
         """
         Retrieves a user from the database by their UUID.
         """
-        dbuser = User.query.filter_by(uuid=user_uuid).first()
+        dbuser = User.query.filter(User.uuid == user_uuid).first()
         if not dbuser:
             dbuser = User(uuid=user_uuid)
             db.session.add(dbuser)
