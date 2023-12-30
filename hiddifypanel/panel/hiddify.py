@@ -175,7 +175,7 @@ def quick_apply_users():
     # run install.sh apply_users
     commander(Command.apply_users)
 
-    time.sleep(1)
+    # time.sleep(1)
     return {"status": 'success'}
 
 
