@@ -87,10 +87,10 @@ class AdminstratorAdmin(AdminLTEModelView):
         return g.account.can_add_admin or g.account.mode == AdminMode.super_admin
 
     def _name_formatter(view, context, model, name):
-        proxy_path = hconfig(ConfigEnum.proxy_path)
+        admin_proxy_path = hconfig(ConfigEnum.proxy_path_admin)
         d = get_panel_domains()[0]
         if d:
-            link = f"<a target='_blank' href='https://{model.username}:{model.password}@{d}/{proxy_path}/admin/#{model.name}'>{model.name} <i class='fa-solid fa-arrow-up-right-from-square'></i></a>"
+            link = f"<a target='_blank' href='https://{model.username}:{model.password}@{d}/{admin_proxy_path}/admin/#{model.name}'>{model.name} <i class='fa-solid fa-arrow-up-right-from-square'></i></a>"
             if model.parent_admin:
                 return Markup(model.parent_admin.name + "&rlm;&lrm; / &rlm;&lrm;"+link)
             return Markup(link)

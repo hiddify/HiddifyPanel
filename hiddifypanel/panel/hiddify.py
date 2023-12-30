@@ -64,7 +64,7 @@ def add_short_link_imp(link: str, period_min: int = 5) -> Tuple[str, datetime]:
 
 
 def get_admin_path():
-    proxy_path = hconfig(ConfigEnum.proxy_path)
+    proxy_path = hconfig(ConfigEnum.proxy_path_admin)
     # admin_secret = g.account.uuid or get_super_admin_secret()
     return (f"/{proxy_path}/admin/")
 
@@ -273,7 +273,7 @@ def check_connection_to_remote(api_url):
 
 def check_connection_for_domain(domain):
 
-    proxy_path = hconfig(ConfigEnum.proxy_path)
+    proxy_path = hconfig(ConfigEnum.proxy_path_admin)
     admin_secret = hconfig(ConfigEnum.admin_secret)
     path = f"{proxy_path}/{admin_secret}/api/v1/hello/"
     try:
@@ -301,14 +301,13 @@ def check_connection_for_domain(domain):
 
 def get_user_link(uuid, domain, mode='', username=''):
     is_cdn = domain.mode == DomainType.cdn if type(domain) == Domain else False
-    proxy_path = hconfig(ConfigEnum.proxy_path)
     res = ""
     if mode == "multi":
         res += "<div class='btn-group'>"
     d = domain.domain
     if "*" in d:
         d = d.replace("*", get_random_string(5, 15))
-
+    proxy_path = hconfig(ConfigEnum.proxy_path_admin) if mode == 'admin' else hconfig(ConfigEnum.proxy_path_client)
     account = AdminUser.query.filter(AdminUser.uuid == uuid).first() if mode == 'admin' else User.query.filter(User.uuid == uuid).first()
     link = f"https://{account.username}:{account.password}@{d}/{proxy_path}/admin/#{username}" if mode == 'admin' else f"https://{account.username}:{account.password}@{d}/{proxy_path}/#{username}"
     link_multi = f"{link}multi"

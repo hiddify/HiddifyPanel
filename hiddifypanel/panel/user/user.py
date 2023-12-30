@@ -397,7 +397,7 @@ class UserView(FlaskView):
     @login_required(roles={Role.user})
     @ route("/offline.html")
     def offline():
-        return f"Not Connected <a href='/{hconfig(ConfigEnum.proxy_path)}/{g.account.uuid}/'>click for reload</a>"
+        return f"Not Connected <a href='/{hconfig(ConfigEnum.proxy_path_client)}/{g.account.uuid}/'>click for reload</a>"
 
 
 def do_base_64(str):

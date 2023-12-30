@@ -52,7 +52,7 @@ class Dashboard(FlaskView):
                 for d in c.domains:
                     if d.mode == DomainType.fake:
                         continue
-                    remote = f"https://{d.domain}/{hconfig(ConfigEnum.proxy_path,c.id)}/{hconfig(ConfigEnum.admin_secret,c.id)}"
+                    remote = f"https://{d.domain}/{hconfig(ConfigEnum.proxy_path_admin,c.id)}/{hconfig(ConfigEnum.admin_secret,c.id)}"
                     d.is_active = hiddify.check_connection_to_remote(remote)
                     if d.is_active:
                         c.is_active = True

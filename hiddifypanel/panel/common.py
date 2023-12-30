@@ -249,8 +249,15 @@ def init_app(app: APIFlask):
         def remove_sensetive_data_from_github_issue_link(issue_link):
             if hasattr(g, 'acount') and hasattr(g.account, 'uuid') and g.account.uuid:
                 issue_link.replace(f'{g.account.uuid}', '*******************')
-            if hconfig(ConfigEnum.proxy_path) and hconfig(ConfigEnum.proxy_path):
-                issue_link.replace(hconfig(ConfigEnum.proxy_path), '**********')
+            deprecated_proxy_path = hconfig(ConfigEnum.proxy_path)
+            admin_proxy_path = hconfig(ConfigEnum.proxy_path_admin)
+            client_proxy_path = hconfig(ConfigEnum.proxy_path_client)
+            if deprecated_proxy_path:
+                issue_link.replace(deprecated_proxy_path, '**********')
+            if admin_proxy_path:
+                issue_link.replace(admin_proxy_path, '**********')
+            if client_proxy_path:
+                issue_link.replace(client_proxy_path, '**********')
 
         def remove_unrelated_traceback_details(stacktrace: str):
             lines = stacktrace.splitlines()

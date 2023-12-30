@@ -8,7 +8,7 @@
 {% macro admin_btn(child,domain) -%}
 <div class="btn-group">
 
-    <a href="https://{{domain}}/{{hconfig(ConfigEnum.proxy_path,child.id)}}/admin/" class="btn btn-xs btn-{{" success" if child.is_active else "warning" }} orig-link ltr" target="_blank">{{domain}}</a>
+    <a href="https://{{domain}}/{{hconfig(ConfigEnum.proxy_path_admin,child.id)}}/admin/" class="btn btn-xs btn-{{" success" if child.is_active else "warning" }} orig-link ltr" target="_blank">{{domain}}</a>
 </div>
 {%- endmacro -%}
 

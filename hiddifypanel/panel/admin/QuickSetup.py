@@ -64,7 +64,7 @@ class QuickSetup(FlaskView):
                 show_domain_info=False)
 
         if quick_form.validate_on_submit():
-            sslip_dm = Domain.query.filter(Domain.domain == f'{hutils.ip.get_ip(4)}.sslip.io').delete()
+            _ = Domain.query.filter(Domain.domain == f'{hutils.ip.get_ip(4)}.sslip.io').delete()
             db.session.add(Domain(domain=quick_form.domain.data.lower(), mode=DomainType.direct))
             hiddify.bulk_register_configs([
                 # {"key": ConfigEnum.telegram_enable, "value": quick_form.enable_telegram.data == True},
@@ -76,7 +76,7 @@ class QuickSetup(FlaskView):
 
             db.session.commit()
             # hiddify.flash_config_success()
-            proxy_path = hconfig(ConfigEnum.proxy_path)
+            # proxy_path = hconfig(ConfigEnum.proxy_path_admin)
             # uuid=User.query.first().uuid
             # userlink=f"<a class='btn btn-secondary share-link' target='_blank' href='https://{quick_form.domain.data}/{proxy_path}/{uuid}/'>{_('default user link')}</a>"
             # flash((_('The default user link is %(link)s. To add or edit more users, please visit users from menu.',link=userlink)),'info')

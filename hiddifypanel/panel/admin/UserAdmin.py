@@ -119,7 +119,6 @@ class UserAdmin(AdminLTEModelView):
     #     model.password = generate_password_hash(model.password)
 
     def _name_formatter(view, context, model, name):
-        proxy_path = hconfig(ConfigEnum.proxy_path)
         # print("model.telegram_id",model.telegram_id)
         extra = ""
         if hconfig(ConfigEnum.telegram_bot_token):
@@ -137,7 +136,8 @@ class UserAdmin(AdminLTEModelView):
             link = '<i class="fa-solid fa-circle-xmark text-danger"></i> '
 
         d = get_panel_domains()[0]
-        link += f"<a target='_blank' href='https://{model.username}:{model.password}@{d}/{proxy_path}/#{model.name}'>{model.name} <i class='fa-solid fa-arrow-up-right-from-square'></i></a>"
+        client_proxy_path = hconfig(ConfigEnum.proxy_path_client)
+        link += f"<a target='_blank' href='https://{model.username}:{model.password}@{d}/{client_proxy_path}/#{model.name}'>{model.name} <i class='fa-solid fa-arrow-up-right-from-square'></i></a>"
         return Markup(extra+link)
 
     def _ul_formatter(view, context, model, name):

@@ -31,10 +31,10 @@ def register_bot(set_hook=False):
             # bot.remove_webhook()
             # time.sleep(0.1)
             domain = get_panel_domains()[0].domain
-            proxy_path = hconfig(ConfigEnum.proxy_path)
+            admin_proxy_path = hconfig(ConfigEnum.proxy_path_admin)
 
-            user_secret = get_super_admin_secret()
-            bot.set_webhook(url=f"https://{domain}/{proxy_path}/api/v1/tgbot/")
+            # user_secret = get_super_admin_secret()
+            bot.set_webhook(url=f"https://{domain}/{admin_proxy_path}/api/v1/tgbot/")
     except Exception as e:
         print(e)
         import traceback

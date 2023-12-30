@@ -65,7 +65,7 @@ def all_configs():
 
     configs['hconfigs']['first_setup'] = def_user != None and len(sslip_domains) > 0
 
-    path = f'/{hconfig(ConfigEnum.proxy_path)}/admin/'
+    path = f'/{hconfig(ConfigEnum.proxy_path_admin)}/admin/'
 
     server_ip = hutils.ip.get_ip(4)
     configs['admin_path'] = path
@@ -92,7 +92,7 @@ def test():
 
 
 def admin_links():
-    proxy_path = hconfig(ConfigEnum.proxy_path)
+    proxy_path = hconfig(ConfigEnum.proxy_path_admin)
 
     server_ip = hutils.ip.get_ip(4)
     owner = get_super_admin()
@@ -112,7 +112,7 @@ def admin_links():
 
 
 def admin_path():
-    proxy_path = hconfig(ConfigEnum.proxy_path)
+    proxy_path = hconfig(ConfigEnum.proxy_path_admin)
     admin = AdminUser.query.filter(AdminUser.mode == AdminMode.super_admin).first()
     if not admin:
         db.session.add(AdminUser(mode=AdminMode.super_admin))
