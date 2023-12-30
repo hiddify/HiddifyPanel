@@ -1,7 +1,7 @@
 from functools import wraps
 from flask_login import LoginManager, login_user, current_user
 import hiddifypanel.hutils as hutils
-from flask import g
+from flask import g, request
 from apiflask import abort
 from flask import current_app
 from hiddifypanel.models import AdminUser, User, get_admin_by_uuid, Role
@@ -14,6 +14,10 @@ def init_app(app):
 
     @login_manager.user_loader
     def user_loader_auth(id: str) -> User | AdminUser | None:
+        # first of all check if user sent Authorization header, our priority is with Authorization header
+        if request.headers.get("Authorization"):
+            return request_loader_auth(request)
+
         # parse id
         account_type, id = hutils.utils.parse_auth_id(id)  # type: ignore
         if not account_type or not id:
