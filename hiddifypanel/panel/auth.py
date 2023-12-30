@@ -2,6 +2,7 @@ from functools import wraps
 from flask_login import LoginManager, login_user, current_user
 import hiddifypanel.hutils as hutils
 from flask import g
+from apiflask import abort
 from flask import current_app
 from hiddifypanel.models import AdminUser, User, get_admin_by_uuid, Role
 from hiddifypanel.models.user import get_user_by_uuid
@@ -55,6 +56,12 @@ def init_app(app):
             if not is_api_request:
                 login_user(account)
         return account
+
+    @login_manager.unauthorized_handler
+    def unauthorized():
+        # TODO: show the login page
+
+        abort(401, "Unauthorized")
 
 
 def login_required(roles: set[Role] | None = None):
