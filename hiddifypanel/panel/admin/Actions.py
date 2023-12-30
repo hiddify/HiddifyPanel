@@ -122,9 +122,12 @@ class Actions(FlaskView):
         admin_links += f"<li><span class='badge badge-danger'>{_('Not Secure')}</span>: <a class='badge ltr share-link' href='http://{server_ip}/{proxy_path}/admin/'>http://{server_ip}/{proxy_path}/admin/</a></li>"
         domains = get_panel_domains()
         # domains=[*domains,f'{server_ip}.sslip.io']
+
+        username, password = hiddify.current_account_user_pass()
         for d in domains:
-            link = f'https://{d}/{proxy_path}/admin/'
+            link = f'https://{username}:{password}@{d}/{proxy_path}/admin/'
             admin_links += f"<li><a target='_blank' class='badge ltr' href='{link}'>{link}</a></li>"
+
         resp = render_template("result.html",
                                out_type="info",
                                out_msg=_("Success! Please wait around 4 minutes to make sure everything is updated. During this time, please save your proxy links which are:") +
@@ -165,8 +168,7 @@ class Actions(FlaskView):
                                show_success=False,
                                domains=get_domains(),
                                api_key=hiddify.current_account_api_key(),
-                               proxy_path=g.proxy_path,
-                               )
+                               proxy_path=g.proxy_path)
 
     @route('update', methods=['POST'])
     @login_required(roles={Role.super_admin})
@@ -175,14 +177,6 @@ class Actions(FlaskView):
 
     def update2(self):
         hiddify.add_temporary_access()
-
-        # os.chdir(config_dir)
-        # rc = subprocess.call(f"./install.sh &",shell=True)
-        # rc = subprocess.call(f"cd {config_dir};./update.sh & disown",shell=True)
-        # os.system(f'cd {config_dir};./update.sh &')
-
-        # subprocess.Popen(f"sudo {config['HIDDIFY_CONFIG_PATH']}/update.sh --no-gui".split(" "), cwd=f"{config['HIDDIFY_CONFIG_PATH']}", start_new_session=True)
-
         # run update.sh
         commander(Command.update)
 
@@ -244,7 +238,6 @@ class Actions(FlaskView):
 
 
 def get_log_api_url():
-    # return f'{hiddify.get_admin_path()}actions/reverselog/{logfile}/'
     return f'/{g.proxy_path}/api/v2/admin/log/'
 
 

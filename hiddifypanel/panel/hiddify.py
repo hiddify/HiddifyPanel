@@ -1,9 +1,10 @@
+import glob
 import subprocess
 import psutil
 from typing import Tuple
 from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric import x25519
-from flask import abort, g, jsonify
+from flask import abort, current_app, g, jsonify
 from flask_babelex import gettext as __
 from flask_babelex import lazy_gettext as _
 from wtforms.validators import ValidationError
@@ -108,6 +109,10 @@ def admin(function):
 def current_account_api_key():
     # TODO: send real apikey
     return g.account.uuid
+
+
+def current_account_user_pass():
+    return g.account.username, g.account.password
 
 
 def abs_url(path):
