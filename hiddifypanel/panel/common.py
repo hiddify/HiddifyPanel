@@ -103,10 +103,12 @@ def init_app(app: APIFlask):
     @app.url_defaults
     def add_proxy_path_user(endpoint, values):
         if 'proxy_path' not in values:
-            if 'static' in endpoint:
-                values['proxy_path'] = hconfig(ConfigEnum.proxy_path)
-                return
-            if hiddify.is_user_panel_call():
+
+            if isinstance(g.account, AdminUser):
+                values['proxy_path'] = hconfig(ConfigEnum.proxy_path_admin)
+            # elif 'static' in endpoint:
+            #     values['proxy_path'] = hconfig(ConfigEnum.proxy_path)
+            elif hiddify.is_user_panel_call():
                 values['proxy_path'] = hconfig(ConfigEnum.proxy_path_client)
             else:
                 values['proxy_path'] = hconfig(ConfigEnum.proxy_path_admin)
