@@ -151,10 +151,23 @@ def is_uuid_in_url_path(path: str) -> bool:
     return False
 
 
-def get_uuid_from_url_path(path: str) -> str | None:
-    for section in path.split('/'):
+def get_uuid_from_url_path(path: str, section_index: int = 2) -> str | None:
+    """
+    Takes a URL path and extracts the UUID at the specified section index.
+
+    Args:
+        path (str): The URL path from which to extract the UUID.
+        section_index (int, optional): The index of the section in the URL path where the UUID is located. Defaults to 2, because in past the UUID was in the second section of path of url.
+
+    Returns:
+        str | None: The extracted UUID as a string if found, or None if not found.
+    """
+    s_index = 1
+    for section in path.lstrip('/').split('/'):
         if is_uuid_valid(section, 4):
-            return section
+            if s_index == section_index:
+                return section
+        s_index += 1
     return None
 
 
