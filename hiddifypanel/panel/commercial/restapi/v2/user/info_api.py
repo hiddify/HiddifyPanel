@@ -47,7 +47,7 @@ class InfoAPI(MethodView):
         dto = ProfileSchema()
         # user is exist for sure
         dto.profile_title = c['user'].name
-        dto.profile_url = f"https://{urlparse(request.base_url).hostname}/{g.proxy_path}/{g.account_uuid}/#{g.account.name}"
+        dto.profile_url = f"https://{g.account.username}:{g.account.password}@{urlparse(request.base_url).hostname}/{g.proxy_path}/{g.account_uuid}/#{g.account.name}"
         dto.profile_usage_current = g.account.current_usage_GB
         dto.profile_usage_total = g.account.usage_limit_GB
         dto.profile_remaining_days = g.account.remaining_days
@@ -58,7 +58,7 @@ class InfoAPI(MethodView):
         dto.admin_message_url = hconfig(ConfigEnum.branding_site)
         dto.brand_title = hconfig(ConfigEnum.branding_title)
         dto.brand_icon_url = ""
-        dto.doh = f"https://{urlparse(request.base_url).hostname}/{g.proxy_path}/dns/dns-query"
+        dto.doh = f"https://{g.account.username}:{g.account.password}@{urlparse(request.base_url).hostname}/{g.proxy_path}/dns/dns-query"
         dto.lang = c['user'].lang
         return dto
 
