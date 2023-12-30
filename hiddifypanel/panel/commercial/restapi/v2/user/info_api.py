@@ -53,7 +53,7 @@ class InfoAPI(MethodView):
         dto.profile_remaining_days = g.account.remaining_days
         dto.profile_reset_days = days_to_reset(g.account)
         dto.telegram_bot_url = f"https://t.me/{c['bot'].username}?start={g.account.uuid}" if c['bot'] else ""
-        dto.telegram_id = c['user'].telegram_id
+        dto.telegram_id = c['user'].telegram_id or 0
         dto.admin_message_html = hconfig(ConfigEnum.branding_freetext)
         dto.admin_message_url = hconfig(ConfigEnum.branding_site)
         dto.brand_title = hconfig(ConfigEnum.branding_title)
