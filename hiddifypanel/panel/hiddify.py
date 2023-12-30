@@ -141,10 +141,6 @@ def is_admin_panel_call(request):
     return False
 
 
-def abs_url(path):
-    return f"/{g.proxy_path}/{g.account_uuid}/{path}"
-
-
 def asset_url(path):
     return f"/{g.proxy_path}/{path}"
 

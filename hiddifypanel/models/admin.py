@@ -131,7 +131,7 @@ def get_super_admin_secret():
     return get_super_admin().uuid
 
 
-def get_super_admin():
+def get_super_admin() -> AdminUser:
     admin = AdminUser.query.filter(AdminUser.mode == AdminMode.super_admin).first()
     if not admin:
         db.session.add(AdminUser(mode=AdminMode.super_admin, name="Owner"))
