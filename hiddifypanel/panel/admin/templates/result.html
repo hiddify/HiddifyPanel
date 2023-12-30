@@ -67,8 +67,8 @@
         url: urls[index] + "?random=" + Math.random(),
         type: 'POST',
         data: { file: '{{ log_file}}' },
-        headers: {
-          'Authorization': 'ApiKey {{api_key}}'
+        xhrFields: {
+          withCredentials: true
         },
 
       }).then(response => {
@@ -166,8 +166,8 @@
       url: $('#logbtn').attr('href'),
       type: 'POST',
       data: { file: '{{ log_file}}' },
-      beforeSend: function (xhr) {
-        xhr.setRequestHeader('Authorization', 'ApiKey {{api_key}}')
+      xhrFields: {
+        withCredentials: true
       }
     }).then(response => {
       Promise.resolve(response)

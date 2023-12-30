@@ -15,8 +15,8 @@
                 url: $(this).attr("href"),
                 type: 'POST',
                 data: { file: $(this).text() },
-                beforeSend: function (xhr) {
-                    xhr.setRequestHeader('Authorization', 'ApiKey {{api_key}}')
+                xhrFields: {
+                    withCredentials: true
                 }
             }).then(response => {
                 Promise.resolve(response)

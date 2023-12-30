@@ -55,7 +55,7 @@ class Actions(FlaskView):
         log_files = []
         for filename in sorted(os.listdir(f'{config_dir}/log/system/')):
             log_files.append(filename)
-        return render_template('view_logs.html', log_files=log_files, api_key=hiddify.current_account_api_key())
+        return render_template('view_logs.html', log_files=log_files)
 
     @login_required(roles={Role.super_admin})
     @route('apply_configs', methods=['POST'])
@@ -85,8 +85,7 @@ class Actions(FlaskView):
                                log_file_url=get_log_api_url(),
                                log_file='restart.log',
                                show_success=True,
-                               domains=get_domains(),
-                               api_key=hiddify.current_account_api_key())
+                               domains=get_domains())
 
     @login_required(roles={Role.super_admin})
     @route('reinstall', methods=['POST'])
@@ -134,8 +133,7 @@ class Actions(FlaskView):
                                log_file_url=get_log_api_url(),
                                log_file="0-install.log",
                                show_success=True,
-                               domains=get_domains(),
-                               api_key=hiddify.current_account_api_key())
+                               domains=get_domains())
 
         # subprocess.Popen(f"sudo {config['HIDDIFY_CONFIG_PATH']}/{file} --no-gui".split(" "), cwd=f"{config['HIDDIFY_CONFIG_PATH']}", start_new_session=True)
 
@@ -164,8 +162,7 @@ class Actions(FlaskView):
                                log_file_url=get_log_api_url(),
                                log_file="status.log",
                                show_success=False,
-                               domains=get_domains(),
-                               api_key=hiddify.current_account_api_key())
+                               domains=get_domains())
 
     @route('update', methods=['POST'])
     @login_required(roles={Role.super_admin})
@@ -183,8 +180,7 @@ class Actions(FlaskView):
                                show_success=True,
                                log_file_url=get_log_api_url(),
                                log_file="update.log",
-                               domains=get_domains(),
-                               api_key=hiddify.current_account_api_key())
+                               domains=get_domains())
 
     def get_some_random_reality_friendly_domain(self):
         test_domain = request.args.get("test_domain")
