@@ -14,7 +14,10 @@ import random
 import os
 import sys
 
+from hiddifypanel.models.role import Role
 from hiddifypanel.cache import cache
+
+
 to_gig_d = 1000*1000*1000
 
 
@@ -229,3 +232,9 @@ def convert_to_int(s: str) -> int:
         return int(s)
     except:
         return 0
+
+
+def is_admin_role(role: Role):
+    if role in {Role.super_admin, Role.admin, Role.agent}:
+        return True
+    return False

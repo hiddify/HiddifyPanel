@@ -1,12 +1,13 @@
-from functools import wraps
 from flask_login import LoginManager, current_user, user_accessed, user_logged_in,  COOKIE_NAME, AUTH_HEADER_NAME
-from flask_login.utils import _get_user
-import hiddifypanel.hutils as hutils
 from flask import g, redirect, request, session
-from apiflask import abort
+from flask_login.utils import _get_user
 from flask import current_app
+from functools import wraps
+from apiflask import abort
+
 from hiddifypanel.models import AdminUser, User, get_admin_by_uuid, Role, get_user_by_uuid, get_user_by_username_password, get_admin_by_username_password, AccountType
 import hiddifypanel.panel.hiddify as hiddify
+from hiddifypanel import hutils
 
 
 class CustumLoginManager(LoginManager):
@@ -134,7 +135,7 @@ def init_app(app):
         if account:
             g.account = account
             # g.account_uuid = account.uuid
-            g.is_admin = True if account.role in {Role.super_admin, Role.admin} else False
+            g.is_admin = hutils.utils.is_admin_role(account.role)
         return account
 
     @login_manager.request_loader
@@ -164,7 +165,7 @@ def init_app(app):
         if account:
             g.account = account
             # g.account_uuid = account.uuid
-            g.is_admin = True if account.role in {Role.super_admin, Role.admin, Role.agent} else False  # False if account.role == 'user' else True
+            g.is_admin = hutils.utils.is_admin_role(account.role)
             if not is_api_call:
                 login_user(account)
 
