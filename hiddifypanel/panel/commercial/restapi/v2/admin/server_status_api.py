@@ -15,7 +15,7 @@ class ServerStatus(Schema):
 
 
 class AdminServerStatusApi(MethodView):
-    decorators = [login_required({Role.admin})]
+    decorators = [login_required({Role.super_admin, Role.admin, Role.agent})]
 
     @app.output(ServerStatus)
     def get(self):

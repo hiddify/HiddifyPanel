@@ -10,7 +10,7 @@ from hiddifypanel.panel import hiddify
 
 
 class AdminUsersApi(MethodView):
-    decorators = [login_required({Role.admin})]
+    decorators = [login_required({Role.super_admin, Role.admin})]
 
     @app.output(AdminSchema(many=True))
     def get(self):

@@ -11,11 +11,12 @@ from .admin_user_api import AdminSchema
 
 
 class AdminInfoApi(MethodView):
-    decorators = [login_required({Role.admin})]
+    decorators = [login_required({Role.super_admin, Role.admin, Role.agent})]
 
     @app.output(AdminSchema)
     def get(self):
-        admin = get_admin_by_uuid(g.account.uuid) or abort(404, "user not found")
+        # admin = get_admin_by_uuid(g.account.uuid) or abort(404, "user not found")
+        admin = g.account or abort(404, "user not found")
 
         dto = AdminSchema()
         dto.name = admin.name

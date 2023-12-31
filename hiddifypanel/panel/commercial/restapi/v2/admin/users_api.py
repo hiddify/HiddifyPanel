@@ -11,7 +11,7 @@ from .user_api import UserSchema
 
 
 class UsersApi(MethodView):
-    decorators = [login_required({Role.admin})]
+    decorators = [login_required({Role.super_admin, Role.admin, Role.agent})]
 
     @app.output(UserSchema(many=True))
     def get(self):

@@ -25,7 +25,7 @@ class AdminSchema(Schema):
 
 
 class AdminUserApi(MethodView):
-    decorators = [login_required({Role.admin})]
+    decorators = [login_required({Role.super_admin, Role.admin})]
 
     @app.output(AdminSchema)
     def get(self, uuid):

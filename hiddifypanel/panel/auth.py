@@ -99,9 +99,6 @@ def login_required(roles: set[Role] | None = None):
             if not current_user.is_authenticated:
                 return current_app.login_manager.unauthorized()  # type: ignore
             if roles:
-                # super_admin role has admin role permission too
-                if Role.admin in roles and Role.super_admin not in roles:
-                    roles.add(Role.super_admin)
                 account_role = current_user.role
                 if account_role not in roles:
                     return current_app.login_manager.unauthorized()  # type: ignore
@@ -167,7 +164,7 @@ def init_app(app):
         if account:
             g.account = account
             # g.account_uuid = account.uuid
-            g.is_admin = True if account.role in {Role.super_admin, Role.admin} else False  # False if account.role == 'user' else True
+            g.is_admin = True if account.role in {Role.super_admin, Role.admin, Role.agent} else False  # False if account.role == 'user' else True
             if not is_api_call:
                 login_user(account)
 

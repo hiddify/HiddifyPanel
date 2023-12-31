@@ -27,7 +27,7 @@ class Dashboard(FlaskView):
     #         usage_history=get_daily_usage_stats(admin_id)
     #     ))
 
-    @login_required(roles={Role.admin})
+    @login_required(roles={Role.super_admin, Role.admin, Role.agent})
     def index(self):
 
         if hconfig(ConfigEnum.first_setup):
@@ -85,7 +85,7 @@ class Dashboard(FlaskView):
         stats = {'system': hiddify.system_stats(), 'top5': hiddify.top_processes()}
         return render_template('index.html', stats=stats, usage_history=get_daily_usage_stats(admin_id, child_id), childs=childs)
 
-    @login_required(roles={Role.admin})
+    @login_required(roles={Role.super_admin})
     @route('remove_child', methods=['POST'])
     def remove_child(self):
         child_id = request.form['child_id']

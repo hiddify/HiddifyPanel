@@ -24,9 +24,13 @@ class ConfigAdmin(AdminLTEModelView):
         },
     }
 
-    @login_required(roles={Role.admin})
     def is_accessible(self):
+        if login_required(roles={Role.super_admin})(lambda: True)() != True:
+            return False
         return True
+
+    def inaccessible_callback(self, name, **kwargs):
+        return current_app.login_manager.unauthorized()  # type: ignore
 
     @staticmethod
     def _is_valid_uuid(val: str, version: int | None = None):

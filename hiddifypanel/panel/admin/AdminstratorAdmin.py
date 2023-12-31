@@ -6,7 +6,7 @@ from .adminlte import AdminLTEModelView
 from flask_babelex import gettext as __
 from flask_babelex import lazy_gettext as _
 from hiddifypanel.panel import hiddify
-from flask import Markup
+from flask import Markup, current_app
 from flask import g
 import datetime
 from wtforms import SelectField
@@ -162,9 +162,14 @@ class AdminstratorAdmin(AdminLTEModelView):
     def search_placeholder(self):
         return f"{_('search')} {_('user.UUID')} {_('user.name')}"
 
-    @login_required(roles={Role.admin})
+    # @login_required(roles={Role.super_admin, Role.admin})
     def is_accessible(self):
+        if login_required(roles={Role.super_admin, Role.admin})(lambda: True)() != True:
+            return False
         return True
+
+    def inaccessible_callback(self, name, **kwargs):
+        return current_app.login_manager.unauthorized()  # type: ignore
 
     def get_query(self):
         # Get the base query

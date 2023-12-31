@@ -382,7 +382,7 @@ class UserView(FlaskView):
         return add_headers(resp, c)
 
     @ route('/manifest.webmanifest')
-    @login_required(roles={Role.user})
+    @login_required()
     def create_pwa_manifest(self):
 
         domain = urlparse(request.base_url).hostname

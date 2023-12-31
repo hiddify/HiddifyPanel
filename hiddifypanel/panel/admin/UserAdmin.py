@@ -206,9 +206,13 @@ class UserAdmin(AdminLTEModelView):
         user_driver.remove_client(model)
         # hiddify.flash_config_success()
 
-    @login_required(roles={Role.admin})
     def is_accessible(self):
+        if login_required(roles={Role.super_admin, Role.admin, Role.agent})(lambda: True)() != True:
+            return False
         return True
+
+    def inaccessible_callback(self, name, **kwargs):
+        return current_app.login_manager.unauthorized()  # type: ignore
 
     def on_form_prefill(self, form, id=None):
         # print("================",form._obj.start_date)
