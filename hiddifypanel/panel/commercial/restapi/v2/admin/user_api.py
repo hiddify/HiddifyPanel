@@ -56,7 +56,8 @@ class UserSchema(Schema):
     )
     telegram_id = Integer(
         required=False,
-        description="The Telegram ID associated with the user"
+        description="The Telegram ID associated with the user",
+        allow_none=True
     )
     ed25519_private_key = String(
         required=False,

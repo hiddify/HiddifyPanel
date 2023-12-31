@@ -2,6 +2,7 @@ import datetime
 from enum import auto
 
 from dateutil import relativedelta
+from hiddifypanel import hutils
 from sqlalchemy_serializer import SerializerMixin
 from strenum import StrEnum
 from sqlalchemy import event
@@ -179,7 +180,7 @@ class User(BaseAccount):
             'last_reset_time': hiddify.date_to_json(d.last_reset_time) if convert_date else d.last_reset_time,
             'comment': d.comment,
             'added_by_uuid': d.admin.uuid,
-            'telegram_id': d.telegram_id,
+            'telegram_id': hutils.utils.convert_to_int(d.telegram_id),
             'ed25519_private_key': d.ed25519_private_key,
             'ed25519_public_key': d.ed25519_public_key
         }

@@ -222,3 +222,10 @@ def add_basic_auth_to_url(url: str, username: str, password: str) -> str:
         return url.replace('http://', f'http://{username}:{password}@')
     else:
         return url
+
+
+def convert_to_int(s: str) -> int:
+    try:
+        return int(s)
+    except:
+        return 0

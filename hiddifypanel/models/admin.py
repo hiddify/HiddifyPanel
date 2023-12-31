@@ -1,5 +1,6 @@
 from enum import auto
 from flask import g
+from hiddifypanel import hutils
 from hiddifypanel.models.usage import DailyUsage
 from hiddifypanel.models.utils import fill_username, fill_password
 from sqlalchemy import event
@@ -102,7 +103,7 @@ class AdminUser(BaseAccount):
             'mode': admin.mode,
             'can_add_admin': admin.can_add_admin,
             'parent_admin_uuid': admin.parent_admin.uuid if admin.parent_admin else None,
-            'telegram_id': admin.telegram_id
+            'telegram_id': hutils.utils.convert_to_int(admin.telegram_id),
         }
 
 

@@ -1,6 +1,6 @@
 from apiflask import APIBlueprint, Schema
 from apiflask.fields import Integer, String
-
+from flask import g
 from hiddifypanel.models import get_super_admin_uuid
 
 bp = APIBlueprint("api_admin", __name__, url_prefix="/<proxy_path>/api/v2/admin/", enable_openapi=True)
