@@ -1,4 +1,4 @@
-from flask import request
+from flask import g
 from flask.views import MethodView
 from flask import current_app as app
 from apiflask import abort, Schema
@@ -8,6 +8,8 @@ from hiddifypanel.panel import hiddify
 from hiddifypanel.drivers import user_driver
 from hiddifypanel.panel import hiddify
 from apiflask.fields import UUID, String, Float, Enum, Date, Time, Integer
+
+from . import SuccessfulSchema, has_permission
 
 
 class UserSchema(Schema):
@@ -47,8 +49,9 @@ class UserSchema(Schema):
         description="An optional comment about the user"
     )
     added_by_uuid = UUID(
-        required=True,
+        required=False,
         description="UUID of the admin who added this user",
+        allow_none=True,
         # validate=OneOf([p.uuid for p in AdminUser.query.all()])
     )
     telegram_id = Integer(
@@ -71,20 +74,33 @@ class UserApi(MethodView):
     @app.output(UserSchema)
     def get(self, uuid):
         user = get_user_by_uuid(uuid) or abort(404, "user not found")
+        if not has_permission(user):
+            abort(403, "You don't have permission to access this user")
+
         return user.to_dict(False)
 
     @app.input(UserSchema, arg_name="data")
+    @app.output(SuccessfulSchema)
     def patch(self, uuid, data):
-        data = request.json
-        uuid = data.get('uuid') or abort(422, "Parameter issue: 'uuid'")
+        user = get_user_by_uuid(uuid) or abort(404, "user not found")
+        if not has_permission(user):
+            abort(403, "You don't have permission to access this user")
+
+        data['uuid'] = uuid
+        if not data.get('added_by_uuid'):
+            data['added_by_uuid'] = g.account.uuid
+
         hiddify.add_or_update_user(**data)
         user = get_user_by_uuid(uuid) or abort(502, "unknown issue! user is not added")
         user_driver.add_client(user)
         hiddify.quick_apply_users()
         return {'status': 200, 'msg': 'ok'}
 
+    @app.output(SuccessfulSchema)
     def delete(self, uuid):
         user = get_user_by_uuid(uuid) or abort(404, "user not found")
+        if not has_permission(user):
+            abort(403, "You don't have permission to access this user")
         user.remove()
         hiddify.quick_apply_users()
         return {'status': 200, 'msg': 'ok'}

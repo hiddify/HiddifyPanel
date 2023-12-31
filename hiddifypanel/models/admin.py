@@ -106,7 +106,7 @@ class AdminUser(BaseAccount):
         }
 
 
-def get_super_admin_uuid():
+def get_super_admin_uuid() -> str:
     return get_super_admin().uuid
 
 
