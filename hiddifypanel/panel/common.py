@@ -80,17 +80,17 @@ def init_app(app: APIFlask):
         issue_link = str(github_issue_generator.IssueUrl(opts).get_url())
         return issue_link
 
-    @app.spec_processor
-    def set_default_path_values(spec):
-        for path in spec['paths'].values():
-            for operation in path.values():
-                if 'parameters' in operation:
-                    # for parameter in operation['parameters']:
-                    #     if parameter['name'] == 'proxy_path':
-                    #         parameter['schema'] = {'type': 'string', 'default': g.proxy_path}
-                    # elif parameter['name'] == 'user_secret':
-                    #     parameter['schema'] = {'type': 'string', 'default': g.account_uuid}
-        return spec
+    # @app.spec_processor
+    # def set_default_path_values(spec):
+    #     # for path in spec['paths'].values():
+    #         # for operation in path.values():
+    #             # if 'parameters' in operation:
+    #                 # for parameter in operation['parameters']:
+    #                 #     if parameter['name'] == 'proxy_path':
+    #                 #         parameter['schema'] = {'type': 'string', 'default': g.proxy_path}
+    #                 # elif parameter['name'] == 'user_secret':
+    #                 #     parameter['schema'] = {'type': 'string', 'default': g.account_uuid}
+    #     return spec
 
     @app.url_value_preprocessor
     def pull_secret_code(endpoint, values):
