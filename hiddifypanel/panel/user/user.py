@@ -394,7 +394,7 @@ class UserView(FlaskView):
             "background_color": "#1a1b21",
             "display": "standalone",
             "scope": f"/",
-            "start_url": f"https://{domain}"+url_for("admin.Dashboard:index" if g.is_admin else "user2.UserView:new_1")+"?pwa=true",
+            "start_url": f"https://{domain}"+url_for("admin.Dashboard:index" if g.is_admin else "client.UserView:new_1")+"?pwa=true",
             "description": "Hiddify, for a free Internet",
             "orientation": "any",
             "icons": [

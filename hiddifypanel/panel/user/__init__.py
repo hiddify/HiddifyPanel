@@ -7,7 +7,7 @@ from hiddifypanel.panel.database import db
 # from .resources import ProductItemResource, ProductResource
 from .user import *
 from apiflask import APIBlueprint
-bp = APIBlueprint("user2", __name__, url_prefix="/<proxy_path>/user/", template_folder="templates", enable_openapi=False)
+bp = APIBlueprint("client", __name__, url_prefix="/<proxy_path>/client/", template_folder="templates", enable_openapi=False)
 
 
 def send_static(path):

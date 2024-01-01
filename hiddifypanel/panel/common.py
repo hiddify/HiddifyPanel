@@ -9,7 +9,7 @@ from hiddifypanel.panel import hiddify, github_issue_generator
 from sys import version as python_version
 from platform import platform
 import hiddifypanel.hutils as hutils
-
+import hiddifypanel.panel.auth as auth
 from apiflask import APIFlask, HTTPError, abort
 
 
@@ -22,6 +22,10 @@ def init_app(app: APIFlask):
 
     @app.errorhandler(Exception)
     def internal_server_error(e):
+        if hasattr(e, 'code') and e.code == 404:
+            return jsonify({
+                'message': 'Not Found',
+            }), 404
         # print(request.headers)
         last_version = hiddify.get_latest_release_version('hiddifypanel')  # TODO: add dev update check
         if "T" in hiddifypanel.__version__:
@@ -135,16 +139,19 @@ def init_app(app: APIFlask):
         if not proxy_path:
             abort(400, "invalid")
 
+        # get proxy paths
+        deprecated_proxy_path = hconfig(ConfigEnum.proxy_path)
+        if proxy_path != deprecated_proxy_path:
+            return
+
         user_agent = user_agents.parse(request.user_agent.string)
         # need this variable in redirect_to_new_format view
         g.user_agent = user_agent
         if user_agent.is_bot:
             abort(400, "invalid")
 
-        # get proxy paths
-        deprecated_proxy_path = hconfig(ConfigEnum.proxy_path)
-        if proxy_path != deprecated_proxy_path:
-            return
+        uuid = hutils.utils.get_uuid_from_url_path(request.path)
+        account = User.by_uuid(uuid) or AdminUser.by_uuid(uuid) or abort(400, 'invalid request2')
 
         admin_proxy_path = hconfig(ConfigEnum.proxy_path_admin)
         client_proxy_path = hconfig(ConfigEnum.proxy_path_client)
@@ -152,25 +159,22 @@ def init_app(app: APIFlask):
         new_link = ''
 
         # handle deprecated proxy path
-
+        new_link = f"https://{request.host}"
         if hiddify.is_admin_panel_call(deprecated_format=True):
-            new_link = f'https://{request.host}/{admin_proxy_path}/admin/'
+            new_link += request.path.replace(f"{proxy_path}/{uuid}/admin/", f'{admin_proxy_path}/admin/')
         elif hiddify.is_user_panel_call(deprecated_format=True):
-            new_link = f'https://{request.host}/{client_proxy_path}/'
+            new_link += request.path.replace(f"{proxy_path}/{uuid}/", f'{client_proxy_path}/client/')
         else:
             return abort(400, 'invalid request 1')
 
-        # handle uuid url format
-        uuid = hutils.utils.get_uuid_from_url_path(request.path)
-
-        account = get_user_by_uuid(uuid) or get_admin_by_uuid(uuid) or abort(400, 'invalid request2')
-
         new_link = hutils.utils.add_basic_auth_to_url(new_link, account.username, account.password)
 
-        new_link = new_link.replace('http://', 'https://')
-        if user_agent.browser:
-            return render_template('redirect_to_new_format.html', new_link=new_link)
-        return redirect(new_link, 301)
+        # if user_agent.browser:
+        #     return render_template('redirect_to_new_format.html', new_link=new_link)
+
+        auth.login_user(account)
+        # return new_link
+        return redirect(new_link, 302)
 
     @app.before_request
     def base_middleware():

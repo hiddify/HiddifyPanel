@@ -1,15 +1,17 @@
 import glob
+import user_agents
 import json
 import subprocess
 import psutil
 from typing import Tuple
 from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric import x25519
-from flask import abort, current_app, g, jsonify, request
+from flask import current_app, g, jsonify, request
 from flask_babelex import gettext as __
 from flask_babelex import lazy_gettext as _
 from wtforms.validators import ValidationError
 from apiflask import abort as apiflask_abort
+from apiflask import abort
 
 from datetime import timedelta
 from babel.dates import format_timedelta as babel_format_timedelta
@@ -150,7 +152,7 @@ def is_admin_api_call() -> bool:
 
 
 def is_user_panel_call(deprecated_format=False) -> bool:
-    if request.blueprint and request.blueprint == 'user2':
+    if request.blueprint and request.blueprint == 'client':
         return True
     if deprecated_format:
         user_panel_url = f'/{hconfig(ConfigEnum.proxy_path)}/'
