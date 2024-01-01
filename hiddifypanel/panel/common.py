@@ -85,11 +85,11 @@ def init_app(app: APIFlask):
         for path in spec['paths'].values():
             for operation in path.values():
                 if 'parameters' in operation:
-                    for parameter in operation['parameters']:
-                        if parameter['name'] == 'proxy_path':
-                            parameter['schema'] = {'type': 'string', 'default': g.proxy_path}
-                        # elif parameter['name'] == 'user_secret':
-                        #     parameter['schema'] = {'type': 'string', 'default': g.account_uuid}
+                    # for parameter in operation['parameters']:
+                    #     if parameter['name'] == 'proxy_path':
+                    #         parameter['schema'] = {'type': 'string', 'default': g.proxy_path}
+                    # elif parameter['name'] == 'user_secret':
+                    #     parameter['schema'] = {'type': 'string', 'default': g.account_uuid}
         return spec
 
     @app.url_value_preprocessor

@@ -69,7 +69,7 @@ def all_configs():
 
     server_ip = hutils.ip.get_ip(4)
     configs['admin_path'] = path
-    owner = get_super_admin()
+    owner = AdminUser.get_super_admin()
     configs['panel_links'] = []
     configs['panel_links'].append(hutils.utils.add_basic_auth_to_url(f'http://{server_ip}{path}', owner.username, owner.password))
     configs['panel_links'].append(hutils.utils.add_basic_auth_to_url(f'https://{server_ip}{path}', owner.username, owner.password))
