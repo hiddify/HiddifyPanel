@@ -558,11 +558,13 @@ def add_new_enum_values():
 
         # Find the new values that need to be added to the enum column in the database
         new_values = set(existing_values) - set(db_values)
-        if len(new_values) == 0:
+        old_values = set(db_values)-set(existing_values)
+        if len(new_values) == 0 and len(old_values) == 0:
             continue
 
         # Add the new value to the enum column in the database
-        enumstr = ','.join([f"'{a}'" for a in existing_values])
+        enumstr = ','.join([f"'{a}'" for a in [*existing_values, *old_values]])
+
         db.engine.execute(f"ALTER TABLE {table_name} MODIFY COLUMN `{column_name}` ENUM({enumstr});")
 
         db.session.commit()
