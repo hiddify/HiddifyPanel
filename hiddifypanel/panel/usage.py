@@ -46,7 +46,7 @@ def add_users_usage(dbusers_bytes, child_id):
     for user, uinfo in dbusers_bytes.items():
         usage_bytes = uinfo['usage']
         ips = uinfo['ips']
-        # user_active_before=is_user_active(user)
+        # user_active_before=user.is_active
         detail = userDetails.get(user.id)
         if not detail:
             detail = UserDetail(user_id=user.id, child_id=child_id)
@@ -54,7 +54,7 @@ def add_users_usage(dbusers_bytes, child_id):
             db.session.add(detail)
         detail.connected_ips = ips
         detail.current_usage_GB = detail.current_usage_GB or 0
-        if not user.last_reset_time or user_should_reset(user):
+        if not user.last_reset_time or user.user_should_reset():
             user.last_reset_time = datetime.date.today()
             user.current_usage_GB = 0
             detail.current_usage_GB = 0
@@ -78,7 +78,7 @@ def add_users_usage(dbusers_bytes, child_id):
             if user.start_date == None:
                 user.start_date = datetime.date.today()
 
-        if before_enabled_users[user.uuid] and not is_user_active(user):
+        if before_enabled_users[user.uuid] and not user.is_active:
             print(f"Removing enabled client {user.uuid} ")
             user_driver.remove_client(user)
             have_change = True
@@ -99,7 +99,7 @@ def send_bot_message(user):
     from hiddifypanel.panel.commercial.telegrambot import bot, Usage
     try:
         msg = Usage.get_usage_msg(user.uuid)
-        msg = _("User activated!") if is_user_active(user) else _("Package ended!")+"\n"+msg
+        msg = _("User activated!") if user.is_active else _("Package ended!")+"\n"+msg
         bot.send_message(user.telegram_id, msg, reply_markup=Usage.user_keyboard(uuid))
     except:
         pass

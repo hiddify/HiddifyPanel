@@ -31,7 +31,7 @@ class AdminUserApi(MethodView):
 
     @app.output(AdminSchema)
     def get(self, uuid):
-        admin = get_admin_by_uuid(uuid) or abort(404, "admin not found")
+        admin = AdminUser.by_uuid(uuid) or abort(404, "admin not found")
         if not has_permission(admin):
             abort(403, "You don't have permission to access this admin")
         return admin.to_dict()
@@ -39,7 +39,7 @@ class AdminUserApi(MethodView):
     @app.input(AdminSchema, arg_name='data')
     @app.output(SuccessfulSchema)
     def patch(self, uuid, data):
-        admin = get_admin_by_uuid(uuid) or abort(404, "admin not found")
+        admin = AdminUser.by_uuid(uuid) or abort(404, "admin not found")
         if not has_permission(admin):
             abort(403, "You don't have permission to access this admin")
 
@@ -47,12 +47,12 @@ class AdminUserApi(MethodView):
         if not data.get('added_by_uuid'):
             data['added_by_uuid'] = g.account.uuid
 
-        hiddify.add_or_update_admin(**data)
+        AdminUser.add_or_update(**data)
         return {'status': 200, 'msg': 'ok'}
 
     @app.output(SuccessfulSchema)
     def delete(self, uuid):
-        admin = get_admin_by_uuid(uuid) or abort(404, "admin not found")
+        admin = AdminUser.by_uuid(uuid) or abort(404, "admin not found")
         if not has_permission(admin):
             abort(403, "You don't have permission to access this admin")
         admin.remove()

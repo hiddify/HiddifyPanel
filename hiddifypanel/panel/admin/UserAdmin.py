@@ -164,7 +164,7 @@ class UserAdmin(AdminLTEModelView):
         """)
 
     def _expire_formatter(view, context, model, name):
-        remaining = remaining_days(model)
+        remaining = model.remaining_days()
 
         diff = datetime.timedelta(days=remaining)
 
@@ -223,7 +223,7 @@ class UserAdmin(AdminLTEModelView):
             delattr(form, 'reset_usage')
             # delattr(form,'disable_user')
         else:
-            remaining = remaining_days(form._obj)
+            remaining = form._obj.remaining_days()  # remaining_days(form._obj)
             msg = _("Remaining: ") + hiddify.format_timedelta(datetime.timedelta(days=remaining))
             form.reset_days.label.text += f" ({msg})"
             usr_usage = f" ({_('user.home.usage.title')} {round(form._obj.current_usage_GB,3)}GB)"
@@ -257,7 +257,7 @@ class UserAdmin(AdminLTEModelView):
         if form.reset_days.data:
             model.start_date = None
         model.package_days = min(model.package_days, 10000)
-        old_user = user_by_id(model.id)
+        old_user = User.by_id(model.id)
         if not model.added_by or model.added_by == 1:
             model.added_by = g.account.id
         if not g.account.can_have_more_users():
@@ -281,7 +281,7 @@ class UserAdmin(AdminLTEModelView):
         if hconfig(ConfigEnum.first_setup):
             set_hconfig(ConfigEnum.first_setup, False)
         user = User.query.filter(User.uuid == model.uuid).first()
-        if is_user_active(user):
+        if user.is_active:
             user_driver.add_client(model)
         else:
             user_driver.remove_client(model)
@@ -309,7 +309,7 @@ class UserAdmin(AdminLTEModelView):
             count = len(data)
 
             # Sorting the data
-            data = sorted(data, key=lambda p: p.remaining_days, reverse=sort_desc)
+            data = sorted(data, key=lambda p: p.remaining_days(), reverse=sort_desc)
 
             # Applying pagination
             start = page * page_size
@@ -323,19 +323,19 @@ class UserAdmin(AdminLTEModelView):
         return res
 
         # Override the default get_list method to use the custom sort function
-        query = self.session.query(self.model)
-        if self._sortable_columns:
-            # print("sor",self._sortable_columns['remaining_days'])
-            for column, direction in self._get_default_order():
-                # if column == 'remaining_days':
-                #     # Use the custom sort function for 'remaining_days'
-                #     query = query.order_by(self.model.remaining_days.asc() if direction == 'asc' else self.model.remaining_days.desc())
-                # else:
-                # Use the default sort function for other columns
-                query = query.order_by(getattr(self.model, column).asc() if direction == 'asc' else getattr(self.model, column).desc())
-        count = query.count()
-        data = query.all()
-        return count, data
+        # query = self.session.query(self.model)
+        # if self._sortable_columns:
+        #     # print("sor",self._sortable_columns['remaining_days'])
+        #     for column, direction in self._get_default_order():
+        #         # if column == 'remaining_days':
+        #         #     # Use the custom sort function for 'remaining_days'
+        #         #     query = query.order_by(self.model.remaining_days.asc() if direction == 'asc' else self.model.remaining_days.desc())
+        #         # else:
+        #         # Use the default sort function for other columns
+        #         query = query.order_by(getattr(self.model, column).asc() if direction == 'asc' else getattr(self.model, column).desc())
+        # count = query.count()
+        # data = query.all()
+        # return count, data
 
         # Override get_query() to filter rows based on a specific condition
 

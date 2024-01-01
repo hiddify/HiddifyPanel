@@ -14,7 +14,6 @@ import random
 import os
 import sys
 
-from hiddifypanel.models.role import Role
 from hiddifypanel.cache import cache
 
 
@@ -203,7 +202,7 @@ def parse_login_id(raw_id) -> Tuple[Any | None, str | None]:
         raw_id (str): The raw ID to be parsed.
     Returns:
         Tuple[Any | None, str | None]: A tuple containing the account type and ID.
-            The account type is of type Role (either Role.user or Role.admin)
+            The account type is either AccountType.admin or AccountType.user
             and the ID is a string. If the raw ID cannot be parsed, None is returned
             for both the account type and ID.
     """
@@ -232,9 +231,3 @@ def convert_to_int(s: str) -> int:
         return int(s)
     except:
         return 0
-
-
-def is_admin_role(role: Role):
-    if role in {Role.super_admin, Role.admin, Role.agent}:
-        return True
-    return False

@@ -28,19 +28,19 @@ class SendMsgResource(Resource):
         else:
             users = users.all()
             if id == 'expired':
-                users = [u for u in users if not is_user_active(u)]
+                users = [u for u in users if not u.is_active]
             elif id == 'active':
-                users = [u for u in users if is_user_active(u)]
+                users = [u for u in users if u.is_active]
             elif id == 'offline 1h':
                 h1 = datetime.datetime.now()-datetime.timedelta(hours=1)
-                users = [u for u in users if is_user_active(u) and u.last_online < h1]
+                users = [u for u in users if u.is_active and u.last_online < h1]
             elif id == 'offline 1d':
                 d1 = datetime.datetime.now()-datetime.timedelta(hours=24)
-                users = [u for u in users if is_user_active(u) and u.last_online < d1]
+                users = [u for u in users if u.is_active and u.last_online < d1]
 
             elif id == 'offline 1w':
                 d7 = datetime.datetime.now()-datetime.timedelta(days=7)
-                users = [u for u in users if is_user_active(u) and u.last_online < d7]
+                users = [u for u in users if u.is_active and u.last_online < d7]
 
         res = {}
         for user in users:

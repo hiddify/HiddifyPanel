@@ -114,7 +114,7 @@ def init_app(app: APIFlask):
                 values['proxy_path'] = hconfig(ConfigEnum.proxy_path_admin)
 
         if hiddify.is_api_v1_call(endpoint=endpoint) and 'admin_uuid' not in values:
-            values['admin_uuid'] = get_super_admin_uuid()
+            values['admin_uuid'] = AdminUser.get_super_admin_uuid()
 
     @app.route("/<proxy_path>/videos/<file>")
     @app.doc(hide=True)
@@ -169,7 +169,7 @@ def init_app(app: APIFlask):
         if uuid := hutils.utils.get_uuid_from_url_path(request.path):
             if not hiddify.is_telegram_call():
                 incorrect_request = True
-                account = get_user_by_uuid(uuid) or get_admin_by_uuid(uuid) or abort(400, 'invalid request')
+                account = User.by_uuid(uuid) or AdminUser.by_uuid(uuid) or abort(400, 'invalid request')
                 if new_link:
                     if hiddify.is_api_call(request.path):
                         new_link = new_link.replace(f'/{uuid}', '')

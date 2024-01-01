@@ -15,7 +15,7 @@ class UserResource(Resource):
     def get(self):
         uuid = request.args.get('uuid')
         if uuid:
-            user = get_user_by_uuid(uuid) or abort(404, "user not found")
+            user = User.by_uuid(uuid) or abort(404, "user not found")
             return jsonify(user.to_dict())
 
         users = User.query.all() or abort(502, "WTF!")
@@ -24,15 +24,15 @@ class UserResource(Resource):
     def post(self):
         data = request.json
         uuid = data.get('uuid') or abort(422, "Parameter issue: 'uuid'")
-        hiddify.add_or_update_user(**data)
-        user = get_user_by_uuid(uuid) or abort(502, "unknown issue! user is not added")
+        User.add_or_update(**data)  # type: ignore
+        user = User.by_uuid(uuid) or abort(502, "unknown issue! user is not added")
         user_driver.add_client(user)
         hiddify.quick_apply_users()
         return jsonify({'status': 200, 'msg': 'ok'})
 
     def delete(self):
         uuid = request.args.get('uuid') or abort(422, "Parameter issue: 'uuid'")
-        user = get_user_by_uuid(uuid) or abort(404, "user not found")
+        user = User.by_uuid(uuid) or abort(404, "user not found")
         user.remove()
         hiddify.quick_apply_users()
         return jsonify({'status': 200, 'msg': 'ok'})
@@ -61,7 +61,7 @@ class AdminUserResource(Resource):
     def get(self, uuid=None):
         uuid = request.args.get('uuid')
         if uuid:
-            admin = get_admin_by_uuid(uuid) or abort(404, "user not found")
+            admin = AdminUser.by_uuid(uuid) or abort(404, "user not found")
             return jsonify(admin.to_dict())
 
         admins = AdminUser.query.all() or abort(502, "WTF!")
@@ -70,13 +70,13 @@ class AdminUserResource(Resource):
     def post(self):
         data = request.json
         uuid = data.get('uuid') or abort(422, "Parameter issue: 'uuid'")
-        hiddify.add_or_update_admin(**data)
+        AdminUser.add_or_update(**data)  # type: ignore
 
         return jsonify({'status': 200, 'msg': 'ok'})
 
     def delete(self):
         uuid = request.args.get('uuid') or abort(422, "Parameter issue: 'uuid'")
-        admin = get_admin_by_uuid(uuid) or abort(404, "admin not found")
+        admin = AdminUser.by_uuid(uuid) or abort(404, "admin not found")
         admin.remove()
         return jsonify({'status': 200, 'msg': 'ok'})
 

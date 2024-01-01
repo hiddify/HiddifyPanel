@@ -37,8 +37,8 @@ class UserView(FlaskView):
             'profile_url': f"https://{g.account.username}:{g.account.password}{urlparse(request.base_url).hostname}/{g.proxy_path}/#{g.account.name}",
             'profile_usage_current': g.account.current_usage_GB,
             'profile_usage_total': g.account.usage_limit_GB,
-            'profile_remaining_days': g.account.remaining_days,
-            'profile_reset_days': days_to_reset(g.account),
+            'profile_remaining_days': g.account.remaining_days(),
+            'profile_reset_days': g.account.days_to_reset(),
             'telegram_bot_url': f"https://t.me/{c['bot'].username}?start={g.account.uuid}" if c['bot'] else "",
             'admin_message_html': hconfig(ConfigEnum.branding_freetext),
             'admin_message_url': hconfig(ConfigEnum.branding_site),
@@ -489,8 +489,8 @@ def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
     }
 
     g.locale = hconfig(ConfigEnum.lang)
-    expire_days = remaining_days(user)
-    reset_days = days_to_reset(user)
+    expire_days = user.remaining_days()
+    reset_days = user.days_to_reset()
     # print(reset_days)
     # raise
     if reset_days >= expire_days:
@@ -509,7 +509,7 @@ def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
         # 'direct_host':direct_host,
         'profile_title': profile_title,
         'user': user,
-        'user_activate': is_user_active(user),
+        'user_activate': user.is_active,
         'domain': domain,
         'mode': mode,
         'fake_ip_for_sub_link': datetime.datetime.now().strftime(f"%H.%M--%Y.%m.%d.time:%H%M"),

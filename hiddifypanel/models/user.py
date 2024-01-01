@@ -2,7 +2,6 @@ import datetime
 from enum import auto
 
 from dateutil import relativedelta
-from hiddifypanel import hutils
 from sqlalchemy_serializer import SerializerMixin
 from strenum import StrEnum
 from sqlalchemy import event
@@ -28,6 +27,11 @@ class UserMode(StrEnum):
     daily = auto()
 
     # disable = auto()
+package_mode_dic = {
+    UserMode.daily: 1,
+    UserMode.weekly: 7,
+    UserMode.monthly: 30
+}
 
 
 class UserDetail(db.Model, SerializerMixin):
@@ -99,12 +103,24 @@ class User(BaseAccount):
         self.usage_limit = min(1000000*ONE_GIG, (value or 0)*ONE_GIG)
 
     @property
-    def remaining_days(self):
-        return remaining_days(self)
-
-    @property
-    def is_active(self):
-        return is_user_active(self)
+    def is_active(self) -> bool:
+        """
+        The "is_active" function checks if the input user object "user" is active by verifying if their mode is not
+        "disable", if their usage limit hasn't been exceeded, and if there are remaining days on their account. The
+        function returns a boolean value indicating whether the user is active or not.
+        """
+        is_active = True
+        if not self:
+            is_active = False
+        elif not self.enable:
+            is_active = False
+        elif self.usage_limit < self.current_usage:
+            is_active = False
+        elif self.remaining_days() < 0:
+            is_active = False
+        elif len(self.ips) > max(3, self.max_ips):
+            is_active = False
+        return is_active
 
     @property
     def ips(self):
@@ -114,23 +130,51 @@ class User(BaseAccount):
                 res[ip] = 1
         return list(res.keys())
 
-    @staticmethod
-    def by_id(user_id):
-        """
-        Retrieves a user from the database by their ID.
-        """
-        return User.query.get(user_id)
+    def user_should_reset(self) -> bool:
+        # print("start_date",user.start_date, "pack",package_mode_dic.get(user.mode,10000), "total",(datetime.date.today()-user.start_date).days)
+        # if user.mode==UserMode.daily:
+        #     return 0
+        res = True
+        if not self.last_reset_time:
+            res = True
+        elif not self.start_date or (datetime.date.today()-self.last_reset_time).days == 0:
+            res = False
+        else:
+            res = ((datetime.date.today()-self.start_date).days % package_mode_dic.get(self.mode, 10000)) == 0
 
-    @staticmethod
-    def by_uuid(user_uuid, create=False):
+        return res
+
+    def days_to_reset(self):
         """
-        Retrieves a user from the database by their UUID.
+        The "days_to_reset" function calculates the number of days until the user's data usage is reset, based on the
+        user's start date and mode of usage. The function returns the remaining days as an integer value. If the start
+        date is not available, the function returns the total days for the user's mode.
         """
-        dbuser = User.query.filter(User.uuid == user_uuid).first()
-        if not dbuser:
-            dbuser = User(uuid=user_uuid)
-            db.session.add(dbuser)
-        return dbuser
+        # print("start_date",user.start_date, "pack",package_mode_dic.get(user.mode,10000), "total",(datetime.date.today()-user.start_date).days)
+        # if user.mode==UserMode.daily:
+        #     return 0
+        if self.start_date:
+            days = package_mode_dic.get(self.mode, 10000)-(datetime.date.today()-self.start_date).days % package_mode_dic.get(self.mode, 10000)
+        else:
+            days = package_mode_dic.get(self.mode, 10000)
+        return max(-100000, min(days, 100000))
+
+    def remaining_days(self) -> int:
+        """
+        The "remaining_days" function calculates the number of days remaining for a user's account package based on the
+        current date and the user's start date. The function returns the remaining days as an integer value. If the start
+        date is not available, the function returns the total package days.
+        """
+        res = -1
+        if self.package_days is None:
+            res = -1
+        elif self.start_date:
+            # print(datetime.date.today(), u.start_date,u.package_days, u.package_days - (datetime.date.today() - u.start_date).days)
+            res = self.package_days - (datetime.date.today() - self.start_date).days
+        else:
+            # print("else",u.package_days )
+            res = self.package_days
+        return min(res, 10000)
 
     @staticmethod
     def from_dict(data):
@@ -153,39 +197,8 @@ class User(BaseAccount):
             added_by=data.get('added_by', 1)
         )
 
-    # @staticmethod
-    # def from_dict(data):
 
-    #     allowed_fields = {'name', 'expiry_time', 'usage_limit_GB', 'package_days', 'mode', 'monthly', 'start_date',
-    #                       'current_usage_GB', 'comment', 'telegram_id', 'added_by_uuid'}
-    #     filtered_data = {k: v for k, v in data.items() if k in allowed_fields}
-    #     if 'mode' in filtered_data:
-    #         filtered_data['mode'] = UserMode[filtered_data['mode']]
-    #     if 'expiry_time' in filtered_data:
-    #         filtered_data['expiry_time'] = datetime.fromisoformat(filtered_data['expiry_time']).date()
-    #     if 'start_date' in filtered_data and filtered_data['start_date']:
-    #         filtered_data['start_date'] = datetime.fromisoformat(filtered_data['start_date']).date()
-    #     return User(**filtered_data)
-    def to_dict(d, convert_date=True):
-        from hiddifypanel.panel import hiddify
-        return {
-            'uuid': d.uuid,
-            'name': d.name,
-            'last_online': hiddify.time_to_json(d.last_online) if convert_date else d.last_online,
-            'usage_limit_GB': d.usage_limit_GB,
-            'package_days': d.package_days,
-            'mode': d.mode,
-            'start_date': hiddify.date_to_json(d.start_date)if convert_date else d.start_date,
-            'current_usage_GB': d.current_usage_GB,
-            'last_reset_time': hiddify.date_to_json(d.last_reset_time) if convert_date else d.last_reset_time,
-            'comment': d.comment,
-            'added_by_uuid': d.admin.uuid,
-            'telegram_id': hutils.utils.convert_to_int(d.telegram_id),
-            'ed25519_private_key': d.ed25519_private_key,
-            'ed25519_public_key': d.ed25519_public_key
-        }
-
-
+# TODO: refactor this function too
 def remove(user: User, commit=True) -> None:
     from hiddifypanel.drivers import user_driver
     user_driver.remove_client(user)
@@ -193,178 +206,14 @@ def remove(user: User, commit=True) -> None:
     if commit:
         db.session.commit()
 
-
-def is_user_active(u):
-    """
-    The "is_user_active" function checks if the input user object "u" is active by verifying if their mode is not
-    "disable", if their usage limit hasn't been exceeded, and if there are remaining days on their account. The
-    function returns a boolean value indicating whether the user is active or not.
-    """
-    is_active = True
-    if not u:
-        is_active = False
-    elif not u.enable:
-        is_active = False
-    elif u.usage_limit < u.current_usage:
-        is_active = False
-    elif remaining_days(u) < 0:
-        is_active = False
-    elif len(u.ips) > max(3, u.max_ips):
-        is_active = False
-    return is_active
+# TODO: refactor this function too
 
 
-def remaining_days(u):
-    """
-    The "remaining_days" function calculates the number of days remaining for a user's account package based on the
-    current date and the user's start date. The function returns the remaining days as an integer value. If the start
-    date is not available, the function returns the total package days.
-    """
-    res = -1
-    if u.package_days is None:
-        res = -1
-    elif u.start_date:
-        # print(datetime.date.today(), u.start_date,u.package_days, u.package_days - (datetime.date.today() - u.start_date).days)
-        res = u.package_days - (datetime.date.today() - u.start_date).days
-    else:
-        # print("else",u.package_days )
-        res = u.package_days
-    return min(res, 10000)
-
-
-package_mode_dic = {
-    UserMode.daily: 1,
-    UserMode.weekly: 7,
-    UserMode.monthly: 30
-}
-
-
-def days_to_reset(user):
-    """
-    The "days_to_reset" function calculates the number of days until the user's data usage is reset, based on the
-    user's start date and mode of usage. The function returns the remaining days as an integer value. If the start
-    date is not available, the function returns the total days for the user's mode.
-    """
-    # print("start_date",user.start_date, "pack",package_mode_dic.get(user.mode,10000), "total",(datetime.date.today()-user.start_date).days)
-    # if user.mode==UserMode.daily:
-    #     return 0
-    if user.start_date:
-        days = package_mode_dic.get(user.mode, 10000)-(datetime.date.today()-user.start_date).days % package_mode_dic.get(user.mode, 10000)
-    else:
-        days = package_mode_dic.get(user.mode, 10000)
-    return max(-100000, min(days, 100000))
-
-
-def user_should_reset(user):
-    """
-    The "days_to_reset" function calculates the number of days until the user's data usage is reset, based on the
-    user's start date and mode of usage. The function returns the remaining days as an integer value. If the start
-    date is not available, the function returns the total days for the user's mode.
-    """
-    # print("start_date",user.start_date, "pack",package_mode_dic.get(user.mode,10000), "total",(datetime.date.today()-user.start_date).days)
-    # if user.mode==UserMode.daily:
-    #     return 0
-    res = True
-    if not user.last_reset_time:
-        res = True
-    elif not user.start_date or (datetime.date.today()-user.last_reset_time).days == 0:
-        res = False
-    else:
-        res = ((datetime.date.today()-user.start_date).days % package_mode_dic.get(user.mode, 10000)) == 0
-
-    return res
-
-
-def get_user_by_uuid(uuid) -> User | None:
-    return User.query.filter(User.uuid == uuid).first()
-
-
-def user_by_id(id) -> User | None:
-    return User.query.filter(User.id == id).first()
-
-
-def get_user_by_username(username) -> User | None:
-    return User.query.filter(User.username == username).first()
-
-# aliz dev
-
-
-def remove_user(commit=True, **uuid):
+def remove_user(uuid: str, commit=True):
     dbuser = User.by_uuid(uuid)
     db.session.delete(dbuser)
     if commit:
         db.session.commit()
-# end aliz dev
-
-
-def add_or_update_user(commit=True, **user):
-    # if not is_valid():return
-    from hiddifypanel.panel import hiddify
-    dbuser = User.by_uuid(user['uuid'], create=True)
-
-    if user.get('added_by_uuid'):
-        from .admin import get_admin_by_uuid
-        admin = get_admin_by_uuid(user.get('added_by_uuid'), create=True)
-        dbuser.added_by = admin.id
-    else:
-        dbuser.added_by = 1
-
-    if user.get('expiry_time', ''):
-        last_reset_time = hiddify.json_to_date(user.get('last_reset_time', '')) or datetime.date.today()
-
-        expiry_time = hiddify.json_to_date(user['expiry_time'])
-        dbuser.start_date = last_reset_time
-        dbuser.package_days = (expiry_time-last_reset_time).days
-
-    elif 'package_days' in user:
-        dbuser.package_days = user['package_days']
-        if user.get('start_date', ''):
-            dbuser.start_date = hiddify.json_to_date(user['start_date'])
-        else:
-            dbuser.start_date = None
-    dbuser.current_usage_GB = user['current_usage_GB']
-
-    dbuser.usage_limit_GB = user['usage_limit_GB']
-    dbuser.name = user.get('name') or ''
-    dbuser.comment = user.get('comment', '')
-    dbuser.enable = user.get('enable', True)
-    if user.get('ed25519_private_key', ''):
-        dbuser.ed25519_private_key = user.get('ed25519_private_key', '')
-        dbuser.ed25519_public_key = user.get('ed25519_public_key', '')
-    if not dbuser.ed25519_private_key:
-        priv, publ = hiddify.get_ed25519_private_public_pair()
-        dbuser.ed25519_private_key = priv
-        dbuser.ed25519_public_key = publ
-
-    mode = user.get('mode', UserMode.no_reset)
-    if mode == 'disable':
-        mode = UserMode.no_reset
-        dbuser.enable = False
-
-    dbuser.mode = mode
-
-    dbuser.telegram_id = user.get('telegram_id')
-
-    dbuser.last_online = hiddify.json_to_time(user.get('last_online')) or datetime.datetime.min
-
-    if commit:
-        db.session.commit()
-
-
-def bulk_register_users(users=[], commit=True, remove=False):
-    for u in users:
-        add_or_update_user(commit=False, **u)
-    if remove:
-        dd = {u['uuid']: 1 for u in users}
-        for d in User.query.all():
-            if d.uuid not in dd:
-                db.session.delete(d)
-    if commit:
-        db.session.commit()
-
-
-def get_user_by_username_password(username, password) -> User | None:
-    return User.query.filter(User.username == username, User.password == password).first()
 
 
 @event.listens_for(User, 'before_insert')

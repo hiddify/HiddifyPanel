@@ -12,7 +12,7 @@ def send_welcome(message):
     # print("dddd",text)
     uuid = text.split()[1].split("_")[1] if len(text.split()) > 1 else None
     if uuid:
-        admin_user = get_admin_by_uuid(uuid)
+        admin_user = AdminUser.by_uuid(uuid)
         if admin_user:
             admin_user.telegram_id = message.chat.id
             db.session.commit()

@@ -5,7 +5,7 @@ from flask import current_app
 from functools import wraps
 from apiflask import abort
 
-from hiddifypanel.models import AdminUser, User, get_admin_by_uuid, Role, get_user_by_uuid, get_user_by_username_password, get_admin_by_username_password, AccountType
+from hiddifypanel.models import AdminUser, User, Role, AccountType
 import hiddifypanel.panel.hiddify as hiddify
 from hiddifypanel import hutils
 
@@ -135,7 +135,7 @@ def init_app(app):
         if account:
             g.account = account
             # g.account_uuid = account.uuid
-            g.is_admin = hutils.utils.is_admin_role(account.role)
+            g.is_admin = hiddify.is_admin_role(account.role)
         return account
 
     @login_manager.request_loader
@@ -149,23 +149,23 @@ def init_app(app):
 
         if hiddify.is_api_call(request.path):
             if apikey := hutils.utils.get_apikey_from_auth_header(auth_header):
-                account = get_user_by_uuid(apikey) or get_admin_by_uuid(apikey)
+                account = User.by_uuid(apikey) or AdminUser.by_uuid(apikey)
                 is_api_call = True
         else:
             if username_password := hutils.utils.parse_basic_auth_header(auth_header):
                 uname = username_password[0]
                 pword = username_password[1]
                 if hiddify.is_login_call():
-                    account = get_admin_by_username_password(uname, pword) if hiddify.is_admin_proxy_path() else get_user_by_username_password(uname, pword)
+                    account = AdminUser.by_username_password(uname, pword) if hiddify.is_admin_proxy_path() else User.by_username_password(uname, pword)
                 elif hiddify.is_admin_panel_call():
-                    account = get_admin_by_username_password(uname, pword)
+                    account = AdminUser.by_username_password(uname, pword)
                 elif hiddify.is_user_panel_call():
-                    account = get_user_by_username_password(uname, pword)
+                    account = User.by_username_password(uname, pword)
 
         if account:
             g.account = account
             # g.account_uuid = account.uuid
-            g.is_admin = hutils.utils.is_admin_role(account.role)
+            g.is_admin = hiddify.is_admin_role(account.role)  # type: ignore
             if not is_api_call:
                 login_user(account)
 

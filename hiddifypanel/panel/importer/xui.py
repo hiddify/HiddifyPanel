@@ -4,8 +4,8 @@ from typing import Any, Dict, List, Tuple
 import uuid as uuid_mod
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
-from hiddifypanel.models.admin import current_admin_or_owner
 import hiddifypanel.hutils.utils as utils
+from hiddifypanel.models.admin import AdminUser
 from hiddifypanel.models.user import User, UserMode
 from hiddifypanel.models.domain import Domain, DomainType
 from hiddifypanel.panel import hiddify
@@ -75,7 +75,7 @@ def __create_hiddify_user_from_xui_values(id: str, values: Dict[str, Any]) -> Us
     user.telegram_id = str(values['telegram_id'])
     user.enable = values['enable']
     user.comment = "imported from x-ui"
-    user.admin = current_admin_or_owner()
+    user.admin = AdminUser.current_admin_or_owner()
 
     return user
 
@@ -143,7 +143,7 @@ def import_data(db_path: str):
         hiddify_domains_dict = [d.to_dict() for d in hiddify_reality_domains]
 
         for u in hiddify_users_dict:
-            hiddify.add_or_update_user(commit=False, **u)
+            User.add_or_update(commit=False, **u)
 
         for d in hiddify_domains_dict:
             hiddify.add_or_update_domain(commit=False, **d)

@@ -47,7 +47,7 @@ def backup():
 
 def all_configs():
     import json
-    valid_users = [u.to_dict() for u in User.query.filter((User.usage_limit > User.current_usage)).all() if is_user_active(u)]
+    valid_users = [u.to_dict() for u in User.query.filter((User.usage_limit > User.current_usage)).all() if u.is_active]
 
     configs = {
         "users": valid_users,

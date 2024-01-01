@@ -3,7 +3,6 @@ from flask import current_app as app, g
 from apiflask import abort
 from hiddifypanel.panel.auth import login_required
 from hiddifypanel.models.role import Role
-from hiddifypanel.models.user import get_user_by_uuid
 from hiddifypanel.panel import hiddify
 from hiddifypanel.drivers import user_driver
 from hiddifypanel.models import User
@@ -23,7 +22,7 @@ class UsersApi(MethodView):
     @app.output(UserSchema)  # type: ignore
     def put(self, data):
         uuid = data.get('uuid') or abort(422, "Parameter issue: 'uuid'")
-        user = get_user_by_uuid(uuid)
+        user = User.by_uuid(uuid)
 
         if not data.get('added_by_uuid'):
             data['added_by_uuid'] = g.account.uuid
@@ -32,9 +31,9 @@ class UsersApi(MethodView):
         if user:
             if not has_permission(user):
                 abort(403, "You don't have permission to access this user")
-        hiddify.add_or_update_user(**data)
+        User.add_or_update(**data)  # type: ignore
 
-        dbuser = get_user_by_uuid(data['uuid']) or abort(502, "Unknown issue: User is not added")
+        dbuser = User.by_uuid(data['uuid']) or abort(502, "Unknown issue: User is not added")
         user_driver.add_client(dbuser)
         hiddify.quick_apply_users()
         return dbuser.to_dict(False)  # type: ignore

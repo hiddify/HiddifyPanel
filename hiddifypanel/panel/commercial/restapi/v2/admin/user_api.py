@@ -74,7 +74,7 @@ class UserApi(MethodView):
 
     @app.output(UserSchema)
     def get(self, uuid):
-        user = get_user_by_uuid(uuid) or abort(404, "user not found")
+        user = User.by_uuid(uuid) or abort(404, "user not found")
         if not has_permission(user):
             abort(403, "You don't have permission to access this user")
 
@@ -83,7 +83,7 @@ class UserApi(MethodView):
     @app.input(UserSchema, arg_name="data")
     @app.output(SuccessfulSchema)
     def patch(self, uuid, data):
-        user = get_user_by_uuid(uuid) or abort(404, "user not found")
+        user = User.by_uuid(uuid) or abort(404, "user not found")
         if not has_permission(user):
             abort(403, "You don't have permission to access this user")
 
@@ -91,15 +91,15 @@ class UserApi(MethodView):
         if not data.get('added_by_uuid'):
             data['added_by_uuid'] = g.account.uuid
 
-        hiddify.add_or_update_user(**data)
-        user = get_user_by_uuid(uuid) or abort(502, "unknown issue! user is not added")
+        User.add_or_update(**data)  # type: ignore
+        user = User.by_uuid(uuid) or abort(502, "unknown issue! user is not added")
         user_driver.add_client(user)
         hiddify.quick_apply_users()
         return {'status': 200, 'msg': 'ok'}
 
     @app.output(SuccessfulSchema)
     def delete(self, uuid):
-        user = get_user_by_uuid(uuid) or abort(404, "user not found")
+        user = User.by_uuid(uuid) or abort(404, "user not found")
         if not has_permission(user):
             abort(403, "You don't have permission to access this user")
         user.remove()

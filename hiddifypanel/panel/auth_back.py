@@ -2,8 +2,8 @@ from typing import Set
 from apiflask import HTTPBasicAuth, HTTPTokenAuth
 from flask_httpauth import MultiAuth
 
-from hiddifypanel.models.user import User, get_user_by_uuid
-from hiddifypanel.models.admin import AdminUser, get_admin_by_uuid
+from hiddifypanel.models.user import User
+from hiddifypanel.models.admin import AdminUser
 from flask import session
 from strenum import StrEnum
 
@@ -34,7 +34,7 @@ def verify_api_auth_token(token) -> User | AdminUser | None:
     # for now, token is the same as uuid
     # token = token.strip()
     if token:
-        return get_user_by_uuid(token) or get_admin_by_uuid(token)
+        return User.by_uuid(token) or AdminUser.by_uuid(token)
 
     # we dont' set session for api auth
     # if check_session:Admin
@@ -58,12 +58,12 @@ def set_user_authentication_in_session(user: User) -> None:
 
 def verify_admin_authentication_from_session() -> User | AdminUser | None:
     if session.get('account'):
-        return get_user_by_uuid(session['account']['uuid']) or get_admin_by_uuid(session['account']['uuid'])
+        return User.by_uuid(session['account']['uuid']) or AdminUser.by_uuid(session['account']['uuid'])
 
 
 def verify_user_authentication_from_session() -> User | AdminUser | None:
     if session.get('user_sign'):
-        return get_user_by_uuid(session['user_sign']['uuid'])
+        return User.by_uuid(session['user_sign']['uuid'])
 
 
 # actually this is not used, we authenticate the client and setup it in the flask.g object, then in views we re-authenticate with their roles to see if they have access to the view or not
