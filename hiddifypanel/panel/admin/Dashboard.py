@@ -24,7 +24,7 @@ class Dashboard(FlaskView):
 
     #     return jsonify(dict(
     #         stats={'system': hiddify.system_stats(), 'top5': hiddify.top_processes()},
-    #         usage_history=get_daily_usage_stats(admin_id)
+    #         usage_history=DailyUsage.get_daily_usage_stats(admin_id)
     #     ))
 
     @login_required(roles={Role.super_admin, Role.admin, Role.agent})
@@ -83,7 +83,7 @@ class Dashboard(FlaskView):
     #     flash((_('Error!!!')),'info')
 
         stats = {'system': hiddify.system_stats(), 'top5': hiddify.top_processes()}
-        return render_template('index.html', stats=stats, usage_history=get_daily_usage_stats(admin_id, child_id), childs=childs)
+        return render_template('index.html', stats=stats, usage_history=DailyUsage.get_daily_usage_stats(admin_id, child_id), childs=childs)
 
     @login_required(roles={Role.super_admin})
     @route('remove_child', methods=['POST'])
