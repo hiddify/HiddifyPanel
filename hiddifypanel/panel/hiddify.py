@@ -542,7 +542,7 @@ def set_db_from_json(json_data, override_child_id=None, set_users=True, set_doma
             bulk_register_proxies(json_data['proxies'], commit=False, override_child_id=override_child_id)
 
     ids_without_parent = get_ids_without_parent({u.id: u.to_dict() for u in AdminUser.query.all()})
-    owner = get_super_admin()
+    owner = AdminUser.get_super_admin()
     ids_without_parent = [id for id in ids_without_parent if id != owner.id]
 
     for u in AdminUser.query.all():

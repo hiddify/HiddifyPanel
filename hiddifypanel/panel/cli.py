@@ -94,7 +94,7 @@ def test():
 def admin_links():
 
     server_ip = hutils.ip.get_ip(4)
-    owner = get_super_admin()
+    owner = AdminUser.get_super_admin()
     proxy_path = hconfig(ConfigEnum.proxy_path_admin)
     admin_links = f"Not Secure (do not use it - only if others not work):\n   {hutils.utils.add_basic_auth_to_url(f'http://{server_ip}/{proxy_path}/', owner.username, owner.password)}\n"
 
