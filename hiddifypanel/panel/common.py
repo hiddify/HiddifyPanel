@@ -114,7 +114,7 @@ def init_app(app: APIFlask):
                 values['proxy_path'] = hconfig(ConfigEnum.proxy_path_admin)
 
         if hiddify.is_api_v1_call(endpoint=endpoint) and 'admin_uuid' not in values:
-            values['admin_uuid'] = get_super_admin_uuid()
+            values['admin_uuid'] = AdminUser.get_super_admin_uuid()
 
     @app.route("/<proxy_path>/videos/<file>")
     @app.doc(hide=True)

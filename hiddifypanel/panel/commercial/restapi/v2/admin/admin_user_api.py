@@ -10,6 +10,8 @@ from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify
 from hiddifypanel.models import AdminMode, Lang
 
+from . import SuccessfulSchema, has_permission
+
 
 class AdminSchema(Schema):
     name = String(required=True, description='The name of the admin')
@@ -25,34 +27,33 @@ class AdminSchema(Schema):
 
 
 class AdminUserApi(MethodView):
-    decorators = [login_required({Role.admin})]
+    decorators = [login_required({Role.super_admin, Role.admin})]
 
     @app.output(AdminSchema)
     def get(self, uuid):
-        admin = get_admin_by_uuid(uuid) or abort(404, "admin not found")
+        admin = AdminUser.by_uuid(uuid) or abort(404, "admin not found")
         if not has_permission(admin):
             abort(403, "You don't have permission to access this admin")
         return admin.to_dict()
 
     @app.input(AdminSchema, arg_name='data')
+    @app.output(SuccessfulSchema)
     def patch(self, uuid, data):
-        admin = get_admin_by_uuid(uuid) or abort(404, "admin not found")
+        admin = AdminUser.by_uuid(uuid) or abort(404, "admin not found")
         if not has_permission(admin):
             abort(403, "You don't have permission to access this admin")
+
         data['uuid'] = uuid
-        hiddify.add_or_update_admin(**data)
+        if not data.get('added_by_uuid'):
+            data['added_by_uuid'] = g.account.uuid
+
+        AdminUser.add_or_update(**data)
         return {'status': 200, 'msg': 'ok'}
 
+    @app.output(SuccessfulSchema)
     def delete(self, uuid):
-        admin = get_admin_by_uuid(uuid) or abort(404, "admin not found")
+        admin = AdminUser.by_uuid(uuid) or abort(404, "admin not found")
         if not has_permission(admin):
             abort(403, "You don't have permission to access this admin")
         admin.remove()
         return {'status': 200, 'msg': 'ok'}
-
-
-def has_permission(admin) -> bool:
-    '''Check if the authenticated account has permission to do an action(get,insert,update,delete) on the admin another admin'''
-    if not g.account.uuid != get_super_admin_uuid() and admin.parent_admin_id != g.account.id:  # type: ignore
-        return False
-    return True

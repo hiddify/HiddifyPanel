@@ -4,6 +4,7 @@ from flask_babelex import gettext as __
 from flask_babelex import lazy_gettext as _
 from hiddifypanel.panel import hiddify
 from flask import g
+from hiddifypanel.panel.auth import login_required
 # Define a custom field type for the related domains
 
 
@@ -28,4 +29,9 @@ class ProxyDetailsAdmin(AdminLTEModelView):
         pass
 
     def is_accessible(self):
-        return g.account.mode in [AdminMode.admin, AdminMode.super_admin]
+        if login_required(roles={Role.super_admin, Role.admin})(lambda: True)() != True:
+            return False
+        return True
+
+    def inaccessible_callback(self, name, **kwargs):
+        return current_app.login_manager.unauthorized()  # type: ignore

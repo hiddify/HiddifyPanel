@@ -112,7 +112,7 @@ def admin(function):
 def api_v1_auth(function):
     def wrapper(*args, **kwargs):
         a_uuid = kwargs.get('admin_uuid')
-        if not a_uuid or a_uuid != get_super_admin_uuid():
+        if not a_uuid or a_uuid != AdminUser.get_super_admin_uuid():
             apiflask_abort(403, 'invalid request')
         return function(*args, **kwargs)
     return wrapper
@@ -180,7 +180,7 @@ def is_api_v1_call(endpoint=None) -> bool:
     elif request.endpoint and 'api_v1' in request.endpoint:
         return True
 
-    api_v1_path = f'{request.host}/{hconfig(ConfigEnum.proxy_path_admin)}/api/v1/{get_super_admin_uuid()}/'
+    api_v1_path = f'{request.host}/{hconfig(ConfigEnum.proxy_path_admin)}/api/v1/{AdminUser.get_super_admin_uuid()}/'
     if f'{request.host}{request.path}'.startswith(api_v1_path):
         return True
     return False
@@ -207,6 +207,12 @@ def is_login_call() -> bool:
     base_path = f'{request.host}'
     requested_url = f'{request.host}{request.path}'
     if requested_url == f'{base_path}/{hconfig(ConfigEnum.proxy_path_admin)}/' or requested_url == f'{base_path}/{hconfig(ConfigEnum.proxy_path_client)}/':
+        return True
+    return False
+
+
+def is_admin_role(role: Role):
+    if role in {Role.super_admin, Role.admin, Role.agent}:
         return True
     return False
 
@@ -289,7 +295,7 @@ def quick_apply_users():
     # usage.update_local_usage()
     # return
     # for user in User.query.all():
-    #     if is_user_active(user):
+    #     if user.is_active:
     #         xray_api.add_client(user.uuid)
     #     else:
     #         xray_api.remove_client(user.uuid)
@@ -502,30 +508,30 @@ def set_db_from_json(json_data, override_child_id=None, set_users=True, set_doma
     if "admin_users" in json_data:
         for u in json_data['admin_users']:
             if override_root_admin and u['uuid'] in uuids_without_parent:
-                u['uuid'] = current_admin_or_owner().uuid
+                u['uuid'] = AdminUser.current_admin_or_owner().uuid
             if u['parent_admin_uuid'] in uuids_without_parent:
-                u['parent_admin_uuid'] = current_admin_or_owner().uuid
+                u['parent_admin_uuid'] = AdminUser.current_admin_or_owner().uuid
         # fix admins hierarchy
         if fix_admin_hierarchy and len(json_data['admin_users']) > 2:
             hierarchy_is_ok = False
             for u in json_data['admin_users']:
-                if u['uuid'] == current_admin_or_owner().uuid:
+                if u['uuid'] == AdminUser.current_admin_or_owner().uuid:
                     continue
-                if u['parent_admin_uuid'] == current_admin_or_owner().uuid:
+                if u['parent_admin_uuid'] == AdminUser.current_admin_or_owner().uuid:
                     hierarchy_is_ok = True
                     break
             if not hierarchy_is_ok:
-                json_data['admin_users'][1]['parent_admin_uuid'] = current_admin_or_owner().uuid
+                json_data['admin_users'][1]['parent_admin_uuid'] = AdminUser.current_admin_or_owner().uuid
 
     if "users" in json_data and override_root_admin:
         for u in json_data['users']:
             if u['added_by_uuid'] in uuids_without_parent:
-                u['added_by_uuid'] = current_admin_or_owner().uuid
+                u['added_by_uuid'] = AdminUser.current_admin_or_owner().uuid
 
     if set_admins and 'admin_users' in json_data:
-        bulk_register_admins(json_data['admin_users'], commit=False)
+        AdminUser.bulk_register(json_data['admin_users'], commit=False)
     if set_users and 'users' in json_data:
-        bulk_register_users(json_data['users'], commit=False, remove=remove_users)
+        User.bulk_register(json_data['users'], commit=False, remove=remove_users)
     if set_domains and 'domains' in json_data:
         bulk_register_domains(json_data['domains'], commit=False, remove=remove_domains, override_child_id=override_child_id)
     if set_domains and 'parent_domains' in json_data:

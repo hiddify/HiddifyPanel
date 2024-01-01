@@ -4,7 +4,7 @@ import os
 import urllib.request
 
 from flask_classful import FlaskView, route
-from flask import render_template, request, Markup, url_for, make_response, redirect, g
+from flask import render_template, request, url_for, make_response, redirect, g
 from hiddifypanel.panel.auth import login_required
 from flask import current_app as app
 # from flask_cors import cross_origin
@@ -62,7 +62,6 @@ class Actions(FlaskView):
     def apply_configs(self):
         return self.reinstall(False)
 
-    # @login_required(roles={Role.super_admin})
     @route('reset', methods=['POST'])
     @login_required(roles={Role.super_admin})
     def reset(self):
@@ -70,7 +69,7 @@ class Actions(FlaskView):
 
     @login_required(roles={Role.super_admin})
     def reset2(self):
-        status = self.status()
+        _ = self.status()
 
         # run restart.sh
         commander(Command.restart_services)

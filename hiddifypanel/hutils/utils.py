@@ -15,6 +15,8 @@ import os
 import sys
 
 from hiddifypanel.cache import cache
+
+
 to_gig_d = 1000*1000*1000
 
 
@@ -200,7 +202,7 @@ def parse_login_id(raw_id) -> Tuple[Any | None, str | None]:
         raw_id (str): The raw ID to be parsed.
     Returns:
         Tuple[Any | None, str | None]: A tuple containing the account type and ID.
-            The account type is of type Role (either Role.user or Role.admin)
+            The account type is either AccountType.admin or AccountType.user
             and the ID is a string. If the raw ID cannot be parsed, None is returned
             for both the account type and ID.
     """
@@ -222,3 +224,10 @@ def add_basic_auth_to_url(url: str, username: str, password: str) -> str:
         return url.replace('http://', f'http://{username}:{password}@')
     else:
         return url
+
+
+def convert_to_int(s: str) -> int:
+    try:
+        return int(s)
+    except:
+        return 0

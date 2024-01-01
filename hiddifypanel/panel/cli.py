@@ -9,7 +9,7 @@ from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify, usage
 from hiddifypanel.panel.database import db
 from hiddifypanel.panel.init_db import init_db
-from hiddifypanel.panel.importer.xui import import_data
+from hiddifypanel.panel.importer.xui import import_data as xui_import_data
 
 
 def drop_db():
@@ -47,7 +47,7 @@ def backup():
 
 def all_configs():
     import json
-    valid_users = [u.to_dict() for u in User.query.filter((User.usage_limit > User.current_usage)).all() if is_user_active(u)]
+    valid_users = [u.to_dict() for u in User.query.filter((User.usage_limit > User.current_usage)).all() if u.is_active]
 
     configs = {
         "users": valid_users,
@@ -71,14 +71,14 @@ def all_configs():
     configs['admin_path'] = path
     owner = get_super_admin()
     configs['panel_links'] = []
-    configs['panel_links'].append(f"http://{owner.username}:{owner.password}@{server_ip}{path}")
-    configs['panel_links'].append(f"https://{owner.username}:{owner.password}@{server_ip}{path}")
+    configs['panel_links'].append(hutils.utils.add_basic_auth_to_url(f'http://{server_ip}{path}', owner.username, owner.password))
+    configs['panel_links'].append(hutils.utils.add_basic_auth_to_url(f'https://{server_ip}{path}', owner.username, owner.password))
     domains = get_panel_domains()
     # if not any([d for d in domains if 'sslip.io' not in d.domain]):
     #     configs['panel_links'].append(f"https://{server_ip}{path}")
 
     for d in domains:
-        configs['panel_links'].append(f"https://{owner.username}:{owner.password}@{d.domain}{path}")
+        configs['panel_links'].append(hutils.utils.add_basic_auth_to_url(f'https://{d.domain}{path}', owner.username, owner.password))
 
     print(json.dumps(configs, indent=4))
 
@@ -96,16 +96,16 @@ def admin_links():
     server_ip = hutils.ip.get_ip(4)
     owner = get_super_admin()
     proxy_path = hconfig(ConfigEnum.proxy_path_admin)
-    admin_links = f"Not Secure (do not use it - only if others not work):\n   http://{owner.username}:{owner.password}@{server_ip}/{proxy_path}/\n"
+    admin_links = f"Not Secure (do not use it - only if others not work):\n   {hutils.utils.add_basic_auth_to_url(f'http://{server_ip}/{proxy_path}/', owner.username, owner.password)}\n"
 
     domains = get_panel_domains()
     admin_links += f"Secure:\n"
     if not any([d for d in domains if 'sslip.io' not in d.domain]):
-        admin_links += f"   (not signed) https://{owner.username}:{owner.password}@{server_ip}/{proxy_path}/\n"
+        admin_links += f"   (not signed) {hutils.utils.add_basic_auth_to_url(f'https://{server_ip}/{proxy_path}/', owner.username, owner.password)}\n"
 
     # domains=[*domains,f'{server_ip}.sslip.io']
     for d in domains:
-        admin_links += f"   https://{owner.username}:{owner.password}@{d.domain}/{proxy_path}/\n"
+        admin_links += f"   {hutils.utils.add_basic_auth_to_url(f'https://{d.domain}/{proxy_path}/', owner.username, owner.password)}\n"
 
     print(admin_links)
     return admin_links
@@ -239,7 +239,7 @@ def init_app(app):
     @ click.option("--xui_db_path", "-x")
     def xui_importer(xui_db_path):
         try:
-            import_data(xui_db_path)
+            xui_import_data(xui_db_path)
             print('success')
         except Exception as e:
             print(f'failed to import xui data: Error: {e}')

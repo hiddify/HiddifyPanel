@@ -1,5 +1,6 @@
 from flask_admin.contrib import sqla
 from hiddifypanel import hutils
+from hiddifypanel.panel.auth import login_required
 from hiddifypanel.panel.database import db
 from wtforms.validators import Regexp
 from hiddifypanel.models import *
@@ -122,4 +123,9 @@ class ParentDomainAdmin(AdminLTEModelView):
         hiddify.flash_config_success(restart_mode='apply', domain_changed=True)
 
     def is_accessible(self):
-        return g.account.mode in [AdminMode.admin, AdminMode.super_admin]
+        if login_required(roles={Role.super_admin, Role.admin})(lambda: True)() != True:
+            return False
+        return True
+
+    def inaccessible_callback(self, name, **kwargs):
+        return current_app.login_manager.unauthorized()  # type: ignore

@@ -1,9 +1,9 @@
-from flask_classful import FlaskView, route
+from flask_classful import FlaskView
 from hiddifypanel.panel.auth import login_required, current_user
-from flask import redirect, render_template, request, Response, g, url_for, jsonify, flash
+from flask import redirect, request, g, url_for
 from apiflask import abort
 import hiddifypanel.panel.hiddify as hiddify
-from hiddifypanel.models import AdminUser, User, get_admin_by_uuid, Role, get_user_by_uuid, get_user_by_username_password, get_admin_by_username_password, AccountType
+from hiddifypanel.models import Role
 
 
 class LoginView(FlaskView):

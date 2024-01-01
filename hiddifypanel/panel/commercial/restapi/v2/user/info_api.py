@@ -8,7 +8,7 @@ from hiddifypanel.panel.auth import login_required
 
 from hiddifypanel.models import Lang
 from hiddifypanel.models.role import Role
-from hiddifypanel.models.user import days_to_reset, get_user_by_uuid
+from hiddifypanel.models.user import User
 from hiddifypanel.models.config import hconfig
 from hiddifypanel.models.config_enum import ConfigEnum
 from hiddifypanel.panel.database import db
@@ -50,8 +50,8 @@ class InfoAPI(MethodView):
         dto.profile_url = f"https://{g.account.username}:{g.account.password}@{urlparse(request.base_url).hostname}/{g.proxy_path}/#{g.account.name}"
         dto.profile_usage_current = g.account.current_usage_GB
         dto.profile_usage_total = g.account.usage_limit_GB
-        dto.profile_remaining_days = g.account.remaining_days
-        dto.profile_reset_days = days_to_reset(g.account)
+        dto.profile_remaining_days = g.account.remaining_days()
+        dto.profile_reset_days = g.account.days_to_reset()
         dto.telegram_bot_url = f"https://t.me/{c['bot'].username}?start={g.account.uuid}" if c['bot'] else ""
         dto.telegram_id = c['user'].telegram_id or 0
         dto.admin_message_html = hconfig(ConfigEnum.branding_freetext)
@@ -70,13 +70,13 @@ class InfoAPI(MethodView):
             except:
                 return {'message': 'The telegram id field is invalid'}
 
-            user = get_user_by_uuid(g.account.uuid)
+            user = User.by_uuid(g.account.uuid)
             if user.telegram_id != tg_id:
                 user.telegram_id = tg_id
                 db.session.commit()
 
         if data['language']:
-            user = get_user_by_uuid(g.account.uuid)
+            user = User.by_uuid(g.account.uuid)
             if user.lang != data['language']:
                 user.lang = data['language']
                 db.session.commit()

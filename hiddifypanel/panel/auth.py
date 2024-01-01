@@ -1,12 +1,13 @@
-from functools import wraps
 from flask_login import LoginManager, current_user, user_accessed, user_logged_in,  COOKIE_NAME, AUTH_HEADER_NAME
-from flask_login.utils import _get_user
-import hiddifypanel.hutils as hutils
 from flask import g, redirect, request, session
-from apiflask import abort
+from flask_login.utils import _get_user
 from flask import current_app
-from hiddifypanel.models import AdminUser, User, get_admin_by_uuid, Role, get_user_by_uuid, get_user_by_username_password, get_admin_by_username_password, AccountType
+from functools import wraps
+from apiflask import abort
+
+from hiddifypanel.models import AdminUser, User, Role, AccountType
 import hiddifypanel.panel.hiddify as hiddify
+from hiddifypanel import hutils
 
 
 class CustumLoginManager(LoginManager):
@@ -99,9 +100,6 @@ def login_required(roles: set[Role] | None = None):
             if not current_user.is_authenticated:
                 return current_app.login_manager.unauthorized()  # type: ignore
             if roles:
-                # super_admin role has admin role permission too
-                if Role.admin in roles and Role.super_admin not in roles:
-                    roles.add(Role.super_admin)
                 account_role = current_user.role
                 if account_role not in roles:
                     return current_app.login_manager.unauthorized()  # type: ignore
@@ -137,7 +135,7 @@ def init_app(app):
         if account:
             g.account = account
             # g.account_uuid = account.uuid
-            g.is_admin = True if account.role in {Role.super_admin, Role.admin} else False
+            g.is_admin = hiddify.is_admin_role(account.role)
         return account
 
     @login_manager.request_loader
@@ -151,23 +149,23 @@ def init_app(app):
 
         if hiddify.is_api_call(request.path):
             if apikey := hutils.utils.get_apikey_from_auth_header(auth_header):
-                account = get_user_by_uuid(apikey) or get_admin_by_uuid(apikey)
+                account = User.by_uuid(apikey) or AdminUser.by_uuid(apikey)
                 is_api_call = True
         else:
             if username_password := hutils.utils.parse_basic_auth_header(auth_header):
                 uname = username_password[0]
                 pword = username_password[1]
                 if hiddify.is_login_call():
-                    account = get_admin_by_username_password(uname, pword) if hiddify.is_admin_proxy_path() else get_user_by_username_password(uname, pword)
+                    account = AdminUser.by_username_password(uname, pword) if hiddify.is_admin_proxy_path() else User.by_username_password(uname, pword)
                 elif hiddify.is_admin_panel_call():
-                    account = get_admin_by_username_password(uname, pword)
+                    account = AdminUser.by_username_password(uname, pword)
                 elif hiddify.is_user_panel_call():
-                    account = get_user_by_username_password(uname, pword)
+                    account = User.by_username_password(uname, pword)
 
         if account:
             g.account = account
             # g.account_uuid = account.uuid
-            g.is_admin = True if account.role in {Role.super_admin, Role.admin} else False  # False if account.role == 'user' else True
+            g.is_admin = hiddify.is_admin_role(account.role)  # type: ignore
             if not is_api_call:
                 login_user(account)
 

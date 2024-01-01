@@ -283,9 +283,13 @@ class DomainAdmin(AdminLTEModelView):
             # run get_cert.sh
             commander(Command.get_cert, domain=model.domain)
 
-    @login_required(roles={Role.admin})
     def is_accessible(self):
+        if login_required(roles={Role.super_admin, Role.admin})(lambda: True)() != True:
+            return False
         return True
+
+    def inaccessible_callback(self, name, **kwargs):
+        return current_app.login_manager.unauthorized()  # type: ignore
 
     # def form_choices(self, field, *args, **kwargs):
     #     if field.type == "Enum":

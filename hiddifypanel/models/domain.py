@@ -10,6 +10,7 @@ from hiddifypanel import hutils
 from .config import hconfig
 from .config_enum import ConfigEnum
 from sqlalchemy.orm import backref
+from flask_babelex import lazy_gettext as _
 
 
 class DomainType(StrEnum):
@@ -55,24 +56,24 @@ class Domain(db.Model, SerializerMixin):
     def __repr__(self):
         return f'{self.domain}'
 
-    def to_dict(d, dump_ports=False):
+    def to_dict(self, dump_ports=False):
         data = {
-            'domain': d.domain.lower(),
-            'mode': d.mode,
-            'alias': d.alias,
+            'domain': self.domain.lower(),
+            'mode': self.mode,
+            'alias': self.alias,
             # 'sub_link_only':d.sub_link_only,
-            'child_unique_id': d.child.unique_id if d.child else '',
-            'cdn_ip': d.cdn_ip,
-            'servernames': d.servernames,
-            'grpc': d.grpc,
-            'show_domains': [dd.domain for dd in d.show_domains],
+            'child_unique_id': self.child.unique_id if self.child else '',
+            'cdn_ip': self.cdn_ip,
+            'servernames': self.servernames,
+            'grpc': self.grpc,
+            'show_domains': [dd.domain for dd in self.show_domains],
         }
 
         if dump_ports:
-            data["internal_port_hysteria2"] = d.internal_port_hysteria2
-            data["internal_port_tuic"] = d.internal_port_tuic
-            data["internal_port_reality"] = d.internal_port_reality
-            data["need_valid_ssl"] = d.need_valid_ssl
+            data["internal_port_hysteria2"] = self.internal_port_hysteria2
+            data["internal_port_tuic"] = self.internal_port_tuic
+            data["internal_port_reality"] = self.internal_port_reality
+            data["need_valid_ssl"] = self.need_valid_ssl
 
         return data
 
@@ -145,7 +146,7 @@ def get_panel_domains(always_add_ip=False, always_add_all_domains=False):
 
 def get_proxy_domains(domain):
     if hconfig(ConfigEnum.is_parent):
-        from hiddifypanel.commercial.parent_domain import ParentDomain
+        from hiddifypanel.models.parent_domain import ParentDomain
         db_domain = ParentDomain.query.filter(ParentDomain.domain == domain).first() or ParentDomain(domain=domain, show_domains=[])
     else:
         db_domain = Domain.query.filter(Domain.domain == domain).first() or Domain(domain=domain, mode=DomainType.direct, cdn_ip='', show_domains=[])

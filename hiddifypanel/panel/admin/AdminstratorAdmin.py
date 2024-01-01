@@ -6,7 +6,7 @@ from .adminlte import AdminLTEModelView
 from flask_babelex import gettext as __
 from flask_babelex import lazy_gettext as _
 from hiddifypanel.panel import hiddify
-from flask import Markup
+from flask import Markup, current_app
 from flask import g
 import datetime
 from wtforms import SelectField
@@ -101,7 +101,7 @@ class AdminstratorAdmin(AdminLTEModelView):
         last_day = datetime.datetime.now()-datetime.timedelta(days=1)
         u = model.recursive_users_query().filter(User.last_online > last_day).count()
         t = model.recursive_users_query().count()
-        # actives=[u for u in model.recursive_users_query().all() if is_user_active(u)]
+        # actives=[u for u in model.recursive_users_query().all() if u.is_active]
         # allusers=model.recursive_users_query().count()
         # onlines=[p for p in  users  if p.last_online and p.last_online>last_day]
         # return Markup(f"<a class='btn btn-xs btn-default' href='{url_for('flask.user.index_view',admin_id=model.id)}'> {_('Online')}: {onlines}</a>")
@@ -134,7 +134,7 @@ class AdminstratorAdmin(AdminLTEModelView):
 
     def _max_active_users_formatter(view, context, model, name):
 
-        actives = [u for u in model.recursive_users_query().all() if is_user_active(u)]
+        actives = [u for u in model.recursive_users_query().all() if u.is_active]
         u = len(actives)
         if model.mode == AdminMode.super_admin:
             return f"{u} / ∞"
@@ -162,9 +162,14 @@ class AdminstratorAdmin(AdminLTEModelView):
     def search_placeholder(self):
         return f"{_('search')} {_('user.UUID')} {_('user.name')}"
 
-    @login_required(roles={Role.admin})
+    # @login_required(roles={Role.super_admin, Role.admin})
     def is_accessible(self):
+        if login_required(roles={Role.super_admin, Role.admin})(lambda: True)() != True:
+            return False
         return True
+
+    def inaccessible_callback(self, name, **kwargs):
+        return current_app.login_manager.unauthorized()  # type: ignore
 
     def get_query(self):
         # Get the base query

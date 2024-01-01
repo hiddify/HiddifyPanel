@@ -1,4 +1,7 @@
-from apiflask import APIBlueprint
+from apiflask import APIBlueprint, Schema
+from apiflask.fields import Integer, String
+from flask import g
+from hiddifypanel.models import AdminUser
 
 bp = APIBlueprint("api_admin", __name__, url_prefix="/<proxy_path>/api/v2/admin/", enable_openapi=True)
 
@@ -22,3 +25,15 @@ def init_app(app):
         bp.add_url_rule('/user/<uuid:uuid>/', view_func=UserApi)
         bp.add_url_rule('/user/', view_func=UsersApi)
     app.register_blueprint(bp)
+
+
+def has_permission(model) -> bool:
+    '''Check if the authenticated account has permission to do an action(get,insert,update,delete) on the another admin'''
+    if not g.account.uuid != AdminUser.get_super_admin_uuid() and model.parent_admin_id != g.account.id:  # type: ignore
+        return False
+    return True
+
+
+class SuccessfulSchema(Schema):
+    status = Integer()
+    msg = String()
