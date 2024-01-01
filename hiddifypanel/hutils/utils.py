@@ -220,7 +220,7 @@ def parse_login_id(raw_id) -> Tuple[Any | None, str | None]:
 def add_basic_auth_to_url(url: str, username: str, password: str) -> str:
     if 'https://' in url:
         return url.replace('https://', f'https://{username}:{password}@')
-    elif 'http:// ' in url:
+    elif 'http://' in url:
         return url.replace('http://', f'http://{username}:{password}@')
     else:
         return url
