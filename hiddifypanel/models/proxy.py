@@ -62,36 +62,38 @@ class Proxy(db.Model, SerializerMixin):
     transport = db.Column(db.Enum(ProxyTransport), nullable=False)
     cdn = db.Column(db.Enum(ProxyCDN), nullable=False)
 
-    def to_dict(d):
+    def to_dict(self):
         return {
-            'name': d.name,
-            'enable': d.enable,
-            'proto': d.proto,
-            'l3': d.l3,
-            'transport': d.transport,
-            'cdn': d.cdn,
-            'child_unique_id': d.child.unique_id if d.child else ''
+            'name': self.name,
+            'enable': self.enable,
+            'proto': self.proto,
+            'l3': self.l3,
+            'transport': self.transport,
+            'cdn': self.cdn,
+            'child_unique_id': self.child.unique_id if self.child else ''
         }
 
+    @staticmethod
+    def add_or_update(commit=True, child_id=0, **proxy):
+        dbproxy = Proxy.query.filter(Proxy.name == proxy['name']).first()
+        if not dbproxy:
+            dbproxy = Proxy()
+            db.session.add(dbproxy)
+        dbproxy.enable = proxy['enable']
+        dbproxy.name = proxy['name']
+        dbproxy.proto = proxy['proto']
+        dbproxy.transport = proxy['transport']
+        dbproxy.cdn = proxy['cdn']
+        dbproxy.l3 = proxy['l3']
+        dbproxy.child_id = child_id
+        if commit:
+            db.session.commit()
 
-def add_or_update_proxy(commit=True, child_id=0, **proxy):
-    dbproxy = Proxy.query.filter(Proxy.name == proxy['name']).first()
-    if not dbproxy:
-        dbproxy = Proxy()
-        db.session.add(dbproxy)
-    dbproxy.enable = proxy['enable']
-    dbproxy.name = proxy['name']
-    dbproxy.proto = proxy['proto']
-    dbproxy.transport = proxy['transport']
-    dbproxy.cdn = proxy['cdn']
-    dbproxy.l3 = proxy['l3']
-    dbproxy.child_id = child_id
-    if commit:
-        db.session.commit()
-
-
-def bulk_register_proxies(proxies, commit=True, override_child_id=None):
-    from hiddifypanel.panel import hiddify
-    for proxy in proxies:
-        child_id = override_child_id if override_child_id is not None else hiddify.get_child(proxy.get('child_unique_id', None))
-        add_or_update_proxy(commit=False, child_id=child_id, **proxy)
+    @staticmethod
+    def bulk_register(proxies, commit=True, override_child_id=None):
+        from hiddifypanel.panel import hiddify
+        for proxy in proxies:
+            child_id = override_child_id if override_child_id is not None else hiddify.get_child(proxy.get('child_unique_id', None))
+            Proxy.add_or_update(commit=False, child_id=child_id, **proxy)
+        if commit:
+            db.session.commit()

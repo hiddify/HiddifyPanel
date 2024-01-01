@@ -541,7 +541,7 @@ def set_db_from_json(json_data, override_child_id=None, set_users=True, set_doma
     if set_settings and 'hconfigs' in json_data:
         bulk_register_configs(json_data["hconfigs"], commit=True, override_child_id=override_child_id, override_unique_id=override_unique_id)
         if 'proxies' in json_data:
-            bulk_register_proxies(json_data['proxies'], commit=False, override_child_id=override_child_id)
+            Proxy.bulk_register(json_data['proxies'], commit=False, override_child_id=override_child_id)
 
     ids_without_parent = get_ids_without_parent({u.id: u.to_dict() for u in AdminUser.query.all()})
     owner = AdminUser.get_super_admin()
