@@ -8,7 +8,7 @@ from flask import Markup
 from hiddifypanel.panel.auth import login_required
 from hiddifypanel.panel import hiddify
 from hiddifypanel import hutils
-
+from flask import current_app
 
 class ChildAdmin(AdminLTEModelView):
     column_hide_backrefs = False

@@ -8,6 +8,7 @@ from wtforms.validators import ValidationError
 
 from hiddifypanel.models import ConfigEnum, Domain
 from .adminlte import AdminLTEModelView
+from flask import current_app
 
 
 class ConfigAdmin(AdminLTEModelView):

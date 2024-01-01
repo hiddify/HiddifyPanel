@@ -2,7 +2,7 @@ import datetime
 import uuid
 import re
 from hiddifypanel.panel.auth import login_required
-
+from flask import current_app
 from wtforms.validators import Regexp, ValidationError
 from flask import Markup, g, request, url_for
 from flask_babelex import lazy_gettext as _

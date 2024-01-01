@@ -7,6 +7,8 @@ from flask import g
 from hiddifypanel.panel.auth import login_required
 # Define a custom field type for the related domains
 
+from flask import current_app
+
 
 class ProxyDetailsAdmin(AdminLTEModelView):
     column_hide_backrefs = True

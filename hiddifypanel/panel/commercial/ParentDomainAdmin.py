@@ -21,7 +21,7 @@ from wtforms.widgets import ListWidget, CheckboxInput
 from sqlalchemy.orm import backref
 # Define a custom field type for the related domains
 from flask_admin.form.fields import Select2TagsField, Select2Field
-
+from flask import current_app
 
 class ParentDomainAdmin(AdminLTEModelView):
     column_hide_backrefs = False

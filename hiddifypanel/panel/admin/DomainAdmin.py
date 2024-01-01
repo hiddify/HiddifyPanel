@@ -14,7 +14,7 @@ from hiddifypanel.panel import hiddify, cf_api, custom_widgets
 from .adminlte import AdminLTEModelView
 from hiddifypanel import hutils
 
-
+from flask import current_app
 # Define a custom field type for the related domains
 
 
