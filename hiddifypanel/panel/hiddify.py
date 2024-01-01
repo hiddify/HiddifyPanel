@@ -153,22 +153,21 @@ def is_user_panel_call(deprecated_format=False) -> bool:
     if request.blueprint and request.blueprint == 'user2':
         return True
     if deprecated_format:
-        user_panel_url = f'{request.host}/{hconfig(ConfigEnum.proxy_path)}/'
+        user_panel_url = f'/{hconfig(ConfigEnum.proxy_path)}/'
     else:
-        user_panel_url = f'{request.host}/{hconfig(ConfigEnum.proxy_path_client)}/'
-    if f'{request.host}{request.path}' == user_panel_url:
+        user_panel_url = f'/{hconfig(ConfigEnum.proxy_path_client)}/'
+    if f'{request.path}'.startswith(user_panel_url) and "admin" not in f'{request.path}':
         return True
     return False
 
 
-def is_admin_panel_call(deprecated_format=False) -> bool:
+def is_admin_panel_call(deprecated_format: bool = False) -> bool:
     if request.blueprint and request.blueprint == 'admin':
         return True
     if deprecated_format:
-        admin_panel_prefix = f'{request.host}/{hconfig(ConfigEnum.proxy_path)}/admin/'
-    else:
-        admin_panel_prefix = f'{request.host}/{hconfig(ConfigEnum.proxy_path_admin)}/admin/'
-    if f'{request.host}{request.path}'.startswith(admin_panel_prefix):
+        if f'{request.path}'.startswith(f'/{hconfig(ConfigEnum.proxy_path)}/') and "admin" in f'{request.path}':
+            return True
+    elif f'{request.path}'.startswith(f'/{hconfig(ConfigEnum.proxy_path_admin)}/admin/'):
         return True
     return False
 
@@ -225,25 +224,28 @@ def proxy_path_validator(proxy_path):
     # does not nginx handle proxy path validation?
 
     if not proxy_path:
-        return abort(400, 'invalid request')
+        return apiflask_abort(400, 'invalid request')
 
     dbg_mode = True if current_app.config['DEBUG'] else False
     admin_proxy_path = hconfig(ConfigEnum.proxy_path_admin)
     client_proxy_path = hconfig(ConfigEnum.proxy_path_client)
+    deprecated_path = hconfig(ConfigEnum.proxy_path)
+    if proxy_path == deprecated_path:
+        return
 
-    if proxy_path != admin_proxy_path and proxy_path != client_proxy_path:
-        return abort(400, Markup(f"Invalid Proxy Path <a href=/{admin_proxy_path}/admin>Admin Panel</a>")) if dbg_mode else abort(400, 'invalid request')
+    if proxy_path not in [admin_proxy_path, deprecated_path, client_proxy_path]:
+        return apiflask_abort(400, Markup(f"Invalid Proxy Path <a href=/{admin_proxy_path}/admin>Admin Panel</a>")) if dbg_mode else abort(400, 'invalid request')
 
-    if is_admin_panel_call() and proxy_path != admin_proxy_path:
-        return abort(400, Markup(f"Invalid Proxy Path <a href=/{admin_proxy_path}/admin>Admin Panel</a>")) if dbg_mode else abort(400, 'invalid request')
+    if is_admin_panel_call() and proxy_path not in admin_proxy_path:
+        return apiflask_abort(400, Markup(f"Invalid Proxy Path <a href=/{admin_proxy_path}/admin>Admin Panel</a>")) if dbg_mode else abort(400, 'invalid request')
     if is_user_panel_call() and proxy_path != client_proxy_path:
-        return abort(400, Markup(f"Invalid Proxy Path <a href=/{client_proxy_path}/admin>User Panel</a>")) if dbg_mode else abort(400, 'invalid request')
+        return apiflask_abort(400, Markup(f"Invalid Proxy Path <a href=/{client_proxy_path}/admin>User Panel</a>")) if dbg_mode else abort(400, 'invalid request')
 
     if is_api_call(request.path):
         if is_admin_api_call() and proxy_path != admin_proxy_path:
-            return abort(400, Markup(f"Invalid Proxy Path <a href=/{admin_proxy_path}/admin>Admin Panel</a>")) if dbg_mode else abort(400, 'invalid request')
+            return apiflask_abort(400, Markup(f"Invalid Proxy Path <a href=/{admin_proxy_path}/admin>Admin Panel</a>")) if dbg_mode else abort(400, 'invalid request')
         if is_user_api_call() and proxy_path != client_proxy_path:
-            return abort(400, Markup(f"Invalid Proxy Path <a href=/{client_proxy_path}/admin>User Panel</a>")) if dbg_mode else abort(400, 'invalid request')
+            return apiflask_abort(400, Markup(f"Invalid Proxy Path <a href=/{client_proxy_path}/admin>User Panel</a>")) if dbg_mode else abort(400, 'invalid request')
 
 
 def asset_url(path) -> str:
