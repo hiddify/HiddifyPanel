@@ -130,9 +130,11 @@ def init_app(app: APIFlask):
     @app.before_request
     def backward_compatibility_middleware():
         # get needed variables
+
         proxy_path = hiddify.get_proxy_path_from_url(request.url)
         if not proxy_path:
             abort(400, "invalid")
+
         user_agent = user_agents.parse(request.user_agent.string)
         # need this variable in redirect_to_new_format view
         g.user_agent = user_agent
@@ -141,55 +143,34 @@ def init_app(app: APIFlask):
 
         # get proxy paths
         deprecated_proxy_path = hconfig(ConfigEnum.proxy_path)
+        if proxy_path != deprecated_proxy_path:
+            return
+
         admin_proxy_path = hconfig(ConfigEnum.proxy_path_admin)
         client_proxy_path = hconfig(ConfigEnum.proxy_path_client)
 
-        incorrect_request = False
         new_link = ''
 
         # handle deprecated proxy path
-        if proxy_path == deprecated_proxy_path:
-            incorrect_request = True
-            # request.url = request.url.replace('http://', 'https://')
-            if hiddify.is_admin_panel_call(deprecated_format=True):
-                new_link = f'https://{request.host}/{admin_proxy_path}/admin/'
-            elif hiddify.is_user_panel_call(deprecated_format=True):
-                new_link = f'https://{request.host}/{client_proxy_path}/'
-            elif hiddify.is_api_call(request.path):
-                if hiddify.is_admin_api_call():
-                    new_link = request.url.replace(deprecated_proxy_path, admin_proxy_path)
-                elif hiddify.is_user_api_call():
-                    new_link = request.url.replace(deprecated_proxy_path, client_proxy_path)
-                else:
-                    return abort(400, 'invalid request')
-            else:
-                return abort(400, 'invalid request')
+
+        if hiddify.is_admin_panel_call(deprecated_format=True):
+            new_link = f'https://{request.host}/{admin_proxy_path}/admin/'
+        elif hiddify.is_user_panel_call(deprecated_format=True):
+            new_link = f'https://{request.host}/{client_proxy_path}/'
+        else:
+            return abort(400, 'invalid request 1')
 
         # handle uuid url format
-        if uuid := hutils.utils.get_uuid_from_url_path(request.path):
-            if not hiddify.is_telegram_call():
-                incorrect_request = True
-                account = User.by_uuid(uuid) or AdminUser.by_uuid(uuid) or abort(400, 'invalid request')
-                if new_link:
-                    if hiddify.is_api_call(request.path):
-                        new_link = new_link.replace(f'/{uuid}', '')
-                    new_link = hutils.utils.add_basic_auth_to_url(new_link, account.username, account.password)
-                else:
-                    if hiddify.is_api_call(request.path):
-                        new_link = request.url.replace(f'/{uuid}', '')
-                        new_link = hutils.utils.add_basic_auth_to_url(new_link, account.username, account.password)
-                    else:
-                        new_link = f'https://{account.username}:{account.password}@{request.host}/{proxy_path}/'
-                        if "/admin/" in request.path:
-                            new_link += "admin/"
+        uuid = hutils.utils.get_uuid_from_url_path(request.path)
 
-        if incorrect_request:
-            new_link = new_link.replace('http://', 'https://')
-            # if request made by a browser, show new format page else redirect to new format
-            # redirect api calls always
-            if not hiddify.is_api_call(request.path) and user_agent.browser:
-                return render_template('redirect_to_new_format.html', new_link=new_link)
-            return redirect(new_link, 301)
+        account = get_user_by_uuid(uuid) or get_admin_by_uuid(uuid) or abort(400, 'invalid request2')
+
+        new_link = hutils.utils.add_basic_auth_to_url(new_link, account.username, account.password)
+
+        new_link = new_link.replace('http://', 'https://')
+        if user_agent.browser:
+            return render_template('redirect_to_new_format.html', new_link=new_link)
+        return redirect(new_link, 301)
 
     @app.before_request
     def base_middleware():
