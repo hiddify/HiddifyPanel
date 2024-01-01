@@ -169,8 +169,8 @@ def init_app(app: APIFlask):
 
         new_link = hutils.utils.add_basic_auth_to_url(new_link, account.username, account.password)
 
-        # if user_agent.browser:
-        #     return render_template('redirect_to_new_format.html', new_link=new_link)
+        if user_agent.browser:
+            return render_template('redirect_to_new_format.html', new_link=new_link)
 
         auth.login_user(account)
         # return new_link
