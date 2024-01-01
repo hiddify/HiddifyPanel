@@ -15,7 +15,7 @@ class LoginView(FlaskView):
     @route('/<path1>/<path2>/')
     @route('/<path1>/<path2>/<path3>')
     @route('/<path1>/<path2>/<path3>/')
-    def index(self, path1, path2=None, path3=None):
+    def index(self, path1=None, path2=None, path3=None):
         force_arg = request.args.get('force')
         redirect_arg = request.args.get('redirect')
         if not current_user.is_authenticated or (force_arg and not request.headers.get('Authorization')):
