@@ -135,9 +135,10 @@ class UserAdmin(AdminLTEModelView):
         else:
             link = '<i class="fa-solid fa-circle-xmark text-danger"></i> '
 
-        d = get_panel_domains()[0]
+        d = request.host
         client_proxy_path = hconfig(ConfigEnum.proxy_path_client)
-        link += f"<a target='_blank' href='https://{model.username}:{model.password}@{d}/{client_proxy_path}/#{model.name}'>{model.name} <i class='fa-solid fa-arrow-up-right-from-square'></i></a>"
+        link += f"<a target='_blank' class='copy-link' href='https://{d}/{client_proxy_path}/{model.uuid}/#{model.name}'>{model.name} <i class='fa-solid fa-arrow-up-right-from-square'></i></a>"
+        # link += f"<a target='_blank' class='copy-link' href='https://{model.username}:{model.password}@{d}/{client_proxy_path}/#{model.name}'>{model.name} <i class='fa-solid fa-arrow-up-right-from-square'></i></a>"
         return Markup(extra+link)
 
     def _ul_formatter(view, context, model, name):

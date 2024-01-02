@@ -206,11 +206,13 @@ def is_admin_home_call() -> bool:
 
 
 def is_login_call() -> bool:
-    base_path = f'{request.host}'
-    requested_url = f'{request.host}{request.path}'
-    if requested_url == f'{base_path}/{hconfig(ConfigEnum.proxy_path_admin)}/' or requested_url == f'{base_path}/{hconfig(ConfigEnum.proxy_path_client)}/':
-        return True
-    return False
+    # print(request.blueprint)
+    return request.blueprint == 'common_bp'
+    # base_path = f'{request.host}'
+    # requested_url = f'{request.host}{request.path}'
+    # if requested_url == f'{base_path}/{hconfig(ConfigEnum.proxy_path_admin)}/' or requested_url == f'{base_path}/{hconfig(ConfigEnum.proxy_path_client)}/':
+    #     return True
+    # return False
 
 
 def is_admin_role(role: Role):
