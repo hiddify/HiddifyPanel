@@ -1,10 +1,12 @@
 from flask_classful import FlaskView, route
-from hiddifypanel.panel.auth import login_required, current_user
+from hiddifypanel.panel.auth import login_required, current_user, login_user
 from flask import redirect, request, g, url_for, render_template, flash
 from flask_babelex import lazy_gettext as _
 from apiflask import abort
 import hiddifypanel.panel.hiddify as hiddify
 from hiddifypanel.models import Role
+from hiddifypanel.models import *
+from hiddifypanel.panel.user import UserView
 
 
 class LoginView(FlaskView):
@@ -23,11 +25,43 @@ class LoginView(FlaskView):
             return redirect(redirect_arg)
         if hiddify.is_admin_proxy_path() and g.account.role in {Role.super_admin, Role.admin, Role.agent}:
             return redirect(url_for('admin.Dashboard:index'))
-
         if g.user_agent.browser and hiddify.is_client_proxy_path():
             return redirect(url_for('client.UserView:index'))
+
         from hiddifypanel.panel.user import UserView
         return UserView().auto_sub()
+
+    @route('/<uuid:uuid>/<path:path>')
+    @route('/<uuid:uuid>/')
+    def uuid(self, uuid, path=''):
+        proxy_path = hiddify.get_proxy_path_from_url(request.url)
+        g.account = None
+        uuid = str(uuid)
+        if proxy_path == hconfig(ConfigEnum.proxy_path_client):
+            g.account = User.by_uuid(uuid)
+            path = f'client/{path}'
+        elif proxy_path == hconfig(ConfigEnum.proxy_path_admin):
+            g.account = AdminUser.by_uuid(uuid)
+        if not g.account:
+            abort(403)
+        if not g.user_agent.browser and proxy_path == hconfig(ConfigEnum.proxy_path_client):
+            userview = UserView()
+            if "all.txt" in path:
+                return userview.all_configs()
+            if 'singbox.json' in path:
+                return userview.singbox()
+            if 'full-singbox.json' in path:
+                return userview.full_singbox()
+            if 'clash' in path:
+                splt = path.split("/")
+                meta_or_normal = 'meta' if splt[-2] == 'meta' else 'normal'
+                typ = splt[-1].split('.yml')[0]
+                return userview.clash_config(meta_or_normal=meta_or_normal, typ=typ)
+            return userview.force_sub()
+
+        login_user(g.account, force=True)
+
+        return redirect(f"/{proxy_path}/{path}")
 
     @route("/l/")
     @route("/l")
@@ -38,7 +72,7 @@ class LoginView(FlaskView):
             username = request.authorization.username if request.authorization else ''
 
             loginurl = url_for('common_bp.LoginView:index', force=force, next=next, user=username)
-            if request.headers.get('Authorization') or (auth.current_user and auth.current_user != username):
+            if g.user_agent.browser and request.headers.get('Authorization') or (auth.current_user and auth.current_user != username):
                 flash(_('Incorrect Password'), 'error')
                 # flash(request.authorization.username, 'error')
                 return redirect(loginurl)
