@@ -108,7 +108,7 @@ def init_app(app: APIFlask):
     def add_proxy_path_user(endpoint, values):
         if 'proxy_path' not in values:
 
-            if isinstance(g.account, AdminUser):
+            if hasattr(g, 'account') and isinstance(g.account, AdminUser):
                 values['proxy_path'] = hconfig(ConfigEnum.proxy_path_admin)
             # elif 'static' in endpoint:
             #     values['proxy_path'] = hconfig(ConfigEnum.proxy_path)

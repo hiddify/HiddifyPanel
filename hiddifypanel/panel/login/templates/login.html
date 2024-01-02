@@ -1,0 +1,52 @@
+{% extends "master.html" %}
+{% block title %}{{hconfig(ConfigEnum.branding_title) or _('user.home.title')}}{% endblock %}
+
+{% block body_header %}
+
+
+
+{%endblock%}
+
+{% block body %}
+
+
+
+<div class="container">
+    <h1>{{hconfig(ConfigEnum.branding_title) or _('user.home.title')}}</h1>
+    <div class="card-group login-container">
+        <!-- Left Card: Login Form -->
+        <div class="card card-outline card-primary">
+            <div class="card-header text-center">
+                Login
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input type="text" class="form-control" id="username" placeholder="Enter your username" required value="{{username}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Login</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Right Card: Free Test Account -->
+        <div class="card card-outline card-secondary">
+            <div class="card-header text-center">
+                
+Free Test Account
+            </div>
+            <div class="card-body">
+                
+                <p class="card-text">Get a free test account with 200 MB and 7 days.</p>
+                <button type="button" class="btn btn-success btn-block">Get Free Test Account</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

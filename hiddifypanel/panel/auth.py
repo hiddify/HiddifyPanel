@@ -1,5 +1,5 @@
 from flask_login import LoginManager, current_user, user_accessed, user_logged_in,  COOKIE_NAME, AUTH_HEADER_NAME
-from flask import g, redirect, request, session
+from flask import g, redirect, request, session, url_for
 from flask_login.utils import _get_user
 from flask import current_app
 from functools import wraps
@@ -152,15 +152,9 @@ def init_app(app):
                 account = User.by_uuid(apikey) or AdminUser.by_uuid(apikey)
                 is_api_call = True
         else:
-            if username_password := hutils.utils.parse_basic_auth_header(auth_header):
-                uname = username_password[0]
-                pword = username_password[1]
-                if hiddify.is_login_call():
-                    account = AdminUser.by_username_password(uname, pword) if hiddify.is_admin_proxy_path() else User.by_username_password(uname, pword)
-                elif hiddify.is_admin_panel_call():
-                    account = AdminUser.by_username_password(uname, pword)
-                elif hiddify.is_user_panel_call():
-                    account = User.by_username_password(uname, pword)
+            uname = request.authorization.username
+            pword = request.authorization.password
+            account = AdminUser.by_username_password(uname, pword) if hiddify.is_admin_proxy_path() else User.by_username_password(uname, pword)
 
         if account:
             g.account = account
@@ -176,7 +170,8 @@ def init_app(app):
         # TODO: show the login page
         # return request.base_url
         if g.user_agent.browser:
-            return redirect(f'/{request.path.split("/")[1]}/?force=1&redirect={request.path}')
+            return redirect(url_for('hlogin.LoginView:basic', force=1, next={request.path}))
+
         else:
             abort(401, "Unauthorized")
         # return f'/{request.path.split("/")[1]}/?force=1&redirect={request.path}'
