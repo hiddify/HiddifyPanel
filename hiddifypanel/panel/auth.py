@@ -1,4 +1,4 @@
-from flask_login import LoginManager, current_user, user_accessed, user_logged_in,  COOKIE_NAME, AUTH_HEADER_NAME
+from flask_login import LoginManager, current_user, user_accessed, user_logged_in,  COOKIE_NAME, AUTH_HEADER_NAME, logout_user
 from flask import g, redirect, request, session, url_for
 from flask_login.utils import _get_user
 from flask import current_app
@@ -50,14 +50,14 @@ class CustumLoginManager(LoginManager):
             has_cookie = (
                 cookie_name in request.cookies and session.get("_remember") != "clear"
             )
-            if has_cookie:
-                cookie = request.cookies[cookie_name]
-                user = self._load_user_from_remember_cookie(cookie)
-            elif self._request_callback:
-                user = self._load_user_from_request(request)
-            elif header_name in request.headers:
+            if header_name in request.headers:
                 header = request.headers[header_name]
                 user = self._load_user_from_header(header)
+            elif self._request_callback:
+                user = self._load_user_from_request(request)
+            elif has_cookie:
+                cookie = request.cookies[cookie_name]
+                user = self._load_user_from_remember_cookie(cookie)
 
         return self._update_request_context_with_user(user)
 
@@ -160,8 +160,9 @@ def init_app(app):
             g.account = account
             # g.account_uuid = account.uuid
             g.is_admin = hiddify.is_admin_role(account.role)  # type: ignore
-            if not is_api_call:
-                login_user(account)
+            login_user(account)
+        else:
+            logout_user()
 
         return account
 
@@ -170,7 +171,7 @@ def init_app(app):
         # TODO: show the login page
         # return request.base_url
         if g.user_agent.browser:
-            return redirect(url_for('hlogin.LoginView:basic', force=1, next={request.path}))
+            return redirect(url_for('common_bp.LoginView:basic_0', force=1, next={request.path}))
 
         else:
             abort(401, "Unauthorized")

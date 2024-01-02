@@ -31,7 +31,7 @@
   <link href="{{static_url_for(filename='images/splash/ipadpro3_splash.png')}}" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" rel="apple-touch-startup-image" />
   <link href="{{static_url_for(filename='images/splash/ipadpro2_splash.png')}}" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" rel="apple-touch-startup-image" />
   <link rel="icon" type="image/x-icon" href="{{ static_url_for( filename='images/favicon.ico')}}">
-  <link rel="manifest" href="{{ url_for('client.UserView:create_pwa_manifest')}}">
+  <link rel="manifest" href="{{ url_for('common_bp.LoginView:create_pwa_manifest')}}">
 
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">

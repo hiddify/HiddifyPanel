@@ -381,31 +381,7 @@ class UserView(FlaskView):
             resp = do_base_64(resp)
         return add_headers(resp, c)
 
-    @ route('/manifest.webmanifest')
-    @login_required()
-    def create_pwa_manifest(self):
-
-        domain = urlparse(request.base_url).hostname
-        name = (domain if g.is_admin else g.user.name)
-        return jsonify({
-            "name": f"Hiddify {name}",
-            "short_name": f"{name}"[:12],
-            "theme_color": "#f2f4fb",
-            "background_color": "#1a1b21",
-            "display": "standalone",
-            "scope": f"/",
-            "start_url": f"https://{domain}"+url_for("admin.Dashboard:index" if g.is_admin else "client.UserView:new_1")+"?pwa=true",
-            "description": "Hiddify, for a free Internet",
-            "orientation": "any",
-            "icons": [
-                {
-                    "src": hiddify.static_url_for(filename='images/hiddify-dark.png'),
-                    "sizes": "512x512",
-                    "type": "image/png",
-                    "purpose": "maskable any"
-                }
-            ]
-        })
+    
 
     @login_required(roles={Role.user})
     @ route("/offline.html")

@@ -6,4 +6,4 @@ from . import database
 from . import common
 from . import commercial
 from . import auth
-from . import login
+from . import common_bp

@@ -13,8 +13,8 @@ class LoginView(FlaskView):
     def index(self, force=None, next=None):
         force_arg = request.args.get('force')
         redirect_arg = request.args.get('redirect')
-        username_arg = request.args.get('user')
-        if not current_user.is_authenticated or (force_arg and not request.headers.get('Authorization')):
+        username_arg = request.args.get('user') or ''
+        if not current_user.is_authenticated:
             return render_template('login.html', username=username_arg)
 
             # abort(401, "Unauthorized1")
@@ -31,17 +31,18 @@ class LoginView(FlaskView):
 
     @route("/l/")
     @route("/l")
-    def basic(self, force=None, next=None):
-        force_arg = force or request.args.get('force')
-        redirect_arg = redirect or request.args.get('redirect')
+    def basic(self):
+        force_arg = request.args.get('force')
+        redirect_arg = request.args.get('next')
         if not current_user.is_authenticated or (force_arg and not request.headers.get('Authorization')):
             username = request.authorization.username if request.authorization else ''
-            nexturl = url_for('hlogin.LoginView:index', force=force, next=next, user=username)
-            if request.headers.get('Authorization'):
+
+            loginurl = url_for('common_bp.LoginView:index', force=force, next=next, user=username)
+            if request.headers.get('Authorization') or (auth.current_user and auth.current_user != username):
                 flash(_('Incorrect Password'), 'error')
                 # flash(request.authorization.username, 'error')
-                return redirect(nexturl)
-            return render_template("redirect.html", url=nexturl), 401
+                return redirect(loginurl)
+            return render_template("redirect.html", url=loginurl), 401
             # abort(401, "Unauthorized1")
 
         if redirect_arg:
@@ -53,3 +54,28 @@ class LoginView(FlaskView):
             return redirect(url_for('client.UserView:index'))
         from hiddifypanel.panel.user import UserView
         return UserView().auto_sub()
+
+    @route('/manifest.webmanifest')
+    @login_required()
+    def create_pwa_manifest(self):
+        domain = urlparse(request.base_url).hostname
+        name = (domain if g.is_admin else g.user.name)
+        return jsonify({
+            "name": f"Hiddify {name}",
+            "short_name": f"{name}"[:12],
+            "theme_color": "#f2f4fb",
+            "background_color": "#1a1b21",
+            "display": "standalone",
+            "scope": f"/",
+            "start_url": hiddify.hutils.utils.add_basic_auth_to_url(f"https://{domain}/{g.proxy_path}/?pwa=true", g.account.username, g.account.password),
+            "description": "Hiddify, for a free Internet",
+            "orientation": "any",
+            "icons": [
+                {
+                    "src": hiddify.static_url_for(filename='images/hiddify-dark.png'),
+                    "sizes": "512x512",
+                    "type": "image/png",
+                    "purpose": "maskable any"
+                }
+            ]
+        })
