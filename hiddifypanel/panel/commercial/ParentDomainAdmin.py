@@ -16,7 +16,7 @@ from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
 from wtforms import SelectMultipleField
 from . import ParentDomain
-
+import hiddifypanel.panel.auth as auth
 from wtforms.widgets import ListWidget, CheckboxInput
 from sqlalchemy.orm import backref
 # Define a custom field type for the related domains
@@ -129,4 +129,4 @@ class ParentDomainAdmin(AdminLTEModelView):
         return True
 
     def inaccessible_callback(self, name, **kwargs):
-        return current_app.login_manager.unauthorized()  # type: ignore
+        return auth.redirect_to_login()  # type: ignore

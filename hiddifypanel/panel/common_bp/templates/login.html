@@ -1,3 +1,4 @@
+{% from 'bootstrap4/form.html' import render_form %}
 {% extends "master.html" %}
 {% block title %}{{hconfig(ConfigEnum.branding_title) or _('user.home.title')}}{% endblock %}
 
@@ -20,20 +21,10 @@
                 Login
             </div>
             <div class="card-body">
-                <form>
-                    <div class="form-group">
-                        <label for="username">Username:</label>
-                        <input type="text" class="form-control" id="username" placeholder="Enter your username" required value="{{username}}">
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password:</label>
-                        <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-block">Login</button>
-                </form>
+                {{render_form(form)}}
             </div>
         </div>
-
+        {%if hconfig(ConfigEnum.proxy_path_client)==g.proxy_path %}
         <!-- Right Card: Free Test Account -->
         <div class="card card-outline card-secondary">
             <div class="card-header text-center">
@@ -46,6 +37,7 @@ Free Test Account
                 <button type="button" class="btn btn-success btn-block">Get Free Test Account</button>
             </div>
         </div>
+        {%endif%}
     </div>
 </div>
 

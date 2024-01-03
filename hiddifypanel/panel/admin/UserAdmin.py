@@ -1,22 +1,21 @@
+from hiddifypanel.models import *
+from flask_bootstrap import SwitchField
+from hiddifypanel.drivers import user_driver
+from hiddifypanel.panel.hiddify import flash
+from hiddifypanel.panel import hiddify, custom_widgets
+from apiflask import abort
+from flask_babelex import gettext as __
+from .adminlte import AdminLTEModelView
+from wtforms.validators import NumberRange
+from flask_babelex import lazy_gettext as _
+from flask import Markup, g, request, url_for
+from wtforms.validators import Regexp, ValidationError
+from flask import current_app
 import datetime
 import uuid
 import re
 from hiddifypanel.panel.auth import login_required
-from flask import current_app
-from wtforms.validators import Regexp, ValidationError
-from flask import Markup, g, request, url_for
-from flask_babelex import lazy_gettext as _
-from wtforms.validators import NumberRange
-from .adminlte import AdminLTEModelView
-from flask_babelex import gettext as __
-from apiflask import abort
-
-
-from hiddifypanel.panel import hiddify, custom_widgets
-from hiddifypanel.panel.hiddify import flash
-from hiddifypanel.drivers import user_driver
-from flask_bootstrap import SwitchField
-from hiddifypanel.models import *
+import hiddifypanel.panel.auth as auth
 
 
 class UserAdmin(AdminLTEModelView):
@@ -213,7 +212,7 @@ class UserAdmin(AdminLTEModelView):
         return True
 
     def inaccessible_callback(self, name, **kwargs):
-        return current_app.login_manager.unauthorized()  # type: ignore
+        return auth.redirect_to_login()  # type: ignore
 
     def on_form_prefill(self, form, id=None):
         # print("================",form._obj.start_date)

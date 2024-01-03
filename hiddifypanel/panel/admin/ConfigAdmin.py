@@ -3,7 +3,7 @@ import uuid
 from hiddifypanel.models.role import Role
 from hiddifypanel.panel import hiddify
 from hiddifypanel.panel.auth import login_required
-
+import hiddifypanel.panel.auth as auth
 from wtforms.validators import ValidationError
 
 from hiddifypanel.models import ConfigEnum, Domain
@@ -31,7 +31,7 @@ class ConfigAdmin(AdminLTEModelView):
         return True
 
     def inaccessible_callback(self, name, **kwargs):
-        return current_app.login_manager.unauthorized()  # type: ignore
+        return auth.redirect_to_login()  # type: ignore
 
     @staticmethod
     def _is_valid_uuid(val: str, version: int | None = None):

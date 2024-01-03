@@ -359,6 +359,7 @@ class UserView(FlaskView):
                                    ssh_client_version=hiddify.get_ssh_client_version(user), ssh_ip=hiddify.get_direct_host_or_ip(4), base64=False)
         return add_headers(resp, c)
 
+
     @route('/all.txt', methods=["GET", "HEAD"])
     @login_required(roles={Role.user})
     def all_configs(self, base64=False):
@@ -385,7 +386,12 @@ class UserView(FlaskView):
     @ route("/offline.html")
     def offline():
         return f"Not Connected <a href='/{hconfig(ConfigEnum.proxy_path_client)}/'>click for reload</a>"
-
+    
+    #backward compatiblity
+    @route("/admin/<path:path>")
+    @login_required()
+    def admin(self, path):
+        return ""
 
 def do_base_64(str):
     import base64

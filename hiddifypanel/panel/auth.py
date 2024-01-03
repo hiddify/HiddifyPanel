@@ -84,6 +84,14 @@ def get_account_by_uuid(uuid, is_admin):
     return AdminUser.by_uuid(uuid) if is_admin else User.by_uuid(uuid)
 
 
+def login_by_uuid(uuid):
+    is_admin = g.proxy_path == hconfig(ConfigEnum.proxy_path_admin)
+    account = get_account_by_uuid(uuid, is_admin)
+    if not account:
+        return False
+    return login_user(account, force=True)
+
+
 def init_app(app):
     # login_manager = LoginManager.()
     # login_manager = CustumLoginManager()

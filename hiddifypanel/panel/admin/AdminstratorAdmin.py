@@ -1,4 +1,5 @@
 from hiddifypanel.panel.auth import login_required
+import hiddifypanel.panel.auth as auth
 from wtforms.validators import Regexp
 from hiddifypanel.models import *
 from wtforms.validators import Regexp, ValidationError
@@ -10,6 +11,7 @@ from flask import Markup, current_app
 from flask import g
 import datetime
 from wtforms import SelectField
+import hiddifypanel.panel.auth as auth
 
 
 class AdminModeField(SelectField):
@@ -171,7 +173,7 @@ class AdminstratorAdmin(AdminLTEModelView):
         return True
 
     def inaccessible_callback(self, name, **kwargs):
-        return current_app.login_manager.unauthorized()  # type: ignore
+        return auth.redirect_to_login()  # type: ignore
 
     def get_query(self):
         # Get the base query

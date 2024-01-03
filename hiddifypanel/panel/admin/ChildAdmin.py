@@ -9,6 +9,7 @@ from hiddifypanel.panel.auth import login_required
 from hiddifypanel.panel import hiddify
 from hiddifypanel import hutils
 from flask import current_app
+import hiddifypanel.panel.auth as auth
 
 
 class ChildAdmin(AdminLTEModelView):
@@ -116,4 +117,4 @@ class ChildAdmin(AdminLTEModelView):
         return True
 
     def inaccessible_callback(self, name, **kwargs):
-        return current_app.login_manager.unauthorized()  # type: ignore
+        return auth.redirect_to_login()  # type: ignore

@@ -1,5 +1,5 @@
 from flask_classful import FlaskView, route
-from hiddifypanel.panel.auth import login_required, current_account, login_user, logout_user
+from hiddifypanel.panel.auth import login_required, current_account, login_user, logout_user, login_by_uuid
 from flask import redirect, request, g, url_for, render_template, flash
 from flask import current_app as app
 from flask_babelex import lazy_gettext as _
@@ -8,6 +8,21 @@ import hiddifypanel.panel.hiddify as hiddify
 from hiddifypanel.models import Role
 from hiddifypanel.models import *
 from hiddifypanel.panel.user import UserView
+
+from flask_wtf import FlaskForm
+import wtforms as wtf
+import re
+
+
+class LoginForm(FlaskForm):
+    secret_textbox = wtf.fields.StringField(_(f'login.secret.label'), [wtf.validators.Regexp(
+        "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$", re.IGNORECASE, _('config.invalid uuid'))], default='',
+        description=_(f'login.secret.description'), render_kw={
+        'required': "",
+        'pattern': "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+        'message': _('config.invalid uuid')
+    })
+    submit = wtf.fields.SubmitField(_('Submit'))
 
 
 class LoginView(FlaskView):
@@ -18,7 +33,8 @@ class LoginView(FlaskView):
         redirect_arg = request.args.get('redirect')
         username_arg = request.args.get('user') or ''
         if not current_account:
-            return render_template('login.html', username=username_arg)
+
+            return render_template('login.html', form=LoginForm())
 
             # abort(401, "Unauthorized1")
 
@@ -31,6 +47,15 @@ class LoginView(FlaskView):
 
         from hiddifypanel.panel.user import UserView
         return UserView().auto_sub()
+
+    def post(self):
+        form = LoginForm()
+        if form.validate_on_submit():
+            uuid = form.secret_textbox.data
+            if login_by_uuid(uuid):
+                return redirect('/{g.proxy_path}/')
+        flash(_('config.validation-error'), 'danger')
+        return render_template('login.html', form=LoginForm())
 
     @route("/l/")
     @route("/l")

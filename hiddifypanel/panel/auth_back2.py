@@ -8,6 +8,7 @@ from apiflask import abort
 from hiddifypanel.models import AdminUser, User, Role, AccountType
 import hiddifypanel.panel.hiddify as hiddify
 from hiddifypanel import hutils
+import hiddifypanel.panel.auth as auth
 
 
 class CustumLoginManager(LoginManager):
@@ -133,11 +134,11 @@ def login_required(roles: set[Role] | None = None):
         @wraps(fn)
         def decorated_view(*args, **kwargs):
             if not current_user.is_authenticated:
-                return current_app.login_manager.unauthorized()  # type: ignore
+                return auth.redirect_to_login()  # type: ignore
             if roles:
                 account_role = current_user.role
                 if account_role not in roles:
-                    return current_app.login_manager.unauthorized()  # type: ignore
+                    return auth.redirect_to_login()  # type: ignore
             return fn(*args, **kwargs)
         return decorated_view
     return wrapper
