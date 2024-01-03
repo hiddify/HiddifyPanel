@@ -8,6 +8,7 @@ from hiddifypanel.panel.database import db
 from .user import *
 from apiflask import APIBlueprint
 bp = APIBlueprint("client", __name__, url_prefix="/<proxy_path>/client/", template_folder="templates", enable_openapi=False)
+bp_uuid = APIBlueprint("client_uuid", __name__, url_prefix="/<proxy_path>/<uuid:secret_uuid>/", template_folder="templates", enable_openapi=False)
 
 
 def send_static(path):
@@ -25,6 +26,7 @@ def init_app(app):
     #     return render_template('redirect_to_user.html', user_link=request.url_root.replace('http://', 'https://').rstrip('/') + f"/{g.proxy_path}/#{g.account.name}")
 
     UserView.register(bp, route_base="/")
+    UserView.register(bp_uuid, route_base="/")
 
     # bp.add_url_rule("/", view_func=index)
     # bp.add_url_rule("/<lang>", view_func=index)
@@ -35,3 +37,4 @@ def init_app(app):
     # bp.add_url_rule("/all.txt", view_func=all_configs)
     # bp.add_url_rule('/static/<path:path>',view_func=send_static)
     app.register_blueprint(bp)
+    app.register_blueprint(bp_uuid)

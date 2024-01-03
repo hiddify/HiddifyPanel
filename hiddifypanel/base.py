@@ -69,9 +69,9 @@ def create_app(cli=False, **config):
     with app.app_context():
         init_db()
 
-    hiddifypanel.panel.auth.init_app(app)
-    hiddifypanel.panel.common_bp.init_app(app)
     hiddifypanel.panel.common.init_app(app)
+    hiddifypanel.panel.common_bp.init_app(app)
+    hiddifypanel.panel.auth.init_app(app)
     hiddifypanel.panel.admin.init_app(app)
     hiddifypanel.panel.user.init_app(app)
     hiddifypanel.panel.commercial.init_app(app)

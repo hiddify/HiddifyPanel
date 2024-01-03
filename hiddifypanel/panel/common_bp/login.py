@@ -64,35 +64,35 @@ class LoginView(FlaskView):
     # @route('/<uuid:uuid>/<path:path>')
     # @route('/<uuid:uuid>/')
 
-    def uuid(self, uuid, path=''):
-        proxy_path = hiddify.get_proxy_path_from_url(request.url)
-        g.account = None
-        uuid = str(uuid)
-        if proxy_path == hconfig(ConfigEnum.proxy_path_client):
-            g.account = User.by_uuid(uuid)
-            path = f'client/{path}'
-        elif proxy_path == hconfig(ConfigEnum.proxy_path_admin):
-            g.account = AdminUser.by_uuid(uuid)
-        if not g.account:
-            abort(403)
-        if not g.user_agent.browser and proxy_path == hconfig(ConfigEnum.proxy_path_client):
-            userview = UserView()
-            if "all.txt" in path:
-                return userview.all_configs()
-            if 'singbox.json' in path:
-                return userview.singbox()
-            if 'full-singbox.json' in path:
-                return userview.full_singbox()
-            if 'clash' in path:
-                splt = path.split("/")
-                meta_or_normal = 'meta' if splt[-2] == 'meta' else 'normal'
-                typ = splt[-1].split('.yml')[0]
-                return userview.clash_config(meta_or_normal=meta_or_normal, typ=typ)
-            return userview.force_sub()
+    # def uuid(self, uuid, path=''):
+    #     proxy_path = hiddify.get_proxy_path_from_url(request.url)
+    #     g.account = None
+    #     uuid = str(uuid)
+    #     if proxy_path == hconfig(ConfigEnum.proxy_path_client):
+    #         g.account = User.by_uuid(uuid)
+    #         path = f'client/{path}'
+    #     elif proxy_path == hconfig(ConfigEnum.proxy_path_admin):
+    #         g.account = AdminUser.by_uuid(uuid)
+    #     if not g.account:
+    #         abort(403)
+    #     if not g.user_agent.browser and proxy_path == hconfig(ConfigEnum.proxy_path_client):
+    #         userview = UserView()
+    #         if "all.txt" in path:
+    #             return userview.all_configs()
+    #         if 'singbox.json' in path:
+    #             return userview.singbox()
+    #         if 'full-singbox.json' in path:
+    #             return userview.full_singbox()
+    #         if 'clash' in path:
+    #             splt = path.split("/")
+    #             meta_or_normal = 'meta' if splt[-2] == 'meta' else 'normal'
+    #             typ = splt[-1].split('.yml')[0]
+    #             return userview.clash_config(meta_or_normal=meta_or_normal, typ=typ)
+    #         return userview.force_sub()
 
-        login_user(g.account, force=True)
+    #     login_user(g.account, force=True)
 
-        return redirect(f"/{proxy_path}/{path}")
+    #     return redirect(f"/{proxy_path}/{path}")
 
     @route('/manifest.webmanifest')
     @login_required()
