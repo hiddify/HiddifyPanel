@@ -33,7 +33,7 @@ def login_user(user: AdminUser | User, remember=False, duration=None, force=Fals
         return False
 
     account_id = user.get_id()  # type: ignore
-    print('account_id', account_id)
+    # print('account_id', account_id)
     if user.role in {Role.super_admin, Role.admin, Role.agent}:
         session["_admin_id"] = account_id
     else:
@@ -64,7 +64,7 @@ def login_required(roles: set[Role] | None = None):
     def wrapper(fn):
         @wraps(fn)
         def decorated_view(*args, **kwargs):
-            print('xxxx', current_account)
+            # print('xxxx', current_account)
             if not current_account:
                 return redirect_to_login()  # type: ignore
             if roles:
@@ -91,14 +91,14 @@ def init_app(app):
 
     @app.before_request
     def auth():
-        print("before_request")
+        # print("before_request")
         account = None
 
         is_admin_path = g.proxy_path == hconfig(ConfigEnum.proxy_path_admin)  # hiddify.is_admin_proxy_path()
         next_url = None
 
         if g.uuid:
-            print("uuid", g.uuid)
+            # print("uuid", g.uuid)
             account = get_account_by_uuid(g.uuid, is_admin_path)
             if not account:
                 return logout_redirect()
@@ -106,13 +106,13 @@ def init_app(app):
             next_url = request.url.replace(f'/{g.uuid}/', '/admin/' if is_admin_path else '/client/').replace("/admin/admin/", '/admin/')
 
         elif auth_header := request.headers.get("Hiddify_API_KEY"):
-            print("auth_header", auth_header)
+            # print("auth_header", auth_header)
             apikey = hutils.utils.get_apikey_from_auth_header(auth_header)
             account = get_account_by_api_key(apikey, is_admin_path)
             if not account:
                 return logout_redirect()
         elif 0 and request.authorization:
-            print('request.authorization', request.authorization)
+            # print('request.authorization' , request.authorization)
             uname = request.authorization.username
             pword = request.authorization.password
             account = AdminUser.by_username_password(uname, pword) if is_admin_path else User.by_username_password(uname, pword)
@@ -120,12 +120,12 @@ def init_app(app):
                 return logout_redirect()
 
         elif (session_user := session.get('_user_id')) and not is_admin_path:
-            print('session_user', session_user)
+            # print('session_user', session_user)
             account = User.by_id(int(session_user.split("_")[1]))  # type: ignore
             if not account:
                 return logout_redirect()
         elif (session_admin := session.get('_admin_id')) and is_admin_path:
-            print('session_admin', session_admin)
+            # print('session_admin', session_admin)
             account = AdminUser.by_id(int(session_admin.split("_")[1]))  # type: ignore
             if not account:
                 return logout_redirect()
@@ -142,10 +142,10 @@ def init_app(app):
 
     @app.url_value_preprocessor
     def pull_secret_code(endpoint, values):
-        print("url_value_preprocessor")
+        # print("url_value_preprocessor")
         g.uuid = None
         g.proxy_path = None
-        print(values)
+        # print(values)
         if values:
             g.proxy_path = values.pop('proxy_path', None)
             if 'secret_uuid' in values:
@@ -156,7 +156,7 @@ def init_app(app):
 
 
 def logout_redirect():
-    print("Incorrect user.... loggining out")
+    print("Incorrect user {current_account}.... loggining out")
     logout_user()
     return redirect_to_login()
 
