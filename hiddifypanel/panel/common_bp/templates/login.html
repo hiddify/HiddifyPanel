@@ -12,11 +12,11 @@
 
 
 
-<div class="container">
+<div class="container col-12 col-md-6 offset-md-3">
     <h1>{{hconfig(ConfigEnum.branding_title) or _('user.home.title')}}</h1>
     <div class="card-group login-container">
         <!-- Left Card: Login Form -->
-        <div class="card card-outline card-primary">
+        <div class="card card-outline card-primary ">
             <div class="card-header text-center">
                 Login
             </div>
@@ -24,7 +24,7 @@
                 {{render_form(form)}}
             </div>
         </div>
-        {%if hconfig(ConfigEnum.proxy_path_client)==g.proxy_path %}
+        {%if 0 and hconfig(ConfigEnum.proxy_path_client)==g.proxy_path %}
         <!-- Right Card: Free Test Account -->
         <div class="card card-outline card-secondary">
             <div class="card-header text-center">
