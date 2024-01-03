@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPT\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-03 14:41+0100\n"
-"PO-Revision-Date: 2023-12-03 13:51-0600\n"
+"POT-Creation-Date: 2024-01-03 21:36+0100\n"
+"PO-Revision-Date: 2024-01-03 07:41-0600\n"
 "Last-Translator: lymanrudni\n"
 "Language: pt\n"
 "Language-Team: Portuguese\n"
@@ -24,7 +24,7 @@ msgstr ""
 "administrador"
 
 # | msgid "This Domain does not exist in the Panel !"
-#: hiddifypanel/models/domain.py:161 hiddifypanel/panel/user/user.py:420
+#: hiddifypanel/models/domain.py:161 hiddifypanel/panel/user/user.py:423
 msgid "This domain does not exist in the panel!"
 msgstr "Este Domínio não existe no Painel!"
 
@@ -55,13 +55,13 @@ msgstr "✅ As configurações foram alteradas com sucesso"
 # | "Domain can not be resolved! There is a problem in your domain. Please
 # check "
 # | "your Domain configurations."
-#: hiddifypanel/panel/admin/ChildAdmin.py:97
-#: hiddifypanel/panel/admin/DomainAdmin.py:156
-#: hiddifypanel/panel/admin/DomainAdmin.py:178
-#: hiddifypanel/panel/admin/DomainAdmin.py:181
+#: hiddifypanel/panel/admin/ChildAdmin.py:99
+#: hiddifypanel/panel/admin/DomainAdmin.py:157
+#: hiddifypanel/panel/admin/DomainAdmin.py:179
+#: hiddifypanel/panel/admin/DomainAdmin.py:182
 #: hiddifypanel/panel/admin/QuickSetup.py:146
-#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:110
-#: hiddifypanel/panel/hiddify.py:411
+#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:111
+#: hiddifypanel/panel/hiddify.py:408
 #, fuzzy
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr ""
@@ -69,7 +69,7 @@ msgstr ""
 "Verifique as configurações do seu Domínio."
 
 # | msgid "Last Day"
-#: hiddifypanel/panel/hiddify.py:443
+#: hiddifypanel/panel/hiddify.py:440
 #, fuzzy
 msgid "0 - Last day"
 msgstr "Último dia"
@@ -78,7 +78,7 @@ msgstr "Último dia"
 # | "Selected Domain for REALITY is not in the same ASN. To better use of the
 # "
 # | "Protocol, it is better to find a Domain in the same ASN"
-#: hiddifypanel/panel/hiddify.py:748
+#: hiddifypanel/panel/hiddify.py:745
 msgid ""
 "selected domain for REALITY is not in the same ASN. To better use of the "
 "protocol, it is better to find a domain in the same ASN."
@@ -140,56 +140,56 @@ msgstr ""
 "atualizado"
 
 # | msgid "Actions"
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:47
-#: hiddifypanel/panel/admin/UserAdmin.py:75
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:49
+#: hiddifypanel/panel/admin/UserAdmin.py:74
 #, fuzzy
 msgid "actions"
 msgstr "Ações"
 
 # | msgid "User Links"
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:48
-#: hiddifypanel/panel/admin/UserAdmin.py:77
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:50
+#: hiddifypanel/panel/admin/UserAdmin.py:76
 #, fuzzy
 msgid "user.user_links"
 msgstr "Links de usuário"
 
 # | msgid "Name"
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:49
-#: hiddifypanel/panel/admin/UserAdmin.py:76
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:51
+#: hiddifypanel/panel/admin/UserAdmin.py:75
 #, fuzzy
 msgid "user.name"
 msgstr "Nome"
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:50
-#: hiddifypanel/panel/admin/UserAdmin.py:80
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:52
+#: hiddifypanel/panel/admin/UserAdmin.py:79
 #, fuzzy
 msgid "Mode"
 msgstr "Modo"
 
 # | msgid "UUID"
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:51
-#: hiddifypanel/panel/admin/UserAdmin.py:86
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:53
+#: hiddifypanel/panel/admin/UserAdmin.py:85
 msgid "user.UUID"
 msgstr "UUID"
 
 # | msgid "📝 Note"
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:52
-#: hiddifypanel/panel/admin/UserAdmin.py:87
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:54
+#: hiddifypanel/panel/admin/UserAdmin.py:86
 #, fuzzy
 msgid "Note"
 msgstr "📝 Observação"
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:53
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:55
 #, fuzzy
 msgid "Max Active Users"
 msgstr "Máximo de usuários ativos"
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:54
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:56
 #, fuzzy
 msgid "Max Users"
 msgstr "Máximo de usuários"
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:55
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:57
 #: hiddifypanel/panel/admin/templates/index.html:73
 #: hiddifypanel/panel/admin/templates/index.html:79
 #: hiddifypanel/panel/admin/templates/index.html:85
@@ -203,19 +203,19 @@ msgid "Online Users"
 msgstr "Usuários online"
 
 # | msgid "👥 Can Add Sub Admin"
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:56
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:58
 #, fuzzy
 msgid "Can add sub admin"
 msgstr "👥 Pode adicionar subadministrador"
 
 # | msgid "Add some Text that is only visible to Super Admin"
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:67
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:69
 #, fuzzy
 msgid "Add some text that is only visible to super_admin."
 msgstr "Adicione algum texto que seja visível apenas para o superadministrador"
 
 # | msgid "🥇🥈🥉 Define the Admin Mode"
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:68
+#: hiddifypanel/panel/admin/AdminstratorAdmin.py:70
 #, fuzzy
 msgid "Define the admin mode. "
 msgstr "Definir o Modo Admin"
@@ -293,6 +293,7 @@ msgstr ""
 #: hiddifypanel/panel/admin/QuickSetup.py:104
 #: hiddifypanel/panel/admin/QuickSetup.py:137
 #: hiddifypanel/panel/admin/SettingAdmin.py:281
+#: hiddifypanel/panel/common_bp/login.py:25
 #, fuzzy
 msgid "Submit"
 msgstr "Enviar"
@@ -305,10 +306,10 @@ msgstr "Enviar"
 # "href=\"https://github.com/hiddify/hiddify-config/wiki/راهنمای-تنظیم-دامنه-و-"
 # | "نهایی-کردن-نصب#آموزش-ساخت-زیردامنه\"> Help</a> to learn how to create a "
 # | "subdomain."
-#: hiddifypanel/panel/admin/ChildAdmin.py:21
-#: hiddifypanel/panel/admin/DomainAdmin.py:41
+#: hiddifypanel/panel/admin/ChildAdmin.py:23
+#: hiddifypanel/panel/admin/DomainAdmin.py:42
 #: hiddifypanel/panel/admin/QuickSetup.py:129
-#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:34
+#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:35
 #: hiddifypanel/templates/flaskadmin-layout.html:101
 #: hiddifypanel/templates/flaskadmin-layout.html:137
 #, fuzzy
@@ -329,9 +330,9 @@ msgstr ""
 # since the use of this IP is not for proxy and it is a simple website, this
 # domain and IP will never be blocked and your users can easily update new
 # profiles."
-#: hiddifypanel/panel/admin/ChildAdmin.py:22
-#: hiddifypanel/panel/admin/DomainAdmin.py:44
-#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:36
+#: hiddifypanel/panel/admin/ChildAdmin.py:24
+#: hiddifypanel/panel/admin/DomainAdmin.py:45
+#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:37
 #, fuzzy
 msgid ""
 "You can select the configs with which domains show be shown in the user "
@@ -348,10 +349,10 @@ msgstr ""
 "atualizar novos perfis."
 
 # | msgid "Domain"
-#: hiddifypanel/panel/admin/ChildAdmin.py:42
-#: hiddifypanel/panel/admin/DomainAdmin.py:75
+#: hiddifypanel/panel/admin/ChildAdmin.py:44
+#: hiddifypanel/panel/admin/DomainAdmin.py:76
 #: hiddifypanel/panel/admin/QuickSetup.py:129
-#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:56
+#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:57
 #: hiddifypanel/templates/flaskadmin-layout.html:100
 #: hiddifypanel/templates/flaskadmin-layout.html:136
 #, fuzzy
@@ -359,24 +360,24 @@ msgid "domain.domain"
 msgstr "Domínio"
 
 # | msgid "Show Configs of Domains"
-#: hiddifypanel/panel/admin/ChildAdmin.py:45
-#: hiddifypanel/panel/admin/ChildAdmin.py:46
-#: hiddifypanel/panel/admin/DomainAdmin.py:81
-#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:59
+#: hiddifypanel/panel/admin/ChildAdmin.py:47
+#: hiddifypanel/panel/admin/ChildAdmin.py:48
+#: hiddifypanel/panel/admin/DomainAdmin.py:82
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:60
+#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:61
 #, fuzzy
 msgid "Show Domains"
 msgstr "Mostrar configurações de domínios"
 
 # | msgid "Admin"
-#: hiddifypanel/panel/admin/ChildAdmin.py:54
-#: hiddifypanel/panel/admin/DomainAdmin.py:96
-#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:67
+#: hiddifypanel/panel/admin/ChildAdmin.py:56
+#: hiddifypanel/panel/admin/DomainAdmin.py:97
+#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:68
 msgid "admin link"
 msgstr "Link do administrador"
 
 # | msgid "Domain is not correctly mapped to this Server!"
-#: hiddifypanel/panel/admin/ChildAdmin.py:100
+#: hiddifypanel/panel/admin/ChildAdmin.py:102
 #, fuzzy
 msgid "Domain is not correctly mapped to this server!"
 msgstr "O domínio não está mapeado corretamente para este servidor!"
@@ -498,7 +499,7 @@ msgstr "Child removido"
 # | "🆎 <b>Fake Site:</b> Select this mode if you want to use a fake Domain
 # (e.g., Soft98.ir) to bypass SNI whitelist Proxy. (Not Recommended)\n"
 # | "<br>"
-#: hiddifypanel/panel/admin/DomainAdmin.py:42
+#: hiddifypanel/panel/admin/DomainAdmin.py:43
 #, fuzzy
 msgid ""
 "Direct mode means you want to use your server directly (for usual use), "
@@ -528,7 +529,7 @@ msgstr ""
 # you put a range of IPs The IP will be randomly selected from that range.\n"
 # | "Use <a target=\"_blank\" href=\"https://ip-format.hiddify.com\">this
 # link</a> to set personal IPs."
-#: hiddifypanel/panel/admin/DomainAdmin.py:43
+#: hiddifypanel/panel/admin/DomainAdmin.py:44
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
@@ -545,14 +546,14 @@ msgstr ""
 "link</a> para definir IPs pessoais."
 
 # | msgid "The name that will be shown in the Configs for this Domain."
-#: hiddifypanel/panel/admin/DomainAdmin.py:46
-#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:35
+#: hiddifypanel/panel/admin/DomainAdmin.py:47
+#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:36
 #, fuzzy
 msgid "The name shown in the configs for this domain."
 msgstr "O nome que será mostrado nas Configs deste Domínio."
 
 # | msgid "You can add several Sever Names in comma seperated format"
-#: hiddifypanel/panel/admin/DomainAdmin.py:47
+#: hiddifypanel/panel/admin/DomainAdmin.py:48
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 #: hiddifypanel/templates/flaskadmin-layout.html:120
@@ -563,7 +564,7 @@ msgstr ""
 
 # | msgid ""
 # | "This can be used for giving your Users a permanent non Blockable Links."
-#: hiddifypanel/panel/admin/DomainAdmin.py:48
+#: hiddifypanel/panel/admin/DomainAdmin.py:49
 #, fuzzy
 msgid "This can be used for giving your users a permanent non blockable links."
 msgstr ""
@@ -571,30 +572,30 @@ msgstr ""
 " bloqueáveis."
 
 # | msgid "ℹ️ gRPC is a H2 based Protocol. Maybe it is faster for you!"
-#: hiddifypanel/panel/admin/DomainAdmin.py:49
+#: hiddifypanel/panel/admin/DomainAdmin.py:50
 #, fuzzy
 msgid "gRPC is a H2 based protocol. Maybe it is faster for you!"
 msgstr "ℹ️ gRPC é um protocolo baseado em H2. Talvez seja mais rápido para você!"
 
 # | msgid "Invalid REALITY Hostnames"
-#: hiddifypanel/panel/admin/DomainAdmin.py:66
+#: hiddifypanel/panel/admin/DomainAdmin.py:67
 msgid "Invalid REALITY hostnames"
 msgstr "Nomes de host REALITY inválidos"
 
 # | msgid "🌍 Use Only for Subscription Link"
-#: hiddifypanel/panel/admin/DomainAdmin.py:76
+#: hiddifypanel/panel/admin/DomainAdmin.py:77
 #, fuzzy
 msgid "Only for sublink?"
 msgstr "🌍 Use apenas para link de assinatura"
 
 # | msgid "Mode"
-#: hiddifypanel/panel/admin/DomainAdmin.py:77
+#: hiddifypanel/panel/admin/DomainAdmin.py:78
 #, fuzzy
 msgid "domain.mode"
 msgstr "Modo"
 
 # | msgid "🔂 Force Config to Use Following IPs"
-#: hiddifypanel/panel/admin/DomainAdmin.py:78
+#: hiddifypanel/panel/admin/DomainAdmin.py:79
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
@@ -602,14 +603,14 @@ msgid "config.cdn_forced_host.label"
 msgstr "Forçar a configuração do CDN para usar os seguintes IPs"
 
 # | msgid "IP"
-#: hiddifypanel/panel/admin/DomainAdmin.py:79
+#: hiddifypanel/panel/admin/DomainAdmin.py:80
 #, fuzzy
 msgid "domain.ip"
 msgstr "IP"
 
 # | msgid "🌎 Reality Server Names"
-#: hiddifypanel/panel/admin/DomainAdmin.py:80
-#: hiddifypanel/panel/admin/DomainAdmin.py:147
+#: hiddifypanel/panel/admin/DomainAdmin.py:81
+#: hiddifypanel/panel/admin/DomainAdmin.py:148
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 #: hiddifypanel/templates/flaskadmin-layout.html:119
@@ -617,50 +618,51 @@ msgstr "IP"
 msgid "config.reality_server_names.label"
 msgstr "🌎 Nomes de servidores"
 
-#: hiddifypanel/panel/admin/DomainAdmin.py:82
-#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:58
+#: hiddifypanel/panel/admin/DomainAdmin.py:83
+#: hiddifypanel/panel/commercial/ParentDomainAdmin.py:59
 #, fuzzy
 msgid "Alias"
 msgstr "Pseudônimo"
 
 # | msgid "➿ gRPC"
-#: hiddifypanel/panel/admin/DomainAdmin.py:83
+#: hiddifypanel/panel/admin/DomainAdmin.py:84
 #, fuzzy
 msgid "gRPC"
 msgstr "➿ gRPC"
 
-#: hiddifypanel/panel/admin/DomainAdmin.py:115
+#: hiddifypanel/panel/admin/DomainAdmin.py:116
 #: hiddifypanel/panel/admin/SettingAdmin.py:178
 #, fuzzy
 msgid "All"
 msgstr "Todos"
 
 # | msgid "You have already used this Domain in: "
-#: hiddifypanel/panel/admin/DomainAdmin.py:142
-#: hiddifypanel/panel/admin/DomainAdmin.py:147
+#: hiddifypanel/panel/admin/DomainAdmin.py:143
+#: hiddifypanel/panel/admin/DomainAdmin.py:148
 #, fuzzy
 msgid "You have used this domain in: "
 msgstr "Já utilizou este Domínio em:"
 
-#: hiddifypanel/panel/admin/DomainAdmin.py:153
+# | msgid "Couldn't find your IP addresses"
+#: hiddifypanel/panel/admin/DomainAdmin.py:154
 #, fuzzy
 msgid "Couldn't find your ip addresses"
 msgstr "Não foi possível encontrar seus endereços IP"
 
 # | msgid "Domain is Not REALITY Friendly!"
-#: hiddifypanel/panel/admin/DomainAdmin.py:224
-#: hiddifypanel/panel/admin/DomainAdmin.py:239
+#: hiddifypanel/panel/admin/DomainAdmin.py:225
+#: hiddifypanel/panel/admin/DomainAdmin.py:240
 msgid "Domain is not REALITY friendly!"
 msgstr "O domínio não é compatível com Reality!"
 
 # | msgid "REALITY Fallback Domain is not compaitble with Server names!"
-#: hiddifypanel/panel/admin/DomainAdmin.py:245
+#: hiddifypanel/panel/admin/DomainAdmin.py:246
 #, fuzzy
 msgid "REALITY Fallback domain is not compaitble with server names!"
 msgstr "REALITY Fallback Domain não é compatível com nomes de servidores!"
 
 # | msgid "⚠️ Error in Auto CDN Format"
-#: hiddifypanel/panel/admin/DomainAdmin.py:252
+#: hiddifypanel/panel/admin/DomainAdmin.py:253
 #, fuzzy
 msgid "Error in auto cdn format"
 msgstr "Erro no formato CDN automático"
@@ -675,6 +677,7 @@ msgstr "Erro! Fronting de domínio não definido."
 #: hiddifypanel/panel/admin/ProxyAdmin.py:66
 #: hiddifypanel/panel/admin/QuickSetup.py:88
 #: hiddifypanel/panel/admin/SettingAdmin.py:109
+#: hiddifypanel/panel/common_bp/login.py:57
 #, fuzzy
 msgid "config.validation-error"
 msgstr "Há um erro em um dos campos."
@@ -978,6 +981,8 @@ msgstr "Link inválido. deve estar neste formato: (https ou http://example.com)"
 # | "Invalid UUID secret. example: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n"
 # | "\n"
 #: hiddifypanel/panel/admin/SettingAdmin.py:251
+#: hiddifypanel/panel/common_bp/login.py:19
+#: hiddifypanel/panel/common_bp/login.py:23
 msgid "config.invalid uuid"
 msgstr "Secret UUID inválido. exemplo: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6"
 
@@ -998,85 +1003,85 @@ msgstr ""
 "2052,2053"
 
 # | msgid "📆 Reset Package's Days"
-#: hiddifypanel/panel/admin/UserAdmin.py:27
+#: hiddifypanel/panel/admin/UserAdmin.py:26
 #, fuzzy
 msgid "Reset package days"
 msgstr "📆 Redefinir dias do pacote"
 
 # | msgid "⏳ Reset Package's Usage"
-#: hiddifypanel/panel/admin/UserAdmin.py:28
+#: hiddifypanel/panel/admin/UserAdmin.py:27
 #, fuzzy
 msgid "Reset package usage"
 msgstr "⏳ Redefinir o uso do pacote"
 
 # | msgid "⌛️ Usage Limit (GB)"
-#: hiddifypanel/panel/admin/UserAdmin.py:78
+#: hiddifypanel/panel/admin/UserAdmin.py:77
 #, fuzzy
 msgid "user.usage_limit_GB"
 msgstr "Limite de uso (GB)"
 
 # | msgid "Monthly"
-#: hiddifypanel/panel/admin/UserAdmin.py:79
+#: hiddifypanel/panel/admin/UserAdmin.py:78
 #, fuzzy
 msgid "Reset every month"
 msgstr "Por mês"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:81
+#: hiddifypanel/panel/admin/UserAdmin.py:80
 #, fuzzy
 msgid "Added by"
 msgstr "Adicionado por"
 
 # | msgid "Current Usage (GB)"
-#: hiddifypanel/panel/admin/UserAdmin.py:82
+#: hiddifypanel/panel/admin/UserAdmin.py:81
 #, fuzzy
 msgid "user.current_usage_GB"
 msgstr "Uso atual (GB)"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:83
+#: hiddifypanel/panel/admin/UserAdmin.py:82
 #, fuzzy
 msgid "Start Date"
 msgstr "Data de início"
 
 # | msgid "Expire (Days)"
-#: hiddifypanel/panel/admin/UserAdmin.py:84
+#: hiddifypanel/panel/admin/UserAdmin.py:83
 #, fuzzy
 msgid "user.expiry_time"
 msgstr "Expiração (dias)"
 
 # | msgid "Last Usage Date Reset"
-#: hiddifypanel/panel/admin/UserAdmin.py:85
+#: hiddifypanel/panel/admin/UserAdmin.py:84
 msgid "user.last_reset_time"
 msgstr "Redefinir para a última vez que ouve uso."
 
 # | msgid "Last Connection"
-#: hiddifypanel/panel/admin/UserAdmin.py:88
+#: hiddifypanel/panel/admin/UserAdmin.py:87
 msgid "Last Online"
 msgstr "Última vez online"
 
 # | msgid "📆 Package Days"
-#: hiddifypanel/panel/admin/UserAdmin.py:89
+#: hiddifypanel/panel/admin/UserAdmin.py:88
 msgid "Package Days"
 msgstr "Dias do pacote"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:90
+#: hiddifypanel/panel/admin/UserAdmin.py:89
 msgid "Max IPs"
 msgstr "Máximo de IPs"
 
 # | msgid "❇️ Enable"
-#: hiddifypanel/panel/admin/UserAdmin.py:91
+#: hiddifypanel/panel/admin/UserAdmin.py:90
 #, fuzzy
 msgid "Enable"
 msgstr "Habilitar"
 
 # | msgid "You can add some text that Is only visible to you"
-#: hiddifypanel/panel/admin/UserAdmin.py:105
+#: hiddifypanel/panel/admin/UserAdmin.py:104
 #, fuzzy
 msgid "Add some text that is only visible to you."
 msgstr "Você pode adicionar algum texto, será visível apenas para voce"
 
 # | msgid ""
 # | "The user's Package Mode. should the usage reset every Month, Week, etc"
-#: hiddifypanel/panel/admin/UserAdmin.py:106
+#: hiddifypanel/panel/admin/UserAdmin.py:105
 #, fuzzy
 msgid "Define the user mode. Should the usage reset every month?"
 msgstr ""
@@ -1086,7 +1091,7 @@ msgstr ""
 # | msgid ""
 # | "If the monthly option is enabled, when this number reaches 30, the user "
 # | "usage will be reset (for weekly and daily this number is 7 and 1)"
-#: hiddifypanel/panel/admin/UserAdmin.py:107
+#: hiddifypanel/panel/admin/UserAdmin.py:106
 msgid ""
 "If monthly is enabled, the usage will be reset after 30 days from this "
 "date."
@@ -1098,7 +1103,7 @@ msgstr ""
 # | "Specify the starting date of the package. Leave empty to start from first
 # "
 # | "Connection."
-#: hiddifypanel/panel/admin/UserAdmin.py:108
+#: hiddifypanel/panel/admin/UserAdmin.py:107
 #, fuzzy
 msgid ""
 "From when the user package will be started? Empty for start from first "
@@ -1108,23 +1113,23 @@ msgstr ""
 "partir da primeira conexão."
 
 # | msgid "How Many Days Is This Package?"
-#: hiddifypanel/panel/admin/UserAdmin.py:109
+#: hiddifypanel/panel/admin/UserAdmin.py:108
 #, fuzzy
 msgid "How many days this package should be available?"
 msgstr "Quantos dias é este pacote?"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:221
+#: hiddifypanel/panel/admin/UserAdmin.py:220
 #, fuzzy
 msgid "Package not started yet."
 msgstr "Pacote ainda não iniciado."
 
 # | msgid "Package Ends"
-#: hiddifypanel/panel/admin/UserAdmin.py:228
+#: hiddifypanel/panel/admin/UserAdmin.py:227
 #, fuzzy
 msgid "Remaining: "
 msgstr "O pacote termina em"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:265
+#: hiddifypanel/panel/admin/UserAdmin.py:264
 #, fuzzy, python-format
 msgid ""
 "You have too much users! You can have only %(active)s active users and "
@@ -2166,7 +2171,7 @@ msgstr ""
 "Especifique o caminho do proxy. É importante especialmente se você "
 "estiver usando HTTP e VMess"
 
-# | msgid "🔑 WARP Plus Key"
+# | msgid "🔑 Warp Plus Key"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.warp_plus_code.label"
@@ -2189,18 +2194,17 @@ msgstr ""
 "<br>\n"
 "Caso haja algum erro nesta Chave, o WARP será desabilitado."
 
-# | msgid "✴️ WARP+ Mode"
+# | msgid "✴️ Warp+ Mode"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.warp_mode.label"
 msgstr "✴️ Modo WARP Plus"
 
 # | msgid ""
-# | "✴️ All : All Sites are Removed from WARP\n"
+# | "✴️ All : All Sites use Warp IPs in outbound\n"
 # | "<br>\n"
-# | "☑️ Only Domestic and Blocked Sites: Only Iranian Sites and\n"
-# | "Google, Spotify, Netflix, OpenAi, IPinfo.io\n"
-# | "They use WARP+"
+# | "☑️ Only Domestic and Blocked Sites: Only Domestic Sites and websites like
+# Google, Spotify, Netflix, OpenAi, IPinfo.io use Warp IPs in outbound"
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.warp_mode.description"
@@ -2222,10 +2226,12 @@ msgid "config.warp.label"
 msgstr "WARP Plus"
 
 # | msgid ""
-# | "Warp is a tool that hides your server IP from the sites that your users
-# visit.\n"
+# | "Warp is a tool that hides your server IP in outbound traffic. It means if
+# the users are visiting a website the Warp IP is exposed instead of our
+# server IP.\n"
 # | "<br>\n"
-# | "For example, if you have a problem with Google, it may be fixed."
+# | "For example, if you have a problem with captcha on Google, it might be
+# fixed this way."
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:2
 msgid "config.warp.description"
@@ -2327,7 +2333,10 @@ msgstr "config.first_setup.description"
 msgid "config.warp_enable.label"
 msgstr "Habilitar WARP+"
 
-# | msgid "WARP helps you bypass Google, Spotify and Netflix block"
+# | msgid ""
+# | "Warp helps you bypass Google, Spotify and Netflix restrictions by hiding
+# "
+# | "server IP "
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.warp_enable.description"
@@ -3204,13 +3213,21 @@ msgstr ""
 msgid "admin.config.title"
 msgstr "Configurações"
 
-#: hiddifypanel/panel/common_bp/login.py:44
+#: hiddifypanel/panel/common_bp/login.py:18
+msgid "login.secret.label"
+msgstr ""
+
+#: hiddifypanel/panel/common_bp/login.py:20
+msgid "login.secret.description"
+msgstr ""
+
+#: hiddifypanel/panel/common_bp/login.py:69
 msgid "Incorrect Password"
 msgstr ""
 
 # | msgid "Hiddify"
-#: copy.html:2 hiddifypanel/panel/common_bp/templates/login.html:2
-#: hiddifypanel/panel/common_bp/templates/login.html:15
+#: copy.html:2 hiddifypanel/panel/common_bp/templates/login.html:3
+#: hiddifypanel/panel/common_bp/templates/login.html:16
 #: hiddifypanel/panel/user/templates/home/auto_page.html:2
 #: hiddifypanel/panel/user/templates/home/handle_smart.html:2
 #: hiddifypanel/panel/user/templates/home/home.html:2
@@ -4789,7 +4806,7 @@ msgid "config.warp_sites.label"
 msgstr "Sites Warp Adicionais"
 
 # | msgid ""
-# | "Add additional sites to pass through warp (only when warp mode is not
+# | "Add additional sites to pass through Warp (only when warp mode is not
 # None)"
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
