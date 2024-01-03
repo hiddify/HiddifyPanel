@@ -32,7 +32,7 @@ class UserAdmin(AdminLTEModelView):
 
     # form_columns = ["name", "current_usage_GB", "remaining_days", "comment", 'last_online', 'mode', 'admin', "uuid"]
     form_excluded_columns = ['current_usage', 'monthly', 'telegram_id', 'last_online', 'expiry_time', 'last_reset_time', 'current_usage_GB',
-                             'start_date', 'added_by', 'admin', 'details', 'max_ips', 'ed25519_private_key', 'ed25519_public_key']
+                             'start_date', 'added_by', 'admin', 'details', 'max_ips', 'ed25519_private_key', 'ed25519_public_key', 'username', 'password']
     page_size = 50
     # edit_modal=True
     # create_modal=True
@@ -135,9 +135,9 @@ class UserAdmin(AdminLTEModelView):
         else:
             link = '<i class="fa-solid fa-circle-xmark text-danger"></i> '
 
-        d = request.host
         client_proxy_path = hconfig(ConfigEnum.proxy_path_client)
-        link += f"<a target='_blank' class='copy-link' href='https://{d}/{client_proxy_path}/{model.uuid}/#{model.name}'>{model.name} <i class='fa-solid fa-arrow-up-right-from-square'></i></a>"
+        href = f'https://{request.host}/{client_proxy_path}/{model.uuid}/#{model.name}'
+        link += f"<a target='_blank' class='copy-link' data-copy='{href}' href='{href}'>{model.name} <i class='fa-solid fa-arrow-up-right-from-square'></i></a>"
         # link += f"<a target='_blank' class='copy-link' href='https://{model.username}:{model.password}@{d}/{client_proxy_path}/#{model.name}'>{model.name} <i class='fa-solid fa-arrow-up-right-from-square'></i></a>"
         return Markup(extra+link)
 

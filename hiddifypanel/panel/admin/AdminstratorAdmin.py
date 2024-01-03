@@ -90,7 +90,9 @@ class AdminstratorAdmin(AdminLTEModelView):
         admin_proxy_path = hconfig(ConfigEnum.proxy_path_admin)
         d = get_panel_domains()[0]
         if d:
-            link = f"<a target='_blank' href='https://{model.username}:{model.password}@{d}/{admin_proxy_path}/#{model.name}'>{model.name} <i class='fa-solid fa-arrow-up-right-from-square'></i></a>"
+            # link = f"<a target='_blank' href='https://{model.username}:{model.password}@{d}/{admin_proxy_path}/#{model.name}'>{model.name} <i class='fa-solid fa-arrow-up-right-from-square'></i></a>"
+            href = f'https://{d}/{admin_proxy_path}/{model.uuid}/#{model.name}'
+            link = f"<a target='_blank' class='copy-link' data-copy='{href}' href='{href}'>{model.name} <i class='fa-solid fa-arrow-up-right-from-square'></i></a>"
             if model.parent_admin:
                 return Markup(model.parent_admin.name + "&rlm;&lrm; / &rlm;&lrm;"+link)
             return Markup(link)

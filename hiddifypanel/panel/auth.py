@@ -64,6 +64,7 @@ def login_required(roles: set[Role] | None = None):
     def wrapper(fn):
         @wraps(fn)
         def decorated_view(*args, **kwargs):
+            print('xxxx', current_account)
             if not current_account:
                 return redirect_to_login()  # type: ignore
             if roles:
@@ -102,14 +103,15 @@ def init_app(app):
             if not account:
                 return logout_redirect()
 
-            next_url = request.url.replace(f'/{g.uuid}/', '/admin/' if is_admin_path else '/client/')
-        elif auth_header := request.headers.get("Authorization"):
+            next_url = request.url.replace(f'/{g.uuid}/', '/admin/' if is_admin_path else '/client/').replace("/admin/admin/", '/admin/')
+
+        elif auth_header := request.headers.get("Hiddify_API_KEY"):
             print("auth_header", auth_header)
             apikey = hutils.utils.get_apikey_from_auth_header(auth_header)
             account = get_account_by_api_key(apikey, is_admin_path)
             if not account:
                 return logout_redirect()
-        elif request.authorization:
+        elif 0 and request.authorization:
             print('request.authorization', request.authorization)
             uname = request.authorization.username
             pword = request.authorization.password

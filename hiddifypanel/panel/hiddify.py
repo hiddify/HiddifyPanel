@@ -380,8 +380,9 @@ def get_user_link(uuid, domain, mode='', username=''):
         d = d.replace("*", get_random_string(5, 15))
     proxy_path = hconfig(ConfigEnum.proxy_path_admin) if mode == 'admin' else hconfig(ConfigEnum.proxy_path_client)
     account = AdminUser.query.filter(AdminUser.uuid == uuid).first() if mode == 'admin' else User.query.filter(User.uuid == uuid).first()
-    link = f"https://{account.username}:{account.password}@{d}/{proxy_path}/admin/#{username}" if mode == 'admin' else f"https://{account.username}:{account.password}@{d}/{proxy_path}/#{username}"
-    link_multi = f"{link}multi"
+    # link = f"https://{account.username}:{account.password}@{d}/{proxy_path}/admin/#{username}" if mode == 'admin' else f"https://{account.username}:{account.password}@{d}/{proxy_path}/#{username}"
+    link = f"https://{d}/{proxy_path}/{account.uuid}/#{username}"
+
     # if mode == 'new':
     #     link = f"{link}new"
     text = domain.alias or domain.domain
@@ -392,12 +393,8 @@ def get_user_link(uuid, domain, mode='', username=''):
         color_cls = "success" if auto_cdn else 'warning'
         text = f'<span class="badge badge-secondary" >{"Auto" if auto_cdn else "CDN"}</span> '+text
 
-    if mode == "multi":
-        res += f"<a class='btn btn-xs btn-secondary' target='_blank' href='{link_multi}' >{_('all')}</a>"
-    res += f"<a target='_blank' href='{link}' class='btn btn-xs btn-{color_cls} ltr' ><i class='fa-solid fa-arrow-up-right-from-square d-none'></i> {text}</a>"
+    res += f"<a target='_blank' data-copy='{link}' href='{link}' class='btn btn-xs btn-{color_cls} ltr copy-link' ><i class='fa-solid fa-arrow-up-right-from-square d-none'></i> {text}</a>"
 
-    if mode == "multi":
-        res += "</div>"
     return res
 
 

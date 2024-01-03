@@ -106,7 +106,8 @@ class LoginView(FlaskView):
             "background_color": "#1a1b21",
             "display": "standalone",
             "scope": f"/",
-            "start_url": hiddify.hutils.utils.add_basic_auth_to_url(f"https://{domain}/{g.proxy_path}/?pwa=true", g.account.username, g.account.password),
+            # "start_url": hiddify.hutils.utils.add_basic_auth_to_url(f"https://{domain}/{g.proxy_path}/?pwa=true", g.account.username, g.account.password),
+            "start_url": f"https://{domain}/{g.proxy_path}/{g.account.uuid}/?pwa=true",
             "description": "Hiddify, for a free Internet",
             "orientation": "any",
             "icons": [
