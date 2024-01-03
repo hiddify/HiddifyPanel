@@ -25,7 +25,7 @@ def get_daily_usage_stats(admin_id=None, child_id=None):
     if not admin_id:
         admin_id = g.account.id
     sub_admins = AdminUser.query.filter(AdminUser.id == admin_id).first().recursive_sub_admins_ids()
-    print(sub_admins)
+    # print(sub_admins)
 
     def filter_daily_usage_admin(query):
         # print('before',admin_id,query.all())

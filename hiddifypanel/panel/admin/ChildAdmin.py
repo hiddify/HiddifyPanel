@@ -10,6 +10,7 @@ from hiddifypanel.panel import hiddify
 from hiddifypanel import hutils
 from flask import current_app
 
+
 class ChildAdmin(AdminLTEModelView):
     column_hide_backrefs = False
 
@@ -98,7 +99,7 @@ class ChildAdmin(AdminLTEModelView):
         if not hiddify.check_connection_for_domain(model.domain):
             raise ValidationError(
                 _("Domain is not correctly mapped to this server!"))
-        print(model.show_domains)
+        # print(model.show_domains)
         if len(model.show_domains) == Domain.query.count():
             model.show_domains = []
 

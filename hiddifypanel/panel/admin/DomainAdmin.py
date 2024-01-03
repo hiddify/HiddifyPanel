@@ -142,7 +142,7 @@ class DomainAdmin(AdminLTEModelView):
                     raise ValidationError(_("You have used this domain in: ")+_(f"config.{c}.label"))
 
         for td in Domain.query.filter(Domain.mode == DomainType.reality, Domain.domain != model.domain).all():
-            print(td)
+            # print(td)
             if td.servernames and (model.domain in td.servernames.split(",")):
                 raise ValidationError(_("You have used this domain in: ")+_(f"config.reality_server_names.label")+" in " + td.domain)
 

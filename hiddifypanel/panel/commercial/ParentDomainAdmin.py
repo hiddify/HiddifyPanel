@@ -23,6 +23,7 @@ from sqlalchemy.orm import backref
 from flask_admin.form.fields import Select2TagsField, Select2Field
 from flask import current_app
 
+
 class ParentDomainAdmin(AdminLTEModelView):
     column_hide_backrefs = False
 
@@ -111,7 +112,7 @@ class ParentDomainAdmin(AdminLTEModelView):
         # if not hiddify.check_connection_for_domain(model.domain):
         #     raise ValidationError(
         #         _("Domain is not correctly mapped to this server!"))
-        print(model.show_domains)
+
         if len(model.show_domains) == Domain.query.count():
             model.show_domains = []
 

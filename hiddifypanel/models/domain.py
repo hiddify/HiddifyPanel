@@ -157,7 +157,7 @@ def get_proxy_domains_db(db_domain):
     if not db_domain:
         domain = urlparse(request.base_url).hostname
         db_domain = Domain(domain=domain, mode=DomainType.direct, show_domains=[])
-        print("no domain")
+        # print("no domain")
         flash(_("This domain does not exist in the panel!" + domain))
 
     return db_domain.show_domains or Domain.query.all()

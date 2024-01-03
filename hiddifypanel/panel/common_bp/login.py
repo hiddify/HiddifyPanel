@@ -45,14 +45,13 @@ class LoginView(FlaskView):
                 logout_user()
                 g.account = None
                 # flash(request.authorization.username, 'error')
-                return "a"+username
                 return redirect(loginurl)
 
             return render_template("redirect.html", url=loginurl), 401
             # abort(401, "Unauthorized1")
         if redirect_arg:
             return redirect(redirect_arg)
-        print(f"B {g.account} {redirect_arg} {url_for('admin.Dashboard:index')}")
+
         if hiddify.is_admin_proxy_path() and g.account.role in {Role.super_admin, Role.admin, Role.agent}:
             return redirect(url_for('admin.Dashboard:index'))
 

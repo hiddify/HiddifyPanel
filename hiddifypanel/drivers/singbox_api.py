@@ -2,6 +2,7 @@ import xtlsapi
 from hiddifypanel.models import *
 from .abstract_driver import DriverABS
 from flask import current_app
+import json
 
 
 class SingboxApi(DriverABS):

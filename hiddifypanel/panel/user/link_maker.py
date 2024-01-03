@@ -820,7 +820,7 @@ def get_all_validated_proxies(domains):
                 ips = [x for x in [ip, ip6]if x != None]
 
                 if type.proto == 'ssh' and all([x in added_ip[type.proto] for x in ips]):
-                    print('skiping ')
+                    # print('skiping ')
                     continue
 
                 for x in ips:

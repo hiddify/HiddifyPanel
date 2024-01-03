@@ -381,8 +381,6 @@ class UserView(FlaskView):
             resp = do_base_64(resp)
         return add_headers(resp, c)
 
-    
-
     @login_required(roles={Role.user})
     @ route("/offline.html")
     def offline():
@@ -416,7 +414,6 @@ def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
 
         if not db_domain:
             db_domain = DB(domain=domain, show_domains=[])
-            print("no domain")
             flash(_("This domain does not exist in the panel!" + domain))
 
         if mode == 'multi':
@@ -453,7 +450,7 @@ def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
                 d.cdn_ip and "MTN" in d.cdn_ip)
             d.cdn_ip = auto_ip_selector.get_clean_ip(
                 d.cdn_ip, d.mode == DomainType.auto_cdn_ip, default_asn)
-            print("autocdn ip mode ", d.cdn_ip)
+            # print("autocdn ip mode ", d.cdn_ip)
         if "*" in d.domain:
             d.domain = d.domain.replace("*", hiddify.get_random_string(5, 15))
 
