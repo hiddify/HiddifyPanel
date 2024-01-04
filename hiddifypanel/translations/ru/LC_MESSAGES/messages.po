@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPT\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-03 21:36+0100\n"
-"PO-Revision-Date: 2024-01-03 07:41-0600\n"
+"POT-Creation-Date: 2024-01-05 00:31+0100\n"
+"PO-Revision-Date: 2024-01-03 14:37-0600\n"
 "Last-Translator: lymanrudni\n"
 "Language: ru\n"
 "Language-Team: Russian\n"
@@ -344,9 +344,9 @@ msgid "Domain is not correctly mapped to this server!"
 msgstr "Домен неправильно сопоставлен с этим сервером!"
 
 # | msgid ""
-# | "⚠️ This version of Hiddify Panel is outdated. please update it from admin
-# "
-# | "area."
+# | "⚠️ This version of Hiddify Manager is outdated. please Update it from
+# Admin "
+# | "area"
 #: hiddifypanel/panel/admin/Dashboard.py:36 hiddifypanel/templates/500.html:10
 msgid ""
 "This version of hiddify panel is outdated. Please update it from admin "
@@ -1057,7 +1057,7 @@ msgid "Backup"
 msgstr "Резервное копирование"
 
 # | msgid ""
-# | "🔄 Hiddify Panel automatically takes a Backup every 6 Hours. The path of
+# | "🔄 Hiddify Manager automatically takes a Backup every 6 Hours. The path of
 # the Backup files on the server: ⬇️\n"
 # | "<br>\n"
 # | "/opt/hiddify-config/hiddify-panel/backup\n"
@@ -1102,7 +1102,7 @@ msgid "Why Going to Premium?"
 msgstr "Зачем переходить на Премиум?"
 
 # | msgid ""
-# | "Hiddify Panel Is Made For Non-Commercial Use. But If You Use This Panel
+# | "Hiddify Manager Is Made For Non-Commercial Use. But If You Use This Panel
 # Commercially, Please Help The Project Grow By Donating. <br/>\n"
 # | "In Exchange For Your Financial Support, We Also Provide Special
 # Facilities For Your Commercial Product.\n"
@@ -4090,7 +4090,7 @@ msgstr "Упс! что-то пошло не так"
 msgid "Please create an issue on Github."
 msgstr "Пожалуйста создайте проблему на Github."
 
-# | msgid "Hiddify Panel"
+# | msgid "Hiddify Manager"
 #: hiddifypanel/templates/admin-layout.html:18
 #: hiddifypanel/templates/master.html:8
 msgid "master.page-title"
@@ -4272,7 +4272,7 @@ msgstr "⚠️ Вы уверены, что хотите выполнить эт�
 # class=\"btn btn-info share-link\">Dogecoin</a> </div></li>\n"
 # | "</ul>\n"
 # | "We need also other help:\n"
-# | "<li>👥 Share Hiddify Panel with Others</li>\n"
+# | "<li>👥 Share Hiddify Manager with Others</li>\n"
 # | "<li>📝Python Developer</li>\n"
 # | "<li>📝Kotlin Developer</li>\n"
 # | "<li>🖥Content Providers</li>\n"
@@ -4666,7 +4666,7 @@ msgstr "Копировать в буфер обмена: Ctrl+C, Enter"
 msgid "Install"
 msgstr "Установить"
 
-# | msgid "Hiddify Panel Installation"
+# | msgid "Hiddify Manager Installation"
 #: hiddifypanel/templates/master.html:423
 msgid "Install Hiddify Application"
 msgstr "Установка панели Hidify"
