@@ -170,6 +170,7 @@ def init_app(app: APIFlask):
     @app.before_request
     def set_default_values():
         g.user_agent = user_agents.parse(request.user_agent.string)
+        g.user_agent.is_browser = re.match('^Mozilla', request.user_agent.string, re.IGNORECASE)
 
     @app.before_request
     def base_middleware():

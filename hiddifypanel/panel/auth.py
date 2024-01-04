@@ -77,11 +77,12 @@ def login_required(roles: set[Role] | None = None):
 
 
 def get_account_by_api_key(api_key, is_admin):
-    return AdminUser.by_uuid(api_key) if is_admin else User.by_uuid(api_key)
+    # return AdminUser.by_uuid(api_key) if is_admin else User.by_uuid(api_key)
+    return get_account_by_uuid(uuid, is_admin)
 
 
 def get_account_by_uuid(uuid, is_admin):
-    return AdminUser.by_uuid(uuid) if is_admin else User.by_uuid(uuid)
+    return AdminUser.by_uuid(f'{uuid}') if is_admin else User.by_uuid(f'{uuid}')
 
 
 def login_by_uuid(uuid):
@@ -144,9 +145,8 @@ def init_app(app):
             g.is_admin = hiddify.is_admin_role(account.role)  # type: ignore
             login_user(account, force=True)
             # print("loggining in")
-            if next_url is not None:
-                if g.user_agent.browser:
-                    return redirect(next_url)
+            if next_url is not None and g.user_agent.is_browser:
+                return redirect(next_url)
 
     @app.url_value_preprocessor
     def pull_secret_code(endpoint, values):
@@ -172,7 +172,7 @@ def logout_redirect():
 def redirect_to_login():
     # TODO: show the login page
     # return request.base_url
-    if g.user_agent.browser:
+    if g.user_agent.is_browser:
         return redirect(url_for('common_bp.LoginView:basic_0', force=1, next=request.path))
 
     else:

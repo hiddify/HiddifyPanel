@@ -42,7 +42,7 @@ class LoginView(FlaskView):
             return redirect(redirect_arg)
         if hiddify.is_admin_proxy_path() and g.account.role in {Role.super_admin, Role.admin, Role.agent}:
             return redirect(url_for('admin.Dashboard:index'))
-        if g.user_agent.browser and hiddify.is_client_proxy_path():
+        if g.user_agent.is_browser and hiddify.is_client_proxy_path():
             return redirect(url_for('client.UserView:index'))
 
         from hiddifypanel.panel.user import UserView
@@ -65,7 +65,7 @@ class LoginView(FlaskView):
             username = request.authorization.username if request.authorization else ''
 
             loginurl = url_for('common_bp.LoginView:index', next=redirect_arg, user=username)
-            if g.user_agent.browser and request.headers.get('Authorization') or (current_account and len(username) > 0 and current_account.username != username):
+            if g.user_agent.is_browser and request.headers.get('Authorization') or (current_account and len(username) > 0 and current_account.username != username):
                 flash(_('Incorrect Password'), 'error')
                 logout_user()
                 g.account = None
@@ -80,7 +80,7 @@ class LoginView(FlaskView):
         if hiddify.is_admin_proxy_path() and g.account.role in {Role.super_admin, Role.admin, Role.agent}:
             return redirect(url_for('admin.Dashboard:index'))
 
-        if g.user_agent.browser and hiddify.is_client_proxy_path():
+        if g.user_agent.is_browser and hiddify.is_client_proxy_path():
             return redirect(url_for('client.UserView:index'))
         from hiddifypanel.panel.user import UserView
         return UserView().auto_sub()
@@ -99,7 +99,7 @@ class LoginView(FlaskView):
     #         g.account = AdminUser.by_uuid(uuid)
     #     if not g.account:
     #         abort(403)
-    #     if not g.user_agent.browser and proxy_path == hconfig(ConfigEnum.proxy_path_client):
+    #     if not g.user_agent.is_browser and proxy_path == hconfig(ConfigEnum.proxy_path_client):
     #         userview = UserView()
     #         if "all.txt" in path:
     #             return userview.all_configs()
