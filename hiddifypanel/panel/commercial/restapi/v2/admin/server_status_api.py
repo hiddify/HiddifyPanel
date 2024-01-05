@@ -4,9 +4,8 @@ from flask.views import MethodView
 from apiflask.fields import Dict
 from apiflask import Schema
 from hiddifypanel.panel.auth import login_required
-from hiddifypanel.models.role import Role
+from hiddifypanel.models import Role, DailyUsage
 from hiddifypanel.panel import hiddify
-from hiddifypanel.models import get_daily_usage_stats
 
 
 class ServerStatus(Schema):
@@ -25,5 +24,5 @@ class AdminServerStatusApi(MethodView):
             'top5': hiddify.top_processes()
         }
         admin_id = request.args.get("admin_id") or g.account.id
-        dto.usage_history = get_daily_usage_stats(admin_id)
+        dto.usage_history = DailyUsage.get_daily_usage_stats(admin_id)
         return dto

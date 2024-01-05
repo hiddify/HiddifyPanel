@@ -8,4 +8,4 @@ from .proxy import Proxy, ProxyL3, ProxyCDN, ProxyProto, ProxyTransport, add_or_
 from .user import User, UserMode, remove_user, UserDetail, ONE_GIG
 from .admin import AdminUser, AdminMode
 from .child import Child
-from .usage import DailyUsage, get_daily_usage_stats
+from .usage import DailyUsage
