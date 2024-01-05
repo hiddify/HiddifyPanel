@@ -381,9 +381,9 @@ def get_user_link(uuid, domain, mode='', username=''):
     if "*" in d:
         d = d.replace("*", get_random_string(5, 15))
     proxy_path = hconfig(ConfigEnum.proxy_path_admin) if mode == 'admin' else hconfig(ConfigEnum.proxy_path_client)
-    account = AdminUser.query.filter(AdminUser.uuid == uuid).first() if mode == 'admin' else User.query.filter(User.uuid == uuid).first()
+    # account = AdminUser.query.filter(AdminUser.uuid == uuid).first() if mode == 'admin' else User.query.filter(User.uuid == uuid).first()
     # link = f"https://{account.username}:{account.password}@{d}/{proxy_path}/admin/#{username}" if mode == 'admin' else f"https://{account.username}:{account.password}@{d}/{proxy_path}/#{username}"
-    link = f"https://{d}/{proxy_path}/{account.uuid}/#{username}"
+    link = f"https://{d}/{proxy_path}/{uuid}/#{username}"
 
     # if mode == 'new':
     #     link = f"{link}new"
