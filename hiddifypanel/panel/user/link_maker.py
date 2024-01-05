@@ -1,4 +1,5 @@
 from flask import g, request, render_template
+from ipaddress import IPv4Address, IPv4Address
 import enum
 from hiddifypanel import hutils
 from hiddifypanel.models import *
@@ -263,7 +264,7 @@ def to_link(proxy):
             vmess_data['pbk'] = proxy['reality_pbk']
             vmess_data['sid'] = proxy['reality_short_id']
 
-        return "vmess://" + hiddify.do_base_64(f'{json.dumps(vmess_data)}')
+        return "vmess://" + hiddify.do_base_64(f'{json.dumps(vmess_data,cls=CustomEncoder)}')
         # return pbase64(f'vmess://{json.dumps(vmess_data)}')
     if proxy['proto'] == 'ssh':
         strenssh = hiddify.do_base_64(f'{proxy["uuid"]}:0:{proxy["private_key"]}::@{proxy["server"]}:{proxy["port"]}')
@@ -747,7 +748,7 @@ def make_full_singbox_config(domains, **kwargs):
         "tolerance": 200
     }
     base_config['outbounds'].insert(1, smart)
-    res = json.dumps(base_config, indent=4)
+    res = json.dumps(base_config, indent=4, cls=CustomEncoder)
     if ua['is_hiddify']:
         res = res[:-1]+',"experimental": {}}'
     return res
@@ -850,3 +851,10 @@ def get_all_validated_proxies(domains):
                 if 'msg' not in pinfo:
                     allp.append(pinfo)
     return allp
+
+
+class CustomEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, IPv4Address) or isinstance(obj, IPv6Address):
+            return str(obj)
+        return super().default(obj)
