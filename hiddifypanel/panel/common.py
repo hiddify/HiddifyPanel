@@ -230,7 +230,7 @@ def init_app(app: APIFlask):
     def generate_github_issue_link_for_500_error(error, traceback, remove_sensetive_data=True, remove_unrelated_traceback_datails=True):
 
         def remove_sensetive_data_from_github_issue_link(issue_link):
-            if hasattr(g, 'acount') and hasattr(g.account, 'uuid') and g.account.uuid:
+            if hasattr(g, 'account') and hasattr(g.account, 'uuid') and g.account.uuid:
                 issue_link.replace(f'{g.account.uuid}', '*******************')
             deprecated_proxy_path = hconfig(ConfigEnum.proxy_path)
             admin_proxy_path = hconfig(ConfigEnum.proxy_path_admin)

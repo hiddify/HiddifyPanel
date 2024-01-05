@@ -53,7 +53,7 @@ class LoginView(FlaskView):
         if form.validate_on_submit():
             uuid = form.secret_textbox.data
             if login_by_uuid(uuid):
-                return redirect('/{g.proxy_path}/')
+                return redirect(f'/{g.proxy_path}/')
         flash(_('config.validation-error'), 'danger')
         return render_template('login.html', form=LoginForm())
 
