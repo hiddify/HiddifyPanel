@@ -170,8 +170,6 @@ def init_app(app: APIFlask):
     #     return redirect(new_link, 302)
     @app.before_request
     def set_default_values():
-        g.user_agent_old = user_agents.parse(request.user_agent.string)
-        g.user_agent_old.is_browser = re.match('^Mozilla', request.user_agent.string, re.IGNORECASE)
         g.user_agent = hiddify.get_user_agent()
 
     @app.before_request
