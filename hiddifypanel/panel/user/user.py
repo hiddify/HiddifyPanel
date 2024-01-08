@@ -213,7 +213,7 @@ class UserView(FlaskView):
         return self.auto_sub()
 
     def auto_sub(self):
-        if g.user_agent.is_browser:
+        if g.user_agent['is_browser']:
             return self.new()
         return self.get_proper_config() or self.all_configs(base64=True)
 

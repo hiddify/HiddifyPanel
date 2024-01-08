@@ -860,7 +860,10 @@ def __parse_user_agent(ua):
     res['is_clash_meta'] = re.match('^(Clash-verge|Clash-?Meta|Stash|NekoBox|NekoRay|Pharos|hiddify-desktop)', ua, re.IGNORECASE) and True
     res['is_singbox'] = re.match('^(HiddifyNext|Dart|SFI|SFA)', ua, re.IGNORECASE) and True
     if (res['is_singbox']):
-        res['singbox_version'] = (1, 4, 0)
+        res['singbox_version'] = (1, 8, 0)
+        if re.match('^(SFI|SFA).*1\.[1-7]\.', ua, re.IGNORECASE):
+            res['singbox_version'] = (1, 7, 0)
+            
     res['is_hiddify'] = re.match('^(HiddifyNext)', ua, re.IGNORECASE) and True
     if ['is_hiddify']:
         res['hiddify_version'] = uaa

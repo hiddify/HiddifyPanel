@@ -146,7 +146,7 @@ def init_app(app):
             g.is_admin = hiddify.is_admin_role(account.role)  # type: ignore
             login_user(account, force=True)
             # print("loggining in")
-            if next_url is not None and g.user_agent.is_browser:
+            if next_url is not None and g.user_agent['is_browser']:
                 return redirect(next_url)
 
     @app.url_value_preprocessor
@@ -173,7 +173,7 @@ def logout_redirect():
 def redirect_to_login():
     # TODO: show the login page
     # return request.base_url
-    # if g.user_agent.is_browser:
+    # if g.user_agent['is_browser']:
     # return redirect(url_for('common_bp.LoginView:basic_0', force=1, next=request.path))
     return redirect(url_for('common_bp.LoginView:index', force=1, next=request.path))
 

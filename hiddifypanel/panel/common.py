@@ -129,7 +129,7 @@ def init_app(app: APIFlask):
     # @app.before_request
     # def backward_compatibility_middleware():
     #     # get needed variables
-    #     g.user_agent = user_agent = user_agents.parse(request.user_agent.string)
+    #     g.user_agent_old = user_agent = user_agents.parse(request.user_agent.string)
 
     #     proxy_path = hiddify.get_proxy_path_from_url(request.url)
     #     if not proxy_path:
@@ -170,8 +170,9 @@ def init_app(app: APIFlask):
     #     return redirect(new_link, 302)
     @app.before_request
     def set_default_values():
-        g.user_agent = user_agents.parse(request.user_agent.string)
-        g.user_agent.is_browser = re.match('^Mozilla', request.user_agent.string, re.IGNORECASE)
+        g.user_agent_old = user_agents.parse(request.user_agent.string)
+        g.user_agent_old.is_browser = re.match('^Mozilla', request.user_agent.string, re.IGNORECASE)
+        g.user_agent = hiddify.get_user_agent()
 
     @app.before_request
     def base_middleware():
@@ -179,8 +180,8 @@ def init_app(app: APIFlask):
             return
 
         # validate request made by human (just check user agent, there's no capcha)
-        # g.user_agent = user_agents.parse(request.user_agent.string)
-        if g.user_agent.is_bot:
+        # g.user_agent_old = user_agents.parse(request.user_agent.string)
+        if g.user_agent_old.is_bot:
             abort(400, "invalid")
 
         # validate proxy path
@@ -223,8 +224,8 @@ def init_app(app: APIFlask):
             'os_details': f'{platform()}',
             'user_agent': 'Unknown'
         }
-        if hasattr(g, 'user_agent') and str(g.user_agent):
-            details['user_agent'] = g.user_agent.ua_string
+        if hasattr(g, 'user_agent') and str(g.user_agent_old):
+            details['user_agent'] = g.user_agent_old.ua_string
         return details
 
     def generate_github_issue_link_for_500_error(error, traceback, remove_sensetive_data=True, remove_unrelated_traceback_datails=True):
