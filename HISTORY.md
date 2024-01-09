@@ -547,6 +547,16 @@ with A2_
 
 #### Other
 
+* Merge. 
+
+* Merge branch 'main' of github.com:hiddify/Hiddify-Panel. 
+
+* Merge pull request #81 from er888kh/patch-3. 
+  _Update hiddify.py_
+
+* Update hiddify.py. 
+  _Guard against concatenation with non-string host values (such as IP address)_
+
 * Remove temporary access, refactor panel links, refactor user.py. 
 
 * Merge pull request #76 from Iam54r1n4/refactor-proxy. 
