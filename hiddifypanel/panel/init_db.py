@@ -145,6 +145,10 @@ def init_db():
 
 #     add_config_if_not_exist(ConfigEnum.hysteria_enable, True)
 #     add_config_if_not_exist(ConfigEnum.hysteria_port, random.randint(5000, 20000))
+def _v61():
+    execute("ALTER TABLE user MODIFY COLUMN username VARCHAR(100);")
+    execute("ALTER TABLE user MODIFY COLUMN password VARCHAR(100);")
+
 
 def _v60():
     add_config_if_not_exist(ConfigEnum.proxy_path_admin, get_random_string())

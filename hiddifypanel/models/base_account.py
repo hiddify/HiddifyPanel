@@ -13,8 +13,8 @@ class BaseAccount(db.Model, SerializerMixin, FlaskLoginUserMixin):  # type: igno
     __abstract__ = True
     uuid = Column(String(36), default=lambda: str(uuid_mod.uuid4()), nullable=False, unique=True)
     name = Column(String(512), nullable=False, default='')
-    username = Column(String(16), nullable=True, default='')
-    password = Column(String(16), nullable=True, default='')
+    username = Column(String(100), nullable=True, default='')
+    password = Column(String(100), nullable=True, default='')
     comment = Column(String(512), nullable=True, default='')
     telegram_id = Column(String(512), nullable=True, default='')
 

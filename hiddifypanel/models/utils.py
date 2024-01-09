@@ -3,29 +3,21 @@ from slugify import slugify
 
 
 def fill_username(model) -> None:
+    if model.username:
+        return
+
     minimum_username_length = 10
-    if not model.username or len(model.username) < minimum_username_length:
-        base_username = ''
-        rand_str = ''
-        if not model.name:
-            base_username = hutils.utils.get_random_string(minimum_username_length, minimum_username_length)
-            model.username = base_username + rand_str
-            while not model.is_username_unique():
-                rand_str = hutils.utils.get_random_string(minimum_username_length, minimum_username_length)
-        else:
-            # user actual name
-            base_username = slugify(model.name, separator='_')
-            if len(base_username) > minimum_username_length - 1:
-                # check if the name is unique, if  it's not we add some random char to it
-                model.username = base_username + rand_str
-                while not model.is_username_unique():
-                    rand_str = hutils.utils.get_random_string(2, 4)
-            else:
-                needed_length = minimum_username_length - len(base_username)
-                rand_str = hutils.utils.get_random_string(needed_length, needed_length)
-                model.username = base_username + rand_str
-                while not model.is_username_unique():
-                    rand_str = hutils.utils.get_random_string(needed_length, needed_length)
+
+    if len(model.username) < minimum_username_length:
+        base_username += hutils.utils.get_random_string(minimum_username_length-len(model.username), minimum_username_length)
+
+    if len(base_username) > 100:
+        base_username = base_username[0:100]
+    model.username = base_username
+
+    while not model.is_username_unique():
+        rand_str = hutils.utils.get_random_string(2, 4)
+        model.username = generate_username(base_username, len(rand_str))
 
 
 def fill_password(model) -> None:
