@@ -5,6 +5,8 @@
 
 #### New
 
+* Customizable message added. 
+
 * Add share link in user admin with qrcode. 
 
 * Handle singbox v1.8 and v1.7. 
@@ -196,6 +198,8 @@
 * Update hiddify next download link. 
 
 #### Fix
+
+* Empty admin message. 
 
 * Compatibility issue with old version. 
 
