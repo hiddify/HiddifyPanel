@@ -220,9 +220,8 @@ def init_app(app: APIFlask):
             'hiddify_version': f'{hiddifypanel.__version__}',
             'python_version': f'{python_version}',
             'os_details': f'{platform()}',
-            'user_agent': 'Unknown'
+            'user_agent': request.user_agent
         }
-        details['user_agent'] = request.user_agent
         return details
 
     def generate_github_issue_link_for_500_error(error, traceback, remove_sensetive_data=True, remove_unrelated_traceback_datails=True):
@@ -230,15 +229,11 @@ def init_app(app: APIFlask):
         def remove_sensetive_data_from_github_issue_link(issue_link):
             if hasattr(g, 'account') and hasattr(g.account, 'uuid') and g.account.uuid:
                 issue_link.replace(f'{g.account.uuid}', '*******************')
-            deprecated_proxy_path = hconfig(ConfigEnum.proxy_path)
-            admin_proxy_path = hconfig(ConfigEnum.proxy_path_admin)
-            client_proxy_path = hconfig(ConfigEnum.proxy_path_client)
-            if deprecated_proxy_path:
-                issue_link.replace(deprecated_proxy_path, '**********')
-            if admin_proxy_path:
-                issue_link.replace(admin_proxy_path, '**********')
-            if client_proxy_path:
-                issue_link.replace(client_proxy_path, '**********')
+
+            issue_link.replace(request.host, '**********')
+            issue_link.replace(hconfig(ConfigEnum.proxy_path), '**********')
+            issue_link.replace(hconfig(ConfigEnum.proxy_path_admin), '**********')
+            issue_link.replace(hconfig(ConfigEnum.proxy_path_client), '**********')
 
         def remove_unrelated_traceback_details(stacktrace: str):
             lines = stacktrace.splitlines()

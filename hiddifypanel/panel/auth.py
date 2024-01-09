@@ -86,8 +86,7 @@ def get_account_by_uuid(uuid, is_admin):
     return AdminUser.by_uuid(f'{uuid}') if is_admin else User.by_uuid(f'{uuid}')
 
 
-def login_by_uuid(uuid):
-    is_admin = g.proxy_path == hconfig(ConfigEnum.proxy_path_admin)
+def login_by_uuid(uuid, is_admin: bool):
     account = get_account_by_uuid(uuid, is_admin)
     if not account:
         return False
@@ -104,7 +103,7 @@ def init_app(app):
         # print("before_request")
         account = None
 
-        is_admin_path = g.proxy_path == hconfig(ConfigEnum.proxy_path_admin)  # hiddify.is_admin_proxy_path()
+        is_admin_path = hiddify.is_admin_proxy_path()
         next_url = None
 
         if g.uuid:

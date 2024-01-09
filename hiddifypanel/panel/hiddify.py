@@ -210,13 +210,13 @@ def is_admin_role(role: Role):
 
 
 def is_admin_proxy_path() -> bool:
-    proxy_path = g.get('proxy_path', None) or get_proxy_path_from_url(request.url)
-    return proxy_path == hconfig(ConfigEnum.proxy_path_admin)
+    proxy_path = g.get('proxy_path') or get_proxy_path_from_url(request.url)
+    return proxy_path in [hconfig(ConfigEnum.proxy_path_admin), hconfig(ConfigEnum.proxy_path)]
 
 
 def is_client_proxy_path() -> bool:
-    proxy_path = g.get('proxy_path', None) or get_proxy_path_from_url(request.url)
-    return proxy_path == hconfig(ConfigEnum.proxy_path_client)
+    proxy_path = g.get('proxy_path') or get_proxy_path_from_url(request.url)
+    return proxy_path in [hconfig(ConfigEnum.proxy_path_client), hconfig(ConfigEnum.proxy_path)]
 
 
 def proxy_path_validator(proxy_path):

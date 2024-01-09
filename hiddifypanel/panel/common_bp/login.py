@@ -51,8 +51,8 @@ class LoginView(FlaskView):
     def post(self):
         form = LoginForm()
         if form.validate_on_submit():
-            uuid = form.secret_textbox.data
-            if login_by_uuid(uuid):
+            uuid = form.secret_textbox.data.strip()
+            if login_by_uuid(uuid,hiddify.is_admin_proxy_path()):
                 return redirect(f'/{g.proxy_path}/')
         flash(_('config.validation-error'), 'danger')
         return render_template('login.html', form=LoginForm())
