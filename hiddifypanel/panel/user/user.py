@@ -18,20 +18,13 @@ from hiddifypanel.panel.auth import login_required
 
 class UserView(FlaskView):
 
-    # region api
-    @route('/short/')
-    @route('/short')
-    # TODO: delete this function and use /short/ api instead
-    def short_link(self):
-        short = hiddify.add_short_link(f'https://{g.account.username}:{g.account.password}@{urlparse(request.base_url).hostname}/{g.proxy_path}/#{g.account.name}')
-
-        return f"<div style='direction:ltr'>https://{urlparse(request.base_url).hostname}/{short}/</a><br><br>"+_("This link will expire in 5 minutes")
-
     @route('/useragent/')
     @login_required(roles={Role.user})
     def test(self):
         ua = request.user_agent.string
-        return ua
+        print(ua)
+        print(hiddify.get_user_agent())
+        return ua, 400
 
     def index(self):
         return self.auto_sub()
@@ -157,6 +150,8 @@ class UserView(FlaskView):
             resp = link_maker.make_full_singbox_config(**c)
             # resp = render_template('singbox_config.json', **c, host_keys=hiddify.get_hostkeys(True),
             #                        ssh_client_version=hiddify.get_ssh_client_version(user), ssh_ip=hiddify.get_direct_host_or_ip(4), base64=False)
+
+        print(resp)
         return add_headers(resp, c)
 
     @ route('/singbox.json', methods=["GET", "HEAD"])

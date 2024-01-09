@@ -839,6 +839,8 @@ def get_user_agent():
 
 @cache.cache()
 def __parse_user_agent(ua):
+    #Example: SFA/1.8.0 (239; sing-box 1.8.0)
+    #Example: SFA/1.7.0 (239; sing-box 1.7.0)
     uaa = user_agents.parse(request.user_agent.string)
     res = {}
     res["is_bot"] = uaa.is_bot

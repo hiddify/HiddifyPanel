@@ -134,7 +134,7 @@ class UserAdmin(AdminLTEModelView):
         else:
             link = '<i class="fa-solid fa-circle-xmark text-danger"></i> '
 
-        href = hiddify.get_account_panel_link(model, request.host, is_https=True, prefere_path_only=True)+f"#{model.name}"
+        href = hiddify.get_account_panel_link(model, request.host, is_https=True)+f"#{model.name}"
 
         link += f"<a target='_blank' class='share-link' data-copy='{href}' href='{href}'>{model.name} <i class='fa-solid fa-arrow-up-right-from-square'></i></a>"
 
