@@ -52,7 +52,7 @@ class LoginView(FlaskView):
         form = LoginForm()
         if form.validate_on_submit():
             uuid = form.secret_textbox.data.strip()
-            if login_by_uuid(uuid,hiddify.is_admin_proxy_path()):
+            if login_by_uuid(uuid, hiddify.is_admin_proxy_path()):
                 return redirect(f'/{g.proxy_path}/')
         flash(_('config.validation-error'), 'danger')
         return render_template('login.html', form=LoginForm())
@@ -121,8 +121,8 @@ class LoginView(FlaskView):
     @route('/manifest.webmanifest')
     @login_required()
     def create_pwa_manifest(self):
-        domain = urlparse(request.base_url).hostname
-        name = (domain if g.is_admin else g.user.name)
+        domain = request.host
+        name = (domain if hiddify.is_admin_panel_call() else g.account.name)
         return jsonify({
             "name": f"Hiddify {name}",
             "short_name": f"{name}"[:12],
@@ -130,8 +130,7 @@ class LoginView(FlaskView):
             "background_color": "#1a1b21",
             "display": "standalone",
             "scope": f"/",
-            # "start_url": hiddify.hutils.utils.add_basic_auth_to_url(f"https://{domain}/{g.proxy_path}/?pwa=true", g.account.username, g.account.password),
-            "start_url": f"https://{domain}/{g.proxy_path}/{g.account.uuid}/?pwa=true",
+            "start_url": hiddify.get_account_panel_link(g.account, domain) +"?pwa=true",
             "description": "Hiddify, for a free Internet",
             "orientation": "any",
             "icons": [

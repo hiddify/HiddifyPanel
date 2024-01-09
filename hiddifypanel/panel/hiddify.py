@@ -72,39 +72,6 @@ def exec_command(cmd, cwd=None):
         print(e)
 
 
-def user_auth(function):
-    def wrapper(*args, **kwargs):
-        if g.account.uuid == None:
-            return jsonify({"error": "auth failed"})
-        if not g.account:
-            return jsonify({"error": "user not found"})
-        if g.account and g.is_admin:
-            return jsonify({"error": "admin can not access user page. add /admin/ to your url"})
-        return function()
-
-    return wrapper
-
-
-def super_admin(function):
-    def wrapper(*args, **kwargs):
-        if g.account.mode not in [AdminMode.super_admin]:
-            abort(403, __("Access Denied"))
-            # return jsonify({"error": "auth failed"})
-        return function(*args, **kwargs)
-
-    return wrapper
-
-
-def admin(function):
-    def wrapper(*args, **kwargs):
-        if g.account.mode not in [AdminMode.admin, AdminMode.super_admin]:
-            abort(403, __("Access Denied"))
-            # return jsonify({"error": "auth failed"})
-
-        return function(*args, **kwargs)
-    return wrapper
-
-
 def api_v1_auth(function):
     def wrapper(*args, **kwargs):
         a_uuid = kwargs.get('admin_uuid')
@@ -839,8 +806,8 @@ def get_user_agent():
 
 @cache.cache()
 def __parse_user_agent(ua):
-    #Example: SFA/1.8.0 (239; sing-box 1.8.0)
-    #Example: SFA/1.7.0 (239; sing-box 1.7.0)
+    # Example: SFA/1.8.0 (239; sing-box 1.8.0)
+    # Example: SFA/1.7.0 (239; sing-box 1.7.0)
     uaa = user_agents.parse(request.user_agent.string)
     res = {}
     res["is_bot"] = uaa.is_bot

@@ -107,8 +107,10 @@ def init_app(app: APIFlask):
                 #     values['proxy_path'] = hconfig(ConfigEnum.proxy_path)
             elif hiddify.is_user_panel_call():
                 values['proxy_path'] = hconfig(ConfigEnum.proxy_path_client)
-            elif g.is_admin:
+            elif hiddify.is_admin_role(account.role):
                 values['proxy_path'] = hconfig(ConfigEnum.proxy_path_admin)
+            else:
+                values['proxy_path'] = g.proxy_path
 
         if hiddify.is_api_v1_call(endpoint=endpoint) and 'admin_uuid' not in values:
             values['admin_uuid'] = AdminUser.get_super_admin_uuid()
