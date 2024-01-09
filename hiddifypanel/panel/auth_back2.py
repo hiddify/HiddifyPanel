@@ -191,7 +191,7 @@ def init_app(app):
             login_user(account, force=True)
             print("loggining in")
             if next_url is not None:
-                if 0 and g.user_agent_old.is_browser:
+                if 0 and g.user_agent['is_browser']:
                     return redirect(next_url)
                 else:
                     print(next_url)
@@ -227,7 +227,7 @@ def init_app(app):
     def unauthorized():
         # TODO: show the login page
         # return request.base_url
-        if g.user_agent_old.is_browser:
+        if g.user_agent['is_browser']:
             return redirect(url_for('common_bp.LoginView:basic_0', force=1, next={request.path}))
 
         else:

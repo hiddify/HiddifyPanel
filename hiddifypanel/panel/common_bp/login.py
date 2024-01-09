@@ -99,7 +99,7 @@ class LoginView(FlaskView):
     #         g.account = AdminUser.by_uuid(uuid)
     #     if not g.account:
     #         abort(403)
-    #     if not g.user_agent_old.is_browser and proxy_path == hconfig(ConfigEnum.proxy_path_client):
+    #     if not g.user_agent['is_browser'] and proxy_path == hconfig(ConfigEnum.proxy_path_client):
     #         userview = UserView()
     #         if "all.txt" in path:
     #             return userview.all_configs()

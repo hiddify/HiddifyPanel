@@ -345,7 +345,7 @@
     function cancel_video() {
       player.pauseVideo();
 
-      os = "{{g.user_agent_old.is_browser.family}}"
+      os = "{{g.user_agent['app']}}"
       is_safari = os.indexOf("Safari") >= 0
       v = $('#guide-video')[0]
       v2 = $('#ytplayer')[0]
@@ -381,7 +381,7 @@
       "windows-hiddifyn": "o9L2sI2T53Q"
     };
     function show_video(file) {
-      os = "{{g.user_agent_old.is_browser.family}}"
+      os = "{{g.user_agent['app']}}"
       is_safari = os.indexOf("Safari") >= 0
 
       if (youtube_is_open && youtube_map[file]) {
@@ -428,7 +428,7 @@
     is_ios = false
     {% if g.install_pwa %}
 
-%if g.user_agent_old.os.family == "iOS" 
+%if g.user_agent['os'] == "iOS" 
 is_ios = true
         % if not g.pwa and request.endpoint and("client.UserView" in request.endpoint or "admin.Dashboard" in request.endpoint)
     show_prompt()

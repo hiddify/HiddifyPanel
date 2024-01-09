@@ -179,7 +179,7 @@ def init_app(app: APIFlask):
 
         # validate request made by human (just check user agent, there's no capcha)
         # g.user_agent_old = user_agents.parse(request.user_agent.string)
-        if g.user_agent_old.is_bot:
+        if g.user_agent['is_bot']:
             abort(400, "invalid")
 
         # validate proxy path
@@ -222,8 +222,7 @@ def init_app(app: APIFlask):
             'os_details': f'{platform()}',
             'user_agent': 'Unknown'
         }
-        if hasattr(g, 'user_agent') and str(g.user_agent_old):
-            details['user_agent'] = g.user_agent_old.ua_string
+        details['user_agent'] = request.user_agent
         return details
 
     def generate_github_issue_link_for_500_error(error, traceback, remove_sensetive_data=True, remove_unrelated_traceback_datails=True):
