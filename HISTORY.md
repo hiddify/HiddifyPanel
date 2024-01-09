@@ -5,6 +5,8 @@
 
 #### New
 
+* Add share link in user admin with qrcode. 
+
 * Handle singbox v1.8 and v1.7. 
 
 * Add insert secret code. 
@@ -87,6 +89,10 @@
 
 #### Changes
 
+* Refactor proxy model. 
+
+* Refactor DailyUsage model. 
+
 * Refactor. 
 
 * Revert links to old format. 
@@ -96,6 +102,10 @@
 * Add full backward compatiblity. 
 
 * Add common_bp. 
+
+* Refactor parent domain model. 
+
+* Refactor DailyUsage. 
 
 * Add backward compatibility. 
 
@@ -531,6 +541,19 @@ with A2_
 
 #### Other
 
+* Remove temporary access, refactor panel links, refactor user.py. 
+
+* Merge pull request #76 from Iam54r1n4/refactor-proxy. 
+  _Refactor proxy model_
+
+* Merge pull request #77 from Iam54r1n4/refactor-parent-domain. 
+  _Refactor parent domain_
+
+* Merge branch 'main' into refactor-parent-domain. 
+
+* Merge pull request #80 from Iam54r1n4/refactor-daily-usage. 
+  _Refactor DailyUsage model_
+
 * Login by uuid@domain.com/path/l. 
 
 * Remove old user_agent. 
@@ -961,6 +984,22 @@ It is a visual improvement to have all users aligned in the table._
 * Convert old db to new. 
 
 * Add pysql req. 
+
+
+
+## 8.8.6 (2024-01-09)
+
+#### Fix
+
+* Not import in hiddify bug. 
+
+
+
+## 8.8.5 (2024-01-09)
+
+#### Fix
+
+* Bug in user agent. 
 
 
 

@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPT\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-09 02:23+0100\n"
-"PO-Revision-Date: 2024-01-08 19:12-0600\n"
+"POT-Creation-Date: 2024-01-09 11:40+0100\n"
+"PO-Revision-Date: 2024-01-09 02:51-0600\n"
 "Last-Translator: lymanrudni\n"
 "Language: pt\n"
 "Language-Team: Portuguese\n"
@@ -24,12 +24,12 @@ msgstr ""
 "administrador"
 
 # | msgid "This Domain does not exist in the Panel !"
-#: hiddifypanel/models/domain.py:161 hiddifypanel/panel/user/user.py:422
+#: hiddifypanel/models/domain.py:161 hiddifypanel/panel/user/user.py:233
 msgid "This domain does not exist in the panel!"
 msgstr "Este Domínio não existe no Painel!"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/panel/hiddify.py:323
+#: hiddifypanel/panel/hiddify.py:311
 #, fuzzy
 msgid "admin.config.apply_configs"
 msgstr "Aplicar configurações"
@@ -38,7 +38,7 @@ msgstr "Aplicar configurações"
 # | "Configs have been changed successfully. Click %(link)s to apply the
 # configs."
 # | " It may take 2 minutes to apply"
-#: hiddifypanel/panel/hiddify.py:324
+#: hiddifypanel/panel/hiddify.py:312
 #, fuzzy
 msgid "config.validation-success"
 msgstr ""
@@ -46,7 +46,7 @@ msgstr ""
 "aplicar as configurações. Pode levar 2 minutos para aplicar"
 
 # | msgid " ✅ Configs have been changed successfully"
-#: hiddifypanel/panel/hiddify.py:326
+#: hiddifypanel/panel/hiddify.py:314
 #, fuzzy
 msgid "config.validation-success-no-reset"
 msgstr "✅ As configurações foram alteradas com sucesso"
@@ -55,13 +55,13 @@ msgstr "✅ As configurações foram alteradas com sucesso"
 # | "Domain can not be resolved! There is a problem in your domain. Please
 # check "
 # | "your Domain configurations."
-#: hiddifypanel/panel/admin/ChildAdmin.py:99
+#: hiddifypanel/panel/admin/ChildAdmin.py:98
 #: hiddifypanel/panel/admin/DomainAdmin.py:157
 #: hiddifypanel/panel/admin/DomainAdmin.py:179
 #: hiddifypanel/panel/admin/DomainAdmin.py:182
-#: hiddifypanel/panel/admin/QuickSetup.py:146
+#: hiddifypanel/panel/admin/QuickSetup.py:141
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:111
-#: hiddifypanel/panel/hiddify.py:410
+#: hiddifypanel/panel/hiddify.py:392
 #, fuzzy
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr ""
@@ -69,7 +69,7 @@ msgstr ""
 "Verifique as configurações do seu Domínio."
 
 # | msgid "Last Day"
-#: hiddifypanel/panel/hiddify.py:442
+#: hiddifypanel/panel/hiddify.py:424
 #, fuzzy
 msgid "0 - Last day"
 msgstr "Último dia"
@@ -78,7 +78,7 @@ msgstr "Último dia"
 # | "Selected Domain for REALITY is not in the same ASN. To better use of the
 # "
 # | "Protocol, it is better to find a Domain in the same ASN"
-#: hiddifypanel/panel/hiddify.py:747
+#: hiddifypanel/panel/hiddify.py:729
 msgid ""
 "selected domain for REALITY is not in the same ASN. To better use of the "
 "protocol, it is better to find a domain in the same ASN."
@@ -114,7 +114,7 @@ msgstr ""
 # | "⚠️ Please wait about 5 minutes to make sure everything is updated. during
 # "
 # | "this time, please copy and save your Proxy links which are:"
-#: hiddifypanel/panel/admin/Actions.py:130
+#: hiddifypanel/panel/admin/Actions.py:129
 #, fuzzy
 msgid ""
 "Success! Please wait around 4 minutes to make sure everything is updated."
@@ -124,7 +124,7 @@ msgstr ""
 "durante esse período, copie e salve seus links de proxy, que são:"
 
 # | msgid "📑 See the log in the bellow screen"
-#: hiddifypanel/panel/admin/Actions.py:160
+#: hiddifypanel/panel/admin/Actions.py:159
 #, fuzzy
 msgid "see the log in the bellow screen"
 msgstr "📑 Veja o log na tela abaixo"
@@ -132,7 +132,7 @@ msgstr "📑 Veja o log na tela abaixo"
 # | msgid ""
 # | "✔️ Success! Please Wait around 5 minutes to make sure everything is
 # updated"
-#: hiddifypanel/panel/admin/Actions.py:178
+#: hiddifypanel/panel/admin/Actions.py:177
 #, fuzzy
 msgid "Success! Please wait around 5 minutes to make sure everything is updated."
 msgstr ""
@@ -290,8 +290,8 @@ msgstr ""
 #: hiddifypanel/panel/admin/Backup.py:78
 #: hiddifypanel/panel/admin/ProxyAdmin.py:92
 #: hiddifypanel/panel/admin/ProxyAdmin.py:123
-#: hiddifypanel/panel/admin/QuickSetup.py:104
-#: hiddifypanel/panel/admin/QuickSetup.py:137
+#: hiddifypanel/panel/admin/QuickSetup.py:99
+#: hiddifypanel/panel/admin/QuickSetup.py:132
 #: hiddifypanel/panel/admin/SettingAdmin.py:281
 #: hiddifypanel/panel/common_bp/login.py:25
 #, fuzzy
@@ -308,7 +308,7 @@ msgstr "Enviar"
 # | "subdomain."
 #: hiddifypanel/panel/admin/ChildAdmin.py:23
 #: hiddifypanel/panel/admin/DomainAdmin.py:42
-#: hiddifypanel/panel/admin/QuickSetup.py:129
+#: hiddifypanel/panel/admin/QuickSetup.py:124
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:35
 #: hiddifypanel/templates/flaskadmin-layout.html:101
 #: hiddifypanel/templates/flaskadmin-layout.html:137
@@ -351,7 +351,7 @@ msgstr ""
 # | msgid "Domain"
 #: hiddifypanel/panel/admin/ChildAdmin.py:44
 #: hiddifypanel/panel/admin/DomainAdmin.py:76
-#: hiddifypanel/panel/admin/QuickSetup.py:129
+#: hiddifypanel/panel/admin/QuickSetup.py:124
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:57
 #: hiddifypanel/templates/flaskadmin-layout.html:100
 #: hiddifypanel/templates/flaskadmin-layout.html:136
@@ -370,14 +370,14 @@ msgid "Show Domains"
 msgstr "Mostrar configurações de domínios"
 
 # | msgid "Admin"
-#: hiddifypanel/panel/admin/ChildAdmin.py:56
+#: hiddifypanel/panel/admin/ChildAdmin.py:55
 #: hiddifypanel/panel/admin/DomainAdmin.py:97
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:68
 msgid "admin link"
 msgstr "Link do administrador"
 
 # | msgid "Domain is not correctly mapped to this Server!"
-#: hiddifypanel/panel/admin/ChildAdmin.py:102
+#: hiddifypanel/panel/admin/ChildAdmin.py:101
 #, fuzzy
 msgid "Domain is not correctly mapped to this server!"
 msgstr "O domínio não está mapeado corretamente para este servidor!"
@@ -439,7 +439,7 @@ msgstr ""
 # | msgid ""
 # | "It seems that you have not created any users yet. default user link: "
 # | "%(default_link)s"
-#: hiddifypanel/panel/admin/Dashboard.py:78
+#: hiddifypanel/panel/admin/Dashboard.py:77
 #, fuzzy, python-format
 msgid ""
 "It seems that you have not created any users yet. Default user link: "
@@ -455,7 +455,7 @@ msgstr ""
 # |
 # "href=\"https://github.com/hiddify/Hiddify-Manager/wiki/Disable-SSH-Password-"
 # | "Authentication\">read more... </a>"
-#: hiddifypanel/panel/admin/Dashboard.py:80
+#: hiddifypanel/panel/admin/Dashboard.py:79
 #, fuzzy
 msgid "ssh.password-login.warning."
 msgstr ""
@@ -466,7 +466,7 @@ msgstr ""
 "Password-Authentication\">leia mais... </a>"
 
 # | msgid "Child Has Been Removed!"
-#: hiddifypanel/panel/admin/Dashboard.py:95
+#: hiddifypanel/panel/admin/Dashboard.py:94
 msgid "child has been removed!"
 msgstr "Child removido"
 
@@ -675,7 +675,7 @@ msgstr "Erro! Fronting de domínio não definido."
 
 # | msgid "There is an error in one of the fields."
 #: hiddifypanel/panel/admin/ProxyAdmin.py:66
-#: hiddifypanel/panel/admin/QuickSetup.py:88
+#: hiddifypanel/panel/admin/QuickSetup.py:83
 #: hiddifypanel/panel/admin/SettingAdmin.py:109
 #: hiddifypanel/panel/common_bp/login.py:57
 #, fuzzy
@@ -703,7 +703,7 @@ msgid "quicksetup.setlang.error"
 msgstr "Ocorreu um erro ao alterar o idioma."
 
 # | msgid "🗺️ Admin Panel Language"
-#: hiddifypanel/panel/admin/QuickSetup.py:99
+#: hiddifypanel/panel/admin/QuickSetup.py:94
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
@@ -711,40 +711,40 @@ msgid "config.admin_lang.label"
 msgstr "Idioma do Painel Administrativo"
 
 # | msgid "🇺🇸 English انگلیسی 英语"
-#: hiddifypanel/panel/admin/QuickSetup.py:99
+#: hiddifypanel/panel/admin/QuickSetup.py:94
 #: hiddifypanel/panel/admin/SettingAdmin.py:182
 #, fuzzy
 msgid "lang.en"
 msgstr "🇺🇸 Inglês انگلیسی 英语"
 
 # | msgid "🇮🇷 Persian فارسی 波斯语"
-#: hiddifypanel/panel/admin/QuickSetup.py:99
+#: hiddifypanel/panel/admin/QuickSetup.py:94
 #: hiddifypanel/panel/admin/SettingAdmin.py:182
 #, fuzzy
 msgid "lang.fa"
 msgstr "🇮🇷 Persian فارسی 波斯语"
 
 # | msgid "🇵🇹 Portuguese پرتغالی 葡萄牙語"
-#: hiddifypanel/panel/admin/QuickSetup.py:99
+#: hiddifypanel/panel/admin/QuickSetup.py:94
 #: hiddifypanel/panel/admin/SettingAdmin.py:183
 #, fuzzy
 msgid "lang.pt"
 msgstr "🇵🇹 Portugal پرتغالی 葡萄牙"
 
 # | msgid "🇨🇳 Chinese چینی 简体中文"
-#: hiddifypanel/panel/admin/QuickSetup.py:100
+#: hiddifypanel/panel/admin/QuickSetup.py:95
 #: hiddifypanel/panel/admin/SettingAdmin.py:182
 msgid "lang.zh"
 msgstr "🇨🇳 Chinese چینی 简体中文"
 
 # | msgid "🇷🇺 Russian روسی Русский"
-#: hiddifypanel/panel/admin/QuickSetup.py:100
+#: hiddifypanel/panel/admin/QuickSetup.py:95
 #: hiddifypanel/panel/admin/SettingAdmin.py:183
 msgid "lang.ru"
 msgstr "🇷🇺 Russian روسی Русский"
 
 # | msgid "Choose Language For Admin Area"
-#: hiddifypanel/panel/admin/QuickSetup.py:100
+#: hiddifypanel/panel/admin/QuickSetup.py:95
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
@@ -752,21 +752,21 @@ msgid "config.admin_lang.description"
 msgstr "Escolha o idioma para a área administrativa"
 
 # | msgid "🌍 Country"
-#: hiddifypanel/panel/admin/QuickSetup.py:102
+#: hiddifypanel/panel/admin/QuickSetup.py:97
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 msgid "config.country.label"
 msgstr "Country"
 
 # | msgid "🇮🇷 Iran"
-#: hiddifypanel/panel/admin/QuickSetup.py:102
+#: hiddifypanel/panel/admin/QuickSetup.py:97
 #: hiddifypanel/panel/admin/SettingAdmin.py:185
 #, fuzzy
 msgid "Iran"
 msgstr "🇮🇷 Irã"
 
 # | msgid "🇨🇳 China"
-#: hiddifypanel/panel/admin/QuickSetup.py:102
+#: hiddifypanel/panel/admin/QuickSetup.py:97
 #: hiddifypanel/panel/admin/SettingAdmin.py:185
 #, fuzzy
 msgid "China"
@@ -775,7 +775,7 @@ msgstr "🇨🇳 China"
 # | msgid ""
 # | "It applies the appropriate settings for each country according to the "
 # | "filtering conditions of that country"
-#: hiddifypanel/panel/admin/QuickSetup.py:103
+#: hiddifypanel/panel/admin/QuickSetup.py:98
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
@@ -785,8 +785,8 @@ msgstr ""
 "condições de filtragem desse país"
 
 # | msgid "Error! Invalid Domain.  The Domain Format is www.google.com"
-#: hiddifypanel/panel/admin/QuickSetup.py:123
-#: hiddifypanel/panel/admin/QuickSetup.py:136
+#: hiddifypanel/panel/admin/QuickSetup.py:118
+#: hiddifypanel/panel/admin/QuickSetup.py:131
 #: hiddifypanel/panel/admin/SettingAdmin.py:222
 #: hiddifypanel/panel/admin/SettingAdmin.py:225
 #, fuzzy
@@ -794,8 +794,8 @@ msgid "config.Invalid domain"
 msgstr "Erro! Domínio inválido. O formato do domínio é www.google.com"
 
 # | msgid "Domain is exist in domains section. Use another Domain"
-#: hiddifypanel/panel/admin/QuickSetup.py:125
-#: hiddifypanel/panel/admin/QuickSetup.py:127
+#: hiddifypanel/panel/admin/QuickSetup.py:120
+#: hiddifypanel/panel/admin/QuickSetup.py:122
 #: hiddifypanel/panel/admin/SettingAdmin.py:229
 #: hiddifypanel/panel/admin/SettingAdmin.py:231
 #, fuzzy
@@ -803,7 +803,7 @@ msgid "config.Domain already used"
 msgstr "O domínio existe na seção de domínios. Usar outro domínio"
 
 # | msgid "⛔️ Block Domestic Sites"
-#: hiddifypanel/panel/admin/QuickSetup.py:133
+#: hiddifypanel/panel/admin/QuickSetup.py:128
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
@@ -811,7 +811,7 @@ msgid "config.block_iran_sites.label"
 msgstr "⛔️ Bloquear sites iranianos"
 
 # | msgid "Block domestic Sites to prevent detection by the government"
-#: hiddifypanel/panel/admin/QuickSetup.py:133
+#: hiddifypanel/panel/admin/QuickSetup.py:128
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
@@ -821,7 +821,7 @@ msgstr ""
 "(Experimental: se houver algum problema, desative-o e informe-nos.)"
 
 # | msgid "📺 Decoy Site"
-#: hiddifypanel/panel/admin/QuickSetup.py:135
+#: hiddifypanel/panel/admin/QuickSetup.py:130
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
@@ -836,7 +836,7 @@ msgstr "🔀 Site Decoy"
 # | "⛔ Be sure to check the site and make sure that it is the right site,
 # otherwise you may receive a phishing warning.<br>\n"
 # | "⛔⛔ Check this domain again so that there is no problem in the future"
-#: hiddifypanel/panel/admin/QuickSetup.py:135
+#: hiddifypanel/panel/admin/QuickSetup.py:130
 #: hiddifypanel/panel/admin/templates/configfake.html:6
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
@@ -849,7 +849,7 @@ msgstr ""
 # | msgid ""
 # | "Domain (%(domain)s)-> IP = %(domain_ip)s is not same as your IP = "
 # | "%(server_ip)s . this is required in Direct Mode"
-#: hiddifypanel/panel/admin/QuickSetup.py:150
+#: hiddifypanel/panel/admin/QuickSetup.py:145
 #, fuzzy, python-format
 msgid ""
 "Domain (%(domain)s)-> IP=%(domain_ip)s is not matched with your "
@@ -2709,25 +2709,25 @@ msgid "Hiddify"
 msgstr "Ocultar"
 
 # | msgid "Children"
-#: hiddifypanel/panel/admin/templates/parent_dash.html:11
+#: hiddifypanel/panel/admin/templates/parent_dash.html:10
 #: hiddifypanel/panel/commercial/templates/parent_dash.html:18
 #, fuzzy
 msgid "Childs"
 msgstr "Crianças"
 
 # | msgid "No Children"
-#: hiddifypanel/panel/admin/templates/parent_dash.html:15
+#: hiddifypanel/panel/admin/templates/parent_dash.html:14
 #: hiddifypanel/panel/commercial/templates/parent_dash.html:22
 #, fuzzy
 msgid "No children!"
 msgstr "sem filhos"
 
-#: hiddifypanel/panel/admin/templates/parent_dash.html:21
+#: hiddifypanel/panel/admin/templates/parent_dash.html:20
 #: hiddifypanel/panel/commercial/templates/parent_dash.html:28
 msgid "Status"
 msgstr "Status"
 
-#: hiddifypanel/panel/admin/templates/parent_dash.html:22
+#: hiddifypanel/panel/admin/templates/parent_dash.html:21
 #: hiddifypanel/panel/commercial/templates/parent_dash.html:29
 #: hiddifypanel/panel/user/templates/home/all-configs.html:10
 #, fuzzy
@@ -2802,78 +2802,36 @@ msgstr ""
 "Defina esses IPs em seu Domínio ou Subdomínio e insira seu Domínio ou "
 "Subdomínio na caixa abaixo."
 
-# | msgid "Emergency Link"
-#: hiddifypanel/panel/admin/templates/result.html:15
-#, fuzzy
-msgid "Temporary Link"
-msgstr "Link de emergência"
-
-# | msgid ""
-# | "If you do not see the green part in the box below (up to 10 minutes), it
-# means that there is a problem in applying the settings and the only way to
-# access the panel is the emergency link.\n"
-# | "<br>\n"
-# | "therefore,be sure to copy the emergency link, so that you can use this
-# emergency access (for 4 hours) in case of any problem.\n"
-# | "don't forget to copy this link."
-#: hiddifypanel/panel/admin/templates/result.html:20
-msgid ""
-"We have opened a temporary port (for 4 hours) to access the panel in case"
-" of any issues. Please copy this link."
-msgstr ""
-"Se você não visualizar a caixa abaixo na cor verde em (até 10 minutos), "
-"significa que há um problema na aplicação das configurações e a única "
-"forma de acessar o painel é utilizando o link de emergência.\n"
-"<br>\n"
-"portanto, certifique-se de copiar o link de emergência, para que você "
-"possa usar este acesso de emergência (por 4 horas) em caso de qualquer "
-"problema.\n"
-"não se esqueça de copiar este link."
-
-# | msgid "⚠️ This action is not yet finished"
-#: hiddifypanel/panel/admin/templates/result.html:25
-#, fuzzy
-msgid "This action is not yet finished."
-msgstr "Esta ação ainda não está concluída."
-
-# | msgid ""
-# | "ℹ️ Please copy and save the emergency access link before leaving this
-# page."
-#: hiddifypanel/panel/admin/templates/result.html:25
-#, fuzzy
-msgid "Please copy the emergency link before leaving this page."
-msgstr "Copie e salve o link de acesso de emergência antes de sair desta página."
-
 # | msgid "Please Wait "
-#: hiddifypanel/panel/admin/templates/result.html:31
+#: hiddifypanel/panel/admin/templates/result.html:33
 #, fuzzy
 msgid "Please wait "
 msgstr "Por favor, aguarde"
 
 # | msgid "Seconds"
-#: hiddifypanel/panel/admin/templates/result.html:31
+#: hiddifypanel/panel/admin/templates/result.html:33
 msgid "seconds"
 msgstr "Seconds"
 
 # | msgid "📄 Log"
-#: hiddifypanel/panel/admin/templates/result.html:41
+#: hiddifypanel/panel/admin/templates/result.html:43
 #, fuzzy
 msgid "log"
 msgstr "📄 Registro"
 
-#: hiddifypanel/panel/admin/templates/result.html:44
+#: hiddifypanel/panel/admin/templates/result.html:46
 #, fuzzy
 msgid "Click here to see the complete log"
 msgstr "Clique aqui para ver o registro completo"
 
 #: hiddifypanel/panel/admin/templates/model/user_list.html:102
-#: hiddifypanel/panel/admin/templates/result.html:114
+#: hiddifypanel/panel/admin/templates/result.html:116
 #, fuzzy
 msgid "Success"
 msgstr "Sucesso"
 
 # | msgid "✅ The Action Done Successfully. You can now leave this page"
-#: hiddifypanel/panel/admin/templates/result.html:115
+#: hiddifypanel/panel/admin/templates/result.html:117
 #, fuzzy
 msgid "The action done successfully. You can now leave this page."
 msgstr "✅ A Ação Feita com Sucesso. Agora você pode sair desta página"
@@ -5120,19 +5078,19 @@ msgstr "Link copiado para a área de transferência."
 msgid "user.home.link.manual-copy"
 msgstr "Copiar para a área de transferência: Ctrl+C, Enter"
 
-#: hiddifypanel/templates/master.html:322
+#: hiddifypanel/templates/master.html:323
 #, fuzzy
 msgid "Install"
 msgstr "Instalar"
 
 # | msgid "Hiddify Manager Installation"
-#: hiddifypanel/templates/master.html:423
+#: hiddifypanel/templates/master.html:424
 #, fuzzy
 msgid "Install Hiddify Application"
 msgstr "Instalação do Painel Hidify"
 
 # | msgid "Click %(install)s to save the User Page."
-#: hiddifypanel/templates/master.html:425
+#: hiddifypanel/templates/master.html:426
 #, fuzzy, python-format
 msgid "Please click on %(install)s to save the user page."
 msgstr "Clique em %(install)s para salvar a página do usuário."
@@ -5194,6 +5152,52 @@ msgstr "Ações"
 # | msgid "Can not connect to Parent Panel!"
 #~ msgid "Can not connect to parent panel!"
 #~ msgstr "Não é possível conectar ao painel principal!"
+
+# | msgid "Emergency Link"
+#~ msgid "Temporary Link"
+#~ msgstr "Link de emergência"
+
+# | msgid ""
+# | "If you do not see the green part in the box below (up to 10 minutes), it
+# means that there is a problem in applying the settings and the only way to
+# access the panel is the emergency link.\n"
+# | "<br>\n"
+# | "therefore,be sure to copy the emergency link, so that you can use this
+# emergency access (for 4 hours) in case of any problem.\n"
+# | "don't forget to copy this link."
+#~ msgid ""
+#~ "We have opened a temporary port "
+#~ "(for 4 hours) to access the panel"
+#~ " in case of any issues. Please "
+#~ "copy this link."
+#~ msgstr ""
+#~ "Se você não visualizar a caixa "
+#~ "abaixo na cor verde em (até 10 "
+#~ "minutos), significa que há um problema"
+#~ " na aplicação das configurações e a"
+#~ " única forma de acessar o painel "
+#~ "é utilizando o link de emergência.\n"
+#~ ""
+#~ "<br>\n"
+#~ "portanto, certifique-se de copiar o "
+#~ "link de emergência, para que você "
+#~ "possa usar este acesso de emergência "
+#~ "(por 4 horas) em caso de qualquer"
+#~ " problema.\n"
+#~ "não se esqueça de copiar este link."
+
+# | msgid "⚠️ This action is not yet finished"
+#~ msgid "This action is not yet finished."
+#~ msgstr "Esta ação ainda não está concluída."
+
+# | msgid ""
+# | "ℹ️ Please copy and save the emergency access link before leaving this
+# page."
+#~ msgid "Please copy the emergency link before leaving this page."
+#~ msgstr ""
+#~ "Copie e salve o link de acesso "
+#~ "de emergência antes de sair desta "
+#~ "página."
 
 # | msgid "Hiddify Configs"
 #~ msgid "user.home.allconfig.hiddify-configs"
