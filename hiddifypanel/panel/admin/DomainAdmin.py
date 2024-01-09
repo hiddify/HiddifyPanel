@@ -3,7 +3,7 @@ from hiddifypanel.panel.auth import login_required
 import hiddifypanel.panel.auth as auth
 from hiddifypanel.models import *
 import re
-from flask import Markup
+from flask import Markup, g
 from flask import flash
 from flask_babelex import gettext as __
 from flask_babelex import lazy_gettext as _

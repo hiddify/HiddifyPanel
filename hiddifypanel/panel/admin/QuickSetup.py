@@ -14,7 +14,7 @@ from hiddifypanel.panel import hiddify
 from wtforms.validators import ValidationError
 
 import re
-from flask import render_template
+from flask import render_template, g
 from hiddifypanel.models import Domain, DomainType, StrConfig, ConfigEnum, get_hconfigs
 from hiddifypanel.panel.database import db
 from wtforms.fields import *
