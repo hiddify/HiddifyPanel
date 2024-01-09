@@ -553,6 +553,8 @@ with A2_
 
 #### Other
 
+* Remove geoip for singbox 1.8. 
+
 * Merge. 
 
 * Merge branch 'main' of github.com:hiddify/Hiddify-Panel. 
