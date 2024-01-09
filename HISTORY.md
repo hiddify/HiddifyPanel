@@ -195,6 +195,10 @@
 
 #### Fix
 
+* Admin link bug. 
+
+* Bug. 
+
 * Bug in singbox config. 
 
 * Limited length of username and password. 
