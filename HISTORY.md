@@ -199,6 +199,8 @@
 
 * Bug. 
 
+* Bug. 
+
 * Bug in singbox 1.7. 
 
 * Hiddify client version. 
