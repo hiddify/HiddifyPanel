@@ -58,11 +58,11 @@ class Backup(FlaskView):
 
             from flask_babel import refresh
             refresh()
-            return redirect(f'/{hconfig(ConfigEnum.proxy_path_admin)}/admin/actions/reinstall2/', code=302)
-            from . import Actions
-            action = Actions()
-            return action.reinstall(complete_install=True, domain_changed=True)
-            # hiddify.flash_config_success(full_install=True)
+            return redirect(url_for("admin.Actions:reinstall2"))
+            # from . import Actions
+            # action = Actions()
+            # return action.reinstall(complete_install=True, domain_changed=True)
+            # # hiddify.flash_config_success(full_install=True)
         else:
             flash(_('Config file is incorrect'), category='error')
         return render_template('backup.html', restore_form=restore_form)

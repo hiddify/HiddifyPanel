@@ -92,7 +92,7 @@ class DomainAdmin(AdminLTEModelView):
         d = model.domain
         if "*" in d:
             d = d.replace("*", hiddify.get_random_string(5, 15))
-        admin_link = f'https://{d}{hiddify.get_admin_path()}'
+        admin_link = hiddify.get_account_panel_link(g.account, d)
         return Markup(
             f'<div class="btn-group"><a href="{admin_link}" class="btn btn-xs btn-secondary">' + _("admin link") +
             f'</a><a href="{admin_link}" class="btn btn-xs btn-info ltr" target="_blank">{model.domain}</a></div>')

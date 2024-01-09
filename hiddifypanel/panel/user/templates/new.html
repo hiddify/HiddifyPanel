@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    {%set base='https://'+domain+'/'+hconfigs[ConfigEnum.proxy_path_client]+"/"+user.uuid+"/"%}
+    {%set base='{hiddify.get_account_panel_link(g.account,domain)}"%}
     <meta name="apple-itunes-app" content="app-id=6450534064, app-argument=streisand://import/{{base}}">
     
     <link rel="icon" type="image/png" href="../static/new/assets/hiddify-logo-7617d937.png" />

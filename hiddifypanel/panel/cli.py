@@ -55,34 +55,23 @@ def all_configs():
         # "parent_domains": [hiddify.parent_domain_dict(u) for u in ParentDomain.query.all()],
         "hconfigs": get_hconfigs()
     }
-    # for d in configs['domains']:
-
-    #     # del d['domain']['show_domains']
 
     def_user = None if len(User.query.all()) > 1 else User.query.filter(User.name == 'default').first()
     domains = Domain.query.all()
     sslip_domains = [d.domain for d in domains if "sslip.io" in d.domain]
 
     configs['hconfigs']['first_setup'] = def_user != None and len(sslip_domains) > 0
-
-    # path = f'/{hconfig(ConfigEnum.proxy_path_admin)}/l'
-    path = f'/{hconfig(ConfigEnum.proxy_path_admin)}/{AdminUser.get_super_admin_uuid()}/'
-
     server_ip = hutils.ip.get_ip(4)
-    configs['admin_path'] = path
     owner = AdminUser.get_super_admin()
+
+    configs['admin_path'] = hiddify.get_account_panel_link(owner, server_ip, is_https=False, prefere_path_only=True)
     configs['panel_links'] = []
-    # configs['panel_links'].append(hutils.utils.add_basic_auth_to_url(f'http://{server_ip}{path}', owner.username, owner.password))
-    configs['panel_links'].append(f'http://{server_ip}{path}')
-    # configs['panel_links'].append(hutils.utils.add_basic_auth_to_url(f'https://{server_ip}{path}', owner.username, owner.password))
-    configs['panel_links'].append(f'https://{server_ip}{path}')
+    configs['panel_links'].append(hiddify.get_account_panel_link(owner, server_ip, is_https=False))
+    configs['panel_links'].append(hiddify.get_account_panel_link(owner, server_ip))
     domains = get_panel_domains()
-    # if not any([d for d in domains if 'sslip.io' not in d.domain]):
-    #     configs['panel_links'].append(f"https://{server_ip}{path}")
 
     for d in domains:
-        # configs['panel_links'].append(hutils.utils.add_basic_auth_to_url(f'https://{d.domain}{path}', owner.username, owner.password))
-        configs['panel_links'].append(f'https://{d.domain}{path}')
+        configs['panel_links'].append(hiddify.get_account_panel_link(owner, d.domain))
 
     print(json.dumps(configs, indent=4))
 
@@ -100,34 +89,23 @@ def admin_links():
     server_ip = hutils.ip.get_ip(4)
     owner = AdminUser.get_super_admin()
 
-    proxy_path = hconfig(ConfigEnum.proxy_path_admin)
-    # admin_links = f"Not Secure (do not use it - only if others not work):\n   {hutils.utils.add_basic_auth_to_url(f'http://{server_ip}/{proxy_path}/', owner.username, owner.password)}\n"
-    admin_links = f"Not Secure (do not use it - only if others not work):\n   http://{server_ip}/{proxy_path}/{owner.uuid}/'\n"
+    admin_links = f"Not Secure (do not use it - only if others not work):\n   {hiddify.get_account_panel_link(owner, server_ip,is_https=True)}'\n"
 
     domains = get_panel_domains()
     admin_links += f"Secure:\n"
     if not any([d for d in domains if 'sslip.io' not in d.domain]):
-        # admin_links += f"   (not signed) {hutils.utils.add_basic_auth_to_url(f'https://{server_ip}/{proxy_path}/l', owner.username, owner.password)}\n"
-        admin_links += f"   (not signed) https://{server_ip}/{proxy_path}/{owner.uuid}\n"
+        admin_links += f"   (not signed) {hiddify.get_account_panel_link(owner, server_ip)}\n"
 
-    # domains=[*domains,f'{server_ip}.sslip.io']
     for d in domains:
-        # admin_links += f"   {hutils.utils.add_basic_auth_to_url(f'https://{d.domain}/{proxy_path}/l', owner.username, owner.password)}\n"
-        admin_links += f"   https://{d.domain}/{proxy_path}/{owner.uuid}/\n"
+        admin_links += f"   {hiddify.get_account_panel_link(owner, d.domain)}\n"
 
     print(admin_links)
     return admin_links
 
 
 def admin_path():
-    proxy_path = hconfig(ConfigEnum.proxy_path_admin)
-    admin = AdminUser.query.filter(AdminUser.mode == AdminMode.super_admin).first()
-    if not admin:
-        db.session.add(AdminUser(mode=AdminMode.super_admin))
-        db.session.commit()
-        admin = AdminUser.query.filter(AdminUser.mode == AdminMode.super_admin).first()
-
-    print(f"/{proxy_path}/admin/")
+    admin = AdminUser.get_super_admin()
+    print(hiddify.get_account_panel_link(owner, server_ip, prefere_path_only=True))
 
 
 def hysteria_domain_port():

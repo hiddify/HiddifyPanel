@@ -27,187 +27,11 @@ class UserView(FlaskView):
 
         return f"<div style='direction:ltr'>https://{urlparse(request.base_url).hostname}/{short}/</a><br><br>"+_("This link will expire in 5 minutes")
 
-    @route('/info/')
-    @route('/info')
-    # TODO: delete this function and use /me/ api instead
-    def info(self):
-        c = get_common_data(g.account.uuid, 'new')
-        data = {
-            'profile_title': c['profile_title'],
-            'profile_url': f"https://{g.account.username}:{g.account.password}{urlparse(request.base_url).hostname}/{g.proxy_path}/#{g.account.name}",
-            'profile_usage_current': g.account.current_usage_GB,
-            'profile_usage_total': g.account.usage_limit_GB,
-            'profile_remaining_days': g.account.remaining_days(),
-            'profile_reset_days': g.account.days_to_reset(),
-            'telegram_bot_url': f"https://t.me/{c['bot'].username}?start={g.account.uuid}" if c['bot'] else "",
-            'admin_message_html': hconfig(ConfigEnum.branding_freetext),
-            'admin_message_url': hconfig(ConfigEnum.branding_site),
-            'brand_title': hconfig(ConfigEnum.branding_title),
-            'brand_icon_url': "",
-            'doh': f"https://{urlparse(request.base_url).hostname}/{g.proxy_path}/dns/dns-query",
-            'def_lang': hconfig(ConfigEnum.lang)
-        }
-
-        return jsonify(data)
-
-    @route('/mtproxies/')
-    @route('/mtproxies')
-    def mtproxies(self):
-        # get domains
-        c = get_common_data(g.account.uuid, 'new')
-        mtproxies = []
-        # TODO: Remove duplicated domains mapped to a same ipv4 and v6
-        for d in c['domains']:
-            if d.mode not in [DomainType.direct, DomainType.relay]:
-                continue
-            hexuuid = hconfig(ConfigEnum.shared_secret, d.child_id).replace('-', '')
-            telegram_faketls_domain_hex = hconfig(ConfigEnum.telegram_fakedomain, d.child_id).encode('utf-8').hex()
-            server_link = f'tg://proxy?server={d.domain}&port=443&secret=ee{hexuuid}{telegram_faketls_domain_hex}'
-            mtproxies.append({'title': d.alias or d.domain, 'link': server_link})
-
-        return jsonify(mtproxies)
-
-    @route('/all-configs/')
-    @route('/all-configs')
-    def configs(self):
-        def create_item(name, type, domain, protocol, transport, security, link):
-            return {
-                'name': name,
-                'domain': domain,
-                'link': link,
-                # 'tags': set(type, protocol, transport, security),
-                'type': type,
-                'protocol': protocol,
-                'transport': transport,
-                'security': security,
-            }
-
-        items = []
-        base_url = f"https://{g.account.username}:{g.account.password}{urlparse(request.base_url).hostname}/{g.proxy_path}/"
-        c = get_common_data(g.account.uuid, 'new')
-
-        # Add Auto
-        items.append(
-            create_item(
-                "Auto", "All", "All", "All", "All", "All",
-                f"{base_url}sub/?asn={c['asn']}")
-        )
-
-        # Add Full Singbox
-        items.append(
-            create_item(
-                "Full Singbox", "All", "All", "All", "All", "All",
-                f"{base_url}full-singbox.json?asn={c['asn']}"
-            )
-        )
-
-        # Add Clash Meta
-        items.append(
-            create_item(
-                "Clash Meta", "All", "All", "All", "All", "All",
-                f"clashmeta://install-config?url={base_url}clash/meta/all.yml&name=mnormal_{c['db_domain'].alias or c['db_domain'].domain}-{c['asn']}-{c['mode']}&asn={c['asn']}&mode={c['mode']}"
-            )
-        )
-
-        # Add Clash
-        items.append(
-            create_item(
-                "Clash", "All", "All", "Except VLess", "All", "All",
-                f"clash://install-config?url={base_url}clash/all.yml&name=new_normal_{c['db_domain'].alias or c['db_domain'].domain}-{c['asn']}-{c['mode']}&asn={c['asn']}&mode={c['mode']}"
-            )
-        )
-
-        # Add Singbox: SSh
-        if hconfig(ConfigEnum.ssh_server_enable):
-            items.append(
-                create_item(
-                    "Singbox: SSH", "SSH", "SSH", "SSH", "SSH", "SSH",
-                    f"{base_url}singbox.json?name={c['db_domain'].alias or c['db_domain'].domain}-{c['asn']}&asn={c['asn']}&mode={c['mode']}"
-                )
-            )
-
-        # Add Subscription link
-        items.append(
-            create_item(
-                "Subscription link", "All", "All", "All", "All", "All",
-                f"{base_url}all.txt?name={c['db_domain'].alias or c['db_domain'].domain}-{c['asn']}&asn={c['asn']}&mode={c['mode']}"
-            )
-        )
-
-        # Add Subscription link base64
-        items.append(
-            create_item(
-                "Subscription link b64", "All", "All", "All", "All", "All",
-                f"{base_url}all.txt?name=new_link_{c['db_domain'].alias or c['db_domain'].domain}-{c['asn']}-{c['mode']}&asn={c['asn']}&mode={c['mode']}&base64=True"
-            )
-        )
-
-        for pinfo in link_maker.get_all_validated_proxies(c['domains']):
-            items.append(
-                create_item(
-                    pinfo["name"].replace("_", " "),
-                    f"{'Auto ' if pinfo['dbdomain'].has_auto_ip else ''}{pinfo['mode']}",
-                    pinfo['server'],
-                    pinfo['proto'],
-                    pinfo['transport'],
-                    pinfo['l3'],
-                    f"{link_maker.to_link(pinfo)}"
-                )
-            )
-
-        return jsonify(items)
-
-    # endregion
-
-    @route('/test/')
+    @route('/useragent/')
     @login_required(roles={Role.user})
     def test(self):
         ua = request.user_agent.string
-        if re.match('^Mozilla', ua, re.IGNORECASE):
-            return "Please do not open here"
-        conf = self.get_proper_config()
-
-        import json
-        ua = request.user_agent.string
-        uaa = user_agents.parse(request.user_agent.string)
-        with open('ua.txt', 'a') as f:
-            f.write("\n".join([
-                f'\n{datetime.datetime.now()} '+("Ok" if conf else "ERROR"),
-                ua,
-                f'os={uaa.os.family}-{uaa.os.version}({uaa.os.version_string}) br={uaa.browser.family} v={uaa.browser.version} vs={uaa.browser.version_string}   dev={uaa.device.family}-{uaa.device.brand}-{uaa.device.model}',
-                '\n'
-            ]))
-        if conf:
-            return conf
-        abort(500)
-    # @route('/old')
-    # @route('/old/')
-    # def index(self):
-
-    #     c=get_common_data(g.account_uuid,mode="")
-    #     user_agent =  user_agents.parse(request.user_agent.string)
-
-    #     return render_template('home/index.html',**c,ua=user_agent)
-    # @route('/multi/')
-    # @route('/multi')
-    # def multi(self):
-
-    #     c=get_common_data(g.account_uuid,mode="multi")
-
-    #     user_agent =  user_agents.parse(request.user_agent.string)
-
-    #     return render_template('home/multi.html',**c,ua=user_agent)
-
-    # @route('/')
-    # # @login_required()
-    # # login
-    # def login(self):
-    #     return ""
-    #     # redirect based on authenticated account
-    #     if hiddify.is_admin_proxy_path() and g.account.role in {Role.super_admin, Role.admin, Role.agent}:
-    #         return redirect(url_for('admin.Dashboard:index'))
-    #     elif hiddify.is_client_proxy_path():
-    #         return self.auto_sub()
+        return ua
 
     def index(self):
         return self.auto_sub()
@@ -240,14 +64,6 @@ class UserView(FlaskView):
         # if any([p in ua for p in ['FoXray', 'HiddifyNG','Fair%20VPN' ,'v2rayNG', 'SagerNet']]):
         if re.match('^(Hiddify|FoXray|Fair|v2rayNG|SagerNet|Shadowrocket|V2Box|Loon|Liberty)', ua, re.IGNORECASE):
             return self.all_configs(base64=True)
-
-    @ route('/auto')
-    @login_required(roles={Role.user})
-    def auto_select(self):
-        c = get_common_data(g.account.uuid, mode="new")
-        user_agent = user_agents.parse(request.user_agent.string)
-        # return render_template('home/handle_smart.html', **c)
-        return render_template('home/auto_page.html', **c, ua=user_agent)
 
     @ route('/new/')
     @ route('/new')
@@ -371,11 +187,6 @@ class UserView(FlaskView):
             # render_template('all_configs.txt', **c, base64=do_base_64)
             resp = link_maker.make_v2ray_configs(**c)
 
-        # res = ""
-        # for line in resp.split("\n"):
-        #     if "vmess://" in line:
-        #         line = "vmess://"+do_base_64(line.replace("vmess://", ""))
-        #     res += line+"\n"
         if base64:
             resp = do_base_64(resp)
         return add_headers(resp, c)
@@ -383,7 +194,7 @@ class UserView(FlaskView):
     @login_required(roles={Role.user})
     @ route("/offline.html")
     def offline():
-        return f"Not Connected <a href='/{hconfig(ConfigEnum.proxy_path_client)}/'>click for reload</a>"
+        return f"Not Connected <a href='{hiddify.get_account_panel_link(g.account, request.host)}'>click for reload</a>"
 
     # backward compatiblity
     @route("/admin/<path:path>")

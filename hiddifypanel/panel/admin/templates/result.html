@@ -8,6 +8,7 @@
   {{out_msg|safe}}
 </div>
 
+{#
 %if g.temp_admin_link
 {% macro temp_link() -%}
 <div class="btn-group">
@@ -24,6 +25,7 @@
 
 {{modal('save_emergency',_('This action is not yet finished.'),_("Please copy the emergency link before leaving this page."),temp_link(),show=False)}}
 %endif
+#}
 
 %if g.temp_admin_link
 <div class="callout callout-success">
@@ -145,7 +147,7 @@
     //   //x.contentWindow.scrollTo( 0, 999999 );
   }
   setInterval(refresh, 1000);
-  %if g.temp_admin_link
+  {%if g.temp_admin_link %}
   window.addEventListener('beforeunload', function (e) {
     //   // Cancel the event
     console.log("Finished", finished)
@@ -153,12 +155,12 @@
 
       e.preventDefault(); // If you prevent default behavior in Mozilla Firefox prompt will always be shown
       //   // Chrome requires returnValue to be set
-      $("#save_emergency").modal()
+      //$("#save_emergency").modal()
       e.returnValue = 'Save';
       return "save"
     }
   });
-  % endif
+  {% endif %}
 
   $("#logbtn").on("click", function (event) {
     event.preventDefault()

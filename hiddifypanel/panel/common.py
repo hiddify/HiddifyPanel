@@ -104,10 +104,10 @@ def init_app(app: APIFlask):
             if hasattr(g, 'account') and isinstance(g.account, AdminUser):
                 values['proxy_path'] = hconfig(ConfigEnum.proxy_path_admin)
             # elif 'static' in endpoint:
-            #     values['proxy_path'] = hconfig(ConfigEnum.proxy_path)
+                #     values['proxy_path'] = hconfig(ConfigEnum.proxy_path)
             elif hiddify.is_user_panel_call():
                 values['proxy_path'] = hconfig(ConfigEnum.proxy_path_client)
-            else:
+            elif g.is_admin:
                 values['proxy_path'] = hconfig(ConfigEnum.proxy_path_admin)
 
         if hiddify.is_api_v1_call(endpoint=endpoint) and 'admin_uuid' not in values:
@@ -184,7 +184,7 @@ def init_app(app: APIFlask):
 
         # validate proxy path
 
-        g.proxy_path = hutils.utils.get_proxy_path_from_url(request.url)
+        # g.proxy_path = hutils.utils.get_proxy_path_from_url(request.url)
         hiddify.proxy_path_validator(g.proxy_path)
 
         # if g.proxy_path != hconfig(ConfigEnum.proxy_path):

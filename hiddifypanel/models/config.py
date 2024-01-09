@@ -36,7 +36,7 @@ class StrConfig(db.Model, SerializerMixin):
 
 
 @cache.cache(ttl=500)
-def hconfig(key: ConfigEnum, child_id=0):
+def hconfig(key: ConfigEnum, child_id: int = 0):
     value = None
     try:
         str_conf = StrConfig.query.filter(StrConfig.key == key, StrConfig.child_id == child_id).first()
@@ -61,7 +61,7 @@ def hconfig(key: ConfigEnum, child_id=0):
     return value
 
 
-def set_hconfig(key: ConfigEnum, value, child_id=0, commit=True):
+def set_hconfig(key: ConfigEnum, value: str | bool, child_id: int = 0, commit: bool = True):
     # hconfig.invalidate(key, child_id)
     # get_hconfigs.invalidate(child_id)
     hconfig.invalidate(key, child_id)
@@ -94,7 +94,7 @@ def set_hconfig(key: ConfigEnum, value, child_id=0, commit=True):
 
 
 @cache.cache(ttl=500)
-def get_hconfigs(child_id=0):
+def get_hconfigs(child_id: int = 0):
     return {**{u.key: u.value for u in BoolConfig.query.filter(BoolConfig.child_id == child_id).all()},
             **{u.key: u.value for u in StrConfig.query.filter(StrConfig.child_id == child_id).all()},
             # ConfigEnum.telegram_fakedomain:hdomain(DomainType.telegram_faketls),
@@ -103,7 +103,7 @@ def get_hconfigs(child_id=0):
             }
 
 
-def add_or_update_config(commit=True, child_id=0, override_unique_id=True, **config):
+def add_or_update_config(commit: bool = True, child_id: int = 0, override_unique_id: bool = True, **config):
     c = config['key']
     ckey = ConfigEnum(c)
     if c == ConfigEnum.unique_id and not override_unique_id:
@@ -115,7 +115,7 @@ def add_or_update_config(commit=True, child_id=0, override_unique_id=True, **con
     set_hconfig(ckey, v, child_id, commit=commit)
 
 
-def bulk_register_configs(hconfigs, commit=True, override_child_id=None, override_unique_id=True):
+def bulk_register_configs(hconfigs, commit: bool = True, override_child_id: int = None, override_unique_id: bool = True):
     from hiddifypanel.panel import hiddify
     for conf in hconfigs:
         # print(conf)

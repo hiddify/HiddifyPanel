@@ -134,15 +134,15 @@ class UserAdmin(AdminLTEModelView):
         else:
             link = '<i class="fa-solid fa-circle-xmark text-danger"></i> '
 
-        client_proxy_path = hconfig(ConfigEnum.proxy_path_client)
-        href = f'https://{request.host}/{client_proxy_path}/{model.uuid}/#{model.name}'
+        href = hiddify.get_account_panel_link(model, request.host, is_https=True, prefere_path_only=True)+"#{model.name}"
+
         link += f"<a target='_blank' class='copy-link' data-copy='{href}' href='{href}'>{model.name} <i class='fa-solid fa-arrow-up-right-from-square'></i></a>"
         # link += f"<a target='_blank' class='copy-link' href='https://{model.username}:{model.password}@{d}/{client_proxy_path}/#{model.name}'>{model.name} <i class='fa-solid fa-arrow-up-right-from-square'></i></a>"
         return Markup(extra+link)
 
     def _ul_formatter(view, context, model, name):
         domains = get_panel_domains()
-        return Markup(" ".join([hiddify.get_user_link(model.uuid, d, 'new', model.name) for d in domains]))
+        return Markup(" ".join([hiddify.get_html_user_link(model, d) for d in domains]))
 
     def _uuid_formatter(view, context, model, name):
         return Markup(f"<span>{model.uuid}</span>")

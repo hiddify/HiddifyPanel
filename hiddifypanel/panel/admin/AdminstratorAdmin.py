@@ -82,19 +82,19 @@ class AdminstratorAdmin(AdminLTEModelView):
 
     def _ul_formatter(view, context, model, name):
 
-        return Markup(" ".join([hiddify.get_user_link(model.uuid, d, 'admin', model.name).replace('/admin/', '/', 1) for d in get_panel_domains()]))
+        return Markup(" ".join([hiddify.get_html_user_link(model, d) for d in get_panel_domains()]))
 
     @property
     def can_create(self):
         return g.account.can_add_admin or g.account.mode == AdminMode.super_admin
 
     def _name_formatter(view, context, model, name):
-        admin_proxy_path = hconfig(ConfigEnum.proxy_path_admin)
-        d = get_panel_domains()[0]
+
+        d = request.host
         if d:
-            # link = f"<a target='_blank' href='https://{model.username}:{model.password}@{d}/{admin_proxy_path}/#{model.name}'>{model.name} <i class='fa-solid fa-arrow-up-right-from-square'></i></a>"
-            href = f'https://{d}/{admin_proxy_path}/{model.uuid}/#{model.name}'
-            link = f"<a target='_blank' class='copy-link' data-copy='{href}' href='{href}'>{model.name} <i class='fa-solid fa-arrow-up-right-from-square'></i></a>"
+
+            href = hiddify.get_account_panel_link(model, d) + f'/#{model.name}'
+            link = f"<a target='_blank' class='share-link' data-copy='{href}' href='{href}'>{model.name} <i class='fa-solid fa-arrow-up-right-from-square'></i></a>"
             if model.parent_admin:
                 return Markup(model.parent_admin.name + "&rlm;&lrm; / &rlm;&lrm;"+link)
             return Markup(link)

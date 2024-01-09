@@ -107,22 +107,21 @@ class Actions(FlaskView):
             flash((_('Your domains changed. Please do not forget to copy admin links, otherwise you can not access to the panel anymore.')), 'info')
         # flash(f'complete_install={complete_install} domain_changed={domain_changed} ', 'info')
         # return render_template("result.html")
-        hiddify.add_temporary_access()
+        # hiddify.add_temporary_access()
         file = "install.sh" if complete_install else "apply_configs.sh"
         try:
             server_ip = urllib.request.urlopen('https://v4.ident.me/').read().decode('utf8')
         except:
             server_ip = "server_ip"
 
-        admin_proxy_path = hconfig(ConfigEnum.proxy_path_admin)
         admin_links = f"<h5 >{_('Admin Links')}</h5><ul>"
-        username, password = hiddify.current_account_user_pass()
-        admin_links += f"<li><span class='badge badge-danger'>{_('Not Secure')}</span>: <a class='badge ltr share-link' href='http://{username}:{password}@{server_ip}/{admin_proxy_path}/admin/'>http://{username}:{password}@{server_ip}/{admin_proxy_path}/admin/</a></li>"
+
+        admin_links += f"<li><span class='badge badge-danger'>{_('Not Secure')}</span>: <a class='badge ltr share-link' href='{hiddify.get_account_panel_link(g.account, server_ip,is_https=False)}'>{hiddify.get_account_panel_link(g.account, server_ip,is_https=False)}</a></li>"
         domains = get_panel_domains()
         # domains=[*domains,f'{server_ip}.sslip.io']
 
         for d in domains:
-            link = f'https://{username}:{password}@{d}/{admin_proxy_path}/admin/'
+            link = hiddify.get_account_panel_link(g.account, d)
             admin_links += f"<li><a target='_blank' class='badge ltr' href='{link}'>{link}</a></li>"
 
         resp = render_template("result.html",
@@ -169,7 +168,7 @@ class Actions(FlaskView):
         return self.update2()
 
     def update2(self):
-        hiddify.add_temporary_access()
+        # hiddify.add_temporary_access()
         # run update.sh
         commander(Command.update)
 

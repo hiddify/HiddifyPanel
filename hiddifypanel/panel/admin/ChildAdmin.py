@@ -51,8 +51,7 @@ class ChildAdmin(AdminLTEModelView):
     form_columns = ['domain', 'show_domains']
 
     def _domain_admin_link(view, context, model, name):
-        username, password = hiddify.current_account_user_pass()
-        admin_link = f'https://{username}:{password}@{model.domain}{hiddify.get_admin_path()}'
+        admin_link = hiddify.get_account_panel_link(g.account, model.domain)
         return Markup(f'<div class="btn-group"><a href="{admin_link}" class="btn btn-xs btn-secondary">' + _("admin link") +
                       f'</a><a href="{admin_link}" class="btn btn-xs btn-info ltr" target="_blank">{model.domain}</a></div>')
 

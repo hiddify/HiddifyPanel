@@ -27,15 +27,15 @@ from hiddifypanel.panel.run_commander import commander, Command
 to_gig_d = 1000*1000*1000
 
 
-def add_temporary_access():
-    random_port = random.randint(30000, 50000)
-    # exec_command(
-    #     f'sudo /opt/hiddify-manager/hiddify-panel/temporary_access.sh {random_port} &')
+# def add_temporary_access():
+#     random_port = random.randint(30000, 50000)
+#     # exec_command(
+#     #     f'sudo /opt/hiddify-manager/hiddify-panel/temporary_access.sh {random_port} &')
 
-    # run temporary_access.sh
-    commander(Command.temporary_access, port=random_port)
-    temp_admin_link = f"http://{hutils.ip.get_ip(4)}:{random_port}{get_admin_path()}"
-    g.temp_admin_link = temp_admin_link
+#     # run temporary_access.sh
+#     commander(Command.temporary_access, port=random_port)
+#     temp_admin_link = f"http://{hutils.ip.get_ip(4)}:{random_port}{get_admin_path()}"
+#     g.temp_admin_link = temp_admin_link
 
 
 # with user panel url format we don't really need this function
@@ -63,12 +63,6 @@ def add_short_link_imp(link: str, period_min: int = 5) -> Tuple[str, datetime]:
     commander(Command.temporary_short_link, url=link, slug=short_code, period=period_min)
 
     return short_code, datetime.now() + timedelta(minutes=period_min)
-
-
-def get_admin_path():
-    proxy_path = hconfig(ConfigEnum.proxy_path_admin)
-    # admin_secret = g.account.uuid or get_super_admin_secret()
-    return (f"/{proxy_path}/admin/")
 
 
 def exec_command(cmd, cwd=None):
@@ -206,13 +200,7 @@ def is_admin_home_call() -> bool:
 
 
 def is_login_call() -> bool:
-    # print(request.blueprint)
     return request.blueprint == 'common_bp'
-    # base_path = f'{request.host}'
-    # requested_url = f'{request.host}{request.path}'
-    # if requested_url == f'{base_path}/{hconfig(ConfigEnum.proxy_path_admin)}/' or requested_url == f'{base_path}/{hconfig(ConfigEnum.proxy_path_client)}/':
-    #     return True
-    # return False
 
 
 def is_admin_role(role: Role):
@@ -372,21 +360,15 @@ def check_connection_for_domain(domain):
     return True
 
 
-def get_user_link(uuid, domain, mode='', username=''):
+def get_html_user_link(model: BaseAccount, domain: Domain):
     is_cdn = domain.mode == DomainType.cdn if type(domain) == Domain else False
     res = ""
-    if mode == "multi":
-        res += "<div class='btn-group'>"
     d = domain.domain
     if "*" in d:
         d = d.replace("*", get_random_string(5, 15))
-    proxy_path = hconfig(ConfigEnum.proxy_path_admin) if mode == 'admin' else hconfig(ConfigEnum.proxy_path_client)
-    # account = AdminUser.query.filter(AdminUser.uuid == uuid).first() if mode == 'admin' else User.query.filter(User.uuid == uuid).first()
-    # link = f"https://{account.username}:{account.password}@{d}/{proxy_path}/admin/#{username}" if mode == 'admin' else f"https://{account.username}:{account.password}@{d}/{proxy_path}/#{username}"
-    link = f"https://{d}/{proxy_path}/{uuid}/#{username}"
 
-    # if mode == 'new':
-    #     link = f"{link}new"
+    link = hiddify.get_account_panel_link(model, d)+"#{model.name}"
+
     text = domain.alias or domain.domain
     color_cls = 'info'
 
@@ -395,7 +377,7 @@ def get_user_link(uuid, domain, mode='', username=''):
         color_cls = "success" if auto_cdn else 'warning'
         text = f'<span class="badge badge-secondary" >{"Auto" if auto_cdn else "CDN"}</span> '+text
 
-    res += f"<a target='_blank' data-copy='{link}' href='{link}' class='btn btn-xs btn-{color_cls} ltr copy-link' ><i class='fa-solid fa-arrow-up-right-from-square d-none'></i> {text}</a>"
+    res += f"<a target='_blank' data-copy='{link}' href='{link}' class='btn btn-xs btn-{color_cls} ltr share-link' ><i class='fa-solid fa-arrow-up-right-from-square d-none'></i> {text}</a>"
 
     return res
 
@@ -846,12 +828,12 @@ def do_base_64(str):
 
 
 def get_user_agent():
-    ua= __parse_user_agent(request.user_agent.string)
+    ua = __parse_user_agent(request.user_agent.string)
 
     if 'is_bot' not in ua:
         __parse_user_agent.invalidate_all()
-        ua= __parse_user_agent(request.user_agent.string)
-        
+        ua = __parse_user_agent(request.user_agent.string)
+
     return ua
 
 
@@ -915,3 +897,19 @@ def get_direct_host_or_ip(prefer_version: int):
     if not direct:
         direct = hutils.ip.get_ip(socket.AF_INET if prefer_version == socket.AF_INET6 else socket.AF_INET6)
     return direct
+
+
+def get_account_panel_link(account: BaseAccount, host: str, is_https: bool = true, prefere_path_only: bool = False, child_id=0):
+    basic_auth = False
+
+    link = ""
+    if basic_auth or not prefere_path:
+        link = "https://" if is_https else "http://"
+        if basic_auth:
+            link += f'{account.uuid}@'
+        link += host
+    proxy_path = hconfig(ConfigEnum.proxy_path_admin, child_id) if isinstance(account, AdminUser) else hconfig(ConfigEnum.proxy_path_client, child_id)
+    link += f'/{proxy_path}/'
+    if not basic_auth:
+        link += f'{account.uuid}/'
+    return link

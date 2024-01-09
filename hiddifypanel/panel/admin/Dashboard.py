@@ -52,7 +52,7 @@ class Dashboard(FlaskView):
                 for d in c.domains:
                     if d.mode == DomainType.fake:
                         continue
-                    remote = f"https://{d.domain}/{hconfig(ConfigEnum.proxy_path_admin,c.id)}/{hconfig(ConfigEnum.admin_secret,c.id)}"
+                    remote = hiddify.get_account_panel_link(g.account, d.domain, child_id=c.id)
                     d.is_active = hiddify.check_connection_to_remote(remote)
                     if d.is_active:
                         c.is_active = True
@@ -74,8 +74,7 @@ class Dashboard(FlaskView):
                 flash(_("Please understand that parent panel is under test and the plan and the condition of use maybe change at anytime."), "danger")
         elif def_user:
             d = domains[0]
-            u = def_user.uuid
-            flash((_('It seems that you have not created any users yet. Default user link: %(default_link)s', default_link=hiddify.get_user_link(u, d))), 'secondary')
+            flash((_('It seems that you have not created any users yet. Default user link: %(default_link)s', default_link=hiddify.get_html_user_link(def_user, d))), 'secondary')
         if hiddify.is_ssh_password_authentication_enabled():
             flash(_('ssh.password-login.warning.'), "warning")
 

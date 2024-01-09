@@ -75,11 +75,6 @@ class QuickSetup(FlaskView):
             ])
 
             db.session.commit()
-            # hiddify.flash_config_success()
-            # proxy_path = hconfig(ConfigEnum.proxy_path_admin)
-            # uuid=User.query.first().uuid
-            # userlink=f"<a class='btn btn-secondary share-link' target='_blank' href='https://{quick_form.domain.data}/{proxy_path}/{uuid}/'>{_('default user link')}</a>"
-            # flash((_('The default user link is %(link)s. To add or edit more users, please visit users from menu.',link=userlink)),'info')
 
             from . import Actions
             action = Actions.Actions()
@@ -153,7 +148,4 @@ def validate_domain(form, field):
 
 def admin_link():
     domains = get_panel_domains()
-    if len(domains):
-        return "https://"+domains[0].domain+hiddify.get_admin_path()
-    else:
-        return "https://"+hutils.ip.get_ip(4)+hiddify.get_admin_path()
+    return hiddify.get_account_panel_link(g.account, domains[0] if len(domains)else hutils.ip.get_ip(4))
