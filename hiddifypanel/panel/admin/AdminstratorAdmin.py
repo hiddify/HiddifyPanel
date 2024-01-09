@@ -7,7 +7,7 @@ from .adminlte import AdminLTEModelView
 from flask_babelex import gettext as __
 from flask_babelex import lazy_gettext as _
 from hiddifypanel.panel import hiddify
-from flask import Markup, current_app
+from flask import Markup, current_app, request
 from flask import g
 import datetime
 from wtforms import SelectField
@@ -93,7 +93,7 @@ class AdminstratorAdmin(AdminLTEModelView):
         d = request.host
         if d:
 
-            href = hiddify.get_account_panel_link(model, d) + f'/#{model.name}'
+            href = hiddify.get_account_panel_link(model, d) + f'#{model.name}'
             link = f"<a target='_blank' class='share-link' data-copy='{href}' href='{href}'>{model.name} <i class='fa-solid fa-arrow-up-right-from-square'></i></a>"
             if model.parent_admin:
                 return Markup(model.parent_admin.name + "&rlm;&lrm; / &rlm;&lrm;"+link)
