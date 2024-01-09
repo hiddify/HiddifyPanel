@@ -171,7 +171,7 @@
               <a target="_blank" id="share-link-open" class="btn btn-secondary" href=""><i class="fa-solid fa-arrow-up-right-from-square"></i> {{_('open')}}</a>
             </div>
             <br />
-            <div id="qrcode" style="margin:10px;padding:10px;background:#fff"></div>
+            <div id="qrcode" style="margin:10px;padding:10px;"></div>
           </center>
         </div>
         <div class="modal-footer">
@@ -268,6 +268,7 @@
       qrcode.makeCode(link);
       hrefshare = "https://{{domain}}/{{hconfig(ConfigEnum.proxy_path_admin)}}/redirect/" + link.replaceAll('://', '%3A%2F%2F')
       $('#qrcode-link')[0].href = link
+      $('#qrcode-link').attr('data-copy',link)
       $('#share-link-open')[0].href = link
       $('#share-link-redirect')[0].href = hrefshare
       $('#share-link-open').show()
@@ -278,7 +279,7 @@
 
       if (this.getAttribute('data-copy')) {
         $('#share-link-redirect').hide()
-        $('#share-link-open').hide()
+        //$('#share-link-open').hide()
       }
       $('#share-qr-code').modal('show');
     }

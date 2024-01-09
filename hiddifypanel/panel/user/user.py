@@ -320,7 +320,8 @@ def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
         "ip_debug": auto_ip_selector.get_real_user_ip_debug(user_ip),
         "asn": asn,
         "country": auto_ip_selector.get_country(user_ip),
-        'has_auto_cdn': has_auto_cdn
+        'has_auto_cdn': has_auto_cdn,
+        'profile_url': hiddify.get_account_panel_link(g.account, domain)
     }
 
 

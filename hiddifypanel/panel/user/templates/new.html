@@ -2,8 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    {%set base='{hiddify.get_account_panel_link(g.account,domain)}"%}
-    <meta name="apple-itunes-app" content="app-id=6450534064, app-argument=streisand://import/{{base}}">
+    <meta name="apple-itunes-app" content="app-id=6450534064, app-argument=streisand://import/{{profile_url}}">
     
     <link rel="icon" type="image/png" href="../static/new/assets/hiddify-logo-7617d937.png" />
     <link rel="stylesheet" href="node_modules/smartbanner.js/dist/smartbanner.min.css">
@@ -20,7 +19,7 @@
     <script src="node_modules/smartbanner.js/dist/smartbanner.min.js"></script>
     <script>
       window.appVersion = '{{version}}';
-      window.deepLink = "hiddify://import/{{base}}"
+      window.deepLink = "hiddify://import/{{profile_url}}"
     </script>
   </body>
 </html>

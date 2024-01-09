@@ -367,7 +367,7 @@ def get_html_user_link(model: BaseAccount, domain: Domain):
     if "*" in d:
         d = d.replace("*", get_random_string(5, 15))
 
-    link = hiddify.get_account_panel_link(model, d)+"#{model.name}"
+    link = get_account_panel_link(model, d)+f"#{model.name}"
 
     text = domain.alias or domain.domain
     color_cls = 'info'
@@ -899,11 +899,11 @@ def get_direct_host_or_ip(prefer_version: int):
     return direct
 
 
-def get_account_panel_link(account: BaseAccount, host: str, is_https: bool = true, prefere_path_only: bool = False, child_id=0):
+def get_account_panel_link(account: BaseAccount, host: str, is_https: bool = True, prefere_path_only: bool = False, child_id=0):
     basic_auth = False
 
     link = ""
-    if basic_auth or not prefere_path:
+    if basic_auth or not prefere_path_only:
         link = "https://" if is_https else "http://"
         if basic_auth:
             link += f'{account.uuid}@'
