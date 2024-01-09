@@ -77,7 +77,7 @@ class SettingAdmin(FlaskView):
                 # print(cat,vs)
 
             merged_configs = {**old_configs, **changed_configs}
-            if len(set([merged_configs[ConfigEnum.proxy_path], merged_configs[ConfigEnum.proxy_path_client], merged_configs[ConfigEnum.proxy_path_admin])) != 3:
+            if len(set([merged_configs[ConfigEnum.proxy_path], merged_configs[ConfigEnum.proxy_path_client], merged_configs[ConfigEnum.proxy_path_admin]])) != 3:
                 flash(_("ProxyPath is already used! use different proxy path"), 'error')
                 return render_template('config.html', form=form)
             # for k in [ConfigEnum.reality_server_names,ConfigEnum.reality_fallback_domain]:
