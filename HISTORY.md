@@ -195,6 +195,10 @@
 
 #### Fix
 
+* Bug in singbox 1.7. 
+
+* Hiddify client version. 
+
 * Bug. 
 
 * Admin link bug. 
