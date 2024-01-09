@@ -195,6 +195,8 @@
 
 #### Fix
 
+* Bug. 
+
 * Admin link bug. 
 
 * Bug. 
@@ -1004,6 +1006,14 @@ It is a visual improvement to have all users aligned in the table._
 * Convert old db to new. 
 
 * Add pysql req. 
+
+
+
+## 8.8.7 (2024-01-09)
+
+#### Fix
+
+* Singbox 1.8 issue. 
 
 
 
