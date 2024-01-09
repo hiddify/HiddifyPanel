@@ -122,23 +122,24 @@ def init_app(app):
             if not account:
                 return logout_redirect()
         elif request.authorization:
-            # print('request.authorization' , request.authorization)
+            # print('request.authorization', request.authorization)
             uname = request.authorization.username
             pword = request.authorization.password
             if not pword:
-                account = get_account_by_uuid(g.uuid, is_admin_path)
+                # print("NO PASSWORD so it is uuid")
+                account = get_account_by_uuid(uname, is_admin_path)
             else:
                 account = AdminUser.by_username_password(uname, pword) if is_admin_path else User.by_username_password(uname, pword)
             if not account:
                 return logout_redirect()
 
         elif (session_user := session.get('_user_id')) and not is_admin_path:
-            # print('session_user', session_user)
+            print('session_user', session_user)
             account = User.by_id(int(session_user.split("_")[1]))  # type: ignore
             if not account:
                 return logout_redirect()
         elif (session_admin := session.get('_admin_id')) and is_admin_path:
-            # print('session_admin', session_admin)
+            print('session_admin', session_admin)
             account = AdminUser.by_id(int(session_admin.split("_")[1]))  # type: ignore
             if not account:
                 return logout_redirect()
@@ -168,7 +169,7 @@ def init_app(app):
 
 
 def logout_redirect():
-    print("Incorrect user {current_account}.... loggining out")
+    print(f"Incorrect user {current_account}.... loggining out")
     logout_user()
     return redirect_to_login()
 
