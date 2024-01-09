@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPT\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-09 01:34+0100\n"
-"PO-Revision-Date: 2024-01-08 18:10-0600\n"
+"POT-Creation-Date: 2024-01-09 02:12+0100\n"
+"PO-Revision-Date: 2024-01-09 01:34+0100\n"
 "Last-Translator: lymanrudni\n"
 "Language: ru\n"
 "Language-Team: Russian\n"
@@ -2744,6 +2744,7 @@ msgstr "V2RayNG"
 msgid "app.hiddifyng.title"
 msgstr "HiddifyNG"
 
+# | msgid "Hiddify Clash"
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:182
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:264
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:266
@@ -2791,6 +2792,7 @@ msgstr "гагара"
 msgid "app.stash.title"
 msgstr "Тайник"
 
+# | msgid "Hiddify Clash"
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:194
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:333
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:335
@@ -2798,6 +2800,7 @@ msgstr "Тайник"
 msgid "app.hiddify-clash-desktop.title"
 msgstr "Hiddify Столкновение"
 
+# | msgid "NekoBox"
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:196
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:222
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:224
@@ -2948,11 +2951,13 @@ msgstr ""
 msgid "admin.config.title"
 msgstr "Настройки"
 
+# | msgid "Secret Code"
 #: hiddifypanel/panel/common_bp/login.py:18
 #, fuzzy
 msgid "login.secret.label"
 msgstr "Секретный код"
 
+# | msgid "Secret code is given by the service provider."
 #: hiddifypanel/panel/common_bp/login.py:20
 #, fuzzy
 msgid "login.secret.description"
@@ -4449,11 +4454,15 @@ msgstr ""
 "Вы можете задать отдельный порт для вашего сервера Reality, чтобы снизить"
 " нагрузку на систему. (Прямое подключение к прокси должно быть разрешено)"
 
+# | msgid "Proxy Path for Admins"
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
 msgid "config.proxy_path_admin.label"
 msgstr "Путь прокси для администраторов"
 
+# | msgid ""
+# | "We use secret proxy path to hide our proxies for the governments and
+# bots"
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
 msgid "config.proxy_path_admin.description"
@@ -4461,11 +4470,14 @@ msgstr ""
 "Мы используем секретный путь прокси, чтобы скрыть наши прокси для "
 "правительств и ботов."
 
+# | msgid "Proxy Path for Clients"
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
 msgid "config.proxy_path_client.label"
 msgstr "Путь прокси для клиентов"
 
+# | msgid ""
+# | "Secret proxy path hide the proxies from the governments and bots"
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
 msgid "config.proxy_path_client.description"

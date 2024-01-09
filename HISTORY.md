@@ -183,6 +183,10 @@
 
 #### Fix
 
+* Fix: login by uuid@domain.com. 
+
+* Bug. 
+
 * All config bugs. 
 
 * Singbox. 
@@ -524,6 +528,8 @@ with A2_
 * Bugs. 
 
 #### Other
+
+* Login by uuid@domain.com/path/l. 
 
 * Remove old user_agent. 
 
