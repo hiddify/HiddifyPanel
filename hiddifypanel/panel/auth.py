@@ -19,6 +19,10 @@ def _get_user():
     return g.account
 
 
+def admin_session_is_exist():
+    return '_admin_id' in session
+
+
 def logout_user():
     g.account = None
     if '_user_id' in session:
@@ -28,9 +32,10 @@ def logout_user():
 
 
 def login_user(user: AdminUser | User, remember=False, duration=None, force=False, fresh=True):
+    # abort(400, f'logining user: {user} {user.is_active}')
     g.account = user
-    if not user.is_active:
-        return False
+    # if not user.is_active:
+    #     return False
 
     account_id = user.get_id()  # type: ignore
     # print('account_id', account_id)
@@ -107,8 +112,9 @@ def init_app(app):
         next_url = None
 
         if g.uuid:
-            # print("uuid", g.uuid)
+            print("uuid", g.uuid, is_admin_path)
             account = get_account_by_uuid(g.uuid, is_admin_path)
+            print(account)
             if not account:
                 return logout_redirect()
 

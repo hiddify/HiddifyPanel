@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-09 23:42+0100\n"
-"PO-Revision-Date: 2024-01-09 16:40-0600\n"
+"POT-Creation-Date: 2024-01-10 00:45+0100\n"
+"PO-Revision-Date: 2024-01-09 17:44-0600\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -2453,7 +2453,7 @@ msgid "Disk"
 msgstr "هارد دیسک"
 
 #: hiddifypanel/panel/admin/templates/index.html:142
-#: hiddifypanel/panel/commercial/restapi/v2/user/info_api.py:59
+#: hiddifypanel/panel/commercial/restapi/v2/user/info_api.py:62
 #, fuzzy
 msgid "Hiddify"
 msgstr "هیدیفای"
@@ -2832,9 +2832,14 @@ msgstr ""
 msgid "app.hiddify.next.description"
 msgstr "Hiddify توضیحات بعدی"
 
-#: hiddifypanel/panel/commercial/restapi/v2/user/info_api.py:57
+#: hiddifypanel/panel/commercial/restapi/v2/user/info_api.py:58
 msgid "Join our Hiddify Telegram channel to get the latest updates on Hiddify."
 msgstr "در کانال تلگرام هیدیفای عضو شوید تا از آخرین آپدیت‌های ما مطلع شوید."
+
+# | msgid "[Admin-exclusive message]: Customizable via settings."
+#: hiddifypanel/panel/commercial/restapi/v2/user/info_api.py:60
+msgid "[Admin only visible message:] You can change this message from settings"
+msgstr "[پیام اختصاصی ادمین]: قابل تنظیم از طریق تنظیمات."
 
 # | msgid ""
 # | "Hooray 🎉 🎉 🎉 \n"

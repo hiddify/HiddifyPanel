@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPT\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-09 23:42+0100\n"
-"PO-Revision-Date: 2024-01-09 23:40+0100\n"
+"POT-Creation-Date: 2024-01-10 00:45+0100\n"
+"PO-Revision-Date: 2024-01-09 17:22-0600\n"
 "Last-Translator: lymanrudni\n"
 "Language: ru\n"
 "Language-Team: Russian\n"
@@ -2468,7 +2468,7 @@ msgid "Disk"
 msgstr "Жесткий диск"
 
 #: hiddifypanel/panel/admin/templates/index.html:142
-#: hiddifypanel/panel/commercial/restapi/v2/user/info_api.py:59
+#: hiddifypanel/panel/commercial/restapi/v2/user/info_api.py:62
 msgid "Hiddify"
 msgstr "Hiddify"
 
@@ -2839,12 +2839,21 @@ msgstr ""
 msgid "app.hiddify.next.description"
 msgstr "Hiddify Следующее описание"
 
-#: hiddifypanel/panel/commercial/restapi/v2/user/info_api.py:57
+#: hiddifypanel/panel/commercial/restapi/v2/user/info_api.py:58
 #, fuzzy
 msgid "Join our Hiddify Telegram channel to get the latest updates on Hiddify."
 msgstr ""
 "Присоединяйтесь к нашему каналу Hiddify в Telegram, чтобы получать "
 "последние обновления Hiddify."
+
+# | msgid ""
+# | "[Admin only visible message]: You can change this message from settings."
+#: hiddifypanel/panel/commercial/restapi/v2/user/info_api.py:60
+#, fuzzy
+msgid "[Admin only visible message:] You can change this message from settings"
+msgstr ""
+"[Сообщение, видимое только администратору]: Вы можете изменить это "
+"сообщение в настройках."
 
 # | msgid ""
 # | "Hooray 🎉 🎉 🎉 \n"

@@ -5,7 +5,8 @@ from apiflask.fields import Integer, String, Float, URL, Enum
 from flask import g, request
 from flask import current_app as app
 from hiddifypanel.panel.auth import login_required
-
+import hiddifypanel.panel.auth as auth
+from flask_babelex import gettext as _
 from hiddifypanel.models import Lang
 from hiddifypanel.models.role import Role
 from hiddifypanel.models.user import User
@@ -55,6 +56,8 @@ class InfoAPI(MethodView):
         dto.telegram_bot_url = f"https://t.me/{c['bot'].username}?start={g.account.uuid}" if c['bot'] else ""
         dto.telegram_id = c['user'].telegram_id or 0
         dto.admin_message_html = hconfig(ConfigEnum.branding_freetext) or _("Join our Hiddify Telegram channel to get the latest updates on Hiddify.")
+        if not hconfig(ConfigEnum.branding_freetext) and auth.admin_session_is_exist():
+            dto.admin_message_html += "<p style='font-style: italic;font-size:8px'>"+_("[Admin only visible message:] You can change this message from settings")+"</p>"
         dto.admin_message_url = hconfig(ConfigEnum.branding_site) or "https://t.me/hiddify"
         dto.brand_title = hconfig(ConfigEnum.branding_title) or _("Hiddify")
         dto.brand_icon_url = "" if hconfig(ConfigEnum.branding_title) else static_url_for(filename="images/hiddify.png")
