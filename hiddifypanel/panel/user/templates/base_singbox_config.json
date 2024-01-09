@@ -1,4 +1,4 @@
-{% set V1_7= if g.user_agent['is_singbox'] and g.user_agent['singbox_version'][0]==1 && g.user_agent['singbox_version'][1]<8 %}
+{% set V1_7= g.user_agent['is_singbox'] and g.user_agent['singbox_version'][0]==1 and g.user_agent['singbox_version'][1]<8 %}
 {
     "outbounds": [
         {
@@ -82,7 +82,6 @@
             "store_fakeip": true
             {%endif%}
             }
-        }
         {% if not V1_7 %}
         ,"cache_file": {
             "enabled": true,

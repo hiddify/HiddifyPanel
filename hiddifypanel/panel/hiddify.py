@@ -853,6 +853,7 @@ def get_user_agent():
 def __parse_user_agent(ua):
     uaa = user_agents.parse(request.user_agent.string)
     res = {}
+    res["is_bot"] = uaa.is_bot
     res["is_browser"] = re.match('^Mozilla', ua, re.IGNORECASE) and True
     res['os'] = uaa.os.family
     res['os_version'] = uaa.os.version
@@ -863,7 +864,7 @@ def __parse_user_agent(ua):
         res['singbox_version'] = (1, 8, 0)
         if re.match('^(SFI|SFA).*1\.[1-7]\.', ua, re.IGNORECASE):
             res['singbox_version'] = (1, 7, 0)
-            
+
     res['is_hiddify'] = re.match('^(HiddifyNext)', ua, re.IGNORECASE) and True
     if ['is_hiddify']:
         res['hiddify_version'] = uaa
