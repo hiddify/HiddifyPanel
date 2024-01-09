@@ -894,3 +894,13 @@ def get_account_panel_link(account: BaseAccount, host: str, is_https: bool = Tru
     if not basic_auth:
         link += f'{account.uuid}/'
     return link
+
+
+
+def is_valid_uuid(val: str, version: int | None = None):
+    try:
+        uuid.UUID(val, version=version)
+    except:
+        return False
+
+    return True

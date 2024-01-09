@@ -33,15 +33,7 @@ class ConfigAdmin(AdminLTEModelView):
     def inaccessible_callback(self, name, **kwargs):
         return auth.redirect_to_login()  # type: ignore
 
-    @staticmethod
-    def _is_valid_uuid(val: str, version: int | None = None):
-        try:
-            uuid.UUID(val, version=version)
-        except:
-            return False
-
-        return True
-
+    
     def on_model_change(self, form, model, is_created):
         if model.key == ConfigEnum.db_version:
             raise ValidationError('DB version can not be changed')
@@ -49,7 +41,7 @@ class ConfigAdmin(AdminLTEModelView):
         #     if not re.match("http(s|)://([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})/?", model.value):
         #         raise ValidationError('Invalid address: e.g., https://www.wikipedia.org/')
         if model.key in [ConfigEnum.admin_secret, ConfigEnum.ssfaketls_secret]:
-            if not self._is_valid_uuid(model.value):
+            if not hiddify.is_valid_uuid(model.value):
                 raise ValidationError('Invalid UUID e.g.,' + str(uuid.uuid4()))
 
         if model.key in [ConfigEnum.telegram_secret]:
