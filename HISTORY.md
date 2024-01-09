@@ -89,6 +89,8 @@
 
 #### Changes
 
+* Make sessions permanent for two days. 
+
 * Allow backward compatibility. 
 
 * Refactor proxy model. 
@@ -194,6 +196,8 @@
 * Update hiddify next download link. 
 
 #### Fix
+
+* Bug. 
 
 * Bug in singbox 1.7. 
 
@@ -1012,6 +1016,14 @@ It is a visual improvement to have all users aligned in the table._
 * Convert old db to new. 
 
 * Add pysql req. 
+
+
+
+## 8.8.8 (2024-01-09)
+
+#### Fix
+
+* User agent issue for singbox 1.7 and hiddify next. 
 
 
 
