@@ -178,12 +178,12 @@ def is_admin_role(role: Role):
 
 def is_admin_proxy_path() -> bool:
     proxy_path = g.get('proxy_path') or get_proxy_path_from_url(request.url)
-    return proxy_path in [hconfig(ConfigEnum.proxy_path_admin), hconfig(ConfigEnum.proxy_path)]
+    return proxy_path in [hconfig(ConfigEnum.proxy_path_admin)] or (proxy_path in [hconfig(ConfigEnum.proxy_path)] and "/admin/" in request.path)
 
 
 def is_client_proxy_path() -> bool:
     proxy_path = g.get('proxy_path') or get_proxy_path_from_url(request.url)
-    return proxy_path in [hconfig(ConfigEnum.proxy_path_client), hconfig(ConfigEnum.proxy_path)]
+    return proxy_path in [hconfig(ConfigEnum.proxy_path_client)] or (proxy_path in [hconfig(ConfigEnum.proxy_path)] and "/admin/" not in request.path)
 
 
 def proxy_path_validator(proxy_path):
@@ -894,7 +894,6 @@ def get_account_panel_link(account: BaseAccount, host: str, is_https: bool = Tru
     if not basic_auth:
         link += f'{account.uuid}/'
     return link
-
 
 
 def is_valid_uuid(val: str, version: int | None = None):
