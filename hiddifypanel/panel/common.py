@@ -28,7 +28,7 @@ def init_app(app: APIFlask):
                 'message': 'Not Found',
             }), 404
         # print(request.headers)
-        last_version = hiddify.get_latest_release_version('hiddifypanel')  # TODO: add dev update check
+        last_version = hiddify.get_latest_release_version('hiddify-panel')  # TODO: add dev update check
         if "T" in hiddifypanel.__version__:
             has_update = False
         else:
@@ -63,7 +63,7 @@ def init_app(app: APIFlask):
             # Create github issue link
             issue_link = generate_github_issue_link_for_500_error(e, trace)
 
-            last_version = hiddify.get_latest_release_version('hiddifypanel')  # TODO: add dev update check
+            last_version = hiddify.get_latest_release_version('hiddify-panel')  # TODO: add dev update check
             if "T" in hiddifypanel.__version__:
                 has_update = False
             else:

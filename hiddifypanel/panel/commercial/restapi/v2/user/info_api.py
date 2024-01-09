@@ -54,10 +54,10 @@ class InfoAPI(MethodView):
         dto.profile_reset_days = g.account.days_to_reset()
         dto.telegram_bot_url = f"https://t.me/{c['bot'].username}?start={g.account.uuid}" if c['bot'] else ""
         dto.telegram_id = c['user'].telegram_id or 0
-        dto.admin_message_html = hconfig(ConfigEnum.branding_freetext)
-        dto.admin_message_url = hconfig(ConfigEnum.branding_site)
-        dto.brand_title = hconfig(ConfigEnum.branding_title)
-        dto.brand_icon_url = ""
+        dto.admin_message_html = hconfig(ConfigEnum.branding_freetext) or _("Join our Hiddify Telegram channel to get the latest updates on Hiddify.")
+        dto.admin_message_url = hconfig(ConfigEnum.branding_site) or "https://t.me/hiddify"
+        dto.brand_title = hconfig(ConfigEnum.branding_title) or _("Hiddify")
+        dto.brand_icon_url = "" if hconfig(ConfigEnum.branding_title) else static_url_for(filename="images/hiddify.png")
         dto.doh = f"https://{request.host}/{g.proxy_path}/dns/dns-query"
         dto.lang = c['user'].lang
         return dto
