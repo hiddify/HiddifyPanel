@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-09 17:46+0100\n"
-"PO-Revision-Date: 2024-01-09 10:04-0600\n"
+"POT-Creation-Date: 2024-01-09 23:42+0100\n"
+"PO-Revision-Date: 2024-01-09 16:40-0600\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -748,8 +748,9 @@ msgid "Port is already used! in"
 msgstr "端口已被占用："
 
 #: hiddifypanel/panel/admin/SettingAdmin.py:81
+#, fuzzy
 msgid "ProxyPath is already used! use different proxy path"
-msgstr ""
+msgstr "ProxyPath 已被使用！使用不同的代理路径"
 
 # | msgid "☢️ XRay"
 #: hiddifypanel/panel/admin/SettingAdmin.py:179
@@ -2283,6 +2284,7 @@ msgid "Disk"
 msgstr "硬盘"
 
 #: hiddifypanel/panel/admin/templates/index.html:142
+#: hiddifypanel/panel/commercial/restapi/v2/user/info_api.py:59
 msgid "Hiddify"
 msgstr "Hiddify"
 
@@ -2639,6 +2641,11 @@ msgstr ""
 #, fuzzy
 msgid "app.hiddify.next.description"
 msgstr "Hiddify 下一个说明"
+
+#: hiddifypanel/panel/commercial/restapi/v2/user/info_api.py:57
+#, fuzzy
+msgid "Join our Hiddify Telegram channel to get the latest updates on Hiddify."
+msgstr "加入我们的 Hiddify Telegram 频道，获取 Hiddify 的最新动态。"
 
 # | msgid ""
 # | "Hooray 🎉 🎉 🎉 \n"

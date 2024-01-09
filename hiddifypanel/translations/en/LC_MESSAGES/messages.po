@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-09 17:46+0100\n"
-"PO-Revision-Date: 2024-01-09 10:04-0600\n"
+"POT-Creation-Date: 2024-01-09 23:42+0100\n"
+"PO-Revision-Date: 2024-01-09 16:40-0600\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -773,7 +773,6 @@ msgid "Port is already used! in"
 msgstr "Port is Already Used in:"
 
 #: hiddifypanel/panel/admin/SettingAdmin.py:81
-#, fuzzy
 msgid "ProxyPath is already used! use different proxy path"
 msgstr "ProxyPath is already used! use different proxy path"
 
@@ -2391,6 +2390,7 @@ msgid "Disk"
 msgstr "Hard Disk"
 
 #: hiddifypanel/panel/admin/templates/index.html:142
+#: hiddifypanel/panel/commercial/restapi/v2/user/info_api.py:59
 msgid "Hiddify"
 msgstr "Hiddify"
 
@@ -2735,6 +2735,12 @@ msgstr "app.hiddify-clash-desktop.description"
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:378
 msgid "app.hiddify.next.description"
 msgstr "Hiddify Next Description"
+
+#: hiddifypanel/panel/commercial/restapi/v2/user/info_api.py:57
+msgid ""
+"Join our Hiddify Telegram channel to get the latest updates on Hiddify."
+msgstr ""
+"Join our Hiddify Telegram channel to get the latest updates on Hiddify."
 
 # | msgid ""
 # | "Hooray 🎉 🎉 🎉 \n"
