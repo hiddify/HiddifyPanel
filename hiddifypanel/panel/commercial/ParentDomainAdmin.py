@@ -16,11 +16,12 @@ from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
 from wtforms import SelectMultipleField
 from . import ParentDomain
-
+import hiddifypanel.panel.auth as auth
 from wtforms.widgets import ListWidget, CheckboxInput
 from sqlalchemy.orm import backref
 # Define a custom field type for the related domains
 from flask_admin.form.fields import Select2TagsField, Select2Field
+from flask import current_app
 
 
 class ParentDomainAdmin(AdminLTEModelView):
@@ -111,7 +112,7 @@ class ParentDomainAdmin(AdminLTEModelView):
         # if not hiddify.check_connection_for_domain(model.domain):
         #     raise ValidationError(
         #         _("Domain is not correctly mapped to this server!"))
-        print(model.show_domains)
+
         if len(model.show_domains) == Domain.query.count():
             model.show_domains = []
 
@@ -128,4 +129,4 @@ class ParentDomainAdmin(AdminLTEModelView):
         return True
 
     def inaccessible_callback(self, name, **kwargs):
-        return current_app.login_manager.unauthorized()  # type: ignore
+        return auth.redirect_to_login()  # type: ignore

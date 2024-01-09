@@ -1,22 +1,21 @@
+from hiddifypanel.models import *
+from flask_bootstrap import SwitchField
+from hiddifypanel.drivers import user_driver
+from hiddifypanel.panel.hiddify import flash
+from hiddifypanel.panel import hiddify, custom_widgets
+from apiflask import abort
+from flask_babelex import gettext as __
+from .adminlte import AdminLTEModelView
+from wtforms.validators import NumberRange
+from flask_babelex import lazy_gettext as _
+from flask import Markup, g, request, url_for
+from wtforms.validators import Regexp, ValidationError
+from flask import current_app
 import datetime
 import uuid
 import re
 from hiddifypanel.panel.auth import login_required
-
-from wtforms.validators import Regexp, ValidationError
-from flask import Markup, g, request, url_for
-from flask_babelex import lazy_gettext as _
-from wtforms.validators import NumberRange
-from .adminlte import AdminLTEModelView
-from flask_babelex import gettext as __
-from apiflask import abort
-
-
-from hiddifypanel.panel import hiddify, custom_widgets
-from hiddifypanel.panel.hiddify import flash
-from hiddifypanel.drivers import user_driver
-from flask_bootstrap import SwitchField
-from hiddifypanel.models import *
+import hiddifypanel.panel.auth as auth
 
 
 class UserAdmin(AdminLTEModelView):
@@ -32,7 +31,7 @@ class UserAdmin(AdminLTEModelView):
 
     # form_columns = ["name", "current_usage_GB", "remaining_days", "comment", 'last_online', 'mode', 'admin', "uuid"]
     form_excluded_columns = ['current_usage', 'monthly', 'telegram_id', 'last_online', 'expiry_time', 'last_reset_time', 'current_usage_GB',
-                             'start_date', 'added_by', 'admin', 'details', 'max_ips', 'ed25519_private_key', 'ed25519_public_key']
+                             'start_date', 'added_by', 'admin', 'details', 'max_ips', 'ed25519_private_key', 'ed25519_public_key', 'username', 'password']
     page_size = 50
     # edit_modal=True
     # create_modal=True
@@ -135,9 +134,10 @@ class UserAdmin(AdminLTEModelView):
         else:
             link = '<i class="fa-solid fa-circle-xmark text-danger"></i> '
 
-        d = get_panel_domains()[0]
         client_proxy_path = hconfig(ConfigEnum.proxy_path_client)
-        link += f"<a target='_blank' href='https://{model.username}:{model.password}@{d}/{client_proxy_path}/#{model.name}'>{model.name} <i class='fa-solid fa-arrow-up-right-from-square'></i></a>"
+        href = f'https://{request.host}/{client_proxy_path}/{model.uuid}/#{model.name}'
+        link += f"<a target='_blank' class='copy-link' data-copy='{href}' href='{href}'>{model.name} <i class='fa-solid fa-arrow-up-right-from-square'></i></a>"
+        # link += f"<a target='_blank' class='copy-link' href='https://{model.username}:{model.password}@{d}/{client_proxy_path}/#{model.name}'>{model.name} <i class='fa-solid fa-arrow-up-right-from-square'></i></a>"
         return Markup(extra+link)
 
     def _ul_formatter(view, context, model, name):
@@ -212,7 +212,7 @@ class UserAdmin(AdminLTEModelView):
         return True
 
     def inaccessible_callback(self, name, **kwargs):
-        return current_app.login_manager.unauthorized()  # type: ignore
+        return auth.redirect_to_login()  # type: ignore
 
     def on_form_prefill(self, form, id=None):
         # print("================",form._obj.start_date)

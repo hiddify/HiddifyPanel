@@ -7,6 +7,9 @@ from flask import g
 from hiddifypanel.panel.auth import login_required
 # Define a custom field type for the related domains
 
+from flask import current_app
+import hiddifypanel.panel.auth as auth
+
 
 class ProxyDetailsAdmin(AdminLTEModelView):
     column_hide_backrefs = True
@@ -34,4 +37,4 @@ class ProxyDetailsAdmin(AdminLTEModelView):
         return True
 
     def inaccessible_callback(self, name, **kwargs):
-        return current_app.login_manager.unauthorized()  # type: ignore
+        return auth.redirect_to_login()  # type: ignore

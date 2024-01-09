@@ -65,20 +65,24 @@ def all_configs():
 
     configs['hconfigs']['first_setup'] = def_user != None and len(sslip_domains) > 0
 
-    path = f'/{hconfig(ConfigEnum.proxy_path_admin)}/'
+    # path = f'/{hconfig(ConfigEnum.proxy_path_admin)}/l'
+    path = f'/{hconfig(ConfigEnum.proxy_path_admin)}/{AdminUser.get_super_admin_uuid()}/'
 
     server_ip = hutils.ip.get_ip(4)
     configs['admin_path'] = path
     owner = AdminUser.get_super_admin()
     configs['panel_links'] = []
-    configs['panel_links'].append(hutils.utils.add_basic_auth_to_url(f'http://{server_ip}{path}', owner.username, owner.password))
-    configs['panel_links'].append(hutils.utils.add_basic_auth_to_url(f'https://{server_ip}{path}', owner.username, owner.password))
+    # configs['panel_links'].append(hutils.utils.add_basic_auth_to_url(f'http://{server_ip}{path}', owner.username, owner.password))
+    configs['panel_links'].append(f'http://{server_ip}{path}')
+    # configs['panel_links'].append(hutils.utils.add_basic_auth_to_url(f'https://{server_ip}{path}', owner.username, owner.password))
+    configs['panel_links'].append(f'https://{server_ip}{path}')
     domains = get_panel_domains()
     # if not any([d for d in domains if 'sslip.io' not in d.domain]):
     #     configs['panel_links'].append(f"https://{server_ip}{path}")
 
     for d in domains:
-        configs['panel_links'].append(hutils.utils.add_basic_auth_to_url(f'https://{d.domain}{path}', owner.username, owner.password))
+        # configs['panel_links'].append(hutils.utils.add_basic_auth_to_url(f'https://{d.domain}{path}', owner.username, owner.password))
+        configs['panel_links'].append(f'https://{d.domain}{path}')
 
     print(json.dumps(configs, indent=4))
 
@@ -95,17 +99,21 @@ def admin_links():
 
     server_ip = hutils.ip.get_ip(4)
     owner = AdminUser.get_super_admin()
+
     proxy_path = hconfig(ConfigEnum.proxy_path_admin)
-    admin_links = f"Not Secure (do not use it - only if others not work):\n   {hutils.utils.add_basic_auth_to_url(f'http://{server_ip}/{proxy_path}/', owner.username, owner.password)}\n"
+    # admin_links = f"Not Secure (do not use it - only if others not work):\n   {hutils.utils.add_basic_auth_to_url(f'http://{server_ip}/{proxy_path}/', owner.username, owner.password)}\n"
+    admin_links = f"Not Secure (do not use it - only if others not work):\n   http://{server_ip}/{proxy_path}/{owner.uuid}/'\n"
 
     domains = get_panel_domains()
     admin_links += f"Secure:\n"
     if not any([d for d in domains if 'sslip.io' not in d.domain]):
-        admin_links += f"   (not signed) {hutils.utils.add_basic_auth_to_url(f'https://{server_ip}/{proxy_path}/', owner.username, owner.password)}\n"
+        # admin_links += f"   (not signed) {hutils.utils.add_basic_auth_to_url(f'https://{server_ip}/{proxy_path}/l', owner.username, owner.password)}\n"
+        admin_links += f"   (not signed) https://{server_ip}/{proxy_path}/{owner.uuid}\n"
 
     # domains=[*domains,f'{server_ip}.sslip.io']
     for d in domains:
-        admin_links += f"   {hutils.utils.add_basic_auth_to_url(f'https://{d.domain}/{proxy_path}/', owner.username, owner.password)}\n"
+        # admin_links += f"   {hutils.utils.add_basic_auth_to_url(f'https://{d.domain}/{proxy_path}/l', owner.username, owner.password)}\n"
+        admin_links += f"   https://{d.domain}/{proxy_path}/{owner.uuid}/\n"
 
     print(admin_links)
     return admin_links

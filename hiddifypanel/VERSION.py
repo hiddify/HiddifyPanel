@@ -1,3 +1,3 @@
+__version__='9.0.0.dev32'
 from datetime import datetime
-__version__ = 'X.X.X.devX'
-__release_date__ = datetime.strptime('2024-01-01', '%Y-%m-%d')
+__release_date__= datetime.strptime('2024-01-09','%Y-%m-%d')

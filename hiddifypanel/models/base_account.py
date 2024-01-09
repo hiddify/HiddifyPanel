@@ -97,9 +97,7 @@ class BaseAccount(db.Model, SerializerMixin, FlaskLoginUserMixin):  # type: igno
         from hiddifypanel.models.user import User
         from hiddifypanel.models.admin import AdminUser
         account = None
-        if cls.__subclasscheck__(User):
-            account = cls.query.filter(cls.uuid == uuid).first()
-        elif cls.__subclasscheck__(AdminUser):
+        if cls.__subclasscheck__(User) or cls.__subclasscheck__(AdminUser):
             account = cls.query.filter(cls.uuid == uuid).first()
 
         if not account and create:

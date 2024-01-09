@@ -213,8 +213,7 @@ class UserView(FlaskView):
         return self.auto_sub()
 
     def auto_sub(self):
-        ua = request.user_agent.string
-        if re.match('^Mozilla', ua, re.IGNORECASE):
+        if g.user_agent['is_browser']:
             return self.new()
         return self.get_proper_config() or self.all_configs(base64=True)
 
@@ -359,7 +358,7 @@ class UserView(FlaskView):
                                    ssh_client_version=hiddify.get_ssh_client_version(user), ssh_ip=hiddify.get_direct_host_or_ip(4), base64=False)
         return add_headers(resp, c)
 
-    @ route('/all.txt', methods=["GET", "HEAD"])
+    @route('/all.txt', methods=["GET", "HEAD"])
     @login_required(roles={Role.user})
     def all_configs(self, base64=False):
         mode = "new"  # request.args.get("mode")
@@ -381,36 +380,16 @@ class UserView(FlaskView):
             resp = do_base_64(resp)
         return add_headers(resp, c)
 
-    @ route('/manifest.webmanifest')
-    @login_required()
-    def create_pwa_manifest(self):
-
-        domain = urlparse(request.base_url).hostname
-        name = (domain if g.is_admin else g.user.name)
-        return jsonify({
-            "name": f"Hiddify {name}",
-            "short_name": f"{name}"[:12],
-            "theme_color": "#f2f4fb",
-            "background_color": "#1a1b21",
-            "display": "standalone",
-            "scope": f"/",
-            "start_url": f"https://{domain}"+url_for("admin.Dashboard:index" if g.is_admin else "client.UserView:new_1")+"?pwa=true",
-            "description": "Hiddify, for a free Internet",
-            "orientation": "any",
-            "icons": [
-                {
-                    "src": hiddify.static_url_for(filename='images/hiddify-dark.png'),
-                    "sizes": "512x512",
-                    "type": "image/png",
-                    "purpose": "maskable any"
-                }
-            ]
-        })
-
     @login_required(roles={Role.user})
     @ route("/offline.html")
     def offline():
         return f"Not Connected <a href='/{hconfig(ConfigEnum.proxy_path_client)}/'>click for reload</a>"
+
+    # backward compatiblity
+    @route("/admin/<path:path>")
+    @login_required()
+    def admin(self, path):
+        return ""
 
 
 def do_base_64(str):
@@ -440,7 +419,6 @@ def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
 
         if not db_domain:
             db_domain = DB(domain=domain, show_domains=[])
-            print("no domain")
             flash(_("This domain does not exist in the panel!" + domain))
 
         if mode == 'multi':
@@ -477,7 +455,7 @@ def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
                 d.cdn_ip and "MTN" in d.cdn_ip)
             d.cdn_ip = auto_ip_selector.get_clean_ip(
                 d.cdn_ip, d.mode == DomainType.auto_cdn_ip, default_asn)
-            print("autocdn ip mode ", d.cdn_ip)
+            # print("autocdn ip mode ", d.cdn_ip)
         if "*" in d.domain:
             d.domain = d.domain.replace("*", hiddify.get_random_string(5, 15))
 

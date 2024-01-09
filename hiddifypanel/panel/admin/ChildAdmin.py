@@ -8,6 +8,8 @@ from flask import Markup
 from hiddifypanel.panel.auth import login_required
 from hiddifypanel.panel import hiddify
 from hiddifypanel import hutils
+from flask import current_app
+import hiddifypanel.panel.auth as auth
 
 
 class ChildAdmin(AdminLTEModelView):
@@ -98,7 +100,7 @@ class ChildAdmin(AdminLTEModelView):
         if not hiddify.check_connection_for_domain(model.domain):
             raise ValidationError(
                 _("Domain is not correctly mapped to this server!"))
-        print(model.show_domains)
+        # print(model.show_domains)
         if len(model.show_domains) == Domain.query.count():
             model.show_domains = []
 
@@ -115,4 +117,4 @@ class ChildAdmin(AdminLTEModelView):
         return True
 
     def inaccessible_callback(self, name, **kwargs):
-        return current_app.login_manager.unauthorized()  # type: ignore
+        return auth.redirect_to_login()  # type: ignore

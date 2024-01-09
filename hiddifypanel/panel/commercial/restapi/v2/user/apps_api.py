@@ -72,7 +72,7 @@ class AppAPI(MethodView):
         super().__init__()
         self.hiddify_github_repo = 'https://github.com/hiddify'
 
-        self.user_panel_url = f"https://{urlparse(request.base_url).hostname}/{g.proxy_path}/"
+        self.user_panel_url = f"https://{urlparse(request.base_url).hostname}/{g.proxy_path}/{g.account.uuid}/"
         self.user_panel_encoded_url = quote_plus(self.user_panel_url)
         c = get_common_data(g.account.uuid, 'new')
         self.subscription_link_url = f"{self.user_panel_url}all.txt?name={c['db_domain'].alias or c['db_domain'].domain}-{c['asn']}&asn={c['asn']}&mode={c['mode']}"
@@ -378,7 +378,7 @@ class AppAPI(MethodView):
         dto.description = _('app.hiddify.next.description')
         dto.icon_url = self.__get_app_icon_url(_('app.hiddify.next.title'))
         dto.guide_url = 'https://www.youtube.com/watch?v=vUaA1AEUy1s'
-        dto.deeplink = f'hiddify://install-config/?url={self.user_panel_encoded_url}'
+        dto.deeplink = f'hiddify://import/{self.user_panel_url}'
 
         # availabe installatoin types
         installation_types = []

@@ -1,5 +1,6 @@
 import ipaddress
 from hiddifypanel.panel.auth import login_required
+import hiddifypanel.panel.auth as auth
 from hiddifypanel.models import *
 import re
 from flask import Markup
@@ -14,7 +15,7 @@ from hiddifypanel.panel import hiddify, cf_api, custom_widgets
 from .adminlte import AdminLTEModelView
 from hiddifypanel import hutils
 
-
+from flask import current_app
 # Define a custom field type for the related domains
 
 
@@ -142,7 +143,7 @@ class DomainAdmin(AdminLTEModelView):
                     raise ValidationError(_("You have used this domain in: ")+_(f"config.{c}.label"))
 
         for td in Domain.query.filter(Domain.mode == DomainType.reality, Domain.domain != model.domain).all():
-            print(td)
+            # print(td)
             if td.servernames and (model.domain in td.servernames.split(",")):
                 raise ValidationError(_("You have used this domain in: ")+_(f"config.reality_server_names.label")+" in " + td.domain)
 
@@ -289,7 +290,7 @@ class DomainAdmin(AdminLTEModelView):
         return True
 
     def inaccessible_callback(self, name, **kwargs):
-        return current_app.login_manager.unauthorized()  # type: ignore
+        return auth.redirect_to_login()  # type: ignore
 
     # def form_choices(self, field, *args, **kwargs):
     #     if field.type == "Enum":

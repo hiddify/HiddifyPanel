@@ -1,95 +1,62 @@
-from flask_login import LoginManager, current_user, user_accessed, user_logged_in,  COOKIE_NAME, AUTH_HEADER_NAME
-from flask import g, redirect, request, session
+from flask_login import LoginManager, current_user, user_accessed, user_logged_in,  COOKIE_NAME, AUTH_HEADER_NAME, logout_user
+from flask import g, redirect, request, session, url_for
 from flask_login.utils import _get_user
 from flask import current_app
 from functools import wraps
 from apiflask import abort
-
+from hiddifypanel.models import *
 from hiddifypanel.models import AdminUser, User, Role, AccountType
 import hiddifypanel.panel.hiddify as hiddify
 from hiddifypanel import hutils
 
+from werkzeug.local import LocalProxy
+current_account = LocalProxy(lambda: _get_user())
 
-class CustumLoginManager(LoginManager):
-    def _load_user(self):
-        if self._user_callback is None and self._request_callback is None:
-            raise Exception(
-                "Missing user_loader or request_loader. Refer to "
-                "http://flask-login.readthedocs.io/#how-it-works "
-                "for more info."
-            )
 
-        user_accessed.send(current_app._get_current_object())  # type: ignore
+def _get_user():
+    if not hasattr(g, "account"):
+        g.account = None
+    return g.account
 
-        # Check SESSION_PROTECTION
-        if self._session_protection_failed():
-            return self._update_request_context_with_user()
 
-        user = None
-
-        account_id = ''
-        # Load user from Flask Session
-        if hiddify.is_api_call(request.path):
-            if hiddify.is_user_api_call():
-                account_id = session.get("_user_id")
-            else:
-                account_id = session.get("_admin_id")
-        elif hiddify.is_user_panel_call():
-            account_id = session.get("_user_id")
-        else:
-            account_id = session.get("_admin_id")
-
-        if account_id is not None and self._user_callback is not None:
-            user = self._user_callback(account_id)
-
-        # Load user from Remember Me Cookie or Request Loader
-        if user is None:
-            config = current_app.config
-            cookie_name = config.get("REMEMBER_COOKIE_NAME", COOKIE_NAME)
-            header_name = config.get("AUTH_HEADER_NAME", AUTH_HEADER_NAME)
-            has_cookie = (
-                cookie_name in request.cookies and session.get("_remember") != "clear"
-            )
-            if has_cookie:
-                cookie = request.cookies[cookie_name]
-                user = self._load_user_from_remember_cookie(cookie)
-            elif self._request_callback:
-                user = self._load_user_from_request(request)
-            elif header_name in request.headers:
-                header = request.headers[header_name]
-                user = self._load_user_from_header(header)
-
-        return self._update_request_context_with_user(user)
+def logout_user():
+    g.account = None
+    if '_user_id' in session:
+        session.pop('_user_id')
+    if '_admin_id' in session:
+        session.pop('_admin_id')
 
 
 def login_user(user: AdminUser | User, remember=False, duration=None, force=False, fresh=True):
-    if not force and not user.is_active:
+    g.account = user
+    if not user.is_active:
         return False
 
-    account_id = getattr(user, current_app.login_manager.id_attribute)()  # type: ignore
+    account_id = user.get_id()  # type: ignore
+    # print('account_id', account_id)
     if user.role in {Role.super_admin, Role.admin, Role.agent}:
         session["_admin_id"] = account_id
     else:
         session["_user_id"] = account_id
-    session["_fresh"] = fresh
-    session["_id"] = current_app.login_manager._session_identifier_generator()  # type: ignore
+    # session["_fresh"] = fresh
+    # session["_id"] = current_app.login_manager._session_identifier_generator()  # type: ignore
 
-    if remember:
-        session["_remember"] = "set"
-        if duration is not None:
-            try:
-                # equal to timedelta.total_seconds() but works with Python 2.6
-                session["_remember_seconds"] = (
-                    duration.microseconds
-                    + (duration.seconds + duration.days * 24 * 3600) * 10**6
-                ) / 10.0**6
-            except AttributeError as e:
-                raise Exception(
-                    f"duration must be a datetime.timedelta, instead got: {duration}"
-                ) from e
+    # if remember:
+    #     session["_remember"] = "set"
+    #     if duration is not None:
+    #         try:
+    #             # equal to timedelta.total_seconds() but works with Python 2.6
+    #             session["_remember_seconds"] = (
+    #                 duration.microseconds
+    #                 + (duration.seconds + duration.days * 24 * 3600) * 10**6
+    #             ) / 10.0**6
+    #         except AttributeError as e:
+    #             raise Exception(
+    #                 f"duration must be a datetime.timedelta, instead got: {duration}"
+    #             ) from e
 
-    current_app.login_manager._update_request_context_with_user(user)  # type: ignore
-    user_logged_in.send(current_app._get_current_object(), user=_get_user())  # type: ignore
+    # current_app.login_manager._update_request_context_with_user(user)  # type: ignore
+    # user_logged_in.send(current_app._get_current_object(), user=_get_user())  # type: ignore
     return True
 
 
@@ -97,86 +64,125 @@ def login_required(roles: set[Role] | None = None):
     def wrapper(fn):
         @wraps(fn)
         def decorated_view(*args, **kwargs):
-            if not current_user.is_authenticated:
-                return current_app.login_manager.unauthorized()  # type: ignore
+            # print('xxxx', current_account)
+            if not current_account:
+                return redirect_to_login()  # type: ignore
             if roles:
-                account_role = current_user.role
+                account_role = current_account.role
                 if account_role not in roles:
-                    return current_app.login_manager.unauthorized()  # type: ignore
+                    return redirect_to_login()  # type: ignore
             return fn(*args, **kwargs)
         return decorated_view
     return wrapper
 
 
+def get_account_by_api_key(api_key, is_admin):
+    # return AdminUser.by_uuid(api_key) if is_admin else User.by_uuid(api_key)
+    # api_key equals uuid for now
+    return get_account_by_uuid(api_key, is_admin)
+
+
+def get_account_by_uuid(uuid, is_admin):
+    return AdminUser.by_uuid(f'{uuid}') if is_admin else User.by_uuid(f'{uuid}')
+
+
+def login_by_uuid(uuid):
+    is_admin = g.proxy_path == hconfig(ConfigEnum.proxy_path_admin)
+    account = get_account_by_uuid(uuid, is_admin)
+    if not account:
+        return False
+    return login_user(account, force=True)
+
+
 def init_app(app):
-    # login_manager = LoginManager()
-    login_manager = CustumLoginManager()
-    login_manager.init_app(app)
+    # login_manager = LoginManager.()
+    # login_manager = CustumLoginManager()
+    # login_manager.init_app(app)
 
-    @login_manager.user_loader
-    def cookie_auth(id: str) -> User | AdminUser | None:
-        if not hiddify.is_api_call(request.path):
-            # if request.headers.get("Authorization"):
-            #     return header_auth(request)
-            # for handle new login
-            if hiddify.is_login_call():
-                return header_auth(request)
-
-        # parse id
-        acc_type, id = hutils.utils.parse_login_id(id)  # type: ignore
-        if not acc_type or not id:
-            return
-
-        if acc_type == AccountType.admin:
-            account = AdminUser.query.filter(AdminUser.id == id).first()
-        else:
-            account = User.query.filter(User.id == id).first()
-
-        if account:
-            g.account = account
-            # g.account_uuid = account.uuid
-            g.is_admin = hiddify.is_admin_role(account.role)
-        return account
-
-    @login_manager.request_loader
-    def header_auth(request) -> User | AdminUser | None:
-        auth_header: str = request.headers.get("Authorization")
-        if not auth_header:
-            return
-
+    @app.before_request
+    def auth():
+        # print("before_request")
         account = None
-        is_api_call = False
 
-        if hiddify.is_api_call(request.path):
-            if apikey := hutils.utils.get_apikey_from_auth_header(auth_header):
-                account = User.by_uuid(apikey) or AdminUser.by_uuid(apikey)
-                is_api_call = True
-        else:
-            if username_password := hutils.utils.parse_basic_auth_header(auth_header):
-                uname = username_password[0]
-                pword = username_password[1]
-                if hiddify.is_login_call():
-                    account = AdminUser.by_username_password(uname, pword) if hiddify.is_admin_proxy_path() else User.by_username_password(uname, pword)
-                elif hiddify.is_admin_panel_call():
-                    account = AdminUser.by_username_password(uname, pword)
-                elif hiddify.is_user_panel_call():
-                    account = User.by_username_password(uname, pword)
+        is_admin_path = g.proxy_path == hconfig(ConfigEnum.proxy_path_admin)  # hiddify.is_admin_proxy_path()
+        next_url = None
+
+        if g.uuid:
+            # print("uuid", g.uuid)
+            account = get_account_by_uuid(g.uuid, is_admin_path)
+            if not account:
+                return logout_redirect()
+
+            next_url = request.url.replace(f'/{g.uuid}/', '/admin/' if is_admin_path else '/client/').replace("/admin/admin/", '/admin/')
+
+        elif auth_header := request.headers.get("Hiddify_API_KEY"):
+            # print("auth_header", auth_header)
+            apikey = hutils.utils.get_apikey_from_auth_header(auth_header)
+            account = get_account_by_api_key(apikey, is_admin_path)
+            if not account:
+                return logout_redirect()
+        elif request.authorization:
+            # print('request.authorization', request.authorization)
+            uname = request.authorization.username
+            pword = request.authorization.password
+            if not pword:
+                # print("NO PASSWORD so it is uuid")
+                account = get_account_by_uuid(uname, is_admin_path)
+            else:
+                account = AdminUser.by_username_password(uname, pword) if is_admin_path else User.by_username_password(uname, pword)
+            if not account:
+                return logout_redirect()
+
+        elif (session_user := session.get('_user_id')) and not is_admin_path:
+            print('session_user', session_user)
+            account = User.by_id(int(session_user.split("_")[1]))  # type: ignore
+            if not account:
+                return logout_redirect()
+        elif (session_admin := session.get('_admin_id')) and is_admin_path:
+            print('session_admin', session_admin)
+            account = AdminUser.by_id(int(session_admin.split("_")[1]))  # type: ignore
+            if not account:
+                return logout_redirect()
 
         if account:
             g.account = account
             # g.account_uuid = account.uuid
             g.is_admin = hiddify.is_admin_role(account.role)  # type: ignore
-            if not is_api_call:
-                login_user(account)
+            login_user(account, force=True)
+            # print("loggining in")
+            if next_url is not None and g.user_agent['is_browser']:
+                return redirect(next_url)
 
-        return account
+    @app.url_value_preprocessor
+    def pull_secret_code(endpoint, values):
+        # print("url_value_preprocessor")
+        g.uuid = None
+        g.proxy_path = None
+        # print(values)
+        if values:
+            g.proxy_path = values.pop('proxy_path', None)
+            if 'secret_uuid' in values:
+                g.uuid = values.pop('secret_uuid', None)
+    # @login_manager.user_loader
 
-    @login_manager.unauthorized_handler
-    def unauthorized():
-        # TODO: show the login page
-        # return request.base_url
-        if g.user_agent.browser:
-            return redirect(f'/{request.path.split("/")[1]}/?force=1&redirect={request.path}')
-        else:
-            abort(401, "Unauthorized")
-        # return f'/{request.path.split("/")[1]}/?force=1&redirect={request.path}'
+    # @login_manager.unauthorized_handler
+
+
+def logout_redirect():
+    print(f"Incorrect user {current_account}.... loggining out")
+    logout_user()
+    return redirect_to_login()
+
+
+def redirect_to_login():
+    # TODO: show the login page
+    # return request.base_url
+    # if g.user_agent['is_browser']:
+    # return redirect(url_for('common_bp.LoginView:basic_0', force=1, next=request.path))
+    return redirect(url_for('common_bp.LoginView:index', force=1, next=request.path))
+
+    # else:
+    #     abort(401, "Unauthorized")
+    # return f'/{request.path.split("/")[1]}/?force=1&redirect={request.path}'
+
+# @login_manager.request_loader

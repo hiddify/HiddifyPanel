@@ -136,7 +136,7 @@ def json_to_time(time_str):
 
 
 def flash(message, category):
-    print(message)
+    # print(message)
     return flask_flash(Markup(message), category)
 
 

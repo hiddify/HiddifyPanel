@@ -5,7 +5,7 @@ from apiflask.fields import Dict
 from apiflask import Schema
 from hiddifypanel.models.usage import DailyUsage
 from hiddifypanel.panel.auth import login_required
-from hiddifypanel.models.role import Role
+from hiddifypanel.models import Role, DailyUsage
 from hiddifypanel.panel import hiddify
 
 

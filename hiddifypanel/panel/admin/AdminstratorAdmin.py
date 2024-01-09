@@ -1,4 +1,5 @@
 from hiddifypanel.panel.auth import login_required
+import hiddifypanel.panel.auth as auth
 from wtforms.validators import Regexp
 from hiddifypanel.models import *
 from wtforms.validators import Regexp, ValidationError
@@ -10,6 +11,7 @@ from flask import Markup, current_app
 from flask import g
 import datetime
 from wtforms import SelectField
+import hiddifypanel.panel.auth as auth
 
 
 class AdminModeField(SelectField):
@@ -90,7 +92,9 @@ class AdminstratorAdmin(AdminLTEModelView):
         admin_proxy_path = hconfig(ConfigEnum.proxy_path_admin)
         d = get_panel_domains()[0]
         if d:
-            link = f"<a target='_blank' href='https://{model.username}:{model.password}@{d}/{admin_proxy_path}/#{model.name}'>{model.name} <i class='fa-solid fa-arrow-up-right-from-square'></i></a>"
+            # link = f"<a target='_blank' href='https://{model.username}:{model.password}@{d}/{admin_proxy_path}/#{model.name}'>{model.name} <i class='fa-solid fa-arrow-up-right-from-square'></i></a>"
+            href = f'https://{d}/{admin_proxy_path}/{model.uuid}/#{model.name}'
+            link = f"<a target='_blank' class='copy-link' data-copy='{href}' href='{href}'>{model.name} <i class='fa-solid fa-arrow-up-right-from-square'></i></a>"
             if model.parent_admin:
                 return Markup(model.parent_admin.name + "&rlm;&lrm; / &rlm;&lrm;"+link)
             return Markup(link)
@@ -169,7 +173,7 @@ class AdminstratorAdmin(AdminLTEModelView):
         return True
 
     def inaccessible_callback(self, name, **kwargs):
-        return current_app.login_manager.unauthorized()  # type: ignore
+        return auth.redirect_to_login()  # type: ignore
 
     def get_query(self):
         # Get the base query

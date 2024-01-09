@@ -1,4 +1,5 @@
 import traceback
+import re
 import user_agents
 from flask import render_template, request, jsonify, redirect
 from flask import g, send_from_directory, session
@@ -96,19 +97,11 @@ def init_app(app: APIFlask):
     #                 #     parameter['schema'] = {'type': 'string', 'default': g.account_uuid}
     #     return spec
 
-    @app.url_value_preprocessor
-    def pull_secret_code(endpoint, values):
-        # just remove proxy_path
-        # by doing that we don't need to get proxy_path in every view function, we have it in g.proxy_path. it's done in base_middleware function
-        if values:
-            values.pop('proxy_path', None)
-            # values.pop('admin_uuid', None)
-
     @app.url_defaults
     def add_proxy_path_user(endpoint, values):
         if 'proxy_path' not in values:
 
-            if isinstance(g.account, AdminUser):
+            if hasattr(g, 'account') and isinstance(g.account, AdminUser):
                 values['proxy_path'] = hconfig(ConfigEnum.proxy_path_admin)
             # elif 'static' in endpoint:
             #     values['proxy_path'] = hconfig(ConfigEnum.proxy_path)
@@ -119,6 +112,8 @@ def init_app(app: APIFlask):
 
         if hiddify.is_api_v1_call(endpoint=endpoint) and 'admin_uuid' not in values:
             values['admin_uuid'] = AdminUser.get_super_admin_uuid()
+        # if 'secret_uuid' not in values:
+        #     values['secret_uuid'] = AdminUser.get_super_admin_uuid()
 
     @app.route("/<proxy_path>/videos/<file>")
     @app.doc(hide=True)
@@ -131,50 +126,51 @@ def init_app(app: APIFlask):
     #     diff=datetime.datetime.now()-value
     #     return format_timedelta(diff, add_direction=True, locale=hconfig(ConfigEnum.lang))
 
+    # @app.before_request
+    # def backward_compatibility_middleware():
+    #     # get needed variables
+    #     g.user_agent_old = user_agent = user_agents.parse(request.user_agent.string)
+
+    #     proxy_path = hiddify.get_proxy_path_from_url(request.url)
+    #     if not proxy_path:
+    #         abort(400, "invalid")
+
+    #     # get proxy paths
+    #     deprecated_proxy_path = hconfig(ConfigEnum.proxy_path)
+    #     if proxy_path != deprecated_proxy_path:
+    #         return
+
+    #     if user_agent.is_bot:
+    #         abort(400, "invalid")
+
+    #     uuid = hutils.utils.get_uuid_from_url_path(request.path)
+    #     account = User.by_uuid(uuid) or AdminUser.by_uuid(uuid) or abort(400, 'invalid request2')
+
+    #     admin_proxy_path = hconfig(ConfigEnum.proxy_path_admin)
+    #     client_proxy_path = hconfig(ConfigEnum.proxy_path_client)
+
+    #     new_link = ''
+
+    #     # handle deprecated proxy path
+    #     new_link = f"https://{request.host}"
+    #     if hiddify.is_admin_panel_call(deprecated_format=True):
+    #         new_link += request.path.replace(f"{proxy_path}/{uuid}/admin/", f'{admin_proxy_path}/admin/')
+    #     elif hiddify.is_user_panel_call(deprecated_format=True):
+    #         new_link += request.path.replace(f"{proxy_path}/{uuid}/", f'{client_proxy_path}/client/')
+    #     else:
+    #         return abort(400, 'invalid request 1')
+
+    #     new_link = hutils.utils.add_basic_auth_to_url(new_link, account.username, account.password)
+
+    #     if user_agent.browser:
+    #         return render_template('redirect_to_new_format.html', new_link=new_link)
+
+    #     auth.login_user(account)
+    #     # return new_link
+    #     return redirect(new_link, 302)
     @app.before_request
-    def backward_compatibility_middleware():
-        # get needed variables
-
-        proxy_path = hiddify.get_proxy_path_from_url(request.url)
-        if not proxy_path:
-            abort(400, "invalid")
-
-        # get proxy paths
-        deprecated_proxy_path = hconfig(ConfigEnum.proxy_path)
-        if proxy_path != deprecated_proxy_path:
-            return
-
-        user_agent = user_agents.parse(request.user_agent.string)
-        # need this variable in redirect_to_new_format view
-        g.user_agent = user_agent
-        if user_agent.is_bot:
-            abort(400, "invalid")
-
-        uuid = hutils.utils.get_uuid_from_url_path(request.path)
-        account = User.by_uuid(uuid) or AdminUser.by_uuid(uuid) or abort(400, 'invalid request2')
-
-        admin_proxy_path = hconfig(ConfigEnum.proxy_path_admin)
-        client_proxy_path = hconfig(ConfigEnum.proxy_path_client)
-
-        new_link = ''
-
-        # handle deprecated proxy path
-        new_link = f"https://{request.host}"
-        if hiddify.is_admin_panel_call(deprecated_format=True):
-            new_link += request.path.replace(f"{proxy_path}/{uuid}/admin/", f'{admin_proxy_path}/admin/')
-        elif hiddify.is_user_panel_call(deprecated_format=True):
-            new_link += request.path.replace(f"{proxy_path}/{uuid}/", f'{client_proxy_path}/client/')
-        else:
-            return abort(400, 'invalid request 1')
-
-        new_link = hutils.utils.add_basic_auth_to_url(new_link, account.username, account.password)
-
-        if user_agent.browser:
-            return render_template('redirect_to_new_format.html', new_link=new_link)
-
-        auth.login_user(account)
-        # return new_link
-        return redirect(new_link, 302)
+    def set_default_values():
+        g.user_agent = hiddify.get_user_agent()
 
     @app.before_request
     def base_middleware():
@@ -182,8 +178,8 @@ def init_app(app: APIFlask):
             return
 
         # validate request made by human (just check user agent, there's no capcha)
-        g.user_agent = user_agents.parse(request.user_agent.string)
-        if g.user_agent.is_bot:
+        # g.user_agent_old = user_agents.parse(request.user_agent.string)
+        if g.user_agent['is_bot']:
             abort(400, "invalid")
 
         # validate proxy path
@@ -226,14 +222,13 @@ def init_app(app: APIFlask):
             'os_details': f'{platform()}',
             'user_agent': 'Unknown'
         }
-        if hasattr(g, 'user_agent') and str(g.user_agent):
-            details['user_agent'] = g.user_agent.ua_string
+        details['user_agent'] = request.user_agent
         return details
 
     def generate_github_issue_link_for_500_error(error, traceback, remove_sensetive_data=True, remove_unrelated_traceback_datails=True):
 
         def remove_sensetive_data_from_github_issue_link(issue_link):
-            if hasattr(g, 'acount') and hasattr(g.account, 'uuid') and g.account.uuid:
+            if hasattr(g, 'account') and hasattr(g.account, 'uuid') and g.account.uuid:
                 issue_link.replace(f'{g.account.uuid}', '*******************')
             deprecated_proxy_path = hconfig(ConfigEnum.proxy_path)
             admin_proxy_path = hconfig(ConfigEnum.proxy_path_admin)

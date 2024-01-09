@@ -206,11 +206,13 @@ def is_admin_home_call() -> bool:
 
 
 def is_login_call() -> bool:
-    base_path = f'{request.host}'
-    requested_url = f'{request.host}{request.path}'
-    if requested_url == f'{base_path}/{hconfig(ConfigEnum.proxy_path_admin)}/' or requested_url == f'{base_path}/{hconfig(ConfigEnum.proxy_path_client)}/':
-        return True
-    return False
+    # print(request.blueprint)
+    return request.blueprint == 'common_bp'
+    # base_path = f'{request.host}'
+    # requested_url = f'{request.host}{request.path}'
+    # if requested_url == f'{base_path}/{hconfig(ConfigEnum.proxy_path_admin)}/' or requested_url == f'{base_path}/{hconfig(ConfigEnum.proxy_path_client)}/':
+    #     return True
+    # return False
 
 
 def is_admin_role(role: Role):
@@ -220,11 +222,13 @@ def is_admin_role(role: Role):
 
 
 def is_admin_proxy_path() -> bool:
-    return get_proxy_path_from_url(request.url) == hconfig(ConfigEnum.proxy_path_admin)
+    proxy_path = g.get('proxy_path', None) or get_proxy_path_from_url(request.url)
+    return proxy_path == hconfig(ConfigEnum.proxy_path_admin)
 
 
 def is_client_proxy_path() -> bool:
-    return get_proxy_path_from_url(request.url) == hconfig(ConfigEnum.proxy_path_client)
+    proxy_path = g.get('proxy_path', None) or get_proxy_path_from_url(request.url)
+    return proxy_path == hconfig(ConfigEnum.proxy_path_client)
 
 
 def proxy_path_validator(proxy_path):
@@ -242,12 +246,12 @@ def proxy_path_validator(proxy_path):
         return
 
     if proxy_path not in [admin_proxy_path, deprecated_path, client_proxy_path]:
-        return apiflask_abort(400, Markup(f"Invalid Proxy Path <a href=/{admin_proxy_path}/admin>Admin Panel</a>")) if dbg_mode else abort(400, 'invalid request')
+        abort(400, 'invalid request')
 
-    if is_admin_panel_call() and proxy_path not in admin_proxy_path:
-        return apiflask_abort(400, Markup(f"Invalid Proxy Path <a href=/{admin_proxy_path}/admin>Admin Panel</a>")) if dbg_mode else abort(400, 'invalid request')
+    if is_admin_panel_call() and proxy_path != admin_proxy_path:
+        abort(400, 'invalid request')
     if is_user_panel_call() and proxy_path != client_proxy_path:
-        return apiflask_abort(400, Markup(f"Invalid Proxy Path <a href=/{client_proxy_path}/admin>User Panel</a>")) if dbg_mode else abort(400, 'invalid request')
+        abort(400, 'invalid request')
 
     if is_api_call(request.path):
         if is_admin_api_call() and proxy_path != admin_proxy_path:
@@ -377,9 +381,10 @@ def get_user_link(uuid, domain, mode='', username=''):
     if "*" in d:
         d = d.replace("*", get_random_string(5, 15))
     proxy_path = hconfig(ConfigEnum.proxy_path_admin) if mode == 'admin' else hconfig(ConfigEnum.proxy_path_client)
-    account = AdminUser.query.filter(AdminUser.uuid == uuid).first() if mode == 'admin' else User.query.filter(User.uuid == uuid).first()
-    link = f"https://{account.username}:{account.password}@{d}/{proxy_path}/admin/#{username}" if mode == 'admin' else f"https://{account.username}:{account.password}@{d}/{proxy_path}/#{username}"
-    link_multi = f"{link}multi"
+    # account = AdminUser.query.filter(AdminUser.uuid == uuid).first() if mode == 'admin' else User.query.filter(User.uuid == uuid).first()
+    # link = f"https://{account.username}:{account.password}@{d}/{proxy_path}/admin/#{username}" if mode == 'admin' else f"https://{account.username}:{account.password}@{d}/{proxy_path}/#{username}"
+    link = f"https://{d}/{proxy_path}/{uuid}/#{username}"
+
     # if mode == 'new':
     #     link = f"{link}new"
     text = domain.alias or domain.domain
@@ -390,12 +395,8 @@ def get_user_link(uuid, domain, mode='', username=''):
         color_cls = "success" if auto_cdn else 'warning'
         text = f'<span class="badge badge-secondary" >{"Auto" if auto_cdn else "CDN"}</span> '+text
 
-    if mode == "multi":
-        res += f"<a class='btn btn-xs btn-secondary' target='_blank' href='{link_multi}' >{_('all')}</a>"
-    res += f"<a target='_blank' href='{link}' class='btn btn-xs btn-{color_cls} ltr' ><i class='fa-solid fa-arrow-up-right-from-square d-none'></i> {text}</a>"
+    res += f"<a target='_blank' data-copy='{link}' href='{link}' class='btn btn-xs btn-{color_cls} ltr copy-link' ><i class='fa-solid fa-arrow-up-right-from-square d-none'></i> {text}</a>"
 
-    if mode == "multi":
-        res += "</div>"
     return res
 
 
@@ -845,13 +846,20 @@ def do_base_64(str):
 
 
 def get_user_agent():
-    return __parse_user_agent(request.user_agent.string)
+    ua= __parse_user_agent(request.user_agent.string)
+
+    if 'is_bot' not in ua:
+        __parse_user_agent.invalidate_all()
+        ua= __parse_user_agent(request.user_agent.string)
+        
+    return ua
 
 
 @cache.cache()
 def __parse_user_agent(ua):
     uaa = user_agents.parse(request.user_agent.string)
     res = {}
+    res["is_bot"] = uaa.is_bot
     res["is_browser"] = re.match('^Mozilla', ua, re.IGNORECASE) and True
     res['os'] = uaa.os.family
     res['os_version'] = uaa.os.version
@@ -859,7 +867,10 @@ def __parse_user_agent(ua):
     res['is_clash_meta'] = re.match('^(Clash-verge|Clash-?Meta|Stash|NekoBox|NekoRay|Pharos|hiddify-desktop)', ua, re.IGNORECASE) and True
     res['is_singbox'] = re.match('^(HiddifyNext|Dart|SFI|SFA)', ua, re.IGNORECASE) and True
     if (res['is_singbox']):
-        res['singbox_version'] = (1, 4, 0)
+        res['singbox_version'] = (1, 8, 0)
+        if re.match('^(SFI|SFA).*1\.[1-7]\.', ua, re.IGNORECASE):
+            res['singbox_version'] = (1, 7, 0)
+
     res['is_hiddify'] = re.match('^(HiddifyNext)', ua, re.IGNORECASE) and True
     if ['is_hiddify']:
         res['hiddify_version'] = uaa
