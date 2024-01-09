@@ -121,11 +121,14 @@ def init_app(app):
             account = get_account_by_api_key(apikey, is_admin_path)
             if not account:
                 return logout_redirect()
-        elif 0 and request.authorization:
+        elif request.authorization:
             # print('request.authorization' , request.authorization)
             uname = request.authorization.username
             pword = request.authorization.password
-            account = AdminUser.by_username_password(uname, pword) if is_admin_path else User.by_username_password(uname, pword)
+            if not pword:
+                account = get_account_by_uuid(g.uuid, is_admin_path)
+            else:
+                account = AdminUser.by_username_password(uname, pword) if is_admin_path else User.by_username_password(uname, pword)
             if not account:
                 return logout_redirect()
 
