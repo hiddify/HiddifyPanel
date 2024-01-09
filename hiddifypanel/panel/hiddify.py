@@ -909,7 +909,7 @@ def get_account_panel_link(account: BaseAccount, host: str, is_https: bool = Tru
         link = "https://" if is_https else "http://"
         if basic_auth:
             link += f'{account.uuid}@'
-        link += host
+        link += str(host)
     proxy_path = hconfig(ConfigEnum.proxy_path_admin, child_id) if isinstance(account, AdminUser) else hconfig(ConfigEnum.proxy_path_client, child_id)
     link += f'/{proxy_path}/'
     if not basic_auth:
