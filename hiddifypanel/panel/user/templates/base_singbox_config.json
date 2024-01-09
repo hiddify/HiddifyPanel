@@ -1,5 +1,5 @@
-{% set V1_7= g.user_agent['is_singbox'] and g.user_agent['singbox_version'][0]==1 and g.user_agent['singbox_version'][1]<8 %}
 {
+    {% set V1_7= g.user_agent['is_singbox'] and g.user_agent['singbox_version'][0]==1 and g.user_agent['singbox_version'][1]<8 %}
     "outbounds": [
         {
             "tag": "direct",
@@ -16,8 +16,7 @@
         {
             "tag": "dns-out",
             "type": "dns"
-        }
-    ],
+        }],
     "route": {
         "auto_detect_interface": true,
         "override_android_vpn": true,

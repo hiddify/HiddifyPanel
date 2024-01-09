@@ -41,9 +41,12 @@ class UserView(FlaskView):
         return self.get_proper_config() or self.all_configs(base64=False)
 
     def get_proper_config(self):
-        ua = request.user_agent.string
-        if re.match('^Mozilla', ua, re.IGNORECASE):
+        if g.user_agent['is_browser']:
             return None
+        if g.user_agent['is_singbox'] or re.match('^(HiddifyNext|Dart|SFI|SFA)', ua, re.IGNORECASE):
+            return self.full_singbox()
+        ua = request.user_agent.string
+
         if re.match('^(Clash-verge|Clash-?Meta|Stash|NekoBox|NekoRay|Pharos|hiddify-desktop)', ua, re.IGNORECASE):
             return self.clash_config(meta_or_normal="meta")
         if re.match('^(Clash|Stash)', ua, re.IGNORECASE):
@@ -51,8 +54,6 @@ class UserView(FlaskView):
 
         # if 'HiddifyNext' in ua or 'Dart' in ua:
         #     return self.clash_config(meta_or_normal="meta")
-        if re.match('^(HiddifyNext|Dart|SFI|SFA)', ua, re.IGNORECASE):
-            return self.full_singbox()
 
         # if any([p in ua for p in ['FoXray', 'HiddifyNG','Fair%20VPN' ,'v2rayNG', 'SagerNet']]):
         if re.match('^(Hiddify|FoXray|Fair|v2rayNG|SagerNet|Shadowrocket|V2Box|Loon|Liberty)', ua, re.IGNORECASE):
@@ -148,6 +149,7 @@ class UserView(FlaskView):
             resp = ""
         else:
             resp = link_maker.make_full_singbox_config(**c)
+
         return add_headers(resp, c)
 
     @ route('/singbox.json', methods=["GET", "HEAD"])
@@ -163,6 +165,7 @@ class UserView(FlaskView):
         else:
             resp = render_template('singbox_config.json', **c, host_keys=hiddify.get_hostkeys(True),
                                    ssh_client_version=hiddify.get_ssh_client_version(user), ssh_ip=hiddify.get_direct_host_or_ip(4), base64=False)
+
         return add_headers(resp, c)
 
     @route('/all.txt', methods=["GET", "HEAD"])
