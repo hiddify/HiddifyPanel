@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPT\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-09 11:40+0100\n"
-"PO-Revision-Date: 2024-01-09 02:51-0600\n"
+"POT-Creation-Date: 2024-01-09 12:37+0100\n"
+"PO-Revision-Date: 2024-01-09 04:40-0600\n"
 "Last-Translator: lymanrudni\n"
 "Language: pt\n"
 "Language-Team: Portuguese\n"
@@ -24,7 +24,7 @@ msgstr ""
 "administrador"
 
 # | msgid "This Domain does not exist in the Panel !"
-#: hiddifypanel/models/domain.py:161 hiddifypanel/panel/user/user.py:233
+#: hiddifypanel/models/domain.py:161 hiddifypanel/panel/user/user.py:228
 msgid "This domain does not exist in the panel!"
 msgstr "Este Domínio não existe no Painel!"
 
@@ -3219,17 +3219,6 @@ msgstr "Ocultar"
 msgid "📅%(expire_days)s days"
 msgstr "📅Remanescem: %(expire_days)s dias"
 
-# | msgid ""
-# | "Please open this link in a browser; it will expire in 5 minutes for
-# security"
-# | " reasons."
-#: hiddifypanel/panel/user/user.py:28
-#, fuzzy
-msgid "This link will expire in 5 minutes"
-msgstr ""
-"Abra este link em um navegador; ele expirará em 5 minutos por motivos de "
-"segurança."
-
 # | msgid "Copy"
 #: hiddifypanel/panel/user/templates/home/doh.html:8
 #: hiddifypanel/panel/user/templates/redirect_to_new_format.html:8
@@ -5233,6 +5222,16 @@ msgstr "Ações"
 #~ "Download\n"
 #~ "                                    App"
 #~ msgstr "<i class=\"fa-solid fa-download\"></i> Baixar aplicativo"
+
+# | msgid ""
+# | "Please open this link in a browser; it will expire in 5 minutes for
+# security"
+# | " reasons."
+#~ msgid "This link will expire in 5 minutes"
+#~ msgstr ""
+#~ "Abra este link em um navegador; "
+#~ "ele expirará em 5 minutos por "
+#~ "motivos de segurança."
 
 #~ msgid ""
 #~ "If the application do not open "

@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-09 11:40+0100\n"
-"PO-Revision-Date: 2024-01-09 09:51+0100\n"
+"POT-Creation-Date: 2024-01-09 12:37+0100\n"
+"PO-Revision-Date: 2024-01-09 04:40-0600\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -20,7 +20,7 @@ msgid "Error! auto cdn ip can not be find, please contact admin."
 msgstr "Error In Auto CDN IP! It Can Not Be Find, Please Contact Admin"
 
 # | msgid "This Domain does not exist in the Panel !"
-#: hiddifypanel/models/domain.py:161 hiddifypanel/panel/user/user.py:233
+#: hiddifypanel/models/domain.py:161 hiddifypanel/panel/user/user.py:228
 msgid "This domain does not exist in the panel!"
 msgstr "This Domain does not exist in the Panel !"
 
@@ -2848,15 +2848,6 @@ msgstr "Hiddify"
 msgid "📅%(expire_days)s days"
 msgstr "📅%(expire_days)s Days Remain"
 
-# | msgid ""
-# | "Please open this link in a browser; it will expire in 5 minutes for "
-# | "security reasons."
-#: hiddifypanel/panel/user/user.py:28
-msgid "This link will expire in 5 minutes"
-msgstr ""
-"Please open this link in a browser; it will expire in 5 minutes for security"
-" reasons."
-
 # | msgid "Copy"
 #: hiddifypanel/panel/user/templates/home/doh.html:8
 #: hiddifypanel/panel/user/templates/redirect_to_new_format.html:8
@@ -4869,6 +4860,14 @@ msgstr "Actions"
 #~ "Download\n"
 #~ "                                    App"
 #~ msgstr "<i class=\"fa-solid fa-download\"></i>  Download App"
+
+# | msgid ""
+# | "Please open this link in a browser; it will expire in 5 minutes for "
+# | "security reasons."
+#~ msgid "This link will expire in 5 minutes"
+#~ msgstr ""
+#~ "Please open this link in a browser; it will expire in 5 minutes for security"
+#~ " reasons."
 
 # | msgid ""
 # | "✔️ The Proxy link is copied\n"

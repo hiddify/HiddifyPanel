@@ -89,6 +89,8 @@
 
 #### Changes
 
+* Allow backward compatibility. 
+
 * Refactor proxy model. 
 
 * Refactor DailyUsage model. 
@@ -192,6 +194,10 @@
 * Update hiddify next download link. 
 
 #### Fix
+
+* Bug in singbox config. 
+
+* Limited length of username and password. 
 
 * Issue in updating ua. 
 
