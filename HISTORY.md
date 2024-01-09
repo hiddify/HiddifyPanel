@@ -5,6 +5,52 @@
 
 #### New
 
+* Handle singbox v1.8 and v1.7. 
+
+* Add insert secret code. 
+
+* Add full backward compatiblity. 
+
+* Add login page. 
+
+* Use slugify. 
+
+* Base class for admin and user models. 
+
+* Check permission for AdminUserApi. 
+
+* Check permission for AdminUsersApi. 
+
+* Account atuhentication approach. 
+
+* Implement custom flask-login for - seperate storing account id in session. 
+
+* Handle new proxy paths (test) 
+
+* Add login_required to user's apis. 
+
+* Redirect old apis url to new url. 
+
+* Use log api for getting logs. 
+
+* JS to get logs files in result.html. 
+
+* Auth.login_required (supports roles) 
+
+* Better handling user change. 
+
+* Add stars. 
+
+* Better exception handling. 
+
+* Add license to api. 
+
+* Add user v2 API. 
+
+* Add link to api. 
+
+* Add api v2. 
+
 * Fix quick stup stuck after restore backup. 
 
 * Add last version of release and beta in make. 
@@ -41,6 +87,92 @@
 
 #### Changes
 
+* Refactor. 
+
+* Revert links to old format. 
+
+* Update ui. 
+
+* Add full backward compatiblity. 
+
+* Add common_bp. 
+
+* Add backward compatibility. 
+
+* Refactor admin and user model. 
+
+* Refactor. 
+
+* Refactor. 
+
+* Fix role management. 
+
+* Refactor. 
+
+* Hidden old proxy path. 
+
+* Remove duplicate password check. 
+
+* Remove filter_by. 
+
+* Refactor. 
+
+* Admin login links. 
+
+* Api v1 blueprint name. 
+
+* Refactor. 
+
+* APIs links to new format. 
+
+* Refactor. 
+
+* Authenticate user panel endponit with Authorization header even there is cookie. 
+
+* Using server_status log api. 
+
+* Send api calls with cookie instead of ApiKey. 
+
+* Better readability. 
+
+* Basic athentication realm value. 
+
+* Better names. 
+
+* Apiflask authentication to auth_back.py file & remove unused imports. 
+
+* Backward compatibility. 
+
+* Init. 
+
+* New route page. 
+
+* Rename. 
+
+* Remove <user_secret> from routing in blueprint. 
+
+* Authentication. 
+
+* If client sent user/pass we try to authenticate with the user/pass, THEN we check session cookies. 
+
+* Use hiddify-manager/common/commander.py instead of running the scripts directly. 
+
+* Version parameter type to int in ip.py functions fix: typo and bugs. 
+
+* Make ip_utils a package. 
+
+* Get ip approach & validation in DomainAdmin.py. 
+
+* Show xui_importer error if occurred. 
+
+* Short api. 
+
+* Ui files. 
+
+* Use apiflask abort. 
+
+* Change AdminDTO to AdminSchema. 
+
 * Better naming. 
 
 * Reorganize domain ports. 
@@ -50,6 +182,224 @@
 * Update hiddify next download link. 
 
 #### Fix
+
+* All config bugs. 
+
+* Singbox. 
+
+* Deep link url. 
+
+* Auth. 
+
+* Typo. 
+
+* Typo. 
+
+* Typo. 
+
+* Json serializer bug. 
+
+* Bug in useragent. 
+
+* Remove print. 
+
+* Remove prints. 
+
+* Bugs, refactor changes, remove unneccessary dependency to flask_login. 
+
+* Bug. 
+
+* Bug. 
+
+* Bug. 
+
+* Backward compatiblity. 
+
+* Bug. 
+
+* Bug. 
+
+* Bugs. 
+
+* Bugs. 
+
+* Backward compatibility issues. 
+
+* Bugs. 
+
+* Telegram get_usage_data user link. 
+
+* Admin/user APIs (validation,parenting,recursive fetching) 
+
+* Bugs and add login blue print. 
+
+* Static path. 
+
+* Bugs. 
+
+* User bug. 
+
+* Proxy path validation. 
+
+* Admin me api. 
+
+* Bug. 
+
+* Bug in QuickSetup. 
+
+* Auto removing UUIDs from api requests. 
+
+* Short api again. 
+
+* Short api. 
+
+* Api v1 routing. 
+
+* Remove user/pass from short api link. 
+
+* Api v1 telegram endpoints. 
+
+* Backward compatibility. 
+
+* Bug. 
+
+* Typo in redirect.html file. 
+
+* Add just proxy_path_admin and proxy_path_client. 
+
+* Disable CORS for all endpoints and enable it just for adminlog api for now. 
+
+* Domain in api. 
+
+* Better account type selection in parse_auth_id. 
+
+* Typo & imports. 
+
+* Typo del: unused function. 
+
+* Init_db filling user/admin username|passowrd fields. 
+
+* Fill username & password in user/admin creation. 
+
+* Bug. 
+
+* Bug & authenticate api calls with session cookie. 
+
+* New.html assests link. 
+
+* Backward compatibility. 
+
+* Bug. 
+
+* First try to authenticate with HTTP Authorization header value then check the user session data. 
+  _Think user is authenticated as A1 then they want to login as A2 on same
+domain. in this case we should keep our eye on header not session.
+because session is authenticated by A1 but now we want to authenticate
+with A2_
+
+* /admin/adminuser/ links username password bug. 
+
+* Fix: accept authentication link to login(eg. https://username:password@domain.com/path) 
+
+* No need to send g.proxy_path to templates (jinja has it) 
+
+* Merging conflicts. 
+
+* Status js log file call to use api. 
+
+* Bug. 
+
+* Creating empty session(in redis) for every request. 
+
+* Unboundlocalerror bug. 
+
+* Remove links with uuid. 
+
+* Admin link in invalid proxy. 
+
+* Backward compatibility. 
+
+* Setup session data for admin. 
+
+* Using g.account instead of g.user/g.admin. 
+
+* Add authentication(role-based) for ModelView classes. 
+
+* Basic authentication verify password function. 
+
+* Rename. 
+
+* Short_api. 
+
+* Info api profile title. 
+
+* Typo. 
+
+* Profile name. 
+
+* Remove run commander.py with "sudo python3" 
+
+* Backup restoring. 
+
+* Bug and refactor. 
+
+* Bug. 
+
+* Run_commander.py. 
+
+* User apis bugs. 
+
+* Typo. 
+
+* Mistake. 
+
+* Ip_utils imports. 
+
+* Get_interface_public_ip (return [] instead of None) 
+
+* Init_db bug. 
+
+* Xui importer. 
+
+* Ios bug. 
+
+* Exception handle. 
+
+* Bugs. 
+
+* Import bug. 
+
+* Bug and add description. 
+
+* Change expire_in variable from minutes to seconds. 
+
+* Hiddify_next.ico. 
+
+* Bug in apiflask. 
+
+* Security issue. 
+
+* Bug. 
+
+* Bug. 
+
+* Heart icon. 
+
+* Bug in user 'me' api. 
+
+* Flask_migrate common errors. 
+
+* Could not build url for endpoint 'admin.static' error. 
+
+* Https://github.com/hiddify/HiddifyPanel/pull/45#discussion_r1390457377. 
+
+* Https://github.com/hiddify/HiddifyPanel/pull/45#discussion_r1390456353. 
+
+* User short link showing page. 
+
+* Typo. 
+
+* Proxy not updated  after delete. 
 
 * Bug. 
 
@@ -174,6 +524,304 @@
 * Bugs. 
 
 #### Other
+
+* Remove old user_agent. 
+
+* Merge pull request #78 from Iam54r1n4/fix-auth. 
+  _fix: typo_
+
+* Merge branch 'main' into fix-auth. 
+
+* Update ui. 
+
+* Update ui. 
+
+* Update translation. 
+
+* Update version. 
+
+* Merge pull request #74 from Iam54r1n4/auth. 
+  _Better role management & api validating/parenting/recursiving & refactoring models_
+
+* Merge branch 'auth' of github.com:Iam54r1n4/HiddifyPanel into HEAD. 
+
+* Merge pull request #73 from Iam54r1n4/auth. 
+  _Auth_
+
+* Merge branch 'hiddify:main' into auth. 
+
+* Merge pull request #72 from Iam54r1n4/auth. 
+  _Implement session authentication (removing uuid from url)_
+
+* Add: AccountType enum for sake of readability(will be used more) 
+
+* Del: duplicate function. 
+
+* Add: get by username password. 
+
+* Del: unused var. 
+
+* Using: proper using of proxy path (for panel links) 
+
+* Clean: unused var. 
+
+* Add: new fields to str_config(proxy paths) 
+
+* Del: using g.account.uuid instead of g.account_uuid. 
+
+* Refactor. 
+
+* Add: user/pass to hiddifypanel admin-links command(cli) 
+
+* Add: user/pass to user admin links. 
+
+* Clean up. 
+
+* Add: login_required to quicksetup. 
+
+* Add: authentication for user panel. 
+
+* Add: user:pass to non-secure link too. 
+
+* Add: user:pass to /admin/adminuser/ links. 
+
+* Add: new format of domain showing (https://user:pass@domain.com) 
+
+* Add: get current logged account apikey (draft) 
+
+* Merge commit '26b0713eba52700902e5b530b62a276e3d7dae0a' into auth. 
+
+* Using: new login_required. 
+
+* Add: role property to user and admin models & implement Role enum new: override user/admin get_id method. 
+
+* Using flask_login instead of old authenticator. 
+
+* Add: flask_login & add flask_login.UserMixin to User and AdminUser models. 
+
+* Support app changes. 
+
+* Add: CORS for javascript calls. 
+
+* Add: admin log api. 
+
+* Add: auth for apps api. 
+
+* Merge branch 'auth' of github.com:Iam54r1n4/HiddifyPanel into auth. 
+
+* Merge pull request #71 from Iam54r1n4/fix-apps-api. 
+  _fix: unboundlocalerror bug_
+
+* Update ui. 
+
+* Merge pull request #70 from Iam54r1n4/main. 
+  _fix: info api profile title & short api expire time_
+
+* Add: server-side(redis) session instead of client-side. 
+
+* Add: redirect_to_user.html. 
+
+* Add: role authentication for views. 
+
+* Add: api auth, basic auth, old url backward compatibility middlewares chg: g.user and g.admin to g.account. 
+
+* Add: some functions in utils. 
+
+* Add: admin route backward compatibility. 
+
+* Add: athentication with session. 
+
+* Using non-assci name in building username because we send username and password with base64 encoding, so we're not limited to assci. 
+
+* Add: auth to admin panel endpoints. 
+
+* Refactor: user apis. 
+
+* Add: get_user_roles to authentication.py. 
+
+* Add: auth to admin apis. 
+
+* Add: username & password to user model and admin model - filling the username and password (password saved in database as   plaintext) 
+
+* Add: auth to api (incomplete) 
+
+* Update ui. 
+
+* Merge pull request #69 from Iam54r1n4/main. 
+  _fix: profile title_
+
+* Merge branch 'hiddify:main' into main. 
+
+* Merge branch 'main' of github.com:Iam54r1n4/HiddifyPanel. 
+
+* Update ui. 
+
+* Update. 
+
+* Merge pull request #68 from Iam54r1n4/main. 
+
+* Merge branch 'hiddify:main' into main. 
+
+* Update. 
+
+* Merge branch 'main' of github.com:hiddify/Hiddify-Panel. 
+
+* Merge pull request #67 from Iam54r1n4/commander. 
+
+* Update ui. 
+
+* Merge pull request #66 from Iam54r1n4/commander. 
+  _Using commander.py_
+
+* Merge branch 'hiddify:main' into commander. 
+
+* Merge pull request #65 from Iam54r1n4/xui_importer. 
+
+* Update: cli. 
+
+* Update: using commander.py apply-user instead of running install.sh apply_users directly. 
+
+* Update: apply_users command. 
+
+* Update: using commander.py get-cert instead of using get-cert.sh directly. 
+
+* Update: run_commander. 
+
+* Merge pull request #64 from Iam54r1n4/fix-user-apis. 
+  _Fix user apis_
+
+* Add: nekobox app to ../apps/ api (in android platform) 
+
+* Update version. 
+
+* Update ui. 
+
+* Add new ui. 
+
+* Merge pull request #61 from Iam54r1n4/main. 
+  _refactor: utils and other things_
+
+* Add: version parameter type. 
+
+* Move clean_ip to hutils/auto_ip_selector better imports. 
+
+* Refactor: add types to funcitons. 
+
+* Del: myip & myipv6 variables. 
+
+* Merge pull request #60 from Iam54r1n4/main. 
+  _fix: init_db bug_
+
+* Merge pull request #59 from Iam54r1n4/xui_importer. 
+  _Xui importer_
+
+* Add: xui importer cli. 
+
+* Add: xui importer. 
+
+* Update translations. 
+
+* Update translations. 
+
+* Install app. 
+
+* Update. 
+
+* Merge pull request #56 from er888kh/main. 
+  _Check all IP addresses while adding a domain_
+
+* Make public ip finding more robust. 
+
+* Check all ip addresses when adding domains. 
+
+* Add missing dependency. 
+
+* Merge pull request #58 from Iam54r1n4/main. 
+  _fix: import bug_
+
+* Merge pull request #53 from Iam54r1n4/refactor_api. 
+  _Refactor user & admin APIs_
+
+* Del: unnecessary imports. 
+
+* Add: description to api schemas. 
+
+* Refactor: admin APIs. 
+
+* Refactor: user APIs. 
+
+* Merge pull request #52 from Iam54r1n4/reform_apps_api. 
+  _Reform apps api_
+
+* Merge branch 'reform_apps_api' of github.com:Iam54r1n4/HiddifyPanel into reform_apps_api. 
+
+* Merge pull request #51 from Iam54r1n4/reform_apps_api. 
+  _Reform apps api_
+
+* Merge branch 'hiddify:main' into reform_apps_api. 
+
+* Merge pull request #50 from Iam54r1n4/reform_apps_api. 
+  _Reform apps api_
+
+* Reform: apps api. 
+
+* Merge pull request #48 from Iam54r1n4/main. 
+  _Add apps api_
+
+* Reform: apps api. 
+
+* Add: client apps icon for apps api. 
+
+* Api things - change dto suffixes to Schema - add apps api - add expire_in field in short api. 
+
+* Merge branch 'main' of github.com:Iam54r1n4/HiddifyPanel. 
+
+* Merge branch 'hiddify:main' into main. 
+
+* Merge pull request #47 from MichaelUray/main. 
+  _Update UserAdmin.py_
+
+* Update UserAdmin.py. 
+  _Shows Telegram icons for all users in the admin panel, if Telegram is enabled.
+
+Users which are not registered for Telegram are shown with greyed out disabled buttons, registered users with blue buttons.
+It is a visual improvement to have all users aligned in the table._
+
+* Merge branch 'main' of github.com:Iam54r1n4/HiddifyPanel. 
+
+* Merge branch 'hiddify:main' into main. 
+
+* Add: 'api/v2/admin/server_status/ api. 
+
+* Add: "lang" field to admin '/me/' api DTO. 
+
+* Create database tables with flask_migrate. 
+
+* Add: "api/v2/admin/me" & "api/v2/user/me" api. 
+
+* Merge pull request #46 from Iam54r1n4/main. 
+  _remove UserLang duplicated defination_
+
+* Remove duplicated definations. 
+
+* Merge pull request #45 from Iam54r1n4/main. 
+  _Complete user api_
+
+* User area APIs tested and fixed. 
+
+* Edit: create a jinja template for github isuee. 
+
+* Add: lang field to User model. 
+
+* Merge pull request #44 from er888kh/patch-1. 
+  _Update requirements.txt_
+
+* Update requirements.txt. 
+  _Add missing dependency flask-apispec_
+
+* Update. 
+
+* Add def lang to info and tags to all-configs. 
 
 * Better mtproxy. 
 
@@ -305,6 +953,55 @@
 * Convert old db to new. 
 
 * Add pysql req. 
+
+
+
+## 8.8.3 (2024-01-09)
+
+#### New
+
+* Add auto support for singbox 1.8 and 1.7. 
+
+#### Fix
+
+* Validation error bug. 
+
+#### Other
+
+* Merge pull request #62 from Iam54r1n4/v8. 
+  _fix: validation error bug_
+
+
+
+## 8.8.2 (2023-11-26)
+
+#### Other
+
+* Merge pull request #57 from Iam54r1n4/v8. 
+  _fix bug in admin.py_
+
+* Fix bug in admin.py. 
+
+* Merge pull request #55 from Iam54r1n4/v8. 
+  _fix bug in admin.py_
+
+* Fix bug in admin.py. 
+
+
+
+## 8.8.1 (2023-11-22)
+
+#### Other
+
+* Allow incompatible server names for reality. 
+
+
+
+## 8.8.0 (2023-11-22)
+
+#### Other
+
+* NEW: allow reality to be incorrect. 
 
 
 

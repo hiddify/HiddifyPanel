@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-05 00:31+0100\n"
-"PO-Revision-Date: 2024-01-03 21:37+0100\n"
+"POT-Creation-Date: 2024-01-09 01:34+0100\n"
+"PO-Revision-Date: 2024-01-08 18:10-0600\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -20,26 +20,26 @@ msgid "Error! auto cdn ip can not be find, please contact admin."
 msgstr "Error In Auto CDN IP! It Can Not Be Find, Please Contact Admin"
 
 # | msgid "This Domain does not exist in the Panel !"
-#: hiddifypanel/models/domain.py:161 hiddifypanel/panel/user/user.py:423
+#: hiddifypanel/models/domain.py:161 hiddifypanel/panel/user/user.py:422
 msgid "This domain does not exist in the panel!"
 msgstr "This Domain does not exist in the Panel !"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/panel/hiddify.py:321
+#: hiddifypanel/panel/hiddify.py:323
 msgid "admin.config.apply_configs"
 msgstr "Apply Configs"
 
 # | msgid ""
 # | "Configs have been changed successfully. Click %(link)s to apply the "
 # | "configs. It may take 2 minutes to apply"
-#: hiddifypanel/panel/hiddify.py:322
+#: hiddifypanel/panel/hiddify.py:324
 msgid "config.validation-success"
 msgstr ""
 "Configs have been changed successfully. Click %(link)s to apply the configs."
 " It may take 2 minutes to apply"
 
 # | msgid " ✅ Configs have been changed successfully"
-#: hiddifypanel/panel/hiddify.py:324
+#: hiddifypanel/panel/hiddify.py:326
 msgid "config.validation-success-no-reset"
 msgstr " ✅ Configs have been changed successfully"
 
@@ -52,14 +52,14 @@ msgstr " ✅ Configs have been changed successfully"
 #: hiddifypanel/panel/admin/DomainAdmin.py:182
 #: hiddifypanel/panel/admin/QuickSetup.py:146
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:111
-#: hiddifypanel/panel/hiddify.py:408
+#: hiddifypanel/panel/hiddify.py:410
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr ""
 "Domain can not be resolved! There is a problem in your domain. Please check "
 "your Domain configurations."
 
 # | msgid "Last Day"
-#: hiddifypanel/panel/hiddify.py:440
+#: hiddifypanel/panel/hiddify.py:442
 msgid "0 - Last day"
 msgstr "Last Day"
 
@@ -67,7 +67,7 @@ msgstr "Last Day"
 # | "Selected Domain for REALITY is not in the same ASN. To better use of the
 # "
 # | "Protocol, it is better to find a Domain in the same ASN"
-#: hiddifypanel/panel/hiddify.py:745
+#: hiddifypanel/panel/hiddify.py:747
 msgid ""
 "selected domain for REALITY is not in the same ASN. To better use of the "
 "protocol, it is better to find a domain in the same ASN."
@@ -2652,12 +2652,12 @@ msgstr "V2RayNG"
 msgid "app.hiddifyng.title"
 msgstr "HiddifyNG"
 
+# | msgid "Hiddify Clash"
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:182
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:264
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:266
-#, fuzzy
 msgid "app.hiddify-clash-android.title"
-msgstr "app.hiddify-clash-android.title"
+msgstr "Hiddify Clash"
 
 # | msgid "FoXray"
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:184
@@ -2694,19 +2694,19 @@ msgstr "Loon"
 msgid "app.stash.title"
 msgstr "Stash"
 
+# | msgid "Hiddify Clash"
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:194
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:333
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:335
-#, fuzzy
 msgid "app.hiddify-clash-desktop.title"
-msgstr "app.hiddify-clash-desktop.title"
+msgstr "Hiddify Clash"
 
+# | msgid "NekoBox"
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:196
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:222
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:224
-#, fuzzy
 msgid "app.nekobox.title"
-msgstr "app.nekobox.title"
+msgstr "NekoBox"
 
 # | msgid "HiddifyN Description"
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:211
@@ -2845,15 +2845,15 @@ msgstr ""
 msgid "admin.config.title"
 msgstr "Settings"
 
+# | msgid "Secret Code"
 #: hiddifypanel/panel/common_bp/login.py:18
-#, fuzzy
 msgid "login.secret.label"
-msgstr "login.secret.label"
+msgstr "Secret Code"
 
+# | msgid "Secret code is given by the service provider."
 #: hiddifypanel/panel/common_bp/login.py:20
-#, fuzzy
 msgid "login.secret.description"
-msgstr "login.secret.description"
+msgstr "Secret code is given by the service provider."
 
 #: hiddifypanel/panel/common_bp/login.py:69
 #, fuzzy
@@ -2880,7 +2880,7 @@ msgid "user.home.title"
 msgstr "Hiddify"
 
 # | msgid "📅%(expire_days)s Days Remain"
-#: hiddifypanel/panel/user/link_maker.py:779
+#: hiddifypanel/panel/user/link_maker.py:780
 #, python-format
 msgid "📅%(expire_days)s days"
 msgstr "📅%(expire_days)s Days Remain"
@@ -4288,25 +4288,28 @@ msgstr ""
 "You can set a customized port for your reality server to reduce the system's"
 " overhead. (Allow direct connection to proxies should be yes)"
 
+# | msgid "Proxy Path for Admins"
 #: hiddifypanel/templates/fake.html:1
-#, fuzzy
 msgid "config.proxy_path_admin.label"
-msgstr "config.proxy_path_admin.label"
+msgstr "Proxy Path for Admins"
 
+# | msgid ""
+# | "We use secret proxy path to hide our proxies for the governments and
+# bots"
 #: hiddifypanel/templates/fake.html:1
-#, fuzzy
 msgid "config.proxy_path_admin.description"
-msgstr "config.proxy_path_admin.description"
+msgstr ""
+"We use secret proxy path to hide our proxies for the governments and  bots"
 
+# | msgid "Proxy Path for Clients"
 #: hiddifypanel/templates/fake.html:1
-#, fuzzy
 msgid "config.proxy_path_client.label"
-msgstr "config.proxy_path_client.label"
+msgstr "Proxy Path for Clients"
 
+# | msgid "Secret proxy path hide the proxies from the governments and bots"
 #: hiddifypanel/templates/fake.html:1
-#, fuzzy
 msgid "config.proxy_path_client.description"
-msgstr "config.proxy_path_client.description"
+msgstr "Secret proxy path hide the proxies from the governments and bots"
 
 # | msgid "Enable Hysteria2"
 #: hiddifypanel/templates/fake.html:1

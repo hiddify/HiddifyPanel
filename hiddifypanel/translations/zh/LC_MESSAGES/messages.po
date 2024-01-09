@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-05 00:31+0100\n"
-"PO-Revision-Date: 2024-01-03 21:37+0100\n"
+"POT-Creation-Date: 2024-01-09 01:34+0100\n"
+"PO-Revision-Date: 2024-01-08 18:10-0600\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -21,12 +21,12 @@ msgid "Error! auto cdn ip can not be find, please contact admin."
 msgstr "自动 CDN IP 错误！找不到自动 CDN IP，请联系管理员"
 
 # | msgid "This Domain does not exist in the Panel !"
-#: hiddifypanel/models/domain.py:161 hiddifypanel/panel/user/user.py:423
+#: hiddifypanel/models/domain.py:161 hiddifypanel/panel/user/user.py:422
 msgid "This domain does not exist in the panel!"
 msgstr "该域名在面板中不存在！"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/panel/hiddify.py:321
+#: hiddifypanel/panel/hiddify.py:323
 msgid "admin.config.apply_configs"
 msgstr "应用配置"
 
@@ -34,12 +34,12 @@ msgstr "应用配置"
 # | "Configs have been changed successfully. Click %(link)s to apply the
 # configs."
 # | " It may take 2 minutes to apply"
-#: hiddifypanel/panel/hiddify.py:322
+#: hiddifypanel/panel/hiddify.py:324
 msgid "config.validation-success"
 msgstr "配置已成功更改。单击 %(link)s 以应用配置。应用可能需要 2 分钟。"
 
 # | msgid " ✅ Configs have been changed successfully"
-#: hiddifypanel/panel/hiddify.py:324
+#: hiddifypanel/panel/hiddify.py:326
 msgid "config.validation-success-no-reset"
 msgstr " ✅ 配置已成功更改"
 
@@ -53,12 +53,12 @@ msgstr " ✅ 配置已成功更改"
 #: hiddifypanel/panel/admin/DomainAdmin.py:182
 #: hiddifypanel/panel/admin/QuickSetup.py:146
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:111
-#: hiddifypanel/panel/hiddify.py:408
+#: hiddifypanel/panel/hiddify.py:410
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr "域名无法解析！你的域名有问题。请检查你的域名配置。"
 
 # | msgid "Last Day"
-#: hiddifypanel/panel/hiddify.py:440
+#: hiddifypanel/panel/hiddify.py:442
 msgid "0 - Last day"
 msgstr "最后一天"
 
@@ -66,7 +66,7 @@ msgstr "最后一天"
 # | "Selected Domain for REALITY is not in the same ASN. To better use of the
 # "
 # | "Protocol, it is better to find a Domain in the same ASN"
-#: hiddifypanel/panel/hiddify.py:745
+#: hiddifypanel/panel/hiddify.py:747
 msgid ""
 "selected domain for REALITY is not in the same ASN. To better use of the "
 "protocol, it is better to find a domain in the same ASN."
@@ -2542,11 +2542,13 @@ msgstr "V2RayNG"
 msgid "app.hiddifyng.title"
 msgstr "HiddifyNG"
 
+# | msgid "Hiddify Clash"
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:182
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:264
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:266
+#, fuzzy
 msgid "app.hiddify-clash-android.title"
-msgstr ""
+msgstr "希迪冲突"
 
 # | msgid "FoXray"
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:184
@@ -2588,17 +2590,21 @@ msgstr "龙"
 msgid "app.stash.title"
 msgstr "藏"
 
+# | msgid "Hiddify Clash"
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:194
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:333
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:335
+#, fuzzy
 msgid "app.hiddify-clash-desktop.title"
-msgstr ""
+msgstr "希迪冲突"
 
+# | msgid "NekoBox"
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:196
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:222
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:224
+#, fuzzy
 msgid "app.nekobox.title"
-msgstr ""
+msgstr "猫盒子"
 
 # | msgid "HiddifyN Description"
 #: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:211
@@ -2743,13 +2749,17 @@ msgstr ""
 msgid "admin.config.title"
 msgstr "设置"
 
+# | msgid "Secret Code"
 #: hiddifypanel/panel/common_bp/login.py:18
+#, fuzzy
 msgid "login.secret.label"
-msgstr ""
+msgstr "密码"
 
+# | msgid "Secret code is given by the service provider."
 #: hiddifypanel/panel/common_bp/login.py:20
+#, fuzzy
 msgid "login.secret.description"
-msgstr ""
+msgstr "密码由服务提供商提供。"
 
 #: hiddifypanel/panel/common_bp/login.py:69
 msgid "Incorrect Password"
@@ -2775,7 +2785,7 @@ msgid "user.home.title"
 msgstr "Hiddify"
 
 # | msgid "📅%(expire_days)s Days Remain"
-#: hiddifypanel/panel/user/link_maker.py:779
+#: hiddifypanel/panel/user/link_maker.py:780
 #, python-format
 msgid "📅%(expire_days)s days"
 msgstr "📅剩余：%(expire_days)s 天"
@@ -4209,21 +4219,32 @@ msgstr "直连 Reality 端口"
 msgid "config.reality_port.description"
 msgstr "您可以设置一个 Reality 服务的自定义端口，以节省系统开销。（允许直接连接到代理应该设置为 是）"
 
+# | msgid "Proxy Path for Admins"
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.proxy_path_admin.label"
-msgstr ""
+msgstr "管理员的代理路径"
 
+# | msgid ""
+# | "We use secret proxy path to hide our proxies for the governments and
+# bots"
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.proxy_path_admin.description"
-msgstr ""
+msgstr "我们使用秘密代理路径来为政府和机器人隐藏我们的代理"
 
+# | msgid "Proxy Path for Clients"
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.proxy_path_client.label"
-msgstr ""
+msgstr "客户端的代理路径"
 
+# | msgid ""
+# | "Secret proxy path hide the proxies from the governments and bots"
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.proxy_path_client.description"
-msgstr ""
+msgstr "秘密代理路径对政府和机器人隐藏代理"
 
 # | msgid "Enable Hysteria2"
 #: hiddifypanel/templates/fake.html:1
