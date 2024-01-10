@@ -60,7 +60,7 @@ class InfoAPI(MethodView):
             dto.admin_message_html += "<p style='font-style: italic;font-size:8px'>"+_("[Admin only visible message:] You can change this message from settings")+"</p>"
         dto.admin_message_url = hconfig(ConfigEnum.branding_site) or "https://t.me/hiddify"
         dto.brand_title = hconfig(ConfigEnum.branding_title) or _("Hiddify")
-        dto.brand_icon_url = "" if hconfig(ConfigEnum.branding_title) else static_url_for(filename="images/hiddify.png")
+        dto.brand_icon_url = "" if hconfig(ConfigEnum.branding_title) else hiddify.static_url_for(filename="images/hiddify.png")
         dto.doh = f"https://{request.host}/{g.proxy_path}/dns/dns-query"
         dto.lang = c['user'].lang
         return dto
