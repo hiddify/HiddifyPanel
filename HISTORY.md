@@ -199,6 +199,10 @@
 
 #### Fix
 
+* Bug. 
+
+* Bug in fill_username. 
+
 * Empty admin message. 
 
 * Compatibility issue with old version. 
@@ -568,6 +572,8 @@ with A2_
 * Bugs. 
 
 #### Other
+
+* Update: ui. 
 
 * Remove geoip for singbox 1.8. 
 
