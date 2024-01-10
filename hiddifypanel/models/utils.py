@@ -5,11 +5,11 @@ from slugify import slugify
 def fill_username(model) -> None:
     if model.username:
         return
-    model.username = model.name or ''
+    base_username = model.name or ''
     minimum_username_length = 10
 
-    if len(model.username) < minimum_username_length:
-        base_username += hutils.utils.get_random_string(minimum_username_length-len(model.username), minimum_username_length)
+    if len(base_username) < minimum_username_length:
+        base_username += hutils.utils.get_random_string(minimum_username_length-len(base_username), minimum_username_length)
 
     if len(base_username) > 100:
         base_username = base_username[0:100]
