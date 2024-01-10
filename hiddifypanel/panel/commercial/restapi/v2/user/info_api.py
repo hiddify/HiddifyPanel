@@ -14,6 +14,7 @@ from hiddifypanel.models.config import hconfig
 from hiddifypanel.models.config_enum import ConfigEnum
 from hiddifypanel.panel.database import db
 from hiddifypanel.panel.user.user import get_common_data
+from hiddifypanel.panel import hiddify
 
 
 class ProfileSchema(Schema):
