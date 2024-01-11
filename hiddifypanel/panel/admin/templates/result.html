@@ -27,6 +27,7 @@
 %endif
 #}
 
+{% if log_file %}
 {% if log_file != "status.log" and log_file != "restart.log"%}
 <div class="callout callout-success">
 
@@ -36,6 +37,8 @@
   </div>
 </div>
 {% endif %}
+{% endif %}
+
 
 % if log_file_url
 <div>
