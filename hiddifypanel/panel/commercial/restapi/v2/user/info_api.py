@@ -56,14 +56,16 @@ class InfoAPI(MethodView):
         dto.profile_reset_days = g.account.days_to_reset()
         dto.telegram_bot_url = f"https://t.me/{c['bot'].username}?start={g.account.uuid}" if c['bot'] else ""
         dto.telegram_id = c['user'].telegram_id or 0
+
+        dto.doh = f"https://{request.host}/{g.proxy_path}/dns/dns-query"
+        dto.lang = (c['user'].lang) or Lang(hconfig(ConfigEnum.lang))
+        dto.brand_icon_url = "" if hconfig(ConfigEnum.branding_title) else hiddify.static_url_for(filename="images/hiddify.png")
+        # with force_locale("fa"):
         dto.admin_message_html = hconfig(ConfigEnum.branding_freetext) or _("Join our Hiddify Telegram channel to get the latest updates on Hiddify.")
         if not hconfig(ConfigEnum.branding_freetext) and auth.admin_session_is_exist():
             dto.admin_message_html += "<p style='font-style: italic;font-size:8px'>"+_("[Admin only visible message:] You can change this message from settings")+"</p>"
         dto.admin_message_url = hconfig(ConfigEnum.branding_site) or "https://t.me/hiddify"
         dto.brand_title = hconfig(ConfigEnum.branding_title) or _("Hiddify")
-        dto.brand_icon_url = "" if hconfig(ConfigEnum.branding_title) else hiddify.static_url_for(filename="images/hiddify.png")
-        dto.doh = f"https://{request.host}/{g.proxy_path}/dns/dns-query"
-        dto.lang = c['user'].lang
         return dto
 
     @app.input(UserInfoChangableSchema, arg_name='data')
