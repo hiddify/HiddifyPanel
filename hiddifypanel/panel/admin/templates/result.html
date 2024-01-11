@@ -27,7 +27,7 @@
 %endif
 #}
 
-{% if log_file != "status.log" %}
+{% if log_file != "status.log" and log_file != "restart.log"%}
 <div class="callout callout-success">
 
   {{_("Please wait ")}} <label id="count-down">300</label> {{_("seconds")}}
