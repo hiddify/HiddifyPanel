@@ -70,7 +70,16 @@ class ConfigEnum(StrEnum):
     lang = auto()
     admin_lang = auto()
     admin_secret = auto()
+
+    # tls
     tls_ports = auto()
+    tls_fragment_enable = auto()
+    tls_fragment_size = auto()
+    tls_fragment_sleep = auto()
+    tls_mixed_case = auto()
+    tls_padding_enable = auto()
+    tls_padding_length = auto()
+
     http_ports = auto()
     kcp_ports = auto()
     kcp_enable = auto()
@@ -195,7 +204,16 @@ class ConfigEnum(StrEnum):
             self.not_found: {'category': ConfigCategory.hidden},
             self.admin_secret: {'category': ConfigCategory.hidden, 'show_in_parent': True, 'commercial': True},
 
-            self.tls_ports: {'category': ConfigCategory.tls, 'apply_mode': 'apply'},  # tls
+            # tls
+            self.tls_ports: {'category': ConfigCategory.tls, 'apply_mode': 'apply'},
+            self.tls_fragment_enable: {'category': ConfigCategory.tls, 'apply_mode': 'apply', 'type': bool},
+            self.tls_fragment_size: {'category': ConfigCategory.tls, 'apply_mode': 'apply'},
+            self.tls_fragment_sleep: {'category': ConfigCategory.tls, 'apply_mode': 'apply'},
+            self.tls_mixed_case: {'category': ConfigCategory.tls, 'apply_mode': 'apply', 'type': bool},
+            self.tls_padding_enable: {'category': ConfigCategory.tls, 'apply_mode': 'apply', 'type': bool},
+            self.tls_padding_length: {'category': ConfigCategory.tls, 'apply_mode': 'apply'},
+
+
             self.http_ports: {'category': ConfigCategory.http, 'apply_mode': 'apply'},  # http
             self.kcp_ports: {'category': ConfigCategory.hidden, 'apply_mode': 'apply'},
             self.kcp_enable: {'category': ConfigCategory.hidden, 'type': bool, 'apply_mode': 'apply'},

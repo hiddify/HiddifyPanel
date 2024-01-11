@@ -145,6 +145,16 @@ def init_db():
 
 #     add_config_if_not_exist(ConfigEnum.hysteria_enable, True)
 #     add_config_if_not_exist(ConfigEnum.hysteria_port, random.randint(5000, 20000))
+
+def _v62():
+    add_config_if_not_exist(ConfigEnum.tls_fragment_enable, False)
+    add_config_if_not_exist(ConfigEnum.tls_fragment_size, "10-100")
+    add_config_if_not_exist(ConfigEnum.tls_fragment_sleep, "50-200")
+    add_config_if_not_exist(ConfigEnum.tls_mixed_case, False)
+    add_config_if_not_exist(ConfigEnum.tls_padding_enable, False)
+    add_config_if_not_exist(ConfigEnum.tls_padding_length, "50-200")
+
+
 def _v61():
     execute("ALTER TABLE user MODIFY COLUMN username VARCHAR(100);")
     execute("ALTER TABLE user MODIFY COLUMN password VARCHAR(100);")
