@@ -43,9 +43,9 @@ class UserView(FlaskView):
     def get_proper_config(self):
         if g.user_agent['is_browser']:
             return None
+        ua = request.user_agent.string
         if g.user_agent['is_singbox'] or re.match('^(HiddifyNext|Dart|SFI|SFA)', ua, re.IGNORECASE):
             return self.full_singbox()
-        ua = request.user_agent.string
 
         if re.match('^(Clash-verge|Clash-?Meta|Stash|NekoBox|NekoRay|Pharos|hiddify-desktop)', ua, re.IGNORECASE):
             return self.clash_config(meta_or_normal="meta")
