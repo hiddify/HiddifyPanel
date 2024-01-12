@@ -320,7 +320,7 @@ def _v20():
         if direct_domain:
             direct_host = direct_domain.domain
         else:
-            direct_host = hutils.ip.get_ip(hutils.AF_INET)
+            direct_host = hutils.ip.get_ip(4)
 
         for fd in fake_domains:
             if not Domain.query.filter(Domain.domain == fd).first():
