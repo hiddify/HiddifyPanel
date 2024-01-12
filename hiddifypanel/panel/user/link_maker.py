@@ -555,12 +555,14 @@ def add_tuic(base, proxy):
 
 
 def add_hysteria(base, proxy):
-    base['up_mbps'] = 100
-    base['down_mbps'] = 100
-    base['obfs'] = {
-        "type": "salamander",
-        "password": hconfig(ConfigEnum.proxy_path)
-    }
+    base['up_mbps'] = hconfig(ConfigEnum.hysteria_up_mbps)
+    base['down_mbps'] = hconfig(ConfigEnum.hysteria_down_mbps)
+    # TODO: check the obfs should be empty or not exists at all
+    if hconfig(ConfigEnum.hysteria_obfs_enable):
+        base['obfs'] = {
+            "type": "salamander",
+            "password": hconfig(ConfigEnum.proxy_path)
+        }
     base['password'] = proxy['uuid']
 
 
