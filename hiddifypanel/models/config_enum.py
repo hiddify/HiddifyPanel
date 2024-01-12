@@ -20,6 +20,7 @@ class ConfigCategory(StrEnum):
     telegram = auto()
     http = auto()
     tls = auto()
+    tls_trick = auto()
     ssh = auto()
     ssfaketls = auto()
     shadowtls = auto()
@@ -206,12 +207,12 @@ class ConfigEnum(StrEnum):
 
             # tls
             self.tls_ports: {'category': ConfigCategory.tls, 'apply_mode': 'apply'},
-            self.tls_fragment_enable: {'category': ConfigCategory.tls, 'apply_mode': 'apply', 'type': bool},
-            self.tls_fragment_size: {'category': ConfigCategory.tls, 'apply_mode': 'apply'},
-            self.tls_fragment_sleep: {'category': ConfigCategory.tls, 'apply_mode': 'apply'},
-            self.tls_mixed_case: {'category': ConfigCategory.tls, 'apply_mode': 'apply', 'type': bool},
-            self.tls_padding_enable: {'category': ConfigCategory.tls, 'apply_mode': 'apply', 'type': bool},
-            self.tls_padding_length: {'category': ConfigCategory.tls, 'apply_mode': 'apply'},
+            self.tls_fragment_enable: {'category': ConfigCategory.tls_trick, 'apply_mode': 'apply', 'type': bool},
+            self.tls_fragment_size: {'category': ConfigCategory.tls_trick, 'apply_mode': 'apply'},
+            self.tls_fragment_sleep: {'category': ConfigCategory.tls_trick, 'apply_mode': 'apply'},
+            self.tls_mixed_case: {'category': ConfigCategory.tls_trick, 'apply_mode': 'apply', 'type': bool},
+            self.tls_padding_enable: {'category': ConfigCategory.tls_trick, 'apply_mode': 'apply', 'type': bool},
+            self.tls_padding_length: {'category': ConfigCategory.tls_trick, 'apply_mode': 'apply'},
 
 
             self.http_ports: {'category': ConfigCategory.http, 'apply_mode': 'apply'},  # http
