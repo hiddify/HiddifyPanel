@@ -32,6 +32,8 @@ def init_db():
     add_column(AdminUser.username)
     add_column(AdminUser.password)
 
+    add_column(Domain.extra_params)
+
     if db_version == latest_db_version():
         return
     Events.db_prehook.notify()
