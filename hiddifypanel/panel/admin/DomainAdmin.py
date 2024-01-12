@@ -187,11 +187,11 @@ class DomainAdmin(AdminLTEModelView):
                 domain_ip_is_same_as_panel |= ipaddress.ip_address(dip) == ipaddress.ip_address(ipv6)
 
             if model.mode == DomainType.direct and not domain_ip_is_same_as_panel:
-                flash(__(f"Domain IP={dip} is not matched with your ip={ipv4_list.join(', ')} which is required in direct mode"), 'warning')
+                flash(__(message=f"Domain IP={dip} is not matched with your ip={', '.join(list(map(str, ipv4_list)))} which is required in direct mode"), category='warning')
                 # raise ValidationError(_("Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode", server_ip=myip, domain_ip=dip))
 
             if domain_ip_is_same_as_panel and model.mode in [DomainType.cdn, DomainType.relay, DomainType.fake, DomainType.auto_cdn_ip]:
-                flash(__(f"In CDN mode, Domain IP={dip} should be different to your ip={ipv4_list.join(', ')}", 'warning'))
+                flash(__(f"In CDN mode, Domain IP={dip} should be different to your ip={', '.join(list(map(str, ipv4_list)))}"), 'warning')
                 # raise ValidationError(_("In CDN mode, Domain IP=%(domain_ip)s should be different to your ip=%(server_ip)s", server_ip=myip, domain_ip=dip))
 
             # if model.mode in [DomainType.ss_faketls, DomainType.telegram_faketls]:
