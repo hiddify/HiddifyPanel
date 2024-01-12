@@ -148,6 +148,14 @@ def init_db():
 #     add_config_if_not_exist(ConfigEnum.hysteria_enable, True)
 #     add_config_if_not_exist(ConfigEnum.hysteria_port, random.randint(5000, 20000))
 
+def _v63():
+    add_config_if_not_exist(ConfigEnum.hysteria_enable, True)
+    add_config_if_not_exist(ConfigEnum.hysteria_port, "11478")
+    add_config_if_not_exist(ConfigEnum.hysteria_obfs_enable, True)
+    add_config_if_not_exist(ConfigEnum.hysteria_up_mbps, "150")
+    add_config_if_not_exist(ConfigEnum.hysteria_down_mbps, "300")
+
+
 def _v62():
     add_config_if_not_exist(ConfigEnum.tls_fragment_enable, False)
     add_config_if_not_exist(ConfigEnum.tls_fragment_size, "10-100")

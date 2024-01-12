@@ -120,8 +120,13 @@ class ConfigEnum(StrEnum):
     tuic_enable = auto()
     tuic_port = auto()
 
+    # the hysteria is refereing to hysteria2
     hysteria_enable = auto()
     hysteria_port = auto()
+    # if be enable hysteria2 will be use salamander as obfs
+    hysteria_obfs_enable = auto()
+    hysteria_up_mbps = auto()
+    hysteria_down_mbps = auto()
 
     ssr_enable = auto()
     # ssr_secret="ssr_secret"
@@ -252,7 +257,10 @@ class ConfigEnum(StrEnum):
             self.tuic_port: {'category': ConfigCategory.hidden, 'apply_mode': 'apply'},
 
             self.hysteria_enable: {'category': ConfigCategory.hidden, 'type': bool, 'apply_mode': 'apply'},
-            self.hysteria_port: {'category': ConfigCategory.hidden, 'apply_mode': 'apply'},
+            self.hysteria_port: {'category': ConfigCategory.hysteria, 'apply_mode': 'apply'},
+            self.hysteria_obfs_enable: {'category': ConfigCategory.hysteria, 'type': bool, 'apply_mode': 'apply'},
+            self.hysteria_up_mbps: {'category': ConfigCategory.hysteria, 'apply_mode': 'apply'},
+            self.hysteria_down_mbps: {'category': ConfigCategory.hysteria, 'apply_mode': 'apply'},
 
             self.ssr_enable: {'category': ConfigCategory.hidden, 'type': bool, 'apply_mode': 'apply'},
             # ssr_secret:{'category':'ssr'},
