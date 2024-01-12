@@ -52,6 +52,7 @@ class Domain(db.Model, SerializerMixin):
                                    secondaryjoin=id == ShowDomain.c.related_id,
                                    backref=backref('showed_by_domains', lazy='dynamic')
                                    )
+    extra_params = db.Column(db.String(200), nullable=True, default='')
 
     def __repr__(self):
         return f'{self.domain}'
