@@ -231,3 +231,7 @@ def convert_to_int(s: str) -> int:
         return int(s)
     except:
         return 0
+
+
+def is_out_of_range_port(port: int) -> bool:
+    return port < 1 or port > 65535
