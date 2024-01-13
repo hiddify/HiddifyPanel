@@ -91,6 +91,10 @@
 
 #### Changes
 
+* Hysteria link makeri (client link) 
+
+* NOTHING IMPORTANT. 
+
 * Make sessions permanent for two days. 
 
 * Allow backward compatibility. 
@@ -198,6 +202,24 @@
 * Update hiddify next download link. 
 
 #### Fix
+
+* Bug in singbox. 
+
+* Bug. 
+
+* Typo. 
+
+* Don't show progress bar for update usage too. 
+
+* Bug in getting configs. 
+
+* Don't show progress bar for restart/reset too. 
+
+* Don't show progress bar in /status/ 
+
+* Progress bar. 
+
+* Lang. 
 
 * Bug. 
 
@@ -576,6 +598,31 @@ with A2_
 * Bugs. 
 
 #### Other
+
+* Merge pull request #87 from Iam54r1n4/hysteria2. 
+  _Hysteria2 link maker dynamically with DB (client side link)_
+
+* Add: todo. 
+
+* Merge pull request #86 from Iam54r1n4/hysteria2. 
+
+* Add: hysteria2 setting to database. 
+
+* Merge pull request #85 from Iam54r1n4/tls-trick. 
+  _Bug fix_
+
+* Merge pull request #84 from Iam54r1n4/domain-chg. 
+
+* Add: extra_params field to domain model. 
+
+* Merge pull request #83 from Iam54r1n4/tls-trick. 
+  _add: tls fragment fields_
+
+* Add: tls_trick config category. 
+
+* Add: tls fragment fields in db. 
+
+* Merge pull request #82 from Iam54r1n4/bug-fix. 
 
 * Update: ui. 
 
@@ -1034,6 +1081,14 @@ It is a visual improvement to have all users aligned in the table._
 * Convert old db to new. 
 
 * Add pysql req. 
+
+
+
+## 8.8.9 (2024-01-13)
+
+#### Fix
+
+* Bug in singbox 1.8. 
 
 
 

@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-11 00:56+0100\n"
-"PO-Revision-Date: 2024-01-10 17:54-0600\n"
+"POT-Creation-Date: 2024-01-13 20:19+0100\n"
+"PO-Revision-Date: 2024-01-13 13:29+0100\n"
 "Last-Translator: hidden u\n"
 "Language-Team: English (USA)\n"
 "Language: en_US\n"
@@ -20,7 +20,7 @@ msgid "Error! auto cdn ip can not be find, please contact admin."
 msgstr "Error In Auto CDN IP! It Can Not Be Find, Please Contact Admin"
 
 # | msgid "This Domain does not exist in the Panel !"
-#: hiddifypanel/models/domain.py:161 hiddifypanel/panel/user/user.py:227
+#: hiddifypanel/models/domain.py:165 hiddifypanel/panel/user/user.py:227
 msgid "This domain does not exist in the panel!"
 msgstr "This Domain does not exist in the Panel !"
 
@@ -2390,7 +2390,7 @@ msgid "Disk"
 msgstr "Hard Disk"
 
 #: hiddifypanel/panel/admin/templates/index.html:142
-#: hiddifypanel/panel/commercial/restapi/v2/user/info_api.py:63
+#: hiddifypanel/panel/commercial/restapi/v2/user/info_api.py:68
 msgid "Hiddify"
 msgstr "Hiddify"
 
@@ -2487,21 +2487,21 @@ msgid "seconds"
 msgstr "Seconds"
 
 # | msgid "📄 Log"
-#: hiddifypanel/panel/admin/templates/result.html:43
+#: hiddifypanel/panel/admin/templates/result.html:45
 msgid "log"
 msgstr "📄 Log"
 
-#: hiddifypanel/panel/admin/templates/result.html:46
+#: hiddifypanel/panel/admin/templates/result.html:48
 msgid "Click here to see the complete log"
 msgstr "Click here to see the complete log"
 
 #: hiddifypanel/panel/admin/templates/model/user_list.html:102
-#: hiddifypanel/panel/admin/templates/result.html:116
+#: hiddifypanel/panel/admin/templates/result.html:118
 msgid "Success"
 msgstr "Success"
 
 # | msgid "✅ The Action Done Successfully. You can now leave this page"
-#: hiddifypanel/panel/admin/templates/result.html:117
+#: hiddifypanel/panel/admin/templates/result.html:119
 msgid "The action done successfully. You can now leave this page."
 msgstr "✅ The Action Done Successfully. You can now leave this page"
 
@@ -2736,14 +2736,14 @@ msgstr "app.hiddify-clash-desktop.description"
 msgid "app.hiddify.next.description"
 msgstr "Hiddify Next Description"
 
-#: hiddifypanel/panel/commercial/restapi/v2/user/info_api.py:59
+#: hiddifypanel/panel/commercial/restapi/v2/user/info_api.py:64
 msgid ""
 "Join our Hiddify Telegram channel to get the latest updates on Hiddify."
 msgstr ""
 "Join our Hiddify Telegram channel to get the latest updates on Hiddify."
 
 # | msgid "[Admin-exclusive message]: Customizable via settings."
-#: hiddifypanel/panel/commercial/restapi/v2/user/info_api.py:61
+#: hiddifypanel/panel/commercial/restapi/v2/user/info_api.py:66
 msgid ""
 "[Admin only visible message:] You can change this message from settings"
 msgstr "[Admin-exclusive message]: Customizable via settings."
@@ -2860,7 +2860,7 @@ msgid "user.home.title"
 msgstr "Hiddify"
 
 # | msgid "📅%(expire_days)s Days Remain"
-#: hiddifypanel/panel/user/link_maker.py:780
+#: hiddifypanel/panel/user/link_maker.py:782
 #, python-format
 msgid "📅%(expire_days)s days"
 msgstr "📅%(expire_days)s Days Remain"
@@ -4259,6 +4259,66 @@ msgstr ""
 "You can set a customized port for your reality server to reduce the system's"
 " overhead. (Allow direct connection to proxies should be yes)"
 
+#: hiddifypanel/templates/fake.html:1
+#, fuzzy
+msgid "config.tls_fragment_enable.label"
+msgstr "config.tls_fragment_enable.label"
+
+#: hiddifypanel/templates/fake.html:1
+#, fuzzy
+msgid "config.tls_fragment_enable.description"
+msgstr "config.tls_fragment_enable.description"
+
+#: hiddifypanel/templates/fake.html:1
+#, fuzzy
+msgid "config.tls_fragment_size.label"
+msgstr "config.tls_fragment_size.label"
+
+#: hiddifypanel/templates/fake.html:1
+#, fuzzy
+msgid "config.tls_fragment_size.description"
+msgstr "config.tls_fragment_size.description"
+
+#: hiddifypanel/templates/fake.html:1
+#, fuzzy
+msgid "config.tls_fragment_sleep.label"
+msgstr "config.tls_fragment_sleep.label"
+
+#: hiddifypanel/templates/fake.html:1
+#, fuzzy
+msgid "config.tls_fragment_sleep.description"
+msgstr "config.tls_fragment_sleep.description"
+
+#: hiddifypanel/templates/fake.html:1
+#, fuzzy
+msgid "config.tls_mixed_case.label"
+msgstr "config.tls_mixed_case.label"
+
+#: hiddifypanel/templates/fake.html:1
+#, fuzzy
+msgid "config.tls_mixed_case.description"
+msgstr "config.tls_mixed_case.description"
+
+#: hiddifypanel/templates/fake.html:1
+#, fuzzy
+msgid "config.tls_padding_enable.label"
+msgstr "config.tls_padding_enable.label"
+
+#: hiddifypanel/templates/fake.html:1
+#, fuzzy
+msgid "config.tls_padding_enable.description"
+msgstr "config.tls_padding_enable.description"
+
+#: hiddifypanel/templates/fake.html:1
+#, fuzzy
+msgid "config.tls_padding_length.label"
+msgstr "config.tls_padding_length.label"
+
+#: hiddifypanel/templates/fake.html:1
+#, fuzzy
+msgid "config.tls_padding_length.description"
+msgstr "config.tls_padding_length.description"
+
 # | msgid "Proxy Path for Admins"
 #: hiddifypanel/templates/fake.html:1
 msgid "config.proxy_path_admin.label"
@@ -4301,6 +4361,46 @@ msgstr "Hysteria2 Port"
 #: hiddifypanel/templates/fake.html:1
 msgid "config.hysteria_port.description"
 msgstr "Hysteria UDP Port for example 5678"
+
+#: hiddifypanel/templates/fake.html:1
+#, fuzzy
+msgid "config.hysteria_obfs_enable.label"
+msgstr "config.hysteria_obfs_enable.label"
+
+#: hiddifypanel/templates/fake.html:1
+#, fuzzy
+msgid "config.hysteria_obfs_enable.description"
+msgstr "config.hysteria_obfs_enable.description"
+
+#: hiddifypanel/templates/fake.html:1
+#, fuzzy
+msgid "config.hysteria_up_mbps.label"
+msgstr "config.hysteria_up_mbps.label"
+
+#: hiddifypanel/templates/fake.html:1
+#, fuzzy
+msgid "config.hysteria_up_mbps.description"
+msgstr "config.hysteria_up_mbps.description"
+
+#: hiddifypanel/templates/fake.html:1
+#, fuzzy
+msgid "config.hysteria_down_mbps.label"
+msgstr "config.hysteria_down_mbps.label"
+
+#: hiddifypanel/templates/fake.html:1
+#, fuzzy
+msgid "config.hysteria_down_mbps.description"
+msgstr "config.hysteria_down_mbps.description"
+
+#: hiddifypanel/templates/fake.html:2
+#, fuzzy
+msgid "config.tls_trick.label"
+msgstr "config.tls_trick.label"
+
+#: hiddifypanel/templates/fake.html:2
+#, fuzzy
+msgid "config.tls_trick.description"
+msgstr "config.tls_trick.description"
 
 # | msgid "SSH Proxy"
 #: hiddifypanel/templates/fake.html:2
