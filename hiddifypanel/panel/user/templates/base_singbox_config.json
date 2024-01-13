@@ -1,5 +1,5 @@
+{% set V1_7= g.user_agent['is_singbox'] and g.user_agent['singbox_version'][0]==1 and g.user_agent['singbox_version'][1]<8 %}
 {
-    {% set V1_7= g.user_agent['is_singbox'] and g.user_agent['singbox_version'][0]==1 and g.user_agent['singbox_version'][1]<8 %}
     "outbounds": [
         {
             "tag": "direct",
@@ -16,11 +16,41 @@
         {
             "tag": "dns-out",
             "type": "dns"
-        }],
+        }
+    ],
     "route": {
         "auto_detect_interface": true,
         "override_android_vpn": true,
         "final": "Select",
+  {% if V1_7 %}
+  "geoip": {
+      "download_url": "https://github.com/Chocolate4U/Iran-sing-box-rules/releases/latest/download/geoip.db"
+  },
+  "geosite": {
+    "download_url": "https://github.com/Chocolate4U/Iran-sing-box-rules/releases/latest/download/geosite.db"
+  },
+  {%else%}
+    "rule_set": [
+      {
+        "tag": "geosite-ir",
+        "type": "remote",
+        "format": "binary",
+        "url": "https:\/\/raw.githubusercontent.com\/Chocolate4U\/Iran-sing-box-rules\/rule-set\/geosite-ir.srs"
+      },
+      {
+        "tag": "geosite-category-ads-all",
+        "type": "remote",
+        "format": "binary",
+        "url": "https:\/\/raw.githubusercontent.com\/Chocolate4U\/Iran-sing-box-rules\/rule-set\/geosite-category-ads-all.srs"
+      },
+      {
+        "tag": "geoip-ir",
+        "type": "remote",
+        "format": "binary",
+        "url": "https:\/\/raw.githubusercontent.com\/Chocolate4U\/Iran-sing-box-rules\/rule-set\/geoip-ir.srs"
+      }
+    ],
+  {%endif%}
         "rules": [
             {
                 "outbound": "dns-out",
@@ -40,13 +70,23 @@
                 ],
                 "outbound": "bypass"
             },
-            {% if V1_7 %}
             {
-                "geoip": ["ir"],               
+                {% if V1_7 %}
+                "geosite": "category-ads-all",
+                {%else%}
+                "rule_set": "geosite-category-ads-all",
+                {%endif%}
+                "outbound": "block"
+            },
+            {
+                {% if V1_7 %}
+                "geoip": ["ir"],
+                {%else%}
+                "rule_set": "geoip-ir",
+                "rule_set": "geosite-ir",
+                {%endif%}
                 "outbound": "bypass"
             },
-            {%else%}
-            {%endif%}
             {
                 "protocol": "quic",
                 "port": [
