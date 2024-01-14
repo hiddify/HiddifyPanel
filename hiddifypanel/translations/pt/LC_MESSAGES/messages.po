@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPT\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-13 20:19+0100\n"
-"PO-Revision-Date: 2024-01-13 06:29-0600\n"
+"POT-Creation-Date: 2024-01-15 00:10+0100\n"
+"PO-Revision-Date: 2024-01-13 20:22+0100\n"
 "Last-Translator: lymanrudni\n"
 "Language: pt\n"
 "Language-Team: Portuguese\n"
@@ -3211,8 +3211,9 @@ msgid "login.secret.description"
 msgstr "O código secreto é fornecido pelo provedor de serviços."
 
 #: hiddifypanel/panel/common_bp/login.py:69
+#, fuzzy
 msgid "Incorrect Password"
-msgstr ""
+msgstr "⚠️ Senha incorreta"
 
 # | msgid "Hiddify"
 #: copy.html:2 hiddifypanel/panel/common_bp/templates/login.html:3
@@ -3256,8 +3257,9 @@ msgid "open"
 msgstr "Abrir"
 
 #: hiddifypanel/panel/user/templates/redirect_to_new_format.html:16
+#, fuzzy
 msgid "Link is changed!"
-msgstr ""
+msgstr "ℹ️ O link foi alterado!"
 
 #: hiddifypanel/panel/user/templates/redirect_to_new_format.html:16
 msgid "The page has been moved to a new link. Please copy and save the new link."
@@ -3880,10 +3882,13 @@ msgid "Want to enjoy more with telegram?"
 msgstr "Conecte sua conta ao Telegram"
 
 #: hiddifypanel/panel/user/templates/home/home.html:314
+#, fuzzy
 msgid ""
 "Please connect your telegram account to the panel to be informed about "
 "latest news."
 msgstr ""
+"Conecte sua conta do Telegram ao painel para ser informado sobre as "
+"últimas novidades."
 
 # | msgid "Next"
 #: hiddifypanel/panel/user/templates/home/home.html:342
@@ -4828,52 +4833,64 @@ msgstr ""
 "proxies deve ser sim)"
 
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.tls_fragment_enable.label"
-msgstr ""
+msgstr "⏯ Habilitar fragmento TLS"
 
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.tls_fragment_enable.description"
-msgstr ""
+msgstr "Em algumas circunstâncias, pode contornar o sistema de lista negra do SNI"
 
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.tls_fragment_size.label"
-msgstr ""
+msgstr "🎚 Tamanho do fragmento TLS"
 
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.tls_fragment_size.description"
-msgstr ""
+msgstr "O tamanho de cada pacote"
 
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.tls_fragment_sleep.label"
-msgstr ""
+msgstr "⏱ Suspensão do fragmento TLS"
 
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.tls_fragment_sleep.description"
-msgstr ""
+msgstr "O atraso de tempo entre fragmentos"
 
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.tls_mixed_case.label"
-msgstr ""
+msgstr "🔠 Habilitar caso SNI misto TLS"
 
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.tls_mixed_case.description"
-msgstr ""
+msgstr "Permite fragmentação de caso SNI misto TLS"
 
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.tls_padding_enable.label"
-msgstr ""
+msgstr "♒️ Habilitar preenchimento TLS"
 
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.tls_padding_enable.description"
-msgstr ""
+msgstr "Habilita preenchimento para fragmentação TLS"
 
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.tls_padding_length.label"
-msgstr ""
+msgstr "📏 Preenchimento TLS"
 
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.tls_padding_length.description"
-msgstr ""
+msgstr "O comprimento do preenchimento para fragmentação TLS"
 
 # | msgid "Proxy Path for Admins"
 #: hiddifypanel/templates/fake.html:1
@@ -4929,36 +4946,44 @@ msgid "config.hysteria_port.description"
 msgstr "Porta UDP de histeria, por exemplo 5678"
 
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.hysteria_obfs_enable.label"
-msgstr ""
+msgstr "🚧 Habilitar Histeria OBFS"
 
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.hysteria_obfs_enable.description"
-msgstr ""
+msgstr "Ativa a ofuscação da histeria (Salamandra)"
 
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.hysteria_up_mbps.label"
-msgstr ""
+msgstr "⬆️ Upload de histeria (mbps)"
 
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.hysteria_up_mbps.description"
-msgstr ""
+msgstr "Velocidade máxima de upload de histeria"
 
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.hysteria_down_mbps.label"
-msgstr ""
+msgstr "⬇️ Download de histeria (mbps)"
 
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.hysteria_down_mbps.description"
-msgstr ""
+msgstr "Velocidade máxima de download da histeria"
 
 #: hiddifypanel/templates/fake.html:2
+#, fuzzy
 msgid "config.tls_trick.label"
-msgstr ""
+msgstr "🎛 Truque TLS"
 
 #: hiddifypanel/templates/fake.html:2
+#, fuzzy
 msgid "config.tls_trick.description"
-msgstr ""
+msgstr "As configurações de fragmentação TLS podem ser definidas nesta seção"
 
 # | msgid "SSH Proxy"
 #: hiddifypanel/templates/fake.html:2

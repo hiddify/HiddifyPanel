@@ -203,6 +203,10 @@
 
 #### Fix
 
+* Bug for hiddify next. 
+
+* Hysteria2 bug. 
+
 * Bug in singbox. 
 
 * Bug. 
@@ -598,6 +602,8 @@ with A2_
 * Bugs. 
 
 #### Other
+
+* Remove: print. 
 
 * Merge pull request #87 from Iam54r1n4/hysteria2. 
   _Hysteria2 link maker dynamically with DB (client side link)_
@@ -1081,6 +1087,14 @@ It is a visual improvement to have all users aligned in the table._
 * Convert old db to new. 
 
 * Add pysql req. 
+
+
+
+## 8.8.91 (2024-01-13)
+
+#### Fix
+
+* Bug in singbox. 
 
 
 

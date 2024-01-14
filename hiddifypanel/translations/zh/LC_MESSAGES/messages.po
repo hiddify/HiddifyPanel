@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-13 20:19+0100\n"
-"PO-Revision-Date: 2024-01-13 13:29+0100\n"
+"POT-Creation-Date: 2024-01-15 00:10+0100\n"
+"PO-Revision-Date: 2024-01-14 06:14+0100\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -2742,9 +2742,11 @@ msgstr "密码"
 msgid "login.secret.description"
 msgstr "密码由服务提供商提供。"
 
+# | msgid "⚠️ Incorrect Password"
 #: hiddifypanel/panel/common_bp/login.py:69
+#, fuzzy
 msgid "Incorrect Password"
-msgstr ""
+msgstr "⚠️密码错误"
 
 # | msgid "Hiddify"
 #: copy.html:2 hiddifypanel/panel/common_bp/templates/login.html:3
@@ -2784,9 +2786,11 @@ msgstr "复制"
 msgid "open"
 msgstr "打开"
 
+# | msgid "ℹ️ Link is Changed!"
 #: hiddifypanel/panel/user/templates/redirect_to_new_format.html:16
+#, fuzzy
 msgid "Link is changed!"
-msgstr ""
+msgstr "ℹ️链接已更改！"
 
 #: hiddifypanel/panel/user/templates/redirect_to_new_format.html:16
 msgid "The page has been moved to a new link. Please copy and save the new link."
@@ -3354,11 +3358,15 @@ msgstr "显示二维码"
 msgid "Want to enjoy more with telegram?"
 msgstr "ℹ️ 使用 Telegram 绑定账户"
 
+# | msgid ""
+# | "Please connect your Telegram account to the panel to be informed about "
+# | "latest news."
 #: hiddifypanel/panel/user/templates/home/home.html:314
+#, fuzzy
 msgid ""
 "Please connect your telegram account to the panel to be informed about "
 "latest news."
-msgstr ""
+msgstr "请将您的 Telegram 帐户连接到面板以获取最新消息。"
 
 # | msgid "Next"
 #: hiddifypanel/panel/user/templates/home/home.html:342
@@ -3514,7 +3522,7 @@ msgstr "请将您的 Telegram 帐户连接到面板以获取您订阅的最新�
 msgid "Click to Start Anti-Filter."
 msgstr "<i class=\"fa-solid fa-play\"></i> 点击启动反封锁。"
 
-# | msgid "One-click setup link for all applications (recommended)."
+# | msgid "One-click setup link for all applications (recommended)"
 #: hiddifypanel/panel/user/templates/home/one_click.html:16
 msgid "Unified link for all application."
 msgstr "为所有应用一键设置链接（推荐）。"
@@ -4192,55 +4200,80 @@ msgstr "直连 Reality 端口"
 msgid "config.reality_port.description"
 msgstr "您可以设置一个 Reality 服务的自定义端口，以节省系统开销。（允许直接连接到代理应该设置为 是）"
 
+# | msgid "⏯ Enable TLS Fragment"
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.tls_fragment_enable.label"
-msgstr ""
+msgstr "⏯ 启用 TLS 片段"
 
+# | msgid ""
+# | "Under some circumstances, it can bypass the SNI blacklist system"
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.tls_fragment_enable.description"
-msgstr ""
+msgstr "某些情况下，可以绕过SNI黑名单系统"
 
+# | msgid "🎚 TLS Fragment Size"
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.tls_fragment_size.label"
-msgstr ""
+msgstr "🎚 TLS 片段大小"
 
+# | msgid "The Size of each Packet"
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.tls_fragment_size.description"
-msgstr ""
+msgstr "每个数据包的大小"
 
+# | msgid "⏱ TLS Fragment Sleep"
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.tls_fragment_sleep.label"
-msgstr ""
+msgstr "⏱ TLS 片段睡眠"
 
+# | msgid "The time delay between Fragments"
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.tls_fragment_sleep.description"
-msgstr ""
+msgstr "Fragment之间的时间延迟"
 
+# | msgid "🔠 Enable TLS Mixed SNI Case"
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.tls_mixed_case.label"
-msgstr ""
+msgstr "🔠 启用 TLS 混合 SNI 大小写"
 
+# | msgid "Enables TLS Mixed SNI Case Fragmentation"
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.tls_mixed_case.description"
-msgstr ""
+msgstr "启用 TLS 混合 SNI 大小写分段"
 
+# | msgid "♒️ Enable TLS Padding"
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.tls_padding_enable.label"
-msgstr ""
+msgstr "♒️启用 TLS 填充"
 
+# | msgid "Enables Padding for TLS Fragmentation"
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.tls_padding_enable.description"
-msgstr ""
+msgstr "启用 TLS 碎片填充"
 
+# | msgid "📏 TLS Padding"
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.tls_padding_length.label"
-msgstr ""
+msgstr "📏 TLS 填充"
 
+# | msgid "The length of the Padding for TLS Fragmentation"
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.tls_padding_length.description"
-msgstr ""
+msgstr "TLS 分段的填充长度"
 
-# | msgid "Proxy Path for Admins"
+# | msgid "🔐 Proxy Path for Admins"
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
 msgid "config.proxy_path_admin.label"
@@ -4254,7 +4287,7 @@ msgstr "管理员的代理路径"
 msgid "config.proxy_path_admin.description"
 msgstr "我们使用秘密代理路径来为政府和机器人隐藏我们的代理"
 
-# | msgid "Proxy Path for Clients"
+# | msgid "🔏 Proxy Path for Clients"
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
 msgid "config.proxy_path_client.label"
@@ -4272,12 +4305,12 @@ msgstr "秘密代理路径对政府和机器人隐藏代理"
 msgid "config.hysteria_enable.label"
 msgstr "启用 Hysteria"
 
-# | msgid "To enable UDP based Hysteria Protocol"
+# | msgid "To Enable UDP based Hysteria Protocol"
 #: hiddifypanel/templates/fake.html:1
 msgid "config.hysteria_enable.description"
 msgstr "启用基于 UDP 的 Hysteria 协议"
 
-# | msgid "Hysteria2 Port"
+# | msgid "🔍 Hysteria2 Port"
 #: hiddifypanel/templates/fake.html:1
 msgid "config.hysteria_port.label"
 msgstr "Hysteria 端口"
@@ -4287,37 +4320,53 @@ msgstr "Hysteria 端口"
 msgid "config.hysteria_port.description"
 msgstr "Hysteria UDP 端口，例如 5678"
 
+# | msgid "🚧 Hysteria OBFS Enable"
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.hysteria_obfs_enable.label"
-msgstr ""
+msgstr "🚧 歇斯底里 OBFS 启用"
 
+# | msgid " Enables Hysteria Obfuscation (Salamander)"
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.hysteria_obfs_enable.description"
-msgstr ""
+msgstr "启用 Hysteria 混淆 (Salamander)"
 
+# | msgid "⬆️ Hysteria Upload (mbps)"
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.hysteria_up_mbps.label"
-msgstr ""
+msgstr "⬆️ 歇斯底里上传 (mbps)"
 
+# | msgid "Hysteria Maximum Upload Speed"
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.hysteria_up_mbps.description"
-msgstr ""
+msgstr "歇斯底里最大上传速度"
 
+# | msgid "⬇️ Hysteria Download (mbps)"
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.hysteria_down_mbps.label"
-msgstr ""
+msgstr "⬇️ 歇斯底里下载 (mbps)"
 
+# | msgid "Hysteria Maximum Download Speed"
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.hysteria_down_mbps.description"
-msgstr ""
+msgstr "歇斯底里最大下载速度"
 
+# | msgid "🎛 TLS Trick"
 #: hiddifypanel/templates/fake.html:2
+#, fuzzy
 msgid "config.tls_trick.label"
-msgstr ""
+msgstr "🎛 TLS 技巧"
 
+# | msgid "TLS Fragmentation configurations could be set in this section"
 #: hiddifypanel/templates/fake.html:2
+#, fuzzy
 msgid "config.tls_trick.description"
-msgstr ""
+msgstr "可以在此部分设置 TLS 分段配置"
 
 # | msgid "SSH Proxy"
 #: hiddifypanel/templates/fake.html:2
@@ -4867,7 +4916,7 @@ msgstr "动作"
 #~ msgstr "⚠️ 该操作正在进行中"
 
 # | msgid ""
-# | "You should visit this page without VPN Your Country=%(your_country)s\n"
+# | "You should visit this page without VPN Your Country =%(your_country)s\n"
 # | "Expected=%(expected_country)s"
 #~ msgid ""
 #~ "You should visit this page without VPN. Your country=%(your_country)s\n"

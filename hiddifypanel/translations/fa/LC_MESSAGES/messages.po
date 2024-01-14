@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-13 20:19+0100\n"
-"PO-Revision-Date: 2024-01-13 13:29+0100\n"
+"POT-Creation-Date: 2024-01-15 00:10+0100\n"
+"PO-Revision-Date: 2024-01-14 06:14+0100\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -2932,9 +2932,11 @@ msgstr "کد مخفی"
 msgid "login.secret.description"
 msgstr "کد مخفی توسط ارائه دهنده خدمات داده می شود."
 
+# | msgid "⚠️ Incorrect Password"
 #: hiddifypanel/panel/common_bp/login.py:69
+#, fuzzy
 msgid "Incorrect Password"
-msgstr ""
+msgstr "⚠️ رمز عبور اشتباه است"
 
 # | msgid "Hiddify"
 #: copy.html:2 hiddifypanel/panel/common_bp/templates/login.html:3
@@ -2974,9 +2976,11 @@ msgstr "کپی"
 msgid "open"
 msgstr "باز کردن"
 
+# | msgid "ℹ️ Link is Changed!"
 #: hiddifypanel/panel/user/templates/redirect_to_new_format.html:16
+#, fuzzy
 msgid "Link is changed!"
-msgstr ""
+msgstr "ℹ️ لینک تغییر کرد!"
 
 #: hiddifypanel/panel/user/templates/redirect_to_new_format.html:16
 msgid "The page has been moved to a new link. Please copy and save the new link."
@@ -3567,11 +3571,15 @@ msgstr "نمایش کیو آر کد"
 msgid "Want to enjoy more with telegram?"
 msgstr "ℹ️ وصل کردن حساب کاربری به تلگرام"
 
+# | msgid ""
+# | "Please connect your Telegram account to the panel to be informed about "
+# | "latest news."
 #: hiddifypanel/panel/user/templates/home/home.html:314
+#, fuzzy
 msgid ""
 "Please connect your telegram account to the panel to be informed about "
 "latest news."
-msgstr ""
+msgstr "لطفا اکانت تلگرام خود را به پنل متصل کنید تا از آخرین اخبار مطلع شوید."
 
 # | msgid "Next"
 #: hiddifypanel/panel/user/templates/home/home.html:342
@@ -3736,7 +3744,7 @@ msgstr ""
 msgid "Click to Start Anti-Filter."
 msgstr "<i class=\"fa-solid fa-caret-left\"></i> کلیک برای اعمال فیلترشکن"
 
-# | msgid "One-click setup link for all applications (recommended)."
+# | msgid "One-click setup link for all applications (recommended)"
 #: hiddifypanel/panel/user/templates/home/one_click.html:16
 msgid "Unified link for all application."
 msgstr "لینک یکسان برای همه برنامه‌ها"
@@ -4447,55 +4455,80 @@ msgstr ""
 "شما می توانید یک پورت سفارشی برای سرور ریالیتی خود تنظیم کنید تا پردازش "
 "سیستم را کاهش دهید. (اجازه اتصال مستقیم به پروکسی ها باید بله باشد)"
 
+# | msgid "⏯ Enable TLS Fragment"
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.tls_fragment_enable.label"
-msgstr ""
+msgstr "⏯ TLS Fragment را فعال کنید"
 
+# | msgid ""
+# | "Under some circumstances, it can bypass the SNI blacklist system"
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.tls_fragment_enable.description"
-msgstr ""
+msgstr "تحت برخی شرایط، می تواند سیستم لیست سیاه SNI را دور بزند"
 
+# | msgid "🎚 TLS Fragment Size"
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.tls_fragment_size.label"
-msgstr ""
+msgstr "🎚 اندازه قطعه TLS"
 
+# | msgid "The Size of each Packet"
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.tls_fragment_size.description"
-msgstr ""
+msgstr "اندازه هر بسته"
 
+# | msgid "⏱ TLS Fragment Sleep"
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.tls_fragment_sleep.label"
-msgstr ""
+msgstr "⏱ TLS Fragment Sleep"
 
+# | msgid "The time delay between Fragments"
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.tls_fragment_sleep.description"
-msgstr ""
+msgstr "تاخیر زمانی بین قطعات"
 
+# | msgid "🔠 Enable TLS Mixed SNI Case"
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.tls_mixed_case.label"
-msgstr ""
+msgstr "🔠 TLS Mixed SNI Case را فعال کنید"
 
+# | msgid "Enables TLS Mixed SNI Case Fragmentation"
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.tls_mixed_case.description"
-msgstr ""
+msgstr "TLS Mixed SNI Case Fragmentation را فعال می کند"
 
+# | msgid "♒️ Enable TLS Padding"
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.tls_padding_enable.label"
-msgstr ""
+msgstr "♒️ TLS Padding را فعال کنید"
 
+# | msgid "Enables Padding for TLS Fragmentation"
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.tls_padding_enable.description"
-msgstr ""
+msgstr "Padding را برای تکه تکه شدن TLS فعال می کند"
 
+# | msgid "📏 TLS Padding"
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.tls_padding_length.label"
-msgstr ""
+msgstr "📏 بالشتک TLS"
 
+# | msgid "The length of the Padding for TLS Fragmentation"
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.tls_padding_length.description"
-msgstr ""
+msgstr "طول Padding برای تکه تکه شدن TLS"
 
-# | msgid "Proxy Path for Admins"
+# | msgid "🔐 Proxy Path for Admins"
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
 msgid "config.proxy_path_admin.label"
@@ -4511,7 +4544,7 @@ msgstr ""
 "ما از مسیر پراکسی مخفی برای مخفی کردن پروکسی های خود برای دولت ها و ربات "
 "ها استفاده می کنیم"
 
-# | msgid "Proxy Path for Clients"
+# | msgid "🔏 Proxy Path for Clients"
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
 msgid "config.proxy_path_client.label"
@@ -4529,12 +4562,12 @@ msgstr "مسیر مخفی پروکسی پروکسی ها را از دولت ها
 msgid "config.hysteria_enable.label"
 msgstr "هیستریا را فعال کنید"
 
-# | msgid "To enable UDP based Hysteria Protocol"
+# | msgid "To Enable UDP based Hysteria Protocol"
 #: hiddifypanel/templates/fake.html:1
 msgid "config.hysteria_enable.description"
 msgstr "برای فعال کردن پروتکل هیستریا مبتنی بر UDP"
 
-# | msgid "Hysteria2 Port"
+# | msgid "🔍 Hysteria2 Port"
 #: hiddifypanel/templates/fake.html:1
 msgid "config.hysteria_port.label"
 msgstr "پورت هیستریا"
@@ -4545,37 +4578,53 @@ msgstr "پورت هیستریا"
 msgid "config.hysteria_port.description"
 msgstr "پورت Hysteria UDP برای مثال 5678"
 
+# | msgid "🚧 Hysteria OBFS Enable"
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.hysteria_obfs_enable.label"
-msgstr ""
+msgstr "🚧 فعال کردن Hysteria OBFS"
 
+# | msgid " Enables Hysteria Obfuscation (Salamander)"
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.hysteria_obfs_enable.description"
-msgstr ""
+msgstr "مبهم سازی هیستری (Salamander) را فعال می کند"
 
+# | msgid "⬆️ Hysteria Upload (mbps)"
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.hysteria_up_mbps.label"
-msgstr ""
+msgstr "⬆️ آپلود هیستری (mbps)"
 
+# | msgid "Hysteria Maximum Upload Speed"
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.hysteria_up_mbps.description"
-msgstr ""
+msgstr "حداکثر سرعت آپلود هیستری"
 
+# | msgid "⬇️ Hysteria Download (mbps)"
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.hysteria_down_mbps.label"
-msgstr ""
+msgstr "⬇️ دانلود Hysteria (mbps)"
 
+# | msgid "Hysteria Maximum Download Speed"
 #: hiddifypanel/templates/fake.html:1
+#, fuzzy
 msgid "config.hysteria_down_mbps.description"
-msgstr ""
+msgstr "Hysteria حداکثر سرعت دانلود"
 
+# | msgid "🎛 TLS Trick"
 #: hiddifypanel/templates/fake.html:2
+#, fuzzy
 msgid "config.tls_trick.label"
-msgstr ""
+msgstr "🎛 ترفند TLS"
 
+# | msgid "TLS Fragmentation configurations could be set in this section"
 #: hiddifypanel/templates/fake.html:2
+#, fuzzy
 msgid "config.tls_trick.description"
-msgstr ""
+msgstr "تنظیمات TLS Fragmentation را می توان در این بخش تنظیم کرد"
 
 # | msgid "SSH Proxy"
 #: hiddifypanel/templates/fake.html:2
@@ -5189,7 +5238,7 @@ msgstr "عملیات"
 #~ msgstr "⚠️ این اقدام هنوز تمام نشده است"
 
 # | msgid ""
-# | "You should visit this page without VPN Your Country=%(your_country)s\n"
+# | "You should visit this page without VPN Your Country =%(your_country)s\n"
 # | "Expected=%(expected_country)s"
 #~ msgid ""
 #~ "You should visit this page without VPN. Your country=%(your_country)s\n"
