@@ -112,9 +112,9 @@ def init_app(app):
         next_url = None
 
         if g.uuid:
-            print("uuid", g.uuid, is_admin_path)
+            # print("uuid", g.uuid, is_admin_path)
             account = get_account_by_uuid(g.uuid, is_admin_path)
-            print(account)
+            # print(account)
             if not account:
                 return logout_redirect()
 
