@@ -555,8 +555,8 @@ def add_tuic(base, proxy):
 
 
 def add_hysteria(base, proxy):
-    base['up_mbps'] = hconfig(ConfigEnum.hysteria_up_mbps)
-    base['down_mbps'] = hconfig(ConfigEnum.hysteria_down_mbps)
+    base['up_mbps'] = int(hconfig(ConfigEnum.hysteria_up_mbps))
+    base['down_mbps'] = int(hconfig(ConfigEnum.hysteria_down_mbps))
     # TODO: check the obfs should be empty or not exists at all
     if hconfig(ConfigEnum.hysteria_obfs_enable):
         base['obfs'] = {
