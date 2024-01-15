@@ -203,6 +203,8 @@
 
 #### Fix
 
+* Bug in release. 
+
 * Bug for hiddify next. 
 
 * Hysteria2 bug. 
@@ -602,6 +604,8 @@ with A2_
 * Bugs. 
 
 #### Other
+
+* Better singbox config. 
 
 * Remove: print. 
 
@@ -1087,6 +1091,22 @@ It is a visual improvement to have all users aligned in the table._
 * Convert old db to new. 
 
 * Add pysql req. 
+
+
+
+## 8.8.93 (2024-01-15)
+
+#### Other
+
+* Better singbox config. 
+
+
+
+## 8.8.92 (2024-01-14)
+
+#### Fix
+
+* Bug for hiddify next. 
 
 
 

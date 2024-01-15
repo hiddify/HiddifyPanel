@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPT\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-15 00:10+0100\n"
-"PO-Revision-Date: 2024-01-13 20:22+0100\n"
+"POT-Creation-Date: 2024-01-15 11:40+0100\n"
+"PO-Revision-Date: 2024-01-15 03:43-0600\n"
 "Last-Translator: lymanrudni\n"
 "Language: pt\n"
 "Language-Team: Portuguese\n"
@@ -3210,6 +3210,7 @@ msgstr "Codigo secreto"
 msgid "login.secret.description"
 msgstr "O código secreto é fornecido pelo provedor de serviços."
 
+# | msgid "⚠️ Incorrect Password"
 #: hiddifypanel/panel/common_bp/login.py:69
 #, fuzzy
 msgid "Incorrect Password"
@@ -3256,6 +3257,7 @@ msgstr "cópia de"
 msgid "open"
 msgstr "Abrir"
 
+# | msgid "ℹ️ Link is Changed!"
 #: hiddifypanel/panel/user/templates/redirect_to_new_format.html:16
 #, fuzzy
 msgid "Link is changed!"
@@ -3881,6 +3883,9 @@ msgstr "Exibir código QR"
 msgid "Want to enjoy more with telegram?"
 msgstr "Conecte sua conta ao Telegram"
 
+# | msgid ""
+# | "Please connect your Telegram account to the panel to be informed about "
+# | "latest news."
 #: hiddifypanel/panel/user/templates/home/home.html:314
 #, fuzzy
 msgid ""
@@ -4061,7 +4066,7 @@ msgstr ""
 msgid "Click to Start Anti-Filter."
 msgstr "<i class=\"fa-solid fa-play\"></i> Toque para iniciar o Antifiltro."
 
-# | msgid "One-click setup link for all applications (recommended)."
+# | msgid "One-click setup link for all applications (recommended)"
 #: hiddifypanel/panel/user/templates/home/one_click.html:16
 #, fuzzy
 msgid "Unified link for all application."
@@ -4832,67 +4837,80 @@ msgstr ""
 "para reduzir a sobrecarga do sistema. (Permitir conexão direta com "
 "proxies deve ser sim)"
 
+# | msgid "⏯ Enable TLS Fragment"
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
 msgid "config.tls_fragment_enable.label"
 msgstr "⏯ Habilitar fragmento TLS"
 
+# | msgid ""
+# | "Under some circumstances, it can bypass the SNI blacklist system"
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
 msgid "config.tls_fragment_enable.description"
 msgstr "Em algumas circunstâncias, pode contornar o sistema de lista negra do SNI"
 
+# | msgid "🎚 TLS Fragment Size"
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
 msgid "config.tls_fragment_size.label"
 msgstr "🎚 Tamanho do fragmento TLS"
 
+# | msgid "The Size of each Packet"
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
 msgid "config.tls_fragment_size.description"
 msgstr "O tamanho de cada pacote"
 
+# | msgid "⏱ TLS Fragment Sleep"
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
 msgid "config.tls_fragment_sleep.label"
 msgstr "⏱ Suspensão do fragmento TLS"
 
+# | msgid "The time delay between Fragments"
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
 msgid "config.tls_fragment_sleep.description"
 msgstr "O atraso de tempo entre fragmentos"
 
+# | msgid "🔠 Enable TLS Mixed SNI Case"
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
 msgid "config.tls_mixed_case.label"
 msgstr "🔠 Habilitar caso SNI misto TLS"
 
+# | msgid "Enables TLS Mixed SNI Case Fragmentation"
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
 msgid "config.tls_mixed_case.description"
 msgstr "Permite fragmentação de caso SNI misto TLS"
 
+# | msgid "♒️ Enable TLS Padding"
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
 msgid "config.tls_padding_enable.label"
 msgstr "♒️ Habilitar preenchimento TLS"
 
+# | msgid "Enables Padding for TLS Fragmentation"
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
 msgid "config.tls_padding_enable.description"
 msgstr "Habilita preenchimento para fragmentação TLS"
 
+# | msgid "📏 TLS Padding"
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
 msgid "config.tls_padding_length.label"
 msgstr "📏 Preenchimento TLS"
 
+# | msgid "The length of the Padding for TLS Fragmentation"
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
 msgid "config.tls_padding_length.description"
 msgstr "O comprimento do preenchimento para fragmentação TLS"
 
-# | msgid "Proxy Path for Admins"
+# | msgid "🔐 Proxy Path for Admins"
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
 msgid "config.proxy_path_admin.label"
@@ -4908,7 +4926,7 @@ msgstr ""
 "Usamos um caminho de proxy secreto para ocultar nossos proxies para "
 "governos e bots"
 
-# | msgid "Proxy Path for Clients"
+# | msgid "🔏 Proxy Path for Clients"
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
 msgid "config.proxy_path_client.label"
@@ -4927,13 +4945,13 @@ msgstr "O caminho secreto do proxy esconde os proxies dos governos e bots"
 msgid "config.hysteria_enable.label"
 msgstr "Habilitar Histeria"
 
-# | msgid "To enable UDP based Hysteria Protocol"
+# | msgid "To Enable UDP based Hysteria Protocol"
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
 msgid "config.hysteria_enable.description"
 msgstr "Para ativar o protocolo de histeria baseado em udp"
 
-# | msgid "Hysteria2 Port"
+# | msgid "🔍 Hysteria2 Port"
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
 msgid "config.hysteria_port.label"
@@ -4945,41 +4963,49 @@ msgstr "Porto de Histeria"
 msgid "config.hysteria_port.description"
 msgstr "Porta UDP de histeria, por exemplo 5678"
 
+# | msgid "🚧 Hysteria OBFS Enable"
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
 msgid "config.hysteria_obfs_enable.label"
 msgstr "🚧 Habilitar Histeria OBFS"
 
+# | msgid " Enables Hysteria Obfuscation (Salamander)"
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
 msgid "config.hysteria_obfs_enable.description"
 msgstr "Ativa a ofuscação da histeria (Salamandra)"
 
+# | msgid "⬆️ Hysteria Upload (mbps)"
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
 msgid "config.hysteria_up_mbps.label"
 msgstr "⬆️ Upload de histeria (mbps)"
 
+# | msgid "Hysteria Maximum Upload Speed"
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
 msgid "config.hysteria_up_mbps.description"
 msgstr "Velocidade máxima de upload de histeria"
 
+# | msgid "⬇️ Hysteria Download (mbps)"
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
 msgid "config.hysteria_down_mbps.label"
 msgstr "⬇️ Download de histeria (mbps)"
 
+# | msgid "Hysteria Maximum Download Speed"
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
 msgid "config.hysteria_down_mbps.description"
 msgstr "Velocidade máxima de download da histeria"
 
+# | msgid "🎛 TLS Trick"
 #: hiddifypanel/templates/fake.html:2
 #, fuzzy
 msgid "config.tls_trick.label"
 msgstr "🎛 Truque TLS"
 
+# | msgid "TLS Fragmentation configurations could be set in this section"
 #: hiddifypanel/templates/fake.html:2
 #, fuzzy
 msgid "config.tls_trick.description"
