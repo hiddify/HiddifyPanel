@@ -203,6 +203,8 @@
 
 #### Fix
 
+* Redis url. 
+
 * Bug in release. 
 
 * Bug for hiddify next. 
