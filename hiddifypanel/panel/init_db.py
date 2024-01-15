@@ -148,6 +148,10 @@ def init_db():
 #     add_config_if_not_exist(ConfigEnum.hysteria_enable, True)
 #     add_config_if_not_exist(ConfigEnum.hysteria_port, random.randint(5000, 20000))
 
+def _v64():
+    set_hconfig(ConfigEnum.ssh_server_redis_url, "unix:///opt/hiddify-manager/other/redis/run.sock?db=1")
+
+
 def _v63():
     add_config_if_not_exist(ConfigEnum.hysteria_enable, True)
     add_config_if_not_exist(ConfigEnum.hysteria_port, "11478")
