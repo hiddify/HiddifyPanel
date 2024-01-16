@@ -203,6 +203,8 @@
 
 #### Fix
 
+* Singbox 1.8. 
+
 * Redis url. 
 
 * Bug in release. 

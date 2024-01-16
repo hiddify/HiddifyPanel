@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-15 23:56+0100\n"
-"PO-Revision-Date: 2024-01-15 11:40+0100\n"
+"POT-Creation-Date: 2024-01-16 20:51+0100\n"
+"PO-Revision-Date: 2024-01-15 23:28-0600\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -3991,12 +3991,9 @@ msgstr "⚠️ 您确定要执行此操作吗？"
 # | "<br><br>\n"
 # | "\n"
 # | "ℹ️ Also, we need financial help to further develop this panel and our
-# service (we are non-profit).\n"
-# | "<h5>Other Payment Methods</h5>\n"
+# service (we are Non-Profit).\n"
+# | "<h5>Payment Methods :</h5>\n"
 # | "<ul>\n"
-# | "<li> <a target=\"_blank\"
-# href=\"https://opencollective.com/hiddify/contribute/backer-50556/checkout?interval=month&amount=25\"
-# class=\"btn btn-info\">Credit Card And PayPal</a></li>\n"
 # | "<li> <div class=\"btn-group\">\n"
 # | "    <a role=\"button\"
 # data-copy=\"EQCWnykA-YhavOXgH3sf-uxtXLjy83_9n5bJPGRPE8r2247_\" class=\"btn
@@ -4033,7 +4030,9 @@ msgstr "⚠️ 您确定要执行此操作吗？"
 # | "We need also other help:\n"
 # | "<li>👥 Share Hiddify Manager with Others</li>\n"
 # | "<li>📝Python Developer</li>\n"
-# | "<li>📝Kotlin Developer</li>\n"
+# | "<li>📝Swift Developer</li>\n"
+# | "<li>📝Flutter Developer</li>\n"
+# | "<li>📝Go Developer</li>\n"
 # | "<li>🖥Content Providers</li>\n"
 # | "Please contact us at <a
 # href=\"mailto:info@hiddify.com\">info@hiddify.com</a> if you can help us."
@@ -4320,11 +4319,11 @@ msgstr "Hysteria 端口"
 msgid "config.hysteria_port.description"
 msgstr "Hysteria UDP 端口，例如 5678"
 
-# | msgid "🚧 Hysteria OBFS Enable"
+# | msgid "🎛 Hysteria OBFS Enable"
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
 msgid "config.hysteria_obfs_enable.label"
-msgstr "🚧 歇斯底里 OBFS 启用"
+msgstr "🎛 歇斯底里 OBFS 启用"
 
 # | msgid " Enables Hysteria Obfuscation (Salamander)"
 #: hiddifypanel/templates/fake.html:1
@@ -4356,11 +4355,11 @@ msgstr "⬇️ 歇斯底里下载 (mbps)"
 msgid "config.hysteria_down_mbps.description"
 msgstr "歇斯底里最大下载速度"
 
-# | msgid "🎛 TLS Trick"
+# | msgid "TLS Trick"
 #: hiddifypanel/templates/fake.html:2
 #, fuzzy
 msgid "config.tls_trick.label"
-msgstr "🎛 TLS 技巧"
+msgstr "TLS 技巧"
 
 # | msgid "TLS Fragmentation configurations could be set in this section"
 #: hiddifypanel/templates/fake.html:2
