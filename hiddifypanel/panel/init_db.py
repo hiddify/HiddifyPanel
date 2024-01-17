@@ -150,12 +150,12 @@ def init_db():
 
 def _v65():
     add_config_if_not_exist(ConfigEnum.mux_enable, False)
-    add_config_if_not_exist(ConfigEnum.mux_protocol, 'yamux')
+    add_config_if_not_exist(ConfigEnum.mux_protocol, 'smux')
     add_config_if_not_exist(ConfigEnum.mux_max_connections, '4')
-    add_config_if_not_exist(ConfigEnum.mux_min_streams, '1')
-    add_config_if_not_exist(ConfigEnum.mux_max_streams, '5')
+    add_config_if_not_exist(ConfigEnum.mux_min_streams, '4')
+    add_config_if_not_exist(ConfigEnum.mux_max_streams, '0')
     add_config_if_not_exist(ConfigEnum.mux_padding_enable, False)
-    add_config_if_not_exist(ConfigEnum.mux_brutal_enable, False)
+    add_config_if_not_exist(ConfigEnum.mux_brutal_enable, True)
     add_config_if_not_exist(ConfigEnum.mux_brutal_up_mbps, '100')
     add_config_if_not_exist(ConfigEnum.mux_brutal_down_mbps, '100')
 
