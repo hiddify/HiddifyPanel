@@ -1,4 +1,5 @@
 import glob
+import uuid
 import user_agents
 import json
 import subprocess
@@ -876,7 +877,7 @@ def get_direct_host_or_ip(prefer_version: int):
     else:
         direct = hutils.ip.get_ip(prefer_version)
     if not direct:
-        direct = hutils.ip.get_ip(socket.AF_INET if prefer_version == socket.AF_INET6 else socket.AF_INET6)
+        direct = hutils.ip.get_ip(4 if prefer_version == 6 else 6)
     return direct
 
 
