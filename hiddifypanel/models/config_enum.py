@@ -20,6 +20,7 @@ class ConfigCategory(StrEnum):
     telegram = auto()
     http = auto()
     tls = auto()
+    mux = auto()
     tls_trick = auto()
     ssh = auto()
     ssfaketls = auto()
@@ -80,6 +81,17 @@ class ConfigEnum(StrEnum):
     tls_mixed_case = auto()
     tls_padding_enable = auto()
     tls_padding_length = auto()
+
+    # mux
+    mux_enable = auto()
+    mux_protocol = auto()
+    mux_max_connections = auto()
+    mux_min_streams = auto()
+    mux_max_streams = auto()
+    mux_padding_enable = auto()
+    mux_brutal_enable = auto()
+    mux_brutal_up_mbps = auto()
+    mux_brutal_down_mbps = auto()
 
     http_ports = auto()
     kcp_ports = auto()
@@ -219,6 +231,16 @@ class ConfigEnum(StrEnum):
             self.tls_padding_enable: {'category': ConfigCategory.tls_trick, 'apply_mode': 'apply', 'type': bool},
             self.tls_padding_length: {'category': ConfigCategory.tls_trick, 'apply_mode': 'apply'},
 
+            # mux
+            self.mux_enable: {'category': ConfigCategory.mux, 'apply_mode': 'apply', 'type': bool},
+            self.mux_protocol: {'category': ConfigCategory.mux, 'apply_mode': 'apply'},
+            self.mux_max_connections: {'category': ConfigCategory.mux, 'apply_mode': 'apply'},
+            self.mux_min_streams: {'category': ConfigCategory.mux, 'apply_mode': 'apply'},
+            self.mux_max_streams: {'category': ConfigCategory.mux, 'apply_mode': 'apply'},
+            self.mux_padding_enable: {'category': ConfigCategory.mux, 'apply_mode': 'apply', 'type': bool},
+            self.mux_brutal_enable: {'category': ConfigCategory.mux, 'apply_mode': 'apply', 'type': bool},
+            self.mux_brutal_up_mbps: {'category': ConfigCategory.mux, 'apply_mode': 'apply'},
+            self.mux_brutal_down_mbps: {'category': ConfigCategory.mux, 'apply_mode': 'apply'},
 
             self.http_ports: {'category': ConfigCategory.http, 'apply_mode': 'apply'},  # http
             self.kcp_ports: {'category': ConfigCategory.hidden, 'apply_mode': 'apply'},

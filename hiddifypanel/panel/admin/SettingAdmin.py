@@ -211,6 +211,9 @@ def get_config_form():
                 libs = [("python", _("lib.telegram.python")), ("tgo", _("lib.telegram.go")), ("orig", _("lib.telegram.orignal")), ("erlang", _("lib.telegram.erlang"))]
                 field = wtf.fields.SelectField(_("config.telegram_lib.label"), choices=libs, description=_(
                     "config.telegram_lib.description"), default=hconfig(ConfigEnum.telegram_lib))
+            elif c.key == ConfigEnum.mux_protocol:
+                choices = [("smux", 'smux'), ("yamux", "yamux"), ("h2mux", "h2mux")]
+                field = wtf.fields.SelectField(_(f"config.{c.key}.label"), choices=choices, description=_(f"config.{c.key}.description"))
             elif c.key == ConfigEnum.warp_sites:
                 validators = [wtf.validators.Length(max=2048)]
                 render_kw = {'class': "ltr", 'maxlength': 2048}
@@ -265,12 +268,14 @@ def get_config_form():
                         render_kw['required'] = ""
                     else:
                         validators.append(wtf.validators.Regexp("^(\d+)(,\d+)*$|^$", re.IGNORECASE, _("config.Invalid port")))
-
                     # validators.append(wtf.validators.Regexp("^(\d+)(,\d+)*$",re.IGNORECASE,_("config.port is required")))
+
+                # tls tricks validations
                 if c.key in [ConfigEnum.tls_fragment_size, ConfigEnum.tls_fragment_sleep, ConfigEnum.tls_padding_length]:
-                    validators.append(wtf.validators.Regexp("^\d+-\d+$", re.IGNORECASE, _(f"config.Invalid {str(c.key).replace('tls_','').replace('_',' ')}")))
-                if c.key in [ConfigEnum.hysteria_up_mbps, ConfigEnum.hysteria_down_mbps]:
-                    validators.append(wtf.validators.Regexp("^\d+$", re.IGNORECASE, _(f"config.Invalid {str(c.key).replace('hysteria_','').replace('_',' ')}")))
+                    validators.append(wtf.validators.Regexp("^\d+-\d+$", re.IGNORECASE, _("config.Invalid! The pattern is number-number")+f' {c.key}'))
+                # mux and hysteria validations
+                if c.key in [ConfigEnum.hysteria_up_mbps, ConfigEnum.hysteria_down_mbps, ConfigEnum.mux_max_connections, ConfigEnum.mux_min_streams, ConfigEnum.mux_max_streams, ConfigEnum.mux_brutal_down_mbps, ConfigEnum.mux_brutal_up_mbps]:
+                    validators.append(wtf.validators.Regexp("^\d+$", re.IGNORECASE, _("config.Invalid! it should be a number only")+f' {c.key}'))
                 for val in validators:
                     if hasattr(val, "regex"):
                         render_kw['pattern'] = val.regex.pattern
