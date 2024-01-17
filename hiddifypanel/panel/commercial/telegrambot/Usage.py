@@ -1,3 +1,4 @@
+from hiddifypanel.panel import hiddify
 from telebot import types
 from flask_babelex import gettext as _
 from flask import current_app as app
@@ -52,7 +53,7 @@ def get_usage_msg(uuid, domain=None):
         reset_day = user_data['reset_day']
 
         domain = domain or get_panel_domains()[0]
-        user_link = hiddify.get_account_panel_link(user,domain.domain)
+        user_link = hiddify.get_account_panel_link(user, domain.domain)
         msg = f"""{_('<a href="%(user_link)s"> %(user)s</a>',user_link=user_link ,user=user.name if user.name != "default" else "")}\n\n"""
 
         msg += f"""{_('user.home.usage.title')} {round(user.current_usage_GB, 3)}GB <b>{_('user.home.usage.from')}</b> {user.usage_limit_GB}GB  {_('user.home.usage.monthly') if user.monthly else ''}\n"""

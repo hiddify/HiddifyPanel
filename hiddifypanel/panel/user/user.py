@@ -307,7 +307,7 @@ def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
         'ConfigEnum': ConfigEnum,
         'link_maker': link_maker,
         'domains': domains,
-        "bot": g.bot,
+        "bot": g.get('bot', None),
         "db_domain": db_domain,
         "telegram_enable": hconfig(ConfigEnum.telegram_enable) and any([d for d in domains if d.mode in [DomainType.direct, DomainType.relay, DomainType.old_xtls_direct]]),
         "ip": user_ip,
@@ -315,7 +315,7 @@ def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
         "asn": asn,
         "country": auto_ip_selector.get_country(user_ip),
         'has_auto_cdn': has_auto_cdn,
-        'profile_url': hiddify.get_account_panel_link(g.account, domain)
+        'profile_url': hiddify.get_account_panel_link(g.account if g.get('account') else user, domain)
     }
 
 
