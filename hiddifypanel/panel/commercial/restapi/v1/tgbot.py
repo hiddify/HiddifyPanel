@@ -56,8 +56,7 @@ def init_app(app):
 
 
 class TGBotResource(Resource):
-    @hiddify.api_v1_auth
-    def post(self, admin_uuid):
+    def post(self, admin_uuid=None):
         try:
             if request.headers.get('content-type') == 'application/json':
                 json_string = request.get_data().decode('utf-8')
