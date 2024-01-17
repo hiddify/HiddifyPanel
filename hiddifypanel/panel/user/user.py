@@ -24,7 +24,7 @@ class UserView(FlaskView):
         ua = request.user_agent.string
         print(ua)
         print(hiddify.get_user_agent())
-        return ua, 400
+        return ua
 
     def index(self):
         return self.auto_sub()
