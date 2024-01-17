@@ -148,6 +148,18 @@ def init_db():
 #     add_config_if_not_exist(ConfigEnum.hysteria_enable, True)
 #     add_config_if_not_exist(ConfigEnum.hysteria_port, random.randint(5000, 20000))
 
+def _v65():
+    add_config_if_not_exist(ConfigEnum.mux_enable, False)
+    add_config_if_not_exist(ConfigEnum.mux_protocol, 'yamux')
+    add_config_if_not_exist(ConfigEnum.mux_max_connections, '4')
+    add_config_if_not_exist(ConfigEnum.mux_min_streams, '1')
+    add_config_if_not_exist(ConfigEnum.mux_max_streams, '5')
+    add_config_if_not_exist(ConfigEnum.mux_padding_enable, False)
+    add_config_if_not_exist(ConfigEnum.mux_brutal_enable, False)
+    add_config_if_not_exist(ConfigEnum.mux_brutal_up_mbps, '100')
+    add_config_if_not_exist(ConfigEnum.mux_brutal_down_mbps, '100')
+
+
 def _v64():
     set_hconfig(ConfigEnum.ssh_server_redis_url, "unix:///opt/hiddify-manager/other/redis/run.sock?db=1")
 
