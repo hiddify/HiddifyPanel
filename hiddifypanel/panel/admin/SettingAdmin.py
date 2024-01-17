@@ -267,7 +267,10 @@ def get_config_form():
                         validators.append(wtf.validators.Regexp("^(\d+)(,\d+)*$|^$", re.IGNORECASE, _("config.Invalid port")))
 
                     # validators.append(wtf.validators.Regexp("^(\d+)(,\d+)*$",re.IGNORECASE,_("config.port is required")))
-
+                if c.key in [ConfigEnum.tls_fragment_size, ConfigEnum.tls_fragment_sleep, ConfigEnum.tls_padding_length]:
+                    validators.append(wtf.validators.Regexp("^\d+-\d+$", re.IGNORECASE, _(f"config.Invalid {str(c.key).replace('tls_','').replace('_',' ')}")))
+                if c.key in [ConfigEnum.hysteria_up_mbps, ConfigEnum.hysteria_down_mbps]:
+                    validators.append(wtf.validators.Regexp("^\d+$", re.IGNORECASE, _(f"config.Invalid {str(c.key).replace('hysteria_','').replace('_',' ')}")))
                 for val in validators:
                     if hasattr(val, "regex"):
                         render_kw['pattern'] = val.regex.pattern
