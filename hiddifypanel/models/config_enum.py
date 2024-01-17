@@ -257,7 +257,7 @@ class ConfigEnum(StrEnum):
             self.tuic_port: {'category': ConfigCategory.hidden, 'apply_mode': 'apply'},
 
             self.hysteria_enable: {'category': ConfigCategory.hidden, 'type': bool, 'apply_mode': 'apply'},
-            self.hysteria_port: {'category': ConfigCategory.hysteria, 'apply_mode': 'apply'},
+            self.hysteria_port: {'category': ConfigCategory.hidden, 'apply_mode': 'apply'},
             self.hysteria_obfs_enable: {'category': ConfigCategory.hysteria, 'type': bool, 'apply_mode': 'apply'},
             self.hysteria_up_mbps: {'category': ConfigCategory.hysteria, 'apply_mode': 'apply'},
             self.hysteria_down_mbps: {'category': ConfigCategory.hysteria, 'apply_mode': 'apply'},
