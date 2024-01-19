@@ -55,14 +55,14 @@ class UserView(FlaskView):
     def sub64(self):
         return self.all_configs(base64=True)
 
-    @route("/full-singbox/")
-    @route("/full-singbox")
+    @route("/singbox/")
+    @route("/singbox")
     @login_required(roles={Role.user})
     def singbox_full(self):
         return self.full_singbox()
 
-    @route("/singbox/")
-    @route("/singbox")
+    @route("/singbox-ssh/")
+    @route("/singbox-ssh")
     @login_required(roles={Role.user})
     def singbox_ssh(self):
         return self.singbox()
@@ -71,11 +71,13 @@ class UserView(FlaskView):
     @route("/clash")
     @login_required(roles={Role.user})
     def clash(self):
-        ua = request.user_agent.string
-        if re.match('^(Clash-verge|Clash-?Meta|Stash|NekoBox|NekoRay|Pharos|hiddify-desktop)', ua, re.IGNORECASE):
-            return self.clash_config(meta_or_normal="meta")
-        else:  # if re.match('^(Clash|Stash)', ua, re.IGNORECASE):
-            return self.clash_config(meta_or_normal="normal")
+        return self.clash_config(meta_or_normal="normal")
+
+    @route("/clashmeta/")
+    @route("/clashmeta")
+    @login_required(roles={Role.user})
+    def clashmeta(self):
+        return self.clash_config(meta_or_normal="meta")
     # endregion
 
     @ route('/new/')
