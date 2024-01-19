@@ -91,7 +91,7 @@ def create_app(cli=False, **config):
         if "admin" in request.base_url:
             g.locale = hconfig(ConfigEnum.admin_lang) or hconfig(ConfigEnum.lang) or 'fa'
         else:
-            g.locale = g.account.lang or hconfig(ConfigEnum.lang) or "fa"
+            g.locale = g.account.lang if hasattr(g, 'account') and g.account.lang else hconfig(ConfigEnum.lang) or 'fa'
         return g.locale
 
     from flask_wtf.csrf import CSRFProtect
