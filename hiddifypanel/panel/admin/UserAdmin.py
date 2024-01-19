@@ -30,7 +30,7 @@ class UserAdmin(AdminLTEModelView):
     list_template = 'model/user_list.html'
 
     # form_columns = ["name", "current_usage_GB", "remaining_days", "comment", 'last_online', 'mode', 'admin', "uuid"]
-    form_excluded_columns = ['current_usage', 'monthly', 'telegram_id', 'last_online', 'expiry_time', 'last_reset_time', 'current_usage_GB',
+    form_excluded_columns = ['current_usage', 'monthly', 'last_online', 'expiry_time', 'last_reset_time', 'current_usage_GB',
                              'start_date', 'added_by', 'admin', 'details', 'max_ips', 'ed25519_private_key', 'ed25519_public_key', 'username', 'password']
     page_size = 50
     # edit_modal=True
@@ -121,7 +121,7 @@ class UserAdmin(AdminLTEModelView):
         # print("model.telegram_id",model.telegram_id)
         extra = ""
         if hconfig(ConfigEnum.telegram_bot_token):
-            if model.telegram_id:
+            if model.telegram_id and model.telegram_id != '0':
                 extra = f'<button class="btn hbtn bg-h-blue btn-xs " onclick="show_send_message({model.id})" ><i class="fa-solid fa-paper-plane"></i></button> '
             else:
                 extra = f'<button class="btn hbtn bg-h-grey btn-xs disabled"><i class="fa-solid fa-paper-plane"></i></button> '
@@ -249,9 +249,10 @@ class UserAdmin(AdminLTEModelView):
             flash(('<div id="show-modal-donation"></div>'), ' d-none')
         if not re.match("^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$", model.uuid):
             raise ValidationError('Invalid UUID e.g.,' + str(uuid.uuid4()))
-
         if form.reset_usage.data:
             model.current_usage_GB = 0
+        if model.telegram_id and model.telegram_id != '0' and not re.match(r"^[1-9]\d*$", model.telegram_id):
+            raise ValidationError('Invalid Telegram ID')
         # if form.disable_user.data:
         #     model.mode=UserMode.disable
         if form.reset_days.data:
