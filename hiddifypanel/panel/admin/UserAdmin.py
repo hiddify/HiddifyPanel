@@ -121,7 +121,7 @@ class UserAdmin(AdminLTEModelView):
         # print("model.telegram_id",model.telegram_id)
         extra = ""
         if hconfig(ConfigEnum.telegram_bot_token):
-            if model.telegram_id:
+            if model.telegram_id and model.telegram_id != '0':
                 extra = f'<button class="btn hbtn bg-h-blue btn-xs " onclick="show_send_message({model.id})" ><i class="fa-solid fa-paper-plane"></i></button> '
             else:
                 extra = f'<button class="btn hbtn bg-h-grey btn-xs disabled"><i class="fa-solid fa-paper-plane"></i></button> '
@@ -249,9 +249,10 @@ class UserAdmin(AdminLTEModelView):
             flash(('<div id="show-modal-donation"></div>'), ' d-none')
         if not re.match("^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$", model.uuid):
             raise ValidationError('Invalid UUID e.g.,' + str(uuid.uuid4()))
-
         if form.reset_usage.data:
             model.current_usage_GB = 0
+        # if model.telegram_id and model.telegram_id != '0' and not re.match(r"^[1-9]\d*$", model.telegram_id):
+        #     raise ValidationError('Invalid Telegram ID')
         # if form.disable_user.data:
         #     model.mode=UserMode.disable
         if form.reset_days.data:
