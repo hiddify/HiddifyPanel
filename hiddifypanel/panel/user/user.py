@@ -55,8 +55,8 @@ class UserView(FlaskView):
     def sub64(self):
         return self.all_configs(base64=True)
 
-    @route("/full-singbox/")
-    @route("/full-singbox")
+    @route("/singbox/")
+    @route("/singbox")
     @login_required(roles={Role.user})
     def singbox_full(self):
         return self.full_singbox()
