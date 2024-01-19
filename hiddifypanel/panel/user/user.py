@@ -34,11 +34,62 @@ class UserView(FlaskView):
             return self.new()
         return self.get_proper_config() or self.all_configs(base64=True)
 
-    @route('/sub')
-    @route('/sub/')
+    # former /sub/ or /sub (it was auto actually but we named it as /sub/)
+    # TODO: @hiddify: check this out
+    @route('/auto/')
+    @route('/auto')
     @login_required(roles={Role.user})
     def force_sub(self):
         return self.get_proper_config() or self.all_configs(base64=False)
+
+    # region new endpoints
+    @route("/sub/")
+    @route("/sub")
+    @login_required(roles={Role.user})
+    def sub(self):
+        return self.all_configs(base64=False)
+
+    @route("/sub64/")
+    @route("/sub64")
+    @login_required(roles={Role.user})
+    def sub64(self):
+        return self.all_configs(base64=True)
+
+    @route("/full-singbox/")
+    @route("/full-singbox")
+    @login_required(roles={Role.user})
+    def singbox_full(self):
+        return self.full_singbox()
+
+    @route("/singbox/")
+    @route("/singbox")
+    @login_required(roles={Role.user})
+    def singbox_ssh(self):
+        return self.singbox()
+
+    @route("/clash/")
+    @route("/clash")
+    @login_required(roles={Role.user})
+    def clash(self):
+        ua = request.user_agent.string
+        if re.match('^(Clash-verge|Clash-?Meta|Stash|NekoBox|NekoRay|Pharos|hiddify-desktop)', ua, re.IGNORECASE):
+            return self.clash_config(meta_or_normal="meta")
+        else:  # if re.match('^(Clash|Stash)', ua, re.IGNORECASE):
+            return self.clash_config(meta_or_normal="normal")
+    # endregion
+
+    @ route('/new/')
+    @ route('/new')
+    @login_required(roles={Role.user})
+    def new(self):
+        conf = self.get_proper_config()
+        if conf:
+            return conf
+
+        c = get_common_data(g.account.uuid, mode="new")
+        user_agent = user_agents.parse(request.user_agent.string)
+        # return render_template('home/multi.html', **c, ua=user_agent)
+        return render_template('new.html', **c, ua=user_agent)
 
     def get_proper_config(self):
         if g.user_agent['is_browser']:
@@ -58,20 +109,6 @@ class UserView(FlaskView):
         # if any([p in ua for p in ['FoXray', 'HiddifyNG','Fair%20VPN' ,'v2rayNG', 'SagerNet']]):
         if re.match('^(Hiddify|FoXray|Fair|v2rayNG|SagerNet|Shadowrocket|V2Box|Loon|Liberty)', ua, re.IGNORECASE):
             return self.all_configs(base64=True)
-
-    @ route('/new/')
-    @ route('/new')
-    @login_required(roles={Role.user})
-    # @ route('/')
-    def new(self):
-        conf = self.get_proper_config()
-        if conf:
-            return conf
-
-        c = get_common_data(g.account.uuid, mode="new")
-        user_agent = user_agents.parse(request.user_agent.string)
-        # return render_template('home/multi.html', **c, ua=user_agent)
-        return render_template('new.html', **c, ua=user_agent)
 
     @ route('/clash/<meta_or_normal>/proxies.yml')
     @ route('/clash/proxies.yml')
@@ -185,8 +222,8 @@ class UserView(FlaskView):
             resp = do_base_64(resp)
         return add_headers(resp, c)
 
-    @login_required(roles={Role.user})
     @ route("/offline.html")
+    @login_required(roles={Role.user})
     def offline():
         return f"Not Connected <a href='{hiddify.get_account_panel_link(g.account, request.host)}'>click for reload</a>"
 
