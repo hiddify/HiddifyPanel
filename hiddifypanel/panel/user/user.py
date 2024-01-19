@@ -61,8 +61,8 @@ class UserView(FlaskView):
     def singbox_full(self):
         return self.full_singbox()
 
-    @route("/singbox/")
-    @route("/singbox")
+    @route("/singbox-ssh/")
+    @route("/singbox-ssh")
     @login_required(roles={Role.user})
     def singbox_ssh(self):
         return self.singbox()
@@ -71,6 +71,11 @@ class UserView(FlaskView):
     @route("/clash")
     @login_required(roles={Role.user})
     def clash(self):
+        if mode := request.args.get("mode"):
+            if re.match(r'^(meta|normal)$', mode, re.IGNORECASE):
+                return self.clash_config(meta_or_normal=mode)
+            else:
+                return abort(400, 'Unsupported mode for clash config')
         ua = request.user_agent.string
         if re.match('^(Clash-verge|Clash-?Meta|Stash|NekoBox|NekoRay|Pharos|hiddify-desktop)', ua, re.IGNORECASE):
             return self.clash_config(meta_or_normal="meta")
