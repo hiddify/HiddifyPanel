@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-16 20:51+0100\n"
-"PO-Revision-Date: 2024-01-15 23:28-0600\n"
+"POT-Creation-Date: 2024-01-19 22:37+0100\n"
+"PO-Revision-Date: 2024-01-16 13:54-0600\n"
 "Last-Translator: hidden u\n"
 "Language: fa\n"
 "Language-Team: Persian\n"
@@ -21,12 +21,12 @@ msgid "Error! auto cdn ip can not be find, please contact admin."
 msgstr "خطا! آی پی اتوماتیک نتوانست پیدا شود. لطفا با مدیر تماس بگیرید"
 
 # | msgid "This Domain does not exist in the Panel !"
-#: hiddifypanel/models/domain.py:165 hiddifypanel/panel/user/user.py:227
+#: hiddifypanel/models/domain.py:165 hiddifypanel/panel/user/user.py:266
 msgid "This domain does not exist in the panel!"
 msgstr "این دامنه در پنل وجود ندارد!"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/panel/hiddify.py:278
+#: hiddifypanel/panel/hiddify.py:279
 msgid "admin.config.apply_configs"
 msgstr "اعمال تنظیمات"
 
@@ -34,14 +34,14 @@ msgstr "اعمال تنظیمات"
 # | "Configs have been changed successfully. Click %(link)s to apply the
 # configs."
 # | " It may take 2 minutes to apply"
-#: hiddifypanel/panel/hiddify.py:279
+#: hiddifypanel/panel/hiddify.py:280
 msgid "config.validation-success"
 msgstr ""
 "تنظیمات با موفقیت ذخیره شدند. لطفا بر روی این لینک: %(link)s کلیک کنید تا"
 " بر روی سیستم اعمال شوند. این کار ممکن است 2 دقیقه طول بکشد"
 
 # | msgid " ✅ Configs have been changed successfully"
-#: hiddifypanel/panel/hiddify.py:281
+#: hiddifypanel/panel/hiddify.py:282
 msgid "config.validation-success-no-reset"
 msgstr " ✅ تنظیمات با موفقیت تغییر کرد"
 
@@ -55,12 +55,12 @@ msgstr " ✅ تنظیمات با موفقیت تغییر کرد"
 #: hiddifypanel/panel/admin/DomainAdmin.py:182
 #: hiddifypanel/panel/admin/QuickSetup.py:141
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:111
-#: hiddifypanel/panel/hiddify.py:359
+#: hiddifypanel/panel/hiddify.py:360
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr "دامنه قابل دسترسی نیست! در دامنه شما مشکلی وجود دارد."
 
 # | msgid "Last Day"
-#: hiddifypanel/panel/hiddify.py:391
+#: hiddifypanel/panel/hiddify.py:392
 msgid "0 - Last day"
 msgstr "آخرین روز"
 
@@ -68,7 +68,7 @@ msgstr "آخرین روز"
 # | "Selected Domain for REALITY is not in the same ASN. To better use of the
 # "
 # | "Protocol, it is better to find a Domain in the same ASN"
-#: hiddifypanel/panel/hiddify.py:696
+#: hiddifypanel/panel/hiddify.py:697
 msgid ""
 "selected domain for REALITY is not in the same ASN. To better use of the "
 "protocol, it is better to find a domain in the same ASN."
@@ -261,7 +261,7 @@ msgstr ""
 #: hiddifypanel/panel/admin/ProxyAdmin.py:123
 #: hiddifypanel/panel/admin/QuickSetup.py:99
 #: hiddifypanel/panel/admin/QuickSetup.py:132
-#: hiddifypanel/panel/admin/SettingAdmin.py:285
+#: hiddifypanel/panel/admin/SettingAdmin.py:293
 #: hiddifypanel/panel/common_bp/login.py:25
 msgid "Submit"
 msgstr "ثبت"
@@ -724,16 +724,16 @@ msgstr "تنظیمات مناسب را برای هر کشور با توجه به
 # | msgid "Error! Invalid Domain.  The Domain Format is www.google.com"
 #: hiddifypanel/panel/admin/QuickSetup.py:118
 #: hiddifypanel/panel/admin/QuickSetup.py:131
-#: hiddifypanel/panel/admin/SettingAdmin.py:226
 #: hiddifypanel/panel/admin/SettingAdmin.py:229
+#: hiddifypanel/panel/admin/SettingAdmin.py:232
 msgid "config.Invalid domain"
 msgstr "خطا! دامنه نامعتبر! فرمت دامنه باید مثل www.google.com باشد."
 
 # | msgid "Domain is exist in domains section. Use another Domain"
 #: hiddifypanel/panel/admin/QuickSetup.py:120
 #: hiddifypanel/panel/admin/QuickSetup.py:122
-#: hiddifypanel/panel/admin/SettingAdmin.py:233
-#: hiddifypanel/panel/admin/SettingAdmin.py:235
+#: hiddifypanel/panel/admin/SettingAdmin.py:236
+#: hiddifypanel/panel/admin/SettingAdmin.py:238
 msgid "config.Domain already used"
 msgstr "دامنه در بخش دامنه‌ها وجود دارد. از دامنه دیگری استفاده کنید."
 
@@ -886,41 +886,49 @@ msgstr ""
 "اشکالاتی داشته باشد. بعد از تغییر حتما تست کنید."
 
 # | msgid "Invalid Admin Link"
-#: hiddifypanel/panel/admin/SettingAdmin.py:246
+#: hiddifypanel/panel/admin/SettingAdmin.py:249
 msgid "Invalid admin link"
 msgstr "لینک ادمین نامعتبر است"
 
 # | msgid "Invalid Telegram Bot Token"
-#: hiddifypanel/panel/admin/SettingAdmin.py:248
+#: hiddifypanel/panel/admin/SettingAdmin.py:251
 msgid "config.Invalid telegram bot token"
 msgstr "توکن ربات تلگرام نامعتبر است"
 
 # | msgid ""
 # | "Invalid Link. it should be on this format: (https or http://example.com)"
-#: hiddifypanel/panel/admin/SettingAdmin.py:250
+#: hiddifypanel/panel/admin/SettingAdmin.py:253
 msgid "config.Invalid brand link"
 msgstr "لینک پشتیبانی نامعتبر است. لطفا لینک را با فرمت معتبر وارد کنید."
 
 # | msgid ""
 # | "Invalid UUID secret. example: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n"
 # | "\n"
-#: hiddifypanel/panel/admin/SettingAdmin.py:255
+#: hiddifypanel/panel/admin/SettingAdmin.py:258
 #: hiddifypanel/panel/common_bp/login.py:19
 #: hiddifypanel/panel/common_bp/login.py:23
 msgid "config.invalid uuid"
 msgstr "رمز UUID نامعتبر است. به عنوان مثال: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6"
 
 # | msgid "Invalid Proxy Path. It should be ASCI string (a-z A-Z 0-9)"
-#: hiddifypanel/panel/admin/SettingAdmin.py:259
+#: hiddifypanel/panel/admin/SettingAdmin.py:262
 msgid "config.Invalid proxy path"
 msgstr "مسیر پروکسی نامعتبر است. باید رشته متن asci باشد. ( شامل a-z A-Z 0-9)"
 
 # | msgid ""
 # | "Invalid Port. it should be comma separated Integer e.g.  2052,2053"
-#: hiddifypanel/panel/admin/SettingAdmin.py:264
 #: hiddifypanel/panel/admin/SettingAdmin.py:267
+#: hiddifypanel/panel/admin/SettingAdmin.py:270
 msgid "config.Invalid port"
 msgstr "پورت نامعتبر است. اعداد باید با کاما از هم جدا شود، مثلاً 1000,1001"
+
+#: hiddifypanel/panel/admin/SettingAdmin.py:275
+msgid "config.Invalid! The pattern is number-number"
+msgstr ""
+
+#: hiddifypanel/panel/admin/SettingAdmin.py:278
+msgid "config.Invalid! it should be a number only"
+msgstr ""
 
 # | msgid "📆 Reset Package's Days"
 #: hiddifypanel/panel/admin/UserAdmin.py:26
@@ -1036,7 +1044,7 @@ msgstr "بسته هنوز شروع نشده است."
 msgid "Remaining: "
 msgstr "زمان پایان بسته"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:264
+#: hiddifypanel/panel/admin/UserAdmin.py:265
 #, fuzzy, python-format
 msgid ""
 "You have too much users! You can have only %(active)s active users and "
@@ -2845,7 +2853,7 @@ msgstr "[پیام اختصاصی ادمین]: قابل تنظیم از طریق 
 # | "Hooray 🎉 🎉 🎉 \n"
 # | "Welcome to Hiddify bot\n"
 # | "Start by clicking the link on the Panel or entering your UUID."
-#: hiddifypanel/panel/commercial/telegrambot/Usage.py:27
+#: hiddifypanel/panel/commercial/telegrambot/Usage.py:28
 #: hiddifypanel/panel/commercial/telegrambot/information.py:55
 msgid ""
 "Hooray 🎉 🎉 🎉 \n"
@@ -4527,6 +4535,78 @@ msgstr "📏 بالشتک TLS"
 msgid "config.tls_padding_length.description"
 msgstr "طول Padding برای تکه تکه شدن TLS"
 
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_enable.label"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_enable.description"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_protocol.label"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_protocol.description"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_max_connections.label"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_max_connections.description"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_min_streams.label"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_min_streams.description"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_max_streams.label"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_max_streams.description"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_padding_enable.label"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_padding_enable.description"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_brutal_enable.label"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_brutal_enable.description"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_brutal_up_mbps.label"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_brutal_up_mbps.description"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_brutal_down_mbps.label"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_brutal_down_mbps.description"
+msgstr ""
+
 # | msgid "🔐 Proxy Path for Admins"
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
@@ -4612,6 +4692,14 @@ msgstr "⬇️ دانلود Hysteria (mbps)"
 #, fuzzy
 msgid "config.hysteria_down_mbps.description"
 msgstr "Hysteria حداکثر سرعت دانلود"
+
+#: hiddifypanel/templates/fake.html:2
+msgid "config.mux.label"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:2
+msgid "config.mux.description"
+msgstr ""
 
 # | msgid "TLS Trick"
 #: hiddifypanel/templates/fake.html:2

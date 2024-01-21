@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPanel\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-16 20:51+0100\n"
-"PO-Revision-Date: 2024-01-15 23:28-0600\n"
+"POT-Creation-Date: 2024-01-19 22:37+0100\n"
+"PO-Revision-Date: 2024-01-16 13:54-0600\n"
 "Last-Translator: hidden u\n"
 "Language: zh\n"
 "Language-Team: Chinese\n"
@@ -21,12 +21,12 @@ msgid "Error! auto cdn ip can not be find, please contact admin."
 msgstr "自动 CDN IP 错误！找不到自动 CDN IP，请联系管理员"
 
 # | msgid "This Domain does not exist in the Panel !"
-#: hiddifypanel/models/domain.py:165 hiddifypanel/panel/user/user.py:227
+#: hiddifypanel/models/domain.py:165 hiddifypanel/panel/user/user.py:266
 msgid "This domain does not exist in the panel!"
 msgstr "该域名在面板中不存在！"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/panel/hiddify.py:278
+#: hiddifypanel/panel/hiddify.py:279
 msgid "admin.config.apply_configs"
 msgstr "应用配置"
 
@@ -34,12 +34,12 @@ msgstr "应用配置"
 # | "Configs have been changed successfully. Click %(link)s to apply the
 # configs."
 # | " It may take 2 minutes to apply"
-#: hiddifypanel/panel/hiddify.py:279
+#: hiddifypanel/panel/hiddify.py:280
 msgid "config.validation-success"
 msgstr "配置已成功更改。单击 %(link)s 以应用配置。应用可能需要 2 分钟。"
 
 # | msgid " ✅ Configs have been changed successfully"
-#: hiddifypanel/panel/hiddify.py:281
+#: hiddifypanel/panel/hiddify.py:282
 msgid "config.validation-success-no-reset"
 msgstr " ✅ 配置已成功更改"
 
@@ -53,12 +53,12 @@ msgstr " ✅ 配置已成功更改"
 #: hiddifypanel/panel/admin/DomainAdmin.py:182
 #: hiddifypanel/panel/admin/QuickSetup.py:141
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:111
-#: hiddifypanel/panel/hiddify.py:359
+#: hiddifypanel/panel/hiddify.py:360
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr "域名无法解析！你的域名有问题。请检查你的域名配置。"
 
 # | msgid "Last Day"
-#: hiddifypanel/panel/hiddify.py:391
+#: hiddifypanel/panel/hiddify.py:392
 msgid "0 - Last day"
 msgstr "最后一天"
 
@@ -66,7 +66,7 @@ msgstr "最后一天"
 # | "Selected Domain for REALITY is not in the same ASN. To better use of the
 # "
 # | "Protocol, it is better to find a Domain in the same ASN"
-#: hiddifypanel/panel/hiddify.py:696
+#: hiddifypanel/panel/hiddify.py:697
 msgid ""
 "selected domain for REALITY is not in the same ASN. To better use of the "
 "protocol, it is better to find a domain in the same ASN."
@@ -245,7 +245,7 @@ msgstr "当前用户将获取管理员权限"
 #: hiddifypanel/panel/admin/ProxyAdmin.py:123
 #: hiddifypanel/panel/admin/QuickSetup.py:99
 #: hiddifypanel/panel/admin/QuickSetup.py:132
-#: hiddifypanel/panel/admin/SettingAdmin.py:285
+#: hiddifypanel/panel/admin/SettingAdmin.py:293
 #: hiddifypanel/panel/common_bp/login.py:25
 msgid "Submit"
 msgstr "提交"
@@ -680,16 +680,16 @@ msgstr "它根据不同国家/地区的网络封锁情况，为该国家/地区�
 # | msgid "Error! Invalid Domain.  The Domain Format is www.google.com"
 #: hiddifypanel/panel/admin/QuickSetup.py:118
 #: hiddifypanel/panel/admin/QuickSetup.py:131
-#: hiddifypanel/panel/admin/SettingAdmin.py:226
 #: hiddifypanel/panel/admin/SettingAdmin.py:229
+#: hiddifypanel/panel/admin/SettingAdmin.py:232
 msgid "config.Invalid domain"
 msgstr "错误！域名无效。域名格式为 www.google.com"
 
 # | msgid "Domain is exist in domains section. Use another Domain"
 #: hiddifypanel/panel/admin/QuickSetup.py:120
 #: hiddifypanel/panel/admin/QuickSetup.py:122
-#: hiddifypanel/panel/admin/SettingAdmin.py:233
-#: hiddifypanel/panel/admin/SettingAdmin.py:235
+#: hiddifypanel/panel/admin/SettingAdmin.py:236
+#: hiddifypanel/panel/admin/SettingAdmin.py:238
 msgid "config.Domain already used"
 msgstr "域名已存在于域名部分。请使用另一个域名"
 
@@ -832,41 +832,49 @@ msgid "config.telegram_lib.description"
 msgstr "您可以在不同的 Telegram 库之间切换。请注意，只有 Python 可以在所有服务器上运行，其他服务器可能会出现一些问题。更改后请测试代理。"
 
 # | msgid "Invalid Admin Link"
-#: hiddifypanel/panel/admin/SettingAdmin.py:246
+#: hiddifypanel/panel/admin/SettingAdmin.py:249
 msgid "Invalid admin link"
 msgstr "管理员链接无效"
 
 # | msgid "Invalid Telegram Bot Token"
-#: hiddifypanel/panel/admin/SettingAdmin.py:248
+#: hiddifypanel/panel/admin/SettingAdmin.py:251
 msgid "config.Invalid telegram bot token"
 msgstr "无效的 Telegram 机器人 Token"
 
 # | msgid ""
 # | "Invalid Link. it should be on this format: (https or http://example.com)"
-#: hiddifypanel/panel/admin/SettingAdmin.py:250
+#: hiddifypanel/panel/admin/SettingAdmin.py:253
 msgid "config.Invalid brand link"
 msgstr "无效的链接。它应该采用以下格式：（https 或 http://example.com）"
 
 # | msgid ""
 # | "Invalid UUID secret. example: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n"
 # | "\n"
-#: hiddifypanel/panel/admin/SettingAdmin.py:255
+#: hiddifypanel/panel/admin/SettingAdmin.py:258
 #: hiddifypanel/panel/common_bp/login.py:19
 #: hiddifypanel/panel/common_bp/login.py:23
 msgid "config.invalid uuid"
 msgstr "UUID 无效。示例：6098ea35-8cb2-4a08-ba15-2be25bc49cb6"
 
 # | msgid "Invalid Proxy Path. It should be ASCI string (a-z A-Z 0-9)"
-#: hiddifypanel/panel/admin/SettingAdmin.py:259
+#: hiddifypanel/panel/admin/SettingAdmin.py:262
 msgid "config.Invalid proxy path"
 msgstr "代理路径无效。它应该是 ASCI 码字符串 (a-z A-Z 0-9)"
 
 # | msgid ""
 # | "Invalid Port. it should be comma separated Integer e.g.  2052,2053"
-#: hiddifypanel/panel/admin/SettingAdmin.py:264
 #: hiddifypanel/panel/admin/SettingAdmin.py:267
+#: hiddifypanel/panel/admin/SettingAdmin.py:270
 msgid "config.Invalid port"
 msgstr "无效端口。它应该是逗号分隔的整数，例如 2052,2053"
+
+#: hiddifypanel/panel/admin/SettingAdmin.py:275
+msgid "config.Invalid! The pattern is number-number"
+msgstr ""
+
+#: hiddifypanel/panel/admin/SettingAdmin.py:278
+msgid "config.Invalid! it should be a number only"
+msgstr ""
 
 # | msgid "📆 Reset Package's Days"
 #: hiddifypanel/panel/admin/UserAdmin.py:26
@@ -974,7 +982,7 @@ msgstr "套餐还没有开始。"
 msgid "Remaining: "
 msgstr "套餐结束"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:264
+#: hiddifypanel/panel/admin/UserAdmin.py:265
 #, python-format
 msgid ""
 "You have too much users! You can have only %(active)s active users and "
@@ -2657,7 +2665,7 @@ msgstr "[仅管理员可见的消息]：您可以从设置中更改此消息。"
 # | "Hooray 🎉 🎉 🎉 \n"
 # | "Welcome to Hiddify bot\n"
 # | "Start by clicking the link on the Panel or entering your UUID."
-#: hiddifypanel/panel/commercial/telegrambot/Usage.py:27
+#: hiddifypanel/panel/commercial/telegrambot/Usage.py:28
 #: hiddifypanel/panel/commercial/telegrambot/information.py:55
 msgid ""
 "Hooray 🎉 🎉 🎉 \n"
@@ -4272,6 +4280,78 @@ msgstr "📏 TLS 填充"
 msgid "config.tls_padding_length.description"
 msgstr "TLS 分段的填充长度"
 
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_enable.label"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_enable.description"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_protocol.label"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_protocol.description"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_max_connections.label"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_max_connections.description"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_min_streams.label"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_min_streams.description"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_max_streams.label"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_max_streams.description"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_padding_enable.label"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_padding_enable.description"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_brutal_enable.label"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_brutal_enable.description"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_brutal_up_mbps.label"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_brutal_up_mbps.description"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_brutal_down_mbps.label"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_brutal_down_mbps.description"
+msgstr ""
+
 # | msgid "🔐 Proxy Path for Admins"
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
@@ -4354,6 +4434,14 @@ msgstr "⬇️ 歇斯底里下载 (mbps)"
 #, fuzzy
 msgid "config.hysteria_down_mbps.description"
 msgstr "歇斯底里最大下载速度"
+
+#: hiddifypanel/templates/fake.html:2
+msgid "config.mux.label"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:2
+msgid "config.mux.description"
+msgstr ""
 
 # | msgid "TLS Trick"
 #: hiddifypanel/templates/fake.html:2
