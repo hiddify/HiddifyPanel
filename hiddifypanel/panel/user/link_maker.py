@@ -579,8 +579,8 @@ def add_singbox_multiplex(base):
     if mux_max_streams and mux_max_streams != 0:
         base['multiplex']['max_streams'] = mux_max_streams
     else:
-        base['multiplex']['max_connections'] = hconfig(ConfigEnum.mux_max_connections)
-        base['multiplex']['min_streams'] = hconfig(ConfigEnum.mux_min_streams)
+        base['multiplex']['max_connections'] = int(hconfig(ConfigEnum.mux_max_connections))
+        base['multiplex']['min_streams'] = int(hconfig(ConfigEnum.mux_min_streams))
 
     add_singbox_tcp_brutal(base)
 
@@ -589,8 +589,8 @@ def add_singbox_tcp_brutal(base):
     if 'multiplex' in base:
         base['multiplex']['brutal'] = {
             "enabled": hconfig(ConfigEnum.mux_brutal_enable),
-            "up_mbps": hconfig(ConfigEnum.mux_brutal_up_mbps),
-            "down_mbps": hconfig(ConfigEnum.mux_brutal_down_mbps)
+            "up_mbps": int(hconfig(ConfigEnum.mux_brutal_up_mbps)),
+            "down_mbps": int(hconfig(ConfigEnum.mux_brutal_down_mbps))
         }
 
 
