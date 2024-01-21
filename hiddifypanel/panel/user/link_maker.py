@@ -1,5 +1,5 @@
 from flask import g, request, render_template
-from ipaddress import IPv4Address, IPv4Address
+from ipaddress import IPv4Address, IPv6Address
 import enum
 from hiddifypanel import hutils
 from hiddifypanel.models import *
