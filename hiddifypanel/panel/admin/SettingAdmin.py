@@ -213,7 +213,8 @@ def get_config_form():
                     "config.telegram_lib.description"), default=hconfig(ConfigEnum.telegram_lib))
             elif c.key == ConfigEnum.mux_protocol:
                 choices = [("smux", 'smux'), ("yamux", "yamux"), ("h2mux", "h2mux")]
-                field = wtf.fields.SelectField(_(f"config.{c.key}.label"), choices=choices, description=_(f"config.{c.key}.description"))
+                field = wtf.fields.SelectField(_(f"config.{c.key}.label"), choices=choices, description=_(f"config.{c.key}.description"), default=hconfig(c.key))
+
             elif c.key == ConfigEnum.warp_sites:
                 validators = [wtf.validators.Length(max=2048)]
                 render_kw = {'class': "ltr", 'maxlength': 2048}
@@ -274,7 +275,8 @@ def get_config_form():
                 if c.key in [ConfigEnum.tls_fragment_size, ConfigEnum.tls_fragment_sleep, ConfigEnum.tls_padding_length]:
                     validators.append(wtf.validators.Regexp("^\d+-\d+$", re.IGNORECASE, _("config.Invalid! The pattern is number-number")+f' {c.key}'))
                 # mux and hysteria validations
-                if c.key in [ConfigEnum.hysteria_up_mbps, ConfigEnum.hysteria_down_mbps, ConfigEnum.mux_max_connections, ConfigEnum.mux_min_streams, ConfigEnum.mux_max_streams, ConfigEnum.mux_brutal_down_mbps, ConfigEnum.mux_brutal_up_mbps]:
+                if c.key in [ConfigEnum.hysteria_up_mbps, ConfigEnum.hysteria_down_mbps, ConfigEnum.mux_max_connections, ConfigEnum.mux_min_streams, ConfigEnum.mux_max_streams,
+                             ConfigEnum.mux_brutal_down_mbps, ConfigEnum.mux_brutal_up_mbps]:
                     validators.append(wtf.validators.Regexp("^\d+$", re.IGNORECASE, _("config.Invalid! it should be a number only")+f' {c.key}'))
                 for val in validators:
                     if hasattr(val, "regex"):
