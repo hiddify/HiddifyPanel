@@ -155,7 +155,7 @@ def init_app(app):
             g.is_admin = hiddify.is_admin_role(account.role)  # type: ignore
             login_user(account, force=True)
             # print("loggining in")
-            if next_url is not None and g.user_agent['is_browser']:
+            if next_url is not None and g.user_agent['is_browser'] and ".webmanifest" not in request.path:
                 return redirect(next_url)
 
     @app.url_value_preprocessor
