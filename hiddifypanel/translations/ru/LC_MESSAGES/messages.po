@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPT\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-16 20:51+0100\n"
-"PO-Revision-Date: 2024-01-15 23:56+0100\n"
+"POT-Creation-Date: 2024-01-21 23:32+0100\n"
+"PO-Revision-Date: 2024-01-19 15:37-0600\n"
 "Last-Translator: lymanrudni\n"
 "Language: ru\n"
 "Language-Team: Russian\n"
@@ -22,12 +22,12 @@ msgid "Error! auto cdn ip can not be find, please contact admin."
 msgstr "Ошибка в IP-адресе Auto CDN! Невозможно найти, обратитесь к администратору"
 
 # | msgid "This Domain does not exist in the Panel !"
-#: hiddifypanel/models/domain.py:165 hiddifypanel/panel/user/user.py:227
+#: hiddifypanel/models/domain.py:165 hiddifypanel/panel/user/user.py:266
 msgid "This domain does not exist in the panel!"
 msgstr "Этого домена не существует в панели управления!"
 
 # | msgid "Apply Configs"
-#: hiddifypanel/panel/hiddify.py:278
+#: hiddifypanel/panel/hiddify.py:279
 msgid "admin.config.apply_configs"
 msgstr "Применить конфигурацию"
 
@@ -35,14 +35,14 @@ msgstr "Применить конфигурацию"
 # | "Configs have been changed successfully. Click %(link)s to apply the
 # configs."
 # | " It may take 2 minutes to apply"
-#: hiddifypanel/panel/hiddify.py:279
+#: hiddifypanel/panel/hiddify.py:280
 msgid "config.validation-success"
 msgstr ""
 "Конфигурации успешно изменены. Нажмите %(link)s, чтобы применить их. Это "
 "может занять 2 минуты"
 
 # | msgid " ✅ Configs have been changed successfully"
-#: hiddifypanel/panel/hiddify.py:281
+#: hiddifypanel/panel/hiddify.py:282
 msgid "config.validation-success-no-reset"
 msgstr "✅ Конфигурации успешно изменены"
 
@@ -56,14 +56,14 @@ msgstr "✅ Конфигурации успешно изменены"
 #: hiddifypanel/panel/admin/DomainAdmin.py:182
 #: hiddifypanel/panel/admin/QuickSetup.py:141
 #: hiddifypanel/panel/commercial/ParentDomainAdmin.py:111
-#: hiddifypanel/panel/hiddify.py:359
+#: hiddifypanel/panel/hiddify.py:360
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr ""
 "Не возможно определить IP адрес для домена! В вашем домене возникла "
 "проблема. Пожалуйста, проверьте настройки."
 
 # | msgid "Last Day"
-#: hiddifypanel/panel/hiddify.py:391
+#: hiddifypanel/panel/hiddify.py:392
 msgid "0 - Last day"
 msgstr "Последний день"
 
@@ -71,7 +71,7 @@ msgstr "Последний день"
 # | "Selected Domain for REALITY is not in the same ASN. To better use of the
 # "
 # | "Protocol, it is better to find a Domain in the same ASN"
-#: hiddifypanel/panel/hiddify.py:696
+#: hiddifypanel/panel/hiddify.py:697
 msgid ""
 "selected domain for REALITY is not in the same ASN. To better use of the "
 "protocol, it is better to find a domain in the same ASN."
@@ -259,7 +259,7 @@ msgstr "Переопределение прав администратора н�
 #: hiddifypanel/panel/admin/ProxyAdmin.py:123
 #: hiddifypanel/panel/admin/QuickSetup.py:99
 #: hiddifypanel/panel/admin/QuickSetup.py:132
-#: hiddifypanel/panel/admin/SettingAdmin.py:285
+#: hiddifypanel/panel/admin/SettingAdmin.py:293
 #: hiddifypanel/panel/common_bp/login.py:25
 msgid "Submit"
 msgstr "Подтвердить"
@@ -731,16 +731,16 @@ msgstr ""
 # | msgid "Error! Invalid Domain.  The Domain Format is www.google.com"
 #: hiddifypanel/panel/admin/QuickSetup.py:118
 #: hiddifypanel/panel/admin/QuickSetup.py:131
-#: hiddifypanel/panel/admin/SettingAdmin.py:226
 #: hiddifypanel/panel/admin/SettingAdmin.py:229
+#: hiddifypanel/panel/admin/SettingAdmin.py:232
 msgid "config.Invalid domain"
 msgstr "Ошибка! Неверный домен. Формат домена: www.google.com."
 
 # | msgid "Domain is exist in domains section. Use another Domain"
 #: hiddifypanel/panel/admin/QuickSetup.py:120
 #: hiddifypanel/panel/admin/QuickSetup.py:122
-#: hiddifypanel/panel/admin/SettingAdmin.py:233
-#: hiddifypanel/panel/admin/SettingAdmin.py:235
+#: hiddifypanel/panel/admin/SettingAdmin.py:236
+#: hiddifypanel/panel/admin/SettingAdmin.py:238
 msgid "config.Domain already used"
 msgstr "Домен уже существует. Использовать другой домен"
 
@@ -894,18 +894,18 @@ msgstr ""
 "возникнуть проблемы. Проверьте прокси после его изменения."
 
 # | msgid "Invalid Admin Link"
-#: hiddifypanel/panel/admin/SettingAdmin.py:246
+#: hiddifypanel/panel/admin/SettingAdmin.py:249
 msgid "Invalid admin link"
 msgstr "Неверная ссылка администратора"
 
 # | msgid "Invalid Telegram Bot Token"
-#: hiddifypanel/panel/admin/SettingAdmin.py:248
+#: hiddifypanel/panel/admin/SettingAdmin.py:251
 msgid "config.Invalid telegram bot token"
 msgstr "Неверный токен Telegram-бота"
 
 # | msgid ""
 # | "Invalid Link. it should be on this format: (https or http://example.com)"
-#: hiddifypanel/panel/admin/SettingAdmin.py:250
+#: hiddifypanel/panel/admin/SettingAdmin.py:253
 msgid "config.Invalid brand link"
 msgstr ""
 "Некорректная ссылка. Поддерживается следующий формат: (https или "
@@ -914,25 +914,33 @@ msgstr ""
 # | msgid ""
 # | "Invalid UUID secret. example: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n"
 # | "\n"
-#: hiddifypanel/panel/admin/SettingAdmin.py:255
+#: hiddifypanel/panel/admin/SettingAdmin.py:258
 #: hiddifypanel/panel/common_bp/login.py:19
 #: hiddifypanel/panel/common_bp/login.py:23
 msgid "config.invalid uuid"
 msgstr "Неверный UUID. пример: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6"
 
 # | msgid "Invalid Proxy Path. It should be ASCI string (a-z A-Z 0-9)"
-#: hiddifypanel/panel/admin/SettingAdmin.py:259
+#: hiddifypanel/panel/admin/SettingAdmin.py:262
 msgid "config.Invalid proxy path"
 msgstr "Неверный Proxy Path Это должна быть строка ASCI (a-z A-Z 0-9)."
 
 # | msgid ""
 # | "Invalid Port. it should be comma separated Integer e.g.  2052,2053"
-#: hiddifypanel/panel/admin/SettingAdmin.py:264
 #: hiddifypanel/panel/admin/SettingAdmin.py:267
+#: hiddifypanel/panel/admin/SettingAdmin.py:270
 msgid "config.Invalid port"
 msgstr ""
 "Неверный порт. это должно быть целое число, разделенное запятыми, "
 "например. 2052,2053"
+
+#: hiddifypanel/panel/admin/SettingAdmin.py:275
+msgid "config.Invalid! The pattern is number-number"
+msgstr ""
+
+#: hiddifypanel/panel/admin/SettingAdmin.py:278
+msgid "config.Invalid! it should be a number only"
+msgstr ""
 
 # | msgid "📆 Reset Package's Days"
 #: hiddifypanel/panel/admin/UserAdmin.py:26
@@ -1047,7 +1055,7 @@ msgstr "Пакет еще не запущен."
 msgid "Remaining: "
 msgstr "Пакет заканчивается"
 
-#: hiddifypanel/panel/admin/UserAdmin.py:264
+#: hiddifypanel/panel/admin/UserAdmin.py:265
 #, python-format
 msgid ""
 "You have too much users! You can have only %(active)s active users and "
@@ -2858,7 +2866,7 @@ msgstr ""
 # | "Hooray 🎉 🎉 🎉 \n"
 # | "Welcome to Hiddify bot\n"
 # | "Start by clicking the link on the Panel or entering your UUID."
-#: hiddifypanel/panel/commercial/telegrambot/Usage.py:27
+#: hiddifypanel/panel/commercial/telegrambot/Usage.py:28
 #: hiddifypanel/panel/commercial/telegrambot/information.py:55
 msgid ""
 "Hooray 🎉 🎉 🎉 \n"
@@ -4222,12 +4230,9 @@ msgstr "⚠️ Вы уверены, что хотите выполнить эт�
 # | "<br><br>\n"
 # | "\n"
 # | "ℹ️ Also, we need financial help to further develop this panel and our
-# service (we are non-profit).\n"
-# | "<h5>Other Payment Methods</h5>\n"
+# service (we are Non-Profit).\n"
+# | "<h5>Payment Methods :</h5>\n"
 # | "<ul>\n"
-# | "<li> <a target=\"_blank\"
-# href=\"https://opencollective.com/hiddify/contribute/backer-50556/checkout?interval=month&amount=25\"
-# class=\"btn btn-info\">Credit Card And PayPal</a></li>\n"
 # | "<li> <div class=\"btn-group\">\n"
 # | "    <a role=\"button\"
 # data-copy=\"EQCWnykA-YhavOXgH3sf-uxtXLjy83_9n5bJPGRPE8r2247_\" class=\"btn
@@ -4264,7 +4269,9 @@ msgstr "⚠️ Вы уверены, что хотите выполнить эт�
 # | "We need also other help:\n"
 # | "<li>👥 Share Hiddify Manager with Others</li>\n"
 # | "<li>📝Python Developer</li>\n"
-# | "<li>📝Kotlin Developer</li>\n"
+# | "<li>📝Swift Developer</li>\n"
+# | "<li>📝Flutter Developer</li>\n"
+# | "<li>📝Go Developer</li>\n"
 # | "<li>🖥Content Providers</li>\n"
 # | "Please contact us at <a
 # href=\"mailto:info@hiddify.com\">info@hiddify.com</a> if you can help us."
@@ -4507,6 +4514,78 @@ msgstr "📏 Заполнение TLS"
 msgid "config.tls_padding_length.description"
 msgstr "Длина заполнения для фрагментации TLS"
 
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_enable.label"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_enable.description"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_protocol.label"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_protocol.description"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_max_connections.label"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_max_connections.description"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_min_streams.label"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_min_streams.description"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_max_streams.label"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_max_streams.description"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_padding_enable.label"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_padding_enable.description"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_brutal_enable.label"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_brutal_enable.description"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_brutal_up_mbps.label"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_brutal_up_mbps.description"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_brutal_down_mbps.label"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:1
+msgid "config.mux_brutal_down_mbps.description"
+msgstr ""
+
 # | msgid "🔐 Proxy Path for Admins"
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
@@ -4556,7 +4635,7 @@ msgstr "Hysteria Порт"
 msgid "config.hysteria_port.description"
 msgstr "Hysteria UDP-порт например 5678"
 
-# | msgid "🚧 Hysteria OBFS Enable"
+# | msgid "🎛 Hysteria OBFS Enable"
 #: hiddifypanel/templates/fake.html:1
 #, fuzzy
 msgid "config.hysteria_obfs_enable.label"
@@ -4592,7 +4671,15 @@ msgstr "⬇️ Скачать Hysteria (Мбит/с)"
 msgid "config.hysteria_down_mbps.description"
 msgstr "Максимальная скорость загрузки Hysteria"
 
-# | msgid "🎛 TLS Trick"
+#: hiddifypanel/templates/fake.html:2
+msgid "config.mux.label"
+msgstr ""
+
+#: hiddifypanel/templates/fake.html:2
+msgid "config.mux.description"
+msgstr ""
+
+# | msgid "TLS Trick"
 #: hiddifypanel/templates/fake.html:2
 #, fuzzy
 msgid "config.tls_trick.label"
