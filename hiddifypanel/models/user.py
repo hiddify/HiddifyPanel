@@ -1,6 +1,6 @@
 import datetime
 from enum import auto
-
+from hiddifypanel.models.role import Role
 from dateutil import relativedelta
 from sqlalchemy_serializer import SerializerMixin
 from strenum import StrEnum
@@ -10,7 +10,7 @@ from hiddifypanel.panel.database import db
 from hiddifypanel.models import Lang
 from hiddifypanel.models.utils import fill_password, fill_username
 from .base_account import BaseAccount
-
+from hiddifypanel import hutils
 ONE_GIG = 1024*1024*1024
 
 
@@ -60,7 +60,7 @@ class User(BaseAccount):
     This is a model class for a user in a database that includes columns for their ID, UUID, name, online status,
     account expiration date, usage limit, package days, mode, start date, current usage, last reset time, and comment.
     """
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+
     last_online = db.Column(db.DateTime, nullable=False, default=datetime.datetime.min)
     # removed
     expiry_time = db.Column(db.Date, default=datetime.date.today() + relativedelta.relativedelta(months=6))
@@ -75,16 +75,15 @@ class User(BaseAccount):
     max_ips = db.Column(db.Integer, default=1000, nullable=False)
     details = db.relationship('UserDetail', cascade="all,delete", backref='user',    lazy='dynamic',)
     enable = db.Column(db.Boolean, default=True, nullable=False)
-    lang = db.Column(db.Enum(Lang), default=None)
     ed25519_private_key = db.Column(db.String(500))
     ed25519_public_key = db.Column(db.String(100))
-    # These columns are created by BaseAccount
-    # uuid = db.Column(db.String(36), default=lambda: str(uuid_mod.uuid4()), nullable=False, unique=True)
-    # name = db.Column(db.String(512), nullable=False, default='')
-    # username = db.Column(db.String(16), nullable=True, default='')
-    # password = db.Column(db.String(16), nullable=True, default='')
-    # comment = db.Column(db.String(512))
-    # telegram_id = db.Column(db.String(512))
+
+    @property
+    def role(self) -> Role | None:
+        return Role.user
+
+    def get_id(self) -> str | None:
+        return f'user_{self.id}'
 
     @property
     def current_usage_GB(self):
@@ -176,26 +175,99 @@ class User(BaseAccount):
             res = self.package_days
         return min(res, 10000)
 
-    @staticmethod
-    def from_dict(data):
-        """
-        Returns a new User object created from a dictionary.
-        """
+    @classmethod
+    def by_uuid(cls, uuid: str, create: bool = False):
+        account = User.query.filter(User.uuid == uuid).first()
+        if not account and create:
+            dbuser = User(uuid=uuid, name="unknown", added_by=AdminUser.current_admin_or_owner().id)
+            db.session.add(dbuser)
+            db.session.commit()
+            account = User.by_uuid(uuid, False)
+        return account
 
-        return User(
-            name=data.get('name', ''),
-            expiry_time=data.get('expiry_time', datetime.date.today() + relativedelta.relativedelta(months=6)),
-            usage_limit_GB=data.get('usage_limit_GB', 1000),
-            package_days=data.get('package_days', 90),
-            mode=UserMode[data.get('mode', 'no_reset')],
-            monthly=data.get('monthly', False),
-            start_date=data.get('start_date', None),
-            current_usage_GB=data.get('current_usage_GB', 0),
-            last_reset_time=data.get('last_reset_time', datetime.date.today()),
-            comment=data.get('comment', None),
-            telegram_id=data.get('telegram_id', None),
-            added_by=data.get('added_by', 1)
-        )
+    @classmethod
+    def add_or_update(cls, commit: bool = True, **data):
+
+        user = super().add_or_update(commit=commit, **data)
+        if data.get('added_by_uuid'):
+            admin = AdminUser.by_uuid(data.get('added_by_uuid'), create=True) or AdminUser.current_admin_or_owner()
+            dbuser.added_by = admin.id
+        else:
+            dbuser.added_by = 1
+
+        if data.get('expiry_time', ''):
+            last_reset_time = hutils.utils.json_to_date(data.get('last_reset_time', '')) or datetime.date.today()
+
+            expiry_time = hutils.utils.json_to_date(data['expiry_time'])
+            dbuser.start_date = last_reset_time
+            dbuser.package_days = (expiry_time-last_reset_time).days  # type: ignore
+
+        elif 'package_days' in data:
+            dbuser.package_days = data['package_days']
+            if data.get('start_date', ''):
+                dbuser.start_date = hutils.utils.json_to_date(data['start_date'])
+            else:
+                dbuser.start_date = None
+        dbuser.current_usage_GB = data['current_usage_GB']
+
+        dbuser.usage_limit_GB = data['usage_limit_GB']
+        dbuser.enable = data.get('enable', True)
+        if data.get('ed25519_private_key', ''):
+            dbuser.ed25519_private_key = data.get('ed25519_private_key', '')
+            dbuser.ed25519_public_key = data.get('ed25519_public_key', '')
+        if not dbuser.ed25519_private_key:
+            from hiddifypanel.panel import hiddify
+            priv, publ = hiddify.get_ed25519_private_public_pair()
+            dbuser.ed25519_private_key = priv
+            dbuser.ed25519_public_key = publ
+
+        mode = data.get('mode', UserMode.no_reset)
+        if mode == 'disable':
+            mode = UserMode.no_reset
+            dbuser.enable = False
+
+        dbuser.mode = mode
+
+        dbuser.last_online = hutils.utils.json_to_time(data.get('last_online')) or datetime.datetime.min
+        if commit:
+            db.session.commit()
+        return dbuser
+
+    def to_dict(self, convert_date=True) -> dict:
+        base = super().to_dict()
+        return {**base,
+                'last_online': hutils.utils.time_to_json(self.last_online) if convert_date else self.last_online,
+                'usage_limit_GB': self.usage_limit_GB,
+                'package_days': self.package_days,
+                'mode': self.mode,
+                'start_date': hutils.utils.date_to_json(self.start_date)if convert_date else self.start_date,
+                'current_usage_GB': self.current_usage_GB,
+                'last_reset_time': hutils.utils.date_to_json(self.last_reset_time) if convert_date else self.last_reset_time,
+                'added_by_uuid': self.admin.uuid,
+                'ed25519_private_key': self.ed25519_private_key,
+                'ed25519_public_key': self.ed25519_public_key
+                }
+
+    # @staticmethod
+    # def from_dict(data):
+    #     """
+    #     Returns a new User object created from a dictionary.
+    #     """
+
+    #     return User(
+    #         name=data.get('name', ''),
+    #         expiry_time=data.get('expiry_time', datetime.date.today() + relativedelta.relativedelta(months=6)),
+    #         usage_limit_GB=data.get('usage_limit_GB', 1000),
+    #         package_days=data.get('package_days', 90),
+    #         mode=UserMode[data.get('mode', 'no_reset')],
+    #         monthly=data.get('monthly', False),
+    #         start_date=data.get('start_date', None),
+    #         current_usage_GB=data.get('current_usage_GB', 0),
+    #         last_reset_time=data.get('last_reset_time', datetime.date.today()),
+    #         comment=data.get('comment', None),
+    #         telegram_id=data.get('telegram_id', None),
+    #         added_by=data.get('added_by', 1)
+    #     )
 
 
 # TODO: refactor this function too
@@ -211,9 +283,7 @@ def remove(user: User, commit=True) -> None:
 
 def remove_user(uuid: str, commit=True):
     dbuser = User.by_uuid(uuid)
-    db.session.delete(dbuser)
-    if commit:
-        db.session.commit()
+    remove(dbuser, commit)
 
 
 @event.listens_for(User, 'before_insert')

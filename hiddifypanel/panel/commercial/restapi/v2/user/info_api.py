@@ -55,7 +55,7 @@ class InfoAPI(MethodView):
         dto.profile_remaining_days = g.account.remaining_days()
         dto.profile_reset_days = g.account.days_to_reset()
         dto.telegram_bot_url = f"https://t.me/{c['bot'].username}?start={g.account.uuid}" if c['bot'] else ""
-        dto.telegram_id = c['user'].telegram_id or 0
+        dto.telegram_id = c['user'].telegram_id
 
         dto.doh = f"https://{request.host}/{g.proxy_path}/dns/dns-query"
         dto.lang = (c['user'].lang) or Lang(hconfig(ConfigEnum.lang))
@@ -69,13 +69,8 @@ class InfoAPI(MethodView):
         return dto
 
     @app.input(UserInfoChangableSchema, arg_name='data')
-    def patch(self, data):
+    def patch(self, data: UserInfoChangableSchema):
         if data['telegram_id']:
-            try:
-                tg_id = int(data['telegram_id'])
-            except:
-                return {'message': 'The telegram id field is invalid'}
-
             user = User.by_uuid(g.account.uuid)
             if user.telegram_id != tg_id:
                 user.telegram_id = tg_id

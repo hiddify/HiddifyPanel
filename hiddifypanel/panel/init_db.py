@@ -26,7 +26,12 @@ def init_db():
     hconfig.invalidate_all()
     get_hconfigs.invalidate_all()
     db_version = int(hconfig(ConfigEnum.db_version) or 0)
+    if db_version == latest_db_version():
+        return
+    execute("alter table user alter column telegram_id int;")
+    execute("alter table admin_user alter column telegram_id int;")
     add_column(User.lang)
+    add_column(AdminUser.lang)
     add_column(User.username)
     add_column(User.password)
     add_column(AdminUser.username)
@@ -34,8 +39,6 @@ def init_db():
 
     add_column(Domain.extra_params)
 
-    if db_version == latest_db_version():
-        return
     Events.db_prehook.notify()
     if db_version < 52:
         execute(f'update domain set mode="sub_link_only", sub_link_only=false where sub_link_only = true or mode=1  or mode="1"')
@@ -147,6 +150,10 @@ def init_db():
 
 #     add_config_if_not_exist(ConfigEnum.hysteria_enable, True)
 #     add_config_if_not_exist(ConfigEnum.hysteria_port, random.randint(5000, 20000))
+
+def _v67():
+    pass
+
 
 def _v65():
     add_config_if_not_exist(ConfigEnum.mux_enable, False)

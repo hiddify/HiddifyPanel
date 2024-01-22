@@ -269,7 +269,9 @@ def to_link(proxy):
     if proxy['proto'] == 'ssh':
         strenssh = hiddify.do_base_64(f'{proxy["uuid"]}:0:{proxy["private_key"]}::@{proxy["server"]}:{proxy["port"]}')
         baseurl = f'ssh://{strenssh}#{name_link}'
-        baseurl += f'\nssh://{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}/?pk='+hiddify.do_base_64(proxy["private_key"])+f"&hk={hiddify.get_hostkeys(True)}#{name_link}"
+        hk = hiddify.do_base_64(",".join(proxy["host_key"]))
+        pk = hiddify.do_base_64(proxy["private_key"])
+        baseurl += f'\nssh://{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}/?pk={pk}&hk={hk}#{name_link}'
 
         return baseurl
     if proxy['proto'] == "ssr":

@@ -226,11 +226,11 @@ def add_basic_auth_to_url(url: str, username: str, password: str) -> str:
         return url
 
 
-def convert_to_int(s: str) -> int:
+def to_int(s: str) -> int | None:
     try:
         return int(s)
     except:
-        return 0
+        return None
 
 
 def is_out_of_range_port(port: int) -> bool:

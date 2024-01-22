@@ -7,7 +7,7 @@ from strenum import StrEnum
 from apiflask import abort
 from flask_babelex import gettext as __
 from flask_babelex import lazy_gettext as _
-
+from hiddifypanel.models.role import Role
 from hiddifypanel.panel.database import db
 from .base_account import BaseAccount
 
@@ -29,7 +29,6 @@ class AdminUser(BaseAccount):
     This is a model class for a user in a database that includes columns for their ID, UUID, name, online status,
     account expiration date, usage limit, package days, mode, start date, current usage, last reset time, and comment.
     """
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     mode = db.Column(db.Enum(AdminMode), default=AdminMode.agent, nullable=False)
     can_add_admin = db.Column(db.Boolean, default=False, nullable=False)
     max_users = db.Column(db.Integer, default=100, nullable=False)
@@ -38,13 +37,58 @@ class AdminUser(BaseAccount):
     usages = db.relationship('DailyUsage', backref='admin')
     parent_admin_id = db.Column(db.Integer, db.ForeignKey('admin_user.id'), default=1)
     parent_admin = db.relationship('AdminUser', remote_side=[id], backref='sub_admins')
-    # These columns are created by BaseAccount
-    # uuid = db.Column(db.String(36), default=lambda: str(uuid_mod.uuid4()), nullable=False, unique=True)
-    # name = db.Column(db.String(512), nullable=False)
-    # username = db.Column(db.String(16), nullable=True, default='')
-    # password = db.Column(db.String(16), nullable=True, default='')
-    # comment = db.Column(db.String(512))
-    # telegram_id = db.Column(db.String(512))
+
+    @property
+    def role(self) -> Role | None:
+        match self.mode:
+            case AdminMode.super_admin:
+                return Role.super_admin
+            case AdminMode.admin:
+                return Role.admin
+            case AdminMode.agent:
+                return Role.agent
+        return None
+
+    def get_id(self) -> str | None:
+        return f'admin_{self.id}'
+
+    def to_dict(self, convert_date=True) -> dict:
+        base = super().to_dict()
+        return {**base,
+                'mode': self.mode,
+                'can_add_admin': self.can_add_admin,
+                'parent_admin_uuid': self.parent_admin.uuid if self.parent_admin else None,
+                }
+
+    @classmethod
+    def by_uuid(cls, uuid: str, create: bool = False):
+        account = AdminUser.query.filter(AdminUser.uuid == uuid).first()
+        if not account and create:
+            dbuser = AdminUser(uuid=uuid, name="unknown", parent_admin_id=AdminUser.current_admin_or_owner().id)
+            db.session.add(dbuser)
+            db.session.commit()
+            account = AdminUser.by_uuid(uuid, False)
+
+        return account
+
+    @classmethod
+    def add_or_update(cls, commit: bool = True, **data):
+
+        dbuser = super().add_or_update(commit=commit, **data)
+
+        if dbuser.id != 1:
+            parent = data.get('parent_admin_uuid')
+            if parent == data['uuid'] or not parent:
+                parent_admin = cls.current_admin_or_owner()
+            else:
+                parent_admin = cls.by_uuid(parent, create=True)
+            dbuser.parent_admin_id = parent_admin.id  # type: ignore
+
+        dbuser.mode = data.get('mode', AdminMode.agent)
+        dbuser.can_add_admin = data.get('can_add_admin') == True
+        if commit:
+            db.session.commit()
+        return dbuser
 
     def recursive_users_query(self):
         from .user import User

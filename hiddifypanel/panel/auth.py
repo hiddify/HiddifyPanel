@@ -10,13 +10,46 @@ import hiddifypanel.panel.hiddify as hiddify
 from hiddifypanel import hutils
 
 from werkzeug.local import LocalProxy
+
 current_account = LocalProxy(lambda: _get_user())
 
 
+class AnonymousAccount(BaseAccount):
+    __abstract__ = True
+
+    @property
+    def uuid(self):
+        return None
+
+    @property
+    def lang(self) -> Lang:
+        return None
+
+    @property
+    def role(self) -> Role | None:
+        return None
+
+    def get_id(self) -> str | None:
+        return "-1"
+
+    def __bool__(self):
+        return False
+
+    def __eq__(self, other):
+        if other == None:
+            return True
+        if isinstance(other, AnonymousAccount):
+            return True
+        return False
+
+    def __ne__(self, other):
+        return not self.__eq__(other)
+
+
 def _get_user():
-    if not hasattr(g, "account"):
-        g.account = None
-    return g.account
+    if not hasattr(g, "__account_store"):
+        g.__account_store = AnonymousAccount()
+    return g.__account_store
 
 
 def admin_session_is_exist():
@@ -24,7 +57,7 @@ def admin_session_is_exist():
 
 
 def logout_user():
-    g.account = None
+    g.__account_store = None
     if '_user_id' in session:
         session.pop('_user_id')
     if '_admin_id' in session:
@@ -33,7 +66,7 @@ def logout_user():
 
 def login_user(user: AdminUser | User, remember=False, duration=None, force=False, fresh=True):
     # abort(400, f'logining user: {user} {user.is_active}')
-    g.account = user
+    g.__account_store = user
     # if not user.is_active:
     #     return False
 
@@ -150,7 +183,7 @@ def init_app(app):
                 return logout_redirect()
 
         if account:
-            g.account = account
+            g.__account_store = account
             # g.account_uuid = account.uuid
             g.is_admin = hiddify.is_admin_role(account.role)  # type: ignore
             login_user(account, force=True)

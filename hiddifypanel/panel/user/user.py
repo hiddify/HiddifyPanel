@@ -354,7 +354,7 @@ def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
         "asn": asn,
         "country": auto_ip_selector.get_country(user_ip),
         'has_auto_cdn': has_auto_cdn,
-        'profile_url': hiddify.get_account_panel_link(g.account if g.get('account') else user, domain)
+        'profile_url': hiddify.get_account_panel_link(user, domain)
     }
 
 

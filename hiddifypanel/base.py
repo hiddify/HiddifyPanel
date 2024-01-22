@@ -89,9 +89,9 @@ def create_app(cli=False, **config):
         # user profile, cookie, session, etc.
         from hiddifypanel.models import ConfigEnum, hconfig
         if "admin" in request.base_url:
-            g.locale = hconfig(ConfigEnum.admin_lang) or hconfig(ConfigEnum.lang) or 'fa'
+            g.locale = g.account.lang or hconfig(ConfigEnum.admin_lang) or 'fa'
         else:
-            g.locale = g.account.lang if isinstance(g.get('account'), User) and g.account.lang else hconfig(ConfigEnum.lang) or 'fa'
+            g.locale = g.account.lang or hconfig(ConfigEnum.lang) or 'fa'
         return g.locale
 
     from flask_wtf.csrf import CSRFProtect

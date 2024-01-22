@@ -68,7 +68,7 @@ class LoginView(FlaskView):
             if g.user_agent['is_browser'] and request.headers.get('Authorization') or (current_account and len(username) > 0 and current_account.username != username):
                 flash(_('Incorrect Password'), 'error')
                 logout_user()
-                g.account = None
+                g.__account_store = None
                 # flash(request.authorization.username, 'error')
                 return redirect(loginurl)
 
@@ -90,13 +90,13 @@ class LoginView(FlaskView):
 
     # def uuid(self, uuid, path=''):
     #     proxy_path = hiddify.get_proxy_path_from_url(request.url)
-    #     g.account = None
+    #     g.__account_store = None
     #     uuid = str(uuid)
     #     if proxy_path == hconfig(ConfigEnum.proxy_path_client):
-    #         g.account = User.by_uuid(uuid)
+    #         g.__account_store = User.by_uuid(uuid)
     #         path = f'client/{path}'
     #     elif proxy_path == hconfig(ConfigEnum.proxy_path_admin):
-    #         g.account = AdminUser.by_uuid(uuid)
+    #         g.__account_store = AdminUser.by_uuid(uuid)
     #     if not g.account:
     #         abort(403)
     #     if not g.user_agent['is_browser'] and proxy_path == hconfig(ConfigEnum.proxy_path_client):

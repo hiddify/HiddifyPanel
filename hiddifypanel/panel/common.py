@@ -11,6 +11,7 @@ from sys import version as python_version
 from platform import platform
 import hiddifypanel.hutils as hutils
 import hiddifypanel.panel.auth as auth
+from hiddifypanel.panel.auth import current_account
 from apiflask import APIFlask, HTTPError, abort
 
 
@@ -100,7 +101,7 @@ def init_app(app: APIFlask):
     @app.url_defaults
     def add_proxy_path_user(endpoint, values):
         if 'proxy_path' not in values:
-            if hasattr(g, 'account') and isinstance(g.account, AdminUser):
+            if hiddify.is_admin_role(g.account):
                 values['proxy_path'] = hconfig(ConfigEnum.proxy_path_admin)
             # elif 'static' in endpoint:
                 #     values['proxy_path'] = hconfig(ConfigEnum.proxy_path)
@@ -171,6 +172,7 @@ def init_app(app: APIFlask):
     #     return redirect(new_link, 302)
     @app.before_request
     def set_default_values():
+        g.account = current_account
         g.user_agent = hiddify.get_user_agent()
 
     @app.before_request
@@ -228,7 +230,7 @@ def init_app(app: APIFlask):
     def generate_github_issue_link_for_500_error(error, traceback, remove_sensetive_data=True, remove_unrelated_traceback_datails=True):
 
         def remove_sensetive_data_from_github_issue_link(issue_link):
-            if hasattr(g, 'account') and hasattr(g.account, 'uuid') and g.account.uuid:
+            if g.account.uuid:
                 issue_link.replace(f'{g.account.uuid}', '*******************')
 
             issue_link.replace(request.host, '**********')
