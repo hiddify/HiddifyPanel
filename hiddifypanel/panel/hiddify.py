@@ -857,7 +857,6 @@ def __parse_user_agent(ua):
 
 def is_ssh_password_authentication_enabled():
     if os.path.isfile('/etc/ssh/sshd_config'):
-        content = ''
         with open('/etc/ssh/sshd_config', 'r') as f:
             for line in f.readlines():
                 line = line.strip()

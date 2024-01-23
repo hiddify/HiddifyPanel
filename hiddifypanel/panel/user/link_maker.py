@@ -1,5 +1,5 @@
 from flask import g, request, render_template
-from ipaddress import IPv4Address, IPv4Address
+from ipaddress import IPv4Address, IPv6Address
 import enum
 from hiddifypanel import hutils
 from hiddifypanel.models import *
@@ -525,6 +525,9 @@ def to_singbox(proxy):
 
     add_singbox_tls(base, proxy)
 
+    if g.user_agent.get('is_hiddify') and proxy["proto"] in ['vmess', 'vless', 'trojan']:
+        add_singbox_tls_tricks(base)
+
     if proxy.get('flow'):
         base["flow"] = proxy['flow']
         # base["flow-show"] = True
@@ -569,15 +572,31 @@ def add_hysteria(base, proxy):
 
 
 def add_singbox_multiplex(base):
-    return
+    if not hconfig(ConfigEnum.mux_enable):
+        return
     base['multiplex'] = {
         "enabled": True,
-        "protocol": "h2mux",
-        "max_connections": 4,
-        "min_streams": 4,
-        "max_streams": 0,
-        "padding": false
+        "protocol": hconfig(ConfigEnum.mux_protocol),
+        "padding": hconfig(ConfigEnum.mux_padding_enable)
     }
+    # Conflicts: max_streams with max_connections and min_streams
+    mux_max_streams = int(hconfig(ConfigEnum.mux_max_streams))
+    if mux_max_streams and mux_max_streams != 0:
+        base['multiplex']['max_streams'] = mux_max_streams
+    else:
+        base['multiplex']['max_connections'] = int(hconfig(ConfigEnum.mux_max_connections))
+        base['multiplex']['min_streams'] = int(hconfig(ConfigEnum.mux_min_streams))
+
+    add_singbox_tcp_brutal(base)
+
+
+def add_singbox_tcp_brutal(base):
+    if 'multiplex' in base:
+        base['multiplex']['brutal'] = {
+            "enabled": hconfig(ConfigEnum.mux_brutal_enable),
+            "up_mbps": int(hconfig(ConfigEnum.mux_brutal_up_mbps)),
+            "down_mbps": int(hconfig(ConfigEnum.mux_brutal_down_mbps))
+        }
 
 
 def add_singbox_udp_over_tcp(base):
@@ -611,6 +630,24 @@ def add_singbox_tls(base, proxy):
     # base['ech'] = {
     #     "enabled": True,
     # }
+
+
+def add_singbox_tls_tricks(base):
+    if hconfig(ConfigEnum.tls_fragment_enable):
+        base['tls_fragment'] = {
+            'enable': True,
+            'size': hconfig(ConfigEnum.tls_fragment_size),
+            'sleep': hconfig(ConfigEnum.tls_fragment_sleep)
+        }
+    if hconfig(ConfigEnum.tls_padding_enable):
+        base['tls_tricks'] = {
+            'padding_size': hconfig(ConfigEnum.tls_padding_length)
+        }
+    if hconfig(ConfigEnum.tls_mixed_case):
+        if 'tls_tricks' not in base:
+            base['tls_tricks'] = {'mixedcase_sni': True}
+        else:
+            base['tls_tricks']['mixedcase_sni'] = True
 
 
 def add_singbox_transport(base, proxy):
