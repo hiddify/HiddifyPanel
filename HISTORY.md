@@ -91,6 +91,22 @@
 
 #### Changes
 
+* Remove unused argument/parameter. 
+
+* Send args in link (asn,mode...) 
+
+* Seperate clash and clashmeta endpoints. 
+
+* All-configs api links. 
+
+* Update configs link. 
+
+* Refactor getting lang. 
+
+* Hide telegram id in add/edit page. 
+
+* Hide histeria port from setting ui. 
+
 * Hysteria link makeri (client link) 
 
 * NOTHING IMPORTANT. 
@@ -202,6 +218,26 @@
 * Update hiddify next download link. 
 
 #### Fix
+
+* Auth bug. 
+
+* Exception in account. 
+
+* Locale bug. 
+
+* Agent admin permission. 
+
+* User panel lang. 
+
+* Send message to admin's users itself. not to other admins. 
+
+* Telegram id active representationo add: telegram id field to user edit/add page. 
+
+* Send message to user in telegram. 
+
+* Bug. 
+
+* Useragent echo. 
 
 * Singbox 1.8. 
 
@@ -608,6 +644,49 @@ with A2_
 * Bugs. 
 
 #### Other
+
+* Update. 
+
+* Update lang. 
+
+* Merge pull request #94 from Iam54r1n4/fix-agent-role. 
+  _fix: agent admin permission_
+
+* Merge pull request #91 from Iam54r1n4/new-links. 
+  _Add new config endpoints_
+
+* Merge pull request #92 from Iam54r1n4/fix-lang. 
+  _Fix lang_
+
+* Add: new config links. 
+
+* Merge pull request #93 from Iam54r1n4/tel_bug. 
+  _Fix telegram id bugs_
+
+* Merge branch 'main' of github.com:hiddify/Hiddify-Panel. 
+
+* Merge pull request #89 from Iam54r1n4/mux. 
+  _Add multiplexer config fields_
+
+* Change defaults for mux. 
+
+* Fix the locale generated dynamically. 
+
+* Add: validation for mux fields. 
+
+* Add: db version for mux fields. 
+
+* Add: mux new fields. 
+
+* Merge pull request #90 from Iam54r1n4/tel_bug. 
+  _Fix sending message to user in with telegram bot_
+
+* Merge pull request #88 from Iam54r1n4/validation. 
+  _Add validation for tls tricks and  hysteria new fields_
+
+* Add: validation for hysteria fields. 
+
+* Add: tls tricks validations. 
 
 * Better singbox config. 
 
@@ -1095,6 +1174,14 @@ It is a visual improvement to have all users aligned in the table._
 * Convert old db to new. 
 
 * Add pysql req. 
+
+
+
+## 8.8.94 (2024-01-16)
+
+#### Fix
+
+* Singbox1.8. 
 
 
 

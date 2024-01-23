@@ -100,7 +100,6 @@ def init_app(app: APIFlask):
     @app.url_defaults
     def add_proxy_path_user(endpoint, values):
         if 'proxy_path' not in values:
-
             if hasattr(g, 'account') and isinstance(g.account, AdminUser):
                 values['proxy_path'] = hconfig(ConfigEnum.proxy_path_admin)
             # elif 'static' in endpoint:
@@ -114,8 +113,8 @@ def init_app(app: APIFlask):
 
         if hiddify.is_api_v1_call(endpoint=endpoint) and 'admin_uuid' not in values:
             values['admin_uuid'] = AdminUser.get_super_admin_uuid()
-        # if 'secret_uuid' not in values:
-        #     values['secret_uuid'] = AdminUser.get_super_admin_uuid()
+        # if 'secret_uuid' not in values and g.account and ".webmanifest" in request.path:
+        #     values['secret_uuid'] = g.account.uuid
 
     @app.route("/<proxy_path>/videos/<file>")
     @app.doc(hide=True)

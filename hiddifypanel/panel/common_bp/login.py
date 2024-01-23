@@ -1,6 +1,6 @@
 from flask_classful import FlaskView, route
 from hiddifypanel.panel.auth import login_required, current_account, login_user, logout_user, login_by_uuid
-from flask import redirect, request, g, url_for, render_template, flash
+from flask import redirect, request, g, url_for, render_template, flash, jsonify
 from flask import current_app as app
 from flask_babelex import lazy_gettext as _
 from apiflask import abort
@@ -118,8 +118,7 @@ class LoginView(FlaskView):
 
     #     return redirect(f"/{proxy_path}/{path}")
 
-    @route('/manifest.webmanifest')
-    @login_required()
+    @route('/<secret_uuid>/manifest.webmanifest')
     def create_pwa_manifest(self):
         domain = request.host
         name = (domain if hiddify.is_admin_panel_call() else g.account.name)
@@ -130,7 +129,7 @@ class LoginView(FlaskView):
             "background_color": "#1a1b21",
             "display": "standalone",
             "scope": f"/",
-            "start_url": hiddify.get_account_panel_link(g.account, domain) +"?pwa=true",
+            "start_url": hiddify.get_account_panel_link(g.account, domain) + "?pwa=true",
             "description": "Hiddify, for a free Internet",
             "orientation": "any",
             "icons": [
