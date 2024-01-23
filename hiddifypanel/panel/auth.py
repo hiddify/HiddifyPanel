@@ -172,12 +172,12 @@ def init_app(app):
                 return logout_redirect()
 
         elif (session_user := session.get('_user_id')) and not is_admin_path:
-            print('session_user', session_user)
+            # print('session_user', session_user)
             account = User.by_id(int(session_user.split("_")[1]))  # type: ignore
             if not account:
                 return logout_redirect()
         elif (session_admin := session.get('_admin_id')) and is_admin_path:
-            print('session_admin', session_admin)
+            # print('session_admin', session_admin)
             account = AdminUser.by_id(int(session_admin.split("_")[1]))  # type: ignore
             if not account:
                 return logout_redirect()
