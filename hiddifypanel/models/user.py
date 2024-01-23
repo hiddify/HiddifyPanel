@@ -26,6 +26,7 @@ class UserMode(StrEnum):
     weekly = auto()
     daily = auto()
 
+
     # disable = auto()
 package_mode_dic = {
     UserMode.daily: 1,
@@ -60,7 +61,7 @@ class User(BaseAccount):
     This is a model class for a user in a database that includes columns for their ID, UUID, name, online status,
     account expiration date, usage limit, package days, mode, start date, current usage, last reset time, and comment.
     """
-
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     last_online = db.Column(db.DateTime, nullable=False, default=datetime.datetime.min)
     # removed
     expiry_time = db.Column(db.Date, default=datetime.date.today() + relativedelta.relativedelta(months=6))

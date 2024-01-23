@@ -29,6 +29,7 @@ class AdminUser(BaseAccount):
     This is a model class for a user in a database that includes columns for their ID, UUID, name, online status,
     account expiration date, usage limit, package days, mode, start date, current usage, last reset time, and comment.
     """
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     mode = db.Column(db.Enum(AdminMode), default=AdminMode.agent, nullable=False)
     can_add_admin = db.Column(db.Boolean, default=False, nullable=False)
     max_users = db.Column(db.Integer, default=100, nullable=False)

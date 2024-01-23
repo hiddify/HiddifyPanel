@@ -2,7 +2,7 @@ import datetime
 import uuid as uuid_mod
 from hiddifypanel import hutils
 from hiddifypanel.models.role import Role
-from sqlalchemy import Column, String, BigInteger
+from sqlalchemy import Column, String, BigInteger, Integer
 from sqlalchemy_serializer import SerializerMixin
 from flask_login import UserMixin as FlaskLoginUserMixin
 from hiddifypanel.models import Lang
@@ -11,7 +11,6 @@ from hiddifypanel.panel.database import db
 
 class BaseAccount(db.Model, SerializerMixin, FlaskLoginUserMixin):  # type: ignore
     __abstract__ = True
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     uuid = Column(String(36), default=lambda: str(uuid_mod.uuid4()), nullable=False, unique=True)
     name = Column(String(512), nullable=False, default='')
     username = Column(String(100), nullable=True, default='')
@@ -25,7 +24,7 @@ class BaseAccount(db.Model, SerializerMixin, FlaskLoginUserMixin):  # type: igno
         return None
 
     def get_id(self) -> str | None:
-        return '{self.__class__.name}_{self.id}'
+        return '{self.__class__.name}_{self.id if self.hasattr("id") else "-"}'
 
     def is_username_unique(self) -> bool:
         cls = self.__class__()
