@@ -10,6 +10,7 @@ from hiddifypanel.panel.database import db
 from hiddifypanel.models import Lang
 from hiddifypanel.models.utils import fill_password, fill_username
 from .base_account import BaseAccount
+from .admin import AdminUser
 from hiddifypanel import hutils
 ONE_GIG = 1024*1024*1024
 
