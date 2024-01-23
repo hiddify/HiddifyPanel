@@ -523,7 +523,7 @@ def to_singbox(proxy):
 
     add_singbox_tls(base, proxy)
 
-    if g.user_agent.get('is_hiddify') and proxy["proto"] in ['vmess', 'vless', 'trojan']:
+    if proxy['cdn'] and g.user_agent.get('is_hiddify') and proxy["proto"] in ['vmess', 'vless', 'trojan']:
         add_singbox_tls_tricks(base)
 
     if proxy.get('flow'):
@@ -633,19 +633,23 @@ def add_singbox_tls(base, proxy):
 def add_singbox_tls_tricks(base):
     if hconfig(ConfigEnum.tls_fragment_enable):
         base['tls_fragment'] = {
-            'enable': True,
+            # 'enable': True,
             'size': hconfig(ConfigEnum.tls_fragment_size),
             'sleep': hconfig(ConfigEnum.tls_fragment_sleep)
         }
+
+    tls_padding_enable = hconfig(ConfigEnum.tls_padding_enable)
+    tls_mixed_case = hconfig(ConfigEnum.tls_mixed_case)
+    if (tls_padding_enable or tls_mixed_case) and 'tls' not in base:
+        base['tls'] = {
+            'tls_tricks': {}
+        }
     if hconfig(ConfigEnum.tls_padding_enable):
-        base['tls_tricks'] = {
+        base['tls']['tls_tricks'] = {
             'padding_size': hconfig(ConfigEnum.tls_padding_length)
         }
     if hconfig(ConfigEnum.tls_mixed_case):
-        if 'tls_tricks' not in base:
-            base['tls_tricks'] = {'mixedcase_sni': True}
-        else:
-            base['tls_tricks']['mixedcase_sni'] = True
+        base['tls']['tls_tricks']['mixedcase_sni'] = True
 
 
 def add_singbox_transport(base, proxy):
