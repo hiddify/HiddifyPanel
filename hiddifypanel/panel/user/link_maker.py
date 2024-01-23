@@ -264,7 +264,8 @@ def to_link(proxy):
             vmess_data['pbk'] = proxy['reality_pbk']
             vmess_data['sid'] = proxy['reality_short_id']
 
-        add_tls_tricks_to_dict(vmess_data)
+        if proxy['cdn'] and g.user_agent.get('is_hiddify'):
+            add_tls_tricks_to_dict(vmess_data)
         add_mux_to_dict(vmess_data)
 
         return "vmess://" + hiddify.do_base_64(f'{json.dumps(vmess_data,cls=CustomEncoder)}')
@@ -303,9 +304,11 @@ def to_link(proxy):
 
     # the ray2sing supports vless, vmess and trojan tls tricks and mux
     # the vmess handled already
+
     if proxy['proto'] in {'vless', 'trojan'}:
-        baseurl = add_tls_tricks_to_link(baseurl)
         baseurl = add_mux_to_link(baseurl)
+        if proxy['cdn'] and g.user_agent.get('is_hiddify'):
+            baseurl = add_tls_tricks_to_link(baseurl)
 
     # infos+=f'&alpn={proxy["alpn"]}'
     baseurl += f'&path={proxy["path"]}' if "path" in proxy else ""
