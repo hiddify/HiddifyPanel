@@ -62,7 +62,7 @@ class BaseAccount(db.Model, SerializerMixin, FlaskLoginUserMixin):  # type: igno
         db_account = cls.by_uuid(data['uuid'], create=True)
         db_account.name = data.get('name') or ''
         db_account.comment = data.get('comment', '')
-        db_account.telegram_id = hutils.to_int(data.get('telegram_id'))
+        db_account.telegram_id = hutils.utils.to_int(data.get('telegram_id'))
         db_account.lang = data.get('lang')
         if commit:
             db.session.commit()
