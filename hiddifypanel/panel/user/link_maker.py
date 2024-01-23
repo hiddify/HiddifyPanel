@@ -264,6 +264,10 @@ def to_link(proxy):
             vmess_data['pbk'] = proxy['reality_pbk']
             vmess_data['sid'] = proxy['reality_short_id']
 
+        if proxy['cdn'] and g.user_agent.get('is_hiddify'):
+            add_tls_tricks_to_dict(vmess_data)
+        add_mux_to_dict(vmess_data)
+
         return "vmess://" + hiddify.do_base_64(f'{json.dumps(vmess_data,cls=CustomEncoder)}')
         # return pbase64(f'vmess://{json.dumps(vmess_data)}')
     if proxy['proto'] == 'ssh':
@@ -300,6 +304,14 @@ def to_link(proxy):
     baseurl += f'&sni={proxy["sni"]}&type={proxy["transport"]}'
     baseurl += f"&alpn={proxy['alpn']}"
 
+    # the ray2sing supports vless, vmess and trojan tls tricks and mux
+    # the vmess handled already
+
+    if proxy['proto'] in {'vless', 'trojan'}:
+        baseurl = add_mux_to_link(baseurl)
+        if proxy['cdn'] and g.user_agent.get('is_hiddify'):
+            baseurl = add_tls_tricks_to_link(baseurl)
+
     # infos+=f'&alpn={proxy["alpn"]}'
     baseurl += f'&path={proxy["path"]}' if "path" in proxy else ""
     baseurl += f'&host={proxy["host"]}' if "host" in proxy else ""
@@ -330,6 +342,54 @@ def to_link(proxy):
     if proxy['l3'] == 'http':
         return f'{baseurl}&security=none{infos}'
     return proxy
+
+# region tls tricks & mux
+# notice: combining the functions into two function would make code less readable and difficult to maintain
+
+
+def add_tls_tricks_to_link(link: str) -> str:
+    if hconfig(ConfigEnum.tls_fragment_enable):
+        link += f'&fgsize={hconfig(ConfigEnum.tls_fragment_size)}&fgsleep={hconfig(ConfigEnum.tls_fragment_sleep)}'
+    if hconfig(ConfigEnum.tls_mixed_case):
+        link += '&mc=1'
+    if hconfig(ConfigEnum.tls_padding_enable):
+        link += f'&padsize={hconfig(ConfigEnum.tls_padding_length)}'
+    return link
+
+
+def add_mux_to_link(link: str) -> str:
+    if hconfig(ConfigEnum.mux_enable):
+        link += f'&mux={hconfig(ConfigEnum.mux_protocol)}&mux_max={hconfig(ConfigEnum.mux_max_connections)}&mux_min={hconfig(ConfigEnum.mux_min_streams)}&mux_pad={hconfig(ConfigEnum.mux_padding_enable)}'
+    if hconfig(ConfigEnum.mux_brutal_enable):
+        link += f'&mux_up={hconfig(ConfigEnum.mux_brutal_up_mbps)}&mux_down={hconfig(ConfigEnum.mux_brutal_down_mbps)}'
+    return link
+
+
+def add_tls_tricks_to_dict(d: dict):
+    if hconfig(ConfigEnum.tls_fragment_enable):
+        d['fgsize'] = hconfig(ConfigEnum.tls_fragment_size)
+        d['fgsleep'] = hconfig(ConfigEnum.tls_fragment_sleep)
+    if hconfig(ConfigEnum.tls_mixed_case):
+        d['mc'] = 1
+    if hconfig(ConfigEnum.tls_padding_enable):
+        d['padsize'] = hconfig(ConfigEnum.tls_padding_length)
+
+
+def add_mux_to_dict(d: dict):
+    if hconfig(ConfigEnum.mux_enable):
+        d['mux'] = hconfig(ConfigEnum.mux_protocol)
+        d['mux_max'] = hconfig(ConfigEnum.mux_max_connections)
+        d['mux_min'] = hconfig(ConfigEnum.mux_min_streams)
+        d['mux_pad'] = hconfig(ConfigEnum.mux_padding_enable)
+        # the hiddify next client doesn't support mux max streams
+        # vmess_data['mux_max_streams'] = hconfig(ConfigEnum.mux_max_streams)
+
+        # handle brutal tcp
+        if hconfig(ConfigEnum.mux_brutal_enable):
+            d['mux_up'] = hconfig(ConfigEnum.mux_brutal_up_mbps)
+            d['mux_down'] = hconfig(ConfigEnum.mux_brutal_down_mbps)
+
+# endregion
 
 
 def to_clash_yml(proxy):
