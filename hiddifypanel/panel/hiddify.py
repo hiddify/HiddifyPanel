@@ -827,7 +827,6 @@ def __parse_user_agent(ua):
     res['is_clash_meta'] = re.match('^(Clash-verge|Clash-?Meta|Stash|NekoBox|NekoRay|Pharos|hiddify-desktop)', ua, re.IGNORECASE) and True
     res['is_singbox'] = re.match('^(HiddifyNext|Dart|SFI|SFA)', ua, re.IGNORECASE) and True
     res['is_hiddify'] = re.match('^(HiddifyNext)', ua, re.IGNORECASE) and True
-    res['supports_tlsfg'] = res['is_hiddify']
 
     if (res['is_singbox']):
         res['singbox_version'] = generic_version
