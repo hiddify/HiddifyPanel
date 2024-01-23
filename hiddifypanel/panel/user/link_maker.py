@@ -523,6 +523,9 @@ def to_singbox(proxy):
 
     add_singbox_tls(base, proxy)
 
+    if g.user_agent.get('supports_tlsfg') and proxy["proto"] in ['vmess', 'vless', 'trojan']:
+        add_singbox_tls_fragment(base)
+
     if proxy.get('flow'):
         base["flow"] = proxy['flow']
         # base["flow-show"] = True
@@ -625,6 +628,14 @@ def add_singbox_tls(base, proxy):
     # base['ech'] = {
     #     "enabled": True,
     # }
+
+
+def add_singbox_tls_fragment(base):
+    if hconfig(ConfigEnum.tls_fragment_enable):
+        base['tls_fragment'] = {
+            'size': hconfig(ConfigEnum.tls_fragment_size),
+            'sleep': hconfig(ConfigEnum.tls_fragment_sleep)
+        }
 
 
 def add_singbox_transport(base, proxy):
