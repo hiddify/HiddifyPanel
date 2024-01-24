@@ -5,3 +5,4 @@ from . import json
 from . import auth
 from . import encode
 from . import random
+from . import convert

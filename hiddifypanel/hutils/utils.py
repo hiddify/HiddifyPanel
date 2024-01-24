@@ -85,20 +85,5 @@ def get_proxy_path_from_url(url: str) -> str | None:
     return proxy_path
 
 
-def to_int(s: str) -> int | None:
-    try:
-        return int(s)
-    except:
-        return None
-
-
 def is_out_of_range_port(port: int) -> bool:
     return port < 1 or port > 65535
-
-
-def is_int(input: str) -> bool:
-    try:
-        int(input)
-        return True
-    except:
-        return False
