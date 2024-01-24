@@ -6,10 +6,8 @@ from flask import g, send_from_directory, session
 from flask_babelex import gettext as _
 import hiddifypanel
 from hiddifypanel.models import *
-from hiddifypanel.panel import hiddify, github_issue_generator
-from sys import version as python_version
-from platform import platform
-import hiddifypanel.hutils as hutils
+from hiddifypanel.panel import hiddify
+from hiddifypanel import hutils
 import hiddifypanel.panel.auth as auth
 from hiddifypanel.panel.auth import current_account
 from apiflask import APIFlask, HTTPError, abort
@@ -49,7 +47,7 @@ def init_app(app: APIFlask):
         trace = traceback.format_exc()
 
         # Create github issue link
-        issue_link = generate_github_issue_link_for_500_error(e, trace)
+        issue_link = hutils.github_issue.generate_github_issue_link_for_500_error(e, trace)
 
         return render_template('500.html', error=e, trace=trace, has_update=has_update, last_version=last_version, issue_link=issue_link), 500
 
@@ -62,7 +60,7 @@ def init_app(app: APIFlask):
             trace = traceback.format_exc()
 
             # Create github issue link
-            issue_link = generate_github_issue_link_for_500_error(e, trace)
+            issue_link = hutils.github_issue.generate_github_issue_link_for_500_error(e, trace)
 
             last_version = hiddify.get_latest_release_version('hiddify-panel')  # TODO: add dev update check
             if "T" in hiddifypanel.__version__:
@@ -75,16 +73,6 @@ def init_app(app: APIFlask):
         #     return render_template('access-denied.html',error=e), e.status_code
 
         return render_template('error.html', error=e), e.status_code
-
-    def generate_github_issue_link(title, issue_body):
-        opts = {
-            "user": 'hiddify',
-            "repo": 'Hiddify-Manager',
-            "title": title,
-            "body": issue_body,
-        }
-        issue_link = str(github_issue_generator.IssueUrl(opts).get_url())
-        return issue_link
 
     # @app.spec_processor
     # def set_default_path_values(spec):
@@ -218,70 +206,4 @@ def init_app(app: APIFlask):
         else:
             g.bot = None
 
-    def github_issue_details():
-        details = {
-            'hiddify_version': f'{hiddifypanel.__version__}',
-            'python_version': f'{python_version}',
-            'os_details': f'{platform()}',
-            'user_agent': request.user_agent
-        }
-        return details
-
-    def generate_github_issue_link_for_500_error(error, traceback, remove_sensetive_data=True, remove_unrelated_traceback_datails=True):
-
-        def remove_sensetive_data_from_github_issue_link(issue_link):
-            if g.account.uuid:
-                issue_link.replace(f'{g.account.uuid}', '*******************')
-
-            issue_link.replace(request.host, '**********')
-            issue_link.replace(hconfig(ConfigEnum.proxy_path), '**********')
-            issue_link.replace(hconfig(ConfigEnum.proxy_path_admin), '**********')
-            issue_link.replace(hconfig(ConfigEnum.proxy_path_client), '**********')
-
-        def remove_unrelated_traceback_details(stacktrace: str):
-            lines = stacktrace.splitlines()
-            if len(lines) < 1:
-                return ""
-
-            output = ''
-            skip_next_line = False
-            for i, line in enumerate(lines):
-                if i == 0:
-                    output += line + '\n'
-                    continue
-                if skip_next_line == True:
-                    skip_next_line = False
-                    continue
-                if line.strip().startswith('File'):
-                    if 'hiddify' in line.lower():
-                        output += line + '\n'
-                        if len(lines) > i+1:
-                            output += lines[i + 1] + '\n'
-                    skip_next_line = True
-
-            return output
-
-        if remove_unrelated_traceback_datails:
-            traceback = remove_unrelated_traceback_details(traceback)
-
-        issue_details = github_issue_details()
-
-        issue_body = render_template('github_issue_body.j2', issue_details=issue_details, error=error, traceback=traceback)
-
-        # Create github issue link
-        issue_link = generate_github_issue_link(f"Internal server error: {error.name if hasattr(error,'name') and error.name != None and error.name else 'Unknown'}", issue_body)
-
-        if remove_sensetive_data:
-            remove_sensetive_data_from_github_issue_link(issue_link)
-
-        return issue_link
-
-    def generate_github_issue_link_for_admin_sidebar():
-
-        issue_body = render_template('github_issue_body.j2', issue_details=github_issue_details())
-
-        # Create github issue link
-        issue_link = generate_github_issue_link('Please fill the title properly', issue_body)
-        return issue_link
-
-    app.jinja_env.globals['generate_github_issue_link_for_admin_sidebar'] = generate_github_issue_link_for_admin_sidebar
+    app.jinja_env.globals['generate_github_issue_link_for_admin_sidebar'] = hutils.github_issue.generate_github_issue_link_for_admin_sidebar
