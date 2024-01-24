@@ -2,6 +2,7 @@
 from urllib.parse import urlparse
 from flask_babelex import gettext as _
 from flask_bootstrap import SwitchField
+from hiddifypanel import hutils
 # from flask_babelex import gettext as _
 import wtforms as wtf
 from flask_wtf import FlaskForm
@@ -10,7 +11,6 @@ import json
 import json
 from flask import render_template, request, jsonify, redirect, g
 from hiddifypanel.panel.auth import login_required
-from hiddifypanel.panel.hiddify import flash
 from flask_wtf.file import FileField, FileRequired
 from flask_classful import FlaskView
 
@@ -58,13 +58,13 @@ class Backup(FlaskView):
 
             from flask_babel import refresh
             refresh()
-            return redirect(url_for("admin.Actions:reinstall2"))
+            return redirect(hutils.flask.url_for("admin.Actions:reinstall2"))
             # from . import Actions
             # action = Actions()
             # return action.reinstall(complete_install=True, domain_changed=True)
-            # # hiddify.flash_config_success(full_install=True)
+            # # hutils.flask.flash_config_success(full_install=True)
         else:
-            flash(_('Config file is incorrect'), category='error')
+            hutils.flask.flash(_('Config file is incorrect'), category='error')
         return render_template('backup.html', restore_form=restore_form)
 
 

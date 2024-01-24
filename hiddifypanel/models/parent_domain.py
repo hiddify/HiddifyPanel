@@ -1,3 +1,4 @@
+from hiddifypanel.models.domain import Domain
 from sqlalchemy.orm import backref
 from sqlalchemy_serializer import SerializerMixin
 

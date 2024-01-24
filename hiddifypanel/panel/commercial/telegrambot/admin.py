@@ -1,3 +1,4 @@
+from hiddifypanel.panel import hiddify
 from . import bot
 
 from telebot import types

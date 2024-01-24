@@ -149,7 +149,7 @@ def get_account_by_api_key(api_key, is_admin):
 
 
 def get_account_by_uuid(uuid, is_admin):
-    return AdminUser.by_uuid(api_key) if is_admin else User.by_uuid(api_key)
+    return AdminUser.by_uuid(uuid) if is_admin else User.by_uuid(uuid)
 
 
 def init_app(app):

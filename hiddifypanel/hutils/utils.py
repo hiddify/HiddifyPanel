@@ -3,8 +3,6 @@ from typing import Any, Tuple
 from urllib.parse import urlparse
 from uuid import UUID
 from flask_babelex import lazy_gettext as _
-from flask import url_for, Markup
-from flask import flash as flask_flash
 import re
 import requests
 
@@ -19,13 +17,7 @@ to_gig_d = 1000*1000*1000
 
 
 def error(str):
-
     print(str, file=sys.stderr)
-
-
-def static_url_for(**values):
-    orig = url_for("static", **values)
-    return orig.split("user_secret")[0]
 
 
 @cache.cache(ttl=60000)
@@ -72,11 +64,6 @@ def is_assci_alphanumeric(str):
         if c not in string.ascii_letters + string.digits:
             return False
     return True
-
-
-def flash(message, category):
-    # print(message)
-    return flask_flash(Markup(message), category)
 
 
 def get_proxy_path_from_url(url: str) -> str | None:

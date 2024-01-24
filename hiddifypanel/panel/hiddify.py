@@ -1,4 +1,8 @@
 import glob
+import random
+import socket
+import ssl
+import time
 import uuid
 import user_agents
 import json
@@ -8,12 +12,11 @@ from datetime import datetime
 from typing import Tuple
 from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric import x25519
-from flask import current_app, g, jsonify, request
+from flask import current_app, g, request, Markup  # type: ignore
 from flask_babelex import gettext as __
 from flask_babelex import lazy_gettext as _
 from wtforms.validators import ValidationError
 from apiflask import abort as apiflask_abort
-from apiflask import abort
 
 from datetime import timedelta
 from babel.dates import format_timedelta as babel_format_timedelta
@@ -205,18 +208,18 @@ def proxy_path_validator(proxy_path):
         return
 
     if proxy_path not in [admin_proxy_path, deprecated_path, client_proxy_path]:
-        abort(400, 'invalid request')
+        apiflask_abort(400, 'invalid request')
 
     if is_admin_panel_call() and proxy_path != admin_proxy_path:
-        abort(400, 'invalid request')
+        apiflask_abort(400, 'invalid request')
     if is_user_panel_call() and proxy_path != client_proxy_path:
-        abort(400, 'invalid request')
+        apiflask_abort(400, 'invalid request')
 
     if is_api_call(request.path):
         if is_admin_api_call() and proxy_path != admin_proxy_path:
-            return apiflask_abort(400, Markup(f"Invalid Proxy Path <a href=/{admin_proxy_path}/admin>Admin Panel</a>")) if dbg_mode else abort(400, 'invalid request')
+            return apiflask_abort(400, Markup(f"Invalid Proxy Path <a href=/{admin_proxy_path}/admin>Admin Panel</a>")) if dbg_mode else apiflask_abort(400, 'invalid request')
         if is_user_api_call() and proxy_path != client_proxy_path:
-            return apiflask_abort(400, Markup(f"Invalid Proxy Path <a href=/{client_proxy_path}/admin>User Panel</a>")) if dbg_mode else abort(400, 'invalid request')
+            return apiflask_abort(400, Markup(f"Invalid Proxy Path <a href=/{client_proxy_path}/admin>User Panel</a>")) if dbg_mode else apiflask_abort(400, 'invalid request')
 
 
 def asset_url(path) -> str:
@@ -272,17 +275,6 @@ def quick_apply_users():
 
     # time.sleep(1)
     return {"status": 'success'}
-
-
-def flash_config_success(restart_mode='', domain_changed=True):
-    if restart_mode:
-        url = url_for('admin.Actions:reinstall', complete_install=restart_mode ==
-                      'reinstall', domain_changed=domain_changed)
-        apply_btn = f"<a href='{url}' class='btn btn-primary form_post'>" + \
-            _("admin.config.apply_configs")+"</a>"
-        flash((_('config.validation-success', link=apply_btn)), 'success')
-    else:
-        flash((_('config.validation-success-no-reset')), 'success')
 
 
 # Importing socket library
@@ -383,7 +375,7 @@ def check_need_reset(old_configs, do=False):
     if old_configs[ConfigEnum.package_mode] != hconfig(ConfigEnum.package_mode):
         return reinstall_action(do_update=True)
     if not (do and restart_mode == 'reinstall'):
-        return flash_config_success(restart_mode=restart_mode, domain_changed=False)
+        return hutils.flask.flash_config_success(restart_mode=restart_mode, domain_changed=False)
 
     return reinstall_action(complete_install=True, domain_changed=domain_changed)
 
@@ -652,9 +644,12 @@ def get_random_domains(count=1, retry=3):
             return random.sample(defdomains, count)
         return get_random_domains(count, retry-1)
 
+# not used
+
 
 def is_domain_support_tls_13(domain):
     context = ssl.create_default_context()
+    port = 433
     with socket.create_connection((domain, port)) as sock:
         with context.wrap_socket(sock, server_hostname=domain) as ssock:
             return ssock.version() == "TLSv1.3"
@@ -697,8 +692,8 @@ def debug_flash_if_not_in_the_same_asn(domain):
             # country_ipv4= ipcountry.get(ipv4)
             # country_dip= ipcountry.get(dip)
             if asn_ipv4.get('autonomous_system_organization') != asn_dip.get('autonomous_system_organization'):
-                flash(_("selected domain for REALITY is not in the same ASN. To better use of the protocol, it is better to find a domain in the same ASN.") +
-                      f"<br> Server ASN={asn_ipv4.get('autonomous_system_organization','unknown')}<br>{domain}_ASN={asn_dip.get('autonomous_system_organization','unknown')}", "warning")
+                hutils.flask.flash(_("selected domain for REALITY is not in the same ASN. To better use of the protocol, it is better to find a domain in the same ASN.") +
+                                   f"<br> Server ASN={asn_ipv4.get('autonomous_system_organization','unknown')}<br>{domain}_ASN={asn_dip.get('autonomous_system_organization','unknown')}", "warning")
     except:
         pass
 
