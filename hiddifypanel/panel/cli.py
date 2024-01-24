@@ -105,6 +105,7 @@ def admin_links():
 
 def admin_path():
     admin = AdminUser.get_super_admin()
+    # WTF is the owner and server_id?
     print(hiddify.get_account_panel_link(owner, server_ip, prefere_path_only=True))
 
 

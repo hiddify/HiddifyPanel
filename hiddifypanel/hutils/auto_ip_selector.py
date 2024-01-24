@@ -128,7 +128,7 @@ def get_host_base_on_asn(ips, asn_short):
     valid_hosts = [ip for ip in ips if len(ip) > 5]
 
     if len(ips) % 2 != 0 or len(valid_hosts) == 0:
-        flash(_("Error! auto cdn ip can not be find, please contact admin."))
+        hutils.flask.flash(_("Error! auto cdn ip can not be find, please contact admin."))
         if len(valid_hosts) == 0:
             return
 

@@ -1,9 +1,8 @@
-from hiddifypanel.models import *
-from flask_bootstrap import SwitchField
-from hiddifypanel.drivers import user_driver
-from hiddifypanel.panel.hiddify import flash
-from hiddifypanel.panel import hiddify, custom_widgets
+import re
+import datetime
+import uuid
 from apiflask import abort
+from flask_bootstrap import SwitchField
 from flask_babelex import gettext as __
 from .adminlte import AdminLTEModelView
 from wtforms.validators import NumberRange
@@ -11,10 +10,12 @@ from flask_babelex import lazy_gettext as _
 from flask import Markup, g, request, url_for
 from wtforms.validators import Regexp, ValidationError
 from flask import current_app
-import datetime
-import uuid
-import re
+
+from hiddifypanel.models import *
+from hiddifypanel.drivers import user_driver
+from hiddifypanel.panel import hiddify, custom_widgets
 from hiddifypanel.panel.auth import login_required
+from hiddifypanel import hutils
 import hiddifypanel.panel.auth as auth
 
 
@@ -204,7 +205,7 @@ class UserAdmin(AdminLTEModelView):
         if len(User.query.all()) <= 1:
             raise ValidationError(f"at least one user should exist")
         user_driver.remove_client(model)
-        # hiddify.flash_config_success()
+        # hutils.flask.flash_config_success()
 
     def is_accessible(self):
         if login_required(roles={Role.super_admin, Role.admin, Role.agent})(lambda: True)() != True:
@@ -246,7 +247,7 @@ class UserAdmin(AdminLTEModelView):
     def on_model_change(self, form, model, is_created):
         model.max_ips = max(3, model.max_ips or 10000)
         if len(User.query.all()) % 4 == 0:
-            flash(('<div id="show-modal-donation"></div>'), ' d-none')
+            hutils.flask.flash(('<div id="show-modal-donation"></div>'), ' d-none')
         if not re.match("^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$", model.uuid):
             raise ValidationError('Invalid UUID e.g.,' + str(uuid.uuid4()))
         if form.reset_usage.data:
@@ -276,7 +277,7 @@ class UserAdmin(AdminLTEModelView):
         #     xray_api.add_client(model.uuid)
         # else:
         #     xray_api.remove_client(model.uuid)
-        # hiddify.flash_config_success()
+        # hutils.flask.flash_config_success()
 
     def after_model_change(self, form, model, is_created):
         if hconfig(ConfigEnum.first_setup):

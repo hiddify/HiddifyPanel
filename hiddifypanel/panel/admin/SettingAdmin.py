@@ -1,9 +1,11 @@
+import re
 import flask_babel
 import flask_babelex
 from flask_babelex import lazy_gettext as _
 # from flask_babelex import gettext as _
 from flask import render_template, Markup, url_for, g
 from flask import current_app as app
+from hiddifypanel import hutils
 from hiddifypanel.panel.auth import login_required
 import wtforms as wtf
 from flask_bootstrap import SwitchField
@@ -13,12 +15,10 @@ from flask_classful import FlaskView
 from wtforms.fields import *
 from flask_wtf import FlaskForm
 
-import re
 
 from hiddifypanel.models import BoolConfig, StrConfig, ConfigEnum, hconfig, ConfigCategory
 from hiddifypanel.models import *
 from hiddifypanel.panel.database import db
-from hiddifypanel.panel.hiddify import flash
 from hiddifypanel.panel.hiddify import get_random_domains
 from hiddifypanel.panel import hiddify, custom_widgets
 
@@ -57,7 +57,7 @@ class SettingAdmin(FlaskView):
                                 for p in v.split(","):
                                     for k2, v2 in vs.items():
                                         if "port" in k2 and k != k2 and p in v2:
-                                            flash(_("Port is already used! in")+f" {k2} {k}", 'error')
+                                            hutils.flask.flash(_("Port is already used! in")+f" {k2} {k}", 'error')
                                             return render_template('config.html', form=form)
                             if k == ConfigEnum.parent_panel and v != '':
                                 # v=(v+"/").replace("/admin",'')
@@ -65,10 +65,10 @@ class SettingAdmin(FlaskView):
 
                                 # try:
                                 #     # if hiddify_api.sync_child_to_parent(v)['status'] != 200:
-                                #     #     flash(_("Can not connect to parent panel!"), 'error')
+                                #     #     hutils.flask.flash(_("Can not connect to parent panel!"), 'error')
                                 #     #     return render_template('config.html', form=form)
                                 # except:
-                                #     flash(_("Can not connect to parent panel!"), 'error')
+                                #     hutils.flask.flash(_("Can not connect to parent panel!"), 'error')
                                 #     return render_template('config.html', form=form)
                             StrConfig.query.filter(StrConfig.key == k, StrConfig.child_id == 0).first().value = v
                         if old_configs[k] != v:
@@ -78,20 +78,20 @@ class SettingAdmin(FlaskView):
 
             merged_configs = {**old_configs, **changed_configs}
             if len(set([merged_configs[ConfigEnum.proxy_path], merged_configs[ConfigEnum.proxy_path_client], merged_configs[ConfigEnum.proxy_path_admin]])) != 3:
-                flash(_("ProxyPath is already used! use different proxy path"), 'error')
+                hutils.flask.flash(_("ProxyPath is already used! use different proxy path"), 'error')#type: ignore
                 return render_template('config.html', form=form)
             # for k in [ConfigEnum.reality_server_names,ConfigEnum.reality_fallback_domain]:
             #     v=merged_configs[k]
             #     for d in v.split(","):
             #         if not d:continue
             #         if not hiddify.is_domain_reality_friendly(d):
-            #             flash(_("Domain is not REALITY friendly!")+" "+d,'error')
+            #             hutils.flask.flash(_("Domain is not REALITY friendly!")+" "+d,'error')
             #             return render_template('config.html', form=form)
             #         hiddify.debug_flash_if_not_in_the_same_asn(d)
             # fallback=merged_configs[ConfigEnum.reality_fallback_domain]
             # for d in merged_configs[ConfigEnum.reality_server_names].split(","):
             #     if not hiddify.fallback_domain_compatible_with_servernames(fallback, d):
-            #         flash(_("REALITY Fallback domain is not compaitble with server names!")+" "+d+" != "+fallback,'error')
+            #         hutils.flask.flash(_("REALITY Fallback domain is not compaitble with server names!")+" "+d+" != "+fallback,'error')
             #         return render_template('config.html', form=form)
             for k, v in changed_configs.items():
                 set_hconfig(k, v, 0, False)
@@ -110,7 +110,7 @@ class SettingAdmin(FlaskView):
             if old_configs[ConfigEnum.admin_lang] != hconfig(ConfigEnum.admin_lang):
                 form = get_config_form()
         else:
-            flash(_('config.validation-error'), 'danger')
+            hutils.flask.flash(_('config.validation-error'), 'danger')#type: ignore
 
         return reset_action or render_template('config.html', form=form)
 

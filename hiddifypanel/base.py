@@ -120,7 +120,7 @@ def create_app(cli=False, **config):
 
     app.jinja_env.globals['get_locale'] = get_locale
     app.jinja_env.globals['version'] = hiddifypanel.__version__
-    app.jinja_env.globals['static_url_for'] = hiddify.static_url_for
+    app.jinja_env.globals['static_url_for'] = hutils.flask.static_url_for
 
     return app
 

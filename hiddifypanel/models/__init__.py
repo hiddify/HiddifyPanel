@@ -10,3 +10,4 @@ from .admin import AdminUser, AdminMode
 from .child import Child
 from .usage import DailyUsage
 from .base_account import BaseAccount
+from .report import Report, ReportDetail

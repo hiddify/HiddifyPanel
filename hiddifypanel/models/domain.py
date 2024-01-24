@@ -1,7 +1,7 @@
 from enum import auto
 from urllib.parse import urlparse
 
-from flask import flash, request
+from flask import request
 from sqlalchemy_serializer import SerializerMixin
 from strenum import StrEnum
 
@@ -162,7 +162,7 @@ def get_proxy_domains_db(db_domain):
         domain = urlparse(request.base_url).hostname
         db_domain = Domain(domain=domain, mode=DomainType.direct, show_domains=[])
         # print("no domain")
-        flash(_("This domain does not exist in the panel!" + domain))
+        hutils.flask.flash(_("This domain does not exist in the panel!" + domain)) #type: ignore
 
     return db_domain.show_domains or Domain.query.all()
 

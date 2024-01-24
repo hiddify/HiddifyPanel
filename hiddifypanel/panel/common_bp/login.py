@@ -1,4 +1,5 @@
 from flask_classful import FlaskView, route
+from hiddifypanel import hutils
 from hiddifypanel.panel.auth import login_required, current_account, login_user, logout_user, login_by_uuid
 from flask import redirect, request, g, url_for, render_template, flash, jsonify
 from flask import current_app as app
@@ -54,7 +55,7 @@ class LoginView(FlaskView):
             uuid = form.secret_textbox.data.strip()
             if login_by_uuid(uuid, hiddify.is_admin_proxy_path()):
                 return redirect(f'/{g.proxy_path}/')
-        flash(_('config.validation-error'), 'danger')
+        hutils.flask.flash(_('config.validation-error'), 'danger')  # type: ignore
         return render_template('login.html', form=LoginForm())
 
     @route("/l/")
@@ -66,10 +67,10 @@ class LoginView(FlaskView):
 
             loginurl = url_for('common_bp.LoginView:index', next=redirect_arg, user=username)
             if g.user_agent['is_browser'] and request.headers.get('Authorization') or (current_account and len(username) > 0 and current_account.username != username):
-                flash(_('Incorrect Password'), 'error')
+                hutils.flask.flash(_('Incorrect Password'), 'error')  # type: ignore
                 logout_user()
                 g.__account_store = None
-                # flash(request.authorization.username, 'error')
+                # hutils.flask.flash(request.authorization.username, 'error')
                 return redirect(loginurl)
 
             return render_template("redirect.html", url=loginurl), 401
@@ -134,7 +135,7 @@ class LoginView(FlaskView):
             "orientation": "any",
             "icons": [
                 {
-                    "src": hiddify.static_url_for(filename='images/hiddify-dark.png'),
+                    "src": hutils.flask.static_url_for(filename='images/hiddify-dark.png'),
                     "sizes": "512x512",
                     "type": "image/png",
                     "purpose": "maskable any"

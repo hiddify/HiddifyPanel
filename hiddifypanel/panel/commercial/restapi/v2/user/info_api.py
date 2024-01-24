@@ -4,6 +4,7 @@ from apiflask import Schema
 from apiflask.fields import Integer, String, Float, URL, Enum
 from flask import g, request
 from flask import current_app as app
+from hiddifypanel import hutils
 from hiddifypanel.panel.auth import login_required
 import hiddifypanel.panel.auth as auth
 from flask_babelex import gettext as _
@@ -59,7 +60,7 @@ class InfoAPI(MethodView):
 
         dto.doh = f"https://{request.host}/{g.proxy_path}/dns/dns-query"
         dto.lang = (c['user'].lang) or Lang(hconfig(ConfigEnum.lang))
-        dto.brand_icon_url = "" if hconfig(ConfigEnum.branding_title) else hiddify.static_url_for(filename="images/hiddify.png")
+        dto.brand_icon_url = "" if hconfig(ConfigEnum.branding_title) else hutils.flask.static_url_for(filename="images/hiddify.png")
         # with force_locale("fa"):
         dto.admin_message_html = hconfig(ConfigEnum.branding_freetext) or _("Join our Hiddify Telegram channel to get the latest updates on Hiddify.")
         if not hconfig(ConfigEnum.branding_freetext) and auth.admin_session_is_exist():
@@ -70,10 +71,10 @@ class InfoAPI(MethodView):
 
     @app.input(UserInfoChangableSchema, arg_name='data')
     def patch(self, data: UserInfoChangableSchema):
-        if data['telegram_id']:
+        if data['telegram_id'] and hutils.convert.is_int(data['telegram_id']):
             user = User.by_uuid(g.account.uuid)
-            if user.telegram_id != tg_id:
-                user.telegram_id = tg_id
+            if user.telegram_id != data['telegram_id']:
+                user.telegram_id = data['telegram_id']
                 db.session.commit()
 
         if data['language']:

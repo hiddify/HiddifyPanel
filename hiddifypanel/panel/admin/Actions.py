@@ -13,7 +13,6 @@ from hiddifypanel import hutils
 from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify, usage
 from hiddifypanel.panel.run_commander import commander, Command
-from hiddifypanel.panel.hiddify import flash
 
 
 class Actions(FlaskView):
@@ -99,13 +98,13 @@ class Actions(FlaskView):
         #     try:
         #         hiddify_api.sync_child_to_parent()
         #     except e as Exception:
-        #         flash(_('can not sync child with parent panel')+" "+e)
+        #         hutils.flask.flash(_('can not sync child with parent panel')+" "+e)
 
         domain_changed = request.args.get("domain_changed", str(domain_changed)).lower() == "true"
         complete_install = request.args.get("complete_install", str(complete_install)).lower() == "true"
         if domain_changed:
-            flash((_('Your domains changed. Please do not forget to copy admin links, otherwise you can not access to the panel anymore.')), 'info')
-        # flash(f'complete_install={complete_install} domain_changed={domain_changed} ', 'info')
+            hutils.flask.flash((_('Your domains changed. Please do not forget to copy admin links, otherwise you can not access to the panel anymore.')), 'info')
+        # hutils.flask.flash(f'complete_install={complete_install} domain_changed={domain_changed} ', 'info')
         # return render_template("result.html")
         # hiddify.add_temporary_access()
         file = "install.sh" if complete_install else "apply_configs.sh"
@@ -147,7 +146,7 @@ class Actions(FlaskView):
         key = hiddify.generate_x25519_keys()
         set_hconfig(ConfigEnum.reality_private_key, key['private_key'])
         set_hconfig(ConfigEnum.reality_public_key, key['public_key'])
-        hiddify.flash_config_success(restart_mode='apply', domain_changed=False)
+        hutils.flask.flash_config_success(restart_mode='apply', domain_changed=False)
         return redirect(url_for('admin.SettingAdmin:index'))
 
     @login_required(roles={Role.super_admin})
