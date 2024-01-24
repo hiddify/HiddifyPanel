@@ -17,7 +17,6 @@ from flask_babelex import gettext as __
 from flask_babelex import lazy_gettext as _
 from wtforms.validators import ValidationError
 from apiflask import abort as apiflask_abort
-from apiflask import abort
 
 from datetime import timedelta
 from babel.dates import format_timedelta as babel_format_timedelta
@@ -209,18 +208,18 @@ def proxy_path_validator(proxy_path):
         return
 
     if proxy_path not in [admin_proxy_path, deprecated_path, client_proxy_path]:
-        abort(400, 'invalid request')
+        apiflask_abort(400, 'invalid request')
 
     if is_admin_panel_call() and proxy_path != admin_proxy_path:
-        abort(400, 'invalid request')
+        apiflask_abort(400, 'invalid request')
     if is_user_panel_call() and proxy_path != client_proxy_path:
-        abort(400, 'invalid request')
+        apiflask_abort(400, 'invalid request')
 
     if is_api_call(request.path):
         if is_admin_api_call() and proxy_path != admin_proxy_path:
-            return apiflask_abort(400, Markup(f"Invalid Proxy Path <a href=/{admin_proxy_path}/admin>Admin Panel</a>")) if dbg_mode else abort(400, 'invalid request')
+            return apiflask_abort(400, Markup(f"Invalid Proxy Path <a href=/{admin_proxy_path}/admin>Admin Panel</a>")) if dbg_mode else apiflask_abort(400, 'invalid request')
         if is_user_api_call() and proxy_path != client_proxy_path:
-            return apiflask_abort(400, Markup(f"Invalid Proxy Path <a href=/{client_proxy_path}/admin>User Panel</a>")) if dbg_mode else abort(400, 'invalid request')
+            return apiflask_abort(400, Markup(f"Invalid Proxy Path <a href=/{client_proxy_path}/admin>User Panel</a>")) if dbg_mode else apiflask_abort(400, 'invalid request')
 
 
 def asset_url(path) -> str:
