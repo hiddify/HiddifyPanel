@@ -132,6 +132,9 @@ class UserView(FlaskView):
     @ route('/report', methods=["POST"])
     @login_required(roles={Role.user})
     def report(self):
+
+        # THE REPORT MODEL IS NOT COMPLETED YET.
+
         data = request.get_json()
         user_ip = auto_ip_selector.get_real_user_ip()
         report = Report()
