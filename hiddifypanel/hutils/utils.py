@@ -20,11 +20,6 @@ from hiddifypanel.cache import cache
 to_gig_d = 1000*1000*1000
 
 
-def url_encode(strr):
-    import urllib.parse
-    return urllib.parse.quote(strr)
-
-
 def error(str):
 
     print(str, file=sys.stderr)
@@ -59,10 +54,7 @@ def get_latest_release_version(repo_name):
     return None
 
 
-def do_base_64(str):
-    import base64
-    resp = base64.b64encode(f'{str}'.encode("utf-8"))
-    return resp.decode()
+
 
 
 def get_folder_size(folder_path):

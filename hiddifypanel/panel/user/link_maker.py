@@ -235,7 +235,7 @@ def to_link(proxy):
     if 'error' in proxy:
         return proxy
     orig_name_link = (proxy['extra_info'] + " " + proxy["name"]).strip()
-    name_link = hiddify.url_encode(orig_name_link)
+    name_link = hutils.encode.url_encode(orig_name_link)
     if proxy['proto'] == 'vmess':
         # print(proxy)
         vmess_type = None
@@ -268,13 +268,13 @@ def to_link(proxy):
             add_tls_tricks_to_dict(vmess_data)
         add_mux_to_dict(vmess_data)
 
-        return "vmess://" + hiddify.do_base_64(f'{json.dumps(vmess_data,cls=CustomEncoder)}')
+        return "vmess://" + hutils.encode.do_base_64(f'{json.dumps(vmess_data,cls=CustomEncoder)}')
         # return pbase64(f'vmess://{json.dumps(vmess_data)}')
     if proxy['proto'] == 'ssh':
-        strenssh = hiddify.do_base_64(f'{proxy["uuid"]}:0:{proxy["private_key"]}::@{proxy["server"]}:{proxy["port"]}')
+        strenssh = hutils.encode.do_base_64(f'{proxy["uuid"]}:0:{proxy["private_key"]}::@{proxy["server"]}:{proxy["port"]}')
         baseurl = f'ssh://{strenssh}#{name_link}'
-        hk = hiddify.do_base_64(",".join(proxy["host_key"]))
-        pk = hiddify.do_base_64(proxy["private_key"])
+        hk = hutils.encode.do_base_64(",".join(proxy["host_key"]))
+        pk = hutils.encode.do_base_64(proxy["private_key"])
         baseurl += f'\nssh://{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}/?pk={pk}&hk={hk}#{name_link}'
 
         return baseurl
@@ -872,7 +872,7 @@ def make_v2ray_configs(user, user_activate, domains, expire_days, ip_debug, db_d
             #     res.append(f'trojan://1@{fake_ip_for_sub_link}?sni=fake_ip_for_sub_link&security=tls#{round(user.current_usage_GB,3)}/{user.usage_limit_GB}GB_Remain:{expire_days}days')
             # else:
 
-            # res.append(f'trojan://1@{fake_ip_for_sub_link}?sni=fake_ip_for_sub_link&security=tls#{hiddify.url_encode(profile_title)}')
+            # res.append(f'trojan://1@{fake_ip_for_sub_link}?sni=fake_ip_for_sub_link&security=tls#{hutils.encode.url_encode(profile_title)}')
 
             name = '⏳' if user_activate else '✖'
             if user.usage_limit_GB < 1000:
@@ -888,7 +888,7 @@ def make_v2ray_configs(user, user_activate, domains, expire_days, ip_debug, db_d
 
             name = name.strip()
             if len(name) > 3:
-                res.append(f'trojan://1@{fake_ip_for_sub_link}?sni=fake_ip_for_sub_link&security=tls#{hiddify.url_encode(name)}')
+                res.append(f'trojan://1@{fake_ip_for_sub_link}?sni=fake_ip_for_sub_link&security=tls#{hutils.encode.url_encode(name)}')
 
     if ua['is_browser']:
         res.append(f'#Hiddify auto ip: {ip_debug}')
@@ -896,9 +896,9 @@ def make_v2ray_configs(user, user_activate, domains, expire_days, ip_debug, db_d
     if not user_activate:
 
         if hconfig(ConfigEnum.lang) == 'fa':
-            res.append('trojan://1@1.1.1.1#'+hiddify.url_encode('✖بسته شما به پایان رسید'))
+            res.append('trojan://1@1.1.1.1#'+hutils.encode.url_encode('✖بسته شما به پایان رسید'))
         else:
-            res.append('trojan://1@1.1.1.1#'+hiddify.url_encode('✖Package_Ended'))
+            res.append('trojan://1@1.1.1.1#'+hutils.encode.url_encode('✖Package_Ended'))
         return "\n".join(res)
 
     for pinfo in get_all_validated_proxies(domains):
