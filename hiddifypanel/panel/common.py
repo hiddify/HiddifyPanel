@@ -145,7 +145,7 @@ def init_app(app: APIFlask):
     #     if user_agent.is_bot:
     #         abort(400, "invalid")
 
-    #     uuid = hutils.utils.get_uuid_from_url_path(request.path)
+    #     uuid = hutils.auth.get_uuid_from_url_path(request.path)
     #     account = User.by_uuid(uuid) or AdminUser.by_uuid(uuid) or abort(400, 'invalid request2')
 
     #     admin_proxy_path = hconfig(ConfigEnum.proxy_path_admin)
@@ -162,7 +162,7 @@ def init_app(app: APIFlask):
     #     else:
     #         return abort(400, 'invalid request 1')
 
-    #     new_link = hutils.utils.add_basic_auth_to_url(new_link, account.username, account.password)
+    #     new_link = hutils.auth.add_basic_auth_to_url(new_link, account.username, account.password)
 
     #     if user_agent.browser:
     #         return render_template('redirect_to_new_format.html', new_link=new_link)

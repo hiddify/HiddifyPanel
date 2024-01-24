@@ -6,6 +6,7 @@ import datetime
 from hiddifypanel.models import *
 from hiddifypanel.panel.database import db
 from hiddifypanel.panel import hiddify
+from hiddifypanel import hutils
 from . import link_maker
 from flask_classful import FlaskView, route
 import random
@@ -217,11 +218,11 @@ class UserView(FlaskView):
         if request.method == 'HEAD':
             resp = ""
         else:
-            # render_template('all_configs.txt', **c, base64=do_base_64)
+            # render_template('all_configs.txt', **c, base64=hutils.encode.do_base_64)
             resp = link_maker.make_v2ray_configs(**c)
 
         if base64:
-            resp = do_base_64(resp)
+            resp = hutils.encode.do_base_64(resp)
         return add_headers(resp, c)
 
     @ route("/offline.html")
@@ -236,10 +237,10 @@ class UserView(FlaskView):
         return ""
 
 
-def do_base_64(str):
-    import base64
-    resp = base64.b64encode(f'{str}'.encode("utf-8"))
-    return resp.decode()
+# def do_base_64(str):
+#     import base64
+#     resp = base64.b64encode(f'{str}'.encode("utf-8"))
+#     return resp.decode()
 
 
 def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
@@ -301,7 +302,7 @@ def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
                 d.cdn_ip, d.mode == DomainType.auto_cdn_ip, default_asn)
             # print("autocdn ip mode ", d.cdn_ip)
         if "*" in d.domain:
-            d.domain = d.domain.replace("*", hiddify.get_random_string(5, 15))
+            d.domain = d.domain.replace("*", hutils.random.get_random_string(5, 15))
 
     package_mode_dic = {
         UserMode.daily: 1,
@@ -369,6 +370,6 @@ def add_headers(res, c):
     resp.headers['profile-update-interval'] = 1
     # resp.headers['content-disposition']=f'attachment; filename="{c["db_domain"].alias or c["db_domain"].domain} {c["user"].name}"'
 
-    resp.headers['profile-title'] = 'base64:'+do_base_64(c['profile_title'])
+    resp.headers['profile-title'] = 'base64:'+hutils.encode.do_base_64(c['profile_title'])
 
     return resp

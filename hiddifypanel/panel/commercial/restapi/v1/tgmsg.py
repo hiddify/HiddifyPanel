@@ -46,7 +46,7 @@ class SendMsgResource(Resource):
         query = User.query.filter(User.added_by.in_(g.account.recursive_sub_admins_ids()))
         query = query.filter(User.telegram_id != None, User.telegram_id != 0)
 
-        if hutils.utils.is_int(identifier):
+        if hutils.convert.is_int(identifier):
             return [query.filter(User.id == int(identifier)).first() or abort(404, 'The user not found')]  # type: ignore
         elif identifier == 'all':
             return query.all()

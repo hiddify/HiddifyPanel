@@ -4,6 +4,7 @@ import user_agents
 import json
 import subprocess
 import psutil
+from datetime import datetime
 from typing import Tuple
 from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric import x25519
@@ -57,7 +58,7 @@ def add_short_link_imp(link: str, period_min: int = 5) -> Tuple[str, datetime]:
             if link in line:
                 return re.search(pattern, line).group(1), datetime.now() + timedelta(minutes=period_min)
 
-    short_code = get_random_string(6, 10).lower()
+    short_code = hutils.random.get_random_string(6, 10).lower()
     # exec_command(
     #     f'sudo /opt/hiddify-manager/nginx/add2shortlink.sh {link} {short_code} {period_min} &')
 
@@ -335,7 +336,7 @@ def get_html_user_link(model: BaseAccount, domain: Domain):
     res = ""
     d = domain.domain
     if "*" in d:
-        d = d.replace("*", get_random_string(5, 15))
+        d = d.replace("*", hutils.random.get_random_string(5, 15))
 
     link = get_account_panel_link(model, d)+f"#{model.name}"
 
@@ -791,10 +792,10 @@ def get_ed25519_private_public_pair():
     return priv_bytes.decode(), pub_bytes.decode()
 
 
-def do_base_64(str):
-    import base64
-    resp = base64.b64encode(f'{str}'.encode("utf-8"))
-    return resp.decode()
+# def do_base_64(str):
+#     import base64
+#     resp = base64.b64encode(f'{str}'.encode("utf-8"))
+#     return resp.decode()
 
 
 def get_user_agent():

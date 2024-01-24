@@ -77,7 +77,7 @@ class CustumLoginManager(LoginManager):
         is_api_call = False
 
         if hiddify.is_api_call(request.path):
-            if apikey := hutils.utils.get_apikey_from_auth_header(auth_header):
+            if apikey := hutils.auth.get_apikey_from_auth_header(auth_header):
                 account = User.by_uuid(apikey) or AdminUser.by_uuid(apikey)
                 is_api_call = True
         else:
@@ -165,12 +165,12 @@ def init_app(app):
         next_url = None
         print("--------1")
         if auth_header := request.headers.get("Authorization"):
-            apikey = hutils.utils.get_apikey_from_auth_header(auth_header)
+            apikey = hutils.auth.get_apikey_from_auth_header(auth_header)
             account = get_account_by_api_key(apikey, is_admin_path)
             if not account:
                 logout_user()
 
-        if not account and (uuid := hutils.utils.get_uuid_from_url_path(request.path)):
+        if not account and (uuid := hutils.auth.get_uuid_from_url_path(request.path)):
             account = get_account_by_uuid(uuid, is_admin_path)
             if not account:
                 logout_user()
@@ -208,7 +208,7 @@ def init_app(app):
         #         return header_auth(request)
 
         # parse id
-        acc_type, id = hutils.utils.parse_login_id(id)  # type: ignore
+        acc_type, id = hutils.auth.parse_login_id(id)  # type: ignore
         if not acc_type or not id:
             return
 

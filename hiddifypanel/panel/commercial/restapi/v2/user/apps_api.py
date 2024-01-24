@@ -11,7 +11,8 @@ import user_agents
 from strenum import StrEnum
 from enum import auto
 from hiddifypanel.panel.user.user import get_common_data
-from hiddifypanel.hutils.utils import get_latest_release_url, do_base_64
+from hiddifypanel.hutils.utils import get_latest_release_url
+from hiddifypanel import hutils
 from hiddifypanel.models.role import Role
 from hiddifypanel.panel.auth import login_required
 
@@ -76,7 +77,7 @@ class AppAPI(MethodView):
         self.user_panel_encoded_url = quote_plus(self.user_panel_url)
         c = get_common_data(g.account.uuid, 'new')
         self.subscription_link_url = f"{self.user_panel_url}all.txt?name={c['db_domain'].alias or c['db_domain'].domain}-{c['asn']}&asn={c['asn']}&mode={c['mode']}"
-        self.subscription_link_encoded_url = do_base_64(self.subscription_link_url)
+        self.subscription_link_encoded_url = hutils.encode.do_base_64(self.subscription_link_url)
         domain = c['db_domain'].alias or c['db_domain'].domain
         self.profile_title = c['profile_title']
         # self.clash_all_sites = f"https://{domain}/{g.proxy_path}/clash/all.yml?mode={c['mode']}&asn={c['asn']}&name={c['asn']}_all_{domain}-{c['mode']}"
@@ -277,7 +278,7 @@ class AppAPI(MethodView):
         dto.description = _('app.foxray.description')
         dto.icon_url = self.__get_app_icon_url(_('app.foxray.title'))
         dto.guide_url = ''
-        dto.deeplink = f'https://yiguo.dev/sub/add/?url={do_base_64(self.subscription_link_encoded_url)}#{self.profile_title}'
+        dto.deeplink = f'https://yiguo.dev/sub/add/?url={hutils.encode.do_base_64(self.subscription_link_encoded_url)}#{self.profile_title}'
 
         ins_url = 'https://apps.apple.com/us/app/foxray/id6448898396'
         dto.install = [self.__get_app_install_dto(AppInstallType.app_store, ins_url),]
@@ -289,7 +290,7 @@ class AppAPI(MethodView):
         dto.description = _('app.shadowrocket.description')
         dto.icon_url = self.__get_app_icon_url(_('app.shadowrocket.title'))
         dto.guide_url = 'https://www.youtube.com/watch?v=F2bC_mtbYmQ'
-        dto.deeplink = f'sub://{do_base_64(self.user_panel_url)}'
+        dto.deeplink = f'sub://{hutils.encode.do_base_64(self.user_panel_url)}'
 
         ins_url = 'https://apps.apple.com/us/app/shadowrocket/id932747118'
         dto.install = [self.__get_app_install_dto(AppInstallType.app_store, ins_url),]

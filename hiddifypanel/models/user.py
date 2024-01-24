@@ -198,16 +198,16 @@ class User(BaseAccount):
             dbuser.added_by = 1
 
         if data.get('expiry_time', ''):
-            last_reset_time = hutils.utils.json_to_date(data.get('last_reset_time', '')) or datetime.date.today()
+            last_reset_time = hutils.json.json_to_date(data.get('last_reset_time', '')) or datetime.date.today()
 
-            expiry_time = hutils.utils.json_to_date(data['expiry_time'])
+            expiry_time = hutils.json.json_to_date(data['expiry_time'])
             dbuser.start_date = last_reset_time
             dbuser.package_days = (expiry_time-last_reset_time).days  # type: ignore
 
         elif 'package_days' in data:
             dbuser.package_days = data['package_days']
             if data.get('start_date', ''):
-                dbuser.start_date = hutils.utils.json_to_date(data['start_date'])
+                dbuser.start_date = hutils.json.json_to_date(data['start_date'])
             else:
                 dbuser.start_date = None
         dbuser.current_usage_GB = data['current_usage_GB']
@@ -230,7 +230,7 @@ class User(BaseAccount):
 
         dbuser.mode = mode
 
-        dbuser.last_online = hutils.utils.json_to_time(data.get('last_online')) or datetime.datetime.min
+        dbuser.last_online = hutils.json.json_to_time(data.get('last_online')) or datetime.datetime.min
         if commit:
             db.session.commit()
         return dbuser
@@ -238,13 +238,13 @@ class User(BaseAccount):
     def to_dict(self, convert_date=True) -> dict:
         base = super().to_dict()
         return {**base,
-                'last_online': hutils.utils.time_to_json(self.last_online) if convert_date else self.last_online,
+                'last_online': hutils.json.time_to_json(self.last_online) if convert_date else self.last_online,
                 'usage_limit_GB': self.usage_limit_GB,
                 'package_days': self.package_days,
                 'mode': self.mode,
-                'start_date': hutils.utils.date_to_json(self.start_date)if convert_date else self.start_date,
+                'start_date': hutils.json.date_to_json(self.start_date)if convert_date else self.start_date,
                 'current_usage_GB': self.current_usage_GB,
-                'last_reset_time': hutils.utils.date_to_json(self.last_reset_time) if convert_date else self.last_reset_time,
+                'last_reset_time': hutils.json.date_to_json(self.last_reset_time) if convert_date else self.last_reset_time,
                 'added_by_uuid': self.admin.uuid,
                 'ed25519_private_key': self.ed25519_private_key,
                 'ed25519_public_key': self.ed25519_public_key
