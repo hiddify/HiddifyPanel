@@ -91,7 +91,7 @@ class DomainAdmin(AdminLTEModelView):
             return Markup(f"<span class='badge'>{model.domain}</span>")
         d = model.domain
         if "*" in d:
-            d = d.replace("*", hiddify.get_random_string(5, 15))
+            d = d.replace("*", hutils.random.get_random_string(5, 15))
         admin_link = hiddify.get_account_panel_link(g.account, d)
         return Markup(
             f'<div class="btn-group"><a href="{admin_link}" class="btn btn-xs btn-secondary">' + _("admin link") +

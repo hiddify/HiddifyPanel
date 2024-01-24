@@ -302,7 +302,7 @@ def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
                 d.cdn_ip, d.mode == DomainType.auto_cdn_ip, default_asn)
             # print("autocdn ip mode ", d.cdn_ip)
         if "*" in d.domain:
-            d.domain = d.domain.replace("*", hiddify.get_random_string(5, 15))
+            d.domain = d.domain.replace("*", hutils.random.get_random_string(5, 15))
 
     package_mode_dic = {
         UserMode.daily: 1,

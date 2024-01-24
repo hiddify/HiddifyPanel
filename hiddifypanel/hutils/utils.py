@@ -3,14 +3,12 @@ from typing import Any, Tuple
 from urllib.parse import urlparse
 from uuid import UUID
 from flask_babelex import lazy_gettext as _
-from datetime import datetime
 from flask import url_for, Markup
 from flask import flash as flask_flash
 import re
 import requests
 
 import string
-import random
 import os
 import sys
 
@@ -54,9 +52,6 @@ def get_latest_release_version(repo_name):
     return None
 
 
-
-
-
 def get_folder_size(folder_path):
     total_size = 0
     try:
@@ -70,23 +65,6 @@ def get_folder_size(folder_path):
     except:
         pass
     return total_size
-
-
-def get_random_string(min_=10, max_=30):
-    # With combination of lower and upper case
-    length = random.randint(min_, max_)
-    characters = string.ascii_letters + string.digits
-    result_str = ''.join(random.choice(characters) for i in range(length))
-    return result_str
-
-
-def get_random_password(length: int = 16) -> str:
-    '''Retunrns a random password with fixed length'''
-    characters = string.ascii_letters + string.digits  # + '-'
-    while True:
-        passwd = ''.join(random.choice(characters) for i in range(length))
-        if (any(c.islower() for c in passwd) and any(c.isupper() for c in passwd) and sum(c.isdigit() for c in passwd) > 1):
-            return passwd
 
 
 def is_assci_alphanumeric(str):

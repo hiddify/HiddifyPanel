@@ -232,4 +232,4 @@ def get_log_api_url():
 
 
 def get_domains():
-    return [str(d.domain).replace("*", hiddify.get_random_string(3, 6)) for d in get_panel_domains(always_add_all_domains=True, always_add_ip=True)]
+    return [str(d.domain).replace("*", hutils.random.get_random_string(3, 6)) for d in get_panel_domains(always_add_all_domains=True, always_add_ip=True)]
