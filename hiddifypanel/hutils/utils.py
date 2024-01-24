@@ -25,14 +25,6 @@ def url_encode(strr):
     return urllib.parse.quote(strr)
 
 
-def is_uuid_valid(uuid, version):
-    try:
-        uuid_obj = UUID(uuid, version=version)
-    except ValueError:
-        return False
-    return str(uuid_obj) == uuid
-
-
 def error(str):
 
     print(str, file=sys.stderr)
