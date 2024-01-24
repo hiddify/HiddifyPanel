@@ -13,6 +13,7 @@ import hiddifypanel.panel.auth as auth
 
 class ProxyDetailsAdmin(AdminLTEModelView):
     column_hide_backrefs = True
+    can_create = False
     form_excluded_columns = ['child']
     column_exclude_list = ['child']
     # list_template = 'model/domain_list.html'
