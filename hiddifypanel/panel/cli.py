@@ -9,7 +9,6 @@ from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify, usage
 from hiddifypanel.panel.database import db
 from hiddifypanel.panel.init_db import init_db
-from hiddifypanel.panel.importer.xui import import_data as xui_import_data
 
 
 def drop_db():
@@ -226,7 +225,7 @@ def init_app(app):
     @ click.option("--xui_db_path", "-x")
     def xui_importer(xui_db_path):
         try:
-            xui_import_data(xui_db_path)
+            hutils.importer.xui.import_data(xui_db_path)
             print('success')
         except Exception as e:
             print(f'failed to import xui data: Error: {e}')
