@@ -23,7 +23,7 @@ class Dashboard(FlaskView):
     #         abort(403, _("Access Denied!"))
 
     #     return jsonify(dict(
-    #         stats={'system': hiddify.system_stats(), 'top5': hiddify.top_processes()},
+    #         stats={'system': hutils.system.system_stats(), 'top5': hutils.system.top_processes()},
     #         usage_history=DailyUsage.get_daily_usage_stats(admin_id)
     #     ))
 
@@ -83,7 +83,7 @@ class Dashboard(FlaskView):
     # except:
     #     hutils.flask.flash((_('Error!!!')),'info')
 
-        stats = {'system': hiddify.system_stats(), 'top5': hiddify.top_processes()}
+        stats = {'system': hutils.system.system_stats(), 'top5': hutils.system.top_processes()}
         return render_template('index.html', stats=stats, usage_history=DailyUsage.get_daily_usage_stats(admin_id, child_id), childs=childs)
 
     @login_required(roles={Role.super_admin})

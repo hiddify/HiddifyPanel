@@ -44,21 +44,6 @@ def get_latest_release_version(repo_name):
     return None
 
 
-def get_folder_size(folder_path):
-    total_size = 0
-    try:
-        for dirpath, dirnames, filenames in os.walk(folder_path):
-            for file in filenames:
-                file_path = os.path.join(dirpath, file)
-                try:
-                    total_size += os.path.getsize(file_path)
-                except:
-                    pass
-    except:
-        pass
-    return total_size
-
-
 def is_assci_alphanumeric(str):
     for c in str:
         if c not in string.ascii_letters + string.digits:
