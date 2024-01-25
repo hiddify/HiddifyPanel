@@ -91,6 +91,8 @@
 
 #### Changes
 
+* Override root admin is disabled by default. 
+
 * Remove unused argument/parameter. 
 
 * Send args in link (asn,mode...) 
@@ -218,6 +220,28 @@
 * Update hiddify next download link. 
 
 #### Fix
+
+* Report not defined bug. 
+
+* Typo. 
+
+* Send tls tricks only if proxy is cdn and client supports. 
+
+* Bug chg: refactor. 
+
+* Showing default mux_protocol in ui. 
+
+* Bug. 
+
+* Import bug. 
+
+* Typo. 
+
+* Bug. 
+
+* Bug. 
+
+* Bug in user id. 
 
 * Auth bug. 
 
@@ -644,6 +668,57 @@ with A2_
 * Bugs. 
 
 #### Other
+
+* Merge branch 'main' of github.com:hiddify/Hiddify-Panel. 
+
+* Merge pull request #100 from Iam54r1n4/refactor-hutils. 
+  _Refactor hutils_
+
+* Refactor: github issue generator. 
+
+* Refactor: hutils/hiddify flask & fix bug. 
+
+* Merge pull request #99 from Iam54r1n4/refactor-hutils. 
+  _Refactor hutils_
+
+* Refactor: hutils convert. 
+
+* Refactor: hutils random. 
+
+* Refactor: hutils encode. 
+
+* Refactor: hutils auth. 
+
+* Refactor: hutils json. 
+
+* Disable proxy create. 
+
+* Add uwsgi to req. 
+
+* Merge pull request #96 from Iam54r1n4/xray-cfg. 
+  _Add tls fragmentation & mux parameters to subscription's links for xray_
+
+* Add: tls fragmentation & mux parameters to subscription's links for xray. 
+
+* Merge pull request #97 from Iam54r1n4/singbox-mux. 
+  _Fix bug in sending singbox client's config_
+
+* Merge pull request #95 from Iam54r1n4/singbox-mux. 
+  _Add Singbox multiplex & tls_fragment object to configs (client-side)_
+
+* Add: tls padding to singbox client's config. 
+
+* Merge branch 'singbox-mux' of github.com:Iam54r1n4/HiddifyPanel into singbox-mux. 
+
+* Merge branch 'hiddify:main' into singbox-mux. 
+
+* Add: tls fragment to singbox client side config file if the client supports. 
+
+* Add: singbox multiplex object to configs (client-side) 
+
+* Remove sysout. 
+
+* Refactor: account and others. 
 
 * Update. 
 
@@ -1174,6 +1249,14 @@ It is a visual improvement to have all users aligned in the table._
 * Convert old db to new. 
 
 * Add pysql req. 
+
+
+
+## 8.8.95 (2024-01-22)
+
+#### Fix
+
+* No admin bug. 
 
 
 
