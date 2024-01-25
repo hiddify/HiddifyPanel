@@ -1,26 +1,24 @@
-from hiddifypanel.panel.auth import login_required
-from hiddifypanel import hutils
-from hiddifypanel.models import *
+import re
 import flask_babel
 import flask_babelex
 
 # from flask_babelex import lazy_gettext as _
+from flask import render_template, g
 from flask_babelex import gettext as _
 import wtforms as wtf
 from flask_wtf import FlaskForm
 from flask_bootstrap import SwitchField
 from hiddifypanel.panel import hiddify
-# from gettext import gettext as _
+from wtforms.fields import *
+from flask_classful import FlaskView
 from wtforms.validators import ValidationError
+# from gettext import gettext as _
 
-import re
-from flask import render_template, g
 from hiddifypanel.models import Domain, DomainType, StrConfig, ConfigEnum, get_hconfigs
 from hiddifypanel.panel.database import db
-from wtforms.fields import *
-
-from hiddifypanel.panel.hiddify import flash
-from flask_classful import FlaskView
+from hiddifypanel.panel.auth import login_required
+from hiddifypanel import hutils
+from hiddifypanel.models import *
 
 
 class QuickSetup(FlaskView):
@@ -51,9 +49,9 @@ class QuickSetup(FlaskView):
                 # with flask_babel.force_locale(lang_form.admin_lang.data):
                 #         flask_babel.refresh()
                 #         flask_babelex.refresh()
-                flash((_('quicksetup.setlang.success')), 'success')
+                hutils.flask.flash((_('quicksetup.setlang.success')), 'success')
             else:
-                flash((_('quicksetup.setlang.error')), 'danger')
+                hutils.flask.flash((_('quicksetup.setlang.error')), 'danger')
 
             return render_template(
                 'quick_setup.html', form=get_quick_setup_form(True),
@@ -80,7 +78,7 @@ class QuickSetup(FlaskView):
             action = Actions.Actions()
             return action.reinstall(domain_changed=True)
         else:
-            flash(_('config.validation-error'), 'danger')
+            hutils.flask.flash(_('config.validation-error'), 'danger')
         return render_template(
             'quick_setup.html', form=quick_form, lang_form=get_lang_form(True),
             ipv4=hutils.ip.get_ip(4),

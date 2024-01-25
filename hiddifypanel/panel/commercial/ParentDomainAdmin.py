@@ -64,7 +64,7 @@ class ParentDomainAdmin(AdminLTEModelView):
     form_columns = ['domain', "alias", 'show_domains']
 
     def _domain_admin_link(view, context, model, name):
-        admin_link = hiddify.get_account_panel_link(g.account,model.domain)
+        admin_link = hiddify.get_account_panel_link(g.account, model.domain)
         return Markup(f'<div class="btn-group"><a href="{admin_link}" class="btn btn-xs btn-secondary">' + _("admin link") +
                       f'</a><a href="{admin_link}" class="btn btn-xs btn-info ltr" target="_blank">{model.domain}</a></div>')
 
@@ -116,12 +116,12 @@ class ParentDomainAdmin(AdminLTEModelView):
         if len(model.show_domains) == Domain.query.count():
             model.show_domains = []
 
-        hiddify.flash_config_success(restart_mode='apply', domain_changed=True)
+        hutils.flask.flash_config_success(restart_mode='apply', domain_changed=True)
 
     def on_model_delete(self, model):
         if len(ParentDomain.query.all()) <= 1:
             raise ValidationError(f"at least one domain should exist")
-        hiddify.flash_config_success(restart_mode='apply', domain_changed=True)
+        hutils.flask.flash_config_success(restart_mode='apply', domain_changed=True)
 
     def is_accessible(self):
         if login_required(roles={Role.super_admin, Role.admin})(lambda: True)() != True:

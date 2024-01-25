@@ -155,7 +155,7 @@ def init_app(app):
 
         elif auth_header := request.headers.get("Hiddify_API_KEY"):
             # print("auth_header", auth_header)
-            apikey = hutils.utils.get_apikey_from_auth_header(auth_header)
+            apikey = hutils.auth.get_apikey_from_auth_header(auth_header)
             account = get_account_by_api_key(apikey, is_admin_path)
             if not account:
                 return logout_redirect()

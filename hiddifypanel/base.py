@@ -12,6 +12,7 @@ from hiddifypanel.panel import hiddify
 from apiflask import APIFlask
 from werkzeug.middleware.proxy_fix import ProxyFix
 from hiddifypanel.models import *
+from hiddifypanel import hutils
 from hiddifypanel.panel.init_db import init_db
 from hiddifypanel.cache import redis_client
 
@@ -60,7 +61,7 @@ def create_app(cli=False, **config):
     Session(app)
 
     app.jinja_env.line_statement_prefix = '%'
-    app.jinja_env.filters['b64encode'] = hiddify.do_base_64
+    app.jinja_env.filters['b64encode'] = hutils.encode.do_base_64
     app.view_functions['admin.static'] = {}  # fix bug in apiflask
     app.is_cli = cli
     flask_bootstrap.Bootstrap4(app)
@@ -119,7 +120,7 @@ def create_app(cli=False, **config):
 
     app.jinja_env.globals['get_locale'] = get_locale
     app.jinja_env.globals['version'] = hiddifypanel.__version__
-    app.jinja_env.globals['static_url_for'] = hiddify.static_url_for
+    app.jinja_env.globals['static_url_for'] = hutils.flask.static_url_for
 
     return app
 

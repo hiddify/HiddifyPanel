@@ -4,7 +4,6 @@ import hiddifypanel.panel.auth as auth
 from hiddifypanel.models import *
 import re
 from flask import Markup, g
-from flask import flash
 from flask_babelex import gettext as __
 from flask_babelex import lazy_gettext as _
 from hiddifypanel.panel.run_commander import Command, commander
@@ -91,7 +90,7 @@ class DomainAdmin(AdminLTEModelView):
             return Markup(f"<span class='badge'>{model.domain}</span>")
         d = model.domain
         if "*" in d:
-            d = d.replace("*", hiddify.get_random_string(5, 15))
+            d = d.replace("*", hutils.random.get_random_string(5, 15))
         admin_link = hiddify.get_account_panel_link(g.account, d)
         return Markup(
             f'<div class="btn-group"><a href="{admin_link}" class="btn btn-xs btn-secondary">' + _("admin link") +
@@ -170,7 +169,7 @@ class DomainAdmin(AdminLTEModelView):
                 raise ValidationError(__("Can not connect to Cloudflare.")+f' {e}')
         # elif model.mode==DomainType.auto_cdn_ip:
         if model.alias and not model.alias.replace("_", "").isalnum():
-            flash(__("Using alias with special charachters may cause problem in some clients like FairVPN."), 'warning')
+            hutils.flask.flash(__("Using alias with special charachters may cause problem in some clients like FairVPN."), 'warning')
         #     raise ValidationError(_("You have to add your cloudflare api key to use this feature: "))
 
         dip = hutils.ip.get_domain_ip(model.domain)
@@ -187,11 +186,13 @@ class DomainAdmin(AdminLTEModelView):
                 domain_ip_is_same_as_panel |= ipaddress.ip_address(dip) == ipaddress.ip_address(ipv6)
 
             if model.mode == DomainType.direct and not domain_ip_is_same_as_panel:
-                flash(__(message=f"Domain IP={dip} is not matched with your ip={', '.join(list(map(str, ipv4_list)))} which is required in direct mode"), category='warning')
+                hutils.flask.flash(
+                    __(message=f"Domain IP={dip} is not matched with your ip={', '.join(list(map(str, ipv4_list)))} which is required in direct mode"),
+                    category='warning')
                 # raise ValidationError(_("Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode", server_ip=myip, domain_ip=dip))
 
             if domain_ip_is_same_as_panel and model.mode in [DomainType.cdn, DomainType.relay, DomainType.fake, DomainType.auto_cdn_ip]:
-                flash(__(f"In CDN mode, Domain IP={dip} should be different to your ip={', '.join(list(map(str, ipv4_list)))}"), 'warning')
+                hutils.flask.flash(__(f"In CDN mode, Domain IP={dip} should be different to your ip={', '.join(list(map(str, ipv4_list)))}"), 'warning')
                 # raise ValidationError(_("In CDN mode, Domain IP=%(domain_ip)s should be different to your ip=%(server_ip)s", server_ip=myip, domain_ip=dip))
 
             # if model.mode in [DomainType.ss_faketls, DomainType.telegram_faketls]:
@@ -220,7 +221,7 @@ class DomainAdmin(AdminLTEModelView):
         if model.mode == DomainType.reality:
             model.servernames = (model.domain).lower()
             if not hiddify.is_domain_reality_friendly(model.domain):
-                # flash(_("Domain is not REALITY friendly!")+" "+d,'error')
+                # hutils.flask.flash(_("Domain is not REALITY friendly!")+" "+d,'error')
                 # return render_template('config.html', form=form)
                 raise ValidationError(_("Domain is not REALITY friendly!")+" "+model.domain)
 
@@ -235,7 +236,7 @@ class DomainAdmin(AdminLTEModelView):
                         continue
 
                     if not hiddify.is_domain_reality_friendly(d):
-                        # flash(_("Domain is not REALITY friendly!")+" "+d,'error')
+                        # hutils.flask.flash(_("Domain is not REALITY friendly!")+" "+d,'error')
                         # return render_template('config.html', form=form)
                         raise ValidationError(_("Domain is not REALITY friendly!")+" "+d)
 
@@ -255,7 +256,7 @@ class DomainAdmin(AdminLTEModelView):
         old_db_domain = get_domain(model.domain)
         if is_created or not old_db_domain or old_db_domain.mode != model.mode:
             # return hiddify.reinstall_action(complete_install=False, domain_changed=True)
-            hiddify.flash_config_success(restart_mode='apply', domain_changed=True)
+            hutils.flask.flash_config_success(restart_mode='apply', domain_changed=True)
 
     # def after_model_change(self,form, model, is_created):
     #     if model.show_domains.count==0:
@@ -267,7 +268,7 @@ class DomainAdmin(AdminLTEModelView):
         # ShowDomain.query.filter_by(related_id == model.id).delete()
         model.showed_by_domains = []
         # db.session.commit()
-        hiddify.flash_config_success(restart_mode='apply', domain_changed=True)
+        hutils.flask.flash_config_success(restart_mode='apply', domain_changed=True)
 
     def after_model_delete(self, model):
         # if hconfig(ConfigEnum.parent_panel):

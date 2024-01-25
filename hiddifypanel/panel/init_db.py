@@ -12,7 +12,7 @@ from hiddifypanel import Events, hutils
 from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify
 from hiddifypanel.panel.database import db
-from hiddifypanel.panel.hiddify import get_random_domains, get_random_string
+from hiddifypanel.panel.hiddify import get_random_domains
 import hiddifypanel.models.utils as model_utils
 
 MAX_DB_VERSION = 70
@@ -194,8 +194,8 @@ def _v61():
 
 
 def _v60():
-    add_config_if_not_exist(ConfigEnum.proxy_path_admin, get_random_string())
-    add_config_if_not_exist(ConfigEnum.proxy_path_client, get_random_string())
+    add_config_if_not_exist(ConfigEnum.proxy_path_admin, hutils.random.get_random_string())
+    add_config_if_not_exist(ConfigEnum.proxy_path_client, hutils.random.get_random_string())
 
 
 def _v59():
@@ -361,13 +361,13 @@ def _v20():
 
 
 def _v19():
-    set_hconfig(ConfigEnum.path_trojan, get_random_string(7, 15))
-    set_hconfig(ConfigEnum.path_vless, get_random_string(7, 15))
-    set_hconfig(ConfigEnum.path_vmess, get_random_string(7, 15))
-    set_hconfig(ConfigEnum.path_ss, get_random_string(7, 15))
-    set_hconfig(ConfigEnum.path_grpc, get_random_string(7, 15))
-    set_hconfig(ConfigEnum.path_tcp, get_random_string(7, 15))
-    set_hconfig(ConfigEnum.path_ws, get_random_string(7, 15))
+    set_hconfig(ConfigEnum.path_trojan, hutils.random.get_random_string(7, 15))
+    set_hconfig(ConfigEnum.path_vless, hutils.random.get_random_string(7, 15))
+    set_hconfig(ConfigEnum.path_vmess, hutils.random.get_random_string(7, 15))
+    set_hconfig(ConfigEnum.path_ss, hutils.random.get_random_string(7, 15))
+    set_hconfig(ConfigEnum.path_grpc, hutils.random.get_random_string(7, 15))
+    set_hconfig(ConfigEnum.path_tcp, hutils.random.get_random_string(7, 15))
+    set_hconfig(ConfigEnum.path_ws, hutils.random.get_random_string(7, 15))
     add_config_if_not_exist(ConfigEnum.tuic_enable, False)
     add_config_if_not_exist(ConfigEnum.shadowtls_enable, False)
     add_config_if_not_exist(ConfigEnum.shadowtls_fakedomain, "en.wikipedia.org")
@@ -402,7 +402,7 @@ def _v1():
         StrConfig(key=ConfigEnum.tls_ports, value="443"),
         BoolConfig(key=ConfigEnum.first_setup, value=True),
         StrConfig(key=ConfigEnum.decoy_domain, value=hiddify.get_random_decoy_domain()),
-        StrConfig(key=ConfigEnum.proxy_path, value=get_random_string()),
+        StrConfig(key=ConfigEnum.proxy_path, value=hutils.random.get_random_string()),
         BoolConfig(key=ConfigEnum.firewall, value=False),
         BoolConfig(key=ConfigEnum.netdata, value=True),
         StrConfig(key=ConfigEnum.lang, value='en'),

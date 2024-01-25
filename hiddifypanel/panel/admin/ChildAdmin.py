@@ -3,7 +3,7 @@ from hiddifypanel.models import *
 from .adminlte import AdminLTEModelView
 from flask_babelex import gettext as __
 from flask_babelex import lazy_gettext as _
-from flask import Markup
+from flask import Markup, g
 
 from hiddifypanel.panel.auth import login_required
 from hiddifypanel.panel import hiddify
@@ -103,12 +103,12 @@ class ChildAdmin(AdminLTEModelView):
         if len(model.show_domains) == Domain.query.count():
             model.show_domains = []
 
-        hiddify.flash_config_success(restart_mode='apply', domain_changed=True)
+        hutils.flask.flash_config_success(restart_mode='apply', domain_changed=True)
 
     def on_model_delete(self, model):
         if len(ParentDomain.query.all()) <= 1:
             raise ValidationError(f"at least one domain should exist")
-        hiddify.flash_config_success(restart_mode='apply', domain_changed=True)
+        hutils.flask.flash_config_success(restart_mode='apply', domain_changed=True)
 
     def is_accessible(self):
         if login_required(roles={Role.super_admin})(lambda: True)() != True:

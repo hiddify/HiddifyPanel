@@ -1,4 +1,5 @@
 from flask_babelex import gettext as _
+from hiddifypanel import hutils
 from hiddifypanel.models.role import Role
 import wtforms as wtf
 from flask_wtf import FlaskForm
@@ -7,13 +8,10 @@ from flask import render_template
 
 
 from hiddifypanel.models import ConfigEnum, get_hconfigs, BoolConfig, ConfigEnum, hconfig, Proxy
-from hiddifypanel.panel.hiddify import flash
 from hiddifypanel.panel.database import db
 from wtforms.fields import *
 from hiddifypanel.panel import hiddify
 from flask_classful import FlaskView
-from hiddifypanel.panel.hiddify import flash
-from hiddifypanel.panel import hiddify
 from hiddifypanel.panel.auth import login_required
 
 
@@ -33,7 +31,7 @@ class ProxyAdmin(FlaskView):
                 if k in [c for c in ConfigEnum]:
                     BoolConfig.query.filter(BoolConfig.key == k).first().value = vs
                     if vs and k in [ConfigEnum.domain_fronting_http_enable, ConfigEnum.domain_fronting_tls_enable] and hconfig(ConfigEnum.domain_fronting_domain) == "":
-                        flash((_('config.domain-fronting-notsetup-error')), 'danger')
+                        hutils.flask.flash((_('config.domain-fronting-notsetup-error')), 'danger')
 
             # print(cat,vs)
             hiddify.get_available_proxies.invalidate_all()
@@ -58,12 +56,12 @@ class ProxyAdmin(FlaskView):
                 # print(cat,vs)
             db.session.commit()
             hiddify.get_available_proxies.invalidate_all()
-            hiddify.flash_config_success(restart_mode='apply', domain_changed=False)
+            hutils.flask.flash_config_success(restart_mode='apply', domain_changed=False)
             # if hconfig(ConfigEnum.parent_panel):
             #     hiddify_api.sync_child_to_parent()
             global_config_form = get_global_config_form(True)
         else:
-            flash((_('config.validation-error')), 'danger')
+            hutils.flask.flash((_('config.validation-error')), 'danger')
 
         return render_template('proxy.html', global_config_form=global_config_form, detailed_config_form=all_proxy_form)
 

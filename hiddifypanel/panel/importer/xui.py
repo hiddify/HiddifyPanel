@@ -4,7 +4,7 @@ from typing import Any, Dict, List, Tuple
 import uuid as uuid_mod
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
-import hiddifypanel.hutils.utils as utils
+from hiddifypanel import hutils
 from hiddifypanel.models.admin import AdminUser
 from hiddifypanel.models.user import User, UserMode
 from hiddifypanel.models.domain import Domain, DomainType
@@ -63,7 +63,7 @@ def __get_users(db, x_ui_inbounds):
 def __create_hiddify_user_from_xui_values(id: str, values: Dict[str, Any]) -> User:
     user = User()
     user.name = values['name']
-    user.uuid = id if utils.is_uuid_valid(id, 4) else uuid_mod.uuid4()
+    user.uuid = id if hutils.auth.is_uuid_valid(id, 4) else uuid_mod.uuid4()
 
     if str(values['expiry_time']) == '0':
         user.expiry_time = datetime.now() + relativedelta(years=10)
