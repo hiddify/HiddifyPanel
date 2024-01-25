@@ -74,7 +74,7 @@ def get_restore_form(empty=False):
         enable_config_restore = SwitchField(_("Restore Settings"), description=_("Restore Settings description"), default=False)
         enable_user_restore = SwitchField(_("Restore Users"), description=_("Restore Users description"), default=False)
         enable_domain_restore = SwitchField(_("Restore Domain"), description=_("Restore Domain description"), default=False)
-        override_root_admin = SwitchField(_("Override Root Admin"), description=_("It will override the root admin to the current user"), default=True)
+        override_root_admin = SwitchField(_("Override Root Admin"), description=_("It will override the root admin to the current user"), default=False)
         submit = wtf.fields.SubmitField(_('Submit'))
 
     return RestoreForm(None) if empty else RestoreForm()
