@@ -182,10 +182,10 @@ class Actions(FlaskView):
     def get_some_random_reality_friendly_domain(self):
         test_domain = request.args.get("test_domain")
         import ping3
-        from hiddifypanel.hutils.auto_ip_selector import ipasn, ipcountry
-        ipv4 = hutils.ip.get_ip(4)
-        server_country = (ipcountry.get(ipv4) or {}).get('country', {}).get('iso_code', 'unknown')
-        server_asn = (ipasn.get(ipv4) or {}).get('autonomous_system_organization', 'unknown')
+        from hiddifypanel.hutils.network.auto_ip_selector import IPASN, IPCOUNTRY
+        ipv4 = hutils.network.get_ip(4)
+        server_country = (IPCOUNTRY.get(ipv4) or {}).get('country', {}).get('iso_code', 'unknown')
+        server_asn = (IPASN.get(ipv4) or {}).get('autonomous_system_organization', 'unknown')
         res = "<table><tr><th>Domain</th><th>IP</th><th>Country</th><th>ASN</th><th>Ping (ms)</th><th>TCP ping (ms)</th></tr>"
         res += f"<tr><td>Your Server</td><td>{ipv4}</td><td>{server_country}</td><td>{server_asn}</td><td>0</td></tr>"
         import time
@@ -198,8 +198,8 @@ class Actions(FlaskView):
             print(d)
             tcp_ping = hiddify.is_domain_reality_friendly(d)
             if tcp_ping:
-                dip = hutils.ip.get_domain_ip(d)
-                dip_country = (ipcountry.get(dip) or {}).get('country', {}).get('iso_code', 'unknown')
+                dip = hutils.network.get_domain_ip(d)
+                dip_country = (IPCOUNTRY.get(dip) or {}).get('country', {}).get('iso_code', 'unknown')
                 if dip_country == "IR":
                     continue
                 response_time = -1
@@ -209,7 +209,7 @@ class Actions(FlaskView):
                         response_time = int(response_time)
                 except:
                     pass
-                dip_asn = (ipasn.get(dip) or {}).get('autonomous_system_organization', 'unknown')
+                dip_asn = (IPASN.get(dip) or {}).get('autonomous_system_organization', 'unknown')
                 res += f"<tr><td>{d}</td><td>{dip}</td><td>{dip_country}</td><td>{dip_asn}</td><td>{response_time}</td><td>{tcp_ping}<td></tr>"
 
         return res+"</table>"

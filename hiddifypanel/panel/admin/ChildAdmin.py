@@ -56,8 +56,8 @@ class ChildAdmin(AdminLTEModelView):
                       f'</a><a href="{admin_link}" class="btn btn-xs btn-info ltr" target="_blank">{model.domain}</a></div>')
 
     def _domain_ip(view, context, model, name):
-        dip = hutils.ip.get_domain_ip(model.domain)
-        myip = hutils.ip.get_ip(4)
+        dip = hutils.network.get_domain_ip(model.domain)
+        myip = hutils.network.get_ip(4)
         if myip == dip and model.mode == DomainType.direct:
             badge_type = ''
         elif dip and model.mode != DomainType.direct and myip != dip:
@@ -92,7 +92,7 @@ class ChildAdmin(AdminLTEModelView):
     def on_model_change(self, form, model, is_created):
         model.domain = model.domain.lower()
 
-        dip = hutils.ip.get_domain_ip(model.domain)
+        dip = hutils.network.get_domain_ip(model.domain)
         if dip == None:
             raise ValidationError(
                 _("Domain can not be resolved! there is a problem in your domain"))

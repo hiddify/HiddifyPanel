@@ -39,7 +39,7 @@ to_gig_d = 1000*1000*1000
 
 #     # run temporary_access.sh
 #     commander(Command.temporary_access, port=random_port)
-#     temp_admin_link = f"http://{hutils.ip.get_ip(4)}:{random_port}{get_admin_path()}"
+#     temp_admin_link = f"http://{hutils.network.get_ip(4)}:{random_port}{get_admin_path()}"
 #     g.temp_admin_link = temp_admin_link
 
 
@@ -314,9 +314,9 @@ def check_connection_for_domain(domain):
             return res['status'] == 200
         except:
             try:
-                print(f"http://{hutils.ip.get_domain_ip(domain)}/{path}")
+                print(f"http://{hutils.network.get_domain_ip(domain)}/{path}")
                 res = requests.get(
-                    f"http://{hutils.ip.get_domain_ip(domain)}/{path}", verify=False, timeout=10).json()
+                    f"http://{hutils.network.get_domain_ip(domain)}/{path}", verify=False, timeout=10).json()
                 return res['status'] == 200
             except:
                 return False
@@ -349,7 +349,7 @@ def validate_domain_exist(form, field):
     domain = field.data
     if not domain:
         return
-    dip = hutils.ip.get_domain_ip(domain)
+    dip = hutils.network.get_domain_ip(domain)
     if dip == None:
         raise ValidationError(
             _("Domain can not be resolved! there is a problem in your domain"))
@@ -580,13 +580,13 @@ def is_domain_reality_friendly(domain):
 
 
 def debug_flash_if_not_in_the_same_asn(domain):
-    from hiddifypanel.hutils.auto_ip_selector import ipasn
-    ipv4 = hutils.ip.get_ip(4)
-    dip = hutils.ip.get_domain_ip(domain)
+    from hiddifypanel.hutils.network.auto_ip_selector import IPASN
+    ipv4 = hutils.network.get_ip(4)
+    dip = hutils.network.get_domain_ip(domain)
     try:
-        if ipasn:
-            asn_ipv4 = ipasn.get(ipv4)
-            asn_dip = ipasn.get(dip)
+        if IPASN:
+            asn_ipv4 = IPASN.get(ipv4)
+            asn_dip = IPASN.get(dip)
             # country_ipv4= ipcountry.get(ipv4)
             # country_dip= ipcountry.get(dip)
             if asn_ipv4.get('autonomous_system_organization') != asn_dip.get('autonomous_system_organization'):
@@ -770,9 +770,9 @@ def get_direct_host_or_ip(prefer_version: int):
     if direct:
         direct = direct.domain
     else:
-        direct = hutils.ip.get_ip(prefer_version)
+        direct = hutils.network.get_ip(prefer_version)
     if not direct:
-        direct = hutils.ip.get_ip(4 if prefer_version == 6 else 6)
+        direct = hutils.network.get_ip(4 if prefer_version == 6 else 6)
     return direct
 
 

@@ -61,7 +61,7 @@ def all_configs():
     sslip_domains = [d.domain for d in domains if "sslip.io" in d.domain]
 
     configs['hconfigs']['first_setup'] = def_user != None and len(sslip_domains) > 0
-    server_ip = hutils.ip.get_ip(4)
+    server_ip = hutils.network.get_ip(4)
     owner = AdminUser.get_super_admin()
 
     configs['admin_path'] = hiddify.get_account_panel_link(owner, server_ip, is_https=False, prefere_path_only=True)
@@ -86,7 +86,7 @@ def test():
 
 def admin_links():
 
-    server_ip = hutils.ip.get_ip(4)
+    server_ip = hutils.network.get_ip(4)
     owner = AdminUser.get_super_admin()
 
     admin_links = f"Not Secure (do not use it - only if others not work):\n   {hiddify.get_account_panel_link(owner, server_ip,is_https=True)}'\n"

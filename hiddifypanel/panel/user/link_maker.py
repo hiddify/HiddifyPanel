@@ -920,8 +920,8 @@ def get_all_validated_proxies(domains):
             options = []
             if type.proto in ['ssh', 'tuic', 'hysteria2']:
 
-                ip = hutils.ip.get_domain_ip(d.domain, version=4)
-                ip6 = hutils.ip.get_domain_ip(d.domain, version=6)
+                ip = hutils.network.get_domain_ip(d.domain, version=4)
+                ip6 = hutils.network.get_domain_ip(d.domain, version=6)
 
                 ips = [x for x in [ip, ip6]if x != None]
 

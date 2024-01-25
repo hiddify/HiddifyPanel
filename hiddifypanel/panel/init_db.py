@@ -353,7 +353,7 @@ def _v20():
         if direct_domain:
             direct_host = direct_domain.domain
         else:
-            direct_host = hutils.ip.get_ip(4)
+            direct_host = hutils.network.get_ip(4)
 
         for fd in fake_domains:
             if not Domain.query.filter(Domain.domain == fd).first():
@@ -390,7 +390,7 @@ def _v17():
 
 
 def _v1():
-    external_ip = str(hutils.ip.get_ip(4))
+    external_ip = str(hutils.network.get_ip(4))
     rnd_domains = get_random_domains(5)
 
     data = [

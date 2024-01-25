@@ -97,8 +97,8 @@ class DomainAdmin(AdminLTEModelView):
             f'</a><a href="{admin_link}" class="btn btn-xs btn-info ltr" target="_blank">{model.domain}</a></div>')
 
     def _domain_ip(view, context, model, name):
-        dip = hutils.ip.get_domain_ip(model.domain)
-        myip = hutils.ip.get_ip(4)
+        dip = hutils.network.get_domain_ip(model.domain)
+        myip = hutils.network.get_ip(4)
         if myip == dip and model.mode == DomainType.direct:
             badge_type = ''
         elif dip and model.mode != DomainType.direct and myip != dip:
@@ -146,8 +146,8 @@ class DomainAdmin(AdminLTEModelView):
             if td.servernames and (model.domain in td.servernames.split(",")):
                 raise ValidationError(_("You have used this domain in: ")+_(f"config.reality_server_names.label")+" in " + td.domain)
 
-        ipv4_list = hutils.ip.get_ips(4)
-        ipv6_list = hutils.ip.get_ips(6)
+        ipv4_list = hutils.network.get_ips(4)
+        ipv6_list = hutils.network.get_ips(6)
 
         if not ipv4_list and not ipv6_list:
             raise ValidationError(_("Couldn't find your ip addresses"))
@@ -172,7 +172,7 @@ class DomainAdmin(AdminLTEModelView):
             hutils.flask.flash(__("Using alias with special charachters may cause problem in some clients like FairVPN."), 'warning')
         #     raise ValidationError(_("You have to add your cloudflare api key to use this feature: "))
 
-        dip = hutils.ip.get_domain_ip(model.domain)
+        dip = hutils.network.get_domain_ip(model.domain)
         if model.sub_link_only:
             if dip == None:
                 raise ValidationError(_("Domain can not be resolved! there is a problem in your domain"))
@@ -247,9 +247,8 @@ class DomainAdmin(AdminLTEModelView):
                     raise ValidationError(_("REALITY Fallback domain is not compaitble with server names!")+" "+d+" != "+model.domain)
 
         if (model.cdn_ip):
-            from hiddifypanel.hutils import auto_ip_selector
             try:
-                auto_ip_selector.get_clean_ip(str(model.cdn_ip))
+                hutils.network.auto_ip_selector.get_clean_ip(str(model.cdn_ip))
             except:
                 raise ValidationError(_("Error in auto cdn format"))
 

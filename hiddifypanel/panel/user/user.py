@@ -12,7 +12,6 @@ from flask_babelex import gettext as _
 
 
 from hiddifypanel.panel.auth import login_required
-from hiddifypanel.hutils import auto_ip_selector
 from hiddifypanel.panel.database import db
 from hiddifypanel.panel import hiddify
 from hiddifypanel.models import *
@@ -136,12 +135,12 @@ class UserView(FlaskView):
         # THE REPORT MODEL IS NOT COMPLETED YET.
 
         data = request.get_json()
-        user_ip = auto_ip_selector.get_real_user_ip()
+        user_ip = hutils.network.auto_ip_selector.get_real_user_ip()
         report = Report()
-        report.asn_id = auto_ip_selector.get_asn_id(user_ip)
-        report.country = auto_ip_selector.get_country(user_ip)
+        report.asn_id = hutils.network.auto_ip_selector.get_asn_id(user_ip)
+        report.country = hutils.network.auto_ip_selector.get_country(user_ip)
 
-        city_info = auto_ip_selector.get_city(user_ip)
+        city_info = hutils.network.auto_ip_selector.get_city(user_ip)
         report.city = city_info['name']
         report.latitude = city_info['latitude']
         report.longitude = city_info['longitude']
@@ -303,7 +302,7 @@ def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
             has_auto_cdn = True
             d.has_auto_ip = d.mode == DomainType.auto_cdn_ip or (
                 d.cdn_ip and "MTN" in d.cdn_ip)
-            d.cdn_ip = auto_ip_selector.get_clean_ip(
+            d.cdn_ip = hutils.network.auto_ip_selector.get_clean_ip(
                 d.cdn_ip, d.mode == DomainType.auto_cdn_ip, default_asn)
             # print("autocdn ip mode ", d.cdn_ip)
         if "*" in d.domain:
@@ -327,8 +326,8 @@ def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
     expire_s = int((datetime.date.today(
     )+datetime.timedelta(days=expire_days)-datetime.date(1970, 1, 1)).total_seconds())
 
-    user_ip = auto_ip_selector.get_real_user_ip()
-    asn = auto_ip_selector.get_asn_short_name(user_ip)
+    user_ip = hutils.network.auto_ip_selector.get_real_user_ip()
+    asn = hutils.network.auto_ip_selector.get_asn_short_name(user_ip)
     profile_title = f'{db_domain.alias or db_domain.domain} {user.name}'
     if has_auto_cdn and asn != 'unknown':
         profile_title += f" {asn}"
@@ -356,9 +355,9 @@ def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
         "db_domain": db_domain,
         "telegram_enable": hconfig(ConfigEnum.telegram_enable) and any([d for d in domains if d.mode in [DomainType.direct, DomainType.relay, DomainType.old_xtls_direct]]),
         "ip": user_ip,
-        "ip_debug": auto_ip_selector.get_real_user_ip_debug(user_ip),
+        "ip_debug": hutils.network.auto_ip_selector.get_real_user_ip_debug(user_ip),
         "asn": asn,
-        "country": auto_ip_selector.get_country(user_ip),
+        "country": hutils.network.auto_ip_selector.get_country(user_ip),
         'has_auto_cdn': has_auto_cdn,
         'profile_url': hiddify.get_account_panel_link(user, domain)
     }

@@ -1,8 +1,5 @@
-
-
 import psutil
 import os
-from hiddifypanel import hutils
 
 
 def get_folder_size(folder_path):
