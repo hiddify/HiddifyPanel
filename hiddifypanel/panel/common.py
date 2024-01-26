@@ -89,18 +89,18 @@ def init_app(app: APIFlask):
     @app.url_defaults
     def add_proxy_path_user(endpoint, values):
         if 'proxy_path' not in values:
-            if hiddify.is_admin_role(g.account):
+            if hutils.flask.is_admin_role(g.account):
                 values['proxy_path'] = hconfig(ConfigEnum.proxy_path_admin)
             # elif 'static' in endpoint:
                 #     values['proxy_path'] = hconfig(ConfigEnum.proxy_path)
-            elif hiddify.is_user_panel_call():
+            elif hutils.flask.is_user_panel_call():
                 values['proxy_path'] = hconfig(ConfigEnum.proxy_path_client)
-            elif g.account and hiddify.is_admin_role(g.account.role):
+            elif g.account and hutils.flask.is_admin_role(g.account.role):
                 values['proxy_path'] = hconfig(ConfigEnum.proxy_path_admin)
             else:
                 values['proxy_path'] = g.proxy_path
 
-        if hiddify.is_api_v1_call(endpoint=endpoint) and 'admin_uuid' not in values:
+        if hutils.flask.is_api_v1_call(endpoint=endpoint) and 'admin_uuid' not in values:
             values['admin_uuid'] = AdminUser.get_super_admin_uuid()
         # if 'secret_uuid' not in values and g.account and ".webmanifest" in request.path:
         #     values['secret_uuid'] = g.account.uuid
@@ -114,14 +114,14 @@ def init_app(app: APIFlask):
     # @app.template_filter()
     # def rel_datetime(value):
     #     diff=datetime.datetime.now()-value
-    #     return format_timedelta(diff, add_direction=True, locale=hconfig(ConfigEnum.lang))
+    #     return hutils.convert.format_timedelta(diff, add_direction=True, locale=hconfig(ConfigEnum.lang))
 
     # @app.before_request
     # def backward_compatibility_middleware():
     #     # get needed variables
     #     g.user_agent_old = user_agent = user_agents.parse(request.user_agent.string)
 
-    #     proxy_path = hiddify.get_proxy_path_from_url(request.url)
+    #     proxy_path = hutils.flask.get_proxy_path_from_url(request.url)
     #     if not proxy_path:
     #         abort(400, "invalid")
 
@@ -143,9 +143,9 @@ def init_app(app: APIFlask):
 
     #     # handle deprecated proxy path
     #     new_link = f"https://{request.host}"
-    #     if hiddify.is_admin_panel_call(deprecated_format=True):
+    #     if hutils.flask.is_admin_panel_call(deprecated_format=True):
     #         new_link += request.path.replace(f"{proxy_path}/{uuid}/admin/", f'{admin_proxy_path}/admin/')
-    #     elif hiddify.is_user_panel_call(deprecated_format=True):
+    #     elif hutils.flask.is_user_panel_call(deprecated_format=True):
     #         new_link += request.path.replace(f"{proxy_path}/{uuid}/", f'{client_proxy_path}/client/')
     #     else:
     #         return abort(400, 'invalid request 1')
@@ -161,7 +161,7 @@ def init_app(app: APIFlask):
     @app.before_request
     def set_default_values():
         g.account = current_account
-        g.user_agent = hiddify.get_user_agent()
+        g.user_agent = hutils.flask.get_user_agent()
 
     @app.before_request
     def base_middleware():
@@ -175,8 +175,8 @@ def init_app(app: APIFlask):
 
         # validate proxy path
 
-        # g.proxy_path = hutils.utils.get_proxy_path_from_url(request.url)
-        hiddify.proxy_path_validator(g.proxy_path)
+        # g.proxy_path = hutils.flask.get_proxy_path_from_url(request.url)
+        hutils.flask.proxy_path_validator(g.proxy_path)
 
         # if g.proxy_path != hconfig(ConfigEnum.proxy_path):
         #     if app.config['DEBUG']:

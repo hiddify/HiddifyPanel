@@ -2,7 +2,7 @@ import random
 import string
 
 
-def get_random_string(min_=10, max_=30):
+def get_random_string(min_: int = 10, max_: int = 30) -> str:
     # With combination of lower and upper case
     length = random.randint(min_, max_)
     characters = string.ascii_letters + string.digits

@@ -9,7 +9,7 @@ from hiddifypanel.panel.admin.adminlte import AdminLTEModelView
 from flask_babelex import gettext as __
 from flask_babelex import lazy_gettext as _
 from hiddifypanel.panel import hiddify
-from flask import Markup, g
+from flask import Markup, g  # type: ignore
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_admin import Admin
@@ -109,7 +109,7 @@ class ParentDomainAdmin(AdminLTEModelView):
         if dip == None:
             raise ValidationError(
                 _("Domain can not be resolved! there is a problem in your domain"))
-        # if not hiddify.check_connection_for_domain(model.domain):
+        # if not hutils.network.check_connection_for_domain(model.domain):
         #     raise ValidationError(
         #         _("Domain is not correctly mapped to this server!"))
 

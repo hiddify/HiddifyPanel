@@ -190,13 +190,13 @@ class Actions(FlaskView):
         res += f"<tr><td>Your Server</td><td>{ipv4}</td><td>{server_country}</td><td>{server_asn}</td><td>0</td></tr>"
         import time
         start = time.time()
-        for d in [test_domain, *hiddify.get_random_domains(30)]:
+        for d in [test_domain, *hutils.network.get_random_domains(30)]:
             if not d:
                 continue
             if time.time()-start > 20:
                 break
             print(d)
-            tcp_ping = hiddify.is_domain_reality_friendly(d)
+            tcp_ping = hutils.network.is_domain_reality_friendly(d)
             if tcp_ping:
                 dip = hutils.network.get_domain_ip(d)
                 dip_country = (IPCOUNTRY.get(dip) or {}).get('country', {}).get('iso_code', 'unknown')

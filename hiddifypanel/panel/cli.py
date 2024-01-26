@@ -19,7 +19,7 @@ def drop_db():
 
 def downgrade():
     if (hconfig(ConfigEnum.db_version) >= "49"):
-        set_hconfig(ConfigEnum.db_version, 42, commit=False)
+        set_hconfig(ConfigEnum.db_version, '42', commit=False)
         StrConfig.query.filter(StrConfig.key.in_([ConfigEnum.tuic_enable, ConfigEnum.tuic_port, ConfigEnum.hysteria_enable,
                                ConfigEnum.hysteria_port, ConfigEnum.ssh_server_enable, ConfigEnum.ssh_server_port, ConfigEnum.ssh_server_redis_url])).delete()
         Proxy.query.filter(Proxy.l3.in_([ProxyL3.ssh, ProxyL3.h3_quic, ProxyL3.custom])).delete()
@@ -106,7 +106,8 @@ def admin_links():
 def admin_path():
     admin = AdminUser.get_super_admin()
     # WTF is the owner and server_id?
-    print(hiddify.get_account_panel_link(owner, server_ip, prefere_path_only=True))
+    domain = get_panel_domains()[0]
+    print(hiddify.get_account_panel_link(admin, domain, prefere_path_only=True))
 
 
 def hysteria_domain_port():

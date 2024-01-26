@@ -41,9 +41,9 @@ class LoginView(FlaskView):
 
         if redirect_arg:
             return redirect(redirect_arg)
-        if hiddify.is_admin_proxy_path() and g.account.role in {Role.super_admin, Role.admin, Role.agent}:
+        if hutils.flask.is_admin_proxy_path() and g.account.role in {Role.super_admin, Role.admin, Role.agent}:
             return redirect(url_for('admin.Dashboard:index'))
-        if g.user_agent['is_browser'] and hiddify.is_client_proxy_path():
+        if g.user_agent['is_browser'] and hutils.flask.is_client_proxy_path():
             return redirect(url_for('client.UserView:index'))
 
         from hiddifypanel.panel.user import UserView
@@ -53,7 +53,7 @@ class LoginView(FlaskView):
         form = LoginForm()
         if form.validate_on_submit():
             uuid = form.secret_textbox.data.strip()
-            if login_by_uuid(uuid, hiddify.is_admin_proxy_path()):
+            if login_by_uuid(uuid, hutils.flask.is_admin_proxy_path()):
                 return redirect(f'/{g.proxy_path}/')
         hutils.flask.flash(_('config.validation-error'), 'danger')  # type: ignore
         return render_template('login.html', form=LoginForm())
@@ -78,10 +78,10 @@ class LoginView(FlaskView):
         if redirect_arg:
             return redirect(redirect_arg)
 
-        if hiddify.is_admin_proxy_path() and g.account.role in {Role.super_admin, Role.admin, Role.agent}:
+        if hutils.flask.is_admin_proxy_path() and g.account.role in {Role.super_admin, Role.admin, Role.agent}:
             return redirect(url_for('admin.Dashboard:index'))
 
-        if g.user_agent['is_browser'] and hiddify.is_client_proxy_path():
+        if g.user_agent['is_browser'] and hutils.flask.is_client_proxy_path():
             return redirect(url_for('client.UserView:index'))
         from hiddifypanel.panel.user import UserView
         return UserView().auto_sub()
@@ -90,7 +90,7 @@ class LoginView(FlaskView):
     # @route('/<uuid:uuid>/')
 
     # def uuid(self, uuid, path=''):
-    #     proxy_path = hiddify.get_proxy_path_from_url(request.url)
+    #     proxy_path = hiddify.flask.get_proxy_path_from_url(request.url)
     #     g.__account_store = None
     #     uuid = str(uuid)
     #     if proxy_path == hconfig(ConfigEnum.proxy_path_client):
@@ -122,7 +122,7 @@ class LoginView(FlaskView):
     @route('/<secret_uuid>/manifest.webmanifest')
     def create_pwa_manifest(self):
         domain = request.host
-        name = (domain if hiddify.is_admin_panel_call() else g.account.name)
+        name = (domain if hutils.flask.is_admin_panel_call() else g.account.name)
         return jsonify({
             "name": f"Hiddify {name}",
             "short_name": f"{name}"[:12],

@@ -53,7 +53,7 @@ class Dashboard(FlaskView):
                     if d.mode == DomainType.fake:
                         continue
                     remote = hiddify.get_account_panel_link(g.account, d.domain, child_id=c.id)
-                    d.is_active = hiddify.check_connection_to_remote(remote)
+                    d.is_active = hutils.network.check_connection_to_remote(remote)
                     if d.is_active:
                         c.is_active = True
 
@@ -77,7 +77,7 @@ class Dashboard(FlaskView):
             d = domains[0]
             hutils.flask.flash((_('It seems that you have not created any users yet. Default user link: %(default_link)s',
                                default_link=hiddify.get_html_user_link(def_user, d))), 'secondary')  # type: ignore
-        if hiddify.is_ssh_password_authentication_enabled():
+        if hutils.network.is_ssh_password_authentication_enabled():
             hutils.flask.flash(_('ssh.password-login.warning.'), "warning")  # type: ignore
 
     # except:

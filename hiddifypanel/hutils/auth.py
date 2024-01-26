@@ -3,7 +3,7 @@ from typing import Tuple, Any
 from uuid import UUID
 
 
-def is_uuid_valid(uuid, version):
+def is_uuid_valid(uuid: str, version: int = 4) -> bool:
     try:
         uuid_obj = UUID(uuid, version=version)
     except ValueError:

@@ -2,7 +2,7 @@ import psutil
 import os
 
 
-def get_folder_size(folder_path):
+def get_folder_size(folder_path: str) -> int:
     total_size = 0
     try:
         for dirpath, dirnames, filenames in os.walk(folder_path):
@@ -17,7 +17,7 @@ def get_folder_size(folder_path):
     return total_size
 
 
-def top_processes():
+def top_processes() -> dict:
     # Get the process information
     processes = [p for p in psutil.process_iter(['name', 'memory_full_info', 'cpu_percent']) if p.info['name'] != '']
     num_cores = psutil.cpu_count()
@@ -62,7 +62,7 @@ def top_processes():
     }
 
 
-def system_stats():
+def system_stats() -> dict:
     # CPU usage
     cpu_percent = psutil.cpu_percent(interval=1)
 

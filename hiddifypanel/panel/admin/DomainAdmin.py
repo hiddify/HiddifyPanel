@@ -3,7 +3,7 @@ from hiddifypanel.panel.auth import login_required
 import hiddifypanel.panel.auth as auth
 from hiddifypanel.models import *
 import re
-from flask import Markup, g
+from flask import Markup, g  # type: ignore
 from flask_babelex import gettext as __
 from flask_babelex import lazy_gettext as _
 from hiddifypanel.panel.run_commander import Command, commander
@@ -220,7 +220,7 @@ class DomainAdmin(AdminLTEModelView):
 
         if model.mode == DomainType.reality:
             model.servernames = (model.domain).lower()
-            if not hiddify.is_domain_reality_friendly(model.domain):
+            if not hutils.network.is_domain_reality_friendly(model.domain):
                 # hutils.flask.flash(_("Domain is not REALITY friendly!")+" "+d,'error')
                 # return render_template('config.html', form=form)
                 raise ValidationError(_("Domain is not REALITY friendly!")+" "+model.domain)
@@ -235,7 +235,7 @@ class DomainAdmin(AdminLTEModelView):
                     if not d:
                         continue
 
-                    if not hiddify.is_domain_reality_friendly(d):
+                    if not hutils.network.is_domain_reality_friendly(d):
                         # hutils.flask.flash(_("Domain is not REALITY friendly!")+" "+d,'error')
                         # return render_template('config.html', form=form)
                         raise ValidationError(_("Domain is not REALITY friendly!")+" "+d)

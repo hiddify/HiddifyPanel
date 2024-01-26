@@ -2,6 +2,7 @@ import os
 import random
 import re
 import sys
+from typing import List, Union
 from hiddifypanel import hutils
 
 import maxminddb
@@ -66,7 +67,7 @@ __asn_map = {
 }
 
 
-def get_asn_short_name(user_ip=None):
+def get_asn_short_name(user_ip: str = '') -> str:
     user_ip = user_ip or get_real_user_ip()
     try:
         asn_id = get_asn_id(user_ip)
@@ -75,7 +76,7 @@ def get_asn_short_name(user_ip=None):
         return "unknown"
 
 
-def get_asn_id(user_ip=None):
+def get_asn_id(user_ip: str = '') -> str:
     user_ip = user_ip or get_real_user_ip()
     try:
         asnres = IPASN.get(user_ip)
@@ -84,7 +85,7 @@ def get_asn_id(user_ip=None):
         return "unknown"
 
 
-def get_country(user_ip=None):
+def get_country(user_ip: str = '') -> Union[dict, str]:
     try:
         user_ip = user_ip or get_real_user_ip()
         return (IPCOUNTRY.get(user_ip) or {}).get('country', {}).get('iso_code', 'unknown')
@@ -92,7 +93,7 @@ def get_country(user_ip=None):
         return 'unknown'
 
 
-def get_city(user_ip=None):
+def get_city(user_ip: str = '') -> Union[dict, str]:
     try:
         user_ip = user_ip or get_real_user_ip()
         res = __ipcity.get(user_ip)
@@ -101,7 +102,7 @@ def get_city(user_ip=None):
         return 'unknown'
 
 
-def get_real_user_ip_debug(user_ip=None):
+def get_real_user_ip_debug(user_ip: str = '') -> str:
     user_ip = user_ip or get_real_user_ip()
     asnres = IPASN.get(user_ip) or {}
     asn = f"{asnres.get('autonomous_system_number','unknown')}" if asnres else "unknown"
@@ -112,17 +113,17 @@ def get_real_user_ip_debug(user_ip=None):
     return f'{user_ip} {country} {asn} {asn_short} {"ERROR" if asn_short=="unknown" else ""} fullname={asn_dscr} default:{default}'
 
 
-def get_real_user_ip():
+def get_real_user_ip() -> str:
     user_ip = request.remote_addr
     for header in ['CF-Connecting-IP', 'ar-real-ip', 'X-Forwarded-For', "X-Real-IP"]:
         if header in request.headers:
             user_ip = request.headers.get(header)
             break
 
-    return user_ip
+    return str(user_ip)
 
 
-def __get_host_base_on_asn(ips, asn_short):
+def __get_host_base_on_asn(ips: Union[str, List[str]], asn_short: str) -> str:
     if type(ips) == str:
         ips = re.split('[ \t\r\n;,]+', ips.strip())
     valid_hosts = [ip for ip in ips if len(ip) > 5]
@@ -130,7 +131,7 @@ def __get_host_base_on_asn(ips, asn_short):
     if len(ips) % 2 != 0 or len(valid_hosts) == 0:
         hutils.flask.flash(_("Error! auto cdn ip can not be find, please contact admin."))
         if len(valid_hosts) == 0:
-            return
+            return ''
 
     all_hosts = []
     for i in range(0, len(ips), 2):
@@ -145,7 +146,7 @@ def __get_host_base_on_asn(ips, asn_short):
     return selected
 
 
-def get_clean_ip(ips, resolve=False, default_asn=None):
+def get_clean_ip(ips: Union[str, List[str]], resolve: bool = False, default_asn: str = '') -> str:
     if not ips:
         ips = DEFAULT_IPs
 
@@ -165,4 +166,4 @@ def get_clean_ip(ips, resolve=False, default_asn=None):
     # print("selected_server",selected_server)
     if resolve:
         selected_server = hutils.network.get_domain_ip(selected_server) or selected_server
-    return selected_server
+    return str(selected_server)

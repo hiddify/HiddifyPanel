@@ -44,18 +44,3 @@ def get_latest_release_version(repo_name):
     return None
 
 
-def is_assci_alphanumeric(str):
-    for c in str:
-        if c not in string.ascii_letters + string.digits:
-            return False
-    return True
-
-
-def get_proxy_path_from_url(url: str) -> str | None:
-    url_path = urlparse(url).path
-    proxy_path = url_path.lstrip('/').split('/')[0] or None
-    return proxy_path
-
-
-def is_out_of_range_port(port: int) -> bool:
-    return port < 1 or port > 65535

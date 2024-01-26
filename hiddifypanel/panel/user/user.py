@@ -208,7 +208,7 @@ class UserView(FlaskView):
             resp = ""
         else:
             resp = render_template('singbox_config.json', **c, host_keys=hiddify.get_hostkeys(True),
-                                   ssh_client_version=hiddify.get_ssh_client_version(user), ssh_ip=hiddify.get_direct_host_or_ip(4), base64=False)
+                                   ssh_client_version=hiddify.get_ssh_client_version(user), ssh_ip=hutils.network.get_direct_host_or_ip(4), base64=False)
 
         return add_headers(resp, c)
 
@@ -344,7 +344,7 @@ def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
         'usage_current_b': int(user.current_usage_GB*1024*1024*1024),
         'expire_s': expire_s,
         'expire_days': expire_days,
-        'expire_rel': hiddify.format_timedelta(datetime.timedelta(days=expire_days)),
+        'expire_rel': hutils.convert.format_timedelta(datetime.timedelta(days=expire_days)),
         'reset_day': reset_days,
         'hconfigs': get_hconfigs(),
         'hdomains': get_hdomains(),

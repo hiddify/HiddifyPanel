@@ -122,7 +122,7 @@ class __IssueUrl:
 # region private functions
 
 
-def __generate_github_issue_link(title, issue_body):
+def __generate_github_issue_link(title: str, issue_body: str) -> str:
     opts = {
         "user": 'hiddify',
         "repo": 'Hiddify-Manager',
@@ -130,10 +130,10 @@ def __generate_github_issue_link(title, issue_body):
         "body": issue_body,
     }
     issue_link = str(__IssueUrl(opts).get_url())
-    return issue_link
+    return str(issue_link)
 
 
-def __github_issue_details():
+def __github_issue_details() -> dict:
     details = {
         'hiddify_version': f'{hiddifypanel.__version__}',
         'python_version': f'{python_version}',
@@ -143,7 +143,7 @@ def __github_issue_details():
     return details
 
 
-def __remove_sensetive_data_from_github_issue_link(issue_link):
+def __remove_sensetive_data_from_github_issue_link(issue_link: str):
     if g.account.uuid:
         issue_link.replace(f'{g.account.uuid}', '*******************')
 
@@ -153,7 +153,7 @@ def __remove_sensetive_data_from_github_issue_link(issue_link):
     issue_link.replace(hconfig(ConfigEnum.proxy_path_client), '**********')
 
 
-def __remove_unrelated_traceback_details(stacktrace: str):
+def __remove_unrelated_traceback_details(stacktrace: str) -> str:
     lines = stacktrace.splitlines()
     if len(lines) < 1:
         return ""
@@ -179,7 +179,7 @@ def __remove_unrelated_traceback_details(stacktrace: str):
 # endregion
 
 
-def generate_github_issue_link_for_500_error(error, traceback, remove_sensetive_data=True, remove_unrelated_traceback_datails=True):
+def generate_github_issue_link_for_500_error(error, traceback: str, remove_sensetive_data: bool = True, remove_unrelated_traceback_datails: bool = True) -> str:
 
     if remove_unrelated_traceback_datails:
         traceback = __remove_unrelated_traceback_details(traceback)
@@ -197,7 +197,7 @@ def generate_github_issue_link_for_500_error(error, traceback, remove_sensetive_
     return issue_link
 
 
-def generate_github_issue_link_for_admin_sidebar():
+def generate_github_issue_link_for_admin_sidebar() -> str:
 
     issue_body = render_template('github_issue_body.j2', issue_details=__github_issue_details())
 

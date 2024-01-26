@@ -92,7 +92,7 @@ def make_proxy(proxy: Proxy, domain_db: Domain, phttp=80, ptls=443, pport=None):
         return {'name': name, 'msg': "not cdn proxy  in cdn domain", 'type': 'debug', 'proto': proxy.proto}
     if domain_db.mode == DomainType.worker and proxy.transport == ProxyTransport.grpc:
         return {'name': name, 'msg': "worker does not support grpc", 'type': 'debug', 'proto': proxy.proto}
-    cdn_forced_host = domain_db.cdn_ip or (domain_db.domain if domain_db.mode != DomainType.reality else hiddify.get_direct_host_or_ip(4))
+    cdn_forced_host = domain_db.cdn_ip or (domain_db.domain if domain_db.mode != DomainType.reality else hutils.network.get_direct_host_or_ip(4))
 
     if 'reality' in proxy.l3:
         alpn = "h2" if proxy.transport in ['h2', "grpc"] else 'http/1.1'
@@ -822,7 +822,7 @@ def add_singbox_ssh(all_base, proxy):
 
 
 def make_full_singbox_config(domains, **kwargs):
-    ua = hiddify.get_user_agent()
+    ua = hutils.flask.get_user_agent()
     base_config = json.loads(render_template('base_singbox_config.json.j2'))
     allphttp = [p for p in request.args.get("phttp", "").split(',') if p]
     allptls = [p for p in request.args.get("ptls", "").split(',') if p]
@@ -862,7 +862,7 @@ def make_full_singbox_config(domains, **kwargs):
 def make_v2ray_configs(user, user_activate, domains, expire_days, ip_debug, db_domain, has_auto_cdn, asn, profile_title, **kwargs):
     res = []
 
-    ua = hiddify.get_user_agent()
+    ua = hutils.flask.get_user_agent()
     if hconfig(ConfigEnum.show_usage_in_sublink):
 
         if not ua['is_hiddify']:

@@ -2,7 +2,7 @@ import datetime
 import uuid as uuid_mod
 from hiddifypanel import hutils
 from hiddifypanel.models.role import Role
-from sqlalchemy import Column, String, BigInteger, Integer
+from sqlalchemy import Column, String, BigInteger, Enum
 from sqlalchemy_serializer import SerializerMixin
 from flask_login import UserMixin as FlaskLoginUserMixin
 from hiddifypanel.models import Lang
@@ -16,8 +16,8 @@ class BaseAccount(db.Model, SerializerMixin, FlaskLoginUserMixin):  # type: igno
     username = Column(String(100), nullable=True, default='')
     password = Column(String(100), nullable=True, default='')
     comment = Column(String(512), nullable=True, default='')
-    telegram_id = Column(BigInteger, nullable=True, default='')
-    lang = db.Column(db.Enum(Lang), default=None)
+    telegram_id = Column(BigInteger, nullable=True, default=None)
+    lang = Column(Enum(Lang), default=None)
 
     @property
     def role(self) -> Role | None:

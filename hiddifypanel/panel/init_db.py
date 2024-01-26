@@ -12,7 +12,6 @@ from hiddifypanel import Events, hutils
 from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify
 from hiddifypanel.panel.database import db
-from hiddifypanel.panel.hiddify import get_random_domains
 import hiddifypanel.models.utils as model_utils
 
 MAX_DB_VERSION = 70
@@ -282,7 +281,7 @@ def _v42():
 
     for k in [ConfigEnum.telegram_fakedomain, ConfigEnum.ssfaketls_fakedomain, ConfigEnum.shadowtls_fakedomain]:
         if not hconfig(k):
-            rnd_domains = get_random_domains(1)
+            rnd_domains = hutils.network.get_random_domains(1)
             add_config_if_not_exist(k, rnd_domains[0])
 
 
@@ -317,8 +316,8 @@ def _v31():
         db.session.add(AdminUser(id=1, uuid=hconfig(ConfigEnum.admin_secret), name="Owner", mode=AdminMode.super_admin, comment=""))
         execute("update admin_user set id=1 where name='owner'")
     for i in range(1, 10):
-        for d in get_random_domains(50):
-            if hiddify.is_domain_reality_friendly(d):
+        for d in hutils.network.get_random_domains(50):
+            if hutils.network.is_domain_reality_friendly(d):
                 add_config_if_not_exist(ConfigEnum.reality_fallback_domain, d)
                 add_config_if_not_exist(ConfigEnum.reality_server_names, d)
                 return
@@ -391,7 +390,7 @@ def _v17():
 
 def _v1():
     external_ip = str(hutils.network.get_ip(4))
-    rnd_domains = get_random_domains(5)
+    rnd_domains = hutils.network.get_random_domains(5)
 
     data = [
         StrConfig(key=ConfigEnum.db_version, value=1),
@@ -401,7 +400,7 @@ def _v1():
         StrConfig(key=ConfigEnum.http_ports, value="80"),
         StrConfig(key=ConfigEnum.tls_ports, value="443"),
         BoolConfig(key=ConfigEnum.first_setup, value=True),
-        StrConfig(key=ConfigEnum.decoy_domain, value=hiddify.get_random_decoy_domain()),
+        StrConfig(key=ConfigEnum.decoy_domain, value=hutils.network.get_random_decoy_domain()),
         StrConfig(key=ConfigEnum.proxy_path, value=hutils.random.get_random_string()),
         BoolConfig(key=ConfigEnum.firewall, value=False),
         BoolConfig(key=ConfigEnum.netdata, value=True),
