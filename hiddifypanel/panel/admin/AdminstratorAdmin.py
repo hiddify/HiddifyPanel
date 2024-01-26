@@ -7,7 +7,7 @@ from .adminlte import AdminLTEModelView
 from flask_babelex import gettext as __
 from flask_babelex import lazy_gettext as _
 from hiddifypanel.panel import hiddify
-from flask import Markup, current_app, request
+from flask import Markup, request  # type: ignore
 from flask import g
 import datetime
 from wtforms import SelectField

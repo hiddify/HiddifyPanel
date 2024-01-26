@@ -7,7 +7,7 @@ from flask_babelex import gettext as __
 from .adminlte import AdminLTEModelView
 from wtforms.validators import NumberRange
 from flask_babelex import lazy_gettext as _
-from flask import Markup, g, request, url_for
+from flask import Markup, g, request, url_for  # type: ignore
 from wtforms.validators import Regexp, ValidationError
 from flask import current_app
 
@@ -170,7 +170,7 @@ class UserAdmin(AdminLTEModelView):
         diff = datetime.timedelta(days=remaining)
 
         state = 'success' if diff.days > 7 else ('warning' if diff.days > 0 else 'danger')
-        formated = hiddify.format_timedelta(diff)
+        formated = hutils.convert.format_timedelta(diff)
         return Markup(f"<span class='badge badge-{state}'>{'*' if not model.start_date else ''} {formated} </span>")
         # return Markup(f"<span class='badge ltr badge-}'>{days}</span> "+_('days'))
 
@@ -187,7 +187,7 @@ class UserAdmin(AdminLTEModelView):
         if diff.total_seconds() > -60*2:
             return Markup(f"<span class='badge badge-success'>{_('Online')}</span>")
         state = "danger" if diff.days < -3 else ("success" if diff.days >= -1 else "warning")
-        return Markup(f"<span class='badge badge-{state}'>{hiddify.format_timedelta(diff,granularity='min')}</span>")
+        return Markup(f"<span class='badge badge-{state}'>{hutils.convert.format_timedelta(diff,granularity='min')}</span>")
 
         # return Markup(f"<span class='badge ltr badge-{'success' if days>7 else ('warning' if days>0 else 'danger') }'>{days}</span> "+_('days'))
 
@@ -225,7 +225,7 @@ class UserAdmin(AdminLTEModelView):
             # delattr(form,'disable_user')
         else:
             remaining = form._obj.remaining_days()  # remaining_days(form._obj)
-            msg = _("Remaining: ") + hiddify.format_timedelta(datetime.timedelta(days=remaining))
+            msg = _("Remaining: ") + hutils.convert.format_timedelta(datetime.timedelta(days=remaining))
             form.reset_days.label.text += f" ({msg})"
             usr_usage = f" ({_('user.home.usage.title')} {round(form._obj.current_usage_GB,3)}GB)"
             form.reset_usage.label.text += usr_usage

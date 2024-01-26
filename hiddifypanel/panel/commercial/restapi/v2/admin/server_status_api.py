@@ -7,6 +7,7 @@ from hiddifypanel.models.usage import DailyUsage
 from hiddifypanel.panel.auth import login_required
 from hiddifypanel.models import Role, DailyUsage
 from hiddifypanel.panel import hiddify
+from hiddifypanel import hutils
 
 
 class ServerStatus(Schema):
@@ -21,8 +22,8 @@ class AdminServerStatusApi(MethodView):
     def get(self):
         dto = ServerStatus()
         dto.stats = {  # type: ignore
-            'system': hiddify.system_stats(),
-            'top5': hiddify.top_processes()
+            'system': hutils.system.system_stats(),
+            'top5': hutils.system.top_processes()
         }
         admin_id = request.args.get("admin_id") or g.account.id
         dto.usage_history = DailyUsage.get_daily_usage_stats(admin_id)  # type: ignore

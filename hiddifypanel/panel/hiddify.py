@@ -1,13 +1,7 @@
 import glob
-import random
-import socket
-import ssl
-import time
 import uuid
-import user_agents
 import json
 import subprocess
-import psutil
 from datetime import datetime
 from typing import Tuple
 from cryptography.hazmat.primitives import serialization
@@ -16,10 +10,8 @@ from flask import current_app, g, request, Markup  # type: ignore
 from flask_babelex import gettext as __
 from flask_babelex import lazy_gettext as _
 from wtforms.validators import ValidationError
-from apiflask import abort as apiflask_abort
 
 from datetime import timedelta
-from babel.dates import format_timedelta as babel_format_timedelta
 
 from hiddifypanel.cache import cache
 from hiddifypanel.models import *
@@ -39,7 +31,7 @@ to_gig_d = 1000*1000*1000
 
 #     # run temporary_access.sh
 #     commander(Command.temporary_access, port=random_port)
-#     temp_admin_link = f"http://{hutils.ip.get_ip(4)}:{random_port}{get_admin_path()}"
+#     temp_admin_link = f"http://{hutils.network.get_ip(4)}:{random_port}{get_admin_path()}"
 #     g.temp_admin_link = temp_admin_link
 
 
@@ -75,155 +67,6 @@ def exec_command(cmd, cwd=None):
         subprocess.Popen(cmd.split(" "))  # run in background
     except Exception as e:
         print(e)
-
-
-def api_v1_auth(function):
-    def wrapper(*args, **kwargs):
-        a_uuid = kwargs.get('admin_uuid')
-        if not a_uuid or a_uuid != AdminUser.get_super_admin_uuid():
-            apiflask_abort(403, 'invalid request')
-        return function(*args, **kwargs)
-    return wrapper
-
-
-def current_account_api_key():
-    # TODO: send real apikey
-    return g.account.uuid
-
-
-def current_account_user_pass() -> Tuple[str, str]:
-    return g.account.username, g.account.password
-
-
-def is_api_call(req_path: str) -> bool:
-    return 'api/v1/' in req_path or 'api/v2/' in req_path
-
-
-def is_user_api_call() -> bool:
-    if request.blueprint and request.blueprint == 'api_user':
-        return True
-    user_api_call_format = '/api/v2/user/'
-    if user_api_call_format in request.path:
-        return True
-    return False
-
-
-def is_admin_api_call() -> bool:
-    if request.blueprint and request.blueprint == 'api_admin' or request.blueprint == 'api_v1':
-        return True
-    admin_api_call_format = '/api/v2/admin/'
-    if admin_api_call_format in request.path:
-        return True
-    return False
-
-
-def is_user_panel_call(deprecated_format=False) -> bool:
-    if request.blueprint and request.blueprint == 'client':
-        return True
-    if deprecated_format:
-        user_panel_url = f'/{hconfig(ConfigEnum.proxy_path)}/'
-    else:
-        user_panel_url = f'/{hconfig(ConfigEnum.proxy_path_client)}/'
-    if f'{request.path}'.startswith(user_panel_url) and "admin" not in f'{request.path}':
-        return True
-    return False
-
-
-def is_admin_panel_call(deprecated_format: bool = False) -> bool:
-    if request.blueprint and request.blueprint == 'admin':
-        return True
-    if deprecated_format:
-        if f'{request.path}'.startswith(f'/{hconfig(ConfigEnum.proxy_path)}/') and "admin" in f'{request.path}':
-            return True
-    elif f'{request.path}'.startswith(f'/{hconfig(ConfigEnum.proxy_path_admin)}/admin/'):
-        return True
-    return False
-
-
-def is_api_v1_call(endpoint=None) -> bool:
-    if (request.blueprint and 'api_v1' in request.blueprint):
-        return True
-    elif endpoint and 'api_v1' in endpoint:
-        return True
-    elif request.endpoint and 'api_v1' in request.endpoint:
-        return True
-
-    api_v1_path = f'{request.host}/{hconfig(ConfigEnum.proxy_path_admin)}/api/v1/{AdminUser.get_super_admin_uuid()}/'
-    if f'{request.host}{request.path}'.startswith(api_v1_path):
-        return True
-    return False
-
-
-def is_telegram_call() -> bool:
-    if request.endpoint and (request.endpoint == 'tgbot' or request.endpoint == 'send_msg'):
-        return True
-    if request.blueprint and request.blueprint == 'api_v1' and ('tgbot' in request.path or 'send_msg' in request.path):
-        return True
-    if '/tgbot/' in request.path or 'send_msg/' in request.path:
-        return True
-    return False
-
-
-def is_admin_home_call() -> bool:
-    admin_home = f'{request.host}/{hconfig(ConfigEnum.proxy_path_admin)}/admin/'
-    if f'{request.host}{request.path}' == admin_home:
-        return True
-    return False
-
-
-def is_login_call() -> bool:
-    return request.blueprint == 'common_bp'
-
-
-def is_admin_role(role: Role):
-    if not role:
-        return False
-    if role in {Role.super_admin, Role.admin, Role.agent}:
-        return True
-    return False
-
-
-def is_admin_proxy_path() -> bool:
-    proxy_path = g.get('proxy_path') or get_proxy_path_from_url(request.url)
-    return proxy_path in [hconfig(ConfigEnum.proxy_path_admin)] or (proxy_path in [hconfig(ConfigEnum.proxy_path)] and "/admin/" in request.path)
-
-
-def is_client_proxy_path() -> bool:
-    proxy_path = g.get('proxy_path') or get_proxy_path_from_url(request.url)
-    return proxy_path in [hconfig(ConfigEnum.proxy_path_client)] or (proxy_path in [hconfig(ConfigEnum.proxy_path)] and "/admin/" not in request.path)
-
-
-def proxy_path_validator(proxy_path):
-    # DEPRECATED PROXY_PATH HANDLED BY BACKWARD COMPATIBILITY MIDDLEWARE
-    # does not nginx handle proxy path validation?
-
-    if not proxy_path:
-        return apiflask_abort(400, 'invalid request')
-
-    dbg_mode = True if current_app.config['DEBUG'] else False
-    admin_proxy_path = hconfig(ConfigEnum.proxy_path_admin)
-    client_proxy_path = hconfig(ConfigEnum.proxy_path_client)
-    deprecated_path = hconfig(ConfigEnum.proxy_path)
-    if proxy_path == deprecated_path:
-        return
-
-    if proxy_path not in [admin_proxy_path, deprecated_path, client_proxy_path]:
-        apiflask_abort(400, 'invalid request')
-
-    if is_admin_panel_call() and proxy_path != admin_proxy_path:
-        apiflask_abort(400, 'invalid request')
-    if is_user_panel_call() and proxy_path != client_proxy_path:
-        apiflask_abort(400, 'invalid request')
-
-    if is_api_call(request.path):
-        if is_admin_api_call() and proxy_path != admin_proxy_path:
-            return apiflask_abort(400, Markup(f"Invalid Proxy Path <a href=/{admin_proxy_path}/admin>Admin Panel</a>")) if dbg_mode else apiflask_abort(400, 'invalid request')
-        if is_user_api_call() and proxy_path != client_proxy_path:
-            return apiflask_abort(400, Markup(f"Invalid Proxy Path <a href=/{client_proxy_path}/admin>User Panel</a>")) if dbg_mode else apiflask_abort(400, 'invalid request')
-
-
-def asset_url(path) -> str:
-    return f"/{g.proxy_path}/{path}"
 
 
 @cache.cache(ttl=300)
@@ -283,46 +126,6 @@ def quick_apply_users():
 # IP address
 
 
-def check_connection_to_remote(api_url):
-
-    path = f"{api_url}/api/v1/hello/"
-
-    try:
-        res = requests.get(path, verify=False, timeout=2).json()
-        return True
-
-    except:
-        return False
-
-
-def check_connection_for_domain(domain):
-
-    proxy_path = hconfig(ConfigEnum.proxy_path_admin)
-    admin_secret = hconfig(ConfigEnum.admin_secret)
-    path = f"{proxy_path}/{admin_secret}/api/v1/hello/"
-    try:
-        print(f"https://{domain}/{path}")
-        res = requests.get(
-            f"https://{domain}/{path}", verify=False, timeout=10).json()
-        return res['status'] == 200
-
-    except:
-        try:
-            print(f"http://{domain}/{path}")
-            res = requests.get(
-                f"http://{domain}/{path}", verify=False, timeout=10).json()
-            return res['status'] == 200
-        except:
-            try:
-                print(f"http://{hutils.ip.get_domain_ip(domain)}/{path}")
-                res = requests.get(
-                    f"http://{hutils.ip.get_domain_ip(domain)}/{path}", verify=False, timeout=10).json()
-                return res['status'] == 200
-            except:
-                return False
-    return True
-
-
 def get_html_user_link(model: BaseAccount, domain: Domain):
     is_cdn = domain.mode == DomainType.cdn if type(domain) == Domain else False
     res = ""
@@ -349,13 +152,13 @@ def validate_domain_exist(form, field):
     domain = field.data
     if not domain:
         return
-    dip = hutils.ip.get_domain_ip(domain)
+    dip = hutils.network.get_domain_ip(domain)
     if dip == None:
         raise ValidationError(
             _("Domain can not be resolved! there is a problem in your domain"))
 
 
-def reinstall_action(complete_install=False, domain_change=False, do_update=False):
+def reinstall_action(complete_install=False, domain_changed=False, do_update=False):
     from hiddifypanel.panel.admin.Actions import Actions
     action = Actions()
     if do_update:
@@ -378,18 +181,6 @@ def check_need_reset(old_configs, do=False):
         return hutils.flask.flash_config_success(restart_mode=restart_mode, domain_changed=False)
 
     return reinstall_action(complete_install=True, domain_changed=domain_changed)
-
-
-def format_timedelta(delta, add_direction=True, granularity="days"):
-    res = delta.days
-    locale = g.locale if g and hasattr(g, "locale") else hconfig(ConfigEnum.admin_lang)
-    if granularity == "days" and delta.days == 0:
-        res = _("0 - Last day")
-    elif delta.days < 7 or delta.days >= 60:
-        res = babel_format_timedelta(delta, threshold=1, add_direction=add_direction, locale=locale)
-    elif delta.days < 60:
-        res = babel_format_timedelta(delta, granularity="day", threshold=10, add_direction=add_direction, locale=locale)
-    return res
 
 
 def get_child(unique_id):
@@ -503,117 +294,6 @@ def set_db_from_json(json_data, override_child_id=None, set_users=True, set_doma
     db.session.commit()
 
 
-def get_warp_info():
-    proxies = dict(http='socks5://127.0.0.1:3000',
-                   https='socks5://127.0.0.1:3000')
-    res = requests.get("https://cloudflare.com/cdn-cgi/trace", proxies=proxies, timeout=1).text
-
-    dicres = {line.split("=")[0]: line.split("=")[0] for line in res}
-    return dicres
-
-
-def system_stats():
-    # CPU usage
-    cpu_percent = psutil.cpu_percent(interval=1)
-
-    # RAM usage
-    ram_stats = psutil.virtual_memory()
-    ram_used = ram_stats.used / 1024**3
-    ram_total = ram_stats.total / 1024**3
-
-    # Disk usage (in GB)
-    disk_stats = psutil.disk_usage('/')
-    disk_used = disk_stats.used / 1024**3
-    disk_total = disk_stats.total / 1024**3
-
-    hiddify_used = get_folder_size('/opt/hiddify-manager/') / 1024**3
-
-    # Network usage
-    net_stats = psutil.net_io_counters()
-    bytes_sent_cumulative = net_stats.bytes_sent
-    bytes_recv_cumulative = net_stats.bytes_recv
-    bytes_sent = net_stats.bytes_sent - getattr(system_stats, 'prev_bytes_sent', 0)
-    bytes_recv = net_stats.bytes_recv - getattr(system_stats, 'prev_bytes_recv', 0)
-    system_stats.prev_bytes_sent = net_stats.bytes_sent
-    system_stats.prev_bytes_recv = net_stats.bytes_recv
-
-    # Total connections and unique IPs
-    connections = psutil.net_connections()
-    total_connections = len(connections)
-    unique_ips = set([conn.raddr.ip for conn in connections if conn.status == 'ESTABLISHED' and conn.raddr])
-    total_unique_ips = len(unique_ips)
-
-    # Load average
-    num_cpus = psutil.cpu_count()
-    load_avg = [avg / num_cpus for avg in os.getloadavg()]
-    # Return the system information
-    return {
-        "cpu_percent": cpu_percent / num_cpus,
-        "ram_used": ram_used,
-        "ram_total": ram_total,
-        "disk_used": disk_used,
-        "disk_total": disk_total,
-        "hiddify_used": hiddify_used,
-        "bytes_sent": bytes_sent,
-        "bytes_recv": bytes_recv,
-        "bytes_sent_cumulative": bytes_sent_cumulative,
-        "bytes_recv_cumulative": bytes_recv_cumulative,
-        "net_sent_cumulative_GB": bytes_sent_cumulative / 1024**3,
-        "net_total_cumulative_GB": (bytes_sent_cumulative+bytes_recv_cumulative) / 1024**3,
-        "total_connections": total_connections,
-        "total_unique_ips": total_unique_ips,
-        "load_avg_1min": load_avg[0],
-        "load_avg_5min": load_avg[1],
-        "load_avg_15min": load_avg[2],
-        'num_cpus': num_cpus
-    }
-
-
-def top_processes():
-    # Get the process information
-    processes = [p for p in psutil.process_iter(['name', 'memory_full_info', 'cpu_percent']) if p.info['name'] != '']
-    num_cores = psutil.cpu_count()
-    # Calculate memory usage, RAM usage, and CPU usage for each process
-    memory_usage = {}
-    ram_usage = {}
-    cpu_usage = {}
-    for p in processes:
-        name = p.info['name']
-        if "python3" in name or "uwsgi" in name or 'flask' in name:
-            name = "Hiddify"
-        mem_info = p.info['memory_full_info']
-        if mem_info is None:
-            continue
-        mem_usage = mem_info.uss
-        cpu_percent = p.info['cpu_percent']/num_cores
-        if name in memory_usage:
-            memory_usage[name] += mem_usage / (1024 ** 3)
-            ram_usage[name] += mem_info.rss / (1024 ** 3)
-            cpu_usage[name] += cpu_percent
-        else:
-            memory_usage[name] = mem_usage / (1024 ** 3)
-            ram_usage[name] = mem_info.rss / (1024 ** 3)
-            cpu_usage[name] = cpu_percent
-
-    while len(cpu_usage) < 5:
-        cpu_usage[" "*len(cpu_usage)] = 0
-    while len(ram_usage) < 5:
-        ram_usage[" "*len(ram_usage)] = 0
-    while len(memory_usage) < 5:
-        memory_usage[" "*len(memory_usage)] = 0
-    # Sort the processes by memory usage, RAM usage, and CPU usage
-    top_memory = sorted(memory_usage.items(), key=lambda x: x[1], reverse=True)[:5]
-    top_ram = sorted(ram_usage.items(), key=lambda x: x[1], reverse=True)[:5]
-    top_cpu = sorted(cpu_usage.items(), key=lambda x: x[1], reverse=True)[:5]
-
-    # Return the top processes for memory usage, RAM usage, and CPU usage
-    return {
-        "memory": top_memory,
-        "ram": top_ram,
-        "cpu": top_cpu
-    }
-
-
 def get_domain_btn_link(domain):
     text = domain.alias or domain.domain
     color_cls = "info"
@@ -625,70 +305,14 @@ def get_domain_btn_link(domain):
     return res
 
 
-def get_random_domains(count=1, retry=3):
-    try:
-        irurl = "https://api.ooni.io/api/v1/measurements?probe_cc=IR&test_name=web_connectivity&anomaly=false&confirmed=false&failure=false&order_by=test_start_time&limit=1000"
-        # cnurl="https://api.ooni.io/api/v1/measurements?probe_cc=CN&test_name=web_connectivity&anomaly=false&confirmed=false&failure=false&order_by=test_start_time&limit=1000"
-        data_ir = requests.get(irurl).json()
-        # data_cn=requests.get(url).json()
-
-        domains = [urlparse(d['input']).netloc.lower() for d in data_ir['results'] if d['scores']['blocking_country'] == 0.0]
-        domains = [d for d in domains if not d.endswith(".ir") and not ".gov" in d]
-
-        return random.sample(domains, count)
-    except Exception as e:
-        print('Error, getting random domains... ', e, 'retrying...', retry)
-        if retry <= 0:
-            defdomains = ["fa.wikipedia.org", 'en.wikipedia.org', 'wikipedia.org', 'yahoo.com', 'en.yahoo.com']
-            print('Error, using default domains')
-            return random.sample(defdomains, count)
-        return get_random_domains(count, retry-1)
-
-# not used
-
-
-def is_domain_support_tls_13(domain):
-    context = ssl.create_default_context()
-    port = 433
-    with socket.create_connection((domain, port)) as sock:
-        with context.wrap_socket(sock, server_hostname=domain) as ssock:
-            return ssock.version() == "TLSv1.3"
-
-
-def is_domain_support_h2(sni, server=None):
-    try:
-
-        context = ssl.create_default_context(purpose=ssl.Purpose.SERVER_AUTH)
-        context.options |= (ssl.OP_NO_SSLv2 | ssl.OP_NO_SSLv3 | ssl.OP_NO_TLSv1 | ssl.OP_NO_TLSv1_1)
-        context.options |= ssl.OP_NO_COMPRESSION
-        context.set_ciphers("ECDHE+AESGCM:ECDHE+CHACHA20:DHE+AESGCM:DHE+CHACHA20")
-        context.set_alpn_protocols(["h2"])
-        start_time = time.monotonic()
-        with socket.create_connection((server or sni, 443), timeout=2) as sock:
-
-            with context.wrap_socket(sock, server_hostname=sni) as ssock:
-                elapsed_time = time.monotonic() - start_time
-                valid = ssock.version() == "TLSv1.3"
-                if valid:
-                    return int(max(1, elapsed_time*1000))
-                return False
-    except Exception as e:
-        print(f'{domain} {e}')
-        return False
-
-
-def is_domain_reality_friendly(domain):
-    return is_domain_support_h2(domain)
-
-
 def debug_flash_if_not_in_the_same_asn(domain):
-    from hiddifypanel.hutils.auto_ip_selector import ipasn
-    ipv4 = hutils.ip.get_ip(4)
-    dip = hutils.ip.get_domain_ip(domain)
+    from hiddifypanel.hutils.network.auto_ip_selector import IPASN
+    ipv4 = hutils.network.get_ip(4)
+    dip = hutils.network.get_domain_ip(domain)
     try:
-        if ipasn:
-            asn_ipv4 = ipasn.get(ipv4)
-            asn_dip = ipasn.get(dip)
+        if IPASN:
+            asn_ipv4 = IPASN.get(ipv4)
+            asn_dip = IPASN.get(dip)
             # country_ipv4= ipcountry.get(ipv4)
             # country_dip= ipcountry.get(dip)
             if asn_ipv4.get('autonomous_system_organization') != asn_dip.get('autonomous_system_organization'):
@@ -696,10 +320,6 @@ def debug_flash_if_not_in_the_same_asn(domain):
                                    f"<br> Server ASN={asn_ipv4.get('autonomous_system_organization','unknown')}<br>{domain}_ASN={asn_dip.get('autonomous_system_organization','unknown')}", "warning")
     except:
         pass
-
-
-def fallback_domain_compatible_with_servernames(fallback_domain, servername):
-    return is_domain_support_h2(servername, fallback_domain)
 
 
 def generate_x25519_keys():
@@ -719,35 +339,6 @@ def generate_x25519_keys():
     priv_str = base64.urlsafe_b64encode(priv_bytes).decode()[:-1]
 
     return {'private_key': priv_str, 'public_key': pub_str}
-
-
-def get_random_decoy_domain():
-    for i in range(10):
-        domains = get_random_domains(10)
-        for d in domains:
-            if is_domain_use_letsencrypt(d):
-                return d
-
-    return "bbc.com"
-
-
-def is_domain_use_letsencrypt(domain):
-    """
-    This function is used to filter the payment and big companies to 
-    avoid phishing detection
-    """
-    import ssl
-    import socket
-
-    # Create a socket connection to the website
-    with socket.create_connection((domain, 443)) as sock:
-        context = ssl.create_default_context()
-        with context.wrap_socket(sock, server_hostname=domain) as ssock:
-            certificate = ssock.getpeercert()
-
-    issuer = dict(x[0] for x in certificate.get("issuer", []))
-
-    return issuer['organizationName'] == "Let's Encrypt"
 
 
 def get_hostkeys(dojson=False):
@@ -787,97 +378,6 @@ def get_ed25519_private_public_pair():
     return priv_bytes.decode(), pub_bytes.decode()
 
 
-# def do_base_64(str):
-#     import base64
-#     resp = base64.b64encode(f'{str}'.encode("utf-8"))
-#     return resp.decode()
-
-
-def get_user_agent():
-    ua = __parse_user_agent(request.user_agent.string)
-
-    if ua.get('v', 1) < 3:
-        __parse_user_agent.invalidate_all()
-        ua = __parse_user_agent(request.user_agent.string)
-    return ua
-
-
-ua_version_pattern = re.compile(r'/(\d+\.\d+(\.\d+)?)')
-
-
-@cache.cache()
-def __parse_user_agent(ua):
-    # Example: SFA/1.8.0 (239; sing-box 1.8.0)
-    # Example: SFA/1.7.0 (239; sing-box 1.7.0)
-    # Example: HiddifyNext/0.13.6 (android) like ClashMeta v2ray sing-box
-
-    uaa = user_agents.parse(request.user_agent.string)
-
-    match = re.search(ua_version_pattern, request.user_agent.string)
-    generic_version = list(map(int, match.group(1).split('.'))) if match else [0, 0, 0]
-    res = {}
-    res['v'] = 3
-    res["is_bot"] = uaa.is_bot
-    res["is_browser"] = re.match('^Mozilla', ua, re.IGNORECASE) and True
-    res['os'] = uaa.os.family
-    res['os_version'] = uaa.os.version
-    res['is_clash'] = re.match('^(Clash|Stash)', ua, re.IGNORECASE) and True
-    res['is_clash_meta'] = re.match('^(Clash-verge|Clash-?Meta|Stash|NekoBox|NekoRay|Pharos|hiddify-desktop)', ua, re.IGNORECASE) and True
-    res['is_singbox'] = re.match('^(HiddifyNext|Dart|SFI|SFA)', ua, re.IGNORECASE) and True
-    res['is_hiddify'] = re.match('^(HiddifyNext)', ua, re.IGNORECASE) and True
-
-    if (res['is_singbox']):
-        res['singbox_version'] = generic_version
-
-    if ['is_hiddify']:
-        res['hiddify_version'] = generic_version
-        if generic_version[0] == 0 and generic_version[1] <= 14:
-            res['singbox_version'] = [1, 7, 0]
-        else:
-            res['singbox_version'] = [1, 8, 0]
-
-    res['is_v2ray'] = re.match('^(Hiddify|FoXray|Fair|v2rayNG|SagerNet|Shadowrocket|V2Box|Loon|Liberty)', ua, re.IGNORECASE) and True
-
-    if res['os'] == 'Other':
-        if re.match('^(FoXray|Fair|Shadowrocket|V2Box|Loon|Liberty)', ua, re.IGNORECASE):
-            res['os'] = 'iOS'
-            # res['os_version']
-
-    for a in ['Hiddify', 'FoXray', 'Fair', 'v2rayNG', 'SagerNet', 'Shadowrocket', 'V2Box', 'Loon', 'Liberty', 'Clash', 'Meta', 'Stash', 'SFI', 'SFA', 'HiddifyNext']:
-        if a.lower() in ua.lower():
-            res['app'] = a
-    if res["is_browser"]:
-        res['app'] = uaa.browser.family
-    return res
-
-
-def is_ssh_password_authentication_enabled():
-    if os.path.isfile('/etc/ssh/sshd_config'):
-        with open('/etc/ssh/sshd_config', 'r') as f:
-            for line in f.readlines():
-                line = line.strip()
-                if line.startswith('#'):
-                    continue
-                if re.search("^PasswordAuthentication\s+no", line, re.IGNORECASE):
-                    return False
-
-    return True
-
-
-@cache.cache(ttl=300)
-def get_direct_host_or_ip(prefer_version: int):
-    direct = Domain.query.filter(Domain.mode == DomainType.direct, Domain.sub_link_only == False).first()
-    if not (direct):
-        direct = Domain.query.filter(Domain.mode == DomainType.direct).first()
-    if direct:
-        direct = direct.domain
-    else:
-        direct = hutils.ip.get_ip(prefer_version)
-    if not direct:
-        direct = hutils.ip.get_ip(4 if prefer_version == 6 else 6)
-    return direct
-
-
 def get_account_panel_link(account: BaseAccount, host: str, is_https: bool = True, prefere_path_only: bool = False, child_id=0):
     basic_auth = False
 
@@ -892,12 +392,3 @@ def get_account_panel_link(account: BaseAccount, host: str, is_https: bool = Tru
     if not basic_auth:
         link += f'{account.uuid}/'
     return link
-
-
-def is_valid_uuid(val: str, version: int | None = None):
-    try:
-        uuid.UUID(val, version=version)
-    except:
-        return False
-
-    return True

@@ -9,7 +9,7 @@ from hiddifypanel.panel.admin.adminlte import AdminLTEModelView
 from flask_babelex import gettext as __
 from flask_babelex import lazy_gettext as _
 from hiddifypanel.panel import hiddify
-from flask import Markup, g
+from flask import Markup, g  # type: ignore
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_admin import Admin
@@ -69,8 +69,8 @@ class ParentDomainAdmin(AdminLTEModelView):
                       f'</a><a href="{admin_link}" class="btn btn-xs btn-info ltr" target="_blank">{model.domain}</a></div>')
 
     def _domain_ip(view, context, model, name):
-        dip = hutils.ip.get_domain_ip(model.domain)
-        myip = hutils.ip.get_ip(4)
+        dip = hutils.network.get_domain_ip(model.domain)
+        myip = hutils.network.get_ip(4)
         if myip == dip and model.mode == DomainType.direct:
             badge_type = ''
         elif dip and model.mode != DomainType.direct and myip != dip:
@@ -105,11 +105,11 @@ class ParentDomainAdmin(AdminLTEModelView):
     def on_model_change(self, form, model, is_created):
         model.domain = model.domain.lower()
 
-        dip = hutils.ip.get_domain_ip(model.domain)
+        dip = hutils.network.get_domain_ip(model.domain)
         if dip == None:
             raise ValidationError(
                 _("Domain can not be resolved! there is a problem in your domain"))
-        # if not hiddify.check_connection_for_domain(model.domain):
+        # if not hutils.network.check_connection_for_domain(model.domain):
         #     raise ValidationError(
         #         _("Domain is not correctly mapped to this server!"))
 
