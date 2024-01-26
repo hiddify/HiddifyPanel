@@ -72,9 +72,9 @@ def __create_hiddify_user_from_xui_values(id: str, values: Dict[str, Any]) -> Us
 
     user.usage_limit = values['max_usage_bytes']
     user.current_usage = values['current_usage_bytes']
-    user.telegram_id = str(values['telegram_id'])
+    user.telegram_id = int(values['telegram_id'])
     user.enable = values['enable']
-    user.comment = "imported from x-ui"
+    user.comment = "Imported from X-UI"
     user.admin = AdminUser.current_admin_or_owner()
 
     return user
