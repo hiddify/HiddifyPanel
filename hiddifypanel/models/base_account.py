@@ -24,7 +24,7 @@ class BaseAccount(db.Model, SerializerMixin, FlaskLoginUserMixin):  # type: igno
         return None
 
     def get_id(self) -> str | None:
-        return '{self.__class__.name}_{self.id if self.hasattr("id") else "-"}'
+        return f'{self.__class__.name}_{self.id if self.hasattr("id") else "-"}'
 
     def is_username_unique(self) -> bool:
         cls = self.__class__()

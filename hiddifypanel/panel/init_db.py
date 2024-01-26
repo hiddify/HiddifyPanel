@@ -27,8 +27,8 @@ def init_db():
     db_version = int(hconfig(ConfigEnum.db_version) or 0)
     if db_version == latest_db_version():
         return
-    execute("alter table user alter column telegram_id int;")
-    execute("alter table admin_user alter column telegram_id int;")
+    execute("alter table user alter column telegram_id bigint;")
+    execute("alter table admin_user alter column telegram_id bigint;")
     add_column(User.lang)
     add_column(AdminUser.lang)
     add_column(User.username)
