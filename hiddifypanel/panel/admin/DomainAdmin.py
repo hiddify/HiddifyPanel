@@ -187,7 +187,7 @@ class DomainAdmin(AdminLTEModelView):
 
             if model.mode == DomainType.direct and not domain_ip_is_same_as_panel:
                 hutils.flask.flash(
-                    __(message=f"Domain IP={dip} is not matched with your ip={', '.join(list(map(str, ipv4_list)))} which is required in direct mode"),
+                    __(f"Domain IP={dip} is not matched with your ip={', '.join(list(map(str, ipv4_list)))} which is required in direct mode"),
                     category='warning')
                 # raise ValidationError(_("Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode", server_ip=myip, domain_ip=dip))
 
