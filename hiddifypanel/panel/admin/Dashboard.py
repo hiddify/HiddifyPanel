@@ -23,7 +23,7 @@ class Dashboard(FlaskView):
     #         abort(403, _("Access Denied!"))
 
     #     return jsonify(dict(
-    #         stats={'system': hiddify.system_stats(), 'top5': hiddify.top_processes()},
+    #         stats={'system': hutils.system.system_stats(), 'top5': hutils.system.top_processes()},
     #         usage_history=DailyUsage.get_daily_usage_stats(admin_id)
     #     ))
 
@@ -53,7 +53,7 @@ class Dashboard(FlaskView):
                     if d.mode == DomainType.fake:
                         continue
                     remote = hiddify.get_account_panel_link(g.account, d.domain, child_id=c.id)
-                    d.is_active = hiddify.check_connection_to_remote(remote)
+                    d.is_active = hutils.network.check_connection_to_remote(remote)
                     if d.is_active:
                         c.is_active = True
 
@@ -77,13 +77,13 @@ class Dashboard(FlaskView):
             d = domains[0]
             hutils.flask.flash((_('It seems that you have not created any users yet. Default user link: %(default_link)s',
                                default_link=hiddify.get_html_user_link(def_user, d))), 'secondary')  # type: ignore
-        if hiddify.is_ssh_password_authentication_enabled():
+        if hutils.network.is_ssh_password_authentication_enabled():
             hutils.flask.flash(_('ssh.password-login.warning.'), "warning")  # type: ignore
 
     # except:
     #     hutils.flask.flash((_('Error!!!')),'info')
 
-        stats = {'system': hiddify.system_stats(), 'top5': hiddify.top_processes()}
+        stats = {'system': hutils.system.system_stats(), 'top5': hutils.system.top_processes()}
         return render_template('index.html', stats=stats, usage_history=DailyUsage.get_daily_usage_stats(admin_id, child_id), childs=childs)
 
     @login_required(roles={Role.super_admin})

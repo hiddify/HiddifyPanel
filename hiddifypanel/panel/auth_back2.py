@@ -36,12 +36,12 @@ class CustumLoginManager(LoginManager):
 
         account_id = ''
         # Load user from Flask Session
-        if hiddify.is_api_call(request.path):
-            if hiddify.is_user_api_call():
+        if hutils.flask.is_api_call(request.path):
+            if hutils.flask.is_user_api_call():
                 account_id = session.get("_user_id")
             else:
                 account_id = session.get("_admin_id")
-        elif hiddify.is_user_panel_call():
+        elif hutils.flask.is_user_panel_call():
             account_id = session.get("_user_id")
         else:
             account_id = session.get("_admin_id")
@@ -76,19 +76,19 @@ class CustumLoginManager(LoginManager):
         account = None
         is_api_call = False
 
-        if hiddify.is_api_call(request.path):
+        if hutils.flask.is_api_call(request.path):
             if apikey := hutils.auth.get_apikey_from_auth_header(auth_header):
                 account = User.by_uuid(apikey) or AdminUser.by_uuid(apikey)
                 is_api_call = True
         else:
             uname = request.authorization.username
             pword = request.authorization.password
-            account = AdminUser.by_username_password(uname, pword) if hiddify.is_admin_proxy_path() else User.by_username_password(uname, pword)
+            account = AdminUser.by_username_password(uname, pword) if hutils.flask.is_admin_proxy_path() else User.by_username_password(uname, pword)
 
         if account:
             g.account = account
             # g.account_uuid = account.uuid
-            g.is_admin = hiddify.is_admin_role(account.role)  # type: ignore
+            g.is_admin = hutils.flask.is_admin_role(account.role)  # type: ignore
             login_user(account)
         # else:
         #     print("logout")
@@ -161,7 +161,7 @@ def init_app(app):
     def auth_from_url():
         account = None
 
-        is_admin_path = hiddify.is_admin_proxy_path()
+        is_admin_path = hutils.flask.is_admin_proxy_path()
         next_url = None
         print("--------1")
         if auth_header := request.headers.get("Authorization"):
@@ -187,7 +187,7 @@ def init_app(app):
         if account:
             g.account = account
             # g.account_uuid = account.uuid
-            g.is_admin = hiddify.is_admin_role(account.role)  # type: ignore
+            g.is_admin = hutils.flask.is_admin_role(account.role)  # type: ignore
             login_user(account, force=True)
             print("loggining in")
             if next_url is not None:
@@ -199,11 +199,11 @@ def init_app(app):
 
     @login_manager.user_loader
     def cookie_auth(id: str) -> User | AdminUser | None:
-        # if not hiddify.is_api_call(request.path):
+        # if not hutils.flask.is_api_call(request.path):
         #     # if request.headers.get("Authorization"):
         #     #     return header_auth(request)
         #     # for handle new login
-        #     if hiddify.is_login_call():
+        #     if hutils.flask.is_login_call():
         #         # print("DDDDDDDDDDDDDDD-")
         #         return header_auth(request)
 
@@ -220,7 +220,7 @@ def init_app(app):
         if account:
             g.account = account
             # g.account_uuid = account.uuid
-            g.is_admin = hiddify.is_admin_role(account.role)
+            g.is_admin = hutils.flask.is_admin_role(account.role)
         return account
 
     @login_manager.unauthorized_handler

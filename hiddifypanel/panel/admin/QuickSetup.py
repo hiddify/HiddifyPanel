@@ -28,8 +28,8 @@ class QuickSetup(FlaskView):
         return render_template(
             'quick_setup.html', lang_form=get_lang_form(),
             form=get_quick_setup_form(),
-            ipv4=hutils.ip.get_ip(4),
-            ipv6=hutils.ip.get_ip(6),
+            ipv4=hutils.network.get_ip(4),
+            ipv6=hutils.network.get_ip(6),
             admin_link=admin_link(),
             show_domain_info=True)
 
@@ -57,12 +57,12 @@ class QuickSetup(FlaskView):
                 'quick_setup.html', form=get_quick_setup_form(True),
                 lang_form=get_lang_form(),
                 admin_link=admin_link(),
-                ipv4=hutils.ip.get_ip(4),
-                ipv6=hutils.ip.get_ip(6),
+                ipv4=hutils.network.get_ip(4),
+                ipv6=hutils.network.get_ip(6),
                 show_domain_info=False)
 
         if quick_form.validate_on_submit():
-            Domain.query.filter(Domain.domain == f'{hutils.ip.get_ip(4)}.sslip.io').delete()
+            Domain.query.filter(Domain.domain == f'{hutils.network.get_ip(4)}.sslip.io').delete()
             db.session.add(Domain(domain=quick_form.domain.data.lower(), mode=DomainType.direct))
             hiddify.bulk_register_configs([
                 # {"key": ConfigEnum.telegram_enable, "value": quick_form.enable_telegram.data == True},
@@ -81,8 +81,8 @@ class QuickSetup(FlaskView):
             hutils.flask.flash(_('config.validation-error'), 'danger')
         return render_template(
             'quick_setup.html', form=quick_form, lang_form=get_lang_form(True),
-            ipv4=hutils.ip.get_ip(4),
-            ipv6=hutils.ip.get_ip(6),
+            ipv4=hutils.network.get_ip(4),
+            ipv6=hutils.network.get_ip(6),
             admin_link=admin_link(),
             show_domain_info=False)
 
@@ -134,11 +134,11 @@ def get_quick_setup_form(empty=False):
 
 def validate_domain(form, field):
     domain = field.data
-    dip = hutils.ip.get_domain_ip(domain)
+    dip = hutils.network.get_domain_ip(domain)
     if dip == None:
         raise ValidationError(_("Domain can not be resolved! there is a problem in your domain"))
 
-    myip = hutils.ip.get_ip(4)
+    myip = hutils.network.get_ip(4)
     if dip and myip != dip:
         raise ValidationError(_("Domain (%(domain)s)-> IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode",
                               server_ip=myip, domain_ip=dip, domain=domain))
@@ -146,4 +146,4 @@ def validate_domain(form, field):
 
 def admin_link():
     domains = get_panel_domains()
-    return hiddify.get_account_panel_link(g.account, domains[0] if len(domains)else hutils.ip.get_ip(4))
+    return hiddify.get_account_panel_link(g.account, domains[0] if len(domains)else hutils.network.get_ip(4))

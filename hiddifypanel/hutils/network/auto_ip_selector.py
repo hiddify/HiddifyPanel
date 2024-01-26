@@ -2,10 +2,11 @@ import os
 import random
 import re
 import sys
+from typing import List, Union
 from hiddifypanel import hutils
 
 import maxminddb
-from flask import request, flash
+from flask import request
 from flask_babelex import gettext as _
 
 from hiddifypanel.models import *
@@ -36,15 +37,15 @@ apt.ircf.space		APT
 """
 
 try:
-    ipasn = maxminddb.open_database('GeoLite2-ASN.mmdb') if os.path.exists('GeoLite2-ASN.mmdb') else {}
-    ipcountry = maxminddb.open_database('GeoLite2-Country.mmdb') if os.path.exists('GeoLite2-Country.mmdb') else {}
-    ipcity = maxminddb.open_database('GeoLite2-City.mmdb') if os.path.exists('GeoLite2-City.mmdb') else {}
+    IPASN = maxminddb.open_database('GeoLite2-ASN.mmdb') if os.path.exists('GeoLite2-ASN.mmdb') else {}
+    IPCOUNTRY = maxminddb.open_database('GeoLite2-Country.mmdb') if os.path.exists('GeoLite2-Country.mmdb') else {}
+    __ipcity = maxminddb.open_database('GeoLite2-City.mmdb') if os.path.exists('GeoLite2-City.mmdb') else {}
 except Exception as e:
     print("Error can not load maxminddb", file=sys.stderr)
-    ipasn = {}
-    ipcountry = {}
+    IPASN = {}
+    IPCOUNTRY = {}
 
-asn_map = {
+__asn_map = {
     '58224': 'MKH',
     '197207': 'MCI',
     '12880': 'ITC',
@@ -66,63 +67,63 @@ asn_map = {
 }
 
 
-def get_asn_short_name(user_ip=None):
+def get_asn_short_name(user_ip: str = '') -> str:
     user_ip = user_ip or get_real_user_ip()
     try:
         asn_id = get_asn_id(user_ip)
-        return asn_map.get(str(asn_id), "unknown")
+        return __asn_map.get(str(asn_id), "unknown")
     except:
         return "unknown"
 
 
-def get_asn_id(user_ip=None):
+def get_asn_id(user_ip: str = '') -> str:
     user_ip = user_ip or get_real_user_ip()
     try:
-        asnres = ipasn.get(user_ip)
+        asnres = IPASN.get(user_ip)
         return asnres['autonomous_system_number']
     except:
         return "unknown"
 
 
-def get_country(user_ip=None):
+def get_country(user_ip: str = '') -> Union[dict, str]:
     try:
         user_ip = user_ip or get_real_user_ip()
-        return (ipcountry.get(user_ip) or {}).get('country', {}).get('iso_code', 'unknown')
+        return (IPCOUNTRY.get(user_ip) or {}).get('country', {}).get('iso_code', 'unknown')
     except:
         return 'unknown'
 
 
-def get_city(user_ip=None):
+def get_city(user_ip: str = '') -> Union[dict, str]:
     try:
         user_ip = user_ip or get_real_user_ip()
-        res = ipcity.get(user_ip)
+        res = __ipcity.get(user_ip)
         return {'city': res.get('city').get('name'), 'latitude': res.get('latitude'), 'longitude': res.get('longitude'), 'accuracy_radius': res.get('accuracy_radius')}
     except:
         return 'unknown'
 
 
-def get_real_user_ip_debug(user_ip=None):
+def get_real_user_ip_debug(user_ip: str = '') -> str:
     user_ip = user_ip or get_real_user_ip()
-    asnres = ipasn.get(user_ip) or {}
+    asnres = IPASN.get(user_ip) or {}
     asn = f"{asnres.get('autonomous_system_number','unknown')}" if asnres else "unknown"
     asn_dscr = f"{asnres.get('autonomous_system_organization','unknown')}" if asnres else "unknown"
     asn_short = get_asn_short_name(user_ip)
     country = get_country(user_ip)
-    default = get_host_base_on_asn(DEFAULT_IPs, asn_short).replace(".ircf.space", "")
+    default = __get_host_base_on_asn(DEFAULT_IPs, asn_short).replace(".ircf.space", "")
     return f'{user_ip} {country} {asn} {asn_short} {"ERROR" if asn_short=="unknown" else ""} fullname={asn_dscr} default:{default}'
 
 
-def get_real_user_ip():
+def get_real_user_ip() -> str:
     user_ip = request.remote_addr
     for header in ['CF-Connecting-IP', 'ar-real-ip', 'X-Forwarded-For', "X-Real-IP"]:
         if header in request.headers:
             user_ip = request.headers.get(header)
             break
 
-    return user_ip
+    return str(user_ip)
 
 
-def get_host_base_on_asn(ips, asn_short):
+def __get_host_base_on_asn(ips: Union[str, List[str]], asn_short: str) -> str:
     if type(ips) == str:
         ips = re.split('[ \t\r\n;,]+', ips.strip())
     valid_hosts = [ip for ip in ips if len(ip) > 5]
@@ -130,7 +131,7 @@ def get_host_base_on_asn(ips, asn_short):
     if len(ips) % 2 != 0 or len(valid_hosts) == 0:
         hutils.flask.flash(_("Error! auto cdn ip can not be find, please contact admin."))
         if len(valid_hosts) == 0:
-            return
+            return ''
 
     all_hosts = []
     for i in range(0, len(ips), 2):
@@ -145,7 +146,7 @@ def get_host_base_on_asn(ips, asn_short):
     return selected
 
 
-def get_clean_ip(ips, resolve=False, default_asn=None):
+def get_clean_ip(ips: Union[str, List[str]], resolve: bool = False, default_asn: str = '') -> str:
     if not ips:
         ips = DEFAULT_IPs
 
@@ -154,15 +155,15 @@ def get_clean_ip(ips, resolve=False, default_asn=None):
     asn_short = get_asn_short_name(user_ip)
     country = get_country(user_ip)
     # print("Real user ip",get_real_user_ip_debug(), user_ip,asn_short,country)
-    is_morteza_format = any([format for format in asn_map.values() if format in ips])
+    is_morteza_format = any([format for format in __asn_map.values() if format in ips])
     # print("IPs",ips)
     if is_morteza_format:
         if country.lower() != hconfig(ConfigEnum.country) and default_asn:
             asn_short = default_asn
-        selected_server = get_host_base_on_asn(ips, asn_short)
+        selected_server = __get_host_base_on_asn(ips, asn_short)
     else:
         selected_server = random.sample(ips, 1)[0]
     # print("selected_server",selected_server)
     if resolve:
-        selected_server = hutils.ip.get_domain_ip(selected_server) or selected_server
-    return selected_server
+        selected_server = hutils.network.get_domain_ip(selected_server) or selected_server
+    return str(selected_server)

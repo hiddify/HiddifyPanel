@@ -141,7 +141,7 @@ def init_app(app):
         # print("before_request")
         account = None
 
-        is_admin_path = hiddify.is_admin_proxy_path()
+        is_admin_path = hutils.flask.is_admin_proxy_path()
         next_url = None
 
         if g.uuid:
@@ -185,7 +185,7 @@ def init_app(app):
         if account:
             g.__account_store = account
             # g.account_uuid = account.uuid
-            g.is_admin = hiddify.is_admin_role(account.role)  # type: ignore
+            g.is_admin = hutils.flask.is_admin_role(account.role)  # type: ignore
             login_user(account, force=True)
             # print("loggining in")
             if next_url is not None and g.user_agent['is_browser'] and ".webmanifest" not in request.path:

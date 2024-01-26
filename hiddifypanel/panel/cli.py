@@ -18,7 +18,7 @@ def drop_db():
 
 def downgrade():
     if (hconfig(ConfigEnum.db_version) >= "49"):
-        set_hconfig(ConfigEnum.db_version, 42, commit=False)
+        set_hconfig(ConfigEnum.db_version, '42', commit=False)
         StrConfig.query.filter(StrConfig.key.in_([ConfigEnum.tuic_enable, ConfigEnum.tuic_port, ConfigEnum.hysteria_enable,
                                ConfigEnum.hysteria_port, ConfigEnum.ssh_server_enable, ConfigEnum.ssh_server_port, ConfigEnum.ssh_server_redis_url])).delete()
         Proxy.query.filter(Proxy.l3.in_([ProxyL3.ssh, ProxyL3.h3_quic, ProxyL3.custom])).delete()
@@ -60,7 +60,7 @@ def all_configs():
     sslip_domains = [d.domain for d in domains if "sslip.io" in d.domain]
 
     configs['hconfigs']['first_setup'] = def_user != None and len(sslip_domains) > 0
-    server_ip = hutils.ip.get_ip(4)
+    server_ip = hutils.network.get_ip(4)
     owner = AdminUser.get_super_admin()
 
     configs['admin_path'] = hiddify.get_account_panel_link(owner, server_ip, is_https=False, prefere_path_only=True)
@@ -85,7 +85,7 @@ def test():
 
 def admin_links():
 
-    server_ip = hutils.ip.get_ip(4)
+    server_ip = hutils.network.get_ip(4)
     owner = AdminUser.get_super_admin()
 
     admin_links = f"Not Secure (do not use it - only if others not work):\n   {hiddify.get_account_panel_link(owner, server_ip,is_https=True)}'\n"
@@ -105,7 +105,8 @@ def admin_links():
 def admin_path():
     admin = AdminUser.get_super_admin()
     # WTF is the owner and server_id?
-    print(hiddify.get_account_panel_link(owner, server_ip, prefere_path_only=True))
+    domain = get_panel_domains()[0]
+    print(hiddify.get_account_panel_link(admin, domain, prefere_path_only=True))
 
 
 def hysteria_domain_port():

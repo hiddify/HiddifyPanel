@@ -3,7 +3,7 @@ from hiddifypanel.panel.auth import login_required
 import hiddifypanel.panel.auth as auth
 from hiddifypanel.models import *
 import re
-from flask import Markup, g
+from flask import Markup, g  # type: ignore
 from flask_babelex import gettext as __
 from flask_babelex import lazy_gettext as _
 from hiddifypanel.panel.run_commander import Command, commander
@@ -97,8 +97,8 @@ class DomainAdmin(AdminLTEModelView):
             f'</a><a href="{admin_link}" class="btn btn-xs btn-info ltr" target="_blank">{model.domain}</a></div>')
 
     def _domain_ip(view, context, model, name):
-        dip = hutils.ip.get_domain_ip(model.domain)
-        myip = hutils.ip.get_ip(4)
+        dip = hutils.network.get_domain_ip(model.domain)
+        myip = hutils.network.get_ip(4)
         if myip == dip and model.mode == DomainType.direct:
             badge_type = ''
         elif dip and model.mode != DomainType.direct and myip != dip:
@@ -146,8 +146,8 @@ class DomainAdmin(AdminLTEModelView):
             if td.servernames and (model.domain in td.servernames.split(",")):
                 raise ValidationError(_("You have used this domain in: ")+_(f"config.reality_server_names.label")+" in " + td.domain)
 
-        ipv4_list = hutils.ip.get_ips(4)
-        ipv6_list = hutils.ip.get_ips(6)
+        ipv4_list = hutils.network.get_ips(4)
+        ipv6_list = hutils.network.get_ips(6)
 
         if not ipv4_list and not ipv6_list:
             raise ValidationError(_("Couldn't find your ip addresses"))
@@ -172,7 +172,7 @@ class DomainAdmin(AdminLTEModelView):
             hutils.flask.flash(__("Using alias with special charachters may cause problem in some clients like FairVPN."), 'warning')
         #     raise ValidationError(_("You have to add your cloudflare api key to use this feature: "))
 
-        dip = hutils.ip.get_domain_ip(model.domain)
+        dip = hutils.network.get_domain_ip(model.domain)
         if model.sub_link_only:
             if dip == None:
                 raise ValidationError(_("Domain can not be resolved! there is a problem in your domain"))
@@ -187,7 +187,7 @@ class DomainAdmin(AdminLTEModelView):
 
             if model.mode == DomainType.direct and not domain_ip_is_same_as_panel:
                 hutils.flask.flash(
-                    __(message=f"Domain IP={dip} is not matched with your ip={', '.join(list(map(str, ipv4_list)))} which is required in direct mode"),
+                    __(f"Domain IP={dip} is not matched with your ip={', '.join(list(map(str, ipv4_list)))} which is required in direct mode"),
                     category='warning')
                 # raise ValidationError(_("Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode", server_ip=myip, domain_ip=dip))
 
@@ -220,7 +220,7 @@ class DomainAdmin(AdminLTEModelView):
 
         if model.mode == DomainType.reality:
             model.servernames = (model.domain).lower()
-            if not hiddify.is_domain_reality_friendly(model.domain):
+            if not hutils.network.is_domain_reality_friendly(model.domain):
                 # hutils.flask.flash(_("Domain is not REALITY friendly!")+" "+d,'error')
                 # return render_template('config.html', form=form)
                 raise ValidationError(_("Domain is not REALITY friendly!")+" "+model.domain)
@@ -235,7 +235,7 @@ class DomainAdmin(AdminLTEModelView):
                     if not d:
                         continue
 
-                    if not hiddify.is_domain_reality_friendly(d):
+                    if not hutils.network.is_domain_reality_friendly(d):
                         # hutils.flask.flash(_("Domain is not REALITY friendly!")+" "+d,'error')
                         # return render_template('config.html', form=form)
                         raise ValidationError(_("Domain is not REALITY friendly!")+" "+d)
@@ -247,9 +247,8 @@ class DomainAdmin(AdminLTEModelView):
                     raise ValidationError(_("REALITY Fallback domain is not compaitble with server names!")+" "+d+" != "+model.domain)
 
         if (model.cdn_ip):
-            from hiddifypanel.hutils import auto_ip_selector
             try:
-                auto_ip_selector.get_clean_ip(str(model.cdn_ip))
+                hutils.network.auto_ip_selector.get_clean_ip(str(model.cdn_ip))
             except:
                 raise ValidationError(_("Error in auto cdn format"))
 

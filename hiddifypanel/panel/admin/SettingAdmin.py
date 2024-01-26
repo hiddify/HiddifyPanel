@@ -3,7 +3,7 @@ import flask_babel
 import flask_babelex
 from flask_babelex import lazy_gettext as _
 # from flask_babelex import gettext as _
-from flask import render_template, Markup, url_for, g
+from flask import render_template, Markup, url_for, g  # type: ignore
 from flask import current_app as app
 from hiddifypanel import hutils
 from hiddifypanel.panel.auth import login_required
@@ -19,7 +19,6 @@ from flask_wtf import FlaskForm
 from hiddifypanel.models import BoolConfig, StrConfig, ConfigEnum, hconfig, ConfigCategory
 from hiddifypanel.models import *
 from hiddifypanel.panel.database import db
-from hiddifypanel.panel.hiddify import get_random_domains
 from hiddifypanel.panel import hiddify, custom_widgets
 
 
@@ -78,13 +77,13 @@ class SettingAdmin(FlaskView):
 
             merged_configs = {**old_configs, **changed_configs}
             if len(set([merged_configs[ConfigEnum.proxy_path], merged_configs[ConfigEnum.proxy_path_client], merged_configs[ConfigEnum.proxy_path_admin]])) != 3:
-                hutils.flask.flash(_("ProxyPath is already used! use different proxy path"), 'error')#type: ignore
+                hutils.flask.flash(_("ProxyPath is already used! use different proxy path"), 'error')  # type: ignore
                 return render_template('config.html', form=form)
             # for k in [ConfigEnum.reality_server_names,ConfigEnum.reality_fallback_domain]:
             #     v=merged_configs[k]
             #     for d in v.split(","):
             #         if not d:continue
-            #         if not hiddify.is_domain_reality_friendly(d):
+            #         if not hutils.network.is_domain_reality_friendly(d):
             #             hutils.flask.flash(_("Domain is not REALITY friendly!")+" "+d,'error')
             #             return render_template('config.html', form=form)
             #         hiddify.debug_flash_if_not_in_the_same_asn(d)
@@ -110,7 +109,7 @@ class SettingAdmin(FlaskView):
             if old_configs[ConfigEnum.admin_lang] != hconfig(ConfigEnum.admin_lang):
                 form = get_config_form()
         else:
-            hutils.flask.flash(_('config.validation-error'), 'danger')#type: ignore
+            hutils.flask.flash(_('config.validation-error'), 'danger')  # type: ignore
 
         return reset_action or render_template('config.html', form=form)
 
@@ -239,7 +238,7 @@ def get_config_form():
                         ) if cc.key != c.key and "fakedomain" in cc.key and cc.key != ConfigEnum.decoy_domain], _("config.Domain already used")))
                     render_kw['required'] = ""
                     if len(c.value) < 3:
-                        c.value = get_random_domains(1)[0]
+                        c.value = hutils.network.get_random_domains(1)[0]
                 # if c.key ==ConfigEnum.reality_short_ids:
                 #     extra_info=f" <a target='_blank' href='{url_for('admin.Actions:get_some_random_reality_friendly_domain',test_domain=c.value)}'>"+_('Example Domains')+"</a>"
                 # if c.key ==ConfigEnum.reality_server_names:
