@@ -25,6 +25,7 @@ class ProxyCDN(StrEnum):
     CDN = auto()
     direct = auto()
     Fake = auto()
+    relay = auto()
 
 
 class ProxyProto(StrEnum):
@@ -38,6 +39,7 @@ class ProxyProto(StrEnum):
     tuic = auto()
     # hysteria = auto()
     hysteria2 = auto()
+    wireguard = auto()
 
 
 class ProxyL3(StrEnum):
@@ -49,6 +51,7 @@ class ProxyL3(StrEnum):
     http = auto()
     kcp = auto()
     ssh = auto()
+    udp = auto()
     custom = auto()
 
 

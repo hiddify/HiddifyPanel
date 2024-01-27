@@ -86,7 +86,7 @@ def get_global_config_form(empty=False):
         if not cf.key.endswith("_enable"):
             continue
         field = SwitchField(_(f'config.{cf.key}.label'), default=cf.value, description=_(f'config.{cf.key}.description'))
-        setattr(DynamicForm, cf.key,  field)
+        setattr(DynamicForm, f'{cf.key}',  field)
     setattr(DynamicForm, "submit_global", wtf.fields.SubmitField(_('Submit')))
     if empty:
         return DynamicForm(None)

@@ -161,7 +161,6 @@ def get_config_form():
             continue
 
         cat_configs = [c for c in ConfigEnum if c.category() == cat and (not is_parent or c.show_in_parent())]
-
         if len(cat_configs) == 0:
             continue
 
@@ -285,7 +284,7 @@ def get_config_form():
                     extra_info = f" <a href='{url_for('admin.Actions:change_reality_keys')}'>{_('Change')}</a>"
                 field = wtf.fields.StringField(_(f'config.{c.key}.label'), validators, default=c.value,
                                                description=_(f'config.{c.key}.description')+extra_info, render_kw=render_kw)
-            setattr(CategoryForm, c.key, field)
+            setattr(CategoryForm, f'{c.key}', field)
 
         multifield = wtf.fields.FormField(CategoryForm, Markup('<i class="fa-solid fa-plus"></i>&nbsp'+_(f'config.{cat}.label')))
 

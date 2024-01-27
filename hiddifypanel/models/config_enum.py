@@ -111,6 +111,9 @@ class __BaseConfigEnum(_ConfigDscr, Enum):
     def __neq__(self, other):
         return not self.__eq__(other)
 
+    def endswith(self, suffix):
+        return f'{self}'.endswith(suffix)
+
 
 class ConfigEnum(__BaseConfigEnum):
     wireguard_enable = _BoolConfigDscr(ConfigCategory.wireguard, ApplyMode.apply)
