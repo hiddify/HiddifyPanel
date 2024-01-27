@@ -1,18 +1,16 @@
-
-from typing import Tuple
-from urllib.parse import urlparse
 from flask import current_app, flash as flask_flash, g, request
-from flask import url_for, Markup  # type: ignore
-from flask_babelex import lazy_gettext as _
 from apiflask import abort as apiflask_abort
+from flask_babel import lazy_gettext as _
+from flask import url_for, Markup  # type: ignore
+from urllib.parse import urlparse
+import user_agents
+import re
 
 from hiddifypanel.cache import cache
 from hiddifypanel.models.admin import AdminUser
 from hiddifypanel.models.config import hconfig
 from hiddifypanel.models.config_enum import ConfigEnum
 from hiddifypanel.models.role import Role
-import user_agents
-import re
 
 
 def flash(message: str, category: str = "message"):

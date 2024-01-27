@@ -4,14 +4,15 @@ from wtforms.validators import Regexp
 from hiddifypanel.models import *
 from wtforms.validators import Regexp, ValidationError
 from .adminlte import AdminLTEModelView
-from flask_babelex import gettext as __
-from flask_babelex import lazy_gettext as _
-from hiddifypanel.panel import hiddify
+from flask_babel import lazy_gettext as _
+from wtforms.validators import Regexp
+from flask_babel import gettext as __
 from flask import Markup, request  # type: ignore
 from flask import g
 import datetime
 from wtforms import SelectField
 import hiddifypanel.panel.auth as auth
+from hiddifypanel.panel import hiddify
 
 
 class AdminModeField(SelectField):

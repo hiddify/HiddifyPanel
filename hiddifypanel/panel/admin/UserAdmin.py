@@ -3,14 +3,15 @@ import datetime
 import uuid
 from apiflask import abort
 from flask_bootstrap import SwitchField
-from flask_babelex import gettext as __
+from flask_babel import gettext as __
 from .adminlte import AdminLTEModelView
 from wtforms.validators import NumberRange
-from flask_babelex import lazy_gettext as _
+from flask_babel import lazy_gettext as _
 from flask import Markup, g, request, url_for  # type: ignore
 from wtforms.validators import Regexp, ValidationError
 from flask import current_app
 
+import hiddifypanel
 from hiddifypanel.models import *
 from hiddifypanel.drivers import user_driver
 from hiddifypanel.panel import hiddify, custom_widgets

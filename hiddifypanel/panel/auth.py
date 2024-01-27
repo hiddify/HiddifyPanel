@@ -1,12 +1,9 @@
-from flask_login import LoginManager, current_user, user_accessed, user_logged_in,  COOKIE_NAME, AUTH_HEADER_NAME, logout_user
+
 from flask import g, redirect, request, session, url_for
 from flask_login.utils import _get_user
-from flask import current_app
 from functools import wraps
-from apiflask import abort
 from hiddifypanel.models import *
-from hiddifypanel.models import AdminUser, User, Role, AccountType
-import hiddifypanel.panel.hiddify as hiddify
+from hiddifypanel.models import AdminUser, User, Role
 from hiddifypanel import hutils
 
 from werkzeug.local import LocalProxy
@@ -22,7 +19,7 @@ class AnonymousAccount(BaseAccount):
         return None
 
     @property
-    def lang(self) -> Lang:
+    def lang(self) -> Lang | None:
         return None
 
     @property

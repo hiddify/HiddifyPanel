@@ -24,7 +24,7 @@ class MTProxiesAPI(MethodView):
     @app.output(MtproxySchema(many=True))
     def get(self):
         # check mtproxie is enable
-        if not hconfig(ConfigEnum.telegram_enable, g.account.uuid):
+        if not hconfig(ConfigEnum.telegram_enable):
             abort(status_code=404, message="Telegram mtproxy is not enable")
         # get domains
         c = get_common_data(g.account.uuid, 'new')

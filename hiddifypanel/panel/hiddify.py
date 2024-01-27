@@ -1,16 +1,14 @@
 import glob
-import uuid
 import json
 import subprocess
 from datetime import datetime
 from typing import Tuple
 from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric import x25519
-from flask import current_app, g, request, Markup  # type: ignore
-from flask_babelex import gettext as __
-from flask_babelex import lazy_gettext as _
+from flask import current_app
 from wtforms.validators import ValidationError
-
+from flask_babel import lazy_gettext as _
+from flask_babel import gettext as __
 from datetime import timedelta
 
 from hiddifypanel.cache import cache

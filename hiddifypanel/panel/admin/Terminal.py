@@ -1,9 +1,9 @@
 # #!/usr/bin/env python3
 # from hiddifypanel.panel.database import db
 # import uuid
-# from flask_babelex import gettext as _
+# from flask_babel import gettext as _
 # from flask_bootstrap import SwitchField
-# # from flask_babelex import gettext as _
+# # from flask_babel import gettext as _
 # import wtforms as wtf
 # from flask_wtf import FlaskForm
 # import pathlib
@@ -28,7 +28,7 @@
 # from flask import current_app as app
 
 # class Terminal(Namespace):
-    
+
 #     def on_connect(self):
 #         pass
 

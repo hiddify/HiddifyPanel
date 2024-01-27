@@ -1,10 +1,9 @@
 import re
 import flask_babel
-import flask_babelex
 
 # from flask_babelex import lazy_gettext as _
 from flask import render_template, g
-from flask_babelex import gettext as _
+from flask_babel import gettext as _
 import wtforms as wtf
 from flask_wtf import FlaskForm
 from flask_bootstrap import SwitchField
@@ -45,10 +44,10 @@ class QuickSetup(FlaskView):
                 db.session.commit()
 
                 flask_babel.refresh()
-                flask_babelex.refresh()
+                flask_babel.refresh()
                 # with flask_babel.force_locale(lang_form.admin_lang.data):
                 #         flask_babel.refresh()
-                #         flask_babelex.refresh()
+                #         flask_babel.refresh()
                 hutils.flask.flash((_('quicksetup.setlang.success')), 'success')
             else:
                 hutils.flask.flash((_('quicksetup.setlang.error')), 'danger')

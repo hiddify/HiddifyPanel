@@ -1,7 +1,7 @@
 import re
 import flask_babel
-import flask_babelex
-from flask_babelex import lazy_gettext as _
+import flask_babel
+from flask_babel import lazy_gettext as _
 # from flask_babelex import gettext as _
 from flask import render_template, Markup, url_for, g  # type: ignore
 from flask import current_app as app
@@ -96,7 +96,7 @@ class SettingAdmin(FlaskView):
                 set_hconfig(k, v, 0, False)
             db.session.commit()
             flask_babel.refresh()
-            flask_babelex.refresh()
+            flask_babel.refresh()
 
             from hiddifypanel.panel.commercial.telegrambot import register_bot
             register_bot()

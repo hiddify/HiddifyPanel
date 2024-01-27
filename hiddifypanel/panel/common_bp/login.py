@@ -3,7 +3,7 @@ from hiddifypanel import hutils
 from hiddifypanel.panel.auth import login_required, current_account, login_user, logout_user, login_by_uuid
 from flask import redirect, request, g, url_for, render_template, flash, jsonify
 from flask import current_app as app
-from flask_babelex import lazy_gettext as _
+from flask_babel import lazy_gettext as _
 from apiflask import abort
 import hiddifypanel.panel.hiddify as hiddify
 from hiddifypanel.models import Role

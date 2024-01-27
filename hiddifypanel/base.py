@@ -1,7 +1,7 @@
 import flask_bootstrap
 import hiddifypanel
 from flask import request, g
-from flask_babelex import Babel
+from flask_babel import Babel
 from flask_session import Session
 
 import datetime
@@ -15,6 +15,8 @@ from hiddifypanel.models import *
 from hiddifypanel import hutils
 from hiddifypanel.panel.init_db import init_db
 from hiddifypanel.cache import redis_client
+from hiddifypanel.panel import auth
+import hiddifypanel
 
 
 def create_app(cli=False, **config):
@@ -82,19 +84,20 @@ def create_app(cli=False, **config):
     app.config['WTF_CSRF_CHECK_DEFAULT'] = False
 
     # app.config['BABEL_TRANSLATION_DIRECTORIES'] = '/workspace/Hiddify-Server/hiddify-panel/src/translations.i18n'
-    babel = Babel(app)
 
-    @babel.localeselector
+    # flaskbabel = FlaskBabel(app)
+
+    # @babel.localeselector
     def get_locale():
         # Put your logic here. Application can store locale in
         # user profile, cookie, session, etc.
         from hiddifypanel.models import ConfigEnum, hconfig
         if "admin" in request.base_url:
-            g.locale = g.account.lang or hconfig(ConfigEnum.admin_lang) or 'fa'
+            g.locale = auth.current_account.lang or hconfig(ConfigEnum.admin_lang) or 'fa'
         else:
-            g.locale = g.account.lang or hconfig(ConfigEnum.lang) or 'fa'
+            g.locale = auth.current_account.lang or hconfig(ConfigEnum.lang) or 'fa'
         return g.locale
-
+    babel = Babel(app, locale_selector=get_locale)
     from flask_wtf.csrf import CSRFProtect
 
     csrf = CSRFProtect(app)

@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-from flask_babelex import gettext as _
 import os
 import urllib.request
 
@@ -7,7 +6,8 @@ from flask_classful import FlaskView, route
 from flask import render_template, request, url_for, make_response, redirect, g
 from hiddifypanel.panel.auth import login_required
 from flask import current_app as app
-# from flask_cors import cross_origin
+from flask_babel import gettext as _
+
 
 from hiddifypanel import hutils
 from hiddifypanel.models import *

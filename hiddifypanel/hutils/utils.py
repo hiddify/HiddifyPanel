@@ -1,9 +1,4 @@
-import base64
-from typing import Any, Tuple
-from urllib.parse import urlparse
-from uuid import UUID
-from flask_babelex import lazy_gettext as _
-import re
+from flask_babel import lazy_gettext as _
 import requests
 
 import string
@@ -42,5 +37,3 @@ def get_latest_release_version(repo_name):
         return f'{e}'
 
     return None
-
-

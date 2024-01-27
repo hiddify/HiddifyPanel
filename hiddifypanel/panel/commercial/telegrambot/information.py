@@ -1,8 +1,8 @@
-from flask_babelex import gettext as _
+from flask_babel import gettext as _
 
-from . import bot
 from hiddifypanel.panel.user.user import get_common_data
 from hiddifypanel.models import User
+from . import bot
 
 
 def prepare_me_info(user):

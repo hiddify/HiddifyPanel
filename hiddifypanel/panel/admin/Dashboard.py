@@ -1,17 +1,16 @@
+from flask import render_template, url_for, request, g, redirect
+from flask_classful import FlaskView, route
+from flask_babel import lazy_gettext as _
+from apiflask import abort
 import datetime
 
 
-from flask import render_template, url_for, request, jsonify, g, redirect
 from hiddifypanel.panel.auth import login_required
-from apiflask import abort
-from flask_babelex import lazy_gettext as _
-from flask_classful import FlaskView, route
-
-import hiddifypanel
-from hiddifypanel.models import *
-from hiddifypanel.panel import hiddify
 from hiddifypanel.panel.database import db
+from hiddifypanel.panel import hiddify
+from hiddifypanel.models import *
 from hiddifypanel import hutils
+import hiddifypanel
 
 
 class Dashboard(FlaskView):

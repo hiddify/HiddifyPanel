@@ -8,7 +8,7 @@ from apiflask import abort
 from . import link_maker
 from flask_classful import FlaskView, route
 from urllib.parse import urlparse
-from flask_babelex import gettext as _
+from flask_babel import gettext as _
 
 
 from hiddifypanel.panel.auth import login_required
