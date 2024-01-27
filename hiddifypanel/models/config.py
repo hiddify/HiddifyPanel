@@ -10,7 +10,7 @@ from .config_enum import ConfigEnum
 class BoolConfig(db.Model, SerializerMixin):
     child_id = db.Column(db.Integer, db.ForeignKey('child.id'), primary_key=True, default=0)
     # category = db.Column(db.String(128), primary_key=True)
-    key = db.Column(db.Enum(ConfigEnum), primary_key=True)
+    key = db.Column(db.Enum(ConfigEnum, values_callable=ConfigEnum.dbvalues), primary_key=True)
     value = db.Column(db.Boolean)
 
     def to_dict(d):
@@ -24,7 +24,7 @@ class BoolConfig(db.Model, SerializerMixin):
 class StrConfig(db.Model, SerializerMixin):
     child_id = db.Column(db.Integer, db.ForeignKey('child.id'), primary_key=True, default=0)
     # category = db.Column(db.String(128), primary_key=True)
-    key = db.Column(db.Enum(ConfigEnum), primary_key=True, default=ConfigEnum.admin_secret)
+    key = db.Column(db.Enum(ConfigEnum, values_callable=ConfigEnum.dbvalues), primary_key=True, default=ConfigEnum.admin_secret)
     value = db.Column(db.String(2048))
 
     def to_dict(d):

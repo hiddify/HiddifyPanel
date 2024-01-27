@@ -1,4 +1,4 @@
-from enum import auto
+from enum import auto, Enum
 
 from strenum import StrEnum
 
@@ -35,9 +35,90 @@ class ConfigCategory(StrEnum):
     too_advanced = auto()
     warp = auto()
     reality = auto()
+    wireguard = auto()
 
 
-class ConfigEnum(StrEnum):
+class ApplyMode(StrEnum):
+    apply = auto()
+    restart = auto()
+
+
+class _ConfigDscr:
+    def __init__(self, category: ConfigCategory, apply_mode: ApplyMode = ApplyMode.apply, ctype=str, show_in_parent: bool = True):
+        self.is_valid = type(category) == ConfigCategory
+        self.__category = category
+        self.__apply_mode = apply_mode
+        self.__show_in_parent = show_in_parent
+        self.__type = ctype
+
+    @property
+    def category(self):
+        if not self.is_valid:
+            raise ValueError("do not forget to use .value")
+        return self.__category
+
+    @property
+    def type(self):
+        if not self.is_valid:
+            raise ValueError("do not forget to use .value")
+        return self.__type
+
+    @property
+    def apply_mode(self):
+        if not self.is_valid:
+            raise ValueError("do not forget to use .value")
+        return self.__apply_mode
+
+    @property
+    def show_in_parent(self):
+        if not self.is_valid:
+            raise ValueError("do not forget to use .value")
+        return self.__show_in_parent
+
+    def __item__(self, key):
+        return getattr(self, key)
+
+
+class _BoolConfigDscr(_ConfigDscr):
+    def __init__(self, category: ConfigCategory, apply_mode: ApplyMode = ApplyMode.apply, show_in_parent: bool = True):
+        super().__init__(category, apply_mode, bool, show_in_parent)
+
+
+class _StrConfigDscr(_ConfigDscr):
+    def __init__(self, category: ConfigCategory, apply_mode: ApplyMode = ApplyMode.apply, show_in_parent: bool = True):
+        super().__init__(category, apply_mode, str, show_in_parent)
+
+
+class __BaseConfigEnum(_ConfigDscr, Enum):
+    def dbvalues(cls):
+        return [f'{c}' for c in ConfigEnum]
+
+    def _generate_next_value_(name, *_):
+        return name
+
+    def __hash__(self):
+        return self.name.__hash__()
+
+    def __contains__(self, item):
+        return item in str(self)
+
+    def __str__(self):
+        return f'{self.name}'
+
+    def __eq__(self, other):
+        return f'{self}' == f'{other}'
+
+    def __neq__(self, other):
+        return not self.__eq__(other)
+
+
+class ConfigEnum(__BaseConfigEnum):
+    wireguard_enable = _BoolConfigDscr(ConfigCategory.wireguard, ApplyMode.apply)
+    wireguard_port = _StrConfigDscr(ConfigCategory.wireguard, ApplyMode.apply)
+    wireguard_ipv6 = _StrConfigDscr(ConfigCategory.hidden, ApplyMode.apply)
+    wireguard_ipv4 = _StrConfigDscr(ConfigCategory.hidden, ApplyMode.apply)
+    wireguard_private_key = _StrConfigDscr(ConfigCategory.hidden, ApplyMode.apply)
+    wireguard_public_key = _StrConfigDscr(ConfigCategory.hidden, ApplyMode.apply)
     ssh_server_redis_url = auto()
     ssh_server_port = auto()
     ssh_server_enable = auto()
@@ -171,6 +252,9 @@ class ConfigEnum(StrEnum):
         return cls.not_found  # "key not found"
 
     def info(self):
+
+        if not isinstance(self.value, str):
+            return {'category': self.value.category, 'apply_mode': self.value.apply_mode, 'type': self.value.type}
         map = {
             self.warp_sites: {'category': ConfigCategory.warp, 'apply_mode': 'apply'},
             self.ssh_server_redis_url: {'category': ConfigCategory.hidden},
@@ -294,20 +378,31 @@ class ConfigEnum(StrEnum):
             self.domain_fronting_tls_enable: {'category': ConfigCategory.hidden, 'type': bool},
             self.db_version: {'category': ConfigCategory.hidden},
         }
+
         return map[self]
 
     def commercial(self):
+        if not isinstance(self.value, str):
+            return False
         # print(self,self.info().get('commercial',False))
         return self.info().get('commercial', False)
 
     def category(self):
+        if not isinstance(self.value, str):
+            return self.value.category
         return self.info()['category']
 
     def type(self):
+        if not isinstance(self.value, str):
+            return self.value.type
         return self.info().get('type', str)
 
     def apply_mode(self):
+        if not isinstance(self.value, str):
+            return self.value.apply_mode
         return self.info().get('apply_mode', '')
 
     def show_in_parent(self):
+        if not isinstance(self.value, str):
+            return self.value.show_in_parent
         return self.info().get('show_in_parent', False)
