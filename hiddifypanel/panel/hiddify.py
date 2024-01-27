@@ -20,7 +20,7 @@ from hiddifypanel.hutils.utils import *
 from hiddifypanel.Events import domain_changed
 from hiddifypanel import hutils
 from hiddifypanel.panel.run_commander import commander, Command
-
+import subprocess
 to_gig_d = 1000*1000*1000
 
 
@@ -73,8 +73,7 @@ def exec_command(cmd, cwd=None):
 def get_available_proxies(child_id):
     proxies = Proxy.query.filter(Proxy.child_id == child_id).all()
     proxies = [c for c in proxies if 'restls' not in c.transport]
-    if not hconfig(ConfigEnum.domain_fronting_domain, child_id):
-        proxies = [c for c in proxies if 'Fake' not in c.cdn]
+
     if not hconfig(ConfigEnum.ssfaketls_enable, child_id):
         proxies = [c for c in proxies if 'faketls' != c.transport]
     if not hconfig(ConfigEnum.v2ray_enable, child_id):
@@ -95,6 +94,11 @@ def get_available_proxies(child_id):
     if not Domain.query.filter(Domain.mode.in_([DomainType.cdn, DomainType.auto_cdn_ip])).first():
         proxies = [c for c in proxies if c.cdn != "CDN"]
 
+    if not Domain.query.filter(Domain.mode.in_([DomainType.relay])).first():
+        proxies = [c for c in proxies if c.cdn != ProxyCDN.relay]
+
+    if not Domain.query.filter(Domain.mode.in_([DomainType.cdn, DomainType.auto_cdn_ip]), Domain.servernames != "", Domain.servernames != Domain.domain).first():
+        proxies = [c for c in proxies if 'Fake' not in c.cdn]
     proxies = [c for c in proxies if not ('vless' == c.proto and ProxyTransport.tcp == c.transport and c.cdn == ProxyCDN.direct)]
     return proxies
 
@@ -227,7 +231,7 @@ def get_ids_without_parent(input_dict):
 
 
 def set_db_from_json(json_data, override_child_id=None, set_users=True, set_domains=True, set_proxies=True, set_settings=True, remove_domains=False, remove_users=False,
-                     override_unique_id=True, set_admins=True, override_root_admin=False, replace_owner_admin=False, fix_admin_hierarchy=True):
+                     override_unique_id=True, set_admins=True, override_root_admin=False, replace_owner_admin=False, fix_admin_hierarcj=True):
     new_rows = []
 
     uuids_without_parent = get_ids_without_parent({u['uuid']: u for u in json_data['admin_users']})
@@ -376,6 +380,17 @@ def get_ed25519_private_public_pair():
         format=serialization.PublicFormat.OpenSSH,
     )
     return priv_bytes.decode(), pub_bytes.decode()
+
+
+def get_wg_private_public_psk_pair():
+    try:
+        private_key = subprocess.run(["wg", "genkey"], capture_output=True, text=True, check=True).stdout.strip()
+        public_key = subprocess.run(["wg", "pubkey"], input=private_key, capture_output=True, text=True, check=True).stdout.strip()
+        psk = subprocess.run(["wg", "genpsk"], capture_output=True, text=True, check=True).stdout.strip()
+        return private_key, public_key, psk
+    except subprocess.CalledProcessError as e:
+        print(f"Error: {e}")
+        return None, None
 
 
 def get_account_panel_link(account: BaseAccount, host: str, is_https: bool = True, prefere_path_only: bool = False, child_id=0):

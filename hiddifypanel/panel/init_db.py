@@ -14,7 +14,7 @@ from hiddifypanel.panel import hiddify
 from hiddifypanel.panel.database import db
 import hiddifypanel.models.utils as model_utils
 
-MAX_DB_VERSION = 70
+MAX_DB_VERSION = 80
 
 
 def init_db():
@@ -23,8 +23,9 @@ def init_db():
     # db.upgrade()
     db.create_all()
     hconfig.invalidate_all()
-    get_hconfigs.invalidate_all()
+    # get_hconfigs.invalidate_all()
     db_version = int(hconfig(ConfigEnum.db_version) or 0)
+    set_hconfig(ConfigEnum.db_version, 68)
     if db_version == latest_db_version():
         return
     execute("alter table user alter column telegram_id bigint;")
@@ -35,6 +36,9 @@ def init_db():
     add_column(User.password)
     add_column(AdminUser.username)
     add_column(AdminUser.password)
+    add_column(User.wg_pk)
+    add_column(User.wg_pub)
+    add_column(User.wg_psk)
 
     add_column(Domain.extra_params)
 
@@ -150,8 +154,18 @@ def init_db():
 #     add_config_if_not_exist(ConfigEnum.hysteria_enable, True)
 #     add_config_if_not_exist(ConfigEnum.hysteria_port, random.randint(5000, 20000))
 
-def _v67():
-    pass
+def _v69():
+    db.session.bulk_save_objects(get_proxy_rows_v1())
+    add_config_if_not_exist(ConfigEnum.wireguard_enable, True)
+    add_config_if_not_exist(ConfigEnum.wireguard_port, random.randint(30000, 40000))
+    add_config_if_not_exist(ConfigEnum.wireguard_ipv4, "10.90.0.1")
+    add_config_if_not_exist(ConfigEnum.wireguard_ipv6, "fd42:42:90::1")
+    wg_pk, wg_pub, _ = hiddify.get_wg_private_public_psk_pair()
+    add_config_if_not_exist(ConfigEnum.wireguard_private_key, wg_pk)
+    add_config_if_not_exist(ConfigEnum.wireguard_public_key, wg_pub)
+    add_config_if_not_exist(ConfigEnum.wireguard_noise_trick, "5-10")
+    for u in User.query.all():
+        u.wg_pk, u.wg_pub, u.wg_psk = hiddify.get_wg_private_public_psk_pair()
 
 
 def _v65():
@@ -491,43 +505,64 @@ def _v10():
 
 
 def get_proxy_rows_v1():
-    return make_proxy_rows([
-        # 'WS Fake vless',
-        # 'WS Fake trojan',
-        # 'WS Fake vmess',
-        # 'grpc Fake vless',
-        # 'grpc Fake trojan',
-        # 'grpc Fake vmess',
-        # "XTLS direct vless",
-        # "XTLS direct trojan",
+    rows = list(make_proxy_rows([
         "h2 direct vless",
         "XTLS direct vless",
         "WS direct vless",
         "WS direct trojan",
         "WS direct vmess",
-        "WS CDN vless",
-        "WS CDN trojan",
-        "WS CDN vmess",
-        "grpc CDN vless",
-        "grpc CDN trojan",
-        "grpc CDN vmess",
         "tcp direct vless",
         "tcp direct trojan",
         "tcp direct vmess",
         "grpc direct vless",
         "grpc direct trojan",
         "grpc direct vmess",
-        # "h1 direct vless",
-        # "h1 direct vmess",
         "faketls direct ss",
         "WS direct v2ray",
         "shadowtls direct ss",
-        "restls1_2 direct ss",
-        "restls1_3 direct ss",
-        "tcp direct ssr",
-        "WS CDN v2ray"
+
+        "h2 relay vless",
+        "XTLS relay vless",
+        "WS relay vless",
+        "WS relay trojan",
+        "WS relay vmess",
+        "tcp relay vless",
+        "tcp relay trojan",
+        "tcp relay vmess",
+        "grpc relay vless",
+        "grpc relay trojan",
+        "grpc relay vmess",
+        "faketls relay ss",
+        "WS relay v2ray",
+        "shadowtls relay ss",
+        # "restls1_2 direct ss",
+        # "restls1_3 direct ss",
+        # "tcp direct ssr",
+        "WS CDN v2ray",
+        "WS CDN vless",
+        "WS CDN trojan",
+        "WS CDN vmess",
+        "grpc CDN vless",
+        "grpc CDN trojan",
+        "grpc CDN vmess",
+
     ]
-    )
+    ))
+
+    rows.append(Proxy(l3='ssh', transport='ssh', cdn='direct', proto='ssh', enable=True, name="SSH"))
+    rows.append(Proxy(l3='ssh', transport=ProxyTransport.ssh, cdn=ProxyCDN.relay, proto=ProxyProto.ssh, enable=True, name="SSH Relay"))
+
+    rows.append(Proxy(l3='tls', transport='custom', cdn='direct', proto='tuic', enable=True, name="TUIC"))
+    rows.append(Proxy(l3='tls', transport='custom', cdn='relay', proto='tuic', enable=True, name="TUIC Relay"))
+    rows.append(Proxy(l3='tls', transport='custom', cdn='direct', proto='hysteria2', enable=True, name="Hysteria2"))
+    rows.append(Proxy(l3='tls', transport='custom', cdn='relay', proto='hysteria2', enable=True, name="Hysteria2 Relay"))
+    rows.append(Proxy(l3=ProxyL3.udp, transport=ProxyTransport.custom, cdn=ProxyCDN.direct, proto=ProxyProto.wireguard, enable=True, name="WireGuard"))
+    rows.append(Proxy(l3=ProxyL3.udp, transport=ProxyTransport.custom, cdn=ProxyCDN.relay, proto=ProxyProto.wireguard, enable=True, name="WireGuard Relay"))
+    for p in rows:
+        is_exist = Proxy.query.filter(Proxy.name == p.name).first() or Proxy.query.filter(
+            Proxy.l3 == p.l3, Proxy.transport == p.transport, Proxy.cdn == p.cdn, Proxy.proto == p.proto).first()
+        if not is_exist:
+            yield p
 
 
 def make_proxy_rows(cfgs):
@@ -550,10 +585,10 @@ def make_proxy_rows(cfgs):
             enable = l3 != "http" or proto == "vmess"
             enable = enable and transport != 'tcp'
             name = f'{l3} {c}'
-            is_exist = Proxy.query.filter(Proxy.name == name).first() or Proxy.query.filter(
-                Proxy.l3 == l3, Proxy.transport == transport, Proxy.cdn == cdn, Proxy.proto == proto).first()
-            if not is_exist:
-                yield Proxy(l3=l3, transport=transport, cdn=cdn, proto=proto, enable=enable, name=name)
+            # is_exist = Proxy.query.filter(Proxy.name == name).first() or Proxy.query.filter(
+            #     Proxy.l3 == l3, Proxy.transport == transport, Proxy.cdn == cdn, Proxy.proto == proto).first()
+            # if not is_exist:
+            yield Proxy(l3=l3, transport=transport, cdn=cdn, proto=proto, enable=enable, name=name)
 
 
 def add_config_if_not_exist(key: ConfigEnum, val):
@@ -588,8 +623,8 @@ def add_new_enum_values():
         table_name = col.table
 
         # Get the existing values in the enum
-        existing_values = [e.value for e in enum_class]
-
+        existing_values = [f'{e}' if isinstance(e, ConfigEnum) else e.value for e in enum_class]
+        # print("existing_values--------------", existing_values)
         # Get the values in the enum column in the database
         # result = db.engine.execute(f"SELECT DISTINCT `{column_name}` FROM {table_name}")
         # db_values = {row[0] for row in result}
@@ -605,6 +640,7 @@ def add_new_enum_values():
         # Find the new values that need to be added to the enum column in the database
         new_values = set(existing_values) - set(db_values)
         old_values = set(db_values)-set(existing_values)
+        # print('new_values-=-----------------', new_values)
         if len(new_values) == 0 and len(old_values) == 0:
             continue
 

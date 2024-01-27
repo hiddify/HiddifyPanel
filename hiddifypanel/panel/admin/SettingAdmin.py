@@ -270,7 +270,7 @@ def get_config_form():
                     # validators.append(wtf.validators.Regexp("^(\d+)(,\d+)*$",re.IGNORECASE,_("config.port is required")))
 
                 # tls tricks validations
-                if c.key in [ConfigEnum.tls_fragment_size, ConfigEnum.tls_fragment_sleep, ConfigEnum.tls_padding_length]:
+                if c.key in [ConfigEnum.tls_fragment_size, ConfigEnum.tls_fragment_sleep, ConfigEnum.tls_padding_length, ConfigEnum.wireguard_noise_trick]:
                     validators.append(wtf.validators.Regexp("^\d+-\d+$", re.IGNORECASE, _("config.Invalid! The pattern is number-number")+f' {c.key}'))
                 # mux and hysteria validations
                 if c.key in [ConfigEnum.hysteria_up_mbps, ConfigEnum.hysteria_down_mbps, ConfigEnum.mux_max_connections, ConfigEnum.mux_min_streams, ConfigEnum.mux_max_streams,

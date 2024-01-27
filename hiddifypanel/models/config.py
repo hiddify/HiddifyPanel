@@ -93,10 +93,10 @@ def set_hconfig(key: ConfigEnum, value: str | bool, child_id: int = 0, commit: b
         db.session.commit()
 
 
-@cache.cache(ttl=500)
+@cache.cache(ttl=500,)
 def get_hconfigs(child_id: int = 0):
-    return {**{u.key: u.value for u in BoolConfig.query.filter(BoolConfig.child_id == child_id).all()},
-            **{u.key: u.value for u in StrConfig.query.filter(StrConfig.child_id == child_id).all()},
+    return {**{f'{u.key}': u.value for u in BoolConfig.query.filter(BoolConfig.child_id == child_id).all()},
+            **{f'{u.key}': u.value for u in StrConfig.query.filter(StrConfig.child_id == child_id).all()},
             # ConfigEnum.telegram_fakedomain:hdomain(DomainType.telegram_faketls),
             # ConfigEnum.ssfaketls_fakedomain:hdomain(DomainType.ss_faketls),
             # ConfigEnum.fake_cdn_domain:hdomain(DomainType.fake_cdn)

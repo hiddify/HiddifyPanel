@@ -296,3 +296,24 @@ def is_ssh_password_authentication_enabled() -> bool:
 
 def is_out_of_range_port(port: int) -> bool:
     return port < 1 or port > 65535
+
+
+def add_number_to_ipv4(ip: str, number: int):
+    octets = list(map(int, ip.split('.')))
+
+    octets[2] = (octets[2] + (octets[3] + number) // 256)
+    octets[3] = (octets[3] + number) % 256
+
+    return f"{octets[0]}.{octets[1]}.{octets[2]}.{octets[3]}"
+
+
+def add_number_to_ipv6(ip: str, number: int):
+    segments = ip.split(':')
+
+    # Increment the last segment by the specified number
+    segments[-1] = hex(int(segments[-1] or "0", 16) + number)[2:]
+
+    # Join the segments back together with colons
+    modified_ipv6 = ":".join(segments)
+
+    return modified_ipv6

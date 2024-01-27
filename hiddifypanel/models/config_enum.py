@@ -96,8 +96,11 @@ class __BaseConfigEnum(_ConfigDscr, Enum):
     def _generate_next_value_(name, *_):
         return name
 
+    def __reduce__(self):
+        return (self.__class__, (self.name,))
+
     def __hash__(self):
-        return self.name.__hash__()
+        return f'{self}'.__hash__()
 
     def __contains__(self, item):
         return item in str(self)
@@ -122,6 +125,8 @@ class ConfigEnum(__BaseConfigEnum):
     wireguard_ipv4 = _StrConfigDscr(ConfigCategory.hidden, ApplyMode.apply)
     wireguard_private_key = _StrConfigDscr(ConfigCategory.hidden, ApplyMode.apply)
     wireguard_public_key = _StrConfigDscr(ConfigCategory.hidden, ApplyMode.apply)
+
+    wireguard_noise_trick = _StrConfigDscr(ConfigCategory.wireguard, ApplyMode.apply)
     ssh_server_redis_url = auto()
     ssh_server_port = auto()
     ssh_server_enable = auto()
@@ -252,6 +257,7 @@ class ConfigEnum(__BaseConfigEnum):
     # cdn_forced_host=auto()
     @ classmethod
     def _missing_(cls, value):
+        # print("pmisssing", cls, value)
         return cls.not_found  # "key not found"
 
     def info(self):

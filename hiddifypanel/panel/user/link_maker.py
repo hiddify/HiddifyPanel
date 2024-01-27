@@ -57,6 +57,9 @@ def make_proxy(proxy: Proxy, domain_db: Domain, phttp=80, ptls=443, pport=None):
 
     if l3 == "kcp":
         port = hconfigs[ConfigEnum.kcp_ports].split(",")[0]
+    elif proxy.proto == ProxyProto.wireguard:
+        print(hconfigs)
+        port = hconfigs[ConfigEnum.wireguard_port]
     elif proxy.proto == "tuic":
         port = domain_db.internal_port_tuic
     elif proxy.proto == "hysteria2":
@@ -83,13 +86,21 @@ def make_proxy(proxy: Proxy, domain_db: Domain, phttp=80, ptls=443, pport=None):
     if "reality" in l3 and (not domain_db.grpc) and ProxyTransport.grpc == proxy.transport:
         return {'name': name, 'msg': "reality proxy not in reality domain", 'type': 'debug', 'proto': proxy.proto}
 
-    is_cdn = ProxyCDN.CDN in proxy.cdn
+    is_cdn = ProxyCDN.CDN == proxy.cdn or ProxyCDN.Fake == proxy.cdn
     if is_cdn and domain_db.mode not in [DomainType.cdn, DomainType.auto_cdn_ip, DomainType.worker]:
         # print("cdn proxy not in cdn domain", domain, name)
         return {'name': name, 'msg': "cdn proxy not in cdn domain", 'type': 'debug', 'proto': proxy.proto}
+
     if not is_cdn and domain_db.mode in [DomainType.cdn, DomainType.auto_cdn_ip, DomainType.worker]:
         # print("not cdn proxy  in cdn domain", domain, name, proxy.cdn)
         return {'name': name, 'msg': "not cdn proxy  in cdn domain", 'type': 'debug', 'proto': proxy.proto}
+
+    if proxy.cdn == ProxyCDN.relay and domain_db.mode not in [DomainType.relay]:
+        return {'name': name, 'msg': "relay proxy not in relay domain", 'type': 'debug', 'proto': proxy.proto}
+
+    if proxy.cdn != ProxyCDN.relay and domain_db.mode in [DomainType.relay]:
+        return {'name': name, 'msg': "relay proxy not in relay domain", 'type': 'debug', 'proto': proxy.proto}
+
     if domain_db.mode == DomainType.worker and proxy.transport == ProxyTransport.grpc:
         return {'name': name, 'msg': "worker does not support grpc", 'type': 'debug', 'proto': proxy.proto}
     cdn_forced_host = domain_db.cdn_ip or (domain_db.domain if domain_db.mode != DomainType.reality else hutils.network.get_direct_host_or_ip(4))
@@ -124,6 +135,15 @@ def make_proxy(proxy: Proxy, domain_db: Domain, phttp=80, ptls=443, pport=None):
     }
     if proxy.proto in ['tuic', 'hysteria2']:
         base['alpn'] = "h3"
+        return base
+    if proxy.proto in ['wireguard']:
+        base['wg_pub'] = g.account.wg_pub
+        base['wg_pk'] = g.account.wg_pk
+        base['wg_psk'] = g.account.wg_psk
+        base['wg_ipv4'] = hutils.network.add_number_to_ipv4(hconfigs[ConfigEnum.wireguard_ipv4], g.account.id)
+        base['wg_ipv6'] = hutils.network.add_number_to_ipv6(hconfigs[ConfigEnum.wireguard_ipv6], g.account.id)
+        base['wg_server_pub'] = hconfigs[ConfigEnum.wireguard_public_key]
+        base['wg_noise_trick'] = hconfigs[ConfigEnum.wireguard_noise_trick]
         return base
 
     if base["proto"] == "trojan" and not is_tls():
@@ -299,6 +319,8 @@ def to_link(proxy):
         if proxy['mode'] == 'Fake' or proxy['allow_insecure']:
             baseurl += "&insecure=1"
         return f"{baseurl}#{name_link}"
+    if proxy['proto'] == ProxyProto.wireguard:
+        return f'wg://{proxy["server"]}:{proxy["port"]}/?pk={proxy["wg_pk"]}&local_address={proxy["wg_ipv4"]}/32&peer_pk={proxy["wg_server_pub"]}&pre_shared_key={proxy["wg_psk"]}&workers=4&mtu=1380&reserved=0,0,0&ifp={proxy["wg_noise_trick"]}'
 
     baseurl = f'{proxy["proto"]}://{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}?hiddify=1'
     baseurl += f'&sni={proxy["sni"]}&type={proxy["transport"]}'
@@ -569,6 +591,9 @@ def to_singbox(proxy):
     if proxy["proto"] == "ssr":
         add_singbox_ssr(base, proxy)
         return all_base
+    if proxy["proto"] == ProxyProto.wireguard:
+        add_singbox_wireguard(base, proxy)
+        return all_base
     if proxy["proto"] in ["ss", "v2ray"]:
         add_singbox_shadowsocks_base(all_base, proxy)
         return all_base
@@ -758,6 +783,19 @@ def add_singbox_ssr(base, proxy):
     base["obfs"] = proxy["ssr-obfs"]
     base["protocol"] = proxy["ssr-protocol"]
     base["protocol-param"] = proxy["fakedomain"]
+
+
+def add_singbox_wireguard(base, proxy):
+
+    base["local_address"] = proxy["wg_ipv4"]
+    base["private_key"] = proxy["wg_pk"]
+    base["peer_public_key"] = proxy["wg_server_pub"]
+
+    base["pre_shared_key"] = proxy["wg_psk"]
+
+    base["mtu"] = 1380
+    if g.user_agent['is_hiddify']:
+        base["fake_packets"] = proxy["wg_noise_trick"]
 
 
 def add_singbox_shadowsocks_base(all_base, proxy):

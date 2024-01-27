@@ -79,6 +79,9 @@ class User(BaseAccount):
     enable = db.Column(db.Boolean, default=True, nullable=False)
     ed25519_private_key = db.Column(db.String(500))
     ed25519_public_key = db.Column(db.String(100))
+    wg_pk = db.Column(db.String(50))
+    wg_pub = db.Column(db.String(50))
+    wg_psk = db.Column(db.String(50))
 
     @property
     def role(self) -> Role | None:
