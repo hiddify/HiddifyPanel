@@ -1,9 +1,7 @@
 import traceback
-import re
-import user_agents
-from flask import render_template, request, jsonify, redirect
+from flask import render_template, request, jsonify
 from flask import g, send_from_directory, session
-from flask_babelex import gettext as _
+from flask_babel import gettext as _
 import hiddifypanel
 from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify
@@ -89,13 +87,13 @@ def init_app(app: APIFlask):
     @app.url_defaults
     def add_proxy_path_user(endpoint, values):
         if 'proxy_path' not in values:
-            if hutils.flask.is_admin_role(g.account):
+            if hutils.flask.is_admin_role(current_account.role):
                 values['proxy_path'] = hconfig(ConfigEnum.proxy_path_admin)
             # elif 'static' in endpoint:
                 #     values['proxy_path'] = hconfig(ConfigEnum.proxy_path)
             elif hutils.flask.is_user_panel_call():
                 values['proxy_path'] = hconfig(ConfigEnum.proxy_path_client)
-            elif g.account and hutils.flask.is_admin_role(g.account.role):
+            elif current_account and hutils.flask.is_admin_role(current_account.role):
                 values['proxy_path'] = hconfig(ConfigEnum.proxy_path_admin)
             else:
                 values['proxy_path'] = g.proxy_path
@@ -163,6 +161,12 @@ def init_app(app: APIFlask):
         g.account = current_account
         g.user_agent = hutils.flask.get_user_agent()
 
+    @app.before_first_request
+    def first_request():
+        import hiddifypanel.panel.commercial.telegrambot as telegrambot
+        if (not telegrambot.bot) or (not telegrambot.bot.username):  # type: ignore
+            telegrambot.register_bot(set_hook=True)
+
     @app.before_request
     def base_middleware():
         if request.endpoint == 'static' or request.endpoint == "videos":
@@ -175,7 +179,7 @@ def init_app(app: APIFlask):
 
         # validate proxy path
 
-        # g.proxy_path = hutils.flask.get_proxy_path_from_url(request.url)
+        g.proxy_path = hutils.flask.get_proxy_path_from_url(request.url)
         hutils.flask.proxy_path_validator(g.proxy_path)
 
         # if g.proxy_path != hconfig(ConfigEnum.proxy_path):
@@ -200,8 +204,6 @@ def init_app(app: APIFlask):
         # setup telegram bot
         if hconfig(ConfigEnum.telegram_bot_token):
             import hiddifypanel.panel.commercial.telegrambot as telegrambot
-            if (not telegrambot.bot) or (not telegrambot.bot.username):  # type: ignore
-                telegrambot.register_bot(set_hook=True)
             g.bot = telegrambot.bot
         else:
             g.bot = None

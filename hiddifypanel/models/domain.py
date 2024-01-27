@@ -3,6 +3,9 @@ from urllib.parse import urlparse
 
 from flask import request
 from sqlalchemy_serializer import SerializerMixin
+from flask_babel import lazy_gettext as _
+from sqlalchemy.orm import backref
+from urllib.parse import urlparse
 from strenum import StrEnum
 
 from hiddifypanel.panel.database import db
@@ -10,7 +13,6 @@ from hiddifypanel import hutils
 from .config import hconfig
 from .config_enum import ConfigEnum
 from sqlalchemy.orm import backref
-from flask_babelex import lazy_gettext as _
 
 
 class DomainType(StrEnum):
@@ -162,7 +164,7 @@ def get_proxy_domains_db(db_domain):
         domain = urlparse(request.base_url).hostname
         db_domain = Domain(domain=domain, mode=DomainType.direct, show_domains=[])
         # print("no domain")
-        hutils.flask.flash(_("This domain does not exist in the panel!" + domain)) #type: ignore
+        hutils.flask.flash(_("This domain does not exist in the panel!" + domain))  # type: ignore
 
     return db_domain.show_domains or Domain.query.all()
 

@@ -5,8 +5,8 @@ from hiddifypanel.models.utils import fill_username, fill_password
 from sqlalchemy import event
 from strenum import StrEnum
 from apiflask import abort
-from flask_babelex import gettext as __
-from flask_babelex import lazy_gettext as _
+from flask_babel import gettext as __
+from flask_babel import lazy_gettext as _
 from hiddifypanel.models.role import Role
 from hiddifypanel.panel.database import db
 from .base_account import BaseAccount
@@ -62,7 +62,7 @@ class AdminUser(BaseAccount):
                 }
 
     @classmethod
-    def by_uuid(cls, uuid: str, create: bool = False):
+    def by_uuid(cls, uuid: str, create: bool = False) -> BaseAccount | None:
         account = AdminUser.query.filter(AdminUser.uuid == uuid).first()
         if not account and create:
             dbuser = AdminUser(uuid=uuid, name="unknown", parent_admin_id=AdminUser.current_admin_or_owner().id)

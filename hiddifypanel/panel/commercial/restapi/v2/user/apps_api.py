@@ -5,7 +5,7 @@ from flask import current_app as app
 from flask import g, request
 from apiflask import Schema, abort
 from apiflask.fields import String,  URL,  Enum,  List,  Nested
-from flask_babelex import lazy_gettext as _
+from flask_babel import lazy_gettext as _
 from urllib.parse import quote_plus, urlparse
 import user_agents
 from strenum import StrEnum

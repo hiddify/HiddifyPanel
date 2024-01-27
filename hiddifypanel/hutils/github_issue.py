@@ -1,12 +1,8 @@
-try:
-    from urllib import urlencode, unquote  # type: ignore
-    from urlparse import urlparse, parse_qsl, ParseResult  # type: ignore
-except ImportError:
-    # Python 3 fallback
-    from urllib.parse import (
-        urlencode, unquote, urlparse, parse_qsl, ParseResult
-    )
-import webbrowser
+
+from urllib.parse import (
+    urlencode, unquote, urlparse, parse_qsl, ParseResult
+)
+from flask import g, request, render_template
 from sys import version as python_version
 from platform import platform
 from json import dumps
@@ -34,11 +30,8 @@ class __IssueUrl:
                 pass
 
         elif "user" in self.opts and "repo" in options:
-
-            try:
+            if repoUrl in self.opts:
                 del self.opts["repoUrl"]
-            except:
-                pass
 
             repoUrl = "https://github.com/{0}/{1}".format(self.opts["user"], self.opts["repo"])
         else:
@@ -98,12 +91,9 @@ class __IssueUrl:
         url = self.url
 
         for type in self.types:
-
-            try:
-                value = self.opts[type]
-            except:
+            value = self.opts.get(type)
+            if value is None:
                 continue
-
             if type == "labels" or type == "projects":
                 if not isinstance(value, list):
                     err = "The {0} option should be an array".format(type)

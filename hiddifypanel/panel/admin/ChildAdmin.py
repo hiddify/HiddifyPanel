@@ -1,15 +1,14 @@
 from wtforms.validators import Regexp, ValidationError
-from hiddifypanel.models import *
+from flask_babel import lazy_gettext as _
 from .adminlte import AdminLTEModelView
-from flask_babelex import gettext as __
-from flask_babelex import lazy_gettext as _
+from flask_babel import gettext as __
 from flask import Markup, g  # type: ignore
 
 from hiddifypanel.panel.auth import login_required
 from hiddifypanel.panel import hiddify
-from hiddifypanel import hutils
-from flask import current_app
 import hiddifypanel.panel.auth as auth
+from hiddifypanel.models import *
+from hiddifypanel import hutils
 
 
 class ChildAdmin(AdminLTEModelView):

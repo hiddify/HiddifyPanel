@@ -4,8 +4,8 @@ import hiddifypanel.panel.auth as auth
 from hiddifypanel.models import *
 import re
 from flask import Markup, g  # type: ignore
-from flask_babelex import gettext as __
-from flask_babelex import lazy_gettext as _
+from flask_babel import gettext as __
+from flask_babel import lazy_gettext as _
 from hiddifypanel.panel.run_commander import Command, commander
 from wtforms.validators import Regexp, ValidationError
 

@@ -1,7 +1,7 @@
 import datetime
 
 from flask_admin.contrib.sqla import ModelView
-from flask_babelex import lazy_gettext as _
+from flask_babel import lazy_gettext as _
 from wtforms import TextAreaField
 from wtforms.fields import IntegerField, SelectField, DecimalField
 from wtforms.widgets import TextArea

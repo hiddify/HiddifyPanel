@@ -1,9 +1,9 @@
-from flask_babelex import gettext as _
 from hiddifypanel import hutils
 from hiddifypanel.models.role import Role
 import wtforms as wtf
 from flask_wtf import FlaskForm
 from flask_bootstrap import SwitchField
+from flask_babel import gettext as _
 from flask import render_template
 
 
@@ -65,7 +65,7 @@ class ProxyAdmin(FlaskView):
 
         return render_template('proxy.html', global_config_form=global_config_form, detailed_config_form=all_proxy_form)
 
-        import flask_babelex
+        import flask_babel
 
         # form=HelloForm()
         # # return render('config.html',form=form)

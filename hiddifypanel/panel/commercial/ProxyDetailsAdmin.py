@@ -1,7 +1,7 @@
 from hiddifypanel.models import *
 from hiddifypanel.panel.admin.adminlte import AdminLTEModelView
-from flask_babelex import gettext as __
-from flask_babelex import lazy_gettext as _
+from flask_babel import gettext as __
+from flask_babel import lazy_gettext as _
 from hiddifypanel.panel import hiddify
 from flask import g
 from hiddifypanel.panel.auth import login_required

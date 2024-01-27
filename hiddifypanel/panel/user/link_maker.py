@@ -1,6 +1,5 @@
 from flask import g, request, render_template
 from ipaddress import IPv4Address, IPv6Address
-import enum
 from hiddifypanel import hutils
 from hiddifypanel.models import *
 import yaml
@@ -9,7 +8,7 @@ from hiddifypanel.panel import hiddify
 import random
 import re
 import datetime
-from flask_babelex import gettext as _
+from flask_babel import gettext as _
 
 
 def all_proxies(child_id=0):

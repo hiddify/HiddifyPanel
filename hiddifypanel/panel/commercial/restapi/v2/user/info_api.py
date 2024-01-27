@@ -7,7 +7,7 @@ from flask import current_app as app
 from hiddifypanel import hutils
 from hiddifypanel.panel.auth import login_required
 import hiddifypanel.panel.auth as auth
-from flask_babelex import gettext as _
+from flask_babel import gettext as _
 from hiddifypanel.models import Lang
 from hiddifypanel.models.role import Role
 from hiddifypanel.models.user import User
