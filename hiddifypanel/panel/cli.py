@@ -65,7 +65,7 @@ def all_configs():
 
     configs['admin_path'] = hiddify.get_account_panel_link(owner, server_ip, is_https=False, prefere_path_only=True)
     configs['panel_links'] = []
-    configs['panel_links'].append(hiddify.get_account_panel_link(owner, server_ip, is_https=False))
+    configs['panel_links'].append(hiddify.get_account_panel_link(owner, server_ip, is_https=False,basic_auth=))
     configs['panel_links'].append(hiddify.get_account_panel_link(owner, server_ip))
     domains = get_panel_domains()
 

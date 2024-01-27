@@ -394,7 +394,8 @@ def get_wg_private_public_psk_pair():
 
 
 def get_account_panel_link(account: BaseAccount, host: str, is_https: bool = True, prefere_path_only: bool = False, child_id=0):
-    basic_auth = False
+    is_admin = isinstance(account, AdminUser)
+    basic_auth = is_admin
 
     link = ""
     if basic_auth or not prefere_path_only:
@@ -402,8 +403,10 @@ def get_account_panel_link(account: BaseAccount, host: str, is_https: bool = Tru
         if basic_auth:
             link += f'{account.uuid}@'
         link += str(host)
-    proxy_path = hconfig(ConfigEnum.proxy_path_admin, child_id) if isinstance(account, AdminUser) else hconfig(ConfigEnum.proxy_path_client, child_id)
+    proxy_path = hconfig(ConfigEnum.proxy_path_admin if is_admin else ConfigEnum.proxy_path_client, child_id)
     link += f'/{proxy_path}/'
-    if not basic_auth:
+    if basic_auth:
+        link += "l"
+    else:
         link += f'{account.uuid}/'
     return link

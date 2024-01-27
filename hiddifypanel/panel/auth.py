@@ -151,7 +151,7 @@ def init_app(app):
             if not account:
                 return logout_redirect()
 
-            next_url = request.url.replace(f'/{g.uuid}/', '/admin/' if is_admin_path else '/client/').replace("/admin/admin/", '/admin/')
+            next_url = request.url.replace(f'/{g.uuid}/', '/admin/' if is_admin_path else '/client/').replace("/admin/admin/", '/admin/').replace("http://", "https://")
 
         elif auth_header := request.headers.get("Hiddify_API_KEY"):
             # print("auth_header", auth_header)

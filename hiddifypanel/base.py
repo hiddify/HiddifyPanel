@@ -22,8 +22,9 @@ def create_app(cli=False, **config):
     app = APIFlask(__name__, static_url_path="/<proxy_path>/static/", instance_relative_config=True, version='2.0.0', title="Hiddify API",
                    openapi_blueprint_url_prefix="/<proxy_path>/api", docs_ui='elements', json_errors=False, enable_openapi=True)
     # app = Flask(__name__, static_url_path="/<proxy_path>/static/", instance_relative_config=True)
+    app.config["PREFERRED_URL_SCHEME"] = "https"
     app.wsgi_app = ProxyFix(
-        app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1
+        app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1,
     )
     app.servers = {
         'name': 'current',
@@ -31,10 +32,10 @@ def create_app(cli=False, **config):
     }  # type: ignore
     app.info = {
         'description': 'Hiddify is a free and open source software. It is as it is.',
-        'termsOfService': 'http://hiddify.com',
+        'termsOfService': 'https://hiddify.com',
         'contact': {
             'name': 'API Support',
-            'url': 'http://www.hiddify.com/support',
+            'url': 'https://www.hiddify.com/support',
             'email': 'panel@hiddify.com'
         },
         'license': {
