@@ -59,7 +59,7 @@ class Domain(db.Model, SerializerMixin):
     def __repr__(self):
         return f'{self.domain}'
 
-    def to_dict(self, dump_ports=False):
+    def to_dict(self, dump_ports=False,dump_child_id=False):
         data = {
             'domain': self.domain.lower(),
             'mode': self.mode,
@@ -71,7 +71,8 @@ class Domain(db.Model, SerializerMixin):
             'grpc': self.grpc,
             'show_domains': [dd.domain for dd in self.show_domains],
         }
-
+        if dump_child_id:
+            data['child_id']=self.child_id
         if dump_ports:
             data["internal_port_hysteria2"] = self.internal_port_hysteria2
             data["internal_port_tuic"] = self.internal_port_tuic
