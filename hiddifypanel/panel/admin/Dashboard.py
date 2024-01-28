@@ -28,7 +28,7 @@ class Dashboard(FlaskView):
 
     @login_required(roles={Role.super_admin, Role.admin, Role.agent})
     def index(self):
-        return url_for("admin.QuickSetup:index")
+
         if hconfig(ConfigEnum.first_setup):
             return redirect(url_for("admin.QuickSetup:index"))
         if hiddifypanel.__release_date__ + datetime.timedelta(days=20) < datetime.datetime.now():
