@@ -1,4 +1,5 @@
 from enum import auto, Enum
+from typing import Union
 
 from strenum import StrEnum
 
@@ -90,6 +91,7 @@ class _StrConfigDscr(_ConfigDscr):
 
 
 class __BaseConfigEnum(_ConfigDscr, Enum):
+    @classmethod
     def dbvalues(cls):
         return [f'{c}' for c in ConfigEnum]
 
@@ -129,10 +131,10 @@ class ConfigEnum(__BaseConfigEnum):
     wireguard_noise_trick = _StrConfigDscr(ConfigCategory.wireguard, ApplyMode.apply)
     ssh_server_redis_url = auto()
     ssh_server_port = auto()
-    ssh_server_enable = auto()
-    first_setup = auto()
+    ssh_server_enable = _BoolConfigDscr(ConfigCategory.ssh, ApplyMode.apply)
+    first_setup = _BoolConfigDscr(ConfigCategory.hidden)
     core_type = auto()
-    warp_enable = auto()
+    warp_enable = _BoolConfigDscr(ConfigCategory.hidden, ApplyMode.restart)
     warp_mode = auto()
     warp_plus_code = auto()
     warp_sites = auto()
@@ -146,14 +148,14 @@ class ConfigEnum(__BaseConfigEnum):
 
     restls1_2_domain = auto()
     restls1_3_domain = auto()
-    show_usage_in_sublink = auto()
+    show_usage_in_sublink = _BoolConfigDscr(ConfigCategory.general)
     cloudflare = auto()
     license = auto()
     country = auto()
     package_mode = auto()
     utls = auto()
     telegram_bot_token = auto()
-    is_parent = auto()
+    is_parent = _BoolConfigDscr(ConfigCategory.hidden)
     parent_panel = auto()
     unique_id = auto()
     last_hash = auto()
@@ -164,79 +166,79 @@ class ConfigEnum(__BaseConfigEnum):
 
     # tls
     tls_ports = auto()
-    tls_fragment_enable = auto()
+    tls_fragment_enable = _BoolConfigDscr(ConfigCategory.tls_trick, ApplyMode.apply)
     tls_fragment_size = auto()
     tls_fragment_sleep = auto()
-    tls_mixed_case = auto()
-    tls_padding_enable = auto()
+    tls_mixed_case = _BoolConfigDscr(ConfigCategory.tls_trick, ApplyMode.apply)
+    tls_padding_enable = _BoolConfigDscr(ConfigCategory.tls_trick, ApplyMode.apply)
     tls_padding_length = auto()
 
     # mux
-    mux_enable = auto()
+    mux_enable = _BoolConfigDscr(ConfigCategory.mux, ApplyMode.apply)
     mux_protocol = auto()
     mux_max_connections = auto()
     mux_min_streams = auto()
     mux_max_streams = auto()
-    mux_padding_enable = auto()
-    mux_brutal_enable = auto()
+    mux_padding_enable = _BoolConfigDscr(ConfigCategory.mux, ApplyMode.apply)
+    mux_brutal_enable = _BoolConfigDscr(ConfigCategory.mux, ApplyMode.apply)
     mux_brutal_up_mbps = auto()
     mux_brutal_down_mbps = auto()
 
     http_ports = auto()
     kcp_ports = auto()
-    kcp_enable = auto()
+    kcp_enable = _BoolConfigDscr(ConfigCategory.hidden, ApplyMode.apply)
     decoy_domain = auto()
     # will be deprecated
     proxy_path = auto()
     proxy_path_admin = auto()
     proxy_path_client = auto()
-    firewall = auto()
-    netdata = auto()
-    http_proxy_enable = auto()
-    block_iran_sites = auto()
-    allow_invalid_sni = auto()
-    auto_update = auto()
-    speed_test = auto()
-    only_ipv4 = auto()
+    firewall = _BoolConfigDscr(ConfigCategory.general, ApplyMode.apply)
+    netdata = _BoolConfigDscr(ConfigCategory.hidden, ApplyMode.apply)
+    http_proxy_enable = _BoolConfigDscr(ConfigCategory.http)
+    block_iran_sites = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply)
+    allow_invalid_sni = _BoolConfigDscr(ConfigCategory.tls, ApplyMode.apply)
+    auto_update = _BoolConfigDscr(ConfigCategory.general, ApplyMode.apply, True)
+    speed_test = _BoolConfigDscr(ConfigCategory.general, ApplyMode.apply)
+    only_ipv4 = _BoolConfigDscr(ConfigCategory.general, ApplyMode.apply)
 
     shared_secret = auto()
 
-    telegram_enable = auto()
+    telegram_enable = _BoolConfigDscr(ConfigCategory.telegram, ApplyMode.apply)
     # telegram_secret=auto()
     telegram_adtag = auto()
     telegram_lib = auto()
     telegram_fakedomain = auto()
 
-    v2ray_enable = auto()
-    torrent_block = auto()
+    v2ray_enable = _BoolConfigDscr(ConfigCategory.hidden, ApplyMode.apply)
+    torrent_block = _BoolConfigDscr(ConfigCategory.general, ApplyMode.apply)
 
-    ssfaketls_enable = auto()
+    ssfaketls_enable = _BoolConfigDscr(ConfigCategory.hidden, ApplyMode.apply)
     # ssfaketls_secret="ssfaketls_secret"
     ssfaketls_fakedomain = auto()
 
-    shadowtls_enable = auto()
+    shadowtls_enable = _BoolConfigDscr(ConfigCategory.shadowtls, ApplyMode.apply)
     # shadowtls_secret=auto()
     shadowtls_fakedomain = auto()
 
-    tuic_enable = auto()
+    tuic_enable = _BoolConfigDscr(ConfigCategory.hidden, ApplyMode.apply)
     tuic_port = auto()
 
     # the hysteria is refereing to hysteria2
-    hysteria_enable = auto()
+    hysteria_enable = _BoolConfigDscr(ConfigCategory.hidden, ApplyMode.apply)
     hysteria_port = auto()
     # if be enable hysteria2 will be use salamander as obfs
-    hysteria_obfs_enable = auto()
+    hysteria_obfs_enable = _BoolConfigDscr(ConfigCategory.hysteria, ApplyMode.apply)
     hysteria_up_mbps = auto()
     hysteria_down_mbps = auto()
 
-    ssr_enable = auto()
+    ssr_enable = _BoolConfigDscr(ConfigCategory.hidden, ApplyMode.apply)
     # ssr_secret="ssr_secret"
     ssr_fakedomain = auto()
 
-    vmess_enable = auto()
+    vmess_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply)
     domain_fronting_domain = auto()
-    domain_fronting_http_enable = auto()
-    domain_fronting_tls_enable = auto()
+    domain_fronting_http_enable = _BoolConfigDscr(ConfigCategory.hidden, ApplyMode.apply)
+    domain_fronting_tls_enable = _BoolConfigDscr(ConfigCategory.hidden, ApplyMode.apply)
 
     db_version = auto()
 
