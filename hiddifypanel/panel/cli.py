@@ -47,7 +47,7 @@ def backup():
 
 def all_configs():
     import json
-    valid_users = [u.to_dict() for u in User.query.filter((User.usage_limit > User.current_usage)).all() if u.is_active]
+    valid_users = [u.to_dict(dump_id=True) for u in User.query.filter((User.usage_limit > User.current_usage)).all() if u.is_active]
     host_child_ids = [c.id for c in Child.query.filter(Child.mode == ChildMode.virtual).all()]
     configs = {
         "users": valid_users,

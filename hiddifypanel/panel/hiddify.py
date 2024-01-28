@@ -389,7 +389,7 @@ def get_wg_private_public_psk_pair():
         return private_key, public_key, psk
     except subprocess.CalledProcessError as e:
         print(f"Error: {e}")
-        return None, None
+        return None, None,None
 
 
 def get_account_panel_link(account: BaseAccount, host: str, is_https: bool = True, prefere_path_only: bool = False, child_id=statics.current_child_id):

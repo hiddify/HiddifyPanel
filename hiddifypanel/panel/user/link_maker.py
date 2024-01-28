@@ -57,7 +57,7 @@ def make_proxy(proxy: Proxy, domain_db: Domain, phttp=80, ptls=443, pport=None):
     if l3 == "kcp":
         port = hconfigs[ConfigEnum.kcp_ports].split(",")[0]
     elif proxy.proto == ProxyProto.wireguard:
-        print(hconfigs)
+        # print(hconfigs)
         port = hconfigs[ConfigEnum.wireguard_port]
     elif proxy.proto == "tuic":
         port = domain_db.internal_port_tuic
@@ -786,7 +786,7 @@ def add_singbox_ssr(base, proxy):
 
 def add_singbox_wireguard(base, proxy):
 
-    base["local_address"] = proxy["wg_ipv4"]
+    base["local_address"] = f'{proxy["wg_ipv4"]}/32'
     base["private_key"] = proxy["wg_pk"]
     base["peer_public_key"] = proxy["wg_server_pub"]
 
@@ -949,13 +949,13 @@ def get_all_validated_proxies(domains):
     allp = []
     allphttp = [p for p in request.args.get("phttp", "").split(',') if p]
     allptls = [p for p in request.args.get("ptls", "").split(',') if p]
-    added_ip = {'ssh': {}, 'tuic': {}, 'hysteria2': {}}
+    added_ip = {'ssh': {}, 'tuic': {}, 'hysteria2': {},'wireguard':{}}
     for d in domains:
         # raise Exception(base_config)
         hconfigs = get_hconfigs(d.child_id)
         for type in all_proxies(d.child_id):
             options = []
-            if type.proto in ['ssh', 'tuic', 'hysteria2']:
+            if type.proto in ['ssh', 'tuic', 'hysteria2','wireguard']:
 
                 ip = hutils.network.get_domain_ip(d.domain, version=4)
                 ip6 = hutils.network.get_domain_ip(d.domain, version=6)
@@ -969,10 +969,13 @@ def get_all_validated_proxies(domains):
                 for x in ips:
                     added_ip[type.proto][x] = 1
 
-                if type.proto == 'ssh':
+                if type.proto in ['ssh','wireguard']:
                     if d.mode == 'fake':
                         continue
-                    options = [{'pport': hconfigs[ConfigEnum.ssh_server_port]}]
+                    if type.proto in ['ssh']:
+                        options = [{'pport': hconfigs[ConfigEnum.ssh_server_port]}]
+                    elif type.proto in ['wireguard']:
+                        options = [{'pport': hconfigs[ConfigEnum.wireguard_port]}]
                 elif type.proto == 'tuic':
                     options = [{'pport': hconfigs[ConfigEnum.tuic_port]}]
                 elif type.proto == 'hysteria2':
