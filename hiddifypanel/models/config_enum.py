@@ -45,7 +45,7 @@ class ApplyMode(StrEnum):
 
 
 class _ConfigDscr:
-    def __init__(self, category: ConfigCategory, apply_mode: ApplyMode = ApplyMode.apply, ctype: Union[str, bool] = type(str), show_in_parent: bool = True):
+    def __init__(self, category: ConfigCategory, apply_mode: ApplyMode = ApplyMode.apply, ctype=str, show_in_parent: bool = True):
         self.is_valid = type(category) == ConfigCategory
         self.__category = category
         self.__apply_mode = apply_mode
@@ -82,12 +82,12 @@ class _ConfigDscr:
 
 class _BoolConfigDscr(_ConfigDscr):
     def __init__(self, category: ConfigCategory, apply_mode: ApplyMode = ApplyMode.apply, show_in_parent: bool = True):
-        super().__init__(category, apply_mode, type(bool), show_in_parent)
+        super().__init__(category, apply_mode, bool, show_in_parent)
 
 
 class _StrConfigDscr(_ConfigDscr):
     def __init__(self, category: ConfigCategory, apply_mode: ApplyMode = ApplyMode.apply, show_in_parent: bool = True):
-        super().__init__(category, apply_mode, type(str), show_in_parent)
+        super().__init__(category, apply_mode, str, show_in_parent)
 
 
 class __BaseConfigEnum(_ConfigDscr, Enum):
