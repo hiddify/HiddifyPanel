@@ -28,5 +28,5 @@ if __name__ == "__main__":
                 print(entry.msgid, 'use msgid', entry.msgstr)
                 # entry.flags.append("auto_translate")
                 entry.flags.append("fuzzy")
-
+        entry.msgstr = entry.msgstr.replace('"', "'")
     dst_pofile.save(dst_file)
