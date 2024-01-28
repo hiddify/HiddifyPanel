@@ -112,9 +112,10 @@ def init_db():
 
     if not Child.query.filter(Child.id == 0).first():
         print(Child.query.filter(Child.id == 0).first())
-        db.session.add(Child(unique_id=str(uuid.uuid4()), id=0))
+        tmpuuid=str(uuid.uuid4())
+        db.session.add(Child(unique_id=tmpuuid,name="Root", id=0))
         db.session.commit()
-        execute(f'update child set id=0 where unique_id="self"')
+        execute(f'update child set id=0 where unique_id="{tmpuuid}"')
 
     if not AdminUser.query.filter(AdminUser.id == 1).first():
         db.session.add(AdminUser(id=1, uuid=str(uuid.uuid4()), name="Owner", mode=AdminMode.super_admin, comment=""))
@@ -123,6 +124,8 @@ def init_db():
 
     upgrade_database()
     Child.query.filter(Child.id == 0).first().mode = ChildMode.virtual
+    if db_version<69:_v70(0)
+
     db.session.commit()
 
     for child in Child.query.filter(Child.mode == ChildMode.virtual).all():
