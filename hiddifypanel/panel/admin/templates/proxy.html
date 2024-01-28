@@ -11,7 +11,7 @@
     <div class="card-header">{{_("admin.proxy.global_config")}}</div>
     <div class="card-body">
         %if 1 or hconfig(ConfigEnum.license)
-        <a class="btn btn-info" href="{{url_for('flask.proxy.index_view')}}">{{_("Edit Proxy Names")}}</a>
+        <a class="btn btn-info" href="{{hurl_for('flask.proxy.index_view')}}">{{_("Edit Proxy Names")}}</a>
         %endif
         <div class="row">
             <div class="col-12 global-form">

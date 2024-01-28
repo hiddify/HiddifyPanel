@@ -38,16 +38,11 @@ class QuickSetup(FlaskView):
         lang_form = get_lang_form()
         if lang_form.lang_submit.data:
             if lang_form.validate_on_submit():
-                StrConfig.query.filter(StrConfig.key == ConfigEnum.lang, StrConfig.child_id == 0).first().value = lang_form.admin_lang.data
-                StrConfig.query.filter(StrConfig.key == ConfigEnum.admin_lang, StrConfig.child_id == 0).first().value = lang_form.admin_lang.data
-                StrConfig.query.filter(StrConfig.key == ConfigEnum.country, StrConfig.child_id == 0).first().value = lang_form.country.data
-                db.session.commit()
+                set_hconfig(ConfigEnum.lang, lang_form.admin_lang.data)
+                set_hconfig(ConfigEnum.admin_lang, lang_form.admin_lang.data)
+                set_hconfig(ConfigEnum.country, lang_form.country.data)
 
                 flask_babel.refresh()
-                flask_babel.refresh()
-                # with flask_babel.force_locale(lang_form.admin_lang.data):
-                #         flask_babel.refresh()
-                #         flask_babel.refresh()
                 hutils.flask.flash((_('quicksetup.setlang.success')), 'success')
             else:
                 hutils.flask.flash((_('quicksetup.setlang.error')), 'danger')
@@ -63,15 +58,14 @@ class QuickSetup(FlaskView):
         if quick_form.validate_on_submit():
             Domain.query.filter(Domain.domain == f'{hutils.network.get_ip(4)}.sslip.io').delete()
             db.session.add(Domain(domain=quick_form.domain.data.lower(), mode=DomainType.direct))
-            hiddify.bulk_register_configs([
-                # {"key": ConfigEnum.telegram_enable, "value": quick_form.enable_telegram.data == True},
-                # {"key": ConfigEnum.vmess_enable, "value": quick_form.enable_vmess.data == True},
-                # {"key": ConfigEnum.firewall, "value": quick_form.enable_firewall.data == True},
-                {"key": ConfigEnum.block_iran_sites, "value": quick_form.block_iran_sites.data == True},
-                # {"key":ConfigEnum.decoy_domain,"value":quick_form.decoy_domain.data}
-            ])
-
-            db.session.commit()
+            set_hconfig(ConfigEnum.block_iran_sites, quick_form.block_iran_sites.data == True)
+            # hiddify.bulk_register_configs([
+            #     # {"key": ConfigEnum.telegram_enable, "value": quick_form.enable_telegram.data == True},
+            #     # {"key": ConfigEnum.vmess_enable, "value": quick_form.enable_vmess.data == True},
+            #     # {"key": ConfigEnum.firewall, "value": quick_form.enable_firewall.data == True},
+            #     {"key": ConfigEnum.block_iran_sites, "value": quick_form.block_iran_sites.data == True},
+            #     # {"key":ConfigEnum.decoy_domain,"value":quick_form.decoy_domain.data}
+            # ])
 
             from . import Actions
             action = Actions.Actions()

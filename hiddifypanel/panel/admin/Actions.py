@@ -3,7 +3,8 @@ import os
 import urllib.request
 
 from flask_classful import FlaskView, route
-from flask import render_template, request, url_for, make_response, redirect, g
+from flask import render_template, request, make_response, redirect, g
+from hiddifypanel.hutils.flask import hurl_for
 from hiddifypanel.panel.auth import login_required
 from flask import current_app as app
 from flask_babel import gettext as _
@@ -147,9 +148,9 @@ class Actions(FlaskView):
         set_hconfig(ConfigEnum.reality_private_key, key['private_key'])
         set_hconfig(ConfigEnum.reality_public_key, key['public_key'])
         hutils.flask.flash_config_success(restart_mode='apply', domain_changed=False)
-        return redirect(url_for('admin.SettingAdmin:index'))
+        return redirect(hurl_for('admin.SettingAdmin:index'))
 
-    @login_required(roles={Role.super_admin})
+    @ login_required(roles={Role.super_admin})
     def status(self):
         # run status.sh
         commander(Command.status)
@@ -161,8 +162,8 @@ class Actions(FlaskView):
                                show_success=False,
                                domains=get_domains())
 
-    @route('update', methods=['POST'])
-    @login_required(roles={Role.super_admin})
+    @ route('update', methods=['POST'])
+    @ login_required(roles={Role.super_admin})
     def update(self):
         return self.update2()
 
@@ -214,7 +215,7 @@ class Actions(FlaskView):
 
         return res+"</table>"
 
-    @login_required(roles={Role.super_admin})
+    @ login_required(roles={Role.super_admin})
     def update_usage(self):
 
         import json

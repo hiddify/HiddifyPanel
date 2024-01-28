@@ -7,7 +7,8 @@ from flask_babel import gettext as __
 from .adminlte import AdminLTEModelView
 from wtforms.validators import NumberRange
 from flask_babel import lazy_gettext as _
-from flask import Markup, g, request, url_for  # type: ignore
+from flask import Markup, g, request  # type: ignore
+from hiddifypanel.hutils.flask import hurl_for
 from wtforms.validators import Regexp, ValidationError
 from flask import current_app
 
@@ -176,7 +177,7 @@ class UserAdmin(AdminLTEModelView):
         # return Markup(f"<span class='badge ltr badge-}'>{days}</span> "+_('days'))
 
     def _admin_formatter(view, context, model, name):
-        return Markup(f"<a href='{url_for('flask.user.index_view',admin_id=model.added_by)}' class='btn btn-xs btn-default'>{model.admin.name}</a>")
+        return Markup(f"<a href='{hurl_for('flask.user.index_view',admin_id=model.added_by)}' class='btn btn-xs btn-default'>{model.admin.name}</a>")
 
     def _online_formatter(view, context, model, name):
         if not model.last_online:
@@ -352,7 +353,7 @@ class UserAdmin(AdminLTEModelView):
         admin = AdminUser.query.filter(AdminUser.id == admin_id).first()
         if not admin:
             abort(403)
-
+        
         query = query.filter(User.added_by.in_(admin.recursive_sub_admins_ids()))
 
         return query

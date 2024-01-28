@@ -1,3 +1,4 @@
+from hiddifypanel import statics
 from flask import current_app, flash as flask_flash, g, request
 from apiflask import abort as apiflask_abort
 from flask_babel import lazy_gettext as _
@@ -20,7 +21,7 @@ def flash(message: str, category: str = "message"):
 
 def flash_config_success(restart_mode='', domain_changed=True):
     if restart_mode:
-        url = url_for('admin.Actions:reinstall', complete_install=restart_mode == 'reinstall', domain_changed=domain_changed)
+        url = hurl_for('admin.Actions:reinstall', complete_install=restart_mode == 'reinstall', domain_changed=domain_changed)
         apply_btn = f"<a href='{url}' class='btn btn-primary form_post'>" + \
             _("admin.config.apply_configs")+"</a>"
         flash((_('config.validation-success', link=apply_btn)), 'success')  # type: ignore
@@ -31,6 +32,15 @@ def flash_config_success(restart_mode='', domain_changed=True):
 def static_url_for(**values):
     orig = url_for("static", **values)
     return orig.split("user_secret")[0]
+
+
+def hurl_for(endpoint, **values):
+    if statics.current_child_id != 0:
+
+        new_endpoint = "child_"+endpoint
+        if new_endpoint in current_app.view_functions:
+            endpoint = new_endpoint
+    return url_for(endpoint, **values)
 
 
 def get_user_agent() -> dict:

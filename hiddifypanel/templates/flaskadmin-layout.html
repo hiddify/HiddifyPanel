@@ -121,7 +121,7 @@
 
                 $("#grpc").parent().parent().show()
                 $("#domain").parent().find(".control-label").html(`{{_('config.reality_fallback_domain.label')}}`)
-                $("#domain").parent().find(".help-block").html(`{{_('config.reality_fallback_domain.description')+("<a target='_blank' href='" +url_for('admin.Actions:get_some_random_reality_friendly_domain',test_domain=domain)+"'>"+_('Example Domains')+"</a>")}}`)
+                $("#domain").parent().find(".help-block").html(`{{_('config.reality_fallback_domain.description')+("<a target='_blank' href='" +hurl_for('admin.Actions:get_some_random_reality_friendly_domain',test_domain=domain)+"'>"+_('Example Domains')+"</a>")}}`)
             } else {
                 if ($("#mode").val() == 'cdn' || $("#mode").val() == 'auto_cdn_ip') {
                     $("#servernames").parent().show();

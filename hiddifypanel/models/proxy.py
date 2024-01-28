@@ -58,7 +58,7 @@ class ProxyL3(StrEnum):
 class Proxy(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     child_id = db.Column(db.Integer, db.ForeignKey('child.id'), default=0)
-    name = db.Column(db.String(200), nullable=False, unique=True)
+    name = db.Column(db.String(200), nullable=False, unique=False)
     enable = db.Column(db.Boolean, nullable=False)
     proto = db.Column(db.Enum(ProxyProto), nullable=False)
     l3 = db.Column(db.Enum(ProxyL3), nullable=False)

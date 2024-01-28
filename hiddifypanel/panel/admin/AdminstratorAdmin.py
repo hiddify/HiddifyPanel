@@ -109,7 +109,7 @@ class AdminstratorAdmin(AdminLTEModelView):
         # actives=[u for u in model.recursive_users_query().all() if u.is_active]
         # allusers=model.recursive_users_query().count()
         # onlines=[p for p in  users  if p.last_online and p.last_online>last_day]
-        # return Markup(f"<a class='btn btn-xs btn-default' href='{url_for('flask.user.index_view',admin_id=model.id)}'> {_('Online')}: {onlines}</a>")
+        # return Markup(f"<a class='btn btn-xs btn-default' href='{hurl_for('flask.user.index_view',admin_id=model.id)}'> {_('Online')}: {onlines}</a>")
         rate = round(u*100/(t+0.000001))
         state = "danger" if u >= t else ('warning' if rate > 80 else 'success')
         color = "#ff7e7e" if u >= t else ('#ffc107' if rate > 80 else '#9ee150')

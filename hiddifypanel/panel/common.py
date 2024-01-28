@@ -9,6 +9,7 @@ from hiddifypanel import hutils
 import hiddifypanel.panel.auth as auth
 from hiddifypanel.panel.auth import current_account
 from apiflask import APIFlask, HTTPError, abort
+from hiddifypanel import statics
 
 
 def init_app(app: APIFlask):
@@ -97,6 +98,8 @@ def init_app(app: APIFlask):
                 values['proxy_path'] = hconfig(ConfigEnum.proxy_path_admin)
             else:
                 values['proxy_path'] = g.proxy_path
+        if "child_id" not in values and statics.current_child_id != 0:
+            values['child_id'] = statics.current_child_id
 
         if hutils.flask.is_api_v1_call(endpoint=endpoint) and 'admin_uuid' not in values:
             values['admin_uuid'] = AdminUser.get_super_admin_uuid()
@@ -160,6 +163,14 @@ def init_app(app: APIFlask):
     def set_default_values():
         g.account = current_account
         g.user_agent = hutils.flask.get_user_agent()
+
+    @app.url_value_preprocessor
+    def pull_default(endpoint, values):
+        if values:
+            g.__child_id = values.pop('child_id', 0)
+            g.child = Child.by_id(g.__child_id)
+            if g.child == None:
+                abort(404, "Child not found")
 
     @app.before_first_request
     def first_request():

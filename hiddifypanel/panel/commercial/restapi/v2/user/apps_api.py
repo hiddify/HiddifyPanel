@@ -1,6 +1,6 @@
 from hiddifypanel.panel import hiddify
 from flask.views import MethodView
-from flask import url_for
+
 from flask import current_app as app
 from flask import g, request
 from apiflask import Schema, abort
@@ -15,7 +15,7 @@ from hiddifypanel.hutils.utils import get_latest_release_url
 from hiddifypanel import hutils
 from hiddifypanel.models.role import Role
 from hiddifypanel.panel.auth import login_required
-
+from hiddifypanel.hutils.flask import static_url_for
 # region App Api DTOs
 
 
@@ -173,29 +173,29 @@ class AppAPI(MethodView):
         base = f'https://{urlparse(request.base_url).hostname}'
         url = ''
         if app_name == _('app.hiddify.next.title'):
-            url = base + url_for('static', filename='apps-icon/hiddify_next.ico')
+            url = base + static_url_for('apps-icon/hiddify_next.ico')
         elif app_name == _('app.hiddifyn.title'):
-            url = base + url_for('static', filename='apps-icon/hiddifyn.ico')
+            url = base + static_url_for('apps-icon/hiddifyn.ico')
         elif app_name == _('app.v2rayng.title'):
-            url = base + url_for('static', filename='apps-icon/v2rayng.ico')
+            url = base + static_url_for('apps-icon/v2rayng.ico')
         elif app_name == _('app.hiddifyng.title'):
-            url = base + url_for('static', filename='apps-icon/hiddifyng.ico')
+            url = base + static_url_for('apps-icon/hiddifyng.ico')
         elif app_name == _('app.hiddify-clash-android.title'):
-            url = base + url_for('static', filename='apps-icon/hiddify_android.ico')
+            url = base + static_url_for('apps-icon/hiddify_android.ico')
         elif app_name == _('app.foxray.title'):
-            url = base + url_for('static', filename='apps-icon/foxray.ico')
+            url = base + static_url_for('apps-icon/foxray.ico')
         elif app_name == _('app.shadowrocket.title'):
-            url = base + url_for('static', filename='apps-icon/shadowrocket.ico')
+            url = base + static_url_for('apps-icon/shadowrocket.ico')
         elif app_name == _('app.streisand.title'):
-            url = base + url_for('static', filename='apps-icon/streisand.ico')
+            url = base + static_url_for('apps-icon/streisand.ico')
         elif app_name == _('app.loon.title'):
-            url = base + url_for('static', filename='apps-icon/loon.ico')
+            url = base + static_url_for('apps-icon/loon.ico')
         elif app_name == _('app.stash.title'):
-            url = base + url_for('static', filename='apps-icon/stash.ico')
+            url = base + static_url_for('apps-icon/stash.ico')
         elif app_name == _('app.hiddify-clash-desktop.title'):
-            url = base + url_for('static', filename='apps-icon/hiddify_clash.ico')
+            url = base + static_url_for('apps-icon/hiddify_clash.ico')
         elif app_name == _('app.nekobox.title'):
-            url = base + url_for(endpoint='static', filename='apps-icon/nekobox.ico')
+            url = base + static_url_for(filename='apps-icon/nekobox.ico')
 
         return url
 

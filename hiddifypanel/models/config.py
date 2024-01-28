@@ -5,6 +5,7 @@ from hiddifypanel.cache import cache
 from hiddifypanel.panel.database import db
 from hiddifypanel.hutils.utils import error
 from .config_enum import ConfigEnum
+from hiddifypanel import statics
 
 
 class BoolConfig(db.Model, SerializerMixin):
@@ -36,7 +37,7 @@ class StrConfig(db.Model, SerializerMixin):
 
 
 @cache.cache(ttl=500)
-def hconfig(key: ConfigEnum, child_id: int = 0):
+def hconfig(key: ConfigEnum, child_id: int = statics.current_child_id):
     value = None
     try:
         str_conf = StrConfig.query.filter(StrConfig.key == key, StrConfig.child_id == child_id).first()
@@ -61,13 +62,13 @@ def hconfig(key: ConfigEnum, child_id: int = 0):
     return value
 
 
-def set_hconfig(key: ConfigEnum, value: str | bool, child_id: int = 0, commit: bool = True):
+def set_hconfig(key: ConfigEnum, value: str | bool, child_id: int = statics.current_child_id, commit: bool = True):
     # hconfig.invalidate(key, child_id)
     # get_hconfigs.invalidate(child_id)
     hconfig.invalidate(key, child_id)
     hconfig.invalidate(key, child_id=child_id)
     hconfig.invalidate(key=key, child_id=child_id)
-    if child_id == 0:
+    if child_id == statics.current_child_id:
         hconfig.invalidate(key)
     # hconfig.invalidate_all()
     get_hconfigs.invalidate_all()
@@ -89,21 +90,32 @@ def set_hconfig(key: ConfigEnum, value: str | bool, child_id: int = 0, commit: b
     dbconf.value = value
     error(f"changing {key} from {old_v} to {value}")
     Events.config_changed.notify(conf=dbconf, old_value=old_v)
+
+    if child_id == 0 and key.hide_in_virtual_child():
+        for child in Child.query.filter(Child.mode == ChildMode.virtual, Child.id != 0).all():
+            set_hconfig(key, value, child.id)
+
     if commit:
         db.session.commit()
 
 
 @cache.cache(ttl=500,)
-def get_hconfigs(child_id: int = 0):
-    return {**{f'{u.key}': u.value for u in BoolConfig.query.filter(BoolConfig.child_id == child_id).all()},
-            **{f'{u.key}': u.value for u in StrConfig.query.filter(StrConfig.child_id == child_id).all()},
+def get_hconfigs(child_id: int = statics.current_child_id, json=False):
+    return {**{f'{u.key}' if json else u.key: u.value for u in BoolConfig.query.filter(BoolConfig.child_id == child_id).all()},
+            **{f'{u.key}' if json else u.key: u.value for u in StrConfig.query.filter(StrConfig.child_id == child_id).all()},
             # ConfigEnum.telegram_fakedomain:hdomain(DomainType.telegram_faketls),
             # ConfigEnum.ssfaketls_fakedomain:hdomain(DomainType.ss_faketls),
             # ConfigEnum.fake_cdn_domain:hdomain(DomainType.fake_cdn)
             }
 
 
-def add_or_update_config(commit: bool = True, child_id: int = 0, override_unique_id: bool = True, **config):
+def get_hconfigs_childs(child_ids: list[int], json=False):
+    if len(child_ids) == 0:
+        child_ids = [c.id for c in Child.query.all()]
+    return {c: get_hconfigs(c, json) for c in child_ids}
+
+
+def add_or_update_config(commit: bool = True, child_id: int = statics.current_child_id, override_unique_id: bool = True, **config):
     c = config['key']
     ckey = ConfigEnum(c)
     if c == ConfigEnum.unique_id and not override_unique_id:

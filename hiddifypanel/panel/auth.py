@@ -1,5 +1,6 @@
 
-from flask import g, redirect, request, session, url_for
+from flask import g, redirect, request, session
+from hiddifypanel.hutils.flask import hurl_for
 from flask_login.utils import _get_user
 from functools import wraps
 from hiddifypanel.models import *
@@ -8,7 +9,7 @@ from hiddifypanel import hutils
 
 from werkzeug.local import LocalProxy
 
-current_account = LocalProxy(lambda: _get_user())
+current_account: BaseAccount = LocalProxy(lambda: _get_user())
 
 
 class AnonymousAccount(BaseAccount):
@@ -213,8 +214,8 @@ def redirect_to_login():
     # TODO: show the login page
     # return request.base_url
     # if g.user_agent['is_browser']:
-    # return redirect(url_for('common_bp.LoginView:basic_0', force=1, next=request.path))
-    return redirect(url_for('common_bp.LoginView:index', force=1, next=request.path))
+    # return redirect(hurl_for('common_bp.LoginView:basic_0', force=1, next=request.path))
+    return redirect(hurl_for('common_bp.LoginView:index', force=1, next=request.path))
 
     # else:
     #     abort(401, "Unauthorized")

@@ -93,21 +93,21 @@ class Domain(db.Model, SerializerMixin):
         if self.mode not in [DomainType.direct, DomainType.relay, DomainType.fake]:
             return 0
         # TODO: check validity of the range of the port
-        return int(hconfig(ConfigEnum.hysteria_port))+self.port_index
+        return int(hconfig(ConfigEnum.hysteria_port, self.child_id))+self.port_index
 
     @property
     def internal_port_tuic(self):
         if self.mode not in [DomainType.direct, DomainType.relay, DomainType.fake]:
             return 0
         # TODO: check validity of the range of the port
-        return int(hconfig(ConfigEnum.tuic_port))+self.port_index
+        return int(hconfig(ConfigEnum.tuic_port, self.child_id))+self.port_index
 
     @property
     def internal_port_reality(self):
         if self.mode != DomainType.reality:
             return 0
         # TODO: check validity of the range of the port
-        return int(hconfig(ConfigEnum.reality_port))+self.port_index
+        return int(hconfig(ConfigEnum.reality_port, self.child_id))+self.port_index
 
 
 def hdomains(mode):

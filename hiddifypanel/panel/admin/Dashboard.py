@@ -1,4 +1,5 @@
-from flask import render_template, url_for, request, g, redirect
+from flask import render_template, request, g, redirect
+from hiddifypanel.hutils.flask import hurl_for
 from flask_classful import FlaskView, route
 from flask_babel import lazy_gettext as _
 from apiflask import abort
@@ -30,7 +31,7 @@ class Dashboard(FlaskView):
     def index(self):
 
         if hconfig(ConfigEnum.first_setup):
-            return redirect(url_for("admin.QuickSetup:index"))
+            return redirect(hurl_for("admin.QuickSetup:index"))
         if hiddifypanel.__release_date__ + datetime.timedelta(days=20) < datetime.datetime.now():
             hutils.flask.flash(_('This version of hiddify panel is outdated. Please update it from admin area.'), "danger")  # type: ignore
         bot = None
@@ -63,7 +64,7 @@ class Dashboard(FlaskView):
         sslip_domains = [d.domain for d in domains if "sslip.io" in d.domain]
 
         if def_user and sslip_domains:
-            quick_setup = url_for("admin.QuickSetup:index")
+            quick_setup = hurl_for("admin.QuickSetup:index")
             hutils.flask.flash((_('It seems that you have not setup the system completely. <a class="btn btn-success" href="%(quick_setup)s">Click here</a> to complete setup.',
                                   quick_setup=quick_setup)), 'warning')  # type: ignore
             if hconfig(ConfigEnum.is_parent):
@@ -85,8 +86,8 @@ class Dashboard(FlaskView):
         stats = {'system': hutils.system.system_stats(), 'top5': hutils.system.top_processes()}
         return render_template('index.html', stats=stats, usage_history=DailyUsage.get_daily_usage_stats(admin_id, child_id), childs=childs)
 
-    @login_required(roles={Role.super_admin})
-    @route('remove_child', methods=['POST'])
+    @ login_required(roles={Role.super_admin})
+    @ route('remove_child', methods=['POST'])
     def remove_child(self):
         child_id = request.form['child_id']
         child = Child.query.filter(Child.id == child_id).first()

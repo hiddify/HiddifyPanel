@@ -3,7 +3,8 @@ import flask_babel
 import flask_babel
 from flask_babel import lazy_gettext as _
 # from flask_babelex import gettext as _
-from flask import render_template, Markup, url_for, g  # type: ignore
+from flask import render_template, Markup, g  # type: ignore
+from hiddifypanel.hutils.flask import hurl_for
 from flask import current_app as app
 from hiddifypanel import hutils
 from hiddifypanel.panel.auth import login_required
@@ -21,6 +22,8 @@ from hiddifypanel.models import *
 from hiddifypanel.panel.database import db
 from hiddifypanel.panel import hiddify, custom_widgets
 
+from hiddifypanel import statics
+
 
 class SettingAdmin(FlaskView):
 
@@ -36,7 +39,7 @@ class SettingAdmin(FlaskView):
         reset_action = None
         if form.validate_on_submit():
 
-            boolconfigs = BoolConfig.query.filter(BoolConfig.child_id == 0).all()
+            boolconfigs = BoolConfig.query.filter(BoolConfig.child_id == statics.current_child_id).all()
             bool_types = {c.key: 'bool' for c in boolconfigs}
 
             old_configs = get_hconfigs()
@@ -69,7 +72,8 @@ class SettingAdmin(FlaskView):
                                 # except:
                                 #     hutils.flask.flash(_("Can not connect to parent panel!"), 'error')
                                 #     return render_template('config.html', form=form)
-                            StrConfig.query.filter(StrConfig.key == k, StrConfig.child_id == 0).first().value = v
+
+                            set_hconfig(k, v, commit=False)
                         if old_configs[k] != v:
                             changed_configs[k] = v
 
@@ -93,7 +97,7 @@ class SettingAdmin(FlaskView):
             #         hutils.flask.flash(_("REALITY Fallback domain is not compaitble with server names!")+" "+d+" != "+fallback,'error')
             #         return render_template('config.html', form=form)
             for k, v in changed_configs.items():
-                set_hconfig(k, v, 0, False)
+                set_hconfig(k, v, commit=False)
             db.session.commit()
             flask_babel.refresh()
             flask_babel.refresh()
@@ -143,8 +147,8 @@ class SettingAdmin(FlaskView):
 
 def get_config_form():
 
-    strconfigs = StrConfig.query.filter(StrConfig.child_id == 0).all()
-    boolconfigs = BoolConfig.query.filter(BoolConfig.child_id == 0).all()
+    strconfigs = StrConfig.query.filter(StrConfig.child_id == statics.current_child_id).all()
+    boolconfigs = BoolConfig.query.filter(BoolConfig.child_id == statics.current_child_id).all()
     bool_types = {c.key: 'bool' for c in boolconfigs}
 
     configs = [*boolconfigs, *strconfigs]
@@ -233,13 +237,13 @@ def get_config_form():
 
                     if c.key != ConfigEnum.decoy_domain:
                         validators.append(wtf.validators.NoneOf([d.domain.lower() for d in Domain.query.all()], _("config.Domain already used")))
-                        validators.append(wtf.validators.NoneOf([cc.value.lower() for cc in StrConfig.query.filter(StrConfig.child_id == 0).all(
+                        validators.append(wtf.validators.NoneOf([cc.value.lower() for cc in StrConfig.query.filter(StrConfig.child_id == statics.current_child_id).all(
                         ) if cc.key != c.key and "fakedomain" in cc.key and cc.key != ConfigEnum.decoy_domain], _("config.Domain already used")))
                     render_kw['required'] = ""
                     if len(c.value) < 3:
                         c.value = hutils.network.get_random_domains(1)[0]
                 # if c.key ==ConfigEnum.reality_short_ids:
-                #     extra_info=f" <a target='_blank' href='{url_for('admin.Actions:get_some_random_reality_friendly_domain',test_domain=c.value)}'>"+_('Example Domains')+"</a>"
+                #     extra_info=f" <a target='_blank' href='{hurl_for('admin.Actions:get_some_random_reality_friendly_domain',test_domain=c.value)}'>"+_('Example Domains')+"</a>"
                 # if c.key ==ConfigEnum.reality_server_names:
                 #     validators.append(wtf.validators.Regexp("^([\w-]+\.)+[\w-]+(,\s*([\w-]+\.)+[\w-]+)*$",re.IGNORECASE,_("Invalid REALITY hostnames")))
                     # gauge width gate lamp weasel jaguar minute enough few attitude endorse situate usdt trc20 doge bep20 trx doge ltc bnb eth btc bnb
@@ -281,7 +285,7 @@ def get_config_form():
                         render_kw['pattern'] = val.regex.pattern
                         render_kw['title'] = val.message
                 if c.key == ConfigEnum.reality_public_key and g.account.mode in [AdminMode.super_admin]:
-                    extra_info = f" <a href='{url_for('admin.Actions:change_reality_keys')}'>{_('Change')}</a>"
+                    extra_info = f" <a href='{hurl_for('admin.Actions:change_reality_keys')}'>{_('Change')}</a>"
                 field = wtf.fields.StringField(_(f'config.{c.key}.label'), validators, default=c.value,
                                                description=_(f'config.{c.key}.description')+extra_info, render_kw=render_kw)
             setattr(CategoryForm, f'{c.key}', field)

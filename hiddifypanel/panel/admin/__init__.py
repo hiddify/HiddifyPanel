@@ -9,8 +9,9 @@ from hiddifypanel.models import *
 from apiflask import APIBlueprint
 from flask_adminlte3 import AdminLTE3
 
-flask_bp = APIBlueprint("flask", __name__, url_prefix=f"/<proxy_path>/", template_folder="templates", enable_openapi=False)
-admin_bp = APIBlueprint("admin", __name__, url_prefix=f"/<proxy_path>/admin/", template_folder="templates", enable_openapi=False)
+flask_bp = APIBlueprint("flask", __name__,  template_folder="templates", enable_openapi=False)
+admin_bp = APIBlueprint("admin", __name__,  template_folder="templates", enable_openapi=False)
+
 flaskadmin = Admin(endpoint="admin", base_template='flaskadmin-layout.html')
 
 
@@ -36,7 +37,8 @@ def init_app(app):
     flaskadmin.add_view(UserAdmin(User, db.session))
     flaskadmin.add_view(DomainAdmin(Domain, db.session))
     flaskadmin.add_view(AdminstratorAdmin(AdminUser, db.session))
-
+    from .ChildAdmin import ChildAdmin
+    flaskadmin.add_view(ChildAdmin(Child, db.session))
     from .Dashboard import Dashboard
     from .SettingAdmin import SettingAdmin
     from .commercial_info import CommercialInfo
@@ -58,5 +60,7 @@ def init_app(app):
     app.add_url_rule("/<proxy_path>/admin/static/<filename>/", endpoint="admin.static")  # fix bug in admin with blueprint
 
     flask_bp.debug = True
-    app.register_blueprint(admin_bp)
-    app.register_blueprint(flask_bp)
+    app.register_blueprint(admin_bp, url_prefix=f"/<proxy_path>/admin/",)
+    app.register_blueprint(admin_bp, name=f'child_{admin_bp.name}', url_prefix=f"/<proxy_path>/<int:child_id>/admin/")
+    app.register_blueprint(flask_bp, url_prefix=f"/<proxy_path>/")
+    app.register_blueprint(flask_bp, name=f'child_{flask_bp.name}', url_prefix=f"/<proxy_path>/<int:child_id>/")

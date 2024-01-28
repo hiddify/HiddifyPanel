@@ -57,7 +57,7 @@ class Backup(FlaskView):
 
             from flask_babel import refresh
             refresh()
-            return redirect(hutils.flask.url_for("admin.Actions:reinstall2"))
+            return redirect(hutils.flask.hurl_for("admin.Actions:reinstall2"))
             # from . import Actions
             # action = Actions()
             # return action.reinstall(complete_install=True, domain_changed=True)

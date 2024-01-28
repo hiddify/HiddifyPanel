@@ -1,6 +1,7 @@
 import glob
 import json
 import subprocess
+from hiddifypanel import statics
 from datetime import datetime
 from typing import Tuple
 from cryptography.hazmat.primitives import serialization
@@ -186,7 +187,7 @@ def check_need_reset(old_configs, do=False):
 
 
 def get_child(unique_id):
-    child_id = 0
+    child_id = statics.current_child_id
     if unique_id is None or unique_id == "default":
         child_id = 0
     else:
@@ -391,7 +392,7 @@ def get_wg_private_public_psk_pair():
         return None, None
 
 
-def get_account_panel_link(account: BaseAccount, host: str, is_https: bool = True, prefere_path_only: bool = False, child_id=0):
+def get_account_panel_link(account: BaseAccount, host: str, is_https: bool = True, prefere_path_only: bool = False, child_id=statics.current_child_id):
     is_admin = isinstance(account, AdminUser)
     basic_auth = is_admin
 
@@ -403,8 +404,30 @@ def get_account_panel_link(account: BaseAccount, host: str, is_https: bool = Tru
         link += str(host)
     proxy_path = hconfig(ConfigEnum.proxy_path_admin if is_admin else ConfigEnum.proxy_path_client, child_id)
     link += f'/{proxy_path}/'
+    if child_id != 0:
+        child = Child.by_id(child_id)
+        link += f"{child.id}/"
     if basic_auth:
         link += "l"
     else:
         link += f'{account.uuid}/'
     return link
+
+
+def clone_model(model):
+    """Clone an arbitrary sqlalchemy model object without its primary key values."""
+    # Ensure the model’s data is loaded before copying.
+    # model.id
+    new_model = model.__class__()
+    table = model.__table__
+    for k in table.columns.keys():
+        if k == "id":
+            continue
+        # if k in table.primary_key:
+        #     continue
+        setattr(new_model, f'{k}', getattr(model, k))
+
+    # data.pop('id')
+    return new_model
+
+

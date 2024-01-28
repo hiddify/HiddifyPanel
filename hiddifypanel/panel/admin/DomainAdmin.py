@@ -13,7 +13,7 @@ from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify, cf_api, custom_widgets
 from .adminlte import AdminLTEModelView
 from hiddifypanel import hutils
-
+from hiddifypanel import statics
 from flask import current_app
 # Define a custom field type for the related domains
 
@@ -300,3 +300,7 @@ class DomainAdmin(AdminLTEModelView):
     # @property
     # def server_ips(self):
     #     return hiddify.get_ip(4)
+
+    def get_query(self):
+        query = super().get_query()
+        return query.filter(Domain.child_id == statics.current_child_id)

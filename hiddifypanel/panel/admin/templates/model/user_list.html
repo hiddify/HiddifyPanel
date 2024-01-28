@@ -20,7 +20,7 @@
 {{super()}}
 
 <div class="callout callout-success">
-    {{_('User usage will be updated every 6 minutes. To update it now click <a href="%(link)s" class="btn btn-info">here</a>',link=url_for("admin.Actions:update_usage"))}}
+    {{_('User usage will be updated every 6 minutes. To update it now click <a href="%(link)s" class="btn btn-info">here</a>',link=hurl_for("admin.Actions:update_usage"))}}
 
 </div>
 <style>
@@ -77,7 +77,7 @@
 
                 $.ajax({
                     type: "POST",
-                    url: '{{url_for("api_v1.sendmsgresource")}}',
+                    url: '{{hurl_for("api_v1.sendmsgresource")}}',
 
                     data: JSON.stringify({ 'text': result, 'id': id }),
                     contentType: "application/json",

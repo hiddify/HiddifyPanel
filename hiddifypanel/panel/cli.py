@@ -9,6 +9,7 @@ from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify, usage
 from hiddifypanel.panel.database import db
 from hiddifypanel.panel.init_db import init_db
+from flask import g
 
 
 def drop_db():
@@ -47,12 +48,13 @@ def backup():
 def all_configs():
     import json
     valid_users = [u.to_dict() for u in User.query.filter((User.usage_limit > User.current_usage)).all() if u.is_active]
-
+    host_child_ids = [c.id for c in Child.query.filter(Child.mode == ChildMode.virtual).all()]
     configs = {
         "users": valid_users,
-        "domains": [u.to_dict(dump_ports=True) for u in Domain.query.all() if "*" not in u.domain],
+        "domains": [u.to_dict(dump_ports=True) for u in Domain.query.filter(Domain.child_id.in_(host_child_ids)).all() if "*" not in u.domain],
         # "parent_domains": [hiddify.parent_domain_dict(u) for u in ParentDomain.query.all()],
-        "hconfigs": get_hconfigs()
+        "hconfigs": get_hconfigs(json=True),
+        "chconfigs": get_hconfigs_childs(host_child_ids, json=True)
     }
 
     def_user = None if len(User.query.all()) > 1 else User.query.filter(User.name == 'default').first()
@@ -107,6 +109,10 @@ def admin_path():
     # WTF is the owner and server_id?
     domain = get_panel_domains()[0]
     print(hiddify.get_account_panel_link(admin, domain, prefere_path_only=True))
+
+
+def get_this_host_domains():
+    current_child_ids
 
 
 def hysteria_domain_port():

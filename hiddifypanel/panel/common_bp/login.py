@@ -1,7 +1,8 @@
 from flask_classful import FlaskView, route
 from hiddifypanel import hutils
 from hiddifypanel.panel.auth import login_required, current_account, login_user, logout_user, login_by_uuid
-from flask import redirect, request, g, url_for, render_template, flash, jsonify
+from flask import redirect, request, g, render_template, flash, jsonify
+from hiddifypanel.hutils.flask import hurl_for
 from flask import current_app as app
 from flask_babel import lazy_gettext as _
 from apiflask import abort
@@ -13,6 +14,7 @@ from hiddifypanel.panel.user import UserView
 from flask_wtf import FlaskForm
 import wtforms as wtf
 import re
+from hiddifypanel import statics
 
 
 class LoginForm(FlaskForm):
@@ -42,9 +44,9 @@ class LoginView(FlaskView):
         if redirect_arg:
             return redirect(redirect_arg)
         if hutils.flask.is_admin_proxy_path() and g.account.role in {Role.super_admin, Role.admin, Role.agent}:
-            return redirect(url_for('admin.Dashboard:index'))
+            return redirect(hurl_for('admin.Dashboard:index'))
         if g.user_agent['is_browser'] and hutils.flask.is_client_proxy_path():
-            return redirect(url_for('client.UserView:index'))
+            return redirect(hurl_for('client.UserView:index'))
 
         from hiddifypanel.panel.user import UserView
         return UserView().auto_sub()
@@ -58,14 +60,20 @@ class LoginView(FlaskView):
         hutils.flask.flash(_('config.validation-error'), 'danger')  # type: ignore
         return render_template('login.html', form=LoginForm())
 
-    @route("/l/")
-    @route("/l")
-    def basic(self):
-        redirect_arg = request.args.get('next')
+    @ route("/l/<path:path>/")
+    @ route("/l/<path:path>")
+    @ route("/l/")
+    @ route("/l")
+    def basic(self, path=None):
+        if path:
+            redirect_arg = f"/{g.proxy_path}/{path}"
+        else:
+            redirect_arg = request.args.get('next')
+
         if not current_account or (not request.headers.get('Authorization')):
             username = request.authorization.username if request.authorization else ''
 
-            loginurl = url_for('common_bp.LoginView:index', next=redirect_arg, user=username)
+            loginurl = hurl_for('common_bp.LoginView:index', next=redirect_arg, user=username)
             if g.user_agent['is_browser'] and request.headers.get('Authorization') or (current_account and len(username) > 0 and current_account.username != username):
                 hutils.flask.flash(_('Incorrect Password'), 'error')  # type: ignore
                 logout_user()
@@ -79,10 +87,11 @@ class LoginView(FlaskView):
             return redirect(redirect_arg)
 
         if hutils.flask.is_admin_proxy_path() and g.account.role in {Role.super_admin, Role.admin, Role.agent}:
-            return redirect(url_for('admin.Dashboard:index'))
+            return redirect(hurl_for('admin.Dashboard:index'))
 
         if g.user_agent['is_browser'] and hutils.flask.is_client_proxy_path():
-            return redirect(url_for('client.UserView:index'))
+            return redirect(hurl_for('client.UserView:index'))
+
         from hiddifypanel.panel.user import UserView
         return UserView().auto_sub()
 
@@ -119,7 +128,7 @@ class LoginView(FlaskView):
 
     #     return redirect(f"/{proxy_path}/{path}")
 
-    @route('/<secret_uuid>/manifest.webmanifest')
+    @ route('/<secret_uuid>/manifest.webmanifest')
     def create_pwa_manifest(self):
         domain = request.host
         name = (domain if hutils.flask.is_admin_panel_call() else g.account.name)

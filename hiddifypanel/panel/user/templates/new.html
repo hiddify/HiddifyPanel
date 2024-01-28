@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/x-icon" href="{{ static_url_for( filename='images/favicon.ico')}}">
-    <link rel="manifest" href="{{ url_for('common_bp.LoginView:create_pwa_manifest',secret_uuid=g.account.uuid or '')}}">
+    <link rel="manifest" href="{{ hurl_for('common_bp.LoginView:create_pwa_manifest',secret_uuid=g.account.uuid or '')}}">
     
     <title>Hiddify | Panel</title>
     <script type="module" crossorigin src="../static/new/assets/index-2cd90979.js"></script>

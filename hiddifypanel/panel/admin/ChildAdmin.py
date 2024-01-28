@@ -1,118 +1,82 @@
+from hiddifypanel.panel.database import db
+import copy
 from wtforms.validators import Regexp, ValidationError
 from flask_babel import lazy_gettext as _
 from .adminlte import AdminLTEModelView
 from flask_babel import gettext as __
-from flask import Markup, g  # type: ignore
+from flask import Markup, g, request
 
 from hiddifypanel.panel.auth import login_required
 from hiddifypanel.panel import hiddify
 import hiddifypanel.panel.auth as auth
 from hiddifypanel.models import *
-from hiddifypanel import hutils
+from hiddifypanel import hutils, statics
+from sqlalchemy.orm.session import make_transient
 
 
 class ChildAdmin(AdminLTEModelView):
     column_hide_backrefs = False
-
-    list_template = 'model/domain_list.html'
-    # edit_modal = True
-    # form_overrides = {'work_with': Select2Field}
-
-    column_descriptions = dict(
-        domain=_("domain.description"),
-        show_domains=_('You can select the configs with which domains show be shown in the user area. If you select all, automatically, all the new domains will be added for each users.')
-        # current_usage_GB="in GB"
-    )
-
-    # create_modal = True
-    can_export = False
-    form_widget_args = {'show_domains': {'class': 'form-control ltr'}}
-    form_args = {
-
-        'domain': {
-            'validators': [Regexp(r'^([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})$', message=__("Should be a valid domain"))]
-        },
-
-    }
-    column_list = ["domain", "show_domains_list"]
-    # column_editable_list=["domain"]
-    # column_filters=["domain","mode"]
-    # form_excluded_columns=['work_with']
-    column_searchable_list = ["domain"]
+    column_list = ["name", "mode", "unique_id"]
+    form_columns = ["name", "mode", "unique_id"]
     column_labels = {
-        "domain": _("domain.domain"),
-        # "mode": _("domain.mode"),
-
-        'show_domains': _('Show Domains'),
-        'show_domains_list': _('Show Domains')
+        "name": _("child.name.label"),
+        "mode": _("child.mode.label"),
+        "unique_id": _("child.uuid.label")
+    }
+    column_descriptions = {
+        "name": _("child.name.dscr"),
+        "mode": _("child.mode.dscr"),
+        "unique_id": _("child.uuid.dscr")
     }
 
-    form_columns = ['domain', 'show_domains']
-
-    def _domain_admin_link(view, context, model, name):
-        admin_link = hiddify.get_account_panel_link(g.account, model.domain)
-        return Markup(f'<div class="btn-group"><a href="{admin_link}" class="btn btn-xs btn-secondary">' + _("admin link") +
-                      f'</a><a href="{admin_link}" class="btn btn-xs btn-info ltr" target="_blank">{model.domain}</a></div>')
-
-    def _domain_ip(view, context, model, name):
-        dip = hutils.network.get_domain_ip(model.domain)
-        myip = hutils.network.get_ip(4)
-        if myip == dip and model.mode == DomainType.direct:
-            badge_type = ''
-        elif dip and model.mode != DomainType.direct and myip != dip:
-            badge_type = 'warning'
-        else:
-            badge_type = 'danger'
-        return Markup(f'<span class="badge badge-{badge_type}">{dip}</span>')
-
-    def _show_domains(view, context, model, name):
-        # return Markup(f'<span class="badge badge-{badge_type}">{dip}</span>')
-        res = ""
-        for d in model.show_domains:
-            res += f'<span class="badge">{d.domain}</span>'
-        return Markup(res)
-
+    def name_formater(view, context, model, name):
+        res = hiddify.get_account_panel_link(g.account, request.host, prefere_path_only=True, child_id=model.id)
+        return Markup(f"<a href='{res}'>{model.name}</a>")
     column_formatters = {
-        # 'domain_ip': _domain_ip,
-        'domain': _domain_admin_link,
-        'show_domains_list': _show_domains
+        'name': name_formater,
     }
-
-    def search_placeholder(self):
-        return f"{_('search')} {_('domain.domain')}"
-
-    # def on_form_prefill(self, form, id):
-        # Get the Domain object being edited
-        # domain = self.session.query(Domain).get(id)
-
-        # Pre-select the related domains in the checkbox list
-        # form.show_domains = [d.id for d in Domain.query.all()]
-
-    def on_model_change(self, form, model, is_created):
-        model.domain = model.domain.lower()
-
-        dip = hutils.network.get_domain_ip(model.domain)
-        if dip == None:
-            raise ValidationError(
-                _("Domain can not be resolved! there is a problem in your domain"))
-        if not hutils.network.check_connection_for_domain(model.domain):
-            raise ValidationError(
-                _("Domain is not correctly mapped to this server!"))
-        # print(model.show_domains)
-        if len(model.show_domains) == Domain.query.count():
-            model.show_domains = []
-
-        hutils.flask.flash_config_success(restart_mode='apply', domain_changed=True)
-
-    def on_model_delete(self, model):
-        if len(ParentDomain.query.all()) <= 1:
-            raise ValidationError(f"at least one domain should exist")
-        hutils.flask.flash_config_success(restart_mode='apply', domain_changed=True)
+    can_export = False
 
     def is_accessible(self):
         if login_required(roles={Role.super_admin})(lambda: True)() != True:
+            return False
+        if statics.current_child_id != 0:
             return False
         return True
 
     def inaccessible_callback(self, name, **kwargs):
         return auth.redirect_to_login()  # type: ignore
+
+    def on_model_change(self, form, model, is_created):
+        if is_created and model.mode != ChildMode.virtual:
+            raise ValidationError(_("Remote nodes are not supported yet!"))
+
+    def after_model_change(self, form, model, is_created):
+        set_hconfig(ConfigEnum.is_parent, True)
+        if is_created and model.mode == ChildMode.virtual:
+            # for k, v in get_hconfigs().items():
+            #     set_hconfig(k, v, model.id)
+
+            items_to_dup = []
+            for p in Proxy.query.filter(Proxy.child_id == 0).all():
+                p = hiddify.clone_model(p)
+                p.child_id = model.id
+                items_to_dup.append(p)
+            for c in StrConfig.query.filter(StrConfig.child_id == 0).all():
+                c = hiddify.clone_model(c)
+                c.child_id = model.id
+                items_to_dup.append(c)
+            for c in BoolConfig.query.filter(BoolConfig.child_id == 0).all():
+                c = hiddify.clone_model(c)
+                c.child_id = model.id
+                items_to_dup.append(c)
+            d = Domain()
+            d.alias = f'{model.name}-def'
+            d.domain = f"{model.id}.{hutils.network.get_ip(4)}.sslip.io"
+            d.child_id = model.id
+            items_to_dup.append(d)
+
+            db.session.bulk_save_objects(items_to_dup)
+            db.session.commit()
+            set_hconfig(ConfigEnum.is_parent, False, model.id)
+            set_hconfig(ConfigEnum.parent_panel, hiddify.get_account_panel_link(g.account, request.host), model.id)

@@ -13,7 +13,8 @@ from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify
 from hiddifypanel.panel.database import db
 import hiddifypanel.models.utils as model_utils
-
+from hiddifypanel import statics
+from flask import g
 MAX_DB_VERSION = 80
 
 
@@ -25,11 +26,16 @@ def init_db():
     hconfig.invalidate_all()
     # get_hconfigs.invalidate_all()
     db_version = int(hconfig(ConfigEnum.db_version) or 0)
-    # set_hconfig(ConfigEnum.db_version, 68)
+    set_hconfig(ConfigEnum.db_version, 69)
     if db_version == latest_db_version():
         return
+    execute('ALTER TABLE proxy DROP INDEX `name`;')
+
     execute("alter table user alter column telegram_id bigint;")
     execute("alter table admin_user alter column telegram_id bigint;")
+
+    add_column(Child.mode)
+    add_column(Child.name)
     add_column(User.lang)
     add_column(AdminUser.lang)
     add_column(User.username)
@@ -106,7 +112,7 @@ def init_db():
 
     if not Child.query.filter(Child.id == 0).first():
         print(Child.query.filter(Child.id == 0).first())
-        db.session.add(Child(unique_id="self", id=0))
+        db.session.add(Child(unique_id=str(uuid.uuid4()), id=0))
         db.session.commit()
         execute(f'update child set id=0 where unique_id="self"')
 
@@ -116,43 +122,54 @@ def init_db():
         execute("update admin_user set id=1 where name='owner'")
 
     upgrade_database()
-
-    db_version = int(hconfig(ConfigEnum.db_version) or 0)
-    start_version = db_version
-    for ver in range(1, MAX_DB_VERSION):
-        if ver <= db_version:
-            continue
-
-        db_action = sys.modules[__name__].__dict__.get(f'_v{ver}', None)
-        if not db_action:
-            continue
-        if start_version == 0 and ver == 10:
-            continue
-
-        hiddify.error(f"Updating db from version {db_version}")
-        db_action()
-        Events.db_init_event.notify(db_version=db_version)
-        hiddify.error(f"Updated successfuly db from version {db_version} to {ver}")
-
-        db_version = ver
-        db.session.commit()
-        set_hconfig(ConfigEnum.db_version, db_version, commit=False)
-
+    Child.query.filter(Child.id == 0).first().mode = ChildMode.virtual
     db.session.commit()
+
+    for child in Child.query.filter(Child.mode == ChildMode.virtual).all():
+        g.__child_id = child.id
+        db_version = int(hconfig(ConfigEnum.db_version, child.id) or 0)
+        start_version = db_version
+        for ver in range(1, MAX_DB_VERSION):
+            if ver <= db_version:
+                continue
+
+            db_action = sys.modules[__name__].__dict__.get(f'_v{ver}', None)
+            if not db_action:
+                continue
+            if start_version == 0 and ver == 10:
+                continue
+
+            hiddify.error(f"Updating db from version {db_version} for node {child.id}")
+            if ver < 70 and child.id == 0:
+                db_action()
+            else:
+                db_action(child.id)
+            Events.db_init_event.notify(db_version=db_version)
+            hiddify.error(f"Updated successfuly db from version {db_version} to {ver}")
+
+            db_version = ver
+            db.session.commit()
+            set_hconfig(ConfigEnum.db_version, db_version, child_id=child.id, commit=False)
+
+        db.session.commit()
+    g.current_child_id = 0
     return BoolConfig.query.all()
 
 
-# def _v50():
-#     add_config_if_not_exist(ConfigEnum.tuic_enable, True)
-#     add_config_if_not_exist(ConfigEnum.tuic_port, random.randint(5000, 20000))
-#     if not Proxy.query.filter(Proxy.name == "TUIC").first():
-#         db.session.add(Proxy(l3='custom', transport='custom', cdn='direct', proto='tuic', enable=True, name="TUIC"))
+def _v70(child_id):
+    Domain.query.filter(Domain.child_id != 0).delete()
+    StrConfig.query.filter(StrConfig.child_id != 0).delete()
+    BoolConfig.query.filter(BoolConfig.child_id != 0).delete()
+    Proxy.query.filter(Proxy.child_id != 0).delete()
+    Child.query.filter(Child.id != 0).delete()
 
-#     if not Proxy.query.filter(Proxy.name == "Hysteria").first():
-#         db.session.add(Proxy(l3='custom', transport='custom', cdn='direct', proto='hysteria', enable=True, name="Hysteria"))
+    child = Child.by_id(0)
+    child.unique_id = str(uuid.uuid4())
+    child.type = ChildMode.virtual
 
-#     add_config_if_not_exist(ConfigEnum.hysteria_enable, True)
-#     add_config_if_not_exist(ConfigEnum.hysteria_port, random.randint(5000, 20000))
+
+# using child_id in lower version is not needed as it is introduced in v70
+
 
 def _v69():
     db.session.bulk_save_objects(get_proxy_rows_v1())
@@ -591,10 +608,10 @@ def make_proxy_rows(cfgs):
             yield Proxy(l3=l3, transport=transport, cdn=cdn, proto=proto, enable=enable, name=name)
 
 
-def add_config_if_not_exist(key: ConfigEnum, val):
-    table = BoolConfig if key.type() == bool else StrConfig
-    if table.query.filter(table.key == key).count() == 0:
-        db.session.add(table(key=key, value=val, child_id=0))
+def add_config_if_not_exist(key: ConfigEnum, val, child_id=statics.current_child_id):
+    old_val = hconfig(key, child_id)
+    if old_val is None:
+        set_hconfig(key, val)
 
 
 def add_column(column):
