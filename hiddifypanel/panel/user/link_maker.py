@@ -283,7 +283,7 @@ def to_link(proxy):
             vmess_data['pbk'] = proxy['reality_pbk']
             vmess_data['sid'] = proxy['reality_short_id']
 
-        if proxy['cdn'] and g.user_agent.get('is_hiddify'):
+        if proxy['cdn'] and g.user_agent.get('supports_xray_fg'):
             add_tls_tricks_to_dict(vmess_data)
         add_mux_to_dict(vmess_data)
 
@@ -330,7 +330,7 @@ def to_link(proxy):
 
     if proxy['proto'] in {'vless', 'trojan'}:
         baseurl = add_mux_to_link(baseurl)
-        if proxy['cdn'] and g.user_agent.get('is_hiddify'):
+        if proxy['cdn'] and g.user_agent.get('supports_xray_fg'):
             baseurl = add_tls_tricks_to_link(baseurl)
 
     # infos+=f'&alpn={proxy["alpn"]}'
@@ -369,12 +369,16 @@ def to_link(proxy):
 
 
 def add_tls_tricks_to_link(link: str) -> str:
-    if hconfig(ConfigEnum.tls_fragment_enable):
-        link += f'&fgsize={hconfig(ConfigEnum.tls_fragment_size)}&fgsleep={hconfig(ConfigEnum.tls_fragment_sleep)}'
-    if hconfig(ConfigEnum.tls_mixed_case):
-        link += '&mc=1'
-    if hconfig(ConfigEnum.tls_padding_enable):
-        link += f'&padsize={hconfig(ConfigEnum.tls_padding_length)}'
+    if g.user_agent.get('is_hiddify'):
+        if hconfig(ConfigEnum.tls_fragment_enable):
+            link += f'&fgsize={hconfig(ConfigEnum.tls_fragment_size)}&fgsleep={hconfig(ConfigEnum.tls_fragment_sleep)}'
+        if hconfig(ConfigEnum.tls_mixed_case):
+            link += '&mc=1'
+        if hconfig(ConfigEnum.tls_padding_enable):
+            link += f'&padsize={hconfig(ConfigEnum.tls_padding_length)}'
+    else:
+        if hconfig(ConfigEnum.tls_fragment_enable):
+            link += f'&fragment={hconfig(ConfigEnum.tls_fragment_size)},{hconfig(ConfigEnum.tls_fragment_sleep)},tlshello'
     return link
 
 
@@ -387,13 +391,17 @@ def add_mux_to_link(link: str) -> str:
 
 
 def add_tls_tricks_to_dict(d: dict):
-    if hconfig(ConfigEnum.tls_fragment_enable):
-        d['fgsize'] = hconfig(ConfigEnum.tls_fragment_size)
-        d['fgsleep'] = hconfig(ConfigEnum.tls_fragment_sleep)
-    if hconfig(ConfigEnum.tls_mixed_case):
-        d['mc'] = 1
-    if hconfig(ConfigEnum.tls_padding_enable):
-        d['padsize'] = hconfig(ConfigEnum.tls_padding_length)
+    if g.user_agent.get('is_hiddify'):
+        if hconfig(ConfigEnum.tls_fragment_enable):
+            d['fgsize'] = hconfig(ConfigEnum.tls_fragment_size)
+            d['fgsleep'] = hconfig(ConfigEnum.tls_fragment_sleep)
+        if hconfig(ConfigEnum.tls_mixed_case):
+            d['mc'] = 1
+        if hconfig(ConfigEnum.tls_padding_enable):
+            d['padsize'] = hconfig(ConfigEnum.tls_padding_length)
+    else:
+        if hconfig(ConfigEnum.tls_fragment_enable):
+            d['fragment'] = f'{hconfig(ConfigEnum.tls_fragment_size)},{hconfig(ConfigEnum.tls_fragment_sleep)},tlshello'
 
 
 def add_mux_to_dict(d: dict):
