@@ -33,9 +33,15 @@ class MTProxiesAPI(MethodView):
         for d in c['domains']:
             if d.mode not in [DomainType.direct, DomainType.relay]:
                 continue
-            hexuuid = hconfig(ConfigEnum.shared_secret, d.child_id).replace('-', '')
+            sec = hconfig(ConfigEnum.shared_secret, d.child_id)
+            secret_hex = ''
+            if hconfig(ConfigEnum.telegram_lib) == 'python':
+                secret_hex = sec.encode('utf-8').hex()[:32]
+            else:
+                secret_hex = sec.replace('-', '')
             telegram_faketls_domain_hex = hconfig(ConfigEnum.telegram_fakedomain, d.child_id).encode('utf-8').hex()
-            server_link = f'tg://proxy?server={d.domain}&port=443&secret=ee{hexuuid}{telegram_faketls_domain_hex}'
+            server_link = f'tg://proxy?server={d.domain}&port=443&secret=ee{secret_hex}{telegram_faketls_domain_hex}'
+
             dto = MtproxySchema()
             dto.title = d.alias or d.domain
             dto.link = server_link
