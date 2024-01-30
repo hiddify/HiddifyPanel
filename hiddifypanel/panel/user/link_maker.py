@@ -369,17 +369,17 @@ def to_link(proxy):
 
 
 def add_tls_tricks_to_link(link: str) -> str:
-    if g.user_agent.get('is_hiddify'):
-        if hconfig(ConfigEnum.tls_fragment_enable):
-            link += f'&fgsize={hconfig(ConfigEnum.tls_fragment_size)}&fgsleep={hconfig(ConfigEnum.tls_fragment_sleep)}'
-        if hconfig(ConfigEnum.tls_mixed_case):
-            link += '&mc=1'
-        if hconfig(ConfigEnum.tls_padding_enable):
-            link += f'&padsize={hconfig(ConfigEnum.tls_padding_length)}'
-    else:
-        if hconfig(ConfigEnum.tls_fragment_enable):
-            link += f'&fragment={hconfig(ConfigEnum.tls_fragment_size)},{hconfig(ConfigEnum.tls_fragment_sleep)},tlshello'
+    if hconfig(ConfigEnum.tls_fragment_enable):
+        link += f'&fragment={hconfig(ConfigEnum.tls_fragment_size)},{hconfig(ConfigEnum.tls_fragment_sleep)},tlshello'
     return link
+
+    # for hiddify-next client
+    # if hconfig(ConfigEnum.tls_fragment_enable):
+    # link += f'&fgsize={hconfig(ConfigEnum.tls_fragment_size)}&fgsleep={hconfig(ConfigEnum.tls_fragment_sleep)}'
+    # if hconfig(ConfigEnum.tls_mixed_case):
+    # link += '&mc=1'
+    # if hconfig(ConfigEnum.tls_padding_enable):
+    # link += f'&padsize={hconfig(ConfigEnum.tls_padding_length)}'
 
 
 def add_mux_to_link(link: str) -> str:
@@ -391,21 +391,23 @@ def add_mux_to_link(link: str) -> str:
 
 
 def add_tls_tricks_to_dict(d: dict):
-    if g.user_agent.get('is_hiddify'):
-        if hconfig(ConfigEnum.tls_fragment_enable):
-            d['fgsize'] = hconfig(ConfigEnum.tls_fragment_size)
-            d['fgsleep'] = hconfig(ConfigEnum.tls_fragment_sleep)
-        if hconfig(ConfigEnum.tls_mixed_case):
-            d['mc'] = 1
-        if hconfig(ConfigEnum.tls_padding_enable):
-            d['padsize'] = hconfig(ConfigEnum.tls_padding_length)
-    else:
-        if hconfig(ConfigEnum.tls_fragment_enable):
-            d['fragment'] = f'{hconfig(ConfigEnum.tls_fragment_size)},{hconfig(ConfigEnum.tls_fragment_sleep)},tlshello'
+    if hconfig(ConfigEnum.tls_fragment_enable):
+        d['fragment'] = f'{hconfig(ConfigEnum.tls_fragment_size)},{hconfig(ConfigEnum.tls_fragment_sleep)},tlshello'
+
+    # for hiddify-next client
+    # if hconfig(ConfigEnum.tls_fragment_enable):
+    #     d['fgsize'] = hconfig(ConfigEnum.tls_fragment_size)
+    #     d['fgsleep'] = hconfig(ConfigEnum.tls_fragment_sleep)
+    # if hconfig(ConfigEnum.tls_mixed_case):
+    #     d['mc'] = 1
+    # if hconfig(ConfigEnum.tls_padding_enable):
+    #     d['padsize'] = hconfig(ConfigEnum.tls_padding_length)
 
 
 def add_mux_to_dict(d: dict):
+    # TODO: adjust for other client
     if hconfig(ConfigEnum.mux_enable):
+        # hiddify supported format
         d['mux'] = hconfig(ConfigEnum.mux_protocol)
         d['mux_max'] = hconfig(ConfigEnum.mux_max_connections)
         d['mux_min'] = hconfig(ConfigEnum.mux_min_streams)
