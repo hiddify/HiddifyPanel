@@ -340,9 +340,9 @@ def to_link(proxy):
         baseurl += f'&serviceName={proxy["grpc_service_name"]}&mode={proxy["grpc_mode"]}'
     # print(proxy['cdn'],proxy["transport"])
     if request.args.get("fragment"):
-        baseurl += f'&fragment='+request.args.get("fragment")
+        baseurl += f'&fragment='+request.args.get("fragment")  # type: ignore
     if "ws" == proxy["transport"] and proxy['cdn'] and request.args.get("fragment_v1"):
-        baseurl += f'&fragment_v1='+request.args.get("fragment_v1")
+        baseurl += f'&fragment_v1='+request.args.get("fragment_v1")  # type: ignore
     if 'vless' == proxy['proto']:
         baseurl += "&encryption=none"
     if proxy.get('fingerprint', 'none') != 'none':
@@ -369,11 +369,12 @@ def to_link(proxy):
 
 
 def add_tls_tricks_to_link(link: str) -> str:
-    if hconfig(ConfigEnum.tls_fragment_enable):
-        link += f'&fragment={hconfig(ConfigEnum.tls_fragment_size)},{hconfig(ConfigEnum.tls_fragment_sleep)},tlshello'
+    hconfigs = get_hconfigs()
+    if hconfigs[ConfigEnum.tls_fragment_enable]:
+        link += f'&fragment={hconfigs[ConfigEnum.tls_fragment_size]},{hconfigs[ConfigEnum.tls_fragment_sleep]},tlshello'
     return link
 
-    # for hiddify-next client
+    # old hiddify-next format
     # if hconfig(ConfigEnum.tls_fragment_enable):
     # link += f'&fgsize={hconfig(ConfigEnum.tls_fragment_size)}&fgsleep={hconfig(ConfigEnum.tls_fragment_sleep)}'
     # if hconfig(ConfigEnum.tls_mixed_case):
@@ -383,18 +384,20 @@ def add_tls_tricks_to_link(link: str) -> str:
 
 
 def add_mux_to_link(link: str) -> str:
-    if hconfig(ConfigEnum.mux_enable):
-        link += f'&mux={hconfig(ConfigEnum.mux_protocol)}&mux_max={hconfig(ConfigEnum.mux_max_connections)}&mux_min={hconfig(ConfigEnum.mux_min_streams)}&mux_pad={hconfig(ConfigEnum.mux_padding_enable)}'
+    hconfigs = get_hconfigs()
+    if hconfigs[ConfigEnum.mux_enable]:
+        link += f'&mux={hconfigs[ConfigEnum.mux_protocol]}&mux_max={hconfigs[ConfigEnum.mux_max_connections]}&mux_min={hconfigs[ConfigEnum.mux_min_streams]}&mux_pad={hconfigs[ConfigEnum.mux_padding_enable]}'
     if hconfig(ConfigEnum.mux_brutal_enable):
-        link += f'&mux_up={hconfig(ConfigEnum.mux_brutal_up_mbps)}&mux_down={hconfig(ConfigEnum.mux_brutal_down_mbps)}'
+        link += f'&mux_up={hconfigs[ConfigEnum.mux_brutal_up_mbps]}&mux_down={hconfigs[ConfigEnum.mux_brutal_down_mbps]}'
     return link
 
 
 def add_tls_tricks_to_dict(d: dict):
-    if hconfig(ConfigEnum.tls_fragment_enable):
-        d['fragment'] = f'{hconfig(ConfigEnum.tls_fragment_size)},{hconfig(ConfigEnum.tls_fragment_sleep)},tlshello'
+    hconfigs = get_hconfigs()
+    if hconfigs[ConfigEnum.tls_fragment_enable]:
+        d['fragment'] = f'{hconfigs[ConfigEnum.tls_fragment_size]},{hconfigs[ConfigEnum.tls_fragment_sleep]},tlshello'
 
-    # for hiddify-next client
+    # old hiddify-next format
     # if hconfig(ConfigEnum.tls_fragment_enable):
     #     d['fgsize'] = hconfig(ConfigEnum.tls_fragment_size)
     #     d['fgsleep'] = hconfig(ConfigEnum.tls_fragment_sleep)
@@ -405,20 +408,21 @@ def add_tls_tricks_to_dict(d: dict):
 
 
 def add_mux_to_dict(d: dict):
+    hconfigs = get_hconfigs()
     # TODO: adjust for other client
-    if hconfig(ConfigEnum.mux_enable):
+    if hconfigs[ConfigEnum.mux_enable]:
         # hiddify supported format
-        d['mux'] = hconfig(ConfigEnum.mux_protocol)
-        d['mux_max'] = hconfig(ConfigEnum.mux_max_connections)
-        d['mux_min'] = hconfig(ConfigEnum.mux_min_streams)
-        d['mux_pad'] = hconfig(ConfigEnum.mux_padding_enable)
+        d['mux'] = hconfigs[ConfigEnum.mux_protocol]
+        d['mux_max'] = hconfigs[ConfigEnum.mux_max_connections]
+        d['mux_min'] = hconfigs[ConfigEnum.mux_min_streams]
+        d['mux_pad'] = hconfigs[ConfigEnum.mux_padding_enable]
         # the hiddify next client doesn't support mux max streams
         # vmess_data['mux_max_streams'] = hconfig(ConfigEnum.mux_max_streams)
 
         # handle brutal tcp
-        if hconfig(ConfigEnum.mux_brutal_enable):
-            d['mux_up'] = hconfig(ConfigEnum.mux_brutal_up_mbps)
-            d['mux_down'] = hconfig(ConfigEnum.mux_brutal_down_mbps)
+        if hconfigs[ConfigEnum.mux_brutal_enable]:
+            d['mux_up'] = hconfigs[ConfigEnum.mux_brutal_up_mbps]
+            d['mux_down'] = hconfigs[ConfigEnum.mux_brutal_down_mbps]
 
 # endregion
 
