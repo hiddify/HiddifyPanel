@@ -193,8 +193,8 @@ class UserView(FlaskView):
             resp = ""
         else:
             resp = link_maker.make_full_singbox_config(**c)
-
-        return add_headers(resp, c)
+        
+        return add_headers(resp, c,'application/json')
 
     @ route('/singbox.json', methods=["GET", "HEAD"])
     @login_required(roles={Role.user})
@@ -363,9 +363,9 @@ def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
     }
 
 
-def add_headers(res, c):
+def add_headers(res, c,mimetype = "text/plain"):
     resp = Response(res)
-    resp.mimetype = "text/plain"
+    resp.mimetype = mimetype
     resp.headers['Subscription-Userinfo'] = f"upload=0;download={c['usage_current_b']};total={c['usage_limit_b']};expire={c['expire_s']}"
     resp.headers['profile-web-page-url'] = request.base_url.rsplit('/', 1)[0].replace("http://", "https://")+"/"
 

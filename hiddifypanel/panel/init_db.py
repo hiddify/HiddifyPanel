@@ -124,6 +124,8 @@ def init_db():
 
     upgrade_database()
     Child.query.filter(Child.id == 0).first().mode = ChildMode.virtual
+    if db_version<69:_v70(0)
+
     db.session.commit()
 
     for child in Child.query.filter(Child.mode == ChildMode.virtual).all():

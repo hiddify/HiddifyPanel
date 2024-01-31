@@ -5,7 +5,7 @@ from flask import current_app as app
 from apiflask.fields import String
 from hiddifypanel.panel.auth import login_required
 
-from hiddifypanel.models.config import hconfig
+from hiddifypanel.models.config import get_hconfigs, hconfig
 from hiddifypanel.models.config_enum import ConfigEnum
 from hiddifypanel.models.domain import DomainType
 from hiddifypanel.models.role import Role
@@ -33,9 +33,13 @@ class MTProxiesAPI(MethodView):
         for d in c['domains']:
             if d.mode not in [DomainType.direct, DomainType.relay]:
                 continue
-            hexuuid = hconfig(ConfigEnum.shared_secret, d.child_id).replace('-', '')
+
+            # make mtproxy link
+            raw_sec = hconfig(ConfigEnum.shared_secret, d.child_id)
+            secret_hex = raw_sec.encode('utf-8').hex()[:32]
             telegram_faketls_domain_hex = hconfig(ConfigEnum.telegram_fakedomain, d.child_id).encode('utf-8').hex()
-            server_link = f'tg://proxy?server={d.domain}&port=443&secret=ee{hexuuid}{telegram_faketls_domain_hex}'
+            server_link = f'tg://proxy?server={d.domain}&port=443&secret=ee{secret_hex}{telegram_faketls_domain_hex}'
+
             dto = MtproxySchema()
             dto.title = d.alias or d.domain
             dto.link = server_link

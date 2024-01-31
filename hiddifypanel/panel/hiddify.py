@@ -231,7 +231,7 @@ def get_ids_without_parent(input_dict):
 
 
 def set_db_from_json(json_data, override_child_id=None, set_users=True, set_domains=True, set_proxies=True, set_settings=True, remove_domains=False, remove_users=False,
-                     override_unique_id=True, set_admins=True, override_root_admin=False, replace_owner_admin=False, fix_admin_hierarcj=True):
+                     override_unique_id=True, set_admins=True, override_root_admin=False, replace_owner_admin=False, fix_admin_hierarchy=True):
     new_rows = []
 
     uuids_without_parent = get_ids_without_parent({u['uuid']: u for u in json_data['admin_users']})
@@ -390,7 +390,7 @@ def get_wg_private_public_psk_pair():
         return private_key, public_key, psk
     except subprocess.CalledProcessError as e:
         print(f"Error: {e}")
-        return None, None
+        return None, None,None
 
 
 def get_account_panel_link(account: BaseAccount, host: str, is_https: bool = True, prefere_path_only: bool = False, child_id=None):
