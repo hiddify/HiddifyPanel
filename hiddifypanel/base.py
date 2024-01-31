@@ -60,7 +60,7 @@ def create_app(cli=False, **config):
     app.config['SESSION_TYPE'] = 'redis'
     app.config['SESSION_REDIS'] = redis_client
     app.config['SESSION_PERMANENT'] = True
-    app.config['PERMANENT_SESSION_LIFETIME'] = datetime.timedelta(days=2)
+    app.config['PERMANENT_SESSION_LIFETIME'] = datetime.timedelta(days=10)
     Session(app)
 
     app.jinja_env.line_statement_prefix = '%'

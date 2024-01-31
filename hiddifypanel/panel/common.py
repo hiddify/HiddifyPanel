@@ -103,7 +103,8 @@ def init_app(app: APIFlask):
         g.__child_id = 0
         g.uuid = None
         g.proxy_path = None
-        
+        g.user_agent = hutils.flask.get_user_agent()
+
         if values:
             g.proxy_path = values.pop('proxy_path', None)
             if 'secret_uuid' in values:
@@ -121,9 +122,6 @@ def init_app(app: APIFlask):
 
     @app.before_request
     def base_middleware():
-
-        g.user_agent = hutils.flask.get_user_agent()
-
         if request.endpoint == 'static' or request.endpoint == "videos":
             return
 
@@ -132,7 +130,7 @@ def init_app(app: APIFlask):
 
         g.proxy_path = hutils.flask.get_proxy_path_from_url(request.url)
         hutils.flask.proxy_path_validator(g.proxy_path)
-        auth.auth_before_request()
+
         # setup dark mode
         if request.args.get('darkmode') != None:
             session['darkmode'] = request.args.get(
@@ -152,5 +150,8 @@ def init_app(app: APIFlask):
             g.bot = telegrambot.bot
         else:
             g.bot = None
+
+        if auth_before := auth.auth_before_request():
+            return auth_before
 
     app.jinja_env.globals['generate_github_issue_link_for_admin_sidebar'] = hutils.github_issue.generate_github_issue_link_for_admin_sidebar
