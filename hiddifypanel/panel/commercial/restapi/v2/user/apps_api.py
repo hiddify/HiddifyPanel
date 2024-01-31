@@ -173,27 +173,27 @@ class AppAPI(MethodView):
         base = f'https://{urlparse(request.base_url).hostname}'
         url = ''
         if app_name == _('app.hiddify.next.title'):
-            url = base + static_url_for('apps-icon/hiddify_next.ico')
+            url = base + static_url_for(filename='apps-icon/hiddify_next.ico')
         elif app_name == _('app.hiddifyn.title'):
-            url = base + static_url_for('apps-icon/hiddifyn.ico')
+            url = base + static_url_for(filename='apps-icon/hiddifyn.ico')
         elif app_name == _('app.v2rayng.title'):
-            url = base + static_url_for('apps-icon/v2rayng.ico')
+            url = base + static_url_for(filename='apps-icon/v2rayng.ico')
         elif app_name == _('app.hiddifyng.title'):
-            url = base + static_url_for('apps-icon/hiddifyng.ico')
+            url = base + static_url_for(filename='apps-icon/hiddifyng.ico')
         elif app_name == _('app.hiddify-clash-android.title'):
-            url = base + static_url_for('apps-icon/hiddify_android.ico')
+            url = base + static_url_for(filename='apps-icon/hiddify_android.ico')
         elif app_name == _('app.foxray.title'):
-            url = base + static_url_for('apps-icon/foxray.ico')
+            url = base + static_url_for(filename='apps-icon/foxray.ico')
         elif app_name == _('app.shadowrocket.title'):
-            url = base + static_url_for('apps-icon/shadowrocket.ico')
+            url = base + static_url_for(filename='apps-icon/shadowrocket.ico')
         elif app_name == _('app.streisand.title'):
-            url = base + static_url_for('apps-icon/streisand.ico')
+            url = base + static_url_for(filename='apps-icon/streisand.ico')
         elif app_name == _('app.loon.title'):
-            url = base + static_url_for('apps-icon/loon.ico')
+            url = base + static_url_for(filename='apps-icon/loon.ico')
         elif app_name == _('app.stash.title'):
-            url = base + static_url_for('apps-icon/stash.ico')
+            url = base + static_url_for(filename='apps-icon/stash.ico')
         elif app_name == _('app.hiddify-clash-desktop.title'):
-            url = base + static_url_for('apps-icon/hiddify_clash.ico')
+            url = base + static_url_for(filename='apps-icon/hiddify_clash.ico')
         elif app_name == _('app.nekobox.title'):
             url = base + static_url_for(filename='apps-icon/nekobox.ico')
 
