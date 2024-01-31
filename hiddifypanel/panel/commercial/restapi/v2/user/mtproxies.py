@@ -34,10 +34,6 @@ class MTProxiesAPI(MethodView):
             if d.mode not in [DomainType.direct, DomainType.relay]:
                 continue
 
-            t_lib = hconfig(ConfigEnum.telegram_lib, d.child_id)
-            if t_lib not in ['python', 'tgo']:
-                continue
-
             # make mtproxy link
             raw_sec = hconfig(ConfigEnum.shared_secret, d.child_id)
             secret_hex = raw_sec.encode('utf-8').hex()[:32]
