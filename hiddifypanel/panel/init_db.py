@@ -13,7 +13,7 @@ from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify
 from hiddifypanel.panel.database import db
 import hiddifypanel.models.utils as model_utils
-from hiddifypanel import statics
+
 from flask import g
 MAX_DB_VERSION = 80
 
@@ -112,21 +112,22 @@ def init_db():
 
     if not Child.query.filter(Child.id == 0).first():
         print(Child.query.filter(Child.id == 0).first())
-        db.session.add(Child(unique_id=str(uuid.uuid4()), id=0))
+        tmp_uuid = str(uuid.uuid4())
+        db.session.add(Child(unique_id=tmp_uuid, name="Root"), id=0)
         db.session.commit()
-        execute(f'update child set id=0 where unique_id="self"')
+        dexecute(f'update child set id=0 where unique_id="{tmp_uuid}"')
 
     if not AdminUser.query.filter(AdminUser.id == 1).first():
         db.session.add(AdminUser(id=1, uuid=str(uuid.uuid4()), name="Owner", mode=AdminMode.super_admin, comment=""))
         db.session.commit()
-        execute("update admin_user set id=1 where name='owner'")
+        execute("update admin_user set id=1 where name='Owner'")
 
     upgrade_database()
     Child.query.filter(Child.id == 0).first().mode = ChildMode.virtual
     db.session.commit()
 
     for child in Child.query.filter(Child.mode == ChildMode.virtual).all():
-        g.__child_id = child.id
+        g.child = child
         db_version = int(hconfig(ConfigEnum.db_version, child.id) or 0)
         start_version = db_version
         for ver in range(1, MAX_DB_VERSION):
@@ -152,7 +153,7 @@ def init_db():
             set_hconfig(ConfigEnum.db_version, db_version, child_id=child.id, commit=False)
 
         db.session.commit()
-    g.current_child_id = 0
+    g.child = Child.by_id(0)
     return BoolConfig.query.all()
 
 
@@ -383,7 +384,7 @@ def _v20():
         if direct_domain:
             direct_host = direct_domain.domain
         else:
-            direct_host = hutils.network.get_ip(4)
+            direct_host = hutils.network.get_ip_str(4)
 
         for fd in fake_domains:
             if not Domain.query.filter(Domain.domain == fd).first():
@@ -420,7 +421,7 @@ def _v17():
 
 
 def _v1():
-    external_ip = str(hutils.network.get_ip(4))
+    external_ip = str(hutils.network.get_ip_str(4))
     rnd_domains = hutils.network.get_random_domains(5)
 
     data = [
@@ -608,7 +609,9 @@ def make_proxy_rows(cfgs):
             yield Proxy(l3=l3, transport=transport, cdn=cdn, proto=proto, enable=enable, name=name)
 
 
-def add_config_if_not_exist(key: ConfigEnum, val, child_id=statics.current_child_id):
+def add_config_if_not_exist(key: ConfigEnum, val, child_id=None):
+    if child_id == None:
+        child_id = hutils.current_child_id()
     old_val = hconfig(key, child_id)
     if old_val is None:
         set_hconfig(key, val)

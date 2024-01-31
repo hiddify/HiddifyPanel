@@ -1,9 +1,9 @@
-from hiddifypanel import statics
 from flask import current_app, flash as flask_flash, g, request
 from apiflask import abort as apiflask_abort
 from flask_babel import lazy_gettext as _
 from flask import url_for, Markup  # type: ignore
 from urllib.parse import urlparse
+from hiddifypanel import hutils
 import user_agents
 import re
 
@@ -35,7 +35,7 @@ def static_url_for(**values):
 
 
 def hurl_for(endpoint, **values):
-    if statics.current_child_id != 0:
+    if hutils.current_child_id() != 0:
 
         new_endpoint = "child_"+endpoint
         if new_endpoint in current_app.view_functions:

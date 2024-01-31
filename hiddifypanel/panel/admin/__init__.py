@@ -37,8 +37,8 @@ def init_app(app):
     flaskadmin.add_view(UserAdmin(User, db.session))
     flaskadmin.add_view(DomainAdmin(Domain, db.session))
     flaskadmin.add_view(AdminstratorAdmin(AdminUser, db.session))
-    from .ChildAdmin import ChildAdmin
-    flaskadmin.add_view(ChildAdmin(Child, db.session))
+    from .NodeAdmin import NodeAdmin
+    flaskadmin.add_view(NodeAdmin(Child, db.session))
     from .Dashboard import Dashboard
     from .SettingAdmin import SettingAdmin
     from .commercial_info import CommercialInfo

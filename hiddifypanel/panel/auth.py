@@ -129,79 +129,66 @@ def login_by_uuid(uuid, is_admin: bool):
     return login_user(account, force=True)
 
 
+def auth_before_request():
+    # print("before_request")
+    account = None
+
+    is_admin_path = hutils.flask.is_admin_proxy_path()
+    next_url = None
+
+    if g.uuid:
+        # print("uuid", g.uuid, is_admin_path)
+        account = get_account_by_uuid(g.uuid, is_admin_path)
+        # print(account)
+        if not account:
+            return logout_redirect()
+
+        next_url = request.url.replace(f'/{g.uuid}/', '/admin/' if is_admin_path else '/client/').replace("/admin/admin/", '/admin/').replace("http://", "https://")
+
+    elif auth_header := request.headers.get("Hiddify_API_KEY"):
+        # print("auth_header", auth_header)
+        apikey = hutils.auth.get_apikey_from_auth_header(auth_header)
+        account = get_account_by_api_key(apikey, is_admin_path)
+        if not account:
+            return logout_redirect()
+    elif request.authorization:
+        # print('request.authorization', request.authorization)
+        uname = request.authorization.username
+        pword = request.authorization.password
+        if not pword:
+            # print("NO PASSWORD so it is uuid")
+            account = get_account_by_uuid(uname, is_admin_path)
+        else:
+            account = AdminUser.by_username_password(uname, pword) if is_admin_path else User.by_username_password(uname, pword)
+        if not account:
+            return logout_redirect()
+
+    elif (session_user := session.get('_user_id')) and not is_admin_path:
+        # print('session_user', session_user)
+        account = User.by_id(int(session_user.split("_")[1]))  # type: ignore
+        if not account:
+            return logout_redirect()
+    elif (session_admin := session.get('_admin_id')) and is_admin_path:
+        # print('session_admin', session_admin)
+        account = AdminUser.by_id(int(session_admin.split("_")[1]))  # type: ignore
+        if not account:
+            return logout_redirect()
+
+    if account:
+        g.__account_store = account
+        # g.account_uuid = account.uuid
+        g.is_admin = hutils.flask.is_admin_role(account.role)  # type: ignore
+        login_user(account, force=True)
+        # print("loggining in")
+        if next_url is not None and g.user_agent['is_browser'] and ".webmanifest" not in request.path:
+            return redirect(next_url)
+
+
 def init_app(app):
     # login_manager = LoginManager.()
     # login_manager = CustumLoginManager()
     # login_manager.init_app(app)
-
-    @app.before_request
-    def auth():
-        # print("before_request")
-        account = None
-
-        is_admin_path = hutils.flask.is_admin_proxy_path()
-        next_url = None
-
-        if g.uuid:
-            # print("uuid", g.uuid, is_admin_path)
-            account = get_account_by_uuid(g.uuid, is_admin_path)
-            # print(account)
-            if not account:
-                return logout_redirect()
-
-            next_url = request.url.replace(f'/{g.uuid}/', '/admin/' if is_admin_path else '/client/').replace("/admin/admin/", '/admin/').replace("http://", "https://")
-
-        elif auth_header := request.headers.get("Hiddify_API_KEY"):
-            # print("auth_header", auth_header)
-            apikey = hutils.auth.get_apikey_from_auth_header(auth_header)
-            account = get_account_by_api_key(apikey, is_admin_path)
-            if not account:
-                return logout_redirect()
-        elif request.authorization:
-            # print('request.authorization', request.authorization)
-            uname = request.authorization.username
-            pword = request.authorization.password
-            if not pword:
-                # print("NO PASSWORD so it is uuid")
-                account = get_account_by_uuid(uname, is_admin_path)
-            else:
-                account = AdminUser.by_username_password(uname, pword) if is_admin_path else User.by_username_password(uname, pword)
-            if not account:
-                return logout_redirect()
-
-        elif (session_user := session.get('_user_id')) and not is_admin_path:
-            # print('session_user', session_user)
-            account = User.by_id(int(session_user.split("_")[1]))  # type: ignore
-            if not account:
-                return logout_redirect()
-        elif (session_admin := session.get('_admin_id')) and is_admin_path:
-            # print('session_admin', session_admin)
-            account = AdminUser.by_id(int(session_admin.split("_")[1]))  # type: ignore
-            if not account:
-                return logout_redirect()
-
-        if account:
-            g.__account_store = account
-            # g.account_uuid = account.uuid
-            g.is_admin = hutils.flask.is_admin_role(account.role)  # type: ignore
-            login_user(account, force=True)
-            # print("loggining in")
-            if next_url is not None and g.user_agent['is_browser'] and ".webmanifest" not in request.path:
-                return redirect(next_url)
-
-    @app.url_value_preprocessor
-    def pull_secret_code(endpoint, values):
-        # print("url_value_preprocessor")
-        g.uuid = None
-        g.proxy_path = None
-        # print(values)
-        if values:
-            g.proxy_path = values.pop('proxy_path', None)
-            if 'secret_uuid' in values:
-                g.uuid = values.pop('secret_uuid', None)
-    # @login_manager.user_loader
-
-    # @login_manager.unauthorized_handler
+    pass
 
 
 def logout_redirect():

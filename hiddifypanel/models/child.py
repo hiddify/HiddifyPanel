@@ -25,5 +25,5 @@ class Child(db.Model, SerializerMixin):
     dailyusages = db.relationship('DailyUsage', cascade="all,delete", backref='child')
 
     @classmethod
-    def by_id(cls, id: int) -> Child:
+    def by_id(cls, id: int) -> "Child":
         return Child.query.filter(Child.id == id).first()

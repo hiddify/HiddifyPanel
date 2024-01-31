@@ -1,11 +1,11 @@
 from sqlalchemy_serializer import SerializerMixin
 
-from hiddifypanel import Events
+from hiddifypanel import Events, hutils
 from hiddifypanel.cache import cache
 from hiddifypanel.panel.database import db
 from hiddifypanel.hutils.utils import error
 from .config_enum import ConfigEnum
-from hiddifypanel import statics
+from flask import g
 
 
 class BoolConfig(db.Model, SerializerMixin):
@@ -37,7 +37,10 @@ class StrConfig(db.Model, SerializerMixin):
 
 
 @cache.cache(ttl=500)
-def hconfig(key: ConfigEnum, child_id: int = statics.current_child_id):
+def hconfig(key: ConfigEnum, child_id: int = None) -> str | int | None:
+    if child_id == None:
+        child_id = hutils.current_child_id()
+
     value = None
     try:
         str_conf = StrConfig.query.filter(StrConfig.key == key, StrConfig.child_id == child_id).first()
@@ -62,13 +65,15 @@ def hconfig(key: ConfigEnum, child_id: int = statics.current_child_id):
     return value
 
 
-def set_hconfig(key: ConfigEnum, value: str | bool, child_id: int = statics.current_child_id, commit: bool = True):
+def set_hconfig(key: ConfigEnum, value: str | bool, child_id: int = None, commit: bool = True):
+    if child_id == None:
+        child_id = hutils.current_child_id()
     # hconfig.invalidate(key, child_id)
     # get_hconfigs.invalidate(child_id)
     hconfig.invalidate(key, child_id)
     hconfig.invalidate(key, child_id=child_id)
     hconfig.invalidate(key=key, child_id=child_id)
-    if child_id == statics.current_child_id:
+    if child_id == hutils.current_child_id():
         hconfig.invalidate(key)
     # hconfig.invalidate_all()
     get_hconfigs.invalidate_all()
@@ -100,7 +105,10 @@ def set_hconfig(key: ConfigEnum, value: str | bool, child_id: int = statics.curr
 
 
 @cache.cache(ttl=500,)
-def get_hconfigs(child_id: int = statics.current_child_id, json=False):
+def get_hconfigs(child_id: int = None, json=False):
+    if child_id == None:
+        child_id = hutils.current_child_id()
+
     return {**{f'{u.key}' if json else u.key: u.value for u in BoolConfig.query.filter(BoolConfig.child_id == child_id).all()},
             **{f'{u.key}' if json else u.key: u.value for u in StrConfig.query.filter(StrConfig.child_id == child_id).all()},
             # ConfigEnum.telegram_fakedomain:hdomain(DomainType.telegram_faketls),
@@ -115,7 +123,9 @@ def get_hconfigs_childs(child_ids: list[int], json=False):
     return {c: get_hconfigs(c, json) for c in child_ids}
 
 
-def add_or_update_config(commit: bool = True, child_id: int = statics.current_child_id, override_unique_id: bool = True, **config):
+def add_or_update_config(commit: bool = True, child_id: int = None, override_unique_id: bool = True, **config):
+    if child_id == None:
+        child_id = hutils.current_child_id()
     c = config['key']
     ckey = ConfigEnum(c)
     if c == ConfigEnum.unique_id and not override_unique_id:

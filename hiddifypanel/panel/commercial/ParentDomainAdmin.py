@@ -61,7 +61,7 @@ class ParentDomainAdmin(AdminLTEModelView):
 
     def _domain_ip(view, context, model, name):
         dip = hutils.network.get_domain_ip(model.domain)
-        myip = hutils.network.get_ip(4)
+        myip = hutils.network.get_ip_str(4)
         if myip == dip and model.mode == DomainType.direct:
             badge_type = ''
         elif dip and model.mode != DomainType.direct and myip != dip:

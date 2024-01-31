@@ -1,7 +1,8 @@
 import glob
+import re
 import json
 import subprocess
-from hiddifypanel import statics
+
 from datetime import datetime
 from typing import Tuple
 from cryptography.hazmat.primitives import serialization
@@ -30,7 +31,7 @@ to_gig_d = 1000*1000*1000
 
 #     # run temporary_access.sh
 #     commander(Command.temporary_access, port=random_port)
-#     temp_admin_link = f"http://{hutils.network.get_ip(4)}:{random_port}{get_admin_path()}"
+#     temp_admin_link = f"http://{hutils.network.get_ip_str(4)}:{random_port}{get_admin_path()}"
 #     g.temp_admin_link = temp_admin_link
 
 
@@ -187,7 +188,7 @@ def check_need_reset(old_configs, do=False):
 
 
 def get_child(unique_id):
-    child_id = statics.current_child_id
+    child_id = hutils.current_child_id()
     if unique_id is None or unique_id == "default":
         child_id = 0
     else:
@@ -310,7 +311,7 @@ def get_domain_btn_link(domain):
 
 def debug_flash_if_not_in_the_same_asn(domain):
     from hiddifypanel.hutils.network.auto_ip_selector import IPASN
-    ipv4 = hutils.network.get_ip(4)
+    ipv4 = hutils.network.get_ip_str(4)
     dip = hutils.network.get_domain_ip(domain)
     try:
         if IPASN:
@@ -392,7 +393,9 @@ def get_wg_private_public_psk_pair():
         return None, None
 
 
-def get_account_panel_link(account: BaseAccount, host: str, is_https: bool = True, prefere_path_only: bool = False, child_id=statics.current_child_id):
+def get_account_panel_link(account: BaseAccount, host: str, is_https: bool = True, prefere_path_only: bool = False, child_id=None):
+    if child_id == None:
+        child_id = hutils.current_child_id()
     is_admin = isinstance(account, AdminUser)
     basic_auth = is_admin
 
@@ -429,5 +432,3 @@ def clone_model(model):
 
     # data.pop('id')
     return new_model
-
-

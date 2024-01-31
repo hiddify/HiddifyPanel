@@ -10,3 +10,12 @@ from . import importer
 
 from . import system
 from . import network
+
+
+from flask import g, has_app_context
+
+
+def current_child_id() -> int:
+    if has_app_context() and hasattr(g, "child"):
+        return g.child.id
+    return 0

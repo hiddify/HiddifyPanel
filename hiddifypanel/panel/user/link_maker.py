@@ -57,7 +57,6 @@ def make_proxy(proxy: Proxy, domain_db: Domain, phttp=80, ptls=443, pport=None):
     if l3 == "kcp":
         port = hconfigs[ConfigEnum.kcp_ports].split(",")[0]
     elif proxy.proto == ProxyProto.wireguard:
-        print(hconfigs)
         port = hconfigs[ConfigEnum.wireguard_port]
     elif proxy.proto == "tuic":
         port = domain_db.internal_port_tuic

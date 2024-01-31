@@ -9,7 +9,6 @@ from hiddifypanel import hutils
 import hiddifypanel.panel.auth as auth
 from hiddifypanel.panel.auth import current_account
 from apiflask import APIFlask, HTTPError, abort
-from hiddifypanel import statics
 
 
 def init_app(app: APIFlask):
@@ -73,33 +72,19 @@ def init_app(app: APIFlask):
 
         return render_template('error.html', error=e), e.status_code
 
-    # @app.spec_processor
-    # def set_default_path_values(spec):
-    #     # for path in spec['paths'].values():
-    #         # for operation in path.values():
-    #             # if 'parameters' in operation:
-    #                 # for parameter in operation['parameters']:
-    #                 #     if parameter['name'] == 'proxy_path':
-    #                 #         parameter['schema'] = {'type': 'string', 'default': g.proxy_path}
-    #                 # elif parameter['name'] == 'user_secret':
-    #                 #     parameter['schema'] = {'type': 'string', 'default': g.account_uuid}
-    #     return spec
-
     @app.url_defaults
     def add_proxy_path_user(endpoint, values):
         if 'proxy_path' not in values:
             if hutils.flask.is_admin_role(current_account.role):
                 values['proxy_path'] = hconfig(ConfigEnum.proxy_path_admin)
-            # elif 'static' in endpoint:
-                #     values['proxy_path'] = hconfig(ConfigEnum.proxy_path)
             elif hutils.flask.is_user_panel_call():
                 values['proxy_path'] = hconfig(ConfigEnum.proxy_path_client)
             elif current_account and hutils.flask.is_admin_role(current_account.role):
                 values['proxy_path'] = hconfig(ConfigEnum.proxy_path_admin)
             else:
                 values['proxy_path'] = g.proxy_path
-        if "child_id" not in values and statics.current_child_id != 0:
-            values['child_id'] = statics.current_child_id
+        if "child_id" not in values and g.__child_id != 0:
+            values['child_id'] = g.__child_id
 
         if hutils.flask.is_api_v1_call(endpoint=endpoint) and 'admin_uuid' not in values:
             values['admin_uuid'] = AdminUser.get_super_admin_uuid()
@@ -112,65 +97,21 @@ def init_app(app: APIFlask):
         print("file", file, app.config['HIDDIFY_CONFIG_PATH'] +
               '/hiddify-panel/videos/'+file)
         return send_from_directory(app.config['HIDDIFY_CONFIG_PATH']+'/hiddify-panel/videos/', file)
-    # @app.template_filter()
-    # def rel_datetime(value):
-    #     diff=datetime.datetime.now()-value
-    #     return hutils.convert.format_timedelta(diff, add_direction=True, locale=hconfig(ConfigEnum.lang))
-
-    # @app.before_request
-    # def backward_compatibility_middleware():
-    #     # get needed variables
-    #     g.user_agent_old = user_agent = user_agents.parse(request.user_agent.string)
-
-    #     proxy_path = hutils.flask.get_proxy_path_from_url(request.url)
-    #     if not proxy_path:
-    #         abort(400, "invalid")
-
-    #     # get proxy paths
-    #     deprecated_proxy_path = hconfig(ConfigEnum.proxy_path)
-    #     if proxy_path != deprecated_proxy_path:
-    #         return
-
-    #     if user_agent.is_bot:
-    #         abort(400, "invalid")
-
-    #     uuid = hutils.auth.get_uuid_from_url_path(request.path)
-    #     account = User.by_uuid(uuid) or AdminUser.by_uuid(uuid) or abort(400, 'invalid request2')
-
-    #     admin_proxy_path = hconfig(ConfigEnum.proxy_path_admin)
-    #     client_proxy_path = hconfig(ConfigEnum.proxy_path_client)
-
-    #     new_link = ''
-
-    #     # handle deprecated proxy path
-    #     new_link = f"https://{request.host}"
-    #     if hutils.flask.is_admin_panel_call(deprecated_format=True):
-    #         new_link += request.path.replace(f"{proxy_path}/{uuid}/admin/", f'{admin_proxy_path}/admin/')
-    #     elif hutils.flask.is_user_panel_call(deprecated_format=True):
-    #         new_link += request.path.replace(f"{proxy_path}/{uuid}/", f'{client_proxy_path}/client/')
-    #     else:
-    #         return abort(400, 'invalid request 1')
-
-    #     new_link = hutils.auth.add_basic_auth_to_url(new_link, account.username, account.password)
-
-    #     if user_agent.browser:
-    #         return render_template('redirect_to_new_format.html', new_link=new_link)
-
-    #     auth.login_user(account)
-    #     # return new_link
-    #     return redirect(new_link, 302)
-    @app.before_request
-    def set_default_values():
-        g.account = current_account
-        g.user_agent = hutils.flask.get_user_agent()
 
     @app.url_value_preprocessor
     def pull_default(endpoint, values):
+        g.__child_id = 0
+        g.uuid = None
+        g.proxy_path = None
+        
         if values:
+            g.proxy_path = values.pop('proxy_path', None)
+            if 'secret_uuid' in values:
+                g.uuid = values.pop('secret_uuid', None)
+
             g.__child_id = values.pop('child_id', 0)
-            g.child = Child.by_id(g.__child_id)
-            if g.child == None:
-                abort(404, "Child not found")
+        g.child = Child.by_id(g.__child_id) or abort(404, "Child not found")
+        g.account = current_account
 
     @app.before_first_request
     def first_request():
@@ -180,25 +121,18 @@ def init_app(app: APIFlask):
 
     @app.before_request
     def base_middleware():
+
+        g.user_agent = hutils.flask.get_user_agent()
+
         if request.endpoint == 'static' or request.endpoint == "videos":
             return
 
-        # validate request made by human (just check user agent, there's no capcha)
-        # g.user_agent_old = user_agents.parse(request.user_agent.string)
         if g.user_agent['is_bot']:
             abort(400, "invalid")
 
-        # validate proxy path
-
         g.proxy_path = hutils.flask.get_proxy_path_from_url(request.url)
         hutils.flask.proxy_path_validator(g.proxy_path)
-
-        # if g.proxy_path != hconfig(ConfigEnum.proxy_path):
-        #     if app.config['DEBUG']:
-        #         abort(400, Markup(
-        #             f"Invalid Proxy Path <a href=/{hconfig(ConfigEnum.proxy_path)}/admin>admin</a>"))
-        #     abort(400, "Invalid Proxy Path")
-
+        auth.auth_before_request()
         # setup dark mode
         if request.args.get('darkmode') != None:
             session['darkmode'] = request.args.get(

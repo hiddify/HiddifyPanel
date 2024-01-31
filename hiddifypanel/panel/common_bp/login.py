@@ -14,7 +14,6 @@ from hiddifypanel.panel.user import UserView
 from flask_wtf import FlaskForm
 import wtforms as wtf
 import re
-from hiddifypanel import statics
 
 
 class LoginForm(FlaskForm):

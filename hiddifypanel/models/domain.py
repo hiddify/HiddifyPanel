@@ -1,4 +1,6 @@
 from enum import auto
+from typing import List
+
 from urllib.parse import urlparse
 
 from flask import request
@@ -132,34 +134,37 @@ def get_domain(domain):
     return Domain.query.filter(Domain.domain == domain).first()
 
 
-def get_panel_domains(always_add_ip=False, always_add_all_domains=False):
+def get_panel_domains(always_add_ip=False, always_add_all_domains=False) -> List[Domain]:
     domains = []
-    if hconfig(ConfigEnum.is_parent):
-        from .parent_domain import ParentDomain
-        domains = ParentDomain.query.all()
-    else:
-        domains = Domain.query.filter(Domain.mode == DomainType.sub_link_only).all()
-        if not len(domains) or always_add_all_domains:
-            domains = Domain.query.filter(Domain.mode.notin_([DomainType.fake, DomainType.reality])).all()
+    # if hconfig(ConfigEnum.is_parent):
+    #     from .parent_domain import ParentDomain
+    #     domains = ParentDomain.query.all()
+    # else:
+    domains = Domain.query.filter(Domain.mode == DomainType.sub_link_only, Domain.child_id == hutils.current_child_id()).all()
+    if not len(domains) or always_add_all_domains:
+        domains = Domain.query.filter(Domain.mode.notin_([DomainType.fake, DomainType.reality])).all()
 
     if len(domains) == 0 and request:
         domains = [Domain(domain=request.host)]
     if len(domains) == 0 or always_add_ip:
         from hiddifypanel.panel import hiddify
-        domains += [Domain(domain=hutils.network.get_ip(4))]
+        domains += [Domain(domain=hutils.network.get_ip_str(4))]
     return domains
 
 
 def get_proxy_domains(domain):
-    if hconfig(ConfigEnum.is_parent):
-        from hiddifypanel.models.parent_domain import ParentDomain
-        db_domain = ParentDomain.query.filter(ParentDomain.domain == domain).first() or ParentDomain(domain=domain, show_domains=[])
-    else:
-        db_domain = Domain.query.filter(Domain.domain == domain).first() or Domain(domain=domain, mode=DomainType.direct, cdn_ip='', show_domains=[])
+    # if hconfig(ConfigEnum.is_parent):
+    #     from hiddifypanel.models.parent_domain import ParentDomain
+    #     db_domain = ParentDomain.query.filter(ParentDomain.domain == domain).first() or ParentDomain(domain=domain, show_domains=[])
+    # else:
+    db_domain = Domain.query.filter(Domain.domain == domain, Domain.child_id == hutils.current_child_id()).first()
+    if not db_domain:
+        db_domain = Domain(domain=domain, mode=DomainType.direct, cdn_ip='', show_domains=[])
     return get_proxy_domains_db(db_domain)
 
 
 def get_proxy_domains_db(db_domain):
+    
     if not db_domain:
         domain = urlparse(request.base_url).hostname
         db_domain = Domain(domain=domain, mode=DomainType.direct, show_domains=[])

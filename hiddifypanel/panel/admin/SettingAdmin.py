@@ -22,8 +22,6 @@ from hiddifypanel.models import *
 from hiddifypanel.panel.database import db
 from hiddifypanel.panel import hiddify, custom_widgets
 
-from hiddifypanel import statics
-
 
 class SettingAdmin(FlaskView):
 
@@ -39,7 +37,7 @@ class SettingAdmin(FlaskView):
         reset_action = None
         if form.validate_on_submit():
 
-            boolconfigs = BoolConfig.query.filter(BoolConfig.child_id == statics.current_child_id).all()
+            boolconfigs = BoolConfig.query.filter(BoolConfig.child_id == hutils.current_child_id()).all()
             bool_types = {c.key: 'bool' for c in boolconfigs}
 
             old_configs = get_hconfigs()
@@ -147,8 +145,8 @@ class SettingAdmin(FlaskView):
 
 def get_config_form():
 
-    strconfigs = StrConfig.query.filter(StrConfig.child_id == statics.current_child_id).all()
-    boolconfigs = BoolConfig.query.filter(BoolConfig.child_id == statics.current_child_id).all()
+    strconfigs = StrConfig.query.filter(StrConfig.child_id == hutils.current_child_id()).all()
+    boolconfigs = BoolConfig.query.filter(BoolConfig.child_id == hutils.current_child_id()).all()
     bool_types = {c.key: 'bool' for c in boolconfigs}
 
     configs = [*boolconfigs, *strconfigs]
@@ -237,7 +235,7 @@ def get_config_form():
 
                     if c.key != ConfigEnum.decoy_domain:
                         validators.append(wtf.validators.NoneOf([d.domain.lower() for d in Domain.query.all()], _("config.Domain already used")))
-                        validators.append(wtf.validators.NoneOf([cc.value.lower() for cc in StrConfig.query.filter(StrConfig.child_id == statics.current_child_id).all(
+                        validators.append(wtf.validators.NoneOf([cc.value.lower() for cc in StrConfig.query.filter(StrConfig.child_id == hutils.current_child_id()).all(
                         ) if cc.key != c.key and "fakedomain" in cc.key and cc.key != ConfigEnum.decoy_domain], _("config.Domain already used")))
                     render_kw['required'] = ""
                     if len(c.value) < 3:

@@ -108,7 +108,15 @@ def get_ips(version: Literal[4, 6]) -> List[Union[ipaddress.IPv4Address, ipaddre
 
 
 @cache.cache(ttl=600)
-def get_ip(version: Literal[4, 6], retry: int = 5) -> Union[ipaddress.IPv4Address, ipaddress.IPv6Address]:
+def get_ip_str(version: Literal[4, 6], retry: int = 5) -> str | None:
+    ip = get_ip(version, retry)
+    if ip is None:
+        return None
+    return str(ip)
+
+
+@cache.cache(ttl=600)
+def get_ip(version: Literal[4, 6], retry: int = 5) -> ipaddress.IPv4Address | ipaddress.IPv6Address | None:
     ips = get_interface_public_ip(version)
     ip = None
     if ips:
@@ -263,12 +271,14 @@ def get_direct_host_or_ip(prefer_version: int) -> str:
     if not (direct):
         direct = Domain.query.filter(Domain.mode == DomainType.direct).first()
     if direct:
-        direct = direct.domain
-    else:
-        direct = get_ip(prefer_version)
-    if not direct:
-        direct = get_ip(4 if prefer_version == 6 else 6)
-    return str(direct)
+        return direct.domain
+
+    direct = get_ip_str(prefer_version)
+    if direct:
+        return dir
+    
+    return get_ip_str(4 if prefer_version == 6 else 6)
+    
 
 
 # not used

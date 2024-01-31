@@ -184,7 +184,7 @@ class Actions(FlaskView):
         test_domain = request.args.get("test_domain")
         import ping3
         from hiddifypanel.hutils.network.auto_ip_selector import IPASN, IPCOUNTRY
-        ipv4 = hutils.network.get_ip(4)
+        ipv4 = hutils.network.get_ip_str(4)
         server_country = (IPCOUNTRY.get(ipv4) or {}).get('country', {}).get('iso_code', 'unknown')
         server_asn = (IPASN.get(ipv4) or {}).get('autonomous_system_organization', 'unknown')
         res = "<table><tr><th>Domain</th><th>IP</th><th>Country</th><th>ASN</th><th>Ping (ms)</th><th>TCP ping (ms)</th></tr>"
@@ -196,7 +196,7 @@ class Actions(FlaskView):
                 continue
             if time.time()-start > 20:
                 break
-            print(d)
+            
             tcp_ping = hutils.network.is_domain_reality_friendly(d)
             if tcp_ping:
                 dip = hutils.network.get_domain_ip(d)

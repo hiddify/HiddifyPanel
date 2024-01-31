@@ -11,6 +11,7 @@ from flask import g, request, render_template
 import hiddifypanel
 from hiddifypanel.models.config import hconfig
 from hiddifypanel.models.config_enum import ConfigEnum
+from hiddifypanel.panel.auth import current_account
 
 
 class __IssueUrl:
@@ -134,8 +135,8 @@ def __github_issue_details() -> dict:
 
 
 def __remove_sensetive_data_from_github_issue_link(issue_link: str):
-    if g.account.uuid:
-        issue_link.replace(f'{g.account.uuid}', '*******************')
+    if current_account.uuid:
+        issue_link.replace(f'{current_account.uuid}', '*******************')
 
     issue_link.replace(request.host, '**********')
     issue_link.replace(hconfig(ConfigEnum.proxy_path), '**********')

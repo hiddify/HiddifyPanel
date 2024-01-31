@@ -10,11 +10,11 @@ from hiddifypanel.panel.auth import login_required
 from hiddifypanel.panel import hiddify
 import hiddifypanel.panel.auth as auth
 from hiddifypanel.models import *
-from hiddifypanel import hutils, statics
+from hiddifypanel import hutils
 from sqlalchemy.orm.session import make_transient
 
 
-class ChildAdmin(AdminLTEModelView):
+class NodeAdmin(AdminLTEModelView):
     column_hide_backrefs = False
     column_list = ["name", "mode", "unique_id"]
     form_columns = ["name", "mode", "unique_id"]
@@ -40,7 +40,7 @@ class ChildAdmin(AdminLTEModelView):
     def is_accessible(self):
         if login_required(roles={Role.super_admin})(lambda: True)() != True:
             return False
-        if statics.current_child_id != 0:
+        if hutils.current_child_id() != 0:
             return False
         return True
 
@@ -72,7 +72,7 @@ class ChildAdmin(AdminLTEModelView):
                 items_to_dup.append(c)
             d = Domain()
             d.alias = f'{model.name}-def'
-            d.domain = f"{model.id}.{hutils.network.get_ip(4)}.sslip.io"
+            d.domain = f"{model.id}.{hutils.network.get_ip_str(4)}.sslip.io"
             d.child_id = model.id
             items_to_dup.append(d)
 
