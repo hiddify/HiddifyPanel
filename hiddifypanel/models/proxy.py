@@ -100,3 +100,6 @@ class Proxy(db.Model, SerializerMixin):
             Proxy.add_or_update(commit=False, child_id=child_id, **proxy)
         if commit:
             db.session.commit()
+
+    def __str__(self):
+        return str(self.to_dict())

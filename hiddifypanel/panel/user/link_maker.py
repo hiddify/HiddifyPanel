@@ -119,8 +119,13 @@ def make_proxy(hconfigs, proxy: Proxy, domain_db: Domain, phttp=80, ptls=443, pp
     l3 = proxy.l3
     domain = domain_db.domain
     child_id = domain_db.child_id
+    name = proxy.name
     port = get_port(proxy, hconfigs, domain_db, ptls, phttp, pport)
+    # if not port:
+    #     return {'name': name, 'msg': "port not defined", 'type': 'error', 'proto': proxy.proto}
+    # print("=========",proxy)
     if val_res := check_proxy_incorrect(proxy, domain_db, port):
+        # print(val_res)
         return val_res
 
     if 'reality' in proxy.l3:
@@ -129,7 +134,6 @@ def make_proxy(hconfigs, proxy: Proxy, domain_db: Domain, phttp=80, ptls=443, pp
         alpn = "h2" if proxy.l3 in ['tls_h2'] or proxy.transport in ["grpc", 'h2'] else 'h2,http/1.1' if proxy.l3 == 'tls_h2_h1' else "http/1.1"
     cdn_forced_host = domain_db.cdn_ip or (domain_db.domain if domain_db.mode != DomainType.reality else hutils.network.get_direct_host_or_ip(4))
     is_cdn = ProxyCDN.CDN == proxy.cdn or ProxyCDN.Fake == proxy.cdn
-    name = proxy.name
     base = {
         'name': name,
         'cdn': is_cdn,
@@ -368,7 +372,7 @@ def to_link(proxy):
     # the ray2sing supports vless, vmess and trojan tls tricks and mux
     # the vmess handled already
 
-    baseurl = add_mux_to_link(proxy)
+    baseurl += add_mux_to_link(proxy)
     baseurl += add_tls_tricks_to_link(proxy)
 
     # infos+=f'&alpn={proxy["alpn"]}'

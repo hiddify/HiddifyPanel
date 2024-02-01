@@ -289,6 +289,7 @@ def get_domain_information(no_domain=False, filter_domain=None, alternative=None
             d.domain = d.domain.replace("*", hutils.random.get_random_string(5, 15))
     if len(domains) == 0:
         domains = [Domain(id=0, domain=alternative, mode=DomainType.direct, cdn_ip='', show_domains=[], child_id=0)]
+        domains[0].has_auto_ip=True
 
     return domains, has_auto_cdn
 

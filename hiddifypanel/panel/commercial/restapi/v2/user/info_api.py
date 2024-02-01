@@ -4,7 +4,7 @@ from apiflask import Schema
 from apiflask.fields import Integer, String, Float, URL, Enum
 from flask import g, request
 from flask import current_app as app
-from hiddifypanel import hutils
+from hiddifypanel import hutils,auth
 from hiddifypanel.auth import login_required
 
 from flask_babel import gettext as _
