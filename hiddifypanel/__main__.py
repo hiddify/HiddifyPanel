@@ -9,6 +9,5 @@ def main():
     pass
 
 
-    # return cli()
 if __name__ == "__main__":  # pragma: no cover
-    cli()
+    main()
