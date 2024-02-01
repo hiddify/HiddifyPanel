@@ -174,9 +174,9 @@ def check_need_reset(old_configs, do=False):
     restart_mode = ''
     for c in old_configs:
         # c=ConfigEnum(c)
-        if old_configs[c] != hconfig(c) and c.apply_mode():
-            if restart_mode != 'reinstall':
-                restart_mode = c.apply_mode()
+        if old_configs[c] != hconfig(c) and c.apply_mode!=ApplyMode.nothing:
+            if restart_mode != 'restart':
+                restart_mode = c.apply_mode
 
     # do_full_install=old_config[ConfigEnum.telegram_lib]!=hconfig(ConfigEnum.telegram_lib)
     if old_configs[ConfigEnum.package_mode] != hconfig(ConfigEnum.package_mode):

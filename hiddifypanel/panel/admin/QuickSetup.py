@@ -131,7 +131,7 @@ def validate_domain(form, field):
     if dip == None:
         raise ValidationError(_("Domain can not be resolved! there is a problem in your domain"))
 
-    myip = hutils.network.get_ip_str(4)
+    myip = hutils.network.get_ip(4)
     if dip and myip != dip:
         raise ValidationError(_("Domain (%(domain)s)-> IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode",
                               server_ip=myip, domain_ip=dip, domain=domain))

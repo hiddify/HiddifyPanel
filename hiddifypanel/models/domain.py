@@ -138,6 +138,7 @@ def get_domain(domain):
 
 
 def get_panel_domains(always_add_ip=False, always_add_all_domains=False) -> List[Domain]:
+    from hiddifypanel import hutils
     domains = []
     # if hconfig(ConfigEnum.is_parent):
     #     from .parent_domain import ParentDomain

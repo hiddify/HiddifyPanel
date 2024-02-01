@@ -6,19 +6,16 @@ redis_client = redis.from_url('unix:///opt/hiddify-manager/other/redis/run.sock?
 
 
 def exception_handler(e, original_fn, args, kwargs):
+    print("cache exception occur",e, original_fn, args, kwargs)
     return original_fn(*args, **kwargs)
     pass
 
 
-def key_serializer(args):
-    from .models import ConfigEnum
-    # return dumps([f'{r}' if isinstance(r, ConfigEnum) else r for r in args])
-    return dumps(args)
 
 
 # cache = RedisCache(redis_client=redis_client, exception_handler=exception_handler)
 # cache = RedisCache(redis_client=redis_client, prefix="h", serializer=dumps, deserializer=loads, exception_handler=exception_handler)
-cache = RedisCache(redis_client=redis_client, prefix="h", serializer=dumps, deserializer=loads, key_serializer=key_serializer)
+cache = RedisCache(redis_client=redis_client, prefix="h", serializer=dumps, deserializer=loads)
 
 
 class CacheDecorator:
@@ -49,13 +46,13 @@ class DisableCache:
     cache = CacheDecorator
 
 
-cache = DisableCache()
-try:
-    @cache.cache()
-    def test():
-        return 1
-    test()
-except Exception as e:
-    import sys
-    print('Caching Error! Disabling cache', e, file=sys.stderr)
-    # cache = DisableCache()
+#cache = DisableCache()  
+# try:
+#     @cache.cache()
+#     def test():
+#         return 1
+#     test()
+# except Exception as e:
+#     import sys
+#     print('Caching Error! Disabling cache', e, file=sys.stderr)
+#     # cache = DisableCache()

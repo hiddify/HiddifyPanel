@@ -42,35 +42,29 @@ class SettingAdmin(FlaskView):
 
             old_configs = get_hconfigs()
             changed_configs = {}
+          
             for cat, vs in form.data.items():  # [c for c in ConfigEnum]:
-
+          
                 if type(vs) is dict:
                     for k in ConfigEnum:
-                        if k not in vs:
+                        if k.name not in vs:
                             continue
-                        v = vs[k]
-                        if k.type() == str:
+                        v = vs[k.name]
+                        if k.type == str:
                             if "_domain" in k or "_fakedomain" in k:
                                 v = v.lower()
 
                             if "port" in k:
                                 for p in v.split(","):
                                     for k2, v2 in vs.items():
-                                        if "port" in k2 and k != k2 and p in v2:
+                                        if "port" in k2 and k.name != k2 and p in v2:
                                             hutils.flask.flash(_("Port is already used! in")+f" {k2} {k}", 'error')
                                             return render_template('config.html', form=form)
                             if k == ConfigEnum.parent_panel and v != '':
                                 # v=(v+"/").replace("/admin",'')
                                 v = re.sub("(/admin/.*)", "/", v)
 
-                                # try:
-                                #     # if hiddify_api.sync_child_to_parent(v)['status'] != 200:
-                                #     #     hutils.flask.flash(_("Can not connect to parent panel!"), 'error')
-                                #     #     return render_template('config.html', form=form)
-                                # except:
-                                #     hutils.flask.flash(_("Can not connect to parent panel!"), 'error')
-                                #     return render_template('config.html', form=form)
-
+            
                             set_hconfig(k, v, commit=False)
                         if old_configs[k] != v:
                             changed_configs[k] = v
@@ -81,23 +75,11 @@ class SettingAdmin(FlaskView):
             if len(set([merged_configs[ConfigEnum.proxy_path], merged_configs[ConfigEnum.proxy_path_client], merged_configs[ConfigEnum.proxy_path_admin]])) != 3:
                 hutils.flask.flash(_("ProxyPath is already used! use different proxy path"), 'error')  # type: ignore
                 return render_template('config.html', form=form)
-            # for k in [ConfigEnum.reality_server_names,ConfigEnum.reality_fallback_domain]:
-            #     v=merged_configs[k]
-            #     for d in v.split(","):
-            #         if not d:continue
-            #         if not hutils.network.is_domain_reality_friendly(d):
-            #             hutils.flask.flash(_("Domain is not REALITY friendly!")+" "+d,'error')
-            #             return render_template('config.html', form=form)
-            #         hiddify.debug_flash_if_not_in_the_same_asn(d)
-            # fallback=merged_configs[ConfigEnum.reality_fallback_domain]
-            # for d in merged_configs[ConfigEnum.reality_server_names].split(","):
-            #     if not hiddify.fallback_domain_compatible_with_servernames(fallback, d):
-            #         hutils.flask.flash(_("REALITY Fallback domain is not compaitble with server names!")+" "+d+" != "+fallback,'error')
-            #         return render_template('config.html', form=form)
+            
             for k, v in changed_configs.items():
                 set_hconfig(k, v, commit=False)
+            
             db.session.commit()
-            flask_babel.refresh()
             flask_babel.refresh()
 
             from hiddifypanel.panel.commercial.telegrambot import register_bot
@@ -109,6 +91,7 @@ class SettingAdmin(FlaskView):
             #     return reset_action
 
             if old_configs[ConfigEnum.admin_lang] != hconfig(ConfigEnum.admin_lang):
+                
                 form = get_config_form()
         else:
             hutils.flask.flash(_('config.validation-error'), 'danger')  # type: ignore
@@ -132,7 +115,7 @@ class SettingAdmin(FlaskView):
             if cat == 'hidden':
                 continue
 
-            cat_configs = [c for c in configs if c.key.category() == cat]
+            cat_configs = [c for c in configs if c.key.category == cat]
 
             for c in cat_configs:
                 res += f'{{{{_("config.{c.key}.label")}}}} {{{{_("config.{c.key}.description")}}}}'
@@ -151,7 +134,7 @@ def get_config_form():
 
     configs = [*boolconfigs, *strconfigs]
     configs_key = {k.key: k for k in configs}
-    # categories=sorted([ c for c in {c.key.category():1 for c in configs}])
+    # categories=sorted([ c for c in {c.key.category:1 for c in configs}])
     # dict_configs={cat:[c for c in configs if c.category==cat] for cat in categories}
 
     class DynamicForm(FlaskForm):
@@ -162,7 +145,7 @@ def get_config_form():
         if cat == 'hidden':
             continue
 
-        cat_configs = [c for c in ConfigEnum if c.category() == cat and (not is_parent or c.show_in_parent())]
+        cat_configs = [c for c in ConfigEnum if c.category == cat and (not is_parent or c.show_in_parent)]
         if len(cat_configs) == 0:
             continue
 

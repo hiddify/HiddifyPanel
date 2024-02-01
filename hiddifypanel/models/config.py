@@ -15,7 +15,7 @@ def error(st):
 class BoolConfig(db.Model, SerializerMixin):
     child_id = Column(Integer, ForeignKey('child.id'), primary_key=True, default=0)
     # category = db.Column(db.String(128), primary_key=True)
-    key = Column(Enum(ConfigEnum, values_callable=ConfigEnum.dbvalues), primary_key=True)
+    key = Column(Enum(ConfigEnum), primary_key=True)
     value = Column(Boolean)
 
     def to_dict(d):
@@ -29,7 +29,7 @@ class BoolConfig(db.Model, SerializerMixin):
 class StrConfig(db.Model, SerializerMixin):
     child_id = Column(Integer, ForeignKey('child.id'), primary_key=True, default=0)
     # category = db.Column(db.String(128), primary_key=True)
-    key = Column(Enum(ConfigEnum, values_callable=ConfigEnum.dbvalues), primary_key=True, default=ConfigEnum.admin_secret)
+    key = Column(Enum(ConfigEnum), primary_key=True, default=ConfigEnum.admin_secret)
     value = Column(String(2048))
 
     def to_dict(d):
@@ -72,6 +72,7 @@ def hconfig(key: ConfigEnum, child_id: int|None = None) -> str | int | None:
 def set_hconfig(key: ConfigEnum, value: str|int | bool, child_id: int = None, commit: bool = True):
     if child_id == None:
         child_id = Child.current.id
+    print(f"chainging .... {key}---{value}---{child_id}---{commit}")
     # hconfig.invalidate(key, child_id)
     # get_hconfigs.invalidate(child_id)
     hconfig.invalidate(key, child_id)
@@ -100,7 +101,7 @@ def set_hconfig(key: ConfigEnum, value: str|int | bool, child_id: int = None, co
     error(f"changing {key} from {old_v} to {value}")
     Events.config_changed.notify(conf=dbconf, old_value=old_v)
 
-    if child_id == 0 and key.hide_in_virtual_child():
+    if child_id == 0 and key.hide_in_virtual_child:
         for child in Child.query.filter(Child.mode == ChildMode.virtual, Child.id != 0).all():
             set_hconfig(key, value, child.id)
 

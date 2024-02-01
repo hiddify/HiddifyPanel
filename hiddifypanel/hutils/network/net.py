@@ -12,7 +12,7 @@ import re
 import os
 
 
-
+from hiddifypanel.models import *
 from hiddifypanel.cache import cache
 
 

@@ -115,8 +115,8 @@ class UserView(FlaskView):
         if re.match('^(Hiddify|FoXray|Fair|v2rayNG|SagerNet|Shadowrocket|V2Box|Loon|Liberty)', ua, re.IGNORECASE):
             return self.all_configs(base64=True)
 
-    @ route('/clash/<meta_or_normal>/proxies.yml')
-    @ route('/clash/proxies.yml')
+    @route('/clash/<meta_or_normal>/proxies.yml')
+    @route('/clash/proxies.yml')
     @login_required(roles={Role.user})
     def clash_proxies(self, meta_or_normal="normal"):
         mode = request.args.get("mode")
@@ -259,20 +259,19 @@ def get_domain_information(no_domain=False, filter_domain=None, alternative=None
         domains = [db_domain]
     else:
         domain = alternative if not no_domain else None
-        DB = Domain
-        db_domain = DB.query.filter(DB.domain == domain).first()
+        db_domain = Domain.query.filter(Domain.domain == domain).first()
 
         if not db_domain:
             parts = domain.split('.')
             parts[0] = "*"
             domain_new = ".".join(parts)
-            db_domain = DB.query.filter(DB.domain == domain_new).first()
+            db_domain = Domain.query.filter(Domain.domain == domain_new).first()
 
         if not db_domain:
-            db_domain = DB(domain=domain, show_domains=[])
+            db_domain = Domain(domain=domain, show_domains=[])
             hutils.flask.flash(_("This domain does not exist in the panel!" + domain))
 
-            domains = db_domain.show_domains or Domain.query.filter(Domain.sub_link_only != True).all()
+        domains = db_domain.show_domains or Domain.query.filter(Domain.sub_link_only != True).all()
 
     has_auto_cdn = False
     for d in domains:
