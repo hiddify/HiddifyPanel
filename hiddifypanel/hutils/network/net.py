@@ -11,9 +11,8 @@ import ssl
 import re
 import os
 
-from hiddifypanel.models.domain import Domain, DomainType
-from hiddifypanel.models.config_enum import ConfigEnum
-from hiddifypanel.models.config import hconfig
+
+
 from hiddifypanel.cache import cache
 
 
@@ -276,9 +275,8 @@ def get_direct_host_or_ip(prefer_version: int) -> str:
     direct = get_ip_str(prefer_version)
     if direct:
         return dir
-    
+
     return get_ip_str(4 if prefer_version == 6 else 6)
-    
 
 
 # not used

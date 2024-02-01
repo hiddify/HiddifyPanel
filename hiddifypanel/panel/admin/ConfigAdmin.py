@@ -3,8 +3,8 @@ import uuid
 from hiddifypanel import hutils
 from hiddifypanel.models.role import Role
 from hiddifypanel.panel import hiddify
-from hiddifypanel.panel.auth import login_required
-import hiddifypanel.panel.auth as auth
+from hiddifypanel.auth import login_required
+
 from wtforms.validators import ValidationError
 
 from hiddifypanel.models import ConfigEnum, Domain
@@ -30,9 +30,6 @@ class ConfigAdmin(AdminLTEModelView):
         if login_required(roles={Role.super_admin})(lambda: True)() != True:
             return False
         return True
-
-    def inaccessible_callback(self, name, **kwargs):
-        return auth.redirect_to_login()  # type: ignore
 
     def on_model_change(self, form, model, is_created):
         if model.key == ConfigEnum.db_version:

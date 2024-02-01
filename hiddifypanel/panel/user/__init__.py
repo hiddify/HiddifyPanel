@@ -2,7 +2,7 @@ from .user import UserView
 from flask import send_from_directory
 from . import link_maker
 from flask import Blueprint
-from hiddifypanel.panel.database import db
+from hiddifypanel.database import db
 
 # from .resources import ProductItemResource, ProductResource
 from .user import *

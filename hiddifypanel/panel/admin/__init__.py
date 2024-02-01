@@ -4,7 +4,7 @@ from hiddifypanel import Events
 from .DomainAdmin import DomainAdmin
 from .AdminstratorAdmin import AdminstratorAdmin
 
-from hiddifypanel.panel.database import db
+from hiddifypanel.database import db
 from hiddifypanel.models import *
 from apiflask import APIBlueprint
 from flask_adminlte3 import AdminLTE3

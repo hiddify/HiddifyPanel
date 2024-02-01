@@ -5,7 +5,7 @@ from flask import g
 from flask.views import MethodView
 from apiflask import Schema
 from apiflask import abort
-from hiddifypanel.panel.auth import login_required
+from hiddifypanel.auth import login_required
 from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify
 from hiddifypanel.models import AdminMode, Lang

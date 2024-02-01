@@ -1,6 +1,6 @@
 import ipaddress
-from hiddifypanel.panel.auth import login_required
-import hiddifypanel.panel.auth as auth
+from hiddifypanel.auth import login_required, current_account
+
 from hiddifypanel.models import *
 import re
 from flask import Markup, g  # type: ignore
@@ -289,8 +289,7 @@ class DomainAdmin(AdminLTEModelView):
             return False
         return True
 
-    def inaccessible_callback(self, name, **kwargs):
-        return auth.redirect_to_login()  # type: ignore
+    
 
     # def form_choices(self, field, *args, **kwargs):
     #     if field.type == "Enum":
@@ -303,4 +302,4 @@ class DomainAdmin(AdminLTEModelView):
 
     def get_query(self):
         query = super().get_query()
-        return query.filter(Domain.child_id == statics.current_child.id)
+        return query.filter(Domain.child_id == Child.current.id)

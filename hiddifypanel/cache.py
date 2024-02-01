@@ -10,9 +10,14 @@ def exception_handler(e, original_fn, args, kwargs):
     pass
 
 
+def key_serializer(args):
+    from .models import ConfigEnum
+    return dumps([f'{r}' if isinstance(r, ConfigEnum) else r for r in args])
+
+
 # cache = RedisCache(redis_client=redis_client, exception_handler=exception_handler)
 # cache = RedisCache(redis_client=redis_client, prefix="h", serializer=dumps, deserializer=loads, exception_handler=exception_handler)
-cache = RedisCache(redis_client=redis_client, prefix="h", serializer=dumps, deserializer=loads)
+cache = RedisCache(redis_client=redis_client, prefix="h", serializer=dumps, deserializer=loads, key_serializer=key_serializer)
 
 
 class CacheDecorator:

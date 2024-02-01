@@ -14,8 +14,8 @@ from wtforms.validators import ValidationError
 # from gettext import gettext as _
 
 from hiddifypanel.models import Domain, DomainType, StrConfig, ConfigEnum, get_hconfigs
-from hiddifypanel.panel.database import db
-from hiddifypanel.panel.auth import login_required
+from hiddifypanel.database import db
+from hiddifypanel.auth import login_required
 from hiddifypanel import hutils
 from hiddifypanel.models import *
 

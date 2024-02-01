@@ -5,12 +5,12 @@ from flask import g
 from sqlalchemy import func
 from sqlalchemy_serializer import SerializerMixin
 
-from hiddifypanel.panel.database import db
+from hiddifypanel.database import db
 
 
 class DailyUsage(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    date = db.Column(db.Date, default=datetime.date.today())
+    date = db.Column(db.Date, default=datetime.date.today(), index=True)
     usage = db.Column(db.BigInteger, default=0, nullable=False)
     online = db.Column(db.Integer, default=0, nullable=False)
     admin_id = db.Column(db.Integer, db.ForeignKey('admin_user.id'), default=0, nullable=False)

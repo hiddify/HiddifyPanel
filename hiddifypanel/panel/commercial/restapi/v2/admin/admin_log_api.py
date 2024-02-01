@@ -6,7 +6,7 @@ from flask import current_app as app
 from flask_cors import cross_origin
 import os
 from ansi2html import Ansi2HTMLConverter
-from hiddifypanel.panel.auth import login_required
+from hiddifypanel.auth import login_required
 
 
 class AdminLogfileSchema(Schema):

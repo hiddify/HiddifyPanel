@@ -6,8 +6,8 @@ import hiddifypanel
 from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify
 from hiddifypanel import hutils
-import hiddifypanel.panel.auth as auth
-from hiddifypanel.panel.auth import current_account
+import hiddifypanel.auth as auth
+from hiddifypanel.auth import current_account
 from apiflask import APIFlask, HTTPError, abort
 
 
@@ -74,6 +74,7 @@ def init_app(app: APIFlask):
 
     @app.url_defaults
     def add_proxy_path_user(endpoint, values):
+        print(endpoint, values)
         if 'proxy_path' not in values:
             if hutils.flask.is_admin_role(current_account.role):
                 values['proxy_path'] = hconfig(ConfigEnum.proxy_path_admin)
@@ -82,9 +83,9 @@ def init_app(app: APIFlask):
             elif current_account and hutils.flask.is_admin_role(current_account.role):
                 values['proxy_path'] = hconfig(ConfigEnum.proxy_path_admin)
             else:
-                values['proxy_path'] = g.proxy_path
+                values['proxy_path'] = g.proxy_path or "A"
         if "child_id" not in values and g.__child_id != 0:
-            values['child_id'] = g.__child_id
+            values['child_id'] = g.child.id
 
         if hutils.flask.is_api_v1_call(endpoint=endpoint) and 'admin_uuid' not in values:
             values['admin_uuid'] = AdminUser.get_super_admin_uuid()

@@ -1,22 +1,21 @@
 import datetime
-import uuid as uuid_mod
-from hiddifypanel import hutils
+import uuid
 from hiddifypanel.models.role import Role
 from sqlalchemy import Column, String, BigInteger, Enum
 from sqlalchemy_serializer import SerializerMixin
 from flask_login import UserMixin as FlaskLoginUserMixin
 from hiddifypanel.models import Lang
-from hiddifypanel.panel.database import db
+from hiddifypanel.database import db
 
 
 class BaseAccount(db.Model, SerializerMixin, FlaskLoginUserMixin):  # type: ignore
     __abstract__ = True
-    uuid = Column(String(36), default=lambda: str(uuid_mod.uuid4()), nullable=False, unique=True)
+    uuid = Column(String(36), default=lambda: str(uuid.uuid4()), nullable=False, unique=True, index=True)
     name = Column(String(512), nullable=False, default='')
-    username = Column(String(100), nullable=True, default='')
+    username = Column(String(100), nullable=True, default='', index=True)
     password = Column(String(100), nullable=True, default='')
     comment = Column(String(512), nullable=True, default='')
-    telegram_id = Column(BigInteger, nullable=True, default=None)
+    telegram_id = Column(BigInteger, nullable=True, default=None, index=True)
     lang = Column(Enum(Lang), default=None)
 
     @property

@@ -4,7 +4,7 @@ from flask.views import MethodView
 from apiflask.fields import Dict
 from apiflask import Schema
 from hiddifypanel.models.usage import DailyUsage
-from hiddifypanel.panel.auth import login_required
+from hiddifypanel.auth import login_required
 from hiddifypanel.models import Role, DailyUsage
 from hiddifypanel.panel import hiddify
 from hiddifypanel import hutils

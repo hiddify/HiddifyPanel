@@ -8,10 +8,7 @@ import user_agents
 import re
 
 from hiddifypanel.cache import cache
-from hiddifypanel.models.admin import AdminUser
-from hiddifypanel.models.config import hconfig
-from hiddifypanel.models.config_enum import ConfigEnum
-from hiddifypanel.models.role import Role
+from hiddifypanel.models import *
 
 
 def flash(message: str, category: str = "message"):
@@ -35,7 +32,7 @@ def static_url_for(**values):
 
 
 def hurl_for(endpoint, **values):
-    if hutils.current_child_id() != 0:
+    if Child.current.id != 0:
 
         new_endpoint = "child_"+endpoint
         if new_endpoint in current_app.view_functions:
@@ -77,7 +74,7 @@ def __parse_user_agent(ua: str) -> dict:
     res['is_hiddify'] = re.match('^(HiddifyNext)', ua, re.IGNORECASE) and True
     # TODO: find correct streisand user agent
     # Does client support fragmentation configs in the proxy link parameters
-    res['supports_xray_fg'] = re.match('^(HiddifyNext|Shadowrocket|Streisand)', ua, re.IGNORECASE) and True
+    # res['supports_xray_fg'] = re.match('^(HiddifyNext|Shadowrocket|Streisand)', ua, re.IGNORECASE) and True
 
     if (res['is_singbox']):
         res['singbox_version'] = generic_version

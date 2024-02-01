@@ -7,9 +7,9 @@ from strenum import StrEnum
 from apiflask import abort
 from flask_babel import gettext as __
 from flask_babel import lazy_gettext as _
+from hiddifypanel.database import db
 from hiddifypanel.models.role import Role
-from hiddifypanel.panel.database import db
-from .base_account import BaseAccount
+from hiddifypanel.models.base_account import BaseAccount
 
 
 class AdminMode(StrEnum):

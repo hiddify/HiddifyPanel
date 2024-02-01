@@ -39,37 +39,9 @@ def pbase64(full_str):
     return "vmess://"+resp
 
 
-def make_proxy(proxy: Proxy, domain_db: Domain, phttp=80, ptls=443, pport=None):
-    def is_tls():
-        return 'tls' in l3 or "reality" in l3
-    if type(phttp) == str:
-        phttp = int(phttp) if phttp != "None" else None
-    if type(ptls) == str:
-        ptls = int(ptls) if ptls != "None" else None
-    l3 = proxy.l3
-
-    domain = domain_db.domain
-
-    child_id = domain_db.child_id
-    hconfigs = get_hconfigs(child_id)
-    port = 0
-
-    if l3 == "kcp":
-        port = hconfigs[ConfigEnum.kcp_ports].split(",")[0]
-    elif proxy.proto == ProxyProto.wireguard:
-        port = hconfigs[ConfigEnum.wireguard_port]
-    elif proxy.proto == "tuic":
-        port = domain_db.internal_port_tuic
-    elif proxy.proto == "hysteria2":
-        port = domain_db.internal_port_hysteria2
-    elif l3 == 'ssh':
-        port = hconfigs[ConfigEnum.ssh_server_port]
-    elif is_tls():
-        port = ptls
-    elif l3 == "http":
-        port = phttp
-
+def check_proxy_incorrect(proxy, domain_db, port):
     name = proxy.name
+    l3 = proxy.l3
     if not port:
         return {'name': name, 'msg': "port not defined", 'type': 'error', 'proto': proxy.proto}
     if "reality" not in l3 and domain_db.mode == DomainType.reality:
@@ -103,13 +75,57 @@ def make_proxy(proxy: Proxy, domain_db: Domain, phttp=80, ptls=443, pport=None):
         return {'name': name, 'msg': "worker does not support grpc", 'type': 'debug', 'proto': proxy.proto}
     cdn_forced_host = domain_db.cdn_ip or (domain_db.domain if domain_db.mode != DomainType.reality else hutils.network.get_direct_host_or_ip(4))
 
+    if domain_db.mode != DomainType.old_xtls_direct and "tls" in proxy.l3 and proxy.cdn == ProxyCDN.direct and proxy.transport in [ProxyTransport.tcp, ProxyTransport.XTLS]:
+        return {'name': name, 'msg': "only  old_xtls_direct  support this", 'type': 'debug', 'proto': proxy.proto}
+
+    if proxy.proto == "trojan" and not is_tls(l3):
+        return {'name': name, 'msg': "trojan but not tls", 'type': 'warning', 'proto': proxy.proto}
+
+    if l3 == "http" and ProxyTransport.XTLS in proxy.transport:
+        return {'name': name, 'msg': "http and xtls???", 'type': 'warning', 'proto': proxy.proto}
+
+    if l3 == "http" and proxy["proto"] in ["ss", "ssr"]:
+        return {'name': name, 'msg': "http and ss or ssr???", 'type': 'warning', 'proto': proxy.proto}
+
+
+def is_tls(l3):
+    return 'tls' in l3 or "reality" in l3
+
+
+def get_port(proxy, hconfigs, domain_db, ptls, phttp, pport):
+    l3 = proxy.l3
+    if type(phttp) == str:
+        phttp = int(phttp) if phttp != "None" else None
+    if type(ptls) == str:
+        ptls = int(ptls) if ptls != "None" else None
+    if l3 == "kcp":
+        port = hconfigs[ConfigEnum.kcp_ports].split(",")[0]
+    elif proxy.proto == ProxyProto.wireguard:
+        port = hconfigs[ConfigEnum.wireguard_port]
+    elif proxy.proto == "tuic":
+        port = domain_db.internal_port_tuic
+    elif proxy.proto == "hysteria2":
+        port = domain_db.internal_port_hysteria2
+    elif l3 == 'ssh':
+        port = hconfigs[ConfigEnum.ssh_server_port]
+    elif is_tls(l3):
+        port = ptls
+    elif l3 == "http":
+        port = phttp
+
+
+def make_proxy(hconfigs, proxy: Proxy, domain_db: Domain, phttp=80, ptls=443, pport=None):
+    l3 = proxy.l3
+    domain = domain_db.domain
+    child_id = domain_db.child_id
+    port = get_port(proxy, hconfigs, domain_db, ptls, phttp, pport)
+    if val_res := check_proxy_incorrect(proxy, domain_db, port):
+        return val_res
+
     if 'reality' in proxy.l3:
         alpn = "h2" if proxy.transport in ['h2', "grpc"] else 'http/1.1'
     else:
         alpn = "h2" if proxy.l3 in ['tls_h2'] or proxy.transport in ["grpc", 'h2'] else 'h2,http/1.1' if proxy.l3 == 'tls_h2_h1' else "http/1.1"
-
-    if domain_db.mode != DomainType.old_xtls_direct and "tls" in proxy.l3 and proxy.cdn == ProxyCDN.direct and proxy.transport in [ProxyTransport.tcp, ProxyTransport.XTLS]:
-        return {'name': name, 'msg': "only  old_xtls_direct  support this", 'type': 'debug', 'proto': proxy.proto}
 
     base = {
         'name': name,
@@ -143,14 +159,6 @@ def make_proxy(proxy: Proxy, domain_db: Domain, phttp=80, ptls=443, pport=None):
         base['wg_server_pub'] = hconfigs[ConfigEnum.wireguard_public_key]
         base['wg_noise_trick'] = hconfigs[ConfigEnum.wireguard_noise_trick]
         return base
-
-    if base["proto"] == "trojan" and not is_tls():
-        return {'name': name, 'msg': "trojan but not tls", 'type': 'warning', 'proto': proxy.proto}
-
-    if l3 == "http" and ProxyTransport.XTLS in proxy.transport:
-        return {'name': name, 'msg': "http and xtls???", 'type': 'warning', 'proto': proxy.proto}
-    if l3 == "http" and base["proto"] in ["ss", "ssr"]:
-        return {'name': name, 'msg': "http and ss or ssr???", 'type': 'warning', 'proto': proxy.proto}
 
     if proxy.proto in ProxyProto.vmess:
         base['cipher'] = "chacha20-poly1305"
@@ -187,6 +195,7 @@ def make_proxy(proxy: Proxy, domain_db: Domain, phttp=80, ptls=443, pport=None):
 
     elif l3 == "http" and not hconfigs[ConfigEnum.http_proxy_enable]:
         return {'name': name, 'msg': "http but http is disabled ", 'type': 'debug', 'proto': proxy.proto}
+
     path = {
         'vless': f'{hconfigs[ConfigEnum.path_vless]}',
         'trojan': f'{hconfigs[ConfigEnum.path_trojan]}',
@@ -219,6 +228,35 @@ def make_proxy(proxy: Proxy, domain_db: Domain, phttp=80, ptls=443, pport=None):
     if ProxyTransport.XTLS in proxy.transport:
         base['flow'] = 'xtls-rprx-vision'
         return {**base, 'transport': 'tcp'}
+
+    if proxy['proto'] in {'vless', 'trojan'} and hconfigs[ConfigEnum.mux_enable]:
+        if hconfigs[ConfigEnum.mux_enable]:
+            # hiddify supported format
+            base['mux_protocol'] = hconfigs[ConfigEnum.mux_protocol]
+            base['mux_max_connections'] = hconfigs[ConfigEnum.mux_max_connections]
+            base['mux_min_streams'] = hconfigs[ConfigEnum.mux_min_streams]
+            base['mux_padding_enable'] = hconfigs[ConfigEnum.mux_padding_enable]
+
+            # the hiddify next client doesn't support mux max streams
+            base['mux_max_streams'] = hconfigs[ConfigEnum.mux_max_streams]
+
+            if hconfigs[ConfigEnum.mux_brutal_enable]:
+                base['mux_up'] = hconfigs[ConfigEnum.mux_brutal_up_mbps]
+                base['mux_down'] = hconfigs[ConfigEnum.mux_brutal_down_mbps]
+
+    if proxy['cdn'] and proxy['proto'] in {'vless', 'trojan', "vmess"}:
+        if hconfigs[ConfigEnum.tls_fragment_enable]:
+            base["tls_fragment_enable"] = hconfigs[ConfigEnum.tls_fragment_enable]
+            base["tls_fragment_size"] = hconfigs[ConfigEnum.tls_fragment_size]
+            base["tls_fragment_sleep"] = hconfigs[ConfigEnum.tls_fragment_sleep]
+
+        if hconfigs[ConfigEnum.tls_mixed_case]:
+            base["tls_mixed_case"] = hconfigs[ConfigEnum.tls_mixed_case]
+
+        if hconfigs[ConfigEnum.tls_padding_enable]:
+            base["tls_padding_enable"] = hconfigs[ConfigEnum.tls_padding_enable]
+            base["tls_padding_length"] = hconfigs[ConfigEnum.tls_padding_length]
+
     if "tcp" in proxy.transport:
         base['transport'] = 'tcp'
         base['path'] = f'/{path[base["proto"]]}{hconfigs[ConfigEnum.path_tcp]}'
@@ -282,9 +320,8 @@ def to_link(proxy):
             vmess_data['pbk'] = proxy['reality_pbk']
             vmess_data['sid'] = proxy['reality_short_id']
 
-        if proxy['cdn'] and g.user_agent.get('supports_xray_fg'):
-            add_tls_tricks_to_dict(vmess_data)
-        add_mux_to_dict(vmess_data)
+        add_tls_tricks_to_dict(vmess_data, proxy)
+        add_mux_to_dict(vmess_data, proxy)
 
         return "vmess://" + hutils.encode.do_base_64(f'{json.dumps(vmess_data,cls=CustomEncoder)}')
         # return pbase64(f'vmess://{json.dumps(vmess_data)}')
@@ -327,10 +364,8 @@ def to_link(proxy):
     # the ray2sing supports vless, vmess and trojan tls tricks and mux
     # the vmess handled already
 
-    if proxy['proto'] in {'vless', 'trojan'}:
-        baseurl = add_mux_to_link(baseurl)
-        if proxy['cdn'] and g.user_agent.get('supports_xray_fg'):
-            baseurl = add_tls_tricks_to_link(baseurl)
+    baseurl = add_mux_to_link(proxy)
+    baseurl += add_tls_tricks_to_link(proxy)
 
     # infos+=f'&alpn={proxy["alpn"]}'
     baseurl += f'&path={proxy["path"]}' if "path" in proxy else ""
@@ -367,61 +402,41 @@ def to_link(proxy):
 # notice: combining the functions into two function would make code less readable and difficult to maintain
 
 
-def add_tls_tricks_to_link(link: str) -> str:
-    hconfigs = get_hconfigs()
-    if hconfigs[ConfigEnum.tls_fragment_enable]:
-        link += f'&fragment={hconfigs[ConfigEnum.tls_fragment_size]},{hconfigs[ConfigEnum.tls_fragment_sleep]},tlshello'
-    return link
-
-    # old hiddify-next format
-    # if hconfig(ConfigEnum.tls_fragment_enable):
-    # link += f'&fgsize={hconfig(ConfigEnum.tls_fragment_size)}&fgsleep={hconfig(ConfigEnum.tls_fragment_sleep)}'
-    # if hconfig(ConfigEnum.tls_mixed_case):
-    # link += '&mc=1'
-    # if hconfig(ConfigEnum.tls_padding_enable):
-    # link += f'&padsize={hconfig(ConfigEnum.tls_padding_length)}'
+def add_tls_tricks_to_link(proxy) -> str:
+    out = {}
+    add_tls_tricks_to_dict(out)
+    return convert_dict_to_url(out)
 
 
-def add_mux_to_link(link: str) -> str:
-    hconfigs = get_hconfigs()
-    if hconfigs[ConfigEnum.mux_enable]:
-        link += f'&mux={hconfigs[ConfigEnum.mux_protocol]}&mux_max={hconfigs[ConfigEnum.mux_max_connections]}&mux_min={hconfigs[ConfigEnum.mux_min_streams]}&mux_pad={hconfigs[ConfigEnum.mux_padding_enable]}'
-    if hconfig(ConfigEnum.mux_brutal_enable):
-        link += f'&mux_up={hconfigs[ConfigEnum.mux_brutal_up_mbps]}&mux_down={hconfigs[ConfigEnum.mux_brutal_down_mbps]}'
-    return link
+def add_tls_tricks_to_dict(d: dict, proxy):
+    if proxy['tls_fragment_size']:
+        d['fragment'] = f'{proxy["tls_fragment_size"]},{proxy["tls_fragment_sleep"]},tlshello'
+    if proxy["tls_mixed_case"]:
+        d['mc'] = 1
+    if proxy["tls_padding_enable"]:
+        d['padsize'] = proxy["tls_padding_length"]
 
 
-def add_tls_tricks_to_dict(d: dict):
-    hconfigs = get_hconfigs()
-    if hconfigs[ConfigEnum.tls_fragment_enable]:
-        d['fragment'] = f'{hconfigs[ConfigEnum.tls_fragment_size]},{hconfigs[ConfigEnum.tls_fragment_sleep]},tlshello'
-
-    # old hiddify-next format
-    # if hconfig(ConfigEnum.tls_fragment_enable):
-    #     d['fgsize'] = hconfig(ConfigEnum.tls_fragment_size)
-    #     d['fgsleep'] = hconfig(ConfigEnum.tls_fragment_sleep)
-    # if hconfig(ConfigEnum.tls_mixed_case):
-    #     d['mc'] = 1
-    # if hconfig(ConfigEnum.tls_padding_enable):
-    #     d['padsize'] = hconfig(ConfigEnum.tls_padding_length)
+def convert_dict_to_url(dict):
+    return ("&"+("&".join(dict))) if len(dict) else ""
 
 
-def add_mux_to_dict(d: dict):
-    hconfigs = get_hconfigs()
-    # TODO: adjust for other client
-    if hconfigs[ConfigEnum.mux_enable]:
-        # hiddify supported format
-        d['mux'] = hconfigs[ConfigEnum.mux_protocol]
-        d['mux_max'] = hconfigs[ConfigEnum.mux_max_connections]
-        d['mux_min'] = hconfigs[ConfigEnum.mux_min_streams]
-        d['mux_pad'] = hconfigs[ConfigEnum.mux_padding_enable]
-        # the hiddify next client doesn't support mux max streams
-        # vmess_data['mux_max_streams'] = hconfig(ConfigEnum.mux_max_streams)
+def add_mux_to_link(proxy) -> str:
+    out = {}
+    add_mux_to_dict(out, proxy)
+    return convert_dict_to_url(out)
 
-        # handle brutal tcp
-        if hconfigs[ConfigEnum.mux_brutal_enable]:
-            d['mux_up'] = hconfigs[ConfigEnum.mux_brutal_up_mbps]
-            d['mux_down'] = hconfigs[ConfigEnum.mux_brutal_down_mbps]
+
+def add_mux_to_dict(d: dict, proxy):
+    if proxy['mux_enable']:
+        d['mux'] = proxy["mux_protocol"]
+        d['mux_max'] = proxy["mux_max_connections"]
+        d['mux_min'] = proxy["mux_min_connections"]
+        d['mux_pad'] = proxy["mux_padding_enable"]
+
+        if proxy['mux_brutal_enable']:
+            d['mux_up'] = proxy["mux_brutal_up_mbps"]
+            d['mux_down'] = proxy["mux_brutal_down_mbps"]
 
 # endregion
 
@@ -622,8 +637,8 @@ def to_singbox(proxy):
 
     add_singbox_tls(base, proxy)
 
-    if proxy['cdn'] and g.user_agent.get('is_hiddify') and proxy["proto"] in ['vmess', 'vless', 'trojan']:
-        add_singbox_tls_tricks(base)
+    if g.user_agent.get('is_hiddify'):
+        add_singbox_tls_tricks(base, proxy)
 
     if proxy.get('flow'):
         base["flow"] = proxy['flow']
@@ -729,26 +744,21 @@ def add_singbox_tls(base, proxy):
     # }
 
 
-def add_singbox_tls_tricks(base):
-    if hconfig(ConfigEnum.tls_fragment_enable):
+def add_singbox_tls_tricks(base, proxy):
+    if proxy['tls_fragment_enable']:
         base['tls_fragment'] = {
-            # 'enable': True,
-            'size': hconfig(ConfigEnum.tls_fragment_size),
-            'sleep': hconfig(ConfigEnum.tls_fragment_sleep)
+            'enable': True,
+            'size': proxy["tls_fragment_size"],
+            'sleep': proxy["tls_fragment_sleep"]
         }
 
-    tls_padding_enable = hconfig(ConfigEnum.tls_padding_enable)
-    tls_mixed_case = hconfig(ConfigEnum.tls_mixed_case)
-    if (tls_padding_enable or tls_mixed_case) and 'tls' not in base:
-        base['tls'] = {
-            'tls_tricks': {}
-        }
-    if hconfig(ConfigEnum.tls_padding_enable):
-        base['tls']['tls_tricks'] = {
-            'padding_size': hconfig(ConfigEnum.tls_padding_length)
-        }
-    if hconfig(ConfigEnum.tls_mixed_case):
-        base['tls']['tls_tricks']['mixedcase_sni'] = True
+    if 'tls' in base:
+        base['tls']['tls_tricks'] = {}
+        if proxy["tls_padding_enable"]:
+            base['tls']['tls_tricks']['padding_size'] = proxy["tls_padding_length"]
+
+        if proxy["tls_mixed_case"]:
+            base['tls']['tls_tricks']['mixedcase_sni'] = True
 
 
 def add_singbox_transport(base, proxy):
@@ -962,27 +972,29 @@ def get_all_validated_proxies(domains):
     allp = []
     allphttp = [p for p in request.args.get("phttp", "").split(',') if p]
     allptls = [p for p in request.args.get("ptls", "").split(',') if p]
-    added_ip = {'ssh': {}, 'tuic': {}, 'hysteria2': {},'wireguard':{}}
+    added_ip = {'ssh': {}, 'tuic': {}, 'hysteria2': {}, 'wireguard': {}}
+    configsmap = {}
+    proxeismap = {}
     for d in domains:
-        # raise Exception(base_config)
-        hconfigs = get_hconfigs(d.child_id)
-        for type in all_proxies(d.child_id):
+        if d.child_id not in configsmap:
+            configsmap[d.child_id] = get_hconfigs(d.child_id)
+            proxeismap[d.child_id] = all_proxies(d.child_id)
+        hconfigs = configsmap[d.child_id]
+
+        ip = hutils.network.get_domain_ip(d.domain, version=4)
+        ip6 = hutils.network.get_domain_ip(d.domain, version=6)
+        ips = [x for x in [ip, ip6]if x != None]
+
+        for type in proxeismap[d.child_id]:
             options = []
-            if type.proto in ['ssh', 'tuic', 'hysteria2','wireguard']:
-
-                ip = hutils.network.get_domain_ip(d.domain, version=4)
-                ip6 = hutils.network.get_domain_ip(d.domain, version=6)
-
-                ips = [x for x in [ip, ip6]if x != None]
-
+            if type.proto in ['ssh', 'tuic', 'hysteria2', 'wireguard']:
                 if type.proto == 'ssh' and all([x in added_ip[type.proto] for x in ips]):
-                    # print('skiping ')
                     continue
 
                 for x in ips:
                     added_ip[type.proto][x] = 1
 
-                if type.proto in ['ssh','wireguard']:
+                if type.proto in ['ssh', 'wireguard']:
                     if d.mode == 'fake':
                         continue
                     if type.proto in ['ssh']:
@@ -1005,7 +1017,7 @@ def get_all_validated_proxies(domains):
                         options.append({'phttp': phttp, 'ptls': ptls})
 
             for opt in options:
-                pinfo = make_proxy(type, d, **opt)
+                pinfo = make_proxy(hconfigs, type, d, **opt)
                 if 'msg' not in pinfo:
                     allp.append(pinfo)
     return allp

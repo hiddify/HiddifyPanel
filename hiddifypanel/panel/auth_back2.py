@@ -9,7 +9,6 @@ from apiflask import abort
 from hiddifypanel.models import AdminUser, User, Role, AccountType
 import hiddifypanel.panel.hiddify as hiddify
 from hiddifypanel import hutils
-import hiddifypanel.panel.auth as auth
 
 
 class CustumLoginManager(LoginManager):

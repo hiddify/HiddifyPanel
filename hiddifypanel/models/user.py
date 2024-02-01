@@ -6,12 +6,12 @@ from sqlalchemy_serializer import SerializerMixin
 from strenum import StrEnum
 from sqlalchemy import event
 
-from hiddifypanel.panel.database import db
+from hiddifypanel.database import db
 from hiddifypanel.models import Lang
 from hiddifypanel.models.utils import fill_password, fill_username
-from .base_account import BaseAccount
-from .admin import AdminUser
-from hiddifypanel import hutils
+from hiddifypanel.models.base_account import BaseAccount
+from hiddifypanel.models.admin import AdminUser
+
 ONE_GIG = 1024*1024*1024
 
 
@@ -105,7 +105,6 @@ class User(BaseAccount):
     @usage_limit_GB.setter
     def usage_limit_GB(self, value):
         self.usage_limit = min(1000000*ONE_GIG, (value or 0)*ONE_GIG)
-    
 
     @property
     def is_active(self) -> bool:
@@ -226,12 +225,12 @@ class User(BaseAccount):
             priv, publ = hiddify.get_ed25519_private_public_pair()
             dbuser.ed25519_private_key = priv
             dbuser.ed25519_public_key = publ
-        dbuser.wg_pk=data.get('wg_pk',dbuser.wg_pk)
-        dbuser.wg_pub=data.get('wg_pub',dbuser.wg_pub)
-        dbuser.wg_psk=data.get('wg_psk',dbuser.wg_psk)
+        dbuser.wg_pk = data.get('wg_pk', dbuser.wg_pk)
+        dbuser.wg_pub = data.get('wg_pub', dbuser.wg_pub)
+        dbuser.wg_psk = data.get('wg_psk', dbuser.wg_psk)
         if not dbuser.wg_pk:
             from hiddifypanel.panel import hiddify
-            dbuser.wg_pk, dbuser.wg_pub,dbuser.wg_psk = hiddify.get_wg_private_public_psk_pair()
+            dbuser.wg_pk, dbuser.wg_pub, dbuser.wg_psk = hiddify.get_wg_private_public_psk_pair()
 
         mode = data.get('mode', UserMode.no_reset)
         if mode == 'disable':
@@ -245,10 +244,11 @@ class User(BaseAccount):
             db.session.commit()
         return dbuser
 
-    def to_dict(self, convert_date=True,dump_id=False) -> dict:
+    def to_dict(self, convert_date=True, dump_id=False) -> dict:
         base = super().to_dict()
+        from hiddifypanel import hutils
         if dump_id:
-            base['id']=self.id
+            base['id'] = self.id
         return {**base,
                 'last_online': hutils.convert.time_to_json(self.last_online) if convert_date else self.last_online,
                 'usage_limit_GB': self.usage_limit_GB,
@@ -260,9 +260,9 @@ class User(BaseAccount):
                 'added_by_uuid': self.admin.uuid,
                 'ed25519_private_key': self.ed25519_private_key,
                 'ed25519_public_key': self.ed25519_public_key,
-                'wg_pk':self.wg_pk,
-                'wg_pub':self.wg_pub,
-                'wg_psk':self.wg_psk,
+                'wg_pk': self.wg_pk,
+                'wg_pub': self.wg_pub,
+                'wg_psk': self.wg_psk,
                 }
 
     # @staticmethod

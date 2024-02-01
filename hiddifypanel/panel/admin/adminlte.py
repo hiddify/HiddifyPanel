@@ -1,4 +1,5 @@
 from flask_admin.contrib.sqla import ModelView
+from hiddifypanel import auth
 
 
 class AdminLTEModelView(ModelView):
@@ -12,3 +13,5 @@ class AdminLTEModelView(ModelView):
     details_modal_template = 'flask-admin/model/modals/details.html'
 
     # form_base_class = SecureForm
+    def inaccessible_callback(self, name, **kwargs):
+        return auth.redirect_to_login()  # type: ignore

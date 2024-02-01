@@ -6,8 +6,8 @@ from apiflask import abort
 import datetime
 
 
-from hiddifypanel.panel.auth import login_required
-from hiddifypanel.panel.database import db
+from hiddifypanel.auth import login_required
+from hiddifypanel.database import db
 from hiddifypanel.panel import hiddify
 from hiddifypanel.models import *
 from hiddifypanel import hutils

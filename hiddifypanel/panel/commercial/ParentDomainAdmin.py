@@ -1,5 +1,5 @@
 from hiddifypanel import hutils
-from hiddifypanel.panel.auth import login_required
+from hiddifypanel.auth import login_required
 from wtforms.validators import Regexp
 from hiddifypanel.models import *
 from wtforms.validators import Regexp, ValidationError
@@ -9,7 +9,7 @@ from flask_babel import lazy_gettext as _
 from hiddifypanel.panel import hiddify
 from flask import Markup, g  # type: ignore
 from . import ParentDomain
-import hiddifypanel.panel.auth as auth
+
 # Define a custom field type for the related domains
 from flask_admin.form.fields import Select2TagsField, Select2Field
 from flask import current_app
@@ -118,6 +118,3 @@ class ParentDomainAdmin(AdminLTEModelView):
         if login_required(roles={Role.super_admin, Role.admin})(lambda: True)() != True:
             return False
         return True
-
-    def inaccessible_callback(self, name, **kwargs):
-        return auth.redirect_to_login()  # type: ignore

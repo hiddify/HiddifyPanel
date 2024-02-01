@@ -4,11 +4,10 @@ from flask_babel import gettext as __
 from flask_babel import lazy_gettext as _
 from hiddifypanel.panel import hiddify
 from flask import g
-from hiddifypanel.panel.auth import login_required
+from hiddifypanel.auth import login_required
 # Define a custom field type for the related domains
 
 from flask import current_app
-import hiddifypanel.panel.auth as auth
 
 
 class ProxyDetailsAdmin(AdminLTEModelView):
@@ -36,6 +35,3 @@ class ProxyDetailsAdmin(AdminLTEModelView):
         if login_required(roles={Role.super_admin, Role.admin})(lambda: True)() != True:
             return False
         return True
-
-    def inaccessible_callback(self, name, **kwargs):
-        return auth.redirect_to_login()  # type: ignore

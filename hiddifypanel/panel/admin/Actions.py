@@ -5,7 +5,7 @@ import urllib.request
 from flask_classful import FlaskView, route
 from flask import render_template, request, make_response, redirect, g
 from hiddifypanel.hutils.flask import hurl_for
-from hiddifypanel.panel.auth import login_required
+from hiddifypanel.auth import login_required
 from flask import current_app as app
 from flask_babel import gettext as _
 
@@ -196,7 +196,7 @@ class Actions(FlaskView):
                 continue
             if time.time()-start > 20:
                 break
-            
+
             tcp_ping = hutils.network.is_domain_reality_friendly(d)
             if tcp_ping:
                 dip = hutils.network.get_domain_ip(d)

@@ -8,11 +8,11 @@ from flask import render_template
 
 
 from hiddifypanel.models import ConfigEnum, get_hconfigs, BoolConfig, ConfigEnum, hconfig, Proxy
-from hiddifypanel.panel.database import db
+from hiddifypanel.database import db
 from wtforms.fields import *
 from hiddifypanel.panel import hiddify
 from flask_classful import FlaskView
-from hiddifypanel.panel.auth import login_required
+from hiddifypanel.auth import login_required
 
 
 class ProxyAdmin(FlaskView):

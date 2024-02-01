@@ -4,12 +4,10 @@ from hiddifypanel.hutils.flask import hurl_for
 from flask_login.utils import _get_user
 from functools import wraps
 from hiddifypanel.models import *
-from hiddifypanel.models import AdminUser, User, Role
+
 from hiddifypanel import hutils
-
 from werkzeug.local import LocalProxy
-
-current_account: BaseAccount = LocalProxy(lambda: _get_user())
+current_account: "BaseAccount" = LocalProxy(lambda: _get_user())
 
 
 class AnonymousAccount(BaseAccount):
@@ -184,11 +182,6 @@ def auth_before_request():
             return redirect(next_url)
 
 
-def init_app(app):
-    # login_manager = LoginManager.()
-    # login_manager = CustumLoginManager()
-    # login_manager.init_app(app)
-    pass
 
 
 def logout_redirect():

@@ -3,7 +3,7 @@ from flask_babel import gettext as _
 from telebot import types
 import datetime
 
-from hiddifypanel.panel.database import db
+from hiddifypanel.database import db
 from hiddifypanel.panel import hiddify
 from hiddifypanel.models import *
 from hiddifypanel import hutils

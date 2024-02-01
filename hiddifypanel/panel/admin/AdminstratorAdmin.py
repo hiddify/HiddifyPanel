@@ -1,5 +1,5 @@
-from hiddifypanel.panel.auth import login_required
-import hiddifypanel.panel.auth as auth
+from hiddifypanel.auth import login_required
+
 from wtforms.validators import Regexp
 from hiddifypanel.models import *
 from wtforms.validators import Regexp, ValidationError
@@ -11,7 +11,7 @@ from flask import Markup, request  # type: ignore
 from flask import g
 import datetime
 from wtforms import SelectField
-import hiddifypanel.panel.auth as auth
+
 from hiddifypanel.panel import hiddify
 
 
@@ -172,9 +172,6 @@ class AdminstratorAdmin(AdminLTEModelView):
         if login_required(roles={Role.super_admin, Role.admin, Role.agent})(lambda: True)() != True:
             return False
         return True
-
-    def inaccessible_callback(self, name, **kwargs):
-        return auth.redirect_to_login()  # type: ignore
 
     def get_query(self):
         # Get the base query

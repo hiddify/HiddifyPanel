@@ -15,7 +15,7 @@ from datetime import timedelta
 
 from hiddifypanel.cache import cache
 from hiddifypanel.models import *
-from hiddifypanel.panel.database import db
+from hiddifypanel.database import db
 from hiddifypanel.hutils.utils import *
 from hiddifypanel.Events import domain_changed
 from hiddifypanel import hutils
@@ -188,7 +188,7 @@ def check_need_reset(old_configs, do=False):
 
 
 def get_child(unique_id):
-    child_id = hutils.current_child_id()
+    child_id = Child.current.id
     if unique_id is None or unique_id == "default":
         child_id = 0
     else:
@@ -390,12 +390,12 @@ def get_wg_private_public_psk_pair():
         return private_key, public_key, psk
     except subprocess.CalledProcessError as e:
         print(f"Error: {e}")
-        return None, None,None
+        return None, None, None
 
 
 def get_account_panel_link(account: BaseAccount, host: str, is_https: bool = True, prefere_path_only: bool = False, child_id=None):
     if child_id == None:
-        child_id = hutils.current_child_id()
+        child_id = Child.current.id
     is_admin = isinstance(account, AdminUser)
     basic_auth = is_admin
 

@@ -1,4 +1,4 @@
-from hiddifypanel.panel.database import db
+from hiddifypanel.database import db
 import copy
 from wtforms.validators import Regexp, ValidationError
 from flask_babel import lazy_gettext as _
@@ -6,9 +6,9 @@ from .adminlte import AdminLTEModelView
 from flask_babel import gettext as __
 from flask import Markup, g, request
 
-from hiddifypanel.panel.auth import login_required
+from hiddifypanel.auth import login_required
 from hiddifypanel.panel import hiddify
-import hiddifypanel.panel.auth as auth
+
 from hiddifypanel.models import *
 from hiddifypanel import hutils
 from sqlalchemy.orm.session import make_transient
@@ -40,12 +40,9 @@ class NodeAdmin(AdminLTEModelView):
     def is_accessible(self):
         if login_required(roles={Role.super_admin})(lambda: True)() != True:
             return False
-        if hutils.current_child_id() != 0:
+        if Child.current.id != 0:
             return False
         return True
-
-    def inaccessible_callback(self, name, **kwargs):
-        return auth.redirect_to_login()  # type: ignore
 
     def on_model_change(self, form, model, is_created):
         if is_created and model.mode != ChildMode.virtual:

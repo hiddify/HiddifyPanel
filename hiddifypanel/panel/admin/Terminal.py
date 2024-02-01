@@ -1,5 +1,5 @@
 # #!/usr/bin/env python3
-# from hiddifypanel.panel.database import db
+# from hiddifypanel.database import db
 # import uuid
 # from flask_babel import gettext as _
 # from flask_bootstrap import SwitchField

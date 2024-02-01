@@ -1,4 +1,4 @@
-from hiddifypanel import hutils
+
 from slugify import slugify
 
 

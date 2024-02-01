@@ -11,7 +11,7 @@ from flask import g, request, render_template
 import hiddifypanel
 from hiddifypanel.models.config import hconfig
 from hiddifypanel.models.config_enum import ConfigEnum
-from hiddifypanel.panel.auth import current_account
+from hiddifypanel.auth import current_account
 
 
 class __IssueUrl:

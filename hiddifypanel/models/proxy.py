@@ -3,7 +3,7 @@ from enum import auto
 from sqlalchemy_serializer import SerializerMixin
 from strenum import StrEnum
 
-from hiddifypanel.panel.database import db
+from hiddifypanel.database import db
 
 
 class ProxyTransport(StrEnum):

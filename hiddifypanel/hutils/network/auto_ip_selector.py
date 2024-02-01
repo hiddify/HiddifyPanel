@@ -6,10 +6,7 @@ import random
 import os
 import re
 import sys
-
-
-from hiddifypanel import hutils
-from hiddifypanel.models import *
+from hiddifypanel.cache import cache
 
 DEFAULT_IPs = """
 mci.ircf.space		MCI
@@ -68,7 +65,11 @@ __asn_map = {
 
 
 def get_asn_short_name(user_ip: str = '') -> str:
-    user_ip = user_ip or get_real_user_ip()
+    return __get_asn_short_name_imp(user_ip or get_real_user_ip())
+
+
+@cache.cache()
+def __get_asn_short_name_imp(user_ip: str) -> str:
     try:
         asn_id = get_asn_id(user_ip)
         return __asn_map.get(str(asn_id), "unknown")
@@ -77,7 +78,11 @@ def get_asn_short_name(user_ip: str = '') -> str:
 
 
 def get_asn_id(user_ip: str = '') -> str:
-    user_ip = user_ip or get_real_user_ip()
+    return __get_asn_id_imp(user_ip or get_real_user_ip())
+
+
+@cache.cache()
+def __get_asn_id_imp(user_ip: str) -> str:
     try:
         asnres = IPASN.get(user_ip)
         return asnres['autonomous_system_number']
@@ -103,7 +108,11 @@ def get_city(user_ip: str = '') -> Union[dict, str]:
 
 
 def get_real_user_ip_debug(user_ip: str = '') -> str:
-    user_ip = user_ip or get_real_user_ip()
+    return __get_real_user_ip_debug_imp(user_ip or get_real_user_ip())
+
+
+@cache.cache()
+def __get_real_user_ip_debug_imp(user_ip) -> str:
     asnres = IPASN.get(user_ip) or {}
     asn = f"{asnres.get('autonomous_system_number','unknown')}" if asnres else "unknown"
     asn_dscr = f"{asnres.get('autonomous_system_organization','unknown')}" if asnres else "unknown"

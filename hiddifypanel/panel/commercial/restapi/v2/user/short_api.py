@@ -5,7 +5,7 @@ from flask import g, request
 from apiflask.fields import String, Integer
 from flask import current_app as app
 from flask.views import MethodView
-from hiddifypanel.panel.auth import login_required
+from hiddifypanel.auth import login_required
 from hiddifypanel.models.config import hconfig
 from hiddifypanel.models.config_enum import ConfigEnum
 from hiddifypanel.models.role import Role

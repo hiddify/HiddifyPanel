@@ -5,7 +5,7 @@ import datetime
 from hiddifypanel.drivers import user_driver
 from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify
-from hiddifypanel.panel.database import db
+from hiddifypanel.database import db
 
 to_gig_d = 1024**3
 
@@ -18,7 +18,6 @@ def update_local_usage():
 
 
 def add_users_usage_uuid(uuids_bytes, child_id):
-    # WHAT IS THE "keys" function WHY ?????
     users = User.query.filter(User.uuid.in_(keys(uuids_bytes)))
     dbusers_bytes = {u: uuids_bytes.get(u.uuid, 0) for u in users}
     add_users_usage(dbusers_bytes, child_id)

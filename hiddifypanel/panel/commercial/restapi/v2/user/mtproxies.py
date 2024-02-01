@@ -3,7 +3,7 @@ from apiflask import Schema, abort
 from flask import g
 from flask import current_app as app
 from apiflask.fields import String
-from hiddifypanel.panel.auth import login_required
+from hiddifypanel.auth import login_required
 
 from hiddifypanel.models.config import get_hconfigs, hconfig
 from hiddifypanel.models.config_enum import ConfigEnum

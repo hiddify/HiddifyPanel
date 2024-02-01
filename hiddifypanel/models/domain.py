@@ -10,10 +10,11 @@ from sqlalchemy.orm import backref
 from urllib.parse import urlparse
 from strenum import StrEnum
 
-from hiddifypanel.panel.database import db
-from hiddifypanel import hutils
-from .config import hconfig
-from .config_enum import ConfigEnum
+from hiddifypanel.database import db
+
+from hiddifypanel.models.config import hconfig
+from .child import Child
+from hiddifypanel.models.config_enum import ConfigEnum
 from sqlalchemy.orm import backref
 
 
@@ -61,7 +62,7 @@ class Domain(db.Model, SerializerMixin):
     def __repr__(self):
         return f'{self.domain}'
 
-    def to_dict(self, dump_ports=False,dump_child_id=False):
+    def to_dict(self, dump_ports=False, dump_child_id=False):
         data = {
             'domain': self.domain.lower(),
             'mode': self.mode,
@@ -74,7 +75,7 @@ class Domain(db.Model, SerializerMixin):
             'show_domains': [dd.domain for dd in self.show_domains],
         }
         if dump_child_id:
-            data['child_id']=self.child_id
+            data['child_id'] = self.child_id
         if dump_ports:
             data["internal_port_hysteria2"] = self.internal_port_hysteria2
             data["internal_port_tuic"] = self.internal_port_tuic
@@ -141,7 +142,7 @@ def get_panel_domains(always_add_ip=False, always_add_all_domains=False) -> List
     #     from .parent_domain import ParentDomain
     #     domains = ParentDomain.query.all()
     # else:
-    domains = Domain.query.filter(Domain.mode == DomainType.sub_link_only, Domain.child_id == hutils.current_child_id()).all()
+    domains = Domain.query.filter(Domain.mode == DomainType.sub_link_only, Domain.child_id == Child.current.id).all()
     if not len(domains) or always_add_all_domains:
         domains = Domain.query.filter(Domain.mode.notin_([DomainType.fake, DomainType.reality])).all()
 
@@ -158,14 +159,14 @@ def get_proxy_domains(domain):
     #     from hiddifypanel.models.parent_domain import ParentDomain
     #     db_domain = ParentDomain.query.filter(ParentDomain.domain == domain).first() or ParentDomain(domain=domain, show_domains=[])
     # else:
-    db_domain = Domain.query.filter(Domain.domain == domain, Domain.child_id == hutils.current_child_id()).first()
+    db_domain = Domain.query.filter(Domain.domain == domain, Domain.child_id == Child.current.id).first()
     if not db_domain:
         db_domain = Domain(domain=domain, mode=DomainType.direct, cdn_ip='', show_domains=[])
     return get_proxy_domains_db(db_domain)
 
 
 def get_proxy_domains_db(db_domain):
-    
+
     if not db_domain:
         domain = urlparse(request.base_url).hostname
         db_domain = Domain(domain=domain, mode=DomainType.direct, show_domains=[])

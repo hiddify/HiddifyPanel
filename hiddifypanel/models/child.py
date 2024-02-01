@@ -1,10 +1,12 @@
 from __future__ import annotations
-import uuid as uuid_mod
+import uuid
 from sqlalchemy_serializer import SerializerMixin
 from enum import auto
 from strenum import StrEnum
+from flask import g, has_app_context
 
-from hiddifypanel.panel.database import db
+
+from hiddifypanel.database import db
 
 
 class ChildMode(StrEnum):
@@ -17,7 +19,7 @@ class Child(db.Model, SerializerMixin):
     name = db.Column(db.String(200), nullable=False, unique=True)
     mode = db.Column(db.Enum(ChildMode), nullable=False, default=ChildMode.virtual)
     # ip = db.Column(db.String(200), nullable=False, unique=True)
-    unique_id = db.Column(db.String(200), nullable=False, default=lambda: str(uuid_mod.uuid4()), unique=True)
+    unique_id = db.Column(db.String(200), nullable=False, default=lambda: str(uuid.uuid4()), unique=True)
     domains = db.relationship('Domain', cascade="all,delete", backref='child')
     proxies = db.relationship('Proxy', cascade="all,delete", backref='child')
     boolconfigs = db.relationship('BoolConfig', cascade="all,delete", backref='child')
@@ -27,3 +29,10 @@ class Child(db.Model, SerializerMixin):
     @classmethod
     def by_id(cls, id: int) -> "Child":
         return Child.query.filter(Child.id == id).first()
+
+    @classmethod
+    @property
+    def current(cls) -> "Child":
+        if has_app_context() and hasattr(g, "child"):
+            return g.child
+        return Child.by_id(0)

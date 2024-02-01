@@ -2,7 +2,7 @@ from flask import current_app as app
 from flask import g
 from apiflask import abort
 from flask.views import MethodView
-from hiddifypanel.panel.auth import login_required
+from hiddifypanel.auth import login_required
 from hiddifypanel.models.role import Role
 from .admin_user_api import AdminSchema, has_permission
 from hiddifypanel.models import AdminUser

@@ -4,7 +4,7 @@ from flask_restful import Resource
 # from flask_simplelogin import login_required
 import datetime
 from hiddifypanel.models import *
-from hiddifypanel.panel.auth import login_required
+from hiddifypanel.auth import login_required
 from hiddifypanel.panel import hiddify
 from hiddifypanel.drivers import user_driver
 

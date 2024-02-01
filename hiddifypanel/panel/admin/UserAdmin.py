@@ -16,9 +16,8 @@ import hiddifypanel
 from hiddifypanel.models import *
 from hiddifypanel.drivers import user_driver
 from hiddifypanel.panel import hiddify, custom_widgets
-from hiddifypanel.panel.auth import login_required
+from hiddifypanel.auth import login_required
 from hiddifypanel import hutils
-import hiddifypanel.panel.auth as auth
 
 
 class UserAdmin(AdminLTEModelView):
@@ -214,9 +213,6 @@ class UserAdmin(AdminLTEModelView):
             return False
         return True
 
-    def inaccessible_callback(self, name, **kwargs):
-        return auth.redirect_to_login()  # type: ignore
-
     def on_form_prefill(self, form, id=None):
         # print("================",form._obj.start_date)
         if id == None or form._obj is None or form._obj.start_date is None:
@@ -353,7 +349,7 @@ class UserAdmin(AdminLTEModelView):
         admin = AdminUser.query.filter(AdminUser.id == admin_id).first()
         if not admin:
             abort(403)
-        
+
         query = query.filter(User.added_by.in_(admin.recursive_sub_admins_ids()))
 
         return query

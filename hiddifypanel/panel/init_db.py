@@ -11,152 +11,12 @@ from dateutil import relativedelta
 from hiddifypanel import Events, hutils
 from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify
-from hiddifypanel.panel.database import db
+from hiddifypanel.database import db
 import hiddifypanel.models.utils as model_utils
 
 from flask import g
+
 MAX_DB_VERSION = 80
-
-
-def init_db():
-    # db.init_migration(app)
-    # db.migrate()
-    # db.upgrade()
-    db.create_all()
-    hconfig.invalidate_all()
-    # get_hconfigs.invalidate_all()
-    db_version = int(hconfig(ConfigEnum.db_version) or 0)
-    # set_hconfig(ConfigEnum.db_version, 69)
-    if db_version == latest_db_version():
-        return
-    execute('ALTER TABLE proxy DROP INDEX `name`;')
-
-    execute("alter table user alter column telegram_id bigint;")
-    execute("alter table admin_user alter column telegram_id bigint;")
-
-    add_column(Child.mode)
-    add_column(Child.name)
-    add_column(User.lang)
-    add_column(AdminUser.lang)
-    add_column(User.username)
-    add_column(User.password)
-    add_column(AdminUser.username)
-    add_column(AdminUser.password)
-    add_column(User.wg_pk)
-    add_column(User.wg_pub)
-    add_column(User.wg_psk)
-
-    add_column(Domain.extra_params)
-
-    Events.db_prehook.notify()
-    if db_version < 52:
-        execute(f'update domain set mode="sub_link_only", sub_link_only=false where sub_link_only = true or mode=1  or mode="1"')
-        execute(f'update domain set mode="direct", sub_link_only=false where mode=0  or mode="0"')
-        execute(f'update proxy set transport="WS" where transport = "ws"')
-        execute(f'update admin_user set mode="agent" where mode = "slave"')
-        execute(f'update admin_user set mode="super_admin" where id=1')
-        execute(f'DELETE from proxy where transport = "h1"')
-        # add_column(Domain.grpc)
-        # add_column(ParentDomain.alias)
-        # add_column(User.ed25519_private_key)
-        # add_column(User.ed25519_public_key)
-        # add_column(User.start_date)
-        # add_column(User.package_days)
-        # add_column(User.telegram_id)
-        # add_column(Child.unique_id)
-        # add_column(Domain.alias)
-        # add_column(Domain.sub_link_only)
-        # add_column(Domain.child_id)
-        # add_column(Proxy.child_id)
-        # add_column(User.added_by)
-        # add_column(User.max_ips)
-        # add_column(AdminUser.parent_admin_id)
-        # add_column(AdminUser.can_add_admin)
-        # add_column(AdminUser.max_active_users)
-        # add_column(AdminUser.max_users)
-        # add_column(BoolConfig.child_id)
-        # add_column(StrConfig.child_id)
-        # add_column(DailyUsage.admin_id)
-        # add_column(DailyUsage.child_id)
-        # add_column(User.monthly)
-        # add_column(User.enable)
-        # add_column(Domain.cdn_ip)
-        # add_column(Domain.servernames)
-        # add_column(User.lang)
-
-        if len(Domain.query.all()) != 0 and BoolConfig.query.count() == 0:
-            execute(f'DROP TABLE bool_config')
-            execute(f'ALTER TABLE bool_config_old RENAME TO bool_config')
-        if len(Domain.query.all()) != 0 and StrConfig.query.count() == 0:
-            execute(f'DROP TABLE str_config')
-            execute(f'ALTER TABLE str_config_old RENAME TO str_config')
-
-        execute('ALTER TABLE user RENAME COLUMN monthly_usage_limit_GB TO usage_limit_GB')
-        execute(f'update admin_user set parent_admin_id=1 where parent_admin_id is NULL and 1!=id')
-        execute(f'update admin_user set max_users=100,max_active_users=100 where max_users is NULL')
-        execute(f'update dailyusage set child_id=0 where child_id is NULL')
-        execute(f'update dailyusage set admin_id=1 where admin_id is NULL')
-        execute(f'update dailyusage set admin_id=1 where admin_id = 0')
-        execute(f'update user set added_by=1 where added_by = 1')
-        execute(f'update user set enable=True, mode="no_reset" where enable is NULL')
-        execute(f'update user set enable=False, mode="no_reset" where mode = "disable"')
-        execute(f'update user set added_by=1 where added_by is NULL')
-        execute(f'update user set max_ips=10000 where max_ips is NULL')
-        execute(f'update str_config set child_id=0 where child_id is NULL')
-        execute(f'update bool_config set child_id=0 where child_id is NULL')
-        execute(f'update domain set child_id=0 where child_id is NULL')
-        execute(f'update domain set sub_link_only=False where sub_link_only is NULL')
-        execute(f'update proxy set child_id=0 where child_id is NULL')
-
-    add_new_enum_values()
-
-    if not Child.query.filter(Child.id == 0).first():
-        print(Child.query.filter(Child.id == 0).first())
-        tmp_uuid = str(uuid.uuid4())
-        db.session.add(Child(unique_id=tmp_uuid, name="Root"), id=0)
-        db.session.commit()
-        dexecute(f'update child set id=0 where unique_id="{tmp_uuid}"')
-
-    if not AdminUser.query.filter(AdminUser.id == 1).first():
-        db.session.add(AdminUser(id=1, uuid=str(uuid.uuid4()), name="Owner", mode=AdminMode.super_admin, comment=""))
-        db.session.commit()
-        execute("update admin_user set id=1 where name='Owner'")
-
-    upgrade_database()
-    Child.query.filter(Child.id == 0).first().mode = ChildMode.virtual
-    if db_version<69:_v70(0)
-
-    db.session.commit()
-
-    for child in Child.query.filter(Child.mode == ChildMode.virtual).all():
-        g.child = child
-        db_version = int(hconfig(ConfigEnum.db_version, child.id) or 0)
-        start_version = db_version
-        for ver in range(1, MAX_DB_VERSION):
-            if ver <= db_version:
-                continue
-
-            db_action = sys.modules[__name__].__dict__.get(f'_v{ver}', None)
-            if not db_action:
-                continue
-            if start_version == 0 and ver == 10:
-                continue
-
-            hiddify.error(f"Updating db from version {db_version} for node {child.id}")
-            if ver < 70 and child.id == 0:
-                db_action()
-            else:
-                db_action(child.id)
-            Events.db_init_event.notify(db_version=db_version)
-            hiddify.error(f"Updated successfuly db from version {db_version} to {ver}")
-
-            db_version = ver
-            db.session.commit()
-            set_hconfig(ConfigEnum.db_version, db_version, child_id=child.id, commit=False)
-
-        db.session.commit()
-    g.child = Child.by_id(0)
-    return BoolConfig.query.all()
 
 
 def _v70(child_id):
@@ -613,7 +473,7 @@ def make_proxy_rows(cfgs):
 
 def add_config_if_not_exist(key: ConfigEnum, val, child_id=None):
     if child_id == None:
-        child_id = hutils.current_child_id()
+        child_id = Child.current.id
     old_val = hconfig(key, child_id)
     if old_val is None:
         set_hconfig(key, val)
@@ -715,3 +575,154 @@ def upgrade_database():
             os.rename(sqlite_db, sqlite_db+".old")
             set_hconfig(ConfigEnum.db_version, db_version, commit=True)
         hiddify.error("Upgrading to the new dataset succuess.")
+
+
+def init_db():
+    db.create_all()
+    hconfig.invalidate_all()
+    get_hconfigs.invalidate_all()
+    db_version = int(hconfig(ConfigEnum.db_version) or 0)
+    set_hconfig(ConfigEnum.db_version, 69)
+    if db_version == latest_db_version():
+        return
+    migrate(db_version)
+    Child.query.filter(Child.id == 0).first().mode = ChildMode.virtual
+    # if db_version < 69:
+    #     _v70(0)
+
+    db.session.commit()
+
+    for child in Child.query.filter(Child.mode == ChildMode.virtual).all():
+        g.child = child
+        db_version = int(hconfig(ConfigEnum.db_version, child.id) or 0)
+        start_version = db_version
+        for ver in range(1, MAX_DB_VERSION):
+            if ver <= db_version:
+                continue
+
+            db_action = sys.modules[__name__].__dict__.get(f'_v{ver}', None)
+            if not db_action or (start_version == 0 and ver == 10):
+                continue
+
+            hiddify.error(f"Updating db from version {db_version} for node {child.id}")
+
+            if ver < 70:
+                if child.id != 0:
+                    continue
+                db_action()
+            else:
+                db_action(child.id)
+
+            Events.db_init_event.notify(db_version=db_version)
+            hiddify.error(f"Updated successfuly db from version {db_version} to {ver}")
+
+            db_version = ver
+            db.session.commit()
+            set_hconfig(ConfigEnum.db_version, db_version, child_id=child.id, commit=False)
+
+        db.session.commit()
+    g.child = Child.by_id(0)
+    return BoolConfig.query.all()
+
+
+def migrate(db_version):
+    execute('CREATE INDEX date ON daily_usage (date);')
+    execute('CREATE INDEX username ON user (username);')
+    execute('CREATE INDEX username ON admin_user (username);')
+    execute('CREATE INDEX telegram_id ON user (telegram_id);')
+    execute('CREATE INDEX telegram_id ON admin_user (telegram_id);')
+
+    execute('ALTER TABLE proxy DROP INDEX `name`;')
+
+    execute("alter table user alter column telegram_id bigint;")
+    execute("alter table admin_user alter column telegram_id bigint;")
+
+    add_column(Child.mode)
+    add_column(Child.name)
+    add_column(User.lang)
+    add_column(AdminUser.lang)
+    add_column(User.username)
+    add_column(User.password)
+    add_column(AdminUser.username)
+    add_column(AdminUser.password)
+    add_column(User.wg_pk)
+    add_column(User.wg_pub)
+    add_column(User.wg_psk)
+
+    add_column(Domain.extra_params)
+
+    Events.db_prehook.notify()
+    if db_version < 52:
+        execute(f'update domain set mode="sub_link_only", sub_link_only=false where sub_link_only = true or mode=1  or mode="1"')
+        execute(f'update domain set mode="direct", sub_link_only=false where mode=0  or mode="0"')
+        execute(f'update proxy set transport="WS" where transport = "ws"')
+        execute(f'update admin_user set mode="agent" where mode = "slave"')
+        execute(f'update admin_user set mode="super_admin" where id=1')
+        execute(f'DELETE from proxy where transport = "h1"')
+        # add_column(Domain.grpc)
+        # add_column(ParentDomain.alias)
+        # add_column(User.ed25519_private_key)
+        # add_column(User.ed25519_public_key)
+        # add_column(User.start_date)
+        # add_column(User.package_days)
+        # add_column(User.telegram_id)
+        # add_column(Child.unique_id)
+        # add_column(Domain.alias)
+        # add_column(Domain.sub_link_only)
+        # add_column(Domain.child_id)
+        # add_column(Proxy.child_id)
+        # add_column(User.added_by)
+        # add_column(User.max_ips)
+        # add_column(AdminUser.parent_admin_id)
+        # add_column(AdminUser.can_add_admin)
+        # add_column(AdminUser.max_active_users)
+        # add_column(AdminUser.max_users)
+        # add_column(BoolConfig.child_id)
+        # add_column(StrConfig.child_id)
+        # add_column(DailyUsage.admin_id)
+        # add_column(DailyUsage.child_id)
+        # add_column(User.monthly)
+        # add_column(User.enable)
+        # add_column(Domain.cdn_ip)
+        # add_column(Domain.servernames)
+        # add_column(User.lang)
+
+        if len(Domain.query.all()) != 0 and BoolConfig.query.count() == 0:
+            execute(f'DROP TABLE bool_config')
+            execute(f'ALTER TABLE bool_config_old RENAME TO bool_config')
+        if len(Domain.query.all()) != 0 and StrConfig.query.count() == 0:
+            execute(f'DROP TABLE str_config')
+            execute(f'ALTER TABLE str_config_old RENAME TO str_config')
+
+        execute('ALTER TABLE user RENAME COLUMN monthly_usage_limit_GB TO usage_limit_GB')
+        execute(f'update admin_user set parent_admin_id=1 where parent_admin_id is NULL and 1!=id')
+        execute(f'update admin_user set max_users=100,max_active_users=100 where max_users is NULL')
+        execute(f'update dailyusage set child_id=0 where child_id is NULL')
+        execute(f'update dailyusage set admin_id=1 where admin_id is NULL')
+        execute(f'update dailyusage set admin_id=1 where admin_id = 0')
+        execute(f'update user set added_by=1 where added_by = 1')
+        execute(f'update user set enable=True, mode="no_reset" where enable is NULL')
+        execute(f'update user set enable=False, mode="no_reset" where mode = "disable"')
+        execute(f'update user set added_by=1 where added_by is NULL')
+        execute(f'update user set max_ips=10000 where max_ips is NULL')
+        execute(f'update str_config set child_id=0 where child_id is NULL')
+        execute(f'update bool_config set child_id=0 where child_id is NULL')
+        execute(f'update domain set child_id=0 where child_id is NULL')
+        execute(f'update domain set sub_link_only=False where sub_link_only is NULL')
+        execute(f'update proxy set child_id=0 where child_id is NULL')
+
+    add_new_enum_values()
+
+    if not Child.query.filter(Child.id == 0).first():
+        print(Child.query.filter(Child.id == 0).first())
+        tmp_uuid = str(uuid.uuid4())
+        db.session.add(Child(unique_id=tmp_uuid, name="Root"), id=0)
+        db.session.commit()
+        dexecute(f'update child set id=0 where unique_id="{tmp_uuid}"')
+
+    if not AdminUser.query.filter(AdminUser.id == 1).first():
+        db.session.add(AdminUser(id=1, uuid=str(uuid.uuid4()), name="Owner", mode=AdminMode.super_admin, comment=""))
+        db.session.commit()
+        execute("update admin_user set id=1 where name='Owner'")
+
+    upgrade_database()

@@ -11,11 +11,12 @@ from urllib.parse import urlparse
 from flask_babel import gettext as _
 
 
-from hiddifypanel.panel.auth import login_required
-from hiddifypanel.panel.database import db
+from hiddifypanel.auth import login_required
+from hiddifypanel.database import db
 from hiddifypanel.panel import hiddify
 from hiddifypanel.models import *
 from hiddifypanel import hutils
+from hiddifypanel import cache
 
 
 class UserView(FlaskView):
@@ -193,8 +194,8 @@ class UserView(FlaskView):
             resp = ""
         else:
             resp = link_maker.make_full_singbox_config(**c)
-        
-        return add_headers(resp, c,'application/json')
+
+        return add_headers(resp, c, 'application/json')
 
     @ route('/singbox.json', methods=["GET", "HEAD"])
     @login_required(roles={Role.user})
@@ -247,8 +248,9 @@ class UserView(FlaskView):
 #     return resp.decode()
 
 
-def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
-    mode = "new"
+# @cache.cache(ttl=300)
+def get_domain_information(no_domain=False, filter_domain=None, alternative=None):
+    domains = []
     default_asn = request.args.get("asn")
     if filter_domain:
         domain = filter_domain
@@ -256,8 +258,8 @@ def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
             domain=domain, mode=DomainType.direct, cdn_ip='', show_domains=[], child_id=0)
         domains = [db_domain]
     else:
-        domain = urlparse(request.base_url).hostname if not no_domain else None
-        DB = ParentDomain if hconfig(ConfigEnum.is_parent) else Domain
+        domain = alternative if not no_domain else None
+        DB = Domain
         db_domain = DB.query.filter(DB.domain == domain).first()
 
         if not db_domain:
@@ -270,29 +272,7 @@ def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
             db_domain = DB(domain=domain, show_domains=[])
             hutils.flask.flash(_("This domain does not exist in the panel!" + domain))
 
-        if mode == 'multi':
-            domains = Domain.query.all()
-        elif mode == 'new':
-            # db_domain=Domain.query.filter(Domain.domain==domain).first()
-            domains = db_domain.show_domains or Domain.query.filter(
-                Domain.sub_link_only != True).all()
-        else:
-
-            domains = [db_domain]
-            direct_host = domain
-
-            # if db_domain and db_domain.mode==DomainType.cdn:
-            #     direct_domain_db=Domain.query.filter(Domain.mode==DomainType.direct).first()
-            # if not direct_domain_db:
-            #     direct_host=urllib.request.urlopen('https://v4.ident.me/').read().decode('utf8')
-            #     direct_domain_db=Domain(domain=direct_host,mode=DomainType.direct)
-
-            # domains.append(direct_domain_db)
-
-    # uuid_secret=str(uuid.UUID(user_secret))
-    user = User.query.filter(User.uuid == f'{user_uuid}').first()
-    if user is None:
-        abort(401, "Invalid User")
+            domains = db_domain.show_domains or Domain.query.filter(Domain.sub_link_only != True).all()
 
     has_auto_cdn = False
     for d in domains:
@@ -307,6 +287,19 @@ def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
             # print("autocdn ip mode ", d.cdn_ip)
         if "*" in d.domain:
             d.domain = d.domain.replace("*", hutils.random.get_random_string(5, 15))
+    if len(domains) == 0:
+        domains = [Domain(id=0, domain=alternative, mode=DomainType.direct, cdn_ip='', show_domains=[], child_id=0)]
+
+    return domains, has_auto_cdn
+
+
+def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
+    # uuid_secret=str(uuid.UUID(user_secret))
+    domains, has_auto_cdn = get_domain_information(no_domain, filter_domain, urlparse(request.base_url).hostname)
+    db_domain = domains[0]
+    user: User = g.account if g.account.uuid == user_uuid else User.by_uuid(f'{user_uuid}')
+    if user is None:
+        abort(401, "Invalid User")
 
     package_mode_dic = {
         UserMode.daily: 1,
@@ -315,16 +308,12 @@ def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
 
     }
 
-    g.locale = hconfig(ConfigEnum.lang)
     expire_days = user.remaining_days()
     reset_days = user.days_to_reset()
-    # print(reset_days)
-    # raise
     if reset_days >= expire_days:
         reset_days = 1000
-    # print(reset_days,expire_days,reset_days<=expire_days)
-    expire_s = int((datetime.date.today(
-    )+datetime.timedelta(days=expire_days)-datetime.date(1970, 1, 1)).total_seconds())
+
+    expire_s = int((datetime.date.today()+datetime.timedelta(days=expire_days)-datetime.date(1970, 1, 1)).total_seconds())
 
     user_ip = hutils.network.auto_ip_selector.get_real_user_ip()
     asn = hutils.network.auto_ip_selector.get_asn_short_name(user_ip)
@@ -363,7 +352,7 @@ def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
     }
 
 
-def add_headers(res, c,mimetype = "text/plain"):
+def add_headers(res, c, mimetype="text/plain"):
     resp = Response(res)
     resp.mimetype = mimetype
     resp.headers['Subscription-Userinfo'] = f"upload=0;download={c['usage_current_b']};total={c['usage_limit_b']};expire={c['expire_s']}"

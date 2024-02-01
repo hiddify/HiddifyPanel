@@ -5,11 +5,8 @@ import uuid as uuid_mod
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 from hiddifypanel import hutils
-from hiddifypanel.models.admin import AdminUser
-from hiddifypanel.models.user import User, UserMode
-from hiddifypanel.models.domain import Domain, DomainType
-from hiddifypanel.panel import hiddify
-from hiddifypanel.panel.database import db
+from hiddifypanel.models import *
+from hiddifypanel.database import db
 import os
 
 
@@ -60,7 +57,7 @@ def __get_users(db, x_ui_inbounds):
     return users
 
 
-def __create_hiddify_user_from_xui_values(id: str, values: Dict[str, Any]) -> User:
+def __create_hiddify_user_from_xui_values(id: str, values: Dict[str, Any]) -> "User":
     user = User()
     user.name = values['name']
     user.uuid = id if hutils.auth.is_uuid_valid(id, 4) else uuid_mod.uuid4()
@@ -146,6 +143,7 @@ def import_data(db_path: str):
             User.add_or_update(commit=False, **u)
 
         for d in hiddify_domains_dict:
+            from hiddifypanel.panel import hiddify
             hiddify.add_or_update_domain(commit=False, **d)
 
         db.session.commit()  # type: ignore

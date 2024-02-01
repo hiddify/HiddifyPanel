@@ -105,9 +105,6 @@ class __BaseConfigEnum(_ConfigDscr, Enum):
     def _generate_next_value_(name, *_):
         return name
 
-    def __reduce__(self):
-        return (self.__class__, (self.name,))
-
     def __hash__(self):
         return f'{self}'.__hash__()
 

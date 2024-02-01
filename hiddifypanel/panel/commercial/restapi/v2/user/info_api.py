@@ -5,15 +5,15 @@ from apiflask.fields import Integer, String, Float, URL, Enum
 from flask import g, request
 from flask import current_app as app
 from hiddifypanel import hutils
-from hiddifypanel.panel.auth import login_required
-import hiddifypanel.panel.auth as auth
+from hiddifypanel.auth import login_required
+
 from flask_babel import gettext as _
 from hiddifypanel.models import Lang
 from hiddifypanel.models.role import Role
 from hiddifypanel.models.user import User
 from hiddifypanel.models.config import hconfig
 from hiddifypanel.models.config_enum import ConfigEnum
-from hiddifypanel.panel.database import db
+from hiddifypanel.database import db
 from hiddifypanel.panel.user.user import get_common_data
 from hiddifypanel.panel import hiddify
 

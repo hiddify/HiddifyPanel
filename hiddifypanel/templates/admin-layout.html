@@ -86,7 +86,7 @@
           }}
 
           % if hconfig(ConfigEnum.parent_panel)
-          {{ render_nav_item(hconfig(ConfigEnum.parent_panel)+"/admin/user/", icon('solid','user','nav-icon')+_('admin.menu.user'),_badge=_('in parent panel') ,_use_li=True) }}
+          {# render_nav_item(hconfig(ConfigEnum.parent_panel)+"/admin/user/", icon('solid','user','nav-icon')+_('admin.menu.user'),_badge=_('in parent panel') ,_use_li=True) #}
           %else
           {{ render_nav_item('flask.user.index_view', icon('solid','user','nav-icon')+_('admin.menu.user'),_use_li=True) }}
           %endif
@@ -162,29 +162,21 @@
           {{ render_nav_item('admin.Actions:viewlogs',icon('solid','inbox','nav-icon')+ _('admin.actions.viewlogs'), _use_li=True) }}
           {{ render_nav_item('admin.Actions:apply_configs',icon('solid','bolt','nav-icon')+ _('admin.actions.apply_configs'), _use_li=True,extra_class="form_post") }}
           {{ render_nav_item('admin.Actions:update', icon('solid','arrow-up-from-bracket','nav-icon')+_('admin.actions.update'), _use_li=True,extra_class="form_post") }}
-          % if not hconfig(ConfigEnum.is_parent)
           {{ render_nav_item('admin.Actions:reinstall', icon('solid','rotate','nav-icon')+_('admin.actions.reinstall'), _use_li=True,extra_class="form_post") }}
           {{ render_nav_item('admin.Actions:reset', icon('solid','power-off','nav-icon')+_('admin.actions.reset'), _use_li=True,extra_class="form_post") }}
-          % endif
+          
         </div>
         <div class="nav-item" id="setting-sidebar">
 
 
-          % if hconfig(ConfigEnum.is_parent)
-          {{ render_nav_item('flask.parentdomain.index_view', icon('solid','arrow-down-up-lock','nav-icon')+_('admin.menu.domain'),_use_li=True) }}
-          %endif
 
-          % if not hconfig(ConfigEnum.is_parent)
 
           {{ render_nav_item('flask.domain.index_view', icon('solid','link','nav-icon')+_('admin.menu.domain'),_use_li=True) }}
           {{ render_nav_item('admin.ProxyAdmin:index', icon('solid','arrow-down-up-lock','nav-icon')+_('admin.menu.proxy'),_use_li=True) }}
-          %endif
           % if g.account.mode=='super_admin'
           {{ render_nav_item('admin.SettingAdmin:index',icon('solid','gear','nav-icon')+ _('admin.menu.config'),_use_li=True) }}
 
-          % if 0 or hconfig(ConfigEnum.license)
-          {{ render_nav_item('admin.CommercialSettings:index', icon('solid','dumpster','nav-icon')+_('Commercial Settings'),_use_li=True) }}
-          %endif
+
           {{ render_nav_item('admin.Backup:index',icon('solid','floppy-disk','nav-icon')+ _('Backup'), _use_li=True) }}
           %endif
           % if hconfig(ConfigEnum.telegram_bot_token) and g.bot

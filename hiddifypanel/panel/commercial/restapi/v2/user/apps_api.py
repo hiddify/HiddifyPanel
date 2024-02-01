@@ -14,7 +14,7 @@ from hiddifypanel.panel.user.user import get_common_data
 from hiddifypanel.hutils.utils import get_latest_release_url
 from hiddifypanel import hutils
 from hiddifypanel.models.role import Role
-from hiddifypanel.panel.auth import login_required
+from hiddifypanel.auth import login_required
 from hiddifypanel.hutils.flask import static_url_for
 # region App Api DTOs
 

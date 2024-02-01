@@ -7,7 +7,7 @@ from hiddifypanel import hutils
 
 from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify, usage
-from hiddifypanel.panel.database import db
+from hiddifypanel.database import db
 from hiddifypanel.panel.init_db import init_db
 from flask import g
 
@@ -51,7 +51,7 @@ def all_configs():
     host_child_ids = [c.id for c in Child.query.filter(Child.mode == ChildMode.virtual).all()]
     configs = {
         "users": valid_users,
-        "domains": [u.to_dict(dump_ports=True,dump_child_id=True) for u in Domain.query.filter(Domain.child_id.in_(host_child_ids)).all() if "*" not in u.domain],
+        "domains": [u.to_dict(dump_ports=True, dump_child_id=True) for u in Domain.query.filter(Domain.child_id.in_(host_child_ids)).all() if "*" not in u.domain],
         # "parent_domains": [hiddify.parent_domain_dict(u) for u in ParentDomain.query.all()],
         "hconfigs": get_hconfigs(json=True),
         "chconfigs": get_hconfigs_childs(host_child_ids, json=True)

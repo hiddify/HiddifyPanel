@@ -11,7 +11,7 @@ import wtforms as wtf
 import json
 
 
-from hiddifypanel.panel.auth import login_required
+from hiddifypanel.auth import login_required
 from hiddifypanel.panel import hiddify
 from hiddifypanel.models import *
 from hiddifypanel import hutils

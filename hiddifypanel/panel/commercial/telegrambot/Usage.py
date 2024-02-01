@@ -5,7 +5,7 @@ from flask import current_app as app
 from hiddifypanel.models import *
 from . import bot
 from hiddifypanel.panel.user.user import get_common_data
-from hiddifypanel.panel.database import db
+from hiddifypanel.database import db
 from hiddifypanel import hutils
 
 

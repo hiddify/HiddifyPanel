@@ -9,7 +9,7 @@ PASSWORD_SCHEMES = ['pbkdf2_sha512', 'md5_crypt']
 EXTENSIONS = [
     
     "flask_bootstrap:Bootstrap4",
-    "hiddifypanel.panel.database:init_app",
+    "hiddifypanel.database:init_app",
     "hiddifypanel.panel.common:init_app",
     "hiddifypanel.panel.user:init_app",
     "hiddifypanel.panel.admin:init_app",

@@ -1,15 +1,13 @@
 from flask_classful import FlaskView, route
 from hiddifypanel import hutils
-from hiddifypanel.panel.auth import login_required, current_account, login_user, logout_user, login_by_uuid
+from hiddifypanel.auth import login_required, current_account, login_user, logout_user, login_by_uuid
 from flask import redirect, request, g, render_template, flash, jsonify
 from hiddifypanel.hutils.flask import hurl_for
 from flask import current_app as app
 from flask_babel import lazy_gettext as _
 from apiflask import abort
 import hiddifypanel.panel.hiddify as hiddify
-from hiddifypanel.models import Role
 from hiddifypanel.models import *
-from hiddifypanel.panel.user import UserView
 
 from flask_wtf import FlaskForm
 import wtforms as wtf
@@ -92,7 +90,7 @@ class LoginView(FlaskView):
             return redirect(hurl_for('client.UserView:index'))
 
         from hiddifypanel.panel.user import UserView
-        return UserView().auto_sub()
+        # return redirect(url_for("user.")) UserView().auto_sub()
 
     # @route('/<uuid:uuid>/<path:path>')
     # @route('/<uuid:uuid>/')
