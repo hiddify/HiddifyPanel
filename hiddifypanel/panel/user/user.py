@@ -297,6 +297,7 @@ def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
     # uuid_secret=str(uuid.UUID(user_secret))
     domains, has_auto_cdn = get_domain_information(no_domain, filter_domain, urlparse(request.base_url).hostname)
     db_domain = domains[0]
+    domain = db_domain.domain
     user: User = g.account if g.account.uuid == user_uuid else User.by_uuid(f'{user_uuid}')
     if user is None:
         abort(401, "Invalid User")

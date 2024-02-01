@@ -48,7 +48,7 @@ class DisableCache:
     cache = CacheDecorator
 
 
-cache = DisableCache()
+# cache = DisableCache()
 try:
     @cache.cache()
     def test():
