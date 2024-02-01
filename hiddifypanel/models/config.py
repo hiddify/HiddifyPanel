@@ -4,8 +4,8 @@ from sqlalchemy_serializer import SerializerMixin
 from hiddifypanel import Events
 from hiddifypanel.database import db
 from hiddifypanel.cache import cache
-from hiddifypanel.models.child import Child
-
+from hiddifypanel.models.child import Child,ChildMode
+from sqlalchemy import Column, String, Boolean, Enum,ForeignKey,Integer
 
 def error(st):
     from hiddifypanel.hutils.utils import error as err
@@ -13,10 +13,10 @@ def error(st):
 
 
 class BoolConfig(db.Model, SerializerMixin):
-    child_id = db.Column(db.Integer, db.ForeignKey('child.id'), primary_key=True, default=0)
+    child_id = Column(Integer, ForeignKey('child.id'), primary_key=True, default=0)
     # category = db.Column(db.String(128), primary_key=True)
-    key = db.Column(db.Enum(ConfigEnum, values_callable=ConfigEnum.dbvalues), primary_key=True)
-    value = db.Column(db.Boolean)
+    key = Column(Enum(ConfigEnum, values_callable=ConfigEnum.dbvalues), primary_key=True)
+    value = Column(Boolean)
 
     def to_dict(d):
         return {
@@ -27,10 +27,10 @@ class BoolConfig(db.Model, SerializerMixin):
 
 
 class StrConfig(db.Model, SerializerMixin):
-    child_id = db.Column(db.Integer, db.ForeignKey('child.id'), primary_key=True, default=0)
+    child_id = Column(Integer, ForeignKey('child.id'), primary_key=True, default=0)
     # category = db.Column(db.String(128), primary_key=True)
-    key = db.Column(db.Enum(ConfigEnum, values_callable=ConfigEnum.dbvalues), primary_key=True, default=ConfigEnum.admin_secret)
-    value = db.Column(db.String(2048))
+    key = Column(Enum(ConfigEnum, values_callable=ConfigEnum.dbvalues), primary_key=True, default=ConfigEnum.admin_secret)
+    value = Column(String(2048))
 
     def to_dict(d):
         return {
@@ -41,7 +41,7 @@ class StrConfig(db.Model, SerializerMixin):
 
 
 @cache.cache(ttl=500)
-def hconfig(key: ConfigEnum, child_id: int = None) -> str | int | None:
+def hconfig(key: ConfigEnum, child_id: int|None = None) -> str | int | None:
     if child_id == None:
         child_id = Child.current.id
 
@@ -69,7 +69,7 @@ def hconfig(key: ConfigEnum, child_id: int = None) -> str | int | None:
     return value
 
 
-def set_hconfig(key: ConfigEnum, value: str | bool, child_id: int = None, commit: bool = True):
+def set_hconfig(key: ConfigEnum, value: str|int | bool, child_id: int = None, commit: bool = True):
     if child_id == None:
         child_id = Child.current.id
     # hconfig.invalidate(key, child_id)
@@ -109,7 +109,7 @@ def set_hconfig(key: ConfigEnum, value: str | bool, child_id: int = None, commit
 
 
 @cache.cache(ttl=500,)
-def get_hconfigs(child_id: int = None, json=False):
+def get_hconfigs(child_id: int|None = None, json=False):
     if child_id == None:
         child_id = Child.current.id
 
@@ -141,7 +141,7 @@ def add_or_update_config(commit: bool = True, child_id: int = None, override_uni
     set_hconfig(ckey, v, child_id, commit=commit)
 
 
-def bulk_register_configs(hconfigs, commit: bool = True, override_child_id: int = None, override_unique_id: bool = True):
+def bulk_register_configs(hconfigs, commit: bool = True, override_child_id: int|None = None, override_unique_id: bool = True):
     from hiddifypanel.panel import hiddify
     for conf in hconfigs:
         # print(conf)

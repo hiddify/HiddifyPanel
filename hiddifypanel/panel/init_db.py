@@ -8,8 +8,9 @@ import uuid
 
 from dateutil import relativedelta
 
-from hiddifypanel import Events, hutils
+from hiddifypanel import Events,hutils
 from hiddifypanel.models import *
+from hiddifypanel.models import ConfigEnum,User,set_hconfig, ChildMode
 from hiddifypanel.panel import hiddify
 from hiddifypanel.database import db
 import hiddifypanel.models.utils as model_utils
@@ -18,6 +19,11 @@ from flask import g
 
 MAX_DB_VERSION = 80
 
+def _v71(child_id):
+    add_config_if_not_exist(ConfigEnum.tuic_port, hutils.random.get_random_unused_port())
+    add_config_if_not_exist(ConfigEnum.hysteria_port, hutils.random.get_random_unused_port())
+    add_config_if_not_exist(ConfigEnum.ssh_server_port, hutils.random.get_random_unused_port())
+    add_config_if_not_exist(ConfigEnum.wireguard_port, hutils.random.get_random_unused_port())
 
 def _v70(child_id):
     Domain.query.filter(Domain.child_id != 0).delete()
@@ -37,7 +43,7 @@ def _v70(child_id):
 def _v69():
     db.session.bulk_save_objects(get_proxy_rows_v1())
     add_config_if_not_exist(ConfigEnum.wireguard_enable, True)
-    add_config_if_not_exist(ConfigEnum.wireguard_port, random.randint(30000, 40000))
+    add_config_if_not_exist(ConfigEnum.wireguard_port, hutils.random.get_random_unused_port())
     add_config_if_not_exist(ConfigEnum.wireguard_ipv4, "10.90.0.1")
     add_config_if_not_exist(ConfigEnum.wireguard_ipv6, "fd42:42:90::1")
     wg_pk, wg_pub, _ = hiddify.get_wg_private_public_psk_pair()
@@ -64,9 +70,10 @@ def _v64():
     set_hconfig(ConfigEnum.ssh_server_redis_url, "unix:///opt/hiddify-manager/other/redis/run.sock?db=1")
 
 
+
 def _v63():
     add_config_if_not_exist(ConfigEnum.hysteria_enable, True)
-    add_config_if_not_exist(ConfigEnum.hysteria_port, "11478")
+    add_config_if_not_exist(ConfigEnum.hysteria_port, hutils.random.get_random_unused_port())
     add_config_if_not_exist(ConfigEnum.hysteria_obfs_enable, True)
     add_config_if_not_exist(ConfigEnum.hysteria_up_mbps, "150")
     add_config_if_not_exist(ConfigEnum.hysteria_down_mbps, "300")
@@ -108,13 +115,12 @@ def _v57():
 
 
 def _v56():
-    reality_port = random.randint(20000, 30000)
-    set_hconfig(ConfigEnum.reality_port, reality_port)
+    set_hconfig(ConfigEnum.reality_port, hutils.random.get_random_unused_port())
 
 
 def _v55():
-    tuic_port = random.randint(20000, 30000)
-    hystria_port = random.randint(10000, 20000)
+    tuic_port = hutils.random.get_random_unused_port()
+    hystria_port = hutils.random.get_random_unused_port()
     set_hconfig(ConfigEnum.tuic_port, tuic_port)
     set_hconfig(ConfigEnum.hysteria_port, hystria_port)
     set_hconfig(ConfigEnum.tuic_enable, True)
@@ -158,11 +164,7 @@ def _v45():
     if not Proxy.query.filter(Proxy.name == "SSH").first():
         db.session.add(Proxy(l3='ssh', transport='ssh', cdn='direct', proto='ssh', enable=True, name="SSH"))
     add_config_if_not_exist(ConfigEnum.ssh_server_redis_url, "unix:///opt/hiddify-manager/other/redis/run.sock?db=1")
-    while 1:
-        port = random.randint(5000, 40000)
-        if port not in [10085, 10086]:
-            break
-    add_config_if_not_exist(ConfigEnum.ssh_server_port, port)
+    add_config_if_not_exist(ConfigEnum.ssh_server_port, hutils.random.get_random_unused_port())
     add_config_if_not_exist(ConfigEnum.ssh_server_enable, False)
 # def _v43():
 #     if not (Domain.query.filter(Domain.domain==hconfig(ConfigEnum.domain_fronting_domain)).first()):
@@ -471,10 +473,12 @@ def make_proxy_rows(cfgs):
             yield Proxy(l3=l3, transport=transport, cdn=cdn, proto=proto, enable=enable, name=name)
 
 
-def add_config_if_not_exist(key: ConfigEnum, val, child_id=None):
+def add_config_if_not_exist(key: ConfigEnum, val:str|int, child_id:int|None=None):
     if child_id == None:
         child_id = Child.current.id
+    
     old_val = hconfig(key, child_id)
+    print(key,val,child_id,old_val)
     if old_val is None:
         set_hconfig(key, val)
 
@@ -581,8 +585,8 @@ def init_db():
     db.create_all()
     hconfig.invalidate_all()
     get_hconfigs.invalidate_all()
+    # set_hconfig(ConfigEnum.db_version, 62)
     db_version = int(hconfig(ConfigEnum.db_version) or 0)
-    # set_hconfig(ConfigEnum.db_version, 69)
     if db_version == latest_db_version():
         return
     migrate(db_version)

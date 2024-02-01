@@ -5,7 +5,7 @@ from flask import g
 
 from hiddifypanel.models.config import hconfig
 from hiddifypanel.models.config_enum import ConfigEnum
-
+from flask_babel import gettext as _
 
 def is_int(input: str) -> bool:
     try:
@@ -15,8 +15,10 @@ def is_int(input: str) -> bool:
         return False
 
 
-def to_int(s: str) -> int:
+def to_int(s: str|None) -> int|None:
     '''Returns 0 if <s> is not a number'''
+    if not s:
+        return None
     try:
         return int(s)
     except:

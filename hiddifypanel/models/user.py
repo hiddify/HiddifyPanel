@@ -192,7 +192,7 @@ class User(BaseAccount):
 
     @classmethod
     def add_or_update(cls, commit: bool = True, **data):
-
+        from hiddifypanel import hutils
         dbuser = super().add_or_update(commit=commit, **data)
         if data.get('added_by_uuid'):
             admin = AdminUser.by_uuid(data.get('added_by_uuid'), create=True) or AdminUser.current_admin_or_owner()

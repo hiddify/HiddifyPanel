@@ -97,6 +97,7 @@ class Domain(db.Model, SerializerMixin):
         if self.mode not in [DomainType.direct, DomainType.relay, DomainType.fake]:
             return 0
         # TODO: check validity of the range of the port
+        # print("child_id",self.child_id)
         return int(hconfig(ConfigEnum.hysteria_port, self.child_id))+self.port_index
 
     @property

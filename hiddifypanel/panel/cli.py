@@ -53,7 +53,7 @@ def all_configs():
         "users": valid_users,
         "domains": [u.to_dict(dump_ports=True, dump_child_id=True) for u in Domain.query.filter(Domain.child_id.in_(host_child_ids)).all() if "*" not in u.domain],
         # "parent_domains": [hiddify.parent_domain_dict(u) for u in ParentDomain.query.all()],
-        "hconfigs": get_hconfigs(json=True),
+        # "hconfigs": get_hconfigs(json=True),
         "chconfigs": get_hconfigs_childs(host_child_ids, json=True)
     }
 
@@ -61,7 +61,7 @@ def all_configs():
     domains = Domain.query.all()
     sslip_domains = [d.domain for d in domains if "sslip.io" in d.domain]
 
-    configs['hconfigs']['first_setup'] = def_user != None and len(sslip_domains) > 0
+    configs['chconfigs'][0]['first_setup'] = def_user != None and len(sslip_domains) > 0
     server_ip = hutils.network.get_ip_str(4)
     owner = AdminUser.get_super_admin()
 

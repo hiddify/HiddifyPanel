@@ -73,7 +73,7 @@ def check_proxy_incorrect(proxy, domain_db, port):
 
     if domain_db.mode == DomainType.worker and proxy.transport == ProxyTransport.grpc:
         return {'name': name, 'msg': "worker does not support grpc", 'type': 'debug', 'proto': proxy.proto}
-    cdn_forced_host = domain_db.cdn_ip or (domain_db.domain if domain_db.mode != DomainType.reality else hutils.network.get_direct_host_or_ip(4))
+
 
     if domain_db.mode != DomainType.old_xtls_direct and "tls" in proxy.l3 and proxy.cdn == ProxyCDN.direct and proxy.transport in [ProxyTransport.tcp, ProxyTransport.XTLS]:
         return {'name': name, 'msg': "only  old_xtls_direct  support this", 'type': 'debug', 'proto': proxy.proto}
@@ -84,7 +84,7 @@ def check_proxy_incorrect(proxy, domain_db, port):
     if l3 == "http" and ProxyTransport.XTLS in proxy.transport:
         return {'name': name, 'msg': "http and xtls???", 'type': 'warning', 'proto': proxy.proto}
 
-    if l3 == "http" and proxy["proto"] in ["ss", "ssr"]:
+    if l3 == "http" and proxy.proto in [ProxyProto.ss, ProxyProto.ssr]:
         return {'name': name, 'msg': "http and ss or ssr???", 'type': 'warning', 'proto': proxy.proto}
 
 
@@ -94,6 +94,7 @@ def is_tls(l3):
 
 def get_port(proxy, hconfigs, domain_db, ptls, phttp, pport):
     l3 = proxy.l3
+    port=None
     if type(phttp) == str:
         phttp = int(phttp) if phttp != "None" else None
     if type(ptls) == str:
@@ -112,7 +113,7 @@ def get_port(proxy, hconfigs, domain_db, ptls, phttp, pport):
         port = ptls
     elif l3 == "http":
         port = phttp
-
+    return port
 
 def make_proxy(hconfigs, proxy: Proxy, domain_db: Domain, phttp=80, ptls=443, pport=None):
     l3 = proxy.l3
@@ -126,7 +127,9 @@ def make_proxy(hconfigs, proxy: Proxy, domain_db: Domain, phttp=80, ptls=443, pp
         alpn = "h2" if proxy.transport in ['h2', "grpc"] else 'http/1.1'
     else:
         alpn = "h2" if proxy.l3 in ['tls_h2'] or proxy.transport in ["grpc", 'h2'] else 'h2,http/1.1' if proxy.l3 == 'tls_h2_h1' else "http/1.1"
-
+    cdn_forced_host = domain_db.cdn_ip or (domain_db.domain if domain_db.mode != DomainType.reality else hutils.network.get_direct_host_or_ip(4))
+    is_cdn = ProxyCDN.CDN == proxy.cdn or ProxyCDN.Fake == proxy.cdn
+    name = proxy.name
     base = {
         'name': name,
         'cdn': is_cdn,
@@ -229,9 +232,10 @@ def make_proxy(hconfigs, proxy: Proxy, domain_db: Domain, phttp=80, ptls=443, pp
         base['flow'] = 'xtls-rprx-vision'
         return {**base, 'transport': 'tcp'}
 
-    if proxy['proto'] in {'vless', 'trojan'} and hconfigs[ConfigEnum.mux_enable]:
+    if proxy.proto in {'vless', 'trojan'} and hconfigs[ConfigEnum.mux_enable]:
         if hconfigs[ConfigEnum.mux_enable]:
-            # hiddify supported format
+            
+            base['mux_enable']=True
             base['mux_protocol'] = hconfigs[ConfigEnum.mux_protocol]
             base['mux_max_connections'] = hconfigs[ConfigEnum.mux_max_connections]
             base['mux_min_streams'] = hconfigs[ConfigEnum.mux_min_streams]
@@ -244,7 +248,7 @@ def make_proxy(hconfigs, proxy: Proxy, domain_db: Domain, phttp=80, ptls=443, pp
                 base['mux_up'] = hconfigs[ConfigEnum.mux_brutal_up_mbps]
                 base['mux_down'] = hconfigs[ConfigEnum.mux_brutal_down_mbps]
 
-    if proxy['cdn'] and proxy['proto'] in {'vless', 'trojan', "vmess"}:
+    if is_cdn and proxy.proto in {'vless', 'trojan', "vmess"}:
         if hconfigs[ConfigEnum.tls_fragment_enable]:
             base["tls_fragment_enable"] = hconfigs[ConfigEnum.tls_fragment_enable]
             base["tls_fragment_size"] = hconfigs[ConfigEnum.tls_fragment_size]
@@ -404,16 +408,16 @@ def to_link(proxy):
 
 def add_tls_tricks_to_link(proxy) -> str:
     out = {}
-    add_tls_tricks_to_dict(out)
+    add_tls_tricks_to_dict(out,proxy)
     return convert_dict_to_url(out)
 
 
 def add_tls_tricks_to_dict(d: dict, proxy):
-    if proxy['tls_fragment_size']:
+    if proxy.get('tls_fragment_size'):
         d['fragment'] = f'{proxy["tls_fragment_size"]},{proxy["tls_fragment_sleep"]},tlshello'
-    if proxy["tls_mixed_case"]:
+    if proxy.get("tls_mixed_case"):
         d['mc'] = 1
-    if proxy["tls_padding_enable"]:
+    if proxy.get("tls_padding_enable"):
         d['padsize'] = proxy["tls_padding_length"]
 
 
@@ -428,7 +432,7 @@ def add_mux_to_link(proxy) -> str:
 
 
 def add_mux_to_dict(d: dict, proxy):
-    if proxy['mux_enable']:
+    if proxy.get('mux_enable'):
         d['mux'] = proxy["mux_protocol"]
         d['mux_max'] = proxy["mux_max_connections"]
         d['mux_min'] = proxy["mux_min_connections"]
@@ -745,7 +749,7 @@ def add_singbox_tls(base, proxy):
 
 
 def add_singbox_tls_tricks(base, proxy):
-    if proxy['tls_fragment_enable']:
+    if proxy.get('tls_fragment_enable'):
         base['tls_fragment'] = {
             'enable': True,
             'size': proxy["tls_fragment_size"],
@@ -754,10 +758,10 @@ def add_singbox_tls_tricks(base, proxy):
 
     if 'tls' in base:
         base['tls']['tls_tricks'] = {}
-        if proxy["tls_padding_enable"]:
+        if proxy.get("tls_padding_enable"):
             base['tls']['tls_tricks']['padding_size'] = proxy["tls_padding_length"]
 
-        if proxy["tls_mixed_case"]:
+        if proxy.get("tls_mixed_case"):
             base['tls']['tls_tricks']['mixedcase_sni'] = True
 
 

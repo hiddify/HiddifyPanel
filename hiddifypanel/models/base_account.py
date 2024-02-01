@@ -58,6 +58,7 @@ class BaseAccount(db.Model, SerializerMixin, FlaskLoginUserMixin):  # type: igno
 
     @classmethod
     def add_or_update(cls, commit: bool = True, **data):
+        from hiddifypanel import hutils
         db_account = cls.by_uuid(data['uuid'], create=True)
         db_account.name = data.get('name') or ''
         db_account.comment = data.get('comment', '')

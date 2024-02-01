@@ -277,8 +277,8 @@ def set_db_from_json(json_data, override_child_id=None, set_users=True, set_doma
         User.bulk_register(json_data['users'], commit=False, remove=remove_users)
     if set_domains and 'domains' in json_data:
         bulk_register_domains(json_data['domains'], commit=False, remove=remove_domains, override_child_id=override_child_id)
-    if set_domains and 'parent_domains' in json_data:
-        ParentDomain.bulk_register(json_data['parent_domains'], commit=False, remove=remove_domains)
+    # if set_domains and 'parent_domains' in json_data:
+    #     ParentDomain.bulk_register(json_data['parent_domains'], commit=False, remove=remove_domains)
     if set_settings and 'hconfigs' in json_data:
         bulk_register_configs(json_data["hconfigs"], commit=True, override_child_id=override_child_id, override_unique_id=override_unique_id)
         if 'proxies' in json_data:

@@ -122,7 +122,8 @@ class __BaseConfigEnum(_ConfigDscr, Enum):
 
     def endswith(self, suffix):
         return f'{self}'.endswith(suffix)
-
+    def __reduce__(self):
+        return self.name
 
 class ConfigEnum(__BaseConfigEnum):
     wireguard_enable = _BoolConfigDscr(ConfigCategory.wireguard, ApplyMode.apply, hide_in_virtual_child=True)

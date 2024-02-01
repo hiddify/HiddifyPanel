@@ -12,7 +12,8 @@ def exception_handler(e, original_fn, args, kwargs):
 
 def key_serializer(args):
     from .models import ConfigEnum
-    return dumps([f'{r}' if isinstance(r, ConfigEnum) else r for r in args])
+    # return dumps([f'{r}' if isinstance(r, ConfigEnum) else r for r in args])
+    return dumps(args)
 
 
 # cache = RedisCache(redis_client=redis_client, exception_handler=exception_handler)
@@ -48,7 +49,7 @@ class DisableCache:
     cache = CacheDecorator
 
 
-# cache = DisableCache()
+cache = DisableCache()
 try:
     @cache.cache()
     def test():
@@ -57,4 +58,4 @@ try:
 except Exception as e:
     import sys
     print('Caching Error! Disabling cache', e, file=sys.stderr)
-    cache = DisableCache()
+    # cache = DisableCache()

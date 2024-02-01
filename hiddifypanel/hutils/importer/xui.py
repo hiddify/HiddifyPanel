@@ -100,7 +100,7 @@ def __create_hiddify_domain_from_xui_values(domain: str, values: Dict[str, Any])
     return d
 
 
-def __extract_users_and_domains_from_xui_db(db_path: str) -> Tuple[List[User], List[Domain]]:
+def __extract_users_and_domains_from_xui_db(db_path: str) -> Tuple[List["User"], List["Domain"]]:
     users = {}
     reality_domains = {}
 
