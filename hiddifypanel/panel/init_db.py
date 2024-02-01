@@ -582,7 +582,7 @@ def init_db():
     hconfig.invalidate_all()
     get_hconfigs.invalidate_all()
     db_version = int(hconfig(ConfigEnum.db_version) or 0)
-    set_hconfig(ConfigEnum.db_version, 69)
+    # set_hconfig(ConfigEnum.db_version, 69)
     if db_version == latest_db_version():
         return
     migrate(db_version)

@@ -90,7 +90,7 @@ def admin_links():
     server_ip = hutils.network.get_ip_str(4)
     owner = AdminUser.get_super_admin()
 
-    admin_links = f"Not Secure (do not use it - only if others not work):\n   {hiddify.get_account_panel_link(owner, server_ip,is_https=True)}'\n"
+    admin_links = f"Not Secure (do not use it - only if others not work):\n   {hiddify.get_account_panel_link(owner, server_ip,is_https=True)}\n"
 
     domains = get_panel_domains()
     admin_links += f"Secure:\n"

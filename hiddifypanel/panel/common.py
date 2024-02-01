@@ -74,7 +74,6 @@ def init_app(app: APIFlask):
 
     @app.url_defaults
     def add_proxy_path_user(endpoint, values):
-        print(endpoint, values)
         if 'proxy_path' not in values:
             if hutils.flask.is_admin_role(current_account.role):
                 values['proxy_path'] = hconfig(ConfigEnum.proxy_path_admin)
