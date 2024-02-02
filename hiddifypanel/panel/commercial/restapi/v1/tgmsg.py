@@ -5,13 +5,14 @@ from flask_restful import Resource
 # from flask_simplelogin import login_required
 import datetime
 
+from hiddifypanel.auth import login_required
 from hiddifypanel import hutils
 from hiddifypanel.models import *
 from .tgbot import bot
 
 
 class SendMsgResource(Resource):
-    # decorators = [login_required({Role.super_admin})]
+    @login_required({Role.super_admin})
     def post(self, admin_uuid=None):
 
         if not hconfig(ConfigEnum.telegram_bot_token) or not bot:
