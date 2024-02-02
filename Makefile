@@ -138,3 +138,8 @@ switch-to-poetry: ## Switch to poetry package manager.
 # __author__ = 'rochacbruno'
 # __repo__ = https://github.com/rochacbruno/flask-project-template
 # __sponsor__ = https://github.com/sponsors/rochacbruno/
+
+
+
+stress_test:
+	echo "GET http://localhost:9000/x2hDG4gt32VDbuZsYY6iq/c9c0c597-f42c-44d8-96e1-81f91dbcf1d0/singbox/?asn=unknown" | vegeta attack -duration=5s | tee results.bin | vegeta report	

@@ -266,8 +266,9 @@ def is_domain_use_letsencrypt(domain: str) -> bool:
 
 @cache.cache(ttl=300)
 def get_direct_host_or_ip(prefer_version: int) -> str:
+    from hiddifypanel.models import Domain
     direct = Domain.query.filter(Domain.mode == DomainType.direct, Domain.sub_link_only == False).first()
-    if not (direct):
+    if not direct:
         direct = Domain.query.filter(Domain.mode == DomainType.direct).first()
     if direct:
         return direct.domain
