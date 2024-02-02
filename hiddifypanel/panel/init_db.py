@@ -717,16 +717,7 @@ def migrate(db_version):
 
     add_new_enum_values()
 
-    if not Child.query.filter(Child.id == 0).first():
-        print(Child.query.filter(Child.id == 0).first())
-        tmp_uuid = str(uuid.uuid4())
-        db.session.add(Child(unique_id=tmp_uuid, name="Root"), id=0)
-        db.session.commit()
-        dexecute(f'update child set id=0 where unique_id="{tmp_uuid}"')
 
-    if not AdminUser.query.filter(AdminUser.id == 1).first():
-        db.session.add(AdminUser(id=1, uuid=str(uuid.uuid4()), name="Owner", mode=AdminMode.super_admin, comment=""))
-        db.session.commit()
-        execute("update admin_user set id=1 where name='Owner'")
+    AdminUser.get_super_admin()#to create super admin if not exist
 
     upgrade_database()

@@ -40,6 +40,6 @@ class Child(db.Model, SerializerMixin):
             tmp_uuid = str(uuid.uuid4())
             db.session.add(Child(id=0,unique_id=tmp_uuid, name="Root"))
             db.session.commit()
-            # execute(f'update child set id=0 where unique_id="{tmp_uuid}"')
+            db.engine.execute(f'update child set id=0 where unique_id="{tmp_uuid}"')
             child=Child.by_id(0)
         return child
