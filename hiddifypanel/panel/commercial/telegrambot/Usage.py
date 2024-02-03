@@ -1,6 +1,7 @@
 from hiddifypanel.panel import hiddify
 from telebot import types
 from flask_babel import gettext as _
+from flask_babel import force_locale
 from flask import current_app as app
 from hiddifypanel.models import *
 from . import bot
@@ -49,9 +50,8 @@ def user_keyboard(uuid):
 
 
 def get_usage_msg(uuid, domain=None):
+    user_data = get_common_data(uuid, 'multi')
     with app.app_context():
-
-        user_data = get_common_data(uuid, 'multi')
 
         user = user_data['user']
         expire_rel = user_data['expire_rel']
