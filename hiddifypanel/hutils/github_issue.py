@@ -2,6 +2,7 @@
 from urllib.parse import (
     urlencode, unquote, urlparse, parse_qsl, ParseResult
 )
+import webbrowser
 from flask import g, request, render_template
 from sys import version as python_version
 from platform import platform

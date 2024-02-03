@@ -1,4 +1,5 @@
 from enum import auto
+import uuid
 from flask import g
 from hiddifypanel.models.usage import DailyUsage
 from hiddifypanel.models.utils import fill_username, fill_password

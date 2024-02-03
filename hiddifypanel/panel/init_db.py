@@ -8,9 +8,9 @@ import uuid
 
 from dateutil import relativedelta
 
-from hiddifypanel import Events,hutils
+from hiddifypanel import Events, hutils
 from hiddifypanel.models import *
-from hiddifypanel.models import ConfigEnum,User,set_hconfig, ChildMode
+from hiddifypanel.models import ConfigEnum, User, set_hconfig, ChildMode
 from hiddifypanel.panel import hiddify
 from hiddifypanel.database import db
 import hiddifypanel.models.utils as model_utils
@@ -19,11 +19,13 @@ from flask import g
 
 MAX_DB_VERSION = 80
 
+
 def _v71(child_id):
     add_config_if_not_exist(ConfigEnum.tuic_port, hutils.random.get_random_unused_port())
     add_config_if_not_exist(ConfigEnum.hysteria_port, hutils.random.get_random_unused_port())
     add_config_if_not_exist(ConfigEnum.ssh_server_port, hutils.random.get_random_unused_port())
     add_config_if_not_exist(ConfigEnum.wireguard_port, hutils.random.get_random_unused_port())
+
 
 def _v70(child_id):
     Domain.query.filter(Domain.child_id != 0).delete()
@@ -68,7 +70,6 @@ def _v65():
 
 def _v64():
     set_hconfig(ConfigEnum.ssh_server_redis_url, "unix:///opt/hiddify-manager/other/redis/run.sock?db=1")
-
 
 
 def _v63():
@@ -473,12 +474,12 @@ def make_proxy_rows(cfgs):
             yield Proxy(l3=l3, transport=transport, cdn=cdn, proto=proto, enable=enable, name=name)
 
 
-def add_config_if_not_exist(key: ConfigEnum, val:str|int, child_id:int|None=None):
+def add_config_if_not_exist(key: ConfigEnum, val: str | int, child_id: int | None = None):
     if child_id == None:
         child_id = Child.current.id
-    
+
     old_val = hconfig(key, child_id)
-    print(key,val,child_id,old_val)
+    print(key, val, child_id, old_val)
     if old_val is None:
         set_hconfig(key, val)
 
@@ -586,6 +587,9 @@ def init_db():
     hconfig.invalidate_all()
     get_hconfigs.invalidate_all()
     # set_hconfig(ConfigEnum.db_version, 62)
+    # temporary fix
+    add_column(Child.mode)
+    add_column(Child.name)
     db_version = int(hconfig(ConfigEnum.db_version) or 0)
     if db_version == latest_db_version():
         return
@@ -717,7 +721,6 @@ def migrate(db_version):
 
     add_new_enum_values()
 
-
-    AdminUser.get_super_admin()#to create super admin if not exist
+    AdminUser.get_super_admin()  # to create super admin if not exist
 
     upgrade_database()
