@@ -12,7 +12,7 @@ from .tgbot import bot
 
 
 class SendMsgResource(Resource):
-    @login_required({Role.super_admin})
+    @login_required({Role.super_admin, Role.admin, Role.agent})
     def post(self, admin_uuid=None):
 
         if not hconfig(ConfigEnum.telegram_bot_token) or not bot:
