@@ -1,8 +1,7 @@
 from flask_babel import lazy_gettext as _
 import requests
 
-import string
-import os
+import re
 import sys
 
 from hiddifypanel.cache import cache
