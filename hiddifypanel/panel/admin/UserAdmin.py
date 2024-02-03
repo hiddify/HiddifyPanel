@@ -31,9 +31,9 @@ class UserAdmin(AdminLTEModelView):
     }
     list_template = 'model/user_list.html'
 
-    # form_columns = ["name", "current_usage_GB", "remaining_days", "comment", 'last_online', 'mode', 'admin', "uuid"]
-    form_excluded_columns = ['current_usage', 'monthly', 'telegram_id', 'last_online', 'expiry_time', 'last_reset_time', 'current_usage_GB',
-                             'start_date', 'added_by', 'admin', 'details', 'max_ips', 'ed25519_private_key', 'ed25519_public_key', 'username', 'password']
+    form_columns = ["name", "comment","usage_limit","reset_usage","package_days","reset_days","mode","uuid", "enable",]
+    # form_excluded_columns = ['current_usage', 'monthly', 'telegram_id', 'last_online', 'expiry_time', 'last_reset_time', 'current_usage_GB',
+                            #  'start_date', 'added_by', 'admin', 'details', 'max_ips', 'ed25519_private_key', 'ed25519_public_key', 'username', 'password']
     page_size = 50
     # edit_modal=True
     # create_modal=True
