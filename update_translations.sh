@@ -53,8 +53,11 @@ function update_localise2() {
 
 update_localise fa
 update_localise en
-update_localise zh
+
 
 update_localise2 en
 update_localise2 pt
 update_localise2 ru
+
+update_localise3 en
+update_localise3 zh

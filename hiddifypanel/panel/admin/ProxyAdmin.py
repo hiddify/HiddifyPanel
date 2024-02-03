@@ -81,7 +81,7 @@ def get_global_config_form(empty=False):
         pass
 
     for cf in boolconfigs:
-        if cf.key.apply_mode == 'hidden':
+        if cf.key.category == 'hidden':
             continue
         if not cf.key.endswith("_enable"):
             continue

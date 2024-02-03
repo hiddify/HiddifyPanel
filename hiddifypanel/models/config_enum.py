@@ -220,3 +220,7 @@ class ConfigEnum(metaclass=FastEnum):
          return f'{self}'==f'{other}'
     def __neg__(self,other):
          return not self.__eq__(other)
+    def endswith(self,other):
+         return self.name.endswith(other)
+    def startswith(self,other):
+         return self.name.startswith(other)

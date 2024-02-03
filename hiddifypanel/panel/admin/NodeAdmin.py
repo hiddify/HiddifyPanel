@@ -19,14 +19,14 @@ class NodeAdmin(AdminLTEModelView):
     column_list = ["name", "mode", "unique_id"]
     form_columns = ["name", "mode", "unique_id"]
     column_labels = {
-        "name": _("child.name.label"),
-        "mode": _("child.mode.label"),
-        "unique_id": _("child.uuid.label")
+        "name": _("node.name.label"),
+        "mode": _("node.mode.label"),
+        "unique_id": _("node.uuid.label")
     }
     column_descriptions = {
-        "name": _("child.name.dscr"),
-        "mode": _("child.mode.dscr"),
-        "unique_id": _("child.uuid.dscr")
+        "name": _("node.name.dscr"),
+        "mode": _("node.mode.dscr"),
+        "unique_id": _("node.uuid.dscr")
     }
 
     def name_formater(view, context, model, name):
