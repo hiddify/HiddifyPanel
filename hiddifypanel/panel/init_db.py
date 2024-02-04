@@ -379,7 +379,7 @@ def _v10():
     # db.create_all()
     rows = []
     for c, v in all_configs.items():
-        if c.type() == bool:
+        if c.type == bool:
             rows.append(BoolConfig(key=c, value=v, child_id=0))
         else:
             rows.append(StrConfig(key=c, value=v, child_id=0))

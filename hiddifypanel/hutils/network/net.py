@@ -250,18 +250,18 @@ def is_domain_use_letsencrypt(domain: str) -> bool:
     This function is used to filter the payment and big companies to 
     avoid phishing detection
     """
-    import ssl
-    import socket
+    try:
+        # Create a socket connection to the website
+        with socket.create_connection((domain, 443)) as sock:
+            context = ssl.create_default_context()
+            with context.wrap_socket(sock, server_hostname=domain) as ssock:
+                certificate = ssock.getpeercert()
 
-    # Create a socket connection to the website
-    with socket.create_connection((domain, 443)) as sock:
-        context = ssl.create_default_context()
-        with context.wrap_socket(sock, server_hostname=domain) as ssock:
-            certificate = ssock.getpeercert()
+        issuer = dict(x[0] for x in certificate.get("issuer", []))
 
-    issuer = dict(x[0] for x in certificate.get("issuer", []))
-
-    return issuer['organizationName'] == "Let's Encrypt"
+        return issuer['organizationName'] == "Let's Encrypt"
+    except:
+        return False
 
 
 @cache.cache(ttl=300)
