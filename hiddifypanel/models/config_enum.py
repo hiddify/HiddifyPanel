@@ -43,35 +43,33 @@ class ConfigCategory(StrEnum):
 class ApplyMode(StrEnum):
     apply = auto()
     restart = auto()
-    nothing =auto()
+    nothing = auto()
 
-
-        
 
 def _BoolConfigDscr(category: ConfigCategory, apply_mode: ApplyMode = ApplyMode.nothing, show_in_parent: bool = True, hide_in_virtual_child=False):
-        return category, apply_mode, bool, show_in_parent
+    return category, apply_mode, bool, show_in_parent
 
 
 def _StrConfigDscr(category: ConfigCategory, apply_mode: ApplyMode = ApplyMode.nothing, show_in_parent: bool = True, hide_in_virtual_child=False):
-        return category, apply_mode, str, show_in_parent
-
+    return category, apply_mode, str, show_in_parent
 
 
 class ConfigEnum(metaclass=FastEnum):
     # category: ConfigCategory
-    __slots__ = ('category','apply_mode','type','show_in_parent','hide_in_virtual_child')
-    def __init__(self, category: ConfigCategory, apply_mode: ApplyMode = ApplyMode.apply, ctype=str, show_in_parent: bool = True, hide_in_virtual_child=False,name=auto):
-        self.value=name
-        self.name=name
-        self.category=category
-        self.apply_mode=apply_mode
-        self.type=ctype
-        self.show_in_parent= show_in_parent
-        self.hide_in_virtual_child=hide_in_virtual_child
-    
+    __slots__ = ('category', 'apply_mode', 'type', 'show_in_parent', 'hide_in_virtual_child')
+
+    def __init__(self, category: ConfigCategory, apply_mode: ApplyMode = ApplyMode.apply, ctype=str, show_in_parent: bool = True, hide_in_virtual_child=False, name=auto):
+        self.value = name
+        self.name = name
+        self.category = category
+        self.apply_mode = apply_mode
+        self.type = ctype
+        self.show_in_parent = show_in_parent
+        self.hide_in_virtual_child = hide_in_virtual_child
+
     @classmethod
     def dbvalues(cls):
-         return {c.name:c for c in ConfigEnum}
+        return {c.name: c for c in ConfigEnum}
     wireguard_enable = _BoolConfigDscr(ConfigCategory.wireguard, ApplyMode.apply, hide_in_virtual_child=True)
     wireguard_port = _StrConfigDscr(ConfigCategory.wireguard, ApplyMode.apply, hide_in_virtual_child=True)
     wireguard_ipv6 = _StrConfigDscr(ConfigCategory.hidden, ApplyMode.apply, hide_in_virtual_child=True)
@@ -207,20 +205,25 @@ class ConfigEnum(metaclass=FastEnum):
     path_ws = _StrConfigDscr(ConfigCategory.too_advanced, hide_in_virtual_child=True)
     path_tcp = _StrConfigDscr(ConfigCategory.too_advanced, hide_in_virtual_child=True)
     path_grpc = _StrConfigDscr(ConfigCategory.too_advanced, hide_in_virtual_child=True)
+
     @classmethod
-    def __missing__(cls,value):
+    def __missing__(cls, value):
         return ConfigEnum.not_found
-    
-    def __contains__(self,other):
+
+    def __contains__(self, other):
         return other in self.name
+
     def __str__(self):
-        return  self.name
-    
-    def __eq__(self,other):
-         return f'{self}'==f'{other}'
-    def __neg__(self,other):
-         return not self.__eq__(other)
-    def endswith(self,other):
-         return self.name.endswith(other)
-    def startswith(self,other):
-         return self.name.startswith(other)
+        return self.name
+
+    def __eq__(self, other):
+        return f'{self}' == f'{other}'
+
+    def __neg__(self, other):
+        return not self.__eq__(other)
+
+    def endswith(self, other):
+        return self.name.endswith(other)
+
+    def startswith(self, other):
+        return self.name.startswith(other)
