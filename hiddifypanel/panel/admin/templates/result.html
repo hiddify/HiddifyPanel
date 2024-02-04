@@ -7,7 +7,7 @@
 
 <div class="callout callout-{{out_type}}" role="alert">
   {{out_msg|safe}}
-  
+
 </div>
 
 
@@ -33,10 +33,10 @@
 {% if log_file and log_file != "status.log" and log_file != "restart.log"%}
 <div class="callout callout-success">
 
-  {{_("Please wait ")}} <label style="display:none" id="count-down">300</label> 
+  {{_("Please wait ")}} <label style="display:none" id="count-down">300</label>
   <div class="row">
-  <label class="col-6" id="process-title"></label> <label class="col-6" id="process-details"></label>
-</div>
+    <label class="col-6" id="process-title"></label> <label class="col-6" id="process-details"></label>
+  </div>
   <div class="progress">
     <div id="progress" class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
   </div>
@@ -46,20 +46,20 @@
 
 % if log_file_url
 <div>
-  
-      <details>
-  
-        <summary>
-          <div class="btn ">
-            <h1>{{_('log')}}</h1>
-          </div>>
-</summary>
+
+  <details>
+
+    <summary>
+      <div class="btn ">
+        <h1>{{_('log')}}</h1>
+      </div>>
+    </summary>
 
 
-  <a id="logbtn" href="{{log_file_url}}" target="_blank">{{_('Click here to see the complete log')}}</a><br>
-  <div id='ilog' style="line-height: 1em;width:100%;height:400px;direction: ltr;overflow: auto;"></div>
-  
-</details>
+    <a id="logbtn" href="{{log_file_url}}" target="_blank">{{_('Click here to see the complete log')}}</a><br>
+    <div id='ilog' style="line-height: 1em;width:100%;height:400px;direction: ltr;overflow: auto;"></div>
+
+  </details>
 </div>
 
 % endif
@@ -72,9 +72,8 @@
   var x = document.getElementById("ilog");
   var finished = false
   var seconds = 0
-  domains = '{{",".join(domains)}}'.split(",")
-  log_api_path = '/api/v2/admin/log/'
-  log_urls = domains.map(p => "https://" + p + "/" + '{{ g.proxy_path }}' + log_api_path)
+  raw_domains = '{{",".join(domains)}}'.split(",")
+  log_urls = raw_domains.map(p => "https://" + p + "{{ log_file_url }}");
   function sendRequestsSequentially(urls) {
     let index = 0;
 
@@ -92,6 +91,13 @@
       }).catch(() => {
         index++;
         if (index >= urls.length) {
+          // built-in https domain
+          let ip = raw_domains.find(item => item.match(/\b(?:\d{1,3}\.){3}\d{1,3}\b/)) || null;
+          let d = "https://" + ip + ".sslip.io" + "{{ log_file_url }}";
+          if (d != null && !urls.includes(d)) {
+            urls.push(d);
+            return sendNextRequest();
+          }
           return Promise.reject('All requests failed');
         } else {
           return sendNextRequest();
@@ -101,7 +107,7 @@
 
     return sendNextRequest();
   }
-  var last_position=0
+  var last_position = 0
   const progress_regex = /####(?<progress>\d+)####(?<title>.*?)####(?<subtitle>.*?)####/;
   var progress_regex_all = new RegExp(progress_regex.source, progress_regex.flags + "g");
 
@@ -121,12 +127,12 @@
           x.innerHTML = response
           if (change_location)
             x.scrollTop = x.scrollHeight
-          trimed_response=response.substring(last_position)
-          matches=response.match(progress_regex_all)
-          
+          trimed_response = response.substring(last_position)
+          matches = response.match(progress_regex_all)
+
           if (matches) {
             const lastMatch = [...matches].pop().match(progress_regex);
-            last_position=response.length
+            last_position = response.length
             // Access named groups of the last match
             const progress = lastMatch.groups.progress;
             const title = lastMatch.groups.title;
@@ -173,7 +179,7 @@
     //   document.getElementById("count-down").innerHTML= document.getElementById("count-down").innerHTML.replace('۳۰۰','300')
     seconds = seconds + 1
     if (seconds <= 300) {
-    //  set_progress(seconds / 3)
+      //  set_progress(seconds / 3)
       //document.getElementById("count-down").innerHTML = 300 - seconds
     } else {
       $("#progress").addClass("bg-danger")
