@@ -21,7 +21,7 @@ class BoolConfig(db.Model, SerializerMixin):
 
     def to_dict(d):
         return {
-            'key': d.key,
+            'key': str(d.key),
             'value': d.value,
             'child_unique_id': d.child.unique_id if d.child else ''
         }
@@ -35,7 +35,7 @@ class StrConfig(db.Model, SerializerMixin):
 
     def to_dict(d):
         return {
-            'key': d.key,
+            'key': str(d.key),
             'value': d.value,
             'child_unique_id': d.child.unique_id if d.child else ''
         }
