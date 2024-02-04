@@ -47,7 +47,7 @@
 % if log_file_url
 <div>
 
-  <details>
+  <details {% if log_file=="status.log" %}open="" {% endif %}>
 
     <summary>
       <div class="btn ">
