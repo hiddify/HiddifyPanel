@@ -288,7 +288,7 @@ def get_domain_information(no_domain=False, filter_domain=None, alternative=None
             d.domain = d.domain.replace("*", hutils.random.get_random_string(5, 15))
     if len(domains) == 0:
         domains = [Domain(id=0, domain=alternative, mode=DomainType.direct, cdn_ip='', show_domains=[], child_id=0)]
-        domains[0].has_auto_ip=True
+        domains[0].has_auto_ip = True
 
     return domains, has_auto_cdn
 
@@ -296,6 +296,7 @@ def get_domain_information(no_domain=False, filter_domain=None, alternative=None
 def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
     # uuid_secret=str(uuid.UUID(user_secret))
     domains, has_auto_cdn = get_domain_information(no_domain, filter_domain, urlparse(request.base_url).hostname)
+    domains = [d for d in domains if d.mode != DomainType.fake and d.mode != DomainType.reality]
     db_domain = domains[0]
     domain = db_domain.domain
     user: User = g.account if g.account.uuid == user_uuid else User.by_uuid(f'{user_uuid}')
@@ -319,6 +320,7 @@ def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
     user_ip = hutils.network.auto_ip_selector.get_real_user_ip()
     asn = hutils.network.auto_ip_selector.get_asn_short_name(user_ip)
     profile_title = f'{db_domain.alias or db_domain.domain} {user.name}'
+    profile_url = hiddify.get_account_panel_link(user, request.host)
     if has_auto_cdn and asn != 'unknown':
         profile_title += f" {asn}"
 
@@ -349,7 +351,7 @@ def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
         "asn": asn,
         "country": hutils.network.auto_ip_selector.get_country(user_ip),
         'has_auto_cdn': has_auto_cdn,
-        'profile_url': hiddify.get_account_panel_link(user, domain)
+        'profile_url': profile_url
     }
 
 
