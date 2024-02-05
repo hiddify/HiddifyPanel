@@ -74,7 +74,6 @@ def check_proxy_incorrect(proxy, domain_db, port):
     if domain_db.mode == DomainType.worker and proxy.transport == ProxyTransport.grpc:
         return {'name': name, 'msg': "worker does not support grpc", 'type': 'debug', 'proto': proxy.proto}
 
-
     if domain_db.mode != DomainType.old_xtls_direct and "tls" in proxy.l3 and proxy.cdn == ProxyCDN.direct and proxy.transport in [ProxyTransport.tcp, ProxyTransport.XTLS]:
         return {'name': name, 'msg': "only  old_xtls_direct  support this", 'type': 'debug', 'proto': proxy.proto}
 
@@ -94,7 +93,7 @@ def is_tls(l3):
 
 def get_port(proxy, hconfigs, domain_db, ptls, phttp, pport):
     l3 = proxy.l3
-    port=None
+    port = None
     if type(phttp) == str:
         phttp = int(phttp) if phttp != "None" else None
     if type(ptls) == str:
@@ -114,6 +113,7 @@ def get_port(proxy, hconfigs, domain_db, ptls, phttp, pport):
     elif l3 == "http":
         port = phttp
     return port
+
 
 def make_proxy(hconfigs, proxy: Proxy, domain_db: Domain, phttp=80, ptls=443, pport=None):
     l3 = proxy.l3
@@ -238,8 +238,8 @@ def make_proxy(hconfigs, proxy: Proxy, domain_db: Domain, phttp=80, ptls=443, pp
 
     if proxy.proto in {'vless', 'trojan'} and hconfigs[ConfigEnum.mux_enable]:
         if hconfigs[ConfigEnum.mux_enable]:
-            
-            base['mux_enable']=True
+
+            base['mux_enable'] = True
             base['mux_protocol'] = hconfigs[ConfigEnum.mux_protocol]
             base['mux_max_connections'] = hconfigs[ConfigEnum.mux_max_connections]
             base['mux_min_streams'] = hconfigs[ConfigEnum.mux_min_streams]
@@ -363,7 +363,11 @@ def to_link(proxy):
             baseurl += "&insecure=1"
         return f"{baseurl}#{name_link}"
     if proxy['proto'] == ProxyProto.wireguard:
-        return f'wg://{proxy["server"]}:{proxy["port"]}/?pk={proxy["wg_pk"]}&local_address={proxy["wg_ipv4"]}/32&peer_pk={proxy["wg_server_pub"]}&pre_shared_key={proxy["wg_psk"]}&workers=4&mtu=1380&reserved=0,0,0&ifp={proxy["wg_noise_trick"]}'
+        if g.user_agent['is_steisand']:
+            return f'wireguard://{proxy["server"]}:{proxy["port"]}?private_key={proxy["wg_pk"]}&peer_public_key={proxy["wg_server_pub"]}&pre_shared_key={proxy["wg_psk"]}&reserved=0,0,0#{name_link}'
+        else:
+            # hiddify_format = f'wg://{proxy["server"]}:{proxy["port"]}/?pk={proxy["wg_pk"]}&local_address={proxy["wg_ipv4"]}/32&peer_pk={proxy["wg_server_pub"]}&pre_shared_key={proxy["wg_psk"]}&workers=4&mtu=1380&reserved=0,0,0&ifp={proxy["wg_noise_trick"]}#{name_link}'
+            return f'wg://{proxy["server"]}:{proxy["port"]}?publicKey={proxy["wg_pub"]}&privateKey={proxy["wg_pk"]}=&presharedKey={proxy["wg_psk"]}&ip=10.0.0.1&mtu=1380&keepalive=30&udp=1&reserved=0,0,0&ifp={proxy["wg_noise_trick"]}#{name_link}'
 
     baseurl = f'{proxy["proto"]}://{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}?hiddify=1'
     baseurl += f'&sni={proxy["sni"]}&type={proxy["transport"]}'
@@ -412,7 +416,7 @@ def to_link(proxy):
 
 def add_tls_tricks_to_link(proxy) -> str:
     out = {}
-    add_tls_tricks_to_dict(out,proxy)
+    add_tls_tricks_to_dict(out, proxy)
     return convert_dict_to_url(out)
 
 
