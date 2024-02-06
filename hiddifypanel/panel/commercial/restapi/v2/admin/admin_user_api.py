@@ -24,6 +24,8 @@ class AdminSchema(Schema):
                              )
     telegram_id = Integer(required=False, description='The Telegram ID associated with the admin', allow_none=True)
     lang = Enum(Lang, required=True)
+    speedtest_enable = Boolean(required=False, allow_none=True)
+    telegram_proxy_enable = Boolean(required=False, allow_none=True)
 
 
 class AdminUserApi(MethodView):
