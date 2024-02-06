@@ -23,20 +23,20 @@ class MTProxiesAPI(MethodView):
 
     @app.output(MtproxySchema(many=True))
     def get(self):
-        # check mtproxie is enable
-        if not hconfig(ConfigEnum.telegram_enable):
-            abort(status_code=404, message="Telegram mtproxy is not enable")
-        # get domains
         c = get_common_data(g.account.uuid, 'new')
+
+        if not c['telegram_enable']:
+            abort(status_code=404, message="Telegram mtproxy is not enable")
+
         dtos = []
         # TODO: Remove duplicated domains mapped to a same ipv4 and v6
         for d in c['domains']:
-            if d.mode not in [DomainType.direct, DomainType.relay]:
+            if d.mode not in [DomainType.direct, DomainType.relay, DomainType.old_xtls_direct]:
                 continue
 
             # make mtproxy link
             raw_sec = hconfig(ConfigEnum.shared_secret, d.child_id)
-            secret_hex = raw_sec.encode('utf-8').hex()[:32]
+            secret_hex = str(raw_sec).replace('-', '')
             telegram_faketls_domain_hex = hconfig(ConfigEnum.telegram_fakedomain, d.child_id).encode('utf-8').hex()
             server_link = f'tg://proxy?server={d.domain}&port=443&secret=ee{secret_hex}{telegram_faketls_domain_hex}'
 

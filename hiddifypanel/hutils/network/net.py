@@ -250,18 +250,18 @@ def is_domain_use_letsencrypt(domain: str) -> bool:
     This function is used to filter the payment and big companies to 
     avoid phishing detection
     """
-    import ssl
-    import socket
+    try:
+        # Create a socket connection to the website
+        with socket.create_connection((domain, 443)) as sock:
+            context = ssl.create_default_context()
+            with context.wrap_socket(sock, server_hostname=domain) as ssock:
+                certificate = ssock.getpeercert()
 
-    # Create a socket connection to the website
-    with socket.create_connection((domain, 443)) as sock:
-        context = ssl.create_default_context()
-        with context.wrap_socket(sock, server_hostname=domain) as ssock:
-            certificate = ssock.getpeercert()
+        issuer = dict(x[0] for x in certificate.get("issuer", []))
 
-    issuer = dict(x[0] for x in certificate.get("issuer", []))
-
-    return issuer['organizationName'] == "Let's Encrypt"
+        return issuer['organizationName'] == "Let's Encrypt"
+    except:
+        return False
 
 
 @cache.cache(ttl=300)
@@ -307,7 +307,7 @@ def is_out_of_range_port(port: int) -> bool:
     return port < 1 or port > 65535
 
 
-def add_number_to_ipv4(ip: str, number: int):
+def add_number_to_ipv4(ip: str, number: int) -> str:
     octets = list(map(int, ip.split('.')))
 
     octets[2] = (octets[2] + (octets[3] + number) // 256)
@@ -316,7 +316,7 @@ def add_number_to_ipv4(ip: str, number: int):
     return f"{octets[0]}.{octets[1]}.{octets[2]}.{octets[3]}"
 
 
-def add_number_to_ipv6(ip: str, number: int):
+def add_number_to_ipv6(ip: str, number: int) -> str:
     segments = ip.split(':')
 
     # Increment the last segment by the specified number

@@ -151,7 +151,6 @@ def get_panel_domains(always_add_ip=False, always_add_all_domains=False) -> List
     if len(domains) == 0 and request:
         domains = [Domain(domain=request.host)]
     if len(domains) == 0 or always_add_ip:
-        from hiddifypanel.panel import hiddify
         domains += [Domain(domain=hutils.network.get_ip_str(4))]
     return domains
 
