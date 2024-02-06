@@ -174,7 +174,7 @@ def check_need_reset(old_configs, do=False):
     restart_mode = ''
     for c in old_configs:
         # c=ConfigEnum(c)
-        if old_configs[c] != hconfig(c) and c.apply_mode!=ApplyMode.nothing:
+        if old_configs[c] != hconfig(c) and c.apply_mode != ApplyMode.nothing:
             if restart_mode != 'restart':
                 restart_mode = c.apply_mode
 
@@ -184,12 +184,12 @@ def check_need_reset(old_configs, do=False):
     if not (do and restart_mode == 'reinstall'):
         return hutils.flask.flash_config_success(restart_mode=restart_mode, domain_changed=False)
 
-    return reinstall_action(complete_install=True, domain_changed=domain_changed)
+    return reinstall_action(complete_install=True, domain_changed=False)
 
 
 def get_child(unique_id):
     child_id = Child.current.id
-    if unique_id is None or unique_id == "default":
+    if unique_id is None or unique_id in ["self", "default"]:
         child_id = 0
     else:
         child = Child.query.filter(Child.unique_id == str(unique_id)).first()
