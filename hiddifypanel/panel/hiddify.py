@@ -189,7 +189,7 @@ def check_need_reset(old_configs, do=False):
 
 def get_child(unique_id):
     child_id = Child.current.id
-    if unique_id is None or unique_id in ["self", "default"]:
+    if unique_id is None or unique_id in ["self", "default", str(hconfig(ConfigEnum.unique_id))]:
         child_id = 0
     else:
         child = Child.query.filter(Child.unique_id == str(unique_id)).first()
