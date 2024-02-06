@@ -828,7 +828,7 @@ def add_singbox_wireguard(base, proxy):
     base["pre_shared_key"] = proxy["wg_psk"]
 
     base["mtu"] = 1380
-    if g.user_agent['is_hiddify']:
+    if g.user_agent.get('is_hiddify'):
         base["fake_packets"] = proxy["wg_noise_trick"]
 
 
