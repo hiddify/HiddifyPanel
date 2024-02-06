@@ -115,7 +115,7 @@ def get_port(proxy, hconfigs, domain_db, ptls, phttp, pport):
     return port
 
 
-def make_proxy(hconfigs, proxy: Proxy, domain_db: Domain, phttp=80, ptls=443, pport=None):
+def make_proxy(hconfigs, proxy: Proxy, domain_db: Domain, phttp=80, ptls=443, pport=None) -> dict:
     l3 = proxy.l3
     domain = domain_db.domain
     child_id = domain_db.child_id
@@ -236,9 +236,8 @@ def make_proxy(hconfigs, proxy: Proxy, domain_db: Domain, phttp=80, ptls=443, pp
         base['flow'] = 'xtls-rprx-vision'
         return {**base, 'transport': 'tcp'}
 
-    if proxy.proto in {'vless', 'trojan'} and hconfigs[ConfigEnum.mux_enable]:
+    if proxy.proto in {'vless', 'trojan', 'vmess'} and hconfigs[ConfigEnum.mux_enable]:
         if hconfigs[ConfigEnum.mux_enable]:
-
             base['mux_enable'] = True
             base['mux_protocol'] = hconfigs[ConfigEnum.mux_protocol]
             base['mux_max_connections'] = hconfigs[ConfigEnum.mux_max_connections]
@@ -249,12 +248,12 @@ def make_proxy(hconfigs, proxy: Proxy, domain_db: Domain, phttp=80, ptls=443, pp
             base['mux_max_streams'] = hconfigs[ConfigEnum.mux_max_streams]
 
             if hconfigs[ConfigEnum.mux_brutal_enable]:
-                base['mux_up'] = hconfigs[ConfigEnum.mux_brutal_up_mbps]
-                base['mux_down'] = hconfigs[ConfigEnum.mux_brutal_down_mbps]
+                base['mux_brutal_up_mbps'] = hconfigs[ConfigEnum.mux_brutal_up_mbps]
+                base['mux_brutal_down_mbps'] = hconfigs[ConfigEnum.mux_brutal_down_mbps]
 
     if is_cdn and proxy.proto in {'vless', 'trojan', "vmess"}:
         if hconfigs[ConfigEnum.tls_fragment_enable]:
-            base["tls_fragment_enable"] = hconfigs[ConfigEnum.tls_fragment_enable]
+            base["tls_fragment_enable"] = True
             base["tls_fragment_size"] = hconfigs[ConfigEnum.tls_fragment_size]
             base["tls_fragment_sleep"] = hconfigs[ConfigEnum.tls_fragment_sleep]
 
@@ -363,7 +362,7 @@ def to_link(proxy):
             baseurl += "&insecure=1"
         return f"{baseurl}#{name_link}"
     if proxy['proto'] == ProxyProto.wireguard:
-        if g.user_agent['is_steisand']:
+        if g.user_agent.get('is_steisand'):
             return f'wireguard://{proxy["server"]}:{proxy["port"]}?private_key={proxy["wg_pk"]}&peer_public_key={proxy["wg_server_pub"]}&pre_shared_key={proxy["wg_psk"]}&reserved=0,0,0#{name_link}'
         else:
             # hiddify_format = f'wg://{proxy["server"]}:{proxy["port"]}/?pk={proxy["wg_pk"]}&local_address={proxy["wg_ipv4"]}/32&peer_pk={proxy["wg_server_pub"]}&pre_shared_key={proxy["wg_psk"]}&workers=4&mtu=1380&reserved=0,0,0&ifp={proxy["wg_noise_trick"]}#{name_link}'
@@ -421,7 +420,7 @@ def add_tls_tricks_to_link(proxy) -> str:
 
 
 def add_tls_tricks_to_dict(d: dict, proxy):
-    if proxy.get('tls_fragment_size'):
+    if proxy.get('tls_fragment_enable'):
         d['fragment'] = f'{proxy["tls_fragment_size"]},{proxy["tls_fragment_sleep"]},tlshello'
     if proxy.get("tls_mixed_case"):
         d['mc'] = 1
@@ -430,7 +429,7 @@ def add_tls_tricks_to_dict(d: dict, proxy):
 
 
 def convert_dict_to_url(dict):
-    return ("&"+("&".join(dict))) if len(dict) else ""
+    return '&'+'&'.join([f'{k}={v}' for k, v in dict.items()]) if len(dict) else ''
 
 
 def add_mux_to_link(proxy) -> str:
@@ -443,10 +442,11 @@ def add_mux_to_dict(d: dict, proxy):
     if proxy.get('mux_enable'):
         d['mux'] = proxy["mux_protocol"]
         d['mux_max'] = proxy["mux_max_connections"]
-        d['mux_min'] = proxy["mux_min_connections"]
+        # doesn't exist
+        # d['mux_min'] = proxy["mux_min_connections"]
         d['mux_pad'] = proxy["mux_padding_enable"]
 
-        if proxy['mux_brutal_enable']:
+        if proxy.get('mux_brutal_enable'):
             d['mux_up'] = proxy["mux_brutal_up_mbps"]
             d['mux_down'] = proxy["mux_brutal_down_mbps"]
 
