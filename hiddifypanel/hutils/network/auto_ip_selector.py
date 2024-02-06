@@ -7,6 +7,9 @@ import os
 import re
 import sys
 from hiddifypanel.cache import cache
+from hiddifypanel.models.config import hconfig
+from hiddifypanel.models.config_enum import ConfigEnum
+from hiddifypanel import hutils
 
 DEFAULT_IPs = """
 mci.ircf.space		MCI
@@ -167,7 +170,7 @@ def get_clean_ip(ips: Union[str, List[str]], resolve: bool = False, default_asn:
     is_morteza_format = any([format for format in __asn_map.values() if format in ips])
     # print("IPs",ips)
     if is_morteza_format:
-        if country.lower() != hconfig(ConfigEnum.country) and default_asn:
+        if str(country).lower() != hconfig(ConfigEnum.country) and default_asn:
             asn_short = default_asn
         selected_server = __get_host_base_on_asn(ips, asn_short)
     else:
