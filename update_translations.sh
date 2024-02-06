@@ -50,6 +50,13 @@ function update_localise2() {
     --data-binary "@hiddifypanel/translations/$lang/LC_MESSAGES/messages.po" \
     --compressed
 }
+function update_localise3() {
+  lang=$1
+  curl "https://localise.biz/api/import/po?index=id&delete-absent=false&ignore-existing=false&locale=$lang&flag-new=Provisional&key=$LOCALIZ_KEY3" \
+    -H 'Accept: application/json' \
+    --data-binary "@hiddifypanel/translations/$lang/LC_MESSAGES/messages.po" \
+    --compressed
+}
 
 update_localise fa
 update_localise en

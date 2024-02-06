@@ -43,7 +43,7 @@ def hurl_for(endpoint, **values):
 def get_user_agent() -> dict:
     ua = __parse_user_agent(request.user_agent.string)
 
-    if ua.get('v', 1) < 3:
+    if ua.get('v', 1) < 4:
         __parse_user_agent.invalidate_all()  # type:ignore
         ua = __parse_user_agent(request.user_agent.string)
     return ua
@@ -63,7 +63,7 @@ def __parse_user_agent(ua: str) -> dict:
     match = re.search(ua_version_pattern, request.user_agent.string)
     generic_version = list(map(int, match.group(1).split('.'))) if match else [0, 0, 0]
     res = {}
-    res['v'] = 3
+    res['v'] = 4
     res["is_bot"] = uaa.is_bot
     res["is_browser"] = re.match('^Mozilla', ua, re.IGNORECASE) and True
     res['os'] = uaa.os.family
@@ -72,12 +72,12 @@ def __parse_user_agent(ua: str) -> dict:
     res['is_clash_meta'] = re.match('^(Clash-verge|Clash-?Meta|Stash|NekoBox|NekoRay|Pharos|hiddify-desktop)', ua, re.IGNORECASE) and True
     res['is_singbox'] = re.match('^(HiddifyNext|Dart|SFI|SFA)', ua, re.IGNORECASE) and True
     res['is_hiddify'] = re.match('^(HiddifyNext)', ua, re.IGNORECASE) and True
-    res['is_steisand'] = re.match('^(Streisand)', ua, re.IGNORECASE) and True
+    res['is_streisand'] = re.match('^(Streisand)', ua, re.IGNORECASE) and True
     # TODO: find correct streisand user agent
     # Does client support fragmentation configs in the proxy link parameters
     # res['supports_xray_fg'] = re.match('^(HiddifyNext|Shadowrocket|Streisand)', ua, re.IGNORECASE) and True
 
-    if (res['is_singbox']):
+    if res['is_singbox']:
         res['singbox_version'] = generic_version
 
     if ['is_hiddify']:

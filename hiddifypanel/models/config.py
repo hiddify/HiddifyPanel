@@ -48,21 +48,17 @@ def hconfig(key: ConfigEnum, child_id: int | None = None) -> str | int | None:
 
     value = None
     try:
-        str_conf = StrConfig.query.filter(StrConfig.key == key, StrConfig.child_id == child_id).first()
-        if str_conf:
-            value = str_conf.value
-        else:
+        if key.type==bool:
             bool_conf = BoolConfig.query.filter(BoolConfig.key == key, BoolConfig.child_id == child_id).first()
             if bool_conf:
                 value = bool_conf.value
+                error(f'bool {key} not found ')
+        else:
+            str_conf = StrConfig.query.filter(StrConfig.key == key, StrConfig.child_id == child_id).first()
+            if str_conf:
+                value = str_conf.value
             else:
-                # if key == ConfigEnum.ssfaketls_fakedomain:
-                #     return hdomain(DomainType.ss_faketls)
-                # if key == ConfigEnum.telegram_fakedomain:
-                #     return hdomain(DomainType.telegram_faketls)
-                # if key == ConfigEnum.fake_cdn_domain:
-                #     return hdomain(DomainType.fake_cdn)
-                error(f'{key} not found ')
+                error(f'str {key} not found ')
     except:
         error(f'{key} error!')
         raise
