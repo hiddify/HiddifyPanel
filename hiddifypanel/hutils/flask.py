@@ -72,7 +72,7 @@ def __parse_user_agent(ua: str) -> dict:
     res['is_clash_meta'] = re.match('^(Clash-verge|Clash-?Meta|Stash|NekoBox|NekoRay|Pharos|hiddify-desktop)', ua, re.IGNORECASE) and True
     res['is_singbox'] = re.match('^(HiddifyNext|Dart|SFI|SFA)', ua, re.IGNORECASE) and True
     res['is_hiddify'] = re.match('^(HiddifyNext)', ua, re.IGNORECASE) and True
-    res['is_steisand'] = re.match('^(Streisand)', ua, re.IGNORECASE) and True
+    res['is_streisand'] = re.match('^(Streisand)', ua, re.IGNORECASE) and True
     # TODO: find correct streisand user agent
     # Does client support fragmentation configs in the proxy link parameters
     # res['supports_xray_fg'] = re.match('^(HiddifyNext|Shadowrocket|Streisand)', ua, re.IGNORECASE) and True
