@@ -15,6 +15,8 @@ class ProxyDetailsAdmin(AdminLTEModelView):
     can_create = False
     form_excluded_columns = ['child']
     column_exclude_list = ['child']
+    column_searchable_list = ['name', 'proto', 'transport', 'l3', 'cdn']
+
     # list_template = 'model/domain_list.html'
     # edit_modal = True
     # form_overrides = {'work_with': Select2Field}
