@@ -50,7 +50,7 @@ class Backup(FlaskView):
                                      set_domains=restore_form.enable_domain_restore.data,
                                      set_settings=restore_form.enable_config_restore.data,
                                      override_unique_id=False,
-                                     override_child_id=None,
+                                     override_child_unique_id=Child.current.unique_id,
                                      override_root_admin=restore_form.override_root_admin.data,
                                      replace_owner_admin=restore_form.override_root_admin.data
                                      )

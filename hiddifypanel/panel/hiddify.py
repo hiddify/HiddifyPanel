@@ -234,7 +234,7 @@ def get_ids_without_parent(input_dict):
     return uuids_without_parent
 
 
-def set_db_from_json(json_data, override_child_id=None, set_users=True, set_domains=True, set_proxies=True, set_settings=True, remove_domains=False, remove_users=False,
+def set_db_from_json(json_data, override_child_unique_id=None, set_users=True, set_domains=True, set_proxies=True, set_settings=True, remove_domains=False, remove_users=False,
                      override_unique_id=True, set_admins=True, override_root_admin=False, replace_owner_admin=False, fix_admin_hierarchy=True):
     new_rows = []
 
@@ -280,13 +280,13 @@ def set_db_from_json(json_data, override_child_id=None, set_users=True, set_doma
     if set_users and 'users' in json_data:
         User.bulk_register(json_data['users'], commit=False, remove=remove_users)
     if set_domains and 'domains' in json_data:
-        bulk_register_domains(json_data['domains'], commit=False, remove=remove_domains, override_child_id=override_child_id)
+        bulk_register_domains(json_data['domains'], commit=False, remove=remove_domains, override_child_unique_id=override_child_unique_id)
     # if set_domains and 'parent_domains' in json_data:
     #     ParentDomain.bulk_register(json_data['parent_domains'], commit=False, remove=remove_domains)
     if set_settings and 'hconfigs' in json_data:
-        bulk_register_configs(json_data["hconfigs"], commit=True, override_child_id=override_child_id, override_unique_id=override_unique_id)
+        bulk_register_configs(json_data["hconfigs"], commit=True, override_child_unique_id=override_child_unique_id, override_unique_id=override_unique_id)
         if 'proxies' in json_data:
-            Proxy.bulk_register(json_data['proxies'], commit=False, override_child_id=override_child_id)
+            Proxy.bulk_register(json_data['proxies'], commit=False, override_child_unique_id=override_child_unique_id)
 
     ids_without_parent = get_ids_without_parent({u.id: u.to_dict() for u in AdminUser.query.all()})
     owner = AdminUser.get_super_admin()

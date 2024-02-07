@@ -140,14 +140,14 @@ def add_or_update_config(commit: bool = True, child_id: int = None, override_uni
     set_hconfig(ckey, v, child_id, commit=commit)
 
 
-def bulk_register_configs(hconfigs, commit: bool = True, override_child_id: int | None = None, override_unique_id: bool = True):
+def bulk_register_configs(hconfigs, commit: bool = True, override_child_unique_id: int | None = None, override_unique_id: bool = True):
     from hiddifypanel.panel import hiddify
     for conf in hconfigs:
         # print(conf)
         if conf['key'] == ConfigEnum.unique_id and not override_unique_id:
             continue
-        child_id = override_child_id if override_child_id is not None else hiddify.get_child(conf.get('child_unique_id', None))
-        # print(conf, child_id, conf.get('child_unique_id', None), override_child_id)
+        child_id = override_child_unique_id if override_child_unique_id is not None else hiddify.get_child(conf.get('child_unique_id', None))
+        # print(conf, child_id, conf.get('child_unique_id', None), override_child_unique_id)
         add_or_update_config(commit=False, child_id=child_id, **conf)
     if commit:
         db.session.commit()

@@ -98,21 +98,21 @@ class Domain(db.Model, SerializerMixin):
             return 0
         # TODO: check validity of the range of the port
         # print("child_id",self.child_id)
-        return int(hconfig(ConfigEnum.hysteria_port, self.child_id))+self.port_index
+        return int(hconfig(ConfigEnum.hysteria_port, self.child_id)) + self.port_index
 
     @property
     def internal_port_tuic(self):
         if self.mode not in [DomainType.direct, DomainType.relay, DomainType.fake]:
             return 0
         # TODO: check validity of the range of the port
-        return int(hconfig(ConfigEnum.tuic_port, self.child_id))+self.port_index
+        return int(hconfig(ConfigEnum.tuic_port, self.child_id)) + self.port_index
 
     @property
     def internal_port_reality(self):
         if self.mode != DomainType.reality:
             return 0
         # TODO: check validity of the range of the port
-        return int(hconfig(ConfigEnum.reality_port, self.child_id))+self.port_index
+        return int(hconfig(ConfigEnum.reality_port, self.child_id)) + self.port_index
 
 
 def hdomains(mode):
@@ -202,11 +202,11 @@ def add_or_update_domain(commit=True, child_id=0, **domain):
         db.session.commit()
 
 
-def bulk_register_domains(domains, commit=True, remove=False, override_child_id=None):
+def bulk_register_domains(domains, commit=True, remove=False, override_child_unique_id=None):
     from hiddifypanel.panel import hiddify
     child_ids = {}
     for domain in domains:
-        child_id = override_child_id if override_child_id is not None else hiddify.get_child(domain.get('child_unique_id', None))
+        child_id = override_child_unique_id if override_child_unique_id is not None else hiddify.get_child(domain.get('child_unique_id', None))
         child_ids[child_id] = 1
         add_or_update_domain(commit=False, child_id=child_id, **domain)
     if remove and len(child_ids):
@@ -218,7 +218,7 @@ def bulk_register_domains(domains, commit=True, remove=False, override_child_id=
     # if commit:
     db.session.commit()
     for domain in domains:
-        child_id = override_child_id if override_child_id is not None else hiddify.get_child(domain.get('child_unique_id', None))
+        child_id = override_child_unique_id if override_child_unique_id is not None else hiddify.get_child(domain.get('child_unique_id', None))
         add_or_update_domain(commit=False, child_id=child_id, **domain)
     if commit:
         db.session.commit()

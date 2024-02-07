@@ -185,7 +185,8 @@ def _v42():
 def _v41():
     add_config_if_not_exist(ConfigEnum.core_type, "xray")
     if not (Domain.query.filter(Domain.domain == hconfig(ConfigEnum.reality_fallback_domain)).first()):
-        db.session.add(Domain(domain=hconfig(ConfigEnum.reality_fallback_domain), servernames=hconfig(ConfigEnum.reality_server_names), mode=DomainType.reality))
+        db.session.add(Domain(domain=hconfig(ConfigEnum.reality_fallback_domain),
+                       servernames=hconfig(ConfigEnum.reality_server_names), mode=DomainType.reality))
 
 
 def _v38():
@@ -204,7 +205,7 @@ def _v33():
 
 
 def _v31():
-    add_config_if_not_exist(ConfigEnum.reality_short_ids, uuid.uuid4().hex[0:random.randint(1, 8)*2])
+    add_config_if_not_exist(ConfigEnum.reality_short_ids, uuid.uuid4().hex[0:random.randint(1, 8) * 2])
     key_pair = hiddify.generate_x25519_keys()
     add_config_if_not_exist(ConfigEnum.reality_private_key, key_pair['private_key'])
     add_config_if_not_exist(ConfigEnum.reality_public_key, key_pair['public_key'])
@@ -277,10 +278,10 @@ def _v17():
         if u.expiry_time:
             if not u.package_days:
                 if not u.last_reset_time:
-                    u.package_days = (u.expiry_time-datetime.date.today()).days
+                    u.package_days = (u.expiry_time - datetime.date.today()).days
                     u.start_date = datetime.date.today()
                 else:
-                    u.package_days = (u.expiry_time-u.last_reset_time).days
+                    u.package_days = (u.expiry_time - u.last_reset_time).days
                     u.start_date = u.last_reset_time
             u.expiry_time = None
 
@@ -292,7 +293,7 @@ def _v1():
     data = [
         StrConfig(key=ConfigEnum.db_version, value=1),
         User(name="default", usage_limit_GB=3000, package_days=3650, mode=UserMode.weekly),
-        Domain(domain=external_ip+".sslip.io", mode=DomainType.direct),
+        Domain(domain=external_ip + ".sslip.io", mode=DomainType.direct),
         StrConfig(key=ConfigEnum.admin_secret, value=uuid.uuid4()),
         StrConfig(key=ConfigEnum.http_ports, value="80"),
         StrConfig(key=ConfigEnum.tls_ports, value="443"),
@@ -526,7 +527,7 @@ def add_new_enum_values():
 
         # Find the new values that need to be added to the enum column in the database
         new_values = set(existing_values) - set(db_values)
-        old_values = set(db_values)-set(existing_values)
+        old_values = set(db_values) - set(existing_values)
         # print('new_values-=-----------------', new_values)
         if len(new_values) == 0 and len(old_values) == 0:
             continue
@@ -554,7 +555,7 @@ def upgrade_database():
     sqlite_db = f"{panel_root}hiddifypanel.db"
     if not os.path.isdir(backup_root) or len(os.listdir(backup_root)) == 0:
         if os.path.isfile(sqlite_db):
-            os.rename(sqlite_db, sqlite_db+".old")
+            os.rename(sqlite_db, sqlite_db + ".old")
         print("no backup found...")
         return
     if os.path.isfile(sqlite_db):
@@ -573,11 +574,11 @@ def upgrade_database():
                                      override_unique_id=True,
                                      set_admins=True,
                                      override_root_admin=True,
-                                     override_child_id=0,
+                                     override_child_unique_id=0,
                                      replace_owner_admin=True
                                      )
             db_version = int([d['value'] for d in json_data['hconfigs'] if d['key'] == "db_version"][0])
-            os.rename(sqlite_db, sqlite_db+".old")
+            os.rename(sqlite_db, sqlite_db + ".old")
             set_hconfig(ConfigEnum.db_version, db_version, commit=True)
         hiddify.error("Upgrading to the new dataset succuess.")
 
