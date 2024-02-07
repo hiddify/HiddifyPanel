@@ -26,7 +26,6 @@ class UserView(FlaskView):
     def test(self):
         ua = request.user_agent.string
         print(ua)
-        print(hiddify.get_user_agent())
         return ua
 
     def index(self):
@@ -294,6 +293,7 @@ def get_domain_information(no_domain=False, filter_domain=None, alternative=None
 
 
 def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
+    '''Usable for user account'''
     # uuid_secret=str(uuid.UUID(user_secret))
     domains, has_auto_cdn = get_domain_information(no_domain, filter_domain, urlparse(request.base_url).hostname)
     domains = [d for d in domains if d.mode != DomainType.fake and d.mode != DomainType.reality]
@@ -345,7 +345,7 @@ def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
         'domains': domains,
         "bot": g.get('bot', None),
         "db_domain": db_domain,
-        "telegram_enable": hconfig(ConfigEnum.telegram_enable) and any([d for d in domains if d.mode in [DomainType.direct, DomainType.relay, DomainType.old_xtls_direct]]),
+        "telegram_enable": hiddify.is_telegram_proxy_enable(),
         "ip": user_ip,
         "ip_debug": hutils.network.auto_ip_selector.get_real_user_ip_debug(user_ip),
         "asn": asn,

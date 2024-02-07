@@ -7,6 +7,7 @@ from hiddifypanel.models.admin import AdminUser
 from hiddifypanel.models.config_enum import ConfigEnum, Lang
 from hiddifypanel.models.config import hconfig
 from hiddifypanel.models.role import Role
+from hiddifypanel.panel import hiddify
 from .admin_user_api import AdminSchema
 
 
@@ -27,4 +28,6 @@ class AdminInfoApi(MethodView):
         dto.parent_admin_uuid = AdminUser.query.filter(AdminUser.id == admin.parent_admin_id).first().uuid or 'None'  # type: ignore
         dto.telegram_id = admin.telegram_id or 0  # type: ignore
         dto.lang = Lang(hconfig(ConfigEnum.admin_lang))  # type: ignore
+        dto.speedtest_enable = hconfig(ConfigEnum.speed_test)
+        dto.telegram_proxy_enable = hiddify.is_telegram_proxy_enable()  # type: ignore
         return dto

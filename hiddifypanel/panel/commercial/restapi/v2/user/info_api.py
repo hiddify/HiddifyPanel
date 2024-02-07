@@ -1,10 +1,10 @@
 from urllib.parse import urlparse
 from flask.views import MethodView
 from apiflask import Schema
-from apiflask.fields import Integer, String, Float, URL, Enum
+from apiflask.fields import Integer, String, Float, URL, Enum, Boolean
 from flask import g, request
 from flask import current_app as app
-from hiddifypanel import hutils,auth
+from hiddifypanel import hutils, auth
 from hiddifypanel.auth import login_required
 
 from flask_babel import gettext as _
@@ -33,6 +33,8 @@ class ProfileSchema(Schema):
     brand_icon_url = URL()
     doh = URL()
     lang = Enum(Lang, required=True)
+    speedtest_enable = Boolean(required=True)
+    telegram_proxy_enable = Boolean(required=True)
 
 
 class UserInfoChangableSchema(Schema):
@@ -67,6 +69,9 @@ class InfoAPI(MethodView):
             dto.admin_message_html += "<p style='font-style: italic;font-size:8px'>"+_("[Admin only visible message:] You can change this message from settings")+"</p>"
         dto.admin_message_url = hconfig(ConfigEnum.branding_site) or "https://t.me/hiddify"
         dto.brand_title = hconfig(ConfigEnum.branding_title) or _("Hiddify")
+
+        dto.speedtest_enable = hconfig(ConfigEnum.speed_test)
+        dto.telegram_proxy_enable = c.get('telegram_enable', False)
         return dto
 
     @app.input(UserInfoChangableSchema, arg_name='data')

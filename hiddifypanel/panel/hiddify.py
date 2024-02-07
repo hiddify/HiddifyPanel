@@ -417,6 +417,11 @@ def get_account_panel_link(account: BaseAccount, host: str, is_https: bool = Tru
     return link
 
 
+def is_telegram_proxy_enable() -> bool:
+    domains = get_panel_domains()
+    return hconfig(ConfigEnum.telegram_enable) and any([d for d in domains if d.mode in [DomainType.direct, DomainType.relay, DomainType.old_xtls_direct]])
+
+
 def clone_model(model):
     """Clone an arbitrary sqlalchemy model object without its primary key values."""
     # Ensure the model’s data is loaded before copying.
