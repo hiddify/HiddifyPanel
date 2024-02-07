@@ -1,12 +1,13 @@
 from apiflask import Schema, fields, abort
 from flask.views import MethodView
+from hiddifypanel import hutils
 from hiddifypanel.models.role import Role
 from hiddifypanel.panel import hiddify
-from flask import current_app as app
-from flask_cors import cross_origin
+from flask import current_app as app, make_response, g, request
 import os
 from ansi2html import Ansi2HTMLConverter
 from hiddifypanel.auth import login_required
+from hiddifypanel.models import *
 
 
 class AdminLogfileSchema(Schema):
@@ -14,12 +15,10 @@ class AdminLogfileSchema(Schema):
 
 
 class AdminLogApi(MethodView):
-    decorators = [login_required({Role.super_admin})]
 
     @app.input(AdminLogfileSchema, arg_name="data", location='form')
-    @app.output(fields.String(description="The html of the log"))
-    # enable CORS for javascript calls
-    @cross_origin(supports_credentials=True)
+    # @app.output(fields.String(description="The html of the log", many=True))
+    # @login_required({Role.super_admin})
     def post(self, data):
         file = data.get('file') or abort(400, "Parameter issue: 'file'")
         file_path = f"{app.config['HIDDIFY_CONFIG_PATH']}/log/system/{file}"
@@ -32,5 +31,18 @@ class AdminLogApi(MethodView):
 
         conv = Ansi2HTMLConverter()
         html_log = f'<div style="background-color:black; color:white;padding:10px">{conv.convert(logs)}</div>'
+        resp = make_response(html_log)
+        domain = request.args.get("domain")
+        resp.headers["Access-Control-Allow-Origin"] = f'*'
+        return resp
 
-        return html_log
+    def options(self):
+        domain = request.args.get("domain")
+        # Domain.query.filter(Domain.domain == domain).first() or abort(404)
+        if g.proxy_path != hconfig(ConfigEnum.proxy_path_admin):
+            abort(403)
+        resp = make_response("")
+        resp.headers["Allow"] = "POST"
+        resp.headers["Access-Control-Allow-Origin"] = f'*'
+        resp.headers["Access-Control-Allow-Headers"] = "Hiddify-API-Key"
+        return resp

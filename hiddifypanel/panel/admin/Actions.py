@@ -194,7 +194,7 @@ class Actions(FlaskView):
         for d in [test_domain, *hutils.network.get_random_domains(30)]:
             if not d:
                 continue
-            if time.time()-start > 20:
+            if time.time() - start > 20:
                 break
 
             tcp_ping = hutils.network.is_domain_reality_friendly(d)
@@ -213,7 +213,7 @@ class Actions(FlaskView):
                 dip_asn = (IPASN.get(dip) or {}).get('autonomous_system_organization', 'unknown')
                 res += f"<tr><td>{d}</td><td>{dip}</td><td>{dip_country}</td><td>{dip_asn}</td><td>{response_time}</td><td>{tcp_ping}<td></tr>"
 
-        return res+"</table>"
+        return res + "</table>"
 
     @ login_required(roles={Role.super_admin})
     def update_usage(self):
@@ -232,4 +232,4 @@ def get_log_api_url():
 
 
 def get_domains():
-    return [str(d.domain).replace("*", hutils.random.get_random_string(3, 6)) for d in get_panel_domains(always_add_all_domains=True, always_add_ip=True)]
+    return [str(d.domain).replace("*", hutils.random.get_random_string(3, 6)) for d in get_panel_domains(always_add_all_domains=True, always_add_ip=False)]
