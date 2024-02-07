@@ -41,9 +41,12 @@ class AnonymousAccount(BaseAccount):
     def __ne__(self, other):
         return not self.__eq__(other)
 
+    def __str__(self):
+        return "AnonymousAccount"
+
 
 def _get_user():
-    if not hasattr(g, "__account_store"):
+    if not g.get("__account_store", None):
         g.__account_store = AnonymousAccount()
     return g.__account_store
 
@@ -141,11 +144,10 @@ def auth_before_request():
         if not account:
             return logout_redirect()
 
-        next_url = request.url.replace(f'/{g.uuid}/', '/admin/' if is_admin_path else '/client/').replace("/admin/admin/", '/admin/').replace("http://", "https://")
+        next_url = request.url.replace(f'/{g.uuid}/', '/admin/' if is_admin_path else '/client/').replace("/admin/admin/",
+                                                                                                          '/admin/').replace("http://", "https://")
 
-    elif auth_header := request.headers.get("Hiddify_API_KEY"):
-        # print("auth_header", auth_header)
-        apikey = hutils.auth.get_apikey_from_auth_header(auth_header)
+    elif apikey := request.headers.get("Hiddify-API-Key"):
         account = get_account_by_api_key(apikey, is_admin_path)
         if not account:
             return logout_redirect()
@@ -180,8 +182,6 @@ def auth_before_request():
         # print("loggining in")
         if next_url is not None and g.user_agent['is_browser'] and ".webmanifest" not in request.path:
             return redirect(next_url)
-
-
 
 
 def logout_redirect():
