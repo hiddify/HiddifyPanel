@@ -761,7 +761,7 @@ def add_singbox_tls(base, proxy):
 def add_singbox_tls_tricks(base, proxy):
     if proxy.get('tls_fragment_enable'):
         base['tls_fragment'] = {
-            'enable': True,
+            # 'enable': True,
             'size': proxy["tls_fragment_size"],
             'sleep': proxy["tls_fragment_sleep"]
         }
