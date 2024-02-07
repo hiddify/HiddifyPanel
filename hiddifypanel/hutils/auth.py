@@ -31,12 +31,6 @@ def get_uuid_from_url_path(path: str, section_index: int = 2) -> str | None:
     return None
 
 
-def get_apikey_from_auth_header(auth_header: str) -> str | None:
-    if auth_header.startswith('ApiKey'):
-        return auth_header.split('ApiKey ')[1].strip()
-    return None
-
-
 def parse_login_id(raw_id: str) -> Tuple[Any | None, str | None]:
     """
     Parses the given raw ID to extract the account type and ID.
