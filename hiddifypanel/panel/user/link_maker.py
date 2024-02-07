@@ -204,9 +204,8 @@ def make_proxy(hconfigs, proxy: Proxy, domain_db: Domain, phttp=80, ptls=443, pp
     }
 
     if base["proto"] in ['v2ray', 'ss', 'ssr']:
-        base['cipher'] = 'chacha20-ietf-poly1305'
-        if "shadowtls" not in proxy.transport:
-            base['uuid'] = f'{hconfigs[ConfigEnum.shared_secret]}'
+        base['cipher'] = '2022-blake3-aes-256-gcm'
+        base['password'] = f'{hutils.encode.do_base_64(hconfigs[ConfigEnum.shared_secret].replace("-",""))}:{hutils.encode.do_base_64(g.account.uuid.replace("-",""))}'
 
     if base["proto"] == "ssr":
         base["ssr-obfs"] = "tls1.2_ticket_auth"
@@ -223,7 +222,6 @@ def make_proxy(hconfigs, proxy: Proxy, domain_db: Domain, phttp=80, ptls=443, pp
         base['fakedomain'] = hconfigs[ConfigEnum.shadowtls_fakedomain]
         # base['sni'] = hconfigs[ConfigEnum.shadowtls_fakedomain]
         base['shared_secret'] = hconfigs[ConfigEnum.shared_secret]
-        base['alpn'] = 'http/1.1,h2'
         base['mode'] = 'ShadowTLS'
         return base
 
@@ -338,7 +336,7 @@ def to_link(proxy):
         baseurl = f'ssr://{proxy["cipher"]}:{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}'
         return baseurl
     if proxy['proto'] in ['ss', 'v2ray']:
-        baseurl = f'ss://{proxy["cipher"]}:{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}'
+        baseurl = f'ss://{proxy["cipher"]}:{proxy["password"]}@{proxy["server"]}:{proxy["port"]}'
         if proxy['mode'] == 'faketls':
             return f'{baseurl}?plugin=obfs-local%3Bobfs%3Dtls%3Bobfs-host%3D{proxy["fakedomain"]}%3Budp-over-tcp=true#{name_link}'
         # if proxy['mode'] == 'shadowtls':
@@ -845,12 +843,12 @@ def add_singbox_shadowsocks_base(all_base, proxy):
     base = all_base[0]
     base["type"] = "shadowsocks"
     base["method"] = proxy["cipher"]
-    base["password"] = proxy["uuid"]
+    base["password"] = proxy["password"]
     add_singbox_udp_over_tcp(base)
     add_singbox_multiplex(base)
     if proxy["transport"] == "faketls":
         base["plugin"] = "obfs-local"
-        base["plugin_opts"] = f'obfs=tls&obfs-host={proxy["fakedomain"]}'
+        base["plugin_opts"] = f'obfs=tls;obfs-host={proxy["fakedomain"]}'
     if proxy['proto'] == 'v2ray':
         base["plugin"] = "v2ray-plugin"
         # "skip-cert-verify": proxy["mode"] == "Fake" or proxy['allow_insecure'],
@@ -859,7 +857,7 @@ def add_singbox_shadowsocks_base(all_base, proxy):
     if proxy["transport"] == "shadowtls":
         base['method'] = '2022-blake3-aes-256-gcm'
         base['detour'] = base['tag'] + "_shadowtls-out §hide§"
-        base["password"] = f'{hutils.encode.do_base_64(proxy["shared_secret"].replace("-",""))}:{hutils.encode.do_base_64(proxy["uuid"].replace("-",""))}'
+
         shadowtls_base = {
             "type": "shadowtls",
             "tag": base['detour'],
@@ -873,7 +871,8 @@ def add_singbox_shadowsocks_base(all_base, proxy):
                 "utls": {
                     "enabled": True,
                     "fingerprint": proxy.get('fingerprint', 'none')
-                }
+                },
+                # "alpn": proxy['alpn'].split(',')
             }
         }
         # add_singbox_utls(shadowtls_base)

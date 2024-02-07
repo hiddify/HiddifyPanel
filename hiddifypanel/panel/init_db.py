@@ -403,8 +403,6 @@ def get_proxy_rows_v1():
         "grpc direct vmess",
         "faketls direct ss",
         "WS direct v2ray",
-        "shadowtls direct ss",
-
         "h2 relay vless",
         "XTLS relay vless",
         "WS relay vless",
@@ -432,7 +430,7 @@ def get_proxy_rows_v1():
 
     ]
     ))
-
+    rows.append(Proxy(l3=ProxyL3.tls, transport=ProxyTransport.shadowtls, cdn='direct', proto='ss', enable=True, name="ShadowTLS"))
     rows.append(Proxy(l3='ssh', transport='ssh', cdn='direct', proto='ssh', enable=True, name="SSH"))
     rows.append(Proxy(l3='ssh', transport=ProxyTransport.ssh, cdn=ProxyCDN.relay, proto=ProxyProto.ssh, enable=True, name="SSH Relay"))
 

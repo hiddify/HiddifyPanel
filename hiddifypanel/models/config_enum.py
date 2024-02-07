@@ -159,12 +159,12 @@ class ConfigEnum(metaclass=FastEnum):
     telegram_lib = _StrConfigDscr(ConfigCategory.telegram, ApplyMode.apply, hide_in_virtual_child=True)
     telegram_fakedomain = _StrConfigDscr(ConfigCategory.telegram, ApplyMode.apply, hide_in_virtual_child=True)
 
-    v2ray_enable = _BoolConfigDscr(ConfigCategory.hidden, ApplyMode.apply)
+    v2ray_enable = _BoolConfigDscr(ConfigCategory.general, ApplyMode.apply)
     torrent_block = _BoolConfigDscr(ConfigCategory.general, ApplyMode.apply)
 
-    ssfaketls_enable = _BoolConfigDscr(ConfigCategory.hidden, ApplyMode.apply)
+    ssfaketls_enable = _BoolConfigDscr(ConfigCategory.ssfaketls, ApplyMode.apply)
     # ssfaketls_secret="ssfaketls_secret"
-    ssfaketls_fakedomain = _StrConfigDscr(ConfigCategory.hidden, ApplyMode.apply, hide_in_virtual_child=True)
+    ssfaketls_fakedomain = _StrConfigDscr(ConfigCategory.ssfaketls, ApplyMode.apply, hide_in_virtual_child=True)
 
     shadowtls_enable = _BoolConfigDscr(ConfigCategory.shadowtls, ApplyMode.apply)
     # shadowtls_secret=auto()
