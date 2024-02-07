@@ -18,7 +18,9 @@ class ProxyTransport(StrEnum):
     WS = auto()
     tcp = auto()
     ssh = auto()
+    httpupgrade = auto()
     custom = auto()
+    shadowsocks=auto()
 
 
 class ProxyCDN(StrEnum):

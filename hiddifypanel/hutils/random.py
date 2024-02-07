@@ -1,6 +1,7 @@
 import random
 import string
-from hiddifypanel.models import hconfig,ConfigEnum
+from hiddifypanel.models import hconfig, ConfigEnum
+
 
 def get_random_string(min_: int = 10, max_: int = 30) -> str:
     # With combination of lower and upper case
@@ -19,30 +20,31 @@ def get_random_password(length: int = 16) -> str:
             return passwd
 
 
-def __is_port_in_range(port, start_port:int|str|None,count:int):
-    if start_port==None:
+def __is_port_in_range(port, start_port: int | str | None, count: int):
+    if start_port == None:
         return False
-    start_port=int(start_port)
-    if port<start_port:
+    start_port = int(start_port)
+    if port < start_port:
         return False
 
-    if port>start_port+count:
+    if port > start_port + count:
         return False
     return True
 
 
 def __is_in_used_port(port):
-    if __is_port_in_range(port,hconfig(ConfigEnum.reality_port),100):
+    if __is_port_in_range(port, hconfig(ConfigEnum.reality_port), 100):
         return True
-    if __is_port_in_range(port,hconfig(ConfigEnum.hysteria_port),100):
+    if __is_port_in_range(port, hconfig(ConfigEnum.hysteria_port), 100):
         return True
-    
-    if __is_port_in_range(port,hconfig(ConfigEnum.tuic_port),100):
+    if __is_port_in_range(port, hconfig(ConfigEnum.tuic_port), 100):
         return True
-    if port in [443,80,9000,10085,10086]:
+    if port in [443, 80, 9000, 10085, 10086, hconfig(ConfigEnum.ssh_server_port), hconfig(ConfigEnum.shadowsocks2022_port)]:
         return True
+
+
 def get_random_unused_port():
-    port=random.randint(11000, 60000)
+    port = random.randint(11000, 60000)
     while __is_in_used_port(port):
-        port=random.randint(11000, 60000)
+        port = random.randint(11000, 60000)
     return port

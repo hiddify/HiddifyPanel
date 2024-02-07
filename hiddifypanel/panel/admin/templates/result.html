@@ -208,10 +208,7 @@ page."),temp_link(),show=False)}}
       type: 'POST',
       data: { file: '{{ log_file}}' },
       headers: {
-        "Hiddify_API_KEY": "{{g.account.uuid}}"
-      },
-      xhrFields: {
-        withCredentials: true
+        "Hiddify-API-Key": "{{g.account.uuid}}"
       }
     }).then(response => {
       Promise.resolve(response)

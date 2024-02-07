@@ -172,6 +172,13 @@ def get_config_form():
             elif c.key == ConfigEnum.package_mode:
                 field = wtf.fields.SelectField(_(f"config.{c.key}.label"), choices=[("release", _("Release")), ("beta", _("Beta")),
                                                ("develop", _("Develop"))], description=_(f"config.{c.key}.description"), default=hconfig(c.key))
+
+            elif c.key == ConfigEnum.shadowsocks2022_method:
+                field = wtf.fields.SelectField(_(f"config.{c.key}.label"), choices=[
+                    ("2022-blake3-aes-256-gcm", "2022-blake3-aes-256-gcm"),
+                    ("2022-blake3-chacha20-poly1305", "2022-blake3-chacha20-poly1305"),
+                ], description=_(f"config.{c.key}.description"), default=hconfig(c.key))
+
             elif c.key == ConfigEnum.utls:
                 field = wtf.fields.SelectField(
                     _(f"config.{c.key}.label"),
