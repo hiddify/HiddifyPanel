@@ -20,6 +20,24 @@ from flask import g
 MAX_DB_VERSION = 80
 
 
+def _v73(child_id):
+    set_hconfig(ConfigEnum.ws_enable, True)
+    set_hconfig(ConfigEnum.grpc_enable, True)
+    set_hconfig(ConfigEnum.httpupgrade_enable, True)
+    set_hconfig(ConfigEnum.shadowsocks2022_port, hutils.random.get_random_unused_port())
+    set_hconfig(ConfigEnum.shadowsocks2022_method, "2022-blake3-aes-256-gcm")
+    set_hconfig(ConfigEnum.shadowsocks2022_enable, False)
+    set_hconfig(ConfigEnum.path_httpupgrade, hutils.random.get_random_string(7, 15))
+    db.session.bulk_save_objects(get_proxy_rows_v1())
+
+    for i in range(1, 10):
+        for d in hutils.network.get_random_domains(50):
+            if hutils.network.is_domain_reality_friendly(d):
+                set_hconfig(ConfigEnum.shadowtls_fakedomain, d)
+                return
+    set_hconfig(ConfigEnum.shadowtls_fakedomain, "captive.apple.com")
+
+
 def _v71(child_id):
     add_config_if_not_exist(ConfigEnum.tuic_port, hutils.random.get_random_unused_port())
     add_config_if_not_exist(ConfigEnum.hysteria_port, hutils.random.get_random_unused_port())
@@ -395,6 +413,9 @@ def get_proxy_rows_v1():
         "WS direct vless",
         "WS direct trojan",
         "WS direct vmess",
+        "httpupgrade direct vless",
+        # "httpupgrade direct trojan",
+        "httpupgrade direct vmess",
         "tcp direct vless",
         "tcp direct trojan",
         "tcp direct vmess",
@@ -408,6 +429,9 @@ def get_proxy_rows_v1():
         "WS relay vless",
         "WS relay trojan",
         "WS relay vmess",
+        "httpupgrade relay vless",
+        # "httpupgrade relay trojan",
+        "httpupgrade relay vmess",
         "tcp relay vless",
         "tcp relay trojan",
         "tcp relay vmess",
@@ -416,7 +440,7 @@ def get_proxy_rows_v1():
         "grpc relay vmess",
         "faketls relay ss",
         "WS relay v2ray",
-        "shadowtls relay ss",
+
         # "restls1_2 direct ss",
         # "restls1_3 direct ss",
         # "tcp direct ssr",
@@ -424,13 +448,20 @@ def get_proxy_rows_v1():
         "WS CDN vless",
         "WS CDN trojan",
         "WS CDN vmess",
+        "httpupgrade CDN vless",
+        # "httpupgrade CDN trojan",
+        "httpupgrade CDN vmess",
         "grpc CDN vless",
         "grpc CDN trojan",
         "grpc CDN vmess",
 
     ]
     ))
+    rows.append(Proxy(l3=ProxyL3.custom, transport=ProxyTransport.shadowsocks, cdn='direct', proto='ss', enable=True, name="ShadowSocks2022"))
+    rows.append(Proxy(l3=ProxyL3.custom, transport=ProxyTransport.shadowsocks, cdn='relay', proto='ss', enable=True, name="ShadowSocks2022 Relay"))
+
     rows.append(Proxy(l3=ProxyL3.tls, transport=ProxyTransport.shadowtls, cdn='direct', proto='ss', enable=True, name="ShadowTLS"))
+    rows.append(Proxy(l3=ProxyL3.tls, transport=ProxyTransport.shadowtls, cdn='relay', proto='ss', enable=True, name="ShadowTLS Relay"))
     rows.append(Proxy(l3='ssh', transport='ssh', cdn='direct', proto='ssh', enable=True, name="SSH"))
     rows.append(Proxy(l3='ssh', transport=ProxyTransport.ssh, cdn=ProxyCDN.relay, proto=ProxyProto.ssh, enable=True, name="SSH Relay"))
 
@@ -585,7 +616,7 @@ def init_db():
     db.create_all()
     hconfig.invalidate_all()
     get_hconfigs.invalidate_all()
-    # set_hconfig(ConfigEnum.db_version, 62)
+    # set_hconfig(ConfigEnum.db_version, 71)
     # temporary fix
     add_column(Child.mode)
     add_column(Child.name)

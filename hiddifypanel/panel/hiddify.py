@@ -77,6 +77,8 @@ def get_available_proxies(child_id):
     #     proxies = [c for c in proxies if c.proto != ProxyProto.tuic]
     # if not hconfig(ConfigEnum.hysteria_enable, child_id):
     #     proxies = [c for c in proxies if c.proto != ProxyProto.hysteria2]
+    if not hconfig(ConfigEnum.shadowsocks2022_enable, child_id):
+        proxies = [c for c in proxies if 'shadowsocks' != c.transport]
 
     if not hconfig(ConfigEnum.ssfaketls_enable, child_id):
         proxies = [c for c in proxies if 'faketls' != c.transport]
@@ -88,7 +90,13 @@ def get_available_proxies(child_id):
         proxies = [c for c in proxies if 'ssr' != c.proto]
     if not hconfig(ConfigEnum.vmess_enable, child_id):
         proxies = [c for c in proxies if 'vmess' not in c.proto]
+    if not hconfig(ConfigEnum.httpupgrade_enable, child_id):
+        proxies = [c for c in proxies if ProxyTransport.httpupgrade not in c.transport]
+    if not hconfig(ConfigEnum.ws_enable, child_id):
+        proxies = [c for c in proxies if ProxyTransport.WS not in c.transport]
 
+    if not hconfig(ConfigEnum.grpc_enable, child_id):
+        proxies = [c for c in proxies if ProxyTransport.grpc not in c.transport]
     if not hconfig(ConfigEnum.kcp_enable, child_id):
         proxies = [c for c in proxies if 'kcp' not in c.l3]
 
