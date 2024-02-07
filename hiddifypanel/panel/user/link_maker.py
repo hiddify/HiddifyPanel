@@ -14,6 +14,7 @@ from flask_babel import gettext as _
 def all_proxies(child_id=0):
     all_proxies = hiddify.get_available_proxies(child_id)
     all_proxies = [p for p in all_proxies if p.enable]
+    # all_proxies = [p for p in all_proxies if p.proto == ProxyProto.ss]
     # all_cfg=Proxy.query.filter(Proxy.enable==True).all()
     # if not hconfig(ConfigEnum.domain_fronting_domain):
     #     all_cfg=[c for c in all_cfg if 'Fake' not in c.cdn]
@@ -204,7 +205,7 @@ def make_proxy(hconfigs, proxy: Proxy, domain_db: Domain, phttp=80, ptls=443, pp
     }
 
     if base["proto"] in ['v2ray', 'ss', 'ssr']:
-        base['cipher'] = '2022-blake3-aes-256-gcm'
+        base['cipher'] = hconfigs[ConfigEnum.shadowsocks2022_method]
         base['password'] = f'{hutils.encode.do_base_64(hconfigs[ConfigEnum.shared_secret].replace("-",""))}:{hutils.encode.do_base_64(g.account.uuid.replace("-",""))}'
 
     if base["proto"] == "ssr":
@@ -264,6 +265,12 @@ def make_proxy(hconfigs, proxy: Proxy, domain_db: Domain, phttp=80, ptls=443, pp
     if proxy.transport in ["ws", "WS"]:
         base['transport'] = 'ws'
         base['path'] = f'/{path[base["proto"]]}{hconfigs[ConfigEnum.path_ws]}'
+        base["host"] = domain
+        return base
+
+    if proxy.transport in [ProxyTransport.httpupgrade]:
+        base['transport'] = 'httpupgrade'
+        base['path'] = f'/{path[base["proto"]]}{hconfigs[ConfigEnum.path_httpupgrade]}'
         base["host"] = domain
         return base
 
@@ -492,7 +499,7 @@ def to_clash(proxy, meta_or_normal):
         return base
     elif proxy["proto"] in ["ss", "v2ray"]:
         base["cipher"] = proxy["cipher"]
-        base["password"] = proxy["uuid"]
+        base["password"] = proxy["password"]
         base["udp_over_tcp"] = True
         if proxy["transport"] == "faketls":
             base["plugin"] = "obfs"
@@ -651,8 +658,6 @@ def to_singbox(proxy):
         base["flow"] = proxy['flow']
         # base["flow-show"] = True
 
-    add_singbox_shadowtls(base, proxy)
-
     if proxy["proto"] == "vmess":
         base["alter_id"] = 0
         base["security"] = proxy["cipher"]
@@ -773,14 +778,20 @@ def add_singbox_tls_tricks(base, proxy):
 def add_singbox_transport(base, proxy):
     if proxy['l3'] == 'reality' and proxy['transport'] not in ["grpc"]:
         return
-    if proxy['transport'] == ProxyTransport.shadowtls:
-        return
     base["transport"] = {}
     if proxy['transport'] in ["ws", "WS"]:
         base["transport"] = {
             "type": "ws",
             "path": proxy["path"],
             "early_data_header_name": "Sec-WebSocket-Protocol"
+        }
+        if "host" in proxy:
+            base["transport"]["headers"] = {"Host": proxy["host"]}
+
+    if proxy['transport'] in [ProxyTransport.httpupgrade]:
+        base["transport"] = {
+            "type": "httpupgrade",
+            "path": proxy["path"]
         }
         if "host" in proxy:
             base["transport"]["headers"] = {"Host": proxy["host"]}
@@ -831,14 +842,6 @@ def add_singbox_wireguard(base, proxy):
         base["fake_packets"] = proxy["wg_noise_trick"]
 
 
-def add_singbox_shadowtls(base, proxy):
-    if proxy["transport"] != ProxyTransport.shadowtls:
-        return
-    base['type'] = "shadowtls"
-    base["version"] = 3
-    base["password"] = proxy["uuid"]
-
-
 def add_singbox_shadowsocks_base(all_base, proxy):
     base = all_base[0]
     base["type"] = "shadowsocks"
@@ -852,10 +855,9 @@ def add_singbox_shadowsocks_base(all_base, proxy):
     if proxy['proto'] == 'v2ray':
         base["plugin"] = "v2ray-plugin"
         # "skip-cert-verify": proxy["mode"] == "Fake" or proxy['allow_insecure'],
-        base["plugin_opts"] = f'mode=websocket&path={proxy["path"]}&host={proxy["host"]}&tls'
+        base["plugin_opts"] = f'mode=websocket;path={proxy["path"]};host={proxy["host"]};tls'
 
     if proxy["transport"] == "shadowtls":
-        base['method'] = '2022-blake3-aes-256-gcm'
         base['detour'] = base['tag'] + "_shadowtls-out §hide§"
 
         shadowtls_base = {
@@ -993,7 +995,7 @@ def get_all_validated_proxies(domains):
     allp = []
     allphttp = [p for p in request.args.get("phttp", "").split(',') if p]
     allptls = [p for p in request.args.get("ptls", "").split(',') if p]
-    added_ip = {ProxyProto.ssh: {}, ProxyProto.tuic: {}, ProxyProto.hysteria2: {}, ProxyProto.wireguard: {}, ProxyProto.ss: {}}
+    added_ip = {}
     configsmap = {}
     proxeismap = {}
     for d in domains:
@@ -1008,12 +1010,15 @@ def get_all_validated_proxies(domains):
 
         for type in proxeismap[d.child_id]:
             options = []
+            key = f'{type.proto}{type.transport}' if type.proto == ProxyProto.ss else type.proto
+            if key not in added_ip:
+                added_ip[key] = {}
             if type.proto in [ProxyProto.ssh, ProxyProto.tuic, ProxyProto.hysteria2, ProxyProto.wireguard, ProxyProto.ss]:
-                if type.proto in [ProxyProto.ssh, ProxyProto.wireguard, ProxyProto.ss] and all([x in added_ip[type.proto] for x in ips]):
+                if type.proto in [ProxyProto.ssh, ProxyProto.wireguard, ProxyProto.ss] and all([x in added_ip[key] for x in ips]):
                     continue
 
                 for x in ips:
-                    added_ip[type.proto][x] = 1
+                    added_ip[key][x] = 1
 
                 if type.proto in [ProxyProto.ssh, ProxyProto.wireguard, ProxyProto.ss]:
                     if d.mode == 'fake':
@@ -1022,6 +1027,8 @@ def get_all_validated_proxies(domains):
                         options = [{'pport': hconfigs[ConfigEnum.ssh_server_port]}]
                     elif type.proto in [ProxyProto.wireguard]:
                         options = [{'pport': hconfigs[ConfigEnum.wireguard_port]}]
+                    elif type.transport in [ProxyTransport.shadowsocks]:
+                        options = [{'pport': hconfigs[ConfigEnum.shadowsocks2022_port]}]
                     elif type.proto in [ProxyProto.ss]:
                         options = [{'pport': 443}]
                 elif type.proto == ProxyProto.tuic:

@@ -38,6 +38,7 @@ class ConfigCategory(StrEnum):
     warp = auto()
     reality = auto()
     wireguard = auto()
+    shadowsocks = auto()
 
 
 class ApplyMode(StrEnum):
@@ -159,16 +160,8 @@ class ConfigEnum(metaclass=FastEnum):
     telegram_lib = _StrConfigDscr(ConfigCategory.telegram, ApplyMode.apply, hide_in_virtual_child=True)
     telegram_fakedomain = _StrConfigDscr(ConfigCategory.telegram, ApplyMode.apply, hide_in_virtual_child=True)
 
-    v2ray_enable = _BoolConfigDscr(ConfigCategory.general, ApplyMode.apply)
+    v2ray_enable = _BoolConfigDscr(ConfigCategory.hidden, ApplyMode.apply)
     torrent_block = _BoolConfigDscr(ConfigCategory.general, ApplyMode.apply)
-
-    ssfaketls_enable = _BoolConfigDscr(ConfigCategory.ssfaketls, ApplyMode.apply)
-    # ssfaketls_secret="ssfaketls_secret"
-    ssfaketls_fakedomain = _StrConfigDscr(ConfigCategory.ssfaketls, ApplyMode.apply, hide_in_virtual_child=True)
-
-    shadowtls_enable = _BoolConfigDscr(ConfigCategory.shadowtls, ApplyMode.apply)
-    # shadowtls_secret=auto()
-    shadowtls_fakedomain = _StrConfigDscr(ConfigCategory.shadowtls, ApplyMode.apply, hide_in_virtual_child=True)
 
     tuic_enable = _BoolConfigDscr(ConfigCategory.hidden, ApplyMode.apply)
     tuic_port = _StrConfigDscr(ConfigCategory.hidden, ApplyMode.apply, hide_in_virtual_child=True)
@@ -181,6 +174,14 @@ class ConfigEnum(metaclass=FastEnum):
     hysteria_up_mbps = _StrConfigDscr(ConfigCategory.hysteria, ApplyMode.apply)
     hysteria_down_mbps = _StrConfigDscr(ConfigCategory.hysteria, ApplyMode.apply)
 
+    shadowsocks2022_enable = _BoolConfigDscr(ConfigCategory.shadowsocks, ApplyMode.apply)
+    shadowsocks2022_method = _StrConfigDscr(ConfigCategory.shadowsocks, ApplyMode.apply)
+    shadowsocks2022_port = _StrConfigDscr(ConfigCategory.shadowsocks, ApplyMode.apply)
+    ssfaketls_enable = _BoolConfigDscr(ConfigCategory.shadowsocks, ApplyMode.apply)
+    ssfaketls_fakedomain = _StrConfigDscr(ConfigCategory.shadowsocks, ApplyMode.apply, hide_in_virtual_child=True)
+    shadowtls_enable = _BoolConfigDscr(ConfigCategory.shadowsocks, ApplyMode.apply)
+    shadowtls_fakedomain = _StrConfigDscr(ConfigCategory.shadowsocks, ApplyMode.apply, hide_in_virtual_child=True)
+
     ssr_enable = _BoolConfigDscr(ConfigCategory.hidden, ApplyMode.apply)
     # ssr_secret="ssr_secret"
     ssr_fakedomain = _StrConfigDscr(ConfigCategory.hidden, ApplyMode.apply)
@@ -189,6 +190,10 @@ class ConfigEnum(metaclass=FastEnum):
     domain_fronting_domain = _StrConfigDscr(ConfigCategory.hidden)  # removed
     domain_fronting_http_enable = _BoolConfigDscr(ConfigCategory.hidden, ApplyMode.apply)  # removed
     domain_fronting_tls_enable = _BoolConfigDscr(ConfigCategory.hidden, ApplyMode.apply)  # removed
+
+    ws_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply)
+    grpc_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply)
+    httpupgrade_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply)
 
     db_version = _StrConfigDscr(ConfigCategory.hidden, ApplyMode.apply)
 
@@ -202,6 +207,7 @@ class ConfigEnum(metaclass=FastEnum):
     path_v2ray = _StrConfigDscr(ConfigCategory.hidden, hide_in_virtual_child=True)  # deprecated
     path_ss = _StrConfigDscr(ConfigCategory.hidden, hide_in_virtual_child=True)
 
+    path_httpupgrade = _StrConfigDscr(ConfigCategory.too_advanced, hide_in_virtual_child=True)
     path_ws = _StrConfigDscr(ConfigCategory.too_advanced, hide_in_virtual_child=True)
     path_tcp = _StrConfigDscr(ConfigCategory.too_advanced, hide_in_virtual_child=True)
     path_grpc = _StrConfigDscr(ConfigCategory.too_advanced, hide_in_virtual_child=True)
