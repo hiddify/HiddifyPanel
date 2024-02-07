@@ -56,11 +56,9 @@ def create_app(*args, cli=False, **config):
     app.config['SESSION_PERMANENT'] = True
     app.config['PERMANENT_SESSION_LIFETIME'] = datetime.timedelta(days=10)
     Session(app)
-
     app.jinja_env.line_statement_prefix = '%'
     app.jinja_env.filters['b64encode'] = hutils.encode.do_base_64
     app.view_functions['admin.static'] = {}  # fix bug in apiflask
-    app.is_cli = cli
     flask_bootstrap.Bootstrap4(app)
 
     for c, v in dotenv_values(os.environ.get("HIDDIFY_CFG_PATH", 'app.cfg')).items():
@@ -116,17 +114,7 @@ def create_app(*args, cli=False, **config):
             return
         csrf.protect()
 
-    @app.after_request
-    def apply_no_robot(response):
-        response.headers["X-Robots-Tag"] = "noindex, nofollow"
-        if response.status_code == 401:
-            response.headers['WWW-Authenticate'] = 'Basic realm="Hiddify"'
-        return response
-
     app.jinja_env.globals['get_locale'] = get_locale
-    app.jinja_env.globals['version'] = hiddifypanel.__version__
-    app.jinja_env.globals['static_url_for'] = hutils.flask.static_url_for
-    app.jinja_env.globals['hurl_for'] = hutils.flask.hurl_for
     hiddifypanel.panel.cli.init_app(app)
     return app
 

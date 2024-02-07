@@ -17,6 +17,17 @@ def init_app(app: APIFlask):
     app.jinja_env.globals['UserMode'] = UserMode
     app.jinja_env.globals['hconfig'] = hconfig
     app.jinja_env.globals['g'] = g
+    app.jinja_env.globals['version'] = hiddifypanel.__version__
+    app.jinja_env.globals['static_url_for'] = hutils.flask.static_url_for
+    app.jinja_env.globals['hurl_for'] = hutils.flask.hurl_for
+
+    @app.after_request
+    def apply_no_robot(response):
+        response.headers["X-Robots-Tag"] = "noindex, nofollow"
+        response.headers["Referrer-Policy"] = "no-referrer"
+        if response.status_code == 401:
+            response.headers['WWW-Authenticate'] = 'Basic realm="Hiddify"'
+        return response
 
     @app.errorhandler(Exception)
     def internal_server_error(e):
@@ -95,8 +106,8 @@ def init_app(app: APIFlask):
     @app.doc(hide=True)
     def videos(file):
         print("file", file, app.config['HIDDIFY_CONFIG_PATH'] +
-              '/hiddify-panel/videos/'+file)
-        return send_from_directory(app.config['HIDDIFY_CONFIG_PATH']+'/hiddify-panel/videos/', file)
+              '/hiddify-panel/videos/' + file)
+        return send_from_directory(app.config['HIDDIFY_CONFIG_PATH'] + '/hiddify-panel/videos/', file)
 
     @app.url_value_preprocessor
     def pull_default(endpoint, values):
