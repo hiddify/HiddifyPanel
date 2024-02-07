@@ -31,14 +31,6 @@ def proxy_info(name, mode="tls"):
     return "error"
 
 
-def pbase64(full_str):
-    return full_str
-    str = full_str.split("vmess://")[1]
-    import base64
-    resp = base64.b64encode(f'{str}'.encode("utf-8"))
-    return "vmess://"+resp
-
-
 def check_proxy_incorrect(proxy, domain_db, port):
     name = proxy.name
     l3 = proxy.l3
@@ -229,6 +221,9 @@ def make_proxy(hconfigs, proxy: Proxy, domain_db: Domain, phttp=80, ptls=443, pp
     elif "shadowtls" in proxy.transport:
 
         base['fakedomain'] = hconfigs[ConfigEnum.shadowtls_fakedomain]
+        # base['sni'] = hconfigs[ConfigEnum.shadowtls_fakedomain]
+        base['shared_secret'] = hconfigs[ConfigEnum.shared_secret]
+        base['alpn'] = 'http/1.1,h2'
         base['mode'] = 'ShadowTLS'
         return base
 
@@ -331,7 +326,6 @@ def to_link(proxy):
         add_mux_to_dict(vmess_data, proxy)
 
         return "vmess://" + hutils.encode.do_base_64(f'{json.dumps(vmess_data,cls=CustomEncoder)}')
-        # return pbase64(f'vmess://{json.dumps(vmess_data)}')
     if proxy['proto'] == 'ssh':
         strenssh = hutils.encode.do_base_64(f'{proxy["uuid"]}:0:{proxy["private_key"]}::@{proxy["server"]}:{proxy["port"]}')
         baseurl = f'ssh://{strenssh}#{name_link}'
@@ -385,13 +379,13 @@ def to_link(proxy):
         baseurl += f'&serviceName={proxy["grpc_service_name"]}&mode={proxy["grpc_mode"]}'
     # print(proxy['cdn'],proxy["transport"])
     if request.args.get("fragment"):
-        baseurl += f'&fragment='+request.args.get("fragment")  # type: ignore
+        baseurl += f'&fragment=' + request.args.get("fragment")  # type: ignore
     if "ws" == proxy["transport"] and proxy['cdn'] and request.args.get("fragment_v1"):
-        baseurl += f'&fragment_v1='+request.args.get("fragment_v1")  # type: ignore
+        baseurl += f'&fragment_v1=' + request.args.get("fragment_v1")  # type: ignore
     if 'vless' == proxy['proto']:
         baseurl += "&encryption=none"
     if proxy.get('fingerprint', 'none') != 'none':
-        baseurl += "&fp="+proxy['fingerprint']
+        baseurl += "&fp=" + proxy['fingerprint']
     if proxy['l3'] != 'quic':
         baseurl += '&headerType=None'  # if not quic
     if proxy['mode'] == 'Fake' or proxy['allow_insecure']:
@@ -429,7 +423,7 @@ def add_tls_tricks_to_dict(d: dict, proxy):
 
 
 def convert_dict_to_url(dict):
-    return '&'+'&'.join([f'{k}={v}' for k, v in dict.items()]) if len(dict) else ''
+    return '&' + '&'.join([f'{k}={v}' for k, v in dict.items()]) if len(dict) else ''
 
 
 def add_mux_to_link(proxy) -> str:
@@ -633,18 +627,21 @@ def to_singbox(proxy):
     if proxy["proto"] == ProxyProto.wireguard:
         add_singbox_wireguard(base, proxy)
         return all_base
+
     if proxy["proto"] in ["ss", "v2ray"]:
         add_singbox_shadowsocks_base(all_base, proxy)
         return all_base
     if proxy["proto"] == "ssh":
         add_singbox_ssh(all_base, proxy)
         return all_base
+
     if proxy["proto"] == "trojan":
         base["password"] = proxy["uuid"]
-        add_singbox_multiplex(base)
 
     if proxy['proto'] in ['vmess', 'vless']:
         base["uuid"] = proxy["uuid"]
+
+    if proxy['proto'] in ['vmess', 'vless', 'trojan']:
         add_singbox_multiplex(base)
 
     add_singbox_tls(base, proxy)
@@ -655,6 +652,8 @@ def to_singbox(proxy):
     if proxy.get('flow'):
         base["flow"] = proxy['flow']
         # base["flow-show"] = True
+
+    add_singbox_shadowtls(base, proxy)
 
     if proxy["proto"] == "vmess":
         base["alter_id"] = 0
@@ -776,6 +775,8 @@ def add_singbox_tls_tricks(base, proxy):
 def add_singbox_transport(base, proxy):
     if proxy['l3'] == 'reality' and proxy['transport'] not in ["grpc"]:
         return
+    if proxy['transport'] == ProxyTransport.shadowtls:
+        return
     base["transport"] = {}
     if proxy['transport'] in ["ws", "WS"]:
         base["transport"] = {
@@ -832,6 +833,14 @@ def add_singbox_wireguard(base, proxy):
         base["fake_packets"] = proxy["wg_noise_trick"]
 
 
+def add_singbox_shadowtls(base, proxy):
+    if proxy["transport"] != ProxyTransport.shadowtls:
+        return
+    base['type'] = "shadowtls"
+    base["version"] = 3
+    base["password"] = proxy["uuid"]
+
+
 def add_singbox_shadowsocks_base(all_base, proxy):
     base = all_base[0]
     base["type"] = "shadowsocks"
@@ -848,15 +857,16 @@ def add_singbox_shadowsocks_base(all_base, proxy):
         base["plugin_opts"] = f'mode=websocket&path={proxy["path"]}&host={proxy["host"]}&tls'
 
     if proxy["transport"] == "shadowtls":
-        base['detour'] = base['tag']+"_shadowtls-out"
-
+        base['method'] = '2022-blake3-aes-256-gcm'
+        base['detour'] = base['tag'] + "_shadowtls-out §hide§"
+        base["password"] = f'{hutils.encode.do_base_64(proxy["shared_secret"].replace("-",""))}:{hutils.encode.do_base_64(proxy["uuid"].replace("-",""))}'
         shadowtls_base = {
             "type": "shadowtls",
-            "tag": base['tag']+"_shadowtls-out",
+            "tag": base['detour'],
             "server": base['server'],
             "server_port": base['server_port'],
             "version": 3,
-            "password": proxy["proxy_path"],
+            "password": proxy["shared_secret"],
             "tls": {
                 "enabled": True,
                 "server_name": proxy["fakedomain"],
@@ -882,7 +892,7 @@ def add_singbox_ssh(all_base, proxy):
 
     socks_front = {
         "type": "socks",
-        "tag": base['tag']+"+UDP",
+        "tag": base['tag'] + "+UDP",
         "server": "127.0.0.1",
         "server_port": 2000,
         "version": "5",
@@ -954,7 +964,7 @@ def make_v2ray_configs(user, user_activate, domains, expire_days, ip_debug, db_d
             else:
                 res.append("#No Usage Limit")
             if expire_days < 1000:
-                name += " "+_(f'📅%(expire_days)s days', expire_days=expire_days)
+                name += " " + _(f'📅%(expire_days)s days', expire_days=expire_days)
             else:
                 res.append("#No Time Limit")
 
@@ -968,9 +978,9 @@ def make_v2ray_configs(user, user_activate, domains, expire_days, ip_debug, db_d
     if not user_activate:
 
         if hconfig(ConfigEnum.lang) == 'fa':
-            res.append('trojan://1@1.1.1.1#'+hutils.encode.url_encode('✖بسته شما به پایان رسید'))
+            res.append('trojan://1@1.1.1.1#' + hutils.encode.url_encode('✖بسته شما به پایان رسید'))
         else:
-            res.append('trojan://1@1.1.1.1#'+hutils.encode.url_encode('✖Package_Ended'))
+            res.append('trojan://1@1.1.1.1#' + hutils.encode.url_encode('✖Package_Ended'))
         return "\n".join(res)
 
     for pinfo in get_all_validated_proxies(domains):
@@ -984,7 +994,7 @@ def get_all_validated_proxies(domains):
     allp = []
     allphttp = [p for p in request.args.get("phttp", "").split(',') if p]
     allptls = [p for p in request.args.get("ptls", "").split(',') if p]
-    added_ip = {'ssh': {}, 'tuic': {}, 'hysteria2': {}, 'wireguard': {}}
+    added_ip = {ProxyProto.ssh: {}, ProxyProto.tuic: {}, ProxyProto.hysteria2: {}, ProxyProto.wireguard: {}, ProxyProto.ss: {}}
     configsmap = {}
     proxeismap = {}
     for d in domains:
@@ -999,23 +1009,25 @@ def get_all_validated_proxies(domains):
 
         for type in proxeismap[d.child_id]:
             options = []
-            if type.proto in ['ssh', 'tuic', 'hysteria2', 'wireguard']:
-                if type.proto == 'ssh' and all([x in added_ip[type.proto] for x in ips]):
+            if type.proto in [ProxyProto.ssh, ProxyProto.tuic, ProxyProto.hysteria2, ProxyProto.wireguard, ProxyProto.ss]:
+                if type.proto in [ProxyProto.ssh, ProxyProto.wireguard, ProxyProto.ss] and all([x in added_ip[type.proto] for x in ips]):
                     continue
 
                 for x in ips:
                     added_ip[type.proto][x] = 1
 
-                if type.proto in ['ssh', 'wireguard']:
+                if type.proto in [ProxyProto.ssh, ProxyProto.wireguard, ProxyProto.ss]:
                     if d.mode == 'fake':
                         continue
-                    if type.proto in ['ssh']:
+                    if type.proto in [ProxyProto.ssh]:
                         options = [{'pport': hconfigs[ConfigEnum.ssh_server_port]}]
-                    elif type.proto in ['wireguard']:
+                    elif type.proto in [ProxyProto.wireguard]:
                         options = [{'pport': hconfigs[ConfigEnum.wireguard_port]}]
-                elif type.proto == 'tuic':
+                    elif type.proto in [ProxyProto.ss]:
+                        options = [{'pport': 443}]
+                elif type.proto == ProxyProto.tuic:
                     options = [{'pport': hconfigs[ConfigEnum.tuic_port]}]
-                elif type.proto == 'hysteria2':
+                elif type.proto == ProxyProto.hysteria2:
                     options = [{'pport': hconfigs[ConfigEnum.hysteria_port]}]
             else:
                 for t in (['http', 'tls'] if hconfigs[ConfigEnum.http_proxy_enable] else ['tls']):

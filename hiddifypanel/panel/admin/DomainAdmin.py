@@ -139,12 +139,12 @@ class DomainAdmin(AdminLTEModelView):
         for c in configs:
             if "domain" in c and c not in [ConfigEnum.decoy_domain, ConfigEnum.reality_fallback_domain] and c.category != 'hidden':
                 if model.domain == configs[c]:
-                    raise ValidationError(_("You have used this domain in: ")+_(f"config.{c}.label"))
+                    raise ValidationError(_("You have used this domain in: ") + _(f"config.{c}.label"))
 
         for td in Domain.query.filter(Domain.mode == DomainType.reality, Domain.domain != model.domain).all():
             # print(td)
             if td.servernames and (model.domain in td.servernames.split(",")):
-                raise ValidationError(_("You have used this domain in: ")+_(f"config.reality_server_names.label")+" in " + td.domain)
+                raise ValidationError(_("You have used this domain in: ") + _(f"config.reality_server_names.label") + " in " + td.domain)
 
         ipv4_list = hutils.network.get_ips(4)
         ipv6_list = hutils.network.get_ips(6)
@@ -166,7 +166,7 @@ class DomainAdmin(AdminLTEModelView):
                 skip_check = True
             except Exception as e:
                 # raise e
-                raise ValidationError(__("Can not connect to Cloudflare.")+f' {e}')
+                raise ValidationError(__("Can not connect to Cloudflare.") + f' {e}')
         # elif model.mode==DomainType.auto_cdn_ip:
         if model.alias and not model.alias.replace("_", "").isalnum():
             hutils.flask.flash(__("Using alias with special charachters may cause problem in some clients like FairVPN."), 'warning')
@@ -223,7 +223,7 @@ class DomainAdmin(AdminLTEModelView):
             if not hutils.network.is_domain_reality_friendly(model.domain):
                 # hutils.flask.flash(_("Domain is not REALITY friendly!")+" "+d,'error')
                 # return render_template('config.html', form=form)
-                raise ValidationError(_("Domain is not REALITY friendly!")+" "+model.domain)
+                raise ValidationError(_("Domain is not REALITY friendly!") + " " + model.domain)
 
                 hiddify.debug_flash_if_not_in_the_same_asn(model.domain)
         if False:
@@ -238,13 +238,13 @@ class DomainAdmin(AdminLTEModelView):
                     if not hutils.network.is_domain_reality_friendly(d):
                         # hutils.flask.flash(_("Domain is not REALITY friendly!")+" "+d,'error')
                         # return render_template('config.html', form=form)
-                        raise ValidationError(_("Domain is not REALITY friendly!")+" "+d)
+                        raise ValidationError(_("Domain is not REALITY friendly!") + " " + d)
 
                     hiddify.debug_flash_if_not_in_the_same_asn(d)
 
             for d in model.servernames.split(","):
                 if not hiddify.fallback_domain_compatible_with_servernames(model.domain, d):
-                    raise ValidationError(_("REALITY Fallback domain is not compaitble with server names!")+" "+d+" != "+model.domain)
+                    raise ValidationError(_("REALITY Fallback domain is not compaitble with server names!") + " " + d + " != " + model.domain)
 
         if (model.cdn_ip):
             try:
@@ -255,7 +255,7 @@ class DomainAdmin(AdminLTEModelView):
         old_db_domain = get_domain(model.domain)
         if is_created or not old_db_domain or old_db_domain.mode != model.mode:
             # return hiddify.reinstall_action(complete_install=False, domain_changed=True)
-            hutils.flask.flash_config_success(restart_mode='apply', domain_changed=True)
+            hutils.flask.flash_config_success(restart_mode=ApplyMode.apply, domain_changed=True)
 
     # def after_model_change(self,form, model, is_created):
     #     if model.show_domains.count==0:
@@ -267,7 +267,7 @@ class DomainAdmin(AdminLTEModelView):
         # ShowDomain.query.filter_by(related_id == model.id).delete()
         model.showed_by_domains = []
         # db.session.commit()
-        hutils.flask.flash_config_success(restart_mode='apply', domain_changed=True)
+        hutils.flask.flash_config_success(restart_mode=ApplyMode.apply, domain_changed=True)
 
     def after_model_delete(self, model):
         # if hconfig(ConfigEnum.parent_panel):
@@ -288,8 +288,6 @@ class DomainAdmin(AdminLTEModelView):
         if login_required(roles={Role.super_admin, Role.admin})(lambda: True)() != True:
             return False
         return True
-
-    
 
     # def form_choices(self, field, *args, **kwargs):
     #     if field.type == "Enum":

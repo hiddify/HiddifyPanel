@@ -147,7 +147,7 @@ class Actions(FlaskView):
         key = hiddify.generate_x25519_keys()
         set_hconfig(ConfigEnum.reality_private_key, key['private_key'])
         set_hconfig(ConfigEnum.reality_public_key, key['public_key'])
-        hutils.flask.flash_config_success(restart_mode='apply', domain_changed=False)
+        hutils.flask.flash_config_success(restart_mode=ApplyMode.restart, domain_changed=False)
         return redirect(hurl_for('admin.SettingAdmin:index'))
 
     @ login_required(roles={Role.super_admin})
@@ -170,6 +170,7 @@ class Actions(FlaskView):
     def update2(self):
         # hiddify.add_temporary_access()
         # run update.sh
+
         commander(Command.update)
 
         return render_template("result.html",

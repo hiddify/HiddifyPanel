@@ -118,7 +118,7 @@ page."),temp_link(),show=False)}}
   function get_log() {
     sendRequestsSequentially(log_urls)
       .then(response => {
-        console.log(response);
+
         if (old != response) {
           change_location = isScrollEnd(x)
           x.innerHTML = response

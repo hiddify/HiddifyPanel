@@ -48,10 +48,11 @@ def hconfig(key: ConfigEnum, child_id: int | None = None) -> str | int | None:
 
     value = None
     try:
-        if key.type==bool:
+        if key.type == bool:
             bool_conf = BoolConfig.query.filter(BoolConfig.key == key, BoolConfig.child_id == child_id).first()
             if bool_conf:
                 value = bool_conf.value
+            else:
                 error(f'bool {key} not found ')
         else:
             str_conf = StrConfig.query.filter(StrConfig.key == key, StrConfig.child_id == child_id).first()
@@ -111,8 +112,8 @@ def get_hconfigs(child_id: int | None = None, json=False):
     if child_id == None:
         child_id = Child.current.id
 
-    return {**{f'{u.key}' if json else u.key: u.value for u in BoolConfig.query.filter(BoolConfig.child_id == child_id).all()},
-            **{f'{u.key}' if json else u.key: u.value for u in StrConfig.query.filter(StrConfig.child_id == child_id).all()},
+    return {**{f'{u.key}' if json else u.key: u.value for u in BoolConfig.query.filter(BoolConfig.child_id == child_id).all() if u.key.type == bool},
+            **{f'{u.key}' if json else u.key: u.value for u in StrConfig.query.filter(StrConfig.child_id == child_id).all() if u.key.type != bool},
             # ConfigEnum.telegram_fakedomain:hdomain(DomainType.telegram_faketls),
             # ConfigEnum.ssfaketls_fakedomain:hdomain(DomainType.ss_faketls),
             # ConfigEnum.fake_cdn_domain:hdomain(DomainType.fake_cdn)

@@ -16,11 +16,11 @@ def flash(message: str, category: str = "message"):
     return flask_flash(Markup(message), category)
 
 
-def flash_config_success(restart_mode='', domain_changed=True):
-    if restart_mode:
-        url = hurl_for('admin.Actions:reinstall', complete_install=restart_mode == 'reinstall', domain_changed=domain_changed)
+def flash_config_success(restart_mode: ApplyMode = ApplyMode.nothing, domain_changed=True):
+    if restart_mode != ApplyMode.nothing:
+        url = hurl_for('admin.Actions:reinstall', complete_install=restart_mode == ApplyMode.restart, domain_changed=domain_changed)
         apply_btn = f"<a href='{url}' class='btn btn-primary form_post'>" + \
-            _("admin.config.apply_configs")+"</a>"
+            _("admin.config.apply_configs") + "</a>"
         flash((_('config.validation-success', link=apply_btn)), 'success')  # type: ignore
     else:
         flash((_('config.validation-success-no-reset')), 'success')  # type: ignore
@@ -34,7 +34,7 @@ def static_url_for(**values):
 def hurl_for(endpoint, **values):
     if Child.current.id != 0:
 
-        new_endpoint = "child_"+endpoint
+        new_endpoint = "child_" + endpoint
         if new_endpoint in current_app.view_functions:
             endpoint = new_endpoint
     return url_for(endpoint, **values)

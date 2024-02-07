@@ -42,9 +42,9 @@ class SettingAdmin(FlaskView):
 
             old_configs = get_hconfigs()
             changed_configs = {}
-          
+
             for cat, vs in form.data.items():  # [c for c in ConfigEnum]:
-          
+
                 if type(vs) is dict:
                     for k in ConfigEnum:
                         if k.name not in vs:
@@ -58,14 +58,12 @@ class SettingAdmin(FlaskView):
                                 for p in v.split(","):
                                     for k2, v2 in vs.items():
                                         if "port" in k2 and k.name != k2 and p in v2:
-                                            hutils.flask.flash(_("Port is already used! in")+f" {k2} {k}", 'error')
+                                            hutils.flask.flash(_("Port is already used! in") + f" {k2} {k}", 'error')
                                             return render_template('config.html', form=form)
                             if k == ConfigEnum.parent_panel and v != '':
                                 # v=(v+"/").replace("/admin",'')
                                 v = re.sub("(/admin/.*)", "/", v)
 
-            
-                            set_hconfig(k, v, commit=False)
                         if old_configs[k] != v:
                             changed_configs[k] = v
 
@@ -75,10 +73,10 @@ class SettingAdmin(FlaskView):
             if len(set([merged_configs[ConfigEnum.proxy_path], merged_configs[ConfigEnum.proxy_path_client], merged_configs[ConfigEnum.proxy_path_admin]])) != 3:
                 hutils.flask.flash(_("ProxyPath is already used! use different proxy path"), 'error')  # type: ignore
                 return render_template('config.html', form=form)
-            
+
             for k, v in changed_configs.items():
                 set_hconfig(k, v, commit=False)
-            
+
             db.session.commit()
             flask_babel.refresh()
 
@@ -91,7 +89,7 @@ class SettingAdmin(FlaskView):
             #     return reset_action
 
             if old_configs[ConfigEnum.admin_lang] != hconfig(ConfigEnum.admin_lang):
-                
+
                 form = get_config_form()
         else:
             hutils.flask.flash(_('config.validation-error'), 'danger')  # type: ignore
@@ -191,21 +189,25 @@ def get_config_form():
             elif c.key == ConfigEnum.telegram_lib:
                 # if hconfig(ConfigEnum.telegram_lib)=='python':
                 #     continue6
-                libs = [("python", _("lib.telegram.python")), ("tgo", _("lib.telegram.go")), ("orig", _("lib.telegram.orignal")), ("erlang", _("lib.telegram.erlang"))]
+                libs = [("python", _("lib.telegram.python")), ("tgo", _("lib.telegram.go")),
+                        ("orig", _("lib.telegram.orignal")), ("erlang", _("lib.telegram.erlang"))]
                 field = wtf.fields.SelectField(_("config.telegram_lib.label"), choices=libs, description=_(
                     "config.telegram_lib.description"), default=hconfig(ConfigEnum.telegram_lib))
             elif c.key == ConfigEnum.mux_protocol:
                 choices = [("smux", 'smux'), ("yamux", "yamux"), ("h2mux", "h2mux")]
-                field = wtf.fields.SelectField(_(f"config.{c.key}.label"), choices=choices, description=_(f"config.{c.key}.description"), default=hconfig(c.key))
+                field = wtf.fields.SelectField(_(f"config.{c.key}.label"), choices=choices,
+                                               description=_(f"config.{c.key}.description"), default=hconfig(c.key))
 
             elif c.key == ConfigEnum.warp_sites:
                 validators = [wtf.validators.Length(max=2048)]
                 render_kw = {'class': "ltr", 'maxlength': 2048}
-                field = wtf.fields.TextAreaField(_(f'config.{c.key}.label'), validators, default=c.value, description=_(f'config.{c.key}.description'), render_kw=render_kw)
+                field = wtf.fields.TextAreaField(_(f'config.{c.key}.label'), validators, default=c.value,
+                                                 description=_(f'config.{c.key}.description'), render_kw=render_kw)
             elif c.key == ConfigEnum.branding_freetext:
                 validators = [wtf.validators.Length(max=2048)]
                 render_kw = {'class': "ltr", 'maxlength': 2048}
-                field = custom_widgets.CKTextAreaField(_(f'config.{c.key}.label'), validators, default=c.value, description=_(f'config.{c.key}.description'), render_kw=render_kw)
+                field = custom_widgets.CKTextAreaField(_(f'config.{c.key}.label'), validators, default=c.value,
+                                                       description=_(f'config.{c.key}.description'), render_kw=render_kw)
             else:
                 render_kw = {'class': "ltr"}
                 validators = []
@@ -234,7 +236,8 @@ def get_config_form():
                 if c.key == ConfigEnum.telegram_bot_token:
                     validators.append(wtf.validators.Regexp("()|^([0-9]{8,12}:[a-zA-Z0-9_-]{30,40})|$", re.IGNORECASE, _("config.Invalid telegram bot token")))
                 if c.key == ConfigEnum.branding_site:
-                    validators.append(wtf.validators.Regexp("()|(http(s|)://([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})/?.*)", re.IGNORECASE, _("config.Invalid brand link")))
+                    validators.append(wtf.validators.Regexp(
+                        "()|(http(s|)://([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})/?.*)", re.IGNORECASE, _("config.Invalid brand link")))
                     # render_kw['required']=""
 
                 if 'secret' in c.key:
@@ -256,11 +259,11 @@ def get_config_form():
 
                 # tls tricks validations
                 if c.key in [ConfigEnum.tls_fragment_size, ConfigEnum.tls_fragment_sleep, ConfigEnum.tls_padding_length, ConfigEnum.wireguard_noise_trick]:
-                    validators.append(wtf.validators.Regexp("^\d+-\d+$", re.IGNORECASE, _("config.Invalid! The pattern is number-number")+f' {c.key}'))
+                    validators.append(wtf.validators.Regexp("^\d+-\d+$", re.IGNORECASE, _("config.Invalid! The pattern is number-number") + f' {c.key}'))
                 # mux and hysteria validations
                 if c.key in [ConfigEnum.hysteria_up_mbps, ConfigEnum.hysteria_down_mbps, ConfigEnum.mux_max_connections, ConfigEnum.mux_min_streams, ConfigEnum.mux_max_streams,
                              ConfigEnum.mux_brutal_down_mbps, ConfigEnum.mux_brutal_up_mbps]:
-                    validators.append(wtf.validators.Regexp("^\d+$", re.IGNORECASE, _("config.Invalid! it should be a number only")+f' {c.key}'))
+                    validators.append(wtf.validators.Regexp("^\d+$", re.IGNORECASE, _("config.Invalid! it should be a number only") + f' {c.key}'))
                 for val in validators:
                     if hasattr(val, "regex"):
                         render_kw['pattern'] = val.regex.pattern
@@ -268,12 +271,12 @@ def get_config_form():
                 if c.key == ConfigEnum.reality_public_key and g.account.mode in [AdminMode.super_admin]:
                     extra_info = f" <a href='{hurl_for('admin.Actions:change_reality_keys')}'>{_('Change')}</a>"
                 field = wtf.fields.StringField(_(f'config.{c.key}.label'), validators, default=c.value,
-                                               description=_(f'config.{c.key}.description')+extra_info, render_kw=render_kw)
+                                               description=_(f'config.{c.key}.description') + extra_info, render_kw=render_kw)
             setattr(CategoryForm, f'{c.key}', field)
 
-        multifield = wtf.fields.FormField(CategoryForm, Markup('<i class="fa-solid fa-plus"></i>&nbsp'+_(f'config.{cat}.label')))
+        multifield = wtf.fields.FormField(CategoryForm, Markup('<i class="fa-solid fa-plus"></i>&nbsp' + _(f'config.{cat}.label')))
 
-        setattr(DynamicForm, cat,  multifield)
+        setattr(DynamicForm, cat, multifield)
 
     setattr(DynamicForm, "submit", wtf.fields.SubmitField(_('Submit')))
 

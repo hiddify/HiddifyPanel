@@ -21,7 +21,7 @@ from hiddifypanel.Events import domain_changed
 from hiddifypanel import hutils
 from hiddifypanel.panel.run_commander import commander, Command
 import subprocess
-to_gig_d = 1000*1000*1000
+to_gig_d = 1000 * 1000 * 1000
 
 
 # def add_temporary_access():
@@ -48,7 +48,7 @@ def add_short_link_imp(link: str, period_min: int = 5) -> Tuple[str, datetime]:
 
     pattern = r"([^/]+)\("
 
-    with open(current_app.config['HIDDIFY_CONFIG_PATH']+"/nginx/parts/short-link.conf", 'r') as f:
+    with open(current_app.config['HIDDIFY_CONFIG_PATH'] + "/nginx/parts/short-link.conf", 'r') as f:
         for line in f:
             if link in line:
                 return re.search(pattern, line).group(1), datetime.now() + timedelta(minutes=period_min)
@@ -73,6 +73,10 @@ def exec_command(cmd, cwd=None):
 def get_available_proxies(child_id):
     proxies = Proxy.query.filter(Proxy.child_id == child_id).all()
     proxies = [c for c in proxies if 'restls' not in c.transport]
+    # if not hconfig(ConfigEnum.tuic_enable, child_id):
+    #     proxies = [c for c in proxies if c.proto != ProxyProto.tuic]
+    # if not hconfig(ConfigEnum.hysteria_enable, child_id):
+    #     proxies = [c for c in proxies if c.proto != ProxyProto.hysteria2]
 
     if not hconfig(ConfigEnum.ssfaketls_enable, child_id):
         proxies = [c for c in proxies if 'faketls' != c.transport]
@@ -137,7 +141,7 @@ def get_html_user_link(model: BaseAccount, domain: Domain):
     if "*" in d:
         d = d.replace("*", hutils.random.get_random_string(5, 15))
 
-    link = get_account_panel_link(model, d)+f"#{model.name}"
+    link = get_account_panel_link(model, d) + f"#{model.name}"
 
     text = domain.alias or domain.domain
     color_cls = 'info'
@@ -145,7 +149,7 @@ def get_html_user_link(model: BaseAccount, domain: Domain):
     if type(domain) == Domain and not domain.sub_link_only and domain.mode in [DomainType.cdn, DomainType.auto_cdn_ip]:
         auto_cdn = (domain.mode == DomainType.auto_cdn_ip) or (domain.cdn_ip and "MTN" in domain.cdn_ip)
         color_cls = "success" if auto_cdn else 'warning'
-        text = f'<span class="badge badge-secondary" >{"Auto" if auto_cdn else "CDN"}</span> '+text
+        text = f'<span class="badge badge-secondary" >{"Auto" if auto_cdn else "CDN"}</span> ' + text
 
     res += f"<a target='_blank' data-copy='{link}' href='{link}' class='btn btn-xs btn-{color_cls} ltr share-link' ><i class='fa-solid fa-arrow-up-right-from-square d-none'></i> {text}</a>"
 
@@ -171,17 +175,17 @@ def reinstall_action(complete_install=False, domain_changed=False, do_update=Fal
 
 
 def check_need_reset(old_configs, do=False):
-    restart_mode = ''
+    restart_mode = ApplyMode.nothing
     for c in old_configs:
         # c=ConfigEnum(c)
         if old_configs[c] != hconfig(c) and c.apply_mode != ApplyMode.nothing:
-            if restart_mode != 'restart':
+            if restart_mode != ApplyMode.restart:
                 restart_mode = c.apply_mode
 
     # do_full_install=old_config[ConfigEnum.telegram_lib]!=hconfig(ConfigEnum.telegram_lib)
     if old_configs[ConfigEnum.package_mode] != hconfig(ConfigEnum.package_mode):
         return reinstall_action(do_update=True)
-    if not (do and restart_mode == 'reinstall'):
+    if not (do and restart_mode == ApplyMode.restart):
         return hutils.flask.flash_config_success(restart_mode=restart_mode, domain_changed=False)
 
     return reinstall_action(complete_install=True, domain_changed=False)
@@ -304,7 +308,7 @@ def get_domain_btn_link(domain):
     if domain.mode in [DomainType.cdn, DomainType.auto_cdn_ip]:
         auto_cdn = (domain.mode == DomainType.auto_cdn_ip) or (domain.cdn_ip and "MTN" in domain.cdn_ip)
         color_cls = "success" if auto_cdn else 'warning'
-        text = f'<span class="badge badge-secondary" >{"Auto" if auto_cdn else "CDN"}</span> '+text
+        text = f'<span class="badge badge-secondary" >{"Auto" if auto_cdn else "CDN"}</span> ' + text
     res = f"<a target='_blank' href='#' class='btn btn-xs btn-{color_cls} ltr' ><i class='fa-solid fa-arrow-up-right-from-square d-none'></i> {text}</a>"
     return res
 
