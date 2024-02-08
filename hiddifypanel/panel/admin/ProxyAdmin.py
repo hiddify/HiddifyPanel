@@ -1,4 +1,5 @@
 from hiddifypanel import hutils
+from hiddifypanel.models.config_enum import ApplyMode
 from hiddifypanel.models.role import Role
 import wtforms as wtf
 from flask_wtf import FlaskForm
