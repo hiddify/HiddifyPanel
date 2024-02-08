@@ -124,7 +124,7 @@ page."),temp_link(),show=False)}}
           x.innerHTML = response
           if (change_location)
             x.scrollTop = x.scrollHeight
-          trimed_response = response.substring(last_position)
+          trimed_response = response.substring(Math.min(last_position, response.length - 200))
           matches = response.match(progress_regex_all)
 
           if (matches) {

@@ -480,7 +480,7 @@ def get_proxy_rows_v1():
 
 def make_proxy_rows(cfgs):
     # "h3_quic",
-    for l3 in ["tls_h2", "tls", "http", "kcp", "reality"]:
+    for l3 in ["tls_h2", "tls", "http", "reality"]:
         for c in cfgs:
             transport, cdn, proto = c.split(" ")
             if l3 in ["kcp", 'reality'] and cdn != "direct":
