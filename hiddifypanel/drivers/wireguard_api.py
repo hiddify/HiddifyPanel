@@ -16,28 +16,6 @@ class WireguardApi(DriverABS):
             with open(self.local_usage_path, 'w+') as f:
                 json.dump({}, f)
 
-    def __sync_local_usages(self):
-        local_usage = self.__get_local_usage()
-        wg_usage = self.__get_wg_usages()
-
-        for wg_pub, wg_usage in wg_usage.items():
-            if not local_usage.get(wg_pub):
-                local_usage[wg_pub] = wg_usage
-                continue
-
-            # sync when item was not reseted
-            if not local_usage[wg_pub].get('last_usage'):
-                local_usage[wg_pub]['up'] = wg_usage['up']
-                local_usage[wg_pub]['down'] = wg_usage['down']
-            # sync item when was reseted
-            else:
-                last_usage = local_usage[wg_pub]['last_usage']
-                local_usage[wg_pub]['up'] = wg_usage['up'] - last_usage['up']
-                local_usage[wg_pub]['down'] = wg_usage['down'] - last_usage['down']
-
-        with open(self.local_usage_path, 'w') as f:
-            json.dump(local_usage, f)
-
     def __get_wg_usages(self) -> dict:
         raw_output = subprocess.check_output(['wg', 'show', 'hiddifywg', 'transfer'])
         data = {}
@@ -59,25 +37,42 @@ class WireguardApi(DriverABS):
             data = json.load(f)
             return data
 
-    def __reset_local_usage_by_wg_pub(self, wg_pub: str) -> None:
-        usages = self.__get_local_usage()
-        if usages.get(wg_pub):
-            usages[wg_pub] = {
-                'up': 0,
-                'down': 0,
-                'last_usage': {
-                    'up': usages[wg_pub].get('up', 0) + (usages[wg_pub]['last_usage']['up'] if 'last_usage' in usages[wg_pub] and 'up' in usages[wg_pub]['last_usage'] else 0),
-                    'down': usages[wg_pub].get('down', 0) + (usages[wg_pub]['last_usage']['down'] if 'last_usage' in usages[wg_pub] and 'down' in usages[wg_pub]['last_usage'] else 0),
-                }
-            }
-            with open(self.local_usage_path, 'w') as f:
-                json.dump(usages, f)
+    def __sync_local_usages(self, reset: bool = False) -> None:
+        local_usage = self.__get_local_usage()
+        wg_usage = self.__get_wg_usages()
 
-    def __get_from_local_usage_by_wg_pub(self, wg_pub: str, reset: bool) -> dict | None:
-        usages = self.__get_local_usage()
-        if reset:
-            self.__reset_local_usage_by_wg_pub(wg_pub)
-        return usages.get(wg_pub, None)
+        for wg_pub, wg_usage in wg_usage.items():
+            if not local_usage.get(wg_pub):
+                local_usage[wg_pub] = wg_usage
+                continue
+
+            if reset:
+                if local_usage[wg_pub].get('up') != 0 and local_usage[wg_pub].get('down') != 0:
+                    local_usage[wg_pub]['last_usage'] = {
+                        'up': local_usage[wg_pub]['up'],
+                        'down': local_usage[wg_pub]['down'],
+                    }
+                reset_usage = self.calculate_reset(local_usage[wg_pub]['last_usage'], wg_usage)
+                local_usage[wg_pub]['up'] = reset_usage['up']
+                local_usage[wg_pub]['down'] = reset_usage['down']
+            else:
+                local_usage[wg_pub]['up'] = wg_usage['up']
+                local_usage[wg_pub]['down'] = wg_usage['down']
+
+        with open(self.local_usage_path, 'w') as f:
+            json.dump(local_usage, f)
+
+    def calculate_reset(self, last_usage: dict, current_usage: dict) -> dict:
+        res = {
+            'up': current_usage['up'] - last_usage['up'],
+            'down': current_usage['down'] - last_usage['down'],
+        }
+
+        if res['up'] < 0:
+            res['up'] = 0
+        if res['down'] < 0:
+            res['down'] = 0
+        return res
 
     def get_enabled_users(self):
         self.__sync_local_usages()
@@ -102,12 +97,12 @@ class WireguardApi(DriverABS):
     def get_usage(self, uuid, reset=True):
         user = User.by_uuid(uuid)
         if not user:
-            raise Exception('the uuid not found during getting wg usage')
+            return 0
         wg_pub = user.wg_pub
-        self.__sync_local_usages()
-        user_usage = self.__get_from_local_usage_by_wg_pub(wg_pub, reset)
+        self.__sync_local_usages(reset)
+        user_usage = self.__get_local_usage().get(wg_pub)
         if not user_usage:
-            raise Exception('the wg pub not found during getting wg usage')
+            return 0
         up = user_usage.get('up')
         down = user_usage.get('down')
 
