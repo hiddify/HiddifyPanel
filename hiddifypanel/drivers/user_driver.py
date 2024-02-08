@@ -12,7 +12,8 @@ def get_users_usage(reset=True):
     users = list(User.query.all())
     res = {u: {'usage': 0, 'ips': ''} for u in users}
     for driver in drivers:
-        for user, usage in driver.get_all_usage(users):
+        all_usage = driver.get_all_usage(users)
+        for user, usage in all_usage.items():
             if usage:
                 res[user]['usage'] += usage
             # res[user]['ip'] +=usage
