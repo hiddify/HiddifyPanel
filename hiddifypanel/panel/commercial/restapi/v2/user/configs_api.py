@@ -41,13 +41,14 @@ class AllConfigsAPI(MethodView):
         items = []
         base_url = f"https://{urlparse(request.base_url).hostname}/{g.proxy_path}/{g.account.uuid}/"
         c = get_common_data(g.account.uuid, 'new')
+        config_name = c['user'].name
 
         # Add Auto
         items.append(
             create_item(
                 "Auto", "ALL", "ALL", "", "", "",
                 # f"{base_url}sub/?asn={c['asn']}"
-                f"{base_url}auto/?asn={c['asn']}"
+                f"{base_url}auto/?asn={c['asn']}#{config_name}"
             )
         )
 
@@ -56,7 +57,7 @@ class AllConfigsAPI(MethodView):
             create_item(
                 "Full Singbox", "ALL", "ALL", "", "", "",
                 # f"{base_url}full-singbox.json?asn={c['asn']}"
-                f"{base_url}singbox/?asn={c['asn']}"
+                f"{base_url}singbox/?asn={c['asn']}#{config_name}"
             )
         )
 
@@ -65,7 +66,7 @@ class AllConfigsAPI(MethodView):
             create_item(
                 "Clash Meta", "ALL", "ALL", "", "", "",
                 # f"clashmeta://install-config?url={base_url}clash/meta/all.yml&name=mnormal_{c['db_domain'].alias or c['db_domain'].domain}-{c['asn']}-{c['mode']}&asn={c['asn']}&mode={c['mode']}"
-                f"clash://install-config?url={base_url}clashmeta/?asn={c['asn']}"
+                f"clash://install-config?url={base_url}clashmeta/?asn={c['asn']}#{config_name}"
             )
         )
 
@@ -74,7 +75,7 @@ class AllConfigsAPI(MethodView):
             create_item(
                 "Clash", "ALL", "Except VLess", "", "", "",
                 # f"clash://install-config?url={base_url}clash/all.yml&name=new_normal_{c['db_domain'].alias or c['db_domain'].domain}-{c['asn']}-{c['mode']}&asn={c['asn']}&mode={c['mode']}"
-                f"clash://install-config?url={base_url}clash/?asn={c['asn']}"
+                f"clash://install-config?url={base_url}clash/?asn={c['asn']}#{config_name}"
             )
         )
 
@@ -84,7 +85,7 @@ class AllConfigsAPI(MethodView):
                 create_item(
                     "Singbox: SSH", "SSH", "SHH", "", "", "",
                     # f"{base_url}singbox.json?name={c['db_domain'].alias or c['db_domain'].domain}-{c['asn']}&asn={c['asn']}&mode={c['mode']}"
-                    f"{base_url}singbox-ssh/?asn={c['asn']}"
+                    f"{base_url}singbox-ssh/?asn={c['asn']}#{config_name}"
                 )
             )
 
@@ -93,7 +94,7 @@ class AllConfigsAPI(MethodView):
             create_item(
                 "Subscription link", "ALL", "ALL", "", "", "",
                 # f"{base_url}all.txt?name={c['db_domain'].alias or c['db_domain'].domain}-{c['asn']}&asn={c['asn']}&mode={c['mode']}"
-                f"{base_url}sub/?asn={c['asn']}"
+                f"{base_url}sub/?asn={c['asn']}#{config_name}"
             )
         )
 
@@ -102,7 +103,7 @@ class AllConfigsAPI(MethodView):
             create_item(
                 "Subscription link b64", "ALL", "ALL", "", "", "",
                 # f"{base_url}all.txt?name=new_link_{c['db_domain'].alias or c['db_domain'].domain}-{c['asn']}-{c['mode']}&asn={c['asn']}&mode={c['mode']}&base64=True"
-                f"{base_url}sub64/?asn={c['asn']}"
+                f"{base_url}sub64/?asn={c['asn']}#{config_name}"
             )
         )
 

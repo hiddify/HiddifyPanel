@@ -9,14 +9,13 @@ drivers = [XrayApi(), SingboxApi(), SSHLibertyBridgeApi(), WireguardApi()]
 
 def get_users_usage(reset=True):
     res = {}
-    for user in User.query.all():
-        d = 0
-        for driver in drivers:
-            try:
-                d += driver.get_usage(user.uuid, reset=True) or 0
-            except Exception as e:
-                hiddify.error(f'ERROR! {driver.__class__.__name__} has error {e} in get_usage for user={user.uuid}')
-        res[user] = {'usage': d, 'ips': ''}
+    users = list(User.query.all())
+    res = {u: {'usage': 0, 'ips': ''} for u in users}
+    for driver in drivers:
+        for user, usage in driver.get_all_usage(users):
+            if usage:
+                res[user]['usage'] += usage
+            # res[user]['ip'] +=usage
     return res
 
 
