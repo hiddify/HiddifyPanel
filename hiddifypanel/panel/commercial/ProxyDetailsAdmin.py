@@ -3,8 +3,12 @@ from hiddifypanel.panel.admin.adminlte import AdminLTEModelView
 from flask_babel import gettext as __
 from flask_babel import lazy_gettext as _
 from hiddifypanel.panel import hiddify
-from flask import g
+from flask import g, redirect
+from hiddifypanel.hutils.flask import hurl_for, flash
 from hiddifypanel.auth import login_required
+from flask_admin.model.template import EndpointLinkRowAction
+from flask_admin.actions import action
+from flask_admin.contrib.sqla import form, filters as sqla_filters, tools
 # Define a custom field type for the related domains
 
 from flask import current_app
@@ -17,6 +21,23 @@ class ProxyDetailsAdmin(AdminLTEModelView):
     column_exclude_list = ['child']
     column_searchable_list = ['name', 'proto', 'transport', 'l3', 'cdn']
 
+    @action('disable', 'Disable', 'Are you sure you want to disable selected proxies?')
+    def action_disable(self, ids):
+        query = tools.get_query_for_ids(self.get_query(), self.model, ids)
+        count = query.update({'enable': False})
+
+        self.session.commit()
+        flash(_('%(count)s records were successfully disabled.', count=count), 'success')
+
+    @action('enable', 'Enable', 'Are you sure you want to enable selected proxies?')
+    def action_disable(self, ids):
+        query = tools.get_query_for_ids(self.get_query(), self.model, ids)
+        count = query.update({'enable': True})
+
+        self.session.commit()
+        flash(_('%(count)s records were successfully enabled.', count=count), 'success')
+
+    # column_editable_list = ['name', 'enable']
     # list_template = 'model/domain_list.html'
     # edit_modal = True
     # form_overrides = {'work_with': Select2Field}

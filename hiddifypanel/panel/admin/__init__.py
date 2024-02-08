@@ -9,8 +9,9 @@ from hiddifypanel.models import *
 from apiflask import APIBlueprint
 from flask_adminlte3 import AdminLTE3
 
-flask_bp = APIBlueprint("flask", __name__,  template_folder="templates", enable_openapi=False)
-admin_bp = APIBlueprint("admin", __name__,  template_folder="templates", enable_openapi=False)
+
+flask_bp = APIBlueprint("flask", __name__, template_folder="templates", enable_openapi=False)
+admin_bp = APIBlueprint("admin", __name__, template_folder="templates", enable_openapi=False)
 
 flaskadmin = Admin(endpoint="admin", base_template='flaskadmin-layout.html')
 
@@ -32,7 +33,7 @@ def init_app(app):
     @app.route('/<proxy_path>/admin')
     @app.doc(hide=True)
     def auto_route(proxy_path=None, user_secret=None):
-        return redirect(request.url.replace("http://", "https://")+"/")
+        return redirect(request.url.replace("http://", "https://") + "/")
 
     flaskadmin.add_view(UserAdmin(User, db.session))
     flaskadmin.add_view(DomainAdmin(Domain, db.session))
