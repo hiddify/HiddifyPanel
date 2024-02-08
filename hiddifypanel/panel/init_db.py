@@ -20,7 +20,7 @@ from flask import g
 MAX_DB_VERSION = 80
 
 
-def _v73(child_id):
+def _v74(child_id):
     set_hconfig(ConfigEnum.ws_enable, True)
     set_hconfig(ConfigEnum.grpc_enable, True)
     set_hconfig(ConfigEnum.httpupgrade_enable, True)
