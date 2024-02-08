@@ -1,11 +1,10 @@
-
-from sqlalchemy.orm import Load, joinedload
 from .ssh_liberty_bridge_api import SSHLibertyBridgeApi
 from .xray_api import XrayApi
 from .singbox_api import SingboxApi
+from .wireguard_api import WireguardApi
 from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify
-drivers = [XrayApi(), SingboxApi(), SSHLibertyBridgeApi()]
+drivers = [XrayApi(), SingboxApi(), SSHLibertyBridgeApi(), WireguardApi()]
 
 
 def get_users_usage(reset=True):

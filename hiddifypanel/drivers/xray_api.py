@@ -23,7 +23,7 @@ class XrayApi(DriverABS):
                 xray_client.add_client(t, f'{uuid}', f'{uuid}@hiddify.com', protocol=protocol, flow='xtls-rprx-vision', alter_id=0, cipher='chacha20_poly1305')
                 xray_client.remove_client(t, f'{uuid}@hiddify.com')
                 enabled[uuid] = 0
-            except xtlsapi.exceptions.EmailAlreadyExists as e:
+            except xtlsapi.xtlsapi.exceptions.EmailAlreadyExists as e:
                 enabled[uuid] = 1
             except Exception as e:
                 print(f"error {e}")
