@@ -4,9 +4,11 @@ import os
 
 from .abstract_driver import DriverABS
 from hiddifypanel.models import User
+from hiddifypanel.panel.run_commander import Command, commander
 
 
 class WireguardApi(DriverABS):
+    WG_RAW_USAGE_FILE_PATH = '/opt/hiddify-manager/other/wireguard/raw_wg_usage.json'
 
     def __init__(self) -> None:
         super().__init__()
@@ -17,9 +19,14 @@ class WireguardApi(DriverABS):
                 json.dump({}, f)
 
     def __get_wg_usages(self) -> dict:
-        raw_output = subprocess.check_output(['wg', 'show', 'hiddifywg', 'transfer'])
+        commander(Command.update_wg_usage)
+        raw_output = ''
+        if not os.path.isfile(WireguardApi.WG_RAW_USAGE_FILE_PATH):
+            return {}
+        with open(WireguardApi.WG_RAW_USAGE_FILE_PATH, 'r') as f:
+            raw_output = f.read()
         data = {}
-        for line in raw_output.decode('utf-8').split('\n'):
+        for line in raw_output.split('\n'):
             if not line:
                 continue
             sections = line.split()
@@ -94,12 +101,11 @@ class WireguardApi(DriverABS):
     def remove_client(self, user):
         pass
 
-    def get_usage(self, uuid, reset=True):
+    def __get_usage(self, uuid, reset=True):
         user = User.by_uuid(uuid)
         if not user:
             return 0
         wg_pub = user.wg_pub
-        self.__sync_local_usages(reset)
         user_usage = self.__get_local_usage().get(wg_pub)
         if not user_usage:
             return 0
@@ -116,3 +122,7 @@ class WireguardApi(DriverABS):
         if res:
             print(f"Wireguard usage {uuid} d={down} u={up} sum={res}")
         return res
+
+    def get_all_usage(self, users, reset=True):
+        self.__sync_local_usages(reset)
+        return {u: self.__get_usage(u.uuid, reset) for u in users}
