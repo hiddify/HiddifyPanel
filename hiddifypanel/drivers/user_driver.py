@@ -14,7 +14,8 @@ def get_users_usage(reset=True):
     res = {u: {'usage': 0, 'ips': ''} for u in users}
     for driver in drivers:
         for user, usage in driver.get_all_usage(users):
-            res[user]['usage'] += usage
+            if usage:
+                res[user]['usage'] += usage
             # res[user]['ip'] +=usage
     return res
 
