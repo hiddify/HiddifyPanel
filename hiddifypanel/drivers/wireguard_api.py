@@ -9,13 +9,14 @@ from hiddifypanel.panel.run_commander import Command, commander
 
 class WireguardApi(DriverABS):
     WG_RAW_USAGE_FILE_PATH = '/opt/hiddify-manager/other/wireguard/raw_wg_usage.json'
+    WG_LOCAL_USAGE_FILE_PATH = './hiddify_usages.json'
 
     def __init__(self) -> None:
         super().__init__()
-        self.local_usage_path = "./hiddify_usages.json"
+        WireguardApi.WG_LOCAL_USAGE_FILE_PATH = ""
         # create empty local usage file
-        if not os.path.isfile(self.local_usage_path):
-            with open(self.local_usage_path, 'w+') as f:
+        if not os.path.isfile(WireguardApi.WG_LOCAL_USAGE_FILE_PATH):
+            with open(WireguardApi.WG_LOCAL_USAGE_FILE_PATH, 'w+') as f:
                 json.dump({}, f)
 
     def __get_wg_usages(self) -> dict:
@@ -40,11 +41,11 @@ class WireguardApi(DriverABS):
 
     def __get_local_usage(self) -> dict:
 
-        with open(self.local_usage_path, 'r') as f:
+        with open(WireguardApi.WG_LOCAL_USAGE_FILE_PATH, 'r') as f:
             data = json.load(f)
             return data
 
-    def __sync_local_usages(self, reset: bool = False) -> None:
+    def __sync_local_usages(self) -> None:
         local_usage = self.__get_local_usage()
         wg_usage = self.__get_wg_usages()
 
@@ -53,20 +54,16 @@ class WireguardApi(DriverABS):
                 local_usage[wg_pub] = wg_usage
                 continue
 
-            if reset:
-                if local_usage[wg_pub].get('up') != 0 and local_usage[wg_pub].get('down') != 0:
-                    local_usage[wg_pub]['last_usage'] = {
-                        'up': local_usage[wg_pub]['up'],
-                        'down': local_usage[wg_pub]['down'],
-                    }
-                reset_usage = self.calculate_reset(local_usage[wg_pub].get('last_usage', {'up': 0, 'down': 0}), wg_usage)
-                local_usage[wg_pub]['up'] = reset_usage['up']
-                local_usage[wg_pub]['down'] = reset_usage['down']
-            else:
-                local_usage[wg_pub]['up'] = wg_usage['up']
-                local_usage[wg_pub]['down'] = wg_usage['down']
+            if local_usage[wg_pub].get('up') != 0 and local_usage[wg_pub].get('down') != 0:
+                local_usage[wg_pub]['last_usage'] = {
+                    'up': local_usage[wg_pub]['up'],
+                    'down': local_usage[wg_pub]['down'],
+                }
+            reset_usage = self.calculate_reset(local_usage[wg_pub].get('last_usage', {'up': 0, 'down': 0}), wg_usage)
+            local_usage[wg_pub]['up'] = reset_usage['up']
+            local_usage[wg_pub]['down'] = reset_usage['down']
 
-        with open(self.local_usage_path, 'w') as f:
+        with open(WireguardApi.WG_LOCAL_USAGE_FILE_PATH, 'w') as f:
             json.dump(local_usage, f)
 
     def calculate_reset(self, last_usage: dict, current_usage: dict) -> dict:
@@ -84,7 +81,7 @@ class WireguardApi(DriverABS):
     def get_enabled_users(self):
         self.__sync_local_usages()
         usages = self.__get_local_usage()
-        wg_pubs = list(usages.keys())
+        wg_pubs = set(usages.keys())
 
         users = User.query.all()
         enabled = {}
@@ -101,7 +98,7 @@ class WireguardApi(DriverABS):
     def remove_client(self, user):
         pass
 
-    def __get_usage(self, uuid, reset=True):
+    def __get_usage(self, uuid):
         user = User.by_uuid(uuid)
         if not user:
             return 0
@@ -124,5 +121,5 @@ class WireguardApi(DriverABS):
         return res
 
     def get_all_usage(self, users, reset=True):
-        self.__sync_local_usages(reset)
+        self.__sync_local_usages()
         return {u: self.__get_usage(u.uuid, reset) for u in users}
