@@ -269,6 +269,8 @@ class UserAdmin(AdminLTEModelView):
             priv, publ = hiddify.get_ed25519_private_public_pair()
             model.ed25519_private_key = priv
             model.ed25519_public_key = publ
+        if not model.wg_pk:
+            model.wg_pk, model.wg_pub, model.wg_psk = hiddify.get_wg_private_public_psk_pair()
         # model.expiry_time=datetime.date.today()+datetime.timedelta(days=model.expiry_time)
 
         # if model.current_usage_GB < model.usage_limit_GB:
