@@ -10,7 +10,7 @@ class WireguardApi(DriverABS):
 
     def __init__(self) -> None:
         super().__init__()
-        self.local_usage_path = "/etc/wireguard/hiddify_usages.json"
+        self.local_usage_path = "./hiddify_usages.json"
         # create empty local usage file
         if not os.path.isfile(self.local_usage_path):
             with open(self.local_usage_path, 'w+') as f:
