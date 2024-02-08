@@ -6,14 +6,14 @@
     <meta name="apple-itunes-app" content="app-id=6450534064, app-argument=streisand://import/{{profile_url}}">
     
     <link rel="icon" type="image/png" href="../static/new/assets/hiddify-logo-7617d937.png" />
-    <link rel="stylesheet" href="node_modules/smartbanner.js/dist/smartbanner.min.css">
+<!--     <link rel="stylesheet" href="node_modules/smartbanner.js/dist/smartbanner.min.css"> -->
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/x-icon" href="{{ static_url_for( filename='images/favicon.ico')}}">
-    <link rel="manifest" href="{{ hurl_for('common_bp.LoginView:create_pwa_manifest',secret_uuid=g.account.uuid or '')}}">
+    <link rel="manifest" href="{{ url_for('common_bp.LoginView:create_pwa_manifest',secret_uuid=g.account.uuid or '')}}">
     
     <title>Hiddify | Panel</title>
-    <script type="module" crossorigin src="../static/new/assets/index-0072f18b.js"></script>
+    <script type="module" crossorigin src="../static/new/assets/index-1b891a7c.js"></script>
     <link rel="stylesheet" href="../static/new/assets/index-669b32c8.css">
   </head>
   <body>
