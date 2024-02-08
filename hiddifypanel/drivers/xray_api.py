@@ -76,15 +76,14 @@ class XrayApi(DriverABS):
                 if (protocol == "vless" and p != "xtls" and p != "realityin") or "realityingrpc" in t:
                     xray_client.add_client(t, f'{uuid}', f'{uuid}@hiddify.com', protocol=protocol, flow='\0',)
                 else:
-                    xray_client.add_client(t, f'{uuid}', f'{uuid}@hiddify.com', protocol=protocol, flow='xtls-rprx-vision', alter_id=0, cipher='chacha20_poly1305')
+                    xray_client.add_client(t, f'{uuid}', f'{uuid}@hiddify.com', protocol=protocol,
+                                           flow='xtls-rprx-vision', alter_id=0, cipher='chacha20_poly1305')
                 # print(f"Success add  {uuid} {t}")
             except Exception as e:
                 # print(f"error in add  {uuid} {t} {e}")
                 pass
 
     def remove_client(self, user):
-        if hconfig(ConfigEnum.is_parent):
-            return
         uuid = user.uuid
         xray_client = self.get_xray_client()
         tags = self.get_inbound_tags()
@@ -97,12 +96,13 @@ class XrayApi(DriverABS):
                 print(f"error in remove  {uuid} {t} {e}")
                 pass
 
-    def get_usage(self, uuid, reset=False):
-        if hconfig(ConfigEnum.is_parent):
-            return
+    def get_all_usage(self, users):
+        return {u: self.get_usage_imp(u.uuid) for u in users}
+
+    def get_usage_imp(self, uuid):
         xray_client = self.get_xray_client()
-        d = xray_client.get_client_download_traffic(f'{uuid}@hiddify.com', reset=reset)
-        u = xray_client.get_client_upload_traffic(f'{uuid}@hiddify.com', reset=reset)
+        d = xray_client.get_client_download_traffic(f'{uuid}@hiddify.com', reset=True)
+        u = xray_client.get_client_upload_traffic(f'{uuid}@hiddify.com', reset=True)
 
         res = None
         if d is None:
