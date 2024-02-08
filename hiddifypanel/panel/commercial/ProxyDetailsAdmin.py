@@ -28,15 +28,16 @@ class ProxyDetailsAdmin(AdminLTEModelView):
 
         self.session.commit()
         flash(_('%(count)s records were successfully disabled.', count=count), 'success')
+        hiddify.get_available_proxies.invalidate_all()
 
     @action('enable', 'Enable', 'Are you sure you want to enable selected proxies?')
-    def action_disable(self, ids):
+    def action_enable(self, ids):
         query = tools.get_query_for_ids(self.get_query(), self.model, ids)
         count = query.update({'enable': True})
 
         self.session.commit()
         flash(_('%(count)s records were successfully enabled.', count=count), 'success')
-
+        hiddify.get_available_proxies.invalidate_all()
     # column_editable_list = ['name', 'enable']
     # list_template = 'model/domain_list.html'
     # edit_modal = True

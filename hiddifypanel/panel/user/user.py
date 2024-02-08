@@ -296,8 +296,8 @@ def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
     '''Usable for user account'''
     # uuid_secret=str(uuid.UUID(user_secret))
     domains, has_auto_cdn = get_domain_information(no_domain, filter_domain, urlparse(request.base_url).hostname)
-    domains = [d for d in domains if d.mode != DomainType.fake and d.mode != DomainType.reality]
-    db_domain = domains[0]
+    domains_valid = [d for d in domains if d.mode != DomainType.fake and d.mode != DomainType.reality]
+    db_domain = domains_valid[0]
     domain = db_domain.domain
     user: User = g.account if g.account.uuid == user_uuid else User.by_uuid(f'{user_uuid}')
     if user is None:
@@ -315,7 +315,7 @@ def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
     if reset_days >= expire_days:
         reset_days = 1000
 
-    expire_s = int((datetime.date.today()+datetime.timedelta(days=expire_days)-datetime.date(1970, 1, 1)).total_seconds())
+    expire_s = int((datetime.date.today() + datetime.timedelta(days=expire_days) - datetime.date(1970, 1, 1)).total_seconds())
 
     user_ip = hutils.network.auto_ip_selector.get_real_user_ip()
     asn = hutils.network.auto_ip_selector.get_asn_short_name(user_ip)
@@ -332,8 +332,8 @@ def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
         'domain': domain,
         'mode': mode,
         'fake_ip_for_sub_link': datetime.datetime.now().strftime(f"%H.%M--%Y.%m.%d.time:%H%M"),
-        'usage_limit_b': int(user.usage_limit_GB*1024*1024*1024),
-        'usage_current_b': int(user.current_usage_GB*1024*1024*1024),
+        'usage_limit_b': int(user.usage_limit_GB * 1024 * 1024 * 1024),
+        'usage_current_b': int(user.current_usage_GB * 1024 * 1024 * 1024),
         'expire_s': expire_s,
         'expire_days': expire_days,
         'expire_rel': hutils.convert.format_timedelta(datetime.timedelta(days=expire_days)),
@@ -359,13 +359,13 @@ def add_headers(res, c, mimetype="text/plain"):
     resp = Response(res)
     resp.mimetype = mimetype
     resp.headers['Subscription-Userinfo'] = f"upload=0;download={c['usage_current_b']};total={c['usage_limit_b']};expire={c['expire_s']}"
-    resp.headers['profile-web-page-url'] = request.base_url.rsplit('/', 1)[0].replace("http://", "https://")+"/"
+    resp.headers['profile-web-page-url'] = request.base_url.rsplit('/', 1)[0].replace("http://", "https://") + "/"
 
     if hconfig(ConfigEnum.branding_site):
         resp.headers['support-url'] = hconfig(ConfigEnum.branding_site)
     resp.headers['profile-update-interval'] = 1
     # resp.headers['content-disposition']=f'attachment; filename="{c["db_domain"].alias or c["db_domain"].domain} {c["user"].name}"'
 
-    resp.headers['profile-title'] = 'base64:'+hutils.encode.do_base_64(c['profile_title'])
+    resp.headers['profile-title'] = 'base64:' + hutils.encode.do_base_64(c['profile_title'])
 
     return resp

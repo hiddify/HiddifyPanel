@@ -14,6 +14,7 @@ from flask_babel import gettext as _
 def all_proxies(child_id=0):
     all_proxies = hiddify.get_available_proxies(child_id)
     all_proxies = [p for p in all_proxies if p.enable]
+
     # all_proxies = [p for p in all_proxies if p.proto == ProxyProto.ss]
     # all_cfg=Proxy.query.filter(Proxy.enable==True).all()
     # if not hconfig(ConfigEnum.domain_fronting_domain):

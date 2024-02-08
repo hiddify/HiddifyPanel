@@ -142,20 +142,22 @@ page."),temp_link(),show=False)}}
         }
 
         old = response
-        indx = x.innerText.lastIndexOf("----Finished!---")
-        if (!finished && indx > 0 && (indx > x.innerText.length - 200) && seconds > 5) {
-          set_progress(100)
-          finished = true
-          $("#progress").removeClass("bg-danger")
-          $("#progress").addClass("bg-success")
-          document.getElementById("count-down").innerHTML = 0
-          $("#process-details").html("")
-          $("#process-title").html("")
-          bootbox.alert({
-            title: '{{_("Success")}}',
-            message: '{{_("The action done successfully. You can now leave this page.")}}',
-            locale: '{{get_locale()}}',
-          });
+        if (!finished) {
+          indx = response.lastIndexOf("----Finished!---")
+          if (indx > 0 && (indx > response.length - 200) && seconds > 5) {
+            set_progress(100)
+            finished = true
+            $("#progress").removeClass("bg-danger")
+            $("#progress").addClass("bg-success")
+            document.getElementById("count-down").innerHTML = 0
+            $("#process-details").html("")
+            $("#process-title").html("")
+            bootbox.alert({
+              title: '{{_("Success")}}',
+              message: '{{_("The action done successfully. You can now leave this page.")}}',
+              locale: '{{get_locale()}}',
+            });
+          }
         }
         setTimeout(get_log, 1000);
       })
