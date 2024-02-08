@@ -59,7 +59,7 @@ class WireguardApi(DriverABS):
                         'up': local_usage[wg_pub]['up'],
                         'down': local_usage[wg_pub]['down'],
                     }
-                reset_usage = self.calculate_reset(local_usage[wg_pub]['last_usage'], wg_usage)
+                reset_usage = self.calculate_reset(local_usage[wg_pub].get('last_usage', {'up': 0, 'down': 0}), wg_usage)
                 local_usage[wg_pub]['up'] = reset_usage['up']
                 local_usage[wg_pub]['down'] = reset_usage['down']
             else:
