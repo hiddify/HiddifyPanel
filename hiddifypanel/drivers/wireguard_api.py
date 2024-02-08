@@ -49,6 +49,11 @@ class WireguardApi(DriverABS):
         local_usage = self.__get_local_usage()
         wg_usage = self.__get_wg_usages()
 
+        # remove local usage that is removed from wg usage
+        for local_wg_pub in local_usage.keys():
+            if local_wg_pub not in wg_usage:
+                del local_usage[local_wg_pub]
+
         for wg_pub, wg_usage in wg_usage.items():
             if not local_usage.get(wg_pub):
                 local_usage[wg_pub] = wg_usage
