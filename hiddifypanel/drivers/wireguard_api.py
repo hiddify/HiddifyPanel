@@ -1,6 +1,6 @@
-import subprocess
 import json
 import os
+import time
 
 from .abstract_driver import DriverABS
 from hiddifypanel.models import User
@@ -13,14 +13,26 @@ class WireguardApi(DriverABS):
 
     def __init__(self) -> None:
         super().__init__()
-        WireguardApi.WG_LOCAL_USAGE_FILE_PATH = ""
         # create empty local usage file
         if not os.path.isfile(WireguardApi.WG_LOCAL_USAGE_FILE_PATH):
             with open(WireguardApi.WG_LOCAL_USAGE_FILE_PATH, 'w+') as f:
                 json.dump({}, f)
 
-    def __get_wg_usages(self) -> dict:
+    def __update_wg_usages(self) -> None:
         commander(Command.update_wg_usage)
+
+        # wait to commander update the file
+        max_sec = 5
+        init_mtime = os.path.getmtime(WireguardApi.WG_RAW_USAGE_FILE_PATH)
+        start_time = time.time()
+        while os.path.getmtime(WireguardApi.WG_RAW_USAGE_FILE_PATH) == init_mtime:
+            if time.time() - start_time > max_sec:
+                break
+            time.sleep(0.2)
+
+    def __get_wg_usages(self) -> dict:
+        self.__update_wg_usages()
+
         raw_output = ''
         if not os.path.isfile(WireguardApi.WG_RAW_USAGE_FILE_PATH):
             return {}
