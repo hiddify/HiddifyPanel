@@ -82,4 +82,4 @@ def commander(command: Command, run_in_background=True, **kwargs: str | int) -> 
     if run_in_background:
         subprocess.Popen(base_cmd, cwd=str(current_app.config['HIDDIFY_CONFIG_PATH']), start_new_session=True)
     else:
-        return str(subprocess.check_output(base_cmd, cwd=str(current_app.config['HIDDIFY_CONFIG_PATH'])))
+        return subprocess.check_output(base_cmd, cwd=str(current_app.config['HIDDIFY_CONFIG_PATH'])).decode()

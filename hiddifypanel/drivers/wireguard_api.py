@@ -24,7 +24,7 @@ class WireguardApi(DriverABS):
             if not line:
                 continue
             sections = line.split()
-            if len(sections) < 1:
+            if len(sections) < 3:
                 continue
             data[sections[0]] = {
                 'down': int(sections[1]),
