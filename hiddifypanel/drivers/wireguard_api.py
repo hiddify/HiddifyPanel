@@ -38,12 +38,12 @@ class WireguardApi(DriverABS):
             data = json.load(f)
             return data
 
-    def __sync_local_usages(self) -> :
+    def __sync_local_usages(self) -> dict:
         local_usage = self.__get_local_usage()
         wg_usage = self.__get_wg_usages()
-        res={}
+        res = {}
         # remove local usage that is removed from wg usage
-        for local_wg_pub in local_usage.keys():
+        for local_wg_pub in local_usage.copy().keys():
             if local_wg_pub not in wg_usage:
                 del local_usage[local_wg_pub]
 
@@ -53,7 +53,6 @@ class WireguardApi(DriverABS):
                 continue
             res[wg_pub] = self.calculate_reset(local_usage[wg_pub], wg_usage)
             local_usage[wg_pub] = wg_usage
-            
 
         with open(WireguardApi.WG_LOCAL_USAGE_FILE_PATH, 'w') as f:
             json.dump(local_usage, f)
@@ -91,12 +90,11 @@ class WireguardApi(DriverABS):
         pass
 
     def get_all_usage(self, users, reset=True):
-        all_usages=self.__sync_local_usages()
-        res={}
+        all_usages = self.__sync_local_usages()
+        res = {}
         for u in users:
-            if use:=all_usage.get(u.wg_pub):
-                res[u]=use['up']+use['down']
+            if use := all_usages.get(u.wg_pub):
+                res[u] = use['up']+use['down']
             else:
-                res[u]=0
+                res[u] = 0
         return res
-        
