@@ -139,4 +139,4 @@ class WireguardApi(DriverABS):
 
     def get_all_usage(self, users, reset=True):
         self.__sync_local_usages()
-        return {u: self.__get_usage(u.uuid, reset) for u in users}
+        return {u: self.__get_usage(u.uuid) for u in users}
