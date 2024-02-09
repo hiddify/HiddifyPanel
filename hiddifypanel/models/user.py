@@ -181,7 +181,7 @@ class User(BaseAccount):
         return min(res, 10000)
 
     @classmethod
-    def by_uuid(cls, uuid: str, create: bool = False):
+    def by_uuid(cls, uuid: str, create: bool = False) -> 'User':
         account = User.query.filter(User.uuid == uuid).first()
         if not account and create:
             dbuser = User(uuid=uuid, name="unknown", added_by=AdminUser.current_admin_or_owner().id)
