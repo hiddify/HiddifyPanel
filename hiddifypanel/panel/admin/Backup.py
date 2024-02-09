@@ -44,7 +44,6 @@ class Backup(FlaskView):
             if isinstance(file, list):
                 file = file[0]
             json_data = json.load(file)
-
             hiddify.set_db_from_json(json_data,
                                      set_users=restore_form.enable_user_restore.data,
                                      set_domains=restore_form.enable_domain_restore.data,
@@ -52,7 +51,8 @@ class Backup(FlaskView):
                                      override_unique_id=False,
                                      override_child_unique_id=Child.current.unique_id,
                                      override_root_admin=restore_form.override_root_admin.data,
-                                     replace_owner_admin=restore_form.override_root_admin.data
+                                     replace_owner_admin=restore_form.override_root_admin.data,
+                                     override_self_unique_id=True
                                      )
 
             from flask_babel import refresh

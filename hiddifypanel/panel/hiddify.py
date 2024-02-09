@@ -243,8 +243,19 @@ def get_ids_without_parent(input_dict):
 
 
 def set_db_from_json(json_data, override_child_unique_id=None, set_users=True, set_domains=True, set_proxies=True, set_settings=True, remove_domains=False, remove_users=False,
-                     override_unique_id=True, set_admins=True, override_root_admin=False, replace_owner_admin=False, fix_admin_hierarchy=True):
+                     override_unique_id=True, set_admins=True, override_root_admin=False, replace_owner_admin=False, fix_admin_hierarchy=True, override_self_unique_id=True, set_child=True):
     new_rows = []
+
+    # override root child unique id
+    if override_self_unique_id and 'childs' in json_data:
+        root_child = Child.by_id(0)
+        new_child_unique_id = json_data['childs'][0]['unique_id']
+        if new_child_unique_id != root_child.unique_id:
+            root_child.unique_id = new_child_unique_id
+            db.session.commit()
+    # restore childs
+    if set_child and 'childs' in json_data:
+        Child.bulk_register(json_data['childs'], commit=True)
 
     uuids_without_parent = get_ids_without_parent({u['uuid']: u for u in json_data['admin_users']})
     print('uuids_without_parent===============', uuids_without_parent)
