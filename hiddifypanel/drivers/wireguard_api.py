@@ -8,7 +8,6 @@ from hiddifypanel.panel.run_commander import Command, commander
 
 
 class WireguardApi(DriverABS):
-    WG_RAW_USAGE_FILE_PATH = '/opt/hiddify-manager/other/wireguard/raw_wg_usage.json'
     WG_LOCAL_USAGE_FILE_PATH = './hiddify_usages.json'
 
     def __init__(self) -> None:
@@ -18,26 +17,8 @@ class WireguardApi(DriverABS):
             with open(WireguardApi.WG_LOCAL_USAGE_FILE_PATH, 'w+') as f:
                 json.dump({}, f)
 
-    def __update_wg_usages(self) -> None:
-        commander(Command.update_wg_usage)
-
-        # wait to commander update the file
-        max_sec = 5
-        init_mtime = os.path.getmtime(WireguardApi.WG_RAW_USAGE_FILE_PATH)
-        start_time = time.time()
-        while os.path.getmtime(WireguardApi.WG_RAW_USAGE_FILE_PATH) == init_mtime:
-            if time.time() - start_time > max_sec:
-                break
-            time.sleep(0.2)
-
     def __get_wg_usages(self) -> dict:
-        self.__update_wg_usages()
-
-        raw_output = ''
-        if not os.path.isfile(WireguardApi.WG_RAW_USAGE_FILE_PATH):
-            return {}
-        with open(WireguardApi.WG_RAW_USAGE_FILE_PATH, 'r') as f:
-            raw_output = f.read()
+        raw_output = commander(Command.update_wg_usage, run_in_background=False)
         data = {}
         for line in raw_output.split('\n'):
             if not line:
