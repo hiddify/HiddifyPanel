@@ -478,14 +478,18 @@ def replace_backup_child_unique_id(backupdata: dict, old_child_unique_id: str, n
 
 
 def get_backup_child_unique_id(backupdata: dict) -> str:
-    for k, v in backupdata.items():
-        if k == 'admin_users' or k == 'users':
-            continue
-        if k == 'childs':
-            if len(v) < 1:
-                continue
-            return v[0]['unique_id']
-        else:
-            for item in v:
-                return item['child_unique_id']
-    return 'self'
+    if len(backupdata.get('childs', [])) == 0:
+        return "self"
+    return backupdata['childs'][0]['unique_id']
+
+    # for k, v in backupdata.items():
+    #     if k == 'admin_users' or k == 'users':
+    #         continue
+    #     if k == 'childs':
+    #         if len(v) < 1:
+    #             continue
+    #         return v[0]['unique_id']
+    #     else:
+    #         for item in v:
+    #             return item['child_unique_id']
+    # return 'self'
