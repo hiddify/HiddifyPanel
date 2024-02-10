@@ -422,7 +422,11 @@ def add_tls_tricks_to_link(proxy) -> str:
 
 def add_tls_tricks_to_dict(d: dict, proxy):
     if proxy.get('tls_fragment_enable'):
-        d['fragment'] = f'{proxy["tls_fragment_size"]},{proxy["tls_fragment_sleep"]},tlshello'
+        if g.user_agent.get('is_shadowrocket'):
+            d['fragment'] = f'1,{proxy["tls_fragment_size"]},{proxy["tls_fragment_sleep"]}'
+        else:
+            d['fragment'] = f'{proxy["tls_fragment_size"]},{proxy["tls_fragment_sleep"]},tlshello'
+
     if proxy.get("tls_mixed_case"):
         d['mc'] = 1
     if proxy.get("tls_padding_enable"):
@@ -456,8 +460,8 @@ def add_mux_to_dict(d: dict, proxy):
 # endregion
 
 
-def to_clash_yml(proxy):
-    return yaml.dump(to_clash(proxy))
+# def to_clash_yml(proxy):
+#     return yaml.dump(to_clash(proxy,'normal'))
 
 
 def to_clash(proxy, meta_or_normal):

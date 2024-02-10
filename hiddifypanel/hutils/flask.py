@@ -73,9 +73,7 @@ def __parse_user_agent(ua: str) -> dict:
     res['is_singbox'] = re.match('^(HiddifyNext|Dart|SFI|SFA)', ua, re.IGNORECASE) and True
     res['is_hiddify'] = re.match('^(HiddifyNext)', ua, re.IGNORECASE) and True
     res['is_streisand'] = re.match('^(Streisand)', ua, re.IGNORECASE) and True
-    # TODO: find correct streisand user agent
-    # Does client support fragmentation configs in the proxy link parameters
-    # res['supports_xray_fg'] = re.match('^(HiddifyNext|Shadowrocket|Streisand)', ua, re.IGNORECASE) and True
+    res['is_shadowrocket'] = re.match('^(Shadowrocket)', ua, re.IGNORECASE) and True
 
     if res['is_singbox']:
         res['singbox_version'] = generic_version
