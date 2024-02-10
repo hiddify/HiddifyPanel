@@ -85,8 +85,6 @@ class SettingAdmin(FlaskView):
             # if hconfig(ConfigEnum.parent_panel):
             #     hiddify_api.sync_child_to_parent()
             reset_action = hiddify.check_need_reset(old_configs)
-            # if :
-            #     return reset_action
 
             if old_configs[ConfigEnum.admin_lang] != hconfig(ConfigEnum.admin_lang):
 

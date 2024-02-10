@@ -229,7 +229,7 @@ class Actions(FlaskView):
 
 
 def get_log_api_url():
-    return f'/{g.proxy_path}/api/v2/admin/log/'
+    return f'/{g.get("new_proxy_path",g.proxy_path)}/api/v2/admin/log/'
 
 
 def get_domains():

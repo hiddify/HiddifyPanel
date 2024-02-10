@@ -67,9 +67,8 @@ class QuickSetup(FlaskView):
             #     # {"key":ConfigEnum.decoy_domain,"value":quick_form.decoy_domain.data}
             # ])
 
-            from . import Actions
-            action = Actions.Actions()
-            return action.reinstall(domain_changed=True)
+            from .Actions import Actions
+            return Actions().reinstall(domain_changed=True)
         else:
             hutils.flask.flash(_('config.validation-error'), 'danger')
         return render_template(
@@ -116,7 +115,8 @@ def get_quick_setup_form(empty=False):
                                         "class": "ltr", "pattern": domain_validators[0].regex.pattern, "title": domain_validators[0].message, "required": "", "placeholder": "sub.domain.com"})
         # enable_telegram = SwitchField(_("config.telegram_enable.label"), description=_("config.telegram_enable.description"), default=hconfig(ConfigEnum.telegram_enable))
         # enable_firewall = SwitchField(_("config.firewall.label"), description=_("config.firewall.description"), default=hconfig(ConfigEnum.firewall))
-        block_iran_sites = SwitchField(_("config.block_iran_sites.label"), description=_("config.block_iran_sites.description"), default=hconfig(ConfigEnum.block_iran_sites))
+        block_iran_sites = SwitchField(_("config.block_iran_sites.label"), description=_(
+            "config.block_iran_sites.description"), default=hconfig(ConfigEnum.block_iran_sites))
         # enable_vmess = SwitchField(_("config.vmess_enable.label"), description=_("config.vmess_enable.description"), default=hconfig(ConfigEnum.vmess_enable))
         decoy_domain = wtf.fields.StringField(_("config.decoy_domain.label"), description=_("config.decoy_domain.description"), default=hconfig(
             ConfigEnum.decoy_domain), validators=[wtf.validators.Regexp(domain_regex, re.IGNORECASE, _("config.Invalid domain")), hiddify.validate_domain_exist])

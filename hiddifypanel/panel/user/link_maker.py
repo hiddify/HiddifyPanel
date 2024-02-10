@@ -1007,7 +1007,7 @@ def get_all_validated_proxies(domains):
 
         ip = hutils.network.get_domain_ip(d.domain, version=4)
         ip6 = hutils.network.get_domain_ip(d.domain, version=6)
-        ips = [x for x in [ip, ip6]if x != None]
+        ips = [x for x in [ip, ip6] if x != None]
 
         for type in proxeismap[d.child_id]:
             options = []

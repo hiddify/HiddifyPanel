@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from flask import render_template, request, jsonify, redirect
+from flask import render_template, request, jsonify, redirect, g
 from flask_wtf.file import FileField, FileRequired
 from flask_bootstrap import SwitchField
 from flask_babel import gettext as _
@@ -57,10 +57,10 @@ class Backup(FlaskView):
 
             from flask_babel import refresh
             refresh()
-            return redirect(hutils.flask.hurl_for("admin.Actions:reinstall2"))
-            # from . import Actions
-            # action = Actions()
-            # return action.reinstall(complete_install=True, domain_changed=True)
+            # return redirect(hutils.flask.hurl_for("admin.Actions:reinstall2"))
+            from .Actions import Actions
+            g.new_proxy_path = hconfig(ConfigEnum.proxy_path_admin)
+            return Actions().reinstall(complete_install=True, domain_changed=True)
             # # hutils.flask.flash_config_success(full_install=True)
         else:
             hutils.flask.flash(_('Config file is incorrect'), category='error')
