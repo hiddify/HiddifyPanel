@@ -441,8 +441,8 @@ def get_account_panel_link(account: BaseAccount, host: str, is_https: bool = Tru
 
 
 def is_telegram_proxy_enable() -> bool:
-    domains = get_panel_domains(always_add_all_domains=True)
-    return hconfig(ConfigEnum.telegram_enable) and any([d for d in domains if d.mode in [DomainType.direct, DomainType.relay, DomainType.old_xtls_direct]])
+    ok_domains = True if Domain.query.filter(Domain.mode.in_([DomainType.direct, DomainType.relay, DomainType.old_xtls_direct])).first() else False
+    return hconfig(ConfigEnum.telegram_enable) and ok_domains
 
 
 def clone_model(model):
