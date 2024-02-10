@@ -244,9 +244,18 @@ def get_ids_without_parent(input_dict):
     return uuids_without_parent
 
 
-def set_db_from_json(json_data, override_child_unique_id=None, set_users=True, set_domains=True, set_proxies=True, set_settings=True, remove_domains=False, remove_users=False,
-                     override_unique_id=True, set_admins=True, override_root_admin=False, replace_owner_admin=False, fix_admin_hierarchy=True):
+def set_db_from_json(json_data, override_child_unique_id=True, set_users=True, set_domains=True, set_proxies=True, set_settings=True, remove_domains=False, remove_users=False,
+                     override_unique_id=True, set_admins=True, override_root_admin=False, replace_owner_admin=False, fix_admin_hierarchy=True, set_child=True):
     new_rows = []
+
+    # override root child unique id
+    if override_child_unique_id:
+        backup_child_unique_id = get_backup_child_unique_id(json_data)
+        replace_backup_child_unique_id(json_data, backup_child_unique_id, Child.current.unique_id)
+
+    # restore childs
+    if set_child and 'childs' in json_data:
+        Child.bulk_register(json_data['childs'], commit=True)
 
     uuids_without_parent = get_ids_without_parent({u['uuid']: u for u in json_data['admin_users']})
     print('uuids_without_parent===============', uuids_without_parent)
@@ -451,3 +460,37 @@ def clone_model(model):
 
     # data.pop('id')
     return new_model
+
+
+def replace_backup_child_unique_id(backupdata: dict, old_child_unique_id: str, new_child_unique_id: str):
+    for k, v in backupdata.copy().items():
+        if k == 'admin_users' or k == 'users':
+            continue
+        if k == 'childs':
+            if len(v) < 1:
+                continue
+
+            if v[0]['unique_id'] == old_child_unique_id or v[0]['unique_id'] == 'self' or v[0]['unique_id'] == 'default':
+                v[0]['unique_id'] = new_child_unique_id
+        else:
+            for item in v:
+                if item['child_unique_id'] == old_child_unique_id or item['child_unique_id'] == 'self' or item['child_unique_id'] == 'default':
+                    item['child_unique_id'] = new_child_unique_id
+
+
+def get_backup_child_unique_id(backupdata: dict) -> str:
+    if len(backupdata.get('childs', [])) == 0:
+        return "self"
+    return backupdata['childs'][0]['unique_id']
+
+    # for k, v in backupdata.items():
+    #     if k == 'admin_users' or k == 'users':
+    #         continue
+    #     if k == 'childs':
+    #         if len(v) < 1:
+    #             continue
+    #         return v[0]['unique_id']
+    #     else:
+    #         for item in v:
+    #             return item['child_unique_id']
+    # return 'self'

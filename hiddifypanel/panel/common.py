@@ -85,6 +85,8 @@ def init_app(app: APIFlask):
 
     @app.url_defaults
     def add_proxy_path_user(endpoint, values):
+        if 'static' in endpoint:
+            values['proxy_path'] = g.proxy_path
         if 'proxy_path' not in values:
             if force_path:=g.get('force_proxy_path'):
                 values['proxy_path']=force_path
@@ -101,6 +103,7 @@ def init_app(app: APIFlask):
 
         if hutils.flask.is_api_v1_call(endpoint=endpoint) and 'admin_uuid' not in values:
             values['admin_uuid'] = AdminUser.get_super_admin_uuid()
+
         # if 'secret_uuid' not in values and g.account and ".webmanifest" in request.path:
         #     values['secret_uuid'] = g.account.uuid
 

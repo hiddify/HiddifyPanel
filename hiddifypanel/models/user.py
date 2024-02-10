@@ -180,6 +180,13 @@ class User(BaseAccount):
             res = self.package_days
         return min(res, 10000)
 
+    def remove(self, commit=True) -> None:
+        from hiddifypanel.drivers import user_driver
+        user_driver.remove_client(self)
+        db.session.delete(self)
+        if commit:
+            db.session.commit()
+
     @classmethod
     def by_uuid(cls, uuid: str, create: bool = False) -> 'User':
         account = User.query.filter(User.uuid == uuid).first()
@@ -189,6 +196,11 @@ class User(BaseAccount):
             db.session.commit()
             account = User.by_uuid(uuid, False)
         return account
+
+    @classmethod
+    def remove_by_uuid(cls, uuid: str, commit=True):
+        dbuser = User.by_uuid(uuid)
+        dbuser.remove(dbuser, commit)
 
     @classmethod
     def add_or_update(cls, commit: bool = True, **data):
@@ -285,22 +297,6 @@ class User(BaseAccount):
     #         telegram_id=data.get('telegram_id', None),
     #         added_by=data.get('added_by', 1)
     #     )
-
-
-# TODO: refactor this function too
-def remove(user: User, commit=True) -> None:
-    from hiddifypanel.drivers import user_driver
-    user_driver.remove_client(user)
-    user.delete()
-    if commit:
-        db.session.commit()
-
-# TODO: refactor this function too
-
-
-def remove_user(uuid: str, commit=True):
-    dbuser = User.by_uuid(uuid)
-    remove(dbuser, commit)
 
 
 @event.listens_for(User, 'before_insert')

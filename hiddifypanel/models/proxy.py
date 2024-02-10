@@ -20,7 +20,7 @@ class ProxyTransport(StrEnum):
     ssh = auto()
     httpupgrade = auto()
     custom = auto()
-    shadowsocks=auto()
+    shadowsocks = auto()
 
 
 class ProxyCDN(StrEnum):
@@ -98,7 +98,7 @@ class Proxy(db.Model, SerializerMixin):
     def bulk_register(proxies, commit=True, override_child_unique_id=None):
         from hiddifypanel.panel import hiddify
         for proxy in proxies:
-            child_id = override_child_unique_id if override_child_unique_id is not None else hiddify.get_child(proxy.get('child_unique_id', None))
+            child_id = hiddify.get_child(unique_id=None)
             Proxy.add_or_update(commit=False, child_id=child_id, **proxy)
         if commit:
             db.session.commit()

@@ -44,8 +44,8 @@ class UserResource(Resource):
         if uuid:
             user = User.query.filter(User.uuid == uuid).first() or abort(204)
             if user is not None:
-                hiddify.remove_user(uuid)
-                user_driver.remove_client(uuid)
+                User.remove_user(uuid)
+                # user_driver.remove_client(uuid)
                 hiddify.quick_apply_users()
                 return jsonify({'status': 200, 'msg': 'ok'})
             else:

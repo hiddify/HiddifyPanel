@@ -206,7 +206,7 @@ def bulk_register_domains(domains, commit=True, remove=False, override_child_uni
     from hiddifypanel.panel import hiddify
     child_ids = {}
     for domain in domains:
-        child_id = override_child_unique_id if override_child_unique_id is not None else hiddify.get_child(domain.get('child_unique_id', None))
+        child_id = hiddify.get_child(unique_id=None)
         child_ids[child_id] = 1
         add_or_update_domain(commit=False, child_id=child_id, **domain)
     if remove and len(child_ids):
@@ -218,7 +218,7 @@ def bulk_register_domains(domains, commit=True, remove=False, override_child_uni
     # if commit:
     db.session.commit()
     for domain in domains:
-        child_id = override_child_unique_id if override_child_unique_id is not None else hiddify.get_child(domain.get('child_unique_id', None))
+        child_id = hiddify.get_child(unique_id=None)
         add_or_update_domain(commit=False, child_id=child_id, **domain)
     if commit:
         db.session.commit()
