@@ -217,7 +217,8 @@ def get_child(unique_id):
 
 
 def dump_db_to_dict():
-    return {"users": [u.to_dict() for u in User.query.all()],
+    return {"childs": [u.to_dict() for u in Child.query.all()],
+            "users": [u.to_dict() for u in User.query.all()],
             "domains": [u.to_dict() for u in Domain.query.all()],
             "proxies": [u.to_dict() for u in Proxy.query.all()],
             "parent_domains": [] if not hconfig(ConfigEnum.license) else [u.to_dict() for u in ParentDomain.query.all()],
