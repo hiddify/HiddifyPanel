@@ -60,6 +60,7 @@ class Backup(FlaskView):
             # return redirect(hutils.flask.hurl_for("admin.Actions:reinstall2"))
             from .Actions import Actions
             g.new_proxy_path = hconfig(ConfigEnum.proxy_path_admin)
+            g.force_proxy_path = g.proxy_path
             return Actions().reinstall(complete_install=True, domain_changed=True)
             # # hutils.flask.flash_config_success(full_install=True)
         else:
