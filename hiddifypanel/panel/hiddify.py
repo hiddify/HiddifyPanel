@@ -7,7 +7,7 @@ from datetime import datetime
 from typing import Tuple
 from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric import x25519
-from flask import current_app
+from flask import current_app, g
 from wtforms.validators import ValidationError
 from flask_babel import lazy_gettext as _
 from flask_babel import gettext as __
@@ -189,7 +189,8 @@ def check_need_reset(old_configs, do=False):
         if old_configs[c] != hconfig(c) and c.apply_mode != ApplyMode.nothing:
             if restart_mode != ApplyMode.restart:
                 restart_mode = c.apply_mode
-
+    if old_configs[ConfigEnum.proxy_path_admin] != hconfig(ConfigEnum.proxy_path_admin):
+        g.new_proxy_path = hconfig(ConfigEnum.proxy_path_admin)
     # do_full_install=old_config[ConfigEnum.telegram_lib]!=hconfig(ConfigEnum.telegram_lib)
     if old_configs[ConfigEnum.package_mode] != hconfig(ConfigEnum.package_mode):
         return reinstall_action(do_update=True)
@@ -420,7 +421,7 @@ def get_account_panel_link(account: BaseAccount, host: str, is_https: bool = Tru
     if child_id == None:
         child_id = Child.current.id
     is_admin = isinstance(account, AdminUser)
-    basic_auth = is_admin
+    basic_auth = False  # is_admin #because safri does not support it.
 
     link = ""
     if basic_auth or not prefere_path_only:

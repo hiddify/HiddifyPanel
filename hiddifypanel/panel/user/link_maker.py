@@ -768,7 +768,8 @@ def add_singbox_tls_tricks(base, proxy):
         }
 
     if 'tls' in base:
-        base['tls']['tls_tricks'] = {}
+        if proxy.get("tls_padding_enable") or proxy.get("tls_mixed_case"):
+            base['tls']['tls_tricks'] = {}
         if proxy.get("tls_padding_enable"):
             base['tls']['tls_tricks']['padding_size'] = proxy["tls_padding_length"]
 
@@ -1007,7 +1008,7 @@ def get_all_validated_proxies(domains):
 
         ip = hutils.network.get_domain_ip(d.domain, version=4)
         ip6 = hutils.network.get_domain_ip(d.domain, version=6)
-        ips = [x for x in [ip, ip6]if x != None]
+        ips = [x for x in [ip, ip6] if x != None]
 
         for type in proxeismap[d.child_id]:
             options = []
