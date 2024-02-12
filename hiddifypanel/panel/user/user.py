@@ -37,7 +37,6 @@ class UserView(FlaskView):
         return self.get_proper_config() or self.all_configs(base64=True)
 
     # former /sub/ or /sub (it was auto actually but we named it as /sub/)
-    # TODO: @hiddify: check this out
     @route('/auto/')
     @route('/auto')
     @login_required(roles={Role.user})

@@ -225,8 +225,6 @@ def init_app(app):
 
     @login_manager.unauthorized_handler
     def unauthorized():
-        # TODO: show the login page
-        # return request.base_url
         if g.user_agent['is_browser']:
             return redirect(hurl_for('common_bp.LoginView:basic_0', force=1, next={request.path}))
 

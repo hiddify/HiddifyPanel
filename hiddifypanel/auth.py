@@ -191,8 +191,6 @@ def logout_redirect():
 
 
 def redirect_to_login():
-    # TODO: show the login page
-    # return request.base_url
     # if g.user_agent['is_browser']:
     # return redirect(hurl_for('common_bp.LoginView:basic_0', force=1, next=request.path))
     return redirect(hurl_for('common_bp.LoginView:index', force=1, next=request.path))
