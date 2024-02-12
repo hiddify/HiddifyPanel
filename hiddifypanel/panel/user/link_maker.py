@@ -237,6 +237,7 @@ def make_proxy(hconfigs, proxy: Proxy, domain_db: Domain, phttp=80, ptls=443, pp
             base['mux_protocol'] = hconfigs[ConfigEnum.mux_protocol]
             base['mux_max_connections'] = hconfigs[ConfigEnum.mux_max_connections]
             base['mux_min_streams'] = hconfigs[ConfigEnum.mux_min_streams]
+            base['mux_max_streams'] = hconfigs[ConfigEnum.mux_max_streams]
             base['mux_padding_enable'] = hconfigs[ConfigEnum.mux_padding_enable]
 
             # the hiddify next client doesn't support mux max streams
@@ -421,7 +422,11 @@ def add_tls_tricks_to_link(proxy) -> str:
 
 def add_tls_tricks_to_dict(d: dict, proxy):
     if proxy.get('tls_fragment_enable'):
-        d['fragment'] = f'{proxy["tls_fragment_size"]},{proxy["tls_fragment_sleep"]},tlshello'
+        if g.user_agent.get('is_shadowrocket'):
+            d['fragment'] = f'1,{proxy["tls_fragment_size"]},{proxy["tls_fragment_sleep"]}'
+        else:
+            d['fragment'] = f'{proxy["tls_fragment_size"]},{proxy["tls_fragment_sleep"]},tlshello'
+
     if proxy.get("tls_mixed_case"):
         d['mc'] = 1
     if proxy.get("tls_padding_enable"):
@@ -440,11 +445,13 @@ def add_mux_to_link(proxy) -> str:
 
 def add_mux_to_dict(d: dict, proxy):
     if proxy.get('mux_enable'):
-        d['mux'] = proxy["mux_protocol"]
+        # d['mux'] = proxy["mux_protocol"]
+        # mux is equals to concurrency in clients
+        d['mux'] = proxy["mux_max_streams"]
         d['mux_max'] = proxy["mux_max_connections"]
+        d['mux_pad'] = proxy["mux_padding_enable"]
         # doesn't exist
         # d['mux_min'] = proxy["mux_min_connections"]
-        d['mux_pad'] = proxy["mux_padding_enable"]
 
         if proxy.get('mux_brutal_enable'):
             d['mux_up'] = proxy["mux_brutal_up_mbps"]
@@ -453,8 +460,8 @@ def add_mux_to_dict(d: dict, proxy):
 # endregion
 
 
-def to_clash_yml(proxy):
-    return yaml.dump(to_clash(proxy))
+# def to_clash_yml(proxy):
+#     return yaml.dump(to_clash(proxy,'normal'))
 
 
 def to_clash(proxy, meta_or_normal):
