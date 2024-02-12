@@ -5,22 +5,28 @@
 {% block body %}
 {{super()}}
 <style>
-    @keyframes blink { 50% { border-color: #0000ff; border-width: 2px;}  }
+    @keyframes blink {
+        50% {
+            border-color: #0000ff;
+            border-width: 2px;
+        }
+    }
 
     #search_settings {
-  
-  animation: blink 1s;
-    animation-iteration-count: 3;
-  transition: border-width 0.6s linear;
-}
 
-#search_settings:hover { border-width: 2px; }
+        animation: blink 1s;
+        animation-iteration-count: 3;
+        transition: border-width 0.6s linear;
+    }
 
+    #search_settings:hover {
+        border-width: 2px;
+    }
 </style>
 
 
 <div class="card">
-    <div class="card-header"><input id="search_settings" type="text" class="form-control" placeholder="{{_("Search Settings")}}">
+    <div class="card-header"><input id="search_settings" type="text" class="form-control" placeholder="{{_(" Search Settings")}}">
     </div>
     <div class="card-body">
         <div class="row">
@@ -32,7 +38,7 @@
 </div>
 
 <style>
-    fieldset{
+    fieldset {
         background-color: initial;
         background-clip: border-box;
         border: 1 solid rgba(0, 0, 0, 0.125);
@@ -43,99 +49,101 @@
         display: inline-block;
         width: 100%;
     }
-    legend{
+
+    legend {
         background-color: initial;
         margin: 0px;
     }
+
     legend+div>label {
         display: none;
     }
 
-@media (min-width: 576px) {
-    .card-columns {
-        column-count: 1;
+    @media (min-width: 576px) {
+        .card-columns {
+            column-count: 1;
+        }
     }
-}
 
-@media (min-width: 768px) {
-    .card-columns {
-        column-count: 2;
+    @media (min-width: 768px) {
+        .card-columns {
+            column-count: 2;
+        }
     }
-}
-fieldset {
-    box-shadow:none;
-    margin-bottom:0px;
-}
 
+    fieldset {
+        box-shadow: none;
+        margin-bottom: 0px;
+    }
 </style>
 
 {% endblock %}
 
-% block tail
+{% block tail %}
 {{super()}}
 <script>
-// $("fieldset .form-group").hide()
+    // $("fieldset .form-group").hide()
 
-if ($('.form-group').length>20 || $('.invalid-feedback').length>0)
-    $("fieldset").filter(function() { return !($(this).children().children().is('.invalid-feedback')); }).find('.form-group').hide()
+    if ($('.form-group').length > 20 || $('.invalid-feedback').length > 0)
+        $("fieldset").filter(function () { return !($(this).children().children().is('.invalid-feedback')); }).find('.form-group').hide()
 
-$("fieldset legend").click(function(e){
-    var has_hidden=$(this.parentNode).find('.form-group:hidden')
-    if (has_hidden.length>0)
-        $(this.parentNode).find('.form-group').show('fade')
-    else
-        $(this.parentNode).find('.form-group').hide('fade')
-    
-    
-})
+    $("fieldset legend").click(function (e) {
+        var has_hidden = $(this.parentNode).find('.form-group:hidden')
+        if (has_hidden.length > 0)
+            $(this.parentNode).find('.form-group').show('fade')
+        else
+            $(this.parentNode).find('.form-group').hide('fade')
 
-$(document).ready(function() {
-  $('#search_settings').on('input', function() {
-    var searchString = $(this).val().toLowerCase();
 
-    $('fieldset').each(function() {
-        field=$(this)
-        var fieldfoundMatch = false;
-        field.find('.form-group').each(function() {
-        var $labels = $(this).find('label');
-        var foundMatch = false;
-        $labels.each(function() {
-            var labelText = $(this).text().toLowerCase();
-            if (labelText.indexOf(searchString) !== -1) {
-            foundMatch = true;
-            fieldfoundMatch= true;
-            return false; // break out of loop early
-            }
+    })
+
+    $(document).ready(function () {
+        $('#search_settings').on('input', function () {
+            var searchString = $(this).val().toLowerCase();
+
+            $('fieldset').each(function () {
+                field = $(this)
+                var fieldfoundMatch = false;
+                field.find('.form-group').each(function () {
+                    var $labels = $(this).find('label');
+                    var foundMatch = false;
+                    $labels.each(function () {
+                        var labelText = $(this).text().toLowerCase();
+                        if (labelText.indexOf(searchString) !== -1) {
+                            foundMatch = true;
+                            fieldfoundMatch = true;
+                            return false; // break out of loop early
+                        }
+                    });
+                    var $inputs = $(this).find('input');
+                    $inputs.each(function () {
+                        var labelText = $(this).attr('id').toLowerCase();
+                        if (labelText.indexOf(searchString) !== -1) {
+                            foundMatch = true;
+                            fieldfoundMatch = true;
+                            return false; // break out of loop early
+                        }
+                    });
+                    if (foundMatch) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+
+                });
+                if (fieldfoundMatch) {
+                    $(this).show();
+                    $(this).find(".form-group").first().show();
+                } else {
+                    $(this).hide();
+                }
+                if (searchString == "")
+                    $("fieldset").filter(function () { return !($(this).children().children().is('.invalid-feedback')); }).find('.form-group').hide()
+            });
+
         });
-        var $inputs = $(this).find('input');
-        $inputs.each(function() {
-            var labelText = $(this).attr('id').toLowerCase();
-            if (labelText.indexOf(searchString) !== -1) {
-            foundMatch = true;
-            fieldfoundMatch= true;
-            return false; // break out of loop early
-            }
-        });
-        if (foundMatch) {
-            $(this).show();
-        } else {
-            $(this).hide();
-        }
-      
-        });
-        if (fieldfoundMatch) {
-            $(this).show();
-            $(this).find(".form-group").first().show();
-        } else {
-            $(this).hide();
-        }
-        if (searchString=="")
-            $("fieldset").filter(function() { return !($(this).children().children().is('.invalid-feedback')); }).find('.form-group').hide()
     });
-    
-  });
-});
 
 
 </script>
-%endblock
+{% endblock %}

@@ -429,7 +429,7 @@
     is_ios = false
     {% if g.install_pwa %}
 
-%if g.user_agent['os'] == "iOS" 
+{% if g.user_agent['os'] == "iOS"  %}
 is_ios = true
         % if not g.pwa and request.endpoint and("client.UserView" in request.endpoint or "admin.Dashboard" in request.endpoint)
     show_prompt()
@@ -468,7 +468,7 @@ is_ios = true
 if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
         document.location += "?darkmode=true"
       }
-% endif
+{% endif %}
     {% endif %}
 
 

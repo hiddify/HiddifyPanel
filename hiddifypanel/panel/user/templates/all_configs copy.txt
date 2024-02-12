@@ -1,13 +1,13 @@
-% for type in link_maker.all_proxies(d.child_id)
+{% for type in link_maker.all_proxies(d.child_id) %}
 {% set pinfo=link_maker.proxy_info(type) %}
 # {{type}} {{domain}}
 {{pinfo['url']}}
-% endfor
+{% endfor %}
 
 
 
 
-% if hconfigs[ConfigEnum.http_proxy_enable]
+{% if hconfigs[ConfigEnum.http_proxy_enable] %}
 
 # 
 # HTTP Not Secure
@@ -16,11 +16,11 @@
 # HTTP Not Secure
 # HTTP Not Secure
 
-% for type in link_maker.all_proxies(d.child_id)
+{% for type in link_maker.all_proxies(d.child_id) %}
 {% set pinfo=link_maker.proxy_info(type,port=80,security="http") %}
-% if pinfo!=None
+{% if pinfo!=None %}
 # HTTP {{type}} {{domain}}
 {{pinfo['url']}}
-% endif
+{% endif %}
             % endfor
             % endif

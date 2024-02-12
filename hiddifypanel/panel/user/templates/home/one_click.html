@@ -1,7 +1,7 @@
-% set sub_url="https://"+domain+"/"+hconfigs[ConfigEnum.proxy_path]+"/"+user.uuid+"/"
-%set sub_encoded_url='https%3A%2F%2F'+domain+'%2F'+hconfigs[ConfigEnum.proxy_path]+'%2F'+user.uuid+'%2F'
-%set base_download_url='/{{hconfigs[ConfigEnum.proxy_path]}}/gh'
-%set base_download_url='https://github.com'
+{% set sub_url="https://"+domain+"/"+hconfigs[ConfigEnum.proxy_path]+"/"+user.uuid+"/" %}
+{% set sub_encoded_url='https%3A%2F%2F'+domain+'%2F'+hconfigs[ConfigEnum.proxy_path]+'%2F'+user.uuid+'%2F' %}
+{% set base_download_url='/{{hconfigs[ConfigEnum.proxy_path]}}/gh' %}
+{% set base_download_url='https://github.com' %}
 
 <div class="row1  mb-2" style="margin-top: 10px;">
 
@@ -67,8 +67,7 @@
 
                         <td>
 
-                            <a href="{{base_download_url}}/hiddify/hiddify-next/releases/latest/download/hiddify-android-universal.apk"
-                                class="btn col-12 btn-primary ">{{_('Download App')}}</a>
+                            <a href="{{base_download_url}}/hiddify/hiddify-next/releases/latest/download/hiddify-android-universal.apk" class="btn col-12 btn-primary ">{{_('Download App')}}</a>
                         </td>
                         <td>
                             <a href="https://play.google.com/store/apps/details?id=app.hiddify.com" class="btn col-12 btn-primary">{{_('install from google play')}}</a>
@@ -91,8 +90,7 @@
                         </tr>
                         <tr>
                             <td>Clash / Meta</td>
-                            <td><a href="{{base_download_url}}/hiddify/HiddifyClashAndroid/releases/download/v2.7.3-h0.24/hiddify-2.7.3-h0.24-meta-alpha-universal-release.apk"
-                                    class="btn col-12 btn-primary ">{{_('Download App')}}</a></td>
+                            <td><a href="{{base_download_url}}/hiddify/HiddifyClashAndroid/releases/download/v2.7.3-h0.24/hiddify-2.7.3-h0.24-meta-alpha-universal-release.apk" class="btn col-12 btn-primary ">{{_('Download App')}}</a></td>
                             <td><a class="btn col-12 btn-success" href="clash://install-config/?url={{sub_encoded_url}}">{{_('Import in')}} Clash</a></td>
                         </tr>
                     </table>
@@ -107,8 +105,7 @@
                     <tr>
 
                         <td>
-                            <a href="{{base_download_url}}/hiddify/hiddify-next/releases/latest/download/hiddify-windows-x64-setup.zip"
-                                class="btn col-12 btn-primary ">{{_('Download App')}}</a>
+                            <a href="{{base_download_url}}/hiddify/hiddify-next/releases/latest/download/hiddify-windows-x64-setup.zip" class="btn col-12 btn-primary ">{{_('Download App')}}</a>
                         </td>
                         <td><a class="btn col-12 btn-success" href="hiddify://install-config/?url={{sub_encoded_url}}">{{_('Import')}}</a></td>
                     </tr>
@@ -129,8 +126,7 @@
                         <tr>
                             <td>Clash / Meta</td>
                             <td>
-                                <a href="{{base_download_url}}/Hiddify/HiddifyClashDesktop/releases/latest/download/HiddifyClashDesktop_13.1.4_x64_en-US.msi"
-                                    class="btn col-12 btn-primary ">{{_('Download App')}}</a>
+                                <a href="{{base_download_url}}/Hiddify/HiddifyClashDesktop/releases/latest/download/HiddifyClashDesktop_13.1.4_x64_en-US.msi" class="btn col-12 btn-primary ">{{_('Download App')}}</a>
                             </td>
                             <td><a class="btn col-12 btn-success" href="clash://install-config/?url={{sub_encoded_url}}">{{_('Import')}}</a></td>
                         </tr>
@@ -167,8 +163,7 @@
                         <tr>
                             <td>Clash / ClashMeta / HiddifyClash</td>
                             <td>
-                                <a href="{{base_download_url}}/Hiddify/HiddifyClashDesktop/releases/latest/download/hiddify-clash-desktop_13.1.4_amd64.AppImage"
-                                    class="btn col-12 btn-primary ">{{_('Download App')}}</a>
+                                <a href="{{base_download_url}}/Hiddify/HiddifyClashDesktop/releases/latest/download/hiddify-clash-desktop_13.1.4_amd64.AppImage" class="btn col-12 btn-primary ">{{_('Download App')}}</a>
                             </td>
                             <td><a class="btn col-12 btn-success" href="clash://install-config/?url={{sub_encoded_url}}">{{_('Import')}}</a></td>
                         </tr>
@@ -204,8 +199,7 @@
                         <tr>
                             <td>Clash / Meta </td>
                             <td>
-                                <a href="{{base_download_url}}/Hiddify/HiddifyClashDesktop/releases/latest/download/HiddifyClashDesktop_13.1.4_x64.dmg"
-                                    class="btn col-12 btn-primary ">{{_('Download App')}}</a>
+                                <a href="{{base_download_url}}/Hiddify/HiddifyClashDesktop/releases/latest/download/HiddifyClashDesktop_13.1.4_x64.dmg" class="btn col-12 btn-primary ">{{_('Download App')}}</a>
                             </td>
                             <td><a class="btn col-12 btn-success" href="clash://install-config/?url={{sub_encoded_url}}">{{_('Import')}}</a></td>
                         </tr>
