@@ -25,7 +25,7 @@ class Actions(FlaskView):
     @login_required(roles={Role.super_admin})
     def viewlogs(self):
         from hiddifypanel.panel.commercial.restapi.v2.admin.admin_log_api import AdminLogApi
-        log_files = AdminLogApi.LOG_FILES
+        log_files = hutils.flask.list_dir_files(f"{app.config['HIDDIFY_CONFIG_PATH']}log/system/")
         return render_template('view_logs.html', log_files=log_files)
 
     @login_required(roles={Role.super_admin})
