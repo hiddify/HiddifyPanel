@@ -147,12 +147,12 @@
 </div>
 
 </div>
-% if hconfig(ConfigEnum.is_parent)
+{% if hconfig(ConfigEnum.is_parent) %}
 {% include 'parent_dash.html' %}
-%endif
+{% endif %}
 {% endblock %}
 
-%block tail_js
+{% block tail_js %}
 {{super()}}
 <script>
     var last_bytes_sent = "{{stats['system']['bytes_sent_cumulative']}}";
@@ -291,4 +291,4 @@
     }, refresh_s * 1000);
 
 </script>
-%endblock
+{% endblock %}

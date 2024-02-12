@@ -12,7 +12,7 @@ from hiddifypanel.models.utils import fill_password, fill_username
 from hiddifypanel.models.base_account import BaseAccount
 from hiddifypanel.models.admin import AdminUser
 
-ONE_GIG = 1024*1024*1024
+ONE_GIG = 1024 * 1024 * 1024
 
 
 class UserMode(StrEnum):
@@ -46,11 +46,11 @@ class UserDetail(db.Model, SerializerMixin):
 
     @property
     def current_usage_GB(self):
-        return (self.current_usage or 0)/ONE_GIG
+        return (self.current_usage or 0) / ONE_GIG
 
     @current_usage_GB.setter
     def current_usage_GB(self, value):
-        self.current_usage = (value or 0)*ONE_GIG
+        self.current_usage = (value or 0) * ONE_GIG
 
     @property
     def ips(self):
@@ -66,7 +66,7 @@ class User(BaseAccount):
     last_online = db.Column(db.DateTime, nullable=False, default=datetime.datetime.min)
     # removed
     expiry_time = db.Column(db.Date, default=datetime.date.today() + relativedelta.relativedelta(months=6))
-    usage_limit = db.Column(db.BigInteger, default=1000*ONE_GIG, nullable=False)
+    usage_limit = db.Column(db.BigInteger, default=1000 * ONE_GIG, nullable=False)
     package_days = db.Column(db.Integer, default=90, nullable=False)
     mode = db.Column(db.Enum(UserMode), default=UserMode.no_reset, nullable=False)
     monthly = db.Column(db.Boolean, default=False)  # removed
@@ -75,7 +75,7 @@ class User(BaseAccount):
     last_reset_time = db.Column(db.Date, default=datetime.date.today())
     added_by = db.Column(db.Integer, db.ForeignKey('admin_user.id'), default=1)
     max_ips = db.Column(db.Integer, default=1000, nullable=False)
-    details = db.relationship('UserDetail', cascade="all,delete", backref='user',    lazy='dynamic',)
+    details = db.relationship('UserDetail', cascade="all,delete", backref='user', lazy='dynamic',)
     enable = db.Column(db.Boolean, default=True, nullable=False)
     ed25519_private_key = db.Column(db.String(500))
     ed25519_public_key = db.Column(db.String(100))
@@ -92,19 +92,19 @@ class User(BaseAccount):
 
     @property
     def current_usage_GB(self):
-        return (self.current_usage or 0)/ONE_GIG
+        return (self.current_usage or 0) / ONE_GIG
 
     @current_usage_GB.setter
     def current_usage_GB(self, value):
-        self.current_usage = min(1000000*ONE_GIG, (value or 0)*ONE_GIG)
+        self.current_usage = min(1000000 * ONE_GIG, (value or 0) * ONE_GIG)
 
     @property
     def usage_limit_GB(self):
-        return (self.usage_limit or 0)/ONE_GIG
+        return (self.usage_limit or 0) / ONE_GIG
 
     @usage_limit_GB.setter
     def usage_limit_GB(self, value):
-        self.usage_limit = min(1000000*ONE_GIG, (value or 0)*ONE_GIG)
+        self.usage_limit = min(1000000 * ONE_GIG, (value or 0) * ONE_GIG)
 
     @property
     def is_active(self) -> bool:
@@ -141,10 +141,10 @@ class User(BaseAccount):
         res = True
         if not self.last_reset_time:
             res = True
-        elif not self.start_date or (datetime.date.today()-self.last_reset_time).days == 0:
+        elif not self.start_date or (datetime.date.today() - self.last_reset_time).days == 0:
             res = False
         else:
-            res = ((datetime.date.today()-self.start_date).days % package_mode_dic.get(self.mode, 10000)) == 0
+            res = ((datetime.date.today() - self.start_date).days % package_mode_dic.get(self.mode, 10000)) == 0
 
         return res
 
@@ -158,7 +158,7 @@ class User(BaseAccount):
         # if user.mode==UserMode.daily:
         #     return 0
         if self.start_date:
-            days = package_mode_dic.get(self.mode, 10000)-(datetime.date.today()-self.start_date).days % package_mode_dic.get(self.mode, 10000)
+            days = package_mode_dic.get(self.mode, 10000) - (datetime.date.today() - self.start_date).days % package_mode_dic.get(self.mode, 10000)
         else:
             days = package_mode_dic.get(self.mode, 10000)
         return max(-100000, min(days, 100000))
@@ -217,7 +217,7 @@ class User(BaseAccount):
 
             expiry_time = hutils.convert.json_to_date(data['expiry_time'])
             dbuser.start_date = last_reset_time
-            dbuser.package_days = (expiry_time-last_reset_time).days  # type: ignore
+            dbuser.package_days = (expiry_time - last_reset_time).days  # type: ignore
 
         elif 'package_days' in data:
             dbuser.package_days = data['package_days']

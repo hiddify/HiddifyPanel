@@ -1,7 +1,7 @@
 {% extends 'hiddify-flask-admin/list.html' %}
 
 {% block body %}
-%if hconfig(ConfigEnum.telegram_bot_token) and g.bot
+{% if hconfig(ConfigEnum.telegram_bot_token) and g.bot %}
 <div class="callout callout-success">
     <details>
         <summary>
@@ -16,7 +16,7 @@
         <button onclick="show_send_message('offline 1w')" type="button" class="btn hbtn bg-h-grey">{{_("Offline more than 1 week")}}</button>
     </details>
 </div>
-%endif
+{% endif %}
 {{super()}}
 
 <div class="callout callout-success">
@@ -125,4 +125,4 @@
     }
 
 </script>
-%endblock
+{% endblock %}

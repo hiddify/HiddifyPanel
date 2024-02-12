@@ -306,7 +306,7 @@
 
 <script>
 
-%if hconfig(ConfigEnum.telegram_bot_token) and g.bot and not g.account.telegram_id
+    {% if hconfig(ConfigEnum.telegram_bot_token) and g.bot and not g.account.telegram_id %}
 
     if (Cookies.get('show_connect_telegram') != 'no') {
         bootbox.confirm({
@@ -324,7 +324,7 @@
             }
         });
     }
-% endif
+    {% endif %}
 
 
 
@@ -381,14 +381,14 @@
 
 </script>
 
-%if has_auto_cdn and hconfig(ConfigEnum.country)!="other" and country.lower()!=hconfig(ConfigEnum.country)
+{% if has_auto_cdn and hconfig(ConfigEnum.country)!="other" and country.lower()!=hconfig(ConfigEnum.country) %}
 {% macro reload() -%}
 <button onclick='document.location.reload()' class='btn btn-primary'>
     {{_("Check again")}}
 </button>
 {%- endmacro -%}
 {{modal("country-alarm-modal",_("Turn of VPN"),_("You should visit this page without VPN. Your country=%(your_country)s expected=%(expected_country)s",your_country=country,expected_country=hconfig(ConfigEnum.country)),footer=reload(),show=True)}}
-%endif
+{% endif %}
 
 
 {% endblock %}

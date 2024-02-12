@@ -62,7 +62,7 @@ class ConfigAdmin(AdminLTEModelView):
                 raise ValidationError('Port 443 should always be presented')
 
         if "domain" in model.key:
-            if not re.match("^([A-Za-z0-9\-.]+\.[a-zA-Z]{2,})$", model.value):
+            if not re.match("^([A-Za-z0-9\\-.]+\\.[a-zA-Z]{2,})$", model.value):
                 raise ValidationError('Invalid domain: e.g., www.google.com')
             if len(Domain.query.filter(Domain.domain == model.value).all()) > 0:
                 raise ValidationError(f"Domain model.value is exist in domains section. Use a fake domain")

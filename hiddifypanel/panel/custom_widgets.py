@@ -32,7 +32,7 @@ class DaysLeftField(IntegerField):
 class LastResetField(IntegerField):
     def process_data(self, value):
         if value is not None:
-            days_left = (datetime.date.today()-value).days
+            days_left = (datetime.date.today() - value).days
             self.data = days_left
         else:
             self.data = None
@@ -76,13 +76,13 @@ class EnumSelectField(SelectField):
 class UsageField(DecimalField):
     def process_data(self, value):
         if value is not None:
-            self.data = value/ONE_GIG
+            self.data = value / ONE_GIG
         else:
             self.data = None
 
     def process_formdata(self, valuelist):
 
         if valuelist and valuelist[0]:
-            self.data = int(float(valuelist[0])*ONE_GIG)
+            self.data = int(float(valuelist[0]) * ONE_GIG)
         else:
             self.data = None

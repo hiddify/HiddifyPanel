@@ -66,7 +66,9 @@ def verify_user_authentication_from_session() -> User | AdminUser | None:
         return User.by_uuid(session['user_sign']['uuid'])
 
 
-# actually this is not used, we authenticate the client and setup it in the flask.g object, then in views we re-authenticate with their roles to see if they have access to the view or not
+# actually this is not used, we authenticate the client and setup it in
+# the flask.g object, then in views we re-authenticate with their roles to
+# see if they have access to the view or not
 @api_auth.get_user_roles
 @basic_auth.get_user_roles
 def get_account_role(account) -> AccountRole | None:

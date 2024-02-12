@@ -20,7 +20,7 @@
 </div>
 
 <style>
-    fieldset{
+    fieldset {
         background-color: #fff;
         background-clip: border-box;
         border: 1 solid rgba(0, 0, 0, 0.125);
@@ -31,43 +31,45 @@
         display: inline-block;
         width: 100%;
     }
-    legend{
+
+    legend {
         background-color: white;
         margin: 0px;
     }
+
     legend+div>label {
         display: none;
     }
 
-@media (min-width: 576px) {
-    .card-columns {
-        column-count: 1;
+    @media (min-width: 576px) {
+        .card-columns {
+            column-count: 1;
+        }
     }
-}
 
-@media (min-width: 768px) {
-    .card-columns {
-        column-count: 2;
+    @media (min-width: 768px) {
+        .card-columns {
+            column-count: 2;
+        }
     }
-}
-fieldset {
-    box-shadow:none;
-    margin-bottom:0px;
-}
 
+    fieldset {
+        box-shadow: none;
+        margin-bottom: 0px;
+    }
 </style>
 
 {% endblock %}
 
-% block tail
+{% block tail %}
 {{super()}}
 <script>
-// $("fieldset .form-group").hide()
- //$("fieldset").filter(function() { return !($(this).children().children().is('.invalid-feedback')); }).find('.form-group').hide()
-$("fieldset legend").click(function(e){
-    $(this.parentNode).find('.form-group').toggle('fade')
-    
-    
-})
+    // $("fieldset .form-group").hide()
+    //$("fieldset").filter(function() { return !($(this).children().children().is('.invalid-feedback')); }).find('.form-group').hide()
+    $("fieldset legend").click(function (e) {
+        $(this.parentNode).find('.form-group').toggle('fade')
+
+
+    })
 </script>
-%endblock
+{% endblock %}

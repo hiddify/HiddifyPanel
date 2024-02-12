@@ -1,12 +1,12 @@
+from typing import List
 from flask import current_app, flash as flask_flash, g, request
 from apiflask import abort as apiflask_abort
 from flask_babel import lazy_gettext as _
 from flask import url_for, Markup  # type: ignore
 from urllib.parse import urlparse
-from hiddifypanel import hutils
 import user_agents
 import re
-
+import os
 from hiddifypanel.cache import cache
 from hiddifypanel.models import *
 
@@ -216,6 +216,8 @@ def proxy_path_validator(proxy_path: str) -> None:
             return apiflask_abort(400, Markup(f"Invalid Proxy Path <a href=/{client_proxy_path}/admin>User Panel</a>")) if dbg_mode else apiflask_abort(400, 'invalid request')
 
 
+def list_dir_files(dir_path: str) -> List[str]:
+    return [f for f in os.listdir(dir_path) if os.path.isfile(os.path.join(dir_path, f))]
 # region not used
 
 
@@ -229,7 +231,6 @@ def proxy_path_validator(proxy_path: str) -> None:
 
 
 # def current_account_api_key():
-#     # TODO: send real apikey
 #     return g.account.uuid
 
 

@@ -12,7 +12,7 @@
 
 
 {#
-%if g.temp_admin_link
+{% if g.temp_admin_link %}
 {% macro temp_link() -%}
 <div class="btn-group">
   <a href='{{g.temp_admin_link}}' class="btn btn-secondary copy-link"><i class="fa-regular fa-copy"></i></a>
@@ -29,7 +29,7 @@
 
 {{modal('save_emergency',_('This action is not yet finished.'),_("Please copy the emergency link before leaving this
 page."),temp_link(),show=False)}}
-%endif
+{% endif %}
 #}
 
 {% if log_file and log_file != "status.log" and log_file != "restart.log"%}
@@ -40,14 +40,13 @@ page."),temp_link(),show=False)}}
     <label class="col-6" id="process-title"></label> <label class="col-6" id="process-details"></label>
   </div>
   <div class="progress">
-    <div id="progress" class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0"
-      aria-valuemax="100"></div>
+    <div id="progress" class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
   </div>
 </div>
 {% endif %}
 
 
-% if log_file_url
+{% if log_file_url %}
 <div>
 
   <details {% if log_file=="status.log" %}open="" {% endif %}>
@@ -65,12 +64,12 @@ page."),temp_link(),show=False)}}
   </details>
 </div>
 
-% endif
+{% endif %}
 {% endblock %}
 
-%block tail_js
+{% block tail_js %}
 {{super()}}
-% if log_file_url
+{% if log_file_url %}
 <script>
   var x = document.getElementById("ilog");
   var finished = false
@@ -218,5 +217,5 @@ page."),temp_link(),show=False)}}
     });
   });
 </script>
-% endif
-%endblock
+{% endif %}
+{% endblock %}

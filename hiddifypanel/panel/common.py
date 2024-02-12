@@ -88,8 +88,8 @@ def init_app(app: APIFlask):
         if 'static' in endpoint:
             values['proxy_path'] = g.proxy_path
         if 'proxy_path' not in values:
-            if force_path:=g.get('force_proxy_path'):
-                values['proxy_path']=force_path
+            if force_path := g.get('force_proxy_path'):
+                values['proxy_path'] = force_path
             elif hutils.flask.is_admin_role(current_account.role):
                 values['proxy_path'] = hconfig(ConfigEnum.proxy_path_admin)
             elif hutils.flask.is_user_panel_call():
@@ -148,7 +148,7 @@ def init_app(app: APIFlask):
         hutils.flask.proxy_path_validator(g.proxy_path)
 
         # setup dark mode
-        if request.args.get('darkmode') != None:
+        if request.args.get('darkmode') is not None:
             session['darkmode'] = request.args.get(
                 'darkmode', '').lower() == 'true'
         g.darkmode = session.get('darkmode', False)
@@ -156,7 +156,7 @@ def init_app(app: APIFlask):
         # setup pwa
         import random
         g.install_pwa = random.random() <= 0.05
-        if request.args.get('pwa') != None:
+        if request.args.get('pwa') is not None:
             session['pwa'] = request.args.get('pwa', '').lower() == 'true'
         g.pwa = session.get('pwa', False)
 

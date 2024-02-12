@@ -51,10 +51,10 @@ class DailyUsage(db.Model, SerializerMixin):
         ).filter(DailyUsage.date == today)).first()
         users_online_today = filter_user_admin(User.query.filter(User.last_online >= today)).count()
 
-        h24 = datetime.datetime.now()-datetime.timedelta(days=1)
+        h24 = datetime.datetime.now() - datetime.timedelta(days=1)
         users_online_h24 = filter_user_admin(User.query.filter(User.last_online >= h24)).count()
 
-        m5 = datetime.datetime.now()-datetime.timedelta(minutes=5)
+        m5 = datetime.datetime.now() - datetime.timedelta(minutes=5)
         users_online_m5 = filter_user_admin(User.query.filter(User.last_online >= m5)).count()
 
         # Yesterday's usage and online count
@@ -77,7 +77,7 @@ class DailyUsage(db.Model, SerializerMixin):
             func.coalesce(func.sum(DailyUsage.usage), 0),
             func.coalesce(func.sum(DailyUsage.online), 0)
         )).first()
-        ten_years_ago = today - timedelta(days=365*10)
+        ten_years_ago = today - timedelta(days=365 * 10)
         users_online_last_10_years = filter_user_admin(User.query.filter(User.last_online >= ten_years_ago)).count()
         total_users = filter_user_admin(User.query).count()
 

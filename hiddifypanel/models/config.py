@@ -43,7 +43,7 @@ class StrConfig(db.Model, SerializerMixin):
 
 @cache.cache(ttl=500)
 def hconfig(key: ConfigEnum, child_id: int | None = None) -> str | int | None:
-    if child_id == None:
+    if child_id is None:
         child_id = Child.current.id
 
     value = None
@@ -60,7 +60,7 @@ def hconfig(key: ConfigEnum, child_id: int | None = None) -> str | int | None:
                 value = str_conf.value
             else:
                 error(f'str {key} not found ')
-    except:
+    except BaseException:
         error(f'{key} error!')
         raise
 
@@ -68,7 +68,7 @@ def hconfig(key: ConfigEnum, child_id: int | None = None) -> str | int | None:
 
 
 def set_hconfig(key: ConfigEnum, value: str | int | bool, child_id: int = None, commit: bool = True):
-    if child_id == None:
+    if child_id is None:
         child_id = Child.current.id
     print(f"chainging .... {key}---{value}---{child_id}---{commit}")
     # hconfig.invalidate(key, child_id)
@@ -109,7 +109,7 @@ def set_hconfig(key: ConfigEnum, value: str | int | bool, child_id: int = None, 
 
 @cache.cache(ttl=500,)
 def get_hconfigs(child_id: int | None = None, json=False):
-    if child_id == None:
+    if child_id is None:
         child_id = Child.current.id
 
     return {**{f'{u.key}' if json else u.key: u.value for u in BoolConfig.query.filter(BoolConfig.child_id == child_id).all() if u.key.type == bool},
@@ -127,7 +127,7 @@ def get_hconfigs_childs(child_ids: list[int], json=False):
 
 
 def add_or_update_config(commit: bool = True, child_id: int = None, override_unique_id: bool = True, **config):
-    if child_id == None:
+    if child_id is None:
         child_id = Child.current.id
     c = config['key']
     ckey = ConfigEnum(c)

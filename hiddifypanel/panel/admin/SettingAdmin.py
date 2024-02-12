@@ -45,7 +45,7 @@ class SettingAdmin(FlaskView):
 
             for cat, vs in form.data.items():  # [c for c in ConfigEnum]:
 
-                if type(vs) is dict:
+                if isinstance(vs, dict):
                     for k in ConfigEnum:
                         if k.name not in vs:
                             continue
@@ -217,10 +217,10 @@ def get_config_form():
                 render_kw = {'class': "ltr"}
                 validators = []
                 if c.key == ConfigEnum.domain_fronting_domain:
-                    validators.append(wtf.validators.Regexp("^([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})|$", re.IGNORECASE, _("config.Invalid domain")))
+                    validators.append(wtf.validators.Regexp("^([A-Za-z0-9\\-\\.]+\\.[a-zA-Z]{2,})|$", re.IGNORECASE, _("config.Invalid domain")))
                     validators.append(hiddify.validate_domain_exist)
                 elif '_domain' in c.key or "_fakedomain" in c.key:
-                    validators.append(wtf.validators.Regexp("^([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})$", re.IGNORECASE, _("config.Invalid domain")))
+                    validators.append(wtf.validators.Regexp("^([A-Za-z0-9\\-\\.]+\\.[a-zA-Z]{2,})$", re.IGNORECASE, _("config.Invalid domain")))
                     validators.append(hiddify.validate_domain_exist)
 
                     if c.key != ConfigEnum.decoy_domain:
@@ -237,12 +237,12 @@ def get_config_form():
                     # gauge width gate lamp weasel jaguar minute enough few attitude endorse situate usdt trc20 doge bep20 trx doge ltc bnb eth btc bnb
                     # enjoy control list debris chronic few door broken way negative daring life season recipe profit switch bitter casual frame aunt plate brush aerobic display
                 if c.key == ConfigEnum.parent_panel:
-                    validators.append(wtf.validators.Regexp("()|(http(s|)://([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})/.*)", re.IGNORECASE, _("Invalid admin link")))
+                    validators.append(wtf.validators.Regexp("()|(http(s|)://([A-Za-z0-9\\-\\.]+\\.[a-zA-Z]{2,})/.*)", re.IGNORECASE, _("Invalid admin link")))
                 if c.key == ConfigEnum.telegram_bot_token:
                     validators.append(wtf.validators.Regexp("()|^([0-9]{8,12}:[a-zA-Z0-9_-]{30,40})|$", re.IGNORECASE, _("config.Invalid telegram bot token")))
                 if c.key == ConfigEnum.branding_site:
                     validators.append(wtf.validators.Regexp(
-                        "()|(http(s|)://([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})/?.*)", re.IGNORECASE, _("config.Invalid brand link")))
+                        "()|(http(s|)://([A-Za-z0-9\\-\\.]+\\.[a-zA-Z]{2,})/?.*)", re.IGNORECASE, _("config.Invalid brand link")))
                     # render_kw['required']=""
 
                 if 'secret' in c.key:
@@ -256,19 +256,19 @@ def get_config_form():
 
                 if 'port' in c.key:
                     if c.key in [ConfigEnum.http_ports, ConfigEnum.tls_ports]:
-                        validators.append(wtf.validators.Regexp("^(\d+)(,\d+)*$", re.IGNORECASE, _("config.Invalid port")))
+                        validators.append(wtf.validators.Regexp("^(\\d+)(,\\d+)*$", re.IGNORECASE, _("config.Invalid port")))
                         render_kw['required'] = ""
                     else:
-                        validators.append(wtf.validators.Regexp("^(\d+)(,\d+)*$|^$", re.IGNORECASE, _("config.Invalid port")))
+                        validators.append(wtf.validators.Regexp("^(\\d+)(,\\d+)*$|^$", re.IGNORECASE, _("config.Invalid port")))
                     # validators.append(wtf.validators.Regexp("^(\d+)(,\d+)*$",re.IGNORECASE,_("config.port is required")))
 
                 # tls tricks validations
                 if c.key in [ConfigEnum.tls_fragment_size, ConfigEnum.tls_fragment_sleep, ConfigEnum.tls_padding_length, ConfigEnum.wireguard_noise_trick]:
-                    validators.append(wtf.validators.Regexp("^\d+-\d+$", re.IGNORECASE, _("config.Invalid! The pattern is number-number") + f' {c.key}'))
+                    validators.append(wtf.validators.Regexp("^\\d+-\\d+$", re.IGNORECASE, _("config.Invalid! The pattern is number-number") + f' {c.key}'))
                 # mux and hysteria validations
                 if c.key in [ConfigEnum.hysteria_up_mbps, ConfigEnum.hysteria_down_mbps, ConfigEnum.mux_max_connections, ConfigEnum.mux_min_streams, ConfigEnum.mux_max_streams,
                              ConfigEnum.mux_brutal_down_mbps, ConfigEnum.mux_brutal_up_mbps]:
-                    validators.append(wtf.validators.Regexp("^\d+$", re.IGNORECASE, _("config.Invalid! it should be a number only") + f' {c.key}'))
+                    validators.append(wtf.validators.Regexp("^\\d+$", re.IGNORECASE, _("config.Invalid! it should be a number only") + f' {c.key}'))
                 for val in validators:
                     if hasattr(val, "regex"):
                         render_kw['pattern'] = val.regex.pattern

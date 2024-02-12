@@ -88,9 +88,9 @@ def is_tls(l3):
 def get_port(proxy, hconfigs, domain_db, ptls, phttp, pport):
     l3 = proxy.l3
     port = None
-    if type(phttp) == str:
+    if isinstance(phttp, str):
         phttp = int(phttp) if phttp != "None" else None
-    if type(ptls) == str:
+    if isinstance(ptls, str):
         ptls = int(ptls) if ptls != "None" else None
     if l3 == "kcp":
         port = hconfigs[ConfigEnum.kcp_ports].split(",")[0]
@@ -366,7 +366,8 @@ def to_link(proxy):
         if g.user_agent.get('is_streisand'):
             return f'wireguard://{proxy["server"]}:{proxy["port"]}?private_key={proxy["wg_pk"]}&peer_public_key={proxy["wg_server_pub"]}&pre_shared_key={proxy["wg_psk"]}&reserved=0,0,0#{name_link}'
         else:
-            # hiddify_format = f'wg://{proxy["server"]}:{proxy["port"]}/?pk={proxy["wg_pk"]}&local_address={proxy["wg_ipv4"]}/32&peer_pk={proxy["wg_server_pub"]}&pre_shared_key={proxy["wg_psk"]}&workers=4&mtu=1380&reserved=0,0,0&ifp={proxy["wg_noise_trick"]}#{name_link}'
+            # hiddify_format =
+            # f'wg://{proxy["server"]}:{proxy["port"]}/?pk={proxy["wg_pk"]}&local_address={proxy["wg_ipv4"]}/32&peer_pk={proxy["wg_server_pub"]}&pre_shared_key={proxy["wg_psk"]}&workers=4&mtu=1380&reserved=0,0,0&ifp={proxy["wg_noise_trick"]}#{name_link}'
             return f'wg://{proxy["server"]}:{proxy["port"]}?publicKey={proxy["wg_pub"]}&privateKey={proxy["wg_pk"]}=&presharedKey={proxy["wg_psk"]}&ip=10.0.0.1&mtu=1380&keepalive=30&udp=1&reserved=0,0,0&ifp={proxy["wg_noise_trick"]}#{name_link}'
 
     baseurl = f'{proxy["proto"]}://{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}?hiddify=1'
@@ -1015,7 +1016,7 @@ def get_all_validated_proxies(domains):
 
         ip = hutils.network.get_domain_ip(d.domain, version=4)
         ip6 = hutils.network.get_domain_ip(d.domain, version=6)
-        ips = [x for x in [ip, ip6] if x != None]
+        ips = [x for x in [ip, ip6] if x is not None]
 
         for type in proxeismap[d.child_id]:
             options = []

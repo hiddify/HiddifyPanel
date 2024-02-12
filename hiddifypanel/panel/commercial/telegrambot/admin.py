@@ -61,8 +61,8 @@ def admin_keyboard_gig(old_action):
         )
     return types.InlineKeyboardMarkup(keyboard=[
         [keyboard(i) for i in range(1, 5)],
-        [keyboard(5*i) for i in range(1, 5)],
-        [keyboard(50*i) for i in range(1, 5)]
+        [keyboard(5 * i) for i in range(1, 5)],
+        [keyboard(50 * i) for i in range(1, 5)]
     ]
     )
 
@@ -75,7 +75,7 @@ def admin_keyboard_days(old_action):
         )
     return types.InlineKeyboardMarkup(keyboard=[
         [keyboard(i) for i in range(1, 16, 3)],
-        [keyboard(30*i) for i in range(1, 5)]
+        [keyboard(30 * i) for i in range(1, 5)]
     ]
     )
 
@@ -88,8 +88,8 @@ def admin_keyboard_count(old_action):
         )
     return types.InlineKeyboardMarkup(keyboard=[
         [keyboard(i) for i in range(1, 5)],
-        [keyboard(i*5) for i in range(1, 5)],
-        [keyboard(i*50) for i in range(1, 5)]
+        [keyboard(i * 5) for i in range(1, 5)],
+        [keyboard(i * 50) for i in range(1, 5)]
     ]
     )
 
@@ -143,13 +143,15 @@ def create_package(call):  # <- passes a CallbackQuery type object to your funct
                 from . import Usage
                 admin_id = admin.id
                 admin_name = admin.name
-                for i in range(1, count+1):
-                    new_text = _("Please Wait...")+f' {i}/{count}'
+                for i in range(1, count + 1):
+                    new_text = _("Please Wait...") + f' {i}/{count}'
                     bot.edit_message_text(new_text, call.message.chat.id, call.message.message_id, reply_markup=None)
                     user = User(package_days=days, usage_limit_GB=gig, name=f"{admin_name} auto {i}  {datetime.date.today()}", added_by=admin_id)
                     db.session.add(user)
                     db.session.commit()
-                    # bot.send_message(call.message.chat.id,f"Days: {days}     Limit: {gig}GB     #{i}\n\n https://{domain.domain}/{hconfig(ConfigEnum.proxy_path)}/{user.uuid}/",reply_markup=Usage.user_keyboard(user.uuid))
+                    # bot.send_message(call.message.chat.id,f"Days: {days}     Limit: {gig}GB
+                    # #{i}\n\n
+                    # https://{domain.domain}/{hconfig(ConfigEnum.proxy_path)}/{user.uuid}/",reply_markup=Usage.user_keyboard(user.uuid))
                     with force_locale(user.lang or hconfig(ConfigEnum.lang)):
                         bot.send_message(call.message.chat.id, Usage.get_usage_msg(user.uuid, domain), reply_markup=Usage.user_keyboard(user.uuid))
 

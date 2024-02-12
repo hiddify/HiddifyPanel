@@ -52,20 +52,28 @@ class DomainAdmin(AdminLTEModelView):
     can_export = False
     form_widget_args = {'show_domains': {'class': 'form-control ltr'}}
     form_args = {
-        'mode': {'enum': DomainType},
+        'mode': {
+            'enum': DomainType},
         'show_domains': {
-            'query_factory': lambda: Domain.query.filter(Domain.sub_link_only == False),
+            'query_factory': lambda: Domain.query.filter(
+                Domain.sub_link_only == False),
         },
         'domain': {
-            'validators': [Regexp(r'^(\*\.)?([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})$', message=__("Should be a valid domain"))]
-        },
+            'validators': [
+                Regexp(
+                    r'^(\*\.)?([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})$',
+                    message=__("Should be a valid domain"))]},
         "cdn_ip": {
-            'validators': [Regexp(r"(((((25[0-5]|(2[0-4]|1\d|[1-9]|)\d).){3}(25[0-5]|(2[0-4]|1\d|[1-9]|)\d))|^([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,}))[ \t\n,;]*\w{3}[ \t\n,;]*)*", message=__("Invalid IP or domain"))]
-        },
+            'validators': [
+                Regexp(
+                    r"(((((25[0-5]|(2[0-4]|1\d|[1-9]|)\d).){3}(25[0-5]|(2[0-4]|1\d|[1-9]|)\d))|^([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,}))[ \t\n,;]*\w{3}[ \t\n,;]*)*",
+                    message=__("Invalid IP or domain"))]},
         "servernames": {
-            'validators': [Regexp(r"^([\w-]+\.)+[\w-]+(,\s*([\w-]+\.)+[\w-]+)*$", re.IGNORECASE, _("Invalid REALITY hostnames"))]
-        }
-    }
+            'validators': [
+                Regexp(
+                    r"^([\w-]+\.)+[\w-]+(,\s*([\w-]+\.)+[\w-]+)*$",
+                    re.IGNORECASE,
+                    _("Invalid REALITY hostnames"))]}}
     column_list = ["domain", "alias", "mode", "domain_ip", "show_domains"]
     # column_editable_list=["domain"]
     # column_filters=["domain","mode"]
@@ -174,10 +182,10 @@ class DomainAdmin(AdminLTEModelView):
 
         dip = hutils.network.get_domain_ip(model.domain)
         if model.sub_link_only:
-            if dip == None:
+            if dip is None:
                 raise ValidationError(_("Domain can not be resolved! there is a problem in your domain"))
         elif not skip_check:
-            if dip == None:
+            if dip is None:
                 raise ValidationError(_("Domain can not be resolved! there is a problem in your domain"))
 
             domain_ip_is_same_as_panel = False
@@ -249,7 +257,7 @@ class DomainAdmin(AdminLTEModelView):
         if (model.cdn_ip):
             try:
                 hutils.network.auto_ip_selector.get_clean_ip(str(model.cdn_ip))
-            except:
+            except BaseException:
                 raise ValidationError(_("Error in auto cdn format"))
 
         old_db_domain = get_domain(model.domain)

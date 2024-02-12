@@ -28,7 +28,7 @@ class __IssueUrl:
             try:
                 del self.opts["user"]
                 del self.opts["repo"]
-            except:
+            except BaseException:
                 pass
 
         elif "user" in self.opts and "repo" in options:
@@ -156,13 +156,13 @@ def __remove_unrelated_traceback_details(stacktrace: str) -> str:
         if i == 0:
             output += line + '\n'
             continue
-        if skip_next_line == True:
+        if skip_next_line:
             skip_next_line = False
             continue
         if line.strip().startswith('File'):
             if 'hiddify' in line.lower():
                 output += line + '\n'
-                if len(lines) > i+1:
+                if len(lines) > i + 1:
                     output += lines[i + 1] + '\n'
             skip_next_line = True
 

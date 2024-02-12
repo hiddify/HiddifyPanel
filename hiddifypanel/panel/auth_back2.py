@@ -1,4 +1,4 @@
-from flask_login import LoginManager, current_user, user_accessed, user_logged_in,  COOKIE_NAME, AUTH_HEADER_NAME, logout_user
+from flask_login import LoginManager, current_user, user_accessed, user_logged_in, COOKIE_NAME, AUTH_HEADER_NAME, logout_user
 from flask import g, redirect, request, session
 from hiddifypanel.hutils.flask import hurl_for
 from flask_login.utils import _get_user
@@ -225,8 +225,6 @@ def init_app(app):
 
     @login_manager.unauthorized_handler
     def unauthorized():
-        # TODO: show the login page
-        # return request.base_url
         if g.user_agent['is_browser']:
             return redirect(hurl_for('common_bp.LoginView:basic_0', force=1, next={request.path}))
 

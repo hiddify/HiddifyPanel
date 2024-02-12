@@ -76,7 +76,7 @@ def __get_asn_short_name_imp(user_ip: str) -> str:
     try:
         asn_id = get_asn_id(user_ip)
         return __asn_map.get(str(asn_id), "unknown")
-    except:
+    except BaseException:
         return "unknown"
 
 
@@ -89,7 +89,7 @@ def __get_asn_id_imp(user_ip: str) -> str:
     try:
         asnres = IPASN.get(user_ip)
         return asnres['autonomous_system_number']
-    except:
+    except BaseException:
         return "unknown"
 
 
@@ -97,7 +97,7 @@ def get_country(user_ip: str = '') -> Union[dict, str]:
     try:
         user_ip = user_ip or get_real_user_ip()
         return (IPCOUNTRY.get(user_ip) or {}).get('country', {}).get('iso_code', 'unknown')
-    except:
+    except BaseException:
         return 'unknown'
 
 
@@ -106,7 +106,7 @@ def get_city(user_ip: str = '') -> Union[dict, str]:
         user_ip = user_ip or get_real_user_ip()
         res = __ipcity.get(user_ip)
         return {'city': res.get('city').get('name'), 'latitude': res.get('latitude'), 'longitude': res.get('longitude'), 'accuracy_radius': res.get('accuracy_radius')}
-    except:
+    except BaseException:
         return 'unknown'
 
 
@@ -147,7 +147,7 @@ def __get_host_base_on_asn(ips: Union[str, List[str]], asn_short: str) -> str:
 
     all_hosts = []
     for i in range(0, len(ips), 2):
-        if asn_short == ips[i+1]:
+        if asn_short == ips[i + 1]:
             # print("selected ",ips[i],ips[i+1])
             all_hosts.append(ips[i])
 

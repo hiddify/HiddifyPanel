@@ -25,7 +25,7 @@ def register_bot(set_hook=False):
             bot.token = hconfig(ConfigEnum.telegram_bot_token)
             try:
                 bot.username = bot.get_me().username
-            except:
+            except BaseException:
                 pass
             # bot.remove_webhook()
             # time.sleep(0.1)
@@ -49,7 +49,7 @@ def init_app(app):
             bot.token = token
             try:
                 bot.username = bot.get_me().username
-            except:
+            except BaseException:
                 pass
 
 

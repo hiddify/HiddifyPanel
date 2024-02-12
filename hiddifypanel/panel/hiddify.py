@@ -143,7 +143,7 @@ def quick_apply_users():
 
 
 def get_html_user_link(model: BaseAccount, domain: Domain):
-    is_cdn = domain.mode == DomainType.cdn if type(domain) == Domain else False
+    is_cdn = domain.mode == DomainType.cdn if isinstance(domain, Domain) else False
     res = ""
     d = domain.domain
     if "*" in d:
@@ -154,7 +154,7 @@ def get_html_user_link(model: BaseAccount, domain: Domain):
     text = domain.alias or domain.domain
     color_cls = 'info'
 
-    if type(domain) == Domain and not domain.sub_link_only and domain.mode in [DomainType.cdn, DomainType.auto_cdn_ip]:
+    if isinstance(domain, Domain) and not domain.sub_link_only and domain.mode in [DomainType.cdn, DomainType.auto_cdn_ip]:
         auto_cdn = (domain.mode == DomainType.auto_cdn_ip) or (domain.cdn_ip and "MTN" in domain.cdn_ip)
         color_cls = "success" if auto_cdn else 'warning'
         text = f'<span class="badge badge-secondary" >{"Auto" if auto_cdn else "CDN"}</span> ' + text
@@ -169,7 +169,7 @@ def validate_domain_exist(form, field):
     if not domain:
         return
     dip = hutils.network.get_domain_ip(domain)
-    if dip == None:
+    if dip is None:
         raise ValidationError(
             _("Domain can not be resolved! there is a problem in your domain"))
 
@@ -346,7 +346,7 @@ def debug_flash_if_not_in_the_same_asn(domain):
             if asn_ipv4.get('autonomous_system_organization') != asn_dip.get('autonomous_system_organization'):
                 hutils.flask.flash(_("selected domain for REALITY is not in the same ASN. To better use of the protocol, it is better to find a domain in the same ASN.") +
                                    f"<br> Server ASN={asn_ipv4.get('autonomous_system_organization','unknown')}<br>{domain}_ASN={asn_dip.get('autonomous_system_organization','unknown')}", "warning")
-    except:
+    except BaseException:
         pass
 
 
@@ -418,7 +418,7 @@ def get_wg_private_public_psk_pair():
 
 
 def get_account_panel_link(account: BaseAccount, host: str, is_https: bool = True, prefere_path_only: bool = False, child_id=None):
-    if child_id == None:
+    if child_id is None:
         child_id = Child.current.id
     is_admin = isinstance(account, AdminUser)
     basic_auth = False  # is_admin #because safri does not support it.

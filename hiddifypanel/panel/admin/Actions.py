@@ -3,7 +3,7 @@ import os
 import urllib.request
 
 from flask_classful import FlaskView, route
-from flask import render_template, request, make_response, redirect, g
+from flask import render_template, request, redirect, g
 from hiddifypanel.hutils.flask import hurl_for
 from hiddifypanel.auth import login_required
 from flask import current_app as app
@@ -22,39 +22,9 @@ class Actions(FlaskView):
     def index(self):
         return render_template('index.html')
 
-    # TODO: delete this function
-    @login_required(roles={Role.super_admin})
-    def reverselog(self, logfile):
-        if logfile == None:
-            return self.viewlogs()
-        config_dir = app.config['HIDDIFY_CONFIG_PATH']
-
-        with open(f'{config_dir}/log/system/{logfile}') as f:
-            lines = [line for line in f]
-            # logs="".join(lines[::-1])
-            logs = "".join(lines)
-        # resp= Response()
-        # resp.mimetype="text/plain"
-        from ansi2html import Ansi2HTMLConverter
-        conv = Ansi2HTMLConverter()
-
-        out = f'<div style="background-color:black; color:white;padding:10px">{conv.convert(logs)}</div>'
-        # if len(lines)>5 and "----Finished!---" in "".join(lines[-min(10,len(lines)):]):
-        #     out=f"<a href='#' target='_blank'><div style='background-color:#b1eab1; padding: 10px;border: solid;'>Finished! For scrolling the log click here.</div></a>{out}"
-
-        response = make_response(out)
-        response.headers['Access-Control-Allow-Origin'] = '*'
-        response.headers['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE'
-        response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
-        return response
-
     @login_required(roles={Role.super_admin})
     def viewlogs(self):
-        config_dir = app.config['HIDDIFY_CONFIG_PATH']
-
-        log_files = []
-        for filename in sorted(os.listdir(f'{config_dir}/log/system/')):
-            log_files.append(filename)
+        log_files = hutils.flask.list_dir_files(f"{app.config['HIDDIFY_CONFIG_PATH']}log/system/")
         return render_template('view_logs.html', log_files=log_files)
 
     @login_required(roles={Role.super_admin})
@@ -111,7 +81,7 @@ class Actions(FlaskView):
         file = "install.sh" if complete_install else "apply_configs.sh"
         try:
             server_ip = urllib.request.urlopen('https://v4.ident.me/').read().decode('utf8')
-        except:
+        except BaseException:
             server_ip = "server_ip"
 
         admin_links = f"<h5 >{_('Admin Links')}</h5><ul>"
@@ -209,7 +179,7 @@ class Actions(FlaskView):
                     response_time = ping3.ping(d, unit='ms')
                     if response_time:
                         response_time = int(response_time)
-                except:
+                except BaseException:
                     pass
                 dip_asn = (IPASN.get(dip) or {}).get('autonomous_system_organization', 'unknown')
                 res += f"<tr><td>{d}</td><td>{dip}</td><td>{dip_country}</td><td>{dip_asn}</td><td>{response_time}</td><td>{tcp_ping}<td></tr>"

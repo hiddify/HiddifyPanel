@@ -87,7 +87,7 @@ class AdminUser(BaseAccount):
             dbuser.parent_admin_id = parent_admin.id  # type: ignore
 
         dbuser.mode = data.get('mode', AdminMode.agent)
-        dbuser.can_add_admin = data.get('can_add_admin') == True
+        dbuser.can_add_admin = data.get('can_add_admin')
         if commit:
             db.session.commit()
         return dbuser
@@ -118,7 +118,7 @@ class AdminUser(BaseAccount):
             seen.add(self.id)
         if depth > 0:
             for sub_admin in self.sub_admins:
-                sub_admin_ids += sub_admin.recursive_sub_admins_ids(depth-1, seen=seen)
+                sub_admin_ids += sub_admin.recursive_sub_admins_ids(depth - 1, seen=seen)
         return sub_admin_ids
 
     def remove(self):

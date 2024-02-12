@@ -4,7 +4,7 @@ from flask.views import MethodView
 from flask import current_app as app
 from flask import g, request
 from apiflask import Schema, abort
-from apiflask.fields import String,  URL,  Enum,  List,  Nested
+from apiflask.fields import String, URL, Enum, List, Nested
 from flask_babel import lazy_gettext as _
 from urllib.parse import quote_plus, urlparse
 import user_agents
