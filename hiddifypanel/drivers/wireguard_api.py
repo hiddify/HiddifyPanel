@@ -94,7 +94,7 @@ class WireguardApi(DriverABS):
         res = {}
         for u in users:
             if use := all_usages.get(u.wg_pub):
-                res[u] = use['up']+use['down']
+                res[u] = use['up'] + use['down']
             else:
                 res[u] = 0
         return res

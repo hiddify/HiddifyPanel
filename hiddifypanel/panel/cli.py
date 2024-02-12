@@ -38,10 +38,10 @@ def backup():
         json.dump(dbdict, fp, indent=4, sort_keys=True, default=str)
 
     if hconfig(ConfigEnum.telegram_bot_token):
-        for admin in AdminUser.query.filter(AdminUser.mode == AdminMode.super_admin, AdminUser.telegram_id != None).all():
+        for admin in AdminUser.query.filter(AdminUser.mode == AdminMode.super_admin, AdminUser.telegram_id is not None).all():
             from hiddifypanel.panel.commercial.telegrambot import bot
             with open(dst, 'rb') as document:
-                caption = ("Backup \n"+admin_links())
+                caption = ("Backup \n" + admin_links())
                 bot.send_document(admin.telegram_id, document, visible_file_name=dst.replace("backup/", ""), caption=caption[:min(len(caption), 1000)])
 
 
@@ -61,7 +61,7 @@ def all_configs():
     domains = Domain.query.all()
     sslip_domains = [d.domain for d in domains if "sslip.io" in d.domain]
 
-    configs['chconfigs'][0]['first_setup'] = def_user != None and len(sslip_domains) > 0
+    configs['chconfigs'][0]['first_setup'] = def_user is not None and len(sslip_domains) > 0
     server_ip = hutils.network.get_ip_str(4)
     owner = AdminUser.get_super_admin()
 

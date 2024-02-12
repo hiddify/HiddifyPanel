@@ -42,10 +42,10 @@ class ProxyAdmin(FlaskView):
         elif all_proxy_form.submit_detail.data and all_proxy_form.validate_on_submit():
 
             for cdn, vs in all_proxy_form.data.items():  # [c for c in ConfigEnum]:
-                if type(vs) is not dict:
+                if not isinstance(vs, dict):
                     continue
                 for proto, v in vs.items():  # [c for c in ConfigEnum]:
-                    if type(v) is not dict:
+                    if not isinstance(v, dict):
                         continue
                     for proxy_id, enable in v.items():
                         if not proxy_id.startswith("p_"):

@@ -21,13 +21,13 @@ def get_domain_ip(domain: str, retry: int = 3, version: Literal[4, 6] = None) ->
     if not version:
         try:
             res = socket.gethostbyname(domain)
-        except:
+        except BaseException:
             pass
 
     if not res and version != 6:
         try:
             res = socket.getaddrinfo(domain, None, socket.AF_INET)[0][4][0]
-        except:
+        except BaseException:
             pass
 
     if not res and version != 4:
@@ -36,13 +36,13 @@ def get_domain_ip(domain: str, retry: int = 3, version: Literal[4, 6] = None) ->
 
             res = res[1:-1]
 
-        except:
+        except BaseException:
             pass
 
     if retry <= 0 or not res:
         return None
 
-    return ipaddress.ip_address(res) or get_domain_ip(domain, retry=retry-1) if res else None
+    return ipaddress.ip_address(res) or get_domain_ip(domain, retry=retry - 1) if res else None
 
 
 def get_socket_public_ip(version: Literal[4, 6]) -> Union[ipaddress.IPv4Address, ipaddress.IPv6Address, None]:
@@ -99,7 +99,7 @@ def get_ips(version: Literal[4, 6]) -> List[Union[ipaddress.IPv4Address, ipaddre
         ip = urllib.request.urlopen(f'https://v{version}.ident.me/').read().decode('utf8')
         if ip:
             addrs.append(ipaddress.ip_address(ip))
-    except:
+    except BaseException:
         pass
 
     # remove duplicates
@@ -129,10 +129,10 @@ def get_ip(version: Literal[4, 6], retry: int = 5) -> ipaddress.IPv4Address | ip
             ip = urllib.request.urlopen(f'https://v{version}.ident.me/').read().decode('utf8')
             if ip:
                 ip = ipaddress.ip_address(ip)
-        except:
+        except BaseException:
             pass
     if ip is None and retry > 0:
-        ip = get_ip(version, retry=retry-1)
+        ip = get_ip(version, retry=retry - 1)
     return ip
 
 
@@ -144,7 +144,7 @@ def check_connection_to_remote(api_url: str) -> bool:
         _ = requests.get(path, verify=False, timeout=2).json()
         return True
 
-    except:
+    except BaseException:
         return False
 
 
@@ -159,19 +159,19 @@ def check_connection_for_domain(domain: str) -> bool:
             f"https://{domain}/{path}", verify=False, timeout=10).json()
         return res['status'] == 200
 
-    except:
+    except BaseException:
         try:
             print(f"http://{domain}/{path}")
             res = requests.get(
                 f"http://{domain}/{path}", verify=False, timeout=10).json()
             return res['status'] == 200
-        except:
+        except BaseException:
             try:
                 print(f"http://{get_domain_ip(domain)}/{path}")
                 res = requests.get(
                     f"http://{get_domain_ip(domain)}/{path}", verify=False, timeout=10).json()
                 return res['status'] == 200
-            except:
+            except BaseException:
                 return False
 
 
@@ -183,7 +183,7 @@ def get_random_domains(count: int = 1, retry: int = 3) -> List[str]:
         # data_cn=requests.get(url).json()
 
         domains = [urlparse(d['input']).netloc.lower() for d in data_ir['results'] if d['scores']['blocking_country'] == 0.0]
-        domains = [d for d in domains if not d.endswith(".ir") and not ".gov" in d]
+        domains = [d for d in domains if not d.endswith(".ir") and ".gov" not in d]
 
         return random.sample(domains, count)
     except Exception as e:
@@ -192,7 +192,7 @@ def get_random_domains(count: int = 1, retry: int = 3) -> List[str]:
             defdomains = ["fa.wikipedia.org", 'en.wikipedia.org', 'wikipedia.org', 'yahoo.com', 'en.yahoo.com']
             print('Error, using default domains')
             return random.sample(defdomains, count)
-        return get_random_domains(count, retry-1)
+        return get_random_domains(count, retry - 1)
 
 
 # not used
@@ -219,7 +219,7 @@ def is_domain_support_h2(sni: str, server: str = '') -> bool:
                 elapsed_time = time.monotonic() - start_time
                 valid = ssock.version() == "TLSv1.3"
                 if valid:
-                    if int(max(1, elapsed_time*1000)):
+                    if int(max(1, elapsed_time * 1000)):
                         return True
                 return False
     except Exception as e:
@@ -247,7 +247,7 @@ def get_random_decoy_domain() -> str:
 
 def is_domain_use_letsencrypt(domain: str) -> bool:
     """
-    This function is used to filter the payment and big companies to 
+    This function is used to filter the payment and big companies to
     avoid phishing detection
     """
     try:
@@ -260,7 +260,7 @@ def is_domain_use_letsencrypt(domain: str) -> bool:
         issuer = dict(x[0] for x in certificate.get("issuer", []))
 
         return issuer['organizationName'] == "Let's Encrypt"
-    except:
+    except BaseException:
         return False
 
 
@@ -297,7 +297,7 @@ def is_ssh_password_authentication_enabled() -> bool:
                 line = line.strip()
                 if line.startswith('#'):
                     continue
-                if re.search("^PasswordAuthentication\s+no", line, re.IGNORECASE):
+                if re.search("^PasswordAuthentication\\s+no", line, re.IGNORECASE):
                     return False
 
     return True

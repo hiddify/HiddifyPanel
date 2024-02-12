@@ -16,7 +16,7 @@ def do_base_64(input: str) -> str:
 def is_valid_uuid(val: str, version: int | None = None) -> bool:
     try:
         uuid.UUID(val, version=version)
-    except:
+    except BaseException:
         return False
 
     return True

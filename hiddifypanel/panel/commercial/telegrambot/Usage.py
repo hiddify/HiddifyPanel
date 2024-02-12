@@ -88,5 +88,5 @@ def update_usage_callback(call):  # <- passes a CallbackQuery type object to you
             print(e)
             try:
                 bot.answer_callback_query(call.id, cache_time=1)
-            except:
+            except BaseException:
                 pass

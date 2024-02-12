@@ -16,7 +16,7 @@ class Report(db.Model, SerializerMixin):
     accuracy_radius = Column(Float, )
 
     date = db.Column(db.DateTime, nullable=False, default=datetime.datetime.min)
-    details = db.relationship('ReportDetail', cascade="all,delete", backref='report',    lazy='dynamic',)
+    details = db.relationship('ReportDetail', cascade="all,delete", backref='report', lazy='dynamic',)
 
 
 class ReportDetail(db.Model, SerializerMixin):

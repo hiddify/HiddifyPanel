@@ -7,21 +7,22 @@ from hiddifypanel.models.config import hconfig
 from hiddifypanel.models.config_enum import ConfigEnum
 from flask_babel import gettext as _
 
+
 def is_int(input: str) -> bool:
     try:
         int(input)
         return True
-    except:
+    except BaseException:
         return False
 
 
-def to_int(s: str|None) -> int|None:
+def to_int(s: str | None) -> int | None:
     '''Returns 0 if <s> is not a number'''
     if not s:
         return None
     try:
         return int(s)
-    except:
+    except BaseException:
         return 0
 
 
@@ -32,7 +33,7 @@ def date_to_json(d: datetime) -> str | None:
 def json_to_date(date_str: str) -> datetime | str:
     try:
         return datetime.strptime(date_str, '%Y-%m-%d')
-    except:
+    except BaseException:
         return date_str
 
 
@@ -44,7 +45,7 @@ def time_to_json(d: datetime) -> str | None:
 def json_to_time(time_str: str) -> datetime | str:
     try:
         return datetime.strptime(time_str, "%Y-%m-%d %H:%M:%S")
-    except:
+    except BaseException:
         return time_str
 
 

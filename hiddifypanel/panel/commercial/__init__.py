@@ -30,9 +30,9 @@ def config_changed_event(conf, old_value):
             set_hconfig(ConfigEnum.is_parent, False)
         if not old_value and conf.value:
             Domain.query.delete()
-            new_domain = hutils.network.get_ip_str(4)+".sslip.io"
+            new_domain = hutils.network.get_ip_str(4) + ".sslip.io"
             if not ParentDomain.query.filter(ParentDomain.domain == new_domain).first():
-                db.session.add(ParentDomain(domain=hutils.network.get_ip_str(4)+".sslip.io"))
+                db.session.add(ParentDomain(domain=hutils.network.get_ip_str(4) + ".sslip.io"))
                 db.session.commit()
 
 

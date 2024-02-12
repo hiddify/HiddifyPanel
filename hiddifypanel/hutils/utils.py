@@ -7,7 +7,7 @@ import sys
 from hiddifypanel.cache import cache
 
 
-to_gig_d = 1000*1000*1000
+to_gig_d = 1000 * 1000 * 1000
 
 
 def error(str):

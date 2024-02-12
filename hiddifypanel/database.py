@@ -3,7 +3,7 @@ from sqlalchemy_utils import UUIDType
 import re
 import os
 
-db:SQLAlchemy = SQLAlchemy()
+db: SQLAlchemy = SQLAlchemy()
 db.UUID = UUIDType  # type: ignore
 
 

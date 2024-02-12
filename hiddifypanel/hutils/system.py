@@ -10,9 +10,9 @@ def get_folder_size(folder_path: str) -> int:
                 file_path = os.path.join(dirpath, file)
                 try:
                     total_size += os.path.getsize(file_path)
-                except:
+                except BaseException:
                     pass
-    except:
+    except BaseException:
         pass
     return total_size
 
@@ -33,7 +33,7 @@ def top_processes() -> dict:
         if mem_info is None:
             continue
         mem_usage = mem_info.uss
-        cpu_percent = p.info['cpu_percent']/num_cores
+        cpu_percent = p.info['cpu_percent'] / num_cores
         if name in memory_usage:
             memory_usage[name] += mem_usage / (1024 ** 3)
             ram_usage[name] += mem_info.rss / (1024 ** 3)
@@ -44,11 +44,11 @@ def top_processes() -> dict:
             cpu_usage[name] = cpu_percent
 
     while len(cpu_usage) < 5:
-        cpu_usage[" "*len(cpu_usage)] = 0
+        cpu_usage[" " * len(cpu_usage)] = 0
     while len(ram_usage) < 5:
-        ram_usage[" "*len(ram_usage)] = 0
+        ram_usage[" " * len(ram_usage)] = 0
     while len(memory_usage) < 5:
-        memory_usage[" "*len(memory_usage)] = 0
+        memory_usage[" " * len(memory_usage)] = 0
     # Sort the processes by memory usage, RAM usage, and CPU usage
     top_memory = sorted(memory_usage.items(), key=lambda x: x[1], reverse=True)[:5]
     top_ram = sorted(ram_usage.items(), key=lambda x: x[1], reverse=True)[:5]
@@ -109,7 +109,7 @@ def system_stats() -> dict:
         "bytes_sent_cumulative": bytes_sent_cumulative,
         "bytes_recv_cumulative": bytes_recv_cumulative,
         "net_sent_cumulative_GB": bytes_sent_cumulative / 1024**3,
-        "net_total_cumulative_GB": (bytes_sent_cumulative+bytes_recv_cumulative) / 1024**3,
+        "net_total_cumulative_GB": (bytes_sent_cumulative + bytes_recv_cumulative) / 1024**3,
         "total_connections": total_connections,
         "total_unique_ips": total_unique_ips,
         "load_avg_1min": load_avg[0],

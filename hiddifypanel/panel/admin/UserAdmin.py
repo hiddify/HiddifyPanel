@@ -31,9 +31,9 @@ class UserAdmin(AdminLTEModelView):
     }
     list_template = 'model/user_list.html'
 
-    form_columns = ["name", "comment","usage_limit","reset_usage","package_days","reset_days","mode","uuid", "enable",]
+    form_columns = ["name", "comment", "usage_limit", "reset_usage", "package_days", "reset_days", "mode", "uuid", "enable",]
     # form_excluded_columns = ['current_usage', 'monthly', 'telegram_id', 'last_online', 'expiry_time', 'last_reset_time', 'current_usage_GB',
-                            #  'start_date', 'added_by', 'admin', 'details', 'max_ips', 'ed25519_private_key', 'ed25519_public_key', 'username', 'password']
+    #  'start_date', 'added_by', 'admin', 'details', 'max_ips', 'ed25519_private_key', 'ed25519_public_key', 'username', 'password']
     page_size = 50
     # edit_modal=True
     # create_modal=True
@@ -136,11 +136,11 @@ class UserAdmin(AdminLTEModelView):
         else:
             link = '<i class="fa-solid fa-circle-xmark text-danger"></i> '
 
-        href = hiddify.get_account_panel_link(model, request.host, is_https=True)+f"#{model.name}"
+        href = hiddify.get_account_panel_link(model, request.host, is_https=True) + f"#{model.name}"
 
         link += f"<a target='_blank' class='share-link' data-copy='{href}' href='{href}'>{model.name} <i class='fa-solid fa-arrow-up-right-from-square'></i></a>"
 
-        return Markup(extra+link)
+        return Markup(extra + link)
 
     def _ul_formatter(view, context, model, name):
         domains = get_panel_domains()
@@ -154,7 +154,7 @@ class UserAdmin(AdminLTEModelView):
     def _usage_formatter(view, context, model, name):
         u = round(model.current_usage_GB, 3)
         t = round(model.usage_limit_GB, 3)
-        rate = round(u*100/(t+0.000001))
+        rate = round(u * 100 / (t + 0.000001))
         state = "danger" if u >= t else ('warning' if rate > 80 else 'success')
         color = "#ff7e7e" if u >= t else ('#ffc107' if rate > 80 else '#9ee150')
         return Markup(f"""
@@ -181,11 +181,11 @@ class UserAdmin(AdminLTEModelView):
     def _online_formatter(view, context, model, name):
         if not model.last_online:
             return Markup("-")
-        diff = model.last_online-datetime.datetime.now()
+        diff = model.last_online - datetime.datetime.now()
 
         if diff.days < -1000:
             return Markup("-")
-        if diff.total_seconds() > -60*2:
+        if diff.total_seconds() > -60 * 2:
             return Markup(f"<span class='badge badge-success'>{_('Online')}</span>")
         state = "danger" if diff.days < -3 else ("success" if diff.days >= -1 else "warning")
         return Markup(f"<span class='badge badge-{state}'>{hutils.convert.format_timedelta(diff,granularity='min')}</span>")
@@ -215,7 +215,7 @@ class UserAdmin(AdminLTEModelView):
 
     def on_form_prefill(self, form, id=None):
         # print("================",form._obj.start_date)
-        if id == None or form._obj is None or form._obj.start_date is None:
+        if id is None or form._obj is None or form._obj.start_date is None:
             msg = _("Package not started yet.")
             # form.reset['class']="d-none"
             delattr(form, 'reset_days')

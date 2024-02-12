@@ -21,7 +21,7 @@ def get_random_password(length: int = 16) -> str:
 
 
 def __is_port_in_range(port, start_port: int | str | None, count: int):
-    if start_port == None:
+    if start_port is None:
         return False
     start_port = int(start_port)
     if port < start_port:

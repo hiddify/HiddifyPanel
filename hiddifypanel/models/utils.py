@@ -10,7 +10,7 @@ def fill_username(model) -> None:
     minimum_username_length = 10
 
     if len(base_username) < minimum_username_length:
-        base_username += hutils.random.get_random_string(minimum_username_length-len(base_username), minimum_username_length)
+        base_username += hutils.random.get_random_string(minimum_username_length - len(base_username), minimum_username_length)
 
     if len(base_username) > 100:
         base_username = base_username[0:100]

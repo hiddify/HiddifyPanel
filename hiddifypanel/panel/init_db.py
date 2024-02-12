@@ -368,7 +368,7 @@ def _v7():
     try:
         Proxy.query.filter(Proxy.name == 'tls XTLS direct trojan').delete()
         Proxy.query.filter(Proxy.name == 'tls XTLSVision direct trojan').delete()
-    except:
+    except BaseException:
         pass
     add_config_if_not_exist(ConfigEnum.telegram_lib, "python")
     add_config_if_not_exist(ConfigEnum.admin_lang, hconfig(ConfigEnum.lang))
@@ -387,7 +387,7 @@ def _v9():
     try:
         for u in User.query.all():
             u.mode = UserMode.monthly if u.monthly else UserMode.no_reset
-    except:
+    except BaseException:
         pass
 
 
@@ -505,7 +505,7 @@ def make_proxy_rows(cfgs):
 
 
 def add_config_if_not_exist(key: ConfigEnum, val: str | int, child_id: int | None = None):
-    if child_id == None:
+    if child_id is None:
         child_id = Child.current.id
 
     old_val = hconfig(key, child_id)
@@ -518,14 +518,14 @@ def add_column(column):
     try:
         column_type = column.type.compile(db.engine.dialect)
         db.engine.execute(f'ALTER TABLE {column.table.name} ADD COLUMN {column.name} {column_type}')
-    except:
+    except BaseException:
         pass
 
 
 def execute(query):
     try:
         db.engine.execute(query)
-    except:
+    except BaseException:
         pass
 
 

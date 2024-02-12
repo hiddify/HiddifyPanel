@@ -32,7 +32,7 @@ class AnonymousAccount(BaseAccount):
         return False
 
     def __eq__(self, other):
-        if other == None:
+        if other is None:
             return True
         if isinstance(other, AnonymousAccount):
             return True

@@ -97,20 +97,20 @@ class AdminstratorAdmin(AdminLTEModelView):
             href = hiddify.get_account_panel_link(model, d) + f'#{model.name}'
             link = f"<a target='_blank' class='share-link' data-copy='{href}' href='{href}'>{model.name} <i class='fa-solid fa-arrow-up-right-from-square'></i></a>"
             if model.parent_admin:
-                return Markup(model.parent_admin.name + "&rlm;&lrm; / &rlm;&lrm;"+link)
+                return Markup(model.parent_admin.name + "&rlm;&lrm; / &rlm;&lrm;" + link)
             return Markup(link)
         else:
             return model.name
 
     def _online_users_formatter(view, context, model, name):
-        last_day = datetime.datetime.now()-datetime.timedelta(days=1)
+        last_day = datetime.datetime.now() - datetime.timedelta(days=1)
         u = model.recursive_users_query().filter(User.last_online > last_day).count()
         t = model.recursive_users_query().count()
         # actives=[u for u in model.recursive_users_query().all() if u.is_active]
         # allusers=model.recursive_users_query().count()
         # onlines=[p for p in  users  if p.last_online and p.last_online>last_day]
         # return Markup(f"<a class='btn btn-xs btn-default' href='{hurl_for('flask.user.index_view',admin_id=model.id)}'> {_('Online')}: {onlines}</a>")
-        rate = round(u*100/(t+0.000001))
+        rate = round(u * 100 / (t + 0.000001))
         state = "danger" if u >= t else ('warning' if rate > 80 else 'success')
         color = "#ff7e7e" if u >= t else ('#ffc107' if rate > 80 else '#9ee150')
         return Markup(f"""
@@ -126,7 +126,7 @@ class AdminstratorAdmin(AdminLTEModelView):
         if model.mode == AdminMode.super_admin:
             return f"{u} / ∞"
         t = model.max_users
-        rate = round(u*100/(t+0.000001))
+        rate = round(u * 100 / (t + 0.000001))
         state = "danger" if u >= t else ('warning' if rate > 80 else 'success')
         color = "#ff7e7e" if u >= t else ('#ffc107' if rate > 80 else '#9ee150')
         return Markup(f"""
@@ -144,7 +144,7 @@ class AdminstratorAdmin(AdminLTEModelView):
         if model.mode == AdminMode.super_admin:
             return f"{u} / ∞"
         t = model.max_active_users
-        rate = round(u*100/(t+0.000001))
+        rate = round(u * 100 / (t + 0.000001))
         state = "danger" if u >= t else ('warning' if rate > 80 else 'success')
         color = "#ff7e7e" if u >= t else ('#ffc107' if rate > 80 else '#9ee150')
         return Markup(f"""
@@ -200,7 +200,7 @@ class AdminstratorAdmin(AdminLTEModelView):
         # else:
         #     model.parent_admin_id=1
         #     model.parent_admin=AdminUser.query.filter(AdminUser.id==1).first()
-        if model.id != 1 and model.parent_admin == None:
+        if model.id != 1 and model.parent_admin is None:
             model.parent_admin_id = g.account.id
             model.parent_admin = g.account
 

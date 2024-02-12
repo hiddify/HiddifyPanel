@@ -63,18 +63,18 @@ def add_users_usage(dbusers_bytes, child_id):
             user_driver.add_client(user)
             send_bot_message(user)
             have_change = True
-        if type(usage_bytes) != int or usage_bytes == 0:
+        if not isinstance(usage_bytes, int) or usage_bytes == 0:
             res[user.uuid] = "No usage"
         else:
             daily_usage.get(user.added_by, daily_usage[1]).usage += usage_bytes
-            in_gig = (usage_bytes)/to_gig_d
+            in_gig = (usage_bytes) / to_gig_d
             res[user.uuid] = in_gig
             user.current_usage_GB += in_gig
             detail.current_usage_GB += in_gig
             user.last_online = datetime.datetime.now()
             detail.last_online = datetime.datetime.now()
 
-            if user.start_date == None:
+            if user.start_date is None:
                 user.start_date = datetime.date.today()
 
         if before_enabled_users[user.uuid] and not user.is_active:
@@ -98,7 +98,7 @@ def send_bot_message(user):
     from hiddifypanel.panel.commercial.telegrambot import bot, Usage
     try:
         msg = Usage.get_usage_msg(user.uuid)
-        msg = _("User activated!") if user.is_active else _("Package ended!")+"\n"+msg
+        msg = _("User activated!") if user.is_active else _("Package ended!") + "\n" + msg
         bot.send_message(user.telegram_id, msg, reply_markup=Usage.user_keyboard(user.uuid))
-    except:
+    except BaseException:
         pass

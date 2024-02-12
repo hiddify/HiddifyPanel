@@ -82,7 +82,7 @@ class Actions(FlaskView):
         file = "install.sh" if complete_install else "apply_configs.sh"
         try:
             server_ip = urllib.request.urlopen('https://v4.ident.me/').read().decode('utf8')
-        except:
+        except BaseException:
             server_ip = "server_ip"
 
         admin_links = f"<h5 >{_('Admin Links')}</h5><ul>"
@@ -180,7 +180,7 @@ class Actions(FlaskView):
                     response_time = ping3.ping(d, unit='ms')
                     if response_time:
                         response_time = int(response_time)
-                except:
+                except BaseException:
                     pass
                 dip_asn = (IPASN.get(dip) or {}).get('autonomous_system_organization', 'unknown')
                 res += f"<tr><td>{d}</td><td>{dip}</td><td>{dip_country}</td><td>{dip_asn}</td><td>{response_time}</td><td>{tcp_ping}<td></tr>"

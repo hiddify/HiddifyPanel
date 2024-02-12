@@ -1,4 +1,4 @@
-from flask_login import LoginManager, current_user, user_accessed, user_logged_in,  COOKIE_NAME, AUTH_HEADER_NAME, logout_user
+from flask_login import LoginManager, current_user, user_accessed, user_logged_in, COOKIE_NAME, AUTH_HEADER_NAME, logout_user
 from flask import g, redirect, request, session
 from hiddifypanel.hutils.flask import hurl_for
 from flask_login.utils import _get_user

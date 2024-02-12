@@ -24,7 +24,7 @@ class AdminLogApi(MethodView):
         log_files = hutils.flask.list_dir_files(log_dir)
 
         file_path = f"{log_dir}{file_name}"
-        if not file_name in log_files or not os.path.exists(file_path):
+        if file_name not in log_files or not os.path.exists(file_path):
             return abort(404, "Invalid log file")
 
         logs = ''
