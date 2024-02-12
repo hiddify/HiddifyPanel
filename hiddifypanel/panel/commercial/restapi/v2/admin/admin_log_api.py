@@ -15,15 +15,19 @@ class AdminLogfileSchema(Schema):
 
 
 class AdminLogApi(MethodView):
+    LOG_DIR = f"{app.config['HIDDIFY_CONFIG_PATH']}log/system/"
+    LOG_FILES = hutils.flask.list_dir_files(LOG_DIR)
 
     @app.input(AdminLogfileSchema, arg_name="data", location='form')
-    # @app.output(fields.String(description="The html of the log", many=True))
-    # @login_required({Role.super_admin})
+    @app.output(fields.String(description="The html of the log", many=True))
+    @login_required({Role.super_admin})
     def post(self, data):
-        file = data.get('file') or abort(400, "Parameter issue: 'file'")
-        file_path = f"{app.config['HIDDIFY_CONFIG_PATH']}/log/system/{file}"
-        if not os.path.exists(file_path):
+        file_name = data.get('file') or abort(400, "Parameter issue: 'file'")
+        file_path = f"{AdminLogApi.LOG_DIR}{file_name}"
+
+        if not file_name in AdminLogApi.LOG_FILES or not os.path.exists(file_path):
             return abort(404, "Invalid log file")
+
         logs = ''
         with open(file_path, 'r') as f:
             lines = [line for line in f]
