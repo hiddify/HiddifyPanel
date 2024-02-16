@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  HiddifyPT\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-17 03:02+0330\n"
-"PO-Revision-Date: 2024-02-08 04:11+0300\n"
+"POT-Creation-Date: 2024-02-17 03:03+0330\n"
+"PO-Revision-Date: 2024-02-17 02:32+0300\n"
 "Last-Translator: lymanrudni\n"
 "Language: ru\n"
 "Language-Team: Russian\n"
@@ -357,7 +357,7 @@ msgstr "Дочерний элемент удален!"
 #: hiddifypanel/panel/admin/DomainAdmin.py:41
 #: hiddifypanel/panel/admin/QuickSetup.py:117
 #: hiddifypanel/templates/flaskadmin-layout.html:101
-#: hiddifypanel/templates/flaskadmin-layout.html:137
+#: hiddifypanel/templates/flaskadmin-layout.html:136
 msgid "domain.description"
 msgstr ""
 "Пожалуйста, внимательно и правильно заполните это поле. В противном "
@@ -518,7 +518,7 @@ msgstr "Неверные имена хостов REALITY"
 #: hiddifypanel/panel/admin/DomainAdmin.py:83
 #: hiddifypanel/panel/admin/QuickSetup.py:115
 #: hiddifypanel/templates/flaskadmin-layout.html:100
-#: hiddifypanel/templates/flaskadmin-layout.html:136
+#: hiddifypanel/templates/flaskadmin-layout.html:135
 msgid "domain.domain"
 msgstr "Домен"
 
@@ -3041,7 +3041,7 @@ msgid "user.home.title"
 msgstr "Hiddify"
 
 # | msgid "📅%(expire_days)s Days Remain"
-#: hiddifypanel/panel/user/link_maker.py:978
+#: hiddifypanel/panel/user/link_maker.py:982
 #, python-format
 msgid "📅%(expire_days)s days"
 msgstr "Осталось 📅%(expire_days)s дней"

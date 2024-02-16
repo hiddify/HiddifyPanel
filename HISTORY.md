@@ -275,6 +275,10 @@
 
 #### Fix
 
+* Show force cdn ip. 
+
+* Vless trojan protocol headerType parameter in streisand. 
+
 * Mux to be compatible with streisand|shadowrocket clients & fix fragment in shadowrocket. 
 
 * Is telegram_enable field in api. 
@@ -870,6 +874,18 @@ with A2_
 * Bugs. 
 
 #### Other
+
+* Merge branch 'main' of github.com:hiddify/Hiddify-Panel. 
+
+* Merge pull request #138 from Iam54r1n4/dev-patch19. 
+  _Fix showing force cdn_
+
+* Merge pull request #139 from Iam54r1n4/dev-patch20. 
+  _Fix vless trojan protocol headerType parameter in streisand_
+
+* Update link_maker.py. 
+
+* Improve: condition. 
 
 * Merge pull request #137 from Iam54r1n4/dev-patch18. 
   _Fix admin log bug & refactor code_

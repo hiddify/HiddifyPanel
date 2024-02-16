@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-02-17 03:02+0330\n"
+"POT-Creation-Date: 2024-02-17 03:03+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh\n"
@@ -245,7 +245,7 @@ msgstr ""
 #: hiddifypanel/panel/admin/DomainAdmin.py:41
 #: hiddifypanel/panel/admin/QuickSetup.py:117
 #: hiddifypanel/templates/flaskadmin-layout.html:101
-#: hiddifypanel/templates/flaskadmin-layout.html:137
+#: hiddifypanel/templates/flaskadmin-layout.html:136
 msgid "domain.description"
 msgstr ""
 
@@ -294,7 +294,7 @@ msgstr ""
 #: hiddifypanel/panel/admin/DomainAdmin.py:83
 #: hiddifypanel/panel/admin/QuickSetup.py:115
 #: hiddifypanel/templates/flaskadmin-layout.html:100
-#: hiddifypanel/templates/flaskadmin-layout.html:136
+#: hiddifypanel/templates/flaskadmin-layout.html:135
 msgid "domain.domain"
 msgstr ""
 
@@ -2029,7 +2029,7 @@ msgstr ""
 msgid "user.home.title"
 msgstr ""
 
-#: hiddifypanel/panel/user/link_maker.py:978
+#: hiddifypanel/panel/user/link_maker.py:982
 #, python-format
 msgid "📅%(expire_days)s days"
 msgstr ""
