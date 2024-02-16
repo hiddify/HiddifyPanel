@@ -395,7 +395,11 @@ def to_link(proxy):
     if proxy.get('fingerprint', 'none') != 'none':
         baseurl += "&fp=" + proxy['fingerprint']
     if proxy['l3'] != 'quic':
-        baseurl += '&headerType=None'  # if not quic
+        # g.user_agent.get('is_streisand') and
+        if  proxy['l3'] == ProxyL3.http and proxy['type'] == 'tcp' and proxy['proto'] in ['vless', 'trojan']:
+            baseurl += '&headerType=http'
+        else:
+            baseurl += '&headerType=None'  # if not quic
     if proxy['mode'] == 'Fake' or proxy['allow_insecure']:
         baseurl += "&allowInsecure=true"
     if proxy.get('flow'):
