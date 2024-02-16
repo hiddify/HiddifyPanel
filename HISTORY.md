@@ -5,6 +5,34 @@
 
 #### New
 
+* Refactor usage driver. 
+
+* Add mass disable/enable to proxies. 
+
+* Add support for httpupgrade. 
+
+* Add switch for enable/disable ws, grpc, httpupgrade globally. 
+
+* Add shadowsocks2022 support. 
+
+* Add faketls with 2022 shadowsocks model. 
+
+* Add search to proxy details. 
+
+* Show progress details and hide log window. 
+
+* Use fast_enum fix: bugs and refactor. 
+
+* Optimize panel. 
+
+* Add initial virtual child support. 
+
+* Add wireguard. 
+
+* Add indivisual config for relay. 
+
+* Refactor configenum. 
+
 * Customizable message added. 
 
 * Add share link in user admin with qrcode. 
@@ -90,6 +118,32 @@
 * Add beta pre-release. 
 
 #### Changes
+
+* Fix format of jinja commands. 
+
+* Refactor code with autopep8. 
+
+* Useragent cache version. 
+
+* Send mux_max_stream in mux parameter. 
+
+* Refactor code. 
+
+* Refactor view logs action. 
+
+* Refactor user. 
+
+* Refactor. 
+
+* Refactor. 
+
+* Show add telegram bot pop up. 
+
+* Bool configs only return bool and others return str. update translations. 
+
+* Refactor. 
+
+* Don't send fragmentation to hiddify-next. 
 
 * Override root admin is disabled by default. 
 
@@ -220,6 +274,154 @@
 * Update hiddify next download link. 
 
 #### Fix
+
+* Mux to be compatible with streisand|shadowrocket clients & fix fragment in shadowrocket. 
+
+* Is telegram_enable field in api. 
+
+* Admin log. 
+
+* Admin api bug. 
+
+* Bug. 
+
+* Backup bug. 
+
+* Develop backup bug. 
+
+* Backup resources bug. 
+
+* Bugs. 
+
+* Bug. 
+
+* Bug. 
+
+* Bug. 
+
+* Bug. 
+
+* Bug. 
+
+* Bug. 
+
+* Fragemnt. 
+
+* Wireguard key generation. 
+
+* Bug. 
+
+* Disable redirect on import config. 
+
+* Bug when usage iis null. 
+
+* Import bug. 
+
+* Ui. 
+
+* Not showing reality and fake domains. 
+
+* No success pop up. 
+
+* Singbox fg parameter sending. 
+
+* Backup restore bug. 
+
+* Some config related issues. 
+
+* Referrer only for same origin. 
+
+* Bug when new domain changed. 
+
+* Api key bug. 
+
+* Anonymous account bug. 
+
+* Ua bug. 
+
+* Update translation. 
+
+* Fragmentation & mux. 
+
+* Mtproxies link. 
+
+* Bug. 
+
+* Backup & auto ip selector bug. 
+
+* Bug. 
+
+* Show sub link as profile url. 
+
+* Wireguard link. 
+
+* Bug in downloading backup. 
+
+* Show log in status page by default. 
+
+* Getting log file & refactor. 
+
+* Silly db bug. 
+
+* Proxies bug. 
+
+* Bugs/typos. 
+
+* Permission. 
+
+* Send telegram message. 
+
+* Bugss. 
+
+* Child bug. 
+
+* Bugs. 
+
+* Bug. 
+
+* Req. 
+
+* Bug. 
+
+* Bug. 
+
+* Mtproxies api. 
+
+* Mtprotoproxy library link. 
+
+* Xray fg. 
+
+* Fragmentation for other clients except hiddify-next. 
+
+* Get app icon url bug. 
+
+* Typo. 
+
+* Bug in wireguard. 
+
+* Bug. 
+
+* Bug. 
+
+* Bugs. 
+
+* Bug. 
+
+* Translation bug in babel. 
+
+* Bug. 
+
+* Bug. 
+
+* Telegram sending msg bug & babel. 
+
+* Telegram_id bug. 
+
+* Bug in domain. 
+
+* Telegram id. 
+
+* Better comment. 
 
 * Report not defined bug. 
 
@@ -668,6 +870,203 @@ with A2_
 * Bugs. 
 
 #### Other
+
+* Merge pull request #137 from Iam54r1n4/dev-patch18. 
+  _Fix admin log bug & refactor code_
+
+* Del: unused import. 
+
+* Merge branch 'main' into dev-patch18. 
+
+* Merge pull request #136 from Iam54r1n4/dev-patch17. 
+  _Dev patch17_
+
+* Merge pull request #135 from Iam54r1n4/dev-patch16. 
+  _Fix telegram_enable field in api_
+
+* Chg. 
+
+* Merge pull request #134 from Iam54r1n4/dev-backup. 
+  _add: childs to backup_
+
+* Add: childs to backup. 
+
+* Merge pull request #133 from Iam54r1n4/dev-backup. 
+  _fix: develop backup bug_
+
+* Merge branch 'main' into dev-backup. 
+
+* Disable basic auth due to unsupported by safari. 
+
+* Merge branch 'main' of github.com:hiddify/Hiddify-Panel. 
+
+* Merge pull request #128 from Iam54r1n4/wireguard-driver. 
+  _Add wireguard driver_
+
+* Update wireguard_api.py. 
+
+* Chg. 
+
+* Merge branch 'hiddify:main' into wireguard-driver. 
+
+* Merge pull request #132 from Iam54r1n4/dev-patch15. 
+  _fix: fragemnt_
+
+* Merge branch 'hiddify:main' into wireguard-driver. 
+
+* Merge pull request #131 from Iam54r1n4/dev-patch14. 
+  _fix: wireguard key generation_
+
+* Chg. 
+
+* Add: wireguard driver. 
+
+* Merge branch 'main' of github.com:hiddify/Hiddify-Panel. 
+
+* Merge pull request #129 from Iam54r1n4/dev-patch12. 
+  _Add user name to configs links_
+
+* Add: user name to profile url. 
+
+* Add: user name to configs links. 
+
+* Merge pull request #130 from Iam54r1n4/dev-patch13. 
+  _Fix import bug_
+
+* Update translations andd db version. 
+
+* Update translation. 
+
+* Merge branch 'main' of github.com:hiddify/Hiddify-Panel. 
+
+* Merge pull request #127 from Iam54r1n4/dev-patch11. 
+  _fix: singbox fg parameter sending_
+
+* Merge branch 'main' of github.com:hiddify/Hiddify-Panel. 
+
+* Merge pull request #126 from Iam54r1n4/dev-patch10. 
+  _Delete admin telegram_proxy_enable & speedtest_enable api fields_
+
+* Del: admin telegram_proxy_enable & speedtest_enable api fields. 
+
+* Remove any refere from urls. 
+
+* Merge pull request #125 from Iam54r1n4/dev-patch10. 
+  _Add speetest & telegram proxy availability to api_
+
+* Add: speetest & telegram proxy availability to admin "/me" api. 
+
+* Add: speetest & telegram proxy availability to user "/me" api. 
+
+* Merge pull request #123 from Iam54r1n4/dev-patch7. 
+  _fix: ua bug_
+
+* Merge branch 'main' into dev-patch7. 
+
+* Merge pull request #124 from Iam54r1n4/dev-patch9. 
+  _Fix fragmentation & mux_
+
+* Merge branch 'main' into dev-patch9. 
+
+* Remove user_agent cache and fix typo. 
+
+* Merge branch 'main' of github.com:hiddify/Hiddify-Panel. 
+
+* Merge pull request #122 from Iam54r1n4/dev-patch9. 
+  _Fix mtproxies link_
+
+* Merge pull request #121 from Iam54r1n4/dev-patch8. 
+  _Fix backup restoring & auto ip selector bug_
+
+* Merge pull request #119 from Iam54r1n4/dev-patch6. 
+  _Fix show sub link as profile url_
+
+* Chg. 
+
+* Merge pull request #120 from Iam54r1n4/dev-patch7. 
+  _Fix wireguard link_
+
+* Chg. 
+
+* Chg. 
+
+* Merge pull request #117 from Iam54r1n4/dev-patch4. 
+  _Fix bug in downloading backup_
+
+* Merge pull request #118 from Iam54r1n4/dev-patch5. 
+  _Show log in status page by default_
+
+* Merge pull request #116 from Iam54r1n4/dev-patch3. 
+  _Fix getting log file after quick setup_
+
+* Merge pull request #115 from Iam54r1n4/dev-patch2. 
+  _Fix db bool/str config tables bug_
+
+* Update translations. 
+
+* Refactor elements in useradmin. 
+
+* Merge pull request #114 from Iam54r1n4/dev-patch. 
+  _Fix bugs/typos_
+
+* Merge pull request #113 from Iam54r1n4/bug-fix. 
+
+* Fix bugs. 
+
+* Enable cache again. 
+
+* Big refactor. 
+
+* Increase session lifetime to 10 days. 
+
+* Merge. 
+
+* Merge pull request #111 from Iam54r1n4/fix-mtproxy. 
+  _fix: mtprotoproxy library link_
+
+* Merge pull request #109 from Iam54r1n4/fix-xray-fg. 
+  _fix: fragmentation_
+
+* Merge pull request #110 from Iam54r1n4/bug-fix. 
+  _Fix client app icon bug_
+
+* Merge pull request #107 from Iam54r1n4/refactor_configenum. 
+  _Complete configenum refactoring_
+
+* Refactor: configenum complete. 
+
+* Merge pull request #106 from Iam54r1n4/refac-configenum. 
+  _Refactor config_enum_
+
+* Update config_enum.py. 
+
+* Refactor: config enum. 
+
+* Merge pull request #105 from Iam54r1n4/tel_bug. 
+  _fix: telegram sending msg bug & babel_
+
+* Force https and basic auth for admins. 
+
+* Update cache to 3.0.0. 
+
+* Merge pull request #101 from Iam54r1n4/bug-fix. 
+  _Fix telegram_id bug_
+
+* Merge pull request #102 from Iam54r1n4/refactor-xui_importer. 
+  _Refactor xui importer_
+
+* Merge branch 'main' into refactor-xui_importer. 
+
+* Merge pull request #103 from Iam54r1n4/refactor-hiddifypy. 
+  _Refactor hiddify.py and hutils_
+
+* Refactor: hiddify.py & type hint. 
+
+* Refactor: network. 
+
+* Refactor: hiddify.py system. 
+
+* Refactor: xui importer. 
 
 * Merge branch 'main' of github.com:hiddify/Hiddify-Panel. 
 
