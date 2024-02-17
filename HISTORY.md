@@ -275,6 +275,8 @@
 
 #### Fix
 
+* Dependency issue. 
+
 * Show force cdn ip. 
 
 * Vless trojan protocol headerType parameter in streisand. 
