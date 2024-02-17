@@ -877,6 +877,8 @@ with A2_
 
 #### Other
 
+* Temporaryfix of translations. 
+
 * Merge branch 'main' of github.com:hiddify/Hiddify-Panel. 
 
 * Merge pull request #138 from Iam54r1n4/dev-patch19. 
