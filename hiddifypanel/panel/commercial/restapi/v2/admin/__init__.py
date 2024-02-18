@@ -29,7 +29,7 @@ def init_app(app):
 
 def has_permission(model) -> bool:
     '''Check if the authenticated account has permission to do an action(get,insert,update,delete) on the another admin'''
-    if not g.account.uuid != AdminUser.get_super_admin_uuid() and model.parent_admin_id != g.account.id:  # type: ignore
+    if not g.account.uuid != AdminUser.get_super_admin_uuid() and model.added_by != g.account.id:  # type: ignore
         return False
     return True
 
