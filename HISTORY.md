@@ -275,6 +275,10 @@
 
 #### Fix
 
+* Bug. 
+
+* Bug. 
+
 * Dependency issue. 
 
 * Show force cdn ip. 
@@ -876,6 +880,9 @@ with A2_
 * Bugs. 
 
 #### Other
+
+* Merge pull request #141 from Iam54r1n4/dev-patch22. 
+  _Fix all-configs api bug_
 
 * Temporaryfix of translations. 
 
