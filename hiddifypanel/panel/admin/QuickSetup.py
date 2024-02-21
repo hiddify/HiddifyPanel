@@ -1,8 +1,8 @@
 import re
 import flask_babel
-
+import uuid
 # from flask_babelex import lazy_gettext as _
-from flask import render_template, g
+from flask import render_template, g, request
 from flask_babel import gettext as _
 import wtforms as wtf
 from flask_wtf import FlaskForm
@@ -33,6 +33,8 @@ class QuickSetup(FlaskView):
             show_domain_info=True)
 
     def post(self):
+        if request.args.get('changepw') == "true":
+            AdminUser.current_admin_or_owner().uuid = str(uuid.uuid4())
         set_hconfig(ConfigEnum.first_setup, False)
         quick_form = get_quick_setup_form()
         lang_form = get_lang_form()

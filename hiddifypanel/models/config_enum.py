@@ -71,6 +71,7 @@ class ConfigEnum(metaclass=FastEnum):
     @classmethod
     def dbvalues(cls):
         return {c.name: c for c in ConfigEnum}
+    create_easysetup_link = _BoolConfigDscr(ConfigCategory.hidden, ApplyMode.apply, hide_in_virtual_child=True)
     wireguard_enable = _BoolConfigDscr(ConfigCategory.wireguard, ApplyMode.apply, hide_in_virtual_child=True)
     wireguard_port = _StrConfigDscr(ConfigCategory.wireguard, ApplyMode.apply, hide_in_virtual_child=True)
     wireguard_ipv6 = _StrConfigDscr(ConfigCategory.hidden, ApplyMode.apply, hide_in_virtual_child=True)
