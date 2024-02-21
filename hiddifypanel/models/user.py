@@ -225,9 +225,9 @@ class User(BaseAccount):
                 dbuser.start_date = hutils.convert.json_to_date(data['start_date'])
             else:
                 dbuser.start_date = None
-        dbuser.current_usage_GB = data['current_usage_GB']
+        dbuser.current_usage_GB = data.get('current_usage_GB',0)
 
-        dbuser.usage_limit_GB = data['usage_limit_GB']
+        dbuser.usage_limit_GB = data.get('usage_limit_GB',1000 * ONE_GIG)
         dbuser.enable = data.get('enable', True)
         if data.get('ed25519_private_key', ''):
             dbuser.ed25519_private_key = data.get('ed25519_private_key', '')
