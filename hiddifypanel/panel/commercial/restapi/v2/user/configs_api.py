@@ -10,6 +10,7 @@ from apiflask import Schema
 from apiflask.fields import String
 from hiddifypanel.panel.user.user import get_common_data
 from hiddifypanel.panel.user import link_maker
+from hiddifypanel import hutils
 
 
 class ConfigSchema(Schema):
@@ -41,7 +42,7 @@ class AllConfigsAPI(MethodView):
         items = []
         base_url = f"https://{urlparse(request.base_url).hostname}/{g.proxy_path}/{g.account.uuid}/"
         c = get_common_data(g.account.uuid, 'new')
-        config_name = c['user'].name
+        config_name = hutils.encode.url_encode(c['user'].name)
 
         # Add Auto
         items.append(
