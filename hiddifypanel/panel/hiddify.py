@@ -149,7 +149,7 @@ def get_html_user_link(model: BaseAccount, domain: Domain):
     if "*" in d:
         d = d.replace("*", hutils.random.get_random_string(5, 15))
 
-    link = get_account_panel_link(model, d) + hutils.encode.url_encode(f"#{model.name}")
+    link = f'{get_account_panel_link(model, d)}#{hutils.encode.url_encode(model.name)}'
 
     text = domain.alias or domain.domain
     color_cls = 'info'
