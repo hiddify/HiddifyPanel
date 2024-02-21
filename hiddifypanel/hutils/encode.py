@@ -5,7 +5,7 @@ import string
 
 
 def url_encode(url: str) -> str:
-    return urllib.parse.quote(url)
+    return urllib.parse.quote(url,safe='#/')
 
 
 def do_base_64(input: str) -> str:
