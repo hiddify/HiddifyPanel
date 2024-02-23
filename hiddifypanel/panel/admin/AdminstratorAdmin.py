@@ -13,6 +13,7 @@ import datetime
 from wtforms import SelectField
 
 from hiddifypanel.panel import hiddify
+from hiddifypanel import hutils
 
 
 class AdminModeField(SelectField):
@@ -94,7 +95,7 @@ class AdminstratorAdmin(AdminLTEModelView):
         d = request.host
         if d:
 
-            href = hiddify.get_account_panel_link(model, d) + f'#{model.name}'
+            href = hiddify.get_account_panel_link(model, d) + f'#{hutils.encode.url_encode(model.name)}'
             link = f"<a target='_blank' class='share-link' data-copy='{href}' href='{href}'>{model.name} <i class='fa-solid fa-arrow-up-right-from-square'></i></a>"
             if model.parent_admin:
                 return Markup(model.parent_admin.name + "&rlm;&lrm; / &rlm;&lrm;" + link)

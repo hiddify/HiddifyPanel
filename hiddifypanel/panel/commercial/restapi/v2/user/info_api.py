@@ -52,7 +52,7 @@ class InfoAPI(MethodView):
         dto = ProfileSchema()
         # user is exist for sure
         dto.profile_title = c['user'].name
-        dto.profile_url = f"{c['profile_url']}#{c['user'].name}"
+        dto.profile_url = f"{c['profile_url']}#{hutils.encode.url_encode(c['user'].name)}"
         dto.profile_usage_current = g.account.current_usage_GB
         dto.profile_usage_total = g.account.usage_limit_GB
         dto.profile_remaining_days = g.account.remaining_days()

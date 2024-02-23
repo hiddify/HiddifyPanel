@@ -275,7 +275,7 @@ def get_direct_host_or_ip(prefer_version: int) -> str:
 
     direct = get_ip_str(prefer_version)
     if direct:
-        return dir
+        return direct
 
     return get_ip_str(4 if prefer_version == 6 else 6)
 

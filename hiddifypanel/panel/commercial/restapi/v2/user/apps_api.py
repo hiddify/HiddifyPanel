@@ -6,7 +6,7 @@ from flask import g, request
 from apiflask import Schema, abort
 from apiflask.fields import String, URL, Enum, List, Nested
 from flask_babel import lazy_gettext as _
-from urllib.parse import quote_plus, urlparse
+from urllib.parse import urlparse
 import user_agents
 from strenum import StrEnum
 from enum import auto
@@ -74,12 +74,12 @@ class AppAPI(MethodView):
         self.hiddify_github_repo = 'https://github.com/hiddify'
 
         self.user_panel_url = f"https://{urlparse(request.base_url).hostname}/{g.proxy_path}/{g.account.uuid}/"
-        self.user_panel_encoded_url = quote_plus(self.user_panel_url)
+        self.user_panel_encoded_url = hutils.encode.url_encode(self.user_panel_url)
         c = get_common_data(g.account.uuid, 'new')
         self.subscription_link_url = f"{self.user_panel_url}all.txt?name={c['db_domain'].alias or c['db_domain'].domain}-{c['asn']}&asn={c['asn']}&mode={c['mode']}"
         self.subscription_link_encoded_url = hutils.encode.do_base_64(self.subscription_link_url)
         domain = c['db_domain'].alias or c['db_domain'].domain
-        self.profile_title = c['profile_title']
+        self.profile_title = hutils.encode.url_encode(c['profile_title'])
         # self.clash_all_sites = f"https://{domain}/{g.proxy_path}/clash/all.yml?mode={c['mode']}&asn={c['asn']}&name={c['asn']}_all_{domain}-{c['mode']}"
         # self.clash_foreign_sites = f"https://{domain}/{g.proxy_path}/clash/normal.yml?mode={c['mode']}&asn={c['asn']}&name={c['asn']}_normal_{domain}-{c['mode']}"
         # self.clash_blocked_sites = f"https://{domain}/{g.proxy_path}/clash/lite.yml?mode={c['mode']}&asn={c['asn']}&name={c['asn']}_lite_{c['db_domain'].alias or c['db_domain'].domain}-{c['mode']}"

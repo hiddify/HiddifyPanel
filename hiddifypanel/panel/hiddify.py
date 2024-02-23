@@ -149,7 +149,7 @@ def get_html_user_link(model: BaseAccount, domain: Domain):
     if "*" in d:
         d = d.replace("*", hutils.random.get_random_string(5, 15))
 
-    link = get_account_panel_link(model, d) + f"#{model.name}"
+    link = f'{get_account_panel_link(model, d)}#{hutils.encode.url_encode(model.name)}'
 
     text = domain.alias or domain.domain
     color_cls = 'info'
@@ -495,3 +495,18 @@ def get_backup_child_unique_id(backupdata: dict) -> str:
     #         for item in v:
     #             return item['child_unique_id']
     # return 'self'
+
+
+def is_hiddify_next_version(major_v: int = 0, minor_v: int = 0, patch_v: int = 0) -> bool:
+    '''If the user agent version be equals or higher than parameters returns True'''
+    if not g.user_agent.get('hiddify_version'):
+        return False
+    raw_v = g.user_agent['hiddify_version']
+    raw_v_len = len(raw_v)
+    u_major_v = u_major_v = raw_v[0] if raw_v_len > 0 else 0
+    u_minor_v = u_minor_v = raw_v[1] if raw_v_len > 1 else 0
+    u_patch_v = u_patch_v = raw_v[2] if raw_v_len > 2 else 0
+
+    if u_major_v >= major_v and u_minor_v >= minor_v and u_patch_v >= patch_v:
+        return True
+    return False

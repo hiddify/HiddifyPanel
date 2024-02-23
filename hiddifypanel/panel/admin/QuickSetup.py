@@ -61,6 +61,7 @@ class QuickSetup(FlaskView):
             Domain.query.filter(Domain.domain == f'{hutils.network.get_ip_str(4)}.sslip.io').delete()
             db.session.add(Domain(domain=quick_form.domain.data.lower(), mode=DomainType.direct))
             set_hconfig(ConfigEnum.block_iran_sites, quick_form.block_iran_sites.data)
+            set_hconfig(ConfigEnum.decoy_domain,quick_form.decoy_domain.data)
             # hiddify.bulk_register_configs([
             #     # {"key": ConfigEnum.telegram_enable, "value": quick_form.enable_telegram.data == True},
             #     # {"key": ConfigEnum.vmess_enable, "value": quick_form.enable_vmess.data == True},
