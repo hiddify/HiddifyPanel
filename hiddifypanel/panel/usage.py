@@ -84,7 +84,7 @@ def add_users_usage(dbusers_bytes, child_id):
             res[user.uuid] = f"{res[user.uuid]} !OUT of USAGE! Client Removed"
 
     db.session.commit()
-    if have_change and hconfig(ConfigEnum.core_type == 'singbox'):
+    if have_change:
         hiddify.quick_apply_users()
 
     return {"status": 'success', "comments": res}

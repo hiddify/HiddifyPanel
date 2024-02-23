@@ -503,9 +503,9 @@ def is_hiddify_next_version(major_v: int = 0, minor_v: int = 0, patch_v: int = 0
         return False
     raw_v = g.user_agent['hiddify_version']
     raw_v_len = len(raw_v)
-    u_major_v = u_major_v = raw_v[0] if raw_v_len > 0 else 0
-    u_minor_v = u_minor_v = raw_v[1] if raw_v_len > 1 else 0
-    u_patch_v = u_patch_v = raw_v[2] if raw_v_len > 2 else 0
+    u_major_v = raw_v[0] if raw_v_len > 0 else 0
+    u_minor_v = raw_v[1] if raw_v_len > 1 else 0
+    u_patch_v = raw_v[2] if raw_v_len > 2 else 0
 
     if u_major_v >= major_v and u_minor_v >= minor_v and u_patch_v >= patch_v:
         return True
