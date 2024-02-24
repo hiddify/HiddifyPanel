@@ -20,9 +20,9 @@ dns:
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
   listen: 127.0.0.1:6868
-  % if meta_or_normal=='meta'
+{%  if meta_or_normal=='meta' %}
   prefer-h3: true #Enable DoH support for HTTP/3,
-  % endif
+{%  endif %}
   fake-ip-filter:
      - '{{domain}}'
      - '{{hconfigs[ConfigEnum.telegram_fakedomain]}}'
@@ -53,15 +53,15 @@ proxy-groups:
       - load-balance     
       - automatic
       - sequential 
-      % for d in  domains
-      % if hconfig(ConfigEnum.tuic_enable) and d.mode !="cdn" and meta_or_normal=='meta'
+{%  for d in  domains %}
+{%  if hconfig(ConfigEnum.tuic_enable) and d.mode !="cdn" and meta_or_normal=='meta' %}
       - "tuic-{{d.alias or d.domain}}"
-      %endif
+{% endif %}
       - "{{d.alias or d.domain}}"
       # - "auto-{{d.alias or d.domain}}"
       # - "sequential-{{d.alias or d.domain}}"
       # - "load-balance-{{d.alias or d.domain}}"
-      % endfor
+{%  endfor %}
     use:
       - all_proxies
     type: select
@@ -79,9 +79,9 @@ proxy-groups:
         - "load-balance-{{d.alias or d.domain}}"
         - "auto-{{d.alias or d.domain}}"
         - "sequential-{{d.alias or d.domain}}"
-        % if hconfig(ConfigEnum.tuic_enable) and d.mode !="cdn" and meta_or_normal=='meta'
+{%  if hconfig(ConfigEnum.tuic_enable) and d.mode !="cdn" and meta_or_normal=='meta' %}
         - "tuic-{{d.alias or d.domain}}"
-        %endif
+{% endif %}
     use:
       - "P{{d.alias or d.domain}}"
     type: select
@@ -101,9 +101,9 @@ proxy-groups:
 
   - name: "load-balance"
     proxies:
-    % for d in  domains
+{%  for d in  domains %}
       - "{{d.alias or d.domain}}"
-    %endfor
+{% endfor %}
     # use:
     #   - all_proxies
     type: load-balance
@@ -120,9 +120,9 @@ proxy-groups:
     url: 'http://cp.cloudflare.com'
     interval: 300
     proxies:
-    % for d in  domains
+{%  for d in  domains %}
       - "sequential-{{d.alias or d.domain}}"
-    %endfor    
+{% endfor     %}
     # use:
     #   - all_proxies   
 
@@ -176,7 +176,7 @@ proxy-groups:
     interval: 300
     use:
       - "P{{d.alias or d.domain}}"
-  %endfor
+{% endfor %}
 
          
 
@@ -191,7 +191,7 @@ proxy-providers:
       enable: true
       interval: 600
       url: http://www.gstatic.com/generate_204    
-  % for d in  domains
+{%  for d in  domains %}
   "P{{d.alias or d.domain}}":
     type: http
     url: "https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{(user.uuid)}}/clash/{{meta_or_normal}}/proxies.yml?mode={{mode}}&domain={{d.domain}}&{{hash}}"
@@ -200,7 +200,7 @@ proxy-providers:
       enable: true
       interval: 600
       url: http://www.gstatic.com/generate_204    
-  %endfor
+{% endfor %}
 
 {% if hconfig(ConfigEnum.tuic_enable) and meta_or_normal=='meta' %}
 proxies:

@@ -22,5 +22,5 @@
 # HTTP {{type}} {{domain}}
 {{pinfo['url']}}
 {% endif %}
-            % endfor
-            % endif
+{%  endfor %}
+{%  endif %}

@@ -65,8 +65,8 @@
 </div>
 {%- endmacro -%}
 <div class="row">
-    %set onlines=usage_history['m5']['online']
-    %set total_users=usage_history['total']['users']
+    {% set onlines=usage_history['m5']['online'] %}
+    {% set total_users=usage_history['total']['users'] %}
     {{info_box("today","fa-solid fa-calendar", _("Today Usage"),
     ((usage_history['today']['usage']/1024**3)|round(1)) ~ " GB",
     usage_history['today']['online']/((1,total_users)|max)*100,
@@ -105,7 +105,8 @@
     color_class="bg-h-turquoise"
     )}}
     {{info_box("network","fa-solid fa-network-wired", _("Network"),
-    ('<i class="fa-solid fa-arrow-up  text-orange"></i> <i class="fa-solid fa-spinner loading-icon"></i> <small>Mb/s</small> &nbsp;&nbsp;<i class="fa-solid fa-arrow-down text-lime"></i> <i class="fa-solid fa-spinner loading-icon"></i> <small>Mb/s</small>')|safe,
+    ('<i class="fa-solid fa-arrow-up  text-orange"></i> <i class="fa-solid fa-spinner loading-icon"></i> <small>Mb/s</small> &nbsp;&nbsp;<i class="fa-solid fa-arrow-down text-lime"></i> <i
+        class="fa-solid fa-spinner loading-icon"></i> <small>Mb/s</small>')|safe,
     0,
     (stats['system']['net_sent_cumulative_GB']|round(1)) ~ "GB " ~_("From Last Restart"),
     color_class="bg-h-red"

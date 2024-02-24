@@ -20,9 +20,9 @@ dns:
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
   listen: 127.0.0.1:6868
-  % if meta_or_normal=='meta'
+{%  if meta_or_normal=='meta' %}
   prefer-h3: true #Enable DoH support for HTTP/3,
-  % endif
+{%  endif %}
   fake-ip-filter:
      - "{{domain}}"
      - "{{hconfigs[ConfigEnum.telegram_fakedomain]}}"
