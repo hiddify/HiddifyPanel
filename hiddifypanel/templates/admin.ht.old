@@ -8,10 +8,10 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ static_url_for( filename="css/adminlte.css" ) }}">
 
-  % if get_locale()=='fa'
+{%  if get_locale()=='fa' %}
   <link rel="stylesheet" href="{{static_url_for(filename='css/bootstrap4-rtl.min.css')}}">
   <link rel="stylesheet" href="{{static_url_for(filename='css/adminlte.fa.css')}}">
-  % endif
+{%  endif %}
 
   <link rel="stylesheet" href="{{static_url_for(filename='plugins/datatables/dataTables.bootstrap4.css')}}">
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.bootstrap4.min.css">  

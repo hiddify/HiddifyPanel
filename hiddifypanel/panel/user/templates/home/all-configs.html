@@ -44,8 +44,8 @@
       <tr>
         <td>
           <div class="btn-group">
-            <a href="clashmeta://install-config?url={{base}}clash/meta/all.yml&name=mnormal_{{db_domain.alias or db_domain.domain}}-{{asn}}-{{mode}}&asn={{asn}}&mode={{mode}}"
-              class="btn btn-light orig-link"> {{_('user.home.allconfig.hiddify-managers')}}</a>
+            <a href="clashmeta://install-config?url={{base}}clash/meta/all.yml&name=mnormal_{{db_domain.alias or db_domain.domain}}-{{asn}}-{{mode}}&asn={{asn}}&mode={{mode}}" class="btn btn-light orig-link">
+              {{_('user.home.allconfig.hiddify-managers')}}</a>
           </div>
         </td>
         <td><span class="badge badge-danger">{{_('all')}}</span></td>
@@ -57,8 +57,8 @@
       <tr>
         <td>
           <div class="btn-group">
-            <a href="clash://install-config?url={{base}}clash/all.yml&name=new_normal_{{db_domain.alias or db_domain.domain}}-{{asn}}-{{mode}}&asn={{asn}}&mode={{mode}}"
-              class="btn btn-light orig-link"> {{_('user.home.allconfig.clash-configs')}}</a>
+            <a href="clash://install-config?url={{base}}clash/all.yml&name=new_normal_{{db_domain.alias or db_domain.domain}}-{{asn}}-{{mode}}&asn={{asn}}&mode={{mode}}" class="btn btn-light orig-link">
+              {{_('user.home.allconfig.clash-configs')}}</a>
           </div>
         </td>
         <td><span class="badge badge-danger">{{_('all')}}</span></td>
@@ -80,7 +80,7 @@
         <td><span class="badge badge-warning">{{_('all')}}</span></td>
         <td><span class="badge badge-success">{{_('all')}}</span></td>
       </tr>
-      % if hconfig(ConfigEnum.ssh_server_enable)
+      {% if hconfig(ConfigEnum.ssh_server_enable) %}
       <tr>
         <td>
           <div class="btn-group">
@@ -93,7 +93,7 @@
         <td><span class="badge badge-warning">{{_('ssh')}}</span></td>
         <td><span class="badge badge-success">{{_('ssh')}}</span></td>
       </tr>
-      %endif
+      {% endif %}
       <tr>
         <td>
           <div class="btn-group">
@@ -108,7 +108,7 @@
         <td><span class="badge badge-success">{{_('all')}}</span></td>
       </tr>
 
-      % for pinfo in link_maker.get_all_validated_proxies(domains)
+      {% for pinfo in link_maker.get_all_validated_proxies(domains) %}
       <tr>
         <td>
           <div class="btn-group"><a href='{{link_maker.to_link(pinfo)}}' class="btn btn-light orig-link">{{pinfo["name"].replace("_", " ")}}</a></div>
@@ -120,7 +120,7 @@
         <td><span class="badge badge-success">{{pinfo['l3']}}</span></td>
       </tr>
 
-      % endfor
+      {% endfor %}
 
     </tbody>
   </table>

@@ -1,130 +1,125 @@
+<div class="col">
+  <div class="card card-info collapsed-card card-outline">
+    <div class="card-header">
+      <h3 class="card-title" data-widget="collapse">
+        {{_("user.home.ios.stash.title")}}
+      </h3>
+
+      <div class="card-tools">
+        <button type="button" class="btn btn-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+        </button>
+      </div>
+      <!-- /.card-tools -->
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+      {{_("user.home.ios.stash.intro")}}
+      نرم افزار stash یک نرم افزار فوق العادس. به نظر ما حتما ارزش خرید داره.
+      <div class="btn-group">
+        <a href="https://apps.ap0ple.com/us/app/stash-rule-based-proxy/id1596063349" target="_blank" class="btn btn-success orig-link">دانلود stash از اپ استور</a>
+      </div>
+      {% include "home/clash-links.html" %}
+    </div>
+    <!-- /.card-body -->
+  </div>
+  <!-- /.card -->
+</div>
+<!-- /.col -->
+
 
 <div class="col">
-    <div class="card card-info collapsed-card card-outline">
-      <div class="card-header">
-        <h3 class="card-title" data-widget="collapse">
-            {{_("user.home.ios.stash.title")}}
-        </h3>
+  <div class="card card-info collapsed-card card-outline">
+    <div class="card-header">
+      <h3 class="card-title" data-widget="collapse">
+        نرم افزار shadowlink
+      </h3>
 
-        <div class="card-tools">
-          <button type="button" class="btn btn-tool" data-widget="collapse"><i class="fa fa-plus"></i>
-          </button>
-        </div>
-        <!-- /.card-tools -->
+      <div class="card-tools">
+        <button type="button" class="btn btn-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+        </button>
       </div>
-      <!-- /.card-header -->
-      <div class="card-body">
-        {{_("user.home.ios.stash.intro")}}
-        نرم افزار stash یک نرم افزار فوق العادس. به نظر ما حتما ارزش خرید داره.
-        <div class="btn-group">
-        <a href="https://apps.ap0ple.com/us/app/stash-rule-based-proxy/id1596063349" target="_blank" class="btn btn-success orig-link">دانلود stash از اپ استور</a>
-        </div>
-        {% include "home/clash-links.html" %}
-      </div>
-      <!-- /.card-body -->
+      <!-- /.card-tools -->
     </div>
-    <!-- /.card -->
-  </div>
-  <!-- /.col -->
-
-
-  <div class="col">
-    <div class="card card-info collapsed-card card-outline">
-      <div class="card-header">
-        <h3 class="card-title" data-widget="collapse">
-            نرم افزار shadowlink
-        </h3>
-
-        <div class="card-tools">
-          <button type="button" class="btn btn-tool" data-widget="collapse"><i class="fa fa-plus"></i>
-          </button>
-        </div>
-        <!-- /.card-tools -->
+    <!-- /.card-header -->
+    <div class="card-body">
+      ابتدا :
+      <div class="btn-group">
+        <a href="https://apps.apple.com/us/app/shadowlink-shadowsocks-vpn/id1439686518" class="btn btn-primary orig-link"> برنامه shadow link</a>
       </div>
-      <!-- /.card-header -->
-      <div class="card-body">
-        ابتدا :
-        <div class="btn-group">
-            <a href="https://apps.apple.com/us/app/shadowlink-shadowsocks-vpn/id1439686518"
-                class="btn btn-primary orig-link"> برنامه shadow link</a> 
-        </div>
-        را نصب کنید
-        <br>
-        سپس کانفیگ مورد نظر را انتخاب و اجرا نمایید.
-        <br>
-        
-        % for type in link_maker.all_proxies()
-        {% set pinfo=link_maker.proxy_info(type) %}
-        % if pinfo!=None
-        <div class="btn-group"><a href='{{pinfo["url"]}}' class="btn btn-primary orig-link">{{type}}</a></div>
-        % endif
-        % endfor
+      را نصب کنید
+      <br>
+      سپس کانفیگ مورد نظر را انتخاب و اجرا نمایید.
+      <br>
+
+      {% for type in link_maker.all_proxies() %}
+      {% set pinfo=link_maker.proxy_info(type) %}
+      {% if pinfo!=None %}
+      <div class="btn-group"><a href='{{pinfo["url"]}}' class="btn btn-primary orig-link">{{type}}</a></div>
+      {% endif %}
+      {% endfor %}
 
 
 
-        <figure class="figure d-block text-center p-3">
-            <img src="images/ios_shadow.gif" alt="How to use v2 ray for iOS"
-                class="figure-img img-fluid rounded" />
-            <figcaption class="figure-caption">
-                <p>How to use clash for iOS</p>
-            </figcaption>
-        </figure>
+      <figure class="figure d-block text-center p-3">
+        <img src="images/ios_shadow.gif" alt="How to use v2 ray for iOS" class="figure-img img-fluid rounded" />
+        <figcaption class="figure-caption">
+          <p>How to use clash for iOS</p>
+        </figcaption>
+      </figure>
 
 
-    
-      </div>
-      <!-- /.card-body -->
+
     </div>
-    <!-- /.card -->
+    <!-- /.card-body -->
   </div>
-  <!-- /.col -->
+  <!-- /.card -->
+</div>
+<!-- /.col -->
 
 
-  <div class="col">
-    <div class="card card-info collapsed-card card-outline">
-      <div class="card-header">
-        <h3 class="card-title" data-widget="collapse">
-            نرم افزار napsternetv و fair vpn
-        </h3>
+<div class="col">
+  <div class="card card-info collapsed-card card-outline">
+    <div class="card-header">
+      <h3 class="card-title" data-widget="collapse">
+        نرم افزار napsternetv و fair vpn
+      </h3>
 
-        <div class="card-tools">
-          <button type="button" class="btn btn-tool" data-widget="collapse"><i class="fa fa-plus"></i>
-          </button>
-        </div>
-        <!-- /.card-tools -->
+      <div class="card-tools">
+        <button type="button" class="btn btn-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+        </button>
       </div>
-      <!-- /.card-header -->
-      <div class="card-body">
-        ابتدا 
-        
-        <div class="btn-group">
-            <a href="https://apps.apple.com/us/app/napsternetv/id1629465476"
-                class="btn btn-primary orig-link"> برنامه  napsternetv</a>
-
-        </div>
-        یا 
-        <div class="btn-group">
-            <a href="https://apps.apple.com/us/app/fair-vpn/id1533873488"
-                class="btn btn-primary orig-link"> برنامه  fair-vpn</a>
-
-        </div>
-        را نصب کنید
-        <br />
-        سپس کانفیگ مورد نظر خود را اعمال کنید:
-        <br />
-        % for type in link_maker.all_proxies()
-        {% set pinfo=link_maker.proxy_info(type) %}
-        % if pinfo!=None
-        <div class="btn-group"><a href='{{pinfo["url"]}}' class="btn btn-primary orig-link">{{type}}</a></div>
-        % endif
-        % endfor
-
-
-
-    
-      </div>
-      <!-- /.card-body -->
+      <!-- /.card-tools -->
     </div>
-    <!-- /.card -->
+    <!-- /.card-header -->
+    <div class="card-body">
+      ابتدا
+
+      <div class="btn-group">
+        <a href="https://apps.apple.com/us/app/napsternetv/id1629465476" class="btn btn-primary orig-link"> برنامه napsternetv</a>
+
+      </div>
+      یا
+      <div class="btn-group">
+        <a href="https://apps.apple.com/us/app/fair-vpn/id1533873488" class="btn btn-primary orig-link"> برنامه fair-vpn</a>
+
+      </div>
+      را نصب کنید
+      <br />
+      سپس کانفیگ مورد نظر خود را اعمال کنید:
+      <br />
+      {% for type in link_maker.all_proxies() %}
+      {% set pinfo=link_maker.proxy_info(type) %}
+      {% if pinfo!=None %}
+      <div class="btn-group"><a href='{{pinfo["url"]}}' class="btn btn-primary orig-link">{{type}}</a></div>
+      {% endif %}
+      {% endfor %}
+
+
+
+
+    </div>
+    <!-- /.card-body -->
   </div>
-  <!-- /.col -->
+  <!-- /.card -->
+</div>
+<!-- /.col -->

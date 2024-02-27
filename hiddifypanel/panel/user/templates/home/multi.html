@@ -10,16 +10,17 @@
         <!-- <h1 class="m-0" style="text-align: start;"> <a href="{{hconfig(ConfigEnum.branding_site) or 'https://github.com/hiddify/hiddify-manager/wiki'}}">{{hconfig(ConfigEnum.branding_title) or _('user.home.title')}}</a>: <div class="d-inline-flex">{{_('Welcome %(user)s',user=user.name if user.name!="default" else "")}}</div> </h1> -->
 
         <h1 class="m-0" style="text-align: start;">
-            %if g.darkmode
+            {% if g.darkmode %}
             <a class="btn btn-sm text-white" href="?darkmode=false">
                 <i class="fa-solid fa-sun"></i>
             </a>
-            %else
+            {% else %}
             <a class="btn btn-sm" href="?darkmode=true">
                 <i class="fa-solid fa-moon"></i>
             </a>
-            %endif
-            <button class='btn btn-sm btn-default' onclick='show_video("features")'><i class="fa-solid fa-question"></i></button> <a href="{{'https://github.com/hiddify/hiddify-manager/wiki'}}"> {{hconfig(ConfigEnum.branding_title) or _('user.home.title')}}</a>: <div class="d-inline-flex">{{_('Welcome %(user)s',user=user.name if user.name!="default" else "")}}</div>
+            {% endif %}
+            <button class='btn btn-sm btn-default' onclick='show_video("features")'><i class="fa-solid fa-question"></i></button> <a href="{{'https://github.com/hiddify/hiddify-manager/wiki'}}">
+                {{hconfig(ConfigEnum.branding_title) or _('user.home.title')}}</a>: <div class="d-inline-flex">{{_('Welcome %(user)s',user=user.name if user.name!="default" else "")}}</div>
         </h1>
 
 
@@ -46,9 +47,9 @@
             <div class="card-header d-flex p-0">
                 <h3 class="card-title p-1"> </h3>
                 <ul class="nav nav-pills p-2">
-                    % if telegram_enable
+                    {% if telegram_enable %}
                     <li class="nav-item"><a class="nav-link" href="#telegram" data-toggle="tab"><i class="fa-brands fa-telegram fa-margin"></i> {{_('telegram')}}</a></li>
-                    % endif
+                    {% endif %}
                     <li class="nav-item"><a class="nav-link {{" active" if ua.os.family=="Android" else "" }}" href="#android" data-toggle="tab"><i class="fa-brands fa-android fa-margin"></i> {{_('android')}}</a></li>
                     <li class="nav-item"><a class="nav-link {{" active" if ua.os.family=="iOS" else "" }}" href="#ios" data-toggle="tab"><i class="fa-brands fa-app-store-ios fa-margin"></i> {{_('ios')}}</a></li>
                     <li class="nav-item"><a class="nav-link {{" active" if ua.is_pc else "" }}" href="#windows" data-toggle="tab">
@@ -355,29 +356,29 @@
         });
     });
 
-  % if get_locale() == 'fa'
-  function ConvertNumberToPersion() {
-            let persian = { 0: '۰', 1: '۱', 2: '۲', 3: '۳', 4: '۴', 5: '۵', 6: '۶', 7: '۷', 8: '۸', 9: '۹' };
-            function traverse(el) {
-                //            console.log(el.tagName)
-                if (el.tagName == "PRE" || el.tagName == "STYLE" || el.tagName == "SCRIPT") return
-                if (el.nodeType == 3) {
-                    var list = el.data.match(/[0-9]/g);
-                    if (list != null && list.length != 0) {
-                        for (var i = 0; i < list.length; i++)
-                            el.data = el.data.replace(list[i], persian[list[i]]);
-                    }
-                }
-                for (var i = 0; i < el.childNodes.length; i++) {
-
-                    traverse(el.childNodes[i]);
+    {%  if get_locale() == 'fa' %}
+    function ConvertNumberToPersion() {
+        let persian = { 0: '۰', 1: '۱', 2: '۲', 3: '۳', 4: '۴', 5: '۵', 6: '۶', 7: '۷', 8: '۸', 9: '۹' };
+        function traverse(el) {
+            //            console.log(el.tagName)
+            if (el.tagName == "PRE" || el.tagName == "STYLE" || el.tagName == "SCRIPT") return
+            if (el.nodeType == 3) {
+                var list = el.data.match(/[0-9]/g);
+                if (list != null && list.length != 0) {
+                    for (var i = 0; i < list.length; i++)
+                        el.data = el.data.replace(list[i], persian[list[i]]);
                 }
             }
-            traverse(document.body);
+            for (var i = 0; i < el.childNodes.length; i++) {
+
+                traverse(el.childNodes[i]);
+            }
         }
+        traverse(document.body);
+    }
 
     ConvertNumberToPersion();
-    % endif
+    {% endif %}
 
 </script>
 
@@ -387,7 +388,8 @@
     {{_("Check again")}}
 </button>
 {%- endmacro -%}
-{{modal("country-alarm-modal",_("Turn of VPN"),_("You should visit this page without VPN. Your country=%(your_country)s expected=%(expected_country)s",your_country=country,expected_country=hconfig(ConfigEnum.country)),footer=reload(),show=True)}}
+{{modal("country-alarm-modal",_("Turn of VPN"),_("You should visit this page without VPN. Your country=%(your_country)s
+expected=%(expected_country)s",your_country=country,expected_country=hconfig(ConfigEnum.country)),footer=reload(),show=True)}}
 {% endif %}
 
 
