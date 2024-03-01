@@ -57,17 +57,20 @@ class Dashboard(FlaskView):
             hutils.flask.flash((_('It seems that you have not setup the system completely. <a class="btn btn-success" href="%(quick_setup)s">Click here</a> to complete setup.',
                                   quick_setup=quick_setup)), 'warning')  # type: ignore
             if hconfig(ConfigEnum.is_parent):
-                hutils.flask.flash(_("Please understand that parent panel is under test and the plan and the condition of use maybe change at anytime."), "danger")  # type: ignore
+                hutils.flask.flash(
+                    _("Please understand that parent panel is under test and the plan and the condition of use maybe change at anytime."), "danger")  # type: ignore
         elif len(sslip_domains):
-            hutils.flask.flash((_('It seems that you are using default domain (%(domain)s) which is not recommended.', domain=sslip_domains[0])), 'warning')  # type: ignore
+            hutils.flask.flash((_('It seems that you are using default domain (%(domain)s) which is not recommended.',
+                               domain=sslip_domains[0])), 'warning')  # type: ignore
             if hconfig(ConfigEnum.is_parent):
-                hutils.flask.flash(_("Please understand that parent panel is under test and the plan and the condition of use maybe change at anytime."), "danger")  # type: ignore
+                hutils.flask.flash(
+                    _("Please understand that parent panel is under test and the plan and the condition of use maybe change at anytime."), "danger")  # type: ignore
         elif def_user:
             d = domains[0]
             hutils.flask.flash((_('It seems that you have not created any users yet. Default user link: %(default_link)s',
                                default_link=hiddify.get_html_user_link(def_user, d))), 'secondary')  # type: ignore
         if hutils.network.is_ssh_password_authentication_enabled():
-            hutils.flask.flash(_('ssh.password-login.warning.'), "warning")  # type: ignore
+            hutils.flask.flash(_('ssh.password-login.warning'), "warning")  # type: ignore
 
     # except:
     #     hutils.flask.flash((_('Error!!!')),'info')
