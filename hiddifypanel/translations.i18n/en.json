@@ -1,0 +1,1091 @@
+{
+  "0 - Last day": "Last Day",
+  "admin": {
+    "config": {
+      "apply_configs": "Apply Configs",
+      "title": "Settings"
+    },
+    "proxy": {
+      "global_config": "⚙️ Global Configs",
+      "detailed_config": "⚙️ Detailed Configs"
+    },
+    "quicksetup": {
+      "title": "Quick Setup"
+    },
+    "quicksetup_intro": "Your Server's IPs are: \n<div >\nIPv4: %(ipv4)s <br> IPv6: %(ipv6)s\n</div>\nSet these IPs on your Domain or Subdomain and enter your Domain or Subdomain in the bellow box.\n",
+    "Actions:apply_configs": "Apply Configs",
+    "menu": {
+      "home": "Dashboard",
+      "user": "Users",
+      "config": "Settings",
+      "support": "Help",
+      "telegram": "Telegram",
+      "domain": "Domains",
+      "proxy": "Proxies",
+      "api": "API"
+    },
+    "actions": {
+      "title": "Actions",
+      "status": "Status",
+      "viewlogs": "View Logs",
+      "apply_configs": "Apply Configs",
+      "update": "Update",
+      "reinstall": "Reinstall",
+      "reset": "Restart System"
+    }
+  },
+  "config": {
+    "validation-success": "Configs have been changed successfully. Click %(link)s to apply the configs. It may take 2 minutes to apply",
+    "validation-success-no-reset": " ✅ Configs have been changed successfully",
+    "cdn_forced_host": {
+      "description": "In this part you can use a set of specific domains or IPs for your server to be override in the user links. \n\nIf you use <a href='https://ircf.space/export.php'>this template </a>, the relevant IP will be selected according to the user's operator, and if you put a range of IPs The IP will be randomly selected from that range.\nUse <a target='_blank' href='https://ip-format.hiddify.com'>this link</a> to set personal IPs.",
+      "label": "🔂 Force Config to Use Following IPs"
+    },
+    "reality_server_names": {
+      "description": "You can add several Sever Names in comma seperated format",
+      "label": "🌎 Reality Server Names"
+    },
+    "validation-error": "There is an error in one of the fields.",
+    "domain_fronting": {
+      "label": "🔒 Enable TLS Domain Fronting",
+      "description": "It is used to simulate another website instead of your website in SNI. therefore, GFW can not filter your Domain\n<a href='https://github.com/hiddify/hiddify-config/wiki/%D8%A7%D8%B3%D8%AA%D9%81%D8%A7%D8%AF%D9%87-%D8%A7%D8%B2-%D8%AF%D8%A7%D9%85%DB%8C%D9%86-%D9%81%D8%B1%D8%A7%D9%86%D8%AA%DB%8C%D9%86%DA%AF'>Guide</a>. ⚠️CloudFlare does not support Domain Fronting."
+    },
+    "admin_lang": {
+      "label": "🗺️ Admin Panel Language",
+      "description": "Choose Language For Admin Area"
+    },
+    "country": {
+      "label": "🌍 Country",
+      "description": "It applies the appropriate settings for each country according to the filtering conditions of that country"
+    },
+    "block_iran_sites": {
+      "label": "⛔️ Block Domestic Sites",
+      "description": "Block domestic Sites to prevent detection by the government"
+    },
+    "decoy_domain": {
+      "label": "📺 Decoy Site",
+      "description": "Fake Site: simulates a site when someone visits your domain directly.<br>\n⚠️ Do not use financial, Iranian and famous sites or sites with login such as Google, Yahoo, Wikipedia, PayPal.<br>\n⛔ Be sure to check the site and make sure that it is the right site, otherwise you may receive a phishing warning.<br>\n⛔⛔ Check this domain again so that there is no problem in the future"
+    },
+    "telegram_lib": {
+      "label": "🔢  Telegram Proxy Library",
+      "description": "You can switch between different Telegram Libraries. Please note that only Python works in all servers, others may have some issue. Test Proxy after changing it."
+    },
+    "admin": {
+      "label": "Admin Settings",
+      "description": "Admin section is for configuring admin related settings"
+    },
+    "lang": {
+      "label": "🗺️ User Area Language",
+      "description": "Choose Language For Users Area"
+    },
+    "branding_title": {
+      "label": "👁‍🗨 User Page Title",
+      "description": "Enter a customized title to be shown on user page. (before yser's Welcome Text)"
+    },
+    "branding_site": {
+      "label": "🆔 Support Link (goes both on branding title and also on support section of user page)",
+      "description": "The link to be shown on support section of user's page.\nYou can put also your Telegram Channel or Telegram PV here."
+    },
+    "branding_freetext": {
+      "label": "📢 Support Section Text",
+      "description": "Branding Text. this box's text will be shown on support section of User's Page. you can use HTML tags"
+    },
+    "branding": {
+      "label": "Customizing User Page",
+      "description": "Customization settings for User Page"
+    },
+    "firewall": {
+      "label": "🛡️ Firewall",
+      "description": "Enabling Firewall will open used Ports (at least 22,443,80 and SSH) and close all other Ports"
+    },
+    "auto_update": {
+      "label": "🔄 Auto Update",
+      "description": "Every day at 3:00 AM, we will check for a new update. if there is a new update available, we will update the system automatically"
+    },
+    "speed_test": {
+      "label": "🚀 Speed Test",
+      "description": "Allow your users to do Speed Test. It helps them to identify the link quality"
+    },
+    "only_ipv4": {
+      "label": "ℹ️ Only IPv4",
+      "description": "It will Disable IPv6"
+    },
+    "show_usage_in_sublink": {
+      "label": "👁️‍🗨️ Show Usage in Sublink",
+      "description": "This option creates a Fake Config in the user's sub link that shows the user's remaining volume"
+    },
+    "general": {
+      "label": "General Settings",
+      "description": "It is General System Configurations"
+    },
+    "vmess_enable": {
+      "label": "♈️ Enable VMess",
+      "description": "It is reported by several people that VMess causes the system to be detected by the government. So it is Not Recommended"
+    },
+    "v2ray_enable": {
+      "label": "♈️ Enable V2Ray ",
+      "description": "V2ray does not support accounting and not suggested"
+    },
+    "shared_secret": {
+      "label": "🔐 Shared Secret",
+      "description": "Some Proxies don't support Accounting currently so we have to use a secret for them"
+    },
+    "proxies": {
+      "label": "Proxies Settings",
+      "description": "Define specific proxy settings"
+    },
+    "domain_fronting_tls_enable": {
+      "label": "🔒 Enable TLS Domain Fronting",
+      "description": "In CloudFlare, TLS Domain Fronting is not supported. it will use Port 443 to connect to CDN"
+    },
+    "domain_fronting_domain": {
+      "label": "ℹ️ Domain Fronting",
+      "description": "It is used to simulate another website instead of your website in SNI. therefore, GFW Can not filter your domain."
+    },
+    "telegram_enable": {
+      "label": "✔️ Enable Telegram MTProto",
+      "description": "Telegram MTProto is used for Encapsulate Telegram Proxy as a tls traffic"
+    },
+    "telegram_adtag": {
+      "label": "📍 Telegram AD Tag",
+      "description": "It is used to show a sponsored channel in the client's chat list. To advertise a channel get a tag from @MTProxybot .\nenter code 0123456789ABCDEF0123456789ABCDEF in that bot."
+    },
+    "telegram_fakedomain": {
+      "label": "📺 Telegram Fake Domain",
+      "description": "Please use a well known domain in your data center. for example, If you are in Azure data center, microsoft-update.com is a good example"
+    },
+    "telegram": {
+      "label": "Telegram Proxy ",
+      "description": "A proxy designed for Telegram to bypass Telegram filtering"
+    },
+    "http_proxy_enable": {
+      "label": "☑️ Allow HTTP Connection",
+      "description": "By allowing this, your users can connect to the system with Unencrypted HTTP Port. (Not Recommended)"
+    },
+    "http_ports": {
+      "label": "🔎 HTTP Ports",
+      "description": "Comma separated integers indicating the ports to use as Unencrypted connections (Port 80 will be used In anycase)\n"
+    },
+    "http": {
+      "label": "HTTP Configuration",
+      "description": "HTTP Configurations could be set in this section"
+    },
+    "allow_invalid_sni": {
+      "label": "🆗 Allow Invalid SNI",
+      "description": "If you allow invalid SNI, you can use any Domain rather than your original Domain to access the Proxy (Not Recommended)"
+    },
+    "tls_ports": {
+      "label": "🔎 TLS Ports",
+      "description": "Comma separated integers indicating the ports to use as TLS Connection  (Port 443 will be used in anycase)\n"
+    },
+    "tls": {
+      "label": "TLS Configuration",
+      "description": "TLS Configurations could be set in this section."
+    },
+    "ssfaketls_enable": {
+      "label": "🆎 Shadowsocks FakeTLS (Simple OBFS)",
+      "description": "Simple OBFS Protocol is Not Recommended"
+    },
+    "ssfaketls_fakedomain": {
+      "label": "🌍 SS FakeTLS FakeDomain",
+      "description": "Please use a well known domain in your data center. for example, If you are in Azure data center, microsoft-update.com Is a good example"
+    },
+    "ssfaketls": {
+      "label": "Shadowsocks FakeTLS",
+      "description": "Shadowsocks FakeTLS is a simple obfusacting tool that encapsulate the date In tls packet"
+    },
+    "shadowtls_enable": {
+      "label": "☑️ ShadowTLS",
+      "description": "ShadowTLS Is a new Protocol but it can hide the traffic from the government using FakeTLS"
+    },
+    "shadowtls_fakedomain": {
+      "label": "🌍 ShadowTLS Fake Domain",
+      "description": "Please use a well known domain in your data center. for example, If you are In azure data center, microsoft-update.com Is a good example"
+    },
+    "shadowtls": {
+      "label": "ShadowTLS",
+      "description": "A Proxy to expose real tls handshake to the firewall.\n\nIt works like Trojan but It does not require signing certificate. the firewall will see real tls handshake with valid certificate that you choose."
+    },
+    "restls": {
+      "label": "config.restls.label",
+      "description": "config.restls.description"
+    },
+    "tuic": {
+      "label": "TUIC",
+      "description": "Delicately-TUICed High-Performance proxy is on top of the QUIC protocol. \n\nTUIC's goal is to minimize the handshake latency as much as possible"
+    },
+    "ssr": {
+      "label": "SSR",
+      "description": "ShadowsocksR is a fork of the original Shadowsocks project, claimed to be superior in terms of security and stability."
+    },
+    "kcp": {
+      "label": "KCP",
+      "description": "KCP Configurations could be set in this section."
+    },
+    "utls": {
+      "label": "❇️ uTLS",
+      "description": "This Option Will Simulate Different Browsers, Therefore, GFW Can Not Detect Your Browsing"
+    },
+    "telegram_bot_token": {
+      "label": "🔐 Telegram Bot Token",
+      "description": "To add Telegram bot feature. you need to create a bot with @BotFather and enter the API code in this field"
+    },
+    "package_mode": {
+      "label": "🔄 Package Update Mode",
+      "description": "Specify whether you want released package or developed one"
+    },
+    "advanced": {
+      "label": "Advanced Settings",
+      "description": "In this part, there are some advanced configs that are better not be changed unless you are an advanced user"
+    },
+    "proxy_path": {
+      "label": "ℹ️ Secret Proxy Path",
+      "description": "We use secret proxy path to hide our proxies for the gouvernment"
+    },
+    "path_trojan": {
+      "label": "ℹ️ Trojan Path",
+      "description": "For Trojan Links"
+    },
+    "path_vless": {
+      "label": "ℹ️ VLESS Path",
+      "description": "For the VLESS Path"
+    },
+    "path_vmess": {
+      "label": "ℹ️ VMess Path",
+      "description": "For the VMess Link"
+    },
+    "path_grpc": {
+      "label": "ℹ️ gRPC Path",
+      "description": "gRPC Path In Configs"
+    },
+    "path_tcp": {
+      "label": "ℹ️ TCP Configuration Path",
+      "description": "For the Proxy Link"
+    },
+    "path_ws": {
+      "label": "ℹ️ Path of Websocket Requests",
+      "description": "Specify the Websocket Path"
+    },
+    "cloudflare": {
+      "label": "🔑 Cloudflare API",
+      "description": "Please follow <a href='https://github.com/hiddify/hiddify-config/wiki/Get-Cloudflare-API' target='_blank'>the instruction</a> and paste the Cloudflare API Key"
+    },
+    "too_advanced": {
+      "label": "Very Advanced Settings",
+      "description": "Specify The Proxy Path. It is important especially if you are using HTTP and VMess"
+    },
+    "warp_plus_code": {
+      "label": "🔑 Warp Plus Key",
+      "description": "🔝 Increases browsing speed. To get the Key, go to the <a href='https://1.1.1.1/'> 1.1.1.1 </a>\napp and purchase the original KEY from Cloudflare\n<br>\n⚠️ If there is an error in this Key, the WARP will be disabled."
+    },
+    "warp_mode": {
+      "label": "✴️ Warp+ Mode",
+      "description": "✴️ All : All Sites use Warp IPs in outbound\n<br>\n☑️ Only Domestic and Blocked Sites: Only Domestic Sites and websites like Google, Spotify, Netflix, OpenAi, IPinfo.io use Warp IPs in outbound"
+    },
+    "warp": {
+      "label": "WARP➕",
+      "description": "Warp is a tool that hides your server IP in outbound traffic. It means if the users are visiting a website the Warp IP is exposed instead of our server IP.\n<br>\nFor example, if you have a problem with captcha on Google, it might be fixed this way."
+    },
+    "reality_short_ids": {
+      "label": "🆔 Short IDs",
+      "description": "Do Not Change It"
+    },
+    "reality_fallback_domain": {
+      "label": "🌍 Reality Fallback Domain",
+      "description": "When the GFW visit the Websites in Server names, it will be redirect to this Domain."
+    },
+    "reality_private_key": {
+      "label": "🔑 Private Key",
+      "description": "Do Not Change It"
+    },
+    "reality_public_key": {
+      "label": "🔑 Public Key",
+      "description": "Do Not Change It"
+    },
+    "reality": {
+      "label": "Reality",
+      "description": "REALITY eliminate the Server-Side TLS Fingerprint Feature"
+    },
+    "first_setup": {
+      "label": "config.first_setup.label",
+      "description": "config.first_setup.description"
+    },
+    "warp_enable": {
+      "label": "Enable WARP+",
+      "description": "Warp helps you bypass Google, Spotify and Netflix restrictions by hiding server IP "
+    },
+    "restls1_2_domain": {
+      "label": "config.restls1_2_domain.label",
+      "description": "config.restls1_2_domain.description"
+    },
+    "restls1_3_domain": {
+      "label": "config.restls1_3_domain.label",
+      "description": "config.restls1_3_domain.description"
+    },
+    "license": {
+      "label": "License  Code",
+      "description": "For commercial use of this Product, you must Purchase its License"
+    },
+    "is_parent": {
+      "label": "Parent Panel",
+      "description": "config.is_parent.description"
+    },
+    "parent_panel": {
+      "label": "Parent Panel (Multi Server)",
+      "description": "You can Connect to the Central Panel to define only one user and the usage of all Servers will be added cumulatively."
+    },
+    "unique_id": {
+      "label": "config.unique_id.label",
+      "description": "config.unique_id.description"
+    },
+    "last_hash": {
+      "label": "config.last_hash.label",
+      "description": "config.last_hash.description"
+    },
+    "admin_secret": {
+      "label": "Admin Secret",
+      "description": "Admin secret will be used for accessing admin panel"
+    },
+    "kcp_ports": {
+      "label": "KCP Ports",
+      "description": "Comma separated integers indicating the ports to use as KCP connection.\n"
+    },
+    "kcp_enable": {
+      "label": "Enable KCP",
+      "description": "It is a UDP Based Protocol "
+    },
+    "netdata": {
+      "label": "Netdata",
+      "description": "For displaying resources. uses your Server's CPU but it is not too much."
+    },
+    "torrent_block": {
+      "label": "Torrent Block Configuration",
+      "description": "Torrent Block Configurations could be set in this section."
+    },
+    "tuic_enable": {
+      "label": "Enable TUIC",
+      "description": "It is a UDP based protocol similar to QUIC"
+    },
+    "tuic_port": {
+      "label": "TUIC Ports",
+      "description": "Use comma to separate ports like 63000,60000"
+    },
+    "ssr_enable": {
+      "label": "Enable SSR",
+      "description": "ShadowsocksR is a Fork of the original Shadowsocks project, claimed to be superior in terms of security and stability. Not tested. Not support accounting."
+    },
+    "ssr_fakedomain": {
+      "label": "SSR FakeDomain",
+      "description": "Please use a well known domain In your data center. for example, If you are In Azure data center, microsoft-update.com Is a good example"
+    },
+    "domain_fronting_http_enable": {
+      "label": "Enable HTTP Domain Fronting",
+      "description": "Enabling HTTP Domain Fronting causes your domain to be block quickly."
+    },
+    "db_version": {
+      "label": "Database Version Label",
+      "description": "Database Version Description"
+    },
+    "not_found": {
+      "label": "Config Not Found",
+      "description": "Config Not Found"
+    },
+    "path_v2ray": {
+      "label": "V2Ray Path",
+      "description": "Set V2Ray Configs Path"
+    },
+    "path_ss": {
+      "label": "Shadowsocks Path",
+      "description": "Shadowsocks Path in the Links"
+    },
+    "dbvalues": {
+      "label": "config.dbvalues.label",
+      "description": "config.dbvalues.description"
+    },
+    "create_easysetup_link": {
+      "label": "config.create_easysetup_link.label",
+      "description": "config.create_easysetup_link.description"
+    },
+    "wireguard_enable": {
+      "label": "Enable WireGuard",
+      "description": "WireGuard is UDP based protocol.\n\n⚠️  Accounting is not yet supported."
+    },
+    "wireguard_port": {
+      "label": "config.wireguard_port.label",
+      "description": "config.wireguard_port.description"
+    },
+    "wireguard_ipv6": {
+      "label": "config.wireguard_ipv6.label",
+      "description": "config.wireguard_ipv6.description"
+    },
+    "wireguard_ipv4": {
+      "label": "config.wireguard_ipv4.label",
+      "description": "config.wireguard_ipv4.description"
+    },
+    "wireguard_private_key": {
+      "label": "config.wireguard_private_key.label",
+      "description": "config.wireguard_private_key.description"
+    },
+    "wireguard_public_key": {
+      "label": "config.wireguard_public_key.label",
+      "description": "config.wireguard_public_key.description"
+    },
+    "wireguard_noise_trick": {
+      "label": "WireGuard Noise Trick",
+      "description": "This method introduces extra noise to prevent detection and blocking by the GFW."
+    },
+    "ssh_server_redis_url": {
+      "label": "SSH user database address",
+      "description": "Not Used"
+    },
+    "ssh_server_port": {
+      "label": "↔️ SSH Proxy Port",
+      "description": "This is completely different from your original SSH server. It is a dedicated program."
+    },
+    "ssh_server_enable": {
+      "label": "✔️ Enable SSH Proxy",
+      "description": "SSH Proxy is completely different than original SSH Server"
+    },
+    "core_type": {
+      "label": "🎛️ Core",
+      "description": "☢️ XRay : Is a Complete Core\n<br>\n📦 Singbox : Developed by SagerNet. It is also a good core"
+    },
+    "warp_sites": {
+      "label": "🆚 Additional Warp Sites",
+      "description": "Add additional sites to pass through Warp (only when warp mode is not None)"
+    },
+    "dns_server": {
+      "label": "🖥 DNS Server",
+      "description": "✳️ Default 1.1.1.1 <br>\n🚧 Block Malware 1.1.1.2 <br>\n🔞 Block Porn 1.1.1.3\n"
+    },
+    "reality_port": {
+      "label": "↔️  Direct Reality Port",
+      "description": "You can set a customized port for your reality server to reduce the system's overhead. (Allow direct connection to proxies should be yes)"
+    },
+    "tls_fragment_enable": {
+      "label": "⏯ Enable TLS Fragment",
+      "description": "Under some circumstances, it can bypass the SNI blacklist system"
+    },
+    "tls_fragment_size": {
+      "label": "🎚 TLS Fragment Size",
+      "description": "The Size of each Packet"
+    },
+    "tls_fragment_sleep": {
+      "label": "⏱ TLS Fragment Sleep",
+      "description": "The time delay between Fragments"
+    },
+    "tls_mixed_case": {
+      "label": "🔠 Enable TLS Mixed SNI Case",
+      "description": "Enables TLS Mixed SNI Case Fragmentation"
+    },
+    "tls_padding_enable": {
+      "label": "♒️ Enable TLS Padding",
+      "description": "Enables Padding for TLS Fragmentation"
+    },
+    "tls_padding_length": {
+      "label": "📏 TLS Padding",
+      "description": "The length of the Padding for TLS Fragmentation"
+    },
+    "mux_enable": {
+      "label": "Ⓜ️ MUX Enable",
+      "description": "Enable MUX (Multiplex)"
+    },
+    "mux_protocol": {
+      "label": "♍️ MUX Protocol",
+      "description": "ℹ️ Multiplex Protocol. 'sMux' is used by default\n<br>\n➖ sMux: Stream Multiplexing\n<br>\n➖ YaMux: Yet Another Multiplexer\n<br>\n➖ h2Mux: Multiplexing Streams Over HTTP/2"
+    },
+    "mux_max_connections": {
+      "label": "⛓ MUX Max Connections",
+      "description": "Maximum Connections. Conflict with Max Streams"
+    },
+    "mux_min_streams": {
+      "label": "↘️ MUX Min Streams",
+      "description": "Minimum Multiplexed streams in a connection before opening a new connection"
+    },
+    "mux_max_streams": {
+      "label": "↗️ MUX Max Streams",
+      "description": "Maximum Multiplexed streams in a connection before opening a new connection"
+    },
+    "mux_padding_enable": {
+      "label": "⟹ MUX Padding",
+      "description": "Enables MUX Padding"
+    },
+    "mux_brutal_enable": {
+      "label": "☣️ MUX Brutal",
+      "description": "Enables TCP-Brutal congestion control algorithm"
+    },
+    "mux_brutal_up_mbps": {
+      "label": "⬆️ MUX Brutal Upload (mbps)",
+      "description": "TCP-Brutal Maximum Upload Speed"
+    },
+    "mux_brutal_down_mbps": {
+      "label": "⬇️ MUX Brutal Download (mbps)",
+      "description": "TCP-Brutal Maximum Download Speed"
+    },
+    "proxy_path_admin": {
+      "label": "🔐 Proxy Path for Admins",
+      "description": "We use secret proxy path to hide our proxies for the governments and  bots"
+    },
+    "proxy_path_client": {
+      "label": "🔏 Proxy Path for Clients",
+      "description": "Secret proxy path hide the proxies from the governments and bots"
+    },
+    "hysteria_enable": {
+      "label": "Enable Hysteria2",
+      "description": "To Enable UDP based Hysteria Protocol"
+    },
+    "hysteria_port": {
+      "label": "🔍 Hysteria2 Port",
+      "description": "Hysteria UDP Port for example 5678"
+    },
+    "hysteria_obfs_enable": {
+      "label": "🎛 Hysteria OBFS Enable",
+      "description": " Enables Hysteria Obfuscation (Salamander)"
+    },
+    "hysteria_up_mbps": {
+      "label": "⬆️ Hysteria Upload (mbps)",
+      "description": "Hysteria Maximum Upload Speed"
+    },
+    "hysteria_down_mbps": {
+      "label": "⬇️ Hysteria Download (mbps)",
+      "description": "Hysteria Maximum Download Speed"
+    },
+    "shadowsocks2022_enable": {
+      "label": "Enable Shadowsocks 2022",
+      "description": "Shadowsocks 2022 is a secure proxy protocol for TCP and UDP traffic. The proxy traffic is indistinguishable from a random byte stream, and therefore can circumvent firewalls and Internet censors that rely on DPI (Deep Packet Inspection)."
+    },
+    "shadowsocks2022_method": {
+      "label": "Shadowsocks Encrypytion Method",
+      "description": "This method also used in ShadowTLS and SSFakeTLS"
+    },
+    "shadowsocks2022_port": {
+      "label": "Shadowsocks 2022 Port",
+      "description": "It needs both UDP and TCP to be free"
+    },
+    "ws_enable": {
+      "label": "Enable Websocket",
+      "description": "Websocket creates a tunnel over http that is useful to be used in CDN."
+    },
+    "grpc_enable": {
+      "label": "Enable gRPC",
+      "description": "gRPC is a modern open source high performance Remote Procedure Call (RPC) framework. It can be used in supported CDNs."
+    },
+    "httpupgrade_enable": {
+      "label": "Enable HTTPUpgrade Method",
+      "description": "HTTPUpgrade complete a HTTP 1.1 Upgrade request and response before using the connection directly. It is similar to WebSocket in the way it create an direction channel that can be forwarded by many reverse proxies and CDNs, without the need to deal with all the issue around WebSocket Protocol itself."
+    },
+    "path_httpupgrade": {
+      "label": "HTTP Upgrade Path",
+      "description": "should be random"
+    },
+    "mux": {
+      "label": "MUX Config",
+      "description": "MUX (Multiplex) configurations could be set in this section"
+    },
+    "tls_trick": {
+      "label": "TLS Trick",
+      "description": "TLS Fragmentation configurations could be set in this section"
+    },
+    "ssh": {
+      "label": "SSH Proxy",
+      "description": "ℹ️ An SSH proxy, also known as an SSH tunnel or SSH port forwarding, is a secure method of creating a secure communication channel between two machines over an insecure network. We have a specific application which is completely different from ssh server and can not execute any commands"
+    },
+    "hysteria": {
+      "label": "Hysteria",
+      "description": "Hysteria is a feature-packed proxy & relay tool optimized for lossy, unstable connections (e.g. satellite networks, congested public Wi-Fi, connecting to foreign servers from China)"
+    },
+    "hidden": {
+      "label": "config.hidden.label",
+      "description": "config.hidden.description"
+    },
+    "wireguard": {
+      "label": "Wireguard",
+      "description": "WireGuard is a lightweight, UDP  based protocol known for its simplicity, efficiency, and strong security. It offers quick setup, transparent code, and has gained popularity for its ease of use across various operating systems.\n\n⚠️ Accounting is not yet implemented for this protocol."
+    },
+    "shadowsocks": {
+      "label": "Shadowsocks",
+      "description": "Shadowsocks is a fast tunnel proxy that helps you bypass firewalls."
+    }
+  },
+  "Error! auto cdn ip can not be find, please contact admin.": "Error In Auto CDN IP! It Can Not Be Find, Please Contact Admin",
+  "This domain does not exist in the panel!": "This Domain does not exist in the Panel !",
+  "Domain can not be resolved! there is a problem in your domain": "Domain can not be resolved! There is a problem in your domain. Please check your Domain configurations.",
+  "selected domain for REALITY is not in the same ASN. To better use of the protocol, it is better to find a domain in the same ASN.": "Selected Domain for REALITY is not in the same ASN. To better use of the Protocol, it is better to find a Domain in the same ASN",
+  "User activated!": "User Activated",
+  "Package ended!": "Package Ended",
+  "Your domains changed. Please do not forget to copy admin links, otherwise you can not access to the panel anymore.": "⚠️ Your Domains Changed. please do not forget to copy Admin links, otherwise you can not access to the panel anymore",
+  "Success! Please wait around 4 minutes to make sure everything is updated. During this time, please save your proxy links which are:": "⚠️ Please wait about 5 minutes to make sure everything is updated. during this time, please copy and save your Proxy links which are:",
+  "see the log in the bellow screen": "📑 See the log in the bellow screen",
+  "Success! Please wait around 5 minutes to make sure everything is updated.": "✔️ Success! Please Wait around 5 minutes to make sure everything is updated",
+  "actions": "Actions",
+  "user": {
+    "user_links": "User Links",
+    "name": "Name",
+    "UUID": "UUID",
+    "usage_limit_GB": "⌛️ Usage Limit (GB)",
+    "current_usage_GB": "Current Usage (GB)",
+    "expiry_time": "Expire (Days)",
+    "last_reset_time": "Last Usage Date Reset",
+    "home": {
+      "title": "Hiddify",
+      "tool": {
+        "all-configs": "All Configs",
+        "doh": {
+          "title": "",
+          "help": ""
+        }
+      },
+      "allconfig": {
+        "name": "Name and Link",
+        "type": "Type",
+        "protocol": "Protocol",
+        "transport": "Transport",
+        "security": "Security",
+        "hiddify-managers": "All Config Hiddify Managers",
+        "clash-configs": "Clash Configs",
+        "link-configs": "Subscription Link"
+      },
+      "allconfigs": {
+        "expect_vless": "Except VLess"
+      },
+      "android": {
+        "intro": "Please install Hiddify Android from %(dl_link)s  %(play_link)s. \n\n<!--\n<div class='callout callout-danger'>\n    <b>Update Hiddify Android to Version 0.14</b>\n</div>-->\n<details>\n<summary>Why Hiddify Android?</summary>\n<div class='callout callout-info'>\n\n        Hiddify Android is an Open Source Fork Of Clash That Supports More Protocols.\n        <br>\n        It's Source Codes Exist in\n        <a href='https://github.com/hiddify/HiddifyProxyAndroid'>GitHub</a>.\n        \n        <br>\n        Therefore, it is safe.\n\n        <details>\n            <summary>Alternative: Normal Clash</summary>\n            <div class='btn-group'>\n                <a href='https://play.google.com/store/apps/details?id=com.github.kr328.clash'\n                    class='btn btn-warning orig-link'>Clash in Google Play</a>\n            </div>\n            <div class='btn-group'>\n                <a href='/{{hconfigs[ConfigEnum.proxy_path]}}/gh/Kr328/ClashForAndroid/releases/download/v2.5.12/cfa-2.5.12-premium-universal-release.apk'\n                    class='btn btn-warning orig-link'>Direct Download</a>\n            </div>\n\n            <div class='alert alert-danger'>\n            \tClash does not support VLess protocol. therefore, we need to add another link for it.\n            </div>\n            \n\n        </details>\n    </div>\n</details>"
+      },
+      "clash_configs": {
+        "intro": "Now based on your needs, click on one of the following links.\n<br />",
+        "only_for_blocked_sites": {
+          "title": "For only Blocked Sites",
+          "description": "This mode is suggested. It only forwards the blocked sites via Proxy.\n            <div class='callout callout-success'>\n                In this mode, you will not feel any change in the speed.\n            </div>",
+          "btn": "Install for Only Blocked Sites"
+        },
+        "alternative_for_normal_clash": "Alternative link for Clash",
+        "link_for_normal_clash": "Install Clash",
+        "foreign_sites": {
+          "title": "Foreign Sites Proxy",
+          "description": "Use Proxy for all foreign sites (even not blocked ones).\n<div class='callout callout-warning'>\n\tThis mode is useful in accessing some sanctaioned sites.\n</div>\n",
+          "btn": "Install for Foreign Sites"
+        },
+        "all_sites": {
+          "title": "Proxy for All Sites",
+          "description": "Use Proxy for all websites even for local websites.\n<div class='callout callout-danger'>\n    Loading local sites will be slower and will endanger your privacy.\n</div>\n",
+          "btn": "Install Proxy for All Sites."
+        }
+      },
+      "all_configs": "All Configs",
+      "speedtest": {
+        "title": "Speed Test (Detect dirty IP)",
+        "intro": "First, Test the Speed <b>without</b> the proxy. If the speed is not good, it means that this ip is so called dirty on your ISP.\nIf the speed was low without a proxy, don't waste your time to test this proxy.\nOtherwise, test with different proxies of this site and if the speed is similar to the speed without the proxy, then you have found the best protocol.\n<br />",
+        "upload": "Upload",
+        "download": "Download",
+        "two_ways": "Both Ways"
+      },
+      "doh": "DNS Over HTTPS",
+      "qr-code": {
+        "description": "To copy or share links, click on the gray <i class='fa-solid fa-qrcode'></i> field to display its QR Code.",
+        "display": "Display QR Code"
+      },
+      "ios": {
+        "stash": {
+          "title": "<button class='btn btn-sm btn-default' onclick='show_video('ios-stash')'><i class='fa-solid fa-question'></i> Stash</button>\n          <button class='btn btn-sm btn-default' onclick='show_video('ios-shadowrocket')'><i class='fa-solid fa-question'></i> Shadowrocket</button>\n <span class='badge badge-success'>Recommended</span>",
+          "intro": "Stash & Shadowrocket are both great applications. Either one is worth buying.\n<br>\n<br />\n  <div class='btn-group'>\n        <a href='https://apps.apple.com/us/app/stash-rule-based-proxy/id1596063349' target='_blank' class='btn btn-success orig-link'>Download Stash</a>\n        </div>\n  <div class='btn-group'>\n        <a href='https://apps.apple.com/us/app/shadowrocket/id932747118' target='_blank' class='btn btn-primary orig-link'>Download Shadowrocket</a> \n        </div><br>\n<br />"
+        },
+        "others": {
+          "title": "FoXray and Fair VPN",
+          "intro": "First install one of the following Applications:\n\n<div class='btn-group'>\n\n\t<a href='https://apps.apple.com/us/app/foxray/id6448898396'\n        class='btn btn-primary orig-link'>FoXray</a>\n\n</div>\n\n<div class='btn-group'>\n\n\t<a href='https://apps.apple.com/us/app/fair-vpn/id1533873488'\n        class='btn btn-primary orig-link'>Fair VPN</a>\n</div>\n\n<br />\nThen apply the following configs:\n<br />"
+        }
+      },
+      "telegram": {
+        "clickbtn": "Telegram Proxy",
+        "description": "Click on one of the following link then, in the telegram you can see a window that contains <b>Connect Proxy</b>. Click on it and it will work.\n<br />"
+      },
+      "usage": {
+        "title": "⏳ Traffic Usage",
+        "from": "Of",
+        "monthly": "Monthly",
+        "expire": "Expire: ",
+        "details": "Display Usage Details"
+      },
+      "branding": {
+        "title": "Support",
+        "linktitle": "Support Page Link"
+      },
+      "windows": {
+        "intro": "First, download and install the Hiddify Desktop software according to your operating system.\n<br />\n%(hiddify_desktop_links)s\n\n<details>\n<summary>Why Hiddify Desktop ?</summary>\n<div class='callout callout-info'>\n\n        Hiddify Desktop is an safe and open source fork of Clash that supports more VLESS  and UTLS Fingerprinting.\n        <br>\n<br />\n        Its source codes exist in\n        <a href='https://github.com/hiddify/HiddifyDesktop'>GitHub</a>.\n        \n\n        <details>\n            <summary>Alternative: Normal Clash</summary>\n            %(normal_clash_link)s\n\n            <div class='alert alert-danger'>\n            \tClash does not support browser fingerprinting and VLESS protocol . Therefore, we need to add another link for it.\n            </div>\n            \n\n        </details>\n</div>\n        </details>\n<br />\nNow, according to your need, you can click on one of the buttons. By viewing the window in your browser, just click on the <b>Open</b> option to automatically add the server link to Hiddify Desktop."
+      },
+      "share-title": "Share to Social Media",
+      "link": {
+        "success-copy": "Link Copied to Clipboard. ",
+        "manual-copy": "Copy to Clipboard:  Ctrl+C, Enter"
+      }
+    }
+  },
+  "Mode": "Mode",
+  "Note": "📝 Note",
+  "Max Active Users": "Max Active Users",
+  "Max Users": "Max Users",
+  "Online Users": "Online Users",
+  "Can add sub admin": "👥 Can Add Sub Admin",
+  "Add some text that is only visible to super_admin.": "Add some Text that is only visible to Super Admin",
+  "Define the admin mode. ": "🥇🥈🥉 Define the Admin Mode",
+  "Config file is incorrect": "Config file is incorrect.",
+  "Restore File": "Restore File",
+  "Restore File Description": "Choose the downloaded restore file",
+  "Restore Settings": "⚙️ Restore Settings",
+  "Restore Settings description": "Restore all settings description",
+  "Restore Users": "👥 Restore Users",
+  "Restore Users description": "Select this option to restore All Users",
+  "Restore Domain": "🌏 Restore Domain",
+  "Restore Domain description": "Select this option to restore your domains",
+  "Override Root Admin": "🔁 Override Owner in Backup",
+  "It will override the root admin to the current user": "It will override the owner admin of the backup file to the current user",
+  "Submit": "Submit",
+  "This version of hiddify panel is outdated. Please update it from admin area.": "⚠️ This version of Hiddify Manager is outdated. please Update it from Admin area",
+  "Access Denied!": "Access Denied",
+  "It seems that you have not setup the system completely. <a class=\"btn btn-success\" href=\"%(quick_setup)s\">Click here</a> to complete setup.": "It seems that you have not setup the system completely. <a class='btn btn-success' href='%(quick_setup)s'>Click here</a> to complete setup.",
+  "Please understand that parent panel is under test and the plan and the condition of use maybe change at anytime.": "Please understand that parent Panel is under test and the plan and the condition of use maybe change at anytime.",
+  "It seems that you are using default domain (%(domain)s) which is not recommended.": "It seems that you are using default domain (%(domain)s) which is not recommended. Please change or remove it from domain section.",
+  "It seems that you have not created any users yet. Default user link: %(default_link)s": "It seems that you have not created any users yet. default user link: %(default_link)s",
+  "ssh": "SSH",
+  "child has been removed!": "Child Has Been Removed!",
+  "domain": {
+    "description": "Please fill in this field carefully and correctly. Otherwise, proxies will run into problems. Please visit <a href='https://github.com/hiddify/hiddify-config/wiki/راهنمای-تنظیم-دامنه-و-نهایی-کردن-نصب#آموزش-ساخت-زیردامنه'> Help</a> to learn how to create a subdomain.",
+    "domain": "Domain",
+    "mode": "Mode",
+    "ip": "IP",
+    "cdn": "CDN",
+    "domain_fronting": {
+      "label": "🔒 Enable TLS Domain Fronting",
+      "description": "It is used to simulate another website instead of your website in SNI. therefore, GFW can not filter your Domain\n<a href='https://github.com/hiddify/hiddify-config/wiki/Guide-for-domain-fronting'>Guide</a>. ⚠️CloudFlare does not support Domain Fronting."
+    }
+  },
+  "Direct mode means you want to use your server directly (for usual use), CDN means that you use your server on behind of a CDN provider.": "➡️ <b>Direct:</b> Select this mode if you configure your domain exclusively on your DNS provider in DNS-only mode. (CDN or Proxy Mode Off) <br>\n🔙 <b>Old Direct Mode:</b> This mode is similar to Direct mode but does not utilize gRPC for communication. Select Old Mode if you prefer to configure your domain on your DNS provider in DNS-only mode without utilizing gRPC.\n<br>\n🔀 <b>CDN:</b> Select this mode if you use a CDN provider for your server's domain. (Proxy Mode On)<br>\n☑️ <b>Automatic CDN IP Selector:</b> This mode functions similarly to CDN mode but with an automated IP assignment based on the IP provided by <a href='https://ircf.space' target='_blank'>ircf.space</a>. In Auto CDN IP mode, the IP address is resolved from the domain, while in CDN mode, the domain is returned.<br>\n♾️ <b>Relay:</b> Select this mode if you are using one or more Intermediary servers. <a href='https://github.com/hiddify/hiddify-config/discussions/129' target='_blank'>Read More</a>\n<br>\n✴️ <b>Cloudflare Worker:</b> This mode enables automatic creation of workers for your domain in Cloudflare. Simplify the setup and management of workers by registering this domain, as the necessary steps for worker registration are handled automatically within Cloudflare.\n<br>\n🔂 <b>Reality:</b> Utilize the Reality protocol to create multiple domains.\n<br>\n🆎 <b>Fake Site:</b> Select this mode if you want to use a fake Domain (e.g., Soft98.ir) to bypass SNI whitelist Proxy. (Not Recommended)\n<br>",
+  "You can select the configs with which domains show be shown in the user area. If you select all, automatically, all the new domains will be added for each users.": "For users visit the user area with this domain, Specify they can see the proxies of which domains.\n<br>\nSuggestion: For a domain with an unfiltered IP and different from the others, select all other domains (except the current domain). As a result, since the use of this IP is not for proxy and it is a simple website, this domain and IP will never be blocked and your users can easily update new profiles.",
+  "The name shown in the configs for this domain.": "The name that will be shown in the Configs for this Domain.",
+  "This can be used for giving your users a permanent non blockable links.": "This can be used for giving your Users a permanent non Blockable Links.",
+  "gRPC is a H2 based protocol. Maybe it is faster for you!": "ℹ️ gRPC is a H2 based Protocol. Maybe it is faster for you!",
+  "Invalid REALITY hostnames": "Invalid REALITY Hostnames",
+  "Only for sublink?": "🌍 Use Only for Subscription Link",
+  "Show Domains": "Show Configs of Domains",
+  "Alias": "Alias",
+  "gRPC": "➿ gRPC",
+  "admin link": "Admin",
+  "All": "All",
+  "You have used this domain in: ": "You have already used this Domain in: ",
+  "Couldn't find your ip addresses": "Couldn't find your IP Addresses",
+  "Domain is not REALITY friendly!": "Domain is Not REALITY Friendly!",
+  "REALITY Fallback domain is not compaitble with server names!": "REALITY Fallback Domain is not compaitble with Server names!",
+  "Error in auto cdn format": "⚠️ Error in Auto CDN Format",
+  "node": {
+    "name": {
+      "label": "Node Name",
+      "dscr": "node.name.dscr"
+    },
+    "mode": {
+      "label": "Node Mode",
+      "dscr": "node.mode.dscr"
+    },
+    "uuid": {
+      "label": "Node UUID",
+      "dscr": "node.uuid.dscr"
+    }
+  },
+  "Remote nodes are not supported yet!": "Remote nodes are not supported yet!",
+  "quicksetup": {
+    "setlang": {
+      "success": "Changing the Language was Successful.",
+      "error": "An error occurred while changing language."
+    }
+  },
+  "lang": {
+    "en": "🇺🇸 English انگلیسی 英语",
+    "fa": "🇮🇷 Persian فارسی 波斯语",
+    "pt": "🇵🇹 Portuguese پرتغالی 葡萄牙語",
+    "zh": "🇨🇳 Chinese چینی 简体中文",
+    "ru": "🇷🇺 Russian روسی Русский"
+  },
+  "Iran": "🇮🇷 Iran",
+  "China": "🇨🇳 China",
+  "config.Invalid domain": "Error! Invalid Domain.  The Domain Format is www.google.com",
+  "config.Domain already used": "Domain is exist in domains section. Use another Domain",
+  "Domain (%(domain)s)-> IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode": "Domain (%(domain)s)-> IP = %(domain_ip)s is not same as your IP = %(server_ip)s . this is required in Direct Mode",
+  "Port is already used! in": "Port is Already Used in:",
+  "ProxyPath is already used! use different proxy path": "ProxyPath is already used! use different proxy path",
+  "Xray": "☢️ XRay",
+  "SingBox": "📦 SingBox",
+  "Disable": "Disable",
+  "Only Blocked and Local websites": "☑️ Only Blocked and Local Websites",
+  "Others": "🇺🇳 Others",
+  "Release": "✅ Release",
+  "Beta": "☑️ Beta",
+  "Develop": "⚠️ Develop",
+  "lib": {
+    "telegram": {
+      "python": "✅ Python : Low Performance",
+      "go": "✴️ Go : High Performance - No ad Support",
+      "orignal": "⛔️ Not Working - Original : High Performance",
+      "erlang": "⛔️ NOT Working - Erlang : Medium Performance"
+    }
+  },
+  "Invalid admin link": "Invalid Admin Link",
+  "config.Invalid telegram bot token": "Invalid Telegram Bot Token",
+  "config.Invalid brand link": "Invalid Link. it should be on this format: (https or http://example.com)",
+  "config.invalid uuid": "Invalid UUID secret. example: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n\n",
+  "config.Invalid proxy path": "Invalid Proxy Path. It should be ASCI string (a-z A-Z 0-9)",
+  "config.Invalid port": "Invalid Port. it should be comma separated Integer e.g.  2052,2053",
+  "config.Invalid! The pattern is number-number": "⚠️ Config Invalid! The Pattern Is Number-Number",
+  "config.Invalid! it should be a number only": "⚠️ Config Invalid! It Should Be a Number Only",
+  "Reset package days": "📆 Reset Package's Days",
+  "Reset package usage": "⏳ Reset Package's Usage",
+  "Reset every month": "Monthly",
+  "Added by": "Added by",
+  "Start Date": "Start Date",
+  "Last Online": "Last Connection",
+  "Package Days": "📆 Package Days",
+  "Max IPs": "Max IPs",
+  "Enable": "❇️ Enable",
+  "Add some text that is only visible to you.": "You can add some text that Is only visible to you",
+  "Define the user mode. Should the usage reset every month?": "The user's Package Mode. should the usage reset every Month, Week, etc",
+  "If monthly is enabled, the usage will be reset after 30 days from this date.": "If the monthly option is enabled, when this number reaches 30, the user usage will be reset (for weekly and daily this number is 7 and 1)",
+  "From when the user package will be started? Empty for start from first connection": "Specify the starting date of the package. Leave empty to start from first Connection.",
+  "How many days this package should be available?": "How Many Days Is This Package?",
+  "Package not started yet.": "Package not started yet.",
+  "Remaining: ": "Package Ends",
+  "You have too much users! You can have only %(active)s active users and %(total)s users": "You have too much users! You can have only %(active)s active users and %(total)s users",
+  "Backup": "Backup",
+  "You can download a json formated of configurations by clicking <a href='%(link)s' class='btn btn-primary'>here</a>": "🔄 Hiddify Manager automatically takes a Backup every 6 Hours. The path of the Backup files on the server: ⬇️\n<br>\n/opt/hiddify-config/hiddify-panel/backup\n<br>\n<br>\n<br>\n⚠️ You can download a JSON file format of the configurations by clicking on the button below\n<br>\n<br>\n<a href='%(link)s' class='btn btn-primary'>Download Backup File</a>",
+  "Restore": "♻️ Restore",
+  "You can restore your configs from previously downloaded configs": "ℹ️ You can restore your configs from previously downloaded backup file",
+  "Why Going to Premium?": "Why Going to Premium?",
+  "Premium Description": "Hiddify Manager Is Made For Non-Commercial Use. But If You Use This Panel Commercially, Please Help The Project Grow By Donating. <br/>\nIn Exchange For Your Financial Support, We Also Provide Special Facilities For Your Commercial Product.\n<br/>\n<br/>\nSuch as:\n<ul><li>\n<li>The Possibility Of Syncing To Cloudflare: That Is, By Adding a Domain In The Panel, The Relevant Settings Can Also Be Made In Cloudflare</li>\n<li>Possibility Of Displaying Your Brand In The Panel</li>\n<li>Possibility Of Using The Central Panel To Manage More Than 1 Server In Just One Panel, So It Is No Longer Necessary To Register Users In Different Servers, And Their Volume Will Be Collected In All Servers.\n</li>\n<li>\nThe Possibility Of Using The Telegram Bot\n</li>\n<li>\nAbility To Change Proxy Names\n</li>\n</ul>\n\nPlease Contact <a href='tg://resolve?domain=HiddifyCommercial'>@HiddifyCommercial</a> After Donating.\nSend a Message To Get a Special Version for business users.",
+  " Search Settings": " Search Settings",
+  "Create": "Create",
+  "Save & Add More": "Save & Add More",
+  "Close": "Close",
+  "Back": "Back",
+  "Today Usage": "Today",
+  "Yesterday Usage": "Yesterday",
+  "Month Usage": "Monthly",
+  "Total Usage": "Total Usage",
+  "In 5 minutes": "In 5 Minutes",
+  "Network": "Network",
+  "From Last Restart": "From Last Restart",
+  "CPU %(cores)s Cores": "CPU %(cores)s Core",
+  "RAM": "RAM",
+  "Disk": "Hard Disk",
+  "Hiddify": "Hiddify",
+  "Childs": "Children",
+  "No children!": "No Children",
+  "Status": "Status",
+  "Domain": "Domain",
+  "Edit Proxy Names": "✏️ Modifying Proxies",
+  "Save Link": "Save Link",
+  "Please note that your panel can be accessed only via <a href=\"%(adminlink)s\" class=\"btn btn-primary copy-link\">%(adminlink)s</a>. Please save this link.": "Please note that your panel can be accessed only via the following link. please save this link.\n<p><a href='%(adminlink)s' class='btn btn-secondary copy-link'><i class='fa-solid fa-copy'></i></a>\n<a href='%(adminlink)s' class='copy-link' style='word-break: break-all;'>%(adminlink)s</a></p> ",
+  "Please wait ": "Please Wait ",
+  "log": "📄 Log",
+  "Click here to see the complete log": "Click here to see the complete log",
+  "Success": "Success",
+  "The action done successfully. You can now leave this page.": "✅ The Action Done Successfully. You can now leave this page",
+  "In this section, you can add your domain. You need to add at least one domain in direct mode.": "1️⃣ In this section, you can add your Domain. \n<br>\n2️⃣ If you want to lessen the probability of having dirty IP, you can add Multiple Relay Server <a href='https://github.com/hiddify/hiddify-config/discussions/129'>Read More</a>.\n<br>\n3️⃣ If you have Multiple IPv4 or IPv6 in your Panel you have to add the domain pointed to them as Relay.",
+  "Send Message to User's Telegram": "📣 Send Message to User's Telegram",
+  "All Users": "All Users",
+  "Expired Users": "Expired Users",
+  "Active Users": "Active Users",
+  "Offline more than 1 hour": "Offline More Than 1 Hour",
+  "Offline more than 1 day": "Offline More Than 1 Day",
+  "Offline more than 1 week": "Offline More Than 1 Week",
+  "User usage will be updated every 6 minutes. To update it now click <a href=\"%(link)s\" class=\"btn btn-info\">here</a>": "🔄 User usage will be updated every 1 Minutes. to update it now <a href='%(link)s' class='btn btn-info'>Click Here</a>",
+  "Please type your message to send to the telegram:": "✏️  Please write your message to send to the Telegram:",
+  "Sending": {
+    "": {
+      "": {
+        "": "📤 Sending ..."
+      }
+    }
+  },
+  "The message has been sent.": "The message has been sent.",
+  "Hover the user to see the reason": "Hover the user to see the reason",
+  "The message was not sent to": "The message was not sent to",
+  "%(count)s records were successfully disabled.": "%(count)s records were successfully disabled.",
+  "%(count)s records were successfully enabled.": "%(count)s records were successfully enabled.",
+  "app": {
+    "hiddify": {
+      "next": {
+        "title": "Hiddify Next",
+        "description": "Hiddify Next Description"
+      }
+    },
+    "hiddifyn": {
+      "title": "HiddifyN",
+      "description": "HiddifyN Description"
+    },
+    "v2rayng": {
+      "title": "V2RayNG",
+      "description": "V2RayNG Description"
+    },
+    "hiddifyng": {
+      "title": "HiddifyNG",
+      "description": "HiddifyNG Description"
+    },
+    "hiddify-clash-android": {
+      "title": "Hiddify Clash",
+      "description": "app.hiddify-clash-android.description"
+    },
+    "foxray": {
+      "title": "FoXray",
+      "description": "FoXray Description"
+    },
+    "shadowrocket": {
+      "title": "Shadowrocket",
+      "description": "Shadowrocket Description"
+    },
+    "streisand": {
+      "title": "Streisand",
+      "description": "Streisand Description"
+    },
+    "loon": {
+      "title": "Loon",
+      "description": "Loon Description"
+    },
+    "stash": {
+      "title": "Stash",
+      "description": "Stash Description"
+    },
+    "hiddify-clash-desktop": {
+      "title": "Hiddify Clash",
+      "description": "app.hiddify-clash-desktop.description"
+    },
+    "nekobox": {
+      "title": "NekoBox",
+      "description": "app.nekobox.description"
+    }
+  },
+  "Join our Hiddify Telegram channel to get the latest updates on Hiddify.": "Join our Hiddify Telegram channel to get the latest updates on Hiddify.",
+  "[Admin only visible message:] You can change this message from settings": "[Admin-exclusive message]: Customizable via settings.",
+  "Hooray 🎉 🎉 🎉 \nWelcome to hiddifybot.\nStart by clicking the link on the panel or entering your UUID.": "Hooray 🎉 🎉 🎉 \nWelcome to Hiddify bot\nStart by clicking the link on the Panel or entering your UUID.",
+  "update": "update",
+  "Welcome to admin bot. Choose your action": "Welcome to admin bot. Choose your action",
+  "Create Package": "Create Package",
+  "package size?": "package size?",
+  "Ok": "Ok",
+  "package days?": "package days?",
+  "How many?": "How many?",
+  "Domain?": "Domain?",
+  "Please Wait...": "Please Wait...",
+  "Finished": {
+    "": {
+      "": {
+        "": "Finished..."
+      }
+    }
+  },
+  "Dear {}\n\nYour hiddify information is\nUUID: {}\nLast online date: {}\nExpire time: {}\nUsage class: {}\n": "Dear {}\n\nYour Hiddify Information is\nUUID: {}\nLast Online Date: {}\nExpire Time: {}\nUsage Class: {}\n",
+  "Your hiddify instance information \nDomain: {} \nUsage limit: {} GB\nCurrent usage: {} GB\nExpires at: {} \nRemaining days: {} \n\n\n Happy using 🎉 🎉 🎉 \n": "Your Hiddify instance information \nDomain: {} \nUsage Limit: {} GB\nCurrent Usage: {} GB\nExpires at: {} \nRemaining Days: {} \n\n\nGood Luck! 🎉 🎉 🎉 \n",
+  "login": {
+    "secret": {
+      "label": "Secret Code",
+      "description": "Secret code is given by the service provider."
+    }
+  },
+  "Incorrect Password": "⚠️ Incorrect Password",
+  "📅%(expire_days)s days": "📅%(expire_days)s Days Remain",
+  "copy": "Copy",
+  "open": "Open",
+  "Link is changed!": "ℹ️ Link is Changed!",
+  "The page has been moved to a new link. Please copy and save the new link.": "The page has been moved to a new link. Please copy and save the new link.",
+  "all": "All",
+  "auto": "Auto",
+  "singbox: ssh": "SingBox: SSH",
+  "Please select one of the following applications:": "📍 Please select one of the following applications:\n<br />\n<br />",
+  "download": "Direct Download",
+  "install from google play": "<i class='fa-brands fa-google-play'></i> Google Play",
+  "HiddifyNG": "HiddifyNG <span class='badge badge-success'>Recommended</span>",
+  "HiddifyNG intro": "📌 Please install HiddifyNG from either of these links:\n<br />\n %(dl_link)s  %(play_link)s\n<br />\nThen click on the link below and open it in HiddifyNG.\n<br />",
+  "Click to Import": "Tap to Import",
+  "V2rayNG": "Alternative v2rayNG <button class='btn btn-sm btn-default' onclick='show_video('android-v2rayng')'><i class='fa-solid fa-question'></i> </button>\n<br />\n<br />",
+  "V2rayNG intro": "Please install v2rayNG from either of these links: %(dl_link)s  %(play_link)s.\nThen copy the link below and paste it in v2rayNG according to the video tutorial <button class='btn btn-sm btn-default' onclick='show_video('android-v2rayng')'><i class='fa-solid fa-question'></i> </button>.\n<br />",
+  "Hiddify Android": "Hiddify Android ",
+  "test": "Test",
+  "Welcome %(user)s": "Welcome %(user)s",
+  "telegram": "Telegram",
+  "android": "Android",
+  "ios": "iOS",
+  "desktop": "Desktop",
+  "user.home.select os": "Please Select Your Operating System.",
+  "user.home.select tool": "Please select the item.",
+  "QR code": "🧾 QR Code",
+  "Want to enjoy more with telegram?": "ℹ️ Connect Your Account to Telegram",
+  "Please connect your telegram account to the panel to be informed about latest news.": "Please connect your Telegram account to the panel to be informed about latest news.",
+  "next": "Next",
+  "previous": "Previous",
+  "search": "Search",
+  "Check again": "Check Again",
+  "Turn of VPN": "Turn Off VPN",
+  "You should visit this page without VPN. Your country=%(your_country)s\nexpected=%(expected_country)s": "You should visit this page without VPN Your Country =%(your_country)s\nExpected=%(expected_country)s",
+  "Please connect your telegram accout to the panel to be informed about latest news.": "Please connect your Telegram account to the panel to know the latest Status of your Subscription",
+  "Click to Start Anti-Filter.": "<i class='fa-solid fa-play'></i> Tap to Set up Anti-Filter",
+  "Unified link for all application.": "One-click setup link for all applications (recommended)",
+  "Temporary Short Link": "⏱️ Temporary Short Link",
+  "Simplifies the process of employing the link elsewhere.": "Simplifies the process of employing the link elsewhere",
+  "Open in Application": "Open in Application",
+  "If the application do not open automatically, please click <a class='btn btn-primary copy-link' href='%(sub)s'>this universal link</a> to copy and paste it on\n                your application, or:": "If the Hiddify application does not open automatically, please click <a class='btn btn-primary copy-link' href='%(sub)s'>this universal link</a> to copy and paste it in the Hiddify application, or:",
+  "Use HiddifyNext:": "Use HiddifyNext:",
+  "Download App": "<i class='fa-solid fa-download'></i> Download App",
+  "Import": "Import in App",
+  "More Applications": "More Applications",
+  "Import in": "Import in",
+  "Download\n                                App": "Download App",
+  "QRCode": "<i class='fa-solid fa-qrcode'></i> QRCode",
+  "Copy Link": "Copy Link",
+  "Reset Usage Time:": "Traffic usage reset time:",
+  "days": "Days",
+  "User is inactive": "User Is Inactive",
+  "Too many Connected IPs": "Too Many Connected IPs",
+  "View in Telegram": "View in Telegram",
+  "Windows": "Windows",
+  "macOS": "macOS",
+  "Linux": "Linux",
+  "HiddigyN": "HiddifyN <span class='badge badge-success'>Recommended</span>",
+  "HiddifyN intro": "Please install HiddifyN from %(dl_link)s.\nThen click on the link below. It will do everything automatically.\n<br />",
+  "HiddifyClash": "HiddifyClash",
+  "Oops! Something went wrong.": "Oops! something went wrong.",
+  "Please create an issue on Github.": "Please create an issue on Github",
+  "master": {
+    "page-title": "Hiddify Manager"
+  },
+  "Parent Panel": "Parent Panel",
+  "Admins": "Admins",
+  "in parent panel": "In Parent Panel",
+  "Commercial use": "Commercial Use",
+  "Bug": "Bug/Feature",
+  "Donation": {
+    "title": "",
+    "description": ""
+  },
+  "Telegram Bot": "Telegram Bot",
+  "Are you sure you want to do this action?": "⚠️ Are you sure you want to do this action?",
+  "direct": "➡️ Direct",
+  "sub_link_only": "📳 Only for Subscription Link (can be Direct, Relay, or CDN)",
+  "cdn": "🔀 CDN (Cloudflare Proxy, ...)",
+  "auto_cdn_ip": "☑️ Automatic CDN IP Selector",
+  "relay": "♾️ Relay (Connect Using an Intermediate Node)",
+  "reality": "🔂 Reality",
+  "old_xtls_direct": "🔙 Old Direct Mode (For Trojan TCP, VLess XTLS)",
+  "worker": "✴️ Cloudflare Worker",
+  "fake": "🆎 Fake Site",
+  "no_reset": "⭐️ Without Reset",
+  "monthly": "🗓️ Monthly",
+  "weekly": "📅 Weekly",
+  "daily": "⏰ Daily",
+  "Direct": "➖ Direct",
+  "Panel Link": "➖ Panel Link",
+  "Bridge Servers": "➖ Bridge Servers",
+  "Fake": "➖ Fake",
+  "Example Domains": "Test and Suggest Domain ",
+  "close": "Close",
+  "clickable copy": "Link for Social Media",
+  "Install": "Install",
+  "Install Hiddify Application": "Hiddify Manager Installation",
+  "Please click on %(install)s to save the user page.": "Click %(install)s to save the User Page.",
+  "Count:": "Count:",
+  "Actions": "Actions"
+}

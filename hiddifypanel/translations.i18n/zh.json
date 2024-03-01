@@ -1,0 +1,1091 @@
+{
+  "0 - Last day": "",
+  "admin": {
+    "config": {
+      "apply_configs": "",
+      "title": ""
+    },
+    "proxy": {
+      "global_config": "",
+      "detailed_config": ""
+    },
+    "quicksetup": {
+      "title": ""
+    },
+    "quicksetup_intro": "",
+    "Actions:apply_configs": "",
+    "menu": {
+      "home": "",
+      "user": "",
+      "config": "",
+      "support": "",
+      "telegram": "",
+      "domain": "",
+      "proxy": "",
+      "api": ""
+    },
+    "actions": {
+      "title": "",
+      "status": "",
+      "viewlogs": "",
+      "apply_configs": "",
+      "update": "",
+      "reinstall": "",
+      "reset": ""
+    }
+  },
+  "config": {
+    "validation-success": "",
+    "validation-success-no-reset": "",
+    "cdn_forced_host": {
+      "description": "",
+      "label": ""
+    },
+    "reality_server_names": {
+      "description": "",
+      "label": ""
+    },
+    "validation-error": "",
+    "domain_fronting": {
+      "label": "",
+      "description": ""
+    },
+    "admin_lang": {
+      "label": "",
+      "description": ""
+    },
+    "country": {
+      "label": "",
+      "description": ""
+    },
+    "block_iran_sites": {
+      "label": "",
+      "description": ""
+    },
+    "decoy_domain": {
+      "label": "",
+      "description": ""
+    },
+    "telegram_lib": {
+      "label": "",
+      "description": ""
+    },
+    "admin": {
+      "label": "",
+      "description": ""
+    },
+    "lang": {
+      "label": "",
+      "description": ""
+    },
+    "branding_title": {
+      "label": "",
+      "description": ""
+    },
+    "branding_site": {
+      "label": "",
+      "description": ""
+    },
+    "branding_freetext": {
+      "label": "",
+      "description": ""
+    },
+    "branding": {
+      "label": "",
+      "description": ""
+    },
+    "firewall": {
+      "label": "",
+      "description": ""
+    },
+    "auto_update": {
+      "label": "",
+      "description": ""
+    },
+    "speed_test": {
+      "label": "",
+      "description": ""
+    },
+    "only_ipv4": {
+      "label": "",
+      "description": ""
+    },
+    "show_usage_in_sublink": {
+      "label": "",
+      "description": ""
+    },
+    "general": {
+      "label": "",
+      "description": ""
+    },
+    "vmess_enable": {
+      "label": "",
+      "description": ""
+    },
+    "v2ray_enable": {
+      "label": "",
+      "description": ""
+    },
+    "shared_secret": {
+      "label": "",
+      "description": ""
+    },
+    "proxies": {
+      "label": "",
+      "description": ""
+    },
+    "domain_fronting_tls_enable": {
+      "label": "",
+      "description": ""
+    },
+    "domain_fronting_domain": {
+      "label": "",
+      "description": ""
+    },
+    "telegram_enable": {
+      "label": "",
+      "description": ""
+    },
+    "telegram_adtag": {
+      "label": "",
+      "description": ""
+    },
+    "telegram_fakedomain": {
+      "label": "",
+      "description": ""
+    },
+    "telegram": {
+      "label": "",
+      "description": ""
+    },
+    "http_proxy_enable": {
+      "label": "",
+      "description": ""
+    },
+    "http_ports": {
+      "label": "",
+      "description": ""
+    },
+    "http": {
+      "label": "",
+      "description": ""
+    },
+    "allow_invalid_sni": {
+      "label": "",
+      "description": ""
+    },
+    "tls_ports": {
+      "label": "",
+      "description": ""
+    },
+    "tls": {
+      "label": "",
+      "description": ""
+    },
+    "ssfaketls_enable": {
+      "label": "",
+      "description": ""
+    },
+    "ssfaketls_fakedomain": {
+      "label": "",
+      "description": ""
+    },
+    "ssfaketls": {
+      "label": "",
+      "description": ""
+    },
+    "shadowtls_enable": {
+      "label": "",
+      "description": ""
+    },
+    "shadowtls_fakedomain": {
+      "label": "",
+      "description": ""
+    },
+    "shadowtls": {
+      "label": "",
+      "description": ""
+    },
+    "restls": {
+      "label": "",
+      "description": ""
+    },
+    "tuic": {
+      "label": "",
+      "description": ""
+    },
+    "ssr": {
+      "label": "",
+      "description": ""
+    },
+    "kcp": {
+      "label": "",
+      "description": ""
+    },
+    "utls": {
+      "label": "",
+      "description": ""
+    },
+    "telegram_bot_token": {
+      "label": "",
+      "description": ""
+    },
+    "package_mode": {
+      "label": "",
+      "description": ""
+    },
+    "advanced": {
+      "label": "",
+      "description": ""
+    },
+    "proxy_path": {
+      "label": "",
+      "description": ""
+    },
+    "path_trojan": {
+      "label": "",
+      "description": ""
+    },
+    "path_vless": {
+      "label": "",
+      "description": ""
+    },
+    "path_vmess": {
+      "label": "",
+      "description": ""
+    },
+    "path_grpc": {
+      "label": "",
+      "description": ""
+    },
+    "path_tcp": {
+      "label": "",
+      "description": ""
+    },
+    "path_ws": {
+      "label": "",
+      "description": ""
+    },
+    "cloudflare": {
+      "label": "",
+      "description": ""
+    },
+    "too_advanced": {
+      "label": "",
+      "description": ""
+    },
+    "warp_plus_code": {
+      "label": "",
+      "description": ""
+    },
+    "warp_mode": {
+      "label": "",
+      "description": ""
+    },
+    "warp": {
+      "label": "",
+      "description": ""
+    },
+    "reality_short_ids": {
+      "label": "",
+      "description": ""
+    },
+    "reality_fallback_domain": {
+      "label": "",
+      "description": ""
+    },
+    "reality_private_key": {
+      "label": "",
+      "description": ""
+    },
+    "reality_public_key": {
+      "label": "",
+      "description": ""
+    },
+    "reality": {
+      "label": "",
+      "description": ""
+    },
+    "first_setup": {
+      "label": "",
+      "description": ""
+    },
+    "warp_enable": {
+      "label": "",
+      "description": ""
+    },
+    "restls1_2_domain": {
+      "label": "",
+      "description": ""
+    },
+    "restls1_3_domain": {
+      "label": "",
+      "description": ""
+    },
+    "license": {
+      "label": "",
+      "description": ""
+    },
+    "is_parent": {
+      "label": "",
+      "description": ""
+    },
+    "parent_panel": {
+      "label": "",
+      "description": ""
+    },
+    "unique_id": {
+      "label": "",
+      "description": ""
+    },
+    "last_hash": {
+      "label": "",
+      "description": ""
+    },
+    "admin_secret": {
+      "label": "",
+      "description": ""
+    },
+    "kcp_ports": {
+      "label": "",
+      "description": ""
+    },
+    "kcp_enable": {
+      "label": "",
+      "description": ""
+    },
+    "netdata": {
+      "label": "",
+      "description": ""
+    },
+    "torrent_block": {
+      "label": "",
+      "description": ""
+    },
+    "tuic_enable": {
+      "label": "",
+      "description": ""
+    },
+    "tuic_port": {
+      "label": "",
+      "description": ""
+    },
+    "ssr_enable": {
+      "label": "",
+      "description": ""
+    },
+    "ssr_fakedomain": {
+      "label": "",
+      "description": ""
+    },
+    "domain_fronting_http_enable": {
+      "label": "",
+      "description": ""
+    },
+    "db_version": {
+      "label": "",
+      "description": ""
+    },
+    "not_found": {
+      "label": "",
+      "description": ""
+    },
+    "path_v2ray": {
+      "label": "",
+      "description": ""
+    },
+    "path_ss": {
+      "label": "",
+      "description": ""
+    },
+    "dbvalues": {
+      "label": "",
+      "description": ""
+    },
+    "create_easysetup_link": {
+      "label": "",
+      "description": ""
+    },
+    "wireguard_enable": {
+      "label": "",
+      "description": ""
+    },
+    "wireguard_port": {
+      "label": "",
+      "description": ""
+    },
+    "wireguard_ipv6": {
+      "label": "",
+      "description": ""
+    },
+    "wireguard_ipv4": {
+      "label": "",
+      "description": ""
+    },
+    "wireguard_private_key": {
+      "label": "",
+      "description": ""
+    },
+    "wireguard_public_key": {
+      "label": "",
+      "description": ""
+    },
+    "wireguard_noise_trick": {
+      "label": "",
+      "description": ""
+    },
+    "ssh_server_redis_url": {
+      "label": "",
+      "description": ""
+    },
+    "ssh_server_port": {
+      "label": "",
+      "description": ""
+    },
+    "ssh_server_enable": {
+      "label": "",
+      "description": ""
+    },
+    "core_type": {
+      "label": "",
+      "description": ""
+    },
+    "warp_sites": {
+      "label": "",
+      "description": ""
+    },
+    "dns_server": {
+      "label": "",
+      "description": ""
+    },
+    "reality_port": {
+      "label": "",
+      "description": ""
+    },
+    "tls_fragment_enable": {
+      "label": "",
+      "description": ""
+    },
+    "tls_fragment_size": {
+      "label": "",
+      "description": ""
+    },
+    "tls_fragment_sleep": {
+      "label": "",
+      "description": ""
+    },
+    "tls_mixed_case": {
+      "label": "",
+      "description": ""
+    },
+    "tls_padding_enable": {
+      "label": "",
+      "description": ""
+    },
+    "tls_padding_length": {
+      "label": "",
+      "description": ""
+    },
+    "mux_enable": {
+      "label": "",
+      "description": ""
+    },
+    "mux_protocol": {
+      "label": "",
+      "description": ""
+    },
+    "mux_max_connections": {
+      "label": "",
+      "description": ""
+    },
+    "mux_min_streams": {
+      "label": "",
+      "description": ""
+    },
+    "mux_max_streams": {
+      "label": "",
+      "description": ""
+    },
+    "mux_padding_enable": {
+      "label": "",
+      "description": ""
+    },
+    "mux_brutal_enable": {
+      "label": "",
+      "description": ""
+    },
+    "mux_brutal_up_mbps": {
+      "label": "",
+      "description": ""
+    },
+    "mux_brutal_down_mbps": {
+      "label": "",
+      "description": ""
+    },
+    "proxy_path_admin": {
+      "label": "",
+      "description": ""
+    },
+    "proxy_path_client": {
+      "label": "",
+      "description": ""
+    },
+    "hysteria_enable": {
+      "label": "",
+      "description": ""
+    },
+    "hysteria_port": {
+      "label": "",
+      "description": ""
+    },
+    "hysteria_obfs_enable": {
+      "label": "",
+      "description": ""
+    },
+    "hysteria_up_mbps": {
+      "label": "",
+      "description": ""
+    },
+    "hysteria_down_mbps": {
+      "label": "",
+      "description": ""
+    },
+    "shadowsocks2022_enable": {
+      "label": "",
+      "description": ""
+    },
+    "shadowsocks2022_method": {
+      "label": "",
+      "description": ""
+    },
+    "shadowsocks2022_port": {
+      "label": "",
+      "description": ""
+    },
+    "ws_enable": {
+      "label": "",
+      "description": ""
+    },
+    "grpc_enable": {
+      "label": "",
+      "description": ""
+    },
+    "httpupgrade_enable": {
+      "label": "",
+      "description": ""
+    },
+    "path_httpupgrade": {
+      "label": "",
+      "description": ""
+    },
+    "mux": {
+      "label": "",
+      "description": ""
+    },
+    "tls_trick": {
+      "label": "",
+      "description": ""
+    },
+    "ssh": {
+      "label": "",
+      "description": ""
+    },
+    "hysteria": {
+      "label": "",
+      "description": ""
+    },
+    "hidden": {
+      "label": "",
+      "description": ""
+    },
+    "wireguard": {
+      "label": "",
+      "description": ""
+    },
+    "shadowsocks": {
+      "label": "",
+      "description": ""
+    }
+  },
+  "Error! auto cdn ip can not be find, please contact admin.": "",
+  "This domain does not exist in the panel!": "",
+  "Domain can not be resolved! there is a problem in your domain": "",
+  "selected domain for REALITY is not in the same ASN. To better use of the protocol, it is better to find a domain in the same ASN.": "",
+  "User activated!": "",
+  "Package ended!": "",
+  "Your domains changed. Please do not forget to copy admin links, otherwise you can not access to the panel anymore.": "",
+  "Success! Please wait around 4 minutes to make sure everything is updated. During this time, please save your proxy links which are:": "",
+  "see the log in the bellow screen": "",
+  "Success! Please wait around 5 minutes to make sure everything is updated.": "",
+  "actions": "",
+  "user": {
+    "user_links": "",
+    "name": "",
+    "UUID": "",
+    "usage_limit_GB": "",
+    "current_usage_GB": "",
+    "expiry_time": "",
+    "last_reset_time": "",
+    "home": {
+      "title": "",
+      "tool": {
+        "all-configs": "",
+        "doh": {
+          "title": "",
+          "help": ""
+        }
+      },
+      "allconfig": {
+        "name": "",
+        "type": "",
+        "protocol": "",
+        "transport": "",
+        "security": "",
+        "hiddify-managers": "",
+        "clash-configs": "",
+        "link-configs": ""
+      },
+      "allconfigs": {
+        "expect_vless": ""
+      },
+      "android": {
+        "intro": ""
+      },
+      "clash_configs": {
+        "intro": "",
+        "only_for_blocked_sites": {
+          "title": "",
+          "description": "",
+          "btn": ""
+        },
+        "alternative_for_normal_clash": "",
+        "link_for_normal_clash": "",
+        "foreign_sites": {
+          "title": "",
+          "description": "",
+          "btn": ""
+        },
+        "all_sites": {
+          "title": "",
+          "description": "",
+          "btn": ""
+        }
+      },
+      "all_configs": "",
+      "speedtest": {
+        "title": "",
+        "intro": "",
+        "upload": "",
+        "download": "",
+        "two_ways": ""
+      },
+      "doh": "",
+      "qr-code": {
+        "description": "",
+        "display": ""
+      },
+      "ios": {
+        "stash": {
+          "title": "",
+          "intro": ""
+        },
+        "others": {
+          "title": "",
+          "intro": ""
+        }
+      },
+      "telegram": {
+        "clickbtn": "",
+        "description": ""
+      },
+      "usage": {
+        "title": "",
+        "from": "",
+        "monthly": "",
+        "expire": "",
+        "details": ""
+      },
+      "branding": {
+        "title": "",
+        "linktitle": ""
+      },
+      "windows": {
+        "intro": ""
+      },
+      "share-title": "",
+      "link": {
+        "success-copy": "",
+        "manual-copy": ""
+      }
+    }
+  },
+  "Mode": "",
+  "Note": "",
+  "Max Active Users": "",
+  "Max Users": "",
+  "Online Users": "",
+  "Can add sub admin": "",
+  "Add some text that is only visible to super_admin.": "",
+  "Define the admin mode. ": "",
+  "Config file is incorrect": "",
+  "Restore File": "",
+  "Restore File Description": "",
+  "Restore Settings": "",
+  "Restore Settings description": "",
+  "Restore Users": "",
+  "Restore Users description": "",
+  "Restore Domain": "",
+  "Restore Domain description": "",
+  "Override Root Admin": "",
+  "It will override the root admin to the current user": "",
+  "Submit": "",
+  "This version of hiddify panel is outdated. Please update it from admin area.": "",
+  "Access Denied!": "",
+  "It seems that you have not setup the system completely. <a class=\"btn btn-success\" href=\"%(quick_setup)s\">Click here</a> to complete setup.": "",
+  "Please understand that parent panel is under test and the plan and the condition of use maybe change at anytime.": "",
+  "It seems that you are using default domain (%(domain)s) which is not recommended.": "",
+  "It seems that you have not created any users yet. Default user link: %(default_link)s": "",
+  "ssh": "",
+  "child has been removed!": "",
+  "domain": {
+    "description": "",
+    "domain": "",
+    "mode": "",
+    "ip": "",
+    "cdn": "",
+    "domain_fronting": {
+      "label": "",
+      "description": ""
+    }
+  },
+  "Direct mode means you want to use your server directly (for usual use), CDN means that you use your server on behind of a CDN provider.": "",
+  "You can select the configs with which domains show be shown in the user area. If you select all, automatically, all the new domains will be added for each users.": "",
+  "The name shown in the configs for this domain.": "",
+  "This can be used for giving your users a permanent non blockable links.": "",
+  "gRPC is a H2 based protocol. Maybe it is faster for you!": "",
+  "Invalid REALITY hostnames": "",
+  "Only for sublink?": "",
+  "Show Domains": "",
+  "Alias": "",
+  "gRPC": "",
+  "admin link": "",
+  "All": "",
+  "You have used this domain in: ": "",
+  "Couldn't find your ip addresses": "",
+  "Domain is not REALITY friendly!": "",
+  "REALITY Fallback domain is not compaitble with server names!": "",
+  "Error in auto cdn format": "",
+  "node": {
+    "name": {
+      "label": "",
+      "dscr": ""
+    },
+    "mode": {
+      "label": "",
+      "dscr": ""
+    },
+    "uuid": {
+      "label": "",
+      "dscr": ""
+    }
+  },
+  "Remote nodes are not supported yet!": "",
+  "quicksetup": {
+    "setlang": {
+      "success": "",
+      "error": ""
+    }
+  },
+  "lang": {
+    "en": "",
+    "fa": "",
+    "pt": "",
+    "zh": "",
+    "ru": ""
+  },
+  "Iran": "",
+  "China": "",
+  "config.Invalid domain": "",
+  "config.Domain already used": "",
+  "Domain (%(domain)s)-> IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode": "",
+  "Port is already used! in": "",
+  "ProxyPath is already used! use different proxy path": "",
+  "Xray": "",
+  "SingBox": "",
+  "Disable": "",
+  "Only Blocked and Local websites": "",
+  "Others": "",
+  "Release": "",
+  "Beta": "",
+  "Develop": "",
+  "lib": {
+    "telegram": {
+      "python": "",
+      "go": "",
+      "orignal": "",
+      "erlang": ""
+    }
+  },
+  "Invalid admin link": "",
+  "config.Invalid telegram bot token": "",
+  "config.Invalid brand link": "",
+  "config.invalid uuid": "",
+  "config.Invalid proxy path": "",
+  "config.Invalid port": "",
+  "config.Invalid! The pattern is number-number": "",
+  "config.Invalid! it should be a number only": "",
+  "Reset package days": "",
+  "Reset package usage": "",
+  "Reset every month": "",
+  "Added by": "",
+  "Start Date": "",
+  "Last Online": "",
+  "Package Days": "",
+  "Max IPs": "",
+  "Enable": "",
+  "Add some text that is only visible to you.": "",
+  "Define the user mode. Should the usage reset every month?": "",
+  "If monthly is enabled, the usage will be reset after 30 days from this date.": "",
+  "From when the user package will be started? Empty for start from first connection": "",
+  "How many days this package should be available?": "",
+  "Package not started yet.": "",
+  "Remaining: ": "",
+  "You have too much users! You can have only %(active)s active users and %(total)s users": "",
+  "Backup": "",
+  "You can download a json formated of configurations by clicking <a href='%(link)s' class='btn btn-primary'>here</a>": "",
+  "Restore": "",
+  "You can restore your configs from previously downloaded configs": "",
+  "Why Going to Premium?": "",
+  "Premium Description": "",
+  " Search Settings": "",
+  "Create": "",
+  "Save & Add More": "",
+  "Close": "",
+  "Back": "",
+  "Today Usage": "",
+  "Yesterday Usage": "",
+  "Month Usage": "",
+  "Total Usage": "",
+  "In 5 minutes": "",
+  "Network": "",
+  "From Last Restart": "",
+  "CPU %(cores)s Cores": "",
+  "RAM": "",
+  "Disk": "",
+  "Hiddify": "",
+  "Childs": "",
+  "No children!": "",
+  "Status": "",
+  "Domain": "",
+  "Edit Proxy Names": "",
+  "Save Link": "",
+  "Please note that your panel can be accessed only via <a href=\"%(adminlink)s\" class=\"btn btn-primary copy-link\">%(adminlink)s</a>. Please save this link.": "",
+  "Please wait ": "",
+  "log": "",
+  "Click here to see the complete log": "",
+  "Success": "",
+  "The action done successfully. You can now leave this page.": "",
+  "In this section, you can add your domain. You need to add at least one domain in direct mode.": "",
+  "Send Message to User's Telegram": "",
+  "All Users": "",
+  "Expired Users": "",
+  "Active Users": "",
+  "Offline more than 1 hour": "",
+  "Offline more than 1 day": "",
+  "Offline more than 1 week": "",
+  "User usage will be updated every 6 minutes. To update it now click <a href=\"%(link)s\" class=\"btn btn-info\">here</a>": "",
+  "Please type your message to send to the telegram:": "",
+  "Sending": {
+    "": {
+      "": {
+        "": ""
+      }
+    }
+  },
+  "The message has been sent.": "",
+  "Hover the user to see the reason": "",
+  "The message was not sent to": "",
+  "%(count)s records were successfully disabled.": "",
+  "%(count)s records were successfully enabled.": "",
+  "app": {
+    "hiddify": {
+      "next": {
+        "title": "",
+        "description": ""
+      }
+    },
+    "hiddifyn": {
+      "title": "",
+      "description": ""
+    },
+    "v2rayng": {
+      "title": "",
+      "description": ""
+    },
+    "hiddifyng": {
+      "title": "",
+      "description": ""
+    },
+    "hiddify-clash-android": {
+      "title": "",
+      "description": ""
+    },
+    "foxray": {
+      "title": "",
+      "description": ""
+    },
+    "shadowrocket": {
+      "title": "",
+      "description": ""
+    },
+    "streisand": {
+      "title": "",
+      "description": ""
+    },
+    "loon": {
+      "title": "",
+      "description": ""
+    },
+    "stash": {
+      "title": "",
+      "description": ""
+    },
+    "hiddify-clash-desktop": {
+      "title": "",
+      "description": ""
+    },
+    "nekobox": {
+      "title": "",
+      "description": ""
+    }
+  },
+  "Join our Hiddify Telegram channel to get the latest updates on Hiddify.": "",
+  "[Admin only visible message:] You can change this message from settings": "",
+  "Hooray 🎉 🎉 🎉 \nWelcome to hiddifybot.\nStart by clicking the link on the panel or entering your UUID.": "",
+  "update": "",
+  "Welcome to admin bot. Choose your action": "",
+  "Create Package": "",
+  "package size?": "",
+  "Ok": "",
+  "package days?": "",
+  "How many?": "",
+  "Domain?": "",
+  "Please Wait...": "",
+  "Finished": {
+    "": {
+      "": {
+        "": ""
+      }
+    }
+  },
+  "Dear {}\n\nYour hiddify information is\nUUID: {}\nLast online date: {}\nExpire time: {}\nUsage class: {}\n": "",
+  "Your hiddify instance information \nDomain: {} \nUsage limit: {} GB\nCurrent usage: {} GB\nExpires at: {} \nRemaining days: {} \n\n\n Happy using 🎉 🎉 🎉 \n": "",
+  "login": {
+    "secret": {
+      "label": "",
+      "description": ""
+    }
+  },
+  "Incorrect Password": "",
+  "📅%(expire_days)s days": "",
+  "copy": "",
+  "open": "",
+  "Link is changed!": "",
+  "The page has been moved to a new link. Please copy and save the new link.": "",
+  "all": "",
+  "auto": "",
+  "singbox: ssh": "",
+  "Please select one of the following applications:": "",
+  "download": "",
+  "install from google play": "",
+  "HiddifyNG": "",
+  "HiddifyNG intro": "",
+  "Click to Import": "",
+  "V2rayNG": "",
+  "V2rayNG intro": "",
+  "Hiddify Android": "",
+  "test": "",
+  "Welcome %(user)s": "",
+  "telegram": "",
+  "android": "",
+  "ios": "",
+  "desktop": "",
+  "user.home.select os": "",
+  "user.home.select tool": "",
+  "QR code": "",
+  "Want to enjoy more with telegram?": "",
+  "Please connect your telegram account to the panel to be informed about latest news.": "",
+  "next": "",
+  "previous": "",
+  "search": "",
+  "Check again": "",
+  "Turn of VPN": "",
+  "You should visit this page without VPN. Your country=%(your_country)s\nexpected=%(expected_country)s": "",
+  "Please connect your telegram accout to the panel to be informed about latest news.": "",
+  "Click to Start Anti-Filter.": "",
+  "Unified link for all application.": "",
+  "Temporary Short Link": "",
+  "Simplifies the process of employing the link elsewhere.": "",
+  "Open in Application": "",
+  "If the application do not open automatically, please click <a class='btn btn-primary copy-link' href='%(sub)s'>this universal link</a> to copy and paste it on\n                your application, or:": "",
+  "Use HiddifyNext:": "",
+  "Download App": "",
+  "Import": "",
+  "More Applications": "",
+  "Import in": "",
+  "Download\n                                App": "",
+  "QRCode": "",
+  "Copy Link": "",
+  "Reset Usage Time:": "",
+  "days": "",
+  "User is inactive": "",
+  "Too many Connected IPs": "",
+  "View in Telegram": "",
+  "Windows": "",
+  "macOS": "",
+  "Linux": "",
+  "HiddigyN": "",
+  "HiddifyN intro": "",
+  "HiddifyClash": "",
+  "Oops! Something went wrong.": "",
+  "Please create an issue on Github.": "",
+  "master": {
+    "page-title": ""
+  },
+  "Parent Panel": "",
+  "Admins": "",
+  "in parent panel": "",
+  "Commercial use": "",
+  "Bug": "",
+  "Donation": {
+    "title": "",
+    "description": ""
+  },
+  "Telegram Bot": "",
+  "Are you sure you want to do this action?": "",
+  "direct": "",
+  "sub_link_only": "",
+  "cdn": "",
+  "auto_cdn_ip": "",
+  "relay": "",
+  "reality": "",
+  "old_xtls_direct": "",
+  "worker": "",
+  "fake": "",
+  "no_reset": "",
+  "monthly": "",
+  "weekly": "",
+  "daily": "",
+  "Direct": "",
+  "Panel Link": "",
+  "Bridge Servers": "",
+  "Fake": "",
+  "Example Domains": "",
+  "close": "",
+  "clickable copy": "",
+  "Install": "",
+  "Install Hiddify Application": "",
+  "Please click on %(install)s to save the user page.": "",
+  "Count:": "",
+  "Actions": ""
+}

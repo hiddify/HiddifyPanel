@@ -1,0 +1,3 @@
+{% macro url(path) -%}
+  {{ url_for('static', filename='adminlte/' + path) }}
+{%- endmacro %}

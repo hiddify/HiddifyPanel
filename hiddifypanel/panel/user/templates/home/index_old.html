@@ -5,7 +5,9 @@
 <div class="row mb-2">
     <div class="col-12">
 
-        <h1 class="m-0" style="text-align: start;"> <a href="{{'https://github.com/hiddify/hiddify-manager/wiki'}}">{{_('user.home.title')}} {{hconfig(ConfigEnum.branding_title)}}</a>: <div class="d-inline-flex">
+        <h1 class="m-0" style="text-align: start;"> <a
+                href="{{'https://github.com/hiddify/hiddify-manager/wiki'}}">{{_('user.home.title')}}
+                {{hconfig(ConfigEnum.branding_title)}}</a>: <div class="d-inline-flex">
                 {{_('Welcome %(user)s',user=user.name if user.name!="default" else "")}}</div>
         </h1>
     </div><!-- /.col -->
@@ -38,18 +40,26 @@
                 <h3 class="card-title p-1"> </h3>
                 <ul class="nav nav-pills p-2">
                     {% if hconfigs[ConfigEnum.telegram_enable] %}
-                    <li class="nav-item"><a class="nav-link" href="#telegram" data-toggle="tab"><i class="fa-brands fa-telegram fa-margin"></i> {{_('telegram')}}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#telegram" data-toggle="tab"><i
+                                class="fa-brands fa-telegram fa-margin"></i> {{_('telegram')}}</a></li>
                     {% endif %}
-                    <li class="nav-item"><a class="nav-link {{" active" if ua.os.family=="Android" else "" }}" href="#android" data-toggle="tab"><i class="fa-brands fa-android fa-margin"></i> {{_('android')}}</a></li>
-                    <li class="nav-item"><a class="nav-link {{" active" if ua.os.family=="iOS" else "" }}" href="#ios" data-toggle="tab"><i class="fa-brands fa-app-store-ios fa-margin"></i> {{_('ios')}}</a></li>
-                    <li class="nav-item"><a class="nav-link {{" active" if ua.is_pc else "" }}" href="#windows" data-toggle="tab">
-                            <i class="fa-brands fa-windows fa-margin1"></i> <i class="fa-brands fa-apple fa-margin1"></i> <i class="fa-brands fa-linux fa-margin1"></i> {{_('desktop')}}</a></li>
+                    <li class="nav-item"><a class="nav-link {{" active" if ua.os.family=="Android" else "" }}"
+                            href="#android" data-toggle="tab"><i class="fa-brands fa-android fa-margin"></i>
+                            {{_('android')}}</a></li>
+                    <li class="nav-item"><a class="nav-link {{" active" if ua.os.family=="iOS" else "" }}" href="#ios"
+                            data-toggle="tab"><i class="fa-brands fa-app-store-ios fa-margin"></i> {{_('ios')}}</a></li>
+                    <li class="nav-item"><a class="nav-link {{" active" if ua.is_pc else "" }}" href="#windows"
+                            data-toggle="tab">
+                            <i class="fa-brands fa-windows fa-margin1"></i> <i
+                                class="fa-brands fa-apple fa-margin1"></i> <i class="fa-brands fa-linux fa-margin1"></i>
+                            {{_('desktop')}}</a></li>
 
                 </ul>
             </div><!-- /.card-header -->
             <div class="card-body">
                 <div class="tab-content">
-                    <div class="tab-pane {{" active" if not ua.is_pc and ua.os.family not in ["Android", "iOS" ] else "" }}" id="default">
+                    <div class="tab-pane {{" active" if not ua.is_pc and ua.os.family not in ["Android", "iOS" ] else ""
+                        }}" id="default">
                         {{_('user.home.select os')}}
                     </div>
                     <div class="tab-pane" id="telegram">
@@ -84,9 +94,13 @@
             <div class="card-header d-flex p-0">
                 <h3 class="card-title p-0"></h3>
                 <ul class="nav nav-pills p-2">
-                    <li class="nav-item"><a class="nav-link" href="#all_configs" data-toggle="tab"><i class="fa-solid fa-grip fa-margin"></i> {{_('user.home.all_configs')}}</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#speedtest" data-toggle="tab"><i class="fa-solid fa-gauge-high fa-margin"></i> {{_('user.home.speedtest')}}</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#doh" data-toggle="tab"><i class="fa-solid fa-sitemap fa-margin"></i> {{_('user.home.doh')}}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#all_configs" data-toggle="tab"><i
+                                class="fa-solid fa-grip fa-margin"></i> {{_('user.home.all_configs')}}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#speedtest" data-toggle="tab"><i
+                                class="fa-solid fa-gauge-high fa-margin"></i> {{_('user.home.speedtest.title')}}</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#doh" data-toggle="tab"><i
+                                class="fa-solid fa-sitemap fa-margin"></i> {{_('user.home.doh')}}</a></li>
                 </ul>
             </div><!-- /.card-header -->
             <div class="card-body">
@@ -125,7 +139,8 @@
                         <i class="fa-solid fa-qrcode fa-margin"></i>
                     </div>
                 </div>
-                <a href="https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/" class="card-footer share-link">
+                <a href="https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/"
+                    class="card-footer share-link">
                     <i class="fas fa-qrcode"></i> {{_('user.home.qr-code.display')}}
                 </a>
 

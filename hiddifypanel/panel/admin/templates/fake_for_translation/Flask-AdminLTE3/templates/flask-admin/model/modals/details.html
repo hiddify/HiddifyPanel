@@ -1,0 +1,32 @@
+{% import 'admin/static.html' as admin_static with context %}
+{% import 'admin/lib.html' as lib with context %}
+{% import 'flask-admin/adminlte/forms.html' as forms with context %}
+
+{% block body %}
+    <div class="modal-header">
+        {% set modal_name = 'View' + ' #' + request.args.get('id') %}
+        {{ forms.form_header(modal_name, None, is_modal=True) }}
+    </div>
+    <div class="modal-body">
+        {% block details_search %}
+            {{ forms.form_search(search_class='col-ms-12', search_style='margin-bottom:15px; padding:auto;') }}
+        {% endblock %}
+        {% block details_table %}
+            {{ forms.form_view(details_columns) }}
+        {% endblock %}
+    </div>
+    <div class="modal-footer">
+        <div class="pull-left">
+            {% if return_url %}
+                <a href="{{ return_url }}" class="btn btn-default" role="button" data-dismiss="modal">
+                    {{ _gettext('Close') }}
+                </a>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block tail %}
+    <script src="{{ admin_static.url(filename='admin/js/details_filter.js', v='1.0.0') }}"></script>
+    <script src="{{ admin_static.url(filename='admin/js/bs4_modal.js', v='1.0.0') }}"></script>
+{% endblock %}

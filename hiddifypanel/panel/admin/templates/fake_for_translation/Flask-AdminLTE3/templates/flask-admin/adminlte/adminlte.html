@@ -1,0 +1,129 @@
+{% import 'admin/static.html' as admin_static with context %}
+
+{% macro action_button(action, url='', modal=True, icon_class=None, btn_class='btn btn-default btn-xs') %}
+    <a class="{{ btn_class }}" {% if modal %}data-target="#fa_modal_window"
+       data-toggle="modal" {% endif %}title="{{ action.title }}" href="{{ url }}">
+        <i class="{{ icon_class or action.icon_class }}"></i>
+    </a>
+{% endmacro %}
+
+{% macro action_view_button(action, row_id, row, modal=True) %}
+    {{ action_button(action, get_url('.details_view', id=row_id, url=return_url, modal=modal), modal, 'fa fa-eye glyphicon glyphicon-eye-open', 'btn btn-primary btn-xs') }}
+{% endmacro %}
+
+{% macro action_edit_button(action, row_id, row, modal=True) %}
+    {{ action_button(action, get_url('.edit_view', id=row_id, url=return_url, modal=modal), modal, 'fa fa-pencil glyphicon glyphicon-pencil', 'btn btn-success btn-xs') }}
+{% endmacro %}
+
+{% macro action_delete_button(action, row_id, row) %}
+    <form method="POST" action="{{ get_url('.delete_view') }}" style="display: inline-block;">
+        {{ delete_form.id(value=get_pk_value(row)) }}
+        {{ delete_form.url(value=return_url) }}
+        {% if delete_form.csrf_token %}
+            {{ delete_form.csrf_token }}
+        {% elif csrf_token %}
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+        {% endif %}
+        <button class="btn btn-danger btn-xs"
+                onclick="return confirm('{{ _gettext('Are you sure you want to delete this record?') }}');"
+                title="{{ action.title }}">
+            <i class="fa fa-trash"></i>
+        </button>
+    </form>
+{% endmacro %}
+
+{% macro dropdown_button(text) %}
+    <a class="btn btn-default btn-sm" data-toggle="dropdown" href="javascript:void(0)">
+        {{ text }} <b class="caret"></b>
+    </a>
+{% endmacro %}
+
+{% macro filter_dropdown_button(btn_class='dropdown-toggle') %}
+    <div class="input-group-btn" style="display: inline-block; width: auto;">
+        {{ dropdown_button(_gettext('Filter')) }}
+        <ul class="dropdown-menu field-filters">
+            {% for k in filter_groups %}
+                <li>
+                    <a href="javascript:void(0)" class="filter" onclick="return false;">{{ k }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endmacro %}
+
+{% macro export_dropdown_button(btn_class='dropdown-toggle') %}
+    {% if admin_view.export_types|length > 1 %}
+        <div class="input-group-btn" style="display: inline-block; width: auto;">
+            {{ dropdown_button(_gettext('Export')) }}
+            <ul class="dropdown-menu field-filters">
+                {% for export_type in admin_view.export_types %}
+                    <li>
+                        <a href="{{ get_url('.export', export_type=export_type, **request.args) }}"
+                           title="{{ _gettext('Export') }}">{{ _gettext('Export') + ' ' + export_type|upper }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% else %}
+        <a href="{{ get_url('.export', export_type=admin_view.export_types[0], **request.args) }}"
+           title="{{ _gettext('Export') }}" class="btn btn-default btn-sm">
+            {{ _gettext('Export') }}
+        </a>
+    {% endif %}
+{% endmacro %}
+
+{% macro bulk_actions_dropdown_button(actions, btn_class='dropdown-toggle') -%}
+    <div class="input-group-btn" style="display: inline-block; width: auto;">
+        {{ dropdown_button(_gettext('With selected')) }}
+        <ul class="dropdown-menu">
+            {% for p in actions %}
+                <li>
+                    <a href="javascript:void(0)"
+                       onclick="return modelActions.execute('{{ p[0] }}');">{{ _gettext(p[1]) }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endmacro %}
+
+{% macro search_form(input_class="col-md-2") %}
+    <form method="GET" action="{{ return_url }}" role="search" class="pull-right" style="display: inline-block; vertical-align: middle; width: 200px;">
+        {% for flt_name, flt_value in filter_args.items() %}
+            <input type="hidden" name="{{ flt_name }}" value="{{ flt_value }}">
+        {% endfor %}
+        {% if page_size != default_page_size %}
+            <input type="hidden" name="page_size" value="{{ page_size }}">
+        {% endif %}
+        {% if sort_column is not none %}
+            <input type="hidden" name="sort" value="{{ sort_column }}">
+        {% endif %}
+        {% if sort_desc %}
+            <input type="hidden" name="desc" value="{{ sort_desc }}">
+        {% endif %}
+        {% if search %}
+            <div class="input-group input-group-sm" style="width: 200px">
+                <input type="text" name="search" value="{{ search }}" class="form-control pull-right"
+                       placeholder="{{ _gettext('%(placeholder)s', placeholder=search_placeholder) }}">
+                <div class="input-group-append">
+                    <button type="submit" title="Search" class="btn btn-sm btn-default">
+                        <i class="fa fa-search"></i>
+                    </button>
+                    <button type="button" onclick="location.href='{{ clear_search_url }}'" title="Reset"
+                            class="btn btn-sm btn-warning">
+                        <i class="fa fa-ban"></i>
+                    </button>
+                </div>
+            </div>
+        {% else %}
+            <div class="input-group input-group-sm" style="width: 200px">
+                <input type="text" name="search" value="" class="form-control pull-right"
+                       placeholder="{{ _gettext('%(placeholder)s', placeholder=search_placeholder) }}">
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-sm btn-default">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        {% endif %}
+    </form>
+{% endmacro %}

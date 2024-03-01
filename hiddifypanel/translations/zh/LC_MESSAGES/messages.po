@@ -1,1797 +1,1781 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-02-17 17:54+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language: zh\n"
-"Language-Team: zh <LL@li.org>\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.14.0\n"
 
-#: hiddifypanel/hutils/convert.py:56
 msgid "0 - Last day"
 msgstr ""
 
-#: hiddifypanel/hutils/flask.py:23
 msgid "admin.config.apply_configs"
 msgstr ""
 
-#: hiddifypanel/hutils/flask.py:24
+msgid "admin.config.title"
+msgstr ""
+
+msgid "admin.proxy.global_config"
+msgstr ""
+
+msgid "admin.proxy.detailed_config"
+msgstr ""
+
+msgid "admin.quicksetup.title"
+msgstr ""
+
+msgid "admin.quicksetup_intro"
+msgstr ""
+
+msgid "admin.Actions:apply_configs"
+msgstr ""
+
+msgid "admin.menu.home"
+msgstr ""
+
+msgid "admin.menu.user"
+msgstr ""
+
+msgid "admin.menu.config"
+msgstr ""
+
+msgid "admin.menu.support"
+msgstr ""
+
+msgid "admin.menu.telegram"
+msgstr ""
+
+msgid "admin.menu.domain"
+msgstr ""
+
+msgid "admin.menu.proxy"
+msgstr ""
+
+msgid "admin.menu.api"
+msgstr ""
+
+msgid "admin.actions.title"
+msgstr ""
+
+msgid "admin.actions.status"
+msgstr ""
+
+msgid "admin.actions.viewlogs"
+msgstr ""
+
+msgid "admin.actions.apply_configs"
+msgstr ""
+
+msgid "admin.actions.update"
+msgstr ""
+
+msgid "admin.actions.reinstall"
+msgstr ""
+
+msgid "admin.actions.reset"
+msgstr ""
+
 msgid "config.validation-success"
 msgstr ""
 
-#: hiddifypanel/hutils/flask.py:26
 msgid "config.validation-success-no-reset"
 msgstr ""
 
-#: hiddifypanel/hutils/network/auto_ip_selector.py:144
+msgid "config.cdn_forced_host.description"
+msgstr ""
+
+msgid "config.cdn_forced_host.label"
+msgstr ""
+
+msgid "config.reality_server_names.description"
+msgstr ""
+
+msgid "config.reality_server_names.label"
+msgstr ""
+
+msgid "config.validation-error"
+msgstr ""
+
+msgid "config.domain_fronting.label"
+msgstr ""
+
+msgid "config.domain_fronting.description"
+msgstr ""
+
+msgid "config.admin_lang.label"
+msgstr ""
+
+msgid "config.admin_lang.description"
+msgstr ""
+
+msgid "config.country.label"
+msgstr ""
+
+msgid "config.country.description"
+msgstr ""
+
+msgid "config.block_iran_sites.label"
+msgstr ""
+
+msgid "config.block_iran_sites.description"
+msgstr ""
+
+msgid "config.decoy_domain.label"
+msgstr ""
+
+msgid "config.decoy_domain.description"
+msgstr ""
+
+msgid "config.telegram_lib.label"
+msgstr ""
+
+msgid "config.telegram_lib.description"
+msgstr ""
+
+msgid "config.admin.label"
+msgstr ""
+
+msgid "config.admin.description"
+msgstr ""
+
+msgid "config.lang.label"
+msgstr ""
+
+msgid "config.lang.description"
+msgstr ""
+
+msgid "config.branding_title.label"
+msgstr ""
+
+msgid "config.branding_title.description"
+msgstr ""
+
+msgid "config.branding_site.label"
+msgstr ""
+
+msgid "config.branding_site.description"
+msgstr ""
+
+msgid "config.branding_freetext.label"
+msgstr ""
+
+msgid "config.branding_freetext.description"
+msgstr ""
+
+msgid "config.branding.label"
+msgstr ""
+
+msgid "config.branding.description"
+msgstr ""
+
+msgid "config.firewall.label"
+msgstr ""
+
+msgid "config.firewall.description"
+msgstr ""
+
+msgid "config.auto_update.label"
+msgstr ""
+
+msgid "config.auto_update.description"
+msgstr ""
+
+msgid "config.speed_test.label"
+msgstr ""
+
+msgid "config.speed_test.description"
+msgstr ""
+
+msgid "config.only_ipv4.label"
+msgstr ""
+
+msgid "config.only_ipv4.description"
+msgstr ""
+
+msgid "config.show_usage_in_sublink.label"
+msgstr ""
+
+msgid "config.show_usage_in_sublink.description"
+msgstr ""
+
+msgid "config.general.label"
+msgstr ""
+
+msgid "config.general.description"
+msgstr ""
+
+msgid "config.vmess_enable.label"
+msgstr ""
+
+msgid "config.vmess_enable.description"
+msgstr ""
+
+msgid "config.v2ray_enable.label"
+msgstr ""
+
+msgid "config.v2ray_enable.description"
+msgstr ""
+
+msgid "config.shared_secret.label"
+msgstr ""
+
+msgid "config.shared_secret.description"
+msgstr ""
+
+msgid "config.proxies.label"
+msgstr ""
+
+msgid "config.proxies.description"
+msgstr ""
+
+msgid "config.domain_fronting_tls_enable.label"
+msgstr ""
+
+msgid "config.domain_fronting_tls_enable.description"
+msgstr ""
+
+msgid "config.domain_fronting_domain.label"
+msgstr ""
+
+msgid "config.domain_fronting_domain.description"
+msgstr ""
+
+msgid "config.telegram_enable.label"
+msgstr ""
+
+msgid "config.telegram_enable.description"
+msgstr ""
+
+msgid "config.telegram_adtag.label"
+msgstr ""
+
+msgid "config.telegram_adtag.description"
+msgstr ""
+
+msgid "config.telegram_fakedomain.label"
+msgstr ""
+
+msgid "config.telegram_fakedomain.description"
+msgstr ""
+
+msgid "config.telegram.label"
+msgstr ""
+
+msgid "config.telegram.description"
+msgstr ""
+
+msgid "config.http_proxy_enable.label"
+msgstr ""
+
+msgid "config.http_proxy_enable.description"
+msgstr ""
+
+msgid "config.http_ports.label"
+msgstr ""
+
+msgid "config.http_ports.description"
+msgstr ""
+
+msgid "config.http.label"
+msgstr ""
+
+msgid "config.http.description"
+msgstr ""
+
+msgid "config.allow_invalid_sni.label"
+msgstr ""
+
+msgid "config.allow_invalid_sni.description"
+msgstr ""
+
+msgid "config.tls_ports.label"
+msgstr ""
+
+msgid "config.tls_ports.description"
+msgstr ""
+
+msgid "config.tls.label"
+msgstr ""
+
+msgid "config.tls.description"
+msgstr ""
+
+msgid "config.ssfaketls_enable.label"
+msgstr ""
+
+msgid "config.ssfaketls_enable.description"
+msgstr ""
+
+msgid "config.ssfaketls_fakedomain.label"
+msgstr ""
+
+msgid "config.ssfaketls_fakedomain.description"
+msgstr ""
+
+msgid "config.ssfaketls.label"
+msgstr ""
+
+msgid "config.ssfaketls.description"
+msgstr ""
+
+msgid "config.shadowtls_enable.label"
+msgstr ""
+
+msgid "config.shadowtls_enable.description"
+msgstr ""
+
+msgid "config.shadowtls_fakedomain.label"
+msgstr ""
+
+msgid "config.shadowtls_fakedomain.description"
+msgstr ""
+
+msgid "config.shadowtls.label"
+msgstr ""
+
+msgid "config.shadowtls.description"
+msgstr ""
+
+msgid "config.restls.label"
+msgstr ""
+
+msgid "config.restls.description"
+msgstr ""
+
+msgid "config.tuic.label"
+msgstr ""
+
+msgid "config.tuic.description"
+msgstr ""
+
+msgid "config.ssr.label"
+msgstr ""
+
+msgid "config.ssr.description"
+msgstr ""
+
+msgid "config.kcp.label"
+msgstr ""
+
+msgid "config.kcp.description"
+msgstr ""
+
+msgid "config.utls.label"
+msgstr ""
+
+msgid "config.utls.description"
+msgstr ""
+
+msgid "config.telegram_bot_token.label"
+msgstr ""
+
+msgid "config.telegram_bot_token.description"
+msgstr ""
+
+msgid "config.package_mode.label"
+msgstr ""
+
+msgid "config.package_mode.description"
+msgstr ""
+
+msgid "config.advanced.label"
+msgstr ""
+
+msgid "config.advanced.description"
+msgstr ""
+
+msgid "config.proxy_path.label"
+msgstr ""
+
+msgid "config.proxy_path.description"
+msgstr ""
+
+msgid "config.path_trojan.label"
+msgstr ""
+
+msgid "config.path_trojan.description"
+msgstr ""
+
+msgid "config.path_vless.label"
+msgstr ""
+
+msgid "config.path_vless.description"
+msgstr ""
+
+msgid "config.path_vmess.label"
+msgstr ""
+
+msgid "config.path_vmess.description"
+msgstr ""
+
+msgid "config.path_grpc.label"
+msgstr ""
+
+msgid "config.path_grpc.description"
+msgstr ""
+
+msgid "config.path_tcp.label"
+msgstr ""
+
+msgid "config.path_tcp.description"
+msgstr ""
+
+msgid "config.path_ws.label"
+msgstr ""
+
+msgid "config.path_ws.description"
+msgstr ""
+
+msgid "config.cloudflare.label"
+msgstr ""
+
+msgid "config.cloudflare.description"
+msgstr ""
+
+msgid "config.too_advanced.label"
+msgstr ""
+
+msgid "config.too_advanced.description"
+msgstr ""
+
+msgid "config.warp_plus_code.label"
+msgstr ""
+
+msgid "config.warp_plus_code.description"
+msgstr ""
+
+msgid "config.warp_mode.label"
+msgstr ""
+
+msgid "config.warp_mode.description"
+msgstr ""
+
+msgid "config.warp.label"
+msgstr ""
+
+msgid "config.warp.description"
+msgstr ""
+
+msgid "config.reality_short_ids.label"
+msgstr ""
+
+msgid "config.reality_short_ids.description"
+msgstr ""
+
+msgid "config.reality_fallback_domain.label"
+msgstr ""
+
+msgid "config.reality_fallback_domain.description"
+msgstr ""
+
+msgid "config.reality_private_key.label"
+msgstr ""
+
+msgid "config.reality_private_key.description"
+msgstr ""
+
+msgid "config.reality_public_key.label"
+msgstr ""
+
+msgid "config.reality_public_key.description"
+msgstr ""
+
+msgid "config.reality.label"
+msgstr ""
+
+msgid "config.reality.description"
+msgstr ""
+
+msgid "config.first_setup.label"
+msgstr ""
+
+msgid "config.first_setup.description"
+msgstr ""
+
+msgid "config.warp_enable.label"
+msgstr ""
+
+msgid "config.warp_enable.description"
+msgstr ""
+
+msgid "config.restls1_2_domain.label"
+msgstr ""
+
+msgid "config.restls1_2_domain.description"
+msgstr ""
+
+msgid "config.restls1_3_domain.label"
+msgstr ""
+
+msgid "config.restls1_3_domain.description"
+msgstr ""
+
+msgid "config.license.label"
+msgstr ""
+
+msgid "config.license.description"
+msgstr ""
+
+msgid "config.is_parent.label"
+msgstr ""
+
+msgid "config.is_parent.description"
+msgstr ""
+
+msgid "config.parent_panel.label"
+msgstr ""
+
+msgid "config.parent_panel.description"
+msgstr ""
+
+msgid "config.unique_id.label"
+msgstr ""
+
+msgid "config.unique_id.description"
+msgstr ""
+
+msgid "config.last_hash.label"
+msgstr ""
+
+msgid "config.last_hash.description"
+msgstr ""
+
+msgid "config.admin_secret.label"
+msgstr ""
+
+msgid "config.admin_secret.description"
+msgstr ""
+
+msgid "config.kcp_ports.label"
+msgstr ""
+
+msgid "config.kcp_ports.description"
+msgstr ""
+
+msgid "config.kcp_enable.label"
+msgstr ""
+
+msgid "config.kcp_enable.description"
+msgstr ""
+
+msgid "config.netdata.label"
+msgstr ""
+
+msgid "config.netdata.description"
+msgstr ""
+
+msgid "config.torrent_block.label"
+msgstr ""
+
+msgid "config.torrent_block.description"
+msgstr ""
+
+msgid "config.tuic_enable.label"
+msgstr ""
+
+msgid "config.tuic_enable.description"
+msgstr ""
+
+msgid "config.tuic_port.label"
+msgstr ""
+
+msgid "config.tuic_port.description"
+msgstr ""
+
+msgid "config.ssr_enable.label"
+msgstr ""
+
+msgid "config.ssr_enable.description"
+msgstr ""
+
+msgid "config.ssr_fakedomain.label"
+msgstr ""
+
+msgid "config.ssr_fakedomain.description"
+msgstr ""
+
+msgid "config.domain_fronting_http_enable.label"
+msgstr ""
+
+msgid "config.domain_fronting_http_enable.description"
+msgstr ""
+
+msgid "config.db_version.label"
+msgstr ""
+
+msgid "config.db_version.description"
+msgstr ""
+
+msgid "config.not_found.label"
+msgstr ""
+
+msgid "config.not_found.description"
+msgstr ""
+
+msgid "config.path_v2ray.label"
+msgstr ""
+
+msgid "config.path_v2ray.description"
+msgstr ""
+
+msgid "config.path_ss.label"
+msgstr ""
+
+msgid "config.path_ss.description"
+msgstr ""
+
+msgid "config.dbvalues.label"
+msgstr ""
+
+msgid "config.dbvalues.description"
+msgstr ""
+
+msgid "config.create_easysetup_link.label"
+msgstr ""
+
+msgid "config.create_easysetup_link.description"
+msgstr ""
+
+msgid "config.wireguard_enable.label"
+msgstr ""
+
+msgid "config.wireguard_enable.description"
+msgstr ""
+
+msgid "config.wireguard_port.label"
+msgstr ""
+
+msgid "config.wireguard_port.description"
+msgstr ""
+
+msgid "config.wireguard_ipv6.label"
+msgstr ""
+
+msgid "config.wireguard_ipv6.description"
+msgstr ""
+
+msgid "config.wireguard_ipv4.label"
+msgstr ""
+
+msgid "config.wireguard_ipv4.description"
+msgstr ""
+
+msgid "config.wireguard_private_key.label"
+msgstr ""
+
+msgid "config.wireguard_private_key.description"
+msgstr ""
+
+msgid "config.wireguard_public_key.label"
+msgstr ""
+
+msgid "config.wireguard_public_key.description"
+msgstr ""
+
+msgid "config.wireguard_noise_trick.label"
+msgstr ""
+
+msgid "config.wireguard_noise_trick.description"
+msgstr ""
+
+msgid "config.ssh_server_redis_url.label"
+msgstr ""
+
+msgid "config.ssh_server_redis_url.description"
+msgstr ""
+
+msgid "config.ssh_server_port.label"
+msgstr ""
+
+msgid "config.ssh_server_port.description"
+msgstr ""
+
+msgid "config.ssh_server_enable.label"
+msgstr ""
+
+msgid "config.ssh_server_enable.description"
+msgstr ""
+
+msgid "config.core_type.label"
+msgstr ""
+
+msgid "config.core_type.description"
+msgstr ""
+
+msgid "config.warp_sites.label"
+msgstr ""
+
+msgid "config.warp_sites.description"
+msgstr ""
+
+msgid "config.dns_server.label"
+msgstr ""
+
+msgid "config.dns_server.description"
+msgstr ""
+
+msgid "config.reality_port.label"
+msgstr ""
+
+msgid "config.reality_port.description"
+msgstr ""
+
+msgid "config.tls_fragment_enable.label"
+msgstr ""
+
+msgid "config.tls_fragment_enable.description"
+msgstr ""
+
+msgid "config.tls_fragment_size.label"
+msgstr ""
+
+msgid "config.tls_fragment_size.description"
+msgstr ""
+
+msgid "config.tls_fragment_sleep.label"
+msgstr ""
+
+msgid "config.tls_fragment_sleep.description"
+msgstr ""
+
+msgid "config.tls_mixed_case.label"
+msgstr ""
+
+msgid "config.tls_mixed_case.description"
+msgstr ""
+
+msgid "config.tls_padding_enable.label"
+msgstr ""
+
+msgid "config.tls_padding_enable.description"
+msgstr ""
+
+msgid "config.tls_padding_length.label"
+msgstr ""
+
+msgid "config.tls_padding_length.description"
+msgstr ""
+
+msgid "config.mux_enable.label"
+msgstr ""
+
+msgid "config.mux_enable.description"
+msgstr ""
+
+msgid "config.mux_protocol.label"
+msgstr ""
+
+msgid "config.mux_protocol.description"
+msgstr ""
+
+msgid "config.mux_max_connections.label"
+msgstr ""
+
+msgid "config.mux_max_connections.description"
+msgstr ""
+
+msgid "config.mux_min_streams.label"
+msgstr ""
+
+msgid "config.mux_min_streams.description"
+msgstr ""
+
+msgid "config.mux_max_streams.label"
+msgstr ""
+
+msgid "config.mux_max_streams.description"
+msgstr ""
+
+msgid "config.mux_padding_enable.label"
+msgstr ""
+
+msgid "config.mux_padding_enable.description"
+msgstr ""
+
+msgid "config.mux_brutal_enable.label"
+msgstr ""
+
+msgid "config.mux_brutal_enable.description"
+msgstr ""
+
+msgid "config.mux_brutal_up_mbps.label"
+msgstr ""
+
+msgid "config.mux_brutal_up_mbps.description"
+msgstr ""
+
+msgid "config.mux_brutal_down_mbps.label"
+msgstr ""
+
+msgid "config.mux_brutal_down_mbps.description"
+msgstr ""
+
+msgid "config.proxy_path_admin.label"
+msgstr ""
+
+msgid "config.proxy_path_admin.description"
+msgstr ""
+
+msgid "config.proxy_path_client.label"
+msgstr ""
+
+msgid "config.proxy_path_client.description"
+msgstr ""
+
+msgid "config.hysteria_enable.label"
+msgstr ""
+
+msgid "config.hysteria_enable.description"
+msgstr ""
+
+msgid "config.hysteria_port.label"
+msgstr ""
+
+msgid "config.hysteria_port.description"
+msgstr ""
+
+msgid "config.hysteria_obfs_enable.label"
+msgstr ""
+
+msgid "config.hysteria_obfs_enable.description"
+msgstr ""
+
+msgid "config.hysteria_up_mbps.label"
+msgstr ""
+
+msgid "config.hysteria_up_mbps.description"
+msgstr ""
+
+msgid "config.hysteria_down_mbps.label"
+msgstr ""
+
+msgid "config.hysteria_down_mbps.description"
+msgstr ""
+
+msgid "config.shadowsocks2022_enable.label"
+msgstr ""
+
+msgid "config.shadowsocks2022_enable.description"
+msgstr ""
+
+msgid "config.shadowsocks2022_method.label"
+msgstr ""
+
+msgid "config.shadowsocks2022_method.description"
+msgstr ""
+
+msgid "config.shadowsocks2022_port.label"
+msgstr ""
+
+msgid "config.shadowsocks2022_port.description"
+msgstr ""
+
+msgid "config.ws_enable.label"
+msgstr ""
+
+msgid "config.ws_enable.description"
+msgstr ""
+
+msgid "config.grpc_enable.label"
+msgstr ""
+
+msgid "config.grpc_enable.description"
+msgstr ""
+
+msgid "config.httpupgrade_enable.label"
+msgstr ""
+
+msgid "config.httpupgrade_enable.description"
+msgstr ""
+
+msgid "config.path_httpupgrade.label"
+msgstr ""
+
+msgid "config.path_httpupgrade.description"
+msgstr ""
+
+msgid "config.mux.label"
+msgstr ""
+
+msgid "config.mux.description"
+msgstr ""
+
+msgid "config.tls_trick.label"
+msgstr ""
+
+msgid "config.tls_trick.description"
+msgstr ""
+
+msgid "config.ssh.label"
+msgstr ""
+
+msgid "config.ssh.description"
+msgstr ""
+
+msgid "config.hysteria.label"
+msgstr ""
+
+msgid "config.hysteria.description"
+msgstr ""
+
+msgid "config.hidden.label"
+msgstr ""
+
+msgid "config.hidden.description"
+msgstr ""
+
+msgid "config.wireguard.label"
+msgstr ""
+
+msgid "config.wireguard.description"
+msgstr ""
+
+msgid "config.shadowsocks.label"
+msgstr ""
+
+msgid "config.shadowsocks.description"
+msgstr ""
+
 msgid "Error! auto cdn ip can not be find, please contact admin."
 msgstr ""
 
-#: hiddifypanel/models/domain.py:175 hiddifypanel/panel/user/user.py:270
 msgid "This domain does not exist in the panel!"
 msgstr ""
 
-#: hiddifypanel/panel/admin/DomainAdmin.py:164
-#: hiddifypanel/panel/admin/DomainAdmin.py:186
-#: hiddifypanel/panel/admin/DomainAdmin.py:189
-#: hiddifypanel/panel/admin/QuickSetup.py:140 hiddifypanel/panel/hiddify.py:174
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr ""
 
-#: hiddifypanel/panel/hiddify.py:347
 msgid ""
 "selected domain for REALITY is not in the same ASN. To better use of the "
 "protocol, it is better to find a domain in the same ASN."
 msgstr ""
 
-#: hiddifypanel/panel/usage.py:101
 msgid "User activated!"
 msgstr ""
 
-#: hiddifypanel/panel/usage.py:101
 msgid "Package ended!"
 msgstr ""
 
-#: hiddifypanel/panel/admin/Actions.py:77
 msgid ""
-"Your domains changed. Please do not forget to copy admin links, otherwise"
-" you can not access to the panel anymore."
+"Your domains changed. Please do not forget to copy admin links, otherwise "
+"you can not access to the panel anymore."
 msgstr ""
 
-#: hiddifypanel/panel/admin/Actions.py:99
 msgid ""
-"Success! Please wait around 4 minutes to make sure everything is updated."
-" During this time, please save your proxy links which are:"
+"Success! Please wait around 4 minutes to make sure everything is updated. "
+"During this time, please save your proxy links which are:"
 msgstr ""
 
-#: hiddifypanel/panel/admin/Actions.py:129
 msgid "see the log in the bellow screen"
 msgstr ""
 
-#: hiddifypanel/panel/admin/Actions.py:148
-msgid "Success! Please wait around 5 minutes to make sure everything is updated."
+msgid ""
+"Success! Please wait around 5 minutes to make sure everything is updated."
 msgstr ""
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:50
-#: hiddifypanel/panel/admin/UserAdmin.py:76
 msgid "actions"
 msgstr ""
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:51
-#: hiddifypanel/panel/admin/UserAdmin.py:78
 msgid "user.user_links"
 msgstr ""
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:52
-#: hiddifypanel/panel/admin/UserAdmin.py:77
 msgid "user.name"
 msgstr ""
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:53
-#: hiddifypanel/panel/admin/UserAdmin.py:81
-msgid "Mode"
-msgstr ""
-
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:54
-#: hiddifypanel/panel/admin/UserAdmin.py:87
 msgid "user.UUID"
 msgstr ""
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:55
-#: hiddifypanel/panel/admin/UserAdmin.py:88
+msgid "user.usage_limit_GB"
+msgstr ""
+
+msgid "user.current_usage_GB"
+msgstr ""
+
+msgid "user.expiry_time"
+msgstr ""
+
+msgid "user.last_reset_time"
+msgstr ""
+
+msgid "user.home.title"
+msgstr ""
+
+msgid "user.home.tool.all-configs"
+msgstr ""
+
+msgid "user.home.tool.doh.title"
+msgstr ""
+
+msgid "user.home.tool.doh.help"
+msgstr ""
+
+msgid "user.home.allconfig.name"
+msgstr ""
+
+msgid "user.home.allconfig.type"
+msgstr ""
+
+msgid "user.home.allconfig.protocol"
+msgstr ""
+
+msgid "user.home.allconfig.transport"
+msgstr ""
+
+msgid "user.home.allconfig.security"
+msgstr ""
+
+msgid "user.home.allconfig.hiddify-managers"
+msgstr ""
+
+msgid "user.home.allconfig.clash-configs"
+msgstr ""
+
+msgid "user.home.allconfig.link-configs"
+msgstr ""
+
+msgid "user.home.allconfigs.expect_vless"
+msgstr ""
+
+msgid "user.home.android.intro"
+msgstr ""
+
+msgid "user.home.clash_configs.intro"
+msgstr ""
+
+msgid "user.home.clash_configs.only_for_blocked_sites.title"
+msgstr ""
+
+msgid "user.home.clash_configs.only_for_blocked_sites.description"
+msgstr ""
+
+msgid "user.home.clash_configs.only_for_blocked_sites.btn"
+msgstr ""
+
+msgid "user.home.clash_configs.alternative_for_normal_clash"
+msgstr ""
+
+msgid "user.home.clash_configs.link_for_normal_clash"
+msgstr ""
+
+msgid "user.home.clash_configs.foreign_sites.title"
+msgstr ""
+
+msgid "user.home.clash_configs.foreign_sites.description"
+msgstr ""
+
+msgid "user.home.clash_configs.foreign_sites.btn"
+msgstr ""
+
+msgid "user.home.clash_configs.all_sites.title"
+msgstr ""
+
+msgid "user.home.clash_configs.all_sites.description"
+msgstr ""
+
+msgid "user.home.clash_configs.all_sites.btn"
+msgstr ""
+
+msgid "user.home.all_configs"
+msgstr ""
+
+msgid "user.home.speedtest.title"
+msgstr ""
+
+msgid "user.home.speedtest.intro"
+msgstr ""
+
+msgid "user.home.speedtest.upload"
+msgstr ""
+
+msgid "user.home.speedtest.download"
+msgstr ""
+
+msgid "user.home.speedtest.two_ways"
+msgstr ""
+
+msgid "user.home.doh"
+msgstr ""
+
+msgid "user.home.qr-code.description"
+msgstr ""
+
+msgid "user.home.qr-code.display"
+msgstr ""
+
+msgid "user.home.ios.stash.title"
+msgstr ""
+
+msgid "user.home.ios.stash.intro"
+msgstr ""
+
+msgid "user.home.ios.others.title"
+msgstr ""
+
+msgid "user.home.ios.others.intro"
+msgstr ""
+
+msgid "user.home.telegram.clickbtn"
+msgstr ""
+
+msgid "user.home.telegram.description"
+msgstr ""
+
+msgid "user.home.usage.title"
+msgstr ""
+
+msgid "user.home.usage.from"
+msgstr ""
+
+msgid "user.home.usage.monthly"
+msgstr ""
+
+msgid "user.home.usage.expire"
+msgstr ""
+
+msgid "user.home.usage.details"
+msgstr ""
+
+msgid "user.home.branding.title"
+msgstr ""
+
+msgid "user.home.branding.linktitle"
+msgstr ""
+
+msgid "user.home.windows.intro"
+msgstr ""
+
+msgid "user.home.share-title"
+msgstr ""
+
+msgid "user.home.link.success-copy"
+msgstr ""
+
+msgid "user.home.link.manual-copy"
+msgstr ""
+
+msgid "Mode"
+msgstr ""
+
 msgid "Note"
 msgstr ""
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:56
 msgid "Max Active Users"
 msgstr ""
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:57
 msgid "Max Users"
 msgstr ""
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:58
-#: hiddifypanel/panel/admin/templates/index.html:73
-#: hiddifypanel/panel/admin/templates/index.html:79
-#: hiddifypanel/panel/admin/templates/index.html:85
-#: hiddifypanel/panel/admin/templates/index.html:91
-#: hiddifypanel/panel/admin/templates/index.html:101
-#: hiddifypanel/panel/admin/templates/index.html:201
-#: hiddifypanel/panel/admin/templates/index.html:207
-#: hiddifypanel/panel/admin/templates/index.html:213
-#: hiddifypanel/panel/admin/templates/index.html:219
 msgid "Online Users"
 msgstr ""
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:59
 msgid "Can add sub admin"
 msgstr ""
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:70
 msgid "Add some text that is only visible to super_admin."
 msgstr ""
 
-#: hiddifypanel/panel/admin/AdminstratorAdmin.py:71
 msgid "Define the admin mode. "
 msgstr ""
 
-#: hiddifypanel/panel/admin/Backup.py:70
 msgid "Config file is incorrect"
 msgstr ""
 
-#: hiddifypanel/panel/admin/Backup.py:76
 msgid "Restore File"
 msgstr ""
 
-#: hiddifypanel/panel/admin/Backup.py:76
 msgid "Restore File Description"
 msgstr ""
 
-#: hiddifypanel/panel/admin/Backup.py:77
 msgid "Restore Settings"
 msgstr ""
 
-#: hiddifypanel/panel/admin/Backup.py:77
 msgid "Restore Settings description"
 msgstr ""
 
-#: hiddifypanel/panel/admin/Backup.py:78
 msgid "Restore Users"
 msgstr ""
 
-#: hiddifypanel/panel/admin/Backup.py:78
 msgid "Restore Users description"
 msgstr ""
 
-#: hiddifypanel/panel/admin/Backup.py:79
 msgid "Restore Domain"
 msgstr ""
 
-#: hiddifypanel/panel/admin/Backup.py:79
 msgid "Restore Domain description"
 msgstr ""
 
-#: hiddifypanel/panel/admin/Backup.py:80
 msgid "Override Root Admin"
 msgstr ""
 
-#: hiddifypanel/panel/admin/Backup.py:80
 msgid "It will override the root admin to the current user"
 msgstr ""
 
-#: hiddifypanel/panel/admin/Backup.py:81
-#: hiddifypanel/panel/admin/ProxyAdmin.py:90
-#: hiddifypanel/panel/admin/ProxyAdmin.py:121
-#: hiddifypanel/panel/admin/QuickSetup.py:89
-#: hiddifypanel/panel/admin/QuickSetup.py:131
-#: hiddifypanel/panel/admin/SettingAdmin.py:286
-#: hiddifypanel/panel/common_bp/login.py:25
 msgid "Submit"
 msgstr ""
 
-#: hiddifypanel/panel/admin/Dashboard.py:25 hiddifypanel/templates/500.html:10
 msgid ""
-"This version of hiddify panel is outdated. Please update it from admin "
-"area."
+"This version of hiddify panel is outdated. Please update it from admin area."
 msgstr ""
 
-#: hiddifypanel/panel/admin/Dashboard.py:31
 msgid "Access Denied!"
 msgstr ""
 
-#: hiddifypanel/panel/admin/Dashboard.py:57
-#, python-format
 msgid ""
-"It seems that you have not setup the system completely. <a class=\"btn "
-"btn-success\" href=\"%(quick_setup)s\">Click here</a> to complete setup."
+"It seems that you have not setup the system completely. <a class=\"btn btn-"
+"success\" href=\"%(quick_setup)s\">Click here</a> to complete setup."
 msgstr ""
 
-#: hiddifypanel/panel/admin/Dashboard.py:60
-#: hiddifypanel/panel/admin/Dashboard.py:64
 msgid ""
 "Please understand that parent panel is under test and the plan and the "
 "condition of use maybe change at anytime."
 msgstr ""
 
-#: hiddifypanel/panel/admin/Dashboard.py:62
-#, python-format
 msgid ""
 "It seems that you are using default domain (%(domain)s) which is not "
 "recommended."
 msgstr ""
 
-#: hiddifypanel/panel/admin/Dashboard.py:68
-#, python-format
 msgid ""
 "It seems that you have not created any users yet. Default user link: "
 "%(default_link)s"
 msgstr ""
 
-#: hiddifypanel/panel/admin/Dashboard.py:70
-msgid "ssh.password-login.warning."
+msgid "ssh"
 msgstr ""
 
-#: hiddifypanel/panel/admin/Dashboard.py:85
 msgid "child has been removed!"
 msgstr ""
 
-#: hiddifypanel/panel/admin/DomainAdmin.py:41
-#: hiddifypanel/panel/admin/QuickSetup.py:117
-#: hiddifypanel/templates/flaskadmin-layout.html:101
-#: hiddifypanel/templates/flaskadmin-layout.html:136
 msgid "domain.description"
 msgstr ""
 
-#: hiddifypanel/panel/admin/DomainAdmin.py:42
-msgid ""
-"Direct mode means you want to use your server directly (for usual use), "
-"CDN means that you use your server on behind of a CDN provider."
-msgstr ""
-
-#: hiddifypanel/panel/admin/DomainAdmin.py:43
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.cdn_forced_host.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/DomainAdmin.py:44
-msgid ""
-"You can select the configs with which domains show be shown in the user "
-"area. If you select all, automatically, all the new domains will be added"
-" for each users."
-msgstr ""
-
-#: hiddifypanel/panel/admin/DomainAdmin.py:46
-msgid "The name shown in the configs for this domain."
-msgstr ""
-
-#: hiddifypanel/panel/admin/DomainAdmin.py:47
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-#: hiddifypanel/templates/flaskadmin-layout.html:120
-msgid "config.reality_server_names.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/DomainAdmin.py:48
-msgid "This can be used for giving your users a permanent non blockable links."
-msgstr ""
-
-#: hiddifypanel/panel/admin/DomainAdmin.py:49
-msgid "gRPC is a H2 based protocol. Maybe it is faster for you!"
-msgstr ""
-
-#: hiddifypanel/panel/admin/DomainAdmin.py:76
-msgid "Invalid REALITY hostnames"
-msgstr ""
-
-#: hiddifypanel/panel/admin/DomainAdmin.py:83
-#: hiddifypanel/panel/admin/QuickSetup.py:115
-#: hiddifypanel/templates/flaskadmin-layout.html:100
-#: hiddifypanel/templates/flaskadmin-layout.html:135
 msgid "domain.domain"
 msgstr ""
 
-#: hiddifypanel/panel/admin/DomainAdmin.py:84
-msgid "Only for sublink?"
-msgstr ""
-
-#: hiddifypanel/panel/admin/DomainAdmin.py:85
 msgid "domain.mode"
 msgstr ""
 
-#: hiddifypanel/panel/admin/DomainAdmin.py:86
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.cdn_forced_host.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/DomainAdmin.py:87
 msgid "domain.ip"
 msgstr ""
 
-#: hiddifypanel/panel/admin/DomainAdmin.py:88
-#: hiddifypanel/panel/admin/DomainAdmin.py:155
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-#: hiddifypanel/templates/flaskadmin-layout.html:119
-msgid "config.reality_server_names.label"
+msgid "domain.cdn"
 msgstr ""
 
-#: hiddifypanel/panel/admin/DomainAdmin.py:89
+msgid "domain.domain_fronting.label"
+msgstr ""
+
+msgid "domain.domain_fronting.description"
+msgstr ""
+
+msgid ""
+"Direct mode means you want to use your server directly (for usual use), CDN "
+"means that you use your server on behind of a CDN provider."
+msgstr ""
+
+msgid ""
+"You can select the configs with which domains show be shown in the user "
+"area. If you select all, automatically, all the new domains will be added "
+"for each users."
+msgstr ""
+
+msgid "The name shown in the configs for this domain."
+msgstr ""
+
+msgid ""
+"This can be used for giving your users a permanent non blockable links."
+msgstr ""
+
+msgid "gRPC is a H2 based protocol. Maybe it is faster for you!"
+msgstr ""
+
+msgid "Invalid REALITY hostnames"
+msgstr ""
+
+msgid "Only for sublink?"
+msgstr ""
+
 msgid "Show Domains"
 msgstr ""
 
-#: hiddifypanel/panel/admin/DomainAdmin.py:90
 msgid "Alias"
 msgstr ""
 
-#: hiddifypanel/panel/admin/DomainAdmin.py:91
 msgid "gRPC"
 msgstr ""
 
-#: hiddifypanel/panel/admin/DomainAdmin.py:104
 msgid "admin link"
 msgstr ""
 
-#: hiddifypanel/panel/admin/DomainAdmin.py:123
-#: hiddifypanel/panel/admin/SettingAdmin.py:161
 msgid "All"
 msgstr ""
 
-#: hiddifypanel/panel/admin/DomainAdmin.py:150
-#: hiddifypanel/panel/admin/DomainAdmin.py:155
 msgid "You have used this domain in: "
 msgstr ""
 
-#: hiddifypanel/panel/admin/DomainAdmin.py:161
 msgid "Couldn't find your ip addresses"
 msgstr ""
 
-#: hiddifypanel/panel/admin/DomainAdmin.py:234
-#: hiddifypanel/panel/admin/DomainAdmin.py:249
 msgid "Domain is not REALITY friendly!"
 msgstr ""
 
-#: hiddifypanel/panel/admin/DomainAdmin.py:255
 msgid "REALITY Fallback domain is not compaitble with server names!"
 msgstr ""
 
-#: hiddifypanel/panel/admin/DomainAdmin.py:261
 msgid "Error in auto cdn format"
 msgstr ""
 
-#: hiddifypanel/panel/admin/NodeAdmin.py:22
 msgid "node.name.label"
 msgstr ""
 
-#: hiddifypanel/panel/admin/NodeAdmin.py:23
-msgid "node.mode.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/NodeAdmin.py:24
-msgid "node.uuid.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/NodeAdmin.py:27
 msgid "node.name.dscr"
 msgstr ""
 
-#: hiddifypanel/panel/admin/NodeAdmin.py:28
+msgid "node.mode.label"
+msgstr ""
+
 msgid "node.mode.dscr"
 msgstr ""
 
-#: hiddifypanel/panel/admin/NodeAdmin.py:29
+msgid "node.uuid.label"
+msgstr ""
+
 msgid "node.uuid.dscr"
 msgstr ""
 
-#: hiddifypanel/panel/admin/NodeAdmin.py:49
 msgid "Remote nodes are not supported yet!"
 msgstr ""
 
-#: hiddifypanel/panel/admin/ProxyAdmin.py:64
-#: hiddifypanel/panel/admin/QuickSetup.py:73
-#: hiddifypanel/panel/admin/SettingAdmin.py:93
-#: hiddifypanel/panel/common_bp/login.py:57
-msgid "config.validation-error"
-msgstr ""
-
-#: hiddifypanel/panel/admin/ProxyAdmin.py:118
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.domain_fronting.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/QuickSetup.py:46
 msgid "quicksetup.setlang.success"
 msgstr ""
 
-#: hiddifypanel/panel/admin/QuickSetup.py:48
 msgid "quicksetup.setlang.error"
 msgstr ""
 
-#: hiddifypanel/panel/admin/QuickSetup.py:84
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.admin_lang.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/QuickSetup.py:84
-#: hiddifypanel/panel/admin/SettingAdmin.py:165
 msgid "lang.en"
 msgstr ""
 
-#: hiddifypanel/panel/admin/QuickSetup.py:84
-#: hiddifypanel/panel/admin/SettingAdmin.py:165
 msgid "lang.fa"
 msgstr ""
 
-#: hiddifypanel/panel/admin/QuickSetup.py:84
-#: hiddifypanel/panel/admin/SettingAdmin.py:166
 msgid "lang.pt"
 msgstr ""
 
-#: hiddifypanel/panel/admin/QuickSetup.py:85
-#: hiddifypanel/panel/admin/SettingAdmin.py:165
 msgid "lang.zh"
 msgstr ""
 
-#: hiddifypanel/panel/admin/QuickSetup.py:85
-#: hiddifypanel/panel/admin/SettingAdmin.py:166
 msgid "lang.ru"
 msgstr ""
 
-#: hiddifypanel/panel/admin/QuickSetup.py:85
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.admin_lang.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/QuickSetup.py:87
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.country.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/QuickSetup.py:87
-#: hiddifypanel/panel/admin/SettingAdmin.py:168
 msgid "Iran"
 msgstr ""
 
-#: hiddifypanel/panel/admin/QuickSetup.py:87
-#: hiddifypanel/panel/admin/SettingAdmin.py:168
 msgid "China"
 msgstr ""
 
-#: hiddifypanel/panel/admin/QuickSetup.py:88
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.country.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/QuickSetup.py:108
-#: hiddifypanel/panel/admin/QuickSetup.py:130
-#: hiddifypanel/panel/admin/SettingAdmin.py:220
-#: hiddifypanel/panel/admin/SettingAdmin.py:223
 msgid "config.Invalid domain"
 msgstr ""
 
-#: hiddifypanel/panel/admin/QuickSetup.py:110
-#: hiddifypanel/panel/admin/QuickSetup.py:112
-#: hiddifypanel/panel/admin/SettingAdmin.py:227
-#: hiddifypanel/panel/admin/SettingAdmin.py:229
 msgid "config.Domain already used"
 msgstr ""
 
-#: hiddifypanel/panel/admin/QuickSetup.py:126
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.block_iran_sites.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/QuickSetup.py:126
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.block_iran_sites.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/QuickSetup.py:129
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.decoy_domain.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/QuickSetup.py:129
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.decoy_domain.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/QuickSetup.py:144
-#, python-format
 msgid ""
 "Domain (%(domain)s)-> IP=%(domain_ip)s is not matched with your "
 "ip=%(server_ip)s which is required in direct mode"
 msgstr ""
 
-#: hiddifypanel/panel/admin/SettingAdmin.py:61
 msgid "Port is already used! in"
 msgstr ""
 
-#: hiddifypanel/panel/admin/SettingAdmin.py:74
 msgid "ProxyPath is already used! use different proxy path"
 msgstr ""
 
-#: hiddifypanel/panel/admin/SettingAdmin.py:158
 msgid "Xray"
 msgstr ""
 
-#: hiddifypanel/panel/admin/SettingAdmin.py:158
 msgid "SingBox"
 msgstr ""
 
-#: hiddifypanel/panel/admin/SettingAdmin.py:161
 msgid "Disable"
 msgstr ""
 
-#: hiddifypanel/panel/admin/SettingAdmin.py:161
 msgid "Only Blocked and Local websites"
 msgstr ""
 
-#: hiddifypanel/panel/admin/SettingAdmin.py:169
 msgid "Others"
 msgstr ""
 
-#: hiddifypanel/panel/admin/SettingAdmin.py:171
 msgid "Release"
 msgstr ""
 
-#: hiddifypanel/panel/admin/SettingAdmin.py:171
 msgid "Beta"
 msgstr ""
 
-#: hiddifypanel/panel/admin/SettingAdmin.py:172
 msgid "Develop"
 msgstr ""
 
-#: hiddifypanel/panel/admin/SettingAdmin.py:197
 msgid "lib.telegram.python"
 msgstr ""
 
-#: hiddifypanel/panel/admin/SettingAdmin.py:197
 msgid "lib.telegram.go"
 msgstr ""
 
-#: hiddifypanel/panel/admin/SettingAdmin.py:198
 msgid "lib.telegram.orignal"
 msgstr ""
 
-#: hiddifypanel/panel/admin/SettingAdmin.py:198
 msgid "lib.telegram.erlang"
 msgstr ""
 
-#: hiddifypanel/panel/admin/SettingAdmin.py:199
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.telegram_lib.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/SettingAdmin.py:199
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.telegram_lib.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/SettingAdmin.py:240
 msgid "Invalid admin link"
 msgstr ""
 
-#: hiddifypanel/panel/admin/SettingAdmin.py:242
 msgid "config.Invalid telegram bot token"
 msgstr ""
 
-#: hiddifypanel/panel/admin/SettingAdmin.py:245
 msgid "config.Invalid brand link"
 msgstr ""
 
-#: hiddifypanel/panel/admin/SettingAdmin.py:250
-#: hiddifypanel/panel/common_bp/login.py:19
-#: hiddifypanel/panel/common_bp/login.py:23
 msgid "config.invalid uuid"
 msgstr ""
 
-#: hiddifypanel/panel/admin/SettingAdmin.py:254
 msgid "config.Invalid proxy path"
 msgstr ""
 
-#: hiddifypanel/panel/admin/SettingAdmin.py:259
-#: hiddifypanel/panel/admin/SettingAdmin.py:262
 msgid "config.Invalid port"
 msgstr ""
 
-#: hiddifypanel/panel/admin/SettingAdmin.py:267
 msgid "config.Invalid! The pattern is number-number"
 msgstr ""
 
-#: hiddifypanel/panel/admin/SettingAdmin.py:271
 msgid "config.Invalid! it should be a number only"
 msgstr ""
 
-#: hiddifypanel/panel/admin/UserAdmin.py:28
 msgid "Reset package days"
 msgstr ""
 
-#: hiddifypanel/panel/admin/UserAdmin.py:29
 msgid "Reset package usage"
 msgstr ""
 
-#: hiddifypanel/panel/admin/UserAdmin.py:79
-msgid "user.usage_limit_GB"
-msgstr ""
-
-#: hiddifypanel/panel/admin/UserAdmin.py:80
 msgid "Reset every month"
 msgstr ""
 
-#: hiddifypanel/panel/admin/UserAdmin.py:82
 msgid "Added by"
 msgstr ""
 
-#: hiddifypanel/panel/admin/UserAdmin.py:83
-msgid "user.current_usage_GB"
-msgstr ""
-
-#: hiddifypanel/panel/admin/UserAdmin.py:84
 msgid "Start Date"
 msgstr ""
 
-#: hiddifypanel/panel/admin/UserAdmin.py:85
-msgid "user.expiry_time"
-msgstr ""
-
-#: hiddifypanel/panel/admin/UserAdmin.py:86
-msgid "user.last_reset_time"
-msgstr ""
-
-#: hiddifypanel/panel/admin/UserAdmin.py:89
 msgid "Last Online"
 msgstr ""
 
-#: hiddifypanel/panel/admin/UserAdmin.py:90
 msgid "Package Days"
 msgstr ""
 
-#: hiddifypanel/panel/admin/UserAdmin.py:91
 msgid "Max IPs"
 msgstr ""
 
-#: hiddifypanel/panel/admin/UserAdmin.py:92
 msgid "Enable"
 msgstr ""
 
-#: hiddifypanel/panel/admin/UserAdmin.py:106
 msgid "Add some text that is only visible to you."
 msgstr ""
 
-#: hiddifypanel/panel/admin/UserAdmin.py:107
 msgid "Define the user mode. Should the usage reset every month?"
 msgstr ""
 
-#: hiddifypanel/panel/admin/UserAdmin.py:108
 msgid ""
-"If monthly is enabled, the usage will be reset after 30 days from this "
-"date."
+"If monthly is enabled, the usage will be reset after 30 days from this date."
 msgstr ""
 
-#: hiddifypanel/panel/admin/UserAdmin.py:109
 msgid ""
 "From when the user package will be started? Empty for start from first "
 "connection"
 msgstr ""
 
-#: hiddifypanel/panel/admin/UserAdmin.py:110
 msgid "How many days this package should be available?"
 msgstr ""
 
-#: hiddifypanel/panel/admin/UserAdmin.py:219
 msgid "Package not started yet."
 msgstr ""
 
-#: hiddifypanel/panel/admin/UserAdmin.py:226
 msgid "Remaining: "
 msgstr ""
 
-#: hiddifypanel/panel/admin/UserAdmin.py:264
-#, python-format
 msgid ""
 "You have too much users! You can have only %(active)s active users and "
 "%(total)s users"
 msgstr ""
 
-#: hiddifypanel/panel/admin/templates/backup.html:9
-#: hiddifypanel/templates/admin-layout.html:180
 msgid "Backup"
 msgstr ""
 
-#: hiddifypanel/panel/admin/templates/backup.html:14
-#, python-format
 msgid ""
 "You can download a json formated of configurations by clicking <a "
 "href='%(link)s' class='btn btn-primary'>here</a>"
 msgstr ""
 
-#: hiddifypanel/panel/admin/templates/backup.html:21
 msgid "Restore"
 msgstr ""
 
-#: hiddifypanel/panel/admin/templates/backup.html:26
 msgid "You can restore your configs from previously downloaded configs"
 msgstr ""
 
-#: hiddifypanel/panel/admin/templates/commercial_info.html:7
 msgid "Why Going to Premium?"
 msgstr ""
 
-#: hiddifypanel/panel/admin/templates/commercial_info.html:9
 msgid "Premium Description"
 msgstr ""
 
-#: hiddifypanel/panel/admin/templates/config.html:29
 msgid " Search Settings"
 msgstr ""
 
-#: hiddifypanel/panel/admin/templates/configfake.html:5
-msgid "domain.cdn"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:5
 msgid "Create"
 msgstr ""
 
-#: hiddifypanel/panel/admin/templates/configfake.html:5
 msgid "Save & Add More"
 msgstr ""
 
-#: hiddifypanel/panel/admin/templates/configfake.html:5
-#: hiddifypanel/panel/user/templates/home/one_click.html:273
-#: hiddifypanel/templates/donation.html:14
 msgid "Close"
 msgstr ""
 
-#: hiddifypanel/panel/admin/templates/configfake.html:5
 msgid "Back"
 msgstr ""
 
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.admin.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.admin.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-#: hiddifypanel/panel/admin/templates/quick_setup.html:47
-msgid "config.lang.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.lang.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.branding_title.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.branding_title.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.branding_site.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.branding_site.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.branding_freetext.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.branding_freetext.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.branding.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.branding.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.firewall.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.firewall.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.auto_update.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.auto_update.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.speed_test.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.speed_test.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.only_ipv4.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.only_ipv4.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.show_usage_in_sublink.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.show_usage_in_sublink.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.general.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.general.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.vmess_enable.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.vmess_enable.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.v2ray_enable.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.v2ray_enable.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.shared_secret.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.shared_secret.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.proxies.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.proxies.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.domain_fronting_tls_enable.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.domain_fronting_tls_enable.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.domain_fronting_domain.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.domain_fronting_domain.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.domain_fronting.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.telegram_enable.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.telegram_enable.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.telegram_adtag.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.telegram_adtag.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.telegram_fakedomain.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.telegram_fakedomain.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.telegram.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.telegram.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.http_proxy_enable.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.http_proxy_enable.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.http_ports.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.http_ports.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.http.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.http.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.allow_invalid_sni.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.allow_invalid_sni.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.tls_ports.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.tls_ports.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.tls.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.tls.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.ssfaketls_enable.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.ssfaketls_enable.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.ssfaketls_fakedomain.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.ssfaketls_fakedomain.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.ssfaketls.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.ssfaketls.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.shadowtls_enable.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.shadowtls_enable.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.shadowtls_fakedomain.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.shadowtls_fakedomain.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.shadowtls.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.shadowtls.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.restls.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.restls.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.tuic.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.tuic.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.ssr.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.ssr.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.kcp.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.kcp.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.utls.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.utls.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.telegram_bot_token.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.telegram_bot_token.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.package_mode.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.package_mode.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.advanced.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.advanced.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.proxy_path.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.proxy_path.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.path_trojan.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.path_trojan.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.path_vless.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.path_vless.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.path_vmess.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.path_vmess.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.path_grpc.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.path_grpc.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.path_tcp.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.path_tcp.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.path_ws.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.path_ws.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.cloudflare.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.cloudflare.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.too_advanced.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.too_advanced.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.warp_plus_code.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.warp_plus_code.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.warp_mode.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.warp_mode.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.warp.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.warp.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.reality_short_ids.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.reality_short_ids.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-#: hiddifypanel/templates/flaskadmin-layout.html:123
-msgid "config.reality_fallback_domain.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-#: hiddifypanel/templates/flaskadmin-layout.html:124
-msgid "config.reality_fallback_domain.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.reality_private_key.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.reality_private_key.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.reality_public_key.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.reality_public_key.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.reality.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.reality.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.first_setup.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.first_setup.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.warp_enable.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.warp_enable.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.restls1_2_domain.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.restls1_2_domain.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.restls1_3_domain.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.restls1_3_domain.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.license.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.license.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.is_parent.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.is_parent.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.parent_panel.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.parent_panel.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.unique_id.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.unique_id.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.last_hash.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.last_hash.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.admin_secret.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.admin_secret.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.kcp_ports.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.kcp_ports.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.kcp_enable.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.kcp_enable.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.netdata.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.netdata.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.torrent_block.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.torrent_block.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.tuic_enable.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.tuic_enable.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.tuic_port.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.tuic_port.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.ssr_enable.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.ssr_enable.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.ssr_fakedomain.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.ssr_fakedomain.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.domain_fronting_http_enable.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.domain_fronting_http_enable.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.db_version.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.db_version.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.not_found.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.not_found.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.path_v2ray.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.path_v2ray.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.path_ss.label"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/configfake.html:6
-msgid "config.path_ss.description"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/index.html:70
 msgid "Today Usage"
 msgstr ""
 
-#: hiddifypanel/panel/admin/templates/index.html:76
 msgid "Yesterday Usage"
 msgstr ""
 
-#: hiddifypanel/panel/admin/templates/index.html:82
 msgid "Month Usage"
 msgstr ""
 
-#: hiddifypanel/panel/admin/templates/index.html:88
 msgid "Total Usage"
 msgstr ""
 
-#: hiddifypanel/panel/admin/templates/index.html:104
-#: hiddifypanel/panel/admin/templates/index.html:225
 msgid "In 5 minutes"
 msgstr ""
 
-#: hiddifypanel/panel/admin/templates/index.html:107
 msgid "Network"
 msgstr ""
 
-#: hiddifypanel/panel/admin/templates/index.html:110
-#: hiddifypanel/panel/admin/templates/index.html:246
-#: hiddifypanel/panel/admin/templates/index.html:262
 msgid "From Last Restart"
 msgstr ""
 
-#: hiddifypanel/panel/admin/templates/index.html:115
-#, python-format
 msgid "CPU %(cores)s Cores"
 msgstr ""
 
-#: hiddifypanel/panel/admin/templates/index.html:125
 msgid "RAM"
 msgstr ""
 
-#: hiddifypanel/panel/admin/templates/index.html:139
 msgid "Disk"
 msgstr ""
 
-#: hiddifypanel/panel/admin/templates/index.html:142
-#: hiddifypanel/panel/commercial/restapi/v2/user/info_api.py:71
 msgid "Hiddify"
 msgstr ""
 
-#: hiddifypanel/panel/admin/templates/parent_dash.html:10
-#: hiddifypanel/panel/commercial/templates/parent_dash.html:18
 msgid "Childs"
 msgstr ""
 
-#: hiddifypanel/panel/admin/templates/parent_dash.html:14
-#: hiddifypanel/panel/commercial/templates/parent_dash.html:22
 msgid "No children!"
 msgstr ""
 
-#: hiddifypanel/panel/admin/templates/parent_dash.html:20
-#: hiddifypanel/panel/commercial/templates/parent_dash.html:28
 msgid "Status"
 msgstr ""
 
-#: hiddifypanel/panel/admin/templates/parent_dash.html:21
-#: hiddifypanel/panel/commercial/templates/parent_dash.html:29
-#: hiddifypanel/panel/user/templates/home/all-configs.html:10
 msgid "Domain"
 msgstr ""
 
-#: hiddifypanel/panel/admin/templates/proxy.html:11
-msgid "admin.proxy.global_config"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/proxy.html:14
 msgid "Edit Proxy Names"
 msgstr ""
 
-#: hiddifypanel/panel/admin/templates/proxy.html:24
-msgid "admin.proxy.detailed_config"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/quick_setup.html:8
 msgid "Save Link"
 msgstr ""
 
-#: hiddifypanel/panel/admin/templates/quick_setup.html:8
-#, python-format
 msgid ""
 "Please note that your panel can be accessed only via <a "
 "href=\"%(adminlink)s\" class=\"btn btn-primary copy-"
 "link\">%(adminlink)s</a>. Please save this link."
 msgstr ""
 
-#: hiddifypanel/panel/admin/templates/quick_setup.html:60
-msgid "admin.quicksetup.title"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/quick_setup.html:65
-msgid "admin.quicksetup_intro"
-msgstr ""
-
-#: hiddifypanel/panel/admin/templates/result.html:38
 msgid "Please wait "
 msgstr ""
 
-#: hiddifypanel/panel/admin/templates/result.html:56
 msgid "log"
 msgstr ""
 
-#: hiddifypanel/panel/admin/templates/result.html:61
 msgid "Click here to see the complete log"
 msgstr ""
 
-#: hiddifypanel/panel/admin/templates/model/user_list.html:102
-#: hiddifypanel/panel/admin/templates/result.html:155
 msgid "Success"
 msgstr ""
 
-#: hiddifypanel/panel/admin/templates/result.html:156
 msgid "The action done successfully. You can now leave this page."
 msgstr ""
 
-#: hiddifypanel/panel/admin/templates/model/domain_list.html:7
 msgid ""
 "In this section, you can add your domain. You need to add at least one "
 "domain in direct mode."
 msgstr ""
 
-#: hiddifypanel/panel/admin/templates/model/user_list.html:8
 msgid "Send Message to User's Telegram"
 msgstr ""
 
-#: hiddifypanel/panel/admin/templates/model/user_list.html:10
 msgid "All Users"
 msgstr ""
 
-#: hiddifypanel/panel/admin/templates/model/user_list.html:11
 msgid "Expired Users"
 msgstr ""
 
-#: hiddifypanel/panel/admin/templates/model/user_list.html:12
 msgid "Active Users"
 msgstr ""
 
-#: hiddifypanel/panel/admin/templates/model/user_list.html:14
 msgid "Offline more than 1 hour"
 msgstr ""
 
-#: hiddifypanel/panel/admin/templates/model/user_list.html:15
 msgid "Offline more than 1 day"
 msgstr ""
 
-#: hiddifypanel/panel/admin/templates/model/user_list.html:16
 msgid "Offline more than 1 week"
 msgstr ""
 
-#: hiddifypanel/panel/admin/templates/model/user_list.html:23
-#, python-format
 msgid ""
 "User usage will be updated every 6 minutes. To update it now click <a "
 "href=\"%(link)s\" class=\"btn btn-info\">here</a>"
 msgstr ""
 
-#: hiddifypanel/panel/admin/templates/model/user_list.html:68
 msgid "Please type your message to send to the telegram:"
 msgstr ""
 
-#: hiddifypanel/panel/admin/templates/model/user_list.html:75
 msgid "Sending..."
 msgstr ""
 
-#: hiddifypanel/panel/admin/templates/model/user_list.html:103
 msgid "The message has been sent."
 msgstr ""
 
-#: hiddifypanel/panel/admin/templates/model/user_list.html:106
 msgid "Hover the user to see the reason"
 msgstr ""
 
-#: hiddifypanel/panel/admin/templates/model/user_list.html:115
 msgid "The message was not sent to"
 msgstr ""
 
-#: hiddifypanel/panel/commercial/ProxyDetailsAdmin.py:30
-#, python-format
 msgid "%(count)s records were successfully disabled."
 msgstr ""
 
-#: hiddifypanel/panel/commercial/ProxyDetailsAdmin.py:39
-#, python-format
 msgid "%(count)s records were successfully enabled."
 msgstr ""
 
-#: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:175
-#: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:378
-#: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:380
 msgid "app.hiddify.next.title"
 msgstr ""
 
-#: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:177
-#: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:211
-#: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:213
-msgid "app.hiddifyn.title"
-msgstr ""
-
-#: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:179
-#: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:236
-#: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:238
-msgid "app.v2rayng.title"
-msgstr ""
-
-#: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:181
-#: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:251
-#: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:253
-msgid "app.hiddifyng.title"
-msgstr ""
-
-#: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:183
-#: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:265
-#: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:267
-msgid "app.hiddify-clash-android.title"
-msgstr ""
-
-#: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:185
-#: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:277
-#: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:279
-msgid "app.foxray.title"
-msgstr ""
-
-#: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:187
-#: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:289
-#: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:291
-msgid "app.shadowrocket.title"
-msgstr ""
-
-#: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:189
-#: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:301
-#: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:303
-msgid "app.streisand.title"
-msgstr ""
-
-#: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:191
-#: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:312
-#: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:314
-msgid "app.loon.title"
-msgstr ""
-
-#: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:193
-#: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:322
-#: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:324
-msgid "app.stash.title"
-msgstr ""
-
-#: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:195
-#: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:334
-#: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:336
-msgid "app.hiddify-clash-desktop.title"
-msgstr ""
-
-#: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:197
-#: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:223
-#: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:225
-msgid "app.nekobox.title"
-msgstr ""
-
-#: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:212
-msgid "app.hiddifyn.description"
-msgstr ""
-
-#: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:224
-msgid "app.nekobox.description"
-msgstr ""
-
-#: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:237
-msgid "app.v2rayng.description"
-msgstr ""
-
-#: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:252
-msgid "app.hiddifyng.description"
-msgstr ""
-
-#: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:266
-msgid "app.hiddify-clash-android.description"
-msgstr ""
-
-#: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:278
-msgid "app.foxray.description"
-msgstr ""
-
-#: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:290
-msgid "app.shadowrocket.description"
-msgstr ""
-
-#: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:302
-msgid "app.streisand.description"
-msgstr ""
-
-#: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:313
-msgid "app.loon.description"
-msgstr ""
-
-#: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:323
-msgid "app.stash.description"
-msgstr ""
-
-#: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:335
-msgid "app.hiddify-clash-desktop.description"
-msgstr ""
-
-#: hiddifypanel/panel/commercial/restapi/v2/user/apps_api.py:379
 msgid "app.hiddify.next.description"
 msgstr ""
 
-#: hiddifypanel/panel/commercial/restapi/v2/user/info_api.py:67
-msgid "Join our Hiddify Telegram channel to get the latest updates on Hiddify."
+msgid "app.hiddifyn.title"
 msgstr ""
 
-#: hiddifypanel/panel/commercial/restapi/v2/user/info_api.py:69
-msgid "[Admin only visible message:] You can change this message from settings"
+msgid "app.hiddifyn.description"
 msgstr ""
 
-#: hiddifypanel/panel/commercial/telegrambot/Usage.py:34
-#: hiddifypanel/panel/commercial/telegrambot/information.py:55
+msgid "app.v2rayng.title"
+msgstr ""
+
+msgid "app.v2rayng.description"
+msgstr ""
+
+msgid "app.hiddifyng.title"
+msgstr ""
+
+msgid "app.hiddifyng.description"
+msgstr ""
+
+msgid "app.hiddify-clash-android.title"
+msgstr ""
+
+msgid "app.hiddify-clash-android.description"
+msgstr ""
+
+msgid "app.foxray.title"
+msgstr ""
+
+msgid "app.foxray.description"
+msgstr ""
+
+msgid "app.shadowrocket.title"
+msgstr ""
+
+msgid "app.shadowrocket.description"
+msgstr ""
+
+msgid "app.streisand.title"
+msgstr ""
+
+msgid "app.streisand.description"
+msgstr ""
+
+msgid "app.loon.title"
+msgstr ""
+
+msgid "app.loon.description"
+msgstr ""
+
+msgid "app.stash.title"
+msgstr ""
+
+msgid "app.stash.description"
+msgstr ""
+
+msgid "app.hiddify-clash-desktop.title"
+msgstr ""
+
+msgid "app.hiddify-clash-desktop.description"
+msgstr ""
+
+msgid "app.nekobox.title"
+msgstr ""
+
+msgid "app.nekobox.description"
+msgstr ""
+
+msgid ""
+"Join our Hiddify Telegram channel to get the latest updates on Hiddify."
+msgstr ""
+
+msgid ""
+"[Admin only visible message:] You can change this message from settings"
+msgstr ""
+
 msgid ""
 "Hooray 🎉 🎉 🎉 \n"
 "Welcome to hiddifybot.\n"
 "Start by clicking the link on the panel or entering your UUID."
 msgstr ""
 
-#: hiddifypanel/panel/commercial/telegrambot/Usage.py:44
 msgid "update"
 msgstr ""
 
-#: hiddifypanel/panel/commercial/telegrambot/admin.py:35
 msgid "Welcome to admin bot. Choose your action"
 msgstr ""
 
-#: hiddifypanel/panel/commercial/telegrambot/admin.py:48
 msgid "Create Package"
 msgstr ""
 
-#: hiddifypanel/panel/commercial/telegrambot/admin.py:119
 msgid "package size?"
 msgstr ""
 
-#: hiddifypanel/panel/commercial/telegrambot/admin.py:121
-#: hiddifypanel/panel/commercial/telegrambot/admin.py:125
-#: hiddifypanel/panel/commercial/telegrambot/admin.py:129
-#: hiddifypanel/panel/commercial/telegrambot/admin.py:133
-#: hiddifypanel/panel/commercial/telegrambot/admin.py:161
 msgid "Ok"
 msgstr ""
 
-#: hiddifypanel/panel/commercial/telegrambot/admin.py:123
 msgid "package days?"
 msgstr ""
 
-#: hiddifypanel/panel/commercial/telegrambot/admin.py:127
 msgid "How many?"
 msgstr ""
 
-#: hiddifypanel/panel/commercial/telegrambot/admin.py:131
 msgid "Domain?"
 msgstr ""
 
-#: hiddifypanel/panel/commercial/telegrambot/admin.py:139
-#: hiddifypanel/panel/commercial/telegrambot/admin.py:147
 msgid "Please Wait..."
 msgstr ""
 
-#: hiddifypanel/panel/commercial/telegrambot/admin.py:159
 msgid "Finished..."
 msgstr ""
 
-#: hiddifypanel/panel/commercial/telegrambot/information.py:20
 msgid ""
 "Dear {}\n"
 "\n"
@@ -1802,7 +1786,6 @@ msgid ""
 "Usage class: {}\n"
 msgstr ""
 
-#: hiddifypanel/panel/commercial/telegrambot/information.py:119
 msgid ""
 "Your hiddify instance information \n"
 "Domain: {} \n"
@@ -1815,786 +1798,313 @@ msgid ""
 " Happy using 🎉 🎉 🎉 \n"
 msgstr ""
 
-#: hiddifypanel/panel/commercial/templates/configc.html:11
-msgid "admin.config.title"
-msgstr ""
-
-#: hiddifypanel/panel/common_bp/login.py:18
 msgid "login.secret.label"
 msgstr ""
 
-#: hiddifypanel/panel/common_bp/login.py:20
 msgid "login.secret.description"
 msgstr ""
 
-#: hiddifypanel/panel/common_bp/login.py:75
 msgid "Incorrect Password"
 msgstr ""
 
-#: copy.html:2 hiddifypanel/panel/common_bp/templates/login.html:3
-#: hiddifypanel/panel/common_bp/templates/login.html:16
-#: hiddifypanel/panel/user/templates/home/auto_page.html:2
-#: hiddifypanel/panel/user/templates/home/handle_smart.html:2
-#: hiddifypanel/panel/user/templates/home/home.html:2
-#: hiddifypanel/panel/user/templates/home/home.html:10
-#: hiddifypanel/panel/user/templates/home/home.html:22
-#: hiddifypanel/panel/user/templates/home/index
-#: hiddifypanel/panel/user/templates/home/index_old.html:2
-#: hiddifypanel/panel/user/templates/home/index_old.html:8
-#: hiddifypanel/panel/user/templates/home/multi.html:2
-#: hiddifypanel/panel/user/templates/home/multi.html:10
-#: hiddifypanel/panel/user/templates/home/multi.html:22
-#: hiddifypanel/panel/user/templates/redirect_to_new_format.html:2
-#: hiddifypanel/templates/master.html:75
-msgid "user.home.title"
-msgstr ""
-
-#: hiddifypanel/panel/user/link_maker.py:982
-#, python-format
 msgid "📅%(expire_days)s days"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/doh.html:8
-#: hiddifypanel/panel/user/templates/redirect_to_new_format.html:8
-#: hiddifypanel/templates/master.html:169
 msgid "copy"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/redirect_to_new_format.html:12
-#: hiddifypanel/templates/master.html:171
 msgid "open"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/redirect_to_new_format.html:16
 msgid "Link is changed!"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/redirect_to_new_format.html:16
-msgid "The page has been moved to a new link. Please copy and save the new link."
+msgid ""
+"The page has been moved to a new link. Please copy and save the new link."
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/all-configs.html:1
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:1
-msgid "user.home.tool.all-configs"
-msgstr ""
-
-#: hiddifypanel/panel/user/templates/home/all-configs.html:8
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:7
-msgid "user.home.allconfig.name"
-msgstr ""
-
-#: hiddifypanel/panel/user/templates/home/all-configs.html:9
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:8
-msgid "user.home.allconfig.type"
-msgstr ""
-
-#: hiddifypanel/panel/user/templates/home/all-configs.html:11
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:9
-msgid "user.home.allconfig.protocol"
-msgstr ""
-
-#: hiddifypanel/panel/user/templates/home/all-configs.html:12
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:10
-msgid "user.home.allconfig.transport"
-msgstr ""
-
-#: hiddifypanel/panel/user/templates/home/all-configs.html:13
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:11
-msgid "user.home.allconfig.security"
-msgstr ""
-
-#: hiddifypanel/panel/user/templates/home/all-configs.html:25
-#: hiddifypanel/panel/user/templates/home/all-configs.html:26
-#: hiddifypanel/panel/user/templates/home/all-configs.html:27
-#: hiddifypanel/panel/user/templates/home/all-configs.html:28
-#: hiddifypanel/panel/user/templates/home/all-configs.html:29
-#: hiddifypanel/panel/user/templates/home/all-configs.html:38
-#: hiddifypanel/panel/user/templates/home/all-configs.html:39
-#: hiddifypanel/panel/user/templates/home/all-configs.html:40
-#: hiddifypanel/panel/user/templates/home/all-configs.html:41
-#: hiddifypanel/panel/user/templates/home/all-configs.html:42
-#: hiddifypanel/panel/user/templates/home/all-configs.html:51
-#: hiddifypanel/panel/user/templates/home/all-configs.html:52
-#: hiddifypanel/panel/user/templates/home/all-configs.html:53
-#: hiddifypanel/panel/user/templates/home/all-configs.html:54
-#: hiddifypanel/panel/user/templates/home/all-configs.html:55
-#: hiddifypanel/panel/user/templates/home/all-configs.html:64
-#: hiddifypanel/panel/user/templates/home/all-configs.html:65
-#: hiddifypanel/panel/user/templates/home/all-configs.html:67
-#: hiddifypanel/panel/user/templates/home/all-configs.html:68
-#: hiddifypanel/panel/user/templates/home/all-configs.html:77
-#: hiddifypanel/panel/user/templates/home/all-configs.html:78
-#: hiddifypanel/panel/user/templates/home/all-configs.html:79
-#: hiddifypanel/panel/user/templates/home/all-configs.html:80
-#: hiddifypanel/panel/user/templates/home/all-configs.html:81
-#: hiddifypanel/panel/user/templates/home/all-configs.html:104
-#: hiddifypanel/panel/user/templates/home/all-configs.html:105
-#: hiddifypanel/panel/user/templates/home/all-configs.html:106
-#: hiddifypanel/panel/user/templates/home/all-configs.html:107
-#: hiddifypanel/panel/user/templates/home/all-configs.html:108
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:22
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:23
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:24
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:25
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:34
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:36
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:37
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:46
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:47
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:48
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:49
 msgid "all"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/all-configs.html:35
 msgid "auto"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/all-configs.html:48
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:19
-msgid "user.home.allconfig.hiddify-managers"
-msgstr ""
-
-#: hiddifypanel/panel/user/templates/home/all-configs.html:61
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:31
-msgid "user.home.allconfig.clash-configs"
-msgstr ""
-
-#: hiddifypanel/panel/user/templates/home/all-configs.html:66
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:35
-msgid "user.home.allconfigs.expect_vless"
-msgstr ""
-
-#: hiddifypanel/panel/user/templates/home/all-configs.html:74
-#: hiddifypanel/panel/user/templates/home/all-configs.html:101
-#: hiddifypanel/panel/user/templates/home/all-configs_old.html:43
-#: hiddifypanel/panel/user/templates/home/android.html:40
-#: hiddifypanel/panel/user/templates/home/ios.html:29
-msgid "user.home.allconfig.link-configs"
-msgstr ""
-
-#: hiddifypanel/panel/user/templates/home/all-configs.html:87
 msgid "singbox: ssh"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/all-configs.html:90
-#: hiddifypanel/panel/user/templates/home/all-configs.html:91
-#: hiddifypanel/panel/user/templates/home/all-configs.html:92
-#: hiddifypanel/panel/user/templates/home/all-configs.html:93
-#: hiddifypanel/panel/user/templates/home/all-configs.html:94
-msgid "ssh"
-msgstr ""
-
-#: hiddifypanel/panel/user/templates/home/android.html:2
-#: hiddifypanel/panel/user/templates/home/ios.html:3
-#: hiddifypanel/panel/user/templates/home/windows.html:46
 msgid "Please select one of the following applications:"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/android.html:7
-#: hiddifypanel/panel/user/templates/home/android.html:12
-#: hiddifypanel/panel/user/templates/home/android.html:58
 msgid "download"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/android.html:19
-#: hiddifypanel/panel/user/templates/home/android.html:65
-#: hiddifypanel/panel/user/templates/home/one_click.html:73
-#: hiddifypanel/panel/user/templates/home/one_click.html:86
 msgid "install from google play"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/android.html:26
 msgid "HiddifyNG"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/android.html:29
 msgid "HiddifyNG intro"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/android.html:33
-#: hiddifypanel/panel/user/templates/home/windows.html:57
 msgid "Click to Import"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/android.html:36
 msgid "V2rayNG"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/android.html:37
 msgid "V2rayNG intro"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/android.html:48
 msgid "Hiddify Android"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/android.html:69
-msgid "user.home.android.intro"
-msgstr ""
-
-#: hiddifypanel/panel/user/templates/home/base2.html:38
 msgid "test"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/clash-links.html:1
-msgid "user.home.clash_configs.intro"
-msgstr ""
-
-#: hiddifypanel/panel/user/templates/home/clash-links.html:5
-msgid "user.home.clash_configs.only_for_blocked_sites.title"
-msgstr ""
-
-#: hiddifypanel/panel/user/templates/home/clash-links.html:7
-msgid "user.home.clash_configs.only_for_blocked_sites.description"
-msgstr ""
-
-#: hiddifypanel/panel/user/templates/home/clash-links.html:10
-#: hiddifypanel/panel/user/templates/home/clash-links.html:20
-msgid "user.home.clash_configs.only_for_blocked_sites.btn"
-msgstr ""
-
-#: hiddifypanel/panel/user/templates/home/clash-links.html:13
-#: hiddifypanel/panel/user/templates/home/clash-links.html:35
-#: hiddifypanel/panel/user/templates/home/clash-links.html:58
-msgid "user.home.clash_configs.alternative_for_normal_clash"
-msgstr ""
-
-#: hiddifypanel/panel/user/templates/home/clash-links.html:15
-#: hiddifypanel/panel/user/templates/home/clash-links.html:37
-#: hiddifypanel/panel/user/templates/home/clash-links.html:60
-msgid "user.home.clash_configs.link_for_normal_clash"
-msgstr ""
-
-#: hiddifypanel/panel/user/templates/home/clash-links.html:27
-msgid "user.home.clash_configs.foreign_sites.title"
-msgstr ""
-
-#: hiddifypanel/panel/user/templates/home/clash-links.html:29
-msgid "user.home.clash_configs.foreign_sites.description"
-msgstr ""
-
-#: hiddifypanel/panel/user/templates/home/clash-links.html:32
-#: hiddifypanel/panel/user/templates/home/clash-links.html:42
-msgid "user.home.clash_configs.foreign_sites.btn"
-msgstr ""
-
-#: hiddifypanel/panel/user/templates/home/clash-links.html:50
-msgid "user.home.clash_configs.all_sites.title"
-msgstr ""
-
-#: hiddifypanel/panel/user/templates/home/clash-links.html:52
-msgid "user.home.clash_configs.all_sites.description"
-msgstr ""
-
-#: hiddifypanel/panel/user/templates/home/clash-links.html:55
-#: hiddifypanel/panel/user/templates/home/clash-links.html:65
-msgid "user.home.clash_configs.all_sites.btn"
-msgstr ""
-
-#: hiddifypanel/panel/user/templates/home/doh.html:1
-msgid "user.home.tool.doh.title"
-msgstr ""
-
-#: hiddifypanel/panel/user/templates/home/doh.html:13
-msgid "user.home.tool.doh.help"
-msgstr ""
-
-#: hiddifypanel/panel/user/templates/home/home.html:10
-#: hiddifypanel/panel/user/templates/home/home.html:22
-#: hiddifypanel/panel/user/templates/home/index_old.html:8
-#: hiddifypanel/panel/user/templates/home/multi.html:10
-#: hiddifypanel/panel/user/templates/home/multi.html:22
-#, python-format
 msgid "Welcome %(user)s"
 msgstr ""
 
-#: copy.html:27 hiddifypanel/panel/user/templates/home/home.html:50
-#: hiddifypanel/panel/user/templates/home/index
-#: hiddifypanel/panel/user/templates/home/index_old.html:40
-#: hiddifypanel/panel/user/templates/home/multi.html:50
 msgid "telegram"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/home.html:52
-#: hiddifypanel/panel/user/templates/home/index_old.html:43
-#: hiddifypanel/panel/user/templates/home/multi.html:52
 msgid "android"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/home.html:53
-#: hiddifypanel/panel/user/templates/home/index_old.html:45
-#: hiddifypanel/panel/user/templates/home/multi.html:53
 msgid "ios"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/home.html:55
-#: hiddifypanel/panel/user/templates/home/index_old.html:47
-#: hiddifypanel/panel/user/templates/home/multi.html:55
 msgid "desktop"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/home.html:62
-#: hiddifypanel/panel/user/templates/home/index_old.html:54
-#: hiddifypanel/panel/user/templates/home/multi.html:63
 msgid "user.home.select os"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/home.html:96
-#: hiddifypanel/panel/user/templates/home/index_old.html:89
-#: hiddifypanel/panel/user/templates/home/multi.html:56
-msgid "user.home.all_configs"
-msgstr ""
-
-#: hiddifypanel/panel/user/templates/home/home.html:97
-#: hiddifypanel/panel/user/templates/home/index_old.html:91
-#: hiddifypanel/panel/user/templates/home/multi.html:101
-msgid "user.home.speedtest"
-msgstr ""
-
-#: hiddifypanel/panel/user/templates/home/home.html:98
-#: hiddifypanel/panel/user/templates/home/index_old.html:93
-#: hiddifypanel/panel/user/templates/home/multi.html:102
-msgid "user.home.doh"
-msgstr ""
-
-#: hiddifypanel/panel/user/templates/home/home.html:104
-#: hiddifypanel/panel/user/templates/home/index_old.html:99
-#: hiddifypanel/panel/user/templates/home/multi.html:108
 msgid "user.home.select tool"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/home.html:130
-#: hiddifypanel/panel/user/templates/home/index_old.html:125
-#: hiddifypanel/panel/user/templates/home/multi.html:132
 msgid "QR code"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/home.html:131
-#: hiddifypanel/panel/user/templates/home/index_old.html:126
-#: hiddifypanel/panel/user/templates/home/multi.html:133
-msgid "user.home.qr-code.description"
-msgstr ""
-
-#: hiddifypanel/panel/user/templates/home/home.html:138
-#: hiddifypanel/panel/user/templates/home/index_old.html:134
-#: hiddifypanel/panel/user/templates/home/multi.html:140
-msgid "user.home.qr-code.display"
-msgstr ""
-
-#: hiddifypanel/panel/user/templates/home/home.html:313
-#: hiddifypanel/panel/user/templates/home/multi.html:315
 msgid "Want to enjoy more with telegram?"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/home.html:314
 msgid ""
 "Please connect your telegram account to the panel to be informed about "
 "latest news."
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/home.html:342
-#: hiddifypanel/panel/user/templates/home/index_old.html:344
-#: hiddifypanel/panel/user/templates/home/multi.html:342
 msgid "next"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/home.html:343
-#: hiddifypanel/panel/user/templates/home/index_old.html:345
-#: hiddifypanel/panel/user/templates/home/multi.html:343
 msgid "previous"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/home.html:353
-#: hiddifypanel/panel/user/templates/home/index_old.html:355
-#: hiddifypanel/panel/user/templates/home/multi.html:353
 msgid "search"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/home.html:387
-#: hiddifypanel/panel/user/templates/home/multi.html:387
 msgid "Check again"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/home.html:390
-#: hiddifypanel/panel/user/templates/home/multi.html:390
 msgid "Turn of VPN"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/home.html:390
-#: hiddifypanel/panel/user/templates/home/multi.html:390
-#, python-format
 msgid ""
-"You should visit this page without VPN. Your country=%(your_country)s "
+"You should visit this page without VPN. Your country=%(your_country)s\n"
 "expected=%(expected_country)s"
 msgstr ""
 
-#: copy.html:6 hiddifypanel/panel/user/templates/home/ios
-#: hiddifypanel/panel/user/templates/home/ios.html:6
-msgid "user.home.ios.stash.title"
-msgstr ""
-
-#: copy.html:17 hiddifypanel/panel/user/templates/home/ios
-#: hiddifypanel/panel/user/templates/home/ios.html:10
-msgid "user.home.ios.stash.intro"
-msgstr ""
-
-#: hiddifypanel/panel/user/templates/home/ios.html:21
-msgid "user.home.ios.others.title"
-msgstr ""
-
-#: hiddifypanel/panel/user/templates/home/ios.html:25
-msgid "user.home.ios.others.intro"
-msgstr ""
-
-#: hiddifypanel/panel/user/templates/home/multi.html:316
 msgid ""
-"Please connect your telegram accout to the panel to be informed about "
-"latest news."
+"Please connect your telegram accout to the panel to be informed about latest"
+" news."
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/one_click.html:14
 msgid "Click to Start Anti-Filter."
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/one_click.html:16
 msgid "Unified link for all application."
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/one_click.html:30
-#: hiddifypanel/panel/user/templates/home/one_click.html:290
 msgid "Temporary Short Link"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/one_click.html:32
 msgid "Simplifies the process of employing the link elsewhere."
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/one_click.html:50
 msgid "Open in Application"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/one_click.html:56
-#, python-format
 msgid ""
-"If the application do not open automatically, please click <a class='btn "
-"btn-primary copy-link' href='%(sub)s'>this universal link</a> to copy and"
-" paste it on\n"
+"If the application do not open automatically, please click <a class='btn btn-primary copy-link' href='%(sub)s'>this universal link</a> to copy and paste it on\n"
 "                your application, or:"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/one_click.html:62
-#: hiddifypanel/panel/user/templates/home/one_click.html:102
-#: hiddifypanel/panel/user/templates/home/one_click.html:139
-#: hiddifypanel/panel/user/templates/home/one_click.html:176
 msgid "Use HiddifyNext:"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/one_click.html:70
-#: hiddifypanel/panel/user/templates/home/one_click.html:85
-#: hiddifypanel/panel/user/templates/home/one_click.html:93
-#: hiddifypanel/panel/user/templates/home/one_click.html:108
-#: hiddifypanel/panel/user/templates/home/one_click.html:121
-#: hiddifypanel/panel/user/templates/home/one_click.html:129
-#: hiddifypanel/panel/user/templates/home/one_click.html:158
-#: hiddifypanel/panel/user/templates/home/one_click.html:166
-#: hiddifypanel/panel/user/templates/home/one_click.html:194
-#: hiddifypanel/panel/user/templates/home/one_click.html:202
-#: hiddifypanel/panel/user/templates/home/one_click.html:208
-#: hiddifypanel/panel/user/templates/home/one_click.html:222
-#: hiddifypanel/panel/user/templates/home/one_click.html:227
-#: hiddifypanel/panel/user/templates/home/one_click.html:233
-#: hiddifypanel/panel/user/templates/home/one_click.html:241
-#: hiddifypanel/panel/user/templates/home/one_click.html:252
 msgid "Download App"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/one_click.html:75
-#: hiddifypanel/panel/user/templates/home/one_click.html:110
-#: hiddifypanel/panel/user/templates/home/one_click.html:124
-#: hiddifypanel/panel/user/templates/home/one_click.html:131
-#: hiddifypanel/panel/user/templates/home/one_click.html:148
-#: hiddifypanel/panel/user/templates/home/one_click.html:168
-#: hiddifypanel/panel/user/templates/home/one_click.html:184
-#: hiddifypanel/panel/user/templates/home/one_click.html:204
-#: hiddifypanel/panel/user/templates/home/one_click.html:209
-#: hiddifypanel/panel/user/templates/home/one_click.html:223
-#: hiddifypanel/panel/user/templates/home/one_click.html:228
-#: hiddifypanel/panel/user/templates/home/one_click.html:235
-#: hiddifypanel/panel/user/templates/home/one_click.html:245
-#: hiddifypanel/panel/user/templates/home/one_click.html:255
 msgid "Import"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/one_click.html:79
-#: hiddifypanel/panel/user/templates/home/one_click.html:116
-#: hiddifypanel/panel/user/templates/home/one_click.html:152
-#: hiddifypanel/panel/user/templates/home/one_click.html:188
-#: hiddifypanel/panel/user/templates/home/one_click.html:218
 msgid "More Applications"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/one_click.html:89
-#: hiddifypanel/panel/user/templates/home/one_click.html:94
 msgid "Import in"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/one_click.html:145
-#: hiddifypanel/panel/user/templates/home/one_click.html:181
 msgid ""
 "Download\n"
 "                                App"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/one_click.html:263
 msgid "QRCode"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/one_click.html:274
 msgid "Copy Link"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/speedtest.html:2
-msgid "user.home.speedtest.intro"
+msgid "Reset Usage Time:"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/speedtest.html:6
-msgid "user.home.speedtest.upload"
+msgid "days"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/speedtest.html:8
-msgid "user.home.speedtest.download"
+msgid "User is inactive"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/speedtest.html:10
-msgid "user.home.speedtest.two_ways"
+msgid "Too many Connected IPs"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/telegram.html:4
-msgid "user.home.telegram.clickbtn"
+msgid "View in Telegram"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/telegram.html:9
-msgid "user.home.telegram.description"
-msgstr ""
-
-#: hiddifypanel/panel/user/templates/home/windows.html:6
-#: hiddifypanel/panel/user/templates/home/windows.html:22
-#: hiddifypanel/panel/user/templates/home/windows.html:37
 msgid "Windows"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/windows.html:9
-#: hiddifypanel/panel/user/templates/home/windows.html:25
 msgid "macOS"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/windows.html:12
-#: hiddifypanel/panel/user/templates/home/windows.html:28
 msgid "Linux"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/windows.html:50
 msgid "HiddigyN"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/windows.html:53
 msgid "HiddifyN intro"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/windows.html:63
 msgid "HiddifyClash"
 msgstr ""
 
-#: hiddifypanel/panel/user/templates/home/windows.html:65
-msgid "user.home.windows.intro"
-msgstr ""
-
-#: hiddifypanel/templates/500.html:7 hiddifypanel/templates/error.html:7
 msgid "Oops! Something went wrong."
 msgstr ""
 
-#: hiddifypanel/templates/500.html:13
 msgid "Please create an issue on Github."
 msgstr ""
 
-#: hiddifypanel/templates/admin-layout.html:18
-#: hiddifypanel/templates/master.html:8
 msgid "master.page-title"
 msgstr ""
 
-#: hiddifypanel/templates/admin-layout.html:21
-#: hiddifypanel/templates/admin-layout.html:66
-#: hiddifypanel/templates/admin-layout.html:85
 msgid "Parent Panel"
 msgstr ""
 
-#: hiddifypanel/templates/admin-layout.html:45
-msgid "admin.Actions:apply_configs"
-msgstr ""
-
-#: hiddifypanel/templates/admin-layout.html:85
-msgid "admin.menu.home"
-msgstr ""
-
-#: hiddifypanel/templates/admin-layout.html:91
-msgid "admin.menu.user"
-msgstr ""
-
-#: hiddifypanel/templates/admin-layout.html:94
-#: hiddifypanel/templates/admin-layout.html:96
 msgid "Admins"
 msgstr ""
 
-#: hiddifypanel/templates/admin-layout.html:94
 msgid "in parent panel"
 msgstr ""
 
-#: hiddifypanel/templates/admin-layout.html:104
-#: hiddifypanel/templates/admin-layout.html:177
-msgid "admin.menu.config"
-msgstr ""
-
-#: hiddifypanel/templates/admin-layout.html:111
 msgid "Commercial use"
 msgstr ""
 
-#: hiddifypanel/templates/admin-layout.html:118
-msgid "admin.actions.title"
-msgstr ""
-
-#: hiddifypanel/templates/admin-layout.html:124
-msgid "admin.menu.support"
-msgstr ""
-
-#: hiddifypanel/templates/admin-layout.html:127
-msgid "admin.menu.telegram"
-msgstr ""
-
-#: hiddifypanel/templates/admin-layout.html:132
 msgid "Bug"
 msgstr ""
 
-#: hiddifypanel/templates/admin-layout.html:137
-#: hiddifypanel/templates/donation.html:5
 msgid "Donation.title"
 msgstr ""
 
-#: hiddifypanel/templates/admin-layout.html:161
-msgid "admin.actions.status"
-msgstr ""
-
-#: hiddifypanel/templates/admin-layout.html:162
-msgid "admin.actions.viewlogs"
-msgstr ""
-
-#: hiddifypanel/templates/admin-layout.html:163
-msgid "admin.actions.apply_configs"
-msgstr ""
-
-#: hiddifypanel/templates/admin-layout.html:164
-msgid "admin.actions.update"
-msgstr ""
-
-#: hiddifypanel/templates/admin-layout.html:165
-msgid "admin.actions.reinstall"
-msgstr ""
-
-#: hiddifypanel/templates/admin-layout.html:166
-msgid "admin.actions.reset"
-msgstr ""
-
-#: hiddifypanel/templates/admin-layout.html:174
-msgid "admin.menu.domain"
-msgstr ""
-
-#: hiddifypanel/templates/admin-layout.html:175
-msgid "admin.menu.proxy"
-msgstr ""
-
-#: hiddifypanel/templates/admin-layout.html:183
-msgid "Telegram Bot"
-msgstr ""
-
-#: hiddifypanel/templates/admin-layout.html:187
-msgid "admin.menu.api"
-msgstr ""
-
-#: hiddifypanel/templates/admin-layout.html:221
-msgid "Are you sure you want to do this action?"
-msgstr ""
-
-#: hiddifypanel/templates/donation.html:11
 msgid "Donation.description"
 msgstr ""
 
-#: hiddifypanel/templates/flaskadmin-layout.html:56
+msgid "Telegram Bot"
+msgstr ""
+
+msgid "Are you sure you want to do this action?"
+msgstr ""
+
+msgid "direct"
+msgstr ""
+
+msgid "sub_link_only"
+msgstr ""
+
+msgid "cdn"
+msgstr ""
+
+msgid "auto_cdn_ip"
+msgstr ""
+
+msgid "relay"
+msgstr ""
+
+msgid "reality"
+msgstr ""
+
+msgid "old_xtls_direct"
+msgstr ""
+
+msgid "worker"
+msgstr ""
+
+msgid "fake"
+msgstr ""
+
+msgid "no_reset"
+msgstr ""
+
+msgid "monthly"
+msgstr ""
+
+msgid "weekly"
+msgstr ""
+
+msgid "daily"
+msgstr ""
+
 msgid "Direct"
 msgstr ""
 
-#: hiddifypanel/templates/flaskadmin-layout.html:57
 msgid "Panel Link"
 msgstr ""
 
-#: hiddifypanel/templates/flaskadmin-layout.html:58
 msgid "Bridge Servers"
 msgstr ""
 
-#: hiddifypanel/templates/flaskadmin-layout.html:59
 msgid "Fake"
 msgstr ""
 
-#: hiddifypanel/templates/flaskadmin-layout.html:124
 msgid "Example Domains"
 msgstr ""
 
-#: hiddifypanel/templates/flaskadmin-layout.html:128
-msgid "domain.domain_fronting.label"
-msgstr ""
-
-#: hiddifypanel/templates/flaskadmin-layout.html:129
-msgid "domain.domain_fronting.description"
-msgstr ""
-
-#: hiddifypanel/templates/macros.html:29 hiddifypanel/templates/master.html:178
 msgid "close"
 msgstr ""
 
-#: hiddifypanel/templates/master.html:160
-msgid "user.home.share-title"
-msgstr ""
-
-#: hiddifypanel/templates/master.html:170
 msgid "clickable copy"
 msgstr ""
 
-#: hiddifypanel/templates/master.html:252
-msgid "user.home.link.success-copy"
-msgstr ""
-
-#: hiddifypanel/templates/master.html:254
-#: hiddifypanel/templates/master.html:257
-msgid "user.home.link.manual-copy"
-msgstr ""
-
-#: hiddifypanel/templates/master.html:323
 msgid "Install"
 msgstr ""
 
-#: hiddifypanel/templates/master.html:424
 msgid "Install Hiddify Application"
 msgstr ""
 
-#: hiddifypanel/templates/master.html:426
-#, python-format
 msgid "Please click on %(install)s to save the user page."
 msgstr ""
 
-#: hiddifypanel/templates/hiddify-flask-admin/list.html:65
 msgid "Count:"
 msgstr ""
 
-#: hiddifypanel/templates/hiddify-flask-admin/list.html:91
 msgid "Actions"
 msgstr ""
-

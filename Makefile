@@ -9,6 +9,11 @@ help:             ## Show the help.
 	@echo "Targets:"
 	@fgrep "##" Makefile | fgrep -v fgrep
 
+.PHONY: prepare
+prepare:             ## Show the help.
+	cd scripts
+	./update_translations.sh
+
 
 .PHONY: show
 show:             ## Show the current environment.

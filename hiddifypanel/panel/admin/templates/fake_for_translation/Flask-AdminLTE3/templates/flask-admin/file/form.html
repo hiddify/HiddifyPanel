@@ -1,0 +1,16 @@
+{% extends 'flask-admin/master.html' %}
+{% import 'admin/lib.html' as lib with context %}
+
+{% block body %}
+    <section class="content-header">
+        <h1>{{ header_text }}</h1>
+    </section>
+
+    <section class="content">
+        <div class="card">
+            <div class="card-body">
+                {{ lib.render_form(form, dir_url) }}
+            </div>
+        </div>
+    </section>
+{% endblock %}
