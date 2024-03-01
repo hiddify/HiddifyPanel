@@ -29,11 +29,12 @@ def convert_to_nested(data):
         if " " in key:
             keys = [key]
         current_dict = nested_data
-        for k in keys[:-1]:
-            if k not in current_dict:
-                current_dict[k] = {}
-            current_dict = current_dict[k]
         try:
+            for k in keys[:-1]:
+                if k not in current_dict:
+                    current_dict[k] = {}
+                current_dict = current_dict[k]
+
             current_dict[keys[-1]] = value
         except Exception as e:
             print("Error!", keys, e)

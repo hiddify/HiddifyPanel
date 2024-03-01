@@ -92,6 +92,7 @@ dev:          ## Create a new tag for release.
 	@git push -u origin HEAD
 .PHONY: release
 release:          ## Create a new tag for release.
+
 	@echo "previous tag was $$(git describe --tags $$(git rev-list --tags --max-count=1))"
 	@echo "release last version $$(lastversion hiddifypanel)"
 	@echo "beta last version $$(lastversion --pre hiddifypanel)"
@@ -105,8 +106,8 @@ release:          ## Create a new tag for release.
 	@gitchangelog > HISTORY.md
 	@git tag -d $${TAG}
 	@git add hiddifypanel/VERSION hiddifypanel/VERSION.py HISTORY.md
-	@bash ./update_translations1.sh||echo "no translations"
-	@git add hiddifypanel/translations/*
+	@make prepare
+	@git add hiddifypanel/translations/* hiddifypanel/translations.i18n/*
 	@git commit -m "release: version $${TAG} 🚀"
 	@echo "creating git tag : $${TAG}"
 	@git tag $${TAG}

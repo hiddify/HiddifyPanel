@@ -4,8 +4,8 @@ import sys
 if __name__ == "__main__":
     src = sys.argv[1]
     dst = sys.argv[2]
-    src_file = f'hiddifypanel/translations/{src}/LC_MESSAGES/messages.po'
-    dst_file = f'hiddifypanel/translations/{dst}/LC_MESSAGES/messages.po'
+    src_file = f'../hiddifypanel/translations/{src}/LC_MESSAGES/messages.po'
+    dst_file = f'../hiddifypanel/translations/{dst}/LC_MESSAGES/messages.po'
     src_pofile = polib.pofile(src_file)
     dst_pofile = polib.pofile(dst_file)
     translator = GoogleTranslator(source=src, target=dst if dst != 'zh' else "zh-CN")
