@@ -928,9 +928,7 @@
   "Offline more than 1 hour": "آفلاین بیش از 1 ساعت",
   "Offline more than 1 day": "آفلاین بیش از 1 روز",
   "Offline more than 1 week": "آفلاین بیش از 1 هفته",
-  "User usage will be updated every 6 minutes": {
-    " To update it now click <a href=\"%(link)s\"\n        class=\"btn btn-info\">here</a>": "🔄 حجم مصرفی کاربران بصورت خودکار هر دقیقه بروزرسانی می‌شود. برای بروزرسانی دستی <a href='%(link)s' class='btn btn-info'>اینجا کلیک کنید</a>"
-  },
+  "User usage will be updated every 6 minutes. To update it now click <a href=\"%(link)s\"\n        class=\"btn btn-info\">here</a>": "🔄 حجم مصرفی کاربران بصورت خودکار هر دقیقه بروزرسانی می‌شود. برای بروزرسانی دستی <a href='%(link)s' class='btn btn-info'>اینجا کلیک کنید</a>",
   "Please type your message to send to the telegram:": "✏️  لطفا پیامی را که میخواهید با ربات تلگرام ارسال کنید بنویسید:",
   "Sending": "در حال ارسال...",
   "The message has been sent.": "پیام ارسال شده است.",
@@ -1080,7 +1078,7 @@
   "Parent Panel": "پنل مرکزی",
   "Admins": "ادمین ها",
   "in parent panel": "در پنل مرکزی",
-  "Commercial use": "استفاده تجاری",
+  "Commercial\n          use": "",
   "Bug": "باگ/پیشنهاد",
   "Donation": {
     "title": "حمایت",
