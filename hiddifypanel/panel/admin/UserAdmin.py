@@ -18,9 +18,12 @@ from hiddifypanel.drivers import user_driver
 from hiddifypanel.panel import hiddify, custom_widgets
 from hiddifypanel.auth import login_required
 from hiddifypanel import hutils
+from flask_admin.form import SecureForm
 
 
 class UserAdmin(AdminLTEModelView):
+    form_base_class = SecureForm
+
     column_sortable_list = ["name", "current_usage", 'mode', "remaining_days", "comment", 'last_online', "uuid", 'remaining_days']
     column_searchable_list = [("uuid"), "name"]
     column_list = ["name", "UserLinks", "current_usage", "remaining_days", "comment", 'last_online', 'mode', 'admin', "uuid"]

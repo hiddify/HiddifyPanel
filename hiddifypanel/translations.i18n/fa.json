@@ -207,7 +207,8 @@
       "description": "یک پروکسی برای در اختیار قرار دادن TLS Handshake به فایروال.\n\nمانند تروجان کار می کند اما نیازی به Signing Certificate ندارد. فایروال، TLS Handshake واقعی را با گواهی معتبری که انتخاب می کنید، می‌بیند."
     },
     "restls": {
-      "label": "RestTLS"
+      "label": "RestTLS",
+      "description": ""
     },
     "tuic": {
       "label": "TUIC",
@@ -313,6 +314,14 @@
       "label": "فعالسازی +WARP",
       "description": "WARP به شما کمک می کند تا محدودیت‌های گوگل، اسپاتیفای و نتفلیکس را با مخفی‌سازی آیپی سرور دور بزنید."
     },
+    "restls1_2_domain": {
+      "label": "",
+      "description": ""
+    },
+    "restls1_3_domain": {
+      "label": "",
+      "description": ""
+    },
     "license": {
       "label": "کد مجوز",
       "description": "برای استفاده تجاری از این محصول باید مجوز آن را خریداری کنید"
@@ -402,7 +411,8 @@
       "description": "WireGuard پروتکل مبتنی بر UDP است.\n\n⚠️ حسابداری هنوز پشتیبانی نمی شود."
     },
     "wireguard_port": {
-      "label": "پورت وایرگارد"
+      "label": "پورت وایرگارد",
+      "description": ""
     },
     "wireguard_ipv6": {
       "label": "-",
@@ -595,31 +605,17 @@
     "shadowsocks": {
       "label": "شادوساکس",
       "description": "Shadowsocks یک پروکسی تونل سریع است که به شما کمک می کند فایروال ها را دور بزنید."
-    },
-    "Invalid domain": "خطا! دامنه نامعتبر! فرمت دامنه باید مثل www.google.com باشد.",
-    "Domain already used": "دامنه در بخش دامنه‌ها وجود دارد. از دامنه دیگری استفاده کنید.",
-    "Invalid telegram bot token": "توکن ربات تلگرام نامعتبر است",
-    "Invalid brand link": "لینک پشتیبانی نامعتبر است. لطفا لینک را با فرمت معتبر وارد کنید.",
-    "invalid uuid": "رمز UUID نامعتبر است. به عنوان مثال: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6",
-    "Invalid proxy path": "مسیر پروکسی نامعتبر است. باید رشته متن asci باشد. ( شامل a-z A-Z 0-9)",
-    "Invalid port": "پورت نامعتبر است. اعداد باید با کاما از هم جدا شود، مثلاً 1000,1001",
-    "Invalid! The pattern is number-number": "⚠️ پیکربندی نامعتبر است! الگوی عدد-عدد است",
-    "Invalid! it should be a number only": "⚠️ پیکربندی نامعتبر است! این باید فقط یک عدد باشد"
+    }
   },
   "Error! auto cdn ip can not be find, please contact admin.": "خطا! آی پی اتوماتیک نتوانست پیدا شود. لطفا با مدیر تماس بگیرید",
+  "Owner can not be deleted!": "",
   "This domain does not exist in the panel!": "این دامنه در پنل وجود ندارد!",
   "Domain can not be resolved! there is a problem in your domain": "دامنه قابل دسترسی نیست! در دامنه شما مشکلی وجود دارد.",
-  "selected domain for REALITY is not in the same ASN": {
-    " To better use of the protocol, it is better to find a domain in the same ASN.": "دامنه انتخاب شده برای REALITY در همان ASN نیست. برای استفاده بهتر از این پروتکل، بهتر است یک دامنه در همان ASN پیدا کنید."
-  },
+  "selected domain for REALITY is not in the same ASN. To better use of the protocol, it is better to find a domain in the same ASN.": "دامنه انتخاب شده برای REALITY در همان ASN نیست. برای استفاده بهتر از این پروتکل، بهتر است یک دامنه در همان ASN پیدا کنید.",
   "User activated!": "یوزر شما فعال شد",
   "Package ended!": "پکیج شما به پایان رسید",
-  "Your domains changed": {
-    " Please do not forget to copy admin links, otherwise you can not access to the panel anymore.": "⚠️ دامنه های شما تغییر کرد. لطفا کپی لینک های مدیریت را فراموش نکنید، در غیر این صورت دیگر نمی توانید به پنل دسترسی داشته باشید"
-  },
-  "Success! Please wait around 4 minutes to make sure everything is updated": {
-    " During this time, please save your proxy links which are:": "⚠️ لطفا برای اینکه مطمئن شوید تغییرات به درستی اعمال شده، حدود 5 دقیقه صبر کنید. در این فاصله لینک‌های زیر را کپی کرده و در جایی برای خود ذخیره نمایید:"
-  },
+  "Your domains changed. Please do not forget to copy admin links, otherwise you can not access to the panel anymore.": "⚠️ دامنه های شما تغییر کرد. لطفا کپی لینک های مدیریت را فراموش نکنید، در غیر این صورت دیگر نمی توانید به پنل دسترسی داشته باشید",
+  "Success! Please wait around 4 minutes to make sure everything is updated. During this time, please save your proxy links which are:": "⚠️ لطفا برای اینکه مطمئن شوید تغییرات به درستی اعمال شده، حدود 5 دقیقه صبر کنید. در این فاصله لینک‌های زیر را کپی کرده و در جایی برای خود ذخیره نمایید:",
   "see the log in the bellow screen": "📑 لاگ سیستم  را می‌توانید در صفحه زیر ببینید:",
   "Success! Please wait around 5 minutes to make sure everything is updated.": "✔️ موفقیت آمیز بود! لطفا برای اینکه مطمئن شوید بروزرسانی‌ها به درستی اعمال شده، حدود 5 دقیقه صبر کنید.",
   "actions": "عملیات",
@@ -721,9 +717,7 @@
       "link": {
         "success-copy": "لینک کپی شد. ",
         "manual-copy": "برای کپی کردن به کلیپ‌بورد: دکمه Ctrl+C را بزنید."
-      },
-      "select os": "لطفا سیستم عامل خود را انتخاب کنید.",
-      "select tool": "لطفا یکی از موارد زیر را انتخاب کنید."
+      }
     }
   },
   "Mode": "حالت کاربر",
@@ -732,10 +726,9 @@
   "Max Users": "حداکثر کاربران",
   "Online Users": "کاربران آنلاین",
   "Can add sub admin": "👥 امکان اضافه کردن ادمین فرعی",
+  "Should be a valid uuid": "",
   "Add some text that is only visible to super_admin.": "متنی را اضافه کنید که فقط برای سوپر ادمین ها قابل مشاهده هست",
-  "Define the admin mode": {
-    " ": "🥇🥈🥉 نوع ادمین را مشخص کنید"
-  },
+  "Define the admin mode. ": "🥇🥈🥉 نوع ادمین را مشخص کنید",
   "Config file is incorrect": "فایل کانفیگ اشتباه است.",
   "Restore File": "فایل بازیابی",
   "Restore File Description": "برای بازگردانی، فایل دانلود شده (بک آپ) را از سیستم خود انتخاب کنید.",
@@ -748,18 +741,12 @@
   "Override Root Admin": "🔁 جایگذاری ادمین اصلی",
   "It will override the root admin to the current user": "این گزینه باعث جایگزین شده ادمین هایی که در پنل نیستند را با ادمین فعلی یکی کند",
   "Submit": "ثبت",
-  "This version of hiddify panel is outdated": {
-    " Please update it from admin area.": "⚠️ این نسخه هیدیفای قدیمی شده است. لطفا از پنل ادمین آن را به روزرسانی کنید"
-  },
+  "This version of hiddify panel is outdated. Please update it from admin area.": "⚠️ این نسخه هیدیفای قدیمی شده است. لطفا از پنل ادمین آن را به روزرسانی کنید",
   "Access Denied!": "دسترسی غیرمجاز",
-  "It seems that you have not setup the system completely": {
-    " <a class=\"btn btn-success\" href=\"%(quick_setup)s\">Click here</a> to complete setup.": "به نظر می رسد که شما سیستم را به طور کامل تنظیم نکرده‌اید. برای تکمیل تنظیمات <a class='btn btn-success' href='%(quick_setup)s'>اینجا</a> را کلیک کنید."
-  },
+  "It seems that you have not setup the system completely. <a class=\"btn btn-success\" href=\"%(quick_setup)s\">Click here</a> to complete setup.": "به نظر می رسد که شما سیستم را به طور کامل تنظیم نکرده‌اید. برای تکمیل تنظیمات <a class='btn btn-success' href='%(quick_setup)s'>اینجا</a> را کلیک کنید.",
   "Please understand that parent panel is under test and the plan and the condition of use maybe change at anytime.": "لطفاً توجه داشته باشید که پنل مادر در حال آزمایش است و طرح و شرایط استفاده ممکن است در هر زمان تغییر کند.",
   "It seems that you are using default domain (%(domain)s) which is not recommended.": "به نظر می‌رسد شما درحال استفاده از دامنه پیش فرض (<span class='ltr d-inline-block'>%(domain)s</span>) هستید؛ این کار توصیه نمی‌شود. لطفا از بخش دامنه‌ها آن را حذف یا تغییر دهید.",
-  "It seems that you have not created any users yet": {
-    " Default user link: %(default_link)s": "شما هنوز هیچ کاربری ایجاد نکرده اید. لینک صفحه کاربری پیشفرض: %(default_link)s"
-  },
+  "It seems that you have not created any users yet. Default user link: %(default_link)s": "شما هنوز هیچ کاربری ایجاد نکرده اید. لینک صفحه کاربری پیشفرض: %(default_link)s",
   "serverssh": {
     "password-login": {
       "warning": "سرور شما به دلیل فعال بودن احراز هویت رمز عبور در SSH، در معرض سوء استفاده قرار دارد. برای امنیت بخشیدن به سرور خود، لطفاً به مکانیزم احراز هویت مبتنی بر کلید سوئیچ کنید و احراز هویت رمز عبور را غیرفعال نمایید. <a href='https://github.com/hiddify/Hiddify-Manager/wiki/%D8%BA%DB%8C%D8%B1%D9%81%D8%B9%D8%A7%D9%84-%DA%A9%D8%B1%D8%AF%D9%86-%D8%AF%D8%B3%D8%AA%D8%B1%D8%B3%DB%8C-%D8%A8%D8%A7-%D9%BE%D8%B3%D9%88%D8%B1%D8%AF'>بیشتر بخوانید... </a>"
@@ -778,14 +765,12 @@
     }
   },
   "Direct mode means you want to use your server directly (for usual use), CDN means that you use your server on behind of a CDN provider.": "⬅️ حالت <b>Direct</b>: اگر دامنه خود را روی ارائه دهنده DNS خود در حالت فقط DNS تنظیم کرده اید، این حالت را انتخاب کنید. (CDN یا پروکسی خاموش باشد.) <br>\n🔀 حالت <b>CDN</b>: اگر از دامنه خود در ارائه دهنده CDN استفاده می کنید، این حالت را انتخاب کنید. (حالت پروکسی روشن باشد.)<br>\n☑️ حالت <b>Auto CDN IP</b>: مانند حالت CDN است با این تفاوت که اتوماتیک آی پی مناسب بر اساس  آی پی ارائه شده توسط ircf.space ست می‌شود. در Auto_CDN_IP به جای دامنه IP ثبت می شود<br>\n♾️ حالت <b>Relay</b>: اگر از یک یا چند سرور واسطه استفاده می کنید، این حالت را انتخاب کنید. <a href='https://github.com/hiddify/hiddify-config/discussions/129' target='_blank'>بیشتر بخوانید.</a> \n<br>\n🆎 حالت <b>Fake</b>: اگر می‌خواهید از یک دامنه جعلی (مانند Soft98.ir) برای دور زدن پروکسی لیست سفید SNI استفاده کنید، این حالت را انتخاب کنید. (توصیه نمیشود.)\n<br>\n🔂 حالت <b>Reality</b>: برای استفاده از پروتکل ریالیتی از این حالت استفاده نمایید. با استفاده از این حالت این امکان وجود دارد که چندین دامنه مختلف در ریالتی داشته باشید.",
-  "You can select the configs with which domains show be shown in the user area": {
-    " If you select all, automatically, all the new domains will be added for each users.": "مشخص کنید کاربرانی که با این دامنه، پنل کاربری را مشاهده می‌کنند، کانفیگ‌های مربوط به کدام دامنه‌ها را مشاهده کنند.\n<br>\nپیشنهاد: برای یک دامنه با IP فیلتر نشده و متفاوت با بقیه، همه دامنه های دیگر (به جز دامنه فعلی) را انتخاب کنید. در نتیجه از آنجایی که از این IP برای فیلترشکن استفاده نمی‌شود و یک وبسایت ساده است، این دامنه و آی پی هرگز مسدود نمی‌شود و کاربران شما به راحتی می توانند پروفایل های جدید را به روز کنند."
-  },
+  "You can select the configs with which domains show be shown in the user area. If you select all, automatically, all the new domains will be added for each users.": "مشخص کنید کاربرانی که با این دامنه، پنل کاربری را مشاهده می‌کنند، کانفیگ‌های مربوط به کدام دامنه‌ها را مشاهده کنند.\n<br>\nپیشنهاد: برای یک دامنه با IP فیلتر نشده و متفاوت با بقیه، همه دامنه های دیگر (به جز دامنه فعلی) را انتخاب کنید. در نتیجه از آنجایی که از این IP برای فیلترشکن استفاده نمی‌شود و یک وبسایت ساده است، این دامنه و آی پی هرگز مسدود نمی‌شود و کاربران شما به راحتی می توانند پروفایل های جدید را به روز کنند.",
   "The name shown in the configs for this domain.": "نامی که در کانفیگ‌ها به جای دامنه نمایش داده شود",
   "This can be used for giving your users a permanent non blockable links.": "این می تواند برای دادن لینک های غیرقابل مسدود و دائمی به کاربران شما استفاده شود.",
-  "gRPC is a H2 based protocol": {
-    " Maybe it is faster for you!": "gRPC ℹ️ یک پروتکل مبتنی بر H2 است. شاید برای شما سریعتر باشد!"
-  },
+  "gRPC is a H2 based protocol. Maybe it is faster for you!": "gRPC ℹ️ یک پروتکل مبتنی بر H2 است. شاید برای شما سریعتر باشد!",
+  "Should be a valid domain": "",
+  "Invalid IP or domain": "",
   "Invalid REALITY hostnames": "نام‌های میزبان REALITY نامعتبر است",
   "Only for sublink?": "🌍 استفاده فقط برای لینک کانفیگ ها (سابسکریپشن)",
   "Show Domains": "نمایش تنظیمات دامنه ها:",
@@ -795,18 +780,23 @@
   "All": "همه",
   "You have used this domain in: ": "شما از این دامنه در بخش زیر استفاده کرده اید: ",
   "Couldn't find your ip addresses": "آدرس های IP شما پیدا نشد",
+  "Can not connect to Cloudflare.": "",
+  "Using alias with special charachters may cause problem in some clients like FairVPN.": "",
   "Domain is not REALITY friendly!": "دامنه سازگار با REALITY نیست!",
   "REALITY Fallback domain is not compaitble with server names!": "دامنه بازگشتی REALITY با نام سرور سازگار نیست!",
   "Error in auto cdn format": "⚠️ خطا در ورود IP ها به صورت دستی",
   "node": {
     "name": {
-      "label": "نام گره"
+      "label": "نام گره",
+      "dscr": ""
     },
     "mode": {
-      "label": "حالت گره"
+      "label": "حالت گره",
+      "dscr": ""
     },
     "uuid": {
-      "label": "UUID گره"
+      "label": "UUID گره",
+      "dscr": ""
     }
   },
   "Remote nodes are not supported yet!": "گره های راه دور هنوز پشتیبانی نمی شوند!",
@@ -825,6 +815,8 @@
   },
   "Iran": "🇮🇷 ایران",
   "China": "🇨🇳 چین",
+  "config.Invalid domain": "خطا! دامنه نامعتبر! فرمت دامنه باید مثل www.google.com باشد.",
+  "config.Domain already used": "دامنه در بخش دامنه‌ها وجود دارد. از دامنه دیگری استفاده کنید.",
   "Domain (%(domain)s)-> IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode": "دامنه (%(domain)s)-> IP=%(domain_ip)s با آی‌پی شما: ip=%(server_ip)s همخوانی ندارد. در حالت مستقیم (Direct Mode) این مورد الزامی است.",
   "Port is already used! in": "پورت قبلا استفاده شده است در",
   "ProxyPath is already used! use different proxy path": "ProxyPath قبلاً استفاده شده است! از مسیرهای مختلف پروکسی استفاده کنید",
@@ -845,6 +837,13 @@
     }
   },
   "Invalid admin link": "لینک ادمین نامعتبر است",
+  "config.Invalid telegram bot token": "توکن ربات تلگرام نامعتبر است",
+  "config.Invalid brand link": "لینک پشتیبانی نامعتبر است. لطفا لینک را با فرمت معتبر وارد کنید.",
+  "config.invalid uuid": "رمز UUID نامعتبر است. به عنوان مثال: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6",
+  "config.Invalid proxy path": "مسیر پروکسی نامعتبر است. باید رشته متن asci باشد. ( شامل a-z A-Z 0-9)",
+  "config.Invalid port": "پورت نامعتبر است. اعداد باید با کاما از هم جدا شود، مثلاً 1000,1001",
+  "config.Invalid! The pattern is number-number": "⚠️ پیکربندی نامعتبر است! الگوی عدد-عدد است",
+  "config.Invalid! it should be a number only": "⚠️ پیکربندی نامعتبر است! این باید فقط یک عدد باشد",
   "Reset package days": "📆 ریست زمان شروع بسته کاربر",
   "Reset package usage": "⏳ ریست حجم مصرفی کاربر",
   "Reset every month": "ماهانه",
@@ -855,9 +854,7 @@
   "Max IPs": "حداکثر IP",
   "Enable": "❇️ فعال",
   "Add some text that is only visible to you.": "در این قسمت یادداشتی اضافه کنید. (این یادداشت فقط برای شما قابل نمایش است.)",
-  "Define the user mode": {
-    " Should the usage reset every month?": "حالت کاربر را تعریف کنید. کاربر غیرفعال (Disable) یا ریست حجم کاربر را مشخص کنید: (عدم ریست، ماهانه، هفتگی یا روزانه)"
-  },
+  "Define the user mode. Should the usage reset every month?": "حالت کاربر را تعریف کنید. کاربر غیرفعال (Disable) یا ریست حجم کاربر را مشخص کنید: (عدم ریست، ماهانه، هفتگی یا روزانه)",
   "If monthly is enabled, the usage will be reset after 30 days from this date.": "اگر گزینه ماهانه فعال باشد، وقتی این عدد به ۳۰ برسد حجم کاربر ریست می‌شود (برای هفتگی و روزانه این عدد ۷ و ۱ است)",
   "From when the user package will be started? Empty for start from first connection": "از چه زمانی پکیج کاربر محاسبه شود؟ برای محاسبه از اولین اتصال خالی بگذارید",
   "How many days this package should be available?": "این بسته چند روزه است؟",
@@ -892,44 +889,38 @@
   "Domain": "دامنه",
   "Edit Proxy Names": "✏️ ویرایش پروکسی‌ها",
   "Save Link": "این لینک را در محلی ذخیره نمایید.",
-  "Please note that your panel can be accessed only via <a href=\"%(adminlink)s\" class=\"btn btn-primary copy-link\">%(adminlink)s</a>": {
-    " Please save this link.": "توجه داشته باشید که تنها از طریق لینک زیر  می‌توانید به پنل مدیریت دسترسی داشته باشید. لطفا این لینک را کپی و برای استفاده‌های بعدی ذخیره نمایید.\n\n<p class='ltr'>\n<a href='%(adminlink)s' class='btn btn-secondary copy-link'><i class='fa-solid fa-copy'></i></a>\n<a href='%(adminlink)s' class='copy-link' style='word-break: break-all;'>%(adminlink)s</a></p>"
-  },
+  "Please note that your panel can be accessed only via <a href=\"%(adminlink)s\" class=\"btn btn-primary copy-link\">%(adminlink)s</a>. Please save this link.": "توجه داشته باشید که تنها از طریق لینک زیر  می‌توانید به پنل مدیریت دسترسی داشته باشید. لطفا این لینک را کپی و برای استفاده‌های بعدی ذخیره نمایید.\n\n<p class='ltr'>\n<a href='%(adminlink)s' class='btn btn-secondary copy-link'><i class='fa-solid fa-copy'></i></a>\n<a href='%(adminlink)s' class='copy-link' style='word-break: break-all;'>%(adminlink)s</a></p>",
   "Please wait ": "لطفا صبر کنید",
   "log": "📄 لاگ",
   "Click here to see the complete log": "برای دیدن لاگ کامل، اینجا کلیک کنید.",
   "Success": "موفقیت",
-  "The action done successfully": {
-    " You can now leave this page.": "✅ عملیات با موفقیت انجام شد. اکنون می توانید این صفحه را ترک کنید"
-  },
-  "With selected": "با انتخاب شده‌ها",
-  "Are you sure you want to delete this record?": "آیا مطمئنید که می خواهید این رکورد را حذف کنید؟",
+  "The action done successfully. You can now leave this page.": "✅ عملیات با موفقیت انجام شد. اکنون می توانید این صفحه را ترک کنید",
+  "With selected": "با انتخاب شده ها",
+  "Are you sure you want to delete this record?": "آیا از حذف این موارد اطمینان دارید؟",
   "Filter": "فیلتر",
-  "Export": "خروجی",
+  "Export": "خروجی گرفتن",
   "%(placeholder)s": "%(placeholder)s",
   "Save": "ذخیره",
   "Root": "ریشه",
   "Sort by %(name)s": "مرتب سازی بر اساس %(name)s",
-  "Rename File": "تغییر نام فایل",
-  "Are you sure you want to delete \\'%(name)s\\' recursively?": "آیا مطمئنید که می خواهید \\'%(name)s\\' را به صورت بازگشتی حذف کنید؟",
-  "Are you sure you want to delete \\'%(name)s\\'?": "آیا مطمئنید که می خواهید \\'%(name)s\\' را حذف کنید؟",
+  "Rename File": "تغییر نام پرونده",
+  "Are you sure you want to delete \\'%(name)s\\' recursively?": "آیا از حذف محتویات \\'%(name)s\\' اطمینان دارید؟",
+  "Are you sure you want to delete \\'%(name)s\\'?": "آیا از حذف  \\'%(name)s\\'اطمینان دارید؟",
   "Upload File": "آپلود فایل",
-  "Create Directory": "دایرکتوری ایجاد کنید",
-  "Please select at least one file.": "لطفا حداقل یک فایل را انتخاب کنید.",
+  "Create Directory": "ایجاد پوشه",
+  "Please select at least one file.": "حداقل یک فایل انتخاب کنید",
   "Edit": "ویرایش",
   "Delete?": "حذف؟",
-  "New": "جدید",
-  "Add": "افزودن",
-  "Apply": "انجام",
-  "Reset Filters": "بازنشانی فیلترها",
-  "items": "آیتم‌ها",
-  "Create New Record": "رکورد جدید ایجاد کنید",
-  "Select all records": "همه رکوردها را انتخاب کنید",
-  "Select record": "رکورد را انتخاب کنید",
-  "Please select at least one record.": "لطفا حداقل یک رکورد را انتخاب کنید.",
-  "In this section, you can add your domain": {
-    " You need to add at least one domain in direct mode.": "1️⃣ در این قسمت می توانید دامنه خود را اضافه کنید.\n<br>\n2️⃣اگر می‌خواهید احتمال داشتن IP کثیف را کاهش دهید، می‌توانید چندین سرور میانی اضافه کنید <a href='https://github.com/hiddify/hiddify-config/discussions/129'>بیشتر بخوانید</a>.\n<br>\n3️⃣ اگر IPv6 یا IPv4 های متعددی در پنل خود دارید، باید دامنه مرتبط با آنها را از طریق relay اضافه کنید."
-  },
+  "New": "تازه",
+  "Add": "اضافه",
+  "Apply": "اعمال",
+  "Reset Filters": "برگرداندن فیلتر ها به حالت اول",
+  "items": "",
+  "Create New Record": "ایجاد رکورد جدید",
+  "Select all records": "انتخاب همه رکوردها",
+  "Select record": "انتخاب رکورد",
+  "Please select at least one record.": "حداقل یک پوشه انتخاب کنید",
+  "In this section, you can add your domain. You need to add at least one domain in direct mode.": "1️⃣ در این قسمت می توانید دامنه خود را اضافه کنید.\n<br>\n2️⃣اگر می‌خواهید احتمال داشتن IP کثیف را کاهش دهید، می‌توانید چندین سرور میانی اضافه کنید <a href='https://github.com/hiddify/hiddify-config/discussions/129'>بیشتر بخوانید</a>.\n<br>\n3️⃣ اگر IPv6 یا IPv4 های متعددی در پنل خود دارید، باید دامنه مرتبط با آنها را از طریق relay اضافه کنید.",
   "Send Message to User's Telegram": "📣 ارسال پیام به تلگرام کاربر",
   "All Users": "تمام کاربران",
   "Expired Users": "کاربران منقضی شده",
@@ -937,9 +928,7 @@
   "Offline more than 1 hour": "آفلاین بیش از 1 ساعت",
   "Offline more than 1 day": "آفلاین بیش از 1 روز",
   "Offline more than 1 week": "آفلاین بیش از 1 هفته",
-  "User usage will be updated every 6 minutes": {
-    " To update it now click <a href=\"%(link)s\"\n        class=\"btn btn-info\">here</a>": "استفاده کاربر هر 6 دقیقه یکبار به روز می شود. برای به روز رسانی آن اکنون <a href=\"%(link)s\"<inlang-LineFeed>class=\"btn btn-info\"&gt;اینجا را</a> کلیک کنید"
-  },
+  "User usage will be updated every 6 minutes. To update it now click <a href=\"%(link)s\"\n        class=\"btn btn-info\">here</a>": "استفاده کاربر هر 6 دقیقه یکبار به روز می شود. برای به روز رسانی آن اکنون <a href=\"%(link)s\"<inlang-LineFeed>class=\"btn btn-info\"&gt;اینجا را</a> کلیک کنید",
   "Please type your message to send to the telegram:": "✏️  لطفا پیامی را که میخواهید با ربات تلگرام ارسال کنید بنویسید:",
   "Sending": "در حال ارسال...",
   "The message has been sent.": "پیام ارسال شده است.",
@@ -967,7 +956,8 @@
       "description": "توضیحات HiddifyNG"
     },
     "hiddify-clash-android": {
-      "title": "Hiddify Clash"
+      "title": "Hiddify Clash",
+      "description": ""
     },
     "foxray": {
       "title": "FoXray",
@@ -990,30 +980,26 @@
       "description": "توضیحات Stash"
     },
     "hiddify-clash-desktop": {
-      "title": "Hiddify Clash"
+      "title": "Hiddify Clash",
+      "description": ""
     },
     "nekobox": {
-      "title": "NekoBox"
+      "title": "NekoBox",
+      "description": ""
     }
   },
   "Join our Hiddify Telegram channel to get the latest updates on Hiddify.": "در کانال تلگرام هیدیفای عضو شوید تا از آخرین آپدیت‌های ما مطلع شوید.",
   "[Admin only visible message:] You can change this message from settings": "[پیام اختصاصی ادمین]: قابل تنظیم از طریق تنظیمات.",
-  "Hooray 🎉 🎉 🎉 \nWelcome to hiddifybot": {
-    "\nStart by clicking the link on the panel or entering your UUID.": "هورا !!! 🎉 🎉 🎉 \nبه ربات هیدیفای خوش آمدید.\nبرای شروع روی لینک مربوطه در پنل کلیک نموده یا UUID خود را وارد کنید."
-  },
+  "Hooray 🎉 🎉 🎉 \nWelcome to hiddifybot.\nStart by clicking the link on the panel or entering your UUID.": "هورا !!! 🎉 🎉 🎉 \nبه ربات هیدیفای خوش آمدید.\nبرای شروع روی لینک مربوطه در پنل کلیک نموده یا UUID خود را وارد کنید.",
   "update": "به روز رسانی",
-  "Welcome to admin bot": {
-    " Choose your action": "به ربات ادمین خوش آمدید. عملیات مورد نظر را انتخاب کنید."
-  },
+  "Welcome to admin bot. Choose your action": "به ربات ادمین خوش آمدید. عملیات مورد نظر را انتخاب کنید.",
   "Create Package": "ایجاد بسته",
   "package size?": "حجم بسته",
   "Ok": "تایید",
   "package days?": "تعداد روز؟",
   "How many?": "چه تعداد؟",
   "Domain?": "دامنه؟",
-  "Please Wait.": {
-    ".": "لطفا صبر کنید..."
-  },
+  "Please Wait...": "لطفا صبر کنید...",
   "Finished": "تمام شد...",
   "Dear {}\n\nYour hiddify information is\nUUID: {}\nLast online date: {}\nExpire time: {}\nUsage class: {}\n": "{} عزیز\nاطلاعات اکانت شما در هیدیفای به شرح زیر است\nUUID : {}\nآخرین زمان آنلاین بودن : {}\nتاریخ انقضا : {}\nنوع مصرف : {}\n\n\nبا آرزوی موفقیت. 🎉 🎉 🎉 ",
   "Your hiddify instance information \nDomain: {} \nUsage limit: {} GB\nCurrent usage: {} GB\nExpires at: {} \nRemaining days: {} \n\n\n Happy using 🎉 🎉 🎉 \n": "اطلاعات اکانت هیدیفای شما\nدامنه : {} \nمقدار حجم مجاز : {} گیگابایت\nحجم مصرف شده : {} گیگابایت\nتاریخ انقضا : {} \nروزهای باقی ‌مانده : {} \n\n\nبا آرزوی موفقیت. 🎉 🎉 🎉 ",
@@ -1028,9 +1014,7 @@
   "copy": "کپی",
   "open": "باز کردن",
   "Link is changed!": "ℹ️ لینک تغییر کرد!",
-  "The page has been moved to a new link": {
-    " Please copy and save the new link.": "صفحه به لینک جدید منتقل شد. لطفا لینک جدید را کپی و ذخیره کنید."
-  },
+  "The page has been moved to a new link. Please copy and save the new link.": "صفحه به لینک جدید منتقل شد. لطفا لینک جدید را کپی و ذخیره کنید.",
   "all": "همه",
   "auto": "خودکار",
   "singbox: ssh": "SingBox: SSH",
@@ -1050,6 +1034,8 @@
   "android": "اندروید",
   "ios": "آی‌او‌اس",
   "desktop": "دسکتاپ",
+  "user.home.select os": "لطفا سیستم عامل خود را انتخاب کنید.",
+  "user.home.select tool": "لطفا یکی از موارد زیر را انتخاب کنید.",
   "QR code": "🧾 کیوآر کد",
   "Want to enjoy more with telegram?": "ℹ️ وصل کردن حساب کاربری به تلگرام",
   "Please connect your telegram account to the panel to be informed about latest news.": "لطفا اکانت تلگرام خود را به پنل متصل کنید تا از آخرین اخبار مطلع شوید.",
@@ -1058,9 +1044,7 @@
   "search": "جستجو",
   "Check again": "بررسی مجدد",
   "Turn of VPN": "فیلترشکن را خاموش کنید",
-  "You should visit this page without VPN": {
-    " Your country=%(your_country)s\nexpected=%(expected_country)s": "شما باید بدون VPN از این صفحه بازدید کنید کشور شما =%(your_country)s\nانتظار می رود=%(expected_country)s"
-  },
+  "You should visit this page without VPN. Your country=%(your_country)s\nexpected=%(expected_country)s": "شما باید بدون VPN از این صفحه بازدید کنید کشور شما =%(your_country)s\nانتظار می رود=%(expected_country)s",
   "Please connect your telegram accout to the panel to be informed about latest news.": "لطفا اکانت تلگرام خود را به پنل متصل کنید تا از آخرین وضعیت اشتراک خودتان مطلع شوید",
   "Click to Start Anti-Filter.": "<i class='fa-solid fa-caret-left'></i> کلیک برای اعمال فیلترشکن",
   "Unified link for all application.": "لینک یکسان برای همه برنامه‌ها",

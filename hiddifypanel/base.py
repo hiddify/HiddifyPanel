@@ -72,20 +72,7 @@ def create_app(*args, cli=False, **config):
     hiddifypanel.database.init_app(app)
     with app.app_context():
         init_db()
-
-    hiddifypanel.panel.common.init_app(app)
-    hiddifypanel.panel.common_bp.init_app(app)
-    hiddifypanel.panel.admin.init_app(app)
-    from hiddifypanel.panel import user
-    user.init_app(app)
-    hiddifypanel.panel.commercial.init_app(app)
-
-    app.config.update(config)  # Override with passed config
-    app.config['WTF_CSRF_CHECK_DEFAULT'] = False
-
-    # app.config['BABEL_TRANSLATION_DIRECTORIES'] = '/workspace/Hiddify-Server/hiddify-panel/src/translations.i18n'
-
-    # flaskbabel = FlaskBabel(app)
+ # flaskbabel = FlaskBabel(app)
 
     # @babel.localeselector
     def get_locale():
@@ -98,6 +85,20 @@ def create_app(*args, cli=False, **config):
             g.locale = auth.current_account.lang or hconfig(ConfigEnum.lang) or 'fa'
         return g.locale
     babel = Babel(app, locale_selector=get_locale)
+
+    hiddifypanel.panel.common.init_app(app)
+    hiddifypanel.panel.common_bp.init_app(app)
+
+    from hiddifypanel.panel import user, commercial, admin
+    admin.init_app(app)
+    user.init_app(app)
+    commercial.init_app(app)
+
+    app.config.update(config)  # Override with passed config
+    app.config['WTF_CSRF_CHECK_DEFAULT'] = False
+
+    # app.config['BABEL_TRANSLATION_DIRECTORIES'] = '/workspace/Hiddify-Server/hiddify-panel/src/translations.i18n'
+
     from flask_wtf.csrf import CSRFProtect
 
     csrf = CSRFProtect(app)
@@ -115,6 +116,7 @@ def create_app(*args, cli=False, **config):
         csrf.protect()
 
     app.jinja_env.globals['get_locale'] = get_locale
+
     hiddifypanel.panel.cli.init_app(app)
     return app
 
