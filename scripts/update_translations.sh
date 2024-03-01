@@ -11,7 +11,7 @@ def print_enum(en):
 print_enum(hiddifypanel.models.DomainType)
 print_enum(hiddifypanel.models.UserMode)
 " >hiddifypanel/templates/fake.html
-pybabel extract -F babel.cfg -o messages.pot ../hiddifypanel
+pybabel extract -F babel.cfg -k lazy_gettext gettext _ __ -o messages.pot ../hiddifypanel
 
 function update_json_po() {
   lang=$1

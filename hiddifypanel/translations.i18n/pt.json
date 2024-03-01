@@ -745,7 +745,11 @@
   "Please understand that parent panel is under test and the plan and the condition of use maybe change at anytime.": "Por favor, entenda que o painel principal está em teste e o plano e as condições de uso podem mudar a qualquer momento.",
   "It seems that you are using default domain (%(domain)s) which is not recommended.": "Parece que você está usando o domínio padrão (%(domain)s), o que não é recomendado. Por favor, altere ou remova-o da seção de domínio.",
   "It seems that you have not created any users yet. Default user link: %(default_link)s": "Parece que você ainda não criou nenhum usuário. link de usuário padrão: %(default_link)s",
-  "ssh": "SSH",
+  "serverssh": {
+    "password-login": {
+      "warning": ""
+    }
+  },
   "child has been removed!": "Child removido",
   "domain": {
     "description": "Por favor, preencha este campo com cuidado e corretamente. Caso contrário, os proxies terão problemas. Visite <a href='https://github.com/hiddify/hiddify-config/wiki/راهنمای-تنظیم-دامنه-و-نهایی-کردن-نصب#آموزش-ساخت-زیردامنه'> Ajuda</a> para aprenda como criar um subdomínio.",
@@ -983,6 +987,7 @@
   "all": "Todos",
   "auto": "Auto",
   "singbox: ssh": "caixa de som: ssh",
+  "ssh": "SSH",
   "Please select one of the following applications:": "Selecione um dos seguintes aplicativos:\n<br />",
   "download": "Download direto",
   "install from google play": "Google Play",

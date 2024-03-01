@@ -745,7 +745,11 @@
   "Please understand that parent panel is under test and the plan and the condition of use maybe change at anytime.": "لطفاً توجه داشته باشید که پنل مادر در حال آزمایش است و طرح و شرایط استفاده ممکن است در هر زمان تغییر کند.",
   "It seems that you are using default domain (%(domain)s) which is not recommended.": "به نظر می‌رسد شما درحال استفاده از دامنه پیش فرض (<span class='ltr d-inline-block'>%(domain)s</span>) هستید؛ این کار توصیه نمی‌شود. لطفا از بخش دامنه‌ها آن را حذف یا تغییر دهید.",
   "It seems that you have not created any users yet. Default user link: %(default_link)s": "شما هنوز هیچ کاربری ایجاد نکرده اید. لینک صفحه کاربری پیشفرض: %(default_link)s",
-  "ssh": "SSH",
+  "serverssh": {
+    "password-login": {
+      "warning": ""
+    }
+  },
   "child has been removed!": "پنل زیر مجموعه حذف شد",
   "domain": {
     "description": "این فیلد باید با دقت و به درستی تکمیل شود. در غیر اینصورت پروکسی ها به مشکل بر خواهند خورد. لطفا برای دیدن راهنمای ساخت زیردامنه \n<a href='https://github.com/hiddify/hiddify-config/wiki/راهنمای-تنظیم-دامنه-و-نهایی-کردن-نصب#آموزش-ساخت-زیردامنه'>این آدرس </a>\nرا ببینید.",
@@ -983,6 +987,7 @@
   "all": "همه",
   "auto": "خودکار",
   "singbox: ssh": "SingBox: SSH",
+  "ssh": "SSH",
   "Please select one of the following applications:": "📍 لطفا یکی از برنامه های زیر را انتخاب کنید:\n<br />\n<br />",
   "download": "دانلود مستقیم",
   "install from google play": "<i class='fa-brands fa-google-play'></i> گوگل‌پلی",

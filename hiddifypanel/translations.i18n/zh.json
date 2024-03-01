@@ -745,7 +745,11 @@
   "Please understand that parent panel is under test and the plan and the condition of use maybe change at anytime.": "请理解，家长面板正在测试中，计划和使用条件可能随时发生变化。",
   "It seems that you are using default domain (%(domain)s) which is not recommended.": "看来您正在使用默认域（％（domain）s），这是不推荐的。请从域部分更改或删除它。",
   "It seems that you have not created any users yet. Default user link: %(default_link)s": "您似乎还没有创建任何用户。默认用户链接：%(default_link)s",
-  "ssh": "SSH",
+  "serverssh": {
+    "password-login": {
+      "warning": ""
+    }
+  },
   "child has been removed!": "孩子已被移走！",
   "domain": {
     "description": "请仔细、正确地填写此字段。否则，代理将会遇到问题。请访问<a href='https://github.com/hiddify/hiddify-config/wiki/??????-??????-??-??????-??????-??????#??????-??????????????????>帮助</a>了解如何创建子域。",
@@ -983,6 +987,7 @@
   "all": "全部",
   "auto": "汽车",
   "singbox: ssh": "歌手盒：SSH",
+  "ssh": "SSH",
   "Please select one of the following applications:": "📍请选择以下应用程序之一：\n<br/>\n<br/>",
   "download": "直接下载",
   "install from google play": "<i class='fa-brands fa-google-play'></i> Google Play",

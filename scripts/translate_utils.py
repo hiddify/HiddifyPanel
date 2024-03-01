@@ -74,7 +74,7 @@ def update_json_from_po(json_path, po_path):
 
     json_data = flatten(loadI18N(json_path))
 
-    res = {k: json_data.get(k, "") for k in translations}
+    res = {k: json_data.get(k, k if "/en.json" in json_path else "") for k in translations}
     res = convert_to_nested(res)
     with open(json_path, 'w', encoding='utf-8') as json_file:
         json.dump(res, json_file, ensure_ascii=False, indent=2)

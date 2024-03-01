@@ -70,7 +70,7 @@ class Dashboard(FlaskView):
             hutils.flask.flash((_('It seems that you have not created any users yet. Default user link: %(default_link)s',
                                default_link=hiddify.get_html_user_link(def_user, d))), 'secondary')  # type: ignore
         if hutils.network.is_ssh_password_authentication_enabled():
-            hutils.flask.flash(_('ssh.password-login.warning'), "warning")  # type: ignore
+            hutils.flask.flash(_('serverssh.password-login.warning'), "warning")  # type: ignore
 
     # except:
     #     hutils.flask.flash((_('Error!!!')),'info')
