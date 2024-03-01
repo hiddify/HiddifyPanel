@@ -6,7 +6,7 @@
 
 <div align=center>
     
-[![inlang status badge](https://inlang.com/badge?url=github.com/hiddify/hiddify-next)](https://inlang.com/editor/github.com/hiddify/hiddify-next?ref=badge)
+[![inlang status badge](https://inlang.com/badge?url=github.com/hiddify/hiddifypanel)](https://inlang.com/editor/github.com/hiddify/hiddifypanel?ref=badge)
 </div>
 
 Improve existing languages or add new ones by manually editing the JSON files located in `/assets/translations` or by using the [Inlang online editor](https://inlang.com/editor/github.com/hiddify/hiddifypanel).

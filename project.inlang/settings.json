@@ -16,7 +16,7 @@
 	  "https://cdn.jsdelivr.net/npm/@inlang/message-lint-rule-missing-translation@1/dist/index.js"
 	],
 	"plugin.inlang.i18next": {
-	  "pathPattern": "./hiddifypanel/translations.i18n/{languageTag}.i18n.json",
+	  "pathPattern": "./hiddifypanel/translations.i18n/{languageTag}.json",
 	  "variableReferencePattern": [
 		"@:"
 	  ]
