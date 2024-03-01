@@ -77,11 +77,11 @@ class User(BaseAccount):
     max_ips = db.Column(db.Integer, default=1000, nullable=False)
     details = db.relationship('UserDetail', cascade="all,delete", backref='user', lazy='dynamic',)
     enable = db.Column(db.Boolean, default=True, nullable=False)
-    ed25519_private_key = db.Column(db.String(500))
-    ed25519_public_key = db.Column(db.String(100))
-    wg_pk = db.Column(db.String(50))
-    wg_pub = db.Column(db.String(50))
-    wg_psk = db.Column(db.String(50))
+    ed25519_private_key = db.Column(db.String(500), default="")
+    ed25519_public_key = db.Column(db.String(100), default="")
+    wg_pk = db.Column(db.String(50), default="")
+    wg_pub = db.Column(db.String(50), default="")
+    wg_psk = db.Column(db.String(50), default="")
 
     @property
     def role(self) -> Role | None:

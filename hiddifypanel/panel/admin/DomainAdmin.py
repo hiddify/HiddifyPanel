@@ -26,6 +26,8 @@ from flask import current_app
 
 
 class DomainAdmin(AdminLTEModelView):
+    edit_modal = False
+    create_modal = False
     column_hide_backrefs = False
 
     list_template = 'model/domain_list.html'

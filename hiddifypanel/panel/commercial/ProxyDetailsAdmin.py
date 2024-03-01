@@ -15,6 +15,7 @@ from flask import current_app
 
 
 class ProxyDetailsAdmin(AdminLTEModelView):
+
     column_hide_backrefs = True
     can_create = False
     form_excluded_columns = ['child']
@@ -38,9 +39,9 @@ class ProxyDetailsAdmin(AdminLTEModelView):
         self.session.commit()
         flash(_('%(count)s records were successfully enabled.', count=count), 'success')
         hiddify.get_available_proxies.invalidate_all()
-    # column_editable_list = ['name', 'enable']
+    column_editable_list = ['name']
     # list_template = 'model/domain_list.html'
-    # edit_modal = True
+
     # form_overrides = {'work_with': Select2Field}
 
     def after_model_change(self, form, model, is_created):

@@ -18,22 +18,20 @@ from hiddifypanel.drivers import user_driver
 from hiddifypanel.panel import hiddify, custom_widgets
 from hiddifypanel.auth import login_required
 from hiddifypanel import hutils
-from flask_admin.form import SecureForm
 
 
 class UserAdmin(AdminLTEModelView):
-    form_base_class = SecureForm
 
-    column_sortable_list = ["name", "current_usage", 'mode', "remaining_days", "comment", 'last_online', "uuid", 'remaining_days']
+    column_sortable_list = ["enable", "name", "current_usage", 'mode', "remaining_days", "comment", 'last_online', "uuid", 'remaining_days']
     column_searchable_list = [("uuid"), "name"]
-    column_list = ["name", "UserLinks", "current_usage", "remaining_days", "comment", 'last_online', 'mode', 'admin', "uuid"]
+    column_list = ["enable", "name", "UserLinks", "current_usage", "remaining_days", "comment", 'last_online', 'mode', 'admin', "uuid"]
     form_extra_fields = {
         'reset_days': SwitchField(_("Reset package days")),
         'reset_usage': SwitchField(_("Reset package usage")),
         # 'disable_user': SwitchField(_("Disable User"))
     }
     list_template = 'model/user_list.html'
-
+    column_editable_list = ["comment", "usage_limit", "package_days"]
     form_columns = ["name", "comment", "usage_limit", "reset_usage", "package_days", "reset_days", "mode", "uuid", "enable",]
     # form_excluded_columns = ['current_usage', 'monthly', 'telegram_id', 'last_online', 'expiry_time', 'last_reset_time', 'current_usage_GB',
     #  'start_date', 'added_by', 'admin', 'details', 'max_ips', 'ed25519_private_key', 'ed25519_public_key', 'username', 'password']
@@ -132,12 +130,12 @@ class UserAdmin(AdminLTEModelView):
                 extra = f'<button class="btn hbtn bg-h-grey btn-xs disabled"><i class="fa-solid fa-paper-plane"></i></button> '
 
         link = ''
-        if model.is_active:
-            link = '<i class="fa-solid fa-circle-check text-success"></i> '
-        elif len(model.ips):
-            link = '<i class="fa-solid fa-users-slash text-danger" title="{_("Too many Connected IPs")}"></i>'
-        else:
-            link = '<i class="fa-solid fa-circle-xmark text-danger"></i> '
+        # if model.is_active:
+        #     link = '<i class="fa-solid fa-circle-check text-success"></i> '
+        # elif len(model.ips):
+        #     link = '<i class="fa-solid fa-users-slash text-danger" title="{_("Too many Connected IPs")}"></i>'
+        # else:
+        #     link = '<i class="fa-solid fa-circle-xmark text-danger"></i> '
 
         href = f'{hiddify.get_account_panel_link(model, request.host, is_https=True)}#{hutils.encode.url_encode(model.name)}'
 
@@ -251,13 +249,13 @@ class UserAdmin(AdminLTEModelView):
             hutils.flask.flash(('<div id="show-modal-donation"></div>'), ' d-none')
         if not re.match("^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$", model.uuid):
             raise ValidationError('Invalid UUID e.g.,' + str(uuid.uuid4()))
-        if form.reset_usage.data:
+        if hasattr(form, 'reset_usage') and form.reset_usage.data:
             model.current_usage_GB = 0
         # if model.telegram_id and model.telegram_id != '0' and not re.match(r"^[1-9]\d*$", model.telegram_id):
         #     raise ValidationError('Invalid Telegram ID')
         # if form.disable_user.data:
         #     model.mode=UserMode.disable
-        if form.reset_days.data:
+        if hasattr(form, 'reset_days') and form.reset_days.data:
             model.start_date = None
         model.package_days = min(model.package_days, 10000)
         old_user = User.by_id(model.id)

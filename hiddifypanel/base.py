@@ -99,21 +99,21 @@ def create_app(*args, cli=False, **config):
 
     # app.config['BABEL_TRANSLATION_DIRECTORIES'] = '/workspace/Hiddify-Server/hiddify-panel/src/translations.i18n'
 
-    from flask_wtf.csrf import CSRFProtect
+    # from flask_wtf.csrf import CSRFProtect
 
-    csrf = CSRFProtect(app)
+    # csrf = CSRFProtect(app)
 
-    @app.before_request
-    def check_csrf():
-        if "/admin/user/" in request.base_url:
-            return
-        if "/admin/domain/" in request.base_url:
-            return
-        if "/admin/actions/" in request.base_url:
-            return
-        if "/api/" in request.base_url:
-            return
-        csrf.protect()
+    # @app.before_request
+    # def check_csrf():
+    # if "/admin/user/" in request.base_url:
+    #     return
+    # if "/admin/domain/" in request.base_url:
+    #     return
+    # if "/admin/actions/" in request.base_url:
+    #     return
+    # if "/api/" in request.base_url:
+    #     return
+    # csrf.protect()
 
     app.jinja_env.globals['get_locale'] = get_locale
 

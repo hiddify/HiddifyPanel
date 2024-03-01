@@ -1,8 +1,13 @@
 from flask_admin.contrib.sqla import ModelView
 from hiddifypanel import auth
+from flask_admin.form import SecureForm
 
 
 class AdminLTEModelView(ModelView):
+    form_base_class = SecureForm
+    edit_modal = False
+    create_modal = False
+
     list_template = 'hiddify-flask-admin/list.html'
     create_template = 'flask-admin/model/create.html'
     edit_template = 'flask-admin/model/edit.html'
