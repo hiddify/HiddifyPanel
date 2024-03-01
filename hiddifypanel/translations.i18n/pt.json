@@ -398,9 +398,37 @@
       "label": "Caminho das Meias de Sombra",
       "description": "Caminho Shadowsocks nos Links"
     },
+    "dbvalues": {
+      "label": "",
+      "description": ""
+    },
+    "create_easysetup_link": {
+      "label": "",
+      "description": ""
+    },
     "wireguard_enable": {
       "label": "Habilitar WireGuard",
       "description": "WireGuard é um protocolo baseado em UDP.\n\n⚠️ A contabilidade ainda não é suportada."
+    },
+    "wireguard_port": {
+      "label": "",
+      "description": ""
+    },
+    "wireguard_ipv6": {
+      "label": "",
+      "description": ""
+    },
+    "wireguard_ipv4": {
+      "label": "",
+      "description": ""
+    },
+    "wireguard_private_key": {
+      "label": "",
+      "description": ""
+    },
+    "wireguard_public_key": {
+      "label": "",
+      "description": ""
     },
     "wireguard_noise_trick": {
       "label": "Truque de ruído WireGuard",
@@ -577,31 +605,17 @@
     "shadowsocks": {
       "label": "Meias Sombrias",
       "description": "Shadowsocks é um proxy de túnel rápido que ajuda a contornar firewalls."
-    },
-    "Invalid domain": "Erro! Domínio inválido. O formato do domínio é www.google.com",
-    "Domain already used": "O domínio existe na seção de domínios. Usar outro domínio",
-    "Invalid telegram bot token": "Token do bot telegram inválido",
-    "Invalid brand link": "Link inválido. deve estar neste formato: (https ou http://example.com)",
-    "invalid uuid": "Secret UUID inválido. exemplo: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6",
-    "Invalid proxy path": "Caminho de proxy inválido. Deve ser uma string ASCI (a-z A-Z 0-9)",
-    "Invalid port": "Porta inválida. deve ser inteiro separado por vírgula, por exemplo 2052,2053",
-    "Invalid! The pattern is number-number": "⚠️ Configuração inválida! O padrão é número-número",
-    "Invalid! it should be a number only": "⚠️ Configuração inválida! Deve ser apenas um número"
+    }
   },
   "Error! auto cdn ip can not be find, please contact admin.": "Erro no Auto CDN IP! Não pode ser encontrado, entre em contato com o administrador",
+  "Owner can not be deleted!": "",
   "This domain does not exist in the panel!": "Este Domínio não existe no Painel!",
   "Domain can not be resolved! there is a problem in your domain": "O domínio não pode ser resolvido! Há um problema em seu domínio. Verifique as configurações do seu Domínio.",
-  "selected domain for REALITY is not in the same ASN": {
-    " To better use of the protocol, it is better to find a domain in the same ASN.": "O domínio selecionado para REALITY não está no mesmo ASN.\nPara melhor aproveitamento do Protocolo, é melhor encontrar um Domínio com o mesmo ASN"
-  },
+  "selected domain for REALITY is not in the same ASN. To better use of the protocol, it is better to find a domain in the same ASN.": "O domínio selecionado para REALITY não está no mesmo ASN.\nPara melhor aproveitamento do Protocolo, é melhor encontrar um Domínio com o mesmo ASN",
   "User activated!": "Usuário ativado",
   "Package ended!": "Package encerrado",
-  "Your domains changed": {
-    " Please do not forget to copy admin links, otherwise you can not access to the panel anymore.": "⚠️ Seus domínios mudaram. por favor, não se esqueça de copiar os links do administrador, caso contrário, você não poderá mais acessar o painel"
-  },
-  "Success! Please wait around 4 minutes to make sure everything is updated": {
-    " During this time, please save your proxy links which are:": "Aguarde cerca de 5 minutos para garantir que tudo esteja atualizado. durante esse período, copie e salve seus links de proxy, que são:"
-  },
+  "Your domains changed. Please do not forget to copy admin links, otherwise you can not access to the panel anymore.": "⚠️ Seus domínios mudaram. por favor, não se esqueça de copiar os links do administrador, caso contrário, você não poderá mais acessar o painel",
+  "Success! Please wait around 4 minutes to make sure everything is updated. During this time, please save your proxy links which are:": "Aguarde cerca de 5 minutos para garantir que tudo esteja atualizado. durante esse período, copie e salve seus links de proxy, que são:",
   "see the log in the bellow screen": "📑 Veja o log na tela abaixo",
   "Success! Please wait around 5 minutes to make sure everything is updated.": "✔️ Sucesso! Aguarde cerca de 5 minutos para garantir que tudo esteja atualizado",
   "actions": "Ações",
@@ -616,7 +630,11 @@
     "home": {
       "title": "Ocultar",
       "tool": {
-        "all-configs": "Todas as configurações"
+        "all-configs": "Todas as configurações",
+        "doh": {
+          "title": "",
+          "help": ""
+        }
       },
       "allconfig": {
         "name": "Nome e Link",
@@ -699,9 +717,7 @@
       "link": {
         "success-copy": "Link copiado para a área de transferência.",
         "manual-copy": "Copiar para a área de transferência: Ctrl+C, Enter"
-      },
-      "select os": "Selecione seu sistema operacional.",
-      "select tool": "Selecione o item."
+      }
     }
   },
   "Mode": "Modo",
@@ -710,10 +726,9 @@
   "Max Users": "Máximo de usuários",
   "Online Users": "Usuários online",
   "Can add sub admin": "👥 Pode adicionar subadministrador",
+  "Should be a valid uuid": "",
   "Add some text that is only visible to super_admin.": "Adicione algum texto que seja visível apenas para o superadministrador",
-  "Define the admin mode": {
-    " ": "Definir o Modo Admin"
-  },
+  "Define the admin mode. ": "Definir o Modo Admin",
   "Config file is incorrect": "O arquivo de configuração está incorreto.",
   "Restore File": "Restaurar arquivo",
   "Restore File Description": "Escolha o arquivo de restauração baixado",
@@ -726,17 +741,16 @@
   "Override Root Admin": "Substituir proprietário no backup",
   "It will override the root admin to the current user": "Ele substituirá o administrador proprietário do arquivo de backup pelo usuário atual",
   "Submit": "Enviar",
-  "This version of hiddify panel is outdated": {
-    " Please update it from admin area.": "Esta versão do painel Hiddify está desatualizada. Atualize-o na Área Administrativa."
-  },
+  "This version of hiddify panel is outdated. Please update it from admin area.": "Esta versão do painel Hiddify está desatualizada. Atualize-o na Área Administrativa.",
   "Access Denied!": "Acesso negado",
-  "It seems that you have not setup the system completely": {
-    " <a class=\"btn btn-success\" href=\"%(quick_setup)s\">Click here</a> to complete setup.": "Parece que você não configurou o sistema completamente. <a class='btn btn-success' href='%(quick_setup)s'>Clique aqui</a> para concluir a configuração."
-  },
+  "It seems that you have not setup the system completely. <a class=\"btn btn-success\" href=\"%(quick_setup)s\">Click here</a> to complete setup.": "Parece que você não configurou o sistema completamente. <a class='btn btn-success' href='%(quick_setup)s'>Clique aqui</a> para concluir a configuração.",
   "Please understand that parent panel is under test and the plan and the condition of use maybe change at anytime.": "Por favor, entenda que o painel principal está em teste e o plano e as condições de uso podem mudar a qualquer momento.",
   "It seems that you are using default domain (%(domain)s) which is not recommended.": "Parece que você está usando o domínio padrão (%(domain)s), o que não é recomendado. Por favor, altere ou remova-o da seção de domínio.",
-  "It seems that you have not created any users yet": {
-    " Default user link: %(default_link)s": "Parece que você ainda não criou nenhum usuário. link de usuário padrão: %(default_link)s"
+  "It seems that you have not created any users yet. Default user link: %(default_link)s": "Parece que você ainda não criou nenhum usuário. link de usuário padrão: %(default_link)s",
+  "serverssh": {
+    "password-login": {
+      "warning": ""
+    }
   },
   "child has been removed!": "Child removido",
   "domain": {
@@ -746,18 +760,17 @@
     "ip": "IP",
     "cdn": "CDN",
     "domain_fronting": {
+      "label": "",
       "description": "É usado para simular outro site em vez do seu site no SNI. portanto, o GFW não pode filtrar seu domínio\n<a href='https://github.com/hiddify/hiddify-config/wiki/Guide-for-domain-fronting'>Guia</a>. ⚠️CloudFlare não suporta fronting de domínio."
     }
   },
   "Direct mode means you want to use your server directly (for usual use), CDN means that you use your server on behind of a CDN provider.": "Modo <b>Direto</b>: escolha este modo se você definir seu domínio em seu provedor DNS em um modo somente DNS. (Modo CDN ou Proxy desligado) <br>\nModo <b>CDN</b>: escolha este modo se você usar o domínio do seu servidor em um provedor CDN. (Modo proxy ativado)<br>\nModo <b>Auto CDN IP</b>: É como o modo CDN, exceto que o IP apropriado é definido automaticamente com base no IP fornecido pelo ircf.space. Em Auto_CDN_IP, o IP será resolvido do domínio, mas no modo cdn, o domínio será retornado<br>\nModo <b>Relay</b>: escolha este modo se estiver usando um ou mais servidores intermediários. <a href='https://github.com/hiddify/hiddify-config/discussions/129' target='_blank'>Leia mais</a>\n<br>\nModo <b>Fake</b>: escolha este modo se quiser usar um domínio falso (por exemplo, Soft98.ir) para ignorar o proxy SNI whitelist. (Não recomendado)",
-  "You can select the configs with which domains show be shown in the user area": {
-    " If you select all, automatically, all the new domains will be added for each users.": "Para os usuários que visitam a área do usuário com este domínio, especifique que eles podem ver os proxies de quais domínios.\n<br>\nSugestão: Para um domínio com IP não filtrado e diferente dos demais, selecione todos os outros domínios (exceto o domínio atual). Como resultado, como o uso deste IP não é para proxy e é um site simples, este domínio e IP nunca serão bloqueados e seus usuários poderão facilmente atualizar novos perfis."
-  },
+  "You can select the configs with which domains show be shown in the user area. If you select all, automatically, all the new domains will be added for each users.": "Para os usuários que visitam a área do usuário com este domínio, especifique que eles podem ver os proxies de quais domínios.\n<br>\nSugestão: Para um domínio com IP não filtrado e diferente dos demais, selecione todos os outros domínios (exceto o domínio atual). Como resultado, como o uso deste IP não é para proxy e é um site simples, este domínio e IP nunca serão bloqueados e seus usuários poderão facilmente atualizar novos perfis.",
   "The name shown in the configs for this domain.": "O nome que será mostrado nas Configs deste Domínio.",
   "This can be used for giving your users a permanent non blockable links.": "Isso pode ser usado para fornecer aos seus usuários links permanentes não bloqueáveis.",
-  "gRPC is a H2 based protocol": {
-    " Maybe it is faster for you!": "ℹ️ gRPC é um protocolo baseado em H2. Talvez seja mais rápido para você!"
-  },
+  "gRPC is a H2 based protocol. Maybe it is faster for you!": "ℹ️ gRPC é um protocolo baseado em H2. Talvez seja mais rápido para você!",
+  "Should be a valid domain": "",
+  "Invalid IP or domain": "",
   "Invalid REALITY hostnames": "Nomes de host REALITY inválidos",
   "Only for sublink?": "🌍 Use apenas para link de assinatura",
   "Show Domains": "Mostrar configurações de domínios",
@@ -767,20 +780,26 @@
   "All": "Todos",
   "You have used this domain in: ": "Já utilizou este Domínio em:",
   "Couldn't find your ip addresses": "Não foi possível encontrar seus endereços IP",
+  "Can not connect to Cloudflare.": "",
+  "Using alias with special charachters may cause problem in some clients like FairVPN.": "",
   "Domain is not REALITY friendly!": "O domínio não é compatível com Reality!",
   "REALITY Fallback domain is not compaitble with server names!": "REALITY Fallback Domain não é compatível com nomes de servidores!",
   "Error in auto cdn format": "Erro no formato CDN automático",
   "node": {
     "name": {
-      "label": "Nome do nó"
+      "label": "Nome do nó",
+      "dscr": ""
     },
     "mode": {
-      "label": "Modo de nó"
+      "label": "Modo de nó",
+      "dscr": ""
     },
     "uuid": {
-      "label": "UUID do nó"
+      "label": "UUID do nó",
+      "dscr": ""
     }
   },
+  "Remote nodes are not supported yet!": "",
   "quicksetup": {
     "setlang": {
       "success": "A alteração do idioma foi bem-sucedida.",
@@ -796,6 +815,8 @@
   },
   "Iran": "🇮🇷 Irã",
   "China": "🇨🇳 China",
+  "config.Invalid domain": "Erro! Domínio inválido. O formato do domínio é www.google.com",
+  "config.Domain already used": "O domínio existe na seção de domínios. Usar outro domínio",
   "Domain (%(domain)s)-> IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode": "Domain (%(domain)s)-> IP = %(domain_ip)s não é igual ao seu IP = %(server_ip)s . isso é necessário no modo direto",
   "Port is already used! in": "A porta já é usada em:",
   "ProxyPath is already used! use different proxy path": "ProxyPath já está em uso! usar caminho de proxy diferente",
@@ -816,6 +837,13 @@
     }
   },
   "Invalid admin link": "Link de administrador inválido",
+  "config.Invalid telegram bot token": "Token do bot telegram inválido",
+  "config.Invalid brand link": "Link inválido. deve estar neste formato: (https ou http://example.com)",
+  "config.invalid uuid": "Secret UUID inválido. exemplo: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6",
+  "config.Invalid proxy path": "Caminho de proxy inválido. Deve ser uma string ASCI (a-z A-Z 0-9)",
+  "config.Invalid port": "Porta inválida. deve ser inteiro separado por vírgula, por exemplo 2052,2053",
+  "config.Invalid! The pattern is number-number": "⚠️ Configuração inválida! O padrão é número-número",
+  "config.Invalid! it should be a number only": "⚠️ Configuração inválida! Deve ser apenas um número",
   "Reset package days": "📆 Redefinir dias do pacote",
   "Reset package usage": "⏳ Redefinir o uso do pacote",
   "Reset every month": "Por mês",
@@ -826,9 +854,7 @@
   "Max IPs": "Máximo de IPs",
   "Enable": "Habilitar",
   "Add some text that is only visible to you.": "Você pode adicionar algum texto, será visível apenas para voce",
-  "Define the user mode": {
-    " Should the usage reset every month?": "O modo de pacote do usuário. o uso deve ser redefinido a cada mês, semana etc."
-  },
+  "Define the user mode. Should the usage reset every month?": "O modo de pacote do usuário. o uso deve ser redefinido a cada mês, semana etc.",
   "If monthly is enabled, the usage will be reset after 30 days from this date.": "Se a opção mensal estiver habilitada, quando esse número chegar a 30, o uso do usuário será zerado! (para semanal, e diário o número será  7 e 1)",
   "From when the user package will be started? Empty for start from first connection": "Especifique a data de início do pacote. Deixe em branco para começar a partir da primeira conexão.",
   "How many days this package should be available?": "Quantos dias é este pacote?",
@@ -841,6 +867,7 @@
   "You can restore your configs from previously downloaded configs": "Você pode restaurar suas configurações do arquivo de backup baixado anteriormente",
   "Why Going to Premium?": "Por que ir para premium?",
   "Premium Description": "O painel Hiddify é feito para uso não comercial. Mas se você usar este painel comercialmente, ajude o projeto a crescer com uma doação. <br/>\nEm troca de seu suporte financeiro, também fornecemos facilidades especiais para seu produto comercial.\n<br/>\n<br/>\nComo:\n<ul><li>\n<li>A possibilidade de sincronizar com o Cloudflare: ou seja, adicionando um domínio no painel, as configurações relevantes também podem ser feitas no Cloudflare</li>\n<li>Possibilidade de exibir sua marca no painel</li>\n<li>Possibilidade de Utilizar o Painel Central para Gerenciar Mais de 1 Servidor em Apenas um Painel, Assim Não É Mais Necessário Cadastrar Usuários em Servidores Diferentes, E Seu Volume Será Coletado em Todos os Servidores.\n</li>\n<li>\nA possibilidade de usar o bot do Telegram\n</li>\n<li>\nCapacidade de alterar nomes de proxy\n</li>\n</ul>\n\nEntre em contato com <a href='tg://resolve?domain=HiddifyCommercial'>@HiddifyCommercial</a> após a doação.\nEnvie uma mensagem para obter uma versão especial para usuários corporativos.",
+  " Search Settings": "",
   "Create": "Criar",
   "Save & Add More": "Salvar e adicionar mais",
   "Close": "Fechar",
@@ -862,20 +889,17 @@
   "Domain": "Domínio",
   "Edit Proxy Names": "✏️ Modificando Proxies",
   "Save Link": "Link salvo",
-  "Please note that your panel can be accessed only via <a href=\"%(adminlink)s\" class=\"btn btn-primary copy-link\">%(adminlink)s</a>": {
-    " Please save this link.": "Por favor, note que seu painel pode ser acessado apenas através do link a seguir. por favor, salve este link.\n<p><a href='%(adminlink)s' class='btn btn-secondary copy-link'><i class='fa-solid fa-copy'></i></a>\n<a href='%(adminlink)s' class='copy-link' style='word-break: break-all;'>%(adminlink)s</a></p>"
-  },
+  "Please note that your panel can be accessed only via <a href=\"%(adminlink)s\" class=\"btn btn-primary copy-link\">%(adminlink)s</a>. Please save this link.": "Por favor, note que seu painel pode ser acessado apenas através do link a seguir. por favor, salve este link.\n<p><a href='%(adminlink)s' class='btn btn-secondary copy-link'><i class='fa-solid fa-copy'></i></a>\n<a href='%(adminlink)s' class='copy-link' style='word-break: break-all;'>%(adminlink)s</a></p>",
   "Please wait ": "Por favor, aguarde",
   "log": "📄 Registro",
   "Click here to see the complete log": "Clique aqui para ver o registro completo",
   "Success": "Sucesso",
-  "The action done successfully": {
-    " You can now leave this page.": "✅ A Ação Feita com Sucesso. Agora você pode sair desta página"
-  },
+  "The action done successfully. You can now leave this page.": "✅ A Ação Feita com Sucesso. Agora você pode sair desta página",
   "With selected": "Com selecionado",
   "Are you sure you want to delete this record?": "Você tem certeza que deseja excluir este item?",
   "Filter": "Filtro",
   "Export": "Exportar",
+  "%(placeholder)s": "",
   "Save": "Salvar",
   "Root": "Raíz",
   "Sort by %(name)s": "Ordenar por %(name)s",
@@ -891,19 +915,27 @@
   "Add": "Adicionar",
   "Apply": "Aplicar",
   "Reset Filters": "Limpar Filtros",
+  "items": "",
   "Create New Record": "Criar Novo Registro",
   "Select all records": "Selecionar todos os registros",
   "Select record": "Selecionar registro",
   "Please select at least one record.": "Por favor, selecione pelo menos um registro.",
-  "In this section, you can add your domain": {
-    " You need to add at least one domain in direct mode.": "Nesta seção, você pode adicionar seu domínio.\n<br>\nSe você deseja diminuir a probabilidade de ter um IP sujo, pode adicionar Multiple Relay Server <a href='https://github.com/hiddify/hiddify-config/discussions/129'>Leia mais</a>.\n<br>\nSe você tiver Múltiplos IPv4 ou IPv6 em seu Painel, deverá adicionar o domínio apontado para eles como Relay."
-  },
+  "In this section, you can add your domain. You need to add at least one domain in direct mode.": "Nesta seção, você pode adicionar seu domínio.\n<br>\nSe você deseja diminuir a probabilidade de ter um IP sujo, pode adicionar Multiple Relay Server <a href='https://github.com/hiddify/hiddify-config/discussions/129'>Leia mais</a>.\n<br>\nSe você tiver Múltiplos IPv4 ou IPv6 em seu Painel, deverá adicionar o domínio apontado para eles como Relay.",
   "Send Message to User's Telegram": "📣 Enviar mensagem para o telegram do usuário",
   "All Users": "Todos os usuários",
+  "Expired Users": "",
+  "Active Users": "",
+  "Offline more than 1 hour": "",
+  "Offline more than 1 day": "",
+  "Offline more than 1 week": "",
+  "User usage will be updated every 6 minutes. To update it now click <a href=\"%(link)s\"\n        class=\"btn btn-info\">here</a>": "",
   "Please type your message to send to the telegram:": "✏️ Por favor, escreva sua mensagem para enviar para o Telegram:",
+  "Sending": "",
   "The message has been sent.": "A mensagem foi enviada.",
   "Hover the user to see the reason": "Hover the user to see the reason",
   "The message was not sent to": "The message was not sent to",
+  "%(count)s records were successfully disabled.": "",
+  "%(count)s records were successfully enabled.": "",
   "app": {
     "hiddify": {
       "next": {
@@ -924,7 +956,8 @@
       "description": "Descrição do HiddifyNG"
     },
     "hiddify-clash-android": {
-      "title": "Hidificar confronto"
+      "title": "Hidificar confronto",
+      "description": ""
     },
     "foxray": {
       "title": "Raio X",
@@ -947,17 +980,27 @@
       "description": "Descrição do estoque"
     },
     "hiddify-clash-desktop": {
-      "title": "Hidificar confronto"
+      "title": "Hidificar confronto",
+      "description": ""
     },
     "nekobox": {
-      "title": "NekoBox"
+      "title": "NekoBox",
+      "description": ""
     }
   },
   "Join our Hiddify Telegram channel to get the latest updates on Hiddify.": "Junte-se ao nosso canal Hiddify Telegram para obter as atualizações mais recentes sobre o Hiddify.",
   "[Admin only visible message:] You can change this message from settings": "[Mensagem visível apenas pelo administrador]: Você pode alterar esta mensagem nas configurações.",
-  "Hooray 🎉 🎉 🎉 \nWelcome to hiddifybot": {
-    "\nStart by clicking the link on the panel or entering your UUID.": "Viva 🎉 🎉 🎉\nBem-vindo ao bot Hiddify\nComece clicando no link no Painel ou inserindo seu UUID."
-  },
+  "Hooray 🎉 🎉 🎉 \nWelcome to hiddifybot.\nStart by clicking the link on the panel or entering your UUID.": "Viva 🎉 🎉 🎉\nBem-vindo ao bot Hiddify\nComece clicando no link no Painel ou inserindo seu UUID.",
+  "update": "",
+  "Welcome to admin bot. Choose your action": "",
+  "Create Package": "",
+  "package size?": "",
+  "Ok": "",
+  "package days?": "",
+  "How many?": "",
+  "Domain?": "",
+  "Please Wait...": "",
+  "Finished": "",
   "Dear {}\n\nYour hiddify information is\nUUID: {}\nLast online date: {}\nExpire time: {}\nUsage class: {}\n": "Querido {}\n\nSuas informações do Hiddify são\nUUID: {}\nÚltima data on-line: {}\nTempo de expiração: {}\nClasse de uso: {}",
   "Your hiddify instance information \nDomain: {} \nUsage limit: {} GB\nCurrent usage: {} GB\nExpires at: {} \nRemaining days: {} \n\n\n Happy using 🎉 🎉 🎉 \n": "Suas informações de instância do Hiddify\nDomínio: {}\nLimite de uso: {} GB\nUso atual: {} GB\nExpira em: {}\nDias restantes: {}\n\n\nBoa sorte! 🎉 🎉 🎉",
   "login": {
@@ -971,6 +1014,7 @@
   "copy": "cópia de",
   "open": "Abrir",
   "Link is changed!": "ℹ️ O link foi alterado!",
+  "The page has been moved to a new link. Please copy and save the new link.": "",
   "all": "Todos",
   "auto": "Auto",
   "singbox: ssh": "caixa de som: ssh",
@@ -990,6 +1034,8 @@
   "android": "Android",
   "ios": "iOS",
   "desktop": "Área de Trabalho",
+  "user.home.select os": "Selecione seu sistema operacional.",
+  "user.home.select tool": "Selecione o item.",
   "QR code": "Código QR",
   "Want to enjoy more with telegram?": "Conecte sua conta ao Telegram",
   "Please connect your telegram account to the panel to be informed about latest news.": "Conecte sua conta do Telegram ao painel para ser informado sobre as últimas novidades.",
@@ -998,15 +1044,14 @@
   "search": "Procurar",
   "Check again": "Verifique novamente",
   "Turn of VPN": "Desativar VPN",
-  "You should visit this page without VPN": {
-    " Your country=%(your_country)s\nexpected=%(expected_country)s": "Você deve visitar esta página sem VPN Seu país =%(expected_country)s\nEsperado=%(expected_country)s"
-  },
+  "You should visit this page without VPN. Your country=%(your_country)s\nexpected=%(expected_country)s": "Você deve visitar esta página sem VPN Seu país =%(expected_country)s\nEsperado=%(expected_country)s",
   "Please connect your telegram accout to the panel to be informed about latest news.": "Conecte sua conta do Telegram ao painel para saber o status mais recente da sua assinatura",
   "Click to Start Anti-Filter.": "<i class='fa-solid fa-play'></i> Toque para iniciar o Antifiltro.",
   "Unified link for all application.": "Link unificado para todos os aplicativos.",
   "Temporary Short Link": "⏱️ Link curto temporário",
   "Simplifies the process of employing the link elsewhere.": "Simplifica o processo de utilização do link em outro lugar",
   "Open in Application": "Abrir no aplicativo",
+  "If the application do not open automatically, please click <a class='btn btn-primary copy-link'\n                    href='%(sub)s'>this universal link</a> to copy and paste it on\n                your application, or:": "",
   "Use HiddifyNext:": "Use HiddifyNext:",
   "Download App": "<i class='fa-solid fa-download'></i> Baixar aplicativo",
   "Import": "Importar no aplicativo",
@@ -1033,7 +1078,12 @@
   "Parent Panel": "Painel pai",
   "Admins": "Administradores",
   "in parent panel": "No Painel Principal",
+  "Commercial\n          use": "",
   "Bug": "Bug/recurso",
+  "Donation": {
+    "title": "",
+    "description": ""
+  },
   "Telegram Bot": "Telegram Bot",
   "Are you sure you want to do this action?": "⚠️Tem certeza que deseja fazer esta ação?",
   "direct": "➡️ Direto",

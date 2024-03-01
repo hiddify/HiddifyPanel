@@ -913,6 +913,8 @@ with A2_
 
 #### Other
 
+* Inlang: update translations. 
+
 * Update translation. 
 
 * Merge branch 'main' of github.com:hiddify/Hiddify-Panel. 
