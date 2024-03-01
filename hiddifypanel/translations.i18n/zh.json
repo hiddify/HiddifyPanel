@@ -644,7 +644,10 @@
     "home": {
       "title": "希迪菲",
       "tool": {
-        "all-configs": "所有配置"
+        "all-configs": "所有配置",
+        "doh": {
+          "title": "HTTPS 上的 DNS"
+        }
       },
       "allconfig": {
         "name": "名称和链接",
@@ -765,6 +768,11 @@
   "It seems that you are using default domain (%(domain)s) which is not recommended.": "看来您正在使用默认域（％（domain）s），这是不推荐的。请从域部分更改或删除它。",
   "It seems that you have not created any users yet": {
     " Default user link: %(default_link)s": "您似乎还没有创建任何用户。默认用户链接：%(default_link)s"
+  },
+  "serverssh": {
+    "password-login": {
+      "warning": "您的服务器很容易受到滥用，因为您的 SSH 中启用了密码身份验证。为了保护您的服务器，请切换到密钥身份验证机制并关闭PasswordAuthentication。<a href='https://github.com/hiddify/Hiddify-Manager/wiki/Disable-SSH-Password-Authentication'>阅读更多...</a>"
+    }
   },
   "child has been removed!": "孩子已被移走！",
   "domain": {
@@ -911,7 +919,16 @@
   },
   "Send Message to User's Telegram": "📣 向用户的 Telegram 发送消息",
   "All Users": "全部用户",
+  "Expired Users": "过期用户",
+  "Active Users": "活跃用户",
+  "Offline more than 1 hour": "离线1小时以上",
+  "Offline more than 1 day": "离线超过1天",
+  "Offline more than 1 week": "离线超过1周",
+  "User usage will be updated every 6 minutes": {
+    " To update it now click <a href=\"%(link)s\"\n        class=\"btn btn-info\">here</a>": "用户使用情况每 6 分钟更新一次。要立即更新，请单击<a href=\"%(link)s\"<inlang-LineFeed>class=\"btn btn-info\"&gt;此处</a>"
+  },
   "Please type your message to send to the telegram:": "✏️ 请写下您要发送到 Telegram 的消息：",
+  "Sending": "正在发送...",
   "The message has been sent.": "消息已发送。",
   "Hover the user to see the reason": "将鼠标悬停在用户上即可查看原因",
   "The message was not sent to": "该消息未发送至",
@@ -987,6 +1004,7 @@
   "Please Wait.": {
     ".": "请稍等..."
   },
+  "Finished": "完成的...",
   "Dear {}\n\nYour hiddify information is\nUUID: {}\nLast online date: {}\nExpire time: {}\nUsage class: {}\n": "亲爱的 {}\n\n您的 Hiddify 信息是\nUUID：{}\n最后在线日期：{}\n过期时间：{}\n使用类别：{}",
   "Your hiddify instance information \nDomain: {} \nUsage limit: {} GB\nCurrent usage: {} GB\nExpires at: {} \nRemaining days: {} \n\n\n Happy using 🎉 🎉 🎉 \n": "您的 Hiddify 实例信息\n领域： {}\n使用限制：{} GB\n当前使用情况：{} GB\n到期时间：{}\n剩余天数：{}\n\n\n祝你好运！ 🎉🎉🎉",
   "login": {
@@ -1067,6 +1085,9 @@
   "in parent panel": "在家长面板中",
   "Commercial use": "商业用途",
   "Bug": "错误/功能",
+  "Donation": {
+    "title": "捐款"
+  },
   "Telegram Bot": "电报机器人",
   "Are you sure you want to do this action?": "⚠️您确定要执行此操作吗？",
   "direct": "➡️直接",
