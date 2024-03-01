@@ -1118,6 +1118,9 @@ msgid "Error! auto cdn ip can not be find, please contact admin."
 msgstr ""
 "Ошибка в IP-адресе Auto CDN! Невозможно найти, обратитесь к администратору"
 
+msgid "Owner can not be deleted!"
+msgstr ""
+
 msgid "This domain does not exist in the panel!"
 msgstr "Этого домена не существует в панели управления!"
 
@@ -1480,6 +1483,9 @@ msgstr "Пользователей онлайн"
 msgid "Can add sub admin"
 msgstr "👥 Может добавлять администраторов"
 
+msgid "Should be a valid uuid"
+msgstr ""
+
 msgid "Add some text that is only visible to super_admin."
 msgstr "Добавьте текст, который будет виден только суперадминистратору"
 
@@ -1634,6 +1640,12 @@ msgstr ""
 "gRPC — это протокол на основе HTTP 2. Возможно, в вашей ситуации он будет "
 "быстрее!"
 
+msgid "Should be a valid domain"
+msgstr ""
+
+msgid "Invalid IP or domain"
+msgstr ""
+
 msgid "Invalid REALITY hostnames"
 msgstr "Неверные имена хостов REALITY"
 
@@ -1660,6 +1672,14 @@ msgstr "Вы уже используете этот домен в:"
 
 msgid "Couldn't find your ip addresses"
 msgstr "Не удалось найти ваши IP-адреса"
+
+msgid "Can not connect to Cloudflare."
+msgstr ""
+
+msgid ""
+"Using alias with special charachters may cause problem in some clients like "
+"FairVPN."
+msgstr ""
 
 msgid "Domain is not REALITY friendly!"
 msgstr "Домен не подходит для использования с  Reality!"
@@ -2007,6 +2027,81 @@ msgstr "Успешно"
 
 msgid "The action done successfully. You can now leave this page."
 msgstr "✅Действие выполнено успешно. Теперь вы можете покинуть эту страницу"
+
+msgid "With selected"
+msgstr ""
+
+msgid "Are you sure you want to delete this record?"
+msgstr ""
+
+msgid "Filter"
+msgstr ""
+
+msgid "Export"
+msgstr ""
+
+msgid "%(placeholder)s"
+msgstr ""
+
+msgid "Save"
+msgstr ""
+
+msgid "Root"
+msgstr ""
+
+msgid "Sort by %(name)s"
+msgstr ""
+
+msgid "Rename File"
+msgstr ""
+
+msgid "Are you sure you want to delete \\'%(name)s\\' recursively?"
+msgstr ""
+
+msgid "Are you sure you want to delete \\'%(name)s\\'?"
+msgstr ""
+
+msgid "Upload File"
+msgstr ""
+
+msgid "Create Directory"
+msgstr ""
+
+msgid "Please select at least one file."
+msgstr ""
+
+msgid "Edit"
+msgstr ""
+
+msgid "Delete?"
+msgstr ""
+
+msgid "New"
+msgstr ""
+
+msgid "Add"
+msgstr ""
+
+msgid "Apply"
+msgstr ""
+
+msgid "Reset Filters"
+msgstr ""
+
+msgid "items"
+msgstr ""
+
+msgid "Create New Record"
+msgstr ""
+
+msgid "Select all records"
+msgstr ""
+
+msgid "Select record"
+msgstr ""
+
+msgid "Please select at least one record."
+msgstr ""
 
 msgid ""
 "In this section, you can add your domain. You need to add at least one "
