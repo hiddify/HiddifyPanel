@@ -1097,6 +1097,9 @@ msgstr ""
 msgid "Error! auto cdn ip can not be find, please contact admin."
 msgstr "خطا! آی پی اتوماتیک نتوانست پیدا شود. لطفا با مدیر تماس بگیرید"
 
+msgid "Owner can not be deleted!"
+msgstr ""
+
 msgid "This domain does not exist in the panel!"
 msgstr "این دامنه در پنل وجود ندارد!"
 
@@ -1478,6 +1481,9 @@ msgstr "کاربران آنلاین"
 msgid "Can add sub admin"
 msgstr "👥 امکان اضافه کردن ادمین فرعی"
 
+msgid "Should be a valid uuid"
+msgstr ""
+
 msgid "Add some text that is only visible to super_admin."
 msgstr "متنی را اضافه کنید که فقط برای سوپر ادمین ها قابل مشاهده هست"
 
@@ -1562,6 +1568,12 @@ msgstr ""
 
 msgid "serverssh.password-login.warning"
 msgstr ""
+"سرور شما به دلیل فعال بودن احراز هویت رمز عبور در SSH، در معرض سوء استفاده "
+"قرار دارد. برای امنیت بخشیدن به سرور خود، لطفاً به مکانیزم احراز هویت مبتنی "
+"بر کلید سوئیچ کنید و احراز هویت رمز عبور را غیرفعال نمایید. <a "
+"href='https://github.com/hiddify/Hiddify-"
+"Manager/wiki/%D8%BA%DB%8C%D8%B1%D9%81%D8%B9%D8%A7%D9%84-%DA%A9%D8%B1%D8%AF%D9%86-%D8%AF%D8%B3%D8%AA%D8%B1%D8%B3%DB%8C-%D8%A8%D8%A7-%D9%BE%D8%B3%D9%88%D8%B1%D8%AF'>بیشتر"
+" بخوانید... </a>"
 
 msgid "child has been removed!"
 msgstr "پنل زیر مجموعه حذف شد"
@@ -1628,6 +1640,12 @@ msgstr ""
 msgid "gRPC is a H2 based protocol. Maybe it is faster for you!"
 msgstr "gRPC ℹ️ یک پروتکل مبتنی بر H2 است. شاید برای شما سریعتر باشد!"
 
+msgid "Should be a valid domain"
+msgstr ""
+
+msgid "Invalid IP or domain"
+msgstr ""
+
 msgid "Invalid REALITY hostnames"
 msgstr "نام‌های میزبان REALITY نامعتبر است"
 
@@ -1654,6 +1672,14 @@ msgstr "شما از این دامنه در بخش زیر استفاده کرده
 
 msgid "Couldn't find your ip addresses"
 msgstr "آدرس های IP شما پیدا نشد"
+
+msgid "Can not connect to Cloudflare."
+msgstr ""
+
+msgid ""
+"Using alias with special charachters may cause problem in some clients like "
+"FairVPN."
+msgstr ""
 
 msgid "Domain is not REALITY friendly!"
 msgstr "دامنه سازگار با REALITY نیست!"
@@ -1999,6 +2025,81 @@ msgstr "موفقیت"
 
 msgid "The action done successfully. You can now leave this page."
 msgstr "✅ عملیات با موفقیت انجام شد. اکنون می توانید این صفحه را ترک کنید"
+
+msgid "With selected"
+msgstr ""
+
+msgid "Are you sure you want to delete this record?"
+msgstr ""
+
+msgid "Filter"
+msgstr ""
+
+msgid "Export"
+msgstr ""
+
+msgid "%(placeholder)s"
+msgstr ""
+
+msgid "Save"
+msgstr ""
+
+msgid "Root"
+msgstr ""
+
+msgid "Sort by %(name)s"
+msgstr ""
+
+msgid "Rename File"
+msgstr ""
+
+msgid "Are you sure you want to delete \\'%(name)s\\' recursively?"
+msgstr ""
+
+msgid "Are you sure you want to delete \\'%(name)s\\'?"
+msgstr ""
+
+msgid "Upload File"
+msgstr ""
+
+msgid "Create Directory"
+msgstr ""
+
+msgid "Please select at least one file."
+msgstr ""
+
+msgid "Edit"
+msgstr ""
+
+msgid "Delete?"
+msgstr ""
+
+msgid "New"
+msgstr ""
+
+msgid "Add"
+msgstr ""
+
+msgid "Apply"
+msgstr ""
+
+msgid "Reset Filters"
+msgstr ""
+
+msgid "items"
+msgstr ""
+
+msgid "Create New Record"
+msgstr ""
+
+msgid "Select all records"
+msgstr ""
+
+msgid "Select record"
+msgstr ""
+
+msgid "Please select at least one record."
+msgstr ""
 
 msgid ""
 "In this section, you can add your domain. You need to add at least one "
