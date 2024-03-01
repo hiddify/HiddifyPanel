@@ -403,7 +403,7 @@ msgstr ""
 "It works like Trojan but It does not require signing certificate. the firewall will see real tls handshake with valid certificate that you choose."
 
 msgid "config.restls.label"
-msgstr "config.restls.label"
+msgstr "RestTLS"
 
 msgid "config.restls.description"
 msgstr "config.restls.description"
@@ -581,10 +581,10 @@ msgid "config.reality.description"
 msgstr "REALITY eliminate the Server-Side TLS Fingerprint Feature"
 
 msgid "config.first_setup.label"
-msgstr "config.first_setup.label"
+msgstr "-"
 
 msgid "config.first_setup.description"
-msgstr "config.first_setup.description"
+msgstr "-"
 
 msgid "config.warp_enable.label"
 msgstr "Enable WARP+"
@@ -616,7 +616,7 @@ msgid "config.is_parent.label"
 msgstr "Parent Panel"
 
 msgid "config.is_parent.description"
-msgstr "config.is_parent.description"
+msgstr "-"
 
 msgid "config.parent_panel.label"
 msgstr "Parent Panel (Multi Server)"
@@ -627,16 +627,16 @@ msgstr ""
 "of all Servers will be added cumulatively."
 
 msgid "config.unique_id.label"
-msgstr "config.unique_id.label"
+msgstr "-"
 
 msgid "config.unique_id.description"
-msgstr "config.unique_id.description"
+msgstr "-"
 
 msgid "config.last_hash.label"
-msgstr "config.last_hash.label"
+msgstr "-"
 
 msgid "config.last_hash.description"
-msgstr "config.last_hash.description"
+msgstr "-"
 
 msgid "config.admin_secret.label"
 msgstr "Admin Secret"
@@ -730,16 +730,16 @@ msgid "config.path_ss.description"
 msgstr "Shadowsocks Path in the Links"
 
 msgid "config.dbvalues.label"
-msgstr "config.dbvalues.label"
+msgstr "-"
 
 msgid "config.dbvalues.description"
-msgstr "config.dbvalues.description"
+msgstr "-"
 
 msgid "config.create_easysetup_link.label"
-msgstr "config.create_easysetup_link.label"
+msgstr "-"
 
 msgid "config.create_easysetup_link.description"
-msgstr "config.create_easysetup_link.description"
+msgstr "-"
 
 msgid "config.wireguard_enable.label"
 msgstr "Enable WireGuard"
@@ -751,34 +751,34 @@ msgstr ""
 "⚠️  Accounting is not yet supported."
 
 msgid "config.wireguard_port.label"
-msgstr "config.wireguard_port.label"
+msgstr "Wireguard Port"
 
 msgid "config.wireguard_port.description"
 msgstr "config.wireguard_port.description"
 
 msgid "config.wireguard_ipv6.label"
-msgstr "config.wireguard_ipv6.label"
+msgstr "-"
 
 msgid "config.wireguard_ipv6.description"
-msgstr "config.wireguard_ipv6.description"
+msgstr "-"
 
 msgid "config.wireguard_ipv4.label"
-msgstr "config.wireguard_ipv4.label"
+msgstr "-"
 
 msgid "config.wireguard_ipv4.description"
-msgstr "config.wireguard_ipv4.description"
+msgstr "-"
 
 msgid "config.wireguard_private_key.label"
-msgstr "config.wireguard_private_key.label"
+msgstr "-"
 
 msgid "config.wireguard_private_key.description"
-msgstr "config.wireguard_private_key.description"
+msgstr "-"
 
 msgid "config.wireguard_public_key.label"
-msgstr "config.wireguard_public_key.label"
+msgstr "-"
 
 msgid "config.wireguard_public_key.description"
-msgstr "config.wireguard_public_key.description"
+msgstr "-"
 
 msgid "config.wireguard_noise_trick.label"
 msgstr "WireGuard Noise Trick"
@@ -1069,10 +1069,10 @@ msgstr ""
 "connecting to foreign servers from China)"
 
 msgid "config.hidden.label"
-msgstr "config.hidden.label"
+msgstr "-"
 
 msgid "config.hidden.description"
-msgstr "config.hidden.description"
+msgstr "-"
 
 msgid "config.wireguard.label"
 msgstr "Wireguard"
