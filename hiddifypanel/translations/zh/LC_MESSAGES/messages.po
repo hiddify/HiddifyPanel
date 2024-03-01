@@ -1862,31 +1862,30 @@ msgid "All Users"
 msgstr "全部用户"
 
 msgid "Expired Users"
-msgstr "过期用户"
+msgstr ""
 
 msgid "Active Users"
-msgstr "活跃用户"
+msgstr ""
 
 msgid "Offline more than 1 hour"
-msgstr "离线1小时以上"
+msgstr ""
 
 msgid "Offline more than 1 day"
-msgstr "离线超过 1 天"
+msgstr ""
 
 msgid "Offline more than 1 week"
-msgstr "离线超过 1 周"
+msgstr ""
 
 msgid ""
-"User usage will be updated every 6 minutes. To update it now click <a "
-"href=\"%(link)s\" class=\"btn btn-info\">here</a>"
+"User usage will be updated every 6 minutes. To update it now click <a href=\"%(link)s\"\n"
+"        class=\"btn btn-info\">here</a>"
 msgstr ""
-"🔄 用户使用情况每 1 分钟更新一次。立即更新<a href='%(link)s' class='btn btn-info'>点击此处</a>"
 
 msgid "Please type your message to send to the telegram:"
 msgstr "✏️ 请写下您要发送到 Telegram 的消息："
 
-msgid "Sending..."
-msgstr "📤 正在发送..."
+msgid "Sending"
+msgstr ""
 
 msgid "The message has been sent."
 msgstr "消息已发送。"
@@ -2019,8 +2018,8 @@ msgstr "领域？"
 msgid "Please Wait..."
 msgstr "请稍等..."
 
-msgid "Finished..."
-msgstr "完成的..."
+msgid "Finished"
+msgstr ""
 
 msgid ""
 "Dear {}\n"
@@ -2214,17 +2213,16 @@ msgid "Open in Application"
 msgstr "在应用程序中打开"
 
 msgid ""
-"If the application do not open automatically, please click <a class='btn btn-primary copy-link' href='%(sub)s'>this universal link</a> to copy and paste it on\n"
+"If the application do not open automatically, please click <a class='btn btn-primary copy-link'\n"
+"                    href='%(sub)s'>this universal link</a> to copy and paste it on\n"
 "                your application, or:"
 msgstr ""
-"如果 Hiddify 应用程序没有自动打开，请点击<a class='btn btn-primary copy-link' "
-"href='%(sub)s'>此通用链接</a>将其复制并粘贴到 Hiddify 应用程序中， 或者："
 
 msgid "Use HiddifyNext:"
 msgstr "使用 HiddifyNext："
 
 msgid "Download App"
-msgstr "<i class='fa-solid fa-download'></i> 下载应用程序"
+msgstr "下载应用程序"
 
 msgid "Import"
 msgstr "在应用程序中导入"
@@ -2234,11 +2232,6 @@ msgstr "更多应用"
 
 msgid "Import in"
 msgstr "导入"
-
-msgid ""
-"Download\n"
-"                                App"
-msgstr "下载应用程序"
 
 msgid "QRCode"
 msgstr "<i class='fa-solid fa-qrcode'></i> QRCode"

@@ -8,19 +8,25 @@
             {{_("Send Message to User's Telegram")}}
         </summary>
         <button onclick="show_send_message('all')" type="button" class="btn hbtn bg-h-blue">{{_("All Users")}}</button>
-        <button onclick="show_send_message('expired')" type="button" class="btn hbtn bg-h-red">{{_("Expired Users")}}</button>
-        <button onclick="show_send_message('active')" type="button" class="btn hbtn bg-h-green">{{_("Active Users")}}</button>
+        <button onclick="show_send_message('expired')" type="button" class="btn hbtn bg-h-red">
+            {{_("Expired Users")}}</button>
+        <button onclick="show_send_message('active')" type="button" class="btn hbtn bg-h-green">
+            {{_("Active Users")}}</button>
         <br>
-        <button onclick="show_send_message('offline 1h')" type="button" class="btn  hbtn bg-h-orange">{{_("Offline more than 1 hour")}}</button>
-        <button onclick="show_send_message('offline 1d')" type="button" class="btn  hbtn bg-h-red">{{_("Offline more than 1 day")}}</button>
-        <button onclick="show_send_message('offline 1w')" type="button" class="btn hbtn bg-h-grey">{{_("Offline more than 1 week")}}</button>
+        <button onclick="show_send_message('offline 1h')" type="button" class="btn  hbtn bg-h-orange">
+            {{_("Offline more than 1 hour")}}</button>
+        <button onclick="show_send_message('offline 1d')" type="button" class="btn  hbtn bg-h-red">
+            {{_("Offline more than 1 day")}}</button>
+        <button onclick="show_send_message('offline 1w')" type="button" class="btn hbtn bg-h-grey">
+            {{_("Offline more than 1 week")}}</button>
     </details>
 </div>
 {% endif %}
 {{super()}}
 
 <div class="callout callout-success">
-    {{_('User usage will be updated every 6 minutes. To update it now click <a href="%(link)s" class="btn btn-info">here</a>',link=hurl_for("admin.Actions:update_usage"))}}
+    {{_('User usage will be updated every 6 minutes. To update it now click <a href="%(link)s"
+        class="btn btn-info">here</a>',link=hurl_for("admin.Actions:update_usage"))}}
 
 </div>
 <style>
@@ -72,7 +78,7 @@
                 console.log(result);
                 if (!result) return
                 // let dialog = bootbox.dialog({           
-                //     message: '<p><i class="fas fa-spin fa-spinner"></i> {{_("Sending...")}}</p>'
+                //     message: '<p><i class="fas fa-spin fa-spinner"></i> {{_("Sending")}}</p>'
                 // });
 
                 $.ajax({

@@ -888,20 +888,14 @@
   "In this section, you can add your domain. You need to add at least one domain in direct mode.": "1️⃣ В этом разделе вы можете добавить свой Домен.\n<br>\n2. Если вы хотите уменьшить вероятность использования грязного IP-адреса, вы можете добавить сервер с несколькими Relay <a href='https://github.com/hiddify/hiddify-config/discussions/129'>Подробнее</a>.\n<br>\n3. Если у вас в панели несколько IPv4 или IPv6, вам необходимо добавить указанный на них домен в качестве Relay.",
   "Send Message to User's Telegram": "📣 Отправить сообщение в Telegram пользователя",
   "All Users": "Все пользователи",
-  "Expired Users": "Пользователи с истекшим сроком действия",
-  "Active Users": "Активные пользователи",
-  "Offline more than 1 hour": "Оффлайн более 1 часа",
-  "Offline more than 1 day": "Офлайн более 1 дня",
-  "Offline more than 1 week": "Офлайн более 1 недели",
-  "User usage will be updated every 6 minutes. To update it now click <a href=\"%(link)s\" class=\"btn btn-info\">here</a>": "🔄 Статистика использования пользователей будет обновляться каждую 1 минуту, чтобы обновить сейчас, <a href='%(link)s' class='btn btn-info'>Нажмите здесь</a>",
+  "Expired Users": "",
+  "Active Users": "",
+  "Offline more than 1 hour": "",
+  "Offline more than 1 day": "",
+  "Offline more than 1 week": "",
+  "User usage will be updated every 6 minutes. To update it now click <a href=\"%(link)s\"\n        class=\"btn btn-info\">here</a>": "",
   "Please type your message to send to the telegram:": "✏️ Пожалуйста, напишите свое сообщение для отправки в Telegram:",
-  "Sending": {
-    "": {
-      "": {
-        "": "📤Отправка..."
-      }
-    }
-  },
+  "Sending": "",
   "The message has been sent.": "Сообщение отправлено",
   "Hover the user to see the reason": "Наведите курсор на пользователя, чтобы увидеть причину",
   "The message was not sent to": "Сообщение не было отправлено ",
@@ -971,13 +965,7 @@
   "How many?": "",
   "Domain?": "",
   "Please Wait...": "",
-  "Finished": {
-    "": {
-      "": {
-        "": ""
-      }
-    }
-  },
+  "Finished": "",
   "Dear {}\n\nYour hiddify information is\nUUID: {}\nLast online date: {}\nExpire time: {}\nUsage class: {}\n": "Дорогой {}\n\nВаша информация Hiddify\nUUID: {}\nДата последнего онлайн-соединения: {}\nИстекает : {}\nКласс использования: {}",
   "Your hiddify instance information \nDomain: {} \nUsage limit: {} GB\nCurrent usage: {} GB\nExpires at: {} \nRemaining days: {} \n\n\n Happy using 🎉 🎉 🎉 \n": "Информация о вашем экземпляре Hiddify\nДомен: {}\nЛимит использования: {} ГБ\nТекущее использование: {} ГБ\nСрок действия истекает: {}\nОставшиеся дни: {}\n\n\nУдачи! 🎉 🎉 🎉",
   "login": {
@@ -1027,13 +1015,12 @@
   "Temporary Short Link": "⏱️ Временная короткая ссылка",
   "Simplifies the process of employing the link elsewhere.": "Упрощает процесс использования ссылки в других местах",
   "Open in Application": "Открыть в приложении",
-  "If the application do not open automatically, please click <a class='btn btn-primary copy-link' href='%(sub)s'>this universal link</a> to copy and paste it on\n                your application, or:": "Если приложение не открывается автоматически, нажмите <a class='btn btn-primary copy-link' href='%(sub)s'>эту ссылку</a>, чтобы скопировать и вставить ее в ваше приложение или:",
+  "If the application do not open automatically, please click <a class='btn btn-primary copy-link'\n                    href='%(sub)s'>this universal link</a> to copy and paste it on\n                your application, or:": "",
   "Use HiddifyNext:": "Используйте HiddifyNext:",
   "Download App": "<i class='fa-solid fa-download'></i> Загрузить приложение",
   "Import": "Импортировать в приложение",
   "More Applications": "Больше приложений",
   "Import in": "Импортировать",
-  "Download\n                                App": "Скачать Приложение",
   "QRCode": "<i class='fa-solid fa-qrcode'></i> QRCode",
   "Copy Link": "Копировать ссылку",
   "Reset Usage Time:": "Время сброса использования трафика:",

@@ -2025,33 +2025,30 @@ msgid "All Users"
 msgstr "Все пользователи"
 
 msgid "Expired Users"
-msgstr "Пользователи с истекшим сроком действия"
+msgstr ""
 
 msgid "Active Users"
-msgstr "Активные пользователи"
+msgstr ""
 
 msgid "Offline more than 1 hour"
-msgstr "Оффлайн более 1 часа"
+msgstr ""
 
 msgid "Offline more than 1 day"
-msgstr "Офлайн более 1 дня"
+msgstr ""
 
 msgid "Offline more than 1 week"
-msgstr "Офлайн более 1 недели"
+msgstr ""
 
 msgid ""
-"User usage will be updated every 6 minutes. To update it now click <a "
-"href=\"%(link)s\" class=\"btn btn-info\">here</a>"
+"User usage will be updated every 6 minutes. To update it now click <a href=\"%(link)s\"\n"
+"        class=\"btn btn-info\">here</a>"
 msgstr ""
-"🔄 Статистика использования пользователей будет обновляться каждую 1 минуту, "
-"чтобы обновить сейчас, <a href='%(link)s' class='btn btn-info'>Нажмите "
-"здесь</a>"
 
 msgid "Please type your message to send to the telegram:"
 msgstr "✏️ Пожалуйста, напишите свое сообщение для отправки в Telegram:"
 
-msgid "Sending..."
-msgstr "📤Отправка..."
+msgid "Sending"
+msgstr ""
 
 msgid "The message has been sent."
 msgstr "Сообщение отправлено"
@@ -2188,7 +2185,7 @@ msgstr ""
 msgid "Please Wait..."
 msgstr ""
 
-msgid "Finished..."
+msgid "Finished"
 msgstr ""
 
 msgid ""
@@ -2387,12 +2384,10 @@ msgid "Open in Application"
 msgstr "Открыть в приложении"
 
 msgid ""
-"If the application do not open automatically, please click <a class='btn btn-primary copy-link' href='%(sub)s'>this universal link</a> to copy and paste it on\n"
+"If the application do not open automatically, please click <a class='btn btn-primary copy-link'\n"
+"                    href='%(sub)s'>this universal link</a> to copy and paste it on\n"
 "                your application, or:"
 msgstr ""
-"Если приложение не открывается автоматически, нажмите <a class='btn btn-"
-"primary copy-link' href='%(sub)s'>эту ссылку</a>, чтобы скопировать и "
-"вставить ее в ваше приложение или:"
 
 msgid "Use HiddifyNext:"
 msgstr "Используйте HiddifyNext:"
@@ -2408,11 +2403,6 @@ msgstr "Больше приложений"
 
 msgid "Import in"
 msgstr "Импортировать"
-
-msgid ""
-"Download\n"
-"                                App"
-msgstr "Скачать Приложение"
 
 msgid "QRCode"
 msgstr "<i class='fa-solid fa-qrcode'></i> QRCode"

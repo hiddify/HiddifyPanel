@@ -631,8 +631,8 @@
       "tool": {
         "all-configs": "All Configs",
         "doh": {
-          "title": "",
-          "help": ""
+          "title": "DNS Over HTTPS",
+          "help": "<h4>Configure DoH on your browser</h4>\n    There are several browsers compatible with DNS over HTTPS (DoH). This protocol lets\n    you encrypt your connection to 1.1.1.1 in order to protect your DNS queries from privacy intrusions and tampering.\n\n    Some browsers might already have this setting enabled.\n<br />\n    <h5>​​Mozilla Firefox</h5>\n    Select the <b>menu</b> button > <b>Settings</b>.In the General menu, scroll down to access <b>Network Settings</b>. Select <b>Settings</b>. Select <b>Enable DNS over HTTPS</b>.\n<br />\n    ​<h5>​Google Chrome</h5>\n    Select the <b>three-dot</b> menu in your browser > <b>Settings</b>.\n    Select <b>Privacy and security</b> > <b>Security</b>.\n    Scroll down and enable <b>Use secure DNS</b>.\n<br />\n    <h5>​​Microsoft Edge</h5>\n    Select the <b>three-dot</b> menu in your browser > <b>Settings</b>.\n    Select <b>Privacy, Search, and Services</b>, and scroll down to <b>Security</b>.\n    Enable <b>Use secure DNS</b>.\n    Select Choose a service provider."
         }
       },
       "allconfig": {
@@ -890,18 +890,12 @@
   "All Users": "All Users",
   "Expired Users": "Expired Users",
   "Active Users": "Active Users",
-  "Offline more than 1 hour": "Offline More Than 1 Hour",
-  "Offline more than 1 day": "Offline More Than 1 Day",
-  "Offline more than 1 week": "Offline More Than 1 Week",
-  "User usage will be updated every 6 minutes. To update it now click <a href=\"%(link)s\" class=\"btn btn-info\">here</a>": "🔄 User usage will be updated every 1 Minutes. to update it now <a href='%(link)s' class='btn btn-info'>Click Here</a>",
+  "Offline more than 1 hour": "Offline more than 1 hour",
+  "Offline more than 1 day": "Offline more than 1 day",
+  "Offline more than 1 week": "Offline more than 1 week",
+  "User usage will be updated every 6 minutes. To update it now click <a href=\"%(link)s\"\n        class=\"btn btn-info\">here</a>": "User usage will be updated every 6 minutes. To update it now click <a href=\"%(link)s\"\n        class=\"btn btn-info\">here</a>",
   "Please type your message to send to the telegram:": "✏️  Please write your message to send to the Telegram:",
-  "Sending": {
-    "": {
-      "": {
-        "": "📤 Sending ..."
-      }
-    }
-  },
+  "Sending": "Sending...",
   "The message has been sent.": "The message has been sent.",
   "Hover the user to see the reason": "Hover the user to see the reason",
   "The message was not sent to": "The message was not sent to",
@@ -971,13 +965,7 @@
   "How many?": "How many?",
   "Domain?": "Domain?",
   "Please Wait...": "Please Wait...",
-  "Finished": {
-    "": {
-      "": {
-        "": "Finished..."
-      }
-    }
-  },
+  "Finished": "Finished...",
   "Dear {}\n\nYour hiddify information is\nUUID: {}\nLast online date: {}\nExpire time: {}\nUsage class: {}\n": "Dear {}\n\nYour Hiddify Information is\nUUID: {}\nLast Online Date: {}\nExpire Time: {}\nUsage Class: {}\n",
   "Your hiddify instance information \nDomain: {} \nUsage limit: {} GB\nCurrent usage: {} GB\nExpires at: {} \nRemaining days: {} \n\n\n Happy using 🎉 🎉 🎉 \n": "Your Hiddify instance information \nDomain: {} \nUsage Limit: {} GB\nCurrent Usage: {} GB\nExpires at: {} \nRemaining Days: {} \n\n\nGood Luck! 🎉 🎉 🎉 \n",
   "login": {
@@ -1027,13 +1015,12 @@
   "Temporary Short Link": "⏱️ Temporary Short Link",
   "Simplifies the process of employing the link elsewhere.": "Simplifies the process of employing the link elsewhere",
   "Open in Application": "Open in Application",
-  "If the application do not open automatically, please click <a class='btn btn-primary copy-link' href='%(sub)s'>this universal link</a> to copy and paste it on\n                your application, or:": "If the Hiddify application does not open automatically, please click <a class='btn btn-primary copy-link' href='%(sub)s'>this universal link</a> to copy and paste it in the Hiddify application, or:",
+  "If the application do not open automatically, please click <a class='btn btn-primary copy-link'\n                    href='%(sub)s'>this universal link</a> to copy and paste it on\n                your application, or:": "If the application do not open automatically, please click <a class='btn btn-primary copy-link'\n                    href='%(sub)s'>this universal link</a> to copy and paste it on\n                your application, or:",
   "Use HiddifyNext:": "Use HiddifyNext:",
   "Download App": "<i class='fa-solid fa-download'></i> Download App",
   "Import": "Import in App",
   "More Applications": "More Applications",
   "Import in": "Import in",
-  "Download\n                                App": "Download App",
   "QRCode": "<i class='fa-solid fa-qrcode'></i> QRCode",
   "Copy Link": "Copy Link",
   "Reset Usage Time:": "Traffic usage reset time:",
@@ -1058,8 +1045,8 @@
   "Commercial use": "Commercial Use",
   "Bug": "Bug/Feature",
   "Donation": {
-    "title": "",
-    "description": ""
+    "title": "Donation",
+    "description": "✳️ We need your help In Developing this Project\n    <br>\n    If you are developer or content producer, please contact us at <a href='mailto:info@hiddify.com'>info@hiddify.com</a>\n    <br><br>\n    \n    ℹ️ Also, we need financial help to further develop this panel and our service (we are Non-Profit).\n    <br>\n    <h5>Payment Methods :</h5>\n    <ul>\n    <li> <div class='btn-group'>\n        <a role='button' data-copy='EQCWnykA-YhavOXgH3sf-uxtXLjy83_9n5bJPGRPE8r2247_' class='btn btn-secondary copy-link'><i class='fa-regular fa-copy'></i></a>    \n    <a data-copy='EQCWnykA-YhavOXgH3sf-uxtXLjy83_9n5bJPGRPE8r2247_' role='button' class='btn btn-info share-link'>TON</a> </div></li>\n    \n    <li> <div class='btn-group'>\n        <a role='button' data-copy='TXZtFUxyBPMSykAWogu7C4zmbjySKqMcDE' class='btn btn-secondary copy-link'><i class='fa-regular fa-copy'></i></a>    \n    <a data-copy='TXZtFUxyBPMSykAWogu7C4zmbjySKqMcDE' role='button' class='btn btn-info share-link'>USDT (TRC20)</a> </div></li>\n    \n    <li> <div class='btn-group'>\n        <a role='button' data-copy='MCHoh7xwaDBBnQgANPpBtXiekagV6KpdrM' class='btn btn-secondary copy-link'><i class='fa-regular fa-copy'></i></a>    \n    <a data-copy='MCHoh7xwaDBBnQgANPpBtXiekagV6KpdrM' role='button' class='btn btn-info share-link'>Litecoin</a> </div></li>\n    \n    <li> <div class='btn-group'>\n        <a role='button' data-copy='0xF5CFc65ee336B377C2a37EA3BCD0CaD0d0F0CbA0' class='btn btn-secondary copy-link'><i class='fa-regular fa-copy'></i></a>    \n    <a data-copy='0xF5CFc65ee336B377C2a37EA3BCD0CaD0d0F0CbA0' role='button' class='btn btn-info share-link'>Ethereum</a> </div></li>\n    \n    <li> <div class='btn-group'>\n        <a role='button' data-copy='bc1qkfp7n3wxu2zc9mdy20cf27d5pujj65myww8f60' class='btn btn-secondary copy-link'><i class='fa-regular fa-copy'></i></a>    \n    <a data-copy='bc1qkfp7n3wxu2zc9mdy20cf27d5pujj65myww8f60' role='button' class='btn btn-info share-link'>Bitcoin</a> </div></li>\n    \n    <li> <div class='btn-group'>\n        <a role='button' data-copy='DPerFS2vCu5XnE3He32BaPVTkUDcKLsEaj' class='btn btn-secondary copy-link'><i class='fa-regular fa-copy'></i></a>    \n    <a data-copy='DPerFS2vCu5XnE3He32BaPVTkUDcKLsEaj' role='button' class='btn btn-info share-link'>Dogecoin</a> </div></li>\n    </ul>\n    \n    <br>\n    \n    We need also other help:\n    <ul>\n    <li>👥 Share Hiddify Manager with Others</li>\n   <li>📝Python Developer</li>\n    <li>📝Swift Developer</li>\n    <li>📝Flutter Developer</li>\n    <li>📝Go Developer</li>\n    <li>🖥Content Providers</li>\n    </ul>\n\n\n    Please contact us at <a href='mailto:info@hiddify.com'>info@hiddify.com</a> if you can help us."
   },
   "Telegram Bot": "Telegram Bot",
   "Are you sure you want to do this action?": "⚠️ Are you sure you want to do this action?",

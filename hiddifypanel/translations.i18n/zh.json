@@ -888,20 +888,14 @@
   "In this section, you can add your domain. You need to add at least one domain in direct mode.": "1️⃣ 在此部分中，您可以添加您的域名。\n<br>\n2️⃣ 如果您想减少出现脏 IP 的可能性，可以添加多个中继服务器<a href='https://github.com/hiddify/hiddify-config/discussions/129'>阅读更多</a>。\n<br>\n3️⃣ 如果您的面板中有多个 IPv4 或 IPv6，您必须将指向它们的域添加为中继。",
   "Send Message to User's Telegram": "📣 向用户的 Telegram 发送消息",
   "All Users": "全部用户",
-  "Expired Users": "过期用户",
-  "Active Users": "活跃用户",
-  "Offline more than 1 hour": "离线1小时以上",
-  "Offline more than 1 day": "离线超过 1 天",
-  "Offline more than 1 week": "离线超过 1 周",
-  "User usage will be updated every 6 minutes. To update it now click <a href=\"%(link)s\" class=\"btn btn-info\">here</a>": "🔄 用户使用情况每 1 分钟更新一次。立即更新<a href='%(link)s' class='btn btn-info'>点击此处</a>",
+  "Expired Users": "",
+  "Active Users": "",
+  "Offline more than 1 hour": "",
+  "Offline more than 1 day": "",
+  "Offline more than 1 week": "",
+  "User usage will be updated every 6 minutes. To update it now click <a href=\"%(link)s\"\n        class=\"btn btn-info\">here</a>": "",
   "Please type your message to send to the telegram:": "✏️ 请写下您要发送到 Telegram 的消息：",
-  "Sending": {
-    "": {
-      "": {
-        "": "📤 正在发送..."
-      }
-    }
-  },
+  "Sending": "",
   "The message has been sent.": "消息已发送。",
   "Hover the user to see the reason": "将鼠标悬停在用户上即可查看原因",
   "The message was not sent to": "该消息未发送至",
@@ -971,13 +965,7 @@
   "How many?": "多少？",
   "Domain?": "领域？",
   "Please Wait...": "请稍等...",
-  "Finished": {
-    "": {
-      "": {
-        "": "完成的..."
-      }
-    }
-  },
+  "Finished": "",
   "Dear {}\n\nYour hiddify information is\nUUID: {}\nLast online date: {}\nExpire time: {}\nUsage class: {}\n": "亲爱的 {}\n\n您的 Hiddify 信息是\nUUID：{}\n最后在线日期：{}\n过期时间：{}\n使用类别：{}",
   "Your hiddify instance information \nDomain: {} \nUsage limit: {} GB\nCurrent usage: {} GB\nExpires at: {} \nRemaining days: {} \n\n\n Happy using 🎉 🎉 🎉 \n": "您的 Hiddify 实例信息\n领域： {}\n使用限制：{} GB\n当前使用情况：{} GB\n到期时间：{}\n剩余天数：{}\n\n\n祝你好运！ 🎉🎉🎉",
   "login": {
@@ -1027,13 +1015,12 @@
   "Temporary Short Link": "⏱️临时短链接",
   "Simplifies the process of employing the link elsewhere.": "简化了在其他地方使用链接的过程",
   "Open in Application": "在应用程序中打开",
-  "If the application do not open automatically, please click <a class='btn btn-primary copy-link' href='%(sub)s'>this universal link</a> to copy and paste it on\n                your application, or:": "如果 Hiddify 应用程序没有自动打开，请点击<a class='btn btn-primary copy-link' href='%(sub)s'>此通用链接</a>将其复制并粘贴到 Hiddify 应用程序中， 或者：",
+  "If the application do not open automatically, please click <a class='btn btn-primary copy-link'\n                    href='%(sub)s'>this universal link</a> to copy and paste it on\n                your application, or:": "",
   "Use HiddifyNext:": "使用 HiddifyNext：",
-  "Download App": "<i class='fa-solid fa-download'></i> 下载应用程序",
+  "Download App": "下载应用程序",
   "Import": "在应用程序中导入",
   "More Applications": "更多应用",
   "Import in": "导入",
-  "Download\n                                App": "下载应用程序",
   "QRCode": "<i class='fa-solid fa-qrcode'></i> QRCode",
   "Copy Link": "复制链接",
   "Reset Usage Time:": "流量使用重置时间：",

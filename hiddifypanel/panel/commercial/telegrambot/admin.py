@@ -156,7 +156,7 @@ def create_package(call):  # <- passes a CallbackQuery type object to your funct
                         bot.send_message(call.message.chat.id, Usage.get_usage_msg(user.uuid, domain), reply_markup=Usage.user_keyboard(user.uuid))
 
                 # db.session.commit()
-                new_text = _("Finished...")
+                new_text = _("Finished")
                 bot.edit_message_text(new_text, call.message.chat.id, call.message.message_id, reply_markup=admin_keyboard_main())
                 bot.answer_callback_query(call.id, text=_("Ok"), show_alert=False, cache_time=1)
                 from hiddifypanel.panel import usage
