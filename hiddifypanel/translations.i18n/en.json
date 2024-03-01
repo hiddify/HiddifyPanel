@@ -408,7 +408,7 @@
     },
     "wireguard_enable": {
       "label": "Enable WireGuard",
-      "description": "WireGuard is UDP based protocol.\n\n⚠️  Accounting is not yet supported."
+      "description": "WireGuard is UDP based protocol.\n\n⚠️  It is working in Hiddify Next. "
     },
     "wireguard_port": {
       "label": "Wireguard Port",
@@ -487,8 +487,8 @@
       "description": "The length of the Padding for TLS Fragmentation"
     },
     "mux_enable": {
-      "label": "Ⓜ️ MUX Enable",
-      "description": "Enable MUX (Multiplex)"
+      "label": "Ⓜ️ MUX Enable (⚠️ Incompatible with some clients)",
+      "description": "Mux needs compatible clients. Mux in Hiddify Next and singbox are not compatible with Xray"
     },
     "mux_protocol": {
       "label": "♍️ MUX Protocol",
@@ -572,7 +572,7 @@
     },
     "httpupgrade_enable": {
       "label": "Enable HTTPUpgrade Method",
-      "description": "HTTPUpgrade complete a HTTP 1.1 Upgrade request and response before using the connection directly. It is similar to WebSocket in the way it create an direction channel that can be forwarded by many reverse proxies and CDNs, without the need to deal with all the issue around WebSocket Protocol itself."
+      "description": "HTTPUpgrade complete a HTTP 1.1 Upgrade request and response before using the connection directly. It is similar to WebSocket in the way it create an direction channel that can be forwarded by many reverse proxies and CDNs, without the need to deal with all the issue around WebSocket Protocol itself.\n\n⚠️ Not Available in Xray based Clients. Only HiddifyNext, Singbox, and V2fly clients are supported"
     },
     "path_httpupgrade": {
       "label": "HTTP Upgrade Path",
@@ -605,17 +605,32 @@
     "shadowsocks": {
       "label": "Shadowsocks",
       "description": "Shadowsocks is a fast tunnel proxy that helps you bypass firewalls."
-    }
+    },
+    "Invalid domain": "Error! Invalid Domain.  The Domain Format is www.google.com",
+    "Domain already used": "Domain is exist in domains section. Use another Domain",
+    "Invalid telegram bot token": "Invalid Telegram Bot Token",
+    "Invalid brand link": "Invalid Link. it should be on this format: (https or http://example.com)",
+    "invalid uuid": "Invalid UUID secret. example: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n\n",
+    "Invalid proxy path": "Invalid Proxy Path. It should be ASCI string (a-z A-Z 0-9)",
+    "Invalid port": "Invalid Port. it should be comma separated Integer e.g.  2052,2053",
+    "Invalid! The pattern is number-number": "⚠️ Config Invalid! The Pattern Is Number-Number",
+    "Invalid! it should be a number only": "⚠️ Config Invalid! It Should Be a Number Only"
   },
   "Error! auto cdn ip can not be find, please contact admin.": "Error In Auto CDN IP! It Can Not Be Find, Please Contact Admin",
   "Owner can not be deleted!": "Owner can not be deleted!",
   "This domain does not exist in the panel!": "This Domain does not exist in the Panel !",
   "Domain can not be resolved! there is a problem in your domain": "Domain can not be resolved! There is a problem in your domain. Please check your Domain configurations.",
-  "selected domain for REALITY is not in the same ASN. To better use of the protocol, it is better to find a domain in the same ASN.": "Selected Domain for REALITY is not in the same ASN. To better use of the Protocol, it is better to find a Domain in the same ASN",
+  "selected domain for REALITY is not in the same ASN": {
+    " To better use of the protocol, it is better to find a domain in the same ASN.": "Selected Domain for REALITY is not in the same ASN. To better use of the Protocol, it is better to find a Domain in the same ASN"
+  },
   "User activated!": "User Activated",
   "Package ended!": "Package Ended",
-  "Your domains changed. Please do not forget to copy admin links, otherwise you can not access to the panel anymore.": "⚠️ Your Domains Changed. please do not forget to copy Admin links, otherwise you can not access to the panel anymore",
-  "Success! Please wait around 4 minutes to make sure everything is updated. During this time, please save your proxy links which are:": "⚠️ Please wait about 5 minutes to make sure everything is updated. during this time, please copy and save your Proxy links which are:",
+  "Your domains changed": {
+    " Please do not forget to copy admin links, otherwise you can not access to the panel anymore.": "⚠️ Your Domains Changed. please do not forget to copy Admin links, otherwise you can not access to the panel anymore"
+  },
+  "Success! Please wait around 4 minutes to make sure everything is updated": {
+    " During this time, please save your proxy links which are:": "⚠️ Please wait about 5 minutes to make sure everything is updated. during this time, please copy and save your Proxy links which are:"
+  },
   "see the log in the bellow screen": "📑 See the log in the bellow screen",
   "Success! Please wait around 5 minutes to make sure everything is updated.": "✔️ Success! Please Wait around 5 minutes to make sure everything is updated",
   "actions": "Actions",
@@ -717,7 +732,9 @@
       "link": {
         "success-copy": "Link Copied to Clipboard. ",
         "manual-copy": "Copy to Clipboard:  Ctrl+C, Enter"
-      }
+      },
+      "select os": "Please Select Your Operating System.",
+      "select tool": "Please select the item."
     }
   },
   "Mode": "Mode",
@@ -728,7 +745,9 @@
   "Can add sub admin": "👥 Can Add Sub Admin",
   "Should be a valid uuid": "Should be a valid uuid",
   "Add some text that is only visible to super_admin.": "Add some Text that is only visible to Super Admin",
-  "Define the admin mode. ": "🥇🥈🥉 Define the Admin Mode",
+  "Define the admin mode": {
+    " ": "🥇🥈🥉 Define the Admin Mode"
+  },
   "Config file is incorrect": "Config file is incorrect.",
   "Restore File": "Restore File",
   "Restore File Description": "Choose the downloaded restore file",
@@ -741,12 +760,18 @@
   "Override Root Admin": "🔁 Override Owner in Backup",
   "It will override the root admin to the current user": "It will override the owner admin of the backup file to the current user",
   "Submit": "Submit",
-  "This version of hiddify panel is outdated. Please update it from admin area.": "⚠️ This version of Hiddify Manager is outdated. please Update it from Admin area",
+  "This version of hiddify panel is outdated": {
+    " Please update it from admin area.": "⚠️ This version of Hiddify Manager is outdated. please Update it from Admin area"
+  },
   "Access Denied!": "Access Denied",
-  "It seems that you have not setup the system completely. <a class=\"btn btn-success\" href=\"%(quick_setup)s\">Click here</a> to complete setup.": "It seems that you have not setup the system completely. <a class='btn btn-success' href='%(quick_setup)s'>Click here</a> to complete setup.",
+  "It seems that you have not setup the system completely": {
+    " <a class=\"btn btn-success\" href=\"%(quick_setup)s\">Click here</a> to complete setup.": "It seems that you have not setup the system completely. <a class='btn btn-success' href='%(quick_setup)s'>Click here</a> to complete setup."
+  },
   "Please understand that parent panel is under test and the plan and the condition of use maybe change at anytime.": "Please understand that parent Panel is under test and the plan and the condition of use maybe change at anytime.",
   "It seems that you are using default domain (%(domain)s) which is not recommended.": "It seems that you are using default domain (%(domain)s) which is not recommended. Please change or remove it from domain section.",
-  "It seems that you have not created any users yet. Default user link: %(default_link)s": "It seems that you have not created any users yet. default user link: %(default_link)s",
+  "It seems that you have not created any users yet": {
+    " Default user link: %(default_link)s": "It seems that you have not created any users yet. default user link: %(default_link)s"
+  },
   "serverssh": {
     "password-login": {
       "warning": "Your server is vulnerable to abuses because PasswordAuthentication is enabled in your SSH. To secure your server, please switch to key authentication mechanism and turn off PasswordAuthentication. <a href='https://github.com/hiddify/Hiddify-Manager/wiki/Disable-SSH-Password-Authentication'>read more... </a>"
@@ -765,10 +790,14 @@
     }
   },
   "Direct mode means you want to use your server directly (for usual use), CDN means that you use your server on behind of a CDN provider.": "➡️ <b>Direct:</b> Select this mode if you configure your domain exclusively on your DNS provider in DNS-only mode. (CDN or Proxy Mode Off) <br>\n🔙 <b>Old Direct Mode:</b> This mode is similar to Direct mode but does not utilize gRPC for communication. Select Old Mode if you prefer to configure your domain on your DNS provider in DNS-only mode without utilizing gRPC.\n<br>\n🔀 <b>CDN:</b> Select this mode if you use a CDN provider for your server's domain. (Proxy Mode On)<br>\n☑️ <b>Automatic CDN IP Selector:</b> This mode functions similarly to CDN mode but with an automated IP assignment based on the IP provided by <a href='https://ircf.space' target='_blank'>ircf.space</a>. In Auto CDN IP mode, the IP address is resolved from the domain, while in CDN mode, the domain is returned.<br>\n♾️ <b>Relay:</b> Select this mode if you are using one or more Intermediary servers. <a href='https://github.com/hiddify/hiddify-config/discussions/129' target='_blank'>Read More</a>\n<br>\n✴️ <b>Cloudflare Worker:</b> This mode enables automatic creation of workers for your domain in Cloudflare. Simplify the setup and management of workers by registering this domain, as the necessary steps for worker registration are handled automatically within Cloudflare.\n<br>\n🔂 <b>Reality:</b> Utilize the Reality protocol to create multiple domains.\n<br>\n🆎 <b>Fake Site:</b> Select this mode if you want to use a fake Domain (e.g., Soft98.ir) to bypass SNI whitelist Proxy. (Not Recommended)\n<br>",
-  "You can select the configs with which domains show be shown in the user area. If you select all, automatically, all the new domains will be added for each users.": "For users visit the user area with this domain, Specify they can see the proxies of which domains.\n<br>\nSuggestion: For a domain with an unfiltered IP and different from the others, select all other domains (except the current domain). As a result, since the use of this IP is not for proxy and it is a simple website, this domain and IP will never be blocked and your users can easily update new profiles.",
+  "You can select the configs with which domains show be shown in the user area": {
+    " If you select all, automatically, all the new domains will be added for each users.": "For users visit the user area with this domain, Specify they can see the proxies of which domains.\n<br>\nSuggestion: For a domain with an unfiltered IP and different from the others, select all other domains (except the current domain). As a result, since the use of this IP is not for proxy and it is a simple website, this domain and IP will never be blocked and your users can easily update new profiles."
+  },
   "The name shown in the configs for this domain.": "The name that will be shown in the Configs for this Domain.",
   "This can be used for giving your users a permanent non blockable links.": "This can be used for giving your Users a permanent non Blockable Links.",
-  "gRPC is a H2 based protocol. Maybe it is faster for you!": "ℹ️ gRPC is a H2 based Protocol. Maybe it is faster for you!",
+  "gRPC is a H2 based protocol": {
+    " Maybe it is faster for you!": "ℹ️ gRPC is a H2 based Protocol. Maybe it is faster for you!"
+  },
   "Should be a valid domain": "Should be a valid domain",
   "Invalid IP or domain": "Invalid IP or domain",
   "Invalid REALITY hostnames": "Invalid REALITY Hostnames",
@@ -815,8 +844,6 @@
   },
   "Iran": "🇮🇷 Iran",
   "China": "🇨🇳 China",
-  "config.Invalid domain": "Error! Invalid Domain.  The Domain Format is www.google.com",
-  "config.Domain already used": "Domain is exist in domains section. Use another Domain",
   "Domain (%(domain)s)-> IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode": "Domain (%(domain)s)-> IP = %(domain_ip)s is not same as your IP = %(server_ip)s . this is required in Direct Mode",
   "Port is already used! in": "Port is Already Used in:",
   "ProxyPath is already used! use different proxy path": "ProxyPath is already used! use different proxy path",
@@ -837,13 +864,6 @@
     }
   },
   "Invalid admin link": "Invalid Admin Link",
-  "config.Invalid telegram bot token": "Invalid Telegram Bot Token",
-  "config.Invalid brand link": "Invalid Link. it should be on this format: (https or http://example.com)",
-  "config.invalid uuid": "Invalid UUID secret. example: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n\n",
-  "config.Invalid proxy path": "Invalid Proxy Path. It should be ASCI string (a-z A-Z 0-9)",
-  "config.Invalid port": "Invalid Port. it should be comma separated Integer e.g.  2052,2053",
-  "config.Invalid! The pattern is number-number": "⚠️ Config Invalid! The Pattern Is Number-Number",
-  "config.Invalid! it should be a number only": "⚠️ Config Invalid! It Should Be a Number Only",
   "Reset package days": "📆 Reset Package's Days",
   "Reset package usage": "⏳ Reset Package's Usage",
   "Reset every month": "Monthly",
@@ -854,7 +874,9 @@
   "Max IPs": "Max IPs",
   "Enable": "❇️ Enable",
   "Add some text that is only visible to you.": "You can add some text that Is only visible to you",
-  "Define the user mode. Should the usage reset every month?": "The user's Package Mode. should the usage reset every Month, Week, etc",
+  "Define the user mode": {
+    " Should the usage reset every month?": "The user's Package Mode. should the usage reset every Month, Week, etc"
+  },
   "If monthly is enabled, the usage will be reset after 30 days from this date.": "If the monthly option is enabled, when this number reaches 30, the user usage will be reset (for weekly and daily this number is 7 and 1)",
   "From when the user package will be started? Empty for start from first connection": "Specify the starting date of the package. Leave empty to start from first Connection.",
   "How many days this package should be available?": "How Many Days Is This Package?",
@@ -889,12 +911,16 @@
   "Domain": "Domain",
   "Edit Proxy Names": "✏️ Modifying Proxies",
   "Save Link": "Save Link",
-  "Please note that your panel can be accessed only via <a href=\"%(adminlink)s\" class=\"btn btn-primary copy-link\">%(adminlink)s</a>. Please save this link.": "Please note that your panel can be accessed only via the following link. please save this link.\n<p><a href='%(adminlink)s' class='btn btn-secondary copy-link'><i class='fa-solid fa-copy'></i></a>\n<a href='%(adminlink)s' class='copy-link' style='word-break: break-all;'>%(adminlink)s</a></p> ",
+  "Please note that your panel can be accessed only via <a href=\"%(adminlink)s\" class=\"btn btn-primary copy-link\">%(adminlink)s</a>": {
+    " Please save this link.": "Please note that your panel can be accessed only via the following link. please save this link.\n<p><a href='%(adminlink)s' class='btn btn-secondary copy-link'><i class='fa-solid fa-copy'></i></a>\n<a href='%(adminlink)s' class='copy-link' style='word-break: break-all;'>%(adminlink)s</a></p> "
+  },
   "Please wait ": "Please Wait ",
   "log": "📄 Log",
   "Click here to see the complete log": "Click here to see the complete log",
   "Success": "Success",
-  "The action done successfully. You can now leave this page.": "✅ The Action Done Successfully. You can now leave this page",
+  "The action done successfully": {
+    " You can now leave this page.": "✅ The Action Done Successfully. You can now leave this page"
+  },
   "With selected": "With selected",
   "Are you sure you want to delete this record?": "Are you sure you want to delete this record?",
   "Filter": "Filter",
@@ -920,7 +946,9 @@
   "Select all records": "Select all records",
   "Select record": "Select record",
   "Please select at least one record.": "Please select at least one record.",
-  "In this section, you can add your domain. You need to add at least one domain in direct mode.": "1️⃣ In this section, you can add your Domain. \n<br>\n2️⃣ If you want to lessen the probability of having dirty IP, you can add Multiple Relay Server <a href='https://github.com/hiddify/hiddify-config/discussions/129'>Read More</a>.\n<br>\n3️⃣ If you have Multiple IPv4 or IPv6 in your Panel you have to add the domain pointed to them as Relay.",
+  "In this section, you can add your domain": {
+    " You need to add at least one domain in direct mode.": "1️⃣ In this section, you can add your Domain. \n<br>\n2️⃣ If you want to lessen the probability of having dirty IP, you can add Multiple Relay Server <a href='https://github.com/hiddify/hiddify-config/discussions/129'>Read More</a>.\n<br>\n3️⃣ If you have Multiple IPv4 or IPv6 in your Panel you have to add the domain pointed to them as Relay."
+  },
   "Send Message to User's Telegram": "📣 Send Message to User's Telegram",
   "All Users": "All Users",
   "Expired Users": "Expired Users",
@@ -928,7 +956,9 @@
   "Offline more than 1 hour": "Offline more than 1 hour",
   "Offline more than 1 day": "Offline more than 1 day",
   "Offline more than 1 week": "Offline more than 1 week",
-  "User usage will be updated every 6 minutes. To update it now click <a href=\"%(link)s\"\n        class=\"btn btn-info\">here</a>": "🔄 User usage will be updated every 1 Minutes. to update it now <a href='%(link)s' class='btn btn-info'>Click Here</a>",
+  "User usage will be updated every 6 minutes": {
+    " To update it now click <a href=\"%(link)s\"\n        class=\"btn btn-info\">here</a>": "🔄 User usage will be updated every 1 Minutes. to update it now <a href='%(link)s' class='btn btn-info'>Click Here</a>"
+  },
   "Please type your message to send to the telegram:": "✏️  Please write your message to send to the Telegram:",
   "Sending": "Sending...",
   "The message has been sent.": "The message has been sent.",
@@ -990,16 +1020,22 @@
   },
   "Join our Hiddify Telegram channel to get the latest updates on Hiddify.": "Join our Hiddify Telegram channel to get the latest updates on Hiddify.",
   "[Admin only visible message:] You can change this message from settings": "[Admin-exclusive message]: Customizable via settings.",
-  "Hooray 🎉 🎉 🎉 \nWelcome to hiddifybot.\nStart by clicking the link on the panel or entering your UUID.": "Hooray 🎉 🎉 🎉 \nWelcome to Hiddify bot\nStart by clicking the link on the Panel or entering your UUID.",
+  "Hooray 🎉 🎉 🎉 \nWelcome to hiddifybot": {
+    "\nStart by clicking the link on the panel or entering your UUID.": "Hooray 🎉 🎉 🎉 \nWelcome to Hiddify bot\nStart by clicking the link on the Panel or entering your UUID."
+  },
   "update": "update",
-  "Welcome to admin bot. Choose your action": "Welcome to admin bot. Choose your action",
+  "Welcome to admin bot": {
+    " Choose your action": "Welcome to admin bot. Choose your action"
+  },
   "Create Package": "Create Package",
   "package size?": "package size?",
   "Ok": "Ok",
   "package days?": "package days?",
   "How many?": "How many?",
   "Domain?": "Domain?",
-  "Please Wait...": "Please Wait...",
+  "Please Wait.": {
+    ".": "Please Wait..."
+  },
   "Finished": "Finished...",
   "Dear {}\n\nYour hiddify information is\nUUID: {}\nLast online date: {}\nExpire time: {}\nUsage class: {}\n": "Dear {}\n\nYour Hiddify Information is\nUUID: {}\nLast Online Date: {}\nExpire Time: {}\nUsage Class: {}\n",
   "Your hiddify instance information \nDomain: {} \nUsage limit: {} GB\nCurrent usage: {} GB\nExpires at: {} \nRemaining days: {} \n\n\n Happy using 🎉 🎉 🎉 \n": "Your Hiddify instance information \nDomain: {} \nUsage Limit: {} GB\nCurrent Usage: {} GB\nExpires at: {} \nRemaining Days: {} \n\n\nGood Luck! 🎉 🎉 🎉 \n",
@@ -1014,7 +1050,9 @@
   "copy": "Copy",
   "open": "Open",
   "Link is changed!": "ℹ️ Link is Changed!",
-  "The page has been moved to a new link. Please copy and save the new link.": "The page has been moved to a new link. Please copy and save the new link.",
+  "The page has been moved to a new link": {
+    " Please copy and save the new link.": "The page has been moved to a new link. Please copy and save the new link."
+  },
   "all": "All",
   "auto": "Auto",
   "singbox: ssh": "SingBox: SSH",
@@ -1034,8 +1072,6 @@
   "android": "Android",
   "ios": "iOS",
   "desktop": "Desktop",
-  "user.home.select os": "Please Select Your Operating System.",
-  "user.home.select tool": "Please select the item.",
   "QR code": "🧾 QR Code",
   "Want to enjoy more with telegram?": "ℹ️ Connect Your Account to Telegram",
   "Please connect your telegram account to the panel to be informed about latest news.": "Please connect your Telegram account to the panel to be informed about latest news.",
@@ -1044,7 +1080,9 @@
   "search": "Search",
   "Check again": "Check Again",
   "Turn of VPN": "Turn Off VPN",
-  "You should visit this page without VPN. Your country=%(your_country)s\nexpected=%(expected_country)s": "You should visit this page without VPN Your Country =%(your_country)s\nExpected=%(expected_country)s",
+  "You should visit this page without VPN": {
+    " Your country=%(your_country)s\nexpected=%(expected_country)s": "You should visit this page without VPN Your Country =%(your_country)s\nExpected=%(expected_country)s"
+  },
   "Please connect your telegram accout to the panel to be informed about latest news.": "Please connect your Telegram account to the panel to know the latest Status of your Subscription",
   "Click to Start Anti-Filter.": "<i class='fa-solid fa-play'></i> Tap to Set up Anti-Filter",
   "Unified link for all application.": "One-click setup link for all applications (recommended)",
