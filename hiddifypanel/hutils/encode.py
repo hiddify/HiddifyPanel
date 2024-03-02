@@ -2,6 +2,11 @@ import urllib.parse
 import base64
 import uuid
 import string
+from slugify import slugify
+
+
+def unicode_slug(instr: str) -> str:
+    return slugify(instr, lowercase=False, allow_unicode=True)
 
 
 def url_encode(url: str) -> str:

@@ -55,7 +55,7 @@ class InfoAPI(MethodView):
         dto.profile_url = f"{c['profile_url']}#{hutils.encode.url_encode(c['user'].name)}"
         dto.profile_usage_current = g.account.current_usage_GB
         dto.profile_usage_total = g.account.usage_limit_GB
-        dto.profile_remaining_days = g.account.remaining_days()
+        dto.profile_remaining_days = g.account.remaining_days
         dto.profile_reset_days = g.account.days_to_reset()
         dto.telegram_bot_url = f"https://t.me/{c['bot'].username}?start={g.account.uuid}" if c['bot'] else ""
         dto.telegram_id = c['user'].telegram_id
@@ -66,7 +66,8 @@ class InfoAPI(MethodView):
         # with force_locale("fa"):
         dto.admin_message_html = hconfig(ConfigEnum.branding_freetext) or _("Join our Hiddify Telegram channel to get the latest updates on Hiddify.")
         if not hconfig(ConfigEnum.branding_freetext) and auth.admin_session_is_exist():
-            dto.admin_message_html += "<p style='font-style: italic;font-size:8px'>" + _("[Admin only visible message:] You can change this message from settings") + "</p>"
+            dto.admin_message_html += "<p style='font-style: italic;font-size:8px'>" + \
+                _("[Admin only visible message:] You can change this message from settings") + "</p>"
         dto.admin_message_url = hconfig(ConfigEnum.branding_site) or "https://t.me/hiddify"
         dto.brand_title = hconfig(ConfigEnum.branding_title) or _("Hiddify")
 

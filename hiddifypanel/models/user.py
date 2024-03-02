@@ -120,7 +120,7 @@ class User(BaseAccount):
             is_active = False
         elif self.usage_limit < self.current_usage:
             is_active = False
-        elif self.remaining_days() < 0:
+        elif self.remaining_days < 0:
             is_active = False
         elif len(self.ips) > max(3, self.max_ips):
             is_active = False
@@ -163,6 +163,7 @@ class User(BaseAccount):
             days = package_mode_dic.get(self.mode, 10000)
         return max(-100000, min(days, 100000))
 
+    @property
     def remaining_days(self) -> int:
         """
         The "remaining_days" function calculates the number of days remaining for a user's account package based on the

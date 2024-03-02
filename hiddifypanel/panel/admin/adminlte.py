@@ -5,8 +5,8 @@ from flask_admin.form import SecureForm
 
 class AdminLTEModelView(ModelView):
     form_base_class = SecureForm
-    edit_modal = False
-    create_modal = False
+    edit_modal = True
+    create_modal = True
 
     list_template = 'hiddify-flask-admin/list.html'
     create_template = 'flask-admin/model/create.html'

@@ -309,7 +309,7 @@ def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
 
     }
 
-    expire_days = user.remaining_days()
+    expire_days = user.remaining_days
     reset_days = user.days_to_reset()
     if reset_days >= expire_days:
         reset_days = 1000

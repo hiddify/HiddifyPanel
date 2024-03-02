@@ -11,9 +11,8 @@ import flask_admin.babel
 def gettext(string, **variables):
 
     tt = _(string, **variables)
-    print("=--", string, tt)
+    # print("=--", string, tt)
     if tt == string:
-        print("getting orig")
         return gettext_old(string, **variables)
     return tt
 

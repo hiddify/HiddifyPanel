@@ -618,8 +618,8 @@ def init_db():
     get_hconfigs.invalidate_all()
     # set_hconfig(ConfigEnum.db_version, 71)
     # temporary fix
-    add_column(Child.mode)
-    add_column(Child.name)
+    # add_column(Child.mode)
+    # add_column(Child.name)
     db_version = int(hconfig(ConfigEnum.db_version) or 0)
     if db_version == latest_db_version():
         return

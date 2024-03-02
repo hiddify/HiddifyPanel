@@ -1,8 +1,12 @@
-function ConvertNumberToPersion() {
+function ConvertNumberToPersion(elemnt) {
   let persian = { 0: '۰', 1: '۱', 2: '۲', 3: '۳', 4: '۴', 5: '۵', 6: '۶', 7: '۷', 8: '۸', 9: '۹' };
   let replace = {
     "Admin User": "مدیر", "User": 'کاربر',
-    'Create': 'ایجاد', "Back": "بازگشت", "Save & Add More": "ذخیره و ایجاد جدید", "Edit": "ویرایش", "Domain": "دامنه", "Proxy": "پروکسی"
+    'Create': 'ایجاد',
+    "Edit": "ویرایش",
+    "Domain": "دامنه",
+    "Proxy": "پروکسی",
+
   }
   // $('input[value="Save & Add More"]').val("ذخیره و ایجاد جدید")
 
@@ -31,12 +35,12 @@ function ConvertNumberToPersion() {
       traverse(el.childNodes[i]);
     }
   }
-  traverse(document.body);
+  traverse(elemnt);
 }
 
 
 $(document).ready(function () {
 
-  ConvertNumberToPersion();
+  ConvertNumberToPersion(document.body);
 
 });

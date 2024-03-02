@@ -1,8 +1,9 @@
 import re
+from flask_admin.actions import action
 import datetime
 import uuid
 from apiflask import abort
-from flask_bootstrap import SwitchField
+from flask_bootstrap import SwitchField, BooleanField
 from flask_babel import gettext as __
 from .adminlte import AdminLTEModelView
 from wtforms.validators import NumberRange
@@ -22,16 +23,17 @@ from hiddifypanel import hutils
 
 class UserAdmin(AdminLTEModelView):
 
-    column_sortable_list = ["enable", "name", "current_usage", 'mode', "remaining_days", "comment", 'last_online', "uuid", 'remaining_days']
-    column_searchable_list = [("uuid"), "name"]
-    column_list = ["enable", "name", "UserLinks", "current_usage", "remaining_days", "comment", 'last_online', 'mode', 'admin', "uuid"]
+    column_sortable_list = ["is_active", "name", "current_usage", 'mode', "remaining_days", "comment", 'last_online', "uuid", 'remaining_days']
+    column_searchable_list = ["uuid", "name"]
+    column_list = ["is_active", "name", "UserLinks", "current_usage", "remaining_days", "comment", 'last_online', 'mode', 'admin', "uuid"]
+    column_editable_list = ["comment", "name"]
     form_extra_fields = {
         'reset_days': SwitchField(_("Reset package days")),
         'reset_usage': SwitchField(_("Reset package usage")),
         # 'disable_user': SwitchField(_("Disable User"))
     }
     list_template = 'model/user_list.html'
-    column_editable_list = ["comment", "usage_limit", "package_days"]
+
     form_columns = ["name", "comment", "usage_limit", "reset_usage", "package_days", "reset_days", "mode", "uuid", "enable",]
     # form_excluded_columns = ['current_usage', 'monthly', 'telegram_id', 'last_online', 'expiry_time', 'last_reset_time', 'current_usage_GB',
     #  'start_date', 'added_by', 'admin', 'details', 'max_ips', 'ed25519_private_key', 'ed25519_public_key', 'username', 'password']
@@ -42,6 +44,7 @@ class UserAdmin(AdminLTEModelView):
     # can_export = True
     # form_overrides = dict(monthly=SwitchField)
     form_overrides = {
+
         'start_date': custom_widgets.DaysLeftField,
         'mode': custom_widgets.EnumSelectField,
         'usage_limit': custom_widgets.UsageField
@@ -91,6 +94,7 @@ class UserAdmin(AdminLTEModelView):
         "package_days": _('Package Days'),
         "max_ips": _('Max IPs'),
         "enable": _('Enable'),
+        "is_active": _('Active'),
 
     }
     # can_set_page_size=True
@@ -119,33 +123,34 @@ class UserAdmin(AdminLTEModelView):
     # can_edit = False
     # def on_model_change(self, form, model, is_created):
     #     model.password = generate_password_hash(model.password)
+    def _enable_formatter(view, context, model, name):
+        if model.is_active:
+            link = '<i class="fa-solid fa-circle-check text-success"></i> '
+        elif len(model.ips):
+            link = '<i class="fa-solid fa-users-slash text-danger" title="{_("Too many Connected IPs")}"></i>'
+        else:
+            link = '<i class="fa-solid fa-circle-xmark text-danger"></i> '
 
-    def _name_formatter(view, context, model, name):
-        # print("model.telegram_id",model.telegram_id)
-        extra = ""
         if hconfig(ConfigEnum.telegram_bot_token):
             if model.telegram_id:
-                extra = f'<button class="btn hbtn bg-h-blue btn-xs " onclick="show_send_message({model.id})" ><i class="fa-solid fa-paper-plane"></i></button> '
+                link += f'<button class="btn hbtn bg-h-blue btn-xs " onclick="show_send_message({model.id})" ><i class="fa-solid fa-paper-plane"></i></button> '
             else:
-                extra = f'<button class="btn hbtn bg-h-grey btn-xs disabled"><i class="fa-solid fa-paper-plane"></i></button> '
+                link += f'<button class="btn hbtn bg-h-grey btn-xs disabled"><i class="fa-solid fa-paper-plane"></i></button> '
 
-        link = ''
-        # if model.is_active:
-        #     link = '<i class="fa-solid fa-circle-check text-success"></i> '
-        # elif len(model.ips):
-        #     link = '<i class="fa-solid fa-users-slash text-danger" title="{_("Too many Connected IPs")}"></i>'
-        # else:
-        #     link = '<i class="fa-solid fa-circle-xmark text-danger"></i> '
+        return Markup(link)
 
-        href = f'{hiddify.get_account_panel_link(model, request.host, is_https=True)}#{hutils.encode.url_encode(model.name)}'
-
-        link += f"<a target='_blank' class='share-link' data-copy='{href}' href='{href}'>{model.name} <i class='fa-solid fa-arrow-up-right-from-square'></i></a>"
-
-        return Markup(extra + link)
+    # def _name_formatter(view, context, model, name):
+    #     # print("model.telegram_id",model.telegram_id)
 
     def _ul_formatter(view, context, model, name):
-        domains = get_panel_domains()
-        return Markup(" ".join([hiddify.get_html_user_link(model, d) for d in domains]))
+        href = f'{hiddify.get_account_panel_link(model, request.host, is_https=True)}#{hutils.encode.unicode_slug(model.name)}'
+
+        link = f"""<a target='_blank' class='share-link btn btn-xs btn-primary' data-copy='{href}' href='{href}'>
+        <i class='fa-solid fa-arrow-up-right-from-square'></i> 
+        {_("Current Domain")} </a>"""
+
+        domains = [d for d in get_panel_domains() if d.domain != request.host]
+        return Markup(link + " ".join([hiddify.get_html_user_link(model, d) for d in domains]))
 
     def _uuid_formatter(view, context, model, name):
         return Markup(f"<span>{model.uuid}</span>")
@@ -167,7 +172,7 @@ class UserAdmin(AdminLTEModelView):
         """)
 
     def _expire_formatter(view, context, model, name):
-        remaining = model.remaining_days()
+        remaining = model.remaining_days
 
         diff = datetime.timedelta(days=remaining)
 
@@ -194,13 +199,15 @@ class UserAdmin(AdminLTEModelView):
         # return Markup(f"<span class='badge ltr badge-{'success' if days>7 else ('warning' if days>0 else 'danger') }'>{days}</span> "+_('days'))
 
     column_formatters = {
-        'name': _name_formatter,
+        # 'name': _name_formatter,
         'UserLinks': _ul_formatter,
         'uuid': _uuid_formatter,
         'current_usage': _usage_formatter,
         "remaining_days": _expire_formatter,
         'last_online': _online_formatter,
-        'admin': _admin_formatter
+        'admin': _admin_formatter,
+
+        "is_active": _enable_formatter
     }
 
     def on_model_delete(self, model):
@@ -223,7 +230,7 @@ class UserAdmin(AdminLTEModelView):
             delattr(form, 'reset_usage')
             # delattr(form,'disable_user')
         else:
-            remaining = form._obj.remaining_days()  # remaining_days(form._obj)
+            remaining = form._obj.remaining_days  # remaining_days(form._obj)
             msg = _("Remaining: ") + hutils.convert.format_timedelta(datetime.timedelta(days=remaining))
             form.reset_days.label.text += f" ({msg})"
             usr_usage = f" ({_('user.home.usage.title')} {round(form._obj.current_usage_GB,3)}GB)"
@@ -297,7 +304,7 @@ class UserAdmin(AdminLTEModelView):
     def get_list(self, page, sort_column, sort_desc, search, filters, page_size=50, *args, **kwargs):
         res = None
         # print('aaa',args, kwargs)
-        if sort_column == 'remaining_days':
+        if sort_column in ['remaining_days', 'is_active']:
             query = self.get_query()
 
             if search:
@@ -312,7 +319,7 @@ class UserAdmin(AdminLTEModelView):
             count = len(data)
 
             # Sorting the data
-            data = sorted(data, key=lambda p: p.remaining_days(), reverse=sort_desc)
+            data = sorted(data, key=lambda p: getattr(p, sort_column), reverse=sort_desc)
 
             # Applying pagination
             start = page * page_size

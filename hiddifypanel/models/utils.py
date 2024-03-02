@@ -1,6 +1,4 @@
 
-from slugify import slugify
-
 
 def fill_username(model) -> None:
     from hiddifypanel import hutils

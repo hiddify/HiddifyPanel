@@ -121,8 +121,8 @@
           {% if hconfig(ConfigEnum.license) %}
           {% else %}
           {% if false %}
-          {{ render_nav_item('admin.CommercialInfo:index', icon('solid','dumpster','nav-icon')+_('Commercial
-          use'),_use_li=True) }}
+          {{ render_nav_item('admin.CommercialInfo:index', icon('solid','dumpster','nav-icon')+
+          _('Commercial use'),_use_li=True) }}
           {% endif %}
           {% endif %}
           {% set action_active = True if request.endpoint and "Actions:" in request.endpoint else False %}

@@ -168,8 +168,11 @@ def get_config_form():
                 field = wtf.fields.SelectField(_(f"config.{c.key}.label"), choices=[("ir", _("Iran")), ("zh", _(
                     "China")), ("other", _("Others"))], description=_(f"config.{c.key}.description"), default=hconfig(c.key))
             elif c.key == ConfigEnum.package_mode:
-                field = wtf.fields.SelectField(_(f"config.{c.key}.label"), choices=[("release", _("Release")), ("beta", _("Beta")),
-                                               ("develop", _("Develop"))], description=_(f"config.{c.key}.description"), default=hconfig(c.key))
+                package_modes = [("release", _("Release")), ("beta", _("Beta"))]
+                if hconfig(c.key) == "develop":
+                    package_modes.append(("develop", _("Develop")))
+                field = wtf.fields.SelectField(_(f"config.{c.key}.label"), choices=package_modes,
+                                               description=_(f"config.{c.key}.description"), default=hconfig(c.key))
 
             elif c.key == ConfigEnum.shadowsocks2022_method:
                 field = wtf.fields.SelectField(_(f"config.{c.key}.label"), choices=[
