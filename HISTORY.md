@@ -281,6 +281,8 @@
 
 #### Fix
 
+* Csrf check. 
+
 * Shadowsocks bug. 
 
 * Translation issues. 
@@ -913,6 +915,11 @@ with A2_
 
 #### Other
 
+* Merge pull request #145 from Iam54r1n4/up-trans. 
+  _inlang: update translations: fix missing translations_
+
+* Merge branch 'main' into up-trans. 
+
 * Add modal for quicker editing. 
 
 * Inlang: update translations. 
@@ -923,9 +930,13 @@ with A2_
 
 * Inlang: update translations. 
 
+* Merge branch 'hiddify:main' into up-trans. 
+
 * Inlang: update translations. 
 
 * Update translation. 
+
+* Inlang: update translations. 
 
 * Inlang: update translations. 
 
@@ -1744,6 +1755,14 @@ It is a visual improvement to have all users aligned in the table._
 * Convert old db to new. 
 
 * Add pysql req. 
+
+
+
+## 8.8.99 (2024-03-02)
+
+#### Fix
+
+* Bug (latest release on v8) 
 
 
 

@@ -407,7 +407,7 @@ msgstr ""
 "Funciona como Trojan, mas não requer certificado de assinatura. o firewall verá o handshake tls real com o certificado válido que você escolher."
 
 msgid "config.restls.label"
-msgstr "config.restls.label"
+msgstr "RestTLS"
 
 msgid "config.restls.description"
 msgstr "config.restls.description"
@@ -1192,7 +1192,7 @@ msgid "user.home.tool.all-configs"
 msgstr "Todas as configurações"
 
 msgid "user.home.tool.doh.title"
-msgstr ""
+msgstr "DNS sobre HTTPS"
 
 msgid "user.home.tool.doh.help"
 msgstr ""
@@ -1561,6 +1561,11 @@ msgstr ""
 
 msgid "serverssh.password-login.warning"
 msgstr ""
+"Seu servidor está vulnerável a abusos porque PasswordAuthentication está "
+"habilitado em seu SSH. Para proteger seu servidor, mude para o mecanismo de "
+"autenticação de chave e desative PasswordAuthentication. <a "
+"href='https://github.com/hiddify/Hiddify-Manager/wiki/Disable-SSH-Password-"
+"Authentication'>consulte Mais informação...</a>"
 
 msgid "child has been removed!"
 msgstr "Child removido"
@@ -1586,7 +1591,7 @@ msgid "domain.cdn"
 msgstr "CDN"
 
 msgid "domain.domain_fronting.label"
-msgstr ""
+msgstr "🔒 Habilitar fronting de domínio TLS"
 
 msgid "domain.domain_fronting.description"
 msgstr ""
@@ -1695,7 +1700,7 @@ msgid "node.uuid.dscr"
 msgstr ""
 
 msgid "Remote nodes are not supported yet!"
-msgstr ""
+msgstr "Nós remotos ainda não são suportados!"
 
 msgid "quicksetup.setlang.success"
 msgstr "A alteração do idioma foi bem-sucedida."
@@ -1925,7 +1930,7 @@ msgstr ""
 "Envie uma mensagem para obter uma versão especial para usuários corporativos."
 
 msgid " Search Settings"
-msgstr ""
+msgstr " Configurações de pesquisa"
 
 msgid "Create"
 msgstr "Criar"
@@ -2109,30 +2114,33 @@ msgid "All Users"
 msgstr "Todos os usuários"
 
 msgid "Expired Users"
-msgstr ""
+msgstr "Usuários expirados"
 
 msgid "Active Users"
-msgstr ""
+msgstr "Usuários ativos"
 
 msgid "Offline more than 1 hour"
-msgstr ""
+msgstr "Offline por mais de 1 hora"
 
 msgid "Offline more than 1 day"
-msgstr ""
+msgstr "Offline por mais de 1 dia"
 
 msgid "Offline more than 1 week"
-msgstr ""
+msgstr "Offline há mais de uma semana"
 
 msgid ""
 "User usage will be updated every 6 minutes. To update it now click <a href=\"%(link)s\"\n"
 "        class=\"btn btn-info\">here</a>"
 msgstr ""
+"O uso do usuário será atualizado a cada 6 minutos. Para atualizá-lo agora "
+"clique <a href=\"%(link)s\"<inlang-LineFeed>class=\"btn btn-"
+"info\"&gt;aqui</a>"
 
 msgid "Please type your message to send to the telegram:"
 msgstr "✏️ Por favor, escreva sua mensagem para enviar para o Telegram:"
 
 msgid "Sending"
-msgstr ""
+msgstr "Enviando..."
 
 msgid "The message has been sent."
 msgstr "A mensagem foi enviada."
@@ -2144,10 +2152,10 @@ msgid "The message was not sent to"
 msgstr "The message was not sent to"
 
 msgid "%(count)s records were successfully disabled."
-msgstr ""
+msgstr "%(count)s registros foram desativados com sucesso."
 
 msgid "%(count)s records were successfully enabled."
-msgstr ""
+msgstr "%(count)s registros foram ativados com sucesso."
 
 msgid "app.hiddify.next.title"
 msgstr "Hiddificar próximo"
@@ -2243,34 +2251,34 @@ msgstr ""
 "Comece clicando no link no Painel ou inserindo seu UUID."
 
 msgid "update"
-msgstr ""
+msgstr "atualizar"
 
 msgid "Welcome to admin bot. Choose your action"
-msgstr ""
+msgstr "Bem-vindo ao bot administrativo. Escolha sua ação"
 
 msgid "Create Package"
-msgstr ""
+msgstr "Criar pacote"
 
 msgid "package size?"
-msgstr ""
+msgstr "tamanho do pacote?"
 
 msgid "Ok"
-msgstr ""
+msgstr "OK"
 
 msgid "package days?"
-msgstr ""
+msgstr "dias de pacote?"
 
 msgid "How many?"
-msgstr ""
+msgstr "Quantos?"
 
 msgid "Domain?"
-msgstr ""
+msgstr "Domínio?"
 
 msgid "Please Wait..."
-msgstr ""
+msgstr "Por favor, aguarde..."
 
 msgid "Finished"
-msgstr ""
+msgstr "Finalizado..."
 
 msgid ""
 "Dear {}\n"
@@ -2333,7 +2341,7 @@ msgstr "ℹ️ O link foi alterado!"
 
 msgid ""
 "The page has been moved to a new link. Please copy and save the new link."
-msgstr ""
+msgstr "A página foi movida para um novo link. Copie e salve o novo link."
 
 msgid "all"
 msgstr "Todos"
@@ -2552,7 +2560,7 @@ msgid "Bug"
 msgstr "Bug/recurso"
 
 msgid "Donation.title"
-msgstr ""
+msgstr "Doação"
 
 msgid "Donation.description"
 msgstr ""

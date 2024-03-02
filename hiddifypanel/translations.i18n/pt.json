@@ -632,7 +632,8 @@
       "tool": {
         "all-configs": "Todas as configurações",
         "doh": {
-          "title": "DNS sobre HTTPS"
+          "title": "DNS sobre HTTPS",
+          "help": ""
         }
       },
       "allconfig": {
@@ -746,11 +747,6 @@
   "Please understand that parent panel is under test and the plan and the condition of use maybe change at anytime.": "Por favor, entenda que o painel principal está em teste e o plano e as condições de uso podem mudar a qualquer momento.",
   "It seems that you are using default domain (%(domain)s) which is not recommended.": "Parece que você está usando o domínio padrão (%(domain)s), o que não é recomendado. Por favor, altere ou remova-o da seção de domínio.",
   "It seems that you have not created any users yet. Default user link: %(default_link)s": "Parece que você ainda não criou nenhum usuário. link de usuário padrão: %(default_link)s",
-  "serverssh": {
-    "password-login": {
-      "warning": ""
-    }
-  },
   "serverssh": {
     "password-login": {
       "warning": "Seu servidor está vulnerável a abusos porque PasswordAuthentication está habilitado em seu SSH. Para proteger seu servidor, mude para o mecanismo de autenticação de chave e desative PasswordAuthentication. <a href='https://github.com/hiddify/Hiddify-Manager/wiki/Disable-SSH-Password-Authentication'>consulte Mais informação...</a>"
@@ -929,15 +925,12 @@
   "In this section, you can add your domain. You need to add at least one domain in direct mode.": "Nesta seção, você pode adicionar seu domínio.\n<br>\nSe você deseja diminuir a probabilidade de ter um IP sujo, pode adicionar Multiple Relay Server <a href='https://github.com/hiddify/hiddify-config/discussions/129'>Leia mais</a>.\n<br>\nSe você tiver Múltiplos IPv4 ou IPv6 em seu Painel, deverá adicionar o domínio apontado para eles como Relay.",
   "Send Message to User's Telegram": "📣 Enviar mensagem para o telegram do usuário",
   "All Users": "Todos os usuários",
-
   "Expired Users": "Usuários expirados",
   "Active Users": "Usuários ativos",
   "Offline more than 1 hour": "Offline por mais de 1 hora",
   "Offline more than 1 day": "Offline por mais de 1 dia",
   "Offline more than 1 week": "Offline há mais de uma semana",
-  "User usage will be updated every 6 minutes": {
-    " To update it now click <a href=\"%(link)s\"\n        class=\"btn btn-info\">here</a>": "O uso do usuário será atualizado a cada 6 minutos. Para atualizá-lo agora clique <a href=\"%(link)s\"<inlang-LineFeed>class=\"btn btn-info\"&gt;aqui</a>"
-  },
+  "User usage will be updated every 6 minutes. To update it now click <a href=\"%(link)s\"\n        class=\"btn btn-info\">here</a>": "O uso do usuário será atualizado a cada 6 minutos. Para atualizá-lo agora clique <a href=\"%(link)s\"<inlang-LineFeed>class=\"btn btn-info\"&gt;aqui</a>",
   "Please type your message to send to the telegram:": "✏️ Por favor, escreva sua mensagem para enviar para o Telegram:",
   "Sending": "Enviando...",
   "The message has been sent.": "A mensagem foi enviada.",
@@ -945,7 +938,6 @@
   "The message was not sent to": "The message was not sent to",
   "%(count)s records were successfully disabled.": "%(count)s registros foram desativados com sucesso.",
   "%(count)s records were successfully enabled.": "%(count)s registros foram ativados com sucesso.",
-
   "app": {
     "hiddify": {
       "next": {
@@ -1000,25 +992,17 @@
   },
   "Join our Hiddify Telegram channel to get the latest updates on Hiddify.": "Junte-se ao nosso canal Hiddify Telegram para obter as atualizações mais recentes sobre o Hiddify.",
   "[Admin only visible message:] You can change this message from settings": "[Mensagem visível apenas pelo administrador]: Você pode alterar esta mensagem nas configurações.",
-
-  "Hooray 🎉 🎉 🎉 \nWelcome to hiddifybot": {
-    "\nStart by clicking the link on the panel or entering your UUID.": "Viva 🎉 🎉 🎉\nBem-vindo ao bot Hiddify\nComece clicando no link no Painel ou inserindo seu UUID."
-  },
+  "Hooray 🎉 🎉 🎉 \nWelcome to hiddifybot.\nStart by clicking the link on the panel or entering your UUID.": "Viva 🎉 🎉 🎉\nBem-vindo ao bot Hiddify\nComece clicando no link no Painel ou inserindo seu UUID.",
   "update": "atualizar",
-  "Welcome to admin bot": {
-    " Choose your action": "Bem-vindo ao bot administrativo. Escolha sua ação"
-  },
+  "Welcome to admin bot. Choose your action": "Bem-vindo ao bot administrativo. Escolha sua ação",
   "Create Package": "Criar pacote",
   "package size?": "tamanho do pacote?",
   "Ok": "OK",
   "package days?": "dias de pacote?",
   "How many?": "Quantos?",
   "Domain?": "Domínio?",
-  "Please Wait.": {
-    ".": "Por favor, aguarde..."
-  },
+  "Please Wait...": "Por favor, aguarde...",
   "Finished": "Finalizado...",
-
   "Dear {}\n\nYour hiddify information is\nUUID: {}\nLast online date: {}\nExpire time: {}\nUsage class: {}\n": "Querido {}\n\nSuas informações do Hiddify são\nUUID: {}\nÚltima data on-line: {}\nTempo de expiração: {}\nClasse de uso: {}",
   "Your hiddify instance information \nDomain: {} \nUsage limit: {} GB\nCurrent usage: {} GB\nExpires at: {} \nRemaining days: {} \n\n\n Happy using 🎉 🎉 🎉 \n": "Suas informações de instância do Hiddify\nDomínio: {}\nLimite de uso: {} GB\nUso atual: {} GB\nExpira em: {}\nDias restantes: {}\n\n\nBoa sorte! 🎉 🎉 🎉",
   "login": {
@@ -1032,10 +1016,7 @@
   "copy": "cópia de",
   "open": "Abrir",
   "Link is changed!": "ℹ️ O link foi alterado!",
-
-  "The page has been moved to a new link": {
-    " Please copy and save the new link.": "A página foi movida para um novo link. Copie e salve o novo link."
-  },
+  "The page has been moved to a new link. Please copy and save the new link.": "A página foi movida para um novo link. Copie e salve o novo link.",
   "all": "Todos",
   "auto": "Auto",
   "singbox: ssh": "caixa de som: ssh",
@@ -1102,8 +1083,8 @@
   "Commercial use": "",
   "Bug": "Bug/recurso",
   "Donation": {
-    "title": "Doação"
-
+    "title": "Doação",
+    "description": ""
   },
   "Telegram Bot": "Telegram Bot",
   "Are you sure you want to do this action?": "⚠️Tem certeza que deseja fazer esta ação?",

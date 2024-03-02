@@ -1067,7 +1067,7 @@ msgid "user.home.tool.all-configs"
 msgstr "所有配置"
 
 msgid "user.home.tool.doh.title"
-msgstr ""
+msgstr "HTTPS 上的 DNS"
 
 msgid "user.home.tool.doh.help"
 msgstr ""
@@ -1427,6 +1427,10 @@ msgstr "您似乎还没有创建任何用户。默认用户链接：%(default_li
 
 msgid "serverssh.password-login.warning"
 msgstr ""
+"您的服务器很容易受到滥用，因为您的 SSH "
+"中启用了密码身份验证。为了保护您的服务器，请切换到密钥身份验证机制并关闭PasswordAuthentication。<a "
+"href='https://github.com/hiddify/Hiddify-Manager/wiki/Disable-SSH-Password-"
+"Authentication'>阅读更多...</a>"
 
 msgid "child has been removed!"
 msgstr "孩子已被移走！"
@@ -1963,30 +1967,32 @@ msgid "All Users"
 msgstr "全部用户"
 
 msgid "Expired Users"
-msgstr ""
+msgstr "过期用户"
 
 msgid "Active Users"
-msgstr ""
+msgstr "活跃用户"
 
 msgid "Offline more than 1 hour"
-msgstr ""
+msgstr "离线1小时以上"
 
 msgid "Offline more than 1 day"
-msgstr ""
+msgstr "离线超过1天"
 
 msgid "Offline more than 1 week"
-msgstr ""
+msgstr "离线超过1周"
 
 msgid ""
 "User usage will be updated every 6 minutes. To update it now click <a href=\"%(link)s\"\n"
 "        class=\"btn btn-info\">here</a>"
 msgstr ""
+"用户使用情况每 6 分钟更新一次。要立即更新，请单击<a href=\"%(link)s\"<inlang-LineFeed>class=\"btn "
+"btn-info\"&gt;此处</a>"
 
 msgid "Please type your message to send to the telegram:"
 msgstr "✏️ 请写下您要发送到 Telegram 的消息："
 
 msgid "Sending"
-msgstr ""
+msgstr "正在发送..."
 
 msgid "The message has been sent."
 msgstr "消息已发送。"
@@ -2120,7 +2126,7 @@ msgid "Please Wait..."
 msgstr "请稍等..."
 
 msgid "Finished"
-msgstr ""
+msgstr "完成的..."
 
 msgid ""
 "Dear {}\n"
@@ -2404,7 +2410,7 @@ msgid "Bug"
 msgstr "错误/功能"
 
 msgid "Donation.title"
-msgstr ""
+msgstr "捐款"
 
 msgid "Donation.description"
 msgstr ""

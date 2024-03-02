@@ -412,7 +412,7 @@ msgstr ""
 "Он работает как Trojan, но не требует подписания сертификата. брандмауэр увидит настоящее рукопожатие tls с действительным сертификатом, который вы выберете."
 
 msgid "config.restls.label"
-msgstr ""
+msgstr "RestTLS"
 
 msgid "config.restls.description"
 msgstr ""
@@ -1197,7 +1197,7 @@ msgid "user.home.tool.all-configs"
 msgstr "Все конфигурации"
 
 msgid "user.home.tool.doh.title"
-msgstr ""
+msgstr "DNS через HTTPS"
 
 msgid "user.home.tool.doh.help"
 msgstr ""
@@ -1567,6 +1567,11 @@ msgstr ""
 
 msgid "serverssh.password-login.warning"
 msgstr ""
+"Ваш сервер уязвим для злоупотреблений, поскольку в вашем SSH включена "
+"проверка подлинности пароля. Чтобы защитить свой сервер, переключитесь на "
+"механизм аутентификации по ключу и отключите аутентификацию по паролю. <a "
+"href='https://github.com/hiddify/Hiddify-Manager/wiki/Disable-SSH-Password-"
+"Authentication'>читать далее...</a>"
 
 msgid "child has been removed!"
 msgstr "Дочерний элемент удален!"
@@ -1709,7 +1714,7 @@ msgid "node.uuid.dscr"
 msgstr ""
 
 msgid "Remote nodes are not supported yet!"
-msgstr ""
+msgstr "Удаленные узлы пока не поддерживаются!"
 
 msgid "quicksetup.setlang.success"
 msgstr "Изменение языка прошло успешно."
@@ -1942,7 +1947,7 @@ msgstr ""
 "Отправьте сообщение, чтобы получить специальную версию для бизнес-пользователей."
 
 msgid " Search Settings"
-msgstr ""
+msgstr " Настройки поиска"
 
 msgid "Create"
 msgstr "Создать"
@@ -2126,30 +2131,33 @@ msgid "All Users"
 msgstr "Все пользователи"
 
 msgid "Expired Users"
-msgstr ""
+msgstr "Пользователи с истекшим сроком действия"
 
 msgid "Active Users"
-msgstr ""
+msgstr "Активные пользователи"
 
 msgid "Offline more than 1 hour"
-msgstr ""
+msgstr "Оффлайн более 1 часа"
 
 msgid "Offline more than 1 day"
-msgstr ""
+msgstr "Оффлайн более 1 дня"
 
 msgid "Offline more than 1 week"
-msgstr ""
+msgstr "Офлайн более 1 недели"
 
 msgid ""
 "User usage will be updated every 6 minutes. To update it now click <a href=\"%(link)s\"\n"
 "        class=\"btn btn-info\">here</a>"
 msgstr ""
+"Информация об использовании пользователя будет обновляться каждые 6 минут. "
+"Чтобы обновить его сейчас, нажмите <a href=\"%(link)s\"<inlang-"
+"LineFeed>class=\"btn btn-info\"&gt;здесь</a>"
 
 msgid "Please type your message to send to the telegram:"
 msgstr "✏️ Пожалуйста, напишите свое сообщение для отправки в Telegram:"
 
 msgid "Sending"
-msgstr ""
+msgstr "Отправка..."
 
 msgid "The message has been sent."
 msgstr "Сообщение отправлено"
@@ -2161,10 +2169,10 @@ msgid "The message was not sent to"
 msgstr "Сообщение не было отправлено "
 
 msgid "%(count)s records were successfully disabled."
-msgstr ""
+msgstr "%(count)s записей были успешно отключены."
 
 msgid "%(count)s records were successfully enabled."
-msgstr ""
+msgstr "%(count)s записей были успешно включены."
 
 msgid "app.hiddify.next.title"
 msgstr "Скрыть следующее"
@@ -2260,34 +2268,34 @@ msgstr ""
 "Начните с нажатия ссылки на панели или ввода своего UUID"
 
 msgid "update"
-msgstr ""
+msgstr "обновлять"
 
 msgid "Welcome to admin bot. Choose your action"
-msgstr ""
+msgstr "Добро пожаловать в админ-бот. Выберите свое действие"
 
 msgid "Create Package"
-msgstr ""
+msgstr "Создать пакет"
 
 msgid "package size?"
-msgstr ""
+msgstr "Размер посылки?"
 
 msgid "Ok"
-msgstr ""
+msgstr "Хорошо"
 
 msgid "package days?"
-msgstr ""
+msgstr "пакетные дни?"
 
 msgid "How many?"
-msgstr ""
+msgstr "Сколько?"
 
 msgid "Domain?"
-msgstr ""
+msgstr "Домен?"
 
 msgid "Please Wait..."
-msgstr ""
+msgstr "Пожалуйста, подождите..."
 
 msgid "Finished"
-msgstr ""
+msgstr "Законченный..."
 
 msgid ""
 "Dear {}\n"
@@ -2351,6 +2359,8 @@ msgstr "ℹ️Ссылка изменена!"
 msgid ""
 "The page has been moved to a new link. Please copy and save the new link."
 msgstr ""
+"Страница перемещена по новой ссылке. Пожалуйста, скопируйте и сохраните "
+"новую ссылку."
 
 msgid "all"
 msgstr "Все"
@@ -2377,7 +2387,7 @@ msgid "install from google play"
 msgstr "<i class='fa-brands fa-google-play'></i> Google Plaн"
 
 msgid "HiddifyNG"
-msgstr ""
+msgstr "HiddifyNG <span class='badge badge-success'>рекомендуется</span>"
 
 msgid "HiddifyNG intro"
 msgstr ""
@@ -2575,7 +2585,7 @@ msgid "Bug"
 msgstr "Bug/Feature"
 
 msgid "Donation.title"
-msgstr ""
+msgstr "Пожертвование"
 
 msgid "Donation.description"
 msgstr ""
