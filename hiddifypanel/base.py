@@ -95,7 +95,7 @@ def create_app(*args, cli=False, **config):
     commercial.init_app(app)
 
     app.config.update(config)  # Override with passed config
-    app.config['WTF_CSRF_CHECK_DEFAULT'] = False
+    # app.config['WTF_CSRF_CHECK_DEFAULT'] = False
 
     # app.config['BABEL_TRANSLATION_DIRECTORIES'] = '/workspace/Hiddify-Server/hiddify-panel/src/translations.i18n'
 
