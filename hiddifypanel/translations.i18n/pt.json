@@ -207,7 +207,7 @@
       "description": "Um Proxy para expor o handshake tls real ao firewall.\n\nFunciona como Trojan, mas não requer certificado de assinatura. o firewall verá o handshake tls real com o certificado válido que você escolher."
     },
     "restls": {
-      "label": "config.restls.label",
+      "label": "RestTLS",
       "description": "config.restls.description"
     },
     "tuic": {
@@ -632,8 +632,7 @@
       "tool": {
         "all-configs": "Todas as configurações",
         "doh": {
-          "title": "",
-          "help": ""
+          "title": "DNS sobre HTTPS"
         }
       },
       "allconfig": {
@@ -752,6 +751,11 @@
       "warning": ""
     }
   },
+  "serverssh": {
+    "password-login": {
+      "warning": "Seu servidor está vulnerável a abusos porque PasswordAuthentication está habilitado em seu SSH. Para proteger seu servidor, mude para o mecanismo de autenticação de chave e desative PasswordAuthentication. <a href='https://github.com/hiddify/Hiddify-Manager/wiki/Disable-SSH-Password-Authentication'>consulte Mais informação...</a>"
+    }
+  },
   "child has been removed!": "Child removido",
   "domain": {
     "description": "Por favor, preencha este campo com cuidado e corretamente. Caso contrário, os proxies terão problemas. Visite <a href='https://github.com/hiddify/hiddify-config/wiki/راهنمای-تنظیم-دامنه-و-نهایی-کردن-نصب#آموزش-ساخت-زیردامنه'> Ajuda</a> para aprenda como criar um subdomínio.",
@@ -760,7 +764,7 @@
     "ip": "IP",
     "cdn": "CDN",
     "domain_fronting": {
-      "label": "",
+      "label": "🔒 Habilitar fronting de domínio TLS",
       "description": "É usado para simular outro site em vez do seu site no SNI. portanto, o GFW não pode filtrar seu domínio\n<a href='https://github.com/hiddify/hiddify-config/wiki/Guide-for-domain-fronting'>Guia</a>. ⚠️CloudFlare não suporta fronting de domínio."
     }
   },
@@ -799,7 +803,7 @@
       "dscr": ""
     }
   },
-  "Remote nodes are not supported yet!": "",
+  "Remote nodes are not supported yet!": "Nós remotos ainda não são suportados!",
   "quicksetup": {
     "setlang": {
       "success": "A alteração do idioma foi bem-sucedida.",
@@ -868,7 +872,7 @@
   "You can restore your configs from previously downloaded configs": "Você pode restaurar suas configurações do arquivo de backup baixado anteriormente",
   "Why Going to Premium?": "Por que ir para premium?",
   "Premium Description": "O painel Hiddify é feito para uso não comercial. Mas se você usar este painel comercialmente, ajude o projeto a crescer com uma doação. <br/>\nEm troca de seu suporte financeiro, também fornecemos facilidades especiais para seu produto comercial.\n<br/>\n<br/>\nComo:\n<ul><li>\n<li>A possibilidade de sincronizar com o Cloudflare: ou seja, adicionando um domínio no painel, as configurações relevantes também podem ser feitas no Cloudflare</li>\n<li>Possibilidade de exibir sua marca no painel</li>\n<li>Possibilidade de Utilizar o Painel Central para Gerenciar Mais de 1 Servidor em Apenas um Painel, Assim Não É Mais Necessário Cadastrar Usuários em Servidores Diferentes, E Seu Volume Será Coletado em Todos os Servidores.\n</li>\n<li>\nA possibilidade de usar o bot do Telegram\n</li>\n<li>\nCapacidade de alterar nomes de proxy\n</li>\n</ul>\n\nEntre em contato com <a href='tg://resolve?domain=HiddifyCommercial'>@HiddifyCommercial</a> após a doação.\nEnvie uma mensagem para obter uma versão especial para usuários corporativos.",
-  " Search Settings": "",
+  " Search Settings": " Configurações de pesquisa",
   "Create": "Criar",
   "Current Domain": "",
   "Save & Add More": "Salvar e adicionar mais",
@@ -925,19 +929,23 @@
   "In this section, you can add your domain. You need to add at least one domain in direct mode.": "Nesta seção, você pode adicionar seu domínio.\n<br>\nSe você deseja diminuir a probabilidade de ter um IP sujo, pode adicionar Multiple Relay Server <a href='https://github.com/hiddify/hiddify-config/discussions/129'>Leia mais</a>.\n<br>\nSe você tiver Múltiplos IPv4 ou IPv6 em seu Painel, deverá adicionar o domínio apontado para eles como Relay.",
   "Send Message to User's Telegram": "📣 Enviar mensagem para o telegram do usuário",
   "All Users": "Todos os usuários",
-  "Expired Users": "",
-  "Active Users": "",
-  "Offline more than 1 hour": "",
-  "Offline more than 1 day": "",
-  "Offline more than 1 week": "",
-  "User usage will be updated every 6 minutes. To update it now click <a href=\"%(link)s\"\n        class=\"btn btn-info\">here</a>": "",
+
+  "Expired Users": "Usuários expirados",
+  "Active Users": "Usuários ativos",
+  "Offline more than 1 hour": "Offline por mais de 1 hora",
+  "Offline more than 1 day": "Offline por mais de 1 dia",
+  "Offline more than 1 week": "Offline há mais de uma semana",
+  "User usage will be updated every 6 minutes": {
+    " To update it now click <a href=\"%(link)s\"\n        class=\"btn btn-info\">here</a>": "O uso do usuário será atualizado a cada 6 minutos. Para atualizá-lo agora clique <a href=\"%(link)s\"<inlang-LineFeed>class=\"btn btn-info\"&gt;aqui</a>"
+  },
   "Please type your message to send to the telegram:": "✏️ Por favor, escreva sua mensagem para enviar para o Telegram:",
-  "Sending": "",
+  "Sending": "Enviando...",
   "The message has been sent.": "A mensagem foi enviada.",
   "Hover the user to see the reason": "Hover the user to see the reason",
   "The message was not sent to": "The message was not sent to",
-  "%(count)s records were successfully disabled.": "",
-  "%(count)s records were successfully enabled.": "",
+  "%(count)s records were successfully disabled.": "%(count)s registros foram desativados com sucesso.",
+  "%(count)s records were successfully enabled.": "%(count)s registros foram ativados com sucesso.",
+
   "app": {
     "hiddify": {
       "next": {
@@ -992,17 +1000,25 @@
   },
   "Join our Hiddify Telegram channel to get the latest updates on Hiddify.": "Junte-se ao nosso canal Hiddify Telegram para obter as atualizações mais recentes sobre o Hiddify.",
   "[Admin only visible message:] You can change this message from settings": "[Mensagem visível apenas pelo administrador]: Você pode alterar esta mensagem nas configurações.",
-  "Hooray 🎉 🎉 🎉 \nWelcome to hiddifybot.\nStart by clicking the link on the panel or entering your UUID.": "Viva 🎉 🎉 🎉\nBem-vindo ao bot Hiddify\nComece clicando no link no Painel ou inserindo seu UUID.",
-  "update": "",
-  "Welcome to admin bot. Choose your action": "",
-  "Create Package": "",
-  "package size?": "",
-  "Ok": "",
-  "package days?": "",
-  "How many?": "",
-  "Domain?": "",
-  "Please Wait...": "",
-  "Finished": "",
+
+  "Hooray 🎉 🎉 🎉 \nWelcome to hiddifybot": {
+    "\nStart by clicking the link on the panel or entering your UUID.": "Viva 🎉 🎉 🎉\nBem-vindo ao bot Hiddify\nComece clicando no link no Painel ou inserindo seu UUID."
+  },
+  "update": "atualizar",
+  "Welcome to admin bot": {
+    " Choose your action": "Bem-vindo ao bot administrativo. Escolha sua ação"
+  },
+  "Create Package": "Criar pacote",
+  "package size?": "tamanho do pacote?",
+  "Ok": "OK",
+  "package days?": "dias de pacote?",
+  "How many?": "Quantos?",
+  "Domain?": "Domínio?",
+  "Please Wait.": {
+    ".": "Por favor, aguarde..."
+  },
+  "Finished": "Finalizado...",
+
   "Dear {}\n\nYour hiddify information is\nUUID: {}\nLast online date: {}\nExpire time: {}\nUsage class: {}\n": "Querido {}\n\nSuas informações do Hiddify são\nUUID: {}\nÚltima data on-line: {}\nTempo de expiração: {}\nClasse de uso: {}",
   "Your hiddify instance information \nDomain: {} \nUsage limit: {} GB\nCurrent usage: {} GB\nExpires at: {} \nRemaining days: {} \n\n\n Happy using 🎉 🎉 🎉 \n": "Suas informações de instância do Hiddify\nDomínio: {}\nLimite de uso: {} GB\nUso atual: {} GB\nExpira em: {}\nDias restantes: {}\n\n\nBoa sorte! 🎉 🎉 🎉",
   "login": {
@@ -1016,7 +1032,10 @@
   "copy": "cópia de",
   "open": "Abrir",
   "Link is changed!": "ℹ️ O link foi alterado!",
-  "The page has been moved to a new link. Please copy and save the new link.": "",
+
+  "The page has been moved to a new link": {
+    " Please copy and save the new link.": "A página foi movida para um novo link. Copie e salve o novo link."
+  },
   "all": "Todos",
   "auto": "Auto",
   "singbox: ssh": "caixa de som: ssh",
@@ -1083,8 +1102,8 @@
   "Commercial use": "",
   "Bug": "Bug/recurso",
   "Donation": {
-    "title": "",
-    "description": ""
+    "title": "Doação"
+
   },
   "Telegram Bot": "Telegram Bot",
   "Are you sure you want to do this action?": "⚠️Tem certeza que deseja fazer esta ação?",

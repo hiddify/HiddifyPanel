@@ -632,8 +632,8 @@
       "tool": {
         "all-configs": "所有配置",
         "doh": {
-          "title": "",
-          "help": ""
+          "title": "HTTPS 上的 DNS"
+
         }
       },
       "allconfig": {
@@ -750,6 +750,11 @@
   "serverssh": {
     "password-login": {
       "warning": ""
+    }
+  },
+  "serverssh": {
+    "password-login": {
+      "warning": "您的服务器很容易受到滥用，因为您的 SSH 中启用了密码身份验证。为了保护您的服务器，请切换到密钥身份验证机制并关闭PasswordAuthentication。<a href='https://github.com/hiddify/Hiddify-Manager/wiki/Disable-SSH-Password-Authentication'>阅读更多...</a>"
     }
   },
   "child has been removed!": "孩子已被移走！",
@@ -925,14 +930,18 @@
   "In this section, you can add your domain. You need to add at least one domain in direct mode.": "1️⃣ 在此部分中，您可以添加您的域名。\n<br>\n2️⃣ 如果您想减少出现脏 IP 的可能性，可以添加多个中继服务器<a href='https://github.com/hiddify/hiddify-config/discussions/129'>阅读更多</a>。\n<br>\n3️⃣ 如果您的面板中有多个 IPv4 或 IPv6，您必须将指向它们的域添加为中继。",
   "Send Message to User's Telegram": "📣 向用户的 Telegram 发送消息",
   "All Users": "全部用户",
-  "Expired Users": "",
-  "Active Users": "",
-  "Offline more than 1 hour": "",
-  "Offline more than 1 day": "",
-  "Offline more than 1 week": "",
-  "User usage will be updated every 6 minutes. To update it now click <a href=\"%(link)s\"\n        class=\"btn btn-info\">here</a>": "",
+
+  "Expired Users": "过期用户",
+  "Active Users": "活跃用户",
+  "Offline more than 1 hour": "离线1小时以上",
+  "Offline more than 1 day": "离线超过1天",
+  "Offline more than 1 week": "离线超过1周",
+  "User usage will be updated every 6 minutes": {
+    " To update it now click <a href=\"%(link)s\"\n        class=\"btn btn-info\">here</a>": "用户使用情况每 6 分钟更新一次。要立即更新，请单击<a href=\"%(link)s\"<inlang-LineFeed>class=\"btn btn-info\"&gt;此处</a>"
+  },
   "Please type your message to send to the telegram:": "✏️ 请写下您要发送到 Telegram 的消息：",
-  "Sending": "",
+  "Sending": "正在发送...",
+
   "The message has been sent.": "消息已发送。",
   "Hover the user to see the reason": "将鼠标悬停在用户上即可查看原因",
   "The message was not sent to": "该消息未发送至",
@@ -1001,8 +1010,12 @@
   "package days?": "包天数？",
   "How many?": "多少？",
   "Domain?": "领域？",
-  "Please Wait...": "请稍等...",
-  "Finished": "",
+
+  "Please Wait.": {
+    ".": "请稍等..."
+  },
+  "Finished": "完成的...",
+
   "Dear {}\n\nYour hiddify information is\nUUID: {}\nLast online date: {}\nExpire time: {}\nUsage class: {}\n": "亲爱的 {}\n\n您的 Hiddify 信息是\nUUID：{}\n最后在线日期：{}\n过期时间：{}\n使用类别：{}",
   "Your hiddify instance information \nDomain: {} \nUsage limit: {} GB\nCurrent usage: {} GB\nExpires at: {} \nRemaining days: {} \n\n\n Happy using 🎉 🎉 🎉 \n": "您的 Hiddify 实例信息\n领域： {}\n使用限制：{} GB\n当前使用情况：{} GB\n到期时间：{}\n剩余天数：{}\n\n\n祝你好运！ 🎉🎉🎉",
   "login": {
@@ -1083,8 +1096,9 @@
   "Commercial use": "",
   "Bug": "错误/功能",
   "Donation": {
-    "title": "",
-    "description": ""
+
+    "title": "捐款"
+
   },
   "Telegram Bot": "电报机器人",
   "Are you sure you want to do this action?": "⚠️您确定要执行此操作吗？",
