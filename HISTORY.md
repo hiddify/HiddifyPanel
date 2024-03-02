@@ -913,6 +913,8 @@ with A2_
 
 #### Other
 
+* Add modal for quicker editing. 
+
 * Inlang: update translations. 
 
 * Update translation. 
