@@ -234,7 +234,7 @@ def make_proxy(hconfigs, proxy: Proxy, domain_db: Domain, phttp=80, ptls=443, pp
         base['flow'] = 'xtls-rprx-vision'
         return {**base, 'transport': 'tcp'}
 
-    if proxy.proto in {'vless', 'trojan', 'vmess'} and hconfigs[ConfigEnum.mux_enable]:
+    if proxy.proto in {'vless', 'trojan', 'vmess'} and hconfigs.get(ConfigEnum.mux_enable):
         if hconfigs[ConfigEnum.mux_enable]:
             base['mux_enable'] = True
             base['mux_protocol'] = hconfigs[ConfigEnum.mux_protocol]
@@ -355,7 +355,7 @@ def to_link(proxy):
         #     return f'{baseurl}?plugin=shadow-tls%3Bpassword%3D{proxy["proxy_path"]}%3Bhost%3D{proxy["fakedomain"]}%3Budp-over-tcp=true#{name_link}'
         if proxy['proto'] == 'v2ray':
             return f'{baseurl}?plugin=v2ray-plugin%3Bmode%3Dwebsocket%3Bpath%3D{proxy["path"]}%3Bhost%3D{proxy["host"]}%3Btls%3Budp-over-tcp=true#{name_link}'
-        if proxy['transport']=='shadowsocks':
+        if proxy['transport'] == 'shadowsocks':
             return baseurl
     if proxy['proto'] == 'tuic':
         baseurl = f'tuic://{proxy["uuid"]}:{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}?congestion_control=cubic&udp_relay_mode=native&sni={proxy["sni"]}&alpn=h3'
