@@ -104,11 +104,17 @@ def get_all_proxy_form(empty=False):
         class CDNForm(FlaskForm):
             pass
         cdn_proxies = [c for c in proxies if c.cdn == cdn]
-        protos = sorted([c for c in {c.proto: 1 for c in cdn_proxies}])
+        pgroup = {
+            'wireguard': 'other',
+            'tuic': 'other',
+            'ssh': 'other',
+            'hysteria2': 'other',
+        }
+        protos = sorted([c for c in {pgroup.get(c.proto, c.proto): 1 for c in cdn_proxies}])
         for proto in protos:
             class ProtoForm(FlaskForm):
                 pass
-            proto_proxies = [c for c in cdn_proxies if c.proto == proto]
+            proto_proxies = [c for c in cdn_proxies if pgroup.get(c.proto, c.proto) == proto]
             for proxy in proto_proxies:
                 field = SwitchField(proxy.name, default=proxy.enable, description=f"l3:{proxy.l3} transport:{proxy.transport}")
                 setattr(ProtoForm, f"p_{proxy.id}", field)

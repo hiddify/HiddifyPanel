@@ -26,6 +26,8 @@ from flask import current_app
 
 
 class DomainAdmin(AdminLTEModelView):
+    # edit_modal = False
+    # create_modal = False
     column_hide_backrefs = False
 
     list_template = 'model/domain_list.html'
@@ -75,7 +77,7 @@ class DomainAdmin(AdminLTEModelView):
                     re.IGNORECASE,
                     _("Invalid REALITY hostnames"))]}}
     column_list = ["domain", "alias", "mode", "domain_ip", "show_domains"]
-    # column_editable_list=["domain"]
+    column_editable_list = ["alias"]
     # column_filters=["domain","mode"]
     # form_excluded_columns=['work_with']
     column_searchable_list = ["domain", "mode"]

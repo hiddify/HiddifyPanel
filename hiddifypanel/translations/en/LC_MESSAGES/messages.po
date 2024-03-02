@@ -748,7 +748,7 @@ msgid "config.wireguard_enable.description"
 msgstr ""
 "WireGuard is UDP based protocol.\n"
 "\n"
-"⚠️  Accounting is not yet supported."
+"⚠️  It is working in Hiddify Next. "
 
 msgid "config.wireguard_port.label"
 msgstr "Wireguard Port"
@@ -878,10 +878,12 @@ msgid "config.tls_padding_length.description"
 msgstr "The length of the Padding for TLS Fragmentation"
 
 msgid "config.mux_enable.label"
-msgstr "Ⓜ️ MUX Enable"
+msgstr "Ⓜ️ MUX Enable (⚠️ Incompatible with some clients)"
 
 msgid "config.mux_enable.description"
-msgstr "Enable MUX (Multiplex)"
+msgstr ""
+"Mux needs compatible clients. Mux in Hiddify Next and singbox are not "
+"compatible with Xray"
 
 msgid "config.mux_protocol.label"
 msgstr "♍️ MUX Protocol"
@@ -1025,11 +1027,9 @@ msgstr "Enable HTTPUpgrade Method"
 
 msgid "config.httpupgrade_enable.description"
 msgstr ""
-"HTTPUpgrade complete a HTTP 1.1 Upgrade request and response before using "
-"the connection directly. It is similar to WebSocket in the way it create an "
-"direction channel that can be forwarded by many reverse proxies and CDNs, "
-"without the need to deal with all the issue around WebSocket Protocol "
-"itself."
+"HTTPUpgrade complete a HTTP 1.1 Upgrade request and response before using the connection directly. It is similar to WebSocket in the way it create an direction channel that can be forwarded by many reverse proxies and CDNs, without the need to deal with all the issue around WebSocket Protocol itself.\n"
+"\n"
+"⚠️ Not Available in Xray based Clients. Only HiddifyNext, Singbox, and V2fly clients are supported"
 
 msgid "config.path_httpupgrade.label"
 msgstr "HTTP Upgrade Path"
@@ -1842,6 +1842,9 @@ msgstr "Max IPs"
 msgid "Enable"
 msgstr "❇️ Enable"
 
+msgid "Active"
+msgstr "Active"
+
 msgid "Add some text that is only visible to you."
 msgstr "You can add some text that Is only visible to you"
 
@@ -1934,6 +1937,9 @@ msgstr " Search Settings"
 
 msgid "Create"
 msgstr "Create"
+
+msgid "Current Domain"
+msgstr "Current Domain"
 
 msgid "Save & Add More"
 msgstr "Save & Add More"
@@ -2129,8 +2135,8 @@ msgid ""
 "User usage will be updated every 6 minutes. To update it now click <a href=\"%(link)s\"\n"
 "        class=\"btn btn-info\">here</a>"
 msgstr ""
-"User usage will be updated every 6 minutes. To update it now click <a href=\"%(link)s\"\n"
-"        class=\"btn btn-info\">here</a>"
+"🔄 User usage will be updated every 1 Minutes. to update it now <a "
+"href='%(link)s' class='btn btn-info'>Click Here</a>"
 
 msgid "Please type your message to send to the telegram:"
 msgstr "✏️  Please write your message to send to the Telegram:"
@@ -2557,7 +2563,7 @@ msgid "in parent panel"
 msgstr "In Parent Panel"
 
 msgid "Commercial use"
-msgstr "Commercial Use"
+msgstr "Commercial use"
 
 msgid "Bug"
 msgstr "Bug/Feature"

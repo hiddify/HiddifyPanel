@@ -5,6 +5,12 @@
 
 #### New
 
+* Fix translation. 
+
+* Add inlang translation. 
+
+* Add more security for first login. 
+
 * Refactor usage driver. 
 
 * Add mass disable/enable to proxies. 
@@ -274,6 +280,32 @@
 * Update hiddify next download link. 
 
 #### Fix
+
+* Shadowsocks bug. 
+
+* Translation issues. 
+
+* Inlang. 
+
+* Jinja char prefix. 
+
+* Update usage bug. 
+
+* Bug. 
+
+* Bug & refactor. 
+
+* Hiddifynext 14 version configs fields. 
+
+* Add user api (current_usage_GB field) 
+
+* Bug took 3 hours. 
+
+* Bug. 
+
+* Url encode space seperated user names. 
+
+* Change decoy_domain in first/quick setup page. 
 
 * Bug. 
 
@@ -880,6 +912,43 @@ with A2_
 * Bugs. 
 
 #### Other
+
+* Add modal for quicker editing. 
+
+* Inlang: update translations. 
+
+* Update translation. 
+
+* Merge branch 'main' of github.com:hiddify/Hiddify-Panel. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Update translation. 
+
+* Inlang: update translations. 
+
+* Update translations. 
+
+* Update. 
+
+* Update translations. 
+
+* Inlang: update translations. 
+
+* Update translations. 
+
+* Merge pull request #144 from Iam54r1n4/fix-babel-translation. 
+  _Fix extracting babel .pot file data from the html files_
+
+* Merge pull request #143 from Iam54r1n4/dev-patch23. 
+  _Fix update usage bug_
+
+* Merge pull request #142 from Iam54r1n4/dev-patch23. 
+  _Fix url encoding & decoy domain in first setup_
+
+* Improve: better url encoding. 
 
 * Merge pull request #141 from Iam54r1n4/dev-patch22. 
   _Fix all-configs api bug_
@@ -1675,6 +1744,23 @@ It is a visual improvement to have all users aligned in the table._
 * Convert old db to new. 
 
 * Add pysql req. 
+
+
+
+## 8.8.96 (2024-02-21)
+
+#### New
+
+* Add more security for first setup. 
+
+#### Fix
+
+* Log file name bug. 
+
+#### Other
+
+* Merge pull request #104 from Iam54r1n4/v8. 
+  _fix: log file name bug_
 
 
 

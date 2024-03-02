@@ -106,6 +106,8 @@ def get_port(proxy, hconfigs, domain_db, ptls, phttp, pport):
         port = ptls
     elif l3 == "http":
         port = phttp
+    else:
+        port = int(pport)
     return port
 
 
@@ -161,7 +163,7 @@ def make_proxy(hconfigs, proxy: Proxy, domain_db: Domain, phttp=80, ptls=443, pp
         base['wg_noise_trick'] = hconfigs[ConfigEnum.wireguard_noise_trick]
         return base
 
-    if proxy.proto in ProxyProto.vmess:
+    if proxy.proto in [ProxyProto.vmess]:
         base['cipher'] = "chacha20-poly1305"
 
     if l3 in ['reality']:
@@ -226,7 +228,8 @@ def make_proxy(hconfigs, proxy: Proxy, domain_db: Domain, phttp=80, ptls=443, pp
         base['shared_secret'] = hconfigs[ConfigEnum.shared_secret]
         base['mode'] = 'ShadowTLS'
         return base
-
+    elif "shadowsocks" in proxy.transport:
+        return base
     if ProxyTransport.XTLS in proxy.transport:
         base['flow'] = 'xtls-rprx-vision'
         return {**base, 'transport': 'tcp'}
@@ -352,6 +355,8 @@ def to_link(proxy):
         #     return f'{baseurl}?plugin=shadow-tls%3Bpassword%3D{proxy["proxy_path"]}%3Bhost%3D{proxy["fakedomain"]}%3Budp-over-tcp=true#{name_link}'
         if proxy['proto'] == 'v2ray':
             return f'{baseurl}?plugin=v2ray-plugin%3Bmode%3Dwebsocket%3Bpath%3D{proxy["path"]}%3Bhost%3D{proxy["host"]}%3Btls%3Budp-over-tcp=true#{name_link}'
+        if proxy['transport']=='shadowsocks':
+            return baseurl
     if proxy['proto'] == 'tuic':
         baseurl = f'tuic://{proxy["uuid"]}:{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}?congestion_control=cubic&udp_relay_mode=native&sni={proxy["sni"]}&alpn=h3'
         if proxy['mode'] == 'Fake' or proxy['allow_insecure']:
@@ -1021,14 +1026,18 @@ def get_all_validated_proxies(domains):
         ip = hutils.network.get_domain_ip(d.domain, version=4)
         ip6 = hutils.network.get_domain_ip(d.domain, version=6)
         ips = [x for x in [ip, ip6] if x is not None]
-
         for type in proxeismap[d.child_id]:
+            noDomainProxies = False
+            if type.proto in [ProxyProto.ssh, ProxyProto.wireguard]:
+                noDomainProxies = True
+            if type.proto in [ProxyProto.ss] and type.transport not in [ProxyTransport.grpc, ProxyTransport.h2, ProxyTransport.WS, ProxyTransport.httpupgrade]:
+                noDomainProxies = True
             options = []
-            key = f'{type.proto}{type.transport}' if type.proto == ProxyProto.ss else type.proto
+            key = f'{type.proto}{type.transport}{type.cdn}{type.l3}'
             if key not in added_ip:
                 added_ip[key] = {}
             if type.proto in [ProxyProto.ssh, ProxyProto.tuic, ProxyProto.hysteria2, ProxyProto.wireguard, ProxyProto.ss]:
-                if type.proto in [ProxyProto.ssh, ProxyProto.wireguard, ProxyProto.ss] and all([x in added_ip[key] for x in ips]):
+                if noDomainProxies and all([x in added_ip[key] for x in ips]):
                     continue
 
                 for x in ips:

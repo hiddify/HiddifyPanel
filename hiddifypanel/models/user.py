@@ -77,11 +77,11 @@ class User(BaseAccount):
     max_ips = db.Column(db.Integer, default=1000, nullable=False)
     details = db.relationship('UserDetail', cascade="all,delete", backref='user', lazy='dynamic',)
     enable = db.Column(db.Boolean, default=True, nullable=False)
-    ed25519_private_key = db.Column(db.String(500))
-    ed25519_public_key = db.Column(db.String(100))
-    wg_pk = db.Column(db.String(50))
-    wg_pub = db.Column(db.String(50))
-    wg_psk = db.Column(db.String(50))
+    ed25519_private_key = db.Column(db.String(500), default="")
+    ed25519_public_key = db.Column(db.String(100), default="")
+    wg_pk = db.Column(db.String(50), default="")
+    wg_pub = db.Column(db.String(50), default="")
+    wg_psk = db.Column(db.String(50), default="")
 
     @property
     def role(self) -> Role | None:
@@ -120,7 +120,7 @@ class User(BaseAccount):
             is_active = False
         elif self.usage_limit < self.current_usage:
             is_active = False
-        elif self.remaining_days() < 0:
+        elif self.remaining_days < 0:
             is_active = False
         elif len(self.ips) > max(3, self.max_ips):
             is_active = False
@@ -163,6 +163,7 @@ class User(BaseAccount):
             days = package_mode_dic.get(self.mode, 10000)
         return max(-100000, min(days, 100000))
 
+    @property
     def remaining_days(self) -> int:
         """
         The "remaining_days" function calculates the number of days remaining for a user's account package based on the

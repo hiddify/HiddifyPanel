@@ -1,5 +1,5 @@
 #!/bin/bash
-source .env
+# source .env
 
 PATH=/config/.local/bin:$PATH
 
@@ -10,7 +10,7 @@ def print_enum(en):
   print(''.join([f'{{{{_(\"{item}\")}}}}' for item in en]))  
 print_enum(hiddifypanel.models.DomainType)
 print_enum(hiddifypanel.models.UserMode)
-" >hiddifypanel/templates/fake.html
+" >../hiddifypanel/templates/fake.html
 pybabel extract -F babel.cfg -k "_gettext lazy_gettext gettext _ __" -o messages.pot ../hiddifypanel
 
 function update_json_po() {

@@ -1,8 +1,11 @@
 from flask import render_template, request, redirect, g
+from . import fix_flaskadmin_babel
+import flask_admin
 from flask_admin import Admin
 from hiddifypanel import Events
 from .DomainAdmin import DomainAdmin
 from .AdminstratorAdmin import AdminstratorAdmin
+
 
 from hiddifypanel.database import db
 from hiddifypanel.models import *
@@ -13,7 +16,8 @@ from flask_adminlte3 import AdminLTE3
 flask_bp = APIBlueprint("flask", __name__, template_folder="templates", enable_openapi=False)
 admin_bp = APIBlueprint("admin", __name__, template_folder="templates", enable_openapi=False)
 
-flaskadmin = Admin(endpoint="admin", base_template='flaskadmin-layout.html')
+flaskadmin = Admin(endpoint="admin", base_template='flaskadmin-layout.html',
+                   translations_path="/opt/hiddify-develop/hiddify-panel/src/hiddifypanel/translations/")
 
 
 def init_app(app):

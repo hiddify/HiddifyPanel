@@ -20,6 +20,7 @@ def init_app(app: APIFlask):
     app.jinja_env.globals['version'] = hiddifypanel.__version__
     app.jinja_env.globals['static_url_for'] = hutils.flask.static_url_for
     app.jinja_env.globals['hurl_for'] = hutils.flask.hurl_for
+    app.jinja_env.globals['_gettext'] = lambda x: print("==========", x)
 
     @app.after_request
     def apply_no_robot(response):

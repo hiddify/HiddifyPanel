@@ -67,6 +67,10 @@ class Proxy(db.Model, SerializerMixin):
     transport = db.Column(db.Enum(ProxyTransport), nullable=False)
     cdn = db.Column(db.Enum(ProxyCDN), nullable=False)
 
+    @property
+    def enabled(self):
+        return self.enable * 1
+
     def to_dict(self):
         return {
             'name': self.name,
