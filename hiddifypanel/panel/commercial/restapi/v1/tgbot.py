@@ -34,7 +34,7 @@ def register_bot(set_hook=False):
 
             user_secret = AdminUser.get_super_admin_uuid()
             if set_hook:
-                bot.set_webhook(url=f"https://{domain}/{admin_proxy_path}/{user_secret}/api/v1/tgbot/",)
+                bot.set_webhook(url=f"https://{domain}/{admin_proxy_path}/{user_secret}/api/v1/tgbot/")
     except Exception as e:
         print(e)
         import traceback

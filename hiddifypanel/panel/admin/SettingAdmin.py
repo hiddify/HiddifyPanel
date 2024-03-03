@@ -81,7 +81,7 @@ class SettingAdmin(FlaskView):
             flask_babel.refresh()
 
             from hiddifypanel.panel.commercial.telegrambot import register_bot
-            register_bot()
+            register_bot(set_hook=True)
             # if hconfig(ConfigEnum.parent_panel):
             #     hiddify_api.sync_child_to_parent()
             reset_action = hiddify.check_need_reset(old_configs)
