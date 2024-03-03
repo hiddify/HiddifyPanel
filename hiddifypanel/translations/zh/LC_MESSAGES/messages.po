@@ -996,6 +996,9 @@ msgstr "影袜"
 msgid "config.shadowsocks.description"
 msgstr "Shadowsocks 是一种快速隧道代理，可帮助您绕过防火墙。"
 
+msgid "Domain can not be resolved! there is a problem in your domain"
+msgstr "域名无法解析！您的域有问题。请检查您的域配置。"
+
 msgid "Error! auto cdn ip can not be find, please contact admin."
 msgstr "自动 CDN IP 错误！找不到，请联系管理员"
 
@@ -1004,9 +1007,6 @@ msgstr ""
 
 msgid "This domain does not exist in the panel!"
 msgstr "该域名在面板中不存在！"
-
-msgid "Domain can not be resolved! there is a problem in your domain"
-msgstr "域名无法解析！您的域有问题。请检查您的域配置。"
 
 msgid ""
 "selected domain for REALITY is not in the same ASN. To better use of the "

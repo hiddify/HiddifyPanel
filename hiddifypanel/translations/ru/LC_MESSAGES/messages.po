@@ -1114,6 +1114,11 @@ msgstr ""
 "Shadowsocks — это быстрый туннельный прокси, который помогает обходить "
 "брандмауэры."
 
+msgid "Domain can not be resolved! there is a problem in your domain"
+msgstr ""
+"Не возможно определить IP адрес для домена! В вашем домене возникла "
+"проблема. Пожалуйста, проверьте настройки."
+
 msgid "Error! auto cdn ip can not be find, please contact admin."
 msgstr ""
 "Ошибка в IP-адресе Auto CDN! Невозможно найти, обратитесь к администратору"
@@ -1123,11 +1128,6 @@ msgstr ""
 
 msgid "This domain does not exist in the panel!"
 msgstr "Этого домена не существует в панели управления!"
-
-msgid "Domain can not be resolved! there is a problem in your domain"
-msgstr ""
-"Не возможно определить IP адрес для домена! В вашем домене возникла "
-"проблема. Пожалуйста, проверьте настройки."
 
 msgid ""
 "selected domain for REALITY is not in the same ASN. To better use of the "

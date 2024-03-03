@@ -91,13 +91,14 @@ dev:          ## Create a new tag for release.
 	@git commit -m "release: switch to develop"
 	@git push -u origin HEAD
 .PHONY: release
-release:          ## Create a new tag for release.
-
-	@echo "previous tag was $$(git describe --tags $$(git rev-list --tags --max-count=1))"
-	@echo "release last version $$(lastversion hiddifypanel)"
-	@echo "beta last version $$(lastversion --pre hiddifypanel)"
+release:
+ifeq ($(TAG),)
+	# @echo "previous tag was $$(git describe --tags $$(git rev-list --tags --max-count=1))"
+	# @echo "release last version $$(lastversion hiddifypanel)"
+	# @echo "beta last version $$(lastversion --pre hiddifypanel)"
 	@echo "WARNING: This operation will create s version tag and push to github"
-	@read -p "Version? (provide the next x.y.z semver) : " TAG	
+	@read -p "Version? (provide the next x.y.z semver) : " TAG
+endif
 	@echo "$${TAG}" > hiddifypanel/VERSION
 	@echo "__version__='$${TAG}'" > hiddifypanel/VERSION.py
 	@echo "from datetime import datetime" >> hiddifypanel/VERSION.py

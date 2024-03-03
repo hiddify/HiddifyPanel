@@ -281,6 +281,8 @@
 
 #### Fix
 
+* Setting telegram web hook. 
+
 * Bug. 
 
 * Csrf check. 
@@ -916,6 +918,15 @@ with A2_
 * Bugs. 
 
 #### Other
+
+* Makeing unified version. 
+
+* Disable changing proxy details. 
+
+* Merge pull request #147 from Iam54r1n4/fix-tg-bot. 
+  _Fix setting telegram web hook_
+
+* Reformat. 
 
 * Disable csrf globally. 
 
