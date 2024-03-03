@@ -103,15 +103,15 @@ endif
 	@echo "__version__='$${TAG}'" > hiddifypanel/VERSION.py
 	@echo "from datetime import datetime" >> hiddifypanel/VERSION.py
 	@echo "__release_date__= datetime.strptime('$$(date +%Y-%m-%d)','%Y-%m-%d')" >> hiddifypanel/VERSION.py
-	@git tag $${TAG}
+	@git tag v$${TAG}
 	@gitchangelog > HISTORY.md
-	@git tag -d $${TAG}
+	@git tag -d v$${TAG}
 	@git add hiddifypanel/VERSION hiddifypanel/VERSION.py HISTORY.md
 	@make prepare
 	@git add hiddifypanel/translations/* hiddifypanel/translations.i18n/*
 	@git commit -m "release: version $${TAG} 🚀"
 	@echo "creating git tag : $${TAG}"
-	@git tag $${TAG}
+	@git tag v$${TAG}
 	@git push -u origin HEAD --tags
 	@echo "Github Actions will detect the new tag and release the new version."
 

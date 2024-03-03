@@ -281,6 +281,8 @@
 
 #### Fix
 
+* Custom usage trojan. 
+
 * Setting telegram web hook. 
 
 * Bug. 
