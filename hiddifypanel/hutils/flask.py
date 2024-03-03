@@ -1,5 +1,6 @@
 from typing import List
 from flask import current_app, flash as flask_flash, g, request
+from wtforms.validators import ValidationError
 from apiflask import abort as apiflask_abort
 from flask_babel import lazy_gettext as _
 from flask import url_for, Markup  # type: ignore
@@ -7,8 +8,10 @@ from urllib.parse import urlparse
 import user_agents
 import re
 import os
+
 from hiddifypanel.cache import cache
 from hiddifypanel.models import *
+from hiddifypanel import hutils
 
 
 def flash(message: str, category: str = "message"):
@@ -218,6 +221,18 @@ def proxy_path_validator(proxy_path: str) -> None:
 
 def list_dir_files(dir_path: str) -> List[str]:
     return [f for f in os.listdir(dir_path) if os.path.isfile(os.path.join(dir_path, f))]
+
+def validate_domain_exist(form, field):
+    domain = field.data
+    if not domain:
+        return
+    dip = hutils.network.get_domain_ip(domain)
+    if dip is None:
+        raise ValidationError(
+            _("Domain can not be resolved! there is a problem in your domain")) # type: ignore
+
+
+
 # region not used
 
 

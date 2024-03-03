@@ -8,7 +8,6 @@ from typing import Tuple
 from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric import x25519
 from flask import current_app, g
-from wtforms.validators import ValidationError
 from flask_babel import lazy_gettext as _
 from flask_babel import gettext as __
 from datetime import timedelta
@@ -162,16 +161,6 @@ def get_html_user_link(model: BaseAccount, domain: Domain):
     res += f"<a target='_blank' data-copy='{link}' href='{link}' class='btn btn-xs btn-{color_cls} ltr share-link' ><i class='fa-solid fa-arrow-up-right-from-square d-none'></i> {text}</a>"
 
     return res
-
-
-def validate_domain_exist(form, field):
-    domain = field.data
-    if not domain:
-        return
-    dip = hutils.network.get_domain_ip(domain)
-    if dip is None:
-        raise ValidationError(
-            _("Domain can not be resolved! there is a problem in your domain"))
 
 
 def reinstall_action(complete_install=False, domain_changed=False, do_update=False):

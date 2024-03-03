@@ -8,7 +8,6 @@ import wtforms as wtf
 from flask_wtf import FlaskForm
 from flask_bootstrap import SwitchField
 from hiddifypanel.panel import hiddify
-from wtforms.fields import *
 from flask_classful import FlaskView
 from wtforms.validators import ValidationError
 # from gettext import gettext as _
@@ -61,7 +60,7 @@ class QuickSetup(FlaskView):
             Domain.query.filter(Domain.domain == f'{hutils.network.get_ip_str(4)}.sslip.io').delete()
             db.session.add(Domain(domain=quick_form.domain.data.lower(), mode=DomainType.direct))
             set_hconfig(ConfigEnum.block_iran_sites, quick_form.block_iran_sites.data)
-            set_hconfig(ConfigEnum.decoy_domain,quick_form.decoy_domain.data)
+            set_hconfig(ConfigEnum.decoy_domain, quick_form.decoy_domain.data)
             # hiddify.bulk_register_configs([
             #     # {"key": ConfigEnum.telegram_enable, "value": quick_form.enable_telegram.data == True},
             #     # {"key": ConfigEnum.vmess_enable, "value": quick_form.enable_vmess.data == True},
@@ -84,12 +83,16 @@ class QuickSetup(FlaskView):
 
 def get_lang_form(empty=False):
     class LangForm(FlaskForm):
-        admin_lang = wtf.fields.SelectField(_("config.admin_lang.label"), choices=[("en", _("lang.en")), ("fa", _("lang.fa")), ("pt", _(
-            "lang.pt")), ("zh", _("lang.zh")), ("ru", _("lang.ru"))], description=_("config.admin_lang.description"), default=hconfig(ConfigEnum.admin_lang))
-        # lang=wtf.fields.SelectField(_("config.lang.label"),choices=[("en",_("lang.en")),("fa",_("lang.fa"))],description=_("config.lang.description"),default=hconfig(ConfigEnum.lang))
-        country = wtf.fields.SelectField(_("config.country.label"), choices=[("ir", _("Iran")), ("zh", _(
-            "China")), ("other", "Others")], description=_("config.country.description"), default=hconfig(ConfigEnum.country))
-        lang_submit = wtf.fields.SubmitField(_('Submit'))
+        admin_lang = wtf.SelectField(
+            _("config.admin_lang.label"), choices=[("en", _("lang.en")), ("fa", _("lang.fa")), ("pt", _("lang.pt")), ("zh", _("lang.zh")), ("ru", _("lang.ru"))],
+            description=_("config.admin_lang.description"),
+            default=hconfig(ConfigEnum.admin_lang))
+        # lang=wtf.SelectField(_("config.lang.label"),choices=[("en",_("lang.en")),("fa",_("lang.fa"))],description=_("config.lang.description"),default=hconfig(ConfigEnum.lang))
+        country = wtf.SelectField(
+            _("config.country.label"), choices=[("ir", _("Iran")), ("zh", _("China")), ("other", "Others")],
+            description=_("config.country.description"),
+            default=hconfig(ConfigEnum.country))
+        lang_submit = wtf.SubmitField(_('Submit'))
 
     return LangForm(None)if empty else LangForm()
 
@@ -108,13 +111,12 @@ def get_quick_setup_form(empty=False):
     class QuickSetupForm(FlaskForm):
         domain_regex = "^([A-Za-z0-9\\-\\.]+\\.[a-zA-Z]{2,})$"
 
-        domain_validators = [wtf.validators.Regexp(domain_regex, re.IGNORECASE, _("config.Invalid domain")),
-                             validate_domain,
-                             wtf.validators.NoneOf([d.domain.lower() for d in Domain.query.all()], _("config.Domain already used")),
-                             wtf.validators.NoneOf([c.value.lower() for c in StrConfig.query.all() if "fakedomain" in c.key and c.key !=
-                                                   ConfigEnum.decoy_domain], _("config.Domain already used"))
-                             ]
-        domain = wtf.fields.StringField(
+        domain_validators = [
+            wtf.validators.Regexp(domain_regex, re.IGNORECASE, _("config.Invalid domain")),
+            validate_domain,
+            wtf.validators.NoneOf([d.domain.lower() for d in Domain.query.all()], _("config.Domain already used")),
+            wtf.validators.NoneOf([c.value.lower() for c in StrConfig.query.all() if "fakedomain" in c.key and c.key != ConfigEnum.decoy_domain], _("config.Domain already used"))]
+        domain = wtf.StringField(
             _("domain.domain"),
             domain_validators,
             description=_("domain.description"),
@@ -129,9 +131,9 @@ def get_quick_setup_form(empty=False):
         block_iran_sites = SwitchField(_("config.block_iran_sites.label"), description=_(
             "config.block_iran_sites.description"), default=hconfig(ConfigEnum.block_iran_sites))
         # enable_vmess = SwitchField(_("config.vmess_enable.label"), description=_("config.vmess_enable.description"), default=hconfig(ConfigEnum.vmess_enable))
-        decoy_domain = wtf.fields.StringField(_("config.decoy_domain.label"), description=_("config.decoy_domain.description"), default=hconfig(
-            ConfigEnum.decoy_domain), validators=[wtf.validators.Regexp(domain_regex, re.IGNORECASE, _("config.Invalid domain")), hiddify.validate_domain_exist])
-        submit = wtf.fields.SubmitField(_('Submit'))
+        decoy_domain = wtf.StringField(_("config.decoy_domain.label"), description=_("config.decoy_domain.description"), default=hconfig(
+            ConfigEnum.decoy_domain), validators=[wtf.validators.Regexp(domain_regex, re.IGNORECASE, _("config.Invalid domain")), hutils.flask.validate_domain_exist])
+        submit = wtf.SubmitField(_('Submit'))
 
     return QuickSetupForm(None) if empty else QuickSetupForm()
 
@@ -144,8 +146,7 @@ def validate_domain(form, field):
 
     myip = hutils.network.get_ip(4)
     if dip and myip != dip:
-        raise ValidationError(_("Domain (%(domain)s)-> IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode",
-                              server_ip=myip, domain_ip=dip, domain=domain))
+        raise ValidationError(_("Domain (%(domain)s)-> IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode", server_ip=myip, domain_ip=dip, domain=domain))
 
 
 def admin_link():
