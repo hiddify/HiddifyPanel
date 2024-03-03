@@ -13,7 +13,6 @@ from flask_bootstrap import SwitchField
 
 # from gettext import gettext as _
 from flask_classful import FlaskView
-from wtforms.fields import *
 from flask_wtf import FlaskForm
 
 
@@ -81,7 +80,7 @@ class SettingAdmin(FlaskView):
             flask_babel.refresh()
 
             from hiddifypanel.panel.commercial.telegrambot import register_bot
-            register_bot()
+            register_bot(set_hook=True)
             # if hconfig(ConfigEnum.parent_panel):
             #     hiddify_api.sync_child_to_parent()
             reset_action = hiddify.check_need_reset(old_configs)
@@ -146,7 +145,7 @@ def get_config_form():
             continue
 
         class CategoryForm(FlaskForm):
-            description_for_fieldset = wtf.fields.TextAreaField("", description=_(f'config.{cat}.description'), render_kw={"class": "d-none"})
+            description_for_fieldset = wtf.TextAreaField("", description=_(f'config.{cat}.description'), render_kw={"class": "d-none"})
         for c2 in cat_configs:
             if not (c2 in configs_key):
                 continue
@@ -155,102 +154,96 @@ def get_config_form():
             if c.key in bool_types:
                 field = SwitchField(_(f'config.{c.key}.label'), default=c.value, description=_(f'config.{c.key}.description'))
             elif c.key == ConfigEnum.core_type:
-                field = wtf.fields.SelectField(_(f"config.{c.key}.label"), choices=[("xray", _("Xray")), ("singbox", _(
-                    "SingBox"))], description=_(f"config.{c.key}.description"), default=hconfig(c.key))
+                field = wtf.SelectField(_(f"config.{c.key}.label"), choices=[("xray", _("Xray")), ("singbox", _("SingBox"))], description=_(f"config.{c.key}.description"), default=hconfig(c.key))
             elif c.key == ConfigEnum.warp_mode:
-                field = wtf.fields.SelectField(_(f"config.{c.key}.label"), choices=[("disable", _("Disable")), ("all", _("All")), ("custom", _(
-                    "Only Blocked and Local websites"))], description=_(f"config.{c.key}.description"), default=hconfig(c.key))
+                field = wtf.SelectField(
+                    _(f"config.{c.key}.label"), choices=[("disable", _("Disable")), ("all", _("All")), ("custom", _("Only Blocked and Local websites"))],
+                    description=_(f"config.{c.key}.description"),
+                    default=hconfig(c.key))
 
             elif c.key == ConfigEnum.lang or c.key == ConfigEnum.admin_lang:
-                field = wtf.fields.SelectField(_(f"config.{c.key}.label"), choices=[("en", _("lang.en")), ("fa", Markup(_("lang.fa"))), ("zh", _(
-                    "lang.zh")), ("pt", _("lang.pt")), ("ru", _("lang.ru"))], description=_(f"config.{c.key}.description"), default=hconfig(c.key))
+                field = wtf.SelectField(
+                    _(f"config.{c.key}.label"),
+                    choices=[("en", _("lang.en")), ("fa", Markup(_("lang.fa"))), ("zh", _("lang.zh")), ("pt", _("lang.pt")), ("ru", _("lang.ru"))],
+                    description=_(f"config.{c.key}.description"),
+                    default=hconfig(c.key))
             elif c.key == ConfigEnum.country:
-                field = wtf.fields.SelectField(_(f"config.{c.key}.label"), choices=[("ir", _("Iran")), ("zh", _(
-                    "China")), ("other", _("Others"))], description=_(f"config.{c.key}.description"), default=hconfig(c.key))
+                field = wtf.SelectField(_(f"config.{c.key}.label"), choices=[("ir", _("Iran")), ("zh", _("China")), ("other", _("Others"))], description=_(f"config.{c.key}.description"), default=hconfig(c.key))
             elif c.key == ConfigEnum.package_mode:
                 package_modes = [("release", _("Release")), ("beta", _("Beta"))]
                 if hconfig(c.key) == "develop":
                     package_modes.append(("develop", _("Develop")))
-                field = wtf.fields.SelectField(_(f"config.{c.key}.label"), choices=package_modes,
-                                               description=_(f"config.{c.key}.description"), default=hconfig(c.key))
+                field = wtf.SelectField(_(f"config.{c.key}.label"), choices=package_modes, description=_(f"config.{c.key}.description"), default=hconfig(c.key))
 
             elif c.key == ConfigEnum.shadowsocks2022_method:
-                field = wtf.fields.SelectField(_(f"config.{c.key}.label"), choices=[
-                    ("2022-blake3-aes-256-gcm", "2022-blake3-aes-256-gcm"),
-                    ("2022-blake3-chacha20-poly1305", "2022-blake3-chacha20-poly1305"),
-                ], description=_(f"config.{c.key}.description"), default=hconfig(c.key))
+                field = wtf.SelectField(
+                    _(f"config.{c.key}.label"),
+                    choices=[("2022-blake3-aes-256-gcm", "2022-blake3-aes-256-gcm"), ("2022-blake3-chacha20-poly1305", "2022-blake3-chacha20-poly1305"),],
+                    description=_(f"config.{c.key}.description"), default=hconfig(c.key))
 
             elif c.key == ConfigEnum.utls:
-                field = wtf.fields.SelectField(
+                field = wtf.SelectField(
                     _(f"config.{c.key}.label"),
-                    choices=[("none", "None"),
-                             ("chrome", "Chrome"),
-                             ("edge", "Edge"),
-                             ("ios", "iOS"),
-                             ("android", "Android"),
-                             ("safari", "Safari"),
-                             ("firefox", "Firefox"),
-                             ('random', 'random'),
-                             ('randomized', 'randomized')],
+                    choices=[
+                        ("none", "None"), ("chrome", "Chrome"), ("edge", "Edge"), ("ios", "iOS"), ("android", "Android"),
+                        ("safari", "Safari"), ("firefox", "Firefox"), ('random', 'random'), ('randomized', 'randomized')],
                     description=_(f"config.{c.key}.description"),
-                    default=hconfig(c.key))
+                    default=hconfig(c.key)
+                )
             elif c.key == ConfigEnum.telegram_lib:
                 # if hconfig(ConfigEnum.telegram_lib)=='python':
                 #     continue6
                 libs = [("python", _("lib.telegram.python")), ("tgo", _("lib.telegram.go")),
                         ("orig", _("lib.telegram.orignal")), ("erlang", _("lib.telegram.erlang"))]
-                field = wtf.fields.SelectField(_("config.telegram_lib.label"), choices=libs, description=_(
-                    "config.telegram_lib.description"), default=hconfig(ConfigEnum.telegram_lib))
+                field = wtf.SelectField(_("config.telegram_lib.label"), choices=libs, description=_("config.telegram_lib.description"), default=hconfig(ConfigEnum.telegram_lib))
             elif c.key == ConfigEnum.mux_protocol:
                 choices = [("smux", 'smux'), ("yamux", "yamux"), ("h2mux", "h2mux")]
-                field = wtf.fields.SelectField(_(f"config.{c.key}.label"), choices=choices,
-                                               description=_(f"config.{c.key}.description"), default=hconfig(c.key))
+                field = wtf.SelectField(_(f"config.{c.key}.label"), choices=choices, description=_(f"config.{c.key}.description"), default=hconfig(c.key))
 
             elif c.key == ConfigEnum.warp_sites:
                 validators = [wtf.validators.Length(max=2048)]
                 render_kw = {'class': "ltr", 'maxlength': 2048}
-                field = wtf.fields.TextAreaField(_(f'config.{c.key}.label'), validators, default=c.value,
-                                                 description=_(f'config.{c.key}.description'), render_kw=render_kw)
+                field = wtf.TextAreaField(_(f'config.{c.key}.label'), validators, default=c.value, description=_(f'config.{c.key}.description'), render_kw=render_kw)
             elif c.key == ConfigEnum.branding_freetext:
                 validators = [wtf.validators.Length(max=2048)]
                 render_kw = {'class': "ltr", 'maxlength': 2048}
-                field = custom_widgets.CKTextAreaField(_(f'config.{c.key}.label'), validators, default=c.value,
-                                                       description=_(f'config.{c.key}.description'), render_kw=render_kw)
+                field = custom_widgets.CKTextAreaField(_(f'config.{c.key}.label'), validators, default=c.value, description=_(f'config.{c.key}.description'), render_kw=render_kw)
             else:
                 render_kw = {'class': "ltr"}
                 validators = []
                 if c.key == ConfigEnum.domain_fronting_domain:
                     validators.append(wtf.validators.Regexp("^([A-Za-z0-9\\-\\.]+\\.[a-zA-Z]{2,})|$", re.IGNORECASE, _("config.Invalid domain")))
-                    validators.append(hiddify.validate_domain_exist)
+                    validators.append(hutils.flask.validate_domain_exist)
                 elif '_domain' in c.key or "_fakedomain" in c.key:
                     validators.append(wtf.validators.Regexp("^([A-Za-z0-9\\-\\.]+\\.[a-zA-Z]{2,})$", re.IGNORECASE, _("config.Invalid domain")))
-                    validators.append(hiddify.validate_domain_exist)
+                    validators.append(hutils.flask.validate_domain_exist)
 
                     if c.key != ConfigEnum.decoy_domain:
                         validators.append(wtf.validators.NoneOf([d.domain.lower() for d in Domain.query.all()], _("config.Domain already used")))
-                        validators.append(wtf.validators.NoneOf([cc.value.lower() for cc in StrConfig.query.filter(StrConfig.child_id == Child.current.id).all(
-                        ) if cc.key != c.key and "fakedomain" in cc.key and cc.key != ConfigEnum.decoy_domain], _("config.Domain already used")))
+                        validators.append(wtf.validators.NoneOf(
+                            [cc.value.lower() for cc in StrConfig.query.filter(StrConfig.child_id == Child.current.id).all() if cc.key != c.key and "fakedomain" in cc.key and cc.key != ConfigEnum.decoy_domain], _("config.Domain already used")))
+
                     render_kw['required'] = ""
                     if len(c.value) < 3:
                         c.value = hutils.network.get_random_domains(1)[0]
+
                 # if c.key ==ConfigEnum.reality_short_ids:
                 #     extra_info=f" <a target='_blank' href='{hurl_for('admin.Actions:get_some_random_reality_friendly_domain',test_domain=c.value)}'>"+_('Example Domains')+"</a>"
                 # if c.key ==ConfigEnum.reality_server_names:
                 #     validators.append(wtf.validators.Regexp("^([\w-]+\.)+[\w-]+(,\s*([\w-]+\.)+[\w-]+)*$",re.IGNORECASE,_("Invalid REALITY hostnames")))
                     # gauge width gate lamp weasel jaguar minute enough few attitude endorse situate usdt trc20 doge bep20 trx doge ltc bnb eth btc bnb
                     # enjoy control list debris chronic few door broken way negative daring life season recipe profit switch bitter casual frame aunt plate brush aerobic display
+
                 if c.key == ConfigEnum.parent_panel:
                     validators.append(wtf.validators.Regexp("()|(http(s|)://([A-Za-z0-9\\-\\.]+\\.[a-zA-Z]{2,})/.*)", re.IGNORECASE, _("Invalid admin link")))
                 if c.key == ConfigEnum.telegram_bot_token:
                     validators.append(wtf.validators.Regexp("()|^([0-9]{8,12}:[a-zA-Z0-9_-]{30,40})|$", re.IGNORECASE, _("config.Invalid telegram bot token")))
                 if c.key == ConfigEnum.branding_site:
-                    validators.append(wtf.validators.Regexp(
-                        "()|(http(s|)://([A-Za-z0-9\\-\\.]+\\.[a-zA-Z]{2,})/?.*)", re.IGNORECASE, _("config.Invalid brand link")))
+                    validators.append(wtf.validators.Regexp("()|(http(s|)://([A-Za-z0-9\\-\\.]+\\.[a-zA-Z]{2,})/?.*)", re.IGNORECASE, _("config.Invalid brand link")))
                     # render_kw['required']=""
 
                 if 'secret' in c.key:
-                    validators.append(wtf.validators.Regexp(
-                        "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$", re.IGNORECASE, _('config.invalid uuid')))
+                    validators.append(wtf.validators.Regexp("^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$", re.IGNORECASE, _('config.invalid uuid')))
                     render_kw['required'] = ""
 
                 if c.key == ConfigEnum.proxy_path:
@@ -272,20 +265,22 @@ def get_config_form():
                 if c.key in [ConfigEnum.hysteria_up_mbps, ConfigEnum.hysteria_down_mbps, ConfigEnum.mux_max_connections, ConfigEnum.mux_min_streams, ConfigEnum.mux_max_streams,
                              ConfigEnum.mux_brutal_down_mbps, ConfigEnum.mux_brutal_up_mbps]:
                     validators.append(wtf.validators.Regexp("^\\d+$", re.IGNORECASE, _("config.Invalid! it should be a number only") + f' {c.key}'))
+
                 for val in validators:
                     if hasattr(val, "regex"):
                         render_kw['pattern'] = val.regex.pattern
                         render_kw['title'] = val.message
+
                 if c.key == ConfigEnum.reality_public_key and g.account.mode in [AdminMode.super_admin]:
                     extra_info = f" <a href='{hurl_for('admin.Actions:change_reality_keys')}'>{_('Change')}</a>"
-                field = wtf.fields.StringField(_(f'config.{c.key}.label'), validators, default=c.value,
-                                               description=_(f'config.{c.key}.description') + extra_info, render_kw=render_kw)
+
+                field = wtf.StringField(_(f'config.{c.key}.label'), validators, default=c.value, description=_(f'config.{c.key}.description') + extra_info, render_kw=render_kw)
             setattr(CategoryForm, f'{c.key}', field)
 
-        multifield = wtf.fields.FormField(CategoryForm, Markup('<i class="fa-solid fa-plus"></i>&nbsp' + _(f'config.{cat}.label')))
+        multifield = wtf.FormField(CategoryForm, Markup('<i class="fa-solid fa-plus"></i>&nbsp' + _(f'config.{cat}.label')))
 
         setattr(DynamicForm, cat, multifield)
 
-    setattr(DynamicForm, "submit", wtf.fields.SubmitField(_('Submit')))
+    setattr(DynamicForm, "submit", wtf.SubmitField(_('Submit')))
 
     return DynamicForm()
