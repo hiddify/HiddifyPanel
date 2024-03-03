@@ -281,6 +281,8 @@
 
 #### Fix
 
+* Bug. 
+
 * Csrf check. 
 
 * Shadowsocks bug. 
@@ -914,6 +916,8 @@ with A2_
 * Bugs. 
 
 #### Other
+
+* Disable csrf globally. 
 
 * Merge pull request #145 from Iam54r1n4/up-trans. 
   _inlang: update translations: fix missing translations_
