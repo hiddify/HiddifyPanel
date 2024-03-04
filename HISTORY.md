@@ -281,6 +281,8 @@
 
 #### Fix
 
+* Release message. 
+
 * Custom usage trojan. 
 
 * Setting telegram web hook. 
