@@ -169,9 +169,9 @@ class DomainAdmin(AdminLTEModelView):
         if hconfig(ConfigEnum.cloudflare) and model.mode != DomainType.fake:
             try:
                 proxied = model.mode in [DomainType.cdn, DomainType.auto_cdn_ip]
-                cf_api.add_or_update_domain(model.domain, ipv4_list[0], "A", proxied=proxied)
+                cf_api.add_or_update_domain(model.domain, str(ipv4_list[0]), "A", proxied=proxied)
                 if ipv6_list:
-                    cf_api.add_or_update_domain(model.domain, ipv6_list[0], "AAAA", proxied=proxied)
+                    cf_api.add_or_update_domain(model.domain, str(ipv6_list[0]), "AAAA", proxied=proxied)
 
                 skip_check = True
             except Exception as e:
@@ -213,7 +213,7 @@ class DomainAdmin(AdminLTEModelView):
             raise ValidationError(f"Specifying CDN IP is only valid for CDN mode")
 
         if model.mode == DomainType.fake and not model.cdn_ip:
-            model.cdn_ip = ipv4_list[0]
+            model.cdn_ip = str(ipv4_list[0])
 
         # if model.mode==DomainType.fake and model.cdn_ip!=myip:
         #     raise ValidationError(f"Specifying CDN IP is only valid for CDN mode")
