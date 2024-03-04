@@ -10,7 +10,7 @@ class SSHLibertyBridgeApi(DriverABS):
 
     def get_ssh_redis_client(self):
         if not hasattr(self, 'redis_client'):
-            self.redis_client = redis.from_url(hconfig(ConfigEnum.ssh_server_redis_url), decode_responses=True)
+            self.redis_client = redis.from_url('unix:///opt/hiddify-manager/other/redis/run.sock?db=1', decode_responses=True)
 
         return self.redis_client
 

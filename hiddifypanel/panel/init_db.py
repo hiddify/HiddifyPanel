@@ -86,8 +86,6 @@ def _v65():
     add_config_if_not_exist(ConfigEnum.mux_brutal_down_mbps, '100')
 
 
-def _v64():
-    set_hconfig(ConfigEnum.ssh_server_redis_url, "unix:///opt/hiddify-manager/other/redis/run.sock?db=1")
 
 
 def _v63():
@@ -182,7 +180,7 @@ def _v45():
 
     if not Proxy.query.filter(Proxy.name == "SSH").first():
         db.session.add(Proxy(l3='ssh', transport='ssh', cdn='direct', proto='ssh', enable=True, name="SSH"))
-    add_config_if_not_exist(ConfigEnum.ssh_server_redis_url, "unix:///opt/hiddify-manager/other/redis/run.sock?db=1")
+    
     add_config_if_not_exist(ConfigEnum.ssh_server_port, hutils.random.get_random_unused_port())
     add_config_if_not_exist(ConfigEnum.ssh_server_enable, False)
 # def _v43():
