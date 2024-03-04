@@ -885,7 +885,7 @@
   "Remaining: ": "Package Ends",
   "You have too much users! You can have only %(active)s active users and %(total)s users": "You have too much users! You can have only %(active)s active users and %(total)s users",
   "Backup": "Backup",
-  "You can download a json formated of configurations by clicking <a href='%(link)s' class='btn btn-primary'>here</a>": "🔄 Hiddify Manager automatically takes a Backup every 6 Hours. The path of the Backup files on the server: ⬇️\n<br>\n/opt/hiddify-config/hiddify-panel/backup\n<br>\n<br>\n<br>\n⚠️ You can download a JSON file format of the configurations by clicking on the button below\n<br>\n<br>\n<a href='%(link)s' class='btn btn-primary'>Download Backup File</a>",
+  "You can download a json formated of configurations by clicking <a href='%(link)s' class='btn btn-primary'>here</a>": "🔄 Hiddify Manager automatically takes a Backup every 6 Hours. The path of the Backup files on the server: ⬇️\n<br>\n/opt/hiddify-manager/hiddify-panel/backup/\n<br>\n<br>\n<br>\n⚠️ You can download a JSON file format of the configurations by clicking on the button below\n<br>\n<br>\n<a href='%(link)s' class='btn btn-primary'>Download Backup File</a>",
   "Restore": "♻️ Restore",
   "You can restore your configs from previously downloaded configs": "ℹ️ You can restore your configs from previously downloaded backup file",
   "Why Going to Premium?": "Why Going to Premium?",
