@@ -399,8 +399,8 @@
       "description": "Shadowsocks Path in the Links"
     },
     "dbvalues": {
-      "label": "config.dbvalues.label",
-      "description": "config.dbvalues.description"
+      "label": "-",
+      "description": "-"
     },
     "create_easysetup_link": {
       "label": "-",
@@ -440,7 +440,7 @@
     },
     "ssh_server_port": {
       "label": "↔️ SSH Proxy Port",
-      "description": "This is completely different from your original SSH server. It is a dedicated program"
+      "description": "This is completely different from your original SSH server. It is a dedicated program."
     },
     "ssh_server_enable": {
       "label": "✔️ Enable SSH Proxy",
@@ -459,32 +459,32 @@
       "description": "✳️ Default 1.1.1.1 <br>\n🚧 Block Malware 1.1.1.2 <br>\n🔞 Block Porn 1.1.1.3\n"
     },
     "reality_port": {
-      "label": "config.reality_port.label",
-      "description": "config.reality_port.description"
+      "label": "↔️  Direct Reality Port",
+      "description": "You can set a customized port for your reality server to reduce the system's overhead. (Allow direct connection to proxies should be yes)"
     },
     "tls_fragment_enable": {
-      "label": "config.tls_fragment_enable.label",
-      "description": "config.tls_fragment_enable.description"
+      "label": "⏯ Enable TLS Fragment",
+      "description": "Under some circumstances, it can bypass the SNI blacklist system"
     },
     "tls_fragment_size": {
-      "label": "config.tls_fragment_size.label",
-      "description": "config.tls_fragment_size.description"
+      "label": "🎚 TLS Fragment Size",
+      "description": "The Size of each Packet"
     },
     "tls_fragment_sleep": {
-      "label": "config.tls_fragment_sleep.label",
-      "description": "config.tls_fragment_sleep.description"
+      "label": "⏱ TLS Fragment Sleep",
+      "description": "The time delay between Fragments"
     },
     "tls_mixed_case": {
-      "label": "config.tls_mixed_case.label",
-      "description": "config.tls_mixed_case.description"
+      "label": "🔠 Enable TLS Mixed SNI Case",
+      "description": "Enables TLS Mixed SNI Case Fragmentation"
     },
     "tls_padding_enable": {
-      "label": "config.tls_padding_enable.label",
-      "description": "config.tls_padding_enable.description"
+      "label": "♒️ Enable TLS Padding",
+      "description": "Enables Padding for TLS Fragmentation"
     },
     "tls_padding_length": {
-      "label": "config.tls_padding_length.label",
-      "description": "config.tls_padding_length.description"
+      "label": "📏 TLS Padding",
+      "description": "The length of the Padding for TLS Fragmentation"
     },
     "mux_enable": {
       "label": "Ⓜ️ MUX Enable (⚠️ Incompatible with some clients)",
@@ -523,12 +523,12 @@
       "description": "TCP-Brutal Maximum Download Speed"
     },
     "proxy_path_admin": {
-      "label": "config.proxy_path_admin.label",
-      "description": "config.proxy_path_admin.description"
+      "label": "🔐 Proxy Path for Admins",
+      "description": "We use secret proxy path to hide our proxies for the governments and  bots"
     },
     "proxy_path_client": {
-      "label": "config.proxy_path_client.label",
-      "description": "config.proxy_path_client.description"
+      "label": "🔏 Proxy Path for Clients",
+      "description": "Secret proxy path hide the proxies from the governments and bots"
     },
     "hysteria_enable": {
       "label": "Enable Hysteria2",
@@ -539,52 +539,52 @@
       "description": "Hysteria UDP Port for example 5678"
     },
     "hysteria_obfs_enable": {
-      "label": "config.hysteria_obfs_enable.label",
-      "description": "config.hysteria_obfs_enable.description"
+      "label": "🎛 Hysteria OBFS Enable",
+      "description": " Enables Hysteria Obfuscation (Salamander)"
     },
     "hysteria_up_mbps": {
-      "label": "config.hysteria_up_mbps.label",
-      "description": "config.hysteria_up_mbps.description"
+      "label": "⬆️ Hysteria Upload (mbps)",
+      "description": "Hysteria Maximum Upload Speed"
     },
     "hysteria_down_mbps": {
-      "label": "config.hysteria_down_mbps.label",
-      "description": "config.hysteria_down_mbps.description"
+      "label": "⬇️ Hysteria Download (mbps)",
+      "description": "Hysteria Maximum Download Speed"
     },
     "shadowsocks2022_enable": {
-      "label": "config.shadowsocks2022_enable.label",
-      "description": "config.shadowsocks2022_enable.description"
+      "label": "Enable Shadowsocks 2022",
+      "description": "Shadowsocks 2022 is a secure proxy protocol for TCP and UDP traffic. The proxy traffic is indistinguishable from a random byte stream, and therefore can circumvent firewalls and Internet censors that rely on DPI (Deep Packet Inspection)."
     },
     "shadowsocks2022_method": {
-      "label": "config.shadowsocks2022_method.label",
-      "description": "config.shadowsocks2022_method.description"
+      "label": "Shadowsocks Encrypytion Method",
+      "description": "This method also used in ShadowTLS and SSFakeTLS"
     },
     "shadowsocks2022_port": {
-      "label": "config.shadowsocks2022_port.label",
-      "description": "config.shadowsocks2022_port.description"
+      "label": "Shadowsocks 2022 Port",
+      "description": "It needs both UDP and TCP to be free"
     },
     "ws_enable": {
-      "label": "config.ws_enable.label",
-      "description": "config.ws_enable.description"
+      "label": "Enable Websocket",
+      "description": "Websocket creates a tunnel over http that is useful to be used in CDN."
     },
     "grpc_enable": {
-      "label": "config.grpc_enable.label",
-      "description": "config.grpc_enable.description"
+      "label": "Enable gRPC",
+      "description": "gRPC is a modern open source high performance Remote Procedure Call (RPC) framework. It can be used in supported CDNs."
     },
     "httpupgrade_enable": {
-      "label": "config.httpupgrade_enable.label",
-      "description": "config.httpupgrade_enable.description"
+      "label": "Enable HTTPUpgrade Method",
+      "description": "HTTPUpgrade complete a HTTP 1.1 Upgrade request and response before using the connection directly. It is similar to WebSocket in the way it create an direction channel that can be forwarded by many reverse proxies and CDNs, without the need to deal with all the issue around WebSocket Protocol itself.\n\n⚠️ Not Available in Xray based Clients. Only HiddifyNext, Singbox, and V2fly clients are supported"
     },
     "path_httpupgrade": {
-      "label": "config.path_httpupgrade.label",
-      "description": "config.path_httpupgrade.description"
+      "label": "HTTP Upgrade Path",
+      "description": "should be random"
     },
     "mux": {
-      "label": "config.mux.label",
-      "description": "config.mux.description"
+      "label": "MUX Config",
+      "description": "MUX (Multiplex) configurations could be set in this section"
     },
     "tls_trick": {
-      "label": "config.tls_trick.label",
-      "description": "config.tls_trick.description"
+      "label": "TLS Trick",
+      "description": "TLS Fragmentation configurations could be set in this section"
     },
     "ssh": {
       "label": "SSH Proxy",
@@ -603,8 +603,8 @@
       "description": "WireGuard is a lightweight, UDP  based protocol known for its simplicity, efficiency, and strong security. It offers quick setup, transparent code, and has gained popularity for its ease of use across various operating systems.\n\n⚠️ Accounting is not yet implemented for this protocol."
     },
     "shadowsocks": {
-      "label": "config.shadowsocks.label",
-      "description": "config.shadowsocks.description"
+      "label": "Shadowsocks",
+      "description": "Shadowsocks is a fast tunnel proxy that helps you bypass firewalls."
     }
   },
   "Domain can not be resolved! there is a problem in your domain": "Domain can not be resolved! There is a problem in your domain. Please check your Domain configurations.",
