@@ -148,7 +148,7 @@ msgid "config.telegram_lib.description"
 msgstr ""
 "در این قسمت می‌توانید کتابخانه‌های مختلف تلگرام را انتخاب نمایید. توجه کنید "
 "که فقط پایتون در تمام سیستم ها درست کار میکند و بقیه ممکن است اشکالاتی داشته"
-" باشد. بعد از تغییر حتما تست کنید."
+" باشد. بعد از تغییر حتما تست کنید"
 
 msgid "config.admin.label"
 msgstr "تنظیمات ادمین"
@@ -176,15 +176,15 @@ msgstr "🆔 لینک پشتیبانی"
 msgid "config.branding_site.description"
 msgstr ""
 "لینکی که در این قسمت وارد می‌کنید، در صفحه کاربر و در قسمت پشتیبانی به کاربران نمایش داده می‌شود.\n"
-"برای مثال آدرس کانال تلگرام، یا چت شخصی خود را میتوانید قرار دهید."
+"برای مثال آدرس کانال تلگرام، یا چت شخصی خود را میتوانید قرار دهید"
 
 msgid "config.branding_freetext.label"
 msgstr "📢 متن باکس پشتیبانی"
 
 msgid "config.branding_freetext.description"
 msgstr ""
-"متنی که در این قسمت وارد می‌کنید، در باکس پشتیبانی در صفحه کاربران نمایش "
-"داده می‌شود. امکان استفاده از کدهای HTML هم وجود دارد"
+"متنی که در این قسمت وارد می‌کنید، در باکس پشتیبانی در صفحه کاربران نمایش داده می‌شود. امکان استفاده از کدهای HTML هم وجود دارد\n"
+"<p><br /><a href=\"https://onlinehtmleditor.dev\" target=\"_blank\">HTML Editor</a></p>"
 
 msgid "config.branding.label"
 msgstr "شخصی‌ سازی صفحه کاربران"
@@ -299,7 +299,7 @@ msgstr "📺 دامنه فیک تلگرام"
 msgid "config.telegram_fakedomain.description"
 msgstr ""
 "لطفا از یک دامنه معتبر در دیتاسنتر خود استفاده کنید. برای مثال، اگر از "
-"دیتاسنتر Azure استفاده می‌کنید، microsoft-update.com یک نمونه خوب است."
+"دیتاسنتر Azure استفاده می‌کنید، microsoft-update.com یک نمونه خوب است"
 
 msgid "config.telegram.label"
 msgstr "پروکسی تلگرام"
@@ -390,8 +390,7 @@ msgstr "🌍 دامنه جعلی ShadowTLS"
 msgid "config.shadowtls_fakedomain.description"
 msgstr ""
 "لطفاً از یک دامنه شناخته شده در دیتاسنتر خود استفاده کنید. به عنوان مثال، "
-"اگر از دیتاسنتر Azure استفاده می‌کنید، microsoft-update.com یک نمونه خوب "
-"است."
+"اگر از دیتاسنتر Azure استفاده می‌کنید، microsoft-update.com یک نمونه خوب است"
 
 msgid "config.shadowtls.label"
 msgstr "ShadowTLS"
@@ -443,8 +442,9 @@ msgstr "🔐 توکن ربات تلگرام"
 
 msgid "config.telegram_bot_token.description"
 msgstr ""
-"برای افزودن قابلیت ربات تلگرام نیاز است تا یک ربات با BotFather@ بسازید و کد"
-" API را در این قسمت وارد کنید"
+"<p>برای افزودن قابلیت ربات تلگرام نیاز است تا یک ربات با <a "
+"href=\"https://t.me/BotFather\" target=\"_blank\">BotFather@</a> بسازید و کد"
+" API را در این قسمت وارد کنید</p>"
 
 msgid "config.package_mode.label"
 msgstr "🔄 حالت به روز رسانی"
@@ -532,7 +532,7 @@ msgstr ""
 "🔝 دادن کلید وارپ پلاس باعث افزایش سرعت میشود. جهت خرید کلید به سایت <a href='https://1.1.1.1/'> 1.1.1.1 </a>\n"
 "بروید و اقدام به خرید کلید کنید.\n"
 "<br>\n"
-"⚠️ در صورت وجود خطا در این کلید، وارپ غیرفعال می شود."
+"⚠️ در صورت وجود خطا در این کلید، وارپ غیرفعال می شود"
 
 msgid "config.warp_mode.label"
 msgstr "✴️ حالت +Warp"
@@ -702,7 +702,7 @@ msgstr "دامنه جعلی برای SSR"
 msgid "config.ssr_fakedomain.description"
 msgstr ""
 "لطفا از یک دامنه معتبر در دیتاسنتر خود استفاده کنید. برای مثال، اگر از "
-"دیتاسنتر Azure استفاده می‌کنید، microsoft-update.com یک نمونه خوب است."
+"دیتاسنتر Azure استفاده می‌کنید، microsoft-update.com یک نمونه خوب است"
 
 msgid "config.domain_fronting_http_enable.label"
 msgstr "فعال کردن دامین فرانتینگ در اتصال HTTP."
@@ -735,64 +735,11 @@ msgstr "مسیر شدوساکس"
 msgid "config.path_ss.description"
 msgstr "مسیر شدوساکس در لینکها"
 
-msgid "config.dbvalues.label"
-msgstr "-"
-
-msgid "config.dbvalues.description"
-msgstr "-"
-
 msgid "config.create_easysetup_link.label"
 msgstr "-"
 
 msgid "config.create_easysetup_link.description"
 msgstr "-"
-
-msgid "config.wireguard_enable.label"
-msgstr "WireGuard را فعال کنید"
-
-msgid "config.wireguard_enable.description"
-msgstr ""
-"WireGuard پروتکل مبتنی بر UDP است.\n"
-"\n"
-"⚠️ فقط در Hiddify Next کار می کند. "
-
-msgid "config.wireguard_port.label"
-msgstr "پورت وایرگارد"
-
-msgid "config.wireguard_port.description"
-msgstr ""
-
-msgid "config.wireguard_ipv6.label"
-msgstr "-"
-
-msgid "config.wireguard_ipv6.description"
-msgstr "-"
-
-msgid "config.wireguard_ipv4.label"
-msgstr "-"
-
-msgid "config.wireguard_ipv4.description"
-msgstr "-"
-
-msgid "config.wireguard_private_key.label"
-msgstr "-"
-
-msgid "config.wireguard_private_key.description"
-msgstr "-"
-
-msgid "config.wireguard_public_key.label"
-msgstr "-"
-
-msgid "config.wireguard_public_key.description"
-msgstr "-"
-
-msgid "config.wireguard_noise_trick.label"
-msgstr "ترفند نویز WireGuard"
-
-msgid "config.wireguard_noise_trick.description"
-msgstr ""
-"این روش نویز اضافی را برای جلوگیری از شناسایی و مسدود شدن توسط GFW معرفی می "
-"کند."
 
 msgid "config.ssh_server_redis_url.label"
 msgstr "آدرس پایگاه داده کاربر SSH"
@@ -804,7 +751,7 @@ msgid "config.ssh_server_port.label"
 msgstr "پورت پروکسی SSH"
 
 msgid "config.ssh_server_port.description"
-msgstr "این کاملا با سرور اصلی SSH شما متفاوت است. این یک برنامه اختصاصی است."
+msgstr "این کاملا با سرور اصلی SSH شما متفاوت است. این یک برنامه اختصاصی است"
 
 msgid "config.ssh_server_enable.label"
 msgstr "✔️ پروکسی SSH را فعال کنید"
@@ -821,14 +768,6 @@ msgstr ""
 "<br>\n"
 "📦 Singbox : توسعه یافته توسط SagerNet. همچنین هسته خوبی است"
 
-msgid "config.warp_sites.label"
-msgstr "🆚 سایت‌های اضافی برای Warp"
-
-msgid "config.warp_sites.description"
-msgstr ""
-"اضافه کردن سایت‌های اضافی برای عبور از Warp (فقط زمانی که حالت Warp None "
-"نیست)"
-
 msgid "config.dns_server.label"
 msgstr "🖥 سرور DNS"
 
@@ -837,127 +776,6 @@ msgstr ""
 "✳️ پیش فرض 1.1.1.1 <br>\n"
 "🚧 مسدود کردن بدافزار 1.1.1.2 <br>\n"
 "🔞 مسدود کردن پورن 1.1.1.3"
-
-msgid "config.reality_port.label"
-msgstr "↔️  پورت ریالیتی"
-
-msgid "config.reality_port.description"
-msgstr ""
-"شما می توانید یک پورت سفارشی برای سرور ریالیتی خود تنظیم کنید تا پردازش "
-"سیستم را کاهش دهید. (اجازه اتصال مستقیم به پروکسی ها باید بله باشد)"
-
-msgid "config.tls_fragment_enable.label"
-msgstr "⏯ TLS Fragment را فعال کنید"
-
-msgid "config.tls_fragment_enable.description"
-msgstr "تحت برخی شرایط، می تواند سیستم لیست سیاه SNI را دور بزند"
-
-msgid "config.tls_fragment_size.label"
-msgstr "🎚 اندازه قطعه TLS"
-
-msgid "config.tls_fragment_size.description"
-msgstr "اندازه هر بسته"
-
-msgid "config.tls_fragment_sleep.label"
-msgstr "⏱ TLS Fragment Sleep"
-
-msgid "config.tls_fragment_sleep.description"
-msgstr "تاخیر زمانی بین قطعات"
-
-msgid "config.tls_mixed_case.label"
-msgstr "🔠 TLS Mixed SNI Case را فعال کنید"
-
-msgid "config.tls_mixed_case.description"
-msgstr "TLS Mixed SNI Case Fragmentation را فعال می کند"
-
-msgid "config.tls_padding_enable.label"
-msgstr "♒️ TLS Padding را فعال کنید"
-
-msgid "config.tls_padding_enable.description"
-msgstr "Padding را برای تکه تکه شدن TLS فعال می کند"
-
-msgid "config.tls_padding_length.label"
-msgstr "📏 بالشتک TLS"
-
-msgid "config.tls_padding_length.description"
-msgstr "طول Padding برای تکه تکه شدن TLS"
-
-msgid "config.mux_enable.label"
-msgstr "Ⓜ️ فعال کردن MUX (⚠️ ناسازگار با برخی نرم افزارها)"
-
-msgid "config.mux_enable.description"
-msgstr ""
-"Mux به نرم افزار سازگار نیاز دارد. Mux در Hiddify Next و singbox با Xray "
-"سازگار نیستند"
-
-msgid "config.mux_protocol.label"
-msgstr "♍️ پروتکل MUX"
-
-msgid "config.mux_protocol.description"
-msgstr ""
-"ℹ️ پروتکل Multiplex. 'sMux' به طور پیش فرض استفاده می شود\n"
-"<br>\n"
-"➖ sMux: مالتیپلکس کردن جریان\n"
-"<br>\n"
-"➖ YaMux: باز هم یک مولتی پلکسر دیگر\n"
-"<br>\n"
-"➖ h2Mux: جریان های چندگانه از طریق HTTP/2"
-
-msgid "config.mux_max_connections.label"
-msgstr "⛓ اتصالات MUX Max"
-
-msgid "config.mux_max_connections.description"
-msgstr "حداکثر اتصالات درگیری با Max Streams"
-
-msgid "config.mux_min_streams.label"
-msgstr "↘️ MUX Min Streams"
-
-msgid "config.mux_min_streams.description"
-msgstr "حداقل جریان های چندگانه در یک اتصال قبل از باز کردن یک اتصال جدید"
-
-msgid "config.mux_max_streams.label"
-msgstr "↗️ MUX Max Streams"
-
-msgid "config.mux_max_streams.description"
-msgstr "حداکثر جریان های چندگانه در یک اتصال قبل از باز کردن یک اتصال جدید"
-
-msgid "config.mux_padding_enable.label"
-msgstr "⟹ MUX Padding"
-
-msgid "config.mux_padding_enable.description"
-msgstr "MUX Padding را فعال می کند"
-
-msgid "config.mux_brutal_enable.label"
-msgstr "☣️ MUX Brutal"
-
-msgid "config.mux_brutal_enable.description"
-msgstr "الگوریتم کنترل تراکم TCP-Brutal را فعال می کند"
-
-msgid "config.mux_brutal_up_mbps.label"
-msgstr "⬆️ آپلود بی رحمانه MUX (mbps)"
-
-msgid "config.mux_brutal_up_mbps.description"
-msgstr "حداکثر سرعت آپلود TCP-Brutal"
-
-msgid "config.mux_brutal_down_mbps.label"
-msgstr "⬇️ دانلود MUX Brutal (mbps)"
-
-msgid "config.mux_brutal_down_mbps.description"
-msgstr "حداکثر سرعت دانلود TCP-Brutal"
-
-msgid "config.proxy_path_admin.label"
-msgstr "مسیر پروکسی برای مدیران"
-
-msgid "config.proxy_path_admin.description"
-msgstr ""
-"ما از مسیر پراکسی مخفی برای مخفی کردن پروکسی های خود برای دولت ها و ربات ها "
-"استفاده می کنیم"
-
-msgid "config.proxy_path_client.label"
-msgstr "مسیر پروکسی برای مشتریان"
-
-msgid "config.proxy_path_client.description"
-msgstr "مسیر مخفی پروکسی پروکسی ها را از دولت ها و ربات ها پنهان می کند"
 
 msgid "config.hysteria_enable.label"
 msgstr "هیستریا را فعال کنید"
@@ -970,88 +788,6 @@ msgstr "پورت هیستریا"
 
 msgid "config.hysteria_port.description"
 msgstr "پورت Hysteria UDP برای مثال 5678"
-
-msgid "config.hysteria_obfs_enable.label"
-msgstr "🎛 Hysteria OBFS را فعال کنید"
-
-msgid "config.hysteria_obfs_enable.description"
-msgstr "مبهم سازی هیستری (Salamander) را فعال می کند"
-
-msgid "config.hysteria_up_mbps.label"
-msgstr "⬆️ آپلود هیستری (mbps)"
-
-msgid "config.hysteria_up_mbps.description"
-msgstr "حداکثر سرعت آپلود هیستری"
-
-msgid "config.hysteria_down_mbps.label"
-msgstr "⬇️ دانلود Hysteria (mbps)"
-
-msgid "config.hysteria_down_mbps.description"
-msgstr "Hysteria حداکثر سرعت دانلود"
-
-msgid "config.shadowsocks2022_enable.label"
-msgstr "Shadowsocks 2022 را فعال کنید"
-
-msgid "config.shadowsocks2022_enable.description"
-msgstr ""
-"Shadowsocks 2022 یک پروتکل پروکسی امن برای ترافیک TCP و UDP است. ترافیک "
-"پراکسی از یک جریان بایت تصادفی قابل تشخیص نیست و بنابراین می تواند فایروال "
-"ها و سانسورهای اینترنتی را که به DPI (بازرسی عمیق بسته) متکی هستند، دور "
-"بزند."
-
-msgid "config.shadowsocks2022_method.label"
-msgstr "روش رمزگذاری Shadowsocks"
-
-msgid "config.shadowsocks2022_method.description"
-msgstr "این روش در ShadowTLS و SSFakeTLS نیز استفاده می شود"
-
-msgid "config.shadowsocks2022_port.label"
-msgstr "پورت Shadowsocks 2022"
-
-msgid "config.shadowsocks2022_port.description"
-msgstr "برای رایگان بودن به UDP و TCP نیاز دارد"
-
-msgid "config.ws_enable.label"
-msgstr "Websocket را فعال کنید"
-
-msgid "config.ws_enable.description"
-msgstr ""
-"Websocket یک تونل روی http ایجاد می کند که برای استفاده در CDN مفید است."
-
-msgid "config.grpc_enable.label"
-msgstr "gRPC را فعال کنید"
-
-msgid "config.grpc_enable.description"
-msgstr ""
-"gRPC یک چارچوب متن باز مدرن با کارایی بالا Remote Procedure Call (RPC) است. "
-"می توان از آن در CDN های پشتیبانی شده استفاده کرد."
-
-msgid "config.httpupgrade_enable.label"
-msgstr "فعالسازی HTTPUpgrade"
-
-msgid "config.httpupgrade_enable.description"
-msgstr ""
-"HTTPUpgrade یک درخواست ارتقاء HTTP 1.1 و پاسخ را قبل از استفاده مستقیم از اتصال تکمیل می کند. این شبیه به WebSocket است که یک کانال جهت ایجاد می کند که می تواند توسط بسیاری از پروکسی های معکوس و CDN ها ارسال شود، بدون اینکه نیازی به رسیدگی به تمام مسائل پیرامون خود پروتکل WebSocket باشد.\n"
-"\n"
-"⚠️ در نرم افزارهای مبتنی بر Xray موجود نیست. فقط نرم افزارهای HiddifyNext، Singbox و V2fly پشتیبانی می شوند."
-
-msgid "config.path_httpupgrade.label"
-msgstr "مسیر ارتقاء HTTP"
-
-msgid "config.path_httpupgrade.description"
-msgstr "باید تصادفی باشد"
-
-msgid "config.mux.label"
-msgstr "پیکربندی MUX"
-
-msgid "config.mux.description"
-msgstr "تنظیمات MUX (Multiplex) را می توان در این بخش تنظیم کرد"
-
-msgid "config.tls_trick.label"
-msgstr "ترفند TLS"
-
-msgid "config.tls_trick.description"
-msgstr "تنظیمات TLS Fragmentation را می توان در این بخش تنظیم کرد"
 
 msgid "config.ssh.label"
 msgstr "پروکسی SSH"
@@ -1077,23 +813,6 @@ msgstr "-"
 
 msgid "config.hidden.description"
 msgstr "-"
-
-msgid "config.wireguard.label"
-msgstr "وایرگارد"
-
-msgid "config.wireguard.description"
-msgstr ""
-"WireGuard یک پروتکل سبک وزن و مبتنی بر UDP است که به دلیل سادگی، کارایی و امنیت قوی شناخته شده است. راه اندازی سریع، کد شفاف را ارائه می دهد و به دلیل سهولت استفاده در سیستم عامل های مختلف محبوبیت پیدا کرده است.\n"
-"\n"
-"⚠️ حسابداری هنوز برای این پروتکل اجرا نشده است."
-
-msgid "config.shadowsocks.label"
-msgstr "شادوساکس"
-
-msgid "config.shadowsocks.description"
-msgstr ""
-"Shadowsocks یک پروکسی تونل سریع است که به شما کمک می کند فایروال ها را دور "
-"بزنید."
 
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr "دامنه قابل دسترسی نیست! در دامنه شما مشکلی وجود دارد."
@@ -1682,6 +1401,16 @@ msgid ""
 "FairVPN."
 msgstr ""
 
+msgid ""
+"Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is "
+"required in direct mode"
+msgstr ""
+
+msgid ""
+"In CDN mode, Domain IP=%(domain_ip)s should be different to your "
+"ip=%(server_ip)s"
+msgstr ""
+
 msgid "Domain is not REALITY friendly!"
 msgstr "دامنه سازگار با REALITY نیست!"
 
@@ -1895,7 +1624,7 @@ msgid ""
 msgstr ""
 "🔄 پنل هیدیفای به صورت خودکار هر ۶ ساعت یک Backup میگیرد. مسیر فایل های Backup روی سرور: ⬇️\n"
 "<br>\n"
-"/opt/hiddify-config/hiddify-panel/backup\n"
+"/opt/hiddify-manager/hiddify-panel/backup/\n"
 "<br>\n"
 "<br>\n"
 "<br>\n"
@@ -2330,7 +2059,7 @@ msgid "login.secret.label"
 msgstr "کد مخفی"
 
 msgid "login.secret.description"
-msgstr "کد مخفی توسط ارائه دهنده خدمات داده می شود."
+msgstr "برای دسترسی به این صفحه UUID خود را وارد کنید"
 
 msgid "Incorrect Password"
 msgstr "⚠️ رمز عبور اشتباه است"

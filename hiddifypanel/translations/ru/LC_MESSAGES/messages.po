@@ -151,7 +151,7 @@ msgid "config.telegram_lib.description"
 msgstr ""
 "Вы можете переключаться между различными библиотеками Telegram. Обратите "
 "внимание, что на всех серверах работает только Python, на других могут "
-"возникнуть проблемы. Проверьте прокси после его изменения."
+"возникнуть проблемы. Проверьте прокси после его изменения"
 
 msgid "config.admin.label"
 msgstr "Настройки администратора"
@@ -182,15 +182,15 @@ msgstr ""
 msgid "config.branding_site.description"
 msgstr ""
 "Ссылка, которая будет отображаться в разделе поддержки на странице пользователя.\n"
-"Вы также можете разместить здесь свой канал Telegram или Telegram PV."
+"Вы также можете разместить здесь свой канал Telegram или Telegram PV"
 
 msgid "config.branding_freetext.label"
 msgstr "📢 Текст раздела поддержки"
 
 msgid "config.branding_freetext.description"
 msgstr ""
-"Брендинговый текст. текст этого поля будет показан в разделе поддержки на "
-"странице пользователя. вы можете использовать HTML-теги"
+"Брендинговый текст. текст этого поля будет показан в разделе поддержки на странице пользователя. вы можете использовать HTML-теги\n"
+"<p><br /><a href=\"https://onlinehtmleditor.dev\" target=\"_blank\">HTML Editor</a></p>"
 
 msgid "config.branding.label"
 msgstr "Настройки страницы пользователя"
@@ -360,7 +360,7 @@ msgid "config.tls.label"
 msgstr "Конфигурация TLS"
 
 msgid "config.tls.description"
-msgstr "В этом разделе можно установить конфигурации TLS."
+msgstr "В этом разделе можно установить конфигурации TLS"
 
 msgid "config.ssfaketls_enable.label"
 msgstr "🆎 Shadowsocks FakeTLS (Простой OBFS)"
@@ -375,7 +375,7 @@ msgid "config.ssfaketls_fakedomain.description"
 msgstr ""
 "Пожалуйста, используйте хорошо известный домен в своем центре обработки "
 "данных. например, если вы находитесь в центре обработки данных Azure, "
-"хороший пример — microsoft-update.com."
+"хороший пример — microsoft-update.com"
 
 msgid "config.ssfaketls.label"
 msgstr "Shadowsocks FakeTLS"
@@ -400,7 +400,7 @@ msgid "config.shadowtls_fakedomain.description"
 msgstr ""
 "Пожалуйста, используйте хорошо известный домен в своем центре обработки "
 "данных. Например, если вы находитесь в центре обработки данных Azure, "
-"хороший пример — microsoft-update.com."
+"хороший пример — microsoft-update.com"
 
 msgid "config.shadowtls.label"
 msgstr "ShadowTLS"
@@ -539,7 +539,7 @@ msgstr ""
 "🔝 Увеличивает скорость просмотра. Чтобы получить ключ, перейдите по адресу <a href='https://t.me/hiddify_board'> здесь </a>.\n"
 "Отправить сообщение\n"
 "<br>\n"
-"⚠️ Если в этом Ключе есть ошибка, WARP будет отключен."
+"⚠️ Если в этом Ключе есть ошибка, WARP будет отключен"
 
 msgid "config.warp_mode.label"
 msgstr "✴️ Режим WARP+"
@@ -714,7 +714,7 @@ msgid "config.ssr_fakedomain.description"
 msgstr ""
 "Пожалуйста, используйте хорошо известный домен в своем центре обработки "
 "данных или хостинге. например, если вы находитесь в центре обработки данных "
-"Azure, хороший пример — microsoft-update.com."
+"Azure, хороший пример — microsoft-update.com"
 
 msgid "config.domain_fronting_http_enable.label"
 msgstr "Включить фронтирование домена HTTP"
@@ -748,64 +748,11 @@ msgstr "Путь для Shadowsocks"
 msgid "config.path_ss.description"
 msgstr "Путь Shadowsocks в ссылках"
 
-msgid "config.dbvalues.label"
-msgstr ""
-
-msgid "config.dbvalues.description"
-msgstr ""
-
 msgid "config.create_easysetup_link.label"
 msgstr ""
 
 msgid "config.create_easysetup_link.description"
 msgstr ""
-
-msgid "config.wireguard_enable.label"
-msgstr "Включить WireGuard"
-
-msgid "config.wireguard_enable.description"
-msgstr ""
-"WireGuard — это протокол на основе UDP.\n"
-"\n"
-"⚠️ Учет пока не поддерживается."
-
-msgid "config.wireguard_port.label"
-msgstr ""
-
-msgid "config.wireguard_port.description"
-msgstr ""
-
-msgid "config.wireguard_ipv6.label"
-msgstr ""
-
-msgid "config.wireguard_ipv6.description"
-msgstr ""
-
-msgid "config.wireguard_ipv4.label"
-msgstr ""
-
-msgid "config.wireguard_ipv4.description"
-msgstr ""
-
-msgid "config.wireguard_private_key.label"
-msgstr ""
-
-msgid "config.wireguard_private_key.description"
-msgstr ""
-
-msgid "config.wireguard_public_key.label"
-msgstr ""
-
-msgid "config.wireguard_public_key.description"
-msgstr ""
-
-msgid "config.wireguard_noise_trick.label"
-msgstr "Шумовой трюк WireGuard"
-
-msgid "config.wireguard_noise_trick.description"
-msgstr ""
-"Этот метод вносит дополнительный шум, чтобы предотвратить обнаружение и "
-"блокировку GFW."
 
 msgid "config.ssh_server_redis_url.label"
 msgstr "Адрес базы данных пользователей SSH"
@@ -817,7 +764,7 @@ msgid "config.ssh_server_port.label"
 msgstr "↔️ SSHproxy-порт"
 
 msgid "config.ssh_server_port.description"
-msgstr "Это не ваш  SSH-сервер. Это отдельная программа."
+msgstr "Это не ваш  SSH-сервер. Это отдельная программа"
 
 msgid "config.ssh_server_enable.label"
 msgstr "✔️ Включить SSH Poxy"
@@ -834,12 +781,6 @@ msgstr ""
 "<br>\n"
 "📦 Singbox: разработан SagerNet. Это также хорошее ядро"
 
-msgid "config.warp_sites.label"
-msgstr "Дополнительные сайты для WRAP"
-
-msgid "config.warp_sites.description"
-msgstr "Добавьте дополнительные сайты для WRAP(только если WRAP включен)"
-
 msgid "config.dns_server.label"
 msgstr "🖥 DNS-сервер"
 
@@ -848,130 +789,6 @@ msgstr ""
 "✳️ По умолчанию 1.1.1.1 <br>\n"
 "🚧 Блокировать вредоносное ПО 1.1.1.2 <br>\n"
 "🔞 Блокировать порно 1.1.1.3"
-
-msgid "config.reality_port.label"
-msgstr "Прямой порт Reality"
-
-msgid "config.reality_port.description"
-msgstr ""
-"Вы можете задать отдельный порт для вашего сервера Reality, чтобы снизить "
-"нагрузку на систему. (Прямое подключение к прокси должно быть разрешено)"
-
-msgid "config.tls_fragment_enable.label"
-msgstr "⏯ Включить фрагмент TLS"
-
-msgid "config.tls_fragment_enable.description"
-msgstr ""
-"При некоторых обстоятельствах он может обойти систему черного списка SNI."
-
-msgid "config.tls_fragment_size.label"
-msgstr "🎚 Размер фрагмента TLS"
-
-msgid "config.tls_fragment_size.description"
-msgstr "Размер каждого пакета"
-
-msgid "config.tls_fragment_sleep.label"
-msgstr "⏱ Сон фрагмента TLS"
-
-msgid "config.tls_fragment_sleep.description"
-msgstr "Временная задержка между фрагментами"
-
-msgid "config.tls_mixed_case.label"
-msgstr "🔠 Включить смешанный вариант TLS SNI"
-
-msgid "config.tls_mixed_case.description"
-msgstr "Включает фрагментацию случая смешанного SNI TLS"
-
-msgid "config.tls_padding_enable.label"
-msgstr "♒️ Включить дополнение TLS."
-
-msgid "config.tls_padding_enable.description"
-msgstr "Включает заполнение для фрагментации TLS."
-
-msgid "config.tls_padding_length.label"
-msgstr "📏 Заполнение TLS"
-
-msgid "config.tls_padding_length.description"
-msgstr "Длина заполнения для фрагментации TLS"
-
-msgid "config.mux_enable.label"
-msgstr "Ⓜ️ Включение мультиплексора"
-
-msgid "config.mux_enable.description"
-msgstr "Включить MUX (мультиплекс)"
-
-msgid "config.mux_protocol.label"
-msgstr "♍️ Протокол мультиплексирования"
-
-msgid "config.mux_protocol.description"
-msgstr ""
-"ℹ️Мультиплексный протокол. «sMux» используется по умолчанию\n"
-"<br>\n"
-"➖ sMux: мультиплексирование потоков\n"
-"<br>\n"
-"➖ YaMux: еще один мультиплексор\n"
-"<br>\n"
-"➖ h2Mux: мультиплексирование потоков через HTTP/2"
-
-msgid "config.mux_max_connections.label"
-msgstr "⛓ Соединения MUX Max"
-
-msgid "config.mux_max_connections.description"
-msgstr "Максимум подключений. Конфликт с Максом Стримом"
-
-msgid "config.mux_min_streams.label"
-msgstr "↘️ Минимальные потоки MUX"
-
-msgid "config.mux_min_streams.description"
-msgstr ""
-"Минимальное количество мультиплексированных потоков в соединении перед "
-"открытием нового соединения"
-
-msgid "config.mux_max_streams.label"
-msgstr "↗️ Максимальные потоки MUX"
-
-msgid "config.mux_max_streams.description"
-msgstr ""
-"Максимальное количество мультиплексированных потоков в соединении перед "
-"открытием нового соединения"
-
-msgid "config.mux_padding_enable.label"
-msgstr "⟹ Заполнение MUX"
-
-msgid "config.mux_padding_enable.description"
-msgstr "Включает заполнение MUX"
-
-msgid "config.mux_brutal_enable.label"
-msgstr "☣️ МУКС Брутал"
-
-msgid "config.mux_brutal_enable.description"
-msgstr "Включает алгоритм управления перегрузкой TCP-Brutal."
-
-msgid "config.mux_brutal_up_mbps.label"
-msgstr "⬆️ Брутальная загрузка MUX (Мбит/с)"
-
-msgid "config.mux_brutal_up_mbps.description"
-msgstr "TCP-Brutal Максимальная скорость загрузки"
-
-msgid "config.mux_brutal_down_mbps.label"
-msgstr "⬇️ Загрузка MUX Brutal (Мбит/с)"
-
-msgid "config.mux_brutal_down_mbps.description"
-msgstr "TCP-Brutal Максимальная скорость загрузки"
-
-msgid "config.proxy_path_admin.label"
-msgstr "Путь прокси для администраторов"
-
-msgid "config.proxy_path_admin.description"
-msgstr ""
-"Мы используем секретный путь прокси, чтобы скрыть наши прокси для "
-"правительств и ботов."
-
-msgid "config.proxy_path_client.label"
-msgstr "Путь прокси для клиентов"
-
-msgid "config.proxy_path_client.description"
-msgstr "Секретный путь прокси скрывает прокси от правительств и ботов"
 
 msgid "config.hysteria_enable.label"
 msgstr "Включить Hysteria"
@@ -984,91 +801,6 @@ msgstr "Hysteria Порт"
 
 msgid "config.hysteria_port.description"
 msgstr "Hysteria UDP-порт например 5678"
-
-msgid "config.hysteria_obfs_enable.label"
-msgstr "🚧 Включить истерию OBFS"
-
-msgid "config.hysteria_obfs_enable.description"
-msgstr "Включает запутывание истерии (Саламандра)"
-
-msgid "config.hysteria_up_mbps.label"
-msgstr "⬆️ Загрузка Hysteria (Мбит/с)"
-
-msgid "config.hysteria_up_mbps.description"
-msgstr "Максимальная скорость загрузки Hysteria"
-
-msgid "config.hysteria_down_mbps.label"
-msgstr "⬇️ Скачать Hysteria (Мбит/с)"
-
-msgid "config.hysteria_down_mbps.description"
-msgstr "Максимальная скорость загрузки Hysteria"
-
-msgid "config.shadowsocks2022_enable.label"
-msgstr "Включить Shadowsocks 2022"
-
-msgid "config.shadowsocks2022_enable.description"
-msgstr ""
-"Shadowsocks 2022 — это безопасный прокси-протокол для трафика TCP и UDP. "
-"Прокси-трафик неотличим от случайного потока байтов и, следовательно, может "
-"обходить брандмауэры и интернет-цензоры, использующие DPI (глубокую проверку"
-" пакетов)."
-
-msgid "config.shadowsocks2022_method.label"
-msgstr "Метод шифрования Shadowsocks"
-
-msgid "config.shadowsocks2022_method.description"
-msgstr "Этот метод также используется в ShadowTLS и SSFakeTLS."
-
-msgid "config.shadowsocks2022_port.label"
-msgstr "Порт Shadowsocks 2022"
-
-msgid "config.shadowsocks2022_port.description"
-msgstr "Чтобы быть свободным, нужны как UDP, так и TCP."
-
-msgid "config.ws_enable.label"
-msgstr "Включить веб-сокет"
-
-msgid "config.ws_enable.description"
-msgstr ""
-"Websocket создает туннель через http, который можно использовать в CDN."
-
-msgid "config.grpc_enable.label"
-msgstr "Включить gRPC"
-
-msgid "config.grpc_enable.description"
-msgstr ""
-"gRPC — это современная высокопроизводительная платформа удаленного вызова "
-"процедур (RPC) с открытым исходным кодом. Его можно использовать в "
-"поддерживаемых CDN."
-
-msgid "config.httpupgrade_enable.label"
-msgstr "Включить метод HTTPUpgrade"
-
-msgid "config.httpupgrade_enable.description"
-msgstr ""
-"HTTPUpgrade завершает запрос и ответ на обновление HTTP 1.1, прежде чем "
-"использовать соединение напрямую. Он похож на WebSocket тем, что создает "
-"канал направления, который может пересылаться многими обратными прокси-"
-"серверами и CDN, без необходимости решать все проблемы, связанные с самим "
-"протоколом WebSocket."
-
-msgid "config.path_httpupgrade.label"
-msgstr "Путь обновления HTTP"
-
-msgid "config.path_httpupgrade.description"
-msgstr "должно быть случайным"
-
-msgid "config.mux.label"
-msgstr "Конфигурация мультиплексора"
-
-msgid "config.mux.description"
-msgstr "В этом разделе можно настроить конфигурации MUX (мультиплекса)."
-
-msgid "config.tls_trick.label"
-msgstr "🎛 TLS-трюк"
-
-msgid "config.tls_trick.description"
-msgstr "В этом разделе можно настроить конфигурации фрагментации TLS."
 
 msgid "config.ssh.label"
 msgstr "SSH Proxy"
@@ -1096,23 +828,6 @@ msgstr ""
 
 msgid "config.hidden.description"
 msgstr ""
-
-msgid "config.wireguard.label"
-msgstr "Wireguard"
-
-msgid "config.wireguard.description"
-msgstr ""
-"WireGuard — это легкий протокол на основе UDP, известный своей простотой, эффективностью и высоким уровнем безопасности. Он предлагает быструю настройку, прозрачный код и завоевал популярность благодаря простоте использования в различных операционных системах.\n"
-"\n"
-"⚠️ Учет для этого протокола пока не реализован."
-
-msgid "config.shadowsocks.label"
-msgstr "Теневые носки"
-
-msgid "config.shadowsocks.description"
-msgstr ""
-"Shadowsocks — это быстрый туннельный прокси, который помогает обходить "
-"брандмауэры."
 
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr ""
@@ -1686,6 +1401,16 @@ msgid ""
 "FairVPN."
 msgstr ""
 
+msgid ""
+"Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is "
+"required in direct mode"
+msgstr ""
+
+msgid ""
+"In CDN mode, Domain IP=%(domain_ip)s should be different to your "
+"ip=%(server_ip)s"
+msgstr ""
+
 msgid "Domain is not REALITY friendly!"
 msgstr "Домен не подходит для использования с  Reality!"
 
@@ -1903,7 +1628,7 @@ msgid ""
 msgstr ""
 "🔄 Панель Hiddify автоматически создает резервную копию каждые 6 часов. Путь к файлам резервной копии на сервере: ⬇️\n"
 "<br>\n"
-"/opt/hiddify-config/hiddify-panel/backup\n"
+"/opt/hiddify-manager/hiddify-panel/backup/\n"
 "<br>\n"
 "<br>\n"
 "<br>\n"

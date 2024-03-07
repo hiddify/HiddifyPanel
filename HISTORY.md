@@ -125,6 +125,8 @@
 
 #### Changes
 
+* Don't send httpupgrade proxy to Streisand. 
+
 * Fix format of jinja commands. 
 
 * Refactor code with autopep8. 
@@ -280,6 +282,20 @@
 * Update hiddify next download link. 
 
 #### Fix
+
+* Exception when there is no valid domain. 
+
+* Don't let user create invalid domains. 
+
+* Unrequired fields in api (patch method) 
+
+* Domain bug. 
+
+* Bug. 
+
+* Incorrect type ip addr. 
+
+* Ssh server. 
 
 * Release message. 
 
@@ -922,6 +938,91 @@ with A2_
 * Bugs. 
 
 #### Other
+
+* Merge branch 'main' of github.com:hiddify/Hiddify-Panel. 
+
+* Merge pull request #149 from Mrclocks/main. 
+  _Update translations_
+
+* Inlang: update translations. 
+
+* Merge pull request #150 from Iam54r1n4/dev-patch26. 
+  _Fix bugs_
+
+* Merge pull request #148 from Iam54r1n4/dev-patch24. 
+  _Fix bugs_
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
 
 * Makeing unified version. 
 

@@ -744,63 +744,11 @@ msgstr "Caminho das Meias de Sombra"
 msgid "config.path_ss.description"
 msgstr "Caminho Shadowsocks nos Links"
 
-msgid "config.dbvalues.label"
-msgstr ""
-
-msgid "config.dbvalues.description"
-msgstr ""
-
 msgid "config.create_easysetup_link.label"
 msgstr ""
 
 msgid "config.create_easysetup_link.description"
 msgstr ""
-
-msgid "config.wireguard_enable.label"
-msgstr "Habilitar WireGuard"
-
-msgid "config.wireguard_enable.description"
-msgstr ""
-"WireGuard é um protocolo baseado em UDP.\n"
-"\n"
-"⚠️ A contabilidade ainda não é suportada."
-
-msgid "config.wireguard_port.label"
-msgstr ""
-
-msgid "config.wireguard_port.description"
-msgstr ""
-
-msgid "config.wireguard_ipv6.label"
-msgstr ""
-
-msgid "config.wireguard_ipv6.description"
-msgstr ""
-
-msgid "config.wireguard_ipv4.label"
-msgstr ""
-
-msgid "config.wireguard_ipv4.description"
-msgstr ""
-
-msgid "config.wireguard_private_key.label"
-msgstr ""
-
-msgid "config.wireguard_private_key.description"
-msgstr ""
-
-msgid "config.wireguard_public_key.label"
-msgstr ""
-
-msgid "config.wireguard_public_key.description"
-msgstr ""
-
-msgid "config.wireguard_noise_trick.label"
-msgstr "Truque de ruído WireGuard"
-
-msgid "config.wireguard_noise_trick.description"
-msgstr ""
-"Este método introduz ruído extra para evitar detecção e bloqueio pelo GFW."
 
 msgid "config.ssh_server_redis_url.label"
 msgstr "Endereço do banco de dados do usuário SSH"
@@ -831,14 +779,6 @@ msgstr ""
 "<br>\n"
 "📦 Singbox: Desenvolvido por SagerNet. Também é um bom núcleo"
 
-msgid "config.warp_sites.label"
-msgstr "Sites Warp Adicionais"
-
-msgid "config.warp_sites.description"
-msgstr ""
-"Adicione sites adicionais para passar pelo warp (somente quando o modo warp "
-"não for Nenhum)"
-
 msgid "config.dns_server.label"
 msgstr "🖥 Servidor DNS"
 
@@ -847,130 +787,6 @@ msgstr ""
 "✳️ Padrão 1.1.1.1 <br>\n"
 "🚧 Bloquear Malware 1.1.1.2 <br>\n"
 "🔞 Bloquear pornografia 1.1.1.3"
-
-msgid "config.reality_port.label"
-msgstr "Porto de Realidade Direta"
-
-msgid "config.reality_port.description"
-msgstr ""
-"Você pode definir uma porta personalizada para seu servidor de realidade "
-"para reduzir a sobrecarga do sistema. (Permitir conexão direta com proxies "
-"deve ser sim)"
-
-msgid "config.tls_fragment_enable.label"
-msgstr "⏯ Habilitar fragmento TLS"
-
-msgid "config.tls_fragment_enable.description"
-msgstr ""
-"Em algumas circunstâncias, pode contornar o sistema de lista negra do SNI"
-
-msgid "config.tls_fragment_size.label"
-msgstr "🎚 Tamanho do fragmento TLS"
-
-msgid "config.tls_fragment_size.description"
-msgstr "O tamanho de cada pacote"
-
-msgid "config.tls_fragment_sleep.label"
-msgstr "⏱ Suspensão do fragmento TLS"
-
-msgid "config.tls_fragment_sleep.description"
-msgstr "O atraso de tempo entre fragmentos"
-
-msgid "config.tls_mixed_case.label"
-msgstr "🔠 Habilitar caso SNI misto TLS"
-
-msgid "config.tls_mixed_case.description"
-msgstr "Permite fragmentação de caso SNI misto TLS"
-
-msgid "config.tls_padding_enable.label"
-msgstr "♒️ Habilitar preenchimento TLS"
-
-msgid "config.tls_padding_enable.description"
-msgstr "Habilita preenchimento para fragmentação TLS"
-
-msgid "config.tls_padding_length.label"
-msgstr "📏 Preenchimento TLS"
-
-msgid "config.tls_padding_length.description"
-msgstr "O comprimento do preenchimento para fragmentação TLS"
-
-msgid "config.mux_enable.label"
-msgstr "Ⓜ️ Habilitar MUX"
-
-msgid "config.mux_enable.description"
-msgstr "Habilitar MUX (Multiplex)"
-
-msgid "config.mux_protocol.label"
-msgstr "♍️ Protocolo MUX"
-
-msgid "config.mux_protocol.description"
-msgstr ""
-"ℹ️ Protocolo Multiplex. 'sMux' é usado por padrão\n"
-"<br>\n"
-"➖ sMux: Multiplexação de fluxo\n"
-"<br>\n"
-"➖ YaMux: mais um multiplexador\n"
-"<br>\n"
-"➖ h2Mux: Multiplexação de fluxos em HTTP/2"
-
-msgid "config.mux_max_connections.label"
-msgstr "⛓ Conexões MUX Max"
-
-msgid "config.mux_max_connections.description"
-msgstr "Máximo de conexões. Conflito com fluxos máximos"
-
-msgid "config.mux_min_streams.label"
-msgstr "↘️ Fluxos mínimos MUX"
-
-msgid "config.mux_min_streams.description"
-msgstr ""
-"Fluxos multiplexados mínimos em uma conexão antes de abrir uma nova conexão"
-
-msgid "config.mux_max_streams.label"
-msgstr "↗️ Transmissões máximas do MUX"
-
-msgid "config.mux_max_streams.description"
-msgstr ""
-"Máximo de fluxos multiplexados em uma conexão antes de abrir uma nova "
-"conexão"
-
-msgid "config.mux_padding_enable.label"
-msgstr "⟹ Preenchimento MUX"
-
-msgid "config.mux_padding_enable.description"
-msgstr "Habilita preenchimento MUX"
-
-msgid "config.mux_brutal_enable.label"
-msgstr "☣️MUX Brutal"
-
-msgid "config.mux_brutal_enable.description"
-msgstr "Ativa o algoritmo de controle de congestionamento TCP-Brutal"
-
-msgid "config.mux_brutal_up_mbps.label"
-msgstr "⬆️ Carregamento Brutal MUX (mbps)"
-
-msgid "config.mux_brutal_up_mbps.description"
-msgstr "Velocidade máxima de upload TCP-Brutal"
-
-msgid "config.mux_brutal_down_mbps.label"
-msgstr "⬇️ Download brutal do MUX (mbps)"
-
-msgid "config.mux_brutal_down_mbps.description"
-msgstr "Velocidade máxima de download TCP-Brutal"
-
-msgid "config.proxy_path_admin.label"
-msgstr "Caminho proxy para administradores"
-
-msgid "config.proxy_path_admin.description"
-msgstr ""
-"Usamos um caminho de proxy secreto para ocultar nossos proxies para governos"
-" e bots"
-
-msgid "config.proxy_path_client.label"
-msgstr "Caminho de proxy para clientes"
-
-msgid "config.proxy_path_client.description"
-msgstr "O caminho secreto do proxy esconde os proxies dos governos e bots"
 
 msgid "config.hysteria_enable.label"
 msgstr "Habilitar Histeria"
@@ -983,89 +799,6 @@ msgstr "Porto de Histeria"
 
 msgid "config.hysteria_port.description"
 msgstr "Porta UDP de histeria, por exemplo 5678"
-
-msgid "config.hysteria_obfs_enable.label"
-msgstr "🚧 Habilitar Histeria OBFS"
-
-msgid "config.hysteria_obfs_enable.description"
-msgstr "Ativa a ofuscação da histeria (Salamandra)"
-
-msgid "config.hysteria_up_mbps.label"
-msgstr "⬆️ Upload de histeria (mbps)"
-
-msgid "config.hysteria_up_mbps.description"
-msgstr "Velocidade máxima de upload de histeria"
-
-msgid "config.hysteria_down_mbps.label"
-msgstr "⬇️ Download de histeria (mbps)"
-
-msgid "config.hysteria_down_mbps.description"
-msgstr "Velocidade máxima de download da histeria"
-
-msgid "config.shadowsocks2022_enable.label"
-msgstr "Habilitar Shadowsocks 2022"
-
-msgid "config.shadowsocks2022_enable.description"
-msgstr ""
-"Shadowsocks 2022 é um protocolo proxy seguro para tráfego TCP e UDP. O "
-"tráfego proxy é indistinguível de um fluxo de bytes aleatórios e, portanto, "
-"pode contornar firewalls e censores da Internet que dependem de DPI (Deep "
-"Packet Inspection)."
-
-msgid "config.shadowsocks2022_method.label"
-msgstr "Método de criptografia Shadowsocks"
-
-msgid "config.shadowsocks2022_method.description"
-msgstr "Este método também é usado em ShadowTLS e SSFakeTLS"
-
-msgid "config.shadowsocks2022_port.label"
-msgstr "Porto Shadowsocks 2022"
-
-msgid "config.shadowsocks2022_port.description"
-msgstr "Ele precisa de UDP e TCP para ser gratuito"
-
-msgid "config.ws_enable.label"
-msgstr "Habilitar WebSocket"
-
-msgid "config.ws_enable.description"
-msgstr "Websocket cria um túnel sobre http que é útil para ser usado em CDN."
-
-msgid "config.grpc_enable.label"
-msgstr "Habilitar gRPC"
-
-msgid "config.grpc_enable.description"
-msgstr ""
-"gRPC é uma estrutura moderna de chamada de procedimento remoto (RPC) de "
-"código aberto e alto desempenho. Ele pode ser usado em CDNs suportados."
-
-msgid "config.httpupgrade_enable.label"
-msgstr "Habilitar método HTTPUpgrade"
-
-msgid "config.httpupgrade_enable.description"
-msgstr ""
-"HTTPUpgrade conclui uma solicitação e resposta de atualização HTTP 1.1 antes"
-" de usar a conexão diretamente. É semelhante ao WebSocket na forma como cria"
-" um canal de direção que pode ser encaminhado por muitos proxies reversos e "
-"CDNs, sem a necessidade de lidar com todos os problemas relacionados ao "
-"próprio protocolo WebSocket."
-
-msgid "config.path_httpupgrade.label"
-msgstr "Caminho de atualização HTTP"
-
-msgid "config.path_httpupgrade.description"
-msgstr "deveria ser aleatório"
-
-msgid "config.mux.label"
-msgstr "Configuração MUX"
-
-msgid "config.mux.description"
-msgstr "As configurações MUX (Multiplex) podem ser definidas nesta seção"
-
-msgid "config.tls_trick.label"
-msgstr "🎛 Truque TLS"
-
-msgid "config.tls_trick.description"
-msgstr "As configurações de fragmentação TLS podem ser definidas nesta seção"
 
 msgid "config.ssh.label"
 msgstr "Proxy SSH"
@@ -1092,22 +825,6 @@ msgstr "config.hidden.label"
 
 msgid "config.hidden.description"
 msgstr "config.hidden.description"
-
-msgid "config.wireguard.label"
-msgstr "Proteção de arame"
-
-msgid "config.wireguard.description"
-msgstr ""
-"WireGuard é um protocolo leve baseado em UDP conhecido por sua simplicidade, eficiência e forte segurança. Ele oferece configuração rápida, código transparente e ganhou popularidade por sua facilidade de uso em vários sistemas operacionais.\n"
-"\n"
-"⚠️ A contabilidade ainda não está implementada para este protocolo."
-
-msgid "config.shadowsocks.label"
-msgstr "Meias Sombrias"
-
-msgid "config.shadowsocks.description"
-msgstr ""
-"Shadowsocks é um proxy de túnel rápido que ajuda a contornar firewalls."
 
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr ""
@@ -1670,6 +1387,16 @@ msgstr ""
 msgid ""
 "Using alias with special charachters may cause problem in some clients like "
 "FairVPN."
+msgstr ""
+
+msgid ""
+"Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is "
+"required in direct mode"
+msgstr ""
+
+msgid ""
+"In CDN mode, Domain IP=%(domain_ip)s should be different to your "
+"ip=%(server_ip)s"
 msgstr ""
 
 msgid "Domain is not REALITY friendly!"

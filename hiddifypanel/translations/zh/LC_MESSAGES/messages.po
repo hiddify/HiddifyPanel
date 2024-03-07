@@ -658,62 +658,11 @@ msgstr "Shadowsocks 路径"
 msgid "config.path_ss.description"
 msgstr "链接中的 Shadowsocks 路径"
 
-msgid "config.dbvalues.label"
-msgstr "配置.dbvalues.标签"
-
-msgid "config.dbvalues.description"
-msgstr "config.dbvalues.描述"
-
 msgid "config.create_easysetup_link.label"
 msgstr "config.create_easysetup_link.label"
 
 msgid "config.create_easysetup_link.description"
 msgstr "config.create_easysetup_link.description"
-
-msgid "config.wireguard_enable.label"
-msgstr "启用 WireGuard"
-
-msgid "config.wireguard_enable.description"
-msgstr ""
-"WireGuard 是基于 UDP 的协议。\n"
-"\n"
-"⚠️ 尚不支持记账。"
-
-msgid "config.wireguard_port.label"
-msgstr "config.wireguard_port.label"
-
-msgid "config.wireguard_port.description"
-msgstr "config.wireguard_port.描述"
-
-msgid "config.wireguard_ipv6.label"
-msgstr "config.wireguard_ipv6.label"
-
-msgid "config.wireguard_ipv6.description"
-msgstr "config.wireguard_ipv6.描述"
-
-msgid "config.wireguard_ipv4.label"
-msgstr "config.wireguard_ipv4.label"
-
-msgid "config.wireguard_ipv4.description"
-msgstr "config.wireguard_ipv4.描述"
-
-msgid "config.wireguard_private_key.label"
-msgstr "config.wireguard_private_key.label"
-
-msgid "config.wireguard_private_key.description"
-msgstr "config.wireguard_private_key.description"
-
-msgid "config.wireguard_public_key.label"
-msgstr "config.wireguard_public_key.label"
-
-msgid "config.wireguard_public_key.description"
-msgstr "config.wireguard_public_key.description"
-
-msgid "config.wireguard_noise_trick.label"
-msgstr "WireGuard 噪音技巧"
-
-msgid "config.wireguard_noise_trick.description"
-msgstr "这种方法会引入额外的噪声，以防止 GFW 检测和阻止。"
 
 msgid "config.ssh_server_redis_url.label"
 msgstr "SSH用户数据库地址"
@@ -742,12 +691,6 @@ msgstr ""
 "<br>\n"
 "📦 Singbox：由 SagerNet 开发。也是一个不错的核心"
 
-msgid "config.warp_sites.label"
-msgstr "🆚 额外的扭曲站点"
-
-msgid "config.warp_sites.description"
-msgstr "添加额外站点以通过 Warp（仅当 warp 模式不是 None 时）"
-
 msgid "config.dns_server.label"
 msgstr "🖥 DNS 服务器"
 
@@ -756,121 +699,6 @@ msgstr ""
 "✳️默认1.1.1.1 <br>\n"
 "🚧 阻止恶意软件 1.1.1.2 <br>\n"
 "🔞 阻止色情 1.1.1.3"
-
-msgid "config.reality_port.label"
-msgstr "↔️ 直接现实端口"
-
-msgid "config.reality_port.description"
-msgstr "您可以为现实服务器设置自定义端口以减少系统开销。 （允许直接连接代理应该是yes）"
-
-msgid "config.tls_fragment_enable.label"
-msgstr "⏯ 启用 TLS 片段"
-
-msgid "config.tls_fragment_enable.description"
-msgstr "某些情况下，可以绕过SNI黑名单系统"
-
-msgid "config.tls_fragment_size.label"
-msgstr "🎚 TLS 片段大小"
-
-msgid "config.tls_fragment_size.description"
-msgstr "每个数据包的大小"
-
-msgid "config.tls_fragment_sleep.label"
-msgstr "⏱ TLS 片段睡眠"
-
-msgid "config.tls_fragment_sleep.description"
-msgstr "Fragment之间的时间延迟"
-
-msgid "config.tls_mixed_case.label"
-msgstr "🔠 启用 TLS 混合 SNI 大小写"
-
-msgid "config.tls_mixed_case.description"
-msgstr "启用 TLS 混合 SNI 大小写分段"
-
-msgid "config.tls_padding_enable.label"
-msgstr "♒️启用 TLS 填充"
-
-msgid "config.tls_padding_enable.description"
-msgstr "启用 TLS 碎片填充"
-
-msgid "config.tls_padding_length.label"
-msgstr "📏 TLS 填充"
-
-msgid "config.tls_padding_length.description"
-msgstr "TLS 分段的填充长度"
-
-msgid "config.mux_enable.label"
-msgstr "Ⓜ️ 多路复用器启用"
-
-msgid "config.mux_enable.description"
-msgstr "启用 MUX（多路复用）"
-
-msgid "config.mux_protocol.label"
-msgstr "♍️ MUX 协议"
-
-msgid "config.mux_protocol.description"
-msgstr ""
-"ℹ️ 多路复用协议。默认使用“sMux”\n"
-"<br>\n"
-"➖ sMux：流复用\n"
-"<br>\n"
-"➖ YaMux：另一个多路复用器\n"
-"<br>\n"
-"➖ h2Mux：通过 HTTP/2 复用流"
-
-msgid "config.mux_max_connections.label"
-msgstr "⛓ MUX 最大连接数"
-
-msgid "config.mux_max_connections.description"
-msgstr "最大连接数。与最大流冲突"
-
-msgid "config.mux_min_streams.label"
-msgstr "↘️ MUX 最小流"
-
-msgid "config.mux_min_streams.description"
-msgstr "打开新连接之前连接中的最小复用流数"
-
-msgid "config.mux_max_streams.label"
-msgstr "↗️ MUX 最大流"
-
-msgid "config.mux_max_streams.description"
-msgstr "打开新连接之前连接中的最大复用流数"
-
-msgid "config.mux_padding_enable.label"
-msgstr "⟹ MUX 填充"
-
-msgid "config.mux_padding_enable.description"
-msgstr "启用 MUX 填充"
-
-msgid "config.mux_brutal_enable.label"
-msgstr "☣️ MUX 残酷"
-
-msgid "config.mux_brutal_enable.description"
-msgstr "启用 TCP-Brutal 拥塞控制算法"
-
-msgid "config.mux_brutal_up_mbps.label"
-msgstr "⬆️ MUX 残酷上传 (mbps)"
-
-msgid "config.mux_brutal_up_mbps.description"
-msgstr "TCP-残酷最大上传速度"
-
-msgid "config.mux_brutal_down_mbps.label"
-msgstr "⬇️ MUX 残酷下载 (mbps)"
-
-msgid "config.mux_brutal_down_mbps.description"
-msgstr "TCP-残酷最大下载速度"
-
-msgid "config.proxy_path_admin.label"
-msgstr "🔐 管理员的代理路径"
-
-msgid "config.proxy_path_admin.description"
-msgstr "我们使用秘密代理路径来为政府和机器人隐藏我们的代理"
-
-msgid "config.proxy_path_client.label"
-msgstr "🔏 客户端的代理路径"
-
-msgid "config.proxy_path_client.description"
-msgstr "秘密代理路径对政府和机器人隐藏代理"
 
 msgid "config.hysteria_enable.label"
 msgstr "启用歇斯底里2"
@@ -883,82 +711,6 @@ msgstr "🔍 Hysteria2 端口"
 
 msgid "config.hysteria_port.description"
 msgstr "Hysteria UDP 端口，例如 5678"
-
-msgid "config.hysteria_obfs_enable.label"
-msgstr "🎛 歇斯底里 OBFS 启用"
-
-msgid "config.hysteria_obfs_enable.description"
-msgstr "启用 Hysteria 混淆 (Salamander)"
-
-msgid "config.hysteria_up_mbps.label"
-msgstr "⬆️ 歇斯底里上传 (mbps)"
-
-msgid "config.hysteria_up_mbps.description"
-msgstr "歇斯底里最大上传速度"
-
-msgid "config.hysteria_down_mbps.label"
-msgstr "⬇️ 歇斯底里下载 (mbps)"
-
-msgid "config.hysteria_down_mbps.description"
-msgstr "歇斯底里最大下载速度"
-
-msgid "config.shadowsocks2022_enable.label"
-msgstr "启用 Shadowsocks 2022"
-
-msgid "config.shadowsocks2022_enable.description"
-msgstr ""
-"Shadowsocks 2022 是 TCP 和 UDP 流量的安全代理协议。代理流量与随机字节流无法区分，因此可以绕过依赖 "
-"DPI（深度数据包检查）的防火墙和互联网审查器。"
-
-msgid "config.shadowsocks2022_method.label"
-msgstr "Shadowsocks加密方法"
-
-msgid "config.shadowsocks2022_method.description"
-msgstr "此方法也用于 ShadowTLS 和 SSFakeTLS"
-
-msgid "config.shadowsocks2022_port.label"
-msgstr "Shadowsocks 2022 端口"
-
-msgid "config.shadowsocks2022_port.description"
-msgstr "需要UDP和TCP都空闲"
-
-msgid "config.ws_enable.label"
-msgstr "启用Websocket"
-
-msgid "config.ws_enable.description"
-msgstr "Websocket 通过 http 创建一个隧道，可在 CDN 中使用。"
-
-msgid "config.grpc_enable.label"
-msgstr "启用 gRPC"
-
-msgid "config.grpc_enable.description"
-msgstr "gRPC 是一个现代开源高性能远程过程调用（RPC）框架。它可以在支持的 CDN 中使用。"
-
-msgid "config.httpupgrade_enable.label"
-msgstr "启用 HTTPUpgrade 方法"
-
-msgid "config.httpupgrade_enable.description"
-msgstr ""
-"HTTPUpgrade 在直接使用连接之前完成 HTTP 1.1 升级请求和响应。它与 WebSocket "
-"的相似之处在于它创建了一个可以由许多反向代理和 CDN 转发的方向通道，而无需处理 WebSocket 协议本身的所有问题。"
-
-msgid "config.path_httpupgrade.label"
-msgstr "HTTP升级路径"
-
-msgid "config.path_httpupgrade.description"
-msgstr "应该是随机的"
-
-msgid "config.mux.label"
-msgstr "复用器配置"
-
-msgid "config.mux.description"
-msgstr "MUX（复用）配置可以在此部分设置"
-
-msgid "config.tls_trick.label"
-msgstr "TLS 技巧"
-
-msgid "config.tls_trick.description"
-msgstr "可以在此部分设置 TLS 分段配置"
 
 msgid "config.ssh.label"
 msgstr "SSH 代理"
@@ -980,21 +732,6 @@ msgstr "配置.隐藏.标签"
 
 msgid "config.hidden.description"
 msgstr "配置.隐藏.描述"
-
-msgid "config.wireguard.label"
-msgstr "钢丝卫士"
-
-msgid "config.wireguard.description"
-msgstr ""
-"WireGuard 是一种基于 UDP 的轻量级协议，以其简单、高效和强大的安全性而闻名。它提供快速设置、透明代码，并因其在各种操作系统上的易用性而广受欢迎。\n"
-"\n"
-"⚠️ 该协议尚未实现计费。"
-
-msgid "config.shadowsocks.label"
-msgstr "影袜"
-
-msgid "config.shadowsocks.description"
-msgstr "Shadowsocks 是一种快速隧道代理，可帮助您绕过防火墙。"
 
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr "域名无法解析！您的域有问题。请检查您的域配置。"
@@ -1536,6 +1273,16 @@ msgstr ""
 msgid ""
 "Using alias with special charachters may cause problem in some clients like "
 "FairVPN."
+msgstr ""
+
+msgid ""
+"Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is "
+"required in direct mode"
+msgstr ""
+
+msgid ""
+"In CDN mode, Domain IP=%(domain_ip)s should be different to your "
+"ip=%(server_ip)s"
 msgstr ""
 
 msgid "Domain is not REALITY friendly!"
