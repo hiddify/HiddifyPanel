@@ -26,6 +26,16 @@ class AdminSchema(Schema):
     lang = Enum(Lang, required=True)
 
 
+class PatchAdminSchema(AdminSchema):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['name'].required = False
+        self.fields['mode'].required = False
+        self.fields['lang'].required = False
+        self.fields['can_add_admin'].required = False
+    pass
+
+
 class AdminUserApi(MethodView):
     decorators = [login_required({Role.super_admin, Role.admin})]
 
@@ -36,7 +46,7 @@ class AdminUserApi(MethodView):
             abort(403, "You don't have permission to access this admin")
         return admin.to_dict()
 
-    @app.input(AdminSchema, arg_name='data')
+    @app.input(PatchAdminSchema, arg_name='data')
     @app.output(SuccessfulSchema)
     def patch(self, uuid, data):
         admin = AdminUser.by_uuid(uuid) or abort(404, "admin not found")

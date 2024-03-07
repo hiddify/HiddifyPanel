@@ -295,8 +295,8 @@ def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
     '''Usable for user account'''
     # uuid_secret=str(uuid.UUID(user_secret))
     domains, has_auto_cdn = get_domain_information(no_domain, filter_domain, urlparse(request.base_url).hostname)
-    domains_valid = [d for d in domains if d.mode != DomainType.fake and d.mode != DomainType.reality]
-    db_domain = domains_valid[0]
+    valid_domains = [d for d in domains if d.mode != DomainType.fake and d.mode != DomainType.reality]
+    db_domain = valid_domains[0] if valid_domains else Domain.query.filter(Domain.domain == urlparse(request.base_url).hostname).first()
     domain = db_domain.domain
     user: User = g.account if g.account.uuid == user_uuid else User.by_uuid(f'{user_uuid}')
     if user is None:

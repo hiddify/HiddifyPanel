@@ -170,7 +170,7 @@ class Actions(FlaskView):
 
             tcp_ping = hutils.network.is_domain_reality_friendly(d)
             if tcp_ping:
-                dip = hutils.network.get_domain_ip(d)
+                dip = str(hutils.network.get_domain_ip(d))
                 dip_country = (IPCOUNTRY.get(dip) or {}).get('country', {}).get('iso_code', 'unknown')
                 if dip_country == "IR":
                     continue

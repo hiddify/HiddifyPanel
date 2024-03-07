@@ -69,6 +69,13 @@ class UserSchema(Schema):
     )
 
 
+class PatchUserSchema(UserSchema):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['name'].required = False
+    pass
+
+
 class UserApi(MethodView):
     decorators = [login_required({Role.super_admin, Role.admin, Role.agent})]
 
@@ -80,7 +87,7 @@ class UserApi(MethodView):
 
         return user.to_dict(False)
 
-    @app.input(UserSchema, arg_name="data")
+    @app.input(PatchUserSchema, arg_name="data")
     @app.output(SuccessfulSchema)
     def patch(self, uuid, data):
         user = User.by_uuid(uuid) or abort(404, "user not found")
