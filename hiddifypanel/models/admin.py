@@ -87,7 +87,7 @@ class AdminUser(BaseAccount):
             dbuser.parent_admin_id = parent_admin.id  # type: ignore
 
         dbuser.mode = data.get('mode', AdminMode.agent)
-        dbuser.can_add_admin = data.get('can_add_admin')
+        dbuser.can_add_admin = data.get('can_add_admin', False)
         if commit:
             db.session.commit()
         return dbuser
