@@ -344,7 +344,7 @@ def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
         'domains': domains,
         "bot": g.get('bot', None),
         "db_domain": db_domain,
-        "telegram_enable": hiddify.is_telegram_proxy_enable(),
+        "telegram_enable": hiddify.is_telegram_proxy_enable(domains),
         "ip": user_ip,
         "ip_debug": hutils.network.auto_ip_selector.get_real_user_ip_debug(user_ip),
         "asn": asn,
