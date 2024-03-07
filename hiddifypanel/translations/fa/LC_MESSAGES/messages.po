@@ -1512,7 +1512,7 @@ msgstr "⬆️ آپلود بی رحمانه MUX (mbps)"
 
 msgid "config.mux_enable.description"
 msgstr ""
-"Mux به نرم افزار سازگار نیاز دارد. Mux در Hiddify Next و singbox با Xray "
+"Mux به نرم افزار سازگار نیاز دارد. Mux در Hiddify Next و Singbox با XRay "
 "سازگار نیستند"
 
 msgid "config.mux_enable.label"
@@ -2062,7 +2062,7 @@ msgstr " ✅ تنظیمات با موفقیت تغییر کرد"
 msgid "config.vmess_enable.description"
 msgstr ""
 "گزارش‌های متعددی موجود است مبنی بر اینکه که VMess باعث می‌شود که سیستم توسط "
-"فیلترینگ شناسایی شود. بنابراین استفاده از آن توصیه نمی‌شو"
+"فیلترینگ شناسایی شود. بنابراین استفاده از آن توصیه نمی‌شود"
 
 msgid "config.vmess_enable.label"
 msgstr "♈️ فعال کردن VMess"
@@ -2122,9 +2122,9 @@ msgstr "وایرگارد"
 
 msgid "config.wireguard_enable.description"
 msgstr ""
-"WireGuard پروتکل مبتنی بر UDP است.\n"
-"\n"
-"⚠️ فقط در Hiddify Next کار می کند"
+"<p>WireGuard پروتکل مبتنی بر UDP است. (⚠️ فقط در <a "
+"href=\"https://github.com/hiddify/hiddify-next\" target=\"_blank\">Hiddify "
+"Next</a> کار می کند)</p>"
 
 msgid "config.wireguard_enable.label"
 msgstr "🐉 فعال سازی وایرگارد"

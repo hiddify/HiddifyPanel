@@ -260,7 +260,7 @@ def get_domain_information(no_domain=False, filter_domain=None, alternative=None
         db_domain = Domain.query.filter(Domain.domain == domain).first()
 
         if not db_domain:
-            parts = domain.split('.')
+            parts = domain.split('.')  # TODO fix bug domain maybe null
             parts[0] = "*"
             domain_new = ".".join(parts)
             db_domain = Domain.query.filter(Domain.domain == domain_new).first()

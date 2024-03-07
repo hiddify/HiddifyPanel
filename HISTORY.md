@@ -1,6 +1,22 @@
 # Changelog
 
 
+## v10.10.15 (2024-03-07)
+
+#### Other
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+
+
 ## v10.10.14 (2024-03-07)
 
 #### Fix

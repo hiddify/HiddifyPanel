@@ -1242,7 +1242,7 @@ msgstr ""
 
 msgid "config.branding_title.description"
 msgstr ""
-"Enter a customized title to be shown on user page. (before yser's Welcome "
+"Enter a customized title to be shown on user page. (Before User's Welcome "
 "Text)"
 
 msgid "config.branding_title.label"
@@ -1524,8 +1524,8 @@ msgstr "⬆️ MUX Brutal Upload (mbps)"
 
 msgid "config.mux_enable.description"
 msgstr ""
-"Mux needs compatible clients. Mux in Hiddify Next and singbox are not "
-"compatible with Xray"
+"Mux needs compatible clients. Mux in Hiddify Next and Singbox are not "
+"compatible with XRay"
 
 msgid "config.mux_enable.label"
 msgstr "Ⓜ️ MUX Enable (⚠️ Incompatible With Some Clients)"
@@ -2130,9 +2130,9 @@ msgstr "Wireguard"
 
 msgid "config.wireguard_enable.description"
 msgstr ""
-"WireGuard is UDP based protocol.\n"
-"\n"
-"⚠️  It is working in Hiddify Next"
+"<p>WireGuard is UDP based protocol. (⚠️ It is Working In <a "
+"href=\"https://github.com/hiddify/hiddify-next\" target=\"_blank\">Hiddify "
+"Next</a>)</p>"
 
 msgid "config.wireguard_enable.label"
 msgstr "🐉 Enable WireGuard"
