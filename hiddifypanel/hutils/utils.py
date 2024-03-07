@@ -31,7 +31,10 @@ def get_latest_release_version(repo_name):
         if location_header:
             version = re.search(r"/([^/]+)/?$", location_header)
             if version:
-                return version.group(1).replace('v', '')
+                ver = version.group(1).replace('v', '')
+                if ver == "latest":
+                    return get_latest_release_version(repo_name.replace("-", ""))
+                return ver
     except Exception as e:
         return f'{e}'
 

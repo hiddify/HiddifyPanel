@@ -538,3 +538,13 @@ div#qrcode img {
 .global-form .custom-switch {
   width: 100%;
 }
+
+
+td.col-uuid {
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 80px;
+  overflow: hidden;
+  display: inline-block;
+}

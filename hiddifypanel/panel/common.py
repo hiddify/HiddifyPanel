@@ -42,7 +42,7 @@ def init_app(app: APIFlask):
             has_update = False
         else:
             has_update = "dev" not in hiddifypanel.__version__ and f'{last_version}' != hiddifypanel.__version__
-
+    
         if not request.accept_mimetypes.accept_html:
             if has_update:
                 return jsonify({

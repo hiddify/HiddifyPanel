@@ -220,7 +220,8 @@ def proxy_path_validator(proxy_path: str) -> None:
 
 
 def list_dir_files(dir_path: str) -> List[str]:
-    return [f for f in os.listdir(dir_path) if os.path.isfile(os.path.join(dir_path, f))]
+    return sorted([f for f in os.listdir(dir_path) if os.path.isfile(os.path.join(dir_path, f))])
+
 
 def validate_domain_exist(form, field):
     domain = field.data
@@ -229,8 +230,7 @@ def validate_domain_exist(form, field):
     dip = hutils.network.get_domain_ip(domain)
     if dip is None:
         raise ValidationError(
-            _("Domain can not be resolved! there is a problem in your domain")) # type: ignore
-
+            _("Domain can not be resolved! there is a problem in your domain"))  # type: ignore
 
 
 # region not used

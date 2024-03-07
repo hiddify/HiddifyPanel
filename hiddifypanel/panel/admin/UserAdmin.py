@@ -26,7 +26,7 @@ class UserAdmin(AdminLTEModelView):
     column_sortable_list = ["is_active", "name", "current_usage", 'mode', "remaining_days", "comment", 'last_online', "uuid", 'remaining_days']
     column_searchable_list = ["uuid", "name"]
     column_list = ["is_active", "name", "UserLinks", "current_usage", "remaining_days", "comment", 'last_online', 'mode', 'admin', "uuid"]
-    column_editable_list = ["comment", "name"]
+    column_editable_list = ["comment", "name", "uuid"]
     form_extra_fields = {
         'reset_days': SwitchField(_("Reset package days")),
         'reset_usage': SwitchField(_("Reset package usage")),
@@ -152,8 +152,6 @@ class UserAdmin(AdminLTEModelView):
         domains = [d for d in get_panel_domains() if d.domain != request.host]
         return Markup(link + " ".join([hiddify.get_html_user_link(model, d) for d in domains]))
 
-    def _uuid_formatter(view, context, model, name):
-        return Markup(f"<span>{model.uuid}</span>")
     # def _usage_formatter(view, context, model, name):
     #     return round(model.current_usage_GB,3)
 
@@ -201,7 +199,7 @@ class UserAdmin(AdminLTEModelView):
     column_formatters = {
         # 'name': _name_formatter,
         'UserLinks': _ul_formatter,
-        'uuid': _uuid_formatter,
+        # 'uuid': _uuid_formatter,
         'current_usage': _usage_formatter,
         "remaining_days": _expire_formatter,
         'last_online': _online_formatter,
