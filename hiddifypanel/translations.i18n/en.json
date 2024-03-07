@@ -417,7 +417,7 @@
       "label": "🆔 Support Link (goes both on branding title and also on support section of user page)"
     },
     "branding_title": {
-      "description": "Enter a customized title to be shown on user page. (before yser's Welcome Text)",
+      "description": "Branding Text. this box's text will be shown on support section of User's Page. you can use HTML tags\n<p><br /><a href=\"https://onlinehtmleditor.dev\" target=\"_blank\">HTML Editor</a></p>"
       "label": "👁‍🗨 User Page Title"
     },
     "cdn_forced_host": {
@@ -485,9 +485,10 @@
       "label": "General Settings"
     },
     "grpc_enable": {
-      "description": "gRPC is a modern open source high performance Remote Procedure Call (RPC) framework. It can be used in supported CDNs.",
-      "label": "Enable gRPC"
+      "label": "➿ Enable gRPC",
+      "description": "gRPC is a modern open source high performance Remote Procedure Call (RPC) framework. It can be used in supported CDNs"
     },
+    
     "hidden": {
       "description": "-",
       "label": "-"
@@ -505,9 +506,10 @@
       "label": "☑️ Allow HTTP Connection"
     },
     "httpupgrade_enable": {
-      "description": "HTTPUpgrade complete a HTTP 1.1 Upgrade request and response before using the connection directly. It is similar to WebSocket in the way it create an direction channel that can be forwarded by many reverse proxies and CDNs, without the need to deal with all the issue around WebSocket Protocol itself.\n\n⚠️ Not Available in Xray based Clients. Only HiddifyNext, Singbox, and V2fly clients are supported",
-      "label": "Enable HTTPUpgrade Method"
+      "label": "🆙 Enable HTTPUpgrade Method",
+      "description": "HTTPUpgrade complete a HTTP 1.1 Upgrade request and response before using the connection directly. It is similar to WebSocket in the way it create an direction channel that can be forwarded by many reverse proxies and CDNs, without the need to deal with all the issue around WebSocket Protocol itself.\n\n⚠️ Not Available in Xray based Clients. Only HiddifyNext, Singbox, and V2fly clients are supported"
     },
+    
     "hysteria": {
       "description": "Hysteria is a feature-packed proxy & relay tool optimized for lossy, unstable connections (e.g. satellite networks, congested public Wi-Fi, connecting to foreign servers from China)",
       "label": "Hysteria"
@@ -625,8 +627,8 @@
       "label": "ℹ️ gRPC Path"
     },
     "path_httpupgrade": {
-      "description": "should be random",
-      "label": "HTTP Upgrade Path"
+      "label": "ℹ️ HTTP Upgrade Path",
+      "description": "should be random"
     },
     "path_ss": {
       "description": "Shadowsocks Path in the Links",
@@ -717,16 +719,16 @@
       "label": "Shadowsocks"
     },
     "shadowsocks2022_enable": {
-      "description": "Shadowsocks 2022 is a secure proxy protocol for TCP and UDP traffic. The proxy traffic is indistinguishable from a random byte stream, and therefore can circumvent firewalls and Internet censors that rely on DPI (Deep Packet Inspection).",
-      "label": "Enable Shadowsocks 2022"
+      "label": "⭕️ Enable Shadowsocks 2022",
+      "description": "Shadowsocks 2022 is a secure proxy protocol for TCP and UDP traffic. The proxy traffic is indistinguishable from a random byte stream, and therefore can circumvent firewalls and Internet censors that rely on DPI (Deep Packet Inspection)"
     },
     "shadowsocks2022_method": {
-      "description": "This method also used in ShadowTLS and SSFakeTLS",
-      "label": "Shadowsocks Encrypytion Method"
+      "label": "🔐 Shadowsocks Encrypytion Method",
+      "description": "This method also used in ShadowTLS and SSFakeTLS"
     },
     "shadowsocks2022_port": {
-      "description": "It needs both UDP and TCP to be free",
-      "label": "Shadowsocks 2022 Port"
+      "label": "↔️ Shadowsocks 2022 Port",
+      "description": "It needs both UDP and TCP to be free"
     },
     "shadowtls": {
       "description": "A Proxy to expose real tls handshake to the firewall.\n\nIt works like Trojan but It does not require signing certificate. the firewall will see real tls handshake with valid certificate that you choose.",
@@ -801,7 +803,7 @@
       "label": "📍 Telegram AD Tag"
     },
     "telegram_bot_token": {
-      "description": "<p>To add Telegram bot feature. you need to create a bot with <a href=\"https://t.me/BotFather\" target=\"_blank\">@BotFather</a> and enter the API code in this field</p>",
+      "description": "To add Telegram bot feature. you need to create a bot with <a href=\"https://t.me/BotFather\" target=\"_blank\">@BotFather</a> and enter the API code in this field",
       "label": "🔐 Telegram Bot Token"
     },
     "telegram_enable": {
@@ -928,11 +930,11 @@
       "label": "-"
     },
     "wireguard_noise_trick": {
-      "description": "This method introduces extra noise to prevent detection and blocking by the GFW.",
-      "label": "WireGuard Noise Trick"
+      "description": "This method introduces extra noise to prevent detection and blocking by the GFW",
+      "label": "💥 WireGuard Noise Trick"
     },
     "wireguard_port": {
-      "description": "config.wireguard_port.description",
+      "description": "Wireguard Port",
       "label": "Wireguard Port"
     },
     "wireguard_private_key": {
@@ -944,9 +946,10 @@
       "label": "-"
     },
     "ws_enable": {
-      "description": "Websocket creates a tunnel over http that is useful to be used in CDN.",
-      "label": "Enable Websocket"
+      "label": "🔰 Enable Websocket",
+      "description": "Websocket creates a tunnel over http that is useful to be used in CDN"
     },
+    
     "invalid uuid": "Invalid UUID secret. example: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n\n"
   },
   "copy": "Copy",
