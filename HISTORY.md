@@ -945,6 +945,16 @@ with A2_
 
 * Update. 
 
+* Merge branch 'main' of github.com:hiddify/Hiddify-Panel. 
+
+* Inlang: update translations. 
+
+* Update  translation. 
+
+* Inlang: update translations. 
+
+* Update. 
+
 * Inlang: update translations. 
 
 * Update. 
