@@ -1,6 +1,20 @@
 # Changelog
 
 
+## v10.10.17 (2024-03-07)
+
+#### Other
+
+* Fix issu in mysqlclient. 
+
+* Merge branch 'main' of github.com:hiddify/Hiddify-Panel. 
+
+* Inlang: update translations. 
+
+* Set header type for tcp. 
+
+
+
 ## v10.10.16 (2024-03-07)
 
 #### New
