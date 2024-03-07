@@ -1589,7 +1589,7 @@ msgid "config.only_ipv4.label"
 msgstr "ℹ️ Only IPv4"
 
 msgid "config.package_mode.description"
-msgstr "Specify whether you want released package or developed one"
+msgstr "Specify whether you want Released Package or Beta one"
 
 msgid "config.package_mode.label"
 msgstr "🔄 Package Update Mode"
@@ -1768,7 +1768,7 @@ msgid "config.shadowsocks2022_method.label"
 msgstr "🔐 Shadowsocks Encrypytion Method"
 
 msgid "config.shadowsocks2022_port.description"
-msgstr "It needs both UDP and TCP to be free"
+msgstr "It needs both UDP and TCP to be Free"
 
 msgid "config.shadowsocks2022_port.label"
 msgstr "↔️ Shadowsocks 2022 Port"
@@ -2069,9 +2069,7 @@ msgid "config.validation-success-no-reset"
 msgstr " ✅ Configs have been changed successfully"
 
 msgid "config.vmess_enable.description"
-msgstr ""
-"It is reported by several people that VMess causes the system to be detected"
-" by the government. So it is Not Recommended"
+msgstr "Active VMess Protocol"
 
 msgid "config.vmess_enable.label"
 msgstr "♈️ Enable VMess"
@@ -2121,9 +2119,10 @@ msgstr "🆚 Additional Warp Sites"
 
 msgid "config.wireguard.description"
 msgstr ""
-"WireGuard is a lightweight, UDP  based protocol known for its simplicity, efficiency, and strong security. It offers quick setup, transparent code, and has gained popularity for its ease of use across various operating systems.\n"
-"\n"
-"⚠️ Accounting is not yet implemented for this protocol."
+"WireGuard is a lightweight, UDP  based protocol known for its simplicity, "
+"efficiency, and strong security. It offers quick setup, transparent code, "
+"and has gained popularity for its ease of use across various operating "
+"systems"
 
 msgid "config.wireguard.label"
 msgstr "Wireguard"

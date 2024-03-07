@@ -1,6 +1,32 @@
 # Changelog
 
 
+## v10.10.16 (2024-03-07)
+
+#### New
+
+* Allow change l3 in the proxy list. 
+
+#### Other
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+
+
 ## v10.10.15 (2024-03-07)
 
 #### Other
