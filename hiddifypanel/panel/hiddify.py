@@ -285,7 +285,7 @@ def set_db_from_json(json_data, override_child_unique_id=True, set_users=True, s
                 u['added_by_uuid'] = AdminUser.current_admin_or_owner().uuid
 
     if set_admins and 'admin_users' in json_data:
-        AdminUser.bulk_register(json_data['admin_users'], commit=False)
+        AdminUser.bulk_register(json_data['admin_users'], commit=True)
     if set_users and 'users' in json_data:
         User.bulk_register(json_data['users'], commit=False, remove=remove_users)
     if set_domains and 'domains' in json_data:
