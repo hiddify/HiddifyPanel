@@ -158,7 +158,7 @@ class ConfigEnum(metaclass=FastEnum):
     telegram_enable = _BoolConfigDscr(ConfigCategory.telegram, ApplyMode.apply)
     # telegram_secret=auto()
     telegram_adtag = _StrConfigDscr(ConfigCategory.telegram, ApplyMode.apply, hide_in_virtual_child=True)
-    telegram_lib = _StrConfigDscr(ConfigCategory.telegram, ApplyMode.apply, hide_in_virtual_child=True)
+    telegram_lib = _StrConfigDscr(ConfigCategory.telegram, ApplyMode.restart, hide_in_virtual_child=True)
     telegram_fakedomain = _StrConfigDscr(ConfigCategory.telegram, ApplyMode.apply, hide_in_virtual_child=True)
 
     v2ray_enable = _BoolConfigDscr(ConfigCategory.hidden, ApplyMode.apply)
