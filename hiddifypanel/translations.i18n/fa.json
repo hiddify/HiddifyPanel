@@ -407,32 +407,32 @@
       "description": "-"
     },
     "wireguard_enable": {
-      "label": "",
-      "description": ""
+      "label": "WireGuard را فعال کنید",
+      "description": "WireGuard پروتکل مبتنی بر UDP است.\n\n⚠️ فقط در Hiddify Next کار می کند. "
     },
     "wireguard_port": {
-      "label": "",
+      "label": "پورت وایرگارد",
       "description": ""
     },
     "wireguard_ipv6": {
-      "label": "",
-      "description": ""
+      "label": "-",
+      "description": "-"
     },
     "wireguard_ipv4": {
-      "label": "",
-      "description": ""
+      "label": "-",
+      "description": "-"
     },
     "wireguard_private_key": {
-      "label": "",
-      "description": ""
+      "label": "-",
+      "description": "-"
     },
     "wireguard_public_key": {
-      "label": "",
-      "description": ""
+      "label": "-",
+      "description": "-"
     },
     "wireguard_noise_trick": {
-      "label": "",
-      "description": ""
+      "label": "ترفند نویز WireGuard",
+      "description": "این روش نویز اضافی را برای جلوگیری از شناسایی و مسدود شدن توسط GFW معرفی می کند."
     },
     "ssh_server_redis_url": {
       "label": "آدرس پایگاه داده کاربر SSH",
@@ -451,8 +451,8 @@
       "description": "☢️ XRay : یک هسته کامل است\n<br>\n📦 Singbox : توسعه یافته توسط SagerNet. همچنین هسته خوبی است"
     },
     "warp_sites": {
-      "label": "",
-      "description": ""
+      "label": "🆚 سایت‌های اضافی برای Warp",
+      "description": "اضافه کردن سایت‌های اضافی برای عبور از Warp (فقط زمانی که حالت Warp None نیست)"
     },
     "dns_server": {
       "label": "🖥 سرور DNS",
@@ -487,40 +487,40 @@
       "description": ""
     },
     "mux_enable": {
-      "label": "",
-      "description": ""
+      "label": "Ⓜ️ فعال کردن MUX (⚠️ ناسازگار با برخی نرم افزارها)",
+      "description": "Mux به نرم افزار سازگار نیاز دارد. Mux در Hiddify Next و singbox با Xray سازگار نیستند"
     },
     "mux_protocol": {
-      "label": "",
-      "description": ""
+      "label": "♍️ پروتکل MUX",
+      "description": "ℹ️ پروتکل Multiplex. 'sMux' به طور پیش فرض استفاده می شود\n<br>\n➖ sMux: مالتیپلکس کردن جریان\n<br>\n➖ YaMux: باز هم یک مولتی پلکسر دیگر\n<br>\n➖ h2Mux: جریان های چندگانه از طریق HTTP/2"
     },
     "mux_max_connections": {
-      "label": "",
-      "description": ""
+      "label": "⛓ اتصالات MUX Max",
+      "description": "حداکثر اتصالات درگیری با Max Streams"
     },
     "mux_min_streams": {
-      "label": "",
-      "description": ""
+      "label": "↘️ MUX Min Streams",
+      "description": "حداقل جریان های چندگانه در یک اتصال قبل از باز کردن یک اتصال جدید"
     },
     "mux_max_streams": {
-      "label": "",
-      "description": ""
+      "label": "↗️ MUX Max Streams",
+      "description": "حداکثر جریان های چندگانه در یک اتصال قبل از باز کردن یک اتصال جدید"
     },
     "mux_padding_enable": {
-      "label": "",
-      "description": ""
+      "label": "⟹ MUX Padding",
+      "description": "MUX Padding را فعال می کند"
     },
     "mux_brutal_enable": {
-      "label": "",
-      "description": ""
+      "label": "☣️ MUX Brutal",
+      "description": "الگوریتم کنترل تراکم TCP-Brutal را فعال می کند"
     },
     "mux_brutal_up_mbps": {
-      "label": "",
-      "description": ""
+      "label": "⬆️ آپلود بی رحمانه MUX (mbps)",
+      "description": "حداکثر سرعت آپلود TCP-Brutal"
     },
     "mux_brutal_down_mbps": {
-      "label": "",
-      "description": ""
+      "label": "⬇️ دانلود MUX Brutal (mbps)",
+      "description": "حداکثر سرعت دانلود TCP-Brutal"
     },
     "proxy_path_admin": {
       "label": "",
@@ -599,12 +599,12 @@
       "description": "-"
     },
     "wireguard": {
-      "label": "",
-      "description": ""
+      "label": "وایرگارد",
+      "description": "WireGuard یک پروتکل سبک وزن و مبتنی بر UDP است که به دلیل سادگی، کارایی و امنیت قوی شناخته شده است. راه اندازی سریع، کد شفاف را ارائه می دهد و به دلیل سهولت استفاده در سیستم عامل های مختلف محبوبیت پیدا کرده است.\n\n⚠️ حسابداری هنوز برای این پروتکل اجرا نشده است."
     },
     "shadowsocks": {
-      "label": "",
-      "description": ""
+      "label": "شادوساکس",
+      "description": "Shadowsocks یک پروکسی تونل سریع است که به شما کمک می کند فایروال ها را دور بزنید."
     }
   },
   "Domain can not be resolved! there is a problem in your domain": "دامنه قابل دسترسی نیست! در دامنه شما مشکلی وجود دارد.",

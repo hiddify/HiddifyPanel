@@ -407,32 +407,32 @@
       "description": "-"
     },
     "wireguard_enable": {
-      "label": "config.wireguard_enable.label",
-      "description": "config.wireguard_enable.description"
+      "label": "Enable WireGuard",
+      "description": "WireGuard is UDP based protocol.\n\n⚠️  It is working in Hiddify Next. "
     },
     "wireguard_port": {
-      "label": "config.wireguard_port.label",
+      "label": "Wireguard Port",
       "description": "config.wireguard_port.description"
     },
     "wireguard_ipv6": {
-      "label": "config.wireguard_ipv6.label",
-      "description": "config.wireguard_ipv6.description"
+      "label": "-",
+      "description": "-"
     },
     "wireguard_ipv4": {
-      "label": "config.wireguard_ipv4.label",
-      "description": "config.wireguard_ipv4.description"
+      "label": "-",
+      "description": "-"
     },
     "wireguard_private_key": {
-      "label": "config.wireguard_private_key.label",
-      "description": "config.wireguard_private_key.description"
+      "label": "-",
+      "description": "-"
     },
     "wireguard_public_key": {
-      "label": "config.wireguard_public_key.label",
-      "description": "config.wireguard_public_key.description"
+      "label": "-",
+      "description": "-"
     },
     "wireguard_noise_trick": {
-      "label": "config.wireguard_noise_trick.label",
-      "description": "config.wireguard_noise_trick.description"
+      "label": "WireGuard Noise Trick",
+      "description": "This method introduces extra noise to prevent detection and blocking by the GFW."
     },
     "ssh_server_redis_url": {
       "label": "SSH user database address",
@@ -451,8 +451,8 @@
       "description": "☢️ XRay : Is a Complete Core\n<br>\n📦 Singbox : Developed by SagerNet. It is also a good core"
     },
     "warp_sites": {
-      "label": "config.warp_sites.label",
-      "description": "config.warp_sites.description"
+      "label": "🆚 Additional Warp Sites",
+      "description": "Add additional sites to pass through Warp (only when warp mode is not None)"
     },
     "dns_server": {
       "label": "🖥 DNS Server",
@@ -487,40 +487,40 @@
       "description": "config.tls_padding_length.description"
     },
     "mux_enable": {
-      "label": "config.mux_enable.label",
-      "description": "config.mux_enable.description"
+      "label": "Ⓜ️ MUX Enable (⚠️ Incompatible with some clients)",
+      "description": "Mux needs compatible clients. Mux in Hiddify Next and singbox are not compatible with Xray"
     },
     "mux_protocol": {
-      "label": "config.mux_protocol.label",
-      "description": "config.mux_protocol.description"
+      "label": "♍️ MUX Protocol",
+      "description": "ℹ️ Multiplex Protocol. 'sMux' is used by default\n<br>\n➖ sMux: Stream Multiplexing\n<br>\n➖ YaMux: Yet Another Multiplexer\n<br>\n➖ h2Mux: Multiplexing Streams Over HTTP/2"
     },
     "mux_max_connections": {
-      "label": "config.mux_max_connections.label",
-      "description": "config.mux_max_connections.description"
+      "label": "⛓ MUX Max Connections",
+      "description": "Maximum Connections. Conflict with Max Streams"
     },
     "mux_min_streams": {
-      "label": "config.mux_min_streams.label",
-      "description": "config.mux_min_streams.description"
+      "label": "↘️ MUX Min Streams",
+      "description": "Minimum Multiplexed streams in a connection before opening a new connection"
     },
     "mux_max_streams": {
-      "label": "config.mux_max_streams.label",
-      "description": "config.mux_max_streams.description"
+      "label": "↗️ MUX Max Streams",
+      "description": "Maximum Multiplexed streams in a connection before opening a new connection"
     },
     "mux_padding_enable": {
-      "label": "config.mux_padding_enable.label",
-      "description": "config.mux_padding_enable.description"
+      "label": "⟹ MUX Padding",
+      "description": "Enables MUX Padding"
     },
     "mux_brutal_enable": {
-      "label": "config.mux_brutal_enable.label",
-      "description": "config.mux_brutal_enable.description"
+      "label": "☣️ MUX Brutal",
+      "description": "Enables TCP-Brutal congestion control algorithm"
     },
     "mux_brutal_up_mbps": {
-      "label": "config.mux_brutal_up_mbps.label",
-      "description": "config.mux_brutal_up_mbps.description"
+      "label": "⬆️ MUX Brutal Upload (mbps)",
+      "description": "TCP-Brutal Maximum Upload Speed"
     },
     "mux_brutal_down_mbps": {
-      "label": "config.mux_brutal_down_mbps.label",
-      "description": "config.mux_brutal_down_mbps.description"
+      "label": "⬇️ MUX Brutal Download (mbps)",
+      "description": "TCP-Brutal Maximum Download Speed"
     },
     "proxy_path_admin": {
       "label": "config.proxy_path_admin.label",
@@ -599,8 +599,8 @@
       "description": "-"
     },
     "wireguard": {
-      "label": "config.wireguard.label",
-      "description": "config.wireguard.description"
+      "label": "Wireguard",
+      "description": "WireGuard is a lightweight, UDP  based protocol known for its simplicity, efficiency, and strong security. It offers quick setup, transparent code, and has gained popularity for its ease of use across various operating systems.\n\n⚠️ Accounting is not yet implemented for this protocol."
     },
     "shadowsocks": {
       "label": "config.shadowsocks.label",
