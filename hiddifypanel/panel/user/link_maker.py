@@ -302,6 +302,10 @@ def make_proxy(hconfigs, proxy: Proxy, domain_db: Domain, phttp=80, ptls=443, pp
 def to_link(proxy):
     if 'error' in proxy:
         return proxy
+    # ignore httpupgrade for Streisand
+    if g.user_agent.get('is_streisand') and proxy.get('transport') == 'httpupgrade':
+        return {'msg': 'ignore httpupgrade for streisand'}
+
     orig_name_link = (proxy['extra_info'] + " " + proxy["name"]).strip()
     name_link = hutils.encode.url_encode(orig_name_link)
     if proxy['proto'] == 'vmess':
