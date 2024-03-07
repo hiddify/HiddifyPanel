@@ -18,7 +18,16 @@ pybabel extract -F babel.cfg -k "_gettext lazy_gettext gettext _ __" -o messages
 function update_json_po() {
   lang=$1
   python3 translate_utils.py update-json ../hiddifypanel/translations.i18n/${lang}.json messages.pot
+  
+  if [[ "$?" != "0" ]];then 
+    echo  "error in python3 translate_utils.py update-json ../hiddifypanel/translations.i18n/${lang}.json messages.pot "
+    exit $?
+  fi
   python3 translate_utils.py to-po ../hiddifypanel/translations.i18n/${lang}.json ../hiddifypanel/translations/${lang}/LC_MESSAGES/messages.po
+  if [[ "$?" != "0" ]];then 
+    echo "error in python3 translate_utils.py to-po ../hiddifypanel/translations.i18n/${lang}.json ../hiddifypanel/translations/${lang}/LC_MESSAGES/messages.po"
+    exit $?
+  fi
 }
 
 update_json_po en

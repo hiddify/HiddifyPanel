@@ -550,7 +550,7 @@ msgid "Package ended!"
 msgstr "Package Ended"
 
 msgid "Package not started yet."
-msgstr "Package not started yet."
+msgstr "Package Not Started Yet"
 
 msgid "Panel Link"
 msgstr "➖ Panel Link"
@@ -1242,8 +1242,8 @@ msgstr ""
 
 msgid "config.branding_title.description"
 msgstr ""
-"Enter a customized title to be shown on user page. (before yser's Welcome "
-"Text)"
+"Branding Text. this box's text will be shown on support section of User's Page. you can use HTML tags\n"
+"<p><br /><a href=\"https://onlinehtmleditor.dev\" target=\"_blank\">HTML Editor</a></p>"
 
 msgid "config.branding_title.label"
 msgstr "👁‍🗨 User Page Title"
@@ -1374,10 +1374,10 @@ msgstr "General Settings"
 msgid "config.grpc_enable.description"
 msgstr ""
 "gRPC is a modern open source high performance Remote Procedure Call (RPC) "
-"framework. It can be used in supported CDNs."
+"framework. It can be used in supported CDNs"
 
 msgid "config.grpc_enable.label"
-msgstr "Enable gRPC"
+msgstr "➿ Enable gRPC"
 
 msgid "config.hidden.description"
 msgstr "-"
@@ -1414,7 +1414,7 @@ msgstr ""
 "⚠️ Not Available in Xray based Clients. Only HiddifyNext, Singbox, and V2fly clients are supported"
 
 msgid "config.httpupgrade_enable.label"
-msgstr "Enable HTTPUpgrade Method"
+msgstr "🆙 Enable HTTPUpgrade Method"
 
 msgid "config.hysteria.description"
 msgstr ""
@@ -1612,7 +1612,7 @@ msgid "config.path_httpupgrade.description"
 msgstr "should be random"
 
 msgid "config.path_httpupgrade.label"
-msgstr "HTTP Upgrade Path"
+msgstr "ℹ️ HTTP Upgrade Path"
 
 msgid "config.path_ss.description"
 msgstr "Shadowsocks Path in the Links"
@@ -1756,22 +1756,22 @@ msgstr ""
 "Shadowsocks 2022 is a secure proxy protocol for TCP and UDP traffic. The "
 "proxy traffic is indistinguishable from a random byte stream, and therefore "
 "can circumvent firewalls and Internet censors that rely on DPI (Deep Packet "
-"Inspection)."
+"Inspection)"
 
 msgid "config.shadowsocks2022_enable.label"
-msgstr "Enable Shadowsocks 2022"
+msgstr "⭕️ Enable Shadowsocks 2022"
 
 msgid "config.shadowsocks2022_method.description"
 msgstr "This method also used in ShadowTLS and SSFakeTLS"
 
 msgid "config.shadowsocks2022_method.label"
-msgstr "Shadowsocks Encrypytion Method"
+msgstr "🔐 Shadowsocks Encrypytion Method"
 
 msgid "config.shadowsocks2022_port.description"
 msgstr "It needs both UDP and TCP to be free"
 
 msgid "config.shadowsocks2022_port.label"
-msgstr "Shadowsocks 2022 Port"
+msgstr "↔️ Shadowsocks 2022 Port"
 
 msgid "config.shadowtls.description"
 msgstr ""
@@ -1915,9 +1915,9 @@ msgstr "📍 Telegram AD Tag"
 
 msgid "config.telegram_bot_token.description"
 msgstr ""
-"<p>To add Telegram bot feature. you need to create a bot with <a "
+"To add Telegram bot feature. you need to create a bot with <a "
 "href=\"https://t.me/BotFather\" target=\"_blank\">@BotFather</a> and enter "
-"the API code in this field</p>"
+"the API code in this field"
 
 msgid "config.telegram_bot_token.label"
 msgstr "🔐 Telegram Bot Token"
@@ -2135,7 +2135,7 @@ msgstr ""
 "⚠️  It is working in Hiddify Next. "
 
 msgid "config.wireguard_enable.label"
-msgstr "Enable WireGuard"
+msgstr "🐉 Enable WireGuard"
 
 msgid "config.wireguard_ipv4.description"
 msgstr "-"
@@ -2152,13 +2152,13 @@ msgstr "-"
 msgid "config.wireguard_noise_trick.description"
 msgstr ""
 "This method introduces extra noise to prevent detection and blocking by the "
-"GFW."
+"GFW"
 
 msgid "config.wireguard_noise_trick.label"
-msgstr "WireGuard Noise Trick"
+msgstr "💥 WireGuard Noise Trick"
 
 msgid "config.wireguard_port.description"
-msgstr "config.wireguard_port.description"
+msgstr "Wireguard Port"
 
 msgid "config.wireguard_port.label"
 msgstr "Wireguard Port"
@@ -2176,11 +2176,10 @@ msgid "config.wireguard_public_key.label"
 msgstr "-"
 
 msgid "config.ws_enable.description"
-msgstr ""
-"Websocket creates a tunnel over http that is useful to be used in CDN."
+msgstr "Websocket creates a tunnel over http that is useful to be used in CDN"
 
 msgid "config.ws_enable.label"
-msgstr "Enable Websocket"
+msgstr "🔰 Enable Websocket"
 
 msgid "config.invalid uuid"
 msgstr ""

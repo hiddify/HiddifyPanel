@@ -537,7 +537,7 @@ msgid "Package ended!"
 msgstr "پکیج شما به پایان رسید"
 
 msgid "Package not started yet."
-msgstr "بسته هنوز شروع نشده است."
+msgstr "بسته هنوز شروع نشده است"
 
 msgid "Panel Link"
 msgstr "➖ لینک پنل"
@@ -1361,10 +1361,10 @@ msgstr "تنظیمات عمومی"
 msgid "config.grpc_enable.description"
 msgstr ""
 "gRPC یک چارچوب متن باز مدرن با کارایی بالا Remote Procedure Call (RPC) است. "
-"می توان از آن در CDN های پشتیبانی شده استفاده کرد."
+"می توان از آن در CDN های پشتیبانی شده استفاده کرد"
 
 msgid "config.grpc_enable.label"
-msgstr "gRPC را فعال کنید"
+msgstr "➿ gRPC را فعال کنید"
 
 msgid "config.hidden.description"
 msgstr "-"
@@ -1401,7 +1401,7 @@ msgstr ""
 "⚠️ در نرم افزارهای مبتنی بر Xray موجود نیست. فقط نرم افزارهای HiddifyNext، Singbox و V2fly پشتیبانی می شوند."
 
 msgid "config.httpupgrade_enable.label"
-msgstr "فعالسازی HTTPUpgrade"
+msgstr "🆙 فعالسازی HTTPUpgrade"
 
 msgid "config.hysteria.description"
 msgstr ""
@@ -1602,7 +1602,7 @@ msgid "config.path_httpupgrade.description"
 msgstr "باید تصادفی باشد"
 
 msgid "config.path_httpupgrade.label"
-msgstr "مسیر ارتقاء HTTP"
+msgstr "ℹ️ مسیر ارتقاء HTTP"
 
 msgid "config.path_ss.description"
 msgstr "مسیر شدوساکس در لینکها"
@@ -1750,23 +1750,22 @@ msgid "config.shadowsocks2022_enable.description"
 msgstr ""
 "Shadowsocks 2022 یک پروتکل پروکسی امن برای ترافیک TCP و UDP است. ترافیک "
 "پراکسی از یک جریان بایت تصادفی قابل تشخیص نیست و بنابراین می تواند فایروال "
-"ها و سانسورهای اینترنتی را که به DPI (بازرسی عمیق بسته) متکی هستند، دور "
-"بزند."
+"ها و سانسورهای اینترنتی را که به DPI (بازرسی عمیق بسته) متکی هستند، دور بزند"
 
 msgid "config.shadowsocks2022_enable.label"
-msgstr "Shadowsocks 2022 را فعال کنید"
+msgstr "⭕️ Shadowsocks 2022 را فعال کنید"
 
 msgid "config.shadowsocks2022_method.description"
 msgstr "این روش در ShadowTLS و SSFakeTLS نیز استفاده می شود"
 
 msgid "config.shadowsocks2022_method.label"
-msgstr "روش رمزگذاری Shadowsocks"
+msgstr "🔐 روش رمزگذاری Shadowsocks"
 
 msgid "config.shadowsocks2022_port.description"
 msgstr "برای رایگان بودن به UDP و TCP نیاز دارد"
 
 msgid "config.shadowsocks2022_port.label"
-msgstr "پورت Shadowsocks 2022"
+msgstr "↔️ پورت Shadowsocks 2022"
 
 msgid "config.shadowtls.description"
 msgstr ""
@@ -2128,7 +2127,7 @@ msgstr ""
 "⚠️ فقط در Hiddify Next کار می کند. "
 
 msgid "config.wireguard_enable.label"
-msgstr "WireGuard را فعال کنید"
+msgstr "🐉 فعال سازی وایرگارد"
 
 msgid "config.wireguard_ipv4.description"
 msgstr "-"
@@ -2145,16 +2144,16 @@ msgstr "-"
 msgid "config.wireguard_noise_trick.description"
 msgstr ""
 "این روش نویز اضافی را برای جلوگیری از شناسایی و مسدود شدن توسط GFW معرفی می "
-"کند."
+"کند"
 
 msgid "config.wireguard_noise_trick.label"
-msgstr "ترفند نویز WireGuard"
+msgstr "💥 ترفند نویز WireGuard"
 
 msgid "config.wireguard_port.description"
-msgstr ""
+msgstr "پورت وایرگارد"
 
 msgid "config.wireguard_port.label"
-msgstr "پورت وایرگارد"
+msgstr "↔️ پورت وایرگارد"
 
 msgid "config.wireguard_private_key.description"
 msgstr "-"
@@ -2170,10 +2169,10 @@ msgstr "-"
 
 msgid "config.ws_enable.description"
 msgstr ""
-"Websocket یک تونل روی http ایجاد می کند که برای استفاده در CDN مفید است."
+"Websocket یک تونل روی http ایجاد می کند که برای استفاده در CDN مفید است"
 
 msgid "config.ws_enable.label"
-msgstr "Websocket را فعال کنید"
+msgstr "🔰 Websocket را فعال کنید"
 
 msgid "config.invalid uuid"
 msgstr ""
