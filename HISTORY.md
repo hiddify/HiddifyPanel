@@ -1,6 +1,22 @@
 # Changelog
 
 
+## v10.10.14 (2024-03-07)
+
+#### Fix
+
+* Incompatible types. 
+
+* Buggy database. 
+
+* Bug. 
+
+#### Other
+
+* Force add adimn user. 
+
+
+
 ## v10.10.13 (2024-03-07)
 
 #### Fix
