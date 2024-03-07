@@ -283,6 +283,10 @@
 
 #### Fix
 
+* Bug. 
+
+* Fragment bug. 
+
 * Exception when there is no valid domain. 
 
 * Don't let user create invalid domains. 
@@ -938,6 +942,18 @@ with A2_
 * Bugs. 
 
 #### Other
+
+* Update. 
+
+* Inlang: update translations. 
+
+* Update. 
+
+* Update translation. 
+
+* Update. 
+
+* Update translation. 
 
 * Merge branch 'main' of github.com:hiddify/Hiddify-Panel. 
 
