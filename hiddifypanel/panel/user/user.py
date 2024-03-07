@@ -284,19 +284,22 @@ def get_domain_information(no_domain=False, filter_domain=None, alternative=None
             # print("autocdn ip mode ", d.cdn_ip)
         if "*" in d.domain:
             d.domain = d.domain.replace("*", hutils.random.get_random_string(5, 15))
-    if len(domains) == 0:
-        domains = [Domain(id=0, domain=alternative, mode=DomainType.direct, cdn_ip='', show_domains=[], child_id=0)]
-        domains[0].has_auto_ip = True
 
-    return domains, has_auto_cdn
+    valid_domains = [d for d in domains if d.mode != DomainType.fake and d.mode != DomainType.reality]
+
+    if len(valid_domains) == 0:
+        valid_domains = [Domain(id=0, domain=alternative, mode=DomainType.direct, cdn_ip='', show_domains=[], child_id=0)]
+        valid_domains[0].has_auto_ip = True
+
+    return domains, valid_domains, has_auto_cdn
 
 
 def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
     '''Usable for user account'''
     # uuid_secret=str(uuid.UUID(user_secret))
-    domains, has_auto_cdn = get_domain_information(no_domain, filter_domain, urlparse(request.base_url).hostname)
-    valid_domains = [d for d in domains if d.mode != DomainType.fake and d.mode != DomainType.reality]
-    db_domain = valid_domains[0] if valid_domains else Domain.query.filter(Domain.domain == urlparse(request.base_url).hostname).first()
+    domains, valid_domains, has_auto_cdn = get_domain_information(no_domain, filter_domain, urlparse(request.base_url).hostname)
+
+    db_domain = valid_domains[0]  # TODO refactor
     domain = db_domain.domain
     user: User = g.account if g.account.uuid == user_uuid else User.by_uuid(f'{user_uuid}')
     if user is None:
