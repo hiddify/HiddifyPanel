@@ -33,7 +33,7 @@ netifaces==0.11.0
 paramiko==3.3.1
 ping3==4.0.4
 psutil==5.9.5
-pymysql
+pymysql==1.1.0
 python-dateutil==2.8.2
 python-dotenv==1.0.0
 python-redis-cache==3.0
@@ -61,5 +61,5 @@ flask-apispec==0.11.4
 
 
 bjoern==3.2.2
-mysqlclient==2.2.1
+mysqlclient<=2.2.4
 fastenumplus==1.4.0
