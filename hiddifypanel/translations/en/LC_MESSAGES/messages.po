@@ -731,10 +731,10 @@ msgid "config.path_ss.description"
 msgstr "Shadowsocks Path in the Links"
 
 msgid "config.dbvalues.label"
-msgstr "config.dbvalues.label"
+msgstr "-"
 
 msgid "config.dbvalues.description"
-msgstr "config.dbvalues.description"
+msgstr "-"
 
 msgid "config.create_easysetup_link.label"
 msgstr "-"
@@ -743,46 +743,51 @@ msgid "config.create_easysetup_link.description"
 msgstr "-"
 
 msgid "config.wireguard_enable.label"
-msgstr "config.wireguard_enable.label"
+msgstr "Enable WireGuard"
 
 msgid "config.wireguard_enable.description"
-msgstr "config.wireguard_enable.description"
+msgstr ""
+"WireGuard is UDP based protocol.\n"
+"\n"
+"⚠️  It is working in Hiddify Next. "
 
 msgid "config.wireguard_port.label"
-msgstr "config.wireguard_port.label"
+msgstr "Wireguard Port"
 
 msgid "config.wireguard_port.description"
 msgstr "config.wireguard_port.description"
 
 msgid "config.wireguard_ipv6.label"
-msgstr "config.wireguard_ipv6.label"
+msgstr "-"
 
 msgid "config.wireguard_ipv6.description"
-msgstr "config.wireguard_ipv6.description"
+msgstr "-"
 
 msgid "config.wireguard_ipv4.label"
-msgstr "config.wireguard_ipv4.label"
+msgstr "-"
 
 msgid "config.wireguard_ipv4.description"
-msgstr "config.wireguard_ipv4.description"
+msgstr "-"
 
 msgid "config.wireguard_private_key.label"
-msgstr "config.wireguard_private_key.label"
+msgstr "-"
 
 msgid "config.wireguard_private_key.description"
-msgstr "config.wireguard_private_key.description"
+msgstr "-"
 
 msgid "config.wireguard_public_key.label"
-msgstr "config.wireguard_public_key.label"
+msgstr "-"
 
 msgid "config.wireguard_public_key.description"
-msgstr "config.wireguard_public_key.description"
+msgstr "-"
 
 msgid "config.wireguard_noise_trick.label"
-msgstr "config.wireguard_noise_trick.label"
+msgstr "WireGuard Noise Trick"
 
 msgid "config.wireguard_noise_trick.description"
-msgstr "config.wireguard_noise_trick.description"
+msgstr ""
+"This method introduces extra noise to prevent detection and blocking by the "
+"GFW."
 
 msgid "config.ssh_server_redis_url.label"
 msgstr "SSH user database address"
@@ -796,7 +801,7 @@ msgstr "↔️ SSH Proxy Port"
 msgid "config.ssh_server_port.description"
 msgstr ""
 "This is completely different from your original SSH server. It is a "
-"dedicated program"
+"dedicated program."
 
 msgid "config.ssh_server_enable.label"
 msgstr "✔️ Enable SSH Proxy"
@@ -814,10 +819,11 @@ msgstr ""
 "📦 Singbox : Developed by SagerNet. It is also a good core"
 
 msgid "config.warp_sites.label"
-msgstr "config.warp_sites.label"
+msgstr "🆚 Additional Warp Sites"
 
 msgid "config.warp_sites.description"
-msgstr "config.warp_sites.description"
+msgstr ""
+"Add additional sites to pass through Warp (only when warp mode is not None)"
 
 msgid "config.dns_server.label"
 msgstr "🖥 DNS Server"
@@ -829,112 +835,126 @@ msgstr ""
 "🔞 Block Porn 1.1.1.3\n"
 
 msgid "config.reality_port.label"
-msgstr "config.reality_port.label"
+msgstr "↔️  Direct Reality Port"
 
 msgid "config.reality_port.description"
-msgstr "config.reality_port.description"
+msgstr ""
+"You can set a customized port for your reality server to reduce the system's"
+" overhead. (Allow direct connection to proxies should be yes)"
 
 msgid "config.tls_fragment_enable.label"
-msgstr "config.tls_fragment_enable.label"
+msgstr "⏯ Enable TLS Fragment"
 
 msgid "config.tls_fragment_enable.description"
-msgstr "config.tls_fragment_enable.description"
+msgstr "Under some circumstances, it can bypass the SNI blacklist system"
 
 msgid "config.tls_fragment_size.label"
-msgstr "config.tls_fragment_size.label"
+msgstr "🎚 TLS Fragment Size"
 
 msgid "config.tls_fragment_size.description"
-msgstr "config.tls_fragment_size.description"
+msgstr "The Size of each Packet"
 
 msgid "config.tls_fragment_sleep.label"
-msgstr "config.tls_fragment_sleep.label"
+msgstr "⏱ TLS Fragment Sleep"
 
 msgid "config.tls_fragment_sleep.description"
-msgstr "config.tls_fragment_sleep.description"
+msgstr "The time delay between Fragments"
 
 msgid "config.tls_mixed_case.label"
-msgstr "config.tls_mixed_case.label"
+msgstr "🔠 Enable TLS Mixed SNI Case"
 
 msgid "config.tls_mixed_case.description"
-msgstr "config.tls_mixed_case.description"
+msgstr "Enables TLS Mixed SNI Case Fragmentation"
 
 msgid "config.tls_padding_enable.label"
-msgstr "config.tls_padding_enable.label"
+msgstr "♒️ Enable TLS Padding"
 
 msgid "config.tls_padding_enable.description"
-msgstr "config.tls_padding_enable.description"
+msgstr "Enables Padding for TLS Fragmentation"
 
 msgid "config.tls_padding_length.label"
-msgstr "config.tls_padding_length.label"
+msgstr "📏 TLS Padding"
 
 msgid "config.tls_padding_length.description"
-msgstr "config.tls_padding_length.description"
+msgstr "The length of the Padding for TLS Fragmentation"
 
 msgid "config.mux_enable.label"
-msgstr "config.mux_enable.label"
+msgstr "Ⓜ️ MUX Enable (⚠️ Incompatible with some clients)"
 
 msgid "config.mux_enable.description"
-msgstr "config.mux_enable.description"
+msgstr ""
+"Mux needs compatible clients. Mux in Hiddify Next and singbox are not "
+"compatible with Xray"
 
 msgid "config.mux_protocol.label"
-msgstr "config.mux_protocol.label"
+msgstr "♍️ MUX Protocol"
 
 msgid "config.mux_protocol.description"
-msgstr "config.mux_protocol.description"
+msgstr ""
+"ℹ️ Multiplex Protocol. 'sMux' is used by default\n"
+"<br>\n"
+"➖ sMux: Stream Multiplexing\n"
+"<br>\n"
+"➖ YaMux: Yet Another Multiplexer\n"
+"<br>\n"
+"➖ h2Mux: Multiplexing Streams Over HTTP/2"
 
 msgid "config.mux_max_connections.label"
-msgstr "config.mux_max_connections.label"
+msgstr "⛓ MUX Max Connections"
 
 msgid "config.mux_max_connections.description"
-msgstr "config.mux_max_connections.description"
+msgstr "Maximum Connections. Conflict with Max Streams"
 
 msgid "config.mux_min_streams.label"
-msgstr "config.mux_min_streams.label"
+msgstr "↘️ MUX Min Streams"
 
 msgid "config.mux_min_streams.description"
-msgstr "config.mux_min_streams.description"
+msgstr ""
+"Minimum Multiplexed streams in a connection before opening a new connection"
 
 msgid "config.mux_max_streams.label"
-msgstr "config.mux_max_streams.label"
+msgstr "↗️ MUX Max Streams"
 
 msgid "config.mux_max_streams.description"
-msgstr "config.mux_max_streams.description"
+msgstr ""
+"Maximum Multiplexed streams in a connection before opening a new connection"
 
 msgid "config.mux_padding_enable.label"
-msgstr "config.mux_padding_enable.label"
+msgstr "⟹ MUX Padding"
 
 msgid "config.mux_padding_enable.description"
-msgstr "config.mux_padding_enable.description"
+msgstr "Enables MUX Padding"
 
 msgid "config.mux_brutal_enable.label"
-msgstr "config.mux_brutal_enable.label"
+msgstr "☣️ MUX Brutal"
 
 msgid "config.mux_brutal_enable.description"
-msgstr "config.mux_brutal_enable.description"
+msgstr "Enables TCP-Brutal congestion control algorithm"
 
 msgid "config.mux_brutal_up_mbps.label"
-msgstr "config.mux_brutal_up_mbps.label"
+msgstr "⬆️ MUX Brutal Upload (mbps)"
 
 msgid "config.mux_brutal_up_mbps.description"
-msgstr "config.mux_brutal_up_mbps.description"
+msgstr "TCP-Brutal Maximum Upload Speed"
 
 msgid "config.mux_brutal_down_mbps.label"
-msgstr "config.mux_brutal_down_mbps.label"
+msgstr "⬇️ MUX Brutal Download (mbps)"
 
 msgid "config.mux_brutal_down_mbps.description"
-msgstr "config.mux_brutal_down_mbps.description"
+msgstr "TCP-Brutal Maximum Download Speed"
 
 msgid "config.proxy_path_admin.label"
-msgstr "config.proxy_path_admin.label"
+msgstr "🔐 Proxy Path for Admins"
 
 msgid "config.proxy_path_admin.description"
-msgstr "config.proxy_path_admin.description"
+msgstr ""
+"We use secret proxy path to hide our proxies for the governments and  bots"
 
 msgid "config.proxy_path_client.label"
-msgstr "config.proxy_path_client.label"
+msgstr "🔏 Proxy Path for Clients"
 
 msgid "config.proxy_path_client.description"
-msgstr "config.proxy_path_client.description"
+msgstr "Secret proxy path hide the proxies from the governments and bots"
 
 msgid "config.hysteria_enable.label"
 msgstr "Enable Hysteria2"
@@ -949,76 +969,86 @@ msgid "config.hysteria_port.description"
 msgstr "Hysteria UDP Port for example 5678"
 
 msgid "config.hysteria_obfs_enable.label"
-msgstr "config.hysteria_obfs_enable.label"
+msgstr "🎛 Hysteria OBFS Enable"
 
 msgid "config.hysteria_obfs_enable.description"
-msgstr "config.hysteria_obfs_enable.description"
+msgstr " Enables Hysteria Obfuscation (Salamander)"
 
 msgid "config.hysteria_up_mbps.label"
-msgstr "config.hysteria_up_mbps.label"
+msgstr "⬆️ Hysteria Upload (mbps)"
 
 msgid "config.hysteria_up_mbps.description"
-msgstr "config.hysteria_up_mbps.description"
+msgstr "Hysteria Maximum Upload Speed"
 
 msgid "config.hysteria_down_mbps.label"
-msgstr "config.hysteria_down_mbps.label"
+msgstr "⬇️ Hysteria Download (mbps)"
 
 msgid "config.hysteria_down_mbps.description"
-msgstr "config.hysteria_down_mbps.description"
+msgstr "Hysteria Maximum Download Speed"
 
 msgid "config.shadowsocks2022_enable.label"
-msgstr "config.shadowsocks2022_enable.label"
+msgstr "Enable Shadowsocks 2022"
 
 msgid "config.shadowsocks2022_enable.description"
-msgstr "config.shadowsocks2022_enable.description"
+msgstr ""
+"Shadowsocks 2022 is a secure proxy protocol for TCP and UDP traffic. The "
+"proxy traffic is indistinguishable from a random byte stream, and therefore "
+"can circumvent firewalls and Internet censors that rely on DPI (Deep Packet "
+"Inspection)."
 
 msgid "config.shadowsocks2022_method.label"
-msgstr "config.shadowsocks2022_method.label"
+msgstr "Shadowsocks Encrypytion Method"
 
 msgid "config.shadowsocks2022_method.description"
-msgstr "config.shadowsocks2022_method.description"
+msgstr "This method also used in ShadowTLS and SSFakeTLS"
 
 msgid "config.shadowsocks2022_port.label"
-msgstr "config.shadowsocks2022_port.label"
+msgstr "Shadowsocks 2022 Port"
 
 msgid "config.shadowsocks2022_port.description"
-msgstr "config.shadowsocks2022_port.description"
+msgstr "It needs both UDP and TCP to be free"
 
 msgid "config.ws_enable.label"
-msgstr "config.ws_enable.label"
+msgstr "Enable Websocket"
 
 msgid "config.ws_enable.description"
-msgstr "config.ws_enable.description"
+msgstr ""
+"Websocket creates a tunnel over http that is useful to be used in CDN."
 
 msgid "config.grpc_enable.label"
-msgstr "config.grpc_enable.label"
+msgstr "Enable gRPC"
 
 msgid "config.grpc_enable.description"
-msgstr "config.grpc_enable.description"
+msgstr ""
+"gRPC is a modern open source high performance Remote Procedure Call (RPC) "
+"framework. It can be used in supported CDNs."
 
 msgid "config.httpupgrade_enable.label"
-msgstr "config.httpupgrade_enable.label"
+msgstr "Enable HTTPUpgrade Method"
 
 msgid "config.httpupgrade_enable.description"
-msgstr "config.httpupgrade_enable.description"
+msgstr ""
+"HTTPUpgrade complete a HTTP 1.1 Upgrade request and response before using the connection directly. It is similar to WebSocket in the way it create an direction channel that can be forwarded by many reverse proxies and CDNs, without the need to deal with all the issue around WebSocket Protocol itself.\n"
+"\n"
+"⚠️ Not Available in Xray based Clients. Only HiddifyNext, Singbox, and V2fly clients are supported"
 
 msgid "config.path_httpupgrade.label"
-msgstr "config.path_httpupgrade.label"
+msgstr "HTTP Upgrade Path"
 
 msgid "config.path_httpupgrade.description"
-msgstr "config.path_httpupgrade.description"
+msgstr "should be random"
 
 msgid "config.mux.label"
-msgstr "config.mux.label"
+msgstr "MUX Config"
 
 msgid "config.mux.description"
-msgstr "config.mux.description"
+msgstr "MUX (Multiplex) configurations could be set in this section"
 
 msgid "config.tls_trick.label"
-msgstr "config.tls_trick.label"
+msgstr "TLS Trick"
 
 msgid "config.tls_trick.description"
-msgstr "config.tls_trick.description"
+msgstr "TLS Fragmentation configurations could be set in this section"
 
 msgid "config.ssh.label"
 msgstr "SSH Proxy"
@@ -1046,16 +1076,19 @@ msgid "config.hidden.description"
 msgstr "-"
 
 msgid "config.wireguard.label"
-msgstr "config.wireguard.label"
+msgstr "Wireguard"
 
 msgid "config.wireguard.description"
-msgstr "config.wireguard.description"
+msgstr ""
+"WireGuard is a lightweight, UDP  based protocol known for its simplicity, efficiency, and strong security. It offers quick setup, transparent code, and has gained popularity for its ease of use across various operating systems.\n"
+"\n"
+"⚠️ Accounting is not yet implemented for this protocol."
 
 msgid "config.shadowsocks.label"
-msgstr "config.shadowsocks.label"
+msgstr "Shadowsocks"
 
 msgid "config.shadowsocks.description"
-msgstr "config.shadowsocks.description"
+msgstr "Shadowsocks is a fast tunnel proxy that helps you bypass firewalls."
 
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr ""
