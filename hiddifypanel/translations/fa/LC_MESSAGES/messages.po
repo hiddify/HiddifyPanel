@@ -1161,7 +1161,7 @@ msgid "config.admin.label"
 msgstr "تنظیمات ادمین"
 
 msgid "config.admin_lang.description"
-msgstr "در این قسمت می‌توانید زبان پنل مدیریت را انتخاب کنید."
+msgstr "در این قسمت می‌توانید زبان پنل مدیریت را انتخاب کنید"
 
 msgid "config.admin_lang.label"
 msgstr "🗺️ زبان پنل مدیریت"
@@ -1199,7 +1199,7 @@ msgstr "🔄 به‌روز‌ رسانی خودکار"
 msgid "config.block_iran_sites.description"
 msgstr ""
 "برای جلوگیری از شناسایی توسط فیلترچی، دسترسی به سایت های ایرانی را مسدود "
-"می‌کند."
+"می‌کند"
 
 msgid "config.block_iran_sites.label"
 msgstr "⛔️ بلاک کردن سایت‌های ایرانی"
@@ -1213,7 +1213,7 @@ msgstr "شخصی‌ سازی صفحه کاربران"
 msgid "config.branding_freetext.description"
 msgstr ""
 "متنی که در این قسمت وارد می‌کنید، در باکس پشتیبانی در صفحه کاربران نمایش داده می‌شود. امکان استفاده از کدهای HTML هم وجود دارد\n"
-"<p><br /><a href=\"https://onlinehtmleditor.dev\" target=\"_blank\">HTML Editor</a></p>"
+"<p><br /><a href=\"https://onlinehtmleditor.dev\" target=\"_blank\">HTML Edit</a></p>"
 
 msgid "config.branding_freetext.label"
 msgstr "📢 متن باکس پشتیبانی"
@@ -1398,7 +1398,7 @@ msgid "config.httpupgrade_enable.description"
 msgstr ""
 "HTTPUpgrade یک درخواست ارتقاء HTTP 1.1 و پاسخ را قبل از استفاده مستقیم از اتصال تکمیل می کند. این شبیه به WebSocket است که یک کانال جهت ایجاد می کند که می تواند توسط بسیاری از پروکسی های معکوس و CDN ها ارسال شود، بدون اینکه نیازی به رسیدگی به تمام مسائل پیرامون خود پروتکل WebSocket باشد.\n"
 "\n"
-"⚠️ در نرم افزارهای مبتنی بر Xray موجود نیست. فقط نرم افزارهای HiddifyNext، Singbox و V2fly پشتیبانی می شوند."
+"⚠️ در نرم افزارهای مبتنی بر Xray موجود نیست. فقط نرم افزارهای HiddifyNext، Singbox و V2fly پشتیبانی می شوند"
 
 msgid "config.httpupgrade_enable.label"
 msgstr "🆙 فعالسازی HTTPUpgrade"
@@ -1469,7 +1469,7 @@ msgid "config.kcp_ports.label"
 msgstr "پورت‌های KCP"
 
 msgid "config.lang.description"
-msgstr "این گزینه زبان بخش کاربران را تغییر می‌دهد."
+msgstr "این گزینه زبان بخش کاربران را تغییر می‌دهد"
 
 msgid "config.lang.label"
 msgstr "🗺️ زبان محیط کاربران"
@@ -1647,7 +1647,7 @@ msgid "config.path_ws.label"
 msgstr "ℹ️ مسیر درخواست های وب سوکت"
 
 msgid "config.proxies.description"
-msgstr "تنظیمات اختصاصی را مشخص کنید."
+msgstr "تنظیمات اختصاصی را مشخص کنید"
 
 msgid "config.proxies.label"
 msgstr "تنظیمات پروکسی"
@@ -1741,7 +1741,7 @@ msgstr ""
 msgid "config.shadowsocks.description"
 msgstr ""
 "Shadowsocks یک پروکسی تونل سریع است که به شما کمک می کند فایروال ها را دور "
-"بزنید."
+"بزنید"
 
 msgid "config.shadowsocks.label"
 msgstr "شادوساکس"
@@ -1779,7 +1779,7 @@ msgstr "ShadowTLS"
 msgid "config.shadowtls_enable.description"
 msgstr ""
 "ShadowTLS یک پروتکل جدید است اما می تواند با استفاده از FakeTLS ترافیک را از"
-" فیلترچی پنهان کند."
+" فیلترچی پنهان کند"
 
 msgid "config.shadowtls_enable.label"
 msgstr "☑️ ShadowTLS"
@@ -1850,7 +1850,7 @@ msgid "config.ssh.label"
 msgstr "پروکسی SSH"
 
 msgid "config.ssh_server_enable.description"
-msgstr "پروکسی SSH با سرور اصلی ssh کاملا متفاوت است."
+msgstr "پروکسی SSH با سرور اصلی ssh کاملا متفاوت است"
 
 msgid "config.ssh_server_enable.label"
 msgstr "✔️ پروکسی SSH را فعال کنید"
@@ -1894,7 +1894,7 @@ msgstr "دامنه جعلی برای SSR"
 msgid "config.telegram.description"
 msgstr ""
 "پروکسی تلگرام برای استفاده درون اپ تلگرام طراحی شده تا فیلترینگ تلگرام را "
-"دور بزند."
+"دور بزند"
 
 msgid "config.telegram.label"
 msgstr "پروکسی تلگرام"
@@ -1917,7 +1917,7 @@ msgid "config.telegram_bot_token.label"
 msgstr "🔐 توکن ربات تلگرام"
 
 msgid "config.telegram_enable.description"
-msgstr "برای کپسوله کردن پروکسی تلگرام در قالب ترافیک TLS استفاده می‌شود."
+msgstr "برای کپسوله کردن پروکسی تلگرام در قالب ترافیک TLS استفاده می‌شود"
 
 msgid "config.telegram_enable.label"
 msgstr "✔️ فعال کردن پروکسی تلگرام (MTProto)"
@@ -2062,7 +2062,7 @@ msgstr " ✅ تنظیمات با موفقیت تغییر کرد"
 msgid "config.vmess_enable.description"
 msgstr ""
 "گزارش‌های متعددی موجود است مبنی بر اینکه که VMess باعث می‌شود که سیستم توسط "
-"فیلترینگ شناسایی شود. بنابراین استفاده از آن توصیه نمی‌شود."
+"فیلترینگ شناسایی شود. بنابراین استفاده از آن توصیه نمی‌شو"
 
 msgid "config.vmess_enable.label"
 msgstr "♈️ فعال کردن VMess"
@@ -2124,7 +2124,7 @@ msgid "config.wireguard_enable.description"
 msgstr ""
 "WireGuard پروتکل مبتنی بر UDP است.\n"
 "\n"
-"⚠️ فقط در Hiddify Next کار می کند. "
+"⚠️ فقط در Hiddify Next کار می کند"
 
 msgid "config.wireguard_enable.label"
 msgstr "🐉 فعال سازی وایرگارد"
@@ -2169,7 +2169,7 @@ msgstr "-"
 
 msgid "config.ws_enable.description"
 msgstr ""
-"Websocket یک تونل روی http ایجاد می کند که برای استفاده در CDN مفید است"
+"Websocket یک تونل روی HTTP ایجاد می کند که برای استفاده در CDN مفید است"
 
 msgid "config.ws_enable.label"
 msgstr "🔰 Websocket را فعال کنید"

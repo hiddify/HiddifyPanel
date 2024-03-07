@@ -1,7 +1,7 @@
 # Changelog
 
 
-## (unreleased)
+## v10.10.10 (2024-03-07)
 
 #### New
 
@@ -282,6 +282,14 @@
 * Update hiddify next download link. 
 
 #### Fix
+
+* Fragment issue. 
+
+* Bug. 
+
+* Bug in checking is telegram proxy enable process. 
+
+* Changing telegram proxy program. 
 
 * Bug. 
 
@@ -942,6 +950,51 @@ with A2_
 * Bugs. 
 
 #### Other
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Merge branch 'main' of github.com:hiddify/Hiddify-Panel. 
+
+* Inlang: update translations. 
+
+* Temporary change restart for telegram proxies. 
+
+* Merge pull request #151 from Iam54r1n4/dev-patch27. 
+  _Fix telegram proxy bug_
+
+* Update config_enum.py. 
 
 * Update. 
 
