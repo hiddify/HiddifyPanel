@@ -39,7 +39,7 @@ class ProxyProto(StrEnum):
     ssr = auto()
     ssh = auto()
     tuic = auto()
-    # hysteria = auto()
+    hysteria = auto()
     hysteria2 = auto()
     wireguard = auto()
 
