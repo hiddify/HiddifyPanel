@@ -748,10 +748,58 @@ msgstr "Путь для Shadowsocks"
 msgid "config.path_ss.description"
 msgstr "Путь Shadowsocks в ссылках"
 
+msgid "config.dbvalues.label"
+msgstr ""
+
+msgid "config.dbvalues.description"
+msgstr ""
+
 msgid "config.create_easysetup_link.label"
 msgstr ""
 
 msgid "config.create_easysetup_link.description"
+msgstr ""
+
+msgid "config.wireguard_enable.label"
+msgstr ""
+
+msgid "config.wireguard_enable.description"
+msgstr ""
+
+msgid "config.wireguard_port.label"
+msgstr ""
+
+msgid "config.wireguard_port.description"
+msgstr ""
+
+msgid "config.wireguard_ipv6.label"
+msgstr ""
+
+msgid "config.wireguard_ipv6.description"
+msgstr ""
+
+msgid "config.wireguard_ipv4.label"
+msgstr ""
+
+msgid "config.wireguard_ipv4.description"
+msgstr ""
+
+msgid "config.wireguard_private_key.label"
+msgstr ""
+
+msgid "config.wireguard_private_key.description"
+msgstr ""
+
+msgid "config.wireguard_public_key.label"
+msgstr ""
+
+msgid "config.wireguard_public_key.description"
+msgstr ""
+
+msgid "config.wireguard_noise_trick.label"
+msgstr ""
+
+msgid "config.wireguard_noise_trick.description"
 msgstr ""
 
 msgid "config.ssh_server_redis_url.label"
@@ -781,6 +829,12 @@ msgstr ""
 "<br>\n"
 "📦 Singbox: разработан SagerNet. Это также хорошее ядро"
 
+msgid "config.warp_sites.label"
+msgstr ""
+
+msgid "config.warp_sites.description"
+msgstr ""
+
 msgid "config.dns_server.label"
 msgstr "🖥 DNS-сервер"
 
@@ -789,6 +843,114 @@ msgstr ""
 "✳️ По умолчанию 1.1.1.1 <br>\n"
 "🚧 Блокировать вредоносное ПО 1.1.1.2 <br>\n"
 "🔞 Блокировать порно 1.1.1.3"
+
+msgid "config.reality_port.label"
+msgstr ""
+
+msgid "config.reality_port.description"
+msgstr ""
+
+msgid "config.tls_fragment_enable.label"
+msgstr ""
+
+msgid "config.tls_fragment_enable.description"
+msgstr ""
+
+msgid "config.tls_fragment_size.label"
+msgstr ""
+
+msgid "config.tls_fragment_size.description"
+msgstr ""
+
+msgid "config.tls_fragment_sleep.label"
+msgstr ""
+
+msgid "config.tls_fragment_sleep.description"
+msgstr ""
+
+msgid "config.tls_mixed_case.label"
+msgstr ""
+
+msgid "config.tls_mixed_case.description"
+msgstr ""
+
+msgid "config.tls_padding_enable.label"
+msgstr ""
+
+msgid "config.tls_padding_enable.description"
+msgstr ""
+
+msgid "config.tls_padding_length.label"
+msgstr ""
+
+msgid "config.tls_padding_length.description"
+msgstr ""
+
+msgid "config.mux_enable.label"
+msgstr ""
+
+msgid "config.mux_enable.description"
+msgstr ""
+
+msgid "config.mux_protocol.label"
+msgstr ""
+
+msgid "config.mux_protocol.description"
+msgstr ""
+
+msgid "config.mux_max_connections.label"
+msgstr ""
+
+msgid "config.mux_max_connections.description"
+msgstr ""
+
+msgid "config.mux_min_streams.label"
+msgstr ""
+
+msgid "config.mux_min_streams.description"
+msgstr ""
+
+msgid "config.mux_max_streams.label"
+msgstr ""
+
+msgid "config.mux_max_streams.description"
+msgstr ""
+
+msgid "config.mux_padding_enable.label"
+msgstr ""
+
+msgid "config.mux_padding_enable.description"
+msgstr ""
+
+msgid "config.mux_brutal_enable.label"
+msgstr ""
+
+msgid "config.mux_brutal_enable.description"
+msgstr ""
+
+msgid "config.mux_brutal_up_mbps.label"
+msgstr ""
+
+msgid "config.mux_brutal_up_mbps.description"
+msgstr ""
+
+msgid "config.mux_brutal_down_mbps.label"
+msgstr ""
+
+msgid "config.mux_brutal_down_mbps.description"
+msgstr ""
+
+msgid "config.proxy_path_admin.label"
+msgstr ""
+
+msgid "config.proxy_path_admin.description"
+msgstr ""
+
+msgid "config.proxy_path_client.label"
+msgstr ""
+
+msgid "config.proxy_path_client.description"
+msgstr ""
 
 msgid "config.hysteria_enable.label"
 msgstr "Включить Hysteria"
@@ -801,6 +963,78 @@ msgstr "Hysteria Порт"
 
 msgid "config.hysteria_port.description"
 msgstr "Hysteria UDP-порт например 5678"
+
+msgid "config.hysteria_obfs_enable.label"
+msgstr ""
+
+msgid "config.hysteria_obfs_enable.description"
+msgstr ""
+
+msgid "config.hysteria_up_mbps.label"
+msgstr ""
+
+msgid "config.hysteria_up_mbps.description"
+msgstr ""
+
+msgid "config.hysteria_down_mbps.label"
+msgstr ""
+
+msgid "config.hysteria_down_mbps.description"
+msgstr ""
+
+msgid "config.shadowsocks2022_enable.label"
+msgstr ""
+
+msgid "config.shadowsocks2022_enable.description"
+msgstr ""
+
+msgid "config.shadowsocks2022_method.label"
+msgstr ""
+
+msgid "config.shadowsocks2022_method.description"
+msgstr ""
+
+msgid "config.shadowsocks2022_port.label"
+msgstr ""
+
+msgid "config.shadowsocks2022_port.description"
+msgstr ""
+
+msgid "config.ws_enable.label"
+msgstr ""
+
+msgid "config.ws_enable.description"
+msgstr ""
+
+msgid "config.grpc_enable.label"
+msgstr ""
+
+msgid "config.grpc_enable.description"
+msgstr ""
+
+msgid "config.httpupgrade_enable.label"
+msgstr ""
+
+msgid "config.httpupgrade_enable.description"
+msgstr ""
+
+msgid "config.path_httpupgrade.label"
+msgstr ""
+
+msgid "config.path_httpupgrade.description"
+msgstr ""
+
+msgid "config.mux.label"
+msgstr ""
+
+msgid "config.mux.description"
+msgstr ""
+
+msgid "config.tls_trick.label"
+msgstr ""
+
+msgid "config.tls_trick.description"
+msgstr ""
 
 msgid "config.ssh.label"
 msgstr "SSH Proxy"
@@ -827,6 +1061,18 @@ msgid "config.hidden.label"
 msgstr ""
 
 msgid "config.hidden.description"
+msgstr ""
+
+msgid "config.wireguard.label"
+msgstr ""
+
+msgid "config.wireguard.description"
+msgstr ""
+
+msgid "config.shadowsocks.label"
+msgstr ""
+
+msgid "config.shadowsocks.description"
 msgstr ""
 
 msgid "Domain can not be resolved! there is a problem in your domain"

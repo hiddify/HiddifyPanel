@@ -398,9 +398,41 @@
       "label": "Shadowsocks Path",
       "description": "Shadowsocks Path in the Links"
     },
+    "dbvalues": {
+      "label": "config.dbvalues.label",
+      "description": "config.dbvalues.description"
+    },
     "create_easysetup_link": {
       "label": "-",
       "description": "-"
+    },
+    "wireguard_enable": {
+      "label": "config.wireguard_enable.label",
+      "description": "config.wireguard_enable.description"
+    },
+    "wireguard_port": {
+      "label": "config.wireguard_port.label",
+      "description": "config.wireguard_port.description"
+    },
+    "wireguard_ipv6": {
+      "label": "config.wireguard_ipv6.label",
+      "description": "config.wireguard_ipv6.description"
+    },
+    "wireguard_ipv4": {
+      "label": "config.wireguard_ipv4.label",
+      "description": "config.wireguard_ipv4.description"
+    },
+    "wireguard_private_key": {
+      "label": "config.wireguard_private_key.label",
+      "description": "config.wireguard_private_key.description"
+    },
+    "wireguard_public_key": {
+      "label": "config.wireguard_public_key.label",
+      "description": "config.wireguard_public_key.description"
+    },
+    "wireguard_noise_trick": {
+      "label": "config.wireguard_noise_trick.label",
+      "description": "config.wireguard_noise_trick.description"
     },
     "ssh_server_redis_url": {
       "label": "SSH user database address",
@@ -418,9 +450,85 @@
       "label": "🎛️ Core",
       "description": "☢️ XRay : Is a Complete Core\n<br>\n📦 Singbox : Developed by SagerNet. It is also a good core"
     },
+    "warp_sites": {
+      "label": "config.warp_sites.label",
+      "description": "config.warp_sites.description"
+    },
     "dns_server": {
       "label": "🖥 DNS Server",
       "description": "✳️ Default 1.1.1.1 <br>\n🚧 Block Malware 1.1.1.2 <br>\n🔞 Block Porn 1.1.1.3\n"
+    },
+    "reality_port": {
+      "label": "config.reality_port.label",
+      "description": "config.reality_port.description"
+    },
+    "tls_fragment_enable": {
+      "label": "config.tls_fragment_enable.label",
+      "description": "config.tls_fragment_enable.description"
+    },
+    "tls_fragment_size": {
+      "label": "config.tls_fragment_size.label",
+      "description": "config.tls_fragment_size.description"
+    },
+    "tls_fragment_sleep": {
+      "label": "config.tls_fragment_sleep.label",
+      "description": "config.tls_fragment_sleep.description"
+    },
+    "tls_mixed_case": {
+      "label": "config.tls_mixed_case.label",
+      "description": "config.tls_mixed_case.description"
+    },
+    "tls_padding_enable": {
+      "label": "config.tls_padding_enable.label",
+      "description": "config.tls_padding_enable.description"
+    },
+    "tls_padding_length": {
+      "label": "config.tls_padding_length.label",
+      "description": "config.tls_padding_length.description"
+    },
+    "mux_enable": {
+      "label": "config.mux_enable.label",
+      "description": "config.mux_enable.description"
+    },
+    "mux_protocol": {
+      "label": "config.mux_protocol.label",
+      "description": "config.mux_protocol.description"
+    },
+    "mux_max_connections": {
+      "label": "config.mux_max_connections.label",
+      "description": "config.mux_max_connections.description"
+    },
+    "mux_min_streams": {
+      "label": "config.mux_min_streams.label",
+      "description": "config.mux_min_streams.description"
+    },
+    "mux_max_streams": {
+      "label": "config.mux_max_streams.label",
+      "description": "config.mux_max_streams.description"
+    },
+    "mux_padding_enable": {
+      "label": "config.mux_padding_enable.label",
+      "description": "config.mux_padding_enable.description"
+    },
+    "mux_brutal_enable": {
+      "label": "config.mux_brutal_enable.label",
+      "description": "config.mux_brutal_enable.description"
+    },
+    "mux_brutal_up_mbps": {
+      "label": "config.mux_brutal_up_mbps.label",
+      "description": "config.mux_brutal_up_mbps.description"
+    },
+    "mux_brutal_down_mbps": {
+      "label": "config.mux_brutal_down_mbps.label",
+      "description": "config.mux_brutal_down_mbps.description"
+    },
+    "proxy_path_admin": {
+      "label": "config.proxy_path_admin.label",
+      "description": "config.proxy_path_admin.description"
+    },
+    "proxy_path_client": {
+      "label": "config.proxy_path_client.label",
+      "description": "config.proxy_path_client.description"
     },
     "hysteria_enable": {
       "label": "Enable Hysteria2",
@@ -429,6 +537,54 @@
     "hysteria_port": {
       "label": "🔍 Hysteria2 Port",
       "description": "Hysteria UDP Port for example 5678"
+    },
+    "hysteria_obfs_enable": {
+      "label": "config.hysteria_obfs_enable.label",
+      "description": "config.hysteria_obfs_enable.description"
+    },
+    "hysteria_up_mbps": {
+      "label": "config.hysteria_up_mbps.label",
+      "description": "config.hysteria_up_mbps.description"
+    },
+    "hysteria_down_mbps": {
+      "label": "config.hysteria_down_mbps.label",
+      "description": "config.hysteria_down_mbps.description"
+    },
+    "shadowsocks2022_enable": {
+      "label": "config.shadowsocks2022_enable.label",
+      "description": "config.shadowsocks2022_enable.description"
+    },
+    "shadowsocks2022_method": {
+      "label": "config.shadowsocks2022_method.label",
+      "description": "config.shadowsocks2022_method.description"
+    },
+    "shadowsocks2022_port": {
+      "label": "config.shadowsocks2022_port.label",
+      "description": "config.shadowsocks2022_port.description"
+    },
+    "ws_enable": {
+      "label": "config.ws_enable.label",
+      "description": "config.ws_enable.description"
+    },
+    "grpc_enable": {
+      "label": "config.grpc_enable.label",
+      "description": "config.grpc_enable.description"
+    },
+    "httpupgrade_enable": {
+      "label": "config.httpupgrade_enable.label",
+      "description": "config.httpupgrade_enable.description"
+    },
+    "path_httpupgrade": {
+      "label": "config.path_httpupgrade.label",
+      "description": "config.path_httpupgrade.description"
+    },
+    "mux": {
+      "label": "config.mux.label",
+      "description": "config.mux.description"
+    },
+    "tls_trick": {
+      "label": "config.tls_trick.label",
+      "description": "config.tls_trick.description"
     },
     "ssh": {
       "label": "SSH Proxy",
@@ -441,6 +597,14 @@
     "hidden": {
       "label": "-",
       "description": "-"
+    },
+    "wireguard": {
+      "label": "config.wireguard.label",
+      "description": "config.wireguard.description"
+    },
+    "shadowsocks": {
+      "label": "config.shadowsocks.label",
+      "description": "config.shadowsocks.description"
     }
   },
   "Domain can not be resolved! there is a problem in your domain": "Domain can not be resolved! There is a problem in your domain. Please check your Domain configurations.",

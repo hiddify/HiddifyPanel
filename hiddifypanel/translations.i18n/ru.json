@@ -398,7 +398,39 @@
       "label": "Путь для Shadowsocks",
       "description": "Путь Shadowsocks в ссылках"
     },
+    "dbvalues": {
+      "label": "",
+      "description": ""
+    },
     "create_easysetup_link": {
+      "label": "",
+      "description": ""
+    },
+    "wireguard_enable": {
+      "label": "",
+      "description": ""
+    },
+    "wireguard_port": {
+      "label": "",
+      "description": ""
+    },
+    "wireguard_ipv6": {
+      "label": "",
+      "description": ""
+    },
+    "wireguard_ipv4": {
+      "label": "",
+      "description": ""
+    },
+    "wireguard_private_key": {
+      "label": "",
+      "description": ""
+    },
+    "wireguard_public_key": {
+      "label": "",
+      "description": ""
+    },
+    "wireguard_noise_trick": {
       "label": "",
       "description": ""
     },
@@ -418,9 +450,85 @@
       "label": "🎛️ Ядро",
       "description": "☢️ XRay: хорошее ядро\n<br>\n📦 Singbox: разработан SagerNet. Это также хорошее ядро"
     },
+    "warp_sites": {
+      "label": "",
+      "description": ""
+    },
     "dns_server": {
       "label": "🖥 DNS-сервер",
       "description": "✳️ По умолчанию 1.1.1.1 <br>\n🚧 Блокировать вредоносное ПО 1.1.1.2 <br>\n🔞 Блокировать порно 1.1.1.3"
+    },
+    "reality_port": {
+      "label": "",
+      "description": ""
+    },
+    "tls_fragment_enable": {
+      "label": "",
+      "description": ""
+    },
+    "tls_fragment_size": {
+      "label": "",
+      "description": ""
+    },
+    "tls_fragment_sleep": {
+      "label": "",
+      "description": ""
+    },
+    "tls_mixed_case": {
+      "label": "",
+      "description": ""
+    },
+    "tls_padding_enable": {
+      "label": "",
+      "description": ""
+    },
+    "tls_padding_length": {
+      "label": "",
+      "description": ""
+    },
+    "mux_enable": {
+      "label": "",
+      "description": ""
+    },
+    "mux_protocol": {
+      "label": "",
+      "description": ""
+    },
+    "mux_max_connections": {
+      "label": "",
+      "description": ""
+    },
+    "mux_min_streams": {
+      "label": "",
+      "description": ""
+    },
+    "mux_max_streams": {
+      "label": "",
+      "description": ""
+    },
+    "mux_padding_enable": {
+      "label": "",
+      "description": ""
+    },
+    "mux_brutal_enable": {
+      "label": "",
+      "description": ""
+    },
+    "mux_brutal_up_mbps": {
+      "label": "",
+      "description": ""
+    },
+    "mux_brutal_down_mbps": {
+      "label": "",
+      "description": ""
+    },
+    "proxy_path_admin": {
+      "label": "",
+      "description": ""
+    },
+    "proxy_path_client": {
+      "label": "",
+      "description": ""
     },
     "hysteria_enable": {
       "label": "Включить Hysteria",
@@ -429,6 +537,54 @@
     "hysteria_port": {
       "label": "Hysteria Порт",
       "description": "Hysteria UDP-порт например 5678"
+    },
+    "hysteria_obfs_enable": {
+      "label": "",
+      "description": ""
+    },
+    "hysteria_up_mbps": {
+      "label": "",
+      "description": ""
+    },
+    "hysteria_down_mbps": {
+      "label": "",
+      "description": ""
+    },
+    "shadowsocks2022_enable": {
+      "label": "",
+      "description": ""
+    },
+    "shadowsocks2022_method": {
+      "label": "",
+      "description": ""
+    },
+    "shadowsocks2022_port": {
+      "label": "",
+      "description": ""
+    },
+    "ws_enable": {
+      "label": "",
+      "description": ""
+    },
+    "grpc_enable": {
+      "label": "",
+      "description": ""
+    },
+    "httpupgrade_enable": {
+      "label": "",
+      "description": ""
+    },
+    "path_httpupgrade": {
+      "label": "",
+      "description": ""
+    },
+    "mux": {
+      "label": "",
+      "description": ""
+    },
+    "tls_trick": {
+      "label": "",
+      "description": ""
     },
     "ssh": {
       "label": "SSH Proxy",
@@ -439,6 +595,14 @@
       "description": "Hysteria — это многофункциональный инструмент прокси и ретрансляции, оптимизированный для нестабильных соединений с потерями (например, спутниковые сети, перегруженный общедоступный Wi-Fi, подключение к зарубежным серверам из Китая)"
     },
     "hidden": {
+      "label": "",
+      "description": ""
+    },
+    "wireguard": {
+      "label": "",
+      "description": ""
+    },
+    "shadowsocks": {
       "label": "",
       "description": ""
     }

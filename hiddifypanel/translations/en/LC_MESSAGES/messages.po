@@ -730,11 +730,59 @@ msgstr "Shadowsocks Path"
 msgid "config.path_ss.description"
 msgstr "Shadowsocks Path in the Links"
 
+msgid "config.dbvalues.label"
+msgstr "config.dbvalues.label"
+
+msgid "config.dbvalues.description"
+msgstr "config.dbvalues.description"
+
 msgid "config.create_easysetup_link.label"
 msgstr "-"
 
 msgid "config.create_easysetup_link.description"
 msgstr "-"
+
+msgid "config.wireguard_enable.label"
+msgstr "config.wireguard_enable.label"
+
+msgid "config.wireguard_enable.description"
+msgstr "config.wireguard_enable.description"
+
+msgid "config.wireguard_port.label"
+msgstr "config.wireguard_port.label"
+
+msgid "config.wireguard_port.description"
+msgstr "config.wireguard_port.description"
+
+msgid "config.wireguard_ipv6.label"
+msgstr "config.wireguard_ipv6.label"
+
+msgid "config.wireguard_ipv6.description"
+msgstr "config.wireguard_ipv6.description"
+
+msgid "config.wireguard_ipv4.label"
+msgstr "config.wireguard_ipv4.label"
+
+msgid "config.wireguard_ipv4.description"
+msgstr "config.wireguard_ipv4.description"
+
+msgid "config.wireguard_private_key.label"
+msgstr "config.wireguard_private_key.label"
+
+msgid "config.wireguard_private_key.description"
+msgstr "config.wireguard_private_key.description"
+
+msgid "config.wireguard_public_key.label"
+msgstr "config.wireguard_public_key.label"
+
+msgid "config.wireguard_public_key.description"
+msgstr "config.wireguard_public_key.description"
+
+msgid "config.wireguard_noise_trick.label"
+msgstr "config.wireguard_noise_trick.label"
+
+msgid "config.wireguard_noise_trick.description"
+msgstr "config.wireguard_noise_trick.description"
 
 msgid "config.ssh_server_redis_url.label"
 msgstr "SSH user database address"
@@ -765,6 +813,12 @@ msgstr ""
 "<br>\n"
 "📦 Singbox : Developed by SagerNet. It is also a good core"
 
+msgid "config.warp_sites.label"
+msgstr "config.warp_sites.label"
+
+msgid "config.warp_sites.description"
+msgstr "config.warp_sites.description"
+
 msgid "config.dns_server.label"
 msgstr "🖥 DNS Server"
 
@@ -773,6 +827,114 @@ msgstr ""
 "✳️ Default 1.1.1.1 <br>\n"
 "🚧 Block Malware 1.1.1.2 <br>\n"
 "🔞 Block Porn 1.1.1.3\n"
+
+msgid "config.reality_port.label"
+msgstr "config.reality_port.label"
+
+msgid "config.reality_port.description"
+msgstr "config.reality_port.description"
+
+msgid "config.tls_fragment_enable.label"
+msgstr "config.tls_fragment_enable.label"
+
+msgid "config.tls_fragment_enable.description"
+msgstr "config.tls_fragment_enable.description"
+
+msgid "config.tls_fragment_size.label"
+msgstr "config.tls_fragment_size.label"
+
+msgid "config.tls_fragment_size.description"
+msgstr "config.tls_fragment_size.description"
+
+msgid "config.tls_fragment_sleep.label"
+msgstr "config.tls_fragment_sleep.label"
+
+msgid "config.tls_fragment_sleep.description"
+msgstr "config.tls_fragment_sleep.description"
+
+msgid "config.tls_mixed_case.label"
+msgstr "config.tls_mixed_case.label"
+
+msgid "config.tls_mixed_case.description"
+msgstr "config.tls_mixed_case.description"
+
+msgid "config.tls_padding_enable.label"
+msgstr "config.tls_padding_enable.label"
+
+msgid "config.tls_padding_enable.description"
+msgstr "config.tls_padding_enable.description"
+
+msgid "config.tls_padding_length.label"
+msgstr "config.tls_padding_length.label"
+
+msgid "config.tls_padding_length.description"
+msgstr "config.tls_padding_length.description"
+
+msgid "config.mux_enable.label"
+msgstr "config.mux_enable.label"
+
+msgid "config.mux_enable.description"
+msgstr "config.mux_enable.description"
+
+msgid "config.mux_protocol.label"
+msgstr "config.mux_protocol.label"
+
+msgid "config.mux_protocol.description"
+msgstr "config.mux_protocol.description"
+
+msgid "config.mux_max_connections.label"
+msgstr "config.mux_max_connections.label"
+
+msgid "config.mux_max_connections.description"
+msgstr "config.mux_max_connections.description"
+
+msgid "config.mux_min_streams.label"
+msgstr "config.mux_min_streams.label"
+
+msgid "config.mux_min_streams.description"
+msgstr "config.mux_min_streams.description"
+
+msgid "config.mux_max_streams.label"
+msgstr "config.mux_max_streams.label"
+
+msgid "config.mux_max_streams.description"
+msgstr "config.mux_max_streams.description"
+
+msgid "config.mux_padding_enable.label"
+msgstr "config.mux_padding_enable.label"
+
+msgid "config.mux_padding_enable.description"
+msgstr "config.mux_padding_enable.description"
+
+msgid "config.mux_brutal_enable.label"
+msgstr "config.mux_brutal_enable.label"
+
+msgid "config.mux_brutal_enable.description"
+msgstr "config.mux_brutal_enable.description"
+
+msgid "config.mux_brutal_up_mbps.label"
+msgstr "config.mux_brutal_up_mbps.label"
+
+msgid "config.mux_brutal_up_mbps.description"
+msgstr "config.mux_brutal_up_mbps.description"
+
+msgid "config.mux_brutal_down_mbps.label"
+msgstr "config.mux_brutal_down_mbps.label"
+
+msgid "config.mux_brutal_down_mbps.description"
+msgstr "config.mux_brutal_down_mbps.description"
+
+msgid "config.proxy_path_admin.label"
+msgstr "config.proxy_path_admin.label"
+
+msgid "config.proxy_path_admin.description"
+msgstr "config.proxy_path_admin.description"
+
+msgid "config.proxy_path_client.label"
+msgstr "config.proxy_path_client.label"
+
+msgid "config.proxy_path_client.description"
+msgstr "config.proxy_path_client.description"
 
 msgid "config.hysteria_enable.label"
 msgstr "Enable Hysteria2"
@@ -785,6 +947,78 @@ msgstr "🔍 Hysteria2 Port"
 
 msgid "config.hysteria_port.description"
 msgstr "Hysteria UDP Port for example 5678"
+
+msgid "config.hysteria_obfs_enable.label"
+msgstr "config.hysteria_obfs_enable.label"
+
+msgid "config.hysteria_obfs_enable.description"
+msgstr "config.hysteria_obfs_enable.description"
+
+msgid "config.hysteria_up_mbps.label"
+msgstr "config.hysteria_up_mbps.label"
+
+msgid "config.hysteria_up_mbps.description"
+msgstr "config.hysteria_up_mbps.description"
+
+msgid "config.hysteria_down_mbps.label"
+msgstr "config.hysteria_down_mbps.label"
+
+msgid "config.hysteria_down_mbps.description"
+msgstr "config.hysteria_down_mbps.description"
+
+msgid "config.shadowsocks2022_enable.label"
+msgstr "config.shadowsocks2022_enable.label"
+
+msgid "config.shadowsocks2022_enable.description"
+msgstr "config.shadowsocks2022_enable.description"
+
+msgid "config.shadowsocks2022_method.label"
+msgstr "config.shadowsocks2022_method.label"
+
+msgid "config.shadowsocks2022_method.description"
+msgstr "config.shadowsocks2022_method.description"
+
+msgid "config.shadowsocks2022_port.label"
+msgstr "config.shadowsocks2022_port.label"
+
+msgid "config.shadowsocks2022_port.description"
+msgstr "config.shadowsocks2022_port.description"
+
+msgid "config.ws_enable.label"
+msgstr "config.ws_enable.label"
+
+msgid "config.ws_enable.description"
+msgstr "config.ws_enable.description"
+
+msgid "config.grpc_enable.label"
+msgstr "config.grpc_enable.label"
+
+msgid "config.grpc_enable.description"
+msgstr "config.grpc_enable.description"
+
+msgid "config.httpupgrade_enable.label"
+msgstr "config.httpupgrade_enable.label"
+
+msgid "config.httpupgrade_enable.description"
+msgstr "config.httpupgrade_enable.description"
+
+msgid "config.path_httpupgrade.label"
+msgstr "config.path_httpupgrade.label"
+
+msgid "config.path_httpupgrade.description"
+msgstr "config.path_httpupgrade.description"
+
+msgid "config.mux.label"
+msgstr "config.mux.label"
+
+msgid "config.mux.description"
+msgstr "config.mux.description"
+
+msgid "config.tls_trick.label"
+msgstr "config.tls_trick.label"
+
+msgid "config.tls_trick.description"
+msgstr "config.tls_trick.description"
 
 msgid "config.ssh.label"
 msgstr "SSH Proxy"
@@ -810,6 +1044,18 @@ msgstr "-"
 
 msgid "config.hidden.description"
 msgstr "-"
+
+msgid "config.wireguard.label"
+msgstr "config.wireguard.label"
+
+msgid "config.wireguard.description"
+msgstr "config.wireguard.description"
+
+msgid "config.shadowsocks.label"
+msgstr "config.shadowsocks.label"
+
+msgid "config.shadowsocks.description"
+msgstr "config.shadowsocks.description"
 
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr ""

@@ -398,9 +398,41 @@
       "label": "Shadowsocks 路径",
       "description": "链接中的 Shadowsocks 路径"
     },
+    "dbvalues": {
+      "label": "",
+      "description": ""
+    },
     "create_easysetup_link": {
       "label": "config.create_easysetup_link.label",
       "description": "config.create_easysetup_link.description"
+    },
+    "wireguard_enable": {
+      "label": "",
+      "description": ""
+    },
+    "wireguard_port": {
+      "label": "",
+      "description": ""
+    },
+    "wireguard_ipv6": {
+      "label": "",
+      "description": ""
+    },
+    "wireguard_ipv4": {
+      "label": "",
+      "description": ""
+    },
+    "wireguard_private_key": {
+      "label": "",
+      "description": ""
+    },
+    "wireguard_public_key": {
+      "label": "",
+      "description": ""
+    },
+    "wireguard_noise_trick": {
+      "label": "",
+      "description": ""
     },
     "ssh_server_redis_url": {
       "label": "SSH用户数据库地址",
@@ -418,9 +450,85 @@
       "label": "🎛️核心",
       "description": "☢️ XRay：是一个完整的核心\n<br>\n📦 Singbox：由 SagerNet 开发。也是一个不错的核心"
     },
+    "warp_sites": {
+      "label": "",
+      "description": ""
+    },
     "dns_server": {
       "label": "🖥 DNS 服务器",
       "description": "✳️默认1.1.1.1 <br>\n🚧 阻止恶意软件 1.1.1.2 <br>\n🔞 阻止色情 1.1.1.3"
+    },
+    "reality_port": {
+      "label": "",
+      "description": ""
+    },
+    "tls_fragment_enable": {
+      "label": "",
+      "description": ""
+    },
+    "tls_fragment_size": {
+      "label": "",
+      "description": ""
+    },
+    "tls_fragment_sleep": {
+      "label": "",
+      "description": ""
+    },
+    "tls_mixed_case": {
+      "label": "",
+      "description": ""
+    },
+    "tls_padding_enable": {
+      "label": "",
+      "description": ""
+    },
+    "tls_padding_length": {
+      "label": "",
+      "description": ""
+    },
+    "mux_enable": {
+      "label": "",
+      "description": ""
+    },
+    "mux_protocol": {
+      "label": "",
+      "description": ""
+    },
+    "mux_max_connections": {
+      "label": "",
+      "description": ""
+    },
+    "mux_min_streams": {
+      "label": "",
+      "description": ""
+    },
+    "mux_max_streams": {
+      "label": "",
+      "description": ""
+    },
+    "mux_padding_enable": {
+      "label": "",
+      "description": ""
+    },
+    "mux_brutal_enable": {
+      "label": "",
+      "description": ""
+    },
+    "mux_brutal_up_mbps": {
+      "label": "",
+      "description": ""
+    },
+    "mux_brutal_down_mbps": {
+      "label": "",
+      "description": ""
+    },
+    "proxy_path_admin": {
+      "label": "",
+      "description": ""
+    },
+    "proxy_path_client": {
+      "label": "",
+      "description": ""
     },
     "hysteria_enable": {
       "label": "启用歇斯底里2",
@@ -429,6 +537,54 @@
     "hysteria_port": {
       "label": "🔍 Hysteria2 端口",
       "description": "Hysteria UDP 端口，例如 5678"
+    },
+    "hysteria_obfs_enable": {
+      "label": "",
+      "description": ""
+    },
+    "hysteria_up_mbps": {
+      "label": "",
+      "description": ""
+    },
+    "hysteria_down_mbps": {
+      "label": "",
+      "description": ""
+    },
+    "shadowsocks2022_enable": {
+      "label": "",
+      "description": ""
+    },
+    "shadowsocks2022_method": {
+      "label": "",
+      "description": ""
+    },
+    "shadowsocks2022_port": {
+      "label": "",
+      "description": ""
+    },
+    "ws_enable": {
+      "label": "",
+      "description": ""
+    },
+    "grpc_enable": {
+      "label": "",
+      "description": ""
+    },
+    "httpupgrade_enable": {
+      "label": "",
+      "description": ""
+    },
+    "path_httpupgrade": {
+      "label": "",
+      "description": ""
+    },
+    "mux": {
+      "label": "",
+      "description": ""
+    },
+    "tls_trick": {
+      "label": "",
+      "description": ""
     },
     "ssh": {
       "label": "SSH 代理",
@@ -441,6 +597,14 @@
     "hidden": {
       "label": "配置.隐藏.标签",
       "description": "配置.隐藏.描述"
+    },
+    "wireguard": {
+      "label": "",
+      "description": ""
+    },
+    "shadowsocks": {
+      "label": "",
+      "description": ""
     }
   },
   "Domain can not be resolved! there is a problem in your domain": "域名无法解析！您的域有问题。请检查您的域配置。",
