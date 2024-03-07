@@ -539,12 +539,20 @@ div#qrcode img {
   width: 100%;
 }
 
+td.col-is_active {
+  text-align: center !important;
+  padding: 0px;
+}
 
-td.col-uuid {
+td.col-uuid a {
 
   text-overflow: ellipsis;
   white-space: nowrap;
   width: 80px;
   overflow: hidden;
   display: inline-block;
+}
+
+.select2-container {
+  display: none;
 }

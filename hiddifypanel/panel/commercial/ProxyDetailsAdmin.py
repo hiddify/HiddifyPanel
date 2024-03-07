@@ -18,7 +18,7 @@ class ProxyDetailsAdmin(AdminLTEModelView):
 
     column_hide_backrefs = True
     can_create = False
-    form_excluded_columns = ['child', 'proto', 'transport', 'l3', 'cdn']
+    form_excluded_columns = ['child', 'proto', 'transport', 'cdn']
     column_exclude_list = ['child']
     column_searchable_list = ['name', 'proto', 'transport', 'l3', 'cdn']
     column_editable_list = ['name']
