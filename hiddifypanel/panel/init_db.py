@@ -86,8 +86,6 @@ def _v65():
     add_config_if_not_exist(ConfigEnum.mux_brutal_down_mbps, '100')
 
 
-
-
 def _v63():
     add_config_if_not_exist(ConfigEnum.hysteria_enable, True)
     add_config_if_not_exist(ConfigEnum.hysteria_port, hutils.random.get_random_unused_port())
@@ -180,7 +178,7 @@ def _v45():
 
     if not Proxy.query.filter(Proxy.name == "SSH").first():
         db.session.add(Proxy(l3='ssh', transport='ssh', cdn='direct', proto='ssh', enable=True, name="SSH"))
-    
+
     add_config_if_not_exist(ConfigEnum.ssh_server_port, hutils.random.get_random_unused_port())
     add_config_if_not_exist(ConfigEnum.ssh_server_enable, False)
 # def _v43():
@@ -616,8 +614,8 @@ def init_db():
     get_hconfigs.invalidate_all()
     # set_hconfig(ConfigEnum.db_version, 71)
     # temporary fix
-    # add_column(Child.mode)
-    # add_column(Child.name)
+    add_column(Child.mode)
+    add_column(Child.name)
     db_version = int(hconfig(ConfigEnum.db_version) or 0)
     if db_version == latest_db_version():
         return
