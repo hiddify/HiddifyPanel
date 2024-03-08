@@ -39,22 +39,18 @@ class Actions(FlaskView):
 
     @login_required(roles={Role.super_admin})
     def reset2(self):
-        _ = self.status()
+        res = render_template("result.html",
+                              out_type="info",
+                              out_msg="",
+                              log_file_url=get_log_api_url(),
+                              log_file='restart.log',
+                              show_success=True,
+                              domains=get_domains())
 
         # run restart.sh
         commander(Command.restart_services)
 
-        # flask don't response at all while using time.sleep
-        # import time
-        # time.sleep(1)
-
-        return render_template("result.html",
-                               out_type="info",
-                               out_msg="",
-                               log_file_url=get_log_api_url(),
-                               log_file='restart.log',
-                               show_success=True,
-                               domains=get_domains())
+        return res
 
     @login_required(roles={Role.super_admin})
     @route('reinstall', methods=['POST'])
