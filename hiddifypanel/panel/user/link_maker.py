@@ -341,11 +341,14 @@ def to_link(proxy):
 
         return "vmess://" + hutils.encode.do_base_64(f'{json.dumps(vmess_data,cls=CustomEncoder)}')
     if proxy['proto'] == 'ssh':
-        strenssh = hutils.encode.do_base_64(f'{proxy["uuid"]}:0:{proxy["private_key"]}::@{proxy["server"]}:{proxy["port"]}')
-        baseurl = f'ssh://{strenssh}#{name_link}'
-        hk = hutils.encode.do_base_64(",".join(proxy["host_key"]))
-        pk = hutils.encode.do_base_64(proxy["private_key"])
-        baseurl += f'\nssh://{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}/?pk={pk}&hk={hk}#{name_link}'
+        baseurl = 'ssh://'
+        if g.user_agent.get('is_streisand'):
+            streisand_ssh = hutils.encode.do_base_64(f'{proxy["uuid"]}:0:{proxy["private_key"]}::@{proxy["server"]}:{proxy["port"]}')
+            baseurl += f'{streisand_ssh}#{name_link}'
+        else:
+            hk = ",".join(proxy["host_key"])
+            pk = proxy["private_key"].replace('\n', '')
+            baseurl += f'{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}/?file=ssh&pk={pk}&pp={pk}&hk={hk}#{name_link}'
 
         return baseurl
     if proxy['proto'] == "ssr":
