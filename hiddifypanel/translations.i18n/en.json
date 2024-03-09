@@ -375,7 +375,7 @@
     "Invalid proxy path": "Invalid Proxy Path. It should be ASCI string (a-z A-Z 0-9)",
     "Invalid telegram bot token": "Invalid Telegram Bot Token",
     "Invalid! The pattern is number-number": "⚠️ Config Invalid! The Pattern Is Number-Number",
-    "Invalid! it should be a number only": "⚠️ Config Invalid! It Should Be a Number Only",
+    "Invalid! it should be a number only": "⚠️ It Should Be a Number Only",
     "admin": {
       "description": "Admin section is for configuring admin related settings",
       "label": "Admin Settings"
@@ -797,7 +797,7 @@
       "label": "Telegram Proxy "
     },
     "telegram_adtag": {
-      "description": "It is used to show a sponsored channel in the client's chat list. To advertise a channel get a tag from @MTProxybot .\nenter code 0123456789ABCDEF0123456789ABCDEF in that bot.",
+      "description": "It is used to show a Sponsored Channel in the client's chat list. To advertise a channel get a tag from @MTProxybot .\nenter code 0123456789ABCDEF0123456789ABCDEF in that bot.",
       "label": "📍 Telegram AD Tag"
     },
     "telegram_bot_token": {
