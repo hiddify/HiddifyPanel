@@ -10,7 +10,7 @@ from hiddifypanel.panel.run_commander import Command, commander
 from wtforms.validators import Regexp, ValidationError
 
 from hiddifypanel.models import *
-from hiddifypanel.panel import hiddify, cf_api, custom_widgets, hiddify_api
+from hiddifypanel.panel import hiddify, cf_api, custom_widgets
 from .adminlte import AdminLTEModelView
 from hiddifypanel import hutils
 
@@ -279,15 +279,15 @@ class DomainAdmin(AdminLTEModelView):
         hutils.flask.flash_config_success(restart_mode=ApplyMode.apply, domain_changed=True)
 
     def after_model_delete(self, model):
-        if hconfig(ConfigEnum.parent_panel):
-            hiddify_api.sync_child_to_parent()
+        # if hconfig(ConfigEnum.parent_panel):
+        #     hiddify_api.sync_child_to_parent()
         pass
 
     def after_model_change(self, form, model, is_created):
         if hconfig(ConfigEnum.first_setup):
             set_hconfig(ConfigEnum.first_setup, False)
-        if hconfig(ConfigEnum.parent_panel):
-            hiddify_api.sync_child_to_parent()
+        # if hconfig(ConfigEnum.parent_panel):
+        #     hiddify_api.sync_child_to_parent()
         if model.need_valid_ssl:
             # hiddify.exec_command(f"sudo /opt/hiddify-manager/acme.sh/get_cert.sh {model.domain}")
             # run get_cert.sh

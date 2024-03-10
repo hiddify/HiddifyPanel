@@ -46,14 +46,14 @@ class ProxyDetailsAdmin(AdminLTEModelView):
     # form_overrides = {'work_with': Select2Field}
 
     def after_model_change(self, form, model, is_created):
-        if hconfig(ConfigEnum.parent_panel):
-            hiddify_api.sync_child_to_parent()
+        # if hconfig(ConfigEnum.parent_panel):
+        #     hiddify_api.sync_child_to_parent()
         hiddify.get_available_proxies.invalidate_all()
         pass
 
     def after_model_delete(self, model):
-        if hconfig(ConfigEnum.parent_panel):
-            hiddify_api.sync_child_to_parent()
+        # if hconfig(ConfigEnum.parent_panel):
+        #     hiddify_api.sync_child_to_parent()
         hiddify.get_available_proxies.invalidate_all()
         pass
 
