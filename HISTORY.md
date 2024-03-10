@@ -1,6 +1,14 @@
 # Changelog
 
 
+## v10.10.19 (2024-03-10)
+
+#### Other
+
+* Update user front. 
+
+
+
 ## v10.10.18 (2024-03-10)
 
 #### Changes
