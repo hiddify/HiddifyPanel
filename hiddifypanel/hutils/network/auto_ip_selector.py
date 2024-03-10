@@ -116,7 +116,7 @@ def get_real_user_ip_debug(user_ip: str = '') -> str:
 
 @cache.cache()
 def __get_real_user_ip_debug_imp(user_ip) -> str:
-    if user_ip is str and ',' in user_ip:
+    if type(user_ip) is str and ',' in user_ip:
         user_ip = user_ip.split(',')[0]
     asnres = IPASN.get(user_ip) or {}
     asn = f"{asnres.get('autonomous_system_number','unknown')}" if asnres else "unknown"
