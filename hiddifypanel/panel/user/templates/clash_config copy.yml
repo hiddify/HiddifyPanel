@@ -1,6 +1,6 @@
-% set OnProxyIssue='DIRECT' if typ =="lite" else 'REJECT'
-% set OnIranSites='PROXY' if typ =="all" else 'DIRECT'
-% set OnNotFilteredSites='DIRECT' if typ =="lite" else 'PROXY'
+{% set OnProxyIssue='DIRECT' if typ =="lite" else 'REJECT' %}
+{% set OnIranSites='PROXY' if typ =="all" else 'DIRECT' %}
+{% set OnNotFilteredSites='DIRECT' if typ =="lite" else 'PROXY' %}
 
 mixed-port: 7890
 allow-lan: false
@@ -9,9 +9,9 @@ secret:
 external-controller: 127.0.0.1:9090
 # ipv6: false
 ipv6: true
-% if meta_or_normal=='meta'
+{% if meta_or_normal=='meta' %}
 global-client-fingerprint: {{hconfig(ConfigEnum.utls)}}
-% endif
+{% endif %}
 mode: rule
 dns:
   enable: true
@@ -20,9 +20,9 @@ dns:
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
   listen: 127.0.0.1:6868
-  % if meta_or_normal=='meta'
+{%  if meta_or_normal=='meta' %}
   prefer-h3: true #Enable DoH support for HTTP/3,
-  % endif
+{%  endif %}
   fake-ip-filter:
      - '{{domain}}'
      - '{{hconfigs[ConfigEnum.telegram_fakedomain]}}'
@@ -32,14 +32,14 @@ dns:
     - 1.0.0.1
   nameserver:
 #    - https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/dns/dns-query
-% if meta_or_normal=='meta'
+{% if meta_or_normal=='meta' %}
     - https://8.8.8.8/dns-query#h3=true
     - https://1.1.1.1/dns-query#PROXY
     - https://8.8.8.8/dns-query#PROXY
     - https://1.0.0.1/dns-query#PROXY
     #- https://8.8.8.8/dns-query#PROXY&h3=true
     
-% endif
+{% endif %}
     - 8.8.8.8
     - 1.1.1.1
 profile:
@@ -53,15 +53,15 @@ proxy-groups:
       - load-balance     
       - automatic
       - sequential 
-      % for d in  domains
-      % if hconfig(ConfigEnum.tuic_enable) and d.mode !="cdn" and meta_or_normal=='meta'
+{%  for d in  domains %}
+{%  if hconfig(ConfigEnum.tuic_enable) and d.mode !="cdn" and meta_or_normal=='meta' %}
       - "tuic-{{d.alias or d.domain}}"
-      %endif
+{% endif %}
       - "{{d.alias or d.domain}}"
       # - "auto-{{d.alias or d.domain}}"
       # - "sequential-{{d.alias or d.domain}}"
       # - "load-balance-{{d.alias or d.domain}}"
-      % endfor
+{%  endfor %}
     use:
       - all_proxies
     type: select
@@ -73,19 +73,19 @@ proxy-groups:
 
 
 
-% for d in  domains
+{% for d in  domains %}
   - name: "{{d.alias or d.domain}}"
     proxies:
         - "load-balance-{{d.alias or d.domain}}"
         - "auto-{{d.alias or d.domain}}"
         - "sequential-{{d.alias or d.domain}}"
-        % if hconfig(ConfigEnum.tuic_enable) and d.mode !="cdn" and meta_or_normal=='meta'
+{%  if hconfig(ConfigEnum.tuic_enable) and d.mode !="cdn" and meta_or_normal=='meta' %}
         - "tuic-{{d.alias or d.domain}}"
-        %endif
+{% endif %}
     use:
       - "P{{d.alias or d.domain}}"
     type: select
-%endfor
+{% endfor %}
 
   - name: automatic
     type: fallback
@@ -101,9 +101,9 @@ proxy-groups:
 
   - name: "load-balance"
     proxies:
-    % for d in  domains
+{%  for d in  domains %}
       - "{{d.alias or d.domain}}"
-    %endfor
+{% endfor %}
     # use:
     #   - all_proxies
     type: load-balance
@@ -120,17 +120,17 @@ proxy-groups:
     url: 'http://cp.cloudflare.com'
     interval: 300
     proxies:
-    % for d in  domains
+{%  for d in  domains %}
       - "sequential-{{d.alias or d.domain}}"
-    %endfor    
+{% endfor     %}
     # use:
     #   - all_proxies   
 
   - name: auto
     proxies:
-% for d in  domains
+{% for d in  domains %}
       - "auto-{{d.alias or d.domain}}"
-%endfor
+{% endfor %}
     # use:
     #   - all_proxies
 
@@ -141,15 +141,15 @@ proxy-groups:
     lazy: true
 
 
-% for d in domains
-% if hconfig(ConfigEnum.tuic_enable) and d.mode !="cdn" and meta_or_normal=='meta'
+{% for d in domains %}
+{% if hconfig(ConfigEnum.tuic_enable) and d.mode !="cdn" and meta_or_normal=='meta' %}
   - name: "tuic-{{d.alias or d.domain}}"
     type: relay
     proxies:
       - internal-not-usable-tuic-{{d.alias or d.domain}}
       - internal-not-usable-tuic-ss
 
-%endif
+{% endif %}
 
 
   - name: "auto-{{d.alias or d.domain}}"
@@ -176,7 +176,7 @@ proxy-groups:
     interval: 300
     use:
       - "P{{d.alias or d.domain}}"
-  %endfor
+{% endfor %}
 
          
 
@@ -191,7 +191,7 @@ proxy-providers:
       enable: true
       interval: 600
       url: http://www.gstatic.com/generate_204    
-  % for d in  domains
+{%  for d in  domains %}
   "P{{d.alias or d.domain}}":
     type: http
     url: "https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{(user.uuid)}}/clash/{{meta_or_normal}}/proxies.yml?mode={{mode}}&domain={{d.domain}}&{{hash}}"
@@ -200,19 +200,19 @@ proxy-providers:
       enable: true
       interval: 600
       url: http://www.gstatic.com/generate_204    
-  %endfor
+{% endfor %}
 
-% if hconfig(ConfigEnum.tuic_enable) and meta_or_normal=='meta'
+{% if hconfig(ConfigEnum.tuic_enable) and meta_or_normal=='meta' %}
 proxies:
   - name: "internal-not-usable-tuic-ss"
     type: ss
     server: 127.0.0.1
     port: 3005
     cipher: chacha20-ietf-poly1305
-    password: {{g.user_uuid}}
+    password: {{g.account.uuid}}
     udp_over_tcp: true  
-% for d in  domains    
-% if hconfig(ConfigEnum.tuic_enable) and d.mode !="cdn" and meta_or_normal=='meta'
+{% for d in  domains     %}
+{% if hconfig(ConfigEnum.tuic_enable) and d.mode !="cdn" and meta_or_normal=='meta' %}
   - name: internal-not-usable-tuic-{{d.alias or d.domain}}
     server: {{d.domain}}
     port: 3478 
@@ -230,9 +230,9 @@ proxies:
     # fast-open: true
     skip-cert-verify: true
     # max-open-streams: 20 # default 100, too many open streams may hurt performance
-%endif
-%endfor
-%endif
+{% endif %}
+{% endfor %}
+{% endif %}
 rule-providers:
 
   blocked:

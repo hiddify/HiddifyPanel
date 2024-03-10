@@ -11,7 +11,7 @@ class Event:
 
     def notify(self, **data):
         for callback in self.callbacks:
-            if type(data) == dict:
+            if isinstance(data, dict):
                 callback(**data)
             else:
                 callback(data)

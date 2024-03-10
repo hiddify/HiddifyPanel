@@ -7,16 +7,16 @@
             گذرنده فقط برای سایت‌های فیلتر شده
         </div>
         <div class="card-body">
-            
+
             <div class="btn-group">
-                <a href="clashmeta://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/meta/lite.yml&name=mlite_{{domain}}"
-                    class="btn btn-success orig-link">نصب فقط برای سایت‌های فیلتر</a>
+                <a href="clashmeta://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/meta/lite.yml&name=mlite_{{domain}}" class="btn btn-success orig-link">نصب فقط برای
+                    سایت‌های فیلتر</a>
             </div>
             <details>
                 <summary>لینک جایگزین برای کلش عادی</summary>
                 <div class="btn-group">
-                    <a href="clash://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/lite.yml&name=lite_{{domain}}"
-                        class="btn btn-secondary orig-link">لینک برای کلش اندروید</a>
+                    <a href="clash://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/lite.yml&name=lite_{{domain}}" class="btn btn-secondary orig-link">لینک برای کلش
+                        اندروید</a>
                 </div>
             </details>
         </div>
@@ -35,20 +35,20 @@
 
 
             <div class="btn-group">
-                <a href="clashmeta://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/meta/normal.yml&name=mnormal_{{domain}}"
-                    class="btn btn-warning orig-link">نصب گذرنده برای سایت‌های خارجی</a>
+                <a href="clashmeta://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/meta/normal.yml&name=mnormal_{{domain}}" class="btn btn-warning orig-link">نصب گذرنده
+                    برای سایت‌های خارجی</a>
             </div>
             <details>
                 <summary>لینک جایگزین برای کلش عادی</summary>
                 <div class="btn-group">
-                    <a href="clash://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/normal.yml&name=normal_{{domain}}"
-                        class="btn btn-secondary orig-link">لینک برای کلش اندروید</a>
+                    <a href="clash://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/normal.yml&name=normal_{{domain}}" class="btn btn-secondary orig-link">لینک برای کلش
+                        اندروید</a>
                 </div>
             </details>
         </div>
     </div>
 
-    % if True or not hconfigs[ConfigEnum.block_iran_sites]:
+    {% if True or not hconfigs[ConfigEnum.block_iran_sites]: %}
 
     <div class="card card-danger">
         <div class="card-header">
@@ -64,19 +64,19 @@
             </div>
 
             <div class="btn-group">
-                <a href="clashmeta://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/meta/all.yml&name=mall_{{domain}}"
-                    class="btn btn-danger orig-link">نصب گذرنده برای همه سایت‌ها</a>
+                <a href="clashmeta://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/meta/all.yml&name=mall_{{domain}}" class="btn btn-danger orig-link">نصب گذرنده برای همه
+                    سایت‌ها</a>
             </div>
             <details>
                 <summary>لینک جایگزین برای کلش عادی</summary>
                 <div class="btn-group">
-                    <a href="clash://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/all.yml&name=all_{{domain}}"
-                        class="btn btn-secondary orig-link">لینک برای کلش اندروید</a>
+                    <a href="clash://install-config?url=https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/clash/all.yml&name=all_{{domain}}" class="btn btn-secondary orig-link">لینک برای کلش
+                        اندروید</a>
                 </div>
             </details>
         </div>
 
     </div>
-        % endif
-    
+    {% endif %}
+
 </div>

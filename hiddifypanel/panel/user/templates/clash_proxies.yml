@@ -2,7 +2,7 @@
 {{link_maker.get_all_clash_configs(meta_or_normal,domains)}}
 
 
-% if False
+{% if False %}
   - name: "ssr"
     type: ssr
     server: server
@@ -14,8 +14,8 @@
     obfs-param: "{{hconfigs[ConfigEnum.ssr_fakedomain]}}"
     # protocol-param: "#"
     udp: true
-% endif
-% if False
+{% endif %}
+{% if False %}
   #hysteria
   - name: "hysteria"
     type: hysteria
@@ -41,8 +41,8 @@
     # disable_mtu_discovery: false
     # fingerprint: xxxx
     # fast-open: true # Supports TCP fast open, default is false
-% endif
-% if False
+{% endif %}
+{% if False %}
   # http
   - name: "https"
     type: http
@@ -54,5 +54,5 @@
     skip-cert-verify: false
     # sni: custom.com
     ip-version: dual
-% endif
+{% endif %}
 

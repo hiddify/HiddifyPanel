@@ -1,218 +1,106 @@
-
-from flask import render_template, request, Response, g, url_for, jsonify, flash
-from apiflask import abort
-from hiddifypanel.hutils import auto_ip_selector
-from wtforms.validators import Regexp, ValidationError
-import urllib
-import uuid
+import user_agents
 import datetime
-from hiddifypanel.models import *
-from hiddifypanel.panel.database import db
-from hiddifypanel.panel import hiddify
+import random
+import re
+
+from flask import render_template, request, Response, g
+from apiflask import abort
 from . import link_maker
 from flask_classful import FlaskView, route
-import random
 from urllib.parse import urlparse
-import user_agents
-from flask_babelex import gettext as _
-import re
+from flask_babel import gettext as _
+
+
+from hiddifypanel.auth import login_required
+from hiddifypanel.database import db
+from hiddifypanel.panel import hiddify
+from hiddifypanel.models import *
+from hiddifypanel import hutils
+from hiddifypanel import cache
 
 
 class UserView(FlaskView):
 
-    # region api
-    @route('/short/')
-    @route('/short')
-    def short_link(self):
-        short = hiddify.add_short_link(
-            "/"+hconfig(ConfigEnum.proxy_path)+"/"+g.user.uuid+"/")
-
-        return f"<div style='direction:ltr'>https://{urlparse(request.base_url).hostname}/{short}/</a><br><br>"+_("This link will expire in 5 minutes")
-
-    @route('/info/')
-    @route('/info')
-    def info(self):
-        c = get_common_data(g.user_uuid, 'new')
-        data = {
-            'profile_title': c['profile_title'],
-            'profile_url': f"https://{urlparse(request.base_url).hostname}/{g.proxy_path}/{g.user_uuid}/#{g.user.name}",
-            'profile_usage_current': g.user.current_usage_GB,
-            'profile_usage_total': g.user.usage_limit_GB,
-            'profile_remaining_days': g.user.remaining_days,
-            'profile_reset_days': days_to_reset(g.user),
-            'telegram_bot_url': f"https://t.me/{c['bot'].username}?start={g.user_uuid}" if c['bot'] else "",
-            'admin_message_html': hconfig(ConfigEnum.branding_freetext),
-            'admin_message_url': hconfig(ConfigEnum.branding_site),
-            'brand_title': hconfig(ConfigEnum.branding_title),
-            'brand_icon_url': "",
-            'doh': f"https://{urlparse(request.base_url).hostname}/{g.proxy_path}/dns/dns-query",
-            'def_lang': hconfig(ConfigEnum.lang)
-        }
-
-        return jsonify(data)
-
-    @route('/mtproxies/')
-    @route('/mtproxies')
-    def mtproxies(self):
-        # get domains
-        c = get_common_data(g.user_uuid, 'new')
-        mtproxies = []
-        # TODO: Remove duplicated domains mapped to a same ipv4 and v6
-        for d in c['domains']:
-            if d.mode not in [DomainType.direct, DomainType.relay]:
-                continue
-            hexuuid = hconfig(ConfigEnum.shared_secret, d.child_id).replace('-', '')
-            telegram_faketls_domain_hex = hconfig(ConfigEnum.telegram_fakedomain, d.child_id).encode('utf-8').hex()
-            server_link = f'tg://proxy?server={d.domain}&port=443&secret=ee{hexuuid}{telegram_faketls_domain_hex}'
-            mtproxies.append({'title': d.alias or d.domain, 'link': server_link})
-
-        return jsonify(mtproxies)
-
-    @route('/all-configs/')
-    @route('/all-configs')
-    def configs(self):
-        def create_item(name, type, domain, protocol, transport, security, link):
-            return {
-                'name': name,
-                'domain': domain,
-                'link': link,
-                # 'tags': set(type, protocol, transport, security),
-                'type': type,
-                'protocol': protocol,
-                'transport': transport,
-                'security': security,
-            }
-
-        items = []
-        base_url = f"https://{urlparse(request.base_url).hostname}/{g.proxy_path}/{g.user_uuid}/"
-        c = get_common_data(g.user_uuid, 'new')
-
-        # Add Auto
-        items.append(
-            create_item(
-                "Auto", "All", "All", "All", "All", "All",
-                f"{base_url}sub/?asn={c['asn']}")
-        )
-
-        # Add Full Singbox
-        items.append(
-            create_item(
-                "Full Singbox", "All", "All", "All", "All", "All",
-                f"{base_url}full-singbox.json?asn={c['asn']}"
-            )
-        )
-
-        # Add Clash Meta
-        items.append(
-            create_item(
-                "Clash Meta", "All", "All", "All", "All", "All",
-                f"clashmeta://install-config?url={base_url}clash/meta/all.yml&name=mnormal_{c['db_domain'].alias or c['db_domain'].domain}-{c['asn']}-{c['mode']}&asn={c['asn']}&mode={c['mode']}"
-            )
-        )
-
-        # Add Clash
-        items.append(
-            create_item(
-                "Clash", "All", "All", "Except VLess", "All", "All",
-                f"clash://install-config?url={base_url}clash/all.yml&name=new_normal_{c['db_domain'].alias or c['db_domain'].domain}-{c['asn']}-{c['mode']}&asn={c['asn']}&mode={c['mode']}"
-            )
-        )
-
-        # Add Singbox: SSh
-        if hconfig(ConfigEnum.ssh_server_enable):
-            items.append(
-                create_item(
-                    "Singbox: SSH", "SSH", "SSH", "SSH", "SSH", "SSH",
-                    f"{base_url}singbox.json?name={c['db_domain'].alias or c['db_domain'].domain}-{c['asn']}&asn={c['asn']}&mode={c['mode']}"
-                )
-            )
-
-        # Add Subscription link
-        items.append(
-            create_item(
-                "Subscription link", "All", "All", "All", "All", "All",
-                f"{base_url}all.txt?name={c['db_domain'].alias or c['db_domain'].domain}-{c['asn']}&asn={c['asn']}&mode={c['mode']}"
-            )
-        )
-
-        # Add Subscription link base64
-        items.append(
-            create_item(
-                "Subscription link b64", "All", "All", "All", "All", "All",
-                f"{base_url}all.txt?name=new_link_{c['db_domain'].alias or c['db_domain'].domain}-{c['asn']}-{c['mode']}&asn={c['asn']}&mode={c['mode']}&base64=True"
-            )
-        )
-
-        for pinfo in link_maker.get_all_validated_proxies(c['domains']):
-            items.append(
-                create_item(
-                    pinfo["name"].replace("_", " "),
-                    f"{'Auto ' if pinfo['dbdomain'].has_auto_ip else ''}{pinfo['mode']}",
-                    pinfo['server'],
-                    pinfo['proto'],
-                    pinfo['transport'],
-                    pinfo['l3'],
-                    f"{link_maker.to_link(pinfo)}"
-                )
-            )
-
-        return jsonify(items)
-
-    # endregion
-
-    @route('/test/')
+    @route('/useragent/')
+    @login_required(roles={Role.user})
     def test(self):
         ua = request.user_agent.string
-        if re.match('^Mozilla', ua, re.IGNORECASE):
-            return "Please do not open here"
-        conf = self.get_proper_config()
+        print(ua)
+        return ua
 
-        import json
-        ua = request.user_agent.string
-        uaa = user_agents.parse(request.user_agent.string)
-        with open('ua.txt', 'a') as f:
-            f.write("\n".join([
-                f'\n{datetime.datetime.now()} '+("Ok" if conf else "ERROR"),
-                ua,
-                f'os={uaa.os.family}-{uaa.os.version}({uaa.os.version_string}) br={uaa.browser.family} v={uaa.browser.version} vs={uaa.browser.version_string}   dev={uaa.device.family}-{uaa.device.brand}-{uaa.device.model}',
-                '\n'
-            ]))
-        if conf:
-            return conf
-        abort(500)
-    # @route('/old')
-    # @route('/old/')
-    # def index(self):
+    def index(self):
+        return self.auto_sub()
 
-    #     c=get_common_data(g.user_uuid,mode="")
-    #     user_agent =  user_agents.parse(request.user_agent.string)
-
-    #     return render_template('home/index.html',**c,ua=user_agent)
-    # @route('/multi/')
-    # @route('/multi')
-    # def multi(self):
-
-    #     c=get_common_data(g.user_uuid,mode="multi")
-
-    #     user_agent =  user_agents.parse(request.user_agent.string)
-
-    #     return render_template('home/multi.html',**c,ua=user_agent)
-    @route('/')
     def auto_sub(self):
-        ua = request.user_agent.string
-        if re.match('^Mozilla', ua, re.IGNORECASE):
+        if g.user_agent['is_browser']:
             return self.new()
         return self.get_proper_config() or self.all_configs(base64=True)
 
-    @route('/sub')
-    @route('/sub/')
+    # former /sub/ or /sub (it was auto actually but we named it as /sub/)
+    @route('/auto/')
+    @route('/auto')
+    @login_required(roles={Role.user})
     def force_sub(self):
         return self.get_proper_config() or self.all_configs(base64=False)
 
+    # region new endpoints
+    @route("/sub/")
+    @route("/sub")
+    @login_required(roles={Role.user})
+    def sub(self):
+        return self.all_configs(base64=False)
+
+    @route("/sub64/")
+    @route("/sub64")
+    @login_required(roles={Role.user})
+    def sub64(self):
+        return self.all_configs(base64=True)
+
+    @route("/singbox/")
+    @route("/singbox")
+    @login_required(roles={Role.user})
+    def singbox_full(self):
+        return self.full_singbox()
+
+    @route("/singbox-ssh/")
+    @route("/singbox-ssh")
+    @login_required(roles={Role.user})
+    def singbox_ssh(self):
+        return self.singbox()
+
+    @route("/clash/")
+    @route("/clash")
+    @login_required(roles={Role.user})
+    def clash(self):
+        return self.clash_config(meta_or_normal="normal")
+
+    @route("/clashmeta/")
+    @route("/clashmeta")
+    @login_required(roles={Role.user})
+    def clashmeta(self):
+        return self.clash_config(meta_or_normal="meta")
+    # endregion
+
+    @ route('/new/')
+    @ route('/new')
+    @login_required(roles={Role.user})
+    def new(self):
+        conf = self.get_proper_config()
+        if conf:
+            return conf
+
+        c = get_common_data(g.account.uuid, mode="new")
+        user_agent = user_agents.parse(request.user_agent.string)
+        # return render_template('home/multi.html', **c, ua=user_agent)
+        return render_template('new.html', **c, ua=user_agent)
+
     def get_proper_config(self):
-        ua = request.user_agent.string
-        if re.match('^Mozilla', ua, re.IGNORECASE):
+        if g.user_agent['is_browser']:
             return None
+        ua = request.user_agent.string
+        if g.user_agent['is_singbox'] or re.match('^(HiddifyNext|Dart|SFI|SFA)', ua, re.IGNORECASE):
+            return self.full_singbox()
+
         if re.match('^(Clash-verge|Clash-?Meta|Stash|NekoBox|NekoRay|Pharos|hiddify-desktop)', ua, re.IGNORECASE):
             return self.clash_config(meta_or_normal="meta")
         if re.match('^(Clash|Stash)', ua, re.IGNORECASE):
@@ -220,40 +108,19 @@ class UserView(FlaskView):
 
         # if 'HiddifyNext' in ua or 'Dart' in ua:
         #     return self.clash_config(meta_or_normal="meta")
-        if re.match('^(HiddifyNext|Dart|SFI|SFA)', ua, re.IGNORECASE):
-            return self.full_singbox()
 
         # if any([p in ua for p in ['FoXray', 'HiddifyNG','Fair%20VPN' ,'v2rayNG', 'SagerNet']]):
         if re.match('^(Hiddify|FoXray|Fair|v2rayNG|SagerNet|Shadowrocket|V2Box|Loon|Liberty)', ua, re.IGNORECASE):
             return self.all_configs(base64=True)
 
-    @ route('/auto')
-    def auto_select(self):
-        c = get_common_data(g.user_uuid, mode="new")
-        user_agent = user_agents.parse(request.user_agent.string)
-        # return render_template('home/handle_smart.html', **c)
-        return render_template('home/auto_page.html', **c, ua=user_agent)
-
-    @ route('/new/')
-    @ route('/new')
-    # @ route('/')
-    def new(self):
-        conf = self.get_proper_config()
-        if conf:
-            return conf
-
-        c = get_common_data(g.user_uuid, mode="new")
-        user_agent = user_agents.parse(request.user_agent.string)
-        # return render_template('home/multi.html', **c, ua=user_agent)
-        return render_template('new.html', **c, ua=user_agent)
-
-    @ route('/clash/<meta_or_normal>/proxies.yml')
-    @ route('/clash/proxies.yml')
+    @route('/clash/<meta_or_normal>/proxies.yml')
+    @route('/clash/proxies.yml')
+    @login_required(roles={Role.user})
     def clash_proxies(self, meta_or_normal="normal"):
         mode = request.args.get("mode")
         domain = request.args.get("domain", None)
 
-        c = get_common_data(g.user_uuid, mode, filter_domain=domain)
+        c = get_common_data(g.account.uuid, mode, filter_domain=domain)
         resp = Response(render_template('clash_proxies.yml',
                         meta_or_normal=meta_or_normal, **c))
         resp.mimetype = "text/plain"
@@ -261,14 +128,18 @@ class UserView(FlaskView):
         return resp
 
     @ route('/report', methods=["POST"])
+    @login_required(roles={Role.user})
     def report(self):
-        data = request.get_json()
-        user_ip = auto_ip_selector.get_real_user_ip()
-        report = Report()
-        report.asn_id = auto_ip_selector.get_asn_id(user_ip)
-        report.country = auto_ip_selector.get_country(user_ip)
 
-        city_info = auto_ip_selector.get_city(user_ip)
+        # THE REPORT MODEL IS NOT COMPLETED YET.
+
+        data = request.get_json()
+        user_ip = hutils.network.auto_ip_selector.get_real_user_ip()
+        report = Report()
+        report.asn_id = hutils.network.auto_ip_selector.get_asn_id(user_ip)
+        report.country = hutils.network.auto_ip_selector.get_country(user_ip)
+
+        city_info = hutils.network.auto_ip_selector.get_city(user_ip)
         report.city = city_info['name']
         report.latitude = city_info['latitude']
         report.longitude = city_info['longitude']
@@ -296,10 +167,11 @@ class UserView(FlaskView):
 
     @ route('/clash/<typ>.yml', methods=["GET", "HEAD"])
     @ route('/clash/<meta_or_normal>/<typ>.yml', methods=["GET", "HEAD"])
+    @login_required(roles={Role.user})
     def clash_config(self, meta_or_normal="normal", typ="all.yml"):
         mode = request.args.get("mode")
 
-        c = get_common_data(g.user_uuid, mode)
+        c = get_common_data(g.account.uuid, mode)
 
         hash_rnd = random.randint(0, 1000000)  # hash(f'{c}')
         if request.method == 'HEAD':
@@ -311,91 +183,72 @@ class UserView(FlaskView):
         return add_headers(resp, c)
 
     @ route('/full-singbox.json', methods=["GET", "HEAD"])
+    @login_required(roles={Role.user})
     def full_singbox(self):
         mode = "new"  # request.args.get("mode")
-        c = get_common_data(g.user_uuid, mode)
+        c = get_common_data(g.account.uuid, mode)
         # response.content_type = 'text/plain';
         if request.method == 'HEAD':
             resp = ""
         else:
             resp = link_maker.make_full_singbox_config(**c)
-            # resp = render_template('singbox_config.json', **c, host_keys=hiddify.get_hostkeys(True),
-            #                        ssh_client_version=hiddify.get_ssh_client_version(user), ssh_ip=hiddify.get_direct_host_or_ip(4), base64=False)
-        return add_headers(resp, c)
+
+        return add_headers(resp, c, 'application/json')
 
     @ route('/singbox.json', methods=["GET", "HEAD"])
+    @login_required(roles={Role.user})
     def singbox(self):
         if not hconfig(ConfigEnum.ssh_server_enable):
             return "SSH server is disable in settings"
         mode = "new"  # request.args.get("mode")
-        c = get_common_data(g.user_uuid, mode)
+        c = get_common_data(g.account.uuid, mode)
         # response.content_type = 'text/plain';
         if request.method == 'HEAD':
             resp = ""
         else:
             resp = render_template('singbox_config.json', **c, host_keys=hiddify.get_hostkeys(True),
-                                   ssh_client_version=hiddify.get_ssh_client_version(user), ssh_ip=hiddify.get_direct_host_or_ip(4), base64=False)
+                                   ssh_client_version=hiddify.get_ssh_client_version(user), ssh_ip=hutils.network.get_direct_host_or_ip(4), base64=False)
+
         return add_headers(resp, c)
 
-    @ route('/all.txt', methods=["GET", "HEAD"])
+    @route('/all.txt', methods=["GET", "HEAD"])
+    @login_required(roles={Role.user})
     def all_configs(self, base64=False):
         mode = "new"  # request.args.get("mode")
         base64 = base64 or request.args.get("base64", "").lower() == "true"
-        c = get_common_data(g.user_uuid, mode)
+        c = get_common_data(g.account.uuid, mode)
         # response.content_type = 'text/plain';
         if request.method == 'HEAD':
             resp = ""
         else:
-            # render_template('all_configs.txt', **c, base64=do_base_64)
+            # render_template('all_configs.txt', **c, base64=hutils.encode.do_base_64)
             resp = link_maker.make_v2ray_configs(**c)
 
-        # res = ""
-        # for line in resp.split("\n"):
-        #     if "vmess://" in line:
-        #         line = "vmess://"+do_base_64(line.replace("vmess://", ""))
-        #     res += line+"\n"
         if base64:
-            resp = do_base_64(resp)
+            resp = hutils.encode.do_base_64(resp)
         return add_headers(resp, c)
 
-    @ route('/manifest.webmanifest')
-    def create_pwa_manifest(self):
-
-        domain = urlparse(request.base_url).hostname
-        name = (domain if g.is_admin else g.user.name)
-        return jsonify({
-            "name": f"Hiddify {name}",
-            "short_name": f"{name}"[:12],
-            "theme_color": "#f2f4fb",
-            "background_color": "#1a1b21",
-            "display": "standalone",
-            "scope": f"/",
-            "start_url": f"https://{domain}"+url_for("admin.Dashboard:index" if g.is_admin else "user2.UserView:new_1")+"?pwa=true",
-            "description": "Hiddify, for a free Internet",
-            "orientation": "any",
-            "icons": [
-                {
-                    "src": hiddify.static_url_for(filename='images/hiddify-dark.png'),
-                    "sizes": "512x512",
-                    "type": "image/png",
-                    "purpose": "maskable any"
-                }
-            ]
-        })
-
     @ route("/offline.html")
+    @login_required(roles={Role.user})
     def offline():
-        return f"Not Connected <a href='/{hconfig(ConfigEnum.proxy_path)}/{g.user.uuid}/'>click for reload</a>"
+        return f"Not Connected <a href='{hiddify.get_account_panel_link(g.account, request.host)}'>click for reload</a>"
+
+    # backward compatiblity
+    @route("/admin/<path:path>")
+    @login_required()
+    def admin(self, path):
+        return ""
 
 
-def do_base_64(str):
-    import base64
-    resp = base64.b64encode(f'{str}'.encode("utf-8"))
-    return resp.decode()
+# def do_base_64(str):
+#     import base64
+#     resp = base64.b64encode(f'{str}'.encode("utf-8"))
+#     return resp.decode()
 
 
-def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
-    mode = "new"
+# @cache.cache(ttl=300)
+def get_domain_information(no_domain=False, filter_domain=None, alternative=None):
+    domains = []
     default_asn = request.args.get("asn")
     if filter_domain:
         domain = filter_domain
@@ -403,44 +256,20 @@ def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
             domain=domain, mode=DomainType.direct, cdn_ip='', show_domains=[], child_id=0)
         domains = [db_domain]
     else:
-        domain = urlparse(request.base_url).hostname if not no_domain else None
-        DB = ParentDomain if hconfig(ConfigEnum.is_parent) else Domain
-        db_domain = DB.query.filter(DB.domain == domain).first()
+        domain = alternative if not no_domain else None
+        db_domain = Domain.query.filter(Domain.domain == domain).first()
 
         if not db_domain:
-            parts = domain.split('.')
+            parts = domain.split('.')  # TODO fix bug domain maybe null
             parts[0] = "*"
             domain_new = ".".join(parts)
-            db_domain = DB.query.filter(DB.domain == domain_new).first()
+            db_domain = Domain.query.filter(Domain.domain == domain_new).first()
 
         if not db_domain:
-            db_domain = DB(domain=domain, show_domains=[])
-            print("no domain")
-            flash(_("This domain does not exist in the panel!" + domain))
+            db_domain = Domain(domain=domain, show_domains=[])
+            hutils.flask.flash(_("This domain does not exist in the panel!" + domain))
 
-        if mode == 'multi':
-            domains = Domain.query.all()
-        elif mode == 'new':
-            # db_domain=Domain.query.filter(Domain.domain==domain).first()
-            domains = db_domain.show_domains or Domain.query.filter(
-                Domain.sub_link_only != True).all()
-        else:
-
-            domains = [db_domain]
-            direct_host = domain
-
-            # if db_domain and db_domain.mode==DomainType.cdn:
-            #     direct_domain_db=Domain.query.filter(Domain.mode==DomainType.direct).first()
-            # if not direct_domain_db:
-            #     direct_host=urllib.request.urlopen('https://v4.ident.me/').read().decode('utf8')
-            #     direct_domain_db=Domain(domain=direct_host,mode=DomainType.direct)
-
-            # domains.append(direct_domain_db)
-
-    # uuid_secret=str(uuid.UUID(user_secret))
-    user = User.query.filter(User.uuid == f'{user_uuid}').first()
-    if user is None:
-        abort(401, "Invalid User")
+        domains = db_domain.show_domains or Domain.query.filter(Domain.sub_link_only != True).all()
 
     has_auto_cdn = False
     for d in domains:
@@ -450,11 +279,28 @@ def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
             has_auto_cdn = True
             d.has_auto_ip = d.mode == DomainType.auto_cdn_ip or (
                 d.cdn_ip and "MTN" in d.cdn_ip)
-            d.cdn_ip = auto_ip_selector.get_clean_ip(
+            d.cdn_ip = hutils.network.auto_ip_selector.get_clean_ip(
                 d.cdn_ip, d.mode == DomainType.auto_cdn_ip, default_asn)
-            print("autocdn ip mode ", d.cdn_ip)
+            # print("autocdn ip mode ", d.cdn_ip)
         if "*" in d.domain:
-            d.domain = d.domain.replace("*", hiddify.get_random_string(5, 15))
+            d.domain = d.domain.replace("*", hutils.random.get_random_string(5, 15))
+
+    if len(domains) == 0:
+        domains = [Domain(id=0, domain=alternative, mode=DomainType.direct, cdn_ip='', show_domains=[], child_id=0)]
+        domains[0].has_auto_ip = True
+
+    return domains, db_domain, has_auto_cdn
+
+
+def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
+    '''Usable for user account'''
+    # uuid_secret=str(uuid.UUID(user_secret))
+    domains, db_domain, has_auto_cdn = get_domain_information(no_domain, filter_domain, request.host)
+
+    domain = db_domain.domain
+    user: User = g.account if g.account.uuid == user_uuid else User.by_uuid(f'{user_uuid}')
+    if user is None:
+        abort(401, "Invalid User")
 
     package_mode_dic = {
         UserMode.daily: 1,
@@ -463,20 +309,17 @@ def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
 
     }
 
-    g.locale = hconfig(ConfigEnum.lang)
-    expire_days = remaining_days(user)
-    reset_days = days_to_reset(user)
-    # print(reset_days)
-    # raise
+    expire_days = user.remaining_days
+    reset_days = user.days_to_reset()
     if reset_days >= expire_days:
         reset_days = 1000
-    # print(reset_days,expire_days,reset_days<=expire_days)
-    expire_s = int((datetime.date.today(
-    )+datetime.timedelta(days=expire_days)-datetime.date(1970, 1, 1)).total_seconds())
 
-    user_ip = auto_ip_selector.get_real_user_ip()
-    asn = auto_ip_selector.get_asn_short_name(user_ip)
+    expire_s = int((datetime.date.today() + datetime.timedelta(days=expire_days) - datetime.date(1970, 1, 1)).total_seconds())
+
+    user_ip = hutils.network.auto_ip_selector.get_real_user_ip()
+    asn = hutils.network.auto_ip_selector.get_asn_short_name(user_ip)
     profile_title = f'{db_domain.alias or db_domain.domain} {user.name}'
+    profile_url = hiddify.get_account_panel_link(user, request.host)
     if has_auto_cdn and asn != 'unknown':
         profile_title += f" {asn}"
 
@@ -484,44 +327,44 @@ def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
         # 'direct_host':direct_host,
         'profile_title': profile_title,
         'user': user,
-        'user_activate': is_user_active(user),
+        'user_activate': user.is_active,
         'domain': domain,
         'mode': mode,
         'fake_ip_for_sub_link': datetime.datetime.now().strftime(f"%H.%M--%Y.%m.%d.time:%H%M"),
-        'usage_limit_b': int(user.usage_limit_GB*1024*1024*1024),
-        'usage_current_b': int(user.current_usage_GB*1024*1024*1024),
+        'usage_limit_b': int(user.usage_limit_GB * 1024 * 1024 * 1024),
+        'usage_current_b': int(user.current_usage_GB * 1024 * 1024 * 1024),
         'expire_s': expire_s,
         'expire_days': expire_days,
-        'expire_rel': hiddify.format_timedelta(datetime.timedelta(days=expire_days)),
+        'expire_rel': hutils.convert.format_timedelta(datetime.timedelta(days=expire_days)),
         'reset_day': reset_days,
         'hconfigs': get_hconfigs(),
         'hdomains': get_hdomains(),
         'ConfigEnum': ConfigEnum,
         'link_maker': link_maker,
         'domains': domains,
-        "bot": g.bot,
+        "bot": g.get('bot', None),
         "db_domain": db_domain,
-        "telegram_enable": hconfig(ConfigEnum.telegram_enable) and any([d for d in domains if d.mode in [DomainType.direct, DomainType.relay, DomainType.old_xtls_direct]]),
+        "telegram_enable": hiddify.is_telegram_proxy_enable(domains),
         "ip": user_ip,
-        "ip_debug": auto_ip_selector.get_real_user_ip_debug(user_ip),
+        "ip_debug": hutils.network.auto_ip_selector.get_real_user_ip_debug(user_ip),
         "asn": asn,
-        "country": auto_ip_selector.get_country(user_ip),
-        'has_auto_cdn': has_auto_cdn
+        "country": hutils.network.auto_ip_selector.get_country(user_ip),
+        'has_auto_cdn': has_auto_cdn,
+        'profile_url': profile_url
     }
 
 
-def add_headers(res, c):
+def add_headers(res, c, mimetype="text/plain"):
     resp = Response(res)
-    resp.mimetype = "text/plain"
+    resp.mimetype = mimetype
     resp.headers['Subscription-Userinfo'] = f"upload=0;download={c['usage_current_b']};total={c['usage_limit_b']};expire={c['expire_s']}"
-    resp.headers['profile-web-page-url'] = request.base_url.rsplit(
-        '/', 1)[0].replace("http://", "https://")+"/"
+    resp.headers['profile-web-page-url'] = request.base_url.rsplit('/', 1)[0].replace("http://", "https://") + "/"
 
     if hconfig(ConfigEnum.branding_site):
         resp.headers['support-url'] = hconfig(ConfigEnum.branding_site)
     resp.headers['profile-update-interval'] = 1
     # resp.headers['content-disposition']=f'attachment; filename="{c["db_domain"].alias or c["db_domain"].domain} {c["user"].name}"'
 
-    resp.headers['profile-title'] = 'base64:'+do_base_64(c['profile_title'])
+    resp.headers['profile-title'] = 'base64:' + hutils.encode.do_base_64(c['profile_title'])
 
     return resp

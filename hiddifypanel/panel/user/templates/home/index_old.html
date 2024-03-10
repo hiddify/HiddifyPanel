@@ -4,16 +4,20 @@
 {% block body_header %}
 <div class="row mb-2">
     <div class="col-12">
-        
-      <h1 class="m-0" style="text-align: start;"> <a href="{{'https://github.com/hiddify/hiddify-manager/wiki'}}">{{_('user.home.title')}} {{hconfig(ConfigEnum.branding_title)}}</a>: <div class="d-inline-flex">{{_('Welcome %(user)s',user=user.name if user.name!="default" else "")}}</div> </h1>
+
+        <h1 class="m-0" style="text-align: start;"> <a
+                href="{{'https://github.com/hiddify/hiddify-manager/wiki'}}">{{_('user.home.title')}}
+                {{hconfig(ConfigEnum.branding_title)}}</a>: <div class="d-inline-flex">
+                {{_('Welcome %(user)s',user=user.name if user.name!="default" else "")}}</div>
+        </h1>
     </div><!-- /.col -->
     <div class="col-sm-6 d-none">
-      <ol class="breadcrumb float-sm-right">
-        <li class="breadcrumb-item"><a href="#">Home</a></li>
-        <li class="breadcrumb-item active">Starter Page</li>
-      </ol>
+        <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Starter Page</li>
+        </ol>
     </div><!-- /.col -->
-  </div><!-- /.row -->
+</div><!-- /.row -->
 {%endblock%}
 
 {% block body %}
@@ -35,36 +39,41 @@
             <div class="card-header d-flex p-0">
                 <h3 class="card-title p-1"> </h3>
                 <ul class="nav nav-pills p-2">
-                    % if hconfigs[ConfigEnum.telegram_enable] 
+                    {% if hconfigs[ConfigEnum.telegram_enable] %}
                     <li class="nav-item"><a class="nav-link" href="#telegram" data-toggle="tab"><i
                                 class="fa-brands fa-telegram fa-margin"></i> {{_('telegram')}}</a></li>
-                    % endif
-                    <li class="nav-item"><a class="nav-link {{"active" if ua.os.family=="Android" else ""}}" href="#android" data-toggle="tab"><i
-                                class="fa-brands fa-android fa-margin"></i> {{_('android')}}</a></li>
-                    <li class="nav-item"><a class="nav-link {{"active" if ua.os.family=="iOS" else ""}}" href="#ios" data-toggle="tab"><i
-                                class="fa-brands fa-app-store-ios fa-margin"></i> {{_('ios')}}</a></li>
-                    <li class="nav-item"><a class="nav-link {{"active" if ua.is_pc else ""}}" href="#windows" data-toggle="tab">
-                        <i class="fa-brands fa-windows fa-margin1"></i> <i class="fa-brands fa-apple fa-margin1"></i> <i class="fa-brands fa-linux fa-margin1"></i> {{_('desktop')}}</a></li>
-                    
+                    {% endif %}
+                    <li class="nav-item"><a class="nav-link {{" active" if ua.os.family=="Android" else "" }}"
+                            href="#android" data-toggle="tab"><i class="fa-brands fa-android fa-margin"></i>
+                            {{_('android')}}</a></li>
+                    <li class="nav-item"><a class="nav-link {{" active" if ua.os.family=="iOS" else "" }}" href="#ios"
+                            data-toggle="tab"><i class="fa-brands fa-app-store-ios fa-margin"></i> {{_('ios')}}</a></li>
+                    <li class="nav-item"><a class="nav-link {{" active" if ua.is_pc else "" }}" href="#windows"
+                            data-toggle="tab">
+                            <i class="fa-brands fa-windows fa-margin1"></i> <i
+                                class="fa-brands fa-apple fa-margin1"></i> <i class="fa-brands fa-linux fa-margin1"></i>
+                            {{_('desktop')}}</a></li>
+
                 </ul>
             </div><!-- /.card-header -->
             <div class="card-body">
                 <div class="tab-content">
-                    <div class="tab-pane {{"active" if not ua.is_pc and ua.os.family not in ["Android", "iOS"] else ""}}" id="default">
+                    <div class="tab-pane {{" active" if not ua.is_pc and ua.os.family not in ["Android", "iOS" ] else ""
+                        }}" id="default">
                         {{_('user.home.select os')}}
                     </div>
                     <div class="tab-pane" id="telegram">
                         {% include 'home/telegram.html' %}
                     </div>
-                    <div class="tab-pane  {{"active" if ua.os.family=="Android" else ""}}" id="android">
+                    <div class="tab-pane  {{" active" if ua.os.family=="Android" else "" }}" id="android">
                         {% include 'home/android.html' %}
                     </div>
                     <!-- /.tab-pane -->
-                    <div class="tab-pane {{"active" if ua.os.family=="iOS" else ""}}" id="ios">
+                    <div class="tab-pane {{" active" if ua.os.family=="iOS" else "" }}" id="ios">
                         {% include 'home/ios.html' %}
                     </div>
                     <!-- /.tab-pane -->
-                    <div class="tab-pane {{"active" if ua.is_pc else ""}}" id="windows">
+                    <div class="tab-pane {{" active" if ua.is_pc else "" }}" id="windows">
                         {% include "home/windows.html" %}
                     </div>
                     <!-- /.tab-pane -->
@@ -88,7 +97,8 @@
                     <li class="nav-item"><a class="nav-link" href="#all_configs" data-toggle="tab"><i
                                 class="fa-solid fa-grip fa-margin"></i> {{_('user.home.all_configs')}}</a></li>
                     <li class="nav-item"><a class="nav-link" href="#speedtest" data-toggle="tab"><i
-                                class="fa-solid fa-gauge-high fa-margin"></i> {{_('user.home.speedtest')}}</a></li>
+                                class="fa-solid fa-gauge-high fa-margin"></i> {{_('user.home.speedtest.title')}}</a>
+                    </li>
                     <li class="nav-item"><a class="nav-link" href="#doh" data-toggle="tab"><i
                                 class="fa-solid fa-sitemap fa-margin"></i> {{_('user.home.doh')}}</a></li>
                 </ul>
@@ -115,30 +125,30 @@
             </div><!-- /.card-body -->
         </div>
         <!-- ./card -->
-    <!-- /.col -->
+        <!-- /.col -->
 
 
-<div class="card-deck d-sm-none">
-        <div  class="card small-box bg-warning">
-            <div class="card-body">
-            <div class="inner">
-                <h3>{{_('QR code')}}</h3>
-                <p>{{_('user.home.qr-code.description')}}</p>
+        <div class="card-deck d-sm-none">
+            <div class="card small-box bg-warning">
+                <div class="card-body">
+                    <div class="inner">
+                        <h3>{{_('QR code')}}</h3>
+                        <p>{{_('user.home.qr-code.description')}}</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa-solid fa-qrcode fa-margin"></i>
+                    </div>
+                </div>
+                <a href="https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/"
+                    class="card-footer share-link">
+                    <i class="fas fa-qrcode"></i> {{_('user.home.qr-code.display')}}
+                </a>
+
             </div>
-            <div class="icon">
-                <i class="fa-solid fa-qrcode fa-margin"></i>
-            </div>
-        </div>
-            <a href="https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/"
-             class="card-footer share-link">
-                <i class="fas fa-qrcode"></i> {{_('user.home.qr-code.display')}}
-            </a>
-
         </div>
     </div>
-</div>
 
- </div>
+</div>
 
 
 
@@ -241,7 +251,7 @@
 {{ super() }}
 <script>
 
-    
+
     // w = Math.min(window.innerWidth, window.innerHeight) * .75;
     // qrcode = new QRCode(document.getElementById("qrcode"), { width: w, height: w, correctLevel: 1 });
     // w = Math.min(window.innerWidth, window.innerHeight) * .75;
@@ -276,7 +286,7 @@
 
             // ecopy = ' <a href="' + href + '" class="btn btn-success copy-link">کپی لینک</a>'
             eshare = ' <a href="' + href + '" class="btn btn-secondary share-link"><i class="fa-solid fa-qrcode"></i></a>'
-        $(eshare).insertBefore(p);
+            $(eshare).insertBefore(p);
             // $(ecopy).insertAfter(p);
         });
         // $('a.copy-link').click(copy_click)
@@ -301,10 +311,10 @@
 </script>
 
 <script>
-    
-    
+
+
     function replace_info(str) {
-    
+
         if (str.includes('vmess://')) {
             splt = str.split('vmess://')
             return "vmess://" + btoa(splt[1])
@@ -331,55 +341,55 @@
     }
 
     $(function () {
-    
-    $('#all-links').DataTable({
-// scrollY: 300,
-responsive: {
-            details: {
-                type: 'column'
-            }
-        },
-        "language": {
-            "paginate": {
-                "next": "{{_('next')}}",
-                "previous" : "{{_('previous')}}"
-            }
-        },
-      "info" : true,
-      "paging": false,
-      "lengthChange": true,
-      "searching": true,
-      "ordering": true,
-      "autoWidth": true,     
-        "oLanguage": {
-        "sSearch": "{{_('search')}}: "
-        }
-    });
-  });
 
-  % if get_locale()=='fa'
-  function ConvertNumberToPersion() {
-          let persian = { 0: '۰', 1: '۱', 2: '۲', 3: '۳', 4: '۴', 5: '۵', 6: '۶', 7: '۷', 8: '۸', 9: '۹' };
-          function traverse(el) {
-//            console.log(el.tagName)
-            if (el.tagName=="PRE" || el.tagName=="STYLE" || el.tagName=="SCRIPT")return
-              if (el.nodeType == 3) {
-                  var list = el.data.match(/[0-9]/g);
-                  if (list != null && list.length != 0) {
-                      for (var i = 0; i < list.length; i++)
-                          el.data = el.data.replace(list[i], persian[list[i]]);
-                  }
-              }
-              for (var i = 0; i < el.childNodes.length; i++) {
-                  
-                  traverse(el.childNodes[i]);
-              }
-          }
-          traverse(document.body);
-      }
-  
+        $('#all-links').DataTable({
+            // scrollY: 300,
+            responsive: {
+                details: {
+                    type: 'column'
+                }
+            },
+            "language": {
+                "paginate": {
+                    "next": "{{_('next')}}",
+                    "previous": "{{_('previous')}}"
+                }
+            },
+            "info": true,
+            "paging": false,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": true,
+            "autoWidth": true,
+            "oLanguage": {
+                "sSearch": "{{_('search')}}: "
+            }
+        });
+    });
+
+    {%  if get_locale() == 'fa' %}
+    function ConvertNumberToPersion() {
+        let persian = { 0: '۰', 1: '۱', 2: '۲', 3: '۳', 4: '۴', 5: '۵', 6: '۶', 7: '۷', 8: '۸', 9: '۹' };
+        function traverse(el) {
+            //            console.log(el.tagName)
+            if (el.tagName == "PRE" || el.tagName == "STYLE" || el.tagName == "SCRIPT") return
+            if (el.nodeType == 3) {
+                var list = el.data.match(/[0-9]/g);
+                if (list != null && list.length != 0) {
+                    for (var i = 0; i < list.length; i++)
+                        el.data = el.data.replace(list[i], persian[list[i]]);
+                }
+            }
+            for (var i = 0; i < el.childNodes.length; i++) {
+
+                traverse(el.childNodes[i]);
+            }
+        }
+        traverse(document.body);
+    }
+
     ConvertNumberToPersion();
-    %endif
+    {% endif %}
 </script>
 
 {% endblock %}

@@ -2,7 +2,7 @@ import datetime
 
 from sqlalchemy_serializer import SerializerMixin
 
-from hiddifypanel.panel.database import db
+from hiddifypanel.database import db
 
 
 class Report(db.Model, SerializerMixin):
@@ -14,9 +14,9 @@ class Report(db.Model, SerializerMixin):
     latitude = Column(Float,)
     longitude = Column(Float, )
     accuracy_radius = Column(Float, )
-    
+
     date = db.Column(db.DateTime, nullable=False, default=datetime.datetime.min)
-    details = db.relationship('ReportDetail', cascade="all,delete", backref='report',    lazy='dynamic',)
+    details = db.relationship('ReportDetail', cascade="all,delete", backref='report', lazy='dynamic',)
 
 
 class ReportDetail(db.Model, SerializerMixin):

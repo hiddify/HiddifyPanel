@@ -1,73 +1,72 @@
 <div class="card-deck">
-    {% set bg_color="red" if not user.is_active or expire_days<3 or (user.usage_limit_GB*0.8 < user.current_usage_GB) else "blue" %} 
-    <div class="card small-box bg-danger bg-h-{{bg_color}}">
+    {% set bg_color="red" if not user.is_active or expire_days<3 or (user.usage_limit_GB*0.8 < user.current_usage_GB) else "blue" %} <div class="card small-box bg-danger bg-h-{{bg_color}}">
         <div class="card-body">
             <div class="inner">
                 <h3>{{_('user.home.usage.title')}}</h3>
                 <div class="info-box-content">
-                    %if not user.enable
-                        <span class="info-box-text">{{_("Disable")}}</span>
-                    %else
-                        <span class="info-box-text">{{user.current_usage_GB|round(3)}}GB <b>{{_('user.home.usage.from')}}</b>
-                            {{user.usage_limit_GB}}GB {{_('user.home.usage.monthly') if user.monthly else '' }}</span>
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-striped bg-warning" style="width: {{user.current_usage_GB*100/(user.usage_limit_GB+0.000001)}}%"></div>
-                        </div>
-                        <div>
-                            <i class="fa-solid fa-calendar-days fa-margin"></i> <b>{{_('user.home.usage.expire')}}</b> {{expire_rel}}
-                        </div>
-                        % if reset_day<500 
-                            <div>
-                                <i class="fa-solid fa-calendar-days fa-margin"></i> <b>{{_('Reset Usage Time:')}}</b> {{reset_day}} {{_('days')}}
-                            </div>
-                        %endif
-                    %endif
-                % if not user.is_active
+                    {% if not user.enable %}
+                    <span class="info-box-text">{{_("Disable")}}</span>
+                    {% else %}
+                    <span class="info-box-text">{{user.current_usage_GB|round(3)}}GB <b>{{_('user.home.usage.from')}}</b>
+                        {{user.usage_limit_GB}}GB {{_('user.home.usage.monthly') if user.monthly else '' }}</span>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped bg-warning" style="width: {{user.current_usage_GB*100/(user.usage_limit_GB+0.000001)}}%"></div>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-calendar-days fa-margin"></i> <b>{{_('user.home.usage.expire')}}</b> {{expire_rel}}
+                    </div>
+                    {% if reset_day %}
+                    <div>
+                        <i class="fa-solid fa-calendar-days fa-margin"></i> <b>{{_('Reset Usage Time:')}}</b> {{reset_day}} {{_('days')}}
+                    </div>
+                    {% endif %}
+                    {% endif %}
+                    {% if not user.is_active %}
                     {{_("User is inactive")}}
-                    %if (user.ips|length)>user.max_ips:
-                        <br>
-                        <i class="fa-solid fa-users-slash text-danger"></i> {{_("Too many Connected IPs")}}
-                    %endif
-                %endif
+                    {% if (user.ips|length)>user.max_ips: %}
+                    <br>
+                    <i class="fa-solid fa-users-slash text-danger"></i> {{_("Too many Connected IPs")}}
+                    {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+            <div class="icon">
+                <i class="fas fa-chart-pie"></i>
             </div>
         </div>
-        <div class="icon">
-            <i class="fas fa-chart-pie"></i>
-        </div>
+
+        {% if hconfig(ConfigEnum.telegram_bot_token) and g.bot %}
+        <a href="tg://resolve?domain={{g.bot.username}}&start={{user.uuid}}" class="card-footer">
+            <i class="fa-brands fa-telegram"></i> {{_('View in Telegram')}}
+        </a>
+        {% else %}
+        <a href="#" class="card-footer">
+            <i class="fas fa-chart-pie"></i> {{_('user.home.usage.details')}}
+        </a>
+        {% endif %}
 </div>
 
-% if hconfig(ConfigEnum.telegram_bot_token) and g.bot
-<a href="tg://resolve?domain={{g.bot.username}}&start={{user.uuid}}" class="card-footer">
-    <i class="fa-brands fa-telegram"></i> {{_('View in Telegram')}}
-</a>
-%else
-<a href="#" class="card-footer">
-    <i class="fas fa-chart-pie"></i> {{_('user.home.usage.details')}}
-</a>
-%endif
-</div>
-
-% if hconfig(ConfigEnum.branding_freetext)
+{% if hconfig(ConfigEnum.branding_freetext) %}
 <div class="card small-box bg-green bg-gradient-green bg-h-green">
     <div class="card-body">
         <div class="inner">
-            % if  hconfig(ConfigEnum.branding_title)
+            {% if hconfig(ConfigEnum.branding_title) %}
             <h3>{{hconfig(ConfigEnum.branding_title) or _('user.home.branding.title')}}</h3>
-            %endif
+            {% endif %}
             <p>{{hconfig(ConfigEnum.branding_freetext)|safe}}</p>
         </div>
         <div class="icon">
             <i class="fa-solid fa-question fa-margin"></i>
         </div>
     </div>
-    % if  hconfig(ConfigEnum.branding_site)
+    {% if hconfig(ConfigEnum.branding_site) %}
     <a href="{{hconfig(ConfigEnum.branding_site)}}" class="card-footer" target="_blank">
         <i class="fa-solid fa-up-right-from-square"></i> {{_('user.home.branding.linktitle')}}
     </a>
-    %endif    
+    {% endif %}
 
 </div>
-%endif
+{% endif %}
 
 <div class="card small-box bg-success bg-h-orange  d-none d-sm-flex">
     <div class="card-body">

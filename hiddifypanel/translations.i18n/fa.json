@@ -1,0 +1,1141 @@
+{
+  " Search Settings": " تنظیمات جستجو",
+  "%(count)s records were successfully disabled.": "%(count)s رکورد با موفقیت غیرفعال شد.",
+  "%(count)s records were successfully enabled.": "%(count)s رکوردها با موفقیت فعال شد.",
+  "%(placeholder)s": "%(placeholder)s",
+  "0 - Last day": "آخرین روز",
+  "Access Denied!": "دسترسی غیرمجاز",
+  "Actions": "عملیات",
+  "Active": "فعال",
+  "Active Users": "کاربران فعال",
+  "Add": "اضافه",
+  "Add some text that is only visible to super_admin.": "متنی را اضافه کنید که فقط برای سوپر ادمین ها قابل مشاهده هست",
+  "Add some text that is only visible to you.": "در این قسمت یادداشتی اضافه کنید. (این یادداشت فقط برای شما قابل نمایش است.)",
+  "Added by": "اضافه شده توسط",
+  "Admins": "ادمین ها",
+  "Alias": "نام نمایشی",
+  "All": "همه",
+  "All Users": "تمام کاربران",
+  "Apply": "اعمال",
+  "Are you sure you want to delete \\'%(name)s\\' recursively?": "آیا از حذف محتویات \\'%(name)s\\' اطمینان دارید؟",
+  "Are you sure you want to delete \\'%(name)s\\'?": "آیا از حذف  \\'%(name)s\\'اطمینان دارید؟",
+  "Are you sure you want to delete this record?": "آیا از حذف این موارد اطمینان دارید؟",
+  "Are you sure you want to do this action?": "⚠️ آیا مطمئن هستید که می خواهید این عمل را انجام دهید؟",
+  "Back": "بازگشت",
+  "Backup": "پشتیبان‌گیری",
+  "Beta": "☑️ نسخه آزمایشی",
+  "Bridge Servers": "➖ سرور های میانی",
+  "Bug": "باگ/پیشنهاد",
+  "CPU %(cores)s Cores": "پردازنده %(cores)s هسته",
+  "Can add sub admin": "👥 امکان اضافه کردن ادمین فرعی",
+  "Can not connect to Cloudflare.": "نمی توان به Cloudflare متصل شد.",
+  "Check again": "بررسی مجدد",
+  "Childs": "زیرمجموعه‌ها",
+  "China": "🇨🇳 چین",
+  "Click here to see the complete log": "برای دیدن لاگ کامل، اینجا کلیک کنید.",
+  "Click to Import": "کلیک برای افزودن کانفیگ",
+  "Click to Start Anti-Filter.": "<i class='fa-solid fa-caret-left'></i> کلیک برای اعمال فیلترشکن",
+  "Close": "بستن",
+  "Commercial use": "استفاده تجاری",
+  "Config file is incorrect": "فایل کانفیگ اشتباه است.",
+  "Copy Link": "کپی لینک",
+  "Couldn't find your ip addresses": "آدرس های IP شما پیدا نشد",
+  "Count:": "تعداد:",
+  "Create": "ایجاد",
+  "Create Directory": "ایجاد پوشه",
+  "Create New Record": "ایجاد رکورد جدید",
+  "Create Package": "ایجاد بسته",
+  "Current Domain": "دامنه فعلی",
+  "Dear {}\n\nYour hiddify information is\nUUID: {}\nLast online date: {}\nExpire time: {}\nUsage class: {}\n": "{} عزیز\nاطلاعات اکانت شما در هیدیفای به شرح زیر است\nUUID : {}\nآخرین زمان آنلاین بودن : {}\nتاریخ انقضا : {}\nنوع مصرف : {}\n\n\nبا آرزوی موفقیت. 🎉 🎉 🎉 ",
+  "Define the admin mode": {
+    " ": "🥇🥈🥉 نوع ادمین را مشخص کنید"
+  },
+  "Define the user mode": {
+    " Should the usage reset every month?": "حالت کاربر را تعریف کنید. کاربر غیرفعال (Disable) یا ریست حجم کاربر را مشخص کنید: (عدم ریست، ماهانه، هفتگی یا روزانه)"
+  },
+  "Delete?": "حذف؟",
+  "Develop": "⚠️ در حال توسعه",
+  "Direct": "➖ مستقیم",
+  "Direct mode means you want to use your server directly (for usual use), CDN means that you use your server on behind of a CDN provider.": "⬅️ حالت <b>Direct</b>: اگر دامنه خود را روی ارائه دهنده DNS خود در حالت فقط DNS تنظیم کرده اید، این حالت را انتخاب کنید. (CDN یا پروکسی خاموش باشد.) <br>\n🔀 حالت <b>CDN</b>: اگر از دامنه خود در ارائه دهنده CDN استفاده می کنید، این حالت را انتخاب کنید. (حالت پروکسی روشن باشد.)<br>\n☑️ حالت <b>Auto CDN IP</b>: مانند حالت CDN است با این تفاوت که اتوماتیک آی پی مناسب بر اساس  آی پی ارائه شده توسط ircf.space ست می‌شود. در Auto_CDN_IP به جای دامنه IP ثبت می شود<br>\n♾️ حالت <b>Relay</b>: اگر از یک یا چند سرور واسطه استفاده می کنید، این حالت را انتخاب کنید. <a href='https://github.com/hiddify/hiddify-config/discussions/129' target='_blank'>بیشتر بخوانید.</a> \n<br>\n🆎 حالت <b>Fake</b>: اگر می‌خواهید از یک دامنه جعلی (مانند Soft98.ir) برای دور زدن پروکسی لیست سفید SNI استفاده کنید، این حالت را انتخاب کنید. (توصیه نمیشود.)\n<br>\n🔂 حالت <b>Reality</b>: برای استفاده از پروتکل ریالیتی از این حالت استفاده نمایید. با استفاده از این حالت این امکان وجود دارد که چندین دامنه مختلف در ریالتی داشته باشید.",
+  "Disable": "غیرفعال",
+  "Disk": "هارد دیسک",
+  "Domain": "دامنه",
+  "Domain (%(domain)s)-> IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode": "دامنه (%(domain)s)-> IP=%(domain_ip)s با آی‌پی شما: ip=%(server_ip)s همخوانی ندارد. در حالت مستقیم (Direct Mode) این مورد الزامی است.",
+  "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode": "دامنه IP=%(domain_ip)s با ip=%(server_ip)s شما مطابقت ندارد که در حالت مستقیم مورد نیاز است",
+  "Domain can not be resolved! there is a problem in your domain": "دامنه قابل دسترسی نیست! در دامنه شما مشکلی وجود دارد.",
+  "Domain is not REALITY friendly!": "دامنه سازگار با REALITY نیست!",
+  "Domain?": "دامنه؟",
+  "Donation": {
+    "description": "✳️ برای توسعه این پروژه به کمک شما نیاز داریم.\n<br>\nاگر توانایی برنامه‌نویسی یا تولید محتوا را دارید، لطفاً با ما از طریق<a href='mailto:info@hiddify.com'>info@hiddify.com</a> تماس بگیرید.\n<br>\n<br>\nℹ️ همچنین برای توسعه بیشتر این پنل و خدمات آن (ما غیرانتفاعی هستیم) به کمک مالی نیاز داریم.\n<br>\n<br>\nروش‌های حمایت مالی:\n<ul>\n    <li> <div class='btn-group'>\n    <a role='button' data-copy='EQCWnykA-YhavOXgH3sf-uxtXLjy83_9n5bJPGRPE8r2247_' class='btn btn-secondary copy-link'><i class='fa-regular fa-copy'></i></a>    \n<a data-copy='EQCWnykA-YhavOXgH3sf-uxtXLjy83_9n5bJPGRPE8r2247_' role='button' class='btn btn-info share-link'>TON</a> </div></li>\n<li> <div class='btn-group'>\n    <a role='button' data-copy='TXZtFUxyBPMSykAWogu7C4zmbjySKqMcDE' class='btn btn-secondary copy-link'><i class='fa-regular fa-copy'></i></a>    \n<a data-copy='TXZtFUxyBPMSykAWogu7C4zmbjySKqMcDE' role='button' class='btn btn-info share-link'>USDT (TRC20)</a> </div></li>\n<li> <div class='btn-group'>\n    <a role='button' data-copy='MCHoh7xwaDBBnQgANPpBtXiekagV6KpdrM' class='btn btn-secondary copy-link'><i class='fa-regular fa-copy'></i></a>    \n<a data-copy='MCHoh7xwaDBBnQgANPpBtXiekagV6KpdrM' role='button' class='btn btn-info share-link'>LiteCoin</a> </div></li>\n<li> <div class='btn-group'>\n    <a role='button' data-copy='0xF5CFc65ee336B377C2a37EA3BCD0CaD0d0F0CbA0' class='btn btn-secondary copy-link'><i class='fa-regular fa-copy'></i></a>    \n<a data-copy='0xF5CFc65ee336B377C2a37EA3BCD0CaD0d0F0CbA0' role='button' class='btn btn-info share-link'>Ethereum</a> </div></li>\n<li> <div class='btn-group'>\n    <a role='button' data-copy='bc1qkfp7n3wxu2zc9mdy20cf27d5pujj65myww8f60' class='btn btn-secondary copy-link'><i class='fa-regular fa-copy'></i></a>    \n<a data-copy='bc1qkfp7n3wxu2zc9mdy20cf27d5pujj65myww8f60' role='button' class='btn btn-info share-link'>Bitcoin</a> </div></li>\n<li> <div class='btn-group'>\n    <a role='button' data-copy='DPerFS2vCu5XnE3He32BaPVTkUDcKLsEaj' class='btn btn-secondary copy-link'><i class='fa-regular fa-copy'></i></a>    \n<a data-copy='DPerFS2vCu5XnE3He32BaPVTkUDcKLsEaj' role='button' class='btn btn-info share-link'>Dogecoin</a> </div></li>\n</ul>\n<br>\nراه‌های دیگر برای حمایت از این پروژه: \n<ul>\n<li>👥 پنل Hiddify را با دیگران به اشتراک بگذارید</li>\n<li>📝 اگر توسعه‌دهنده Python هستید، با ما تماس بگیرید</li>\n<li>📝 اگر توسعه دهنده Swift هستید، با ما تماس بگیرید</li>\n<li>📝 اگر توسعه دهنده Flutter هستید، با ما تماس بگیرید</li>\n<li>📝 اگر توسعه دهنده Go هستید، با ما تماس بگیرید</li>\n<li>🖥 اگر توانایی تولید یا ارائه محتوا را دارید، با ما تماس بگیرید</li>\n</ul>\nاگر در زمینه‌های ذکر شده و یا هر زمینه دیگری می‌توانید به ما کمک کنید، لطفاً با آدرس <a href='mailto:info@hiddify.com'>info@hiddify.com</a> با ما تماس بگیرید.",
+    "title": "حمایت"
+  },
+  "Download App": "<i class='fa-solid fa-download'></i> دانلود",
+  "Edit": "ویرایش",
+  "Edit Proxy Names": "✏️ ویرایش پروکسی‌ها",
+  "Enable": "❇️ فعال",
+  "Error in auto cdn format": "⚠️ خطا در ورود IP ها به صورت دستی",
+  "Error! auto cdn ip can not be find, please contact admin.": "خطا! آی پی اتوماتیک نتوانست پیدا شود. لطفا با مدیر تماس بگیرید",
+  "Example Domains": "بررسی و پیشنهاد دامنه",
+  "Expired Users": "کاربران منقضی شده",
+  "Export": "خروجی گرفتن",
+  "Fake": "➖ جعلی",
+  "Filter": "فیلتر",
+  "Finished": "تمام شد...",
+  "From Last Restart": "از آخرین راه اندازی",
+  "From when the user package will be started? Empty for start from first connection": "از چه زمانی پکیج کاربر محاسبه شود؟ برای محاسبه از اولین اتصال خالی بگذارید",
+  "Hiddify": "هیدیفای",
+  "Hiddify Android": "هیدیفای کلش",
+  "HiddifyClash": "HiddifyClash",
+  "HiddifyN intro": "لطفا HiddifyN را از %(dl_link)s نصب کنید.\nسپس روی لینک زیر کلیک کنید. همه کارها را به صورت خودکار انجام خواهد داد.\n<br />",
+  "HiddifyNG": "HiddifyNG <span class='badge badge-success'>پیشنهادی</span>",
+  "HiddifyNG intro": "📌 لطفاً HiddifyNG را از یکی از این لینک ها نصب کنید:\n<br />\n %(dl_link)s  %(play_link)s\n<br />\nسپس روی لینک زیر کلیک کنید و آن را در HiddifyNG باز کنید.\n<br />",
+  "HiddigyN": "HiddifyN <span class='badge badge-success'>پیشنهادی</span>",
+  "Hooray 🎉 🎉 🎉 \nWelcome to hiddifybot": {
+    "\nStart by clicking the link on the panel or entering your UUID.": "هورا !!! 🎉 🎉 🎉 \nبه ربات هیدیفای خوش آمدید.\nبرای شروع روی لینک مربوطه در پنل کلیک نموده یا UUID خود را وارد کنید."
+  },
+  "Hover the user to see the reason": "روی یوزر کلیک کنید تا دلیل آن را ببینید",
+  "How many days this package should be available?": "این بسته چند روزه است؟",
+  "How many?": "چه تعداد؟",
+  "If monthly is enabled, the usage will be reset after 30 days from this date.": "اگر گزینه ماهانه فعال باشد، وقتی این عدد به ۳۰ برسد حجم کاربر ریست می‌شود (برای هفتگی و روزانه این عدد ۷ و ۱ است)",
+  "If the application do not open automatically, please click <a class='btn btn-primary copy-link'\n                    href='%(sub)s'>this universal link</a> to copy and paste it on\n                your application, or:": "اگر برنامه به طور خودکار باز نشد، لطفاً روی <a class='btn btn-primary copy-link'<inlang-LineFeed>href='%(sub)s'&gt;این پیوند جهانی را</a> کلیک کنید تا آن را کپی و جایگذاری کنید.\nدرخواست شما، یا:",
+  "Import": "بارگذاری در برنامه",
+  "Import in": "بارگذاری در ",
+  "In 5 minutes": "در 5 دقیقه",
+  "In CDN mode, Domain IP=%(domain_ip)s should be different to your ip=%(server_ip)s": "در حالت CDN، IP=%(domain_ip)s باید با ip=%(server_ip)s شما متفاوت باشد.",
+  "In this section, you can add your domain": {
+    " You need to add at least one domain in direct mode.": "1️⃣ در این قسمت می توانید دامنه خود را اضافه کنید.\n<br>\n2️⃣اگر می‌خواهید احتمال داشتن IP کثیف را کاهش دهید، می‌توانید چندین سرور میانی اضافه کنید <a href='https://github.com/hiddify/hiddify-config/discussions/129'>بیشتر بخوانید</a>.\n<br>\n3️⃣ اگر IPv6 یا IPv4 های متعددی در پنل خود دارید، باید دامنه مرتبط با آنها را از طریق relay اضافه کنید."
+  },
+  "Incorrect Password": "⚠️ رمز عبور اشتباه است",
+  "Install": "نصب",
+  "Install Hiddify Application": "نصب پنل هیدیفای",
+  "Invalid IP or domain": "IP یا دامنه نامعتبر است",
+  "Invalid REALITY hostnames": "نام‌های میزبان REALITY نامعتبر است",
+  "Invalid admin link": "لینک ادمین نامعتبر است",
+  "Iran": "🇮🇷 ایران",
+  "It seems that you are using default domain (%(domain)s) which is not recommended.": "به نظر می‌رسد شما درحال استفاده از دامنه پیش فرض (<span class='ltr d-inline-block'>%(domain)s</span>) هستید؛ این کار توصیه نمی‌شود. لطفا از بخش دامنه‌ها آن را حذف یا تغییر دهید.",
+  "It seems that you have not created any users yet": {
+    " Default user link: %(default_link)s": "شما هنوز هیچ کاربری ایجاد نکرده اید. لینک صفحه کاربری پیشفرض: %(default_link)s"
+  },
+  "It seems that you have not setup the system completely": {
+    " <a class=\"btn btn-success\" href=\"%(quick_setup)s\">Click here</a> to complete setup.": "به نظر می رسد که شما سیستم را به طور کامل تنظیم نکرده‌اید. برای تکمیل تنظیمات <a class='btn btn-success' href='%(quick_setup)s'>اینجا</a> را کلیک کنید."
+  },
+  "It will override the root admin to the current user": "این گزینه باعث جایگزین شده ادمین هایی که در پنل نیستند را با ادمین فعلی یکی کند",
+  "Join our Hiddify Telegram channel to get the latest updates on Hiddify.": "در کانال تلگرام هیدیفای عضو شوید تا از آخرین آپدیت‌های ما مطلع شوید.",
+  "Last Online": "آخرین اتصال",
+  "Link is changed!": "ℹ️ لینک تغییر کرد!",
+  "Linux": "لینوکس",
+  "Max Active Users": "حداکثر کاربران فعال",
+  "Max IPs": "حداکثر IP",
+  "Max Users": "حداکثر کاربران",
+  "Mode": "حالت کاربر",
+  "Month Usage": "استفاده ماهانه",
+  "More Applications": "نرم افزارهای بیشتر",
+  "Network": "شبکه",
+  "New": "تازه",
+  "No children!": "هیچ زیر مجموعه ای یافت نشد",
+  "Note": "📝 یادداشت",
+  "Offline more than 1 day": "آفلاین بیش از 1 روز",
+  "Offline more than 1 hour": "آفلاین بیش از 1 ساعت",
+  "Offline more than 1 week": "آفلاین بیش از 1 هفته",
+  "Ok": "تایید",
+  "Online Users": "کاربران آنلاین",
+  "Only Blocked and Local websites": "☑️ فقط سایت‌های داخلی و مسدود شده‌ی خارجی",
+  "Only for sublink?": "🌍 استفاده فقط برای لینک کانفیگ ها (سابسکریپشن)",
+  "Oops! Something went wrong.": "خطایی رخ داده است!!",
+  "Open in Application": "باز کردن در برنامه",
+  "Others": "🇺🇳 سایر",
+  "Override Root Admin": "🔁 جایگذاری ادمین اصلی",
+  "Owner can not be deleted!": "مالک را نمی توان حذف کرد!",
+  "Package Days": "📆 تعداد روز بسته",
+  "Package ended!": "پکیج شما به پایان رسید",
+  "Package not started yet.": "بسته هنوز شروع نشده است",
+  "Panel Link": "➖ لینک پنل",
+  "Parent Panel": "پنل مرکزی",
+  "Please Wait.": {
+    ".": "لطفا صبر کنید..."
+  },
+  "Please click on %(install)s to save the user page.": "روی %(install)s کلیک کنید تا صفحه کاربر ذخیره شود.",
+  "Please connect your telegram account to the panel to be informed about latest news.": "لطفا اکانت تلگرام خود را به پنل متصل کنید تا از آخرین اخبار مطلع شوید.",
+  "Please connect your telegram accout to the panel to be informed about latest news.": "لطفا اکانت تلگرام خود را به پنل متصل کنید تا از آخرین وضعیت اشتراک خودتان مطلع شوید",
+  "Please create an issue on Github.": "لطفاً یک مشکل در Github ایجاد کنید",
+  "Please note that your panel can be accessed only via <a href=\"%(adminlink)s\" class=\"btn btn-primary copy-link\">%(adminlink)s</a>": {
+    " Please save this link.": "توجه داشته باشید که تنها از طریق لینک زیر  می‌توانید به پنل مدیریت دسترسی داشته باشید. لطفا این لینک را کپی و برای استفاده‌های بعدی ذخیره نمایید.\n\n<p class='ltr'>\n<a href='%(adminlink)s' class='btn btn-secondary copy-link'><i class='fa-solid fa-copy'></i></a>\n<a href='%(adminlink)s' class='copy-link' style='word-break: break-all;'>%(adminlink)s</a></p>"
+  },
+  "Please select at least one file.": "حداقل یک فایل انتخاب کنید",
+  "Please select at least one record.": "حداقل یک پوشه انتخاب کنید",
+  "Please select one of the following applications:": "📍 لطفا یکی از برنامه های زیر را انتخاب کنید:\n<br />\n<br />",
+  "Please type your message to send to the telegram:": "✏️  لطفا پیامی را که میخواهید با ربات تلگرام ارسال کنید بنویسید:",
+  "Please understand that parent panel is under test and the plan and the condition of use maybe change at anytime.": "لطفاً توجه داشته باشید که پنل مادر در حال آزمایش است و طرح و شرایط استفاده ممکن است در هر زمان تغییر کند.",
+  "Please wait ": "لطفا صبر کنید",
+  "Port is already used! in": "پورت قبلا استفاده شده است در",
+  "Premium Description": "پنل هیدیفای برای استفاده غیرتجاری ساخته شده است. اما چنانچه از این پنل استفاده تجاری می‌کنید، از شما خواهشمندیم با دونیت کردن به رشد پروژه کمک کنید. <br/>\nدر عوض حمایت مالی شما، امکانات ویژه ای هم برای محصول تجاری شما فراهم می‌کنیم.\n<br/>\n<br/>\nاز قبیل:\n<ul>\n<li>امکان سینک شدن به کلودفلر: یعنی با افزودن دامنه در پنل، تنظیمات مربوطه در کلود فلر نیز انجام شود</li>\n<li>امکان نمایش برند شما در پنل</li>\n<li>امکان استفاده از پنل مرکزی جهت مدیریت بیش از ۱ سرور در فقط یک پنل بنابراین دیگر لازم نیست کاربران را در سرورهای مختلف ثبت کنید و همین طور حجم آنها در تمام سرورها جمع خواهد شد.\n</li>\n<li>\nامکان استفاده از بات تلگرام\n</li>\n<li>\nامکان تغییر نام پروکسی ها\n</li>\n</ul>\n\nلطفا پس از دونیت کردن به <a href='tg://resolve?domain=HiddifyCommercial'>@HiddifyCommercial</a>\nپیام دهید تا نسخه ویژه ی کاربران تجاری به شما ارائه شود.",
+  "ProxyPath is already used! use different proxy path": "ProxyPath قبلاً استفاده شده است! از مسیرهای مختلف پروکسی استفاده کنید",
+  "QR code": "🧾 کیوآر کد",
+  "QRCode": "QR Code <i class='fa-solid fa-qrcode'></i>",
+  "RAM": "رم",
+  "REALITY Fallback domain is not compaitble with server names!": "دامنه بازگشتی REALITY با نام سرور سازگار نیست!",
+  "Release": "✅ پایدار",
+  "Remaining: ": "زمان پایان بسته",
+  "Remote nodes are not supported yet!": "گره های راه دور هنوز پشتیبانی نمی شوند!",
+  "Rename File": "تغییر نام پرونده",
+  "Reset Filters": "برگرداندن فیلتر ها به حالت اول",
+  "Reset Usage Time:": "زمان صفر شدن حجم:",
+  "Reset every month": "ماهانه",
+  "Reset package days": "📆 ریست زمان شروع بسته کاربر",
+  "Reset package usage": "⏳ ریست حجم مصرفی کاربر",
+  "Restore": "♻️ بازگردانی از فایل پشتیبان",
+  "Restore Domain": "🌏 بازیابی دامنه‌ها",
+  "Restore Domain description": "برای بازگرداندن دامنه از این گزینه استفاده کنید.",
+  "Restore File": "فایل بازیابی",
+  "Restore File Description": "برای بازگردانی، فایل دانلود شده (بک آپ) را از سیستم خود انتخاب کنید.",
+  "Restore Settings": "⚙️ بازیابی تنظیمات",
+  "Restore Settings description": "در این قسمت می‌توانید تنظیمات قبلی را بازیابی نمایید.",
+  "Restore Users": "👥 بازیابی کاربران",
+  "Restore Users description": "برای بازگرداندن کاربران از این گزینه استفاده کنید.",
+  "Root": "ریشه",
+  "Save": "ذخیره",
+  "Save & Add More": "ذخیره و افزودن مورد دیگر",
+  "Save Link": "این لینک را در محلی ذخیره نمایید.",
+  "Select all records": "انتخاب همه رکوردها",
+  "Select record": "انتخاب رکورد",
+  "Send Message to User's Telegram": "📣 ارسال پیام به تلگرام کاربر",
+  "Sending": "در حال ارسال...",
+  "Should be a valid domain": "باید یک دامنه معتبر باشد",
+  "Should be a valid uuid": "باید یک uuid معتبر باشد",
+  "Show Domains": "نمایش تنظیمات دامنه ها:",
+  "Simplifies the process of employing the link elsewhere.": "برای راحتی انتقال این صفحه به ‌پلتفرم دیگر",
+  "SingBox": "📦 SingBox",
+  "Sort by %(name)s": "مرتب سازی بر اساس %(name)s",
+  "Start Date": "زمان شروع",
+  "Status": "وضعیت",
+  "Submit": "ثبت",
+  "Success": "موفقیت",
+  "Success! Please wait around 4 minutes to make sure everything is updated": {
+    " During this time, please save your proxy links which are:": "⚠️ لطفا برای اینکه مطمئن شوید تغییرات به درستی اعمال شده، حدود 5 دقیقه صبر کنید. در این فاصله لینک‌های زیر را کپی کرده و در جایی برای خود ذخیره نمایید:"
+  },
+  "Success! Please wait around 5 minutes to make sure everything is updated.": "✔️ موفقیت آمیز بود! لطفا برای اینکه مطمئن شوید بروزرسانی‌ها به درستی اعمال شده، حدود 5 دقیقه صبر کنید.",
+  "Telegram Bot": "بات تلگرام",
+  "Temporary Short Link": "⏱️ لینک کوتاه موقت",
+  "The action done successfully": {
+    " You can now leave this page.": "✅ عملیات با موفقیت انجام شد. اکنون می توانید این صفحه را ترک کنید"
+  },
+  "The message has been sent.": "پیام ارسال شده است.",
+  "The message was not sent to": "پیام نتوانست به کاربران زیر ارسال شود",
+  "The name shown in the configs for this domain.": "نامی که در کانفیگ‌ها به جای دامنه نمایش داده شود",
+  "The page has been moved to a new link": {
+    " Please copy and save the new link.": "صفحه به لینک جدید منتقل شد. لطفا لینک جدید را کپی و ذخیره کنید."
+  },
+  "This can be used for giving your users a permanent non blockable links.": "این می تواند برای دادن لینک های غیرقابل مسدود و دائمی به کاربران شما استفاده شود.",
+  "This domain does not exist in the panel!": "این دامنه در پنل وجود ندارد!",
+  "This version of hiddify panel is outdated": {
+    " Please update it from admin area.": "⚠️ این نسخه هیدیفای قدیمی شده است. لطفا از پنل ادمین آن را به روزرسانی کنید"
+  },
+  "Today Usage": "استفاده امروز",
+  "Too many Connected IPs": "تعداد IP های متصل بسیار زیاد است",
+  "Total Usage": "استفاده کل",
+  "Turn of VPN": "فیلترشکن را خاموش کنید",
+  "Unified link for all application.": "لینک یکسان برای همه برنامه‌ها",
+  "Upload File": "آپلود فایل",
+  "Use HiddifyNext:": "استفاده از HiddifyNext:",
+  "User activated!": "یوزر شما فعال شد",
+  "User is inactive": "کاربر غیر فعال است",
+  "User usage will be updated every 6 minutes": {
+    " To update it now click <a href=\"%(link)s\"\n        class=\"btn btn-info\">here</a>": "🔄 حجم مصرفی کاربران بصورت خودکار هر دقیقه بروزرسانی می‌شود. برای بروزرسانی دستی <a href='%(link)s' class='btn btn-info'>اینجا کلیک کنید</a>"
+  },
+  "Using alias with special charachters may cause problem in some clients like FairVPN.": "استفاده از نام مستعار با نویسه های خاص ممکن است در برخی از مشتریان مانند FairVPN مشکل ایجاد کند.",
+  "V2rayNG": "نرم افزار جایگزین  v2rayNG  <button class='btn btn-sm btn-default' onclick='show_video('android-v2rayng')'><i class='fa-solid fa-question'></i> </button>\n<br />",
+  "V2rayNG intro": "لطفاً v2rayNG را از %(dl_link)s   %(play_link)s نصب کنید.\nسپس لینک زیر را کپی کرده و مطابق فیلم آموزش <button class='btn btn-sm btn-default' onclick='show_video('android-v2rayng')'><i class='fa-solid fa-question'></i>  </button>\nدر v2rayNG قرار دهید.\n<br />",
+  "View in Telegram": "مشاهده جزییات در تلگرام",
+  "Want to enjoy more with telegram?": "ℹ️ وصل کردن حساب کاربری به تلگرام",
+  "Welcome %(user)s": "%(user)s عزیز خوش آمدی",
+  "Welcome to admin bot": {
+    " Choose your action": "به ربات ادمین خوش آمدید. عملیات مورد نظر را انتخاب کنید."
+  },
+  "Why Going to Premium?": "مجوز استفاده از هیدیفای چگونه است؟",
+  "Windows": "ویندوز",
+  "With selected": "با انتخاب شده ها",
+  "Xray": "☢️ XRay",
+  "Yesterday Usage": "استفاده دیروز",
+  "You can download a json formated of configurations by clicking <a href='%(link)s' class='btn btn-primary'>here</a>": "🔄 پنل هیدیفای به صورت خودکار هر ۶ ساعت یک Backup میگیرد. مسیر فایل های Backup روی سرور: ⬇️\n<br>\n/opt/hiddify-manager/hiddify-panel/backup/\n<br>\n<br>\n<br>\n⚠️ می‌توانید با کلیلک بر روی دکمه زیر تنظیمات را با فرمت JSON دریافت کنید.\n<br>\n<br>\n<a href='%(link)s' class='btn btn-primary'>دریافت فایل پشتیبان</a>",
+  "You can restore your configs from previously downloaded configs": "ℹ️ در این قسمت می‌توانید تنظیمات قبلی خود را (که قبلا از قسمت پشتیبان گیری دانلود کرده‌اید.) بازگردانی نمایید.",
+  "You can select the configs with which domains show be shown in the user area": {
+    " If you select all, automatically, all the new domains will be added for each users.": "مشخص کنید کاربرانی که با این دامنه، پنل کاربری را مشاهده می‌کنند، کانفیگ‌های مربوط به کدام دامنه‌ها را مشاهده کنند.\n<br>\nپیشنهاد: برای یک دامنه با IP فیلتر نشده و متفاوت با بقیه، همه دامنه های دیگر (به جز دامنه فعلی) را انتخاب کنید. در نتیجه از آنجایی که از این IP برای فیلترشکن استفاده نمی‌شود و یک وبسایت ساده است، این دامنه و آی پی هرگز مسدود نمی‌شود و کاربران شما به راحتی می توانند پروفایل های جدید را به روز کنند."
+  },
+  "You have too much users! You can have only %(active)s active users and %(total)s users": "شما کاربران زیادی دارید! شما می توانید تنها %(active)s کاربر فعال و %(total)s کاربر داشته باشید",
+  "You have used this domain in: ": "شما از این دامنه در بخش زیر استفاده کرده اید: ",
+  "You should visit this page without VPN": {
+    " Your country=%(your_country)s\nexpected=%(expected_country)s": "شما باید بدون VPN از این صفحه بازدید کنید کشور شما =%(your_country)s\nانتظار می رود=%(expected_country)s"
+  },
+  "Your domains changed": {
+    " Please do not forget to copy admin links, otherwise you can not access to the panel anymore.": "⚠️ دامنه های شما تغییر کرد. لطفا کپی لینک های مدیریت را فراموش نکنید، در غیر این صورت دیگر نمی توانید به پنل دسترسی داشته باشید"
+  },
+  "Your hiddify instance information \nDomain: {} \nUsage limit: {} GB\nCurrent usage: {} GB\nExpires at: {} \nRemaining days: {} \n\n\n Happy using 🎉 🎉 🎉 \n": "اطلاعات اکانت هیدیفای شما\nدامنه : {} \nمقدار حجم مجاز : {} گیگابایت\nحجم مصرف شده : {} گیگابایت\nتاریخ انقضا : {} \nروزهای باقی ‌مانده : {} \n\n\nبا آرزوی موفقیت. 🎉 🎉 🎉 ",
+  "[Admin only visible message:] You can change this message from settings": "[پیام اختصاصی ادمین]: قابل تنظیم از طریق تنظیمات.",
+  "actions": "عملیات",
+  "admin link": "مدیریت",
+  "admin": {
+    "Actions:apply_configs": "اعمال تنظیمات",
+    "actions": {
+      "apply_configs": "اعمال تغییرات",
+      "reinstall": "نصب مجدد",
+      "reset": "ریستارت سیستم",
+      "status": "وضعیت",
+      "title": "اقدامات",
+      "update": "به‌روز‌ رسانی",
+      "viewlogs": "نمایش لاگ"
+    },
+    "config": {
+      "apply_configs": "اعمال تنظیمات",
+      "title": "تنظیمات"
+    },
+    "menu": {
+      "api": "API",
+      "config": "تنظیمات",
+      "domain": "دامنه‌ها",
+      "home": "داشبورد",
+      "proxy": "پروکسی‌ها",
+      "support": "راهنما",
+      "telegram": "تلگرام",
+      "user": "کاربران"
+    },
+    "proxy": {
+      "detailed_config": "⚙️ تنظیمات دقیق",
+      "global_config": "⚙️ تنظیمات عمومی"
+    },
+    "quicksetup": {
+      "title": "نصب سریع"
+    },
+    "quicksetup_intro": "آی‌پی‌های سرور شما عبارتند از: <div >IPv4: %(ipv4)s <br> IPv6: %(ipv6)s\n</div>\nدامنه یا زیر دامنه خود را با این آی‌پی‌ها تنظیم کنید و سپس دامنه یا زیر دامنه تنظیم شده را در کادر زیر وارد کنید."
+  },
+  "all": "همه",
+  "android": "اندروید",
+  "app": {
+    "foxray": {
+      "description": "توضیحات FoXray",
+      "title": "FoXray"
+    },
+    "hiddify-clash-android": {
+      "title": "Hiddify Clash"
+    },
+    "hiddify-clash-desktop": {
+      "title": "Hiddify Clash"
+    },
+    "hiddify": {
+      "next": {
+        "description": "توضیحات Hiddify Next",
+        "title": "Hiddify Next"
+      }
+    },
+    "hiddifyn": {
+      "description": "توضیحات HiddifyN",
+      "title": "HiddifyN"
+    },
+    "hiddifyng": {
+      "description": "توضیحات HiddifyNG",
+      "title": "HiddifyNG"
+    },
+    "loon": {
+      "description": "توضیحات Loon",
+      "title": "Loon"
+    },
+    "nekobox": {
+      "title": "NekoBox"
+    },
+    "shadowrocket": {
+      "description": "توضیحات Shadowrocket",
+      "title": "Shadowrocket"
+    },
+    "stash": {
+      "description": "توضیحات Stash",
+      "title": "Stash"
+    },
+    "streisand": {
+      "description": "توضیحات Streisand",
+      "title": "Streisand"
+    },
+    "v2rayng": {
+      "description": "توضیحات V2RayNG",
+      "title": "V2RayNG"
+    }
+  },
+  "auto": "خودکار",
+  "auto_cdn_ip": "☑️ انتخاب کننده آی‌پی CDN به صورت خودکار",
+  "cdn": "🔀 سی‌دی‌ان (پروکسی کلودفلر و ...)",
+  "child has been removed!": "پنل زیر مجموعه حذف شد",
+  "clickable copy": "لینک برای شبکه‌های اجتماعی",
+  "close": "بستن",
+  "config": {
+    "Domain already used": "دامنه در بخش دامنه‌ها وجود دارد. از دامنه دیگری استفاده کنید.",
+    "Invalid brand link": "لینک پشتیبانی نامعتبر است. لطفا لینک را با فرمت معتبر وارد کنید.",
+    "Invalid domain": "خطا! دامنه نامعتبر! فرمت دامنه باید مثل www.google.com باشد.",
+    "Invalid port": "پورت نامعتبر است. اعداد باید با کاما از هم جدا شود، مثلاً 1000,1001",
+    "Invalid proxy path": "مسیر پروکسی نامعتبر است. باید رشته متن asci باشد. ( شامل a-z A-Z 0-9)",
+    "Invalid telegram bot token": "توکن ربات تلگرام نامعتبر است",
+    "Invalid! The pattern is number-number": "⚠️ الگو عدد-عدد است ⚠️",
+    "Invalid! it should be a number only": "⚠️ این قسمت باید فقط یک عدد باشد ⚠️",
+    "admin": {
+      "description": "تنظیمات عمومی بخش مدیریت",
+      "label": "تنظیمات ادمین"
+    },
+    "admin_lang": {
+      "description": "در این قسمت می‌توانید زبان پنل مدیریت را انتخاب کنید",
+      "label": "🗺️ زبان پنل مدیریت"
+    },
+    "admin_secret": {
+      "description": "رمز ادمین برای دسترسی به پنل ادمین استفاده خواهد شد. ",
+      "label": "رمز ادمین"
+    },
+    "advanced": {
+      "description": "در این قسمت تنظیماتی وجود دارد که مناسب کاربران حرفه‌ای است. درصورتی که اطلاعی از کارکرد آنها ندارید، لطفا به این تنظیمات دست نزنید",
+      "label": "تنظیمات پیشرفته"
+    },
+    "allow_invalid_sni": {
+      "description": "اگر به SNI نامعتبر اجازه دهید، می‌توانید از هر دامنه‌ای به جای دامنه اصلی خود برای دسترسی به پروکسی استفاده کنید (توصیه نمی‌شود)",
+      "label": "🆗 اجازه دادن به SNI نامعتبر"
+    },
+    "auto_update": {
+      "description": "هر روز راس ساعت ۳ صبح، سیستم برای به‌روز‌ رسانی جدید چک می‌شود. در صورتی که به‌روز‌ رسانی جدیدی موجود باشد به صورت خودکار سیستم به‌روز‌ رسانی خواهد شد",
+      "label": "🔄 به‌روز‌ رسانی خودکار"
+    },
+    "block_iran_sites": {
+      "description": "برای جلوگیری از شناسایی توسط فیلترچی، دسترسی به سایت های ایرانی را مسدود می‌کند",
+      "label": "⛔️ بلاک کردن سایت‌های ایرانی"
+    },
+    "branding": {
+      "description": "متنی که در این قسمت وارد می‌کنید، در صفحه کاربر نمایش داده می‌شود",
+      "label": "شخصی‌ سازی صفحه کاربران"
+    },
+    "branding_freetext": {
+      "description": "متنی که در این قسمت وارد می‌کنید، در باکس پشتیبانی در صفحه کاربران نمایش داده می‌شود. امکان استفاده از کدهای HTML هم وجود دارد\n<p><br /><a href=\"https://onlinehtmleditor.dev\" target=\"_blank\">HTML Edit</a></p>",
+      "label": "📢 متن باکس پشتیبانی"
+    },
+    "branding_site": {
+      "description": "لینکی که در این قسمت وارد می‌کنید، در صفحه کاربر و در قسمت پشتیبانی به کاربران نمایش داده می‌شود.\nبرای مثال آدرس کانال تلگرام، یا چت شخصی خود را میتوانید قرار دهید",
+      "label": "🆔 لینک پشتیبانی"
+    },
+    "branding_title": {
+      "description": "در این قسمت می‌توانید یک نام یا عنوان برای خود وارد کنید. این نام در بالای صفحه کاربر قبل از متن خوش‌آمد نمایش داده می‌شود",
+      "label": "👁‍🗨 عنوان برند شما در صفحه کاربران"
+    },
+    "cdn_forced_host": {
+      "description": "در این قسمت می توانید از چندین دامنه یا IP اختصاصی استفاده کنید تا در لینک های کاربری جایگزین شود. \nدر صورتی که در <a href='https://ircf.space/export.php'>این قالب </a> استفاده کنید با توجه به اپراتور آی پی مربوطه انتخاب میشود و در صورتی که رنجی از آی پی ها را قرار دهید به صورت تصادفی آی پی از ان رنج انتخاب می‌شود.\nجهت قراردادن آی پی های شخصی از <a target='_blank' href='https://ip-format.hiddify.com'>این لینک</a> استفاده کنید.",
+      "label": "🔂 اجبار به استفاده‌ از آی پی‌های زیر برای کانفیگ"
+    },
+    "cloudflare": {
+      "description": "لطفاً <a href='https://github.com/hiddify/hiddify-config/wiki/%DA%AF%D8%B1%D9%81%D8%AA%D9%86-%DA%A9%D9%84%DB%8C%D8%AF-%D8%AA%D9%88%D8%B3%D8%B9%D9%87-%DA%A9%D9%84%D9%88%D8%AF%D9%81%D9%84%D8%B1' target='_blank'>دستورالعمل</a> را دنبال کنید و کلید توسعه کلودفلر را جای‌گذاری کنید",
+      "label": "🔑 کلید توسعه کلودفلر"
+    },
+    "core_type": {
+      "description": "☢️ XRay : یک هسته کامل است\n<br>\n📦 Singbox : توسعه یافته توسط SagerNet. همچنین هسته خوبی است",
+      "label": "🎛️ هسته"
+    },
+    "country": {
+      "description": "تنظیمات مناسب را برای هر کشور با توجه به شرایط فیلتر آن کشور اعمال می کند",
+      "label": "🌍 کشور"
+    },
+    "create_easysetup_link": {
+      "description": "-",
+      "label": "-"
+    },
+    "db_version": {
+      "description": "توضیحات ورژن دیتابیس",
+      "label": "ورژن دیتابیس"
+    },
+    "dbvalues": {
+      "description": "-",
+      "label": "-"
+    },
+    "decoy_domain": {
+      "description": "زمانی که فیلترچی دامنه شما را در مرورگر وارد کند، تا ببیند واقعا چه سایتی هست، یک سایت جعلی را نمایش می‌دهد. <br>\n⚠️ از سایت های دارای صفحه لاگین، سایت های مالی، سایت های ایرانی و سایت های معروف مانند گوگل، یاهو، ویکی پدیا، پی پال استفاده نکنید.<br>\n⛔حتما سایت را چک کنید و مطمئن شوید که سایت مناسبی است وگرنه ممکن است اخطار فیشینگ دریافت کنید.<br>\n⛔⛔ مجددا چک کنید این دامنه را تا مشکلی در آینده پیش نیاد",
+      "label": "📺 آدرس سایت جعلی"
+    },
+    "dns_server": {
+      "description": "✳️ پیش فرض 1.1.1.1 <br>\n🚧 مسدود کردن بدافزار 1.1.1.2 <br>\n🔞 مسدود کردن پورن 1.1.1.3",
+      "label": "🖥 سرور DNS"
+    },
+    "domain_fronting": {
+      "description": "برای شبیه سازی وب سایت دیگری به جای وب سایت شما در SNI استفاده می شود. بنابراین، فیلترچی نمی تواند دامنه شما را فیلتر کند. \n<a href='https://github.com/hiddify/hiddify-config/wiki/%D8%A7%D8%B3%D8%AA%D9%81%D8%A7%D8%AF%D9%87-%D8%A7%D8%B2-%D8%AF%D8%A7%D9%85%DB%8C%D9%86-%D9%81%D8%B1%D8%A7%D9%86%D8%AA%DB%8C%D9%86%DA%AF'>آموزش ثبت </a>\n\n⚠️CloudFlare از دامین فرانتینگ پشتیبانی نمی کند.",
+      "label": "🔒 فعال کردن دامین فرانتینگ در اتصال TLS"
+    },
+    "domain_fronting_domain": {
+      "description": "از این مورد برای شبیه‌سازی یک وبسایت دیگر به جای SNI شما استفاده می‌شود. در نتیجه فیلترچی نمی‌تواند دامنه شما را فیلتر کند.",
+      "label": "ℹ️ دامین فرانتینگ"
+    },
+    "domain_fronting_http_enable": {
+      "description": "فعال کردن دامین فرانتینگ در HTTP باعث می شود دامنه شما به سرعت فیلتر شود.",
+      "label": "فعال کردن دامین فرانتینگ در اتصال HTTP."
+    },
+    "domain_fronting_tls_enable": {
+      "description": "در کلودفلر پشتبانی نمیشود. برای اتصال به CDN از پورت 443 استفاده میکند",
+      "label": "🔒 فعال کردن دامین فرانتینگ در اتصال TLS"
+    },
+    "firewall": {
+      "description": "با فعال کردن فایروال، پورت‌های درحال استفاده باز خواهند ماند (مانند: ۲۲، ۴۴۳ و ۸۰ و پورت SSH) و سایر پورت‌ها بسته می‌شوند",
+      "label": "🛡️ فایروال"
+    },
+    "first_setup": {
+      "description": "-",
+      "label": "-"
+    },
+    "general": {
+      "description": "تنظیمات عمومی سیستم در این بخش قابل انجام است",
+      "label": "تنظیمات عمومی"
+    },
+    "grpc_enable": {
+      "description": "gRPC یک چارچوب متن باز مدرن با کارایی بالا Remote Procedure Call (RPC) است. می توان از آن در CDN های پشتیبانی شده استفاده کرد",
+      "label": "➿ gRPC را فعال کنید"
+    },
+    "hidden": {
+      "description": "-",
+      "label": "-"
+    },
+    "http": {
+      "description": "تنظیمات مربوط به اتصال HTTP",
+      "label": "تنظیمات HTTP"
+    },
+    "http_ports": {
+      "description": "پورت هایی که برای استفاده اتصال HTTP هستند. برای ورود چند پورت، آنها را با کاما از هم جدا کنید. (پورت 80 در هر صورت استفاده می شود)",
+      "label": "🔍 پورت‌های HTTP"
+    },
+    "http_proxy_enable": {
+      "description": "با فعال کردن این گزینه، کاربران شما می‌توانند با پورت HTTP  که یک پورت رمزگذاری نشده است، به سیستم متصل شوند. (توصیه نمیشود)",
+      "label": "☑️ اجازه اتصال HTTP"
+    },
+    "httpupgrade_enable": {
+      "description": "HTTPUpgrade یک درخواست ارتقاء HTTP ۱.۱ است و پاسخ را قبل از استفاده مستقیم از اتصال تکمیل می کند. این شبیه به WebSocket است که یک کانال ایجاد می کند که می تواند توسط بسیاری از پروکسی های معکوس و CDN ها ارسال شود، بدون اینکه نیازی به رسیدگی به تمام مسائل پیرامون خود پروتکل WebSocket باشد. ⚠️ در نرم افزارهای مبتنی بر XRay موجود نیست. فقط نرم افزارهای HiddifyNext، Singbox و V۲fly پشتیبانی می شوند",
+      "label": "🆙 فعالسازی HTTPUpgrade"
+    },
+    "hysteria": {
+      "description": "Hysteria یک ابزار پروکسی و رله پر از ویژگی است که برای اتصالات با اتلاف و ناپایدار بهینه شده است (مانند شبکه های ماهواره ای، Wi-Fi عمومی متراکم، اتصال به سرورهای خارجی از چین)",
+      "label": "هیستریا"
+    },
+    "hysteria_down_mbps": {
+      "description": "حداکثر سرعت دانلود هیستریا",
+      "label": "⬇️ دانلود (mbps) Hysteria"
+    },
+    "hysteria_enable": {
+      "description": "برای فعال کردن پروتکل هیستریا مبتنی بر UDP",
+      "label": "هیستریا را فعال کنید"
+    },
+    "hysteria_obfs_enable": {
+      "description": "مبهم سازی هیستری (Salamander) را فعال می کند",
+      "label": "🎛 Hysteria OBFS را فعال کنید"
+    },
+    "hysteria_port": {
+      "description": "پورت Hysteria UDP برای مثال 5678",
+      "label": "پورت هیستریا"
+    },
+    "hysteria_up_mbps": {
+      "description": "حداکثر سرعت آپلود هیستریا",
+      "label": "⬆️ آپلود (mbps) Hysteria"
+    },
+    "is_parent": {
+      "description": "-",
+      "label": "پنل مرکزی"
+    },
+    "kcp": {
+      "description": "تنظیمات KCP",
+      "label": "KCP"
+    },
+    "kcp_enable": {
+      "description": "این یک پروتکل مبتنی بر UDP است.",
+      "label": "KCP را فعال کنید."
+    },
+    "kcp_ports": {
+      "description": "پورت هایی که برای استفاده اتصال KCP هستند. برای ورود چند پورت، آنها را با کاما از هم جدا کنید. ",
+      "label": "پورت‌های KCP"
+    },
+    "lang": {
+      "description": "این گزینه زبان بخش کاربران را تغییر می‌دهد",
+      "label": "🗺️ زبان محیط کاربران"
+    },
+    "last_hash": {
+      "description": "-",
+      "label": "-"
+    },
+    "license": {
+      "description": "برای استفاده تجاری از این محصول باید مجوز آن را خریداری کنید",
+      "label": "کد مجوز"
+    },
+    "mux": {
+      "description": "تنظیمات MUX (Multiplex) را می توان در این بخش تنظیم کرد",
+      "label": "پیکربندی MUX"
+    },
+    "mux_brutal_down_mbps": {
+      "description": "حداکثر سرعت دانلود TCP-Brutal",
+      "label": "⬇️ دانلود (mbps) MUX Brutal"
+    },
+    "mux_brutal_enable": {
+      "description": "الگوریتم کنترل تراکم TCP-Brutal را فعال می کند",
+      "label": "☣️ MUX Brutal"
+    },
+    "mux_brutal_up_mbps": {
+      "description": "حداکثر سرعت آپلود TCP-Brutal",
+      "label": "⬆️ آپلود (mbps) MUX Brutal"
+    },
+    "mux_enable": {
+      "description": "Mux به نرم افزار سازگار نیاز دارد. Mux در Hiddify Next و Singbox و XRay سازگار نیستند",
+      "label": "Ⓜ️ فعال کردن MUX (⚠️ ناسازگار با برخی نرم افزارها)"
+    },
+    "mux_max_connections": {
+      "description": "حداکثر اتصالات درگیری با Max Streams",
+      "label": "⛓ اتصالات MUX Max"
+    },
+    "mux_max_streams": {
+      "description": "حداکثر جریان های چندگانه در یک اتصال قبل از باز کردن یک اتصال جدید",
+      "label": "↗️ MUX Max Streams"
+    },
+    "mux_min_streams": {
+      "description": "حداقل جریان های چندگانه در یک اتصال قبل از باز کردن یک اتصال جدید",
+      "label": "↘️ MUX Min Streams"
+    },
+    "mux_padding_enable": {
+      "description": "MUX Padding را فعال می کند",
+      "label": "⟹ MUX Padding"
+    },
+    "mux_protocol": {
+      "description": "ℹ️ پروتکل Multiplex. 'sMux' به طور پیش فرض استفاده می شود\n<br>\n➖ sMux: مالتیپلکس کردن جریان\n<br>\n➖ YaMux: باز هم یک مولتی پلکسر دیگر\n<br>\n➖ h2Mux: جریان های چندگانه از طریق HTTP/2",
+      "label": "♍️ پروتکل MUX"
+    },
+    "netdata": {
+      "description": "نت دیتا ابزاری است برای نمایش مقدار استفاده سیستم از منابع. فعالسازی آن ممکن است از اندکی از CPU شما استفاده کند.",
+      "label": "Netdata"
+    },
+    "not_found": {
+      "description": "تنظیمات پیدا نشد.",
+      "label": "تنظیمات پیدا نشد."
+    },
+    "only_ipv4": {
+      "description": "با فعال کردن این گزینه IPv۶ غیر فعال میشود",
+      "label": "ℹ️ فقط آی‌پی ورژن 4"
+    },
+    "package_mode": {
+      "description": "در این قسمت می‌توانید مشخص کنید که از کدام نسخه میخواهید استفاده کنید. (نسخه 'آزمایشی' امکانات را سریع‌تر از نسخه پایدار در اختیار شما می‌گذارد اما ممکن است دارای مشکلاتی باشد)",
+      "label": "🔄 حالت به روز رسانی"
+    },
+    "parent_panel": {
+      "description": "می‌توانید به پنل مرکزی وصل شوید، تا فقط یک یوزر را تعریف کنید و میزان استفاده همه سرورها به صورت تجمعی اضافه می‌شود.",
+      "label": "پنل مرکزی (مالتی سرور)"
+    },
+    "path_grpc": {
+      "description": "مسیر gRPC در کانفیگ ها",
+      "label": "ℹ️ مسیر gRPC"
+    },
+    "path_httpupgrade": {
+      "description": "باید تصادفی باشد",
+      "label": "ℹ️ مسیر ارتقاء HTTP"
+    },
+    "path_ss": {
+      "description": "مسیر شدوساکس در لینکها",
+      "label": "مسیر شدوساکس"
+    },
+    "path_tcp": {
+      "description": "برای لینک پروکسی",
+      "label": "ℹ️ مسیر کانفیگ های TCP"
+    },
+    "path_trojan": {
+      "description": "برای لینکهای Trojan",
+      "label": "ℹ️ مسیر Trojan"
+    },
+    "path_v2ray": {
+      "description": "مسیر کانفیگ‌های V2Ray را مشخص کنید.",
+      "label": "مسیر V2Ray"
+    },
+    "path_vless": {
+      "description": "برای مسیر VLess",
+      "label": "ℹ️ مسیر VLess"
+    },
+    "path_vmess": {
+      "description": "برای لینک VMess",
+      "label": "ℹ️ مسیر VMess"
+    },
+    "path_ws": {
+      "description": "مسیر Websocket را مشخص کنید",
+      "label": "ℹ️ مسیر درخواست های Websocket"
+    },
+    "proxies": {
+      "description": "تنظیمات اختصاصی را مشخص کنید",
+      "label": "تنظیمات پروکسی"
+    },
+    "proxy_path": {
+      "description": "ما از مسیر‌های پروکسی مخفی استفاده میکنیم تا پروکسی‌ها را از فیلترچی مخفی کنیم",
+      "label": "ℹ️ مسیر مخفی پروکسی"
+    },
+    "proxy_path_admin": {
+      "description": "ما از مسیر پراکسی مخفی برای مخفی کردن پروکسی های خود برای دولت ها و ربات ها استفاده می کنیم",
+      "label": "مسیر پروکسی برای مدیران"
+    },
+    "proxy_path_client": {
+      "description": "مسیر مخفی پروکسی پروکسی ها را از دولت ها و ربات ها پنهان می کند",
+      "label": "مسیر پروکسی برای مشتریان"
+    },
+    "reality": {
+      "description": "REALITY قابلیت اثر انگشت TLS سمت سرور را حذف می کند",
+      "label": "ریالیتی"
+    },
+    "reality_fallback_domain": {
+      "description": "هنگامی که GTW از وب‌ سایت‌ها در نام سرور بازدید می‌کند، به این دامنه هدایت می‌شود.",
+      "label": "🌍 دامنه بازگشتی ریالیتی"
+    },
+    "reality_port": {
+      "description": "شما می توانید یک پورت سفارشی برای سرور ریالیتی خود تنظیم کنید تا پردازش سیستم را کاهش دهید. (اجازه اتصال مستقیم به پروکسی ها باید بله باشد)",
+      "label": "↔️  پورت ریالیتی"
+    },
+    "reality_private_key": {
+      "description": "این کد را تغییر ندهید",
+      "label": "🔑 کلید خصوصی"
+    },
+    "reality_public_key": {
+      "description": "این کد را تغییر ندهید",
+      "label": "🔑 کلید عمومی"
+    },
+    "reality_server_names": {
+      "description": "شما می توانید چندین نام را در قالب جدا شده با کاما اضافه کنید",
+      "label": "🌎 نام‌های سرور ریالیتی"
+    },
+    "reality_short_ids": {
+      "description": "این کد را تغییر ندهید",
+      "label": "🆔 شناسه های کوتاه"
+    },
+    "restls": {
+      "label": "RestTLS"
+    },
+    "shadowsocks": {
+      "description": "Shadowsocks یک پروکسی تونل سریع است که به شما کمک می کند فایروال ها را دور بزنید",
+      "label": "شادوساکس"
+    },
+    "shadowsocks2022_enable": {
+      "description": "Shadowsocks 2022 یک پروتکل پروکسی امن برای ترافیک TCP و UDP است. ترافیک پراکسی از یک جریان بایت تصادفی قابل تشخیص نیست و بنابراین می تواند فایروال ها و سانسورهای اینترنتی را که به DPI (بازرسی عمیق بسته) متکی هستند، دور بزند",
+      "label": "⭕️ Shadowsocks 2022 را فعال کنید"
+    },
+    "shadowsocks2022_method": {
+      "description": "این روش در ShadowTLS و SSFakeTLS نیز استفاده می شود",
+      "label": "🔐 روش رمزگذاری Shadowsocks"
+    },
+    "shadowsocks2022_port": {
+      "description": "برای وصل شدن باید پورت های TCP و UDP روی سرور باز باشند",
+      "label": "↔️ پورت Shadowsocks 2022"
+    },
+    "shadowtls": {
+      "description": "یک پروکسی برای در اختیار قرار دادن TLS Handshake به فایروال.\n\nمانند تروجان کار می کند اما نیازی به Signing Certificate ندارد. فایروال، TLS Handshake واقعی را با گواهی معتبری که انتخاب می کنید، می‌بیند.",
+      "label": "ShadowTLS"
+    },
+    "shadowtls_enable": {
+      "description": "ShadowTLS یک پروتکل جدید است اما می تواند با استفاده از FakeTLS ترافیک را از فیلترچی پنهان کند",
+      "label": "☑️ ShadowTLS"
+    },
+    "shadowtls_fakedomain": {
+      "description": "لطفاً از یک دامنه شناخته شده در دیتاسنتر خود استفاده کنید. به عنوان مثال، اگر از دیتاسنتر Azure استفاده می‌کنید، microsoft-update.com یک نمونه خوب است",
+      "label": "🌍 دامنه جعلی ShadowTLS"
+    },
+    "shared_secret": {
+      "description": "برخی از پروکسی‌ها در حال حاضر محاسبه حجم ترافیک را پشتیبانی نمی‌کنند، این رمز برای این دسته از پروکسی‌ها استفاده خواهد شد",
+      "label": "🔐 رمز مشترک"
+    },
+    "show_usage_in_sublink": {
+      "description": "این گزینه یک کانفیگ فیک در لینک ساب کاربر ایجاد میکند که حجم باقیمانده و تاریخ انقضا کاربر را نشان می‌دهد",
+      "label": "👁️‍🗨️ نمایش حجم و تاریخ انقضا در کانفیگ ها"
+    },
+    "speed_test": {
+      "description": "با فعالسازی این گزینه به کاربران اجازه تست سرعت می‌دهید. این کار به آن‌ها کمک می‌کند تا کیفیت سرور و کانفیگ‌ها را بسنجند",
+      "label": "🚀 تست سرعت"
+    },
+    "ssfaketls": {
+      "description": "شادوساکس FakeTLS یک روش مبهم سازی ساده هست که دیتا را در بسته  TLS کپسوله میکند تا فیلترچی فریب بخورد.",
+      "label": "Shadowsocks FakeTLS"
+    },
+    "ssfaketls_enable": {
+      "description": "پروتکل OBFS ساده (توصیه نمی شود)",
+      "label": "Shadowsocks FakeTLS (OBFS ساده)"
+    },
+    "ssfaketls_fakedomain": {
+      "description": "لطفاً از یک دامنه شناخته شده در دیتاسنتر خود استفاده کنید. به عنوان مثال، اگر از دیتاسنتر Azure استفاده می‌کنید، microsoft-update.com یک نمونه خوب است.",
+      "label": "🌍 دامنه جعلی برای SS FakeTLS"
+    },
+    "ssh": {
+      "description": "پروکسی SSH که به عنوان تونل SSH یا ارسال پورت SSH نیز شناخته می شود، روشی امن برای ایجاد یک کانال ارتباطی امن بین دو ماشین در یک شبکه ناامن است. ما یک برنامه خاص داریم که کاملاً با سرور SSH متفاوت است. با این کانکشن کاربر نمی تواند هیچ دستوری را روی سرور اجرا کند",
+      "label": "پروکسی SSH"
+    },
+    "ssh_server_enable": {
+      "description": "این SSH پروکسی با SSH سرور اصلی کاملا متفاوت است و امکان اجرای دستورات را ندارد",
+      "label": "✔️ پروکسی SSH را فعال کنید"
+    },
+    "ssh_server_port": {
+      "description": "این پورت کاملا با پورت سرور اصلی SSH شما متفاوت است. این یک برنامه اختصاصی است",
+      "label": "پورت پروکسی SSH"
+    },
+    "ssh_server_redis_url": {
+      "description": "استفاده نشده",
+      "label": "آدرس پایگاه داده کاربر SSH"
+    },
+    "ssr": {
+      "description": "ShadowsocksR ورژنی از پروژه اصلی Shadowsocks است که ادعا می‌شود از نظر امنیت و ثبات نسبت به آن بهتر است.",
+      "label": "SSR"
+    },
+    "ssr_enable": {
+      "description": "شادوساکسR یا ShadowsocksR ورژن دیگری از پروژه شادوساکس است که ادعا شده است که از لحاظ امنیت و ثبات به نسبت شادوساکس بهتر است. (تا به حال تست نشده.)",
+      "label": "فعال کردن SSR"
+    },
+    "ssr_fakedomain": {
+      "description": "لطفا از یک دامنه معتبر در دیتاسنتر خود استفاده کنید. برای مثال، اگر از دیتاسنتر Azure استفاده می‌کنید، microsoft-update.com یک نمونه خوب است",
+      "label": "دامنه جعلی برای SSR"
+    },
+    "telegram": {
+      "description": "پروکسی تلگرام برای استفاده درون اپ تلگرام طراحی شده تا فیلترینگ تلگرام را دور بزند",
+      "label": "پروکسی تلگرام"
+    },
+    "telegram_adtag": {
+      "description": "برای نشان دادن کانال اسپانسر شده در لیست چت کاربر استفاده می شود. برای تبلیغ یک کانال یک تگ از @MTProxybot دریافت کنید.\nاگر در بات تلگرام نیاز به کد داشت کد 0123456789ABCDEF0123456789ABCDEF وارد کنید",
+      "label": "📍 تگ تبلیغاتی تلگرام"
+    },
+    "telegram_bot_token": {
+      "description": "<p>برای افزودن قابلیت ربات تلگرام نیاز است تا یک ربات با <a href=\"https://t.me/BotFather\" target=\"_blank\">BotFather@</a> بسازید و کد API را در این قسمت وارد کنید</p>",
+      "label": "🔐 توکن ربات تلگرام"
+    },
+    "telegram_enable": {
+      "description": "برای کپسوله کردن پروکسی تلگرام در قالب ترافیک TLS استفاده می‌شود",
+      "label": "✔️ فعال کردن پروکسی تلگرام (MTProto)"
+    },
+    "telegram_fakedomain": {
+      "description": "لطفا از یک دامنه معتبر در دیتاسنتر خود استفاده کنید. برای مثال، اگر از دیتاسنتر Azure استفاده می‌کنید، microsoft-update.com یک نمونه خوب است",
+      "label": "📺 دامنه فیک تلگرام"
+    },
+    "telegram_lib": {
+      "description": "در این قسمت می‌توانید کتابخانه‌های مختلف تلگرام را انتخاب نمایید. توجه کنید که فقط پایتون در تمام سیستم ها درست کار میکند و بقیه ممکن است اشکالاتی داشته باشد. بعد از تغییر حتما تست کنید",
+      "label": "🔢  کتابخانه پروکسی تلگرام"
+    },
+    "tls": {
+      "description": "تنظیمات مربوط به اتصال TLS",
+      "label": "تنظیمات TLS"
+    },
+    "tls_fragment_enable": {
+      "description": "تحت برخی شرایط، می تواند سیستم لیست سیاه SNI را دور بزند",
+      "label": "⏯ TLS Fragment را فعال کنید"
+    },
+    "tls_fragment_size": {
+      "description": "اندازه هر بسته",
+      "label": "🎚 اندازه بسته TLS"
+    },
+    "tls_fragment_sleep": {
+      "description": "تاخیر زمانی بین قطعات",
+      "label": "⏱ TLS Fragment Sleep"
+    },
+    "tls_mixed_case": {
+      "description": "TLS Mixed SNI Case Fragmentation را فعال می کند",
+      "label": "🔠 TLS Mixed SNI Case را فعال کنید"
+    },
+    "tls_padding_enable": {
+      "description": "Padding تکه تکه شدن TLS را فعال می کند",
+      "label": "♒️ TLS Padding را فعال کنید"
+    },
+    "tls_padding_length": {
+      "description": "طول Padding برای تکه تکه شدن TLS",
+      "label": "📏 TLS Padding"
+    },
+    "tls_ports": {
+      "description": "پورت هایی که برای اتصال TLS استفاده میشوند. برای ورود چند پورت، آنها را با کاما از هم جدا کنید. (پورت 443 در هر صورت استفاده میشود)",
+      "label": "🔍 پورت‌های TLS"
+    },
+    "tls_trick": {
+      "description": "تنظیمات TLS Fragmentation را می توان در این بخش تنظیم کرد",
+      "label": "ترفند TLS"
+    },
+    "too_advanced": {
+      "description": "مسیر پروکسی ها را مشخص کنید. به ویژه اگه از HTTP و VMess استفاده می‌کنید",
+      "label": "تنظیمات خیلی پیشرفته"
+    },
+    "torrent_block": {
+      "description": "در این قسمت تنظیمات Torrent Block قابل انجام است.",
+      "label": "تنظیمات Torrent Block"
+    },
+    "tuic": {
+      "description": "پروکسی Delicately-TUICed با کارایی بالا روی پروتکل QUIC است. \nهدف TUIC این است که تأخیر handshake را تا حد امکان به حداقل برساند.",
+      "label": "TUIC"
+    },
+    "tuic_enable": {
+      "description": "این یک پروتکل مبتنی بر UDP شبیه به quic است",
+      "label": "فعال کردن TUIC"
+    },
+    "tuic_port": {
+      "description": "از کاما برای جدا کردن پروت‌ها استفاده کنید مثلا 63000,60000",
+      "label": "پورت‌های TUIC"
+    },
+    "unique_id": {
+      "description": "-",
+      "label": "-"
+    },
+    "utls": {
+      "description": "این گزینه مرورگرهای معروف را شبیه سازی میکند تا فیلترچی نتواند شما رو شناسایی کند",
+      "label": "❇️ uTLS"
+    },
+    "v2ray_enable": {
+      "description": "مود V2Ray در حال حاضر اکانتینگ را پشتیبانی نمیکند و پیشنهاد نمیشود",
+      "label": "♈️ فعالسازی V2Ray"
+    },
+    "validation-error": "یکی از فیلدها دچار خطا شده است.",
+    "validation-success": "تنظیمات با موفقیت ذخیره شدند. لطفا بر روی این لینک: %(link)s کلیک کنید تا بر روی سیستم اعمال شوند. این کار ممکن است 2 دقیقه طول بکشد",
+    "validation-success-no-reset": " ✅ تنظیمات با موفقیت تغییر کرد",
+    "vmess_enable": {
+      "description": "فعال کردن پروتکل VMess",
+      "label": "♈️ فعال کردن VMess"
+    },
+    "warp": {
+      "description": "وارپ ابزاری هست که آی پی سرور شما را در ترافیک خروجی مخفی می‌کند. بدین صورت وقتی کاربران از وبسایتی بازدید می‌کنند، آیپی وارپ به جای آیپی سرور شما نمایش داده می‌شود.\n<br>\nبرای مثال اگر با کپچای گوگل مشکل دارید با استفاده از این ابزار مشکل رفع شود",
+      "label": "WARP"
+    },
+    "warp_enable": {
+      "description": "WARP به شما کمک می کند تا محدودیت‌های گوگل، اسپاتیفای و نتفلیکس را با مخفی‌سازی آیپی سرور دور بزنید.",
+      "label": "فعالسازی +WARP"
+    },
+    "warp_mode": {
+      "description": "✴️ همه : همه سایت‌ها از Warp برای ترافیک خروجی استفاده می‌کنند.\n<br>\n☑️ فقط سایت‌های داخلی و مسدود شده: فقط سایت های داخلی و وبسایت‌هایی مثل Google, Spotifiy, Netflix, OpenAi, IPinfo.io از Warp برای ترافیک خروجی استفاده می‌کنند.",
+      "label": "✴️ حالت +Warp"
+    },
+    "warp_plus_code": {
+      "description": "🔝 دادن کلید وارپ پلاس باعث افزایش سرعت میشود. جهت خرید کلید به سایت <a href='https://1.1.1.1/'> 1.1.1.1 </a>\nبروید و اقدام به خرید کلید کنید.\n<br>\n⚠️ در صورت وجود خطا در این کلید، وارپ غیرفعال می شود",
+      "label": "🔑 کلید لایسنس وارپ پلاس"
+    },
+    "warp_sites": {
+      "description": "اضافه کردن سایت‌های اضافی برای عبور از Warp (فقط زمانی که حالت Warp غیر فعال نیست)",
+      "label": "🆚 سایت‌های اضافی برای Warp"
+    },
+    "wireguard": {
+      "description": "WireGuard یک پروتکل سبک و مبتنی بر UDP است که به دلیل سادگی، کارایی و امنیت قوی شناخته شده است. راه اندازی سریع و سورس کد شفاف را ارائه می دهد و به دلیل سهولت استفاده در سیستم عامل های مختلف محبوبیت پیدا کرده است",
+      "label": "وایرگارد"
+    },
+    "wireguard_enable": {
+      "description": "<p>WireGuard پروتکل مبتنی بر UDP است. (⚠️ فقط در <a href=\"https://github.com/hiddify/hiddify-next\" target=\"_blank\">Hiddify Next</a> کار می کند)</p>",
+      "label": "🐉 فعال سازی وایرگارد"
+    },
+    "wireguard_ipv4": {
+      "description": "-",
+      "label": "-"
+    },
+    "wireguard_ipv6": {
+      "description": "-",
+      "label": "-"
+    },
+    "wireguard_noise_trick": {
+      "description": "این روش نویز اضافی را برای جلوگیری از شناسایی و مسدود شدن توسط GFW ایجاد می کند",
+      "label": "💥 ترفند نویز وایرگارد"
+    },
+    "wireguard_port": {
+      "description": "پورت وایرگارد",
+      "label": "↔️ پورت وایرگارد"
+    },
+    "wireguard_private_key": {
+      "description": "-",
+      "label": "-"
+    },
+    "wireguard_public_key": {
+      "description": "-",
+      "label": "-"
+    },
+    "ws_enable": {
+      "description": "Websocket یک تونل روی HTTP ایجاد می کند که برای استفاده در CDN مفید است",
+      "label": "🔰 Websocket را فعال کنید"
+    },
+    "invalid uuid": "رمز UUID نامعتبر است. به عنوان مثال: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6"
+  },
+  "copy": "کپی",
+  "daily": "⏰ روزانه",
+  "days": "روز",
+  "desktop": "دسکتاپ",
+  "direct": "➡️ مستقیم (بدون واسطه)",
+  "domain": {
+    "cdn": "سی‌دی‌ان",
+    "description": "این فیلد باید با دقت و به درستی تکمیل شود. در غیر اینصورت پروکسی ها به مشکل بر خواهند خورد. لطفا برای دیدن راهنمای ساخت زیردامنه \n<a href='https://github.com/hiddify/hiddify-config/wiki/راهنمای-تنظیم-دامنه-و-نهایی-کردن-نصب#آموزش-ساخت-زیردامنه'>این آدرس </a>\nرا ببینید.",
+    "domain": "دامنه",
+    "domain_fronting": {
+      "description": "برای شبیه سازی وب سایت دیگری به جای وب سایت شما در SNI استفاده می شود. بنابراین، فیلترچی نمی تواند دامنه شما را فیلتر کند. \n<a href='https://github.com/hiddify/hiddify-config/wiki/استفاده-از-دامین-فرانتینگ'>آموزش ثبت </a>\n\n⚠️CloudFlare از دامین فرانتینگ پشتیبانی نمی کند.",
+      "label": "🔒 فعال کردن دامین فرانتینگ در اتصال TLS"
+    },
+    "ip": "آی‌پی",
+    "mode": "حالت"
+  },
+  "download": "دانلود مستقیم",
+  "fake": "🆎 گمراه کننده (Fake)",
+  "gRPC": "➿ gRPC",
+  "gRPC is a H2 based protocol": {
+    " Maybe it is faster for you!": "gRPC ℹ️ یک پروتکل مبتنی بر H2 است. شاید برای شما سریعتر باشد!"
+  },
+  "in parent panel": "در پنل مرکزی",
+  "install from google play": "<i class='fa-brands fa-google-play'></i> گوگل‌پلی",
+  "ios": "آی‌او‌اس",
+  "items": "موارد",
+  "lang": {
+    "en": "English 🇺🇸 انگلیسی 英语",
+    "fa": "Persian 🇮🇷 فارسی 波斯语",
+    "pt": "Portuguese 🇵🇹 پرتغالی 葡萄牙語",
+    "ru": "🇷🇺 Russian روسی Русский",
+    "zh": "🇨🇳 Chinese چینی 简体中文"
+  },
+  "lib": {
+    "telegram": {
+      "erlang": "⛔️ کار نمیکند - Erlang : عملکرد متوسط",
+      "go": "✴️ Go : عملکرد بالا - عدم پشتیبانی از تبلیغات",
+      "orignal": "⛔️ کار نمیکند - اصلی : عملکرد قوی",
+      "python": "✅ پایتون : عملکرد ضعیف"
+    }
+  },
+  "log": "📄 لاگ",
+  "login": {
+    "secret": {
+      "description": "برای دسترسی به این صفحه UUID خود را وارد کنید",
+      "label": "کد مخفی"
+    }
+  },
+  "macOS": "مک",
+  "master": {
+    "page-title": "هیدیفای"
+  },
+  "monthly": "🗓️ ماهانه",
+  "next": "بعدی",
+  "no_reset": "⭐️ بدون ریست شدن",
+  "node": {
+    "mode": {
+      "label": "حالت گره"
+    },
+    "name": {
+      "label": "نام گره"
+    },
+    "uuid": {
+      "label": "UUID گره"
+    }
+  },
+  "old_xtls_direct": "🔙 حالت مستقیم قدیمی (برای تروجان TCP، VLess XTLS)",
+  "open": "باز کردن",
+  "package days?": "تعداد روز؟",
+  "package size?": "حجم بسته",
+  "previous": "قبلی",
+  "quicksetup": {
+    "setlang": {
+      "error": "خطایی در تغییر زبان رخ داد",
+      "success": "تغییر زبان با موفقیت انجام شد"
+    }
+  },
+  "reality": "🔂 ریالیتی",
+  "relay": "♾️ سرور میانی (اتصال با استفاده از یک سرور میانی)",
+  "search": "جستجو",
+  "see the log in the bellow screen": "📑 لاگ سیستم  را می‌توانید در صفحه زیر ببینید:",
+  "selected domain for REALITY is not in the same ASN": {
+    " To better use of the protocol, it is better to find a domain in the same ASN.": "دامنه انتخاب شده برای REALITY در همان ASN نیست. برای استفاده بهتر از این پروتکل، بهتر است یک دامنه در همان ASN پیدا کنید."
+  },
+  "serverssh": {
+    "password-login": {
+      "warning": "سرور شما به دلیل فعال بودن احراز هویت رمز عبور در SSH، در معرض سوء استفاده قرار دارد. برای امنیت بخشیدن به سرور خود، لطفاً به مکانیزم احراز هویت مبتنی بر کلید سوئیچ کنید و احراز هویت رمز عبور را غیرفعال نمایید. <a href='https://github.com/hiddify/Hiddify-Manager/wiki/%D8%BA%DB%8C%D8%B1%D9%81%D8%B9%D8%A7%D9%84-%DA%A9%D8%B1%D8%AF%D9%86-%D8%AF%D8%B3%D8%AA%D8%B1%D8%B3%DB%8C-%D8%A8%D8%A7-%D9%BE%D8%B3%D9%88%D8%B1%D8%AF'>بیشتر بخوانید... </a>"
+    }
+  },
+  "singbox: ssh": "SingBox: SSH",
+  "ssh": "SSH",
+  "sub_link_only": "📳 فقط برای لینک ساب (می تواند مستقیم، رله یا CDN باشد)",
+  "telegram": "تلگرام",
+  "test": "تست",
+  "update": "به روز رسانی",
+  "user": {
+    "UUID": "UUID",
+    "current_usage_GB": "حجم مصرفی (گیگابایت)",
+    "expiry_time": "انقضا (روز)",
+    "home": {
+      "all_configs": "تمام کانفیگ‌ها",
+      "allconfig": {
+        "clash-configs": "کانفیگ‌های کلش",
+        "hiddify-managers": "همه کانفیگ های مدیران هیدیفای",
+        "link-configs": "لینک برای Subscription",
+        "name": "اسم و لینک",
+        "protocol": "پروتکل",
+        "security": "امنیت",
+        "transport": "انتقال",
+        "type": "نوع"
+      },
+      "allconfigs": {
+        "expect_vless": "به جز VLESS"
+      },
+      "android": {
+        "intro": "لطفاً Hiddify Android را از لینک‌ زیر نصب نمایید: <br>\n%(dl_link)s    %(play_link)s \n<!--\n<div class='callout callout-danger'>\n    <b>اپ Hiddify Android را به ورژن 0.14 آپدیت کنید. </b>\n</div>\n-->\n<details>\n<summary>آیا استفاده از Hiddify Andorid ایمن است؟</summary>\n<div class='callout callout-info'>\n\n        اپ Hiddify Android یک ورژن (Fork) منبع باز از اپ Clash است که نسبت به اپ کلش از پروتکل های بیشتری پشتیبانی می کند.\n         <br>\n         کدهای منبع آن را در گیت‌هاب می‌توانید ببینید:\n         <a href='https://github.com/hiddify/HiddifyProxyAndroid'>GitHub</a>.\n        \n         <br>\n         بنابراین، با خیال راحت از آن استفاده کنید.\n\n         <details>\n             <summary>جایگزین: Normal Clash</summary>\n             <div class='btn-group'>\n                 <a href='https://play.google.com/store/apps/details?id=com.github.kr328.clash'\n                     class='btn btn-warning orig-link'>دانلود از Google Play</a>\n             </div>\n             <div class='btn-group'>\n                 <a href='/{{hconfigs[ConfigEnum.proxy_path]}}/gh/Kr328/ClashForAndroid/releases/download/v2.5.12/cfa-2.5.12-premium-universal-release.apk'\n                     class='btn btn-warning orig-link'>دانلود مستقیم</a>\n             </div>\n\n             <div class='alert alert-danger'>\n             Clash از پروتکل VLESS پشتیبانی نمی کند. بنابراین، باید از پروتکل دیگری برای آن استفاده کنید.\n             </div>\n            \n\n         </details>\n     </div>\n         </details>"
+      },
+      "branding": {
+        "linktitle": "صفحه پشتیبانی",
+        "title": "پشتیبانی"
+      },
+      "clash_configs": {
+        "all_sites": {
+          "btn": "نصب برای همه سایت‌ها",
+          "description": "<b>این حالت پیشنهاد نمی‌شود</b>. استفاده از پروکسی برای همه سایت‌ها، حتی برای سایت‌های داخلی.\n<div class='callout callout-danger'>\nدر این حالت همه سایت‌ها (حتی سایتهای داخلی) از پروکسی عبور می‌کنند که باعث به خطر افتادن امنیت و مسدود شدن پروکسی خواهد شد.\n</div>\n",
+          "title": "پروکسی برای همه سایت‌ها"
+        },
+        "alternative_for_normal_clash": "لینک جایگزین برای کلش معمولی",
+        "foreign_sites": {
+          "btn": "نصب برای سایت‌های خارجی",
+          "description": "در این حالت همه سایت‌های خارجی (حتی سایت‌های غیر فیلتر) از پروکسی استفاده می‌کند و سایت‌های ایرانی مستقیم وصل خواهند شد.\n<div class='callout callout-warning'>\nدر این این حالت همه سایت‌های خارجی (حتی فیلتر نشده‌ها)، از پروکسی عبور داده می‌شوند. برای دسترسی به بعضی از سایت‌های تحریم شده مفید است. \n</div>",
+          "title": "برای همه سایت‌های خارجی"
+        },
+        "intro": "پس از نصب برنامه در قسمت بالا، بر اساس نوع اتصال، روی یکی از لینک‌های زیر کلیک کنید تا پروکسی سرورها به برنامه شما اضافه شوند:\n<br>\n<br />",
+        "link_for_normal_clash": "نصب کلش معمولی",
+        "only_for_blocked_sites": {
+          "btn": "نصب برای سایت‌های فیلتر",
+          "description": "<b>حالت پیشنهادی</b>.\nدر این حالت فقط سایت‌های فیلتر شده از طریق پروکسی عبور داده می‌شوند.\n<div class='callout callout-success'>\nدر این حالت، سایت‌های فیلتر نشده، بدون پروکسی باز می‌شوند و شما هیچ تغییری در سرعت احساس نمی‌کنید. همچنین سایت‌های داخلی نیم‌بها حساب می‌شوند\n</div>",
+          "title": "فقط برای سایت‌های فیلتر شده"
+        }
+      },
+      "doh": "DNS روی HTTPS",
+      "ios": {
+        "others": {
+          "intro": "ابتدا یکی از این برنامه‌ها را نصب کنید:\n<div class='btn-group'>\n\n\t<a href='https://apps.apple.com/us/app/foxray/id6448898396'\n        class='btn btn-primary orig-link'>FoXray</a>\n\n</div>\n\n<div class='btn-group'>\n\n<a href='https://apps.apple.com/us/app/fair-vpn/id1533873488'\n         class='btn btn-primary orig-link'>Fair VPN</a>\n</div>\n\n<br />\nسپس کانفیگ‌ زیر را در برنامه اعمال کنید:\n<br />",
+          "title": "برنامه FoXray و Fair VPN"
+        },
+        "stash": {
+          "intro": "برای سیستم عامل iOS اپلیکیشن Stash و Shadowrocket هر 2 عالی هستند اما رایگان نیستند؛ به نظر ما برای استفاده از پروکسی هوشمند Shadowrocket واقعا ارزش خرید دارد.\n<br>\n<br />\n  <div class='btn-group'>\n        <a href='https://apps.apple.com/us/app/stash-rule-based-proxy/id1596063349' target='_blank' class='btn btn-success orig-link'>دانلود Stash</a>\n        </div>\n  <div class='btn-group'>\n        <a href='https://apps.apple.com/us/app/shadowrocket/id932747118' target='_blank' class='btn btn-primary orig-link'>دانلود Shadowrocket</a> \n        </div>\n<br>\n<br />",
+          "title": "برنامه\n<button class='btn btn-sm btn-default' onclick='show_video('ios-stash')'><i class='fa-solid fa-question'></i> Stash</button>\n          <button class='btn btn-sm btn-default' onclick='show_video('ios-shadowrocket')'><i class='fa-solid fa-question'></i> Shadowrocket</button>\n <span class='badge badge-success'>پیشنهادی</span>"
+        }
+      },
+      "link": {
+        "manual-copy": "برای کپی کردن به کلیپ‌بورد: دکمه Ctrl+C را بزنید.",
+        "success-copy": "لینک کپی شد. "
+      },
+      "qr-code": {
+        "description": "برای کپی یا به اشتراک‌گذاری لینک‌ها، روی قسمت طوسی‌رنگ  که با شکل <i class='fa-solid fa-qrcode'></i>  مشخص شده، کلیک کنید تا کد کیوآر نمایش داده شود.",
+        "display": "نمایش کیو آر کد"
+      },
+      "share-title": "اشتراک‌گذاری",
+      "speedtest": {
+        "download": "دانلود",
+        "intro": "ابتدا سرعت را <b>بدون</b> اتصال به پروکسی تست کنید. اگر سرعت خوب نیست، به این معنی است که این IP در ISP شما اصطلاحا کثیف است.\nاگر سرعت بدون پراکسی کم بود، وقت خود را برای تست این پروکسی تلف نکنید.\nدر غیر این صورت با پروکسی های مختلف ارائه شده  در این صفحه تست کنید و هر زمان سرعت با پروکسی نزدیک به سرعت بدون پروکسی بود، بهترین پروتکل را پیدا کرده اید.\n<br />",
+        "title": "تست سرعت (شناسایی آی‌پی کثیف)",
+        "two_ways": "هر دو (آپلود و دانلود)",
+        "upload": "آپلود"
+      },
+      "telegram": {
+        "clickbtn": "پروکسی تلگرام",
+        "description": "روی یکی از لینک‌های زیر کلیک کنید. سپس در تلگرام پنجره‌‌ای مشاهده می‌کنید که یک دکمه با نوشته <b>Connect Proxy</b> قابل مشاهده است. روی آن کلیک کنید تا پروکسی متصل شود.\n<br />"
+      },
+      "title": "هیدیفای",
+      "tool": {
+        "all-configs": "تمام کانفیگ‌ها",
+        "doh": {
+          "help": "<h4> کانفیک کردن DNS روی HTTPS </h4>\nمرورگرهای متعددی وجود دارد که با DNS روی HTTPS یا (DoH) سازگار هستند. این پروتکل اجازه می‌دهد تا ارتباطتان را با 1.1.1.1 رمزگذاری کنید تا از کوئری‌های روی DNS در برابر حملات نفوذ به امنیت محافظت کنید. \nبعضی مرورگرها ممکن است این تنظیمات را از قبل داشته باشند. \n<br />\n  <h5>​​Mozilla Firefox</h5>\n     دکمه <b>Menu</b> > <b>تنظیمات</b> را انتخاب کنید. در منوی عمومی، به پایین بروید تا به <b>تنظیمات شبکه</b> دسترسی پیدا کنید. <b>تنظیمات</b> را انتخاب کنید. <b>فعال کردن DNS از طریق HTTPS</b> را انتخاب کنید.\n<br />\n     ​<h5>‏Google Chrome</h5>\n     منوی <b>سه نقطه</b> را در مرورگر خود بزنید و <b>تنظیمات</b> انتخاب کنید.\n     <b>حریم خصوصی و امنیت</b> > <b>امنیت</b> را انتخاب کنید.\n     به پایین بروید و <b>استفاده از DNS امن</b> را فعال کنید.\n<br />\n     <h5>​Microsoft Edge</h5>\n     منوی <b>سه نقطه</b> را در مرورگر خود بزنید و <b>تنظیمات</b> انتخاب کنید.\n     <b>حریم خصوصی، جستجو و خدمات</b> را انتخاب کنید و به <b>امنیت</b> بروید.\n     <b>استفاده از DNS امن</b> را فعال کنید.\n     انتخاب ارائه دهنده خدمات را انتخاب کنید.",
+          "title": "DNS از طریق HTTPS"
+        }
+      },
+      "usage": {
+        "details": "نمایش جزئیات استفاده",
+        "expire": "پایان:",
+        "from": "از",
+        "monthly": "ماهانه",
+        "title": "⏳ حجم مصرف شده"
+      },
+      "windows": {
+        "intro": "ابتدا نرم افزار هیدیفای دسکتاپ را با توجه به سیستم عامل خود از لینکهای زیر دانلود و نصب کنید.\n<br />\n%(hiddify_desktop_links)s\n<details>\n<summary>چرا Hiddify Desktop ؟</summary>\n<div class='callout callout-info'>\n         Hiddify Desktop یک ورژن (Fork) امن و منبع باز از Clash است که از پروتکل VLESS و همینطور شبیه سازی مرورگر پشتیبانی می‌کند.\n         <br>\n<br />\n         کدهای منبع آن در لینک زیر موجود است\n         <a href='https://github.com/hiddify/HiddifyDesktop'>GitHub</a>.\n     <br />   \n\n         <details>\n             <summary>جایگزین: برنامه کلش </summary>\n             %(normal_clash_link)s\n\n             <div class='alert alert-danger'>\n             برنامه Clash از پروتکل VLESS و شبیه سازی مرورگر پشتیبانی نمی‌کند.\n             </div>\n            \n\n         </details>\n     </div>\n         </details>\n\n<br>\n<br />\nحال با توجه به نیاز خود می توانید پروفایل مورد نظر خود را با کلیک بر روی یکی از دکمه‌های زیر به نرم‌افزار وارد کنید. با مشاهده پنجره در مرورگر خود، کافیست روی گزینه <b>Open</b> کلیک کنید تا لینک سرور به صورت خودکار به هیدیفای اضافه شود."
+      },
+      "select os": "لطفا سیستم عامل خود را انتخاب کنید.",
+      "select tool": "لطفا یکی از موارد زیر را انتخاب کنید."
+    },
+    "last_reset_time": "آخرین زمان ریست شدن حجم (روز پیش)",
+    "name": "نام",
+    "usage_limit_GB": "⌛️ محدودیت حجم (گیگابایت)",
+    "user_links": "لینک‌های کاربر"
+  },
+  "weekly": "📅 هفتگی",
+  "worker": "✴️ ورکر کلودفلر",
+  "📅%(expire_days)s days": "📅%(expire_days)s روز اعتبار"
+}

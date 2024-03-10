@@ -1,0 +1,26 @@
+<h3>
+    {% for file in log_files %}
+    <a href="{{hurl_for('api_admin.AdminLogApi')}}">{{file}}</a>
+    <br>
+    {% endfor %}
+    </h4>
+
+    <!-- jQuery -->
+    <script src="{{ static_url_for( filename='plugins/jquery/jquery.min.js' ) }}"></script>
+    <script>
+        $("a").on("click", function (event) {
+            event.preventDefault()
+
+            $.ajax({
+                url: $(this).attr("href"),
+                type: 'POST',
+                data: { file: $(this).text() },
+                xhrFields: {
+                    withCredentials: true
+                }
+            }).then(response => {
+                Promise.resolve(response)
+                window.open('', '_blank').document.body.outerHTML = response
+            });
+        });
+    </script>

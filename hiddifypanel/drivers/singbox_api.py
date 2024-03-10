@@ -2,6 +2,7 @@ import xtlsapi
 from hiddifypanel.models import *
 from .abstract_driver import DriverABS
 from flask import current_app
+import json
 
 
 class SingboxApi(DriverABS):
@@ -42,12 +43,13 @@ class SingboxApi(DriverABS):
             return
         # raise NotImplementedError()
 
-    def get_usage(self, uuid, reset=False):
-        if hconfig(ConfigEnum.is_parent):
-            return
+    def get_all_usage(self, users):
+        return {u: self.get_usage_imp(u.uuid) for u in users}
+
+    def get_usage_imp(self, uuid):
         xray_client = self.get_singbox_client()
-        d = xray_client.get_client_download_traffic(f'{uuid}@hiddify.com', reset=reset)
-        u = xray_client.get_client_upload_traffic(f'{uuid}@hiddify.com', reset=reset)
+        d = xray_client.get_client_download_traffic(f'{uuid}@hiddify.com', reset=True)
+        u = xray_client.get_client_upload_traffic(f'{uuid}@hiddify.com', reset=True)
 
         res = None
         if d is None:

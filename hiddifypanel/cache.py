@@ -6,6 +6,7 @@ redis_client = redis.from_url('unix:///opt/hiddify-manager/other/redis/run.sock?
 
 
 def exception_handler(e, original_fn, args, kwargs):
+    print("cache exception occur", e, original_fn, args, kwargs)
     return original_fn(*args, **kwargs)
     pass
 
@@ -44,12 +45,12 @@ class DisableCache:
 
 
 # cache = DisableCache()
-try:
-    @cache.cache()
-    def test():
-        return 1
-    test()
-except Exception as e:
-    import sys
-    print('Caching Error! Disabling cache', e, file=sys.stderr)
-    cache = DisableCache()
+# try:
+#     @cache.cache()
+#     def test():
+#         return 1
+#     test()
+# except Exception as e:
+#     import sys
+#     print('Caching Error! Disabling cache', e, file=sys.stderr)
+#     # cache = DisableCache()

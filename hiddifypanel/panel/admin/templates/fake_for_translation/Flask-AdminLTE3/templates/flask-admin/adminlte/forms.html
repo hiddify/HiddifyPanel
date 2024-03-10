@@ -1,0 +1,105 @@
+{% import 'admin/lib.html' as lib with context %}
+
+{% macro form_header(header, icon=None, is_modal=False) %}
+    {% if is_modal %}
+        <h4 class="modal-title">{{ header }}</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+
+    {% else %}
+        <h3 class="card-title">{% if icon %}<i class="{{ icon }}"></i> {% endif %}{{ header }}</h3>
+    {% endif %}
+{% endmacro %}
+
+{% macro form_body(form, form_opts=None) %}
+    {% if form.hidden_tag is defined %}
+        {{ form.hidden_tag() }}
+    {% else %}
+        {% if csrf_token %}
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+        {% endif %}
+        {% for f in form if f.widget.input_type == 'hidden' %}
+            {{ f }}
+        {% endfor %}
+    {% endif %}
+
+    {% if form_opts and form_opts.form_rules %}
+        {% for r in form_opts.form_rules %}
+            {{ r(form, form_opts=form_opts) }}
+        {% endfor %}
+    {% else %}
+        {% for f in form if f.widget.input_type != 'hidden' %}
+            {% if form_opts %}
+                {% set kwargs = form_opts.widget_args.get(f.short_name, {}) %}
+            {% else %}
+                {% set kwargs = {} %}
+            {% endif %}
+            {{ lib.render_field(form, f, kwargs) }}
+        {% endfor %}
+    {% endif %}
+{% endmacro %}
+
+{% macro form_view(details_columns) %}
+    <table class="table table-hover table-bordered searchable" style="margin-bottom:0;">
+        {% for c, name in details_columns %}
+            <tr>
+                <td style="width: 45px;">
+                    <b>{{ name }}</b>
+                </td>
+                <td>
+                    {{ get_value(model, c) }}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endmacro %}
+
+{% macro form_search(search_class='pull-right col-md-4', search_style='') %}
+    <div class="{{ search_class }}" style="display: inline-block; vertical-align: middle; {{ search_style }}">
+        <div class="input-group input-group-sm input-prepend">
+            <div class="input-group-append">
+                <span class="add-on btn btn-default btn-sm">{{ _gettext('Filter') }}</span>
+            </div>
+            <input id="fa_filter" class="form-control pull-left" type="text">
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro form_footer(cancel_url, has_more=False, is_modal=False) %}
+    <div class="pull-left">
+        {% if cancel_url %}
+            <a href="{{ cancel_url }}" class="btn btn-default" role="button"
+               {% if is_modal %}data-dismiss="modal"{% endif %}>
+                {% if is_modal %}
+                    {{ _gettext('Close') }}
+                {% else %}
+                    <i class="fa fa-chevron-circle-left"></i> {{ _gettext('Back') }}
+                {% endif %}
+            </a>
+        {% endif %}
+    </div>
+    <div class="pull-right">
+        {% if has_more and admin_view.can_create %}
+            <input name="_add_another" type="submit" class="btn btn-success"
+                   value="{{ _gettext('Save & Add More') }}"/>
+        {% endif %}
+        <input type="submit" class="btn btn-success" value="{{ _gettext('Save') }}"/>
+    </div>
+{% endmacro %}
+
+{% macro form_tag(form=None, action=None) %}
+    <form action="{{ action or '' }}" method="POST" role="form" class="admin-form form-horizontal"
+          enctype="multipart/form-data">
+        {{ caller() }}
+    </form>
+{% endmacro %}
+
+{% macro form(header, icon, form, form_opts, cancel_url, action=None, has_more=False, is_modal=False) %}
+    {% if is_modal %}{% set type='modal' %}{% else %}{% set type='card' %}{% endif %}
+    <div class="{{ type }}-header">{{ form_header(header, icon, is_modal) }}</div>
+    {% call form_tag(action=action) %}
+        <div class="{{ type }}-body">{{ form_body(form, form_opts) }}</div>
+        <div class="{{ type }}-footer">{{ form_footer(cancel_url, has_more, is_modal) }}</div>
+    {% endcall %}
+{% endmacro %}

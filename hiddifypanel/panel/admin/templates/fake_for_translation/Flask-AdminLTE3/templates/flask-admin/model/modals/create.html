@@ -1,0 +1,22 @@
+{% import 'admin/static.html' as admin_static with context %}
+{% import 'flask-admin/adminlte/forms.html' as forms with context %}
+
+{# store the jinja2 context for form_rules rendering logic #}
+{% set render_ctx = h.resolve_ctx() %}
+
+{% block body %}
+    {% block create_form %}
+        {% set modal_name = 'Create' %}
+        {{ forms.form(modal_name, None, form, form_opts, return_url, action=url_for('.create_view', url=return_url), has_more=False, is_modal=True) }}
+    {% endblock %}
+{% endblock %}
+
+{% block tail %}
+    <script src="{{ admin_static.url(filename='admin/js/bs4_modal.js', v='1.0.0') }}"></script>
+    <script>
+        $(function () {
+            // Apply flask-admin form styles after the modal is loaded
+            window.faForm.applyGlobalStyles(document);
+        });
+    </script>
+{% endblock %}

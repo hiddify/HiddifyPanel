@@ -4,68 +4,91 @@
 
 {% block body %}
 
+
 <div class="callout callout-{{out_type}}" role="alert">
-    {{out_msg|safe}}
+  {{out_msg|safe}}
+
 </div>
 
-%if g.temp_admin_link
+
+{#
+{% if g.temp_admin_link %}
 {% macro temp_link() -%}
 <div class="btn-group">
   <a href='{{g.temp_admin_link}}' class="btn btn-secondary copy-link"><i class="fa-regular fa-copy"></i></a>
-  <a target='_blank' href='{{g.temp_admin_link}}' class='btn btn-danger'>{{_('Temporary Link')}}</a>  
+  <a target='_blank' href='{{g.temp_admin_link}}' class='btn btn-danger'>{{_('Temporary Link')}}</a>
 </div>
-{%- endmacro -%}  
+{%- endmacro -%}
 
 <div class="alert alert-warning d-none" id="temporary_port">
-  {{_("We have opened a temporary port (for 4 hours) to access the panel in case of any issues. Please copy this link.")}}
+  {{_("We have opened a temporary port (for 4 hours) to access the panel in case of any issues. Please copy this
+  link.")}}
   {{temp_link()}}
-  </div>
-  
+</div>
 
-{{modal('save_emergency',_('This action is not yet finished.'),_("Please copy the emergency link before leaving this page."),temp_link(),show=False)}}
-%endif
 
-%if g.temp_admin_link
+{{modal('save_emergency',_('This action is not yet finished.'),_("Please copy the emergency link before leaving this
+page."),temp_link(),show=False)}}
+{% endif %}
+#}
+
+{% if log_file and log_file != "status.log" and log_file != "restart.log"%}
 <div class="callout callout-success">
 
-  {{_("Please wait ")}} <label id="count-down">300</label> {{_("seconds")}}
+  {{_("Please wait ")}} <label style="display:none" id="count-down">300</label>
+  <div class="row" style="direction: ltr;">
+    <label class="col-6" id="process-title"></label> <label class="col-6" id="process-details"></label>
+  </div>
   <div class="progress">
     <div id="progress" class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
   </div>
 </div>
-%endif
-% if log_path
-<div>
-  <!-- <details>
-    <summary> -->
-<h1>{{_('log')}}</h1>
-  
+{% endif %}
 
-<a href="{{log_path}}" target="_blank" >{{_('Click here to see the complete log')}}</a><br>
-  <div id='ilog' style="line-height: 1em;width:100%;height:400px;direction: ltr;overflow: auto;" ></div>
-<!-- </details> -->
+
+{% if log_file_url %}
+<div>
+
+  <details {% if log_file=="status.log" or log_file=="restart.log" %}open="" {% endif %}>
+
+    <summary>
+      <div class="btn ">
+        <h1>{{_('log')}}</h1>
+      </div>>
+    </summary>
+
+
+    <a id="logbtn" href="{{log_file_url}}" target="_blank">{{_('Click here to see the complete log')}}</a><br>
+    <div id='ilog' style="line-height: 1em;width:100%;height:400px;direction: ltr;overflow: auto;"></div>
+
+  </details>
 </div>
 
-% endif
+{% endif %}
 {% endblock %}
 
-%block tail_js
+{% block tail_js %}
 {{super()}}
-% if log_path
+{% if log_file_url %}
 <script>
-  var x=document.getElementById("ilog");
-  var finished=false
-  var seconds=0
-  domains='{{",".join(domains)}}'.split(",")
-  log_path='{{log_path}}'
-  log_urls=domains.map(p=>"https://"+p+log_path)
+  var x = document.getElementById("ilog");
+  var finished = false
+  var seconds = 0
+  raw_domains = '{{",".join(domains)}}'.split(",")
+  log_urls = raw_domains.map(p => "https://" + p + "{{ log_file_url }}");
+  log_urls.unshift("{{ log_file_url }}")
   function sendRequestsSequentially(urls) {
     let index = 0;
-  
+
     function sendNextRequest() {
       return $.ajax({
-        url: urls[index]+"?random="+Math.random(),
-        type: 'GET',
+        url: urls[index] + "?random=" + Math.random(),
+        type: 'POST',
+        data: { file: '{{ log_file}}' },
+        headers: {
+          "Hiddify-API-Key": "{{g.account.uuid}}"
+        },
+
       }).then(response => {
         return Promise.resolve(response);
       }).catch(() => {
@@ -77,83 +100,122 @@
         }
       });
     }
-  
+
     return sendNextRequest();
   }
-  var old=''
+  var last_position = 0
+  const progress_regex = /####(?<progress>\d+)####(?<title>.*?)####(?<subtitle>.*?)####/;
+  var progress_regex_all = new RegExp(progress_regex.source, progress_regex.flags + "g");
+
+
+  var old = ''
   function isScrollEnd(element) {
-    return (element.scrollTop + element.offsetHeight>= element.scrollHeight-100 )
+    return (element.scrollTop + element.offsetHeight >= element.scrollHeight - 100)
 
     // return element.scrollTop + element.clientHeight >= element.scrollHeight;
   }
-  function get_log(){
+  function get_log() {
     sendRequestsSequentially(log_urls)
-    .then(response => {
-      console.log(response);
-      if (old!=response){
-        change_location=isScrollEnd(x)
-        x.innerHTML=response
-        if(change_location)
-          x.scrollTop=x.scrollHeight
-      }
-      
-      old=response
-      indx=x.innerText.lastIndexOf("----Finished!---")
-      if (!finished && indx>0 &&(indx>x.innerText.length-200) &&seconds>5){
-        set_progress(100)
-        finished=true
-        $("#progress").removeClass("bg-danger")
-        $("#progress").addClass("bg-success")
-        document.getElementById("count-down").innerHTML=0  
-        bootbox.alert({
-            title: '{{_("Success")}}',
-            message: '{{_("The action done successfully. You can now leave this page.")}}',
-            locale: '{{get_locale()}}',
-        });
-      }
-      setTimeout(get_log,1000);
-    })
-    .catch(error => {
-      console.error(error);
-      setTimeout(get_log,1000);
-    });
+      .then(response => {
+
+        if (old != response) {
+          change_location = isScrollEnd(x)
+          x.innerHTML = response
+          if (change_location)
+            x.scrollTop = x.scrollHeight
+          trimed_response = response.substring(Math.min(last_position, response.length - 200))
+          matches = response.match(progress_regex_all)
+
+          if (matches) {
+            const lastMatch = [...matches].pop().match(progress_regex);
+            last_position = response.length
+            // Access named groups of the last match
+            const progress = lastMatch.groups.progress;
+            const title = lastMatch.groups.title;
+            const subtitle = lastMatch.groups.subtitle;
+            $("#process-details").html(subtitle)
+            $("#process-title").html(title)
+            set_progress(Number(progress))
+          }
+
+        }
+
+        old = response
+        if (!finished) {
+          indx = response.lastIndexOf("----Finished!---")
+          if (indx > 0 && (indx > response.length - 200) && seconds > 5) {
+            set_progress(100)
+            finished = true
+            $("#progress").removeClass("bg-danger")
+            $("#progress").addClass("bg-success")
+            document.getElementById("count-down").innerHTML = 0
+            $("#process-details").html("")
+            $("#process-title").html("")
+            bootbox.alert({
+              title: '{{_("Success")}}',
+              message: '{{_("The action done successfully. You can now leave this page.")}}',
+              locale: '{{get_locale()}}',
+            });
+          }
+        }
+        setTimeout(get_log, 1000);
+      })
+      .catch(error => {
+        console.error(error);
+        setTimeout(get_log, 1000);
+      });
   }
-  function set_progress(v){   
-    $("#progress")[0].style.width=Math.max(0,Math.min(100,v))+"%"
+  function set_progress(v) {
+    $("#progress")[0].style.width = Math.max(0, Math.min(100, v)) + "%"
   }
   get_log()
-  function refresh(){
-    if (finished){
+  function refresh() {
+    if (finished) {
       return
     }
-  //   x.contentWindow.location.replace(orig_log_url+"?random="+Math.random());
-  //   document.getElementById("count-down").innerHTML= document.getElementById("count-down").innerHTML.replace('۳۰۰','300')
-  seconds=seconds+1
-    if (seconds<=300){
-      set_progress(seconds/3)
-      document.getElementById("count-down").innerHTML=300-seconds
-    }else{
+    //   x.contentWindow.location.replace(orig_log_url+"?random="+Math.random());
+    //   document.getElementById("count-down").innerHTML= document.getElementById("count-down").innerHTML.replace('۳۰۰','300')
+    seconds = seconds + 1
+    if (seconds <= 300) {
+      //  set_progress(seconds / 3)
+      //document.getElementById("count-down").innerHTML = 300 - seconds
+    } else {
       $("#progress").addClass("bg-danger")
-      document.getElementById("count-down").innerHTML="Error!"
+      document.getElementById("count-down").innerHTML = "Error!"
       $("#temporary_port").show()
     }
-  //   //x.contentWindow.scrollTo( 0, 999999 );
+    //   //x.contentWindow.scrollTo( 0, 999999 );
   }
-  setInterval(refresh,1000);
-  %if g.temp_admin_link
+  setInterval(refresh, 1000);
+  {%if g.temp_admin_link %}
   window.addEventListener('beforeunload', function (e) {
-  //   // Cancel the event
-  console.log("Finished",finished)
-    if (!finished){
-   
+    //   // Cancel the event
+    console.log("Finished", finished)
+    if (!finished) {
+
       e.preventDefault(); // If you prevent default behavior in Mozilla Firefox prompt will always be shown
-    //   // Chrome requires returnValue to be set
-      $("#save_emergency").modal()
+      //   // Chrome requires returnValue to be set
+      //$("#save_emergency").modal()
       e.returnValue = 'Save';
       return "save"
     }
   });
-  %endif
-  </script>
-  % endif
-%endblock
+  {% endif %}
+
+  $("#logbtn").on("click", function (event) {
+    event.preventDefault()
+    $.ajax({
+      url: $('#logbtn').attr('href'),
+      type: 'POST',
+      data: { file: '{{ log_file}}' },
+      headers: {
+        "Hiddify-API-Key": "{{g.account.uuid}}"
+      }
+    }).then(response => {
+      Promise.resolve(response)
+      window.open('', '_blank').document.body.outerHTML = response
+    });
+  });
+</script>
+{% endif %}
+{% endblock %}

@@ -1,14 +1,20 @@
 from enum import auto
+from typing import List
+
 from urllib.parse import urlparse
 
-from flask import flash, request
+from flask import request
 from sqlalchemy_serializer import SerializerMixin
+from flask_babel import lazy_gettext as _
+from sqlalchemy.orm import backref
+from urllib.parse import urlparse
 from strenum import StrEnum
 
-from hiddifypanel.panel.database import db
-from hiddifypanel import hutils
-from .config import hconfig
-from .config_enum import ConfigEnum
+from hiddifypanel.database import db
+
+from hiddifypanel.models.config import hconfig
+from .child import Child
+from hiddifypanel.models.config_enum import ConfigEnum
 from sqlalchemy.orm import backref
 
 
@@ -51,28 +57,30 @@ class Domain(db.Model, SerializerMixin):
                                    secondaryjoin=id == ShowDomain.c.related_id,
                                    backref=backref('showed_by_domains', lazy='dynamic')
                                    )
+    extra_params = db.Column(db.String(200), nullable=True, default='')
 
     def __repr__(self):
         return f'{self.domain}'
 
-    def to_dict(d, dump_ports=False):
+    def to_dict(self, dump_ports=False, dump_child_id=False):
         data = {
-            'domain': d.domain.lower(),
-            'mode': d.mode,
-            'alias': d.alias,
+            'domain': self.domain.lower(),
+            'mode': self.mode,
+            'alias': self.alias,
             # 'sub_link_only':d.sub_link_only,
-            'child_unique_id': d.child.unique_id if d.child else '',
-            'cdn_ip': d.cdn_ip,
-            'servernames': d.servernames,
-            'grpc': d.grpc,
-            'show_domains': [dd.domain for dd in d.show_domains],
+            'child_unique_id': self.child.unique_id if self.child else '',
+            'cdn_ip': self.cdn_ip,
+            'servernames': self.servernames,
+            'grpc': self.grpc,
+            'show_domains': [dd.domain for dd in self.show_domains],
         }
-
+        if dump_child_id:
+            data['child_id'] = self.child_id
         if dump_ports:
-            data["internal_port_hysteria2"] = d.internal_port_hysteria2
-            data["internal_port_tuic"] = d.internal_port_tuic
-            data["internal_port_reality"] = d.internal_port_reality
-            data["need_valid_ssl"] = d.need_valid_ssl
+            data["internal_port_hysteria2"] = self.internal_port_hysteria2
+            data["internal_port_tuic"] = self.internal_port_tuic
+            data["internal_port_reality"] = self.internal_port_reality
+            data["need_valid_ssl"] = self.need_valid_ssl
 
         return data
     @staticmethod
@@ -97,19 +105,23 @@ class Domain(db.Model, SerializerMixin):
     def internal_port_hysteria2(self):
         if self.mode not in [DomainType.direct, DomainType.relay, DomainType.fake]:
             return 0
-        return int(hconfig(ConfigEnum.hysteria_port))+self.port_index
+        # TODO: check validity of the range of the port
+        # print("child_id",self.child_id)
+        return int(hconfig(ConfigEnum.hysteria_port, self.child_id)) + self.port_index
 
     @property
     def internal_port_tuic(self):
         if self.mode not in [DomainType.direct, DomainType.relay, DomainType.fake]:
             return 0
-        return int(hconfig(ConfigEnum.tuic_port))+self.port_index
+        # TODO: check validity of the range of the port
+        return int(hconfig(ConfigEnum.tuic_port, self.child_id)) + self.port_index
 
     @property
     def internal_port_reality(self):
         if self.mode != DomainType.reality:
             return 0
-        return int(hconfig(ConfigEnum.reality_port))+self.port_index
+        # TODO: check validity of the range of the port
+        return int(hconfig(ConfigEnum.reality_port, self.child_id)) + self.port_index
 
 
 def hdomains(mode):
@@ -134,39 +146,42 @@ def get_domain(domain):
     return Domain.query.filter(Domain.domain == domain).first()
 
 
-def get_panel_domains(always_add_ip=False, always_add_all_domains=False):
+def get_panel_domains(always_add_ip=False, always_add_all_domains=False) -> List[Domain]:
+    from hiddifypanel import hutils
     domains = []
-    if hconfig(ConfigEnum.is_parent):
-        from .parent_domain import ParentDomain
-        domains = ParentDomain.query.all()
-    else:
-        domains = Domain.query.filter(Domain.mode == DomainType.sub_link_only).all()
-        if not len(domains) or always_add_all_domains:
-            domains = Domain.query.filter(Domain.mode.notin_([DomainType.fake, DomainType.reality])).all()
+    # if hconfig(ConfigEnum.is_parent):
+    #     from .parent_domain import ParentDomain
+    #     domains = ParentDomain.query.all()
+    # else:
+    domains = Domain.query.filter(Domain.mode == DomainType.sub_link_only, Domain.child_id == Child.current.id).all()
+    if not len(domains) or always_add_all_domains:
+        domains = Domain.query.filter(Domain.mode.notin_([DomainType.fake, DomainType.reality])).all()
 
     if len(domains) == 0 and request:
         domains = [Domain(domain=request.host)]
     if len(domains) == 0 or always_add_ip:
-        from hiddifypanel.panel import hiddify
-        domains += [Domain(domain=hutils.ip.get_ip(4))]
+        domains += [Domain(domain=hutils.network.get_ip_str(4))]
     return domains
 
 
 def get_proxy_domains(domain):
-    if hconfig(ConfigEnum.is_parent):
-        from hiddifypanel.commercial.parent_domain import ParentDomain
-        db_domain = ParentDomain.query.filter(ParentDomain.domain == domain).first() or ParentDomain(domain=domain, show_domains=[])
-    else:
-        db_domain = Domain.query.filter(Domain.domain == domain).first() or Domain(domain=domain, mode=DomainType.direct, cdn_ip='', show_domains=[])
+    # if hconfig(ConfigEnum.is_parent):
+    #     from hiddifypanel.models.parent_domain import ParentDomain
+    #     db_domain = ParentDomain.query.filter(ParentDomain.domain == domain).first() or ParentDomain(domain=domain, show_domains=[])
+    # else:
+    db_domain = Domain.query.filter(Domain.domain == domain, Domain.child_id == Child.current.id).first()
+    if not db_domain:
+        db_domain = Domain(domain=domain, mode=DomainType.direct, cdn_ip='', show_domains=[])
     return get_proxy_domains_db(db_domain)
 
 
 def get_proxy_domains_db(db_domain):
+
     if not db_domain:
         domain = urlparse(request.base_url).hostname
         db_domain = Domain(domain=domain, mode=DomainType.direct, show_domains=[])
-        print("no domain")
-        flash(_("This domain does not exist in the panel!" + domain))
+        # print("no domain")
+        hutils.flask.flash(_("This domain does not exist in the panel!" + domain))  # type: ignore
 
     return db_domain.show_domains or Domain.query.all()
 
@@ -196,11 +211,11 @@ def add_or_update_domain(commit=True, child_id=0, **domain):
         db.session.commit()
 
 
-def bulk_register_domains(domains, commit=True, remove=False, override_child_id=None):
+def bulk_register_domains(domains, commit=True, remove=False, override_child_unique_id=None):
     from hiddifypanel.panel import hiddify
     child_ids = {}
     for domain in domains:
-        child_id = override_child_id if override_child_id is not None else hiddify.get_child(domain.get('child_unique_id', None))
+        child_id = hiddify.get_child(unique_id=None)
         child_ids[child_id] = 1
         add_or_update_domain(commit=False, child_id=child_id, **domain)
     if remove and len(child_ids):
@@ -212,7 +227,7 @@ def bulk_register_domains(domains, commit=True, remove=False, override_child_id=
     # if commit:
     db.session.commit()
     for domain in domains:
-        child_id = override_child_id if override_child_id is not None else hiddify.get_child(domain.get('child_unique_id', None))
+        child_id = hiddify.get_child(unique_id=None)
         add_or_update_domain(commit=False, child_id=child_id, **domain)
     if commit:
         db.session.commit()

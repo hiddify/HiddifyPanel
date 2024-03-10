@@ -7,9 +7,9 @@ from hiddifypanel import hutils
 
 from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify, usage
-from hiddifypanel.panel.database import db
+from hiddifypanel.database import db
 from hiddifypanel.panel.init_db import init_db
-from hiddifypanel.panel.importer.xui import import_data
+from flask import g
 
 
 def drop_db():
@@ -19,7 +19,7 @@ def drop_db():
 
 def downgrade():
     if (hconfig(ConfigEnum.db_version) >= "49"):
-        set_hconfig(ConfigEnum.db_version, 42, commit=False)
+        set_hconfig(ConfigEnum.db_version, '42', commit=False)
         StrConfig.query.filter(StrConfig.key.in_([ConfigEnum.tuic_enable, ConfigEnum.tuic_port, ConfigEnum.hysteria_enable,
                                ConfigEnum.hysteria_port, ConfigEnum.ssh_server_enable, ConfigEnum.ssh_server_port, ConfigEnum.ssh_server_redis_url])).delete()
         Proxy.query.filter(Proxy.l3.in_([ProxyL3.ssh, ProxyL3.h3_quic, ProxyL3.custom])).delete()
@@ -38,46 +38,41 @@ def backup():
         json.dump(dbdict, fp, indent=4, sort_keys=True, default=str)
 
     if hconfig(ConfigEnum.telegram_bot_token):
-        for admin in AdminUser.query.filter(AdminUser.mode == AdminMode.super_admin, AdminUser.telegram_id != None).all():
+        for admin in AdminUser.query.filter(AdminUser.mode == AdminMode.super_admin, AdminUser.telegram_id is not None).all():
             from hiddifypanel.panel.commercial.telegrambot import bot
             with open(dst, 'rb') as document:
-                caption = ("Backup \n"+admin_links())
+                caption = ("Backup \n" + admin_links())
                 bot.send_document(admin.telegram_id, document, visible_file_name=dst.replace("backup/", ""), caption=caption[:min(len(caption), 1000)])
 
 
 def all_configs():
     import json
-    valid_users = [u.to_dict() for u in User.query.filter((User.usage_limit > User.current_usage)).all() if is_user_active(u)]
-
+    valid_users = [u.to_dict(dump_id=True) for u in User.query.filter((User.usage_limit > User.current_usage)).all() if u.is_active]
+    host_child_ids = [c.id for c in Child.query.filter(Child.mode == ChildMode.virtual).all()]
     configs = {
         "users": valid_users,
-        "domains": [u.to_dict(dump_ports=True) for u in Domain.query.all() if "*" not in u.domain],
+        "domains": [u.to_dict(dump_ports=True, dump_child_id=True) for u in Domain.query.filter(Domain.child_id.in_(host_child_ids)).all() if "*" not in u.domain],
         # "parent_domains": [hiddify.parent_domain_dict(u) for u in ParentDomain.query.all()],
-        "hconfigs": get_hconfigs()
+        # "hconfigs": get_hconfigs(json=True),
+        "chconfigs": get_hconfigs_childs(host_child_ids, json=True)
     }
-    # for d in configs['domains']:
-
-    #     # del d['domain']['show_domains']
 
     def_user = None if len(User.query.all()) > 1 else User.query.filter(User.name == 'default').first()
     domains = Domain.query.all()
     sslip_domains = [d.domain for d in domains if "sslip.io" in d.domain]
 
-    configs['hconfigs']['first_setup'] = def_user != None and len(sslip_domains) > 0
+    configs['chconfigs'][0]['first_setup'] = def_user is not None and len(sslip_domains) > 0
+    server_ip = hutils.network.get_ip_str(4)
+    owner = AdminUser.get_super_admin()
 
-    path = f'/{hconfig(ConfigEnum.proxy_path)}/{get_super_admin_secret()}/admin/'
-
-    server_ip = hutils.ip.get_ip(4)
-    configs['admin_path'] = path
+    configs['admin_path'] = hiddify.get_account_panel_link(owner, server_ip, is_https=False, prefere_path_only=True)
     configs['panel_links'] = []
-    configs['panel_links'].append(f"http://{server_ip}{path}")
-    configs['panel_links'].append(f"https://{server_ip}{path}")
+    configs['panel_links'].append(hiddify.get_account_panel_link(owner, server_ip, is_https=False))
+    configs['panel_links'].append(hiddify.get_account_panel_link(owner, server_ip))
     domains = get_panel_domains()
-    # if not any([d for d in domains if 'sslip.io' not in d.domain]):
-    #     configs['panel_links'].append(f"https://{server_ip}{path}")
 
     for d in domains:
-        configs['panel_links'].append(f"https://{d.domain}{path}")
+        configs['panel_links'].append(hiddify.get_account_panel_link(owner, d.domain))
 
     print(json.dumps(configs, indent=4))
 
@@ -91,35 +86,33 @@ def test():
 
 
 def admin_links():
-    proxy_path = hconfig(ConfigEnum.proxy_path)
 
-    admin_secret = get_super_admin_secret()
-    server_ip = hutils.ip.get_ip(4)
-    admin_links = f"Not Secure (do not use it- only if others not work):\n   http://{server_ip}/{proxy_path}/{admin_secret}/admin/\n"
+    server_ip = hutils.network.get_ip_str(4)
+    owner = AdminUser.get_super_admin()
+
+    admin_links = f"Not Secure (do not use it - only if others not work):\n   {hiddify.get_account_panel_link(owner, server_ip,is_https=True)}\n"
 
     domains = get_panel_domains()
     admin_links += f"Secure:\n"
     if not any([d for d in domains if 'sslip.io' not in d.domain]):
-        admin_links += f"   (not signed) https://{server_ip}/{proxy_path}/{admin_secret}/admin/\n"
+        admin_links += f"   (not signed) {hiddify.get_account_panel_link(owner, server_ip)}\n"
 
-    # domains=[*domains,f'{server_ip}.sslip.io']
     for d in domains:
-        admin_links += f"   https://{d.domain}/{proxy_path}/{admin_secret}/admin/\n"
+        admin_links += f"   {hiddify.get_account_panel_link(owner, d.domain)}\n"
 
     print(admin_links)
     return admin_links
 
 
 def admin_path():
-    proxy_path = hconfig(ConfigEnum.proxy_path)
-    admin = Admin.query.filter(Admin.mode == AdminMode.super_admin).first()
-    if not admin:
-        db.session.add(Admin(mode=AdminMode.super_admin))
-        db.session.commit()
-        admin = Admin.query.filter(Admin.mode == AdminMode.super_admin).first()
+    admin = AdminUser.get_super_admin()
+    # WTF is the owner and server_id?
+    domain = get_panel_domains()[0]
+    print(hiddify.get_account_panel_link(admin, domain, prefere_path_only=True))
 
-    admin_secret = admin.uuid
-    print(f"/{proxy_path}/{admin_secret}/admin/")
+
+def get_this_host_domains():
+    current_child_ids
 
 
 def hysteria_domain_port():
@@ -239,7 +232,7 @@ def init_app(app):
     @ click.option("--xui_db_path", "-x")
     def xui_importer(xui_db_path):
         try:
-            import_data(xui_db_path)
+            hutils.importer.xui.import_data(xui_db_path)
             print('success')
         except Exception as e:
             print(f'failed to import xui data: Error: {e}')

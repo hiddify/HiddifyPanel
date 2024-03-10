@@ -9,6 +9,11 @@ help:             ## Show the help.
 	@echo "Targets:"
 	@fgrep "##" Makefile | fgrep -v fgrep
 
+.PHONY: prepare
+prepare:             ## Show the help.
+	cd scripts
+	./update_translations.sh
+
 
 .PHONY: show
 show:             ## Show the current environment.
@@ -86,25 +91,27 @@ dev:          ## Create a new tag for release.
 	@git commit -m "release: switch to develop"
 	@git push -u origin HEAD
 .PHONY: release
-release:          ## Create a new tag for release.
-	@echo "previous tag was $$(git describe --tags $$(git rev-list --tags --max-count=1))"
-	@echo "release last version $(lastversion hiddifypanel)"
-	@echo "beta last version $(lastversion --pre hiddifypanel)"
+release:
+ifeq ($(TAG),)
+	# @echo "previous tag was $$(git describe --tags $$(git rev-list --tags --max-count=1))"
+	# @echo "release last version $$(lastversion hiddifypanel)"
+	# @echo "beta last version $$(lastversion --pre hiddifypanel)"
 	@echo "WARNING: This operation will create s version tag and push to github"
-	@read -p "Version? (provide the next x.y.z semver) : " TAG	
+	@read -p "Version? (provide the next x.y.z semver) : " TAG
+endif
 	@echo "$${TAG}" > hiddifypanel/VERSION
 	@echo "__version__='$${TAG}'" > hiddifypanel/VERSION.py
 	@echo "from datetime import datetime" >> hiddifypanel/VERSION.py
 	@echo "__release_date__= datetime.strptime('$$(date +%Y-%m-%d)','%Y-%m-%d')" >> hiddifypanel/VERSION.py
-	@git tag $${TAG}
+	@git tag v$${TAG}
 	@gitchangelog > HISTORY.md
-	@git tag -d $${TAG}
+	@git tag -d v$${TAG}
 	@git add hiddifypanel/VERSION hiddifypanel/VERSION.py HISTORY.md
-	@bash ./update_translations.sh
-	@git add hiddifypanel/translations/*
+	@make prepare
+	@git add hiddifypanel/translations/* hiddifypanel/translations.i18n/*
 	@git commit -m "release: version $${TAG} 🚀"
 	@echo "creating git tag : $${TAG}"
-	@git tag $${TAG}
+	@git tag v$${TAG}
 	@git push -u origin HEAD --tags
 	@echo "Github Actions will detect the new tag and release the new version."
 
@@ -138,3 +145,8 @@ switch-to-poetry: ## Switch to poetry package manager.
 # __author__ = 'rochacbruno'
 # __repo__ = https://github.com/rochacbruno/flask-project-template
 # __sponsor__ = https://github.com/sponsors/rochacbruno/
+
+
+
+stress_test:
+	echo "GET http://localhost:9000/x2hDG4gt32VDbuZsYY6iq/c9c0c597-f42c-44d8-96e1-81f91dbcf1d0/singbox/?asn=unknown" | vegeta attack -duration=5s | tee results.bin | vegeta report	

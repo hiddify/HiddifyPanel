@@ -1,7 +1,7 @@
-% set sub_url="https://"+domain+"/"+hconfigs[ConfigEnum.proxy_path]+"/"+user.uuid+"/"
-%set sub_encoded_url='https%3A%2F%2F'+domain+'%2F'+hconfigs[ConfigEnum.proxy_path]+'%2F'+user.uuid+'%2F'
-%set base_download_url='/{{hconfigs[ConfigEnum.proxy_path]}}/gh'
-%set base_download_url='https://github.com'
+{% set sub_url="https://"+domain+"/"+hconfigs[ConfigEnum.proxy_path]+"/"+user.uuid+"/" %}
+{% set sub_encoded_url='https%3A%2F%2F'+domain+'%2F'+hconfigs[ConfigEnum.proxy_path]+'%2F'+user.uuid+'%2F' %}
+{% set base_download_url='/{{hconfigs[ConfigEnum.proxy_path]}}/gh' %}
+{% set base_download_url='https://github.com' %}
 
 <div class="row1  mb-2" style="margin-top: 10px;">
 
@@ -43,7 +43,8 @@
     </div>
 </div>
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -53,7 +54,8 @@
                 </button>
             </div>
             <div class="modal-body">
-                {{_("If the application do not open automatically, please click <a class='btn btn-primary copy-link' href='%(sub)s'>this universal link</a> to copy and paste it on
+                {{_("If the application do not open automatically, please click <a class='btn btn-primary copy-link'
+                    href='%(sub)s'>this universal link</a> to copy and paste it on
                 your application, or:",sub=sub_url)}}
                 <br><br>
 
@@ -71,9 +73,11 @@
                                 class="btn col-12 btn-primary ">{{_('Download App')}}</a>
                         </td>
                         <td>
-                            <a href="https://play.google.com/store/apps/details?id=app.hiddify.com" class="btn col-12 btn-primary">{{_('install from google play')}}</a>
+                            <a href="https://play.google.com/store/apps/details?id=app.hiddify.com"
+                                class="btn col-12 btn-primary">{{_('install from google play')}}</a>
                         </td>
-                        <td><a class="btn col-12 btn-success" href="hiddify://install-config/?url={{sub_encoded_url}}">{{_('Import')}}</a></td>
+                        <td><a class="btn col-12 btn-success"
+                                href="hiddify://install-config/?url={{sub_encoded_url}}">{{_('Import')}}</a></td>
                     </tr>
                 </table>
                 <details>
@@ -83,17 +87,23 @@
                             <td>HiddifyNG / V2rayNG</td>
                             <td>
 
-                                <a href="{{base_download_url}}/Hiddify/HiddifyNG/releases/latest/download/HiddifyNG.apk" class="btn col-12 btn-primary ">{{_('Download App')}}</a>
-                                <a href="https://play.google.com/store/apps/details?id=ang.hiddify.com" class="btn col-12 btn-primary">{{_('install from google play')}}</a>
+                                <a href="{{base_download_url}}/Hiddify/HiddifyNG/releases/latest/download/HiddifyNG.apk"
+                                    class="btn col-12 btn-primary ">{{_('Download App')}}</a>
+                                <a href="https://play.google.com/store/apps/details?id=ang.hiddify.com"
+                                    class="btn col-12 btn-primary">{{_('install from google play')}}</a>
                             </td>
 
-                            <td><a class="btn col-12 btn-success" href="hiddify://install-sub/?url={{sub_encoded_url}}">{{_('Import in')}} HiddifyNG</a></td>
+                            <td><a class="btn col-12 btn-success"
+                                    href="hiddify://install-sub/?url={{sub_encoded_url}}">{{_('Import in')}}
+                                    HiddifyNG</a></td>
                         </tr>
                         <tr>
                             <td>Clash / Meta</td>
                             <td><a href="{{base_download_url}}/hiddify/HiddifyClashAndroid/releases/download/v2.7.3-h0.24/hiddify-2.7.3-h0.24-meta-alpha-universal-release.apk"
                                     class="btn col-12 btn-primary ">{{_('Download App')}}</a></td>
-                            <td><a class="btn col-12 btn-success" href="clash://install-config/?url={{sub_encoded_url}}">{{_('Import in')}} Clash</a></td>
+                            <td><a class="btn col-12 btn-success"
+                                    href="clash://install-config/?url={{sub_encoded_url}}">{{_('Import in')}} Clash</a>
+                            </td>
                         </tr>
                     </table>
                 </details>
@@ -110,7 +120,8 @@
                             <a href="{{base_download_url}}/hiddify/hiddify-next/releases/latest/download/hiddify-windows-x64-setup.zip"
                                 class="btn col-12 btn-primary ">{{_('Download App')}}</a>
                         </td>
-                        <td><a class="btn col-12 btn-success" href="hiddify://install-config/?url={{sub_encoded_url}}">{{_('Import')}}</a></td>
+                        <td><a class="btn col-12 btn-success"
+                                href="hiddify://install-config/?url={{sub_encoded_url}}">{{_('Import')}}</a></td>
                     </tr>
                 </table>
 
@@ -121,10 +132,12 @@
                         <tr>
                             <td>HiddifyN</td>
                             <td>
-                                <a href="{{base_download_url}}/Hiddify/HiddifyN/releases/latest/download/win-x86.zip" class="btn col-12 btn-primary ">{{_('Download App')}}</a>
+                                <a href="{{base_download_url}}/Hiddify/HiddifyN/releases/latest/download/win-x86.zip"
+                                    class="btn col-12 btn-primary ">{{_('Download App')}}</a>
                             </td>
 
-                            <td><a class="btn col-12 btn-success" href="hiddify://install-sub/?url={{sub_encoded_url}}">{{_('Import')}}</a></td>
+                            <td><a class="btn col-12 btn-success"
+                                    href="hiddify://install-sub/?url={{sub_encoded_url}}">{{_('Import')}}</a></td>
                         </tr>
                         <tr>
                             <td>Clash / Meta</td>
@@ -132,7 +145,8 @@
                                 <a href="{{base_download_url}}/Hiddify/HiddifyClashDesktop/releases/latest/download/HiddifyClashDesktop_13.1.4_x64_en-US.msi"
                                     class="btn col-12 btn-primary ">{{_('Download App')}}</a>
                             </td>
-                            <td><a class="btn col-12 btn-success" href="clash://install-config/?url={{sub_encoded_url}}">{{_('Import')}}</a></td>
+                            <td><a class="btn col-12 btn-success"
+                                    href="clash://install-config/?url={{sub_encoded_url}}">{{_('Import')}}</a></td>
                         </tr>
                     </table>
                 </details>
@@ -146,10 +160,11 @@
                     <tr>
 
                         <td>
-                            <a href="{{base_download_url}}/hiddify/hiddify-next/releases/latest/download/hiddify-linux-x64.zip" class="btn col-12 btn-primary ">{{_('Download
-                                App')}}</a>
+                            <a href="{{base_download_url}}/hiddify/hiddify-next/releases/latest/download/hiddify-linux-x64.zip"
+                                class="btn col-12 btn-primary ">{{_('Download App')}}</a>
                         </td>
-                        <td><a class="btn col-12 btn-success" href="hiddify://install-config/?url={{sub_encoded_url}}">{{_('Import')}}</a></td>
+                        <td><a class="btn col-12 btn-success"
+                                href="hiddify://install-config/?url={{sub_encoded_url}}">{{_('Import')}}</a></td>
                     </tr>
                 </table>
                 <details>
@@ -170,7 +185,8 @@
                                 <a href="{{base_download_url}}/Hiddify/HiddifyClashDesktop/releases/latest/download/hiddify-clash-desktop_13.1.4_amd64.AppImage"
                                     class="btn col-12 btn-primary ">{{_('Download App')}}</a>
                             </td>
-                            <td><a class="btn col-12 btn-success" href="clash://install-config/?url={{sub_encoded_url}}">{{_('Import')}}</a></td>
+                            <td><a class="btn col-12 btn-success"
+                                    href="clash://install-config/?url={{sub_encoded_url}}">{{_('Import')}}</a></td>
                         </tr>
                     </table>
                 </details>
@@ -183,10 +199,11 @@
                 <table>
                     <tr>
                         <td>
-                            <a href="{{base_download_url}}/hiddify/hiddify-next/releases/latest/download/hiddify-macos-universal.zip" class="btn col-12 btn-primary ">{{_('Download
-                                App')}}</a>
+                            <a href="{{base_download_url}}/hiddify/hiddify-next/releases/latest/download/hiddify-macos-universal.zip"
+                                class="btn col-12 btn-primary ">{{_('Download App')}}</a>
                         </td>
-                        <td><a class="btn col-12 btn-success" href="hiddify://install-config/?url={{sub_encoded_url}}">{{_('Import')}}</a></td>
+                        <td><a class="btn col-12 btn-success"
+                                href="hiddify://install-config/?url={{sub_encoded_url}}">{{_('Import')}}</a></td>
                     </tr>
                 </table>
                 <details>
@@ -207,12 +224,15 @@
                                 <a href="{{base_download_url}}/Hiddify/HiddifyClashDesktop/releases/latest/download/HiddifyClashDesktop_13.1.4_x64.dmg"
                                     class="btn col-12 btn-primary ">{{_('Download App')}}</a>
                             </td>
-                            <td><a class="btn col-12 btn-success" href="clash://install-config/?url={{sub_encoded_url}}">{{_('Import')}}</a></td>
+                            <td><a class="btn col-12 btn-success"
+                                    href="clash://install-config/?url={{sub_encoded_url}}">{{_('Import')}}</a></td>
                         </tr>
                         <tr>
                             <td>FoxRay</td>
-                            <td><a href="https://apps.apple.com/us/app/foxray/id6448898396" target="_blank" class="btn btn-primary">{{_('Download App')}}</a></td>
-                            <td><a class="btn btn-success" href="foxray://yiguo.dev/sub/add/?url={{base}}">{{_('Import')}}</a></td>
+                            <td><a href="https://apps.apple.com/us/app/foxray/id6448898396" target="_blank"
+                                    class="btn btn-primary">{{_('Download App')}}</a></td>
+                            <td><a class="btn btn-success"
+                                    href="foxray://yiguo.dev/sub/add/?url={{base}}">{{_('Import')}}</a></td>
                         </tr>
                     </table>
                 </details>
@@ -225,40 +245,51 @@
                     <table>
                         <tr>
                             <td>FoxRay</td>
-                            <td><a href="https://apps.apple.com/us/app/foxray/id6448898396" target="_blank" class="btn btn-primary">{{_('Download App')}}</a></td>
-                            <td><a class="btn btn-success" href="https://yiguo.dev/sub/add/?url={{sub_url|b64encode}}#{{profile_title}}">{{_('Import')}}</a></td>
+                            <td><a href="https://apps.apple.com/us/app/foxray/id6448898396" target="_blank"
+                                    class="btn btn-primary">{{_('Download App')}}</a></td>
+                            <td><a class="btn btn-success"
+                                    href="https://yiguo.dev/sub/add/?url={{sub_url|b64encode}}#{{profile_title}}">{{_('Import')}}</a>
+                            </td>
                         </tr>
                         <tr>
                             <td>Streisand</td>
-                            <td><a href="https://apps.apple.com/app/id6450534064" target="_blank" class="btn btn-primary">{{_('Download App')}}</a></td>
-                            <td><a class="btn btn-success" href="streisand://import/{{sub_url}}#{{profile_title}}">{{_('Import')}}</a></td>
+                            <td><a href="https://apps.apple.com/app/id6450534064" target="_blank"
+                                    class="btn btn-primary">{{_('Download App')}}</a></td>
+                            <td><a class="btn btn-success"
+                                    href="streisand://import/{{sub_url}}#{{profile_title}}">{{_('Import')}}</a></td>
                         </tr>
                         <tr>
                             <td>Shadowrocket</td>
                             <td>
-                                <a href="https://apps.apple.com/us/app/shadowrocket/id932747118" target="_blank" class="btn btn-primary">{{_('Download App')}}</a>
+                                <a href="https://apps.apple.com/us/app/shadowrocket/id932747118" target="_blank"
+                                    class="btn btn-primary">{{_('Download App')}}</a>
                             </td>
-                            <td><a class="btn col-12 btn-success" href="sub://{{sub_url|b64encode}}">{{_('Import')}}</a></td>
+                            <td><a class="btn col-12 btn-success" href="sub://{{sub_url|b64encode}}">{{_('Import')}}</a>
+                            </td>
                         </tr>
                         <tr>
                             <td>Stash</td>
                             <td>
-                                <a href="https://apps.apple.com/us/app/stash-rule-based-proxy/id1596063349" target="_blank" class="btn btn-primary">
+                                <a href="https://apps.apple.com/us/app/stash-rule-based-proxy/id1596063349"
+                                    target="_blank" class="btn btn-primary">
                                     {{_('Download App')}}
                                 </a>
                             </td>
-                            <td><a class="btn col-12 btn-success" href="clash://install-config/?url={{sub_encoded_url}}">
+                            <td><a class="btn col-12 btn-success"
+                                    href="clash://install-config/?url={{sub_encoded_url}}">
                                     {{_('Import')}}
                                 </a></td>
                         </tr>
                         <tr>
                             <td>Loon</td>
                             <td>
-                                <a href="https://apps.apple.com/app/id1373567447" target="_blank" class="btn btn-primary">
+                                <a href="https://apps.apple.com/app/id1373567447" target="_blank"
+                                    class="btn btn-primary">
                                     {{_('Download App')}}
                                 </a>
                             </td>
-                            <td><a class="btn col-12 btn-success" href="loon://import?nodelist={{sub_encoded_url}}">{{_('Import')}}</a></td>
+                            <td><a class="btn col-12 btn-success"
+                                    href="loon://import?nodelist={{sub_encoded_url}}">{{_('Import')}}</a></td>
                         </tr>
 
                     </table>
@@ -268,7 +299,8 @@
                 <details>
                     <summary>{{_('QRCode')}}</summary>
                     <center>
-                        <div id="qrcode-oneclick" class="mx-auto" style="margin:10px;margin:10px;padding:10px;background:#fff"></div>
+                        <div id="qrcode-oneclick" class="mx-auto"
+                            style="margin:10px;margin:10px;padding:10px;background:#fff"></div>
                     </center>
                 </details>
 
@@ -289,7 +321,8 @@
 
 
 
-<div class="modal fade" id="short-link-Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="short-link-Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">

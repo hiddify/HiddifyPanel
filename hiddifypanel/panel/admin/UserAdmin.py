@@ -1,31 +1,32 @@
-from flask_admin.contrib import sqla
-from hiddifypanel.panel.database import db
-import datetime
-from hiddifypanel.models import *
-from flask import Markup, g, request, url_for
-from apiflask import abort
-from wtforms.validators import Regexp, ValidationError
 import re
+from flask_admin.actions import action
+import datetime
 import uuid
-from hiddifypanel.drivers import user_driver
+from apiflask import abort
+from flask_bootstrap import SwitchField, BooleanField
+from flask_babel import gettext as __
 from .adminlte import AdminLTEModelView
-# from gettext import gettext as _
-from flask_babelex import gettext as __
-from flask_babelex import lazy_gettext as _
-
 from wtforms.validators import NumberRange
+from flask_babel import lazy_gettext as _
+from flask import Markup, g, request  # type: ignore
+from hiddifypanel.hutils.flask import hurl_for
+from wtforms.validators import Regexp, ValidationError
+from flask import current_app
 
-
+import hiddifypanel
+from hiddifypanel.models import *
+from hiddifypanel.drivers import user_driver
 from hiddifypanel.panel import hiddify, custom_widgets
-from hiddifypanel.panel.hiddify import flash
-from wtforms.fields import StringField
-from flask_bootstrap import SwitchField
+from hiddifypanel.auth import login_required
+from hiddifypanel import hutils
 
 
 class UserAdmin(AdminLTEModelView):
-    column_sortable_list = ["name", "current_usage", 'mode', "remaining_days", "comment", 'last_online', "uuid", 'remaining_days']
-    column_searchable_list = [("uuid"), "name"]
-    column_list = ["name", "UserLinks", "current_usage", "remaining_days", "comment", 'last_online', 'mode', 'admin', "uuid"]
+
+    column_sortable_list = ["is_active", "name", "current_usage", 'mode', "remaining_days", "comment", 'last_online', "uuid", 'remaining_days']
+    column_searchable_list = ["uuid", "name"]
+    column_list = ["is_active", "name", "UserLinks", "current_usage", "remaining_days", "comment", 'last_online', 'mode', 'admin', "uuid"]
+    column_editable_list = ["comment", "name", "uuid"]
     form_extra_fields = {
         'reset_days': SwitchField(_("Reset package days")),
         'reset_usage': SwitchField(_("Reset package usage")),
@@ -33,9 +34,9 @@ class UserAdmin(AdminLTEModelView):
     }
     list_template = 'model/user_list.html'
 
-    # form_columns = ["name", "current_usage_GB", "remaining_days", "comment", 'last_online', 'mode', 'admin', "uuid"]
-    form_excluded_columns = ['current_usage', 'monthly', 'telegram_id', 'last_online', 'expiry_time', 'last_reset_time', 'current_usage_GB',
-                             'start_date', 'added_by', 'admin', 'details', 'max_ips', 'ed25519_private_key', 'ed25519_public_key']
+    form_columns = ["name", "comment", "usage_limit", "reset_usage", "package_days", "reset_days", "mode", "uuid", "enable",]
+    # form_excluded_columns = ['current_usage', 'monthly', 'telegram_id', 'last_online', 'expiry_time', 'last_reset_time', 'current_usage_GB',
+    #  'start_date', 'added_by', 'admin', 'details', 'max_ips', 'ed25519_private_key', 'ed25519_public_key', 'username', 'password']
     page_size = 50
     # edit_modal=True
     # create_modal=True
@@ -43,6 +44,7 @@ class UserAdmin(AdminLTEModelView):
     # can_export = True
     # form_overrides = dict(monthly=SwitchField)
     form_overrides = {
+
         'start_date': custom_widgets.DaysLeftField,
         'mode': custom_widgets.EnumSelectField,
         'usage_limit': custom_widgets.UsageField
@@ -92,6 +94,7 @@ class UserAdmin(AdminLTEModelView):
         "package_days": _('Package Days'),
         "max_ips": _('Max IPs'),
         "enable": _('Enable'),
+        "is_active": _('Active'),
 
     }
     # can_set_page_size=True
@@ -120,18 +123,7 @@ class UserAdmin(AdminLTEModelView):
     # can_edit = False
     # def on_model_change(self, form, model, is_created):
     #     model.password = generate_password_hash(model.password)
-
-    def _name_formatter(view, context, model, name):
-        proxy_path = hconfig(ConfigEnum.proxy_path)
-        # print("model.telegram_id",model.telegram_id)
-        extra = ""
-        if hconfig(ConfigEnum.telegram_bot_token):
-            if model.telegram_id:
-                extra = f'<button class="btn hbtn bg-h-blue btn-xs " onclick="show_send_message({model.id})" ><i class="fa-solid fa-paper-plane"></i></button> '
-            else:
-                extra = f'<button class="btn hbtn bg-h-grey btn-xs disabled"><i class="fa-solid fa-paper-plane"></i></button> '
-
-        link = ''
+    def _enable_formatter(view, context, model, name):
         if model.is_active:
             link = '<i class="fa-solid fa-circle-check text-success"></i> '
         elif len(model.ips):
@@ -139,22 +131,34 @@ class UserAdmin(AdminLTEModelView):
         else:
             link = '<i class="fa-solid fa-circle-xmark text-danger"></i> '
 
-        link += f"<a target='_blank' href='/{proxy_path}/{model.uuid}/#{model.name}'>{model.name} <i class='fa-solid fa-arrow-up-right-from-square'></i></a>"
-        return Markup(extra+link)
+        if hconfig(ConfigEnum.telegram_bot_token):
+            if model.telegram_id:
+                link += f'<button class="btn hbtn bg-h-blue btn-xs " onclick="show_send_message({model.id})" ><i class="fa-solid fa-paper-plane"></i></button> '
+            else:
+                link += f'<button class="btn hbtn bg-h-grey btn-xs disabled"><i class="fa-solid fa-paper-plane"></i></button> '
+
+        return Markup(link)
+
+    # def _name_formatter(view, context, model, name):
+    #     # print("model.telegram_id",model.telegram_id)
 
     def _ul_formatter(view, context, model, name):
-        domains = get_panel_domains()
-        return Markup(" ".join([hiddify.get_user_link(model.uuid, d, 'new', model.name) for d in domains]))
+        href = f'{hiddify.get_account_panel_link(model, request.host, is_https=True)}#{hutils.encode.unicode_slug(model.name)}'
 
-    def _uuid_formatter(view, context, model, name):
-        return Markup(f"<span>{model.uuid}</span>")
+        link = f"""<a target='_blank' class='share-link btn btn-xs btn-primary' data-copy='{href}' href='{href}'>
+        <i class='fa-solid fa-arrow-up-right-from-square'></i> 
+        {_("Current Domain")} </a>"""
+
+        domains = [d for d in get_panel_domains() if d.domain != request.host]
+        return Markup(link + " ".join([hiddify.get_html_user_link(model, d) for d in domains]))
+
     # def _usage_formatter(view, context, model, name):
     #     return round(model.current_usage_GB,3)
 
     def _usage_formatter(view, context, model, name):
         u = round(model.current_usage_GB, 3)
         t = round(model.usage_limit_GB, 3)
-        rate = round(u*100/(t+0.000001))
+        rate = round(u * 100 / (t + 0.000001))
         state = "danger" if u >= t else ('warning' if rate > 80 else 'success')
         color = "#ff7e7e" if u >= t else ('#ffc107' if rate > 80 else '#9ee150')
         return Markup(f"""
@@ -166,62 +170,66 @@ class UserAdmin(AdminLTEModelView):
         """)
 
     def _expire_formatter(view, context, model, name):
-        remaining = remaining_days(model)
+        remaining = model.remaining_days
 
         diff = datetime.timedelta(days=remaining)
 
         state = 'success' if diff.days > 7 else ('warning' if diff.days > 0 else 'danger')
-        formated = hiddify.format_timedelta(diff)
+        formated = hutils.convert.format_timedelta(diff)
         return Markup(f"<span class='badge badge-{state}'>{'*' if not model.start_date else ''} {formated} </span>")
         # return Markup(f"<span class='badge ltr badge-}'>{days}</span> "+_('days'))
 
     def _admin_formatter(view, context, model, name):
-        return Markup(f"<a href='{url_for('flask.user.index_view',admin_id=model.added_by)}' class='btn btn-xs btn-default'>{model.admin.name}</a>")
+        return Markup(f"<a href='{hurl_for('flask.user.index_view',admin_id=model.added_by)}' class='btn btn-xs btn-default'>{model.admin.name}</a>")
 
     def _online_formatter(view, context, model, name):
         if not model.last_online:
             return Markup("-")
-        diff = model.last_online-datetime.datetime.now()
+        diff = model.last_online - datetime.datetime.now()
 
         if diff.days < -1000:
             return Markup("-")
-        if diff.total_seconds() > -60*2:
+        if diff.total_seconds() > -60 * 2:
             return Markup(f"<span class='badge badge-success'>{_('Online')}</span>")
         state = "danger" if diff.days < -3 else ("success" if diff.days >= -1 else "warning")
-        return Markup(f"<span class='badge badge-{state}'>{hiddify.format_timedelta(diff,granularity='min')}</span>")
+        return Markup(f"<span class='badge badge-{state}'>{hutils.convert.format_timedelta(diff,granularity='min')}</span>")
 
         # return Markup(f"<span class='badge ltr badge-{'success' if days>7 else ('warning' if days>0 else 'danger') }'>{days}</span> "+_('days'))
 
     column_formatters = {
-        'name': _name_formatter,
+        # 'name': _name_formatter,
         'UserLinks': _ul_formatter,
-        'uuid': _uuid_formatter,
+        # 'uuid': _uuid_formatter,
         'current_usage': _usage_formatter,
         "remaining_days": _expire_formatter,
         'last_online': _online_formatter,
-        'admin': _admin_formatter
+        'admin': _admin_formatter,
+
+        "is_active": _enable_formatter
     }
 
     def on_model_delete(self, model):
         if len(User.query.all()) <= 1:
             raise ValidationError(f"at least one user should exist")
         user_driver.remove_client(model)
-        # hiddify.flash_config_success()
+        # hutils.flask.flash_config_success()
 
-    # def is_accessible(self):
-    #     return g.is_admin
+    def is_accessible(self):
+        if login_required(roles={Role.super_admin, Role.admin, Role.agent})(lambda: True)() != True:
+            return False
+        return True
 
     def on_form_prefill(self, form, id=None):
         # print("================",form._obj.start_date)
-        if id == None or form._obj is None or form._obj.start_date is None:
+        if id is None or form._obj is None or form._obj.start_date is None:
             msg = _("Package not started yet.")
             # form.reset['class']="d-none"
             delattr(form, 'reset_days')
             delattr(form, 'reset_usage')
             # delattr(form,'disable_user')
         else:
-            remaining = remaining_days(form._obj)
-            msg = _("Remaining: ") + hiddify.format_timedelta(datetime.timedelta(days=remaining))
+            remaining = form._obj.remaining_days  # remaining_days(form._obj)
+            msg = _("Remaining: ") + hutils.convert.format_timedelta(datetime.timedelta(days=remaining))
             form.reset_days.label.text += f" ({msg})"
             usr_usage = f" ({_('user.home.usage.title')} {round(form._obj.current_usage_GB,3)}GB)"
             form.reset_usage.label.text += usr_usage
@@ -243,44 +251,45 @@ class UserAdmin(AdminLTEModelView):
     def on_model_change(self, form, model, is_created):
         model.max_ips = max(3, model.max_ips or 10000)
         if len(User.query.all()) % 4 == 0:
-            flash(('<div id="show-modal-donation"></div>'), ' d-none')
+            hutils.flask.flash(('<div id="show-modal-donation"></div>'), ' d-none')
         if not re.match("^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$", model.uuid):
             raise ValidationError('Invalid UUID e.g.,' + str(uuid.uuid4()))
-
-        if form.reset_usage.data:
+        if hasattr(form, 'reset_usage') and form.reset_usage.data:
             model.current_usage_GB = 0
+        # if model.telegram_id and model.telegram_id != '0' and not re.match(r"^[1-9]\d*$", model.telegram_id):
+        #     raise ValidationError('Invalid Telegram ID')
         # if form.disable_user.data:
         #     model.mode=UserMode.disable
-        if form.reset_days.data:
+        if hasattr(form, 'reset_days') and form.reset_days.data:
             model.start_date = None
         model.package_days = min(model.package_days, 10000)
-        old_user = user_by_id(model.id)
+        old_user = User.by_id(model.id)
         if not model.added_by or model.added_by == 1:
-            model.added_by = g.admin.id
-        if not g.admin.can_have_more_users():
+            model.added_by = g.account.id
+        if not g.account.can_have_more_users():
             raise ValidationError(_('You have too much users! You can have only %(active)s active users and %(total)s users',
-                                  active=g.admin.max_active_users, total=g.admin.max_users))
+                                  active=g.account.max_active_users, total=g.account.max_users))
         if old_user and old_user.uuid != model.uuid:
             user_driver.remove_client(old_user)
         if not model.ed25519_private_key:
             priv, publ = hiddify.get_ed25519_private_public_pair()
             model.ed25519_private_key = priv
             model.ed25519_public_key = publ
+        if not model.wg_pk:
+            model.wg_pk, model.wg_pub, model.wg_psk = hiddify.get_wg_private_public_psk_pair()
         # model.expiry_time=datetime.date.today()+datetime.timedelta(days=model.expiry_time)
 
         # if model.current_usage_GB < model.usage_limit_GB:
         #     xray_api.add_client(model.uuid)
         # else:
         #     xray_api.remove_client(model.uuid)
-        # hiddify.flash_config_success()
-    # def is_accessible(self):
-    #     return is_valid()
+        # hutils.flask.flash_config_success()
 
     def after_model_change(self, form, model, is_created):
         if hconfig(ConfigEnum.first_setup):
             set_hconfig(ConfigEnum.first_setup, False)
         user = User.query.filter(User.uuid == model.uuid).first()
-        if is_user_active(user):
+        if user.is_active:
             user_driver.add_client(model)
         else:
             user_driver.remove_client(model)
@@ -293,7 +302,7 @@ class UserAdmin(AdminLTEModelView):
     def get_list(self, page, sort_column, sort_desc, search, filters, page_size=50, *args, **kwargs):
         res = None
         # print('aaa',args, kwargs)
-        if sort_column == 'remaining_days':
+        if sort_column in ['remaining_days', 'is_active']:
             query = self.get_query()
 
             if search:
@@ -308,7 +317,7 @@ class UserAdmin(AdminLTEModelView):
             count = len(data)
 
             # Sorting the data
-            data = sorted(data, key=lambda p: p.remaining_days, reverse=sort_desc)
+            data = sorted(data, key=lambda p: getattr(p, sort_column), reverse=sort_desc)
 
             # Applying pagination
             start = page * page_size
@@ -322,19 +331,19 @@ class UserAdmin(AdminLTEModelView):
         return res
 
         # Override the default get_list method to use the custom sort function
-        query = self.session.query(self.model)
-        if self._sortable_columns:
-            # print("sor",self._sortable_columns['remaining_days'])
-            for column, direction in self._get_default_order():
-                # if column == 'remaining_days':
-                #     # Use the custom sort function for 'remaining_days'
-                #     query = query.order_by(self.model.remaining_days.asc() if direction == 'asc' else self.model.remaining_days.desc())
-                # else:
-                # Use the default sort function for other columns
-                query = query.order_by(getattr(self.model, column).asc() if direction == 'asc' else getattr(self.model, column).desc())
-        count = query.count()
-        data = query.all()
-        return count, data
+        # query = self.session.query(self.model)
+        # if self._sortable_columns:
+        #     # print("sor",self._sortable_columns['remaining_days'])
+        #     for column, direction in self._get_default_order():
+        #         # if column == 'remaining_days':
+        #         #     # Use the custom sort function for 'remaining_days'
+        #         #     query = query.order_by(self.model.remaining_days.asc() if direction == 'asc' else self.model.remaining_days.desc())
+        #         # else:
+        #         # Use the default sort function for other columns
+        #         query = query.order_by(getattr(self.model, column).asc() if direction == 'asc' else getattr(self.model, column).desc())
+        # count = query.count()
+        # data = query.all()
+        # return count, data
 
         # Override get_query() to filter rows based on a specific condition
 
@@ -342,8 +351,8 @@ class UserAdmin(AdminLTEModelView):
         # Get the base query
         query = super().get_query()
 
-        admin_id = int(request.args.get("admin_id") or g.admin.id)
-        if admin_id not in g.admin.recursive_sub_admins_ids():
+        admin_id = int(request.args.get("admin_id") or g.account.id)
+        if admin_id not in g.account.recursive_sub_admins_ids():
             abort(403)
         admin = AdminUser.query.filter(AdminUser.id == admin_id).first()
         if not admin:
@@ -361,8 +370,8 @@ class UserAdmin(AdminLTEModelView):
 
         # query = query.session.query(func.count(User.id))
         query = super().get_count_query()
-        admin_id = int(request.args.get("admin_id") or g.admin.id)
-        if admin_id not in g.admin.recursive_sub_admins_ids():
+        admin_id = int(request.args.get("admin_id") or g.account.id)
+        if admin_id not in g.account.recursive_sub_admins_ids():
             abort(403)
         admin = AdminUser.query.filter(AdminUser.id == admin_id).first()
         if not admin:
@@ -370,8 +379,8 @@ class UserAdmin(AdminLTEModelView):
 
         query = query.filter(User.added_by.in_(admin.recursive_sub_admins_ids()))
 
-        # admin_id=int(request.args.get("admin_id") or g.admin.id)
-        # if admin_id not in g.admin.recursive_sub_admins_ids():
+        # admin_id=int(request.args.get("admin_id") or g.account.id)
+        # if admin_id not in g.account.recursive_sub_admins_ids():
         #     abort(403)
         # admin=AdminUser.query.filter(AdminUser.id==admin_id).first()
         # if not admin:

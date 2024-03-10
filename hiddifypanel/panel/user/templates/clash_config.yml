@@ -1,6 +1,6 @@
-% set OnProxyIssue='DIRECT' if typ =="lite" else 'REJECT'
-% set OnIranSites='PROXY' if typ =="all" else 'DIRECT'
-% set OnNotFilteredSites='DIRECT' if typ =="lite" else 'PROXY'
+{% set OnProxyIssue='DIRECT' if typ =="lite" else 'REJECT' %}
+{% set OnIranSites='PROXY' if typ =="all" else 'DIRECT' %}
+{% set OnNotFilteredSites='DIRECT' if typ =="lite" else 'PROXY' %}
 
 mixed-port: 7890
 allow-lan: false
@@ -9,9 +9,9 @@ secret:
 external-controller: 127.0.0.1:9090
 # ipv6: false
 ipv6: true
-% if meta_or_normal=='meta'
+{% if meta_or_normal=='meta' %}
 #global-client-fingerprint: {{hconfigs[ConfigEnum.utls]}}
-% endif
+{% endif %}
 mode: rule
 dns:
   enable: true
@@ -20,9 +20,9 @@ dns:
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
   listen: 127.0.0.1:6868
-  % if meta_or_normal=='meta'
+{%  if meta_or_normal=='meta' %}
   prefer-h3: true #Enable DoH support for HTTP/3,
-  % endif
+{%  endif %}
   fake-ip-filter:
      - "{{domain}}"
      - "{{hconfigs[ConfigEnum.telegram_fakedomain]}}"
@@ -32,14 +32,14 @@ dns:
     - 1.0.0.1
   nameserver:
 #    - https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/dns/dns-query
-% if meta_or_normal=='meta'
+{% if meta_or_normal=='meta' %}
     - https://8.8.8.8/dns-query#h3=true
     - https://1.1.1.1/dns-query#PROXY
     - https://8.8.8.8/dns-query#PROXY
     - https://1.0.0.1/dns-query#PROXY
     #- https://8.8.8.8/dns-query#PROXY&h3=true
     
-% endif
+{% endif %}
     - 8.8.8.8
     - 1.1.1.1
 profile:

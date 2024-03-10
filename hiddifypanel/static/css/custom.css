@@ -164,7 +164,7 @@ fieldset fieldset legend {
 }
 
 #main-sidebar .nav-sidebar>.nav-item>.nav-link {
-  width: 80px;
+  width: 90px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -528,4 +528,31 @@ pre {
 .dark-mode .modal {
   color: white;
 
+}
+
+div#qrcode img {
+  padding: 10px;
+  background-color: white;
+}
+
+.global-form .custom-switch {
+  width: 100%;
+}
+
+td.col-is_active {
+  text-align: center !important;
+  padding: 0px;
+}
+
+td.col-uuid a {
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 80px;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.select2-container {
+  display: none;
 }

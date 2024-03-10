@@ -1,0 +1,80 @@
+{% macro menu_icon(item) -%}
+  {% set icon_type = item.get_icon_type() %}
+  {%- if icon_type %}
+    {% set icon_value = item.get_icon_value() %}
+    {% if icon_type == 'glyph' %}
+        <i class="glyphicon {{ icon_value }} nav-icon"></i>
+    {% elif icon_type == 'fa' %}
+        <i class="fa {{ icon_value }} nav-icon"></i>
+    {% elif icon_type == 'fas' %}
+        <i class="fas {{ icon_value }} nav-icon"></i>
+    {% elif icon_type == 'far' %}
+        <i class="far {{ icon_value }} nav-icon"></i>
+    {% elif icon_type == 'image' %}
+        <img src="{{ url_for('static', filename=icon_value) }}" alt="menu image">
+    {% elif icon_type == 'image-url' %}
+        <img src="{{ icon_value }}" alt="menu image">
+    {% endif %}
+  {% else %}
+    <i class="far fa-circle nav-icon"></i>
+  {% endif %}
+{%- endmacro %}
+
+{% macro category_menu_icon(item) -%}
+  {% set icon_value = item.get_class_name() %}
+  <i class="{{icon_value}} nav-icon"></i>
+{%- endmacro %}
+
+{% macro menu(menu_root=None) %}
+  {% if menu_root is none %}{% set menu_root = admin_view.admin.menu()[1:] %}{% endif %}
+  {%- for item in menu_root %}
+    {%- if item.is_category() -%}
+      {% set children = item.get_children() %}
+      {%- if children %}
+        {% set class_name = item.get_class_name() or '' %}
+        {%- if item.is_active(admin_view) %}
+        <li class="nav-item has-treeview menu-open">
+        {% else -%}
+        <li class="nav-item has-treeview">
+        {%- endif %}
+          <a href="#" class="nav-link{% if item.is_active(admin_view) %} active{% endif %}">
+            {{ category_menu_icon(item) }}
+            <p>
+              {{ item.name }}
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+          {%- for child in children -%}
+            {%- if child.is_category() -%}
+              {{ menu(menu_root=[child]) }}
+            {% else %}
+              {% set class_name = child.get_class_name() %}
+              <li class="nav-item{% if class_name %} {{class_name}}{% endif %}">
+              <a class="nav-link{% if child.is_active(admin_view) %} active{% endif %}" href="{{ child.get_url() }}"{% if child.target %} target="{{ child.target }}"{% endif %}>
+                {{ menu_icon(child) }}
+                <p>{{ child.name }}</p>
+                </a>
+              </li>
+            {%- endif %}
+          {%- endfor %}
+          </ul>
+        </li>
+      {% endif %}
+    {%- else %}
+      {%- if item.is_accessible() and item.is_visible() -%}
+        {% set class_name = item.get_class_name() %}
+        {%- if item.is_active(admin_view) %}
+        <li class="nav-item active{% if class_name %} {{class_name}}{% endif %}">
+        {%- else %}
+        <li class="nav-item{% if class_name %} {{class_name}}{% endif %}">
+        {%- endif %}
+          <a class="nav-link{% if item.is_active(admin_view) %} active{% endif %}" href="{{ item.get_url() }}"{% if item.target %} target="{{ item.target }}"{% endif %}>
+            {{ menu_icon(item) }}
+            <p>{{ item.name }}</p>
+          </a>
+        </li>
+      {%- endif -%}
+    {% endif -%}
+  {% endfor %}
+{% endmacro %}

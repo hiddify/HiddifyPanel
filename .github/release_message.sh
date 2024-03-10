@@ -3,4 +3,4 @@
 pip install lastversion gitchangelog pystache >/dev/null 2>&1
 previous_release=$(lastversion --at pip hiddifypanel)
 current=$(cat hiddifypanel/VERSION)
-gitchangelog "${previous_release}..$current" ||echo "Error in change log"
+gitchangelog "${previous_release}..v$current" ||echo "Error in change log"

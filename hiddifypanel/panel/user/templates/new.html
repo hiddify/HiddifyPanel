@@ -2,25 +2,27 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    {%set base='https://'+domain+'/'+hconfigs[ConfigEnum.proxy_path]+"/"+user.uuid+"/"%}
-    <meta name="apple-itunes-app" content="app-id=6450534064, app-argument=streisand://import/{{base}}">
+    
+    <meta name="apple-itunes-app" content="app-id=6450534064, app-argument=streisand://import/{{profile_url}}">
     
     <link rel="icon" type="image/png" href="../static/new/assets/hiddify-logo-7617d937.png" />
-    <link rel="stylesheet" href="node_modules/smartbanner.js/dist/smartbanner.min.css">
+<!--     <link rel="stylesheet" href="node_modules/smartbanner.js/dist/smartbanner.min.css"> -->
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <link rel="icon" type="image/x-icon" href="{{ static_url_for( filename='images/favicon.ico')}}">
+    <link rel="manifest" href="{{ url_for('common_bp.LoginView:create_pwa_manifest',secret_uuid=g.account.uuid or '')}}">
+    
     <title>Hiddify | Panel</title>
-    <script type="module" crossorigin src="../static/new/assets/index-ba8485db.js"></script>
-    <link rel="stylesheet" href="../static/new/assets/index-421b8480.css">
+    <script type="module" crossorigin src="../static/new/assets/index-1b891a7c.js"></script>
+    <link rel="stylesheet" href="../static/new/assets/index-669b32c8.css">
   </head>
   <body>
     <div id="root"></div>
     
-    <script src="node_modules/smartbanner.js/dist/smartbanner.min.js"></script>
+    <!--<script src="node_modules/smartbanner.js/dist/smartbanner.min.js"></script>-->
     <script>
-      window.userUuid = '{{user.uuid}}';
       window.appVersion = '{{version}}';
-      window.deepLink = "hiddify://import/{{base}}"
+      window.deepLink = "hiddify://import/{{profile_url}}"
     </script>
   </body>
 </html>

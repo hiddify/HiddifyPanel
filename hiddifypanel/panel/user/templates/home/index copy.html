@@ -22,17 +22,14 @@
             <div class="card-header d-flex p-0">
                 <h3 class="card-title p-1"> </h3>
                 <ul class="nav nav-pills ml-auto p-2">
-                    % if hconfigs[ConfigEnum.telegram_enable]
-                    <li class="nav-item"><a class="nav-link" href="#telegram" data-toggle="tab"><i
-                                class="fa-brands fa-telegram fa-margin"></i> {{_('telegram')}}</a></li>
-                    % endif
-                    <li class="nav-item"><a class="nav-link" href="#android" data-toggle="tab"><i
-                                class="fa-brands fa-android fa-margin"></i> اندروید</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#ios" data-toggle="tab"><i
-                                class="fa-brands fa-app-store-ios fa-margin"></i> آیفون</a></li>
+                    {% if hconfigs[ConfigEnum.telegram_enable] %}
+                    <li class="nav-item"><a class="nav-link" href="#telegram" data-toggle="tab"><i class="fa-brands fa-telegram fa-margin"></i> {{_('telegram')}}</a></li>
+                    {% endif %}
+                    <li class="nav-item"><a class="nav-link" href="#android" data-toggle="tab"><i class="fa-brands fa-android fa-margin"></i> اندروید</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#ios" data-toggle="tab"><i class="fa-brands fa-app-store-ios fa-margin"></i> آیفون</a></li>
                     <li class="nav-item"><a class="nav-link" href="#windows" data-toggle="tab">
-                        <i class="fa-brands fa-windows fa-margin1"></i> <i class="fa-brands fa-apple fa-margin1"></i> <i class="fa-brands fa-linux fa-margin1"></i> لپ تاپ و رایانه</a></li>
-                    
+                            <i class="fa-brands fa-windows fa-margin1"></i> <i class="fa-brands fa-apple fa-margin1"></i> <i class="fa-brands fa-linux fa-margin1"></i> لپ تاپ و رایانه</a></li>
+
                 </ul>
             </div><!-- /.card-header -->
             <div class="card-body">
@@ -72,12 +69,9 @@
             <div class="card-header d-flex p-0">
                 <h3 class="card-title p-0"></h3>
                 <ul class="nav nav-pills ml-auto p-2">
-                    <li class="nav-item"><a class="nav-link" href="#all_configs" data-toggle="tab"><i
-                                class="fa-solid fa-grip fa-margin"></i> همه کانفیگ‌ها</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#speedtest" data-toggle="tab"><i
-                                class="fa-solid fa-gauge-high fa-margin"></i> تست سرعت و شناسایی آی پی کثیف</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#doh" data-toggle="tab"><i
-                                class="fa-solid fa-sitemap fa-margin"></i> DNS over https</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#all_configs" data-toggle="tab"><i class="fa-solid fa-grip fa-margin"></i> همه کانفیگ‌ها</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#speedtest" data-toggle="tab"><i class="fa-solid fa-gauge-high fa-margin"></i> تست سرعت و شناسایی آی پی کثیف</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#doh" data-toggle="tab"><i class="fa-solid fa-sitemap fa-margin"></i> DNS over https</a></li>
                 </ul>
             </div><!-- /.card-header -->
             <div class="card-body">
@@ -102,31 +96,30 @@
             </div><!-- /.card-body -->
         </div>
         <!-- ./card -->
-    <!-- /.col -->
+        <!-- /.col -->
 
 
-<div class="card-deck d-sm-none">
-        <div  class="card small-box bg-warning">
-            <div class="card-body">
-            <div class="inner">
-                <h3>QR code</h3>
-                <p>To copy or share links, click on the gray <i class="fa-solid fa-qrcode"></i> field to scan the QR Code.
-                    It will be displayed.</p>
+        <div class="card-deck d-sm-none">
+            <div class="card small-box bg-warning">
+                <div class="card-body">
+                    <div class="inner">
+                        <h3>QR code</h3>
+                        <p>To copy or share links, click on the gray <i class="fa-solid fa-qrcode"></i> field to scan the QR Code.
+                            It will be displayed.</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa-solid fa-qrcode fa-margin"></i>
+                    </div>
+                </div>
+                <a href="https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/" class="card-footer share-link">
+                    <i class="fas fa-qrcode"></i> مشاهده کد QR
+                </a>
+
             </div>
-            <div class="icon">
-                <i class="fa-solid fa-qrcode fa-margin"></i>
-            </div>
-        </div>
-            <a href="https://{{domain}}/{{hconfigs[ConfigEnum.proxy_path]}}/{{user.uuid}}/"
-             class="card-footer share-link">
-                <i class="fas fa-qrcode"></i> مشاهده کد QR
-            </a>
-
         </div>
     </div>
-</div>
 
- </div>
+</div>
 
 
 
@@ -202,8 +195,7 @@
     }
 </style>
 
-<div class="modal fade" id="share-qr-code" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
-    aria-hidden="true">
+<div class="modal fade" id="share-qr-code" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -211,7 +203,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <h5 class="modal-title" id="exampleModalLongTitle">لینک اشتراک برای شبکه های اجتماعی</h5>
-                
+
             </div>
             <div class="modal-body">
                 <center>
@@ -324,10 +316,10 @@
 </script>
 
 <script>
-    
-    
+
+
     function replace_info(str) {
-    
+
         if (str.includes('vmess://')) {
             splt = str.split('vmess://')
             return "vmess://" + btoa(splt[1])
@@ -354,40 +346,40 @@
     }
 
     $(function () {
-    
-    $('#all-links').DataTable({
-// scrollY: 300,
- responsive1: {
-            details: {
-                display: $.fn.dataTable.Responsive.display.modal( {
-                    header: function ( row ) {
-                        var data = row.data();
-                        return ''; //'Details for '+data[0]+' '+data[1];
-                    }
-                } ),
-                renderer: $.fn.dataTable.Responsive.renderer.tableAll( {
-                    tableClass: 'table'
-                } )
+
+        $('#all-links').DataTable({
+            // scrollY: 300,
+            responsive1: {
+                details: {
+                    display: $.fn.dataTable.Responsive.display.modal({
+                        header: function (row) {
+                            var data = row.data();
+                            return ''; //'Details for '+data[0]+' '+data[1];
+                        }
+                    }),
+                    renderer: $.fn.dataTable.Responsive.renderer.tableAll({
+                        tableClass: 'table'
+                    })
+                }
+            },
+            "language": {
+                "paginate": {
+                    "next": "بعدی",
+                    "previous": "قبلی"
+                }
+            },
+            "info": true,
+            "paging": false,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": true,
+            "autoWidth": true,
+
+            "oLanguage": {
+                "sSearch": "جستجو: "
             }
-        },
-        "language": {
-            "paginate": {
-                "next": "بعدی",
-                "previous" : "قبلی"
-            }
-        },
-      "info" : true,
-      "paging": false,
-      "lengthChange": true,
-      "searching": true,
-      "ordering": true,
-      "autoWidth": true,
-  
-"oLanguage": {
-   "sSearch": "جستجو: "
- }
+        });
     });
-  });
 </script>
 
 {% endblock %}

@@ -1,6 +1,5 @@
-import time
 import telebot
-from flask import  request
+from flask import request
 from apiflask import abort
 from flask_restful import Resource
 
@@ -26,15 +25,16 @@ def register_bot(set_hook=False):
             bot.token = hconfig(ConfigEnum.telegram_bot_token)
             try:
                 bot.username = bot.get_me().username
-            except:
+            except BaseException:
                 pass
             # bot.remove_webhook()
             # time.sleep(0.1)
             domain = get_panel_domains()[0].domain
-            proxy_path = hconfig(ConfigEnum.proxy_path)
+            admin_proxy_path = hconfig(ConfigEnum.proxy_path_admin)
 
-            user_secret = get_super_admin_secret()
-            bot.set_webhook(url=f"https://{domain}/{proxy_path}/{user_secret}/api/v1/tgbot/")
+            user_secret = AdminUser.get_super_admin_uuid()
+            if set_hook:
+                bot.set_webhook(url=f"https://{domain}/{admin_proxy_path}/{user_secret}/api/v1/tgbot/")
     except Exception as e:
         print(e)
         import traceback
@@ -49,7 +49,7 @@ def init_app(app):
             bot.token = token
             try:
                 bot.username = bot.get_me().username
-            except:
+            except BaseException:
                 pass
 
 

@@ -15,33 +15,33 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  %if g.darkmode
+  {% if g.darkmode %}
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  %else
+  {% else %}
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  %endif
-  <link href="{{static_url_for(filename='images/splash/iphone5_splash.png')}}"
-    media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" rel="apple-touch-startup-image" />
-  <link href="{{static_url_for(filename='images/splash/iphone6_splash.png')}}"
-    media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" rel="apple-touch-startup-image" />
-  <link href="{{static_url_for(filename='images/splash/iphoneplus_splash.png')}}"
-    media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" rel="apple-touch-startup-image" />
-  <link href="{{static_url_for(filename='images/splash/iphonex_splash.png')}}"
-    media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" rel="apple-touch-startup-image" />
-  <link href="{{static_url_for(filename='images/splash/iphonexr_splash.png')}}"
-    media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" rel="apple-touch-startup-image" />
-  <link href="{{static_url_for(filename='images/splash/iphonexsmax_splash.png')}}"
-    media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" rel="apple-touch-startup-image" />
-  <link href="{{static_url_for(filename='images/splash/ipad_splash.png')}}"
-    media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" rel="apple-touch-startup-image" />
-  <link href="{{static_url_for(filename='images/splash/ipadpro1_splash.png')}}"
-    media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" rel="apple-touch-startup-image" />
-  <link href="{{static_url_for(filename='images/splash/ipadpro3_splash.png')}}"
-    media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" rel="apple-touch-startup-image" />
-  <link href="{{static_url_for(filename='images/splash/ipadpro2_splash.png')}}"
-    media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" rel="apple-touch-startup-image" />
+  {% endif %}
+  <link href="{{static_url_for(filename='images/splash/iphone5_splash.png')}}" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
+    rel="apple-touch-startup-image" />
+  <link href="{{static_url_for(filename='images/splash/iphone6_splash.png')}}" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
+    rel="apple-touch-startup-image" />
+  <link href="{{static_url_for(filename='images/splash/iphoneplus_splash.png')}}" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"
+    rel="apple-touch-startup-image" />
+  <link href="{{static_url_for(filename='images/splash/iphonex_splash.png')}}" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"
+    rel="apple-touch-startup-image" />
+  <link href="{{static_url_for(filename='images/splash/iphonexr_splash.png')}}" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
+    rel="apple-touch-startup-image" />
+  <link href="{{static_url_for(filename='images/splash/iphonexsmax_splash.png')}}" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"
+    rel="apple-touch-startup-image" />
+  <link href="{{static_url_for(filename='images/splash/ipad_splash.png')}}" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
+    rel="apple-touch-startup-image" />
+  <link href="{{static_url_for(filename='images/splash/ipadpro1_splash.png')}}" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
+    rel="apple-touch-startup-image" />
+  <link href="{{static_url_for(filename='images/splash/ipadpro3_splash.png')}}" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
+    rel="apple-touch-startup-image" />
+  <link href="{{static_url_for(filename='images/splash/ipadpro2_splash.png')}}" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
+    rel="apple-touch-startup-image" />
   <link rel="icon" type="image/x-icon" href="{{ static_url_for( filename='images/favicon.ico')}}">
-  <link rel="manifest" href="{{ url_for('user2.UserView:create_pwa_manifest')}}">
+  <link rel="manifest" href="{{ hurl_for('common_bp.LoginView:create_pwa_manifest',secret_uuid=g.account.uuid or '')}}">
 
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -63,13 +63,13 @@
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.bootstrap4.min.css">
 
   <link rel="stylesheet" href="{{ static_url_for( filename='css/custom.css',version=5.23 ) }}">
-  % if get_locale()=='fa'
+  {% if get_locale()=='fa' %}
   <link rel="stylesheet" href="{{static_url_for(filename='css/bootstrap4-rtl.min.css')}}">
   <link rel="stylesheet" href="{{static_url_for(filename='css/adminlte.fa.css')}}">
   <link rel="stylesheet" href="{{static_url_for(filename='css/custom-rtl.css',version=3)}}">
   {% block rtl_styles %}
   {% endblock %}
-  % endif
+  {% endif %}
   {% endblock %}
 
   {% block head_tail %}
@@ -181,7 +181,7 @@
               <a target="_blank" id="share-link-open" class="btn btn-secondary" href=""><i class="fa-solid fa-arrow-up-right-from-square"></i> {{_('open')}}</a>
             </div>
             <br />
-            <div id="qrcode" style="margin:10px;padding:10px;background:#fff"></div>
+            <div id="qrcode" style="margin:10px;padding:10px;"></div>
           </center>
         </div>
         <div class="modal-footer">
@@ -217,7 +217,7 @@
 
   <script src="{{ static_url_for( filename='js/moment.min.js' ) }}"></script>
   <script src="{{ static_url_for( filename='js/bootbox.all.min.js' ) }}"></script>
-  <!-- {#<script src="{{ static_url_for( filename="plugins/select2/select2.min.js" ) }}"></script>#} -->
+  <script src="{{ static_url_for( filename="plugins/select2/select2.min.js" ) }}"></script>
 
 
 
@@ -276,8 +276,9 @@
       var link = this.getAttribute('data-copy') || this.href;
       qrcode.clear()
       qrcode.makeCode(link);
-      hrefshare = "https://{{domain}}/{{hconfig(ConfigEnum.proxy_path)}}/redirect/" + link.replaceAll('://', '%3A%2F%2F')
+      hrefshare = "https://{{domain}}/{{hconfig(ConfigEnum.proxy_path_admin)}}/redirect/" + link.replaceAll('://', '%3A%2F%2F')
       $('#qrcode-link')[0].href = link
+      $('#qrcode-link').attr('data-copy', link)
       $('#share-link-open')[0].href = link
       $('#share-link-redirect')[0].href = hrefshare
       $('#share-link-open').show()
@@ -288,13 +289,13 @@
 
       if (this.getAttribute('data-copy')) {
         $('#share-link-redirect').hide()
-        $('#share-link-open').hide()
+        //$('#share-link-open').hide()
       }
       $('#share-qr-code').modal('show');
     }
 
     $(document).ready(function () {
-      % set cats = { 'error': 'danger' }
+      {% set cats = { 'error': 'danger' } %}
       {% for cat, msg in get_flashed_messages(with_categories = True) %}
       $(document).Toasts('create', {
         class: 'bg-{{cats.get(cat,cat)}}',
@@ -326,7 +327,7 @@
 
   {% block tail %}
   {% macro pwa_install_btn() -%}
-  {% if g.user_agent.os.family == "iOS" %}
+  {% if g.user_agent['os'] == "iOS" %}
   <i class="fa-solid fa-arrow-up-from-bracket"></i>
   {% else %}
   <button class='btn btn-success' onclick='install_pwa()'>{{_("Install")}}</button>
@@ -355,7 +356,7 @@
     function cancel_video() {
       player.pauseVideo();
 
-      os = "{{g.user_agent.browser.family}}"
+      os = "{{g.user_agent['app']}}"
       is_safari = os.indexOf("Safari") >= 0
       v = $('#guide-video')[0]
       v2 = $('#ytplayer')[0]
@@ -391,7 +392,7 @@
       "windows-hiddifyn": "o9L2sI2T53Q"
     };
     function show_video(file) {
-      os = "{{g.user_agent.browser.family}}"
+      os = "{{g.user_agent['app']}}"
       is_safari = os.indexOf("Safari") >= 0
 
       if (youtube_is_open && youtube_map[file]) {
@@ -438,12 +439,12 @@
     is_ios = false
     {% if g.install_pwa %}
 
-%if g.user_agent.os.family == "iOS" 
-is_ios = true
-        % if not g.pwa and request.endpoint and("user2.UserView" in request.endpoint or "admin.Dashboard" in request.endpoint)
+    {% if g.user_agent['os'] == "iOS" %}
+    is_ios = true
+    {%  if not g.pwa and request.endpoint and("client.UserView" in request.endpoint or "admin.Dashboard" in request.endpoint) %}
     show_prompt()
-      % endif
-      % endif
+    {% endif %}
+    {% endif %}
     window.addEventListener('beforeinstallprompt', (event) => {
       console.log("On before install")
       if (deferredPrompt == null) show_prompt()
@@ -473,11 +474,11 @@ is_ios = true
       });
     };
     $('#install-pwa-btn').click(install_pwa)
-      %if session.get('darkmode', "notset") == "notset"
-if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.location += "?darkmode=true"
-      }
-% endif
+    {% if session.get('darkmode', "notset") == "notset" %}
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.location += "?darkmode=true"
+    }
+    {% endif %}
     {% endif %}
 
 
@@ -535,12 +536,15 @@ if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').match
     }
   </script>
 
-  % if get_locale()=='fa'
+  {% if get_locale()=='fa' %}
   <script src="{{static_url_for(filename='js/custom-rtl.js',version=5.1)}}"> </script>
-  %endif
+  {% endif %}
 
 
   <!-- <script src="{{static_url_for(filename='js/pwa-sw.js')}}" defer></script> -->
+  {% endblock %}
+
+  {%block last%}
   {% endblock %}
 </body>
 

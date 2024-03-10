@@ -8,9 +8,9 @@
 {{modal('quicksetup',_('Save Link'),_('Please note that your panel can be accessed only via <a href="%(adminlink)s" class="btn btn-primary copy-link">%(adminlink)s</a>. Please save this link.',adminlink=admin_link),show=Fales)}}
 
 <script>
-    disable_notif=false
-    $(document).on('submit','form',function(){
-        disable_notif=true
+    disable_notif = false
+    $(document).on('submit', 'form', function () {
+        disable_notif = true
     });
     window.addEventListener('beforeunload', function (e) {
         if (disable_notif) return
@@ -20,20 +20,20 @@
         $("#quicksetup").modal()
         e.returnValue = 'Save';
         return "save"
-});
+    });
 </script>
 {% endblock %}
 
 {% macro ip_btn(ip) -%}
-% if ip 
+{% if ip %}
 <div class="btn-group">
     <a href="#" data-copy="{{ip}}" class="btn btn-secondary copy-link"><i class="fa-regular fa-copy"></i></a>
-    
+
     <a href="#" data-copy="{{ip}}" class="btn btn-primary copy-link">{{ip}}</a>
 </div>
-%else
-    -
-%endif
+{% else %}
+-
+{% endif %}
 {%- endmacro -%}
 
 
@@ -43,44 +43,44 @@
 
 
 <div class="row">
-<div class="card col-12">
-    <div class="card-header">{{_("config.lang.label")}}</div>
-    <div class="card-body">
+    <div class="card col-12">
+        <div class="card-header">{{_("config.lang.label")}}</div>
+        <div class="card-body">
 
-        <div class="row">
-            <div class="col-12">
-                
-                {{render_form(lang_form)}}
+            <div class="row">
+                <div class="col-12">
+
+                    {{render_form(lang_form)}}
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="card">
-    <div class="card-header">{{_("admin.quicksetup.title")}}</div>
-    <div class="card-body">
+    <div class="card">
+        <div class="card-header">{{_("admin.quicksetup.title")}}</div>
+        <div class="card-body">
 
-        <div class="row">
-            <div class="card-columns">
-                {{_('admin.quicksetup_intro',ipv4=ip_btn(ipv4),ipv6=ip_btn(ipv6))}}
-                {{render_form(form,form_type="",extra_classes="card-columns1")}}
+            <div class="row">
+                <div class="card-columns">
+                    {{_('admin.quicksetup_intro',ipv4=ip_btn(ipv4),ipv6=ip_btn(ipv6))}}
+                    {{render_form(form,form_type="",extra_classes="card-columns1")}}
+                </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 
 <style>
     @media (min-width: 576px) {
-    .card-columns {
-        column-count: 1;
+        .card-columns {
+            column-count: 1;
+        }
     }
-}
 
-@media (min-width: 768px) {
-    .card-columns {
-        column-count: 2;
+    @media (min-width: 768px) {
+        .card-columns {
+            column-count: 2;
+        }
     }
-}
 </style>
 {% endblock %}

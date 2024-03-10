@@ -1,38 +1,38 @@
-%if hconfig(ConfigEnum.show_usage_in_sublink)
+{% if hconfig(ConfigEnum.show_usage_in_sublink) %}
 trojan://1@{{fake_ip_for_sub_link}}?sni=fake_ip_for_sub_link&security=tls#{{user.current_usage_GB|round(3)}}/{{user.usage_limit_GB}}GB_Remain:{{expire_days}}days 
-%endif
-%if False
+{% endif %}
+{% if False %}
 # Hiddify auto ip: {{ip_debug}}
-%endif
-%if  user_activate
+{% endif %}
+{% if  user_activate %}
 
-%for d in domains
-%for t in (['http','tls'] if hconfig(ConfigEnum.http_proxy_enable,d.child_id) else ['tls'])
-%for port in hconfig(ConfigEnum.http_ports if t=='http' else ConfigEnum.tls_ports,d.child_id).split(',')
-%set phttp=port if t=='http' else None
-%set ptls=port if t=='tls' else None
+{% for d in domains %}
+{% for t in (['http','tls'] if hconfig(ConfigEnum.http_proxy_enable,d.child_id) else ['tls']) %}
+{% for port in hconfig(ConfigEnum.http_ports if t=='http' else ConfigEnum.tls_ports,d.child_id).split(',') %}
+{% set phttp=port if t=='http' else None %}
+{% set ptls=port if t=='tls' else None %}
 ####################################
 ## {% if d.has_auto_ip  %}Auto {%endif%} {{d.mode}}  {{d.alias or d.domain}}  {{t}}:{{port}}
 ####################################
-% for type in link_maker.all_proxies(d.child_id)
-% set pinfo=link_maker.make_proxy(type,d,phttp=phttp,ptls=ptls)
-% if 'msg' not in pinfo
-% set link=link_maker.to_link(pinfo)
-% if 'msg' not in link
+{% for type in link_maker.all_proxies(d.child_id) %}
+{% set pinfo=link_maker.make_proxy(type,d,phttp=phttp,ptls=ptls) %}
+{% if 'msg' not in pinfo %}
+{% set link=link_maker.to_link(pinfo) %}
+{% if 'msg' not in link %}
 {{''}}
 # {{pinfo["name"]}} {{d.alias or d.domain}} 
 {{link}}
-%endif
-%endif
-% endfor
-% endfor
-% endfor
+{% endif %}
+{% endif %}
+{% endfor %}
+{% endfor %}
+{% endfor %}
 {{''}}
 
 
 
-% endfor
+{% endfor %}
 
-%else
+{% else %}
 trojan://1@{{fake_ip_for_sub_link}}#Package_Ended 
-%endif
+{% endif %}

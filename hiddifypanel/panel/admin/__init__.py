@@ -1,31 +1,23 @@
-from flask import Blueprint, url_for, request, jsonify, g, redirect
+from flask import render_template, request, redirect, g
+from . import fix_flaskadmin_babel
+import flask_admin
 from flask_admin import Admin
 from hiddifypanel import Events
-# from flask_sockets import Sockets
-
-from .SettingAdmin import SettingAdmin
 from .DomainAdmin import DomainAdmin
-from .ConfigAdmin import ConfigAdmin
-from .commercial_info import CommercialInfo
-from .ProxyAdmin import ProxyAdmin
 from .AdminstratorAdmin import AdminstratorAdmin
-from .Actions import Actions
-from .Backup import Backup
-from .QuickSetup import QuickSetup
-from hiddifypanel.models import StrConfig, ConfigEnum
-# from .resources import ProductItemResource, ProductResource
-from hiddifypanel.panel.database import db
-from hiddifypanel.models import *
-from .Dashboard import Dashboard
 
-from flask_admin.menu import MenuLink
+
+from hiddifypanel.database import db
+from hiddifypanel.models import *
 from apiflask import APIBlueprint
-import uuid
 from flask_adminlte3 import AdminLTE3
-flask_bp = APIBlueprint("flask", __name__, url_prefix=f"/<proxy_path>/<user_secret>/", template_folder="templates", enable_openapi=False)
-admin_bp = APIBlueprint("admin", __name__, url_prefix=f"/<proxy_path>/<user_secret>/admin/", template_folder="templates", enable_openapi=False)
-flaskadmin = Admin(endpoint="admin", base_template='flaskadmin-layout.html')
-# from extensions import socketio
+
+
+flask_bp = APIBlueprint("flask", __name__, template_folder="templates", enable_openapi=False)
+admin_bp = APIBlueprint("admin", __name__, template_folder="templates", enable_openapi=False)
+
+flaskadmin = Admin(endpoint="admin", base_template='flaskadmin-layout.html',
+                   translations_path="/opt/hiddify-develop/hiddify-panel/src/hiddifypanel/translations/")
 
 
 def init_app(app):
@@ -42,31 +34,38 @@ def init_app(app):
 
     Events.admin_prehook.notify(flaskadmin=flaskadmin, admin_bp=admin_bp)
 
-    @app.route('/<proxy_path>/<user_secret>/admin')
+    @app.route('/<proxy_path>/admin')
     @app.doc(hide=True)
-    def auto_route():
-        return redirect(request.url.replace("http://", "https://")+"/")
-
-    # flaskadmin.init_app(app)
+    def auto_route(proxy_path=None, user_secret=None):
+        return redirect(request.url.replace("http://", "https://") + "/")
 
     flaskadmin.add_view(UserAdmin(User, db.session))
     flaskadmin.add_view(DomainAdmin(Domain, db.session))
     flaskadmin.add_view(AdminstratorAdmin(AdminUser, db.session))
-
+    from .NodeAdmin import NodeAdmin
+    flaskadmin.add_view(NodeAdmin(Child, db.session))
+    from .Dashboard import Dashboard
+    from .SettingAdmin import SettingAdmin
+    from .commercial_info import CommercialInfo
+    from .ProxyAdmin import ProxyAdmin
+    from .Actions import Actions
+    from .Backup import Backup
+    from .QuickSetup import QuickSetup
+    Dashboard.register(admin_bp, route_base="/")
     SettingAdmin.register(admin_bp)
     ProxyAdmin.register(admin_bp)
     Actions.register(admin_bp)
     CommercialInfo.register(admin_bp)
-
     QuickSetup.register(admin_bp)
     Backup.register(admin_bp)
-    Dashboard.register(admin_bp, route_base="/")
 
     # admin_bp.add_url_rule('/admin/quicksetup/',endpoint="quicksetup",view_func=QuickSetup.index,methods=["GET"])
     # admin_bp.add_url_rule('/admin/quicksetup/',endpoint="quicksetup-save", view_func=QuickSetup.save,methods=["POST"])
 
-    app.add_url_rule("/<proxy_path>/<user_secret>/admin/static/<filename>/", endpoint="admin.static")  # fix bug in admin with blueprint
+    app.add_url_rule("/<proxy_path>/admin/static/<filename>/", endpoint="admin.static")  # fix bug in admin with blueprint
 
     flask_bp.debug = True
-    app.register_blueprint(admin_bp)
-    app.register_blueprint(flask_bp)
+    app.register_blueprint(admin_bp, url_prefix=f"/<proxy_path>/admin/",)
+    app.register_blueprint(admin_bp, name=f'child_{admin_bp.name}', url_prefix=f"/<proxy_path>/<int:child_id>/admin/")
+    app.register_blueprint(flask_bp, url_prefix=f"/<proxy_path>/")
+    app.register_blueprint(flask_bp, name=f'child_{flask_bp.name}', url_prefix=f"/<proxy_path>/<int:child_id>/")

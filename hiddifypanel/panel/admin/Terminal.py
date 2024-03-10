@@ -1,9 +1,9 @@
 # #!/usr/bin/env python3
-# from hiddifypanel.panel.database import db
+# from hiddifypanel.database import db
 # import uuid
-# from flask_babelex import gettext as _
+# from flask_babel import gettext as _
 # from flask_bootstrap import SwitchField
-# # from flask_babelex import gettext as _
+# # from flask_babel import gettext as _
 # import wtforms as wtf
 # from flask_wtf import FlaskForm
 # import pathlib
@@ -16,7 +16,7 @@
 # import subprocess
 # import re
 # from hiddifypanel.panel import hiddify
-# from flask import current_app,render_template,request,Response,Markup,url_for
+# from flask import current_app,render_template,request,Response,Markup,hurl_for(
 # from hiddifypanel.panel.hiddify import flash
 # from flask_wtf.file import FileField, FileRequired
 # import json
@@ -28,7 +28,7 @@
 # from flask import current_app as app
 
 # class Terminal(Namespace):
-    
+
 #     def on_connect(self):
 #         pass
 

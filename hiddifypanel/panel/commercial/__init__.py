@@ -2,7 +2,7 @@ from .ProxyDetailsAdmin import ProxyDetailsAdmin
 # from .CommercialSettings import CommercialSettings
 from hiddifypanel.panel import hiddify
 from hiddifypanel.models import *
-from hiddifypanel.panel.database import db
+from hiddifypanel.database import db
 from hiddifypanel import Events, hutils
 
 commercial = False
@@ -32,9 +32,9 @@ def config_changed_event(conf, old_value):
             set_hconfig(ConfigEnum.is_parent, False)
         if not old_value and conf.value:
             Domain.query.delete()
-            new_domain = hutils.get_ip(hutils.AF_INET)+".sslip.io"
+            new_domain = hutils.network.get_ip_str(4) + ".sslip.io"
             if not ParentDomain.query.filter(ParentDomain.domain == new_domain).first():
-                db.session.add(ParentDomain(domain=hutils.get_ip(hutils.AF_INET)+".sslip.io"))
+                db.session.add(ParentDomain(domain=hutils.network.get_ip_str(4) + ".sslip.io"))
                 db.session.commit()
 
 
@@ -53,8 +53,8 @@ Events.config_changed.subscribe(config_changed_event)
 
 
 def admin_prehook(flaskadmin, admin_bp):
-    from .ParentDomainAdmin import ParentDomainAdmin
-    flaskadmin.add_view(ParentDomainAdmin(ParentDomain, db.session))
+    # from .ParentDomainAdmin import ParentDomainAdmin
+    # flaskadmin.add_view(ParentDomainAdmin(ParentDomain, db.session))
     flaskadmin.add_view(ProxyDetailsAdmin(Proxy, db.session))
     # CommercialSettings.register(admin_bp)
 

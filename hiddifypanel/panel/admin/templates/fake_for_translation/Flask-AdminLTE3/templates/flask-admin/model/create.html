@@ -1,0 +1,31 @@
+{% extends 'flask-admin/master.html' %}
+{% import 'admin/lib.html' as lib with context %}
+{% import 'flask-admin/adminlte/forms.html' as forms with context %}
+
+{% block head %}
+    {{ super() }}
+    {{ lib.form_css() }}
+{% endblock %}
+
+{% block body %}
+    <section class="content-header">
+        <h1>{{ admin_view.name }}</h1>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    {% block create_form %}
+                        {% set modal_name = 'Create' %}
+                        {{ forms.form(modal_name, icon, form, form_opts, return_url, has_more=True, is_modal=False) }}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block tail %}
+    {{ super() }}
+    {{ lib.form_js() }}
+{% endblock %}

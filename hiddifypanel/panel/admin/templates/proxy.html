@@ -10,9 +10,9 @@
 <div class="card">
     <div class="card-header">{{_("admin.proxy.global_config")}}</div>
     <div class="card-body">
-        %if 1 or hconfig(ConfigEnum.license)
-        <a class="btn btn-info" href="{{url_for('flask.proxy.index_view')}}">{{_("Edit Proxy Names")}}</a>
-        %endif
+        {% if 1 or hconfig(ConfigEnum.license) %}
+        <a class="btn btn-info" href="{{hurl_for('flask.proxy.index_view')}}">{{_("Edit Proxy Names")}}</a>
+        {% endif %}
         <div class="row">
             <div class="col-12 global-form">
                 {{render_form(global_config_form,extra_classes="card-columns")}}
@@ -32,7 +32,7 @@
 </div>
 
 <style>
-    fieldset{
+    fieldset {
         background-color: initial;
         background-clip: border-box;
         border: 1 solid rgba(0, 0, 0, 0.125);
@@ -43,30 +43,34 @@
         display: inline-block;
         width: 100%;
     }
-    legend{
+
+    legend {
         background-color: initial;
         margin: 0px;
     }
+
     /* legend+div>label {
         display: none;
     } */
 
-@media (min-width: 576px) {
-    .card-columns {
-        column-count: 1;
+    @media (min-width: 576px) {
+        .card-columns {
+            column-count: 1;
+        }
     }
-}
 
-@media (min-width: 768px) {
-    .card-columns {
-        column-count: 2;
+    @media (min-width: 768px) {
+        .card-columns {
+            column-count: 2;
+        }
     }
-}
-.global-form .custom-switch{
-    display: inline-block;
-}
-#submit_global{
-    display: block;
-}
+
+    .global-form .custom-switch {
+        display: inline-block;
+    }
+
+    #submit_global {
+        display: block;
+    }
 </style>
-{% endblock %}  
+{% endblock %}

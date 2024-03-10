@@ -1,12 +1,11 @@
-import datetime
-
-from flask_babelex import lazy_gettext as _
+from flask_babel import lazy_gettext as _
 from sqlalchemy import func
+import datetime
 
 from hiddifypanel.drivers import user_driver
 from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify
-from hiddifypanel.panel.database import db
+from hiddifypanel.database import db
 
 to_gig_d = 1024**3
 
@@ -47,7 +46,7 @@ def add_users_usage(dbusers_bytes, child_id):
     for user, uinfo in dbusers_bytes.items():
         usage_bytes = uinfo['usage']
         ips = uinfo['ips']
-        # user_active_before=is_user_active(user)
+        # user_active_before=user.is_active
         detail = userDetails.get(user.id)
         if not detail:
             detail = UserDetail(user_id=user.id, child_id=child_id)
@@ -55,7 +54,7 @@ def add_users_usage(dbusers_bytes, child_id):
             db.session.add(detail)
         detail.connected_ips = ips
         detail.current_usage_GB = detail.current_usage_GB or 0
-        if not user.last_reset_time or user_should_reset(user):
+        if not user.last_reset_time or user.user_should_reset():
             user.last_reset_time = datetime.date.today()
             user.current_usage_GB = 0
             detail.current_usage_GB = 0
@@ -65,28 +64,28 @@ def add_users_usage(dbusers_bytes, child_id):
             user_driver.add_client(user)
             send_bot_message(user)
             have_change = True
-        if type(usage_bytes) != int or usage_bytes == 0:
+        if not isinstance(usage_bytes, int) or usage_bytes == 0:
             res[user.uuid] = "No usage"
         else:
             daily_usage.get(user.added_by, daily_usage[1]).usage += usage_bytes
-            in_gig = (usage_bytes)/to_gig_d
+            in_gig = (usage_bytes) / to_gig_d
             res[user.uuid] = in_gig
             user.current_usage_GB += in_gig
             detail.current_usage_GB += in_gig
             user.last_online = datetime.datetime.now()
             detail.last_online = datetime.datetime.now()
 
-            if user.start_date == None:
+            if user.start_date is None:
                 user.start_date = datetime.date.today()
 
-        if before_enabled_users[user.uuid] and not is_user_active(user):
+        if before_enabled_users[user.uuid] and not user.is_active:
             print(f"Removing enabled client {user.uuid} ")
             user_driver.remove_client(user)
             have_change = True
             res[user.uuid] = f"{res[user.uuid]} !OUT of USAGE! Client Removed"
 
     db.session.commit()
-    if have_change and hconfig(ConfigEnum.core_type == 'singbox'):
+    if have_change:
         hiddify.quick_apply_users()
 
     return {"status": 'success', "comments": res}
@@ -100,7 +99,7 @@ def send_bot_message(user):
     from hiddifypanel.panel.commercial.telegrambot import bot, Usage
     try:
         msg = Usage.get_usage_msg(user.uuid)
-        msg = _("User activated!") if is_user_active(user) else _("Package ended!")+"\n"+msg
-        bot.send_message(user.telegram_id, msg, reply_markup=Usage.user_keyboard(uuid))
-    except:
+        msg = _("User activated!") if user.is_active else _("Package ended!") + "\n" + msg
+        bot.send_message(user.telegram_id, msg, reply_markup=Usage.user_keyboard(user.uuid))
+    except BaseException:
         pass

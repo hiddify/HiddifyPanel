@@ -1,5 +1,5 @@
 proxies:
-% if hconfigs[ConfigEnum.shadowtls_enabled]
+{% if hconfigs[ConfigEnum.shadowtls_enabled] %}
   - name: "shadowtls"
     type: ss
     server: {{direct_host}}
@@ -10,9 +10,9 @@ proxies:
     plugin-opts:
       host: "{{hconfigs[ConfigEnum.shadowtls_fakedomain]}}"
       password: {{hconfigs[ConfigEnum.proxy_path]}}
-% endif
+{% endif %}
 
-% if hconfigs[ConfigEnum.tuic_enabled]
+{% if hconfigs[ConfigEnum.tuic_enabled] %}
   - name: tuic
     server: {{direct_host}}
     port: hconfigs[ConfigEnum.tuic_port]
@@ -28,9 +28,9 @@ proxies:
     max-udp-relay-packet-size: 1400
     fast-open: true
     skip-cert-verify: false
-% endif
+{% endif %}
 
-% if hconfigs[ConfigEnum.ssr_enabled]
+{% if hconfigs[ConfigEnum.ssr_enabled] %}
   - name: "ssr"
     type: ssr
     server: server
@@ -42,8 +42,8 @@ proxies:
     obfs-param: "{{hconfigs[ConfigEnum.ssr_fakedomain]}}"
     # protocol-param: "#"
     udp: true
-% endif
-% if False
+{% endif %}
+{% if False %}
   #hysteria
   - name: "hysteria"
     type: hysteria
@@ -69,8 +69,8 @@ proxies:
     # disable_mtu_discovery: false
     # fingerprint: xxxx
     # fast-open: true # Supports TCP fast open, default is false
-% endif
-% if False
+{% endif %}
+{% if False %}
   # http
   - name: "https"
     type: http
@@ -82,10 +82,10 @@ proxies:
     skip-cert-verify: false
     # sni: custom.com
     ip-version: dual
-% endif
-% if hconfigs[ConfigEnum.domain_fronting_domain]
-% if True or "tls" in hconfigs[ConfigEnum.fake_cdn_mode]
-  % if hconfigs[ConfigEnum.vmess_enable]
+{% endif %}
+{% if hconfigs[ConfigEnum.domain_fronting_domain] %}
+{% if True or "tls" in hconfigs[ConfigEnum.fake_cdn_mode] %}
+{%  if hconfigs[ConfigEnum.vmess_enable] %}
   - name: FakeCDN vmess_ws {{domain}}
     type: vmess
     server: {{hconfigs[ConfigEnum.domain_fronting_domain]}}
@@ -117,7 +117,7 @@ proxies:
     network: grpc
     grpc-opts:
       grpc-service-name: {{hconfigs[ConfigEnum.proxy_path]}}-vmgrpc
-  % endif
+{%  endif %}
 
   - name: FakeCDN trojan_ws {{domain}}
     type: trojan
@@ -146,7 +146,7 @@ proxies:
     network: grpc
     grpc-opts:
       grpc-service-name: {{hconfigs[ConfigEnum.proxy_path]}}-trgrpc
-  % if meta_or_normal=='meta'
+{%  if meta_or_normal=='meta' %}
   - name: FakeCDN vless_ws {{domain}}
     type: vless
     uuid: {{(user.uuid)}}
@@ -175,11 +175,11 @@ proxies:
     network: grpc
     grpc-opts:
       grpc-service-name: {{hconfigs[ConfigEnum.proxy_path]}}-vlgrpc
-    % endif
-% endif
-% endif
+{%  endif %}
+{% endif %}
+{% endif %}
 
-% if meta_or_normal=='meta'
+{% if meta_or_normal=='meta' %}
   - name: trojan+xtls {{domain}}
     type: trojan
     password: {{(user.uuid)}}
@@ -217,7 +217,7 @@ proxies:
 
 
 
-  % if is_cdn
+{%  if is_cdn %}
   - name: CDN vless_ws {{domain}}
     type: vless
     uuid: {{(user.uuid)}}
@@ -230,7 +230,7 @@ proxies:
     network: ws
     ws-opts:
       path: /{{hconfigs[ConfigEnum.proxy_path]}}/vlessws
-  % endif
+{%  endif %}
 
   - name: vless-grpc {{domain}}
     type: vless
@@ -263,11 +263,11 @@ proxies:
     tls: true
     servername: {{domain}}
     skip-cert-verify: false
-% endif
+{% endif %}
 
 
 
-% if hconfigs[ConfigEnum.vmess_enable]
+{% if hconfigs[ConfigEnum.vmess_enable] %}
   - name: vmess_ws {{domain}}
     type: vmess
     server: {{direct_host}}
@@ -283,7 +283,7 @@ proxies:
     ws-opts:
       path: /{{hconfigs[ConfigEnum.proxy_path]}}/vmessws
 
-  % if is_cdn
+{%  if is_cdn %}
   - name: CDN vmess_ws {{domain}}
     type: vmess
     server: {{domain}}
@@ -298,7 +298,7 @@ proxies:
     network: ws
     ws-opts:
       path: /{{hconfigs[ConfigEnum.proxy_path]}}/vmessws
-  % endif
+{%  endif %}
   - name: vmess_grpc {{domain}}
     type: vmess
     server: {{direct_host}}
@@ -346,7 +346,7 @@ proxies:
       path:
         - /{{hconfigs[ConfigEnum.proxy_path]}}/vmtc
 
-% if False
+{% if False %}
   - name: old_vmess_{{domain}}_vmess_18831
     type: vmess
     server: {{direct_host}}
@@ -361,7 +361,7 @@ proxies:
     network: ws
     ws-opts:
       path: /{{hconfigs[ConfigEnum.proxy_path]}}/vmess/
-  % if is_cdn:
+{%  if is_cdn: %}
   - name: CDN old_vmess_{{domain}}_vmess_18831
     type: vmess
     server: {{domain}}
@@ -376,10 +376,10 @@ proxies:
     network: ws
     ws-opts:
       path: /{{hconfigs[ConfigEnum.proxy_path]}}/vmess/
-  % endif
-% endif
+{%  endif %}
+{% endif %}
 
-% endif
+{% endif %}
   - name: trojan_ws {{domain}}
     type: trojan
     password: {{(user.uuid)}}
@@ -394,7 +394,7 @@ proxies:
     ws-opts:
       path: /{{hconfigs[ConfigEnum.proxy_path]}}/trojanws
 
-  % if is_cdn
+{%  if is_cdn %}
   - name: CDN trojan_ws {{domain}}
     type: trojan
     password: {{(user.uuid)}}
@@ -408,7 +408,7 @@ proxies:
     network: ws
     ws-opts:
       path: /{{hconfigs[ConfigEnum.proxy_path]}}/trojanws
-  % endif
+{%  endif %}
   - name: trojan-grpc {{domain}}
     type: trojan
     password: {{(user.uuid)}}
@@ -444,7 +444,7 @@ proxies:
   #   alpn:
   #     - http/1.1
 
-% if hconfigs[ConfigEnum.ssfaketls_enable] 
+{% if hconfigs[ConfigEnum.ssfaketls_enable]  %}
   - name: old_ssfaketls {{domain}}
     type: ss
     cipher: chacha20-ietf-poly1305
@@ -471,7 +471,7 @@ proxies:
       host: {{domain}}
       path: /{{hconfigs[ConfigEnum.proxy_path]}}/v2ray/
 
-  % if is_cdn
+{%  if is_cdn %}
   - name: CDN old_v2ray {{domain}}
     type: ss
     cipher: chacha20-ietf-poly1305
@@ -486,11 +486,11 @@ proxies:
       skip-cert-verify: false
       host: {{domain}}
       path: /{{hconfigs[ConfigEnum.proxy_path]}}/v2ray/
-  %endif
+{% endif %}
 
-% endif
+{% endif %}
 
-% if False
+{% if False %}
   - name: old_trojan-go_{{domain}}_trojan-go_86355
     type: trojan
     password: 1
@@ -516,7 +516,7 @@ proxies:
     ws-opts:
       path: /{{hconfigs[ConfigEnum.proxy_path]}}/trojan/
 
-% endif
+{% endif %}
 
 
 

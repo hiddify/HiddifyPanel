@@ -1,0 +1,50 @@
+{% extends 'flask-admin/master.html' %}
+{% import 'admin/lib.html' as lib with context %}
+{% import 'flask-admin/adminlte/forms.html' as forms with context %}
+
+{% block body %}
+    <section class="content-header">
+        <h1>{{ admin_view.name }}</h1>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        {% set modal_name = 'View' + ' #' + request.args.get('id') %}
+                        {{ forms.form_header(modal_name, 'fa fa-eye', is_modal=False) }}
+                        {% block details_search %}
+                            {{ forms.form_search() }}
+                        {% endblock %}
+                    </div>
+                    <div class="card-body">
+                        {% block details_table %}
+                            {{ forms.form_view(details_columns) }}
+                        {% endblock %}
+                    </div>
+                    <div class="card-footer">
+                        <div class="pull-left">
+                            {% if return_url %}
+                                <a href="{{ return_url }}" class="btn btn-default" role="button" data-dismiss="modal">
+                                    <i class="fa fa-chevron-circle-left"></i> {{ _gettext('Back') }}
+                                </a>
+                            {% endif %}
+                        </div>
+                        <div class="pull-right">
+                            {%- if admin_view.can_edit -%}
+                                <a class="btn btn-warning"
+                                   href="{{ get_url('.edit_view', id=request.args.get('id'), url=return_url) }}"
+                                   title="{{ _gettext('Edit') }}">{{ _gettext('Edit') }}</a>
+                            {%- endif -%}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block tail %}
+    {{ super() }}
+    <script src="{{ admin_static.url(filename='admin/js/details_filter.js', v='1.0.0') }}"></script>
+{% endblock %}
