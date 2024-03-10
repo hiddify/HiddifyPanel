@@ -307,26 +307,19 @@ class UserAdmin(AdminLTEModelView):
 
             if search:
                 from sqlalchemy import or_
-
-                # Assume 'name' is a field in your model you want to search in.
-                search_conditions = or_(self.model.name.contains(search), self.model.uuid.contains(search))
-
+                search_conditions = or_(self.model.name.contains(search), self.model.uuid == search)
                 query = query.filter(search_conditions)
 
             data = query.all()
             count = len(data)
-
-            # Sorting the data
             data = sorted(data, key=lambda p: getattr(p, sort_column), reverse=sort_desc)
 
             # Applying pagination
             start = page * page_size
             end = start + page_size
             data = data[start: end]
-
             res = count, data
         else:
-
             res = super().get_list(page, sort_column, sort_desc, search=search, filters=filters, page_size=page_size, *args, **kwargs)
         return res
 

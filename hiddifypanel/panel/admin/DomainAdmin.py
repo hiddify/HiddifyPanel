@@ -177,8 +177,8 @@ class DomainAdmin(AdminLTEModelView):
             except Exception as e:
                 raise ValidationError(__("Can not connect to Cloudflare.") + f' {e}')
         # elif model.mode==DomainType.auto_cdn_ip:
-        if model.alias and not model.alias.replace("_", "").isalnum():
-            hutils.flask.flash(__("Using alias with special charachters may cause problem in some clients like FairVPN."), 'warning')
+        # if model.alias and not model.alias.replace("_", "").isalnum():
+        #     hutils.flask.flash(__("Using alias with special charachters may cause problem in some clients like FairVPN."), 'warning')
             # raise ValidationError(_("You have to add your cloudflare api key to use this feature: "))
 
         dip = hutils.network.get_domain_ip(model.domain)
@@ -199,9 +199,9 @@ class DomainAdmin(AdminLTEModelView):
                 raise ValidationError(
                     __("Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode", server_ip=', '.join(list(map(str, ipv4_list))), domain_ip=dip))  # type: ignore
 
-            if domain_ip_is_same_as_panel and model.mode in [DomainType.cdn, DomainType.relay, DomainType.fake, DomainType.auto_cdn_ip]:
-                # hutils.flask.flash(__(f"In CDN mode, Domain IP={dip} should be different to your ip={', '.join(list(map(str, ipv4_list)))}"), 'warning')
-                raise ValidationError(__("In CDN mode, Domain IP=%(domain_ip)s should be different to your ip=%(server_ip)s", server_ip=', '.join(list(map(str, ipv4_list))), domain_ip=dip))  # type: ignore
+            # if domain_ip_is_same_as_panel and model.mode in [DomainType.cdn, DomainType.relay, DomainType.fake, DomainType.auto_cdn_ip]:
+            #     # hutils.flask.flash(__(f"In CDN mode, Domain IP={dip} should be different to your ip={', '.join(list(map(str, ipv4_list)))}"), 'warning')
+            #     raise ValidationError(__("In CDN mode, Domain IP=%(domain_ip)s should be different to your ip=%(server_ip)s", server_ip=', '.join(list(map(str, ipv4_list))), domain_ip=dip))  # type: ignore
 
             # if model.mode in [DomainType.ss_faketls, DomainType.telegram_faketls]:
             #     if len(Domain.query.filter(Domain.mode==model.mode and Domain.id!=model.id).all())>0:
