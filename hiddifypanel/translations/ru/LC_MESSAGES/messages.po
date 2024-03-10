@@ -351,11 +351,6 @@ msgid "In 5 minutes"
 msgstr "через 5 минут"
 
 msgid ""
-"In CDN mode, Domain IP=%(domain_ip)s should be different to your "
-"ip=%(server_ip)s"
-msgstr ""
-
-msgid ""
 "In this section, you can add your domain. You need to add at least one "
 "domain in direct mode."
 msgstr ""
@@ -799,11 +794,6 @@ msgstr ""
 "Чтобы обновить его сейчас, нажмите <a href=\"%(link)s\"<inlang-"
 "LineFeed>class=\"btn btn-info\"&gt;здесь</a>"
 
-msgid ""
-"Using alias with special charachters may cause problem in some clients like "
-"FairVPN."
-msgstr ""
-
 msgid "V2rayNG"
 msgstr ""
 "Альтернатива v2rayNG <button class='btn btn-sm btn-default' onclick='show_video('android-v2rayng')'><i class='fa-solid fa-question'></i> </button>\n"
@@ -1120,10 +1110,10 @@ msgid "config.Invalid telegram bot token"
 msgstr "Неверный токен Telegram-бота"
 
 msgid "config.Invalid! The pattern is number-number"
-msgstr "⚠️ Конфигурация недействительна! Шаблон — это номер-номер"
+msgstr "⚠️ Конфигурация недействительна! Шаблон — это номер-номер ⚠️"
 
 msgid "config.Invalid! it should be a number only"
-msgstr "⚠️ Конфигурация недействительна! Это должно быть только число"
+msgstr "⚠️ Конфигурация недействительна! Это должно быть только число ⚠️"
 
 msgid "config.admin.description"
 msgstr ""
@@ -1592,10 +1582,10 @@ msgid "config.path_v2ray.label"
 msgstr "Путь для V2Ray"
 
 msgid "config.path_vless.description"
-msgstr "Для пути VLESS"
+msgstr "Для пути VLess"
 
 msgid "config.path_vless.label"
-msgstr "ℹ️ Путь VLESS"
+msgstr "ℹ️ Путь VLess"
 
 msgid "config.path_vmess.description"
 msgstr "Для ссылок VMess"
