@@ -1,6 +1,22 @@
 # Changelog
 
 
+## v10.10.20 (2024-03-11)
+
+#### Other
+
+* Enable http upgrade by default. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+
+
 ## v10.10.19 (2024-03-10)
 
 #### Other
