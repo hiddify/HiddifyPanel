@@ -23,7 +23,7 @@ MAX_DB_VERSION = 80
 def _v74(child_id):
     set_hconfig(ConfigEnum.ws_enable, True)
     set_hconfig(ConfigEnum.grpc_enable, True)
-    set_hconfig(ConfigEnum.httpupgrade_enable, False)
+    set_hconfig(ConfigEnum.httpupgrade_enable, True)
     set_hconfig(ConfigEnum.shadowsocks2022_port, hutils.random.get_random_unused_port())
     set_hconfig(ConfigEnum.shadowsocks2022_method, "2022-blake3-aes-256-gcm")
     set_hconfig(ConfigEnum.shadowsocks2022_enable, False)
