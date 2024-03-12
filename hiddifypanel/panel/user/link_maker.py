@@ -1065,7 +1065,8 @@ def get_all_validated_proxies(domains):
                 elif type.proto == ProxyProto.hysteria2:
                     options = [{'pport': hconfigs[ConfigEnum.hysteria_port]}]
             else:
-                for t in (['http', 'tls'] if hconfigs[ConfigEnum.http_proxy_enable] else ['tls']):
+                protos = ['http', 'tls'] if hconfigs.get(ConfigEnum.http_proxy_enable) else ['tls']
+                for t in protos:
                     for port in hconfigs[ConfigEnum.http_ports if t == 'http' else ConfigEnum.tls_ports].split(','):
                         phttp = port if t == 'http' else None
                         ptls = port if t == 'tls' else None
