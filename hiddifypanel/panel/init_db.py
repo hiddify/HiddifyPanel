@@ -66,12 +66,12 @@ def _v69():
     add_config_if_not_exist(ConfigEnum.wireguard_port, hutils.random.get_random_unused_port())
     add_config_if_not_exist(ConfigEnum.wireguard_ipv4, "10.90.0.1")
     add_config_if_not_exist(ConfigEnum.wireguard_ipv6, "fd42:42:90::1")
-    wg_pk, wg_pub, _ = hiddify.get_wg_private_public_psk_pair()
+    wg_pk, wg_pub, _ = hutils.crypto.get_wg_private_public_psk_pair()
     add_config_if_not_exist(ConfigEnum.wireguard_private_key, wg_pk)
     add_config_if_not_exist(ConfigEnum.wireguard_public_key, wg_pub)
     add_config_if_not_exist(ConfigEnum.wireguard_noise_trick, "5-10")
     for u in User.query.all():
-        u.wg_pk, u.wg_pub, u.wg_psk = hiddify.get_wg_private_public_psk_pair()
+        u.wg_pk, u.wg_pub, u.wg_psk = hutils.crypto.get_wg_private_public_psk_pair()
 
 
 def _v65():
@@ -160,7 +160,7 @@ def _v50():
 def _v49():
 
     for u in User.query.all():
-        priv, publ = hiddify.get_ed25519_private_public_pair()
+        priv, publ = hutils.crypto.get_ed25519_private_public_pair()
         u.ed25519_private_key = priv
         u.ed25519_public_key = publ
 

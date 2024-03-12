@@ -234,16 +234,14 @@ class User(BaseAccount):
             dbuser.ed25519_private_key = data.get('ed25519_private_key', '')
             dbuser.ed25519_public_key = data.get('ed25519_public_key', '')
         if not dbuser.ed25519_private_key:
-            from hiddifypanel.panel import hiddify
-            priv, publ = hiddify.get_ed25519_private_public_pair()
+            priv, publ = hutils.crypto.get_ed25519_private_public_pair()
             dbuser.ed25519_private_key = priv
             dbuser.ed25519_public_key = publ
         dbuser.wg_pk = data.get('wg_pk', dbuser.wg_pk)
         dbuser.wg_pub = data.get('wg_pub', dbuser.wg_pub)
         dbuser.wg_psk = data.get('wg_psk', dbuser.wg_psk)
         if not dbuser.wg_pk:
-            from hiddifypanel.panel import hiddify
-            dbuser.wg_pk, dbuser.wg_pub, dbuser.wg_psk = hiddify.get_wg_private_public_psk_pair()
+            dbuser.wg_pk, dbuser.wg_pub, dbuser.wg_psk = hutils.crypto.get_wg_private_public_psk_pair()
 
         mode = data.get('mode', UserMode.no_reset)
         if mode == 'disable':
