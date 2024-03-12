@@ -233,6 +233,10 @@ def validate_domain_exist(form, field):
             _("Domain can not be resolved! there is a problem in your domain"))  # type: ignore
 
 
+def get_proxy_stats_url():
+    proxy_stats_url = f'{request.host_url}{g.proxy_path}/proxy-stats/'
+    params = f'hostname={proxy_stats_url}api/&port=443'
+    return f'{proxy_stats_url}?{params}/'
 # region not used
 
 

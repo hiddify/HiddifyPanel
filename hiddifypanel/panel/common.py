@@ -9,6 +9,7 @@ from hiddifypanel import hutils
 import hiddifypanel.auth as auth
 from hiddifypanel.auth import current_account
 from apiflask import APIFlask, HTTPError, abort
+from hiddifypanel import hutils
 
 
 def init_app(app: APIFlask):
@@ -21,6 +22,7 @@ def init_app(app: APIFlask):
     app.jinja_env.globals['static_url_for'] = hutils.flask.static_url_for
     app.jinja_env.globals['hurl_for'] = hutils.flask.hurl_for
     app.jinja_env.globals['_gettext'] = lambda x: print("==========", x)
+    app.jinja_env.globals['proxy_stats_url'] = hutils.flask.get_proxy_stats_url
 
     @app.after_request
     def apply_no_robot(response):
@@ -42,7 +44,7 @@ def init_app(app: APIFlask):
             has_update = False
         else:
             has_update = "dev" not in hiddifypanel.__version__ and f'{last_version}' != hiddifypanel.__version__
-    
+
         if not request.accept_mimetypes.accept_html:
             if has_update:
                 return jsonify({
