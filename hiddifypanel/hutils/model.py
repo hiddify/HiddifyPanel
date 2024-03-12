@@ -1,7 +1,7 @@
+from hiddifypanel import hutils
 
 
 def fill_username(model) -> None:
-    from hiddifypanel import hutils
     if model.username:
         return
     base_username = model.name or ''
@@ -20,7 +20,6 @@ def fill_username(model) -> None:
 
 
 def fill_password(model) -> None:
-    from hiddifypanel import hutils
     # TODO: hash the password
     if not model.password or len(model.password) < 16:
         model.password = hutils.random.get_random_password(length=16)

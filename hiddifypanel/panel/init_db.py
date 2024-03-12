@@ -13,7 +13,7 @@ from hiddifypanel.models import *
 from hiddifypanel.models import ConfigEnum, User, set_hconfig, ChildMode
 from hiddifypanel.panel import hiddify
 from hiddifypanel.database import db
-import hiddifypanel.models.utils as model_utils
+from hiddifypanel import hutils
 
 from flask import g
 
@@ -116,13 +116,13 @@ def _v60():
 def _v59():
     # set user model username and password
     for u in User.query.all():
-        model_utils.fill_username(u)
-        model_utils.fill_password(u)
+        hutils.model.fill_username(u)
+        hutils.model.fill_password(u)
 
     # set admin model username and password
     for a in AdminUser.query.all():
-        model_utils.fill_username(a)
-        model_utils.fill_password(a)
+        hutils.model.fill_username(a)
+        hutils.model.fill_password(a)
 
 
 def _v57():

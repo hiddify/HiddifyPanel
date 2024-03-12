@@ -8,7 +8,7 @@ from sqlalchemy import event
 
 from hiddifypanel.database import db
 from hiddifypanel.models import Lang
-from hiddifypanel.models.utils import fill_password, fill_username
+from hiddifypanel import hutils
 from hiddifypanel.models.base_account import BaseAccount
 from hiddifypanel.models.admin import AdminUser
 
@@ -302,5 +302,5 @@ class User(BaseAccount):
 
 @event.listens_for(User, 'before_insert')
 def on_user_insert(mapper, connection, target):
-    fill_username(target)
-    fill_password(target)
+    hutils.model.fill_username(target)
+    hutils.model.fill_password(target)
