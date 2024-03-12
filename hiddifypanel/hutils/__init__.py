@@ -10,3 +10,4 @@ from . import auth
 from . import utils
 from . import model
 from . import crypto
+from . import proxy

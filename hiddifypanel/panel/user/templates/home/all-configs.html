@@ -111,7 +111,7 @@
       {% for pinfo in link_maker.get_all_validated_proxies(domains) %}
       <tr>
         <td>
-          <div class="btn-group"><a href='{{link_maker.to_link(pinfo)}}' class="btn btn-light orig-link">{{pinfo["name"].replace("_", " ")}}</a></div>
+          <div class="btn-group"><a href='{{link_maker.v2ray.to_link(pinfo)}}' class="btn btn-light orig-link">{{pinfo["name"].replace("_", " ")}}</a></div>
         </td>
         <td><span class="badge badge-danger"> {% if pinfo['dbdomain'].has_auto_ip %}Auto {%endif%}{{pinfo["mode"]}}</span></td>
         <td><span class="badge ltr">{{pinfo['server']}}</span></td>

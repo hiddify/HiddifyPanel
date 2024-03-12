@@ -180,7 +180,7 @@ proxy-groups:
 
          
 
-{#link_maker.get_all_clash_configs(meta_or_normal,domains)#}
+{#link_maker.clash.get_all_clash_configs(meta_or_normal,domains)#}
 
 proxy-providers:
   all_proxies:

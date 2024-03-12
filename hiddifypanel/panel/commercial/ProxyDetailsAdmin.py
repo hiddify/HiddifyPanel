@@ -2,7 +2,6 @@ from hiddifypanel.models import *
 from hiddifypanel.panel.admin.adminlte import AdminLTEModelView
 from flask_babel import gettext as __
 from flask_babel import lazy_gettext as _
-from hiddifypanel.panel import hiddify
 from flask import g, redirect, Markup
 from hiddifypanel.hutils.flask import hurl_for, flash
 from hiddifypanel.auth import login_required
@@ -10,8 +9,8 @@ from flask_admin.model.template import EndpointLinkRowAction
 from flask_admin.actions import action
 from flask_admin.contrib.sqla import form, filters as sqla_filters, tools
 # Define a custom field type for the related domains
-
 from flask import current_app
+from hiddifypanel import hutils
 
 
 class ProxyDetailsAdmin(AdminLTEModelView):
@@ -30,7 +29,7 @@ class ProxyDetailsAdmin(AdminLTEModelView):
 
         self.session.commit()
         flash(_('%(count)s records were successfully disabled.', count=count), 'success')
-        hiddify.get_available_proxies.invalidate_all()
+        hutils.proxy.get_available_proxies.invalidate_all()
 
     @action('enable', 'Enable', 'Are you sure you want to enable selected proxies?')
     def action_enable(self, ids):
@@ -39,7 +38,7 @@ class ProxyDetailsAdmin(AdminLTEModelView):
 
         self.session.commit()
         flash(_('%(count)s records were successfully enabled.', count=count), 'success')
-        hiddify.get_available_proxies.invalidate_all()
+        hutils.proxy.get_available_proxies.invalidate_all()
 
     # list_template = 'model/domain_list.html'
 
@@ -48,13 +47,13 @@ class ProxyDetailsAdmin(AdminLTEModelView):
     def after_model_change(self, form, model, is_created):
         # if hconfig(ConfigEnum.parent_panel):
         #     hiddify_api.sync_child_to_parent()
-        hiddify.get_available_proxies.invalidate_all()
+        hutils.proxy.get_available_proxies.invalidate_all()
         pass
 
     def after_model_delete(self, model):
         # if hconfig(ConfigEnum.parent_panel):
         #     hiddify_api.sync_child_to_parent()
-        hiddify.get_available_proxies.invalidate_all()
+        hutils.proxy.get_available_proxies.invalidate_all()
         pass
 
     def is_accessible(self):

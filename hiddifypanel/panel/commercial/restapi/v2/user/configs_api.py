@@ -9,7 +9,6 @@ from hiddifypanel.models.role import Role
 from apiflask import Schema
 from apiflask.fields import String
 from hiddifypanel.panel.user.user import get_common_data
-from hiddifypanel.panel.user import link_maker
 from hiddifypanel import hutils
 
 
@@ -108,7 +107,7 @@ class AllConfigsAPI(MethodView):
                 )
             )
 
-        for pinfo in link_maker.get_all_validated_proxies(c['domains']):
+        for pinfo in hutils.proxy.get_all_validated_proxies(c['domains']):
             items.append(
                 create_item(
                     pinfo["name"].replace("_", " "),
@@ -117,7 +116,7 @@ class AllConfigsAPI(MethodView):
                     pinfo['proto'],
                     pinfo['transport'],
                     pinfo['l3'],
-                    f"{link_maker.to_link(pinfo)}"
+                    f"{hutils.proxy.v2ray.to_link(pinfo)}"
                 )
             )
 

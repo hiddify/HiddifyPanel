@@ -26,6 +26,10 @@ def is_valid_uuid(val: str, version: int | None = None) -> bool:
 
     return True
 
+
+def convert_dict_to_url(dict):
+    return '&' + '&'.join([f'{k}={v}' for k, v in dict.items()]) if len(dict) else ''
+
 # not used
 # def is_assci_alphanumeric(str):
 #     for c in str:
