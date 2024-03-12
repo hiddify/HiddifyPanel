@@ -23,3 +23,8 @@ def fill_password(model) -> None:
     # TODO: hash the password
     if not model.password or len(model.password) < 16:
         model.password = hutils.random.get_random_password(length=16)
+
+
+def fill_wg_keys(model) -> None:
+    if not model.wg_pk or not model.wg_pub or not model.wg_psk:
+        model.wg_pk, model.wg_pub, model.wg_psk = hutils.crypto.get_wg_private_public_psk_pair()

@@ -20,6 +20,11 @@ from flask import g
 MAX_DB_VERSION = 80
 
 
+def _v75(child_id):
+    for u in User.query.all():
+        hutils.model.fill_wg_keys(u)
+
+
 def _v74(child_id):
     set_hconfig(ConfigEnum.ws_enable, True)
     set_hconfig(ConfigEnum.grpc_enable, True)
