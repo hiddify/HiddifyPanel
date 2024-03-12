@@ -8,7 +8,6 @@ from sqlalchemy import event
 
 from hiddifypanel.database import db
 from hiddifypanel.models import Lang
-from hiddifypanel import hutils
 from hiddifypanel.models.base_account import BaseAccount
 from hiddifypanel.models.admin import AdminUser
 
@@ -208,7 +207,7 @@ class User(BaseAccount):
         from hiddifypanel import hutils
         dbuser = super().add_or_update(commit=commit, **data)
         if data.get('added_by_uuid'):
-            admin = AdminUser.by_uuid(data.get('added_by_uuid'), create=True) or AdminUser.current_admin_or_owner()
+            admin = AdminUser.by_uuid(data.get('added_by_uuid'), create=True) or AdminUser.current_admin_or_owner()  # type: ignore
             dbuser.added_by = admin.id
         else:
             dbuser.added_by = 1
@@ -300,5 +299,6 @@ class User(BaseAccount):
 
 @event.listens_for(User, 'before_insert')
 def on_user_insert(mapper, connection, target):
+    from hiddifypanel import hutils
     hutils.model.fill_username(target)
     hutils.model.fill_password(target)
