@@ -348,7 +348,8 @@ def to_link(proxy):
         else:
             hk = ",".join(proxy["host_key"])
             pk = proxy["private_key"].replace('\n', '')
-            baseurl += f'{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}/?file=ssh&pk={pk}&pp={pk}&hk={hk}#{name_link}'
+            # baseurl += f'{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}/?file=ssh&pk={pk}&pp={pk}&hk={hk}#{name_link}'
+            baseurl += f'{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}/?file=ssh&pk={pk}&hk={hk}#{name_link}'
 
         return baseurl
     if proxy['proto'] == "ssr":
