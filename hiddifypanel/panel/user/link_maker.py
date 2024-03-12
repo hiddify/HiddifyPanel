@@ -407,7 +407,7 @@ def to_link(proxy):
     if proxy.get('fingerprint', 'none') != 'none':
         baseurl += "&fp=" + proxy['fingerprint']
     if proxy['l3'] != 'quic':
-        if proxy.get('transport') == ProxyTransport.tcp and proxy['proto'] in [ProxyProto.vless, ProxyProto.vmess] and proxy.get('l3') != ProxyL3.reality:
+        if proxy.get('l3') != ProxyL3.reality and (proxy.get('transport') == ProxyTransport.tcp or proxy.get('transport') == ProxyTransport.httpupgrade) and proxy['proto'] in [ProxyProto.vless, ProxyProto.trojan]:
             baseurl += '&headerType=http'
         else:
             baseurl += '&headerType=None'
