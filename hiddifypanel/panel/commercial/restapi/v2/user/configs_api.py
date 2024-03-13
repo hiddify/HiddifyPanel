@@ -3,9 +3,7 @@ from flask import g, request
 from flask import current_app as app
 from flask.views import MethodView
 from hiddifypanel.auth import login_required
-from hiddifypanel.models.config import hconfig
-from hiddifypanel.models.config_enum import ConfigEnum
-from hiddifypanel.models.role import Role
+from hiddifypanel.models import Proxy, Role, ConfigEnum, hconfig
 from apiflask import Schema
 from apiflask.fields import String
 from hiddifypanel.panel.user.user import get_common_data
@@ -25,7 +23,7 @@ class ConfigSchema(Schema):
 class AllConfigsAPI(MethodView):
     decorators = [login_required({Role.user})]
 
-    @app.output(ConfigSchema(many=True))
+    @app.output(ConfigSchema(many=True))  # type: ignore
     def get(self):
         def create_item(name, domain, type, protocol, transport, security, link):
             dto = ConfigSchema()
@@ -107,7 +105,7 @@ class AllConfigsAPI(MethodView):
                 )
             )
 
-        for pinfo in hutils.proxy.get_valid_proxies(c['domains']):
+        for pinfo in Proxy.get_valid_proxies(c['domains']):
             items.append(
                 create_item(
                     pinfo["name"].replace("_", " "),

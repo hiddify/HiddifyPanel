@@ -14,8 +14,8 @@ from hiddifypanel.auth import login_required
 from hiddifypanel.database import db
 from hiddifypanel.panel import hiddify
 from hiddifypanel.models import *
+from hiddifypanel.models.proxy import get_ssh_hostkeys
 from hiddifypanel import hutils
-from hiddifypanel import cache
 
 
 class UserView(FlaskView):
@@ -205,7 +205,7 @@ class UserView(FlaskView):
         if request.method == 'HEAD':
             resp = ""
         else:
-            resp = render_template('singbox_config.json', **c, host_keys=hutils.proxy.get_ssh_hostkeys(True),
+            resp = render_template('singbox_config.json', **c, host_keys=get_ssh_hostkeys(True),
                                    ssh_client_version=hiddify.get_ssh_client_version(user), ssh_ip=hutils.network.get_direct_host_or_ip(4), base64=False)
 
         return add_headers(resp, c)

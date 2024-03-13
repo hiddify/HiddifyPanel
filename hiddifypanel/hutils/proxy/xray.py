@@ -2,8 +2,8 @@ import datetime
 import json
 from flask import request, g
 from hiddifypanel import hutils
-from hiddifypanel.models import Proxy, ProxyTransport, Domain, DomainType, ProxyCDN, ProxyProto, hconfig, ConfigEnum
-from hiddifypanel.models.proxy import ProxyL3
+from hiddifypanel.models import Proxy, ProxyTransport, ProxyL3, ProxyCDN, ProxyProto, Domain, hconfig, ConfigEnum, DomainType
+from hiddifypanel.models.proxy import ProxyJsonEncoder
 from flask_babel import gettext as _
 
 
@@ -47,7 +47,7 @@ def to_link(proxy: dict) -> str | dict:
         add_tls_tricks_to_dict(vmess_data, proxy)
         add_mux_to_dict(vmess_data, proxy)
 
-        return "vmess://" + hutils.encode.do_base_64(f'{json.dumps(vmess_data,cls=hutils.proxy.ProxyJsonEncoder)}')
+        return "vmess://" + hutils.encode.do_base_64(f'{json.dumps(vmess_data,cls=ProxyJsonEncoder)}')
     if proxy['proto'] == 'ssh':
         baseurl = 'ssh://'
         if g.user_agent.get('is_streisand'):
@@ -177,7 +177,7 @@ def make_v2ray_configs(user, user_activate, domains: list[Domain], expire_days, 
             res.append('trojan://1@1.1.1.1#' + hutils.encode.url_encode('✖Package_Ended'))
         return "\n".join(res)
 
-    for pinfo in hutils.proxy.get_valid_proxies(domains):
+    for pinfo in Proxy.get_valid_proxies(domains):
         link = to_link(pinfo)
         if 'msg' not in link:
             res.append(link)

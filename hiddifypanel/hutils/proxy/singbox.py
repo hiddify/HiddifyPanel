@@ -2,7 +2,8 @@ from flask import render_template, request, g
 import json
 
 from hiddifypanel import hutils
-from hiddifypanel.models import ProxyProto, ProxyTransport, Domain, ConfigEnum, hconfig
+from hiddifypanel.models import Proxy, ProxyProto, ProxyTransport, Domain, ConfigEnum, hconfig
+from hiddifypanel.models.proxy import ProxyJsonEncoder
 from hiddifypanel.panel.hiddify import is_hiddify_next_version
 
 
@@ -15,7 +16,7 @@ def make_full_singbox_config(domains: list[Domain], **kwargs) -> str:
     allp = []
     for d in domains:
         base_config['dns']['rules'][0]['domain'].append(d.domain)
-    for pinfo in hutils.proxy.get_valid_proxies(domains):
+    for pinfo in Proxy.get_valid_proxies(domains):
         sing = to_singbox(pinfo)
         if 'msg' not in sing:
             allp += sing
@@ -38,7 +39,7 @@ def make_full_singbox_config(domains: list[Domain], **kwargs) -> str:
         "tolerance": 200
     }
     base_config['outbounds'].insert(1, smart)
-    res = json.dumps(base_config, indent=4, cls=hutils.proxy.ProxyJsonEncoder)
+    res = json.dumps(base_config, indent=4, cls=ProxyJsonEncoder)
     # if ua['is_hiddify']:
     #     res = res[:-1]+',"experimental": {}}'
     return res

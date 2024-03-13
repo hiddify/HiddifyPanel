@@ -29,7 +29,7 @@ class ProxyDetailsAdmin(AdminLTEModelView):
 
         self.session.commit()
         flash(_('%(count)s records were successfully disabled.', count=count), 'success')
-        hutils.proxy.get_all_proxies.invalidate_all()
+        Proxy.get_proxies.invalidate_all()
 
     @action('enable', 'Enable', 'Are you sure you want to enable selected proxies?')
     def action_enable(self, ids):
@@ -38,7 +38,7 @@ class ProxyDetailsAdmin(AdminLTEModelView):
 
         self.session.commit()
         flash(_('%(count)s records were successfully enabled.', count=count), 'success')
-        hutils.proxy.get_all_proxies.invalidate_all()
+        Proxy.get_proxies.invalidate_all()
 
     # list_template = 'model/domain_list.html'
 
@@ -47,13 +47,13 @@ class ProxyDetailsAdmin(AdminLTEModelView):
     def after_model_change(self, form, model, is_created):
         # if hconfig(ConfigEnum.parent_panel):
         #     hiddify_api.sync_child_to_parent()
-        hutils.proxy.get_all_proxies.invalidate_all()
+        Proxy.get_proxies.invalidate_all()
         pass
 
     def after_model_delete(self, model):
         # if hconfig(ConfigEnum.parent_panel):
         #     hiddify_api.sync_child_to_parent()
-        hutils.proxy.get_all_proxies.invalidate_all()
+        Proxy.get_proxies.invalidate_all()
         pass
 
     def is_accessible(self):
