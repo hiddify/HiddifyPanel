@@ -461,17 +461,16 @@ def add_mux_to_link(proxy) -> str:
 
 def add_mux_to_dict(d: dict, proxy):
     if proxy.get('mux_enable'):
-        # d['mux'] = proxy["mux_protocol"]
-        # mux is equals to concurrency in clients
-        d['mux'] = proxy["mux_max_streams"]
-        d['mux_max'] = proxy["mux_max_connections"]
-        d['mux_pad'] = proxy["mux_padding_enable"]
-        # doesn't exist
-        # d['mux_min'] = proxy["mux_min_connections"]
+        # according to github.com/hiddify/ray2sing/
+        d['muxtype'] = proxy["mux_protocol"]
+        d['muxmaxc'] = proxy["mux_max_connections"]
+        d['mux'] = proxy['mux_min_streams']
+        d['muxsmax'] = proxy["mux_max_streams"]
+        d['muxpad'] = proxy["mux_padding_enable"]
 
         if proxy.get('mux_brutal_enable'):
-            d['mux_up'] = proxy["mux_brutal_up_mbps"]
-            d['mux_down'] = proxy["mux_brutal_down_mbps"]
+            d['muxup'] = proxy["mux_brutal_up_mbps"]
+            d['muxdown'] = proxy["mux_brutal_down_mbps"]
 
 # endregion
 
