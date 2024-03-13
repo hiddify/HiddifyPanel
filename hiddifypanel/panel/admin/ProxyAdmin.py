@@ -35,7 +35,7 @@ class ProxyAdmin(FlaskView):
 
             db.session.commit()
             # print(cat,vs)
-            hutils.proxy.get_available_proxies.invalidate_all()
+            hutils.proxy.get_all_proxies.invalidate_all()
             hiddify.check_need_reset(old_configs)
             all_proxy_form = get_all_proxy_form(True)
 
@@ -55,7 +55,7 @@ class ProxyAdmin(FlaskView):
 
                 # print(cat,vs)
             db.session.commit()
-            hutils.proxy.get_available_proxies.invalidate_all()
+            hutils.proxy.get_all_proxies.invalidate_all()
             hutils.flask.flash_config_success(restart_mode=ApplyMode.apply, domain_changed=False)
             # if hconfig(ConfigEnum.parent_panel):
             #     hiddify_api.sync_child_to_parent()
@@ -94,7 +94,7 @@ def get_global_config_form(empty=False):
 
 
 def get_all_proxy_form(empty=False):
-    proxies = hutils.proxy.get_available_proxies(Child.current.id)
+    proxies = hutils.proxy.get_all_proxies(Child.current.id)
     categories1 = sorted([c for c in {c.cdn: 1 for c in proxies}])
 
     class DynamicForm(FlaskForm):

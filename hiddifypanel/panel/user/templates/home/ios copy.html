@@ -51,7 +51,7 @@
       سپس کانفیگ مورد نظر را انتخاب و اجرا نمایید.
       <br>
 
-      {% for type in link_maker.all_proxies() %}
+      {% for type in link_maker.get_all_proxies(only_enabled=True) %}
       {% set pinfo=link_maker.proxy_info(type) %}
       {% if pinfo!=None %}
       <div class="btn-group"><a href='{{pinfo["url"]}}' class="btn btn-primary orig-link">{{type}}</a></div>
@@ -107,7 +107,7 @@
       <br />
       سپس کانفیگ مورد نظر خود را اعمال کنید:
       <br />
-      {% for type in link_maker.all_proxies() %}
+      {% for type in link_maker.get_all_proxies(only_enabled=True) %}
       {% set pinfo=link_maker.proxy_info(type) %}
       {% if pinfo!=None %}
       <div class="btn-group"><a href='{{pinfo["url"]}}' class="btn btn-primary orig-link">{{type}}</a></div>

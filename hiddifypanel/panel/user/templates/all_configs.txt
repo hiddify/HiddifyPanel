@@ -14,7 +14,7 @@ trojan://1@{{fake_ip_for_sub_link}}?sni=fake_ip_for_sub_link&security=tls#{{user
 ####################################
 ## {% if d.has_auto_ip  %}Auto {%endif%} {{d.mode}}  {{d.alias or d.domain}}  {{t}}:{{port}}
 ####################################
-{% for type in link_maker.all_proxies(d.child_id) %}
+{% for type in link_maker.get_all_proxies(d.child_id, only_enabled=True) %}
 {% set pinfo=link_maker.make_proxy(type,d,phttp=phttp,ptls=ptls) %}
 {% if 'msg' not in pinfo %}
 {% set link=link_maker.v2ray.to_link(pinfo) %}

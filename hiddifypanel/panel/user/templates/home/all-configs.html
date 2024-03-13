@@ -108,7 +108,7 @@
         <td><span class="badge badge-success">{{_('all')}}</span></td>
       </tr>
 
-      {% for pinfo in link_maker.get_all_validated_proxies(domains) %}
+      {% for pinfo in link_maker.get_valid_proxies(domains) %}
       <tr>
         <td>
           <div class="btn-group"><a href='{{link_maker.v2ray.to_link(pinfo)}}' class="btn btn-light orig-link">{{pinfo["name"].replace("_", " ")}}</a></div>

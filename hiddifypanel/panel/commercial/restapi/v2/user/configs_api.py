@@ -107,7 +107,7 @@ class AllConfigsAPI(MethodView):
                 )
             )
 
-        for pinfo in hutils.proxy.get_all_validated_proxies(c['domains']):
+        for pinfo in hutils.proxy.get_valid_proxies(c['domains']):
             items.append(
                 create_item(
                     pinfo["name"].replace("_", " "),

@@ -15,7 +15,7 @@ def make_full_singbox_config(domains: list[Domain], **kwargs) -> str:
     allp = []
     for d in domains:
         base_config['dns']['rules'][0]['domain'].append(d.domain)
-    for pinfo in hutils.proxy.get_all_validated_proxies(domains):
+    for pinfo in hutils.proxy.get_valid_proxies(domains):
         sing = to_singbox(pinfo)
         if 'msg' not in sing:
             allp += sing

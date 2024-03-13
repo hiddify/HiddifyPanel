@@ -14,7 +14,7 @@ def __is_tls(l3) -> bool:
     return 'tls' in l3 or "reality" in l3
 
 
-def get_hostkeys(dojson=False) -> list[str] | str:
+def get_ssh_hostkeys(dojson=False) -> list[str] | str:
     key_files = glob.glob(current_app.config['HIDDIFY_CONFIG_PATH'] + "/other/ssh/host_key/*_key.pub")
     host_keys = []
     for file_name in key_files:
@@ -30,53 +30,53 @@ def get_hostkeys(dojson=False) -> list[str] | str:
     return host_keys
 
 
-def get_all_validated_proxies(domains: list[Domain]) -> list[Proxy]:
+def get_valid_proxies(domains: list[Domain]) -> list[Proxy]:
     allp = []
     allphttp = [p for p in request.args.get("phttp", "").split(',') if p]
     allptls = [p for p in request.args.get("ptls", "").split(',') if p]
     added_ip = {}
     configsmap = {}
     proxeismap = {}
-    for d in domains:
-        if d.child_id not in configsmap:
-            configsmap[d.child_id] = get_hconfigs(d.child_id)
-            proxeismap[d.child_id] = all_proxies(d.child_id)
-        hconfigs = configsmap[d.child_id]
+    for domain in domains:
+        if domain.child_id not in configsmap:
+            configsmap[domain.child_id] = get_hconfigs(domain.child_id)
+            proxeismap[domain.child_id] = get_all_proxies(domain.child_id, only_enabled=True)
+        hconfigs = configsmap[domain.child_id]
 
-        ip = hutils.network.get_domain_ip(d.domain, version=4)
-        ip6 = hutils.network.get_domain_ip(d.domain, version=6)
+        ip = hutils.network.get_domain_ip(domain.domain, version=4)
+        ip6 = hutils.network.get_domain_ip(domain.domain, version=6)
         ips = [x for x in [ip, ip6] if x is not None]
-        for type in proxeismap[d.child_id]:
+        for proxy in proxeismap[domain.child_id]:
             noDomainProxies = False
-            if type.proto in [ProxyProto.ssh, ProxyProto.wireguard]:
+            if proxy.proto in [ProxyProto.ssh, ProxyProto.wireguard]:
                 noDomainProxies = True
-            if type.proto in [ProxyProto.ss] and type.transport not in [ProxyTransport.grpc, ProxyTransport.h2, ProxyTransport.WS, ProxyTransport.httpupgrade]:
+            if proxy.proto in [ProxyProto.ss] and proxy.transport not in [ProxyTransport.grpc, ProxyTransport.h2, ProxyTransport.WS, ProxyTransport.httpupgrade]:
                 noDomainProxies = True
             options = []
-            key = f'{type.proto}{type.transport}{type.cdn}{type.l3}'
+            key = f'{proxy.proto}{proxy.transport}{proxy.cdn}{proxy.l3}'
             if key not in added_ip:
                 added_ip[key] = {}
-            if type.proto in [ProxyProto.ssh, ProxyProto.tuic, ProxyProto.hysteria2, ProxyProto.wireguard, ProxyProto.ss]:
+            if proxy.proto in [ProxyProto.ssh, ProxyProto.tuic, ProxyProto.hysteria2, ProxyProto.wireguard, ProxyProto.ss]:
                 if noDomainProxies and all([x in added_ip[key] for x in ips]):
                     continue
 
                 for x in ips:
                     added_ip[key][x] = 1
 
-                if type.proto in [ProxyProto.ssh, ProxyProto.wireguard, ProxyProto.ss]:
-                    if d.mode == 'fake':
+                if proxy.proto in [ProxyProto.ssh, ProxyProto.wireguard, ProxyProto.ss]:
+                    if domain.mode == 'fake':
                         continue
-                    if type.proto in [ProxyProto.ssh]:
+                    if proxy.proto in [ProxyProto.ssh]:
                         options = [{'pport': hconfigs[ConfigEnum.ssh_server_port]}]
-                    elif type.proto in [ProxyProto.wireguard]:
+                    elif proxy.proto in [ProxyProto.wireguard]:
                         options = [{'pport': hconfigs[ConfigEnum.wireguard_port]}]
-                    elif type.transport in [ProxyTransport.shadowsocks]:
+                    elif proxy.transport in [ProxyTransport.shadowsocks]:
                         options = [{'pport': hconfigs[ConfigEnum.shadowsocks2022_port]}]
-                    elif type.proto in [ProxyProto.ss]:
+                    elif proxy.proto in [ProxyProto.ss]:
                         options = [{'pport': 443}]
-                elif type.proto == ProxyProto.tuic:
+                elif proxy.proto == ProxyProto.tuic:
                     options = [{'pport': hconfigs[ConfigEnum.tuic_port]}]
-                elif type.proto == ProxyProto.hysteria2:
+                elif proxy.proto == ProxyProto.hysteria2:
                     options = [{'pport': hconfigs[ConfigEnum.hysteria_port]}]
             else:
                 protos = ['http', 'tls'] if hconfigs.get(ConfigEnum.http_proxy_enable) else ['tls']
@@ -91,14 +91,14 @@ def get_all_validated_proxies(domains: list[Domain]) -> list[Proxy]:
                         options.append({'phttp': phttp, 'ptls': ptls})
 
             for opt in options:
-                pinfo = make_proxy(hconfigs, type, d, **opt)
+                pinfo = make_proxy(hconfigs, proxy, domain, **opt)
                 if 'msg' not in pinfo:
                     allp.append(pinfo)
     return allp
 
 
 @cache.cache(ttl=300)
-def get_available_proxies(child_id: int) -> list[Proxy]:
+def get_all_proxies(child_id: int = 0, only_enabled=False) -> list[Proxy]:
     proxies = Proxy.query.filter(Proxy.child_id == child_id).all()
     proxies = [c for c in proxies if 'restls' not in c.transport]
     # if not hconfig(ConfigEnum.tuic_enable, child_id):
@@ -140,29 +140,13 @@ def get_available_proxies(child_id: int) -> list[Proxy]:
     if not Domain.query.filter(Domain.mode.in_([DomainType.cdn, DomainType.auto_cdn_ip]), Domain.servernames != "", Domain.servernames != Domain.domain).first():
         proxies = [c for c in proxies if 'Fake' not in c.cdn]
     proxies = [c for c in proxies if not ('vless' == c.proto and ProxyTransport.tcp == c.transport and c.cdn == ProxyCDN.direct)]
+
+    if only_enabled:
+        proxies = [p for p in proxies if p.enable]
     return proxies
 
 
-def all_proxies(child_id=0) -> list[Proxy]:
-    all_proxies = get_available_proxies(child_id)
-    all_proxies = [p for p in all_proxies if p.enable]
-
-    # all_proxies = [p for p in all_proxies if p.proto == ProxyProto.ss]
-    # all_cfg=Proxy.query.filter(Proxy.enable==True).all()
-    # if not hconfig(ConfigEnum.domain_fronting_domain):
-    #     all_cfg=[c for c in all_cfg if 'Fake' not in c.cdn]
-    # if not g.is_cdn:
-    #     all_cfg=[c for c in all_cfg if 'CDN' not in c.cdn]
-    # if not hconfig(ConfigEnum.ssfaketls_enable):
-    #     all_cfg=[c for c in all_cfg if 'faketls' not in c.transport and 'v2ray' not in c.proto]
-    # if not hconfig(ConfigEnum.vmess_enable):
-    #     all_cfg=[c for c in all_cfg if 'vmess' not in c.proto]
-
-    return all_proxies
-
 # TODO: not used
-
-
 def proxy_info(name, mode="tls"):
     '''Always returns a string with "error" value'''
     return "error"
@@ -308,7 +292,7 @@ def make_proxy(hconfigs: dict, proxy: Proxy, domain_db: Domain, phttp=80, ptls=4
             base['sni'] = domain_db.domain
 
         del base['host']
-        if base.get('fingerprint', 'none') != 'none':
+        if base.get('fingerprint'):
             base['fingerprint'] = hconfigs[ConfigEnum.utls]
         # if not domain_db.cdn_ip:
         #     base['server']=hiddify.get_domain_ip(base['server'])
@@ -324,7 +308,6 @@ def make_proxy(hconfigs: dict, proxy: Proxy, domain_db: Domain, phttp=80, ptls=4
         base['sni'] = hconfigs[ConfigEnum.domain_fronting_domain]
         # base["host"]=domain
         base['mode'] = 'Fake'
-
     elif l3 == "http" and not hconfigs[ConfigEnum.http_proxy_enable]:
         return {'name': name, 'msg': "http but http is disabled ", 'type': 'debug', 'proto': proxy.proto}
 
@@ -351,7 +334,6 @@ def make_proxy(hconfigs: dict, proxy: Proxy, domain_db: Domain, phttp=80, ptls=4
         base['mode'] = 'FakeTLS'
         return base
     elif "shadowtls" in proxy.transport:
-
         base['fakedomain'] = hconfigs[ConfigEnum.shadowtls_fakedomain]
         # base['sni'] = hconfigs[ConfigEnum.shadowtls_fakedomain]
         base['shared_secret'] = hconfigs[ConfigEnum.shared_secret]
@@ -376,6 +358,7 @@ def make_proxy(hconfigs: dict, proxy: Proxy, domain_db: Domain, phttp=80, ptls=4
             base['mux_max_streams'] = hconfigs[ConfigEnum.mux_max_streams]
 
             if hconfigs[ConfigEnum.mux_brutal_enable]:
+                base['mux_brutal_enable'] = True
                 base['mux_brutal_up_mbps'] = hconfigs[ConfigEnum.mux_brutal_up_mbps]
                 base['mux_brutal_down_mbps'] = hconfigs[ConfigEnum.mux_brutal_down_mbps]
 
@@ -422,7 +405,7 @@ def make_proxy(hconfigs: dict, proxy: Proxy, domain_db: Domain, phttp=80, ptls=4
         return base
     if ProxyProto.ssh == proxy.proto:
         base['private_key'] = g.account.ed25519_private_key
-        base['host_key'] = get_hostkeys(False)
+        base['host_key'] = get_ssh_hostkeys(False)
         # base['ssh_port'] = hconfig(ConfigEnum.ssh_server_port)
         return base
     return {'name': name, 'msg': 'not valid', 'type': 'error', 'proto': proxy.proto}
