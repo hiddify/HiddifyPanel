@@ -272,11 +272,11 @@ class UserAdmin(AdminLTEModelView):
         if old_user and old_user.uuid != model.uuid:
             user_driver.remove_client(old_user)
         if not model.ed25519_private_key:
-            priv, publ = hiddify.get_ed25519_private_public_pair()
+            priv, publ = hutils.crypto.get_ed25519_private_public_pair()
             model.ed25519_private_key = priv
             model.ed25519_public_key = publ
         if not model.wg_pk:
-            model.wg_pk, model.wg_pub, model.wg_psk = hiddify.get_wg_private_public_psk_pair()
+            model.wg_pk, model.wg_pub, model.wg_psk = hutils.crypto.get_wg_private_public_psk_pair()
         # model.expiry_time=datetime.date.today()+datetime.timedelta(days=model.expiry_time)
 
         # if model.current_usage_GB < model.usage_limit_GB:

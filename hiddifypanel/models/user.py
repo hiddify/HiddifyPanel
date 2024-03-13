@@ -8,7 +8,6 @@ from sqlalchemy import event
 
 from hiddifypanel.database import db
 from hiddifypanel.models import Lang
-from hiddifypanel.models.utils import fill_password, fill_username
 from hiddifypanel.models.base_account import BaseAccount
 from hiddifypanel.models.admin import AdminUser
 
@@ -208,7 +207,7 @@ class User(BaseAccount):
         from hiddifypanel import hutils
         dbuser = super().add_or_update(commit=commit, **data)
         if data.get('added_by_uuid'):
-            admin = AdminUser.by_uuid(data.get('added_by_uuid'), create=True) or AdminUser.current_admin_or_owner()
+            admin = AdminUser.by_uuid(data.get('added_by_uuid'), create=True) or AdminUser.current_admin_or_owner()  # type: ignore
             dbuser.added_by = admin.id
         else:
             dbuser.added_by = 1
@@ -234,16 +233,14 @@ class User(BaseAccount):
             dbuser.ed25519_private_key = data.get('ed25519_private_key', '')
             dbuser.ed25519_public_key = data.get('ed25519_public_key', '')
         if not dbuser.ed25519_private_key:
-            from hiddifypanel.panel import hiddify
-            priv, publ = hiddify.get_ed25519_private_public_pair()
+            priv, publ = hutils.crypto.get_ed25519_private_public_pair()
             dbuser.ed25519_private_key = priv
             dbuser.ed25519_public_key = publ
         dbuser.wg_pk = data.get('wg_pk', dbuser.wg_pk)
         dbuser.wg_pub = data.get('wg_pub', dbuser.wg_pub)
         dbuser.wg_psk = data.get('wg_psk', dbuser.wg_psk)
         if not dbuser.wg_pk:
-            from hiddifypanel.panel import hiddify
-            dbuser.wg_pk, dbuser.wg_pub, dbuser.wg_psk = hiddify.get_wg_private_public_psk_pair()
+            dbuser.wg_pk, dbuser.wg_pub, dbuser.wg_psk = hutils.crypto.get_wg_private_public_psk_pair()
 
         mode = data.get('mode', UserMode.no_reset)
         if mode == 'disable':
@@ -302,5 +299,6 @@ class User(BaseAccount):
 
 @event.listens_for(User, 'before_insert')
 def on_user_insert(mapper, connection, target):
-    fill_username(target)
-    fill_password(target)
+    from hiddifypanel import hutils
+    hutils.model.fill_username(target)
+    hutils.model.fill_password(target)

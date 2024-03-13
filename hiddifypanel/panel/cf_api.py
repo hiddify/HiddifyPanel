@@ -1,6 +1,5 @@
 import CloudFlare
-
-from hiddifypanel.models import *
+from hiddifypanel.models import hconfig, ConfigEnum
 
 
 def add_or_update_domain(domain, ip, dns_type="A", proxied=True):

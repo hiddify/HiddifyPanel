@@ -2,7 +2,6 @@ from enum import auto
 import uuid
 from flask import g
 from hiddifypanel.models.usage import DailyUsage
-from hiddifypanel.models.utils import fill_username, fill_password
 from sqlalchemy import event
 from strenum import StrEnum
 from apiflask import abort
@@ -161,5 +160,6 @@ class AdminUser(BaseAccount):
 
 @event.listens_for(AdminUser, "before_insert")
 def before_insert(mapper, connection, target):
-    fill_username(target)
-    fill_password(target)
+    from hiddifypanel import hutils
+    hutils.model.fill_username(target)
+    hutils.model.fill_password(target)

@@ -407,7 +407,7 @@ def to_link(proxy):
     if proxy.get('fingerprint', 'none') != 'none':
         baseurl += "&fp=" + proxy['fingerprint']
     if proxy['l3'] != 'quic':
-        if proxy.get('transport') == ProxyTransport.tcp and proxy['proto'] in [ProxyProto.vless, ProxyProto.vmess] and proxy.get('l3') != ProxyL3.reality:
+        if proxy.get('l3') != ProxyL3.reality and (proxy.get('transport') == ProxyTransport.tcp or proxy.get('transport') == ProxyTransport.httpupgrade) and proxy['proto'] in [ProxyProto.vless, ProxyProto.trojan]:
             baseurl += '&headerType=http'
         else:
             baseurl += '&headerType=None'
@@ -1065,7 +1065,8 @@ def get_all_validated_proxies(domains):
                 elif type.proto == ProxyProto.hysteria2:
                     options = [{'pport': hconfigs[ConfigEnum.hysteria_port]}]
             else:
-                for t in (['http', 'tls'] if hconfigs[ConfigEnum.http_proxy_enable] else ['tls']):
+                protos = ['http', 'tls'] if hconfigs.get(ConfigEnum.http_proxy_enable) else ['tls']
+                for t in protos:
                     for port in hconfigs[ConfigEnum.http_ports if t == 'http' else ConfigEnum.tls_ports].split(','):
                         phttp = port if t == 'http' else None
                         ptls = port if t == 'tls' else None
