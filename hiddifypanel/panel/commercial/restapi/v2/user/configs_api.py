@@ -116,7 +116,7 @@ class AllConfigsAPI(MethodView):
                     pinfo['proto'],
                     pinfo['transport'],
                     pinfo['l3'],
-                    f"{hutils.proxy.v2ray.to_link(pinfo)}"
+                    f"{hutils.proxy.xray.to_link(pinfo)}"
                 )
             )
 

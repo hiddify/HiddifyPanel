@@ -30,7 +30,7 @@ def get_ssh_hostkeys(dojson=False) -> list[str] | str:
     return host_keys
 
 
-def get_valid_proxies(domains: list[Domain]) -> list[Proxy]:
+def get_valid_proxies(domains: list[Domain]) -> list[dict]:
     allp = []
     allphttp = [p for p in request.args.get("phttp", "").split(',') if p]
     allptls = [p for p in request.args.get("ptls", "").split(',') if p]
@@ -144,86 +144,6 @@ def get_all_proxies(child_id: int = 0, only_enabled=False) -> list[Proxy]:
     if only_enabled:
         proxies = [p for p in proxies if p.enable]
     return proxies
-
-
-# TODO: not used
-def proxy_info(name, mode="tls"):
-    '''Always returns a string with "error" value'''
-    return "error"
-
-
-def __check_proxy_incorrect(proxy: Proxy, domain_db: Domain, port: int) -> dict | None:
-    name = proxy.name
-    l3 = proxy.l3
-    if not port:
-        return {'name': name, 'msg': "port not defined", 'type': 'error', 'proto': proxy.proto}
-    if "reality" not in l3 and domain_db.mode == DomainType.reality:
-        return {'name': name, 'msg': "reality proxy not in reality domain", 'type': 'debug', 'proto': proxy.proto}
-
-    if "reality" in l3 and domain_db.mode != DomainType.reality:
-        return {'name': name, 'msg': "reality proxy not in reality domain", 'type': 'debug', 'proto': proxy.proto}
-
-    if "reality" in l3 and domain_db.grpc and ProxyTransport.grpc != proxy.transport:
-        return {'name': name, 'msg': "reality proxy not in reality domain", 'type': 'debug', 'proto': proxy.proto}
-
-    if "reality" in l3 and (not domain_db.grpc) and ProxyTransport.grpc == proxy.transport:
-        return {'name': name, 'msg': "reality proxy not in reality domain", 'type': 'debug', 'proto': proxy.proto}
-
-    is_cdn = ProxyCDN.CDN == proxy.cdn or ProxyCDN.Fake == proxy.cdn
-    if is_cdn and domain_db.mode not in [DomainType.cdn, DomainType.auto_cdn_ip, DomainType.worker]:
-        # print("cdn proxy not in cdn domain", domain, name)
-        return {'name': name, 'msg': "cdn proxy not in cdn domain", 'type': 'debug', 'proto': proxy.proto}
-
-    if not is_cdn and domain_db.mode in [DomainType.cdn, DomainType.auto_cdn_ip, DomainType.worker]:
-        # print("not cdn proxy  in cdn domain", domain, name, proxy.cdn)
-        return {'name': name, 'msg': "not cdn proxy  in cdn domain", 'type': 'debug', 'proto': proxy.proto}
-
-    if proxy.cdn == ProxyCDN.relay and domain_db.mode not in [DomainType.relay]:
-        return {'name': name, 'msg': "relay proxy not in relay domain", 'type': 'debug', 'proto': proxy.proto}
-
-    if proxy.cdn != ProxyCDN.relay and domain_db.mode in [DomainType.relay]:
-        return {'name': name, 'msg': "relay proxy not in relay domain", 'type': 'debug', 'proto': proxy.proto}
-
-    if domain_db.mode == DomainType.worker and proxy.transport == ProxyTransport.grpc:
-        return {'name': name, 'msg': "worker does not support grpc", 'type': 'debug', 'proto': proxy.proto}
-
-    if domain_db.mode != DomainType.old_xtls_direct and "tls" in proxy.l3 and proxy.cdn == ProxyCDN.direct and proxy.transport in [ProxyTransport.tcp, ProxyTransport.XTLS]:
-        return {'name': name, 'msg': "only  old_xtls_direct  support this", 'type': 'debug', 'proto': proxy.proto}
-
-    if proxy.proto == "trojan" and not __is_tls(l3):
-        return {'name': name, 'msg': "trojan but not tls", 'type': 'warning', 'proto': proxy.proto}
-
-    if l3 == "http" and ProxyTransport.XTLS in proxy.transport:
-        return {'name': name, 'msg': "http and xtls???", 'type': 'warning', 'proto': proxy.proto}
-
-    if l3 == "http" and proxy.proto in [ProxyProto.ss, ProxyProto.ssr]:
-        return {'name': name, 'msg': "http and ss or ssr???", 'type': 'warning', 'proto': proxy.proto}
-
-
-def __get_port(proxy: Proxy, hconfigs: dict, domain_db: Domain, ptls: int, phttp: int, pport: int | None) -> int:
-    l3 = proxy.l3
-    port = 443
-    if isinstance(phttp, str):
-        phttp = int(phttp) if phttp != "None" else None  # type: ignore
-    if isinstance(ptls, str):
-        ptls = int(ptls) if ptls != "None" else None  # type: ignore
-    if l3 == "kcp":
-        port = hconfigs[ConfigEnum.kcp_ports].split(",")[0]
-    elif proxy.proto == ProxyProto.wireguard:
-        port = hconfigs[ConfigEnum.wireguard_port]
-    elif proxy.proto == "tuic":
-        port = domain_db.internal_port_tuic
-    elif proxy.proto == "hysteria2":
-        port = domain_db.internal_port_hysteria2
-    elif l3 == 'ssh':
-        port = hconfigs[ConfigEnum.ssh_server_port]
-    elif __is_tls(l3):
-        port = ptls
-    elif l3 == "http":
-        port = phttp
-    else:
-        port = int(pport)  # type: ignore
-    return port
 
 
 def make_proxy(hconfigs: dict, proxy: Proxy, domain_db: Domain, phttp=80, ptls=443, pport: int | None = None) -> dict:
@@ -409,6 +329,86 @@ def make_proxy(hconfigs: dict, proxy: Proxy, domain_db: Domain, phttp=80, ptls=4
         # base['ssh_port'] = hconfig(ConfigEnum.ssh_server_port)
         return base
     return {'name': name, 'msg': 'not valid', 'type': 'error', 'proto': proxy.proto}
+
+
+# TODO: not used
+def proxy_info(name, mode="tls"):
+    '''Always returns a string with "error" value'''
+    return "error"
+
+
+def __check_proxy_incorrect(proxy: Proxy, domain_db: Domain, port: int) -> dict | None:
+    name = proxy.name
+    l3 = proxy.l3
+    if not port:
+        return {'name': name, 'msg': "port not defined", 'type': 'error', 'proto': proxy.proto}
+    if "reality" not in l3 and domain_db.mode == DomainType.reality:
+        return {'name': name, 'msg': "reality proxy not in reality domain", 'type': 'debug', 'proto': proxy.proto}
+
+    if "reality" in l3 and domain_db.mode != DomainType.reality:
+        return {'name': name, 'msg': "reality proxy not in reality domain", 'type': 'debug', 'proto': proxy.proto}
+
+    if "reality" in l3 and domain_db.grpc and ProxyTransport.grpc != proxy.transport:
+        return {'name': name, 'msg': "reality proxy not in reality domain", 'type': 'debug', 'proto': proxy.proto}
+
+    if "reality" in l3 and (not domain_db.grpc) and ProxyTransport.grpc == proxy.transport:
+        return {'name': name, 'msg': "reality proxy not in reality domain", 'type': 'debug', 'proto': proxy.proto}
+
+    is_cdn = ProxyCDN.CDN == proxy.cdn or ProxyCDN.Fake == proxy.cdn
+    if is_cdn and domain_db.mode not in [DomainType.cdn, DomainType.auto_cdn_ip, DomainType.worker]:
+        # print("cdn proxy not in cdn domain", domain, name)
+        return {'name': name, 'msg': "cdn proxy not in cdn domain", 'type': 'debug', 'proto': proxy.proto}
+
+    if not is_cdn and domain_db.mode in [DomainType.cdn, DomainType.auto_cdn_ip, DomainType.worker]:
+        # print("not cdn proxy  in cdn domain", domain, name, proxy.cdn)
+        return {'name': name, 'msg': "not cdn proxy  in cdn domain", 'type': 'debug', 'proto': proxy.proto}
+
+    if proxy.cdn == ProxyCDN.relay and domain_db.mode not in [DomainType.relay]:
+        return {'name': name, 'msg': "relay proxy not in relay domain", 'type': 'debug', 'proto': proxy.proto}
+
+    if proxy.cdn != ProxyCDN.relay and domain_db.mode in [DomainType.relay]:
+        return {'name': name, 'msg': "relay proxy not in relay domain", 'type': 'debug', 'proto': proxy.proto}
+
+    if domain_db.mode == DomainType.worker and proxy.transport == ProxyTransport.grpc:
+        return {'name': name, 'msg': "worker does not support grpc", 'type': 'debug', 'proto': proxy.proto}
+
+    if domain_db.mode != DomainType.old_xtls_direct and "tls" in proxy.l3 and proxy.cdn == ProxyCDN.direct and proxy.transport in [ProxyTransport.tcp, ProxyTransport.XTLS]:
+        return {'name': name, 'msg': "only  old_xtls_direct  support this", 'type': 'debug', 'proto': proxy.proto}
+
+    if proxy.proto == "trojan" and not __is_tls(l3):
+        return {'name': name, 'msg': "trojan but not tls", 'type': 'warning', 'proto': proxy.proto}
+
+    if l3 == "http" and ProxyTransport.XTLS in proxy.transport:
+        return {'name': name, 'msg': "http and xtls???", 'type': 'warning', 'proto': proxy.proto}
+
+    if l3 == "http" and proxy.proto in [ProxyProto.ss, ProxyProto.ssr]:
+        return {'name': name, 'msg': "http and ss or ssr???", 'type': 'warning', 'proto': proxy.proto}
+
+
+def __get_port(proxy: Proxy, hconfigs: dict, domain_db: Domain, ptls: int, phttp: int, pport: int | None) -> int:
+    l3 = proxy.l3
+    port = 443
+    if isinstance(phttp, str):
+        phttp = int(phttp) if phttp != "None" else None  # type: ignore
+    if isinstance(ptls, str):
+        ptls = int(ptls) if ptls != "None" else None  # type: ignore
+    if l3 == "kcp":
+        port = hconfigs[ConfigEnum.kcp_ports].split(",")[0]
+    elif proxy.proto == ProxyProto.wireguard:
+        port = hconfigs[ConfigEnum.wireguard_port]
+    elif proxy.proto == "tuic":
+        port = domain_db.internal_port_tuic
+    elif proxy.proto == "hysteria2":
+        port = domain_db.internal_port_hysteria2
+    elif l3 == 'ssh':
+        port = hconfigs[ConfigEnum.ssh_server_port]
+    elif __is_tls(l3):
+        port = ptls
+    elif l3 == "http":
+        port = phttp
+    else:
+        port = int(pport)  # type: ignore
+    return port
 
 
 class ProxyJsonEncoder(json.JSONEncoder):

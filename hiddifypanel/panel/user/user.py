@@ -221,7 +221,7 @@ class UserView(FlaskView):
             resp = ""
         else:
             # render_template('all_configs.txt', **c, base64=hutils.encode.do_base_64)
-            resp = hutils.proxy.v2ray.make_v2ray_configs(**c)
+            resp = hutils.proxy.xray.make_v2ray_configs(**c)
 
         if base64:
             resp = hutils.encode.do_base_64(resp)
