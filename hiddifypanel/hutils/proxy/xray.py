@@ -9,9 +9,6 @@ from flask_babel import gettext as _
 def to_link(proxy: dict) -> str | dict:
     if 'error' in proxy:
         return proxy
-    # ignore httpupgrade for Streisand
-    if g.user_agent.get('is_streisand') and proxy.get('transport') == 'httpupgrade':
-        return {'msg': 'ignore httpupgrade for streisand'}
 
     orig_name_link = (proxy['extra_info'] + " " + proxy["name"]).strip()
     name_link = hutils.encode.url_encode(orig_name_link)
@@ -55,7 +52,7 @@ def to_link(proxy: dict) -> str | dict:
         else:
             hk = ",".join(proxy["host_key"])
             pk = proxy["private_key"].replace('\n', '')
-            baseurl += f'{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}/?file=ssh&pk={pk}&pp={pk}&hk={hk}#{name_link}'
+            baseurl += f'{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}/?file=ssh&pk={pk}&hk={hk}#{name_link}'
 
         return baseurl
     if proxy['proto'] == "ssr":
@@ -210,14 +207,13 @@ def add_mux_to_link(proxy: dict) -> str:
 
 def add_mux_to_dict(d: dict, proxy):
     if proxy.get('mux_enable'):
-        # d['mux'] = proxy["mux_protocol"]
-        # mux is equals to concurrency in clients
-        d['mux'] = proxy["mux_max_streams"]
-        d['mux_max'] = proxy["mux_max_connections"]
-        d['mux_pad'] = proxy["mux_padding_enable"]
-        # doesn't exist
-        # d['mux_min'] = proxy["mux_min_connections"]
+        # according to github.com/hiddify/ray2sing/
+        d['muxtype'] = proxy["mux_protocol"]
+        d['muxmaxc'] = proxy["mux_max_connections"]
+        d['mux'] = proxy['mux_min_streams']
+        d['muxsmax'] = proxy["mux_max_streams"]
+        d['muxpad'] = proxy["mux_padding_enable"]
 
         if proxy.get('mux_brutal_enable'):
-            d['mux_up'] = proxy["mux_brutal_up_mbps"]
-            d['mux_down'] = proxy["mux_brutal_down_mbps"]
+            d['muxup'] = proxy["mux_brutal_up_mbps"]
+            d['muxdown'] = proxy["mux_brutal_down_mbps"]
