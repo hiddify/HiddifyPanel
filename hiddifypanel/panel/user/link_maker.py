@@ -348,11 +348,8 @@ def to_link(proxy):
         else:
             hk = ",".join(proxy["host_key"])
             pk = proxy["private_key"].replace('\n', '')
-            if g.user_agent.get('is_shadowrocket'):
-                baseurl += f'{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}/?file=ssh&pk={pk}&pp={proxy["uuid"]}&hk={hk}#{name_link}'
-            else:
-                # TODO: check hiddify app (next) accepted format
-                baseurl += f'{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}/?file=ssh&pk={pk}&pp={pk}&hk={hk}#{name_link}'
+            baseurl += f'{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}/?file=ssh&pk={pk}&hk={hk}#{name_link}'
+            
 
         return baseurl
     if proxy['proto'] == "ssr":
