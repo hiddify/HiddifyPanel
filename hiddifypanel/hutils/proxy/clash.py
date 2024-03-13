@@ -1,10 +1,11 @@
 import yaml
 from hiddifypanel.models import Proxy, ProxyCDN, ProxyL3, ProxyProto, ProxyTransport, Domain
+from hiddifypanel import hutils
 
 
 def get_clash_config_names(meta_or_normal, domains: list[Domain]):
     allp = []
-    for pinfo in Proxy.get_valid_proxies(domains):
+    for pinfo in hutils.proxy.get_valid_proxies(domains):
         clash = to_clash(pinfo, meta_or_normal)
         if 'msg' not in clash:
             allp.append(clash['name'])
@@ -14,7 +15,7 @@ def get_clash_config_names(meta_or_normal, domains: list[Domain]):
 
 def get_all_clash_configs(meta_or_normal, domains: list[Domain]):
     allp = []
-    for pinfo in Proxy.get_valid_proxies(domains):
+    for pinfo in hutils.proxy.get_valid_proxies(domains):
         clash = to_clash(pinfo, meta_or_normal)
         if 'msg' not in clash:
             allp.append(clash)

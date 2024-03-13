@@ -176,7 +176,7 @@ def make_v2ray_configs(user, user_activate, domains: list[Domain], expire_days, 
             res.append('trojan://1@1.1.1.1#' + hutils.encode.url_encode('✖Package_Ended'))
         return "\n".join(res)
 
-    for pinfo in Proxy.get_valid_proxies(domains):
+    for pinfo in hutils.proxy.get_valid_proxies(domains):
         link = to_link(pinfo)
         if 'msg' not in link:
             res.append(link)
