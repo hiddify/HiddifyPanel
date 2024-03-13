@@ -3,7 +3,6 @@ import json
 
 from hiddifypanel import hutils
 from hiddifypanel.models import Proxy, ProxyProto, ProxyTransport, Domain, ConfigEnum, hconfig
-from hiddifypanel.models.proxy import ProxyJsonEncoder
 from hiddifypanel.panel.hiddify import is_hiddify_next_version
 
 
@@ -39,7 +38,7 @@ def make_full_singbox_config(domains: list[Domain], **kwargs) -> str:
         "tolerance": 200
     }
     base_config['outbounds'].insert(1, smart)
-    res = json.dumps(base_config, indent=4, cls=ProxyJsonEncoder)
+    res = json.dumps(base_config, indent=4, cls=hutils.proxy.ProxyJsonEncoder)
     # if ua['is_hiddify']:
     #     res = res[:-1]+',"experimental": {}}'
     return res

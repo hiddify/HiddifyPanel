@@ -3,7 +3,6 @@ import json
 from flask import request, g
 from hiddifypanel import hutils
 from hiddifypanel.models import Proxy, ProxyTransport, ProxyL3, ProxyCDN, ProxyProto, Domain, hconfig, ConfigEnum, DomainType
-from hiddifypanel.models.proxy import ProxyJsonEncoder
 from flask_babel import gettext as _
 
 
@@ -47,7 +46,7 @@ def to_link(proxy: dict) -> str | dict:
         add_tls_tricks_to_dict(vmess_data, proxy)
         add_mux_to_dict(vmess_data, proxy)
 
-        return "vmess://" + hutils.encode.do_base_64(f'{json.dumps(vmess_data,cls=ProxyJsonEncoder)}')
+        return "vmess://" + hutils.encode.do_base_64(f'{json.dumps(vmess_data,cls=hutils.proxy.ProxyJsonEncoder)}')
     if proxy['proto'] == 'ssh':
         baseurl = 'ssh://'
         if g.user_agent.get('is_streisand'):
