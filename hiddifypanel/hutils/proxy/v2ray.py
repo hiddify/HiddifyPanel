@@ -44,8 +44,8 @@ def to_link(proxy: dict) -> str | dict:
             vmess_data['pbk'] = proxy['reality_pbk']
             vmess_data['sid'] = proxy['reality_short_id']
 
-        hutils.proxy.add_tls_tricks_to_dict(vmess_data, proxy)
-        hutils.proxy.add_mux_to_dict(vmess_data, proxy)
+        add_tls_tricks_to_dict(vmess_data, proxy)
+        add_mux_to_dict(vmess_data, proxy)
 
         return "vmess://" + hutils.encode.do_base_64(f'{json.dumps(vmess_data,cls=hutils.proxy.ProxyJsonEncoder)}')
     if proxy['proto'] == 'ssh':
@@ -97,8 +97,8 @@ def to_link(proxy: dict) -> str | dict:
     # the ray2sing supports vless, vmess and trojan tls tricks and mux
     # the vmess handled already
 
-    baseurl += hutils.proxy.add_mux_to_link(proxy)
-    baseurl += hutils.proxy.add_tls_tricks_to_link(proxy)
+    baseurl += add_mux_to_link(proxy)
+    baseurl += add_tls_tricks_to_link(proxy)
 
     # infos+=f'&alpn={proxy["alpn"]}'
     baseurl += f'&path={proxy["path"]}' if "path" in proxy else ""
@@ -182,3 +182,43 @@ def make_v2ray_configs(user, user_activate, domains: list[Domain], expire_days, 
         if 'msg' not in link:
             res.append(link)
     return "\n".join(res)
+
+
+def add_tls_tricks_to_link(proxy: dict) -> str:
+    out = {}
+    add_tls_tricks_to_dict(out, proxy)
+    return hutils.encode.convert_dict_to_url(out)
+
+
+def add_tls_tricks_to_dict(d: dict, proxy: dict):
+    if proxy.get('tls_fragment_enable'):
+        if g.user_agent.get('is_shadowrocket'):
+            d['fragment'] = f'1,{proxy["tls_fragment_size"]},{proxy["tls_fragment_sleep"]}'
+        else:
+            d['fragment'] = f'{proxy["tls_fragment_size"]},{proxy["tls_fragment_sleep"]},tlshello'
+
+    if proxy.get("tls_mixed_case"):
+        d['mc'] = 1
+    if proxy.get("tls_padding_enable"):
+        d['padsize'] = proxy["tls_padding_length"]
+
+
+def add_mux_to_link(proxy: dict) -> str:
+    out = {}
+    add_mux_to_dict(out, proxy)
+    return hutils.encode.convert_dict_to_url(out)
+
+
+def add_mux_to_dict(d: dict, proxy):
+    if proxy.get('mux_enable'):
+        # d['mux'] = proxy["mux_protocol"]
+        # mux is equals to concurrency in clients
+        d['mux'] = proxy["mux_max_streams"]
+        d['mux_max'] = proxy["mux_max_connections"]
+        d['mux_pad'] = proxy["mux_padding_enable"]
+        # doesn't exist
+        # d['mux_min'] = proxy["mux_min_connections"]
+
+        if proxy.get('mux_brutal_enable'):
+            d['mux_up'] = proxy["mux_brutal_up_mbps"]
+            d['mux_down'] = proxy["mux_brutal_down_mbps"]
