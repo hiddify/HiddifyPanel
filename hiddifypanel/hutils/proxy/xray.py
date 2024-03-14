@@ -1,9 +1,11 @@
 import datetime
 import json
-from flask import request, g
+from flask import render_template, request, g
 from hiddifypanel import hutils
 from hiddifypanel.models import Proxy, ProxyTransport, ProxyL3, ProxyCDN, ProxyProto, Domain, hconfig, ConfigEnum, DomainType
 from flask_babel import gettext as _
+
+OUTBOUND_LEVEL = 8
 
 
 def to_link(proxy: dict) -> str | dict:
@@ -178,6 +180,227 @@ def make_v2ray_configs(user, user_activate, domains: list[Domain], expire_days, 
         if 'msg' not in link:
             res.append(link)
     return "\n".join(res)
+
+
+def configs_as_json(domains: list[Domain], remarks: str) -> str:
+    '''Returns xray configs as json'''
+    base_config = json.loads(render_template('base_xray_config.json.j2', remarks=remarks))
+
+    for proxy in hutils.proxy.get_valid_proxies(domains):
+        outbound = to_xray(proxy)
+        if 'msg' not in outbound:
+            base_config['outbounds'].insert(0, outbound)
+
+    json_configs = json.dumps(base_config, indent=4, cls=hutils.proxy.ProxyJsonEncoder)
+    return json_configs
+
+
+def to_xray(proxy: dict) -> list[dict] | dict:
+    all_base = []
+    base = {
+        'tag': f'{proxy["extra_info"]} {proxy["name"]} § {proxy["port"]} {proxy["dbdomain"].id}',
+        'protocol': str(proxy['proto']),
+        'settings': {},
+        'streamSettings': {},
+        'mux': {  # default value
+            'enabled': False,
+            'concurrency': -1
+        }
+    }
+    all_base.append(base)
+
+    add_xray_multiplex(base)
+
+    add_xray_settings(base, proxy)
+
+    add_xray_stream_settings(base, proxy)
+
+    return all_base
+
+
+def add_xray_settings(base: dict, proxy: dict):
+    if proxy['proto'] == ProxyProto.wireguard:
+        add_xray_wireguard(base, proxy)
+    elif proxy['proto'] == ProxyProto.ss:
+        add_xray_shadowsocks(base, proxy)
+    elif proxy['proto'] == ProxyProto.vless:
+        add_xray_vless(base, proxy)
+    elif proxy['proto'] == ProxyProto.vmess:
+        add_xray_vmess(base, proxy)
+    elif proxy['proto'] == ProxyProto.trojan:
+        proxy['password'] = proxy['uuid']
+        add_xray_trojan(base, proxy)
+
+
+def add_xray_wireguard(base: dict, proxy: dict):
+
+    base['settings']['secretKey'] = proxy['wg_pk']
+    base['settings']['reversed'] = [0, 0, 0]
+    base['settings']['mtu'] = 1380  # optional
+    base['settings']['peers'] = [{
+        # 'allowedIPs':'', 'preSharedKey':'', 'keepAlive':'' # optionals
+        'endpoint': f'{proxy["server"]}:{int(proxy["port"])}',
+        'publicKey': proxy["wg_server_pub"]
+    }]
+
+    # optionals
+    # base['settings']['address'] = [f'{proxy["wg_ipv4"]}/32',f'{proxy["wg_ipv6"]}/128']
+    # base['settings']['workers'] = 4
+    # base['settings']['domainStrategy'] = 'ForceIP' # default
+
+
+def add_xray_vless(base: dict, proxy: dict):
+    base['settings']['vnext'] = [
+        {
+            'address': proxy['server'],
+            'port': proxy['port'],
+            "users": [
+                {
+                    'id': proxy['uuid'],
+                    'encryption': 'none',
+                    # 'security': 'auto',
+                    'flow': 'xtls-rprx-vision' if proxy['transport'] == ProxyTransport.XTLS else '',
+                    'level': OUTBOUND_LEVEL
+                }
+            ]
+        }
+    ]
+
+
+def add_xray_vmess(base: dict, proxy: dict):
+    base['settings']['vnext'] = [
+        {
+            "address": proxy['server'],
+            "port": proxy['port'],
+            "users": [
+                {
+                    "id": proxy['uuid'],
+                    "security": proxy['cipher'],
+                    "level": OUTBOUND_LEVEL
+                }
+            ]
+        }
+    ]
+
+
+def add_xray_trojan(base: dict, proxy: dict):
+    base['settings']['servers'] = [
+        {
+            # 'email': proxy['uuid'], optional
+            'address': proxy['server'],
+            'port': proxy['port'],
+            'password': proxy['password'],
+            'level': OUTBOUND_LEVEL
+        }
+    ]
+
+
+def add_xray_shadowsocks(base: dict, proxy: dict):
+    base['settings']['servers'] = [
+        {
+            'address': proxy['server'],
+            'port': proxy['port'],
+            'method': proxy['cipher'],
+            'password': proxy['password'],
+            'uot': True,
+            'level': OUTBOUND_LEVEL
+            # 'email': '', optional
+        }
+    ]
+
+
+def add_xray_stream_settings(base: dict, proxy: dict):
+    ss = base['streamSettings']
+    ss['security'] = 'none'  # default
+    # security
+    if proxy['l3'] == ProxyL3.reality:
+        ss['security'] = 'xtls'
+    elif proxy['l3'] in [ProxyL3.tls, ProxyL3.tls_h2, ProxyL3.tls_h2_h1]:
+        ss['security'] = 'tls'
+
+    # network and transport settings
+    if ss['security'] == 'tls' or 'xtls':
+        ss['tlsSettings'] = {
+            'serverName': proxy['sni'],
+            'allowInsecure': proxy['allow_insecure'],
+            'fingerprint': proxy['fingerprint'],
+            'alpn': proxy['alpn'],
+            # 'minVersion': '1.2',
+            # 'disableSystemRoot': '',
+            # 'enableSessionResumption': '',
+            # 'pinnedPeerCertificateChainSha256': '',
+            # 'certificates': '',
+            # 'maxVersion': '1.3', # Go lang sets
+            # 'cipherSuites': '', # Go lang sets
+            # 'rejectUnknownSni': '', # default is false
+        }
+
+    if proxy['transport'] == ProxyTransport.tcp:
+        ss['network'] = proxy['transport']
+        ss['tcpSettings'] = {
+            'header': {
+                'type': 'none'
+            }
+            # 'acceptProxyProtocol': False
+        }
+    elif proxy['transport'] == ProxyTransport.h2:
+        ss['network'] = proxy['transport']
+
+    elif proxy['transport'] == ProxyTransport.grpc:
+        ss['network'] = proxy['transport']
+        ss['grpcSettings'] = {
+            'serviceName': proxy['path'],  # proxy['path'] is equal toproxy['grpc_service_name']
+            'idle_timeout': 115,  # by default, the health check is not enabled. may solve some "connection drop" issues
+            'health_check_timeout': 20,  # default is 20
+            # 'initial_windows_size': 0,  # 0 means disabled. greater than 65535 means Dynamic Window mechanism will be disabled
+            # 'permit_without_stream': False, # health check performed when there are no sub-connections
+            # 'multiMode': false, # experimental
+        }
+    elif proxy['transport'] == ProxyTransport.httpupgrade:
+        ss['network'] = proxy['transport']
+        ss['httpupgradeSettings'] = {
+            'path': proxy['path'],
+            'host': proxy['host'],
+            # 'acceptProxyProtocol': '', for inbounds only
+        }
+    elif proxy['transport'] == ProxyTransport.WS:
+        ss['network'] = proxy['transport']
+        ss['wsSettings'] = {
+            'path': proxy['path'],
+            'headers': {
+                "Host": proxy['host']
+            }
+            # 'acceptProxyProtocol': False,
+        }
+
+    # tls fragmentaion
+    add_xray_tls_fragmentation(base)
+
+
+def add_xray_tls_fragmentation(base: dict):
+    '''Adds tls fragment in the outbounds if tls fragmentation is enabled'''
+    if base['streamSettings']['security'] in ['tls', 'xtls']:
+        if hconfig(ConfigEnum.tls_fragment_enable):
+            base['streamSettings']['sockopt'] = {
+                'dialerProxy': 'fragment',
+                'tcpKeepAliveIdle': 100,
+                'tcpNoDelay': True,  # recommended to be enabled with "tcpMptcp": true.
+                "mark": 255
+                # 'tcpFastOpen': True, # the system default setting be used.
+                # 'tcpKeepAliveInterval': 0, # 0 means default GO lang settings, -1 means not enable
+                # 'tcpcongestion': bbr, # Not configuring means using the system default value
+                # 'tcpMptcp': True, # need to be enabled in both server and client configuration (not supported by panel yet)
+            }
+
+
+def add_xray_multiplex(base: dict):
+    if hconfig(ConfigEnum.mux_enable):
+        concurrency = hutils.convert.to_int(hconfig(ConfigEnum.mux_max_connections))
+        if concurrency and concurrency > 0:
+            base['mux']['enabled'] = True
+            base['mux']['concurrency'] = concurrency
+            base['mux']['xudpConcurrency'] = concurrency
+            base['mux']['xudpProxyUDP443'] = 'reject'
 
 
 def add_tls_tricks_to_link(proxy: dict) -> str:

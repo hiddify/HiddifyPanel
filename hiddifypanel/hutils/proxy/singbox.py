@@ -74,7 +74,7 @@ def to_singbox(proxy: dict) -> list[dict] | dict:
         return all_base
 
     if proxy["proto"] == "trojan":
-        base["password"] = proxy["uuid"]
+        base["password"] = proxy["password"]
 
     if proxy['proto'] in ['vmess', 'vless']:
         base["uuid"] = proxy["uuid"]
@@ -213,10 +213,10 @@ def add_singbox_transport(base: dict, proxy: dict):
         base["transport"] = {
             "type": "http",
             "path": proxy.get("path", ""),
-            # "method": "",
-            # "headers": {},
             "idle_timeout": "15s",
             "ping_timeout": "15s"
+            # "method": "",
+            # "headers": {},
         }
 
         if 'host' in proxy:
