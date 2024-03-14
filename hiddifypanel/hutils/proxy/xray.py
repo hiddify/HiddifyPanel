@@ -209,30 +209,30 @@ def to_xray(proxy: dict) -> list[dict] | dict:
     }
     all_base.append(base)
 
-    add_xray_multiplex(base)
+    add_multiplex(base)
 
-    add_xray_settings(base, proxy)
+    add_settings(base, proxy)
 
-    add_xray_stream_settings(base, proxy)
+    add_stream_settings(base, proxy)
 
     return all_base
 
 
-def add_xray_settings(base: dict, proxy: dict):
+def add_settings(base: dict, proxy: dict):
     if proxy['proto'] == ProxyProto.wireguard:
-        add_xray_wireguard(base, proxy)
+        add_wireguard(base, proxy)
     elif proxy['proto'] == ProxyProto.ss:
-        add_xray_shadowsocks(base, proxy)
+        add_shadowsocks(base, proxy)
     elif proxy['proto'] == ProxyProto.vless:
-        add_xray_vless(base, proxy)
+        add_vless(base, proxy)
     elif proxy['proto'] == ProxyProto.vmess:
-        add_xray_vmess(base, proxy)
+        add_vmess(base, proxy)
     elif proxy['proto'] == ProxyProto.trojan:
         proxy['password'] = proxy['uuid']
-        add_xray_trojan(base, proxy)
+        add_trojan(base, proxy)
 
 
-def add_xray_wireguard(base: dict, proxy: dict):
+def add_wireguard(base: dict, proxy: dict):
 
     base['settings']['secretKey'] = proxy['wg_pk']
     base['settings']['reversed'] = [0, 0, 0]
@@ -249,7 +249,7 @@ def add_xray_wireguard(base: dict, proxy: dict):
     # base['settings']['domainStrategy'] = 'ForceIP' # default
 
 
-def add_xray_vless(base: dict, proxy: dict):
+def add_vless(base: dict, proxy: dict):
     base['settings']['vnext'] = [
         {
             'address': proxy['server'],
@@ -259,7 +259,7 @@ def add_xray_vless(base: dict, proxy: dict):
                     'id': proxy['uuid'],
                     'encryption': 'none',
                     # 'security': 'auto',
-                    'flow': 'xtls-rprx-vision' if proxy['transport'] == ProxyTransport.XTLS else '',
+                    'flow': 'xtls-rprx-vision' if (proxy['transport'] == ProxyTransport.XTLS or base['streamSettings']['security'] == 'reality') else '',
                     'level': OUTBOUND_LEVEL
                 }
             ]
@@ -267,7 +267,7 @@ def add_xray_vless(base: dict, proxy: dict):
     ]
 
 
-def add_xray_vmess(base: dict, proxy: dict):
+def add_vmess(base: dict, proxy: dict):
     base['settings']['vnext'] = [
         {
             "address": proxy['server'],
@@ -283,7 +283,7 @@ def add_xray_vmess(base: dict, proxy: dict):
     ]
 
 
-def add_xray_trojan(base: dict, proxy: dict):
+def add_trojan(base: dict, proxy: dict):
     base['settings']['servers'] = [
         {
             # 'email': proxy['uuid'], optional
@@ -295,7 +295,7 @@ def add_xray_trojan(base: dict, proxy: dict):
     ]
 
 
-def add_xray_shadowsocks(base: dict, proxy: dict):
+def add_shadowsocks(base: dict, proxy: dict):
     base['settings']['servers'] = [
         {
             'address': proxy['server'],
@@ -309,12 +309,13 @@ def add_xray_shadowsocks(base: dict, proxy: dict):
     ]
 
 
-def add_xray_stream_settings(base: dict, proxy: dict):
+def add_stream_settings(base: dict, proxy: dict):
     ss = base['streamSettings']
     ss['security'] = 'none'  # default
+
     # security
     if proxy['l3'] == ProxyL3.reality:
-        ss['security'] = 'xtls'
+        ss['security'] = 'reality'
     elif proxy['l3'] in [ProxyL3.tls, ProxyL3.tls_h2, ProxyL3.tls_h2_h1]:
         ss['security'] = 'tls'
 
@@ -334,52 +335,39 @@ def add_xray_stream_settings(base: dict, proxy: dict):
             # 'cipherSuites': '', # Go lang sets
             # 'rejectUnknownSni': '', # default is false
         }
+    if ss['security'] == 'reality':
+        ss['network'] = proxy['transport']
+        add_reality_transport(ss, proxy)
+    if proxy['l3'] == ProxyL3.kcp:
+        ss['network'] = 'kcp'
+        add_kcp_transport(ss, proxy)
 
-    if proxy['transport'] == ProxyTransport.tcp:
-        ss['network'] = proxy['transport']
-        ss['tcpSettings'] = {
-            'header': {
-                'type': 'none'
-            }
-            # 'acceptProxyProtocol': False
-        }
-    elif proxy['transport'] == ProxyTransport.h2:
-        ss['network'] = proxy['transport']
+    if proxy['l3'] == ProxyL3.h3_quic:
+        add_quic_transport(ss, proxy)
 
-    elif proxy['transport'] == ProxyTransport.grpc:
+    if ss['transport'] == 'tcp' or ss['security'] == 'reality' or (ss['security'] == 'none' and proxy['transport'] not in [ProxyTransport.httpupgrade, ProxyTransport.WS]):
         ss['network'] = proxy['transport']
-        ss['grpcSettings'] = {
-            'serviceName': proxy['path'],  # proxy['path'] is equal toproxy['grpc_service_name']
-            'idle_timeout': 115,  # by default, the health check is not enabled. may solve some "connection drop" issues
-            'health_check_timeout': 20,  # default is 20
-            # 'initial_windows_size': 0,  # 0 means disabled. greater than 65535 means Dynamic Window mechanism will be disabled
-            # 'permit_without_stream': False, # health check performed when there are no sub-connections
-            # 'multiMode': false, # experimental
-        }
-    elif proxy['transport'] == ProxyTransport.httpupgrade:
+        add_tcp_transport(ss, proxy)
+    if proxy['transport'] == ProxyTransport.h2 and ss['security'] == 'none' and ss['security'] != 'reality':
         ss['network'] = proxy['transport']
-        ss['httpupgradeSettings'] = {
-            'path': proxy['path'],
-            'host': proxy['host'],
-            # 'acceptProxyProtocol': '', for inbounds only
-        }
-    elif proxy['transport'] == ProxyTransport.WS:
+        add_http_transport(ss, proxy)
+    if proxy['transport'] == ProxyTransport.grpc:
         ss['network'] = proxy['transport']
-        ss['wsSettings'] = {
-            'path': proxy['path'],
-            'headers': {
-                "Host": proxy['host']
-            }
-            # 'acceptProxyProtocol': False,
-        }
+        add_grpc_transport(ss, proxy)
+    if proxy['transport'] == ProxyTransport.httpupgrade:
+        ss['network'] = proxy['transport']
+        add_httpupgrade_transport(ss, proxy)
+    if proxy['transport'] == ProxyTransport.WS:
+        ss['network'] = proxy['transport']
+        add_ws_transport(ss, proxy)
 
     # tls fragmentaion
-    add_xray_tls_fragmentation(base)
+    add_tls_fragmentation(base)
 
 
-def add_xray_tls_fragmentation(base: dict):
+def add_tls_fragmentation(base: dict):
     '''Adds tls fragment in the outbounds if tls fragmentation is enabled'''
-    if base['streamSettings']['security'] in ['tls', 'xtls']:
+    if base['streamSettings']['security'] in ['tls', 'reality']:
         if hconfig(ConfigEnum.tls_fragment_enable):
             base['streamSettings']['sockopt'] = {
                 'dialerProxy': 'fragment',
@@ -393,7 +381,7 @@ def add_xray_tls_fragmentation(base: dict):
             }
 
 
-def add_xray_multiplex(base: dict):
+def add_multiplex(base: dict):
     if hconfig(ConfigEnum.mux_enable):
         concurrency = hutils.convert.to_int(hconfig(ConfigEnum.mux_max_connections))
         if concurrency and concurrency > 0:
@@ -401,6 +389,109 @@ def add_xray_multiplex(base: dict):
             base['mux']['concurrency'] = concurrency
             base['mux']['xudpConcurrency'] = concurrency
             base['mux']['xudpProxyUDP443'] = 'reject'
+
+
+def add_tcp_transport(ss: dict, proxy: dict):
+    if proxy['l3'] == ProxyL3.http:
+        ss['tcpSettings'] = {
+            'header': {
+                'type': 'http',
+                'request': {
+                    'path': [proxy['path']]
+                }
+            }
+            # 'acceptProxyProtocol': False
+        }
+    else:
+        ss['tcpSettings'] = {
+            'header': {
+                'type': 'none'
+            }
+            # 'acceptProxyProtocol': False
+        }
+
+
+def add_http_transport(ss: dict, proxy: dict):
+    ss['httpSettings'] = {
+        'host': proxy['host'],
+        'path': proxy['path'],
+        # 'read_idle_timeout': 10,  # default disabled
+        # 'health_check_timeout': 15,  # default is 15
+        # 'method': 'PUT',  # default is 15
+        # 'headers': {
+
+        # }
+    }
+
+
+def add_ws_transport(ss: dict, proxy: dict):
+    ss['wsSettings'] = {
+        'path': proxy['path'],
+        'headers': {
+            "Host": proxy['host']
+        }
+        # 'acceptProxyProtocol': False,
+    }
+
+
+def add_grpc_transport(ss: dict, proxy: dict):
+    ss['grpcSettings'] = {
+        'serviceName': proxy['path'],  # proxy['path'] is equal toproxy['grpc_service_name']
+        'idle_timeout': 115,  # by default, the health check is not enabled. may solve some "connection drop" issues
+        'health_check_timeout': 20,  # default is 20
+        # 'initial_windows_size': 0,  # 0 means disabled. greater than 65535 means Dynamic Window mechanism will be disabled
+        # 'permit_without_stream': False, # health check performed when there are no sub-connections
+        # 'multiMode': false, # experimental
+    }
+
+
+def add_httpupgrade_transport(ss: dict, proxy: dict):
+    ss['httpupgradeSettings'] = {
+        'path': proxy['path'],
+        'host': proxy['host'],
+        # 'acceptProxyProtocol': '', for inbounds only
+    }
+
+
+def add_kcp_transport(ss: dict, proxy: dict):
+    ss['kcpSettings'] = {}
+    return
+    ss['kcpSettings'] = {
+        'seed': proxy['path'],
+        # 'mtu': 1350, # optional, default value is written
+        # 'tti': 50, # optional, default value is written
+        # 'uplinkCapacity': 5, # optional, default value is written
+        # 'downlinkCapacity': 20, # optional, default value is written
+        # 'congestion':False, # optional, default value is written
+        # 'readBufferSize': 2,# optional, default value is written
+        # 'writeBufferSize':2 # optional, default value is written
+        # 'header': { # must be same as server (hiddify doesn't use yet)
+        #     'type': 'none'  # choices: none(default), srtp, utp, wechat-video, dtls, wireguards
+        # }
+    }
+
+
+def add_quic_transport(ss: dict, proxy: dict):
+    ss['quicSettings'] = {}
+    return
+    # TODO: fix server side configs first
+    ss['quicSettings'] = {
+        'security': 'chacha20-poly1305',
+        'key': proxy['path'],
+        'header': {
+            'type': 'none'
+        }
+    }
+
+
+def add_reality_transport(ss: dict, proxy: dict):
+    ss['realitySettings'] = {
+        'serverName': proxy['sni'],
+        'fingerprint': proxy['fingerprint'],
+        'shortId': proxy['reality_short_id'],
+        'publicKey': proxy['reality_pbk'],
+        'show': False,
+    }
 
 
 def add_tls_tricks_to_link(proxy: dict) -> str:
