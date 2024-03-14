@@ -51,7 +51,7 @@ proxy-groups:
     proxies:
       - automatic
       - sequential 
-      {{link_maker.get_clash_config_names(meta_or_normal,domains)|indent(6)}}
+      {{link_maker.clash.get_clash_config_names(meta_or_normal,domains)|indent(6)}}
       
     # use:
     #   %for phttp in hconfigs[ConfigEnum.http_ports].split(',')
@@ -88,7 +88,7 @@ proxy-groups:
     url: "http://cp.cloudflare.com"
     interval: 300
     proxies:
-      {{link_maker.get_clash_config_names(meta_or_normal,domains)|indent(6)}}
+      {{link_maker.clash.get_clash_config_names(meta_or_normal,domains)|indent(6)}}
     # use:
     #   %for phttp in hconfigs[ConfigEnum.http_ports].split(',')
     #   - all_proxies_{{phttp}}
@@ -99,7 +99,7 @@ proxy-groups:
 
   - name: auto
     proxies:
-      {{link_maker.get_clash_config_names(meta_or_normal,domains)|indent(6)}}
+      {{link_maker.clash.get_clash_config_names(meta_or_normal,domains)|indent(6)}}
     # use:
     #   %for phttp in hconfigs[ConfigEnum.http_ports].split(',')
     #   - all_proxies_{{phttp}}
@@ -116,7 +116,7 @@ proxy-groups:
 
 
      
-{{link_maker.get_all_clash_configs(meta_or_normal,domains)}}
+{{link_maker.clash.get_all_clash_configs(meta_or_normal,domains)}}
 
 # proxy-providers:
 #   %for t in (['http','tls'] if hconfigs[ConfigEnum.http_proxy_enable] else ['tls'])

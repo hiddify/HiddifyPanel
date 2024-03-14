@@ -93,11 +93,11 @@ def init_app(app: APIFlask):
         if 'proxy_path' not in values:
             if force_path := g.get('force_proxy_path'):
                 values['proxy_path'] = force_path
-            elif hutils.flask.is_admin_role(current_account.role):
+            elif hutils.flask.is_admin_role(current_account.role):  # type: ignore
                 values['proxy_path'] = hconfig(ConfigEnum.proxy_path_admin)
             elif hutils.flask.is_user_panel_call():
                 values['proxy_path'] = hconfig(ConfigEnum.proxy_path_client)
-            elif current_account and hutils.flask.is_admin_role(current_account.role):
+            elif current_account and hutils.flask.is_admin_role(current_account.role):  # type: ignore
                 values['proxy_path'] = hconfig(ConfigEnum.proxy_path_admin)
             else:
                 values['proxy_path'] = g.proxy_path or "A"

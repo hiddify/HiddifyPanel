@@ -108,7 +108,7 @@ def set_hconfig(key: ConfigEnum, value: str | int | bool, child_id: int | None =
 
 
 @cache.cache(ttl=500,)
-def get_hconfigs(child_id: int | None = None, json=False):
+def get_hconfigs(child_id: int | None = None, json=False) -> dict:
     if child_id is None:
         child_id = Child.current.id
 

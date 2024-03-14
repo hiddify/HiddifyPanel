@@ -5,7 +5,6 @@ import re
 
 from flask import render_template, request, Response, g
 from apiflask import abort
-from . import link_maker
 from flask_classful import FlaskView, route
 from urllib.parse import urlparse
 from flask_babel import gettext as _
@@ -16,7 +15,6 @@ from hiddifypanel.database import db
 from hiddifypanel.panel import hiddify
 from hiddifypanel.models import *
 from hiddifypanel import hutils
-from hiddifypanel import cache
 
 
 class UserView(FlaskView):
@@ -127,43 +125,43 @@ class UserView(FlaskView):
 
         return resp
 
-    @ route('/report', methods=["POST"])
-    @login_required(roles={Role.user})
-    def report(self):
+    # @ route('/report', methods=["POST"])
+    # @login_required(roles={Role.user})
+    # def report(self):
 
-        # THE REPORT MODEL IS NOT COMPLETED YET.
+    #     # THE REPORT MODEL IS NOT COMPLETED YET.
 
-        data = request.get_json()
-        user_ip = hutils.network.auto_ip_selector.get_real_user_ip()
-        report = Report()
-        report.asn_id = hutils.network.auto_ip_selector.get_asn_id(user_ip)
-        report.country = hutils.network.auto_ip_selector.get_country(user_ip)
+    #     data = request.get_json()
+    #     user_ip = hutils.network.auto_ip_selector.get_real_user_ip()
+    #     report = Report()
+    #     report.asn_id = hutils.network.auto_ip_selector.get_asn_id(user_ip)
+    #     report.country = hutils.network.auto_ip_selector.get_country(user_ip)
 
-        city_info = hutils.network.auto_ip_selector.get_city(user_ip)
-        report.city = city_info['name']
-        report.latitude = city_info['latitude']
-        report.longitude = city_info['longitude']
-        report.accuracy_radius = city_info['accuracy_radius']
+    #     city_info = hutils.network.auto_ip_selector.get_city(user_ip)
+    #     report.city = city_info['name']
+    #     report.latitude = city_info['latitude']
+    #     report.longitude = city_info['longitude']
+    #     report.accuracy_radius = city_info['accuracy_radius']
 
-        report.date = datetime.datetime.now()
-        sub_update_time = data['sub_update_time']
-        sub_url = data['sub_url']
+    #     report.date = datetime.datetime.now()
+    #     sub_update_time = data['sub_update_time']
+    #     sub_url = data['sub_url']
 
-        db.session.add(report)
-        db.session.commit()
-        proxy_map = {p.name: p.id for p in Proxy.query.all()}
+    #     db.session.add(report)
+    #     db.session.commit()
+    #     proxy_map = {p.name: p.id for p in Proxy.query.all()}
 
-        for name, ping in data['pings']:
-            detail = ReportDetail()
-            detail.report_id = report.id
-            detail.proxy_id = proxy_map.get(name, -1)
-            del proxy_map[name]
-            if detail.proxy_id < 0:
-                print("Error. Proxy not found!")
-                continue
-            detail.ping = ping
-            db.session.add(detail)
-        db.session.commit()
+    #     for name, ping in data['pings']:
+    #         detail = ReportDetail()
+    #         detail.report_id = report.id
+    #         detail.proxy_id = proxy_map.get(name, -1)
+    #         del proxy_map[name]
+    #         if detail.proxy_id < 0:
+    #             print("Error. Proxy not found!")
+    #             continue
+    #         detail.ping = ping
+    #         db.session.add(detail)
+    #     db.session.commit()
 
     @ route('/clash/<typ>.yml', methods=["GET", "HEAD"])
     @ route('/clash/<meta_or_normal>/<typ>.yml', methods=["GET", "HEAD"])
@@ -191,7 +189,7 @@ class UserView(FlaskView):
         if request.method == 'HEAD':
             resp = ""
         else:
-            resp = link_maker.make_full_singbox_config(**c)
+            resp = hutils.proxy.singbox.make_full_singbox_config(**c)
 
         return add_headers(resp, c, 'application/json')
 
@@ -206,7 +204,7 @@ class UserView(FlaskView):
         if request.method == 'HEAD':
             resp = ""
         else:
-            resp = render_template('singbox_config.json', **c, host_keys=hiddify.get_hostkeys(True),
+            resp = render_template('singbox_config.json', **c, host_keys=hutils.proxy.get_ssh_hostkeys(True),
                                    ssh_client_version=hiddify.get_ssh_client_version(user), ssh_ip=hutils.network.get_direct_host_or_ip(4), base64=False)
 
         return add_headers(resp, c)
@@ -222,7 +220,7 @@ class UserView(FlaskView):
             resp = ""
         else:
             # render_template('all_configs.txt', **c, base64=hutils.encode.do_base_64)
-            resp = link_maker.make_v2ray_configs(**c)
+            resp = hutils.proxy.xray.make_v2ray_configs(**c)
 
         if base64:
             resp = hutils.encode.do_base_64(resp)
@@ -249,7 +247,7 @@ class UserView(FlaskView):
 # @cache.cache(ttl=300)
 def get_domain_information(no_domain=False, filter_domain=None, alternative=None):
     domains = []
-    default_asn = request.args.get("asn")
+    default_asn = request.args.get("asn", '')
     if filter_domain:
         domain = filter_domain
         db_domain = Domain.query.filter(Domain.domain == domain).first() or Domain(
@@ -340,7 +338,7 @@ def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
         'hconfigs': get_hconfigs(),
         'hdomains': get_hdomains(),
         'ConfigEnum': ConfigEnum,
-        'link_maker': link_maker,
+        'link_maker': hutils.proxy,
         'domains': domains,
         "bot": g.get('bot', None),
         "db_domain": db_domain,

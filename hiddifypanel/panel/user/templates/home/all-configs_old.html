@@ -48,7 +48,7 @@
       <td><span class="badge badge-success">{{_('all')}}</span></td>
     </tr>
 
-    {% for type in link_maker.all_proxies() %}
+    {% for type in link_maker.get_all_proxies(only_enabled=True) %}
     {% for mode in ["tls","http"] %}
     {% set pinfo=link_maker.proxy_info(type,mode=mode) %}
     {% if pinfo!=None %}

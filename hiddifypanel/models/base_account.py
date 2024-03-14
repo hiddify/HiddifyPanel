@@ -66,7 +66,7 @@ class BaseAccount(db.Model, SerializerMixin, FlaskLoginUserMixin):  # type: igno
         db_account.telegram_id = hutils.convert.to_int(data.get('telegram_id'))
         db_account.lang = data.get('lang')
         if commit:
-            db.session.commit()
+            db.session.commit()  # type: ignore
         return db_account
 
     @classmethod
@@ -77,6 +77,6 @@ class BaseAccount(db.Model, SerializerMixin, FlaskLoginUserMixin):  # type: igno
             dd = {u['uuid']: 1 for u in accounts}
             for d in cls.query.all():
                 if d.uuid not in dd:
-                    db.session.delete(d)
+                    db.session.delete(d)  # type: ignore
         if commit:
-            db.session.commit()
+            db.session.commit()  # type: ignore
