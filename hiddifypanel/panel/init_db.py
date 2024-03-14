@@ -22,7 +22,7 @@ MAX_DB_VERSION = 80
 
 def _v75(child_id):
     for u in User.query.all():
-        hutils.model.fill_wg_keys(u)
+        hutils.model.gen_wg_keys(u)
 
 
 def _v74(child_id):
@@ -121,13 +121,13 @@ def _v60():
 def _v59():
     # set user model username and password
     for u in User.query.all():
-        hutils.model.fill_username(u)
-        hutils.model.fill_password(u)
+        hutils.model.gen_username(u)
+        hutils.model.gen_password(u)
 
     # set admin model username and password
     for a in AdminUser.query.all():
-        hutils.model.fill_username(a)
-        hutils.model.fill_password(a)
+        hutils.model.gen_username(a)
+        hutils.model.gen_password(a)
 
 
 def _v57():
