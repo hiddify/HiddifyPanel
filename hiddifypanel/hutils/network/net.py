@@ -1,7 +1,8 @@
-from typing import List, Literal, Union
+from typing import List, Literal, Tuple, Union
 from urllib.parse import urlparse
 import urllib.request
 import ipaddress
+from hiddifypanel.hutils.network.auto_ip_selector import IPASN
 import netifaces
 import requests
 import random
@@ -16,7 +17,7 @@ from hiddifypanel.models import *
 from hiddifypanel.cache import cache
 
 
-def get_domain_ip(domain: str, retry: int = 3, version: Literal[4, 6] = None) -> Union[ipaddress.IPv4Address, ipaddress.IPv6Address, None]:
+def get_domain_ip(domain: str, retry: int = 3, version: Literal[4, 6] | None = None) -> Union[ipaddress.IPv4Address, ipaddress.IPv6Address, None]:
     res = None
     if not version:
         try:
@@ -326,3 +327,46 @@ def add_number_to_ipv6(ip: str, number: int) -> str:
     modified_ipv6 = ":".join(segments)
 
     return modified_ipv6
+
+
+def is_in_same_asn(domain_or_ip: str, domain_or_ip_target: str) -> bool:
+    '''Returns True if domain is in panel ASN'''
+    if not IPASN:
+        return False
+    try:
+        ip = domain_or_ip if is_ip(domain_or_ip) else get_domain_ip(domain_or_ip)
+        ip_target = domain_or_ip_target if is_ip(domain_or_ip_target) else get_domain_ip(domain_or_ip_target)
+
+        if not ip or not ip_target:
+            return False
+
+        ip_asn = get_ip_asn_name(ip)
+        ip_target_asn = get_ip_asn_name(ip_target)
+
+        if not ip_asn or not ip_target_asn:
+            return False
+
+        return ip_asn == ip_target_asn
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return False
+
+        # hutils.flask.flash(_("selected domain for REALITY is not in the same ASN. To better use of the protocol, it is better to find a domain in the same ASN.") +
+        #                    f"<br> Server ASN={asn_ipv4.get('autonomous_system_organization','unknown')}<br>{domain}_ASN={asn_dip.get('autonomous_system_organization','unknown')}", "warning")
+
+
+def get_ip_asn_name(ip: ipaddress.IPv4Address | ipaddress.IPv6Address | str) -> str:
+    try:
+        if asn := IPASN.get(str(ip)):
+            return str(asn.get('autonomous_system_organization', ''))
+        return ''
+    except:
+        return ''
+
+
+def is_ip(input: str):
+    try:
+        _ = ipaddress.ip_address(input)
+        return True
+    except:
+        return False
