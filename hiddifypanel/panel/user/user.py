@@ -197,7 +197,7 @@ class UserView(FlaskView):
         if request.method == 'HEAD':
             resp = ""
         else:
-            resp = hutils.proxy.singbox.make_full_singbox_config(**c)
+            resp = hutils.proxy.singbox.configs_as_json(**c)
 
         return add_headers(resp, c, 'application/json')
 
