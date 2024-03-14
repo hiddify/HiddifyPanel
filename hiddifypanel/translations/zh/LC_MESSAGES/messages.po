@@ -340,6 +340,11 @@ msgid "In 5 minutes"
 msgstr "5 分钟内"
 
 msgid ""
+"In CDN mode, Domain IP=%(domain_ip)s should be different to your "
+"ip=%(server_ip)s"
+msgstr ""
+
+msgid ""
 "In this section, you can add your domain. You need to add at least one "
 "domain in direct mode."
 msgstr ""
@@ -921,6 +926,9 @@ msgstr "仪表板"
 
 msgid "admin.menu.proxy"
 msgstr "代理"
+
+msgid "admin.menu.proxy_stats"
+msgstr ""
 
 msgid "admin.menu.support"
 msgstr "帮助"
