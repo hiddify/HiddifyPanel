@@ -232,8 +232,8 @@ class DomainAdmin(AdminLTEModelView):
                         raise ValidationError(f'{_("Domain is not REALITY friendly!")} {d}')
 
                     if not hutils.network.is_in_same_asn(d, ipv4_list[0]):
-                        server_asn = hutils.network.get_ip_asn_name(ipv4_list[0])
-                        domain_asn = hutils.network.get_ip_asn_name(dip)  # type: ignore
+                        server_asn = hutils.network.get_ip_asn_name(ipv4_list[0]) or 'Unknown'
+                        domain_asn = hutils.network.get_ip_asn_name(dip) or 'Unknown'  # type: ignore
                         msg = f'{_("selected domain for REALITY is not in the same ASN. To better use of the protocol, it is better to find a domain in the same ASN.")}<br> Server ASN={server_asn}<br>{d}_ASN={domain_asn}'
                         hutils.flask.flash(msg, 'warning')
 
