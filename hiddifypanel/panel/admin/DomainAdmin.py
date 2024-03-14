@@ -229,17 +229,17 @@ class DomainAdmin(AdminLTEModelView):
                     if not d:
                         continue
                     if not hutils.network.is_domain_reality_friendly(d):
-                        raise ValidationError(f'{_("Domain is not REALITY friendly!")} {d}')
+                        raise ValidationError(_("Domain is not REALITY friendly!")+f' {d}')
 
                     if not hutils.network.is_in_same_asn(d, ipv4_list[0]):
                         server_asn = hutils.network.get_ip_asn_name(ipv4_list[0])
                         domain_asn = hutils.network.get_ip_asn_name(dip)  # type: ignore
-                    msg = f'{_("selected domain for REALITY is not in the same ASN. To better use of the protocol, it is better to find a domain in the same ASN.")}{f"<br> Server ASN={server_asn}<br>{d}_ASN={domain_asn}" if server_asn or domain_asn else ""}'
+                    msg = _("selected domain for REALITY is not in the same ASN. To better use of the protocol, it is better to find a domain in the same ASN.")+(f"<br> Server ASN={server_asn}<br>{d}_ASN={domain_asn}" if server_asn or domain_asn else "")
                     hutils.flask.flash(msg, 'warning')
 
             for d in model.servernames.split(","):
                 if not hutils.network.fallback_domain_compatible_with_servernames(model.domain, d):
-                    raise ValidationError(f'{_("REALITY Fallback domain is not compaitble with server names!")} {d} != {model.domain}')
+                    raise ValidationError(_("REALITY Fallback domain is not compaitble with server names!")+f' {d} != {model.domain}')
 
         if (model.cdn_ip):
             try:
