@@ -2,7 +2,7 @@ from enum import auto
 import uuid
 from flask import g
 from hiddifypanel.models.usage import DailyUsage
-from sqlalchemy import event
+from sqlalchemy import event, Column, Integer, Enum, Boolean, ForeignKey
 from strenum import StrEnum
 from apiflask import abort
 from flask_babel import gettext as __
@@ -29,15 +29,15 @@ class AdminUser(BaseAccount):
     This is a model class for a user in a database that includes columns for their ID, UUID, name, online status,
     account expiration date, usage limit, package days, mode, start date, current usage, last reset time, and comment.
     """
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    mode = db.Column(db.Enum(AdminMode), default=AdminMode.agent, nullable=False)
-    can_add_admin = db.Column(db.Boolean, default=False, nullable=False)
-    max_users = db.Column(db.Integer, default=100, nullable=False)
-    max_active_users = db.Column(db.Integer, default=100, nullable=False)
-    users = db.relationship('User', backref='admin')
-    usages = db.relationship('DailyUsage', backref='admin')
-    parent_admin_id = db.Column(db.Integer, db.ForeignKey('admin_user.id'), default=1)
-    parent_admin = db.relationship('AdminUser', remote_side=[id], backref='sub_admins')
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    mode = Column(Enum(AdminMode), default=AdminMode.agent, nullable=False)
+    can_add_admin = Column(Boolean, default=False, nullable=False)
+    max_users = Column(Integer, default=100, nullable=False)
+    max_active_users = Column(Integer, default=100, nullable=False)
+    users = db.relationship('User', backref='admin')  # type: ignore
+    usages = db.relationship('DailyUsage', backref='admin')  # type: ignore
+    parent_admin_id = Column(Integer, ForeignKey('admin_user.id'), default=1)
+    parent_admin = db.relationship('AdminUser', remote_side=[id], backref='sub_admins')  # type: ignore
 
     @property
     def role(self) -> Role | None:
@@ -53,8 +53,10 @@ class AdminUser(BaseAccount):
     def get_id(self) -> str | None:
         return f'admin_{self.id}'
 
-    def to_dict(self, convert_date=True) -> dict:
+    def to_dict(self, convert_date=True, dump_id=False) -> dict:
         base = super().to_dict()
+        if dump_id:
+            base['id'] = self.id
         return {**base,
                 'mode': self.mode,
                 'can_add_admin': self.can_add_admin,
@@ -161,5 +163,5 @@ class AdminUser(BaseAccount):
 @event.listens_for(AdminUser, "before_insert")
 def before_insert(mapper, connection, target):
     from hiddifypanel import hutils
-    hutils.model.fill_username(target)
-    hutils.model.fill_password(target)
+    hutils.model.gen_username(target)
+    hutils.model.gen_password(target)

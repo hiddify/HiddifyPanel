@@ -271,14 +271,16 @@ class UserAdmin(AdminLTEModelView):
                                   active=g.account.max_active_users, total=g.account.max_users))
         if old_user and old_user.uuid != model.uuid:
             user_driver.remove_client(old_user)
-        if not model.ed25519_private_key:
-            priv, publ = hutils.crypto.get_ed25519_private_public_pair()
-            model.ed25519_private_key = priv
-            model.ed25519_public_key = publ
-        if not model.wg_pk:
-            model.wg_pk, model.wg_pub, model.wg_psk = hutils.crypto.get_wg_private_public_psk_pair()
-        # model.expiry_time=datetime.date.today()+datetime.timedelta(days=model.expiry_time)
 
+        # generated automatically
+        # if not model.ed25519_private_key:
+        #     priv, publ = hutils.crypto.get_ed25519_private_public_pair()
+        #     model.ed25519_private_key = priv
+        #     model.ed25519_public_key = publ
+        # if not model.wg_pk:
+        #     model.wg_pk, model.wg_pub, model.wg_psk = hutils.crypto.get_wg_private_public_psk_pair()
+
+        # model.expiry_time=datetime.date.today()+datetime.timedelta(days=model.expiry_time)
         # if model.current_usage_GB < model.usage_limit_GB:
         #     xray_api.add_client(model.uuid)
         # else:

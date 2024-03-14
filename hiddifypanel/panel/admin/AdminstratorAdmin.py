@@ -208,7 +208,7 @@ class AdminstratorAdmin(AdminLTEModelView):
 
         if g.account.mode != AdminMode.super_admin and model.mode == AdminMode.super_admin:
             raise ValidationError("Sub-Admin can not have more power!!!!")
-        if model.mode == AdminMode.agent and model.mode != AdminMode.agent:
+        if g.account.mode == AdminMode.agent and model.mode != AdminMode.agent:
             raise ValidationError("Sub-Admin can not have more power!!!!")
 
     def on_model_delete(self, model):
