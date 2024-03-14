@@ -121,7 +121,8 @@
                 {% autoescape false %}
                 if ($("#mode").val() == 'reality') {
 
-                    $("#servernames").parent().hide();
+                    //$("#servernames").parent().hide();
+                    $("#servernames").parent().show();
                     $("#servernames").parent().find(".control-label").html(`{{_('config.reality_server_names.label')}}`)
                     $("#servernames").parent().find(".help-block").html(`{{_('config.reality_server_names.description')}}`)
 
