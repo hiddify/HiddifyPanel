@@ -54,6 +54,14 @@ class UserView(FlaskView):
     def sub64(self):
         return self.all_configs(base64=True)
 
+    @route("/xray/")
+    @route("/xray")
+    @login_required(roles={Role.user})
+    def xray(self):
+        c = c = get_common_data(g.account.uuid, mode="new")
+        configs = hutils.proxy.xray.configs_as_json(c['domains'], c['profile_title'])
+        return add_headers(configs, c, 'application/json')
+
     @route("/singbox/")
     @route("/singbox")
     @login_required(roles={Role.user})
@@ -189,7 +197,7 @@ class UserView(FlaskView):
         if request.method == 'HEAD':
             resp = ""
         else:
-            resp = hutils.proxy.singbox.make_full_singbox_config(**c)
+            resp = hutils.proxy.singbox.configs_as_json(**c)
 
         return add_headers(resp, c, 'application/json')
 

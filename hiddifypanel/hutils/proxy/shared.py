@@ -317,6 +317,8 @@ def make_proxy(hconfigs: dict, proxy: Proxy, domain_db: Domain, phttp=80, ptls=4
         base['cipher'] = hconfigs[ConfigEnum.shadowsocks2022_method]
         base['password'] = f'{hutils.encode.do_base_64(hconfigs[ConfigEnum.shared_secret].replace("-",""))}:{hutils.encode.do_base_64(g.account.uuid.replace("-",""))}'
 
+    if base['proto'] == 'trojan':
+        base['password'] = base['uuid']
     if base["proto"] == "ssr":
         base["ssr-obfs"] = "tls1.2_ticket_auth"
         base["ssr-protocol"] = "auth_sha1_v4"

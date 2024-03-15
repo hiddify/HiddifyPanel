@@ -6,7 +6,7 @@ from hiddifypanel.models import ProxyProto, ProxyTransport, Domain, ConfigEnum, 
 from hiddifypanel.panel.hiddify import is_hiddify_next_version
 
 
-def make_full_singbox_config(domains: list[Domain], **kwargs) -> str:
+def configs_as_json(domains: list[Domain], **kwargs) -> str:
     ua = hutils.flask.get_user_agent()
     base_config = json.loads(render_template('base_singbox_config.json.j2'))
     allphttp = [p for p in request.args.get("phttp", "").split(',') if p]
@@ -60,32 +60,32 @@ def to_singbox(proxy: dict) -> list[dict] | dict:
     base["server_port"] = int(proxy["port"])
     # base['alpn'] = proxy['alpn'].split(',')
     if proxy["proto"] == "ssr":
-        add_singbox_ssr(base, proxy)
+        add_ssr(base, proxy)
         return all_base
     if proxy["proto"] == ProxyProto.wireguard:
-        add_singbox_wireguard(base, proxy)
+        add_wireguard(base, proxy)
         return all_base
 
     if proxy["proto"] in ["ss", "v2ray"]:
-        add_singbox_shadowsocks_base(all_base, proxy)
+        add_shadowsocks_base(all_base, proxy)
         return all_base
     if proxy["proto"] == "ssh":
-        add_singbox_ssh(all_base, proxy)
+        add_ssh(all_base, proxy)
         return all_base
 
     if proxy["proto"] == "trojan":
-        base["password"] = proxy["uuid"]
+        base["password"] = proxy["password"]
 
     if proxy['proto'] in ['vmess', 'vless']:
         base["uuid"] = proxy["uuid"]
 
     if proxy['proto'] in ['vmess', 'vless', 'trojan']:
-        add_singbox_multiplex(base)
+        add_multiplex(base)
 
-    add_singbox_tls(base, proxy)
+    add_tls(base, proxy)
 
     if g.user_agent.get('is_hiddify'):
-        add_singbox_tls_tricks(base, proxy)
+        add_tls_tricks(base, proxy)
 
     if proxy.get('flow'):
         base["flow"] = proxy['flow']
@@ -100,16 +100,16 @@ def to_singbox(proxy: dict) -> list[dict] | dict:
         base["packet_encoding"] = "xudp"  # udp packet encoding
 
     if proxy["proto"] == "tuic":
-        add_singbox_tuic(base, proxy)
+        add_tuic(base, proxy)
     elif proxy["proto"] == "hysteria2":
-        add_singbox_hysteria(base, proxy)
+        add_hysteria(base, proxy)
     else:
-        add_singbox_transport(base, proxy)
+        add_transport(base, proxy)
 
     return all_base
 
 
-def add_singbox_multiplex(base: dict):
+def add_multiplex(base: dict):
     if not hconfig(ConfigEnum.mux_enable):
         return
     base['multiplex'] = {
@@ -125,10 +125,10 @@ def add_singbox_multiplex(base: dict):
         base['multiplex']['max_connections'] = int(hconfig(ConfigEnum.mux_max_connections))
         base['multiplex']['min_streams'] = int(hconfig(ConfigEnum.mux_min_streams))
 
-    add_singbox_tcp_brutal(base)
+    add_tcp_brutal(base)
 
 
-def add_singbox_tcp_brutal(base: dict):
+def add_tcp_brutal(base: dict):
     if 'multiplex' in base:
         base['multiplex']['brutal'] = {
             "enabled": hconfig(ConfigEnum.mux_brutal_enable),
@@ -137,14 +137,14 @@ def add_singbox_tcp_brutal(base: dict):
         }
 
 
-def add_singbox_udp_over_tcp(base: dict):
+def add_udp_over_tcp(base: dict):
     base['udp_over_tcp'] = {
         "enabled": True,
         "version": 2
     }
 
 
-def add_singbox_tls(base: dict, proxy: dict):
+def add_tls(base: dict, proxy: dict):
     if not ("tls" in proxy["l3"] or "reality" in proxy["l3"]):
         return
     base["tls"] = {
@@ -170,7 +170,7 @@ def add_singbox_tls(base: dict, proxy: dict):
     # }
 
 
-def add_singbox_tls_tricks(base: dict, proxy: dict):
+def add_tls_tricks(base: dict, proxy: dict):
     if proxy.get('tls_fragment_enable'):
         base['tls_fragment'] = {
             'enabled': True,
@@ -188,7 +188,7 @@ def add_singbox_tls_tricks(base: dict, proxy: dict):
             base['tls']['tls_tricks']['mixedcase_sni'] = True
 
 
-def add_singbox_transport(base: dict, proxy: dict):
+def add_transport(base: dict, proxy: dict):
     if proxy['l3'] == 'reality' and proxy['transport'] not in ["grpc"]:
         return
     base["transport"] = {}
@@ -213,10 +213,10 @@ def add_singbox_transport(base: dict, proxy: dict):
         base["transport"] = {
             "type": "http",
             "path": proxy.get("path", ""),
-            # "method": "",
-            # "headers": {},
             "idle_timeout": "15s",
             "ping_timeout": "15s"
+            # "method": "",
+            # "headers": {},
         }
 
         if 'host' in proxy:
@@ -232,7 +232,7 @@ def add_singbox_transport(base: dict, proxy: dict):
         }
 
 
-def add_singbox_ssr(base: dict, proxy: dict):
+def add_ssr(base: dict, proxy: dict):
 
     base["method"] = proxy["cipher"]
     base["password"] = proxy["uuid"]
@@ -242,7 +242,7 @@ def add_singbox_ssr(base: dict, proxy: dict):
     base["protocol-param"] = proxy["fakedomain"]
 
 
-def add_singbox_wireguard(base: dict, proxy: dict):
+def add_wireguard(base: dict, proxy: dict):
 
     base["local_address"] = f'{proxy["wg_ipv4"]}/32'
     base["private_key"] = proxy["wg_pk"]
@@ -255,13 +255,13 @@ def add_singbox_wireguard(base: dict, proxy: dict):
         base["fake_packets"] = proxy["wg_noise_trick"]
 
 
-def add_singbox_shadowsocks_base(all_base: list[dict], proxy: dict):
+def add_shadowsocks_base(all_base: list[dict], proxy: dict):
     base = all_base[0]
     base["type"] = "shadowsocks"
     base["method"] = proxy["cipher"]
     base["password"] = proxy["password"]
-    add_singbox_udp_over_tcp(base)
-    add_singbox_multiplex(base)
+    add_udp_over_tcp(base)
+    add_multiplex(base)
     if proxy["transport"] == "faketls":
         base["plugin"] = "obfs-local"
         base["plugin_opts"] = f'obfs=tls;obfs-host={proxy["fakedomain"]}'
@@ -290,13 +290,13 @@ def add_singbox_shadowsocks_base(all_base: list[dict], proxy: dict):
                 # "alpn": proxy['alpn'].split(',')
             }
         }
-        # add_singbox_utls(shadowtls_base)
+        # add_utls(shadowtls_base)
         del base['server']
         del base['server_port']
         all_base.append(shadowtls_base)
 
 
-def add_singbox_ssh(all_base: list[dict], proxy: dict):
+def add_ssh(all_base: list[dict], proxy: dict):
     base = all_base[0]
     # base["client_version"]= "{{ssh_client_version}}"
     base["user"] = proxy['uuid']
@@ -317,7 +317,7 @@ def add_singbox_ssh(all_base: list[dict], proxy: dict):
     all_base.append(socks_front)
 
 
-def add_singbox_tuic(base: dict, proxy: dict):
+def add_tuic(base: dict, proxy: dict):
     base['congestion_control'] = "cubic"
     base['udp_relay_mode'] = 'native'
     base['zero_rtt_handshake'] = True
@@ -326,7 +326,7 @@ def add_singbox_tuic(base: dict, proxy: dict):
     base['uuid'] = proxy['uuid']
 
 
-def add_singbox_hysteria(base: dict, proxy: dict):
+def add_hysteria(base: dict, proxy: dict):
     base['up_mbps'] = int(hconfig(ConfigEnum.hysteria_up_mbps))
     base['down_mbps'] = int(hconfig(ConfigEnum.hysteria_down_mbps))
     # TODO: check the obfs should be empty or not exists at all
