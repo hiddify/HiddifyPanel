@@ -371,7 +371,7 @@ def _v7():
         Proxy.query.filter(Proxy.name == 'tls XTLSVision direct trojan').delete()
     except BaseException:
         pass
-    add_config_if_not_exist(ConfigEnum.telegram_lib, "python")
+    add_config_if_not_exist(ConfigEnum.telegram_lib, "erlang")
     add_config_if_not_exist(ConfigEnum.admin_lang, hconfig(ConfigEnum.lang))
     add_config_if_not_exist(ConfigEnum.branding_title, "")
     add_config_if_not_exist(ConfigEnum.branding_site, "")
