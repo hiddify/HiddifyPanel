@@ -1,5 +1,6 @@
 import datetime
 import json
+import copy
 from flask import render_template, request, g
 from hiddifypanel import hutils
 from hiddifypanel.models import Proxy, ProxyTransport, ProxyL3, ProxyCDN, ProxyProto, Domain, hconfig, ConfigEnum, DomainType
@@ -184,20 +185,37 @@ def make_v2ray_configs(user, user_activate, domains: list[Domain], expire_days, 
 
 def configs_as_json(domains: list[Domain], remarks: str) -> str:
     '''Returns xray configs as json'''
-    base_config = json.loads(render_template('base_xray_config.json.j2', remarks=remarks))
-
+    outbounds = []
     for proxy in hutils.proxy.get_valid_proxies(domains):
         outbound = to_xray(proxy)
         if 'msg' not in outbound:
-            base_config['outbounds'].insert(0, outbound)
+            outbounds.append(outbound)
 
-    json_configs = json.dumps(base_config, indent=4, cls=hutils.proxy.ProxyJsonEncoder)
+    outbounds_len = len(outbounds)
+    # reutrn no outbound
+    if outbounds_len < 1:
+        return ''
+
+    all_configs = []
+    base_config = json.loads(render_template('base_xray_config.json.j2', remarks=remarks))
+    # multiple outbounds needs multiple whole base config not just one with multiple outbounds (at least for v2rayng)
+    # https://github.com/2dust/v2rayNG/pull/2827#issue-2127534078
+    if outbounds_len > 1:
+        for out in outbounds:
+            base_config['remarks'] = out['tag']
+            base_config['outbounds'].insert(0, out)
+            all_configs.append(copy.deepcopy(base_config))
+            del base_config['outbounds'][0]
+    else:  # single outbound
+        base_config['outbounds'].insert(0, outbounds[0])
+        all_configs = base_config
+
+    json_configs = json.dumps(all_configs, indent=2, cls=hutils.proxy.ProxyJsonEncoder)
     return json_configs
 
 
-def to_xray(proxy: dict) -> list[dict] | dict:
-    all_base = []
-    base = {
+def to_xray(proxy: dict) -> dict:
+    outbound = {
         'tag': f'{proxy["extra_info"]} {proxy["name"]} § {proxy["port"]} {proxy["dbdomain"].id}',
         'protocol': str(proxy['proto']),
         'settings': {},
@@ -207,40 +225,43 @@ def to_xray(proxy: dict) -> list[dict] | dict:
             'concurrency': -1
         }
     }
-    all_base.append(base)
+    # add multiplex to outbound
+    add_multiplex(outbound)
 
-    add_multiplex(base)
+    # add stream setting to outbound
+    add_stream_settings(outbound, proxy)
 
-    add_settings(base, proxy)
+    # add protocol settings to outbound
+    add_proto_settings(outbound, proxy)
 
-    add_stream_settings(base, proxy)
+    return outbound
 
-    return all_base
+# region proto settings
 
 
-def add_settings(base: dict, proxy: dict):
+def add_proto_settings(base: dict, proxy: dict):
     if proxy['proto'] == ProxyProto.wireguard:
-        add_wireguard(base, proxy)
+        add_wireguard_settings(base, proxy)
     elif proxy['proto'] == ProxyProto.ss:
-        add_shadowsocks(base, proxy)
+        add_shadowsocks_settings(base, proxy)
     elif proxy['proto'] == ProxyProto.vless:
-        add_vless(base, proxy)
+        add_vless_settings(base, proxy)
     elif proxy['proto'] == ProxyProto.vmess:
-        add_vmess(base, proxy)
+        add_vmess_settings(base, proxy)
     elif proxy['proto'] == ProxyProto.trojan:
         proxy['password'] = proxy['uuid']
-        add_trojan(base, proxy)
+        add_trojan_settings(base, proxy)
 
 
-def add_wireguard(base: dict, proxy: dict):
+def add_wireguard_settings(base: dict, proxy: dict):
 
     base['settings']['secretKey'] = proxy['wg_pk']
     base['settings']['reversed'] = [0, 0, 0]
     base['settings']['mtu'] = 1380  # optional
     base['settings']['peers'] = [{
-        # 'allowedIPs':'', 'preSharedKey':'', 'keepAlive':'' # optionals
         'endpoint': f'{proxy["server"]}:{int(proxy["port"])}',
         'publicKey': proxy["wg_server_pub"]
+        # 'allowedIPs':'', 'preSharedKey':'', 'keepAlive':'' # optionals
     }]
 
     # optionals
@@ -249,7 +270,7 @@ def add_wireguard(base: dict, proxy: dict):
     # base['settings']['domainStrategy'] = 'ForceIP' # default
 
 
-def add_vless(base: dict, proxy: dict):
+def add_vless_settings(base: dict, proxy: dict):
     base['settings']['vnext'] = [
         {
             'address': proxy['server'],
@@ -267,7 +288,7 @@ def add_vless(base: dict, proxy: dict):
     ]
 
 
-def add_vmess(base: dict, proxy: dict):
+def add_vmess_settings(base: dict, proxy: dict):
     base['settings']['vnext'] = [
         {
             "address": proxy['server'],
@@ -283,7 +304,7 @@ def add_vmess(base: dict, proxy: dict):
     ]
 
 
-def add_trojan(base: dict, proxy: dict):
+def add_trojan_settings(base: dict, proxy: dict):
     base['settings']['servers'] = [
         {
             # 'email': proxy['uuid'], optional
@@ -295,7 +316,7 @@ def add_trojan(base: dict, proxy: dict):
     ]
 
 
-def add_shadowsocks(base: dict, proxy: dict):
+def add_shadowsocks_settings(base: dict, proxy: dict):
     base['settings']['servers'] = [
         {
             'address': proxy['server'],
@@ -308,6 +329,10 @@ def add_shadowsocks(base: dict, proxy: dict):
         }
     ]
 
+# endregion
+
+
+# region stream settings
 
 def add_stream_settings(base: dict, proxy: dict):
     ss = base['streamSettings']
@@ -325,7 +350,7 @@ def add_stream_settings(base: dict, proxy: dict):
             'serverName': proxy['sni'],
             'allowInsecure': proxy['allow_insecure'],
             'fingerprint': proxy['fingerprint'],
-            'alpn': proxy['alpn'],
+            'alpn': [proxy['alpn']],
             # 'minVersion': '1.2',
             # 'disableSystemRoot': '',
             # 'enableSessionResumption': '',
@@ -337,61 +362,35 @@ def add_stream_settings(base: dict, proxy: dict):
         }
     if ss['security'] == 'reality':
         ss['network'] = proxy['transport']
-        add_reality_transport(ss, proxy)
+        add_reality_stream(ss, proxy)
     if proxy['l3'] == ProxyL3.kcp:
         ss['network'] = 'kcp'
-        add_kcp_transport(ss, proxy)
+        add_kcp_stream(ss, proxy)
 
     if proxy['l3'] == ProxyL3.h3_quic:
-        add_quic_transport(ss, proxy)
+        add_quic_stream(ss, proxy)
 
-    if ss['transport'] == 'tcp' or ss['security'] == 'reality' or (ss['security'] == 'none' and proxy['transport'] not in [ProxyTransport.httpupgrade, ProxyTransport.WS]):
+    if proxy['transport'] == 'tcp' or ss['security'] == 'reality' or (ss['security'] == 'none' and proxy['transport'] not in [ProxyTransport.httpupgrade, ProxyTransport.WS]):
         ss['network'] = proxy['transport']
-        add_tcp_transport(ss, proxy)
+        add_tcp_stream(ss, proxy)
     if proxy['transport'] == ProxyTransport.h2 and ss['security'] == 'none' and ss['security'] != 'reality':
         ss['network'] = proxy['transport']
-        add_http_transport(ss, proxy)
+        add_http_stream(ss, proxy)
     if proxy['transport'] == ProxyTransport.grpc:
         ss['network'] = proxy['transport']
-        add_grpc_transport(ss, proxy)
+        add_grpc_stream(ss, proxy)
     if proxy['transport'] == ProxyTransport.httpupgrade:
         ss['network'] = proxy['transport']
-        add_httpupgrade_transport(ss, proxy)
-    if proxy['transport'] == ProxyTransport.WS:
+        add_httpupgrade_stream(ss, proxy)
+    if proxy['transport'] == 'ws':
         ss['network'] = proxy['transport']
-        add_ws_transport(ss, proxy)
+        add_ws_stream(ss, proxy)
 
     # tls fragmentaion
-    add_tls_fragmentation(base)
+    add_tls_fragmentation_stream_settings(base)
 
 
-def add_tls_fragmentation(base: dict):
-    '''Adds tls fragment in the outbounds if tls fragmentation is enabled'''
-    if base['streamSettings']['security'] in ['tls', 'reality']:
-        if hconfig(ConfigEnum.tls_fragment_enable):
-            base['streamSettings']['sockopt'] = {
-                'dialerProxy': 'fragment',
-                'tcpKeepAliveIdle': 100,
-                'tcpNoDelay': True,  # recommended to be enabled with "tcpMptcp": true.
-                "mark": 255
-                # 'tcpFastOpen': True, # the system default setting be used.
-                # 'tcpKeepAliveInterval': 0, # 0 means default GO lang settings, -1 means not enable
-                # 'tcpcongestion': bbr, # Not configuring means using the system default value
-                # 'tcpMptcp': True, # need to be enabled in both server and client configuration (not supported by panel yet)
-            }
-
-
-def add_multiplex(base: dict):
-    if hconfig(ConfigEnum.mux_enable):
-        concurrency = hutils.convert.to_int(hconfig(ConfigEnum.mux_max_connections))
-        if concurrency and concurrency > 0:
-            base['mux']['enabled'] = True
-            base['mux']['concurrency'] = concurrency
-            base['mux']['xudpConcurrency'] = concurrency
-            base['mux']['xudpProxyUDP443'] = 'reject'
-
-
-def add_tcp_transport(ss: dict, proxy: dict):
+def add_tcp_stream(ss: dict, proxy: dict):
     if proxy['l3'] == ProxyL3.http:
         ss['tcpSettings'] = {
             'header': {
@@ -411,7 +410,7 @@ def add_tcp_transport(ss: dict, proxy: dict):
         }
 
 
-def add_http_transport(ss: dict, proxy: dict):
+def add_http_stream(ss: dict, proxy: dict):
     ss['httpSettings'] = {
         'host': proxy['host'],
         'path': proxy['path'],
@@ -424,7 +423,7 @@ def add_http_transport(ss: dict, proxy: dict):
     }
 
 
-def add_ws_transport(ss: dict, proxy: dict):
+def add_ws_stream(ss: dict, proxy: dict):
     ss['wsSettings'] = {
         'path': proxy['path'],
         'headers': {
@@ -434,7 +433,7 @@ def add_ws_transport(ss: dict, proxy: dict):
     }
 
 
-def add_grpc_transport(ss: dict, proxy: dict):
+def add_grpc_stream(ss: dict, proxy: dict):
     ss['grpcSettings'] = {
         'serviceName': proxy['path'],  # proxy['path'] is equal toproxy['grpc_service_name']
         'idle_timeout': 115,  # by default, the health check is not enabled. may solve some "connection drop" issues
@@ -445,7 +444,7 @@ def add_grpc_transport(ss: dict, proxy: dict):
     }
 
 
-def add_httpupgrade_transport(ss: dict, proxy: dict):
+def add_httpupgrade_stream(ss: dict, proxy: dict):
     ss['httpupgradeSettings'] = {
         'path': proxy['path'],
         'host': proxy['host'],
@@ -453,7 +452,8 @@ def add_httpupgrade_transport(ss: dict, proxy: dict):
     }
 
 
-def add_kcp_transport(ss: dict, proxy: dict):
+def add_kcp_stream(ss: dict, proxy: dict):
+    # TODO: fix server side configs first
     ss['kcpSettings'] = {}
     return
     ss['kcpSettings'] = {
@@ -471,10 +471,10 @@ def add_kcp_transport(ss: dict, proxy: dict):
     }
 
 
-def add_quic_transport(ss: dict, proxy: dict):
+def add_quic_stream(ss: dict, proxy: dict):
+    # TODO: fix server side configs first
     ss['quicSettings'] = {}
     return
-    # TODO: fix server side configs first
     ss['quicSettings'] = {
         'security': 'chacha20-poly1305',
         'key': proxy['path'],
@@ -484,7 +484,7 @@ def add_quic_transport(ss: dict, proxy: dict):
     }
 
 
-def add_reality_transport(ss: dict, proxy: dict):
+def add_reality_stream(ss: dict, proxy: dict):
     ss['realitySettings'] = {
         'serverName': proxy['sni'],
         'fingerprint': proxy['fingerprint'],
@@ -494,10 +494,32 @@ def add_reality_transport(ss: dict, proxy: dict):
     }
 
 
-def add_tls_tricks_to_link(proxy: dict) -> str:
-    out = {}
-    add_tls_tricks_to_dict(out, proxy)
-    return hutils.encode.convert_dict_to_url(out)
+def add_tls_fragmentation_stream_settings(base: dict):
+    '''Adds tls fragment in the outbounds if tls fragmentation is enabled'''
+    if base['streamSettings']['security'] in ['tls', 'reality']:
+        if hconfig(ConfigEnum.tls_fragment_enable):
+            base['streamSettings']['sockopt'] = {
+                'dialerProxy': 'fragment',
+                'tcpKeepAliveIdle': 100,
+                'tcpNoDelay': True,  # recommended to be enabled with "tcpMptcp": true.
+                "mark": 255
+                # 'tcpFastOpen': True, # the system default setting be used.
+                # 'tcpKeepAliveInterval': 0, # 0 means default GO lang settings, -1 means not enable
+                # 'tcpcongestion': bbr, # Not configuring means using the system default value
+                # 'tcpMptcp': True, # need to be enabled in both server and client configuration (not supported by panel yet)
+            }
+
+# endregion
+
+
+def add_multiplex(base: dict):
+    if hconfig(ConfigEnum.mux_enable):
+        concurrency = hutils.convert.to_int(hconfig(ConfigEnum.mux_max_connections))
+        if concurrency and concurrency > 0:
+            base['mux']['enabled'] = True
+            base['mux']['concurrency'] = concurrency
+            base['mux']['xudpConcurrency'] = concurrency
+            base['mux']['xudpProxyUDP443'] = 'reject'
 
 
 def add_tls_tricks_to_dict(d: dict, proxy: dict):
@@ -513,12 +535,6 @@ def add_tls_tricks_to_dict(d: dict, proxy: dict):
         d['padsize'] = proxy["tls_padding_length"]
 
 
-def add_mux_to_link(proxy: dict) -> str:
-    out = {}
-    add_mux_to_dict(out, proxy)
-    return hutils.encode.convert_dict_to_url(out)
-
-
 def add_mux_to_dict(d: dict, proxy):
     if proxy.get('mux_enable'):
         # according to github.com/hiddify/ray2sing/
@@ -531,3 +547,15 @@ def add_mux_to_dict(d: dict, proxy):
         if proxy.get('mux_brutal_enable'):
             d['muxup'] = proxy["mux_brutal_up_mbps"]
             d['muxdown'] = proxy["mux_brutal_down_mbps"]
+
+
+def add_tls_tricks_to_link(proxy: dict) -> str:
+    out = {}
+    add_tls_tricks_to_dict(out, proxy)
+    return hutils.encode.convert_dict_to_url(out)
+
+
+def add_mux_to_link(proxy: dict) -> str:
+    out = {}
+    add_mux_to_dict(out, proxy)
+    return hutils.encode.convert_dict_to_url(out)
