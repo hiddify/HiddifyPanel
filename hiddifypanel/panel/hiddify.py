@@ -69,52 +69,6 @@ def exec_command(cmd, cwd=None):
         print(e)
 
 
-@cache.cache(ttl=300)
-def get_available_proxies(child_id):
-    proxies = Proxy.query.filter(Proxy.child_id == child_id).all()
-    proxies = [c for c in proxies if 'restls' not in c.transport]
-    # if not hconfig(ConfigEnum.tuic_enable, child_id):
-    #     proxies = [c for c in proxies if c.proto != ProxyProto.tuic]
-    # if not hconfig(ConfigEnum.hysteria_enable, child_id):
-    #     proxies = [c for c in proxies if c.proto != ProxyProto.hysteria2]
-    if not hconfig(ConfigEnum.shadowsocks2022_enable, child_id):
-        proxies = [c for c in proxies if 'shadowsocks' != c.transport]
-
-    if not hconfig(ConfigEnum.ssfaketls_enable, child_id):
-        proxies = [c for c in proxies if 'faketls' != c.transport]
-    if not hconfig(ConfigEnum.v2ray_enable, child_id):
-        proxies = [c for c in proxies if 'v2ray' != c.proto]
-    if not hconfig(ConfigEnum.shadowtls_enable, child_id):
-        proxies = [c for c in proxies if c.transport != 'shadowtls']
-    if not hconfig(ConfigEnum.ssr_enable, child_id):
-        proxies = [c for c in proxies if 'ssr' != c.proto]
-    if not hconfig(ConfigEnum.vmess_enable, child_id):
-        proxies = [c for c in proxies if 'vmess' not in c.proto]
-    if not hconfig(ConfigEnum.httpupgrade_enable, child_id):
-        proxies = [c for c in proxies if ProxyTransport.httpupgrade not in c.transport]
-    if not hconfig(ConfigEnum.ws_enable, child_id):
-        proxies = [c for c in proxies if ProxyTransport.WS not in c.transport]
-
-    if not hconfig(ConfigEnum.grpc_enable, child_id):
-        proxies = [c for c in proxies if ProxyTransport.grpc not in c.transport]
-    if not hconfig(ConfigEnum.kcp_enable, child_id):
-        proxies = [c for c in proxies if 'kcp' not in c.l3]
-
-    if not hconfig(ConfigEnum.http_proxy_enable, child_id):
-        proxies = [c for c in proxies if 'http' != c.l3]
-
-    if not Domain.query.filter(Domain.mode.in_([DomainType.cdn, DomainType.auto_cdn_ip])).first():
-        proxies = [c for c in proxies if c.cdn != "CDN"]
-
-    if not Domain.query.filter(Domain.mode.in_([DomainType.relay])).first():
-        proxies = [c for c in proxies if c.cdn != ProxyCDN.relay]
-
-    if not Domain.query.filter(Domain.mode.in_([DomainType.cdn, DomainType.auto_cdn_ip]), Domain.servernames != "", Domain.servernames != Domain.domain).first():
-        proxies = [c for c in proxies if 'Fake' not in c.cdn]
-    proxies = [c for c in proxies if not ('vless' == c.proto and ProxyTransport.tcp == c.transport and c.cdn == ProxyCDN.direct)]
-    return proxies
-
-
 def quick_apply_users():
     if hconfig(ConfigEnum.is_parent):
         return
@@ -370,52 +324,8 @@ def generate_x25519_keys():
     return {'private_key': priv_str, 'public_key': pub_str}
 
 
-def get_hostkeys(dojson=False):
-    key_files = glob.glob(current_app.config['HIDDIFY_CONFIG_PATH'] + "/other/ssh/host_key/*_key.pub")
-    host_keys = []
-    for file_name in key_files:
-        with open(file_name, "r") as f:
-            host_key = f.read().strip()
-            host_key = host_key.split()
-            if len(host_key) > 2:
-                host_key = host_key[:2]  # strip the hostname part
-            host_key = " ".join(host_key)
-            host_keys.append(host_key)
-    if dojson:
-        return json.dumps(host_keys)
-    return host_keys
-
-
 def get_ssh_client_version(user):
     return 'SSH-2.0-OpenSSH_7.4p1'
-
-
-def get_ed25519_private_public_pair():
-    from cryptography.hazmat.primitives.asymmetric import ed25519
-    from cryptography.hazmat.primitives import serialization
-    privkey = ed25519.Ed25519PrivateKey.generate()
-    pubkey = privkey.public_key()
-    priv_bytes = privkey.private_bytes(
-        encoding=serialization.Encoding.PEM,
-        format=serialization.PrivateFormat.OpenSSH,
-        encryption_algorithm=serialization.NoEncryption(),
-    )
-    pub_bytes = pubkey.public_bytes(
-        encoding=serialization.Encoding.OpenSSH,
-        format=serialization.PublicFormat.OpenSSH,
-    )
-    return priv_bytes.decode(), pub_bytes.decode()
-
-
-def get_wg_private_public_psk_pair():
-    try:
-        private_key = subprocess.run(["wg", "genkey"], capture_output=True, text=True, check=True).stdout.strip()
-        public_key = subprocess.run(["wg", "pubkey"], input=private_key, capture_output=True, text=True, check=True).stdout.strip()
-        psk = subprocess.run(["wg", "genpsk"], capture_output=True, text=True, check=True).stdout.strip()
-        return private_key, public_key, psk
-    except subprocess.CalledProcessError as e:
-        print(f"Error: {e}")
-        return None, None, None
 
 
 def get_account_panel_link(account: BaseAccount, host: str, is_https: bool = True, prefere_path_only: bool = False, child_id=None):

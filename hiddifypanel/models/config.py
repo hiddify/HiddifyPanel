@@ -81,7 +81,7 @@ def hconfig(key: ConfigEnum, child_id: int | None = None) -> str | int | None:
     return value
 
 
-def set_hconfig(key: ConfigEnum, value: str | int | bool, child_id: int = None, commit: bool = True):
+def set_hconfig(key: ConfigEnum, value: str | int | bool, child_id: int | None = None, commit: bool = True):
     if child_id is None:
         child_id = Child.current.id
     print(f"chainging .... {key}---{value}---{child_id}---{commit}")
@@ -122,7 +122,7 @@ def set_hconfig(key: ConfigEnum, value: str | int | bool, child_id: int = None, 
 
 
 @cache.cache(ttl=500,)
-def get_hconfigs(child_id: int | None = None, json=False):
+def get_hconfigs(child_id: int | None = None, json=False) -> dict:
     if child_id is None:
         child_id = Child.current.id
 

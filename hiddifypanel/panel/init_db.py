@@ -13,17 +13,22 @@ from hiddifypanel.models import *
 from hiddifypanel.models import ConfigEnum, User, set_hconfig, ChildMode
 from hiddifypanel.panel import hiddify
 from hiddifypanel.database import db
-import hiddifypanel.models.utils as model_utils
+from hiddifypanel import hutils
 
 from flask import g
 
 MAX_DB_VERSION = 80
 
 
+def _v75(child_id):
+    for u in User.query.all():
+        hutils.model.gen_wg_keys(u)
+
+
 def _v74(child_id):
     set_hconfig(ConfigEnum.ws_enable, True)
     set_hconfig(ConfigEnum.grpc_enable, True)
-    set_hconfig(ConfigEnum.httpupgrade_enable, False)
+    set_hconfig(ConfigEnum.httpupgrade_enable, True)
     set_hconfig(ConfigEnum.shadowsocks2022_port, hutils.random.get_random_unused_port())
     set_hconfig(ConfigEnum.shadowsocks2022_method, "2022-blake3-aes-256-gcm")
     set_hconfig(ConfigEnum.shadowsocks2022_enable, False)
@@ -66,12 +71,12 @@ def _v69():
     add_config_if_not_exist(ConfigEnum.wireguard_port, hutils.random.get_random_unused_port())
     add_config_if_not_exist(ConfigEnum.wireguard_ipv4, "10.90.0.1")
     add_config_if_not_exist(ConfigEnum.wireguard_ipv6, "fd42:42:90::1")
-    wg_pk, wg_pub, _ = hiddify.get_wg_private_public_psk_pair()
+    wg_pk, wg_pub, _ = hutils.crypto.get_wg_private_public_psk_pair()
     add_config_if_not_exist(ConfigEnum.wireguard_private_key, wg_pk)
     add_config_if_not_exist(ConfigEnum.wireguard_public_key, wg_pub)
     add_config_if_not_exist(ConfigEnum.wireguard_noise_trick, "5-10")
     for u in User.query.all():
-        u.wg_pk, u.wg_pub, u.wg_psk = hiddify.get_wg_private_public_psk_pair()
+        u.wg_pk, u.wg_pub, u.wg_psk = hutils.crypto.get_wg_private_public_psk_pair()
 
 
 def _v65():
@@ -116,13 +121,13 @@ def _v60():
 def _v59():
     # set user model username and password
     for u in User.query.all():
-        model_utils.fill_username(u)
-        model_utils.fill_password(u)
+        hutils.model.gen_username(u)
+        hutils.model.gen_password(u)
 
     # set admin model username and password
     for a in AdminUser.query.all():
-        model_utils.fill_username(a)
-        model_utils.fill_password(a)
+        hutils.model.gen_username(a)
+        hutils.model.gen_password(a)
 
 
 def _v57():
@@ -160,7 +165,7 @@ def _v50():
 def _v49():
 
     for u in User.query.all():
-        priv, publ = hiddify.get_ed25519_private_public_pair()
+        priv, publ = hutils.crypto.get_ed25519_private_public_pair()
         u.ed25519_private_key = priv
         u.ed25519_public_key = publ
 
@@ -366,7 +371,7 @@ def _v7():
         Proxy.query.filter(Proxy.name == 'tls XTLSVision direct trojan').delete()
     except BaseException:
         pass
-    add_config_if_not_exist(ConfigEnum.telegram_lib, "python")
+    add_config_if_not_exist(ConfigEnum.telegram_lib, "erlang")
     add_config_if_not_exist(ConfigEnum.admin_lang, hconfig(ConfigEnum.lang))
     add_config_if_not_exist(ConfigEnum.branding_title, "")
     add_config_if_not_exist(ConfigEnum.branding_site, "")

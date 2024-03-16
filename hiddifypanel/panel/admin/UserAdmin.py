@@ -271,14 +271,16 @@ class UserAdmin(AdminLTEModelView):
                                   active=g.account.max_active_users, total=g.account.max_users))
         if old_user and old_user.uuid != model.uuid:
             user_driver.remove_client(old_user)
-        if not model.ed25519_private_key:
-            priv, publ = hiddify.get_ed25519_private_public_pair()
-            model.ed25519_private_key = priv
-            model.ed25519_public_key = publ
-        if not model.wg_pk:
-            model.wg_pk, model.wg_pub, model.wg_psk = hiddify.get_wg_private_public_psk_pair()
-        # model.expiry_time=datetime.date.today()+datetime.timedelta(days=model.expiry_time)
 
+        # generated automatically
+        # if not model.ed25519_private_key:
+        #     priv, publ = hutils.crypto.get_ed25519_private_public_pair()
+        #     model.ed25519_private_key = priv
+        #     model.ed25519_public_key = publ
+        # if not model.wg_pk:
+        #     model.wg_pk, model.wg_pub, model.wg_psk = hutils.crypto.get_wg_private_public_psk_pair()
+
+        # model.expiry_time=datetime.date.today()+datetime.timedelta(days=model.expiry_time)
         # if model.current_usage_GB < model.usage_limit_GB:
         #     xray_api.add_client(model.uuid)
         # else:
@@ -307,26 +309,19 @@ class UserAdmin(AdminLTEModelView):
 
             if search:
                 from sqlalchemy import or_
-
-                # Assume 'name' is a field in your model you want to search in.
-                search_conditions = or_(self.model.name.contains(search), self.model.uuid.contains(search))
-
+                search_conditions = or_(self.model.name.contains(search), self.model.uuid == search)
                 query = query.filter(search_conditions)
 
             data = query.all()
             count = len(data)
-
-            # Sorting the data
             data = sorted(data, key=lambda p: getattr(p, sort_column), reverse=sort_desc)
 
             # Applying pagination
             start = page * page_size
             end = start + page_size
             data = data[start: end]
-
             res = count, data
         else:
-
             res = super().get_list(page, sort_column, sort_desc, search=search, filters=filters, page_size=page_size, *args, **kwargs)
         return res
 

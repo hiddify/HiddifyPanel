@@ -54,7 +54,7 @@
     
     function update_hiddify_ui() {
         
-            $("#show_domains").multipleSelect({ width: '100%' });
+        $("#show_domains").multipleSelect({ width: '100%' });
 
         if ($("#domain").length > 0) {
             var selectElement = document.getElementById("mode");
@@ -121,7 +121,8 @@
                 {% autoescape false %}
                 if ($("#mode").val() == 'reality') {
 
-                    $("#servernames").parent().hide();
+                    //$("#servernames").parent().hide();
+                    $("#servernames").parent().show();
                     $("#servernames").parent().find(".control-label").html(`{{_('config.reality_server_names.label')}}`)
                     $("#servernames").parent().find(".help-block").html(`{{_('config.reality_server_names.description')}}`)
 
@@ -158,7 +159,10 @@
     
       $('body').off('click.modal.data-api')//remove flaskadminlte
       $('body').on('click.modal.data-api', '[data-toggle="modal"]', function () {
-        $($(this).data("target") + ' .modal-content').load($(this).attr('href'),update_hiddify_ui);
+        
+        $($(this).data("target") + ' .modal-content').load($(this).attr('href'),function(){
+            setTimeout(update_hiddify_ui,100)
+        });
       });
     
     // Initialize the observer with the callback function

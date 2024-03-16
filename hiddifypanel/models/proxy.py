@@ -1,7 +1,7 @@
-from enum import auto
-
 from sqlalchemy_serializer import SerializerMixin
 from strenum import StrEnum
+from enum import auto
+from sqlalchemy import Column, String, Integer, Boolean, Enum, ForeignKey
 
 from hiddifypanel.database import db
 
@@ -57,15 +57,15 @@ class ProxyL3(StrEnum):
     custom = auto()
 
 
-class Proxy(db.Model, SerializerMixin):
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    child_id = db.Column(db.Integer, db.ForeignKey('child.id'), default=0)
-    name = db.Column(db.String(200), nullable=False, unique=False)
-    enable = db.Column(db.Boolean, nullable=False)
-    proto = db.Column(db.Enum(ProxyProto), nullable=False)
-    l3 = db.Column(db.Enum(ProxyL3), nullable=False)
-    transport = db.Column(db.Enum(ProxyTransport), nullable=False)
-    cdn = db.Column(db.Enum(ProxyCDN), nullable=False)
+class Proxy(db.Model, SerializerMixin):  # type: ignore
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    child_id = Column(Integer, ForeignKey('child.id'), default=0)
+    name = Column(String(200), nullable=False, unique=False)
+    enable = Column(Boolean, nullable=False)
+    proto = Column(Enum(ProxyProto), nullable=False)
+    l3 = Column(Enum(ProxyL3), nullable=False)
+    transport = Column(Enum(ProxyTransport), nullable=False)
+    cdn = Column(Enum(ProxyCDN), nullable=False)
 
     @property
     def enabled(self):
@@ -82,12 +82,15 @@ class Proxy(db.Model, SerializerMixin):
             'child_unique_id': self.child.unique_id if self.child else ''
         }
 
+    def __str__(self):
+        return str(self.to_dict())
+
     @staticmethod
     def add_or_update(commit=True, child_id=0, **proxy):
         dbproxy = Proxy.query.filter(Proxy.name == proxy['name']).first()
         if not dbproxy:
             dbproxy = Proxy()
-            db.session.add(dbproxy)
+            db.session.add(dbproxy)  # type: ignore
         dbproxy.enable = proxy['enable']
         dbproxy.name = proxy['name']
         dbproxy.proto = proxy['proto']
@@ -96,7 +99,7 @@ class Proxy(db.Model, SerializerMixin):
         dbproxy.l3 = proxy['l3']
         dbproxy.child_id = child_id
         if commit:
-            db.session.commit()
+            db.session.commit()  # type: ignore
 
     @staticmethod
     def from_schema(schema):
@@ -114,7 +117,4 @@ class Proxy(db.Model, SerializerMixin):
             child_id = hiddify.get_child(unique_id=None)
             Proxy.add_or_update(commit=False, child_id=child_id, **proxy)
         if commit:
-            db.session.commit()
-
-    def __str__(self):
-        return str(self.to_dict())
+            db.session.commit()  # type: ignore

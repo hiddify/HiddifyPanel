@@ -12,7 +12,7 @@ msgid "%(count)s records were successfully enabled."
 msgstr "%(count)s записей были успешно включены."
 
 msgid "%(placeholder)s"
-msgstr ""
+msgstr "%(placeholder)s"
 
 msgid "0 - Last day"
 msgstr "Последний день"
@@ -517,14 +517,14 @@ msgid ""
 "latest news."
 msgstr ""
 "Пожалуйста, подключите свой аккаунт Telegram к панели, чтобы быть в курсе "
-"последних новостей."
+"последних новостей"
 
 msgid ""
 "Please connect your telegram accout to the panel to be informed about latest"
 " news."
 msgstr ""
 "Пожалуйста, подключите свою учетную запись Telegram к панели, чтобы узнать "
-"статус вашей подписки."
+"статус вашей подписки"
 
 msgid "Please create an issue on Github."
 msgstr "Пожалуйста создайте проблему на Github."
@@ -799,11 +799,6 @@ msgstr ""
 "Чтобы обновить его сейчас, нажмите <a href=\"%(link)s\"<inlang-"
 "LineFeed>class=\"btn btn-info\"&gt;здесь</a>"
 
-msgid ""
-"Using alias with special charachters may cause problem in some clients like "
-"FairVPN."
-msgstr ""
-
 msgid "V2rayNG"
 msgstr ""
 "Альтернатива v2rayNG <button class='btn btn-sm btn-default' onclick='show_video('android-v2rayng')'><i class='fa-solid fa-question'></i> </button>\n"
@@ -922,7 +917,7 @@ msgid ""
 "[Admin only visible message:] You can change this message from settings"
 msgstr ""
 "[Сообщение, видимое только администратору]: Вы можете изменить это сообщение"
-" в настройках."
+" в настройках"
 
 msgid "actions"
 msgstr "Операции"
@@ -974,6 +969,9 @@ msgstr "Dashboard"
 
 msgid "admin.menu.proxy"
 msgstr "Прокси"
+
+msgid "admin.menu.proxy_stats"
+msgstr ""
 
 msgid "admin.menu.support"
 msgstr "Помощь"
@@ -1120,10 +1118,10 @@ msgid "config.Invalid telegram bot token"
 msgstr "Неверный токен Telegram-бота"
 
 msgid "config.Invalid! The pattern is number-number"
-msgstr "⚠️ Конфигурация недействительна! Шаблон — это номер-номер"
+msgstr "⚠️ Конфигурация недействительна! Шаблон — это номер-номер ⚠️"
 
 msgid "config.Invalid! it should be a number only"
-msgstr "⚠️ Конфигурация недействительна! Это должно быть только число"
+msgstr "⚠️ Конфигурация недействительна! Это должно быть только число ⚠️"
 
 msgid "config.admin.description"
 msgstr ""
@@ -1592,10 +1590,10 @@ msgid "config.path_v2ray.label"
 msgstr "Путь для V2Ray"
 
 msgid "config.path_vless.description"
-msgstr "Для пути VLESS"
+msgstr "Для пути VLess"
 
 msgid "config.path_vless.label"
-msgstr "ℹ️ Путь VLESS"
+msgstr "ℹ️ Путь VLess"
 
 msgid "config.path_vmess.description"
 msgstr "Для ссылок VMess"
@@ -2212,7 +2210,7 @@ msgid "lang.zh"
 msgstr "🇨🇳 Chinese چینی 简体中文 Китайский"
 
 msgid "lib.telegram.erlang"
-msgstr "⛔️ НЕ работает — Erlang: средняя производительность"
+msgstr "☑️ Erlang: средняя производительность"
 
 msgid "lib.telegram.go"
 msgstr "✴️ Go: высокая производительность – без поддержки рекламы"

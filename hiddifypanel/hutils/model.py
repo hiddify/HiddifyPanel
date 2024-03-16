@@ -1,6 +1,4 @@
-
-
-def fill_username(model) -> None:
+def gen_username(model) -> None:
     from hiddifypanel import hutils
     if model.username:
         return
@@ -19,8 +17,20 @@ def fill_username(model) -> None:
         model.username += rand_str
 
 
-def fill_password(model) -> None:
+def gen_password(model) -> None:
     from hiddifypanel import hutils
     # TODO: hash the password
     if not model.password or len(model.password) < 16:
         model.password = hutils.random.get_random_password(length=16)
+
+
+def gen_wg_keys(model) -> None:
+    from hiddifypanel import hutils
+    if not model.wg_pk or not model.wg_pub or not model.wg_psk:
+        model.wg_pk, model.wg_pub, model.wg_psk = hutils.crypto.get_wg_private_public_psk_pair()
+
+
+def gen_ed25519_keys(model) -> None:
+    from hiddifypanel import hutils
+    if not model.ed25519_private_key or not model.ed25519_public_key:
+        model.ed25519_private_key, model.ed25519_public_key = hutils.crypto.get_ed25519_private_public_pair()

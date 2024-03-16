@@ -1,6 +1,281 @@
 # Changelog
 
 
+## v10.11.0 (2024-03-14)
+
+#### New
+
+* Auto update translations. 
+
+#### Changes
+
+* Generate essential fields before insert model automatically. 
+
+* Even more refactor. 
+
+* Nice refactor. 
+
+* Refactor. 
+
+* Yet refactoring. 
+
+* More refactoring. 
+
+* Refactor link_maker. 
+
+* Refactor. 
+
+* Refactor. 
+
+* Import. 
+
+#### Fix
+
+* Reality fields. 
+
+* Send httpupgrade proxies to streisand client. 
+
+* Ssh link. 
+
+* Mux parameters in subscription link (v2ray/xray format) according to ray2sing. 
+
+* Subscription links bug. 
+
+* Circular imports. 
+
+* Update-wg-usage bug. 
+
+* Vless|trojan header type bug. 
+
+#### Other
+
+* Merge pull request #174 from er888kh/main. 
+  _Update base_singbox_config.json.j2_
+
+* Update base_singbox_config.json.j2. 
+  _Correctly bypass geoip and geosite download url.
+
+The default bypass list only includes `githubusercontent.com` but it should also contain `raw.githubusercontent.com`. Note that this problem only manifests in clients which have just recently installed singbox. For those who already had singbox with a working hiddify installation, they already have the cache files and the file updates flawlessly._
+
+* Fink 🐦: update translations. 
+
+* Update translations. 
+
+* Update Translation. 
+
+* Merge pull request #173 from pjrobertson/macos_link. 
+  _Fix download link for macos hiddify clash link._
+
+* Fix download link for macos hiddify clash link. Fixes #3820. 
+
+* Merge pull request #172 from Iam54r1n4/dev-patch45. 
+  _Fix REALITY fields_
+
+* Fstring is not recognizable. 
+
+* Chg. 
+
+* Chg. 
+
+* Chg. 
+
+* Merge pull request #171 from Iam54r1n4/dev-patch44. 
+
+* Merge pull request #169 from Iam54r1n4/dev-patch41. 
+  _Refactor link maker_
+
+* Merge branch 'dev-patch41' of github.com:Iam54r1n4/HiddifyPanel into dev-patch41. 
+
+* Merge branch 'main' of github.com:hiddify/Hiddify-Panel. 
+
+* Merge pull request #165 from Iam54r1n4/dev-patch39. 
+  _Fix resend httpupgrade proxies to streisand client again_
+
+* Merge pull request #166 from Iam54r1n4/dev-patch40. 
+  _Fix 'pp' parameter from ssh link_
+
+* Update link_maker.py. 
+
+* Del: 'pp' parameter from ssh link. 
+
+* Merge pull request #168 from Iam54r1n4/dev-patch42. 
+  _Fix mux(multiplex) parameters in subscription link (v2ray/xray format) according_
+
+* Merge branch 'main' of github.com:hiddify/Hiddify-Panel. 
+
+* Enable cdn ip check. 
+
+* Nonesense. 
+
+* Merge pull request #162 from Iam54r1n4/dev-patch36. 
+  _Fix subscription links bug_
+
+* Improve: condition. 
+
+* Merge pull request #163 from Iam54r1n4/dev-patch37. 
+  _Add proxy stats button & Fix bug_
+
+* Add: proxy stats button. 
+
+* Merge pull request #164 from Iam54r1n4/dev-patch38. 
+  _Fix circular imports_
+
+* Merge pull request #161 from Iam54r1n4/dev-patch34. 
+  _Fix user usage bug & Refactor_
+
+* Fink 🐦: update translations. 
+
+* Fink 🐦: update translations. 
+
+* Fink 🐦: update translations. 
+
+
+
+## v10.10.20 (2024-03-11)
+
+#### Other
+
+* Enable http upgrade by default. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+
+
+## v10.10.19 (2024-03-10)
+
+#### Other
+
+* Update user front. 
+
+
+
+## v10.10.18 (2024-03-10)
+
+#### Changes
+
+* Config.py. 
+
+* Order of sub links. 
+
+#### Fix
+
+* Reality bug. 
+
+* Silly bug. 
+
+* Restart system bug. 
+
+* Ssh proxy link for shadowrocket & streisand clients. 
+
+* Bug in get debug ip. 
+
+#### Other
+
+* Some ui improvement. 
+
+* Merge pull request #158 from Iam54r1n4/dev-patch31. 
+  _Fix reality proxy bug_
+
+* Merge pull request #156 from Iam54r1n4/dev-patch28. 
+  _Fix debug ip bug_
+
+* Merge pull request #153 from Iam54r1n4/dev-patch28. 
+  _Bug fix_
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+* Inlang: update translations. 
+
+
+
 ## v10.10.17 (2024-03-07)
 
 #### Other

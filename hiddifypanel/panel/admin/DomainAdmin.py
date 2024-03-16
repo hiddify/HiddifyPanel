@@ -177,8 +177,8 @@ class DomainAdmin(AdminLTEModelView):
             except Exception as e:
                 raise ValidationError(__("Can not connect to Cloudflare.") + f' {e}')
         # elif model.mode==DomainType.auto_cdn_ip:
-        if model.alias and not model.alias.replace("_", "").isalnum():
-            hutils.flask.flash(__("Using alias with special charachters may cause problem in some clients like FairVPN."), 'warning')
+        # if model.alias and not model.alias.replace("_", "").isalnum():
+        #     hutils.flask.flash(__("Using alias with special charachters may cause problem in some clients like FairVPN."), 'warning')
             # raise ValidationError(_("You have to add your cloudflare api key to use this feature: "))
 
         dip = hutils.network.get_domain_ip(model.domain)
@@ -200,8 +200,9 @@ class DomainAdmin(AdminLTEModelView):
                     __("Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode", server_ip=', '.join(list(map(str, ipv4_list))), domain_ip=dip))  # type: ignore
 
             if domain_ip_is_same_as_panel and model.mode in [DomainType.cdn, DomainType.relay, DomainType.fake, DomainType.auto_cdn_ip]:
-                # hutils.flask.flash(__(f"In CDN mode, Domain IP={dip} should be different to your ip={', '.join(list(map(str, ipv4_list)))}"), 'warning')
-                raise ValidationError(__("In CDN mode, Domain IP=%(domain_ip)s should be different to your ip=%(server_ip)s", server_ip=', '.join(list(map(str, ipv4_list))), domain_ip=dip))  # type: ignore
+                #     # hutils.flask.flash(__(f"In CDN mode, Domain IP={dip} should be different to your ip={', '.join(list(map(str, ipv4_list)))}"), 'warning')
+                raise ValidationError(__("In CDN mode, Domain IP=%(domain_ip)s should be different to your ip=%(server_ip)s",
+                                      server_ip=', '.join(list(map(str, ipv4_list))), domain_ip=dip))  # type: ignore
 
             # if model.mode in [DomainType.ss_faketls, DomainType.telegram_faketls]:
             #     if len(Domain.query.filter(Domain.mode==model.mode and Domain.id!=model.id).all())>0:
@@ -217,43 +218,28 @@ class DomainAdmin(AdminLTEModelView):
         # if model.mode==DomainType.fake and model.cdn_ip!=myip:
         #     raise ValidationError(f"Specifying CDN IP is only valid for CDN mode")
 
-        # work_with_ids = form.work_with.data
-        # print(work_with_ids)
         # # Update the many-to-many relationship
         if len(model.show_domains) == Domain.query.count():
             model.show_domains = []
-        # if model.alias and not g.is_commercial:
-            #     model.alias= "@hiddify "+model.alias
-        # model.work_with = self.session.query(Domain).filter(
-        #     Domain.id.in_(work_with_ids)).all()
 
         if model.mode == DomainType.reality:
-            model.servernames = (model.domain).lower()
-            if not hutils.network.is_domain_reality_friendly(model.domain):
-                # hutils.flask.flash(_("Domain is not REALITY friendly!")+" "+d,'error')
-                # return render_template('config.html', form=form)
-                raise ValidationError(_("Domain is not REALITY friendly!") + " " + model.domain)
-
-                hiddify.debug_flash_if_not_in_the_same_asn(model.domain)
-        if False:
             model.servernames = (model.servernames or model.domain).lower()
-
-            for v in [model.domain, model.servernames]:
-
+            for v in set([model.domain, model.servernames]):
                 for d in v.split(","):
                     if not d:
                         continue
-
                     if not hutils.network.is_domain_reality_friendly(d):
-                        # hutils.flask.flash(_("Domain is not REALITY friendly!")+" "+d,'error')
-                        # return render_template('config.html', form=form)
-                        raise ValidationError(_("Domain is not REALITY friendly!") + " " + d)
+                        raise ValidationError(_("Domain is not REALITY friendly!")+f' {d}')
 
-                    hiddify.debug_flash_if_not_in_the_same_asn(d)
+                    if not hutils.network.is_in_same_asn(d, ipv4_list[0]):
+                        server_asn = hutils.network.get_ip_asn_name(ipv4_list[0])
+                        domain_asn = hutils.network.get_ip_asn_name(dip)  # type: ignore
+                    msg = _("selected domain for REALITY is not in the same ASN. To better use of the protocol, it is better to find a domain in the same ASN.")+(f"<br> Server ASN={server_asn}<br>{d}_ASN={domain_asn}" if server_asn or domain_asn else "")
+                    hutils.flask.flash(msg, 'warning')
 
             for d in model.servernames.split(","):
-                if not hiddify.fallback_domain_compatible_with_servernames(model.domain, d):
-                    raise ValidationError(_("REALITY Fallback domain is not compaitble with server names!") + " " + d + " != " + model.domain)
+                if not hutils.network.fallback_domain_compatible_with_servernames(model.domain, d):
+                    raise ValidationError(_("REALITY Fallback domain is not compaitble with server names!")+f' {d} != {model.domain}')
 
         if (model.cdn_ip):
             try:

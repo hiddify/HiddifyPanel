@@ -12,7 +12,7 @@ msgid "%(count)s records were successfully enabled."
 msgstr "%(count)s registros foram ativados com sucesso."
 
 msgid "%(placeholder)s"
-msgstr ""
+msgstr "%(placeholder)s"
 
 msgid "0 - Last day"
 msgstr "Último dia"
@@ -788,11 +788,6 @@ msgstr ""
 "clique <a href=\"%(link)s\"<inlang-LineFeed>class=\"btn btn-"
 "info\"&gt;aqui</a>"
 
-msgid ""
-"Using alias with special charachters may cause problem in some clients like "
-"FairVPN."
-msgstr ""
-
 msgid "V2rayNG"
 msgstr ""
 "Alternativa v2rayNG <button class='btn btn-sm btn-default' "
@@ -962,6 +957,9 @@ msgstr "Painel"
 
 msgid "admin.menu.proxy"
 msgstr "Proxies"
+
+msgid "admin.menu.proxy_stats"
+msgstr ""
 
 msgid "admin.menu.support"
 msgstr "Ajuda"

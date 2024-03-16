@@ -569,7 +569,7 @@ msgid ""
 "latest news."
 msgstr ""
 "Please connect your Telegram account to the panel to be informed about "
-"latest news."
+"latest news"
 
 msgid ""
 "Please connect your telegram accout to the panel to be informed about latest"
@@ -847,13 +847,6 @@ msgstr ""
 "🔄 User usage will be updated every 1 Minutes. to update it now <a "
 "href='%(link)s' class='btn btn-info'>Click Here</a>"
 
-msgid ""
-"Using alias with special charachters may cause problem in some clients like "
-"FairVPN."
-msgstr ""
-"Using alias with special charachters may cause problem in some clients like "
-"FairVPN."
-
 msgid "V2rayNG"
 msgstr ""
 "Alternative v2rayNG <button class='btn btn-sm btn-default' onclick='show_video('android-v2rayng')'><i class='fa-solid fa-question'></i> </button>\n"
@@ -968,7 +961,7 @@ msgstr ""
 
 msgid ""
 "[Admin only visible message:] You can change this message from settings"
-msgstr "[Admin-exclusive message]: Customizable via settings."
+msgstr "[Admin Exclusive Message]: Customizable via Settings"
 
 msgid "actions"
 msgstr "Actions"
@@ -1020,6 +1013,9 @@ msgstr "Dashboard"
 
 msgid "admin.menu.proxy"
 msgstr "Proxies"
+
+msgid "admin.menu.proxy_stats"
+msgstr "Proxies' Status"
 
 msgid "admin.menu.support"
 msgstr "Help"
@@ -1163,10 +1159,10 @@ msgid "config.Invalid telegram bot token"
 msgstr "Invalid Telegram Bot Token"
 
 msgid "config.Invalid! The pattern is number-number"
-msgstr "⚠️ Config Invalid! The Pattern Is Number-Number"
+msgstr "⚠️ The Pattern Is Number-Number ⚠️"
 
 msgid "config.Invalid! it should be a number only"
-msgstr "⚠️ Config Invalid! It Should Be a Number Only"
+msgstr "⚠️ It Should Be a Number Only ⚠️"
 
 msgid "config.admin.description"
 msgstr "Admin section is for configuring admin related settings"
@@ -1639,10 +1635,10 @@ msgid "config.path_v2ray.label"
 msgstr "V2Ray Path"
 
 msgid "config.path_vless.description"
-msgstr "For the VLESS Path"
+msgstr "For the VLess Path"
 
 msgid "config.path_vless.label"
-msgstr "ℹ️ VLESS Path"
+msgstr "ℹ️ VLess Path"
 
 msgid "config.path_vmess.description"
 msgstr "For the VMess Link"
@@ -1753,7 +1749,7 @@ msgstr "Shadowsocks"
 
 msgid "config.shadowsocks2022_enable.description"
 msgstr ""
-"Shadowsocks 2022 is a secure proxy protocol for TCP and UDP traffic. The "
+"Shadowsocks 2022 is a secure Proxy Protocol for TCP and UDP traffic. The "
 "proxy traffic is indistinguishable from a random byte stream, and therefore "
 "can circumvent firewalls and Internet censors that rely on DPI (Deep Packet "
 "Inspection)"
@@ -1849,7 +1845,7 @@ msgstr ""
 "ℹ️ An SSH proxy, also known as an SSH tunnel or SSH port forwarding, is a "
 "secure method of creating a secure communication channel between two "
 "machines over an insecure network. We have a specific application which is "
-"completely different from ssh server and can not execute any commands"
+"completely different from SSH server and can not execute any commands"
 
 msgid "config.ssh.label"
 msgstr "SSH Proxy"
@@ -1907,7 +1903,7 @@ msgstr "Telegram Proxy "
 
 msgid "config.telegram_adtag.description"
 msgstr ""
-"It is used to show a sponsored channel in the client's chat list. To advertise a channel get a tag from @MTProxybot .\n"
+"It is used to show a Sponsored Channel in the client's chat list. To advertise a channel get a tag from @MTProxybot .\n"
 "enter code 0123456789ABCDEF0123456789ABCDEF in that bot."
 
 msgid "config.telegram_adtag.label"
@@ -2125,7 +2121,7 @@ msgstr ""
 "systems"
 
 msgid "config.wireguard.label"
-msgstr "Wireguard"
+msgstr "WireGuard"
 
 msgid "config.wireguard_enable.description"
 msgstr ""
@@ -2157,10 +2153,10 @@ msgid "config.wireguard_noise_trick.label"
 msgstr "💥 WireGuard Noise Trick"
 
 msgid "config.wireguard_port.description"
-msgstr "Wireguard Port"
+msgstr "WireGuard Port"
 
 msgid "config.wireguard_port.label"
-msgstr "↔️ Wireguard Port"
+msgstr "↔️ WireGuard Port"
 
 msgid "config.wireguard_private_key.description"
 msgstr "-"
@@ -2267,7 +2263,7 @@ msgid "lang.zh"
 msgstr "🇨🇳 Chinese چینی 简体中文"
 
 msgid "lib.telegram.erlang"
-msgstr "⛔️ NOT Working - Erlang : Medium Performance"
+msgstr "☑️ Erlang : Medium Performance"
 
 msgid "lib.telegram.go"
 msgstr "✴️ Go : High Performance - No ad Support"

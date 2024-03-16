@@ -12,7 +12,7 @@ msgid "%(count)s records were successfully enabled."
 msgstr "%(count)s 条记录已成功启用。"
 
 msgid "%(placeholder)s"
-msgstr ""
+msgstr "%(placeholder)s"
 
 msgid "0 - Last day"
 msgstr "最后一天"
@@ -765,11 +765,6 @@ msgstr ""
 "用户使用情况每 6 分钟更新一次。要立即更新，请单击<a href=\"%(link)s\"<inlang-LineFeed>class=\"btn "
 "btn-info\"&gt;此处</a>"
 
-msgid ""
-"Using alias with special charachters may cause problem in some clients like "
-"FairVPN."
-msgstr ""
-
 msgid "V2rayNG"
 msgstr ""
 "替代 v2rayNG <button class='btn btn-sm btn-default' onclick='show_video('android-v2rayng')'><i class='fa-solid fa-question'></i> </button>\n"
@@ -931,6 +926,9 @@ msgstr "仪表板"
 
 msgid "admin.menu.proxy"
 msgstr "代理"
+
+msgid "admin.menu.proxy_stats"
+msgstr ""
 
 msgid "admin.menu.support"
 msgstr "帮助"
