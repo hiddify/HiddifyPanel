@@ -39,30 +39,34 @@ class SendMsgResource(Resource):
         else:
             return {'msg': 'error', 'res': res}
 
-    def get_users_by_identifier(self, identifier: str) -> List[User]:
+    def get_users_by_identifier(self, identifier: str | list) -> List[User]:
         '''Returns all users that match the identifier for sending a message to them'''
         # when we are here we must have g.account but ...
         if not hasattr(g, 'account'):
             return []
+        
         query = User.query.filter(User.added_by.in_(g.account.recursive_sub_admins_ids()))
         query = query.filter(User.telegram_id is not None, User.telegram_id != 0)
 
-        if hutils.convert.is_int(identifier):
+        # user selected many ids as users identifier
+        if isinstance(identifier, list):
+            return query.filter(User.id.in_(identifier)).all()
+
+        if hutils.convert.is_int(identifier):  # type: ignore
             return [query.filter(User.id == int(identifier)).first() or abort(404, 'The user not found')]  # type: ignore
-        elif identifier == 'all':
+        if identifier == 'all':
             return query.all()
-        elif identifier == 'expired':
+        if identifier == 'expired':
             return [u for u in query.all() if not u.is_active]
-        elif identifier == 'active':
+        if identifier == 'active':
             return [u for u in query.all() if u.is_active]
-        elif identifier == 'offline 1h':
+        if identifier == 'offline 1h':
             h1 = datetime.datetime.now() - datetime.timedelta(hours=1)
             return [u for u in query.all() if u.is_active and u.last_online < h1]
-        elif identifier == 'offline 1d':
+        if identifier == 'offline 1d':
             d1 = datetime.datetime.now() - datetime.timedelta(hours=24)
             return [u for u in query.all() if u.is_active and u.last_online < d1]
-        elif identifier == 'offline 1w':
+        if identifier == 'offline 1w':
             d7 = datetime.datetime.now() - datetime.timedelta(days=7)
             return [u for u in query.all() if u.is_active and u.last_online < d7]
-        else:
-            return []
+        return []
