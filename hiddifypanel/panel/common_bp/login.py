@@ -42,8 +42,8 @@ class LoginView(FlaskView):
             return redirect(redirect_arg)
         if hutils.flask.is_admin_proxy_path() and g.account.role in {Role.super_admin, Role.admin, Role.agent}:
             return redirect(hurl_for('admin.Dashboard:index'))
-        if g.user_agent['is_browser'] and hutils.flask.is_client_proxy_path():
-            return redirect(hurl_for('client.UserView:index'))
+        # if g.user_agent['is_browser'] and hutils.flask.is_client_proxy_path():
+        #     return redirect(hurl_for('client.UserView:index'))
 
         from hiddifypanel.panel.user import UserView
         return UserView().auto_sub()

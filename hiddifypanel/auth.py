@@ -180,7 +180,7 @@ def auth_before_request():
         g.is_admin = hutils.flask.is_admin_role(account.role)  # type: ignore
         login_user(account, force=True)
         # print("loggining in")
-        if next_url is not None and g.user_agent['is_browser'] and ".webmanifest" not in request.path:
+        if g.is_admin and next_url is not None and g.user_agent['is_browser'] and ".webmanifest" not in request.path:
             return redirect(next_url)
 
 
