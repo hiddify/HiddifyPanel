@@ -50,9 +50,9 @@
       "tag": "fragment",
       "protocol": "freedom",
       "settings": {
-        "domainStrategy": "AsIs",
+        "domainStrategy": "AsIs"
         {% if hconfig(ConfigEnum.tls_fragment_enable) %}
-        "fragment": {
+        ,"fragment": {
           "packets": "tlshello",
           "length": "{{ hconfig(ConfigEnum.tls_fragment_size) }}",
           "interval": "{{ hconfig(ConfigEnum.tls_fragment_sleep) }}"
