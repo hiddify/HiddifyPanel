@@ -7,26 +7,37 @@
         <summary>
             {{_("Send Message to User's Telegram")}}
         </summary>
-        <button onclick="show_send_message('all')" type="button" class="btn hbtn bg-h-blue">{{_("All Users")}}</button>
-        <button onclick="show_send_message('expired')" type="button" class="btn hbtn bg-h-red">
-            {{_("Expired Users")}}</button>
-        <button onclick="show_send_message('active')" type="button" class="btn hbtn bg-h-green">
-            {{_("Active Users")}}</button>
-        <br>
-        <button onclick="show_send_message('offline 1h')" type="button" class="btn  hbtn bg-h-orange">
-            {{_("Offline more than 1 hour")}}</button>
-        <button onclick="show_send_message('offline 1d')" type="button" class="btn  hbtn bg-h-red">
-            {{_("Offline more than 1 day")}}</button>
-        <button onclick="show_send_message('offline 1w')" type="button" class="btn hbtn bg-h-grey">
-            {{_("Offline more than 1 week")}}</button>
+        <div style="margin-top: 10px;">
+            <button onclick="show_send_message('all')" type="button" class="btn hbtn bg-h-green">
+                {{_("All Users")}}
+            </button>
+            <button onclick="show_send_message('active')" type="button" class="btn hbtn bg-h-green" style="margin-left: 5px;margin-right: 5px;">
+                {{_("Active Users")}}
+            </button>
+            <button onclick="show_send_message('selected')" type="button" class="btn hbtn bg-h-green">
+                {{_("Seleted Users")}}
+            </button>
+        </div>
+
+        <div style="margin-top: 10px;">
+            <button onclick="show_send_message('offline 1h')" type="button" class="btn  hbtn bg-h-red">
+                {{_("Offline more than 1 hour")}}</button>
+            <button onclick="show_send_message('offline 1d')" type="button" class="btn  hbtn bg-h-red" style="margin-left: 5px;">
+                {{_("Offline more than 1 day")}}</button>
+            <button onclick="show_send_message('offline 1w')" type="button" class="btn hbtn bg-h-red" style="margin-left: 5px;margin-right: 5px;">
+                {{_("Offline more than 1 week")}}
+            </button>
+            <button onclick="show_send_message('expired')" type="button" class="btn hbtn bg-h-red">
+                {{_("Expired Users")}}
+            </button>
+        </div>
     </details>
 </div>
 {% endif %}
 {{super()}}
 
 <div class="callout callout-success">
-    {{_('User usage will be updated every 6 minutes. To update it now click <a href="%(link)s"
-        class="btn btn-info">here</a>',link=hurl_for("admin.Actions:update_usage"))}}
+    {{_('User usage will be updated every 6 minutes. To update it now click <a href="%(link)s" class="btn btn-info">here</a>',link=hurl_for("admin.Actions:update_usage"))}}
 
 </div>
 <style>
@@ -69,23 +80,37 @@
 {% block tail_js%}
 {{super()}}
 <script>
+    function get_selected_users_id() {
+        let ids = [];
+        $('input[type="checkbox"][name="rowid"]:checked[value][class="action-checkbox"]').each(function () {
+            ids.push($(this).val());
+        });
+        return ids
+    }
     function show_send_message(id) {
+        if (id == 'selected') {
+            id = get_selected_users_id();
+            if (id.length == 0) {
+                alert(`{{_("Please select at least one user")}}`);
+                return
+            }
+        }
         bootbox.prompt({
             title: '{{_("Please type your message to send to the telegram:")}}',
             inputType: 'textarea',
             locale: '{{get_locale()}}',
-            callback: function (result) {
-                console.log(result);
-                if (!result) return
+            callback: function (msg) {
+                console.log(msg);
+                if (!msg) return
                 // let dialog = bootbox.dialog({           
                 //     message: '<p><i class="fas fa-spin fa-spinner"></i> {{_("Sending")}}</p>'
                 // });
-
+                debugger;
                 $.ajax({
                     type: "POST",
                     url: '{{hurl_for("api_v1.sendmsgresource")}}',
 
-                    data: JSON.stringify({ 'text': result, 'id': id }),
+                    data: JSON.stringify({ 'text': msg, 'id': id }),
                     contentType: "application/json",
                     dataType: "json",
                     error: function (jqx, status, error) {
