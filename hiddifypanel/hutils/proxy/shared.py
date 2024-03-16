@@ -364,6 +364,10 @@ def make_proxy(hconfigs: dict, proxy: Proxy, domain_db: Domain, phttp=80, ptls=4
 
         if hconfigs[ConfigEnum.tls_mixed_case]:
             base["tls_mixed_case"] = hconfigs[ConfigEnum.tls_mixed_case]
+            base['host'] = hutils.random.random_case(base['host'])
+            base['sni'] = hutils.random.random_case(base['sni'])
+            base['server'] = hutils.random.random_case(base['server'])
+            base['fakedomain'] = hutils.random.random_case(base['fakedomain'])
 
         if hconfigs[ConfigEnum.tls_padding_enable]:
             base["tls_padding_enable"] = hconfigs[ConfigEnum.tls_padding_enable]
