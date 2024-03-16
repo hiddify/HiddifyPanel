@@ -437,16 +437,16 @@
       "label": "🌍 Country"
     },
     "create_easysetup_link": {
-      "description": "-",
-      "label": "-"
+      "description": "config.create_easysetup_link.description",
+      "label": "config.create_easysetup_link.label"
     },
     "db_version": {
       "description": "Database Version Description",
       "label": "Database Version Label"
     },
     "dbvalues": {
-      "description": "-",
-      "label": "-"
+      "description": "config.dbvalues.description",
+      "label": "config.dbvalues.label"
     },
     "decoy_domain": {
       "description": "Fake Site: simulates a site when someone visits your domain directly.<br>\n⚠️ Do not use financial, Iranian and famous sites or sites with login such as Google, Yahoo, Wikipedia, PayPal.<br>\n⛔ Be sure to check the site and make sure that it is the right site, otherwise you may receive a phishing warning.<br>\n⛔⛔ Check this domain again so that there is no problem in the future",
@@ -477,8 +477,8 @@
       "label": "🛡️ Firewall"
     },
     "first_setup": {
-      "description": "-",
-      "label": "-"
+      "description": "config.first_setup.description",
+      "label": "config.first_setup.label"
     },
     "general": {
       "description": "It is General System Configurations",
@@ -489,8 +489,8 @@
       "label": "➿ Enable gRPC"
     },
     "hidden": {
-      "description": "-",
-      "label": "-"
+      "description": "config.hidden.description",
+      "label": "config.hidden.label"
     },
     "http": {
       "description": "HTTP Configurations could be set in this section",
@@ -533,7 +533,7 @@
       "label": "⬆️ Hysteria Upload (mbps)"
     },
     "is_parent": {
-      "description": "-",
+      "description": "config.is_parent.description",
       "label": "Parent Panel"
     },
     "kcp": {
@@ -553,8 +553,8 @@
       "label": "🗺️ User Area Language"
     },
     "last_hash": {
-      "description": "-",
-      "label": "-"
+      "description": "config.last_hash.description",
+      "label": "config.last_hash.label"
     },
     "license": {
       "description": "For commercial use of this Product, you must Purchase its License",
