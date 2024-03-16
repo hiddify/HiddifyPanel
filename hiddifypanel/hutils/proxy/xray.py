@@ -3,7 +3,7 @@ import json
 import copy
 from flask import render_template, request, g
 from hiddifypanel import hutils
-from hiddifypanel.models import Proxy, ProxyTransport, ProxyL3, ProxyCDN, ProxyProto, Domain, ConfigEnum, DomainType,hconfig
+from hiddifypanel.models import Proxy, ProxyTransport, ProxyL3, ProxyCDN, ProxyProto, Domain, ConfigEnum, DomainType, hconfig
 from flask_babel import gettext as _
 
 OUTBOUND_LEVEL = 8
@@ -12,9 +12,9 @@ OUTBOUND_LEVEL = 8
 def is_muxable_agent(proxy: dict) -> bool:
     if not proxy.get('mux_enable'):
         return False
-    if proxy.get('mux_enable') == "xray" and g.useragent.get('is_singbox'):
+    if proxy.get('mux_enable') == "xray" and g.user_agent.get('is_singbox'):
         return False
-    if proxy['mux_enable'] == "singbox" and not g.useragent.get('is_singbox'):
+    if proxy.get('mux_enable') == "singbox" and not g.user_agent.get('is_singbox'):
         return False
     return True
 
@@ -192,9 +192,6 @@ def make_v2ray_configs(user, user_activate, domains: list[Domain], expire_days, 
         if 'msg' not in link:
             res.append(link)
     return "\n".join(res)
-
-
-
 
 
 def add_tls_tricks_to_dict(d: dict, proxy: dict):
