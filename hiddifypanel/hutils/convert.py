@@ -38,13 +38,26 @@ def json_to_date(date_str: str) -> datetime | str:
 
 
 def time_to_json(d: datetime) -> str | None:
+    if d is None:
+        return None
+    return __fix_time_format(d.strftime("%Y-%m-%d %H:%M:%S"))
 
-    return d.strftime("%Y-%m-%d %H:%M:%S") if d else None
+
+def __fix_time_format(time_str):
+    'Convert "1-00-00 00:00:00" to "0001-00-00 00:00:00"'
+    t = time_str
+    char_index = t.find('-')
+    year_part = t[:char_index]
+
+    if len(year_part) < 4:
+        t = year_part.zfill(4) + t[char_index:]
+
+    return t
 
 
 def json_to_time(time_str: str) -> datetime | str:
     try:
-        return datetime.strptime(time_str, "%Y-%m-%d %H:%M:%S")
+        return datetime.strptime(__fix_time_format(time_str), "%Y-%m-%d %H:%M:%S")
     except BaseException:
         return time_str
 

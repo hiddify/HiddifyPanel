@@ -1,15 +1,25 @@
+from typing import Any, Mapping
 from flask import g
 from flask.views import MethodView
 from flask import current_app as app
-from apiflask import abort, Schema
+from apiflask import abort, Schema, fields
 from hiddifypanel.auth import login_required
 from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify
 from hiddifypanel.drivers import user_driver
 from hiddifypanel.panel import hiddify
-from apiflask.fields import UUID, String, Float, Enum, Date, Time, Integer
+from apiflask.fields import UUID, String, Float, Enum, Date, Time, Integer, DateTime
 
+from hiddifypanel import hutils
 from . import SuccessfulSchema, has_permission
+
+
+class FriendlyDateTime(fields.Field):
+    def _serialize(self, value: Any, attr: str | None, obj: Any, **kwargs):
+        return hutils.convert.time_to_json(value)
+
+    def _deserialize(self, value: Any, attr: str | None, data: Mapping[str, Any] | None, **kwargs):
+        return hutils.convert.json_to_time(value)
 
 
 class UserSchema(Schema):
@@ -31,7 +41,7 @@ class UserSchema(Schema):
                 allow_none=True,
                 description="The mode of the user's account, which dictates access level or type"
                 )
-    last_online = DateTime(
+    last_online = FriendlyDateTime(
         format="%Y-%m-%d %H:%M:%S",
         allow_none=True,
         description="The last time the user was online, converted to a JSON-friendly format"
@@ -77,6 +87,24 @@ class UserSchema(Schema):
         allow_none=True,
         description="If empty, it will be created automatically,The user's public key using the Ed25519 algorithm"
     )
+    wg_pk = String(
+        required=False,
+        allow_none=True,
+        description="If empty, it will be created automatically, The user's WireGuard private key"
+    )
+
+    wg_pub = String(
+        required=False,
+        allow_none=True,
+        description="If empty, it will be created automatically, The user's WireGuard public key"
+    )
+    wg_psk = String(
+        required=False,
+        allow_none=True,
+        description="If empty, it will be created automatically, The user's WireGuard preshared key"
+    )
+
+    lang = Enum(Lang, required=False, allow_none=True, description="The language of the user")
 
 
 class PatchUserSchema(UserSchema):

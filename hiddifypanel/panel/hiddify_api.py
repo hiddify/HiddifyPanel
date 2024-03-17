@@ -1,15 +1,10 @@
 from enum import auto
+from hiddifypanel.models.child import 
 from strenum import StrEnum
-from hiddifypanel.models.admin import AdminUser
-from hiddifypanel.models.config import BoolConfig, StrConfig, hconfig
-from hiddifypanel.models.config_enum import ConfigEnum
-from hiddifypanel.models.domain import Domain
-from hiddifypanel.models.proxy import Proxy
-from hiddifypanel.models.user import User
-from hiddifypanel.panel import hiddify
-from hiddifypanel.panel.commercial.restapi.v2.parent.register_api import RegisterDataSchema, RegisterSchema
-from hiddifypanel.panel.commercial.restapi.v2.parent.sync_api import SyncDataSchema, SyncSchema
-from hiddifypanel.panel.commercial.restapi.v2.parent.usage_api import UsageDataSchema, UsageSchema, get_users_usage_info_for_api
+from hiddifypanel.models import ChildMode,AdminUser,BoolConfig,StrConfig,hconfig,ConfigEnum,Domain,Proxy,User
+from hiddifypanel.panel.commercial.restapi.v2.parent.register_api import RegisterDataSchema
+from hiddifypanel.panel.commercial.restapi.v2.parent.sync_api import SyncDataSchema
+from hiddifypanel.panel.commercial.restapi.v2.parent.usage_api import UsageDataSchema, get_users_usage_info_for_api
 import requests
 
 
@@ -18,109 +13,101 @@ class GetPanelDataForApi(StrEnum):
     sync = auto()
     usage = auto()
 
-def get_panel_data_for_api(type:GetPanelDataForApi) -> dict:
+
+def get_panel_data_for_api(type: GetPanelDataForApi) -> dict:
     if type == GetPanelDataForApi.register:
-        res = RegisterSchema()
-        res.unique_id = hconfig(ConfigEnum.unique_id)
+        register_data = RegisterDataSchema()  # type: ignore
+        register_data.admin_users = [admin_user.to_schema() for admin_user in AdminUser.query.all()]  # type: ignore
+        register_data.users = [user.to_schema() for user in User.query.all()]  # type: ignore
+        register_data.domains = [domain.to_schema() for domain in Domain.query.all()]  # type: ignore
+        register_data.proxies = [proxy.to_schema() for proxy in Proxy.query.all()]  # type: ignore
+        register_data.hconfigs = [*[u.to_dict() for u in StrConfig.query.all()], *[u.to_dict() for u in BoolConfig.query.all()]]  # type: ignore
 
-        res.panel_data = RegisterDataSchema()
-        res.panel_data.admin_users = [admin_user.to_schema() for admin_user in AdminUser.query.all()]
-        res.panel_data.users = [user.to_schema() for user in User.query.all()]
-        res.panel_data.domains = [domain.to_schema() for domain in Domain.query.all()]
-        res.panel_data.proxies = [proxy.to_schema() for proxy in Proxy.query.all()]
-        res.panel_data.str_configs = [str_config.to_schema() for str_config in StrConfig.query.all()]
-        res.panel_data.bool_configs = [bool_config.to_schema() for bool_config in BoolConfig.query.all()]
-
-        return res.dump(res)
+        return register_data.dump(register_data)  # type: ignore
     elif type == GetPanelDataForApi.sync:
-        res = SyncSchema()
-        res.unique_id = hconfig(ConfigEnum.unique_id)
-        res.panel_data = SyncDataSchema()
-        res.panel_data.domains = [domain.to_schema() for domain in Domain.query.all()]
-        res.panel_data.proxies = [proxy.to_schema() for proxy in Proxy.query.all()]
-        res.panel_data.str_configs = [str_config.to_schema() for str_config in StrConfig.query.all()]
-        res.panel_data.bool_configs = [bool_config.to_schema() for bool_config in BoolConfig.query.all()]
+        sync_data = SyncDataSchema()  # type: ignore
+        sync_data.domains = [domain.to_schema() for domain in Domain.query.all()]  # type: ignore
+        sync_data.proxies = [proxy.to_schema() for proxy in Proxy.query.all()]  # type: ignore
+        sync_data.hconfigs = [*[u.to_dict() for u in StrConfig.query.all()], *[u.to_dict() for u in BoolConfig.query.all()]]  # type: ignore
 
-        return res.dump(res)
+        return sync_data.dump(sync_data)  # type: ignore
     else:
-        res = UsageSchema()
-        res.unique_id = hconfig(ConfigEnum.unique_id)
-        res.users_info = [UsageDataSchema.from_dict(item) for item in get_users_usage_info_for_api()]
-        return res.dump(res)
-    
-def add_user_usage_to_parent(set_db=True):
-    p_link = hconfig(ConfigEnum.parent_panel)
-    if not p_link:
+        return [UsageDataSchema.from_dict(item) for item in get_users_usage_info_for_api()]  # type: ignore
+
+
+def register_child_to_parent(name: str, mode: ChildMode, set_db=True) -> bool:
+
+    # get parent link its format is "https://panel.hiddify.com/<admin_proxy_path>/<super_admin_uuid>/"
+    if p_link := hconfig(ConfigEnum.parent_panel):
+        p_link = p_link.removesuffix('/') + '/api/v2/parent/register/'
+    else:
         return False
-    # make proper panel api link
-    p_link = p_link.removesuffix('/') + '/api/v2/parent/usage/'
 
-    # make payload
-    payload = get_panel_data_for_api(GetPanelDataForApi.usage)
+    payload = {
+        'unique_id': hconfig(ConfigEnum.unique_id),
+        'name': name,
+        'mode': mode,
+        'panel_data': get_panel_data_for_api(GetPanelDataForApi.register),
+    }
 
-    # send request to parent
-    res = requests.put(p_link,json=payload)
+    res = requests.put(p_link, json=payload)
+    if res.status_code != 200:
+        return False
+
+    if set_db:
+        res = res.json()
+        # TODO: insert into db
+
+    return True
+
+
+def sync_child_with_parent(set_db=True) -> bool:
+    if p_link := hconfig(ConfigEnum.parent_panel):
+        p_link = p_link.removesuffix('/') + '/api/v2/parent/sync/'
+    else:
+        return False
+
+    payload = {
+        'unique_id': hconfig(ConfigEnum.unique_id),
+        'panel_data': get_panel_data_for_api(GetPanelDataForApi.sync)
+    }
+
+    res = requests.put(p_link, json=payload)
+    if res.status_code != 200:
+        return False
+
+    if set_db:
+        res = res.json()
+        # TODO: insert into db
+    return True
+
+
+def add_user_usage_to_parent(set_db=True) -> bool:
+    if p_link := hconfig(ConfigEnum.parent_panel):
+        p_link = p_link.removesuffix('/') + '/api/v2/parent/usage/'
+    else:
+        return False
+
+    payload = {
+        'unique_id': hconfig(ConfigEnum.unique_id),
+        'users_info': get_panel_data_for_api(GetPanelDataForApi.usage)
+    }
+
+    res = requests.put(p_link, json=payload)
     if res.status_code != 200:
         return False
 
     if set_db:
         # parse parent response to get users
-        users_info:dict = res.json()
-        data = {'users':[]}
+        users_info: dict = res.json()
+        data = {'users': []}
         for u in users_info:
             dbuser = User.by_uuid(u['uuid'])
             dbuser.current_usage = u['usage']
-            #TODO: check adding connected_ips
-            dbuser.ips = u['connected_ips']
+            # TODO: check adding connected_ips
+            dbuser.ips = u['connected_ips']  # type: ignore
             data['users'].append(dbuser.to_dict())
 
-        hiddify.set_db_from_json(data,set_users=True)
-        
-    return True
-
-def sync_child_to_parent(set_db=True):
-    
-    p_link = hconfig(ConfigEnum.parent_panel)
-    if not p_link:
-        return False
-
-    # make proper panel api link
-    p_link = p_link.removesuffix('/') + '/api/v2/parent/sync/'
-
-    # get panel data to use in api call
-    payload = get_panel_data_for_api(GetPanelDataForApi.sync)
-    
-    # send request to parent
-    res = requests.put(p_link, json=payload)
-    if res.status_code != 200:
-        return False
-    
-    if set_db:
-        # parse parent response to get users
-        res = res.json()
-        hiddify.set_db_from_json(res,set_admins=True,set_users=True)
-    return True
-
-
-def register_child_to_parent(set_db=True) -> bool:
-    # get parent link its format is "https://panel.hiddify.com/<proxy_path>/<uuid>/"
-    p_link = hconfig(ConfigEnum.parent_panel)
-    if not p_link:
-        return False
-    # make proper panel api link
-    p_link = p_link.removesuffix('/') + '/api/v2/parent/register/'
-
-    # get panel data to use in api call
-    payload = get_panel_data_for_api(GetPanelDataForApi.register)
-
-    # send request to parent
-    res = requests.put(p_link, json=payload)
-    if res.status_code != 200:
-        return False
-    
-    if set_db:
-        # parse parent response to get users
-        res = res.json()
-        hiddify.set_db_from_json(res,set_admins=True,set_users=True)
+        # TODO: insert into db
 
     return True

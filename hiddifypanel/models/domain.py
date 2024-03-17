@@ -67,7 +67,7 @@ class Domain(db.Model, SerializerMixin):
             'domain': self.domain.lower(),
             'mode': self.mode,
             'alias': self.alias,
-            # 'sub_link_only':d.sub_link_only,
+            'sub_link_only': self.sub_link_only,
             'child_unique_id': self.child.unique_id if self.child else '',
             'cdn_ip': self.cdn_ip,
             'servernames': self.servernames,
@@ -83,16 +83,16 @@ class Domain(db.Model, SerializerMixin):
             data["need_valid_ssl"] = self.need_valid_ssl
 
         return data
+
     @staticmethod
     def from_schema(schema):
         return schema.dump(Domain())
 
     def to_schema(self):
         domain_dict = self.to_dict()
-        # add sub_link_only field
-        domain_dict['sub_link_only'] = True if domain_dict['mode'] == DomainType.sub_link_only else False
         from hiddifypanel.panel.commercial.restapi.v2.parent.register_api import DomainSchema
         return DomainSchema().load(domain_dict)
+
     @property
     def need_valid_ssl(self):
         return self.mode in [DomainType.direct, DomainType.cdn, DomainType.worker, DomainType.relay, DomainType.auto_cdn_ip, DomainType.old_xtls_direct, DomainType.sub_link_only]

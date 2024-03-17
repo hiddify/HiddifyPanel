@@ -1,6 +1,7 @@
 from __future__ import annotations
 import uuid
 from sqlalchemy_serializer import SerializerMixin
+from sqlalchemy import Column, Integer, String, Enum
 from enum import auto
 from strenum import StrEnum
 from flask import g, has_app_context
@@ -14,17 +15,17 @@ class ChildMode(StrEnum):
     remote = auto()
 
 
-class Child(db.Model, SerializerMixin):
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    name = db.Column(db.String(200), nullable=False, unique=True)
-    mode = db.Column(db.Enum(ChildMode), nullable=False, default=ChildMode.virtual)
+class Child(db.Model, SerializerMixin):  # type: ignore
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    name = Column(String(200), nullable=False, unique=True)
+    mode = Column(Enum(ChildMode), nullable=False, default=ChildMode.virtual)
     # ip = db.Column(db.String(200), nullable=False, unique=True)
-    unique_id = db.Column(db.String(200), nullable=False, default=lambda: str(uuid.uuid4()), unique=True)
-    domains = db.relationship('Domain', cascade="all,delete", backref='child')
-    proxies = db.relationship('Proxy', cascade="all,delete", backref='child')
-    boolconfigs = db.relationship('BoolConfig', cascade="all,delete", backref='child')
-    strconfigs = db.relationship('StrConfig', cascade="all,delete", backref='child')
-    dailyusages = db.relationship('DailyUsage', cascade="all,delete", backref='child')
+    unique_id = Column(String(200), nullable=False, default=lambda: str(uuid.uuid4()), unique=True)
+    domains = db.relationship('Domain', cascade="all,delete", backref='child')  # type: ignore
+    proxies = db.relationship('Proxy', cascade="all,delete", backref='child')  # type: ignore
+    boolconfigs = db.relationship('BoolConfig', cascade="all,delete", backref='child')  # type: ignore
+    strconfigs = db.relationship('StrConfig', cascade="all,delete", backref='child')  # type: ignore
+    dailyusages = db.relationship('DailyUsage', cascade="all,delete", backref='child')  # type: ignore
 
     def to_dict(self):
         return {

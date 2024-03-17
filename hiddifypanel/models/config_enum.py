@@ -61,7 +61,7 @@ def _IntConfigDscr(category: ConfigCategory, apply_mode: ApplyMode = ApplyMode.n
 
 class ConfigEnum(metaclass=FastEnum):
     # category: ConfigCategory
-    __slots__ = ('category', 'apply_mode', 'type', 'show_in_parent', 'hide_in_virtual_child')
+    __slots__ = ('name', 'value', 'category', 'apply_mode', 'type', 'show_in_parent', 'hide_in_virtual_child')
 
     def __init__(self, category: ConfigCategory, apply_mode: ApplyMode = ApplyMode.apply, ctype=str, show_in_parent: bool = True, hide_in_virtual_child=False, name=auto):
         self.value = name
@@ -234,7 +234,7 @@ class ConfigEnum(metaclass=FastEnum):
         return not self.__eq__(other)
 
     def endswith(self, other):
-        return self.name.endswith(other)
+        return self.name.endswith(other)  # type: ignore
 
     def startswith(self, other):
-        return self.name.startswith(other)
+        return self.name.startswith(other)  # type: ignore

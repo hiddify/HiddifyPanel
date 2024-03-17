@@ -29,10 +29,12 @@ class BoolConfig(db.Model, SerializerMixin):
     @staticmethod
     def from_schema(schema):
         return schema.dump(BoolConfig())
+
     def to_schema(self):
         conf_dict = self.to_dict()
-        from hiddifypanel.panel.commercial.restapi.v2.parent.register_api import BoolConfigSchema
-        return BoolConfigSchema().load(conf_dict)
+        from hiddifypanel.panel.commercial.restapi.v2.parent.register_api import HConfigSchema
+        return HConfigSchema().load(conf_dict)
+
 
 class StrConfig(db.Model, SerializerMixin):
     child_id = Column(Integer, ForeignKey('child.id'), primary_key=True, default=0)
@@ -50,10 +52,12 @@ class StrConfig(db.Model, SerializerMixin):
     @staticmethod
     def from_schema(schema):
         return schema.dump(StrConfig())
+
     def to_schema(self):
         conf_dict = self.to_dict()
-        from hiddifypanel.panel.commercial.restapi.v2.parent.register_api import StrConfigSchema
-        return StrConfigSchema().load(conf_dict)
+        from hiddifypanel.panel.commercial.restapi.v2.parent.register_api import HConfigSchema
+        return HConfigSchema().load(conf_dict)
+
 
 @cache.cache(ttl=500)
 def hconfig(key: ConfigEnum, child_id: int | None = None) -> str | int | None:
