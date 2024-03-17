@@ -7,6 +7,7 @@
   "Access Denied!": "拒绝访问",
   "Actions": "行动",
   "Active Users": "活跃用户",
+  "Add": "添加",
   "Add some text that is only visible to super_admin.": "添加一些只有超级管理员可见的文本",
   "Add some text that is only visible to you.": "您可以添加一些只有您可见的文本",
   "Added by": "添加者",
@@ -59,6 +60,7 @@
   "Disk": "硬盘",
   "Domain": "域名",
   "Domain (%(domain)s)-> IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode": "域 (%(domain)s)-> IP = %(domain_ip)s 与您的 IP = %(server_ip)s 不同。这在直接模式下是必需的",
+  "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode": "域名IP=%(domain_ip)s is not matched with your ip=%(server_ip)s需要用于直连模式",
   "Domain can not be resolved! there is a problem in your domain": "域名无法解析！您的域有问题。请检查您的域配置。",
   "Domain is not REALITY friendly!": "域名对现实不友好！",
   "Domain?": "域名？",
@@ -75,14 +77,14 @@
   "Example Domains": "测试并推荐域名",
   "Expired Users": "过期用户",
   "Export": "导入",
-  "Fake": "➖ 假货",
+  "Fake": "➖ 假",
   "Filter": "过滤",
   "Finished": "完成的...",
   "From Last Restart": "从上次重新启动开始",
   "From when the user package will be started? Empty for start from first connection": "指定包的开始日期。留空以从第一个连接开始。",
   "Hiddify": "希迪菲",
   "Hiddify Android": "Android 系统",
-  "HiddifyClash": "希迪冲突",
+  "HiddifyClash": "HiddifyClash",
   "HiddifyN intro": "请从 %(dl_link)s 安装 HiddifyN。\n然后点击下面的链接。它会自动完成所有事情。\n<br/>",
   "HiddifyNG": "HiddifyNG <span class='badge badge-success'>推荐</span>",
   "HiddifyNG intro": "📌 请从以下任一链接安装 HiddifyNG：\n<br/>\n %(dl_link)s %(play_link)s\n<br/>\n然后单击下面的链接并在 HiddifyNG 中打开它。\n<br/>",
@@ -94,15 +96,18 @@
   "How many days this package should be available?": "这个套餐有多少天？",
   "How many?": "多少？",
   "If monthly is enabled, the usage will be reset after 30 days from this date.": "如果启用每月选项，当该数字达到 30 时，用户使用量将被重置（对于每周和每日，该数字为 7 和 1）",
+  "If the application do not open automatically, please click <a class='btn btn-primary copy-link'\n                    href='%(sub)s'>this universal link</a> to copy and paste it on\n                your application, or:": "如果应用没有自动开启, 请点击 <a class='btn btn-primary copy-link'\n                    href='%(sub)s'>this universal link</a> 复制并打开应用粘贴\n                你的应用, or:",
   "Import": "在应用程序中导入",
   "Import in": "导入",
   "In 5 minutes": "5 分钟内",
+  "In CDN mode, Domain IP=%(domain_ip)s should be different to your ip=%(server_ip)s": "在CDN模式，域名IP=%(domain_ip)s应该与你的IP不同=%(server_ip)s",
   "In this section, you can add your domain": {
     " You need to add at least one domain in direct mode.": "1️⃣ 在此部分中，您可以添加您的域名。\n<br>\n2️⃣ 如果您想减少出现脏 IP 的可能性，可以添加多个中继服务器<a href='https://github.com/hiddify/hiddify-config/discussions/129'>阅读更多</a>。\n<br>\n3️⃣ 如果您的面板中有多个 IPv4 或 IPv6，您必须将指向它们的域添加为中继。"
   },
   "Incorrect Password": "⚠️密码错误",
   "Install": "安装",
   "Install Hiddify Application": "Hiddify 管理器安装",
+  "Invalid IP or domain": "错误的IP或域名",
   "Invalid REALITY hostnames": "无效的 REALITY 主机名",
   "Invalid admin link": "管理员链接无效",
   "Iran": "🇮🇷伊朗",
@@ -125,6 +130,7 @@
   "Month Usage": "每月",
   "More Applications": "更多应用",
   "Network": "网络",
+  "New": "新",
   "No children!": "没有孩子",
   "Note": "📝 注意",
   "Offline more than 1 day": "离线超过1天",
@@ -138,6 +144,7 @@
   "Open in Application": "在应用程序中打开",
   "Others": "🇺🇳其他",
   "Override Root Admin": "🔁 覆盖备份中的所有者",
+  "Owner can not be deleted!": "拥有者可以被删除",
   "Package Days": "📆 套餐日",
   "Package ended!": "套餐已结束",
   "Package not started yet.": "套餐还没开始。",
@@ -153,6 +160,8 @@
   "Please note that your panel can be accessed only via <a href=\"%(adminlink)s\" class=\"btn btn-primary copy-link\">%(adminlink)s</a>": {
     " Please save this link.": "请注意，您的面板只能通过以下链接访问。请保存此链接。\n<p><a href='%(adminlink)s' class='btn btn-secondary copy-link'><i class='fa-solid fa-copy'></i></a>\n<a href='%(adminlink)s' class='copy-link' style='word-break: break-all;'>%(adminlink)s</a></p>"
   },
+  "Please select at least one file.": "请选择至少一个文件",
+  "Please select at least one record.": "请选择至少一条记录",
   "Please select one of the following applications:": "📍请选择以下应用程序之一：\n<br/>\n<br/>",
   "Please type your message to send to the telegram:": "✏️ 请写下您要发送到 Telegram 的消息：",
   "Please understand that parent panel is under test and the plan and the condition of use maybe change at anytime.": "请理解，家长面板正在测试中，计划和使用条件可能随时发生变化。",
@@ -167,6 +176,7 @@
   "Release": "✅ 发布",
   "Remaining: ": "包裹结束",
   "Remote nodes are not supported yet!": "尚不支持远程节点！",
+  "Reset Filters": "重置过滤器",
   "Reset Usage Time:": "流量使用重置时间：",
   "Reset every month": "每月",
   "Reset package days": "📆 重置套餐天数",
@@ -180,13 +190,20 @@
   "Restore Settings description": "恢复所有设置说明",
   "Restore Users": "👥 恢复用户",
   "Restore Users description": "选择此选项可恢复所有用户",
+  "Root": "根用户",
+  "Save": "保存",
   "Save & Add More": "保存并添加更多",
   "Save Link": "保存链接",
+  "Select all records": "选择所有记录",
+  "Select record": "选择记录",
   "Send Message to User's Telegram": "📣 向用户的 Telegram 发送消息",
   "Sending": "正在发送...",
+  "Should be a valid domain": "应该是有效域名",
+  "Should be a valid uuid": "应该是有效UUID",
   "Show Domains": "显示域的配置",
   "Simplifies the process of employing the link elsewhere.": "简化了在其他地方使用链接的过程",
   "SingBox": "📦 歌盒",
+  "Sort by %(name)s": "以%(name)s排序",
   "Start Date": "开始日期",
   "Status": "地位",
   "Submit": "提交",
@@ -216,6 +233,7 @@
   "Total Usage": "总使用量",
   "Turn of VPN": "关闭VPN",
   "Unified link for all application.": "所有应用程序的一键设置链接（推荐）",
+  "Upload File": "上传文件",
   "Use HiddifyNext:": "使用 HiddifyNext：",
   "User activated!": "用户激活",
   "User is inactive": "用户处于非活动状态",
@@ -232,7 +250,7 @@
   },
   "Why Going to Premium?": "为什么要选择高级版？",
   "Windows": "视窗",
-  "Xray": "☢️ X射线",
+  "Xray": "☢️ XRay",
   "Yesterday Usage": "昨天",
   "You can download a json formated of configurations by clicking <a href='%(link)s' class='btn btn-primary'>here</a>": "🔄 Hiddify Manager 每 6 小时自动进行一次备份。备份文件在服务器上的路径：⬇️\n<br>\n/opt/hiddify-config/hiddify-panel/备份\n<br>\n<br>\n<br>\n⚠️您可以通过单击下面的按钮下载配置的 JSON 文件格式\n<br>\n<br>\n<a href='%(link)s' class='btn btn-primary'>下载备份文件</a>",
   "You can restore your configs from previously downloaded configs": "ℹ️您可以从以前下载的备份文件恢复您的配置",
@@ -272,6 +290,7 @@
       "domain": "域名",
       "home": "仪表板",
       "proxy": "代理",
+      "proxy_stats": "代理状态",
       "support": "帮助",
       "telegram": "电报",
       "user": "用户"
@@ -294,11 +313,11 @@
     },
     "hiddify-clash-android": {
       "description": "app.hiddify-clash-android.description",
-      "title": "希迪冲突"
+      "title": "Hiddify Clash"
     },
     "hiddify-clash-desktop": {
       "description": "app.hiddify-clash-desktop.description",
-      "title": "希迪冲突"
+      "title": "Hiddify Clash"
     },
     "hiddify": {
       "next": {
@@ -308,7 +327,7 @@
     },
     "hiddifyn": {
       "description": "HiddifyN 描述",
-      "title": "希迪尼"
+      "title": "HiddifyN"
     },
     "hiddifyng": {
       "description": "HiddifyNG 描述",
@@ -316,30 +335,30 @@
     },
     "loon": {
       "description": "潜鸟描述",
-      "title": "龙"
+      "title": "Loon"
     },
     "nekobox": {
-      "description": "应用程序.nekobox.描述",
-      "title": "猫盒子"
+      "description": "app.nekobox.description",
+      "title": "NekoBox"
     },
     "shadowrocket": {
-      "description": "暗影火箭描述",
-      "title": "暗影火箭"
+      "description": "小火箭描述",
+      "title": "小火箭"
     },
     "stash": {
-      "description": "藏匿描述",
-      "title": "藏"
+      "description": "Stash描述",
+      "title": "Stash"
     },
     "streisand": {
-      "description": "史翠珊描述",
-      "title": "史翠珊"
+      "description": "Streisand描述",
+      "title": "Streisand"
     },
     "v2rayng": {
       "description": "V2RayNG 说明",
       "title": "V2RayNG"
     }
   },
-  "auto": "汽车",
+  "auto": "自动",
   "auto_cdn_ip": "☑️ 自动 CDN IP 选择器",
   "cdn": "🔀 CDN（Cloudflare 代理，...）",
   "child has been removed!": "孩子已被移走！",
@@ -421,6 +440,10 @@
     "db_version": {
       "description": "数据库版本说明",
       "label": "数据库版本标签"
+    },
+    "dbvalues": {
+      "description": "config.dbvalues.description",
+      "label": "config.dbvalues.label"
     },
     "decoy_domain": {
       "description": "假网站：当有人直接访问您的域时模拟网站。<br>\n⚠️ 不要使用金融、伊朗和著名网站或需要登录的网站，例如 Google、Yahoo、Wikipedia、PayPal。<br>\n⛔ 请务必检查该网站并确保它是正确的网站，否则您可能会收到网络钓鱼警告。<br>\n⛔⛔ 再次检查该域名，以免以后出现问题",
