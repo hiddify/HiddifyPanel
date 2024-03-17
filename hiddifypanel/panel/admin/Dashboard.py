@@ -78,32 +78,6 @@ class Dashboard(FlaskView):
         stats = {'system': hutils.system.system_stats(), 'top5': hutils.system.top_processes()}
         return render_template('index.html', stats=stats, usage_history=DailyUsage.get_daily_usage_stats(admin_id, child_id), childs=childs)
 
-    @route('x')
-    @login_required(roles={Role.super_admin})
-    def x(self):
-        return 'hi'
-
-    @route("r")
-    @login_required(roles={Role.super_admin})
-    def r(self):
-        from hiddifypanel.panel import hiddify_api
-        hiddify_api.register_child_to_parent('test', ChildMode.virtual, False)
-
-        return 'register'
-
-    @route("s")
-    @login_required(roles={Role.super_admin})
-    def s(self):
-        from hiddifypanel.panel import hiddify_api
-        hiddify_api.sync_child_with_parent(False)
-        return 'sync'
-
-    @route("u")
-    @login_required(roles={Role.super_admin})
-    def u(self):
-        from hiddifypanel.panel import hiddify_api
-        hiddify_api.add_user_usage_to_parent(False)
-
     @ login_required(roles={Role.super_admin})
     @ route('remove_child', methods=['POST'])
     def remove_child(self):

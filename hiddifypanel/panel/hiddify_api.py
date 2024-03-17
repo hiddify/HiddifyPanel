@@ -1,7 +1,6 @@
 from enum import auto
-from hiddifypanel.models.child import 
 from strenum import StrEnum
-from hiddifypanel.models import ChildMode,AdminUser,BoolConfig,StrConfig,hconfig,ConfigEnum,Domain,Proxy,User
+from hiddifypanel.models import ChildMode, AdminUser, BoolConfig, StrConfig, hconfig, ConfigEnum, Domain, Proxy, User
 from hiddifypanel.panel.commercial.restapi.v2.parent.register_api import RegisterDataSchema
 from hiddifypanel.panel.commercial.restapi.v2.parent.sync_api import SyncDataSchema
 from hiddifypanel.panel.commercial.restapi.v2.parent.usage_api import UsageDataSchema, get_users_usage_info_for_api

@@ -50,9 +50,9 @@ class AdminUser(BaseAccount):
                 return Role.agent
         return None
 
-    # @staticmethod
-    # def form_schema(schema):
-    #     return schema.dump(AdminUser())
+    @staticmethod
+    def form_schema(schema):
+        return schema.dump(AdminUser())
 
     def to_schema(self):
         admin_dcit = self.to_dict()

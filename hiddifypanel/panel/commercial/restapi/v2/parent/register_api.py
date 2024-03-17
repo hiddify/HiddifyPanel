@@ -60,7 +60,7 @@ class OutputUsersSchema(Schema):
 
 
 class RegisterApi(MethodView):
-    # decorators = [login_required({Role.super_admin})]
+    decorators = [login_required({Role.super_admin})]
 
     @app.input(RegisterSchema, arg_name='data')  # type: ignore
     @app.output(OutputUsersSchema)  # type: ignore

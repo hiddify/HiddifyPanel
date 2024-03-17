@@ -38,9 +38,7 @@ def json_to_date(date_str: str) -> datetime | str:
 
 
 def time_to_json(d: datetime) -> str | None:
-    if d is None:
-        return None
-    return __fix_time_format(d.strftime("%Y-%m-%d %H:%M:%S"))
+    return __fix_time_format(d.strftime("%Y-%m-%d %H:%M:%S")) if d else None
 
 
 def __fix_time_format(time_str):
