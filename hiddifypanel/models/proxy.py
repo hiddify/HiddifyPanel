@@ -111,10 +111,10 @@ class Proxy(db.Model, SerializerMixin):  # type: ignore
         return ProxySchema().load(proxy_dict)
 
     @staticmethod
-    def bulk_register(proxies, commit=True, override_child_unique_id=None):
+    def bulk_register(proxies, commit=True, force_child_unique_id: str | None = None):
         from hiddifypanel.panel import hiddify
         for proxy in proxies:
-            child_id = hiddify.get_child(unique_id=None)
+            child_id = hiddify.get_child(unique_id=force_child_unique_id)
             Proxy.add_or_update(commit=False, child_id=child_id, **proxy)
         if commit:
             db.session.commit()  # type: ignore

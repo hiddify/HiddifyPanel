@@ -26,6 +26,7 @@ class UsageApi(MethodView):
     @app.input(UsageSchema, arg_name='data')  # type: ignore
     @app.output(UsageDataSchema(many=True))  # type: ignore
     def put(self, data):
+        raise NotImplementedError
         unique_id = data['unique_id']
         users_info = data['users_info']
 

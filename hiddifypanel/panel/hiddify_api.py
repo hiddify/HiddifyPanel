@@ -83,6 +83,7 @@ def sync_child_with_parent(set_db=True) -> bool:
 
 
 def add_user_usage_to_parent(set_db=True) -> bool:
+    raise NotImplementedError
     if p_link := hconfig(ConfigEnum.parent_panel):
         p_link = p_link.removesuffix('/') + '/api/v2/parent/usage/'
     else:

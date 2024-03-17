@@ -42,10 +42,13 @@ class SyncApi(MethodView):
             abort(400, "The child does not exist")
 
         # TODO: insert data
-        # try:
-        #     hiddify.set_db_from_json(data['panel_data'], override_child_id=child.id, set_users=False, set_admins=False, remove_domains=True)
-        # except Exception as err:
-        #     abort(400, str(err))
+        try:
+            bulk_register_domains(data['domains'], commit=False, force_child_unique_id=child.unique_id)
+            bulk_register_configs(data['hconfigs'], commit=False, froce_child_unique_id=child.unique_id)
+            Proxy.bulk_register(data['proxies'], commit=False, force_child_unique_id=child.unique_id)
+            db.session.commit()  # type: ignore
+        except Exception as err:
+            abort(400, str(err))
 
         return self.__create_response()
 

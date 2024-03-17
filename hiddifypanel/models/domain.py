@@ -211,11 +211,11 @@ def add_or_update_domain(commit=True, child_id=0, **domain):
         db.session.commit()
 
 
-def bulk_register_domains(domains, commit=True, remove=False, override_child_unique_id=None):
+def bulk_register_domains(domains, commit=True, remove=False, force_child_unique_id: str | None = None):
     from hiddifypanel.panel import hiddify
     child_ids = {}
     for domain in domains:
-        child_id = hiddify.get_child(unique_id=None)
+        child_id = hiddify.get_child(unique_id=force_child_unique_id)
         child_ids[child_id] = 1
         add_or_update_domain(commit=False, child_id=child_id, **domain)
     if remove and len(child_ids):

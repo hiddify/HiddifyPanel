@@ -151,6 +151,7 @@ def get_child(unique_id):
         child_id = 0
     else:
         child = Child.query.filter(Child.unique_id == str(unique_id)).first()
+        # TODO: this doesn't work because name and mode fields are nullable
         if not child:
             child = Child(unique_id=str(unique_id))
             db.session.add(child)
@@ -245,8 +246,7 @@ def set_db_from_json(json_data, override_child_unique_id=True, set_users=True, s
         User.bulk_register(json_data['users'], commit=False, remove=remove_users)
     if set_domains and 'domains' in json_data:
         bulk_register_domains(json_data['domains'], commit=False, remove=remove_domains)
-    # if set_domains and 'parent_domains' in json_data:
-    #     ParentDomain.bulk_register(json_data['parent_domains'], commit=False, remove=remove_domains)
+
     if set_settings and 'hconfigs' in json_data:
         bulk_register_configs(json_data["hconfigs"], commit=True, override_unique_id=override_unique_id)
         if 'proxies' in json_data:
