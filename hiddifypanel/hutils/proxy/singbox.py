@@ -125,7 +125,7 @@ def add_multiplex(base: dict, proxy: dict):
         base['multiplex']['max_connections'] = proxy.get('mux_max_connections', 0)
         base['multiplex']['min_streams'] = proxy.get('mux_min_streams', 0)
 
-    add_tcp_brutal(base)
+    add_tcp_brutal(base,proxy)
 
 
 def add_tcp_brutal(base: dict, proxy: dict):
