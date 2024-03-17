@@ -172,17 +172,6 @@ def dump_db_to_dict():
             }
 
 
-def seperate_str_conf_from_bool_conf(hconfigs) -> Tuple[List[StrConfig], List[BoolConfig]]:
-    str_confs = []
-    bool_confs = []
-    for _, value in hconfigs.items():
-        if isinstance(value, bool):
-            bool_confs.append(value)
-        elif isinstance(value, str):
-            str_confs.append(value)
-    return (str_confs, bool_confs)
-
-
 def get_ids_without_parent(input_dict):
     selector = "uuid"
     # Get all parent_uuids in a set for faster lookup
@@ -255,13 +244,13 @@ def set_db_from_json(json_data, override_child_unique_id=True, set_users=True, s
     if set_users and 'users' in json_data:
         User.bulk_register(json_data['users'], commit=False, remove=remove_users)
     if set_domains and 'domains' in json_data:
-        bulk_register_domains(json_data['domains'], commit=False, remove=remove_domains, override_child_unique_id=override_child_unique_id)
+        bulk_register_domains(json_data['domains'], commit=False, remove=remove_domains)
     # if set_domains and 'parent_domains' in json_data:
     #     ParentDomain.bulk_register(json_data['parent_domains'], commit=False, remove=remove_domains)
     if set_settings and 'hconfigs' in json_data:
-        bulk_register_configs(json_data["hconfigs"], commit=True, override_child_unique_id=override_child_unique_id, override_unique_id=override_unique_id)
+        bulk_register_configs(json_data["hconfigs"], commit=True, override_unique_id=override_unique_id)
         if 'proxies' in json_data:
-            Proxy.bulk_register(json_data['proxies'], commit=False, override_child_unique_id=override_child_unique_id)
+            Proxy.bulk_register(json_data['proxies'], commit=False)
 
     ids_without_parent = get_ids_without_parent({u.id: u.to_dict() for u in AdminUser.query.all()})
     owner = AdminUser.get_super_admin()
