@@ -56,9 +56,6 @@ class AdminUser(BaseAccount):
 
     def to_schema(self):
         admin_dcit = self.to_dict()
-        from hiddifypanel.models.config import hconfig
-        from hiddifypanel.models.config_enum import ConfigEnum
-        admin_dcit['lang'] = hconfig(ConfigEnum.admin_lang)
         from hiddifypanel.panel.commercial.restapi.v2.admin.admin_user_api import AdminSchema
         return AdminSchema().load(admin_dcit)
 
@@ -69,10 +66,12 @@ class AdminUser(BaseAccount):
         base = super().to_dict()
         if dump_id:
             base['id'] = self.id
+        from hiddifypanel.models import hconfig, ConfigEnum
         return {**base,
                 'mode': self.mode,
                 'can_add_admin': self.can_add_admin,
                 'parent_admin_uuid': self.parent_admin.uuid if self.parent_admin else None,
+                'lang': hconfig(ConfigEnum.admin_lang)
                 }
 
     @classmethod
