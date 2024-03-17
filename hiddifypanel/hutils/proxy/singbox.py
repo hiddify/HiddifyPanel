@@ -2,7 +2,7 @@ from flask import render_template, request, g
 import json
 
 from hiddifypanel import hutils
-from hiddifypanel.models import ProxyProto, ProxyTransport, Domain, ConfigEnum, hconfig
+from hiddifypanel.models import ProxyProto, ProxyTransport, Domain, ConfigEnum
 from hiddifypanel.panel.hiddify import is_hiddify_next_version
 
 
@@ -80,7 +80,7 @@ def to_singbox(proxy: dict) -> list[dict] | dict:
         base["uuid"] = proxy["uuid"]
 
     if proxy['proto'] in ['vmess', 'vless', 'trojan']:
-        add_multiplex(base)
+        add_multiplex(base, proxy)
 
     add_tls(base, proxy)
 
@@ -109,31 +109,31 @@ def to_singbox(proxy: dict) -> list[dict] | dict:
     return all_base
 
 
-def add_multiplex(base: dict):
-    if not hconfig(ConfigEnum.mux_enable):
+def add_multiplex(base: dict, proxy: dict):
+    if proxy.get('mux_enable') != "singbox":
         return
     base['multiplex'] = {
         "enabled": True,
-        "protocol": hconfig(ConfigEnum.mux_protocol),
-        "padding": hconfig(ConfigEnum.mux_padding_enable)
+        "protocol": proxy['mux_protocol'],
+        "padding": proxy['mux_padding_enable']
     }
     # Conflicts: max_streams with max_connections and min_streams
-    mux_max_streams = int(hconfig(ConfigEnum.mux_max_streams))
+    mux_max_streams = proxy.get('mux_max_streams', 0)
     if mux_max_streams and mux_max_streams != 0:
         base['multiplex']['max_streams'] = mux_max_streams
     else:
-        base['multiplex']['max_connections'] = int(hconfig(ConfigEnum.mux_max_connections))
-        base['multiplex']['min_streams'] = int(hconfig(ConfigEnum.mux_min_streams))
+        base['multiplex']['max_connections'] = proxy.get('mux_max_connections', 0)
+        base['multiplex']['min_streams'] = proxy.get('mux_min_streams', 0)
 
     add_tcp_brutal(base)
 
 
-def add_tcp_brutal(base: dict):
+def add_tcp_brutal(base: dict, proxy: dict):
     if 'multiplex' in base:
         base['multiplex']['brutal'] = {
-            "enabled": hconfig(ConfigEnum.mux_brutal_enable),
-            "up_mbps": int(hconfig(ConfigEnum.mux_brutal_up_mbps)),
-            "down_mbps": int(hconfig(ConfigEnum.mux_brutal_down_mbps))
+            "enabled": proxy.get('mux_brutal_enable', False),
+            "up_mbps": proxy.get('mux_brutal_up_mbps', 10),
+            "down_mbps": proxy.get('mux_brutal_down_mbps', 10)
         }
 
 
@@ -261,7 +261,7 @@ def add_shadowsocks_base(all_base: list[dict], proxy: dict):
     base["method"] = proxy["cipher"]
     base["password"] = proxy["password"]
     add_udp_over_tcp(base)
-    add_multiplex(base)
+    add_multiplex(base, proxy)
     if proxy["transport"] == "faketls":
         base["plugin"] = "obfs-local"
         base["plugin_opts"] = f'obfs=tls;obfs-host={proxy["fakedomain"]}'
@@ -327,12 +327,12 @@ def add_tuic(base: dict, proxy: dict):
 
 
 def add_hysteria(base: dict, proxy: dict):
-    base['up_mbps'] = int(hconfig(ConfigEnum.hysteria_up_mbps))
-    base['down_mbps'] = int(hconfig(ConfigEnum.hysteria_down_mbps))
+    base['up_mbps'] = proxy.get(ConfigEnum.hysteria_up_mbps)
+    base['down_mbps'] = proxy.get(ConfigEnum.hysteria_down_mbps)
     # TODO: check the obfs should be empty or not exists at all
-    if hconfig(ConfigEnum.hysteria_obfs_enable):
+    if proxy.get('hysteria_obfs_enable'):
         base['obfs'] = {
             "type": "salamander",
-            "password": hconfig(ConfigEnum.proxy_path)
+            "password": proxy.get('hysteria_obfs_password')
         }
     base['password'] = proxy['uuid']

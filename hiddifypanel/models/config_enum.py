@@ -55,6 +55,10 @@ def _StrConfigDscr(category: ConfigCategory, apply_mode: ApplyMode = ApplyMode.n
     return category, apply_mode, str, show_in_parent
 
 
+def _IntConfigDscr(category: ConfigCategory, apply_mode: ApplyMode = ApplyMode.nothing, show_in_parent: bool = True, hide_in_virtual_child=False):
+    return category, apply_mode, int, show_in_parent
+
+
 class ConfigEnum(metaclass=FastEnum):
     # category: ConfigCategory
     __slots__ = ('category', 'apply_mode', 'type', 'show_in_parent', 'hide_in_virtual_child')
@@ -128,13 +132,13 @@ class ConfigEnum(metaclass=FastEnum):
     # mux
     mux_enable = _BoolConfigDscr(ConfigCategory.mux, ApplyMode.apply)
     mux_protocol = _StrConfigDscr(ConfigCategory.mux, ApplyMode.apply)
-    mux_max_connections = _StrConfigDscr(ConfigCategory.mux, ApplyMode.apply)
-    mux_min_streams = _StrConfigDscr(ConfigCategory.mux, ApplyMode.apply)
-    mux_max_streams = _StrConfigDscr(ConfigCategory.mux, ApplyMode.apply)
+    mux_max_connections = _IntConfigDscr(ConfigCategory.mux, ApplyMode.apply)
+    mux_min_streams = _IntConfigDscr(ConfigCategory.mux, ApplyMode.apply)
+    mux_max_streams = _IntConfigDscr(ConfigCategory.mux, ApplyMode.apply)
     mux_padding_enable = _BoolConfigDscr(ConfigCategory.mux, ApplyMode.apply)
     mux_brutal_enable = _BoolConfigDscr(ConfigCategory.mux, ApplyMode.apply)
-    mux_brutal_up_mbps = _StrConfigDscr(ConfigCategory.mux, ApplyMode.apply)
-    mux_brutal_down_mbps = _StrConfigDscr(ConfigCategory.mux, ApplyMode.apply)
+    mux_brutal_up_mbps = _IntConfigDscr(ConfigCategory.mux, ApplyMode.apply)
+    mux_brutal_down_mbps = _IntConfigDscr(ConfigCategory.mux, ApplyMode.apply)
 
     http_ports = _StrConfigDscr(ConfigCategory.http, ApplyMode.apply)
     kcp_ports = _StrConfigDscr(ConfigCategory.hidden, ApplyMode.apply)

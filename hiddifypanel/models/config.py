@@ -77,14 +77,19 @@ def hconfig(key: ConfigEnum, child_id: int | None = None) -> str | int | None:
     except BaseException:
         error(f'{key} error!')
         raise
-
+    if key.type == int and value != None:
+        return int(value)
     return value
 
 
 def set_hconfig(key: ConfigEnum, value: str | int | bool, child_id: int | None = None, commit: bool = True):
     if child_id is None:
         child_id = Child.current.id
+
     print(f"chainging .... {key}---{value}---{child_id}---{commit}")
+    if key.type == int and value != None:
+        int(value)  # for testing int
+
     # hconfig.invalidate(key, child_id)
     # get_hconfigs.invalidate(child_id)
     hconfig.invalidate(key, child_id)
@@ -127,7 +132,7 @@ def get_hconfigs(child_id: int | None = None, json=False) -> dict:
         child_id = Child.current.id
 
     return {**{f'{u.key}' if json else u.key: u.value for u in BoolConfig.query.filter(BoolConfig.child_id == child_id).all() if u.key.type == bool},
-            **{f'{u.key}' if json else u.key: u.value for u in StrConfig.query.filter(StrConfig.child_id == child_id).all() if u.key.type != bool},
+            **{f'{u.key}' if json else u.key: int(u.value) if u.key.type == int and u.value != None else u.value for u in StrConfig.query.filter(StrConfig.child_id == child_id).all() if u.key.type != bool},
             # ConfigEnum.telegram_fakedomain:hdomain(DomainType.telegram_faketls),
             # ConfigEnum.ssfaketls_fakedomain:hdomain(DomainType.ss_faketls),
             # ConfigEnum.fake_cdn_domain:hdomain(DomainType.fake_cdn)

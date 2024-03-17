@@ -259,6 +259,11 @@ def make_proxy(hconfigs: dict, proxy: Proxy, domain_db: Domain, phttp=80, ptls=4
     }
     if proxy.proto in ['tuic', 'hysteria2']:
         base['alpn'] = "h3"
+        if proxy.proto == 'hysteria2':
+            base['hysteria_up_mbps'] = hconfigs.get(ConfigEnum.hysteria_up_mbps)
+            base['hysteria_down_mbps'] = hconfigs.get(ConfigEnum.hysteria_down_mbps)
+            base['hysteria_obfs_enable'] = hconfigs.get(ConfigEnum.hysteria_obfs_enable)
+            base['hysteria_obfs_password'] = hconfigs.get(ConfigEnum.proxy_path)  # TODO: it should not be correct
         return base
     if proxy.proto in ['wireguard']:
         base['wg_pub'] = g.account.wg_pub
@@ -343,20 +348,18 @@ def make_proxy(hconfigs: dict, proxy: Proxy, domain_db: Domain, phttp=80, ptls=4
 
     if proxy.proto in {'vless', 'trojan', 'vmess'} and hconfigs.get(ConfigEnum.mux_enable):
         if hconfigs[ConfigEnum.mux_enable]:
-            base['mux_enable'] = True
-            base['mux_protocol'] = hconfigs[ConfigEnum.mux_protocol]
-            base['mux_max_connections'] = hconfigs[ConfigEnum.mux_max_connections]
-            base['mux_min_streams'] = hconfigs[ConfigEnum.mux_min_streams]
-            base['mux_max_streams'] = hconfigs[ConfigEnum.mux_max_streams]
-            base['mux_padding_enable'] = hconfigs[ConfigEnum.mux_padding_enable]
+            base['mux_enable'] = hconfigs[ConfigEnum.core_type]
 
-            # the hiddify next client doesn't support mux max streams
-            base['mux_max_streams'] = hconfigs[ConfigEnum.mux_max_streams]
+            base['mux_protocol'] = hconfigs.get(ConfigEnum.mux_protocol, "h2mux")
+            base['mux_max_connections'] = hconfigs.get(ConfigEnum.mux_max_connections, 0)
+            base['mux_min_streams'] = hconfigs.get(ConfigEnum.mux_min_streams, 0)
+            base['mux_max_streams'] = hconfigs.get(ConfigEnum.mux_max_streams, 0)
+            base['mux_padding_enable'] = hconfigs.get(ConfigEnum.mux_padding_enable)
 
             if hconfigs[ConfigEnum.mux_brutal_enable]:
                 base['mux_brutal_enable'] = True
-                base['mux_brutal_up_mbps'] = hconfigs[ConfigEnum.mux_brutal_up_mbps]
-                base['mux_brutal_down_mbps'] = hconfigs[ConfigEnum.mux_brutal_down_mbps]
+                base['mux_brutal_up_mbps'] = hconfigs.get(ConfigEnum.mux_brutal_up_mbps, 10)
+                base['mux_brutal_down_mbps'] = hconfigs.get(ConfigEnum.mux_brutal_down_mbps, 10)
 
     if is_cdn and proxy.proto in {'vless', 'trojan', "vmess"}:
         if hconfigs[ConfigEnum.tls_fragment_enable]:
@@ -366,6 +369,11 @@ def make_proxy(hconfigs: dict, proxy: Proxy, domain_db: Domain, phttp=80, ptls=4
 
         if hconfigs[ConfigEnum.tls_mixed_case]:
             base["tls_mixed_case"] = hconfigs[ConfigEnum.tls_mixed_case]
+            base['host'] = hutils.random.random_case(base['host'])
+            base['sni'] = hutils.random.random_case(base['sni'])
+            base['server'] = hutils.random.random_case(base['server'])
+            if base.get('fakedomain'):
+                base['fakedomain'] = hutils.random.random_case(base['fakedomain'])
 
         if hconfigs[ConfigEnum.tls_padding_enable]:
             base["tls_padding_enable"] = hconfigs[ConfigEnum.tls_padding_enable]

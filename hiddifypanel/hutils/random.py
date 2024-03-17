@@ -48,3 +48,7 @@ def get_random_unused_port():
     while __is_in_used_port(port):
         port = random.randint(11000, 60000)
     return port
+
+
+def random_case(string):
+    return ''.join(random.choice((str.upper, str.lower))(c) for c in string)

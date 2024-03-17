@@ -59,7 +59,7 @@ class UserView(FlaskView):
     @login_required(roles={Role.user})
     def xray(self):
         c = c = get_common_data(g.account.uuid, mode="new")
-        configs = hutils.proxy.xray.configs_as_json(c['domains'], c['profile_title'])
+        configs = hutils.proxy.xrayjson.configs_as_json(c['domains'], c['profile_title'])
         return add_headers(configs, c, 'application/json')
 
     @route("/singbox/")

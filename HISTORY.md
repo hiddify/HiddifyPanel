@@ -1,7 +1,38 @@
 # Changelog
 
 
-## v10.11.0 (2024-03-14)
+## v10.11.1 (2024-03-16)
+
+#### Changes
+
+* Fix bug & refactor. 
+
+* Refactor singbox.py. 
+
+* Complete/improve code. 
+
+#### Other
+
+* Fink 🐦: update translations. 
+
+* Fink 🐦: update translations. 
+
+* Fink 🐦: update translations. 
+
+* Fink 🐦: update translations. 
+
+* Update translations. 
+
+* Remove orig mtproxy, make erlang as defult. 
+
+* Merge pull request #170 from Iam54r1n4/dev-patch43. 
+  _Add xray configs_
+
+* Add: xray configs. 
+
+
+
+## v10.11.0 (2024-03-15)
 
 #### New
 
