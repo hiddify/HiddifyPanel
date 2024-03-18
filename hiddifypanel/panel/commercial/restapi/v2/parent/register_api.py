@@ -1,10 +1,10 @@
-from apiflask import fields, validators
+from apiflask import fields
 from apiflask import abort, Schema
 from hiddifypanel.database import db
 from flask import current_app as app
 from flask.views import MethodView
 
-from hiddifypanel.models import DomainType, ProxyProto, ProxyTransport, ProxyCDN, ProxyL3, Domain, Child, User, AdminUser, ChildMode, Proxy, Role, bulk_register_domains, bulk_register_configs
+from hiddifypanel.models import *
 from hiddifypanel.panel.commercial.restapi.v2.admin.user_api import UserSchema
 from hiddifypanel.panel.commercial.restapi.v2.admin.admin_user_api import AdminSchema
 from hiddifypanel.auth import login_required
@@ -68,8 +68,8 @@ class RegisterApi(MethodView):
         unique_id = data['unique_id']
         name = data['name']
         mode = data['mode']
-        # if not hconfig(ConfigEnum.is_parent):
-        #     abort(400,"Not a parent")
+        if not hconfig(ConfigEnum.is_parent):
+            abort(400, "Not a parent")
 
         child = Child.query.filter(Child.unique_id == unique_id).first()
         if not child:

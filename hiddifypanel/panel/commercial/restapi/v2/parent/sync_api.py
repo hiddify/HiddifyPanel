@@ -1,10 +1,9 @@
 
 from flask.views import MethodView
-# from hiddifypanel.panel.hiddify
 from flask import current_app as app
 from apiflask import abort, Schema, fields
+
 from hiddifypanel.models.user import User
-from hiddifypanel.panel import hiddify
 from hiddifypanel.database import db
 from hiddifypanel.models.child import Child
 from hiddifypanel.models import *
@@ -34,8 +33,8 @@ class SyncApi(MethodView):
     def put(self, data):
         unique_id = data['unique_id']
 
-        # if not hconfig(ConfigEnum.is_parent):
-        #     abort(400,"Not a parent")
+        if not hconfig(ConfigEnum.is_parent):
+            abort(400, "Not a parent")
 
         child = Child.query.filter(Child.unique_id == unique_id).first()
         if not child:
