@@ -64,7 +64,7 @@ class RegisterApi(MethodView):
 
     @app.input(RegisterSchema, arg_name='data')  # type: ignore
     @app.output(OutputUsersSchema)  # type: ignore
-    def put(self, data, user_secret=None):
+    def put(self, data):
         unique_id = data['unique_id']
         name = data['name']
         mode = data['mode']

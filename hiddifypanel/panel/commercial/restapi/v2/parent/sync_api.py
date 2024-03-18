@@ -31,7 +31,7 @@ class SyncApi(MethodView):
 
     @app.input(SyncSchema, arg_name='data')  # type: ignore
     @app.output(OutputUsersSchema)  # type: ignore
-    def put(self, data, user_secret=None):
+    def put(self, data):
         unique_id = data['unique_id']
 
         # if not hconfig(ConfigEnum.is_parent):
