@@ -740,7 +740,7 @@
       "label": "🔐 Токен Telegram-бота"
     },
     "telegram_enable": {
-      "description": "Telegram MTProto используется для инкапсуляции Telegram Proxy в качестве обычного tls-трафика",
+      "description": "<p data-pm-slice=\"1 1 []\">Telegram MTProto используется для инкапсуляции Telegram Proxy в качестве обычного tls-трафика<br>⚠️<span style=\"color:#d32f2f;\"><strong> Этот протокол требует прямого домена</strong></span></p>",
       "label": "✔️ Включить Telegram MTProto"
     },
     "telegram_fakedomain": {
