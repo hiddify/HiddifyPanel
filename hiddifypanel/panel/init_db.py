@@ -20,6 +20,11 @@ from flask import g
 MAX_DB_VERSION = 80
 
 
+def _v76(child_id):
+    root_child_unique_id = Child.query.filter(Child.name == "Root").first().unique_id
+    set_hconfig(ConfigEnum.unique_id, root_child_unique_id)
+
+
 def _v75(child_id):
     for u in User.query.all():
         hutils.model.gen_wg_keys(u)
