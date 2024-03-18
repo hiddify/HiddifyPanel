@@ -1,5 +1,6 @@
 from enum import auto
 from strenum import StrEnum
+from typing import Tuple
 from hiddifypanel.models import ChildMode, AdminUser, BoolConfig, StrConfig, hconfig, ConfigEnum, Domain, Proxy, User
 from hiddifypanel.panel.commercial.restapi.v2.parent.register_api import RegisterDataSchema
 from hiddifypanel.panel.commercial.restapi.v2.parent.sync_api import SyncDataSchema
@@ -11,6 +12,22 @@ class GetPanelDataForApi(StrEnum):
     register = auto()
     sync = auto()
     usage = auto()
+
+
+def __get_parent_panel_info() -> Tuple[str, str]:
+    return hconfig(ConfigEnum.parent_panel), hconfig(ConfigEnum.parent_api_key)
+
+
+def __send_request_to_parent(url: str, payload: dict, key: str) -> dict:
+    p_url, p_key = __get_parent_panel_info()
+    if not p_url or not p_key:
+        return {}
+
+    res = requests.put(p_url, json=payload, headers={'Hiddify-API-Key': p_key})
+    if res.status_code != 200:
+        return {}
+
+    return res.json()
 
 
 def get_panel_data_for_api(type: GetPanelDataForApi) -> dict:
@@ -36,11 +53,12 @@ def get_panel_data_for_api(type: GetPanelDataForApi) -> dict:
 
 def register_child_to_parent(name: str, mode: ChildMode, set_db=True) -> bool:
 
-    # get parent link its format is "https://panel.hiddify.com/<admin_proxy_path>/<super_admin_uuid>/"
-    if p_link := hconfig(ConfigEnum.parent_panel):
-        p_link = p_link.removesuffix('/') + '/api/v2/parent/register/'
-    else:
+    # get parent link its format is "https://panel.hiddify.com/<admin_proxy_path>/"
+    p_url, p_key = __get_parent_panel_info()
+    if not p_url or not p_key:
         return False
+    else:
+        p_url = p_url.removesuffix('/') + '/api/v2/parent/register/'
 
     payload = {
         'unique_id': hconfig(ConfigEnum.unique_id),
@@ -48,54 +66,50 @@ def register_child_to_parent(name: str, mode: ChildMode, set_db=True) -> bool:
         'mode': mode,
         'panel_data': get_panel_data_for_api(GetPanelDataForApi.register),
     }
-
-    res = requests.put(p_link, json=payload)
-    if res.status_code != 200:
+    res = __send_request_to_parent(p_url, payload, p_key)
+    if not res:
         return False
-
     if set_db:
-        res = res.json()
         # TODO: insert into db
+        pass
 
     return True
 
 
 def sync_child_with_parent(set_db=True) -> bool:
-    if p_link := hconfig(ConfigEnum.parent_panel):
-        p_link = p_link.removesuffix('/') + '/api/v2/parent/sync/'
-    else:
+    p_url, p_key = __get_parent_panel_info()
+    if not p_url or not p_key:
         return False
+    else:
+        p_url = p_url.removesuffix('/') + '/api/v2/parent/sync/'
 
     payload = {
         'unique_id': hconfig(ConfigEnum.unique_id),
         'panel_data': get_panel_data_for_api(GetPanelDataForApi.sync)
     }
 
-    res = requests.put(p_link, json=payload)
-    if res.status_code != 200:
-        return False
+    res = __send_request_to_parent(p_url, payload, p_key)
 
     if set_db:
-        res = res.json()
         # TODO: insert into db
+        pass
     return True
 
 
 def add_user_usage_to_parent(set_db=True) -> bool:
     raise NotImplementedError
-    if p_link := hconfig(ConfigEnum.parent_panel):
-        p_link = p_link.removesuffix('/') + '/api/v2/parent/usage/'
-    else:
+    p_url, p_key = __get_parent_panel_info()
+    if not p_url or not p_key:
         return False
+    else:
+        p_url = p_url.removesuffix('/') + '/api/v2/parent/usage/'
 
     payload = {
         'unique_id': hconfig(ConfigEnum.unique_id),
         'users_info': get_panel_data_for_api(GetPanelDataForApi.usage)
     }
 
-    res = requests.put(p_link, json=payload)
-    if res.status_code != 200:
-        return False
+    __send_request_to_parent(p_url, payload, p_key)
 
     if set_db:
         # parse parent response to get users
