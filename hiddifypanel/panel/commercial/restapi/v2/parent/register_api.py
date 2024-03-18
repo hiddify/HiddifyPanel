@@ -56,7 +56,7 @@ class RegisterSchema(Schema):
 
 class OutputUsersSchema(Schema):
     users = fields.List(fields.Nested(UserSchema), required=True, description="The list of users")
-    admins = fields.List(fields.Nested(AdminSchema), required=True, description="The list of admin users")
+    admin_users = fields.List(fields.Nested(AdminSchema), required=True, description="The list of admin users")
 
 
 class RegisterApi(MethodView):

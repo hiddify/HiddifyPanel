@@ -1,11 +1,14 @@
-from enum import auto
 from strenum import StrEnum
 from typing import Tuple
+from enum import auto
+import requests
+
+
 from hiddifypanel.models import ChildMode, AdminUser, BoolConfig, StrConfig, hconfig, ConfigEnum, Domain, Proxy, User
 from hiddifypanel.panel.commercial.restapi.v2.parent.register_api import RegisterDataSchema
 from hiddifypanel.panel.commercial.restapi.v2.parent.sync_api import SyncDataSchema
 from hiddifypanel.panel.commercial.restapi.v2.parent.usage_api import UsageDataSchema, get_users_usage_info_for_api
-import requests
+from hiddifypanel.database import db
 
 
 class GetPanelDataForApi(StrEnum):
@@ -70,8 +73,9 @@ def register_child_to_parent(name: str, mode: ChildMode, set_db=True) -> bool:
     if not res:
         return False
     if set_db:
-        # TODO: insert into db
-        pass
+        AdminUser.bulk_register(res['admin_users'], commit=False)
+        User.bulk_register(res['users'], commit=False)
+        db.session.commit()  # type: ignore
 
     return True
 
@@ -91,8 +95,9 @@ def sync_child_with_parent(set_db=True) -> bool:
     res = __send_request_to_parent(p_url, payload, p_key)
 
     if set_db:
-        # TODO: insert into db
-        pass
+        AdminUser.bulk_register(res['admin_users'], commit=False)
+        User.bulk_register(res['users'], commit=False)
+        db.session.commit()  # type: ignore
     return True
 
 
