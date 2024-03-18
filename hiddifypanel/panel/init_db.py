@@ -21,8 +21,11 @@ MAX_DB_VERSION = 80
 
 
 def _v76(child_id):
+    # equalize panel unique id and root child unique id
     root_child_unique_id = Child.query.filter(Child.name == "Root").first().unique_id
     set_hconfig(ConfigEnum.unique_id, root_child_unique_id)
+
+    set_hconfig(ConfigEnum.parent_api_key, '')
 
 
 def _v75(child_id):

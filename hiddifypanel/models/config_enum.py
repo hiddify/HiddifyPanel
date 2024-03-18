@@ -110,8 +110,12 @@ class ConfigEnum(metaclass=FastEnum):
     package_mode = _StrConfigDscr(ConfigCategory.advanced, hide_in_virtual_child=True)
     utls = _StrConfigDscr(ConfigCategory.advanced)
     telegram_bot_token = _StrConfigDscr(ConfigCategory.telegram, ApplyMode.apply, hide_in_virtual_child=True)
+
+    # parent panel
     is_parent = _BoolConfigDscr(ConfigCategory.hidden)
     parent_panel = _StrConfigDscr(ConfigCategory.too_advanced)
+    parent_api_key = _StrConfigDscr(ConfigCategory.too_advanced)
+
     unique_id = _StrConfigDscr(ConfigCategory.hidden)
     last_hash = _StrConfigDscr(ConfigCategory.hidden)
     cdn_forced_host = _StrConfigDscr(ConfigCategory.hidden)  # removed
