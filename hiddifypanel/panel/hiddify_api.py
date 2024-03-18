@@ -22,7 +22,7 @@ def __get_parent_panel_info() -> Tuple[str, str]:
 
 
 def __send_request_to_parent(url: str, payload: dict, key: str) -> dict:
-    res = requests.put(url, json=payload, headers={'Hiddify-API-Key': key})
+    res = requests.put(url, json=payload, headers={'Hiddify-API-Key': key}, timeout=40)
     if res.status_code != 200:
         return {}
 

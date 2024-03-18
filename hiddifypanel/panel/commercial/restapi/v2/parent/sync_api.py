@@ -42,9 +42,9 @@ class SyncApi(MethodView):
 
         # TODO: insert data
         try:
-            bulk_register_domains(data['domains'], commit=False, force_child_unique_id=child.unique_id)
-            bulk_register_configs(data['hconfigs'], commit=False, froce_child_unique_id=child.unique_id)
-            Proxy.bulk_register(data['proxies'], commit=False, force_child_unique_id=child.unique_id)
+            bulk_register_domains(data['panel_data']['domains'], commit=False, force_child_unique_id=child.unique_id)
+            bulk_register_configs(data['panel_data']['hconfigs'], commit=False, froce_child_unique_id=child.unique_id)
+            Proxy.bulk_register(data['panel_data']['proxies'], commit=False, force_child_unique_id=child.unique_id)
             db.session.commit()  # type: ignore
         except Exception as err:
             abort(400, str(err))
@@ -55,6 +55,6 @@ class SyncApi(MethodView):
         '''Create response for parent register api'''
         res = OutputUsersSchema()
         res.users = [u.to_schema() for u in User.query.all()]  # type: ignore
-        res.admins = [a.to_schema() for a in AdminUser.query.all()]  # type: ignore
+        res.admin_users = [a.to_schema() for a in AdminUser.query.all()]  # type: ignore
 
         return res
