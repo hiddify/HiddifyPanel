@@ -350,13 +350,13 @@ class AppAPI(MethodView):
         def get_link(p):
             match p:
                 case Platform.windows:
-                    ins_url = latest_url.split('releases/')[0] + f'releases/download/{version}/HiddifyClashDesktop_{version}_x64_en-US.msi'
+                    ins_url = latest_url.split('releases/')[0] + f'releases/download/v{version}/HiddifyClashDesktop_{version}_x64_en-US.msi'
                     dto.install.append(self.__get_app_install_dto(AppInstallType.setup, ins_url))
                 case Platform.linux:
-                    ins_url = latest_url.split('releases/')[0] + f'releases/download/{version}/hiddify-clash-desktop_{version}_amd64.AppImage'
+                    ins_url = latest_url.split('releases/')[0] + f'releases/download/v{version}/hiddify-clash-desktop_{version}_amd64.AppImage'
                     dto.install.append(self.__get_app_install_dto(AppInstallType.appimage, ins_url))
                 case Platform.mac:
-                    ins_url = latest_url.split('releases/')[0] + f'releases/download/{version}/HiddifyClashDesktop_{version}_x64.dmg'
+                    ins_url = latest_url.split('releases/')[0] + f'releases/download/v{version}/HiddifyClashDesktop_{version}_x64.dmg'
                     dto.install.append(self.__get_app_install_dto(AppInstallType.dmg, ins_url))
 
         if isinstance(platform, list):
