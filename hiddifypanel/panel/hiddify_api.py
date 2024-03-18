@@ -93,7 +93,8 @@ def sync_child_with_parent(set_db=True) -> bool:
     }
 
     res = __send_request_to_parent(p_url, payload, p_key)
-
+    if not res:
+        return False
     if set_db:
         AdminUser.bulk_register(res['admin_users'], commit=False)
         User.bulk_register(res['users'], commit=False)
