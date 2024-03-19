@@ -396,17 +396,17 @@ class AppAPI(MethodView):
             ins_url = ''
             match install_type:
                 case AppInstallType.apk:
-                    ins_url = f'{self.hiddify_github_repo}/hiddify-next/releases/latest/download/hiddify-android-universal.apk'
+                    ins_url = f'{self.hiddify_github_repo}/hiddify-next/releases/latest/download/Hiddify-Android-universal.apk'
                 case AppInstallType.google_play:
                     ins_url = 'https://play.google.com/store/apps/details?id=app.hiddify.com'
                 case AppInstallType.setup:
-                    ins_url = f'{self.hiddify_github_repo}/hiddify-next/releases/latest/download/hiddify-windows-x64-setup.zip'
+                    ins_url = f'{self.hiddify_github_repo}/hiddify-next/releases/latest/download/Hiddify-Windows-Setup-x64.exe'
                 case AppInstallType.portable:
-                    ins_url = f'{self.hiddify_github_repo}/hiddify-next/releases/latest/download/hiddify-windows-x64-portable.zip'
+                    ins_url = f'{self.hiddify_github_repo}/hiddify-next/releases/latest/download/Hiddify-Windows-Portable-x64.zip'
                 case AppInstallType.appimage:
-                    ins_url = f'{self.hiddify_github_repo}/hiddify-next/releases/latest/download/hiddify-linux-x64.zip'
+                    ins_url = f'{self.hiddify_github_repo}/hiddify-next/releases/latest/download/Hiddify-Linux-x64.AppImage'
                 case AppInstallType.dmg:
-                    ins_url = f'{self.hiddify_github_repo}/hiddify-next/releases/latest/download/hiddify-macos-universal.zip'
+                    ins_url = f'{self.hiddify_github_repo}/hiddify-next/releases/latest/download/Hiddify-MacOS.dmg'
 
             install_dto = self.__get_app_install_dto(install_type, ins_url)
             install_dtos.append(install_dto)
