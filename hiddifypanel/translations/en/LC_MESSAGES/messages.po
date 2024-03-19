@@ -596,6 +596,9 @@ msgstr "Please select at least one file."
 msgid "Please select at least one record."
 msgstr "Please select at least one record."
 
+msgid "Please select at least one user"
+msgstr "Please select at least one user"
+
 msgid "Please select one of the following applications:"
 msgstr ""
 "📍 Please select one of the following applications:\n"
@@ -728,6 +731,9 @@ msgstr "Select all records"
 msgid "Select record"
 msgstr "Select record"
 
+msgid "Seleted Users"
+msgstr "Seleted Users"
+
 msgid "Send Message to User's Telegram"
 msgstr "📣 Send Message to User's Telegram"
 
@@ -841,11 +847,11 @@ msgid "User is inactive"
 msgstr "User Is Inactive"
 
 msgid ""
-"User usage will be updated every 6 minutes. To update it now click <a href=\"%(link)s\"\n"
-"        class=\"btn btn-info\">here</a>"
+"User usage will be updated every 6 minutes. To update it now click <a "
+"href=\"%(link)s\" class=\"btn btn-info\">here</a>"
 msgstr ""
-"🔄 User usage will be updated every 1 Minutes. to update it now <a "
-"href='%(link)s' class='btn btn-info'>Click Here</a>"
+"User usage will be updated every 6 minutes. To update it now click <a "
+"href=\"%(link)s\" class=\"btn btn-info\">here</a>"
 
 msgid "V2rayNG"
 msgstr ""
@@ -1281,10 +1287,10 @@ msgid "config.country.label"
 msgstr "🌍 Country"
 
 msgid "config.create_easysetup_link.description"
-msgstr "-"
+msgstr "config.create_easysetup_link.description"
 
 msgid "config.create_easysetup_link.label"
-msgstr "-"
+msgstr "config.create_easysetup_link.label"
 
 msgid "config.db_version.description"
 msgstr "Database Version Description"
@@ -1293,10 +1299,10 @@ msgid "config.db_version.label"
 msgstr "Database Version Label"
 
 msgid "config.dbvalues.description"
-msgstr "-"
+msgstr "config.dbvalues.description"
 
 msgid "config.dbvalues.label"
-msgstr "-"
+msgstr "config.dbvalues.label"
 
 msgid "config.decoy_domain.description"
 msgstr ""
@@ -1356,10 +1362,10 @@ msgid "config.firewall.label"
 msgstr "🛡️ Firewall"
 
 msgid "config.first_setup.description"
-msgstr "-"
+msgstr "config.first_setup.description"
 
 msgid "config.first_setup.label"
-msgstr "-"
+msgstr "config.first_setup.label"
 
 msgid "config.general.description"
 msgstr "It is General System Configurations"
@@ -1376,10 +1382,10 @@ msgid "config.grpc_enable.label"
 msgstr "➿ Enable gRPC"
 
 msgid "config.hidden.description"
-msgstr "-"
+msgstr "config.hidden.description"
 
 msgid "config.hidden.label"
-msgstr "-"
+msgstr "config.hidden.label"
 
 msgid "config.http.description"
 msgstr "HTTP Configurations could be set in this section"
@@ -1452,7 +1458,7 @@ msgid "config.hysteria_up_mbps.label"
 msgstr "⬆️ Hysteria Upload (mbps)"
 
 msgid "config.is_parent.description"
-msgstr "-"
+msgstr "config.is_parent.description"
 
 msgid "config.is_parent.label"
 msgstr "Parent Panel"
@@ -1483,10 +1489,10 @@ msgid "config.lang.label"
 msgstr "🗺️ User Area Language"
 
 msgid "config.last_hash.description"
-msgstr "-"
+msgstr "config.last_hash.description"
 
 msgid "config.last_hash.label"
-msgstr "-"
+msgstr "config.last_hash.label"
 
 msgid "config.license.description"
 msgstr "For commercial use of this Product, you must Purchase its License"
@@ -1920,7 +1926,10 @@ msgstr "🔐 Telegram Bot Token"
 
 msgid "config.telegram_enable.description"
 msgstr ""
-"Telegram MTProto is used for Encapsulate Telegram Proxy as a tls traffic"
+"<p data-pm-slice=\"1 1 []\">Telegram MTProto is used for Encapsulate "
+"Telegram Proxy as a tls traffic<br>⚠️ <span "
+"style=\"color:#d32f2f;\"><strong>This protocol requires a Direct "
+"Domain</strong></span></p>"
 
 msgid "config.telegram_enable.label"
 msgstr "✔️ Enable Telegram MTProto"

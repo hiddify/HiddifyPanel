@@ -584,6 +584,9 @@ msgstr "حداقل یک فایل انتخاب کنید"
 msgid "Please select at least one record."
 msgstr "حداقل یک پوشه انتخاب کنید"
 
+msgid "Please select at least one user"
+msgstr ""
+
 msgid "Please select one of the following applications:"
 msgstr ""
 "📍 لطفا یکی از برنامه های زیر را انتخاب کنید:\n"
@@ -716,6 +719,9 @@ msgstr "انتخاب همه رکوردها"
 msgid "Select record"
 msgstr "انتخاب رکورد"
 
+msgid "Seleted Users"
+msgstr ""
+
 msgid "Send Message to User's Telegram"
 msgstr "📣 ارسال پیام به تلگرام کاربر"
 
@@ -829,11 +835,9 @@ msgid "User is inactive"
 msgstr "کاربر غیر فعال است"
 
 msgid ""
-"User usage will be updated every 6 minutes. To update it now click <a href=\"%(link)s\"\n"
-"        class=\"btn btn-info\">here</a>"
+"User usage will be updated every 6 minutes. To update it now click <a "
+"href=\"%(link)s\" class=\"btn btn-info\">here</a>"
 msgstr ""
-"🔄 حجم مصرفی کاربران بصورت خودکار هر دقیقه بروزرسانی می‌شود. برای بروزرسانی "
-"دستی <a href='%(link)s' class='btn btn-info'>اینجا کلیک کنید</a>"
 
 msgid "V2rayNG"
 msgstr ""
@@ -1920,7 +1924,10 @@ msgid "config.telegram_bot_token.label"
 msgstr "🔐 توکن ربات تلگرام"
 
 msgid "config.telegram_enable.description"
-msgstr "برای کپسوله کردن پروکسی تلگرام در قالب ترافیک TLS استفاده می‌شود"
+msgstr ""
+"<p>برای کپسوله کردن پروکسی تلگرام در قالب ترافیک TLS استفاده می‌شود<br>⚠️ "
+"<span style=\"color:#d32f2f;\"><strong>این پروتکل نیاز به دامنه مستقیم "
+"دارد</strong></span></p>"
 
 msgid "config.telegram_enable.label"
 msgstr "✔️ فعال کردن پروکسی تلگرام (MTProto)"

@@ -1,6 +1,94 @@
 # Changelog
 
 
+## v10.12.0 (2024-03-19)
+
+#### New
+
+* Add norooz. 
+
+#### Changes
+
+* Hiddify next download urls. 
+
+#### Fix
+
+* Reality ASN checking bug. 
+
+* Tcp brutal. 
+
+* Bug. 
+
+* Proxy status. 
+
+#### Other
+
+* Merge pull request #140 from Iam54r1n4/dev-patch21. 
+  _Change hiddify client(next) download urls_
+
+* Merge pull request #179 from MRDOCTOROO/main. 
+  _Update translations_
+
+* Fink 🐦: update translations. 
+
+* Merge branch 'hiddify:main' into main. 
+
+* Fink 🐦: update translations. 
+
+* Merge pull request #180 from Iam54r1n4/dev-patch49. 
+  _Fix reality ASN checking bug_
+
+* Merge pull request #181 from pjrobertson/macos_link. 
+  _Fix 2nd link to mac os download_
+
+* Fix up all URLs for hiddify clash desktop. 
+  _See the actual URLs in https://github.com/hiddify/HiddifyClashDesktop/releases - it contains 'v' before the first version number_
+
+* Fix 2nd link to mac os download. 
+  _Really fixes #3820 - also makes the code DRY so as to improve maintainability_
+
+* Fink 🐦: update translations. 
+
+* Fink 🐦: update translations. 
+
+* Fink 🐦: update translations. 
+
+* Fink 🐦: update translations. 
+
+* Better auth. 
+
+* Merge pull request #178 from Iam54r1n4/dev-patch48. 
+  _Fix sub bug_
+
+* Some refactor for multi node. 
+
+* Update translations. 
+
+* Merge branch 'main' of github.com:hiddify/Hiddify-Panel. 
+
+* Merge pull request #175 from Iam54r1n4/dev-patch46. 
+  _Add mixed case domains in client configs_
+
+* Add: mixed case domains in client configs all client don't support mixed case feature internally. 
+
+* Merge pull request #176 from Arbelin94/main. 
+  _Update translations_
+
+* Fink 🐦: update translations. 
+
+* Fink 🐦: update translations. 
+
+* Merge pull request #177 from Iam54r1n4/dev-patch47. 
+  _Add sending telegram msg to selected users_
+
+* Update user_list.html. 
+
+* Add: sending telegram msg to selected users. 
+
+* Disable redirect for clients. 
+
+
+
 ## v10.11.1 (2024-03-16)
 
 #### Changes
