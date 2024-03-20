@@ -11,7 +11,7 @@ from hiddifypanel.auth import login_required
 class UsageDataSchema(Schema):
     uuid = fields.UUID(required=True, desciption="The user uuid")
     usage = fields.Float(required=True, description="The user usage in bytes")
-    ips = fields.String(required=True, description="The user connected IPs")
+    ips = fields.List(fields.String(required=True, description="The user connected IPs"))
 
 
 class UsageSchema(Schema):
@@ -51,5 +51,5 @@ class UsageApi(MethodView):
 def get_users_usage_info_for_api() -> dict:
     # TODO: get user needed fields in one command (uuid, current_usage, connected_ips)
     users = User.query.all()
-    users_info = [{'uuid': u.uuid, 'usage': u.current_usage, 'ips': u.details.first().connected_ips} for u in users]
+    users_info = [{'uuid': u.uuid, 'usage': u.current_usage, 'ips': u.ips} for u in users]
     return users_info  # type: ignore
