@@ -1,3 +1,6 @@
+from flask import g
+from hiddifypanel.models.child import Child
+from hiddifypanel.models.domain import DomainType
 from strenum import StrEnum
 from typing import Tuple
 from enum import auto
@@ -21,7 +24,7 @@ def __get_parent_panel_info() -> Tuple[str, str]:
     return hconfig(ConfigEnum.parent_panel), hconfig(ConfigEnum.parent_api_key)
 
 
-def __send_request_to_parent(url: str, payload: dict, key: str) -> dict:
+def __send_put_request_to_parent(url: str, payload: dict, key: str) -> dict:
     res = requests.put(url, json=payload, headers={'Hiddify-API-Key': key}, timeout=40)
     if res.status_code != 200:
         return {}
@@ -65,7 +68,7 @@ def register_child_to_parent(name: str, mode: ChildMode, set_db=True) -> bool:
         'mode': mode,
         'panel_data': get_panel_data_for_api(GetPanelDataForApi.register),
     }
-    res = __send_request_to_parent(p_url, payload, p_key)
+    res = __send_put_request_to_parent(p_url, payload, p_key)
     if not res:
         return False
     if set_db:
@@ -88,7 +91,7 @@ def sync_child_with_parent(set_db=True) -> bool:
         'panel_data': get_panel_data_for_api(GetPanelDataForApi.sync)
     }
 
-    res = __send_request_to_parent(p_url, payload, p_key)
+    res = __send_put_request_to_parent(p_url, payload, p_key)
     if not res:
         return False
     if set_db:
@@ -111,7 +114,7 @@ def add_user_usage_to_parent(set_db=True) -> bool:
         'users_info': get_panel_data_for_api(GetPanelDataForApi.usage)
     }
 
-    __send_request_to_parent(p_url, payload, p_key)
+    __send_put_request_to_parent(p_url, payload, p_key)
 
     if set_db:
         # parse parent response to get users
@@ -127,3 +130,26 @@ def add_user_usage_to_parent(set_db=True) -> bool:
         # TODO: insert into db
 
     return True
+
+
+def is_child_domain_active(child: Child, domain: Domain) -> bool:
+    if domain.mode in [DomainType.reality, DomainType.fake]:
+        return False
+    api_key = g.account.uuid
+    child_admin_proxy_path = StrConfig.query.filter(StrConfig.child_id == child.id, StrConfig.key == ConfigEnum.proxy_path_admin).first().value
+    if not api_key or not child_admin_proxy_path:
+        return False
+    api_url = 'https://'+f'{domain.domain}/{child_admin_proxy_path}/api/v2/ping/'.replace('//', '/')
+    res = requests.get(api_url, headers={'Hiddify-API-Key': api_key}, timeout=2)
+    if res.status_code == 200 and 'PONG' in res.json().get('msg'):
+        return True
+    return False
+
+
+def is_child_active(child: Child) -> bool:
+    for d in child.domains:
+        if d.mode in [DomainType.reality, DomainType.fake]:
+            continue
+        if is_child_domain_active(child, d):
+            return True
+    return False

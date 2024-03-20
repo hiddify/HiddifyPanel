@@ -18,7 +18,8 @@ class Dashboard(FlaskView):
 
     @login_required(roles={Role.super_admin, Role.admin, Role.agent})
     def index(self):
-
+        from hiddifypanel.panel import hiddify_api
+        
         if hconfig(ConfigEnum.first_setup):
             return redirect(hurl_for("admin.QuickSetup:index"))
         if hiddifypanel.__release_date__ + datetime.timedelta(days=20) < datetime.datetime.now():
@@ -37,12 +38,10 @@ class Dashboard(FlaskView):
         if hconfig(ConfigEnum.is_parent):
             childs = Child.query.filter(Child.id != 0).all()
             for c in childs:
+                c.is_active = hiddify_api.is_child_active(c)
                 c.is_active = False
                 for d in c.domains:
-                    if d.mode == DomainType.fake:
-                        continue
-                    remote = hiddify.get_account_panel_link(g.account, d.domain, child_id=c.id)
-                    d.is_active = hutils.network.check_connection_to_remote(remote)
+                    d.is_active = hiddify_api.is_child_domain_active(c, d)
                     if d.is_active:
                         c.is_active = True
 
@@ -87,3 +86,15 @@ class Dashboard(FlaskView):
         db.session.commit()
         hutils.flask.flash(_("child has been removed!"), "success")  # type: ignore
         return self.index()
+
+    @login_required(roles={Role.super_admin})
+    @route('reg')
+    def r(self):
+        from hiddifypanel.panel import hiddify_api
+        hiddify_api.register_child_to_parent('test', ChildMode.remote, False)
+
+    @login_required(roles={Role.super_admin})
+    @route('syn')
+    def s(self):
+        from hiddifypanel.panel import hiddify_api
+        hiddify_api.sync_child_with_parent(False)
