@@ -1,9 +1,8 @@
 import json
 import os
-import time
 
 from .abstract_driver import DriverABS
-from hiddifypanel.models import User
+from hiddifypanel.models import User, hconfig, ConfigEnum
 from hiddifypanel.panel.run_commander import Command, commander
 
 
@@ -71,6 +70,8 @@ class WireguardApi(DriverABS):
         return res
 
     def get_enabled_users(self):
+        if not hconfig(ConfigEnum.wireguard_enable):
+            return {}
         usages = self.__get_wg_usages()
         wg_pubs = set(usages.keys())
 
@@ -90,6 +91,8 @@ class WireguardApi(DriverABS):
         pass
 
     def get_all_usage(self, users, reset=True):
+        if not hconfig(ConfigEnum.wireguard_enable):
+            return {}
         all_usages = self.__sync_local_usages()
         res = {}
         for u in users:
