@@ -51,7 +51,8 @@ def get_panel_data_for_api(type: GetPanelDataForApi) -> dict:
 
         return sync_data.dump(sync_data)  # type: ignore
     else:
-        return [UsageDataSchema.from_dict(item) for item in get_users_usage_info_for_api()]  # type: ignore
+        usage_data = [item for item in get_users_usage_info_for_api()]
+        return usage_data  # type: ignore
 
 
 def register_child_to_parent(name: str, mode: ChildMode, set_db=True) -> bool:
@@ -122,7 +123,7 @@ def add_user_usage_to_parent(set_db=True) -> bool:
         for usage in res:
             usage_data[usage['uuid']] = {
                 'usage': usage['usage'],
-                'ips': usage['connected_ips']
+                'ips': ','.join(usage['ips']) if usage['ips'] else ''
             }
         add_users_usage_uuid(usage_data, hconfig(ConfigEnum.unique_id))
 

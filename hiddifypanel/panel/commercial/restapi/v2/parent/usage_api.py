@@ -1,9 +1,8 @@
 from typing import List
-from apiflask import Schema, fields
+from apiflask import Schema, abort, fields
 from flask.views import MethodView
 from flask import current_app as app
-from hiddifypanel.models.role import Role
-from hiddifypanel.models.user import User
+from hiddifypanel.models import User, Child, Role
 from hiddifypanel.panel.usage import add_users_usage_uuid
 from hiddifypanel.auth import login_required
 
@@ -25,18 +24,19 @@ class UsageApi(MethodView):
     @app.input(UsageSchema, arg_name='data')  # type: ignore
     @app.output(UsageDataSchema(many=True))  # type: ignore
     def put(self, data):
-        unique_id = data['unique_id']
-
+        child = Child.query.filter(Child.unique_id == data['unique_id']).first()
+        if not child:
+            abort(400, "The child does not exist")
         # parse request data
         usage_data = {}
         for d in data['users_info']:
-            usage_data[d['uuid']] = {
+            usage_data[str(d['uuid'])] = {
                 'usage': d['usage'],
-                'ips': d['ips']
+                'ips': ','.join(d['ips']) if d['ips'] else ''
             }
 
         # add users usage
-        add_users_usage_uuid(usage_data, unique_id)
+        add_users_usage_uuid(usage_data, child.id)
 
         # make response
         res = self.__create_response()

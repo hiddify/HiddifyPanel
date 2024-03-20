@@ -30,9 +30,9 @@ def add_users_usage_uuid(uuids_usage_data: Dict[str, Dict], child_id):
 
 def add_users_usage(users_usage_data: Dict[User, Dict], child_id):
     print(users_usage_data)
-    if hiddify.is_child():
-        from hiddifypanel.panel import hiddify_api
-        hiddify_api.add_user_usage_to_parent(users_usage_data)
+    # if hiddify.is_child():
+    #     from hiddifypanel.panel import hiddify_api
+    #     hiddify_api.add_user_usage_to_parent(users_usage_data)
 
     res = {}
     have_change = False
