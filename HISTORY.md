@@ -1,6 +1,24 @@
 # Changelog
 
 
+## v10.12.1 (2024-03-20)
+
+#### Fix
+
+* Wireguard update usage bug. 
+
+#### Other
+
+* Merge pull request #185 from Iam54r1n4/devp-patch1. 
+  _Fix Wireguard update usage bug_
+
+* Merge pull request #184 from Sovamm/main. 
+  _Update translations_
+
+* Fink 🐦: update translations. 
+
+
+
 ## v10.12.0 (2024-03-19)
 
 #### New

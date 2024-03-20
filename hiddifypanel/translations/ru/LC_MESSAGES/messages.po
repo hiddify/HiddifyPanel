@@ -596,7 +596,7 @@ msgid "Please select at least one record."
 msgstr "Выберите по крайней мере одну запись."
 
 msgid "Please select at least one user"
-msgstr ""
+msgstr "Пожалуйста, выберите хотя бы одного пользователя"
 
 msgid "Please select one of the following applications:"
 msgstr ""
@@ -731,7 +731,7 @@ msgid "Select record"
 msgstr "Выберите запись"
 
 msgid "Seleted Users"
-msgstr ""
+msgstr "Выбранные пользователи"
 
 msgid "Send Message to User's Telegram"
 msgstr "📣 Отправить сообщение в Telegram пользователя"
@@ -852,6 +852,8 @@ msgid ""
 "User usage will be updated every 6 minutes. To update it now click <a "
 "href=\"%(link)s\" class=\"btn btn-info\">here</a>"
 msgstr ""
+"Информация пользователей обновлеятся каждые 6 минут. Чтобы обновить сейчас, "
+"нажмите <a href=\"%(link)s\" class=\"btn btn-info\">here</a>"
 
 msgid "V2rayNG"
 msgstr ""
@@ -1543,27 +1545,35 @@ msgstr "⬆️  MUX Brutal Исходящая Загрузка (mbps)"
 
 msgid "config.mux_enable.description"
 msgstr ""
+"MUX требует совместимые клиенты. MUX в Hiddify Next и Singbox несовместимы с"
+" XRay"
 
 msgid "config.mux_enable.label"
-msgstr ""
+msgstr "Ⓜ️ Включить MUX (⚠️ Несовместимо с некоторыми клиентами)"
 
 msgid "config.mux_max_connections.description"
 msgstr ""
+"Максимальное количество подключений. Конфликтует с максимальным количеством "
+"потоков"
 
 msgid "config.mux_max_connections.label"
-msgstr ""
+msgstr "⛓ Максимальное количество подключений MUX"
 
 msgid "config.mux_max_streams.description"
 msgstr ""
+"Максимальное количество мультиплексированных потоков в соединении перед "
+"открытием нового соединения"
 
 msgid "config.mux_max_streams.label"
-msgstr ""
+msgstr "↗️ Максимальное количество потоков MUX"
 
 msgid "config.mux_min_streams.description"
 msgstr ""
+"Минимальное количество мультиплексированных потоков в соединении перед "
+"открытием нового соединения"
 
 msgid "config.mux_min_streams.label"
-msgstr ""
+msgstr "↘️ Минимальное количество потоков MUX"
 
 msgid "config.mux_padding_enable.description"
 msgstr ""
@@ -1575,7 +1585,7 @@ msgid "config.mux_protocol.description"
 msgstr ""
 
 msgid "config.mux_protocol.label"
-msgstr ""
+msgstr "♍️ Протокол MUX"
 
 msgid "config.netdata.description"
 msgstr ""
@@ -1619,7 +1629,7 @@ msgid "config.path_grpc.label"
 msgstr "ℹ️ Путь gRPC"
 
 msgid "config.path_httpupgrade.description"
-msgstr ""
+msgstr "должен быть случайным"
 
 msgid "config.path_httpupgrade.label"
 msgstr ""
@@ -1755,27 +1765,33 @@ msgstr ""
 
 msgid "config.shadowsocks.description"
 msgstr ""
+"Shadowsocks - это быстрый прокси-туннель, который помогает вам обходить "
+"фаерволы"
 
 msgid "config.shadowsocks.label"
-msgstr ""
+msgstr "Shadowsocks"
 
 msgid "config.shadowsocks2022_enable.description"
 msgstr ""
+"Shadowsocks 2022 - это защищенный протокол прокси для трафика TCP и UDP. "
+"Прокси-трафик неотличим от случайного потока байтов и, следовательно, может "
+"обходить фаерволы и интернет-цензоров, которые полагаются на DPI (глубокий "
+"анализ пакетов)."
 
 msgid "config.shadowsocks2022_enable.label"
-msgstr ""
+msgstr "⭕️ Включить Shadowsocks 2022"
 
 msgid "config.shadowsocks2022_method.description"
-msgstr ""
+msgstr "Этот метод также использвуется в ShadowTLS и SSFakeTLS"
 
 msgid "config.shadowsocks2022_method.label"
-msgstr ""
+msgstr "🔐 Метод шифрования Shadowsocks"
 
 msgid "config.shadowsocks2022_port.description"
-msgstr ""
+msgstr "Требуются открытый порт как и TCP, так и UDP"
 
 msgid "config.shadowsocks2022_port.label"
-msgstr ""
+msgstr "↔️ Порт Shadowsocks 2022"
 
 msgid "config.shadowtls.description"
 msgstr ""
@@ -2125,21 +2141,29 @@ msgstr "🔑 WARP Plus Key"
 
 msgid "config.warp_sites.description"
 msgstr ""
+"Добавление дополнительных сайтов для направления через Warp (только если "
+"Warp включен)"
 
 msgid "config.warp_sites.label"
-msgstr ""
+msgstr "🆚 Дополнительные сайты Warp"
 
 msgid "config.wireguard.description"
 msgstr ""
+"WireGuard - это легковесный UDP-протокол, известный своей простотой, "
+"эффективностью и высокой безопасност. Он предлагает простоту, "
+"кроссплатформенность, быструю настройку и прозрачный код."
 
 msgid "config.wireguard.label"
-msgstr ""
+msgstr "WireGuard"
 
 msgid "config.wireguard_enable.description"
 msgstr ""
+"<p>WireGuard - это UDP-протокол. (⚠️ Работает на <a "
+"href=\"https://github.com/hiddify/hiddify-next\" target=\"_blank\">Hiddify "
+"Next</a>)</p>"
 
 msgid "config.wireguard_enable.label"
-msgstr ""
+msgstr "🐉 Включить WireGuard"
 
 msgid "config.wireguard_ipv4.description"
 msgstr ""
@@ -2155,15 +2179,17 @@ msgstr ""
 
 msgid "config.wireguard_noise_trick.description"
 msgstr ""
+"Noise Trick создает дополнительные мусорные данные для предотвращения "
+"обнаужения и блокировки цензором"
 
 msgid "config.wireguard_noise_trick.label"
-msgstr ""
+msgstr "💥 WireGuard Noise Trick"
 
 msgid "config.wireguard_port.description"
-msgstr ""
+msgstr "Порт WireGuard"
 
 msgid "config.wireguard_port.label"
-msgstr ""
+msgstr "↔️ Порт WireGuard"
 
 msgid "config.wireguard_private_key.description"
 msgstr ""
@@ -2179,9 +2205,11 @@ msgstr ""
 
 msgid "config.ws_enable.description"
 msgstr ""
+"Websocket создает туннель поверх HTTP, который будет полезно использовать в "
+"CDN"
 
 msgid "config.ws_enable.label"
-msgstr ""
+msgstr "🔰 Включить Websocket"
 
 msgid "config.invalid uuid"
 msgstr "Неверный UUID. пример: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6"
