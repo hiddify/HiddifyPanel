@@ -419,3 +419,9 @@ def is_hiddify_next_version(major_v: int = 0, minor_v: int = 0, patch_v: int = 0
     if u_major_v >= major_v and u_minor_v >= minor_v and u_patch_v >= patch_v:
         return True
     return False
+
+
+def is_child() -> bool:
+    if hconfig(ConfigEnum.parent_panel) and not hconfig(ConfigEnum.is_parent):
+        return True
+    return False

@@ -19,7 +19,7 @@ class Dashboard(FlaskView):
     @login_required(roles={Role.super_admin, Role.admin, Role.agent})
     def index(self):
         from hiddifypanel.panel import hiddify_api
-        
+
         if hconfig(ConfigEnum.first_setup):
             return redirect(hurl_for("admin.QuickSetup:index"))
         if hiddifypanel.__release_date__ + datetime.timedelta(days=20) < datetime.datetime.now():
@@ -86,15 +86,3 @@ class Dashboard(FlaskView):
         db.session.commit()
         hutils.flask.flash(_("child has been removed!"), "success")  # type: ignore
         return self.index()
-
-    @login_required(roles={Role.super_admin})
-    @route('reg')
-    def r(self):
-        from hiddifypanel.panel import hiddify_api
-        hiddify_api.register_child_to_parent('test', ChildMode.remote, False)
-
-    @login_required(roles={Role.super_admin})
-    @route('syn')
-    def s(self):
-        from hiddifypanel.panel import hiddify_api
-        hiddify_api.sync_child_with_parent(False)

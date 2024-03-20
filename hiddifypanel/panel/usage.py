@@ -1,5 +1,6 @@
 from flask_babel import lazy_gettext as _
 from sqlalchemy import func
+from typing import Dict
 import datetime
 
 from hiddifypanel.drivers import user_driver
@@ -18,17 +19,20 @@ def update_local_usage():
 
 
 # TODO:Rewrite this function
-def add_users_usage_uuid(uuids_bytes, child_id):
-    users = User.query.filter(User.uuid.in_(keys(uuids_bytes)))
-    dbusers_bytes = {u: uuids_bytes.get(u.uuid, 0) for u in users}
-    add_users_usage(dbusers_bytes, child_id)
+def add_users_usage_uuid(uuids_usage_data: Dict[str, Dict], child_id):
+    users = User.query.filter(User.uuid.in_(uuids_usage_data.keys()))
+    dbusers_bytes = {u: uuids_usage_data.get(u.uuid, {'usage': 0, 'ips': ''}) for u in users}
+    add_users_usage(dbusers_bytes, child_id)  # type: ignore
+
 
 # TODO:Rewrite this function
-def add_users_usage(dbusers_bytes, child_id):
-    print(dbusers_bytes)
-    if not hconfig(ConfigEnum.is_parent) and hconfig(ConfigEnum.parent_panel):
+
+
+def add_users_usage(users_usage_data: Dict[User, Dict], child_id):
+    print(users_usage_data)
+    if hiddify.is_child():
         from hiddifypanel.panel import hiddify_api
-        hiddify_api.add_user_usage_to_parent(dbusers_bytes)
+        hiddify_api.add_user_usage_to_parent(users_usage_data)
 
     res = {}
     have_change = False
@@ -43,7 +47,7 @@ def add_users_usage(dbusers_bytes, child_id):
         daily_usage[adm.id].online = User.query.filter(User.added_by == adm.id).filter(func.DATE(User.last_online) == today).count()
     # db.session.commit()
     userDetails = {p.user_id: p for p in UserDetail.query.filter(UserDetail.child_id == child_id).all()}
-    for user, uinfo in dbusers_bytes.items():
+    for user, uinfo in users_usage_data.items():
         usage_bytes = uinfo['usage']
         ips = uinfo['ips']
         # user_active_before=user.is_active

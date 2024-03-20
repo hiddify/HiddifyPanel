@@ -1,6 +1,7 @@
 from flask import g
 from hiddifypanel.models.child import Child
 from hiddifypanel.models.domain import DomainType
+from hiddifypanel.panel.usage import add_users_usage_uuid
 from strenum import StrEnum
 from typing import Tuple
 from enum import auto
@@ -102,7 +103,6 @@ def sync_child_with_parent(set_db=True) -> bool:
 
 
 def add_user_usage_to_parent(set_db=True) -> bool:
-    raise NotImplementedError
     p_url, p_key = __get_parent_panel_info()
     if not p_url or not p_key:
         return False
@@ -114,20 +114,17 @@ def add_user_usage_to_parent(set_db=True) -> bool:
         'users_info': get_panel_data_for_api(GetPanelDataForApi.usage)
     }
 
-    __send_put_request_to_parent(p_url, payload, p_key)
+    res = __send_put_request_to_parent(p_url, payload, p_key)
 
     if set_db:
-        # parse parent response to get users
-        users_info: dict = res.json()
-        data = {'users': []}
-        for u in users_info:
-            dbuser = User.by_uuid(u['uuid'])
-            dbuser.current_usage = u['usage']
-            # TODO: check adding connected_ips
-            dbuser.ips = u['connected_ips']  # type: ignore
-            data['users'].append(dbuser.to_dict())
-
-        # TODO: insert into db
+        # parse parent response
+        usage_data = {}
+        for usage in res:
+            usage_data[usage['uuid']] = {
+                'usage': usage['usage'],
+                'ips': usage['connected_ips']
+            }
+        add_users_usage_uuid(usage_data, hconfig(ConfigEnum.unique_id))
 
     return True
 

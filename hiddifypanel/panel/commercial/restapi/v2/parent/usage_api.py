@@ -4,7 +4,6 @@ from flask.views import MethodView
 from flask import current_app as app
 from hiddifypanel.models.role import Role
 from hiddifypanel.models.user import User
-from hiddifypanel.panel import hiddify
 from hiddifypanel.panel.usage import add_users_usage_uuid
 from hiddifypanel.auth import login_required
 
@@ -12,7 +11,7 @@ from hiddifypanel.auth import login_required
 class UsageDataSchema(Schema):
     uuid = fields.UUID(required=True, desciption="The user uuid")
     usage = fields.Float(required=True, description="The user usage in bytes")
-    connected_ips = fields.String(required=True, description="The user connected IPs")
+    ips = fields.String(required=True, description="The user connected IPs")
 
 
 class UsageSchema(Schema):
@@ -26,22 +25,18 @@ class UsageApi(MethodView):
     @app.input(UsageSchema, arg_name='data')  # type: ignore
     @app.output(UsageDataSchema(many=True))  # type: ignore
     def put(self, data):
-        raise NotImplementedError
         unique_id = data['unique_id']
-        users_info = data['users_info']
 
-        # TODO: check with @hiddify that how we should update usage
-        # # parse request data
-        # users_usage:List[UsageDataSchema] = []
-        # for u in data['users_info']:
-        #     schema = UsageDataSchema()
-        #     schema.uuid = u['uuid']
-        #     schema.usage = u['usage']
-        #     schema.connected_ips = u['connected_ips']
-        #     users_usage.append(schema)
+        # parse request data
+        usage_data = {}
+        for d in data['users_info']:
+            usage_data[d['uuid']] = {
+                'usage': d['usage'],
+                'ips': d['ips']
+            }
 
-        # # add users usage
-        # add_users_usage_uuid(users_usage,unique_id)
+        # add users usage
+        add_users_usage_uuid(usage_data, unique_id)
 
         # make response
         res = self.__create_response()
@@ -56,5 +51,5 @@ class UsageApi(MethodView):
 def get_users_usage_info_for_api() -> dict:
     # TODO: get user needed fields in one command (uuid, current_usage, connected_ips)
     users = User.query.all()
-    users_info = [{'uuid': u.uuid, 'usage': u.current_usage, 'connected_ips': u.details.first().connected_ips} for u in users]
+    users_info = [{'uuid': u.uuid, 'usage': u.current_usage, 'ips': u.details.first().connected_ips} for u in users]
     return users_info  # type: ignore
