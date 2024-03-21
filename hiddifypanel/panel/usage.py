@@ -19,16 +19,15 @@ def update_local_usage():
 
 
 # TODO:Rewrite this function
-def add_users_usage_uuid(uuids_usage_data: Dict[str, Dict], child_id):
+def add_users_usage_uuid(uuids_usage_data: Dict[str, Dict], child_id,sync=False):
     users = User.query.filter(User.uuid.in_(uuids_usage_data.keys()))
     dbusers_bytes = {u: uuids_usage_data.get(u.uuid, {'usage': 0, 'ips': ''}) for u in users}
-    add_users_usage(dbusers_bytes, child_id)  # type: ignore
-
-
+    add_users_usage(dbusers_bytes, child_id,sync)  # type: ignore
 # TODO:Rewrite this function
 
 
-def add_users_usage(users_usage_data: Dict[User, Dict], child_id):
+def add_users_usage(users_usage_data: Dict[User, Dict], child_id,sync=False):
+    '''When sync is True, does not add, it just makes the usages equal to the sent usages data'''
     print(users_usage_data)
     # if hiddify.is_child():
     #     from hiddifypanel.panel import hiddify_api
@@ -71,11 +70,18 @@ def add_users_usage(users_usage_data: Dict[User, Dict], child_id):
         if not isinstance(usage_bytes, int) or usage_bytes == 0:
             res[user.uuid] = "No usage"
         else:
-            daily_usage.get(user.added_by, daily_usage[1]).usage += usage_bytes
+            if sync:
+                daily_usage.get(user.added_by, daily_usage[1]).usage = usage_bytes
+            else:
+                daily_usage.get(user.added_by, daily_usage[1]).usage += usage_bytes
             in_gig = (usage_bytes) / to_gig_d
             res[user.uuid] = in_gig
-            user.current_usage_GB += in_gig
-            detail.current_usage_GB += in_gig
+            if sync:
+                user.current_usage_GB = in_gig
+                detail.current_usage_GB = in_gig
+            else:
+                user.current_usage_GB += in_gig
+                detail.current_usage_GB += in_gig
             user.last_online = datetime.datetime.now()
             detail.last_online = datetime.datetime.now()
 
@@ -88,7 +94,7 @@ def add_users_usage(users_usage_data: Dict[User, Dict], child_id):
             have_change = True
             res[user.uuid] = f"{res[user.uuid]} !OUT of USAGE! Client Removed"
 
-    db.session.commit()
+    db.session.commit() # type: ignore
     if have_change:
         hiddify.quick_apply_users()
 
