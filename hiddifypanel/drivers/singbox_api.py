@@ -7,23 +7,15 @@ import json
 
 class SingboxApi(DriverABS):
     def get_singbox_client(self):
-        if hconfig(ConfigEnum.is_parent):
-            return
         return xtlsapi.SingboxClient('127.0.0.1', 10086)
 
     def get_enabled_users(self):
-        if hconfig(ConfigEnum.is_parent):
-            return
         config_dir = current_app.config['HIDDIFY_CONFIG_PATH']
         with open(f"{config_dir}/singbox/configs/01_api.json") as f:
             json_data = json.load(f)
             return {u.split("@")[0]: 1 for u in json_data['experimental']['v2ray_api']['stats']['users']}
-        # raise NotImplementedError()
-#
 
     def get_inbound_tags(self):
-        if hconfig(ConfigEnum.is_parent):
-            return
         try:
             xray_client = self.get_singbox_client()
             inbounds = [inb.name.split(">>>")[1] for inb in xray_client.stats_query('inbound')]
@@ -34,14 +26,10 @@ class SingboxApi(DriverABS):
         return list(set(inbounds))
 
     def add_client(self, user):
-        if hconfig(ConfigEnum.is_parent):
-            return
-        # raise NotImplementedError()
+        pass
 
     def remove_client(self, user):
-        if hconfig(ConfigEnum.is_parent):
-            return
-        # raise NotImplementedError()
+        pass
 
     def get_all_usage(self, users):
         return {u: self.get_usage_imp(u.uuid) for u in users}

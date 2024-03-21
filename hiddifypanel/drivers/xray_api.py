@@ -5,13 +5,9 @@ from .abstract_driver import DriverABS
 
 class XrayApi(DriverABS):
     def get_xray_client(self):
-        if hconfig(ConfigEnum.is_parent):
-            return
         return xtlsapi.XrayClient('127.0.0.1', 10085)
 
     def get_enabled_users(self):
-        if hconfig(ConfigEnum.is_parent):
-            return
         xray_client = self.get_xray_client()
         users = User.query.all()
         t = "xtls"
@@ -31,8 +27,6 @@ class XrayApi(DriverABS):
         return enabled
 
     def get_inbound_tags(self):
-        if hconfig(ConfigEnum.is_parent):
-            return
         try:
             xray_client = self.get_xray_client()
             inbounds = [inb.name.split(">>>")[1] for inb in xray_client.stats_query('inbound')]
@@ -43,8 +37,6 @@ class XrayApi(DriverABS):
         return list(set(inbounds))
 
     def add_client(self, user):
-        if hconfig(ConfigEnum.is_parent):
-            return
         uuid = user.uuid
         xray_client = self.get_xray_client()
         tags = self.get_inbound_tags()
