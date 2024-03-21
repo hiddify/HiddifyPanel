@@ -9,7 +9,7 @@ from hiddifypanel.auth import login_required
 
 class UsageDataSchema(Schema):
     uuid = fields.UUID(required=True, desciption="The user uuid")
-    usage = fields.Float(required=True, description="The user usage in bytes")
+    usage = fields.Integer(required=True, description="The user usage in bytes")
     ips = fields.List(fields.String(required=True, description="The user connected IPs"))
 
 
@@ -20,6 +20,11 @@ class UsageSchema(Schema):
 
 class UsageApi(MethodView):
     decorators = [login_required({Role.super_admin})]
+
+    @app.output(UsageDataSchema(many=True))  # type: ignore
+    def get(self):
+        res = self.__create_response()
+        return res
 
     @app.input(UsageSchema, arg_name='data')  # type: ignore
     @app.output(UsageDataSchema(many=True))  # type: ignore
