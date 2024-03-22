@@ -11,7 +11,7 @@ import requests
 from hiddifypanel.models import ChildMode, AdminUser, BoolConfig, StrConfig, hconfig, ConfigEnum, Domain, Proxy, User
 from hiddifypanel.panel.commercial.restapi.v2.parent.register_api import RegisterDataSchema
 from hiddifypanel.panel.commercial.restapi.v2.parent.sync_api import SyncDataSchema
-from hiddifypanel.panel.commercial.restapi.v2.parent.usage_api import UsageDataSchema, get_users_usage_info_for_api
+from hiddifypanel.panel.commercial.restapi.v2.parent.usage_api import get_users_usage_data_for_api, convert_usage_api_response_to_dict
 from hiddifypanel.database import db
 
 
@@ -24,6 +24,7 @@ class GetPanelDataForApi(StrEnum):
 
 # region private
 
+
 def __get_parent_panel_info() -> Tuple[str, str]:
     return hconfig(ConfigEnum.parent_panel), hconfig(ConfigEnum.parent_api_key)
 
@@ -35,40 +36,8 @@ def __send_put_request_to_parent(url: str, payload: dict, key: str) -> dict:
 
     return res.json()
 
-def __get_parent_current_usages(url:str,key:str) -> List[dict]:
-    res = requests.get(url,headers={'Hiddify-API-Key': key},timeout=5)
-    if res.status_code != 200:
-        return []
-    return res.json()
-
-def __convert_usage_api_response_to_dict(data:List[dict]) -> dict:
-    converted = {}
-    for i in data:
-        converted[i['uuid']] = {
-            'usage': i['usage'],
-            'ips': i['ips']
-        }
-    return converted
-
-def __calculate_increased_usage(p_url:str,p_key:str) -> List[dict]:
-    res = []
-    child_usages_data = __convert_usage_api_response_to_dict(get_panel_data_for_api(GetPanelDataForApi.usage)) # type: ignore
-    if parent_usages_data := __get_parent_current_usages(p_url,p_key):
-        parent_usages_data = __convert_usage_api_response_to_dict(parent_usages_data)
-    else:
-        return []
-
-    for p_uuid,p_usage in parent_usages_data.items():
-        if c_usage := child_usages_data.get(p_uuid):
-            res.append(
-                {
-                'uuid' : p_uuid,
-                'usage': c_usage['usage'] - p_usage['usage'],
-                'ips' : child_usages_data[p_uuid]['ips']
-                }   
-            )
-    return res
 # endregion
+
 
 def get_panel_data_for_api(type: GetPanelDataForApi) -> dict | List[dict]:
     if type == GetPanelDataForApi.register:
@@ -88,8 +57,7 @@ def get_panel_data_for_api(type: GetPanelDataForApi) -> dict | List[dict]:
 
         return sync_data.dump(sync_data)  # type: ignore
     else:
-        usage_data = [item for item in get_users_usage_info_for_api()]
-        return usage_data  # type: ignore
+        return get_users_usage_data_for_api()
 
 
 def register_child_to_parent(name: str, mode: ChildMode, set_db=True) -> bool:
@@ -143,6 +111,7 @@ def sync_child_with_parent(set_db=True) -> bool:
         db.session.commit()  # type: ignore
     return True
 
+
 def add_user_usage_to_parent(set_db=True) -> bool:
     # TODO: decrease number of request
     p_url, p_key = __get_parent_panel_info()
@@ -152,28 +121,19 @@ def add_user_usage_to_parent(set_db=True) -> bool:
         p_url = p_url.removesuffix('/') + '/api/v2/parent/usage/'
 
     # calculate usage increasement
-    usage_payload = __calculate_increased_usage(p_url,p_key)
-    if not usage_payload:
-        return False
-    
-    # if everything is synced, return True
-    if all(item['usage'] == 0 for item in usage_payload):
-        return True
+    usage_payload = get_panel_data_for_api(GetPanelDataForApi.usage)
 
     payload = {
         'unique_id': hconfig(ConfigEnum.unique_id),
-        'users_info': usage_payload
+        'usages_data': usage_payload
     }
 
     res = __send_put_request_to_parent(p_url, payload, p_key)
 
-    if set_db:
-        if res:
-            # parse usages data
-            res = __convert_usage_api_response_to_dict(res) #type: ignore
-            for usage in res.values():
-                usage['ips'] = ','.join(usage['ips']) if usage['ips'] else ''
-            add_users_usage_uuid(res, hconfig(ConfigEnum.unique_id),True)
+    if set_db and res:
+        # parse usages data
+        res = convert_usage_api_response_to_dict(res)  # type: ignore
+        add_users_usage_uuid(res, hconfig(ConfigEnum.unique_id), True)
 
     return True
 
