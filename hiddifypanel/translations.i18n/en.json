@@ -507,7 +507,7 @@
       "label": "☑️ Allow HTTP Connection"
     },
     "httpupgrade_enable": {
-      "description": "HTTPUpgrade complete a HTTP 1.1 Upgrade request and response before using the connection directly. It is similar to WebSocket in the way it create an direction channel that can be forwarded by many reverse proxies and CDNs, without the need to deal with all the issue around WebSocket Protocol itself.\n\n⚠️ Not Available in Xray based Clients. Only HiddifyNext, Singbox, and V2fly clients are supported. <p><a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/Basic-Concepts/#http-upgrade\" target=\"_blank\"><strong>(Read More)</strong></a></p>",
+      "description": "HTTPUpgrade complete a HTTP 1.1 Upgrade request and response before using the connection directly. It is similar to WebSocket in the way it create an direction channel that can be forwarded by many reverse proxies and CDNs, without the need to deal with all the issue around WebSocket Protocol itself.\n\n⚠️ Not Available in Xray based Clients. Only HiddifyNext, Singbox, and V2fly clients are supported",
       "label": "🆙 Enable HTTPUpgrade Method"
     },
     "hysteria": {
