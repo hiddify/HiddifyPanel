@@ -19,19 +19,16 @@ def update_local_usage():
 
 
 # TODO:Rewrite this function
-def add_users_usage_uuid(uuids_usage_data: Dict[str, Dict], child_id,sync=False):
+def add_users_usage_uuid(uuids_usage_data: Dict[str, Dict], child_id, sync=False):
     users = User.query.filter(User.uuid.in_(uuids_usage_data.keys()))
     dbusers_bytes = {u: uuids_usage_data.get(u.uuid, {'usage': 0, 'ips': ''}) for u in users}
-    add_users_usage(dbusers_bytes, child_id,sync)  # type: ignore
+    add_users_usage(dbusers_bytes, child_id, sync)  # type: ignore
 # TODO:Rewrite this function
 
 
-def add_users_usage(users_usage_data: Dict[User, Dict], child_id,sync=False):
+def add_users_usage(users_usage_data: Dict[User, Dict], child_id, sync=False):
     '''When sync is True, does not add, it just makes the usages equal to the sent usages data'''
     print(users_usage_data)
-    # if hiddify.is_child():
-    #     from hiddifypanel.panel import hiddify_api
-    #     hiddify_api.add_user_usage_to_parent(users_usage_data)
 
     res = {}
     have_change = False
@@ -94,10 +91,14 @@ def add_users_usage(users_usage_data: Dict[User, Dict], child_id,sync=False):
             have_change = True
             res[user.uuid] = f"{res[user.uuid]} !OUT of USAGE! Client Removed"
 
-    db.session.commit() # type: ignore
+    db.session.commit()  # type: ignore
     if have_change:
         hiddify.quick_apply_users()
-
+    # when sync is enabled, it means we have received data from the parent server
+    if not sync:
+        if hiddify.is_child():
+            from hiddifypanel.panel import hiddify_api
+            hiddify_api.add_user_usage_to_parent()
     return {"status": 'success', "comments": res}
 
 
