@@ -87,13 +87,13 @@
           }}
 
           {% if hconfig(ConfigEnum.parent_panel) %}
-          {{ render_nav_item(hconfig(ConfigEnum.parent_panel)+"admin/user/",icon('solid','user-secret','nav-icon')+_('admin.menu.user'),_badge=_('in parent panel') ,_use_li=True) }}
+          {{ render_nav_item(hconfig(ConfigEnum.parent_panel)+"/"+g.account.uuid+"/admin/user/",icon('solid','user-secret','nav-icon')+_('admin.menu.user'),_badge=_('in parent panel') ,_use_li=True) }}
           {% else %}
           {{ render_nav_item('flask.user.index_view', icon('solid','user','nav-icon')+_('admin.menu.user'),_use_li=True)}}
           {% endif %}
 
           {% if hconfig(ConfigEnum.parent_panel) %}
-          {{ render_nav_item(hconfig(ConfigEnum.parent_panel)+"admin/adminuser/",icon('solid','user-secret','nav-icon')+_('Admins'),_badge=_('in parent panel') ,_use_li=True) }}
+          {{ render_nav_item(hconfig(ConfigEnum.parent_panel)+"/"+g.account.uuid+"/admin/adminuser/",icon('solid','user-secret','nav-icon')+_('Admins'),_badge=_('in parent panel') ,_use_li=True) }}
           {% else %}
           {{ render_nav_item('flask.adminuser.index_view',
           icon('solid','user-secret','nav-icon')+_('Admins'),_use_li=True) }}
