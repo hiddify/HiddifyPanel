@@ -119,6 +119,10 @@ def register_child_to_parent(name: str, mode: ChildMode, set_db=True) -> bool:
 
 
 def sync_child_with_parent(set_db=True) -> bool:
+    # sync usage first
+    if not add_user_usage_to_parent():
+        return False
+
     p_url, p_key = __get_parent_panel_info()
     if not p_url or not p_key:
         return False
@@ -140,6 +144,7 @@ def sync_child_with_parent(set_db=True) -> bool:
     return True
 
 def add_user_usage_to_parent(set_db=True) -> bool:
+    # TODO: decrease number of request
     p_url, p_key = __get_parent_panel_info()
     if not p_url or not p_key:
         return False
