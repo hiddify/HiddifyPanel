@@ -106,8 +106,8 @@ def sync_child_with_parent(set_db=True) -> bool:
     if not res:
         return False
     if set_db:
-        AdminUser.bulk_register(res['admin_users'], commit=False)
-        User.bulk_register(res['users'], commit=False)
+        AdminUser.bulk_register(res['admin_users'], commit=False,remove=True)
+        User.bulk_register(res['users'], commit=False,remove=True)
         db.session.commit()  # type: ignore
     return True
 
