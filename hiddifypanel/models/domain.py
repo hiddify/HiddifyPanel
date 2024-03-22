@@ -149,10 +149,6 @@ def get_domain(domain):
 def get_panel_domains(always_add_ip=False, always_add_all_domains=False) -> List[Domain]:
     from hiddifypanel import hutils
     domains = []
-    # if hconfig(ConfigEnum.is_parent):
-    #     from .parent_domain import ParentDomain
-    #     domains = ParentDomain.query.all()
-    # else:
     domains = Domain.query.filter(Domain.mode == DomainType.sub_link_only, Domain.child_id == Child.current.id).all()
     if not len(domains) or always_add_all_domains:
         domains = Domain.query.filter(Domain.mode.notin_([DomainType.fake, DomainType.reality])).all()
@@ -165,10 +161,6 @@ def get_panel_domains(always_add_ip=False, always_add_all_domains=False) -> List
 
 
 def get_proxy_domains(domain):
-    # if hconfig(ConfigEnum.is_parent):
-    #     from hiddifypanel.models.parent_domain import ParentDomain
-    #     db_domain = ParentDomain.query.filter(ParentDomain.domain == domain).first() or ParentDomain(domain=domain, show_domains=[])
-    # else:
     db_domain = Domain.query.filter(Domain.domain == domain, Domain.child_id == Child.current.id).first()
     if not db_domain:
         db_domain = Domain(domain=domain, mode=DomainType.direct, cdn_ip='', show_domains=[])

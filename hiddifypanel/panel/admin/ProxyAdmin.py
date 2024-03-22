@@ -56,9 +56,11 @@ class ProxyAdmin(FlaskView):
                 # print(cat,vs)
             db.session.commit()
             hutils.proxy.get_proxies.invalidate_all()
+            if hiddify.is_child():
+                from hiddifypanel.panel import hiddify_api
+                if not hiddify_api.sync_child_with_parent():
+                    hutils.flask.flash(_('child.sync-failed'), 'danger')  # type: ignore
             hutils.flask.flash_config_success(restart_mode=ApplyMode.apply, domain_changed=False)
-            # if hconfig(ConfigEnum.parent_panel):
-            #     hiddify_api.sync_child_to_parent()
             global_config_form = get_global_config_form(True)
         else:
             hutils.flask.flash((_('config.validation-error')), 'danger')

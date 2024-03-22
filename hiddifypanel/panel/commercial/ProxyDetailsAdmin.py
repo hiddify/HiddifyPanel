@@ -1,4 +1,5 @@
 from hiddifypanel.models import *
+from hiddifypanel.panel import hiddify
 from hiddifypanel.panel.admin.adminlte import AdminLTEModelView
 from flask_babel import gettext as __
 from flask_babel import lazy_gettext as _
@@ -45,14 +46,18 @@ class ProxyDetailsAdmin(AdminLTEModelView):
     # form_overrides = {'work_with': Select2Field}
 
     def after_model_change(self, form, model, is_created):
-        # if hconfig(ConfigEnum.parent_panel):
-        #     hiddify_api.sync_child_to_parent()
+        from hiddifypanel.panel import hiddify_api
+        if hiddify.is_child():
+            if not hiddify_api.sync_child_with_parent():
+                hutils.flask.flash(_('child.sync-failed'), 'danger')  # type: ignore
         hutils.proxy.get_proxies.invalidate_all()
         pass
 
     def after_model_delete(self, model):
-        # if hconfig(ConfigEnum.parent_panel):
-        #     hiddify_api.sync_child_to_parent()
+        from hiddifypanel.panel import hiddify_api
+        if hiddify.is_child():
+            if not hiddify_api.sync_child_with_parent():
+                hutils.flask.flash(_('child.sync-failed'), 'danger')  # type: ignore
         hutils.proxy.get_proxies.invalidate_all()
         pass
 
