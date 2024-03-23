@@ -67,8 +67,6 @@ class RegisterApi(MethodView):
         unique_id = data['unique_id']
         name = data['name']
         mode = data['mode']
-        if not hconfig(ConfigEnum.is_parent):
-            abort(400, "Not a parent")
 
         child = Child.query.filter(Child.unique_id == unique_id).first()
         if not child:
@@ -78,6 +76,7 @@ class RegisterApi(MethodView):
             child = Child.query.filter(Child.unique_id == unique_id).first()
 
         try:
+            # add data
             AdminUser.bulk_register(data['panel_data']['admin_users'], commit=False)
             User.bulk_register(data['panel_data']['users'], commit=False)
             bulk_register_domains(data['panel_data']['domains'], commit=False, force_child_unique_id=child.unique_id)
