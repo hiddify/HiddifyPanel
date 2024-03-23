@@ -20,7 +20,7 @@ class UsageSchema(Schema):
 
 
 class UsageApi(MethodView):
-    decorators = [login_required({Role.super_admin})]
+    decorators = [login_required(child_parent_auth=True)]
 
     @app.input(UsageSchema, arg_name='data')  # type: ignore
     @app.output(UsageDataSchema(many=True))  # type: ignore

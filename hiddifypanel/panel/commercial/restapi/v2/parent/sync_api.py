@@ -26,7 +26,7 @@ class SyncSchema(Schema):
 
 
 class SyncApi(MethodView):
-    decorators = [login_required({Role.super_admin})]
+    decorators = [login_required(child_parent_auth=True)]
 
     @app.input(SyncSchema, arg_name='data')  # type: ignore
     @app.output(OutputUsersSchema)  # type: ignore

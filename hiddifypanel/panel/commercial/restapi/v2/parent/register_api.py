@@ -1,4 +1,4 @@
-from apiflask import abort, Schema,fields
+from apiflask import abort, Schema, fields
 from hiddifypanel.database import db
 from flask import current_app as app
 from flask.views import MethodView
@@ -59,7 +59,7 @@ class OutputUsersSchema(Schema):
 
 
 class RegisterApi(MethodView):
-    decorators = [login_required({Role.super_admin})]
+    decorators = [login_required(child_parent_auth=True)]
 
     @app.input(RegisterSchema, arg_name='data')  # type: ignore
     @app.output(OutputUsersSchema)  # type: ignore
@@ -77,7 +77,6 @@ class RegisterApi(MethodView):
             db.session.commit()  # type: ignore
             child = Child.query.filter(Child.unique_id == unique_id).first()
 
-        # TODO: insert data
         try:
             AdminUser.bulk_register(data['panel_data']['admin_users'], commit=False)
             User.bulk_register(data['panel_data']['users'], commit=False)

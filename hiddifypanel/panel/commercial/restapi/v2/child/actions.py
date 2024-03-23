@@ -7,7 +7,7 @@ from hiddifypanel.auth import login_required
 
 
 class Status(MethodView):
-    decorators = [login_required(parent_auth=True)]
+    decorators = [login_required(child_parent_auth=True)]
 
     def post(self):
         commander(Command.status)
@@ -15,7 +15,7 @@ class Status(MethodView):
 
 
 class UpdateUsage(MethodView):
-    decorators = [login_required(parent_auth=True)]
+    decorators = [login_required(child_parent_auth=True)]
 
     def post(self):
         commander(Command.update_usage)
@@ -23,7 +23,7 @@ class UpdateUsage(MethodView):
 
 
 class Restart(MethodView):
-    decorators = [login_required(parent_auth=True)]
+    decorators = [login_required(child_parent_auth=True)]
 
     def post(self):
         commander(Command.restart_services)
@@ -31,7 +31,7 @@ class Restart(MethodView):
 
 
 class ApplyConfig(MethodView):
-    decorators = [login_required(parent_auth=True)]
+    decorators = [login_required(child_parent_auth=True)]
 
     def post(self):
         commander(Command.apply)
@@ -43,7 +43,7 @@ class InstallSchema(Schema):
 
 
 class Install(MethodView):
-    decorators = [login_required(parent_auth=True)]
+    decorators = [login_required(child_parent_auth=True)]
 
     @app.input(InstallSchema, arg_name="data")  # type: ignore
     def post(self, data: dict):

@@ -97,12 +97,12 @@ def login_user(user: AdminUser | User, remember=False, duration=None, force=Fals
     return True
 
 
-def login_required(roles: set[Role] | None = None, parent_auth: bool = False):
+def login_required(roles: set[Role] | None = None, child_parent_auth: bool = False):
     def wrapper(fn):
         @wraps(fn)
         def decorated_view(*args, **kwargs):
             # print('xxxx', current_account)
-            if parent_auth and not g.get('parent_auth'):
+            if child_parent_auth and not g.get('child_parent_auth'):
                 return redirect_to_login()
             if not current_account:
                 return redirect_to_login()  # type: ignore
@@ -154,10 +154,10 @@ def auth_before_request():
         # when parent/child panel needs to call another parent/child api, it will pass other panel's unique id in the header as apikey
         if not account:
             if apikey == hconfig(ConfigEnum.unique_id):
-                g.parent_auth = apikey
+                g.child_parent_auth = apikey
                 account = AdminUser.get_super_admin()
 
-        if not account and not g.parent_auth:
+        if not account and not g.child_parent_auth:
             return logout_redirect()
     elif request.authorization:
         # print('request.authorization', request.authorization)

@@ -15,7 +15,7 @@ class RegisterParentSchema(Schema):
 
 
 class RegisterParent(MethodView):
-    decorators = [login_required(parent_auth=True)]
+    decorators = [login_required(child_parent_auth=True)]
 
     @app.input(RegisterParentSchema, arg_name='data')
     def post(self, data):
