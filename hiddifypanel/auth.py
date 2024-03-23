@@ -97,11 +97,13 @@ def login_user(user: AdminUser | User, remember=False, duration=None, force=Fals
     return True
 
 
-def login_required(roles: set[Role] | None = None):
+def login_required(roles: set[Role] | None = None, parent_auth: bool = False):
     def wrapper(fn):
         @wraps(fn)
         def decorated_view(*args, **kwargs):
             # print('xxxx', current_account)
+            if parent_auth and not g.get('parent_auth'):
+                return redirect_to_login()
             if not current_account:
                 return redirect_to_login()  # type: ignore
             if roles:
@@ -149,7 +151,12 @@ def auth_before_request():
 
     elif apikey := request.headers.get("Hiddify-API-Key"):
         account = get_account_by_api_key(apikey, is_admin_path)
+        # when parent/child panel needs to call another parent/child api, it will pass other panel's unique id in the header as apikey
         if not account:
+            if apikey == hconfig(ConfigEnum.unique_id):
+                g.parent_auth = apikey
+
+        if not account and not g.parent_auth:
             return logout_redirect()
     elif request.authorization:
         # print('request.authorization', request.authorization)
