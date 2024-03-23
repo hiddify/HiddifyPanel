@@ -106,8 +106,8 @@ def sync_child_with_parent(set_db=True) -> bool:
     if not res:
         return False
     if set_db:
-        AdminUser.bulk_register(res['admin_users'], commit=False,remove=True)
-        User.bulk_register(res['users'], commit=False,remove=True)
+        AdminUser.bulk_register(res['admin_users'], commit=False, remove=True)
+        User.bulk_register(res['users'], commit=False, remove=True)
         db.session.commit()  # type: ignore
     return True
 
@@ -129,8 +129,9 @@ def add_user_usage_to_parent(set_db=True) -> bool:
     }
 
     res = __send_put_request_to_parent(p_url, payload, p_key)
-
-    if set_db and res:
+    if not res:
+        return False
+    if set_db:
         # parse usages data
         res = convert_usage_api_response_to_dict(res)  # type: ignore
         add_users_usage_uuid(res, hconfig(ConfigEnum.unique_id), True)
