@@ -135,7 +135,7 @@ def get_config_form():
 
     class DynamicForm(FlaskForm):
         pass
-    is_parent = hconfig(ConfigEnum.is_parent)
+    is_parent = hiddify.is_parent()
 
     for cat in ConfigCategory:
         if cat == 'hidden':

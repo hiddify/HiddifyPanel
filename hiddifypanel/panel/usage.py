@@ -103,7 +103,7 @@ def add_users_usage(users_usage_data: Dict[User, Dict], child_id, sync=False):
 
 
 def send_bot_message(user):
-    if not (hconfig(ConfigEnum.telegram_bot_token) and not hconfig(ConfigEnum.parent_panel)):
+    if not (hconfig(ConfigEnum.telegram_bot_token) and not hiddify.is_parent()):
         return
     if not user.telegram_id:
         return

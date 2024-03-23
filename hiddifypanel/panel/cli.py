@@ -142,12 +142,11 @@ def init_app(app):
     @ app.cli.command()
     @ click.option("--domain", "-d")
     def add_domain(domain):
-        table = ParentDomain if hconfig(ConfigEnum.is_parent) else Domain
-
-        if table.query.filter(table.domain == domain).first():
+        # TODO: Fix this
+        if Domain.query.filter(Domain.domain == domain).first():
             return "Domain already exist."
-        d = table(domain=domain)
-        if not hconfig(ConfigEnum.is_parent):
+        d = Domain(domain=domain)
+        if not hiddify.is_parent():
             d.mode = DomainType.direct
         db.session.add(d)
         db.session.commit()
