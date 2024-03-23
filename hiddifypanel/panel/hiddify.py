@@ -422,6 +422,6 @@ def is_hiddify_next_version(major_v: int = 0, minor_v: int = 0, patch_v: int = 0
 
 
 def is_child() -> bool:
-    if hconfig(ConfigEnum.parent_panel) and not hconfig(ConfigEnum.is_parent):
+    if hconfig(ConfigEnum.panel_mode) == PanelMode.child:
         return True
     return False

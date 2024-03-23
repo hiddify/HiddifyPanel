@@ -117,13 +117,16 @@ class ConfigEnum(metaclass=FastEnum):
     utls = _StrConfigDscr(ConfigCategory.advanced)
     telegram_bot_token = _StrConfigDscr(ConfigCategory.telegram, ApplyMode.apply, hide_in_virtual_child=True)
 
-    # parent panel
+    # region child-parent
+    # deprecated
     is_parent = _BoolConfigDscr(ConfigCategory.hidden)
     parent_panel = _StrConfigDscr(ConfigCategory.too_advanced)
     parent_unique_id = _StrConfigDscr(ConfigCategory.too_advanced)
+
     # the panel mode could be one of these: "parent", "child", "standalone"
     # this config value would be 'standalone' by default. and would be set by panel itself
     panel_mode = _StrConfigDscr(ConfigCategory.hidden, ApplyMode.restart)
+    # endregion
 
     unique_id = _StrConfigDscr(ConfigCategory.hidden)
     last_hash = _StrConfigDscr(ConfigCategory.hidden)

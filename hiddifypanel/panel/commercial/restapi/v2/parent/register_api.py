@@ -1,5 +1,4 @@
-from apiflask import fields
-from apiflask import abort, Schema
+from apiflask import abort, Schema,fields
 from hiddifypanel.database import db
 from flask import current_app as app
 from flask.views import MethodView
