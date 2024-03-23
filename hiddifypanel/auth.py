@@ -155,6 +155,7 @@ def auth_before_request():
         if not account:
             if apikey == hconfig(ConfigEnum.unique_id):
                 g.parent_auth = apikey
+                account = AdminUser.get_super_admin()
 
         if not account and not g.parent_auth:
             return logout_redirect()
