@@ -26,7 +26,7 @@ class GetPanelDataForApi(StrEnum):
 
 
 def __get_parent_panel_info() -> Tuple[str, str]:
-    return hconfig(ConfigEnum.parent_panel), hconfig(ConfigEnum.parent_api_key)
+    return hconfig(ConfigEnum.parent_panel), hconfig(ConfigEnum.parent_unique_id)
 
 
 def __send_put_request_to_parent(url: str, payload: dict, key: str) -> dict:
