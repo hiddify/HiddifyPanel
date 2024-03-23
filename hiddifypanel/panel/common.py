@@ -18,6 +18,7 @@ def init_app(app: APIFlask):
     app.jinja_env.globals['UserMode'] = UserMode
     app.jinja_env.globals['hconfig'] = hconfig
     app.jinja_env.globals['g'] = g
+    app.jinja_env.globals['hiddify'] = hiddify
     app.jinja_env.globals['version'] = hiddifypanel.__version__
     app.jinja_env.globals['static_url_for'] = hutils.flask.static_url_for
     app.jinja_env.globals['hurl_for'] = hutils.flask.hurl_for
@@ -44,7 +45,7 @@ def init_app(app: APIFlask):
             has_update = False
         else:
             has_update = "dev" not in hiddifypanel.__version__ and f'{last_version}' != hiddifypanel.__version__
-
+        has_update = False
         if not request.accept_mimetypes.accept_html:
             if has_update:
                 return jsonify({
