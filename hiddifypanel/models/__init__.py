@@ -1,6 +1,6 @@
 from .role import Role, AccountType
 from .child import Child, ChildMode
-from .config_enum import ConfigCategory, ConfigEnum, Lang, ApplyMode
+from .config_enum import ConfigCategory, ConfigEnum, Lang, ApplyMode, PanelMode
 from .config import StrConfig, BoolConfig, get_hconfigs, hconfig, set_hconfig, add_or_update_config, bulk_register_configs, get_hconfigs_childs
 
 # from .parent_domain import ParentDomain
