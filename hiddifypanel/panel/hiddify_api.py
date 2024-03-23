@@ -1,6 +1,6 @@
 from flask import g
 from hiddifypanel.models.child import Child
-from hiddifypanel.models.domain import DomainType
+from hiddifypanel.models.domain import DomainType, get_panel_domains
 from hiddifypanel.panel.usage import add_users_usage_uuid
 from strenum import StrEnum
 from typing import List, Tuple
@@ -8,7 +8,7 @@ from enum import auto
 import requests
 
 
-from hiddifypanel.models import ChildMode, AdminUser, BoolConfig, StrConfig, hconfig, ConfigEnum, Domain, Proxy, User
+from hiddifypanel.models import ChildMode, AdminUser, BoolConfig, StrConfig, hconfig, set_hconfig, ConfigEnum, Domain, Proxy, User, PanelMode
 from hiddifypanel.panel.commercial.restapi.v2.parent.register_api import RegisterDataSchema
 from hiddifypanel.panel.commercial.restapi.v2.parent.sync_api import SyncDataSchema
 from hiddifypanel.panel.commercial.restapi.v2.parent.usage_api import get_users_usage_data_for_api, convert_usage_api_response_to_dict
@@ -17,7 +17,7 @@ from hiddifypanel.database import db
 
 # TODO: REFACTOR THIS FILE
 
-class GetPanelDataForApi(StrEnum):
+class ApiDataType(StrEnum):
     register = auto()
     sync = auto()
     usage = auto()
@@ -39,8 +39,8 @@ def __send_put_request_to_parent(url: str, payload: dict, key: str) -> dict:
 # endregion
 
 
-def get_panel_data_for_api(type: GetPanelDataForApi) -> dict | List[dict]:
-    if type == GetPanelDataForApi.register:
+def get_panel_data_for_api(type: ApiDataType) -> dict | List[dict]:
+    if type == ApiDataType.register:
         register_data = RegisterDataSchema()  # type: ignore
         register_data.admin_users = [admin_user.to_schema() for admin_user in AdminUser.query.all()]  # type: ignore
         register_data.users = [user.to_schema() for user in User.query.all()]  # type: ignore
@@ -49,7 +49,7 @@ def get_panel_data_for_api(type: GetPanelDataForApi) -> dict | List[dict]:
         register_data.hconfigs = [*[u.to_dict() for u in StrConfig.query.all()], *[u.to_dict() for u in BoolConfig.query.all()]]  # type: ignore
 
         return register_data.dump(register_data)  # type: ignore
-    elif type == GetPanelDataForApi.sync:
+    elif type == ApiDataType.sync:
         sync_data = SyncDataSchema()  # type: ignore
         sync_data.domains = [domain.to_schema() for domain in Domain.query.all()]  # type: ignore
         sync_data.proxies = [proxy.to_schema() for proxy in Proxy.query.all()]  # type: ignore
@@ -73,7 +73,7 @@ def register_child_to_parent(name: str, mode: ChildMode, set_db=True) -> bool:
         'unique_id': hconfig(ConfigEnum.unique_id),
         'name': name,
         'mode': mode,
-        'panel_data': get_panel_data_for_api(GetPanelDataForApi.register),
+        'panel_data': get_panel_data_for_api(ApiDataType.register),
     }
     res = __send_put_request_to_parent(p_url, payload, p_key)
     if not res:
@@ -99,7 +99,7 @@ def sync_child_with_parent(set_db=True) -> bool:
 
     payload = {
         'unique_id': hconfig(ConfigEnum.unique_id),
-        'panel_data': get_panel_data_for_api(GetPanelDataForApi.sync)
+        'panel_data': get_panel_data_for_api(ApiDataType.sync)
     }
 
     res = __send_put_request_to_parent(p_url, payload, p_key)
@@ -121,7 +121,7 @@ def add_user_usage_to_parent(set_db=True) -> bool:
         p_url = p_url.removesuffix('/') + '/api/v2/parent/usage/'
 
     # calculate usage increasement
-    usage_payload = get_panel_data_for_api(GetPanelDataForApi.usage)
+    usage_payload = get_panel_data_for_api(ApiDataType.usage)
 
     payload = {
         'unique_id': hconfig(ConfigEnum.unique_id),
@@ -137,6 +137,34 @@ def add_user_usage_to_parent(set_db=True) -> bool:
         add_users_usage_uuid(res, hconfig(ConfigEnum.unique_id), True)
 
     return True
+
+
+def request_chlid_to_register(name: str, mode: ChildMode, child_link: str, child_key: str) -> bool:
+    if not child_link or not child_key:
+        return False
+    else:
+        child_link = child_link.removesuffix('/') + '/api/v2/child/register-parent/'
+
+    try:
+        domain = get_panel_domains()[0].domain
+    except:
+        return False
+
+    paylaod = {
+        'parent_panel': f'https://{domain}/{hconfig(ConfigEnum.proxy_path_admin)}/',
+        'parent_panel_unique_id': hconfig(ConfigEnum.unique_id),
+        'name': name,
+        'mode': mode
+
+    }
+    res = requests.post(child_link, json=paylaod, headers={'Hiddify-API-Key': child_key}, timeout=40)
+    if res.status_code == 200 and res.json().get('msg') == 'ok':
+        set_hconfig(ConfigEnum.panel_mode, PanelMode.parent)
+        # don't need is_parent anymore, just for compatibility, it'll be deleted
+        set_hconfig(ConfigEnum.is_parent, True)
+        return True
+
+    return False
 
 
 def is_child_domain_active(child: Child, domain: Domain) -> bool:
