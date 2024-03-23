@@ -70,23 +70,9 @@ def exec_command(cmd, cwd=None):
 
 
 def quick_apply_users():
-    if hconfig(ConfigEnum.is_parent):
-        return
-    # from hiddifypanel.panel import usage
-    # usage.update_local_usage()
-    # return
-    # for user in User.query.all():
-    #     if user.is_active:
-    #         xray_api.add_client(user.uuid)
-    #     else:
-    #         xray_api.remove_client(user.uuid)
-
-    # exec_command("sudo /opt/hiddify-manager/install.sh apply_users --no-gui")
-
     # run install.sh apply_users
     commander(Command.apply_users)
 
-    # time.sleep(1)
     return {"status": 'success'}
 
 
@@ -423,5 +409,11 @@ def is_hiddify_next_version(major_v: int = 0, minor_v: int = 0, patch_v: int = 0
 
 def is_child() -> bool:
     if hconfig(ConfigEnum.panel_mode) == PanelMode.child:
+        return True
+    return False
+
+
+def is_parent() -> bool:
+    if hconfig(ConfigEnum.panel_mode) == PanelMode.parent:
         return True
     return False

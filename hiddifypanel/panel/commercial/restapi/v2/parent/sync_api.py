@@ -9,6 +9,7 @@ from hiddifypanel.models.child import Child
 from hiddifypanel.models import *
 from hiddifypanel.auth import login_required
 from .register_api import DomainSchema, OutputUsersSchema, ProxySchema, HConfigSchema
+from hiddifypanel.panel import hiddify
 
 
 class SyncDataSchema(Schema):
@@ -33,7 +34,7 @@ class SyncApi(MethodView):
     def put(self, data):
         unique_id = data['unique_id']
 
-        if not hconfig(ConfigEnum.is_parent):
+        if not hiddify.is_parent():
             abort(400, "Not a parent")
 
         child = Child.query.filter(Child.unique_id == unique_id).first()
