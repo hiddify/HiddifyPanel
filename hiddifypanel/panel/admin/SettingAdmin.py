@@ -42,20 +42,20 @@ class SettingAdmin(FlaskView):
             old_configs = get_hconfigs()
             changed_configs = {}
 
-            for cat, vs in form.data.items():  # [c for c in ConfigEnum]:
+            for category, c_items in form.data.items():  # [c for c in ConfigEnum]:
 
-                if isinstance(vs, dict):
+                if isinstance(c_items, dict):
                     for k in ConfigEnum:
-                        if k.name not in vs:
+                        if k.name not in c_items:
                             continue
-                        v = vs[k.name]
+                        v = c_items[k.name]
                         if k.type == str:
                             if "_domain" in k or "_fakedomain" in k:
                                 v = v.lower()
 
                             if "port" in k:
                                 for p in v.split(","):
-                                    for k2, v2 in vs.items():
+                                    for k2, v2 in c_items.items():
                                         if "port" in k2 and k.name != k2 and p in v2:
                                             hutils.flask.flash(_("Port is already used! in") + f" {k2} {k}", 'error')
                                             return render_template('config.html', form=form)
@@ -75,31 +75,43 @@ class SettingAdmin(FlaskView):
 
             for k, v in changed_configs.items():
                 set_hconfig(k, v, commit=False)
-
+            
             db.session.commit()
             flask_babel.refresh()
+
+            # set panel mode
+            p_mode = hconfig(ConfigEnum.panel_mode)
+            if hconfig(ConfigEnum.parent_panel) and hconfig(ConfigEnum.parent_unique_id):
+                if p_mode != PanelMode.child:
+                    set_hconfig(ConfigEnum.panel_mode,PanelMode.child)
+            else:
+                if p_mode != PanelMode.standalone:
+                    set_hconfig(ConfigEnum.panel_mode,PanelMode.standalone)
 
             from hiddifypanel.panel.commercial.telegrambot import register_bot
             from hiddifypanel.panel import hiddify_api
             register_bot(set_hook=True)
             if hiddify.is_child():
-                if not hiddify_api.sync_child_with_parent():
-                    hutils.flask.flash(_('child.sync-failed'), 'danger')  # type: ignore
+                if hiddify_api.is_child_registered():
+                    if not hiddify_api.sync_child_with_parent():
+                        hutils.flask.flash(_('child.sync-failed'), 'danger')  # type: ignore
+                    else: # TODO: it's just for debuging
+                        hutils.flask.flash(_('child.sync-success'))  # type: ignore
+
+                else:
+                    name = hconfig(ConfigEnum.unique_id)
+                    if not hiddify_api.register_child_to_parent(name):
+                        hutils.flask.flash(_('child.register-failed'), 'danger')  # type: ignore
+                    else: # TODO: it's just for debuging
+                        hutils.flask.flash(_('child.register-success'))  # type: ignore
             reset_action = hiddify.check_need_reset(old_configs)
 
             if old_configs[ConfigEnum.admin_lang] != hconfig(ConfigEnum.admin_lang):
-
                 form = get_config_form()
         else:
             hutils.flask.flash(_('config.validation-error'), 'danger')  # type: ignore
 
         return reset_action or render_template('config.html', form=form)
-
-        # # form=HelloForm()
-        # # # return render('config.html',form=form)
-        # # return render_template('config.html',form=HelloForm())
-        # form=get_config_form()
-        # return render_template('config.html',form=form)
 
     def get_babel_string(self):
         res = ""

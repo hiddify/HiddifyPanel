@@ -15,7 +15,6 @@ from hiddifypanel import hutils
 
 
 def flash(message: str, category: str = "message"):
-    # print(message)
     return flask_flash(Markup(message), category)
 
 

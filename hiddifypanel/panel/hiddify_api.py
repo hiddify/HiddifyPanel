@@ -32,7 +32,11 @@ def __get_parent_panel_info() -> Tuple[str, str]:
 def __send_put_request_to_parent(url: str, payload: dict, key: str) -> dict:
     res = requests.put(url, json=payload, headers={'Hiddify-API-Key': key}, timeout=40)
     if res.status_code != 200:
-        return {}
+        try:
+            msg = res.json()
+        except:
+            msg = str(res.content)
+        return {'err':{'code':res.status_code,'msg':msg}}
 
     return res.json()
 
@@ -59,9 +63,26 @@ def get_panel_data_for_api(type: ApiDataType) -> dict | List[dict]:
     else:
         return get_users_usage_data_for_api()
 
+def is_child_registered() -> bool:
+    p_url, p_key = __get_parent_panel_info()
+    if not p_url or not p_key:
+        return False
+    else:
+        p_url = p_url.removesuffix('/') + '/api/v2/parent/status/'
 
-def register_child_to_parent(name: str, mode: ChildMode, set_db=True) -> bool:
+    payload = {
+        'unique_id': hconfig(ConfigEnum.unique_id)
+    }
+    res = requests.post(p_url, json=payload, headers={'Hiddify-API-Key': p_key}, timeout=40)
+    if res.status_code != 200:
+        return False
+    
+    if res.json().get('existance') == True:
+        return True
 
+    return False
+
+def register_child_to_parent(name: str, mode: ChildMode = ChildMode.remote, set_db=True) -> bool:
     # get parent link its format is "https://panel.hiddify.com/<admin_proxy_path>/"
     p_url, p_key = __get_parent_panel_info()
     if not p_url or not p_key:
@@ -76,7 +97,7 @@ def register_child_to_parent(name: str, mode: ChildMode, set_db=True) -> bool:
         'panel_data': get_panel_data_for_api(ApiDataType.register),
     }
     res = __send_put_request_to_parent(p_url, payload, p_key)
-    if not res:
+    if 'err' in res:
         return False
     if set_db:
         AdminUser.bulk_register(res['admin_users'], commit=False)
@@ -103,7 +124,7 @@ def sync_child_with_parent(set_db=True) -> bool:
     }
 
     res = __send_put_request_to_parent(p_url, payload, p_key)
-    if not res:
+    if 'err' in res:
         return False
     if set_db:
         AdminUser.bulk_register(res['admin_users'], commit=False, remove=True)
@@ -129,7 +150,7 @@ def add_user_usage_to_parent(set_db=True) -> bool:
     }
 
     res = __send_put_request_to_parent(p_url, payload, p_key)
-    if not res:
+    if 'err' in res:
         return False
     if set_db:
         # parse usages data
