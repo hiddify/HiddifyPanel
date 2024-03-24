@@ -12,7 +12,9 @@ class XrayApi(DriverABS):
 
     def get_enabled_users(self):
         if hconfig(ConfigEnum.is_parent):
-            return
+            return {}
+        if hconfig(ConfigEnum.core_type) != "xray":
+            return {}
         xray_client = self.get_xray_client()
         users = User.query.all()
         t = "xtls"
@@ -33,7 +35,9 @@ class XrayApi(DriverABS):
 
     def get_inbound_tags(self):
         if hconfig(ConfigEnum.is_parent):
-            return
+            return []
+        if hconfig(ConfigEnum.core_type) != "xray":
+            return []
         try:
             xray_client = self.get_xray_client()
             inbounds = [inb.name.split(">>>")[1] for inb in xray_client.stats_query('inbound')]
@@ -45,6 +49,8 @@ class XrayApi(DriverABS):
 
     def add_client(self, user):
         if hconfig(ConfigEnum.is_parent):
+            return
+        if hconfig(ConfigEnum.core_type) != "xray":
             return
         uuid = user.uuid
         xray_client = self.get_xray_client()
@@ -98,6 +104,8 @@ class XrayApi(DriverABS):
                 pass
 
     def get_all_usage(self, users):
+        if hconfig(ConfigEnum.core_type) != "xray":
+            return {}
         xray_client = self.get_xray_client()
         usages = xray_client.stats_query('user', reset=True)
         uuid_user_map = {u.uuid: u for u in users}
