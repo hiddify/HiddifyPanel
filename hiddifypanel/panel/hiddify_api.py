@@ -36,7 +36,7 @@ def __send_put_request_to_parent(url: str, payload: dict, key: str) -> dict:
             msg = res.json()
         except:
             msg = str(res.content)
-        return {'err':{'code':res.status_code,'msg':msg}}
+        return {'err': {'code': res.status_code, 'msg': msg}}
 
     return res.json()
 
@@ -63,6 +63,7 @@ def get_panel_data_for_api(type: ApiDataType) -> dict | List[dict]:
     else:
         return get_users_usage_data_for_api()
 
+
 def is_child_registered() -> bool:
     p_url, p_key = __get_parent_panel_info()
     if not p_url or not p_key:
@@ -76,11 +77,12 @@ def is_child_registered() -> bool:
     res = requests.post(p_url, json=payload, headers={'Hiddify-API-Key': p_key}, timeout=40)
     if res.status_code != 200:
         return False
-    
+
     if res.json().get('existance') == True:
         return True
 
     return False
+
 
 def register_child_to_parent(name: str, mode: ChildMode = ChildMode.remote, set_db=True) -> bool:
     # get parent link its format is "https://panel.hiddify.com/<admin_proxy_path>/"
@@ -188,6 +190,20 @@ def request_chlid_to_register(name: str, mode: ChildMode, child_link: str, child
     return False
 
 
+def request_child_to_sync(child: Child) -> bool:
+    try:
+        child_domain = get_child_active_domains(child)[0]
+    except:
+        return False
+    child_admin_proxy_path = StrConfig.query.filter(StrConfig.child_id == child.id, StrConfig.key == ConfigEnum.proxy_path_admin).first().value
+    url = f'https://{child_domain}/{child_admin_proxy_path}/'
+    res = requests.post(url, headers={'Hiddify-API-Key': child.id})
+    if res.status_code == 200 and res.json().get('msg') == 'ok':
+        return True
+
+    return False
+
+
 def is_child_domain_active(child: Child, domain: Domain) -> bool:
     if domain.mode in [DomainType.reality, DomainType.fake]:
         return False
@@ -200,6 +216,14 @@ def is_child_domain_active(child: Child, domain: Domain) -> bool:
     if res.status_code == 200 and 'PONG' in res.json().get('msg'):
         return True
     return False
+
+
+def get_child_active_domains(child: Child) -> List[Domain]:
+    actives = []
+    for d in child.domains:
+        if is_child_domain_active(child, d):
+            actives.append(d)
+    return actives
 
 
 def is_child_active(child: Child) -> bool:
