@@ -86,6 +86,8 @@ class RegisterApi(MethodView):
         except Exception as err:
             abort(400, str(err))
 
+        if hconfig(ConfigEnum.panel_mode) != PanelMode.parent:
+            set_hconfig(ConfigEnum.panel_mode, PanelMode.parent)
         return self.__create_response()
 
     def __create_response(self) -> OutputUsersSchema:
