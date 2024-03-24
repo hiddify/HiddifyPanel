@@ -17,6 +17,7 @@ class StatusApi(MethodView):
     decorators = [login_required(child_parent_auth=True)]
 
     @app.input(ChildStatusSchema, arg_name='data')  # type: ignore
+    @app.output(ChildStatusOutputSchema)  # type: ignore
     def post(self, data):
         res = ChildStatusOutputSchema()
         res.existance = False  # type: ignore
