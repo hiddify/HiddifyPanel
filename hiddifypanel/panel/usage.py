@@ -12,19 +12,21 @@ to_gig_d = 1024**3
 
 def update_local_usage():
     res = user_driver.get_users_usage(reset=True)
-    return add_users_usage(res, child_id=0)
+    return _add_users_usage(res, child_id=0)
 
     # return {"status": 'success', "comments":res}
 
 
 def add_users_usage_uuid(uuids_bytes, child_id):
-    users = User.query.filter(User.uuid.in_(keys(uuids_bytes)))
+    uuids_bytes = {u: v for u, v in uuids_bytes.items() if v}
+    uuids = keys(uuids_bytes)
+    users = User.query.filter(User.uuid.in_(uuids))
     dbusers_bytes = {u: uuids_bytes.get(u.uuid, 0) for u in users}
-    add_users_usage(dbusers_bytes, child_id)
+    _add_users_usage(dbusers_bytes, child_id)
 
 
-def add_users_usage(dbusers_bytes, child_id):
-    print(dbusers_bytes)
+def _add_users_usage(dbusers_bytes, child_id):
+    # print(dbusers_bytes)
     if not hconfig(ConfigEnum.is_parent) and hconfig(ConfigEnum.parent_panel):
         from hiddifypanel.panel import hiddify_api
         hiddify_api.add_user_usage_to_parent(dbusers_bytes)
@@ -44,14 +46,14 @@ def add_users_usage(dbusers_bytes, child_id):
     userDetails = {p.user_id: p for p in UserDetail.query.filter(UserDetail.child_id == child_id).all()}
     for user, uinfo in dbusers_bytes.items():
         usage_bytes = uinfo['usage']
-        ips = uinfo['ips']
+        devices = uinfo['devices']
         # user_active_before=user.is_active
         detail = userDetails.get(user.id)
         if not detail:
             detail = UserDetail(user_id=user.id, child_id=child_id)
             detail.current_usage_GB = detail.current_usage_GB or 0
             db.session.add(detail)
-        detail.connected_ips = ips
+        detail.connected_devices = devices
         detail.current_usage_GB = detail.current_usage_GB or 0
         if not user.last_reset_time or user.user_should_reset():
             user.last_reset_time = datetime.date.today()

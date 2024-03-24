@@ -20,6 +20,10 @@ from flask import g
 MAX_DB_VERSION = 80
 
 
+def _v76(child_id):
+    pass
+
+
 def _v75(child_id):
     for u in User.query.all():
         hutils.model.gen_wg_keys(u)
@@ -526,7 +530,8 @@ def add_column(column):
 def execute(query):
     try:
         db.engine.execute(query)
-    except BaseException:
+    except BaseException as e:
+        print(e)
         pass
 
 
@@ -665,32 +670,41 @@ def init_db():
 
 
 def migrate(db_version):
-    execute('CREATE INDEX date ON daily_usage (date);')
-    execute('CREATE INDEX username ON user (username);')
-    execute('CREATE INDEX username ON admin_user (username);')
-    execute('CREATE INDEX telegram_id ON user (telegram_id);')
-    execute('CREATE INDEX telegram_id ON admin_user (telegram_id);')
-
-    execute('ALTER TABLE proxy DROP INDEX `name`;')
-
-    execute("alter table user alter column telegram_id bigint;")
-    execute("alter table admin_user alter column telegram_id bigint;")
-
-    add_column(Child.mode)
-    add_column(Child.name)
-    add_column(User.lang)
-    add_column(AdminUser.lang)
-    add_column(User.username)
-    add_column(User.password)
-    add_column(AdminUser.username)
-    add_column(AdminUser.password)
-    add_column(User.wg_pk)
-    add_column(User.wg_pub)
-    add_column(User.wg_psk)
-
-    add_column(Domain.extra_params)
-
+    for table_name, table_obj in db.metadata.tables.items():
+        for column in table_obj.columns:
+            add_column(column)
     Events.db_prehook.notify()
+    if db_version < 76:
+        execute('update user_detail set connected_devices="" where connected_devices IS NULL')
+    if db_version<70:
+        execute('CREATE INDEX date ON daily_usage (date);')
+        execute('CREATE INDEX username ON user (username);')
+        execute('CREATE INDEX username ON admin_user (username);')
+        execute('CREATE INDEX telegram_id ON user (telegram_id);')
+        execute('CREATE INDEX telegram_id ON admin_user (telegram_id);')
+
+        execute('ALTER TABLE proxy DROP INDEX `name`;')
+
+        execute("ALTER TABLE user MODIFY COLUMN telegram_id BIGINT;")
+        execute("ALTER TABLE admin_user MODIFY COLUMN telegram_id BIGINT;")
+
+        # aaa
+        # # add_column(UserDetail.connected_devices)
+        # add_column(Child.mode)
+        # add_column(Child.name)
+        # add_column(User.lang)
+        # add_column(AdminUser.lang)
+        # add_column(User.username)
+        # add_column(User.password)
+        # add_column(AdminUser.username)
+        # add_column(AdminUser.password)
+        # add_column(User.wg_pk)
+        # add_column(User.wg_pub)
+        # add_column(User.wg_psk)
+
+        # add_column(Domain.extra_params)
+
+
     if db_version < 52:
         execute(f'update domain set mode="sub_link_only", sub_link_only=false where sub_link_only = true or mode=1  or mode="1"')
         execute(f'update domain set mode="direct", sub_link_only=false where mode=0  or mode="0"')

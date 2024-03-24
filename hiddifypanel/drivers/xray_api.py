@@ -1,6 +1,7 @@
 import xtlsapi
 from hiddifypanel.models import *
 from .abstract_driver import DriverABS
+from collections import defaultdict
 
 
 class XrayApi(DriverABS):
@@ -97,7 +98,16 @@ class XrayApi(DriverABS):
                 pass
 
     def get_all_usage(self, users):
-        return {u: self.get_usage_imp(u.uuid) for u in users}
+        xray_client = self.get_xray_client()
+        usages = xray_client.stats_query('user', reset=True)
+        uuid_user_map = {u.uuid: u for u in users}
+        res = defaultdict(int)
+        for use in usages:
+            if "user>>>" not in use.name:
+                continue
+            uuid = use.name.split(">>>")[1].split("@")[0]
+            res[uuid_user_map[uuid]] += use.value
+        return res
 
     def get_usage_imp(self, uuid):
         xray_client = self.get_xray_client()

@@ -4,19 +4,21 @@ from .singbox_api import SingboxApi
 from .wireguard_api import WireguardApi
 from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify
+from collections import defaultdict
+
 drivers = [XrayApi(), SingboxApi(), SSHLibertyBridgeApi(), WireguardApi()]
 
 
 def get_users_usage(reset=True):
     res = {}
     users = list(User.query.all())
-    res = {u: {'usage': 0, 'ips': ''} for u in users}
+    res = defaultdict(lambda: {'usage': 0, 'devices': ''})
     for driver in drivers:
         all_usage = driver.get_all_usage(users)
         for user, usage in all_usage.items():
             if usage:
                 res[user]['usage'] += usage
-            # res[user]['ip'] +=usage
+            # res[user]['devices'] +=usage
     return res
 
 
