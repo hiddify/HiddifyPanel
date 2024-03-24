@@ -10,6 +10,8 @@ def init_app(app):
         from .register_api import RegisterApi
         from .sync_api import SyncApi
         from .usage_api import UsageApi
+        from .status_api import StatusApi
+        bp.add_url_rule('/status/', view_func=StatusApi)
         bp.add_url_rule('/register/', view_func=RegisterApi)
         bp.add_url_rule('/sync/', view_func=SyncApi)
         bp.add_url_rule('/usage/', view_func=UsageApi)

@@ -39,7 +39,7 @@ class SyncApi(MethodView):
 
         child = Child.query.filter(Child.unique_id == unique_id).first()
         if not child:
-            abort(400, "The child does not exist")
+            abort(404, "The child does not exist")
 
         # TODO: insert data
         try:
