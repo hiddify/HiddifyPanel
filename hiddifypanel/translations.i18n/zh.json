@@ -6,7 +6,6 @@
   "0 - Last day": "最后一天",
   "Access Denied!": "拒绝访问",
   "Actions": "行动",
-  "Active": "",
   "Active Users": "活跃用户",
   "Add": "添加",
   "Add some text that is only visible to super_admin.": "添加一些只有超级管理员可见的文本",
@@ -47,8 +46,12 @@
   "Create Package": "创建包",
   "Current Domain": "当前域名",
   "Dear {}\n\nYour hiddify information is\nUUID: {}\nLast online date: {}\nExpire time: {}\nUsage class: {}\n": "亲爱的 {}\n\n您的 Hiddify 信息是\nUUID：{}\n最后在线日期：{}\n过期时间：{}\n使用类别：{}",
-  "Define the admin mode. ": "🥇🥈🥉 定义管理模式",
-  "Define the user mode. Should the usage reset every month?": "用户的套餐模式。使用量是否应该每月、每周等重置",
+  "Define the admin mode": {
+    " ": "🥇🥈🥉 定义管理模式"
+  },
+  "Define the user mode": {
+    " Should the usage reset every month?": "用户的套餐模式。使用量是否应该每月、每周等重置"
+  },
   "Delete?": "删除？",
   "Develop": "⚠️开发",
   "Direct": "➖ 直接",
@@ -86,7 +89,9 @@
   "HiddifyNG": "HiddifyNG <span class='badge badge-success'>推荐</span>",
   "HiddifyNG intro": "📌 请从以下任一链接安装 HiddifyNG：\n<br/>\n %(dl_link)s %(play_link)s\n<br/>\n然后单击下面的链接并在 HiddifyNG 中打开它。\n<br/>",
   "HiddigyN": "HiddifyN <span class='badge badge-success'>推荐</span>",
-  "Hooray 🎉 🎉 🎉 \nWelcome to hiddifybot.\nStart by clicking the link on the panel or entering your UUID.": "万岁🎉🎉🎉\n欢迎使用 Hiddify 机器人\n首先单击面板上的链接或输入您的 UUID。",
+  "Hooray 🎉 🎉 🎉 \nWelcome to hiddifybot": {
+    "\nStart by clicking the link on the panel or entering your UUID.": "万岁🎉🎉🎉\n欢迎使用 Hiddify 机器人\n首先单击面板上的链接或输入您的 UUID。"
+  },
   "Hover the user to see the reason": "将鼠标悬停在用户上即可查看原因",
   "How many days this package should be available?": "这个套餐有多少天？",
   "How many?": "多少？",
@@ -96,7 +101,9 @@
   "Import in": "导入",
   "In 5 minutes": "5 分钟内",
   "In CDN mode, Domain IP=%(domain_ip)s should be different to your ip=%(server_ip)s": "在CDN模式，域名IP=%(domain_ip)s应该与你的IP不同=%(server_ip)s",
-  "In this section, you can add your domain. You need to add at least one domain in direct mode.": "1️⃣ 在此部分中，您可以添加您的域名。\n<br>\n2️⃣ 如果您想减少出现脏 IP 的可能性，可以添加多个中继服务器<a href='https://github.com/hiddify/hiddify-config/discussions/129'>阅读更多</a>。\n<br>\n3️⃣ 如果您的面板中有多个 IPv4 或 IPv6，您必须将指向它们的域添加为中继。",
+  "In this section, you can add your domain": {
+    " You need to add at least one domain in direct mode.": "1️⃣ 在此部分中，您可以添加您的域名。\n<br>\n2️⃣ 如果您想减少出现脏 IP 的可能性，可以添加多个中继服务器<a href='https://github.com/hiddify/hiddify-config/discussions/129'>阅读更多</a>。\n<br>\n3️⃣ 如果您的面板中有多个 IPv4 或 IPv6，您必须将指向它们的域添加为中继。"
+  },
   "Incorrect Password": "⚠️密码错误",
   "Install": "安装",
   "Install Hiddify Application": "Hiddify 管理器安装",
@@ -105,8 +112,12 @@
   "Invalid admin link": "管理员链接无效",
   "Iran": "🇮🇷伊朗",
   "It seems that you are using default domain (%(domain)s) which is not recommended.": "看来您正在使用默认域（％（domain）s），这是不推荐的。请从域部分更改或删除它。",
-  "It seems that you have not created any users yet. Default user link: %(default_link)s": "您似乎还没有创建任何用户。默认用户链接：%(default_link)s",
-  "It seems that you have not setup the system completely. <a class=\"btn btn-success\" href=\"%(quick_setup)s\">Click here</a> to complete setup.": "看来你还没有完全安装系统。 <a class='btn btn-success' href='%(quick_setup)s'>单击此处</a>完成设置。",
+  "It seems that you have not created any users yet": {
+    " Default user link: %(default_link)s": "您似乎还没有创建任何用户。默认用户链接：%(default_link)s"
+  },
+  "It seems that you have not setup the system completely": {
+    " <a class=\"btn btn-success\" href=\"%(quick_setup)s\">Click here</a> to complete setup.": "看来你还没有完全安装系统。 <a class='btn btn-success' href='%(quick_setup)s'>单击此处</a>完成设置。"
+  },
   "It will override the root admin to the current user": "它将把备份文件的所有者admin覆盖为当前用户",
   "Join our Hiddify Telegram channel to get the latest updates on Hiddify.": "加入我们的 Hiddify Telegram 频道，获取 Hiddify 的最新动态。",
   "Last Online": "最后一次连接",
@@ -139,15 +150,18 @@
   "Package not started yet.": "套餐还没开始。",
   "Panel Link": "➖ 面板链接",
   "Parent Panel": "家长小组",
-  "Please Wait...": "请稍等...",
+  "Please Wait.": {
+    ".": "请稍等..."
+  },
   "Please click on %(install)s to save the user page.": "单击 %(install)s 保存用户页面。",
   "Please connect your telegram account to the panel to be informed about latest news.": "请将您的 Telegram 帐户连接到面板以获取最新消息。",
   "Please connect your telegram accout to the panel to be informed about latest news.": "请将您的 Telegram 帐户连接到面板以了解您的订阅的最新状态",
   "Please create an issue on Github.": "请在 Github 上创建问题",
-  "Please note that your panel can be accessed only via <a href=\"%(adminlink)s\" class=\"btn btn-primary copy-link\">%(adminlink)s</a>. Please save this link.": "请注意，您的面板只能通过以下链接访问。请保存此链接。\n<p><a href='%(adminlink)s' class='btn btn-secondary copy-link'><i class='fa-solid fa-copy'></i></a>\n<a href='%(adminlink)s' class='copy-link' style='word-break: break-all;'>%(adminlink)s</a></p>",
+  "Please note that your panel can be accessed only via <a href=\"%(adminlink)s\" class=\"btn btn-primary copy-link\">%(adminlink)s</a>": {
+    " Please save this link.": "请注意，您的面板只能通过以下链接访问。请保存此链接。\n<p><a href='%(adminlink)s' class='btn btn-secondary copy-link'><i class='fa-solid fa-copy'></i></a>\n<a href='%(adminlink)s' class='copy-link' style='word-break: break-all;'>%(adminlink)s</a></p>"
+  },
   "Please select at least one file.": "请选择至少一个文件",
   "Please select at least one record.": "请选择至少一条记录",
-  "Please select at least one user": "",
   "Please select one of the following applications:": "📍请选择以下应用程序之一：\n<br/>\n<br/>",
   "Please type your message to send to the telegram:": "✏️ 请写下您要发送到 Telegram 的消息：",
   "Please understand that parent panel is under test and the plan and the condition of use maybe change at anytime.": "请理解，家长面板正在测试中，计划和使用条件可能随时发生变化。",
@@ -162,7 +176,6 @@
   "Release": "✅ 发布",
   "Remaining: ": "包裹结束",
   "Remote nodes are not supported yet!": "尚不支持远程节点！",
-  "Rename File": "",
   "Reset Filters": "重置过滤器",
   "Reset Usage Time:": "流量使用重置时间：",
   "Reset every month": "每月",
@@ -183,7 +196,6 @@
   "Save Link": "保存链接",
   "Select all records": "选择所有记录",
   "Select record": "选择记录",
-  "Seleted Users": "",
   "Send Message to User's Telegram": "📣 向用户的 Telegram 发送消息",
   "Sending": "正在发送...",
   "Should be a valid domain": "应该是有效域名",
@@ -196,18 +208,26 @@
   "Status": "地位",
   "Submit": "提交",
   "Success": "成功",
-  "Success! Please wait around 4 minutes to make sure everything is updated. During this time, please save your proxy links which are:": "⚠️ 请等待大约 5 分钟以确保所有内容均已更新。在此期间，请复制并保存您的代理链接：",
+  "Success! Please wait around 4 minutes to make sure everything is updated": {
+    " During this time, please save your proxy links which are:": "⚠️ 请等待大约 5 分钟以确保所有内容均已更新。在此期间，请复制并保存您的代理链接："
+  },
   "Success! Please wait around 5 minutes to make sure everything is updated.": "✔️ 成功！请等待大约 5 分钟以确保所有内容均已更新",
   "Telegram Bot": "电报机器人",
   "Temporary Short Link": "⏱️临时短链接",
-  "The action done successfully. You can now leave this page.": "✅ 行动成功完成。您现在可以离开此页面",
+  "The action done successfully": {
+    " You can now leave this page.": "✅ 行动成功完成。您现在可以离开此页面"
+  },
   "The message has been sent.": "消息已发送。",
   "The message was not sent to": "该消息未发送至",
   "The name shown in the configs for this domain.": "将显示在该域的配置中的名称。",
-  "The page has been moved to a new link. Please copy and save the new link.": "该页面已移至新链接。请复制并保存新链接。",
+  "The page has been moved to a new link": {
+    " Please copy and save the new link.": "该页面已移至新链接。请复制并保存新链接。"
+  },
   "This can be used for giving your users a permanent non blockable links.": "这可用于为您的用户提供永久的不可阻止链接。",
   "This domain does not exist in the panel!": "该域名在面板中不存在！",
-  "This version of hiddify panel is outdated. Please update it from admin area.": "⚠️ 此版本的 Hiddify Manager 已过时。请从管理区域更新",
+  "This version of hiddify panel is outdated": {
+    " Please update it from admin area.": "⚠️ 此版本的 Hiddify Manager 已过时。请从管理区域更新"
+  },
   "Today Usage": "今天",
   "Too many Connected IPs": "连接的IP太多",
   "Total Usage": "总使用量",
@@ -217,25 +237,31 @@
   "Use HiddifyNext:": "使用 HiddifyNext：",
   "User activated!": "用户激活",
   "User is inactive": "用户处于非活动状态",
-  "User usage will be updated every 6 minutes. To update it now click <a href=\"%(link)s\" class=\"btn btn-info\">here</a>": "",
   "V2rayNG": "替代 v2rayNG <button class='btn btn-sm btn-default' onclick='show_video('android-v2rayng')'><i class='fa-solid fa-question'></i> </button>\n<br/>\n<br/>",
   "V2rayNG intro": "请从以下任一链接安装 v2rayNG：%(dl_link)s %(play_link)s。\n然后按照视频教程复制下面的链接粘贴到v2rayNG中 <button class='btn btn-sm btn-default' onclick='show_video('android-v2rayng')'><i class='fa-solid fa -问题'></i> </按钮>。\n<br/>",
   "View in Telegram": "在电报中查看",
   "Want to enjoy more with telegram?": "ℹ️ 将您的帐户连接到 Telegram",
   "Welcome %(user)s": "欢迎%(user)s",
-  "Welcome to admin bot. Choose your action": "欢迎使用管理机器人。选择你的行动",
+  "Welcome to admin bot": {
+    " Choose your action": "欢迎使用管理机器人。选择你的行动"
+  },
   "Why Going to Premium?": "为什么要选择高级版？",
   "Windows": "视窗",
-  "With selected": "",
   "Xray": "☢️ XRay",
   "Yesterday Usage": "昨天",
   "You can download a json formated of configurations by clicking <a href='%(link)s' class='btn btn-primary'>here</a>": "🔄 Hiddify Manager 每 6 小时自动进行一次备份。备份文件在服务器上的路径：⬇️\n<br>\n/opt/hiddify-config/hiddify-panel/备份\n<br>\n<br>\n<br>\n⚠️您可以通过单击下面的按钮下载配置的 JSON 文件格式\n<br>\n<br>\n<a href='%(link)s' class='btn btn-primary'>下载备份文件</a>",
   "You can restore your configs from previously downloaded configs": "ℹ️您可以从以前下载的备份文件恢复您的配置",
-  "You can select the configs with which domains show be shown in the user area. If you select all, automatically, all the new domains will be added for each users.": "对于访问该域的用户区的用户，指定他们可以看到哪些域的代理。\n<br>\n建议：对于IP未过滤且与其他域不同的域，选择所有其他域（当前域除外）。因此，由于该 IP 的使用不是用于代理，并且它是一个简单的网站，因此该域名和 IP 永远不会被阻止，您的用户可以轻松更新新的配置文件。",
+  "You can select the configs with which domains show be shown in the user area": {
+    " If you select all, automatically, all the new domains will be added for each users.": "对于访问该域的用户区的用户，指定他们可以看到哪些域的代理。\n<br>\n建议：对于IP未过滤且与其他域不同的域，选择所有其他域（当前域除外）。因此，由于该 IP 的使用不是用于代理，并且它是一个简单的网站，因此该域名和 IP 永远不会被阻止，您的用户可以轻松更新新的配置文件。"
+  },
   "You have too much users! You can have only %(active)s active users and %(total)s users": "你的用户太多了！您只能拥有 %(active)s 个活跃用户和 %(total)s 个用户",
   "You have used this domain in: ": "您已在以下位置使用过该域名：",
-  "You should visit this page without VPN. Your country=%(your_country)s\nexpected=%(expected_country)s": "您应该在没有 VPN 的情况下访问此页面 Your Country =%(your_country)s\n预期=%(expected_country)s",
-  "Your domains changed. Please do not forget to copy admin links, otherwise you can not access to the panel anymore.": "⚠️ 您的域名已更改。请不要忘记复制管理链接，否则您将无法再访问面板",
+  "You should visit this page without VPN": {
+    " Your country=%(your_country)s\nexpected=%(expected_country)s": "您应该在没有 VPN 的情况下访问此页面 Your Country =%(your_country)s\n预期=%(expected_country)s"
+  },
+  "Your domains changed": {
+    " Please do not forget to copy admin links, otherwise you can not access to the panel anymore.": "⚠️ 您的域名已更改。请不要忘记复制管理链接，否则您将无法再访问面板"
+  },
   "Your hiddify instance information \nDomain: {} \nUsage limit: {} GB\nCurrent usage: {} GB\nExpires at: {} \nRemaining days: {} \n\n\n Happy using 🎉 🎉 🎉 \n": "您的 Hiddify 实例信息\n领域： {}\n使用限制：{} GB\n当前使用情况：{} GB\n到期时间：{}\n剩余天数：{}\n\n\n祝你好运！ 🎉🎉🎉",
   "[Admin only visible message:] You can change this message from settings": "[管理员专用消息]：可通过设置自定义。",
   "actions": "行动",
@@ -335,15 +361,15 @@
   "child has been removed!": "孩子已被移走！",
   "clickable copy": "社交媒体链接",
   "close": "关闭",
-  "config.Domain already used": "域存在于域部分。使用另一个域",
-  "config.Invalid brand link": "无效的链接。它应该采用以下格式：（https 或 http://example.com）",
-  "config.Invalid domain": "错误！无效域名。域名格式为 www.google.com",
-  "config.Invalid port": "端口无效。它应该是逗号分隔的整数，例如2052,2053",
-  "config.Invalid proxy path": "代理路径无效。它应该是 ASCI 字符串 (a-z A-Z 0-9)",
-  "config.Invalid telegram bot token": "Telegram 机器人令牌无效",
-  "config.Invalid! The pattern is number-number": "⚠️配置无效！模式是数字-数字",
-  "config.Invalid! it should be a number only": "⚠️配置无效！它应该只是一个数字",
   "config": {
+    "Domain already used": "域存在于域部分。使用另一个域",
+    "Invalid brand link": "无效的链接。它应该采用以下格式：（https 或 http://example.com）",
+    "Invalid domain": "错误！无效域名。域名格式为 www.google.com",
+    "Invalid port": "端口无效。它应该是逗号分隔的整数，例如2052,2053",
+    "Invalid proxy path": "代理路径无效。它应该是 ASCI 字符串 (a-z A-Z 0-9)",
+    "Invalid telegram bot token": "Telegram 机器人令牌无效",
+    "Invalid! The pattern is number-number": "⚠️配置无效！模式是数字-数字",
+    "Invalid! it should be a number only": "⚠️配置无效！它应该只是一个数字",
     "admin": {
       "description": "管理部分用于配置管理相关设置",
       "label": "管理设置"
@@ -452,10 +478,6 @@
       "description": "这是一般系统配置",
       "label": "常规设置"
     },
-    "grpc_enable": {
-      "description": "",
-      "label": ""
-    },
     "hidden": {
       "description": "配置.隐藏.描述",
       "label": "配置.隐藏.标签"
@@ -472,33 +494,17 @@
       "description": "通过允许此操作，您的用户可以使用未加密的 HTTP 端口连接到系统。 （不建议）",
       "label": "☑️ 允许 HTTP 连接"
     },
-    "httpupgrade_enable": {
-      "description": "",
-      "label": ""
-    },
     "hysteria": {
       "description": "Hysteria 是一款功能齐全的代理和中继工具，针对有损、不稳定的连接（例如卫星网络、拥挤的公共 Wi-Fi、从中国连接到国外服务器）进行了优化",
       "label": "歇斯底里"
-    },
-    "hysteria_down_mbps": {
-      "description": "",
-      "label": ""
     },
     "hysteria_enable": {
       "description": "启用基于 UDP 的 Hysteria 协议",
       "label": "启用歇斯底里2"
     },
-    "hysteria_obfs_enable": {
-      "description": "",
-      "label": ""
-    },
     "hysteria_port": {
       "description": "Hysteria UDP 端口，例如 5678",
       "label": "🔍 Hysteria2 端口"
-    },
-    "hysteria_up_mbps": {
-      "description": "",
-      "label": ""
     },
     "is_parent": {
       "description": "config.is_parent.description",
@@ -528,46 +534,6 @@
       "description": "要将本产品用于商业用途，您必须购买其许可证",
       "label": "许可证代码"
     },
-    "mux": {
-      "description": "",
-      "label": ""
-    },
-    "mux_brutal_down_mbps": {
-      "description": "",
-      "label": ""
-    },
-    "mux_brutal_enable": {
-      "description": "",
-      "label": ""
-    },
-    "mux_brutal_up_mbps": {
-      "description": "",
-      "label": ""
-    },
-    "mux_enable": {
-      "description": "",
-      "label": ""
-    },
-    "mux_max_connections": {
-      "description": "",
-      "label": ""
-    },
-    "mux_max_streams": {
-      "description": "",
-      "label": ""
-    },
-    "mux_min_streams": {
-      "description": "",
-      "label": ""
-    },
-    "mux_padding_enable": {
-      "description": "",
-      "label": ""
-    },
-    "mux_protocol": {
-      "description": "",
-      "label": ""
-    },
     "netdata": {
       "description": "用于显示资源。使用您服务器的 CPU，但不会太多。",
       "label": "网络数据"
@@ -591,10 +557,6 @@
     "path_grpc": {
       "description": "配置中的 gRPC 路径",
       "label": "ℹ️ gRPC 路径"
-    },
-    "path_httpupgrade": {
-      "description": "",
-      "label": ""
     },
     "path_ss": {
       "description": "链接中的 Shadowsocks 路径",
@@ -632,14 +594,6 @@
       "description": "我们使用秘密代理路径来隐藏我们的政府代理",
       "label": "ℹ️ 秘密代理路径"
     },
-    "proxy_path_admin": {
-      "description": "",
-      "label": ""
-    },
-    "proxy_path_client": {
-      "description": "",
-      "label": ""
-    },
     "reality": {
       "description": "REALITY 消除了服务器端 TLS 指纹功能",
       "label": "现实"
@@ -647,10 +601,6 @@
     "reality_fallback_domain": {
       "description": "当 GFW 访问服务器名称中的网站时，将被重定向到该域。",
       "label": "🌍 现实后备域"
-    },
-    "reality_port": {
-      "description": "",
-      "label": ""
     },
     "reality_private_key": {
       "description": "不要改变它",
@@ -679,22 +629,6 @@
     "restls1_3_domain": {
       "description": "config.restls1_3_domain.description",
       "label": "config.restls1_3_domain.label"
-    },
-    "shadowsocks": {
-      "description": "",
-      "label": ""
-    },
-    "shadowsocks2022_enable": {
-      "description": "",
-      "label": ""
-    },
-    "shadowsocks2022_method": {
-      "description": "",
-      "label": ""
-    },
-    "shadowsocks2022_port": {
-      "description": "",
-      "label": ""
     },
     "shadowtls": {
       "description": "向防火墙公开真实 tls 握手的代理。\n\n它的工作方式类似于木马，但不需要签名证书。防火墙将看到与您选择的有效证书的真实 tls 握手。",
@@ -788,37 +722,9 @@
       "description": "可以在此部分设置 TLS 配置。",
       "label": "TLS 配置"
     },
-    "tls_fragment_enable": {
-      "description": "",
-      "label": ""
-    },
-    "tls_fragment_size": {
-      "description": "",
-      "label": ""
-    },
-    "tls_fragment_sleep": {
-      "description": "",
-      "label": ""
-    },
-    "tls_mixed_case": {
-      "description": "",
-      "label": ""
-    },
-    "tls_padding_enable": {
-      "description": "",
-      "label": ""
-    },
-    "tls_padding_length": {
-      "description": "",
-      "label": ""
-    },
     "tls_ports": {
       "description": "逗号分隔的整数，指示用作 TLS 连接的端口（在任何情况下都将使用端口 443）",
       "label": "🔎 TLS 端口"
-    },
-    "tls_trick": {
-      "description": "",
-      "label": ""
     },
     "too_advanced": {
       "description": "指定代理路径。如果您使用 HTTP 和 VMess，这一点尤其重要",
@@ -875,48 +781,8 @@
       "description": "🔝 提高浏览速度。要获取密钥，请转到 <a href='https://1.1.1.1/'> 1.1.1.1 </a>\n应用程序并从 Cloudflare 购买原始 KEY\n<br>\n⚠️如果此Key有错误，WARP将被禁用。",
       "label": "🔑 变形加键"
     },
-    "warp_sites": {
-      "description": "",
-      "label": ""
-    },
-    "wireguard": {
-      "description": "",
-      "label": ""
-    },
-    "wireguard_enable": {
-      "description": "",
-      "label": ""
-    },
-    "wireguard_ipv4": {
-      "description": "",
-      "label": ""
-    },
-    "wireguard_ipv6": {
-      "description": "",
-      "label": ""
-    },
-    "wireguard_noise_trick": {
-      "description": "",
-      "label": ""
-    },
-    "wireguard_port": {
-      "description": "",
-      "label": ""
-    },
-    "wireguard_private_key": {
-      "description": "",
-      "label": ""
-    },
-    "wireguard_public_key": {
-      "description": "",
-      "label": ""
-    },
-    "ws_enable": {
-      "description": "",
-      "label": ""
-    }
+    "invalid uuid": "UUID 秘密无效。示例：6098ea35-8cb2-4a08-ba15-2be25bc49cb6"
   },
-  "config.invalid uuid": "UUID 秘密无效。示例：6098ea35-8cb2-4a08-ba15-2be25bc49cb6",
   "copy": "复制",
   "daily": "⏰ 每日",
   "days": "天",
@@ -936,11 +802,12 @@
   "download": "直接下载",
   "fake": "🆎 假网站",
   "gRPC": "➿ gRPC",
-  "gRPC is a H2 based protocol. Maybe it is faster for you!": "ℹ️ gRPC 是一个基于 H2 的协议。也许对你来说更快！",
+  "gRPC is a H2 based protocol": {
+    " Maybe it is faster for you!": "ℹ️ gRPC 是一个基于 H2 的协议。也许对你来说更快！"
+  },
   "in parent panel": "在家长面板中",
   "install from google play": "<i class='fa-brands fa-google-play'></i> Google Play",
   "ios": "iOS系统",
-  "items": "",
   "lang": {
     "en": "🇺🇸 English 中文",
     "fa": "🇮🇷 Persian فارسی 波斯语",
@@ -998,7 +865,9 @@
   "relay": "♾️ 中继（使用中间节点连接）",
   "search": "搜索",
   "see the log in the bellow screen": "📑 查看以下屏幕中的日志",
-  "selected domain for REALITY is not in the same ASN. To better use of the protocol, it is better to find a domain in the same ASN.": "REALITY 的所选域不在同一 ASN 中。为了更好地使用该协议，最好在同一 ASN 中找到一个域",
+  "selected domain for REALITY is not in the same ASN": {
+    " To better use of the protocol, it is better to find a domain in the same ASN.": "REALITY 的所选域不在同一 ASN 中。为了更好地使用该协议，最好在同一 ASN 中找到一个域"
+  },
   "serverssh": {
     "password-login": {
       "warning": "您的服务器很容易受到滥用，因为您的 SSH 中启用了密码身份验证。为了保护您的服务器，请切换到密钥身份验证机制并关闭PasswordAuthentication。<a href='https://github.com/hiddify/Hiddify-Manager/wiki/Disable-SSH-Password-Authentication'>阅读更多...</a>"
@@ -1091,7 +960,6 @@
       "tool": {
         "all-configs": "所有配置",
         "doh": {
-          "help": "",
           "title": "HTTPS 上的 DNS"
         }
       },
@@ -1104,15 +972,15 @@
       },
       "windows": {
         "intro": "首先，根据您的操作系统下载并安装 Hiddify Desktop 软件。\n<br/>\n%(hiddify_desktop_links)s\n\n<详情>\n<summary>为什么选择 Hiddify Desktop？</summary>\n<div class='callout callout-info'>\n\n        Hiddify Desktop 是 Clash 的一个安全开源分支，支持更多 VLESS 和 UTLS 指纹识别。\n        <br>\n<br/>\n        其源代码存在于\n        <a href='https://github.com/hiddify/HiddifyDesktop'>GitHub</a>。\n        \n\n        <详情>\n            <summary>替代方案：正常冲突</summary>\n            %(normal_clash_link)s\n\n            <div class='警报警报-危险'>\n            Clash 不支持浏览器指纹识别和 VLESS 协议。因此，我们需要为其添加另一个链接。\n            </div>\n            \n\n        </详情>\n</div>\n        </详情>\n<br/>\n现在，根据您的需要，您可以单击其中一个按钮。通过在浏览器中查看该窗口，只需单击<b>打开</b>选项即可自动将服务器链接添加到 Hiddify Desktop。"
-      }
+      },
+      "select os": "请选择您的操作系统。",
+      "select tool": "请选择该项目。"
     },
     "last_reset_time": "最后使用日期重置",
     "name": "姓名",
     "usage_limit_GB": "⌛️ 使用限制 (GB)",
     "user_links": "用户链接"
   },
-  "user.home.select os": "请选择您的操作系统。",
-  "user.home.select tool": "请选择该项目。",
   "weekly": "📅每周",
   "worker": "✴️ Cloudflare 工作人员",
   "📅%(expire_days)s days": "📅%(expire_days)s 天剩余"
