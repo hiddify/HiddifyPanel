@@ -236,3 +236,11 @@ class AdminstratorAdmin(AdminLTEModelView):
             del form.max_users
             del form.max_active_users
             del form.can_add_admin
+
+    def after_model_change(form, model, is_created):
+        if hiddify.is_parent():
+            hiddify.send_sync_req_to_childs()
+
+    def after_model_delete(self, model):
+        if hiddify.is_parent():
+            hiddify.send_sync_req_to_childs()

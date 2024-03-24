@@ -297,9 +297,15 @@ class UserAdmin(AdminLTEModelView):
             user_driver.remove_client(model)
         hiddify.quick_apply_users()
 
+        if hiddify.is_parent():
+            hiddify.send_sync_req_to_childs()
+
     def after_model_delete(self, model):
         user_driver.remove_client(model)
         hiddify.quick_apply_users()
+
+        if hiddify.is_parent():
+            hiddify.send_sync_req_to_childs()
 
     def get_list(self, page, sort_column, sort_desc, search, filters, page_size=50, *args, **kwargs):
         res = None
