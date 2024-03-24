@@ -196,8 +196,8 @@ def request_child_to_sync(child: Child) -> bool:
     except:
         return False
     child_admin_proxy_path = StrConfig.query.filter(StrConfig.child_id == child.id, StrConfig.key == ConfigEnum.proxy_path_admin).first().value
-    url = f'https://{child_domain}/{child_admin_proxy_path}/'
-    res = requests.post(url, headers={'Hiddify-API-Key': child.id})
+    url = f'https://{child_domain}/{child_admin_proxy_path}/api/v2/child/sync-parent/'
+    res = requests.post(url, headers={'Hiddify-API-Key': str(child.unique_id)})
     if res.status_code == 200 and res.json().get('msg') == 'ok':
         return True
 
