@@ -85,6 +85,10 @@ def init_app(app: APIFlask):
         # if e.status_code in [400,401,403]:
         #     return render_template('access-denied.html',error=e), e.status_code
 
+        if hutils.flask.is_api_call(request.path):
+            return {
+                'msg': e.message,
+            }, e.status_code
         return render_template('error.html', error=e), e.status_code
 
     @app.url_defaults
