@@ -17,10 +17,10 @@ from hiddifypanel import hutils
 
 from flask import g
 
-MAX_DB_VERSION = 80
+MAX_DB_VERSION = 90
 
 
-def _v76(child_id):
+def _v77(child_id):
     pass
 
 
@@ -674,9 +674,11 @@ def migrate(db_version):
         for column in table_obj.columns:
             add_column(column)
     Events.db_prehook.notify()
-    if db_version < 76:
+    if db_version < 77:
+        execute('ALTER TABLE user_detail DROP COLUMN connected_ips;')
         execute('update user_detail set connected_devices="" where connected_devices IS NULL')
-    if db_version<70:
+
+    if db_version < 70:
         execute('CREATE INDEX date ON daily_usage (date);')
         execute('CREATE INDEX username ON user (username);')
         execute('CREATE INDEX username ON admin_user (username);')
@@ -703,7 +705,6 @@ def migrate(db_version):
         # add_column(User.wg_psk)
 
         # add_column(Domain.extra_params)
-
 
     if db_version < 52:
         execute(f'update domain set mode="sub_link_only", sub_link_only=false where sub_link_only = true or mode=1  or mode="1"')
