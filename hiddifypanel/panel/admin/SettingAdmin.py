@@ -75,7 +75,7 @@ class SettingAdmin(FlaskView):
 
             for k, v in changed_configs.items():
                 set_hconfig(k, v, commit=False)
-            
+
             db.session.commit()
             flask_babel.refresh()
 
@@ -83,10 +83,10 @@ class SettingAdmin(FlaskView):
             p_mode = hconfig(ConfigEnum.panel_mode)
             if hconfig(ConfigEnum.parent_panel) and hconfig(ConfigEnum.parent_unique_id):
                 if p_mode != PanelMode.child:
-                    set_hconfig(ConfigEnum.panel_mode,PanelMode.child)
+                    set_hconfig(ConfigEnum.panel_mode, PanelMode.child)
             else:
                 if p_mode != PanelMode.standalone:
-                    set_hconfig(ConfigEnum.panel_mode,PanelMode.standalone)
+                    set_hconfig(ConfigEnum.panel_mode, PanelMode.standalone)
 
             from hiddifypanel.panel.commercial.telegrambot import register_bot
             from hiddifypanel.panel import hiddify_api
@@ -95,14 +95,14 @@ class SettingAdmin(FlaskView):
                 if hiddify_api.is_child_registered():
                     if not hiddify_api.sync_child_with_parent():
                         hutils.flask.flash(_('child.sync-failed'), 'danger')  # type: ignore
-                    else: # TODO: it's just for debuging
+                    else:  # TODO: it's just for debuging
                         hutils.flask.flash(_('child.sync-success'))  # type: ignore
 
                 else:
                     name = hconfig(ConfigEnum.unique_id)
                     if not hiddify_api.register_child_to_parent(name):
                         hutils.flask.flash(_('child.register-failed'), 'danger')  # type: ignore
-                    else: # TODO: it's just for debuging
+                    else:  # TODO: it's just for debuging
                         hutils.flask.flash(_('child.register-success'))  # type: ignore
             reset_action = hiddify.check_need_reset(old_configs)
 
@@ -163,6 +163,9 @@ def get_config_form():
             if not (c2 in configs_key):
                 continue
             c = configs_key[c2]
+            if hconfig(ConfigEnum.panel_mode) == PanelMode.parent:
+                if c.key == ConfigEnum.parent_panel or c.key == ConfigEnum.parent_unique_id:
+                    continue
             extra_info = ''
             if c.key in bool_types:
                 field = SwitchField(_(f'config.{c.key}.label'), default=c.value, description=_(f'config.{c.key}.description'))
