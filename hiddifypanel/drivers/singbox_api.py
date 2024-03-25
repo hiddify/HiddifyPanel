@@ -7,6 +7,8 @@ from collections import defaultdict
 
 
 class SingboxApi(DriverABS):
+    def is_enabled(self) -> bool: return True
+
     def get_singbox_client(self):
         if hconfig(ConfigEnum.is_parent):
             return

@@ -7,6 +7,8 @@ from hiddifypanel.panel.run_commander import Command, commander
 
 
 class WireguardApi(DriverABS):
+    def is_enabled(self) -> bool:
+        return hconfig(ConfigEnum.wireguard_enable)
     WG_LOCAL_USAGE_FILE_PATH = './hiddify_usages.json'
 
     def __init__(self) -> None:
