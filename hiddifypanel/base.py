@@ -73,20 +73,20 @@ def create_app(*args, cli=False, **config):
     with app.app_context():
         init_db()
  # flaskbabel = FlaskBabel(app)
-    if not cli:
-        # @babel.localeselector
-        def get_locale():
-            # Put your logic here. Application can store locale in
-            # user profile, cookie, session, etc.
-            from hiddifypanel.models import ConfigEnum, hconfig
-            if "admin" in request.base_url:
-                g.locale = auth.current_account.lang or hconfig(ConfigEnum.admin_lang) or 'fa'
-            else:
-                g.locale = auth.current_account.lang or hconfig(ConfigEnum.lang) or 'fa'
-            return g.locale
-        app.jinja_env.globals['get_locale'] = get_locale
-        babel = Babel(app, locale_selector=get_locale)
 
+    # @babel.localeselector
+    def get_locale():
+        # Put your logic here. Application can store locale in
+        # user profile, cookie, session, etc.
+        from hiddifypanel.models import ConfigEnum, hconfig
+        if "admin" in request.base_url:
+            g.locale = auth.current_account.lang or hconfig(ConfigEnum.admin_lang) or 'fa'
+        else:
+            g.locale = auth.current_account.lang or hconfig(ConfigEnum.lang) or 'fa'
+        return g.locale
+    app.jinja_env.globals['get_locale'] = get_locale
+    babel = Babel(app, locale_selector=get_locale)
+    if not cli:
         hiddifypanel.panel.common.init_app(app)
         hiddifypanel.panel.common_bp.init_app(app)
 
