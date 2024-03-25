@@ -508,13 +508,13 @@ msgid "Note"
 msgstr "📝 Note"
 
 msgid "Offline more than 1 day"
-msgstr "Offline more than 1 day"
+msgstr "Offline More Than 1 Day"
 
 msgid "Offline more than 1 hour"
-msgstr "Offline more than 1 hour"
+msgstr "Offline More Than 1 Hour"
 
 msgid "Offline more than 1 week"
-msgstr "Offline more than 1 week"
+msgstr "Offline More Than 1 Week"
 
 msgid "Ok"
 msgstr "Ok"
@@ -595,6 +595,9 @@ msgstr "Please select at least one file."
 
 msgid "Please select at least one record."
 msgstr "Please select at least one record."
+
+msgid "Please select at least one user"
+msgstr "Please select at least one user"
 
 msgid "Please select one of the following applications:"
 msgstr ""
@@ -728,6 +731,9 @@ msgstr "Select all records"
 msgid "Select record"
 msgstr "Select record"
 
+msgid "Seleted Users"
+msgstr "Seleted Users"
+
 msgid "Send Message to User's Telegram"
 msgstr "📣 Send Message to User's Telegram"
 
@@ -841,11 +847,11 @@ msgid "User is inactive"
 msgstr "User Is Inactive"
 
 msgid ""
-"User usage will be updated every 6 minutes. To update it now click <a href=\"%(link)s\"\n"
-"        class=\"btn btn-info\">here</a>"
+"User usage will be updated every 6 minutes. To update it now click <a "
+"href=\"%(link)s\" class=\"btn btn-info\">here</a>"
 msgstr ""
-"🔄 User usage will be updated every 1 Minutes. to update it now <a "
-"href='%(link)s' class='btn btn-info'>Click Here</a>"
+"User usage will be updated every 6 minutes. To update it now click <a "
+"href=\"%(link)s\" class=\"btn btn-info\">here</a>"
 
 msgid "V2rayNG"
 msgstr ""
@@ -1221,7 +1227,7 @@ msgstr "Customizing User Page"
 msgid "config.branding_freetext.description"
 msgstr ""
 "Branding Text. this box's text will be shown on support section of User's Page. you can use HTML tags\n"
-"<p><br /><a href=\"https://onlinehtmleditor.dev\" target=\"_blank\">HTML Editor</a></p>"
+"<p><br /><a href=\"https://htmleditor.online/full\" target=\"_blank\">HTML Editor</a></p>"
 
 msgid "config.branding_freetext.label"
 msgstr "📢 Support Section Text"
@@ -1281,10 +1287,10 @@ msgid "config.country.label"
 msgstr "🌍 Country"
 
 msgid "config.create_easysetup_link.description"
-msgstr "-"
+msgstr "config.create_easysetup_link.description"
 
 msgid "config.create_easysetup_link.label"
-msgstr "-"
+msgstr "config.create_easysetup_link.label"
 
 msgid "config.db_version.description"
 msgstr "Database Version Description"
@@ -1293,10 +1299,10 @@ msgid "config.db_version.label"
 msgstr "Database Version Label"
 
 msgid "config.dbvalues.description"
-msgstr "-"
+msgstr "config.dbvalues.description"
 
 msgid "config.dbvalues.label"
-msgstr "-"
+msgstr "config.dbvalues.label"
 
 msgid "config.decoy_domain.description"
 msgstr ""
@@ -1356,10 +1362,10 @@ msgid "config.firewall.label"
 msgstr "🛡️ Firewall"
 
 msgid "config.first_setup.description"
-msgstr "-"
+msgstr "config.first_setup.description"
 
 msgid "config.first_setup.label"
-msgstr "-"
+msgstr "config.first_setup.label"
 
 msgid "config.general.description"
 msgstr "It is General System Configurations"
@@ -1376,10 +1382,10 @@ msgid "config.grpc_enable.label"
 msgstr "➿ Enable gRPC"
 
 msgid "config.hidden.description"
-msgstr "-"
+msgstr "config.hidden.description"
 
 msgid "config.hidden.label"
-msgstr "-"
+msgstr "config.hidden.label"
 
 msgid "config.http.description"
 msgstr "HTTP Configurations could be set in this section"
@@ -1407,7 +1413,7 @@ msgid "config.httpupgrade_enable.description"
 msgstr ""
 "HTTPUpgrade complete a HTTP 1.1 Upgrade request and response before using the connection directly. It is similar to WebSocket in the way it create an direction channel that can be forwarded by many reverse proxies and CDNs, without the need to deal with all the issue around WebSocket Protocol itself.\n"
 "\n"
-"⚠️ Not Available in Xray based Clients. Only HiddifyNext, Singbox, and V2fly clients are supported"
+"⚠️ Not Available in Xray based Clients. Only HiddifyNext, Singbox, and V2fly clients are supported. <p><a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/Basic-Concepts/#http-upgrade\" target=\"_blank\"><strong>(Read More)</strong></a></p>"
 
 msgid "config.httpupgrade_enable.label"
 msgstr "🆙 Enable HTTPUpgrade Method"
@@ -1452,7 +1458,7 @@ msgid "config.hysteria_up_mbps.label"
 msgstr "⬆️ Hysteria Upload (mbps)"
 
 msgid "config.is_parent.description"
-msgstr "-"
+msgstr "config.is_parent.description"
 
 msgid "config.is_parent.label"
 msgstr "Parent Panel"
@@ -1483,10 +1489,10 @@ msgid "config.lang.label"
 msgstr "🗺️ User Area Language"
 
 msgid "config.last_hash.description"
-msgstr "-"
+msgstr "config.last_hash.description"
 
 msgid "config.last_hash.label"
-msgstr "-"
+msgstr "config.last_hash.label"
 
 msgid "config.license.description"
 msgstr "For commercial use of this Product, you must Purchase its License"
@@ -1920,7 +1926,10 @@ msgstr "🔐 Telegram Bot Token"
 
 msgid "config.telegram_enable.description"
 msgstr ""
-"Telegram MTProto is used for Encapsulate Telegram Proxy as a tls traffic"
+"<p data-pm-slice=\"1 1 []\">Telegram MTProto is used for Encapsulate "
+"Telegram Proxy as a tls traffic<br>⚠️ <span "
+"style=\"color:#d32f2f;\"><strong>This protocol requires a Direct "
+"Domain</strong></span></p>"
 
 msgid "config.telegram_enable.label"
 msgstr "✔️ Enable Telegram MTProto"

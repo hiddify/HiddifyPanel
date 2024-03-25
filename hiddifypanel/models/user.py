@@ -41,7 +41,7 @@ class UserDetail(db.Model, SerializerMixin):
     child_id = db.Column(db.Integer, db.ForeignKey('child.id'), default=0, nullable=False)
     last_online = db.Column(db.DateTime, nullable=False, default=datetime.datetime.min)
     current_usage = db.Column(db.BigInteger, default=0, nullable=False)
-    connected_ips = db.Column(db.String(512), default='', nullable=False)
+    connected_devices = db.Column(db.String(512), default='', nullable=False)
 
     @property
     def current_usage_GB(self):
@@ -52,8 +52,8 @@ class UserDetail(db.Model, SerializerMixin):
         self.current_usage = (value or 0) * ONE_GIG
 
     @property
-    def ips(self):
-        return [] if not self.connected_ips else self.connected_ips.split(",")
+    def devices(self):
+        return [] if not self.connected_devices else self.connected_devices.split(",")
 
 
 class User(BaseAccount):
@@ -129,8 +129,8 @@ class User(BaseAccount):
     def ips(self):
         res = {}
         for detail in UserDetail.query.filter(UserDetail.user_id == self.id):
-            for ip in detail.ips:
-                res[ip] = 1
+            for device in detail.devices:
+                res[device] = 1
         return list(res.keys())
 
     def user_should_reset(self) -> bool:

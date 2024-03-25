@@ -3,9 +3,12 @@ from hiddifypanel.models import *
 from .abstract_driver import DriverABS
 from flask import current_app
 import json
+from collections import defaultdict
 
 
 class SingboxApi(DriverABS):
+    def is_enabled(self) -> bool: return True
+
     def get_singbox_client(self):
         return xtlsapi.SingboxClient('127.0.0.1', 10086)
 
@@ -32,7 +35,18 @@ class SingboxApi(DriverABS):
         pass
 
     def get_all_usage(self, users):
-        return {u: self.get_usage_imp(u.uuid) for u in users}
+        xray_client = self.get_singbox_client()
+        usages = xray_client.stats_query('user', reset=True)
+        uuid_user_map = {u.uuid: u for u in users}
+        res = defaultdict(int)
+        for use in usages:
+            if "user>>>" not in use.name:
+                continue
+            # print(use.name, use.value)
+            uuid = use.name.split(">>>")[1].split("@")[0]
+            res[uuid_user_map[uuid]] += use.value  # uplink + downlink
+        return res
+        # return {u: self.get_usage_imp(u.uuid) for u in users}
 
     def get_usage_imp(self, uuid):
         xray_client = self.get_singbox_client()

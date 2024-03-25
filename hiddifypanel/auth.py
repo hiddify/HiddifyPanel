@@ -145,9 +145,11 @@ def auth_before_request():
         # print(account)
         if not account:
             return logout_redirect()
-
-        next_url = request.url.replace(f'/{g.uuid}/', '/admin/' if is_admin_path else '/client/').replace("/admin/admin/",
-                                                                                                          '/admin/').replace("http://", "https://")
+        if is_admin_path:
+            next_url = request.url
+            next_url = next_url.replace(f'/{g.uuid}/', '/admin/')
+            next_url = next_url.replace("/admin/admin/", '/admin/')
+            next_url = next_url.replace("http://", "https://")
 
     elif apikey := request.headers.get("Hiddify-API-Key"):
         account = get_account_by_api_key(apikey, is_admin_path)
@@ -188,8 +190,16 @@ def auth_before_request():
         g.is_admin = hutils.flask.is_admin_role(account.role)  # type: ignore
         login_user(account, force=True)
         # print("loggining in")
-        if g.is_admin and next_url is not None and g.user_agent['is_browser'] and ".webmanifest" not in request.path:
-            return redirect(next_url)
+        if not g.is_admin:
+            return
+        if next_url is None:
+            return
+        if not g.user_agent['is_browser']:
+            return
+        if ".webmanifest" in request.path:
+            return
+
+        return redirect(next_url)
 
 
 def logout_redirect():

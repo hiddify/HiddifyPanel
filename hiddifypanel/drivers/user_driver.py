@@ -4,19 +4,25 @@ from .singbox_api import SingboxApi
 from .wireguard_api import WireguardApi
 from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify
+from collections import defaultdict
+
 drivers = [XrayApi(), SingboxApi(), SSHLibertyBridgeApi(), WireguardApi()]
+
+
+def enabled_drivers():
+    return [d for d in drivers if d.is_enabled()]
 
 
 def get_users_usage(reset=True):
     res = {}
     users = list(User.query.all())
-    res = {u: {'usage': 0, 'ips': ''} for u in users}
-    for driver in drivers:
+    res = defaultdict(lambda: {'usage': 0, 'devices': ''})
+    for driver in enabled_drivers():
         all_usage = driver.get_all_usage(users)
         for user, usage in all_usage.items():
             if usage:
                 res[user]['usage'] += usage
-            # res[user]['ip'] +=usage
+            # res[user]['devices'] +=usage
     return res
 
 
@@ -24,7 +30,7 @@ def get_enabled_users():
     from collections import defaultdict
     d = defaultdict(int)
     total = 0
-    for driver in drivers:
+    for driver in enabled_drivers():
         try:
             for u, v in driver.get_enabled_users().items():
                 if not v:
@@ -41,7 +47,7 @@ def get_enabled_users():
 
 
 def add_client(user: User):
-    for driver in drivers:
+    for driver in enabled_drivers():
         try:
             driver.add_client(user)
         except Exception as e:
@@ -49,7 +55,7 @@ def add_client(user: User):
 
 
 def remove_client(user: User):
-    for driver in drivers:
+    for driver in enabled_drivers():
         try:
             driver.remove_client(user)
         except Exception as e:

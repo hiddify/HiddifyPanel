@@ -125,16 +125,17 @@ def add_multiplex(base: dict, proxy: dict):
         base['multiplex']['max_connections'] = proxy.get('mux_max_connections', 0)
         base['multiplex']['min_streams'] = proxy.get('mux_min_streams', 0)
 
-    add_tcp_brutal(base)
+    add_tcp_brutal(base,proxy)
 
 
 def add_tcp_brutal(base: dict, proxy: dict):
     if 'multiplex' in base:
-        base['multiplex']['brutal'] = {
-            "enabled": proxy.get('mux_brutal_enable', False),
-            "up_mbps": proxy.get('mux_brutal_up_mbps', 10),
-            "down_mbps": proxy.get('mux_brutal_down_mbps', 10)
-        }
+        if proxy.get('mux_brutal_enable'):
+            base['multiplex']['brutal'] = {
+                "enabled": proxy.get('mux_brutal_enable', False),
+                "up_mbps": proxy.get('mux_brutal_up_mbps', 10),
+                "down_mbps": proxy.get('mux_brutal_down_mbps', 10)
+            }
 
 
 def add_udp_over_tcp(base: dict):

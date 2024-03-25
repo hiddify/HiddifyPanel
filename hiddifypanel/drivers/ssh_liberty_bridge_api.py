@@ -7,6 +7,8 @@ USERS_USAGE = "ssh-server:users-usage"
 
 
 class SSHLibertyBridgeApi(DriverABS):
+    def is_enabled(self) -> bool:
+        return hconfig(ConfigEnum.ssh_server_enable)
 
     def get_ssh_redis_client(self):
         if not hasattr(self, 'redis_client'):

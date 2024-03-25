@@ -24,7 +24,7 @@ msgid "Actions"
 msgstr "Действия"
 
 msgid "Active"
-msgstr ""
+msgstr "Активный"
 
 msgid "Active Users"
 msgstr "Активные пользователи"
@@ -90,7 +90,7 @@ msgid "Can add sub admin"
 msgstr "👥 Может добавлять администраторов"
 
 msgid "Can not connect to Cloudflare."
-msgstr ""
+msgstr "Не удаётся подключиться к Cloudflare."
 
 msgid "Check again"
 msgstr "Проверить снова"
@@ -114,7 +114,7 @@ msgid "Close"
 msgstr "Закрыть"
 
 msgid "Commercial use"
-msgstr ""
+msgstr "Коммерческое использование"
 
 msgid "Config file is incorrect"
 msgstr "Конфигурационный файл неверен"
@@ -141,7 +141,7 @@ msgid "Create Package"
 msgstr "Создать пакет"
 
 msgid "Current Domain"
-msgstr ""
+msgstr "Текущий Домен"
 
 msgid ""
 "Dear {}\n"
@@ -215,6 +215,8 @@ msgid ""
 "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is "
 "required in direct mode"
 msgstr ""
+"IP Домена не совпадает с Вашим IP Сервера, который необходим для \"Прямого "
+"Режима\""
 
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr ""
@@ -229,6 +231,52 @@ msgstr "Домен?"
 
 msgid "Donation.description"
 msgstr ""
+"✳️ Нам нужна ваша помощь в разработке нашего проекта!\n"
+"    <br>\n"
+"    Если вы разработчик или создатель контента, свяжитесь с нами по адресу <a href='mailto:info@hiddify.com'>info@hiddify.com</a>\n"
+"    <br><br>\n"
+"    \n"
+"    ℹ️ Также нам нужна финансовая помощь для дальнейшего развития этой панели и нашего сервиса (мы некоммерческая организация).\n"
+"    <br>\n"
+"    <h5>Способы оплаты:</h5>\n"
+"    <ul>\n"
+"    <li> <div class='btn-group'>\n"
+"        <a role='button' data-copy='EQCWnykA-YhavOXgH3sf-uxtXLjy83_9n5bJPGRPE8r2247_' class='btn btn-secondary copy-link'><i class='fa-regular fa-copy'></i></a>    \n"
+"    <a data-copy='EQCWnykA-YhavOXgH3sf-uxtXLjy83_9n5bJPGRPE8r2247_' role='button' class='btn btn-info share-link'>TON</a> </div></li>\n"
+"    \n"
+"    <li> <div class='btn-group'>\n"
+"        <a role='button' data-copy='TXZtFUxyBPMSykAWogu7C4zmbjySKqMcDE' class='btn btn-secondary copy-link'><i class='fa-regular fa-copy'></i></a>    \n"
+"    <a data-copy='TXZtFUxyBPMSykAWogu7C4zmbjySKqMcDE' role='button' class='btn btn-info share-link'>USDT (TRC20)</a> </div></li>\n"
+"    \n"
+"    <li> <div class='btn-group'>\n"
+"        <a role='button' data-copy='MCHoh7xwaDBBnQgANPpBtXiekagV6KpdrM' class='btn btn-secondary copy-link'><i class='fa-regular fa-copy'></i></a>    \n"
+"    <a data-copy='MCHoh7xwaDBBnQgANPpBtXiekagV6KpdrM' role='button' class='btn btn-info share-link'>Litecoin</a> </div></li>\n"
+"    \n"
+"    <li> <div class='btn-group'>\n"
+"        <a role='button' data-copy='0xF5CFc65ee336B377C2a37EA3BCD0CaD0d0F0CbA0' class='btn btn-secondary copy-link'><i class='fa-regular fa-copy'></i></a>    \n"
+"    <a data-copy='0xF5CFc65ee336B377C2a37EA3BCD0CaD0d0F0CbA0' role='button' class='btn btn-info share-link'>Ethereum</a> </div></li>\n"
+"    \n"
+"    <li> <div class='btn-group'>\n"
+"        <a role='button' data-copy='bc1qkfp7n3wxu2zc9mdy20cf27d5pujj65myww8f60' class='btn btn-secondary copy-link'><i class='fa-regular fa-copy'></i></a>    \n"
+"    <a data-copy='bc1qkfp7n3wxu2zc9mdy20cf27d5pujj65myww8f60' role='button' class='btn btn-info share-link'>Bitcoin</a> </div></li>\n"
+"    \n"
+"    <li> <div class='btn-group'>\n"
+"        <a role='button' data-copy='DPerFS2vCu5XnE3He32BaPVTkUDcKLsEaj' class='btn btn-secondary copy-link'><i class='fa-regular fa-copy'></i></a>    \n"
+"    <a data-copy='DPerFS2vCu5XnE3He32BaPVTkUDcKLsEaj' role='button' class='btn btn-info share-link'>Dogecoin</a> </div></li>\n"
+"    </ul>\n"
+"    \n"
+"    <br>\n"
+"    \n"
+"    Другая помощь:\n"
+"    <ul>\n"
+"    <li>👥 Поделиться Hiddify Manager с друзьями</li>\n"
+"    <li>📝Python Developer</li>\n"
+"    <li>📝Swift Developer</li>\n"
+"    <li>📝Flutter Developer</li>\n"
+"    <li>📝Go Developer</li>\n"
+"    <li>🖥Content Providers</li>\n"
+"    </ul>\n"
+"   Свяжитесь с нами <a href='mailto:info@hiddify.com'>info@hiddify.com</a>."
 
 msgid "Donation.title"
 msgstr "Пожертвование"
@@ -287,7 +335,7 @@ msgid "Hiddify Android"
 msgstr "Hiddify Android"
 
 msgid "HiddifyClash"
-msgstr ""
+msgstr "HiddifyClash"
 
 msgid "HiddifyN intro"
 msgstr ""
@@ -340,6 +388,8 @@ msgid ""
 "                    href='%(sub)s'>this universal link</a> to copy and paste it on\n"
 "                your application, or:"
 msgstr ""
+"Если приложение не открывается автоматически, нажмите <a class='btn btn-primary copy-link'\n"
+"                    href='%(sub)s'>универсальную ссылку</a>, чтобы скопировать и вставить ее в ваше приложение:"
 
 msgid "Import"
 msgstr "Импортировать в приложение"
@@ -354,6 +404,7 @@ msgid ""
 "In CDN mode, Domain IP=%(domain_ip)s should be different to your "
 "ip=%(server_ip)s"
 msgstr ""
+"В CDN Режиме, IP адрес Домена должен отличаться от IP адреса Вашего Сервера"
 
 msgid ""
 "In this section, you can add your domain. You need to add at least one "
@@ -375,7 +426,7 @@ msgid "Install Hiddify Application"
 msgstr "Установка панели Hidify"
 
 msgid "Invalid IP or domain"
-msgstr ""
+msgstr "Неверный IP или Домен"
 
 msgid "Invalid REALITY hostnames"
 msgstr "Неверные имена хостов REALITY"
@@ -489,7 +540,7 @@ msgid "Override Root Admin"
 msgstr "Переопределение администратора"
 
 msgid "Owner can not be deleted!"
-msgstr ""
+msgstr "Владелец не может быть удалён!"
 
 msgid "Package Days"
 msgstr "📆 Дни пакета"
@@ -543,6 +594,9 @@ msgstr "Выберите по крайней мере один файл."
 
 msgid "Please select at least one record."
 msgstr "Выберите по крайней мере одну запись."
+
+msgid "Please select at least one user"
+msgstr "Пожалуйста, выберите хотя бы одного пользователя"
 
 msgid "Please select one of the following applications:"
 msgstr ""
@@ -676,6 +730,9 @@ msgstr "Выбрать все записи"
 msgid "Select record"
 msgstr "Выберите запись"
 
+msgid "Seleted Users"
+msgstr "Выбранные пользователи"
+
 msgid "Send Message to User's Telegram"
 msgstr "📣 Отправить сообщение в Telegram пользователя"
 
@@ -683,10 +740,10 @@ msgid "Sending"
 msgstr "Отправка..."
 
 msgid "Should be a valid domain"
-msgstr ""
+msgstr "Должен быть действительный Домен"
 
 msgid "Should be a valid uuid"
-msgstr ""
+msgstr "Должен быть действительный  UUID"
 
 msgid "Show Domains"
 msgstr "Показать конфигурации доменов"
@@ -792,12 +849,11 @@ msgid "User is inactive"
 msgstr "Пользователь неактивен"
 
 msgid ""
-"User usage will be updated every 6 minutes. To update it now click <a href=\"%(link)s\"\n"
-"        class=\"btn btn-info\">here</a>"
+"User usage will be updated every 6 minutes. To update it now click <a "
+"href=\"%(link)s\" class=\"btn btn-info\">here</a>"
 msgstr ""
-"Информация об использовании пользователя будет обновляться каждые 6 минут. "
-"Чтобы обновить его сейчас, нажмите <a href=\"%(link)s\"<inlang-"
-"LineFeed>class=\"btn btn-info\"&gt;здесь</a>"
+"Информация пользователей обновлеятся каждые 6 минут. Чтобы обновить сейчас, "
+"нажмите <a href=\"%(link)s\" class=\"btn btn-info\">here</a>"
 
 msgid "V2rayNG"
 msgstr ""
@@ -971,7 +1027,7 @@ msgid "admin.menu.proxy"
 msgstr "Прокси"
 
 msgid "admin.menu.proxy_stats"
-msgstr ""
+msgstr "Прокси Статус"
 
 msgid "admin.menu.support"
 msgstr "Помощь"
@@ -1012,13 +1068,13 @@ msgid "app.foxray.title"
 msgstr "Фоксрей"
 
 msgid "app.hiddify-clash-android.description"
-msgstr ""
+msgstr "app.hiddify-clash-android.description"
 
 msgid "app.hiddify-clash-android.title"
 msgstr "Hiddify Столкновение"
 
 msgid "app.hiddify-clash-desktop.description"
-msgstr ""
+msgstr "app.hiddify-clash-desktop.description"
 
 msgid "app.hiddify-clash-desktop.title"
 msgstr "Hiddify Столкновение"
@@ -1048,7 +1104,7 @@ msgid "app.loon.title"
 msgstr "гагара"
 
 msgid "app.nekobox.description"
-msgstr ""
+msgstr "app.nekobox.description"
 
 msgid "app.nekobox.title"
 msgstr "НекоБокс"
@@ -1183,7 +1239,7 @@ msgstr "Настройки страницы пользователя"
 msgid "config.branding_freetext.description"
 msgstr ""
 "Брендинговый текст. текст этого поля будет показан в разделе поддержки на странице пользователя. вы можете использовать HTML-теги\n"
-"<p><br /><a href=\"https://onlinehtmleditor.dev\" target=\"_blank\">HTML Editor</a></p>"
+"<p><br /><a href=\"https://htmleditor.online/full\" target=\"_blank\">HTML Editor</a></p>"
 
 msgid "config.branding_freetext.label"
 msgstr "📢 Текст раздела поддержки"
@@ -1243,10 +1299,10 @@ msgid "config.country.label"
 msgstr "🌍 Страна"
 
 msgid "config.create_easysetup_link.description"
-msgstr ""
+msgstr "config.create_easysetup_link.description"
 
 msgid "config.create_easysetup_link.label"
-msgstr ""
+msgstr "config.create_easysetup_link.label"
 
 msgid "config.db_version.description"
 msgstr "Описание версии базы данных"
@@ -1255,10 +1311,10 @@ msgid "config.db_version.label"
 msgstr "Label версии базы данных"
 
 msgid "config.dbvalues.description"
-msgstr ""
+msgstr "config.dbvalues.description"
 
 msgid "config.dbvalues.label"
-msgstr ""
+msgstr "config.dbvalues.label"
 
 msgid "config.decoy_domain.description"
 msgstr ""
@@ -1320,10 +1376,10 @@ msgid "config.firewall.label"
 msgstr "🛡️ Firewall"
 
 msgid "config.first_setup.description"
-msgstr ""
+msgstr "config.first_setup.description"
 
 msgid "config.first_setup.label"
-msgstr ""
+msgstr "config.first_setup.label"
 
 msgid "config.general.description"
 msgstr "Это общие настройки системы."
@@ -1333,15 +1389,18 @@ msgstr "Общие настройки"
 
 msgid "config.grpc_enable.description"
 msgstr ""
+"gRPC — это современная высокопроизводительная платформа удаленного вызова "
+"процедур (RPC) с открытым исходным кодом. Его можно использовать в "
+"поддерживаемых CDN."
 
 msgid "config.grpc_enable.label"
-msgstr ""
+msgstr "➿ Включить gRPC"
 
 msgid "config.hidden.description"
-msgstr ""
+msgstr "config.hidden.description"
 
 msgid "config.hidden.label"
-msgstr ""
+msgstr "config.hidden.label"
 
 msgid "config.http.description"
 msgstr "Конфигурации HTTP можно установить в этом разделе"
@@ -1368,9 +1427,11 @@ msgstr "☑️ Разрешить соединение по HTTP"
 
 msgid "config.httpupgrade_enable.description"
 msgstr ""
+"HTTPUpgrade завершает запрос и ответ на обновление HTTP 1.1, прежде чем использовать соединение напрямую. Он похож на WebSocket тем, что создает канал направления, который может пересылаться многими обратными прокси-серверами и CDN, без необходимости решать все проблемы, связанные с самим протоколом WebSocket.\n"
+"⚠️ Недоступно в клиентах на базе Xray. Поддерживаются только клиенты HiddifyNext, Singbox и V2fly."
 
 msgid "config.httpupgrade_enable.label"
-msgstr ""
+msgstr "🆙 Включить Метод HTTP Обновления"
 
 msgid "config.hysteria.description"
 msgstr ""
@@ -1383,10 +1444,10 @@ msgid "config.hysteria.label"
 msgstr "Hysteria"
 
 msgid "config.hysteria_down_mbps.description"
-msgstr ""
+msgstr "Hysteria Максимальная Скорость Входящей Загрузки"
 
 msgid "config.hysteria_down_mbps.label"
-msgstr ""
+msgstr "⬇️ Hysteria Входящая Загрузка (mbps)"
 
 msgid "config.hysteria_enable.description"
 msgstr "Включение протокола Hysteria на основе UDP"
@@ -1395,10 +1456,10 @@ msgid "config.hysteria_enable.label"
 msgstr "Включить Hysteria"
 
 msgid "config.hysteria_obfs_enable.description"
-msgstr ""
+msgstr "Включить Hysteria Obfuscation (Salamander)"
 
 msgid "config.hysteria_obfs_enable.label"
-msgstr ""
+msgstr "🎛 Включить Hysteria OBFS"
 
 msgid "config.hysteria_port.description"
 msgstr "Hysteria UDP-порт например 5678"
@@ -1407,13 +1468,13 @@ msgid "config.hysteria_port.label"
 msgstr "Hysteria Порт"
 
 msgid "config.hysteria_up_mbps.description"
-msgstr ""
+msgstr "Hysteria Максимальная Скорость Исходящей Загрузки"
 
 msgid "config.hysteria_up_mbps.label"
-msgstr ""
+msgstr "⬆️ Hysteria Исходящая Загрузка (mbps)"
 
 msgid "config.is_parent.description"
-msgstr ""
+msgstr "config.is_parent.description"
 
 msgid "config.is_parent.label"
 msgstr "Главная панель"
@@ -1445,10 +1506,10 @@ msgid "config.lang.label"
 msgstr "🗺️ Язык раздела пользователя"
 
 msgid "config.last_hash.description"
-msgstr ""
+msgstr "config.last_hash.description"
 
 msgid "config.last_hash.label"
-msgstr ""
+msgstr "config.last_hash.label"
 
 msgid "config.license.description"
 msgstr ""
@@ -1459,52 +1520,60 @@ msgid "config.license.label"
 msgstr "License  Code"
 
 msgid "config.mux.description"
-msgstr ""
+msgstr "Настройки конфигурации MUX (Multiplex)"
 
 msgid "config.mux.label"
-msgstr ""
+msgstr "Настройки MUX"
 
 msgid "config.mux_brutal_down_mbps.description"
-msgstr ""
+msgstr "TCP-Brutal Максимальная Скорость Входящей Загрузки"
 
 msgid "config.mux_brutal_down_mbps.label"
-msgstr ""
+msgstr "⬇️ MUX Brutal Входящая Загрузка (mbps)"
 
 msgid "config.mux_brutal_enable.description"
-msgstr ""
+msgstr "Включить алгоритм управления перегрузкой TCP-Brutal"
 
 msgid "config.mux_brutal_enable.label"
-msgstr ""
+msgstr "☣️ MUX Brutal"
 
 msgid "config.mux_brutal_up_mbps.description"
-msgstr ""
+msgstr "TCP-Brutal Максимальная Скорость Исходящей Загрузки"
 
 msgid "config.mux_brutal_up_mbps.label"
-msgstr ""
+msgstr "⬆️  MUX Brutal Исходящая Загрузка (mbps)"
 
 msgid "config.mux_enable.description"
 msgstr ""
+"MUX требует совместимые клиенты. MUX в Hiddify Next и Singbox несовместимы с"
+" XRay"
 
 msgid "config.mux_enable.label"
-msgstr ""
+msgstr "Ⓜ️ Включить MUX (⚠️ Несовместимо с некоторыми клиентами)"
 
 msgid "config.mux_max_connections.description"
 msgstr ""
+"Максимальное количество подключений. Конфликтует с максимальным количеством "
+"потоков"
 
 msgid "config.mux_max_connections.label"
-msgstr ""
+msgstr "⛓ Максимальное количество подключений MUX"
 
 msgid "config.mux_max_streams.description"
 msgstr ""
+"Максимальное количество мультиплексированных потоков в соединении перед "
+"открытием нового соединения"
 
 msgid "config.mux_max_streams.label"
-msgstr ""
+msgstr "↗️ Максимальное количество потоков MUX"
 
 msgid "config.mux_min_streams.description"
 msgstr ""
+"Минимальное количество мультиплексированных потоков в соединении перед "
+"открытием нового соединения"
 
 msgid "config.mux_min_streams.label"
-msgstr ""
+msgstr "↘️ Минимальное количество потоков MUX"
 
 msgid "config.mux_padding_enable.description"
 msgstr ""
@@ -1516,7 +1585,7 @@ msgid "config.mux_protocol.description"
 msgstr ""
 
 msgid "config.mux_protocol.label"
-msgstr ""
+msgstr "♍️ Протокол MUX"
 
 msgid "config.netdata.description"
 msgstr ""
@@ -1560,7 +1629,7 @@ msgid "config.path_grpc.label"
 msgstr "ℹ️ Путь gRPC"
 
 msgid "config.path_httpupgrade.description"
-msgstr ""
+msgstr "должен быть случайным"
 
 msgid "config.path_httpupgrade.label"
 msgstr ""
@@ -1696,27 +1765,33 @@ msgstr ""
 
 msgid "config.shadowsocks.description"
 msgstr ""
+"Shadowsocks - это быстрый прокси-туннель, который помогает вам обходить "
+"фаерволы"
 
 msgid "config.shadowsocks.label"
-msgstr ""
+msgstr "Shadowsocks"
 
 msgid "config.shadowsocks2022_enable.description"
 msgstr ""
+"Shadowsocks 2022 - это защищенный протокол прокси для трафика TCP и UDP. "
+"Прокси-трафик неотличим от случайного потока байтов и, следовательно, может "
+"обходить фаерволы и интернет-цензоров, которые полагаются на DPI (глубокий "
+"анализ пакетов)."
 
 msgid "config.shadowsocks2022_enable.label"
-msgstr ""
+msgstr "⭕️ Включить Shadowsocks 2022"
 
 msgid "config.shadowsocks2022_method.description"
-msgstr ""
+msgstr "Этот метод также использвуется в ShadowTLS и SSFakeTLS"
 
 msgid "config.shadowsocks2022_method.label"
-msgstr ""
+msgstr "🔐 Метод шифрования Shadowsocks"
 
 msgid "config.shadowsocks2022_port.description"
-msgstr ""
+msgstr "Требуются открытый порт как и TCP, так и UDP"
 
 msgid "config.shadowsocks2022_port.label"
-msgstr ""
+msgstr "↔️ Порт Shadowsocks 2022"
 
 msgid "config.shadowtls.description"
 msgstr ""
@@ -1871,8 +1946,10 @@ msgstr "🔐 Токен Telegram-бота"
 
 msgid "config.telegram_enable.description"
 msgstr ""
-"Telegram MTProto используется для инкапсуляции Telegram Proxy в качестве "
-"обычного tls-трафика"
+"<p data-pm-slice=\"1 1 []\">Telegram MTProto используется для инкапсуляции "
+"Telegram Proxy в качестве обычного tls-трафика<br>⚠️<span "
+"style=\"color:#d32f2f;\"><strong> Этот протокол требует прямого "
+"домена</strong></span></p>"
 
 msgid "config.telegram_enable.label"
 msgstr "✔️ Включить Telegram MTProto"
@@ -2064,21 +2141,29 @@ msgstr "🔑 WARP Plus Key"
 
 msgid "config.warp_sites.description"
 msgstr ""
+"Добавление дополнительных сайтов для направления через Warp (только если "
+"Warp включен)"
 
 msgid "config.warp_sites.label"
-msgstr ""
+msgstr "🆚 Дополнительные сайты Warp"
 
 msgid "config.wireguard.description"
 msgstr ""
+"WireGuard - это легковесный UDP-протокол, известный своей простотой, "
+"эффективностью и высокой безопасност. Он предлагает простоту, "
+"кроссплатформенность, быструю настройку и прозрачный код."
 
 msgid "config.wireguard.label"
-msgstr ""
+msgstr "WireGuard"
 
 msgid "config.wireguard_enable.description"
 msgstr ""
+"<p>WireGuard - это UDP-протокол. (⚠️ Работает на <a "
+"href=\"https://github.com/hiddify/hiddify-next\" target=\"_blank\">Hiddify "
+"Next</a>)</p>"
 
 msgid "config.wireguard_enable.label"
-msgstr ""
+msgstr "🐉 Включить WireGuard"
 
 msgid "config.wireguard_ipv4.description"
 msgstr ""
@@ -2094,15 +2179,17 @@ msgstr ""
 
 msgid "config.wireguard_noise_trick.description"
 msgstr ""
+"Noise Trick создает дополнительные мусорные данные для предотвращения "
+"обнаужения и блокировки цензором"
 
 msgid "config.wireguard_noise_trick.label"
-msgstr ""
+msgstr "💥 WireGuard Noise Trick"
 
 msgid "config.wireguard_port.description"
-msgstr ""
+msgstr "Порт WireGuard"
 
 msgid "config.wireguard_port.label"
-msgstr ""
+msgstr "↔️ Порт WireGuard"
 
 msgid "config.wireguard_private_key.description"
 msgstr ""
@@ -2118,9 +2205,11 @@ msgstr ""
 
 msgid "config.ws_enable.description"
 msgstr ""
+"Websocket создает туннель поверх HTTP, который будет полезно использовать в "
+"CDN"
 
 msgid "config.ws_enable.label"
-msgstr ""
+msgstr "🔰 Включить Websocket"
 
 msgid "config.invalid uuid"
 msgstr "Неверный UUID. пример: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6"

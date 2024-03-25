@@ -346,30 +346,24 @@ class AppAPI(MethodView):
 
         if self.platform == Platform.all:
             platform = [Platform.windows, Platform.linux, Platform.mac]
+        
+        def get_link(p):
+            match p:
+                case Platform.windows:
+                    ins_url = latest_url.split('releases/')[0] + f'releases/download/v{version}/HiddifyClashDesktop_{version}_x64_en-US.msi'
+                    dto.install.append(self.__get_app_install_dto(AppInstallType.setup, ins_url))
+                case Platform.linux:
+                    ins_url = latest_url.split('releases/')[0] + f'releases/download/v{version}/hiddify-clash-desktop_{version}_amd64.AppImage'
+                    dto.install.append(self.__get_app_install_dto(AppInstallType.appimage, ins_url))
+                case Platform.mac:
+                    ins_url = latest_url.split('releases/')[0] + f'releases/download/v{version}/HiddifyClashDesktop_{version}_x64.dmg'
+                    dto.install.append(self.__get_app_install_dto(AppInstallType.dmg, ins_url))
 
         if isinstance(platform, list):
             for p in platform:
-                match p:
-                    case Platform.windows:
-                        ins_url = latest_url.split('releases/')[0] + f'releases/download/{version}/HiddifyClashDesktop_{version}_x64_en-US.msi'
-                        dto.install.append(self.__get_app_install_dto(AppInstallType.setup, ins_url))
-                    case Platform.linux:
-                        ins_url = latest_url.split('releases/')[0] + f'releases/download/{version}/hiddify-clash-desktop_{version}_amd64.AppImage'
-                        dto.install.append(self.__get_app_install_dto(AppInstallType.appimage, ins_url))
-                    case Platform.mac:
-                        ins_url = latest_url.split('releases/')[0] + f'releases/download/{version}/HiddifyClashDesktop_{version}_x64.dmg'
-                        dto.install.append(self.__get_app_install_dto(AppInstallType.dmg, ins_url))
+                get_link(p)
         else:
-            match platform:
-                case Platform.windows:
-                    ins_url = latest_url.split('releases/')[0] + f'releases/download/{version}/HiddifyClashDesktop_{version}_x64_en-US.msi'
-                    dto.install.append(self.__get_app_install_dto(AppInstallType.setup, ins_url))
-                case Platform.linux:
-                    ins_url = latest_url.split('releases/')[0] + f'releases/download/{version}/hiddify-clash-desktop_{version}_amd64.AppImage'
-                    dto.install.append(self.__get_app_install_dto(AppInstallType.appimage, ins_url))
-                case Platform.mac:
-                    ins_url = latest_url.split('releases/')[0] + f'releases/download/{version}/HiddifyClashDesktop_{version}x64.dmg'
-                    dto.install.append(self.__get_app_install_dto(AppInstallType.dmg, ins_url))
+            get_link(platform)
 
         return dto
 
@@ -402,17 +396,17 @@ class AppAPI(MethodView):
             ins_url = ''
             match install_type:
                 case AppInstallType.apk:
-                    ins_url = f'{self.hiddify_github_repo}/hiddify-next/releases/latest/download/hiddify-android-universal.apk'
+                    ins_url = f'{self.hiddify_github_repo}/hiddify-next/releases/latest/download/Hiddify-Android-universal.apk'
                 case AppInstallType.google_play:
                     ins_url = 'https://play.google.com/store/apps/details?id=app.hiddify.com'
                 case AppInstallType.setup:
-                    ins_url = f'{self.hiddify_github_repo}/hiddify-next/releases/latest/download/hiddify-windows-x64-setup.zip'
+                    ins_url = f'{self.hiddify_github_repo}/hiddify-next/releases/latest/download/Hiddify-Windows-Setup-x64.exe'
                 case AppInstallType.portable:
-                    ins_url = f'{self.hiddify_github_repo}/hiddify-next/releases/latest/download/hiddify-windows-x64-portable.zip'
+                    ins_url = f'{self.hiddify_github_repo}/hiddify-next/releases/latest/download/Hiddify-Windows-Portable-x64.zip'
                 case AppInstallType.appimage:
-                    ins_url = f'{self.hiddify_github_repo}/hiddify-next/releases/latest/download/hiddify-linux-x64.zip'
+                    ins_url = f'{self.hiddify_github_repo}/hiddify-next/releases/latest/download/Hiddify-Linux-x64.AppImage'
                 case AppInstallType.dmg:
-                    ins_url = f'{self.hiddify_github_repo}/hiddify-next/releases/latest/download/hiddify-macos-universal.zip'
+                    ins_url = f'{self.hiddify_github_repo}/hiddify-next/releases/latest/download/Hiddify-MacOS.dmg'
 
             install_dto = self.__get_app_install_dto(install_type, ins_url)
             install_dtos.append(install_dto)
