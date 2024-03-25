@@ -235,7 +235,7 @@ def validate_domain_exist(form, field):
 
 def get_proxy_stats_url():
     proxy_stats_url = f'{request.host_url}{g.proxy_path}/proxy-stats/'
-    params = f'hostname={proxy_stats_url}api/&port=443'
+    params = f'hostname={proxy_stats_url}api/&port=443&secret=hiddify'
     return f'{proxy_stats_url}?{params}/'
 # region not used
 
