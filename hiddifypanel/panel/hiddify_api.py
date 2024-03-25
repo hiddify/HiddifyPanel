@@ -13,6 +13,7 @@ from hiddifypanel.panel.commercial.restapi.v2.parent.register_api import Registe
 from hiddifypanel.panel.commercial.restapi.v2.parent.sync_api import SyncDataSchema
 from hiddifypanel.panel.commercial.restapi.v2.parent.usage_api import get_users_usage_data_for_api, convert_usage_api_response_to_dict
 from hiddifypanel.database import db
+from hiddifypanel.panel import hiddify
 
 
 # TODO: REFACTOR THIS FILE
@@ -157,7 +158,7 @@ def add_user_usage_to_parent(set_db=True) -> bool:
     if set_db:
         # parse usages data
         res = convert_usage_api_response_to_dict(res)  # type: ignore
-        add_users_usage_uuid(res, hconfig(ConfigEnum.unique_id), True)
+        add_users_usage_uuid(res,hiddify.get_child(None), True)
 
     return True
 
