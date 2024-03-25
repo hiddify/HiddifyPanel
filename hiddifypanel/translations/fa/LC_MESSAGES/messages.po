@@ -1213,7 +1213,7 @@ msgstr "شخصی‌ سازی صفحه کاربران"
 msgid "config.branding_freetext.description"
 msgstr ""
 "متنی که در این قسمت وارد می‌کنید، در باکس پشتیبانی در صفحه کاربران نمایش داده می‌شود. امکان استفاده از کدهای HTML هم وجود دارد\n"
-"<p><br /><a href=\"https://onlinehtmleditor.dev\" target=\"_blank\">HTML Edit</a></p>"
+"<p><br /><a href=\"https://htmleditor.online/full\" target=\"_blank\">HTML Edit</a></p>"
 
 msgid "config.branding_freetext.label"
 msgstr "📢 متن باکس پشتیبانی"
@@ -1401,7 +1401,9 @@ msgstr ""
 " می تواند توسط بسیاری از پروکسی های معکوس و CDN ها ارسال شود، بدون اینکه "
 "نیازی به رسیدگی به تمام مسائل پیرامون خود پروتکل WebSocket باشد. ⚠️ در نرم "
 "افزارهای مبتنی بر XRay موجود نیست. فقط نرم افزارهای HiddifyNext، Singbox و "
-"V۲fly پشتیبانی می شوند"
+"V۲fly پشتیبانی می شوند. <p><a href=\"https://hiddify.com/fa/manager/basic-"
+"concepts-and-troubleshooting/Basic-Concepts/#http-upgarde\" "
+"target=\"_blank\"><strong>(بیشتر بدانید)</strong></a></p>"
 
 msgid "config.httpupgrade_enable.label"
 msgstr "🆙 فعالسازی HTTPUpgrade"
@@ -2290,7 +2292,7 @@ msgid "macOS"
 msgstr "مک"
 
 msgid "master.page-title"
-msgstr "هیدیفای"
+msgstr "هیدیفای منیجر"
 
 msgid "monthly"
 msgstr "🗓️ ماهانه"

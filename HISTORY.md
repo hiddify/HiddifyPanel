@@ -1,6 +1,52 @@
 # Changelog
 
 
+## v10.14.0 (2024-03-25)
+
+#### Fix
+
+* Backup issue. 
+
+* Bug. 
+
+* Bug. 
+
+* Bug of inactive drivers. 
+
+#### Other
+
+* Add secret. 
+
+* Disable usage for xray when only singbox. 
+
+* Update. 
+
+* Update ui. 
+
+* Optimize user usage. 
+
+* Merge branch 'main' of github.com:hiddify/Hiddify-Panel. 
+
+* Fink 🐦: update translations. 
+
+* Fink 🐦: update translations. 
+
+* Fink 🐦: update translations. 
+
+* Fink 🐦: update translations. 
+
+* Fink 🐦: update translations. 
+
+* Fink 🐦: update translations. 
+
+* Fink 🐦: update translations. 
+
+* Add version to title. 
+
+* Update translations. 
+
+
+
 ## v10.12.1 (2024-03-20)
 
 #### Fix
