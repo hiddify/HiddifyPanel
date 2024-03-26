@@ -120,8 +120,8 @@ class ConfigEnum(metaclass=FastEnum):
     # region child-parent
     # deprecated
     is_parent = _BoolConfigDscr(ConfigCategory.hidden)
-    parent_panel = _StrConfigDscr(ConfigCategory.too_advanced)
-    parent_unique_id = _StrConfigDscr(ConfigCategory.too_advanced)
+    parent_panel = _StrConfigDscr(ConfigCategory.hidden)
+    parent_unique_id = _StrConfigDscr(ConfigCategory.hidden)
 
     # the panel mode could be one of these: "parent", "child", "standalone"
     # this config value would be 'standalone' by default. and would be set by panel itself
