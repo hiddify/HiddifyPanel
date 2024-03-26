@@ -66,6 +66,7 @@ def get_panel_data_for_api(type: ApiDataType) -> dict | List[dict]:
 
 
 def is_child_registered() -> bool:
+    '''Checks if the current parent registered as a child'''
     p_url, p_key = __get_parent_panel_info()
     if not p_url or not p_key:
         return False
@@ -137,7 +138,6 @@ def sync_child_with_parent(set_db=True) -> bool:
 
 
 def add_user_usage_to_parent(set_db=True) -> bool:
-    # TODO: decrease number of request
     p_url, p_key = __get_parent_panel_info()
     if not p_url or not p_key:
         return False
@@ -158,12 +158,13 @@ def add_user_usage_to_parent(set_db=True) -> bool:
     if set_db:
         # parse usages data
         res = convert_usage_api_response_to_dict(res)  # type: ignore
-        add_users_usage_uuid(res,hiddify.get_child(None), True)
+        add_users_usage_uuid(res, hiddify.get_child(None), True)
 
     return True
 
 
 def request_chlid_to_register(name: str, mode: ChildMode, child_link: str, child_key: str) -> bool:
+    '''Requests to a child to register itself with the current panel'''
     if not child_link or not child_key:
         return False
     else:
@@ -192,6 +193,7 @@ def request_chlid_to_register(name: str, mode: ChildMode, child_link: str, child
 
 
 def request_child_to_sync(child: Child) -> bool:
+    '''Requests to a child to sync itself with the current panel'''
     try:
         child_domain = get_child_active_domains(child)[0]
     except:
@@ -206,6 +208,7 @@ def request_child_to_sync(child: Child) -> bool:
 
 
 def is_child_domain_active(child: Child, domain: Domain) -> bool:
+    '''Checks whether a child's domain is responsive'''
     if domain.mode in [DomainType.reality, DomainType.fake]:
         return False
     api_key = g.account.uuid

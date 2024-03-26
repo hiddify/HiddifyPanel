@@ -23,10 +23,13 @@ def add_users_usage_uuid(uuids_bytes: Dict[str, Dict], child_id, sync=False):
     uuids = uuids_bytes.keys()
     users = User.query.filter(User.uuid.in_(uuids))
     dbusers_bytes = {u: uuids_bytes.get(u.uuid, 0) for u in users}
-    _add_users_usage(dbusers_bytes, child_id, sync)
+    _add_users_usage(dbusers_bytes, child_id, sync)  # type: ignore
 
 
-def _add_users_usage(users_usage_data, child_id, sync=False):
+def _add_users_usage(users_usage_data: Dict[User, Dict], child_id, sync=False):
+    '''
+    sync: when enabled, it means we have received usages from the parent server
+    '''
     res = {}
     have_change = False
     before_enabled_users = user_driver.get_enabled_users()
@@ -91,7 +94,8 @@ def _add_users_usage(users_usage_data, child_id, sync=False):
     db.session.commit()  # type: ignore
     if have_change:
         hiddify.quick_apply_users()
-    # when sync is enabled, it means we have received data from the parent server
+
+    # sync with the parent
     if not sync:
         if hiddify.is_child():
             from hiddifypanel.panel import hiddify_api

@@ -45,7 +45,7 @@ def init_app(app: APIFlask):
             has_update = False
         else:
             has_update = "dev" not in hiddifypanel.__version__ and f'{last_version}' != hiddifypanel.__version__
-        has_update = False
+
         if not request.accept_mimetypes.accept_html:
             if has_update:
                 return jsonify({
@@ -69,6 +69,7 @@ def init_app(app: APIFlask):
         # print(request.headers)
         if not request.accept_mimetypes.accept_html:
             return app.error_callback(e)
+        # if it's interval server error
         if e.status_code == 500:
             trace = traceback.format_exc()
 
@@ -82,13 +83,17 @@ def init_app(app: APIFlask):
                 has_update = "dev" not in hiddifypanel.__version__ and f'{last_version}' != hiddifypanel.__version__
 
             return render_template('500.html', error=e, trace=trace, has_update=has_update, last_version=last_version, issue_link=issue_link), 500
+
+        # if it's access denied error
         # if e.status_code in [400,401,403]:
         #     return render_template('access-denied.html',error=e), e.status_code
 
+        # if it's api error
         if hutils.flask.is_api_call(request.path):
             return {
                 'msg': e.message,
             }, e.status_code
+
         return render_template('error.html', error=e), e.status_code
 
     @app.url_defaults
