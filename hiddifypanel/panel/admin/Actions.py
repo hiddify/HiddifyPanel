@@ -61,8 +61,8 @@ class Actions(FlaskView):
     def reinstall2(self, complete_install=True, domain_changed=False):
         if int(hconfig(ConfigEnum.db_version)) < 9:
             return ("Please update your panel before this action.")
-        from hiddifypanel.panel import hiddify_api
         if hiddify.is_child():
+            from hiddifypanel.panel import hiddify_api
             if not hiddify_api.sync_child_with_parent():
                 hutils.flask.flash(_('child.sync-failed'), 'danger')  # type: ignore
 

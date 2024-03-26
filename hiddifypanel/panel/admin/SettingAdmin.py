@@ -89,9 +89,9 @@ class SettingAdmin(FlaskView):
                     set_hconfig(ConfigEnum.panel_mode, PanelMode.standalone)
 
             from hiddifypanel.panel.commercial.telegrambot import register_bot
-            from hiddifypanel.panel import hiddify_api
             register_bot(set_hook=True)
             if hiddify.is_child():
+                from hiddifypanel.panel import hiddify_api
                 if hiddify_api.is_child_registered():
                     if not hiddify_api.sync_child_with_parent():
                         hutils.flask.flash(_('child.sync-failed'), 'danger')  # type: ignore

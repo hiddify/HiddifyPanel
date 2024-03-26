@@ -18,8 +18,6 @@ class Dashboard(FlaskView):
 
     @login_required(roles={Role.super_admin, Role.admin, Role.agent})
     def index(self):
-        from hiddifypanel.panel import hiddify_api
-
         if hconfig(ConfigEnum.first_setup):
             return redirect(hurl_for("admin.QuickSetup:index"))
         if hiddifypanel.__release_date__ + datetime.timedelta(days=20) < datetime.datetime.now():
@@ -36,6 +34,7 @@ class Dashboard(FlaskView):
         if admin_id:
             user_query = user_query.filter(User.added_by == admin_id)
         if hiddify.is_parent():
+            from hiddifypanel.panel import hiddify_api
             childs = Child.query.filter(Child.id != 0).all()
             for c in childs:
                 c.is_active = False

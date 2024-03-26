@@ -420,7 +420,7 @@ def is_parent() -> bool:
 
 
 def send_sync_req_to_childs():
-    from hiddifypanel.panel import hiddify_api
     for c in Child.query.filter(Child.id != 0).all():
+        from hiddifypanel.panel import hiddify_api
         if not hiddify_api.request_child_to_sync(c):
             hutils.flask.flash(f'{c.name}: '+_('parent.sync-req-failed'), 'danger')
