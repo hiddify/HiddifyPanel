@@ -33,18 +33,15 @@ class Dashboard(FlaskView):
         user_query = User.query
         if admin_id:
             user_query = user_query.filter(User.added_by == admin_id)
-        if hiddify.is_parent():
-            from hiddifypanel.panel import hiddify_api
+        if hutils.node.is_parent():
             childs = Child.query.filter(Child.id != 0).all()
             for c in childs:
                 c.is_active = False
                 for d in c.domains:
-                    d.is_active = hiddify_api.is_child_domain_active(c, d)
+                    d.is_active = hutils.node.parent.is_child_domain_active(c, d)
                     if d.is_active:
                         c.is_active = True
 
-            # return render_template('parent_dash.html',childs=childs,bot=bot)
-    # try:
         def_user = None if len(User.query.all()) > 1 else User.query.filter(User.name == 'default').first()
         domains = get_panel_domains()
         sslip_domains = [d.domain for d in domains if "sslip.io" in d.domain]
@@ -53,13 +50,13 @@ class Dashboard(FlaskView):
             quick_setup = hurl_for("admin.QuickSetup:index")
             hutils.flask.flash((_('It seems that you have not setup the system completely. <a class="btn btn-success" href="%(quick_setup)s">Click here</a> to complete setup.',
                                   quick_setup=quick_setup)), 'warning')  # type: ignore
-            if hiddify.is_parent():
+            if hutils.node.is_parent():
                 hutils.flask.flash(
                     _("Please understand that parent panel is under test and the plan and the condition of use maybe change at anytime."), "danger")  # type: ignore
         elif len(sslip_domains):
             hutils.flask.flash((_('It seems that you are using default domain (%(domain)s) which is not recommended.',
                                domain=sslip_domains[0])), 'warning')  # type: ignore
-            if hiddify.is_parent():
+            if hutils.node.is_parent():
                 hutils.flask.flash(
                     _("Please understand that parent panel is under test and the plan and the condition of use maybe change at anytime."), "danger")  # type: ignore
         elif def_user:

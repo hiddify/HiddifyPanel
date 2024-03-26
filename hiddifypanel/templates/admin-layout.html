@@ -17,9 +17,9 @@
   <div class="navbar-nav">
     <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i> <span class="brand-text font-weight-light">{{_("master.page-title")}}
         <!-- <span class="badge d-none d-sm-inline-block">{{version}}</span> -->
-        {% if hiddify.is_parent() %}
+        {% if hutils.node.is_parent() %}
         {{_("Parent Panel")}}
-        {% elif hiddify.is_child() %}
+        {% elif hutils.node.is_child() %}
         Child Panel
         {% endif %}
     </a>
@@ -38,7 +38,7 @@
       <i class="fa-solid fa-moon"></i>
     </a>
     {% endif %}
-    {% if 0 and not hiddify.is_parent() %}
+    {% if 0 and not hutils.node.is_parent() %}
 
 
     <a class="nav-link btn btn-outline-secondary form_post d-none d-md-flex" href="{{hurl_for('admin.Actions:apply_configs')}}">
@@ -61,7 +61,7 @@
   <a href="https://github.com/hiddify/hiddify-manager/wiki" class="" style="text-align: center; color: white;display: block;">
     <img src="{{static_url_for(filename='images/WhiteLogo.png')}}" class=" " style="width: 50%;opacity: .8;margin: auto;display:block" />
     <div class="ltr" style="font-size: 8pt;">{{version}}</div>
-    {% if False and hiddify.is_parent() %}
+    {% if False and hutils.node.is_parent() %}
     <br>
     <!-- <span class="badge">{{_("Parent Panel")}}</span> -->
 
@@ -82,15 +82,15 @@
         <div class="n3av nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                  with font-awesome or any other icon font library -->
-          {{ render_nav_item('admin.Dashboard:index', icon('solid','house','nav-icon')+(_("Parent Panel") if hiddify.is_parent() else _('admin.menu.home')),_use_li=True)}}
+          {{ render_nav_item('admin.Dashboard:index', icon('solid','house','nav-icon')+(_("Parent Panel") if hutils.node.is_parent() else _('admin.menu.home')),_use_li=True)}}
 
-          {% if hiddify.is_child() %}
+          {% if hutils.node.is_child() %}
           {{ render_nav_item(hconfig(ConfigEnum.parent_panel)+"/"+g.account.uuid+"/admin/user/",icon('solid','user-secret','nav-icon')+_('admin.menu.user'),_badge=_('in parent panel') ,_use_li=True) }}
           {% else %}
           {{ render_nav_item('flask.user.index_view', icon('solid','user','nav-icon')+_('admin.menu.user'),_use_li=True)}}
           {% endif %}
 
-          {% if hiddify.is_child() %}
+          {% if hutils.node.is_child() %}
           {{ render_nav_item(hconfig(ConfigEnum.parent_panel)+"/"+g.account.uuid+"/admin/adminuser/",icon('solid','user-secret','nav-icon')+_('Admins'),_badge=_('in parent panel') ,_use_li=True) }}
           {% else %}
           {{ render_nav_item('flask.adminuser.index_view', icon('solid','user-secret','nav-icon')+_('Admins'),_use_li=True) }}
@@ -102,7 +102,7 @@
           request.endpoint or "Dashboard" in request.endpoint) else True %}
           <li class="nav-item {{'menu-open' if settings_active else ''}}">
 
-            <a id=href="#" data-target="#setting-sidebar" class="nav-link">{{icon('solid','gear','nav-icon')+_('admin.menu.config')}}</a>
+            <a id="" href="#" data-target="#setting-sidebar" class="nav-link">{{icon('solid','gear','nav-icon')+_('admin.menu.config')}}</a>
 
           </li>
           {% endif %}

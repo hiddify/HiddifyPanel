@@ -8,7 +8,7 @@ from hiddifypanel.panel.commercial.restapi.v2.admin.user_api import UserSchema
 from hiddifypanel.panel.commercial.restapi.v2.admin.admin_user_api import AdminSchema
 from hiddifypanel.auth import login_required
 from hiddifypanel.panel.commercial.restapi.v2.parent import hconfig_key_validator
-from hiddifypanel.panel import hiddify
+from hiddifypanel import hutils
 
 
 class DomainSchema(Schema):
@@ -65,7 +65,7 @@ class RegisterApi(MethodView):
     @app.input(RegisterSchema, arg_name='data')  # type: ignore
     @app.output(OutputUsersSchema)  # type: ignore
     def put(self, data):
-        if hiddify.is_child():
+        if hutils.node.is_child():
             abort(400, 'The panel in child, not a parent or standalone')
 
         unique_id = data['unique_id']
@@ -90,12 +90,9 @@ class RegisterApi(MethodView):
         except Exception as err:
             abort(400, str(err))
 
-        if not hiddify.is_parent():
+        if not hutils.node.is_parent():
             set_hconfig(ConfigEnum.panel_mode, PanelMode.parent)
-        return self.__create_response()
 
-    def __create_response(self) -> OutputUsersSchema:
-        '''Create response for parent register api'''
         res = OutputUsersSchema()
         res.users = [u.to_schema() for u in User.query.all()]  # type: ignore
         res.admin_users = [a.to_schema() for a in AdminUser.query.all()]  # type: ignore

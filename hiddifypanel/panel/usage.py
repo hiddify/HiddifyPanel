@@ -7,6 +7,7 @@ from hiddifypanel.drivers import user_driver
 from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify
 from hiddifypanel.database import db
+from hiddifypanel import hutils
 
 to_gig_d = 1024**3
 
@@ -97,14 +98,13 @@ def _add_users_usage(users_usage_data: Dict[User, Dict], child_id, sync=False):
 
     # sync with the parent
     if not sync:
-        if hiddify.is_child():
-            from hiddifypanel.panel import hiddify_api
-            hiddify_api.add_user_usage_to_parent()
+        if hutils.node.is_child():
+            hutils.node.child.sync_users_usage_with_parent()
     return {"status": 'success', "comments": res}
 
 
 def send_bot_message(user):
-    if not (hconfig(ConfigEnum.telegram_bot_token) and not hiddify.is_parent()):
+    if not (hconfig(ConfigEnum.telegram_bot_token) or not hutils.node.is_parent()):
         return
     if not user.telegram_id:
         return

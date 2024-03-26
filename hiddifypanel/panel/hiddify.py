@@ -5,11 +5,8 @@ import subprocess
 
 from datetime import datetime
 from typing import Tuple
-from cryptography.hazmat.primitives import serialization
-from cryptography.hazmat.primitives.asymmetric import x25519
 from flask import current_app, g
 from flask_babel import lazy_gettext as _
-from flask_babel import gettext as __
 from datetime import timedelta
 
 from hiddifypanel.cache import cache
@@ -152,7 +149,7 @@ def dump_db_to_dict():
             "users": [u.to_dict() for u in User.query.all()],
             "domains": [u.to_dict() for u in Domain.query.all()],
             "proxies": [u.to_dict() for u in Proxy.query.all()],
-            "parent_domains": [] if not hconfig(ConfigEnum.license) else [u.to_dict() for u in ParentDomain.query.all()],
+            # "parent_domains": [] if not hconfig(ConfigEnum.license) else [u.to_dict() for u in ParentDomain.query.all()],
             'admin_users': [d.to_dict() for d in AdminUser.query.all()],
             "hconfigs": [*[u.to_dict() for u in BoolConfig.query.all()],
                          *[u.to_dict() for u in StrConfig.query.all()]]
@@ -280,25 +277,6 @@ def debug_flash_if_not_in_the_same_asn(domain):
         pass
 
 
-def generate_x25519_keys():
-    priv = x25519.X25519PrivateKey.generate()
-    pub = priv.public_key()
-    priv_bytes = priv.private_bytes(
-        encoding=serialization.Encoding.Raw,
-        format=serialization.PrivateFormat.Raw,
-        encryption_algorithm=serialization.NoEncryption()
-    )
-    pub_bytes = pub.public_bytes(
-        encoding=serialization.Encoding.Raw,
-        format=serialization.PublicFormat.Raw
-    )
-    import base64
-    pub_str = base64.urlsafe_b64encode(pub_bytes).decode()[:-1]
-    priv_str = base64.urlsafe_b64encode(priv_bytes).decode()[:-1]
-
-    return {'private_key': priv_str, 'public_key': pub_str}
-
-
 def get_ssh_client_version(user):
     return 'SSH-2.0-OpenSSH_7.4p1'
 
@@ -350,11 +328,8 @@ def clone_model(model):
     for k in table.columns.keys():
         if k == "id":
             continue
-        # if k in table.primary_key:
-        #     continue
         setattr(new_model, f'{k}', getattr(model, k))
 
-    # data.pop('id')
     return new_model
 
 
@@ -379,18 +354,6 @@ def get_backup_child_unique_id(backupdata: dict) -> str:
         return "self"
     return backupdata['childs'][0]['unique_id']
 
-    # for k, v in backupdata.items():
-    #     if k == 'admin_users' or k == 'users':
-    #         continue
-    #     if k == 'childs':
-    #         if len(v) < 1:
-    #             continue
-    #         return v[0]['unique_id']
-    #     else:
-    #         for item in v:
-    #             return item['child_unique_id']
-    # return 'self'
-
 
 def is_hiddify_next_version(major_v: int = 0, minor_v: int = 0, patch_v: int = 0) -> bool:
     '''If the user agent version be equals or higher than parameters returns True'''
@@ -405,22 +368,3 @@ def is_hiddify_next_version(major_v: int = 0, minor_v: int = 0, patch_v: int = 0
     if u_major_v >= major_v and u_minor_v >= minor_v and u_patch_v >= patch_v:
         return True
     return False
-
-
-def is_child() -> bool:
-    if hconfig(ConfigEnum.panel_mode) == PanelMode.child:
-        return True
-    return False
-
-
-def is_parent() -> bool:
-    if hconfig(ConfigEnum.panel_mode) == PanelMode.parent:
-        return True
-    return False
-
-
-def send_sync_req_to_childs():
-    for c in Child.query.filter(Child.id != 0).all():
-        from hiddifypanel.panel import hiddify_api
-        if not hiddify_api.request_child_to_sync(c):
-            hutils.flask.flash(f'{c.name}: '+_('parent.sync-req-failed'), 'danger')

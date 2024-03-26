@@ -61,9 +61,8 @@ class Actions(FlaskView):
     def reinstall2(self, complete_install=True, domain_changed=False):
         if int(hconfig(ConfigEnum.db_version)) < 9:
             return ("Please update your panel before this action.")
-        if hiddify.is_child():
-            from hiddifypanel.panel import hiddify_api
-            if not hiddify_api.sync_child_with_parent():
+        if hutils.node.is_child():
+            if not hutils.node.child.sync_with_parent():
                 hutils.flask.flash(_('child.sync-failed'), 'danger')  # type: ignore
 
         domain_changed = request.args.get("domain_changed", str(domain_changed)).lower() == "true"
@@ -109,7 +108,7 @@ class Actions(FlaskView):
 
     @login_required(roles={Role.super_admin})
     def change_reality_keys(self):
-        key = hiddify.generate_x25519_keys()
+        key = hutils.crypto.generate_x25519_keys()
         set_hconfig(ConfigEnum.reality_private_key, key['private_key'])
         set_hconfig(ConfigEnum.reality_public_key, key['public_key'])
         hutils.flask.flash_config_success(restart_mode=ApplyMode.restart, domain_changed=False)

@@ -46,17 +46,15 @@ class ProxyDetailsAdmin(AdminLTEModelView):
     # form_overrides = {'work_with': Select2Field}
 
     def after_model_change(self, form, model, is_created):
-        if hiddify.is_child():
-            from hiddifypanel.panel import hiddify_api
-            if not hiddify_api.sync_child_with_parent():
+        if hutils.node.is_child():
+            if not hutils.node.child.sync_with_parent():
                 hutils.flask.flash(_('child.sync-failed'), 'danger')  # type: ignore
         hutils.proxy.get_proxies.invalidate_all()
         pass
 
     def after_model_delete(self, model):
-        if hiddify.is_child():
-            from hiddifypanel.panel import hiddify_api
-            if not hiddify_api.sync_child_with_parent():
+        if hutils.node.is_child():
+            if not hutils.node.child.sync_with_parent():
                 hutils.flask.flash(_('child.sync-failed'), 'danger')  # type: ignore
         hutils.proxy.get_proxies.invalidate_all()
         pass

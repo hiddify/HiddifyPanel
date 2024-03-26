@@ -90,17 +90,16 @@ class SettingAdmin(FlaskView):
 
             from hiddifypanel.panel.commercial.telegrambot import register_bot
             register_bot(set_hook=True)
-            if hiddify.is_child():
-                from hiddifypanel.panel import hiddify_api
-                if hiddify_api.is_child_registered():
-                    if not hiddify_api.sync_child_with_parent():
+            if hutils.node.is_child():
+                if hutils.node.child.is_child_registered():
+                    if not hutils.node.child.sync_with_parent():
                         hutils.flask.flash(_('child.sync-failed'), 'danger')  # type: ignore
                     else:  # TODO: it's just for debuging
                         hutils.flask.flash(_('child.sync-success'))  # type: ignore
 
                 else:
                     name = hconfig(ConfigEnum.unique_id)
-                    if not hiddify_api.register_child_to_parent(name):
+                    if not hutils.node.child.register_to_parent(name):
                         hutils.flask.flash(_('child.register-failed'), 'danger')  # type: ignore
                     else:  # TODO: it's just for debuging
                         hutils.flask.flash(_('child.register-success'))  # type: ignore
@@ -147,7 +146,7 @@ def get_config_form():
 
     class DynamicForm(FlaskForm):
         pass
-    is_parent = hiddify.is_parent()
+    is_parent = hutils.node.is_parent()
 
     for cat in ConfigCategory:
         if cat == 'hidden':
@@ -163,7 +162,7 @@ def get_config_form():
             if not (c2 in configs_key):
                 continue
             c = configs_key[c2]
-            if hiddify.is_parent():
+            if hutils.node.is_parent():
                 if c.key == ConfigEnum.parent_panel or c.key == ConfigEnum.parent_unique_id:
                     continue
             extra_info = ''

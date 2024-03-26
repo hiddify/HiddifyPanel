@@ -5,7 +5,7 @@ from flask_babel import lazy_gettext as _
 
 from hiddifypanel.auth import login_required
 from hiddifypanel.models import set_hconfig, ConfigEnum, PanelMode, ChildMode
-from hiddifypanel.panel import hiddify_api
+from hiddifypanel import hutils
 
 
 class RegisterWithParentSchema(Schema):
@@ -23,7 +23,7 @@ class RegisterWithParentApi(MethodView):
         set_hconfig(ConfigEnum.parent_panel, data['parent_panel'])
         set_hconfig(ConfigEnum.parent_unique_id, data['parent_panel_unique_id'])
 
-        if not hiddify_api.register_child_to_parent(data['name'], data['mode']):
+        if not hutils.node.child.register_to_parent(data['name'], data['mode']):
             abort(400, _('child.register-failed'))  # type: ignore
 
         set_hconfig(ConfigEnum.panel_mode, PanelMode.child)

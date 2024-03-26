@@ -240,7 +240,7 @@ def _v33():
 
 def _v31():
     add_config_if_not_exist(ConfigEnum.reality_short_ids, uuid.uuid4().hex[0:random.randint(1, 8) * 2])
-    key_pair = hiddify.generate_x25519_keys()
+    key_pair = hutils.crypto.generate_x25519_keys()
     add_config_if_not_exist(ConfigEnum.reality_private_key, key_pair['private_key'])
     add_config_if_not_exist(ConfigEnum.reality_public_key, key_pair['public_key'])
     db.session.bulk_save_objects(get_proxy_rows_v1())
