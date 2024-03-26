@@ -3,10 +3,11 @@ import requests
 from enum import auto
 from strenum import StrEnum
 
-from hiddifypanel.models import AdminUser, User, hconfig, ConfigEnum, ChildMode, set_hconfig, Domain,Proxy,StrConfig,BoolConfig
+from hiddifypanel.models import AdminUser, User, hconfig, ConfigEnum, ChildMode, set_hconfig, Domain, Proxy, StrConfig, BoolConfig
 from hiddifypanel import hutils
 from hiddifypanel.panel import hiddify
 from hiddifypanel.panel import usage
+from hiddifypanel.database import db
 
 # region private
 
