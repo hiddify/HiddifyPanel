@@ -73,6 +73,18 @@ class SettingAdmin(FlaskView):
                 hutils.flask.flash(_("ProxyPath is already used! use different proxy path"), 'error')  # type: ignore
                 return render_template('config.html', form=form)
 
+            # validate parent_panel value
+            if p_p := changed_configs.get(ConfigEnum.parent_panel):
+                domain, proxy_path, uuid = hutils.flask.extract_parent_info_from_url(p_p)
+                if not domain or not proxy_path or not uuid or not hutils.node.is_panel_active(domain, proxy_path, uuid):
+                    hutils.flask.flash(_('parent.invalid-parent-url'), 'danger')  # type: ignore
+                    return render_template('config.html', form=form)
+                else:
+                    set_hconfig(ConfigEnum.parent_domain, domain)
+                    set_hconfig(ConfigEnum.parent_admin_proxy_path, proxy_path)
+                    set_hconfig(ConfigEnum.parent_admin_uuid, uuid)
+                    set_hconfig(ConfigEnum.parent_unique_id, '')
+
             for k, v in changed_configs.items():
                 set_hconfig(k, v, commit=False)
 
@@ -81,7 +93,7 @@ class SettingAdmin(FlaskView):
 
             # set panel mode
             p_mode = hconfig(ConfigEnum.panel_mode)
-            if hconfig(ConfigEnum.parent_panel) and hconfig(ConfigEnum.parent_unique_id):
+            if hconfig(ConfigEnum.parent_panel):
                 if p_mode != PanelMode.child:
                     set_hconfig(ConfigEnum.panel_mode, PanelMode.child)
             else:
@@ -90,19 +102,21 @@ class SettingAdmin(FlaskView):
 
             from hiddifypanel.panel.commercial.telegrambot import register_bot
             register_bot(set_hook=True)
+
+            # sync with parent if needed
             if hutils.node.is_child():
                 if hutils.node.child.is_child_registered():
                     if not hutils.node.child.sync_with_parent():
                         hutils.flask.flash(_('child.sync-failed'), 'danger')  # type: ignore
                     else:  # TODO: it's just for debuging
                         hutils.flask.flash(_('child.sync-success'))  # type: ignore
-
                 else:
                     name = hconfig(ConfigEnum.unique_id)
                     if not hutils.node.child.register_to_parent(name):
                         hutils.flask.flash(_('child.register-failed'), 'danger')  # type: ignore
                     else:  # TODO: it's just for debuging
                         hutils.flask.flash(_('child.register-success'))  # type: ignore
+
             reset_action = hiddify.check_need_reset(old_configs)
 
             if old_configs[ConfigEnum.admin_lang] != hconfig(ConfigEnum.admin_lang):

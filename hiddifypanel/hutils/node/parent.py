@@ -66,11 +66,8 @@ def is_child_domain_active(child: Child, domain: Domain) -> bool:
     child_admin_proxy_path = StrConfig.query.filter(StrConfig.child_id == child.id, StrConfig.key == ConfigEnum.proxy_path_admin).first().value
     if not api_key or not child_admin_proxy_path:
         return False
-    api_url = 'https://'+f'{domain.domain}/{child_admin_proxy_path}/api/v2/ping/'.replace('//', '/')
-    res = requests.get(api_url, headers={'Hiddify-API-Key': api_key}, timeout=2)
-    if res.status_code == 200 and 'PONG' in res.json().get('msg'):
-        return True
-    return False
+
+    return hutils.node.is_panel_active(domain.domain, child_admin_proxy_path, api_key)
 
 
 def get_child_active_domains(child: Child) -> List[Domain]:

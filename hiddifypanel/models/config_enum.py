@@ -120,7 +120,11 @@ class ConfigEnum(metaclass=FastEnum):
     # region child-parent
     # deprecated
     is_parent = _BoolConfigDscr(ConfigCategory.hidden)
-    parent_panel = _StrConfigDscr(ConfigCategory.hidden)
+    # parent panel domain
+    parent_panel = _StrConfigDscr(ConfigCategory.hidden)  # should be able to change by user
+    parent_domain = _StrConfigDscr(ConfigCategory.hidden)
+    parent_admin_proxy_path = _StrConfigDscr(ConfigCategory.hidden)
+    parent_admin_uuid = _StrConfigDscr(ConfigCategory.hidden)
     parent_unique_id = _StrConfigDscr(ConfigCategory.hidden)
 
     # the panel mode could be one of these: "parent", "child", "standalone"

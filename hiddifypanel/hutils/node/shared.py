@@ -1,5 +1,6 @@
 from typing import List
 from hiddifypanel.models import hconfig, ConfigEnum, PanelMode, User
+import requests
 
 
 def is_child() -> bool:
@@ -32,3 +33,11 @@ def convert_usage_api_response_to_dict(data: List[dict]) -> dict:
     return converted
 
 # endregion
+
+
+def is_panel_active(domain: str, proxy_path: str, apikey: str) -> bool:
+    api_url = 'https://'+f'{domain}/{proxy_path}/api/v2/ping/'.replace('//', '/')
+    res = requests.get(api_url, headers={'Hiddify-API-Key': apikey}, timeout=2)
+    if res.status_code == 200 and 'PONG' in res.json().get('msg'):
+        return True
+    return False
