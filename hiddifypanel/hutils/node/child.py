@@ -3,8 +3,6 @@ import requests
 from enum import auto
 from strenum import StrEnum
 
-from hiddifypanel.panel.commercial.restapi.v2.parent.register_api import RegisterDataSchema
-from hiddifypanel.panel.commercial.restapi.v2.parent.sync_api import SyncSchema
 from hiddifypanel.models import AdminUser, User, hconfig, ConfigEnum, ChildMode, set_hconfig
 from hiddifypanel import hutils
 from hiddifypanel.panel import hiddify
@@ -33,6 +31,7 @@ def __send_put_request_to_parent(url: str, payload: dict, key: str) -> dict:
 
 def __get_panel_data_for_api(type: __ApiDataType) -> dict | List[dict]:
     if type == __ApiDataType.register:
+        from hiddifypanel.panel.commercial.restapi.v2.parent.register_api import RegisterDataSchema
         register_data = RegisterDataSchema()  # type: ignore
         register_data.admin_users = [admin_user.to_schema() for admin_user in AdminUser.query.all()]  # type: ignore
         register_data.users = [user.to_schema() for user in User.query.all()]  # type: ignore
@@ -42,6 +41,7 @@ def __get_panel_data_for_api(type: __ApiDataType) -> dict | List[dict]:
 
         return register_data.dump(register_data)  # type: ignore
     elif type == __ApiDataType.sync:
+        from hiddifypanel.panel.commercial.restapi.v2.parent.sync_api import SyncSchema
         sync_data = SyncSchema()  # type: ignore
         sync_data.domains = [domain.to_schema() for domain in Domain.query.all()]  # type: ignore
         sync_data.proxies = [proxy.to_schema() for proxy in Proxy.query.all()]  # type: ignore
