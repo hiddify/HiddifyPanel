@@ -11,12 +11,12 @@ from hiddifypanel.auth import login_required
 class UsageDataSchema(Schema):
     uuid = fields.UUID(required=True, desciption="The user uuid")
     usage = fields.Integer(required=True, description="The user usage in bytes")
-    ips = fields.List(fields.String(required=True, description="The user connected IPs"))
+    devices = fields.List(fields.String(required=True, description="The user connected devices"))
 
 
 class UsageSchema(Schema):
     unique_id = fields.UUID(required=True, desicription="The unique id")
-    usages_data = fields.Nested(UsageDataSchema, many=True, required=True, description="The list of users and their usage(in bytes) and connected IPs")
+    usages_data = fields.Nested(UsageDataSchema, many=True, required=True, description="The list of users and their usage(in bytes) and connected devices")
 
 
 class UsageApi(MethodView):
@@ -53,7 +53,7 @@ class UsageApi(MethodView):
             if c_usage := child_usages_data.get(p_uuid):
                 res[p_uuid] = {
                     'usage':  c_usage['usage'] - p_usage['usage'],
-                    'ips': child_usages_data[p_uuid]['ips'],
+                    'devices': child_usages_data[p_uuid]['devices'],
                 }
         return res
 
@@ -63,12 +63,12 @@ def convert_usage_api_response_to_dict(data: List[dict]) -> dict:
     for i in data:
         converted[str(i['uuid'])] = {
             'usage': i['usage'],
-            'ips': ','.join(i['ips']) if i['ips'] else ''
+            'devices': ','.join(i['ips']) if i['devices'] else ''
         }
     return converted
 
 
 def get_users_usage_data_for_api() -> List[dict]:
     users = User.query.all()
-    usages_data = [{'uuid': u.uuid, 'usage': u.current_usage, 'ips': u.ips} for u in users]
+    usages_data = [{'uuid': u.uuid, 'usage': u.current_usage, 'devices': u.ips} for u in users]
     return usages_data  # type: ignore

@@ -23,10 +23,10 @@ def add_users_usage_uuid(uuids_bytes: Dict[str, Dict], child_id, sync=False):
     uuids = uuids_bytes.keys()
     users = User.query.filter(User.uuid.in_(uuids))
     dbusers_bytes = {u: uuids_bytes.get(u.uuid, 0) for u in users}
-    _add_users_usage(dbusers_bytes, child_id)
+    _add_users_usage(dbusers_bytes, child_id, sync)
 
 
-def _add_users_usage(dbusers_bytes, child_id, sync=False):
+def _add_users_usage(users_usage_data, child_id, sync=False):
     res = {}
     have_change = False
     before_enabled_users = user_driver.get_enabled_users()
