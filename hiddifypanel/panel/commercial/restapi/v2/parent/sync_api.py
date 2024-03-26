@@ -31,7 +31,7 @@ class SyncApi(MethodView):
     decorators = [login_required(node_auth=True)]
 
     @app.input(SyncSchema, arg_name='data')  # type: ignore
-    @app.output(RegisterOutputSchema)  # type: ignore
+    @app.output(SyncOutputSchema)  # type: ignore
     def put(self, data):
         unique_id = g.node_unique_id
 
