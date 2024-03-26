@@ -36,16 +36,6 @@ class PatchAdminSchema(AdminSchema):
     pass
 
 
-class PatchAdminSchema(AdminSchema):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['name'].required = False
-        self.fields['mode'].required = False
-        self.fields['lang'].required = False
-        self.fields['can_add_admin'].required = False
-    pass
-
-
 class AdminUserApi(MethodView):
     decorators = [login_required({Role.super_admin, Role.admin})]
 
