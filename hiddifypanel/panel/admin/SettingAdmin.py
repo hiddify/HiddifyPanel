@@ -163,7 +163,7 @@ def get_config_form():
             if not (c2 in configs_key):
                 continue
             c = configs_key[c2]
-            if hconfig(ConfigEnum.panel_mode) == PanelMode.parent:
+            if hiddify.is_parent():
                 if c.key == ConfigEnum.parent_panel or c.key == ConfigEnum.parent_unique_id:
                     continue
             extra_info = ''

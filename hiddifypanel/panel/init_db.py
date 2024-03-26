@@ -19,20 +19,20 @@ from flask import g
 MAX_DB_VERSION = 90
 
 
-def _v77(child_id):
-    pass
-
-
-def _v77(child_id):
+def _v79(child_id):
     set_hconfig(ConfigEnum.panel_mode, PanelMode.standalone)
 
 
-def _v76(child_id):
+def _v78(child_id):
     # equalize panel unique id and root child unique id
     root_child_unique_id = Child.query.filter(Child.name == "Root").first().unique_id
     set_hconfig(ConfigEnum.unique_id, root_child_unique_id)
 
     set_hconfig(ConfigEnum.parent_unique_id, '')
+
+
+def _v77(child_id):
+    pass
 
 
 def _v75(child_id):

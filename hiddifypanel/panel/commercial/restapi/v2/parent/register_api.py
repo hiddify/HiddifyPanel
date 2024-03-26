@@ -8,6 +8,7 @@ from hiddifypanel.panel.commercial.restapi.v2.admin.user_api import UserSchema
 from hiddifypanel.panel.commercial.restapi.v2.admin.admin_user_api import AdminSchema
 from hiddifypanel.auth import login_required
 from hiddifypanel.panel.commercial.restapi.v2.parent import hconfig_key_validator
+from hiddifypanel.panel import hiddify
 
 
 class DomainSchema(Schema):
@@ -64,6 +65,9 @@ class RegisterApi(MethodView):
     @app.input(RegisterSchema, arg_name='data')  # type: ignore
     @app.output(OutputUsersSchema)  # type: ignore
     def put(self, data):
+        if hiddify.is_child():
+            abort(400, 'The panel in child, not a parent or standalone')
+
         unique_id = data['unique_id']
         name = data['name']
         mode = data['mode']
@@ -86,7 +90,7 @@ class RegisterApi(MethodView):
         except Exception as err:
             abort(400, str(err))
 
-        if hconfig(ConfigEnum.panel_mode) != PanelMode.parent:
+        if not hiddify.is_parent():
             set_hconfig(ConfigEnum.panel_mode, PanelMode.parent)
         return self.__create_response()
 
