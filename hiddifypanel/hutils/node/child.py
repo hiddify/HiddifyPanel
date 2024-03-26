@@ -67,7 +67,10 @@ def is_child_registered() -> bool:
     else:
         p_url += '/api/v2/parent/status/'
     p_key = hconfig(ConfigEnum.parent_admin_uuid)
-    res = requests.post(p_url, headers={'Hiddify-API-Key': p_key}, timeout=3)
+    payload = {
+        'child_unique_id': hconfig(ConfigEnum.unique_id)
+    }
+    res = requests.post(p_url, json=payload, headers={'Hiddify-API-Key': p_key}, timeout=3)
     if res.status_code != 200:
         return False
 
