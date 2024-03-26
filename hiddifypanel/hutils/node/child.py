@@ -1,9 +1,9 @@
-from typing import Tuple, List
+from typing import List
 import requests
 from enum import auto
 from strenum import StrEnum
 
-from hiddifypanel.models import AdminUser, User, hconfig, ConfigEnum, ChildMode, set_hconfig
+from hiddifypanel.models import AdminUser, User, hconfig, ConfigEnum, ChildMode, set_hconfig, Domain,Proxy,StrConfig,BoolConfig
 from hiddifypanel import hutils
 from hiddifypanel.panel import hiddify
 from hiddifypanel.panel import usage
