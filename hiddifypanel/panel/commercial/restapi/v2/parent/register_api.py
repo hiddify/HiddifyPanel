@@ -4,39 +4,10 @@ from flask import current_app as app
 from flask.views import MethodView
 
 from hiddifypanel.models import *
-from hiddifypanel.panel.commercial.restapi.v2.admin.user_api import UserSchema
-from hiddifypanel.panel.commercial.restapi.v2.admin.admin_user_api import AdminSchema
 from hiddifypanel.auth import login_required
-from hiddifypanel.panel.commercial.restapi.v2.parent import hconfig_key_validator
 from hiddifypanel import hutils
 
-
-class DomainSchema(Schema):
-    child_unique_id = fields.String(description="The child's unique id")
-    domain = fields.String(required=True, description="The domain name")
-    alias = fields.String(description="The domain alias", allow_none=True)
-    sub_link_only = fields.Boolean(required=True, description="Is the domain sub link only")
-    mode = fields.Enum(DomainType, required=True, description="The domain type")
-    cdn_ip = fields.String(description="The cdn ip", allow_none=True)
-    grpc = fields.Boolean(required=True, description="Is the domain grpc")
-    servernames = fields.String(description="The servernames", allow_none=True)
-    show_domains = fields.List(fields.String(), desciption="The list of domains to show")
-
-
-class ProxySchema(Schema):
-    child_unique_id = fields.String(description="The child's unique id")
-    name = fields.String(required=True, description="The proxy name")
-    enable = fields.Boolean(required=True, description="Is the proxy enabled")
-    proto = fields.Enum(ProxyProto, required=True, description="The proxy protocol")
-    l3 = fields.Enum(ProxyL3, required=True, description="The proxy l3")
-    transport = fields.Enum(ProxyTransport, required=True, description="The proxy transport")
-    cdn = fields.Enum(ProxyCDN, required=True, description="The proxy cdn")
-
-
-class HConfigSchema(Schema):
-    child_unique_id = fields.String(description="The child's unique id")
-    key = fields.String(required=True, description="The config key", validate=hconfig_key_validator)  # type: ignore
-    value = fields.String(required=True, description="The config value")
+from .schema import *
 
 
 class RegisterDataSchema(Schema):
@@ -54,19 +25,20 @@ class RegisterSchema(Schema):
     mode = fields.Enum(ChildMode, required=True, description="The child's mode")
 
 
-class OutputUsersSchema(Schema):
+class RegisterOutputSchema(Schema):
+    parent_unique_id = fields.String(description="The parent's unique id")
     users = fields.List(fields.Nested(UserSchema), required=True, description="The list of users")
     admin_users = fields.List(fields.Nested(AdminSchema), required=True, description="The list of admin users")
 
 
 class RegisterApi(MethodView):
-    decorators = [login_required(child_parent_auth=True)]
+    decorators = [login_required({Role.super_admin})]
 
     @app.input(RegisterSchema, arg_name='data')  # type: ignore
-    @app.output(OutputUsersSchema)  # type: ignore
+    @app.output(RegisterOutputSchema)  # type: ignore
     def put(self, data):
         if hutils.node.is_child():
-            abort(400, 'The panel in child, not a parent or standalone')
+            abort(400, 'The panel in child, not a parent nor standalone')
 
         unique_id = data['unique_id']
         name = data['name']
@@ -91,10 +63,11 @@ class RegisterApi(MethodView):
             abort(400, str(err))
 
         if not hutils.node.is_parent():
-            set_hconfig(ConfigEnum.panel_mode, PanelMode.parent)
+            set_hconfig(ConfigEnum.panel_mode, PanelMode.parent)  # type: ignore
 
-        res = OutputUsersSchema()
+        res = RegisterOutputSchema()
         res.users = [u.to_schema() for u in User.query.all()]  # type: ignore
         res.admin_users = [a.to_schema() for a in AdminUser.query.all()]  # type: ignore
+        res.parent_unique_id = hconfig(ConfigEnum.unique_id)
 
         return res

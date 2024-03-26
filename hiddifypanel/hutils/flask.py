@@ -189,6 +189,24 @@ def __is_admin_api_call() -> bool:
     return False
 
 
+def is_child_api_call() -> bool:
+    if request.blueprint and request.blueprint == 'api_child':
+        return True
+    child_api_format = '/api/v2/child/'
+    if child_api_format in request.path:
+        return True
+    return False
+
+
+def is_parent_api_call() -> bool:
+    if request.blueprint and request.blueprint == 'api_parent':
+        return True
+    parent_api_format = '/api/v2/parent/'
+    if parent_api_format in request.path:
+        return True
+    return False
+
+
 def proxy_path_validator(proxy_path: str) -> None:
     # DEPRECATED PROXY_PATH HANDLED BY BACKWARD COMPATIBILITY MIDDLEWARE
     # does not nginx handle proxy path validation?

@@ -97,12 +97,12 @@ def login_user(user: AdminUser | User, remember=False, duration=None, force=Fals
     return True
 
 
-def login_required(roles: set[Role] | None = None, child_parent_auth: bool = False):
+def login_required(roles: set[Role] | None = None, node_auth: bool = False):
     def wrapper(fn):
         @wraps(fn)
         def decorated_view(*args, **kwargs):
             # print('xxxx', current_account)
-            if child_parent_auth and not g.get('child_parent_auth'):
+            if node_auth and not g.get('node_unique_id'):
                 return redirect_to_login()
             if not current_account:
                 return redirect_to_login()  # type: ignore
@@ -153,13 +153,17 @@ def auth_before_request():
 
     elif apikey := request.headers.get("Hiddify-API-Key"):
         account = get_account_by_api_key(apikey, is_admin_path)
-        # when parent/child panel needs to call another parent/child api, it will pass other panel's unique id in the header as apikey
         if not account:
-            if apikey == hconfig(ConfigEnum.unique_id):
-                g.child_parent_auth = apikey
+            # when parent/child panel needs to call another parent/child api, it will pass its unique id in the header as apikey
+            if hutils.flask.is_child_api_call() and apikey == hconfig(ConfigEnum.parent_unique_id):
+                g.node_unique_id = apikey
+            elif hutils.flask.is_parent_api_call() and apikey in hutils.node.parent.get_childs_unique_id():
+                g.node_unique_id = apikey
+
+            if g.get('node_unique_id'):
                 account = AdminUser.get_super_admin()
 
-        if not account and not g.child_parent_auth:
+        if not account:
             return logout_redirect()
     elif request.authorization:
         # print('request.authorization', request.authorization)

@@ -5,7 +5,7 @@ from hiddifypanel.models import Role
 
 
 class Ping_Pong(MethodView):
-    decorators = [login_required({Role.super_admin})]
+    decorators = [login_required({Role.super_admin, Role.admin, Role.agent})]
 
     def get(self):
         return {'msg': 'GET: PONG'}

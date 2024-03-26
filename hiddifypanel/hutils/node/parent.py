@@ -22,7 +22,7 @@ def request_child_to_sync(child: Child) -> bool:
         return False
     child_admin_proxy_path = StrConfig.query.filter(StrConfig.child_id == child.id, StrConfig.key == ConfigEnum.proxy_path_admin).first().value
     url = f'https://{child_domain}/{child_admin_proxy_path}/api/v2/child/sync-parent/'
-    res = requests.post(url, headers={'Hiddify-API-Key': str(child.unique_id)})
+    res = requests.post(url, headers={'Hiddify-API-Key': hconfig(ConfigEnum.unique_id)})
     if res.status_code == 200 and res.json().get('msg') == 'ok':
         return True
 
@@ -42,13 +42,12 @@ def request_chlid_to_register(name: str, mode: ChildMode, child_link: str, child
         return False
 
     paylaod = {
-        'parent_panel': f'https://{domain}/{hconfig(ConfigEnum.proxy_path_admin)}/',
-        'parent_panel_unique_id': hconfig(ConfigEnum.unique_id),
+        'parent_panel': f'https://{domain}/{hconfig(ConfigEnum.proxy_path_admin)}/{g.account.uuid}/',
         'name': name,
         'mode': mode
 
     }
-    res = requests.post(child_link, json=paylaod, headers={'Hiddify-API-Key': child_key}, timeout=40)
+    res = requests.post(child_link, json=paylaod, headers={'Hiddify-API-Key': hconfig(ConfigEnum.unique_id)}, timeout=40)
     if res.status_code == 200 and res.json().get('msg') == 'ok':
         set_hconfig(ConfigEnum.panel_mode, PanelMode.parent)  # type: ignore
         # don't need is_parent anymore, just for compatibility, it'll be deleted
@@ -85,3 +84,8 @@ def is_child_active(child: Child) -> bool:
         if is_child_domain_active(child, d):
             return True
     return False
+
+
+def get_childs_unique_id() -> List[str]:
+    childs = Child.query.filter(Child.id != 0).all()
+    return [c.unique_id for c in childs]

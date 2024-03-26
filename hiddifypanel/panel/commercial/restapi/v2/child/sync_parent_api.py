@@ -7,7 +7,7 @@ from hiddifypanel import hutils
 
 
 class SyncWithParentApi(MethodView):
-    decorators = [login_required(child_parent_auth=True)]
+    decorators = [login_required(node_auth=True)]
 
     def post(self):
         if not hutils.node.child.sync_with_parent(True):

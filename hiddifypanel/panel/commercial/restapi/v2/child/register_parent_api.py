@@ -1,30 +1,32 @@
 from apiflask import abort, fields, Schema
 from flask.views import MethodView
-from flask import current_app as app
+from flask import current_app as app, g
 from flask_babel import lazy_gettext as _
 
 from hiddifypanel.auth import login_required
-from hiddifypanel.models import set_hconfig, ConfigEnum, PanelMode, ChildMode
+from hiddifypanel.models import set_hconfig, ConfigEnum, PanelMode, ChildMode, Role
 from hiddifypanel import hutils
 
 
 class RegisterWithParentSchema(Schema):
-    parent_panel = fields.String(required=True, description="The parent panel link")
-    parent_panel_unique_id = fields.String(required=True, description="The parent panel unique id (api key)")
+    parent_unique_id = fields.String(description="The parent's unique id")
+    parent_panel = fields.String(required=True, description="The parent panel url")
     name = fields.String(required=True, description="The child's name in the parent panel")
     mode = fields.Enum(ChildMode, required=True, description="The child's mode in the parent panel")
 
 
 class RegisterWithParentApi(MethodView):
-    decorators = [login_required(child_parent_auth=True)]
+    decorators = [login_required({Role.super_admin})]
 
-    @app.input(RegisterWithParentSchema, arg_name='data')
+    @app.input(RegisterWithParentSchema, arg_name='data')  # type: ignore
     def post(self, data):
-        set_hconfig(ConfigEnum.parent_panel, data['parent_panel'])
-        set_hconfig(ConfigEnum.parent_unique_id, data['parent_panel_unique_id'])
+        if hutils.node.is_parent() or hutils.node.is_child():
+            abort(400, 'The panel is not in standalone mode')
+        set_hconfig(ConfigEnum.parent_panel, data['parent_panel'])  # type: ignore
+        set_hconfig(ConfigEnum.parent_unique_id, data['parent_unique_id'])  # type: ignore
 
         if not hutils.node.child.register_to_parent(data['name'], data['mode']):
             abort(400, _('child.register-failed'))  # type: ignore
 
-        set_hconfig(ConfigEnum.panel_mode, PanelMode.child)
+        set_hconfig(ConfigEnum.panel_mode, PanelMode.child)  # type: ignore
         return {'status': 200, 'msg': 'ok'}
