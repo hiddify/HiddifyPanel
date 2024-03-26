@@ -19,6 +19,7 @@ def init_app(app: APIFlask):
     app.jinja_env.globals['hconfig'] = hconfig
     app.jinja_env.globals['g'] = g
     app.jinja_env.globals['hutils'] = hutils
+    app.jinja_env.globals['hiddify'] = hiddify
     app.jinja_env.globals['version'] = hiddifypanel.__version__
     app.jinja_env.globals['static_url_for'] = hutils.flask.static_url_for
     app.jinja_env.globals['hurl_for'] = hutils.flask.hurl_for
