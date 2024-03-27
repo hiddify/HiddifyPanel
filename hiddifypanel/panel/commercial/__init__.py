@@ -16,11 +16,13 @@ def init_app(app):
     from .restapi.v2 import ping_pong as api_v2_ping_pong
     from .restapi.v2 import parent as api_v2_parent
     from .restapi.v2 import child as api_v2_child
+    from .restapi.v2 import panel as api_v2_panel
     api_v2_parent.init_app(app)
     api_v2_admin.init_app(app)
     api_v2_user.init_app(app)
     api_v2_ping_pong.init_app(app)
     api_v2_child.init_app(app)
+    api_v2_panel.init_app(app)
     return
 
 
