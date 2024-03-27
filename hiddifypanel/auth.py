@@ -4,7 +4,7 @@ from hiddifypanel.hutils.flask import hurl_for
 from flask_login.utils import _get_user
 from functools import wraps
 from hiddifypanel.models import *
-
+from apiflask import abort as json_abort
 from hiddifypanel import hutils
 from werkzeug.local import LocalProxy
 current_account: "BaseAccount" = LocalProxy(lambda: _get_user())
@@ -103,7 +103,7 @@ def login_required(roles: set[Role] | None = None, node_auth: bool = False):
         def decorated_view(*args, **kwargs):
             # print('xxxx', current_account)
             if node_auth and not g.get('node_unique_id'):
-                return redirect_to_login()
+                json_abort(403, 'Unauthorized node')
             if not current_account:
                 return redirect_to_login()  # type: ignore
             if roles:
