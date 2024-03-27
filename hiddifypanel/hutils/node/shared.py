@@ -4,18 +4,14 @@ import requests
 
 
 def is_child() -> bool:
-    if hconfig(ConfigEnum.panel_mode) == PanelMode.child:
-        return True
-    return False
+    return hconfig(ConfigEnum.panel_mode) == PanelMode.child
 
 
 def is_parent() -> bool:
-    if hconfig(ConfigEnum.panel_mode) == PanelMode.parent:
-        return True
-    return False
-
+    return hconfig(ConfigEnum.panel_mode) == PanelMode.parent
 
 # region usage
+
 
 def get_users_usage_data_for_api() -> List[dict]:
     users = User.query.all()
