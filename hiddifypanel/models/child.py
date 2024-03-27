@@ -12,7 +12,10 @@ from hiddifypanel.database import db
 
 class ChildMode(StrEnum):
     virtual = auto()
-    remote = auto()
+    remote = auto()  # it's child
+    parent = auto()
+
+# the child model is node
 
 
 class Child(db.Model, SerializerMixin):  # type: ignore
@@ -56,8 +59,12 @@ class Child(db.Model, SerializerMixin):  # type: ignore
             db.session.commit()
 
     @classmethod
-    def by_id(cls, id: int) -> "Child":
+    def by_id(cls, id: int) -> 'Child':
         return Child.query.filter(Child.id == id).first()
+
+    @classmethod
+    def by_unique_id(cls, unique_id: str) -> 'Child':
+        return Child.query.filter(Child.unique_id == unique_id).first()
 
     @classmethod
     @property

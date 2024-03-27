@@ -47,7 +47,7 @@ def request_chlid_to_register(name: str, mode: ChildMode, child_link: str, child
         'mode': mode
 
     }
-    res = requests.post(child_link, json=paylaod, headers={'Hiddify-API-Key': hconfig(ConfigEnum.unique_id)}, timeout=40)
+    res = requests.post(child_link, json=paylaod, headers={'Hiddify-API-Key': child_key}, timeout=40)
     if res.status_code == 200 and res.json().get('msg') == 'ok':
         return True
 
@@ -81,8 +81,3 @@ def is_child_active(child: Child) -> bool:
         if is_child_domain_active(child, d):
             return True
     return False
-
-
-def get_childs_unique_id() -> List[str]:
-    childs = Child.query.filter(Child.id != 0).all()
-    return [c.unique_id for c in childs]

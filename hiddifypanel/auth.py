@@ -102,7 +102,7 @@ def login_required(roles: set[Role] | None = None, node_auth: bool = False):
         @wraps(fn)
         def decorated_view(*args, **kwargs):
             # print('xxxx', current_account)
-            if node_auth and not g.get('node_unique_id'):
+            if node_auth and not g.get('node'):
                 json_abort(403, 'Unauthorized node')
             if not current_account:
                 return redirect_to_login()  # type: ignore
@@ -155,12 +155,10 @@ def auth_before_request():
         account = get_account_by_api_key(apikey, is_admin_path)
         if not account:
             # when parent/child panel needs to call another parent/child api, it will pass its unique id in the header as apikey
-            if hutils.flask.is_child_api_call() and apikey == hconfig(ConfigEnum.parent_unique_id):
-                g.node_unique_id = apikey
-            elif hutils.flask.is_parent_api_call() and apikey in hutils.node.parent.get_childs_unique_id():
-                g.node_unique_id = apikey
+            if node := Child.by_unique_id(apikey):
+                g.node = node
 
-            if g.get('node_unique_id'):
+            if g.get('node'):
                 account = AdminUser.get_super_admin()
 
         if not account:

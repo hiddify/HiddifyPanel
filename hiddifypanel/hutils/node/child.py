@@ -1,9 +1,6 @@
-from typing import List
 import requests
-from enum import auto
-from strenum import StrEnum
 
-from hiddifypanel.models import AdminUser, User, hconfig, ConfigEnum, ChildMode, set_hconfig, Domain, Proxy, StrConfig, BoolConfig
+from hiddifypanel.models import AdminUser, User, hconfig, ConfigEnum, ChildMode, set_hconfig, Domain, Proxy, StrConfig, BoolConfig, Child, ChildMode
 from hiddifypanel import hutils
 from hiddifypanel.panel import hiddify
 from hiddifypanel.panel import usage
@@ -96,6 +93,11 @@ def register_to_parent(name: str, mode: ChildMode = ChildMode.remote) -> bool:
     set_hconfig(ConfigEnum.parent_unique_id, res['parent_unique_id'])  # type: ignore
     AdminUser.bulk_register(res['admin_users'], commit=False)
     User.bulk_register(res['users'], commit=False)
+
+    # add new child as parent
+    db.session.add(  # type: ignore
+        Child(unique_id=res['parent_unique_id'], name=res['parent_unique_id'], mode=ChildMode.parent)
+    )
     db.session.commit()  # type: ignore
 
     return True

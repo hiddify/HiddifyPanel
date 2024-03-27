@@ -33,7 +33,7 @@ class SyncApi(MethodView):
     @app.input(SyncSchema, arg_name='data')  # type: ignore
     @app.output(SyncOutputSchema)  # type: ignore
     def put(self, data):
-        unique_id = g.node_unique_id
+        unique_id = g.node.unique_id
 
         if not hutils.node.is_parent():
             abort(400, "Not a parent")

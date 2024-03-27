@@ -20,7 +20,7 @@ class UsageApi(MethodView):
     @app.input(UsageSchema(many=True), arg_name='data')  # type: ignore
     @app.output(UsageSchema(many=True))  # type: ignore
     def put(self, data):
-        child = Child.query.filter(Child.unique_id == g.node_unique_id).first()
+        child = Child.query.filter(Child.unique_id == g.node.unique_id).first()
         if not child:
             abort(400, "The child does not exist")
 
