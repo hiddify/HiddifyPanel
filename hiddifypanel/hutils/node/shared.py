@@ -15,7 +15,7 @@ def is_parent() -> bool:
 
 def get_users_usage_data_for_api() -> List[dict]:
     users = User.query.all()
-    usages_data = [{'uuid': u.uuid, 'usage': u.current_usage, 'devices': u.ips} for u in users]
+    usages_data = [{'uuid': u.uuid, 'usage': u.current_usage, 'devices': u.devices} for u in users]
     return usages_data  # type: ignore
 
 

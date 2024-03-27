@@ -126,7 +126,7 @@ class UserAdmin(AdminLTEModelView):
     def _enable_formatter(view, context, model, name):
         if model.is_active:
             link = '<i class="fa-solid fa-circle-check text-success"></i> '
-        elif len(model.ips):
+        elif len(model.devices):
             link = '<i class="fa-solid fa-users-slash text-danger" title="{_("Too many Connected IPs")}"></i>'
         else:
             link = '<i class="fa-solid fa-circle-xmark text-danger"></i> '

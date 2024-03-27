@@ -121,12 +121,12 @@ class User(BaseAccount):
             is_active = False
         elif self.remaining_days < 0:
             is_active = False
-        elif len(self.ips) > max(3, self.max_ips):
+        elif len(self.devices) > max(3, self.max_ips):
             is_active = False
         return is_active
 
     @property
-    def ips(self):
+    def devices(self):
         res = {}
         for detail in UserDetail.query.filter(UserDetail.user_id == self.id):
             for device in detail.devices:
