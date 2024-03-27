@@ -5,7 +5,7 @@ from typing import List
 
 
 from hiddifypanel import hutils
-from hiddifypanel.models import Child, StrConfig, ConfigEnum, DomainType, Domain, ChildMode, hconfig, set_hconfig, PanelMode, get_panel_domains
+from hiddifypanel.models import Child, AdminUser, ConfigEnum, DomainType, Domain, ChildMode, hconfig, get_panel_link
 
 
 def request_childs_to_sync():
@@ -36,14 +36,12 @@ def request_chlid_to_register(name: str, mode: ChildMode, child_link: str, apike
         return False
     else:
         child_link = child_link.removesuffix('/') + '/api/v2/child/register-parent/'
-
-    try:
-        domain = get_panel_domains()[0].domain
-    except:
+    domain = get_panel_link()
+    if not domain:
         return False
-
+    from hiddifypanel.panel import hiddify
     paylaod = {
-        'parent_panel': f'https://{domain}/{hconfig(ConfigEnum.proxy_path_admin)}/{g.account.uuid}/',
+        'parent_panel': hiddify.get_account_panel_link(AdminUser.by_uuid(g.account.uuid), domain.domain),
         'name': name,
         'mode': mode
 
@@ -57,7 +55,7 @@ def request_chlid_to_register(name: str, mode: ChildMode, child_link: str, apike
 
 def is_child_domain_active(child: Child, domain: Domain) -> bool:
     '''Checks whether a child's domain is responsive'''
-    if domain.mode in [DomainType.reality, DomainType.fake]:
+    if not domain.need_valid_ssl:
         return False
     api_key = g.account.uuid
     child_admin_proxy_path = hconfig(ConfigEnum.proxy_path_admin, child.id)
@@ -77,7 +75,7 @@ def get_child_active_domains(child: Child) -> List[Domain]:
 
 def is_child_active(child: Child) -> bool:
     for d in child.domains:
-        if d.mode in [DomainType.reality, DomainType.fake]:
+        if not d.need_valid_ssl:
             continue
         if is_child_domain_active(child, d):
             return True
