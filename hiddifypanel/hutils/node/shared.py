@@ -28,7 +28,7 @@ def convert_usage_api_response_to_dict(data: List[dict]) -> dict:
     for i in data:
         converted[str(i['uuid'])] = {
             'usage': i['usage'],
-            'devices': ','.join(i['devices']) if i['devices'] else ''
+            'devices': ','.join(i['devices'])
         }
     return converted
 
