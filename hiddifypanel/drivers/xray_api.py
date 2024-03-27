@@ -41,8 +41,6 @@ class XrayApi(DriverABS):
         return list(set(inbounds))
 
     def add_client(self, user):
-        if hconfig(ConfigEnum.core_type) != "xray":
-            return
         uuid = user.uuid
         xray_client = self.get_xray_client()
         tags = self.get_inbound_tags()
