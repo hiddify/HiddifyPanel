@@ -32,8 +32,16 @@ def convert_usage_api_response_to_dict(data: List[dict]) -> dict:
 
 
 def is_panel_active(domain: str, proxy_path: str, apikey: str) -> bool:
-    api_url = 'https://'+f'{domain}/{proxy_path}/api/v2/ping/'.replace('//', '/')
+    api_url = 'https://'+f'{domain}/{proxy_path}/api/v2/panel/ping/'.replace('//', '/')
     res = requests.get(api_url, headers={'Hiddify-API-Key': apikey}, timeout=2)
     if res.status_code == 200 and 'PONG' in res.json().get('msg'):
         return True
     return False
+
+
+def get_panel_info(domain: str, proxy_path: str, apikey: str) -> dict:
+    api_url = 'https://'+f'{domain}/{proxy_path}/api/v2/panel/info/'.replace('//', '/')
+    res = requests.get(api_url, headers={'Hiddify-API-Key': apikey}, timeout=2)
+    if res.status_code != 200:
+        return {}
+    return res.json()

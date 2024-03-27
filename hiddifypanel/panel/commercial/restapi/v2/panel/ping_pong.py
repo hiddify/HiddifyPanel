@@ -4,7 +4,7 @@ from hiddifypanel.auth import login_required
 from hiddifypanel.models import Role
 
 
-class Ping_Pong(MethodView):
+class PingPongApi(MethodView):
     decorators = [login_required({Role.super_admin, Role.admin, Role.agent})]
 
     def get(self):
