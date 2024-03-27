@@ -62,7 +62,7 @@ def is_child_domain_active(child: Child, domain: Domain) -> bool:
     if domain.mode in [DomainType.reality, DomainType.fake]:
         return False
     api_key = g.account.uuid
-    child_admin_proxy_path = StrConfig.query.filter(StrConfig.child_id == child.id, StrConfig.key == ConfigEnum.proxy_path_admin).first().value
+    child_admin_proxy_path = hconfig(ConfigEnum.proxy_path_admin, child.id)
     if not api_key or not child_admin_proxy_path:
         return False
 
