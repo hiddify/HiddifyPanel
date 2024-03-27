@@ -74,7 +74,7 @@ def is_child_registered() -> bool:
     return False
 
 
-def register_to_parent(name: str, mode: ChildMode = ChildMode.remote, set_db=True) -> bool:
+def register_to_parent(name: str, mode: ChildMode = ChildMode.remote) -> bool:
     # get parent link its format is "https://panel.hiddify.com/<admin_proxy_path>/"
     p_url = __get_parent_panel_url()
     if not p_url:
@@ -92,16 +92,16 @@ def register_to_parent(name: str, mode: ChildMode = ChildMode.remote, set_db=Tru
     res = __send_put_request_to_parent(p_url, payload, p_key)
     if 'err' in res:
         return False
-    if set_db:
-        set_hconfig(ConfigEnum.parent_unique_id, res['parent_unique_id'])  # type: ignore
-        AdminUser.bulk_register(res['admin_users'], commit=False)
-        User.bulk_register(res['users'], commit=False)
-        db.session.commit()  # type: ignore
+
+    set_hconfig(ConfigEnum.parent_unique_id, res['parent_unique_id'])  # type: ignore
+    AdminUser.bulk_register(res['admin_users'], commit=False)
+    User.bulk_register(res['users'], commit=False)
+    db.session.commit()  # type: ignore
 
     return True
 
 
-def sync_with_parent(set_db=True) -> bool:
+def sync_with_parent() -> bool:
     # sync usage first
     if not sync_users_usage_with_parent():
         return False
@@ -117,14 +117,14 @@ def sync_with_parent(set_db=True) -> bool:
     res = __send_put_request_to_parent(p_url, payload, hconfig(ConfigEnum.unique_id))  # type: ignore
     if 'err' in res:
         return False
-    if set_db:
-        AdminUser.bulk_register(res['admin_users'], commit=False, remove=True)
-        User.bulk_register(res['users'], commit=False, remove=True)
-        db.session.commit()  # type: ignore
+
+    AdminUser.bulk_register(res['admin_users'], commit=False, remove=True)
+    User.bulk_register(res['users'], commit=False, remove=True)
+    db.session.commit()  # type: ignore
     return True
 
 
-def sync_users_usage_with_parent(set_db=True) -> bool:
+def sync_users_usage_with_parent() -> bool:
     p_url = __get_parent_panel_url()
     if not p_url:
         return False
@@ -136,9 +136,9 @@ def sync_users_usage_with_parent(set_db=True) -> bool:
     res = __send_put_request_to_parent(p_url, payload, hconfig(ConfigEnum.unique_id))  # type: ignore
     if 'err' in res:
         return False
-    if set_db:
-        # parse usages data
-        res = hutils.node.convert_usage_api_response_to_dict(res)  # type: ignore
-        usage.add_users_usage_uuid(res, hiddify.get_child(None), True)
+
+    # parse usages data
+    res = hutils.node.convert_usage_api_response_to_dict(res)  # type: ignore
+    usage.add_users_usage_uuid(res, hiddify.get_child(None), True)
 
     return True
