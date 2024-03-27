@@ -19,6 +19,10 @@ from flask import g
 MAX_DB_VERSION = 90
 
 
+def _v81(child_id):
+    set_hconfig(ConfigEnum.log_level, LogLevel.warn)
+
+
 def _v80(child_id):
     set_hconfig(ConfigEnum.parent_domain, '')
     set_hconfig(ConfigEnum.parent_admin_proxy_path, '')

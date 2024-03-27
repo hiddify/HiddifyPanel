@@ -19,6 +19,15 @@ class PanelMode(StrEnum):
     child = auto()
 
 
+class LogLevel(StrEnum):
+    trace = auto()
+    debug = auto()
+    info = auto()
+    warn = auto()
+    error = auto()
+    fatal = auto()
+
+
 class ConfigCategory(StrEnum):
     admin = auto()
     branding = auto()
@@ -131,6 +140,8 @@ class ConfigEnum(metaclass=FastEnum):
     # this config value would be 'standalone' by default. and would be set by panel itself
     panel_mode = _StrConfigDscr(ConfigCategory.hidden, ApplyMode.restart)
     # endregion
+
+    log_level = _StrConfigDscr(ConfigCategory.too_advanced, ApplyMode.restart)
 
     unique_id = _StrConfigDscr(ConfigCategory.hidden)
     last_hash = _StrConfigDscr(ConfigCategory.hidden)
