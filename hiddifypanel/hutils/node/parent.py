@@ -49,9 +49,6 @@ def request_chlid_to_register(name: str, mode: ChildMode, child_link: str, child
     }
     res = requests.post(child_link, json=paylaod, headers={'Hiddify-API-Key': hconfig(ConfigEnum.unique_id)}, timeout=40)
     if res.status_code == 200 and res.json().get('msg') == 'ok':
-        set_hconfig(ConfigEnum.panel_mode, PanelMode.parent)  # type: ignore
-        # don't need is_parent anymore, just for compatibility, it'll be deleted
-        set_hconfig(ConfigEnum.is_parent, True)  # type: ignore
         return True
 
     return False
