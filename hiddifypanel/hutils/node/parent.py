@@ -27,11 +27,12 @@ def request_child_to_sync(child: Child) -> bool:
         return True
 
     return False
+# before using this function should check child version
 
 
-def request_chlid_to_register(name: str, mode: ChildMode, child_link: str, child_key: str) -> bool:
+def request_chlid_to_register(name: str, mode: ChildMode, child_link: str, apikey: str) -> bool:
     '''Requests to a child to register itself with the current panel'''
-    if not child_link or not child_key:
+    if not child_link or not apikey:
         return False
     else:
         child_link = child_link.removesuffix('/') + '/api/v2/child/register-parent/'
@@ -47,7 +48,7 @@ def request_chlid_to_register(name: str, mode: ChildMode, child_link: str, child
         'mode': mode
 
     }
-    res = requests.post(child_link, json=paylaod, headers={'Hiddify-API-Key': child_key}, timeout=40)
+    res = requests.post(child_link, json=paylaod, headers={'Hiddify-API-Key': apikey}, timeout=40)
     if res.status_code == 200 and res.json().get('msg') == 'ok':
         return True
 
