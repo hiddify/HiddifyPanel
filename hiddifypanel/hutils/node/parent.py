@@ -75,8 +75,6 @@ def get_child_active_domains(child: Child) -> List[Domain]:
 
 def is_child_active(child: Child) -> bool:
     for d in child.domains:
-        if not d.need_valid_ssl:
-            continue
         if is_child_domain_active(child, d):
             return True
     return False
