@@ -23,9 +23,10 @@ class LogLevel(StrEnum):
     trace = auto()
     debug = auto()
     info = auto()
+    success = auto()
     warn = auto()
     error = auto()
-    fatal = auto()
+    critical = auto()
 
 
 class ConfigCategory(StrEnum):
@@ -138,7 +139,7 @@ class ConfigEnum(metaclass=FastEnum):
 
     # the panel mode could be one of these: "parent", "child", "standalone"
     # this config value would be 'standalone' by default. and would be set by panel itself
-    panel_mode = _StrConfigDscr(ConfigCategory.hidden, ApplyMode.restart)
+    panel_mode = _StrConfigDscr(ConfigCategory.hidden)
     # endregion
 
     log_level = _StrConfigDscr(ConfigCategory.too_advanced, ApplyMode.restart)

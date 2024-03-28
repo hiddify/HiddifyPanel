@@ -1,6 +1,5 @@
 from flask import g
 from flask_babel import lazy_gettext as _
-import requests
 from typing import List
 
 
