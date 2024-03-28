@@ -2,10 +2,8 @@ from typing import TypeVar, Type, Optional, Union
 from apiflask import Schema, fields
 import traceback
 import requests
-from urllib.parse import urljoin
 from hiddifypanel.models import hconfig, ConfigEnum
 
-T = TypeVar('T', bound=Schema | dict)  # type: ignore
 
 
 class NodeApiErrorSchema(Schema):
@@ -17,13 +15,13 @@ class NodeApiErrorSchema(Schema):
 
 class NodeApiClient():
     def __init__(self, base_url: str, apikey: Optional[str] = None, max_retry: int = 3):
-        self.base_url = base_url
+        self.base_url = base_url if base_url.endswith('/') else base_url+'/'
         self.max_retry = max_retry
         self.headers = {'Hiddify-API-Key': apikey if apikey else hconfig(ConfigEnum.unique_id)}
 
-    def __call(self, method: str, path: str, payload: Optional[Schema], output_schema: Type[T]) -> Union[T, NodeApiErrorSchema]:  # type: ignore
+    def __call(self, method: str, path: str, payload: Optional[Schema], output_schema: Type[Schema]) -> Union[dict, NodeApiErrorSchema]:  # type: ignore
         retry_count = 1
-        full_url = urljoin(self.base_url, path)
+        full_url = self.base_url + path.removeprefix('/')
         while 1:
             try:
                 # TODO: implement it with aiohttp
@@ -41,7 +39,7 @@ class NodeApiClient():
                     err.code = response.status_code  # type: ignore
                     err.reason = response.reason  # type: ignore
                     return err
-                return resp if isinstance(output_schema, dict) else output_schema().load(resp)  # type: ignore
+                return resp if  isinstance(output_schema,dict) else output_schema().load(resp)  # type: ignore
             except requests.HTTPError as e:
                 if retry_count >= self.max_retry:
                     stack_trace = traceback.format_exc()
@@ -55,11 +53,11 @@ class NodeApiClient():
                 print(f"Error occurred: {e}")
                 retry_count += 1
 
-    def get(self, path: str, output: Type[T]) -> Union[T, NodeApiErrorSchema]:
+    def get(self, path: str, output: Type[Schema]) -> Union[dict, NodeApiErrorSchema]:
         return self.__call("GET", path, None, output)
 
-    def post(self, path: str, payload: Optional[Schema], output: Type[T]) -> Union[T, NodeApiErrorSchema]:
+    def post(self, path: str, payload: Optional[Schema], output: Type[Schema]) -> Union[dict, NodeApiErrorSchema]:
         return self.__call("POST", path, payload, output)
 
-    def put(self, path: str, payload: Optional[Schema], output: Type[T]) -> Union[T, NodeApiErrorSchema]:
+    def put(self, path: str, payload: Optional[Schema], output: Type[Schema]) -> Union[dict, NodeApiErrorSchema]:
         return self.__call("PUT", path, payload, output)

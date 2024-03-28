@@ -26,7 +26,7 @@ def get_users_usage_data_for_api() -> List[UsageInputOutputSchema]:
     return usages_data
 
 
-def convert_usage_api_response_to_dict(data: List[UsageInputOutputSchema]) -> dict:
+def convert_usage_api_response_to_dict(data: List[dict]) -> dict:
     converted = {}
     for i in data:
         converted[str(i.uuid)] = {
@@ -44,12 +44,12 @@ def is_panel_active(domain: str, proxy_path: str, apikey: str) -> bool:
     if isinstance(res, NodeApiErrorSchema):
         # TODO: log error
         return False
-    if res.get('msg') == 'ok':
+    if 'PONG' in res['msg']:
         return True
     return False
 
 
-def get_panel_info(domain: str, proxy_path: str, apikey: str) -> PanelInfoOutputSchema | None:
+def get_panel_info(domain: str, proxy_path: str, apikey: str) -> dict | None:
     base_url = f'https://{domain}/{proxy_path}'
     res = NodeApiClient(base_url, apikey).get('/api/v2/panel/info/', PanelInfoOutputSchema)
     if isinstance(res, NodeApiErrorSchema):

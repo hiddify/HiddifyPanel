@@ -32,7 +32,7 @@ class BoolConfig(db.Model, SerializerMixin):
 
     def to_schema(self):
         conf_dict = self.to_dict()
-        from hiddifypanel.panel.commercial.restapi.v2.parent.register_api import HConfigSchema
+        from hiddifypanel.panel.commercial.restapi.v2.parent.schema import HConfigSchema
         return HConfigSchema().load(conf_dict)
 
 
@@ -55,7 +55,7 @@ class StrConfig(db.Model, SerializerMixin):
 
     def to_schema(self):
         conf_dict = self.to_dict()
-        from hiddifypanel.panel.commercial.restapi.v2.parent.register_api import HConfigSchema
+        from hiddifypanel.panel.commercial.restapi.v2.parent.schema import HConfigSchema
         return HConfigSchema().load(conf_dict)
 
 

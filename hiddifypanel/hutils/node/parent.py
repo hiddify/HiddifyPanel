@@ -29,7 +29,7 @@ def request_child_to_sync(child: Child) -> bool:
     if isinstance(res, NodeApiErrorSchema):
         # TODO: log error
         return False
-    if res.get('msg') == 'ok':
+    if res['msg'] == 'ok':
         return True
 
     return False
@@ -54,7 +54,7 @@ def request_chlid_to_register(name: str, mode: ChildMode, child_link: str, apike
     if isinstance(res, NodeApiErrorSchema):
         # TODO: log error
         return False
-    if res.get('msg') == 'ok':
+    if res['msg'] == 'ok':
         return True
 
     return False

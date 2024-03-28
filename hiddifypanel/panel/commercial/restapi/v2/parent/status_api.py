@@ -1,6 +1,5 @@
 from flask.views import MethodView
 from flask import current_app as app
-from apiflask import Schema, fields
 
 from hiddifypanel.models import Child, Role
 from hiddifypanel.auth import login_required

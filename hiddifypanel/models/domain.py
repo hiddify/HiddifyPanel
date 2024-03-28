@@ -90,7 +90,7 @@ class Domain(db.Model, SerializerMixin):
 
     def to_schema(self):
         domain_dict = self.to_dict()
-        from hiddifypanel.panel.commercial.restapi.v2.parent.register_api import DomainSchema
+        from hiddifypanel.panel.commercial.restapi.v2.parent.schema import DomainSchema
         return DomainSchema().load(domain_dict)
 
     @property

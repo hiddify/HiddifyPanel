@@ -50,22 +50,20 @@ def __get_parent_panel_url() -> str:
 
 def is_child_registered() -> bool:
     '''Checks if the current parent registered as a child'''
-    p_url = __get_parent_panel_url()
-    if not p_url:
+    base_url = __get_parent_panel_url()
+    if not base_url:
         return False
-    else:
-        p_url += '/api/v2/parent/status/'
-    p_key = hconfig(ConfigEnum.parent_admin_uuid)
-    payload = {
-        'child_unique_id': hconfig(ConfigEnum.unique_id)
-    }
-    res = requests.post(p_url, json=payload, headers={'Hiddify-API-Key': p_key}, timeout=3)
-    if res.status_code != 200:
-        return False
+    payload = ChildStatusInputSchema()
+    payload.child_unique_id = hconfig(ConfigEnum.unique_id)
+    apikey = hconfig(ConfigEnum.parent_admin_uuid)
 
-    if res.json().get('existance') == True:
+    res = NodeApiClient(base_url,apikey).post('/api/v2/parent/status/',payload,ChildStatusOutputSchema)
+    if isinstance(res, NodeApiErrorSchema):
+        # TODO: log error
+        return False
+    
+    if res['existance']:
         return True
-
     return False
 
 
@@ -83,14 +81,13 @@ def register_to_parent(name: str, mode: ChildMode = ChildMode.remote) -> bool:
         return False
 
     # TODO: change the bulk_register and such methods to accept models instead of dict
-    res = res.dump(res)  # convert to dict to insert/update
-    set_hconfig(ConfigEnum.parent_unique_id, res.parent_unique_id)  # type: ignore
-    AdminUser.bulk_register(res.admin_users, commit=False)
-    User.bulk_register(res.users, commit=False)
+    set_hconfig(ConfigEnum.parent_unique_id, res['parent_unique_id'])  # type: ignore
+    AdminUser.bulk_register(res['admin_users'], commit=False)
+    User.bulk_register(res['users'], commit=False)
 
     # add new child as parent
     db.session.add(  # type: ignore
-        Child(unique_id=res.parent_unique_id, name=res.parent_unique_id, mode=ChildMode.parent)
+        Child(unique_id=res['parent_unique_id'], name=res['parent_unique_id'], mode=ChildMode.parent)
     )
     db.session.commit()  # type: ignore
 
@@ -110,9 +107,8 @@ def sync_with_parent() -> bool:
     if isinstance(res, NodeApiErrorSchema):
         # TODO: log error
         return False
-    res = res.dump(res)
-    AdminUser.bulk_register(res.admin_users, commit=False, remove=True)
-    User.bulk_register(res.users, commit=False, remove=True)
+    AdminUser.bulk_register(res['admin_users'], commit=False, remove=True)
+    User.bulk_register(res['users'], commit=False, remove=True)
     db.session.commit()  # type: ignore
     return True
 

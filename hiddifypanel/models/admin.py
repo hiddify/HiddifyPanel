@@ -55,9 +55,9 @@ class AdminUser(BaseAccount):
         return schema.dump(AdminUser())
 
     def to_schema(self):
-        admin_dcit = self.to_dict()
+        admin_dict = self.to_dict()
         from hiddifypanel.panel.commercial.restapi.v2.admin.admin_user_api import AdminSchema
-        return AdminSchema().load(admin_dcit)
+        return AdminSchema().load(admin_dict)
 
     def get_id(self) -> str | None:
         return f'admin_{self.id}'

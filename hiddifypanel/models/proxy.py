@@ -107,7 +107,7 @@ class Proxy(db.Model, SerializerMixin):  # type: ignore
 
     def to_schema(self):
         proxy_dict = self.to_dict()
-        from hiddifypanel.panel.commercial.restapi.v2.parent.register_api import ProxySchema
+        from hiddifypanel.panel.commercial.restapi.v2.parent.schema import ProxySchema
         return ProxySchema().load(proxy_dict)
 
     @staticmethod
