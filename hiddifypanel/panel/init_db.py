@@ -20,7 +20,7 @@ MAX_DB_VERSION = 90
 
 
 def _v81(child_id):
-    set_hconfig(ConfigEnum.log_level, LogLevel.warn)
+    set_hconfig(ConfigEnum.log_level, LogLevel.WARNING)
 
 
 def _v80(child_id):

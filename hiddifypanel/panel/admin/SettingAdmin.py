@@ -106,7 +106,7 @@ class SettingAdmin(FlaskView):
 
             # sync with parent if needed
             if hutils.node.is_child():
-                if hutils.node.child.is_child_registered():
+                if hutils.node.child.is_registered():
                     if not hutils.node.child.sync_with_parent():
                         hutils.flask.flash(_('child.sync-failed'), 'danger')  # type: ignore
                     else:  # TODO: it's just for debuging

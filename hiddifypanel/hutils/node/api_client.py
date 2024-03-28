@@ -1,7 +1,8 @@
-from typing import TypeVar, Type, Optional, Union
+from typing import Type, Optional, Union
 from apiflask import Schema, fields
 import traceback
 import requests
+from loguru import logger
 from hiddifypanel.models import hconfig, ConfigEnum
 
 
@@ -24,11 +25,16 @@ class NodeApiClient():
         while 1:
             try:
                 # TODO: implement it with aiohttp
+
+                logger.info(f"Attempting {method} request to node at {full_url}")
+
+                # send request
                 if payload:
                     response = requests.request(method, full_url, json=payload.dump(payload), headers=self.headers)
                 else:
                     response = requests.request(method, full_url, headers=self.headers)
 
+                # parse response
                 response.raise_for_status()
                 resp = response.json()
                 if not resp:
@@ -37,8 +43,13 @@ class NodeApiClient():
                     err.stacktrace = ''  # type: ignore
                     err.code = response.status_code  # type: ignore
                     err.reason = response.reason  # type: ignore
+                    with logger.contextualize(payload=payload):
+                        logger.warning(f"Received empty response from {full_url} with method {method}")
                     return err
+
+                logger.success(f"Successfully received response from {full_url}")
                 return resp if isinstance(output_schema, type(dict)) else output_schema().load(resp)  # type: ignore
+
             except requests.HTTPError as e:
                 if retry_count >= self.max_retry:
                     stack_trace = traceback.format_exc()
@@ -47,9 +58,11 @@ class NodeApiClient():
                     err.stacktrace = stack_trace  # type: ignore
                     err.code = response.status_code  # type: ignore
                     err.reason = response.reason  # type: ignore
+                    with logger.contextualize(status_code=err.code, reason=err.reason, stack_trace=stack_trace, payload=payload):
+                        logger.error(f"HTTP error after {self.max_retry} retries: {e}")
                     return err
 
-                print(f"Error occurred: {e}")
+                logger.warning(f"Error occurred: {e} from {full_url} with method {method}, retrying... ({retry_count}/{self.max_retry})")
                 retry_count += 1
 
     def get(self, path: str, output: Type[Schema]) -> Union[dict, NodeApiErrorSchema]:

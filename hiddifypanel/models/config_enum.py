@@ -20,13 +20,13 @@ class PanelMode(StrEnum):
 
 
 class LogLevel(StrEnum):
-    trace = auto()
-    debug = auto()
-    info = auto()
-    success = auto()
-    warn = auto()
-    error = auto()
-    critical = auto()
+    TRACE = auto()
+    DEBUG = auto()
+    INFO = auto()
+    SUCCESS = auto()
+    WARNING = auto()
+    ERROR = auto()
+    CRITICAL = auto()
 
 
 class ConfigCategory(StrEnum):

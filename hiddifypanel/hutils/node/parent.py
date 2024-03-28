@@ -1,7 +1,7 @@
 from flask import g
 from flask_babel import lazy_gettext as _
 from typing import List
-
+from loguru import logger
 
 from hiddifypanel.models import Child, AdminUser, ConfigEnum, Domain, ChildMode, hconfig, get_panel_link
 from hiddifypanel import hutils
@@ -12,13 +12,15 @@ from hiddifypanel.panel.commercial.restapi.v2.child.schema import RegisterWithPa
 def request_childs_to_sync():
     for c in Child.query.filter(Child.id != 0).all():
         if not request_child_to_sync(c):
-            hutils.flask.flash(f'{c.name}: '+_('parent.sync-req-failed'), 'danger')
+            logger.error(f'{c.name}: {_("parent.sync-req-failed")}')
+            hutils.flask.flash(f'{c.name}: ' + _('parent.sync-req-failed'), 'danger')
 
 
 def request_child_to_sync(child: Child) -> bool:
     '''Requests to a child to sync itself with the current panel'''
     child_domain = get_panel_link(child.id)
     if not child_domain:
+        logger.error(f"Child {child.name} has no valid domain")
         return False
 
     child_admin_proxy_path = hconfig(ConfigEnum.proxy_path_admin, child.id)
@@ -26,21 +28,26 @@ def request_child_to_sync(child: Child) -> bool:
     path = '/api/v2/child/sync-parent/'
     res = NodeApiClient(base_url).post(path, payload=None, output=dict)
     if isinstance(res, NodeApiErrorSchema):
-        # TODO: log error
+        logger.error(f"Error while requesting child {child.name} to sync: {res['msg']}")
         return False
     if res['msg'] == 'ok':
+        logger.success(f"Successfully requested child {child.name} to sync")
         return True
 
+    logger.error(f"Request to child {child.name} to sync failed")
     return False
+
 # before using this function should check child version
 
 
 def request_chlid_to_register(name: str, mode: ChildMode, child_link: str, apikey: str) -> bool:
     '''Requests to a child to register itself with the current panel'''
     if not child_link or not apikey:
+        logger.error("Child link or apikey is empty")
         return False
     domain = get_panel_link()
     if not domain:
+        logger.error("Domain is empty")
         return False
     from hiddifypanel.panel import hiddify
 
@@ -48,14 +55,17 @@ def request_chlid_to_register(name: str, mode: ChildMode, child_link: str, apike
     payload.parent_panel = hiddify.get_account_panel_link(AdminUser.by_uuid(g.account.uuid), domain.domain)  # type: ignore
     payload.parent_unique_id, payload.name = hconfig(ConfigEnum.unique_id)
 
+    logger.debug(f"Requesting child {name} to register")
     res = NodeApiClient(child_link, apikey).post('/api/v2/child/register-parent/', payload, dict)
 
     if isinstance(res, NodeApiErrorSchema):
-        # TODO: log error
+        logger.error(f"Error while requesting child {name} to register: {res['msg']}")
         return False
     if res['msg'] == 'ok':
+        logger.success(f"Successfully requested child {name} to register")
         return True
 
+    logger.error(f"Request to child {name} to register failed")
     return False
 
 
