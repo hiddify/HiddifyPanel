@@ -74,7 +74,7 @@ class BaseAccount(db.Model, SerializerMixin, FlaskLoginUserMixin):  # type: igno
         for u in accounts:
             cls.add_or_update(commit=False, **u)
         if remove:
-            dd = {u['uuid']: 1 for u in accounts}
+            dd = {str(u['uuid']): 1 for u in accounts}
             for d in cls.query.all():
                 if d.uuid not in dd:
                     db.session.delete(d)  # type: ignore

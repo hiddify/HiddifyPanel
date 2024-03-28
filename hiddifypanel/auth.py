@@ -4,7 +4,7 @@ from hiddifypanel.hutils.flask import hurl_for
 from flask_login.utils import _get_user
 from functools import wraps
 from hiddifypanel.models import *
-
+from apiflask import abort as json_abort
 from hiddifypanel import hutils
 from werkzeug.local import LocalProxy
 current_account: "BaseAccount" = LocalProxy(lambda: _get_user())
@@ -97,11 +97,13 @@ def login_user(user: AdminUser | User, remember=False, duration=None, force=Fals
     return True
 
 
-def login_required(roles: set[Role] | None = None):
+def login_required(roles: set[Role] | None = None, node_auth: bool = False):
     def wrapper(fn):
         @wraps(fn)
         def decorated_view(*args, **kwargs):
             # print('xxxx', current_account)
+            if node_auth and not g.get('node'):
+                json_abort(403, 'Unauthorized node')
             if not current_account:
                 return redirect_to_login()  # type: ignore
             if roles:
@@ -151,6 +153,14 @@ def auth_before_request():
 
     elif apikey := request.headers.get("Hiddify-API-Key"):
         account = get_account_by_api_key(apikey, is_admin_path)
+        if not account:
+            # when parent/child panel needs to call another parent/child api, it will pass its unique id in the header as apikey
+            if node := Child.by_unique_id(apikey):
+                g.node = node
+
+            if g.get('node'):
+                account = AdminUser.get_super_admin()
+
         if not account:
             return logout_redirect()
     elif request.authorization:

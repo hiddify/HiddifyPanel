@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Tuple
 from flask import current_app, flash as flask_flash, g, request
 from wtforms.validators import ValidationError
 from apiflask import abort as apiflask_abort
@@ -15,7 +15,6 @@ from hiddifypanel import hutils
 
 
 def flash(message: str, category: str = "message"):
-    # print(message)
     return flask_flash(Markup(message), category)
 
 
@@ -237,6 +236,19 @@ def get_proxy_stats_url():
     proxy_stats_url = f'{request.host_url}{g.proxy_path}/proxy-stats/'
     params = f'hostname={proxy_stats_url}api/&port=443&secret=hiddify'
     return f'{proxy_stats_url}?{params}/'
+
+
+def extract_parent_info_from_url(url) -> Tuple[str | None, str | None, str | None]:
+    pattern = r'^https?://([^/]+)/([^/]+)/([^/]+)/.*$'
+    match = re.match(pattern, url)
+
+    if match:
+        domain = match.group(1)
+        proxy_path = match.group(2)
+        admin_uuid = match.group(3)
+        return domain, proxy_path, admin_uuid
+    else:
+        return None, None, None
 # region not used
 
 

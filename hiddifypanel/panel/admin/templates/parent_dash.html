@@ -1,6 +1,6 @@
 {% macro admin_btn(child,domain) -%}
 <div class="btn-group">
-    <a href="{hiddify.get_account_panel_link(g.account,domain,child_id=child.id)}" class="btn btn-xs btn-{{" success" if child.is_active else "warning" }} orig-link ltr" target="_blank">{{domain}}</a>
+    <a href="{{hiddify.get_account_panel_link(g.account,domain,child_id=child.id)}}" class="btn btn-xs btn-{{" success" if child.is_active else "warning" }} orig-link ltr" target="_blank">{{domain}}</a>
 </div>
 {%- endmacro -%}
 
@@ -28,7 +28,6 @@
                 <td>
                     {% if not child.is_active %}
                     <form method="post" action="remove_child">
-                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
                         <input type="hidden" name="child_id" value="{{child.id}}" />
                         <button type="submit" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></a>
                     </form>
@@ -37,9 +36,8 @@
                 <td class="text-center"><span class="btn btn-xs badge-{{" success" if child.is_active else "warning" }}">&nbsp{{icon('solid','check') if child.is_active else icon('solid','triangle-exclamation')}}</span>
                 </td>
                 <td>
-
                     {% for d in child.domains %}
-                    {% if d.mode !="fake" %}
+                    {% if d.mode !="fake" and d.mode != "reality"%}
                     {{admin_btn(child,d)}}
                     {% endif %}
                     {% endfor %}

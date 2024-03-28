@@ -138,8 +138,7 @@ def create_package(call):  # <- passes a CallbackQuery type object to your funct
                 domain = int(splt[4])
                 new_text = _("Please Wait...")
                 bot.edit_message_text(new_text, call.message.chat.id, call.message.message_id, reply_markup=None)
-                DT = (ParentDomain if hconfig(ConfigEnum.is_parent) else Domain)
-                domain = DT.query.filter(DT.id == domain).first()
+                domain = Domain.query.filter(Domain.id == domain).first()
                 from . import Usage
                 admin_id = admin.id
                 admin_name = admin.name

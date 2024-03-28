@@ -9,25 +9,22 @@
 {% block nav_bar %}
 {% include "donation.html" %}
 <!-- Navbar -->
-<nav class="main-header hold-transition sidebar-mini-md navbar navbar-expand {{" navbar-dark" if g.darkmode
-  else "bg-white navbar-light" }} border-bottom">
+<nav class="main-header hold-transition sidebar-mini-md navbar navbar-expand {{'navbar-dark' if g.darkmode else 'bg-white navbar-light' }} border-bottom">
   <!-- Left navbar links -->
 
 
 
   <div class="navbar-nav">
-    <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i> <span
-        class="brand-text font-weight-light">{{_("master.page-title")}}
+    <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i> <span class="brand-text font-weight-light">{{_("master.page-title")}}
         <!-- <span class="badge d-none d-sm-inline-block">{{version}}</span> -->
-        {% if hconfig(ConfigEnum.is_parent) %}
+        {% if hutils.node.is_parent() %}
         {{_("Parent Panel")}}
-        {% elif hconfig(ConfigEnum.parent_panel) %}
-        {{g.child.name}}
+        {% elif hutils.node.is_child() %}
+        Child Panel
         {% endif %}
     </a>
     <a class="nav-link" href="https://github.com/hiddify/Hiddify-Manager/" target="_blank">
-      <img alt="GitHub Repo stars"
-        src="https://img.shields.io/github/stars/hiddify/hiddify-manager?style=social&logo=star&label=%E2%AD%90">
+      <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/hiddify/hiddify-manager?style=social&logo=star&label=%E2%AD%90">
 
     </a>
   </div>
@@ -41,11 +38,10 @@
       <i class="fa-solid fa-moon"></i>
     </a>
     {% endif %}
-    {% if 0 and not hconfig(ConfigEnum.is_parent) %}
+    {% if 0 and not hutils.node.is_parent() %}
 
 
-    <a class="nav-link btn btn-outline-secondary form_post d-none d-md-flex"
-      href="{{hurl_for('admin.Actions:apply_configs')}}">
+    <a class="nav-link btn btn-outline-secondary form_post d-none d-md-flex" href="{{hurl_for('admin.Actions:apply_configs')}}">
       {{icon('solid','bolt','nav-icon')}} {{_('admin.Actions:apply_configs')}}
     </a>
 
@@ -59,15 +55,13 @@
 
 
 <!-- Main Sidebar Container -->
-<aside id="main-sidebar" class="main-sidebar {{ " sidebar-dark-primary"}} elevation-4">
+<aside id="main-sidebar" class="main-sidebar {{'sidebar-dark-primary' if g.darkmode else ''}} elevation-4">
   <!-- Brand Logo -->
 
-  <a href="https://github.com/hiddify/hiddify-manager/wiki" class=""
-    style="text-align: center; color: white;display: block;">
-    <img src="{{static_url_for(filename='images/WhiteLogo.png')}}" class=" "
-      style="width: 50%;opacity: .8;margin: auto;display:block" />
+  <a href="https://github.com/hiddify/hiddify-manager/wiki" class="" style="text-align: center; color: white;display: block;">
+    <img src="{{static_url_for(filename='images/WhiteLogo.png')}}" class=" " style="width: 50%;opacity: .8;margin: auto;display:block" />
     <div class="ltr" style="font-size: 8pt;">{{version}}</div>
-    {% if False and hconfig(ConfigEnum.is_parent) %}
+    {% if False and hutils.node.is_parent() %}
     <br>
     <!-- <span class="badge">{{_("Parent Panel")}}</span> -->
 
@@ -88,23 +82,18 @@
         <div class="n3av nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                  with font-awesome or any other icon font library -->
-          {{ render_nav_item('admin.Dashboard:index', icon('solid','house','nav-icon')+(_("Parent Panel") if
-          hconfig(ConfigEnum.is_parent) else _('admin.menu.home')),_use_li=True)
-          }}
+          {{ render_nav_item('admin.Dashboard:index', icon('solid','house','nav-icon')+(_("Parent Panel") if hutils.node.is_parent() else _('admin.menu.home')),_use_li=True)}}
 
-          {% if hconfig(ConfigEnum.parent_panel) %}
-          {# render_nav_item(hconfig(ConfigEnum.parent_panel)+"/admin/user/",
-          icon('solid','user','nav-icon')+_('admin.menu.user'),_badge=_('in parent panel') ,_use_li=True) #}
+          {% if hutils.node.is_child() %}
+          {{ render_nav_item(hconfig(ConfigEnum.parent_panel)+"/"+g.account.uuid+"/admin/user/",icon('solid','user-secret','nav-icon')+_('admin.menu.user'),_badge=_('in parent panel') ,_use_li=True) }}
           {% else %}
-          {{ render_nav_item('flask.user.index_view', icon('solid','user','nav-icon')+_('admin.menu.user'),_use_li=True)
-          }}
+          {{ render_nav_item('flask.user.index_view', icon('solid','user','nav-icon')+_('admin.menu.user'),_use_li=True)}}
           {% endif %}
-          {% if hconfig(ConfigEnum.parent_panel) %}
-          {{ render_nav_item(hconfig(ConfigEnum.parent_panel)+"/admin/adminuser/",
-          icon('solid','user-secret','nav-icon')+_('Admins'),_badge=_('in parent panel') ,_use_li=True) }}
+
+          {% if hutils.node.is_child() %}
+          {{ render_nav_item(hconfig(ConfigEnum.parent_panel)+"/"+g.account.uuid+"/admin/adminuser/",icon('solid','user-secret','nav-icon')+_('Admins'),_badge=_('in parent panel') ,_use_li=True) }}
           {% else %}
-          {{ render_nav_item('flask.adminuser.index_view',
-          icon('solid','user-secret','nav-icon')+_('Admins'),_use_li=True) }}
+          {{ render_nav_item('flask.adminuser.index_view', icon('solid','user-secret','nav-icon')+_('Admins'),_use_li=True) }}
           {% endif %}
 
 
@@ -113,8 +102,7 @@
           request.endpoint or "Dashboard" in request.endpoint) else True %}
           <li class="nav-item {{'menu-open' if settings_active else ''}}">
 
-            <a id=href="#" data-target="#setting-sidebar"
-              class="nav-link">{{icon('solid','gear','nav-icon')+_('admin.menu.config')}}</a>
+            <a id="" href="#" data-target="#setting-sidebar" class="nav-link">{{icon('solid','gear','nav-icon')+_('admin.menu.config')}}</a>
 
           </li>
           {% endif %}
@@ -129,21 +117,17 @@
           {% if g.account.mode=="super_admin" %}
           <li class="nav-item {{'menu-open' if action_active else ''}}">
 
-            <a id=href="#" data-target="#action-sidebar"
-              class="nav-link">{{icon('solid','suitcase','nav-icon')+_('admin.actions.title')}} <i
-                class="right fas fa-angle-left"></i></a>
+            <a id=href="#" data-target="#action-sidebar" class="nav-link">{{icon('solid','suitcase','nav-icon')+_('admin.actions.title')}} <i class="right fas fa-angle-left"></i></a>
 
           </li>
           {% endif %}
 
           <li class="nav-item">
             <a href="https://github.com/hiddify/hiddify-manager/wiki/{{'%D9%87%D9%85%D9%87-%D8%A2%D9%85%D9%88%D8%B2%D8%B4%E2%80%8C%D9%87%D8%A7-%D9%88-%D9%88%DB%8C%D8%AF%D8%A6%D9%88%D9%87%D8%A7' if get_locale()=='fa' else 'All-tutorials-and-videos'}}"
-              target="_blank"
-              class=" nav-link">{{icon('solid','circle-question','nav-icon')+_('admin.menu.support')}}</a>
+              target="_blank" class=" nav-link">{{icon('solid','circle-question','nav-icon')+_('admin.menu.support')}}</a>
           </li>
           <li class="nav-item d-none">
-            <a href="https://t.me/hiddify" target="_blank"
-              class="nav-link">{{icon('brands','telegram','nav-icon')+_('admin.menu.telegram')}}</a>
+            <a href="https://t.me/hiddify" target="_blank" class="nav-link">{{icon('brands','telegram','nav-icon')+_('admin.menu.telegram')}}</a>
           </li>
           <li class="nav-item">
             {% set issue_link = generate_github_issue_link_for_admin_sidebar() %}

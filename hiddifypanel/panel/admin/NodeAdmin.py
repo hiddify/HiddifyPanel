@@ -49,7 +49,9 @@ class NodeAdmin(AdminLTEModelView):
             raise ValidationError(_("Remote nodes are not supported yet!"))
 
     def after_model_change(self, form, model, is_created):
+        # deprecated
         set_hconfig(ConfigEnum.is_parent, True)
+        set_hconfig(ConfigEnum.panel_mode, PanelMode.parent)
         if is_created and model.mode == ChildMode.virtual:
             # for k, v in get_hconfigs().items():
             #     set_hconfig(k, v, model.id)

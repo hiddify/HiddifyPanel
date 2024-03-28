@@ -67,7 +67,7 @@ class Domain(db.Model, SerializerMixin):
             'domain': self.domain.lower(),
             'mode': self.mode,
             'alias': self.alias,
-            # 'sub_link_only':d.sub_link_only,
+            'sub_link_only': self.sub_link_only,
             'child_unique_id': self.child.unique_id if self.child else '',
             'cdn_ip': self.cdn_ip,
             'servernames': self.servernames,
@@ -83,6 +83,15 @@ class Domain(db.Model, SerializerMixin):
             data["need_valid_ssl"] = self.need_valid_ssl
 
         return data
+
+    @staticmethod
+    def from_schema(schema):
+        return schema.dump(Domain())
+
+    def to_schema(self):
+        domain_dict = self.to_dict()
+        from hiddifypanel.panel.commercial.restapi.v2.parent.schema import DomainSchema
+        return DomainSchema().load(domain_dict)
 
     @property
     def need_valid_ssl(self):
@@ -137,13 +146,21 @@ def get_domain(domain):
     return Domain.query.filter(Domain.domain == domain).first()
 
 
+def get_panel_link(child_id: int | None = None) -> Domain | None:
+    if child_id is None:
+        child_id = Child.current.id
+    domains = Domain.query.filter(Domain.mode.in_(
+        [DomainType.direct, DomainType.cdn, DomainType.worker, DomainType.relay, DomainType.auto_cdn_ip, DomainType.old_xtls_direct, DomainType.sub_link_only]),
+        Domain.child_id == child_id
+    ).all()
+    if not domains:
+        return None
+    return domains[0]
+
+
 def get_panel_domains(always_add_ip=False, always_add_all_domains=False) -> List[Domain]:
     from hiddifypanel import hutils
     domains = []
-    # if hconfig(ConfigEnum.is_parent):
-    #     from .parent_domain import ParentDomain
-    #     domains = ParentDomain.query.all()
-    # else:
     domains = Domain.query.filter(Domain.mode == DomainType.sub_link_only, Domain.child_id == Child.current.id).all()
     if not len(domains) or always_add_all_domains:
         domains = Domain.query.filter(Domain.mode.notin_([DomainType.fake, DomainType.reality])).all()
@@ -156,10 +173,6 @@ def get_panel_domains(always_add_ip=False, always_add_all_domains=False) -> List
 
 
 def get_proxy_domains(domain):
-    # if hconfig(ConfigEnum.is_parent):
-    #     from hiddifypanel.models.parent_domain import ParentDomain
-    #     db_domain = ParentDomain.query.filter(ParentDomain.domain == domain).first() or ParentDomain(domain=domain, show_domains=[])
-    # else:
     db_domain = Domain.query.filter(Domain.domain == domain, Domain.child_id == Child.current.id).first()
     if not db_domain:
         db_domain = Domain(domain=domain, mode=DomainType.direct, cdn_ip='', show_domains=[])
@@ -202,11 +215,11 @@ def add_or_update_domain(commit=True, child_id=0, **domain):
         db.session.commit()
 
 
-def bulk_register_domains(domains, commit=True, remove=False, override_child_unique_id=None):
+def bulk_register_domains(domains, commit=True, remove=False, force_child_unique_id: str | None = None):
     from hiddifypanel.panel import hiddify
     child_ids = {}
     for domain in domains:
-        child_id = hiddify.get_child(unique_id=None)
+        child_id = hiddify.get_child(unique_id=force_child_unique_id)
         child_ids[child_id] = 1
         add_or_update_domain(commit=False, child_id=child_id, **domain)
     if remove and len(child_ids):
@@ -215,10 +228,5 @@ def bulk_register_domains(domains, commit=True, remove=False, override_child_uni
             if d.domain not in dd:
                 db.session.delete(d)
 
-    # if commit:
-    db.session.commit()
-    for domain in domains:
-        child_id = hiddify.get_child(unique_id=None)
-        add_or_update_domain(commit=False, child_id=child_id, **domain)
     if commit:
         db.session.commit()

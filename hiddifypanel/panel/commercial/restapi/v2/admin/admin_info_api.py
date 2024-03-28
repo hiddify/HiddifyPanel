@@ -7,13 +7,13 @@ from hiddifypanel.models.admin import AdminUser
 from hiddifypanel.models.config_enum import ConfigEnum, Lang
 from hiddifypanel.models.config import hconfig
 from hiddifypanel.models.role import Role
-from .admin_user_api import AdminSchema
+from .schema import AdminSchema
 
 
 class AdminInfoApi(MethodView):
     decorators = [login_required({Role.super_admin, Role.admin, Role.agent})]
 
-    @app.output(AdminSchema)
+    @app.output(AdminSchema)  # type: ignore
     def get(self):
         # admin = AdminUser.by_uuid(g.account.uuid) or abort(404, "user not found")
         admin = g.account or abort(404, "user not found")

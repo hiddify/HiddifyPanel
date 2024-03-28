@@ -50,6 +50,15 @@ class AdminUser(BaseAccount):
                 return Role.agent
         return None
 
+    @staticmethod
+    def form_schema(schema):
+        return schema.dump(AdminUser())
+
+    def to_schema(self):
+        admin_dict = self.to_dict()
+        from hiddifypanel.panel.commercial.restapi.v2.admin.admin_user_api import AdminSchema
+        return AdminSchema().load(admin_dict)
+
     def get_id(self) -> str | None:
         return f'admin_{self.id}'
 
@@ -57,10 +66,12 @@ class AdminUser(BaseAccount):
         base = super().to_dict()
         if dump_id:
             base['id'] = self.id
+        from hiddifypanel.models import hconfig, ConfigEnum
         return {**base,
                 'mode': self.mode,
                 'can_add_admin': self.can_add_admin,
                 'parent_admin_uuid': self.parent_admin.uuid if self.parent_admin else None,
+                'lang': hconfig(ConfigEnum.admin_lang)
                 }
 
     @classmethod
