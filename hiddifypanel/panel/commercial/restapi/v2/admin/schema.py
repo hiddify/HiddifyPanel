@@ -1,4 +1,5 @@
-from apiflask.fields import UUID, String, Float, Enum, Date, Integer, Boolean
+import uuid
+from apiflask.fields import String, Float, Enum, Date, Integer, Boolean
 from apiflask import Schema, fields
 from typing import Any, Mapping
 
@@ -16,8 +17,23 @@ class FriendlyDateTime(fields.Field):
         return hutils.convert.json_to_time(value)
 
 
+class FriendlyUUID(fields.Field):
+    def _serialize(self, value: Any, attr: str | None, obj: Any, **kwargs):
+        if value is None:
+            return None
+        return str(value)
+
+    def _deserialize(self, value: Any, attr: str | None, data: Mapping[str, Any] | None, **kwargs):
+        if value is None:
+            return None
+        try:
+            return uuid.UUID(value)
+        except ValueError:
+            self.fail('Invalid uuid')
+
+
 class UserSchema(Schema):
-    uuid = UUID(required=True, description="Unique identifier for the user")
+    uuid = FriendlyUUID(required=True, description="Unique identifier for the user")
     name = String(required=True, description="Name of the user")
 
     usage_limit_GB = Float(
@@ -60,7 +76,7 @@ class UserSchema(Schema):
         allow_none=True,
         description="An optional comment about the user"
     )
-    added_by_uuid = UUID(
+    added_by_uuid = FriendlyUUID(
         required=False,
         description="UUID of the admin who added this user",
         allow_none=True,
@@ -115,12 +131,12 @@ class PatchUserSchema(UserSchema):
 class AdminSchema(Schema):
     name = String(required=True, description='The name of the admin')
     comment = String(required=False, description='A comment related to the admin', allow_none=True)
-    uuid = UUID(required=True, description='The unique identifier for the admin')
+    uuid = FriendlyUUID(required=True, description='The unique identifier for the admin')
     mode = Enum(AdminMode, required=True, description='The mode for the admin')
     can_add_admin = Boolean(required=True, description='Whether the admin can add other admins')
-    parent_admin_uuid = UUID(description='The unique identifier for the parent admin', allow_none=True,
-                             # validate=OneOf([p.uuid for p in AdminUser.query.all()])
-                             )
+    parent_admin_uuid = FriendlyUUID(description='The unique identifier for the parent admin', allow_none=True,
+                                     # validate=OneOf([p.uuid for p in AdminUser.query.all()])
+                                     )
     telegram_id = Integer(required=False, description='The Telegram ID associated with the admin', allow_none=True)
     lang = Enum(Lang, required=True)
 
