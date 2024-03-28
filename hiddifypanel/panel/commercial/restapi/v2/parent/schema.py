@@ -40,11 +40,13 @@ class HConfigSchema(Schema):
 
 
 # region usage
-class UsageInputOutputSchema(Schema):
+class UsageData(Schema):
     uuid = fields.UUID(required=True, desciption="The user uuid")
     usage = fields.Integer(required=True, description="The user usage in bytes")
     devices = fields.List(fields.String(required=True, description="The user connected devices"))
 
+class UsageInputOutputSchema(Schema):
+    usages = fields.List(fields.Nested(UsageData),required=True,description="The list of usages")
 # endregion
 
 

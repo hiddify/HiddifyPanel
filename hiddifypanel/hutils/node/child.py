@@ -119,13 +119,14 @@ def sync_users_usage_with_parent() -> bool:
         return False
 
     payload = hutils.node.get_users_usage_data_for_api()
-    res = NodeApiClient(p_url).put('/api/v2/parent/usage/', payload, UsageInputOutputSchema)  # type: ignore
-    if isinstance(res, NodeApiErrorSchema):
-        # TODO: log error
-        return False
+    if payload:
+        res = NodeApiClient(p_url).put('/api/v2/parent/usage/', payload, UsageInputOutputSchema)  # type: ignore
+        if isinstance(res, NodeApiErrorSchema):
+            # TODO: log error
+            return False
 
-    # parse usages data
-    res = hutils.node.convert_usage_api_response_to_dict(res)  # type: ignore
-    usage.add_users_usage_uuid(res, hiddify.get_child(None), True)
+        # parse usages data
+        res = hutils.node.convert_usage_api_response_to_dict(res)  # type: ignore
+        usage.add_users_usage_uuid(res, hiddify.get_child(None), True)
 
     return True

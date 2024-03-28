@@ -12,8 +12,8 @@ from .schema import UsageInputOutputSchema
 class UsageApi(MethodView):
     decorators = [login_required(node_auth=True)]
 
-    @app.input(UsageInputOutputSchema(many=True), arg_name='data')  # type: ignore
-    @app.output(UsageInputOutputSchema(many=True))  # type: ignore
+    @app.input(UsageInputOutputSchema, arg_name='data')  # type: ignore
+    @app.output(UsageInputOutputSchema)  # type: ignore
     def put(self, data):
         from hiddifypanel import hutils
         child = Child.query.filter(Child.unique_id == g.node.unique_id).first()

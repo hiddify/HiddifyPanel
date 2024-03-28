@@ -1,7 +1,7 @@
 from typing import List
 from hiddifypanel.models import hconfig, ConfigEnum, PanelMode, User
 import requests
-from hiddifypanel.panel.commercial.restapi.v2.parent.schema import UsageInputOutputSchema
+from hiddifypanel.panel.commercial.restapi.v2.parent.schema import UsageInputOutputSchema,UsageData
 from hiddifypanel.panel.commercial.restapi.v2.panel.schema import PanelInfoOutputSchema
 from .api_client import NodeApiClient, NodeApiErrorSchema
 
@@ -16,22 +16,24 @@ def is_parent() -> bool:
 # region usage
 
 
-def get_users_usage_data_for_api() -> List[UsageInputOutputSchema]:
-    usages_data = []
+def get_users_usage_data_for_api() -> UsageInputOutputSchema:
+    res = UsageInputOutputSchema()
+    res.usages = [] # type: ignore
     for u in User.query.all():
-        usage_data = UsageInputOutputSchema()
+        usage_data = UsageData()
         usage_data.uuid = u.uuid
         usage_data.usage = u.current_usage
         usage_data.devices = u.devices
-    return usages_data
+        res.usages.append(usage_data) # type: ignore
+    return res
 
 
-def convert_usage_api_response_to_dict(data: List[dict]) -> dict:
+def convert_usage_api_response_to_dict(data: UsageInputOutputSchema) -> dict:
     converted = {}
-    for i in data:
-        converted[str(i.uuid)] = {
-            'usage': i.usage,
-            'devices': ','.join(i.devices)  # type: ignore
+    for i in data['usages']: # type: ignore
+        converted[str(i['uuid'])] = {
+            'usage': i['usage'],
+            'devices': ','.join(i['devices'])  # type: ignore
         }
     return converted
 
