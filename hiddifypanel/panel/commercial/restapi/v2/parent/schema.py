@@ -4,6 +4,10 @@ from marshmallow import ValidationError
 from hiddifypanel.models import DomainType, ProxyProto, ProxyL3, ProxyTransport, ProxyCDN, ConfigEnum
 from hiddifypanel.panel.commercial.restapi.v2.admin.user_api import UserSchema
 from hiddifypanel.panel.commercial.restapi.v2.admin.admin_user_api import AdminSchema
+from hiddifypanel.panel.commercial.restapi.v2.parent.register_api import RegisterInputSchema, RegisterOutputSchema
+from hiddifypanel.panel.commercial.restapi.v2.parent.sync_api import SyncInputSchema, SyncOutputSchema
+from hiddifypanel.panel.commercial.restapi.v2.parent.status_api import ChildStatusInputSchema, ChildStatusOutputSchema
+from hiddifypanel.panel.commercial.restapi.v2.parent.usage_api import UsageApi
 
 
 def hconfig_key_validator(value):

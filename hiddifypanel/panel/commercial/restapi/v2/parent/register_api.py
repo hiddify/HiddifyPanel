@@ -5,7 +5,6 @@ from flask.views import MethodView
 
 from hiddifypanel.models import *
 from hiddifypanel.auth import login_required
-from hiddifypanel import hutils
 
 from .schema import *
 
@@ -18,7 +17,7 @@ class RegisterDataSchema(Schema):
     hconfigs = fields.List(fields.Nested(HConfigSchema), required=True, description="The list of configs")
 
 
-class RegisterSchema(Schema):
+class RegisterInputSchema(Schema):
     panel_data = fields.Nested(RegisterDataSchema, required=True, description="The child's data")
     unique_id = fields.String(required=True, description="The child's unique id")
     name = fields.String(required=True, description="The child's name")
@@ -34,9 +33,10 @@ class RegisterOutputSchema(Schema):
 class RegisterApi(MethodView):
     decorators = [login_required({Role.super_admin})]
 
-    @app.input(RegisterSchema, arg_name='data')  # type: ignore
+    @app.input(RegisterInputSchema, arg_name='data')  # type: ignore
     @app.output(RegisterOutputSchema)  # type: ignore
     def put(self, data):
+        from hiddifypanel import hutils
         if hutils.node.is_child():
             abort(400, 'The panel in child, not a parent nor standalone')
 

@@ -8,7 +8,7 @@ from hiddifypanel.models import set_hconfig, ConfigEnum, PanelMode, ChildMode, R
 from hiddifypanel import hutils
 
 
-class RegisterWithParentSchema(Schema):
+class RegisterWithParentInputSchema(Schema):
     parent_unique_id = fields.String(description="The parent's unique id")
     parent_panel = fields.String(required=True, description="The parent panel url")
     name = fields.String(required=True, description="The child's name in the parent panel")
@@ -18,7 +18,7 @@ class RegisterWithParentSchema(Schema):
 class RegisterWithParentApi(MethodView):
     decorators = [login_required({Role.super_admin})]
 
-    @app.input(RegisterWithParentSchema, arg_name='data')  # type: ignore
+    @app.input(RegisterWithParentInputSchema, arg_name='data')  # type: ignore
     def post(self, data):
         if hutils.node.is_parent() or hutils.node.is_child():
             abort(400, 'The panel is not in standalone mode')

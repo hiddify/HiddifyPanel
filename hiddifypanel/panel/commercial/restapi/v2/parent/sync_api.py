@@ -10,10 +10,9 @@ from hiddifypanel.models.child import Child
 from hiddifypanel.models import *
 from hiddifypanel.auth import login_required
 from .schema import *
-from hiddifypanel import hutils
 
 
-class SyncSchema(Schema):
+class SyncInputSchema(Schema):
     # users = fields.List(fields.Nested(UserSchema),required=True,description="The list of users")
     domains = fields.List(fields.Nested(DomainSchema), required=True, description="The list of domains")
     proxies = fields.List(fields.Nested(ProxySchema), required=True, description="The list of proxies")
@@ -30,9 +29,10 @@ class SyncOutputSchema(Schema):
 class SyncApi(MethodView):
     decorators = [login_required(node_auth=True)]
 
-    @app.input(SyncSchema, arg_name='data')  # type: ignore
+    @app.input(SyncInputSchema, arg_name='data')  # type: ignore
     @app.output(SyncOutputSchema)  # type: ignore
     def put(self, data):
+        from hiddifypanel import hutils
         unique_id = g.node.unique_id
 
         if not hutils.node.is_parent():

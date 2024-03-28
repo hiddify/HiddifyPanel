@@ -6,6 +6,9 @@ from hiddifypanel.panel import hiddify
 from hiddifypanel.panel import usage
 from hiddifypanel.database import db
 
+# import schmeas
+from hiddifypanel.panel.commercial.restapi.v2.parent.schema import *
+from hiddifypanel.panel.commercial.restapi.v2.child.schema import *
 # region private
 
 
@@ -34,8 +37,8 @@ def __get_register_data_for_api() -> dict:
 
 
 def __get_sync_data_for_api() -> dict:
-    from hiddifypanel.panel.commercial.restapi.v2.parent.sync_api import SyncSchema
-    sync_data = SyncSchema()  # type: ignore
+    from hiddifypanel.panel.commercial.restapi.v2.parent.sync_api import SyncInputSchema
+    sync_data = SyncInputSchema()  # type: ignore
     sync_data.domains = [domain.to_schema() for domain in Domain.query.all()]  # type: ignore
     sync_data.proxies = [proxy.to_schema() for proxy in Proxy.query.all()]  # type: ignore
     sync_data.hconfigs = [*[u.to_dict() for u in StrConfig.query.all()], *[u.to_dict() for u in BoolConfig.query.all()]]  # type: ignore

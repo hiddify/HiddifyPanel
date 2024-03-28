@@ -5,10 +5,9 @@ from flask import g
 from hiddifypanel.models import Child
 from hiddifypanel.panel.usage import add_users_usage_uuid
 from hiddifypanel.auth import login_required
-from hiddifypanel import hutils
 
 
-class UsageSchema(Schema):
+class UsageInputOutputSchema(Schema):
     uuid = fields.UUID(required=True, desciption="The user uuid")
     usage = fields.Integer(required=True, description="The user usage in bytes")
     devices = fields.List(fields.String(required=True, description="The user connected devices"))
@@ -17,9 +16,10 @@ class UsageSchema(Schema):
 class UsageApi(MethodView):
     decorators = [login_required(node_auth=True)]
 
-    @app.input(UsageSchema(many=True), arg_name='data')  # type: ignore
-    @app.output(UsageSchema(many=True))  # type: ignore
+    @app.input(UsageInputOutputSchema(many=True), arg_name='data')  # type: ignore
+    @app.output(UsageInputOutputSchema(many=True))  # type: ignore
     def put(self, data):
+        from hiddifypanel import hutils
         child = Child.query.filter(Child.unique_id == g.node.unique_id).first()
         if not child:
             abort(400, "The child does not exist")
@@ -33,7 +33,7 @@ class UsageApi(MethodView):
         if increased_usages:
             add_users_usage_uuid(increased_usages, child.id)
 
-        return [UsageSchema.from_dict(item) for item in hutils.node.get_users_usage_data_for_api()]
+        return [UsageInputOutputSchema.from_dict(item) for item in hutils.node.get_users_usage_data_for_api()]
 
     def __calculate_parent_increased_usages(self, child_usages_data: dict, parent_usages_data: dict) -> dict:
         res = {}
