@@ -1,7 +1,7 @@
 from typing import List
 from hiddifypanel.models import hconfig, ConfigEnum, PanelMode, User
 import requests
-from hiddifypanel.panel.commercial.restapi.v2.parent.schema import UsageInputOutputSchema,UsageData
+from hiddifypanel.panel.commercial.restapi.v2.parent.schema import UsageInputOutputSchema, UsageData
 from hiddifypanel.panel.commercial.restapi.v2.panel.schema import PanelInfoOutputSchema
 from .api_client import NodeApiClient, NodeApiErrorSchema
 
@@ -18,19 +18,19 @@ def is_parent() -> bool:
 
 def get_users_usage_data_for_api() -> UsageInputOutputSchema:
     res = UsageInputOutputSchema()
-    res.usages = [] # type: ignore
+    res.usages = []  # type: ignore
     for u in User.query.all():
         usage_data = UsageData()
         usage_data.uuid = u.uuid
         usage_data.usage = u.current_usage
         usage_data.devices = u.devices
-        res.usages.append(usage_data) # type: ignore
+        res.usages.append(usage_data)  # type: ignore
     return res
 
 
-def convert_usage_api_response_to_dict(data: UsageInputOutputSchema) -> dict:
+def convert_usage_api_response_to_dict(data: dict) -> dict:
     converted = {}
-    for i in data['usages']: # type: ignore
+    for i in data['usages']:  # type: ignore
         converted[str(i['uuid'])] = {
             'usage': i['usage'],
             'devices': ','.join(i['devices'])  # type: ignore

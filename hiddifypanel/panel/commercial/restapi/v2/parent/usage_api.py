@@ -22,7 +22,11 @@ class UsageApi(MethodView):
 
         # parse request data
         child_usages_data = hutils.node.convert_usage_api_response_to_dict(data)
-        parent_current_usages_data = hutils.node.convert_usage_api_response_to_dict(hutils.node.get_users_usage_data_for_api())
+
+        # get current usage
+        parent_current_usages_data = hutils.node.convert_usage_api_response_to_dict(UsageInputOutputSchema().dump(hutils.node.get_users_usage_data_for_api()))  # type: ignore
+
+        # calculate usages
         increased_usages = self.__calculate_parent_increased_usages(child_usages_data, parent_current_usages_data)
 
         # add users usage

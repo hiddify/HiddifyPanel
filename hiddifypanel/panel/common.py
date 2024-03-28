@@ -36,6 +36,12 @@ def init_app(app: APIFlask):
 
     @app.errorhandler(Exception)
     def internal_server_error(e):
+        if isinstance(e, Exception):
+            if hutils.flask.is_api_call(request.path):
+                return {
+                    'msg': str(e),
+                }, 500
+
         if hasattr(e, 'code') and e.code == 404:
             return jsonify({
                 'message': 'Not Found',
