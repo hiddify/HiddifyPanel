@@ -1,14 +1,11 @@
 from flask.views import MethodView
-from apiflask import Schema, fields
 from flask import current_app as app
 
 from hiddifypanel.auth import login_required
 from hiddifypanel.models import Role
 from hiddifypanel import __version__
 
-
-class PanelInfoOutputSchema(Schema):
-    version = fields.String(description="The panel version")
+from .schema import PanelInfoOutputSchema
 
 
 class PanelInfoApi(MethodView):

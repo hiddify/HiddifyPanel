@@ -10,7 +10,7 @@ from hiddifypanel.panel import hiddify
 from hiddifypanel import hutils
 
 
-class ServerStatus(Schema):
+class ServerStatusOutputSchema(Schema):
     stats = Dict(required=True, description="System stats")
     usage_history = Dict(required=True, description="System usage history")
 
@@ -18,9 +18,9 @@ class ServerStatus(Schema):
 class AdminServerStatusApi(MethodView):
     decorators = [login_required({Role.super_admin, Role.admin, Role.agent})]
 
-    @app.output(ServerStatus)  # type: ignore
+    @app.output(ServerStatusOutputSchema)  # type: ignore
     def get(self):
-        dto = ServerStatus()
+        dto = ServerStatusOutputSchema()
         dto.stats = {  # type: ignore
             'system': hutils.system.system_stats(),
             'top5': hutils.system.top_processes()

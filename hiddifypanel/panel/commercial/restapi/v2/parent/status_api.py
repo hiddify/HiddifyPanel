@@ -5,13 +5,7 @@ from apiflask import Schema, fields
 from hiddifypanel.models import Child, Role
 from hiddifypanel.auth import login_required
 
-
-class ChildStatusInputSchema(Schema):
-    child_unique_id = fields.String(required=True, description="The child's unique id")
-
-
-class ChildStatusOutputSchema(Schema):
-    existance = fields.Boolean(required=True, description="Whether child exists")
+from .schema import ChildStatusInputSchema, ChildStatusOutputSchema
 
 
 class StatusApi(MethodView):

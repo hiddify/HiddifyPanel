@@ -1,4 +1,4 @@
-from apiflask import Schema, abort, fields
+from apiflask import abort
 from flask.views import MethodView
 from flask import current_app as app
 from flask import g
@@ -6,11 +6,7 @@ from hiddifypanel.models import Child
 from hiddifypanel.panel.usage import add_users_usage_uuid
 from hiddifypanel.auth import login_required
 
-
-class UsageInputOutputSchema(Schema):
-    uuid = fields.UUID(required=True, desciption="The user uuid")
-    usage = fields.Integer(required=True, description="The user usage in bytes")
-    devices = fields.List(fields.String(required=True, description="The user connected devices"))
+from .schema import UsageInputOutputSchema
 
 
 class UsageApi(MethodView):

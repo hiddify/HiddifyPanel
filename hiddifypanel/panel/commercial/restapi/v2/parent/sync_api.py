@@ -2,28 +2,14 @@
 from flask.views import MethodView
 from flask import current_app as app
 from flask import g
-from apiflask import abort, Schema, fields
+from apiflask import abort
 
 from hiddifypanel.models.user import User
 from hiddifypanel.database import db
 from hiddifypanel.models.child import Child
 from hiddifypanel.models import *
 from hiddifypanel.auth import login_required
-from .schema import *
-
-
-class SyncInputSchema(Schema):
-    # users = fields.List(fields.Nested(UserSchema),required=True,description="The list of users")
-    domains = fields.List(fields.Nested(DomainSchema), required=True, description="The list of domains")
-    proxies = fields.List(fields.Nested(ProxySchema), required=True, description="The list of proxies")
-    # parent_domains = fields.List(fields.Nested(ParentDomainSchema),required=True,description="The list of parent domains")
-    # admin_users = fields.List(fields.Nested(AdminSchema),required=True,description="The list of admin users")
-    hconfigs = fields.List(fields.Nested(HConfigSchema), required=True, description="The list of configs")
-
-
-class SyncOutputSchema(Schema):
-    users = fields.List(fields.Nested(UserSchema), required=True, description="The list of users")
-    admin_users = fields.List(fields.Nested(AdminSchema), required=True, description="The list of admin users")
+from .schema import SyncInputSchema, SyncOutputSchema
 
 
 class SyncApi(MethodView):

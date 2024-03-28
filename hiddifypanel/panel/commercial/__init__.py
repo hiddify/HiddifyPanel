@@ -1,4 +1,3 @@
-from .ProxyDetailsAdmin import ProxyDetailsAdmin
 from hiddifypanel.models import *
 from hiddifypanel.database import db
 from hiddifypanel import Events, hutils
@@ -55,6 +54,7 @@ Events.config_changed.subscribe(config_changed_event)
 def admin_prehook(flaskadmin, admin_bp):
     # from .ParentDomainAdmin import ParentDomainAdmin
     # flaskadmin.add_view(ParentDomainAdmin(ParentDomain, db.session))
+    from .ProxyDetailsAdmin import ProxyDetailsAdmin
     flaskadmin.add_view(ProxyDetailsAdmin(Proxy, db.session))
     # CommercialSettings.register(admin_bp)
 

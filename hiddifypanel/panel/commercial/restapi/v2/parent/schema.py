@@ -1,13 +1,8 @@
 from apiflask import fields, Schema
 from marshmallow import ValidationError
 
-from hiddifypanel.models import DomainType, ProxyProto, ProxyL3, ProxyTransport, ProxyCDN, ConfigEnum
-from hiddifypanel.panel.commercial.restapi.v2.admin.user_api import UserSchema
-from hiddifypanel.panel.commercial.restapi.v2.admin.admin_user_api import AdminSchema
-from hiddifypanel.panel.commercial.restapi.v2.parent.register_api import RegisterInputSchema, RegisterOutputSchema
-from hiddifypanel.panel.commercial.restapi.v2.parent.sync_api import SyncInputSchema, SyncOutputSchema
-from hiddifypanel.panel.commercial.restapi.v2.parent.status_api import ChildStatusInputSchema, ChildStatusOutputSchema
-from hiddifypanel.panel.commercial.restapi.v2.parent.usage_api import UsageInputOutputSchema
+from hiddifypanel.models import DomainType, ProxyProto, ProxyL3, ProxyTransport, ProxyCDN, ConfigEnum, ChildMode
+from hiddifypanel.panel.commercial.restapi.v2.admin.schema import UserSchema, AdminSchema
 
 
 def hconfig_key_validator(value):
@@ -42,3 +37,65 @@ class HConfigSchema(Schema):
     child_unique_id = fields.String(description="The child's unique id")
     key = fields.String(required=True, description="The config key", validate=hconfig_key_validator)  # type: ignore
     value = fields.String(required=True, description="The config value")
+
+
+# region usage
+class UsageInputOutputSchema(Schema):
+    uuid = fields.UUID(required=True, desciption="The user uuid")
+    usage = fields.Integer(required=True, description="The user usage in bytes")
+    devices = fields.List(fields.String(required=True, description="The user connected devices"))
+
+# endregion
+
+
+# region sync
+class SyncInputSchema(Schema):
+    # users = fields.List(fields.Nested(UserSchema),required=True,description="The list of users")
+    domains = fields.List(fields.Nested(DomainSchema), required=True, description="The list of domains")
+    proxies = fields.List(fields.Nested(ProxySchema), required=True, description="The list of proxies")
+    # parent_domains = fields.List(fields.Nested(ParentDomainSchema),required=True,description="The list of parent domains")
+    # admin_users = fields.List(fields.Nested(AdminSchema),required=True,description="The list of admin users")
+    hconfigs = fields.List(fields.Nested(HConfigSchema), required=True, description="The list of configs")
+
+
+class SyncOutputSchema(Schema):
+    users = fields.List(fields.Nested(UserSchema), required=True, description="The list of users")
+    admin_users = fields.List(fields.Nested(AdminSchema), required=True, description="The list of admin users")
+
+# endregion
+
+
+# region child status
+class ChildStatusInputSchema(Schema):
+    child_unique_id = fields.String(required=True, description="The child's unique id")
+
+
+class ChildStatusOutputSchema(Schema):
+    existance = fields.Boolean(required=True, description="Whether child exists")
+
+# end region
+
+
+# region register
+
+class RegisterDataSchema(Schema):
+    users = fields.List(fields.Nested(UserSchema), required=True, description="The list of users")
+    domains = fields.List(fields.Nested(DomainSchema), required=True, description="The list of domains")
+    proxies = fields.List(fields.Nested(ProxySchema), required=True, description="The list of proxies")
+    admin_users = fields.List(fields.Nested(AdminSchema), required=True, description="The list of admin users")
+    hconfigs = fields.List(fields.Nested(HConfigSchema), required=True, description="The list of configs")
+
+
+class RegisterInputSchema(Schema):
+    panel_data = fields.Nested(RegisterDataSchema, required=True, description="The child's data")
+    unique_id = fields.String(required=True, description="The child's unique id")
+    name = fields.String(required=True, description="The child's name")
+    mode = fields.Enum(ChildMode, required=True, description="The child's mode")
+
+
+class RegisterOutputSchema(Schema):
+    parent_unique_id = fields.String(description="The parent's unique id")
+    users = fields.List(fields.Nested(UserSchema), required=True, description="The list of users")
+    admin_users = fields.List(fields.Nested(AdminSchema), required=True, description="The list of admin users")
+
+# endregion

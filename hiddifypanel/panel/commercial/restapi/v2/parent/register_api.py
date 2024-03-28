@@ -1,4 +1,4 @@
-from apiflask import abort, Schema, fields
+from apiflask import abort
 from hiddifypanel.database import db
 from flask import current_app as app
 from flask.views import MethodView
@@ -6,28 +6,7 @@ from flask.views import MethodView
 from hiddifypanel.models import *
 from hiddifypanel.auth import login_required
 
-from .schema import *
-
-
-class RegisterDataSchema(Schema):
-    users = fields.List(fields.Nested(UserSchema), required=True, description="The list of users")
-    domains = fields.List(fields.Nested(DomainSchema), required=True, description="The list of domains")
-    proxies = fields.List(fields.Nested(ProxySchema), required=True, description="The list of proxies")
-    admin_users = fields.List(fields.Nested(AdminSchema), required=True, description="The list of admin users")
-    hconfigs = fields.List(fields.Nested(HConfigSchema), required=True, description="The list of configs")
-
-
-class RegisterInputSchema(Schema):
-    panel_data = fields.Nested(RegisterDataSchema, required=True, description="The child's data")
-    unique_id = fields.String(required=True, description="The child's unique id")
-    name = fields.String(required=True, description="The child's name")
-    mode = fields.Enum(ChildMode, required=True, description="The child's mode")
-
-
-class RegisterOutputSchema(Schema):
-    parent_unique_id = fields.String(description="The parent's unique id")
-    users = fields.List(fields.Nested(UserSchema), required=True, description="The list of users")
-    admin_users = fields.List(fields.Nested(AdminSchema), required=True, description="The list of admin users")
+from .schema import RegisterInputSchema, RegisterOutputSchema
 
 
 class RegisterApi(MethodView):

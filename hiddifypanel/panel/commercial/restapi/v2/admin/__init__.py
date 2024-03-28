@@ -32,8 +32,3 @@ def has_permission(model) -> bool:
     if not g.account.uuid != AdminUser.get_super_admin_uuid() and model.added_by != g.account.id:  # type: ignore
         return False
     return True
-
-
-class SuccessfulSchema(Schema):
-    status = Integer()
-    msg = String()
