@@ -7,7 +7,7 @@ from hiddifypanel.panel.commercial.restapi.v2.admin.admin_user_api import AdminS
 from hiddifypanel.panel.commercial.restapi.v2.parent.register_api import RegisterInputSchema, RegisterOutputSchema
 from hiddifypanel.panel.commercial.restapi.v2.parent.sync_api import SyncInputSchema, SyncOutputSchema
 from hiddifypanel.panel.commercial.restapi.v2.parent.status_api import ChildStatusInputSchema, ChildStatusOutputSchema
-from hiddifypanel.panel.commercial.restapi.v2.parent.usage_api import UsageApi
+from hiddifypanel.panel.commercial.restapi.v2.parent.usage_api import UsageInputOutputSchema
 
 
 def hconfig_key_validator(value):

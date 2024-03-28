@@ -4,8 +4,10 @@ import requests
 from typing import List
 
 
+from hiddifypanel.models import Child, AdminUser, ConfigEnum, Domain, ChildMode, hconfig, get_panel_link
 from hiddifypanel import hutils
-from hiddifypanel.models import Child, AdminUser, ConfigEnum, DomainType, Domain, ChildMode, hconfig, get_panel_link
+from .api_client import NodeApiClient, NodeApiErrorSchema
+from hiddifypanel.panel.commercial.restapi.v2.child.schema import RegisterWithParentInputSchema
 
 
 def request_childs_to_sync():
@@ -16,14 +18,18 @@ def request_childs_to_sync():
 
 def request_child_to_sync(child: Child) -> bool:
     '''Requests to a child to sync itself with the current panel'''
-    try:
-        child_domain = get_child_active_domains(child)[0]
-    except:
+    child_domain = get_panel_link(child.id)
+    if not child_domain:
         return False
+
     child_admin_proxy_path = hconfig(ConfigEnum.proxy_path_admin, child.id)
-    url = f'https://{child_domain}/{child_admin_proxy_path}/api/v2/child/sync-parent/'
-    res = requests.post(url, headers={'Hiddify-API-Key': hconfig(ConfigEnum.unique_id)})
-    if res.status_code == 200 and res.json().get('msg') == 'ok':
+    base_url = f'https://{child_domain}/{child_admin_proxy_path}'
+    path = '/api/v2/child/sync-parent/'
+    res = NodeApiClient(base_url).post(path, payload=None, output=dict)
+    if isinstance(res, NodeApiErrorSchema):
+        # TODO: log error
+        return False
+    if res.get('msg') == 'ok':
         return True
 
     return False
@@ -34,20 +40,21 @@ def request_chlid_to_register(name: str, mode: ChildMode, child_link: str, apike
     '''Requests to a child to register itself with the current panel'''
     if not child_link or not apikey:
         return False
-    else:
-        child_link = child_link.removesuffix('/') + '/api/v2/child/register-parent/'
     domain = get_panel_link()
     if not domain:
         return False
     from hiddifypanel.panel import hiddify
-    paylaod = {
-        'parent_panel': hiddify.get_account_panel_link(AdminUser.by_uuid(g.account.uuid), domain.domain),
-        'name': name,
-        'mode': mode
 
-    }
-    res = requests.post(child_link, json=paylaod, headers={'Hiddify-API-Key': apikey}, timeout=40)
-    if res.status_code == 200 and res.json().get('msg') == 'ok':
+    payload = RegisterWithParentInputSchema()
+    payload.parent_panel = hiddify.get_account_panel_link(AdminUser.by_uuid(g.account.uuid), domain.domain)  # type: ignore
+    payload.parent_unique_id, payload.name = hconfig(ConfigEnum.unique_id)
+
+    res = NodeApiClient(child_link, apikey).post('/api/v2/child/register-parent/', payload, dict)
+
+    if isinstance(res, NodeApiErrorSchema):
+        # TODO: log error
+        return False
+    if res.get('msg') == 'ok':
         return True
 
     return False

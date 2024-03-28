@@ -2,13 +2,13 @@ from typing import TypeVar, Type, Optional, Union
 from apiflask import Schema, fields
 import traceback
 import requests
-
+from urllib.parse import urljoin
 from hiddifypanel.models import hconfig, ConfigEnum
 
-T = TypeVar('T', bound=Schema)
+T = TypeVar('T', bound=Schema | dict)  # type: ignore
 
 
-class ErrorSchema(Schema):
+class NodeApiErrorSchema(Schema):
     msg = fields.String(required=True)
     stacktrace = fields.String(required=True)
     code = fields.Integer(required=True)
@@ -21,9 +21,9 @@ class NodeApiClient():
         self.max_retry = max_retry
         self.headers = {'Hiddify-API-Key': apikey if apikey else hconfig(ConfigEnum.unique_id)}
 
-    def __call(self, method: str, path: str, payload: Optional[Schema], output_schema: Type[T]) -> Union[T, ErrorSchema]:  # type: ignore
+    def __call(self, method: str, path: str, payload: Optional[Schema], output_schema: Type[T]) -> Union[T, NodeApiErrorSchema]:  # type: ignore
         retry_count = 1
-        full_url = self.base_url + path
+        full_url = urljoin(self.base_url, path)
         while 1:
             try:
                 # TODO: implement it with aiohttp
@@ -35,17 +35,17 @@ class NodeApiClient():
                 response.raise_for_status()
                 resp = response.json()
                 if not resp:
-                    err = ErrorSchema()
+                    err = NodeApiErrorSchema()
                     err.msg = 'Empty response'  # type: ignore
                     err.stacktrace = ''  # type: ignore
                     err.code = response.status_code  # type: ignore
                     err.reason = response.reason  # type: ignore
                     return err
-                return resp if isinstance(output_schema, dict) else output_schema().load(resp)
+                return resp if isinstance(output_schema, dict) else output_schema().load(resp)  # type: ignore
             except requests.HTTPError as e:
                 if retry_count >= self.max_retry:
                     stack_trace = traceback.format_exc()
-                    err = ErrorSchema()
+                    err = NodeApiErrorSchema()
                     err.msg = str(e)  # type: ignore
                     err.stacktrace = stack_trace  # type: ignore
                     err.code = response.status_code  # type: ignore
@@ -55,11 +55,11 @@ class NodeApiClient():
                 print(f"Error occurred: {e}")
                 retry_count += 1
 
-    def get(self, path: str, output: Type[T]) -> Union[T, ErrorSchema]:
+    def get(self, path: str, output: Type[T]) -> Union[T, NodeApiErrorSchema]:
         return self.__call("GET", path, None, output)
 
-    def post(self, path: str, payload: Optional[Schema], output: Type[T]) -> Union[T, ErrorSchema]:
+    def post(self, path: str, payload: Optional[Schema], output: Type[T]) -> Union[T, NodeApiErrorSchema]:
         return self.__call("POST", path, payload, output)
 
-    def put(self, path: str, payload: Optional[Schema], output: Type[T]) -> Union[T, ErrorSchema]:
+    def put(self, path: str, payload: Optional[Schema], output: Type[T]) -> Union[T, NodeApiErrorSchema]:
         return self.__call("PUT", path, payload, output)

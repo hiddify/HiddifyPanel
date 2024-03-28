@@ -146,10 +146,12 @@ def get_domain(domain):
     return Domain.query.filter(Domain.domain == domain).first()
 
 
-def get_panel_link() -> Domain | None:
+def get_panel_link(child_id: int | None = None) -> Domain | None:
+    if child_id is None:
+        child_id = Child.current.id
     domains = Domain.query.filter(Domain.mode.in_(
         [DomainType.direct, DomainType.cdn, DomainType.worker, DomainType.relay, DomainType.auto_cdn_ip, DomainType.old_xtls_direct, DomainType.sub_link_only]),
-        Domain.child_id == Child.current.id
+        Domain.child_id == child_id
     ).all()
     if not domains:
         return None

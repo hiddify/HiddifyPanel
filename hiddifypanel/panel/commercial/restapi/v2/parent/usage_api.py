@@ -33,7 +33,7 @@ class UsageApi(MethodView):
         if increased_usages:
             add_users_usage_uuid(increased_usages, child.id)
 
-        return [UsageInputOutputSchema.from_dict(item) for item in hutils.node.get_users_usage_data_for_api()]
+        return hutils.node.get_users_usage_data_for_api()
 
     def __calculate_parent_increased_usages(self, child_usages_data: dict, parent_usages_data: dict) -> dict:
         res = {}
