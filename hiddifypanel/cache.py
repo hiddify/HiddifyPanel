@@ -1,47 +1,84 @@
-from redis_cache import RedisCache
-from functools import wraps
+from redis_cache import RedisCache, CacheDecorator, compact_dump
+from redis_cache import loads as redis_cache_loads
 import redis
 from pickle import dumps, loads
+
+
 redis_client = redis.from_url('unix:///opt/hiddify-manager/other/redis/run.sock?db=0')
 
 
-def exception_handler(e, original_fn, args, kwargs):
-    print("cache exception occur", e, original_fn, args, kwargs)
-    return original_fn(*args, **kwargs)
-    pass
+class CustomCacheDecorator(CacheDecorator):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.redis_cache = kwargs['redis_cache']
+
+    def __call__(self, fn):
+        self.redis_cache.cached_functions.append(fn)
+        return super().__call__(fn)
+
+
+class CustomRedisCache(RedisCache):
+    def __init__(self, redis_client, prefix="rc", serializer=compact_dump, deserializer=redis_cache_loads, key_serializer=None, exception_handler=None):
+        super().__init__(redis_client, prefix, serializer, deserializer, key_serializer, exception_handler)
+        self.cached_functions = []
+
+    def cache(self, ttl=0, limit=0, namespace=None, exception_handler=None):
+        return CustomCacheDecorator(
+            redis_client=self.client,
+            prefix=self.prefix,
+            serializer=self.serializer,
+            deserializer=self.deserializer,
+            key_serializer=self.key_serializer,
+            ttl=ttl,
+            limit=limit,
+            namespace=namespace,
+            exception_handler=exception_handler or self.exception_handler,
+            redis_cache=self
+        )
+
+    def invalidate_all_cached_functions(self):
+        for cached_fn in self.cached_functions:
+            cached_fn.invalidate_all()
+
+
+cache = CustomRedisCache(redis_client=redis_client, prefix="h", serializer=dumps, deserializer=loads)
 
 
 # cache = RedisCache(redis_client=redis_client, exception_handler=exception_handler)
 # cache = RedisCache(redis_client=redis_client, prefix="h", serializer=dumps, deserializer=loads, exception_handler=exception_handler)
-cache = RedisCache(redis_client=redis_client, prefix="h", serializer=dumps, deserializer=loads)
+
+# def exception_handler(e, original_fn, args, kwargs):
+#     print("cache exception occur", e, original_fn, args, kwargs)
+#     return original_fn(*args, **kwargs)
+#     pass
+
+# class CacheDecorator:
+#     def __init__(self, *args, **kwargs):
+#         pass
+
+#     def __call__(self, fn):
+#         @wraps(fn)
+#         def inner(*args, **kwargs):
+
+#             parsed_result = fn(*args, **kwargs)
+
+#             return parsed_result
+
+#         inner.invalidate = self.invalidate
+#         inner.invalidate_all = self.invalidate_all
+#         inner.instance = self
+#         return inner
+
+#     def invalidate(self, *args, **kwargs):
+#         pass
+
+#     def invalidate_all(self, *args, **kwargs):
+#         pass
 
 
-class CacheDecorator:
-    def __init__(self, *args, **kwargs):
-        pass
-
-    def __call__(self, fn):
-        @wraps(fn)
-        def inner(*args, **kwargs):
-
-            parsed_result = fn(*args, **kwargs)
-
-            return parsed_result
-
-        inner.invalidate = self.invalidate
-        inner.invalidate_all = self.invalidate_all
-        inner.instance = self
-        return inner
-
-    def invalidate(self, *args, **kwargs):
-        pass
-
-    def invalidate_all(self, *args, **kwargs):
-        pass
-
-
-class DisableCache:
-    cache = CacheDecorator
+# class DisableCache:
+#     cache = CacheDecorator
 
 
 # cache = DisableCache()
