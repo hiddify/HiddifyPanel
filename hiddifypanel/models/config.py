@@ -1,4 +1,4 @@
-from hiddifypanel.models.config_enum import ConfigEnum
+from hiddifypanel.models.config_enum import ConfigEnum, LogLevel, PanelMode, Lang
 from flask import g
 from sqlalchemy_serializer import SerializerMixin
 from hiddifypanel import Events
@@ -6,6 +6,7 @@ from hiddifypanel.database import db
 from hiddifypanel.cache import cache
 from hiddifypanel.models.child import Child, ChildMode
 from sqlalchemy import Column, String, Boolean, Enum, ForeignKey, Integer
+from strenum import StrEnum
 
 
 def error(st):
@@ -60,7 +61,7 @@ class StrConfig(db.Model, SerializerMixin):
 
 
 @cache.cache(ttl=500)
-def hconfig(key: ConfigEnum, child_id: int | None = None) -> str | int | None:
+def hconfig(key: ConfigEnum, child_id: int | None = None) -> str | int | StrEnum | None:
     if child_id is None:
         child_id = Child.current.id
 
@@ -81,8 +82,16 @@ def hconfig(key: ConfigEnum, child_id: int | None = None) -> str | int | None:
     except BaseException:
         error(f'{key} error!')
         raise
-    if key.type == int and value != None:
-        return int(value)
+    if value != None:
+        if key.type == int:
+            return int(value)
+        elif key.type == LogLevel:
+            return LogLevel[value]
+        elif key.type == PanelMode:
+            return PanelMode[value]
+        elif key.type == Lang:
+            return Lang[value]
+
     return value
 
 

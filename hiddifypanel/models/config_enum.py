@@ -75,6 +75,10 @@ def _IntConfigDscr(category: ConfigCategory, apply_mode: ApplyMode = ApplyMode.n
     return category, apply_mode, int, show_in_parent
 
 
+def _EnumConfigDscr(ctype: type, category: ConfigCategory, apply_mode: ApplyMode = ApplyMode.nothing, show_in_parent: bool = True, hide_in_virtual_child=False):
+    return category, apply_mode, ctype, show_in_parent
+
+
 class ConfigEnum(metaclass=FastEnum):
     # category: ConfigCategory
     __slots__ = ('name', 'value', 'category', 'apply_mode', 'type', 'show_in_parent', 'hide_in_virtual_child')
@@ -139,16 +143,16 @@ class ConfigEnum(metaclass=FastEnum):
 
     # the panel mode could be one of these: "parent", "child", "standalone"
     # this config value would be 'standalone' by default. and would be set by panel itself
-    panel_mode = _StrConfigDscr(ConfigCategory.hidden)
+    panel_mode = _EnumConfigDscr(PanelMode, ConfigCategory.hidden, ApplyMode.nothing, hide_in_virtual_child=True)
     # endregion
 
-    log_level = _StrConfigDscr(ConfigCategory.too_advanced, ApplyMode.restart)
+    log_level = _EnumConfigDscr(LogLevel, ConfigCategory.hidden, ApplyMode.restart, hide_in_virtual_child=True)
 
     unique_id = _StrConfigDscr(ConfigCategory.hidden)
     last_hash = _StrConfigDscr(ConfigCategory.hidden)
     cdn_forced_host = _StrConfigDscr(ConfigCategory.hidden)  # removed
-    lang = _StrConfigDscr(ConfigCategory.branding)
-    admin_lang = _StrConfigDscr(ConfigCategory.admin)
+    lang = _EnumConfigDscr(Lang, ConfigCategory.branding)
+    admin_lang = _EnumConfigDscr(Lang, ConfigCategory.admin)
     admin_secret = _StrConfigDscr(ConfigCategory.hidden)  # removed
 
     # tls
