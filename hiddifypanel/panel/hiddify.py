@@ -1,6 +1,4 @@
-import glob
 import re
-import json
 import subprocess
 
 from datetime import datetime
@@ -13,8 +11,6 @@ from hiddifypanel.cache import cache
 from hiddifypanel.models import *
 from hiddifypanel.database import db
 from hiddifypanel.hutils.utils import *
-from wtforms.validators import ValidationError
-from hiddifypanel.Events import domain_changed
 from hiddifypanel import hutils
 from hiddifypanel.panel.run_commander import commander, Command
 import subprocess

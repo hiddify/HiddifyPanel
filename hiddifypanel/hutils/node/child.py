@@ -5,6 +5,7 @@ from hiddifypanel import hutils
 from hiddifypanel.panel import hiddify
 from hiddifypanel.panel import usage
 from hiddifypanel.database import db
+from hiddifypanel.cache import cache
 
 # import schmeas
 from hiddifypanel.panel.commercial.restapi.v2.parent.schema import *
@@ -102,7 +103,7 @@ def register_to_parent(name: str, mode: ChildMode = ChildMode.remote) -> bool:
         return False
 
     logger.success("Successfully registered to parent")
-
+    cache.invalidate_all_cached_functions()
     return True
 
 
@@ -130,6 +131,7 @@ def sync_with_parent() -> bool:
         return False
 
     logger.success("Successfully synced with parent")
+    cache.invalidate_all_cached_functions()
     return True
 
 

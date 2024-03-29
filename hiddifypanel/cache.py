@@ -2,7 +2,7 @@ from redis_cache import RedisCache, CacheDecorator, compact_dump
 from redis_cache import loads as redis_cache_loads
 import redis
 from pickle import dumps, loads
-
+from loguru import logger
 
 redis_client = redis.from_url('unix:///opt/hiddify-manager/other/redis/run.sock?db=0')
 
@@ -38,8 +38,15 @@ class CustomRedisCache(RedisCache):
         )
 
     def invalidate_all_cached_functions(self):
-        for cached_fn in self.cached_functions:
-            cached_fn.invalidate_all()
+        try:
+            logger.info("Invalidating all cached functions")
+            for cached_fn in self.cached_functions:
+                cached_fn.invalidate_all()
+            logger.success("Successfully invalidated all cached functions")
+            return True
+        except:
+            logger.error("Failed to invalidate all cached functions")
+            return False
 
 
 cache = CustomRedisCache(redis_client=redis_client, prefix="h", serializer=dumps, deserializer=loads)

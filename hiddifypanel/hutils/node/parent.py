@@ -5,8 +5,10 @@ from loguru import logger
 
 from hiddifypanel.models import Child, AdminUser, ConfigEnum, Domain, ChildMode, hconfig, get_panel_link
 from hiddifypanel import hutils
-from .api_client import NodeApiClient, NodeApiErrorSchema
 from hiddifypanel.panel.commercial.restapi.v2.child.schema import RegisterWithParentInputSchema
+from .api_client import NodeApiClient, NodeApiErrorSchema
+
+from hiddifypanel.cache import cache
 
 
 def request_childs_to_sync():
@@ -32,6 +34,7 @@ def request_child_to_sync(child: Child) -> bool:
         return False
     if res['msg'] == 'ok':
         logger.success(f"Successfully requested child {child.name} to sync")
+        cache.invalidate_all_cached_functions()
         return True
 
     logger.error(f"Request to child {child.name} to sync failed")
@@ -63,6 +66,7 @@ def request_chlid_to_register(name: str, mode: ChildMode, child_link: str, apike
         return False
     if res['msg'] == 'ok':
         logger.success(f"Successfully requested child {name} to register")
+        cache.invalidate_all_cached_functions()
         return True
 
     logger.error(f"Request to child {name} to register failed")
