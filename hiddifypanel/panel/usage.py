@@ -29,7 +29,7 @@ def add_users_usage_uuid(uuids_bytes: Dict[str, Dict], child_id, sync=False):
 
 def _add_users_usage(users_usage_data: Dict[User, Dict], child_id, sync=False):
     '''
-    sync: when enabled, it means we have received usages from the parent server
+    sync: when enabled, it means we have received usages from the parent panel
     '''
     res = {}
     have_change = False
@@ -69,14 +69,16 @@ def _add_users_usage(users_usage_data: Dict[User, Dict], child_id, sync=False):
             res[user.uuid] = "No usage"
         else:
             if sync:
-                daily_usage.get(user.added_by, daily_usage[1]).usage = usage_bytes
+                if daily_usage.get(user.added_by, daily_usage[1]).usage != usage_bytes:
+                    daily_usage.get(user.added_by, daily_usage[1]).usage = usage_bytes
             else:
                 daily_usage.get(user.added_by, daily_usage[1]).usage += usage_bytes
             in_gig = (usage_bytes) / to_gig_d
             res[user.uuid] = in_gig
             if sync:
-                user.current_usage_GB = in_gig
-                detail.current_usage_GB = in_gig
+                if user.current_usage_GB != in_gig:
+                    user.current_usage_GB = in_gig
+                # detail.current_usage_GB = in_gig
             else:
                 user.current_usage_GB += in_gig
                 detail.current_usage_GB += in_gig
