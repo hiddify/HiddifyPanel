@@ -10,8 +10,8 @@ redis_client = redis.from_url('unix:///opt/hiddify-manager/other/redis/run.sock?
 class CustomCacheDecorator(CacheDecorator):
 
     def __init__(self, *args, **kwargs):
+        self.redis_cache = kwargs.pop('redis_cache')
         super().__init__(*args, **kwargs)
-        self.redis_cache = kwargs['redis_cache']
 
     def __call__(self, fn):
         self.redis_cache.cached_functions.append(fn)
