@@ -14,8 +14,9 @@ class CustomCacheDecorator(CacheDecorator):
         super().__init__(*args, **kwargs)
 
     def __call__(self, fn):
-        self.redis_cache.cached_functions.append(fn)
-        return super().__call__(fn)
+        new_fn = super().__call__(fn)
+        self.redis_cache.cached_functions.append(new_fn)
+        return new_fn
 
 
 class CustomRedisCache(RedisCache):
@@ -44,8 +45,9 @@ class CustomRedisCache(RedisCache):
                 cached_fn.invalidate_all()
             logger.success("Successfully invalidated all cached functions")
             return True
-        except:
-            logger.error("Failed to invalidate all cached functions")
+        except Exception as err:
+            with logger.contextualize(error=err):
+                logger.error("Failed to invalidate all cached functions")
             return False
 
 
