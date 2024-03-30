@@ -104,7 +104,7 @@ def login_required(roles: set[Role] | None = None, node_auth: bool = False):
             # print('xxxx', current_account)
             if node_auth and not g.get('node_authorized'):
                 json_abort(403, 'Unauthorized node')
-            if not current_account:
+            if not current_account and not node_auth:
                 return redirect_to_login()  # type: ignore
             if roles:
                 account_role = current_account.role
@@ -159,6 +159,7 @@ def auth_before_request():
                 g.node_authorized = True
                 # Child.current uses g.child
                 g.child = node
+                return
 
         if not account:
             return logout_redirect()

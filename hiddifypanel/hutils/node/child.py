@@ -62,7 +62,7 @@ def is_registered() -> bool:
 
         res = NodeApiClient(base_url, apikey).post('/api/v2/parent/status/', payload, ChildStatusOutputSchema)
         if isinstance(res, NodeApiErrorSchema):
-            logger.error(f"Error while checking if current panel is registered with parent: {res['msg']}")
+            logger.error(f"Error while checking if current panel is registered with parent: {res.msg}")
             return False
 
         if res['existance']:
@@ -84,7 +84,7 @@ def register_to_parent(name: str, mode: ChildMode = ChildMode.remote) -> bool:
     apikey = hconfig(ConfigEnum.parent_admin_uuid)
     res = NodeApiClient(p_url, apikey).put('/api/v2/parent/register/', payload, RegisterOutputSchema)
     if isinstance(res, NodeApiErrorSchema):
-        logger.error(f"Error while registering to parent: {res['msg']}")
+        logger.error(f"Error while registering to parent: {res.msg}")
         return False
 
     # TODO: change the bulk_register and such methods to accept models instead of dict
@@ -120,7 +120,7 @@ def sync_with_parent() -> bool:
     payload = __get_sync_data_for_api()
     res = NodeApiClient(p_url).put('/api/v2/parent/sync/', payload, SyncOutputSchema)
     if isinstance(res, NodeApiErrorSchema):
-        logger.error(f"Error while syncing with parent: {res['msg']}")
+        logger.error(f"Error while syncing with parent: {res.msg}")
         return False
     AdminUser.bulk_register(res['admin_users'], commit=False, remove=True)
     User.bulk_register(res['users'], commit=False, remove=True)
@@ -145,7 +145,7 @@ def sync_users_usage_with_parent() -> bool:
     if payload:
         res = NodeApiClient(p_url).put('/api/v2/parent/usage/', payload, UsageInputOutputSchema)  # type: ignore
         if isinstance(res, NodeApiErrorSchema):
-            logger.error(f"Error while syncing users usage with parent: {res['msg']}")
+            logger.error(f"Error while syncing users usage with parent: {res.msg}")
             return False
 
         # parse usages data

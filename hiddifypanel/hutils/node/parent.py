@@ -30,7 +30,7 @@ def request_child_to_sync(child: Child) -> bool:
     path = '/api/v2/child/sync-parent/'
     res = NodeApiClient(base_url).post(path, payload=None, output=dict)
     if isinstance(res, NodeApiErrorSchema):
-        logger.error(f"Error while requesting child {child.name} to sync: {res['msg']}")
+        logger.error(f"Error while requesting child {child.name} to sync: {res.msg}")
         return False
     if res['msg'] == 'ok':
         logger.success(f"Successfully requested child {child.name} to sync")
@@ -62,7 +62,7 @@ def request_chlid_to_register(name: str, mode: ChildMode, child_link: str, apike
     res = NodeApiClient(child_link, apikey).post('/api/v2/child/register-parent/', payload, dict)
 
     if isinstance(res, NodeApiErrorSchema):
-        logger.error(f"Error while requesting child {name} to register: {res['msg']}")
+        logger.error(f"Error while requesting child {name} to register: {res.msg}")
         return False
     if res['msg'] == 'ok':
         logger.success(f"Successfully requested child {name} to register")

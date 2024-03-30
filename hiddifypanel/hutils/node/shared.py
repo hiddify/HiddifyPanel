@@ -46,7 +46,7 @@ def is_panel_active(domain: str, proxy_path: str, apikey: str) -> bool:
     base_url = f'https://{domain}/{proxy_path}'
     res = NodeApiClient(base_url, apikey).get('/api/v2/panel/ping/', dict)
     if isinstance(res, NodeApiErrorSchema):
-        logger.error(f"Error while checking if panel is active: {res['msg']}")
+        logger.error(f"Error while checking if panel is active: {res.msg}")
         return False
     if 'PONG' in res['msg']:
         logger.debug(f"Panel is active: {res['msg']}")
@@ -60,6 +60,6 @@ def get_panel_info(domain: str, proxy_path: str, apikey: str) -> dict | None:
     base_url = f'https://{domain}/{proxy_path}'
     res = NodeApiClient(base_url, apikey).get('/api/v2/panel/info/', PanelInfoOutputSchema)
     if isinstance(res, NodeApiErrorSchema):
-        logger.error(f"Error while getting panel info from {domain}: {res['msg']}")
+        logger.error(f"Error while getting panel info from {domain}: {res.msg}")
         return None
     return res
