@@ -27,7 +27,7 @@ def __get_register_data_for_api(name: str, mode: ChildMode) -> RegisterInputSche
     panel_data.users = [user.to_schema() for user in User.query.all()]  # type: ignore
     panel_data.domains = [domain.to_schema() for domain in Domain.query.all()]  # type: ignore
     panel_data.proxies = [proxy.to_schema() for proxy in Proxy.query.all()]  # type: ignore
-    panel_data.hconfigs = [*[u.to_dict() for u in StrConfig.query.all()], *[u.to_dict() for u in BoolConfig.query.all()]]  # type: ignore
+    panel_data.hconfigs = [*[u.to_schema() for u in StrConfig.query.all()], *[u.to_schema() for u in BoolConfig.query.all()]]  # type: ignore
     register_data.panel_data = panel_data
 
     return register_data
@@ -37,7 +37,7 @@ def __get_sync_data_for_api() -> SyncInputSchema:
     sync_data = SyncInputSchema()
     sync_data.domains = [domain.to_schema() for domain in Domain.query.all()]  # type: ignore
     sync_data.proxies = [proxy.to_schema() for proxy in Proxy.query.all()]  # type: ignore
-    sync_data.hconfigs = [*[u.to_dict() for u in StrConfig.query.all()], *[u.to_dict() for u in BoolConfig.query.all()]]  # type: ignore
+    sync_data.hconfigs = [*[u.to_schema() for u in StrConfig.query.all()], *[u.to_schema() for u in BoolConfig.query.all()]]  # type: ignore
 
     return sync_data
 
