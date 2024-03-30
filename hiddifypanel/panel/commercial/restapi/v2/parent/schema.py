@@ -33,10 +33,21 @@ class ProxySchema(Schema):
     cdn = fields.Enum(ProxyCDN, required=True, description="The proxy cdn")
 
 
+class StringOrBooleanField(fields.Field):
+    def _deserialize(self, value, attr, data, **kwargs):
+        if isinstance(value, (str, bool)):
+            return value
+        else:
+            raise ValidationError("Value must be a string or a boolean.")
+
+    def _serialize(self, value, attr, obj, **kwargs):
+        return value
+
+
 class HConfigSchema(Schema):
     child_unique_id = fields.String(description="The child's unique id")
     key = fields.String(required=True, description="The config key", validate=hconfig_key_validator)  # type: ignore
-    value = fields.String(required=True, description="The config value")
+    value = StringOrBooleanField(required=True, description="The config value")
 
 
 # region usage
@@ -45,8 +56,9 @@ class UsageData(Schema):
     usage = fields.Integer(required=True, description="The user usage in bytes")
     devices = fields.List(fields.String(required=True, description="The user connected devices"))
 
+
 class UsageInputOutputSchema(Schema):
-    usages = fields.List(fields.Nested(UsageData),required=True,description="The list of usages")
+    usages = fields.List(fields.Nested(UsageData), required=True, description="The list of usages")
 # endregion
 
 
