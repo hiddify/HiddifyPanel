@@ -160,9 +160,6 @@ def auth_before_request():
                 # Child.current uses g.child
                 g.child = node
 
-            if g.get('node_authorized'):
-                account = AdminUser.get_super_admin()
-
         if not account:
             return logout_redirect()
     elif request.authorization:
