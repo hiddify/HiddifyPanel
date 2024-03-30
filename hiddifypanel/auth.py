@@ -102,7 +102,7 @@ def login_required(roles: set[Role] | None = None, node_auth: bool = False):
         @wraps(fn)
         def decorated_view(*args, **kwargs):
             # print('xxxx', current_account)
-            if node_auth and not g.get('node_authorized'):
+            if node_auth and not Child.node:
                 json_abort(403, 'Unauthorized node')
             if not current_account and not node_auth:
                 return redirect_to_login()  # type: ignore
@@ -156,9 +156,7 @@ def auth_before_request():
         if not account:
             # when parent/child panel needs to call another parent/child api, it will pass its unique id in the header as apikey
             if node := Child.by_unique_id(apikey):
-                g.node_authorized = True
-                # Child.current uses g.child
-                g.child = node
+                g.node = node
                 return
 
         if not account:

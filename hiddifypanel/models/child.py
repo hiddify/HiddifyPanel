@@ -79,3 +79,9 @@ class Child(db.Model, SerializerMixin):  # type: ignore
             db.engine.execute(f'update child set id=0 where unique_id="{tmp_uuid}"')
             child = Child.by_id(0)
         return child
+
+    @classmethod
+    @property
+    def node(cls) -> "Child | None":
+        if has_app_context() and hasattr(g, "node"):
+            return g.node

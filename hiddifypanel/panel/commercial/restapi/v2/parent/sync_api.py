@@ -20,7 +20,7 @@ class SyncApi(MethodView):
     @app.output(SyncOutputSchema)  # type: ignore
     def put(self, data):
         from hiddifypanel import hutils
-        unique_id = Child.current.unique_id
+        unique_id = Child.node.unique_id
 
         logger.info(f"Sync child with unique_id: {unique_id}")
         if not hutils.node.is_parent():

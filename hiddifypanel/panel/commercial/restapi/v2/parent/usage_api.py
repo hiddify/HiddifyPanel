@@ -18,7 +18,7 @@ class UsageApi(MethodView):
     @app.output(UsageInputOutputSchema)  # type: ignore
     def put(self, data):
         from hiddifypanel import hutils
-        child = Child.query.filter(Child.unique_id == Child.current.unique_id).first()
+        child = Child.query.filter(Child.unique_id == Child.node.unique_id).first()
         if not child:
             logger.error("The child does not exist")
             abort(400, "The child does not exist")
