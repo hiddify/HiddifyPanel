@@ -36,7 +36,7 @@ class ProxySchema(Schema):
 class StringOrBooleanField(fields.Field):
     def _deserialize(self, value, attr, data, **kwargs):
         if isinstance(value, (str, bool)):
-            return value
+            return str(value)
         else:
             raise ValidationError("Value must be a string or a boolean.")
 
