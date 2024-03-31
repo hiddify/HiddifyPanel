@@ -23,6 +23,9 @@ def _v82(child_id):
     set_hconfig(ConfigEnum.trojan_enable, True)
     set_hconfig(ConfigEnum.reality_enable, True)
     set_hconfig(ConfigEnum.tcp_enable, True)
+    set_hconfig(ConfigEnum.quic_enable, True)
+    set_hconfig(ConfigEnum.xtls_enable, True)
+    set_hconfig(ConfigEnum.h2_enable, True)
 
 
 def _v77(child_id):

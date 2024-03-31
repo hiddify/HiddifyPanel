@@ -108,7 +108,7 @@ class ConfigEnum(metaclass=FastEnum):
     license = _StrConfigDscr(ConfigCategory.hidden)
     country = _StrConfigDscr(ConfigCategory.general, ApplyMode.restart, hide_in_virtual_child=True)
     package_mode = _StrConfigDscr(ConfigCategory.advanced, hide_in_virtual_child=True)
-    utls = _StrConfigDscr(ConfigCategory.advanced)
+    utls = _StrConfigDscr(ConfigCategory.advanced)  
     telegram_bot_token = _StrConfigDscr(ConfigCategory.telegram, ApplyMode.apply, hide_in_virtual_child=True)
     is_parent = _BoolConfigDscr(ConfigCategory.hidden)
     parent_panel = _StrConfigDscr(ConfigCategory.hidden)
@@ -203,6 +203,9 @@ class ConfigEnum(metaclass=FastEnum):
     trojan_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply)
     reality_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply)
     tcp_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply)
+    quic_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply)
+    xtls_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply)
+    h2_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply)
 
     db_version = _StrConfigDscr(ConfigCategory.hidden, ApplyMode.apply)
 
