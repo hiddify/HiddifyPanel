@@ -94,12 +94,13 @@ class SettingAdmin(FlaskView):
 
             # set panel mode
             p_mode = hconfig(ConfigEnum.panel_mode)
-            if hconfig(ConfigEnum.parent_panel):
-                if p_mode != PanelMode.child:
-                    set_hconfig(ConfigEnum.panel_mode, PanelMode.child)
-            else:
-                if p_mode != PanelMode.standalone:
-                    set_hconfig(ConfigEnum.panel_mode, PanelMode.standalone)
+            if p_mode != PanelMode.parent:
+                if hconfig(ConfigEnum.parent_panel):
+                    if p_mode == PanelMode.standalone:
+                        set_hconfig(ConfigEnum.panel_mode, PanelMode.child)
+                else:
+                    if p_mode != PanelMode.standalone:
+                        set_hconfig(ConfigEnum.panel_mode, PanelMode.standalone)
 
             from hiddifypanel.panel.commercial.telegrambot import register_bot
             register_bot(set_hook=True)
