@@ -9,7 +9,7 @@ from .schema import ChildStatusInputSchema, ChildStatusOutputSchema
 
 
 class StatusApi(MethodView):
-    decorators = [login_required({Role.super_admin})]
+    decorators = [login_required(node_auth=True)]
 
     @app.input(ChildStatusInputSchema, arg_name='data')  # type: ignore
     @app.output(ChildStatusOutputSchema)  # type: ignore
