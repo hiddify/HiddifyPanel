@@ -26,7 +26,6 @@ def _v81(child_id):
 def _v80(child_id):
     set_hconfig(ConfigEnum.parent_domain, '')
     set_hconfig(ConfigEnum.parent_admin_proxy_path, '')
-    set_hconfig(ConfigEnum.parent_admin_uuid, '')
 
 
 def _v79(child_id):

@@ -9,7 +9,7 @@ from .schema import PanelInfoOutputSchema
 
 
 class PanelInfoApi(MethodView):
-    decorators = [login_required({Role.super_admin, Role.admin, Role.agent})]
+    decorators = [login_required(roles={Role.super_admin, Role.admin, Role.agent}, node_auth=True)]
 
     @app.output(PanelInfoOutputSchema)  # type: ignore
     def get(self):

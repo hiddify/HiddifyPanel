@@ -58,9 +58,8 @@ def is_registered() -> bool:
             return False
         payload = ChildStatusInputSchema()
         payload.child_unique_id = hconfig(ConfigEnum.unique_id)
-        apikey = hconfig(ConfigEnum.parent_admin_uuid)
 
-        res = NodeApiClient(base_url, apikey).post('/api/v2/parent/status/', payload, ChildStatusOutputSchema)
+        res = NodeApiClient(base_url).post('/api/v2/parent/status/', payload, ChildStatusOutputSchema)
         if isinstance(res, NodeApiErrorSchema):
             logger.error(f"Error while checking if current panel is registered with parent: {res.msg}")
             return False
@@ -73,7 +72,7 @@ def is_registered() -> bool:
         return False
 
 
-def register_to_parent(name: str, mode: ChildMode = ChildMode.remote) -> bool:
+def register_to_parent(name: str, apikey: str, mode: ChildMode = ChildMode.remote) -> bool:
     # get parent link its format is "https://panel.hiddify.com/<admin_proxy_path>/"
     p_url = __get_parent_panel_url()
     if not p_url:
@@ -81,7 +80,6 @@ def register_to_parent(name: str, mode: ChildMode = ChildMode.remote) -> bool:
         return False
 
     payload = __get_register_data_for_api(name, mode)
-    apikey = hconfig(ConfigEnum.parent_admin_uuid)
     res = NodeApiClient(p_url, apikey).put('/api/v2/parent/register/', payload, RegisterOutputSchema)
     if isinstance(res, NodeApiErrorSchema):
         logger.error(f"Error while registering to parent: {res.msg}")

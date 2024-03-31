@@ -77,12 +77,11 @@ def is_child_domain_active(child: Child, domain: Domain) -> bool:
     '''Checks whether a child's domain is responsive'''
     if not domain.need_valid_ssl:
         return False
-    api_key = g.account.uuid
     child_admin_proxy_path = hconfig(ConfigEnum.proxy_path_admin, child.id)
-    if not api_key or not child_admin_proxy_path:
+    if not child_admin_proxy_path:
         return False
 
-    return hutils.node.is_panel_active(domain.domain, child_admin_proxy_path, api_key)
+    return hutils.node.is_panel_active(domain.domain, child_admin_proxy_path)
 
 
 def get_child_active_domains(child: Child) -> List[Domain]:

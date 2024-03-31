@@ -75,15 +75,16 @@ class SettingAdmin(FlaskView):
                 return render_template('config.html', form=form)
 
             # validate parent_panel value
+            register_apikey = ''
             if p_p := changed_configs.get(ConfigEnum.parent_panel):
                 domain, proxy_path, uuid = hutils.flask.extract_parent_info_from_url(p_p)
-                if not domain or not proxy_path or not uuid or not hutils.node.is_panel_active(domain, proxy_path, uuid):
+                if not domain or not proxy_path or not uuid or not hutils.node.is_panel_active(domain, proxy_path):
                     hutils.flask.flash(_('parent.invalid-parent-url'), 'danger')  # type: ignore
                     return render_template('config.html', form=form)
                 else:
                     set_hconfig(ConfigEnum.parent_domain, domain)
                     set_hconfig(ConfigEnum.parent_admin_proxy_path, proxy_path)
-                    set_hconfig(ConfigEnum.parent_admin_uuid, uuid)
+                    register_apikey = uuid
                     set_hconfig(ConfigEnum.parent_unique_id, '')
 
             for k, v in changed_configs.items():
@@ -114,10 +115,10 @@ class SettingAdmin(FlaskView):
                         hutils.flask.flash(_('child.sync-success'))  # type: ignore
                 else:
                     name = hconfig(ConfigEnum.unique_id)
-                    parent_info = hutils.node.get_panel_info(hconfig(ConfigEnum.parent_domain), hconfig(ConfigEnum.parent_admin_proxy_path), hconfig(ConfigEnum.parent_admin_uuid))
+                    parent_info = hutils.node.get_panel_info(hconfig(ConfigEnum.parent_domain), hconfig(ConfigEnum.parent_admin_proxy_path))
                     if parent_info.get('version') != __version__:
                         hutils.flask.flash(_('node.diff-version'), 'danger')  # type: ignore
-                    if not hutils.node.child.register_to_parent(name):
+                    if not hutils.node.child.register_to_parent(name, register_apikey, mode=ChildMode.remote):
                         hutils.flask.flash(_('child.register-failed'), 'danger')  # type: ignore
                     else:  # TODO: it's just for debuging
                         hutils.flask.flash(_('child.register-success'))  # type: ignore

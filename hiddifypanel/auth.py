@@ -98,15 +98,16 @@ def login_user(user: AdminUser | User, remember=False, duration=None, force=Fals
 
 
 def login_required(roles: set[Role] | None = None, node_auth: bool = False):
+    '''When both roles and node_auth is set, means authentication can be done by either uuid or unique_id'''
     def wrapper(fn):
         @wraps(fn)
         def decorated_view(*args, **kwargs):
             # print('xxxx', current_account)
-            if node_auth and not Child.node:
+            if node_auth and not Child.node and not roles:
                 json_abort(403, 'Unauthorized node')
             if not current_account and not node_auth:
                 return redirect_to_login()  # type: ignore
-            if roles:
+            if roles and not Child.node:
                 account_role = current_account.role
                 if account_role not in roles:
                     return redirect_to_login()  # type: ignore
@@ -209,6 +210,8 @@ def logout_redirect():
 
 
 def redirect_to_login():
+    if hutils.flask.is_api_call(request.path):
+        json_abort(403, 'Unathorized')
     # if g.user_agent['is_browser']:
     # return redirect(hurl_for('common_bp.LoginView:basic_0', force=1, next=request.path))
     return redirect(hurl_for('common_bp.LoginView:index', force=1, next=request.path))
