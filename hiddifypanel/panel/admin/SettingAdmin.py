@@ -78,14 +78,13 @@ class SettingAdmin(FlaskView):
             parent_apikey = ''
             if p_p := changed_configs.get(ConfigEnum.parent_panel):
                 domain, proxy_path, uuid = hutils.flask.extract_parent_info_from_url(p_p)
-                if not domain or not proxy_path or not uuid or not hutils.node.is_panel_active(domain, proxy_path,uuid):
+                if not domain or not proxy_path or not uuid or not hutils.node.is_panel_active(domain, proxy_path, uuid):
                     hutils.flask.flash(_('parent.invalid-parent-url'), 'danger')  # type: ignore
                     return render_template('config.html', form=form)
                 else:
                     set_hconfig(ConfigEnum.parent_domain, domain)
                     set_hconfig(ConfigEnum.parent_admin_proxy_path, proxy_path)
                     parent_apikey = uuid
-                    set_hconfig(ConfigEnum.parent_unique_id, '')
 
             for k, v in changed_configs.items():
                 set_hconfig(k, v, commit=False)
@@ -115,7 +114,7 @@ class SettingAdmin(FlaskView):
                         hutils.flask.flash(_('child.sync-success'))  # type: ignore
                 else:
                     name = hconfig(ConfigEnum.unique_id)
-                    parent_info = hutils.node.get_panel_info(hconfig(ConfigEnum.parent_domain), hconfig(ConfigEnum.parent_admin_proxy_path),parent_apikey)
+                    parent_info = hutils.node.get_panel_info(hconfig(ConfigEnum.parent_domain), hconfig(ConfigEnum.parent_admin_proxy_path), parent_apikey)
                     if parent_info.get('version') != __version__:
                         hutils.flask.flash(_('node.diff-version'), 'danger')  # type: ignore
                     if not hutils.node.child.register_to_parent(name, parent_apikey, mode=ChildMode.remote):
@@ -183,7 +182,7 @@ def get_config_form():
                 continue
             c = configs_key[c2]
             if hutils.node.is_parent():
-                if c.key == ConfigEnum.parent_panel or c.key == ConfigEnum.parent_unique_id:
+                if c.key == ConfigEnum.parent_panel:
                     continue
             extra_info = ''
             if c.key in bool_types:

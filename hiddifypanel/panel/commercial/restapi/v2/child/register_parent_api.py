@@ -22,12 +22,10 @@ class RegisterWithParentApi(MethodView):
             abort(400, 'The panel is not in standalone mode nor in child')
 
         set_hconfig(ConfigEnum.parent_panel, data['parent_panel'])  # type: ignore
-        set_hconfig(ConfigEnum.parent_unique_id, data['parent_unique_id'])  # type: ignore
 
-        if not hutils.node.child.register_to_parent(data['name']):
+        if not hutils.node.child.register_to_parent(data['name'], data['apikey']):
             logger.error("Child registration to parent failed")
             set_hconfig(ConfigEnum.parent_panel, '')  # type: ignore
-            set_hconfig(ConfigEnum.parent_unique_id, '')  # type: ignore
             abort(400, _('child.register-failed'))  # type: ignore
 
         set_hconfig(ConfigEnum.panel_mode, PanelMode.child)  # type: ignore

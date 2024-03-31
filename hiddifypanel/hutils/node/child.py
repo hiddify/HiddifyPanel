@@ -86,7 +86,6 @@ def register_to_parent(name: str, apikey: str, mode: ChildMode = ChildMode.remot
         return False
 
     # TODO: change the bulk_register and such methods to accept models instead of dict
-    set_hconfig(ConfigEnum.parent_unique_id, res['parent_unique_id'])  # type: ignore
     AdminUser.bulk_register(res['admin_users'], commit=False)
     User.bulk_register(res['users'], commit=False)
 

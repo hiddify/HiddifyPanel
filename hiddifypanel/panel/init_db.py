@@ -37,8 +37,6 @@ def _v78(child_id):
     root_child_unique_id = Child.query.filter(Child.name == "Root").first().unique_id
     set_hconfig(ConfigEnum.unique_id, root_child_unique_id)
 
-    set_hconfig(ConfigEnum.parent_unique_id, '')
-
 
 def _v77(child_id):
     pass

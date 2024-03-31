@@ -56,7 +56,7 @@ def request_chlid_to_register(name: str, mode: ChildMode, child_link: str, apike
 
     payload = RegisterWithParentInputSchema()
     payload.parent_panel = hiddify.get_account_panel_link(AdminUser.by_uuid(g.account.uuid), domain.domain)  # type: ignore
-    payload.parent_unique_id, payload.name = hconfig(ConfigEnum.unique_id)
+    payload.apikey = payload.name = hconfig(ConfigEnum.unique_id)
 
     logger.debug(f"Requesting child {name} to register")
     res = NodeApiClient(child_link, apikey).post('/api/v2/child/register-parent/', payload, dict)
