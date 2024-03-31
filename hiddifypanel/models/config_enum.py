@@ -199,6 +199,9 @@ class ConfigEnum(metaclass=FastEnum):
     ws_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply)
     grpc_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply)
     httpupgrade_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply)
+    vless_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply)
+    trojan_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply)
+    reality_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply)
 
     db_version = _StrConfigDscr(ConfigCategory.hidden, ApplyMode.apply)
 
