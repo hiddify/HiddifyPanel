@@ -202,6 +202,7 @@ class ConfigEnum(metaclass=FastEnum):
     vless_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply)
     trojan_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply)
     reality_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply)
+    tcp_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply)
 
     db_version = _StrConfigDscr(ConfigCategory.hidden, ApplyMode.apply)
 
