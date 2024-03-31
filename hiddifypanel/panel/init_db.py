@@ -2,11 +2,9 @@ import datetime
 import json
 import os
 import random
-import string
 import sys
 import uuid
 
-from dateutil import relativedelta
 
 from hiddifypanel import Events, hutils
 from hiddifypanel.models import *
@@ -18,6 +16,16 @@ from hiddifypanel import hutils
 from flask import g
 
 MAX_DB_VERSION = 90
+
+
+def _v82(child_id):
+    set_hconfig(ConfigEnum.vless_enable, True)
+    set_hconfig(ConfigEnum.trojan_enable, True)
+    set_hconfig(ConfigEnum.reality_enable, True)
+    set_hconfig(ConfigEnum.tcp_enable, True)
+    set_hconfig(ConfigEnum.quic_enable, True)
+    set_hconfig(ConfigEnum.xtls_enable, True)
+    set_hconfig(ConfigEnum.h2_enable, True)
 
 
 def _v77(child_id):

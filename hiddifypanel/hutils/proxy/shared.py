@@ -5,7 +5,7 @@ import re
 import json
 from ipaddress import IPv4Address, IPv6Address
 from hiddifypanel.cache import cache
-from hiddifypanel.models import Proxy, ProxyProto, ProxyTransport, ProxyCDN, Domain, DomainType, ConfigEnum, hconfig, get_hconfigs
+from hiddifypanel.models import Proxy, ProxyProto, ProxyL3, ProxyTransport, ProxyCDN, Domain, DomainType, ConfigEnum, hconfig, get_hconfigs
 from hiddifypanel import hutils
 
 
@@ -124,16 +124,28 @@ def get_proxies(child_id: int = 0, only_enabled=False) -> list['Proxy']:
         proxies = [c for c in proxies if 'ssr' != c.proto]
     if not hconfig(ConfigEnum.vmess_enable, child_id):
         proxies = [c for c in proxies if 'vmess' not in c.proto]
+    if not hconfig(ConfigEnum.vless_enable, child_id):
+        proxies = [c for c in proxies if 'vless' not in c.proto]
+    if not hconfig(ConfigEnum.trojan_enable, child_id):
+        proxies = [c for c in proxies if 'trojan' not in c.proto]
     if not hconfig(ConfigEnum.httpupgrade_enable, child_id):
         proxies = [c for c in proxies if ProxyTransport.httpupgrade not in c.transport]
     if not hconfig(ConfigEnum.ws_enable, child_id):
         proxies = [c for c in proxies if ProxyTransport.WS not in c.transport]
-
+    if not hconfig(ConfigEnum.xtls_enable, child_id):
+        proxies = [c for c in proxies if ProxyTransport.XTLS not in c.transport]
     if not hconfig(ConfigEnum.grpc_enable, child_id):
         proxies = [c for c in proxies if ProxyTransport.grpc not in c.transport]
+    if not hconfig(ConfigEnum.tcp_enable, child_id):
+        proxies = [c for c in proxies if 'tcp' not in c.transport]
+    if not hconfig(ConfigEnum.h2_enable, child_id):
+        proxies = [c for c in proxies if 'h2' not in c.transport and c.l3 not in [ProxyL3.tls_h2_h1, ProxyL3.tls_h2]]
     if not hconfig(ConfigEnum.kcp_enable, child_id):
         proxies = [c for c in proxies if 'kcp' not in c.l3]
-
+    if not hconfig(ConfigEnum.reality_enable, child_id):
+        proxies = [c for c in proxies if 'reality' not in c.l3]
+    if not hconfig(ConfigEnum.quic_enable, child_id):
+        proxies = [c for c in proxies if 'h3_quic' not in c.l3]
     if not hconfig(ConfigEnum.http_proxy_enable, child_id):
         proxies = [c for c in proxies if 'http' != c.l3]
 
