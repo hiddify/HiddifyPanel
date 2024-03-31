@@ -2,11 +2,9 @@ import datetime
 import json
 import os
 import random
-import string
 import sys
 import uuid
 
-from dateutil import relativedelta
 
 from hiddifypanel import Events, hutils
 from hiddifypanel.models import *
@@ -18,6 +16,16 @@ from flask import g
 
 MAX_DB_VERSION = 90
 
+
+
+def _v82(child_id):
+    set_hconfig(ConfigEnum.vless_enable, True)
+    set_hconfig(ConfigEnum.trojan_enable, True)
+    set_hconfig(ConfigEnum.reality_enable, True)
+    set_hconfig(ConfigEnum.tcp_enable, True)
+    set_hconfig(ConfigEnum.quic_enable, True)
+    set_hconfig(ConfigEnum.xtls_enable, True)
+    set_hconfig(ConfigEnum.h2_enable, True)
 
 def _v81(child_id):
     set_hconfig(ConfigEnum.log_level, LogLevel.WARNING)
@@ -36,8 +44,7 @@ def _v78(child_id):
     # equalize panel unique id and root child unique id
     root_child_unique_id = Child.query.filter(Child.name == "Root").first().unique_id
     set_hconfig(ConfigEnum.unique_id, root_child_unique_id)
-
-
+    
 def _v77(child_id):
     pass
 
