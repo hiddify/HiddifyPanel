@@ -5,7 +5,7 @@ from flask_babel import lazy_gettext as _
 from loguru import logger
 
 from hiddifypanel.auth import login_required
-from hiddifypanel.models import set_hconfig, ConfigEnum, PanelMode, ChildMode, Role
+from hiddifypanel.models import set_hconfig, ConfigEnum, PanelMode, Role
 from hiddifypanel import hutils
 
 from .schema import RegisterWithParentInputSchema
@@ -14,6 +14,7 @@ from .schema import RegisterWithParentInputSchema
 class RegisterWithParentApi(MethodView):
     decorators = [login_required({Role.super_admin})]
 
+    # TODO: incomplete (not used)
     @app.input(RegisterWithParentInputSchema, arg_name='data')  # type: ignore
     def post(self, data):
         logger.info(f"Registering panel with parent called by {data['parent_unique_id']}")

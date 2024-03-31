@@ -43,7 +43,8 @@ def request_child_to_sync(child: Child) -> bool:
 # before using this function should check child version
 
 
-def request_chlid_to_register(name: str, mode: ChildMode, child_link: str, apikey: str) -> bool:
+# TODO: not used
+def request_chlid_to_register(name: str, child_link: str, apikey: str) -> bool:
     '''Requests to a child to register itself with the current panel'''
     if not child_link or not apikey:
         logger.error("Child link or apikey is empty")
@@ -60,10 +61,10 @@ def request_chlid_to_register(name: str, mode: ChildMode, child_link: str, apike
 
     logger.debug(f"Requesting child {name} to register")
     res = NodeApiClient(child_link, apikey).post('/api/v2/child/register-parent/', payload, dict)
-
     if isinstance(res, NodeApiErrorSchema):
         logger.error(f"Error while requesting child {name} to register: {res.msg}")
         return False
+
     if res['msg'] == 'ok':
         logger.success(f"Successfully requested child {name} to register")
         cache.invalidate_all_cached_functions()
