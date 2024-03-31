@@ -1,4 +1,4 @@
-from typing import Type, Optional, Union
+from typing import Optional, Union, Type
 from apiflask import Schema, fields
 import traceback
 import requests
@@ -19,7 +19,7 @@ class NodeApiClient():
         self.max_retry = max_retry
         self.headers = {'Hiddify-API-Key': apikey if apikey else hconfig(ConfigEnum.unique_id)}
 
-    def __call(self, method: str, path: str, payload: Optional[Schema], output_schema: Type[Schema | dict]) -> Union[dict, NodeApiErrorSchema]:  # type: ignore
+    def __call(self, method: str, path: str, payload: Optional[Schema], output_schema: Type[Union[Schema, dict]]) -> Union[dict, NodeApiErrorSchema]:  # type: ignore
         retry_count = 1
         full_url = self.base_url + path.removeprefix('/')
         while 1:
@@ -65,11 +65,11 @@ class NodeApiClient():
                 logger.warning(f"Error occurred: {e} from {full_url} with method {method}, retrying... ({retry_count}/{self.max_retry})")
                 retry_count += 1
 
-    def get(self, path: str, output: Type[Schema]) -> Union[dict, NodeApiErrorSchema]:
+    def get(self, path: str, output: Type[Union[Schema, dict]]) -> Union[dict, NodeApiErrorSchema]:
         return self.__call("GET", path, None, output)
 
-    def post(self, path: str, payload: Optional[Schema], output: Type[Schema | dict]) -> Union[dict, NodeApiErrorSchema]:
+    def post(self, path: str, payload: Optional[Schema], output: Type[Union[Schema, dict]]) -> Union[dict, NodeApiErrorSchema]:
         return self.__call("POST", path, payload, output)
 
-    def put(self, path: str, payload: Optional[Schema], output: Type[Schema | dict]) -> Union[dict, NodeApiErrorSchema]:
+    def put(self, path: str, payload: Optional[Schema], output: Type[Union[Schema, dict]]) -> Union[dict, NodeApiErrorSchema]:
         return self.__call("PUT", path, payload, output)

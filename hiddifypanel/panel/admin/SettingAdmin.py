@@ -116,7 +116,7 @@ class SettingAdmin(FlaskView):
                     name = hconfig(ConfigEnum.unique_id)
                     parent_info = hutils.node.get_panel_info(hconfig(ConfigEnum.parent_domain), hconfig(ConfigEnum.parent_admin_proxy_path), hconfig(ConfigEnum.parent_admin_uuid))
                     if parent_info.get('version') != __version__:
-                        hutils.flask.flash('node.diff-version', 'danger')
+                        hutils.flask.flash(_('node.diff-version'), 'danger')  # type: ignore
                     if not hutils.node.child.register_to_parent(name):
                         hutils.flask.flash(_('child.register-failed'), 'danger')  # type: ignore
                     else:  # TODO: it's just for debuging

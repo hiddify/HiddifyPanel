@@ -24,4 +24,3 @@ class StatusApi(MethodView):
             res.existance = True  # type: ignore
 
         return res
-        return res
