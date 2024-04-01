@@ -61,7 +61,7 @@ class StrConfig(db.Model, SerializerMixin):
 
 
 @cache.cache(ttl=500)
-def hconfig(key: ConfigEnum, child_id: int | None = None) -> str | int | StrEnum | None:
+def hconfig(key: ConfigEnum, child_id: int | None = None):  # -> str | int | StrEnum | None:
     if child_id is None:
         child_id = Child.current.id
 
@@ -85,12 +85,8 @@ def hconfig(key: ConfigEnum, child_id: int | None = None) -> str | int | StrEnum
     if value != None:
         if key.type == int:
             return int(value)
-        elif key.type == LogLevel: //TODO make it uniform
-            return LogLevel[value]
-        elif key.type == PanelMode:
-            return PanelMode[value]
-        elif key.type == Lang:
-            return Lang[value]
+        elif hasattr(key.type, 'from_str'):
+            return key.type.from_str(value)
 
     return value
 

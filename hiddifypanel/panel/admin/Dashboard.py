@@ -20,6 +20,7 @@ class Dashboard(FlaskView):
     def index(self):
         if hconfig(ConfigEnum.first_setup):
             return redirect(hurl_for("admin.QuickSetup:index"))
+
         if hiddifypanel.__release_date__ + datetime.timedelta(days=20) < datetime.datetime.now():
             hutils.flask.flash(_('This version of hiddify panel is outdated. Please update it from admin area.'), "danger")  # type: ignore
         bot = None

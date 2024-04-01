@@ -1,4 +1,5 @@
 from loguru import logger
+import socket
 
 from hiddifypanel.models import AdminUser, User, hconfig, ConfigEnum, ChildMode, set_hconfig, Domain, Proxy, StrConfig, BoolConfig, Child, ChildMode
 from hiddifypanel import hutils
@@ -61,7 +62,7 @@ def is_registered() -> bool:
 
         res = NodeApiClient(base_url).post('/api/v2/parent/status/', payload, ChildStatusOutputSchema)
         if isinstance(res, NodeApiErrorSchema):
-            logger.error(f"Error while checking if current panel is registered with parent: {res.msg}") 
+            logger.error(f"Error while checking if current panel is registered with parent: {res.msg}")
             return False
 
         if res['existance']:
@@ -92,11 +93,11 @@ def register_to_parent(name: str, apikey: str, mode: ChildMode = ChildMode.remot
 
     # add new child as parent
     db.session.add(  # type: ignore
-        Child(unique_id=res['parent_unique_id'], name=res['parent_unique_id'], mode=ChildMode.parent) //TODO change name to server name
+        Child(unique_id=res['parent_unique_id'], name=socket.gethostname() or res['parent_unique_id'], mode=ChildMode.parent)
     )
-    
+
     db.session.commit()  # type: ignore
-    
+
     logger.success("Successfully registered to parent")
     cache.invalidate_all_cached_functions()
     return True
@@ -126,7 +127,7 @@ def sync_with_parent() -> bool:
 
 
 def sync_users_usage_with_parent() -> bool:
-    p_url = __get_parent_panel_url() 
+    p_url = __get_parent_panel_url()
     if not p_url:
         logger.error("Parent url is empty")
         return False

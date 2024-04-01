@@ -5,7 +5,13 @@ from strenum import StrEnum
 from fast_enum import FastEnum
 
 
-class Lang(StrEnum):
+class HEnum(StrEnum):
+    @classmethod
+    def from_str(cls, key: str) -> 'HEnum':
+        return cls[key]
+
+
+class Lang(HEnum):
     en = auto()
     fa = auto()
     ru = auto()
@@ -13,13 +19,13 @@ class Lang(StrEnum):
     zh = auto()
 
 
-class PanelMode(StrEnum):
+class PanelMode(HEnum):
     standalone = auto()
     parent = auto()
     child = auto()
 
 
-class LogLevel(StrEnum):
+class LogLevel(HEnum):
     TRACE = auto()
     DEBUG = auto()
     INFO = auto()
@@ -75,7 +81,7 @@ def _IntConfigDscr(category: ConfigCategory, apply_mode: ApplyMode = ApplyMode.n
     return category, apply_mode, int, show_in_parent
 
 
-def _EnumConfigDscr(ctype: type, category: ConfigCategory, apply_mode: ApplyMode = ApplyMode.nothing, show_in_parent: bool = True, hide_in_virtual_child=False):
+def _TypedConfigDscr(ctype: type, category: ConfigCategory, apply_mode: ApplyMode = ApplyMode.nothing, show_in_parent: bool = True, hide_in_virtual_child=False):
     return category, apply_mode, ctype, show_in_parent
 
 
@@ -83,7 +89,7 @@ class ConfigEnum(metaclass=FastEnum):
     # category: ConfigCategory
     __slots__ = ('name', 'value', 'category', 'apply_mode', 'type', 'show_in_parent', 'hide_in_virtual_child')
 
-    def __init__(self, category: ConfigCategory, apply_mode: ApplyMode = ApplyMode.apply, ctype=str, show_in_parent: bool = True, hide_in_virtual_child=False, name=auto):
+    def __init__(self, category: ConfigCategory, apply_mode: ApplyMode = ApplyMode.apply, ctype=type, show_in_parent: bool = True, hide_in_virtual_child=False, name=auto):
         self.value = name
         self.name = name
         self.category = category
@@ -128,7 +134,7 @@ class ConfigEnum(metaclass=FastEnum):
     license = _StrConfigDscr(ConfigCategory.hidden)
     country = _StrConfigDscr(ConfigCategory.general, ApplyMode.restart, hide_in_virtual_child=True)
     package_mode = _StrConfigDscr(ConfigCategory.advanced, hide_in_virtual_child=True)
-    utls = _StrConfigDscr(ConfigCategory.advanced)  
+    utls = _StrConfigDscr(ConfigCategory.advanced)
     telegram_bot_token = _StrConfigDscr(ConfigCategory.telegram, ApplyMode.apply, hide_in_virtual_child=True)
 
     # region child-parent
@@ -141,16 +147,16 @@ class ConfigEnum(metaclass=FastEnum):
 
     # the panel mode could be one of these: "parent", "child", "standalone"
     # this config value would be 'standalone' by default. and would be set by panel itself
-    panel_mode = _EnumConfigDscr(PanelMode, ConfigCategory.hidden, ApplyMode.nothing, hide_in_virtual_child=True)
+    panel_mode = _TypedConfigDscr(PanelMode, ConfigCategory.hidden, ApplyMode.nothing, hide_in_virtual_child=True)
     # endregion
 
-    log_level = _EnumConfigDscr(LogLevel, ConfigCategory.hidden, ApplyMode.restart, hide_in_virtual_child=True)
+    log_level = _TypedConfigDscr(LogLevel, ConfigCategory.hidden, ApplyMode.restart, hide_in_virtual_child=True)
 
     unique_id = _StrConfigDscr(ConfigCategory.hidden)
     last_hash = _StrConfigDscr(ConfigCategory.hidden)
     cdn_forced_host = _StrConfigDscr(ConfigCategory.hidden)  # removed
-    lang = _EnumConfigDscr(Lang, ConfigCategory.branding)
-    admin_lang = _EnumConfigDscr(Lang, ConfigCategory.admin)
+    lang = _TypedConfigDscr(Lang, ConfigCategory.branding)
+    admin_lang = _TypedConfigDscr(Lang, ConfigCategory.admin)
     admin_secret = _StrConfigDscr(ConfigCategory.hidden)  # removed
 
     # tls
