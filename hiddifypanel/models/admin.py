@@ -155,7 +155,9 @@ class AdminUser(BaseAccount):
         if not admin:
             db.session.add(AdminUser(id=1, uuid=str(uuid.uuid4()), name="Owner", mode=AdminMode.super_admin, comment=""))
             db.session.commit()
-            db.engine.execute("update admin_user set id=1 where name='Owner'")
+            from sqlalchemy import text
+            connection = db.engine.connect()
+            connection.execute(text("update admin_user set id=1 where name='Owner'"))
             admin = AdminUser.by_id(1)
 
         return admin

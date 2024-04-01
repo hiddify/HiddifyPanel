@@ -11,11 +11,10 @@ from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify
 from hiddifypanel.database import db
 from hiddifypanel import hutils
-
+from sqlalchemy import text
 from flask import g
 
 MAX_DB_VERSION = 90
-
 
 
 def _v82(child_id):
@@ -26,6 +25,7 @@ def _v82(child_id):
     set_hconfig(ConfigEnum.quic_enable, True)
     set_hconfig(ConfigEnum.xtls_enable, True)
     set_hconfig(ConfigEnum.h2_enable, True)
+
 
 def _v81(child_id):
     set_hconfig(ConfigEnum.log_level, LogLevel.WARNING)
@@ -44,7 +44,8 @@ def _v78(child_id):
     # equalize panel unique id and root child unique id
     root_child_unique_id = Child.query.filter(Child.name == "Root").first().unique_id
     set_hconfig(ConfigEnum.unique_id, root_child_unique_id)
-    
+
+
 def _v77(child_id):
     pass
 
@@ -547,14 +548,16 @@ def add_config_if_not_exist(key: ConfigEnum, val: str | int, child_id: int | Non
 def add_column(column):
     try:
         column_type = column.type.compile(db.engine.dialect)
-        db.engine.execute(f'ALTER TABLE {column.table.name} ADD COLUMN {column.name} {column_type}')
+        connection = db.engine.connect()
+        result = connection.execute(f'ALTER TABLE {column.table.name} ADD COLUMN {column.name} {column_type}')
     except BaseException:
         pass
 
 
-def execute(query):
+def execute(query: str):
     try:
-        db.engine.execute(query)
+        connection = db.engine.connect()
+        result = connection.execute(text(query))
     except BaseException as e:
         print(e)
         pass
@@ -576,7 +579,7 @@ def add_new_enum_values():
         # Get the values in the enum column in the database
         # result = db.engine.execute(f"SELECT DISTINCT `{column_name}` FROM {table_name}")
         # db_values = {row[0] for row in result}
-        result = db.engine.execute(f"SHOW COLUMNS FROM {table_name} LIKE '{column_name}';")
+        result = db.engine.execute(text(f"SHOW COLUMNS FROM {table_name} LIKE '{column_name}';"))
         db_values = []
 
         for row in result:
@@ -595,7 +598,7 @@ def add_new_enum_values():
         # Add the new value to the enum column in the database
         enumstr = ','.join([f"'{a}'" for a in [*existing_values, *old_values]])
 
-        db.engine.execute(f"ALTER TABLE {table_name} MODIFY COLUMN `{column_name}` ENUM({enumstr});")
+        db.engine.execute(text(f"ALTER TABLE {table_name} MODIFY COLUMN `{column_name}` ENUM({enumstr});"))
 
         db.session.commit()
 

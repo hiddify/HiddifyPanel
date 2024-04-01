@@ -1,7 +1,7 @@
 from __future__ import annotations
 import uuid
 
-from sqlalchemy import Column, Integer, String, Enum
+from sqlalchemy import Column, Integer, String, Enum, text
 from enum import auto
 from strenum import StrEnum
 from flask import g, has_app_context
@@ -76,7 +76,8 @@ class Child(db.Model):  # type: ignore
             tmp_uuid = str(uuid.uuid4())
             db.session.add(Child(id=0, unique_id=tmp_uuid, name="Root"))
             db.session.commit()
-            db.engine.execute(f'update child set id=0 where unique_id="{tmp_uuid}"')
+
+            db.engine.execute(text(f'update child set id=0 where unique_id="{tmp_uuid}"'))
             child = Child.by_id(0)
         return child
 

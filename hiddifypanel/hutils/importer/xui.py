@@ -8,11 +8,13 @@ from hiddifypanel import hutils
 from hiddifypanel.models import *
 from hiddifypanel.database import db
 import os
+from sqlalchemy import text
 
 
 def __query_fetch_json(db, query: str, args: Tuple = ()) -> List[Dict[str, Any]]:
     try:
-        db.execute(query, args) if args else db.execute(query)
+        connection = db.engine.connect()
+        connection.execute(text(query), args) if args else connection.execute(text(query))
         r = [dict((db.description[i][0], value)
                   for i, value in enumerate(row)) for row in db.fetchall()]
         return r
