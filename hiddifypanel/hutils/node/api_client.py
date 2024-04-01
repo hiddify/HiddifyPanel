@@ -26,7 +26,7 @@ class NodeApiClient():
             try:
                 # TODO: implement it with aiohttp
 
-                logger.info(f"Attempting {method} request to node at {full_url}")
+                logger.trace(f"Attempting {method} request to node at {full_url}")
 
                 # send request
                 if payload:
@@ -47,7 +47,7 @@ class NodeApiClient():
                         logger.warning(f"Received empty response from {full_url} with method {method}")
                     return err
 
-                logger.success(f"Successfully received response from {full_url}")
+                logger.trace(f"Successfully received response from {full_url}")
                 return resp if isinstance(output_schema, type(dict)) else output_schema().load(resp)  # type: ignore
 
             except requests.HTTPError as e:
@@ -59,7 +59,8 @@ class NodeApiClient():
                     err.code = response.status_code  # type: ignore
                     err.reason = response.reason  # type: ignore
                     with logger.contextualize(status_code=err.code, reason=err.reason, stack_trace=stack_trace, payload=payload):
-                        logger.error(f"HTTP error after {self.max_retry} retries: {e}")
+                        logger.error(f"HTTP error after {self.max_retry} retries")
+                        logger.exception(e)
                     return err
 
                 logger.warning(f"Error occurred: {e} from {full_url} with method {method}, retrying... ({retry_count}/{self.max_retry})")
