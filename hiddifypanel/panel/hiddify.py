@@ -1,22 +1,16 @@
-import glob
 import re
-import json
 import subprocess
 
 from datetime import datetime
 from typing import Tuple
-from cryptography.hazmat.primitives import serialization
-from cryptography.hazmat.primitives.asymmetric import x25519
 from flask import current_app, g
 from flask_babel import lazy_gettext as _
-from flask_babel import gettext as __
 from datetime import timedelta
 
 from hiddifypanel.cache import cache
 from hiddifypanel.models import *
 from hiddifypanel.database import db
 from hiddifypanel.hutils.utils import *
-from hiddifypanel.Events import domain_changed
 from hiddifypanel import hutils
 from hiddifypanel.panel.run_commander import commander, Command
 import subprocess
@@ -69,23 +63,9 @@ def exec_command(cmd, cwd=None):
 
 
 def quick_apply_users():
-    if hconfig(ConfigEnum.is_parent):
-        return
-    # from hiddifypanel.panel import usage
-    # usage.update_local_usage()
-    # return
-    # for user in User.query.all():
-    #     if user.is_active:
-    #         xray_api.add_client(user.uuid)
-    #     else:
-    #         xray_api.remove_client(user.uuid)
-
-    # exec_command("sudo /opt/hiddify-manager/install.sh apply_users --no-gui")
-
     # run install.sh apply_users
     commander(Command.apply_users)
 
-    # time.sleep(1)
     return {"status": 'success'}
 
 
@@ -150,6 +130,7 @@ def get_child(unique_id):
         child_id = 0
     else:
         child = Child.query.filter(Child.unique_id == str(unique_id)).first()
+        # TODO: this doesn't work because name and mode fields are nullable
         if not child:
             child = Child(unique_id=str(unique_id))
             db.session.add(child)
@@ -164,7 +145,7 @@ def dump_db_to_dict():
             "users": [u.to_dict() for u in User.query.all()],
             "domains": [u.to_dict() for u in Domain.query.all()],
             "proxies": [u.to_dict() for u in Proxy.query.all()],
-            "parent_domains": [] if not hconfig(ConfigEnum.license) else [u.to_dict() for u in ParentDomain.query.all()],
+            # "parent_domains": [] if not hconfig(ConfigEnum.license) else [u.to_dict() for u in ParentDomain.query.all()],
             'admin_users': [d.to_dict() for d in AdminUser.query.all()],
             "hconfigs": [*[u.to_dict() for u in BoolConfig.query.all()],
                          *[u.to_dict() for u in StrConfig.query.all()]]
@@ -243,13 +224,12 @@ def set_db_from_json(json_data, override_child_unique_id=True, set_users=True, s
     if set_users and 'users' in json_data:
         User.bulk_register(json_data['users'], commit=False, remove=remove_users)
     if set_domains and 'domains' in json_data:
-        bulk_register_domains(json_data['domains'], commit=False, remove=remove_domains, override_child_unique_id=override_child_unique_id)
-    # if set_domains and 'parent_domains' in json_data:
-    #     ParentDomain.bulk_register(json_data['parent_domains'], commit=False, remove=remove_domains)
+        bulk_register_domains(json_data['domains'], commit=False, remove=remove_domains)
+
     if set_settings and 'hconfigs' in json_data:
-        bulk_register_configs(json_data["hconfigs"], commit=True, override_child_unique_id=override_child_unique_id, override_unique_id=override_unique_id)
+        bulk_register_configs(json_data["hconfigs"], commit=True, override_unique_id=override_unique_id)
         if 'proxies' in json_data:
-            Proxy.bulk_register(json_data['proxies'], commit=False, override_child_unique_id=override_child_unique_id)
+            Proxy.bulk_register(json_data['proxies'], commit=False)
 
     ids_without_parent = get_ids_without_parent({u.id: u.to_dict() for u in AdminUser.query.all()})
     owner = AdminUser.get_super_admin()
@@ -274,42 +254,6 @@ def get_domain_btn_link(domain):
         text = f'<span class="badge badge-secondary" >{"Auto" if auto_cdn else "CDN"}</span> ' + text
     res = f"<a target='_blank' href='#' class='btn btn-xs btn-{color_cls} ltr' ><i class='fa-solid fa-arrow-up-right-from-square d-none'></i> {text}</a>"
     return res
-
-
-def debug_flash_if_not_in_the_same_asn(domain):
-    from hiddifypanel.hutils.network.auto_ip_selector import IPASN
-    ipv4 = hutils.network.get_ip_str(4)
-    dip = hutils.network.get_domain_ip(domain)
-    try:
-        if IPASN:
-            asn_ipv4 = IPASN.get(ipv4)
-            asn_dip = IPASN.get(dip)
-            # country_ipv4= ipcountry.get(ipv4)
-            # country_dip= ipcountry.get(dip)
-            if asn_ipv4.get('autonomous_system_organization') != asn_dip.get('autonomous_system_organization'):
-                hutils.flask.flash(_("selected domain for REALITY is not in the same ASN. To better use of the protocol, it is better to find a domain in the same ASN.") +
-                                   f"<br> Server ASN={asn_ipv4.get('autonomous_system_organization','unknown')}<br>{domain}_ASN={asn_dip.get('autonomous_system_organization','unknown')}", "warning")
-    except BaseException:
-        pass
-
-
-def generate_x25519_keys():
-    priv = x25519.X25519PrivateKey.generate()
-    pub = priv.public_key()
-    priv_bytes = priv.private_bytes(
-        encoding=serialization.Encoding.Raw,
-        format=serialization.PrivateFormat.Raw,
-        encryption_algorithm=serialization.NoEncryption()
-    )
-    pub_bytes = pub.public_bytes(
-        encoding=serialization.Encoding.Raw,
-        format=serialization.PublicFormat.Raw
-    )
-    import base64
-    pub_str = base64.urlsafe_b64encode(pub_bytes).decode()[:-1]
-    priv_str = base64.urlsafe_b64encode(priv_bytes).decode()[:-1]
-
-    return {'private_key': priv_str, 'public_key': pub_str}
 
 
 def get_ssh_client_version(user):
@@ -363,11 +307,8 @@ def clone_model(model):
     for k in table.columns.keys():
         if k == "id":
             continue
-        # if k in table.primary_key:
-        #     continue
         setattr(new_model, f'{k}', getattr(model, k))
 
-    # data.pop('id')
     return new_model
 
 
@@ -391,18 +332,6 @@ def get_backup_child_unique_id(backupdata: dict) -> str:
     if len(backupdata.get('childs', [])) == 0:
         return "self"
     return backupdata['childs'][0]['unique_id']
-
-    # for k, v in backupdata.items():
-    #     if k == 'admin_users' or k == 'users':
-    #         continue
-    #     if k == 'childs':
-    #         if len(v) < 1:
-    #             continue
-    #         return v[0]['unique_id']
-    #     else:
-    #         for item in v:
-    #             return item['child_unique_id']
-    # return 'self'
 
 
 def is_hiddify_next_version(major_v: int = 0, minor_v: int = 0, patch_v: int = 0) -> bool:

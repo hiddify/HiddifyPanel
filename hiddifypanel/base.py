@@ -14,7 +14,7 @@ import os
 import sys
 from apiflask import APIFlask
 from werkzeug.middleware.proxy_fix import ProxyFix
-
+from loguru import logger
 from hiddifypanel.panel.init_db import init_db
 
 
@@ -23,6 +23,7 @@ def create_app(*args, cli=False, **config):
     app = APIFlask(__name__, static_url_path="/<proxy_path>/static/", instance_relative_config=True, version='2.0.0', title="Hiddify API",
                    openapi_blueprint_url_prefix="/<proxy_path>/api", docs_ui='elements', json_errors=False, enable_openapi=not cli)
     # app = Flask(__name__, static_url_path="/<proxy_path>/static/", instance_relative_config=True)
+
     if not cli:
         from hiddifypanel.cache import redis_client
         from hiddifypanel import auth
@@ -55,6 +56,7 @@ def create_app(*args, cli=False, **config):
         app.config['SESSION_PERMANENT'] = True
         app.config['PERMANENT_SESSION_LIFETIME'] = datetime.timedelta(days=10)
         Session(app)
+
         app.jinja_env.line_statement_prefix = '%'
         from hiddifypanel import hutils
         app.jinja_env.filters['b64encode'] = hutils.encode.do_base_64
@@ -72,13 +74,19 @@ def create_app(*args, cli=False, **config):
     hiddifypanel.database.init_app(app)
     with app.app_context():
         init_db()
- # flaskbabel = FlaskBabel(app)
 
+        # configure logger
+        from hiddifypanel.models import ConfigEnum, hconfig
+        logger.remove()
+        log_format = '<green>{time:YYYY-MM-DD HH:mm:ss}</green> | <level>{level: <8}</level> | <cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - <level>{message}</level> | <level>{extra}</level>'
+        logger.add(sys.stderr, format=log_format, level=hconfig(ConfigEnum.log_level), colorize=True, catch=True, enqueue=True, diagnose=False, backtrace=True)
+
+    # flaskbabel = FlaskBabel(app)
     # @babel.localeselector
+
     def get_locale():
         # Put your logic here. Application can store locale in
         # user profile, cookie, session, etc.
-        from hiddifypanel.models import ConfigEnum, hconfig
         if "admin" in request.base_url:
             g.locale = auth.current_account.lang or hconfig(ConfigEnum.admin_lang) or 'fa'
         else:

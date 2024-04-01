@@ -148,7 +148,7 @@
 </div>
 
 </div>
-{% if hconfig(ConfigEnum.is_parent) %}
+{% if hutils.node.is_parent() %}
 {% include 'parent_dash.html' %}
 {% endif %}
 {% endblock %}

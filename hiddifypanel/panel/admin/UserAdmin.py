@@ -126,7 +126,7 @@ class UserAdmin(AdminLTEModelView):
     def _enable_formatter(view, context, model, name):
         if model.is_active:
             link = '<i class="fa-solid fa-circle-check text-success"></i> '
-        elif len(model.ips):
+        elif len(model.devices):
             link = '<i class="fa-solid fa-users-slash text-danger" title="{_("Too many Connected IPs")}"></i>'
         else:
             link = '<i class="fa-solid fa-circle-xmark text-danger"></i> '
@@ -297,9 +297,15 @@ class UserAdmin(AdminLTEModelView):
             user_driver.remove_client(model)
         hiddify.quick_apply_users()
 
+        if hutils.node.is_parent():
+            hutils.node.parent.request_childs_to_sync()
+
     def after_model_delete(self, model):
         user_driver.remove_client(model)
         hiddify.quick_apply_users()
+
+        if hutils.node.is_parent():
+            hutils.node.parent.request_childs_to_sync()
 
     def get_list(self, page, sort_column, sort_desc, search, filters, page_size=50, *args, **kwargs):
         res = None

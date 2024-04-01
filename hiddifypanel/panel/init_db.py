@@ -8,7 +8,6 @@ import uuid
 
 from hiddifypanel import Events, hutils
 from hiddifypanel.models import *
-from hiddifypanel.models import ConfigEnum, User, set_hconfig, ChildMode
 from hiddifypanel.panel import hiddify
 from hiddifypanel.database import db
 from hiddifypanel import hutils
@@ -16,6 +15,7 @@ from hiddifypanel import hutils
 from flask import g
 
 MAX_DB_VERSION = 90
+
 
 
 def _v82(child_id):
@@ -27,7 +27,24 @@ def _v82(child_id):
     set_hconfig(ConfigEnum.xtls_enable, True)
     set_hconfig(ConfigEnum.h2_enable, True)
 
+def _v81(child_id):
+    set_hconfig(ConfigEnum.log_level, LogLevel.WARNING)
 
+
+def _v80(child_id):
+    set_hconfig(ConfigEnum.parent_domain, '')
+    set_hconfig(ConfigEnum.parent_admin_proxy_path, '')
+
+
+def _v79(child_id):
+    set_hconfig(ConfigEnum.panel_mode, PanelMode.standalone)
+
+
+def _v78(child_id):
+    # equalize panel unique id and root child unique id
+    root_child_unique_id = Child.query.filter(Child.name == "Root").first().unique_id
+    set_hconfig(ConfigEnum.unique_id, root_child_unique_id)
+    
 def _v77(child_id):
     pass
 
@@ -237,7 +254,7 @@ def _v33():
 
 def _v31():
     add_config_if_not_exist(ConfigEnum.reality_short_ids, uuid.uuid4().hex[0:random.randint(1, 8) * 2])
-    key_pair = hiddify.generate_x25519_keys()
+    key_pair = hutils.crypto.generate_x25519_keys()
     add_config_if_not_exist(ConfigEnum.reality_private_key, key_pair['private_key'])
     add_config_if_not_exist(ConfigEnum.reality_public_key, key_pair['public_key'])
     db.session.bulk_save_objects(get_proxy_rows_v1())

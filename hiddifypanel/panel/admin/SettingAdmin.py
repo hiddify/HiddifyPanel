@@ -20,6 +20,7 @@ from hiddifypanel.models import BoolConfig, StrConfig, ConfigEnum, hconfig, Conf
 from hiddifypanel.models import *
 from hiddifypanel.database import db
 from hiddifypanel.panel import hiddify, custom_widgets
+from hiddifypanel import __version__
 
 
 class SettingAdmin(FlaskView):
@@ -42,20 +43,20 @@ class SettingAdmin(FlaskView):
             old_configs = get_hconfigs()
             changed_configs = {}
 
-            for cat, vs in form.data.items():  # [c for c in ConfigEnum]:
+            for category, c_items in form.data.items():  # [c for c in ConfigEnum]:
 
-                if isinstance(vs, dict):
+                if isinstance(c_items, dict):
                     for k in ConfigEnum:
-                        if k.name not in vs:
+                        if k.name not in c_items:
                             continue
-                        v = vs[k.name]
+                        v = c_items[k.name]
                         if k.type == str:
                             if "_domain" in k or "_fakedomain" in k:
                                 v = v.lower()
 
                             if "port" in k:
                                 for p in v.split(","):
-                                    for k2, v2 in vs.items():
+                                    for k2, v2 in c_items.items():
                                         if "port" in k2 and k.name != k2 and p in v2:
                                             hutils.flask.flash(_("Port is already used! in") + f" {k2} {k}", 'error')
                                             return render_template('config.html', form=form)
@@ -73,31 +74,62 @@ class SettingAdmin(FlaskView):
                 hutils.flask.flash(_("ProxyPath is already used! use different proxy path"), 'error')  # type: ignore
                 return render_template('config.html', form=form)
 
+            # validate parent_panel value
+            parent_apikey = ''
+            if p_p := changed_configs.get(ConfigEnum.parent_panel):
+                domain, proxy_path, uuid = hutils.flask.extract_parent_info_from_url(p_p)
+                if not domain or not proxy_path or not uuid or not hutils.node.is_panel_active(domain, proxy_path, uuid):
+                    hutils.flask.flash(_('parent.invalid-parent-url'), 'danger')  # type: ignore
+                    return render_template('config.html', form=form)
+                else:
+                    set_hconfig(ConfigEnum.parent_domain, domain)
+                    set_hconfig(ConfigEnum.parent_admin_proxy_path, proxy_path)
+                    parent_apikey = uuid
+
             for k, v in changed_configs.items():
                 set_hconfig(k, v, commit=False)
 
             db.session.commit()
             flask_babel.refresh()
 
+            # set panel mode
+            p_mode = hconfig(ConfigEnum.panel_mode)
+            if p_mode != PanelMode.parent:
+                if hconfig(ConfigEnum.parent_panel):
+                    if p_mode == PanelMode.standalone:
+                        set_hconfig(ConfigEnum.panel_mode, PanelMode.child)
+                else:
+                    if p_mode != PanelMode.standalone:
+                        set_hconfig(ConfigEnum.panel_mode, PanelMode.standalone)
+
             from hiddifypanel.panel.commercial.telegrambot import register_bot
             register_bot(set_hook=True)
-            # if hconfig(ConfigEnum.parent_panel):
-            #     hiddify_api.sync_child_to_parent()
+
+            # sync with parent if needed
+            if hutils.node.is_child():
+                if hutils.node.child.is_registered():
+                    if not hutils.node.child.sync_with_parent():
+                        hutils.flask.flash(_('child.sync-failed'), 'danger')  # type: ignore
+                    else:  # TODO: it's just for debuging
+                        hutils.flask.flash(_('child.sync-success'))  # type: ignore
+                else:
+                    name = hconfig(ConfigEnum.unique_id)
+                    parent_info = hutils.node.get_panel_info(hconfig(ConfigEnum.parent_domain), hconfig(ConfigEnum.parent_admin_proxy_path), parent_apikey)
+                    if parent_info.get('version') != __version__:
+                        hutils.flask.flash(_('node.diff-version'), 'danger')  # type: ignore
+                    if not hutils.node.child.register_to_parent(name, parent_apikey, mode=ChildMode.remote):
+                        hutils.flask.flash(_('child.register-failed'), 'danger')  # type: ignore
+                    else:  # TODO: it's just for debuging
+                        hutils.flask.flash(_('child.register-success'))  # type: ignore
+
             reset_action = hiddify.check_need_reset(old_configs)
 
             if old_configs[ConfigEnum.admin_lang] != hconfig(ConfigEnum.admin_lang):
-
                 form = get_config_form()
         else:
             hutils.flask.flash(_('config.validation-error'), 'danger')  # type: ignore
 
         return reset_action or render_template('config.html', form=form)
-
-        # # form=HelloForm()
-        # # # return render('config.html',form=form)
-        # # return render_template('config.html',form=HelloForm())
-        # form=get_config_form()
-        # return render_template('config.html',form=form)
 
     def get_babel_string(self):
         res = ""
@@ -133,7 +165,7 @@ def get_config_form():
 
     class DynamicForm(FlaskForm):
         pass
-    is_parent = hconfig(ConfigEnum.is_parent)
+    is_parent = hutils.node.is_parent()
 
     for cat in ConfigCategory:
         if cat == 'hidden':
@@ -149,6 +181,9 @@ def get_config_form():
             if not (c2 in configs_key):
                 continue
             c = configs_key[c2]
+            if hutils.node.is_parent():
+                if c.key == ConfigEnum.parent_panel:
+                    continue
             extra_info = ''
             if c.key in bool_types:
                 field = SwitchField(_(f'config.{c.key}.label'), default=c.value, description=_(f'config.{c.key}.description'))

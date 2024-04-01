@@ -13,6 +13,22 @@ class Lang(StrEnum):
     zh = auto()
 
 
+class PanelMode(StrEnum):
+    standalone = auto()
+    parent = auto()
+    child = auto()
+
+
+class LogLevel(StrEnum):
+    TRACE = auto()
+    DEBUG = auto()
+    INFO = auto()
+    SUCCESS = auto()
+    WARNING = auto()
+    ERROR = auto()
+    CRITICAL = auto()
+
+
 class ConfigCategory(StrEnum):
     admin = auto()
     branding = auto()
@@ -59,9 +75,13 @@ def _IntConfigDscr(category: ConfigCategory, apply_mode: ApplyMode = ApplyMode.n
     return category, apply_mode, int, show_in_parent
 
 
+def _EnumConfigDscr(ctype: type, category: ConfigCategory, apply_mode: ApplyMode = ApplyMode.nothing, show_in_parent: bool = True, hide_in_virtual_child=False):
+    return category, apply_mode, ctype, show_in_parent
+
+
 class ConfigEnum(metaclass=FastEnum):
     # category: ConfigCategory
-    __slots__ = ('category', 'apply_mode', 'type', 'show_in_parent', 'hide_in_virtual_child')
+    __slots__ = ('name', 'value', 'category', 'apply_mode', 'type', 'show_in_parent', 'hide_in_virtual_child')
 
     def __init__(self, category: ConfigCategory, apply_mode: ApplyMode = ApplyMode.apply, ctype=str, show_in_parent: bool = True, hide_in_virtual_child=False, name=auto):
         self.value = name
@@ -110,13 +130,27 @@ class ConfigEnum(metaclass=FastEnum):
     package_mode = _StrConfigDscr(ConfigCategory.advanced, hide_in_virtual_child=True)
     utls = _StrConfigDscr(ConfigCategory.advanced)  
     telegram_bot_token = _StrConfigDscr(ConfigCategory.telegram, ApplyMode.apply, hide_in_virtual_child=True)
+
+    # region child-parent
+    # deprecated
     is_parent = _BoolConfigDscr(ConfigCategory.hidden)
-    parent_panel = _StrConfigDscr(ConfigCategory.hidden)
+    # parent panel domain
+    parent_panel = _StrConfigDscr(ConfigCategory.hidden)  # should be able to change by user
+    parent_domain = _StrConfigDscr(ConfigCategory.hidden)
+    parent_admin_proxy_path = _StrConfigDscr(ConfigCategory.hidden)
+
+    # the panel mode could be one of these: "parent", "child", "standalone"
+    # this config value would be 'standalone' by default. and would be set by panel itself
+    panel_mode = _EnumConfigDscr(PanelMode, ConfigCategory.hidden, ApplyMode.nothing, hide_in_virtual_child=True)
+    # endregion
+
+    log_level = _EnumConfigDscr(LogLevel, ConfigCategory.hidden, ApplyMode.restart, hide_in_virtual_child=True)
+
     unique_id = _StrConfigDscr(ConfigCategory.hidden)
     last_hash = _StrConfigDscr(ConfigCategory.hidden)
     cdn_forced_host = _StrConfigDscr(ConfigCategory.hidden)  # removed
-    lang = _StrConfigDscr(ConfigCategory.branding)
-    admin_lang = _StrConfigDscr(ConfigCategory.admin)
+    lang = _EnumConfigDscr(Lang, ConfigCategory.branding)
+    admin_lang = _EnumConfigDscr(Lang, ConfigCategory.admin)
     admin_secret = _StrConfigDscr(ConfigCategory.hidden)  # removed
 
     # tls
@@ -241,7 +275,7 @@ class ConfigEnum(metaclass=FastEnum):
         return not self.__eq__(other)
 
     def endswith(self, other):
-        return self.name.endswith(other)
+        return self.name.endswith(other)  # type: ignore
 
     def startswith(self, other):
-        return self.name.startswith(other)
+        return self.name.startswith(other)  # type: ignore

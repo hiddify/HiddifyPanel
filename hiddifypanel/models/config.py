@@ -1,4 +1,4 @@
-from hiddifypanel.models.config_enum import ConfigEnum
+from hiddifypanel.models.config_enum import ConfigEnum, LogLevel, PanelMode, Lang
 from flask import g
 from sqlalchemy_serializer import SerializerMixin
 from hiddifypanel import Events
@@ -6,6 +6,7 @@ from hiddifypanel.database import db
 from hiddifypanel.cache import cache
 from hiddifypanel.models.child import Child, ChildMode
 from sqlalchemy import Column, String, Boolean, Enum, ForeignKey, Integer
+from strenum import StrEnum
 
 
 def error(st):
@@ -26,6 +27,15 @@ class BoolConfig(db.Model, SerializerMixin):
             'child_unique_id': d.child.unique_id if d.child else ''
         }
 
+    @staticmethod
+    def from_schema(schema):
+        return schema.dump(BoolConfig())
+
+    def to_schema(self):
+        conf_dict = self.to_dict()
+        from hiddifypanel.panel.commercial.restapi.v2.parent.schema import HConfigSchema
+        return HConfigSchema().load(conf_dict)
+
 
 class StrConfig(db.Model, SerializerMixin):
     child_id = Column(Integer, ForeignKey('child.id'), primary_key=True, default=0)
@@ -40,9 +50,18 @@ class StrConfig(db.Model, SerializerMixin):
             'child_unique_id': d.child.unique_id if d.child else ''
         }
 
+    @staticmethod
+    def from_schema(schema):
+        return schema.dump(StrConfig())
+
+    def to_schema(self):
+        conf_dict = self.to_dict()
+        from hiddifypanel.panel.commercial.restapi.v2.parent.schema import HConfigSchema
+        return HConfigSchema().load(conf_dict)
+
 
 @cache.cache(ttl=500)
-def hconfig(key: ConfigEnum, child_id: int | None = None) -> str | int | None:
+def hconfig(key: ConfigEnum, child_id: int | None = None) -> str | int | StrEnum | None:
     if child_id is None:
         child_id = Child.current.id
 
@@ -63,8 +82,16 @@ def hconfig(key: ConfigEnum, child_id: int | None = None) -> str | int | None:
     except BaseException:
         error(f'{key} error!')
         raise
-    if key.type == int and value != None:
-        return int(value)
+    if value != None:
+        if key.type == int:
+            return int(value)
+        elif key.type == LogLevel: //TODO make it uniform
+            return LogLevel[value]
+        elif key.type == PanelMode:
+            return PanelMode[value]
+        elif key.type == Lang:
+            return Lang[value]
+
     return value
 
 
@@ -131,7 +158,7 @@ def get_hconfigs_childs(child_ids: list[int], json=False):
     return {c: get_hconfigs(c, json) for c in child_ids}
 
 
-def add_or_update_config(commit: bool = True, child_id: int = None, override_unique_id: bool = True, **config):
+def add_or_update_config(commit: bool = True, child_id: int | None = None, override_unique_id: bool = True, **config):
     if child_id is None:
         child_id = Child.current.id
     c = config['key']
@@ -145,13 +172,13 @@ def add_or_update_config(commit: bool = True, child_id: int = None, override_uni
     set_hconfig(ckey, v, child_id, commit=commit)
 
 
-def bulk_register_configs(hconfigs, commit: bool = True, override_child_unique_id: int | None = None, override_unique_id: bool = True):
+def bulk_register_configs(hconfigs, commit: bool = True, froce_child_unique_id: str | None = None, override_unique_id: bool = True):
     from hiddifypanel.panel import hiddify
     for conf in hconfigs:
         # print(conf)
         if conf['key'] == ConfigEnum.unique_id and not override_unique_id:
             continue
-        child_id = hiddify.get_child(unique_id=None)
+        child_id = hiddify.get_child(unique_id=froce_child_unique_id)
         # print(conf, child_id, conf.get('child_unique_id', None), override_child_unique_id)
         add_or_update_config(commit=False, child_id=child_id, **conf)
     if commit:

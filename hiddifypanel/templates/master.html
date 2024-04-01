@@ -20,35 +20,25 @@
   {% else %}
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   {% endif %}
-  <link href="{{static_url_for(filename='images/splash/iphone5_splash.png')}}"
-    media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
+  <link href="{{static_url_for(filename='images/splash/iphone5_splash.png')}}" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
     rel="apple-touch-startup-image" />
-  <link href="{{static_url_for(filename='images/splash/iphone6_splash.png')}}"
-    media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
+  <link href="{{static_url_for(filename='images/splash/iphone6_splash.png')}}" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
     rel="apple-touch-startup-image" />
-  <link href="{{static_url_for(filename='images/splash/iphoneplus_splash.png')}}"
-    media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"
+  <link href="{{static_url_for(filename='images/splash/iphoneplus_splash.png')}}" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"
     rel="apple-touch-startup-image" />
-  <link href="{{static_url_for(filename='images/splash/iphonex_splash.png')}}"
-    media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"
+  <link href="{{static_url_for(filename='images/splash/iphonex_splash.png')}}" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"
     rel="apple-touch-startup-image" />
-  <link href="{{static_url_for(filename='images/splash/iphonexr_splash.png')}}"
-    media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
+  <link href="{{static_url_for(filename='images/splash/iphonexr_splash.png')}}" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
     rel="apple-touch-startup-image" />
-  <link href="{{static_url_for(filename='images/splash/iphonexsmax_splash.png')}}"
-    media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"
+  <link href="{{static_url_for(filename='images/splash/iphonexsmax_splash.png')}}" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"
     rel="apple-touch-startup-image" />
-  <link href="{{static_url_for(filename='images/splash/ipad_splash.png')}}"
-    media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
+  <link href="{{static_url_for(filename='images/splash/ipad_splash.png')}}" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
     rel="apple-touch-startup-image" />
-  <link href="{{static_url_for(filename='images/splash/ipadpro1_splash.png')}}"
-    media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
+  <link href="{{static_url_for(filename='images/splash/ipadpro1_splash.png')}}" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
     rel="apple-touch-startup-image" />
-  <link href="{{static_url_for(filename='images/splash/ipadpro3_splash.png')}}"
-    media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
+  <link href="{{static_url_for(filename='images/splash/ipadpro3_splash.png')}}" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
     rel="apple-touch-startup-image" />
-  <link href="{{static_url_for(filename='images/splash/ipadpro2_splash.png')}}"
-    media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
+  <link href="{{static_url_for(filename='images/splash/ipadpro2_splash.png')}}" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
     rel="apple-touch-startup-image" />
   <link rel="icon" type="image/x-icon" href="{{ static_url_for( filename='images/favicon.ico')}}">
   <link rel="manifest" href="{{ hurl_for('common_bp.LoginView:create_pwa_manifest',secret_uuid=g.account.uuid or '')}}">
@@ -70,8 +60,7 @@
   <link rel="stylesheet" href="{{static_url_for(filename='plugins/datatables/extensions/Responsive/css/responsive.bootstrap4.min.css')}}"> -->
 
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" type="text/css"
-    href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.bootstrap4.min.css">
 
   <link rel="stylesheet" href="{{ static_url_for( filename='css/custom.css',version=5.23 ) }}">
   {% if get_locale()=='fa' %}
@@ -90,10 +79,10 @@
 
 <body class="hold-transition layout-fixed {{" dark-mode" if g.darkmode else "" }} {% block bodyclass %}sidebar-collapse{%endblock%}">
   <div id="splash_screen">
-    <center>      
-      
+    <center>
+
       <img src="{{static_url_for( filename='images/hiddify.png' )}}" />
-      
+
 
       <a href="https://github.com/hiddify/hiddify-manager/wiki">
         <h1 class="title">{{_('user.home.title')}}</h1><br>Powered by hiddify.com
@@ -152,21 +141,19 @@
     <footer class="main-footer d-flex flex-wrap justify-content-between align-items-center " dir="ltr">
       <div class="nav col-md-8 d-flex align-items-center">
 
-        <strong><span class="mb-3 mb-md-0 text-muted">© 2023 Hiddify {{"Central" if hconfig(ConfigEnum.is_parent) else
+        <strong><span class="mb-3 mb-md-0 text-muted">© 2023 Hiddify {{"Central" if hutils.node.is_parent() else
             ""}} <span class="badge">{{version}}</span>
           </span>
         </strong>
       </div>
 
       <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-        <li class="ms-3"><a class="text-secondary" href="https://github.com/hiddify/hiddify-manager/wiki"><i
-              class="fa-brands fa-github"></i></a></li>
+        <li class="ms-3"><a class="text-secondary" href="https://github.com/hiddify/hiddify-manager/wiki"><i class="fa-brands fa-github"></i></a></li>
         <li class="ms-3"><a class="text-danger" href="https://youtube.com/@hiddify/videos">
             &nbsp; <i class="fa-brands fa-square-youtube fa-margin"></i> </a></li>
         <li class="ms-3"><a class="text-primary" href="https://twitter.com/intent/follow?screen_name=hiddify_com">
             &nbsp; <i class="fa-brands fa-square-twitter fa-margin"></i> </a></li>
-        <li class="ms-3"><a class="text-primary" href="https://t.me/hiddify">&nbsp; <i
-              class="fa-brands fa-telegram fa-margin"></i> </a></li>
+        <li class="ms-3"><a class="text-primary" href="https://t.me/hiddify">&nbsp; <i class="fa-brands fa-telegram fa-margin"></i> </a></li>
       </ul>
 
     </footer>
@@ -176,8 +163,7 @@
   </div>
   <!-- ./wrapper -->
 
-  {#modal("guide-modal","","<video id='guide-video' controls
-    style='max-height: 100%; max-width: 100%;width: auto; height: auto;'>
+  {#modal("guide-modal","","<video id='guide-video' controls style='max-height: 100%; max-width: 100%;width: auto; height: auto;'>
     <source id='guide-video-mp4' type='video/mp4'>
   </video>")#}
 
@@ -196,10 +182,8 @@
             <div class="btn-group">
               <a id='qrcode-link' class="btn btn-primary copy-link" href=""><i class="fa-regular fa-copy"></i>
                 {{_("copy")}} </a>
-              <a id="share-link-redirect" class="btn btn-success copy-link" href=""><i
-                  class="fa-solid fa-share-from-square"></i> {{_('clickable copy')}}</a>
-              <a target="_blank" id="share-link-open" class="btn btn-secondary" href=""><i
-                  class="fa-solid fa-arrow-up-right-from-square"></i> {{_('open')}}</a>
+              <a id="share-link-redirect" class="btn btn-success copy-link" href=""><i class="fa-solid fa-share-from-square"></i> {{_('clickable copy')}}</a>
+              <a target="_blank" id="share-link-open" class="btn btn-secondary" href=""><i class="fa-solid fa-arrow-up-right-from-square"></i> {{_('open')}}</a>
             </div>
             <br />
             <div id="qrcode" style="margin:10px;padding:10px;"></div>
@@ -250,10 +234,8 @@
 
   <script src="{{ static_url_for( filename='plugins/datatables/jquery.dataTables.min.js' ) }}"></script>
   <script src="{{ static_url_for( filename='plugins/datatables/dataTables.bootstrap4.js' ) }}"></script>
-  <script
-    src="{{ static_url_for( filename='plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js' ) }}"></script>
-  <script
-    src="{{ static_url_for( filename='plugins/datatables/extensions/Responsive/js/responsive.bootstrap4.min.js' ) }}"></script>
+  <script src="{{ static_url_for( filename='plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js' ) }}"></script>
+  <script src="{{ static_url_for( filename='plugins/datatables/extensions/Responsive/js/responsive.bootstrap4.min.js' ) }}"></script>
 
   <!-- <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap4.min.js"></script>

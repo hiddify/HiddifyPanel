@@ -266,19 +266,18 @@ class DomainAdmin(AdminLTEModelView):
         hutils.flask.flash_config_success(restart_mode=ApplyMode.apply, domain_changed=True)
 
     def after_model_delete(self, model):
-        # if hconfig(ConfigEnum.parent_panel):
-        #     hiddify_api.sync_child_to_parent()
-        pass
+        if hutils.node.is_child():
+            if not hutils.node.child.sync_with_parent():
+                hutils.flask.flash(_('child.sync-failed'), 'danger')  # type: ignore
 
     def after_model_change(self, form, model, is_created):
         if hconfig(ConfigEnum.first_setup):
             set_hconfig(ConfigEnum.first_setup, False)
-        # if hconfig(ConfigEnum.parent_panel):
-        #     hiddify_api.sync_child_to_parent()
         if model.need_valid_ssl:
-            # hiddify.exec_command(f"sudo /opt/hiddify-manager/acme.sh/get_cert.sh {model.domain}")
-            # run get_cert.sh
             commander(Command.get_cert, domain=model.domain)
+        if hutils.node.is_child():
+            if not hutils.node.child.sync_with_parent():
+                hutils.flask.flash(_('child.sync-failed'), 'danger')  # type: ignore
 
     def is_accessible(self):
         if login_required(roles={Role.super_admin, Role.admin})(lambda: True)() != True:

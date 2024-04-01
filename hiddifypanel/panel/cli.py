@@ -111,8 +111,8 @@ def admin_path():
     print(hiddify.get_account_panel_link(admin, domain, prefere_path_only=True))
 
 
-def get_this_host_domains():
-    current_child_ids
+# def get_this_host_domains():
+#     current_child_ids
 
 
 def hysteria_domain_port():
@@ -142,12 +142,11 @@ def init_app(app):
     @ app.cli.command()
     @ click.option("--domain", "-d")
     def add_domain(domain):
-        table = ParentDomain if hconfig(ConfigEnum.is_parent) else Domain
-
-        if table.query.filter(table.domain == domain).first():
+        # TODO: Fix this
+        if Domain.query.filter(Domain.domain == domain).first():
             return "Domain already exist."
-        d = table(domain=domain)
-        if not hconfig(ConfigEnum.is_parent):
+        d = Domain(domain=domain)
+        if not hutils.node.is_parent():
             d.mode = DomainType.direct
         db.session.add(d)
         db.session.commit()

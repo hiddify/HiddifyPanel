@@ -22,7 +22,7 @@ class UsersApi(MethodView):
     @app.output(UserSchema)  # type: ignore
     def put(self, data):
         uuid = data.get('uuid') or abort(422, "Parameter issue: 'uuid'")
-        user = User.by_uuid(uuid)
+        user = User.by_uuid(uuid)  # type: ignore
 
         if not data.get('added_by_uuid'):
             data['added_by_uuid'] = g.account.uuid

@@ -4,7 +4,7 @@ from hiddifypanel.hutils.flask import hurl_for
 from flask_login.utils import _get_user
 from functools import wraps
 from hiddifypanel.models import *
-
+from apiflask import abort as json_abort
 from hiddifypanel import hutils
 from werkzeug.local import LocalProxy
 current_account: "BaseAccount" = LocalProxy(lambda: _get_user())
@@ -97,14 +97,17 @@ def login_user(user: AdminUser | User, remember=False, duration=None, force=Fals
     return True
 
 
-def login_required(roles: set[Role] | None = None):
+def login_required(roles: set[Role] | None = None, node_auth: bool = False):
+    '''When both roles and node_auth is set, means authentication can be done by either uuid or unique_id'''
     def wrapper(fn):
         @wraps(fn)
         def decorated_view(*args, **kwargs):
             # print('xxxx', current_account)
-            if not current_account:
+            if node_auth and not Child.node and not roles:
+                json_abort(403, 'Unauthorized node')
+            if not current_account and not node_auth:
                 return redirect_to_login()  # type: ignore
-            if roles:
+            if roles and not Child.node:
                 account_role = current_account.role
                 if account_role not in roles:
                     return redirect_to_login()  # type: ignore
@@ -151,6 +154,12 @@ def auth_before_request():
 
     elif apikey := request.headers.get("Hiddify-API-Key"):
         account = get_account_by_api_key(apikey, is_admin_path)
+        if not account:
+            # when parent/child panel needs to call another parent/child api, it will pass its unique id in the header as apikey
+            if node := Child.by_unique_id(apikey):
+                g.node = node
+                return
+
         if not account:
             return logout_redirect()
     elif request.authorization:
@@ -201,6 +210,8 @@ def logout_redirect():
 
 
 def redirect_to_login():
+    if hutils.flask.is_api_call(request.path):
+        json_abort(403, 'Unathorized')
     # if g.user_agent['is_browser']:
     # return redirect(hurl_for('common_bp.LoginView:basic_0', force=1, next=request.path))
     return redirect(hurl_for('common_bp.LoginView:index', force=1, next=request.path))

@@ -1,11 +1,13 @@
 from flask_babel import lazy_gettext as _
 from sqlalchemy import func
+from typing import Dict
 import datetime
 
 from hiddifypanel.drivers import user_driver
 from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify
 from hiddifypanel.database import db
+from hiddifypanel import hutils
 
 to_gig_d = 1024**3
 
@@ -17,20 +19,18 @@ def update_local_usage():
     # return {"status": 'success', "comments":res}
 
 
-def add_users_usage_uuid(uuids_bytes, child_id):
+def add_users_usage_uuid(uuids_bytes: Dict[str, Dict], child_id, sync=False):
     uuids_bytes = {u: v for u, v in uuids_bytes.items() if v}
-    uuids = keys(uuids_bytes)
+    uuids = uuids_bytes.keys()
     users = User.query.filter(User.uuid.in_(uuids))
     dbusers_bytes = {u: uuids_bytes.get(u.uuid, 0) for u in users}
-    _add_users_usage(dbusers_bytes, child_id)
+    _add_users_usage(dbusers_bytes, child_id, sync)  # type: ignore
 
 
-def _add_users_usage(dbusers_bytes, child_id):
-    # print(dbusers_bytes)
-    if not hconfig(ConfigEnum.is_parent) and hconfig(ConfigEnum.parent_panel):
-        from hiddifypanel.panel import hiddify_api
-        hiddify_api.add_user_usage_to_parent(dbusers_bytes)
-
+def _add_users_usage(users_usage_data: Dict[User, Dict], child_id, sync=False):
+    '''
+    sync: when enabled, it means we have received usages from the parent panel
+    '''
     res = {}
     have_change = False
     before_enabled_users = user_driver.get_enabled_users()
@@ -44,7 +44,7 @@ def _add_users_usage(dbusers_bytes, child_id):
         daily_usage[adm.id].online = User.query.filter(User.added_by == adm.id).filter(func.DATE(User.last_online) == today).count()
     # db.session.commit()
     userDetails = {p.user_id: p for p in UserDetail.query.filter(UserDetail.child_id == child_id).all()}
-    for user, uinfo in dbusers_bytes.items():
+    for user, uinfo in users_usage_data.items():
         usage_bytes = uinfo['usage']
         devices = uinfo['devices']
         # user_active_before=user.is_active
@@ -68,11 +68,20 @@ def _add_users_usage(dbusers_bytes, child_id):
         if not isinstance(usage_bytes, int) or usage_bytes == 0:
             res[user.uuid] = "No usage"
         else:
-            daily_usage.get(user.added_by, daily_usage[1]).usage += usage_bytes
+            if sync:
+                if daily_usage.get(user.added_by, daily_usage[1]).usage != usage_bytes:
+                    daily_usage.get(user.added_by, daily_usage[1]).usage = usage_bytes
+            else:
+                daily_usage.get(user.added_by, daily_usage[1]).usage += usage_bytes
             in_gig = (usage_bytes) / to_gig_d
             res[user.uuid] = in_gig
-            user.current_usage_GB += in_gig
-            detail.current_usage_GB += in_gig
+            if sync:
+                if user.current_usage_GB != in_gig:
+                    user.current_usage_GB = in_gig
+                # detail.current_usage_GB = in_gig
+            else:
+                user.current_usage_GB += in_gig
+                detail.current_usage_GB += in_gig
             user.last_online = datetime.datetime.now()
             detail.last_online = datetime.datetime.now()
 
@@ -85,15 +94,19 @@ def _add_users_usage(dbusers_bytes, child_id):
             have_change = True
             res[user.uuid] = f"{res[user.uuid]} !OUT of USAGE! Client Removed"
 
-    db.session.commit()
+    db.session.commit()  # type: ignore
     if have_change:
         hiddify.quick_apply_users()
 
+    # sync with the parent
+    if not sync:
+        if hutils.node.is_child():
+            hutils.node.child.sync_users_usage_with_parent()
     return {"status": 'success', "comments": res}
 
 
 def send_bot_message(user):
-    if not (hconfig(ConfigEnum.telegram_bot_token) and not hconfig(ConfigEnum.parent_panel)):
+    if not (hconfig(ConfigEnum.telegram_bot_token) or not hutils.node.is_parent()):
         return
     if not user.telegram_id:
         return

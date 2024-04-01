@@ -1,53 +1,26 @@
-
-from apiflask.fields import Integer, String, UUID, Boolean, Enum
 from flask import current_app as app
 from flask import g
 from flask.views import MethodView
-from apiflask import Schema
 from apiflask import abort
 from hiddifypanel.auth import login_required
 from hiddifypanel.models import *
-from hiddifypanel.panel import hiddify
-from hiddifypanel.models import AdminMode, Lang
 
-from . import SuccessfulSchema, has_permission
-
-
-class AdminSchema(Schema):
-    name = String(required=True, description='The name of the admin')
-    comment = String(required=False, description='A comment related to the admin', allow_none=True)
-    uuid = UUID(required=True, description='The unique identifier for the admin')
-    mode = Enum(AdminMode, required=True, description='The mode for the admin')
-    can_add_admin = Boolean(required=True, description='Whether the admin can add other admins')
-    parent_admin_uuid = UUID(description='The unique identifier for the parent admin', allow_none=True,
-                             # validate=OneOf([p.uuid for p in AdminUser.query.all()])
-                             )
-    telegram_id = Integer(required=False, description='The Telegram ID associated with the admin', allow_none=True)
-    lang = Enum(Lang, required=True)
-
-
-class PatchAdminSchema(AdminSchema):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['name'].required = False
-        self.fields['mode'].required = False
-        self.fields['lang'].required = False
-        self.fields['can_add_admin'].required = False
-    pass
+from . import has_permission
+from .schema import AdminSchema, PatchAdminSchema, SuccessfulSchema
 
 
 class AdminUserApi(MethodView):
     decorators = [login_required({Role.super_admin, Role.admin})]
 
-    @app.output(AdminSchema)
+    @app.output(AdminSchema)  # type: ignore
     def get(self, uuid):
         admin = AdminUser.by_uuid(uuid) or abort(404, "admin not found")
         if not has_permission(admin):
             abort(403, "You don't have permission to access this admin")
-        return admin.to_dict()
+        return admin.to_dict()  # type: ignore
 
-    @app.input(PatchAdminSchema, arg_name='data')
-    @app.output(SuccessfulSchema)
+    @app.input(PatchAdminSchema, arg_name='data')  # type: ignore
+    @app.output(SuccessfulSchema)  # type: ignore
     def patch(self, uuid, data):
         admin = AdminUser.by_uuid(uuid) or abort(404, "admin not found")
         if not has_permission(admin):
@@ -60,10 +33,10 @@ class AdminUserApi(MethodView):
         AdminUser.add_or_update(**data)
         return {'status': 200, 'msg': 'ok'}
 
-    @app.output(SuccessfulSchema)
+    @app.output(SuccessfulSchema)  # type: ignore
     def delete(self, uuid):
         admin = AdminUser.by_uuid(uuid) or abort(404, "admin not found")
         if not has_permission(admin):
             abort(403, "You don't have permission to access this admin")
-        admin.remove()
+        admin.remove()  # type: ignore
         return {'status': 200, 'msg': 'ok'}

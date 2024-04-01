@@ -215,6 +215,7 @@ class AdminstratorAdmin(AdminLTEModelView):
         model.remove()
 
     def get_query_for_parent_admin(self):
+        # WHAT IS THIS?
         admin_user_id = self.get_pk_value()
         sub_admins_ids = set(recursive_sub_admins_ids(AdminUser.query.get(admin_user_id)))
         return AdminUser.query.filter(AdminUser.id.in_(sub_admins_ids)).with_entities(AdminUser.id, AdminUser.name)
@@ -236,3 +237,11 @@ class AdminstratorAdmin(AdminLTEModelView):
             del form.max_users
             del form.max_active_users
             del form.can_add_admin
+
+    def after_model_change(form, model, is_created):
+        if hutils.node.is_parent():
+            hutils.node.parent.send_sync_req_to_childs()
+
+    def after_model_delete(self, model):
+        if hutils.node.is_parent():
+            hutils.node.parent.send_sync_req_to_childs()

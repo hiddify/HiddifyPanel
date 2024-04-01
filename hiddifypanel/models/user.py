@@ -121,12 +121,12 @@ class User(BaseAccount):
             is_active = False
         elif self.remaining_days < 0:
             is_active = False
-        elif len(self.ips) > max(3, self.max_ips):
+        elif len(self.devices) > max(3, self.max_ips):
             is_active = False
         return is_active
 
     @property
-    def ips(self):
+    def devices(self):
         res = {}
         for detail in UserDetail.query.filter(UserDetail.user_id == self.id):
             for device in detail.devices:
@@ -255,6 +255,15 @@ class User(BaseAccount):
         if commit:
             db.session.commit()
         return dbuser
+
+    @staticmethod
+    def form_schema(schema):
+        return schema.dump(User())
+
+    def to_schema(self):
+        user_dict = self.to_dict()
+        from hiddifypanel.panel.commercial.restapi.v2.admin.user_api import UserSchema
+        return UserSchema().load(user_dict)
 
     def to_dict(self, convert_date=True, dump_id=False) -> dict:
         base = super().to_dict()
