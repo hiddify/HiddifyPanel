@@ -242,7 +242,9 @@ def get_config_form():
                 field = wtf.SelectField(_(f"config.{c.key}.label"), choices=choices, description=_(f"config.{c.key}.description"), default=hconfig(c.key))
 
             elif c.key == ConfigEnum.warp_sites:
-                validators = [wtf.validators.Length(max=2048)]
+                validators = [wtf.validators.Length(max=2048),
+                              wtf.validators.Regexp(r'^[\w.-]+(?:\n[\w.-]+)*$', re.IGNORECASE, _("config.invalid-pattern-for-warp-sites") + f' {c.key}')
+                              ]
                 render_kw = {'class': "ltr", 'maxlength': 2048}
                 field = wtf.TextAreaField(_(f'config.{c.key}.label'), validators, default=c.value,
                                           description=_(f'config.{c.key}.description'), render_kw=render_kw)
