@@ -61,14 +61,15 @@ def is_registered() -> bool:
 
         res = NodeApiClient(base_url).post('/api/v2/parent/status/', payload, ChildStatusOutputSchema)
         if isinstance(res, NodeApiErrorSchema):
-            logger.error(f"Error while checking if current panel is registered with parent: {res.msg}")
+            logger.error(f"Error while checking if current panel is registered with parent: {res.msg}") 
             return False
 
         if res['existance']:
             return True
         return False
     except Exception as e:
-        logger.error(f"Error while checking if current panel is registered with parent: {e}")
+        logger.error(f"Error while checking if current panel is registered with parent")
+        logger.exception(e)
         return False
 
 
@@ -91,14 +92,11 @@ def register_to_parent(name: str, apikey: str, mode: ChildMode = ChildMode.remot
 
     # add new child as parent
     db.session.add(  # type: ignore
-        Child(unique_id=res['parent_unique_id'], name=res['parent_unique_id'], mode=ChildMode.parent)
+        Child(unique_id=res['parent_unique_id'], name=res['parent_unique_id'], mode=ChildMode.parent) //TODO change name to server name
     )
-    try:
-        db.session.commit()  # type: ignore
-    except Exception as e:
-        logger.error(f"Error while committing db: {e}")
-        return False
-
+    
+    db.session.commit()  # type: ignore
+    
     logger.success("Successfully registered to parent")
     cache.invalidate_all_cached_functions()
     return True
@@ -121,19 +119,14 @@ def sync_with_parent() -> bool:
         return False
     AdminUser.bulk_register(res['admin_users'], commit=False, remove=True)
     User.bulk_register(res['users'], commit=False, remove=True)
-    try:
-        db.session.commit()  # type: ignore
-    except Exception as e:
-        logger.error(f"Error while committing db: {e}")
-        return False
-
+    db.session.commit()  # type: ignore
     logger.success("Successfully synced with parent")
     cache.invalidate_all_cached_functions()
     return True
 
 
 def sync_users_usage_with_parent() -> bool:
-    p_url = __get_parent_panel_url()
+    p_url = __get_parent_panel_url() 
     if not p_url:
         logger.error("Parent url is empty")
         return False
