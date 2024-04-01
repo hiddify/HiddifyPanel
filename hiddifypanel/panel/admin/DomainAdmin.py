@@ -3,7 +3,9 @@ from hiddifypanel.auth import login_required, current_account
 
 from hiddifypanel.models import *
 import re
-from flask import Markup, g  # type: ignore
+from flask import  g  # type: ignore
+from markupsafe import Markup
+
 from flask_babel import gettext as __
 from flask_babel import lazy_gettext as _
 from hiddifypanel.panel.run_commander import Command, commander

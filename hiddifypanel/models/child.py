@@ -1,6 +1,6 @@
 from __future__ import annotations
 import uuid
-from sqlalchemy_serializer import SerializerMixin
+
 from sqlalchemy import Column, Integer, String, Enum
 from enum import auto
 from strenum import StrEnum
@@ -18,7 +18,7 @@ class ChildMode(StrEnum):
 # the child model is node
 
 
-class Child(db.Model, SerializerMixin):  # type: ignore
+class Child(db.Model):  # type: ignore
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(200), nullable=False, unique=True)
     mode = Column(Enum(ChildMode), nullable=False, default=ChildMode.virtual)

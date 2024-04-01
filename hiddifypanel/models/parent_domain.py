@@ -1,6 +1,6 @@
 # from hiddifypanel.models.domain import Domain
 # from sqlalchemy.orm import backref
-# from sqlalchemy_serializer import SerializerMixin
+#
 
 # from hiddifypanel.database import db
 
@@ -10,7 +10,7 @@
 #                             )
 
 
-# class ParentDomain(db.Model, SerializerMixin):
+# class ParentDomain(db.Model):
 #     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 #     domain = db.Column(db.String(200), nullable=False, unique=True)
 #     alias = db.Column(db.String(200), nullable=False, unique=False)

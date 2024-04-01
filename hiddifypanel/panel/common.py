@@ -150,12 +150,6 @@ def init_app(app: APIFlask):
         g.child = Child.by_id(g.__child_id) or abort(404, "Child not found")
         g.account = current_account
 
-    @app.before_first_request
-    def first_request():
-        import hiddifypanel.panel.commercial.telegrambot as telegrambot
-        if (not telegrambot.bot) or (not telegrambot.bot.username):  # type: ignore
-            telegrambot.register_bot(set_hook=True)
-
     @app.before_request
     def base_middleware():
         if request.endpoint == 'static' or request.endpoint == "videos":
@@ -191,3 +185,7 @@ def init_app(app: APIFlask):
             return auth_before
 
     app.jinja_env.globals['generate_github_issue_link_for_admin_sidebar'] = hutils.github_issue.generate_github_issue_link_for_admin_sidebar
+    with app.app_context():
+        import hiddifypanel.panel.commercial.telegrambot as telegrambot
+        if (not telegrambot.bot) or (not telegrambot.bot.username):  # type: ignore
+            telegrambot.register_bot(set_hook=True)

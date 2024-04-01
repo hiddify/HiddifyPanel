@@ -7,7 +7,9 @@ from .adminlte import AdminLTEModelView
 from flask_babel import lazy_gettext as _
 from wtforms.validators import Regexp
 from flask_babel import gettext as __
-from flask import Markup, request  # type: ignore
+from flask import request  # type: ignore
+from markupsafe import Markup
+
 from flask import g
 import datetime
 from wtforms import SelectField
@@ -37,7 +39,7 @@ class SubAdminsField(SelectField):
 
 class AdminstratorAdmin(AdminLTEModelView):
     column_hide_backrefs = False
-    column_list = ["name", 'UserLinks', 'mode', 'can_add_admin', 'max_active_users', 'max_users', 'online_users', 'comment']
+    column_list = ["name", 'UserLinks', 'mode', 'can_add_admin', 'max_active_users', 'max_users', 'online_users', 'comment',]
     form_columns = ["name", 'mode', 'can_add_admin', 'max_active_users', 'max_users', 'comment', "uuid"]
     list_template = 'model/admin_list.html'
     # column_editable_list = ['name']

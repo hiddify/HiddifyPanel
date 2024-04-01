@@ -15,6 +15,11 @@ prepare:             ## Show the help.
 	./update_translations.sh
 
 
+update_req:
+	upgrade-requirements 
+	python scripts/update_dependencies.py
+
+
 .PHONY: show
 show:             ## Show the current environment.
 	@echo "Current environment:"

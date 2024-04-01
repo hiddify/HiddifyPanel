@@ -3,12 +3,12 @@ from datetime import timedelta, date
 
 from flask import g
 from sqlalchemy import func
-from sqlalchemy_serializer import SerializerMixin
+
 
 from hiddifypanel.database import db
 
 
-class DailyUsage(db.Model, SerializerMixin):
+class DailyUsage(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     date = db.Column(db.Date, default=datetime.date.today(), index=True)
     usage = db.Column(db.BigInteger, default=0, nullable=False)

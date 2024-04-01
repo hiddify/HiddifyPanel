@@ -8,7 +8,9 @@ from flask_babel import gettext as __
 from .adminlte import AdminLTEModelView
 from wtforms.validators import NumberRange
 from flask_babel import lazy_gettext as _
-from flask import Markup, g, request  # type: ignore
+from flask import g, request  # type: ignore
+from markupsafe import Markup
+
 from hiddifypanel.hutils.flask import hurl_for
 from wtforms.validators import Regexp, ValidationError
 from flask import current_app

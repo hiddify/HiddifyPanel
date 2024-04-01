@@ -3,8 +3,10 @@ from flask import current_app, flash as flask_flash, g, request
 from wtforms.validators import ValidationError
 from apiflask import abort as apiflask_abort
 from flask_babel import lazy_gettext as _
-from flask import url_for, Markup  # type: ignore
+from flask import url_for  # type: ignore
 from urllib.parse import urlparse
+from markupsafe import Markup
+
 import user_agents
 import re
 import os

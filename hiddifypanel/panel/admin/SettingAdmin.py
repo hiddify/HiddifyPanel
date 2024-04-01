@@ -3,7 +3,9 @@ import flask_babel
 import flask_babel
 from flask_babel import lazy_gettext as _
 # from flask_babelex import gettext as _
-from flask import render_template, Markup, g  # type: ignore
+from flask import render_template, g  # type: ignore
+from markupsafe import Markup
+
 from hiddifypanel.hutils.flask import hurl_for
 from flask import current_app as app
 from hiddifypanel import hutils

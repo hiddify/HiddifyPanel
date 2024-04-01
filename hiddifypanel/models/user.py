@@ -2,7 +2,7 @@ import datetime
 from enum import auto
 from hiddifypanel.models.role import Role
 from dateutil import relativedelta
-from sqlalchemy_serializer import SerializerMixin
+
 from strenum import StrEnum
 from sqlalchemy import event
 
@@ -35,7 +35,7 @@ package_mode_dic = {
 }
 
 
-class UserDetail(db.Model, SerializerMixin):
+class UserDetail(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), default=0, nullable=False)
     child_id = db.Column(db.Integer, db.ForeignKey('child.id'), default=0, nullable=False)

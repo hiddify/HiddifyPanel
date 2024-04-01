@@ -4,7 +4,9 @@ from wtforms.validators import Regexp, ValidationError
 from flask_babel import lazy_gettext as _
 from .adminlte import AdminLTEModelView
 from flask_babel import gettext as __
-from flask import Markup, g, request
+from flask import g, request
+from markupsafe import Markup
+
 
 from hiddifypanel.auth import login_required
 from hiddifypanel.panel import hiddify

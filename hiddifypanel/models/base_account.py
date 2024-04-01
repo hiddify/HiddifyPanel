@@ -2,13 +2,13 @@ import datetime
 import uuid
 from hiddifypanel.models.role import Role
 from sqlalchemy import Column, String, BigInteger, Enum
-from sqlalchemy_serializer import SerializerMixin
+
 from flask_login import UserMixin as FlaskLoginUserMixin
 from hiddifypanel.models import Lang
 from hiddifypanel.database import db
 
 
-class BaseAccount(db.Model, SerializerMixin, FlaskLoginUserMixin):  # type: ignore
+class BaseAccount(db.Model, FlaskLoginUserMixin):  # type: ignore
     __abstract__ = True
     uuid = Column(String(36), default=lambda: str(uuid.uuid4()), nullable=False, unique=True, index=True)
     name = Column(String(512), nullable=False, default='')

@@ -3,7 +3,9 @@ from hiddifypanel.panel import hiddify
 from hiddifypanel.panel.admin.adminlte import AdminLTEModelView
 from flask_babel import gettext as __
 from flask_babel import lazy_gettext as _
-from flask import g, redirect, Markup
+from flask import g, redirect
+from markupsafe import Markup
+
 from hiddifypanel.hutils.flask import hurl_for, flash
 from hiddifypanel.auth import login_required
 from flask_admin.model.template import EndpointLinkRowAction

@@ -1,4 +1,4 @@
-from sqlalchemy_serializer import SerializerMixin
+
 from strenum import StrEnum
 from enum import auto
 from sqlalchemy import Column, String, Integer, Boolean, Enum, ForeignKey
@@ -57,7 +57,7 @@ class ProxyL3(StrEnum):
     custom = auto()
 
 
-class Proxy(db.Model, SerializerMixin):  # type: ignore
+class Proxy(db.Model):  # type: ignore
     id = Column(Integer, primary_key=True, autoincrement=True)
     child_id = Column(Integer, ForeignKey('child.id'), default=0)
     name = Column(String(200), nullable=False, unique=False)
