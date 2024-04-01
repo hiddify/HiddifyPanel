@@ -17,6 +17,7 @@ def __query_fetch_json(db, query: str, args: Tuple = ()) -> List[Dict[str, Any]]
         connection.execute(text(query), args) if args else connection.execute(text(query))
         r = [dict((db.description[i][0], value)
                   for i, value in enumerate(row)) for row in db.fetchall()]
+        connection.close()
         return r
     except Exception as err:
         raise err

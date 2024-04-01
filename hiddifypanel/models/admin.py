@@ -158,6 +158,7 @@ class AdminUser(BaseAccount):
             from sqlalchemy import text
             connection = db.engine.connect()
             connection.execute(text("update admin_user set id=1 where name='Owner'"))
+            connection.close()
             admin = AdminUser.by_id(1)
 
         return admin

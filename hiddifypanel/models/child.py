@@ -77,7 +77,9 @@ class Child(db.Model):  # type: ignore
             db.session.add(Child(id=0, unique_id=tmp_uuid, name="Root"))
             db.session.commit()
 
-            db.engine.execute(text(f'update child set id=0 where unique_id="{tmp_uuid}"'))
+            connection = db.engine.connect()
+            connection.execute(text(f'update child set id=0 where unique_id="{tmp_uuid}"'))
+            connection.close()
             child = Child.by_id(0)
         return child
 

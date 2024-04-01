@@ -568,6 +568,7 @@ def add_new_enum_values():
         Proxy.l3, Proxy.proto, Proxy.cdn, Proxy.transport,
         User.mode, Domain.mode, BoolConfig.key, StrConfig.key
     ]
+    connection = db.engine.connect()
     for col in columns:
         enum_class = col.type.enum_class
         column_name = col.name
@@ -579,7 +580,8 @@ def add_new_enum_values():
         # Get the values in the enum column in the database
         # result = db.engine.execute(f"SELECT DISTINCT `{column_name}` FROM {table_name}")
         # db_values = {row[0] for row in result}
-        result = db.engine.execute(text(f"SHOW COLUMNS FROM {table_name} LIKE '{column_name}';"))
+
+        result = connection.execute(text(f"SHOW COLUMNS FROM {table_name} LIKE '{column_name}';"))
         db_values = []
 
         for row in result:
@@ -598,9 +600,10 @@ def add_new_enum_values():
         # Add the new value to the enum column in the database
         enumstr = ','.join([f"'{a}'" for a in [*existing_values, *old_values]])
 
-        db.engine.execute(text(f"ALTER TABLE {table_name} MODIFY COLUMN `{column_name}` ENUM({enumstr});"))
+        connection.execute(text(f"ALTER TABLE {table_name} MODIFY COLUMN `{column_name}` ENUM({enumstr});"))
 
         db.session.commit()
+    connection.close()
 
 
 def latest_db_version():
