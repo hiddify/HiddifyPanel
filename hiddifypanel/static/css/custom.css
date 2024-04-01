@@ -556,3 +556,16 @@ td.col-uuid a {
 .select2-container {
   display: none;
 }
+
+
+#main-sidebar .nav-sidebar>.nav-item>.nav-link {
+  color: white;
+}
+
+#main-sidebar .nav-sidebar>.nav-item>.nav-link:hover {
+  background: #007bff;
+}
+
+.dark-mode #main-sidebar .nav-sidebar>.nav-item>.nav-link:hover {
+  background: #3f6791;
+}
