@@ -79,7 +79,7 @@ def create_app(*args, cli=False, **config):
         from hiddifypanel.models import ConfigEnum, hconfig
         logger.remove()
         log_format = '<green>{time:YYYY-MM-DD HH:mm:ss}</green> | <level>{level: <8}</level> | <cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - <level>{message}</level> | <level>{extra}</level>'
-        logger.add(sys.stdout, format=log_format, level=hconfig(ConfigEnum.log_level), colorize=True, catch=True, enqueue=True, diagnose=False, backtrace=True)
+        logger.add(sys.stderr, format=log_format, level=hconfig(ConfigEnum.log_level), colorize=True, catch=True, enqueue=True, diagnose=False, backtrace=True)
 
     # flaskbabel = FlaskBabel(app)
     # @babel.localeselector
