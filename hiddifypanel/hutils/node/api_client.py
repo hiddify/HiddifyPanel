@@ -17,7 +17,7 @@ class NodeApiClient():
     def __init__(self, base_url: str, apikey: Optional[str] = None, max_retry: int = 3):
         self.base_url = base_url if base_url.endswith('/') else base_url+'/'
         self.max_retry = max_retry
-        self.headers = {'Hiddify-API-Key': apikey if apikey else hconfig(ConfigEnum.unique_id)}
+        self.headers = {'Hiddify-API-Key': apikey or hconfig(ConfigEnum.unique_id)}
 
     def __call(self, method: str, path: str, payload: Optional[Schema], output_schema: Type[Union[Schema, dict]]) -> Union[dict, NodeApiErrorSchema]:  # type: ignore
         retry_count = 1
