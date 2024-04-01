@@ -85,7 +85,7 @@ def hconfig(key: ConfigEnum, child_id: int | None = None) -> str | int | StrEnum
     if value != None:
         if key.type == int:
             return int(value)
-        elif key.type == LogLevel:
+        elif key.type == LogLevel: //TODO make it uniform
             return LogLevel[value]
         elif key.type == PanelMode:
             return PanelMode[value]
