@@ -17,6 +17,10 @@ from flask import g
 MAX_DB_VERSION = 90
 
 
+def _v83(child_id):
+    set_hconfig(ConfigEnum.log_level, LogLevel.CRITICAL)
+
+
 def _v82(child_id):
     set_hconfig(ConfigEnum.vless_enable, True)
     set_hconfig(ConfigEnum.trojan_enable, True)
@@ -25,10 +29,6 @@ def _v82(child_id):
     set_hconfig(ConfigEnum.quic_enable, True)
     set_hconfig(ConfigEnum.xtls_enable, True)
     set_hconfig(ConfigEnum.h2_enable, True)
-
-
-def _v81(child_id):
-    set_hconfig(ConfigEnum.log_level, LogLevel.WARNING)
 
 
 def _v80(child_id):
