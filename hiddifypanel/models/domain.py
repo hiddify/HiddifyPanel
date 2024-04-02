@@ -148,7 +148,7 @@ def get_domain(domain):
 
 def get_panel_link(child_id: int | None = None) -> Domain | None:
     if child_id is None:
-        child_id = Child.current.id
+        child_id = Child.current().id
     domains = Domain.query.filter(Domain.mode.in_(
         [DomainType.direct, DomainType.cdn, DomainType.worker, DomainType.relay, DomainType.auto_cdn_ip, DomainType.old_xtls_direct, DomainType.sub_link_only]),
         Domain.child_id == child_id
@@ -161,7 +161,7 @@ def get_panel_link(child_id: int | None = None) -> Domain | None:
 def get_panel_domains(always_add_ip=False, always_add_all_domains=False) -> List[Domain]:
     from hiddifypanel import hutils
     domains = []
-    domains = Domain.query.filter(Domain.mode == DomainType.sub_link_only, Domain.child_id == Child.current.id).all()
+    domains = Domain.query.filter(Domain.mode == DomainType.sub_link_only, Domain.child_id == Child.current().id).all()
     if not len(domains) or always_add_all_domains:
         domains = Domain.query.filter(Domain.mode.notin_([DomainType.fake, DomainType.reality])).all()
 
@@ -173,7 +173,7 @@ def get_panel_domains(always_add_ip=False, always_add_all_domains=False) -> List
 
 
 def get_proxy_domains(domain):
-    db_domain = Domain.query.filter(Domain.domain == domain, Domain.child_id == Child.current.id).first()
+    db_domain = Domain.query.filter(Domain.domain == domain, Domain.child_id == Child.current().id).first()
     if not db_domain:
         db_domain = Domain(domain=domain, mode=DomainType.direct, cdn_ip='', show_domains=[])
     return get_proxy_domains_db(db_domain)

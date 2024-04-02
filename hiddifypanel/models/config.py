@@ -63,7 +63,7 @@ class StrConfig(db.Model):
 @cache.cache(ttl=500)
 def hconfig(key: ConfigEnum, child_id: int | None = None):  # -> str | int | StrEnum | None:
     if child_id is None:
-        child_id = Child.current.id
+        child_id = Child.current().id
 
     value = None
     try:
@@ -93,7 +93,7 @@ def hconfig(key: ConfigEnum, child_id: int | None = None):  # -> str | int | Str
 
 def set_hconfig(key: ConfigEnum, value: str | int | bool, child_id: int | None = None, commit: bool = True):
     if child_id is None:
-        child_id = Child.current.id
+        child_id = Child.current().id
 
     print(f"chainging .... {key}---{value}---{child_id}---{commit}")
     if key.type == int and value != None:
@@ -104,7 +104,7 @@ def set_hconfig(key: ConfigEnum, value: str | int | bool, child_id: int | None =
     hconfig.invalidate(key, child_id)
     hconfig.invalidate(key, child_id=child_id)
     hconfig.invalidate(key=key, child_id=child_id)
-    if child_id == Child.current.id:
+    if child_id == Child.current().id:
         hconfig.invalidate(key)
     # hconfig.invalidate_all()
     get_hconfigs.invalidate_all()
@@ -138,7 +138,7 @@ def set_hconfig(key: ConfigEnum, value: str | int | bool, child_id: int | None =
 @cache.cache(ttl=500,)
 def get_hconfigs(child_id: int | None = None, json=False) -> dict:
     if child_id is None:
-        child_id = Child.current.id
+        child_id = Child.current().id
 
     return {**{f'{u.key}' if json else u.key: u.value for u in BoolConfig.query.filter(BoolConfig.child_id == child_id).all() if u.key.type == bool},
             **{f'{u.key}' if json else u.key: int(u.value) if u.key.type == int and u.value != None else u.value for u in StrConfig.query.filter(StrConfig.child_id == child_id).all() if u.key.type != bool},
@@ -156,7 +156,7 @@ def get_hconfigs_childs(child_ids: list[int], json=False):
 
 def add_or_update_config(commit: bool = True, child_id: int | None = None, override_unique_id: bool = True, **config):
     if child_id is None:
-        child_id = Child.current.id
+        child_id = Child.current().id
     c = config['key']
     ckey = ConfigEnum(c)
     if c == ConfigEnum.unique_id and not override_unique_id:

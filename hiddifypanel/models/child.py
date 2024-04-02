@@ -67,7 +67,6 @@ class Child(db.Model):  # type: ignore
         return Child.query.filter(Child.unique_id == unique_id).first()
 
     @classmethod
-    @property
     def current(cls) -> "Child":
         if has_app_context() and hasattr(g, "child"):
             return g.child

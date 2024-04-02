@@ -3,7 +3,7 @@ from hiddifypanel.auth import login_required, current_account
 
 from hiddifypanel.models import *
 import re
-from flask import  g  # type: ignore
+from flask import g  # type: ignore
 from markupsafe import Markup
 
 from flask_babel import gettext as __
@@ -231,7 +231,7 @@ class DomainAdmin(AdminLTEModelView):
                     if not d:
                         continue
                     if not hutils.network.is_domain_reality_friendly(d):
-                        raise ValidationError(_("Domain is not REALITY friendly!")+f' {d}')
+                        raise ValidationError(_("Domain is not REALITY friendly!") + f' {d}')
 
                     if not hutils.network.is_in_same_asn(d, ipv4_list[0]):
                         server_asn = hutils.network.get_ip_asn_name(ipv4_list[0])
@@ -242,7 +242,7 @@ class DomainAdmin(AdminLTEModelView):
 
             for d in model.servernames.split(","):
                 if not hutils.network.fallback_domain_compatible_with_servernames(model.domain, d):
-                    raise ValidationError(_("REALITY Fallback domain is not compaitble with server names!")+f' {d} != {model.domain}')
+                    raise ValidationError(_("REALITY Fallback domain is not compaitble with server names!") + f' {d} != {model.domain}')
 
         if (model.cdn_ip):
             try:
@@ -297,4 +297,4 @@ class DomainAdmin(AdminLTEModelView):
 
     def get_query(self):
         query = super().get_query()
-        return query.filter(Domain.child_id == Child.current.id)
+        return query.filter(Domain.child_id == Child.current().id)

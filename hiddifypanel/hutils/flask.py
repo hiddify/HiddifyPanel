@@ -36,7 +36,7 @@ def static_url_for(**values):
 
 
 def hurl_for(endpoint, **values):
-    if Child.current.id != 0:
+    if Child.current().id != 0:
 
         new_endpoint = "child_" + endpoint
         if new_endpoint in current_app.view_functions:

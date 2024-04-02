@@ -95,7 +95,7 @@ def get_global_config_form(empty=False):
 
 
 def get_all_proxy_form(empty=False):
-    proxies = hutils.proxy.get_proxies(Child.current.id)
+    proxies = hutils.proxy.get_proxies(Child.current().id)
     categories1 = sorted([c for c in {c.cdn: 1 for c in proxies}])
 
     class DynamicForm(FlaskForm):

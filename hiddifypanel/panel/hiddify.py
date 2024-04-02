@@ -125,7 +125,7 @@ def check_need_reset(old_configs, do=False):
 
 
 def get_child(unique_id):
-    child_id = Child.current.id
+    child_id = Child.current().id
     if unique_id is None or unique_id in ["self", "default", str(hconfig(ConfigEnum.unique_id))]:
         child_id = 0
     else:
@@ -176,7 +176,7 @@ def set_db_from_json(json_data, override_child_unique_id=True, set_users=True, s
     # override root child unique id
     if override_child_unique_id:
         backup_child_unique_id = get_backup_child_unique_id(json_data)
-        replace_backup_child_unique_id(json_data, backup_child_unique_id, Child.current.unique_id)
+        replace_backup_child_unique_id(json_data, backup_child_unique_id, Child.current().unique_id)
 
     # restore childs
     if set_child and 'childs' in json_data:
@@ -262,7 +262,7 @@ def get_ssh_client_version(user):
 
 def get_account_panel_link(account: BaseAccount, host: str, is_https: bool = True, prefere_path_only: bool = False, child_id=None):
     if child_id is None:
-        child_id = Child.current.id
+        child_id = Child.current().id
     is_admin = isinstance(account, AdminUser)
     basic_auth = False  # is_admin #because safri does not support it.
 

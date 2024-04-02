@@ -537,7 +537,7 @@ def make_proxy_rows(cfgs):
 
 def add_config_if_not_exist(key: ConfigEnum, val: str | int, child_id: int | None = None):
     if child_id is None:
-        child_id = Child.current.id
+        child_id = Child.current().id
 
     old_val = hconfig(key, child_id)
     print(key, val, child_id, old_val)

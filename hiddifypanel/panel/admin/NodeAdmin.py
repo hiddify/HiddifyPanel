@@ -42,7 +42,7 @@ class NodeAdmin(AdminLTEModelView):
     def is_accessible(self):
         if login_required(roles={Role.super_admin})(lambda: True)() != True:
             return False
-        if Child.current.id != 0:
+        if Child.current().id != 0:
             return False
         return True
 
