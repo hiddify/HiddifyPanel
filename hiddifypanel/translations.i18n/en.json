@@ -47,8 +47,12 @@
   "Create Package": "Create Package",
   "Current Domain": "Current Domain",
   "Dear {}\n\nYour hiddify information is\nUUID: {}\nLast online date: {}\nExpire time: {}\nUsage class: {}\n": "Dear {}\n\nYour Hiddify Information is\nUUID: {}\nLast Online Date: {}\nExpire Time: {}\nUsage Class: {}\n",
-  "Define the admin mode. ": "🥇🥈🥉 Define the Admin Mode",
-  "Define the user mode. Should the usage reset every month?": "The user's Package Mode. should the usage reset every Month, Week, etc",
+  "Define the admin mode": {
+    " ": "🥇🥈🥉 Define the Admin Mode"
+  },
+  "Define the user mode": {
+    " Should the usage reset every month?": "The user's Package Mode. should the usage reset every Month, Week, etc"
+  },
   "Delete?": "Delete?",
   "Develop": "⚠️ Develop",
   "Direct": "➖ Direct",
@@ -86,7 +90,9 @@
   "HiddifyNG": "HiddifyNG <span class='badge badge-success'>Recommended</span>",
   "HiddifyNG intro": "📌 Please install HiddifyNG from either of these links:\n<br />\n %(dl_link)s  %(play_link)s\n<br />\nThen click on the link below and open it in HiddifyNG.\n<br />",
   "HiddigyN": "HiddifyN <span class='badge badge-success'>Recommended</span>",
-  "Hooray 🎉 🎉 🎉 \nWelcome to hiddifybot.\nStart by clicking the link on the panel or entering your UUID.": "Hooray 🎉 🎉 🎉 \nWelcome to Hiddify bot\nStart by clicking the link on the Panel or entering your UUID.",
+  "Hooray 🎉 🎉 🎉 \nWelcome to hiddifybot": {
+    "\nStart by clicking the link on the panel or entering your UUID.": "Hooray 🎉 🎉 🎉 \nWelcome to Hiddify bot\nStart by clicking the link on the Panel or entering your UUID."
+  },
   "Hover the user to see the reason": "Hover the user to see the reason",
   "How many days this package should be available?": "How Many Days Is This Package?",
   "How many?": "How many?",
@@ -96,7 +102,9 @@
   "Import in": "Import in",
   "In 5 minutes": "In 5 Minutes",
   "In CDN mode, Domain IP=%(domain_ip)s should be different to your ip=%(server_ip)s": "In CDN mode, Domain IP=%(domain_ip)s should be different to your ip=%(server_ip)s",
-  "In this section, you can add your domain. You need to add at least one domain in direct mode.": "1️⃣ In this section, you can add your Domain. \n<br>\n2️⃣ If you want to lessen the probability of having dirty IP, you can add Multiple Relay Server <a href='https://github.com/hiddify/hiddify-config/discussions/129'>Read More</a>.\n<br>\n3️⃣ If you have Multiple IPv4 or IPv6 in your Panel you have to add the domain pointed to them as Relay.",
+  "In this section, you can add your domain": {
+    " You need to add at least one domain in direct mode.": "1️⃣ In this section, you can add your Domain. \n<br>\n2️⃣ If you want to lessen the probability of having dirty IP, you can add Multiple Relay Server <a href='https://github.com/hiddify/hiddify-config/discussions/129'>Read More</a>.\n<br>\n3️⃣ If you have Multiple IPv4 or IPv6 in your Panel you have to add the domain pointed to them as Relay."
+  },
   "Incorrect Password": "⚠️ Incorrect Password",
   "Install": "Install",
   "Install Hiddify Application": "Hiddify Manager Installation",
@@ -105,8 +113,12 @@
   "Invalid admin link": "Invalid Admin Link",
   "Iran": "🇮🇷 Iran",
   "It seems that you are using default domain (%(domain)s) which is not recommended.": "It seems that you are using default domain (%(domain)s) which is not recommended. Please change or remove it from domain section.",
-  "It seems that you have not created any users yet. Default user link: %(default_link)s": "It seems that you have not created any users yet. default user link: %(default_link)s",
-  "It seems that you have not setup the system completely. <a class=\"btn btn-success\" href=\"%(quick_setup)s\">Click here</a> to complete setup.": "It seems that you have not setup the system completely. <a class='btn btn-success' href='%(quick_setup)s'>Click here</a> to complete setup.",
+  "It seems that you have not created any users yet": {
+    " Default user link: %(default_link)s": "It seems that you have not created any users yet. default user link: %(default_link)s"
+  },
+  "It seems that you have not setup the system completely": {
+    " <a class=\"btn btn-success\" href=\"%(quick_setup)s\">Click here</a> to complete setup.": "It seems that you have not setup the system completely. <a class='btn btn-success' href='%(quick_setup)s'>Click here</a> to complete setup."
+  },
   "It will override the root admin to the current user": "It will override the owner admin of the backup file to the current user",
   "Join our Hiddify Telegram channel to get the latest updates on Hiddify.": "Join our Hiddify Telegram channel to get the latest updates on Hiddify.",
   "Last Online": "Last Connection",
@@ -139,12 +151,16 @@
   "Package not started yet.": "Package Not Started Yet",
   "Panel Link": "➖ Panel Link",
   "Parent Panel": "Parent Panel",
-  "Please Wait...": "Please Wait...",
+  "Please Wait.": {
+    ".": "Please Wait..."
+  },
   "Please click on %(install)s to save the user page.": "Click %(install)s to save the User Page.",
   "Please connect your telegram account to the panel to be informed about latest news.": "Please connect your Telegram account to the panel to be informed about latest news",
   "Please connect your telegram accout to the panel to be informed about latest news.": "Please connect your Telegram account to the panel to know the latest Status of your Subscription",
   "Please create an issue on Github.": "Please create an issue on Github",
-  "Please note that your panel can be accessed only via <a href=\"%(adminlink)s\" class=\"btn btn-primary copy-link\">%(adminlink)s</a>. Please save this link.": "Please note that your panel can be accessed only via the following link. please save this link.\n<p><a href='%(adminlink)s' class='btn btn-secondary copy-link'><i class='fa-solid fa-copy'></i></a>\n<a href='%(adminlink)s' class='copy-link' style='word-break: break-all;'>%(adminlink)s</a></p> ",
+  "Please note that your panel can be accessed only via <a href=\"%(adminlink)s\" class=\"btn btn-primary copy-link\">%(adminlink)s</a>": {
+    " Please save this link.": "Please note that your panel can be accessed only via the following link. please save this link.\n<p><a href='%(adminlink)s' class='btn btn-secondary copy-link'><i class='fa-solid fa-copy'></i></a>\n<a href='%(adminlink)s' class='copy-link' style='word-break: break-all;'>%(adminlink)s</a></p> "
+  },
   "Please select at least one file.": "Please select at least one file.",
   "Please select at least one record.": "Please select at least one record.",
   "Please select at least one user": "Please select at least one user",
@@ -196,18 +212,26 @@
   "Status": "Status",
   "Submit": "Submit",
   "Success": "Success",
-  "Success! Please wait around 4 minutes to make sure everything is updated. During this time, please save your proxy links which are:": "⚠️ Please wait about 5 minutes to make sure everything is updated. during this time, please copy and save your Proxy links which are:",
+  "Success! Please wait around 4 minutes to make sure everything is updated": {
+    " During this time, please save your proxy links which are:": "⚠️ Please wait about 5 minutes to make sure everything is updated. during this time, please copy and save your Proxy links which are:"
+  },
   "Success! Please wait around 5 minutes to make sure everything is updated.": "✔️ Success! Please Wait around 5 minutes to make sure everything is updated",
   "Telegram Bot": "Telegram Bot",
   "Temporary Short Link": "⏱️ Temporary Short Link",
-  "The action done successfully. You can now leave this page.": "✅ The Action Done Successfully. You can now leave this page",
+  "The action done successfully": {
+    " You can now leave this page.": "✅ The Action Done Successfully. You can now leave this page"
+  },
   "The message has been sent.": "The message has been sent.",
   "The message was not sent to": "The message was not sent to",
   "The name shown in the configs for this domain.": "The name that will be shown in the Configs for this Domain.",
-  "The page has been moved to a new link. Please copy and save the new link.": "The page has been moved to a new link. Please copy and save the new link.",
+  "The page has been moved to a new link": {
+    " Please copy and save the new link.": "The page has been moved to a new link. Please copy and save the new link."
+  },
   "This can be used for giving your users a permanent non blockable links.": "This can be used for giving your Users a permanent non Blockable Links.",
   "This domain does not exist in the panel!": "This Domain does not exist in the Panel !",
-  "This version of hiddify panel is outdated. Please update it from admin area.": "⚠️ This version of Hiddify Manager is outdated. please Update it from Admin area",
+  "This version of hiddify panel is outdated": {
+    " Please update it from admin area.": "⚠️ This version of Hiddify Manager is outdated. please Update it from Admin area"
+  },
   "Today Usage": "Today",
   "Too many Connected IPs": "Too Many Connected IPs",
   "Total Usage": "Total Usage",
@@ -217,13 +241,17 @@
   "Use HiddifyNext:": "Use HiddifyNext:",
   "User activated!": "User Activated",
   "User is inactive": "User Is Inactive",
-  "User usage will be updated every 6 minutes. To update it now click <a href=\"%(link)s\" class=\"btn btn-info\">here</a>": "User usage will be updated every 6 minutes. To update it now click <a href=\"%(link)s\" class=\"btn btn-info\">here</a>",
+  "User usage will be updated every 6 minutes": {
+    " To update it now click <a href=\"%(link)s\" class=\"btn btn-info\">here</a>": "User usage will be updated every 6 minutes. To update it now click <a href=\"%(link)s\" class=\"btn btn-info\">here</a>"
+  },
   "V2rayNG": "Alternative v2rayNG <button class='btn btn-sm btn-default' onclick='show_video('android-v2rayng')'><i class='fa-solid fa-question'></i> </button>\n<br />\n<br />",
   "V2rayNG intro": "Please install v2rayNG from either of these links: %(dl_link)s  %(play_link)s.\nThen copy the link below and paste it in v2rayNG according to the video tutorial <button class='btn btn-sm btn-default' onclick='show_video('android-v2rayng')'><i class='fa-solid fa-question'></i> </button>.\n<br />",
   "View in Telegram": "View in Telegram",
   "Want to enjoy more with telegram?": "ℹ️ Connect Your Account to Telegram",
   "Welcome %(user)s": "Welcome %(user)s",
-  "Welcome to admin bot. Choose your action": "Welcome to admin bot. Choose your action",
+  "Welcome to admin bot": {
+    " Choose your action": "Welcome to admin bot. Choose your action"
+  },
   "Why Going to Premium?": "Why Going to Premium?",
   "Windows": "Windows",
   "With selected": "With selected",
@@ -231,11 +259,17 @@
   "Yesterday Usage": "Yesterday",
   "You can download a json formated of configurations by clicking <a href='%(link)s' class='btn btn-primary'>here</a>": "🔄 Hiddify Manager automatically takes a Backup every 6 Hours. The path of the Backup files on the server: ⬇️\n<br>\n/opt/hiddify-manager/hiddify-panel/backup/\n<br>\n<br>\n<br>\n⚠️ You can download a JSON file format of the configurations by clicking on the button below\n<br>\n<br>\n<a href='%(link)s' class='btn btn-primary'>Download Backup File</a>",
   "You can restore your configs from previously downloaded configs": "ℹ️ You can restore your configs from previously downloaded backup file",
-  "You can select the configs with which domains show be shown in the user area. If you select all, automatically, all the new domains will be added for each users.": "For users visit the user area with this domain, Specify they can see the proxies of which domains.\n<br>\nSuggestion: For a domain with an unfiltered IP and different from the others, select all other domains (except the current domain). As a result, since the use of this IP is not for proxy and it is a simple website, this domain and IP will never be blocked and your users can easily update new profiles.",
+  "You can select the configs with which domains show be shown in the user area": {
+    " If you select all, automatically, all the new domains will be added for each users.": "For users visit the user area with this domain, Specify they can see the proxies of which domains.\n<br>\nSuggestion: For a domain with an unfiltered IP and different from the others, select all other domains (except the current domain). As a result, since the use of this IP is not for proxy and it is a simple website, this domain and IP will never be blocked and your users can easily update new profiles."
+  },
   "You have too much users! You can have only %(active)s active users and %(total)s users": "You have too much users! You can have only %(active)s active users and %(total)s users",
   "You have used this domain in: ": "You have already used this Domain in: ",
-  "You should visit this page without VPN. Your country=%(your_country)s\nexpected=%(expected_country)s": "You should visit this page without VPN Your Country =%(your_country)s\nExpected=%(expected_country)s",
-  "Your domains changed. Please do not forget to copy admin links, otherwise you can not access to the panel anymore.": "⚠️ Your Domains Changed. please do not forget to copy Admin links, otherwise you can not access to the panel anymore",
+  "You should visit this page without VPN": {
+    " Your country=%(your_country)s\nexpected=%(expected_country)s": "You should visit this page without VPN Your Country =%(your_country)s\nExpected=%(expected_country)s"
+  },
+  "Your domains changed": {
+    " Please do not forget to copy admin links, otherwise you can not access to the panel anymore.": "⚠️ Your Domains Changed. please do not forget to copy Admin links, otherwise you can not access to the panel anymore"
+  },
   "Your hiddify instance information \nDomain: {} \nUsage limit: {} GB\nCurrent usage: {} GB\nExpires at: {} \nRemaining days: {} \n\n\n Happy using 🎉 🎉 🎉 \n": "Your Hiddify instance information \nDomain: {} \nUsage Limit: {} GB\nCurrent Usage: {} GB\nExpires at: {} \nRemaining Days: {} \n\n\nGood Luck! 🎉 🎉 🎉 \n",
   "[Admin only visible message:] You can change this message from settings": "[Admin Exclusive Message]: Customizable via Settings",
   "actions": "Actions",
@@ -335,15 +369,15 @@
   "child has been removed!": "Child Has Been Removed!",
   "clickable copy": "Link for Social Media",
   "close": "Close",
-  "config.Domain already used": "Domain is exist in domains section. Use another Domain",
-  "config.Invalid brand link": "Invalid Link. it should be on this format: (https or http://example.com)",
-  "config.Invalid domain": "Error! Invalid Domain.  The Domain Format is www.google.com",
-  "config.Invalid port": "Invalid Port. it should be comma separated Integer e.g.  2052,2053",
-  "config.Invalid proxy path": "Invalid Proxy Path. It should be ASCI string (a-z A-Z 0-9)",
-  "config.Invalid telegram bot token": "Invalid Telegram Bot Token",
-  "config.Invalid! The pattern is number-number": "⚠️ The Pattern Is Number-Number ⚠️",
-  "config.Invalid! it should be a number only": "⚠️ It Should Be a Number Only ⚠️",
   "config": {
+    "Domain already used": "Domain is exist in domains section. Use another Domain",
+    "Invalid brand link": "Invalid Link. it should be on this format: (https or http://example.com)",
+    "Invalid domain": "Error! Invalid Domain.  The Domain Format is www.google.com",
+    "Invalid port": "Invalid Port. it should be comma separated Integer e.g.  2052,2053",
+    "Invalid proxy path": "Invalid Proxy Path. It should be ASCI string (a-z A-Z 0-9)",
+    "Invalid telegram bot token": "Invalid Telegram Bot Token",
+    "Invalid! The pattern is number-number": "⚠️ The Pattern Is Number-Number ⚠️",
+    "Invalid! it should be a number only": "⚠️ It Should Be a Number Only ⚠️",
     "admin": {
       "description": "Admin section is for configuring admin related settings",
       "label": "Admin Settings"
@@ -914,9 +948,9 @@
     "ws_enable": {
       "description": "Websocket creates a tunnel over HTTP that is useful to be used in CDN",
       "label": "🔰 Enable Websocket"
-    }
+    },
+    "invalid uuid": "Invalid UUID secret. example: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n\n"
   },
-  "config.invalid uuid": "Invalid UUID secret. example: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n\n",
   "copy": "Copy",
   "daily": "⏰ Daily",
   "days": "Days",
@@ -936,7 +970,9 @@
   "download": "Direct Download",
   "fake": "🆎 Fake Site",
   "gRPC": "➿ gRPC",
-  "gRPC is a H2 based protocol. Maybe it is faster for you!": "ℹ️ gRPC is a H2 based Protocol. Maybe it is faster for you!",
+  "gRPC is a H2 based protocol": {
+    " Maybe it is faster for you!": "ℹ️ gRPC is a H2 based Protocol. Maybe it is faster for you!"
+  },
   "in parent panel": "In Parent Panel",
   "install from google play": "<i class='fa-brands fa-google-play'></i> Google Play",
   "ios": "iOS",
@@ -998,7 +1034,9 @@
   "relay": "♾️ Relay (Connect Using an Intermediate Node)",
   "search": "Search",
   "see the log in the bellow screen": "📑 See the log in the bellow screen",
-  "selected domain for REALITY is not in the same ASN. To better use of the protocol, it is better to find a domain in the same ASN.": "Selected Domain for REALITY is not in the same ASN. To better use of the Protocol, it is better to find a Domain in the same ASN",
+  "selected domain for REALITY is not in the same ASN": {
+    " To better use of the protocol, it is better to find a domain in the same ASN.": "Selected Domain for REALITY is not in the same ASN. To better use of the Protocol, it is better to find a Domain in the same ASN"
+  },
   "serverssh": {
     "password-login": {
       "warning": "Your server is vulnerable to abuses because Password Authentication is enabled in your SSH. To secure your server, please switch to key authentication mechanism and turn off Password Authentication. <a href='https://github.com/hiddify/Hiddify-Manager/wiki/Disable-SSH-Password-Authentication'>read more... </a>"
@@ -1104,15 +1142,15 @@
       },
       "windows": {
         "intro": "First, download and install the Hiddify Desktop software according to your operating system.\n<br />\n%(hiddify_desktop_links)s\n\n<details>\n<summary>Why Hiddify Desktop ?</summary>\n<div class='callout callout-info'>\n\n        Hiddify Desktop is an safe and open source fork of Clash that supports more VLESS  and UTLS Fingerprinting.\n        <br>\n<br />\n        Its source codes exist in\n        <a href='https://github.com/hiddify/HiddifyDesktop'>GitHub</a>.\n        \n\n        <details>\n            <summary>Alternative: Normal Clash</summary>\n            %(normal_clash_link)s\n\n            <div class='alert alert-danger'>\n            \tClash does not support browser fingerprinting and VLESS protocol . Therefore, we need to add another link for it.\n            </div>\n            \n\n        </details>\n</div>\n        </details>\n<br />\nNow, according to your need, you can click on one of the buttons. By viewing the window in your browser, just click on the <b>Open</b> option to automatically add the server link to Hiddify Desktop."
-      }
+      },
+      "select os": "Please Select Your Operating System.",
+      "select tool": "Please select the item."
     },
     "last_reset_time": "Last Usage Date Reset",
     "name": "Name",
     "usage_limit_GB": "⌛️ Usage Limit (GB)",
     "user_links": "User Links"
   },
-  "user.home.select os": "Please Select Your Operating System.",
-  "user.home.select tool": "Please select the item.",
   "weekly": "📅 Weekly",
   "worker": "✴️ Cloudflare Worker",
   "📅%(expire_days)s days": "📅%(expire_days)s Days Remain"
