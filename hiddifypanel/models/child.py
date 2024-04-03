@@ -20,7 +20,7 @@ class ChildMode(StrEnum):
 
 class Child(db.Model):  # type: ignore
     id = Column(Integer, primary_key=True, autoincrement=True)
-    name = Column(String(200), nullable=False, unique=True)
+    name = Column(String(200), nullable=False, unique=False)
     mode = Column(Enum(ChildMode), nullable=False, default=ChildMode.virtual)
     # ip = db.Column(db.String(200), nullable=False, unique=True)
     unique_id = Column(String(200), nullable=False, default=lambda: str(uuid.uuid4()), unique=True)
