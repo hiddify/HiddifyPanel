@@ -1,3 +1,4 @@
+from typing import Optional
 from hiddifypanel.models.config_enum import ConfigEnum, LogLevel, PanelMode, Lang
 from flask import g
 
@@ -61,7 +62,7 @@ class StrConfig(db.Model):
 
 
 @cache.cache(ttl=500)
-def hconfig(key: ConfigEnum, child_id: int | None = None):  # -> str | int | StrEnum | None:
+def hconfig(key: ConfigEnum, child_id: Optional[int] = None):  # -> str | int | StrEnum | None:
     if child_id is None:
         child_id = Child.current().id
 
