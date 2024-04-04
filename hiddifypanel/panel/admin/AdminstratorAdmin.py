@@ -240,7 +240,7 @@ class AdminstratorAdmin(AdminLTEModelView):
             del form.max_active_users
             del form.can_add_admin
 
-    def after_model_change(form, model, is_created):
+    def after_model_change(self, form, model, is_created):
         if hutils.node.is_parent():
             hutils.node.parent.send_sync_req_to_childs()
 
