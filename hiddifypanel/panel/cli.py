@@ -1,15 +1,17 @@
 import datetime
 import uuid
-
+import json
+import os
 import click
 from dateutil import relativedelta
+
+
 from hiddifypanel import hutils
 
 from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify, usage
 from hiddifypanel.database import db
 from hiddifypanel.panel.init_db import init_db
-from flask import g
 
 
 def drop_db():
@@ -24,29 +26,28 @@ def downgrade():
                                ConfigEnum.hysteria_port, ConfigEnum.ssh_server_enable, ConfigEnum.ssh_server_port, ConfigEnum.ssh_server_redis_url])).delete()
         Proxy.query.filter(Proxy.l3.in_([ProxyL3.ssh, ProxyL3.h3_quic, ProxyL3.custom])).delete()
         db.session.commit()
-        import os
         os.rename("/opt/hiddify-manager/hiddify-panel/hiddifypanel.db.old", "/opt/hiddify-manager/hiddify-panel/hiddifypanel.db")
 
 
 def backup():
     dbdict = hiddify.dump_db_to_dict()
-    import json
-    import os
     os.makedirs('backup', exist_ok=True)
     dst = f'backup/{datetime.datetime.now().strftime("%Y_%m_%d__%H_%M_%S")}.json'
     with open(dst, 'w') as fp:
         json.dump(dbdict, fp, indent=4, sort_keys=True, default=str)
 
     if hconfig(ConfigEnum.telegram_bot_token):
-        for admin in AdminUser.query.filter(AdminUser.mode == AdminMode.super_admin, AdminUser.telegram_id is not None).all():
-            from hiddifypanel.panel.commercial.telegrambot import bot
-            with open(dst, 'rb') as document:
+        from hiddifypanel.panel.commercial.telegrambot import bot, register_bot
+        if not bot.token:
+            register_bot(True)
+
+        with open(dst, 'rb') as document:
+            for admin in AdminUser.query.filter(AdminUser.mode == AdminMode.super_admin, AdminUser.telegram_id is not None).all():
                 caption = ("Backup \n" + admin_links())
                 bot.send_document(admin.telegram_id, document, visible_file_name=dst.replace("backup/", ""), caption=caption[:min(len(caption), 1000)])
 
 
 def all_configs():
-    import json
     valid_users = [u.to_dict(dump_id=True) for u in User.query.filter((User.usage_limit > User.current_usage)).all() if u.is_active]
     host_child_ids = [c.id for c in Child.query.filter(Child.mode == ChildMode.virtual).all()]
     configs = {
