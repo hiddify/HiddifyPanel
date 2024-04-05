@@ -75,11 +75,9 @@ class Child(db.Model):  # type: ignore
             tmp_uuid = str(uuid.uuid4())
             db.session.add(Child(id=0, unique_id=tmp_uuid, name="Root"))
             db.session.commit()
-
-            connection = db.engine.connect()
-            connection.execute(text(f'update child set id=0 where unique_id="{tmp_uuid}"'))
-            connection.close()
+            db.execute(f"update child set id=0 where unique_id='{tmp_uuid}'")
             child = Child.by_id(0)
+            print("child-=======", child)
         return child
 
     @classmethod

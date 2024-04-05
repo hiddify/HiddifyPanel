@@ -7,7 +7,7 @@ from strenum import StrEnum
 from apiflask import abort
 from flask_babel import gettext as __
 from flask_babel import lazy_gettext as _
-from hiddifypanel.database import db
+from hiddifypanel.database import db, db_execute
 from hiddifypanel.models.role import Role
 from hiddifypanel.models.base_account import BaseAccount
 
@@ -155,10 +155,8 @@ class AdminUser(BaseAccount):
         if not admin:
             db.session.add(AdminUser(id=1, uuid=str(uuid.uuid4()), name="Owner", mode=AdminMode.super_admin, comment=""))
             db.session.commit()
-            from sqlalchemy import text
-            connection = db.engine.connect()
-            connection.execute(text("update admin_user set id=1 where name='Owner'"))
-            connection.close()
+
+            db_execute("update admin_user set id=1 where name='Owner'")
             admin = AdminUser.by_id(1)
 
         return admin

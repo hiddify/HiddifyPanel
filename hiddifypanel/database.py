@@ -12,3 +12,9 @@ db.UUID = UUIDType  # type: ignore
 def init_app(app):
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
     db.init_app(app)
+
+
+def db_execute(query: str, **params: dict):
+    with db.engine.connect() as connection:
+        connection.execute(text(query), params)
+        connection.commit()

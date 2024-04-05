@@ -9,7 +9,7 @@ import uuid
 from hiddifypanel import Events, hutils
 from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify
-from hiddifypanel.database import db
+from hiddifypanel.database import db, db_execute
 from hiddifypanel import hutils
 from sqlalchemy import text
 from flask import g
@@ -548,16 +548,16 @@ def add_config_if_not_exist(key: ConfigEnum, val: str | int, child_id: int | Non
 def add_column(column):
     try:
         column_type = column.type.compile(db.engine.dialect)
-        connection = db.engine.connect()
-        result = connection.execute(f'ALTER TABLE {column.table.name} ADD COLUMN {column.name} {column_type}')
+
+        db_execute(f'ALTER TABLE {column.table.name} ADD COLUMN {column.name} {column_type}')
     except BaseException:
         pass
 
 
 def execute(query: str):
     try:
-        connection = db.engine.connect()
-        result = connection.execute(text(query))
+
+        db_execute(query)
     except BaseException as e:
         print(e)
         pass
@@ -568,7 +568,6 @@ def add_new_enum_values():
         Proxy.l3, Proxy.proto, Proxy.cdn, Proxy.transport,
         User.mode, Domain.mode, BoolConfig.key, StrConfig.key
     ]
-    connection = db.engine.connect()
     for col in columns:
         enum_class = col.type.enum_class
         column_name = col.name
@@ -581,7 +580,7 @@ def add_new_enum_values():
         # result = db.engine.execute(f"SELECT DISTINCT `{column_name}` FROM {table_name}")
         # db_values = {row[0] for row in result}
 
-        result = connection.execute(text(f"SHOW COLUMNS FROM {table_name} LIKE '{column_name}';"))
+        result = db_execute(f"SHOW COLUMNS FROM {table_name} LIKE '{column_name}';")
         db_values = []
 
         for row in result:
