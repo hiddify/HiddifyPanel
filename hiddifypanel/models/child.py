@@ -7,7 +7,7 @@ from strenum import StrEnum
 from flask import g, has_app_context
 
 
-from hiddifypanel.database import db
+from hiddifypanel.database import db, db_execute
 
 
 class ChildMode(StrEnum):
@@ -75,7 +75,7 @@ class Child(db.Model):  # type: ignore
             tmp_uuid = str(uuid.uuid4())
             db.session.add(Child(id=0, unique_id=tmp_uuid, name="Root"))
             db.session.commit()
-            db.execute(f"update child set id=0 where unique_id='{tmp_uuid}'")
+            db_execute(f"update child set id=0 where unique_id='{tmp_uuid}'")
             child = Child.by_id(0)
             print("child-=======", child)
         return child
