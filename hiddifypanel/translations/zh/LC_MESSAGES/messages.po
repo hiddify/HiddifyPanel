@@ -24,7 +24,7 @@ msgid "Actions"
 msgstr "行动"
 
 msgid "Active"
-msgstr ""
+msgstr "积极"
 
 msgid "Active Users"
 msgstr "活跃用户"
@@ -1099,6 +1099,18 @@ msgstr "🔀 CDN（Cloudflare 代理，...）"
 msgid "child has been removed!"
 msgstr "孩子已被移走！"
 
+msgid "child.register-failed"
+msgstr ""
+
+msgid "child.register-success"
+msgstr ""
+
+msgid "child.sync-failed"
+msgstr ""
+
+msgid "child.sync-success"
+msgstr ""
+
 msgid "clickable copy"
 msgstr "社交媒体链接"
 
@@ -1317,6 +1329,12 @@ msgstr ""
 msgid "config.grpc_enable.label"
 msgstr ""
 
+msgid "config.h2_enable.description"
+msgstr ""
+
+msgid "config.h2_enable.label"
+msgstr ""
+
 msgid "config.hidden.description"
 msgstr "配置.隐藏.描述"
 
@@ -1384,6 +1402,9 @@ msgstr ""
 msgid "config.hysteria_up_mbps.label"
 msgstr ""
 
+msgid "config.invalid-pattern-for-warp-sites"
+msgstr ""
+
 msgid "config.is_parent.description"
 msgstr "config.is_parent.description"
 
@@ -1426,11 +1447,17 @@ msgstr "要将本产品用于商业用途，您必须购买其许可证"
 msgid "config.license.label"
 msgstr "许可证代码"
 
+msgid "config.log_level.description"
+msgstr ""
+
+msgid "config.log_level.label"
+msgstr ""
+
 msgid "config.mux.description"
 msgstr ""
 
 msgid "config.mux.label"
-msgstr ""
+msgstr "MUC设置"
 
 msgid "config.mux_brutal_down_mbps.description"
 msgstr ""
@@ -1509,6 +1536,24 @@ msgstr "指定您想要发布的包还是开发的包"
 
 msgid "config.package_mode.label"
 msgstr "🔄 包更新模式"
+
+msgid "config.panel_mode.description"
+msgstr ""
+
+msgid "config.panel_mode.label"
+msgstr ""
+
+msgid "config.parent_admin_proxy_path.description"
+msgstr ""
+
+msgid "config.parent_admin_proxy_path.label"
+msgstr ""
+
+msgid "config.parent_domain.description"
+msgstr ""
+
+msgid "config.parent_domain.label"
+msgstr ""
 
 msgid "config.parent_panel.description"
 msgstr "您可以连接到中央面板仅定义一个用户，所有服务器的使用情况将累积添加。"
@@ -1594,11 +1639,23 @@ msgstr ""
 msgid "config.proxy_path_client.label"
 msgstr ""
 
+msgid "config.quic_enable.description"
+msgstr ""
+
+msgid "config.quic_enable.label"
+msgstr ""
+
 msgid "config.reality.description"
 msgstr "REALITY 消除了服务器端 TLS 指纹功能"
 
 msgid "config.reality.label"
 msgstr "现实"
+
+msgid "config.reality_enable.description"
+msgstr ""
+
+msgid "config.reality_enable.label"
+msgstr ""
 
 msgid "config.reality_fallback_domain.description"
 msgstr "当 GFW 访问服务器名称中的网站时，将被重定向到该域。"
@@ -1779,6 +1836,12 @@ msgstr "请在您的数据中心使用众所周知的域。例如，如果您在
 msgid "config.ssr_fakedomain.label"
 msgstr "SSR 假域名"
 
+msgid "config.tcp_enable.description"
+msgstr ""
+
+msgid "config.tcp_enable.label"
+msgstr ""
+
 msgid "config.telegram.description"
 msgstr "专为 Telegram 设计的代理，可绕过 Telegram 过滤"
 
@@ -1884,6 +1947,12 @@ msgstr "可以在此部分设置 Torrent 阻止配置。"
 msgid "config.torrent_block.label"
 msgstr "Torrent 块配置"
 
+msgid "config.trojan_enable.description"
+msgstr ""
+
+msgid "config.trojan_enable.label"
+msgstr ""
+
 msgid "config.tuic.description"
 msgstr ""
 "Delicately-TUICed 高性能代理位于 QUIC 协议之上。\n"
@@ -1931,6 +2000,12 @@ msgstr "配置已成功更改。单击 %(link)s 应用配置。申请可能需�
 
 msgid "config.validation-success-no-reset"
 msgstr "✅ 配置已成功更改"
+
+msgid "config.vless_enable.description"
+msgstr ""
+
+msgid "config.vless_enable.label"
+msgstr ""
 
 msgid "config.vmess_enable.description"
 msgstr "据多位人士透露，VMess 导致该系统被政府检测到。所以不推荐"
@@ -2030,6 +2105,12 @@ msgid "config.ws_enable.description"
 msgstr ""
 
 msgid "config.ws_enable.label"
+msgstr ""
+
+msgid "config.xtls_enable.description"
+msgstr ""
+
+msgid "config.xtls_enable.label"
 msgstr ""
 
 msgid "config.invalid uuid"
@@ -2147,6 +2228,9 @@ msgstr "下一个"
 msgid "no_reset"
 msgstr "⭐️无需重置"
 
+msgid "node.diff-version"
+msgstr ""
+
 msgid "node.mode.dscr"
 msgstr "节点模式.dscr"
 
@@ -2176,6 +2260,12 @@ msgstr "包天数？"
 
 msgid "package size?"
 msgstr "包装尺寸？"
+
+msgid "parent.invalid-parent-url"
+msgstr ""
+
+msgid "parent.sync-req-failed"
+msgstr ""
 
 msgid "previous"
 msgstr "以前的"

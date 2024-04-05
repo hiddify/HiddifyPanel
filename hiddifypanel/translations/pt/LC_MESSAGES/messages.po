@@ -24,7 +24,7 @@ msgid "Actions"
 msgstr "Ações"
 
 msgid "Active"
-msgstr ""
+msgstr "ativo"
 
 msgid "Active Users"
 msgstr "Usuários ativos"
@@ -91,7 +91,7 @@ msgid "Can add sub admin"
 msgstr "👥 Pode adicionar subadministrador"
 
 msgid "Can not connect to Cloudflare."
-msgstr ""
+msgstr "Não é possível conectar ao Cloudflare."
 
 msgid "Check again"
 msgstr "Verifique novamente"
@@ -115,7 +115,7 @@ msgid "Close"
 msgstr "Fechar"
 
 msgid "Commercial use"
-msgstr ""
+msgstr "Utilização comercial"
 
 msgid "Config file is incorrect"
 msgstr "O arquivo de configuração está incorreto."
@@ -142,7 +142,7 @@ msgid "Create Package"
 msgstr "Criar pacote"
 
 msgid "Current Domain"
-msgstr ""
+msgstr "Domínio atual"
 
 msgid ""
 "Dear {}\n"
@@ -209,6 +209,8 @@ msgid ""
 "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is "
 "required in direct mode"
 msgstr ""
+" O IP do domínio = %(domain_ip)s não corresponde ao seu IP = %(server_ip)s, "
+"o que é necessário no modo direto"
 
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr ""
@@ -364,7 +366,7 @@ msgid "Install Hiddify Application"
 msgstr "Instalação do Painel Hidify"
 
 msgid "Invalid IP or domain"
-msgstr ""
+msgstr "IP ou domínio inválido"
 
 msgid "Invalid REALITY hostnames"
 msgstr "Nomes de host REALITY inválidos"
@@ -1080,6 +1082,18 @@ msgstr "CDN (Cloudflare Proxy, ...)"
 msgid "child has been removed!"
 msgstr "Child removido"
 
+msgid "child.register-failed"
+msgstr ""
+
+msgid "child.register-success"
+msgstr ""
+
+msgid "child.sync-failed"
+msgstr ""
+
+msgid "child.sync-success"
+msgstr ""
+
 msgid "clickable copy"
 msgstr "Link para mídias sociais"
 
@@ -1326,6 +1340,12 @@ msgstr ""
 msgid "config.grpc_enable.label"
 msgstr ""
 
+msgid "config.h2_enable.description"
+msgstr ""
+
+msgid "config.h2_enable.label"
+msgstr ""
+
 msgid "config.hidden.description"
 msgstr "config.hidden.description"
 
@@ -1400,6 +1420,9 @@ msgstr ""
 msgid "config.hysteria_up_mbps.label"
 msgstr ""
 
+msgid "config.invalid-pattern-for-warp-sites"
+msgstr ""
+
 msgid "config.is_parent.description"
 msgstr "config.is_parent.description"
 
@@ -1444,11 +1467,17 @@ msgstr "Para uso comercial deste produto, você deve comprar sua licença"
 msgid "config.license.label"
 msgstr "Código de licença"
 
+msgid "config.log_level.description"
+msgstr ""
+
+msgid "config.log_level.label"
+msgstr ""
+
 msgid "config.mux.description"
 msgstr ""
 
 msgid "config.mux.label"
-msgstr ""
+msgstr "Configurações de MUX"
 
 msgid "config.mux_brutal_down_mbps.description"
 msgstr ""
@@ -1527,6 +1556,24 @@ msgstr "Especifique se você deseja um pacote lançado ou desenvolvido"
 
 msgid "config.package_mode.label"
 msgstr "🔄 Modo de atualização de pacotes"
+
+msgid "config.panel_mode.description"
+msgstr ""
+
+msgid "config.panel_mode.label"
+msgstr ""
+
+msgid "config.parent_admin_proxy_path.description"
+msgstr ""
+
+msgid "config.parent_admin_proxy_path.label"
+msgstr ""
+
+msgid "config.parent_domain.description"
+msgstr ""
+
+msgid "config.parent_domain.label"
+msgstr ""
 
 msgid "config.parent_panel.description"
 msgstr ""
@@ -1615,12 +1662,24 @@ msgstr ""
 msgid "config.proxy_path_client.label"
 msgstr ""
 
+msgid "config.quic_enable.description"
+msgstr ""
+
+msgid "config.quic_enable.label"
+msgstr ""
+
 msgid "config.reality.description"
 msgstr ""
 "REALITY elimina o recurso de impressão digital TLS do lado do servidor"
 
 msgid "config.reality.label"
 msgstr "Reality"
+
+msgid "config.reality_enable.description"
+msgstr ""
+
+msgid "config.reality_enable.label"
+msgstr ""
 
 msgid "config.reality_fallback_domain.description"
 msgstr ""
@@ -1830,6 +1889,12 @@ msgstr ""
 msgid "config.ssr_fakedomain.label"
 msgstr "SSR FakeDomain"
 
+msgid "config.tcp_enable.description"
+msgstr ""
+
+msgid "config.tcp_enable.label"
+msgstr ""
+
 msgid "config.telegram.description"
 msgstr "Um proxy projetado para o Telegram ignorar a filtragem do Telegram"
 
@@ -1946,6 +2011,12 @@ msgstr "As configurações do bloco de torrent podem ser definidas nesta seção
 msgid "config.torrent_block.label"
 msgstr "Configuração do Bloco de Torrent"
 
+msgid "config.trojan_enable.description"
+msgstr ""
+
+msgid "config.trojan_enable.label"
+msgstr ""
+
 msgid "config.tuic.description"
 msgstr ""
 "O proxy de alto desempenho delicadamente TUICed está no topo do protocolo QUIC.\n"
@@ -1997,6 +2068,12 @@ msgstr ""
 
 msgid "config.validation-success-no-reset"
 msgstr "✅ As configurações foram alteradas com sucesso"
+
+msgid "config.vless_enable.description"
+msgstr ""
+
+msgid "config.vless_enable.label"
+msgstr ""
 
 msgid "config.vmess_enable.description"
 msgstr ""
@@ -2106,6 +2183,12 @@ msgid "config.ws_enable.description"
 msgstr ""
 
 msgid "config.ws_enable.label"
+msgstr ""
+
+msgid "config.xtls_enable.description"
+msgstr ""
+
+msgid "config.xtls_enable.label"
 msgstr ""
 
 msgid "config.invalid uuid"
@@ -2227,6 +2310,9 @@ msgstr "Próximo"
 msgid "no_reset"
 msgstr "Sem Redefinir"
 
+msgid "node.diff-version"
+msgstr ""
+
 msgid "node.mode.dscr"
 msgstr ""
 
@@ -2256,6 +2342,12 @@ msgstr "dias de pacote?"
 
 msgid "package size?"
 msgstr "tamanho do pacote?"
+
+msgid "parent.invalid-parent-url"
+msgstr ""
+
+msgid "parent.sync-req-failed"
+msgstr ""
 
 msgid "previous"
 msgstr "Anterior"

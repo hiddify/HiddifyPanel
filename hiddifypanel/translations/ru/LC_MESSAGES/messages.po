@@ -1145,6 +1145,18 @@ msgstr "🔀 CDN (Cloudflare Proxy, ...)"
 msgid "child has been removed!"
 msgstr "Дочерний элемент удален!"
 
+msgid "child.register-failed"
+msgstr ""
+
+msgid "child.register-success"
+msgstr ""
+
+msgid "child.sync-failed"
+msgstr ""
+
+msgid "child.sync-success"
+msgstr ""
+
 msgid "clickable copy"
 msgstr "Ссылка для социальных сетей"
 
@@ -1396,6 +1408,12 @@ msgstr ""
 msgid "config.grpc_enable.label"
 msgstr "➿ Включить gRPC"
 
+msgid "config.h2_enable.description"
+msgstr ""
+
+msgid "config.h2_enable.label"
+msgstr ""
+
 msgid "config.hidden.description"
 msgstr "config.hidden.description"
 
@@ -1473,6 +1491,9 @@ msgstr "Hysteria Максимальная Скорость Исходящей З
 msgid "config.hysteria_up_mbps.label"
 msgstr "⬆️ Hysteria Исходящая Загрузка (mbps)"
 
+msgid "config.invalid-pattern-for-warp-sites"
+msgstr ""
+
 msgid "config.is_parent.description"
 msgstr "config.is_parent.description"
 
@@ -1518,6 +1539,12 @@ msgstr ""
 
 msgid "config.license.label"
 msgstr "License  Code"
+
+msgid "config.log_level.description"
+msgstr ""
+
+msgid "config.log_level.label"
+msgstr ""
 
 msgid "config.mux.description"
 msgstr "Настройки конфигурации MUX (Multiplex)"
@@ -1614,6 +1641,24 @@ msgstr ""
 msgid "config.package_mode.label"
 msgstr "🔄 Режим обновления пакетов"
 
+msgid "config.panel_mode.description"
+msgstr ""
+
+msgid "config.panel_mode.label"
+msgstr ""
+
+msgid "config.parent_admin_proxy_path.description"
+msgstr ""
+
+msgid "config.parent_admin_proxy_path.label"
+msgstr ""
+
+msgid "config.parent_domain.description"
+msgstr ""
+
+msgid "config.parent_domain.label"
+msgstr ""
+
 msgid "config.parent_panel.description"
 msgstr ""
 "Вы можете подключиться к главной панели, чтобы добавить пользователя в одном"
@@ -1701,11 +1746,23 @@ msgstr ""
 msgid "config.proxy_path_client.label"
 msgstr ""
 
+msgid "config.quic_enable.description"
+msgstr ""
+
+msgid "config.quic_enable.label"
+msgstr ""
+
 msgid "config.reality.description"
 msgstr "REALITY функция устранения TLS Fingerprint со стороны севрера"
 
 msgid "config.reality.label"
 msgstr "Reality"
+
+msgid "config.reality_enable.description"
+msgstr ""
+
+msgid "config.reality_enable.label"
+msgstr ""
 
 msgid "config.reality_fallback_domain.description"
 msgstr ""
@@ -1921,6 +1978,12 @@ msgstr ""
 msgid "config.ssr_fakedomain.label"
 msgstr "SSR поддельный домен"
 
+msgid "config.tcp_enable.description"
+msgstr ""
+
+msgid "config.tcp_enable.label"
+msgstr ""
+
 msgid "config.telegram.description"
 msgstr ""
 "Прокси-сервер, разработанный для Telegram для обхода фильтрации Telegram"
@@ -2043,6 +2106,12 @@ msgstr "В этом разделе можно настроить блокиро�
 msgid "config.torrent_block.label"
 msgstr "Конфигурация блокировки Torrent"
 
+msgid "config.trojan_enable.description"
+msgstr ""
+
+msgid "config.trojan_enable.label"
+msgstr ""
+
 msgid "config.tuic.description"
 msgstr ""
 "Delicately-TUICed высокопроизводительный прокси работающий поверх протокола QUIC.\n"
@@ -2094,6 +2163,12 @@ msgstr ""
 
 msgid "config.validation-success-no-reset"
 msgstr "✅ Конфигурации успешно изменены"
+
+msgid "config.vless_enable.description"
+msgstr ""
+
+msgid "config.vless_enable.label"
+msgstr ""
 
 msgid "config.vmess_enable.description"
 msgstr ""
@@ -2210,6 +2285,12 @@ msgstr ""
 
 msgid "config.ws_enable.label"
 msgstr "🔰 Включить Websocket"
+
+msgid "config.xtls_enable.description"
+msgstr ""
+
+msgid "config.xtls_enable.label"
+msgstr ""
 
 msgid "config.invalid uuid"
 msgstr "Неверный UUID. пример: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6"
@@ -2331,6 +2412,9 @@ msgstr "Следующий"
 msgid "no_reset"
 msgstr "⭐️ Без сброса"
 
+msgid "node.diff-version"
+msgstr ""
+
 msgid "node.mode.dscr"
 msgstr ""
 
@@ -2360,6 +2444,12 @@ msgstr "пакетные дни?"
 
 msgid "package size?"
 msgstr "Размер посылки?"
+
+msgid "parent.invalid-parent-url"
+msgstr ""
+
+msgid "parent.sync-req-failed"
+msgstr ""
 
 msgid "previous"
 msgstr "Предыдущий"

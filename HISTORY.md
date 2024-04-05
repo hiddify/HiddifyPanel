@@ -1,6 +1,405 @@
 # Changelog
 
 
+## (unreleased)
+
+#### New
+
+* Add warp_sites validator. 
+
+* Add remaining days to reset. 
+
+#### Changes
+
+* Auth. 
+
+* Remove uuid as apikey (except for register) 
+
+* Better redis cache invalidation. 
+
+* Seperate child and node. 
+
+* Don't login with super admin account in node api calls need to be tested. 
+
+* Use Child.current instead of g.node in node apis need to be tested. 
+
+* Log to stdout. 
+
+* Refactor api_client(test) 
+
+* Refactor. 
+
+* User model ips property to devices. 
+
+* Improve code. 
+
+* Refactor api structure & implement get_panel_info function. 
+
+* Better query. 
+
+* Refactor child.py. 
+
+* Node auth. 
+
+* Child-parent(node) auth. 
+
+* Parse parent_panel as it's parent url with uuid (no unique id) 
+
+* Refactor. 
+
+* Refactor & bug fix. 
+
+* Hide parent settings for now. 
+
+* Refactor. 
+
+* Hide parent setting when panel is in parent mode. 
+
+* Refactor. 
+
+* Refactor. 
+
+* Refactor & bug fix. 
+
+* Authentication approach in api calls between child and parent. 
+
+* Little refactor. 
+
+* Improve usage api approach. 
+
+* Enable sync with parent when needed. 
+
+* Refactor child aliveness api. 
+
+* Send parent api request with api key. 
+
+* Parent APIs route (remove UUID) 
+
+* Refactor. 
+
+* Cleanup. 
+
+* Refactor & bug fix - child-parent-api. 
+
+* Don't set child_unique_id field manually in apis(there's no need anhymore) little refactoring. 
+
+* Change panel self child(child with 0 id) unique_id to hconfig(ConfigEnum.unique_id) instead of default "self" value. 
+
+* ConfigEnum.parent_panel category to too_advanced. 
+
+#### Fix
+
+* Bug. 
+
+* Child bug. 
+
+* Sqlachemey update. 
+
+* Send backup to admin through telegram bot. 
+
+* Add admin bug. 
+
+* Issue. 
+
+* Empty sites. 
+
+* Get proxies. 
+
+* Bug. 
+
+* Bug. 
+
+* Bug. 
+
+* Node auth. 
+
+* Redis_cache again. 
+
+* Redis_cache bug. 
+
+* Usage. 
+
+* Bug. 
+
+* Bug. 
+
+* Bug. 
+
+* Bug in usage api. 
+
+* Bug. 
+
+* Bugs. 
+
+* Circular import. 
+
+* Bug. 
+
+* Missing import. 
+
+* Missing import. 
+
+* Status api bug. 
+
+* Bug. 
+
+* Circular dependency. 
+
+* Refator. 
+
+* Merge conflict. 
+
+* Bug. 
+
+* Users usage api bug. 
+
+* Sync request bug. 
+
+* Bug in register api. 
+
+* Adding parent. 
+
+* Status api bug. 
+
+* Flask error handler. 
+
+* Bug. 
+
+* Bug in hiddify_api & init child APIs to app. 
+
+* Bug in hiddify_api. 
+
+* Bug in authentication. 
+
+* Small bug. 
+
+* Register/sync. 
+
+* Parent admin links in admin layout sidebar. 
+
+* Sync usage with parent automatically. 
+
+* Usage api (child side) 
+
+* Usage api (in child) 
+
+* Usage api. 
+
+* Child parent usage api. 
+
+* Bug. 
+
+* Usage api (test) 
+
+* Bug in getting child status. 
+
+* Parent dashboard bug. 
+
+* Adding domain bug. 
+
+* Admin layout ui (parent mode) 
+
+* Bugs. 
+
+* Bug. 
+
+* Bug. 
+
+* Bug and add description. 
+
+#### Other
+
+* Update. 
+
+* Merge pull request #189 from Iscgr/main. 
+  _Update translations_
+
+* Fink 🐦: update translations. 
+
+* Fink 🐦: update translations. 
+
+* Fink 🐦: update translations. 
+
+* Fink 🐦: update translations. 
+
+* Fink 🐦: update translations. 
+
+* Fink 🐦: update translations. 
+
+* Fink 🐦: update translations. 
+
+* Merge branch 'hiddify:main' into main. 
+
+* Fink 🐦: update translations. 
+
+* Merge pull request #190 from Iam54r1n4/devp10-patch-1. 
+  _Bug fix_
+
+* Update. 
+
+* Fink 🐦: update translations. 
+
+* Update. 
+
+* Update to python 3.13. 
+
+* Update. 
+
+* Update. 
+
+* Update dependencies. 
+
+* Update translations. 
+
+* Merge. 
+
+* Merge pull request #187 from Iam54r1n4/devp-child-parent. 
+  _Implement child-parent(Nodes) API (Partly)_
+
+* Update config.py. 
+
+* Update child.py. 
+
+* Update api_client.py. 
+
+* Update api_client.py. 
+
+* Update base.py. 
+
+* Merge branch 'main' into devp-child-parent. 
+
+* Merge pull request #188 from Iam54r1n4/devp-disable-config. 
+  _disable unwanted configs_
+
+* Add: quic/xtls/h2"_enable" configs. 
+
+* Add: tcp enable. 
+
+* Add: vless/trojan/reality"_enable" configs. 
+
+* Merge pull request #183 from NiklasBuchfink/main. 
+  _Add Ninja i18n lint action_
+
+* Rename ninja-i18n.yml to ninja_i18n.yml. 
+
+* Add ninja-i18n.yml. 
+
+* Chg. 
+
+* Del: parent_admin_uuid config. 
+
+* Chg. 
+
+* Add: string/bool field to hconfig schema. 
+
+* Chg. 
+
+* Add: enum type descr to config_enum.py. 
+
+* Add: logging to child/parent apis. 
+
+* Add: invalidate cache after sync/register. 
+
+* Add: invalidate_all_cached_functions to redis cache. 
+
+* Add: logging to project and use it in hutils.node. 
+
+* Chg. 
+
+* Add: api http client & refactor api schemas. 
+
+* Add: version checking before registering. 
+
+* Add: panel info api (for now just getting panel version) 
+
+* Add: log level config. 
+
+* Add: new parent as a chlid to child parent after registering chg: node auth. 
+
+* Chg. 
+
+* Del: if. 
+
+* Better: query. 
+
+* Del: extras. 
+
+* Del: set_db parameter. 
+
+* Update xray_api.py. 
+
+* Add: db version for parent configs. 
+
+* Merge branch 'devp-child-parent' of github.com:Iam54r1n4/HiddifyPanel into devp-child-parent. 
+
+* Add: send sync request to childs from parent when needed. 
+
+* Add: request child to sync to hiddify_api.py. 
+
+* Add: sync with parent api for child. 
+
+* Add: child status api for parent. 
+
+* Add: request to register (child side) 
+
+* Add: some apis to child panel named actions these apis allow the parent panel to control the child panel. 
+
+* Add: register parent api used in parent panel to tell a panel register itself with the parent panel, if this api return 200 status code, means the targeted panel registered in parent. 
+
+* Add: authenticate request with panel unique id itself used in child-parent api calls. 
+
+* Add: panel_mode to str_config. 
+
+* Del: old unwanted code. 
+
+* Del: commented commands. 
+
+* Add: set db from parent api response. 
+
+* Add: parent api key. 
+
+* Add: equalize panel unique id and root child unique id. 
+
+* Add: insert data. 
+
+* Del: unused. 
+
+* Merge branch 'hiddify:main' into child_parent_api. 
+
+* Merge branch 'hiddify:main' into child_parent_api. 
+
+* Chg. 
+
+* Merge branch 'child_parent_api' of github.com:Iam54r1n4/HiddifyPanel into child_parent_api. 
+
+* Use: child-parent apis. 
+
+* Merge branch 'child_parent_api' of github.com:Iam54r1n4/HiddifyPanel into child_parent_api. 
+
+* Del: child's apis blueprint (we don't need them as an public api) 
+
+* Move child's apis to hiddify_api.py file. 
+
+* Merge branch 'main' of github.com:hiddify/HiddifyPanel into child_parent_api. 
+
+* Add: to_schmea and from_schema methods to models add: some function to utils. 
+
+* Add: usage api. 
+
+* Add: sync api. 
+
+* Add: register api. 
+
+* Del: unnecessary imports. 
+
+* Add: description to api schemas. 
+
+* Refactor: admin APIs. 
+
+* Refactor: user APIs. 
+
+
+
 ## v10.14.0 (2024-03-25)
 
 #### Fix

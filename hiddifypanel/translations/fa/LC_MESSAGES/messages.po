@@ -1124,6 +1124,18 @@ msgstr "🔀 سی‌دی‌ان (پروکسی کلودفلر و ...)"
 msgid "child has been removed!"
 msgstr "پنل زیر مجموعه حذف شد"
 
+msgid "child.register-failed"
+msgstr ""
+
+msgid "child.register-success"
+msgstr ""
+
+msgid "child.sync-failed"
+msgstr ""
+
+msgid "child.sync-success"
+msgstr ""
+
 msgid "clickable copy"
 msgstr "لینک برای شبکه‌های اجتماعی"
 
@@ -1366,6 +1378,12 @@ msgstr ""
 msgid "config.grpc_enable.label"
 msgstr "➿ gRPC را فعال کنید"
 
+msgid "config.h2_enable.description"
+msgstr ""
+
+msgid "config.h2_enable.label"
+msgstr ""
+
 msgid "config.hidden.description"
 msgstr "-"
 
@@ -1447,6 +1465,9 @@ msgstr "حداکثر سرعت آپلود هیستریا"
 msgid "config.hysteria_up_mbps.label"
 msgstr "⬆️ آپلود (mbps) Hysteria"
 
+msgid "config.invalid-pattern-for-warp-sites"
+msgstr ""
+
 msgid "config.is_parent.description"
 msgstr "-"
 
@@ -1491,11 +1512,17 @@ msgstr "برای استفاده تجاری از این محصول باید مج�
 msgid "config.license.label"
 msgstr "کد مجوز"
 
+msgid "config.log_level.description"
+msgstr ""
+
+msgid "config.log_level.label"
+msgstr ""
+
 msgid "config.mux.description"
 msgstr "تنظیمات MUX (Multiplex) را می توان در این بخش تنظیم کرد"
 
 msgid "config.mux.label"
-msgstr "پیکربندی MUX"
+msgstr "تنظیمات MUX"
 
 msgid "config.mux_brutal_down_mbps.description"
 msgstr "حداکثر سرعت دانلود TCP-Brutal"
@@ -1589,6 +1616,24 @@ msgstr ""
 msgid "config.package_mode.label"
 msgstr "🔄 حالت به روز رسانی"
 
+msgid "config.panel_mode.description"
+msgstr ""
+
+msgid "config.panel_mode.label"
+msgstr ""
+
+msgid "config.parent_admin_proxy_path.description"
+msgstr ""
+
+msgid "config.parent_admin_proxy_path.label"
+msgstr ""
+
+msgid "config.parent_domain.description"
+msgstr ""
+
+msgid "config.parent_domain.label"
+msgstr ""
+
 msgid "config.parent_panel.description"
 msgstr ""
 "می‌توانید به پنل مرکزی وصل شوید، تا فقط یک یوزر را تعریف کنید و میزان "
@@ -1679,11 +1724,23 @@ msgstr "مسیر مخفی پروکسی پروکسی ها را از دولت ها
 msgid "config.proxy_path_client.label"
 msgstr "مسیر پروکسی برای مشتریان"
 
+msgid "config.quic_enable.description"
+msgstr ""
+
+msgid "config.quic_enable.label"
+msgstr ""
+
 msgid "config.reality.description"
 msgstr "REALITY قابلیت اثر انگشت TLS سمت سرور را حذف می کند"
 
 msgid "config.reality.label"
 msgstr "ریالیتی"
+
+msgid "config.reality_enable.description"
+msgstr ""
+
+msgid "config.reality_enable.label"
+msgstr ""
 
 msgid "config.reality_fallback_domain.description"
 msgstr ""
@@ -1900,6 +1957,12 @@ msgstr ""
 msgid "config.ssr_fakedomain.label"
 msgstr "دامنه جعلی برای SSR"
 
+msgid "config.tcp_enable.description"
+msgstr ""
+
+msgid "config.tcp_enable.label"
+msgstr ""
+
 msgid "config.telegram.description"
 msgstr ""
 "پروکسی تلگرام برای استفاده درون اپ تلگرام طراحی شده تا فیلترینگ تلگرام را "
@@ -2020,6 +2083,12 @@ msgstr "در این قسمت تنظیمات Torrent Block قابل انجام ا
 msgid "config.torrent_block.label"
 msgstr "تنظیمات Torrent Block"
 
+msgid "config.trojan_enable.description"
+msgstr ""
+
+msgid "config.trojan_enable.label"
+msgstr ""
+
 msgid "config.tuic.description"
 msgstr ""
 "پروکسی Delicately-TUICed با کارایی بالا روی پروتکل QUIC است. \n"
@@ -2070,6 +2139,12 @@ msgstr ""
 
 msgid "config.validation-success-no-reset"
 msgstr " ✅ تنظیمات با موفقیت تغییر کرد"
+
+msgid "config.vless_enable.description"
+msgstr ""
+
+msgid "config.vless_enable.label"
+msgstr ""
 
 msgid "config.vmess_enable.description"
 msgstr "فعال کردن پروتکل VMess"
@@ -2183,6 +2258,12 @@ msgstr ""
 
 msgid "config.ws_enable.label"
 msgstr "🔰 Websocket را فعال کنید"
+
+msgid "config.xtls_enable.description"
+msgstr ""
+
+msgid "config.xtls_enable.label"
+msgstr ""
 
 msgid "config.invalid uuid"
 msgstr ""
@@ -2303,6 +2384,9 @@ msgstr "بعدی"
 msgid "no_reset"
 msgstr "⭐️ بدون ریست شدن"
 
+msgid "node.diff-version"
+msgstr ""
+
 msgid "node.mode.dscr"
 msgstr ""
 
@@ -2332,6 +2416,12 @@ msgstr "تعداد روز؟"
 
 msgid "package size?"
 msgstr "حجم بسته"
+
+msgid "parent.invalid-parent-url"
+msgstr ""
+
+msgid "parent.sync-req-failed"
+msgstr ""
 
 msgid "previous"
 msgstr "قبلی"

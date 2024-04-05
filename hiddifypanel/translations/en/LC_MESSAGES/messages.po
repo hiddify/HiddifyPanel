@@ -1139,6 +1139,18 @@ msgstr "🔀 CDN (Cloudflare Proxy, ...)"
 msgid "child has been removed!"
 msgstr "Child Has Been Removed!"
 
+msgid "child.register-failed"
+msgstr "child.register-failed"
+
+msgid "child.register-success"
+msgstr "child.register-success"
+
+msgid "child.sync-failed"
+msgstr "child.sync-failed"
+
+msgid "child.sync-success"
+msgstr "child.sync-success"
+
 msgid "clickable copy"
 msgstr "Link for Social Media"
 
@@ -1381,6 +1393,12 @@ msgstr ""
 msgid "config.grpc_enable.label"
 msgstr "➿ Enable gRPC"
 
+msgid "config.h2_enable.description"
+msgstr "config.h2_enable.description"
+
+msgid "config.h2_enable.label"
+msgstr "config.h2_enable.label"
+
 msgid "config.hidden.description"
 msgstr "config.hidden.description"
 
@@ -1457,6 +1475,9 @@ msgstr "Hysteria Maximum Upload Speed"
 msgid "config.hysteria_up_mbps.label"
 msgstr "⬆️ Hysteria Upload (mbps)"
 
+msgid "config.invalid-pattern-for-warp-sites"
+msgstr "config.invalid-pattern-for-warp-sites"
+
 msgid "config.is_parent.description"
 msgstr "config.is_parent.description"
 
@@ -1499,6 +1520,12 @@ msgstr "For commercial use of this Product, you must Purchase its License"
 
 msgid "config.license.label"
 msgstr "License  Code"
+
+msgid "config.log_level.description"
+msgstr "config.log_level.description"
+
+msgid "config.log_level.label"
+msgstr "config.log_level.label"
 
 msgid "config.mux.description"
 msgstr "MUX (Multiplex) configurations could be set in this section"
@@ -1596,6 +1623,24 @@ msgstr "Specify whether you want Released Package or Beta one"
 msgid "config.package_mode.label"
 msgstr "🔄 Package Update Mode"
 
+msgid "config.panel_mode.description"
+msgstr "config.panel_mode.description"
+
+msgid "config.panel_mode.label"
+msgstr "config.panel_mode.label"
+
+msgid "config.parent_admin_proxy_path.description"
+msgstr "config.parent_admin_proxy_path.description"
+
+msgid "config.parent_admin_proxy_path.label"
+msgstr "config.parent_admin_proxy_path.label"
+
+msgid "config.parent_domain.description"
+msgstr "config.parent_domain.description"
+
+msgid "config.parent_domain.label"
+msgstr "config.parent_domain.label"
+
 msgid "config.parent_panel.description"
 msgstr ""
 "You can Connect to the Central Panel to define only one user and the usage "
@@ -1683,11 +1728,23 @@ msgstr "Secret proxy path hide the proxies from the governments and bots"
 msgid "config.proxy_path_client.label"
 msgstr "🔏 Proxy Path for Clients"
 
+msgid "config.quic_enable.description"
+msgstr "config.quic_enable.description"
+
+msgid "config.quic_enable.label"
+msgstr "config.quic_enable.label"
+
 msgid "config.reality.description"
 msgstr "REALITY eliminate the Server-Side TLS Fingerprint Feature"
 
 msgid "config.reality.label"
 msgstr "Reality"
+
+msgid "config.reality_enable.description"
+msgstr "config.reality_enable.description"
+
+msgid "config.reality_enable.label"
+msgstr "config.reality_enable.label"
 
 msgid "config.reality_fallback_domain.description"
 msgstr ""
@@ -1901,6 +1958,12 @@ msgstr ""
 msgid "config.ssr_fakedomain.label"
 msgstr "SSR FakeDomain"
 
+msgid "config.tcp_enable.description"
+msgstr "config.tcp_enable.description"
+
+msgid "config.tcp_enable.label"
+msgstr "config.tcp_enable.label"
+
 msgid "config.telegram.description"
 msgstr "A proxy designed for Telegram to bypass Telegram filtering"
 
@@ -2021,6 +2084,12 @@ msgstr "Torrent Block Configurations could be set in this section."
 msgid "config.torrent_block.label"
 msgstr "Torrent Block Configuration"
 
+msgid "config.trojan_enable.description"
+msgstr "config.trojan_enable.description"
+
+msgid "config.trojan_enable.label"
+msgstr "config.trojan_enable.label"
+
 msgid "config.tuic.description"
 msgstr ""
 "Delicately-TUICed High-Performance proxy is on top of the QUIC protocol. \n"
@@ -2072,6 +2141,12 @@ msgstr ""
 
 msgid "config.validation-success-no-reset"
 msgstr " ✅ Configs have been changed successfully"
+
+msgid "config.vless_enable.description"
+msgstr "config.vless_enable.description"
+
+msgid "config.vless_enable.label"
+msgstr "config.vless_enable.label"
 
 msgid "config.vmess_enable.description"
 msgstr "Active VMess Protocol"
@@ -2184,6 +2259,12 @@ msgstr "Websocket creates a tunnel over HTTP that is useful to be used in CDN"
 
 msgid "config.ws_enable.label"
 msgstr "🔰 Enable Websocket"
+
+msgid "config.xtls_enable.description"
+msgstr "config.xtls_enable.description"
+
+msgid "config.xtls_enable.label"
+msgstr "config.xtls_enable.label"
 
 msgid "config.invalid uuid"
 msgstr ""
@@ -2304,6 +2385,9 @@ msgstr "Next"
 msgid "no_reset"
 msgstr "⭐️ Without Reset"
 
+msgid "node.diff-version"
+msgstr "node.diff-version"
+
 msgid "node.mode.dscr"
 msgstr "node.mode.dscr"
 
@@ -2333,6 +2417,12 @@ msgstr "package days?"
 
 msgid "package size?"
 msgstr "package size?"
+
+msgid "parent.invalid-parent-url"
+msgstr "parent.invalid-parent-url"
+
+msgid "parent.sync-req-failed"
+msgstr "parent.sync-req-failed"
 
 msgid "previous"
 msgstr "Previous"
