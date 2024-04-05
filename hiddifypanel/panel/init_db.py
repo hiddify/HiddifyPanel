@@ -599,10 +599,9 @@ def add_new_enum_values():
         # Add the new value to the enum column in the database
         enumstr = ','.join([f"'{a}'" for a in [*existing_values, *old_values]])
 
-        connection.execute(text(f"ALTER TABLE {table_name} MODIFY COLUMN `{column_name}` ENUM({enumstr});"))
+        db_execute(text(f"ALTER TABLE {table_name} MODIFY COLUMN `{column_name}` ENUM({enumstr});"))
 
         db.session.commit()
-    connection.close()
 
 
 def latest_db_version():
