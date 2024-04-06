@@ -89,6 +89,8 @@
 
 #### Fix
 
+* Proxy status byg. 
+
 * Bug. 
 
 * Child bug. 
@@ -208,6 +210,8 @@
 * Bug and add description. 
 
 #### Other
+
+* Update translations. 
 
 * Update. 
 
