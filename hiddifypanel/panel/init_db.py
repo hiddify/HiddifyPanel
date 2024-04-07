@@ -10,8 +10,6 @@ from hiddifypanel import Events, hutils
 from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify
 from hiddifypanel.database import db, db_execute
-from hiddifypanel import hutils
-from sqlalchemy import text
 from flask import g
 
 MAX_DB_VERSION = 90
@@ -540,7 +538,7 @@ def add_config_if_not_exist(key: ConfigEnum, val: str | int, child_id: int | Non
         child_id = Child.current().id
 
     old_val = hconfig(key, child_id)
-    print(key, val, child_id, old_val)
+    hutils.utils.error(f'{key}, {val}, {child_id}, {old_val}')
     if old_val is None:
         set_hconfig(key, val)
 
@@ -559,7 +557,7 @@ def execute(query: str):
 
         db_execute(query)
     except BaseException as e:
-        print(e)
+        hutils.utils.error(e)
         pass
 
 
@@ -620,14 +618,14 @@ def upgrade_database():
     if not os.path.isdir(backup_root) or len(os.listdir(backup_root)) == 0:
         if os.path.isfile(sqlite_db):
             os.rename(sqlite_db, sqlite_db + ".old")
-        print("no backup found...")
+        hutils.utils.error("no backup found...")
         return
     if os.path.isfile(sqlite_db):
-        hiddify.error("Finding Old Version Database... importing configs from latest backup")
+        hutils.utils.error("Finding Old Version Database... importing configs from latest backup")
         newest_file = max([(f, os.path.getmtime(os.path.join(backup_root, f)))
                           for f in os.listdir(backup_root) if os.path.isfile(os.path.join(backup_root, f))], key=lambda x: x[1])[0]
         with open(f'{backup_root}{newest_file}', 'r') as f:
-            hiddify.error(f"importing configs from {newest_file}")
+            hutils.utils.error(f"importing configs from {newest_file}")
             json_data = json.load(f)
             hiddify.set_db_from_json(json_data,
                                      set_users=True,
@@ -644,7 +642,8 @@ def upgrade_database():
             db_version = int([d['value'] for d in json_data['hconfigs'] if d['key'] == "db_version"][0])
             os.rename(sqlite_db, sqlite_db + ".old")
             set_hconfig(ConfigEnum.db_version, db_version, commit=True)
-        hiddify.error("Upgrading to the new dataset succuess.")
+
+        hutils.utils.error("Upgrading to the new dataset succuess.")
 
 
 def init_db():
@@ -677,7 +676,7 @@ def init_db():
             if not db_action or (start_version == 0 and ver == 10):
                 continue
 
-            hiddify.error(f"Updating db from version {db_version} for node {child.id}")
+            hutils.utils.error(f"Updating db from version {db_version} for node {child.id}")
 
             if ver < 70:
                 if child.id != 0:
@@ -687,7 +686,7 @@ def init_db():
                 db_action(child.id)
 
             Events.db_init_event.notify(db_version=db_version)
-            hiddify.error(f"Updated successfuly db from version {db_version} to {ver}")
+            hutils.utils.error(f"Updated successfuly db from version {db_version} to {ver}")
 
             db_version = ver
             db.session.commit()
