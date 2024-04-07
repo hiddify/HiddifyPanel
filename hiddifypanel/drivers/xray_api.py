@@ -13,22 +13,32 @@ class XrayApi(DriverABS):
 
     def get_enabled_users(self):
         xray_client = self.get_xray_client()
-        users = User.query.all()
-        t = "xtls"
-        protocol = "vless"
-        enabled = {}
-        for u in users:
-            uuid = u.uuid
-            try:
-                xray_client.add_client(t, f'{uuid}', f'{uuid}@hiddify.com', protocol=protocol, flow='xtls-rprx-vision', alter_id=0, cipher='chacha20_poly1305')
-                xray_client.remove_client(t, f'{uuid}@hiddify.com')
-                enabled[uuid] = 0
-            except xtlsapi.xtlsapi.exceptions.EmailAlreadyExists as e:
-                enabled[uuid] = 1
-            except Exception as e:
-                print(f"error {e}")
-                enabled[uuid] = e
-        return enabled
+        usages = xray_client.stats_query('user', reset=True)
+        res = defaultdict(int)
+        for use in usages:
+            if "user>>>" not in use.name:
+                continue
+            uuid = use.name.split(">>>")[1].split("@")[0]
+            res[uuid] = 1
+        return res
+
+        # xray_client = self.get_xray_client()
+        # users = User.query.all()
+        # t = "xtls"
+        # protocol = "vless"
+        # enabled = {}
+        # for u in users:
+        #     uuid = u.uuid
+        #     try:
+        #         xray_client.add_client(t, f'{uuid}', f'{uuid}@hiddify.com', protocol=protocol, flow='xtls-rprx-vision', alter_id=0, cipher='chacha20_poly1305')
+        #         xray_client.remove_client(t, f'{uuid}@hiddify.com')
+        #         enabled[uuid] = 0
+        #     except xtlsapi.xtlsapi.exceptions.EmailAlreadyExists as e:
+        #         enabled[uuid] = 1
+        #     except Exception as e:
+        #         print(f"error {e}")
+        #         enabled[uuid] = e
+        # return enabled
 
     def get_inbound_tags(self):
         try:
@@ -80,7 +90,9 @@ class XrayApi(DriverABS):
                 pass
 
     def remove_client(self, user):
-        uuid = user.uuid
+        return self._remove_client(user.uuid)
+
+    def _remove_client(self, uuid):
         xray_client = self.get_xray_client()
         tags = self.get_inbound_tags()
 
@@ -101,7 +113,10 @@ class XrayApi(DriverABS):
             if "user>>>" not in use.name:
                 continue
             uuid = use.name.split(">>>")[1].split("@")[0]
-            res[uuid_user_map[uuid]] += use.value
+            if u := uuid_user_map.get(uuid):
+                res[u] += use.value
+            else:
+                self._remove_client(uuid)
         return res
 
     def get_usage_imp(self, uuid):
