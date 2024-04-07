@@ -62,7 +62,7 @@ class InfoAPI(MethodView):
 
         dto.doh = f"https://{request.host}/{g.proxy_path}/dns/dns-query"
         dto.lang = (c['user'].lang) or Lang(hconfig(ConfigEnum.lang))
-        dto.brand_icon_url = "" if hconfig(ConfigEnum.branding_title) else hutils.flask.static_url_for(filename="images/hiddify.png")
+        dto.brand_icon_url = "" if hconfig(ConfigEnum.branding_title) else hutils.flask.static_url_for(filename="images/favicon.ico")
         # with force_locale("fa"):
         dto.admin_message_html = hconfig(ConfigEnum.branding_freetext) or _("Join our Hiddify Telegram channel to get the latest updates on Hiddify.")
         if not hconfig(ConfigEnum.branding_freetext) and auth.admin_session_is_exist():
