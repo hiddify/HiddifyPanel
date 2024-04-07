@@ -89,6 +89,8 @@
 
 #### Fix
 
+* Xray update usage bugs. 
+
 * Icon. 
 
 * Markup session bug, disallow duplicate domain. 
@@ -216,6 +218,8 @@
 * Bug and add description. 
 
 #### Other
+
+* Update translations. 
 
 * Update translations. 
 
