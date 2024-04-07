@@ -89,6 +89,8 @@
 
 #### Fix
 
+* Bug in adding new enum. 
+
 * Proxy status byg. 
 
 * Bug. 
@@ -210,6 +212,8 @@
 * Bug and add description. 
 
 #### Other
+
+* Fix bug of init db printing not stderr. 
 
 * Update translations. 
 
