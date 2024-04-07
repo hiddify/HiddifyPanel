@@ -213,6 +213,10 @@
 
 #### Other
 
+* Merge branch 'main' of github.com:hiddify/Hiddify-Panel. 
+
+* Update translations. 
+
 * Fix bug of init db printing not stderr. 
 
 * Update translations. 
