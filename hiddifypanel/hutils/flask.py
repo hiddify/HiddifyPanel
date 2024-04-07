@@ -2,7 +2,7 @@ from typing import List, Tuple
 from flask import current_app, flash as flask_flash, g, request
 from wtforms.validators import ValidationError
 from apiflask import abort as apiflask_abort
-from flask_babel import lazy_gettext as _
+from flask_babel import gettext as _
 from flask import url_for  # type: ignore
 from urllib.parse import urlparse
 from markupsafe import Markup
@@ -17,7 +17,8 @@ from hiddifypanel import hutils
 
 
 def flash(message: str, category: str = "message"):
-    return flask_flash(Markup(message), category)
+    # if isinstance(message, LazyString)
+    return flask_flash(message, category)
 
 
 def flash_config_success(restart_mode: ApplyMode = ApplyMode.nothing, domain_changed=True):

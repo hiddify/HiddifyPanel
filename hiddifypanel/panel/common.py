@@ -163,8 +163,7 @@ def init_app(app: APIFlask):
 
         # setup dark mode
         if request.args.get('darkmode') is not None:
-            session['darkmode'] = request.args.get(
-                'darkmode', '').lower() == 'true'
+            session['darkmode'] = request.args.get('darkmode', '').lower() == 'true'
         g.darkmode = session.get('darkmode', False)
 
         # setup pwa

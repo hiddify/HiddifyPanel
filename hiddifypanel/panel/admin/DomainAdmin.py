@@ -156,7 +156,10 @@ class DomainAdmin(AdminLTEModelView):
         for td in Domain.query.filter(Domain.mode == DomainType.reality, Domain.domain != model.domain).all():
             # print(td)
             if td.servernames and (model.domain in td.servernames.split(",")):
-                raise ValidationError(_("You have used this domain in: ") + _(f"config.reality_server_names.label") + " in " + td.domain)
+                raise ValidationError(_("You have used this domain in: ") + _(f"config.reality_server_names.label") + td.domain)
+
+        if is_created and Domain.query.filter(Domain.domain == model.domain, Domain.child_id == model.child_id).count() > 1:
+            raise ValidationError(_("You have used this domain in: "))
 
         ipv4_list = hutils.network.get_ips(4)
         ipv6_list = hutils.network.get_ips(6)
