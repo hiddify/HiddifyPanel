@@ -89,6 +89,10 @@
 
 #### Fix
 
+* Icon. 
+
+* Markup session bug, disallow duplicate domain. 
+
 * Bug in adding new enum. 
 
 * Proxy status byg. 
@@ -212,6 +216,8 @@
 * Bug and add description. 
 
 #### Other
+
+* Update translations. 
 
 * Merge branch 'main' of github.com:hiddify/Hiddify-Panel. 
 
