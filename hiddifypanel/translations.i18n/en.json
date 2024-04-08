@@ -862,7 +862,7 @@
       "label": "TLS Configuration"
     },
     "tls_fragment_enable": {
-      "description": "Under some circumstances, it can bypass the SNI blacklist system",
+      "description": "<p>Under some circumstances, it can bypass the SNI blacklist system. <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-the-TLS-Trick-works-and-its-usage/\" target=\"_blank\">(Read More)</a></p>",
       "label": "⏯ Enable TLS Fragment"
     },
     "tls_fragment_size": {
