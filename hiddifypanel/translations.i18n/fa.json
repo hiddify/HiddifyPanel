@@ -482,6 +482,10 @@
       "description": "gRPC یک چارچوب متن باز مدرن با کارایی بالا Remote Procedure Call (RPC) است. می توان از آن در CDN های پشتیبانی شده استفاده کرد",
       "label": "➿ gRPC را فعال کنید"
     },
+    "h2_enable": {
+      "description": "فعال کردن پروتکل HTTP/2",
+      "label": "فعال سازی h2"
+    },
     "hidden": {
       "description": "-",
       "label": "-"
