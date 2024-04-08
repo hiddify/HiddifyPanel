@@ -6,7 +6,6 @@ import re
 from flask import render_template, request, Response, g
 from apiflask import abort
 from flask_classful import FlaskView, route
-from urllib.parse import urlparse
 from flask_babel import gettext as _
 
 

@@ -1,9 +1,8 @@
-import datetime
 import json
 import copy
-from flask import render_template, request, g
+from flask import render_template, g
 from hiddifypanel import hutils
-from hiddifypanel.models import Proxy, ProxyTransport, ProxyL3, ProxyCDN, ProxyProto, Domain, ConfigEnum, DomainType
+from hiddifypanel.models import ProxyTransport, ProxyL3, ProxyProto, Domain
 from flask_babel import gettext as _
 from .xray import is_muxable_agent
 OUTBOUND_LEVEL = 8
