@@ -15,6 +15,12 @@ from flask import g
 MAX_DB_VERSION = 90
 
 
+def _v84(child_id):
+    # the 2022-blake3-chacha20-poly1305 encryption method doesn't support multiuser config
+    if hconfig(ConfigEnum.shadowsocks2022_method) == '2022-blake3-chacha20-poly1305':
+        set_hconfig(ConfigEnum.shadowsocks2022_method, '2022-blake3-aes-256-gcm')
+
+
 def _v83(child_id):
     set_hconfig(ConfigEnum.log_level, LogLevel.CRITICAL)
 

@@ -220,7 +220,7 @@ class ConfigEnum(metaclass=FastEnum):
     hysteria_down_mbps = _StrConfigDscr(ConfigCategory.hysteria, ApplyMode.apply)
 
     shadowsocks2022_enable = _BoolConfigDscr(ConfigCategory.shadowsocks, ApplyMode.apply)
-    shadowsocks2022_method = _StrConfigDscr(ConfigCategory.shadowsocks, ApplyMode.apply)
+    shadowsocks2022_method = _StrConfigDscr(ConfigCategory.hidden, ApplyMode.apply)
     shadowsocks2022_port = _StrConfigDscr(ConfigCategory.shadowsocks, ApplyMode.apply)
     ssfaketls_enable = _BoolConfigDscr(ConfigCategory.shadowsocks, ApplyMode.apply)
     ssfaketls_fakedomain = _StrConfigDscr(ConfigCategory.shadowsocks, ApplyMode.apply, hide_in_virtual_child=True)
