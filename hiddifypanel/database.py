@@ -15,7 +15,9 @@ def init_app(app):
 
 
 def db_execute(query: str, **params: dict):
-    with db.engine.connect() as connection:
-        res = connection.execute(text(query), params)
-        connection.commit()
-        return res
+    res = db.session.execute(text(query), params).fetchall()
+    db.session.commit()
+    # with db.engine.connect() as connection:
+    #     res = connection.execute(text(query), params)
+    #     connection.commit()s
+    return res

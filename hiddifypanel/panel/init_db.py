@@ -709,8 +709,8 @@ def migrate(db_version):
         for column in table_obj.columns:
             add_column(column)
     Events.db_prehook.notify()
-    if db_version < 82:
-        execute('ALTER TABLE child DROP INDEX `name`;')
+    # if db_version < 82:
+    #     execute('ALTER TABLE child DROP INDEX `name`;')
     if db_version < 77:
         execute('ALTER TABLE user_detail DROP COLUMN connected_ips;')
         execute('update user_detail set connected_devices="" where connected_devices IS NULL')
