@@ -7,6 +7,7 @@ import uuid
 
 
 from hiddifypanel import Events, hutils
+from hiddifypanel.cache import cache
 from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify
 from hiddifypanel.database import db, db_execute
@@ -654,8 +655,8 @@ def upgrade_database():
 
 def init_db():
     db.create_all()
-    hconfig.invalidate_all()
-    get_hconfigs.invalidate_all()
+    cache.invalidate_all_cached_functions()
+
     # set_hconfig(ConfigEnum.db_version, 71)
     # temporary fix
     add_column(Child.mode)

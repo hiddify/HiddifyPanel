@@ -8,6 +8,7 @@ from flask import g, has_app_context
 
 
 from hiddifypanel.database import db, db_execute
+from sqlalchemy_serializer import SerializerMixin
 
 
 class ChildMode(StrEnum):
@@ -18,7 +19,7 @@ class ChildMode(StrEnum):
 # the child model is node
 
 
-class Child(db.Model):  # type: ignore
+class Child(db.Model, SerializerMixin):  # type: ignore
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(200), nullable=False, unique=False)
     mode = Column(Enum(ChildMode), nullable=False, default=ChildMode.virtual)

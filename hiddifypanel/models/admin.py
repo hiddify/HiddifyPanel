@@ -10,6 +10,7 @@ from flask_babel import lazy_gettext as _
 from hiddifypanel.database import db, db_execute
 from hiddifypanel.models.role import Role
 from hiddifypanel.models.base_account import BaseAccount
+from sqlalchemy_serializer import SerializerMixin
 
 
 class AdminMode(StrEnum):
@@ -24,7 +25,7 @@ class AdminMode(StrEnum):
     agent = auto()
 
 
-class AdminUser(BaseAccount):
+class AdminUser(BaseAccount, SerializerMixin):
     """
     This is a model class for a user in a database that includes columns for their ID, UUID, name, online status,
     account expiration date, usage limit, package days, mode, start date, current usage, last reset time, and comment.

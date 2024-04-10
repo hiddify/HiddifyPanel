@@ -4,6 +4,7 @@ from enum import auto
 from sqlalchemy import Column, String, Integer, Boolean, Enum, ForeignKey
 
 from hiddifypanel.database import db
+from sqlalchemy_serializer import SerializerMixin
 
 
 class ProxyTransport(StrEnum):
@@ -57,7 +58,7 @@ class ProxyL3(StrEnum):
     custom = auto()
 
 
-class Proxy(db.Model):  # type: ignore
+class Proxy(db.Model, SerializerMixin):  # type: ignore
     id = Column(Integer, primary_key=True, autoincrement=True)
     child_id = Column(Integer, ForeignKey('child.id'), default=0)
     name = Column(String(200), nullable=False, unique=False)

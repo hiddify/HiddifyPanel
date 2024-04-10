@@ -10,6 +10,7 @@ from hiddifypanel.database import db
 from hiddifypanel.models import Lang
 from hiddifypanel.models.base_account import BaseAccount
 from hiddifypanel.models.admin import AdminUser
+from sqlalchemy_serializer import SerializerMixin
 
 ONE_GIG = 1024 * 1024 * 1024
 
@@ -35,7 +36,7 @@ package_mode_dic = {
 }
 
 
-class UserDetail(db.Model):
+class UserDetail(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), default=0, nullable=False)
     child_id = db.Column(db.Integer, db.ForeignKey('child.id'), default=0, nullable=False)
@@ -56,7 +57,7 @@ class UserDetail(db.Model):
         return [] if not self.connected_devices else self.connected_devices.split(",")
 
 
-class User(BaseAccount):
+class User(BaseAccount, SerializerMixin):
     """
     This is a model class for a user in a database that includes columns for their ID, UUID, name, online status,
     account expiration date, usage limit, package days, mode, start date, current usage, last reset time, and comment.

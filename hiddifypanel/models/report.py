@@ -2,9 +2,10 @@ import datetime
 
 
 from hiddifypanel.database import db
+from sqlalchemy_serializer import SerializerMixin
 
 
-class Report(db.Model):
+class Report(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), default=0, nullable=False)
     asn_id = db.Column(db.String(200), nullable=False, unique=False)
@@ -18,7 +19,7 @@ class Report(db.Model):
     details = db.relationship('ReportDetail', cascade="all,delete", backref='report', lazy='dynamic',)
 
 
-class ReportDetail(db.Model):
+class ReportDetail(db.Model, SerializerMixin):
     report_id = db.Column(db.Integer, db.ForeignKey('report.id'), primary_key=True, )
     proxy_id = db.Column(db.Integer, db.ForeignKey('proxy.id'), primary_key=True, )
     ping = db.Column(db.Integer, default=-1)
