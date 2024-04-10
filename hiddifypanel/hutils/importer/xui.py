@@ -11,13 +11,12 @@ import os
 from sqlalchemy import text
 
 
-def __query_fetch_json(db, query: str, args: Tuple = ()) -> List[Dict[str, Any]]:
+def __query_fetch_json(db, query: str, **kwargs) -> List[Dict[str, Any]]:
     try:
 
-        db_execute(query, args)
+        db_execute(query, commit=True, return_val=False, **kwargs)
         r = [dict((db.description[i][0], value)
                   for i, value in enumerate(row)) for row in db.fetchall()]
-        connection.close()
         return r
     except Exception as err:
         raise err

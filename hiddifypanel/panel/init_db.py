@@ -12,6 +12,7 @@ from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify
 from hiddifypanel.database import db, db_execute
 from flask import g
+from sqlalchemy import text
 
 MAX_DB_VERSION = 90
 
@@ -554,7 +555,7 @@ def add_column(column):
     try:
         column_type = column.type.compile(db.engine.dialect)
 
-        db_execute(f'ALTER TABLE {column.table.name} ADD COLUMN {column.name} {column_type}')
+        db_execute(f'ALTER TABLE {column.table.name} ADD COLUMN {column.name} {column_type}', commit=True)
     except BaseException:
         pass
 
@@ -585,7 +586,7 @@ def add_new_enum_values():
         # result = db.engine.execute(f"SELECT DISTINCT `{column_name}` FROM {table_name}")
         # db_values = {row[0] for row in result}
 
-        result = db_execute(f"SHOW COLUMNS FROM {table_name} LIKE '{column_name}';")
+        result = db.session.execute(text(f"SHOW COLUMNS FROM {table_name} LIKE '{column_name}';")).fetchall()
         db_values = []
 
         for row in result:
@@ -604,9 +605,7 @@ def add_new_enum_values():
         # Add the new value to the enum column in the database
         enumstr = ','.join([f"'{a}'" for a in [*existing_values, *old_values]])
 
-        db_execute(f"ALTER TABLE {table_name} MODIFY COLUMN `{column_name}` ENUM({enumstr});")
-
-        db.session.commit()
+        db_execute(f"ALTER TABLE {table_name} MODIFY COLUMN `{column_name}` ENUM({enumstr});", commit=True)
 
 
 def latest_db_version():
@@ -709,8 +708,8 @@ def migrate(db_version):
         for column in table_obj.columns:
             add_column(column)
     Events.db_prehook.notify()
-    # if db_version < 82:
-    #     execute('ALTER TABLE child DROP INDEX `name`;')
+    if db_version < 82:
+        execute('ALTER TABLE child DROP INDEX `name`;')
     if db_version < 77:
         execute('ALTER TABLE user_detail DROP COLUMN connected_ips;')
         execute('update user_detail set connected_devices="" where connected_devices IS NULL')
@@ -807,3 +806,4 @@ def migrate(db_version):
     AdminUser.get_super_admin()  # to create super admin if not exist
 
     upgrade_database()
+    db.session.commit()

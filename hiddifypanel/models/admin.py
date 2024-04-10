@@ -157,7 +157,7 @@ class AdminUser(BaseAccount, SerializerMixin):
             db.session.add(AdminUser(id=1, uuid=str(uuid.uuid4()), name="Owner", mode=AdminMode.super_admin, comment=""))
             db.session.commit()
 
-            db_execute("update admin_user set id=1 where name='Owner'")
+            db_execute("update admin_user set id=1 where name='Owner'", commit=True)
             admin = AdminUser.by_id(1)
 
         return admin
