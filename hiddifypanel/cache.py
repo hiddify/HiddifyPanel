@@ -15,7 +15,7 @@ class CustomRedisCache(RedisCache):
             chunks_gen = chunks(f'{self.prefix}*', 500)
             for keys in chunks_gen:
                 self.client.delete(*keys)
-            logger.trace(s"Successfully invalidated all cached functions")
+            logger.trace("Successfully invalidated all cached functions")
             return True
         except Exception as err:
             with logger.contextualize(error=err):
