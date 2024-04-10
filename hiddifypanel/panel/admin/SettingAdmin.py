@@ -213,11 +213,15 @@ def get_config_form():
                     package_modes.append(("develop", _("Develop")))
                 field = wtf.SelectField(_(f"config.{c.key}.label"), choices=package_modes, description=_(f"config.{c.key}.description"), default=hconfig(c.key))
 
-            elif c.key == ConfigEnum.shadowsocks2022_method:
-                field = wtf.SelectField(
-                    _(f"config.{c.key}.label"),
-                    choices=[("2022-blake3-aes-256-gcm", "2022-blake3-aes-256-gcm"), ("2022-blake3-chacha20-poly1305", "2022-blake3-chacha20-poly1305"),],
-                    description=_(f"config.{c.key}.description"), default=hconfig(c.key))
+            # the shadowsocks2022_method is hidden now, because it only has one option to choose
+            # elif c.key == ConfigEnum.shadowsocks2022_method:
+            #     field = wtf.SelectField(
+            #         _(f"config.{c.key}.label"),
+            #         choices=[
+            #             ("2022-blake3-aes-256-gcm", "2022-blake3-aes-256-gcm"),
+            #             # ("2022-blake3-chacha20-poly1305", "2022-blake3-chacha20-poly1305"),
+            #         ],
+            #         description=_(f"config.{c.key}.description"), default=hconfig(c.key))
 
             elif c.key == ConfigEnum.utls:
                 field = wtf.SelectField(
