@@ -1394,10 +1394,10 @@ msgid "config.grpc_enable.label"
 msgstr "➿ Enable gRPC"
 
 msgid "config.h2_enable.description"
-msgstr "config.h2_enable.description"
+msgstr "Enable HTTP/2 Protocol"
 
 msgid "config.h2_enable.label"
-msgstr "config.h2_enable.label"
+msgstr "Enable h2"
 
 msgid "config.hidden.description"
 msgstr "config.hidden.description"
@@ -1429,9 +1429,8 @@ msgstr "☑️ Allow HTTP Connection"
 
 msgid "config.httpupgrade_enable.description"
 msgstr ""
-"HTTPUpgrade complete a HTTP 1.1 Upgrade request and response before using the connection directly. It is similar to WebSocket in the way it create an direction channel that can be forwarded by many reverse proxies and CDNs, without the need to deal with all the issue around WebSocket Protocol itself.\n"
-"\n"
-"⚠️ Not Available in Xray based Clients. Only HiddifyNext, Singbox, and V2fly clients are supported. <p><a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/Basic-Concepts/#http-upgrade\" target=\"_blank\"><strong>(Read More)</strong></a></p>"
+"<p>HTTPUpgrade complete a HTTP 1.1 Upgrade request and response before using the connection directly. It is similar to WebSocket in the way it create an direction channel that can be forwarded by many reverse proxies and CDNs, without the need to deal with all the issue around WebSocket Protocol itself.<br />\n"
+"⚠️ <strong>Not Available in Xray based Clients. Only HiddifyNext, Singbox, and V2fly clients are supported.</strong>&nbsp;<a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/Basic-Concepts/#http-upgrade\" target=\"_blank\"><strong>(Read More)</strong></a></p>"
 
 msgid "config.httpupgrade_enable.label"
 msgstr "🆙 Enable HTTPUpgrade Method"
@@ -1553,8 +1552,10 @@ msgstr "⬆️ MUX Brutal Upload (mbps)"
 
 msgid "config.mux_enable.description"
 msgstr ""
-"Mux needs compatible clients. Mux in Hiddify Next and Singbox are not "
-"compatible with XRay"
+"<p>Mux needs compatible clients. Mux in Hiddify Next and Singbox are not "
+"compatible with XRay.&nbsp;<a href=\"https://hiddify.com/manager/basic-"
+"concepts-and-troubleshooting/How-MUX-works-and-its-usage/\" "
+"target=\"_blank\">(Read More)</a></p>"
 
 msgid "config.mux_enable.label"
 msgstr "Ⓜ️ MUX Enable (⚠️ Incompatible With Some Clients)"
@@ -1729,10 +1730,10 @@ msgid "config.proxy_path_client.label"
 msgstr "🔏 Proxy Path for Clients"
 
 msgid "config.quic_enable.description"
-msgstr "config.quic_enable.description"
+msgstr "Enable QUIC Protocol"
 
 msgid "config.quic_enable.label"
-msgstr "config.quic_enable.label"
+msgstr "Enable QUIC"
 
 msgid "config.reality.description"
 msgstr "REALITY eliminate the Server-Side TLS Fingerprint Feature"
@@ -1741,10 +1742,10 @@ msgid "config.reality.label"
 msgstr "Reality"
 
 msgid "config.reality_enable.description"
-msgstr "config.reality_enable.description"
+msgstr "Enable Reality Protocol"
 
 msgid "config.reality_enable.label"
-msgstr "config.reality_enable.label"
+msgstr "Enable Reality"
 
 msgid "config.reality_fallback_domain.description"
 msgstr ""
@@ -1959,10 +1960,10 @@ msgid "config.ssr_fakedomain.label"
 msgstr "SSR FakeDomain"
 
 msgid "config.tcp_enable.description"
-msgstr "config.tcp_enable.description"
+msgstr "Enable TCP Protocol"
 
 msgid "config.tcp_enable.label"
-msgstr "config.tcp_enable.label"
+msgstr "Enable TCP"
 
 msgid "config.telegram.description"
 msgstr "A proxy designed for Telegram to bypass Telegram filtering"
@@ -2021,7 +2022,10 @@ msgid "config.tls.label"
 msgstr "TLS Configuration"
 
 msgid "config.tls_fragment_enable.description"
-msgstr "Under some circumstances, it can bypass the SNI blacklist system"
+msgstr ""
+"<p>Under some circumstances, it can bypass the SNI blacklist system. <a "
+"href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-"
+"the-TLS-Trick-works-and-its-usage/\" target=\"_blank\">(Read More)</a></p>"
 
 msgid "config.tls_fragment_enable.label"
 msgstr "⏯ Enable TLS Fragment"
@@ -2045,7 +2049,11 @@ msgid "config.tls_mixed_case.label"
 msgstr "🔠 Enable TLS Mixed SNI Case"
 
 msgid "config.tls_padding_enable.description"
-msgstr "Enables Padding for TLS Fragmentation"
+msgstr ""
+"<p>Enables Padding for TLS Fragmentation. <a "
+"href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-"
+"the-TLS-Trick-works-and-its-usage/#tls-padding\" target=\"_blank\">(Read "
+"More)</a></p>"
 
 msgid "config.tls_padding_enable.label"
 msgstr "♒️ Enable TLS Padding"
@@ -2085,10 +2093,10 @@ msgid "config.torrent_block.label"
 msgstr "Torrent Block Configuration"
 
 msgid "config.trojan_enable.description"
-msgstr "config.trojan_enable.description"
+msgstr "Enable Trojan Protocol"
 
 msgid "config.trojan_enable.label"
-msgstr "config.trojan_enable.label"
+msgstr "Enable Trojan"
 
 msgid "config.tuic.description"
 msgstr ""
@@ -2143,10 +2151,10 @@ msgid "config.validation-success-no-reset"
 msgstr " ✅ Configs have been changed successfully"
 
 msgid "config.vless_enable.description"
-msgstr "config.vless_enable.description"
+msgstr "Enable VLess Protocol"
 
 msgid "config.vless_enable.label"
-msgstr "config.vless_enable.label"
+msgstr "Enable VLess"
 
 msgid "config.vmess_enable.description"
 msgstr "Active VMess Protocol"
@@ -2261,10 +2269,10 @@ msgid "config.ws_enable.label"
 msgstr "🔰 Enable Websocket"
 
 msgid "config.xtls_enable.description"
-msgstr "config.xtls_enable.description"
+msgstr "Enable XTLS Protocol"
 
 msgid "config.xtls_enable.label"
-msgstr "config.xtls_enable.label"
+msgstr "Enable XTLS"
 
 msgid "config.invalid uuid"
 msgstr ""

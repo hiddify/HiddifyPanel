@@ -89,6 +89,10 @@
 
 #### Fix
 
+* Typo. 
+
+* Shadowsocks config & update usage bug. 
+
 * Xray update usage bugs. 
 
 * Icon. 
@@ -218,6 +222,55 @@
 * Bug and add description. 
 
 #### Other
+
+* Refactor. 
+
+* Fix bug? 
+
+* Update. 
+
+* Update translations. 
+
+* Revert SerializerMixin. 
+
+* Merge pull request #191 from Iam54r1n4/devp10-patch-2. 
+  _Fix shadowsocks bug_
+
+* Add: xray subscription to UI. 
+
+* Fink 🐦: update translations. 
+
+* Fink 🐦: update translations. 
+
+* Fink 🐦: update translations. 
+
+* Fink 🐦: update translations. 
+
+* Fink 🐦: update translations. 
+
+* Fink 🐦: update translations. 
+
+* Fink 🐦: update translations. 
+
+* Fink 🐦: update translations. 
+
+* Fink 🐦: update translations. 
+
+* Fink 🐦: update translations. 
+
+* Fink 🐦: update translations. 
+
+* Fink 🐦: update translations. 
+
+* Fink 🐦: update translations. 
+
+* Fink 🐦: update translations. 
+
+* Fink 🐦: update translations. 
+
+* Fink 🐦: update translations. 
+
+* Fink 🐦: update translations. 
 
 * Update translations. 
 

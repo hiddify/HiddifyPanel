@@ -1379,10 +1379,10 @@ msgid "config.grpc_enable.label"
 msgstr "➿ gRPC را فعال کنید"
 
 msgid "config.h2_enable.description"
-msgstr ""
+msgstr "فعال کردن پروتکل HTTP/2"
 
 msgid "config.h2_enable.label"
-msgstr ""
+msgstr "فعال سازی h2"
 
 msgid "config.hidden.description"
 msgstr "-"
@@ -1414,14 +1414,8 @@ msgstr "☑️ اجازه اتصال HTTP"
 
 msgid "config.httpupgrade_enable.description"
 msgstr ""
-"HTTPUpgrade یک درخواست ارتقاء HTTP ۱.۱ است و پاسخ را قبل از استفاده مستقیم "
-"از اتصال تکمیل می کند. این شبیه به WebSocket است که یک کانال ایجاد می کند که"
-" می تواند توسط بسیاری از پروکسی های معکوس و CDN ها ارسال شود، بدون اینکه "
-"نیازی به رسیدگی به تمام مسائل پیرامون خود پروتکل WebSocket باشد. ⚠️ در نرم "
-"افزارهای مبتنی بر XRay موجود نیست. فقط نرم افزارهای HiddifyNext، Singbox و "
-"V۲fly پشتیبانی می شوند. <p><a href=\"https://hiddify.com/fa/manager/basic-"
-"concepts-and-troubleshooting/Basic-Concepts/#http-upgarde\" "
-"target=\"_blank\"><strong>(بیشتر بدانید)</strong></a></p>"
+"<p style=\"direction:rtl\">HTTPUpgrade یک درخواست ارتقاء HTTP ۱.۱ است و پاسخ را قبل از استفاده مستقیم از اتصال تکمیل می کند. این شبیه به WebSocket است که یک کانال ایجاد می کند که می تواند توسط بسیاری از پروکسی های معکوس و CDN ها ارسال شود، بدون اینکه نیازی به رسیدگی به تمام مسائل پیرامون خود پروتکل WebSocket باشد.<br />\n"
+"⚠️ <strong>در نرم افزارهای مبتنی بر XRay موجود نیست. فقط نرم افزارهای HiddifyNext، Singbox و V۲fly پشتیبانی می شوند.&nbsp;</strong><a href=\"https://hiddify.com/fa/manager/basic-concepts-and-troubleshooting/Basic-Concepts/#http-upgarde\" target=\"_blank\"><strong>(بیشتر بدانید)</strong></a></p>"
 
 msgid "config.httpupgrade_enable.label"
 msgstr "🆙 فعالسازی HTTPUpgrade"
@@ -1544,8 +1538,11 @@ msgstr "⬆️ آپلود (mbps) MUX Brutal"
 
 msgid "config.mux_enable.description"
 msgstr ""
-"Mux به نرم افزار سازگار نیاز دارد. Mux در Hiddify Next و Singbox و XRay "
-"سازگار نیستند"
+"<p style=\"direction:rtl\">Mux به نرم افزار سازگار نیاز دارد. Mux در Hiddify"
+" Next و Singbox و XRay سازگار نیستند.&nbsp;<a "
+"href=\"https://hiddify.com/fa/manager/basic-concepts-and-"
+"troubleshooting/How-MUX-works-and-its-usage/\" target=\"_blank\">(بیشتر "
+"بدانید)</a></p>"
 
 msgid "config.mux_enable.label"
 msgstr "Ⓜ️ فعال کردن MUX (⚠️ ناسازگار با برخی نرم افزارها)"
@@ -1725,10 +1722,10 @@ msgid "config.proxy_path_client.label"
 msgstr "مسیر پروکسی برای مشتریان"
 
 msgid "config.quic_enable.description"
-msgstr ""
+msgstr "فعال کردن پروتکل QUIC"
 
 msgid "config.quic_enable.label"
-msgstr ""
+msgstr "Enable QUIC Protocol"
 
 msgid "config.reality.description"
 msgstr "REALITY قابلیت اثر انگشت TLS سمت سرور را حذف می کند"
@@ -1737,10 +1734,10 @@ msgid "config.reality.label"
 msgstr "ریالیتی"
 
 msgid "config.reality_enable.description"
-msgstr ""
+msgstr "فعال کردن پروتکل Reality"
 
 msgid "config.reality_enable.label"
-msgstr ""
+msgstr "فعال سازی Reality"
 
 msgid "config.reality_fallback_domain.description"
 msgstr ""
@@ -1958,10 +1955,10 @@ msgid "config.ssr_fakedomain.label"
 msgstr "دامنه جعلی برای SSR"
 
 msgid "config.tcp_enable.description"
-msgstr ""
+msgstr "فعال کردن پروتکل TCP"
 
 msgid "config.tcp_enable.label"
-msgstr ""
+msgstr "فعال سازی TCP"
 
 msgid "config.telegram.description"
 msgstr ""
@@ -2021,7 +2018,11 @@ msgid "config.tls.label"
 msgstr "تنظیمات TLS"
 
 msgid "config.tls_fragment_enable.description"
-msgstr "تحت برخی شرایط، می تواند سیستم لیست سیاه SNI را دور بزند"
+msgstr ""
+"<p style=\"direction:rtl\">تحت برخی شرایط، می تواند سیستم لیست سیاه SNI را "
+"دور بزند.&nbsp;<a href=\"https://hiddify.com/fa/manager/basic-concepts-and-"
+"troubleshooting/How-the-TLS-Trick-works-and-its-usage/\" "
+"target=\"_blank\">(بیشتر بدانید)</a></p>"
 
 msgid "config.tls_fragment_enable.label"
 msgstr "⏯ TLS Fragment را فعال کنید"
@@ -2045,7 +2046,11 @@ msgid "config.tls_mixed_case.label"
 msgstr "🔠 TLS Mixed SNI Case را فعال کنید"
 
 msgid "config.tls_padding_enable.description"
-msgstr "Padding تکه تکه شدن TLS را فعال می کند"
+msgstr ""
+"<p style=\"direction:rtl\">Padding تکه تکه شدن TLS را فعال می کند.&nbsp;<a "
+"href=\"https://hiddify.com/fa/manager/basic-concepts-and-"
+"troubleshooting/How-the-TLS-Trick-works-and-its-usage/#tls-padding\" "
+"target=\"_blank\">(بیشتر بدانید)</a></p>"
 
 msgid "config.tls_padding_enable.label"
 msgstr "♒️ TLS Padding را فعال کنید"
@@ -2084,10 +2089,10 @@ msgid "config.torrent_block.label"
 msgstr "تنظیمات Torrent Block"
 
 msgid "config.trojan_enable.description"
-msgstr ""
+msgstr "فعال کردن پروتکل Trojan"
 
 msgid "config.trojan_enable.label"
-msgstr ""
+msgstr "فعال سازی Trojan"
 
 msgid "config.tuic.description"
 msgstr ""
@@ -2141,10 +2146,10 @@ msgid "config.validation-success-no-reset"
 msgstr " ✅ تنظیمات با موفقیت تغییر کرد"
 
 msgid "config.vless_enable.description"
-msgstr ""
+msgstr "فعال کردن پروتکل VLess"
 
 msgid "config.vless_enable.label"
-msgstr ""
+msgstr "فعال سازی VLess"
 
 msgid "config.vmess_enable.description"
 msgstr "فعال کردن پروتکل VMess"
@@ -2260,10 +2265,10 @@ msgid "config.ws_enable.label"
 msgstr "🔰 Websocket را فعال کنید"
 
 msgid "config.xtls_enable.description"
-msgstr ""
+msgstr "فعال کردن پروتکل XTLS"
 
 msgid "config.xtls_enable.label"
-msgstr ""
+msgstr "فعال سازی XTLS"
 
 msgid "config.invalid uuid"
 msgstr ""
