@@ -11,7 +11,16 @@ OUTBOUND_LEVEL = 8
 def configs_as_json(domains: list[Domain], remarks: str) -> str:
     '''Returns xray configs as json'''
     outbounds = []
+
+    # TODO: check what are unsupported protocols in other apps
+    unsupported_protos = {}
+    if g.user_agent.get('is_v2rayng'):
+        # TODO: ensure which protocols are not supported in v2rayng
+        unsupported_protos = {ProxyProto.wireguard, ProxyProto.hysteria, ProxyProto.hysteria2, ProxyProto.tuic, ProxyProto.ss, ProxyProto.ssr, ProxyProto.ssh}
+
     for proxy in hutils.proxy.get_valid_proxies(domains):
+        if unsupported_protos and proxy['proto'] in unsupported_protos:
+            continue
         outbound = to_xray(proxy)
         if 'msg' not in outbound:
             outbounds.append(outbound)
