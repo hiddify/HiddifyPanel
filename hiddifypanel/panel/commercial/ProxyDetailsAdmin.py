@@ -1,18 +1,13 @@
 from hiddifypanel.models import *
-from hiddifypanel.panel import hiddify
 from hiddifypanel.panel.admin.adminlte import AdminLTEModelView
 from flask_babel import gettext as __
 from flask_babel import lazy_gettext as _
 from flask import g, redirect
 from markupsafe import Markup
-
-from hiddifypanel.hutils.flask import hurl_for, flash
 from hiddifypanel.auth import login_required
-from flask_admin.model.template import EndpointLinkRowAction
 from flask_admin.actions import action
 from flask_admin.contrib.sqla import form, filters as sqla_filters, tools
 # Define a custom field type for the related domains
-from flask import current_app
 from hiddifypanel import hutils
 
 
@@ -31,7 +26,7 @@ class ProxyDetailsAdmin(AdminLTEModelView):
         count = query.update({'enable': False})
 
         self.session.commit()
-        flash(_('%(count)s records were successfully disabled.', count=count), 'success')
+        hutils.flask.flash(_('%(count)s records were successfully disabled.', count=count), 'success')
         hutils.proxy.get_proxies.invalidate_all()
 
     @action('enable', 'Enable', 'Are you sure you want to enable selected proxies?')
@@ -40,7 +35,7 @@ class ProxyDetailsAdmin(AdminLTEModelView):
         count = query.update({'enable': True})
 
         self.session.commit()
-        flash(_('%(count)s records were successfully enabled.', count=count), 'success')
+        hutils.flask.flash(_('%(count)s records were successfully enabled.', count=count), 'success')
         hutils.proxy.get_proxies.invalidate_all()
 
     # list_template = 'model/domain_list.html'

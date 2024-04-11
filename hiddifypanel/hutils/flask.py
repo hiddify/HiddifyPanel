@@ -17,7 +17,8 @@ from hiddifypanel import hutils
 
 
 def flash(message: str, category: str = "message"):
-    # if isinstance(message, LazyString)
+    if not isinstance(message,str):
+        message = str(message)
     return flask_flash(message, category)
 
 
