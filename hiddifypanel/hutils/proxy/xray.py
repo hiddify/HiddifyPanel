@@ -3,7 +3,7 @@ import json
 import copy
 from flask import render_template, request, g
 from hiddifypanel import hutils
-from hiddifypanel.models import Proxy, ProxyTransport, ProxyL3, ProxyCDN, ProxyProto, Domain, ConfigEnum, DomainType, hconfig
+from hiddifypanel.models import ProxyTransport, ProxyL3, ProxyProto, Domain, User, ConfigEnum, hconfig
 from flask_babel import gettext as _
 
 OUTBOUND_LEVEL = 8
@@ -145,46 +145,44 @@ def to_link(proxy: dict) -> str | dict:
     return proxy
 
 
-def make_v2ray_configs(user, user_activate, domains: list[Domain], expire_days, ip_debug, db_domain, has_auto_cdn, asn, profile_title, **kwargs) -> str:
+def make_v2ray_configs(domains: list[Domain], user: User, expire_days: int, ip_debug=None) -> str:
     res = []
 
-    ua = hutils.flask.get_user_agent()
-    if hconfig(ConfigEnum.show_usage_in_sublink):
+    if hconfig(ConfigEnum.show_usage_in_sublink) and not g.user_agent.get('is_hiddify'):
 
-        if not ua['is_hiddify']:
+        fake_ip_for_sub_link = datetime.datetime.now().strftime(f"%H.%M--%Y.%m.%d.time:%H%M")
+        # if ua['app'] == "Fair1":
+        #     res.append(f'trojan://1@{fake_ip_for_sub_link}?sni=fake_ip_for_sub_link&security=tls#{round(user.current_usage_GB,3)}/{user.usage_limit_GB}GB_Remain:{expire_days}days')
+        # else:
 
-            fake_ip_for_sub_link = datetime.datetime.now().strftime(f"%H.%M--%Y.%m.%d.time:%H%M")
-            # if ua['app'] == "Fair1":
-            #     res.append(f'trojan://1@{fake_ip_for_sub_link}?sni=fake_ip_for_sub_link&security=tls#{round(user.current_usage_GB,3)}/{user.usage_limit_GB}GB_Remain:{expire_days}days')
-            # else:
+        # res.append(f'trojan://1@{fake_ip_for_sub_link}?sni=fake_ip_for_sub_link&security=tls#{hutils.encode.url_encode(profile_title)}')
 
-            # res.append(f'trojan://1@{fake_ip_for_sub_link}?sni=fake_ip_for_sub_link&security=tls#{hutils.encode.url_encode(profile_title)}')
+        name = '⏳ ' if user.is_active else '✖ '
+        if user.usage_limit_GB < 1000:
+            name += f'{round(user.current_usage_GB,3)}/{str(user.usage_limit_GB).replace(".0","")}GB'
+        elif user.usage_limit_GB < 100000:
+            name += f'{round(user.current_usage_GB/1000,3)}/{str(round(user.usage_limit_GB/1000,1)).replace(".0","")}TB'
+        else:
+            res.append("#No Usage Limit")
+        name += " 📅 "
+        if expire_days < 1000:
+            name += _(f'%(expire_days)s days', expire_days=expire_days)
+        else:
+            res.append("#No Time Limit")
 
-            name = '⏳' if user_activate else '✖'
-            if user.usage_limit_GB < 1000:
-                name += f'{round(user.current_usage_GB,3)}/{str(user.usage_limit_GB).replace(".0","")}GB'
-            elif user.usage_limit_GB < 100000:
-                name += f'{round(user.current_usage_GB/1000,3)}/{str(round(user.usage_limit_GB/1000,1)).replace(".0","")}TB'
-            else:
-                res.append("#No Usage Limit")
-            if expire_days < 1000:
-                name += " " + _(f'📅%(expire_days)s days', expire_days=expire_days)
-            else:
-                res.append("#No Time Limit")
+        name = name.strip()
+        if len(name) > 3:
+            res.append(f'trojan://1@{fake_ip_for_sub_link}?sni=fake_ip_for_sub_link&security=tls#{hutils.encode.url_encode(name)}')
 
-            name = name.strip()
-            if len(name) > 3:
-                res.append(f'trojan://1@{fake_ip_for_sub_link}?sni=fake_ip_for_sub_link&security=tls#{hutils.encode.url_encode(name)}')
-
-    if ua['is_browser']:
+    if g.user_agent.get('is_browser') and ip_debug:
         res.append(f'#Hiddify auto ip: {ip_debug}')
 
-    if not user_activate:
+    if not user.is_active:
 
         if hconfig(ConfigEnum.lang) == 'fa':
-            res.append('trojan://1@1.1.1.1#' + hutils.encode.url_encode('✖بسته شما به پایان رسید'))
+            res.append('trojan://1@1.1.1.1#' + hutils.encode.url_encode('✖ بسته شما به پایان رسید'))
         else:
-            res.append('trojan://1@1.1.1.1#' + hutils.encode.url_encode('✖Package_Ended'))
+            res.append('trojan://1@1.1.1.1#' + hutils.encode.url_encode('✖ Package Ended'))
         return "\n".join(res)
 
     for pinfo in hutils.proxy.get_valid_proxies(domains):

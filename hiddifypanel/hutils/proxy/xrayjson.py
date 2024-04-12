@@ -2,55 +2,87 @@ import json
 import copy
 from flask import render_template, g
 from hiddifypanel import hutils
-from hiddifypanel.models import ProxyTransport, ProxyL3, ProxyProto, Domain
+from hiddifypanel.models import ProxyTransport, ProxyL3, ProxyProto, Domain, User
 from flask_babel import gettext as _
+from hiddifypanel.models import hconfig, ConfigEnum
 from .xray import is_muxable_agent
 OUTBOUND_LEVEL = 8
 
 
-def configs_as_json(domains: list[Domain], remarks: str) -> str:
+def configs_as_json(domains: list[Domain], user: User, expire_days: int,  remarks: str) -> str:
     '''Returns xray configs as json'''
-    outbounds = []
-
-    # TODO: check what are unsupported protocols in other apps
-    unsupported_protos = {}
-    if g.user_agent.get('is_v2rayng'):
-        # TODO: ensure which protocols are not supported in v2rayng
-        unsupported_protos = {ProxyProto.wireguard, ProxyProto.hysteria, ProxyProto.hysteria2, ProxyProto.tuic, ProxyProto.ss, ProxyProto.ssr, ProxyProto.ssh}
-
-    for proxy in hutils.proxy.get_valid_proxies(domains):
-        if unsupported_protos and proxy['proto'] in unsupported_protos:
-            continue
-        outbound = to_xray(proxy)
-        if 'msg' not in outbound:
-            outbounds.append(outbound)
-
-    outbounds_len = len(outbounds)
-    # reutrn no outbound
-    if outbounds_len < 1:
-        return ''
 
     all_configs = []
-    base_config = json.loads(render_template('base_xray_config.json.j2', remarks=remarks))
-    # multiple outbounds needs multiple whole base config not just one with multiple outbounds (at least for v2rayng)
-    # https://github.com/2dust/v2rayNG/pull/2827#issue-2127534078
-    if outbounds_len > 1:
-        for out in outbounds:
-            base_config['remarks'] = out['tag']
-            base_config['outbounds'].insert(0, out)
-            all_configs.append(copy.deepcopy(base_config))
-            del base_config['outbounds'][0]
-    else:  # single outbound
-        base_config['outbounds'].insert(0, outbounds[0])
-        all_configs = base_config
+    if hconfig(ConfigEnum.show_usage_in_sublink) and not g.user_agent.get('is_hiddify'):
+        # determine usages
+        tag = '⏳ ' if user.is_active else '✖ '
+        if user.usage_limit_GB < 1000:
+            tag += f'{round(user.current_usage_GB,3)}/{str(user.usage_limit_GB).replace(".0","")}GB'
+        elif user.usage_limit_GB < 100000:
+            tag += f'{round(user.current_usage_GB/1000,3)}/{str(round(user.usage_limit_GB/1000,1)).replace(".0","")}TB'
+        else:
+            tag += '#No Usage Limit'
+        tag += ' 📅 '
+        if expire_days < 1000:
+            tag += _(f'%(expire_days)s days', expire_days=expire_days)
+        else:
+            tag += '#No Time Limit'
+        tag = tag.strip()
 
+        # add usage as a config
+        all_configs.append(
+            null_config(tag)
+        )
+
+    active = True
+    if not user.is_active:
+        tag = '✖ ' + (hutils.encode.url_encode('بسته شما به پایان رسید') if hconfig(ConfigEnum.lang) == 'fa' else 'Package Ended')
+        # add user status
+        all_configs.append(
+            null_config(tag)
+        )
+        active = False
+
+    if active:
+        # TODO: check what are unsupported protocols in other apps
+        unsupported_protos = {}
+        if g.user_agent.get('is_v2rayng'):
+            # TODO: ensure which protocols are not supported in v2rayng
+            unsupported_protos = {ProxyProto.wireguard, ProxyProto.hysteria, ProxyProto.hysteria2, ProxyProto.tuic, ProxyProto.ss, ProxyProto.ssr, ProxyProto.ssh}
+
+        # multiple outbounds needs multiple whole base config not just one with multiple outbounds (at least for v2rayng)
+        # https://github.com/2dust/v2rayNG/pull/2827#issue-2127534078
+        outbounds = []
+        for proxy in hutils.proxy.get_valid_proxies(domains):
+            if unsupported_protos and proxy['proto'] in unsupported_protos:
+                continue
+            outbound = to_xray(proxy)
+            if 'msg' not in outbound:
+                outbounds.append(outbound)
+
+        base_config = json.loads(render_template('base_xray_config.json.j2', remarks=remarks))
+        if len(outbounds) > 1:
+            for out in outbounds:
+                base_config['remarks'] = out['tag']
+                base_config['outbounds'].insert(0, out)
+                if all_configs:
+                    all_configs.insert(0, copy.deepcopy(base_config))
+                else:
+                    all_configs.append(copy.deepcopy(base_config))
+                del base_config['outbounds'][0]
+        else:  # single outbound
+            base_config['outbounds'].insert(0, outbounds[0])
+            all_configs = base_config
+
+    if not all_configs:
+        return ''
     json_configs = json.dumps(all_configs, indent=2, cls=hutils.proxy.ProxyJsonEncoder)
     return json_configs
 
 
 def to_xray(proxy: dict) -> dict:
     outbound = {
-        'tag': f'{proxy["extra_info"]} {proxy["name"]} § {proxy["port"]} {proxy["dbdomain"].id}',
+        'tag': f'{proxy["extra_info"]} {proxy["name"]}',
         'protocol': str(proxy['proto']),
         'settings': {},
         'streamSettings': {},
@@ -397,3 +429,8 @@ def add_mux_to_link(proxy: dict) -> str:
     out = {}
     add_mux_to_dict(out, proxy)
     return hutils.encode.convert_dict_to_url(out)
+
+
+def null_config(tag: str) -> dict:
+    base_config = json.loads(render_template('base_xray_config.json.j2', remarks=tag))
+    return base_config
