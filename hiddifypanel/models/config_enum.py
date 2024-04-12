@@ -212,7 +212,7 @@ class ConfigEnum(metaclass=FastEnum):
     tuic_port = _StrConfigDscr(ConfigCategory.hidden, ApplyMode.apply, hide_in_virtual_child=True)
 
     # the hysteria is refereing to hysteria2
-    hysteria_enable = _BoolConfigDscr(ConfigCategory.hidden, ApplyMode.apply)
+    hysteria_enable = _BoolConfigDscr(ConfigCategory.hysteria, ApplyMode.apply)
     hysteria_port = _StrConfigDscr(ConfigCategory.hidden, ApplyMode.apply, hide_in_virtual_child=True)
     # if be enable hysteria2 will be use salamander as obfs
     hysteria_obfs_enable = _BoolConfigDscr(ConfigCategory.hysteria, ApplyMode.apply)
