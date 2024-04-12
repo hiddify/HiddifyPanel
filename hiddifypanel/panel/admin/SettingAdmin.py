@@ -55,7 +55,9 @@ class SettingAdmin(FlaskView):
                         if k.type == str:
                             if "_domain" in k or "_fakedomain" in k:
                                 v = v.lower()
-
+                            if k == ConfigEnum.warp_sites and 'https://' in v:
+                                hutils.flask.flash(_("config.warp-https-domain-for-warp-site"), 'error')
+                                return render_template('config.html', form=form)
                             if "port" in k:
                                 for p in v.split(","):
                                     for k2, v2 in c_items.items():
@@ -249,7 +251,7 @@ def get_config_form():
 
             elif c.key == ConfigEnum.warp_sites:
                 validators = [wtf.validators.Length(max=2048),
-                              wtf.validators.Regexp(r'^([\w.-]+)?(?:\n[\w.-]+)*$', re.IGNORECASE, _("config.invalid-pattern-for-warp-sites") + f' {c.key}')
+                              wtf.validators.Regexp(r'^[\w.-]+\.\w+(?:\.\w+)?(?:\r?\n|$)', re.IGNORECASE, _("config.invalid-pattern-for-warp-sites") + f' {c.key}')
                               ]
                 render_kw = {'class': "ltr", 'maxlength': 2048}
                 field = wtf.TextAreaField(_(f'config.{c.key}.label'), validators, default=c.value,
