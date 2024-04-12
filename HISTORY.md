@@ -1,6 +1,19 @@
 # Changelog
 
 
+## v10.20.2 (2024-04-12)
+
+#### Fix
+
+* Warp_sites validation. 
+
+#### Other
+
+* Merge pull request #193 from Iam54r1n4/devp10-patch-4. 
+  _Fix warp_sites validation_
+
+
+
 ## v10.20.1 (2024-04-12)
 
 #### Other
