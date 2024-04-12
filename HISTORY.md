@@ -3,6 +3,29 @@
 
 ## (unreleased)
 
+#### Fix
+
+* Get only enabled proxies for subs. 
+
+* Show tuic enable & port options in sttings. 
+
+* Show hysteria enable option. 
+
+* Flash bug when enable/disable ing proxies. 
+
+* Don't send unsupported protocols in v2rayng sub. 
+
+#### Other
+
+* Merge pull request #192 from Iam54r1n4/devp10-patch-3. 
+  _Handle v2rayng sub & bug fix_
+
+* Add: add xray json configs to auto sub options. 
+
+
+
+## v10.20.0 (2024-04-11)
+
 #### New
 
 * Add warp_sites validator. 
