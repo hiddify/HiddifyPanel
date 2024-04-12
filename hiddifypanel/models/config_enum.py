@@ -208,8 +208,8 @@ class ConfigEnum(metaclass=FastEnum):
     v2ray_enable = _BoolConfigDscr(ConfigCategory.hidden, ApplyMode.apply)
     torrent_block = _BoolConfigDscr(ConfigCategory.general, ApplyMode.apply)
 
-    tuic_enable = _BoolConfigDscr(ConfigCategory.hidden, ApplyMode.apply)
-    tuic_port = _StrConfigDscr(ConfigCategory.hidden, ApplyMode.apply, hide_in_virtual_child=True)
+    tuic_enable = _BoolConfigDscr(ConfigCategory.tuic, ApplyMode.apply)
+    tuic_port = _StrConfigDscr(ConfigCategory.tuic, ApplyMode.apply, hide_in_virtual_child=True)
 
     # the hysteria is refereing to hysteria2
     hysteria_enable = _BoolConfigDscr(ConfigCategory.hysteria, ApplyMode.apply)
