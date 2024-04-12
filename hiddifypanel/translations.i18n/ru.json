@@ -2,6 +2,7 @@
   " Search Settings": " Настройки поиска",
   "%(count)s records were successfully disabled.": "%(count)s записей были успешно отключены.",
   "%(count)s records were successfully enabled.": "%(count)s записей были успешно включены.",
+  "%(expire_days)s days": "",
   "%(placeholder)s": "%(placeholder)s",
   "0 - Last day": "Последний день",
   "Access Denied!": "Доступ запрещен",
@@ -1171,6 +1172,5 @@
   "user.home.select os": "Пожалуйста, выберите вашу операционную систему",
   "user.home.select tool": "Пожалуйста, выберите",
   "weekly": "📅 Еженедельно",
-  "worker": "✴️ Cloudflare Worker",
-  "📅%(expire_days)s days": "Осталось 📅%(expire_days)s дней"
+  "worker": "✴️ Cloudflare Worker"
 }

@@ -2,6 +2,7 @@
   " Search Settings": " Search Settings",
   "%(count)s records were successfully disabled.": "%(count)s records were successfully disabled.",
   "%(count)s records were successfully enabled.": "%(count)s records were successfully enabled.",
+  "%(expire_days)s days": "%(expire_days)s days",
   "%(placeholder)s": "%(placeholder)s",
   "0 - Last day": "Last Day",
   "Access Denied!": "Access Denied",
@@ -1171,6 +1172,5 @@
   "user.home.select os": "Please Select Your Operating System.",
   "user.home.select tool": "Please select the item.",
   "weekly": "📅 Weekly",
-  "worker": "✴️ Cloudflare Worker",
-  "📅%(expire_days)s days": "📅%(expire_days)s Days Remain"
+  "worker": "✴️ Cloudflare Worker"
 }

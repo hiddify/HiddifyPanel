@@ -2,6 +2,7 @@
   " Search Settings": " Configurações de pesquisa",
   "%(count)s records were successfully disabled.": "%(count)s registros foram desativados com sucesso.",
   "%(count)s records were successfully enabled.": "%(count)s registros foram ativados com sucesso.",
+  "%(expire_days)s days": "",
   "%(placeholder)s": "%(placeholder)s",
   "0 - Last day": "Último dia",
   "Access Denied!": "Acesso negado",
@@ -1171,6 +1172,5 @@
   "user.home.select os": "Selecione seu sistema operacional.",
   "user.home.select tool": "Selecione o item.",
   "weekly": "📅 Semanal",
-  "worker": "✴️ Cloudflare Worker",
-  "📅%(expire_days)s days": "📅Remanescem: %(expire_days)s dias"
+  "worker": "✴️ Cloudflare Worker"
 }

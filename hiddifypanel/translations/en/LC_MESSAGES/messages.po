@@ -11,6 +11,9 @@ msgstr "%(count)s records were successfully disabled."
 msgid "%(count)s records were successfully enabled."
 msgstr "%(count)s records were successfully enabled."
 
+msgid "%(expire_days)s days"
+msgstr "%(expire_days)s days"
+
 msgid "%(placeholder)s"
 msgstr "%(placeholder)s"
 
@@ -2815,6 +2818,3 @@ msgstr "📅 Weekly"
 
 msgid "worker"
 msgstr "✴️ Cloudflare Worker"
-
-msgid "📅%(expire_days)s days"
-msgstr "📅%(expire_days)s Days Remain"

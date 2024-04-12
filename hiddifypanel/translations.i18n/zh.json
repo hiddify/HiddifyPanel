@@ -2,6 +2,7 @@
   " Search Settings": "搜索设置",
   "%(count)s records were successfully disabled.": "%(count)s 条记录已成功禁用。",
   "%(count)s records were successfully enabled.": "%(count)s 条记录已成功启用。",
+  "%(expire_days)s days": "",
   "%(placeholder)s": "%(placeholder)s",
   "0 - Last day": "最后一天",
   "Access Denied!": "拒绝访问",
@@ -1171,6 +1172,5 @@
   "user.home.select os": "请选择您的操作系统。",
   "user.home.select tool": "请选择该项目。",
   "weekly": "📅每周",
-  "worker": "✴️ Cloudflare 工作人员",
-  "📅%(expire_days)s days": "📅%(expire_days)s 天剩余"
+  "worker": "✴️ Cloudflare 工作人员"
 }

@@ -11,6 +11,9 @@ msgstr "%(count)s 条记录已成功禁用。"
 msgid "%(count)s records were successfully enabled."
 msgstr "%(count)s 条记录已成功启用。"
 
+msgid "%(expire_days)s days"
+msgstr ""
+
 msgid "%(placeholder)s"
 msgstr "%(placeholder)s"
 
@@ -2626,6 +2629,3 @@ msgstr "📅每周"
 
 msgid "worker"
 msgstr "✴️ Cloudflare 工作人员"
-
-msgid "📅%(expire_days)s days"
-msgstr "📅%(expire_days)s 天剩余"
