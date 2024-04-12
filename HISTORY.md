@@ -1,30 +1,17 @@
 # Changelog
 
 
-## (unreleased)
-
-#### Fix
-
-* Get only enabled proxies for subs. 
-
-* Show tuic enable & port options in sttings. 
-
-* Show hysteria enable option. 
-
-* Flash bug when enable/disable ing proxies. 
-
-* Don't send unsupported protocols in v2rayng sub. 
+## v10.20.1 (2024-04-12)
 
 #### Other
 
-* Merge pull request #192 from Iam54r1n4/devp10-patch-3. 
-  _Handle v2rayng sub & bug fix_
+* Update translations. 
 
-* Add: add xray json configs to auto sub options. 
-
+* Update. 
 
 
-## v10.20.0 (2024-04-11)
+
+## v10.20.0 (2024-04-12)
 
 #### New
 
@@ -111,6 +98,16 @@
 * ConfigEnum.parent_panel category to too_advanced. 
 
 #### Fix
+
+* Get only enabled proxies for subs. 
+
+* Show tuic enable & port options in sttings. 
+
+* Show hysteria enable option. 
+
+* Flash bug when enable/disable ing proxies. 
+
+* Don't send unsupported protocols in v2rayng sub. 
 
 * Typo. 
 
@@ -245,6 +242,11 @@
 * Bug and add description. 
 
 #### Other
+
+* Merge pull request #192 from Iam54r1n4/devp10-patch-3. 
+  _Handle v2rayng sub & bug fix_
+
+* Add: add xray json configs to auto sub options. 
 
 * Refactor. 
 
