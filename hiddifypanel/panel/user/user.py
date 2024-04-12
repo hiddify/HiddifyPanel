@@ -111,6 +111,9 @@ class UserView(FlaskView):
         if re.match('^(Clash|Stash)', ua, re.IGNORECASE):
             return self.clash_config(meta_or_normal="normal")
 
+        if g.user_agent.get('is_v2rayng'):
+            return self.xray()
+
         # if 'HiddifyNext' in ua or 'Dart' in ua:
         #     return self.clash_config(meta_or_normal="meta")
 
