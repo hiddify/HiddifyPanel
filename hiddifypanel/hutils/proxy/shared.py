@@ -107,10 +107,15 @@ def is_tls(l3) -> bool:
 def get_proxies(child_id: int = 0, only_enabled=False) -> list['Proxy']:
     proxies = Proxy.query.filter(Proxy.child_id == child_id).all()
     proxies = [c for c in proxies if 'restls' not in c.transport]
-    # if not hconfig(ConfigEnum.tuic_enable, child_id):
-    #     proxies = [c for c in proxies if c.proto != ProxyProto.tuic]
-    # if not hconfig(ConfigEnum.hysteria_enable, child_id):
-    #     proxies = [c for c in proxies if c.proto != ProxyProto.hysteria2]
+
+    if not hconfig(ConfigEnum.tuic_enable, child_id):
+        proxies = [c for c in proxies if c.proto != ProxyProto.tuic]
+    if not hconfig(ConfigEnum.wireguard_enable, child_id):
+        proxies = [c for c in proxies if c.proto != ProxyProto.wireguard]
+    if not hconfig(ConfigEnum.ssh_server_enable, child_id):
+        proxies = [c for c in proxies if c.proto != ProxyProto.ssh]
+    if not hconfig(ConfigEnum.hysteria_enable, child_id):
+        proxies = [c for c in proxies if c.proto != ProxyProto.hysteria2]
     if not hconfig(ConfigEnum.shadowsocks2022_enable, child_id):
         proxies = [c for c in proxies if 'shadowsocks' != c.transport]
 
