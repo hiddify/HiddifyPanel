@@ -57,8 +57,8 @@ class UserView(FlaskView):
     @route("/xray")
     @login_required(roles={Role.user})
     def xray(self):
-        c = c = get_common_data(g.account.uuid, mode="new")
-        configs = hutils.proxy.xrayjson.configs_as_json(c['domains'], c['profile_title'])
+        c = get_common_data(g.account.uuid, mode="new")
+        configs = hutils.proxy.xrayjson.configs_as_json(c['domains'], c['user'], c['expire_days'], c['profile_title'])
         return add_headers(configs, c, 'application/json')
 
     @route("/singbox/")
@@ -230,7 +230,7 @@ class UserView(FlaskView):
             resp = ""
         else:
             # render_template('all_configs.txt', **c, base64=hutils.encode.do_base_64)
-            resp = hutils.proxy.xray.make_v2ray_configs(**c)
+            resp = hutils.proxy.xray.make_v2ray_configs(c['domains'], c['user'], c['expire_days'], c['ip_debug'])
 
         if base64:
             resp = hutils.encode.do_base_64(resp)
