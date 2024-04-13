@@ -107,7 +107,9 @@ class UserView(FlaskView):
             return self.clash_config(meta_or_normal="normal")
 
         if g.user_agent.get('is_v2rayng'):
-            return self.xray()
+            # return the old "Subscription link b64" sub if the "Full Xray" sub is disabled (wanted by user)
+            if hconfig(ConfigEnum.sub_full_xray_json_enable):
+                return self.xray()
 
         # if 'HiddifyNext' in ua or 'Dart' in ua:
         #     return self.clash_config(meta_or_normal="meta")
@@ -229,7 +231,7 @@ class UserView(FlaskView):
         base64 = base64 or request.args.get("base64", "").lower() == "true"
         if base64 and not hconfig(ConfigEnum.sub_full_links_b64_enable):
             return 'The Subscription link b64 is disabled'
-        elif not hconfig(ConfigEnum.sub_full_links_enable):
+        if not base64 and not hconfig(ConfigEnum.sub_full_links_enable):
             return 'The Subscription link is disabled'
 
         c = get_common_data(g.account.uuid, mode)
