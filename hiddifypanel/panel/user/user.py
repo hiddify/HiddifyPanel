@@ -108,7 +108,7 @@ class UserView(FlaskView):
 
         if g.user_agent.get('is_v2rayng'):
             # return the old "Subscription link b64" sub if the "Full Xray" sub is disabled (wanted by user)
-            if hconfig(ConfigEnum.sub_full_xray_json_enable):
+            if hconfig(ConfigEnum.sub_full_xray_json_enable) and hutils.flask.is_client_version(hutils.flask.ClientVersion.v2ryang, 1, 8, 17):
                 return self.xray()
 
         # if 'HiddifyNext' in ua or 'Dart' in ua:

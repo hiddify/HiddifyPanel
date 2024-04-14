@@ -5,14 +5,14 @@ from hiddifypanel import hutils
 from hiddifypanel.models import ProxyTransport, ProxyL3, ProxyProto, Domain, User
 from flask_babel import gettext as _
 from hiddifypanel.models import hconfig, ConfigEnum
-from .xray import is_muxable_agent
-OUTBOUND_LEVEL = 8
+from .xray import is_muxable_agent, OUTBOUND_LEVEL
 
 
 def configs_as_json(domains: list[Domain], user: User, expire_days: int,  remarks: str) -> str:
     '''Returns xray configs as json'''
-
     all_configs = []
+
+    # region show usage
     if hconfig(ConfigEnum.show_usage_in_sublink) and not g.user_agent.get('is_hiddify'):
         # determine usages
         tag = '⏳ ' if user.is_active else '✖ '
@@ -33,7 +33,9 @@ def configs_as_json(domains: list[Domain], user: User, expire_days: int,  remark
         all_configs.append(
             null_config(tag)
         )
+    # endregion
 
+    # region show status (active/disable)
     active = True
     if not user.is_active:
         tag = '✖ ' + (hutils.encode.url_encode('بسته شما به پایان رسید') if hconfig(ConfigEnum.lang) == 'fa' else 'Package Ended')
@@ -42,19 +44,26 @@ def configs_as_json(domains: list[Domain], user: User, expire_days: int,  remark
             null_config(tag)
         )
         active = False
+    # endregion
 
     if active:
+        # TODO: seperate codes to small functions
         # TODO: check what are unsupported protocols in other apps
-        unsupported_protos = {}
+        unsupported_protos = []
+        unsupported_transport = []
         if g.user_agent.get('is_v2rayng'):
             # TODO: ensure which protocols are not supported in v2rayng
-            unsupported_protos = {ProxyProto.wireguard, ProxyProto.hysteria, ProxyProto.hysteria2, ProxyProto.tuic, ProxyProto.ss, ProxyProto.ssr, ProxyProto.ssh}
+            unsupported_protos = [ProxyProto.wireguard, ProxyProto.hysteria, ProxyProto.hysteria2, ProxyProto.tuic, ProxyProto.ss, ProxyProto.ssr, ProxyProto.ssh]
+            if not hutils.flask.is_client_version(hutils.flask.ClientVersion.v2ryang, 1, 8, 18):
+                unsupported_transport = [ProxyTransport.httpupgrade]
 
         # multiple outbounds needs multiple whole base config not just one with multiple outbounds (at least for v2rayng)
         # https://github.com/2dust/v2rayNG/pull/2827#issue-2127534078
         outbounds = []
         for proxy in hutils.proxy.get_valid_proxies(domains):
             if unsupported_protos and proxy['proto'] in unsupported_protos:
+                continue
+            if unsupported_transport and proxy['transport'] in unsupported_transport:
                 continue
             outbound = to_xray(proxy)
             if 'msg' not in outbound:
@@ -76,6 +85,7 @@ def configs_as_json(domains: list[Domain], user: User, expire_days: int,  remark
 
     if not all_configs:
         return ''
+
     json_configs = json.dumps(all_configs, indent=2, cls=hutils.proxy.ProxyJsonEncoder)
     return json_configs
 
