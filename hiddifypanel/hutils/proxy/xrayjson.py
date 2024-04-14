@@ -379,7 +379,7 @@ def add_tls_fragmentation_stream_settings(base: dict, proxy: dict):
 
 
 def add_multiplex(base: dict, proxy: dict):
-    if proxy.get('mux_enable') != "xray":
+    if proxy.get('mux_enable') != "xray" or not is_muxable_agent(proxy):
         return
 
     concurrency = proxy['mux_max_connections']
@@ -388,47 +388,6 @@ def add_multiplex(base: dict, proxy: dict):
         base['mux']['concurrency'] = concurrency
         base['mux']['xudpConcurrency'] = concurrency
         base['mux']['xudpProxyUDP443'] = 'reject'
-
-
-def add_tls_tricks_to_dict(d: dict, proxy: dict):
-    if proxy.get('tls_fragment_enable'):
-        if g.user_agent.get('is_shadowrocket'):
-            d['fragment'] = f'1,{proxy["tls_fragment_size"]},{proxy["tls_fragment_sleep"]}'
-        else:
-            d['fragment'] = f'{proxy["tls_fragment_size"]},{proxy["tls_fragment_sleep"]},tlshello'
-
-    if proxy.get("tls_mixed_case"):
-        d['mc'] = 1
-    if proxy.get("tls_padding_enable"):
-        d['padsize'] = proxy["tls_padding_length"]
-
-
-def add_mux_to_dict(d: dict, proxy):
-    if not is_muxable_agent(proxy):
-        return
-
-    # according to github.com/hiddify/ray2sing/
-    d['muxtype'] = proxy["mux_protocol"]
-    d['muxmaxc'] = proxy["mux_max_connections"]
-    d['mux'] = proxy['mux_min_streams']
-    d['muxsmax'] = proxy["mux_max_streams"]
-    d['muxpad'] = proxy["mux_padding_enable"]
-
-    if proxy.get('mux_brutal_enable'):
-        d['muxup'] = proxy["mux_brutal_up_mbps"]
-        d['muxdown'] = proxy["mux_brutal_down_mbps"]
-
-
-def add_tls_tricks_to_link(proxy: dict) -> str:
-    out = {}
-    add_tls_tricks_to_dict(out, proxy)
-    return hutils.encode.convert_dict_to_url(out)
-
-
-def add_mux_to_link(proxy: dict) -> str:
-    out = {}
-    add_mux_to_dict(out, proxy)
-    return hutils.encode.convert_dict_to_url(out)
 
 
 def null_config(tag: str) -> dict:
