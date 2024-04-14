@@ -17,6 +17,10 @@ from sqlalchemy import text
 MAX_DB_VERSION = 90
 
 
+def _v86(child_id):
+    set_hconfig(ConfigEnum.hiddifycli_enable, True)
+
+
 def _v85(child_id):
     set_hconfig(ConfigEnum.sub_full_singbox_enable, True)
     set_hconfig(ConfigEnum.sub_singbox_ssh_enable, True)

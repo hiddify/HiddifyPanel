@@ -273,6 +273,8 @@ class ConfigEnum(metaclass=FastEnum):
     sub_full_clash_enable = _BoolConfigDscr(ConfigCategory.proxies)
     sub_full_clash_meta_enable = _BoolConfigDscr(ConfigCategory.proxies)
 
+    hiddifycli_enable = _BoolConfigDscr(ConfigCategory.hidden, ApplyMode.restart)
+
     @classmethod
     def __missing__(cls, value):
         return ConfigEnum.not_found
