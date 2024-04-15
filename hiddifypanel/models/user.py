@@ -271,6 +271,9 @@ class User(BaseAccount, SerializerMixin):
         from hiddifypanel import hutils
         if dump_id:
             base['id'] = self.id
+        if not base.get('lang'):
+            from hiddifypanel.models import hconfig, ConfigEnum
+            base['lang'] = hconfig(ConfigEnum.lang)
         return {**base,
                 'last_online': hutils.convert.time_to_json(self.last_online) if convert_date else self.last_online,
                 'usage_limit_GB': self.usage_limit_GB,
