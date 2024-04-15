@@ -71,6 +71,11 @@ class UserSchema(Schema):
         description="The last time the user's data usage was reset, in a JSON-friendly format",
         allow_none=True
     )
+    expiry_time = Date(
+        format='%Y-%m-%d',
+        description="The expiry time of the user's package, in a JSON-friendly format",
+        allow_none=True
+    )
     comment = String(
         missing=None,
         allow_none=True,
@@ -115,13 +120,21 @@ class UserSchema(Schema):
     )
 
     lang = Enum(Lang, required=False, allow_none=True, description="The language of the user")
+    enable = Boolean(required=False, description="Whether the user is enabled or not")
+
+
+class PutUserSchema(UserSchema):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # the uuid is sent in the url path
+        self.fields['uuid'].required = False
 
 
 class PatchUserSchema(UserSchema):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.fields['uuid'].required = False
         self.fields['name'].required = False
-    pass
 
 # endregion
 
@@ -153,8 +166,8 @@ class PutAdminSchema(AdminSchema):
 class PatchAdminSchema(AdminSchema):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['name'].required = False
         self.fields['uuid'].required = False
+        self.fields['name'].required = False
         self.fields['mode'].required = False
         self.fields['lang'].required = False
         self.fields['can_add_admin'].required = False

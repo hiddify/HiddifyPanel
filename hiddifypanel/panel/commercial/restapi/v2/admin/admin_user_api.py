@@ -14,9 +14,9 @@ class AdminUserApi(MethodView):
 
     @app.output(AdminSchema)  # type: ignore
     def get(self, uuid):
-        admin = AdminUser.by_uuid(uuid) or abort(404, "admin not found")
+        admin = AdminUser.by_uuid(uuid) or abort(404, "Admin not found")
         if not has_permission(admin):
-            abort(403, "You don't have permission to access this admin")
+            abort(403, "you don't have permission to access this admin")
         return admin.to_schema()  # type: ignore
 
     @app.input(PutAdminSchema, arg_name='data')  # type: ignore
@@ -35,7 +35,7 @@ class AdminUserApi(MethodView):
     @app.input(PatchAdminSchema, arg_name='data')  # type: ignore
     @app.output(SuccessfulSchema)  # type: ignore
     def patch(self, uuid, data):
-        admin = AdminUser.by_uuid(uuid) or abort(404, "admin not found")
+        admin = AdminUser.by_uuid(uuid) or abort(404, "Admin not found")
         if not has_permission(admin):
             abort(403, "You don't have permission to access this admin")
 
@@ -45,7 +45,7 @@ class AdminUserApi(MethodView):
             if field not in data:
                 data[field] = getattr(admin, field)
 
-        _ = AdminUser.add_or_update(True, **data) or abort(502, "Unknown issue: Admin is not added")
+        _ = AdminUser.add_or_update(True, **data) or abort(502, "Unknown issue: Admin is not patched")
         # the add_or_update doesn't update the uuid of AdminUser, so for now just delete old admin after adding new
         if admin.uuid != data['uuid']:
             admin.remove()
@@ -53,7 +53,7 @@ class AdminUserApi(MethodView):
 
     @app.output(SuccessfulSchema)  # type: ignore
     def delete(self, uuid):
-        admin = AdminUser.by_uuid(uuid) or abort(404, "admin not found")
+        admin = AdminUser.by_uuid(uuid) or abort(404, "Admin not found")
         if not has_permission(admin):
             abort(403, "You don't have permission to access this admin")
         admin.remove()  # type: ignore

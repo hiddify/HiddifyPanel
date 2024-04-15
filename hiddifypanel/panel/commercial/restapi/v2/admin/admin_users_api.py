@@ -6,7 +6,6 @@ from hiddifypanel.auth import login_required
 from hiddifypanel.models.role import Role
 from .admin_user_api import AdminSchema
 from hiddifypanel.models import AdminUser
-from .schema import SuccessfulSchema
 
 
 class AdminUsersApi(MethodView):
@@ -15,4 +14,4 @@ class AdminUsersApi(MethodView):
     @app.output(AdminSchema(many=True))  # type: ignore
     def get(self):
         admins = AdminUser.query.filter(AdminUser.id.in_(g.account.recursive_sub_admins_ids())).all() or abort(404, "You have no admin")
-        return [admin.to_dict() for admin in admins]  # type: ignore
+        return [admin.to_schema() for admin in admins]  # type: ignore
