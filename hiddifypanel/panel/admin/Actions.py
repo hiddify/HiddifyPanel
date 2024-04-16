@@ -187,7 +187,7 @@ class Actions(FlaskView):
 
         return render_template("result.html",
                                out_type="info",
-                               out_msg=f'<pre class="ltr">{json.dumps(usage.update_local_usage(),indent=2)}</pre>',
+                               out_msg=f'<pre class="ltr" style="color:black;" >{json.dumps(usage.update_local_usage(),indent=2)}</pre>',
                                log_file_url=None
                                )
 
