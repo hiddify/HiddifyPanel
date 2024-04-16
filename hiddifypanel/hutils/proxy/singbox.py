@@ -3,7 +3,6 @@ import json
 
 from hiddifypanel import hutils
 from hiddifypanel.models import ProxyProto, ProxyTransport, Domain, ConfigEnum
-from hiddifypanel.panel.hiddify import is_hiddify_next_version
 
 
 def configs_as_json(domains: list[Domain], **kwargs) -> str:
@@ -125,7 +124,7 @@ def add_multiplex(base: dict, proxy: dict):
         base['multiplex']['max_connections'] = proxy.get('mux_max_connections', 0)
         base['multiplex']['min_streams'] = proxy.get('mux_min_streams', 0)
 
-    add_tcp_brutal(base,proxy)
+    add_tcp_brutal(base, proxy)
 
 
 def add_tcp_brutal(base: dict, proxy: dict):
@@ -252,7 +251,7 @@ def add_wireguard(base: dict, proxy: dict):
     base["pre_shared_key"] = proxy["wg_psk"]
 
     base["mtu"] = 1380
-    if g.user_agent.get('is_hiddify') and is_hiddify_next_version(0, 15, 0):
+    if g.user_agent.get('is_hiddify') and hutils.flask.is_client_version(hutils.flask.ClientVersion.hiddify_next, 0, 15, 0):
         base["fake_packets"] = proxy["wg_noise_trick"]
 
 

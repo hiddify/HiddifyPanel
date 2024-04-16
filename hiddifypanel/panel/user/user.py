@@ -18,13 +18,6 @@ from hiddifypanel import hutils
 
 class UserView(FlaskView):
 
-    @route('/useragent/')
-    @login_required(roles={Role.user})
-    def test(self):
-        ua = request.user_agent.string
-        print(ua)
-        return ua
-
     def index(self):
         return self.auto_sub()
 
@@ -57,6 +50,8 @@ class UserView(FlaskView):
     @route("/xray")
     @login_required(roles={Role.user})
     def xray(self):
+        if not hconfig(ConfigEnum.sub_full_xray_json_enable):
+            return 'The Full Xray subscription is disabled'
         c = get_common_data(g.account.uuid, mode="new")
         configs = hutils.proxy.xrayjson.configs_as_json(c['domains'], c['user'], c['expire_days'], c['profile_title'])
         return add_headers(configs, c, 'application/json')
@@ -112,7 +107,9 @@ class UserView(FlaskView):
             return self.clash_config(meta_or_normal="normal")
 
         if g.user_agent.get('is_v2rayng'):
-            return self.xray()
+            # return the old "Subscription link b64" sub if the "Full Xray" sub is disabled (wanted by user)
+            if hconfig(ConfigEnum.sub_full_xray_json_enable) and hutils.flask.is_client_version(hutils.flask.ClientVersion.v2ryang, 1, 8, 17):
+                return self.xray()
 
         # if 'HiddifyNext' in ua or 'Dart' in ua:
         #     return self.clash_config(meta_or_normal="meta")
@@ -178,6 +175,10 @@ class UserView(FlaskView):
     @login_required(roles={Role.user})
     def clash_config(self, meta_or_normal="normal", typ="all.yml"):
         mode = request.args.get("mode")
+        if meta_or_normal == 'meta' and not hconfig(ConfigEnum.sub_full_clash_meta_enable):
+            return 'The Clash meta subscription is disabled'
+        elif meta_or_normal == 'normal' and not hconfig(ConfigEnum.sub_full_clash_enable):
+            return 'The Clash subscription is disabled'
 
         c = get_common_data(g.account.uuid, mode)
 
@@ -193,6 +194,8 @@ class UserView(FlaskView):
     @ route('/full-singbox.json', methods=["GET", "HEAD"])
     @login_required(roles={Role.user})
     def full_singbox(self):
+        if not hconfig(ConfigEnum.sub_full_singbox_enable):
+            return 'The Full Singbox subscription is disabled'
         mode = "new"  # request.args.get("mode")
         c = get_common_data(g.account.uuid, mode)
         # response.content_type = 'text/plain';
@@ -207,7 +210,9 @@ class UserView(FlaskView):
     @login_required(roles={Role.user})
     def singbox(self):
         if not hconfig(ConfigEnum.ssh_server_enable):
-            return "SSH server is disable in settings"
+            return "The SSH server is disabled"
+        elif not hconfig(ConfigEnum.sub_singbox_ssh_enable):
+            return "The Singbox: SSH subscription is disabled"
         mode = "new"  # request.args.get("mode")
         c = get_common_data(g.account.uuid, mode)
         # response.content_type = 'text/plain';
@@ -224,6 +229,11 @@ class UserView(FlaskView):
     def all_configs(self, base64=False):
         mode = "new"  # request.args.get("mode")
         base64 = base64 or request.args.get("base64", "").lower() == "true"
+        if base64 and not hconfig(ConfigEnum.sub_full_links_b64_enable):
+            return 'The Subscription link b64 is disabled'
+        if not base64 and not hconfig(ConfigEnum.sub_full_links_enable):
+            return 'The Subscription link is disabled'
+
         c = get_common_data(g.account.uuid, mode)
         # response.content_type = 'text/plain';
         if request.method == 'HEAD':

@@ -5,7 +5,7 @@ from apiflask import abort as apiflask_abort
 from flask_babel import gettext as _
 from flask import url_for  # type: ignore
 from urllib.parse import urlparse
-from markupsafe import Markup
+from strenum import StrEnum
 
 import user_agents
 import re
@@ -17,7 +17,7 @@ from hiddifypanel import hutils
 
 
 def flash(message: str, category: str = "message"):
-    if not isinstance(message,str):
+    if not isinstance(message, str):
         message = str(message)
     return flask_flash(message, category)
 
@@ -82,6 +82,8 @@ def __parse_user_agent(ua: str) -> dict:
     res['is_shadowrocket'] = re.match('^(Shadowrocket)', ua, re.IGNORECASE) and True
     res['is_v2rayng'] = re.match('^(v2rayNG)', ua, re.IGNORECASE) and True
 
+    if res['is_v2rayng']:
+        res['v2rayng_version'] = generic_version
     if res['is_singbox']:
         res['singbox_version'] = generic_version
 
@@ -254,6 +256,25 @@ def extract_parent_info_from_url(url) -> Tuple[str | None, str | None, str | Non
         return domain, proxy_path, admin_uuid
     else:
         return None, None, None
+
+
+class ClientVersion(StrEnum):
+    v2ryang = 'v2rayng_version'
+    hiddify_next = 'hiddify_version'
+
+
+def is_client_version(client: ClientVersion, major_v: int = 0, minor_v: int = 0, patch_v: int = 0) -> bool:
+    '''If the user agent version be equals or higher than parameters returns True'''
+    if raw_v := g.user_agent.get(client):
+        raw_v_len = len(raw_v)
+        u_major_v = raw_v[0] if raw_v_len > 0 else 0
+        u_minor_v = raw_v[1] if raw_v_len > 1 else 0
+        u_patch_v = raw_v[2] if raw_v_len > 2 else 0
+
+        if u_major_v >= major_v and u_minor_v >= minor_v and u_patch_v >= patch_v:
+            return True
+    return False
+
 # region not used
 
 

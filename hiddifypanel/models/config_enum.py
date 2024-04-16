@@ -264,6 +264,17 @@ class ConfigEnum(metaclass=FastEnum):
     path_tcp = _StrConfigDscr(ConfigCategory.too_advanced, hide_in_virtual_child=True)
     path_grpc = _StrConfigDscr(ConfigCategory.too_advanced, hide_in_virtual_child=True)
 
+    # subs
+    sub_full_singbox_enable = _BoolConfigDscr(ConfigCategory.proxies)
+    sub_singbox_ssh_enable = _BoolConfigDscr(ConfigCategory.proxies)
+    sub_full_xray_json_enable = _BoolConfigDscr(ConfigCategory.proxies)
+    sub_full_links_enable = _BoolConfigDscr(ConfigCategory.proxies)
+    sub_full_links_b64_enable = _BoolConfigDscr(ConfigCategory.proxies)
+    sub_full_clash_enable = _BoolConfigDscr(ConfigCategory.proxies)
+    sub_full_clash_meta_enable = _BoolConfigDscr(ConfigCategory.proxies)
+
+    hiddifycli_enable = _BoolConfigDscr(ConfigCategory.hidden, ApplyMode.restart)
+
     @classmethod
     def __missing__(cls, value):
         return ConfigEnum.not_found

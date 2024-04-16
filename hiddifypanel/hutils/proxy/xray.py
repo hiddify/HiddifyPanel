@@ -1,7 +1,6 @@
 import datetime
 import json
-import copy
-from flask import render_template, request, g
+from flask import request, g
 from hiddifypanel import hutils
 from hiddifypanel.models import ProxyTransport, ProxyL3, ProxyProto, Domain, User, ConfigEnum, hconfig
 from flask_babel import gettext as _
