@@ -190,6 +190,8 @@ class User(BaseAccount, SerializerMixin):
 
     @classmethod
     def by_uuid(cls, uuid: str, create: bool = False) -> 'User':
+        if not isinstance(uuid, str):
+            uuid = str(uuid)
         account = User.query.filter(User.uuid == uuid).first()
         if not account and create:
             dbuser = User(uuid=uuid, name="unknown", added_by=AdminUser.current_admin_or_owner().id)
@@ -226,24 +228,30 @@ class User(BaseAccount, SerializerMixin):
                 dbuser.start_date = hutils.convert.json_to_date(data['start_date'])
             else:
                 dbuser.start_date = None
-        dbuser.current_usage_GB = data.get('current_usage_GB', 0)
 
-        dbuser.usage_limit_GB = data.get('usage_limit_GB', 1000)
+        if c_GB := data.get('current_usage_GB'):
+            dbuser.current_usage_GB = c_GB
+        elif c := data.get('current_usage'):
+            dbuser.current_usage = c
+        else:
+            dbuser.current_usage = 0
+
+        if l_GB := data.get('usage_limit_GB'):
+            dbuser.usage_limit_GB = l_GB
+        elif l := data.get('usage_limit'):
+            dbuser.usage_limit = l
+        else:
+            dbuser.usage_limit_GB = 1000
+
         dbuser.enable = data.get('enable', True)
+
         if data.get('ed25519_private_key', ''):
             dbuser.ed25519_private_key = data.get('ed25519_private_key', '')
             dbuser.ed25519_public_key = data.get('ed25519_public_key', '')
-        # if not dbuser.ed25519_private_key:
-        #     priv, publ = hutils.crypto.get_ed25519_private_public_pair()
-        #     dbuser.ed25519_private_key = priv
-        #     dbuser.ed25519_public_key = publ
 
         dbuser.wg_pk = data.get('wg_pk', dbuser.wg_pk)
         dbuser.wg_pub = data.get('wg_pub', dbuser.wg_pub)
         dbuser.wg_psk = data.get('wg_psk', dbuser.wg_psk)
-
-        # if not dbuser.wg_pk:
-        #     dbuser.wg_pk, dbuser.wg_pub, dbuser.wg_psk = hutils.crypto.get_wg_private_public_psk_pair()
 
         mode = data.get('mode', UserMode.no_reset)
         if mode == 'disable':
@@ -271,6 +279,9 @@ class User(BaseAccount, SerializerMixin):
         from hiddifypanel import hutils
         if dump_id:
             base['id'] = self.id
+        if not base.get('lang'):
+            from hiddifypanel.models import hconfig, ConfigEnum
+            base['lang'] = hconfig(ConfigEnum.lang)
         return {**base,
                 'last_online': hutils.convert.time_to_json(self.last_online) if convert_date else self.last_online,
                 'usage_limit_GB': self.usage_limit_GB,
@@ -279,6 +290,7 @@ class User(BaseAccount, SerializerMixin):
                 'start_date': hutils.convert.date_to_json(self.start_date)if convert_date else self.start_date,
                 'current_usage_GB': self.current_usage_GB,
                 'last_reset_time': hutils.convert.date_to_json(self.last_reset_time) if convert_date else self.last_reset_time,
+                'expiry_time': hutils.convert.date_to_json(self.expiry_time) if convert_date else self.expiry_time,
                 'added_by_uuid': self.admin.uuid if self.admin else None,
                 'ed25519_private_key': self.ed25519_private_key,
                 'ed25519_public_key': self.ed25519_public_key,
