@@ -265,13 +265,13 @@ class ConfigEnum(metaclass=FastEnum):
     path_grpc = _StrConfigDscr(ConfigCategory.too_advanced, hide_in_virtual_child=True)
 
     # subs
-    sub_full_singbox_enable = _BoolConfigDscr(ConfigCategory.proxies)
-    sub_singbox_ssh_enable = _BoolConfigDscr(ConfigCategory.proxies)
+    sub_full_singbox_enable = _BoolConfigDscr(ConfigCategory.hidden)
+    sub_singbox_ssh_enable = _BoolConfigDscr(ConfigCategory.hidden)
     sub_full_xray_json_enable = _BoolConfigDscr(ConfigCategory.proxies)
-    sub_full_links_enable = _BoolConfigDscr(ConfigCategory.proxies)
-    sub_full_links_b64_enable = _BoolConfigDscr(ConfigCategory.proxies)
-    sub_full_clash_enable = _BoolConfigDscr(ConfigCategory.proxies)
-    sub_full_clash_meta_enable = _BoolConfigDscr(ConfigCategory.proxies)
+    sub_full_links_enable = _BoolConfigDscr(ConfigCategory.hidden)
+    sub_full_links_b64_enable = _BoolConfigDscr(ConfigCategory.hidden)
+    sub_full_clash_enable = _BoolConfigDscr(ConfigCategory.hidden)
+    sub_full_clash_meta_enable = _BoolConfigDscr(ConfigCategory.hidden)
 
     hiddifycli_enable = _BoolConfigDscr(ConfigCategory.hidden, ApplyMode.restart)
 
