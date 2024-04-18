@@ -53,8 +53,8 @@ class UserView(FlaskView):
     @login_required(roles={Role.user})
     def xray(self):
         '''Returns Xray JSON proxy config'''
-        if not hconfig(ConfigEnum.sub_full_xray_json_enable):
-            return 'The Full Xray subscription is disabled'
+        # if not hconfig(ConfigEnum.sub_full_xray_json_enable):
+        #     return 'The Full Xray subscription is disabled'
         c = get_common_data(g.account.uuid, mode="new")
         configs = hutils.proxy.xrayjson.configs_as_json(c['domains'], c['user'], c['expire_days'], c['profile_title'])
         return add_headers(configs, c, 'application/json')
@@ -201,8 +201,9 @@ class UserView(FlaskView):
     @ route('/full-singbox.json', methods=["GET", "HEAD"])
     @login_required(roles={Role.user})
     def full_singbox_imp(self):
-        if not hconfig(ConfigEnum.sub_full_singbox_enable):
-            return 'The Full Singbox subscription is disabled'
+        # if not hconfig(ConfigEnum.sub_full_singbox_enable):
+        #     return 'The Full Singbox subscription is disabled'
+
         mode = "new"  # request.args.get("mode")
         c = get_common_data(g.account.uuid, mode)
         # response.content_type = 'text/plain';
@@ -218,8 +219,9 @@ class UserView(FlaskView):
     def singbox_ssh_imp(self):
         if not hconfig(ConfigEnum.ssh_server_enable):
             return "The SSH server is disabled"
-        elif not hconfig(ConfigEnum.sub_singbox_ssh_enable):
-            return "The Singbox: SSH subscription is disabled"
+        # elif not hconfig(ConfigEnum.sub_singbox_ssh_enable):
+        #     return "The Singbox: SSH subscription is disabled"
+
         mode = "new"  # request.args.get("mode")
         c = get_common_data(g.account.uuid, mode)
         # response.content_type = 'text/plain';
@@ -237,10 +239,10 @@ class UserView(FlaskView):
         '''Returns subscription links (base64 or not)'''
         mode = "new"  # request.args.get("mode")
         base64 = base64 or request.args.get("base64", "").lower() == "true"
-        if base64 and not hconfig(ConfigEnum.sub_full_links_b64_enable):
-            return 'The Subscription link b64 is disabled'
-        if not base64 and not hconfig(ConfigEnum.sub_full_links_enable):
-            return 'The Subscription link is disabled'
+        # if base64 and not hconfig(ConfigEnum.sub_full_links_b64_enable):
+        #     return 'The Subscription link b64 is disabled'
+        # if not base64 and not hconfig(ConfigEnum.sub_full_links_enable):
+        #     return 'The Subscription link is disabled'
 
         c = get_common_data(g.account.uuid, mode)
         # response.content_type = 'text/plain';
