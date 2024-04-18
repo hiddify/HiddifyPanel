@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
-import os
 import urllib.request
-
+import json
 from flask_classful import FlaskView, route
 from flask import render_template, request, redirect, g
 from hiddifypanel.hutils.flask import hurl_for
@@ -182,12 +181,10 @@ class Actions(FlaskView):
 
     @ login_required(roles={Role.super_admin})
     def update_usage(self):
-
-        import json
-
+        color = 'white' if g.darkmode else 'black'
         return render_template("result.html",
                                out_type="info",
-                               out_msg=f'<pre class="ltr" style="color:black;" >{json.dumps(usage.update_local_usage(),indent=2)}</pre>',
+                               out_msg=f'<pre class="ltr" style="color:{color};">{json.dumps(usage.update_local_usage(),indent=2)}</pre>',
                                log_file_url=None
                                )
 
