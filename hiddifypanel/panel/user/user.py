@@ -24,32 +24,35 @@ class UserView(FlaskView):
     def auto_sub(self):
         if g.user_agent['is_browser']:
             return self.new()
-        return self.get_proper_config() or self.all_configs(base64=True)
+        return self.get_proper_config() or self.links_imp(base64=True)
 
     # former /sub/ or /sub (it was auto actually but we named it as /sub/)
     @route('/auto/')
     @route('/auto')
     @login_required(roles={Role.user})
     def force_sub(self):
-        return self.get_proper_config() or self.all_configs(base64=False)
+        return self.get_proper_config() or self.links_imp(base64=False)
 
     # region new endpoints
     @route("/sub/")
     @route("/sub")
     @login_required(roles={Role.user})
     def sub(self):
-        return self.all_configs(base64=False)
+        '''Returns proxy links (not base64 encoded)'''
+        return self.links_imp(base64=False)
 
     @route("/sub64/")
     @route("/sub64")
     @login_required(roles={Role.user})
     def sub64(self):
-        return self.all_configs(base64=True)
+        '''Returns proxy links (base64 encoded)'''
+        return self.links_imp(base64=True)
 
     @route("/xray/")
     @route("/xray")
     @login_required(roles={Role.user})
     def xray(self):
+        '''Returns Xray JSON proxy config'''
         if not hconfig(ConfigEnum.sub_full_xray_json_enable):
             return 'The Full Xray subscription is disabled'
         c = get_common_data(g.account.uuid, mode="new")
@@ -60,25 +63,29 @@ class UserView(FlaskView):
     @route("/singbox")
     @login_required(roles={Role.user})
     def singbox_full(self):
-        return self.full_singbox()
+        '''Returns singbox client JSON config'''
+        return self.full_singbox_imp()
 
     @route("/singbox-ssh/")
     @route("/singbox-ssh")
     @login_required(roles={Role.user})
     def singbox_ssh(self):
-        return self.singbox()
+        '''Returns singbox client JSON config (ssh)'''
+        return self.singbox_ssh_imp()
 
     @route("/clash/")
     @route("/clash")
     @login_required(roles={Role.user})
     def clash(self):
-        return self.clash_config(meta_or_normal="normal")
+        '''Returns clash client config'''
+        return self.clash_config_imp(meta_or_normal="normal")
 
     @route("/clashmeta/")
     @route("/clashmeta")
     @login_required(roles={Role.user})
     def clashmeta(self):
-        return self.clash_config(meta_or_normal="meta")
+        '''Returns clash meta client config'''
+        return self.clash_config_imp(meta_or_normal="meta")
     # endregion
 
     @ route('/new/')
@@ -95,28 +102,28 @@ class UserView(FlaskView):
         return render_template('new.html', **c, ua=user_agent)
 
     def get_proper_config(self):
+        '''Returns proper config based on user agent'''
         if g.user_agent['is_browser']:
             return None
+
         ua = request.user_agent.string
         if g.user_agent['is_singbox'] or re.match('^(HiddifyNext|Dart|SFI|SFA)', ua, re.IGNORECASE):
-            return self.full_singbox()
+            return self.full_singbox_imp()
 
         if re.match('^(Clash-verge|Clash-?Meta|Stash|NekoBox|NekoRay|Pharos|hiddify-desktop)', ua, re.IGNORECASE):
-            return self.clash_config(meta_or_normal="meta")
+            return self.clash_config_imp(meta_or_normal="meta")
         if re.match('^(Clash|Stash)', ua, re.IGNORECASE):
-            return self.clash_config(meta_or_normal="normal")
+            return self.clash_config_imp(meta_or_normal="normal")
 
-        if g.user_agent.get('is_v2rayng'):
+        if hconfig(ConfigEnum.sub_full_xray_json_enable):
             # return the old "Subscription link b64" sub if the "Full Xray" sub is disabled (wanted by user)
-            if hconfig(ConfigEnum.sub_full_xray_json_enable) and hutils.flask.is_client_version(hutils.flask.ClientVersion.v2ryang, 1, 8, 17):
+            if g.user_agent.get('is_v2rayng') and hutils.flask.is_client_version(hutils.flask.ClientVersion.v2ryang, 1, 8, 17):
+                return self.xray()
+            elif g.user_agent.get('is_streisand'):
                 return self.xray()
 
-        # if 'HiddifyNext' in ua or 'Dart' in ua:
-        #     return self.clash_config(meta_or_normal="meta")
-
-        # if any([p in ua for p in ['FoXray', 'HiddifyNG','Fair%20VPN' ,'v2rayNG', 'SagerNet']]):
-        if re.match('^(Hiddify|FoXray|Fair|v2rayNG|SagerNet|Shadowrocket|V2Box|Loon|Liberty)', ua, re.IGNORECASE):
-            return self.all_configs(base64=True)
+        if re.match('^(Hiddify|FoXray|Fair|v2rayNG|SagerNet|Shadowrocket|V2Box|Loon|Liberty|Streisand)', ua, re.IGNORECASE):
+            return self.links_imp(base64=True)
 
     @route('/clash/<meta_or_normal>/proxies.yml')
     @route('/clash/proxies.yml')
@@ -173,7 +180,7 @@ class UserView(FlaskView):
     @ route('/clash/<typ>.yml', methods=["GET", "HEAD"])
     @ route('/clash/<meta_or_normal>/<typ>.yml', methods=["GET", "HEAD"])
     @login_required(roles={Role.user})
-    def clash_config(self, meta_or_normal="normal", typ="all.yml"):
+    def clash_config_imp(self, meta_or_normal="normal", typ="all.yml"):
         mode = request.args.get("mode")
         if meta_or_normal == 'meta' and not hconfig(ConfigEnum.sub_full_clash_meta_enable):
             return 'The Clash meta subscription is disabled'
@@ -193,7 +200,7 @@ class UserView(FlaskView):
 
     @ route('/full-singbox.json', methods=["GET", "HEAD"])
     @login_required(roles={Role.user})
-    def full_singbox(self):
+    def full_singbox_imp(self):
         if not hconfig(ConfigEnum.sub_full_singbox_enable):
             return 'The Full Singbox subscription is disabled'
         mode = "new"  # request.args.get("mode")
@@ -208,7 +215,7 @@ class UserView(FlaskView):
 
     @ route('/singbox.json', methods=["GET", "HEAD"])
     @login_required(roles={Role.user})
-    def singbox(self):
+    def singbox_ssh_imp(self):
         if not hconfig(ConfigEnum.ssh_server_enable):
             return "The SSH server is disabled"
         elif not hconfig(ConfigEnum.sub_singbox_ssh_enable):
@@ -226,7 +233,8 @@ class UserView(FlaskView):
 
     @route('/all.txt', methods=["GET", "HEAD"])
     @login_required(roles={Role.user})
-    def all_configs(self, base64=False):
+    def links_imp(self, base64=False):
+        '''Returns subscription links (base64 or not)'''
         mode = "new"  # request.args.get("mode")
         base64 = base64 or request.args.get("base64", "").lower() == "true"
         if base64 and not hconfig(ConfigEnum.sub_full_links_b64_enable):
