@@ -229,16 +229,16 @@ class User(BaseAccount, SerializerMixin):
             else:
                 dbuser.start_date = None
 
-        if c_GB := data.get('current_usage_GB'):
+        if (c_GB := data.get('current_usage_GB')) is not None:
             dbuser.current_usage_GB = c_GB
-        elif c := data.get('current_usage'):
+        elif c := data.get('current_usage') is not None:
             dbuser.current_usage = c
         else:
             dbuser.current_usage = 0
 
-        if l_GB := data.get('usage_limit_GB'):
+        if (l_GB := data.get('usage_limit_GB')) is not None:
             dbuser.usage_limit_GB = l_GB
-        elif l := data.get('usage_limit'):
+        elif (l := data.get('usage_limit')) is not None:
             dbuser.usage_limit = l
         else:
             dbuser.usage_limit_GB = 1000
