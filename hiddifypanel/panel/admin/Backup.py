@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 from flask import render_template, request, jsonify, g
 from flask_wtf.file import FileField, FileRequired
 from flask_bootstrap import SwitchField

@@ -1,4 +1,3 @@
-# #!/usr/bin/env python3
 # from hiddifypanel.database import db
 # import uuid
 # from flask_babel import gettext as _
