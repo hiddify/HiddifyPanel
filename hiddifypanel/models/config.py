@@ -144,9 +144,6 @@ def get_hconfigs(child_id: int | None = None, json=False) -> dict:
 
     return {**{f'{u.key}' if json else u.key: u.value for u in BoolConfig.query.filter(BoolConfig.child_id == child_id).all() if u.key.type == bool},
             **{f'{u.key}' if json else u.key: int(u.value) if u.key.type == int and u.value != None else u.value for u in StrConfig.query.filter(StrConfig.child_id == child_id).all() if u.key.type != bool},
-            # ConfigEnum.telegram_fakedomain:hdomain(DomainType.telegram_faketls),
-            # ConfigEnum.ssfaketls_fakedomain:hdomain(DomainType.ss_faketls),
-            # ConfigEnum.fake_cdn_domain:hdomain(DomainType.fake_cdn)
             }
 
 

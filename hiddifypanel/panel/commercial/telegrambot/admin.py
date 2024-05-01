@@ -102,7 +102,7 @@ def admin_keyboard_domain(old_action):
         )
     return types.InlineKeyboardMarkup(keyboard=[
         [keyboard(d)]
-        for d in get_panel_domains()
+        for d in Domain.get_domains()
     ]
     )
 

@@ -366,7 +366,7 @@ def get_common_data(user_uuid, mode, no_domain=False, filter_domain=None):
         'expire_rel': hutils.convert.format_timedelta(datetime.timedelta(days=expire_days)),
         'reset_day': reset_days,
         'hconfigs': get_hconfigs(),
-        'hdomains': get_hdomains(),
+        'hdomains': Domain.modes_and_domains(),
         'ConfigEnum': ConfigEnum,
         'link_maker': hutils.proxy,
         'domains': domains,

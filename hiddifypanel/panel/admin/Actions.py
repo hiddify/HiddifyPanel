@@ -80,7 +80,7 @@ class Actions(FlaskView):
         admin_links = f"<h5 >{_('Admin Links')}</h5><ul>"
 
         admin_links += f"<li><span class='badge badge-danger'>{_('Not Secure')}</span>: <a class='badge ltr share-link' href='{hiddify.get_account_panel_link(g.account, server_ip,is_https=False)}'>{hiddify.get_account_panel_link(g.account, server_ip,is_https=False)}</a></li>"
-        domains = get_panel_domains()
+        domains = Domain.get_domains()
         # domains=[*domains,f'{server_ip}.sslip.io']
 
         for d in domains:
@@ -194,4 +194,4 @@ def get_log_api_url():
 
 
 def get_domains():
-    return [str(d.domain).replace("*", hutils.random.get_random_string(3, 6)) for d in get_panel_domains(always_add_all_domains=True, always_add_ip=False)]
+    return [str(d.domain).replace("*", hutils.random.get_random_string(3, 6)) for d in Domain.get_domains(always_add_all_domains=True, always_add_ip=False)]

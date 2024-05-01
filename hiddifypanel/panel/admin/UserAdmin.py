@@ -151,7 +151,7 @@ class UserAdmin(AdminLTEModelView):
         <i class='fa-solid fa-arrow-up-right-from-square'></i> 
         {_("Current Domain")} </a>"""
 
-        domains = [d for d in get_panel_domains() if d.domain != request.host]
+        domains = [d for d in Domain.get_domains() if d.domain != request.host]
         return Markup(link + " ".join([hiddify.get_html_user_link(model, d) for d in domains]))
 
     # def _usage_formatter(view, context, model, name):

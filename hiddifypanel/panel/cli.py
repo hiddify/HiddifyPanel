@@ -69,7 +69,7 @@ def all_configs():
     configs['panel_links'] = []
     configs['panel_links'].append(hiddify.get_account_panel_link(owner, server_ip, is_https=False))
     configs['panel_links'].append(hiddify.get_account_panel_link(owner, server_ip))
-    domains = get_panel_domains()
+    domains = Domain.get_domains()
 
     for d in domains:
         configs['panel_links'].append(hiddify.get_account_panel_link(owner, d.domain))
@@ -87,7 +87,7 @@ def admin_links():
 
     admin_links = f"Not Secure (do not use it - only if others not work):\n   {hiddify.get_account_panel_link(owner, server_ip,is_https=True)}\n"
 
-    domains = get_panel_domains()
+    domains = Domain.get_domains()
     admin_links += f"Secure:\n"
     if not any([d for d in domains if 'sslip.io' not in d.domain]):
         admin_links += f"   (not signed) {hiddify.get_account_panel_link(owner, server_ip)}\n"
@@ -102,7 +102,7 @@ def admin_links():
 def admin_path():
     admin = AdminUser.get_super_admin()
     # WTF is the owner and server_id?
-    domain = get_panel_domains()[0]
+    domain = Domain.get_domains()[0]
     print(hiddify.get_account_panel_link(admin, domain, prefere_path_only=True))
 
 

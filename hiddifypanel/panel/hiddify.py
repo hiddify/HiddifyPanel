@@ -224,7 +224,7 @@ def set_db_from_json(json_data, override_child_unique_id=True, set_users=True, s
     if set_users and 'users' in json_data:
         User.bulk_register(json_data['users'], commit=False, remove=remove_users)
     if set_domains and 'domains' in json_data:
-        bulk_register_domains(json_data['domains'], commit=False, remove=remove_domains)
+        Domain.bulk_register(json_data['domains'], commit=False, remove=remove_domains)
 
     if set_settings and 'hconfigs' in json_data:
         bulk_register_configs(json_data["hconfigs"], commit=True, override_unique_id=override_unique_id)
