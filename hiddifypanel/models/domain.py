@@ -98,7 +98,7 @@ class Domain(db.Model, SerializerMixin):
 
     @property
     def internal_port_hysteria2(self):
-        if self.mode not in [DomainType.direct, DomainType.relay, DomainType.fake]:
+        if self.mode not in [DomainType.direct, DomainType.relay, DomainType.fake, DomainType.old_xtls_direct]:
             return 0
         # TODO: check validity of the range of the port
         # print("child_id",self.child_id)
@@ -106,7 +106,7 @@ class Domain(db.Model, SerializerMixin):
 
     @property
     def internal_port_tuic(self):
-        if self.mode not in [DomainType.direct, DomainType.relay, DomainType.fake]:
+        if self.mode not in [DomainType.direct, DomainType.relay, DomainType.fake, DomainType.old_xtls_direct]:
             return 0
         # TODO: check validity of the range of the port
         return int(hconfig(ConfigEnum.tuic_port, self.child_id)) + self.port_index
