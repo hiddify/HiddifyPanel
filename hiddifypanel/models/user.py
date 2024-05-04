@@ -231,7 +231,7 @@ class User(BaseAccount, SerializerMixin):
 
         if (c_GB := data.get('current_usage_GB')) is not None:
             dbuser.current_usage_GB = c_GB
-        elif c := data.get('current_usage') is not None:
+        elif (c := data.get('current_usage')) is not None:
             dbuser.current_usage = c
         else:
             dbuser.current_usage = 0
