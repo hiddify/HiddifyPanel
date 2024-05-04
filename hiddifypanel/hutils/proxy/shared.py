@@ -293,7 +293,7 @@ def make_proxy(hconfigs: dict, proxy: Proxy, domain_db: Domain, phttp=80, ptls=4
         return base
 
     if proxy.proto in [ProxyProto.vmess]:
-        base['cipher'] = "chacha20-poly1305"
+        base['cipher'] = "auto"  # "chacha20-poly1305"
 
     if l3 in ['reality']:
         base['reality_short_id'] = random.sample(hconfigs[ConfigEnum.reality_short_ids].split(','), 1)[0]
