@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 import urllib.request
 import json
 from flask_classful import FlaskView, route
