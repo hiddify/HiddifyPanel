@@ -87,7 +87,7 @@ class AdminstratorAdmin(AdminLTEModelView):
 
     def _ul_formatter(view, context, model, name):
 
-        return Markup(" ".join([hiddify.get_html_user_link(model, d) for d in get_panel_domains()]))
+        return Markup(" ".join([hiddify.get_html_user_link(model, d) for d in Domain.get_domains()]))
 
     @property
     def can_create(self):

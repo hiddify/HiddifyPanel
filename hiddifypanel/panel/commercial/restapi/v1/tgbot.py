@@ -29,7 +29,7 @@ def register_bot(set_hook=False, remove_hook=False):
                 pass
             if remove_hook:
                 bot.remove_webhook()
-            domain = get_panel_link()
+            domain = Domain.get_panel_link()
             if not domain:
                 raise Exception('Cannot get valid domain for setting telegram bot webhook')
 
@@ -37,7 +37,7 @@ def register_bot(set_hook=False, remove_hook=False):
 
             user_secret = AdminUser.get_super_admin_uuid()
             if set_hook:
-                bot.set_webhook(url=f"https://{domain.domain}/{admin_proxy_path}/{user_secret}/api/v1/tgbot/")
+                bot.set_webhook(url=f"https://{domain}/{admin_proxy_path}/{user_secret}/api/v1/tgbot/")
     except Exception as e:
         print(e)
         import traceback

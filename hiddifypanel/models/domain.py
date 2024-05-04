@@ -1,22 +1,16 @@
 from enum import auto
-from typing import List
-
-from urllib.parse import urlparse
-
+from typing import Dict, List
 from flask import request
-
 from flask_babel import lazy_gettext as _
 from sqlalchemy.orm import backref
-from urllib.parse import urlparse
 from strenum import StrEnum
+from sqlalchemy_serializer import SerializerMixin
+
 
 from hiddifypanel.database import db
-
 from hiddifypanel.models.config import hconfig
 from .child import Child
 from hiddifypanel.models.config_enum import ConfigEnum
-from sqlalchemy.orm import backref
-from sqlalchemy_serializer import SerializerMixin
 
 
 class DomainType(StrEnum):
@@ -69,11 +63,11 @@ class Domain(db.Model, SerializerMixin):
             'mode': self.mode,
             'alias': self.alias,
             'sub_link_only': self.sub_link_only,
-            'child_unique_id': self.child.unique_id if self.child else '',
+            'child_unique_id': self.child.unique_id if self.child else '',  # type: ignore
             'cdn_ip': self.cdn_ip,
             'servernames': self.servernames,
             'grpc': self.grpc,
-            'show_domains': [dd.domain for dd in self.show_domains],
+            'show_domains': [dd.domain for dd in self.show_domains],  # type: ignore
         }
         if dump_child_id:
             data['child_id'] = self.child_id
@@ -124,110 +118,80 @@ class Domain(db.Model, SerializerMixin):
         # TODO: check validity of the range of the port
         return int(hconfig(ConfigEnum.reality_port, self.child_id)) + self.port_index
 
+    @classmethod
+    def by_mode(cls, mode: DomainType) -> List['Domain']:
+        domains = Domain.query.filter(Domain.mode == mode).all()
+        if domains:
+            return [d.domain for d in domains]
+        return []
 
-def hdomains(mode):
-    domains = Domain.query.filter(Domain.mode == mode).all()
-    if domains:
-        return [d.domain for d in domains]
-    return []
+    @classmethod
+    def modes_and_domains(cls) -> Dict[DomainType, List['Domain']]:
+        return {mode: cls.by_mode(mode) for mode in DomainType}
 
+    @classmethod
+    def by_domain(cls, domain: str) -> 'Domain | None':
+        return Domain.query.filter(Domain.domain == domain).first()
 
-def hdomain(mode):
-    domains = hdomains(mode)
-    if domains:
-        return domains[0]
-    return None
+    @classmethod
+    def get_panel_link(cls, child_id: int | None = None) -> str | None:
+        if child_id is None:
+            child_id = Child.current().id  # type: ignore
+        domains = Domain.query.filter(Domain.mode.in_(
+            [DomainType.direct, DomainType.cdn, DomainType.worker, DomainType.relay, DomainType.auto_cdn_ip, DomainType.old_xtls_direct, DomainType.sub_link_only]),
+            Domain.child_id == child_id
+        ).all()
+        if not domains:
+            return None
+        return domains[0].domain
 
+    @classmethod
+    def get_domains(cls, always_add_ip=False, always_add_all_domains=False) -> List['Domain']:
+        from hiddifypanel import hutils
+        domains = []
+        domains = Domain.query.filter(Domain.mode == DomainType.sub_link_only, Domain.child_id == Child.current().id).all()
+        if not len(domains) or always_add_all_domains:
+            domains = Domain.query.filter(Domain.mode.notin_([DomainType.fake, DomainType.reality])).all()
 
-def get_hdomains():
-    return {mode: hdomains(mode) for mode in DomainType}
+        if len(domains) == 0 and request:
+            domains = [Domain(domain=request.host)]  # type: ignore
+        if len(domains) == 0 or always_add_ip:
+            domains += [Domain(domain=hutils.network.get_ip_str(4))]  # type: ignore
+        return domains
 
+    @classmethod
+    def add_or_update(cls, commit=True, child_id=0, **domain):
+        dbdomain = Domain.query.filter(Domain.domain == domain['domain']).first()
+        if not dbdomain:
+            dbdomain = Domain(domain=domain['domain'])  # type: ignore
+            db.session.add(dbdomain)
+        dbdomain.child_id = child_id
 
-def get_domain(domain):
-    return Domain.query.filter(Domain.domain == domain).first()
+        dbdomain.mode = domain['mode']
+        if (str(domain.get('sub_link_only', False)).lower() == 'true'):
+            dbdomain.mode = DomainType.sub_link_only
+        dbdomain.cdn_ip = domain.get('cdn_ip', '')
+        dbdomain.alias = domain.get('alias', '')
+        dbdomain.grpc = domain.get('grpc', False)
+        dbdomain.servernames = domain.get('servernames', '')
+        show_domains = domain.get('show_domains', [])
+        dbdomain.show_domains = Domain.query.filter(Domain.domain.in_(show_domains)).all()
+        if commit:
+            db.session.commit()
 
+    @classmethod
+    def bulk_register(cls, domains, commit=True, remove=False, force_child_unique_id: str | None = None):
+        from hiddifypanel.panel import hiddify
+        child_ids = {}
+        for domain in domains:
+            child_id = hiddify.get_child(unique_id=force_child_unique_id)
+            child_ids[child_id] = 1
+            cls.add_or_update(commit=False, child_id=child_id, **domain)
+        if remove and len(child_ids):
+            dd = {d['domain']: 1 for d in domains}
+            for d in Domain.query.filter(Domain.child_id.in_(child_ids)):
+                if d.domain not in dd:
+                    db.session.delete(d)
 
-def get_panel_link(child_id: int | None = None) -> Domain | None:
-    if child_id is None:
-        child_id = Child.current().id
-    domains = Domain.query.filter(Domain.mode.in_(
-        [DomainType.direct, DomainType.cdn, DomainType.worker, DomainType.relay, DomainType.auto_cdn_ip, DomainType.old_xtls_direct, DomainType.sub_link_only]),
-        Domain.child_id == child_id
-    ).all()
-    if not domains:
-        return None
-    return domains[0]
-
-
-def get_panel_domains(always_add_ip=False, always_add_all_domains=False) -> List[Domain]:
-    from hiddifypanel import hutils
-    domains = []
-    domains = Domain.query.filter(Domain.mode == DomainType.sub_link_only, Domain.child_id == Child.current().id).all()
-    if not len(domains) or always_add_all_domains:
-        domains = Domain.query.filter(Domain.mode.notin_([DomainType.fake, DomainType.reality])).all()
-
-    if len(domains) == 0 and request:
-        domains = [Domain(domain=request.host)]
-    if len(domains) == 0 or always_add_ip:
-        domains += [Domain(domain=hutils.network.get_ip_str(4))]
-    return domains
-
-
-def get_proxy_domains(domain):
-    db_domain = Domain.query.filter(Domain.domain == domain, Domain.child_id == Child.current().id).first()
-    if not db_domain:
-        db_domain = Domain(domain=domain, mode=DomainType.direct, cdn_ip='', show_domains=[])
-    return get_proxy_domains_db(db_domain)
-
-
-def get_proxy_domains_db(db_domain):
-
-    if not db_domain:
-        domain = urlparse(request.base_url).hostname
-        db_domain = Domain(domain=domain, mode=DomainType.direct, show_domains=[])
-        # print("no domain")
-        hutils.flask.flash(_("This domain does not exist in the panel!" + domain))  # type: ignore
-
-    return db_domain.show_domains or Domain.query.all()
-
-
-def get_current_proxy_domains(force_domain=None):
-    domain = force_domain or urlparse(request.base_url).hostname
-    return get_proxy_domains(domain)
-
-
-def add_or_update_domain(commit=True, child_id=0, **domain):
-    dbdomain = Domain.query.filter(Domain.domain == domain['domain']).first()
-    if not dbdomain:
-        dbdomain = Domain(domain=domain['domain'])
-        db.session.add(dbdomain)
-    dbdomain.child_id = child_id
-
-    dbdomain.mode = domain['mode']
-    if (str(domain.get('sub_link_only', False)).lower() == 'true'):
-        dbdomain.mode = DomainType.sub_link_only
-    dbdomain.cdn_ip = domain.get('cdn_ip', '')
-    dbdomain.alias = domain.get('alias', '')
-    dbdomain.grpc = domain.get('grpc', False)
-    dbdomain.servernames = domain.get('servernames', '')
-    show_domains = domain.get('show_domains', [])
-    dbdomain.show_domains = Domain.query.filter(Domain.domain.in_(show_domains)).all()
-    if commit:
-        db.session.commit()
-
-
-def bulk_register_domains(domains, commit=True, remove=False, force_child_unique_id: str | None = None):
-    from hiddifypanel.panel import hiddify
-    child_ids = {}
-    for domain in domains:
-        child_id = hiddify.get_child(unique_id=force_child_unique_id)
-        child_ids[child_id] = 1
-        add_or_update_domain(commit=False, child_id=child_id, **domain)
-    if remove and len(child_ids):
-        dd = {d['domain']: 1 for d in domains}
-        for d in Domain.query.filter(Domain.child_id.in_(child_ids)):
-            if d.domain not in dd:
-                db.session.delete(d)
-
-    if commit:
-        db.session.commit()
+        if commit:
+            db.session.commit()

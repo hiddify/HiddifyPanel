@@ -1,14 +1,14 @@
 import sqlite3
 import json
-from typing import Any, Dict, List, Tuple
+import os
 import uuid as uuid_mod
+from typing import Any, Dict, List, Tuple
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
+
 from hiddifypanel import hutils
 from hiddifypanel.models import *
 from hiddifypanel.database import db, db_execute
-import os
-from sqlalchemy import text
 
 
 def __query_fetch_json(db, query: str, **kwargs) -> List[Dict[str, Any]]:
@@ -145,8 +145,7 @@ def import_data(db_path: str):
             User.add_or_update(commit=False, **u)
 
         for d in hiddify_domains_dict:
-            from hiddifypanel.panel import hiddify
-            hiddify.add_or_update_domain(commit=False, **d)
+            Domain.add_or_update(commit=False, **d)
 
         db.session.commit()  # type: ignore
     except Exception as err:
