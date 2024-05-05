@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/opt/hiddify-manager/.venv/bin/python
 
 from hiddifypanel import create_app_wsgi
 

@@ -34,7 +34,7 @@ class SyncApi(MethodView):
 
         try:
             logger.info("Syncing domains...")
-            bulk_register_domains(data['domains'], commit=False, force_child_unique_id=child.unique_id)
+            Domain.bulk_register(data['domains'], commit=False, force_child_unique_id=child.unique_id)
             logger.info("Syncing hconfigs...")
             bulk_register_configs(data['hconfigs'], commit=False, froce_child_unique_id=child.unique_id)
             logger.info("Syncing proxies...")

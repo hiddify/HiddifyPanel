@@ -27,7 +27,7 @@ class FriendlyUUID(fields.Field):
         if value is None:
             return None
         try:
-            return uuid.UUID(value)
+            return str(uuid.UUID(value))
         except ValueError:
             self.fail('Invalid uuid')
 
@@ -69,6 +69,11 @@ class UserSchema(Schema):
     last_reset_time = Date(
         format='%Y-%m-%d',
         description="The last time the user's data usage was reset, in a JSON-friendly format",
+        allow_none=True
+    )
+    expiry_time = Date(
+        format='%Y-%m-%d',
+        description="The expiry time of the user's package, in a JSON-friendly format",
         allow_none=True
     )
     comment = String(
@@ -115,13 +120,21 @@ class UserSchema(Schema):
     )
 
     lang = Enum(Lang, required=False, allow_none=True, description="The language of the user")
+    enable = Boolean(required=False, description="Whether the user is enabled or not")
+
+
+class PutUserSchema(UserSchema):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # the uuid is sent in the url path
+        self.fields['uuid'].required = False
 
 
 class PatchUserSchema(UserSchema):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.fields['uuid'].required = False
         self.fields['name'].required = False
-    pass
 
 # endregion
 
@@ -134,21 +147,31 @@ class AdminSchema(Schema):
     uuid = FriendlyUUID(required=True, description='The unique identifier for the admin')
     mode = Enum(AdminMode, required=True, description='The mode for the admin')
     can_add_admin = Boolean(required=True, description='Whether the admin can add other admins')
-    parent_admin_uuid = FriendlyUUID(description='The unique identifier for the parent admin', allow_none=True,
+    parent_admin_uuid = FriendlyUUID(required=False, description='The unique identifier for the parent admin', allow_none=True,
                                      # validate=OneOf([p.uuid for p in AdminUser.query.all()])
                                      )
     telegram_id = Integer(required=False, description='The Telegram ID associated with the admin', allow_none=True)
     lang = Enum(Lang, required=True)
+    max_users = Integer(required=False, description='The maximum number of users allowed', allow_none=True)
+    max_active_users = Integer(required=False, description='The maximum number of active users allowed', allow_none=True)
+
+
+class PutAdminSchema(AdminSchema):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # the uuid is sent in the url path
+        self.fields['uuid'].required = False
 
 
 class PatchAdminSchema(AdminSchema):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.fields['uuid'].required = False
         self.fields['name'].required = False
         self.fields['mode'].required = False
         self.fields['lang'].required = False
         self.fields['can_add_admin'].required = False
-    pass
+
 # endregion
 
 

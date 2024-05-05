@@ -3,7 +3,7 @@ from flask_babel import lazy_gettext as _
 from typing import List
 from loguru import logger
 
-from hiddifypanel.models import Child, AdminUser, ConfigEnum, Domain, ChildMode, hconfig, get_panel_link
+from hiddifypanel.models import Child, AdminUser, ConfigEnum, Domain, ChildMode, hconfig, Domain
 from hiddifypanel import hutils
 from hiddifypanel.panel.commercial.restapi.v2.child.schema import RegisterWithParentInputSchema
 from .api_client import NodeApiClient, NodeApiErrorSchema
@@ -20,7 +20,7 @@ def request_childs_to_sync():
 
 def request_child_to_sync(child: Child) -> bool:
     '''Requests to a child to sync itself with the current panel'''
-    child_domain = get_panel_link(child.id)
+    child_domain = Domain.get_panel_link(child.id)  # type:ignore
     if not child_domain:
         logger.error(f"Child {child.name} has no valid domain")
         return False
@@ -49,14 +49,14 @@ def request_chlid_to_register(name: str, child_link: str, apikey: str) -> bool:
     if not child_link or not apikey:
         logger.error("Child link or apikey is empty")
         return False
-    domain = get_panel_link()
+    domain = Domain.get_panel_link()
     if not domain:
         logger.error("Domain is empty")
         return False
     from hiddifypanel.panel import hiddify
 
     payload = RegisterWithParentInputSchema()
-    payload.parent_panel = hiddify.get_account_panel_link(AdminUser.by_uuid(g.account.uuid), domain.domain)  # type: ignore
+    payload.parent_panel = hiddify.get_account_panel_link(AdminUser.by_uuid(g.account.uuid), domain)  # type: ignore
     payload.apikey = payload.name = hconfig(ConfigEnum.unique_id)
 
     logger.debug(f"Requesting child {name} to register")
@@ -87,14 +87,14 @@ def is_child_domain_active(child: Child, domain: Domain) -> bool:
 
 def get_child_active_domains(child: Child) -> List[Domain]:
     actives = []
-    for d in child.domains:
+    for d in child.domains:  # type: ignore
         if is_child_domain_active(child, d):
             actives.append(d)
     return actives
 
 
 def is_child_active(child: Child) -> bool:
-    for d in child.domains:
+    for d in child.domains:  # type: ignore
         if is_child_domain_active(child, d):
             return True
     return False

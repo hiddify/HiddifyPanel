@@ -150,5 +150,5 @@ def validate_domain(form, field):
 
 
 def admin_link():
-    domains = get_panel_domains()
+    domains = Domain.get_domains()
     return hiddify.get_account_panel_link(g.account, domains[0] if len(domains)else hutils.network.get_ip_str(4))

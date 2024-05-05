@@ -44,7 +44,7 @@ class Dashboard(FlaskView):
                         c.is_active = True
 
         def_user = None if len(User.query.all()) > 1 else User.query.filter(User.name == 'default').first()
-        domains = get_panel_domains()
+        domains = Domain.get_domains()
         sslip_domains = [d.domain for d in domains if "sslip.io" in d.domain]
 
         if def_user and sslip_domains:

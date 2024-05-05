@@ -67,16 +67,21 @@ class AdminUser(BaseAccount, SerializerMixin):
         base = super().to_dict()
         if dump_id:
             base['id'] = self.id
-        from hiddifypanel.models import hconfig, ConfigEnum
+        if not base.get('lang'):
+            from hiddifypanel.models import hconfig, ConfigEnum
+            base['lang'] = hconfig(ConfigEnum.admin_lang)
         return {**base,
                 'mode': self.mode,
                 'can_add_admin': self.can_add_admin,
                 'parent_admin_uuid': self.parent_admin.uuid if self.parent_admin else None,
-                'lang': hconfig(ConfigEnum.admin_lang)
+                'max_users': self.max_users,
+                'max_active_users': self.max_active_users,
                 }
 
     @classmethod
     def by_uuid(cls, uuid: str, create: bool = False) -> BaseAccount | None:
+        if not isinstance(uuid, str):
+            uuid = str(uuid)
         account = AdminUser.query.filter(AdminUser.uuid == uuid).first()
         if not account and create:
             dbuser = AdminUser(uuid=uuid, name="unknown", parent_admin_id=AdminUser.current_admin_or_owner().id)
@@ -101,6 +106,8 @@ class AdminUser(BaseAccount, SerializerMixin):
 
         dbuser.mode = data.get('mode', AdminMode.agent)
         dbuser.can_add_admin = data.get('can_add_admin') or False
+        dbuser.max_users = data.get('max_users', 100)
+        dbuser.max_active_users = data.get('max_active_users', 100)
         if commit:
             db.session.commit()
         return dbuser

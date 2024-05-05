@@ -17,7 +17,7 @@ bot = telebot.TeleBot("", parse_mode="HTML", threaded=False, exception_handler=E
 bot.username = ''
 
 
-def register_bot(set_hook=False):
+def register_bot(set_hook=False, remove_hook=False):
     try:
         global bot
         token = hconfig(ConfigEnum.telegram_bot_token)
@@ -27,9 +27,12 @@ def register_bot(set_hook=False):
                 bot.username = bot.get_me().username
             except BaseException:
                 pass
-            # bot.remove_webhook()
-            # time.sleep(0.1)
-            domain = get_panel_domains()[0].domain
+            if remove_hook:
+                bot.remove_webhook()
+            domain = Domain.get_panel_link()
+            if not domain:
+                raise Exception('Cannot get valid domain for setting telegram bot webhook')
+
             admin_proxy_path = hconfig(ConfigEnum.proxy_path_admin)
 
             user_secret = AdminUser.get_super_admin_uuid()

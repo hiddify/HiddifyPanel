@@ -50,60 +50,66 @@ class AllConfigsAPI(MethodView):
             )
         )
 
-        # Add Full Singbox
-        items.append(
-            create_item(
-                "Full Singbox", "ALL", "", "", "", "",
-                # f"{base_url}full-singbox.json?asn={c['asn']}"
-                f"{base_url}singbox/?asn={c['asn']}#{config_name}"
+        if hconfig(ConfigEnum.sub_full_singbox_enable):
+            # Add Full Singbox
+            items.append(
+                create_item(
+                    "Full Singbox", "ALL", "", "", "", "",
+                    # f"{base_url}full-singbox.json?asn={c['asn']}"
+                    f"{base_url}singbox/?asn={c['asn']}#{config_name}"
+                )
             )
-        )
 
-        # Add Full Xray
-        items.append(
-            create_item(
-                "Full Xray", "ALL", "", "", "", "",
-                f"{base_url}xray/#{config_name}"
+        if hconfig(ConfigEnum.sub_full_xray_json_enable):
+            # Add Full Xray
+            items.append(
+                create_item(
+                    "Full Xray", "ALL", "", "", "", "",
+                    f"{base_url}xray/#{config_name}"
+                )
             )
-        )
 
-        # Add Subscription link
-        items.append(
-            create_item(
-                "Subscription link", "ALL", "", "", "", "",
-                # f"{base_url}all.txt?name={c['db_domain'].alias or c['db_domain'].domain}-{c['asn']}&asn={c['asn']}&mode={c['mode']}"
-                f"{base_url}sub/?asn={c['asn']}#{config_name}"
+        if hconfig(ConfigEnum.sub_full_links_enable):
+            # Add Subscription link
+            items.append(
+                create_item(
+                    "Subscription link", "ALL", "", "", "", "",
+                    # f"{base_url}all.txt?name={c['db_domain'].alias or c['db_domain'].domain}-{c['asn']}&asn={c['asn']}&mode={c['mode']}"
+                    f"{base_url}sub/?asn={c['asn']}#{config_name}"
+                )
             )
-        )
 
-        # Add Subscription link base64
-        items.append(
-            create_item(
-                "Subscription link b64", "ALL", "", "", "", "",
-                # f"{base_url}all.txt?name=new_link_{c['db_domain'].alias or c['db_domain'].domain}-{c['asn']}-{c['mode']}&asn={c['asn']}&mode={c['mode']}&base64=True"
-                f"{base_url}sub64/?asn={c['asn']}#{config_name}"
+        if hconfig(ConfigEnum.sub_full_links_b64_enable):
+            # Add Subscription link base64
+            items.append(
+                create_item(
+                    "Subscription link b64", "ALL", "", "", "", "",
+                    # f"{base_url}all.txt?name=new_link_{c['db_domain'].alias or c['db_domain'].domain}-{c['asn']}-{c['mode']}&asn={c['asn']}&mode={c['mode']}&base64=True"
+                    f"{base_url}sub64/?asn={c['asn']}#{config_name}"
+                )
             )
-        )
-        # Add Clash Meta
-        items.append(
-            create_item(
-                "Clash Meta", "ALL", "", "", "", "",
-                # f"clashmeta://install-config?url={base_url}clash/meta/all.yml&name=mnormal_{c['db_domain'].alias or c['db_domain'].domain}-{c['asn']}-{c['mode']}&asn={c['asn']}&mode={c['mode']}"
-                f"clash://install-config?url={base_url}clashmeta/?asn={c['asn']}#{config_name}"
+        if hconfig(ConfigEnum.sub_full_clash_meta_enable):
+            # Add Clash Meta
+            items.append(
+                create_item(
+                    "Clash Meta", "ALL", "", "", "", "",
+                    # f"clashmeta://install-config?url={base_url}clash/meta/all.yml&name=mnormal_{c['db_domain'].alias or c['db_domain'].domain}-{c['asn']}-{c['mode']}&asn={c['asn']}&mode={c['mode']}"
+                    f"clash://install-config?url={base_url}clashmeta/?asn={c['asn']}#{config_name}"
+                )
             )
-        )
 
-        # Add Clash
-        items.append(
-            create_item(
-                "Clash", "ALL", "Except VLess", "", "", "",
-                # f"clash://install-config?url={base_url}clash/all.yml&name=new_normal_{c['db_domain'].alias or c['db_domain'].domain}-{c['asn']}-{c['mode']}&asn={c['asn']}&mode={c['mode']}"
-                f"clash://install-config?url={base_url}clash/?asn={c['asn']}#{config_name}"
+        if hconfig(ConfigEnum.sub_full_clash_enable):
+            # Add Clash
+            items.append(
+                create_item(
+                    "Clash", "ALL", "Except VLess", "", "", "",
+                    # f"clash://install-config?url={base_url}clash/all.yml&name=new_normal_{c['db_domain'].alias or c['db_domain'].domain}-{c['asn']}-{c['mode']}&asn={c['asn']}&mode={c['mode']}"
+                    f"clash://install-config?url={base_url}clash/?asn={c['asn']}#{config_name}"
+                )
             )
-        )
 
         # Add Singbox: SSh
-        if hconfig(ConfigEnum.ssh_server_enable):
+        if hconfig(ConfigEnum.sub_singbox_ssh_enable) and hconfig(ConfigEnum.ssh_server_enable):
             items.append(
                 create_item(
                     "Singbox: SSH", "SSH", "", "", "", "",

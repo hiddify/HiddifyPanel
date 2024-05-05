@@ -253,7 +253,7 @@ class DomainAdmin(AdminLTEModelView):
             except BaseException:
                 raise ValidationError(_("Error in auto cdn format"))
 
-        old_db_domain = get_domain(model.domain)
+        old_db_domain = Domain.by_domain(model.domain)
         if is_created or not old_db_domain or old_db_domain.mode != model.mode:
             # return hiddify.reinstall_action(complete_install=False, domain_changed=True)
             hutils.flask.flash_config_success(restart_mode=ApplyMode.apply, domain_changed=True)

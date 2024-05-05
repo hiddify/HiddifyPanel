@@ -1,5 +1,5 @@
 import yaml
-from hiddifypanel.models import Proxy, ProxyCDN, ProxyL3, ProxyProto, ProxyTransport, Domain
+from hiddifypanel.models import ProxyCDN, ProxyL3, ProxyProto, ProxyTransport, Domain
 from hiddifypanel import hutils
 
 

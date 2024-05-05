@@ -17,6 +17,20 @@ from sqlalchemy import text
 MAX_DB_VERSION = 90
 
 
+def _v86(child_id):
+    set_hconfig(ConfigEnum.hiddifycli_enable, True)
+
+
+def _v85(child_id):
+    set_hconfig(ConfigEnum.sub_full_singbox_enable, True)
+    set_hconfig(ConfigEnum.sub_singbox_ssh_enable, True)
+    set_hconfig(ConfigEnum.sub_full_xray_json_enable, True)
+    set_hconfig(ConfigEnum.sub_full_links_enable, True)
+    set_hconfig(ConfigEnum.sub_full_links_b64_enable, True)
+    set_hconfig(ConfigEnum.sub_full_clash_enable, True)
+    set_hconfig(ConfigEnum.sub_full_clash_meta_enable, True)
+
+
 def _v84(child_id):
     # the 2022-blake3-chacha20-poly1305 encryption method doesn't support multiuser config
     if hconfig(ConfigEnum.shadowsocks2022_method) == '2022-blake3-chacha20-poly1305':

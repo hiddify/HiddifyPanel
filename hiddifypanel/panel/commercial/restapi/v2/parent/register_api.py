@@ -41,7 +41,7 @@ class RegisterApi(MethodView):
             logger.info("Adding users...")
             User.bulk_register(data['panel_data']['users'], commit=False)
             logger.info("Adding domains...")
-            bulk_register_domains(data['panel_data']['domains'], commit=False, force_child_unique_id=child.unique_id)
+            Domain.bulk_register(data['panel_data']['domains'], commit=False, force_child_unique_id=child.unique_id)
             logger.info("Adding hconfigs...")
             bulk_register_configs(data['panel_data']['hconfigs'], commit=False, froce_child_unique_id=child.unique_id)
             logger.info("Adding proxies...")

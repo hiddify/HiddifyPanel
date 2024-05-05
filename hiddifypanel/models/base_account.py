@@ -49,6 +49,8 @@ class BaseAccount(db.Model, SerializerMixin, FlaskLoginUserMixin):  # type: igno
 
     @classmethod
     def by_uuid(cls, uuid: str, create: bool = False):
+        if not isinstance(uuid, str):
+            uuid = str(uuid)
         account = cls.query.filter(cls.uuid == uuid).first()
         if not account and create:
             raise NotImplementedError
@@ -60,10 +62,10 @@ class BaseAccount(db.Model, SerializerMixin, FlaskLoginUserMixin):  # type: igno
 
     @classmethod
     def add_or_update(cls, commit: bool = True, **data):
-        from hiddifypanel import hutils
         db_account = cls.by_uuid(data['uuid'], create=True)
         db_account.name = data.get('name', '')
         db_account.comment = data.get('comment', '')
+        from hiddifypanel import hutils
         db_account.telegram_id = hutils.convert.to_int(data.get('telegram_id'))
         db_account.lang = data.get('lang')
         if commit:

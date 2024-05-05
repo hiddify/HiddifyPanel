@@ -224,7 +224,7 @@ def set_db_from_json(json_data, override_child_unique_id=True, set_users=True, s
     if set_users and 'users' in json_data:
         User.bulk_register(json_data['users'], commit=False, remove=remove_users)
     if set_domains and 'domains' in json_data:
-        bulk_register_domains(json_data['domains'], commit=False, remove=remove_domains)
+        Domain.bulk_register(json_data['domains'], commit=False, remove=remove_domains)
 
     if set_settings and 'hconfigs' in json_data:
         bulk_register_configs(json_data["hconfigs"], commit=True, override_unique_id=override_unique_id)
@@ -332,18 +332,3 @@ def get_backup_child_unique_id(backupdata: dict) -> str:
     if len(backupdata.get('childs', [])) == 0:
         return "self"
     return backupdata['childs'][0]['unique_id']
-
-
-def is_hiddify_next_version(major_v: int = 0, minor_v: int = 0, patch_v: int = 0) -> bool:
-    '''If the user agent version be equals or higher than parameters returns True'''
-    if not g.user_agent.get('hiddify_version'):
-        return False
-    raw_v = g.user_agent['hiddify_version']
-    raw_v_len = len(raw_v)
-    u_major_v = raw_v[0] if raw_v_len > 0 else 0
-    u_minor_v = raw_v[1] if raw_v_len > 1 else 0
-    u_patch_v = raw_v[2] if raw_v_len > 2 else 0
-
-    if u_major_v >= major_v and u_minor_v >= minor_v and u_patch_v >= patch_v:
-        return True
-    return False

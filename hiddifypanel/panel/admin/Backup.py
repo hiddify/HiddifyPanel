@@ -1,5 +1,4 @@
-#!/usr/bin/env python3
-from flask import render_template, request, jsonify, redirect, g
+from flask import render_template, request, jsonify, g
 from flask_wtf.file import FileField, FileRequired
 from flask_bootstrap import SwitchField
 from flask_babel import gettext as _
@@ -25,12 +24,10 @@ class Backup(FlaskView):
 
     # @route("/backupfile")
     def backupfile(self):
-        response = jsonify(
-            hiddify.dump_db_to_dict()
-        )
-        o = urlparse(request.base_url)
-        domain = o.hostname
-        response.headers.add('Content-disposition', f'attachment; filename=hiddify-{domain}-{datetime.now()}.json')
+        response = jsonify(hiddify.dump_db_to_dict())
+        domain = urlparse(request.base_url).hostname
+        filename = f'hiddify-{domain}-{datetime.now()}.json'
+        response.headers.add('Content-disposition', f'attachment; filename={filename}')
 
         return response
 

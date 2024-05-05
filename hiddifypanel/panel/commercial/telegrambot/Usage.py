@@ -57,7 +57,7 @@ def get_usage_msg(uuid, domain=None):
         expire_rel = user_data['expire_rel']
         reset_day = user_data['reset_day']
 
-        domain = domain or get_panel_domains()[0]
+        domain = domain or Domain.get_domains()[0]
         user_link = hiddify.get_account_panel_link(user, domain.domain)
         with force_locale(user.lang or hconfig(ConfigEnum.lang)):
             msg = f"""{_('<a href="%(user_link)s"> %(user)s</a>',user_link=user_link ,user=user.name if user.name != "default" else "")}\n\n"""

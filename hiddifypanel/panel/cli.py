@@ -53,7 +53,6 @@ def all_configs():
     configs = {
         "users": valid_users,
         "domains": [u.to_dict(dump_ports=True, dump_child_id=True) for u in Domain.query.filter(Domain.child_id.in_(host_child_ids)).all() if "*" not in u.domain],
-        # "parent_domains": [hiddify.parent_domain_dict(u) for u in ParentDomain.query.all()],
         # "hconfigs": get_hconfigs(json=True),
         "chconfigs": get_hconfigs_childs(host_child_ids, json=True)
     }
@@ -70,7 +69,7 @@ def all_configs():
     configs['panel_links'] = []
     configs['panel_links'].append(hiddify.get_account_panel_link(owner, server_ip, is_https=False))
     configs['panel_links'].append(hiddify.get_account_panel_link(owner, server_ip))
-    domains = get_panel_domains()
+    domains = Domain.get_domains()
 
     for d in domains:
         configs['panel_links'].append(hiddify.get_account_panel_link(owner, d.domain))
@@ -82,18 +81,13 @@ def update_usage():
     print(usage.update_local_usage())
 
 
-def test():
-    print(ConfigEnum("auto_update1"))
-
-
 def admin_links():
-
     server_ip = hutils.network.get_ip_str(4)
     owner = AdminUser.get_super_admin()
 
     admin_links = f"Not Secure (do not use it - only if others not work):\n   {hiddify.get_account_panel_link(owner, server_ip,is_https=True)}\n"
 
-    domains = get_panel_domains()
+    domains = Domain.get_domains()
     admin_links += f"Secure:\n"
     if not any([d for d in domains if 'sslip.io' not in d.domain]):
         admin_links += f"   (not signed) {hiddify.get_account_panel_link(owner, server_ip)}\n"
@@ -108,19 +102,15 @@ def admin_links():
 def admin_path():
     admin = AdminUser.get_super_admin()
     # WTF is the owner and server_id?
-    domain = get_panel_domains()[0]
+    domain = Domain.get_domains()[0]
     print(hiddify.get_account_panel_link(admin, domain, prefere_path_only=True))
-
-
-# def get_this_host_domains():
-#     current_child_ids
 
 
 def hysteria_domain_port():
     if not hconfig(ConfigEnum.hysteria_enable):
         return
     out = []
-    for i, domain in enumerate(Domain.query.filter(Domain.mode.in_([DomainType.direct, DomainType.relay, DomainType.fake])).all()):
+    for domain in Domain.query.filter(Domain.mode.in_([DomainType.direct, DomainType.relay, DomainType.fake])).all():
         out.append(f"{domain.domain}:{int(hconfig(ConfigEnum.hysteria_port))+domain.id}")
     print(";".join(out))
 
@@ -129,26 +119,25 @@ def tuic_domain_port():
     if not hconfig(ConfigEnum.tuic_enable):
         return
     out = []
-    for i, domain in enumerate(Domain.query.filter(Domain.mode.in_([DomainType.direct, DomainType.relay, DomainType.fake])).all()):
+    for domain in Domain.query.filter(Domain.mode.in_([DomainType.direct, DomainType.relay, DomainType.fake])).all():
         out.append(f"{domain}:{int(hconfig(ConfigEnum.tuic_port))+domain.id}")
     print(";".join(out))
 
 
 def init_app(app):
-    # add multiple commands in a bulk
-    # print(app.config['SQLALCHEMY_DATABASE_URI'] )
-    for command in [hysteria_domain_port, tuic_domain_port, init_db, drop_db, all_configs, update_usage, test, admin_links, admin_path, backup, downgrade]:
+    for command in [hysteria_domain_port, tuic_domain_port, init_db, drop_db, all_configs, update_usage, admin_links, admin_path, backup, downgrade]:
         app.cli.add_command(app.cli.command()(command))
 
     @ app.cli.command()
     @ click.option("--domain", "-d")
-    def add_domain(domain):
-        # TODO: Fix this
+    @ click.option("--mode", "-m")
+    def add_domain(domain, mode):
         if Domain.query.filter(Domain.domain == domain).first():
             return "Domain already exist."
-        d = Domain(domain=domain)
-        if not hutils.node.is_parent():
-            d.mode = DomainType.direct
+        d = Domain()
+        d.domain = domain
+        d.mode = mode
+        d.sub_link_only = True if mode == DomainType.sub_link_only else False
         db.session.add(d)
         db.session.commit()
         return "success"
@@ -236,3 +225,27 @@ def init_app(app):
             print('success')
         except Exception as e:
             print(f'failed to import xui data: Error: {e}')
+
+    @ app.cli.command()
+    def tgbot_info():
+        if not hconfig(ConfigEnum.telegram_bot_token):
+            print('You didn\'t specified your telegram bot token')
+            return
+
+        from hiddifypanel.panel.commercial.telegrambot import bot, register_bot
+        if not bot.token:
+            register_bot(True)
+        info = bot.get_me().to_dict()
+        hook_data = bot.get_webhook_info()
+        hook_info = {
+            'url': hook_data.url,
+            'ip': hook_data.ip_address,
+            'last_error_msg': hook_data.last_error_message if hook_data.last_error_message else '',
+            'last_error_time': datetime.datetime.fromtimestamp(int(hook_data.last_error_date)).strftime('%Y-%m-%d %H:%M:%S') if hook_data.last_error_date else ''
+        }
+
+        output = {
+            'general': info,
+            'webhook': hook_info
+        }
+        print(json.dumps(output, indent=4))
