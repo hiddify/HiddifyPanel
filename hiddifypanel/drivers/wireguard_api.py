@@ -9,15 +9,35 @@ from hiddifypanel.panel.run_commander import Command, commander
 class WireguardApi(DriverABS):
     def is_enabled(self) -> bool:
         return hconfig(ConfigEnum.wireguard_enable)
-    WG_LOCAL_USAGE_FILE_PATH = './hiddify_usages.json'
+    
+    WG_LOCAL_USAGE_FILE_PATH = os.path.join('/opt/hiddify-manager/','hiddify-panel','wireguard_usages.json')
+    OLD_WG_LOCAL_USAGE_FILE_PATH = os.path.join('/opt/hiddify-manager/','hiddify-panel','hiddify_usages.json')
 
     def __init__(self) -> None:
         super().__init__()
-        # create empty local usage file
-        if not os.path.isfile(WireguardApi.WG_LOCAL_USAGE_FILE_PATH):
-            with open(WireguardApi.WG_LOCAL_USAGE_FILE_PATH, 'w+') as f:
-                json.dump({}, f)
 
+        if os.path.isfile(WireguardApi.OLD_WG_LOCAL_USAGE_FILE_PATH) and not os.path.isfile(WireguardApi.WG_LOCAL_USAGE_FILE_PATH):
+            os.rename(WireguardApi.OLD_WG_LOCAL_USAGE_FILE_PATH,WireguardApi.WG_LOCAL_USAGE_FILE_PATH)
+
+        if not self.is_usages_file_exists_and_json():
+            self.init_empty_usages_file()
+        # create empty local usage file
+
+    def is_usages_file_exists_and_json(self) -> bool:
+        if os.path.isfile(WireguardApi.WG_LOCAL_USAGE_FILE_PATH):
+            try:
+                # try to load it as a JSON
+                self.__get_local_usage()
+                return True
+            except json.decoder.JSONDecodeError:
+                os.remove(WireguardApi.WG_LOCAL_USAGE_FILE_PATH)
+                return False
+        return False
+    def init_empty_usages_file(self):
+        with open(WireguardApi.WG_LOCAL_USAGE_FILE_PATH, 'w+') as f:
+            json.dump({}, f)
+
+    
     def __get_wg_usages(self) -> dict:
         raw_output = commander(Command.update_wg_usage, run_in_background=False)
         data = {}
@@ -34,7 +54,6 @@ class WireguardApi(DriverABS):
         return data
 
     def __get_local_usage(self) -> dict:
-
         with open(WireguardApi.WG_LOCAL_USAGE_FILE_PATH, 'r') as f:
             data = json.load(f)
             return data
