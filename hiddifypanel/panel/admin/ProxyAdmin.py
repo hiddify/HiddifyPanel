@@ -57,22 +57,13 @@ class ProxyAdmin(FlaskView):
             db.session.commit()
             hutils.proxy.get_proxies.invalidate_all()
             if hutils.node.is_child():
-                if not hutils.node.child.sync_with_parent():
-                    hutils.flask.flash(_('child.sync-failed'), 'danger')  # type: ignore
+                hutils.node.run_node_op_in_bg(hutils.node.child.sync_with_parent)
             hutils.flask.flash_config_success(restart_mode=ApplyMode.apply, domain_changed=False)
             global_config_form = get_global_config_form(True)
         else:
             hutils.flask.flash((_('config.validation-error')), 'danger')
 
         return render_template('proxy.html', global_config_form=global_config_form, detailed_config_form=all_proxy_form)
-
-        import flask_babel
-
-        # form=HelloForm()
-        # # return render('config.html',form=form)
-        # return render_template('config.html',form=HelloForm())
-        form = get_config_form()
-        return render_template('config.html', form=form)
 
 
 def get_global_config_form(empty=False):

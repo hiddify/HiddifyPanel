@@ -272,8 +272,7 @@ class DomainAdmin(AdminLTEModelView):
 
     def after_model_delete(self, model):
         if hutils.node.is_child():
-            if not hutils.node.child.sync_with_parent():
-                hutils.flask.flash(_('child.sync-failed'), 'danger')  # type: ignore
+            hutils.node.run_node_op_in_bg(hutils.node.child.sync_with_parent)
 
     def after_model_change(self, form, model, is_created):
         if hconfig(ConfigEnum.first_setup):
@@ -281,8 +280,7 @@ class DomainAdmin(AdminLTEModelView):
         if model.need_valid_ssl:
             commander(Command.get_cert, domain=model.domain)
         if hutils.node.is_child():
-            if not hutils.node.child.sync_with_parent():
-                hutils.flask.flash(_('child.sync-failed'), 'danger')  # type: ignore
+            hutils.node.run_node_op_in_bg(hutils.node.child.sync_with_parent)
 
     def is_accessible(self):
         if login_required(roles={Role.super_admin, Role.admin})(lambda: True)() != True:

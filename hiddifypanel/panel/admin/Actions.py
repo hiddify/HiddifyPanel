@@ -60,8 +60,7 @@ class Actions(FlaskView):
         if int(hconfig(ConfigEnum.db_version)) < 9:
             return ("Please update your panel before this action.")
         if hutils.node.is_child():
-            if not hutils.node.child.sync_with_parent():
-                hutils.flask.flash(_('child.sync-failed'), 'danger')  # type: ignore
+            hutils.node.run_node_op_in_bg(hutils.node.child.sync_with_parent)
 
         domain_changed = request.args.get("domain_changed", str(domain_changed)).lower() == "true"
         complete_install = request.args.get("complete_install", str(complete_install)).lower() == "true"

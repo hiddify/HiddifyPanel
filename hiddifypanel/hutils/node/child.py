@@ -1,7 +1,8 @@
 from loguru import logger
 import socket
+from flask_babel import gettext as _
 
-from hiddifypanel.models import AdminUser, User, hconfig, ConfigEnum, ChildMode, set_hconfig, Domain, Proxy, StrConfig, BoolConfig, Child, ChildMode
+from hiddifypanel.models import AdminUser, User, hconfig, ConfigEnum, ChildMode, Domain, Proxy, StrConfig, BoolConfig, Child, ChildMode
 from hiddifypanel import hutils
 from hiddifypanel.panel import hiddify
 from hiddifypanel.panel import usage
@@ -107,16 +108,19 @@ def sync_with_parent() -> bool:
     # sync usage first
     if not sync_users_usage_with_parent():
         logger.error("Error while syncing with parent: Failed to sync users usage")
+        hutils.flask.flash(_('child.sync-failed'), 'danger') # just for debug
         return False
 
     p_url = __get_parent_panel_url()
     if not p_url:
         logger.error("Error while syncing with parent: Parent url is empty")
+        hutils.flask.flash(_('child.sync-failed'), 'danger')
         return False
     payload = __get_sync_data_for_api()
     res = NodeApiClient(p_url).put('/api/v2/parent/sync/', payload, SyncOutputSchema)
     if isinstance(res, NodeApiErrorSchema):
         logger.error(f"Error while syncing with parent: {res.msg}")
+        hutils.flask.flash(_('child.sync-failed'), 'danger')
         return False
     AdminUser.bulk_register(res['admin_users'], commit=False, remove=True)
     User.bulk_register(res['users'], commit=False, remove=True)

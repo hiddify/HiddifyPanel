@@ -1,4 +1,6 @@
+import threading
 from loguru import logger
+from typing import Callable
 
 from hiddifypanel.models import hconfig, ConfigEnum, PanelMode, User
 from hiddifypanel.cache import cache
@@ -63,3 +65,6 @@ def get_panel_info(domain: str, proxy_path: str,apikey:str|None = None) -> dict 
         logger.error(f"Error while getting panel info from {domain}: {res.msg}")
         return None
     return res
+
+def run_node_op_in_bg(op:Callable,args=(),kwargs={}):
+    threading.Thread(target=(op),args=args,kwargs=kwargs).start()
