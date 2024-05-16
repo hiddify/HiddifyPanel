@@ -44,6 +44,7 @@ def get_latest_release_version(repo_name):
 
 
 def is_panel_outdated() -> bool:
+    # TODO: handle beta and develop version too
     pm = hconfig(ConfigEnum.package_mode)
     try:
         if pm == 'release':
