@@ -82,7 +82,9 @@ def get_html_user_link(model: BaseAccount, domain: Domain):
     if "*" in d:
         d = d.replace("*", hutils.random.get_random_string(5, 15))
 
-    link = f'{get_account_panel_link(model, d)}#{hutils.encode.unicode_slug(model.name)}'
+    # for showing child/node link (we send child_id to get_account_panel_link to get domain proxy path correctly)
+    d_child_id = domain.child_id
+    link = f'{get_account_panel_link(model, d,child_id=d_child_id)}#{hutils.encode.unicode_slug(model.name)}'
 
     text = domain.alias or domain.domain
     color_cls = 'info'
@@ -274,9 +276,11 @@ def get_account_panel_link(account: BaseAccount, host: str, is_https: bool = Tru
         link += str(host)
     proxy_path = hconfig(ConfigEnum.proxy_path_admin if is_admin else ConfigEnum.proxy_path_client, child_id)
     link += f'/{proxy_path}/'
-    if child_id != 0:
-        child = Child.by_id(child_id)
-        link += f"{child.id}/"
+
+    # if child_id != 0:
+    #     child = Child.by_id(child_id)
+    #     link += f"{child.id}/"
+
     if basic_auth:
         link += "l"
     else:
