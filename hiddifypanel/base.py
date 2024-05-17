@@ -29,7 +29,7 @@ def init_logger():
     from hiddifypanel.models import ConfigEnum, hconfig
     logger.remove()
     logger.add(sys.stderr, format=dynamic_formatter, level=hconfig(ConfigEnum.log_level), colorize=True, catch=True, enqueue=True, diagnose=False, backtrace=True)
-    logger.trace('Logger initiated :)')
+    # logger.trace('Logger initiated :)')
 
 
 # TODO: refactor this function
