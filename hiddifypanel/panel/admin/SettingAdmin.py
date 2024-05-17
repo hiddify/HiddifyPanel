@@ -66,7 +66,7 @@ class SettingAdmin(FlaskView):
                                             return render_template('config.html', form=form)
                             if k == ConfigEnum.parent_panel and v != '':
                                 # v=(v+"/").replace("/admin",'')
-                                v = re.sub("(/admin/.*)", "/", v)
+                                v = re.sub("(/admin/.*)", "/", v) + ("/" if not v.endswith("/") else "")
 
                         if old_configs[k] != v:
                             changed_configs[k] = v
