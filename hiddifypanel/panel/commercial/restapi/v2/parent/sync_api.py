@@ -34,11 +34,27 @@ class SyncApi(MethodView):
 
         try:
             logger.info("Syncing domains...")
-            Domain.bulk_register(data['domains'], commit=False, force_child_unique_id=child.unique_id)
+            if data.get('domains'):
+                logger.info("Inserting domains into database")
+                Domain.bulk_register(data['domains'], commit=False, force_child_unique_id=child.unique_id)
+            else:
+                logger.info("Domains field is empty")
+
             logger.info("Syncing hconfigs...")
-            bulk_register_configs(data['hconfigs'], commit=False, froce_child_unique_id=child.unique_id)
+            if data.get('hconfigs'):
+                logger.info("Inserting hconfigs into database")
+                bulk_register_configs(data['hconfigs'], commit=False, froce_child_unique_id=child.unique_id)
+            else:
+                logger.info("Hconfigs field is empty")
+
             logger.info("Syncing proxies...")
-            Proxy.bulk_register(data['proxies'], commit=False, force_child_unique_id=child.unique_id)
+            if data.get('proxies'):
+                logger.info("Inserting proxies into database")
+                Proxy.bulk_register(data['proxies'], commit=False, force_child_unique_id=child.unique_id)
+            else:
+                logger.info("Proxies field is empty")
+
+            logger.info("Commit changes to database")
             db.session.commit()  # type: ignore
         except Exception as err:
             with logger.contextualize(error=err):

@@ -1,6 +1,7 @@
 from loguru import logger
 import socket
 from flask_babel import gettext as _
+from strenum import StrEnum
 
 from hiddifypanel.models import AdminUser, User, hconfig, ConfigEnum, ChildMode, Domain, Proxy, StrConfig, BoolConfig, Child, ChildMode
 from hiddifypanel import hutils
@@ -35,11 +36,27 @@ def __get_register_data_for_api(name: str, mode: ChildMode) -> RegisterInputSche
     return register_data
 
 
-def __get_sync_data_for_api() -> SyncInputSchema:
+class SyncFields(StrEnum):
+    domains = 'domains'
+    proxies = 'proxies'
+    hconfigs = 'hconfigs'
+
+
+def __get_sync_data_for_api(*fields: SyncFields) -> SyncInputSchema:
     sync_data = SyncInputSchema()
-    sync_data.domains = [domain.to_schema() for domain in Domain.query.all()]  # type: ignore
-    sync_data.proxies = [proxy.to_schema() for proxy in Proxy.query.all()]  # type: ignore
-    sync_data.hconfigs = [*[u.to_schema() for u in StrConfig.query.all()], *[u.to_schema() for u in BoolConfig.query.all()]]  # type: ignore
+    if len(fields) == 0:
+        sync_data.domains = [domain.to_schema() for domain in Domain.query.all()]  # type: ignore
+        sync_data.proxies = [proxy.to_schema() for proxy in Proxy.query.all()]  # type: ignore
+        sync_data.hconfigs = [*[u.to_schema() for u in StrConfig.query.all()], *[u.to_schema() for u in BoolConfig.query.all()]]  # type: ignore
+    else:
+        for f in fields:
+            match f:
+                case SyncFields.domains:
+                    sync_data.domains = [domain.to_schema() for domain in Domain.query.all()]  # type: ignore
+                case SyncFields.proxies:
+                    sync_data.proxies = [proxy.to_schema() for proxy in Proxy.query.all()]  # type: ignore
+                case SyncFields.hconfigs:
+                    sync_data.hconfigs = [*[u.to_schema() for u in StrConfig.query.all()], *[u.to_schema() for u in BoolConfig.query.all()]]  # type: ignore
 
     return sync_data
 
@@ -104,7 +121,7 @@ def register_to_parent(name: str, apikey: str, mode: ChildMode = ChildMode.remot
     return True
 
 
-def sync_with_parent() -> bool:
+def sync_with_parent(*fields: SyncFields) -> bool:
     # sync usage first
     if not sync_users_usage_with_parent():
         logger.error("Error while syncing with parent: Failed to sync users usage")
@@ -114,7 +131,7 @@ def sync_with_parent() -> bool:
     if not p_url:
         logger.error("Error while syncing with parent: Parent url is empty")
         return False
-    payload = __get_sync_data_for_api()
+    payload = __get_sync_data_for_api(*fields)
     res = NodeApiClient(p_url).put('/api/v2/parent/sync/', payload, SyncOutputSchema)
     if isinstance(res, NodeApiErrorSchema):
         logger.error(f"Error while syncing with parent: {res.msg}")

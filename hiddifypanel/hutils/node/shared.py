@@ -70,9 +70,9 @@ def get_panel_info(domain: str, proxy_path: str, apikey: str | None = None) -> d
     return res
 
 
-def run_node_op_in_bg(op: Callable, args=(), kwargs={}):
+def run_node_op_in_bg(op: Callable, *args, **kwargs):
     @copy_current_request_context
-    def wrapped_op(args, kwargs):
+    def wrapped_op():
         op(*args, **kwargs)
 
-    threading.Thread(target=wrapped_op, args=(args, kwargs)).start()
+    threading.Thread(target=wrapped_op).start()
