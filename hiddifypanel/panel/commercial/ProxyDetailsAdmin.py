@@ -44,13 +44,13 @@ class ProxyDetailsAdmin(AdminLTEModelView):
 
     def after_model_change(self, form, model, is_created):
         if hutils.node.is_child():
-            hutils.node.run_node_op_in_bg(hutils.node.child.sync_with_parent, fields=[hutils.node.child.SyncFields.proxies])
+            hutils.node.run_node_op_in_bg(hutils.node.child.sync_with_parent, *[hutils.node.child.SyncFields.proxies])
         hutils.proxy.get_proxies.invalidate_all()
         pass
 
     def after_model_delete(self, model):
         if hutils.node.is_child():
-            hutils.node.run_node_op_in_bg(hutils.node.child.sync_with_parent, fields=[hutils.node.child.SyncFields.proxies])
+            hutils.node.run_node_op_in_bg(hutils.node.child.sync_with_parent, *[hutils.node.child.SyncFields.proxies])
         hutils.proxy.get_proxies.invalidate_all()
         pass
 
