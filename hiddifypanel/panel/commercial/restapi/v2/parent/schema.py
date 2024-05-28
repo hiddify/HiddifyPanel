@@ -64,12 +64,16 @@ class UsageInputOutputSchema(Schema):
 
 # region sync
 class SyncInputSchema(Schema):
+    domains = fields.List(fields.Nested(DomainSchema), required=False, description="The list of domains")
+    proxies = fields.List(fields.Nested(ProxySchema), required=False, description="The list of proxies")
+    hconfigs = fields.List(fields.Nested(HConfigSchema), required=False, description="The list of configs")
     # users = fields.List(fields.Nested(UserSchema),required=True,description="The list of users")
-    domains = fields.List(fields.Nested(DomainSchema), required=True, description="The list of domains")
-    proxies = fields.List(fields.Nested(ProxySchema), required=True, description="The list of proxies")
-    # parent_domains = fields.List(fields.Nested(ParentDomainSchema),required=True,description="The list of parent domains")
     # admin_users = fields.List(fields.Nested(AdminSchema),required=True,description="The list of admin users")
-    hconfigs = fields.List(fields.Nested(HConfigSchema), required=True, description="The list of configs")
+
+    def validate(self, data, **kwargs):
+        if not (data.get("domains") or data.get("proxies") or data.get("hconfigs")):
+            raise ValidationError("At least one field must exist (domains, proxies, or hconfigs)")
+        return data
 
 
 class SyncOutputSchema(Schema):

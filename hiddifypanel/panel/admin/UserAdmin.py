@@ -300,14 +300,15 @@ class UserAdmin(AdminLTEModelView):
         hiddify.quick_apply_users()
 
         if hutils.node.is_parent():
-            hutils.node.parent.request_childs_to_sync()
+            hutils.node.run_node_op_in_bg(hutils.node.parent.request_childs_to_sync)
+            
 
     def after_model_delete(self, model):
         user_driver.remove_client(model)
         hiddify.quick_apply_users()
 
         if hutils.node.is_parent():
-            hutils.node.parent.request_childs_to_sync()
+            hutils.node.run_node_op_in_bg(hutils.node.parent.request_childs_to_sync)
 
     def get_list(self, page, sort_column, sort_desc, search, filters, page_size=50, *args, **kwargs):
         res = None

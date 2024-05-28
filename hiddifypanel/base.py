@@ -18,6 +18,22 @@ from loguru import logger
 from hiddifypanel.panel.init_db import init_db
 
 
+def init_logger():
+    def dynamic_formatter(record) -> str:
+        fmt = '<green>{time:YYYY-MM-DD HH:mm:ss}</green> | <level>{level: <8}</level> | <cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - <level>{message}</level>'
+        if record['extra']:
+            fmt += ' | <level>{extra}</level>'
+        return fmt + '\n'
+
+    # configure logger
+    from hiddifypanel.models import ConfigEnum, hconfig
+    logger.remove()
+    logger.add(sys.stderr, format=dynamic_formatter, level=hconfig(ConfigEnum.log_level), colorize=True, catch=True, enqueue=True, diagnose=False, backtrace=True)
+    # logger.trace('Logger initiated :)')
+
+
+# TODO: refactor this function
+
 def create_app(*args, cli=False, **config):
 
     app = APIFlask(__name__, static_url_path="/<proxy_path>/static/", instance_relative_config=True, version='2.0.0', title="Hiddify API",
@@ -75,14 +91,7 @@ def create_app(*args, cli=False, **config):
     with app.app_context():
         init_db()
 
-        # configure logger
-        from hiddifypanel.models import ConfigEnum, hconfig
-        logger.remove()
-        log_format = '<green>{time:YYYY-MM-DD HH:mm:ss}</green> | <level>{level: <8}</level> | <cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - <level>{message}</level> | <level>{extra}</level>'
-        logger.add(sys.stderr, format=log_format, level=hconfig(ConfigEnum.log_level), colorize=True, catch=True, enqueue=True, diagnose=False, backtrace=True)
-
-    # flaskbabel = FlaskBabel(app)
-    # @babel.localeselector
+        init_logger()
 
     def get_locale():
         # Put your logic here. Application can store locale in

@@ -66,7 +66,7 @@ class SettingAdmin(FlaskView):
                                             return render_template('config.html', form=form)
                             if k == ConfigEnum.parent_panel and v != '':
                                 # v=(v+"/").replace("/admin",'')
-                                v = re.sub("(/admin/.*)", "/", v)
+                                v = re.sub("(/admin/.*)", "/", v) + ("/" if not v.endswith("/") else "")
 
                         if old_configs[k] != v:
                             changed_configs[k] = v
@@ -112,10 +112,7 @@ class SettingAdmin(FlaskView):
             # sync with parent if needed
             if hutils.node.is_child():
                 if hutils.node.child.is_registered():
-                    if not hutils.node.child.sync_with_parent():
-                        hutils.flask.flash(_('child.sync-failed'), 'danger')  # type: ignore
-                    else:  # TODO: it's just for debuging
-                        hutils.flask.flash(_('child.sync-success'))  # type: ignore
+                    hutils.node.run_node_op_in_bg(hutils.node.child.sync_with_parent, *[hutils.node.child.SyncFields.hconfigs])
                 else:
                     name = hconfig(ConfigEnum.unique_id)
                     parent_info = hutils.node.get_panel_info(hconfig(ConfigEnum.parent_domain), hconfig(ConfigEnum.parent_admin_proxy_path), parent_apikey)

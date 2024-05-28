@@ -3,7 +3,7 @@ from flask_babel import lazy_gettext as _
 from typing import List
 from loguru import logger
 
-from hiddifypanel.models import Child, AdminUser, ConfigEnum, Domain, ChildMode, hconfig, Domain
+from hiddifypanel.models import Child, AdminUser, ConfigEnum, Domain, hconfig, Domain
 from hiddifypanel import hutils
 from hiddifypanel.panel.commercial.restapi.v2.child.schema import RegisterWithParentInputSchema
 from .api_client import NodeApiClient, NodeApiErrorSchema
@@ -15,7 +15,7 @@ def request_childs_to_sync():
     for c in Child.query.filter(Child.id != 0).all():
         if not request_child_to_sync(c):
             logger.error(f'{c.name}: {_("parent.sync-req-failed")}')
-            hutils.flask.flash(f'{c.name}: ' + _('parent.sync-req-failed'), 'danger')
+            hutils.flask.flash(f'{c.name}: ' + _('parent.sync-req-failed'), 'danger') # just for debug
 
 
 def request_child_to_sync(child: Child) -> bool:
