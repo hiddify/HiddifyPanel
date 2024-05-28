@@ -46,12 +46,8 @@ def init_app(app: APIFlask):
             return jsonify({
                 'message': 'Not Found',
             }), 404
-        # print(request.headers)
-        last_version = hiddify.get_latest_release_version('hiddify-panel')  # TODO: add dev update check
-        if "T" in hiddifypanel.__version__:
-            has_update = False
-        else:
-            has_update = "dev" not in hiddifypanel.__version__ and f'{last_version}' != hiddifypanel.__version__
+
+        has_update = hutils.utils.is_panel_outdated()
 
         if not request.accept_mimetypes.accept_html:
             if has_update:
@@ -83,11 +79,8 @@ def init_app(app: APIFlask):
             # Create github issue link
             issue_link = hutils.github_issue.generate_github_issue_link_for_500_error(e, trace)
 
-            last_version = hiddify.get_latest_release_version('hiddify-panel')  # TODO: add dev update check
-            if "T" in hiddifypanel.__version__:
-                has_update = False
-            else:
-                has_update = "dev" not in hiddifypanel.__version__ and f'{last_version}' != hiddifypanel.__version__
+            has_update = hutils.utils.is_panel_outdated()
+            last_version = hiddify.get_latest_release_version('hiddifypanel')
 
             return render_template('500.html', error=e, trace=trace, has_update=has_update, last_version=last_version, issue_link=issue_link), 500
 
