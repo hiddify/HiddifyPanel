@@ -16,6 +16,7 @@ from flask_bootstrap import SwitchField
 # from gettext import gettext as _
 from flask_classful import FlaskView
 from flask_wtf import FlaskForm
+from bleach import clean as bleach_clean
 
 
 from hiddifypanel.models import BoolConfig, StrConfig, ConfigEnum, hconfig, ConfigCategory
@@ -91,6 +92,10 @@ class SettingAdmin(FlaskView):
                     parent_apikey = uuid
 
             for k, v in changed_configs.items():
+                # html inputs santitizing
+                san_items = {ConfigEnum.branding_title, ConfigEnum.branding_site, ConfigEnum.branding_freetext}
+                if k in san_items:
+                    v = bleach_clean(v)
                 set_hconfig(k, v, commit=False)
 
             db.session.commit()
