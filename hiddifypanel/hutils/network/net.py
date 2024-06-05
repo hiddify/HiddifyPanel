@@ -1,4 +1,4 @@
-from typing import List, Literal, Tuple, Union
+from typing import List, Literal, Union
 from urllib.parse import urlparse
 import urllib.request
 import ipaddress
@@ -205,7 +205,7 @@ def is_domain_support_tls_13(domain: str) -> bool:
             return ssock.version() == "TLSv1.3"
 
 
-def is_domain_support_h2(sni: str, server: str = '') -> bool:
+def is_domain_support_h2_tls13(sni: str, server: str = '') -> bool:
     try:
 
         context = ssl.create_default_context(purpose=ssl.Purpose.SERVER_AUTH)
@@ -229,11 +229,11 @@ def is_domain_support_h2(sni: str, server: str = '') -> bool:
 
 
 def is_domain_reality_friendly(domain: str) -> bool:
-    return is_domain_support_h2(domain)
+    return is_domain_support_h2_tls13(domain)
 
 
 def fallback_domain_compatible_with_servernames(fallback_domain: str, servername: str) -> bool:
-    return is_domain_support_h2(servername, fallback_domain)
+    return is_domain_support_h2_tls13(servername, fallback_domain)
 
 
 def get_random_decoy_domain() -> str:
@@ -329,10 +329,9 @@ def add_number_to_ipv6(ip: str, number: int) -> str:
     return modified_ipv6
 
 
+@cache.cache(600)
 def is_in_same_asn(domain_or_ip: str, domain_or_ip_target: str) -> bool:
     '''Returns True if domain is in panel ASN'''
-    if not IPASN:
-        return False
     try:
         ip = domain_or_ip if is_ip(domain_or_ip) else get_domain_ip(domain_or_ip)
         ip_target = domain_or_ip_target if is_ip(domain_or_ip_target) else get_domain_ip(domain_or_ip_target)
@@ -340,8 +339,8 @@ def is_in_same_asn(domain_or_ip: str, domain_or_ip_target: str) -> bool:
         if not ip or not ip_target:
             return False
 
-        ip_asn = get_ip_asn_name(ip)
-        ip_target_asn = get_ip_asn_name(ip_target)
+        ip_asn = get_ip_asn(ip)
+        ip_target_asn = get_ip_asn(ip_target)
 
         if not ip_asn or not ip_target_asn:
             return False
@@ -355,7 +354,10 @@ def is_in_same_asn(domain_or_ip: str, domain_or_ip_target: str) -> bool:
         #                    f"<br> Server ASN={asn_ipv4.get('autonomous_system_organization','unknown')}<br>{domain}_ASN={asn_dip.get('autonomous_system_organization','unknown')}", "warning")
 
 
-def get_ip_asn_name(ip: ipaddress.IPv4Address | ipaddress.IPv6Address | str) -> str:
+@cache.cache(600)
+def get_ip_asn(ip: ipaddress.IPv4Address | ipaddress.IPv6Address | str) -> str:
+    if not IPASN:
+        return __get_ip_asn_api(ip)
     try:
         if asn := IPASN.get(str(ip)):
             return str(asn.get('autonomous_system_organization', ''))
@@ -364,6 +366,15 @@ def get_ip_asn_name(ip: ipaddress.IPv4Address | ipaddress.IPv6Address | str) -> 
         return ''
 
 
+def __get_ip_asn_api(ip: ipaddress.IPv4Address | ipaddress.IPv6Address | str) -> str:
+    ip = str(ip)
+    if not is_ip(ip):
+        return ''
+    endpoint = f'https://ipapi.co/{ip}/asn/'
+    return str(requests.get(endpoint).content)
+
+
+@cache.cache(3600)
 def is_ip(input: str):
     try:
         _ = ipaddress.ip_address(input)
