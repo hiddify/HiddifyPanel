@@ -136,46 +136,6 @@ def get_ip(version: Literal[4, 6], retry: int = 5) -> ipaddress.IPv4Address | ip
         ip = get_ip(version, retry=retry - 1)
     return ip
 
-
-def check_connection_to_remote(api_url: str) -> bool:
-
-    path = f"{api_url}/api/v1/hello/"
-
-    try:
-        _ = requests.get(path, verify=False, timeout=2).json()
-        return True
-
-    except BaseException:
-        return False
-
-
-def check_connection_for_domain(domain: str) -> bool:
-
-    proxy_path = hconfig(ConfigEnum.proxy_path_admin)
-    admin_secret = hconfig(ConfigEnum.admin_secret)
-    path = f"{proxy_path}/{admin_secret}/api/v1/hello/"
-    try:
-        print(f"https://{domain}/{path}")
-        res = requests.get(
-            f"https://{domain}/{path}", verify=False, timeout=10).json()
-        return res['status'] == 200
-
-    except BaseException:
-        try:
-            print(f"http://{domain}/{path}")
-            res = requests.get(
-                f"http://{domain}/{path}", verify=False, timeout=10).json()
-            return res['status'] == 200
-        except BaseException:
-            try:
-                print(f"http://{get_domain_ip(domain)}/{path}")
-                res = requests.get(
-                    f"http://{get_domain_ip(domain)}/{path}", verify=False, timeout=10).json()
-                return res['status'] == 200
-            except BaseException:
-                return False
-
-
 def get_random_domains(count: int = 1, retry: int = 3) -> List[str]:
     try:
         irurl = "https://api.ooni.io/api/v1/measurements?probe_cc=IR&test_name=web_connectivity&anomaly=false&confirmed=false&failure=false&order_by=test_start_time&limit=1000"
@@ -370,3 +330,9 @@ def is_ip(input: str):
         return True
     except:
         return False
+
+def resolve_domain_with_api(domain:str) -> str:
+    if not domain:
+        return ''
+    endpoint = f'http://ip-api.com/json/{domain}?fields=query'
+    return str(requests.get(endpoint).json().get('query'))
