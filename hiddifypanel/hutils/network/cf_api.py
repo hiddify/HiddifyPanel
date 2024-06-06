@@ -22,11 +22,13 @@ def add_or_update_dns_record(domain: str, ip: str, dns_type: str = "A", proxied:
     if not __prepare_cf_api_client():
         return False
 
-    zone_name = __extract_primary_domain(domain)
+    zone_name = __extract_root_domain(domain)
     zone = __get_zone(zone_name)
     if zone:
         record = __get_dns_record(zone, domain)
         dns_name = domain[:-len(zone['name'])].replace('.', '')
+        # if the input domain is root itself
+        dns_name = '@' if not dns_name else dns_name
         data = {
             'name': dns_name,
             'type': dns_type, 'content': ip, 'proxied': proxied
@@ -37,7 +39,7 @@ def add_or_update_dns_record(domain: str, ip: str, dns_type: str = "A", proxied:
             api_res = __cf.zones.dns_records.put(zone['id'], record['id'], data=data)
 
         # validate api response
-        if api_res['name'] == f'{dns_name}.{zone_name}' and api_res['type'] == dns_type and api_res['content'] == ip:
+        if api_res['name'] == domain and api_res['type'] == dns_type and api_res['content'] == ip:
             return True
     return False
 
@@ -47,7 +49,7 @@ def delete_dns_record(domain: str) -> bool:
     if not __prepare_cf_api_client():
         return False
 
-    zone_name = __extract_primary_domain(domain)
+    zone_name = __extract_root_domain(domain)
     zone = __get_zone(zone_name)
     record = __get_dns_record(zone, domain)
     if zone and record:
@@ -74,10 +76,9 @@ def __get_dns_record(zone, domain: str) -> dict | None:
     return None
 
 
-def __extract_primary_domain(domain: str) -> str:
-    if '.' in domain:
-        # Find the index of the first '.' that is not the first character
-        dot_index = next((i for i, char in enumerate(domain) if char == '.' and i != 0), None)
-        if dot_index is not None:
-            return domain[dot_index + 1:]
-    return domain
+def __extract_root_domain(domain: str) -> str:
+    domain_parts = domain.split(".")
+    if len(domain_parts) > 1:
+        return ".".join(domain_parts[-2:])
+    else:
+        return domain
