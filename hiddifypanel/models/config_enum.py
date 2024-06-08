@@ -116,7 +116,7 @@ class ConfigEnum(metaclass=FastEnum):
     first_setup = _BoolConfigDscr(ConfigCategory.hidden)
     core_type = _StrConfigDscr(ConfigCategory.advanced, ApplyMode.apply, hide_in_virtual_child=True)
     warp_enable = _BoolConfigDscr(ConfigCategory.hidden, ApplyMode.restart, hide_in_virtual_child=True)
-    warp_mode = _StrConfigDscr(ConfigCategory.warp, ApplyMode.apply, hide_in_virtual_child=True)
+    warp_mode = _StrConfigDscr(ConfigCategory.warp, ApplyMode.restart, hide_in_virtual_child=True)
     warp_plus_code = _StrConfigDscr(ConfigCategory.warp, ApplyMode.apply, hide_in_virtual_child=True)
     warp_sites = _StrConfigDscr(ConfigCategory.warp, ApplyMode.apply, hide_in_virtual_child=True)
     dns_server = _StrConfigDscr(ConfigCategory.general, ApplyMode.apply, hide_in_virtual_child=True)
