@@ -148,6 +148,18 @@ class User(BaseAccount, SerializerMixin):
 
         return res
 
+    def reset(self, commit: bool = False):
+        '''Resets the user usages'''
+        self.last_reset_time = datetime.date.today()
+        self.current_usage_GB = 0
+
+        # there's no usage of UserDetail yet, but we reset it too
+        if ud := UserDetail.query.filter(UserDetail.user_id == self.id).first():
+            ud.current_usage_GB = 0
+
+        if commit:
+            db.session.commit()
+
     def days_to_reset(self):
         """
         The "days_to_reset" function calculates the number of days until the user's data usage is reset, based on the

@@ -42,12 +42,19 @@ def _add_users_usage(users_usage_data: Dict[User, Dict], child_id, sync=False):
             daily_usage[adm.id] = DailyUsage(admin_id=adm.id, child_id=child_id)
             db.session.add(daily_usage[adm.id])
         daily_usage[adm.id].online = User.query.filter(User.added_by == adm.id).filter(func.DATE(User.last_online) == today).count()
-    # db.session.commit()
+
+    # reset users usage if needed
+    # TODO: optimize the resetting operation
+    for user in User.query.all():
+        if user.user_should_reset():
+            user.reset(commit=False)
+
     userDetails = {p.user_id: p for p in UserDetail.query.filter(UserDetail.child_id == child_id).all()}
     for user, uinfo in users_usage_data.items():
         usage_bytes = uinfo['usage']
         devices = uinfo['devices']
-        # user_active_before=user.is_active
+
+        # UserDetails things
         detail = userDetails.get(user.id)
         if not detail:
             detail = UserDetail(user_id=user.id, child_id=child_id)
@@ -55,26 +62,28 @@ def _add_users_usage(users_usage_data: Dict[User, Dict], child_id, sync=False):
             db.session.add(detail)
         detail.connected_devices = devices
         detail.current_usage_GB = detail.current_usage_GB or 0
-        if not user.last_reset_time or user.user_should_reset():
-            user.last_reset_time = datetime.date.today()
-            user.current_usage_GB = 0
-            detail.current_usage_GB = 0
 
+        # Enable the user if isn't already
         if not before_enabled_users[user.uuid] and user.is_active:
             print(f"Enabling disabled client {user.uuid} ")
             user_driver.add_client(user)
             send_bot_message(user)
             have_change = True
+
+        # Check if there's new usage value
         if not isinstance(usage_bytes, int) or usage_bytes == 0:
             res[user.uuid] = "No usage"
         else:
+            # Set new daily usage of the user
             if sync:
                 if daily_usage.get(user.added_by, daily_usage[1]).usage != usage_bytes:
                     daily_usage.get(user.added_by, daily_usage[1]).usage = usage_bytes
             else:
                 daily_usage.get(user.added_by, daily_usage[1]).usage += usage_bytes
+
             in_gig = (usage_bytes) / to_gig_d
-            res[user.uuid] = in_gig
+
+            # Set new current usage of the user
             if sync:
                 if user.current_usage_GB != in_gig:
                     user.current_usage_GB = in_gig
@@ -82,12 +91,18 @@ def _add_users_usage(users_usage_data: Dict[User, Dict], child_id, sync=False):
             else:
                 user.current_usage_GB += in_gig
                 detail.current_usage_GB += in_gig
+
+            # Change last online time of the user
             user.last_online = datetime.datetime.now()
             detail.last_online = datetime.datetime.now()
 
+            # Set start date of user to the current datetime if it hasn't been set already
             if user.start_date is None:
                 user.start_date = datetime.date.today()
 
+            res[user.uuid] = in_gig
+
+        # Remove user from drivers(singbox, xray, wireguard etc.) if they're inactive
         if before_enabled_users[user.uuid] and not user.is_active:
             print(f"Removing enabled client {user.uuid} ")
             user_driver.remove_client(user)
@@ -95,13 +110,16 @@ def _add_users_usage(users_usage_data: Dict[User, Dict], child_id, sync=False):
             res[user.uuid] = f"{res[user.uuid]} !OUT of USAGE! Client Removed"
 
     db.session.commit()  # type: ignore
+
+    # Apply the changes to the drivers
     if have_change:
         hiddify.quick_apply_users()
 
-    # sync with the parent
+    # Sync the new data with the parent node if the data has not been set by the parent node itself and the current panel is a child panel
     if not sync:
         if hutils.node.is_child():
             hutils.node.child.sync_users_usage_with_parent()
+
     return {"status": 'success', "comments": res}
 
 
