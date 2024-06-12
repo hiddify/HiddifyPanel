@@ -915,7 +915,7 @@
       "label": "⚫️ Enable TUIC"
     },
     "tuic_port": {
-      "description": "Use comma to separate ports like 63000,60000",
+      "description": "Use comma to separate ports like ( 63000,60000 )",
       "label": "TUIC Ports"
     },
     "unique_id": {
@@ -1031,11 +1031,11 @@
   "ios": "iOS",
   "items": "items",
   "lang": {
-    "en": "🇺🇸 English انگلیسی 英语",
-    "fa": "🇮🇷 Persian فارسی 波斯语",
-    "pt": "🇵🇹 Portuguese پرتغالی 葡萄牙語",
-    "ru": "🇷🇺 Russian روسی Русский",
-    "zh": "🇨🇳 Chinese چینی 简体中文"
+    "en": "🇺🇸 English - Английский",
+    "fa": "🇮🇷 Persian - فارسی",
+    "pt": "🇵🇹 Portuguese - پرتغالی",
+    "ru": "🇷🇺 Russian - Русский",
+    "zh": "🇨🇳 Chinese - 简体中文"
   },
   "lib": {
     "telegram": {
