@@ -101,6 +101,7 @@ def to_xray(proxy: dict) -> dict:
             'concurrency': -1
         }
     }
+    outbound['protocol'] = 'shadowsocks' if outbound['protocol'] == 'ss' else outbound['protocol']
     # add multiplex to outbound
     add_multiplex(outbound, proxy)
 
@@ -221,7 +222,11 @@ def add_stream_settings(base: dict, proxy: dict):
         ss['security'] = 'tls'
 
     # network and transport settings
-    if ss['security'] == 'tls' or 'xtls':
+    # THE CURRENT CODE WORKS BUT THE CORRECT CONDITINO SHOULD BE THIS:
+    # ss['security'] == 'tls' or 'xtls' -----> ss['security'] in ['tls','xtls']
+    # TODO: FIX THE CONDITION AND TEST CONFIGS ON THE CLIENT SIDE
+
+    if ss['security'] == 'tls' or 'xtls' and not proxy['proto'] != ProxyProto.ss:
         ss['tlsSettings'] = {
             'serverName': proxy['sni'],
             'allowInsecure': proxy['allow_insecure'],
@@ -246,7 +251,7 @@ def add_stream_settings(base: dict, proxy: dict):
     if proxy['l3'] == ProxyL3.h3_quic:
         add_quic_stream(ss, proxy)
 
-    if proxy['transport'] == 'tcp' or ss['security'] == 'reality' or (ss['security'] == 'none' and proxy['transport'] not in [ProxyTransport.httpupgrade, ProxyTransport.WS]):
+    if proxy['transport'] == 'tcp' or ss['security'] == 'reality' or (ss['security'] == 'none' and proxy['transport'] not in [ProxyTransport.httpupgrade, ProxyTransport.WS] and proxy['proto'] != ProxyProto.ss):
         ss['network'] = proxy['transport']
         add_tcp_stream(ss, proxy)
     if proxy['transport'] == ProxyTransport.h2 and ss['security'] == 'none' and ss['security'] != 'reality':
@@ -261,6 +266,9 @@ def add_stream_settings(base: dict, proxy: dict):
     if proxy['transport'] == 'ws':
         ss['network'] = proxy['transport']
         add_ws_stream(ss, proxy)
+
+    if proxy['proto'] == ProxyProto.ss:
+        ss['network'] = 'tcp'
 
     # tls fragmentaion
     add_tls_fragmentation_stream_settings(base, proxy)
