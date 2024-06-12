@@ -226,7 +226,7 @@ def add_stream_settings(base: dict, proxy: dict):
     # ss['security'] == 'tls' or 'xtls' -----> ss['security'] in ['tls','xtls']
     # TODO: FIX THE CONDITION AND TEST CONFIGS ON THE CLIENT SIDE
 
-    if ss['security'] == 'tls' or 'xtls' and not proxy['proto'] != ProxyProto.ss:
+    if ss['security'] == 'tls' or 'xtls' and proxy['proto'] != ProxyProto.ss:
         ss['tlsSettings'] = {
             'serverName': proxy['sni'],
             'allowInsecure': proxy['allow_insecure'],
