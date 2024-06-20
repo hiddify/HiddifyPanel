@@ -260,7 +260,7 @@ def _v41():
 
 def _v38():
     add_config_if_not_exist(ConfigEnum.dns_server, "1.1.1.1")
-    add_config_if_not_exist(ConfigEnum.warp_mode, "all" if hconfig(ConfigEnum.warp_enable) else "none")
+    add_config_if_not_exist(ConfigEnum.warp_mode, "all" if hconfig(ConfigEnum.warp_enable) else "disable")
     add_config_if_not_exist(ConfigEnum.warp_plus_code, '')
 
 
@@ -382,7 +382,7 @@ def _v1():
         BoolConfig(key=ConfigEnum.vmess_enable, value=True),
         BoolConfig(key=ConfigEnum.http_proxy_enable, value=True),
         StrConfig(key=ConfigEnum.shared_secret, value=str(uuid.uuid4())),
-        BoolConfig(key=ConfigEnum.telegram_enable, value=True),
+        BoolConfig(key=ConfigEnum.telegram_enable, value=False),
         # StrConfig(key=ConfigEnum.telegram_secret,value=uuid.uuid4().hex),
         StrConfig(key=ConfigEnum.telegram_adtag, value=""),
         StrConfig(key=ConfigEnum.telegram_fakedomain, value=rnd_domains[1]),
