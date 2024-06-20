@@ -12,7 +12,7 @@ from hiddifypanel.panel.run_commander import Command, commander
 from wtforms.validators import Regexp, ValidationError
 
 from hiddifypanel.models import *
-from hiddifypanel.panel import hiddify, cf_api, custom_widgets
+from hiddifypanel.panel import hiddify, custom_widgets
 from .adminlte import AdminLTEModelView
 from hiddifypanel import hutils
 
@@ -110,6 +110,9 @@ class DomainAdmin(AdminLTEModelView):
 
     def _domain_ip(view, context, model, name):
         dip = hutils.network.get_domain_ip(model.domain)
+        # The get_domain_ip function uses the socket library, which relies on the system DNS resolver. So it may sometimes use cached data, which is not desirable
+        if not dip:
+            dip = hutils.network.resolve_domain_with_api(model.domain)
         myip = hutils.network.get_ip(4)
         if myip == dip and model.mode == DomainType.direct:
             badge_type = ''
@@ -144,6 +147,7 @@ class DomainAdmin(AdminLTEModelView):
         # Pre-select the related domains in the checkbox list
         # form.show_domains = [d.id for d in Domain.query.all()]
 
+    # TODO: refactor this function
     def on_model_change(self, form, model, is_created):
         model.domain = model.domain.lower()
 
@@ -171,16 +175,16 @@ class DomainAdmin(AdminLTEModelView):
             raise ValidationError(_("Domain can not be resolved! there is a problem in your domain"))
 
         skip_check = "*" in model.domain
-        if hconfig(ConfigEnum.cloudflare) and model.mode != DomainType.fake:
+        if hconfig(ConfigEnum.cloudflare) and model.mode not in [DomainType.fake, DomainType.relay, DomainType.reality]:
             try:
                 proxied = model.mode in [DomainType.cdn, DomainType.auto_cdn_ip]
-                cf_api.add_or_update_domain(model.domain, str(ipv4_list[0]), "A", proxied=proxied)
+                hutils.network.cf_api.add_or_update_dns_record(model.domain, str(ipv4_list[0]), "A", proxied=proxied)
                 if ipv6_list:
-                    cf_api.add_or_update_domain(model.domain, str(ipv6_list[0]), "AAAA", proxied=proxied)
+                    hutils.network.cf_api.add_or_update_dns_record(model.domain, str(ipv6_list[0]), "AAAA", proxied=proxied)
 
                 skip_check = True
             except Exception as e:
-                raise ValidationError(__("Can not connect to Cloudflare.") + f' {e}')
+                raise ValidationError(__("cloudflare.error") + f' {e}')
         # elif model.mode==DomainType.auto_cdn_ip:
         # if model.alias and not model.alias.replace("_", "").isalnum():
         #     hutils.flask.flash(__("Using alias with special charachters may cause problem in some clients like FairVPN."), 'warning')
@@ -266,7 +270,9 @@ class DomainAdmin(AdminLTEModelView):
     def on_model_delete(self, model):
         if len(Domain.query.all()) <= 1:
             raise ValidationError(f"at least one domain should exist")
-        # ShowDomain.query.filter_by(related_id == model.id).delete()
+        if hconfig(ConfigEnum.cloudflare) and model.mode not in [DomainType.fake, DomainType.reality, DomainType.relay]:
+            if not hutils.network.cf_api.delete_dns_record(model.domain):
+                hutils.flask.flash(_('cf-delete.failed'), 'warning')  # type: ignore
         model.showed_by_domains = []
         # db.session.commit()
         hutils.flask.flash_config_success(restart_mode=ApplyMode.apply, domain_changed=True)
