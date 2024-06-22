@@ -79,7 +79,8 @@ def to_link(proxy: dict) -> str | dict:
         if proxy['transport'] == 'faketls':
             return f'{baseurl}?plugin=obfs-local&obfs-host={proxy["fakedomain"]}&obfs=http&udp-over-tcp=true#{name_link}'
         if proxy['transport'] == 'shadowtls':
-            return f'{baseurl}?plugin=v2ray-plugin&path={proxy["proxy_path"]}&host={proxy["fakedomain"]}&udp-over-tcp=true#{name_link}'
+            return "ShadowTLS is Not Supported for this platform"
+            # return f'{baseurl}?plugin=v2ray-plugin&path={proxy["proxy_path"]}&host={proxy["fakedomain"]}&udp-over-tcp=true#{name_link}'
         if proxy['proto'] == 'v2ray':
             return f'{baseurl}?plugin=v2ray-plugin&mode=websocket&path={proxy["proxy_path"]}&host={proxy["fakedomain"]}&tls&udp-over-tcp=true#{name_link}'
 
