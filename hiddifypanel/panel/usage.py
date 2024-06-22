@@ -27,6 +27,22 @@ def add_users_usage_uuid(uuids_bytes: Dict[str, Dict], child_id, sync=False):
     _add_users_usage(dbusers_bytes, child_id, sync)  # type: ignore
 
 
+def _reset_priodic_usage():
+    last_usage_check: int = hconfig(ConfigEnum.last_priodic_usage_check) or 0
+    import time
+    current_time = int(time.time())
+    if current_time - last_usage_check < 60 * 60 * 6:
+        return
+    # reset as soon as possible in the day
+    if datetime.datetime.now().hour > 5 and current_time - last_usage_check < 60 * 60 * 24:
+        return
+
+    for user in User.query.filter(User.mode != UserMode.no_reset).all():
+        if user.user_should_reset():
+            user.reset_usage(commit=False)
+    set_hconfig(ConfigEnum.last_priodic_usage_check, current_time)
+
+
 def _add_users_usage(users_usage_data: Dict[User, Dict], child_id, sync=False):
     '''
     sync: when enabled, it means we have received usages from the parent panel
@@ -43,11 +59,7 @@ def _add_users_usage(users_usage_data: Dict[User, Dict], child_id, sync=False):
             db.session.add(daily_usage[adm.id])
         daily_usage[adm.id].online = User.query.filter(User.added_by == adm.id).filter(func.DATE(User.last_online) == today).count()
 
-    # reset users usage if needed
-    # TODO: optimize the resetting operation
-    for user in User.query.all():
-        if user.user_should_reset():
-            user.reset_usage(commit=False)
+    _reset_priodic_usage()
 
     userDetails = {p.user_id: p for p in UserDetail.query.filter(UserDetail.child_id == child_id).all()}
     for user, uinfo in users_usage_data.items():

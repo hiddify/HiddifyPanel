@@ -138,15 +138,11 @@ class User(BaseAccount, SerializerMixin):
         # print("start_date",user.start_date, "pack",package_mode_dic.get(user.mode,10000), "total",(datetime.date.today()-user.start_date).days)
         # if user.mode==UserMode.daily:
         #     return 0
-        res = True
         if not self.last_reset_time:
-            res = True
+            return True
         elif not self.start_date or (datetime.date.today() - self.last_reset_time).days == 0:
-            res = False
-        else:
-            res = ((datetime.date.today() - self.start_date).days % package_mode_dic.get(self.mode, 10000)) == 0
-
-        return res
+            return False
+        return ((datetime.date.today() - self.start_date).days % package_mode_dic.get(self.mode, 10000)) == 0
 
     def reset_usage(self, commit: bool = False):
         '''Resets the user usages'''
@@ -154,7 +150,7 @@ class User(BaseAccount, SerializerMixin):
         self.current_usage_GB = 0
 
         # there's no usage of UserDetail yet, but we reset it too
-        #if ud := UserDetail.query.filter(UserDetail.user_id == self.id).first():
+        # if ud := UserDetail.query.filter(UserDetail.user_id == self.id).first():
         #    ud.current_usage_GB = 0
 
         if commit:
