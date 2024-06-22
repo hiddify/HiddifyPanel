@@ -45,11 +45,11 @@ class StrConfig(db.Model, SerializerMixin):
     key = Column(Enum(ConfigEnum), primary_key=True, default=ConfigEnum.admin_secret)
     value = Column(String(2048))
 
-    def to_dict(d):
+    def to_dict(self: "StrConfig"):
         return {
-            'key': str(d.key),
-            'value': d.value,
-            'child_unique_id': d.child.unique_id if d.child else ''
+            'key': str(self.key),
+            'value': self.value,
+            'child_unique_id': self.child.unique_id if self.child else ''
         }
 
     @staticmethod

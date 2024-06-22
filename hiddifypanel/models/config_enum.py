@@ -69,19 +69,19 @@ class ApplyMode(StrEnum):
     nothing = auto()
 
 
-def _BoolConfigDscr(category: ConfigCategory, apply_mode: ApplyMode = ApplyMode.nothing, show_in_parent: bool = True, hide_in_virtual_child=False):
+def _BoolConfigDscr(category: ConfigCategory, apply_mode: ApplyMode = ApplyMode.nothing, show_in_parent: bool = True, hide_in_virtual_child=False) -> "ConfigEnum":
     return category, apply_mode, bool, show_in_parent
 
 
-def _StrConfigDscr(category: ConfigCategory, apply_mode: ApplyMode = ApplyMode.nothing, show_in_parent: bool = True, hide_in_virtual_child=False):
+def _StrConfigDscr(category: ConfigCategory, apply_mode: ApplyMode = ApplyMode.nothing, show_in_parent: bool = True, hide_in_virtual_child=False) -> "ConfigEnum":
     return category, apply_mode, str, show_in_parent
 
 
-def _IntConfigDscr(category: ConfigCategory, apply_mode: ApplyMode = ApplyMode.nothing, show_in_parent: bool = True, hide_in_virtual_child=False):
+def _IntConfigDscr(category: ConfigCategory, apply_mode: ApplyMode = ApplyMode.nothing, show_in_parent: bool = True, hide_in_virtual_child=False) -> "ConfigEnum":
     return category, apply_mode, int, show_in_parent
 
 
-def _TypedConfigDscr(ctype: type, category: ConfigCategory, apply_mode: ApplyMode = ApplyMode.nothing, show_in_parent: bool = True, hide_in_virtual_child=False):
+def _TypedConfigDscr(ctype: type, category: ConfigCategory, apply_mode: ApplyMode = ApplyMode.nothing, show_in_parent: bool = True, hide_in_virtual_child=False) -> "ConfigEnum":
     return category, apply_mode, ctype, show_in_parent
 
 
@@ -248,6 +248,7 @@ class ConfigEnum(metaclass=FastEnum):
     h2_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply)
 
     db_version = _StrConfigDscr(ConfigCategory.hidden, ApplyMode.apply)
+    last_priodic_usage_check = _IntConfigDscr(ConfigCategory.hidden, ApplyMode.apply)
 
     branding_title = _StrConfigDscr(ConfigCategory.branding)
     branding_site = _StrConfigDscr(ConfigCategory.branding)
