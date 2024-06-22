@@ -119,6 +119,7 @@ def set_hconfig(key: ConfigEnum, value: str | int | bool, child_id: int | None =
         else:
             old_v = dbconf.value
     else:
+        value = str(value)
         dbconf = StrConfig.query.filter(StrConfig.key == key, StrConfig.child_id == child_id).first()
         if not dbconf:
             dbconf = StrConfig(key=key, value=value, child_id=child_id)

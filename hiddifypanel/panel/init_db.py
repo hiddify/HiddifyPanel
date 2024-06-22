@@ -17,6 +17,10 @@ from sqlalchemy import text
 MAX_DB_VERSION = 90
 
 
+def _v88(child_id):
+    pass
+
+
 def _v86(child_id):
     set_hconfig(ConfigEnum.hiddifycli_enable, True)
 
