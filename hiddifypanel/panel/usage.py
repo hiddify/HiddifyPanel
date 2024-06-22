@@ -45,20 +45,20 @@ def _add_users_usage(users_usage_data: Dict[User, Dict], child_id, sync=False):
 
     # reset users usage if needed
     # TODO: optimize the resetting operation
-    for user in User.query.all():
+    for user in User.query.all(): 
         if user.user_should_reset():
-            user.reset(commit=False)
+            user.reset_usage(commit=False)
 
     userDetails = {p.user_id: p for p in UserDetail.query.filter(UserDetail.child_id == child_id).all()}
     for user, uinfo in users_usage_data.items():
         usage_bytes = uinfo['usage']
         devices = uinfo['devices']
 
-        # UserDetails things
-        detail = userDetails.get(user.id)
+        # UserDetails things 
+        #TODO: BUG
+        detail = userDetails.query.filter(UserDetail.ID=.user.id, )
         if not detail:
             detail = UserDetail(user_id=user.id, child_id=child_id)
-            detail.current_usage_GB = detail.current_usage_GB or 0
             db.session.add(detail)
         detail.connected_devices = devices
         detail.current_usage_GB = detail.current_usage_GB or 0
