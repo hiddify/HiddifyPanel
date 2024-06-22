@@ -72,15 +72,18 @@ def to_link(proxy: dict) -> str | dict:
         baseurl = f'ssr://{proxy["cipher"]}:{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}'
         return baseurl
     if proxy['proto'] in ['ss', 'v2ray']:
-        baseurl = f'ss://{proxy["cipher"]}:{proxy["password"]}@{proxy["server"]}:{proxy["port"]}'
-        if proxy['mode'] == 'faketls':
-            return f'{baseurl}?plugin=obfs-local%3Bobfs%3Dtls%3Bobfs-host%3D{proxy["fakedomain"]}%3Budp-over-tcp=true#{name_link}'
-        # if proxy['mode'] == 'shadowtls':
-        #     return f'{baseurl}?plugin=shadow-tls%3Bpassword%3D{proxy["proxy_path"]}%3Bhost%3D{proxy["fakedomain"]}%3Budp-over-tcp=true#{name_link}'
-        if proxy['proto'] == 'v2ray':
-            return f'{baseurl}?plugin=v2ray-plugin%3Bmode%3Dwebsocket%3Bpath%3D{proxy["path"]}%3Bhost%3D{proxy["host"]}%3Btls%3Budp-over-tcp=true#{name_link}'
+        baseurl = f'ss://{hutils.encode.do_base_64(proxy["cipher"] + ":" + proxy["password"])}@{proxy["server"]}:{proxy["port"]}'
+
         if proxy['transport'] == 'shadowsocks':
-            return baseurl
+            return f'{baseurl}#{name_link}'
+        if proxy['transport'] == 'faketls':
+            return f'{baseurl}?plugin=obfs-local&obfs-host={proxy["fakedomain"]}&obfs=http&udp-over-tcp=true#{name_link}'
+        if proxy['transport'] == 'shadowtls':
+            return "ShadowTLS is Not Supported for this platform"
+            # return f'{baseurl}?plugin=v2ray-plugin&path={proxy["proxy_path"]}&host={proxy["fakedomain"]}&udp-over-tcp=true#{name_link}'
+        if proxy['proto'] == 'v2ray':
+            return f'{baseurl}?plugin=v2ray-plugin&mode=websocket&path={proxy["proxy_path"]}&host={proxy["fakedomain"]}&tls&udp-over-tcp=true#{name_link}'
+
     if proxy['proto'] == 'tuic':
         baseurl = f'tuic://{proxy["uuid"]}:{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}?congestion_control=cubic&udp_relay_mode=native&sni={proxy["sni"]}&alpn=h3'
         if proxy['mode'] == 'Fake' or proxy['allow_insecure']:

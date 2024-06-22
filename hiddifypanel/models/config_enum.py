@@ -222,7 +222,7 @@ class ConfigEnum(metaclass=FastEnum):
     shadowsocks2022_enable = _BoolConfigDscr(ConfigCategory.shadowsocks, ApplyMode.apply)
     shadowsocks2022_method = _StrConfigDscr(ConfigCategory.hidden, ApplyMode.apply)
     shadowsocks2022_port = _StrConfigDscr(ConfigCategory.shadowsocks, ApplyMode.apply)
-    ssfaketls_enable = _BoolConfigDscr(ConfigCategory.shadowsocks, ApplyMode.apply)
+    ssfaketls_enable = _BoolConfigDscr(ConfigCategory.shadowsocks, ApplyMode.restart)
     ssfaketls_fakedomain = _StrConfigDscr(ConfigCategory.shadowsocks, ApplyMode.apply, hide_in_virtual_child=True)
     shadowtls_enable = _BoolConfigDscr(ConfigCategory.shadowsocks, ApplyMode.apply)
     shadowtls_fakedomain = _StrConfigDscr(ConfigCategory.shadowsocks, ApplyMode.apply, hide_in_virtual_child=True)
