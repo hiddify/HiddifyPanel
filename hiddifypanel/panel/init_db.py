@@ -346,17 +346,17 @@ def _v19():
     add_config_if_not_exist(ConfigEnum.package_mode, "release")
 
 
-def _v17():
-    for u in User.query.all():
-        if u.expiry_time:
-            if not u.package_days:
-                if not u.last_reset_time:
-                    u.package_days = (u.expiry_time - datetime.date.today()).days
-                    u.start_date = datetime.date.today()
-                else:
-                    u.package_days = (u.expiry_time - u.last_reset_time).days
-                    u.start_date = u.last_reset_time
-            u.expiry_time = None
+# def _v17():
+#     for u in User.query.all():
+#         if u.expiry_time:
+#             if not u.package_days:
+#                 if not u.last_reset_time:
+#                     u.package_days = (u.expiry_time - datetime.date.today()).days
+#                     u.start_date = datetime.date.today()
+#                 else:
+#                     u.package_days = (u.expiry_time - u.last_reset_time).days
+#                     u.start_date = u.last_reset_time
+#             u.expiry_time = None
 
 
 def _v1():

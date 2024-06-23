@@ -71,11 +71,11 @@ class UserSchema(Schema):
         description="The last time the user's data usage was reset, in a JSON-friendly format",
         allow_none=True
     )
-    expiry_time = Date(
-        format='%Y-%m-%d',
-        description="The expiry time of the user's package, in a JSON-friendly format",
-        allow_none=True
-    )
+    # expiry_time = Date(
+    #     format='%Y-%m-%d',
+    #     description="The expiry time of the user's package, in a JSON-friendly format",
+    #     allow_none=True
+    # )
     comment = String(
         missing=None,
         allow_none=True,

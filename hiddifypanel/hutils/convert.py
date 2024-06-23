@@ -57,7 +57,7 @@ def json_to_time(time_str: str) -> datetime | str:
     try:
         return datetime.strptime(__fix_time_format(time_str), "%Y-%m-%d %H:%M:%S")
     except BaseException:
-        return time_str
+        return json_to_date(time_str)
 
 
 def format_timedelta(delta: timedelta, add_direction: bool = True, granularity: str = "days") -> str:

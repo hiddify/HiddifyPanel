@@ -65,9 +65,9 @@ def __create_hiddify_user_from_xui_values(id: str, values: Dict[str, Any]) -> "U
     user.uuid = id if hutils.auth.is_uuid_valid(id, 4) else uuid_mod.uuid4()
 
     if str(values['expiry_time']) == '0':
-        user.expiry_time = datetime.now() + relativedelta(years=10)
+        user.package_days = 3650
     else:
-        user.expiry_time = datetime.fromtimestamp(values['expiry_time'] / 1000)
+        user.package_days = max(0, (datetime.fromtimestamp(values['expiry_time'] / 1000) - datetime.today()).days)
 
     user.usage_limit = values['max_usage_bytes']
     user.current_usage = values['current_usage_bytes']

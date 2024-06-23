@@ -16,7 +16,7 @@ def prepare_me_info(user):
                  "Your hiddify information is\n" +
                  "UUID: {}\n".format(user.uuid) +
                  "Last online date: {}\n".format(user.last_online) +
-                 "Expire time: {}\n".format(user.expiry_time) +
+                 "Expire time: {}\n".format(user.remaining_days) +
                  "Usage class: {}\n".format(user.mode)
                  )
 
