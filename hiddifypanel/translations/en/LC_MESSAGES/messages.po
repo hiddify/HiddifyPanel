@@ -92,9 +92,6 @@ msgstr "CPU %(cores)s Core"
 msgid "Can add sub admin"
 msgstr "👥 Can Add Sub Admin"
 
-msgid "Can not connect to Cloudflare."
-msgstr "Can not connect to Cloudflare."
-
 msgid "Check again"
 msgstr "Check Again"
 
@@ -368,7 +365,7 @@ msgid ""
 msgstr ""
 "Hooray 🎉 🎉 🎉 \n"
 "Welcome to Hiddify bot\n"
-"Start by clicking the link on the Panel or entering your UUID."
+"Start by clicking the link on the Panel or entering your UUID user."
 
 msgid "Hover the user to see the reason"
 msgstr "Hover the user to see the reason"
@@ -901,7 +898,7 @@ msgid ""
 msgstr ""
 "🔄 Hiddify Manager automatically takes a Backup every 6 Hours. The path of the Backup files on the server: ⬇️\n"
 "<br>\n"
-"/opt/hiddify-manager/hiddify-panel/backup/\n"
+"💿 /opt/hiddify-manager/hiddify-panel/backup/\n"
 "<br>\n"
 "<br>\n"
 "<br>\n"
@@ -1139,6 +1136,9 @@ msgstr "☑️ Automatic CDN IP Selector"
 msgid "cdn"
 msgstr "🔀 CDN (Cloudflare Proxy, ...)"
 
+msgid "cf-delete.failed"
+msgstr "cf-delete.failed"
+
 msgid "child has been removed!"
 msgstr "Child Has Been Removed!"
 
@@ -1151,14 +1151,14 @@ msgstr "child.register-success"
 msgid "child.sync-failed"
 msgstr "child.sync-failed"
 
-msgid "child.sync-success"
-msgstr "child.sync-success"
-
 msgid "clickable copy"
 msgstr "Link for Social Media"
 
 msgid "close"
 msgstr "Close"
+
+msgid "cloudflare.error"
+msgstr "cloudflare.error"
 
 msgid "config.Domain already used"
 msgstr "Domain is exist in domains section. Use another Domain"
@@ -1400,13 +1400,19 @@ msgid "config.h2_enable.description"
 msgstr "Enable HTTP/2 Protocol"
 
 msgid "config.h2_enable.label"
-msgstr "Enable h2"
+msgstr "🔵 Enable h2"
 
 msgid "config.hidden.description"
 msgstr "config.hidden.description"
 
 msgid "config.hidden.label"
 msgstr "config.hidden.label"
+
+msgid "config.hiddifycli_enable.description"
+msgstr "config.hiddifycli_enable.description"
+
+msgid "config.hiddifycli_enable.label"
+msgstr "config.hiddifycli_enable.label"
 
 msgid "config.http.description"
 msgstr "HTTP Configurations could be set in this section"
@@ -1457,7 +1463,7 @@ msgid "config.hysteria_enable.description"
 msgstr "To Enable UDP based Hysteria Protocol"
 
 msgid "config.hysteria_enable.label"
-msgstr "Enable Hysteria2"
+msgstr "⚫️ Enable Hysteria2"
 
 msgid "config.hysteria_obfs_enable.description"
 msgstr " Enables Hysteria Obfuscation (Salamander)"
@@ -1478,7 +1484,8 @@ msgid "config.hysteria_up_mbps.label"
 msgstr "⬆️ Hysteria Upload (mbps)"
 
 msgid "config.invalid-pattern-for-warp-sites"
-msgstr "config.invalid-pattern-for-warp-sites"
+msgstr ""
+"⚠️ The Site entered for the Warp does not match the specified template"
 
 msgid "config.is_parent.description"
 msgstr "config.is_parent.description"
@@ -1516,6 +1523,12 @@ msgstr "config.last_hash.description"
 
 msgid "config.last_hash.label"
 msgstr "config.last_hash.label"
+
+msgid "config.last_priodic_usage_check.description"
+msgstr "config.last_priodic_usage_check.description"
+
+msgid "config.last_priodic_usage_check.label"
+msgstr "config.last_priodic_usage_check.label"
 
 msgid "config.license.description"
 msgstr "For commercial use of this Product, you must Purchase its License"
@@ -1736,7 +1749,7 @@ msgid "config.quic_enable.description"
 msgstr "Enable QUIC Protocol"
 
 msgid "config.quic_enable.label"
-msgstr "Enable QUIC"
+msgstr "🟡 Enable QUIC"
 
 msgid "config.reality.description"
 msgstr "REALITY eliminate the Server-Side TLS Fingerprint Feature"
@@ -1748,7 +1761,7 @@ msgid "config.reality_enable.description"
 msgstr "Enable Reality Protocol"
 
 msgid "config.reality_enable.label"
-msgstr "Enable Reality"
+msgstr "🔴 Enable Reality"
 
 msgid "config.reality_fallback_domain.description"
 msgstr ""
@@ -1962,11 +1975,53 @@ msgstr ""
 msgid "config.ssr_fakedomain.label"
 msgstr "SSR FakeDomain"
 
+msgid "config.sub_full_clash_enable.description"
+msgstr "config.sub_full_clash_enable.description"
+
+msgid "config.sub_full_clash_enable.label"
+msgstr "config.sub_full_clash_enable.label"
+
+msgid "config.sub_full_clash_meta_enable.description"
+msgstr "config.sub_full_clash_meta_enable.description"
+
+msgid "config.sub_full_clash_meta_enable.label"
+msgstr "config.sub_full_clash_meta_enable.label"
+
+msgid "config.sub_full_links_b64_enable.description"
+msgstr "config.sub_full_links_b64_enable.description"
+
+msgid "config.sub_full_links_b64_enable.label"
+msgstr "config.sub_full_links_b64_enable.label"
+
+msgid "config.sub_full_links_enable.description"
+msgstr "config.sub_full_links_enable.description"
+
+msgid "config.sub_full_links_enable.label"
+msgstr "config.sub_full_links_enable.label"
+
+msgid "config.sub_full_singbox_enable.description"
+msgstr "config.sub_full_singbox_enable.description"
+
+msgid "config.sub_full_singbox_enable.label"
+msgstr "config.sub_full_singbox_enable.label"
+
+msgid "config.sub_full_xray_json_enable.description"
+msgstr "config.sub_full_xray_json_enable.description"
+
+msgid "config.sub_full_xray_json_enable.label"
+msgstr "config.sub_full_xray_json_enable.label"
+
+msgid "config.sub_singbox_ssh_enable.description"
+msgstr "config.sub_singbox_ssh_enable.description"
+
+msgid "config.sub_singbox_ssh_enable.label"
+msgstr "config.sub_singbox_ssh_enable.label"
+
 msgid "config.tcp_enable.description"
 msgstr "Enable TCP Protocol"
 
 msgid "config.tcp_enable.label"
-msgstr "Enable TCP"
+msgstr "🟠 Enable TCP"
 
 msgid "config.telegram.description"
 msgstr "A proxy designed for Telegram to bypass Telegram filtering"
@@ -2099,7 +2154,7 @@ msgid "config.trojan_enable.description"
 msgstr "Enable Trojan Protocol"
 
 msgid "config.trojan_enable.label"
-msgstr "Enable Trojan"
+msgstr "🟤 Enable Trojan"
 
 msgid "config.tuic.description"
 msgstr ""
@@ -2114,10 +2169,10 @@ msgid "config.tuic_enable.description"
 msgstr "It is a UDP based protocol similar to QUIC"
 
 msgid "config.tuic_enable.label"
-msgstr "Enable TUIC"
+msgstr "⚫️ Enable TUIC"
 
 msgid "config.tuic_port.description"
-msgstr "Use comma to separate ports like 63000,60000"
+msgstr "Use comma to separate ports like ( 63000,60000 )"
 
 msgid "config.tuic_port.label"
 msgstr "TUIC Ports"
@@ -2157,13 +2212,13 @@ msgid "config.vless_enable.description"
 msgstr "Enable VLess Protocol"
 
 msgid "config.vless_enable.label"
-msgstr "Enable VLess"
+msgstr "⚫️ Enable VLess"
 
 msgid "config.vmess_enable.description"
 msgstr "Active VMess Protocol"
 
 msgid "config.vmess_enable.label"
-msgstr "♈️ Enable VMess"
+msgstr "🟣 Enable VMess"
 
 msgid "config.warp-https-domain-for-warp-site"
 msgstr "config.warp-https-domain-for-warp-site"
@@ -2278,7 +2333,7 @@ msgid "config.xtls_enable.description"
 msgstr "Enable XTLS Protocol"
 
 msgid "config.xtls_enable.label"
-msgstr "Enable XTLS"
+msgstr "🟢 Enable XTLS"
 
 msgid "config.invalid uuid"
 msgstr ""
@@ -2352,19 +2407,19 @@ msgid "items"
 msgstr "items"
 
 msgid "lang.en"
-msgstr "🇺🇸 English انگلیسی 英语"
+msgstr "🇺🇸 English - Английский"
 
 msgid "lang.fa"
-msgstr "🇮🇷 Persian فارسی 波斯语"
+msgstr "🇮🇷 Persian - فارسی"
 
 msgid "lang.pt"
-msgstr "🇵🇹 Portuguese پرتغالی 葡萄牙語"
+msgstr "🇵🇹 Portuguese - پرتغالی"
 
 msgid "lang.ru"
-msgstr "🇷🇺 Russian روسی Русский"
+msgstr "🇷🇺 Russian - Русский"
 
 msgid "lang.zh"
-msgstr "🇨🇳 Chinese چینی 简体中文"
+msgstr "🇨🇳 Chinese - 简体中文"
 
 msgid "lib.telegram.erlang"
 msgstr "✴️ Erlang : Good Performance"

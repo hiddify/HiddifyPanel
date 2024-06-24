@@ -92,9 +92,6 @@ msgstr "CPU %(cores)s 核心"
 msgid "Can add sub admin"
 msgstr "👥 可以添加子管理员"
 
-msgid "Can not connect to Cloudflare."
-msgstr "无法连接cloudflare"
-
 msgid "Check again"
 msgstr "再检查一遍"
 
@@ -1099,6 +1096,9 @@ msgstr "☑️ 自动 CDN IP 选择器"
 msgid "cdn"
 msgstr "🔀 CDN（Cloudflare 代理，...）"
 
+msgid "cf-delete.failed"
+msgstr ""
+
 msgid "child has been removed!"
 msgstr "孩子已被移走！"
 
@@ -1111,14 +1111,14 @@ msgstr ""
 msgid "child.sync-failed"
 msgstr ""
 
-msgid "child.sync-success"
-msgstr ""
-
 msgid "clickable copy"
 msgstr "社交媒体链接"
 
 msgid "close"
 msgstr "关闭"
+
+msgid "cloudflare.error"
+msgstr ""
 
 msgid "config.Domain already used"
 msgstr "域存在于域部分。使用另一个域"
@@ -1344,6 +1344,12 @@ msgstr "配置.隐藏.描述"
 msgid "config.hidden.label"
 msgstr "配置.隐藏.标签"
 
+msgid "config.hiddifycli_enable.description"
+msgstr ""
+
+msgid "config.hiddifycli_enable.label"
+msgstr ""
+
 msgid "config.http.description"
 msgstr "HTTP 配置可以在此部分设置"
 
@@ -1443,6 +1449,12 @@ msgstr "config.last_hash.描述"
 
 msgid "config.last_hash.label"
 msgstr "配置.last_hash.label"
+
+msgid "config.last_priodic_usage_check.description"
+msgstr ""
+
+msgid "config.last_priodic_usage_check.label"
+msgstr ""
 
 msgid "config.license.description"
 msgstr "要将本产品用于商业用途，您必须购买其许可证"
@@ -1838,6 +1850,48 @@ msgstr "请在您的数据中心使用众所周知的域。例如，如果您在
 
 msgid "config.ssr_fakedomain.label"
 msgstr "SSR 假域名"
+
+msgid "config.sub_full_clash_enable.description"
+msgstr ""
+
+msgid "config.sub_full_clash_enable.label"
+msgstr ""
+
+msgid "config.sub_full_clash_meta_enable.description"
+msgstr ""
+
+msgid "config.sub_full_clash_meta_enable.label"
+msgstr ""
+
+msgid "config.sub_full_links_b64_enable.description"
+msgstr ""
+
+msgid "config.sub_full_links_b64_enable.label"
+msgstr ""
+
+msgid "config.sub_full_links_enable.description"
+msgstr ""
+
+msgid "config.sub_full_links_enable.label"
+msgstr ""
+
+msgid "config.sub_full_singbox_enable.description"
+msgstr ""
+
+msgid "config.sub_full_singbox_enable.label"
+msgstr ""
+
+msgid "config.sub_full_xray_json_enable.description"
+msgstr ""
+
+msgid "config.sub_full_xray_json_enable.label"
+msgstr ""
+
+msgid "config.sub_singbox_ssh_enable.description"
+msgstr ""
+
+msgid "config.sub_singbox_ssh_enable.label"
+msgstr ""
 
 msgid "config.tcp_enable.description"
 msgstr ""

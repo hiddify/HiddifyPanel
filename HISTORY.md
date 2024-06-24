@@ -1,6 +1,252 @@
 # Changelog
 
 
+## (unreleased)
+
+#### New
+
+* Optimize priodic reset usage. 
+
+#### Changes
+
+* Fix red lines for hconfig. 
+
+* Fix & refactor cloudflare api codes. 
+
+* Reduce complexity for reality domain validation. 
+
+* Fix possible bug. 
+
+* Improve sync child with parent operation. 
+
+* Refactor logger. 
+
+* Sync node in background. 
+
+* Refactor version checking. 
+
+* Vmess "security" field to auto instead of chacha20-poly1305. 
+
+* Enable hysteria2 on old_xtls_direct domain. 
+
+* Refactor Domain model. 
+
+* Hide sub enable/disable toggle(except xray json) 
+
+* Send configs even if the sub is disabled. 
+
+* Refactor. 
+
+#### Fix
+
+* Custom type. 
+
+* Resetting user's usage value in update usage operation. 
+
+* Typo. 
+
+* The shadowsocks2022 config in V2rayng, Streisand, Shadowrocket (the link sub) the other shadowsocks related configs like shadowtls, ssfaketls should be fixed. 
+
+* The shadowsocks2022 config in V2rayng (xray sub) 
+
+* Last_version not defined. 
+
+* Enabling/disabling ssfaketls. 
+
+* Cloudflare api bug related to root/sub domains. 
+
+* ASN checking. 
+
+* Default warp mode. 
+
+* Not installing warp. 
+
+* Child's user/admin links bug. 
+
+* Parent panel links bug. 
+
+* Bug. 
+
+* Outside app context bug. 
+
+* Wireguard usage api bug. 
+
+* Bugs related to venv. 
+
+* Venv bug. 
+
+* Bug & refactor. 
+
+* Telegram bot registering bug. 
+
+* Incorrect condition when current_usage_GB is 0 bug. 
+
+* User api endpoints. 
+
+* Admin api endpoints. 
+
+* Hiddifycli_enable key not found bug. 
+
+* Send xray sub if client supports. 
+
+* Mux in xray sub. 
+
+* Sub bug. 
+
+#### Other
+
+* Explicitly remove expiry date. 
+
+* Fix. 
+
+* Merge pull request #214 from Iam54r1n4/devp10-patch-21. 
+  _Fix resetting user's usage value in update usage_
+
+* Update usage.py. 
+
+* Update user.py. 
+
+* Merge pull request #216 from Iam54r1n4/devp10-patch-23. 
+  _Fix the shadowsocks2022 bug in V2rayng, Streisand, Shadowrocket clients_
+
+* Update xray.py. 
+
+* Merge pull request #213 from Iam54r1n4/devp10-patch-20. 
+  _Fix cloudflare API section_
+
+* Merge pull request #212 from Iam54r1n4/devp10-patch-19. 
+  _Fix adding reality domain_
+
+* Merge pull request #217 from glory7sa/main. 
+  _Update translations RU_
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Merge pull request #215 from Iam54r1n4/devp10-patch-22. 
+  _Fix warp installation & Disable telegram mtproto by default_
+
+* Merge pull request #211 from Iam54r1n4/devp10-patch-18. 
+  _Improve api security_
+
+* Improve: api security fixed admin privilege esclation. 
+
+* Merge pull request #210 from Iam54r1n4/devp10-patch-17. 
+  _Improve security_
+
+* Improve: security Thanks to N1k4, an XSS vulnerability was detected, this commit fixes it Note: the bleach library is deprecated but i think it's still the best choice. 
+
+* Merge pull request #209 from Iam54r1n4/devp10-patch-15. 
+  _Run sync child with parent operation in seperate thread & Improve sync api_
+
+* Del: initiate logger log. 
+
+* Merge pull request #208 from Iam54r1n4/devp10-patch-16. 
+  _Fix version checking_
+
+* Add: todo. 
+
+* Merge pull request #206 from Iam54r1n4/backward-hysteria-tuic_old_direct_domain. 
+  _Update domain.py_
+
+* Update domain.py. 
+
+* Merge pull request #207 from Iam54r1n4/devp10-patch-14. 
+  _Fix wireguard usage api bug_
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Update translations. 
+
+* Merge branch 'main' of github.com:hiddify/Hiddify-Panel. 
+
+* Merge pull request #201 from Iam54r1n4/devp10-patch-10. 
+  _Fix venv bug panel side_
+
+* Merge pull request #202 from Iam54r1n4/devp10-patch-11. 
+  _Change vmess "security" field to auto instead of chacha20-poly1305_
+
+* Merge pull request #203 from Iam54r1n4/devp10-patch-12. 
+  _Change enable hysteria2 on old_xtls_direct domain_
+
+* Merge pull request #204 from Iam54r1n4/patch-1. 
+  _Update user.py (API bug)_
+
+* Update user.py. 
+
+* Merge pull request #205 from Iam54r1n4/devp10-patch-13. 
+  _Refactor Domain model_
+
+* Merge pull request #199 from Iam54r1n4/devp10-patch-8. 
+  _Change sending sub_
+
+* Merge pull request #198 from Iam54r1n4/fix-usages-color. 
+  _Fix usages color_
+
+* Better darkmode view. 
+
+* Fix usages color. 
+
+* Merge pull request #200 from Iam54r1n4/devp10-patch-9. 
+  _Fix api bug_
+
+* Add: fetching telegram bot info command to hiddifypanel cli. 
+
+* Merge pull request #197 from Iam54r1n4/devp10-patch-7. 
+  _Fix & Refactor APIs_
+
+* Merge pull request #196 from Iam54r1n4/devp10-patch-6. 
+  _Add enable/disable(ing) specific subscriptions feature_
+
+* Add: enable/disable(ing) specific subscriptions. 
+
+* Fink 🐦: update translations. 
+
+* Fink 🐦: update translations. 
+
+* Fink 🐦: update translations. 
+
+* Fink 🐦: update translations. 
+
+* Fink 🐦: update translations. 
+
+* Fink 🐦: update translations. 
+
+* Fink 🐦: update translations. 
+
+* Fink 🐦: update translations. 
+
+* Fink 🐦: update translations. 
+
+* Fink 🐦: update translations. 
+
+* Fink 🐦: update translations. 
+
+* Fink 🐦: update translations. 
+
+* Fink 🐦: update translations. 
+
+* Fink 🐦: update translations. 
+
+
+
 ## v10.20.3 (2024-04-12)
 
 #### Fix

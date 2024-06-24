@@ -12,7 +12,7 @@ msgid "%(count)s records were successfully enabled."
 msgstr "%(count)s записей были успешно включены."
 
 msgid "%(expire_days)s days"
-msgstr ""
+msgstr "с дней"
 
 msgid "%(placeholder)s"
 msgstr "%(placeholder)s"
@@ -48,7 +48,7 @@ msgid "Admins"
 msgstr "Администраторы"
 
 msgid "Alias"
-msgstr "Alias"
+msgstr "Псевдоним"
 
 msgid "All"
 msgstr "Все"
@@ -69,7 +69,7 @@ msgid "Are you sure you want to delete this record?"
 msgstr "Вы уверены что хотите удалить эту запись?"
 
 msgid "Are you sure you want to do this action?"
-msgstr "⚠️ Вы уверены, что хотите выполнить это действие?"
+msgstr "Вы уверены, что хотите выполнить это действие?"
 
 msgid "Back"
 msgstr "Назад"
@@ -87,13 +87,10 @@ msgid "Bug"
 msgstr "Bug/Feature"
 
 msgid "CPU %(cores)s Cores"
-msgstr "ЦП %(cores)s Ядро"
+msgstr "CPU %(cores)s Ядро"
 
 msgid "Can add sub admin"
 msgstr "👥 Может добавлять администраторов"
-
-msgid "Can not connect to Cloudflare."
-msgstr "Не удаётся подключиться к Cloudflare."
 
 msgid "Check again"
 msgstr "Проверить снова"
@@ -102,7 +99,7 @@ msgid "Childs"
 msgstr "Дочерние"
 
 msgid "China"
-msgstr "🇨🇳 Китай"
+msgstr "на Китай"
 
 msgid "Click here to see the complete log"
 msgstr "Нажмите здесь, чтобы просмотреть весь журнал"
@@ -111,7 +108,7 @@ msgid "Click to Import"
 msgstr "Импортировать"
 
 msgid "Click to Start Anti-Filter."
-msgstr "<i class='fa-solid fa-play'></i> Нажмите, чтобы запустить Anti-Filter"
+msgstr "<i class='fa-solid fa-play'></i> Нажмите, чтобы настроить Анти-фильтр"
 
 msgid "Close"
 msgstr "Закрыть"
@@ -159,7 +156,7 @@ msgstr ""
 "\n"
 "Ваша информация Hiddify\n"
 "UUID: {}\n"
-"Дата последнего онлайн-соединения: {}\n"
+"Был в сети: {}\n"
 "Истекает : {}\n"
 "Класс использования: {}"
 
@@ -184,7 +181,7 @@ msgid ""
 "Direct mode means you want to use your server directly (for usual use), CDN "
 "means that you use your server on behind of a CDN provider."
 msgstr ""
-"➡️ <b>Direct:</b> выберите этот режим, если вы настраиваете свой домен исключительно у своего DNS-провайдера в режиме «только DNS». (Режим CDN или прокси выключен) <br>\n"
+"➡️ <b>Direct:</b> Выберите этот режим, если вы настраиваете свой домен исключительно для вашего DNS-провайдера в режиме только для DNS. (Режим CDN или прокси отключен) <br>\n"
 "🔙 <b>Старый режим Direct:</b> Этот режим аналогичен режиму Direct, но не использует gRPC для связи. Выберите «Старый режим», если вы предпочитаете настроить свой домен у своего DNS-провайдера в режиме «только DNS» без использования gRPC.\n"
 "<br>\n"
 "🔀 <b>CDN:</b> выберите этот режим, если вы используете провайдера CDN для домена вашего сервера. (Режим прокси включен)<br>\n"
@@ -347,7 +344,7 @@ msgstr ""
 "<br />"
 
 msgid "HiddifyNG"
-msgstr "HiddifyNG <span class='badge badge-success'>рекомендуется</span>"
+msgstr "HiddifyNG <span class='badge badge-success'>Рекомендуется</span>"
 
 msgid "HiddifyNG intro"
 msgstr ""
@@ -367,8 +364,8 @@ msgid ""
 "Start by clicking the link on the panel or entering your UUID."
 msgstr ""
 "Ура 🎉 🎉 🎉\n"
-"Добро пожаловать в бот Hiddify\n"
-"Начните с нажатия ссылки на панели или ввода своего UUID"
+"Добро пожаловать в Hiddify bot\n"
+"Для начала перейдите по ссылке на панели или введите свой UUID пользователя."
 
 msgid "Hover the user to see the reason"
 msgstr "Наведите курсор на пользователя, чтобы увидеть причину"
@@ -438,7 +435,7 @@ msgid "Invalid admin link"
 msgstr "Неверная ссылка администратора"
 
 msgid "Iran"
-msgstr "🇮🇷 Иран"
+msgstr "на Иран"
 
 msgid ""
 "It seems that you are using default domain (%(domain)s) which is not "
@@ -522,7 +519,7 @@ msgid "Ok"
 msgstr "Хорошо"
 
 msgid "Online Users"
-msgstr "Пользователей онлайн"
+msgstr "Пользователей в сети"
 
 msgid "Only Blocked and Local websites"
 msgstr "☑️ Только заблокированные и локальные сайты"
@@ -537,7 +534,7 @@ msgid "Open in Application"
 msgstr "Открыть в приложении"
 
 msgid "Others"
-msgstr "🇺🇳 Другие"
+msgstr "на Другие"
 
 msgid "Override Root Admin"
 msgstr "Переопределение администратора"
@@ -653,10 +650,10 @@ msgid "QR code"
 msgstr "🧾 QR-код"
 
 msgid "QRCode"
-msgstr "<i class='fa-solid fa-qrcode'></i> QRCode"
+msgstr "<i class='fa-solid fa-qrcode'></i> QR-код"
 
 msgid "RAM"
-msgstr "ОЗУ"
+msgstr "RAM"
 
 msgid "REALITY Fallback domain is not compaitble with server names!"
 msgstr "REALITY Fallback Domain несовместим с именами серверов!"
@@ -716,7 +713,7 @@ msgid "Restore Users description"
 msgstr "Выберите этот вариант, чтобы восстановить всех пользователей"
 
 msgid "Root"
-msgstr "Корень"
+msgstr "Root"
 
 msgid "Save"
 msgstr "Сохранить"
@@ -786,10 +783,10 @@ msgstr ""
 "убедиться, что все обновлено."
 
 msgid "Telegram Bot"
-msgstr "Телеграм-бот"
+msgstr "Telegram-бот"
 
 msgid "Temporary Short Link"
-msgstr "⏱️ Временная короткая ссылка"
+msgstr "⏱️ Временная ссылка"
 
 msgid "The action done successfully. You can now leave this page."
 msgstr "✅Действие выполнено успешно. Теперь вы можете покинуть эту страницу"
@@ -903,7 +900,7 @@ msgid ""
 msgstr ""
 "🔄 Панель Hiddify автоматически создает резервную копию каждые 6 часов. Путь к файлам резервной копии на сервере: ⬇️\n"
 "<br>\n"
-"/opt/hiddify-manager/hiddify-panel/backup/\n"
+"💿 /opt/hiddify-manager/hiddify-panel/backup/\n"
 "<br>\n"
 "<br>\n"
 "<br>\n"
@@ -964,8 +961,8 @@ msgid ""
 msgstr ""
 "Информация о вашем экземпляре Hiddify\n"
 "Домен: {}\n"
-"Лимит использования: {} ГБ\n"
-"Текущее использование: {} ГБ\n"
+"Лимит: {} ГБ\n"
+"Использовано: {} ГБ\n"
 "Срок действия истекает: {}\n"
 "Оставшиеся дни: {}\n"
 "\n"
@@ -1024,7 +1021,7 @@ msgid "admin.menu.domain"
 msgstr "Домены"
 
 msgid "admin.menu.home"
-msgstr "Dashboard"
+msgstr "Панель управления"
 
 msgid "admin.menu.proxy"
 msgstr "Прокси"
@@ -1145,6 +1142,9 @@ msgstr "☑️ Автоматический выбор IP-адреса CDN"
 msgid "cdn"
 msgstr "🔀 CDN (Cloudflare Proxy, ...)"
 
+msgid "cf-delete.failed"
+msgstr ""
+
 msgid "child has been removed!"
 msgstr "Дочерний элемент удален!"
 
@@ -1157,14 +1157,14 @@ msgstr ""
 msgid "child.sync-failed"
 msgstr ""
 
-msgid "child.sync-success"
-msgstr ""
-
 msgid "clickable copy"
 msgstr "Ссылка для социальных сетей"
 
 msgid "close"
 msgstr "Закрыть"
+
+msgid "cloudflare.error"
+msgstr ""
 
 msgid "config.Domain already used"
 msgstr "Домен уже существует. Использовать другой домен"
@@ -1186,7 +1186,7 @@ msgid "config.Invalid proxy path"
 msgstr "Неверный Proxy Path Это должна быть строка ASCI (a-z A-Z 0-9)."
 
 msgid "config.Invalid telegram bot token"
-msgstr "Неверный токен Telegram-бота"
+msgstr "Неверный токен Telegram bot"
 
 msgid "config.Invalid! The pattern is number-number"
 msgstr "⚠️ Конфигурация недействительна! Шаблон — это номер-номер ⚠️"
@@ -1423,6 +1423,12 @@ msgstr "config.hidden.description"
 msgid "config.hidden.label"
 msgstr "config.hidden.label"
 
+msgid "config.hiddifycli_enable.description"
+msgstr ""
+
+msgid "config.hiddifycli_enable.label"
+msgstr ""
+
 msgid "config.http.description"
 msgstr "Конфигурации HTTP можно установить в этом разделе"
 
@@ -1474,7 +1480,7 @@ msgid "config.hysteria_enable.description"
 msgstr "Включение протокола Hysteria на основе UDP"
 
 msgid "config.hysteria_enable.label"
-msgstr "Включить Hysteria"
+msgstr "⚪️ Включить Hysteria"
 
 msgid "config.hysteria_obfs_enable.description"
 msgstr "Включить Hysteria Obfuscation (Salamander)"
@@ -1534,6 +1540,12 @@ msgstr "config.last_hash.description"
 
 msgid "config.last_hash.label"
 msgstr "config.last_hash.label"
+
+msgid "config.last_priodic_usage_check.description"
+msgstr ""
+
+msgid "config.last_priodic_usage_check.label"
+msgstr ""
 
 msgid "config.license.description"
 msgstr ""
@@ -1979,20 +1991,62 @@ msgstr ""
 "Azure, хороший пример — microsoft-update.com"
 
 msgid "config.ssr_fakedomain.label"
-msgstr "SSR поддельный домен"
+msgstr "Поддельный домен SSR"
+
+msgid "config.sub_full_clash_enable.description"
+msgstr ""
+
+msgid "config.sub_full_clash_enable.label"
+msgstr ""
+
+msgid "config.sub_full_clash_meta_enable.description"
+msgstr ""
+
+msgid "config.sub_full_clash_meta_enable.label"
+msgstr ""
+
+msgid "config.sub_full_links_b64_enable.description"
+msgstr ""
+
+msgid "config.sub_full_links_b64_enable.label"
+msgstr ""
+
+msgid "config.sub_full_links_enable.description"
+msgstr ""
+
+msgid "config.sub_full_links_enable.label"
+msgstr ""
+
+msgid "config.sub_full_singbox_enable.description"
+msgstr ""
+
+msgid "config.sub_full_singbox_enable.label"
+msgstr ""
+
+msgid "config.sub_full_xray_json_enable.description"
+msgstr ""
+
+msgid "config.sub_full_xray_json_enable.label"
+msgstr ""
+
+msgid "config.sub_singbox_ssh_enable.description"
+msgstr ""
+
+msgid "config.sub_singbox_ssh_enable.label"
+msgstr ""
 
 msgid "config.tcp_enable.description"
-msgstr ""
+msgstr "Включить протокол TCP"
 
 msgid "config.tcp_enable.label"
-msgstr ""
+msgstr "Включить протокол TCP"
 
 msgid "config.telegram.description"
 msgstr ""
 "Прокси-сервер, разработанный для Telegram для обхода фильтрации Telegram"
 
 msgid "config.telegram.label"
-msgstr "Телеграм-прокси"
+msgstr "Telegram прокси"
 
 msgid "config.telegram_adtag.description"
 msgstr ""
@@ -2008,7 +2062,7 @@ msgstr ""
 "ввести в это поле код API"
 
 msgid "config.telegram_bot_token.label"
-msgstr "🔐 Токен Telegram-бота"
+msgstr "🔐 Токен Telegram bot"
 
 msgid "config.telegram_enable.description"
 msgstr ""
@@ -2046,54 +2100,61 @@ msgstr "Конфигурация TLS"
 
 msgid "config.tls_fragment_enable.description"
 msgstr ""
+"<p>При некоторых обстоятельствах, это позволяет обойти систему черного "
+"списка SNI. <a href=\"https://hiddify.com/manager/basic-concepts-and-"
+"troubleshooting/How-the-TLS-Trick-works-and-its-usage/\" "
+"target=\"_blank\">(подробнее)</a></p>"
 
 msgid "config.tls_fragment_enable.label"
-msgstr ""
+msgstr "⏯ Включить фрагмент TLS"
 
 msgid "config.tls_fragment_size.description"
-msgstr ""
+msgstr "Размер каждого пакета"
 
 msgid "config.tls_fragment_size.label"
-msgstr ""
+msgstr "🎚 Размер фрагмента TLS"
 
 msgid "config.tls_fragment_sleep.description"
-msgstr ""
+msgstr "Временная задержка между фрагментами"
 
 msgid "config.tls_fragment_sleep.label"
-msgstr ""
+msgstr "⏱ Спящий режим фрагмента TLS"
 
 msgid "config.tls_mixed_case.description"
-msgstr ""
+msgstr "Включает фрагментацию смешанного регистра SNI по протоколу TLS"
 
 msgid "config.tls_mixed_case.label"
-msgstr ""
+msgstr "🔠 Включить смешанный случай SNI по протоколу TLS"
 
 msgid "config.tls_padding_enable.description"
 msgstr ""
+"<p>Включает заполнение для фрагментации TLS. <a "
+"href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-"
+"the-TLS-Trick-works-and-its-usage/#tls-padding\" "
+"target=\"_blank\">(подробнее)</a></p>"
 
 msgid "config.tls_padding_enable.label"
-msgstr ""
+msgstr "♒️ Включить заполнение TLS"
 
 msgid "config.tls_padding_length.description"
-msgstr ""
+msgstr "Длина отступа для фрагментации TLS"
 
 msgid "config.tls_padding_length.label"
-msgstr ""
+msgstr "📏 Заполнение TLS"
 
 msgid "config.tls_ports.description"
 msgstr ""
-"Целые числа, разделенные запятыми, обозначающие порты, которые будут "
-"использоваться в качестве соединения TLS (в любом случае будет "
-"использоваться порт 443)."
+"Целые числа, разделенные запятыми, указывающие порты для использования в "
+"качестве TLS-соединения (в любом случае будет использоваться порт 443)"
 
 msgid "config.tls_ports.label"
 msgstr "🔎 TLS-порты"
 
 msgid "config.tls_trick.description"
-msgstr ""
+msgstr "Конфигурации фрагментации TLS можно настроить в этом разделе"
 
 msgid "config.tls_trick.label"
-msgstr ""
+msgstr "TLS Trick"
 
 msgid "config.too_advanced.description"
 msgstr ""
@@ -2110,10 +2171,10 @@ msgid "config.torrent_block.label"
 msgstr "Конфигурация блокировки Torrent"
 
 msgid "config.trojan_enable.description"
-msgstr ""
+msgstr "Включить Trojan протокол"
 
 msgid "config.trojan_enable.label"
-msgstr ""
+msgstr "Включить Trojan протокол"
 
 msgid "config.tuic.description"
 msgstr ""
@@ -2122,16 +2183,16 @@ msgstr ""
 "Цель TUIC — максимально минимизировать задержку рукопожатия."
 
 msgid "config.tuic.label"
-msgstr "TUIC"
+msgstr "Конфигурация TUIC"
 
 msgid "config.tuic_enable.description"
 msgstr "Это протокол на базе UDP, аналогичный QUIC"
 
 msgid "config.tuic_enable.label"
-msgstr "Включить TUIC"
+msgstr "⚫️ Включить TUIC"
 
 msgid "config.tuic_port.description"
-msgstr "Используйте запятую для разделения портов, например 63000,60000."
+msgstr "Используйте запятую для разделения портов, например,( 63000,60000 )"
 
 msgid "config.tuic_port.label"
 msgstr "Порты TUIС"
@@ -2168,10 +2229,10 @@ msgid "config.validation-success-no-reset"
 msgstr "✅ Конфигурации успешно изменены"
 
 msgid "config.vless_enable.description"
-msgstr ""
+msgstr "Включить протокол VLess"
 
 msgid "config.vless_enable.label"
-msgstr ""
+msgstr "⚫️ Включить VLess"
 
 msgid "config.vmess_enable.description"
 msgstr ""
@@ -2179,7 +2240,7 @@ msgstr ""
 " систему.  Не рекомендуется"
 
 msgid "config.vmess_enable.label"
-msgstr "♈️ Включить VMess"
+msgstr "🟣 Включить VMess"
 
 msgid "config.warp-https-domain-for-warp-site"
 msgstr ""
@@ -2293,13 +2354,14 @@ msgid "config.ws_enable.label"
 msgstr "🔰 Включить Websocket"
 
 msgid "config.xtls_enable.description"
-msgstr ""
+msgstr "Включить протокол TLS"
 
 msgid "config.xtls_enable.label"
-msgstr ""
+msgstr "🟢 Включить XTLS"
 
 msgid "config.invalid uuid"
-msgstr "Неверный UUID. пример: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6"
+msgstr ""
+"Неверный UUID пользователя. пример: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6"
 
 msgid "copy"
 msgstr "Копировать"
@@ -2336,7 +2398,7 @@ msgstr ""
 "<<a href='https://github.com/hibbity/hibbity-config/wiki/Guide-for-domain-fronting '>Руководство</a>. ⚠CloudFlare не поддерживает подключение к домену."
 
 msgid "domain.domain_fronting.label"
-msgstr "Включить подключение к домену TLS"
+msgstr "🔒 Включить подключение к домену TLS"
 
 msgid "domain.ip"
 msgstr "IP"
@@ -2355,8 +2417,8 @@ msgstr "➿ gRPC"
 
 msgid "gRPC is a H2 based protocol. Maybe it is faster for you!"
 msgstr ""
-"gRPC — это протокол на основе HTTP 2. Возможно, в вашей ситуации он будет "
-"быстрее!"
+"ℹ️ gRPC — это протокол на основе HTTP 2. Возможно, в вашей ситуации он будет"
+" быстрее!"
 
 msgid "in parent panel"
 msgstr "Родительский контроль"
@@ -2371,19 +2433,19 @@ msgid "items"
 msgstr "элементы"
 
 msgid "lang.en"
-msgstr "🇺🇸 English انگلیسی 英语 Английский"
+msgstr "🇺🇸 English - Английский"
 
 msgid "lang.fa"
-msgstr "🇮🇷 Persian فارسی 波斯语 Персидский"
+msgstr "🇮🇷 Persian - فارسی"
 
 msgid "lang.pt"
-msgstr "🇵🇹 Portuguese پرتغالی 葡萄牙語 "
+msgstr "🇵🇹 Portuguese - پرتغالی"
 
 msgid "lang.ru"
-msgstr "🇷🇺 Russian روسی Русский"
+msgstr "🇷🇺 Russian - Русский"
 
 msgid "lang.zh"
-msgstr "🇨🇳 Chinese چینی 简体中文 Китайский"
+msgstr "🇨🇳 Chinese - 简体中文"
 
 msgid "lib.telegram.erlang"
 msgstr "✴️ Erlang: хорошая производительность"
@@ -2395,7 +2457,7 @@ msgid "lib.telegram.python"
 msgstr "☑️ Python: низкая производительность"
 
 msgid "log"
-msgstr "📄 Журнал"
+msgstr "📄 Журнал событий"
 
 msgid "login.secret.description"
 msgstr "Секретный код предоставляется поставщиком услуг."
@@ -2503,7 +2565,7 @@ msgid "sub_link_only"
 msgstr "📳 Только для ссылки на подписку (может быть Direct, Relay или CDN)"
 
 msgid "telegram"
-msgstr "Телеграмм"
+msgstr "Telegram"
 
 msgid "test"
 msgstr "Тест"
@@ -2524,13 +2586,13 @@ msgid "user.home.all_configs"
 msgstr "Все конфигурации"
 
 msgid "user.home.allconfig.clash-configs"
-msgstr "Конфигурация Clash"
+msgstr "Конфликтующие конфигурации"
 
 msgid "user.home.allconfig.hiddify-managers"
 msgstr "Все менеджеры конфигураций Hiddify"
 
 msgid "user.home.allconfig.link-configs"
-msgstr "Subscription"
+msgstr "Ссылка на подписку"
 
 msgid "user.home.allconfig.name"
 msgstr "Имя и ссылка"
@@ -2539,7 +2601,7 @@ msgid "user.home.allconfig.protocol"
 msgstr "Протокол"
 
 msgid "user.home.allconfig.security"
-msgstr "Security"
+msgstr "Безопасность"
 
 msgid "user.home.allconfig.transport"
 msgstr "Транспорт"
@@ -2647,7 +2709,7 @@ msgid "user.home.clash_configs.only_for_blocked_sites.title"
 msgstr "Только для заблокированных сайтов"
 
 msgid "user.home.doh"
-msgstr "DNS over HTTPS"
+msgstr "DNS по протоколу HTTPS"
 
 msgid "user.home.ios.others.intro"
 msgstr ""
@@ -2729,7 +2791,7 @@ msgid "user.home.speedtest.upload"
 msgstr "Загрузить"
 
 msgid "user.home.telegram.clickbtn"
-msgstr "Телеграм-прокси"
+msgstr "Telegram прокси"
 
 msgid "user.home.telegram.description"
 msgstr ""
@@ -2744,6 +2806,24 @@ msgstr "Все конфигурации"
 
 msgid "user.home.tool.doh.help"
 msgstr ""
+"<h4>Настройте DoH в вашем браузере</h4>\n"
+"    Существует несколько браузеров, совместимых с DNS по протоколу HTTPS (DoH). Этот протокол позволяет    зашифровать ваше соединение в соответствии с версией 1.1.1.1, чтобы защитить ваши DNS-запросы от вторжения в частную жизнь и несанкционированного доступа.\n"
+"\n"
+"    Возможно, в некоторых браузерах этот параметр уже включен.\n"
+"<br />\n"
+"    <h5>​​Mozilla Firefox</h5>\n"
+"    Выберите нужный <b>Выберите нужный</b> кнопка > <b>Настройки</b>.В общем меню, прокрутите вниз, чтобы получить доступ <b>Сетевые настройки</b>. Выбрать <b>Настройки</b>. Выбрать <b>Включить DNS по протоколу HTTPS</b>.\n"
+"<br />\n"
+"    ​<h5>​Google Chrome</h5>\n"
+"    Выберите нужный <b>three-dot</b> меню в вашем браузере > <b>Настройки</b>.\n"
+"    Выбрать <b>Конфиденциальность и безопасность</b> > <b>Безопасность</b>.\n"
+"    Прокрутите вниз и включите <b>Используйте безопасный DNS</b>.\n"
+"<br />\n"
+"    <h5>​​Microsoft Edge</h5>\n"
+"    Выберите нужный <b>three-dot?</b> меню в вашем браузере > <b>Настройки</b>.\n"
+"    Выбрать <b>Конфиденциальность, поиск и услуги</b>, и прокрутите вниз до <b>Безопасность</b>.\n"
+"    Включить <b>Use secure DNS</b>.\n"
+"   Выберите пункт Выбрать поставщика услуг."
 
 msgid "user.home.tool.doh.title"
 msgstr "DNS через HTTPS"
@@ -2802,7 +2882,7 @@ msgid "user.name"
 msgstr "Имя"
 
 msgid "user.usage_limit_GB"
-msgstr "⌛️ Лимит использования (GB)"
+msgstr "⌛️ Лимит (GB)"
 
 msgid "user.user_links"
 msgstr "Ссылки пользователей"

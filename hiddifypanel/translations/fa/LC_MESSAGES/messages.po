@@ -93,9 +93,6 @@ msgstr "پردازنده %(cores)s هسته"
 msgid "Can add sub admin"
 msgstr "👥 امکان اضافه کردن ادمین فرعی"
 
-msgid "Can not connect to Cloudflare."
-msgstr "نمی توان به Cloudflare متصل شد."
-
 msgid "Check again"
 msgstr "بررسی مجدد"
 
@@ -106,7 +103,7 @@ msgid "China"
 msgstr "🇨🇳 چین"
 
 msgid "Click here to see the complete log"
-msgstr "برای دیدن لاگ کامل، اینجا کلیک کنید."
+msgstr "برای دیدن لاگ کامل، اینجا کلیک کنید"
 
 msgid "Click to Import"
 msgstr "کلیک برای افزودن کانفیگ"
@@ -121,7 +118,7 @@ msgid "Commercial use"
 msgstr "استفاده تجاری"
 
 msgid "Config file is incorrect"
-msgstr "فایل کانفیگ اشتباه است."
+msgstr "فایل کانفیگ اشتباه است"
 
 msgid "Copy Link"
 msgstr "کپی لینک"
@@ -887,7 +884,7 @@ msgid ""
 msgstr ""
 "🔄 پنل هیدیفای به صورت خودکار هر ۶ ساعت یک Backup میگیرد. مسیر فایل های Backup روی سرور: ⬇️\n"
 "<br>\n"
-"/opt/hiddify-manager/hiddify-panel/backup/\n"
+"💿 /opt/hiddify-manager/hiddify-panel/backup/\n"
 "<br>\n"
 "<br>\n"
 "<br>\n"
@@ -1124,6 +1121,9 @@ msgstr "☑️ انتخاب کننده آی‌پی CDN به صورت خودکا�
 msgid "cdn"
 msgstr "🔀 سی‌دی‌ان (پروکسی کلودفلر و ...)"
 
+msgid "cf-delete.failed"
+msgstr ""
+
 msgid "child has been removed!"
 msgstr "پنل زیر مجموعه حذف شد"
 
@@ -1136,14 +1136,14 @@ msgstr ""
 msgid "child.sync-failed"
 msgstr ""
 
-msgid "child.sync-success"
-msgstr ""
-
 msgid "clickable copy"
 msgstr "لینک برای شبکه‌های اجتماعی"
 
 msgid "close"
 msgstr "بستن"
+
+msgid "cloudflare.error"
+msgstr ""
 
 msgid "config.Domain already used"
 msgstr "دامنه در بخش دامنه‌ها وجود دارد. از دامنه دیگری استفاده کنید."
@@ -1385,13 +1385,19 @@ msgid "config.h2_enable.description"
 msgstr "فعال کردن پروتکل HTTP/2"
 
 msgid "config.h2_enable.label"
-msgstr "فعال سازی h2"
+msgstr "🔵 فعال سازی h2"
 
 msgid "config.hidden.description"
 msgstr "-"
 
 msgid "config.hidden.label"
 msgstr "-"
+
+msgid "config.hiddifycli_enable.description"
+msgstr ""
+
+msgid "config.hiddifycli_enable.label"
+msgstr ""
 
 msgid "config.http.description"
 msgstr "تنظیمات مربوط به اتصال HTTP"
@@ -1442,7 +1448,7 @@ msgid "config.hysteria_enable.description"
 msgstr "برای فعال کردن پروتکل هیستریا مبتنی بر UDP"
 
 msgid "config.hysteria_enable.label"
-msgstr "هیستریا را فعال کنید"
+msgstr "⚪️ هیستریا را فعال کنید"
 
 msgid "config.hysteria_obfs_enable.description"
 msgstr "مبهم سازی هیستری (Salamander) را فعال می کند"
@@ -1463,7 +1469,7 @@ msgid "config.hysteria_up_mbps.label"
 msgstr "⬆️ آپلود (mbps) Hysteria"
 
 msgid "config.invalid-pattern-for-warp-sites"
-msgstr ""
+msgstr "⚠️ سایت وارد شده برای وارپ با الگوی تعیین شده مطابقت ندارد"
 
 msgid "config.is_parent.description"
 msgstr "-"
@@ -1502,6 +1508,12 @@ msgstr "-"
 
 msgid "config.last_hash.label"
 msgstr "-"
+
+msgid "config.last_priodic_usage_check.description"
+msgstr ""
+
+msgid "config.last_priodic_usage_check.label"
+msgstr ""
 
 msgid "config.license.description"
 msgstr "برای استفاده تجاری از این محصول باید مجوز آن را خریداری کنید"
@@ -1728,7 +1740,7 @@ msgid "config.quic_enable.description"
 msgstr "فعال کردن پروتکل QUIC"
 
 msgid "config.quic_enable.label"
-msgstr "Enable QUIC Protocol"
+msgstr "🟡 فعال سازی QUIC"
 
 msgid "config.reality.description"
 msgstr "REALITY قابلیت اثر انگشت TLS سمت سرور را حذف می کند"
@@ -1740,7 +1752,7 @@ msgid "config.reality_enable.description"
 msgstr "فعال کردن پروتکل Reality"
 
 msgid "config.reality_enable.label"
-msgstr "فعال سازی Reality"
+msgstr "🔴 فعال سازی Reality"
 
 msgid "config.reality_fallback_domain.description"
 msgstr ""
@@ -1957,11 +1969,53 @@ msgstr ""
 msgid "config.ssr_fakedomain.label"
 msgstr "دامنه جعلی برای SSR"
 
+msgid "config.sub_full_clash_enable.description"
+msgstr ""
+
+msgid "config.sub_full_clash_enable.label"
+msgstr ""
+
+msgid "config.sub_full_clash_meta_enable.description"
+msgstr ""
+
+msgid "config.sub_full_clash_meta_enable.label"
+msgstr ""
+
+msgid "config.sub_full_links_b64_enable.description"
+msgstr ""
+
+msgid "config.sub_full_links_b64_enable.label"
+msgstr ""
+
+msgid "config.sub_full_links_enable.description"
+msgstr ""
+
+msgid "config.sub_full_links_enable.label"
+msgstr ""
+
+msgid "config.sub_full_singbox_enable.description"
+msgstr ""
+
+msgid "config.sub_full_singbox_enable.label"
+msgstr ""
+
+msgid "config.sub_full_xray_json_enable.description"
+msgstr ""
+
+msgid "config.sub_full_xray_json_enable.label"
+msgstr ""
+
+msgid "config.sub_singbox_ssh_enable.description"
+msgstr ""
+
+msgid "config.sub_singbox_ssh_enable.label"
+msgstr ""
+
 msgid "config.tcp_enable.description"
 msgstr "فعال کردن پروتکل TCP"
 
 msgid "config.tcp_enable.label"
-msgstr "فعال سازی TCP"
+msgstr "🟠 فعال سازی TCP"
 
 msgid "config.telegram.description"
 msgstr ""
@@ -2095,7 +2149,7 @@ msgid "config.trojan_enable.description"
 msgstr "فعال کردن پروتکل Trojan"
 
 msgid "config.trojan_enable.label"
-msgstr "فعال سازی Trojan"
+msgstr "🟤 فعال سازی Trojan"
 
 msgid "config.tuic.description"
 msgstr ""
@@ -2109,7 +2163,7 @@ msgid "config.tuic_enable.description"
 msgstr "این یک پروتکل مبتنی بر UDP شبیه به quic است"
 
 msgid "config.tuic_enable.label"
-msgstr "فعال کردن TUIC"
+msgstr "🔘 فعال کردن TUIC"
 
 msgid "config.tuic_port.description"
 msgstr "از کاما برای جدا کردن پروت‌ها استفاده کنید مثلا 63000,60000"
@@ -2152,13 +2206,13 @@ msgid "config.vless_enable.description"
 msgstr "فعال کردن پروتکل VLess"
 
 msgid "config.vless_enable.label"
-msgstr "فعال سازی VLess"
+msgstr "⚫️ فعال سازی VLess"
 
 msgid "config.vmess_enable.description"
 msgstr "فعال کردن پروتکل VMess"
 
 msgid "config.vmess_enable.label"
-msgstr "♈️ فعال کردن VMess"
+msgstr "🟣 فعال کردن VMess"
 
 msgid "config.warp-https-domain-for-warp-site"
 msgstr ""
@@ -2274,7 +2328,7 @@ msgid "config.xtls_enable.description"
 msgstr "فعال کردن پروتکل XTLS"
 
 msgid "config.xtls_enable.label"
-msgstr "فعال سازی XTLS"
+msgstr "🟢 فعال سازی XTLS"
 
 msgid "config.invalid uuid"
 msgstr ""

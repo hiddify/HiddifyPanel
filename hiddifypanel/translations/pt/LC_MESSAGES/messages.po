@@ -93,9 +93,6 @@ msgstr "CPU %(cores)s Núcleos "
 msgid "Can add sub admin"
 msgstr "👥 Pode adicionar subadministrador"
 
-msgid "Can not connect to Cloudflare."
-msgstr "Não é possível conectar ao Cloudflare."
-
 msgid "Check again"
 msgstr "Verifique novamente"
 
@@ -1082,6 +1079,9 @@ msgstr "Seletor automático de CDN IP"
 msgid "cdn"
 msgstr "CDN (Cloudflare Proxy, ...)"
 
+msgid "cf-delete.failed"
+msgstr ""
+
 msgid "child has been removed!"
 msgstr "Child removido"
 
@@ -1094,14 +1094,14 @@ msgstr ""
 msgid "child.sync-failed"
 msgstr ""
 
-msgid "child.sync-success"
-msgstr ""
-
 msgid "clickable copy"
 msgstr "Link para mídias sociais"
 
 msgid "close"
 msgstr "Fechar"
+
+msgid "cloudflare.error"
+msgstr ""
 
 msgid "config.Domain already used"
 msgstr "O domínio existe na seção de domínios. Usar outro domínio"
@@ -1355,6 +1355,12 @@ msgstr "config.hidden.description"
 msgid "config.hidden.label"
 msgstr "config.hidden.label"
 
+msgid "config.hiddifycli_enable.description"
+msgstr ""
+
+msgid "config.hiddifycli_enable.label"
+msgstr ""
+
 msgid "config.http.description"
 msgstr "As configurações HTTP podem ser definidas nesta seção"
 
@@ -1463,6 +1469,12 @@ msgstr "config.last_hash.description"
 
 msgid "config.last_hash.label"
 msgstr "config.last_hash.label"
+
+msgid "config.last_priodic_usage_check.description"
+msgstr ""
+
+msgid "config.last_priodic_usage_check.label"
+msgstr ""
 
 msgid "config.license.description"
 msgstr "Para uso comercial deste produto, você deve comprar sua licença"
@@ -1891,6 +1903,48 @@ msgstr ""
 
 msgid "config.ssr_fakedomain.label"
 msgstr "SSR FakeDomain"
+
+msgid "config.sub_full_clash_enable.description"
+msgstr ""
+
+msgid "config.sub_full_clash_enable.label"
+msgstr ""
+
+msgid "config.sub_full_clash_meta_enable.description"
+msgstr ""
+
+msgid "config.sub_full_clash_meta_enable.label"
+msgstr ""
+
+msgid "config.sub_full_links_b64_enable.description"
+msgstr ""
+
+msgid "config.sub_full_links_b64_enable.label"
+msgstr ""
+
+msgid "config.sub_full_links_enable.description"
+msgstr ""
+
+msgid "config.sub_full_links_enable.label"
+msgstr ""
+
+msgid "config.sub_full_singbox_enable.description"
+msgstr ""
+
+msgid "config.sub_full_singbox_enable.label"
+msgstr ""
+
+msgid "config.sub_full_xray_json_enable.description"
+msgstr ""
+
+msgid "config.sub_full_xray_json_enable.label"
+msgstr ""
+
+msgid "config.sub_singbox_ssh_enable.description"
+msgstr ""
+
+msgid "config.sub_singbox_ssh_enable.label"
+msgstr ""
 
 msgid "config.tcp_enable.description"
 msgstr ""
