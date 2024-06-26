@@ -1,0 +1,6 @@
+{% extends 'hiddify-flask-admin/list.html' %}
+
+{% block model_menu_bar %}
+{{ super() }}
+<a href="{{ url_for('flask.proxy.reset_proxies') }}" class="btn btn-primary">{{_('Reset Proxies')}}</a>
+{% endblock %}

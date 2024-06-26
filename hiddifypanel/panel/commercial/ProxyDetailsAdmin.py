@@ -7,18 +7,30 @@ from markupsafe import Markup
 from hiddifypanel.auth import login_required
 from flask_admin.actions import action
 from flask_admin.contrib.sqla import form, filters as sqla_filters, tools
+from flask_admin import expose
+
+
 # Define a custom field type for the related domains
 from hiddifypanel import hutils
 
 
 class ProxyDetailsAdmin(AdminLTEModelView):
-
+    list_template = 'model/proxydetail_list.html'
     column_hide_backrefs = True
     can_create = False
     form_excluded_columns = ['child', 'proto', 'transport', 'cdn']
     column_exclude_list = ['child']
     column_searchable_list = ['name', 'proto', 'transport', 'l3', 'cdn']
     column_editable_list = ['name']
+
+    @expose('reset_proxies')
+    def reset_proxies(self):
+        from hiddifypanel.panel.init_db import get_proxy_rows_v1
+        from hiddifypanel.database import db
+        db.session.bulk_save_objects(get_proxy_rows_v1())
+        db.session.commit()
+        hutils.flask.flash((_('config.validation-success-no-reset')), 'success')  # type: ignore
+        return redirect("./")
 
     @action('disable', 'Disable', 'Are you sure you want to disable selected proxies?')
     def action_disable(self, ids):
