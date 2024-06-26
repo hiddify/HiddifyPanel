@@ -28,7 +28,8 @@ def init_logger():
     # configure logger
     from hiddifypanel.models import ConfigEnum, hconfig
     logger.remove()
-    logger.add(sys.stderr, format=dynamic_formatter, level=hconfig(ConfigEnum.log_level), colorize=True, catch=True, enqueue=True, diagnose=False, backtrace=True)
+    logger.add(sys.stderr, format=dynamic_formatter, level=hconfig(ConfigEnum.log_level),
+               colorize=True, catch=True, enqueue=True, diagnose=False, backtrace=True)
     # logger.trace('Logger initiated :)')
 
 
@@ -97,9 +98,9 @@ def create_app(*args, cli=False, **config):
         # Put your logic here. Application can store locale in
         # user profile, cookie, session, etc.
         if "admin" in request.base_url:
-            g.locale = auth.current_account.lang or hconfig(ConfigEnum.admin_lang) or 'fa'
+            g.locale = hconfig(ConfigEnum.admin_lang) or 'en'
         else:
-            g.locale = auth.current_account.lang or hconfig(ConfigEnum.lang) or 'fa'
+            g.locale = auth.current_account.lang or hconfig(ConfigEnum.lang) or 'en'
         return g.locale
     app.jinja_env.globals['get_locale'] = get_locale
     babel = Babel(app, locale_selector=get_locale)
