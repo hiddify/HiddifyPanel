@@ -471,7 +471,7 @@
     },
     "domain_fronting": {
       "description": "It is used to simulate another website instead of your website in SNI. therefore, GFW can not filter your Domain\n<a href='https://github.com/hiddify/hiddify-config/wiki/%D8%A7%D8%B3%D8%AA%D9%81%D8%A7%D8%AF%D9%87-%D8%A7%D8%B2-%D8%AF%D8%A7%D9%85%DB%8C%D9%86-%D9%81%D8%B1%D8%A7%D9%86%D8%AA%DB%8C%D9%86%DA%AF'>Guide</a>. ⚠️CloudFlare does not support Domain Fronting.",
-      "label": "🔒 Enable TLS Domain Fronting"
+      "label": "🔒 TLS Domain Fronting"
     },
     "domain_fronting_domain": {
       "description": "It is used to simulate another website instead of your website in SNI. therefore, GFW Can not filter your domain.",
@@ -479,11 +479,11 @@
     },
     "domain_fronting_http_enable": {
       "description": "Enabling HTTP Domain Fronting causes your domain to be block quickly.",
-      "label": "Enable HTTP Domain Fronting"
+      "label": "HTTP Domain Fronting"
     },
     "domain_fronting_tls_enable": {
       "description": "In CloudFlare, TLS Domain Fronting is not supported. it will use Port 443 to connect to CDN",
-      "label": "🔒 Enable TLS Domain Fronting"
+      "label": "🔒 TLS Domain Fronting"
     },
     "firewall": {
       "description": "Enabling Firewall will open used Ports (at least 22,443,80 and SSH) and close all other Ports",
@@ -499,11 +499,11 @@
     },
     "grpc_enable": {
       "description": "gRPC is a modern open source high performance Remote Procedure Call (RPC) framework. It can be used in supported CDNs",
-      "label": "➿ Enable gRPC"
+      "label": "➿ gRPC"
     },
     "h2_enable": {
       "description": "Enable HTTP/2 Protocol",
-      "label": "🔵 Enable h2"
+      "label": "🔵 h2"
     },
     "hidden": {
       "description": "config.hidden.description",
@@ -527,7 +527,7 @@
     },
     "httpupgrade_enable": {
       "description": "<p>HTTPUpgrade complete a HTTP 1.1 Upgrade request and response before using the connection directly. It is similar to WebSocket in the way it create an direction channel that can be forwarded by many reverse proxies and CDNs, without the need to deal with all the issue around WebSocket Protocol itself.<br />\n⚠️ <strong>Not Available in Xray based Clients. Only HiddifyNext, Singbox, and V2fly clients are supported.</strong>&nbsp;<a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/Basic-Concepts/#http-upgrade\" target=\"_blank\"><strong>(Read More)</strong></a></p>",
-      "label": "🆙 Enable HTTPUpgrade Method"
+      "label": "🆙 HTTPUpgrade Method"
     },
     "hysteria": {
       "description": "Hysteria is a feature-packed proxy & relay tool optimized for lossy, unstable connections (e.g. satellite networks, congested public Wi-Fi, connecting to foreign servers from China)",
@@ -539,7 +539,7 @@
     },
     "hysteria_enable": {
       "description": "To Enable UDP based Hysteria Protocol",
-      "label": "⚫️ Enable Hysteria2"
+      "label": "⚫️ Hysteria2"
     },
     "hysteria_obfs_enable": {
       "description": " Enables Hysteria Obfuscation (Salamander)",
@@ -564,7 +564,7 @@
     },
     "kcp_enable": {
       "description": "It is a UDP Based Protocol ",
-      "label": "Enable KCP"
+      "label": "KCP"
     },
     "kcp_ports": {
       "description": "Comma separated integers indicating the ports to use as KCP connection.\n",
@@ -608,7 +608,7 @@
     },
     "mux_enable": {
       "description": "<p>Mux needs compatible clients. Mux in Hiddify Next and Singbox are not compatible with XRay.&nbsp;<a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-MUX-works-and-its-usage/\" target=\"_blank\">(Read More)</a></p>",
-      "label": "Ⓜ️ MUX Enable (⚠️ Incompatible With Some Clients)"
+      "label": "Ⓜ️ MUX (⚠️ Incompatible With Some Clients)"
     },
     "mux_max_connections": {
       "description": "Maximum Connections. Conflict with Max Streams",
@@ -716,7 +716,7 @@
     },
     "quic_enable": {
       "description": "Enable QUIC Protocol",
-      "label": "🟡 Enable QUIC"
+      "label": "🟡 QUIC"
     },
     "reality": {
       "description": "REALITY eliminate the Server-Side TLS Fingerprint Feature",
@@ -724,7 +724,7 @@
     },
     "reality_enable": {
       "description": "Enable Reality Protocol",
-      "label": "🔴 Enable Reality"
+      "label": "🔴 Reality"
     },
     "reality_fallback_domain": {
       "description": "When the GFW visit the Websites in Server names, it will be redirect to this Domain.",
@@ -768,7 +768,7 @@
     },
     "shadowsocks2022_enable": {
       "description": "Shadowsocks 2022 is a secure Proxy Protocol for TCP and UDP traffic. The proxy traffic is indistinguishable from a random byte stream, and therefore can circumvent firewalls and Internet censors that rely on DPI (Deep Packet Inspection)",
-      "label": "⭕️ Enable Shadowsocks 2022"
+      "label": "⭕️ Shadowsocks 2022"
     },
     "shadowsocks2022_method": {
       "description": "This method also used in ShadowTLS and SSFakeTLS",
@@ -820,7 +820,7 @@
     },
     "ssh_server_enable": {
       "description": "SSH Proxy is completely different than original SSH Server",
-      "label": "✔️ Enable SSH Proxy"
+      "label": "✔️ SSH Proxy"
     },
     "ssh_server_port": {
       "description": "This is completely different from your original SSH server. It is a dedicated program.",
@@ -836,7 +836,7 @@
     },
     "ssr_enable": {
       "description": "ShadowsocksR is a Fork of the original Shadowsocks project, claimed to be superior in terms of security and stability. Not tested. Not support accounting.",
-      "label": "Enable SSR"
+      "label": "SSR"
     },
     "ssr_fakedomain": {
       "description": "Please use a well known domain In your data center. for example, If you are In Azure data center, microsoft-update.com Is a good example",
@@ -872,7 +872,7 @@
     },
     "tcp_enable": {
       "description": "Enable TCP Protocol",
-      "label": "🟠 Enable TCP"
+      "label": "🟠 TCP"
     },
     "telegram": {
       "description": "A proxy designed for Telegram to bypass Telegram filtering",
@@ -888,7 +888,7 @@
     },
     "telegram_enable": {
       "description": "<p data-pm-slice=\"1 1 []\">Telegram MTProto is used for Encapsulate Telegram Proxy as a tls traffic<br>⚠️ <span style=\"color:#d32f2f;\"><strong>This protocol requires a Direct Domain</strong></span></p>",
-      "label": "✔️ Enable Telegram MTProto"
+      "label": "✔️ Telegram MTProto"
     },
     "telegram_fakedomain": {
       "description": "Please use a well known domain in your data center. for example, If you are in Azure data center, microsoft-update.com is a good example",
@@ -904,7 +904,7 @@
     },
     "tls_fragment_enable": {
       "description": "<p>Under some circumstances, it can bypass the SNI blacklist system. <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-the-TLS-Trick-works-and-its-usage/\" target=\"_blank\">(Read More)</a></p>",
-      "label": "⏯ Enable TLS Fragment"
+      "label": "⏯ TLS Fragment"
     },
     "tls_fragment_size": {
       "description": "The Size of each Packet",
@@ -916,11 +916,11 @@
     },
     "tls_mixed_case": {
       "description": "Enables TLS Mixed SNI Case Fragmentation",
-      "label": "🔠 Enable TLS Mixed SNI Case"
+      "label": "🔠 TLS Mixed SNI Case"
     },
     "tls_padding_enable": {
       "description": "<p>Enables Padding for TLS Fragmentation. <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-the-TLS-Trick-works-and-its-usage/#tls-padding\" target=\"_blank\">(Read More)</a></p>",
-      "label": "♒️ Enable TLS Padding"
+      "label": "♒️ TLS Padding"
     },
     "tls_padding_length": {
       "description": "The length of the Padding for TLS Fragmentation",
@@ -944,7 +944,7 @@
     },
     "trojan_enable": {
       "description": "Enable Trojan Protocol",
-      "label": "🟤 Enable Trojan"
+      "label": "🟤 Trojan"
     },
     "tuic": {
       "description": "Delicately-TUICed High-Performance proxy is on top of the QUIC protocol. \n\nTUIC's goal is to minimize the handshake latency as much as possible",
@@ -952,7 +952,7 @@
     },
     "tuic_enable": {
       "description": "It is a UDP based protocol similar to QUIC",
-      "label": "⚫️ Enable TUIC"
+      "label": "⚫️ TUIC"
     },
     "tuic_port": {
       "description": "Use comma to separate ports like ( 63000,60000 )",
@@ -968,18 +968,18 @@
     },
     "v2ray_enable": {
       "description": "V2ray does not support accounting and not suggested",
-      "label": "♈️ Enable V2Ray "
+      "label": "♈️ V2Ray "
     },
     "validation-error": "There is an error in one of the fields.",
     "validation-success": "Configs have been changed successfully. Click %(link)s to apply the configs. It may take 2 minutes to apply",
     "validation-success-no-reset": " ✅ Configs have been changed successfully",
     "vless_enable": {
       "description": "Enable VLess Protocol",
-      "label": "⚫️ Enable VLess"
+      "label": "⚫️ VLess"
     },
     "vmess_enable": {
       "description": "Active VMess Protocol",
-      "label": "🟣 Enable VMess"
+      "label": "🟣 VMess"
     },
     "warp-https-domain-for-warp-site": "config.warp-https-domain-for-warp-site",
     "warp": {
@@ -988,7 +988,7 @@
     },
     "warp_enable": {
       "description": "Warp helps you bypass Google, Spotify and Netflix restrictions by hiding server IP ",
-      "label": "Enable WARP+"
+      "label": "WARP+"
     },
     "warp_mode": {
       "description": "✴️ All : All Sites use Warp IPs in outbound\n<br>\n☑️ Only Domestic and Blocked Sites: Only Domestic Sites and websites like Google, Spotify, Netflix, OpenAi, IPinfo.io use Warp IPs in outbound",
@@ -1008,7 +1008,7 @@
     },
     "wireguard_enable": {
       "description": "<p>WireGuard is UDP based protocol. (⚠️ It is Working In <a href=\"https://github.com/hiddify/hiddify-next\" target=\"_blank\">Hiddify Next</a>)</p>",
-      "label": "🐉 Enable WireGuard"
+      "label": "🐉 WireGuard"
     },
     "wireguard_ipv4": {
       "description": "-",
@@ -1036,11 +1036,11 @@
     },
     "ws_enable": {
       "description": "Websocket creates a tunnel over HTTP that is useful to be used in CDN",
-      "label": "🔰 Enable Websocket"
+      "label": "🔰 Websocket"
     },
     "xtls_enable": {
       "description": "Enable XTLS Protocol",
-      "label": "🟢 Enable XTLS"
+      "label": "🟢 XTLS"
     },
     "invalid uuid": "Invalid UUID secret. example: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n\n"
   },
@@ -1055,7 +1055,7 @@
     "domain": "Domain",
     "domain_fronting": {
       "description": "It is used to simulate another website instead of your website in SNI. therefore, GFW can not filter your Domain\n<a href='https://github.com/hiddify/hiddify-config/wiki/Guide-for-domain-fronting'>Guide</a>. ⚠️CloudFlare does not support Domain Fronting.",
-      "label": "🔒 Enable TLS Domain Fronting"
+      "label": "🔒 TLS Domain Fronting"
     },
     "ip": "IP",
     "mode": "Mode"
