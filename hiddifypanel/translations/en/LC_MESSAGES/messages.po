@@ -674,6 +674,9 @@ msgstr "Rename File"
 msgid "Reset Filters"
 msgstr "Reset Filters"
 
+msgid "Reset Proxies"
+msgstr "Reset Proxies"
+
 msgid "Reset Usage Time:"
 msgstr "Traffic usage reset time:"
 
@@ -1344,7 +1347,7 @@ msgstr ""
 "<a href='https://github.com/hiddify/hiddify-config/wiki/%D8%A7%D8%B3%D8%AA%D9%81%D8%A7%D8%AF%D9%87-%D8%A7%D8%B2-%D8%AF%D8%A7%D9%85%DB%8C%D9%86-%D9%81%D8%B1%D8%A7%D9%86%D8%AA%DB%8C%D9%86%DA%AF'>Guide</a>. ⚠️CloudFlare does not support Domain Fronting."
 
 msgid "config.domain_fronting.label"
-msgstr "🔒 Enable TLS Domain Fronting"
+msgstr "🔒 TLS Domain Fronting"
 
 msgid "config.domain_fronting_domain.description"
 msgstr ""
@@ -1358,7 +1361,7 @@ msgid "config.domain_fronting_http_enable.description"
 msgstr "Enabling HTTP Domain Fronting causes your domain to be block quickly."
 
 msgid "config.domain_fronting_http_enable.label"
-msgstr "Enable HTTP Domain Fronting"
+msgstr "HTTP Domain Fronting"
 
 msgid "config.domain_fronting_tls_enable.description"
 msgstr ""
@@ -1366,7 +1369,7 @@ msgstr ""
 " connect to CDN"
 
 msgid "config.domain_fronting_tls_enable.label"
-msgstr "🔒 Enable TLS Domain Fronting"
+msgstr "🔒 TLS Domain Fronting"
 
 msgid "config.firewall.description"
 msgstr ""
@@ -1394,13 +1397,13 @@ msgstr ""
 "framework. It can be used in supported CDNs"
 
 msgid "config.grpc_enable.label"
-msgstr "➿ Enable gRPC"
+msgstr "➿ gRPC"
 
 msgid "config.h2_enable.description"
 msgstr "Enable HTTP/2 Protocol"
 
 msgid "config.h2_enable.label"
-msgstr "🔵 Enable h2"
+msgstr "🔵 h2"
 
 msgid "config.hidden.description"
 msgstr "config.hidden.description"
@@ -1442,7 +1445,7 @@ msgstr ""
 "⚠️ <strong>Not Available in Xray based Clients. Only HiddifyNext, Singbox, and V2fly clients are supported.</strong>&nbsp;<a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/Basic-Concepts/#http-upgrade\" target=\"_blank\"><strong>(Read More)</strong></a></p>"
 
 msgid "config.httpupgrade_enable.label"
-msgstr "🆙 Enable HTTPUpgrade Method"
+msgstr "🆙 HTTPUpgrade Method"
 
 msgid "config.hysteria.description"
 msgstr ""
@@ -1463,7 +1466,7 @@ msgid "config.hysteria_enable.description"
 msgstr "To Enable UDP based Hysteria Protocol"
 
 msgid "config.hysteria_enable.label"
-msgstr "⚫️ Enable Hysteria2"
+msgstr "⚫️ Hysteria2"
 
 msgid "config.hysteria_obfs_enable.description"
 msgstr " Enables Hysteria Obfuscation (Salamander)"
@@ -1503,7 +1506,7 @@ msgid "config.kcp_enable.description"
 msgstr "It is a UDP Based Protocol "
 
 msgid "config.kcp_enable.label"
-msgstr "Enable KCP"
+msgstr "KCP"
 
 msgid "config.kcp_ports.description"
 msgstr ""
@@ -1574,7 +1577,7 @@ msgstr ""
 "target=\"_blank\">(Read More)</a></p>"
 
 msgid "config.mux_enable.label"
-msgstr "Ⓜ️ MUX Enable (⚠️ Incompatible With Some Clients)"
+msgstr "Ⓜ️ MUX (⚠️ Incompatible With Some Clients)"
 
 msgid "config.mux_max_connections.description"
 msgstr "Maximum Connections. Conflict with Max Streams"
@@ -1749,7 +1752,7 @@ msgid "config.quic_enable.description"
 msgstr "Enable QUIC Protocol"
 
 msgid "config.quic_enable.label"
-msgstr "🟡 Enable QUIC"
+msgstr "🟡 QUIC"
 
 msgid "config.reality.description"
 msgstr "REALITY eliminate the Server-Side TLS Fingerprint Feature"
@@ -1761,7 +1764,7 @@ msgid "config.reality_enable.description"
 msgstr "Enable Reality Protocol"
 
 msgid "config.reality_enable.label"
-msgstr "🔴 Enable Reality"
+msgstr "🔴 Reality"
 
 msgid "config.reality_fallback_domain.description"
 msgstr ""
@@ -1835,7 +1838,7 @@ msgstr ""
 "Inspection)"
 
 msgid "config.shadowsocks2022_enable.label"
-msgstr "⭕️ Enable Shadowsocks 2022"
+msgstr "⭕️ Shadowsocks 2022"
 
 msgid "config.shadowsocks2022_method.description"
 msgstr "This method also used in ShadowTLS and SSFakeTLS"
@@ -1934,7 +1937,7 @@ msgid "config.ssh_server_enable.description"
 msgstr "SSH Proxy is completely different than original SSH Server"
 
 msgid "config.ssh_server_enable.label"
-msgstr "✔️ Enable SSH Proxy"
+msgstr "✔️ SSH Proxy"
 
 msgid "config.ssh_server_port.description"
 msgstr ""
@@ -1965,7 +1968,7 @@ msgstr ""
 "accounting."
 
 msgid "config.ssr_enable.label"
-msgstr "Enable SSR"
+msgstr "SSR"
 
 msgid "config.ssr_fakedomain.description"
 msgstr ""
@@ -2006,10 +2009,14 @@ msgid "config.sub_full_singbox_enable.label"
 msgstr "config.sub_full_singbox_enable.label"
 
 msgid "config.sub_full_xray_json_enable.description"
-msgstr "config.sub_full_xray_json_enable.description"
+msgstr ""
+"XRay full link provides comprehensive configuration options for XRay-"
+"specific settings. This includes custom fragmentation and multiplexing (mux)"
+" in applications such as v2rayNG that support XRay protocols for fine-tuned "
+"control over XRay proxy setup."
 
 msgid "config.sub_full_xray_json_enable.label"
-msgstr "config.sub_full_xray_json_enable.label"
+msgstr "XRay Full Config Link"
 
 msgid "config.sub_singbox_ssh_enable.description"
 msgstr "config.sub_singbox_ssh_enable.description"
@@ -2021,13 +2028,13 @@ msgid "config.tcp_enable.description"
 msgstr "Enable TCP Protocol"
 
 msgid "config.tcp_enable.label"
-msgstr "🟠 Enable TCP"
+msgstr "🟠 TCP"
 
 msgid "config.telegram.description"
 msgstr "A proxy designed for Telegram to bypass Telegram filtering"
 
 msgid "config.telegram.label"
-msgstr "Telegram Proxy "
+msgstr "Telegram Configs"
 
 msgid "config.telegram_adtag.description"
 msgstr ""
@@ -2054,7 +2061,7 @@ msgstr ""
 "Domain</strong></span></p>"
 
 msgid "config.telegram_enable.label"
-msgstr "✔️ Enable Telegram MTProto"
+msgstr "✔️ Telegram MTProto"
 
 msgid "config.telegram_fakedomain.description"
 msgstr ""
@@ -2086,7 +2093,7 @@ msgstr ""
 "the-TLS-Trick-works-and-its-usage/\" target=\"_blank\">(Read More)</a></p>"
 
 msgid "config.tls_fragment_enable.label"
-msgstr "⏯ Enable TLS Fragment"
+msgstr "⏯ TLS Fragment"
 
 msgid "config.tls_fragment_size.description"
 msgstr "The Size of each Packet"
@@ -2104,7 +2111,7 @@ msgid "config.tls_mixed_case.description"
 msgstr "Enables TLS Mixed SNI Case Fragmentation"
 
 msgid "config.tls_mixed_case.label"
-msgstr "🔠 Enable TLS Mixed SNI Case"
+msgstr "🔠 TLS Mixed SNI Case"
 
 msgid "config.tls_padding_enable.description"
 msgstr ""
@@ -2114,7 +2121,7 @@ msgstr ""
 "More)</a></p>"
 
 msgid "config.tls_padding_enable.label"
-msgstr "♒️ Enable TLS Padding"
+msgstr "♒️ TLS Padding"
 
 msgid "config.tls_padding_length.description"
 msgstr "The length of the Padding for TLS Fragmentation"
@@ -2154,7 +2161,7 @@ msgid "config.trojan_enable.description"
 msgstr "Enable Trojan Protocol"
 
 msgid "config.trojan_enable.label"
-msgstr "🟤 Enable Trojan"
+msgstr "🟤 Trojan"
 
 msgid "config.tuic.description"
 msgstr ""
@@ -2169,7 +2176,7 @@ msgid "config.tuic_enable.description"
 msgstr "It is a UDP based protocol similar to QUIC"
 
 msgid "config.tuic_enable.label"
-msgstr "⚫️ Enable TUIC"
+msgstr "⚫️ TUIC"
 
 msgid "config.tuic_port.description"
 msgstr "Use comma to separate ports like ( 63000,60000 )"
@@ -2195,7 +2202,7 @@ msgid "config.v2ray_enable.description"
 msgstr "V2ray does not support accounting and not suggested"
 
 msgid "config.v2ray_enable.label"
-msgstr "♈️ Enable V2Ray "
+msgstr "♈️ V2Ray "
 
 msgid "config.validation-error"
 msgstr "There is an error in one of the fields."
@@ -2212,13 +2219,13 @@ msgid "config.vless_enable.description"
 msgstr "Enable VLess Protocol"
 
 msgid "config.vless_enable.label"
-msgstr "⚫️ Enable VLess"
+msgstr "⚫️ VLess"
 
 msgid "config.vmess_enable.description"
 msgstr "Active VMess Protocol"
 
 msgid "config.vmess_enable.label"
-msgstr "🟣 Enable VMess"
+msgstr "🟣 VMess"
 
 msgid "config.warp-https-domain-for-warp-site"
 msgstr "config.warp-https-domain-for-warp-site"
@@ -2238,7 +2245,7 @@ msgstr ""
 "server IP "
 
 msgid "config.warp_enable.label"
-msgstr "Enable WARP+"
+msgstr "WARP+"
 
 msgid "config.warp_mode.description"
 msgstr ""
@@ -2283,7 +2290,7 @@ msgstr ""
 "Next</a>)</p>"
 
 msgid "config.wireguard_enable.label"
-msgstr "🐉 Enable WireGuard"
+msgstr "🐉 WireGuard"
 
 msgid "config.wireguard_ipv4.description"
 msgstr "-"
@@ -2327,13 +2334,13 @@ msgid "config.ws_enable.description"
 msgstr "Websocket creates a tunnel over HTTP that is useful to be used in CDN"
 
 msgid "config.ws_enable.label"
-msgstr "🔰 Enable Websocket"
+msgstr "🔰 Websocket"
 
 msgid "config.xtls_enable.description"
 msgstr "Enable XTLS Protocol"
 
 msgid "config.xtls_enable.label"
-msgstr "🟢 Enable XTLS"
+msgstr "🟢 XTLS"
 
 msgid "config.invalid uuid"
 msgstr ""
@@ -2374,7 +2381,7 @@ msgstr ""
 "<a href='https://github.com/hiddify/hiddify-config/wiki/Guide-for-domain-fronting'>Guide</a>. ⚠️CloudFlare does not support Domain Fronting."
 
 msgid "domain.domain_fronting.label"
-msgstr "🔒 Enable TLS Domain Fronting"
+msgstr "🔒 TLS Domain Fronting"
 
 msgid "domain.ip"
 msgstr "IP"

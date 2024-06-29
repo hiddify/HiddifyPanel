@@ -5,6 +5,8 @@
 
 #### New
 
+* Add reset proxies. 
+
 * Optimize priodic reset usage. 
 
 #### Changes
@@ -38,6 +40,8 @@
 * Refactor. 
 
 #### Fix
+
+* Lang change in admin. 
 
 * Custom type. 
 
@@ -94,6 +98,16 @@
 * Sub bug. 
 
 #### Other
+
+* Remove enable keyword in translations. 
+
+* Update translations. 
+
+* Merge branch 'main' of github.com:hiddify/Hiddify-Panel. 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
 
 * Explicitly remove expiry date. 
 

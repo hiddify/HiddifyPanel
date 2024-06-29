@@ -662,6 +662,9 @@ msgstr "تغییر نام پرونده"
 msgid "Reset Filters"
 msgstr "برگرداندن فیلتر ها به حالت اول"
 
+msgid "Reset Proxies"
+msgstr ""
+
 msgid "Reset Usage Time:"
 msgstr "زمان صفر شدن حجم:"
 
@@ -1379,13 +1382,13 @@ msgstr ""
 "می توان از آن در CDN های پشتیبانی شده استفاده کرد"
 
 msgid "config.grpc_enable.label"
-msgstr "➿ gRPC را فعال کنید"
+msgstr "➿ gRPC"
 
 msgid "config.h2_enable.description"
 msgstr "فعال کردن پروتکل HTTP/2"
 
 msgid "config.h2_enable.label"
-msgstr "🔵 فعال سازی h2"
+msgstr "🔵 h2"
 
 msgid "config.hidden.description"
 msgstr "-"
@@ -1423,11 +1426,16 @@ msgstr "☑️ اجازه اتصال HTTP"
 
 msgid "config.httpupgrade_enable.description"
 msgstr ""
-"<p style=\"direction:rtl\">HTTPUpgrade یک درخواست ارتقاء HTTP ۱.۱ است و پاسخ را قبل از استفاده مستقیم از اتصال تکمیل می کند. این شبیه به WebSocket است که یک کانال ایجاد می کند که می تواند توسط بسیاری از پروکسی های معکوس و CDN ها ارسال شود، بدون اینکه نیازی به رسیدگی به تمام مسائل پیرامون خود پروتکل WebSocket باشد.<br />\n"
-"⚠️ <strong>در نرم افزارهای مبتنی بر XRay موجود نیست. فقط نرم افزارهای HiddifyNext، Singbox و V۲fly پشتیبانی می شوند.&nbsp;</strong><a href=\"https://hiddify.com/fa/manager/basic-concepts-and-troubleshooting/Basic-Concepts/#http-upgarde\" target=\"_blank\"><strong>(بیشتر بدانید)</strong></a></p>"
+"<p style=\"direction:rtl\">HTTPUpgrade یک درخواست ارتقاء HTTP ۱.۱ است و پاسخ"
+" را قبل از استفاده مستقیم از اتصال تکمیل می کند. این شبیه به WebSocket است "
+"که یک کانال ایجاد می کند که می تواند توسط بسیاری از پروکسی های معکوس و CDN "
+"ها ارسال شود، بدون اینکه نیازی به رسیدگی به تمام مسائل پیرامون خود پروتکل "
+"WebSocket باشد.<br /><a href=\"https://hiddify.com/fa/manager/basic-"
+"concepts-and-troubleshooting/Basic-Concepts/#http-upgarde\" "
+"target=\"_blank\"><strong>(بیشتر بدانید)</strong></a></p>"
 
 msgid "config.httpupgrade_enable.label"
-msgstr "🆙 فعالسازی HTTPUpgrade"
+msgstr "🆙 HTTPUpgrade"
 
 msgid "config.hysteria.description"
 msgstr ""
@@ -1448,13 +1456,13 @@ msgid "config.hysteria_enable.description"
 msgstr "برای فعال کردن پروتکل هیستریا مبتنی بر UDP"
 
 msgid "config.hysteria_enable.label"
-msgstr "⚪️ هیستریا را فعال کنید"
+msgstr "⚪️ هیستریا"
 
 msgid "config.hysteria_obfs_enable.description"
 msgstr "مبهم سازی هیستری (Salamander) را فعال می کند"
 
 msgid "config.hysteria_obfs_enable.label"
-msgstr "🎛 Hysteria OBFS را فعال کنید"
+msgstr "🎛 Hysteria OBFS"
 
 msgid "config.hysteria_port.description"
 msgstr "پورت Hysteria UDP برای مثال 5678"
@@ -1487,7 +1495,7 @@ msgid "config.kcp_enable.description"
 msgstr "این یک پروتکل مبتنی بر UDP است."
 
 msgid "config.kcp_enable.label"
-msgstr "KCP را فعال کنید."
+msgstr "KCP."
 
 msgid "config.kcp_ports.description"
 msgstr ""
@@ -1740,7 +1748,7 @@ msgid "config.quic_enable.description"
 msgstr "فعال کردن پروتکل QUIC"
 
 msgid "config.quic_enable.label"
-msgstr "🟡 فعال سازی QUIC"
+msgstr "🟡 QUIC"
 
 msgid "config.reality.description"
 msgstr "REALITY قابلیت اثر انگشت TLS سمت سرور را حذف می کند"
@@ -1752,7 +1760,7 @@ msgid "config.reality_enable.description"
 msgstr "فعال کردن پروتکل Reality"
 
 msgid "config.reality_enable.label"
-msgstr "🔴 فعال سازی Reality"
+msgstr "🔴 Reality"
 
 msgid "config.reality_fallback_domain.description"
 msgstr ""
@@ -1827,7 +1835,7 @@ msgstr ""
 "ها و سانسورهای اینترنتی را که به DPI (بازرسی عمیق بسته) متکی هستند، دور بزند"
 
 msgid "config.shadowsocks2022_enable.label"
-msgstr "⭕️ Shadowsocks 2022 را فعال کنید"
+msgstr "⭕️ Shadowsocks 2022"
 
 msgid "config.shadowsocks2022_method.description"
 msgstr "این روش در ShadowTLS و SSFakeTLS نیز استفاده می شود"
@@ -1929,7 +1937,7 @@ msgstr ""
 "ندارد"
 
 msgid "config.ssh_server_enable.label"
-msgstr "✔️ پروکسی SSH را فعال کنید"
+msgstr "✔️ پروکسی SSH"
 
 msgid "config.ssh_server_port.description"
 msgstr ""
@@ -2001,9 +2009,13 @@ msgstr ""
 
 msgid "config.sub_full_xray_json_enable.description"
 msgstr ""
+"لینک کامل XRay  گزینه های پیکربندی جامعی را برای تنظیمات خاص XRay فراهم می "
+"کند. این شامل تقسیم بندی سفارشی و چندگانه سازی (mux) در برنامه هایی مانند "
+"v2rayNG است که از پروتکل های XRay برای کنترل دقیق تنظیم پراکسی XRay پشتیبانی"
+" می کند."
 
 msgid "config.sub_full_xray_json_enable.label"
-msgstr ""
+msgstr "لینک پیکربندی کامل XRay"
 
 msgid "config.sub_singbox_ssh_enable.description"
 msgstr ""
@@ -2015,7 +2027,7 @@ msgid "config.tcp_enable.description"
 msgstr "فعال کردن پروتکل TCP"
 
 msgid "config.tcp_enable.label"
-msgstr "🟠 فعال سازی TCP"
+msgstr "🟠 TCP"
 
 msgid "config.telegram.description"
 msgstr ""
@@ -2023,7 +2035,7 @@ msgstr ""
 "دور بزند"
 
 msgid "config.telegram.label"
-msgstr "پروکسی تلگرام"
+msgstr "تنظیمات تلگرام"
 
 msgid "config.telegram_adtag.description"
 msgstr ""
@@ -2082,7 +2094,7 @@ msgstr ""
 "target=\"_blank\">(بیشتر بدانید)</a></p>"
 
 msgid "config.tls_fragment_enable.label"
-msgstr "⏯ TLS Fragment را فعال کنید"
+msgstr "⏯ TLS Fragment"
 
 msgid "config.tls_fragment_size.description"
 msgstr "اندازه هر بسته"
@@ -2100,7 +2112,7 @@ msgid "config.tls_mixed_case.description"
 msgstr "TLS Mixed SNI Case Fragmentation را فعال می کند"
 
 msgid "config.tls_mixed_case.label"
-msgstr "🔠 TLS Mixed SNI Case را فعال کنید"
+msgstr "🔠 TLS Mixed SNI Case"
 
 msgid "config.tls_padding_enable.description"
 msgstr ""
@@ -2110,7 +2122,7 @@ msgstr ""
 "target=\"_blank\">(بیشتر بدانید)</a></p>"
 
 msgid "config.tls_padding_enable.label"
-msgstr "♒️ TLS Padding را فعال کنید"
+msgstr "♒️ TLS Padding"
 
 msgid "config.tls_padding_length.description"
 msgstr "طول Padding برای تکه تکه شدن TLS"
@@ -2149,7 +2161,7 @@ msgid "config.trojan_enable.description"
 msgstr "فعال کردن پروتکل Trojan"
 
 msgid "config.trojan_enable.label"
-msgstr "🟤 فعال سازی Trojan"
+msgstr "🟤 Trojan"
 
 msgid "config.tuic.description"
 msgstr ""
@@ -2189,7 +2201,7 @@ msgid "config.v2ray_enable.description"
 msgstr "مود V2Ray در حال حاضر اکانتینگ را پشتیبانی نمیکند و پیشنهاد نمیشود"
 
 msgid "config.v2ray_enable.label"
-msgstr "♈️ فعالسازی V2Ray"
+msgstr "♈️ V2Ray"
 
 msgid "config.validation-error"
 msgstr "یکی از فیلدها دچار خطا شده است."
@@ -2206,7 +2218,7 @@ msgid "config.vless_enable.description"
 msgstr "فعال کردن پروتکل VLess"
 
 msgid "config.vless_enable.label"
-msgstr "⚫️ فعال سازی VLess"
+msgstr "⚫️ VLess"
 
 msgid "config.vmess_enable.description"
 msgstr "فعال کردن پروتکل VMess"
@@ -2232,7 +2244,7 @@ msgstr ""
 "مخفی‌سازی آیپی سرور دور بزنید."
 
 msgid "config.warp_enable.label"
-msgstr "فعالسازی +WARP"
+msgstr "+WARP"
 
 msgid "config.warp_mode.description"
 msgstr ""
@@ -2277,7 +2289,7 @@ msgstr ""
 "Next</a> کار می کند)</p>"
 
 msgid "config.wireguard_enable.label"
-msgstr "🐉 فعال سازی وایرگارد"
+msgstr "🐉 وایرگارد"
 
 msgid "config.wireguard_ipv4.description"
 msgstr "-"
@@ -2322,13 +2334,13 @@ msgstr ""
 "Websocket یک تونل روی HTTP ایجاد می کند که برای استفاده در CDN مفید است"
 
 msgid "config.ws_enable.label"
-msgstr "🔰 Websocket را فعال کنید"
+msgstr "🔰 Websocket"
 
 msgid "config.xtls_enable.description"
 msgstr "فعال کردن پروتکل XTLS"
 
 msgid "config.xtls_enable.label"
-msgstr "🟢 فعال سازی XTLS"
+msgstr "🟢 XTLS"
 
 msgid "config.invalid uuid"
 msgstr ""
