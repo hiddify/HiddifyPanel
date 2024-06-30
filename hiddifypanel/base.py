@@ -18,19 +18,19 @@ from loguru import logger
 from hiddifypanel.panel.init_db import init_db
 
 
-def init_logger():
-    def dynamic_formatter(record) -> str:
-        fmt = '<green>{time:YYYY-MM-DD HH:mm:ss}</green> | <level>{level: <8}</level> | <cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - <level>{message}</level>'
-        if record['extra']:
-            fmt += ' | <level>{extra}</level>'
-        return fmt + '\n'
+def logger_dynamic_formatter(record) -> str:
+    fmt = '<green>{time:YYYY-MM-DD HH:mm:ss}</green> | <level>{level: <8}</level> | <cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - <level>{message}</level>'
+    if record['extra']:
+        fmt += ' | <level>{extra}</level>'
+    return fmt + '\n'
 
+
+def init_logger(app, cli):
     # configure logger
-    from hiddifypanel.models import ConfigEnum, hconfig
     logger.remove()
-    logger.add(sys.stderr, format=dynamic_formatter, level=hconfig(ConfigEnum.log_level),
+    logger.add(sys.stderr if cli else sys.stdout, format=logger_dynamic_formatter, level=app.config['STDOUT_LOG_LEVEL'],
                colorize=True, catch=True, enqueue=True, diagnose=False, backtrace=True)
-    # logger.trace('Logger initiated :)')
+    logger.trace('Logger initiated :)')
 
 
 # TODO: refactor this function
@@ -40,7 +40,7 @@ def create_app(*args, cli=False, **config):
     app = APIFlask(__name__, static_url_path="/<proxy_path>/static/", instance_relative_config=True, version='2.0.0', title="Hiddify API",
                    openapi_blueprint_url_prefix="/<proxy_path>/api", docs_ui='elements', json_errors=False, enable_openapi=not cli)
     # app = Flask(__name__, static_url_path="/<proxy_path>/static/", instance_relative_config=True)
-
+    init_logger(app, cli)
     if not cli:
         from hiddifypanel.cache import redis_client
         from hiddifypanel import auth
@@ -91,8 +91,8 @@ def create_app(*args, cli=False, **config):
     hiddifypanel.database.init_app(app)
     with app.app_context():
         init_db()
-
-        init_logger()
+        logger.add(app.config['HIDDIFY_CONFIG_PATH'] + "/log/system/panel.log", format=logger_dynamic_formatter, level=hconfig(ConfigEnum.log_level),
+                   colorize=True, catch=True, enqueue=True, diagnose=False, backtrace=True)
 
     def get_locale():
         # Put your logic here. Application can store locale in

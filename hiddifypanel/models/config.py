@@ -9,11 +9,7 @@ from hiddifypanel.models.child import Child, ChildMode
 from sqlalchemy import Column, String, Boolean, Enum, ForeignKey, Integer
 from strenum import StrEnum
 from sqlalchemy_serializer import SerializerMixin
-
-
-def error(st):
-    from hiddifypanel.hutils.utils import error as err
-    err(st)
+from loguru import logger
 
 
 class BoolConfig(db.Model, SerializerMixin):
@@ -74,15 +70,15 @@ def hconfig(key: ConfigEnum, child_id: Optional[int] = None):  # -> str | int | 
             if bool_conf:
                 value = bool_conf.value
             else:
-                error(f'bool {key} not found ')
+                logger.warning(f'bool {key} not found ')
         else:
             str_conf = StrConfig.query.filter(StrConfig.key == key, StrConfig.child_id == child_id).first()
             if str_conf:
                 value = str_conf.value
             else:
-                error(f'str {key} not found ')
+                logger.warning(f'str {key} not found ')
     except BaseException:
-        error(f'{key} error!')
+        logger.exception(f'{key} error!')
         raise
     if value != None:
         if key.type == int:
@@ -97,7 +93,6 @@ def set_hconfig(key: ConfigEnum, value: str | int | bool, child_id: int | None =
     if child_id is None:
         child_id = Child.current().id
 
-    print(f"chainging .... {key}---{value}---{child_id}---{commit}")
     if key.type == int and value != None:
         int(value)  # for testing int
 
@@ -127,7 +122,7 @@ def set_hconfig(key: ConfigEnum, value: str | int | bool, child_id: int | None =
         else:
             old_v = dbconf.value
     dbconf.value = value
-    error(f"changing {key} from {old_v} to {value}")
+    logger.trace(f"changing {key} from {old_v} to {value}")
     Events.config_changed.notify(conf=dbconf, old_value=old_v)
 
     if child_id == 0 and key.hide_in_virtual_child:
@@ -171,11 +166,9 @@ def add_or_update_config(commit: bool = True, child_id: int | None = None, overr
 def bulk_register_configs(hconfigs, commit: bool = True, froce_child_unique_id: str | None = None, override_unique_id: bool = True):
     from hiddifypanel.panel import hiddify
     for conf in hconfigs:
-        # print(conf)
         if conf['key'] == ConfigEnum.unique_id and not override_unique_id:
             continue
         child_id = hiddify.get_child(unique_id=froce_child_unique_id)
-        # print(conf, child_id, conf.get('child_unique_id', None), override_child_unique_id)
         add_or_update_config(commit=False, child_id=child_id, **conf)
     if commit:
         db.session.commit()

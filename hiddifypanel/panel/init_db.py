@@ -13,7 +13,7 @@ from hiddifypanel.panel import hiddify
 from hiddifypanel.database import db, db_execute
 from flask import g
 from sqlalchemy import text
-
+from loguru import logger
 MAX_DB_VERSION = 90
 
 
@@ -564,7 +564,6 @@ def add_config_if_not_exist(key: ConfigEnum, val: str | int, child_id: int | Non
         child_id = Child.current().id
 
     old_val = hconfig(key, child_id)
-    hutils.utils.error(f'{key}, {val}, {child_id}, {old_val}')
     if old_val is None:
         set_hconfig(key, val)
 
@@ -583,7 +582,7 @@ def execute(query: str):
 
         db_execute(query)
     except BaseException as e:
-        hutils.utils.error(e)
+        logger.debug(e)
         pass
 
 
@@ -599,7 +598,7 @@ def add_new_enum_values():
 
         # Get the existing values in the enum
         existing_values = [f'{e}' if isinstance(e, ConfigEnum) else e.value for e in enum_class]
-        # print("existing_values--------------", existing_values)
+
         # Get the values in the enum column in the database
         # result = db.engine.execute(f"SELECT DISTINCT `{column_name}` FROM {table_name}")
         # db_values = {row[0] for row in result}
@@ -616,7 +615,7 @@ def add_new_enum_values():
         # Find the new values that need to be added to the enum column in the database
         new_values = set(existing_values) - set(db_values)
         old_values = set(db_values) - set(existing_values)
-        # print('new_values-=-----------------', new_values)
+
         if len(new_values) == 0 and len(old_values) == 0:
             continue
 
@@ -642,14 +641,14 @@ def upgrade_database():
     if not os.path.isdir(backup_root) or len(os.listdir(backup_root)) == 0:
         if os.path.isfile(sqlite_db):
             os.rename(sqlite_db, sqlite_db + ".old")
-        hutils.utils.error("no backup found...")
+        logger.info("no backup found...")
         return
     if os.path.isfile(sqlite_db):
-        hutils.utils.error("Finding Old Version Database... importing configs from latest backup")
+        logger.info("Finding Old Version Database... importing configs from latest backup")
         newest_file = max([(f, os.path.getmtime(os.path.join(backup_root, f)))
                           for f in os.listdir(backup_root) if os.path.isfile(os.path.join(backup_root, f))], key=lambda x: x[1])[0]
         with open(f'{backup_root}{newest_file}', 'r') as f:
-            hutils.utils.error(f"importing configs from {newest_file}")
+            logger.info(f"importing configs from {newest_file}")
             json_data = json.load(f)
             hiddify.set_db_from_json(json_data,
                                      set_users=True,
@@ -667,7 +666,7 @@ def upgrade_database():
             os.rename(sqlite_db, sqlite_db + ".old")
             set_hconfig(ConfigEnum.db_version, db_version, commit=True)
 
-        hutils.utils.error("Upgrading to the new dataset succuess.")
+        logger.info("Upgrading to the new dataset succuess.")
 
 
 def init_db():
@@ -700,7 +699,7 @@ def init_db():
             if not db_action or (start_version == 0 and ver == 10):
                 continue
 
-            hutils.utils.error(f"Updating db from version {db_version} for node {child.id}")
+            logger.info(f"Updating db from version {db_version} for node {child.id}")
 
             if ver < 70:
                 if child.id != 0:
@@ -710,7 +709,7 @@ def init_db():
                 db_action(child.id)
 
             Events.db_init_event.notify(db_version=db_version)
-            hutils.utils.error(f"Updated successfuly db from version {db_version} to {ver}")
+            logger.info(f"Updated successfuly db from version {db_version} to {ver}")
 
             db_version = ver
             db.session.commit()
