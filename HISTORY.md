@@ -11,6 +11,8 @@
 
 #### Changes
 
+* Better logging. 
+
 * Fix red lines for hconfig. 
 
 * Fix & refactor cloudflare api codes. 
@@ -40,6 +42,8 @@
 * Refactor. 
 
 #### Fix
+
+* Bug. 
 
 * Lang change in admin. 
 
@@ -98,6 +102,10 @@
 * Sub bug. 
 
 #### Other
+
+* Update. 
+
+* Update translations. 
 
 * Remove enable keyword in translations. 
 
