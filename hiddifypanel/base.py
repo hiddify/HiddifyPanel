@@ -40,7 +40,7 @@ def create_app(*args, cli=False, **config):
     app = APIFlask(__name__, static_url_path="/<proxy_path>/static/", instance_relative_config=True, version='2.0.0', title="Hiddify API",
                    openapi_blueprint_url_prefix="/<proxy_path>/api", docs_ui='elements', json_errors=False, enable_openapi=not cli)
     # app = Flask(__name__, static_url_path="/<proxy_path>/static/", instance_relative_config=True)
-    init_logger(app, cli)
+
     if not cli:
         from hiddifypanel.cache import redis_client
         from hiddifypanel import auth
@@ -87,7 +87,7 @@ def create_app(*args, cli=False, **config):
             v = True if v.lower() == "true" else (False if v.lower() == "false" else v)
 
         app.config[c] = v
-
+    init_logger(app, cli)
     hiddifypanel.database.init_app(app)
     with app.app_context():
         init_db()
