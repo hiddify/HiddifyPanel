@@ -1,6 +1,16 @@
 # Changelog
 
 
+## v10.30.2 (2024-07-02)
+
+#### Other
+
+* Merge branch 'main' of github.com:hiddify/Hiddify-Panel. 
+
+* Update translations. 
+
+
+
 ## v10.30.0 (2024-07-02)
 
 #### New
