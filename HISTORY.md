@@ -1,6 +1,18 @@
 # Changelog
 
 
+## (unreleased)
+
+#### Changes
+
+* Default  of reset usage and reset days are not false. 
+
+#### Other
+
+* Update translations. 
+
+
+
 ## v10.30.4 (2024-07-02)
 
 #### Other
