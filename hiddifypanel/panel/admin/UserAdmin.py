@@ -30,8 +30,8 @@ class UserAdmin(AdminLTEModelView):
     column_list = ["is_active", "name", "UserLinks", "current_usage", "remaining_days", "comment", 'last_online', 'mode', 'admin', "uuid"]
     column_editable_list = ["comment", "name", "uuid"]
     form_extra_fields = {
-        'reset_days': SwitchField(_("Reset package days")),
-        'reset_usage': SwitchField(_("Reset package usage")),
+        'reset_days': SwitchField(_("Reset package days"), default=False),
+        'reset_usage': SwitchField(_("Reset package usage"), default=False),
         # 'disable_user': SwitchField(_("Disable User"))
     }
     list_template = 'model/user_list.html'
@@ -235,6 +235,9 @@ class UserAdmin(AdminLTEModelView):
             form.reset_days.label.text += f" ({msg})"
             usr_usage = f" ({_('user.home.usage.title')} {round(form._obj.current_usage_GB,3)}GB)"
             form.reset_usage.label.text += usr_usage
+            form.reset_usage.data = False
+            form.reset_days.data = False
+
             form.usage_limit.label.text += usr_usage
 
         # if form._obj.mode==UserMode.disable:
@@ -301,7 +304,6 @@ class UserAdmin(AdminLTEModelView):
 
         if hutils.node.is_parent():
             hutils.node.run_node_op_in_bg(hutils.node.parent.request_childs_to_sync)
-            
 
     def after_model_delete(self, model):
         user_driver.remove_client(model)
