@@ -1,7 +1,7 @@
 # Changelog
 
 
-## (unreleased)
+## v10.30.6 (2024-07-04)
 
 #### Changes
 
