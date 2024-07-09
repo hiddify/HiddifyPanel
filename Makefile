@@ -111,8 +111,8 @@ endif
 	@git tag v$${TAG}
 	@gitchangelog > HISTORY.md
 	@git tag -d v$${TAG}
-	@git add hiddifypanel/VERSION hiddifypanel/VERSION.py HISTORY.md hiddifypanel/templates/fake.html
 	@make prepare
+	@git add hiddifypanel/VERSION hiddifypanel/VERSION.py HISTORY.md hiddifypanel/templates/fake.html
 	@git add hiddifypanel/translations/* hiddifypanel/translations.i18n/*
 	@git commit -m "release: version $${TAG} 🚀"
 	@echo "creating git tag : $${TAG}"
