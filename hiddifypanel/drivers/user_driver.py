@@ -33,16 +33,19 @@ def get_enabled_users():
     for driver in enabled_drivers():
         try:
             for u, v in driver.get_enabled_users().items():
+                # print(u, "enabled", v, driver)
                 if not v:
                     continue
                 d[u] += 1
             total += 1
         except Exception as e:
+            print(driver)
             hiddify.error(f'ERROR! {driver.__class__.__name__} has error in get_enabled users')
-
+    # print(d, total)
     res = defaultdict(bool)
     for u, v in d.items():
-        res[u] = v >= total  # ignore singbox
+        # res[u] = v >= total  # ignore singbox
+        res[u] = v >= 1
     return res
 
 

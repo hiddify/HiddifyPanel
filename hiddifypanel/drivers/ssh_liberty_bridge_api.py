@@ -29,6 +29,12 @@ class SSHLibertyBridgeApi(DriverABS):
 
     def remove_client(self, user):
         redis_client = self.get_ssh_redis_client()
+        if user.ed25519_public_key is None:
+            members = redis_client.smembers(USERS_SET)
+            for member in members:
+                if member.startswith(user.uuid):
+                    redis_client.srem(USERS_SET, member)
+
         redis_client.srem(USERS_SET, f'{user.uuid}::{user.ed25519_public_key}')
         redis_client.hdel(USERS_USAGE, f'{user.uuid}')
         redis_client.save()

@@ -305,7 +305,7 @@ class UserAdmin(AdminLTEModelView):
     def after_model_change(self, form, model, is_created):
         if hconfig(ConfigEnum.first_setup):
             set_hconfig(ConfigEnum.first_setup, False)
-        user = User.query.filter(User.uuid == model.uuid).first()
+        user = User.query.filter(User.uuid == model.uuid).first() or abort(404)
         if user.is_active:
             user_driver.add_client(model)
         else:
