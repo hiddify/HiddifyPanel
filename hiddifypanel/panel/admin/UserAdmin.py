@@ -148,7 +148,7 @@ class UserAdmin(AdminLTEModelView):
         href = f'{hiddify.get_account_panel_link(model, request.host, is_https=True)}#{hutils.encode.unicode_slug(model.name)}'
 
         link = f"""<a target='_blank' class='share-link btn btn-xs btn-primary' data-copy='{href}' href='{href}'>
-        <i class='fa-solid fa-arrow-up-right-from-square'></i> 
+        <i class='fa-solid fa-arrow-up-right-from-square'></i>
         {_("Current Domain")} </a>"""
 
         domains = [d for d in Domain.get_domains() if d.domain != request.host]
@@ -171,7 +171,7 @@ class UserAdmin(AdminLTEModelView):
         </div>
         """)
 
-    def _expire_formatter(view, context, model, name):
+    def _expire_formatter(view, context, model: User, name):
         remaining = model.remaining_days
 
         diff = datetime.timedelta(days=remaining)
@@ -231,7 +231,8 @@ class UserAdmin(AdminLTEModelView):
             # delattr(form,'disable_user')
         else:
             remaining = form._obj.remaining_days  # remaining_days(form._obj)
-            msg = _("Remaining: ") + hutils.convert.format_timedelta(datetime.timedelta(days=remaining))
+            relative_remaining = hutils.convert.format_timedelta(datetime.timedelta(days=remaining))
+            msg = _("Remaining about %(relative)s, exactly %(days)s days", relative=relative_remaining, days=remaining)
             form.reset_days.label.text += f" ({msg})"
             usr_usage = f" ({_('user.home.usage.title')} {round(form._obj.current_usage_GB,3)}GB)"
             form.reset_usage.label.text += usr_usage
@@ -240,10 +241,18 @@ class UserAdmin(AdminLTEModelView):
 
             form.usage_limit.label.text += usr_usage
 
-        # if form._obj.mode==UserMode.disable:
-        #     delattr(form,'disable_user')
-        # form.disable_user.data=form._obj.mode==UserMode.disable
-        form.package_days.label.text += f" ({msg})"
+            # if form._obj.mode==UserMode.disable:
+            #     delattr(form,'disable_user')
+            # form.disable_user.data=form._obj.mode==UserMode.disable
+            if form._obj.start_date:
+                started = form._obj.start_date - datetime.date.today()
+                msg = _("Started from %(relative)s", relative=hutils.convert.format_timedelta(started))
+                form.package_days.label.text += f" ({msg})"
+                if started.days <= 0:
+                    exact_start = _("Started %(days)s days ago", days=-started.days)
+                else:
+                    exact_start = _("Will Start in %(days)s days", days=started.days)
+                form.package_days.description += f" ({exact_start})"
 
     def get_edit_form(self):
         form = super().get_edit_form()
