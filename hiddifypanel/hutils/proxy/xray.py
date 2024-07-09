@@ -82,7 +82,7 @@ def to_link(proxy: dict) -> str | dict:
             return "ShadowTLS is Not Supported for this platform"
             # return f'{baseurl}?plugin=v2ray-plugin&path={proxy["proxy_path"]}&host={proxy["fakedomain"]}&udp-over-tcp=true#{name_link}'
         if proxy['proto'] == 'v2ray':
-            return f'{baseurl}?plugin=v2ray-plugin&mode=websocket&path={proxy["proxy_path"]}&host={proxy["fakedomain"]}&tls&udp-over-tcp=true#{name_link}'
+            return f'{baseurl}?plugin=v2ray-plugin&mode=websocket&path={proxy["proxy_path"]}&host={proxy["sni"]}&tls&udp-over-tcp=true#{name_link}'
 
     if proxy['proto'] == 'tuic':
         baseurl = f'tuic://{proxy["uuid"]}:{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}?congestion_control=cubic&udp_relay_mode=native&sni={proxy["sni"]}&alpn=h3'
