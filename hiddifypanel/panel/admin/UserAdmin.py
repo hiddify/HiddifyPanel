@@ -10,6 +10,7 @@ from wtforms.validators import NumberRange
 from flask_babel import lazy_gettext as _
 from flask import g, request  # type: ignore
 from markupsafe import Markup
+from sqlalchemy import desc
 
 from hiddifypanel.hutils.flask import hurl_for
 from wtforms.validators import Regexp, ValidationError
@@ -323,6 +324,7 @@ class UserAdmin(AdminLTEModelView):
 
     def get_list(self, page, sort_column, sort_desc, search, filters, page_size=50, *args, **kwargs):
         res = None
+        self._auto_joins = {}
         # print('aaa',args, kwargs)
         if sort_column in ['remaining_days', 'is_active']:
             query = self.get_query()
@@ -374,14 +376,12 @@ class UserAdmin(AdminLTEModelView):
             abort(403)
 
         query = query.filter(User.added_by.in_(admin.recursive_sub_admins_ids()))
-
+        query = query.order_by(desc(User.id))
         return query
 
     # Override get_count_query() to include the filter condition in the count query
     def get_count_query(self):
         # Get the base count query
-        query = self.get_query()
-        from sqlalchemy import func
 
         # query = query.session.query(func.count(User.id))
         query = super().get_count_query()
