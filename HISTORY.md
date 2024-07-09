@@ -1,7 +1,35 @@
 # Changelog
 
 
-## v10.30.6 (2024-07-04)
+## (unreleased)
+
+#### Changes
+
+* Better ui for start and end date. 
+
+#### Fix
+
+* Bug in v2ray. 
+
+* Bugs in update usage. 
+
+* Sorting bug. 
+
+* Xray sub order. 
+
+#### Other
+
+* Chore: update translations with Fink 🐦 
+
+* Update translations. 
+
+* Fix bug. 
+
+* Update translations. 
+
+
+
+## v10.30.6 (2024-07-06)
 
 #### Changes
 
