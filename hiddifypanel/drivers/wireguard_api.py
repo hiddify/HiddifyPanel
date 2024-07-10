@@ -4,40 +4,25 @@ import os
 from .abstract_driver import DriverABS
 from hiddifypanel.models import User, hconfig, ConfigEnum
 from hiddifypanel.panel.run_commander import Command, commander
+import redis
+
+
+USERS_USAGE = "wg:users-usage"
 
 
 class WireguardApi(DriverABS):
+    def get_redis_client(self):
+        if not hasattr(self, 'redis_client'):
+            self.redis_client = redis.from_url('unix:///opt/hiddify-manager/other/redis/run.sock?db=1')
+
+        return self.redis_client
+
     def is_enabled(self) -> bool:
         return hconfig(ConfigEnum.wireguard_enable)
-    
-    WG_LOCAL_USAGE_FILE_PATH = os.path.join('/opt/hiddify-manager/','hiddify-panel','wireguard_usages.json')
-    OLD_WG_LOCAL_USAGE_FILE_PATH = os.path.join('/opt/hiddify-manager/','hiddify-panel','hiddify_usages.json')
 
     def __init__(self) -> None:
         super().__init__()
 
-        if os.path.isfile(WireguardApi.OLD_WG_LOCAL_USAGE_FILE_PATH) and not os.path.isfile(WireguardApi.WG_LOCAL_USAGE_FILE_PATH):
-            os.rename(WireguardApi.OLD_WG_LOCAL_USAGE_FILE_PATH,WireguardApi.WG_LOCAL_USAGE_FILE_PATH)
-
-        if not self.is_usages_file_exists_and_json():
-            self.init_empty_usages_file()
-        # create empty local usage file
-
-    def is_usages_file_exists_and_json(self) -> bool:
-        if os.path.isfile(WireguardApi.WG_LOCAL_USAGE_FILE_PATH):
-            try:
-                # try to load it as a JSON
-                self.__get_local_usage()
-                return True
-            except json.decoder.JSONDecodeError:
-                os.remove(WireguardApi.WG_LOCAL_USAGE_FILE_PATH)
-                return False
-        return False
-    def init_empty_usages_file(self):
-        with open(WireguardApi.WG_LOCAL_USAGE_FILE_PATH, 'w+') as f:
-            json.dump({}, f)
-
-    
     def __get_wg_usages(self) -> dict:
         raw_output = commander(Command.update_wg_usage, run_in_background=False)
         data = {}
@@ -54,11 +39,13 @@ class WireguardApi(DriverABS):
         return data
 
     def __get_local_usage(self) -> dict:
-        with open(WireguardApi.WG_LOCAL_USAGE_FILE_PATH, 'r') as f:
-            data = json.load(f)
-            return data
+        usage_data = self.get_redis_client() .get(USERS_USAGE)
+        if usage_data:
+            return json.loads(usage_data)
 
-    def __sync_local_usages(self) -> dict:
+        return {}
+
+    def __sync_local_usages(self, users) -> dict:
         local_usage = self.__get_local_usage()
         wg_usage = self.__get_wg_usages()
         res = {}
@@ -66,16 +53,18 @@ class WireguardApi(DriverABS):
         for local_wg_pub in local_usage.copy().keys():
             if local_wg_pub not in wg_usage:
                 del local_usage[local_wg_pub]
-
+        uuid_map = {u.wg_pub: u for u in users}
         for wg_pub, wg_usage in wg_usage.items():
+            user = uuid_map.get(wg_pub)
+            uuid = user.uuid if user else None
             if not local_usage.get(wg_pub):
-                local_usage[wg_pub] = wg_usage
+                local_usage[wg_pub] = {"uuid": uuid, "usage": wg_usage}
                 continue
-            res[wg_pub] = self.calculate_reset(local_usage[wg_pub], wg_usage)
-            local_usage[wg_pub] = wg_usage
+            res[wg_pub] = self.calculate_reset(local_usage[wg_pub]['usage'], wg_usage)
+            local_usage[wg_pub] = {"uuid": uuid, "usage": wg_usage}
 
-        with open(WireguardApi.WG_LOCAL_USAGE_FILE_PATH, 'w') as f:
-            json.dump(local_usage, f)
+        self.get_redis_client().set(USERS_USAGE, json.dumps(local_usage))
+
         return res
 
     def calculate_reset(self, last_usage: dict, current_usage: dict) -> dict:
@@ -94,15 +83,16 @@ class WireguardApi(DriverABS):
         if not hconfig(ConfigEnum.wireguard_enable):
             return {}
         usages = self.__get_wg_usages()
-        wg_pubs = set(usages.keys())
-
-        users = User.query.all()
-        enabled = {}
-        for u in users:
-            if u.wg_pub in wg_pubs:
+        new_wg_pubs = set(usages.keys())
+        old_usages = self.__get_local_usage()
+        old_wg_pubs = set(old_usages.keys())
+        enabled = {u['uuid']: 1 for u in old_usages.values()}
+        not_included = new_wg_pubs - old_wg_pubs
+        if not_included:
+            users = User.query.filter(User.wg_pub.in_(not_included).all())
+            for u in users:
                 enabled[u.uuid] = 1
-            else:
-                enabled[u.uuid] = 0
+
         return enabled
 
     def add_client(self, user):
@@ -114,7 +104,7 @@ class WireguardApi(DriverABS):
     def get_all_usage(self, users, reset=True):
         if not hconfig(ConfigEnum.wireguard_enable):
             return {}
-        all_usages = self.__sync_local_usages()
+        all_usages = self.__sync_local_usages(users)
         res = {}
         for u in users:
             if use := all_usages.get(u.wg_pub):
