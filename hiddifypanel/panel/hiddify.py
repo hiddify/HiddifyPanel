@@ -336,3 +336,34 @@ def get_backup_child_unique_id(backupdata: dict) -> str:
     if len(backupdata.get('childs', [])) == 0:
         return "self"
     return backupdata['childs'][0]['unique_id']
+
+
+def all_configs_for_cli():
+    valid_users = [u.to_dict(dump_id=True) for u in User.query.filter((User.usage_limit > User.current_usage)).all() if u.is_active]
+    host_child_ids = [c.id for c in Child.query.filter(Child.mode == ChildMode.virtual).all()]
+    configs = {
+        "users": valid_users,
+        "domains": [u.to_dict(dump_ports=True, dump_child_id=True) for u in Domain.query.filter(Domain.child_id.in_(host_child_ids)).all() if "*" not in u.domain],
+        # "hconfigs": get_hconfigs(json=True),
+        "chconfigs": get_hconfigs_childs(host_child_ids, json=True)
+    }
+
+    def_user = None if len(User.query.all()) > 1 else User.query.filter(User.name == 'default').first()
+    domains = Domain.query.all()
+    sslip_domains = [d.domain for d in domains if "sslip.io" in d.domain]
+
+    configs['chconfigs'][0]['first_setup'] = def_user is not None and len(sslip_domains) > 0
+    server_ip = hutils.network.get_ip_str(4)
+    owner = AdminUser.get_super_admin()
+    configs['api_key'] = owner.uuid
+    configs['api_path'] = hconfig(ConfigEnum.proxy_path_admin)
+    configs['admin_path'] = get_account_panel_link(owner, server_ip, is_https=False, prefere_path_only=True)
+    configs['panel_links'] = []
+    configs['panel_links'].append(get_account_panel_link(owner, server_ip, is_https=False))
+    configs['panel_links'].append(get_account_panel_link(owner, server_ip))
+    domains = Domain.get_domains()
+
+    for d in domains:
+        configs['panel_links'].append(get_account_panel_link(owner, d.domain))
+
+    return configs

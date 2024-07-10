@@ -18,7 +18,7 @@ class AdminLogApi(MethodView):
     @app.output(fields.String(description="The html of the log", many=True))  # type: ignore
     @login_required({Role.super_admin})
     def post(self, data):
-        """Log file"""
+        """System: View Log file"""
         file_name = data.get('file') or abort(400, "Parameter issue: 'file'")
         log_dir = f"{app.config['HIDDIFY_CONFIG_PATH']}log/system/"
         log_files = hutils.flask.list_dir_files(log_dir)

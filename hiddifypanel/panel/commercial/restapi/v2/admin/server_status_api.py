@@ -20,7 +20,7 @@ class AdminServerStatusApi(MethodView):
 
     @app.output(ServerStatusOutputSchema)  # type: ignore
     def get(self):
-        """ServerStatus"""
+        """System: ServerStatus"""
         dto = ServerStatusOutputSchema()
         dto.stats = {  # type: ignore
             'system': hutils.system.system_stats(),
