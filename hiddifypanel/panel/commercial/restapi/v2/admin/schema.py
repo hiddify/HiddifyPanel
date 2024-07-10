@@ -27,7 +27,7 @@ class FriendlyUUID(fields.Field):
         return str(value)
 
     def _deserialize(self, value: Any, attr: str | None, data: Mapping[str, Any] | None, **kwargs):
-        if value is None or hutils.auth.is_uuid_valid(value):
+        if value is None or not hutils.auth.is_uuid_valid(value):
             return None
         try:
             return str(uuid.UUID(value))
@@ -166,8 +166,6 @@ class AdminSchema(Schema):
     lang = Enum(Lang, required=True)
     max_users = Integer(required=False, description='The maximum number of users allowed', allow_none=True)
     max_active_users = Integer(required=False, description='The maximum number of active users allowed', allow_none=True)
-
-
 
 
 class PatchAdminSchema(AdminSchema):
