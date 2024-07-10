@@ -56,12 +56,12 @@ class XrayApi(DriverABS):
     def get_inbound_tags(self):
         try:
             xray_client = self.get_xray_client()
-            inbounds = [inb.name.split(">>>")[1] for inb in xray_client.stats_query('')]
+            inbounds = {inb.name.split(">>>")[1] for inb in xray_client.stats_query('inbound')}
             print(f"Success in get inbound tags {inbounds}")
         except Exception as e:
             print(f"error in get inbound tags {e}")
-            inbounds = []
-        return list(set(inbounds))
+            inbounds = {}
+        return list(inbounds)
 
     def add_client(self, user):
         uuid = user.uuid
