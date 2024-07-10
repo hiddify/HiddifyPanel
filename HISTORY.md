@@ -3,11 +3,21 @@
 
 ## (unreleased)
 
+#### New
+
+* Add more system api such as update usage and all configs. 
+
 #### Changes
+
+* Update api to v3. 
 
 * Better ui for start and end date. 
 
 #### Fix
+
+* Api uuid bug. 
+
+* Translation bug. 
 
 * Bug in v2ray. 
 
@@ -18,6 +28,16 @@
 * Xray sub order. 
 
 #### Other
+
+* Temporary remove active devices. 
+
+* Optimize update xray  usage. 
+
+* Optimize update wireguard  usage. 
+
+* Optimize update ssh usage. 
+
+* Update translations. 
 
 * Chore: update translations with Fink 🐦 
 
