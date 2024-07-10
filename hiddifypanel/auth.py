@@ -98,8 +98,24 @@ def login_user(user: AdminUser | User, remember=False, duration=None, force=Fals
 
 
 def login_required(roles: set[Role] | None = None, node_auth: bool = False):
+
+    def decorator(func):
+        from flask import has_app_context, current_app
+        # Conditionally apply x if has_app_context() is true
+        if has_app_context():
+            func = current_app.doc(security='Hiddify-API-Key')(func)
+
+        # Always apply y
+        func = login_required2(roles, node_auth)(func)
+        return func
+    return decorator
+
+
+def login_required2(roles: set[Role] | None = None, node_auth: bool = False):
     '''When both roles and node_auth is set, means authentication can be done by either uuid or unique_id'''
+
     def wrapper(fn):
+
         @wraps(fn)
         def decorated_view(*args, **kwargs):
             # print('xxxx', current_account)

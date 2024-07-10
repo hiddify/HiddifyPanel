@@ -1,6 +1,6 @@
 from apiflask import APIBlueprint
 
-bp = APIBlueprint("api_child", __name__, url_prefix="/<proxy_path>/api/v2/child/", enable_openapi=True)
+bp = APIBlueprint("api_child", __name__, url_prefix="/<proxy_path>/api/v2/child/", enable_openapi=False)
 
 
 def init_app(app):

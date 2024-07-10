@@ -37,7 +37,7 @@ def init_logger(app, cli):
 
 def create_app(*args, cli=False, **config):
 
-    app = APIFlask(__name__, static_url_path="/<proxy_path>/static/", instance_relative_config=True, version='2.0.0', title="Hiddify API",
+    app = APIFlask(__name__, static_url_path="/<proxy_path>/static/", instance_relative_config=True, version='3.0.0', title="Hiddify API",
                    openapi_blueprint_url_prefix="/<proxy_path>/api", docs_ui='elements', json_errors=False, enable_openapi=not cli)
     # app = Flask(__name__, static_url_path="/<proxy_path>/static/", instance_relative_config=True)
 
@@ -72,6 +72,13 @@ def create_app(*args, cli=False, **config):
         app.config['SESSION_REDIS'] = redis_client
         app.config['SESSION_PERMANENT'] = True
         app.config['PERMANENT_SESSION_LIFETIME'] = datetime.timedelta(days=10)
+        app.security_schemes = {  # equals to use config SECURITY_SCHEMES
+            'Hiddify-API-Key': {
+                'type': 'apiKey',
+                'in': 'header',
+                'name': 'Hiddify-API-Key',
+            }
+        }
         Session(app)
 
         app.jinja_env.line_statement_prefix = '%'

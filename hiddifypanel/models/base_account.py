@@ -61,13 +61,21 @@ class BaseAccount(db.Model, SerializerMixin, FlaskLoginUserMixin):  # type: igno
         return cls.query.filter(cls.username == username, cls.password == password).first()
 
     @classmethod
-    def add_or_update(cls, commit: bool = True, **data):
-        db_account = cls.by_uuid(data['uuid'], create=True)
-        db_account.name = data.get('name', '')
-        db_account.comment = data.get('comment', '')
+    def add_or_update(cls, commit: bool = True, old_uuid=None, **data):
+        db_account: BaseAccount = cls.by_uuid(old_uuid or data.get('uuid'), create=True)
         from hiddifypanel import hutils
-        db_account.telegram_id = hutils.convert.to_int(data.get('telegram_id'))
-        db_account.lang = data.get('lang')
+        if hutils.auth.is_uuid_valid(data.get('uuid')):
+            db_account.uuid = data['uuid']
+
+        if data.get('name') is not None:
+            db_account.name = data.get('name')
+
+        if data.get('comment') is not None:
+            db_account.comment = data.get('comment')
+        if data.get('telegram_id') is not None:
+            db_account.telegram_id = hutils.convert.to_int(data.get('telegram_id'))
+        if data.get('lang') is not None:
+            db_account.lang = data.get('lang')
         if commit:
             db.session.commit()  # type: ignore
         return db_account
