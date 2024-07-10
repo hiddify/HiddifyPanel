@@ -164,7 +164,7 @@ class AdminUser(BaseAccount, SerializerMixin):
         return str(self.name)
 
     @staticmethod
-    def get_super_admin():
+    def get_super_admin() -> "AdminUser":
         admin = AdminUser.by_id(1)
         if not admin:
             db.session.add(AdminUser(id=1, uuid=str(uuid4()), name="Owner", mode=AdminMode.super_admin, comment=""))

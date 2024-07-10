@@ -55,7 +55,8 @@ class UserDetail(db.Model, SerializerMixin):
 
     @property
     def devices(self):
-        return [] if not self.connected_devices else self.connected_devices.split(",")
+        return []
+        # return [] if not self.connected_devices else self.connected_devices.split(",")
 
 
 class User(BaseAccount, SerializerMixin):
@@ -123,13 +124,14 @@ class User(BaseAccount, SerializerMixin):
             is_active = False
         elif self.remaining_days < 0:
             is_active = False
-        elif len(self.devices) > max(3, self.max_ips):
-            is_active = False
+        # elif len(self.devices) > max(3, self.max_ips):
+        #     is_active = False
         return is_active
 
     @property
     def devices(self):
         res = {}
+        return res
         for detail in UserDetail.query.filter(UserDetail.user_id == self.id):
             for device in detail.devices:
                 res[device] = 1
