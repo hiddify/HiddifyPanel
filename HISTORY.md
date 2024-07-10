@@ -29,6 +29,8 @@
 
 #### Other
 
+* Update translations. 
+
 * Temporary remove active devices. 
 
 * Optimize update xray  usage. 
