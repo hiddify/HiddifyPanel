@@ -40,6 +40,10 @@ class SSHLibertyBridgeApi(DriverABS):
         redis_client.save()
 
     def get_all_usage(self, users):
+        redis_client = self.get_ssh_redis_client()
+        allusage = redis_client.hgetall(USERS_USAGE)
+        redis_client.delete(USERS_USAGE)
+        return {u: int(allusage.get(u.uuid) or 0) for u in users}
         return {u: self.get_usage_imp(u.uuid) for u in users}
 
     def get_usage_imp(self, client_uuid: str, reset: bool = True) -> int:
