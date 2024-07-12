@@ -47,8 +47,6 @@
   "Create Package": "Create Package",
   "Current Domain": "Current Domain",
   "Dear {}\n\nYour hiddify information is\nUUID: {}\nLast online date: {}\nExpire time: {}\nUsage class: {}\n": "Dear {}\n\nYour Hiddify Information is\nUUID: {}\nLast Online Date: {}\nExpire Time: {}\nUsage Class: {}\n",
-  "admin.define_mode": "🥇🥈🥉 Define the Admin Mode",
-  "user.define_mode": "The user's Package Mode. should the usage reset every Month, Week, etc",
   "Delete?": "Delete?",
   "Develop": "⚠️ Develop",
   "Direct": "➖ Direct",
@@ -86,7 +84,6 @@
   "HiddifyNG": "HiddifyNG <span class='badge badge-success'>Recommended</span>",
   "HiddifyNG intro": "📌 Please install HiddifyNG from either of these links:\n<br />\n %(dl_link)s  %(play_link)s\n<br />\nThen click on the link below and open it in HiddifyNG.\n<br />",
   "HiddigyN": "HiddifyN <span class='badge badge-success'>Recommended</span>",
-  "bot.welcome": "Hooray 🎉 🎉 🎉 \nWelcome to Hiddify bot\nStart by clicking the link on the Panel or entering your UUID user.",
   "Hover the user to see the reason": "Hover the user to see the reason",
   "How many days this package should be available?": "How Many Days Is This Package?",
   "How many?": "How many?",
@@ -96,7 +93,6 @@
   "Import in": "Import in",
   "In 5 minutes": "In 5 Minutes",
   "In CDN mode, Domain IP=%(domain_ip)s should be different to your ip=%(server_ip)s": "In CDN mode, Domain IP=%(domain_ip)s should be different to your ip=%(server_ip)s",
-  "domain.intro": "1️⃣ In this section, you can add your Domain. \n<br>\n2️⃣ If you want to lessen the probability of having dirty IP, you can add Multiple Relay Server <a href='https://github.com/hiddify/hiddify-config/discussions/129'>Read More</a>.\n<br>\n3️⃣ If you have Multiple IPv4 or IPv6 in your Panel you have to add the domain pointed to them as Relay.",
   "Incorrect Password": "⚠️ Incorrect Password",
   "Install": "Install",
   "Install Hiddify Application": "Hiddify Manager Installation",
@@ -105,8 +101,6 @@
   "Invalid admin link": "Invalid Admin Link",
   "Iran": "🇮🇷 Iran",
   "It seems that you are using default domain (%(domain)s) which is not recommended.": "It seems that you are using default domain (%(domain)s) which is not recommended. Please change or remove it from domain section.",
-  "admin.no_user_warning": "It seems that you have not created any users yet. default user link: %(default_link)s",
-  "admin.incomplete_setup_warning": "It seems that you have not setup the system completely. <a class='btn btn-success' href='%(quick_setup)s'>Click here</a> to complete setup.",
   "It will override the root admin to the current user": "It will override the owner admin of the backup file to the current user",
   "Join our Hiddify Telegram channel to get the latest updates on Hiddify.": "Join our Hiddify Telegram channel to get the latest updates on Hiddify.",
   "Last Online": "Last Connection",
@@ -144,7 +138,6 @@
   "Please connect your telegram account to the panel to be informed about latest news.": "Please connect your Telegram account to the panel to be informed about latest news",
   "Please connect your telegram accout to the panel to be informed about latest news.": "Please connect your Telegram account to the panel to know the latest Status of your Subscription",
   "Please create an issue on Github.": "Please create an issue on Github",
-  "admin.save_panel_link": "Please note that your panel can be accessed only via the following link. please save this link.\n<p><a href='%(adminlink)s' class='btn btn-secondary copy-link'><i class='fa-solid fa-copy'></i></a>\n<a href='%(adminlink)s' class='copy-link' style='word-break: break-all;'>%(adminlink)s</a></p> ",
   "Please select at least one file.": "Please select at least one file.",
   "Please select at least one record.": "Please select at least one record.",
   "Please select at least one user": "Please select at least one user",
@@ -199,18 +192,14 @@
   "Status": "Status",
   "Submit": "Submit",
   "Success": "Success",
-  "admin.waiting_for_update": "⚠️ Please wait about 5 minutes to make sure everything is updated. during this time, please copy and save your Proxy links which are:",
   "Success! Please wait around 5 minutes to make sure everything is updated.": "✔️ Success! Please Wait around 5 minutes to make sure everything is updated",
   "Telegram Bot": "Telegram Bot",
   "Temporary Short Link": "⏱️ Temporary Short Link",
-  "admin.action_done_sucess": "✅ The Action Done Successfully. You can now leave this page",
   "The message has been sent.": "The message has been sent.",
   "The message was not sent to": "The message was not sent to",
   "The name shown in the configs for this domain.": "The name that will be shown in the Configs for this Domain.",
-  "move_to_new_link": "The page has been moved to a new link. Please copy and save the new link.",
   "This can be used for giving your users a permanent non blockable links.": "This can be used for giving your Users a permanent non Blockable Links.",
   "This domain does not exist in the panel!": "This Domain does not exist in the Panel !",
-  "outdated_panel": "⚠️ This version of Hiddify Manager is outdated. please Update it from Admin area",
   "Today Usage": "Today",
   "Too many Connected IPs": "Too Many Connected IPs",
   "Total Usage": "Total Usage",
@@ -220,13 +209,11 @@
   "Use HiddifyNext:": "Use HiddifyNext:",
   "User activated!": "User Activated",
   "User is inactive": "User Is Inactive",
-  "adminuser.force_update_usage": "adminuser.force_update_usage",
   "V2rayNG": "Alternative v2rayNG <button class='btn btn-sm btn-default' onclick='show_video('android-v2rayng')'><i class='fa-solid fa-question'></i> </button>\n<br />\n<br />",
   "V2rayNG intro": "Please install v2rayNG from either of these links: %(dl_link)s  %(play_link)s.\nThen copy the link below and paste it in v2rayNG according to the video tutorial <button class='btn btn-sm btn-default' onclick='show_video('android-v2rayng')'><i class='fa-solid fa-question'></i> </button>.\n<br />",
   "View in Telegram": "View in Telegram",
   "Want to enjoy more with telegram?": "ℹ️ Connect Your Account to Telegram",
   "Welcome %(user)s": "Welcome %(user)s",
-  "bot.admin_welcome": "bot.Welcome to admin bot. Choose your action",
   "Why Going to Premium?": "Why Going to Premium?",
   "Will Start in %(days)s days": "Will Start in %(days)s days",
   "Windows": "Windows",
@@ -235,17 +222,16 @@
   "Yesterday Usage": "Yesterday",
   "You can download a json formated of configurations by clicking <a href='%(link)s' class='btn btn-primary'>here</a>": "🔄 Hiddify Manager automatically takes a Backup every 6 Hours. The path of the Backup files on the server: ⬇️\n<br>\n💿 /opt/hiddify-manager/hiddify-panel/backup/\n<br>\n<br>\n<br>\n⚠️ You can download a JSON file format of the configurations by clicking on the button below\n<br>\n<br>\n<a href='%(link)s' class='btn btn-primary'>Download Backup File</a>",
   "You can restore your configs from previously downloaded configs": "ℹ️ You can restore your configs from previously downloaded backup file",
-  "domain.show_domains_description": "For users visit the user area with this domain, Specify they can see the proxies of which domains.\n<br>\nSuggestion: For a domain with an unfiltered IP and different from the others, select all other domains (except the current domain). As a result, since the use of this IP is not for proxy and it is a simple website, this domain and IP will never be blocked and your users can easily update new profiles.",
   "You have too much users! You can have only %(active)s active users and %(total)s users": "You have too much users! You can have only %(active)s active users and %(total)s users",
   "You have used this domain in: ": "You have already used this Domain in: ",
   "You should visit this page without VPN. Your country=%(your_country)s\nexpected=%(expected_country)s": "You should visit this page without VPN Your Country =%(your_country)s\nExpected=%(expected_country)s",
-  "domain.changed_in_domain_warning": "⚠️ Your Domains Changed. please do not forget to copy Admin links, otherwise you can not access to the panel anymore",
   "Your hiddify instance information \nDomain: {} \nUsage limit: {} GB\nCurrent usage: {} GB\nExpires at: {} \nRemaining days: {} \n\n\n Happy using 🎉 🎉 🎉 \n": "Your Hiddify instance information \nDomain: {} \nUsage Limit: {} GB\nCurrent Usage: {} GB\nExpires at: {} \nRemaining Days: {} \n\n\nGood Luck! 🎉 🎉 🎉 \n",
   "[Admin only visible message:] You can change this message from settings": "[Admin Exclusive Message]: Customizable via Settings",
   "actions": "Actions",
   "admin link": "Admin",
   "admin": {
     "Actions:apply_configs": "Apply Configs",
+    "action_done_sucess": "✅ The Action Done Successfully. You can now leave this page",
     "actions": {
       "apply_configs": "Apply Configs",
       "reinstall": "Reinstall",
@@ -259,6 +245,8 @@
       "apply_configs": "Apply Configs",
       "title": "Settings"
     },
+    "define_mode": "🥇🥈🥉 Define the Admin Mode",
+    "incomplete_setup_warning": "It seems that you have not setup the system completely. <a class='btn btn-success' href='%(quick_setup)s'>Click here</a> to complete setup.",
     "menu": {
       "api": "API",
       "config": "Settings",
@@ -270,6 +258,7 @@
       "telegram": "Telegram",
       "user": "Users"
     },
+    "no_user_warning": "It seems that you have not created any users yet. default user link: %(default_link)s",
     "proxy": {
       "detailed_config": "⚙️ Detailed Configs",
       "global_config": "⚙️ Global Configs"
@@ -277,7 +266,12 @@
     "quicksetup": {
       "title": "Quick Setup"
     },
-    "quicksetup_intro": "Your Server's IPs are: \n<div >\nIPv4: %(ipv4)s <br> IPv6: %(ipv6)s\n</div>\nSet these IPs on your Domain or Subdomain and enter your Domain or Subdomain in the bellow box.\n"
+    "quicksetup_intro": "Your Server's IPs are: \n<div >\nIPv4: %(ipv4)s <br> IPv6: %(ipv6)s\n</div>\nSet these IPs on your Domain or Subdomain and enter your Domain or Subdomain in the bellow box.\n",
+    "save_panel_link": "Please note that your panel can be accessed only via the following link. please save this link.\n<p><a href='%(adminlink)s' class='btn btn-secondary copy-link'><i class='fa-solid fa-copy'></i></a>\n<a href='%(adminlink)s' class='copy-link' style='word-break: break-all;'>%(adminlink)s</a></p> ",
+    "waiting_for_update": "⚠️ Please wait about 5 minutes to make sure everything is updated. during this time, please copy and save your Proxy links which are:"
+  },
+  "adminuser": {
+    "force_update_usage": "adminuser.force_update_usage"
   },
   "all": "All",
   "android": "Android",
@@ -335,6 +329,10 @@
   },
   "auto": "Auto",
   "auto_cdn_ip": "☑️ Automatic CDN IP Selector",
+  "bot": {
+    "admin_welcome": "Hooray 🎉 🎉 🎉 Welcome to admin bot. Choose your action",
+    "welcome": "Hooray 🎉 🎉 🎉 \nWelcome to Hiddify bot\nStart by clicking the link on the Panel or entering your UUID user."
+  },
   "cdn": "🔀 CDN (Cloudflare Proxy, ...)",
   "cf-delete": {
     "failed": "cf-delete.failed"
@@ -350,15 +348,15 @@
   "cloudflare": {
     "error": "cloudflare.error"
   },
-  "config.Domain_already_used": "Domain is exist in domains section. Use another Domain",
-  "config.Invalid_brand_link": "Invalid Link. it should be on this format: (https or http://example.com)",
-  "config.Invalid_domain": "Error! Invalid Domain.  The Domain Format is www.google.com",
-  "config.Invalid_port": "Invalid Port. it should be comma separated Integer e.g.  2052,2053",
-  "config.Invalid_proxy_path": "Invalid Proxy Path. It should be ASCI string (a-z A-Z 0-9)",
-  "config.Invalid_telegram_bot_token": "Invalid Telegram Bot Token",
-  "config.Invalid_The_pattern_is_number-number": "⚠️ The Pattern Is Number-Number ⚠️",
-  "config.Invalid_it_should_be_a_number_only": "⚠️ It Should Be a Number Only ⚠️",
   "config": {
+    "Domain_already_used": "Domain is exist in domains section. Use another Domain",
+    "Invalid_The_pattern_is_number-number": "⚠️ The Pattern Is Number-Number ⚠️",
+    "Invalid_brand_link": "Invalid Link. it should be on this format: (https or http://example.com)",
+    "Invalid_domain": "Error! Invalid Domain.  The Domain Format is www.google.com",
+    "Invalid_it_should_be_a_number_only": "⚠️ It Should Be a Number Only ⚠️",
+    "Invalid_port": "Invalid Port. it should be comma separated Integer e.g.  2052,2053",
+    "Invalid_proxy_path": "Invalid Proxy Path. It should be ASCI string (a-z A-Z 0-9)",
+    "Invalid_telegram_bot_token": "Invalid Telegram Bot Token",
     "admin": {
       "description": "Admin section is for configuring admin related settings",
       "label": "Admin Settings"
@@ -524,6 +522,7 @@
       "label": "⬆️ Hysteria Upload (mbps)"
     },
     "invalid-pattern-for-warp-sites": "⚠️ The Site entered for the Warp does not match the specified template",
+    "invalid_uuid": "Invalid UUID secret. example: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n\n",
     "is_parent": {
       "description": "config.is_parent.description",
       "label": "Parent Panel"
@@ -1013,7 +1012,6 @@
       "label": "🟢 XTLS"
     }
   },
-  "config.invalid_uuid": "Invalid UUID secret. example: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n\n",
   "copy": "Copy",
   "daily": "⏰ Daily",
   "days": "Days",
@@ -1021,19 +1019,27 @@
   "direct": "➡️ Direct",
   "domain": {
     "cdn": "CDN",
+    "changed_in_domain_warning": "⚠️ Your Domains Changed. please do not forget to copy Admin links, otherwise you can not access to the panel anymore",
     "description": "Please fill in this field carefully and correctly. Otherwise, proxies will run into problems. Please visit <a href='https://github.com/hiddify/hiddify-config/wiki/راهنمای-تنظیم-دامنه-و-نهایی-کردن-نصب#آموزش-ساخت-زیردامنه'> Help</a> to learn how to create a subdomain.",
     "domain": "Domain",
     "domain_fronting": {
       "description": "It is used to simulate another website instead of your website in SNI. therefore, GFW can not filter your Domain\n<a href='https://github.com/hiddify/hiddify-config/wiki/Guide-for-domain-fronting'>Guide</a>. ⚠️CloudFlare does not support Domain Fronting.",
       "label": "🔒 TLS Domain Fronting"
     },
+    "intro": "1️⃣ In this section, you can add your Domain. \n<br>\n2️⃣ If you want to lessen the probability of having dirty IP, you can add Multiple Relay Server <a href='https://github.com/hiddify/hiddify-config/discussions/129'>Read More</a>.\n<br>\n3️⃣ If you have Multiple IPv4 or IPv6 in your Panel you have to add the domain pointed to them as Relay.",
     "ip": "IP",
-    "mode": "Mode"
+    "mode": "Mode",
+    "reality": {
+      "asn_issue": "Selected Domain for REALITY is not in the same ASN. To better use of the Protocol, it is better to find a Domain in the same ASN"
+    },
+    "show_domains_description": "For users visit the user area with this domain, Specify they can see the proxies of which domains.\n<br>\nSuggestion: For a domain with an unfiltered IP and different from the others, select all other domains (except the current domain). As a result, since the use of this IP is not for proxy and it is a simple website, this domain and IP will never be blocked and your users can easily update new profiles."
   },
   "download": "Direct Download",
   "fake": "🆎 Fake Site",
   "gRPC": "➿ gRPC",
-  "grpc-proxy.description": "ℹ️ gRPC is a H2 based Protocol. Maybe it is faster for you!",
+  "grpc-proxy": {
+    "description": "ℹ️ gRPC is a H2 based Protocol. Maybe it is faster for you!"
+  },
   "in parent panel": "In Parent Panel",
   "install from google play": "<i class='fa-brands fa-google-play'></i> Google Play",
   "ios": "iOS",
@@ -1064,6 +1070,7 @@
     "page-title": "Hiddify Manager"
   },
   "monthly": "🗓️ Monthly",
+  "move_to_new_link": "The page has been moved to a new link. Please copy and save the new link.",
   "next": "Next",
   "no_reset": "⭐️ Without Reset",
   "node": {
@@ -1083,6 +1090,7 @@
   },
   "old_xtls_direct": "🔙 Old Direct Mode (For Trojan TCP, VLess XTLS)",
   "open": "Open",
+  "outdated_panel": "⚠️ This version of Hiddify Manager is outdated. please Update it from Admin area",
   "package days?": "package days?",
   "package size?": "package size?",
   "parent": {
@@ -1100,7 +1108,6 @@
   "relay": "♾️ Relay (Connect Using an Intermediate Node)",
   "search": "Search",
   "see the log in the bellow screen": "📑 See the log in the bellow screen",
-  "domain.reality.asn_issue": "Selected Domain for REALITY is not in the same ASN. To better use of the Protocol, it is better to find a Domain in the same ASN",
   "serverssh": {
     "password-login": {
       "warning": "Your server is vulnerable to abuses because Password Authentication is enabled in your SSH. To secure your server, please switch to key authentication mechanism and turn off Password Authentication. <a href='https://github.com/hiddify/Hiddify-Manager/wiki/Disable-SSH-Password-Authentication'>read more... </a>"
@@ -1115,6 +1122,7 @@
   "user": {
     "UUID": "UUID",
     "current_usage_GB": "Current Usage (GB)",
+    "define_mode": "The user's Package Mode. should the usage reset every Month, Week, etc",
     "expiry_time": "Expire (Days)",
     "home": {
       "all_configs": "All Configs",
@@ -1177,6 +1185,8 @@
         "description": "To copy or share links, click on the gray <i class='fa-solid fa-qrcode'></i> field to display its QR Code.",
         "display": "Display QR Code"
       },
+      "select_os": "Please Select Your Operating System.",
+      "select_tool": "Please select the item.",
       "share-title": "Share to Social Media",
       "speedtest": {
         "download": "Download",
@@ -1213,8 +1223,6 @@
     "usage_limit_GB": "⌛️ Usage Limit (GB)",
     "user_links": "User Links"
   },
-  "user.home.select_os": "Please Select Your Operating System.",
-  "user.home.select_tool": "Please select the item.",
   "weekly": "📅 Weekly",
   "worker": "✴️ Cloudflare Worker"
 }

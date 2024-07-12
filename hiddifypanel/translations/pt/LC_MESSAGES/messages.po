@@ -161,14 +161,6 @@ msgstr ""
 "Tempo de expiração: {}\n"
 "Classe de uso: {}"
 
-msgid "admin.define_mode"
-msgstr "Definir o Modo Admin"
-
-msgid "user.define_mode"
-msgstr ""
-"O modo de pacote do usuário. o uso deve ser redefinido a cada mês, semana "
-"etc."
-
 msgid "Delete?"
 msgstr "Excluir?"
 
@@ -302,12 +294,6 @@ msgstr ""
 msgid "HiddigyN"
 msgstr "HiddigyN <span class='badge badge-success'>Recommended</span>"
 
-msgid "bot.welcome"
-msgstr ""
-"Viva 🎉 🎉 🎉\n"
-"Bem-vindo ao bot Hiddify\n"
-"Comece clicando no link no Painel ou inserindo seu UUID."
-
 msgid "Hover the user to see the reason"
 msgstr "Hover the user to see the reason"
 
@@ -343,15 +329,6 @@ msgid ""
 "ip=%(server_ip)s"
 msgstr ""
 
-msgid ""
-"domain.intro"
-msgstr ""
-"Nesta seção, você pode adicionar seu domínio.\n"
-"<br>\n"
-"Se você deseja diminuir a probabilidade de ter um IP sujo, pode adicionar Multiple Relay Server <a href='https://github.com/hiddify/hiddify-config/discussions/129'>Leia mais</a>.\n"
-"<br>\n"
-"Se você tiver Múltiplos IPv4 ou IPv6 em seu Painel, deverá adicionar o domínio apontado para eles como Relay."
-
 msgid "Incorrect Password"
 msgstr "⚠️ Senha incorreta"
 
@@ -379,17 +356,6 @@ msgid ""
 msgstr ""
 "Parece que você está usando o domínio padrão (%(domain)s), o que não é "
 "recomendado. Por favor, altere ou remova-o da seção de domínio."
-
-msgid "admin.no_user_warning"
-msgstr ""
-"Parece que você ainda não criou nenhum usuário. link de usuário padrão: "
-"%(default_link)s"
-
-msgid "admin.incomplete_setup_warning"
-msgstr ""
-"Parece que você não configurou o sistema completamente. <a class='btn btn-"
-"success' href='%(quick_setup)s'>Clique aqui</a> para concluir a "
-"configuração."
 
 msgid "It will override the root admin to the current user"
 msgstr ""
@@ -514,12 +480,6 @@ msgstr ""
 
 msgid "Please create an issue on Github."
 msgstr "Por favor, crie um problema no Github"
-
-msgid "admin.save_panel_link"
-msgstr ""
-"Por favor, note que seu painel pode ser acessado apenas através do link a seguir. por favor, salve este link.\n"
-"<p><a href='%(adminlink)s' class='btn btn-secondary copy-link'><i class='fa-solid fa-copy'></i></a>\n"
-"<a href='%(adminlink)s' class='copy-link' style='word-break: break-all;'>%(adminlink)s</a></p>"
 
 msgid "Please select at least one file."
 msgstr "Por favor, selecione pelo menos um arquivo."
@@ -709,11 +669,6 @@ msgstr "Enviar"
 msgid "Success"
 msgstr "Sucesso"
 
-msgid "admin.waiting_for_update"
-msgstr ""
-"Aguarde cerca de 5 minutos para garantir que tudo esteja atualizado. durante"
-" esse período, copie e salve seus links de proxy, que são:"
-
 msgid ""
 "Success! Please wait around 5 minutes to make sure everything is updated."
 msgstr ""
@@ -726,9 +681,6 @@ msgstr "Telegram Bot"
 msgid "Temporary Short Link"
 msgstr "⏱️ Link curto temporário"
 
-msgid "admin.action_done_sucess"
-msgstr "✅ A Ação Feita com Sucesso. Agora você pode sair desta página"
-
 msgid "The message has been sent."
 msgstr "A mensagem foi enviada."
 
@@ -739,10 +691,6 @@ msgid "The name shown in the configs for this domain."
 msgstr "O nome que será mostrado nas Configs deste Domínio."
 
 msgid ""
-"move_to_new_link"
-msgstr "A página foi movida para um novo link. Copie e salve o novo link."
-
-msgid ""
 "This can be used for giving your users a permanent non blockable links."
 msgstr ""
 "Isso pode ser usado para fornecer aos seus usuários links permanentes não "
@@ -750,12 +698,6 @@ msgstr ""
 
 msgid "This domain does not exist in the panel!"
 msgstr "Este Domínio não existe no Painel!"
-
-msgid ""
-"outdated_panel"
-msgstr ""
-"Esta versão do painel Hiddify está desatualizada. Atualize-o na Área "
-"Administrativa."
 
 msgid "Today Usage"
 msgstr "Hoje"
@@ -784,9 +726,6 @@ msgstr "Usuário ativado"
 msgid "User is inactive"
 msgstr "O usuário está inativo"
 
-msgid "adminuser.force_update_usage"
-msgstr ""
-
 msgid "V2rayNG"
 msgstr ""
 "Alternativa v2rayNG <button class='btn btn-sm btn-default' "
@@ -807,9 +746,6 @@ msgstr "Conecte sua conta ao Telegram"
 
 msgid "Welcome %(user)s"
 msgstr "Bem-vindo %(user)s"
-
-msgid "bot.admin_welcome"
-msgstr "Bem-vindo ao bot administrativo. Escolha sua ação"
 
 msgid "Why Going to Premium?"
 msgstr "Por que ir para premium?"
@@ -849,12 +785,6 @@ msgstr ""
 "Você pode restaurar suas configurações do arquivo de backup baixado "
 "anteriormente"
 
-msgid "domain.show_domains_description"
-msgstr ""
-"Para os usuários que visitam a área do usuário com este domínio, especifique que eles podem ver os proxies de quais domínios.\n"
-"<br>\n"
-"Sugestão: Para um domínio com IP não filtrado e diferente dos demais, selecione todos os outros domínios (exceto o domínio atual). Como resultado, como o uso deste IP não é para proxy e é um site simples, este domínio e IP nunca serão bloqueados e seus usuários poderão facilmente atualizar novos perfis."
-
 msgid ""
 "You have too much users! You can have only %(active)s active users and "
 "%(total)s users"
@@ -871,11 +801,6 @@ msgid ""
 msgstr ""
 "Você deve visitar esta página sem VPN Seu país =%(expected_country)s\n"
 "Esperado=%(expected_country)s"
-
-msgid "domain.changed_in_domain_warning"
-msgstr ""
-"⚠️ Seus domínios mudaram. por favor, não se esqueça de copiar os links do "
-"administrador, caso contrário, você não poderá mais acessar o painel"
 
 msgid ""
 "Your hiddify instance information \n"
@@ -913,6 +838,9 @@ msgstr "Link do administrador"
 msgid "admin.Actions:apply_configs"
 msgstr "Aplicar configurações"
 
+msgid "admin.action_done_sucess"
+msgstr "✅ A Ação Feita com Sucesso. Agora você pode sair desta página"
+
 msgid "admin.actions.apply_configs"
 msgstr "Aplicar configurações"
 
@@ -939,6 +867,15 @@ msgstr "Aplicar configurações"
 
 msgid "admin.config.title"
 msgstr "Configurações"
+
+msgid "admin.define_mode"
+msgstr "Definir o Modo Admin"
+
+msgid "admin.incomplete_setup_warning"
+msgstr ""
+"Parece que você não configurou o sistema completamente. <a class='btn btn-"
+"success' href='%(quick_setup)s'>Clique aqui</a> para concluir a "
+"configuração."
 
 msgid "admin.menu.api"
 msgstr "API"
@@ -967,6 +904,9 @@ msgstr "Telegram"
 msgid "admin.menu.user"
 msgstr "Usuários"
 
+msgid "admin.no_user_warning"
+msgstr ""
+
 msgid "admin.proxy.detailed_config"
 msgstr "⚙️ Configurações detalhadas"
 
@@ -983,6 +923,20 @@ msgstr ""
 "IPv4: %(ipv4)s <br> IPv6: %(ipv6)s\n"
 "</div>\n"
 "Defina esses IPs em seu Domínio ou Subdomínio e insira seu Domínio ou Subdomínio na caixa abaixo."
+
+msgid "admin.save_panel_link"
+msgstr ""
+"Por favor, note que seu painel pode ser acessado apenas através do link a seguir. por favor, salve este link.\n"
+"<p><a href='%(adminlink)s' class='btn btn-secondary copy-link'><i class='fa-solid fa-copy'></i></a>\n"
+"<a href='%(adminlink)s' class='copy-link' style='word-break: break-all;'>%(adminlink)s</a></p>"
+
+msgid "admin.waiting_for_update"
+msgstr ""
+"Aguarde cerca de 5 minutos para garantir que tudo esteja atualizado. durante"
+" esse período, copie e salve seus links de proxy, que são:"
+
+msgid "adminuser.force_update_usage"
+msgstr ""
 
 msgid "all"
 msgstr "Todos"
@@ -1068,6 +1022,15 @@ msgstr "Auto"
 msgid "auto_cdn_ip"
 msgstr "Seletor automático de CDN IP"
 
+msgid "bot.admin_welcome"
+msgstr "Bem-vindo ao bot administrativo. Escolha sua ação"
+
+msgid "bot.welcome"
+msgstr ""
+"Viva 🎉 🎉 🎉\n"
+"Bem-vindo ao bot Hiddify\n"
+"Comece clicando no link no Painel ou inserindo seu UUID."
+
 msgid "cdn"
 msgstr "CDN (Cloudflare Proxy, ...)"
 
@@ -1098,12 +1061,18 @@ msgstr ""
 msgid "config.Domain_already_used"
 msgstr "O domínio existe na seção de domínios. Usar outro domínio"
 
+msgid "config.Invalid_The_pattern_is_number-number"
+msgstr "⚠️ Configuração inválida! O padrão é número-número"
+
 msgid "config.Invalid_brand_link"
 msgstr ""
 "Link inválido. deve estar neste formato: (https ou http://example.com)"
 
 msgid "config.Invalid_domain"
 msgstr "Erro! Domínio inválido. O formato do domínio é www.google.com"
+
+msgid "config.Invalid_it_should_be_a_number_only"
+msgstr "⚠️ Configuração inválida! Deve ser apenas um número"
 
 msgid "config.Invalid_port"
 msgstr ""
@@ -1114,12 +1083,6 @@ msgstr "Caminho de proxy inválido. Deve ser uma string ASCI (a-z A-Z 0-9)"
 
 msgid "config.Invalid_telegram_bot_token"
 msgstr "Token do bot telegram inválido"
-
-msgid "config.Invalid_The_pattern_is_number-number"
-msgstr "⚠️ Configuração inválida! O padrão é número-número"
-
-msgid "config.Invalid_it_should_be_a_number_only"
-msgstr "⚠️ Configuração inválida! Deve ser apenas um número"
 
 msgid "config.admin.description"
 msgstr ""
@@ -1423,6 +1386,9 @@ msgstr ""
 
 msgid "config.invalid-pattern-for-warp-sites"
 msgstr ""
+
+msgid "config.invalid_uuid"
+msgstr "Secret UUID inválido. exemplo: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6"
 
 msgid "config.is_parent.description"
 msgstr "config.is_parent.description"
@@ -2243,9 +2209,6 @@ msgstr ""
 msgid "config.xtls_enable.label"
 msgstr ""
 
-msgid "config.invalid_uuid"
-msgstr "Secret UUID inválido. exemplo: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6"
-
 msgid "copy"
 msgstr "cópia de"
 
@@ -2263,6 +2226,11 @@ msgstr "➡️ Direto"
 
 msgid "domain.cdn"
 msgstr "CDN"
+
+msgid "domain.changed_in_domain_warning"
+msgstr ""
+"⚠️ Seus domínios mudaram. por favor, não se esqueça de copiar os links do "
+"administrador, caso contrário, você não poderá mais acessar o painel"
 
 msgid "domain.description"
 msgstr ""
@@ -2283,11 +2251,25 @@ msgstr ""
 msgid "domain.domain_fronting.label"
 msgstr "🔒 Habilitar fronting de domínio TLS"
 
+msgid "domain.intro"
+msgstr ""
+
 msgid "domain.ip"
 msgstr "IP"
 
 msgid "domain.mode"
 msgstr "Modo"
+
+msgid "domain.reality.asn_issue"
+msgstr ""
+"O domínio selecionado para REALITY não está no mesmo ASN.\n"
+"Para melhor aproveitamento do Protocolo, é melhor encontrar um Domínio com o mesmo ASN"
+
+msgid "domain.show_domains_description"
+msgstr ""
+"Para os usuários que visitam a área do usuário com este domínio, especifique que eles podem ver os proxies de quais domínios.\n"
+"<br>\n"
+"Sugestão: Para um domínio com IP não filtrado e diferente dos demais, selecione todos os outros domínios (exceto o domínio atual). Como resultado, como o uso deste IP não é para proxy e é um site simples, este domínio e IP nunca serão bloqueados e seus usuários poderão facilmente atualizar novos perfis."
 
 msgid "download"
 msgstr "Download direto"
@@ -2356,6 +2338,9 @@ msgstr "Ocultar Painel"
 msgid "monthly"
 msgstr "🗓️ Mensal"
 
+msgid "move_to_new_link"
+msgstr "A página foi movida para um novo link. Copie e salve o novo link."
+
 msgid "next"
 msgstr "Próximo"
 
@@ -2388,6 +2373,11 @@ msgstr "🔙 Modo direto antigo (para Trojan TCP, VLess XTLS)"
 
 msgid "open"
 msgstr "Abrir"
+
+msgid "outdated_panel"
+msgstr ""
+"Esta versão do painel Hiddify está desatualizada. Atualize-o na Área "
+"Administrativa."
 
 msgid "package days?"
 msgstr "dias de pacote?"
@@ -2422,13 +2412,6 @@ msgstr "Procurar"
 msgid "see the log in the bellow screen"
 msgstr "📑 Veja o log na tela abaixo"
 
-msgid ""
-"selected domain for REALITY is not in the same ASN. To better use of the "
-"protocol, it is better to find a domain in the same ASN."
-msgstr ""
-"O domínio selecionado para REALITY não está no mesmo ASN.\n"
-"Para melhor aproveitamento do Protocolo, é melhor encontrar um Domínio com o mesmo ASN"
-
 msgid "serverssh.password-login.warning"
 msgstr ""
 "Seu servidor está vulnerável a abusos porque PasswordAuthentication está "
@@ -2460,6 +2443,11 @@ msgstr "UUID"
 
 msgid "user.current_usage_GB"
 msgstr "Uso atual (GB)"
+
+msgid "user.define_mode"
+msgstr ""
+"O modo de pacote do usuário. o uso deve ser redefinido a cada mês, semana "
+"etc."
 
 msgid "user.expiry_time"
 msgstr "Expiração (dias)"
@@ -2647,6 +2635,12 @@ msgstr ""
 msgid "user.home.qr-code.display"
 msgstr "Exibir código QR"
 
+msgid "user.home.select_os"
+msgstr "Selecione seu sistema operacional."
+
+msgid "user.home.select_tool"
+msgstr "Selecione o item."
+
 msgid "user.home.share-title"
 msgstr "Compartilhar nas mídias sociais"
 
@@ -2745,12 +2739,6 @@ msgstr "Limite de uso (GB)"
 
 msgid "user.user_links"
 msgstr "Links de usuário"
-
-msgid "user.home.select_os"
-msgstr "Selecione seu sistema operacional."
-
-msgid "user.home.select_tool"
-msgstr "Selecione o item."
 
 msgid "weekly"
 msgstr "📅 Semanal"

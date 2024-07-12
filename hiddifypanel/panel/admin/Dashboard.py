@@ -60,7 +60,7 @@ class Dashboard(FlaskView):
                     _("Please understand that parent panel is under test and the plan and the condition of use maybe change at anytime."), "danger")  # type: ignore
         elif def_user:
             d = domains[0]
-            hutils.flask.flash((_('"admin.no_user_warning"',
+            hutils.flask.flash((_("admin.no_user_warning",
                                default_link=hiddify.get_html_user_link(def_user, d))), 'secondary')  # type: ignore
         if hutils.network.is_ssh_password_authentication_enabled():
             hutils.flask.flash(_('serverssh.password-login.warning'), "warning")  # type: ignore
