@@ -15,6 +15,8 @@
 
 #### Fix
 
+* Sorting issue. 
+
 * Api uuid bug. 
 
 * Translation bug. 
@@ -28,6 +30,18 @@
 * Xray sub order. 
 
 #### Other
+
+* Update. 
+
+* Update translations. 
+
+* Update_translation. 
+
+* Merge branch 'main' of github.com:hiddify/Hiddify-Panel. 
+
+* Update translations. 
+
+* Add id in user. 
 
 * Update translations. 
 
