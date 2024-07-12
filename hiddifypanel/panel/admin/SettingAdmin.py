@@ -113,6 +113,7 @@ class SettingAdmin(FlaskView):
                         set_hconfig(ConfigEnum.panel_mode, PanelMode.standalone)
 
             cache.invalidate_all_cached_functions()
+            # hutils.proxy.get_proxies.invalidate_all()
             from hiddifypanel.panel.commercial.telegrambot import register_bot
             register_bot(set_hook=True)
 
