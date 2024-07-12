@@ -136,6 +136,7 @@ def get_ip(version: Literal[4, 6], retry: int = 5) -> ipaddress.IPv4Address | ip
         ip = get_ip(version, retry=retry - 1)
     return ip
 
+
 def get_random_domains(count: int = 1, retry: int = 3) -> List[str]:
     try:
         irurl = "https://api.ooni.io/api/v1/measurements?probe_cc=IR&test_name=web_connectivity&anomaly=false&confirmed=false&failure=false&order_by=test_start_time&limit=1000"
@@ -310,7 +311,7 @@ def is_in_same_asn(domain_or_ip: str, domain_or_ip_target: str) -> bool:
         print(f"An error occurred: {e}")
         return False
 
-        # hutils.flask.flash(_("selected domain for REALITY is not in the same ASN. To better use of the protocol, it is better to find a domain in the same ASN.") +
+        # hutils.flask.flash(_("domain.reality.asn_issue") +
         #                    f"<br> Server ASN={asn_ipv4.get('autonomous_system_organization','unknown')}<br>{domain}_ASN={asn_dip.get('autonomous_system_organization','unknown')}", "warning")
 
 
@@ -342,7 +343,8 @@ def is_ip(input: str):
     except:
         return False
 
-def resolve_domain_with_api(domain:str) -> str:
+
+def resolve_domain_with_api(domain: str) -> str:
     if not domain:
         return ''
     endpoint = f'http://ip-api.com/json/{domain}?fields=query'

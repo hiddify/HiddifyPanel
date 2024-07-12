@@ -52,9 +52,7 @@ def prepare_hello_message():
     @return: A text message
     """
 
-    response = _("Hooray \U0001F389 \U0001F389 \U0001F389 \n"
-                 "Welcome to hiddifybot.\n"
-                 "Start by clicking the link on the panel or entering your UUID.")
+    response = _("bot.welcome")
 
     return response
 

@@ -5,7 +5,7 @@
 {% block tail %}
 {{super()}}
 
-{{modal('quicksetup',_('Save Link'),_('Please note that your panel can be accessed only via <a href="%(adminlink)s" class="btn btn-primary copy-link">%(adminlink)s</a>. Please save this link.',adminlink=admin_link),show=Fales)}}
+{{modal('quicksetup',_('Save Link'),_('admin.save_panel_link',adminlink=admin_link),show=Fales)}}
 
 <script>
     disable_notif = false

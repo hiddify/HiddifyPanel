@@ -160,10 +160,10 @@ msgstr ""
 "过期时间：{}\n"
 "使用类别：{}"
 
-msgid "Define the admin mode. "
+msgid "admin.define_mode"
 msgstr "🥇🥈🥉 定义管理模式"
 
-msgid "Define the user mode. Should the usage reset every month?"
+msgid "user.define_mode"
 msgstr "用户的套餐模式。使用量是否应该每月、每周等重置"
 
 msgid "Delete?"
@@ -348,10 +348,7 @@ msgstr ""
 msgid "HiddigyN"
 msgstr "HiddifyN <span class='badge badge-success'>推荐</span>"
 
-msgid ""
-"Hooray 🎉 🎉 🎉 \n"
-"Welcome to hiddifybot.\n"
-"Start by clicking the link on the panel or entering your UUID."
+msgid "bot.welcome"
 msgstr ""
 "万岁🎉🎉🎉\n"
 "欢迎使用 Hiddify 机器人\n"
@@ -394,8 +391,7 @@ msgid ""
 msgstr "在CDN模式，域名IP=%(domain_ip)s应该与你的IP不同=%(server_ip)s"
 
 msgid ""
-"In this section, you can add your domain. You need to add at least one "
-"domain in direct mode."
+"domain.intro"
 msgstr ""
 "1️⃣ 在此部分中，您可以添加您的域名。\n"
 "<br>\n"
@@ -429,14 +425,10 @@ msgid ""
 "recommended."
 msgstr "看来您正在使用默认域（％（domain）s），这是不推荐的。请从域部分更改或删除它。"
 
-msgid ""
-"It seems that you have not created any users yet. Default user link: "
-"%(default_link)s"
+msgid "admin.no_user_warning"
 msgstr "您似乎还没有创建任何用户。默认用户链接：%(default_link)s"
 
-msgid ""
-"It seems that you have not setup the system completely. <a class=\"btn btn-"
-"success\" href=\"%(quick_setup)s\">Click here</a> to complete setup."
+msgid "admin.incomplete_setup_warning"
 msgstr ""
 "看来你还没有完全安装系统。 <a class='btn btn-success' "
 "href='%(quick_setup)s'>单击此处</a>完成设置。"
@@ -538,7 +530,7 @@ msgstr "➖ 面板链接"
 msgid "Parent Panel"
 msgstr "家长小组"
 
-msgid "Please Wait..."
+msgid "Please Wait"
 msgstr "请稍等..."
 
 msgid "Please click on %(install)s to save the user page."
@@ -557,10 +549,7 @@ msgstr "请将您的 Telegram 帐户连接到面板以了解您的订阅的最�
 msgid "Please create an issue on Github."
 msgstr "请在 Github 上创建问题"
 
-msgid ""
-"Please note that your panel can be accessed only via <a "
-"href=\"%(adminlink)s\" class=\"btn btn-primary copy-"
-"link\">%(adminlink)s</a>. Please save this link."
+msgid "admin.save_panel_link"
 msgstr ""
 "请注意，您的面板只能通过以下链接访问。请保存此链接。\n"
 "<p><a href='%(adminlink)s' class='btn btn-secondary copy-link'><i class='fa-solid fa-copy'></i></a>\n"
@@ -636,8 +625,8 @@ msgstr "REALITY 后备域与服务器名称不兼容！"
 msgid "Release"
 msgstr "✅ 发布"
 
-msgid "Remaining: "
-msgstr "包裹结束"
+msgid "Remaining about %(relative)s, exactly %(days)s days"
+msgstr ""
 
 msgid "Remote nodes are not supported yet!"
 msgstr "尚不支持远程节点！"
@@ -738,6 +727,12 @@ msgstr "以%(name)s排序"
 msgid "Start Date"
 msgstr "开始日期"
 
+msgid "Started %(days)s days ago"
+msgstr ""
+
+msgid "Started from %(relative)s"
+msgstr ""
+
 msgid "Status"
 msgstr "地位"
 
@@ -747,9 +742,7 @@ msgstr "提交"
 msgid "Success"
 msgstr "成功"
 
-msgid ""
-"Success! Please wait around 4 minutes to make sure everything is updated. "
-"During this time, please save your proxy links which are:"
+msgid "admin.waiting_for_update"
 msgstr "⚠️ 请等待大约 5 分钟以确保所有内容均已更新。在此期间，请复制并保存您的代理链接："
 
 msgid ""
@@ -762,7 +755,7 @@ msgstr "电报机器人"
 msgid "Temporary Short Link"
 msgstr "⏱️临时短链接"
 
-msgid "The action done successfully. You can now leave this page."
+msgid "admin.action_done_sucess"
 msgstr "✅ 行动成功完成。您现在可以离开此页面"
 
 msgid "The message has been sent."
@@ -775,7 +768,7 @@ msgid "The name shown in the configs for this domain."
 msgstr "将显示在该域的配置中的名称。"
 
 msgid ""
-"The page has been moved to a new link. Please copy and save the new link."
+"move_to_new_link"
 msgstr "该页面已移至新链接。请复制并保存新链接。"
 
 msgid ""
@@ -786,7 +779,7 @@ msgid "This domain does not exist in the panel!"
 msgstr "该域名在面板中不存在！"
 
 msgid ""
-"This version of hiddify panel is outdated. Please update it from admin area."
+"outdated_panel"
 msgstr "⚠️ 此版本的 Hiddify Manager 已过时。请从管理区域更新"
 
 msgid "Today Usage"
@@ -816,9 +809,7 @@ msgstr "用户激活"
 msgid "User is inactive"
 msgstr "用户处于非活动状态"
 
-msgid ""
-"User usage will be updated every 6 minutes. To update it now click <a "
-"href=\"%(link)s\" class=\"btn btn-info\">here</a>"
+msgid "adminuser.force_update_usage"
 msgstr ""
 
 msgid "V2rayNG"
@@ -842,11 +833,14 @@ msgstr "ℹ️ 将您的帐户连接到 Telegram"
 msgid "Welcome %(user)s"
 msgstr "欢迎%(user)s"
 
-msgid "Welcome to admin bot. Choose your action"
+msgid "bot.admin_welcome"
 msgstr "欢迎使用管理机器人。选择你的行动"
 
 msgid "Why Going to Premium?"
 msgstr "为什么要选择高级版？"
+
+msgid "Will Start in %(days)s days"
+msgstr ""
 
 msgid "Windows"
 msgstr "视窗"
@@ -878,10 +872,7 @@ msgstr ""
 msgid "You can restore your configs from previously downloaded configs"
 msgstr "ℹ️您可以从以前下载的备份文件恢复您的配置"
 
-msgid ""
-"You can select the configs with which domains show be shown in the user "
-"area. If you select all, automatically, all the new domains will be added "
-"for each users."
+msgid "domain.show_domains_description"
 msgstr ""
 "对于访问该域的用户区的用户，指定他们可以看到哪些域的代理。\n"
 "<br>\n"
@@ -902,9 +893,7 @@ msgstr ""
 "您应该在没有 VPN 的情况下访问此页面 Your Country =%(your_country)s\n"
 "预期=%(expected_country)s"
 
-msgid ""
-"Your domains changed. Please do not forget to copy admin links, otherwise "
-"you can not access to the panel anymore."
+msgid "domain.changed_in_domain_warning"
 msgstr "⚠️ 您的域名已更改。请不要忘记复制管理链接，否则您将无法再访问面板"
 
 msgid ""
@@ -1123,28 +1112,28 @@ msgstr "关闭"
 msgid "cloudflare.error"
 msgstr ""
 
-msgid "config.Domain already used"
+msgid "config.Domain_already_used"
 msgstr "域存在于域部分。使用另一个域"
 
-msgid "config.Invalid brand link"
+msgid "config.Invalid_brand_link"
 msgstr "无效的链接。它应该采用以下格式：（https 或 http://example.com）"
 
-msgid "config.Invalid domain"
+msgid "config.Invalid_domain"
 msgstr "错误！无效域名。域名格式为 www.google.com"
 
-msgid "config.Invalid port"
+msgid "config.Invalid_port"
 msgstr "端口无效。它应该是逗号分隔的整数，例如2052,2053"
 
-msgid "config.Invalid proxy path"
+msgid "config.Invalid_proxy_path"
 msgstr "代理路径无效。它应该是 ASCI 字符串 (a-z A-Z 0-9)"
 
-msgid "config.Invalid telegram bot token"
+msgid "config.Invalid_telegram_bot_token"
 msgstr "Telegram 机器人令牌无效"
 
-msgid "config.Invalid! The pattern is number-number"
+msgid "config.Invalid_The_pattern_is_number-number"
 msgstr "⚠️配置无效！模式是数字-数字"
 
-msgid "config.Invalid! it should be a number only"
+msgid "config.Invalid_it_should_be_a_number_only"
 msgstr "⚠️配置无效！它应该只是一个数字"
 
 msgid "config.admin.description"
@@ -2176,7 +2165,7 @@ msgstr ""
 msgid "config.xtls_enable.label"
 msgstr ""
 
-msgid "config.invalid uuid"
+msgid "config.invalid_uuid"
 msgstr "UUID 秘密无效。示例：6098ea35-8cb2-4a08-ba15-2be25bc49cb6"
 
 msgid "copy"
@@ -2228,7 +2217,7 @@ msgstr "🆎 假网站"
 msgid "gRPC"
 msgstr "➿ gRPC"
 
-msgid "gRPC is a H2 based protocol. Maybe it is faster for you!"
+msgid "grpc-proxy.description"
 msgstr "ℹ️ gRPC 是一个基于 H2 的协议。也许对你来说更快！"
 
 msgid "in parent panel"
@@ -2675,10 +2664,10 @@ msgstr "⌛️ 使用限制 (GB)"
 msgid "user.user_links"
 msgstr "用户链接"
 
-msgid "user.home.select os"
+msgid "user.home.select_os"
 msgstr "请选择您的操作系统。"
 
-msgid "user.home.select tool"
+msgid "user.home.select_tool"
 msgstr "请选择该项目。"
 
 msgid "weekly"

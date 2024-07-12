@@ -113,7 +113,7 @@ class UserAdmin(AdminLTEModelView):
         # usage_limit_GB="in GB",
         # current_usage_GB="in GB"
         comment=_("Add some text that is only visible to you."),
-        mode=_("Define the user mode. Should the usage reset every month?"),
+        mode=_("user.define_mode"),
         last_reset_time=_("If monthly is enabled, the usage will be reset after 30 days from this date."),
         start_date=_("From when the user package will be started? Empty for start from first connection"),
         package_days=_("How many days this package should be available?")

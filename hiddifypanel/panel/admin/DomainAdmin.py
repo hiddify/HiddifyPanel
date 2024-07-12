@@ -46,11 +46,11 @@ class DomainAdmin(AdminLTEModelView):
         mode=_("Direct mode means you want to use your server directly (for usual use), CDN means that you use your server on behind of a CDN provider."),
         cdn_ip=_("config.cdn_forced_host.description"),
         show_domains=_(
-            'You can select the configs with which domains show be shown in the user area. If you select all, automatically, all the new domains will be added for each users.'),
+            'domain.show_domains_description'),
         alias=_('The name shown in the configs for this domain.'),
         servernames=_('config.reality_server_names.description'),
         sub_link_only=_('This can be used for giving your users a permanent non blockable links.'),
-        grpc=_('gRPC is a H2 based protocol. Maybe it is faster for you!'))
+        grpc=_('grpc-proxy.description'))
 
     # create_modal = True
     can_export = False
@@ -243,7 +243,7 @@ class DomainAdmin(AdminLTEModelView):
                     if not hutils.network.is_in_same_asn(d, ipv4_list[0]):
                         server_asn = hutils.network.get_ip_asn(ipv4_list[0])
                         domain_asn = hutils.network.get_ip_asn(dip)  # type: ignore
-                        msg = _("selected domain for REALITY is not in the same ASN. To better use of the protocol, it is better to find a domain in the same ASN.") + \
+                        msg = _("domain.reality.asn_issue") + \
                             (f"<br> Server ASN={server_asn}<br>{d}_ASN={domain_asn}" if server_asn or domain_asn else "")
                         hutils.flask.flash(msg, 'warning')
 

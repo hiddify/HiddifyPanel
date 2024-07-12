@@ -72,7 +72,7 @@ class AdminstratorAdmin(AdminLTEModelView):
 
     column_descriptions = dict(
         comment=_("Add some text that is only visible to super_admin."),
-        mode=_("Define the admin mode. "),
+        mode=_("admin.define_mode"),
     )
     # create_modal = True
     can_export = False

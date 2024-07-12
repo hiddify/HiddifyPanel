@@ -11,7 +11,8 @@
             <button onclick="show_send_message('all')" type="button" class="btn hbtn bg-h-green">
                 {{_("All Users")}}
             </button>
-            <button onclick="show_send_message('active')" type="button" class="btn hbtn bg-h-green" style="margin-left: 5px;margin-right: 5px;">
+            <button onclick="show_send_message('active')" type="button" class="btn hbtn bg-h-green"
+                style="margin-left: 5px;margin-right: 5px;">
                 {{_("Active Users")}}
             </button>
             <button onclick="show_send_message('selected')" type="button" class="btn hbtn bg-h-green">
@@ -22,9 +23,11 @@
         <div style="margin-top: 10px;">
             <button onclick="show_send_message('offline 1h')" type="button" class="btn  hbtn bg-h-red">
                 {{_("Offline more than 1 hour")}}</button>
-            <button onclick="show_send_message('offline 1d')" type="button" class="btn  hbtn bg-h-red" style="margin-left: 5px;">
+            <button onclick="show_send_message('offline 1d')" type="button" class="btn  hbtn bg-h-red"
+                style="margin-left: 5px;">
                 {{_("Offline more than 1 day")}}</button>
-            <button onclick="show_send_message('offline 1w')" type="button" class="btn hbtn bg-h-red" style="margin-left: 5px;margin-right: 5px;">
+            <button onclick="show_send_message('offline 1w')" type="button" class="btn hbtn bg-h-red"
+                style="margin-left: 5px;margin-right: 5px;">
                 {{_("Offline more than 1 week")}}
             </button>
             <button onclick="show_send_message('expired')" type="button" class="btn hbtn bg-h-red">
@@ -37,7 +40,7 @@
 {{super()}}
 
 <div class="callout callout-success">
-    {{_('User usage will be updated every 6 minutes. To update it now click <a href="%(link)s" class="btn btn-info">here</a>',link=hurl_for("admin.Actions:update_usage"))}}
+    {{_('adminuser.force_update_usage',link=hurl_for("admin.Actions:update_usage"))}}
 
 </div>
 <style>

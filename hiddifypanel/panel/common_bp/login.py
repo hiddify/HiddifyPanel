@@ -16,11 +16,11 @@ import re
 
 class LoginForm(FlaskForm):
     secret_textbox = wtf.fields.StringField(_(f'login.secret.label'), [wtf.validators.Regexp(
-        "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$", re.IGNORECASE, _('config.invalid uuid'))], default='',
+        "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$", re.IGNORECASE, _('config.invalid_uuid'))], default='',
         description=_(f'login.secret.description'), render_kw={
         'required': "",
         'pattern': "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
-        'message': _('config.invalid uuid')
+        'message': _('config.invalid_uuid')
     })
     submit = wtf.fields.SubmitField(_('Submit'))
 

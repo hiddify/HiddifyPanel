@@ -112,10 +112,10 @@ def get_quick_setup_form(empty=False):
         domain_regex = "^([A-Za-z0-9\\-\\.]+\\.[a-zA-Z]{2,})$"
 
         domain_validators = [
-            wtf.validators.Regexp(domain_regex, re.IGNORECASE, _("config.Invalid domain")),
+            wtf.validators.Regexp(domain_regex, re.IGNORECASE, _("config.Invalid_domain")),
             validate_domain,
-            wtf.validators.NoneOf([d.domain.lower() for d in Domain.query.all()], _("config.Domain already used")),
-            wtf.validators.NoneOf([c.value.lower() for c in StrConfig.query.all() if "fakedomain" in c.key and c.key != ConfigEnum.decoy_domain], _("config.Domain already used"))]
+            wtf.validators.NoneOf([d.domain.lower() for d in Domain.query.all()], _("config.Domain_already_used")),
+            wtf.validators.NoneOf([c.value.lower() for c in StrConfig.query.all() if "fakedomain" in c.key and c.key != ConfigEnum.decoy_domain], _("config.Domain_already_used"))]
         domain = wtf.StringField(
             _("domain.domain"),
             domain_validators,
@@ -132,7 +132,7 @@ def get_quick_setup_form(empty=False):
             "config.block_iran_sites.description"), default=hconfig(ConfigEnum.block_iran_sites))
         # enable_vmess = SwitchField(_("config.vmess_enable.label"), description=_("config.vmess_enable.description"), default=hconfig(ConfigEnum.vmess_enable))
         decoy_domain = wtf.StringField(_("config.decoy_domain.label"), description=_("config.decoy_domain.description"), default=hconfig(
-            ConfigEnum.decoy_domain), validators=[wtf.validators.Regexp(domain_regex, re.IGNORECASE, _("config.Invalid domain")), hutils.flask.validate_domain_exist])
+            ConfigEnum.decoy_domain), validators=[wtf.validators.Regexp(domain_regex, re.IGNORECASE, _("config.Invalid_domain")), hutils.flask.validate_domain_exist])
         submit = wtf.SubmitField(_('Submit'))
 
     return QuickSetupForm(None) if empty else QuickSetupForm()
@@ -146,7 +146,8 @@ def validate_domain(form, field):
 
     myip = hutils.network.get_ip(4)
     if dip and myip != dip:
-        raise ValidationError(_("Domain (%(domain)s)-> IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode", server_ip=myip, domain_ip=dip, domain=domain))
+        raise ValidationError(_("Domain (%(domain)s)-> IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode",
+                              server_ip=myip, domain_ip=dip, domain=domain))
 
 
 def admin_link():
