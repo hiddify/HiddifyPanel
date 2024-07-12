@@ -114,7 +114,7 @@ class DomainAdmin(AdminLTEModelView):
         if not dip:
             dip = hutils.network.resolve_domain_with_api(model.domain)
         myip = hutils.network.get_ip(4)
-        if myip == dip and model.mode == DomainType.direct:
+        if myip == dip and model.mode in [DomainType.direct, DomainType.sub_link_only]:
             badge_type = ''
         elif dip and model.mode != DomainType.direct and myip != dip:
             badge_type = 'warning'

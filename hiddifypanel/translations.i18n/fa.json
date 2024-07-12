@@ -2,6 +2,7 @@
   " Search Settings": " تنظیمات جستجو",
   "%(count)s records were successfully disabled.": "%(count)s رکورد با موفقیت غیرفعال شد.",
   "%(count)s records were successfully enabled.": "%(count)s رکوردها با موفقیت فعال شد.",
+  "%(expire_days)s days": "%(expire_days)s روز",
   "%(placeholder)s": "%(placeholder)s",
   "0 - Last day": "آخرین روز",
   "Access Denied!": "دسترسی غیرمجاز",
@@ -162,6 +163,7 @@
   },
   "Please select at least one file.": "حداقل یک فایل انتخاب کنید",
   "Please select at least one record.": "حداقل یک پوشه انتخاب کنید",
+  "Please select at least one user": "لطفا حداقل یک کاربر انتخاب کنید",
   "Please select one of the following applications:": "📍 لطفا یکی از برنامه های زیر را انتخاب کنید:\n<br />\n<br />",
   "Please type your message to send to the telegram:": "✏️  لطفا پیامی را که میخواهید با ربات تلگرام ارسال کنید بنویسید:",
   "Please understand that parent panel is under test and the plan and the condition of use maybe change at anytime.": "لطفاً توجه داشته باشید که پنل مادر در حال آزمایش است و طرح و شرایط استفاده ممکن است در هر زمان تغییر کند.",
@@ -174,10 +176,11 @@
   "RAM": "رم",
   "REALITY Fallback domain is not compaitble with server names!": "دامنه بازگشتی REALITY با نام سرور سازگار نیست!",
   "Release": "✅ پایدار",
-  "Remaining: ": "زمان پایان بسته",
+  "Remaining about %(relative)s, exactly %(days)s days": "حدود %(relative)s و دقیقا %(days)s روز باقی مانده است",
   "Remote nodes are not supported yet!": "گره های راه دور هنوز پشتیبانی نمی شوند!",
   "Rename File": "تغییر نام پرونده",
   "Reset Filters": "برگرداندن فیلتر ها به حالت اول",
+  "Reset Proxies": "بازنشانی پراکسی ها",
   "Reset Usage Time:": "زمان صفر شدن حجم:",
   "Reset every month": "ماهانه",
   "Reset package days": "📆 ریست زمان شروع بسته کاربر",
@@ -197,6 +200,7 @@
   "Save Link": "این لینک را در محلی ذخیره نمایید.",
   "Select all records": "انتخاب همه رکوردها",
   "Select record": "انتخاب رکورد",
+  "Seleted Users": "کاربران انتخاب شده",
   "Send Message to User's Telegram": "📣 ارسال پیام به تلگرام کاربر",
   "Sending": "در حال ارسال...",
   "Should be a valid domain": "باید یک دامنه معتبر باشد",
@@ -206,6 +210,8 @@
   "SingBox": "📦 SingBox",
   "Sort by %(name)s": "مرتب سازی بر اساس %(name)s",
   "Start Date": "زمان شروع",
+  "Started %(days)s days ago": "از %(days)s روز پیش شروع شد",
+  "Started from %(relative)s": "از %(relative)s شروع شد",
   "Status": "وضعیت",
   "Submit": "ثبت",
   "Success": "موفقیت",
@@ -238,6 +244,9 @@
   "Use HiddifyNext:": "استفاده از HiddifyNext:",
   "User activated!": "یوزر شما فعال شد",
   "User is inactive": "کاربر غیر فعال است",
+  "User usage will be updated every 6 minutes": {
+    " To update it now click <a href=\"%(link)s\" class=\"btn btn-info\">here</a>": "استفاده کاربر هر 6 دقیقه یکبار به روز می شود. برای به روز رسانی آن اکنون <a href=\"%(link)s\" class=\"btn btn-info\">اینجا را</a> کلیک کنید"
+  },
   "V2rayNG": "نرم افزار جایگزین  v2rayNG  <button class='btn btn-sm btn-default' onclick='show_video('android-v2rayng')'><i class='fa-solid fa-question'></i> </button>\n<br />",
   "V2rayNG intro": "لطفاً v2rayNG را از %(dl_link)s   %(play_link)s نصب کنید.\nسپس لینک زیر را کپی کرده و مطابق فیلم آموزش <button class='btn btn-sm btn-default' onclick='show_video('android-v2rayng')'><i class='fa-solid fa-question'></i>  </button>\nدر v2rayNG قرار دهید.\n<br />",
   "View in Telegram": "مشاهده جزییات در تلگرام",
@@ -247,6 +256,7 @@
     " Choose your action": "به ربات ادمین خوش آمدید. عملیات مورد نظر را انتخاب کنید."
   },
   "Why Going to Premium?": "مجوز استفاده از هیدیفای چگونه است؟",
+  "Will Start in %(days)s days": "از %(days)s روز دیگر شروع خواهد شد",
   "Windows": "ویندوز",
   "With selected": "با انتخاب شده ها",
   "Xray": "☢️ XRay",
@@ -1164,5 +1174,6 @@
     "user_links": "لینک‌های کاربر"
   },
   "weekly": "📅 هفتگی",
-  "worker": "✴️ ورکر کلودفلر"
+  "worker": "✴️ ورکر کلودفلر",
+  "Remaining: ": "زمان پایان بسته"
 }

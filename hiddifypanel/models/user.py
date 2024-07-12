@@ -1,5 +1,6 @@
 import datetime
 from enum import auto
+from uuid import uuid4
 from hiddifypanel.models.role import Role
 from dateutil import relativedelta
 
@@ -54,7 +55,8 @@ class UserDetail(db.Model, SerializerMixin):
 
     @property
     def devices(self):
-        return [] if not self.connected_devices else self.connected_devices.split(",")
+        return []
+        # return [] if not self.connected_devices else self.connected_devices.split(",")
 
 
 class User(BaseAccount, SerializerMixin):
@@ -122,13 +124,14 @@ class User(BaseAccount, SerializerMixin):
             is_active = False
         elif self.remaining_days < 0:
             is_active = False
-        elif len(self.devices) > max(3, self.max_ips):
-            is_active = False
+        # elif len(self.devices) > max(3, self.max_ips):
+        #     is_active = False
         return is_active
 
     @property
     def devices(self):
         res = {}
+        return res
         for detail in UserDetail.query.filter(UserDetail.user_id == self.id):
             for device in detail.devices:
                 res[device] = 1
@@ -202,6 +205,10 @@ class User(BaseAccount, SerializerMixin):
             uuid = str(uuid)
         account = User.query.filter(User.uuid == uuid).first()
         if not account and create:
+            from hiddifypanel import hutils
+            if not hutils.auth.is_uuid_valid(uuid):
+                uuid = str(uuid4())
+
             dbuser = User(uuid=uuid, name="unknown", added_by=AdminUser.current_admin_or_owner().id)
             db.session.add(dbuser)
             db.session.commit()
@@ -216,11 +223,11 @@ class User(BaseAccount, SerializerMixin):
     @classmethod
     def add_or_update(cls, commit: bool = True, **data):
         from hiddifypanel import hutils
-        dbuser = super().add_or_update(commit=commit, **data)
+        dbuser: User = super().add_or_update(commit=commit, **data)
         if data.get('added_by_uuid'):
             admin = AdminUser.by_uuid(data.get('added_by_uuid'), create=True) or AdminUser.current_admin_or_owner()  # type: ignore
             dbuser.added_by = admin.id
-        else:
+        elif not dbuser.added_by:
             dbuser.added_by = 1
 
         # if data.get('expiry_time', ''): #v4
@@ -230,45 +237,50 @@ class User(BaseAccount, SerializerMixin):
         #     dbuser.start_date = last_reset_time
         #     dbuser.package_days = (expiry_time - last_reset_time).days  # type: ignore
         # el
-        if 'package_days' in data:
+        if data.get('package_days') is not None:
             dbuser.package_days = data['package_days']
-            if data.get('start_date', ''):
+
+            if data.get('start_date'):
                 dbuser.start_date = hutils.convert.json_to_date(data['start_date'])
-            else:
+            elif 'start_date' in data and data['start_date'] is None:
                 dbuser.start_date = None
 
         if (c_GB := data.get('current_usage_GB')) is not None:
             dbuser.current_usage_GB = c_GB
         elif (c := data.get('current_usage')) is not None:
             dbuser.current_usage = c
-        else:
+        elif dbuser.current_usage is None:
             dbuser.current_usage = 0
 
         if (l_GB := data.get('usage_limit_GB')) is not None:
             dbuser.usage_limit_GB = l_GB
         elif (l := data.get('usage_limit')) is not None:
             dbuser.usage_limit = l
-        else:
+        elif dbuser.usage_limit_GB is None:
             dbuser.usage_limit_GB = 1000
 
-        dbuser.enable = data.get('enable', True)
+        if data.get('enable') is not None:
+            dbuser.enable = data['enable']
 
-        if data.get('ed25519_private_key', ''):
+        if data.get('ed25519_private_key', '') and data.get('ed25519_public_key', ''):
             dbuser.ed25519_private_key = data.get('ed25519_private_key', '')
             dbuser.ed25519_public_key = data.get('ed25519_public_key', '')
+        if data.get('wg_pk') is not None:
+            dbuser.wg_pk = data['wg_pk']
+        if data.get('wg_pub') is not None:
+            dbuser.wg_pub = data['wg_pub']
+        if data.get('wg_psk') is not None:
+            dbuser.wg_psk = data['wg_psk']
 
-        dbuser.wg_pk = data.get('wg_pk', dbuser.wg_pk)
-        dbuser.wg_pub = data.get('wg_pub', dbuser.wg_pub)
-        dbuser.wg_psk = data.get('wg_psk', dbuser.wg_psk)
+        if data.get('mode') is not None or dbuser.mode is None:
+            mode = data.get('mode', UserMode.no_reset)
+            if mode == 'disable':
+                mode = UserMode.no_reset
+                dbuser.enable = False
+            dbuser.mode = mode
 
-        mode = data.get('mode', UserMode.no_reset)
-        if mode == 'disable':
-            mode = UserMode.no_reset
-            dbuser.enable = False
-
-        dbuser.mode = mode
-
-        dbuser.last_online = hutils.convert.json_to_time(data.get('last_online')) or datetime.datetime.min
+        if data.get('last_online') is not None:
+            dbuser.last_online = hutils.convert.json_to_time(data.get('last_online')) or datetime.datetime.min
         if commit:
             db.session.commit()
         return dbuser
@@ -305,6 +317,7 @@ class User(BaseAccount, SerializerMixin):
                 'wg_pk': self.wg_pk,
                 'wg_pub': self.wg_pub,
                 'wg_psk': self.wg_psk,
+                'is_active': self.is_active
                 }
 
     # @staticmethod

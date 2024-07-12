@@ -50,6 +50,7 @@ def _add_users_usage(users_usage_data: Dict[User, Dict], child_id, sync=False):
     res = {}
     have_change = False
     before_enabled_users = user_driver.get_enabled_users()
+
     daily_usage = {}
     today = datetime.date.today()
     for adm in AdminUser.query.all():
@@ -64,15 +65,14 @@ def _add_users_usage(users_usage_data: Dict[User, Dict], child_id, sync=False):
     userDetails = {p.user_id: p for p in UserDetail.query.filter(UserDetail.child_id == child_id).all()}
     for user, uinfo in users_usage_data.items():
         usage_bytes = uinfo['usage']
-        devices = uinfo['devices']
 
         # UserDetails things
         detail = userDetails.get(user.id)
         if not detail:
             detail = UserDetail(user_id=user.id, child_id=child_id)
             db.session.add(detail)
-        detail.connected_devices = devices
-        detail.current_usage_GB = detail.current_usage_GB or 0
+        if uinfo['devices'] != detail.connected_devices:
+            detail.connected_devices = uinfo['devices']
 
         # Enable the user if isn't already
         if not before_enabled_users[user.uuid] and user.is_active:
@@ -86,22 +86,21 @@ def _add_users_usage(users_usage_data: Dict[User, Dict], child_id, sync=False):
             res[user.uuid] = "No usage"
         else:
             # Set new daily usage of the user
-            if sync:
-                if daily_usage.get(user.added_by, daily_usage[1]).usage != usage_bytes:
-                    daily_usage.get(user.added_by, daily_usage[1]).usage = usage_bytes
+            if sync and daily_usage.get(user.added_by, daily_usage[1]).usage != usage_bytes:
+                daily_usage.get(user.added_by, daily_usage[1]).usage = usage_bytes
             else:
                 daily_usage.get(user.added_by, daily_usage[1]).usage += usage_bytes
 
-            in_gig = (usage_bytes) / to_gig_d
+            in_bytes = usage_bytes
 
             # Set new current usage of the user
-            if sync:
-                if user.current_usage_GB != in_gig:
-                    user.current_usage_GB = in_gig
+            if sync and user.current_usage != in_bytes:
+                user.current_usage = in_bytes
                 # detail.current_usage_GB = in_gig
             else:
-                user.current_usage_GB += in_gig
-                detail.current_usage_GB += in_gig
+                user.current_usage += in_bytes
+                detail.current_usage = detail.current_usage or 0
+                detail.current_usage += in_bytes
 
             # Change last online time of the user
             user.last_online = datetime.datetime.now()
@@ -111,9 +110,10 @@ def _add_users_usage(users_usage_data: Dict[User, Dict], child_id, sync=False):
             if user.start_date is None:
                 user.start_date = datetime.date.today()
 
-            res[user.uuid] = in_gig
+            res[user.uuid] = f'{in_bytes/1000000:0.3f}MB'
 
         # Remove user from drivers(singbox, xray, wireguard etc.) if they're inactive
+        # print(before_enabled_users[user.uuid], user.is_active)
         if before_enabled_users[user.uuid] and not user.is_active:
             print(f"Removing enabled client {user.uuid} ")
             user_driver.remove_client(user)
@@ -122,14 +122,25 @@ def _add_users_usage(users_usage_data: Dict[User, Dict], child_id, sync=False):
 
     db.session.commit()  # type: ignore
 
+    # Remove invalid users
+    for uuid in before_enabled_users:
+        if uuid in res:
+            continue
+
+        user = User.query.filter(User.uuid == uuid).first()
+        if not user:
+            user_driver.remove_client(User(uuid=uuid))
+        elif not user.is_active:
+            user_driver.remove_client(user)
+
+    # print("------------------", res)
     # Apply the changes to the drivers
     if have_change:
         hiddify.quick_apply_users()
 
     # Sync the new data with the parent node if the data has not been set by the parent node itself and the current panel is a child panel
-    if not sync:
-        if hutils.node.is_child():
-            hutils.node.child.sync_users_usage_with_parent()
+    if not sync and hutils.node.is_child():
+        hutils.node.child.sync_users_usage_with_parent()
 
     return {"status": 'success', "comments": res}
 

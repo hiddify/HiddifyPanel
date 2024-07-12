@@ -4,6 +4,7 @@ from .abstract_driver import DriverABS
 from flask import current_app
 import json
 from collections import defaultdict
+from hiddifypanel.cache import cache
 
 
 class SingboxApi(DriverABS):
@@ -18,6 +19,7 @@ class SingboxApi(DriverABS):
             json_data = json.load(f)
             return {u.split("@")[0]: 1 for u in json_data['experimental']['v2ray_api']['stats']['users']}
 
+    @cache.cache(ttl=300)
     def get_inbound_tags(self):
         try:
             xray_client = self.get_singbox_client()

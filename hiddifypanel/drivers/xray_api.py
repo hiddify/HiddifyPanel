@@ -2,6 +2,7 @@ import xtlsapi
 from hiddifypanel.models import *
 from .abstract_driver import DriverABS
 from collections import defaultdict
+from hiddifypanel.cache import cache
 
 
 class XrayApi(DriverABS):
@@ -19,7 +20,18 @@ class XrayApi(DriverABS):
             if "user>>>" not in use.name:
                 continue
             uuid = use.name.split(">>>")[1].split("@")[0]
-            res[uuid] = 1
+            try:
+                t = "xtls"
+                protocol = "vless"
+                xray_client.add_client(t, f'{uuid}', f'{uuid}@hiddify.com', protocol=protocol, flow='xtls-rprx-vision', alter_id=0, cipher='chacha20_poly1305')
+                xray_client.remove_client(t, f'{uuid}@hiddify.com')
+                res[uuid] = 0
+            except xtlsapi.xtlsapi.exceptions.EmailAlreadyExists as e:
+                res[uuid] = 1
+            except Exception as e:
+                print(f"error {e}")
+                res[uuid] = 0
+
         return res
 
         # xray_client = self.get_xray_client()
@@ -40,15 +52,16 @@ class XrayApi(DriverABS):
         #         enabled[uuid] = e
         # return enabled
 
+    # @cache.cache(ttl=300)
     def get_inbound_tags(self):
         try:
             xray_client = self.get_xray_client()
-            inbounds = [inb.name.split(">>>")[1] for inb in xray_client.stats_query('inbound')]
+            inbounds = {inb.name.split(">>>")[1] for inb in xray_client.stats_query('inbound')}
             print(f"Success in get inbound tags {inbounds}")
         except Exception as e:
             print(f"error in get inbound tags {e}")
-            inbounds = []
-        return list(set(inbounds))
+            inbounds = {}
+        return list(inbounds)
 
     def add_client(self, user):
         uuid = user.uuid
@@ -65,6 +78,7 @@ class XrayApi(DriverABS):
             'v2ray': 'shadowsocks',
             'kcp': 'vless',
             'dispatcher': 'trojan',
+            'reality': 'vless'
         }
 
         def proto(t):

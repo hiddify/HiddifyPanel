@@ -1,5 +1,5 @@
 from enum import auto
-import uuid
+from uuid import uuid4
 from flask import g
 from hiddifypanel.models.usage import DailyUsage
 from sqlalchemy import event, Column, Integer, Enum, Boolean, ForeignKey
@@ -84,6 +84,9 @@ class AdminUser(BaseAccount, SerializerMixin):
             uuid = str(uuid)
         account = AdminUser.query.filter(AdminUser.uuid == uuid).first()
         if not account and create:
+            from hiddifypanel import hutils
+            if not hutils.auth.is_uuid_valid(uuid):
+                uuid = str(uuid4())
             dbuser = AdminUser(uuid=uuid, name="unknown", parent_admin_id=AdminUser.current_admin_or_owner().id)
             db.session.add(dbuser)
             db.session.commit()
@@ -103,11 +106,14 @@ class AdminUser(BaseAccount, SerializerMixin):
             else:
                 parent_admin = cls.by_uuid(parent, create=True)
             dbuser.parent_admin_id = parent_admin.id  # type: ignore
-
-        dbuser.mode = data.get('mode', AdminMode.agent)
-        dbuser.can_add_admin = data.get('can_add_admin') or False
-        dbuser.max_users = data.get('max_users', 100)
-        dbuser.max_active_users = data.get('max_active_users', 100)
+        if data.get('mode') is not None:
+            dbuser.mode = data.get('mode', AdminMode.agent)
+        if data.get('can_add_admin') is not None:
+            dbuser.can_add_admin = data['can_add_admin']
+        if data.get('max_users') is not None:
+            dbuser.max_users = data['max_users']
+        if data.get('max_active_users') is not None:
+            dbuser.max_active_users = data['max_active_users']
         if commit:
             db.session.commit()
         return dbuser
@@ -158,10 +164,10 @@ class AdminUser(BaseAccount, SerializerMixin):
         return str(self.name)
 
     @staticmethod
-    def get_super_admin():
+    def get_super_admin() -> "AdminUser":
         admin = AdminUser.by_id(1)
         if not admin:
-            db.session.add(AdminUser(id=1, uuid=str(uuid.uuid4()), name="Owner", mode=AdminMode.super_admin, comment=""))
+            db.session.add(AdminUser(id=1, uuid=str(uuid4()), name="Owner", mode=AdminMode.super_admin, comment=""))
             db.session.commit()
 
             db_execute("update admin_user set id=1 where name='Owner'", commit=True)

@@ -1,7 +1,9 @@
 import uuid
-from apiflask.fields import String, Float, Enum, Date, Integer, Boolean
+from apiflask.fields import String, Float, Enum, Date, Integer, Boolean, DateTime
 from apiflask import Schema, fields
 from typing import Any, Mapping
+
+from marshmallow import ValidationError
 
 from hiddifypanel.models import UserMode, Lang, AdminMode
 from hiddifypanel import hutils
@@ -18,18 +20,23 @@ class FriendlyDateTime(fields.Field):
 
 
 class FriendlyUUID(fields.Field):
+
     def _serialize(self, value: Any, attr: str | None, obj: Any, **kwargs):
-        if value is None:
+        if value is None or not hutils.auth.is_uuid_valid(value):
             return None
         return str(value)
 
     def _deserialize(self, value: Any, attr: str | None, data: Mapping[str, Any] | None, **kwargs):
-        if value is None:
+        if value is None or not hutils.auth.is_uuid_valid(value):
             return None
         try:
             return str(uuid.UUID(value))
         except ValueError:
             self.fail('Invalid uuid')
+
+    def _validated(self, value):
+        if not hutils.auth.is_uuid_valid(value):
+            raise ValidationError('Invalid UUID')
 
 
 class UserSchema(Schema):
@@ -66,8 +73,8 @@ class UserSchema(Schema):
         allow_none=True,
         description="The current data usage of the user in gigabytes"
     )
-    last_reset_time = Date(
-        format='%Y-%m-%d',
+    last_reset_time = FriendlyDateTime(
+        format='%Y-%m-%d %H:%M:%S',
         description="The last time the user's data usage was reset, in a JSON-friendly format",
         allow_none=True
     )
@@ -121,20 +128,25 @@ class UserSchema(Schema):
 
     lang = Enum(Lang, required=False, allow_none=True, description="The language of the user")
     enable = Boolean(required=False, description="Whether the user is enabled or not")
+    is_active = Boolean(required=False, description="Whether the user is active for using hiddify")
 
 
-class PutUserSchema(UserSchema):
+class PostUserSchema(UserSchema):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         # the uuid is sent in the url path
         self.fields['uuid'].required = False
+        self.fields['uuid'].allow_none = True
 
 
 class PatchUserSchema(UserSchema):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['uuid'].required = False
+        self.fields['uuid'].allow_none = True,
         self.fields['name'].required = False
+        self.fields['name'].allow_none = True,
+
 
 # endregion
 
@@ -144,7 +156,7 @@ class PatchUserSchema(UserSchema):
 class AdminSchema(Schema):
     name = String(required=True, description='The name of the admin')
     comment = String(required=False, description='A comment related to the admin', allow_none=True)
-    uuid = FriendlyUUID(required=True, description='The unique identifier for the admin')
+    uuid = FriendlyUUID(required=False, allow_none=True, description='The unique identifier for the admin')
     mode = Enum(AdminMode, required=True, description='The mode for the admin')
     can_add_admin = Boolean(required=True, description='Whether the admin can add other admins')
     parent_admin_uuid = FriendlyUUID(required=False, description='The unique identifier for the parent admin', allow_none=True,
@@ -154,13 +166,6 @@ class AdminSchema(Schema):
     lang = Enum(Lang, required=True)
     max_users = Integer(required=False, description='The maximum number of users allowed', allow_none=True)
     max_active_users = Integer(required=False, description='The maximum number of active users allowed', allow_none=True)
-
-
-class PutAdminSchema(AdminSchema):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        # the uuid is sent in the url path
-        self.fields['uuid'].required = False
 
 
 class PatchAdminSchema(AdminSchema):

@@ -671,7 +671,6 @@ def upgrade_database():
 
 def init_db():
     db.create_all()
-    cache.invalidate_all_cached_functions()
 
     # set_hconfig(ConfigEnum.db_version, 71)
     # temporary fix
@@ -680,6 +679,7 @@ def init_db():
     db_version = int(hconfig(ConfigEnum.db_version) or 0)
     if db_version == latest_db_version():
         return
+    cache.invalidate_all_cached_functions()
     migrate(db_version)
     Child.query.filter(Child.id == 0).first().mode = ChildMode.virtual
     # if db_version < 69:

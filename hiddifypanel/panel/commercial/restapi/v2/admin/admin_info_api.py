@@ -15,6 +15,7 @@ class AdminInfoApi(MethodView):
 
     @app.output(AdminSchema)  # type: ignore
     def get(self):
+        """Current Admin Info"""
         admin = g.account or abort(404, "user not found")
 
         dto = AdminSchema()

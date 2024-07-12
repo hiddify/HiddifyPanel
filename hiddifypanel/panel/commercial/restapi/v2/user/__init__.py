@@ -2,7 +2,7 @@ from apiflask import APIBlueprint
 
 bp = APIBlueprint("api_user", __name__, url_prefix="/<proxy_path>/api/v2/user/", enable_openapi=True)
 
-bp_uuid = APIBlueprint("api_user_uuid", __name__, url_prefix="/<proxy_path>/<uuid:secret_uuid>/api/v2/user/", enable_openapi=True)
+bp_uuid = APIBlueprint("api_user_by_uuid", __name__, url_prefix="/<proxy_path>/<uuid:secret_uuid>/api/v2/user/", enable_openapi=True)
 
 
 def init_app(app):

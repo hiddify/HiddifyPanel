@@ -5,6 +5,86 @@
 
 #### New
 
+* Add more system api such as update usage and all configs. 
+
+#### Changes
+
+* Update api to v3. 
+
+* Better ui for start and end date. 
+
+#### Fix
+
+* Api uuid bug. 
+
+* Translation bug. 
+
+* Bug in v2ray. 
+
+* Bugs in update usage. 
+
+* Sorting bug. 
+
+* Xray sub order. 
+
+#### Other
+
+* Update translations. 
+
+* Temporary remove active devices. 
+
+* Optimize update xray  usage. 
+
+* Optimize update wireguard  usage. 
+
+* Optimize update ssh usage. 
+
+* Update translations. 
+
+* Chore: update translations with Fink 🐦 
+
+* Update translations. 
+
+* Fix bug. 
+
+* Update translations. 
+
+
+
+## v10.30.6 (2024-07-06)
+
+#### Changes
+
+* Default  of reset usage and reset days are not false. 
+
+#### Other
+
+* Update translations. 
+
+
+
+## v10.30.4 (2024-07-02)
+
+#### Other
+
+* Update translations. 
+
+
+
+## v10.30.2 (2024-07-02)
+
+#### Other
+
+* Merge branch 'main' of github.com:hiddify/Hiddify-Panel. 
+
+* Update translations. 
+
+
+
+## v10.30.0 (2024-07-02)
+
+#### New
+
 * Add reset proxies. 
 
 * Optimize priodic reset usage. 

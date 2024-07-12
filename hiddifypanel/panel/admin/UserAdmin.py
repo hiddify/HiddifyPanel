@@ -10,6 +10,7 @@ from wtforms.validators import NumberRange
 from flask_babel import lazy_gettext as _
 from flask import g, request  # type: ignore
 from markupsafe import Markup
+from sqlalchemy import desc
 
 from hiddifypanel.hutils.flask import hurl_for
 from wtforms.validators import Regexp, ValidationError
@@ -30,8 +31,8 @@ class UserAdmin(AdminLTEModelView):
     column_list = ["is_active", "name", "UserLinks", "current_usage", "remaining_days", "comment", 'last_online', 'mode', 'admin', "uuid"]
     column_editable_list = ["comment", "name", "uuid"]
     form_extra_fields = {
-        'reset_days': SwitchField(_("Reset package days")),
-        'reset_usage': SwitchField(_("Reset package usage")),
+        'reset_days': SwitchField(_("Reset package days"), default=False),
+        'reset_usage': SwitchField(_("Reset package usage"), default=False),
         # 'disable_user': SwitchField(_("Disable User"))
     }
     list_template = 'model/user_list.html'
@@ -148,7 +149,7 @@ class UserAdmin(AdminLTEModelView):
         href = f'{hiddify.get_account_panel_link(model, request.host, is_https=True)}#{hutils.encode.unicode_slug(model.name)}'
 
         link = f"""<a target='_blank' class='share-link btn btn-xs btn-primary' data-copy='{href}' href='{href}'>
-        <i class='fa-solid fa-arrow-up-right-from-square'></i> 
+        <i class='fa-solid fa-arrow-up-right-from-square'></i>
         {_("Current Domain")} </a>"""
 
         domains = [d for d in Domain.get_domains() if d.domain != request.host]
@@ -171,7 +172,7 @@ class UserAdmin(AdminLTEModelView):
         </div>
         """)
 
-    def _expire_formatter(view, context, model, name):
+    def _expire_formatter(view, context, model: User, name):
         remaining = model.remaining_days
 
         diff = datetime.timedelta(days=remaining)
@@ -231,16 +232,28 @@ class UserAdmin(AdminLTEModelView):
             # delattr(form,'disable_user')
         else:
             remaining = form._obj.remaining_days  # remaining_days(form._obj)
-            msg = _("Remaining: ") + hutils.convert.format_timedelta(datetime.timedelta(days=remaining))
+            relative_remaining = hutils.convert.format_timedelta(datetime.timedelta(days=remaining))
+            msg = _("Remaining about %(relative)s, exactly %(days)s days", relative=relative_remaining, days=remaining)
             form.reset_days.label.text += f" ({msg})"
             usr_usage = f" ({_('user.home.usage.title')} {round(form._obj.current_usage_GB,3)}GB)"
             form.reset_usage.label.text += usr_usage
+            form.reset_usage.data = False
+            form.reset_days.data = False
+
             form.usage_limit.label.text += usr_usage
 
-        # if form._obj.mode==UserMode.disable:
-        #     delattr(form,'disable_user')
-        # form.disable_user.data=form._obj.mode==UserMode.disable
-        form.package_days.label.text += f" ({msg})"
+            # if form._obj.mode==UserMode.disable:
+            #     delattr(form,'disable_user')
+            # form.disable_user.data=form._obj.mode==UserMode.disable
+            if form._obj.start_date:
+                started = form._obj.start_date - datetime.date.today()
+                msg = _("Started from %(relative)s", relative=hutils.convert.format_timedelta(started))
+                form.package_days.label.text += f" ({msg})"
+                if started.days <= 0:
+                    exact_start = _("Started %(days)s days ago", days=-started.days)
+                else:
+                    exact_start = _("Will Start in %(days)s days", days=started.days)
+                form.package_days.description += f" ({exact_start})"
 
     def get_edit_form(self):
         form = super().get_edit_form()
@@ -292,7 +305,7 @@ class UserAdmin(AdminLTEModelView):
     def after_model_change(self, form, model, is_created):
         if hconfig(ConfigEnum.first_setup):
             set_hconfig(ConfigEnum.first_setup, False)
-        user = User.query.filter(User.uuid == model.uuid).first()
+        user = User.query.filter(User.uuid == model.uuid).first() or abort(404)
         if user.is_active:
             user_driver.add_client(model)
         else:
@@ -301,7 +314,6 @@ class UserAdmin(AdminLTEModelView):
 
         if hutils.node.is_parent():
             hutils.node.run_node_op_in_bg(hutils.node.parent.request_childs_to_sync)
-            
 
     def after_model_delete(self, model):
         user_driver.remove_client(model)
@@ -312,6 +324,7 @@ class UserAdmin(AdminLTEModelView):
 
     def get_list(self, page, sort_column, sort_desc, search, filters, page_size=50, *args, **kwargs):
         res = None
+        self._auto_joins = {}
         # print('aaa',args, kwargs)
         if sort_column in ['remaining_days', 'is_active']:
             query = self.get_query()
@@ -363,14 +376,12 @@ class UserAdmin(AdminLTEModelView):
             abort(403)
 
         query = query.filter(User.added_by.in_(admin.recursive_sub_admins_ids()))
-
+        query = query.order_by(desc(User.id))
         return query
 
     # Override get_count_query() to include the filter condition in the count query
     def get_count_query(self):
         # Get the base count query
-        query = self.get_query()
-        from sqlalchemy import func
 
         # query = query.session.query(func.count(User.id))
         query = super().get_count_query()
