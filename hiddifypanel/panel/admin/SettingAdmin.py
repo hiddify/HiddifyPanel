@@ -24,6 +24,7 @@ from hiddifypanel.models import *
 from hiddifypanel.database import db
 from hiddifypanel.panel import hiddify, custom_widgets
 from hiddifypanel import __version__
+from hiddifypanel.cache import cache
 
 
 class SettingAdmin(FlaskView):
@@ -111,6 +112,7 @@ class SettingAdmin(FlaskView):
                     if p_mode != PanelMode.standalone:
                         set_hconfig(ConfigEnum.panel_mode, PanelMode.standalone)
 
+            cache.invalidate_all_cached_functions()
             from hiddifypanel.panel.commercial.telegrambot import register_bot
             register_bot(set_hook=True)
 
