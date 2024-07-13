@@ -223,8 +223,10 @@ def add_stream_settings(base: dict, proxy: dict):
     # THE CURRENT CODE WORKS BUT THE CORRECT CONDITINO SHOULD BE THIS:
     # ss['security'] == 'tls' or 'xtls' -----> ss['security'] in ['tls','xtls']
     # TODO: FIX THE CONDITION AND TEST CONFIGS ON THE CLIENT SIDE
-
-    if ss['security'] == 'tls' or 'xtls' and proxy['proto'] != ProxyProto.ss:
+    if ss['security'] == 'reality':
+        ss['network'] = proxy['transport']
+        add_reality_stream(ss, proxy)
+    elif ss['security'] == 'tls' or 'xtls' and proxy['proto'] != ProxyProto.ss:
         ss['tlsSettings'] = {
             'serverName': proxy['sni'],
             'allowInsecure': proxy['allow_insecure'],
@@ -239,9 +241,7 @@ def add_stream_settings(base: dict, proxy: dict):
             # 'cipherSuites': '', # Go lang sets
             # 'rejectUnknownSni': '', # default is false
         }
-    if ss['security'] == 'reality':
-        ss['network'] = proxy['transport']
-        add_reality_stream(ss, proxy)
+
     if proxy['l3'] == ProxyL3.kcp:
         ss['network'] = 'kcp'
         add_kcp_stream(ss, proxy)
@@ -249,7 +249,7 @@ def add_stream_settings(base: dict, proxy: dict):
     if proxy['l3'] == ProxyL3.h3_quic:
         add_quic_stream(ss, proxy)
 
-    if proxy['transport'] == 'tcp' or ss['security'] == 'reality' or (ss['security'] == 'none' and proxy['transport'] not in [ProxyTransport.httpupgrade, ProxyTransport.WS] and proxy['proto'] != ProxyProto.ss):
+    if (proxy['transport'] == 'tcp' and ss['security'] != 'reality') or (ss['security'] == 'none' and proxy['transport'] not in [ProxyTransport.httpupgrade, ProxyTransport.WS] and proxy['proto'] != ProxyProto.ss):
         ss['network'] = proxy['transport']
         add_tcp_stream(ss, proxy)
     if proxy['transport'] == ProxyTransport.h2 and ss['security'] == 'none' and ss['security'] != 'reality':
