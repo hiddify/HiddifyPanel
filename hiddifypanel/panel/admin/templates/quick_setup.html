@@ -43,26 +43,17 @@
 
 
 <div class="row">
+
+
     <div class="card col-12">
-        <div class="card-header">{{_("config.lang.label")}}</div>
-        <div class="card-body">
-
-            <div class="row">
-                <div class="col-12">
-
-                    {{render_form(lang_form)}}
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="card">
         <div class="card-header">{{_("admin.quicksetup.title")}}</div>
         <div class="card-body">
 
             <div class="row">
                 <div class="card-columns">
+                    {% if ipv4 or ipv6 %}
                     {{_('admin.quicksetup_intro',ipv4=ip_btn(ipv4),ipv6=ip_btn(ipv6))}}
+                    {%endif%}
                     {{render_form(form,form_type="",extra_classes="card-columns1")}}
                 </div>
             </div>
@@ -71,9 +62,24 @@
 </div>
 
 <style>
+    .form-group {
+        display: inline-block;
+        width: 100%;
+    }
+
+    fieldset {
+        margin: 20px 0;
+    }
+
+    legend {
+        background: transparent;
+        margin-bottom: 20px;
+
+    }
+
     @media (min-width: 576px) {
         .card-columns {
-            column-count: 1;
+            column-count: 2;
         }
     }
 

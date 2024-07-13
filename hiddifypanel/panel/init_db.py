@@ -14,7 +14,7 @@ from hiddifypanel.database import db, db_execute
 from flask import g
 from sqlalchemy import text
 from loguru import logger
-MAX_DB_VERSION = 90
+MAX_DB_VERSION = 100
 
 
 def _v88(child_id):
@@ -47,11 +47,11 @@ def _v83(child_id):
 
 def _v82(child_id):
     set_hconfig(ConfigEnum.vless_enable, True)
-    set_hconfig(ConfigEnum.trojan_enable, True)
-    set_hconfig(ConfigEnum.reality_enable, True)
+    set_hconfig(ConfigEnum.trojan_enable, False)
+    set_hconfig(ConfigEnum.reality_enable, False)
     set_hconfig(ConfigEnum.tcp_enable, True)
-    set_hconfig(ConfigEnum.quic_enable, True)
-    set_hconfig(ConfigEnum.xtls_enable, True)
+    set_hconfig(ConfigEnum.quic_enable, False)
+    set_hconfig(ConfigEnum.xtls_enable, False)
     set_hconfig(ConfigEnum.h2_enable, True)
 
 
@@ -80,7 +80,7 @@ def _v75(child_id):
 
 
 def _v74(child_id):
-    set_hconfig(ConfigEnum.ws_enable, True)
+    set_hconfig(ConfigEnum.ws_enable, False)
     set_hconfig(ConfigEnum.grpc_enable, True)
     set_hconfig(ConfigEnum.httpupgrade_enable, True)
     set_hconfig(ConfigEnum.shadowsocks2022_port, hutils.random.get_random_unused_port())

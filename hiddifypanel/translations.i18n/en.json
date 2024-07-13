@@ -1099,6 +1099,17 @@
   },
   "previous": "Previous",
   "quicksetup": {
+    "basic_configs": {
+      "label": "quicksetup.basic_configs.label"
+    },
+    "cdn_domain": {
+      "description": "quicksetup.cdn_domain.description",
+      "label": "quicksetup.cdn_domain.label"
+    },
+    "proxy_cat": {
+      "description": "quicksetup.proxy_cat.description Final Step",
+      "label": "quicksetup.proxy_cat.label"
+    },
     "setlang": {
       "error": "An error occurred while changing language.",
       "success": "Changing the Language was Successful."

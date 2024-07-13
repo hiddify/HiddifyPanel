@@ -197,13 +197,15 @@ def get_config_form():
             if c.key in bool_types:
                 field = SwitchField(_(f'config.{c.key}.label'), default=c.value, description=_(f'config.{c.key}.description'))
             elif c.key == ConfigEnum.core_type:
-                field = wtf.SelectField(_(f"config.{c.key}.label"), choices=[("xray", _("Xray")), ("singbox", _(
-                    "SingBox"))], description=_(f"config.{c.key}.description"), default=hconfig(c.key))
+                field = wtf.SelectField(_(f"config.{c.key}.label"),
+                                        choices=[("xray", _("Xray")), ("singbox", _("SingBox"))],
+                                        description=_(f"config.{c.key}.description"),
+                                        default=hconfig(c.key))
             elif c.key == ConfigEnum.warp_mode:
-                field = wtf.SelectField(
-                    _(f"config.{c.key}.label"), choices=[("disable", _("Disable")), ("all", _("All")), ("custom", _("Only Blocked and Local websites"))],
-                    description=_(f"config.{c.key}.description"),
-                    default=hconfig(c.key))
+                field = wtf.SelectField(_(f"config.{c.key}.label"),
+                                        choices=[("disable", _("Disable")), ("all", _("All")), ("custom", _("Only Blocked and Local websites"))],
+                                        description=_(f"config.{c.key}.description"),
+                                        default=hconfig(c.key))
 
             elif c.key == ConfigEnum.lang or c.key == ConfigEnum.admin_lang:
                 field = wtf.SelectField(

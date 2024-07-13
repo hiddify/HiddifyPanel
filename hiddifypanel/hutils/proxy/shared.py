@@ -130,7 +130,7 @@ def get_proxies(child_id: int = 0, only_enabled=False) -> list['Proxy']:
     if not hconfig(ConfigEnum.vmess_enable, child_id):
         proxies = [c for c in proxies if 'vmess' not in c.proto]
     if not hconfig(ConfigEnum.vless_enable, child_id):
-        proxies = [c for c in proxies if 'vless' not in c.proto]
+        proxies = [c for c in proxies if 'vless' not in c.proto or 'reality' in c.l3]
     if not hconfig(ConfigEnum.trojan_enable, child_id):
         proxies = [c for c in proxies if 'trojan' not in c.proto]
     if not hconfig(ConfigEnum.httpupgrade_enable, child_id):

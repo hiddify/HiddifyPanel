@@ -69,7 +69,7 @@ class ProxyAdmin(FlaskView):
 
 
 def get_global_config_form(empty=False):
-    boolconfigs = BoolConfig.query.all()
+    boolconfigs = BoolConfig.query.filter(BoolConfig.child_id == Child.current().id).all()
 
     class DynamicForm(FlaskForm):
         pass

@@ -230,8 +230,14 @@ class DomainAdmin(AdminLTEModelView):
         # # Update the many-to-many relationship
         if len(model.show_domains) == Domain.query.count():
             model.show_domains = []
-
-        if model.mode == DomainType.reality:
+        if model.mode == DomainType.old_xtls_direct:
+            if not hconfig(ConfigEnum.xtls_enable):
+                set_hconfig(ConfigEnum.xtls_enable, True)
+                hutils.proxy.get_proxies().invalidate_all()
+        elif model.mode == DomainType.reality:
+            if not hconfig(ConfigEnum.reality_enable):
+                set_hconfig(ConfigEnum.reality_enable, True)
+                hutils.proxy.get_proxies().invalidate_all()
             model.servernames = (model.servernames or model.domain).lower()
             for v in set([model.domain, model.servernames]):
                 for d in v.split(","):
