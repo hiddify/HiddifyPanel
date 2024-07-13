@@ -5,6 +5,10 @@
 
 #### New
 
+* Better ipv6 and ipv4 managemnt. 
+
+* Add quick setup steps and disable some services by default. 
+
 * Add more system api such as update usage and all configs. 
 
 #### Changes
@@ -14,6 +18,12 @@
 * Better ui for start and end date. 
 
 #### Fix
+
+* Xray in json config. 
+
+* Reset cache bug. 
+
+* Invalidate cache after changing settings. 
 
 * Sorting issue. 
 
@@ -30,6 +40,22 @@
 * Xray sub order. 
 
 #### Other
+
+* Allow fake domain to be empty. 
+
+* Merge branch 'main' of github.com:hiddify/Hiddify-Panel. 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Allow host to be empty. 
+
+* Update translations. 
+
+* Merge branch 'main' of github.com:hiddify/Hiddify-Panel. 
+
+* Update translations. 
 
 * Update. 
 
