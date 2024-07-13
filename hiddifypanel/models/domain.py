@@ -38,7 +38,7 @@ ShowDomain = db.Table('show_domain',
 class Domain(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     child_id = db.Column(db.Integer, db.ForeignKey('child.id'), default=0)
-    domain = db.Column(db.String(200), nullable=False, unique=False)
+    domain = db.Column(db.String(200), nullable=True, unique=False)
     alias = db.Column(db.String(200))
     sub_link_only = db.Column(db.Boolean, nullable=False, default=False)
     mode = db.Column(db.Enum(DomainType), nullable=False, default=DomainType.direct)

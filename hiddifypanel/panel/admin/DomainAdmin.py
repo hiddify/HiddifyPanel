@@ -65,7 +65,7 @@ class DomainAdmin(AdminLTEModelView):
         'domain': {
             'validators': [
                 Regexp(
-                    r'^(\*\.)?([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})$',
+                    r'^(\*\.)?([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})$|^$',
                     message=__("Should be a valid domain"))]},
         "cdn_ip": {
             'validators': [
@@ -149,7 +149,7 @@ class DomainAdmin(AdminLTEModelView):
 
     # TODO: refactor this function
     def on_model_change(self, form, model, is_created):
-        model.domain = model.domain.lower()
+        model.domain = (model.domain or '').lower()
 
         configs = get_hconfigs()
         for c in configs:
@@ -174,7 +174,7 @@ class DomainAdmin(AdminLTEModelView):
         if "*" in model.domain and model.mode not in [DomainType.cdn, DomainType.auto_cdn_ip]:
             raise ValidationError(_("Domain can not be resolved! there is a problem in your domain"))
 
-        skip_check = "*" in model.domain
+        skip_check = "*" in model.domain or model.domain == ""
         if hconfig(ConfigEnum.cloudflare) and model.mode not in [DomainType.fake, DomainType.relay, DomainType.reality]:
             try:
                 proxied = model.mode in [DomainType.cdn, DomainType.auto_cdn_ip]
