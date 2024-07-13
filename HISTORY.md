@@ -41,6 +41,8 @@
 
 #### Other
 
+* Update translations. 
+
 * Allow fake domain to be empty. 
 
 * Merge branch 'main' of github.com:hiddify/Hiddify-Panel. 
