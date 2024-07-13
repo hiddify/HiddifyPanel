@@ -150,7 +150,8 @@ class DomainAdmin(AdminLTEModelView):
     # TODO: refactor this function
     def on_model_change(self, form, model, is_created):
         model.domain = (model.domain or '').lower()
-
+        if model.domain == '' and model.mode != DomainType.fake:
+            raise ValidationError(_("domain.empty.allowed_for_fake_only"))
         configs = get_hconfigs()
         for c in configs:
             if "domain" in c and c not in [ConfigEnum.decoy_domain, ConfigEnum.reality_fallback_domain] and c.category != 'hidden':
