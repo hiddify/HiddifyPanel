@@ -1,4 +1,4 @@
-from typing import List, Literal, Union
+from typing import List, Literal, Set, Union
 from urllib.parse import urlparse
 import urllib.request
 import ipaddress
@@ -33,17 +33,43 @@ def get_domain_ip(domain: str, retry: int = 3, version: Literal[4, 6] | None = N
 
     if not res and version != 4:
         try:
-            res = f"[{socket.getaddrinfo(domain, None, socket.AF_INET6)[0][4][0]}]"
-
-            res = res[1:-1]
+            res = f"{socket.getaddrinfo(domain, None, socket.AF_INET6)[0][4][0]}"
 
         except BaseException:
             pass
 
-    if retry <= 0 or not res:
+    if retry <= 0:
         return None
+    if not res:
+        return get_domain_ip(domain, retry=retry - 1, version=version)
 
-    return ipaddress.ip_address(res) or get_domain_ip(domain, retry=retry - 1) if res else None
+    return ipaddress.ip_address(res)
+
+
+def get_domain_ips(domain: str, retry: int = 3) -> Set[Union[ipaddress.IPv4Address, ipaddress.IPv6Address]]:
+    res = set()
+    if retry < 0:
+        return res
+    try:
+        _, _, ips = socket.gethostbyname_ex(domain)
+        for ip in ips:
+            res.add(ipaddress.ip_address(ip))
+    except Exception:
+        pass
+
+    try:
+        for ip in socket.getaddrinfo(domain, None, socket.AF_INET):
+            res.add(ipaddress.ip_address(ip[4][0]))
+    except BaseException:
+        pass
+
+    try:
+        for ip in socket.getaddrinfo(domain, None, socket.AF_INET6):
+            res.add(ipaddress.ip_address(ip[4][0]))
+    except BaseException:
+        pass
+
+    return res or get_domain_ips(domain, retry=retry - 1)
 
 
 def get_socket_public_ip(version: Literal[4, 6]) -> Union[ipaddress.IPv4Address, ipaddress.IPv6Address, None]:
@@ -85,8 +111,11 @@ def get_interface_public_ip(version: Literal[4, 6]) -> List[Union[ipaddress.IPv4
 
 
 @cache.cache(ttl=600)
-def get_ips(version: Literal[4, 6]) -> List[Union[ipaddress.IPv4Address, ipaddress.IPv6Address]]:
+def get_ips(version: Literal[4, 6] | None = None) -> List[Union[ipaddress.IPv4Address, ipaddress.IPv6Address]]:
+    if not version:
+        return [*get_ips(4), *get_ips(6)]
     addrs = []
+
     i_ips = get_interface_public_ip(version)
     if i_ips:
         addrs = i_ips

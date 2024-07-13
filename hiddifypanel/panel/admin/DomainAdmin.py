@@ -109,21 +109,24 @@ class DomainAdmin(AdminLTEModelView):
             f'</a><a href="{admin_link}" class="btn btn-xs btn-info ltr" target="_blank">{model.domain}</a></div>')
 
     def _domain_ip(view, context, model, name):
-        dip = hutils.network.get_domain_ip(model.domain)
+        dips = hutils.network.get_domain_ips(model.domain)
         # The get_domain_ip function uses the socket library, which relies on the system DNS resolver. So it may sometimes use cached data, which is not desirable
-        if not dip:
-            dip = hutils.network.resolve_domain_with_api(model.domain)
-        myip = hutils.network.get_ip(4)
-        if myip == dip and model.mode in [DomainType.direct, DomainType.sub_link_only]:
-            badge_type = ''
-        elif dip and model.mode != DomainType.direct and myip != dip:
-            badge_type = 'warning'
-        else:
-            badge_type = 'danger'
-        res = f'<span class="badge badge-{badge_type}">{dip}</span>'
-        if model.sub_link_only:
-            res += f'<span class="badge badge-success">{_("SubLink")}</span>'
-        return Markup(res)
+        # if not dips:
+        #     dip = hutils.network.resolve_domain_with_api(model.domain)
+        myips = set(hutils.network.get_ips())
+        all_res = ""
+        for dip in dips:
+            if dip in myips and model.mode in [DomainType.direct, DomainType.sub_link_only]:
+                badge_type = ''
+            elif dip and dip not in myips and model.mode != DomainType.direct:
+                badge_type = 'warning'
+            else:
+                badge_type = 'danger'
+            res = f'<span class="badge badge-{badge_type}">{dip}</span>'
+            if model.sub_link_only:
+                res += f'<span class="badge badge-success">{_("SubLink")}</span>'
+            all_res += res
+        return Markup(all_res)
 
     def _show_domains_formater(view, context, model, name):
         if not len(model.show_domains):
@@ -191,28 +194,30 @@ class DomainAdmin(AdminLTEModelView):
         #     hutils.flask.flash(__("Using alias with special charachters may cause problem in some clients like FairVPN."), 'warning')
             # raise ValidationError(_("You have to add your cloudflare api key to use this feature: "))
 
-        dip = hutils.network.get_domain_ip(model.domain)
+        dips = hutils.network.get_domain_ips(model.domain)
         if model.sub_link_only:
-            if dip is None:
+            if not dips:
                 raise ValidationError(_("Domain can not be resolved! there is a problem in your domain"))  # type: ignore
         elif not skip_check:
-            if dip is None:
+            if not dips:
                 raise ValidationError(_("Domain can not be resolved! there is a problem in your domain"))  # type: ignore
 
             domain_ip_is_same_as_panel = False
-            domain_ip_is_same_as_panel |= dip in ipv4_list
-            for ipv6 in ipv6_list:
-                domain_ip_is_same_as_panel |= ipaddress.ip_address(dip) == ipaddress.ip_address(ipv6)
+            server_ips = [*ipv4_list, *ipv6_list]
+            for mip in server_ips:
+                domain_ip_is_same_as_panel |= mip in dips
+            server_ips_str = ', '.join(list(map(str, server_ips)))
+            dips_str = ', '.join(list(map(str, dips)))
 
             if model.mode == DomainType.direct and not domain_ip_is_same_as_panel:
                 # hutils.flask.flash(__(f"Domain IP={dip} is not matched with your ip={', '.join(list(map(str, ipv4_list)))} which is required in direct mode"),category='error')
                 raise ValidationError(
-                    __("Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode", server_ip=', '.join(list(map(str, ipv4_list))), domain_ip=dip))  # type: ignore
+                    __("Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode", server_ip=server_ips_str, domain_ip=dips_str))  # type: ignore
 
             if domain_ip_is_same_as_panel and model.mode in [DomainType.cdn, DomainType.relay, DomainType.fake, DomainType.auto_cdn_ip]:
                 #     # hutils.flask.flash(__(f"In CDN mode, Domain IP={dip} should be different to your ip={', '.join(list(map(str, ipv4_list)))}"), 'warning')
                 raise ValidationError(__("In CDN mode, Domain IP=%(domain_ip)s should be different to your ip=%(server_ip)s",
-                                      server_ip=', '.join(list(map(str, ipv4_list))), domain_ip=dip))  # type: ignore
+                                      server_ip=server_ips_str, domain_ip=dips_str))  # type: ignore
 
             # if model.mode in [DomainType.ss_faketls, DomainType.telegram_faketls]:
             #     if len(Domain.query.filter(Domain.mode==model.mode and Domain.id!=model.id).all())>0:
@@ -220,10 +225,11 @@ class DomainAdmin(AdminLTEModelView):
 
         model.domain = model.domain.lower()
         if model.mode == DomainType.direct and model.cdn_ip:
+            model.cdn_ip = ""
             raise ValidationError(f"Specifying CDN IP is only valid for CDN mode")
 
         if model.mode == DomainType.fake and not model.cdn_ip:
-            model.cdn_ip = str(ipv4_list[0])
+            model.cdn_ip = str(server_ips[0])
 
         # if model.mode==DomainType.fake and model.cdn_ip!=myip:
         #     raise ValidationError(f"Specifying CDN IP is only valid for CDN mode")
@@ -247,9 +253,9 @@ class DomainAdmin(AdminLTEModelView):
                     if not hutils.network.is_domain_reality_friendly(d):  # the minimum requirement for the REALITY protocol is to have tls1.3 and h2
                         raise ValidationError(_("Domain is not REALITY friendly!") + f' {d}')
 
-                    if not hutils.network.is_in_same_asn(d, ipv4_list[0]):
-                        server_asn = hutils.network.get_ip_asn(ipv4_list[0])
-                        domain_asn = hutils.network.get_ip_asn(dip)  # type: ignore
+                    if not hutils.network.is_in_same_asn(d, server_ips[0]):
+                        server_asn = hutils.network.get_ip_asn(server_ips[0])
+                        domain_asn = hutils.network.get_ip_asn(dips[0])  # type: ignore
                         msg = _("domain.reality.asn_issue") + \
                             (f"<br> Server ASN={server_asn}<br>{d}_ASN={domain_asn}" if server_asn or domain_asn else "")
                         hutils.flask.flash(msg, 'warning')
