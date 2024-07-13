@@ -224,7 +224,9 @@
   "You can restore your configs from previously downloaded configs": "ℹ️ You can restore your configs from previously downloaded backup file",
   "You have too much users! You can have only %(active)s active users and %(total)s users": "You have too much users! You can have only %(active)s active users and %(total)s users",
   "You have used this domain in: ": "You have already used this Domain in: ",
-  "You should visit this page without VPN. Your country=%(your_country)s\nexpected=%(expected_country)s": "You should visit this page without VPN Your Country =%(your_country)s\nExpected=%(expected_country)s",
+  "You should visit this page without VPN": {
+    " Your country=%(your_country)s\nexpected=%(expected_country)s": "You should visit this page without VPN Your Country =%(your_country)s\nExpected=%(expected_country)s"
+  },
   "Your hiddify instance information \nDomain: {} \nUsage limit: {} GB\nCurrent usage: {} GB\nExpires at: {} \nRemaining days: {} \n\n\n Happy using 🎉 🎉 🎉 \n": "Your Hiddify instance information \nDomain: {} \nUsage Limit: {} GB\nCurrent Usage: {} GB\nExpires at: {} \nRemaining Days: {} \n\n\nGood Luck! 🎉 🎉 🎉 \n",
   "[Admin only visible message:] You can change this message from settings": "[Admin Exclusive Message]: Customizable via Settings",
   "actions": "Actions",
@@ -260,7 +262,7 @@
     },
     "no_user_warning": "It seems that you have not created any users yet. default user link: %(default_link)s",
     "proxy": {
-      "detailed_config": "⚙️ Detailed Configs",
+      "detailed_config": "⚙️ Detailed Configs: Only enabled configs are shown.",
       "global_config": "⚙️ Global Configs"
     },
     "quicksetup": {
@@ -1100,15 +1102,15 @@
   "previous": "Previous",
   "quicksetup": {
     "basic_configs": {
-      "label": "quicksetup.basic_configs.label"
+      "label": "Step 2 out of 3"
     },
     "cdn_domain": {
-      "description": "quicksetup.cdn_domain.description",
-      "label": "quicksetup.cdn_domain.label"
+      "description": "Setting CDN domain is optional. Only use it if you have already config a CDN.",
+      "label": "CDN Domain"
     },
     "proxy_cat": {
-      "description": "quicksetup.proxy_cat.description Final Step",
-      "label": "quicksetup.proxy_cat.label"
+      "description": "Final Step: Please select the proxies you want. Please choose minimum as possible.",
+      "label": "Final Step"
     },
     "setlang": {
       "error": "An error occurred while changing language.",
