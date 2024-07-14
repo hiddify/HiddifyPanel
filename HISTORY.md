@@ -1,6 +1,14 @@
 # Changelog
 
 
+## v10.50.3 (2024-07-14)
+
+#### Other
+
+* Update translations. 
+
+
+
 ## v10.50.2 (2024-07-14)
 
 #### Fix
