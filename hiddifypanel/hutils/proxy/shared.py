@@ -1,3 +1,5 @@
+from collections import defaultdict
+import ipaddress
 from flask import current_app, request, g
 import glob
 import random
@@ -173,7 +175,7 @@ def get_valid_proxies(domains: list[Domain]) -> list[dict]:
     allp = []
     allphttp = [p for p in request.args.get("phttp", "").split(',') if p]
     allptls = [p for p in request.args.get("ptls", "").split(',') if p]
-    added_ip = {}
+    added_ip = defaultdict(set)
     configsmap = {}
     proxeismap = {}
     for domain in domains:
@@ -181,10 +183,9 @@ def get_valid_proxies(domains: list[Domain]) -> list[dict]:
             configsmap[domain.child_id] = get_hconfigs(domain.child_id)
             proxeismap[domain.child_id] = get_proxies(domain.child_id, only_enabled=True)
         hconfigs = configsmap[domain.child_id]
-
-        ip = hutils.network.get_domain_ip(domain.domain, version=4)
-        ip6 = hutils.network.get_domain_ip(domain.domain, version=6)
-        ips = [x for x in [ip, ip6] if x is not None]
+        ips = domain.get_cdn_ips_parsed()
+        if not ips:
+            ips = hutils.network.get_domain_ips(domain.domain)
         for proxy in proxeismap[domain.child_id]:
             noDomainProxies = False
             if proxy.proto in [ProxyProto.ssh, ProxyProto.wireguard]:
@@ -193,18 +194,17 @@ def get_valid_proxies(domains: list[Domain]) -> list[dict]:
                 noDomainProxies = True
             options = []
             key = f'{proxy.proto}{proxy.transport}{proxy.cdn}{proxy.l3}'
-            if key not in added_ip:
-                added_ip[key] = {}
+
             if proxy.proto in [ProxyProto.ssh, ProxyProto.tuic, ProxyProto.hysteria2, ProxyProto.wireguard, ProxyProto.ss]:
                 if noDomainProxies and all([x in added_ip[key] for x in ips]):
                     continue
 
                 for x in ips:
-                    added_ip[key][x] = 1
+                    added_ip[key].add(x)
 
                 if proxy.proto in [ProxyProto.ssh, ProxyProto.wireguard, ProxyProto.ss]:
-                    if domain.mode == 'fake':
-                        continue
+                    # if domain.mode == 'fake':
+                    #     continue
                     if proxy.proto in [ProxyProto.ssh]:
                         options = [{'pport': hconfigs[ConfigEnum.ssh_server_port]}]
                     elif proxy.proto in [ProxyProto.wireguard]:

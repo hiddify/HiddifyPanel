@@ -1,4 +1,6 @@
 from enum import auto
+import ipaddress
+import re
 from typing import Dict, List
 from flask import request
 from flask_babel import lazy_gettext as _
@@ -56,6 +58,16 @@ class Domain(db.Model, SerializerMixin):
 
     def __repr__(self):
         return f'{self.domain}'
+
+    def get_cdn_ips_parsed(self):
+        ips = re.split('[ \t\r\n;,]+', self.cdn_ip.strip())
+        res = set()
+        for ip in ips:
+            try:
+                res.add(ipaddress.ip_address(ip))
+            except:
+                pass
+        return res
 
     def to_dict(self, dump_ports=False, dump_child_id=False):
         data = {
