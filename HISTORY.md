@@ -1,6 +1,20 @@
 # Changelog
 
 
+## v10.50.2 (2024-07-14)
+
+#### Fix
+
+* Reality bug. 
+
+* Ignoring fake domain for no domain proxies. 
+
+#### Other
+
+* Update translations. 
+
+
+
 ## v10.50.1 (2024-07-14)
 
 #### Other
