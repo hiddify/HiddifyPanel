@@ -1,7 +1,7 @@
 # Changelog
 
 
-## (unreleased)
+## v10.50.0 (2024-07-13)
 
 #### New
 
@@ -40,6 +40,8 @@
 * Xray sub order. 
 
 #### Other
+
+* Update translations. 
 
 * Update translations. 
 
