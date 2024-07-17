@@ -142,11 +142,11 @@ def _add_users_usage(users_usage_data: Dict[User, Dict], child_id, sync=False):
     if not sync and hutils.node.is_child():
         hutils.node.child.sync_users_usage_with_parent()
 
-    return {"status": 'success', "comments": res}
+    return {"status": 'success', "comments": res, "date": datetime.datetime.now()}
 
 
 def send_bot_message(user):
-    if not (hconfig(ConfigEnum.telegram_bot_token) or not hutils.node.is_parent()):
+    if not (hconfig(ConfigEnum.telegram_bot_token) or hutils.node.is_child()):
         return
     if not user.telegram_id:
         return

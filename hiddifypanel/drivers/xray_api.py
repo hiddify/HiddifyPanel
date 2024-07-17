@@ -10,27 +10,35 @@ class XrayApi(DriverABS):
         return hconfig(ConfigEnum.core_type) == "xray"
 
     def get_xray_client(self):
-        return xtlsapi.XrayClient('127.0.0.1', 10085)
+        if not hasattr(self, 'xray_client'):
+            self.xray_client = xtlsapi.XrayClient('127.0.0.1', 10085)
+        return self.xray_client
 
     def get_enabled_users(self):
         xray_client = self.get_xray_client()
         usages = xray_client.stats_query('user', reset=True)
         res = defaultdict(int)
+        tags = set(self.get_inbound_tags())
         for use in usages:
             if "user>>>" not in use.name:
                 continue
             uuid = use.name.split(">>>")[1].split("@")[0]
-            try:
-                t = "xtls"
-                protocol = "vless"
-                xray_client.add_client(t, f'{uuid}', f'{uuid}@hiddify.com', protocol=protocol, flow='xtls-rprx-vision', alter_id=0, cipher='chacha20_poly1305')
-                xray_client.remove_client(t, f'{uuid}@hiddify.com')
-                res[uuid] = 0
-            except xtlsapi.xtlsapi.exceptions.EmailAlreadyExists as e:
-                res[uuid] = 1
-            except Exception as e:
-                print(f"error {e}")
-                res[uuid] = 0
+
+            for t in tags.copy():
+                try:
+                    self.__add_uuid_to_tag(uuid, t)
+                    self._remove_client(uuid, [t], False)
+                    # print(f"Success add  {uuid} {t}")
+                    res[uuid] = 0
+                except ValueError:
+                    # tag invalid
+                    tags.remove(t)
+                    pass
+                except xtlsapi.xtlsapi.exceptions.EmailAlreadyExists as e:
+                    res[uuid] = 1
+                except Exception as e:
+                    print(f"error {e}")
+                    res[uuid] = 0
 
         return res
 
@@ -63,10 +71,8 @@ class XrayApi(DriverABS):
             inbounds = {}
         return list(inbounds)
 
-    def add_client(self, user):
-        uuid = user.uuid
+    def __add_uuid_to_tag(self, uuid, t):
         xray_client = self.get_xray_client()
-        tags = self.get_inbound_tags()
         proto_map = {
             'vless': 'vless',
             'realityin': 'vless',
@@ -88,17 +94,27 @@ class XrayApi(DriverABS):
                     res = p, protocol
                     break
             return res
+        p, protocol = proto(t)
+        if not p:
+            raise ValueError("incorrect tag")
+        if (protocol == "vless" and p != "xtls" and p != "realityin") or "realityingrpc" in t:
+            xray_client.add_client(t, f'{uuid}', f'{uuid}@hiddify.com', protocol=protocol, flow='\0',)
+        else:
+            xray_client.add_client(t, f'{uuid}', f'{uuid}@hiddify.com', protocol=protocol,
+                                   flow='xtls-rprx-vision', alter_id=0, cipher='chacha20_poly1305')
+
+    def add_client(self, user):
+        uuid = user.uuid
+        xray_client = self.get_xray_client()
+        tags = self.get_inbound_tags()
+
         for t in tags:
             try:
-                p, protocol = proto(t)
-                if not p:
-                    continue
-                if (protocol == "vless" and p != "xtls" and p != "realityin") or "realityingrpc" in t:
-                    xray_client.add_client(t, f'{uuid}', f'{uuid}@hiddify.com', protocol=protocol, flow='\0',)
-                else:
-                    xray_client.add_client(t, f'{uuid}', f'{uuid}@hiddify.com', protocol=protocol,
-                                           flow='xtls-rprx-vision', alter_id=0, cipher='chacha20_poly1305')
+                self.__add_uuid_to_tag(uuid, t)
                 # print(f"Success add  {uuid} {t}")
+            except ValueError:
+                # tag invalid
+                pass
             except Exception as e:
                 # print(f"error in add  {uuid} {t} {e}")
                 pass
@@ -106,16 +122,18 @@ class XrayApi(DriverABS):
     def remove_client(self, user):
         return self._remove_client(user.uuid)
 
-    def _remove_client(self, uuid):
+    def _remove_client(self, uuid, tags=None, dolog=True):
         xray_client = self.get_xray_client()
-        tags = self.get_inbound_tags()
+        tags = tags or self.get_inbound_tags()
 
         for t in tags:
             try:
                 xray_client.remove_client(t, f'{uuid}@hiddify.com')
-                print(f"Success remove  {uuid} {t}")
+                if dolog:
+                    print(f"Success remove  {uuid} {t}")
             except Exception as e:
-                print(f"error in remove  {uuid} {t} {e}")
+                if dolog:
+                    print(f"error in remove  {uuid} {t} {e}")
                 pass
 
     def get_all_usage(self, users):
