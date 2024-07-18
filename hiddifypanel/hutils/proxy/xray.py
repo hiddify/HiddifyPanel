@@ -127,7 +127,7 @@ def to_link(proxy: dict) -> str | dict:
     if proxy.get('fingerprint', 'none') != 'none':
         baseurl += "&fp=" + proxy['fingerprint']
     if proxy['l3'] != 'quic':
-        if proxy.get('l3') != ProxyL3.reality and (proxy.get('transport') == ProxyTransport.tcp or proxy.get('transport') == ProxyTransport.httpupgrade) and proxy['proto'] in [ProxyProto.vless, ProxyProto.trojan]:
+        if proxy.get('l3') != ProxyL3.reality and (proxy.get('transport') in {ProxyTransport.tcp, ProxyTransport.httpupgrade, ProxyTransport.splithttp}) and proxy['proto'] in [ProxyProto.vless, ProxyProto.trojan]:
             baseurl += '&headerType=http'
         else:
             baseurl += '&headerType=None'

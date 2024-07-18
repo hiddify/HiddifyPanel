@@ -239,6 +239,8 @@ class ConfigEnum(metaclass=FastEnum):
     ws_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply)
     grpc_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply)
     httpupgrade_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply)
+    splithttp_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply)
+
     vless_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply)
     trojan_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply)
     reality_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply)
@@ -260,6 +262,7 @@ class ConfigEnum(metaclass=FastEnum):
     path_v2ray = _StrConfigDscr(ConfigCategory.hidden, hide_in_virtual_child=True)  # deprecated
     path_ss = _StrConfigDscr(ConfigCategory.hidden, hide_in_virtual_child=True)
 
+    path_splithttp = _StrConfigDscr(ConfigCategory.too_advanced, hide_in_virtual_child=True)
     path_httpupgrade = _StrConfigDscr(ConfigCategory.too_advanced, hide_in_virtual_child=True)
     path_ws = _StrConfigDscr(ConfigCategory.too_advanced, hide_in_virtual_child=True)
     path_tcp = _StrConfigDscr(ConfigCategory.too_advanced, hide_in_virtual_child=True)

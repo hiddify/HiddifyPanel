@@ -17,7 +17,9 @@ from loguru import logger
 MAX_DB_VERSION = 100
 
 
-def _v88(child_id):
+def _v89(child_id):
+    set_hconfig(ConfigEnum.path_splithttp, hutils.random.get_random_string(7, 15))
+    set_hconfig(ConfigEnum.splithttp_enable, True)
     pass
 
 
@@ -471,6 +473,9 @@ def get_proxy_rows_v1():
         "httpupgrade direct vless",
         # "httpupgrade direct trojan",
         "httpupgrade direct vmess",
+        "splithttp direct vless",
+        "splithttp direct trojan",
+        "splithttp direct vmess",
         "tcp direct vless",
         "tcp direct trojan",
         "tcp direct vmess",
@@ -487,6 +492,11 @@ def get_proxy_rows_v1():
         "httpupgrade relay vless",
         # "httpupgrade relay trojan",
         "httpupgrade relay vmess",
+
+        "splithttp relay vless",
+        "splithttp relay trojan",
+        "splithttp relay vmess",
+
         "tcp relay vless",
         "tcp relay trojan",
         "tcp relay vmess",
@@ -506,6 +516,11 @@ def get_proxy_rows_v1():
         "httpupgrade CDN vless",
         # "httpupgrade CDN trojan",
         "httpupgrade CDN vmess",
+
+        "splithttp CDN vless",
+        "splithttp CDN trojan",
+        "splithttp CDN vmess",
+
         "grpc CDN vless",
         "grpc CDN trojan",
         "grpc CDN vmess",

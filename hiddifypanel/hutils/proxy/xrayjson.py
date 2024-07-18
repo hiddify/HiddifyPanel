@@ -261,6 +261,9 @@ def add_stream_settings(base: dict, proxy: dict):
     if proxy['transport'] == ProxyTransport.httpupgrade:
         ss['network'] = proxy['transport']
         add_httpupgrade_stream(ss, proxy)
+    if proxy['transport'] == ProxyTransport.splithttp:
+        ss['network'] = proxy['transport']
+        add_splithttp_stream(ss, proxy)
     if proxy['transport'] == 'ws':
         ss['network'] = proxy['transport']
         add_ws_stream(ss, proxy)
@@ -328,6 +331,14 @@ def add_grpc_stream(ss: dict, proxy: dict):
 
 def add_httpupgrade_stream(ss: dict, proxy: dict):
     ss['httpupgradeSettings'] = {
+        'path': proxy['path'],
+        'host': proxy['host'],
+        # 'acceptProxyProtocol': '', for inbounds only
+    }
+
+
+def add_splithttp_stream(ss: dict, proxy: dict):
+    ss['splithttpSettings'] = {
         'path': proxy['path'],
         'host': proxy['host'],
         # 'acceptProxyProtocol': '', for inbounds only
