@@ -639,6 +639,10 @@
       "description": "should be random",
       "label": "ℹ️ HTTP Upgrade Path"
     },
+    "path_splithttp": {
+      "description": "config.path_splithttp.description",
+      "label": "config.path_splithttp.label"
+    },
     "path_ss": {
       "description": "Shadowsocks Path in the Links",
       "label": "Shadowsocks Path"
@@ -770,6 +774,10 @@
     "speed_test": {
       "description": "Allow your users to do Speed Test. It helps them to identify the link quality",
       "label": "🚀 Speed Test"
+    },
+    "splithttp_enable": {
+      "description": "config.splithttp_enable.description",
+      "label": "config.splithttp_enable.label"
     },
     "ssfaketls": {
       "description": "Shadowsocks FakeTLS is a simple obfusacting tool that encapsulate the date In tls packet",

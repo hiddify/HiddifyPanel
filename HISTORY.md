@@ -1,6 +1,42 @@
 # Changelog
 
 
+## (unreleased)
+
+#### New
+
+* Add splithttp. 
+
+* Add lock in updating usage. 
+
+* Add try catch in get user usage. 
+
+#### Fix
+
+* Reality issue. 
+
+* Bug. 
+
+* Incorrect  usage. 
+
+* Bug in adding fake domain. 
+
+#### Other
+
+* Reduce overhead. 
+
+* Reduce overhead. 
+
+* Force:60 seconds lock. 
+
+* Disable splithttp by default. 
+
+* Merge branch 'main' of github.com:hiddify/Hiddify-Panel. 
+
+* Update translations. 
+
+
+
 ## v10.50.4 (2024-07-17)
 
 #### Fix
