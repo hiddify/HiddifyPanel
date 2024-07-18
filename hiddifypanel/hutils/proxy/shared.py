@@ -141,8 +141,8 @@ def get_proxies(child_id: int = 0, only_enabled=False) -> list['Proxy']:
         proxies = [c for c in proxies if ProxyTransport.splithttp not in c.transport]
     if not hconfig(ConfigEnum.ws_enable, child_id):
         proxies = [c for c in proxies if ProxyTransport.WS not in c.transport]
-    if not hconfig(ConfigEnum.xtls_enable, child_id):
-        proxies = [c for c in proxies if ProxyTransport.XTLS not in c.transport]
+    # if not hconfig(ConfigEnum.xtls_enable, child_id):
+        #     proxies = [c for c in proxies if ProxyTransport.XTLS not in c.transport]
     if not hconfig(ConfigEnum.grpc_enable, child_id):
         proxies = [c for c in proxies if ProxyTransport.grpc not in c.transport]
     if not hconfig(ConfigEnum.tcp_enable, child_id):
