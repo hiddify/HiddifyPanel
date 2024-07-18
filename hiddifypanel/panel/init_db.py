@@ -12,9 +12,46 @@ from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify
 from hiddifypanel.database import db, db_execute
 from flask import g
-from sqlalchemy import text
+from sqlalchemy import func, text
 from loguru import logger
 MAX_DB_VERSION = 100
+
+
+def _v90(child_id):
+    result = (
+        db.session.query(
+            DailyUsage.child_id,
+            DailyUsage.admin_id,
+            DailyUsage.date,
+            func.max(DailyUsage.online).label('online'),
+            func.sum(DailyUsage.usage).label('usage'),
+            func.count(DailyUsage.usage).label('count'),
+        )
+        .group_by(DailyUsage.child_id, DailyUsage.admin_id, DailyUsage.date)
+        .all()
+    )
+
+    for r in result:
+        if r.count > 1:
+            # Delete existing records for this group
+            db.session.query(DailyUsage).filter(
+                DailyUsage.child_id == r.child_id,
+                DailyUsage.admin_id == r.admin_id,
+                DailyUsage.date == r.date
+            ).delete()
+
+            # Add the aggregated record
+            new_record = DailyUsage(
+                child_id=r.child_id,
+                admin_id=r.admin_id,
+                date=r.date,
+                online=r.online,
+                usage=r.usage
+            )
+            db.session.add(new_record)
+
+    # Commit the changes to the database
+    db.session.commit()
 
 
 def _v89(child_id):
