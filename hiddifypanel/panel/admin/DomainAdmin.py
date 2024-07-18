@@ -195,6 +195,7 @@ class DomainAdmin(AdminLTEModelView):
             # raise ValidationError(_("You have to add your cloudflare api key to use this feature: "))
 
         dips = hutils.network.get_domain_ips(model.domain)
+        server_ips = [*ipv4_list, *ipv6_list]
         if model.sub_link_only:
             if not dips:
                 raise ValidationError(_("Domain can not be resolved! there is a problem in your domain"))  # type: ignore
@@ -203,7 +204,7 @@ class DomainAdmin(AdminLTEModelView):
                 raise ValidationError(_("Domain can not be resolved! there is a problem in your domain"))  # type: ignore
 
             domain_ip_is_same_as_panel = False
-            server_ips = [*ipv4_list, *ipv6_list]
+
             for mip in server_ips:
                 domain_ip_is_same_as_panel |= mip in dips
             server_ips_str = ', '.join(list(map(str, server_ips)))
