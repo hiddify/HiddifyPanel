@@ -75,18 +75,18 @@ def _add_users_usage(users_usage_data: Dict[User, Dict], child_id, sync=False):
         db.session.commit()
     _reset_priodic_usage()
 
-    userDetails = {p.user_id: p for p in UserDetail.query.filter(UserDetail.child_id == child_id).all()}
+    # userDetails = {p.user_id: p for p in UserDetail.query.filter(UserDetail.child_id == child_id).all()}
     for user, uinfo in users_usage_data.items():
         usage_bytes = uinfo['usage']
 
         # UserDetails things
-        detail = UserDetail(user_id=user.id, child_id=child_id)
+        # detail = UserDetail(user_id=user.id, child_id=child_id)
         # detail = userDetails.get(user.id)
         # if not detail:
         #     detail = UserDetail(user_id=user.id, child_id=child_id)
         #     db.session.add(detail)
-        if uinfo['devices'] != detail.connected_devices:
-            detail.connected_devices = uinfo['devices']
+        # if uinfo['devices'] != detail.connected_devices:
+        #     detail.connected_devices = uinfo['devices']
 
         # Enable the user if isn't already
         if not before_enabled_users[user.uuid] and user.is_active:
@@ -113,12 +113,12 @@ def _add_users_usage(users_usage_data: Dict[User, Dict], child_id, sync=False):
                 # detail.current_usage_GB = in_gig
             else:
                 user.current_usage += in_bytes
-                detail.current_usage = detail.current_usage or 0
-                detail.current_usage += in_bytes
+                # detail.current_usage = detail.current_usage or 0
+                # detail.current_usage += in_bytes
 
             # Change last online time of the user
             user.last_online = datetime.datetime.now()
-            detail.last_online = datetime.datetime.now()
+            # detail.last_online = datetime.datetime.now()
 
             # Set start date of user to the current datetime if it hasn't been set already
             if user.start_date is None:
