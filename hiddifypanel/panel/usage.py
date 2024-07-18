@@ -18,10 +18,11 @@ def update_local_usage():
         return {"msg": "last update task is not finished yet."}
     try:
         res = user_driver.get_users_usage(reset=True)
-        cache.redis_client.delete(lock_key)
+        # cache.redis_client.delete(lock_key)
+        cache.redis_client.set(lock_key, "locked", nx=True, ex=60)
         return _add_users_usage(res, child_id=0)
     except Exception as e:
-        cache.redis_client.delete(lock_key)
+        cache.redis_client.set(lock_key, "locked", nx=True, ex=60)
         raise
         return {"msg": f"Exception in update usage: {e}"}
 
