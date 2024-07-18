@@ -13,7 +13,7 @@ to_gig_d = 1024**3
 
 
 def update_local_usage():
-    lock_key = "lock-local-update-usage"
+    lock_key = "lock-update-local-usage"
     if not cache.redis_client.set(lock_key, "locked", nx=True, ex=600):
         return {"msg": "last update task is not finished yet."}
     try:
@@ -63,13 +63,16 @@ def _add_users_usage(users_usage_data: Dict[User, Dict], child_id, sync=False):
 
     daily_usage = {}
     today = datetime.date.today()
+    changes = False
     for adm in AdminUser.query.all():
         daily_usage[adm.id] = DailyUsage.query.filter(DailyUsage.date == today, DailyUsage.admin_id == adm.id, DailyUsage.child_id == child_id).first()
-        if not daily_usage[adm.id]:
+        if daily_usage[adm.id] is None:
             daily_usage[adm.id] = DailyUsage(admin_id=adm.id, child_id=child_id)
             db.session.add(daily_usage[adm.id])
+            changes = True
         daily_usage[adm.id].online = User.query.filter(User.added_by == adm.id).filter(func.DATE(User.last_online) == today).count()
-
+    if changes:
+        db.session.commit()
     _reset_priodic_usage()
 
     userDetails = {p.user_id: p for p in UserDetail.query.filter(UserDetail.child_id == child_id).all()}
@@ -77,10 +80,11 @@ def _add_users_usage(users_usage_data: Dict[User, Dict], child_id, sync=False):
         usage_bytes = uinfo['usage']
 
         # UserDetails things
-        detail = userDetails.get(user.id)
-        if not detail:
-            detail = UserDetail(user_id=user.id, child_id=child_id)
-            db.session.add(detail)
+        detail = UserDetail(user_id=user.id, child_id=child_id)
+        # detail = userDetails.get(user.id)
+        # if not detail:
+        #     detail = UserDetail(user_id=user.id, child_id=child_id)
+        #     db.session.add(detail)
         if uinfo['devices'] != detail.connected_devices:
             detail.connected_devices = uinfo['devices']
 
