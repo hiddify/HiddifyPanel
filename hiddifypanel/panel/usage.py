@@ -7,14 +7,23 @@ from hiddifypanel.drivers import user_driver
 from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify
 from hiddifypanel.database import db
-from hiddifypanel import hutils
+from hiddifypanel import cache, hutils
 
 to_gig_d = 1024**3
 
 
 def update_local_usage():
-    res = user_driver.get_users_usage(reset=True)
-    return _add_users_usage(res, child_id=0)
+    lock_key = "lock-local-update-usage"
+    if not cache.redis_client.set(lock_key, "locked", nx=True, ex=600):
+        return {"msg": "last update task is not finished yet."}
+    try:
+        res = user_driver.get_users_usage(reset=True)
+        cache.redis_client.delete(lock_key)
+        return _add_users_usage(res, child_id=0)
+    except Exception as e:
+        cache.redis_client.delete(lock_key)
+        raise
+        return {"msg": f"Exception in update usage: {e}"}
 
     # return {"status": 'success', "comments":res}
 
@@ -142,7 +151,7 @@ def _add_users_usage(users_usage_data: Dict[User, Dict], child_id, sync=False):
     if not sync and hutils.node.is_child():
         hutils.node.child.sync_users_usage_with_parent()
 
-    return {"status": 'success', "comments": res, "date": datetime.datetime.now()}
+    return {"status": 'success', "comments": res, "date": hutils.convert.time_to_json(datetime.datetime.now())}
 
 
 def send_bot_message(user):
