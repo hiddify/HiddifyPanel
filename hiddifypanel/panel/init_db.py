@@ -19,7 +19,7 @@ MAX_DB_VERSION = 100
 
 def _v89(child_id):
     set_hconfig(ConfigEnum.path_splithttp, hutils.random.get_random_string(7, 15))
-    set_hconfig(ConfigEnum.splithttp_enable, True)
+    set_hconfig(ConfigEnum.splithttp_enable, False)
     pass
 
 
