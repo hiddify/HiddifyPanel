@@ -17,6 +17,10 @@ from loguru import logger
 MAX_DB_VERSION = 100
 
 
+def _v91(child_id):
+    db.session.bulk_save_objects(get_proxy_rows_v1())
+
+
 def _v90(child_id):
     result = (
         db.session.query(

@@ -73,6 +73,44 @@ class UserView(FlaskView):
         '''Returns singbox client JSON config (ssh)'''
         return self.singbox_ssh_imp()
 
+    @route("/wireguard/")
+    @route("/wireguard")
+    @login_required(roles={Role.user})
+    def wireguard(self):
+        '''Returns wireguard client config'''
+        c = get_common_data(g.account.uuid, 'new')
+        wireguards = []
+        servers = set()
+        for pinfo in hutils.proxy.get_valid_proxies(c['domains']):
+            if pinfo['proto'] != ProxyProto.wireguard:
+                continue
+            wireguards.append(pinfo)
+
+            servers.add(pinfo['server'])
+
+        if not len(wireguards):
+            abort(404)
+        wg = wireguards[0]
+        addrs = f"{wg['wg_ipv4']}/32"
+        if wg['wg_ipv6']:
+            addrs += f", {wg['wg_ipv6']}/128"
+        resp = f"""
+[Interface]
+PrivateKey = {wg['wg_pk']}
+Address = {addrs}
+DNS = 1.1.1.1
+MTU = 1390
+
+[Peer]
+PublicKey = {wg['wg_pub']}
+PresharedKey = {wg['wg_psk']}
+AllowedIPs = 0.0.0.0/1, 128.0.0.0/1, ::/1, 8000::/1
+Endpoint = {next(iter(servers))}:61339 #{servers}
+"""
+        return add_headers(resp, c)
+
+        # return self.singbox_ssh_imp()
+
     @route("/clash/")
     @route("/clash")
     @login_required(roles={Role.user})
