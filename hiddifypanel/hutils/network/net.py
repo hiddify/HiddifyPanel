@@ -285,13 +285,17 @@ def get_warp_info() -> str:
 def is_ssh_password_authentication_enabled() -> bool:
     def check_file(file_path: str) -> bool:
         if os.path.isfile(file_path):
-            with open(file_path, 'r') as f:
-                for line in f.readlines():
-                    line = line.strip()
-                    if line.startswith('#'):
-                        continue
-                    if re.search(r"^PasswordAuthentication\s+no", line, re.IGNORECASE):
-                        return False
+            try:
+                with open(file_path, 'r') as f:
+                    for line in f.readlines():
+                        line = line.strip()
+                        if line.startswith('#'):
+                            continue
+                        if re.search(r"^PasswordAuthentication\s+no", line, re.IGNORECASE):
+                            return False
+            except Exception as e:
+                print(e)
+
         return True
 
     for config_file in glob.glob("/etc/ssh/sshd*") + glob.glob("/etc/ssh/sshd*/*"):
