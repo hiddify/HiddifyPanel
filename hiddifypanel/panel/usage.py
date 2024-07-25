@@ -71,8 +71,8 @@ def _add_users_usage(users_usage_data: Dict[User, Dict], child_id, sync=False):
             db.session.add(daily_usage[adm.id])
             changes = True
         daily_usage[adm.id].online = User.query.filter(User.added_by == adm.id).filter(func.DATE(User.last_online) == today).count()
-    if changes:
-        db.session.commit()
+    # if changes:
+    #     db.session.commit()
     _reset_priodic_usage()
 
     # userDetails = {p.user_id: p for p in UserDetail.query.filter(UserDetail.child_id == child_id).all()}
