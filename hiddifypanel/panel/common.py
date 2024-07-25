@@ -181,4 +181,4 @@ def init_app(app: APIFlask):
     with app.app_context():
         import hiddifypanel.panel.commercial.telegrambot as telegrambot
         if (not telegrambot.bot) or (not telegrambot.bot.username):  # type: ignore
-            telegrambot.register_bot(set_hook=True)
+            telegrambot.register_bot_cached(set_hook=True)

@@ -5,6 +5,7 @@ from flask_restful import Resource
 
 from hiddifypanel.models import *
 from hiddifypanel import Events
+from hiddifypanel.cache import cache
 logger = telebot.logger
 
 
@@ -15,6 +16,11 @@ class ExceptionHandler(telebot.ExceptionHandler):
 
 bot = telebot.TeleBot("", parse_mode="HTML", threaded=False, exception_handler=ExceptionHandler())
 bot.username = ''
+
+
+@cache.cache(1000)
+def register_bot_cached(set_hook=False, remove_hook=False):
+    return register_bot(set_hook, remove_hook)
 
 
 def register_bot(set_hook=False, remove_hook=False):
