@@ -5,6 +5,10 @@
 
 #### New
 
+* Add html editor for user custom text. 
+
+* Add wiregaurd output for wireguard application. 
+
 * Add splithttp. 
 
 * Add lock in updating usage. 
@@ -12,6 +16,16 @@
 * Add try catch in get user usage. 
 
 #### Fix
+
+* Bug???? 
+
+* Api patch bug. 
+
+* Bot issue. 
+
+* Permission issue. 
+
+* Incorrect ssh warning. 
 
 * Reality issue. 
 
@@ -22,6 +36,12 @@
 * Bug in adding fake domain. 
 
 #### Other
+
+* Better reinstall or apply policy. 
+
+* Merge branch 'main' of github.com:hiddify/Hiddify-Panel. 
+
+* Update translations. 
 
 * Reduce overhead. 
 
