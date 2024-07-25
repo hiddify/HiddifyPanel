@@ -4,6 +4,8 @@ from wtforms.validators import ValidationError
 from apiflask import abort as apiflask_abort
 from flask_babel import gettext as _
 from flask import url_for  # type: ignore
+from flask import abort as flask_abort
+from markupsafe import Markup
 from urllib.parse import urlparse
 from strenum import StrEnum
 
@@ -220,9 +222,9 @@ def proxy_path_validator(proxy_path: str) -> None:
 
     if is_api_call(request.path):
         if __is_admin_api_call() and proxy_path != admin_proxy_path:
-            return apiflask_abort(400, Markup(f"Invalid Proxy Path <a href=/{admin_proxy_path}/admin>Admin Panel</a>")) if dbg_mode else apiflask_abort(400, 'invalid request')
+            return flask_abort(400, Markup(f"Invalid Proxy Path <a href=/{admin_proxy_path}/admin>Admin Panel</a>")) if dbg_mode else apiflask_abort(400, 'invalid request')
         if is_user_api_call() and proxy_path != client_proxy_path:
-            return apiflask_abort(400, Markup(f"Invalid Proxy Path <a href=/{client_proxy_path}/admin>User Panel</a>")) if dbg_mode else apiflask_abort(400, 'invalid request')
+            return flask_abort(400, Markup(f"Invalid Proxy Path <a href=/{client_proxy_path}/admin>User Panel</a>")) if dbg_mode else apiflask_abort(400, 'invalid request')
 
 
 def list_dir_files(dir_path: str) -> List[str]:

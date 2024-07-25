@@ -10,6 +10,7 @@ import hiddifypanel.auth as auth
 from hiddifypanel.auth import current_account
 from apiflask import APIFlask, HTTPError, abort
 from hiddifypanel import hutils
+from loguru import logger
 
 
 def init_app(app: APIFlask):
@@ -36,6 +37,7 @@ def init_app(app: APIFlask):
 
     @app.errorhandler(Exception)
     def internal_server_error(e):
+        logger.exception(e)
         if isinstance(e, Exception):
             if hutils.flask.is_api_call(request.path):
                 return {
