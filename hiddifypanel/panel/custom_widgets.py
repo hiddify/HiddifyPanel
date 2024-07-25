@@ -47,6 +47,8 @@ class LastResetField(IntegerField):
 
 
 class CKTextAreaWidget(TextArea):
+    extra_js = ['//cdn.ckeditor.com/4.6.0/standard/ckeditor.js']
+
     def __call__(self, field, **kwargs):
         if kwargs.get('class'):
             kwargs['class'] += ' ckeditor'
@@ -56,6 +58,7 @@ class CKTextAreaWidget(TextArea):
 
 
 class CKTextAreaField(TextAreaField):
+    extra_js = ['//cdn.ckeditor.com/4.6.0/standard/ckeditor.js']
     widget = CKTextAreaWidget()
 
 
