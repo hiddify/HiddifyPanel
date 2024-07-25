@@ -225,7 +225,9 @@
   "You can restore your configs from previously downloaded configs": "ℹ️ You can restore your configs from previously downloaded backup file",
   "You have too much users! You can have only %(active)s active users and %(total)s users": "You have too much users! You can have only %(active)s active users and %(total)s users",
   "You have used this domain in: ": "You have already used this Domain in: ",
-  "You should visit this page without VPN. Your country=%(your_country)s\nexpected=%(expected_country)s": "You should visit this page without VPN Your Country =%(your_country)s\nExpected=%(expected_country)s",
+  "You should visit this page without VPN": {
+    " Your country=%(your_country)s\nexpected=%(expected_country)s": "You should visit this page without VPN Your Country =%(your_country)s\nExpected=%(expected_country)s"
+  },
   "Your hiddify instance information \nDomain: {} \nUsage limit: {} GB\nCurrent usage: {} GB\nExpires at: {} \nRemaining days: {} \n\n\n Happy using 🎉 🎉 🎉 \n": "Your Hiddify instance information \nDomain: {} \nUsage Limit: {} GB\nCurrent Usage: {} GB\nExpires at: {} \nRemaining Days: {} \n\n\nGood Luck! 🎉 🎉 🎉 \n",
   "[Admin only visible message:] You can change this message from settings": "[Admin Exclusive Message]: Customizable via Settings",
   "actions": "Actions",
@@ -641,8 +643,8 @@
       "label": "ℹ️ HTTP Upgrade Path"
     },
     "path_splithttp": {
-      "description": "config.path_splithttp.description",
-      "label": "config.path_splithttp.label"
+      "description": "This option defines the Path for Split HTTP",
+      "label": "Path for SplitHTTP"
     },
     "path_ss": {
       "description": "Shadowsocks Path in the Links",
@@ -777,8 +779,8 @@
       "label": "🚀 Speed Test"
     },
     "splithttp_enable": {
-      "description": "config.splithttp_enable.description",
-      "label": "config.splithttp_enable.label"
+      "description": "This option activates Split HTTP",
+      "label": "Enabling Split HTTP"
     },
     "ssfaketls": {
       "description": "Shadowsocks FakeTLS is a simple obfusacting tool that encapsulate the date In tls packet",
