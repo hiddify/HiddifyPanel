@@ -15,6 +15,10 @@
 
 * Add try catch in get user usage. 
 
+#### Changes
+
+* Work splithttp in hiddify. 
+
 #### Fix
 
 * Bug???? 
@@ -36,6 +40,8 @@
 * Bug in adding fake domain. 
 
 #### Other
+
+* Update translations. 
 
 * Better reinstall or apply policy. 
 
