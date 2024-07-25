@@ -214,8 +214,8 @@ def get_config_form():
                     description=_(f"config.{c.key}.description"),
                     default=hconfig(c.key))
             elif c.key == ConfigEnum.country:
-                field = wtf.SelectField(_(f"config.{c.key}.label"), choices=[("ir", _("Iran")), ("zh", _(
-                    "China")), ("other", _("Others"))], description=_(f"config.{c.key}.description"), default=hconfig(c.key))
+                field = wtf.SelectField(_(f"config.{c.key}.label"), choices=[
+                    ("ir", _("Iran")), ("zh", _("China")), ("ru", _("Russia")), ("other", _("Others"))], description=_(f"config.{c.key}.description"), default=hconfig(c.key))
             elif c.key == ConfigEnum.package_mode:
                 package_modes = [("release", _("Release")), ("beta", _("Beta"))]
                 if hconfig(c.key) == "develop":

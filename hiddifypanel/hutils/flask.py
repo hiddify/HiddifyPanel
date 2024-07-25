@@ -26,7 +26,7 @@ def flash(message: str, category: str = "message"):
 
 def flash_config_success(restart_mode: ApplyMode = ApplyMode.nothing, domain_changed=True):
     if restart_mode != ApplyMode.nothing:
-        url = hurl_for('admin.Actions:reinstall', complete_install=restart_mode == ApplyMode.restart, domain_changed=domain_changed)
+        url = hurl_for('admin.Actions:reinstall', complete_install=restart_mode == ApplyMode.reinstall, domain_changed=domain_changed)
         apply_btn = f"<a href='{url}' class='btn btn-primary form_post'>" + \
             _("admin.config.apply_configs") + "</a>"
         flash((_('config.validation-success', link=apply_btn)), 'success')  # type: ignore

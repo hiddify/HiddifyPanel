@@ -276,7 +276,7 @@ class DomainAdmin(AdminLTEModelView):
         old_db_domain = Domain.by_domain(model.domain)
         if is_created or not old_db_domain or old_db_domain.mode != model.mode:
             # return hiddify.reinstall_action(complete_install=False, domain_changed=True)
-            hutils.flask.flash_config_success(restart_mode=ApplyMode.apply, domain_changed=True)
+            hutils.flask.flash_config_success(restart_mode=ApplyMode.apply_config, domain_changed=True)
 
     # def after_model_change(self,form, model, is_created):
     #     if model.show_domains.count==0:
@@ -290,7 +290,7 @@ class DomainAdmin(AdminLTEModelView):
                 hutils.flask.flash(_('cf-delete.failed'), 'warning')  # type: ignore
         model.showed_by_domains = []
         # db.session.commit()
-        hutils.flask.flash_config_success(restart_mode=ApplyMode.apply, domain_changed=True)
+        hutils.flask.flash_config_success(restart_mode=ApplyMode.apply_config, domain_changed=True)
 
     def after_model_delete(self, model):
         if hutils.node.is_child():

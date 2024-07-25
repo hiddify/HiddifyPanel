@@ -108,7 +108,7 @@ class Actions(FlaskView):
         key = hutils.crypto.generate_x25519_keys()
         set_hconfig(ConfigEnum.reality_private_key, key['private_key'])
         set_hconfig(ConfigEnum.reality_public_key, key['public_key'])
-        hutils.flask.flash_config_success(restart_mode=ApplyMode.restart, domain_changed=False)
+        hutils.flask.flash_config_success(restart_mode=ApplyMode.apply_config, domain_changed=False)
         return redirect(hurl_for('admin.SettingAdmin:index'))
 
     @ login_required(roles={Role.super_admin})
