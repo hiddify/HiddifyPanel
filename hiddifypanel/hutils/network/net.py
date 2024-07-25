@@ -1,3 +1,4 @@
+import glob
 from typing import List, Literal, Set, Union
 from urllib.parse import urlparse
 import urllib.request
@@ -282,14 +283,20 @@ def get_warp_info() -> str:
 
 
 def is_ssh_password_authentication_enabled() -> bool:
-    if os.path.isfile('/etc/ssh/sshd_config'):
-        with open('/etc/ssh/sshd_config', 'r') as f:
-            for line in f.readlines():
-                line = line.strip()
-                if line.startswith('#'):
-                    continue
-                if re.search("^PasswordAuthentication\\s+no", line, re.IGNORECASE):
-                    return False
+    def check_file(file_path: str) -> bool:
+        if os.path.isfile(file_path):
+            with open(file_path, 'r') as f:
+                for line in f.readlines():
+                    line = line.strip()
+                    if line.startswith('#'):
+                        continue
+                    if re.search(r"^PasswordAuthentication\s+no", line, re.IGNORECASE):
+                        return False
+        return True
+
+    for config_file in glob.glob("/etc/ssh/sshd*") + glob.glob("/etc/ssh/sshd*/*"):
+        if not check_file(config_file):
+            return False
 
     return True
 
@@ -319,7 +326,7 @@ def add_number_to_ipv6(ip: str, number: int) -> str:
     return modified_ipv6
 
 
-@cache.cache(600)
+@ cache.cache(600)
 def is_in_same_asn(domain_or_ip: str, domain_or_ip_target: str) -> bool:
     '''Returns True if domain is in panel ASN'''
     try:
@@ -344,7 +351,7 @@ def is_in_same_asn(domain_or_ip: str, domain_or_ip_target: str) -> bool:
         #                    f"<br> Server ASN={asn_ipv4.get('autonomous_system_organization','unknown')}<br>{domain}_ASN={asn_dip.get('autonomous_system_organization','unknown')}", "warning")
 
 
-@cache.cache(600)
+@ cache.cache(600)
 def get_ip_asn(ip: ipaddress.IPv4Address | ipaddress.IPv6Address | str) -> str:
     if not IPASN:
         return __get_ip_asn_api(ip)
@@ -364,7 +371,7 @@ def __get_ip_asn_api(ip: ipaddress.IPv4Address | ipaddress.IPv6Address | str) ->
     return str(requests.get(endpoint).content)
 
 
-@cache.cache(3600)
+@ cache.cache(3600)
 def is_ip(input: str):
     try:
         _ = ipaddress.ip_address(input)
