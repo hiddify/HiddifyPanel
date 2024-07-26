@@ -17,7 +17,7 @@ from loguru import logger
 MAX_DB_VERSION = 100
 
 
-def _v91(child_id):
+def _v92(child_id):
     db.session.bulk_save_objects(get_proxy_rows_v1())
 
 
@@ -591,9 +591,11 @@ def get_proxy_rows_v1():
 
 def make_proxy_rows(cfgs):
     # "h3_quic",
-    for l3 in ["tls_h2", "tls", "http", "reality"]:
+    for l3 in [ProxyL3.h3_quic, "tls_h2", "tls", "http", "reality"]:
         for c in cfgs:
             transport, cdn, proto = c.split(" ")
+            if transport != ProxyTransport.splithttp and l3 == ProxyL3.h3_quic:
+                continue
             if l3 in ["kcp", 'reality'] and cdn != "direct":
                 continue
             if l3 == "reality" and ((transport not in ['tcp', 'grpc', 'XTLS']) or proto != 'vless'):

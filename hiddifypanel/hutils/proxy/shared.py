@@ -102,7 +102,8 @@ def get_port(proxy: Proxy, hconfigs: dict, domain_db: Domain, ptls: int, phttp: 
 
 
 def is_tls(l3) -> bool:
-    return 'tls' in l3 or "reality" in l3
+
+    return 'tls' in l3 or "reality" in l3 or l3 in [ProxyL3.h3_quic]
 
 
 @cache.cache(ttl=300)
@@ -254,6 +255,9 @@ def make_proxy(hconfigs: dict, proxy: Proxy, domain_db: Domain, phttp=80, ptls=4
         alpn = "h2" if proxy.transport in ['h2', "grpc"] else 'http/1.1'
     else:
         alpn = "h2" if proxy.l3 in ['tls_h2'] or proxy.transport in ["grpc", 'h2'] else 'h2,http/1.1' if proxy.l3 == 'tls_h2_h1' else "http/1.1"
+        if proxy.l3 in [ProxyL3.h3_quic]:
+            alpn = "h3"
+
     cdn_forced_host = domain_db.cdn_ip or (domain_db.domain if domain_db.mode != DomainType.reality else hutils.network.get_direct_host_or_ip(4))
     is_cdn = ProxyCDN.CDN == proxy.cdn or ProxyCDN.Fake == proxy.cdn
     base = {
@@ -416,10 +420,10 @@ def make_proxy(hconfigs: dict, proxy: Proxy, domain_db: Domain, phttp=80, ptls=4
     if proxy.transport in [ProxyTransport.splithttp]:
         base['transport'] = 'splithttp'
         base['path'] = f'/{path[base["proto"]]}{hconfigs[ConfigEnum.path_splithttp]}'
-        if base['alpn'] == 'h2':
-            base['path'] += "2"
-        else:
-            base['path'] += "1"
+        # if 0 and 'h2' in base['alpn'] or 'h3' in base['alpn']:
+        #     base['path'] += "2"
+        # else:
+        #     base['path'] += "1"
         base["host"] = domain
         return base
 
