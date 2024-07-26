@@ -25,6 +25,10 @@
 
 #### Fix
 
+* Xray bug. 
+
+* Quic. 
+
 * Bug???? 
 
 * Api patch bug. 
@@ -44,6 +48,12 @@
 * Bug in adding fake domain. 
 
 #### Other
+
+* Change useragent of splithttp. 
+
+* Add more tags for free text. 
+
+* Update translations. 
 
 * Chore: update translations with Fink 🐦 
 
