@@ -5,6 +5,8 @@
 
 #### New
 
+* Add h3 for splithttp. 
+
 * Add html editor for user custom text. 
 
 * Add wiregaurd output for wireguard application. 
@@ -16,6 +18,8 @@
 * Add try catch in get user usage. 
 
 #### Changes
+
+* Add alpn to path. 
 
 * Work splithttp in hiddify. 
 
@@ -40,6 +44,10 @@
 * Bug in adding fake domain. 
 
 #### Other
+
+* Chore: update translations with Fink 🐦 
+
+* Update translations. 
 
 * Update translations. 
 
