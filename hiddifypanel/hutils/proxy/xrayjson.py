@@ -94,10 +94,10 @@ def to_xray(proxy: dict) -> dict:
         'protocol': str(proxy['proto']),
         'settings': {},
         'streamSettings': {},
-        'mux': {  # default value
-            'enabled': False,
-            'concurrency': -1
-        }
+        # 'mux': {  # default value
+        #     # 'enabled': False,
+        #     # 'concurrency': -1
+        # }
     }
     outbound['protocol'] = 'shadowsocks' if outbound['protocol'] == 'ss' else outbound['protocol']
     # add multiplex to outbound
@@ -216,7 +216,7 @@ def add_stream_settings(base: dict, proxy: dict):
     # security
     if proxy['l3'] == ProxyL3.reality:
         ss['security'] = 'reality'
-    elif proxy['l3'] in [ProxyL3.tls, ProxyL3.tls_h2, ProxyL3.tls_h2_h1]:
+    elif proxy['l3'] in [ProxyL3.tls, ProxyL3.tls_h2, ProxyL3.tls_h2_h1, ProxyL3.h3_quic]:
         ss['security'] = 'tls'
 
     # network and transport settings
@@ -226,7 +226,8 @@ def add_stream_settings(base: dict, proxy: dict):
     if ss['security'] == 'reality':
         ss['network'] = proxy['transport']
         add_reality_stream(ss, proxy)
-    elif ss['security'] == 'tls' or 'xtls' and proxy['proto'] != ProxyProto.ss:
+    elif ss['security'] in ['tls', "xtls"] and proxy['proto'] != ProxyProto.ss:
+
         ss['tlsSettings'] = {
             'serverName': proxy['sni'],
             'allowInsecure': proxy['allow_insecure'],
@@ -368,8 +369,8 @@ def add_kcp_stream(ss: dict, proxy: dict):
 
 def add_quic_stream(ss: dict, proxy: dict):
     # TODO: fix server side configs first
-    ss['quicSettings'] = {}
     return
+
     ss['quicSettings'] = {
         'security': 'chacha20-poly1305',
         'key': proxy['path'],
@@ -413,10 +414,11 @@ def add_multiplex(base: dict, proxy: dict):
 
     concurrency = proxy['mux_max_connections']
     if concurrency and concurrency > 0:
-        base['mux']['enabled'] = True
-        base['mux']['concurrency'] = concurrency
-        base['mux']['xudpConcurrency'] = concurrency
-        base['mux']['xudpProxyUDP443'] = 'reject'
+        base['mux'] = {'enabled': True,
+                       'concurrency': concurrency,
+                       'xudpConcurrency': concurrency,
+                       'xudpProxyUDP443': 'reject',
+                       }
 
 
 def null_config(tag: str) -> dict:

@@ -64,7 +64,9 @@ def to_singbox(proxy: dict) -> list[dict] | dict:
     if is_xray_proxy(proxy):
         if hutils.flask.is_client_version(hutils.flask.ClientVersion.hiddify_next, 1, 9, 0):
             base['type'] = "xray"
-            base['xray_outbound_raw'] = to_xray(proxy)
+            xp = to_xray(proxy)
+            xp['streamSettings']['sockopt'] = {}
+            base['xray_outbound_raw'] = xp
             return all_base
         return {'name': name, 'msg': "xray proxy does not support in this client version", 'type': 'debug'}
     base["type"] = str(proxy["proto"])
