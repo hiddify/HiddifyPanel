@@ -17,6 +17,11 @@ from loguru import logger
 MAX_DB_VERSION = 100
 
 
+def _v93(child_id):
+    set_hconfig(ConfigEnum.quic_enable, True)
+    set_hconfig(ConfigEnum.splithttp_enable, True)
+
+
 def _v92(child_id):
     db.session.bulk_save_objects(get_proxy_rows_v1())
 

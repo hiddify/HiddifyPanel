@@ -29,17 +29,18 @@ def get_all_clash_configs(meta_or_normal, domains: list[Domain]):
 def to_clash(proxy, meta_or_normal):
 
     name = proxy['name']
-    if proxy['l3'] == "kcp":
-        return {'name': name, 'msg': "clash does not support kcp", 'type': 'debug'}
-    if proxy['proto'] == "ssh":
-        return {'name': name, 'msg': "clash does not support ssh", 'type': 'debug'}
+
+    if proxy['l3'] in ["kcp", ProxyL3.h3_quic]:
+        return {'name': name, 'msg': f"clash does not support {proxy['l3']}", 'type': 'debug'}
+    if proxy['proto'] in ["ssh", "wireguard", "tuic", "hysteria"]:
+        return {'name': name, 'msg': f"clash does not support {proxy['proto']}", 'type': 'debug'}
+    if proxy.get('flow'):
+        return {'name': name, 'msg': "xtls not supported in clash", 'type': 'debug'}
     if meta_or_normal == "normal":
         if proxy['proto'] in ["vless", 'tuic', 'hysteria2']:
             return {'name': name, 'msg': f"{proxy['proto']} not supported in clash", 'type': 'debug'}
-        if proxy.get('flow'):
-            return {'name': name, 'msg': "xtls not supported in clash", 'type': 'debug'}
-        if proxy['transport'] == "shadowtls":
-            return {'name': name, 'msg': "shadowtls not supported in clash", 'type': 'debug'}
+        if proxy['transport'] in ["shadowtls", "splithttp"]:
+            return {'name': name, 'msg': f"{proxy['transport']} not supported in clash", 'type': 'debug'}
     if proxy['l3'] == ProxyL3.tls_h2 and proxy['proto'] in [ProxyProto.vmess, ProxyProto.vless] and proxy['dbe'].cdn == ProxyCDN.direct:
         return {'name': name, 'msg': "bug tls_h2 vmess and vless in clash meta", 'type': 'warning'}
     base = {}
