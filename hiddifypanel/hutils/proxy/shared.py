@@ -416,6 +416,10 @@ def make_proxy(hconfigs: dict, proxy: Proxy, domain_db: Domain, phttp=80, ptls=4
     if proxy.transport in [ProxyTransport.splithttp]:
         base['transport'] = 'splithttp'
         base['path'] = f'/{path[base["proto"]]}{hconfigs[ConfigEnum.path_splithttp]}'
+        if base['alpn'] == 'h2':
+            base['path'] += "2"
+        else:
+            base['path'] += "1"
         base["host"] = domain
         return base
 
