@@ -245,7 +245,7 @@ class ConfigEnum(metaclass=FastEnum):
     trojan_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply_config)
     reality_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply_config)
     tcp_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply_config)
-    quic_enable = _BoolConfigDscr(ConfigCategory.hidden, ApplyMode.apply_config)
+    quic_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply_config)
     xtls_enable = _BoolConfigDscr(ConfigCategory.hidden, ApplyMode.apply_config)
     h2_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply_config)
 
