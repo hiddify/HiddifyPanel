@@ -67,6 +67,12 @@ def to_singbox(proxy: dict) -> list[dict] | dict:
             xp = to_xray(proxy)
             xp['streamSettings']['sockopt'] = {}
             base['xray_outbound_raw'] = xp
+            if proxy.get('tls_fragment_enable'):
+                base['xray_fragment'] = {
+                    'packets': "tlshello",
+                    'length': proxy["tls_fragment_size"],
+                    'interval': proxy["tls_fragment_sleep"]
+                }
             return all_base
         return {'name': name, 'msg': "xray proxy does not support in this client version", 'type': 'debug'}
     base["type"] = str(proxy["proto"])
