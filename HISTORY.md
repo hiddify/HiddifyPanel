@@ -25,6 +25,8 @@
 
 #### Fix
 
+* Quic bug in sub link. 
+
 * Xray bug. 
 
 * Quic. 
@@ -48,6 +50,8 @@
 * Bug in adding fake domain. 
 
 #### Other
+
+* Update translations. 
 
 * Update translations. 
 
