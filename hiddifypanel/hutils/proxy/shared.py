@@ -385,7 +385,7 @@ def make_proxy(hconfigs: dict, proxy: Proxy, domain_db: Domain, phttp=80, ptls=4
                 base['mux_brutal_down_mbps'] = hconfigs.get(ConfigEnum.mux_brutal_down_mbps, 10)
 
     if is_cdn and proxy.proto in {'vless', 'trojan', "vmess"}:
-        if hconfigs[ConfigEnum.tls_fragment_enable]:
+        if hconfigs[ConfigEnum.tls_fragment_enable] and "tls" in base["l3"]:
             base["tls_fragment_enable"] = True
             base["tls_fragment_size"] = hconfigs[ConfigEnum.tls_fragment_size]
             base["tls_fragment_sleep"] = hconfigs[ConfigEnum.tls_fragment_sleep]
