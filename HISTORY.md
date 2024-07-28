@@ -49,6 +49,8 @@
 
 #### Other
 
+* Update translations. 
+
 * Chore: update translations with Fink 🐦 
 
 * Update translations. 
