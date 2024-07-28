@@ -5,6 +5,8 @@
 
 #### New
 
+* Add xray fragment. 
+
 * Add h3 for splithttp. 
 
 * Add html editor for user custom text. 
@@ -50,6 +52,10 @@
 * Bug in adding fake domain. 
 
 #### Other
+
+* Remove fragment in for quic. 
+
+* Update translations. 
 
 * Update translations. 
 
