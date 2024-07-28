@@ -53,6 +53,8 @@
 
 #### Other
 
+* Update translations. 
+
 * Remove fragment in for quic. 
 
 * Update translations. 
