@@ -27,6 +27,8 @@
 
 #### Fix
 
+* Shadowsocks bug. 
+
 * Quic bug in sub link. 
 
 * Xray bug. 
@@ -52,6 +54,10 @@
 * Bug in adding fake domain. 
 
 #### Other
+
+* Remove wireguard noise. 
+
+* Update translations. 
 
 * Update translations. 
 
