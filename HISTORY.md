@@ -49,6 +49,10 @@
 
 #### Other
 
+* Chore: update translations with Fink 🐦 
+
+* Update translations. 
+
 * Change useragent of splithttp. 
 
 * Add more tags for free text. 
