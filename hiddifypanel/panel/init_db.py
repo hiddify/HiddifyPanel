@@ -17,6 +17,10 @@ from loguru import logger
 MAX_DB_VERSION = 100
 
 
+def _v94(child_id):
+    set_hconfig(ConfigEnum.wireguard_noise_trick, "0-0")
+
+
 def _v93(child_id):
     set_hconfig(ConfigEnum.quic_enable, True)
     set_hconfig(ConfigEnum.splithttp_enable, True)
@@ -176,7 +180,6 @@ def _v69():
     wg_pk, wg_pub, _ = hutils.crypto.get_wg_private_public_psk_pair()
     add_config_if_not_exist(ConfigEnum.wireguard_private_key, wg_pk)
     add_config_if_not_exist(ConfigEnum.wireguard_public_key, wg_pub)
-    add_config_if_not_exist(ConfigEnum.wireguard_noise_trick, "5-10")
     for u in User.query.all():
         u.wg_pk, u.wg_pub, u.wg_psk = hutils.crypto.get_wg_private_public_psk_pair()
 
