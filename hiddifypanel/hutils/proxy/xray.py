@@ -143,7 +143,7 @@ def to_link(proxy: dict) -> str | dict:
 
     if 'reality' in proxy["l3"]:
         return f"{baseurl}&security=reality&pbk={proxy['reality_pbk']}&sid={proxy['reality_short_id']}{infos}"
-    if 'tls' in proxy['l3']:
+    if 'tls' in proxy['l3'] or "quic" in proxy['l3']:
         return f'{baseurl}&security=tls{infos}'
     if proxy['l3'] == 'http':
         return f'{baseurl}&security=none{infos}'
