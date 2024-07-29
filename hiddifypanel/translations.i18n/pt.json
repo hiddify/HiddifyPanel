@@ -188,6 +188,8 @@
   "SingBox": "📦 SingBox",
   "Sort by %(name)s": "Ordenar por %(name)s",
   "Start Date": "Data de início",
+  "Started %(days)s days ago": "Iniciado há %(days)s dias",
+  "Started from %(relative)s": "Iniciado em %(relative)s",
   "Status": "Status",
   "Submit": "Enviar",
   "Success": "Sucesso",
@@ -214,6 +216,7 @@
   "Want to enjoy more with telegram?": "Conecte sua conta ao Telegram",
   "Welcome %(user)s": "Bem-vindo %(user)s",
   "Why Going to Premium?": "Por que ir para premium?",
+  "Will Start in %(days)s days": "Começará em %(days)s dias",
   "Windows": "janelas",
   "With selected": "Com selecionado",
   "Xray": "☢️ Raio X",
@@ -253,10 +256,12 @@
       "domain": "domínios",
       "home": "Painel",
       "proxy": "Proxies",
+      "proxy_stats": "Status dos procuradores",
       "support": "Ajuda",
       "telegram": "Telegram",
       "user": "Usuários"
     },
+    "no_user_warning": "Parece que você ainda não criou nenhum usuário. link de usuário padrão: %(default_link)s",
     "proxy": {
       "detailed_config": "⚙️ Configurações detalhadas",
       "global_config": "⚙️ Configurações globais"
@@ -267,6 +272,9 @@
     "quicksetup_intro": "Os IPs do seu servidor são:\n<div>\nIPv4: %(ipv4)s <br> IPv6: %(ipv6)s\n</div>\nDefina esses IPs em seu Domínio ou Subdomínio e insira seu Domínio ou Subdomínio na caixa abaixo.",
     "save_panel_link": "Por favor, note que seu painel pode ser acessado apenas através do link a seguir. por favor, salve este link.\n<p><a href='%(adminlink)s' class='btn btn-secondary copy-link'><i class='fa-solid fa-copy'></i></a>\n<a href='%(adminlink)s' class='copy-link' style='word-break: break-all;'>%(adminlink)s</a></p>",
     "waiting_for_update": "Aguarde cerca de 5 minutos para garantir que tudo esteja atualizado. durante esse período, copie e salve seus links de proxy, que são:"
+  },
+  "adminuser": {
+    "force_update_usage": "A cada 6 minutos o uso está sendo atualizado. Para atualizá-lo agora <a href=\"%(link)s\" class=\"btn btn-info\">clique aqui</a>"
   },
   "all": "Todos",
   "android": "Android",

@@ -188,6 +188,8 @@
   "SingBox": "📦 歌盒",
   "Sort by %(name)s": "以%(name)s排序",
   "Start Date": "开始日期",
+  "Started %(days)s days ago": "已于 %(days)s 天前开始",
+  "Started from %(relative)s": "从 %(relative)s 开始",
   "Status": "地位",
   "Submit": "提交",
   "Success": "成功",
@@ -214,7 +216,9 @@
   "Want to enjoy more with telegram?": "ℹ️ 将您的帐户连接到 Telegram",
   "Welcome %(user)s": "欢迎%(user)s",
   "Why Going to Premium?": "为什么要选择高级版？",
+  "Will Start in %(days)s days": "将在 %(days)s 天内开始",
   "Windows": "视窗",
+  "With selected": "选定",
   "Xray": "☢️ XRay",
   "Yesterday Usage": "昨天",
   "You can download a json formated of configurations by clicking <a href='%(link)s' class='btn btn-primary'>here</a>": "🔄 Hiddify Manager 每 6 小时自动进行一次备份。备份文件在服务器上的路径：⬇️\n<br>\n/opt/hiddify-config/hiddify-panel/备份\n<br>\n<br>\n<br>\n⚠️您可以通过单击下面的按钮下载配置的 JSON 文件格式\n<br>\n<br>\n<a href='%(link)s' class='btn btn-primary'>下载备份文件</a>",
@@ -257,6 +261,7 @@
       "telegram": "电报",
       "user": "用户"
     },
+    "no_user_warning": "看来您尚未创建任何用户。默认用户链接：%(default_link)s",
     "proxy": {
       "detailed_config": "⚙️详细配置",
       "global_config": "⚙️ 全局配置"
@@ -267,6 +272,9 @@
     "quicksetup_intro": "您的服务器的 IP 是：\n<div>\nIPv4：%(ipv4)s <br> IPv6：%(ipv6)s\n</div>\n在您的域或子域上设置这些 IP，然后在下面的框中输入您的域或子域。",
     "save_panel_link": "请注意，您的面板只能通过以下链接访问。请保存此链接。\n<p><a href='%(adminlink)s' class='btn btn-secondary copy-link'><i class='fa-solid fa-copy'></i></a>\n<a href='%(adminlink)s' class='copy-link' style='word-break: break-all;'>%(adminlink)s</a></p>",
     "waiting_for_update": "⚠️ 请等待大约 5 分钟以确保所有内容均已更新。在此期间，请复制并保存您的代理链接："
+  },
+  "adminuser": {
+    "force_update_usage": "每 6 分钟更新一次使用情况。如需立即更新，<a href=\"%(link)s\" class=\"btn btn-info\">请点击此处</a>"
   },
   "all": "全部",
   "android": "安卓",
