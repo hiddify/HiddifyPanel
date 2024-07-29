@@ -1,8 +1,8 @@
 {
-  " Search\n            Settings": "",
+  " Search\n            Settings": " 搜索<inlang-LineFeed>设置",
   "%(count)s records were successfully disabled.": "%(count)s 条记录已成功禁用。",
   "%(count)s records were successfully enabled.": "%(count)s 条记录已成功启用。",
-  "%(expire_days)s days": "",
+  "%(expire_days)s days": "%(expire_days)s 天",
   "%(placeholder)s": "%(placeholder)s",
   "0 - Last day": "最后一天",
   "Access Denied!": "拒绝访问",
@@ -140,7 +140,7 @@
   "Please create an issue on Github.": "请在 Github 上创建问题",
   "Please select at least one file.": "请选择至少一个文件",
   "Please select at least one record.": "请选择至少一条记录",
-  "Please select at least one user": "",
+  "Please select at least one user": "请至少选择一位用户",
   "Please select one of the following applications:": "📍请选择以下应用程序之一：\n<br/>\n<br/>",
   "Please type your message to send to the telegram:": "✏️ 请写下您要发送到 Telegram 的消息：",
   "Please understand that parent panel is under test and the plan and the condition of use maybe change at anytime.": "请理解，家长面板正在测试中，计划和使用条件可能随时发生变化。",
@@ -153,11 +153,11 @@
   "RAM": "内存",
   "REALITY Fallback domain is not compaitble with server names!": "REALITY 后备域与服务器名称不兼容！",
   "Release": "✅ 发布",
-  "Remaining about %(relative)s, exactly %(days)s days": "",
+  "Remaining about %(relative)s, exactly %(days)s days": "还剩下大约 %(relative)s，正好 %(days)s 天",
   "Remote nodes are not supported yet!": "尚不支持远程节点！",
-  "Rename File": "",
+  "Rename File": "重新命名文件",
   "Reset Filters": "重置过滤器",
-  "Reset Proxies": "",
+  "Reset Proxies": "重置代理",
   "Reset Usage Time:": "流量使用重置时间：",
   "Reset every month": "每月",
   "Reset package days": "📆 重置套餐天数",
@@ -172,13 +172,13 @@
   "Restore Users": "👥 恢复用户",
   "Restore Users description": "选择此选项可恢复所有用户",
   "Root": "根用户",
-  "Russia": "",
+  "Russia": "俄罗斯",
   "Save": "保存",
   "Save & Add More": "保存并添加更多",
   "Save Link": "保存链接",
   "Select all records": "选择所有记录",
   "Select record": "选择记录",
-  "Seleted Users": "",
+  "Seleted Users": "选定用户",
   "Send Message to User's Telegram": "📣 向用户的 Telegram 发送消息",
   "Sending": "正在发送...",
   "Should be a valid domain": "应该是有效域名",
@@ -188,8 +188,6 @@
   "SingBox": "📦 歌盒",
   "Sort by %(name)s": "以%(name)s排序",
   "Start Date": "开始日期",
-  "Started %(days)s days ago": "",
-  "Started from %(relative)s": "",
   "Status": "地位",
   "Submit": "提交",
   "Success": "成功",
@@ -216,16 +214,16 @@
   "Want to enjoy more with telegram?": "ℹ️ 将您的帐户连接到 Telegram",
   "Welcome %(user)s": "欢迎%(user)s",
   "Why Going to Premium?": "为什么要选择高级版？",
-  "Will Start in %(days)s days": "",
   "Windows": "视窗",
-  "With selected": "",
   "Xray": "☢️ XRay",
   "Yesterday Usage": "昨天",
   "You can download a json formated of configurations by clicking <a href='%(link)s' class='btn btn-primary'>here</a>": "🔄 Hiddify Manager 每 6 小时自动进行一次备份。备份文件在服务器上的路径：⬇️\n<br>\n/opt/hiddify-config/hiddify-panel/备份\n<br>\n<br>\n<br>\n⚠️您可以通过单击下面的按钮下载配置的 JSON 文件格式\n<br>\n<br>\n<a href='%(link)s' class='btn btn-primary'>下载备份文件</a>",
   "You can restore your configs from previously downloaded configs": "ℹ️您可以从以前下载的备份文件恢复您的配置",
   "You have too much users! You can have only %(active)s active users and %(total)s users": "你的用户太多了！您只能拥有 %(active)s 个活跃用户和 %(total)s 个用户",
   "You have used this domain in: ": "您已在以下位置使用过该域名：",
-  "You should visit this page without VPN. Your country=%(your_country)s\nexpected=%(expected_country)s": "您应该在没有 VPN 的情况下访问此页面 Your Country =%(your_country)s\n预期=%(expected_country)s",
+  "You should visit this page without VPN": {
+    " Your country=%(your_country)s\nexpected=%(expected_country)s": "您应该在没有 VPN 的情况下访问此页面 Your Country =%(your_country)s\n预期=%(expected_country)s"
+  },
   "Your hiddify instance information \nDomain: {} \nUsage limit: {} GB\nCurrent usage: {} GB\nExpires at: {} \nRemaining days: {} \n\n\n Happy using 🎉 🎉 🎉 \n": "您的 Hiddify 实例信息\n领域： {}\n使用限制：{} GB\n当前使用情况：{} GB\n到期时间：{}\n剩余天数：{}\n\n\n祝你好运！ 🎉🎉🎉",
   "[Admin only visible message:] You can change this message from settings": "[管理员专用消息]：可通过设置自定义。",
   "actions": "行动",
@@ -259,7 +257,6 @@
       "telegram": "电报",
       "user": "用户"
     },
-    "no_user_warning": "",
     "proxy": {
       "detailed_config": "⚙️详细配置",
       "global_config": "⚙️ 全局配置"
@@ -270,9 +267,6 @@
     "quicksetup_intro": "您的服务器的 IP 是：\n<div>\nIPv4：%(ipv4)s <br> IPv6：%(ipv6)s\n</div>\n在您的域或子域上设置这些 IP，然后在下面的框中输入您的域或子域。",
     "save_panel_link": "请注意，您的面板只能通过以下链接访问。请保存此链接。\n<p><a href='%(adminlink)s' class='btn btn-secondary copy-link'><i class='fa-solid fa-copy'></i></a>\n<a href='%(adminlink)s' class='copy-link' style='word-break: break-all;'>%(adminlink)s</a></p>",
     "waiting_for_update": "⚠️ 请等待大约 5 分钟以确保所有内容均已更新。在此期间，请复制并保存您的代理链接："
-  },
-  "adminuser": {
-    "force_update_usage": ""
   },
   "all": "全部",
   "android": "安卓",
@@ -335,20 +329,9 @@
     "welcome": "万岁🎉🎉🎉\n欢迎使用 Hiddify 机器人\n首先单击面板上的链接或输入您的 UUID。"
   },
   "cdn": "🔀 CDN（Cloudflare 代理，...）",
-  "cf-delete": {
-    "failed": ""
-  },
   "child has been removed!": "孩子已被移走！",
-  "child": {
-    "register-failed": "",
-    "register-success": "",
-    "sync-failed": ""
-  },
   "clickable copy": "社交媒体链接",
   "close": "关闭",
-  "cloudflare": {
-    "error": ""
-  },
   "config": {
     "Domain_already_used": "域存在于域部分。使用另一个域",
     "Invalid_The_pattern_is_number-number": "⚠️配置无效！模式是数字-数字",
@@ -466,21 +449,9 @@
       "description": "这是一般系统配置",
       "label": "常规设置"
     },
-    "grpc_enable": {
-      "description": "",
-      "label": ""
-    },
-    "h2_enable": {
-      "description": "",
-      "label": ""
-    },
     "hidden": {
       "description": "配置.隐藏.描述",
       "label": "配置.隐藏.标签"
-    },
-    "hiddifycli_enable": {
-      "description": "",
-      "label": ""
     },
     "http": {
       "description": "HTTP 配置可以在此部分设置",
@@ -494,35 +465,18 @@
       "description": "通过允许此操作，您的用户可以使用未加密的 HTTP 端口连接到系统。 （不建议）",
       "label": "☑️ 允许 HTTP 连接"
     },
-    "httpupgrade_enable": {
-      "description": "",
-      "label": ""
-    },
     "hysteria": {
       "description": "Hysteria 是一款功能齐全的代理和中继工具，针对有损、不稳定的连接（例如卫星网络、拥挤的公共 Wi-Fi、从中国连接到国外服务器）进行了优化",
       "label": "歇斯底里"
-    },
-    "hysteria_down_mbps": {
-      "description": "",
-      "label": ""
     },
     "hysteria_enable": {
       "description": "启用基于 UDP 的 Hysteria 协议",
       "label": "启用歇斯底里2"
     },
-    "hysteria_obfs_enable": {
-      "description": "",
-      "label": ""
-    },
     "hysteria_port": {
       "description": "Hysteria UDP 端口，例如 5678",
       "label": "🔍 Hysteria2 端口"
     },
-    "hysteria_up_mbps": {
-      "description": "",
-      "label": ""
-    },
-    "invalid-pattern-for-warp-sites": "",
     "invalid_uuid": "UUID 秘密无效。示例：6098ea35-8cb2-4a08-ba15-2be25bc49cb6",
     "is_parent": {
       "description": "config.is_parent.description",
@@ -548,57 +502,12 @@
       "description": "config.last_hash.描述",
       "label": "配置.last_hash.label"
     },
-    "last_priodic_usage_check": {
-      "description": "",
-      "label": ""
-    },
     "license": {
       "description": "要将本产品用于商业用途，您必须购买其许可证",
       "label": "许可证代码"
     },
-    "log_level": {
-      "description": "",
-      "label": ""
-    },
     "mux": {
-      "description": "",
       "label": "MUC设置"
-    },
-    "mux_brutal_down_mbps": {
-      "description": "",
-      "label": ""
-    },
-    "mux_brutal_enable": {
-      "description": "",
-      "label": ""
-    },
-    "mux_brutal_up_mbps": {
-      "description": "",
-      "label": ""
-    },
-    "mux_enable": {
-      "description": "",
-      "label": ""
-    },
-    "mux_max_connections": {
-      "description": "",
-      "label": ""
-    },
-    "mux_max_streams": {
-      "description": "",
-      "label": ""
-    },
-    "mux_min_streams": {
-      "description": "",
-      "label": ""
-    },
-    "mux_padding_enable": {
-      "description": "",
-      "label": ""
-    },
-    "mux_protocol": {
-      "description": "",
-      "label": ""
     },
     "netdata": {
       "description": "用于显示资源。使用您服务器的 CPU，但不会太多。",
@@ -616,18 +525,6 @@
       "description": "指定您想要发布的包还是开发的包",
       "label": "🔄 包更新模式"
     },
-    "panel_mode": {
-      "description": "",
-      "label": ""
-    },
-    "parent_admin_proxy_path": {
-      "description": "",
-      "label": ""
-    },
-    "parent_domain": {
-      "description": "",
-      "label": ""
-    },
     "parent_panel": {
       "description": "您可以连接到中央面板仅定义一个用户，所有服务器的使用情况将累积添加。",
       "label": "父面板（多服务器）"
@@ -635,10 +532,6 @@
     "path_grpc": {
       "description": "配置中的 gRPC 路径",
       "label": "ℹ️ gRPC 路径"
-    },
-    "path_httpupgrade": {
-      "description": "",
-      "label": ""
     },
     "path_splithttp": {
       "description": "此选项定义 Split HTTP 的路径",
@@ -680,33 +573,13 @@
       "description": "我们使用秘密代理路径来隐藏我们的政府代理",
       "label": "ℹ️ 秘密代理路径"
     },
-    "proxy_path_admin": {
-      "description": "",
-      "label": ""
-    },
-    "proxy_path_client": {
-      "description": "",
-      "label": ""
-    },
-    "quic_enable": {
-      "description": "",
-      "label": ""
-    },
     "reality": {
       "description": "REALITY 消除了服务器端 TLS 指纹功能",
       "label": "现实"
     },
-    "reality_enable": {
-      "description": "",
-      "label": ""
-    },
     "reality_fallback_domain": {
       "description": "当 GFW 访问服务器名称中的网站时，将被重定向到该域。",
       "label": "🌍 现实后备域"
-    },
-    "reality_port": {
-      "description": "",
-      "label": ""
     },
     "reality_private_key": {
       "description": "不要改变它",
@@ -735,22 +608,6 @@
     "restls1_3_domain": {
       "description": "config.restls1_3_domain.description",
       "label": "config.restls1_3_domain.label"
-    },
-    "shadowsocks": {
-      "description": "",
-      "label": ""
-    },
-    "shadowsocks2022_enable": {
-      "description": "",
-      "label": ""
-    },
-    "shadowsocks2022_method": {
-      "description": "",
-      "label": ""
-    },
-    "shadowsocks2022_port": {
-      "description": "",
-      "label": ""
     },
     "shadowtls": {
       "description": "向防火墙公开真实 tls 握手的代理。\n\n它的工作方式类似于木马，但不需要签名证书。防火墙将看到与您选择的有效证书的真实 tls 握手。",
@@ -820,38 +677,6 @@
       "description": "请在您的数据中心使用众所周知的域。例如，如果您在 Azure 数据中心，microsoft-update.com 就是一个很好的例子",
       "label": "SSR 假域名"
     },
-    "sub_full_clash_enable": {
-      "description": "",
-      "label": ""
-    },
-    "sub_full_clash_meta_enable": {
-      "description": "",
-      "label": ""
-    },
-    "sub_full_links_b64_enable": {
-      "description": "",
-      "label": ""
-    },
-    "sub_full_links_enable": {
-      "description": "",
-      "label": ""
-    },
-    "sub_full_singbox_enable": {
-      "description": "",
-      "label": ""
-    },
-    "sub_full_xray_json_enable": {
-      "description": "",
-      "label": ""
-    },
-    "sub_singbox_ssh_enable": {
-      "description": "",
-      "label": ""
-    },
-    "tcp_enable": {
-      "description": "",
-      "label": ""
-    },
     "telegram": {
       "description": "专为 Telegram 设计的代理，可绕过 Telegram 过滤",
       "label": "电报代理"
@@ -880,37 +705,9 @@
       "description": "可以在此部分设置 TLS 配置。",
       "label": "TLS 配置"
     },
-    "tls_fragment_enable": {
-      "description": "",
-      "label": ""
-    },
-    "tls_fragment_size": {
-      "description": "",
-      "label": ""
-    },
-    "tls_fragment_sleep": {
-      "description": "",
-      "label": ""
-    },
-    "tls_mixed_case": {
-      "description": "",
-      "label": ""
-    },
-    "tls_padding_enable": {
-      "description": "",
-      "label": ""
-    },
-    "tls_padding_length": {
-      "description": "",
-      "label": ""
-    },
     "tls_ports": {
       "description": "逗号分隔的整数，指示用作 TLS 连接的端口（在任何情况下都将使用端口 443）",
       "label": "🔎 TLS 端口"
-    },
-    "tls_trick": {
-      "description": "",
-      "label": ""
     },
     "too_advanced": {
       "description": "指定代理路径。如果您使用 HTTP 和 VMess，这一点尤其重要",
@@ -919,10 +716,6 @@
     "torrent_block": {
       "description": "可以在此部分设置 Torrent 阻止配置。",
       "label": "Torrent 块配置"
-    },
-    "trojan_enable": {
-      "description": "",
-      "label": ""
     },
     "tuic": {
       "description": "Delicately-TUICed 高性能代理位于 QUIC 协议之上。\n\nTUIC的目标是尽可能减少握手延迟",
@@ -951,15 +744,10 @@
     "validation-error": "其中一个字段有错误。",
     "validation-success": "配置已成功更改。单击 %(link)s 应用配置。申请可能需要 2 分钟",
     "validation-success-no-reset": "✅ 配置已成功更改",
-    "vless_enable": {
-      "description": "",
-      "label": ""
-    },
     "vmess_enable": {
       "description": "据多位人士透露，VMess 导致该系统被政府检测到。所以不推荐",
       "label": "♈️启用VMess"
     },
-    "warp-https-domain-for-warp-site": "",
     "warp": {
       "description": "Warp 是一种在出站流量中隐藏服务器 IP 的工具。这意味着如果用户访问网站，则暴露的是 Warp IP，而不是我们的服务器 IP。\n<br>\n例如，如果您在 Google 上遇到验证码问题，则可能会通过这种方式修复。",
       "label": "扭曲➕"
@@ -975,50 +763,6 @@
     "warp_plus_code": {
       "description": "🔝 提高浏览速度。要获取密钥，请转到 <a href='https://1.1.1.1/'> 1.1.1.1 </a>\n应用程序并从 Cloudflare 购买原始 KEY\n<br>\n⚠️如果此Key有错误，WARP将被禁用。",
       "label": "🔑 变形加键"
-    },
-    "warp_sites": {
-      "description": "",
-      "label": ""
-    },
-    "wireguard": {
-      "description": "",
-      "label": ""
-    },
-    "wireguard_enable": {
-      "description": "",
-      "label": ""
-    },
-    "wireguard_ipv4": {
-      "description": "",
-      "label": ""
-    },
-    "wireguard_ipv6": {
-      "description": "",
-      "label": ""
-    },
-    "wireguard_noise_trick": {
-      "description": "",
-      "label": ""
-    },
-    "wireguard_port": {
-      "description": "",
-      "label": ""
-    },
-    "wireguard_private_key": {
-      "description": "",
-      "label": ""
-    },
-    "wireguard_public_key": {
-      "description": "",
-      "label": ""
-    },
-    "ws_enable": {
-      "description": "",
-      "label": ""
-    },
-    "xtls_enable": {
-      "description": "",
-      "label": ""
     }
   },
   "copy": "复制",
@@ -1035,10 +779,6 @@
       "description": "它用于在 SNI 中模拟另一个网站而不是您的网站。因此，GFW 无法过滤您的域名\n<a href='https://github.com/hiddify/hiddify-config/wiki/Guide-for-domain-fronting'>指南</a>。 ⚠️CloudFlare 不支持域前置。",
       "label": "🔒 启用 TLS 域前置"
     },
-    "empty": {
-      "allowed_for_fake_only": ""
-    },
-    "intro": "",
     "ip": "知识产权",
     "mode": "模式",
     "reality": {
@@ -1055,7 +795,6 @@
   "in parent panel": "在家长面板中",
   "install from google play": "<i class='fa-brands fa-google-play'></i> Google Play",
   "ios": "iOS系统",
-  "items": "",
   "lang": {
     "en": "🇺🇸 English 中文",
     "fa": "🇮🇷 Persian فارسی 波斯语",
@@ -1086,7 +825,6 @@
   "next": "下一个",
   "no_reset": "⭐️无需重置",
   "node": {
-    "diff-version": "",
     "mode": {
       "dscr": "节点模式.dscr",
       "label": "节点模式"
@@ -1105,19 +843,8 @@
   "outdated_panel": "⚠️ 此版本的 Hiddify Manager 已过时。请从管理区域更新",
   "package days?": "包天数？",
   "package size?": "包装尺寸？",
-  "parent": {
-    "invalid-parent-url": "",
-    "sync-req-failed": ""
-  },
   "previous": "以前的",
   "quicksetup": {
-    "cdn_domain": {
-      "description": "",
-      "label": ""
-    },
-    "proxy_cat": {
-      "description": ""
-    },
     "setlang": {
       "success": "更改语言成功。"
     }
@@ -1221,7 +948,6 @@
       "tool": {
         "all-configs": "所有配置",
         "doh": {
-          "help": "",
           "title": "HTTPS 上的 DNS"
         }
       },
