@@ -1,6 +1,7 @@
 import yaml
 from hiddifypanel.models import ProxyCDN, ProxyL3, ProxyProto, ProxyTransport, Domain
 from hiddifypanel import hutils
+# https://wiki.metacubex.one/en/
 
 
 def get_clash_config_names(meta_or_normal, domains: list[Domain]):

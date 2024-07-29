@@ -425,7 +425,9 @@ def add_headers(res, c, mimetype="text/plain"):
     resp.mimetype = mimetype
     resp.headers['Subscription-Userinfo'] = f"upload=0;download={c['usage_current_b']};total={c['usage_limit_b']};expire={c['expire_s']}"
     resp.headers['profile-web-page-url'] = request.base_url.rsplit('/', 1)[0].replace("http://", "https://") + "/"
-    resp.headers['test-url'] = f"https://{request.host}/{hconfig(ConfigEnum.proxy_path_client)}/generate_204"
+    # resp.headers['test-url'] = f"http://127.0.0.1:90/{hconfig(ConfigEnum.proxy_path_client)}/generate_204"
+    # resp.headers['test-url'] = f"http://{request.host}/{hconfig(ConfigEnum.proxy_path_client)}/generate_204"
+    # resp.headers['test-url'] = "http://connectivitycheck.gstatic.com/generate_204"
 
     if hconfig(ConfigEnum.branding_site):
         resp.headers['support-url'] = hconfig(ConfigEnum.branding_site)
