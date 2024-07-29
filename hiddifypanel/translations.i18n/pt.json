@@ -449,6 +449,14 @@
       "description": "É Configurações Gerais do Sistema",
       "label": "Configurações Gerais"
     },
+    "grpc_enable": {
+      "description": "gRPC é uma estrutura moderna de chamada de procedimento remoto (RPC) de código aberto e alto desempenho. Pode ser usado em CDNs suportados",
+      "label": "➿gRPC"
+    },
+    "h2_enable": {
+      "description": "Habilitar protocolo HTTP/2",
+      "label": "🔵h2"
+    },
     "hidden": {
       "description": "config.hidden.description",
       "label": "config.hidden.label"
