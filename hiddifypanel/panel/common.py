@@ -148,6 +148,8 @@ def init_app(app: APIFlask):
 
     @app.before_request
     def base_middleware():
+        if "generate_204" in request.path:
+            return "", 204
         if request.endpoint == 'static' or request.endpoint == "videos":
             return
 
