@@ -32,11 +32,14 @@ def to_clash(proxy, meta_or_normal):
 
     if proxy['l3'] in ["kcp", ProxyL3.h3_quic]:
         return {'name': name, 'msg': f"clash does not support {proxy['l3']}", 'type': 'debug'}
-    if proxy['proto'] in ["ssh", "wireguard", "tuic", "hysteria"]:
-        return {'name': name, 'msg': f"clash does not support {proxy['proto']}", 'type': 'debug'}
+    if proxy['transport'] in [ProxyTransport.splithttp, ProxyTransport.httpupgrade, ProxyTransport.shadowtls]:
+        return {'name': name, 'msg': f"clash does not support {proxy['transport']}", 'type': 'debug'}
+    # if proxy['proto'] in [Proxy.shado]:
     if proxy.get('flow'):
         return {'name': name, 'msg': "xtls not supported in clash", 'type': 'debug'}
     if meta_or_normal == "normal":
+        if proxy['proto'] in [ProxyProto.ssh, ProxyProto.wireguard, ProxyProto.tuic, ProxyProto.hysteria2]:
+            return {'name': name, 'msg': f"clash does not support {proxy['proto']}", 'type': 'debug'}
         if proxy['proto'] in ["vless", 'tuic', 'hysteria2']:
             return {'name': name, 'msg': f"{proxy['proto']} not supported in clash", 'type': 'debug'}
         if proxy['transport'] in ["shadowtls", "splithttp"]:
@@ -49,7 +52,32 @@ def to_clash(proxy, meta_or_normal):
     base["type"] = str(proxy["proto"])
     base["server"] = proxy["server"]
     base["port"] = proxy["port"]
+    if proxy["proto"] == "ssh":
+        base["username"] = proxy["uuid"]
+        base["private-key"] = proxy['private_key']
+        base["host-key"] = proxy.get('host_key', [])
+        return base
+    base["udp"] = True
+    if proxy["proto"] == ProxyProto.wireguard:
+        base["private-key"] = proxy["wg_pk"]
+        base["ip"] = f'{proxy["wg_ipv4"]}/32'
+        # base["ipv6"]
+        base["public-key"] = proxy["wg_server_pub"]
+        base["pre-shared-key"] = proxy["wg_psk"]
+        # base["allowed-ips"]
+        return base
+    if proxy["proto"] == ProxyProto.tuic:
+        # base['congestion_control'] = "cubic"
+        base['udp-relay-mode'] = 'native'
+        base['reduce-rtt'] = True
+        # base['heartbeat'] = "10s"
+        base['password'] = proxy['uuid']
+        base['uuid'] = proxy['uuid']
+        return base
     base['alpn'] = proxy['alpn'].split(',')
+    base["skip-cert-verify"] = proxy["mode"] == "Fake"
+    if meta_or_normal == "meta" and proxy.get('fingerprint'):
+        base['client-fingerprint'] = proxy['fingerprint']
     if proxy["proto"] == "ssr":
         base["cipher"] = proxy["cipher"]
         base["password"] = proxy["uuid"]
@@ -101,13 +129,16 @@ def to_clash(proxy, meta_or_normal):
     elif proxy["proto"] == "trojan":
         base["password"] = proxy["uuid"]
         base["sni"] = proxy["sni"]
-
+    elif proxy["proto"] == "hysteria2":
+        base["password"] = proxy["uuid"]
+        base["obfs"] = "salamander"
+        base["obfs-password"] = proxy.get('hysteria_obfs_password')
+        return base
     else:
         base["uuid"] = proxy["uuid"]
         base["servername"] = proxy["sni"]
         base["tls"] = "tls" in proxy["l3"] or "reality" in proxy["l3"]
-    if meta_or_normal == "meta":
-        base['client-fingerprint'] = proxy['fingerprint']
+
     if proxy.get('flow'):
         base["flow"] = proxy['flow']
         # base["flow-show"] = True
@@ -115,11 +146,8 @@ def to_clash(proxy, meta_or_normal):
     if proxy["proto"] == "vmess":
         base["alterId"] = 0
         base["cipher"] = proxy["cipher"]
-    base["udp"] = True
 
-    base["skip-cert-verify"] = proxy["mode"] == "Fake"
-
-    base["network"] = proxy["transport"]
+    base["network"] = str(proxy["transport"])
 
     if base["network"] == "ws":
         base["ws-opts"] = {
