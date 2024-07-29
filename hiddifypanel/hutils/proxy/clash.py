@@ -32,12 +32,13 @@ def to_clash(proxy, meta_or_normal):
 
     if proxy['l3'] in ["kcp", ProxyL3.h3_quic]:
         return {'name': name, 'msg': f"clash does not support {proxy['l3']}", 'type': 'debug'}
-    if proxy['transport'] in [ProxyTransport.splithttp, ProxyTransport.httpupgrade, ProxyTransport.shadowtls]:
+    if proxy['transport'] in [ProxyTransport.splithttp, ProxyTransport.httpupgrade]:
         return {'name': name, 'msg': f"clash does not support {proxy['transport']}", 'type': 'debug'}
     # if proxy['proto'] in [Proxy.shado]:
-    if proxy.get('flow'):
-        return {'name': name, 'msg': "xtls not supported in clash", 'type': 'debug'}
+
     if meta_or_normal == "normal":
+        if proxy.get('flow'):
+            return {'name': name, 'msg': "xtls not supported in clash", 'type': 'debug'}
         if proxy['proto'] in [ProxyProto.ssh, ProxyProto.wireguard, ProxyProto.tuic, ProxyProto.hysteria2]:
             return {'name': name, 'msg': f"clash does not support {proxy['proto']}", 'type': 'debug'}
         if proxy['proto'] in ["vless", 'tuic', 'hysteria2']:
@@ -70,14 +71,13 @@ def to_clash(proxy, meta_or_normal):
         # base['congestion_control'] = "cubic"
         base['udp-relay-mode'] = 'native'
         base['reduce-rtt'] = True
+        base["skip-cert-verify"] = proxy['allow_insecure']
+        base['sni'] = proxy['sni']
         # base['heartbeat'] = "10s"
         base['password'] = proxy['uuid']
         base['uuid'] = proxy['uuid']
         return base
-    base['alpn'] = proxy['alpn'].split(',')
-    base["skip-cert-verify"] = proxy["mode"] == "Fake"
-    if meta_or_normal == "meta" and proxy.get('fingerprint'):
-        base['client-fingerprint'] = proxy['fingerprint']
+
     if proxy["proto"] == "ssr":
         base["cipher"] = proxy["cipher"]
         base["password"] = proxy["uuid"]
@@ -85,16 +85,6 @@ def to_clash(proxy, meta_or_normal):
         base["obfs"] = proxy["ssr-obfs"]
         base["protocol"] = proxy["ssr-protocol"]
         base["obfs-param"] = proxy["fakedomain"]
-        return base
-    elif proxy["proto"] == "tuic":
-        base["uuid"] = proxy["uuid"]
-        base["password"] = proxy["uuid"]
-        base["disable-sni"] = proxy['allow_insecure']
-        base["reduce-rtt"] = True
-        base["request-timeout"] = 8000
-        base["udp-relay-mode"] = 'native'
-        base["congestion-controller"] = 'cubic'
-        base['sni'] = proxy['sni']
         return base
     elif proxy["proto"] in ["ss", "v2ray"]:
         base["cipher"] = proxy["cipher"]
@@ -110,7 +100,7 @@ def to_clash(proxy, meta_or_normal):
             base["plugin"] = "shadow-tls"
             base["plugin-opts"] = {
                 "host": proxy["fakedomain"],
-                "password": proxy["proxy_path"],
+                "password": proxy["shared_secret"],
                 "version": 3  # support 1/2/3
 
             }
@@ -126,7 +116,12 @@ def to_clash(proxy, meta_or_normal):
                 "path": proxy["path"]
             }
         return base
-    elif proxy["proto"] == "trojan":
+    base['alpn'] = proxy['alpn'].split(',')
+    base["skip-cert-verify"] = proxy["mode"] == "Fake"
+    if meta_or_normal == "meta" and proxy.get('fingerprint'):
+        base['client-fingerprint'] = proxy['fingerprint']
+
+    if proxy["proto"] == "trojan":
         base["password"] = proxy["uuid"]
         base["sni"] = proxy["sni"]
     elif proxy["proto"] == "hysteria2":
@@ -138,6 +133,8 @@ def to_clash(proxy, meta_or_normal):
         base["uuid"] = proxy["uuid"]
         base["servername"] = proxy["sni"]
         base["tls"] = "tls" in proxy["l3"] or "reality" in proxy["l3"]
+    if proxy["proto"] in ["vless", "vmess"]:
+        base["packet-encoding"] = "xudp"
 
     if proxy.get('flow'):
         base["flow"] = proxy['flow']
