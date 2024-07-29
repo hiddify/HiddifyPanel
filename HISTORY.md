@@ -1,9 +1,11 @@
 # Changelog
 
 
-## (unreleased)
+## v10.70.0 (2024-07-29)
 
 #### New
+
+* Add  url test. 
 
 * Add xray fragment. 
 
@@ -26,6 +28,10 @@
 * Work splithttp in hiddify. 
 
 #### Fix
+
+* Clash link. 
+
+* Shadowtls. 
 
 * Shadowsocks bug. 
 
@@ -54,6 +60,10 @@
 * Bug in adding fake domain. 
 
 #### Other
+
+* Wireguard tuic and hysteria added to clashmeta link. 
+
+* Update translations. 
 
 * Remove wireguard noise. 
 
