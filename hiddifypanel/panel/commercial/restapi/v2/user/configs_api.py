@@ -94,7 +94,7 @@ class AllConfigsAPI(MethodView):
                 create_item(
                     "Clash Meta", "ALL", "", "", "", "",
                     # f"clashmeta://install-config?url={base_url}clash/meta/all.yml&name=mnormal_{c['db_domain'].alias or c['db_domain'].domain}-{c['asn']}-{c['mode']}&asn={c['asn']}&mode={c['mode']}"
-                    f"clash://install-config?url={base_url}clashmeta/?asn={c['asn']}#{config_name}"
+                    f"{base_url}clashmeta/?asn={c['asn']}#{config_name}"
                 )
             )
 
@@ -104,7 +104,7 @@ class AllConfigsAPI(MethodView):
                 create_item(
                     "Clash", "ALL", "Except VLess", "", "", "",
                     # f"clash://install-config?url={base_url}clash/all.yml&name=new_normal_{c['db_domain'].alias or c['db_domain'].domain}-{c['asn']}-{c['mode']}&asn={c['asn']}&mode={c['mode']}"
-                    f"clash://install-config?url={base_url}clash/?asn={c['asn']}#{config_name}"
+                    f"{base_url}clash/?asn={c['asn']}#{config_name}"
                 )
             )
 
