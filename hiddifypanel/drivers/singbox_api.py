@@ -5,6 +5,7 @@ from flask import current_app
 import json
 from collections import defaultdict
 from hiddifypanel.cache import cache
+from loguru import logger
 
 
 class SingboxApi(DriverABS):
@@ -24,7 +25,7 @@ class SingboxApi(DriverABS):
         try:
             xray_client = self.get_singbox_client()
             inbounds = [inb.name.split(">>>")[1] for inb in xray_client.stats_query('inbound')]
-            print(f"Success in get inbound tags {inbounds}")
+            # print(f"Success in get inbound tags {inbounds}")
         except Exception as e:
             print(f"error in get inbound tags {e}")
             inbounds = []
@@ -63,5 +64,5 @@ class SingboxApi(DriverABS):
         else:
             res = d + u
         if res:
-            print(f"singbox {uuid} d={d} u={u} sum={res}")
+            logger.debug(f"singbox {uuid} d={d} u={u} sum={res}")
         return res

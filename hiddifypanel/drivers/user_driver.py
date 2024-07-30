@@ -5,6 +5,7 @@ from .wireguard_api import WireguardApi
 from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify
 from collections import defaultdict
+from loguru import logger
 
 drivers = [XrayApi(), SingboxApi(), SSHLibertyBridgeApi(), WireguardApi()]
 
@@ -27,6 +28,7 @@ def get_users_usage(reset=True):
         except Exception as e:
             print(driver)
             hiddify.error(f'ERROR! {driver.__class__.__name__} has error in update usage {e}')
+            logger.exception(f'ERROR! {driver.__class__.__name__} has error in update usage {e}')
     return res
 
 
@@ -45,6 +47,7 @@ def get_enabled_users():
         except Exception as e:
             print(driver)
             hiddify.error(f'ERROR! {driver.__class__.__name__} has error in get_enabled users {e}')
+            logger.exception(f'ERROR! {driver.__class__.__name__} has error in get_enabled users {e}')
     # print(d, total)
     res = defaultdict(bool)
     for u, v in d.items():
@@ -59,6 +62,7 @@ def add_client(user: User):
             driver.add_client(user)
         except Exception as e:
             hiddify.error(f'ERROR! {driver.__class__.__name__} has error {e} in add client for user={user.uuid} {e}')
+            logger.exception(f'ERROR! {driver.__class__.__name__} has error {e} in add client for user={user.uuid} {e}')
 
 
 def remove_client(user: User):
@@ -67,3 +71,4 @@ def remove_client(user: User):
             driver.remove_client(user)
         except Exception as e:
             hiddify.error(f'ERROR! {driver.__class__.__name__} has error {e} in remove client for user={user.uuid}')
+            logger.exception(f'ERROR! {driver.__class__.__name__} has error {e} in remove client for user={user.uuid}')

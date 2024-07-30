@@ -4,6 +4,7 @@ import redis
 
 USERS_SET = "ssh-server:users"
 USERS_USAGE = "ssh-server:users-usage"
+from loguru import logger
 
 
 class SSHLibertyBridgeApi(DriverABS):
@@ -59,5 +60,5 @@ class SSHLibertyBridgeApi(DriverABS):
             redis_client.hincrby(USERS_USAGE, client_uuid, -value)
             redis_client.save()
         if value:
-            print(f'ssh usage {client_uuid} {value}')
+            logger.debug(f'ssh usage {client_uuid} {value}')
         return value

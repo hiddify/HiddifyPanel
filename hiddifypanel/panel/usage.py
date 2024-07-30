@@ -8,7 +8,7 @@ from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify
 from hiddifypanel.database import db
 from hiddifypanel import cache, hutils
-
+from loguru import logger
 to_gig_d = 1024**3
 
 
@@ -23,6 +23,7 @@ def update_local_usage():
         return _add_users_usage(res, child_id=0)
     except Exception as e:
         cache.redis_client.set(lock_key, "locked", nx=False, ex=60)
+        logger.exception("Exception in update usage")
         raise
         return {"msg": f"Exception in update usage: {e}"}
 
@@ -46,9 +47,10 @@ def _reset_priodic_usage():
     # reset as soon as possible in the day
     if datetime.datetime.now().hour > 5 and current_time - last_usage_check < 60 * 60 * 24:
         return
-
+    logger.debug("reseting user usage if needed")
     for user in User.query.filter(User.mode != UserMode.no_reset).all():
         if user.user_should_reset():
+            logger.info(f"reseting user usage for {user.uuid}")
             user.reset_usage(commit=False)
     set_hconfig(ConfigEnum.last_priodic_usage_check, current_time)
 
@@ -67,6 +69,7 @@ def _add_users_usage(users_usage_data: Dict[User, Dict], child_id, sync=False):
     for adm in AdminUser.query.all():
         daily_usage[adm.id] = DailyUsage.query.filter(DailyUsage.date == today, DailyUsage.admin_id == adm.id, DailyUsage.child_id == child_id).first()
         if daily_usage[adm.id] is None:
+            logger.info(f"creating a new daily usage {today} admin={adm.id} child={child_id}")
             daily_usage[adm.id] = DailyUsage(admin_id=adm.id, child_id=child_id)
             db.session.add(daily_usage[adm.id])
             changes = True
@@ -90,7 +93,7 @@ def _add_users_usage(users_usage_data: Dict[User, Dict], child_id, sync=False):
 
         # Enable the user if isn't already
         if not before_enabled_users[user.uuid] and user.is_active:
-            print(f"Enabling disabled client {user.uuid} ")
+            logger.info(f"Enabling disabled client {user.uuid} ")
             user_driver.add_client(user)
             send_bot_message(user)
             have_change = True
@@ -129,7 +132,8 @@ def _add_users_usage(users_usage_data: Dict[User, Dict], child_id, sync=False):
         # Remove user from drivers(singbox, xray, wireguard etc.) if they're inactive
         # print(before_enabled_users[user.uuid], user.is_active)
         if before_enabled_users[user.uuid] and not user.is_active:
-            print(f"Removing enabled client {user.uuid} ")
+            logger.info(f"Removing enabled client {user.uuid} ")
+
             user_driver.remove_client(user)
             have_change = True
             res[user.uuid] = f"{res[user.uuid]} !OUT of USAGE! Client Removed"

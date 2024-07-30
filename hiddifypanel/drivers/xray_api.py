@@ -3,6 +3,7 @@ from hiddifypanel.models import *
 from .abstract_driver import DriverABS
 from collections import defaultdict
 from hiddifypanel.cache import cache
+from loguru import logger
 
 
 class XrayApi(DriverABS):
@@ -65,7 +66,7 @@ class XrayApi(DriverABS):
         try:
             xray_client = self.get_xray_client()
             inbounds = {inb.name.split(">>>")[1] for inb in xray_client.stats_query('inbound')}
-            print(f"Success in get inbound tags {inbounds}")
+            # print(f"Success in get inbound tags {inbounds}")
         except Exception as e:
             print(f"error in get inbound tags {e}")
             inbounds = {}
@@ -130,10 +131,10 @@ class XrayApi(DriverABS):
             try:
                 xray_client.remove_client(t, f'{uuid}@hiddify.com')
                 if dolog:
-                    print(f"Success remove  {uuid} {t}")
+                    logger.info(f"Success remove  {uuid} {t}")
             except Exception as e:
                 if dolog:
-                    print(f"error in remove  {uuid} {t} {e}")
+                    logger.info(f"error in remove  {uuid} {t} {e}")
                 pass
 
     def get_all_usage(self, users):
@@ -164,5 +165,5 @@ class XrayApi(DriverABS):
         else:
             res = d + u
         if res:
-            print(f"Xray usage {uuid} d={d} u={u} sum={res}")
+            logger.debug(f"Xray usage {uuid} d={d} u={u} sum={res}")
         return res
