@@ -1,6 +1,20 @@
 # Changelog
 
 
+## v10.70.2 (2024-07-30)
+
+#### Fix
+
+* Buggy update. 
+
+#### Other
+
+* Merge branch 'main' of github.com:hiddify/Hiddify-Panel. 
+
+* Update translations. 
+
+
+
 ## v10.70.1 (2024-07-30)
 
 #### Other
