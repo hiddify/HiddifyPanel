@@ -17,20 +17,7 @@ from loguru import logger
 MAX_DB_VERSION = 100
 
 
-def _v94(child_id):
-    set_hconfig(ConfigEnum.wireguard_noise_trick, "0-0")
-
-
-def _v93(child_id):
-    set_hconfig(ConfigEnum.quic_enable, True)
-    set_hconfig(ConfigEnum.splithttp_enable, True)
-
-
-def _v92(child_id):
-    db.session.bulk_save_objects(get_proxy_rows_v1())
-
-
-def _v90(child_id):
+def _v95(child_id):
     result = (
         db.session.query(
             DailyUsage.child_id,
@@ -65,6 +52,19 @@ def _v90(child_id):
 
     # Commit the changes to the database
     db.session.commit()
+
+
+def _v94(child_id):
+    set_hconfig(ConfigEnum.wireguard_noise_trick, "0-0")
+
+
+def _v93(child_id):
+    set_hconfig(ConfigEnum.quic_enable, True)
+    set_hconfig(ConfigEnum.splithttp_enable, True)
+
+
+def _v92(child_id):
+    db.session.bulk_save_objects(get_proxy_rows_v1())
 
 
 def _v89(child_id):
