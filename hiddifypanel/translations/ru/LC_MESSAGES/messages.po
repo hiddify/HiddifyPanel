@@ -6,6 +6,8 @@ msgid ""
 " Search\n"
 "            Settings"
 msgstr ""
+" Поиск\n"
+"Настройки"
 
 msgid "%(count)s records were successfully disabled."
 msgstr "%(count)s записей были успешно отключены."
@@ -14,7 +16,7 @@ msgid "%(count)s records were successfully enabled."
 msgstr "%(count)s записей были успешно включены."
 
 msgid "%(expire_days)s days"
-msgstr "с дней"
+msgstr "%(expire_days)с дней"
 
 msgid "%(placeholder)s"
 msgstr "%(placeholder)s"
@@ -614,7 +616,7 @@ msgid "Release"
 msgstr "✅ Релиз"
 
 msgid "Remaining about %(relative)s, exactly %(days)s days"
-msgstr ""
+msgstr "Осталось около %(относительно)s, ровно %(days)s дней"
 
 msgid "Remote nodes are not supported yet!"
 msgstr "Удаленные узлы пока не поддерживаются!"
@@ -626,7 +628,7 @@ msgid "Reset Filters"
 msgstr "Сброс Фильтров"
 
 msgid "Reset Proxies"
-msgstr ""
+msgstr "Сбросить прокси"
 
 msgid "Reset Usage Time:"
 msgstr "Время сброса использования трафика:"
@@ -671,7 +673,7 @@ msgid "Root"
 msgstr "Root"
 
 msgid "Russia"
-msgstr ""
+msgstr "Россия"
 
 msgid "Save"
 msgstr "Сохранить"
@@ -719,10 +721,10 @@ msgid "Start Date"
 msgstr "Дата начала"
 
 msgid "Started %(days)s days ago"
-msgstr ""
+msgstr "Началось %(days)s дней назад"
 
 msgid "Started from %(relative)s"
-msgstr ""
+msgstr "Началось с %(относительного)s"
 
 msgid "Status"
 msgstr "Статус"
@@ -815,7 +817,7 @@ msgid "Why Going to Premium?"
 msgstr "Зачем переходить на Премиум?"
 
 msgid "Will Start in %(days)s days"
-msgstr ""
+msgstr "Начнется через %(days)s дней"
 
 msgid "Windows"
 msgstr "Windows ПК"
@@ -969,6 +971,8 @@ msgstr "Пользователи"
 
 msgid "admin.no_user_warning"
 msgstr ""
+"Кажется, вы еще не создали ни одного пользователя. ссылка пользователя по "
+"умолчанию: %(default_link)s"
 
 msgid "admin.proxy.detailed_config"
 msgstr "⚙️ Подробная конфигурация"
@@ -1016,13 +1020,17 @@ msgid "app.foxray.title"
 msgstr "Фоксрей"
 
 msgid "app.hiddify-clash-android.description"
-msgstr "app.hiddify-clash-android.description"
+msgstr ""
+"Hiddify Clash Android — одно из наших клиентских приложений, которое больше "
+"не обновляется. "
 
 msgid "app.hiddify-clash-android.title"
 msgstr "Hiddify Столкновение"
 
 msgid "app.hiddify-clash-desktop.description"
-msgstr "app.hiddify-clash-desktop.description"
+msgstr ""
+"Hiddify Clash Desktop — одно из наших клиентских приложений, которое больше "
+"не обновляется. "
 
 msgid "app.hiddify-clash-desktop.title"
 msgstr "Hiddify Столкновение"
@@ -1052,7 +1060,7 @@ msgid "app.loon.title"
 msgstr "гагара"
 
 msgid "app.nekobox.description"
-msgstr "app.nekobox.description"
+msgstr " Nekobox — клиенты на базе Singbox. "
 
 msgid "app.nekobox.title"
 msgstr "НекоБокс"
@@ -1369,10 +1377,10 @@ msgid "config.grpc_enable.label"
 msgstr "➿ Включить gRPC"
 
 msgid "config.h2_enable.description"
-msgstr ""
+msgstr "Включить протокол HTTP/2"
 
 msgid "config.h2_enable.label"
-msgstr ""
+msgstr "🔵 h2"
 
 msgid "config.hidden.description"
 msgstr "config.hidden.description"
@@ -1886,7 +1894,7 @@ msgid "config.splithttp_enable.description"
 msgstr "Этот протокол отправляет и получает информацию по отдельным каналам. "
 
 msgid "config.splithttp_enable.label"
-msgstr "Split HTTP"
+msgstr "🈁 Split HTTP"
 
 msgid "config.ssfaketls.description"
 msgstr ""

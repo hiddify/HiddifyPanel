@@ -6,6 +6,8 @@ msgid ""
 " Search\n"
 "            Settings"
 msgstr ""
+" Procurar\n"
+"Configurações"
 
 msgid "%(count)s records were successfully disabled."
 msgstr "%(count)s registros foram desativados com sucesso."
@@ -14,7 +16,7 @@ msgid "%(count)s records were successfully enabled."
 msgstr "%(count)s registros foram ativados com sucesso."
 
 msgid "%(expire_days)s days"
-msgstr ""
+msgstr "%(expire_days)s dias"
 
 msgid "%(placeholder)s"
 msgstr "%(placeholder)s"
@@ -219,6 +221,20 @@ msgstr "Domínio?"
 
 msgid "Donation.description"
 msgstr ""
+"✳️ Precisamos da sua ajuda no desenvolvimento deste projeto<inlang-LineFeed><br>\n"
+"Se você é desenvolvedor ou produtor de conteúdo, entre em contato conosco pelo <a href='mailto:info@hiddify.com'>e-mail info@hiddify.com</a><inlang-LineFeed><br><br><inlang-LineFeed>\n"
+"ℹ️ Além disso, precisamos de ajuda financeira para desenvolver ainda mais este painel e nosso serviço (somos sem fins lucrativos).<inlang-LineFeed><br><inlang-LineFeed><h5> Métodos de Pagamento :</h5><inlang-LineFeed><ul><inlang-LineFeed><li><div class='btn-group'>\n"
+"<a role='button' data-copy='EQCWnykA-YhavOXgH3sf-uxtXLjy83_9n5bJPGRPE8r2247_' class='btn btn-secondary copy-link'><i class='fa-regular fa-copy'></i></a>\n"
+"<a data-copy='EQCWnykA-YhavOXgH3sf-uxtXLjy83_9n5bJPGRPE8r2247_' role='button' class='btn btn-info share-link'>TONELADA</a></div></li><inlang-LineFeed><inlang-LineFeed><li><div class='btn-group'><inlang-LineFeed><a role='button' data-copy='TXZtFUxyBPMSykAWogu7C4zmbjySKqMcDE' class='btn btn-secondary copy-link'><i class='fa-regular fa-copy'></i></a>\n"
+"<a data-copy='TXZtFUxyBPMSykAWogu7C4zmbjySKqMcDE' role='button' class='btn btn-info share-link'>USDT (TRC20)</a></div></li><inlang-LineFeed><inlang-LineFeed><li><div class='btn-group'><inlang-LineFeed><a role='button' data-copy='MCHoh7xwaDBBnQgANPpBtXiekagV6KpdrM' class='btn btn-secondary copy-link'><i class='fa-regular fa-copy'></i></a>\n"
+"<a data-copy='MCHoh7xwaDBBnQgANPpBtXiekagV6KpdrM' role='button' class='btn btn-info share-link'>Litecoin</a></div></li><inlang-LineFeed><inlang-LineFeed><li><div class='btn-group'>\n"
+"<a role='button' data-copy='0xF5CFc65ee336B377C2a37EA3BCD0CaD0d0F0CbA0' class='btn btn-secondary copy-link'><i class='fa-regular fa-copy'></i></a>\n"
+"<a data-copy='0xF5CFc65ee336B377C2a37EA3BCD0CaD0d0F0CbA0' role='button' class='btn btn-info share-link'>Ethereum</a></div></li><inlang-LineFeed><inlang-LineFeed><li><div class='btn-group'>\n"
+"<a role='button' data-copy='bc1qkfp7n3wxu2zc9mdy20cf27d5pujj65myww8f60' class='btn btn-secondary copy-link'><i class='fa-regular fa-copy'></i></a>\n"
+"<a data-copy='bc1qkfp7n3wxu2zc9mdy20cf27d5pujj65myww8f60' role='button' class='btn btn-info share-link'>Bitcoin</a></div></li><inlang-LineFeed><inlang-LineFeed><li><div class='btn-group'><inlang-LineFeed><a role='button' data-copy='DPerFS2vCu5XnE3He32BaPVTkUDcKLsEaj' class='btn btn-secondary copy-link'><i class='fa-regular fa-copy'></i></a>\n"
+"<a data-copy='DPerFS2vCu5XnE3He32BaPVTkUDcKLsEaj' role='button' class='btn btn-info share-link'>Dogecoin</a> </div></li><inlang-LineFeed></ul><inlang-LineFeed><inlang-LineFeed><br><inlang-LineFeed>\n"
+"Precisamos também de outra ajuda:<inlang-LineFeed><ul><inlang-LineFeed><li> 👥 Compartilhe o Hiddify Manager com outras pessoas</li><inlang-LineFeed><li> 📝Desenvolvedor Python</li><inlang-LineFeed><li> 📝Desenvolvedor rápido</li><inlang-LineFeed><li> 📝Desenvolvedor Flutter</li><inlang-LineFeed><li> 📝Go Desenvolvedor</li><inlang-LineFeed><li> 🖥Provedores de conteúdo</li><inlang-LineFeed></ul><inlang-LineFeed><inlang-LineFeed>\n"
+"Entre em contato conosco em <a href='mailto:info@hiddify.com'>info@hiddify.com</a> se puder nos ajudar."
 
 msgid "Donation.title"
 msgstr "Doação"
@@ -316,6 +332,8 @@ msgid ""
 "                    href='%(sub)s'>this universal link</a> to copy and paste it on\n"
 "                your application, or:"
 msgstr ""
+"Se o aplicativo não abrir automaticamente, clique em <a class='btn btn-primary copy-link'<inlang-LineFeed>href='%(sub)s'&gt;neste link universal</a> para copiá-lo e colá-lo\n"
+"sua aplicação ou:"
 
 msgid "Import"
 msgstr "Importar no aplicativo"
@@ -330,6 +348,8 @@ msgid ""
 "In CDN mode, Domain IP=%(domain_ip)s should be different to your "
 "ip=%(server_ip)s"
 msgstr ""
+"No modo CDN, Domain IP=%(domain_ip)s deve ser diferente do seu "
+"ip=%(server_ip)s"
 
 msgid "Incorrect Password"
 msgstr "⚠️ Senha incorreta"
@@ -443,7 +463,7 @@ msgid "Override Root Admin"
 msgstr "Substituir proprietário no backup"
 
 msgid "Owner can not be deleted!"
-msgstr ""
+msgstr "O proprietário não pode ser excluído!"
 
 msgid "Package Days"
 msgstr "Dias do pacote"
@@ -490,7 +510,7 @@ msgid "Please select at least one record."
 msgstr "Por favor, selecione pelo menos um registro."
 
 msgid "Please select at least one user"
-msgstr ""
+msgstr "Selecione pelo menos um usuário"
 
 msgid "Please select one of the following applications:"
 msgstr ""
@@ -555,7 +575,7 @@ msgid "Release"
 msgstr "✅ Liberação"
 
 msgid "Remaining about %(relative)s, exactly %(days)s days"
-msgstr ""
+msgstr "Restam cerca de %(relative)s, exatamente %(days)s dias"
 
 msgid "Remote nodes are not supported yet!"
 msgstr "Nós remotos ainda não são suportados!"
@@ -567,7 +587,7 @@ msgid "Reset Filters"
 msgstr "Limpar Filtros"
 
 msgid "Reset Proxies"
-msgstr ""
+msgstr "Redefinir proxies"
 
 msgid "Reset Usage Time:"
 msgstr "Tempo de reinicialização do uso do tráfego:"
@@ -612,7 +632,7 @@ msgid "Root"
 msgstr "Raíz"
 
 msgid "Russia"
-msgstr ""
+msgstr "Rússia"
 
 msgid "Save"
 msgstr "Salvar"
@@ -630,7 +650,7 @@ msgid "Select record"
 msgstr "Selecionar registro"
 
 msgid "Seleted Users"
-msgstr ""
+msgstr "Usuários selecionados"
 
 msgid "Send Message to User's Telegram"
 msgstr "📣 Enviar mensagem para o telegram do usuário"
@@ -639,10 +659,10 @@ msgid "Sending"
 msgstr "Enviando..."
 
 msgid "Should be a valid domain"
-msgstr ""
+msgstr "Deve ser um domínio válido"
 
 msgid "Should be a valid uuid"
-msgstr ""
+msgstr "Deve ser um uuid válido"
 
 msgid "Show Domains"
 msgstr "Mostrar configurações de domínios"
@@ -660,10 +680,10 @@ msgid "Start Date"
 msgstr "Data de início"
 
 msgid "Started %(days)s days ago"
-msgstr ""
+msgstr "Iniciado há %(days)s dias"
 
 msgid "Started from %(relative)s"
-msgstr ""
+msgstr "Iniciado em %(relative)s"
 
 msgid "Status"
 msgstr "Status"
@@ -756,7 +776,7 @@ msgid "Why Going to Premium?"
 msgstr "Por que ir para premium?"
 
 msgid "Will Start in %(days)s days"
-msgstr ""
+msgstr "Começará em %(days)s dias"
 
 msgid "Windows"
 msgstr "janelas"
@@ -898,7 +918,7 @@ msgid "admin.menu.proxy"
 msgstr "Proxies"
 
 msgid "admin.menu.proxy_stats"
-msgstr ""
+msgstr "Status dos procuradores"
 
 msgid "admin.menu.support"
 msgstr "Ajuda"
@@ -911,6 +931,8 @@ msgstr "Usuários"
 
 msgid "admin.no_user_warning"
 msgstr ""
+"Parece que você ainda não criou nenhum usuário. link de usuário padrão: "
+"%(default_link)s"
 
 msgid "admin.proxy.detailed_config"
 msgstr "⚙️ Configurações detalhadas"
@@ -942,6 +964,8 @@ msgstr ""
 
 msgid "adminuser.force_update_usage"
 msgstr ""
+"A cada 6 minutos o uso está sendo atualizado. Para atualizá-lo agora <a "
+"href=\"%(link)s\" class=\"btn btn-info\">clique aqui</a>"
 
 msgid "all"
 msgstr "Todos"
@@ -957,12 +981,16 @@ msgstr "Raio X"
 
 msgid "app.hiddify-clash-android.description"
 msgstr ""
+"Hiddify Clash Android é um de nossos aplicativos clientes que não está mais "
+"sendo atualizado. "
 
 msgid "app.hiddify-clash-android.title"
 msgstr "Hidificar confronto"
 
 msgid "app.hiddify-clash-desktop.description"
 msgstr ""
+"Hiddify Clash Desktop é um de nossos aplicativos clientes que não está mais "
+"sendo atualizado. "
 
 msgid "app.hiddify-clash-desktop.title"
 msgstr "Hidificar confronto"
@@ -992,7 +1020,7 @@ msgid "app.loon.title"
 msgstr "mergulhão"
 
 msgid "app.nekobox.description"
-msgstr ""
+msgstr " Nekobox é um cliente baseado em Sing-box "
 
 msgid "app.nekobox.title"
 msgstr "NekoBox"
@@ -1299,15 +1327,17 @@ msgstr "Configurações Gerais"
 
 msgid "config.grpc_enable.description"
 msgstr ""
+"gRPC é uma estrutura moderna de chamada de procedimento remoto (RPC) de "
+"código aberto e alto desempenho. Pode ser usado em CDNs suportados"
 
 msgid "config.grpc_enable.label"
-msgstr ""
+msgstr "➿gRPC"
 
 msgid "config.h2_enable.description"
-msgstr ""
+msgstr "Habilitar protocolo HTTP/2"
 
 msgid "config.h2_enable.label"
-msgstr ""
+msgstr "🔵h2"
 
 msgid "config.hidden.description"
 msgstr "config.hidden.description"

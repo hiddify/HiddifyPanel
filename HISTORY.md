@@ -1,6 +1,30 @@
 # Changelog
 
 
+## v10.70.1 (2024-07-30)
+
+#### Other
+
+* Add more logs to usage update. 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Add generate_204. 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Update translations. 
+
+
+
 ## v10.70.0 (2024-07-29)
 
 #### New
