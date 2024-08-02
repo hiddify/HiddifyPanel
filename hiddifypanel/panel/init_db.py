@@ -17,7 +17,7 @@ from loguru import logger
 MAX_DB_VERSION = 100
 
 
-def _v95(child_id):
+def _v96(child_id):
     result = (
         db.session.query(
             DailyUsage.child_id,
