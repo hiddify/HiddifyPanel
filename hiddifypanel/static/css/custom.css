@@ -569,3 +569,7 @@ td.col-uuid a {
 .dark-mode #main-sidebar .nav-sidebar>.nav-item>.nav-link:hover {
   background: #3f6791;
 }
+
+#qrcode img {
+  max-width: 100%;
+}
