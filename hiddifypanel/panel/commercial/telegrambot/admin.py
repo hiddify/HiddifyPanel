@@ -32,7 +32,7 @@ def send_welcome(message):
 
 def start_admin(message):
 
-    bot.reply_to(message, _("Welcome to admin bot. Choose your action"), reply_markup=admin_keyboard_main())
+    bot.reply_to(message, _("bot.admin_welcome"), reply_markup=admin_keyboard_main())
 
 
 def get_admin_by_tgid(message):
@@ -136,14 +136,14 @@ def create_package(call):  # <- passes a CallbackQuery type object to your funct
                 days = int(splt[2])
                 count = int(splt[3])
                 domain = int(splt[4])
-                new_text = _("Please Wait...")
+                new_text = _("Please Wait")
                 bot.edit_message_text(new_text, call.message.chat.id, call.message.message_id, reply_markup=None)
                 domain = Domain.query.filter(Domain.id == domain).first()
                 from . import Usage
                 admin_id = admin.id
                 admin_name = admin.name
                 for i in range(1, count + 1):
-                    new_text = _("Please Wait...") + f' {i}/{count}'
+                    new_text = _("Please Wait") + f' {i}/{count}'
                     bot.edit_message_text(new_text, call.message.chat.id, call.message.message_id, reply_markup=None)
                     user = User(package_days=days, usage_limit_GB=gig, name=f"{admin_name} auto {i}  {datetime.date.today()}", added_by=admin_id)
                     db.session.add(user)

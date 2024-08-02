@@ -2,8 +2,12 @@
 msgid ""
 msgstr ""
 
-msgid " Search Settings"
-msgstr " تنظیمات جستجو"
+msgid ""
+" Search\n"
+"            Settings"
+msgstr ""
+" جستجو کردن\n"
+"تنظیمات"
 
 msgid "%(count)s records were successfully disabled."
 msgstr "%(count)s رکورد با موفقیت غیرفعال شد."
@@ -12,7 +16,7 @@ msgid "%(count)s records were successfully enabled."
 msgstr "%(count)s رکوردها با موفقیت فعال شد."
 
 msgid "%(expire_days)s days"
-msgstr ""
+msgstr "%(expire_days)s روز"
 
 msgid "%(placeholder)s"
 msgstr "%(placeholder)s"
@@ -162,14 +166,6 @@ msgstr ""
 "\n"
 "\n"
 "با آرزوی موفقیت. 🎉 🎉 🎉 "
-
-msgid "Define the admin mode. "
-msgstr "🥇🥈🥉 نوع ادمین را مشخص کنید"
-
-msgid "Define the user mode. Should the usage reset every month?"
-msgstr ""
-"حالت کاربر را تعریف کنید. کاربر غیرفعال (Disable) یا ریست حجم کاربر را مشخص "
-"کنید: (عدم ریست، ماهانه، هفتگی یا روزانه)"
 
 msgid "Delete?"
 msgstr "حذف؟"
@@ -346,15 +342,6 @@ msgstr ""
 msgid "HiddigyN"
 msgstr "HiddifyN <span class='badge badge-success'>پیشنهادی</span>"
 
-msgid ""
-"Hooray 🎉 🎉 🎉 \n"
-"Welcome to hiddifybot.\n"
-"Start by clicking the link on the panel or entering your UUID."
-msgstr ""
-"هورا !!! 🎉 🎉 🎉 \n"
-"به ربات هیدیفای خوش آمدید.\n"
-"برای شروع روی لینک مربوطه در پنل کلیک نموده یا UUID خود را وارد کنید."
-
 msgid "Hover the user to see the reason"
 msgstr "روی یوزر کلیک کنید تا دلیل آن را ببینید"
 
@@ -393,16 +380,6 @@ msgid ""
 msgstr ""
 "در حالت CDN، IP=%(domain_ip)s باید با ip=%(server_ip)s شما متفاوت باشد."
 
-msgid ""
-"In this section, you can add your domain. You need to add at least one "
-"domain in direct mode."
-msgstr ""
-"1️⃣ در این قسمت می توانید دامنه خود را اضافه کنید.\n"
-"<br>\n"
-"2️⃣اگر می‌خواهید احتمال داشتن IP کثیف را کاهش دهید، می‌توانید چندین سرور میانی اضافه کنید <a href='https://github.com/hiddify/hiddify-config/discussions/129'>بیشتر بخوانید</a>.\n"
-"<br>\n"
-"3️⃣ اگر IPv6 یا IPv4 های متعددی در پنل خود دارید، باید دامنه مرتبط با آنها را از طریق relay اضافه کنید."
-
 msgid "Incorrect Password"
 msgstr "⚠️ رمز عبور اشتباه است"
 
@@ -431,21 +408,6 @@ msgstr ""
 "به نظر می‌رسد شما درحال استفاده از دامنه پیش فرض (<span class='ltr d-inline-"
 "block'>%(domain)s</span>) هستید؛ این کار توصیه نمی‌شود. لطفا از بخش دامنه‌ها"
 " آن را حذف یا تغییر دهید."
-
-msgid ""
-"It seems that you have not created any users yet. Default user link: "
-"%(default_link)s"
-msgstr ""
-"شما هنوز هیچ کاربری ایجاد نکرده اید. لینک صفحه کاربری پیشفرض: "
-"%(default_link)s"
-
-msgid ""
-"It seems that you have not setup the system completely. <a class=\"btn btn-"
-"success\" href=\"%(quick_setup)s\">Click here</a> to complete setup."
-msgstr ""
-"به نظر می رسد که شما سیستم را به طور کامل تنظیم نکرده‌اید. برای تکمیل "
-"تنظیمات <a class='btn btn-success' href='%(quick_setup)s'>اینجا</a> را کلیک "
-"کنید."
 
 msgid "It will override the root admin to the current user"
 msgstr ""
@@ -546,7 +508,7 @@ msgstr "➖ لینک پنل"
 msgid "Parent Panel"
 msgstr "پنل مرکزی"
 
-msgid "Please Wait..."
+msgid "Please Wait"
 msgstr "لطفا صبر کنید..."
 
 msgid "Please click on %(install)s to save the user page."
@@ -567,17 +529,6 @@ msgstr ""
 msgid "Please create an issue on Github."
 msgstr "لطفاً یک مشکل در Github ایجاد کنید"
 
-msgid ""
-"Please note that your panel can be accessed only via <a "
-"href=\"%(adminlink)s\" class=\"btn btn-primary copy-"
-"link\">%(adminlink)s</a>. Please save this link."
-msgstr ""
-"توجه داشته باشید که تنها از طریق لینک زیر  می‌توانید به پنل مدیریت دسترسی داشته باشید. لطفا این لینک را کپی و برای استفاده‌های بعدی ذخیره نمایید.\n"
-"\n"
-"<p class='ltr'>\n"
-"<a href='%(adminlink)s' class='btn btn-secondary copy-link'><i class='fa-solid fa-copy'></i></a>\n"
-"<a href='%(adminlink)s' class='copy-link' style='word-break: break-all;'>%(adminlink)s</a></p>"
-
 msgid "Please select at least one file."
 msgstr "حداقل یک فایل انتخاب کنید"
 
@@ -585,7 +536,7 @@ msgid "Please select at least one record."
 msgstr "حداقل یک پوشه انتخاب کنید"
 
 msgid "Please select at least one user"
-msgstr ""
+msgstr "لطفا حداقل یک کاربر انتخاب کنید"
 
 msgid "Please select one of the following applications:"
 msgstr ""
@@ -650,8 +601,8 @@ msgstr "دامنه بازگشتی REALITY با نام سرور سازگار نی
 msgid "Release"
 msgstr "✅ پایدار"
 
-msgid "Remaining: "
-msgstr "زمان پایان بسته"
+msgid "Remaining about %(relative)s, exactly %(days)s days"
+msgstr "حدود %(relative)s و دقیقا %(days)s روز باقی مانده است"
 
 msgid "Remote nodes are not supported yet!"
 msgstr "گره های راه دور هنوز پشتیبانی نمی شوند!"
@@ -663,7 +614,7 @@ msgid "Reset Filters"
 msgstr "برگرداندن فیلتر ها به حالت اول"
 
 msgid "Reset Proxies"
-msgstr ""
+msgstr "بازنشانی پراکسی ها"
 
 msgid "Reset Usage Time:"
 msgstr "زمان صفر شدن حجم:"
@@ -707,6 +658,9 @@ msgstr "برای بازگرداندن کاربران از این گزینه اس
 msgid "Root"
 msgstr "ریشه"
 
+msgid "Russia"
+msgstr "روسیه"
+
 msgid "Save"
 msgstr "ذخیره"
 
@@ -723,7 +677,7 @@ msgid "Select record"
 msgstr "انتخاب رکورد"
 
 msgid "Seleted Users"
-msgstr ""
+msgstr "کاربران انتخاب شده"
 
 msgid "Send Message to User's Telegram"
 msgstr "📣 ارسال پیام به تلگرام کاربر"
@@ -752,6 +706,12 @@ msgstr "مرتب سازی بر اساس %(name)s"
 msgid "Start Date"
 msgstr "زمان شروع"
 
+msgid "Started %(days)s days ago"
+msgstr "از %(days)s روز پیش شروع شد"
+
+msgid "Started from %(relative)s"
+msgstr "از %(relative)s شروع شد"
+
 msgid "Status"
 msgstr "وضعیت"
 
@@ -760,13 +720,6 @@ msgstr "ثبت"
 
 msgid "Success"
 msgstr "موفقیت"
-
-msgid ""
-"Success! Please wait around 4 minutes to make sure everything is updated. "
-"During this time, please save your proxy links which are:"
-msgstr ""
-"⚠️ لطفا برای اینکه مطمئن شوید تغییرات به درستی اعمال شده، حدود 5 دقیقه صبر "
-"کنید. در این فاصله لینک‌های زیر را کپی کرده و در جایی برای خود ذخیره نمایید:"
 
 msgid ""
 "Success! Please wait around 5 minutes to make sure everything is updated."
@@ -780,9 +733,6 @@ msgstr "بات تلگرام"
 msgid "Temporary Short Link"
 msgstr "⏱️ لینک کوتاه موقت"
 
-msgid "The action done successfully. You can now leave this page."
-msgstr "✅ عملیات با موفقیت انجام شد. اکنون می توانید این صفحه را ترک کنید"
-
 msgid "The message has been sent."
 msgstr "پیام ارسال شده است."
 
@@ -793,10 +743,6 @@ msgid "The name shown in the configs for this domain."
 msgstr "نامی که در کانفیگ‌ها به جای دامنه نمایش داده شود"
 
 msgid ""
-"The page has been moved to a new link. Please copy and save the new link."
-msgstr "صفحه به لینک جدید منتقل شد. لطفا لینک جدید را کپی و ذخیره کنید."
-
-msgid ""
 "This can be used for giving your users a permanent non blockable links."
 msgstr ""
 "این می تواند برای دادن لینک های غیرقابل مسدود و دائمی به کاربران شما استفاده"
@@ -804,11 +750,6 @@ msgstr ""
 
 msgid "This domain does not exist in the panel!"
 msgstr "این دامنه در پنل وجود ندارد!"
-
-msgid ""
-"This version of hiddify panel is outdated. Please update it from admin area."
-msgstr ""
-"⚠️ این نسخه هیدیفای قدیمی شده است. لطفا از پنل ادمین آن را به روزرسانی کنید"
 
 msgid "Today Usage"
 msgstr "استفاده امروز"
@@ -837,11 +778,6 @@ msgstr "یوزر شما فعال شد"
 msgid "User is inactive"
 msgstr "کاربر غیر فعال است"
 
-msgid ""
-"User usage will be updated every 6 minutes. To update it now click <a "
-"href=\"%(link)s\" class=\"btn btn-info\">here</a>"
-msgstr ""
-
 msgid "V2rayNG"
 msgstr ""
 "نرم افزار جایگزین  v2rayNG  <button class='btn btn-sm btn-default' onclick='show_video('android-v2rayng')'><i class='fa-solid fa-question'></i> </button>\n"
@@ -863,11 +799,11 @@ msgstr "ℹ️ وصل کردن حساب کاربری به تلگرام"
 msgid "Welcome %(user)s"
 msgstr "%(user)s عزیز خوش آمدی"
 
-msgid "Welcome to admin bot. Choose your action"
-msgstr "به ربات ادمین خوش آمدید. عملیات مورد نظر را انتخاب کنید."
-
 msgid "Why Going to Premium?"
 msgstr "مجوز استفاده از هیدیفای چگونه است؟"
+
+msgid "Will Start in %(days)s days"
+msgstr "از %(days)s روز دیگر شروع خواهد شد"
 
 msgid "Windows"
 msgstr "ویندوز"
@@ -902,15 +838,6 @@ msgstr ""
 "دانلود کرده‌اید.) بازگردانی نمایید."
 
 msgid ""
-"You can select the configs with which domains show be shown in the user "
-"area. If you select all, automatically, all the new domains will be added "
-"for each users."
-msgstr ""
-"مشخص کنید کاربرانی که با این دامنه، پنل کاربری را مشاهده می‌کنند، کانفیگ‌های مربوط به کدام دامنه‌ها را مشاهده کنند.\n"
-"<br>\n"
-"پیشنهاد: برای یک دامنه با IP فیلتر نشده و متفاوت با بقیه، همه دامنه های دیگر (به جز دامنه فعلی) را انتخاب کنید. در نتیجه از آنجایی که از این IP برای فیلترشکن استفاده نمی‌شود و یک وبسایت ساده است، این دامنه و آی پی هرگز مسدود نمی‌شود و کاربران شما به راحتی می توانند پروفایل های جدید را به روز کنند."
-
-msgid ""
 "You have too much users! You can have only %(active)s active users and "
 "%(total)s users"
 msgstr ""
@@ -926,13 +853,6 @@ msgid ""
 msgstr ""
 "شما باید بدون VPN از این صفحه بازدید کنید کشور شما =%(your_country)s\n"
 "انتظار می رود=%(expected_country)s"
-
-msgid ""
-"Your domains changed. Please do not forget to copy admin links, otherwise "
-"you can not access to the panel anymore."
-msgstr ""
-"⚠️ دامنه های شما تغییر کرد. لطفا کپی لینک های مدیریت را فراموش نکنید، در غیر"
-" این صورت دیگر نمی توانید به پنل دسترسی داشته باشید"
 
 msgid ""
 "Your hiddify instance information \n"
@@ -968,6 +888,9 @@ msgstr "مدیریت"
 msgid "admin.Actions:apply_configs"
 msgstr "اعمال تنظیمات"
 
+msgid "admin.action_done_sucess"
+msgstr "✅ عملیات با موفقیت انجام شد. اکنون می توانید این صفحه را ترک کنید"
+
 msgid "admin.actions.apply_configs"
 msgstr "اعمال تغییرات"
 
@@ -994,6 +917,15 @@ msgstr "اعمال تنظیمات"
 
 msgid "admin.config.title"
 msgstr "تنظیمات"
+
+msgid "admin.define_mode"
+msgstr "🥇🥈🥉 نوع ادمین را مشخص کنید"
+
+msgid "admin.incomplete_setup_warning"
+msgstr ""
+"به نظر می رسد که شما سیستم را به طور کامل تنظیم نکرده‌اید. برای تکمیل "
+"تنظیمات <a class='btn btn-success' href='%(quick_setup)s'>اینجا</a> را کلیک "
+"کنید."
 
 msgid "admin.menu.api"
 msgstr "API"
@@ -1022,8 +954,13 @@ msgstr "تلگرام"
 msgid "admin.menu.user"
 msgstr "کاربران"
 
+msgid "admin.no_user_warning"
+msgstr ""
+"شما هنوز هیچ کاربری ایجاد نکرده اید. لینک صفحه کاربری پیشفرض: "
+"%(default_link)s"
+
 msgid "admin.proxy.detailed_config"
-msgstr "⚙️ تنظیمات دقیق"
+msgstr "⚙️ تنظیمات دقیق: فقط کانفیگ های فعال نمایش داده می‌شود."
 
 msgid "admin.proxy.global_config"
 msgstr "⚙️ تنظیمات عمومی"
@@ -1036,6 +973,24 @@ msgstr ""
 "آی‌پی‌های سرور شما عبارتند از: <div >IPv4: %(ipv4)s <br> IPv6: %(ipv6)s\n"
 "</div>\n"
 "دامنه یا زیر دامنه خود را با این آی‌پی‌ها تنظیم کنید و سپس دامنه یا زیر دامنه تنظیم شده را در کادر زیر وارد کنید."
+
+msgid "admin.save_panel_link"
+msgstr ""
+"توجه داشته باشید که تنها از طریق لینک زیر  می‌توانید به پنل مدیریت دسترسی داشته باشید. لطفا این لینک را کپی و برای استفاده‌های بعدی ذخیره نمایید.\n"
+"\n"
+"<p class='ltr'>\n"
+"<a href='%(adminlink)s' class='btn btn-secondary copy-link'><i class='fa-solid fa-copy'></i></a>\n"
+"<a href='%(adminlink)s' class='copy-link' style='word-break: break-all;'>%(adminlink)s</a></p>"
+
+msgid "admin.waiting_for_update"
+msgstr ""
+"⚠️ لطفا برای اینکه مطمئن شوید تغییرات به درستی اعمال شده، حدود 5 دقیقه صبر "
+"کنید. در این فاصله لینک‌های زیر را کپی کرده و در جایی برای خود ذخیره نمایید:"
+
+msgid "adminuser.force_update_usage"
+msgstr ""
+"استفاده کاربر هر 6 دقیقه یکبار به روز می شود. برای به روز رسانی آن اکنون <a "
+"href=\"%(link)s\" class=\"btn btn-info\">اینجا را</a> کلیک کنید"
 
 msgid "all"
 msgstr "همه"
@@ -1051,12 +1006,16 @@ msgstr "FoXray"
 
 msgid "app.hiddify-clash-android.description"
 msgstr ""
+"Hiddify Clash Android یکی از برنامه های کلاینت ما است که دیگر به روز نمی "
+"شود. "
 
 msgid "app.hiddify-clash-android.title"
 msgstr "Hiddify Clash"
 
 msgid "app.hiddify-clash-desktop.description"
 msgstr ""
+"Hiddify Clash Desktop یکی از برنامه های کلاینت ما است که دیگر به روز نمی "
+"شود. "
 
 msgid "app.hiddify-clash-desktop.title"
 msgstr "Hiddify Clash"
@@ -1086,7 +1045,7 @@ msgid "app.loon.title"
 msgstr "Loon"
 
 msgid "app.nekobox.description"
-msgstr ""
+msgstr " Nekobox یک کلاینت مبتنی بر Sing-box است "
 
 msgid "app.nekobox.title"
 msgstr "NekoBox"
@@ -1121,6 +1080,15 @@ msgstr "خودکار"
 msgid "auto_cdn_ip"
 msgstr "☑️ انتخاب کننده آی‌پی CDN به صورت خودکار"
 
+msgid "bot.admin_welcome"
+msgstr "به ربات ادمین خوش آمدید. عملیات مورد نظر را انتخاب کنید."
+
+msgid "bot.welcome"
+msgstr ""
+"هورا !!! 🎉 🎉 🎉 \n"
+"به ربات هیدیفای خوش آمدید.\n"
+"برای شروع روی لینک مربوطه در پنل کلیک نموده یا UUID خود را وارد کنید."
+
 msgid "cdn"
 msgstr "🔀 سی‌دی‌ان (پروکسی کلودفلر و ...)"
 
@@ -1148,29 +1116,29 @@ msgstr "بستن"
 msgid "cloudflare.error"
 msgstr ""
 
-msgid "config.Domain already used"
+msgid "config.Domain_already_used"
 msgstr "دامنه در بخش دامنه‌ها وجود دارد. از دامنه دیگری استفاده کنید."
 
-msgid "config.Invalid brand link"
-msgstr "لینک پشتیبانی نامعتبر است. لطفا لینک را با فرمت معتبر وارد کنید."
-
-msgid "config.Invalid domain"
-msgstr "خطا! دامنه نامعتبر! فرمت دامنه باید مثل www.google.com باشد."
-
-msgid "config.Invalid port"
-msgstr "پورت نامعتبر است. اعداد باید با کاما از هم جدا شود، مثلاً 1000,1001"
-
-msgid "config.Invalid proxy path"
-msgstr "مسیر پروکسی نامعتبر است. باید رشته متن asci باشد. ( شامل a-z A-Z 0-9)"
-
-msgid "config.Invalid telegram bot token"
-msgstr "توکن ربات تلگرام نامعتبر است"
-
-msgid "config.Invalid! The pattern is number-number"
+msgid "config.Invalid_The_pattern_is_number-number"
 msgstr "⚠️ الگو عدد-عدد است ⚠️"
 
-msgid "config.Invalid! it should be a number only"
+msgid "config.Invalid_brand_link"
+msgstr "لینک پشتیبانی نامعتبر است. لطفا لینک را با فرمت معتبر وارد کنید."
+
+msgid "config.Invalid_domain"
+msgstr "خطا! دامنه نامعتبر! فرمت دامنه باید مثل www.google.com باشد."
+
+msgid "config.Invalid_it_should_be_a_number_only"
 msgstr "⚠️ این قسمت باید فقط یک عدد باشد ⚠️"
+
+msgid "config.Invalid_port"
+msgstr "پورت نامعتبر است. اعداد باید با کاما از هم جدا شود، مثلاً 1000,1001"
+
+msgid "config.Invalid_proxy_path"
+msgstr "مسیر پروکسی نامعتبر است. باید رشته متن asci باشد. ( شامل a-z A-Z 0-9)"
+
+msgid "config.Invalid_telegram_bot_token"
+msgstr "توکن ربات تلگرام نامعتبر است"
 
 msgid "config.admin.description"
 msgstr "تنظیمات عمومی بخش مدیریت"
@@ -1479,6 +1447,10 @@ msgstr "⬆️ آپلود (mbps) Hysteria"
 msgid "config.invalid-pattern-for-warp-sites"
 msgstr "⚠️ سایت وارد شده برای وارپ با الگوی تعیین شده مطابقت ندارد"
 
+msgid "config.invalid_uuid"
+msgstr ""
+"رمز UUID نامعتبر است. به عنوان مثال: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6"
+
 msgid "config.is_parent.description"
 msgstr "-"
 
@@ -1673,6 +1645,12 @@ msgstr "باید تصادفی باشد"
 
 msgid "config.path_httpupgrade.label"
 msgstr "ℹ️ مسیر ارتقاء HTTP"
+
+msgid "config.path_splithttp.description"
+msgstr "این گزینه مسیر را برای Split HTTP تعریف می کند"
+
+msgid "config.path_splithttp.label"
+msgstr "مسیر برای Split HTTP"
 
 msgid "config.path_ss.description"
 msgstr "مسیر شدوساکس در لینکها"
@@ -1898,6 +1876,12 @@ msgstr ""
 msgid "config.speed_test.label"
 msgstr "🚀 تست سرعت"
 
+msgid "config.splithttp_enable.description"
+msgstr "این پروتکل اطلاعات را در کانال های جداگانه ارسال و دریافت می کند "
+
+msgid "config.splithttp_enable.label"
+msgstr "🈁 Split HTTP"
+
 msgid "config.ssfaketls.description"
 msgstr ""
 "شادوساکس FakeTLS یک روش مبهم سازی ساده هست که دیتا را در بسته  TLS کپسوله "
@@ -2015,7 +1999,7 @@ msgstr ""
 " می کند."
 
 msgid "config.sub_full_xray_json_enable.label"
-msgstr "لینک پیکربندی کامل XRay"
+msgstr "⚙️ لینک پیکربندی کامل XRay"
 
 msgid "config.sub_singbox_ssh_enable.description"
 msgstr ""
@@ -2342,10 +2326,6 @@ msgstr "فعال کردن پروتکل XTLS"
 msgid "config.xtls_enable.label"
 msgstr "🟢 XTLS"
 
-msgid "config.invalid uuid"
-msgstr ""
-"رمز UUID نامعتبر است. به عنوان مثال: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6"
-
 msgid "copy"
 msgstr "کپی"
 
@@ -2363,6 +2343,11 @@ msgstr "➡️ مستقیم (بدون واسطه)"
 
 msgid "domain.cdn"
 msgstr "سی‌دی‌ان"
+
+msgid "domain.changed_in_domain_warning"
+msgstr ""
+"⚠️ دامنه های شما تغییر کرد. لطفا کپی لینک های مدیریت را فراموش نکنید، در غیر"
+" این صورت دیگر نمی توانید به پنل دسترسی داشته باشید"
 
 msgid "domain.description"
 msgstr ""
@@ -2383,11 +2368,28 @@ msgstr ""
 msgid "domain.domain_fronting.label"
 msgstr "🔒 فعال کردن دامین فرانتینگ در اتصال TLS"
 
+msgid "domain.empty.allowed_for_fake_only"
+msgstr ""
+
+msgid "domain.intro"
+msgstr ""
+
 msgid "domain.ip"
 msgstr "آی‌پی"
 
 msgid "domain.mode"
 msgstr "حالت"
+
+msgid "domain.reality.asn_issue"
+msgstr ""
+"دامنه انتخاب شده برای REALITY در همان ASN نیست. برای استفاده بهتر از این "
+"پروتکل، بهتر است یک دامنه در همان ASN پیدا کنید."
+
+msgid "domain.show_domains_description"
+msgstr ""
+"مشخص کنید کاربرانی که با این دامنه، پنل کاربری را مشاهده می‌کنند، کانفیگ‌های مربوط به کدام دامنه‌ها را مشاهده کنند.\n"
+"<br>\n"
+"پیشنهاد: برای یک دامنه با IP فیلتر نشده و متفاوت با بقیه، همه دامنه های دیگر (به جز دامنه فعلی) را انتخاب کنید. در نتیجه از آنجایی که از این IP برای فیلترشکن استفاده نمی‌شود و یک وبسایت ساده است، این دامنه و آی پی هرگز مسدود نمی‌شود و کاربران شما به راحتی می توانند پروفایل های جدید را به روز کنند."
 
 msgid "download"
 msgstr "دانلود مستقیم"
@@ -2398,7 +2400,7 @@ msgstr "🆎 گمراه کننده (Fake)"
 msgid "gRPC"
 msgstr "➿ gRPC"
 
-msgid "gRPC is a H2 based protocol. Maybe it is faster for you!"
+msgid "grpc-proxy.description"
 msgstr "gRPC ℹ️ یک پروتکل مبتنی بر H2 است. شاید برای شما سریعتر باشد!"
 
 msgid "in parent panel"
@@ -2455,6 +2457,9 @@ msgstr "هیدیفای منیجر"
 msgid "monthly"
 msgstr "🗓️ ماهانه"
 
+msgid "move_to_new_link"
+msgstr "صفحه به لینک جدید منتقل شد. لطفا لینک جدید را کپی و ذخیره کنید."
+
 msgid "next"
 msgstr "بعدی"
 
@@ -2488,6 +2493,10 @@ msgstr "🔙 حالت مستقیم قدیمی (برای تروجان TCP، VLess
 msgid "open"
 msgstr "باز کردن"
 
+msgid "outdated_panel"
+msgstr ""
+"⚠️ این نسخه هیدیفای قدیمی شده است. لطفا از پنل ادمین آن را به روزرسانی کنید"
+
 msgid "package days?"
 msgstr "تعداد روز؟"
 
@@ -2503,8 +2512,18 @@ msgstr ""
 msgid "previous"
 msgstr "قبلی"
 
-msgid "quicksetup.setlang.error"
-msgstr "خطایی در تغییر زبان رخ داد"
+msgid "quicksetup.cdn_domain.description"
+msgstr ""
+"تنظیم دامنه CDN اختیاری است. فقط در صورتی از آن استفاده کنید که قبلاً یک CDN"
+" را پیکربندی کرده باشید."
+
+msgid "quicksetup.cdn_domain.label"
+msgstr "دامنه CDN"
+
+msgid "quicksetup.proxy_cat.description"
+msgstr ""
+"مرحله آخر: لطفا پراکسی های مورد نظر خود را انتخاب کنید. لطفا حداقل تا حد "
+"امکان را انتخاب کنید."
 
 msgid "quicksetup.setlang.success"
 msgstr "تغییر زبان با موفقیت انجام شد"
@@ -2520,13 +2539,6 @@ msgstr "جستجو"
 
 msgid "see the log in the bellow screen"
 msgstr "📑 لاگ سیستم  را می‌توانید در صفحه زیر ببینید:"
-
-msgid ""
-"selected domain for REALITY is not in the same ASN. To better use of the "
-"protocol, it is better to find a domain in the same ASN."
-msgstr ""
-"دامنه انتخاب شده برای REALITY در همان ASN نیست. برای استفاده بهتر از این "
-"پروتکل، بهتر است یک دامنه در همان ASN پیدا کنید."
 
 msgid "serverssh.password-login.warning"
 msgstr ""
@@ -2560,6 +2572,11 @@ msgstr "UUID"
 
 msgid "user.current_usage_GB"
 msgstr "حجم مصرفی (گیگابایت)"
+
+msgid "user.define_mode"
+msgstr ""
+"حالت کاربر را تعریف کنید. کاربر غیرفعال (Disable) یا ریست حجم کاربر را مشخص "
+"کنید: (عدم ریست، ماهانه، هفتگی یا روزانه)"
 
 msgid "user.expiry_time"
 msgstr "انقضا (روز)"
@@ -2755,6 +2772,12 @@ msgstr ""
 msgid "user.home.qr-code.display"
 msgstr "نمایش کیو آر کد"
 
+msgid "user.home.select_os"
+msgstr "لطفا سیستم عامل خود را انتخاب کنید."
+
+msgid "user.home.select_tool"
+msgstr "لطفا یکی از موارد زیر را انتخاب کنید."
+
 msgid "user.home.share-title"
 msgstr "اشتراک‌گذاری"
 
@@ -2872,12 +2895,6 @@ msgstr "⌛️ محدودیت حجم (گیگابایت)"
 
 msgid "user.user_links"
 msgstr "لینک‌های کاربر"
-
-msgid "user.home.select os"
-msgstr "لطفا سیستم عامل خود را انتخاب کنید."
-
-msgid "user.home.select tool"
-msgstr "لطفا یکی از موارد زیر را انتخاب کنید."
 
 msgid "weekly"
 msgstr "📅 هفتگی"

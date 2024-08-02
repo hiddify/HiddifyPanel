@@ -26,7 +26,8 @@
 
 
 <div class="card">
-    <div class="card-header"><input id="search_settings" type="text" class="form-control" placeholder="{{_(" Search Settings")}}">
+    <div class="card-header"><input id="search_settings" type="text" class="form-control" placeholder="{{_(" Search
+            Settings")}}">
     </div>
     <div class="card-body">
         <div class="row">
@@ -81,6 +82,133 @@
 
 {% block tail %}
 {{super()}}
+<link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/42.0.2/ckeditor5.css">
+<style>
+    .ck.ck-editor {
+        color: black !important;
+    }
+</style>
+<script src="https://cdn.ckeditor.com/ckeditor5/42.0.2/ckeditor5.js"></script>
+
+<script type="importmap">
+    {
+        "imports": {
+            "ckeditor5": "https://cdn.ckeditor.com/ckeditor5/42.0.2/ckeditor5.js",
+            "ckeditor5/": "https://cdn.ckeditor.com/ckeditor5/42.0.2/"
+        }
+    }
+</script>
+<script type="module">
+    import {
+        ClassicEditor,
+        AccessibilityHelp,
+        Autosave,
+        BalloonToolbar,
+        Bold,
+        Code,
+        Essentials,
+        FontBackgroundColor,
+        FontColor,
+        FontFamily,
+        FontSize,
+        FullPage,
+        GeneralHtmlSupport,
+        Highlight,
+        HtmlComment,
+        HtmlEmbed,
+        Italic,
+        Paragraph,
+        SelectAll,
+        ShowBlocks,
+        SourceEditing,
+        SpecialCharacters,
+        Strikethrough,
+        ImageBlock,
+        ImageInsert,
+        ImageInsertViaUrl,
+        ImageToolbar,
+
+        Underline,
+        Undo
+    } from 'ckeditor5';
+
+    const editorConfig = {
+        toolbar: {
+            items: [
+                'undo',
+                'redo',
+                '|',
+                'bold',
+                'italic',
+                'underline',
+                'strikethrough',
+                'code',
+                'insertImage',
+                '|',
+                'fontSize',
+                'fontColor',
+                'fontBackgroundColor',
+                '|',
+                'sourceEditing',
+
+            ],
+            shouldNotGroupWhenFull: false
+        },
+        plugins: [
+            AccessibilityHelp,
+            Autosave,
+            BalloonToolbar,
+            Bold,
+            Code,
+            Essentials,
+            FontBackgroundColor,
+            FontColor,
+            FontFamily,
+            FontSize,
+            FullPage,
+            GeneralHtmlSupport,
+            Highlight,
+            HtmlComment,
+            HtmlEmbed,
+            Italic,
+            Paragraph,
+            SelectAll,
+            ShowBlocks,
+            SourceEditing,
+            ImageBlock,
+            ImageInsertViaUrl,
+
+            Strikethrough,
+            Underline,
+            Undo
+        ],
+        balloonToolbar: ['bold', 'italic'],
+        fontFamily: {
+            supportAllValues: true
+        },
+        fontSize: {
+            options: [10, 12, 14, 'default', 18, 20, 22],
+            supportAllValues: true
+        },
+        htmlSupport: {
+            allow: [
+                {
+                    name: /^.*$/,
+                    styles: true,
+                    attributes: true,
+                    classes: true
+                }
+            ]
+        },
+
+        placeholder: 'Type or paste your content here!'
+    };
+
+    ClassicEditor.create(document.querySelector('.ckeditor'), editorConfig);
+
+
+</script>
+
 <script>
     // $("fieldset .form-group").hide()
 

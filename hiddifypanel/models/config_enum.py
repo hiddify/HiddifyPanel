@@ -64,8 +64,8 @@ class ConfigCategory(StrEnum):
 
 
 class ApplyMode(StrEnum):
-    apply = auto()
-    restart = auto()
+    apply_config = auto()
+    reinstall = auto()
     nothing = auto()
 
 
@@ -89,7 +89,7 @@ class ConfigEnum(metaclass=FastEnum):
     # category: ConfigCategory
     __slots__ = ('name', 'value', 'category', 'apply_mode', 'type', 'show_in_parent', 'hide_in_virtual_child')
 
-    def __init__(self, category: ConfigCategory, apply_mode: ApplyMode = ApplyMode.apply, ctype=type, show_in_parent: bool = True, hide_in_virtual_child=False, name=auto):
+    def __init__(self, category: ConfigCategory, apply_mode: ApplyMode = ApplyMode.apply_config, ctype=type, show_in_parent: bool = True, hide_in_virtual_child=False, name=auto):
         self.value = name
         self.name = name
         self.category = category
@@ -101,41 +101,41 @@ class ConfigEnum(metaclass=FastEnum):
     @classmethod
     def dbvalues(cls):
         return {c.name: c for c in ConfigEnum}
-    create_easysetup_link = _BoolConfigDscr(ConfigCategory.hidden, ApplyMode.apply, hide_in_virtual_child=True)
-    wireguard_enable = _BoolConfigDscr(ConfigCategory.wireguard, ApplyMode.apply, hide_in_virtual_child=True)
-    wireguard_port = _StrConfigDscr(ConfigCategory.wireguard, ApplyMode.apply, hide_in_virtual_child=True)
-    wireguard_ipv6 = _StrConfigDscr(ConfigCategory.hidden, ApplyMode.apply, hide_in_virtual_child=True)
-    wireguard_ipv4 = _StrConfigDscr(ConfigCategory.hidden, ApplyMode.apply, hide_in_virtual_child=True)
-    wireguard_private_key = _StrConfigDscr(ConfigCategory.hidden, ApplyMode.apply, hide_in_virtual_child=True)
-    wireguard_public_key = _StrConfigDscr(ConfigCategory.hidden, ApplyMode.apply, hide_in_virtual_child=True)
-    wireguard_noise_trick = _StrConfigDscr(ConfigCategory.wireguard, ApplyMode.apply)
+    create_easysetup_link = _BoolConfigDscr(ConfigCategory.hidden, ApplyMode.nothing, hide_in_virtual_child=True)
+    wireguard_enable = _BoolConfigDscr(ConfigCategory.wireguard, ApplyMode.reinstall, hide_in_virtual_child=True)
+    wireguard_port = _StrConfigDscr(ConfigCategory.wireguard, ApplyMode.apply_config, hide_in_virtual_child=True)
+    wireguard_ipv6 = _StrConfigDscr(ConfigCategory.hidden, ApplyMode.apply_config, hide_in_virtual_child=True)
+    wireguard_ipv4 = _StrConfigDscr(ConfigCategory.hidden, ApplyMode.apply_config, hide_in_virtual_child=True)
+    wireguard_private_key = _StrConfigDscr(ConfigCategory.hidden, ApplyMode.apply_config, hide_in_virtual_child=True)
+    wireguard_public_key = _StrConfigDscr(ConfigCategory.hidden, ApplyMode.apply_config, hide_in_virtual_child=True)
+    wireguard_noise_trick = _StrConfigDscr(ConfigCategory.wireguard, ApplyMode.apply_config)
 
     ssh_server_redis_url = _StrConfigDscr(ConfigCategory.hidden, hide_in_virtual_child=True)
-    ssh_server_port = _StrConfigDscr(ConfigCategory.ssh, ApplyMode.apply, hide_in_virtual_child=True)
-    ssh_server_enable = _BoolConfigDscr(ConfigCategory.ssh, ApplyMode.apply)
+    ssh_server_port = _StrConfigDscr(ConfigCategory.ssh, ApplyMode.apply_config, hide_in_virtual_child=True)
+    ssh_server_enable = _BoolConfigDscr(ConfigCategory.ssh, ApplyMode.reinstall)
     first_setup = _BoolConfigDscr(ConfigCategory.hidden)
-    core_type = _StrConfigDscr(ConfigCategory.advanced, ApplyMode.apply, hide_in_virtual_child=True)
-    warp_enable = _BoolConfigDscr(ConfigCategory.hidden, ApplyMode.restart, hide_in_virtual_child=True)
-    warp_mode = _StrConfigDscr(ConfigCategory.warp, ApplyMode.restart, hide_in_virtual_child=True)
-    warp_plus_code = _StrConfigDscr(ConfigCategory.warp, ApplyMode.apply, hide_in_virtual_child=True)
-    warp_sites = _StrConfigDscr(ConfigCategory.warp, ApplyMode.apply, hide_in_virtual_child=True)
-    dns_server = _StrConfigDscr(ConfigCategory.general, ApplyMode.apply, hide_in_virtual_child=True)
-    reality_fallback_domain = _StrConfigDscr(ConfigCategory.hidden, ApplyMode.apply)  # removed
-    reality_server_names = _StrConfigDscr(ConfigCategory.hidden, ApplyMode.apply)  # removed
-    reality_short_ids = _StrConfigDscr(ConfigCategory.reality, ApplyMode.apply, hide_in_virtual_child=True)
-    reality_private_key = _StrConfigDscr(ConfigCategory.reality, ApplyMode.apply, hide_in_virtual_child=True)
-    reality_public_key = _StrConfigDscr(ConfigCategory.reality, ApplyMode.apply, hide_in_virtual_child=True)
-    reality_port = _StrConfigDscr(ConfigCategory.reality, ApplyMode.apply, hide_in_virtual_child=True)
+    core_type = _StrConfigDscr(ConfigCategory.advanced, ApplyMode.reinstall, hide_in_virtual_child=True)
+    warp_enable = _BoolConfigDscr(ConfigCategory.hidden, ApplyMode.reinstall, hide_in_virtual_child=True)
+    warp_mode = _StrConfigDscr(ConfigCategory.warp, ApplyMode.apply_config, hide_in_virtual_child=True)
+    warp_plus_code = _StrConfigDscr(ConfigCategory.warp, ApplyMode.apply_config, hide_in_virtual_child=True)
+    warp_sites = _StrConfigDscr(ConfigCategory.warp, ApplyMode.apply_config, hide_in_virtual_child=True)
+    dns_server = _StrConfigDscr(ConfigCategory.general, ApplyMode.apply_config, hide_in_virtual_child=True)
+    reality_fallback_domain = _StrConfigDscr(ConfigCategory.hidden, ApplyMode.apply_config)  # removed
+    reality_server_names = _StrConfigDscr(ConfigCategory.hidden, ApplyMode.apply_config)  # removed
+    reality_short_ids = _StrConfigDscr(ConfigCategory.reality, ApplyMode.apply_config, hide_in_virtual_child=True)
+    reality_private_key = _StrConfigDscr(ConfigCategory.reality, ApplyMode.apply_config, hide_in_virtual_child=True)
+    reality_public_key = _StrConfigDscr(ConfigCategory.reality, ApplyMode.apply_config, hide_in_virtual_child=True)
+    reality_port = _StrConfigDscr(ConfigCategory.reality, ApplyMode.apply_config, hide_in_virtual_child=True)
 
     restls1_2_domain = _StrConfigDscr(ConfigCategory.hidden)
     restls1_3_domain = _StrConfigDscr(ConfigCategory.hidden)
     show_usage_in_sublink = _BoolConfigDscr(ConfigCategory.general)
-    cloudflare = _StrConfigDscr(ConfigCategory.too_advanced, ApplyMode.apply)
+    cloudflare = _StrConfigDscr(ConfigCategory.too_advanced)
     license = _StrConfigDscr(ConfigCategory.hidden)
-    country = _StrConfigDscr(ConfigCategory.general, ApplyMode.restart, hide_in_virtual_child=True)
+    country = _StrConfigDscr(ConfigCategory.general, ApplyMode.reinstall, hide_in_virtual_child=True)
     package_mode = _StrConfigDscr(ConfigCategory.advanced, hide_in_virtual_child=True)
     utls = _StrConfigDscr(ConfigCategory.advanced)
-    telegram_bot_token = _StrConfigDscr(ConfigCategory.telegram, ApplyMode.apply, hide_in_virtual_child=True)
+    telegram_bot_token = _StrConfigDscr(ConfigCategory.telegram, hide_in_virtual_child=True)
 
     # region child-parent
     # deprecated
@@ -147,10 +147,10 @@ class ConfigEnum(metaclass=FastEnum):
 
     # the panel mode could be one of these: "parent", "child", "standalone"
     # this config value would be 'standalone' by default. and would be set by panel itself
-    panel_mode = _TypedConfigDscr(PanelMode, ConfigCategory.hidden, ApplyMode.nothing, hide_in_virtual_child=True)
+    panel_mode = _TypedConfigDscr(PanelMode, ConfigCategory.hidden, hide_in_virtual_child=True)
     # endregion
 
-    log_level = _TypedConfigDscr(LogLevel, ConfigCategory.hidden, ApplyMode.restart, hide_in_virtual_child=True)
+    log_level = _TypedConfigDscr(LogLevel, ConfigCategory.hidden, ApplyMode.reinstall, hide_in_virtual_child=True)
 
     unique_id = _StrConfigDscr(ConfigCategory.hidden)
     last_hash = _StrConfigDscr(ConfigCategory.hidden)
@@ -160,110 +160,113 @@ class ConfigEnum(metaclass=FastEnum):
     admin_secret = _StrConfigDscr(ConfigCategory.hidden)  # removed
 
     # tls
-    tls_ports = _StrConfigDscr(ConfigCategory.tls, ApplyMode.apply)
+    tls_ports = _StrConfigDscr(ConfigCategory.tls, ApplyMode.apply_config)
 
-    tls_fragment_enable = _BoolConfigDscr(ConfigCategory.tls_trick, ApplyMode.apply)
-    tls_fragment_size = _StrConfigDscr(ConfigCategory.tls_trick, ApplyMode.apply)
-    tls_fragment_sleep = _StrConfigDscr(ConfigCategory.tls_trick, ApplyMode.apply)
-    tls_mixed_case = _BoolConfigDscr(ConfigCategory.tls_trick, ApplyMode.apply)
-    tls_padding_enable = _BoolConfigDscr(ConfigCategory.tls_trick, ApplyMode.apply)
-    tls_padding_length = _StrConfigDscr(ConfigCategory.tls_trick, ApplyMode.apply)
+    tls_fragment_enable = _BoolConfigDscr(ConfigCategory.tls_trick)
+    tls_fragment_size = _StrConfigDscr(ConfigCategory.tls_trick)
+    tls_fragment_sleep = _StrConfigDscr(ConfigCategory.tls_trick)
+    tls_mixed_case = _BoolConfigDscr(ConfigCategory.tls_trick)
+    tls_padding_enable = _BoolConfigDscr(ConfigCategory.tls_trick, ApplyMode.apply_config)
+    tls_padding_length = _StrConfigDscr(ConfigCategory.tls_trick, ApplyMode.apply_config)
 
     # mux
-    mux_enable = _BoolConfigDscr(ConfigCategory.mux, ApplyMode.apply)
-    mux_protocol = _StrConfigDscr(ConfigCategory.mux, ApplyMode.apply)
-    mux_max_connections = _IntConfigDscr(ConfigCategory.mux, ApplyMode.apply)
-    mux_min_streams = _IntConfigDscr(ConfigCategory.mux, ApplyMode.apply)
-    mux_max_streams = _IntConfigDscr(ConfigCategory.mux, ApplyMode.apply)
-    mux_padding_enable = _BoolConfigDscr(ConfigCategory.mux, ApplyMode.apply)
-    mux_brutal_enable = _BoolConfigDscr(ConfigCategory.mux, ApplyMode.apply)
-    mux_brutal_up_mbps = _IntConfigDscr(ConfigCategory.mux, ApplyMode.apply)
-    mux_brutal_down_mbps = _IntConfigDscr(ConfigCategory.mux, ApplyMode.apply)
+    mux_enable = _BoolConfigDscr(ConfigCategory.mux, ApplyMode.apply_config)
+    mux_protocol = _StrConfigDscr(ConfigCategory.mux, ApplyMode.apply_config)
+    mux_max_connections = _IntConfigDscr(ConfigCategory.mux, ApplyMode.apply_config)
+    mux_min_streams = _IntConfigDscr(ConfigCategory.mux, ApplyMode.apply_config)
+    mux_max_streams = _IntConfigDscr(ConfigCategory.mux, ApplyMode.apply_config)
+    mux_padding_enable = _BoolConfigDscr(ConfigCategory.mux, ApplyMode.apply_config)
+    mux_brutal_enable = _BoolConfigDscr(ConfigCategory.mux, ApplyMode.apply_config)
+    mux_brutal_up_mbps = _IntConfigDscr(ConfigCategory.mux, ApplyMode.apply_config)
+    mux_brutal_down_mbps = _IntConfigDscr(ConfigCategory.mux, ApplyMode.apply_config)
 
-    http_ports = _StrConfigDscr(ConfigCategory.http, ApplyMode.apply)
-    kcp_ports = _StrConfigDscr(ConfigCategory.hidden, ApplyMode.apply)
-    kcp_enable = _BoolConfigDscr(ConfigCategory.hidden, ApplyMode.apply)
-    decoy_domain = _StrConfigDscr(ConfigCategory.general, ApplyMode.apply, hide_in_virtual_child=True)
+    http_ports = _StrConfigDscr(ConfigCategory.http, ApplyMode.apply_config)
+    kcp_ports = _StrConfigDscr(ConfigCategory.hidden, ApplyMode.apply_config)
+    kcp_enable = _BoolConfigDscr(ConfigCategory.hidden, ApplyMode.apply_config)
+    decoy_domain = _StrConfigDscr(ConfigCategory.general, ApplyMode.apply_config, hide_in_virtual_child=True)
     # will be deprecated
-    proxy_path = _StrConfigDscr(ConfigCategory.hidden, ApplyMode.apply, hide_in_virtual_child=True)
-    proxy_path_admin = _StrConfigDscr(ConfigCategory.too_advanced, ApplyMode.apply, hide_in_virtual_child=True)
-    proxy_path_client = _StrConfigDscr(ConfigCategory.too_advanced, ApplyMode.apply, hide_in_virtual_child=True)
-    firewall = _BoolConfigDscr(ConfigCategory.general, ApplyMode.apply, hide_in_virtual_child=True)
-    netdata = _BoolConfigDscr(ConfigCategory.hidden, ApplyMode.apply)  # removed
+    proxy_path = _StrConfigDscr(ConfigCategory.hidden, ApplyMode.apply_config, hide_in_virtual_child=True)
+    proxy_path_admin = _StrConfigDscr(ConfigCategory.too_advanced, ApplyMode.apply_config, hide_in_virtual_child=True)
+    proxy_path_client = _StrConfigDscr(ConfigCategory.too_advanced, ApplyMode.apply_config, hide_in_virtual_child=True)
+    firewall = _BoolConfigDscr(ConfigCategory.general, ApplyMode.apply_config, hide_in_virtual_child=True)
+    netdata = _BoolConfigDscr(ConfigCategory.hidden, ApplyMode.reinstall)  # removed
     http_proxy_enable = _BoolConfigDscr(ConfigCategory.http)
-    block_iran_sites = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply, hide_in_virtual_child=True)
-    allow_invalid_sni = _BoolConfigDscr(ConfigCategory.tls, ApplyMode.apply, hide_in_virtual_child=True)
-    auto_update = _BoolConfigDscr(ConfigCategory.general, ApplyMode.apply, True, hide_in_virtual_child=True)
-    speed_test = _BoolConfigDscr(ConfigCategory.general, ApplyMode.apply, hide_in_virtual_child=True)
-    only_ipv4 = _BoolConfigDscr(ConfigCategory.general, ApplyMode.apply, hide_in_virtual_child=True)
+    block_iran_sites = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply_config, hide_in_virtual_child=True)
+    allow_invalid_sni = _BoolConfigDscr(ConfigCategory.tls, ApplyMode.apply_config, hide_in_virtual_child=True)
+    auto_update = _BoolConfigDscr(ConfigCategory.general, ApplyMode.apply_config, True, hide_in_virtual_child=True)
+    speed_test = _BoolConfigDscr(ConfigCategory.general, ApplyMode.reinstall, hide_in_virtual_child=True)
+    only_ipv4 = _BoolConfigDscr(ConfigCategory.general, ApplyMode.apply_config, hide_in_virtual_child=True)
 
-    shared_secret = _StrConfigDscr(ConfigCategory.proxies, ApplyMode.apply, hide_in_virtual_child=True)
+    shared_secret = _StrConfigDscr(ConfigCategory.proxies, ApplyMode.apply_config, hide_in_virtual_child=True)
 
-    telegram_enable = _BoolConfigDscr(ConfigCategory.telegram, ApplyMode.restart)
+    telegram_enable = _BoolConfigDscr(ConfigCategory.telegram, ApplyMode.reinstall)
     # telegram_secret=auto()
-    telegram_adtag = _StrConfigDscr(ConfigCategory.telegram, ApplyMode.restart, hide_in_virtual_child=True)
-    telegram_lib = _StrConfigDscr(ConfigCategory.telegram, ApplyMode.restart, hide_in_virtual_child=True)
-    telegram_fakedomain = _StrConfigDscr(ConfigCategory.telegram, ApplyMode.restart, hide_in_virtual_child=True)
+    telegram_adtag = _StrConfigDscr(ConfigCategory.telegram, ApplyMode.reinstall, hide_in_virtual_child=True)
+    telegram_lib = _StrConfigDscr(ConfigCategory.telegram, ApplyMode.reinstall, hide_in_virtual_child=True)
+    telegram_fakedomain = _StrConfigDscr(ConfigCategory.telegram, ApplyMode.reinstall, hide_in_virtual_child=True)
 
-    v2ray_enable = _BoolConfigDscr(ConfigCategory.hidden, ApplyMode.apply)
-    torrent_block = _BoolConfigDscr(ConfigCategory.general, ApplyMode.apply)
+    v2ray_enable = _BoolConfigDscr(ConfigCategory.hidden, ApplyMode.reinstall)
+    torrent_block = _BoolConfigDscr(ConfigCategory.general, ApplyMode.apply_config)
 
-    tuic_enable = _BoolConfigDscr(ConfigCategory.tuic, ApplyMode.apply)
-    tuic_port = _StrConfigDscr(ConfigCategory.tuic, ApplyMode.apply, hide_in_virtual_child=True)
+    tuic_enable = _BoolConfigDscr(ConfigCategory.tuic, ApplyMode.apply_config)
+    tuic_port = _StrConfigDscr(ConfigCategory.tuic, ApplyMode.apply_config, hide_in_virtual_child=True)
 
     # the hysteria is refereing to hysteria2
-    hysteria_enable = _BoolConfigDscr(ConfigCategory.hysteria, ApplyMode.apply)
-    hysteria_port = _StrConfigDscr(ConfigCategory.hidden, ApplyMode.apply, hide_in_virtual_child=True)
+    hysteria_enable = _BoolConfigDscr(ConfigCategory.hysteria, ApplyMode.apply_config)
+    hysteria_port = _StrConfigDscr(ConfigCategory.hidden, ApplyMode.apply_config, hide_in_virtual_child=True)
     # if be enable hysteria2 will be use salamander as obfs
-    hysteria_obfs_enable = _BoolConfigDscr(ConfigCategory.hysteria, ApplyMode.apply)
-    hysteria_up_mbps = _StrConfigDscr(ConfigCategory.hysteria, ApplyMode.apply)
-    hysteria_down_mbps = _StrConfigDscr(ConfigCategory.hysteria, ApplyMode.apply)
+    hysteria_obfs_enable = _BoolConfigDscr(ConfigCategory.hysteria, ApplyMode.apply_config)
+    hysteria_up_mbps = _StrConfigDscr(ConfigCategory.hysteria, ApplyMode.apply_config)
+    hysteria_down_mbps = _StrConfigDscr(ConfigCategory.hysteria, ApplyMode.apply_config)
 
-    shadowsocks2022_enable = _BoolConfigDscr(ConfigCategory.shadowsocks, ApplyMode.apply)
-    shadowsocks2022_method = _StrConfigDscr(ConfigCategory.hidden, ApplyMode.apply)
-    shadowsocks2022_port = _StrConfigDscr(ConfigCategory.shadowsocks, ApplyMode.apply)
-    ssfaketls_enable = _BoolConfigDscr(ConfigCategory.shadowsocks, ApplyMode.restart)
-    ssfaketls_fakedomain = _StrConfigDscr(ConfigCategory.shadowsocks, ApplyMode.apply, hide_in_virtual_child=True)
-    shadowtls_enable = _BoolConfigDscr(ConfigCategory.shadowsocks, ApplyMode.apply)
-    shadowtls_fakedomain = _StrConfigDscr(ConfigCategory.shadowsocks, ApplyMode.apply, hide_in_virtual_child=True)
+    shadowsocks2022_enable = _BoolConfigDscr(ConfigCategory.shadowsocks, ApplyMode.apply_config)
+    shadowsocks2022_method = _StrConfigDscr(ConfigCategory.hidden, ApplyMode.apply_config)
+    shadowsocks2022_port = _StrConfigDscr(ConfigCategory.shadowsocks, ApplyMode.apply_config)
+    ssfaketls_enable = _BoolConfigDscr(ConfigCategory.shadowsocks, ApplyMode.reinstall)
+    ssfaketls_fakedomain = _StrConfigDscr(ConfigCategory.shadowsocks, ApplyMode.apply_config, hide_in_virtual_child=True)
+    shadowtls_enable = _BoolConfigDscr(ConfigCategory.shadowsocks, ApplyMode.apply_config)
+    shadowtls_fakedomain = _StrConfigDscr(ConfigCategory.shadowsocks, ApplyMode.apply_config, hide_in_virtual_child=True)
 
-    ssr_enable = _BoolConfigDscr(ConfigCategory.hidden, ApplyMode.apply)
+    ssr_enable = _BoolConfigDscr(ConfigCategory.hidden, ApplyMode.apply_config)
     # ssr_secret="ssr_secret"
-    ssr_fakedomain = _StrConfigDscr(ConfigCategory.hidden, ApplyMode.apply)
+    ssr_fakedomain = _StrConfigDscr(ConfigCategory.hidden, ApplyMode.apply_config)
 
-    vmess_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply)
+    vmess_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply_config)
     domain_fronting_domain = _StrConfigDscr(ConfigCategory.hidden)  # removed
-    domain_fronting_http_enable = _BoolConfigDscr(ConfigCategory.hidden, ApplyMode.apply)  # removed
-    domain_fronting_tls_enable = _BoolConfigDscr(ConfigCategory.hidden, ApplyMode.apply)  # removed
+    domain_fronting_http_enable = _BoolConfigDscr(ConfigCategory.hidden, ApplyMode.apply_config)  # removed
+    domain_fronting_tls_enable = _BoolConfigDscr(ConfigCategory.hidden, ApplyMode.apply_config)  # removed
 
-    ws_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply)
-    grpc_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply)
-    httpupgrade_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply)
-    vless_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply)
-    trojan_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply)
-    reality_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply)
-    tcp_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply)
-    quic_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply)
-    xtls_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply)
-    h2_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply)
+    ws_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply_config)
+    grpc_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply_config)
+    httpupgrade_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply_config)
+    splithttp_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply_config)
 
-    db_version = _StrConfigDscr(ConfigCategory.hidden, ApplyMode.apply)
-    last_priodic_usage_check = _IntConfigDscr(ConfigCategory.hidden, ApplyMode.apply)
+    vless_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply_config)
+    trojan_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply_config)
+    reality_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply_config)
+    tcp_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply_config)
+    quic_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply_config)
+    xtls_enable = _BoolConfigDscr(ConfigCategory.hidden, ApplyMode.apply_config)
+    h2_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply_config)
+
+    db_version = _StrConfigDscr(ConfigCategory.hidden)
+    last_priodic_usage_check = _IntConfigDscr(ConfigCategory.hidden)
 
     branding_title = _StrConfigDscr(ConfigCategory.branding)
     branding_site = _StrConfigDscr(ConfigCategory.branding)
     branding_freetext = _StrConfigDscr(ConfigCategory.branding)
     not_found = _StrConfigDscr(ConfigCategory.hidden)
-    path_vmess = _StrConfigDscr(ConfigCategory.too_advanced, hide_in_virtual_child=True)
-    path_vless = _StrConfigDscr(ConfigCategory.too_advanced, hide_in_virtual_child=True)
-    path_trojan = _StrConfigDscr(ConfigCategory.too_advanced, hide_in_virtual_child=True)
-    path_v2ray = _StrConfigDscr(ConfigCategory.hidden, hide_in_virtual_child=True)  # deprecated
-    path_ss = _StrConfigDscr(ConfigCategory.hidden, hide_in_virtual_child=True)
+    path_vmess = _StrConfigDscr(ConfigCategory.too_advanced, ApplyMode.apply_config, hide_in_virtual_child=True)
+    path_vless = _StrConfigDscr(ConfigCategory.too_advanced, ApplyMode.apply_config, hide_in_virtual_child=True)
+    path_trojan = _StrConfigDscr(ConfigCategory.too_advanced, ApplyMode.apply_config, hide_in_virtual_child=True)
+    path_v2ray = _StrConfigDscr(ConfigCategory.hidden, ApplyMode.apply_config, hide_in_virtual_child=True)  # deprecated
+    path_ss = _StrConfigDscr(ConfigCategory.hidden, ApplyMode.apply_config, hide_in_virtual_child=True)
 
-    path_httpupgrade = _StrConfigDscr(ConfigCategory.too_advanced, hide_in_virtual_child=True)
-    path_ws = _StrConfigDscr(ConfigCategory.too_advanced, hide_in_virtual_child=True)
-    path_tcp = _StrConfigDscr(ConfigCategory.too_advanced, hide_in_virtual_child=True)
-    path_grpc = _StrConfigDscr(ConfigCategory.too_advanced, hide_in_virtual_child=True)
+    path_splithttp = _StrConfigDscr(ConfigCategory.too_advanced, ApplyMode.apply_config, hide_in_virtual_child=True)
+    path_httpupgrade = _StrConfigDscr(ConfigCategory.too_advanced, ApplyMode.apply_config, hide_in_virtual_child=True)
+    path_ws = _StrConfigDscr(ConfigCategory.too_advanced, ApplyMode.apply_config, hide_in_virtual_child=True)
+    path_tcp = _StrConfigDscr(ConfigCategory.too_advanced, ApplyMode.apply_config, hide_in_virtual_child=True)
+    path_grpc = _StrConfigDscr(ConfigCategory.too_advanced, ApplyMode.apply_config, hide_in_virtual_child=True)
 
     # subs
     sub_full_singbox_enable = _BoolConfigDscr(ConfigCategory.hidden)
@@ -274,7 +277,7 @@ class ConfigEnum(metaclass=FastEnum):
     sub_full_clash_enable = _BoolConfigDscr(ConfigCategory.hidden)
     sub_full_clash_meta_enable = _BoolConfigDscr(ConfigCategory.hidden)
 
-    hiddifycli_enable = _BoolConfigDscr(ConfigCategory.hidden, ApplyMode.restart)
+    hiddifycli_enable = _BoolConfigDscr(ConfigCategory.hidden, ApplyMode.reinstall)
 
     @classmethod
     def __missing__(cls, value):

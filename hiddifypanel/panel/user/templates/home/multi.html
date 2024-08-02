@@ -73,7 +73,7 @@
                 <div class="tab-content">
                     <div class="tab-pane {{" active" if not ua.is_pc and ua.os.family not in ["Android", "iOS" ] else ""
                         }}" id="default">
-                        {{_('user.home.select os')}}
+                        {{_('user.home.select_os')}}
                     </div>
                     <div class="tab-pane" id="telegram">
                         {% include 'home/telegram.html' %}
@@ -121,7 +121,7 @@
             <div class="card-body">
                 <div class="tab-content">
                     <div class="tab-pane active" id="default">
-                        {{_('user.home.select tool')}}
+                        {{_('user.home.select_tool')}}
                     </div>
 
                     <div class="tab-pane" id="speedtest">

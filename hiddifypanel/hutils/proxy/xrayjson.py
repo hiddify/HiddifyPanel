@@ -94,10 +94,10 @@ def to_xray(proxy: dict) -> dict:
         'protocol': str(proxy['proto']),
         'settings': {},
         'streamSettings': {},
-        'mux': {  # default value
-            'enabled': False,
-            'concurrency': -1
-        }
+        # 'mux': {  # default value
+        #     # 'enabled': False,
+        #     # 'concurrency': -1
+        # }
     }
     outbound['protocol'] = 'shadowsocks' if outbound['protocol'] == 'ss' else outbound['protocol']
     # add multiplex to outbound
@@ -216,15 +216,18 @@ def add_stream_settings(base: dict, proxy: dict):
     # security
     if proxy['l3'] == ProxyL3.reality:
         ss['security'] = 'reality'
-    elif proxy['l3'] in [ProxyL3.tls, ProxyL3.tls_h2, ProxyL3.tls_h2_h1]:
+    elif proxy['l3'] in [ProxyL3.tls, ProxyL3.tls_h2, ProxyL3.tls_h2_h1, ProxyL3.h3_quic]:
         ss['security'] = 'tls'
 
     # network and transport settings
     # THE CURRENT CODE WORKS BUT THE CORRECT CONDITINO SHOULD BE THIS:
     # ss['security'] == 'tls' or 'xtls' -----> ss['security'] in ['tls','xtls']
     # TODO: FIX THE CONDITION AND TEST CONFIGS ON THE CLIENT SIDE
+    if ss['security'] == 'reality':
+        ss['network'] = proxy['transport']
+        add_reality_stream(ss, proxy)
+    elif ss['security'] in ['tls', "xtls"] and proxy['proto'] != ProxyProto.ss:
 
-    if ss['security'] == 'tls' or 'xtls' and proxy['proto'] != ProxyProto.ss:
         ss['tlsSettings'] = {
             'serverName': proxy['sni'],
             'allowInsecure': proxy['allow_insecure'],
@@ -239,9 +242,7 @@ def add_stream_settings(base: dict, proxy: dict):
             # 'cipherSuites': '', # Go lang sets
             # 'rejectUnknownSni': '', # default is false
         }
-    if ss['security'] == 'reality':
-        ss['network'] = proxy['transport']
-        add_reality_stream(ss, proxy)
+
     if proxy['l3'] == ProxyL3.kcp:
         ss['network'] = 'kcp'
         add_kcp_stream(ss, proxy)
@@ -249,7 +250,7 @@ def add_stream_settings(base: dict, proxy: dict):
     if proxy['l3'] == ProxyL3.h3_quic:
         add_quic_stream(ss, proxy)
 
-    if proxy['transport'] == 'tcp' or ss['security'] == 'reality' or (ss['security'] == 'none' and proxy['transport'] not in [ProxyTransport.httpupgrade, ProxyTransport.WS] and proxy['proto'] != ProxyProto.ss):
+    if (proxy['transport'] == 'tcp' and ss['security'] != 'reality') or (ss['security'] == 'none' and proxy['transport'] not in [ProxyTransport.httpupgrade, ProxyTransport.WS] and proxy['proto'] != ProxyProto.ss):
         ss['network'] = proxy['transport']
         add_tcp_stream(ss, proxy)
     if proxy['transport'] == ProxyTransport.h2 and ss['security'] == 'none' and ss['security'] != 'reality':
@@ -261,6 +262,9 @@ def add_stream_settings(base: dict, proxy: dict):
     if proxy['transport'] == ProxyTransport.httpupgrade:
         ss['network'] = proxy['transport']
         add_httpupgrade_stream(ss, proxy)
+    if proxy['transport'] == ProxyTransport.splithttp:
+        ss['network'] = proxy['transport']
+        add_splithttp_stream(ss, proxy)
     if proxy['transport'] == 'ws':
         ss['network'] = proxy['transport']
         add_ws_stream(ss, proxy)
@@ -334,6 +338,16 @@ def add_httpupgrade_stream(ss: dict, proxy: dict):
     }
 
 
+def add_splithttp_stream(ss: dict, proxy: dict):
+    ss['splithttpSettings'] = {
+        'path': proxy['path'],
+        'host': proxy['host'],
+        "headers": {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
+        }
+    }
+
+
 def add_kcp_stream(ss: dict, proxy: dict):
     # TODO: fix server side configs first
     ss['kcpSettings'] = {}
@@ -355,8 +369,8 @@ def add_kcp_stream(ss: dict, proxy: dict):
 
 def add_quic_stream(ss: dict, proxy: dict):
     # TODO: fix server side configs first
-    ss['quicSettings'] = {}
     return
+
     ss['quicSettings'] = {
         'security': 'chacha20-poly1305',
         'key': proxy['path'],
@@ -400,10 +414,11 @@ def add_multiplex(base: dict, proxy: dict):
 
     concurrency = proxy['mux_max_connections']
     if concurrency and concurrency > 0:
-        base['mux']['enabled'] = True
-        base['mux']['concurrency'] = concurrency
-        base['mux']['xudpConcurrency'] = concurrency
-        base['mux']['xudpProxyUDP443'] = 'reject'
+        base['mux'] = {'enabled': True,
+                       'concurrency': concurrency,
+                       'xudpConcurrency': concurrency,
+                       'xudpProxyUDP443': 'reject',
+                       }
 
 
 def null_config(tag: str) -> dict:

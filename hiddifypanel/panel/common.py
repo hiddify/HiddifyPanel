@@ -10,6 +10,7 @@ import hiddifypanel.auth as auth
 from hiddifypanel.auth import current_account
 from apiflask import APIFlask, HTTPError, abort
 from hiddifypanel import hutils
+from loguru import logger
 
 
 def init_app(app: APIFlask):
@@ -36,6 +37,7 @@ def init_app(app: APIFlask):
 
     @app.errorhandler(Exception)
     def internal_server_error(e):
+        logger.exception(e)
         if isinstance(e, Exception):
             if hutils.flask.is_api_call(request.path):
                 return {
@@ -146,6 +148,8 @@ def init_app(app: APIFlask):
 
     @app.before_request
     def base_middleware():
+        if "generate_204" in request.path:
+            return "", 204
         if request.endpoint == 'static' or request.endpoint == "videos":
             return
 
@@ -181,4 +185,4 @@ def init_app(app: APIFlask):
     with app.app_context():
         import hiddifypanel.panel.commercial.telegrambot as telegrambot
         if (not telegrambot.bot) or (not telegrambot.bot.username):  # type: ignore
-            telegrambot.register_bot(set_hook=True)
+            telegrambot.register_bot_cached(set_hook=True)

@@ -1,3 +1,5 @@
+from collections import defaultdict
+import ipaddress
 from flask import current_app, request, g
 import glob
 import random
@@ -100,7 +102,8 @@ def get_port(proxy: Proxy, hconfigs: dict, domain_db: Domain, ptls: int, phttp: 
 
 
 def is_tls(l3) -> bool:
-    return 'tls' in l3 or "reality" in l3
+
+    return 'tls' in l3 or "reality" in l3 or l3 in [ProxyL3.h3_quic]
 
 
 @cache.cache(ttl=300)
@@ -130,15 +133,17 @@ def get_proxies(child_id: int = 0, only_enabled=False) -> list['Proxy']:
     if not hconfig(ConfigEnum.vmess_enable, child_id):
         proxies = [c for c in proxies if 'vmess' not in c.proto]
     if not hconfig(ConfigEnum.vless_enable, child_id):
-        proxies = [c for c in proxies if 'vless' not in c.proto]
+        proxies = [c for c in proxies if 'vless' not in c.proto or 'reality' in c.l3]
     if not hconfig(ConfigEnum.trojan_enable, child_id):
         proxies = [c for c in proxies if 'trojan' not in c.proto]
     if not hconfig(ConfigEnum.httpupgrade_enable, child_id):
         proxies = [c for c in proxies if ProxyTransport.httpupgrade not in c.transport]
+    if not hconfig(ConfigEnum.splithttp_enable, child_id):
+        proxies = [c for c in proxies if ProxyTransport.splithttp not in c.transport]
     if not hconfig(ConfigEnum.ws_enable, child_id):
         proxies = [c for c in proxies if ProxyTransport.WS not in c.transport]
-    if not hconfig(ConfigEnum.xtls_enable, child_id):
-        proxies = [c for c in proxies if ProxyTransport.XTLS not in c.transport]
+    # if not hconfig(ConfigEnum.xtls_enable, child_id):
+        #     proxies = [c for c in proxies if ProxyTransport.XTLS not in c.transport]
     if not hconfig(ConfigEnum.grpc_enable, child_id):
         proxies = [c for c in proxies if ProxyTransport.grpc not in c.transport]
     if not hconfig(ConfigEnum.tcp_enable, child_id):
@@ -173,7 +178,7 @@ def get_valid_proxies(domains: list[Domain]) -> list[dict]:
     allp = []
     allphttp = [p for p in request.args.get("phttp", "").split(',') if p]
     allptls = [p for p in request.args.get("ptls", "").split(',') if p]
-    added_ip = {}
+    added_ip = defaultdict(set)
     configsmap = {}
     proxeismap = {}
     for domain in domains:
@@ -181,30 +186,28 @@ def get_valid_proxies(domains: list[Domain]) -> list[dict]:
             configsmap[domain.child_id] = get_hconfigs(domain.child_id)
             proxeismap[domain.child_id] = get_proxies(domain.child_id, only_enabled=True)
         hconfigs = configsmap[domain.child_id]
-
-        ip = hutils.network.get_domain_ip(domain.domain, version=4)
-        ip6 = hutils.network.get_domain_ip(domain.domain, version=6)
-        ips = [x for x in [ip, ip6] if x is not None]
+        ips = domain.get_cdn_ips_parsed()
+        if not ips:
+            ips = hutils.network.get_domain_ips(domain.domain)
         for proxy in proxeismap[domain.child_id]:
             noDomainProxies = False
             if proxy.proto in [ProxyProto.ssh, ProxyProto.wireguard]:
                 noDomainProxies = True
-            if proxy.proto in [ProxyProto.ss] and proxy.transport not in [ProxyTransport.grpc, ProxyTransport.h2, ProxyTransport.WS, ProxyTransport.httpupgrade]:
+            if proxy.proto in [ProxyProto.ss] and proxy.transport not in [ProxyTransport.grpc, ProxyTransport.h2, ProxyTransport.WS, ProxyTransport.httpupgrade, ProxyTransport.splithttp]:
                 noDomainProxies = True
             options = []
             key = f'{proxy.proto}{proxy.transport}{proxy.cdn}{proxy.l3}'
-            if key not in added_ip:
-                added_ip[key] = {}
+
             if proxy.proto in [ProxyProto.ssh, ProxyProto.tuic, ProxyProto.hysteria2, ProxyProto.wireguard, ProxyProto.ss]:
                 if noDomainProxies and all([x in added_ip[key] for x in ips]):
                     continue
 
                 for x in ips:
-                    added_ip[key][x] = 1
+                    added_ip[key].add(x)
 
                 if proxy.proto in [ProxyProto.ssh, ProxyProto.wireguard, ProxyProto.ss]:
-                    if domain.mode == 'fake':
-                        continue
+                    # if domain.mode == 'fake':
+                    #     continue
                     if proxy.proto in [ProxyProto.ssh]:
                         options = [{'pport': hconfigs[ConfigEnum.ssh_server_port]}]
                     elif proxy.proto in [ProxyProto.wireguard]:
@@ -252,6 +255,9 @@ def make_proxy(hconfigs: dict, proxy: Proxy, domain_db: Domain, phttp=80, ptls=4
         alpn = "h2" if proxy.transport in ['h2', "grpc"] else 'http/1.1'
     else:
         alpn = "h2" if proxy.l3 in ['tls_h2'] or proxy.transport in ["grpc", 'h2'] else 'h2,http/1.1' if proxy.l3 == 'tls_h2_h1' else "http/1.1"
+        if proxy.l3 in [ProxyL3.h3_quic]:
+            alpn = "h3"
+
     cdn_forced_host = domain_db.cdn_ip or (domain_db.domain if domain_db.mode != DomainType.reality else hutils.network.get_direct_host_or_ip(4))
     is_cdn = ProxyCDN.CDN == proxy.cdn or ProxyCDN.Fake == proxy.cdn
     base = {
@@ -379,7 +385,7 @@ def make_proxy(hconfigs: dict, proxy: Proxy, domain_db: Domain, phttp=80, ptls=4
                 base['mux_brutal_down_mbps'] = hconfigs.get(ConfigEnum.mux_brutal_down_mbps, 10)
 
     if is_cdn and proxy.proto in {'vless', 'trojan', "vmess"}:
-        if hconfigs[ConfigEnum.tls_fragment_enable]:
+        if hconfigs[ConfigEnum.tls_fragment_enable] and "tls" in base["l3"]:
             base["tls_fragment_enable"] = True
             base["tls_fragment_size"] = hconfigs[ConfigEnum.tls_fragment_size]
             base["tls_fragment_sleep"] = hconfigs[ConfigEnum.tls_fragment_sleep]
@@ -409,6 +415,15 @@ def make_proxy(hconfigs: dict, proxy: Proxy, domain_db: Domain, phttp=80, ptls=4
     if proxy.transport in [ProxyTransport.httpupgrade]:
         base['transport'] = 'httpupgrade'
         base['path'] = f'/{path[base["proto"]]}{hconfigs[ConfigEnum.path_httpupgrade]}'
+        base["host"] = domain
+        return base
+    if proxy.transport in [ProxyTransport.splithttp]:
+        base['transport'] = 'splithttp'
+        base['path'] = f'/{path[base["proto"]]}{hconfigs[ConfigEnum.path_splithttp]}'
+        # if 0 and 'h2' in base['alpn'] or 'h3' in base['alpn']:
+        #     base['path'] += "2"
+        # else:
+        #     base['path'] += "1"
         base["host"] = domain
         return base
 

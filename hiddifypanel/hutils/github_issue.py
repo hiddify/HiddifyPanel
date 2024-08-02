@@ -137,12 +137,13 @@ def __github_issue_details() -> dict:
 def __remove_sensetive_data_from_github_issue_link(issue_link: str):
     from hiddifypanel.auth import current_account
     if current_account.uuid:
-        issue_link.replace(f'{current_account.uuid}', '*******************')
+        issue_link = issue_link.replace(f'{current_account.uuid}', '*******************')
 
-    issue_link.replace(request.host, '**********')
-    issue_link.replace(hconfig(ConfigEnum.proxy_path), '**********')
-    issue_link.replace(hconfig(ConfigEnum.proxy_path_admin), '**********')
-    issue_link.replace(hconfig(ConfigEnum.proxy_path_client), '**********')
+    issue_link = issue_link.replace(request.host, '**********')
+    issue_link = issue_link.replace(hconfig(ConfigEnum.proxy_path), '**********')
+    issue_link = issue_link.replace(hconfig(ConfigEnum.proxy_path_admin), '**********')
+    issue_link = issue_link.replace(hconfig(ConfigEnum.proxy_path_client), '**********')
+    return issue_link
 
 
 def __remove_unrelated_traceback_details(stacktrace: str) -> str:
@@ -181,10 +182,11 @@ def generate_github_issue_link_for_500_error(error, traceback: str, remove_sense
     issue_body = render_template('github_issue_body.j2', issue_details=issue_details, error=error, traceback=traceback)
 
     # Create github issue link
-    issue_link = __generate_github_issue_link(f"Internal server error: {error.name if hasattr(error,'name') and error.name != None and error.name else 'Unknown'}", issue_body)
+    issue_link = __generate_github_issue_link(
+        f"Internal server error: {error.name if hasattr(error,'name') and error.name != None and error.name else 'Unknown'}", issue_body)
 
     if remove_sensetive_data:
-        __remove_sensetive_data_from_github_issue_link(issue_link)
+        issue_link = __remove_sensetive_data_from_github_issue_link(issue_link)
 
     return issue_link
 

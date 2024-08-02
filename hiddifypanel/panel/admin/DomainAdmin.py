@@ -46,11 +46,11 @@ class DomainAdmin(AdminLTEModelView):
         mode=_("Direct mode means you want to use your server directly (for usual use), CDN means that you use your server on behind of a CDN provider."),
         cdn_ip=_("config.cdn_forced_host.description"),
         show_domains=_(
-            'You can select the configs with which domains show be shown in the user area. If you select all, automatically, all the new domains will be added for each users.'),
+            'domain.show_domains_description'),
         alias=_('The name shown in the configs for this domain.'),
         servernames=_('config.reality_server_names.description'),
         sub_link_only=_('This can be used for giving your users a permanent non blockable links.'),
-        grpc=_('gRPC is a H2 based protocol. Maybe it is faster for you!'))
+        grpc=_('grpc-proxy.description'))
 
     # create_modal = True
     can_export = False
@@ -65,7 +65,7 @@ class DomainAdmin(AdminLTEModelView):
         'domain': {
             'validators': [
                 Regexp(
-                    r'^(\*\.)?([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})$',
+                    r'^(\*\.)?([A-Za-z0-9\-\.]+\.[a-zA-Z]{2,})$|^$',
                     message=__("Should be a valid domain"))]},
         "cdn_ip": {
             'validators': [
@@ -109,21 +109,24 @@ class DomainAdmin(AdminLTEModelView):
             f'</a><a href="{admin_link}" class="btn btn-xs btn-info ltr" target="_blank">{model.domain}</a></div>')
 
     def _domain_ip(view, context, model, name):
-        dip = hutils.network.get_domain_ip(model.domain)
+        dips = hutils.network.get_domain_ips(model.domain)
         # The get_domain_ip function uses the socket library, which relies on the system DNS resolver. So it may sometimes use cached data, which is not desirable
-        if not dip:
-            dip = hutils.network.resolve_domain_with_api(model.domain)
-        myip = hutils.network.get_ip(4)
-        if myip == dip and model.mode in [DomainType.direct, DomainType.sub_link_only]:
-            badge_type = ''
-        elif dip and model.mode != DomainType.direct and myip != dip:
-            badge_type = 'warning'
-        else:
-            badge_type = 'danger'
-        res = f'<span class="badge badge-{badge_type}">{dip}</span>'
-        if model.sub_link_only:
-            res += f'<span class="badge badge-success">{_("SubLink")}</span>'
-        return Markup(res)
+        # if not dips:
+        #     dip = hutils.network.resolve_domain_with_api(model.domain)
+        myips = set(hutils.network.get_ips())
+        all_res = ""
+        for dip in dips:
+            if dip in myips and model.mode in [DomainType.direct, DomainType.sub_link_only]:
+                badge_type = ''
+            elif dip and dip not in myips and model.mode != DomainType.direct:
+                badge_type = 'warning'
+            else:
+                badge_type = 'danger'
+            res = f'<span class="badge badge-{badge_type}">{dip}</span>'
+            if model.sub_link_only:
+                res += f'<span class="badge badge-success">{_("SubLink")}</span>'
+            all_res += res
+        return Markup(all_res)
 
     def _show_domains_formater(view, context, model, name):
         if not len(model.show_domains):
@@ -149,8 +152,9 @@ class DomainAdmin(AdminLTEModelView):
 
     # TODO: refactor this function
     def on_model_change(self, form, model, is_created):
-        model.domain = model.domain.lower()
-
+        model.domain = (model.domain or '').lower()
+        if model.domain == '' and model.mode != DomainType.fake:
+            raise ValidationError(_("domain.empty.allowed_for_fake_only"))
         configs = get_hconfigs()
         for c in configs:
             if "domain" in c and c not in [ConfigEnum.decoy_domain, ConfigEnum.reality_fallback_domain] and c.category != 'hidden':
@@ -174,7 +178,7 @@ class DomainAdmin(AdminLTEModelView):
         if "*" in model.domain and model.mode not in [DomainType.cdn, DomainType.auto_cdn_ip]:
             raise ValidationError(_("Domain can not be resolved! there is a problem in your domain"))
 
-        skip_check = "*" in model.domain
+        skip_check = "*" in model.domain or model.domain == ""
         if hconfig(ConfigEnum.cloudflare) and model.mode not in [DomainType.fake, DomainType.relay, DomainType.reality]:
             try:
                 proxied = model.mode in [DomainType.cdn, DomainType.auto_cdn_ip]
@@ -190,28 +194,31 @@ class DomainAdmin(AdminLTEModelView):
         #     hutils.flask.flash(__("Using alias with special charachters may cause problem in some clients like FairVPN."), 'warning')
             # raise ValidationError(_("You have to add your cloudflare api key to use this feature: "))
 
-        dip = hutils.network.get_domain_ip(model.domain)
+        dips = hutils.network.get_domain_ips(model.domain)
+        server_ips = [*ipv4_list, *ipv6_list]
         if model.sub_link_only:
-            if dip is None:
+            if not dips:
                 raise ValidationError(_("Domain can not be resolved! there is a problem in your domain"))  # type: ignore
         elif not skip_check:
-            if dip is None:
+            if not dips:
                 raise ValidationError(_("Domain can not be resolved! there is a problem in your domain"))  # type: ignore
 
             domain_ip_is_same_as_panel = False
-            domain_ip_is_same_as_panel |= dip in ipv4_list
-            for ipv6 in ipv6_list:
-                domain_ip_is_same_as_panel |= ipaddress.ip_address(dip) == ipaddress.ip_address(ipv6)
+
+            for mip in server_ips:
+                domain_ip_is_same_as_panel |= mip in dips
+            server_ips_str = ', '.join(list(map(str, server_ips)))
+            dips_str = ', '.join(list(map(str, dips)))
 
             if model.mode == DomainType.direct and not domain_ip_is_same_as_panel:
                 # hutils.flask.flash(__(f"Domain IP={dip} is not matched with your ip={', '.join(list(map(str, ipv4_list)))} which is required in direct mode"),category='error')
                 raise ValidationError(
-                    __("Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode", server_ip=', '.join(list(map(str, ipv4_list))), domain_ip=dip))  # type: ignore
+                    __("Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode", server_ip=server_ips_str, domain_ip=dips_str))  # type: ignore
 
             if domain_ip_is_same_as_panel and model.mode in [DomainType.cdn, DomainType.relay, DomainType.fake, DomainType.auto_cdn_ip]:
                 #     # hutils.flask.flash(__(f"In CDN mode, Domain IP={dip} should be different to your ip={', '.join(list(map(str, ipv4_list)))}"), 'warning')
                 raise ValidationError(__("In CDN mode, Domain IP=%(domain_ip)s should be different to your ip=%(server_ip)s",
-                                      server_ip=', '.join(list(map(str, ipv4_list))), domain_ip=dip))  # type: ignore
+                                      server_ip=server_ips_str, domain_ip=dips_str))  # type: ignore
 
             # if model.mode in [DomainType.ss_faketls, DomainType.telegram_faketls]:
             #     if len(Domain.query.filter(Domain.mode==model.mode and Domain.id!=model.id).all())>0:
@@ -219,10 +226,11 @@ class DomainAdmin(AdminLTEModelView):
 
         model.domain = model.domain.lower()
         if model.mode == DomainType.direct and model.cdn_ip:
+            model.cdn_ip = ""
             raise ValidationError(f"Specifying CDN IP is only valid for CDN mode")
 
         if model.mode == DomainType.fake and not model.cdn_ip:
-            model.cdn_ip = str(ipv4_list[0])
+            model.cdn_ip = str(server_ips[0])
 
         # if model.mode==DomainType.fake and model.cdn_ip!=myip:
         #     raise ValidationError(f"Specifying CDN IP is only valid for CDN mode")
@@ -230,8 +238,14 @@ class DomainAdmin(AdminLTEModelView):
         # # Update the many-to-many relationship
         if len(model.show_domains) == Domain.query.count():
             model.show_domains = []
-
-        if model.mode == DomainType.reality:
+        if model.mode == DomainType.old_xtls_direct:
+            if not hconfig(ConfigEnum.xtls_enable):
+                set_hconfig(ConfigEnum.xtls_enable, True)
+                hutils.proxy.get_proxies().invalidate_all()
+        elif model.mode == DomainType.reality:
+            if not hconfig(ConfigEnum.reality_enable):
+                set_hconfig(ConfigEnum.reality_enable, True)
+                hutils.proxy.get_proxies().invalidate_all()
             model.servernames = (model.servernames or model.domain).lower()
             for v in set([model.domain, model.servernames]):
                 for d in v.split(","):
@@ -240,10 +254,11 @@ class DomainAdmin(AdminLTEModelView):
                     if not hutils.network.is_domain_reality_friendly(d):  # the minimum requirement for the REALITY protocol is to have tls1.3 and h2
                         raise ValidationError(_("Domain is not REALITY friendly!") + f' {d}')
 
-                    if not hutils.network.is_in_same_asn(d, ipv4_list[0]):
-                        server_asn = hutils.network.get_ip_asn(ipv4_list[0])
+                    if not hutils.network.is_in_same_asn(d, server_ips[0]):
+                        dip = next(iter(dips))
+                        server_asn = hutils.network.get_ip_asn(server_ips[0])
                         domain_asn = hutils.network.get_ip_asn(dip)  # type: ignore
-                        msg = _("selected domain for REALITY is not in the same ASN. To better use of the protocol, it is better to find a domain in the same ASN.") + \
+                        msg = _("domain.reality.asn_issue") + \
                             (f"<br> Server ASN={server_asn}<br>{d}_ASN={domain_asn}" if server_asn or domain_asn else "")
                         hutils.flask.flash(msg, 'warning')
 
@@ -261,7 +276,7 @@ class DomainAdmin(AdminLTEModelView):
         old_db_domain = Domain.by_domain(model.domain)
         if is_created or not old_db_domain or old_db_domain.mode != model.mode:
             # return hiddify.reinstall_action(complete_install=False, domain_changed=True)
-            hutils.flask.flash_config_success(restart_mode=ApplyMode.apply, domain_changed=True)
+            hutils.flask.flash_config_success(restart_mode=ApplyMode.apply_config, domain_changed=True)
 
     # def after_model_change(self,form, model, is_created):
     #     if model.show_domains.count==0:
@@ -275,7 +290,7 @@ class DomainAdmin(AdminLTEModelView):
                 hutils.flask.flash(_('cf-delete.failed'), 'warning')  # type: ignore
         model.showed_by_domains = []
         # db.session.commit()
-        hutils.flask.flash_config_success(restart_mode=ApplyMode.apply, domain_changed=True)
+        hutils.flask.flash_config_success(restart_mode=ApplyMode.apply_config, domain_changed=True)
 
     def after_model_delete(self, model):
         if hutils.node.is_child():
@@ -284,7 +299,7 @@ class DomainAdmin(AdminLTEModelView):
     def after_model_change(self, form, model, is_created):
         if hconfig(ConfigEnum.first_setup):
             set_hconfig(ConfigEnum.first_setup, False)
-        if model.need_valid_ssl:
+        if model.need_valid_ssl and "*" not in model.domain:
             commander(Command.get_cert, domain=model.domain)
         if hutils.node.is_child():
             hutils.node.run_node_op_in_bg(hutils.node.child.sync_with_parent, *[hutils.node.child.SyncFields.domains])

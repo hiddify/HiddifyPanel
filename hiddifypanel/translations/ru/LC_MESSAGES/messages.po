@@ -2,8 +2,12 @@
 msgid ""
 msgstr ""
 
-msgid " Search Settings"
-msgstr " Настройки поиска"
+msgid ""
+" Search\n"
+"            Settings"
+msgstr ""
+" Поиск\n"
+"Настройки"
 
 msgid "%(count)s records were successfully disabled."
 msgstr "%(count)s записей были успешно отключены."
@@ -12,7 +16,7 @@ msgid "%(count)s records were successfully enabled."
 msgstr "%(count)s записей были успешно включены."
 
 msgid "%(expire_days)s days"
-msgstr "с дней"
+msgstr "%(expire_days)с дней"
 
 msgid "%(placeholder)s"
 msgstr "%(placeholder)s"
@@ -159,14 +163,6 @@ msgstr ""
 "Был в сети: {}\n"
 "Истекает : {}\n"
 "Класс использования: {}"
-
-msgid "Define the admin mode. "
-msgstr "🥇🥈🥉 Режим администратора"
-
-msgid "Define the user mode. Should the usage reset every month?"
-msgstr ""
-"Режим пакета для пользователя - должно ли использование сбрасываться каждый "
-"месяц, неделю и т. д."
 
 msgid "Delete?"
 msgstr "Удалить?"
@@ -358,15 +354,6 @@ msgstr ""
 msgid "HiddigyN"
 msgstr "Рекомендуется<span class='badge Badge-success'>HiddifyN</span>"
 
-msgid ""
-"Hooray 🎉 🎉 🎉 \n"
-"Welcome to hiddifybot.\n"
-"Start by clicking the link on the panel or entering your UUID."
-msgstr ""
-"Ура 🎉 🎉 🎉\n"
-"Добро пожаловать в Hiddify bot\n"
-"Для начала перейдите по ссылке на панели или введите свой UUID пользователя."
-
 msgid "Hover the user to see the reason"
 msgstr "Наведите курсор на пользователя, чтобы увидеть причину"
 
@@ -406,16 +393,6 @@ msgid ""
 msgstr ""
 "В CDN Режиме, IP адрес Домена должен отличаться от IP адреса Вашего Сервера"
 
-msgid ""
-"In this section, you can add your domain. You need to add at least one "
-"domain in direct mode."
-msgstr ""
-"1️⃣ В этом разделе вы можете добавить свой Домен.\n"
-"<br>\n"
-"2. Если вы хотите уменьшить вероятность использования грязного IP-адреса, вы можете добавить сервер с несколькими Relay <a href='https://github.com/hiddify/hiddify-config/discussions/129'>Подробнее</a>.\n"
-"<br>\n"
-"3. Если у вас в панели несколько IPv4 или IPv6, вам необходимо добавить указанный на них домен в качестве Relay."
-
 msgid "Incorrect Password"
 msgstr "⚠️ Неверный пароль."
 
@@ -443,20 +420,6 @@ msgid ""
 msgstr ""
 "Похоже, вы используете домен по умолчанию (%(domain)s), что не "
 "рекомендуется. Пожалуйста, измените или удалите его из раздела доменов."
-
-msgid ""
-"It seems that you have not created any users yet. Default user link: "
-"%(default_link)s"
-msgstr ""
-"Кажется, вы еще не создали ни одного пользователя, ссылка пользователя по "
-"умолчанию: %(default_link)s"
-
-msgid ""
-"It seems that you have not setup the system completely. <a class=\"btn btn-"
-"success\" href=\"%(quick_setup)s\">Click here</a> to complete setup."
-msgstr ""
-"Похоже, вы не до конца настроили систему. <a class='btn btn-success' "
-"href='%(quick_setup)s'>Нажмите здесь</a>, чтобы завершить настройку"
 
 msgid "It will override the root admin to the current user"
 msgstr "Переопределение прав администратора на текущего пользователя"
@@ -557,7 +520,7 @@ msgstr "➖ Ссылка на панель управления"
 msgid "Parent Panel"
 msgstr "Главная панель"
 
-msgid "Please Wait..."
+msgid "Please Wait"
 msgstr "Пожалуйста, подождите..."
 
 msgid "Please click on %(install)s to save the user page."
@@ -579,15 +542,6 @@ msgstr ""
 
 msgid "Please create an issue on Github."
 msgstr "Пожалуйста создайте проблему на Github."
-
-msgid ""
-"Please note that your panel can be accessed only via <a "
-"href=\"%(adminlink)s\" class=\"btn btn-primary copy-"
-"link\">%(adminlink)s</a>. Please save this link."
-msgstr ""
-"Обратите внимание, что доступ к вашей панели возможен только по следующей ссылке. пожалуйста, сохраните эту ссылку.\n"
-"<p><a href='%(adminlink)s' class='btn btn-secondary copy-link'><i class='fa-solid fa-copy'></i></a>\n"
-"<a href='%(adminlink)s' class='copy-link' style='word-break: Break-all;'>%(adminlink)s</a></p>"
 
 msgid "Please select at least one file."
 msgstr "Выберите по крайней мере один файл."
@@ -661,8 +615,8 @@ msgstr "REALITY Fallback Domain несовместим с именами сер�
 msgid "Release"
 msgstr "✅ Релиз"
 
-msgid "Remaining: "
-msgstr "Пакет заканчивается"
+msgid "Remaining about %(relative)s, exactly %(days)s days"
+msgstr "Осталось около %(относительно)s, ровно %(days)s дней"
 
 msgid "Remote nodes are not supported yet!"
 msgstr "Удаленные узлы пока не поддерживаются!"
@@ -674,7 +628,7 @@ msgid "Reset Filters"
 msgstr "Сброс Фильтров"
 
 msgid "Reset Proxies"
-msgstr ""
+msgstr "Сбросить прокси"
 
 msgid "Reset Usage Time:"
 msgstr "Время сброса использования трафика:"
@@ -717,6 +671,9 @@ msgstr "Выберите этот вариант, чтобы восстанов�
 
 msgid "Root"
 msgstr "Root"
+
+msgid "Russia"
+msgstr "Россия"
 
 msgid "Save"
 msgstr "Сохранить"
@@ -763,6 +720,12 @@ msgstr "Сортировать по %(name)s"
 msgid "Start Date"
 msgstr "Дата начала"
 
+msgid "Started %(days)s days ago"
+msgstr "Началось %(days)s дней назад"
+
+msgid "Started from %(relative)s"
+msgstr "Началось с %(относительного)s"
+
 msgid "Status"
 msgstr "Статус"
 
@@ -771,13 +734,6 @@ msgstr "Подтвердить"
 
 msgid "Success"
 msgstr "Успешно"
-
-msgid ""
-"Success! Please wait around 4 minutes to make sure everything is updated. "
-"During this time, please save your proxy links which are:"
-msgstr ""
-"⚠️ Подождите около 5 минут, чтобы убедиться, что все обновлено. в течение "
-"этого времени скопируйте и сохраните ссылки для прокси-серверов:"
 
 msgid ""
 "Success! Please wait around 5 minutes to make sure everything is updated."
@@ -791,9 +747,6 @@ msgstr "Telegram-бот"
 msgid "Temporary Short Link"
 msgstr "⏱️ Временная ссылка"
 
-msgid "The action done successfully. You can now leave this page."
-msgstr "✅Действие выполнено успешно. Теперь вы можете покинуть эту страницу"
-
 msgid "The message has been sent."
 msgstr "Сообщение отправлено"
 
@@ -804,12 +757,6 @@ msgid "The name shown in the configs for this domain."
 msgstr "Имя, которое будет отображаться в конфигурациях этого домена."
 
 msgid ""
-"The page has been moved to a new link. Please copy and save the new link."
-msgstr ""
-"Страница перемещена по новой ссылке. Пожалуйста, скопируйте и сохраните "
-"новую ссылку."
-
-msgid ""
 "This can be used for giving your users a permanent non blockable links."
 msgstr ""
 "Это можно использовать для предоставления вашим пользователям постоянных "
@@ -817,12 +764,6 @@ msgstr ""
 
 msgid "This domain does not exist in the panel!"
 msgstr "Этого домена не существует в панели управления!"
-
-msgid ""
-"This version of hiddify panel is outdated. Please update it from admin area."
-msgstr ""
-"⚠️ Эта версия Hiddify Panel устарела. пожалуйста, обновите его из панели "
-"управления администратора."
 
 msgid "Today Usage"
 msgstr "Сегодня"
@@ -851,13 +792,6 @@ msgstr "Пользователь активирован"
 msgid "User is inactive"
 msgstr "Пользователь неактивен"
 
-msgid ""
-"User usage will be updated every 6 minutes. To update it now click <a "
-"href=\"%(link)s\" class=\"btn btn-info\">here</a>"
-msgstr ""
-"Информация пользователей обновлеятся каждые 6 минут. Чтобы обновить сейчас, "
-"нажмите <a href=\"%(link)s\" class=\"btn btn-info\">here</a>"
-
 msgid "V2rayNG"
 msgstr ""
 "Альтернатива v2rayNG <button class='btn btn-sm btn-default' onclick='show_video('android-v2rayng')'><i class='fa-solid fa-question'></i> </button>\n"
@@ -879,11 +813,11 @@ msgstr "ℹ️ Подключите свой аккаунт к Telegram"
 msgid "Welcome %(user)s"
 msgstr "Добро пожаловать %(user)s"
 
-msgid "Welcome to admin bot. Choose your action"
-msgstr "Добро пожаловать в админ-бот. Выберите свое действие"
-
 msgid "Why Going to Premium?"
 msgstr "Зачем переходить на Премиум?"
+
+msgid "Will Start in %(days)s days"
+msgstr "Начнется через %(days)s дней"
 
 msgid "Windows"
 msgstr "Windows ПК"
@@ -918,15 +852,6 @@ msgstr ""
 "резервной копии."
 
 msgid ""
-"You can select the configs with which domains show be shown in the user "
-"area. If you select all, automatically, all the new domains will be added "
-"for each users."
-msgstr ""
-"Для посетителей пользовательской области с этим доменом, укажите, какие домены они могут видеть.\n"
-"<br>\n"
-"Предложение: Для домена с IP-адресом не попадащим под фильтры, отличного от других, выберите все остальные домены (кроме текущего). В результате, поскольку этот IP-адрес используется не для прокси-сервера, а для простого веб-сайта, этот домен и IP-адрес никогда не будут заблокированы, и ваши пользователи смогут легко обновлять свои профили."
-
-msgid ""
 "You have too much users! You can have only %(active)s active users and "
 "%(total)s users"
 msgstr ""
@@ -942,14 +867,6 @@ msgid ""
 msgstr ""
 "Вы должны посетить эту страницу без VPN. Ваша страна=%(your_country)s\n"
 "ожидаемый=%(expected_country)s"
-
-msgid ""
-"Your domains changed. Please do not forget to copy admin links, otherwise "
-"you can not access to the panel anymore."
-msgstr ""
-"⚠️ Ваши домены изменились. пожалуйста, не забудьте скопировать ссылки "
-"администратора, иначе вы больше не сможете получить доступ к панели "
-"управления"
 
 msgid ""
 "Your hiddify instance information \n"
@@ -987,6 +904,9 @@ msgstr "Админ"
 msgid "admin.Actions:apply_configs"
 msgstr "Применить конфигурацию"
 
+msgid "admin.action_done_sucess"
+msgstr "✅Действие выполнено успешно. Теперь вы можете покинуть эту страницу"
+
 msgid "admin.actions.apply_configs"
 msgstr "Применить конфигурацию"
 
@@ -1013,6 +933,14 @@ msgstr "Применить конфигурацию"
 
 msgid "admin.config.title"
 msgstr "Настройки"
+
+msgid "admin.define_mode"
+msgstr "🥇🥈🥉 Режим администратора"
+
+msgid "admin.incomplete_setup_warning"
+msgstr ""
+"Похоже, вы не до конца настроили систему. <a class='btn btn-success' "
+"href='%(quick_setup)s'>Нажмите здесь</a>, чтобы завершить настройку"
 
 msgid "admin.menu.api"
 msgstr "API"
@@ -1041,6 +969,11 @@ msgstr "Telegram"
 msgid "admin.menu.user"
 msgstr "Пользователи"
 
+msgid "admin.no_user_warning"
+msgstr ""
+"Кажется, вы еще не создали ни одного пользователя. ссылка пользователя по "
+"умолчанию: %(default_link)s"
+
 msgid "admin.proxy.detailed_config"
 msgstr "⚙️ Подробная конфигурация"
 
@@ -1058,6 +991,22 @@ msgstr ""
 "</div>\n"
 "Направьте ваш домен или субдомен на эти IP адреса, и введите его в поле ниже."
 
+msgid "admin.save_panel_link"
+msgstr ""
+"Обратите внимание, что доступ к вашей панели возможен только по следующей ссылке. пожалуйста, сохраните эту ссылку.\n"
+"<p><a href='%(adminlink)s' class='btn btn-secondary copy-link'><i class='fa-solid fa-copy'></i></a>\n"
+"<a href='%(adminlink)s' class='copy-link' style='word-break: Break-all;'>%(adminlink)s</a></p>"
+
+msgid "admin.waiting_for_update"
+msgstr ""
+"⚠️ Подождите около 5 минут, чтобы убедиться, что все обновлено. в течение "
+"этого времени скопируйте и сохраните ссылки для прокси-серверов:"
+
+msgid "adminuser.force_update_usage"
+msgstr ""
+"Информация пользователей обновлеятся каждые 6 минут. Чтобы обновить сейчас, "
+"нажмите <a href=\"%(link)s\" class=\"btn btn-info\">here</a>"
+
 msgid "all"
 msgstr "Все"
 
@@ -1071,13 +1020,17 @@ msgid "app.foxray.title"
 msgstr "Фоксрей"
 
 msgid "app.hiddify-clash-android.description"
-msgstr "app.hiddify-clash-android.description"
+msgstr ""
+"Hiddify Clash Android — одно из наших клиентских приложений, которое больше "
+"не обновляется. "
 
 msgid "app.hiddify-clash-android.title"
 msgstr "Hiddify Столкновение"
 
 msgid "app.hiddify-clash-desktop.description"
-msgstr "app.hiddify-clash-desktop.description"
+msgstr ""
+"Hiddify Clash Desktop — одно из наших клиентских приложений, которое больше "
+"не обновляется. "
 
 msgid "app.hiddify-clash-desktop.title"
 msgstr "Hiddify Столкновение"
@@ -1107,7 +1060,7 @@ msgid "app.loon.title"
 msgstr "гагара"
 
 msgid "app.nekobox.description"
-msgstr "app.nekobox.description"
+msgstr " Nekobox — клиенты на базе Singbox. "
 
 msgid "app.nekobox.title"
 msgstr "НекоБокс"
@@ -1142,6 +1095,15 @@ msgstr "Авто"
 msgid "auto_cdn_ip"
 msgstr "☑️ Автоматический выбор IP-адреса CDN"
 
+msgid "bot.admin_welcome"
+msgstr "Добро пожаловать в админ-бот. Выберите свое действие"
+
+msgid "bot.welcome"
+msgstr ""
+"Ура 🎉 🎉 🎉\n"
+"Добро пожаловать в Hiddify bot\n"
+"Для начала перейдите по ссылке на панели или введите свой UUID пользователя."
+
 msgid "cdn"
 msgstr "🔀 CDN (Cloudflare Proxy, ...)"
 
@@ -1169,33 +1131,33 @@ msgstr "Закрыть"
 msgid "cloudflare.error"
 msgstr ""
 
-msgid "config.Domain already used"
+msgid "config.Domain_already_used"
 msgstr "Домен уже существует. Использовать другой домен"
 
-msgid "config.Invalid brand link"
+msgid "config.Invalid_The_pattern_is_number-number"
+msgstr "⚠️ Конфигурация недействительна! Шаблон — это номер-номер ⚠️"
+
+msgid "config.Invalid_brand_link"
 msgstr ""
 "Некорректная ссылка. Поддерживается следующий формат: (https или "
 "http://example.com)"
 
-msgid "config.Invalid domain"
+msgid "config.Invalid_domain"
 msgstr "Ошибка! Неверный домен. Формат домена: www.google.com."
 
-msgid "config.Invalid port"
+msgid "config.Invalid_it_should_be_a_number_only"
+msgstr "⚠️ Конфигурация недействительна! Это должно быть только число ⚠️"
+
+msgid "config.Invalid_port"
 msgstr ""
 "Неверный порт. это должно быть целое число, разделенное запятыми, например. "
 "2052,2053"
 
-msgid "config.Invalid proxy path"
+msgid "config.Invalid_proxy_path"
 msgstr "Неверный Proxy Path Это должна быть строка ASCI (a-z A-Z 0-9)."
 
-msgid "config.Invalid telegram bot token"
+msgid "config.Invalid_telegram_bot_token"
 msgstr "Неверный токен Telegram bot"
-
-msgid "config.Invalid! The pattern is number-number"
-msgstr "⚠️ Конфигурация недействительна! Шаблон — это номер-номер ⚠️"
-
-msgid "config.Invalid! it should be a number only"
-msgstr "⚠️ Конфигурация недействительна! Это должно быть только число ⚠️"
 
 msgid "config.admin.description"
 msgstr ""
@@ -1415,10 +1377,10 @@ msgid "config.grpc_enable.label"
 msgstr "➿ Включить gRPC"
 
 msgid "config.h2_enable.description"
-msgstr ""
+msgstr "Включить протокол HTTP/2"
 
 msgid "config.h2_enable.label"
-msgstr ""
+msgstr "🔵 h2"
 
 msgid "config.hidden.description"
 msgstr "config.hidden.description"
@@ -1505,6 +1467,10 @@ msgstr "⬆️ Hysteria Исходящая Загрузка (mbps)"
 
 msgid "config.invalid-pattern-for-warp-sites"
 msgstr ""
+
+msgid "config.invalid_uuid"
+msgstr ""
+"Неверный UUID пользователя. пример: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6"
 
 msgid "config.is_parent.description"
 msgstr "config.is_parent.description"
@@ -1696,6 +1662,12 @@ msgstr "должен быть случайным"
 
 msgid "config.path_httpupgrade.label"
 msgstr ""
+
+msgid "config.path_splithttp.description"
+msgstr "Эта опция определяет путь для Split HTTP."
+
+msgid "config.path_splithttp.label"
+msgstr "Путь для Split HTTP"
 
 msgid "config.path_ss.description"
 msgstr "Путь Shadowsocks в ссылках"
@@ -1917,6 +1889,12 @@ msgstr ""
 
 msgid "config.speed_test.label"
 msgstr "🚀 Тест скорости"
+
+msgid "config.splithttp_enable.description"
+msgstr "Этот протокол отправляет и получает информацию по отдельным каналам. "
+
+msgid "config.splithttp_enable.label"
+msgstr "🈁 Split HTTP"
 
 msgid "config.ssfaketls.description"
 msgstr ""
@@ -2362,10 +2340,6 @@ msgstr "Включить протокол TLS"
 msgid "config.xtls_enable.label"
 msgstr "🟢 Включить XTLS"
 
-msgid "config.invalid uuid"
-msgstr ""
-"Неверный UUID пользователя. пример: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6"
-
 msgid "copy"
 msgstr "Копировать"
 
@@ -2383,6 +2357,12 @@ msgstr "➡️ На прямую"
 
 msgid "domain.cdn"
 msgstr "CDN"
+
+msgid "domain.changed_in_domain_warning"
+msgstr ""
+"⚠️ Ваши домены изменились. пожалуйста, не забудьте скопировать ссылки "
+"администратора, иначе вы больше не сможете получить доступ к панели "
+"управления"
 
 msgid "domain.description"
 msgstr ""
@@ -2403,11 +2383,28 @@ msgstr ""
 msgid "domain.domain_fronting.label"
 msgstr "🔒 Включить подключение к домену TLS"
 
+msgid "domain.empty.allowed_for_fake_only"
+msgstr ""
+
+msgid "domain.intro"
+msgstr ""
+
 msgid "domain.ip"
 msgstr "IP"
 
 msgid "domain.mode"
 msgstr "Режим"
+
+msgid "domain.reality.asn_issue"
+msgstr ""
+"Выбранный домен для REALITY не находится в том же ASN. Для более "
+"эффективного использования протокола лучше найти Домен в том же ASN"
+
+msgid "domain.show_domains_description"
+msgstr ""
+"Для посетителей пользовательской области с этим доменом, укажите, какие домены они могут видеть.\n"
+"<br>\n"
+"Предложение: Для домена с IP-адресом не попадащим под фильтры, отличного от других, выберите все остальные домены (кроме текущего). В результате, поскольку этот IP-адрес используется не для прокси-сервера, а для простого веб-сайта, этот домен и IP-адрес никогда не будут заблокированы, и ваши пользователи смогут легко обновлять свои профили."
 
 msgid "download"
 msgstr "Direct Download"
@@ -2418,7 +2415,7 @@ msgstr "🆎 Поддельный сайт"
 msgid "gRPC"
 msgstr "➿ gRPC"
 
-msgid "gRPC is a H2 based protocol. Maybe it is faster for you!"
+msgid "grpc-proxy.description"
 msgstr ""
 "ℹ️ gRPC — это протокол на основе HTTP 2. Возможно, в вашей ситуации он будет"
 " быстрее!"
@@ -2477,6 +2474,11 @@ msgstr "Hiddify панель"
 msgid "monthly"
 msgstr "🗓️ Ежемесячно"
 
+msgid "move_to_new_link"
+msgstr ""
+"Страница перемещена по новой ссылке. Пожалуйста, скопируйте и сохраните "
+"новую ссылку."
+
 msgid "next"
 msgstr "Следующий"
 
@@ -2510,6 +2512,11 @@ msgstr "🔙 Старый прямой режим (для Torjan TCP, VLess XTLS
 msgid "open"
 msgstr "Открыть"
 
+msgid "outdated_panel"
+msgstr ""
+"⚠️ Эта версия Hiddify Panel устарела. пожалуйста, обновите его из панели "
+"управления администратора."
+
 msgid "package days?"
 msgstr "пакетные дни?"
 
@@ -2525,8 +2532,14 @@ msgstr ""
 msgid "previous"
 msgstr "Предыдущий"
 
-msgid "quicksetup.setlang.error"
-msgstr "Произошла ошибка при смене языка."
+msgid "quicksetup.cdn_domain.description"
+msgstr ""
+
+msgid "quicksetup.cdn_domain.label"
+msgstr ""
+
+msgid "quicksetup.proxy_cat.description"
+msgstr ""
 
 msgid "quicksetup.setlang.success"
 msgstr "Изменение языка прошло успешно."
@@ -2542,13 +2555,6 @@ msgstr "Поиск"
 
 msgid "see the log in the bellow screen"
 msgstr "📑 Логи отображаются на экране ниже."
-
-msgid ""
-"selected domain for REALITY is not in the same ASN. To better use of the "
-"protocol, it is better to find a domain in the same ASN."
-msgstr ""
-"Выбранный домен для REALITY не находится в том же ASN. Для более "
-"эффективного использования протокола лучше найти Домен в том же ASN"
 
 msgid "serverssh.password-login.warning"
 msgstr ""
@@ -2581,6 +2587,11 @@ msgstr "UUID"
 
 msgid "user.current_usage_GB"
 msgstr "Текущее использование (GB)"
+
+msgid "user.define_mode"
+msgstr ""
+"Режим пакета для пользователя - должно ли использование сбрасываться каждый "
+"месяц, неделю и т. д."
 
 msgid "user.expiry_time"
 msgstr "Срок действия (дней)"
@@ -2771,6 +2782,12 @@ msgstr ""
 msgid "user.home.qr-code.display"
 msgstr "Отобразить QR-код"
 
+msgid "user.home.select_os"
+msgstr "Пожалуйста, выберите вашу операционную систему"
+
+msgid "user.home.select_tool"
+msgstr "Пожалуйста, выберите"
+
 msgid "user.home.share-title"
 msgstr "Поделиться в социальных сетях"
 
@@ -2889,12 +2906,6 @@ msgstr "⌛️ Лимит (GB)"
 
 msgid "user.user_links"
 msgstr "Ссылки пользователей"
-
-msgid "user.home.select os"
-msgstr "Пожалуйста, выберите вашу операционную систему"
-
-msgid "user.home.select tool"
-msgstr "Пожалуйста, выберите"
 
 msgid "weekly"
 msgstr "📅 Еженедельно"

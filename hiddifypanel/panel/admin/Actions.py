@@ -65,7 +65,7 @@ class Actions(FlaskView):
         domain_changed = request.args.get("domain_changed", str(domain_changed)).lower() == "true"
         complete_install = request.args.get("complete_install", str(complete_install)).lower() == "true"
         if domain_changed:
-            hutils.flask.flash((_('Your domains changed. Please do not forget to copy admin links, otherwise you can not access to the panel anymore.')), 'info')
+            hutils.flask.flash((_('domain.changed_in_domain_warning')), 'info')
         # hutils.flask.flash(f'complete_install={complete_install} domain_changed={domain_changed} ', 'info')
         # return render_template("result.html")
         # hiddify.add_temporary_access()
@@ -87,7 +87,7 @@ class Actions(FlaskView):
 
         resp = render_template("result.html",
                                out_type="info",
-                               out_msg=_("Success! Please wait around 4 minutes to make sure everything is updated. During this time, please save your proxy links which are:") +
+                               out_msg=_("admin.waiting_for_update") +
                                admin_links,
                                log_file_url=get_log_api_url(),
                                log_file="0-install.log",
@@ -108,7 +108,7 @@ class Actions(FlaskView):
         key = hutils.crypto.generate_x25519_keys()
         set_hconfig(ConfigEnum.reality_private_key, key['private_key'])
         set_hconfig(ConfigEnum.reality_public_key, key['public_key'])
-        hutils.flask.flash_config_success(restart_mode=ApplyMode.restart, domain_changed=False)
+        hutils.flask.flash_config_success(restart_mode=ApplyMode.apply_config, domain_changed=False)
         return redirect(hurl_for('admin.SettingAdmin:index'))
 
     @ login_required(roles={Role.super_admin})

@@ -10,7 +10,7 @@ from wtforms.validators import NumberRange
 from flask_babel import lazy_gettext as _
 from flask import g, request  # type: ignore
 from markupsafe import Markup
-from sqlalchemy import desc
+from sqlalchemy import desc, func
 
 from hiddifypanel.hutils.flask import hurl_for
 from wtforms.validators import Regexp, ValidationError
@@ -25,6 +25,7 @@ from hiddifypanel import hutils
 
 
 class UserAdmin(AdminLTEModelView):
+    column_default_sort = ('id', False)  # Sort by username in ascending order
 
     column_sortable_list = ["is_active", "name", "current_usage", 'mode', "remaining_days", "comment", 'last_online', "uuid", 'remaining_days']
     column_searchable_list = ["uuid", "name"]
@@ -112,7 +113,7 @@ class UserAdmin(AdminLTEModelView):
         # usage_limit_GB="in GB",
         # current_usage_GB="in GB"
         comment=_("Add some text that is only visible to you."),
-        mode=_("Define the user mode. Should the usage reset every month?"),
+        mode=_("user.define_mode"),
         last_reset_time=_("If monthly is enabled, the usage will be reset after 30 days from this date."),
         start_date=_("From when the user package will be started? Empty for start from first connection"),
         package_days=_("How many days this package should be available?")
@@ -376,15 +377,17 @@ class UserAdmin(AdminLTEModelView):
             abort(403)
 
         query = query.filter(User.added_by.in_(admin.recursive_sub_admins_ids()))
-        query = query.order_by(desc(User.id))
+
         return query
 
     # Override get_count_query() to include the filter condition in the count query
     def get_count_query(self):
         # Get the base count query
 
-        # query = query.session.query(func.count(User.id))
+        # query = self.session.query(func.count(User.id)).
+
         query = super().get_count_query()
+
         admin_id = int(request.args.get("admin_id") or g.account.id)
         if admin_id not in g.account.recursive_sub_admins_ids():
             abort(403)

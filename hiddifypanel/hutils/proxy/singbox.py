@@ -2,6 +2,7 @@ from flask import render_template, request, g
 import json
 
 from hiddifypanel import hutils
+from hiddifypanel.hutils.proxy.xrayjson import to_xray
 from hiddifypanel.models import ProxyProto, ProxyTransport, Domain, ConfigEnum
 
 
@@ -43,6 +44,12 @@ def configs_as_json(domains: list[Domain], **kwargs) -> str:
     return res
 
 
+def is_xray_proxy(proxy: dict):
+    if proxy['transport'] == ProxyTransport.splithttp:
+        return True
+    return False
+
+
 def to_singbox(proxy: dict) -> list[dict] | dict:
     name = proxy['name']
 
@@ -54,6 +61,20 @@ def to_singbox(proxy: dict) -> list[dict] | dict:
     all_base.append(base)
     # vmess ws
     base["tag"] = f"""{proxy['extra_info']} {proxy["name"]} § {proxy['port']} {proxy["dbdomain"].id}"""
+    if is_xray_proxy(proxy):
+        if hutils.flask.is_client_version(hutils.flask.ClientVersion.hiddify_next, 1, 9, 0):
+            base['type'] = "xray"
+            xp = to_xray(proxy)
+            xp['streamSettings']['sockopt'] = {}
+            base['xray_outbound_raw'] = xp
+            if proxy.get('tls_fragment_enable'):
+                base['xray_fragment'] = {
+                    'packets': "tlshello",
+                    'length': proxy["tls_fragment_size"],
+                    'interval': proxy["tls_fragment_sleep"]
+                }
+            return all_base
+        return {'name': name, 'msg': "xray proxy does not support in this client version", 'type': 'debug'}
     base["type"] = str(proxy["proto"])
     base["server"] = proxy["server"]
     base["server_port"] = int(proxy["port"])

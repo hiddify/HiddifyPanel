@@ -94,7 +94,7 @@ class AllConfigsAPI(MethodView):
                 create_item(
                     "Clash Meta", "ALL", "", "", "", "",
                     # f"clashmeta://install-config?url={base_url}clash/meta/all.yml&name=mnormal_{c['db_domain'].alias or c['db_domain'].domain}-{c['asn']}-{c['mode']}&asn={c['asn']}&mode={c['mode']}"
-                    f"clash://install-config?url={base_url}clashmeta/?asn={c['asn']}#{config_name}"
+                    f"{base_url}clashmeta/?asn={c['asn']}#{config_name}"
                 )
             )
 
@@ -104,11 +104,19 @@ class AllConfigsAPI(MethodView):
                 create_item(
                     "Clash", "ALL", "Except VLess", "", "", "",
                     # f"clash://install-config?url={base_url}clash/all.yml&name=new_normal_{c['db_domain'].alias or c['db_domain'].domain}-{c['asn']}-{c['mode']}&asn={c['asn']}&mode={c['mode']}"
-                    f"clash://install-config?url={base_url}clash/?asn={c['asn']}#{config_name}"
+                    f"{base_url}clash/?asn={c['asn']}#{config_name}"
                 )
             )
 
-        # Add Singbox: SSh
+        if hconfig(ConfigEnum.wireguard_enable):
+            items.append(
+                create_item(
+                    "Wireguard", "Wireguard", "", "", "", "",
+                    # f"{base_url}singbox.json?name={c['db_domain'].alias or c['db_domain'].domain}-{c['asn']}&asn={c['asn']}&mode={c['mode']}"
+                    f"{base_url}wireguard/#{config_name}"
+                )
+            )
+            # Add Singbox: SSh
         if hconfig(ConfigEnum.sub_singbox_ssh_enable) and hconfig(ConfigEnum.ssh_server_enable):
             items.append(
                 create_item(

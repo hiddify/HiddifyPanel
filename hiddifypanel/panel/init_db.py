@@ -12,12 +12,64 @@ from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify
 from hiddifypanel.database import db, db_execute
 from flask import g
-from sqlalchemy import text
+from sqlalchemy import func, text
 from loguru import logger
-MAX_DB_VERSION = 90
+MAX_DB_VERSION = 100
 
 
-def _v88(child_id):
+def _v95(child_id):
+    result = (
+        db.session.query(
+            DailyUsage.child_id,
+            DailyUsage.admin_id,
+            DailyUsage.date,
+            func.max(DailyUsage.online).label('online'),
+            func.sum(DailyUsage.usage).label('usage'),
+            func.count(DailyUsage.usage).label('count'),
+        )
+        .group_by(DailyUsage.child_id, DailyUsage.admin_id, DailyUsage.date)
+        .all()
+    )
+
+    for r in result:
+        if r.count > 1:
+            # Delete existing records for this group
+            db.session.query(DailyUsage).filter(
+                DailyUsage.child_id == r.child_id,
+                DailyUsage.admin_id == r.admin_id,
+                DailyUsage.date == r.date
+            ).delete()
+
+            # Add the aggregated record
+            new_record = DailyUsage(
+                child_id=r.child_id,
+                admin_id=r.admin_id,
+                date=r.date,
+                online=r.online,
+                usage=r.usage
+            )
+            db.session.add(new_record)
+
+    # Commit the changes to the database
+    db.session.commit()
+
+
+def _v94(child_id):
+    set_hconfig(ConfigEnum.wireguard_noise_trick, "0-0")
+
+
+def _v93(child_id):
+    set_hconfig(ConfigEnum.quic_enable, True)
+    set_hconfig(ConfigEnum.splithttp_enable, True)
+
+
+def _v92(child_id):
+    db.session.bulk_save_objects(get_proxy_rows_v1())
+
+
+def _v89(child_id):
+    set_hconfig(ConfigEnum.path_splithttp, hutils.random.get_random_string(7, 15))
+    set_hconfig(ConfigEnum.splithttp_enable, False)
     pass
 
 
@@ -47,11 +99,11 @@ def _v83(child_id):
 
 def _v82(child_id):
     set_hconfig(ConfigEnum.vless_enable, True)
-    set_hconfig(ConfigEnum.trojan_enable, True)
-    set_hconfig(ConfigEnum.reality_enable, True)
+    set_hconfig(ConfigEnum.trojan_enable, False)
+    set_hconfig(ConfigEnum.reality_enable, False)
     set_hconfig(ConfigEnum.tcp_enable, True)
-    set_hconfig(ConfigEnum.quic_enable, True)
-    set_hconfig(ConfigEnum.xtls_enable, True)
+    set_hconfig(ConfigEnum.quic_enable, False)
+    set_hconfig(ConfigEnum.xtls_enable, False)
     set_hconfig(ConfigEnum.h2_enable, True)
 
 
@@ -80,7 +132,7 @@ def _v75(child_id):
 
 
 def _v74(child_id):
-    set_hconfig(ConfigEnum.ws_enable, True)
+    set_hconfig(ConfigEnum.ws_enable, False)
     set_hconfig(ConfigEnum.grpc_enable, True)
     set_hconfig(ConfigEnum.httpupgrade_enable, True)
     set_hconfig(ConfigEnum.shadowsocks2022_port, hutils.random.get_random_unused_port())
@@ -128,7 +180,6 @@ def _v69():
     wg_pk, wg_pub, _ = hutils.crypto.get_wg_private_public_psk_pair()
     add_config_if_not_exist(ConfigEnum.wireguard_private_key, wg_pk)
     add_config_if_not_exist(ConfigEnum.wireguard_public_key, wg_pub)
-    add_config_if_not_exist(ConfigEnum.wireguard_noise_trick, "5-10")
     for u in User.query.all():
         u.wg_pk, u.wg_pub, u.wg_psk = hutils.crypto.get_wg_private_public_psk_pair()
 
@@ -471,6 +522,9 @@ def get_proxy_rows_v1():
         "httpupgrade direct vless",
         # "httpupgrade direct trojan",
         "httpupgrade direct vmess",
+        "splithttp direct vless",
+        "splithttp direct trojan",
+        "splithttp direct vmess",
         "tcp direct vless",
         "tcp direct trojan",
         "tcp direct vmess",
@@ -487,6 +541,11 @@ def get_proxy_rows_v1():
         "httpupgrade relay vless",
         # "httpupgrade relay trojan",
         "httpupgrade relay vmess",
+
+        "splithttp relay vless",
+        "splithttp relay trojan",
+        "splithttp relay vmess",
+
         "tcp relay vless",
         "tcp relay trojan",
         "tcp relay vmess",
@@ -506,6 +565,11 @@ def get_proxy_rows_v1():
         "httpupgrade CDN vless",
         # "httpupgrade CDN trojan",
         "httpupgrade CDN vmess",
+
+        "splithttp CDN vless",
+        "splithttp CDN trojan",
+        "splithttp CDN vmess",
+
         "grpc CDN vless",
         "grpc CDN trojan",
         "grpc CDN vmess",
@@ -535,9 +599,11 @@ def get_proxy_rows_v1():
 
 def make_proxy_rows(cfgs):
     # "h3_quic",
-    for l3 in ["tls_h2", "tls", "http", "reality"]:
+    for l3 in [ProxyL3.h3_quic, "tls_h2", "tls", "http", "reality"]:
         for c in cfgs:
             transport, cdn, proto = c.split(" ")
+            if transport != ProxyTransport.splithttp and l3 == ProxyL3.h3_quic:
+                continue
             if l3 in ["kcp", 'reality'] and cdn != "direct":
                 continue
             if l3 == "reality" and ((transport not in ['tcp', 'grpc', 'XTLS']) or proto != 'vless'):

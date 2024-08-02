@@ -126,11 +126,14 @@ def to_link(proxy: dict) -> str | dict:
         baseurl += "&encryption=none"
     if proxy.get('fingerprint', 'none') != 'none':
         baseurl += "&fp=" + proxy['fingerprint']
+    if proxy.get('transport') in {ProxyTransport.splithttp}:
+        baseurl += "&core=xray"
     if proxy['l3'] != 'quic':
-        if proxy.get('l3') != ProxyL3.reality and (proxy.get('transport') == ProxyTransport.tcp or proxy.get('transport') == ProxyTransport.httpupgrade) and proxy['proto'] in [ProxyProto.vless, ProxyProto.trojan]:
+        if proxy.get('l3') != ProxyL3.reality and (proxy.get('transport') in {ProxyTransport.tcp, ProxyTransport.httpupgrade, ProxyTransport.splithttp}) and proxy['proto'] in [ProxyProto.vless, ProxyProto.trojan]:
             baseurl += '&headerType=http'
         else:
             baseurl += '&headerType=None'
+
     if proxy['mode'] == 'Fake' or proxy['allow_insecure']:
         baseurl += "&allowInsecure=true"
     if proxy.get('flow'):
@@ -140,7 +143,7 @@ def to_link(proxy: dict) -> str | dict:
 
     if 'reality' in proxy["l3"]:
         return f"{baseurl}&security=reality&pbk={proxy['reality_pbk']}&sid={proxy['reality_short_id']}{infos}"
-    if 'tls' in proxy['l3']:
+    if 'tls' in proxy['l3'] or "quic" in proxy['l3']:
         return f'{baseurl}&security=tls{infos}'
     if proxy['l3'] == 'http':
         return f'{baseurl}&security=none{infos}'
@@ -196,10 +199,10 @@ def make_v2ray_configs(domains: list[Domain], user: User, expire_days: int, ip_d
 
 def add_tls_tricks_to_dict(d: dict, proxy: dict):
     if proxy.get('tls_fragment_enable'):
-        if g.user_agent.get('is_shadowrocket'):
-            d['fragment'] = f'1,{proxy["tls_fragment_size"]},{proxy["tls_fragment_sleep"]}'
-        else:
-            d['fragment'] = f'{proxy["tls_fragment_size"]},{proxy["tls_fragment_sleep"]},tlshello'
+        # if g.user_agent.get('is_shadowrocket'):
+        #     d['fragment'] = f'1,{proxy["tls_fragment_size"]},{proxy["tls_fragment_sleep"]}'
+        # else:
+        d['fragment'] = f'tlshello,{proxy["tls_fragment_size"]},{proxy["tls_fragment_sleep"]}'
 
     if proxy.get("tls_mixed_case"):
         d['mc'] = 1

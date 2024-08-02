@@ -46,9 +46,11 @@ def convert_to_nested(data):
 def po_to_json(po_file_path, json_file_path):
     po = polib.pofile(po_file_path)
     translations = {}
+    translations = loadI18N(json_file_path)
     for entry in po:
         translations[entry.msgid] = entry.msgstr
     translations = convert_to_nested(translations)
+
     with open(json_file_path, 'w', encoding='utf-8') as json_file:
         json.dump(translations, json_file, ensure_ascii=False, indent=2)
 

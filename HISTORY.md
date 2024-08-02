@@ -1,9 +1,211 @@
 # Changelog
 
 
-## (unreleased)
+## v10.70.2 (2024-07-30)
+
+#### Fix
+
+* Buggy update. 
+
+#### Other
+
+* Merge branch 'main' of github.com:hiddify/Hiddify-Panel. 
+
+* Update translations. 
+
+
+
+## v10.70.1 (2024-07-30)
+
+#### Other
+
+* Add more logs to usage update. 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Add generate_204. 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Update translations. 
+
+
+
+## v10.70.0 (2024-07-29)
 
 #### New
+
+* Add  url test. 
+
+* Add xray fragment. 
+
+* Add h3 for splithttp. 
+
+* Add html editor for user custom text. 
+
+* Add wiregaurd output for wireguard application. 
+
+* Add splithttp. 
+
+* Add lock in updating usage. 
+
+* Add try catch in get user usage. 
+
+#### Changes
+
+* Add alpn to path. 
+
+* Work splithttp in hiddify. 
+
+#### Fix
+
+* Clash link. 
+
+* Shadowtls. 
+
+* Shadowsocks bug. 
+
+* Quic bug in sub link. 
+
+* Xray bug. 
+
+* Quic. 
+
+* Bug???? 
+
+* Api patch bug. 
+
+* Bot issue. 
+
+* Permission issue. 
+
+* Incorrect ssh warning. 
+
+* Reality issue. 
+
+* Bug. 
+
+* Incorrect  usage. 
+
+* Bug in adding fake domain. 
+
+#### Other
+
+* Wireguard tuic and hysteria added to clashmeta link. 
+
+* Update translations. 
+
+* Remove wireguard noise. 
+
+* Update translations. 
+
+* Update translations. 
+
+* Remove fragment in for quic. 
+
+* Update translations. 
+
+* Update translations. 
+
+* Update translations. 
+
+* Update translations. 
+
+* Chore: update translations with Fink 🐦 
+
+* Update translations. 
+
+* Change useragent of splithttp. 
+
+* Add more tags for free text. 
+
+* Update translations. 
+
+* Chore: update translations with Fink 🐦 
+
+* Update translations. 
+
+* Update translations. 
+
+* Better reinstall or apply policy. 
+
+* Merge branch 'main' of github.com:hiddify/Hiddify-Panel. 
+
+* Update translations. 
+
+* Reduce overhead. 
+
+* Reduce overhead. 
+
+* Force:60 seconds lock. 
+
+* Disable splithttp by default. 
+
+* Merge branch 'main' of github.com:hiddify/Hiddify-Panel. 
+
+* Update translations. 
+
+
+
+## v10.50.4 (2024-07-17)
+
+#### Fix
+
+* Small bugs. 
+
+#### Other
+
+* Merge branch 'main' of github.com:hiddify/Hiddify-Panel. 
+
+* Update translations. 
+
+
+
+## v10.50.3 (2024-07-14)
+
+#### Other
+
+* Update translations. 
+
+
+
+## v10.50.2 (2024-07-14)
+
+#### Fix
+
+* Reality bug. 
+
+* Ignoring fake domain for no domain proxies. 
+
+#### Other
+
+* Update translations. 
+
+
+
+## v10.50.1 (2024-07-14)
+
+#### Other
+
+* Update translations. 
+
+
+
+## v10.50.0 (2024-07-14)
+
+#### New
+
+* Better ipv6 and ipv4 managemnt. 
+
+* Add quick setup steps and disable some services by default. 
 
 * Add more system api such as update usage and all configs. 
 
@@ -14,6 +216,14 @@
 * Better ui for start and end date. 
 
 #### Fix
+
+* Xray in json config. 
+
+* Reset cache bug. 
+
+* Invalidate cache after changing settings. 
+
+* Sorting issue. 
 
 * Api uuid bug. 
 
@@ -28,6 +238,38 @@
 * Xray sub order. 
 
 #### Other
+
+* Update translations. 
+
+* Update translations. 
+
+* Allow fake domain to be empty. 
+
+* Merge branch 'main' of github.com:hiddify/Hiddify-Panel. 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Allow host to be empty. 
+
+* Update translations. 
+
+* Merge branch 'main' of github.com:hiddify/Hiddify-Panel. 
+
+* Update translations. 
+
+* Update. 
+
+* Update translations. 
+
+* Update_translation. 
+
+* Merge branch 'main' of github.com:hiddify/Hiddify-Panel. 
+
+* Update translations. 
+
+* Add id in user. 
 
 * Update translations. 
 

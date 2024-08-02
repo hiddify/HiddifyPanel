@@ -25,7 +25,7 @@
 #     column_descriptions = dict(
 #         domain=_("domain.description"),
 #         alias=_('The name shown in the configs for this domain.'),
-#         show_domains=_('You can select the configs with which domains show be shown in the user area. If you select all, automatically, all the new domains will be added for each users.')
+#         show_domains=_('domain.show_domains_description')
 #         # current_usage_GB="in GB"
 #     )
 

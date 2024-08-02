@@ -290,7 +290,7 @@ class User(BaseAccount, SerializerMixin):
         return schema.dump(User())
 
     def to_schema(self):
-        user_dict = self.to_dict()
+        user_dict = self.to_dict(dump_id=True)
         from hiddifypanel.panel.commercial.restapi.v2.admin.user_api import UserSchema
         return UserSchema().load(user_dict)
 
@@ -317,7 +317,8 @@ class User(BaseAccount, SerializerMixin):
                 'wg_pk': self.wg_pk,
                 'wg_pub': self.wg_pub,
                 'wg_psk': self.wg_psk,
-                'is_active': self.is_active
+                'is_active': self.is_active,
+                'enable': self.enable
                 }
 
     # @staticmethod

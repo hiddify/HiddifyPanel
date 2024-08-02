@@ -1,6 +1,7 @@
 import yaml
 from hiddifypanel.models import ProxyCDN, ProxyL3, ProxyProto, ProxyTransport, Domain
 from hiddifypanel import hutils
+# https://wiki.metacubex.one/en/
 
 
 def get_clash_config_names(meta_or_normal, domains: list[Domain]):
@@ -29,17 +30,22 @@ def get_all_clash_configs(meta_or_normal, domains: list[Domain]):
 def to_clash(proxy, meta_or_normal):
 
     name = proxy['name']
-    if proxy['l3'] == "kcp":
-        return {'name': name, 'msg': "clash does not support kcp", 'type': 'debug'}
-    if proxy['proto'] == "ssh":
-        return {'name': name, 'msg': "clash does not support ssh", 'type': 'debug'}
+
+    if proxy['l3'] in ["kcp", ProxyL3.h3_quic]:
+        return {'name': name, 'msg': f"clash does not support {proxy['l3']}", 'type': 'debug'}
+    if proxy['transport'] in [ProxyTransport.splithttp, ProxyTransport.httpupgrade]:
+        return {'name': name, 'msg': f"clash does not support {proxy['transport']}", 'type': 'debug'}
+    # if proxy['proto'] in [Proxy.shado]:
+
     if meta_or_normal == "normal":
-        if proxy['proto'] in ["vless", 'tuic', 'hysteria2']:
-            return {'name': name, 'msg': f"{proxy['proto']} not supported in clash", 'type': 'debug'}
         if proxy.get('flow'):
             return {'name': name, 'msg': "xtls not supported in clash", 'type': 'debug'}
-        if proxy['transport'] == "shadowtls":
-            return {'name': name, 'msg': "shadowtls not supported in clash", 'type': 'debug'}
+        if proxy['proto'] in [ProxyProto.ssh, ProxyProto.wireguard, ProxyProto.tuic, ProxyProto.hysteria2]:
+            return {'name': name, 'msg': f"clash does not support {proxy['proto']}", 'type': 'debug'}
+        if proxy['proto'] in ["vless", 'tuic', 'hysteria2']:
+            return {'name': name, 'msg': f"{proxy['proto']} not supported in clash", 'type': 'debug'}
+        if proxy['transport'] in ["shadowtls", "splithttp"]:
+            return {'name': name, 'msg': f"{proxy['transport']} not supported in clash", 'type': 'debug'}
     if proxy['l3'] == ProxyL3.tls_h2 and proxy['proto'] in [ProxyProto.vmess, ProxyProto.vless] and proxy['dbe'].cdn == ProxyCDN.direct:
         return {'name': name, 'msg': "bug tls_h2 vmess and vless in clash meta", 'type': 'warning'}
     base = {}
@@ -48,7 +54,31 @@ def to_clash(proxy, meta_or_normal):
     base["type"] = str(proxy["proto"])
     base["server"] = proxy["server"]
     base["port"] = proxy["port"]
-    base['alpn'] = proxy['alpn'].split(',')
+    if proxy["proto"] == "ssh":
+        base["username"] = proxy["uuid"]
+        base["private-key"] = proxy['private_key']
+        base["host-key"] = proxy.get('host_key', [])
+        return base
+    base["udp"] = True
+    if proxy["proto"] == ProxyProto.wireguard:
+        base["private-key"] = proxy["wg_pk"]
+        base["ip"] = f'{proxy["wg_ipv4"]}/32'
+        # base["ipv6"]
+        base["public-key"] = proxy["wg_server_pub"]
+        base["pre-shared-key"] = proxy["wg_psk"]
+        # base["allowed-ips"]
+        return base
+    if proxy["proto"] == ProxyProto.tuic:
+        # base['congestion_control'] = "cubic"
+        base['udp-relay-mode'] = 'native'
+        base['reduce-rtt'] = True
+        base["skip-cert-verify"] = proxy['allow_insecure']
+        base['sni'] = proxy['sni']
+        # base['heartbeat'] = "10s"
+        base['password'] = proxy['uuid']
+        base['uuid'] = proxy['uuid']
+        return base
+
     if proxy["proto"] == "ssr":
         base["cipher"] = proxy["cipher"]
         base["password"] = proxy["uuid"]
@@ -56,16 +86,6 @@ def to_clash(proxy, meta_or_normal):
         base["obfs"] = proxy["ssr-obfs"]
         base["protocol"] = proxy["ssr-protocol"]
         base["obfs-param"] = proxy["fakedomain"]
-        return base
-    elif proxy["proto"] == "tuic":
-        base["uuid"] = proxy["uuid"]
-        base["password"] = proxy["uuid"]
-        base["disable-sni"] = proxy['allow_insecure']
-        base["reduce-rtt"] = True
-        base["request-timeout"] = 8000
-        base["udp-relay-mode"] = 'native'
-        base["congestion-controller"] = 'cubic'
-        base['sni'] = proxy['sni']
         return base
     elif proxy["proto"] in ["ss", "v2ray"]:
         base["cipher"] = proxy["cipher"]
@@ -81,7 +101,7 @@ def to_clash(proxy, meta_or_normal):
             base["plugin"] = "shadow-tls"
             base["plugin-opts"] = {
                 "host": proxy["fakedomain"],
-                "password": proxy["proxy_path"],
+                "password": proxy["shared_secret"],
                 "version": 3  # support 1/2/3
 
             }
@@ -97,16 +117,26 @@ def to_clash(proxy, meta_or_normal):
                 "path": proxy["path"]
             }
         return base
-    elif proxy["proto"] == "trojan":
+    base['alpn'] = proxy['alpn'].split(',')
+    base["skip-cert-verify"] = proxy["mode"] == "Fake"
+    if meta_or_normal == "meta" and proxy.get('fingerprint'):
+        base['client-fingerprint'] = proxy['fingerprint']
+
+    if proxy["proto"] == "trojan":
         base["password"] = proxy["uuid"]
         base["sni"] = proxy["sni"]
-
+    elif proxy["proto"] == "hysteria2":
+        base["password"] = proxy["uuid"]
+        base["obfs"] = "salamander"
+        base["obfs-password"] = proxy.get('hysteria_obfs_password')
+        return base
     else:
         base["uuid"] = proxy["uuid"]
         base["servername"] = proxy["sni"]
         base["tls"] = "tls" in proxy["l3"] or "reality" in proxy["l3"]
-    if meta_or_normal == "meta":
-        base['client-fingerprint'] = proxy['fingerprint']
+    if proxy["proto"] in ["vless", "vmess"]:
+        base["packet-encoding"] = "xudp"
+
     if proxy.get('flow'):
         base["flow"] = proxy['flow']
         # base["flow-show"] = True
@@ -114,11 +144,8 @@ def to_clash(proxy, meta_or_normal):
     if proxy["proto"] == "vmess":
         base["alterId"] = 0
         base["cipher"] = proxy["cipher"]
-    base["udp"] = True
 
-    base["skip-cert-verify"] = proxy["mode"] == "Fake"
-
-    base["network"] = proxy["transport"]
+    base["network"] = str(proxy["transport"])
 
     if base["network"] == "ws":
         base["ws-opts"] = {

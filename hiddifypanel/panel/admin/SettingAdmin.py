@@ -16,7 +16,8 @@ from flask_bootstrap import SwitchField
 # from gettext import gettext as _
 from flask_classful import FlaskView
 from flask_wtf import FlaskForm
-from bleach import clean as bleach_clean
+from bleach import clean as bleach_clean, ALLOWED_TAGS as BLEACH_ALLOWED_TAGS
+ALLOWED_TAGS = set([*BLEACH_ALLOWED_TAGS, "h1", "h2", "h3", "h4", "p"])
 
 
 from hiddifypanel.models import BoolConfig, StrConfig, ConfigEnum, hconfig, ConfigCategory
@@ -24,6 +25,7 @@ from hiddifypanel.models import *
 from hiddifypanel.database import db
 from hiddifypanel.panel import hiddify, custom_widgets
 from hiddifypanel import __version__
+from hiddifypanel.cache import cache
 
 
 class SettingAdmin(FlaskView):
@@ -93,9 +95,8 @@ class SettingAdmin(FlaskView):
 
             for k, v in changed_configs.items():
                 # html inputs santitizing
-                san_items = {ConfigEnum.branding_title, ConfigEnum.branding_site, ConfigEnum.branding_freetext}
-                if k in san_items:
-                    v = bleach_clean(v)
+                if k in {ConfigEnum.branding_title, ConfigEnum.branding_site, ConfigEnum.branding_freetext}:
+                    v = bleach_clean(v, tags=ALLOWED_TAGS)
                 set_hconfig(k, v, commit=False)
 
             db.session.commit()
@@ -111,6 +112,8 @@ class SettingAdmin(FlaskView):
                     if p_mode != PanelMode.standalone:
                         set_hconfig(ConfigEnum.panel_mode, PanelMode.standalone)
 
+            cache.invalidate_all_cached_functions()
+            # hutils.proxy.get_proxies.invalidate_all()
             from hiddifypanel.panel.commercial.telegrambot import register_bot
             register_bot(set_hook=True)
 
@@ -194,13 +197,15 @@ def get_config_form():
             if c.key in bool_types:
                 field = SwitchField(_(f'config.{c.key}.label'), default=c.value, description=_(f'config.{c.key}.description'))
             elif c.key == ConfigEnum.core_type:
-                field = wtf.SelectField(_(f"config.{c.key}.label"), choices=[("xray", _("Xray")), ("singbox", _(
-                    "SingBox"))], description=_(f"config.{c.key}.description"), default=hconfig(c.key))
+                field = wtf.SelectField(_(f"config.{c.key}.label"),
+                                        choices=[("xray", _("Xray")), ("singbox", _("SingBox"))],
+                                        description=_(f"config.{c.key}.description"),
+                                        default=hconfig(c.key))
             elif c.key == ConfigEnum.warp_mode:
-                field = wtf.SelectField(
-                    _(f"config.{c.key}.label"), choices=[("disable", _("Disable")), ("all", _("All")), ("custom", _("Only Blocked and Local websites"))],
-                    description=_(f"config.{c.key}.description"),
-                    default=hconfig(c.key))
+                field = wtf.SelectField(_(f"config.{c.key}.label"),
+                                        choices=[("disable", _("Disable")), ("all", _("All")), ("custom", _("Only Blocked and Local websites"))],
+                                        description=_(f"config.{c.key}.description"),
+                                        default=hconfig(c.key))
 
             elif c.key == ConfigEnum.lang or c.key == ConfigEnum.admin_lang:
                 field = wtf.SelectField(
@@ -209,8 +214,8 @@ def get_config_form():
                     description=_(f"config.{c.key}.description"),
                     default=hconfig(c.key))
             elif c.key == ConfigEnum.country:
-                field = wtf.SelectField(_(f"config.{c.key}.label"), choices=[("ir", _("Iran")), ("zh", _(
-                    "China")), ("other", _("Others"))], description=_(f"config.{c.key}.description"), default=hconfig(c.key))
+                field = wtf.SelectField(_(f"config.{c.key}.label"), choices=[
+                    ("ir", _("Iran")), ("zh", _("China")), ("ru", _("Russia")), ("other", _("Others"))], description=_(f"config.{c.key}.description"), default=hconfig(c.key))
             elif c.key == ConfigEnum.package_mode:
                 package_modes = [("release", _("Release")), ("beta", _("Beta"))]
                 if hconfig(c.key) == "develop":
@@ -267,16 +272,16 @@ def get_config_form():
                 render_kw = {'class': "ltr"}
                 validators = []
                 if c.key == ConfigEnum.domain_fronting_domain:
-                    validators.append(wtf.validators.Regexp("^([A-Za-z0-9\\-\\.]+\\.[a-zA-Z]{2,})|$", re.IGNORECASE, _("config.Invalid domain")))
+                    validators.append(wtf.validators.Regexp("^([A-Za-z0-9\\-\\.]+\\.[a-zA-Z]{2,})|$", re.IGNORECASE, _("config.Invalid_domain")))
                     validators.append(hutils.flask.validate_domain_exist)
                 elif '_domain' in c.key or "_fakedomain" in c.key:
-                    validators.append(wtf.validators.Regexp("^([A-Za-z0-9\\-\\.]+\\.[a-zA-Z]{2,})$", re.IGNORECASE, _("config.Invalid domain")))
+                    validators.append(wtf.validators.Regexp("^([A-Za-z0-9\\-\\.]+\\.[a-zA-Z]{2,})$", re.IGNORECASE, _("config.Invalid_domain")))
                     validators.append(hutils.flask.validate_domain_exist)
 
                     if c.key != ConfigEnum.decoy_domain:
-                        validators.append(wtf.validators.NoneOf([d.domain.lower() for d in Domain.query.all()], _("config.Domain already used")))
+                        validators.append(wtf.validators.NoneOf([d.domain.lower() for d in Domain.query.all()], _("config.Domain_already_used")))
                         validators.append(wtf.validators.NoneOf(
-                            [cc.value.lower() for cc in StrConfig.query.filter(StrConfig.child_id == Child.current().id).all() if cc.key != c.key and "fakedomain" in cc.key and cc.key != ConfigEnum.decoy_domain], _("config.Domain already used")))
+                            [cc.value.lower() for cc in StrConfig.query.filter(StrConfig.child_id == Child.current().id).all() if cc.key != c.key and "fakedomain" in cc.key and cc.key != ConfigEnum.decoy_domain], _("config.Domain_already_used")))
 
                     render_kw['required'] = ""
                     if len(c.value) < 3:
@@ -292,36 +297,36 @@ def get_config_form():
                 if c.key == ConfigEnum.parent_panel:
                     validators.append(wtf.validators.Regexp("()|(http(s|)://([A-Za-z0-9\\-\\.]+\\.[a-zA-Z]{2,})/.*)", re.IGNORECASE, _("Invalid admin link")))
                 if c.key == ConfigEnum.telegram_bot_token:
-                    validators.append(wtf.validators.Regexp("()|^([0-9]{8,12}:[a-zA-Z0-9_-]{30,40})|$", re.IGNORECASE, _("config.Invalid telegram bot token")))
+                    validators.append(wtf.validators.Regexp("()|^([0-9]{8,12}:[a-zA-Z0-9_-]{30,40})|$", re.IGNORECASE, _("config.Invalid_telegram_bot_token")))
                 if c.key == ConfigEnum.branding_site:
                     validators.append(wtf.validators.Regexp(
-                        "()|(http(s|)://([A-Za-z0-9\\-\\.]+\\.[a-zA-Z]{2,})/?.*)", re.IGNORECASE, _("config.Invalid brand link")))
+                        "()|(http(s|)://([A-Za-z0-9\\-\\.]+\\.[a-zA-Z]{2,})/?.*)", re.IGNORECASE, _("config.Invalid_brand_link")))
                     # render_kw['required']=""
 
                 if 'secret' in c.key:
                     validators.append(wtf.validators.Regexp(
-                        "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$", re.IGNORECASE, _('config.invalid uuid')))
+                        "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$", re.IGNORECASE, _('config.invalid_uuid')))
                     render_kw['required'] = ""
 
                 if c.key == ConfigEnum.proxy_path:
-                    validators.append(wtf.validators.Regexp("^[a-zA-Z0-9]*$", re.IGNORECASE, _("config.Invalid proxy path")))
+                    validators.append(wtf.validators.Regexp("^[a-zA-Z0-9]*$", re.IGNORECASE, _("config.Invalid_proxy_path")))
                     render_kw['required'] = ""
 
                 if 'port' in c.key:
                     if c.key in [ConfigEnum.http_ports, ConfigEnum.tls_ports]:
-                        validators.append(wtf.validators.Regexp("^(\\d+)(,\\d+)*$", re.IGNORECASE, _("config.Invalid port")))
+                        validators.append(wtf.validators.Regexp("^(\\d+)(,\\d+)*$", re.IGNORECASE, _("config.Invalid_port")))
                         render_kw['required'] = ""
                     else:
-                        validators.append(wtf.validators.Regexp("^(\\d+)(,\\d+)*$|^$", re.IGNORECASE, _("config.Invalid port")))
+                        validators.append(wtf.validators.Regexp("^(\\d+)(,\\d+)*$|^$", re.IGNORECASE, _("config.Invalid_port")))
                     # validators.append(wtf.validators.Regexp("^(\d+)(,\d+)*$",re.IGNORECASE,_("config.port is required")))
 
                 # tls tricks validations
                 if c.key in [ConfigEnum.tls_fragment_size, ConfigEnum.tls_fragment_sleep, ConfigEnum.tls_padding_length, ConfigEnum.wireguard_noise_trick]:
-                    validators.append(wtf.validators.Regexp("^\\d+-\\d+$", re.IGNORECASE, _("config.Invalid! The pattern is number-number") + f' {c.key}'))
+                    validators.append(wtf.validators.Regexp("^\\d+-\\d+$", re.IGNORECASE, _("config.Invalid_The_pattern_is_number-number") + f' {c.key}'))
                 # mux and hysteria validations
                 if c.key in [ConfigEnum.hysteria_up_mbps, ConfigEnum.hysteria_down_mbps, ConfigEnum.mux_max_connections, ConfigEnum.mux_min_streams, ConfigEnum.mux_max_streams,
                              ConfigEnum.mux_brutal_down_mbps, ConfigEnum.mux_brutal_up_mbps]:
-                    validators.append(wtf.validators.Regexp("^\\d+$", re.IGNORECASE, _("config.Invalid! it should be a number only") + f' {c.key}'))
+                    validators.append(wtf.validators.Regexp("^\\d+$", re.IGNORECASE, _("config.Invalid_it_should_be_a_number_only") + f' {c.key}'))
 
                 for val in validators:
                     if hasattr(val, "regex"):

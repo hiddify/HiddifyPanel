@@ -129,6 +129,7 @@ class UserSchema(Schema):
     lang = Enum(Lang, required=False, allow_none=True, description="The language of the user")
     enable = Boolean(required=False, description="Whether the user is enabled or not")
     is_active = Boolean(required=False, description="Whether the user is active for using hiddify")
+    id = Integer(required=False, description="never use it, only for better presentation")
 
 
 class PostUserSchema(UserSchema):
@@ -137,6 +138,7 @@ class PostUserSchema(UserSchema):
         # the uuid is sent in the url path
         self.fields['uuid'].required = False
         self.fields['uuid'].allow_none = True
+        del self.fields['id']
 
 
 class PatchUserSchema(UserSchema):
@@ -146,6 +148,7 @@ class PatchUserSchema(UserSchema):
         self.fields['uuid'].allow_none = True,
         self.fields['name'].required = False
         self.fields['name'].allow_none = True,
+        del self.fields['id']
 
 
 # endregion

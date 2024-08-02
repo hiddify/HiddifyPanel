@@ -1,4 +1,5 @@
-from typing import List, Literal, Union
+import glob
+from typing import List, Literal, Set, Union
 from urllib.parse import urlparse
 import urllib.request
 import ipaddress
@@ -33,17 +34,43 @@ def get_domain_ip(domain: str, retry: int = 3, version: Literal[4, 6] | None = N
 
     if not res and version != 4:
         try:
-            res = f"[{socket.getaddrinfo(domain, None, socket.AF_INET6)[0][4][0]}]"
-
-            res = res[1:-1]
+            res = f"{socket.getaddrinfo(domain, None, socket.AF_INET6)[0][4][0]}"
 
         except BaseException:
             pass
 
-    if retry <= 0 or not res:
+    if retry <= 0:
         return None
+    if not res:
+        return get_domain_ip(domain, retry=retry - 1, version=version)
 
-    return ipaddress.ip_address(res) or get_domain_ip(domain, retry=retry - 1) if res else None
+    return ipaddress.ip_address(res)
+
+
+def get_domain_ips(domain: str, retry: int = 3) -> Set[Union[ipaddress.IPv4Address, ipaddress.IPv6Address]]:
+    res = set()
+    if retry < 0:
+        return res
+    try:
+        _, _, ips = socket.gethostbyname_ex(domain)
+        for ip in ips:
+            res.add(ipaddress.ip_address(ip))
+    except Exception:
+        pass
+
+    try:
+        for ip in socket.getaddrinfo(domain, None, socket.AF_INET):
+            res.add(ipaddress.ip_address(ip[4][0]))
+    except BaseException:
+        pass
+
+    try:
+        for ip in socket.getaddrinfo(domain, None, socket.AF_INET6):
+            res.add(ipaddress.ip_address(ip[4][0]))
+    except BaseException:
+        pass
+
+    return res or get_domain_ips(domain, retry=retry - 1)
 
 
 def get_socket_public_ip(version: Literal[4, 6]) -> Union[ipaddress.IPv4Address, ipaddress.IPv6Address, None]:
@@ -85,8 +112,11 @@ def get_interface_public_ip(version: Literal[4, 6]) -> List[Union[ipaddress.IPv4
 
 
 @cache.cache(ttl=600)
-def get_ips(version: Literal[4, 6]) -> List[Union[ipaddress.IPv4Address, ipaddress.IPv6Address]]:
+def get_ips(version: Literal[4, 6] | None = None) -> List[Union[ipaddress.IPv4Address, ipaddress.IPv6Address]]:
+    if not version:
+        return [*get_ips(4), *get_ips(6)]
     addrs = []
+
     i_ips = get_interface_public_ip(version)
     if i_ips:
         addrs = i_ips
@@ -135,6 +165,7 @@ def get_ip(version: Literal[4, 6], retry: int = 5) -> ipaddress.IPv4Address | ip
     if ip is None and retry > 0:
         ip = get_ip(version, retry=retry - 1)
     return ip
+
 
 def get_random_domains(count: int = 1, retry: int = 3) -> List[str]:
     try:
@@ -252,14 +283,24 @@ def get_warp_info() -> str:
 
 
 def is_ssh_password_authentication_enabled() -> bool:
-    if os.path.isfile('/etc/ssh/sshd_config'):
-        with open('/etc/ssh/sshd_config', 'r') as f:
-            for line in f.readlines():
-                line = line.strip()
-                if line.startswith('#'):
-                    continue
-                if re.search("^PasswordAuthentication\\s+no", line, re.IGNORECASE):
-                    return False
+    def check_file(file_path: str) -> bool:
+        if os.path.isfile(file_path):
+            try:
+                with open(file_path, 'r') as f:
+                    for line in f.readlines():
+                        line = line.strip()
+                        if line.startswith('#'):
+                            continue
+                        if re.search(r"^PasswordAuthentication\s+no", line, re.IGNORECASE):
+                            return False
+            except Exception as e:
+                print(e)
+
+        return True
+
+    for config_file in glob.glob("/etc/ssh/sshd*") + glob.glob("/etc/ssh/sshd*/*"):
+        if not check_file(config_file):
+            return False
 
     return True
 
@@ -289,7 +330,7 @@ def add_number_to_ipv6(ip: str, number: int) -> str:
     return modified_ipv6
 
 
-@cache.cache(600)
+@ cache.cache(600)
 def is_in_same_asn(domain_or_ip: str, domain_or_ip_target: str) -> bool:
     '''Returns True if domain is in panel ASN'''
     try:
@@ -310,11 +351,11 @@ def is_in_same_asn(domain_or_ip: str, domain_or_ip_target: str) -> bool:
         print(f"An error occurred: {e}")
         return False
 
-        # hutils.flask.flash(_("selected domain for REALITY is not in the same ASN. To better use of the protocol, it is better to find a domain in the same ASN.") +
+        # hutils.flask.flash(_("domain.reality.asn_issue") +
         #                    f"<br> Server ASN={asn_ipv4.get('autonomous_system_organization','unknown')}<br>{domain}_ASN={asn_dip.get('autonomous_system_organization','unknown')}", "warning")
 
 
-@cache.cache(600)
+@ cache.cache(600)
 def get_ip_asn(ip: ipaddress.IPv4Address | ipaddress.IPv6Address | str) -> str:
     if not IPASN:
         return __get_ip_asn_api(ip)
@@ -334,7 +375,7 @@ def __get_ip_asn_api(ip: ipaddress.IPv4Address | ipaddress.IPv6Address | str) ->
     return str(requests.get(endpoint).content)
 
 
-@cache.cache(3600)
+@ cache.cache(3600)
 def is_ip(input: str):
     try:
         _ = ipaddress.ip_address(input)
@@ -342,7 +383,8 @@ def is_ip(input: str):
     except:
         return False
 
-def resolve_domain_with_api(domain:str) -> str:
+
+def resolve_domain_with_api(domain: str) -> str:
     if not domain:
         return ''
     endpoint = f'http://ip-api.com/json/{domain}?fields=query'

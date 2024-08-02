@@ -73,6 +73,44 @@ class UserView(FlaskView):
         '''Returns singbox client JSON config (ssh)'''
         return self.singbox_ssh_imp()
 
+    @route("/wireguard/")
+    @route("/wireguard")
+    @login_required(roles={Role.user})
+    def wireguard(self):
+        '''Returns wireguard client config'''
+        c = get_common_data(g.account.uuid, 'new')
+        wireguards = []
+        servers = set()
+        for pinfo in hutils.proxy.get_valid_proxies(c['domains']):
+            if pinfo['proto'] != ProxyProto.wireguard:
+                continue
+            wireguards.append(pinfo)
+
+            servers.add(pinfo['server'])
+
+        if not len(wireguards):
+            abort(404)
+        wg = wireguards[0]
+        addrs = f"{wg['wg_ipv4']}/32"
+        if wg['wg_ipv6']:
+            addrs += f", {wg['wg_ipv6']}/128"
+        resp = f"""
+[Interface]
+PrivateKey = {wg['wg_pk']}
+Address = {addrs}
+DNS = 1.1.1.1
+MTU = 1390
+
+[Peer]
+PublicKey = {wg['wg_pub']}
+PresharedKey = {wg['wg_psk']}
+AllowedIPs = 0.0.0.0/1, 128.0.0.0/1, ::/1, 8000::/1
+Endpoint = {next(iter(servers))}:61339 #{servers}
+"""
+        return add_headers(resp, c)
+
+        # return self.singbox_ssh_imp()
+
     @route("/clash/")
     @route("/clash")
     @login_required(roles={Role.user})
@@ -387,6 +425,9 @@ def add_headers(res, c, mimetype="text/plain"):
     resp.mimetype = mimetype
     resp.headers['Subscription-Userinfo'] = f"upload=0;download={c['usage_current_b']};total={c['usage_limit_b']};expire={c['expire_s']}"
     resp.headers['profile-web-page-url'] = request.base_url.rsplit('/', 1)[0].replace("http://", "https://") + "/"
+    # resp.headers['test-url'] = f"http://127.0.0.1:90/{hconfig(ConfigEnum.proxy_path_client)}/generate_204"
+    # resp.headers['test-url'] = f"http://{request.host}/{hconfig(ConfigEnum.proxy_path_client)}/generate_204"
+    # resp.headers['test-url'] = "http://connectivitycheck.gstatic.com/generate_204"
 
     if hconfig(ConfigEnum.branding_site):
         resp.headers['support-url'] = hconfig(ConfigEnum.branding_site)

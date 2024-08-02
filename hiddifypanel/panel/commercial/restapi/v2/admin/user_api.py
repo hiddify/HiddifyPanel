@@ -35,8 +35,8 @@ class UserApi(MethodView):
         for field in User.__table__.columns.keys():  # type: ignore
             if field in ['id', 'expiry_time']:
                 continue
-            if field not in data:
-                data[field] = getattr(user, field)
+            # if field in data:
+            #     setattr(user, field, data[field])
         data['old_uuid'] = uuid
         user_driver.remove_client(user)
         dbuser = User.add_or_update(**data) or abort(502, "Unknown issue! User is not patched")

@@ -60,7 +60,7 @@ class ProxyAdmin(FlaskView):
             hutils.proxy.get_proxies.invalidate_all()
             if hutils.node.is_child():
                 hutils.node.run_node_op_in_bg(hutils.node.child.sync_with_parent, *[hutils.node.child.SyncFields.proxies])
-            hutils.flask.flash_config_success(restart_mode=ApplyMode.apply, domain_changed=False)
+            hutils.flask.flash_config_success(restart_mode=ApplyMode.apply_config, domain_changed=False)
             global_config_form = get_global_config_form(True)
         else:
             hutils.flask.flash((_('config.validation-error')), 'danger')
@@ -69,7 +69,7 @@ class ProxyAdmin(FlaskView):
 
 
 def get_global_config_form(empty=False):
-    boolconfigs = BoolConfig.query.all()
+    boolconfigs = BoolConfig.query.filter(BoolConfig.child_id == Child.current().id).all()
 
     class DynamicForm(FlaskForm):
         pass
