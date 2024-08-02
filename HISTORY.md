@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v10.70.4 (2024-08-02)
+
+#### Fix
+
+* Bug. 
+
+#### Other
+
+* Update translations. 
+
+
+
 ## v10.70.3 (2024-08-02)
 
 #### Fix
