@@ -70,12 +70,12 @@ def _add_users_usage(users_usage_data: Dict[User, Dict], child_id, sync=False):
         daily_usage[adm.id] = DailyUsage.query.filter(DailyUsage.date == today, DailyUsage.admin_id == adm.id, DailyUsage.child_id == child_id).first()
         if daily_usage[adm.id] is None:
             logger.info(f"creating a new daily usage {today} admin={adm.id} child={child_id}")
-            daily_usage[adm.id] = DailyUsage(admin_id=adm.id, child_id=child_id)
+            daily_usage[adm.id] = DailyUsage(date=today, admin_id=adm.id, child_id=child_id)
             db.session.add(daily_usage[adm.id])
             changes = True
         daily_usage[adm.id].online = User.query.filter(User.added_by == adm.id).filter(func.DATE(User.last_online) == today).count()
-    # if changes:
-    #     db.session.commit()
+    if changes:
+        db.session.commit()
     _reset_priodic_usage()
 
     # userDetails = {p.user_id: p for p in UserDetail.query.filter(UserDetail.child_id == child_id).all()}
