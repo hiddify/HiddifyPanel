@@ -249,10 +249,10 @@ msgid "Edit Proxy Names"
 msgstr "✏️ Modificando Proxies"
 
 msgid "Enable"
-msgstr "Habilitar"
+msgstr "❇️ Habilitar"
 
 msgid "Error in auto cdn format"
-msgstr "Erro no formato CDN automático"
+msgstr "⚠️ Erro no formato CDN automático"
 
 msgid "Error! auto cdn ip can not be find, please contact admin."
 msgstr ""
@@ -299,7 +299,8 @@ msgstr "HiddifyClash"
 msgid "HiddifyN intro"
 msgstr ""
 "Por favor, instale HiddifyN de %(dl_link)s.\n"
-"Então clique no link abaixo. Fará tudo automaticamente."
+"Então clique no link abaixo. Fará tudo automaticamente.\n"
+"<br />"
 
 msgid "HiddifyNG"
 msgstr "HiddifyNG <span class='badge badge-success'>Recommended</span>"
@@ -460,13 +461,13 @@ msgid "Others"
 msgstr "🇺🇳 Outros"
 
 msgid "Override Root Admin"
-msgstr "Substituir proprietário no backup"
+msgstr ""
 
 msgid "Owner can not be deleted!"
 msgstr "O proprietário não pode ser excluído!"
 
 msgid "Package Days"
-msgstr "Dias do pacote"
+msgstr "📆 Dias do pacote"
 
 msgid "Package ended!"
 msgstr "Package encerrado"
@@ -514,7 +515,7 @@ msgstr "Selecione pelo menos um usuário"
 
 msgid "Please select one of the following applications:"
 msgstr ""
-"Selecione um dos seguintes aplicativos:\n"
+"📍 Selecione um dos seguintes aplicativos:\n"
 "<br />"
 
 msgid "Please type your message to send to the telegram:"
@@ -560,7 +561,7 @@ msgid "ProxyPath is already used! use different proxy path"
 msgstr "ProxyPath já está em uso! usar caminho de proxy diferente"
 
 msgid "QR code"
-msgstr "Código QR"
+msgstr "🧾 Código QR"
 
 msgid "QRCode"
 msgstr "<i class='fa-solid fa-qrcode'></i> QRCode"
@@ -2303,6 +2304,9 @@ msgstr ""
 
 msgid "domain.intro"
 msgstr ""
+"1️⃣ Nesta seção, você pode adicionar seu domínio.\\n<br>\n"
+"2️⃣ Se você deseja diminuir a probabilidade de ter um IP sujo, pode adicionar Multiple Relay Server <a href='https://github.com/hiddify/hiddify-config/discussions/129'>Leia mais</a>.\\n<br>\n"
+"3️⃣ Se você tiver Múltiplos IPv4 ou IPv6 em seu Painel, deverá adicionar o domínio apontado para eles como Relay.\""
 
 msgid "domain.ip"
 msgstr "IP"

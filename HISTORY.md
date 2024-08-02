@@ -1,6 +1,41 @@
 # Changelog
 
 
+## v10.70.3 (2024-08-02)
+
+#### Fix
+
+* Daily usage. 
+
+* Qrcode not fit to modal. 
+
+#### Other
+
+* Merge branch 'main' of github.com:hiddify/Hiddify-Panel. 
+
+* Chore: update translations with Fink 🐦 
+
+* Merge pull request #219 from XopoIII/main. 
+  _Update translations_
+
+* Merge branch 'main' into main. 
+
+* Merge pull request #220 from jxo-me/main. 
+  _Update qrcode.js Fix QR code style overflow_
+
+* Merge branch 'hiddify:main' into main. 
+
+* Update qrcode.js Fix QR code style overflow. 
+  _Fix QR code style overflow_
+
+* Merge branch 'main' into main. 
+
+* Chore: update translations with Fink 🐦 
+
+* Update translations. 
+
+
+
 ## v10.70.2 (2024-07-30)
 
 #### Fix
