@@ -194,7 +194,7 @@
   "Submit": "提交",
   "Success": "成功",
   "Success! Please wait around 5 minutes to make sure everything is updated.": "✔️ 成功！请等待大约 5 分钟以确保所有内容均已更新",
-  "Telegram Bot": "电报机器人",
+  "Telegram Bot": "Telegram 机器人",
   "Temporary Short Link": "⏱️临时短链接",
   "The message has been sent.": "消息已发送。",
   "The message was not sent to": "该消息未发送至",
@@ -707,6 +707,7 @@
       "label": "🌍 现实后备域"
     },
     "reality_port": {
+      "description": "您可以为您的现实服务器设置自定义端口，以减少系统开销。（允许直接连接到代理应该是肯定的）",
       "label": "↔️ 直接 Reality 端口"
     },
     "reality_private_key": {
@@ -901,9 +902,17 @@
       "description": "<p>启用 TLS 碎片填充。 <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-the-TLS-Trick-works-and-its-usage/#tls-padding\" target=\"_blank\">（阅读更多）</a></p>",
       "label": "♒️ TLS Padding"
     },
+    "tls_padding_length": {
+      "description": "TLS 碎片的 Padding 长度",
+      "label": "📏 TLS Padding"
+    },
     "tls_ports": {
       "description": "逗号分隔的整数，指示用作 TLS 连接的端口（在任何情况下都将使用端口 443）",
       "label": "🔎 TLS 端口"
+    },
+    "tls_trick": {
+      "description": "TLS 碎片配置可在此部分设置",
+      "label": "TLS 技巧"
     },
     "too_advanced": {
       "description": "指定代理路径。如果您使用 HTTP 和 VMess，这一点尤其重要",
@@ -912,6 +921,10 @@
     "torrent_block": {
       "description": "可以在此部分设置 Torrent 阻止配置。",
       "label": "Torrent 块配置"
+    },
+    "trojan_enable": {
+      "description": "启用 Trojan 协议",
+      "label": "🟤 Trojan"
     },
     "tuic": {
       "description": "Delicately-TUICed 高性能代理位于 QUIC 协议之上。\n\nTUIC的目标是尽可能减少握手延迟",

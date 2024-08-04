@@ -193,6 +193,12 @@
   "Status": "Statut",
   "Submit": "Soumettre",
   "Success": "Succès",
+  "Success! Please wait around 5 minutes to make sure everything is updated.": "✔️ Succès ! Veuillez attendre environ 5 minutes pour vous assurer que tout est mis à jour",
+  "Telegram Bot": "Bot Telegram ",
+  "Temporary Short Link": "⏱️ Lien court temporaire",
+  "The message has been sent.": "Le message a été envoyé.",
+  "The message was not sent to": "Le message n'a pas été envoyé à",
+  "The name shown in the configs for this domain.": "Le nom qui sera affiché dans les configurations de ce domaine.",
   "This can be used for giving your users a permanent non blockable links.": "Cela peut être utilisé pour donner à vos utilisateurs des liens permanents non bloquables.",
   "This domain does not exist in the panel!": "Ce Domaine n'existe pas dans le Panel !",
   "Today Usage": "Aujourd'hui",
@@ -849,6 +855,7 @@
       "label": "🟠 TCP"
     },
     "telegram": {
+      "description": "Un proxy conçu pour Telegram pour contourner le filtrage Telegram",
       "label": "Configurations de Telegram "
     },
     "telegram_adtag": {
@@ -864,6 +871,7 @@
       "label": "✔️ Telegram MTProto"
     },
     "telegram_fakedomain": {
+      "description": "Veuillez utiliser un domaine bien connu dans votre centre de données. par exemple, si vous êtes dans un centre de données Azure, microsoft-update.com est un bon exemple",
       "label": "📺 Faux domaine de Telegram "
     },
     "telegram_lib": {
@@ -893,6 +901,30 @@
     "tls_padding_enable": {
       "description": "<p>Active le remplissage pour la fragmentation TLS. <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-the-TLS-Trick-works-and-its-usage/#tls-padding\" target=\"_blank\">(En savoir plus)</a></p>",
       "label": "♒️ TLS Padding"
+    },
+    "tls_padding_length": {
+      "description": "La longueur du Padding pour la fragmentation TLS",
+      "label": "📏 TLS Padding"
+    },
+    "tls_ports": {
+      "description": "Entiers séparés par des virgules indiquant les ports à utiliser comme connexion TLS (le port 443 sera utilisé dans tous les cas)<inlang-LineFeed>",
+      "label": "🔎Ports TLS"
+    },
+    "tls_trick": {
+      "description": "Les configurations de fragmentation TLS peuvent être définies dans cette section",
+      "label": "Astuce TLS"
+    },
+    "too_advanced": {
+      "description": "Spécifiez le chemin du proxy. C'est important surtout si vous utilisez HTTP et VMess",
+      "label": "Paramètres très avancés"
+    },
+    "torrent_block": {
+      "description": "Les configurations des blocs Torrent  peuvent être définies dans cette section.",
+      "label": "Configuration du bloc Torrent "
+    },
+    "trojan_enable": {
+      "description": "Activer le protocole Trojan ",
+      "label": "🟤 Trojan"
     },
     "vless_enable": {
       "label": "⚫️ VLess"
