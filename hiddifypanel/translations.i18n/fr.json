@@ -1086,5 +1086,43 @@
   "monthly": "🗓️ Mensuel",
   "move_to_new_link": "La page a été déplacée vers un nouveau lien. Veuillez copier et enregistrer le nouveau lien.",
   "next": "Suivant",
-  "no_reset": "⭐️ Sans réinitialisation"
+  "no_reset": "⭐️ Sans réinitialisation",
+  "node": {
+    "diff-version": "node.diff-version",
+    "mode": {
+      "dscr": "Ce champ définit le mode pour Node",
+      "label": "Mode Node "
+    },
+    "name": {
+      "dscr": "Ce champ définit le nom du Node",
+      "label": "Nom du Node "
+    },
+    "uuid": {
+      "dscr": "Ce champ définit l'UUID pour le nœud",
+      "label": "UUID du Node "
+    }
+  },
+  "old_xtls_direct": "🔙 Ancien mode direct (pour cheval de Troie TCP, VLess XTLS)",
+  "open": "Ouvrir",
+  "outdated_panel": "⚠️ Cette version de Hiddify Manager est obsolète. veuillez le mettre à jour depuis la zone d'administration",
+  "package days?": "jours forfaitaires ?",
+  "package size?": "Taille du paquet?",
+  "parent": {
+    "invalid-parent-url": "parent.invalid-parent-url",
+    "sync-req-failed": "parent.sync-req-failed"
+  },
+  "previous": "Précédent",
+  "quicksetup": {
+    "cdn_domain": {
+      "description": "La définition du domaine CDN est facultative. Utilisez-le uniquement si vous avez déjà configuré un CDN.",
+      "label": "Domaine CDN"
+    },
+    "proxy_cat": {
+      "description": "Dernière étape : veuillez sélectionner les proxys souhaités. Veuillez choisir le minimum possible."
+    },
+    "setlang": {
+      "success": "Le changement de langue a été un succès."
+    }
+  },
+  "reality": "🔂 Reality"
 }

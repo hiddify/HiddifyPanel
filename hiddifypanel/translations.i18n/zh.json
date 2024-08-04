@@ -1088,17 +1088,18 @@
   "next": "下一个",
   "no_reset": "⭐️无需重置",
   "node": {
+    "diff-version": "node.diff-version",
     "mode": {
-      "dscr": "节点模式.dscr",
-      "label": "节点模式"
+      "dscr": "该字段定义 Node 的模式",
+      "label": "Node 模式"
     },
     "name": {
-      "dscr": "节点名称.dscr",
-      "label": "节点名称"
+      "dscr": "此字段定义 Node 的名称",
+      "label": "Node 名称"
     },
     "uuid": {
-      "dscr": "节点.uuid.dscr",
-      "label": "节点UUID"
+      "dscr": "该字段定义节点的 UUID",
+      "label": "Node UUID"
     }
   },
   "old_xtls_direct": "🔙旧直连模式（针对木马TCP、VLess XTLS）",
@@ -1106,6 +1107,10 @@
   "outdated_panel": "⚠️ 此版本的 Hiddify Manager 已过时。请从管理区域更新",
   "package days?": "包天数？",
   "package size?": "包装尺寸？",
+  "parent": {
+    "invalid-parent-url": "parent.invalid-parent-url",
+    "sync-req-failed": "parent.sync-req-failed"
+  },
   "previous": "以前的",
   "quicksetup": {
     "cdn_domain": {
@@ -1119,7 +1124,7 @@
       "success": "更改语言成功。"
     }
   },
-  "reality": "🔂 现实",
+  "reality": "🔂 Reality",
   "relay": "♾️ 中继（使用中间节点连接）",
   "search": "搜索",
   "see the log in the bellow screen": "📑 查看以下屏幕中的日志",

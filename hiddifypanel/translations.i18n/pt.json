@@ -1086,16 +1086,20 @@
   "monthly": "🗓️ Mensal",
   "move_to_new_link": "A página foi movida para um novo link. Copie e salve o novo link.",
   "next": "Próximo",
-  "no_reset": "Sem Redefinir",
+  "no_reset": "⭐️ Sem reinicialização",
   "node": {
+    "diff-version": "node.diff-version",
     "mode": {
-      "label": "Modo de nó"
+      "dscr": "Este campo define o modo para o Node",
+      "label": "Modo de Node "
     },
     "name": {
-      "label": "Nome do nó"
+      "dscr": "Este campo define o nome para Node",
+      "label": "Nome do Node "
     },
     "uuid": {
-      "label": "UUID do nó"
+      "dscr": "Este campo define UUID para Node",
+      "label": "UUID do Node "
     }
   },
   "old_xtls_direct": "🔙 Modo direto antigo (para Trojan TCP, VLess XTLS)",
@@ -1103,6 +1107,10 @@
   "outdated_panel": "Esta versão do painel Hiddify está desatualizada. Atualize-o na Área Administrativa.",
   "package days?": "dias de pacote?",
   "package size?": "tamanho do pacote?",
+  "parent": {
+    "invalid-parent-url": "parent.invalid-parent-url",
+    "sync-req-failed": "parent.sync-req-failed"
+  },
   "previous": "Anterior",
   "quicksetup": {
     "cdn_domain": {
@@ -1116,7 +1124,7 @@
       "success": "A alteração do idioma foi bem-sucedida."
     }
   },
-  "reality": "🔂 Realidade",
+  "reality": "🔂 Reality",
   "relay": "♾️ Relay (Conectar usando um nó intermediário)",
   "search": "Procurar",
   "see the log in the bellow screen": "📑 Veja o log na tela abaixo",
