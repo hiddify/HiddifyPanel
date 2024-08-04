@@ -423,4 +423,5 @@ def add_multiplex(base: dict, proxy: dict):
 
 def null_config(tag: str) -> dict:
     base_config = json.loads(render_template('base_xray_config.json.j2', remarks=tag))
+    base_config['outbounds'][0]["protocol"] = "blackhole"
     return base_config
