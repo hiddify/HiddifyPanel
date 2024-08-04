@@ -655,8 +655,8 @@
       "label": "ℹ️ TCP Configuration Path"
     },
     "path_trojan": {
-      "description": "For Trojan Links",
-      "label": "ℹ️ Trojan Path"
+      "description": "For TROJAN-Links",
+      "label": "ℹ️ TROJAN Path"
     },
     "path_v2ray": {
       "description": "Set V2Ray Configs Path",
@@ -755,7 +755,7 @@
       "label": "↔️ Shadowsocks 2022 Port"
     },
     "shadowtls": {
-      "description": "A Proxy to expose real tls handshake to the firewall.\n\nIt works like Trojan but It does not require signing certificate. the firewall will see real tls handshake with valid certificate that you choose.",
+      "description": "A Proxy to expose real tls handshake to the firewall.\n\nIt works like TROJAN but It does not require signing certificate. the firewall will see real tls handshake with valid certificate that you choose.",
       "label": "ShadowTLS"
     },
     "shadowtls_enable": {
@@ -851,7 +851,7 @@
       "label": "config.sub_singbox_ssh_enable.label"
     },
     "tcp_enable": {
-      "description": "Enable TCP Protocol",
+      "description": "Enables TCP Protocol",
       "label": "🟠 TCP"
     },
     "telegram": {
@@ -880,7 +880,7 @@
     },
     "tls": {
       "description": "TLS Configurations could be set in this section",
-      "label": "TLS Configuration"
+      "label": "TLS Settings"
     },
     "tls_fragment_enable": {
       "description": "<p>Under some circumstances, it can bypass the SNI blacklist system. <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-the-TLS-Trick-works-and-its-usage/\" target=\"_blank\">(Read More)</a></p>",
@@ -967,20 +967,20 @@
       "label": "WARP➕"
     },
     "warp_enable": {
-      "description": "Warp helps you bypass Google, Spotify and Netflix restrictions by hiding server IP ",
-      "label": "WARP+"
+      "description": "WARP helps you bypass Google, Spotify and Netflix restrictions by hiding server IP ",
+      "label": "Enables WARP+"
     },
     "warp_mode": {
       "description": "✴️ All : All Sites use Warp IPs in outbound\n<br>\n☑️ Only Domestic and Blocked Sites: Only Domestic Sites and websites like Google, Spotify, Netflix, OpenAi, IPinfo.io use Warp IPs in outbound",
-      "label": "✴️ Warp+ Mode"
+      "label": "✴️ WARP+ Mode"
     },
     "warp_plus_code": {
       "description": "🔝 Increases browsing speed. To get the Key, go to the <a href='https://1.1.1.1/'> 1.1.1.1 </a>\napp and purchase the original KEY from Cloudflare\n<br>\n⚠️ If there is an error in this Key, the WARP will be disabled",
       "label": "🔑 Warp Plus Key"
     },
     "warp_sites": {
-      "description": "Add additional sites to pass through Warp (only when warp mode is not None)",
-      "label": "🆚 Additional Warp Sites"
+      "description": "Add additional sites to pass through WARP (only when warp mode is not None)",
+      "label": "🆚 Additional WARP Sites"
     },
     "wireguard": {
       "description": "WireGuard is a lightweight, UDP  based protocol known for its simplicity, efficiency, and strong security. It offers quick setup, transparent code, and has gained popularity for its ease of use across various operating systems",

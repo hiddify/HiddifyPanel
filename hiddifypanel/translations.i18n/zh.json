@@ -618,6 +618,18 @@
       "description": "指定您想要发布的包还是开发的包",
       "label": "🔄 包更新模式"
     },
+    "panel_mode": {
+      "description": "config.panel_mode.description",
+      "label": "config.panel_mode.label"
+    },
+    "parent_admin_proxy_path": {
+      "description": "config.parent_admin_proxy_path.description",
+      "label": "config.parent_admin_proxy_path.label"
+    },
+    "parent_domain": {
+      "description": "config.parent_domain.description",
+      "label": "config.parent_domain.label"
+    },
     "parent_panel": {
       "description": "您可以连接到中央面板仅定义一个用户，所有服务器的使用情况将累积添加。",
       "label": "父面板（多服务器）"
@@ -625,6 +637,10 @@
     "path_grpc": {
       "description": "配置中的 gRPC 路径",
       "label": "ℹ️ gRPC 路径"
+    },
+    "path_httpupgrade": {
+      "description": "应该是随机的",
+      "label": "ℹ️ HTTP 升级路径"
     },
     "path_splithttp": {
       "description": "此选项定义 Split HTTP 的路径",
@@ -639,8 +655,8 @@
       "label": "ℹ️ TCP 配置路径"
     },
     "path_trojan": {
-      "description": "对于木马链接",
-      "label": "ℹ️木马路径"
+      "description": "对于 Trojan 链接",
+      "label": "ℹ️ Trojan 路径"
     },
     "path_v2ray": {
       "description": "设置 V2Ray 配置路径",
@@ -666,13 +682,32 @@
       "description": "我们使用秘密代理路径来隐藏我们的政府代理",
       "label": "ℹ️ 秘密代理路径"
     },
+    "proxy_path_admin": {
+      "description": "我们使用秘密代理路径来向政府和机器人隐藏我们的代理",
+      "label": "🔐 管理员的代理路径"
+    },
+    "proxy_path_client": {
+      "description": "秘密代理路径隐藏了政府和机器人无法发现的代理",
+      "label": "🔏 客户端的代理路径"
+    },
+    "quic_enable": {
+      "description": "启用 QUIC 协议",
+      "label": "🟡 QUIC"
+    },
     "reality": {
       "description": "REALITY 消除了服务器端 TLS 指纹功能",
-      "label": "现实"
+      "label": "Reality"
+    },
+    "reality_enable": {
+      "description": "启用 Reality Protocol",
+      "label": "🔴 Reality"
     },
     "reality_fallback_domain": {
       "description": "当 GFW 访问服务器名称中的网站时，将被重定向到该域。",
       "label": "🌍 现实后备域"
+    },
+    "reality_port": {
+      "label": "↔️ 直接 Reality 端口"
     },
     "reality_private_key": {
       "description": "不要改变它",
@@ -691,7 +726,7 @@
       "label": "🆔 短 ID"
     },
     "restls": {
-      "description": "配置.restls.描述",
+      "description": "config.restls.description",
       "label": "配置.restls.标签"
     },
     "restls1_2_domain": {
@@ -702,9 +737,25 @@
       "description": "config.restls1_3_domain.description",
       "label": "config.restls1_3_domain.label"
     },
+    "shadowsocks": {
+      "description": "Shadowsocks 是一款快速隧道代理，可帮助你绕过防火墙",
+      "label": "Shadowsocks"
+    },
+    "shadowsocks2022_enable": {
+      "description": "Shadowsocks 2022 是一种用于 TCP 和 UDP 流量的安全代理协议。代理流量与随机字节流无法区分，因此可以绕过依赖 DPI（深度数据包检测）的防火墙和互联网审查程序",
+      "label": "⭕️ Shadowsocks 2022"
+    },
+    "shadowsocks2022_method": {
+      "description": "此方法也用于 ShadowTLS 和 SSFakeTLS",
+      "label": "🔐 Shadowsocks 加密方法"
+    },
+    "shadowsocks2022_port": {
+      "description": "需要 UDP 和 TCP 才能免费",
+      "label": "↔️ Shadowsocks 2022 端口"
+    },
     "shadowtls": {
-      "description": "向防火墙公开真实 tls 握手的代理。\n\n它的工作方式类似于木马，但不需要签名证书。防火墙将看到与您选择的有效证书的真实 tls 握手。",
-      "label": "影子TLS"
+      "description": "向防火墙公开真实的 tls 握手的代理。<inlang-LineFeed><inlang-LineFeed>它的工作原理类似于 Trojan，但不需要签名证书。防火墙将看到具有您选择的有效证书的真实 tls 握手。",
+      "label": "ShadowTLS"
     },
     "shadowtls_enable": {
       "description": "ShadowTLS 是一种新协议，但它可以使用 FakeTLS 向政府隐藏流量",
@@ -728,11 +779,11 @@
     },
     "splithttp_enable": {
       "description": "该协议通过单独的渠道发送和接收信息 ",
-      "label": "HTTP"
+      "label": "🈁 Split HTTP"
     },
     "ssfaketls": {
       "description": "Shadowsocks FakeTLS 是一个简单的混淆工具，将日期封装在 tls 数据包中",
-      "label": "Shadowsocks 假TLS"
+      "label": "Shadowsocks FakeTLS"
     },
     "ssfaketls_enable": {
       "description": "不推荐简单的 OBFS 协议",
@@ -760,19 +811,51 @@
     },
     "ssr": {
       "description": "ShadowsocksR是原始Shadowsocks项目的一个分支，号称在安全性和稳定性方面更胜一筹。",
-      "label": "固态继电器"
+      "label": "SSR"
     },
     "ssr_enable": {
       "description": "ShadowsocksR 是原始 Shadowsocks 项目的 Fork，号称在安全性和稳定性方面更胜一筹。未测试。不支持记账。",
-      "label": "启用S​​SR"
+      "label": "S​​SR"
     },
     "ssr_fakedomain": {
       "description": "请在您的数据中心使用众所周知的域。例如，如果您在 Azure 数据中心，microsoft-update.com 就是一个很好的例子",
       "label": "SSR 假域名"
     },
+    "sub_full_clash_enable": {
+      "description": "config.sub_full_clash_enable.description",
+      "label": "config.sub_full_clash_enable.标签"
+    },
+    "sub_full_clash_meta_enable": {
+      "description": "config.sub_full_clash_meta_enable.description",
+      "label": "config.sub_full_clash_meta_enable.标签"
+    },
+    "sub_full_links_b64_enable": {
+      "description": "config.sub_full_links_b64_enable.description",
+      "label": "config.sub_full_links_b64_enable.标签"
+    },
+    "sub_full_links_enable": {
+      "description": "config.sub_full_links_enable.description",
+      "label": "config.sub_full_links_enable.label"
+    },
+    "sub_full_singbox_enable": {
+      "description": "config.sub_full_singbox_enable.description",
+      "label": "config.sub_full_singbox_enable.label"
+    },
+    "sub_full_xray_json_enable": {
+      "description": "XRay 全链路为 XRay 特定设置提供了全面的配置选项。这包括支持 XRay 协议的应用程序（例如 v2rayNG）中的自定义分段和多路复用 (mux)，以便对 XRay 代理设置进行精细控制。",
+      "label": "⚙️ XRay 完整配置链接"
+    },
+    "sub_singbox_ssh_enable": {
+      "description": "config.sub_singbox_ssh_enable.description",
+      "label": "config.sub_singbox_ssh_enable.label"
+    },
+    "tcp_enable": {
+      "description": "启用 TCP 协议",
+      "label": "🟠 TCP"
+    },
     "telegram": {
       "description": "专为 Telegram 设计的代理，可绕过 Telegram 过滤",
-      "label": "电报代理"
+      "label": "Telegram 配置"
     },
     "telegram_adtag": {
       "description": "它用于在客户端的聊天列表中显示赞助频道。要宣传频道，请从 @MTProxybot 获取标签。\n在该机器人中输入代码 0123456789ABCDEF0123456789ABCDEF。",
@@ -796,7 +879,27 @@
     },
     "tls": {
       "description": "可以在此部分设置 TLS 配置。",
-      "label": "TLS 配置"
+      "label": "TLS 设置"
+    },
+    "tls_fragment_enable": {
+      "description": "<p>在某些情况下，它可以绕过 SNI 黑名单系统。 <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-the-TLS-Trick-works-and-its-usage/\" target=\"_blank\">（阅读更多）</a></p>",
+      "label": "⏯ TLS Fragment"
+    },
+    "tls_fragment_size": {
+      "description": "每个数据包的大小",
+      "label": "🎚 TLS Fragment 大小"
+    },
+    "tls_fragment_sleep": {
+      "description": "Fragment 之间的时间延迟",
+      "label": "⏱ TLS Fragment 休眠"
+    },
+    "tls_mixed_case": {
+      "description": "启用 TLS 混合 SNI 大小写碎片",
+      "label": "🔠 TLS 混合 SNI 大小写"
+    },
+    "tls_padding_enable": {
+      "description": "<p>启用 TLS 碎片填充。 <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-the-TLS-Trick-works-and-its-usage/#tls-padding\" target=\"_blank\">（阅读更多）</a></p>",
+      "label": "♒️ TLS Padding"
     },
     "tls_ports": {
       "description": "逗号分隔的整数，指示用作 TLS 连接的端口（在任何情况下都将使用端口 443）",
@@ -837,25 +940,33 @@
     "validation-error": "其中一个字段有错误。",
     "validation-success": "配置已成功更改。单击 %(link)s 应用配置。申请可能需要 2 分钟",
     "validation-success-no-reset": "✅ 配置已成功更改",
+    "vless_enable": {
+      "label": "⚫️ VLess"
+    },
     "vmess_enable": {
       "description": "据多位人士透露，VMess 导致该系统被政府检测到。所以不推荐",
-      "label": "♈️启用VMess"
+      "label": "🟣 VMess"
     },
+    "warp-https-domain-for-warp-site": "config.warp-https-domain-for-warp-site",
     "warp": {
       "description": "Warp 是一种在出站流量中隐藏服务器 IP 的工具。这意味着如果用户访问网站，则暴露的是 Warp IP，而不是我们的服务器 IP。\n<br>\n例如，如果您在 Google 上遇到验证码问题，则可能会通过这种方式修复。",
-      "label": "扭曲➕"
+      "label": "WARP➕"
     },
     "warp_enable": {
-      "description": "Warp 通过隐藏服务器 IP 帮助您绕过 Google、Spotify 和 Netflix 限制",
-      "label": "启用扭曲+"
+      "description": "WARP 通过隐藏服务器 IP 帮助您绕过 Google、Spotify 和 Netflix 限制",
+      "label": "启用 WARP+"
     },
     "warp_mode": {
       "description": "✴️ 全部：所有站点在出站中使用 Warp IP\n<br>\n☑️ 仅国内和被阻止的网站：仅国内网站和 Google、Spotify、Netflix、OpenAi、IPinfo.io 等网站在出站中使用 Warp IP",
-      "label": "✴️变形+模式"
+      "label": "✴️ WARP+ 模式"
     },
     "warp_plus_code": {
       "description": "🔝 提高浏览速度。要获取密钥，请转到 <a href='https://1.1.1.1/'> 1.1.1.1 </a>\n应用程序并从 Cloudflare 购买原始 KEY\n<br>\n⚠️如果此Key有错误，WARP将被禁用。",
-      "label": "🔑 变形加键"
+      "label": "🔑 Warp Plus 键"
+    },
+    "warp_sites": {
+      "description": "添加要通过 WARP 的其他站点（仅当 Warp 模式不为 None 时）",
+      "label": "🆚 其他 WARP 站点"
     },
     "wireguard": {
       "description": "WireGuard 是一种轻量级的基于 UDP 的协议，以其简单、高效和强大的安全性而闻名。它提供快速设置、透明代码，并因其在各种操作系统中的易用性而广受欢迎"

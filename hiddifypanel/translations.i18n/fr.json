@@ -599,6 +599,327 @@
     "netdata": {
       "description": "Pour afficher les ressources. utilise le CPU de votre serveur mais ce n'est pas trop.",
       "label": "Netdata"
+    },
+    "not_found": {
+      "description": "Configuration introuvable",
+      "label": "Configuration introuvable"
+    },
+    "only_ipv4": {
+      "description": "Cela désactivera IPv6",
+      "label": "ℹ️ Uniquement IPv4"
+    },
+    "package_mode": {
+      "description": "Spécifiez si vous souhaitez le package publié ou la version bêta.",
+      "label": "🔄 Mode de mise à jour du package"
+    },
+    "panel_mode": {
+      "description": "config.panel_mode.description",
+      "label": "config.panel_mode.label"
+    },
+    "parent_admin_proxy_path": {
+      "description": "config.parent_admin_proxy_path.description",
+      "label": "config.parent_admin_proxy_path.label"
+    },
+    "parent_domain": {
+      "description": "config.parent_domain.description",
+      "label": "config.parent_domain.label"
+    },
+    "parent_panel": {
+      "description": "Vous pouvez vous connecter au panneau central pour définir un seul utilisateur et l'utilisation de tous les serveurs sera ajoutée cumulativement.",
+      "label": "Panneau parent (multiserveur)"
+    },
+    "path_grpc": {
+      "description": "Chemin gRPC dans les configurations",
+      "label": "ℹ️ Chemin gRPC"
+    },
+    "path_httpupgrade": {
+      "description": "ça devrait être aléatoire",
+      "label": "ℹ️ Chemin de mise à niveau HTTP"
+    },
+    "path_splithttp": {
+      "description": "Cette option définit le chemin pour Split HTTP",
+      "label": "Chemin pour le HTTP fractionné"
+    },
+    "path_ss": {
+      "description": "Chemin Shadowsocks dans les liens",
+      "label": "Chemin Shadowsocks "
+    },
+    "path_tcp": {
+      "description": "Pour le lien proxy",
+      "label": "ℹ️ Chemin de configuration TCP"
+    },
+    "path_trojan": {
+      "description": "Pour les liens de Trojan",
+      "label": "ℹ️ Chemin de Trojan"
+    },
+    "path_v2ray": {
+      "description": "Définir le chemin des configurations V2Ray",
+      "label": "Chemin V2Ray"
+    },
+    "path_vless": {
+      "description": "Pour le chemin VLess",
+      "label": "ℹ️ Chemin VLess"
+    },
+    "path_vmess": {
+      "description": "Pour le lien VMess",
+      "label": "ℹ️ Chemin VMess"
+    },
+    "path_ws": {
+      "description": "Spécifiez le chemin Websocket",
+      "label": "ℹ️ Chemin des requêtes Websocket"
+    },
+    "proxies": {
+      "description": "Définir des paramètres de proxy spécifiques",
+      "label": "Paramètres des proxys"
+    },
+    "proxy_path": {
+      "description": "Nous utilisons un chemin proxy secret pour cacher nos proxys pour le gouvernement",
+      "label": "ℹ️ Chemin proxy secret"
+    },
+    "proxy_path_admin": {
+      "description": "Nous utilisons un chemin proxy secret pour cacher nos proxys pour les gouvernements et les robots",
+      "label": "🔐 Chemin proxy pour les administrateurs"
+    },
+    "proxy_path_client": {
+      "description": "Le chemin secret du proxy cache les proxys aux gouvernements et aux robots",
+      "label": "🔏 Chemin proxy pour les clients"
+    },
+    "quic_enable": {
+      "description": "Activer le protocole QUIC",
+      "label": "🟡QUIC"
+    },
+    "reality": {
+      "description": "LA REALITY élimine la fonctionnalité d'empreinte digitale TLS côté serveur",
+      "label": "Reality"
+    },
+    "reality_enable": {
+      "description": "Activer le protocole de Reality",
+      "label": "🔴 Reality"
+    },
+    "reality_fallback_domain": {
+      "description": "Lorsque le GFW visitera les sites Web dans les noms de serveur, il sera redirigé vers ce domaine.",
+      "label": "🌍 Domaine de repli de Reality"
+    },
+    "reality_port": {
+      "description": "Vous pouvez définir un port personnalisé pour votre serveur de Reality afin de réduire la surcharge du système. (Autoriser la connexion directe aux proxys devrait être oui)",
+      "label": "↔️ Port de Reality directe"
+    },
+    "reality_private_key": {
+      "description": "Ne le changez pas",
+      "label": "🔑 Clé privée"
+    },
+    "reality_public_key": {
+      "description": "Ne le changez pas",
+      "label": "🔑 Clé publique"
+    },
+    "reality_server_names": {
+      "description": "Vous pouvez ajouter plusieurs noms de serveur au format séparé par des virgules",
+      "label": "🌎 Noms des serveurs de Reality "
+    },
+    "reality_short_ids": {
+      "description": "Ne le changez pas",
+      "label": "🆔 ID courts"
+    },
+    "restls": {
+      "description": "config.restls.description",
+      "label": "RestTLS"
+    },
+    "restls1_2_domain": {
+      "description": "config.restls1_2_domain.description",
+      "label": "config.restls1_2_domain.label"
+    },
+    "restls1_3_domain": {
+      "description": "config.restls1_3_domain.description",
+      "label": "config.restls1_3_domain.label"
+    },
+    "shadowsocks": {
+      "description": "Shadowsocks est un proxy de tunnel rapide qui vous aide à contourner les pare-feu",
+      "label": "Shadowsocks"
+    },
+    "shadowsocks2022_enable": {
+      "description": "Shadowsocks 2022 est un protocole proxy sécurisé pour le trafic TCP et UDP. Le trafic proxy ne peut pas être distingué d'un flux d'octets aléatoire et peut donc contourner les pare-feu et les censeurs Internet qui s'appuient sur le DPI (Deep Packet Inspection).",
+      "label": "⭕️ Shadowsocks 2022"
+    },
+    "shadowsocks2022_method": {
+      "description": "Cette méthode est également utilisée dans ShadowTLS et SSFakeTLS",
+      "label": "🔐 Méthode de cryptage Shadowsocks"
+    },
+    "shadowsocks2022_port": {
+      "description": "Il a besoin à la fois d'UDP et de TCP pour être libre",
+      "label": "↔️ Port Shadowsocks 2022"
+    },
+    "shadowtls": {
+      "description": "Un proxy pour exposer une véritable poignée de main TLS au pare-feu.<inlang-LineFeed>\nCela fonctionne comme un cheval de Trojan mais ne nécessite pas de signature de certificat. le pare-feu verra une véritable poignée de main TLS avec le certificat valide que vous choisissez.",
+      "label": "ShadowTLS"
+    },
+    "shadowtls_enable": {
+      "description": "ShadowTLS est un nouveau protocole mais il peut cacher le trafic au gouvernement en utilisant FakeTLS",
+      "label": "☑️ ShadowTLS"
+    },
+    "shadowtls_fakedomain": {
+      "description": "Veuillez utiliser un domaine bien connu dans votre centre de données. par exemple, si vous êtes dans un centre de données Azure, microsoft-update.com est un bon exemple",
+      "label": "🌍 Faux domaine ShadowTLS"
+    },
+    "shared_secret": {
+      "description": "Certains proxys ne prennent actuellement pas en charge la comptabilité, nous devons donc utiliser un secret pour eux.",
+      "label": "🔐 Secret partagé"
+    },
+    "show_usage_in_sublink": {
+      "description": "Cette option crée une fausse configuration dans le sous-lien de l'utilisateur qui affiche le volume restant de l'utilisateur.",
+      "label": "👁️‍🗨️ Afficher l'utilisation dans le  Sublink"
+    },
+    "speed_test": {
+      "description": "Autorisez vos utilisateurs à effectuer des tests de vitesse. Cela les aide à identifier la qualité du lien",
+      "label": "🚀 Test de vitesse"
+    },
+    "splithttp_enable": {
+      "description": "Ce protocole envoie et reçoit des informations dans des canaux individuels ",
+      "label": "🈁 Split HTTP"
+    },
+    "ssfaketls": {
+      "description": "Shadowsocks FakeTLS est un simple outil d'obscurcissement qui encapsule la date dans un paquet tls.",
+      "label": "Shadowsocks FakeTLS"
+    },
+    "ssfaketls_enable": {
+      "description": "Le protocole OBFS simple n'est pas recommandé",
+      "label": "🆎 Shadowsocks FakeTLS (OBFS simples)"
+    },
+    "ssfaketls_fakedomain": {
+      "description": "Veuillez utiliser un domaine bien connu dans votre centre de données. par exemple, si vous êtes dans un centre de données Azure, microsoft-update.com est un bon exemple",
+      "label": "🌍 SS FakeTLS FakeDomain"
+    },
+    "ssh": {
+      "description": "ℹ️ Un proxy SSH, également appelé tunnel SSH ou redirection de port SSH, est une méthode sécurisée permettant de créer un canal de communication sécurisé entre deux machines sur un réseau non sécurisé. Nous avons une application spécifique qui est complètement différente du serveur SSH et ne peut exécuter aucune commande",
+      "label": "Proxy SSH"
+    },
+    "ssh_server_enable": {
+      "description": "Le proxy SSH est complètement différent du serveur SSH d'origine",
+      "label": "✔️ Proxy SSH"
+    },
+    "ssh_server_port": {
+      "description": "Ceci est complètement différent de votre serveur SSH d'origine. C'est un programme dédié.",
+      "label": "↔️ Port proxy SSH"
+    },
+    "ssh_server_redis_url": {
+      "description": "Non utilisé",
+      "label": "Adresse de la base de données des utilisateurs SSH"
+    },
+    "ssr": {
+      "description": "ShadowsocksR est un fork du projet Shadowsocks original, prétendument supérieur en termes de sécurité et de stabilité.",
+      "label": "RSS"
+    },
+    "ssr_enable": {
+      "description": "ShadowsocksR est un fork du projet Shadowsocks original, prétendument supérieur en termes de sécurité et de stabilité. Pas testé. Ne prend pas en charge la comptabilité.",
+      "label": "SSR"
+    },
+    "ssr_fakedomain": {
+      "description": "Veuillez utiliser un domaine bien connu dans votre centre de données. par exemple, si vous êtes dans un centre de données Azure, microsoft-update.com est un bon exemple",
+      "label": "Faux domaine SSR"
+    },
+    "sub_full_clash_enable": {
+      "description": "config.sub_full_clash_enable.description",
+      "label": "config.sub_full_clash_enable.label"
+    },
+    "sub_full_clash_meta_enable": {
+      "description": "config.sub_full_clash_meta_enable.description",
+      "label": "config.sub_full_clash_meta_enable.label"
+    },
+    "sub_full_links_b64_enable": {
+      "description": "config.sub_full_links_b64_enable.description",
+      "label": "config.sub_full_links_b64_enable.label"
+    },
+    "sub_full_links_enable": {
+      "description": "config.sub_full_links_enable.description",
+      "label": "config.sub_full_links_enable.label"
+    },
+    "sub_full_singbox_enable": {
+      "description": "config.sub_full_singbox_enable.description",
+      "label": "config.sub_full_singbox_enable.label"
+    },
+    "sub_full_xray_json_enable": {
+      "description": "Le lien complet XRay fournit des options de configuration complètes pour les paramètres spécifiques à XRay. Cela inclut la fragmentation et le multiplexage personnalisés (mux) dans des applications telles que v2rayNG qui prennent en charge les protocoles XRay pour un contrôle précis de la configuration du proxy XRay.",
+      "label": "⚙️ Lien de configuration complète XRay"
+    },
+    "sub_singbox_ssh_enable": {
+      "description": "config.sub_singbox_ssh_enable.description",
+      "label": "config.sub_singbox_ssh_enable.label"
+    },
+    "tcp_enable": {
+      "description": "Active le protocole TCP",
+      "label": "🟠 TCP"
+    },
+    "telegram": {
+      "label": "Configurations de Telegram "
+    },
+    "telegram_adtag": {
+      "description": "Il est utilisé pour afficher une chaîne sponsorisée dans la liste de discussion du client. Pour annoncer une chaîne, obtenez un tag de @MTProxybot .\nentrez le code 0123456789ABCDEF0123456789ABCDEF dans ce bot.",
+      "label": "📍 Balise AD Telegram"
+    },
+    "telegram_bot_token": {
+      "description": "Pour ajouter la fonctionnalité de bot Telegram. vous devez créer un bot avec <a href=\"https://t.me/BotFather\" target=\"_blank\">@BotFather</a> et saisir le code API dans ce champ",
+      "label": "🔐 Jeton de robot Telegram"
+    },
+    "telegram_enable": {
+      "description": "<p data-pm-slice=\"1 1 []\">Telegram MTProto est utilisé pour encapsuler le proxy Telegram en tant que trafic TLS.<br> ⚠️ <span style=\"color:#d32f2f;\"><strong>Ce protocole nécessite un Direct Domain</strong></span></p>",
+      "label": "✔️ Telegram MTProto"
+    },
+    "telegram_fakedomain": {
+      "label": "📺 Faux domaine de Telegram "
+    },
+    "telegram_lib": {
+      "description": "Vous pouvez basculer entre différentes bibliothèques Telegram. Veuillez noter que seul Python fonctionne sur tous les serveurs, d'autres peuvent avoir des problèmes. Testez le proxy après l'avoir modifié",
+      "label": "🔢 Bibliothèque proxy de Telegram "
+    },
+    "tls": {
+      "description": "Les configurations TLS peuvent être définies dans cette section",
+      "label": "Paramètres TLS"
+    },
+    "tls_fragment_enable": {
+      "description": "<p>Dans certaines circonstances, il peut contourner le système de liste noire du SNI. <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-the-TLS-Trick-works-and-its-usage/\" target=\"_blank\">(En savoir plus)</a></p>",
+      "label": "⏯ TLS Fragment"
+    },
+    "tls_fragment_size": {
+      "description": "La taille de chaque paquet",
+      "label": "🎚 Taille de TLS Fragment"
+    },
+    "tls_fragment_sleep": {
+      "description": "Le délai entre les fragments",
+      "label": "⏱ Sommeil de TLS Fragment "
+    },
+    "tls_mixed_case": {
+      "description": "Permet la fragmentation des cas TLS Mixed SNI",
+      "label": "🔠 Cas SNI mixte TLS"
+    },
+    "tls_padding_enable": {
+      "description": "<p>Active le remplissage pour la fragmentation TLS. <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-the-TLS-Trick-works-and-its-usage/#tls-padding\" target=\"_blank\">(En savoir plus)</a></p>",
+      "label": "♒️ TLS Padding"
+    },
+    "vless_enable": {
+      "label": "⚫️ VLess"
+    },
+    "vmess_enable": {
+      "label": "🟣 VMess"
+    },
+    "warp-https-domain-for-warp-site": "config.warp-https-domain-pour-warp-site",
+    "warp": {
+      "description": "Warp est un outil qui masque l'adresse IP de votre serveur dans le trafic sortant. Cela signifie que si les utilisateurs visitent un site Web, l'adresse IP Warp est exposée à la place de l'adresse IP de notre serveur.<inlang-LineFeed><br>\nPar exemple, si vous rencontrez un problème avec le captcha sur Google, il peut être résolu de cette manière.",
+      "label": "WARP➕"
+    },
+    "warp_enable": {
+      "description": "WARP vous aide à contourner les restrictions de Google, Spotify et Netflix en masquant l'adresse IP du serveur ",
+      "label": "Active WARP+"
+    },
+    "warp_mode": {
+      "description": "✴️ Tous : Tous les sites utilisent les IP Warp en sortant<inlang-LineFeed><br>\n☑️ Uniquement les sites nationaux et bloqués : seuls les sites nationaux et les sites Web comme Google, Spotify, Netflix, OpenAi, IPinfo.io utilisent les adresses IP Warp en sortant",
+      "label": "✴️ Mode WARP+"
+    },
+    "warp_plus_code": {
+      "description": "🔝 Augmente la vitesse de navigation. Pour obtenir la clé, rendez-vous sur la <a href='https://1.1.1.1/'>page 1.1.1.1</a>\napplication et achetez la clé originale auprès de Cloudflare<inlang-LineFeed><br>\n⚠️ S'il y a une erreur dans cette clé, le WARP sera désactivé",
+      "label": "🔑 Clé Warp Plus"
+    },
+    "warp_sites": {
+      "description": "Ajoutez des sites supplémentaires pour passer par WARP (uniquement lorsque le mode Warp n'est pas Aucun)",
+      "label": "🆚 Sites WARP supplémentaires"
     }
   }
 }
