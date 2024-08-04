@@ -1223,6 +1223,7 @@
       "tool": {
         "all-configs": "所有配置",
         "doh": {
+          "help": "<h4>在浏览器上配置 DoH</h4><inlang-LineFeed>有多种浏览器兼容 DNS over HTTPS (DoH)。此协议允许<inlang-LineFeed>您对与 1.1.1.1 的连接进行加密，以保护您的 DNS 查询免受隐私入侵和篡改。<inlang-LineFeed><inlang-LineFeed>某些浏览器可能已经启用此设置。<inlang-LineFeed><br /><inlang-LineFeed><h5> ​​Mozilla Firefox</h5><inlang-LineFeed>选择<b>菜单</b>按钮 &gt;<b>设置</b>。在常规菜单中，向下滚动以访问<b>网络设置</b>。选择<b>设置</b>。选择<b>启用 HTTPS 上的 DNS</b> 。<inlang-LineFeed><br /><inlang-LineFeed>​<h5>谷歌浏览器</h5><inlang-LineFeed>选择浏览器中的<b>三点</b>菜单 &gt;<b>设置</b>。<inlang-LineFeed>选择<b>“隐私和安全”</b> &gt;“<b>安全”</b> 。<inlang-LineFeed>向下滚动并启用<b>使用安全 DNS</b> 。<inlang-LineFeed><br /><inlang-LineFeed><h5>​​微软 Edge</h5><inlang-LineFeed>选择浏览器中的<b>三点</b>菜单 &gt;<b>设置</b>。<inlang-LineFeed>选择<b>“隐私”、“搜索”和服务</b>，然后向下滚动到<b>“安全”</b> 。<inlang-LineFeed>启用<b>使用安全 DNS</b> 。<inlang-LineFeed>选择选择服务提供商。",
           "title": "HTTPS 上的 DNS"
         }
       },
