@@ -293,8 +293,8 @@
     },
     "hiddify": {
       "next": {
-        "description": "توضیحات Hiddify Next",
-        "title": "Hiddify Next"
+        "description": "توضیحات HiddifyApp",
+        "title": "هیدیفای‌اپ"
       }
     },
     "hiddifyn": {
@@ -337,9 +337,20 @@
     "welcome": "هورا !!! 🎉 🎉 🎉 \nبه ربات هیدیفای خوش آمدید.\nبرای شروع روی لینک مربوطه در پنل کلیک نموده یا UUID خود را وارد کنید."
   },
   "cdn": "🔀 سی‌دی‌ان (پروکسی کلودفلر و ...)",
+  "cf-delete": {
+    "failed": "cf-delete.failed"
+  },
   "child has been removed!": "پنل زیر مجموعه حذف شد",
+  "child": {
+    "register-failed": "child.register-failed",
+    "register-success": "کودک.ثبت نام-موفقیت",
+    "sync-failed": "child.syn-failed"
+  },
   "clickable copy": "لینک برای شبکه‌های اجتماعی",
   "close": "بستن",
+  "cloudflare": {
+    "error": "cloudflare.error"
+  },
   "config": {
     "Domain_already_used": "دامنه در بخش دامنه‌ها وجود دارد. از دامنه دیگری استفاده کنید.",
     "Invalid_The_pattern_is_number-number": "⚠️ الگو عدد-عدد است ⚠️",
@@ -469,6 +480,10 @@
       "description": "-",
       "label": "-"
     },
+    "hiddifycli_enable": {
+      "description": "config.hiddifycli_enable.description",
+      "label": "config.hiddifycli_enable.label"
+    },
     "http": {
       "description": "تنظیمات مربوط به اتصال HTTP",
       "label": "تنظیمات HTTP"
@@ -498,7 +513,7 @@
       "label": "⚪️ هیستریا"
     },
     "hysteria_obfs_enable": {
-      "description": "مبهم سازی هیستری (Salamander) را فعال می کند",
+      "description": "مبهم سازی هیستریا (Salamander) را فعال می کند",
       "label": "🎛 Hysteria OBFS"
     },
     "hysteria_port": {
@@ -535,9 +550,17 @@
       "description": "-",
       "label": "-"
     },
+    "last_priodic_usage_check": {
+      "description": "config.last_priodic_usage_check.description",
+      "label": "config.last_priodic_usage_check.label"
+    },
     "license": {
       "description": "برای استفاده تجاری از این محصول باید مجوز آن را خریداری کنید",
       "label": "کد مجوز"
+    },
+    "log_level": {
+      "description": "config.log_level.description",
+      "label": "config.log_level.label"
     },
     "mux": {
       "description": "تنظیمات MUX (Multiplex) را می توان در این بخش تنظیم کرد",
@@ -557,7 +580,7 @@
     },
     "mux_enable": {
       "description": "<p style=\"direction:rtl\">Mux به نرم افزار سازگار نیاز دارد. Mux در Hiddify Next و Singbox و XRay سازگار نیستند.&nbsp;<a href=\"https://hiddify.com/fa/manager/basic-concepts-and-troubleshooting/How-MUX-works-and-its-usage/\" target=\"_blank\">(بیشتر بدانید)</a></p>",
-      "label": "Ⓜ️ فعال کردن MUX (⚠️ ناسازگار با برخی نرم افزارها)"
+      "label": "Ⓜ️ MUX (⚠️ ناسازگار با برخی نرم افزارها)"
     },
     "mux_max_connections": {
       "description": "حداکثر اتصالات درگیری با Max Streams",

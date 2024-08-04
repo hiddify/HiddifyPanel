@@ -293,8 +293,8 @@
     },
     "hiddify": {
       "next": {
-        "description": "Hiddify Следующее описание",
-        "title": "Скрыть следующее"
+        "description": "Описание HiddifyApp",
+        "title": "HiddifyApp"
       }
     },
     "hiddifyn": {
@@ -306,8 +306,8 @@
       "title": "HiddifyNG"
     },
     "loon": {
-      "description": "Описание гагары",
-      "title": "гагара"
+      "description": "Описание LOON",
+      "title": "Loon"
     },
     "nekobox": {
       "description": " Nekobox — клиенты на базе Singbox. ",
@@ -315,15 +315,15 @@
     },
     "shadowrocket": {
       "description": "Описание Теневой Ракеты",
-      "title": "Теневая ракета"
+      "title": "Shadowrocket"
     },
     "stash": {
-      "description": "Описание тайника",
-      "title": "Тайник"
+      "description": "Описание Stash ",
+      "title": "Stash "
     },
     "streisand": {
-      "description": "Описание Стрейзанд",
-      "title": "Стрейзанд"
+      "description": "Описание Streisand",
+      "title": "Streisand"
     },
     "v2rayng": {
       "description": "Описание V2RayNG",
@@ -337,9 +337,20 @@
     "welcome": "Ура 🎉 🎉 🎉\nДобро пожаловать в Hiddify bot\nДля начала перейдите по ссылке на панели или введите свой UUID пользователя."
   },
   "cdn": "🔀 CDN (Cloudflare Proxy, ...)",
+  "cf-delete": {
+    "failed": "cf-delete.failed"
+  },
   "child has been removed!": "Дочерний элемент удален!",
+  "child": {
+    "register-failed": "child.register-не удалось",
+    "register-success": "child.register-успех",
+    "sync-failed": "child.sync-не удалось"
+  },
   "clickable copy": "Ссылка для социальных сетей",
   "close": "Закрыть",
+  "cloudflare": {
+    "error": "Cloudflare.error"
+  },
   "config": {
     "Domain_already_used": "Домен уже существует. Использовать другой домен",
     "Invalid_The_pattern_is_number-number": "⚠️ Конфигурация недействительна! Шаблон — это номер-номер ⚠️",
@@ -469,6 +480,10 @@
       "description": "config.hidden.description",
       "label": "config.hidden.label"
     },
+    "hiddifycli_enable": {
+      "description": "config.hiddifycli_enable.description",
+      "label": "config.hiddifycli_enable.label"
+    },
     "http": {
       "description": "Конфигурации HTTP можно установить в этом разделе",
       "label": "конфигурация HTTP"
@@ -499,7 +514,7 @@
     },
     "hysteria_obfs_enable": {
       "description": "Включить Hysteria Obfuscation (Salamander)",
-      "label": "🎛 Включить Hysteria OBFS"
+      "label": "🎛 Hysteria OBFS"
     },
     "hysteria_port": {
       "description": "Hysteria UDP-порт например 5678",
@@ -509,6 +524,7 @@
       "description": "Hysteria Максимальная Скорость Исходящей Загрузки",
       "label": "⬆️ Hysteria Исходящая Загрузка (mbps)"
     },
+    "invalid-pattern-for-warp-sites": "⚠️ Сайт, введенный в Варп, не соответствует указанному шаблону.",
     "invalid_uuid": "Неверный UUID пользователя. пример: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6",
     "is_parent": {
       "description": "config.is_parent.description",
@@ -520,7 +536,7 @@
     },
     "kcp_enable": {
       "description": "Это протокол на базе UDP.",
-      "label": "Включение KCP"
+      "label": "KCP"
     },
     "kcp_ports": {
       "description": "Целые числа, разделенные запятыми, обозначающие порты, которые будут использоваться в качестве соединения KCP.",
@@ -534,9 +550,17 @@
       "description": "config.last_hash.description",
       "label": "config.last_hash.label"
     },
+    "last_priodic_usage_check": {
+      "description": "config.last_priodic_usage_check.description",
+      "label": "config.last_priodic_usage_check.label"
+    },
     "license": {
       "description": "Для коммерческого использования этого продукта вам необходимо приобрести его лицензию.",
       "label": "License  Code"
+    },
+    "log_level": {
+      "description": "config.log_level.description",
+      "label": "config.log_level.label"
     },
     "mux": {
       "description": "Настройки конфигурации MUX (Multiplex)",
@@ -556,7 +580,7 @@
     },
     "mux_enable": {
       "description": "MUX требует совместимые клиенты. MUX в Hiddify Next и Singbox несовместимы с XRay",
-      "label": "Ⓜ️ Включить MUX (⚠️ Несовместимо с некоторыми клиентами)"
+      "label": "Ⓜ️ MUX (⚠️ Несовместимо с некоторыми клиентами)"
     },
     "mux_max_connections": {
       "description": "Максимальное количество подключений. Конфликтует с максимальным количеством потоков",
