@@ -1138,7 +1138,7 @@
   "sub_link_only": "📳 Somente para Link de Assinatura (pode ser direto, relé ou CDN)",
   "telegram": "Telegram",
   "test": "Teste",
-  "update": "atualizar",
+  "update": "Atualizar",
   "user": {
     "UUID": "UUID",
     "current_usage_GB": "Uso atual (GB)",
@@ -1147,8 +1147,8 @@
     "home": {
       "all_configs": "Todas as configurações",
       "allconfig": {
-        "clash-configs": "Configurações de confronto",
-        "hiddify-managers": "Todos os gerenciadores de configuração do Hiddify",
+        "clash-configs": "Configurações de Clash ",
+        "hiddify-managers": "Todas as configurações dos administradores do HiddifyManager",
         "link-configs": "Link de assinatura",
         "name": "Nome e Link",
         "protocol": "Protocolo",
@@ -1157,7 +1157,7 @@
         "type": "Tipo"
       },
       "allconfigs": {
-        "expect_vless": "Exceto VMenos"
+        "expect_vless": "Exceto VLess"
       },
       "android": {
         "intro": "Por favor, instale Hiddify Android de %(dl_link)s %(play_link)s.\n\n<!--\n<div class='callout callout-danger'>\n    <b>Atualize o Hiddify Android para a versão 0.14</b>\n</div>-->\n<detalhes>\n<summary>Por que ocultar o Android?</summary>\n<div class='callout callout-info'>\n\n        Hiddify Android é um Fork Of Clash de código aberto que suporta mais protocolos.\n        <br>\n        Seus códigos-fonte existem em\n        <a href='https://github.com/hiddify/HiddifyProxyAndroid'>GitHub</a>.\n        \n        <br>\n        Portanto, é seguro.\n\n        <detalhes>\n            <summary>Alternativa: Conflito normal</summary>\n            <div class='btn-group'>\n                <a href='https://play.google.com/store/apps/details?id=com.github.kr328.clash'\n                    class='btn btn-warning orig-link'>Clash no Google Play</a>\n            </div>\n            <div class='btn-group'>\n                <a href='/{{hconfigs[ConfigEnum.proxy_path]}}/gh/Kr328/ClashForAndroid/releases/download/v2.5.12/cfa-2.5.12-premium-universal-release.apk'\n                    class='btn btn-warning orig-link'>Download direto</a>\n            </div>\n\n            <div class='alert alert-danger'>\n            O Clash não oferece suporte ao protocolo VLess. portanto, precisamos adicionar outro link para ele.\n            </div>\n            \n\n        </detalhes>\n    </div>\n</detalhes>"
@@ -1219,10 +1219,11 @@
         "clickbtn": "Telegram Proxy",
         "description": "Clique em um dos links a seguir e, no telegrama, você verá uma janela que contém <b>Conectar Proxy</b>. Clique nele e funcionará.\n<br />"
       },
-      "title": "Ocultar",
+      "title": "HiddifyManager",
       "tool": {
         "all-configs": "Todas as configurações",
         "doh": {
+          "help": "<h4>Configure o DoH no seu navegador</h4>\nExistem vários navegadores compatíveis com DNS sobre HTTPS (DoH). Este protocolo permite\nvocê criptografa sua conexão com 1.1.1.1 para proteger suas consultas DNS contra intrusões e adulterações de privacidade.<inlang-LineFeed>\nAlguns navegadores podem já ter esta configuração habilitada.<inlang-LineFeed><br /><inlang-LineFeed><h5> Mozilla Firefox</h5>\nSelecione o botão <b>de menu</b> &gt; <b>Configurações</b> . No menu Geral, role para baixo para acessar <b>Configurações de rede</b> . Selecione <b>Configurações</b> . Selecione <b>Ativar DNS sobre HTTPS</b> .<inlang-LineFeed><br /><inlang-LineFeed>​<h5> Google Chrome</h5>\nSelecione o menu <b>de três pontos</b> em seu navegador &gt; <b>Configurações</b> .\nSelecione <b>Privacidade e segurança</b> &gt; <b>Segurança</b> .\nRole para baixo e ative <b>Usar DNS seguro</b> .<inlang-LineFeed><br /><inlang-LineFeed><h5> Microsoft Edge</h5>\nSelecione o menu <b>de três pontos</b> em seu navegador &gt; <b>Configurações</b> .\nSelecione <b>Privacidade, pesquisa e serviços</b> e role para baixo até <b>Segurança</b> .\nAtive <b>Usar DNS seguro</b> .\nSelecione Escolha um provedor de serviços.",
           "title": "DNS sobre HTTPS"
         }
       },
@@ -1239,7 +1240,7 @@
     },
     "last_reset_time": "Redefinir para a última vez que ouve uso.",
     "name": "Nome",
-    "usage_limit_GB": "Limite de uso (GB)",
+    "usage_limit_GB": "⌛️ Limite de uso (GB)",
     "user_links": "Links de usuário"
   },
   "weekly": "📅 Semanal",

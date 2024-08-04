@@ -1124,5 +1124,124 @@
       "success": "Le changement de langue a été un succès."
     }
   },
-  "reality": "🔂 Reality"
+  "reality": "🔂 Reality",
+  "relay": "♾️ Relay (connexion à l'aide d'un nœud intermédiaire)",
+  "search": "Recherche",
+  "see the log in the bellow screen": "📑 Voir le journal dans l'écran ci-dessous",
+  "serverssh": {
+    "password-login": {
+      "warning": "Votre serveur est vulnérable aux abus car l'authentification par mot de passe est activée dans votre SSH. Pour sécuriser votre serveur, veuillez passer au mécanisme d'authentification par clé et désactiver l'authentification par mot de passe. <a href='https://github.com/hiddify/Hiddify-Manager/wiki/Disable-SSH-Password-Authentication'>En savoir plus...</a>"
+    }
+  },
+  "singbox: ssh": "SingBox : SSH",
+  "ssh": "SSH",
+  "sub_link_only": "📳 Uniquement pour le lien d'abonnement (peut être direct, relais ou CDN)",
+  "telegram": "Telegram",
+  "test": "Test",
+  "update": "Mise à jour",
+  "user": {
+    "UUID": "UUID",
+    "current_usage_GB": "Utilisation actuelle (Go)",
+    "define_mode": "Le mode Package de l'utilisateur. l'utilisation doit-elle être réinitialisée chaque mois, semaine, etc.",
+    "expiry_time": "Expiration (jours)",
+    "home": {
+      "all_configs": "Toutes les configurations",
+      "allconfig": {
+        "clash-configs": "Configurations de Clash ",
+        "hiddify-managers": "Toute la configuration des administrateurs de HiddifyManager",
+        "link-configs": "Lien d'abonnement",
+        "name": "Nom et lien",
+        "protocol": "Protocole",
+        "security": "Sécurité",
+        "transport": "Transport",
+        "type": "Type"
+      },
+      "allconfigs": {
+        "expect_vless": "Sauf VLess"
+      },
+      "android": {
+        "intro": "Veuillez installer Hiddify Android à partir de %(dl_link)s %(play_link)s. <inlang-LineFeed><inlang-LineFeed><!--<inlang-LineFeed><div class='callout callout-danger'>\n   <b>Update Hiddify Android to Version 0.14</b><inlang-LineFeed></div>--><inlang-LineFeed><details><inlang-LineFeed><summary> Pourquoi Hiddifier Android ?</summary><inlang-LineFeed><div class='callout callout-info'><inlang-LineFeed>\nHiddify Android est un fork open source de Clash qui prend en charge davantage de protocoles.<inlang-LineFeed><br>\nSes codes sources existent dans\n<a href='https://github.com/hiddify/HiddifyProxyAndroid'>GitHub</a> .<inlang-LineFeed><inlang-LineFeed><br>\nC’est donc sécuritaire.<inlang-LineFeed><inlang-LineFeed><details><inlang-LineFeed><summary> Alternative : Clash normal</summary><inlang-LineFeed><div class='btn-group'>\n<a href='https://play.google.com/store/apps/details?id=com.github.kr328.clash'<inlang-LineFeed>class='btn btn-warning orig-link'&gt;Clash dans Google Play</a><inlang-LineFeed></div><inlang-LineFeed><div class='btn-group'>\n<a href='/{{hconfigs[ConfigEnum.proxy_path]}}/gh/Kr328/ClashForAndroid/releases/download/v2.5.12/cfa-2.5.12-premium-universal-release.apk'<inlang-LineFeed>class='btn btn-warning orig-link'&gt;Téléchargement direct</a> <inlang-LineFeed></div><inlang-LineFeed><inlang-LineFeed><div class='alert alert-danger'>\nClash ne prend pas en charge le protocole VLess. par conséquent, nous devons ajouter un autre lien pour cela. <inlang-LineFeed></div><inlang-LineFeed><inlang-LineFeed><inlang-LineFeed></details><inlang-LineFeed></div><inlang-LineFeed></details>"
+      },
+      "branding": {
+        "linktitle": "Lien vers la page d'assistance",
+        "title": "Soutien"
+      },
+      "clash_configs": {
+        "all_sites": {
+          "btn": "Installez le proxy pour tous les sites.",
+          "description": "Utilisez Proxy pour tous les sites Web, même pour les sites Web locaux.<inlang-LineFeed><div class='callout callout-danger'>\nLe chargement des sites locaux sera plus lent et mettra en danger votre vie privée.<inlang-LineFeed></div><inlang-LineFeed>",
+          "title": "Proxy pour tous les sites"
+        },
+        "alternative_for_normal_clash": "Lien alternatif pour Clash",
+        "foreign_sites": {
+          "btn": "Installer pour les sites étrangers",
+          "description": "Utilisez Proxy pour tous les sites étrangers (même ceux non bloqués).<inlang-LineFeed><div class='callout callout-warning'>\nCe mode est utile pour accéder à certains sites sanctionnés.<inlang-LineFeed></div><inlang-LineFeed>",
+          "title": "Proxy de sites étrangers"
+        },
+        "intro": "Maintenant, en fonction de vos besoins, cliquez sur l'un des liens suivants.<inlang-LineFeed><br />",
+        "link_for_normal_clash": "Installer Clash",
+        "only_for_blocked_sites": {
+          "btn": "Installer uniquement pour les sites bloqués",
+          "description": "Ce mode est suggéré. Il transmet uniquement les sites bloqués via proxy.<inlang-LineFeed><div class='callout callout-success'>\nDans ce mode, vous ne ressentirez aucun changement de vitesse.<inlang-LineFeed></div>",
+          "title": "Pour uniquement les sites bloqués"
+        }
+      },
+      "doh": "DNS sur HTTPS",
+      "ios": {
+        "others": {
+          "intro": "Installez d'abord l'une des applications suivantes :<inlang-LineFeed><inlang-LineFeed><div class='btn-group'><inlang-LineFeed>\n<a href='https://apps.apple.com/us/app/foxray/id6448898396'<inlang-LineFeed>class='btn btn-primary orig-link'&gt;FoXray</a> <inlang-LineFeed><inlang-LineFeed></div><inlang-LineFeed><inlang-LineFeed><div class='btn-group'><inlang-LineFeed>\n<a href='https://apps.apple.com/us/app/fair-vpn/id1533873488'<inlang-LineFeed>class='btn btn-primary orig-link'&gt;VPN équitable</a><inlang-LineFeed></div><inlang-LineFeed><inlang-LineFeed><br />\nAppliquez ensuite les configurations suivantes :<inlang-LineFeed><br />",
+          "title": "FoXray et Fair VPN"
+        },
+        "stash": {
+          "intro": "Stash et Shadowrocket sont deux excellentes applications. L’un ou l’autre vaut la peine d’être acheté. <inlang-LineFeed><br><inlang-LineFeed><br /><inlang-LineFeed><div class='btn-group'>\n<a href='https://apps.apple.com/us/app/stash-rule-based-proxy/id1596063349' target='_blank' class='btn btn-success orig-link'>Télécharger la cachette</a><inlang-LineFeed></div><inlang-LineFeed><div class='btn-group'>\n<a href='https://apps.apple.com/us/app/shadowrocket/id932747118' target='_blank' class='btn btn-primary orig-link'>Télécharger Shadowrocket</a><inlang-LineFeed></div><br><inlang-LineFeed><br />",
+          "title": "<button class='btn btn-sm btn-default' onclick='show_video('ios-stash')'><i class='fa-solid fa-question'></i>Planque</button>\n<button class='btn btn-sm btn-default' onclick='show_video('ios-shadowrocket')'><i class='fa-solid fa-question'></i>Fusée fantôme</button>\n<span class='badge badge-success'>Recommandé</span>"
+        }
+      },
+      "link": {
+        "manual-copy": "Copier dans le Presse-papiers : Ctrl+C, Entrée"
+      },
+      "qr-code": {
+        "description": "Pour copier ou partager des liens, cliquez sur le gris<i class='fa-solid fa-qrcode'></i> champ pour afficher son QR Code.",
+        "display": "Afficher le code QR"
+      },
+      "select_os": "Veuillez sélectionner votre système d'exploitation.",
+      "select_tool": "Veuillez sélectionner l'article.",
+      "share-title": "Partager sur les réseaux sociaux",
+      "speedtest": {
+        "download": "Télécharger",
+        "intro": "Tout d’abord, testez la vitesse <b>sans</b> le proxy. Si la vitesse n'est pas bonne, cela signifie que cette IP est dite sale chez votre FAI.\nSi la vitesse était faible sans proxy, ne perdez pas votre temps à tester ce proxy.\nSinon, testez avec différents proxys de ce site et si la vitesse est similaire à la vitesse sans le proxy, alors vous avez trouvé le meilleur protocole.<inlang-LineFeed><br />",
+        "title": "Test de vitesse (détecter les adresses IP sales)",
+        "two_ways": "Dans les deux sens",
+        "upload": "Télécharger"
+      },
+      "telegram": {
+        "clickbtn": "Proxy de Telegram ",
+        "description": "Cliquez sur l'un des liens suivants puis, dans le télégramme, vous pouvez voir une fenêtre contenant <b>Connect Proxy</b> . Cliquez dessus et cela fonctionnera.<inlang-LineFeed><br />"
+      },
+      "title": "HiddifyManager",
+      "tool": {
+        "all-configs": "Toutes les configurations",
+        "doh": {
+          "help": "<h4>Configurez DoH sur votre navigateur</h4>\nIl existe plusieurs navigateurs compatibles avec DNS sur HTTPS (DoH). Ce protocole permet\nvous chiffrez votre connexion à 1.1.1.1 afin de protéger vos requêtes DNS contre les intrusions et la falsification de la vie privée.<inlang-LineFeed>\nCertains navigateurs peuvent déjà avoir ce paramètre activé.<inlang-LineFeed><br /><inlang-LineFeed><h5> ​​Mozilla Firefox</h5>\nSélectionnez le bouton <b>de menu</b> &gt; <b>Paramètres</b> . Dans le menu Général, faites défiler vers le bas pour accéder <b>aux Paramètres réseau</b> . Sélectionnez <b>Paramètres</b> . Sélectionnez <b>Activer DNS sur HTTPS</b> .<inlang-LineFeed><br /><inlang-LineFeed>​<h5> Google Chrome</h5>\nSélectionnez le menu <b>à trois points</b> dans votre navigateur &gt; <b>Paramètres</b> .\nSélectionnez <b>Confidentialité et sécurité</b> &gt; <b>Sécurité</b> .\nFaites défiler vers le bas et activez <b>Utiliser un DNS sécurisé</b> .<inlang-LineFeed><br /><inlang-LineFeed><h5> ​​Microsoft Bord</h5>\nSélectionnez le menu <b>à trois points</b> dans votre navigateur &gt; <b>Paramètres</b> .\nSélectionnez <b>Confidentialité, Recherche et Services</b> et faites défiler jusqu'à <b>Sécurité</b> .\nActivez <b>Utiliser un DNS sécurisé</b> .\nSélectionnez Choisir un fournisseur de services.",
+          "title": "DNS sur HTTPS"
+        }
+      },
+      "usage": {
+        "details": "Afficher les détails d'utilisation",
+        "expire": "Expirer: ",
+        "from": "De",
+        "monthly": "Mensuel",
+        "title": "⏳ Utilisation du trafic"
+      },
+      "windows": {
+        "intro": "Tout d'abord, téléchargez et installez le logiciel Hiddify Desktop en fonction de votre système d'exploitation.<inlang-LineFeed><br />\n%(hiddify_desktop_links)s<inlang-LineFeed><inlang-LineFeed><details><inlang-LineFeed><summary> Pourquoi Hiddify Desktop ?</summary><inlang-LineFeed><div class='callout callout-info'><inlang-LineFeed>\nHiddify Desktop est un fork sûr et open source de Clash qui prend en charge davantage d'empreintes digitales VLESS et UTLS.<inlang-LineFeed><br><inlang-LineFeed><br />\nSes codes sources existent dans\n<a href='https://github.com/hiddify/HiddifyDesktop'>GitHub</a> .<inlang-LineFeed><inlang-LineFeed><inlang-LineFeed><details><inlang-LineFeed><summary> Alternative : Clash normal</summary>\n%(normal_clash_link)s<inlang-LineFeed><inlang-LineFeed><div class='alert alert-danger'>\nClash ne prend pas en charge les empreintes digitales du navigateur et le protocole VLESS. Par conséquent, nous devons ajouter un autre lien pour cela. <inlang-LineFeed></div><inlang-LineFeed><inlang-LineFeed><inlang-LineFeed></details><inlang-LineFeed></div><inlang-LineFeed></details><inlang-LineFeed><br /><inlang-LineFeed>Désormais, selon votre besoin, vous pouvez cliquer sur l'un des boutons. En affichant la fenêtre dans votre navigateur, cliquez simplement sur l'option <b>Ouvrir</b> pour ajouter automatiquement le lien du serveur à Hiddify Desktop."
+      }
+    },
+    "last_reset_time": "Réinitialisation de la date de dernière utilisation",
+    "name": "Nom",
+    "usage_limit_GB": "⌛️ Limite d'utilisation (Go)",
+    "user_links": "Liens utilisateur"
+  },
+  "weekly": "📅 Hebdomadaire",
+  "worker": "✴️ Cloudflare Worker"
 }

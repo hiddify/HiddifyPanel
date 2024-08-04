@@ -1148,7 +1148,7 @@
       "all_configs": "تمام کانفیگ‌ها",
       "allconfig": {
         "clash-configs": "کانفیگ‌های کلش",
-        "hiddify-managers": "همه کانفیگ های مدیران هیدیفای",
+        "hiddify-managers": "‌همه کانفیگ های ادمین‌های هیدیفای‌منیجر",
         "link-configs": "لینک برای Subscription",
         "name": "اسم و لینک",
         "protocol": "پروتکل",
@@ -1157,7 +1157,7 @@
         "type": "نوع"
       },
       "allconfigs": {
-        "expect_vless": "به جز VLESS"
+        "expect_vless": "به جز VLess"
       },
       "android": {
         "intro": "لطفاً Hiddify Android را از لینک‌ زیر نصب نمایید: <br>\n%(dl_link)s    %(play_link)s \n<!--\n<div class='callout callout-danger'>\n    <b>اپ Hiddify Android را به ورژن 0.14 آپدیت کنید. </b>\n</div>\n-->\n<details>\n<summary>آیا استفاده از Hiddify Andorid ایمن است؟</summary>\n<div class='callout callout-info'>\n\n        اپ Hiddify Android یک ورژن (Fork) منبع باز از اپ Clash است که نسبت به اپ کلش از پروتکل های بیشتری پشتیبانی می کند.\n         <br>\n         کدهای منبع آن را در گیت‌هاب می‌توانید ببینید:\n         <a href='https://github.com/hiddify/HiddifyProxyAndroid'>GitHub</a>.\n        \n         <br>\n         بنابراین، با خیال راحت از آن استفاده کنید.\n\n         <details>\n             <summary>جایگزین: Normal Clash</summary>\n             <div class='btn-group'>\n                 <a href='https://play.google.com/store/apps/details?id=com.github.kr328.clash'\n                     class='btn btn-warning orig-link'>دانلود از Google Play</a>\n             </div>\n             <div class='btn-group'>\n                 <a href='/{{hconfigs[ConfigEnum.proxy_path]}}/gh/Kr328/ClashForAndroid/releases/download/v2.5.12/cfa-2.5.12-premium-universal-release.apk'\n                     class='btn btn-warning orig-link'>دانلود مستقیم</a>\n             </div>\n\n             <div class='alert alert-danger'>\n             Clash از پروتکل VLESS پشتیبانی نمی کند. بنابراین، باید از پروتکل دیگری برای آن استفاده کنید.\n             </div>\n            \n\n         </details>\n     </div>\n         </details>"
@@ -1207,7 +1207,7 @@
       },
       "select_os": "لطفا سیستم عامل خود را انتخاب کنید.",
       "select_tool": "لطفا یکی از موارد زیر را انتخاب کنید.",
-      "share-title": "اشتراک‌گذاری",
+      "share-title": "اشتراک‌گذاری در شبکه‌های اجتماعی",
       "speedtest": {
         "download": "دانلود",
         "intro": "ابتدا سرعت را <b>بدون</b> اتصال به پروکسی تست کنید. اگر سرعت خوب نیست، به این معنی است که این IP در ISP شما اصطلاحا کثیف است.\nاگر سرعت بدون پراکسی کم بود، وقت خود را برای تست این پروکسی تلف نکنید.\nدر غیر این صورت با پروکسی های مختلف ارائه شده  در این صفحه تست کنید و هر زمان سرعت با پروکسی نزدیک به سرعت بدون پروکسی بود، بهترین پروتکل را پیدا کرده اید.\n<br />",
@@ -1219,7 +1219,7 @@
         "clickbtn": "پروکسی تلگرام",
         "description": "روی یکی از لینک‌های زیر کلیک کنید. سپس در تلگرام پنجره‌‌ای مشاهده می‌کنید که یک دکمه با نوشته <b>Connect Proxy</b> قابل مشاهده است. روی آن کلیک کنید تا پروکسی متصل شود.\n<br />"
       },
-      "title": "هیدیفای",
+      "title": "هیدیفای‌منیجر",
       "tool": {
         "all-configs": "تمام کانفیگ‌ها",
         "doh": {
@@ -1229,7 +1229,7 @@
       },
       "usage": {
         "details": "نمایش جزئیات استفاده",
-        "expire": "پایان:",
+        "expire": "انقضا:",
         "from": "از",
         "monthly": "ماهانه",
         "title": "⏳ حجم مصرف شده"

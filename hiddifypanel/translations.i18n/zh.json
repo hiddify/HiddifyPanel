@@ -1125,7 +1125,7 @@
     }
   },
   "reality": "🔂 Reality",
-  "relay": "♾️ 中继（使用中间节点连接）",
+  "relay": "♾️ Relay （使用中间节点连接）",
   "search": "搜索",
   "see the log in the bellow screen": "📑 查看以下屏幕中的日志",
   "serverssh": {
@@ -1136,19 +1136,19 @@
   "singbox: ssh": "歌手盒：SSH",
   "ssh": "SSH",
   "sub_link_only": "📳 仅适用于订阅链接（可以是 Direct、Relay 或 CDN）",
-  "telegram": "电报",
+  "telegram": "Telegram",
   "test": "测试",
   "update": "更新",
   "user": {
-    "UUID": "通用唯一标识符",
+    "UUID": "UUID",
     "current_usage_GB": "当前使用情况（GB）",
     "define_mode": "用户的套餐模式。使用量是否应该每月、每周等重置",
     "expiry_time": "过期（天）",
     "home": {
       "all_configs": "所有配置",
       "allconfig": {
-        "clash-configs": "冲突配置",
-        "hiddify-managers": "所有配置 Hiddify 管理器",
+        "clash-configs": "Clash 配置",
+        "hiddify-managers": "HiddifyManager 管理员的所有配置",
         "link-configs": "订阅链接",
         "name": "名称和链接",
         "protocol": "协议",
@@ -1219,7 +1219,7 @@
         "clickbtn": "电报代理",
         "description": "单击以下链接之一，然后在电报中您可以看到一个包含<b>连接代理</b>的窗口。点击它，它就会起作用。\n<br/>"
       },
-      "title": "希迪菲",
+      "title": "HiddifyManager",
       "tool": {
         "all-configs": "所有配置",
         "doh": {
@@ -1243,5 +1243,5 @@
     "user_links": "用户链接"
   },
   "weekly": "📅每周",
-  "worker": "✴️ Cloudflare 工作人员"
+  "worker": "✴️ Cloudflare Worker"
 }
