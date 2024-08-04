@@ -126,7 +126,6 @@
   "Oops! Something went wrong.": "Ops! algo deu errado.",
   "Open in Application": "Abrir no aplicativo",
   "Others": "🇺🇳 Outros",
-  "Override Root Admin": "",
   "Owner can not be deleted!": "O proprietário não pode ser excluído!",
   "Package Days": "📆 Dias do pacote",
   "Package ended!": "Package encerrado",
@@ -225,7 +224,9 @@
   "You can restore your configs from previously downloaded configs": "Você pode restaurar suas configurações do arquivo de backup baixado anteriormente",
   "You have too much users! You can have only %(active)s active users and %(total)s users": "Você tem muitos usuários! Você pode ter apenas %(active)s usuários ativos e %(total)s usuários",
   "You have used this domain in: ": "Já utilizou este Domínio em:",
-  "You should visit this page without VPN. Your country=%(your_country)s\nexpected=%(expected_country)s": "Você deve visitar esta página sem VPN Seu país =%(expected_country)s\nEsperado=%(expected_country)s",
+  "You should visit this page without VPN": {
+    " Your country=%(your_country)s\nexpected=%(expected_country)s": "Você deve visitar esta página sem VPN Seu país =%(expected_country)s\nEsperado=%(expected_country)s"
+  },
   "Your hiddify instance information \nDomain: {} \nUsage limit: {} GB\nCurrent usage: {} GB\nExpires at: {} \nRemaining days: {} \n\n\n Happy using 🎉 🎉 🎉 \n": "Suas informações de instância do Hiddify\nDomínio: {}\nLimite de uso: {} GB\nUso atual: {} GB\nExpira em: {}\nDias restantes: {}\n\n\nBoa sorte! 🎉 🎉 🎉",
   "[Admin only visible message:] You can change this message from settings": "[Mensagem visível apenas pelo administrador]: Você pode alterar esta mensagem nas configurações.",
   "actions": "Ações",
@@ -335,20 +336,9 @@
     "welcome": "Viva 🎉 🎉 🎉\nBem-vindo ao bot Hiddify\nComece clicando no link no Painel ou inserindo seu UUID."
   },
   "cdn": "CDN (Cloudflare Proxy, ...)",
-  "cf-delete": {
-    "failed": ""
-  },
   "child has been removed!": "Child removido",
-  "child": {
-    "register-failed": "",
-    "register-success": "",
-    "sync-failed": ""
-  },
   "clickable copy": "Link para mídias sociais",
   "close": "Fechar",
-  "cloudflare": {
-    "error": ""
-  },
   "config": {
     "Domain_already_used": "O domínio existe na seção de domínios. Usar outro domínio",
     "Invalid_The_pattern_is_number-number": "⚠️ Configuração inválida! O padrão é número-número",
@@ -418,17 +408,9 @@
       "description": "Aplica as configurações apropriadas para cada país de acordo com as condições de filtragem desse país",
       "label": "Country"
     },
-    "create_easysetup_link": {
-      "description": "",
-      "label": ""
-    },
     "db_version": {
       "description": "Descrição da versão do banco de dados",
       "label": "Rótulo da versão do banco de dados"
-    },
-    "dbvalues": {
-      "description": "",
-      "label": ""
     },
     "decoy_domain": {
       "description": "Site falso: simula um site quando alguém visita seu domínio.\nPor favor, não use sites iranianos, sites populares bem conhecidos como: Google, Yahoo, Wikipedia, etc.",
@@ -478,10 +460,6 @@
       "description": "config.hidden.description",
       "label": "config.hidden.label"
     },
-    "hiddifycli_enable": {
-      "description": "",
-      "label": ""
-    },
     "http": {
       "description": "As configurações HTTP podem ser definidas nesta seção",
       "label": "Configuração HTTP"
@@ -494,35 +472,18 @@
       "description": "Ao permitir isso, seus usuários podem se conectar ao sistema com a porta HTTP não criptografada. (Não recomendado)",
       "label": "☑️ Permitir conexão HTTP"
     },
-    "httpupgrade_enable": {
-      "description": "",
-      "label": ""
-    },
     "hysteria": {
       "description": "Hysteria é uma ferramenta de proxy e retransmissão repleta de recursos otimizada para conexões instáveis ​​e com perdas (por exemplo, redes de satélite, Wi-Fi público congestionado, conexão com servidores estrangeiros da China)",
       "label": "Histeria"
-    },
-    "hysteria_down_mbps": {
-      "description": "",
-      "label": ""
     },
     "hysteria_enable": {
       "description": "Para ativar o protocolo de histeria baseado em udp",
       "label": "Habilitar Histeria"
     },
-    "hysteria_obfs_enable": {
-      "description": "",
-      "label": ""
-    },
     "hysteria_port": {
       "description": "Porta UDP de histeria, por exemplo 5678",
       "label": "Porto de Histeria"
     },
-    "hysteria_up_mbps": {
-      "description": "",
-      "label": ""
-    },
-    "invalid-pattern-for-warp-sites": "",
     "invalid_uuid": "Secret UUID inválido. exemplo: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6",
     "is_parent": {
       "description": "config.is_parent.description",
@@ -548,57 +509,12 @@
       "description": "config.last_hash.description",
       "label": "config.last_hash.label"
     },
-    "last_priodic_usage_check": {
-      "description": "",
-      "label": ""
-    },
     "license": {
       "description": "Para uso comercial deste produto, você deve comprar sua licença",
       "label": "Código de licença"
     },
-    "log_level": {
-      "description": "",
-      "label": ""
-    },
     "mux": {
-      "description": "",
       "label": "Configurações de MUX"
-    },
-    "mux_brutal_down_mbps": {
-      "description": "",
-      "label": ""
-    },
-    "mux_brutal_enable": {
-      "description": "",
-      "label": ""
-    },
-    "mux_brutal_up_mbps": {
-      "description": "",
-      "label": ""
-    },
-    "mux_enable": {
-      "description": "",
-      "label": ""
-    },
-    "mux_max_connections": {
-      "description": "",
-      "label": ""
-    },
-    "mux_max_streams": {
-      "description": "",
-      "label": ""
-    },
-    "mux_min_streams": {
-      "description": "",
-      "label": ""
-    },
-    "mux_padding_enable": {
-      "description": "",
-      "label": ""
-    },
-    "mux_protocol": {
-      "description": "",
-      "label": ""
     },
     "netdata": {
       "description": "Para exibir recursos. usa a CPU do seu servidor, mas não é muito.",
@@ -616,18 +532,6 @@
       "description": "Especifique se você deseja um pacote lançado ou desenvolvido",
       "label": "🔄 Modo de atualização de pacotes"
     },
-    "panel_mode": {
-      "description": "",
-      "label": ""
-    },
-    "parent_admin_proxy_path": {
-      "description": "",
-      "label": ""
-    },
-    "parent_domain": {
-      "description": "",
-      "label": ""
-    },
     "parent_panel": {
       "description": "Você pode se conectar ao Painel Central para definir apenas um usuário e o uso de todos os servidores será adicionado cumulativamente.",
       "label": "Painel Pai (Multi-servidor)"
@@ -635,10 +539,6 @@
     "path_grpc": {
       "description": "Caminho gRPC nas configurações",
       "label": "ℹ️ caminho gRPC"
-    },
-    "path_httpupgrade": {
-      "description": "",
-      "label": ""
     },
     "path_splithttp": {
       "description": "Esta opção define o caminho para Split HTTP",
@@ -680,33 +580,13 @@
       "description": "Usamos o caminho de proxy secreto para ocultar nossos proxies para o governo",
       "label": "ℹ️ Caminho do proxy secreto"
     },
-    "proxy_path_admin": {
-      "description": "",
-      "label": ""
-    },
-    "proxy_path_client": {
-      "description": "",
-      "label": ""
-    },
-    "quic_enable": {
-      "description": "",
-      "label": ""
-    },
     "reality": {
       "description": "REALITY elimina o recurso de impressão digital TLS do lado do servidor",
       "label": "Reality"
     },
-    "reality_enable": {
-      "description": "",
-      "label": ""
-    },
     "reality_fallback_domain": {
       "description": "Quando o GTW visitar os sites em nomes de servidor, ele será redirecionado para este domínio",
       "label": "🌍 Domínio alternativo"
-    },
-    "reality_port": {
-      "description": "",
-      "label": ""
     },
     "reality_private_key": {
       "description": "Não mude isso",
@@ -735,22 +615,6 @@
     "restls1_3_domain": {
       "description": "config.restls1_3_domain.description",
       "label": "config.restls1_3_domain.label"
-    },
-    "shadowsocks": {
-      "description": "",
-      "label": ""
-    },
-    "shadowsocks2022_enable": {
-      "description": "",
-      "label": ""
-    },
-    "shadowsocks2022_method": {
-      "description": "",
-      "label": ""
-    },
-    "shadowsocks2022_port": {
-      "description": "",
-      "label": ""
     },
     "shadowtls": {
       "description": "Um Proxy para expor o handshake tls real ao firewall.\n\nFunciona como Trojan, mas não requer certificado de assinatura. o firewall verá o handshake tls real com o certificado válido que você escolher.",
@@ -820,38 +684,6 @@
       "description": "Por favor, use um domínio bem conhecido em seu data center. por exemplo, se você estiver no data center do Azure, microsoft-update.com é um bom exemplo",
       "label": "SSR FakeDomain"
     },
-    "sub_full_clash_enable": {
-      "description": "",
-      "label": ""
-    },
-    "sub_full_clash_meta_enable": {
-      "description": "",
-      "label": ""
-    },
-    "sub_full_links_b64_enable": {
-      "description": "",
-      "label": ""
-    },
-    "sub_full_links_enable": {
-      "description": "",
-      "label": ""
-    },
-    "sub_full_singbox_enable": {
-      "description": "",
-      "label": ""
-    },
-    "sub_full_xray_json_enable": {
-      "description": "",
-      "label": ""
-    },
-    "sub_singbox_ssh_enable": {
-      "description": "",
-      "label": ""
-    },
-    "tcp_enable": {
-      "description": "",
-      "label": ""
-    },
     "telegram": {
       "description": "Um proxy projetado para o Telegram ignorar a filtragem do Telegram",
       "label": "Configurações do telegram"
@@ -880,37 +712,9 @@
       "description": "As configurações de TLS podem ser definidas nesta seção.",
       "label": "Configuração de TLS"
     },
-    "tls_fragment_enable": {
-      "description": "",
-      "label": ""
-    },
-    "tls_fragment_size": {
-      "description": "",
-      "label": ""
-    },
-    "tls_fragment_sleep": {
-      "description": "",
-      "label": ""
-    },
-    "tls_mixed_case": {
-      "description": "",
-      "label": ""
-    },
-    "tls_padding_enable": {
-      "description": "",
-      "label": ""
-    },
-    "tls_padding_length": {
-      "description": "",
-      "label": ""
-    },
     "tls_ports": {
       "description": "Inteiros separados por vírgula indicando as portas a serem usadas como conexão TLS (a porta 443 será usada em qualquer caso)",
       "label": "🔎 Portas TLS"
-    },
-    "tls_trick": {
-      "description": "",
-      "label": ""
     },
     "too_advanced": {
       "description": "Especifique o caminho do proxy. É importante especialmente se você estiver usando HTTP e VMess",
@@ -919,10 +723,6 @@
     "torrent_block": {
       "description": "As configurações do bloco de torrent podem ser definidas nesta seção.",
       "label": "Configuração do Bloco de Torrent"
-    },
-    "trojan_enable": {
-      "description": "",
-      "label": ""
     },
     "tuic": {
       "description": "O proxy de alto desempenho delicadamente TUICed está no topo do protocolo QUIC.\n\nO objetivo do TUIC é minimizar a latência do handshake o máximo possível",
@@ -951,15 +751,10 @@
     "validation-error": "Há um erro em um dos campos.",
     "validation-success": "As configurações foram alteradas com sucesso. Clique em %(link)s para aplicar as configurações. Pode levar 2 minutos para aplicar",
     "validation-success-no-reset": "✅ As configurações foram alteradas com sucesso",
-    "vless_enable": {
-      "description": "",
-      "label": ""
-    },
     "vmess_enable": {
       "description": "É relatado por várias pessoas que o VMess faz com que o sistema seja detectado pelo governo. Então não é recomendado",
       "label": "♈️ Habilitar VMess"
     },
-    "warp-https-domain-for-warp-site": "",
     "warp": {
       "description": "Warp é uma ferramenta que esconde o IP do seu servidor dos sites onde os usuários navegam \n<br>\nPor exemplo, se você tiver um problema com o Google, ele pode ser corrigido.",
       "label": "WARP Plus"
@@ -976,49 +771,8 @@
       "description": "Aumenta a velocidade de navegação. \nPara obter a chave, acesse <a href='https://t.me/hiddify_board'> aqui </a>\nenvie uma mensagem\n<br>\nCaso haja algum erro nesta Chave, o WARP será desabilitado.",
       "label": "🔑 Chave WARP Plus"
     },
-    "warp_sites": {
-      "description": "",
-      "label": ""
-    },
     "wireguard": {
-      "description": "",
-      "label": ""
-    },
-    "wireguard_enable": {
-      "description": "",
-      "label": ""
-    },
-    "wireguard_ipv4": {
-      "description": "",
-      "label": ""
-    },
-    "wireguard_ipv6": {
-      "description": "",
-      "label": ""
-    },
-    "wireguard_noise_trick": {
-      "description": "",
-      "label": ""
-    },
-    "wireguard_port": {
-      "description": "",
-      "label": ""
-    },
-    "wireguard_private_key": {
-      "description": "",
-      "label": ""
-    },
-    "wireguard_public_key": {
-      "description": "",
-      "label": ""
-    },
-    "ws_enable": {
-      "description": "",
-      "label": ""
-    },
-    "xtls_enable": {
-      "description": "",
-      "label": ""
+      "description": "WireGuard é um protocolo leve baseado em UDP conhecido por sua simplicidade, eficiência e forte segurança. Oferece configuração rápida, código transparente e ganhou popularidade por sua facilidade de uso em vários sistemas operacionais."
     }
   },
   "copy": "cópia de",
@@ -1034,9 +788,6 @@
     "domain_fronting": {
       "description": "É usado para simular outro site em vez do seu site no SNI. portanto, o GFW não pode filtrar seu domínio\n<a href='https://github.com/hiddify/hiddify-config/wiki/Guide-for-domain-fronting'>Guia</a>. ⚠️CloudFlare não suporta fronting de domínio.",
       "label": "🔒 Habilitar fronting de domínio TLS"
-    },
-    "empty": {
-      "allowed_for_fake_only": ""
     },
     "intro": "1️⃣ Nesta seção, você pode adicionar seu domínio.\\n<br>\n2️⃣ Se você deseja diminuir a probabilidade de ter um IP sujo, pode adicionar Multiple Relay Server <a href='https://github.com/hiddify/hiddify-config/discussions/129'>Leia mais</a>.\\n<br>\n3️⃣ Se você tiver Múltiplos IPv4 ou IPv6 em seu Painel, deverá adicionar o domínio apontado para eles como Relay.\"",
     "ip": "IP",
@@ -1055,7 +806,6 @@
   "in parent panel": "No Painel Principal",
   "install from google play": "Google Play",
   "ios": "iOS",
-  "items": "",
   "lang": {
     "en": "🇺🇸 Inglês انگلیسی 英语",
     "fa": "🇮🇷 Persian فارسی 波斯语",
@@ -1086,17 +836,13 @@
   "next": "Próximo",
   "no_reset": "Sem Redefinir",
   "node": {
-    "diff-version": "",
     "mode": {
-      "dscr": "",
       "label": "Modo de nó"
     },
     "name": {
-      "dscr": "",
       "label": "Nome do nó"
     },
     "uuid": {
-      "dscr": "",
       "label": "UUID do nó"
     }
   },
@@ -1105,18 +851,14 @@
   "outdated_panel": "Esta versão do painel Hiddify está desatualizada. Atualize-o na Área Administrativa.",
   "package days?": "dias de pacote?",
   "package size?": "tamanho do pacote?",
-  "parent": {
-    "invalid-parent-url": "",
-    "sync-req-failed": ""
-  },
   "previous": "Anterior",
   "quicksetup": {
     "cdn_domain": {
-      "description": "",
-      "label": ""
+      "description": "A configuração do domínio CDN é opcional. Use-o apenas se você já configurou um CDN.",
+      "label": "Domínio CDN"
     },
     "proxy_cat": {
-      "description": ""
+      "description": "Etapa final: selecione os proxies desejados. Escolha o mínimo possível."
     },
     "setlang": {
       "success": "A alteração do idioma foi bem-sucedida."
@@ -1221,7 +963,6 @@
       "tool": {
         "all-configs": "Todas as configurações",
         "doh": {
-          "help": "",
           "title": "DNS sobre HTTPS"
         }
       },
