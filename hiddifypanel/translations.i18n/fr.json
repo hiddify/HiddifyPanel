@@ -577,7 +577,28 @@
       "label": "Ⓜ️ MUX (⚠️ Incompatible avec certains clients)"
     },
     "mux_max_connections": {
-      "description": "Connexions maximales. Conflit avec Max Streams"
+      "description": "Connexions maximales. Conflit avec Max Streams",
+      "label": "⛓ Connexions MUX maximales"
+    },
+    "mux_max_streams": {
+      "description": "Flux multiplexés maximum dans une connexion avant d'ouvrir une nouvelle connexion",
+      "label": "↗️ Flux MUX Max"
+    },
+    "mux_min_streams": {
+      "description": "Flux multiplexés minimum dans une connexion avant d'ouvrir une nouvelle connexion",
+      "label": "↘️ Flux minimum MUX"
+    },
+    "mux_padding_enable": {
+      "description": "Description du MUX Padding",
+      "label": "⟹ MUX Padding"
+    },
+    "mux_protocol": {
+      "description": "ℹ️ Protocole Multiplex. 'sMux' est utilisé par défaut<inlang-LineFeed><br>\n➖ sMux : multiplexage de flux<inlang-LineFeed><br>\n➖ YaMux : encore un autre multiplexeur<inlang-LineFeed><br>\n➖ h2Mux : multiplexage des flux sur HTTP/2",
+      "label": "♍️ Protocole MUX"
+    },
+    "netdata": {
+      "description": "Pour afficher les ressources. utilise le CPU de votre serveur mais ce n'est pas trop.",
+      "label": "Netdata"
     }
   }
 }

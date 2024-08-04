@@ -594,12 +594,17 @@
       "description": "Минимальное количество мультиплексированных потоков в соединении перед открытием нового соединения",
       "label": "↘️ Минимальное количество потоков MUX"
     },
+    "mux_padding_enable": {
+      "description": "Описание MUX Padding",
+      "label": "⟹ MUX Padding"
+    },
     "mux_protocol": {
+      "description": "ℹ️Мультиплексный протокол. «sMux» используется по умолчанию<inlang-LineFeed><br>\n➖ sMux: мультиплексирование потоков<inlang-LineFeed><br>\n➖ YaMux: еще один мультиплексор<inlang-LineFeed><br>\n➖ h2Mux: мультиплексирование потоков через HTTP/2",
       "label": "♍️ Протокол MUX"
     },
     "netdata": {
       "description": "Для отображения ресурсов, используется процессор вашего сервера, но нагрузка не слишком высокая",
-      "label": "Сетевые данные"
+      "label": "Netdata"
     },
     "not_found": {
       "description": "Конфигурация не найдена",

@@ -583,11 +583,28 @@
       "label": "Ⓜ️ MUX（⚠️ 与某些客户端不兼容）"
     },
     "mux_max_connections": {
-      "description": "最大连接数。与最大流数冲突"
+      "description": "最大连接数。与最大流数冲突",
+      "label": "⛓ MUX 最大连接数"
+    },
+    "mux_max_streams": {
+      "description": "打开新连接之前连接中的最大复用流数",
+      "label": "↗️ MUX 最大流"
+    },
+    "mux_min_streams": {
+      "description": "打开新连接之前连接中的最小多路复用流",
+      "label": "↘️ MUX 最小流"
+    },
+    "mux_padding_enable": {
+      "description": "MUX Padding 描述",
+      "label": "⟹ MUX Padding"
+    },
+    "mux_protocol": {
+      "description": "ℹ️ 多路复用协议。默认使用 'sMux'<inlang-LineFeed><br>\n➖ sMux: 流复用<inlang-LineFeed><br><inlang-LineFeed>➖ YaMux: 又一个多路复用器<inlang-LineFeed><br><inlang-LineFeed>➖ h2Mux: 通过 HTTP/2 多路复用流",
+      "label": "♍️ MUX 协议"
     },
     "netdata": {
       "description": "用于显示资源。使用您服务器的 CPU，但不会太多。",
-      "label": "网络数据"
+      "label": "Netdata"
     },
     "not_found": {
       "description": "未找到配置",
