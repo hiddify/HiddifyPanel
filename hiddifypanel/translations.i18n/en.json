@@ -928,19 +928,19 @@
     },
     "tuic": {
       "description": "Delicately-TUICed High-Performance proxy is on top of the QUIC protocol. \n\nTUIC's goal is to minimize the handshake latency as much as possible",
-      "label": "TUIC"
+      "label": "⚫️ TUIC"
     },
     "tuic_enable": {
       "description": "It is a UDP based protocol similar to QUIC",
-      "label": "⚫️ TUIC"
+      "label": "Enables TUIC"
     },
     "tuic_port": {
       "description": "Use comma to separate ports like ( 63000,60000 )",
       "label": "TUIC Ports"
     },
     "unique_id": {
-      "description": "-",
-      "label": "-"
+      "description": "config.unique_id.description",
+      "label": "config.unique_id.label"
     },
     "utls": {
       "description": "This Option Will Simulate Different Browsers, Therefore, GFW Can Not Detect Your Browsing",
@@ -984,42 +984,42 @@
     },
     "wireguard": {
       "description": "WireGuard is a lightweight, UDP  based protocol known for its simplicity, efficiency, and strong security. It offers quick setup, transparent code, and has gained popularity for its ease of use across various operating systems",
-      "label": "WireGuard"
+      "label": "🐉 WireGuard"
     },
     "wireguard_enable": {
       "description": "<p>WireGuard is UDP based protocol. (⚠️ It is Working In <a href=\"https://github.com/hiddify/hiddify-next\" target=\"_blank\">Hiddify Next</a>)</p>",
-      "label": "🐉 WireGuard"
+      "label": "Enables WireGuard"
     },
     "wireguard_ipv4": {
-      "description": "-",
-      "label": "-"
+      "description": "Enables IPv4 in WireGuard",
+      "label": " IPv4 in WireGuard"
     },
     "wireguard_ipv6": {
-      "description": "-",
-      "label": "-"
+      "description": "Enables IPv6 in WireGuard",
+      "label": "IPv6 in WireGuard"
     },
     "wireguard_noise_trick": {
       "description": "This method introduces extra noise to prevent detection and blocking by the GFW",
       "label": "💥 WireGuard Noise Trick"
     },
     "wireguard_port": {
-      "description": "WireGuard Port",
+      "description": "Defines Port for WireGuard ",
       "label": "↔️ WireGuard Port"
     },
     "wireguard_private_key": {
-      "description": "-",
-      "label": "-"
+      "description": "A private key is specified to WireGuard",
+      "label": "WireGuard Private Key"
     },
     "wireguard_public_key": {
-      "description": "-",
-      "label": "-"
+      "description": "A public key is specified to WireGuard",
+      "label": "WireGuard Public Key"
     },
     "ws_enable": {
       "description": "Websocket creates a tunnel over HTTP that is useful to be used in CDN",
       "label": "🔰 Websocket"
     },
     "xtls_enable": {
-      "description": "Enable XTLS Protocol",
+      "description": "Enables XTLS Protocol",
       "label": "🟢 XTLS"
     }
   },
@@ -1054,14 +1054,14 @@
   "grpc-proxy": {
     "description": "ℹ️ gRPC is a H2 based Protocol. Maybe it is faster for you!"
   },
-  "in parent panel": "In Parent Panel",
+  "in parent panel": "In Central Panel",
   "install from google play": "<i class='fa-brands fa-google-play'></i> Google Play",
   "ios": "iOS",
   "items": "items",
   "lang": {
-    "en": "🇺🇸 English - انگلیسی",
+    "en": "🇺🇸 English",
     "fa": "🇮🇷 Persian - فارسی",
-    "pt": "🇵🇹 Portuguese",
+    "pt": "🇵🇹 Portuguese - Português ",
     "ru": "🇷🇺 Russian - Русский",
     "zh": "🇨🇳 Chinese - 简体中文"
   },
@@ -1075,13 +1075,13 @@
   "log": "📄 Log",
   "login": {
     "secret": {
-      "description": "Secret code is given by the service provider.",
-      "label": "Secret Code"
+      "description": "For getting access to this page, please enter your secret code (UUID)",
+      "label": "Secret Code (UUID)"
     }
   },
   "macOS": "macOS",
   "master": {
-    "page-title": "Hiddify Manager"
+    "page-title": "HiddifyManager"
   },
   "monthly": "🗓️ Monthly",
   "move_to_new_link": "The page has been moved to a new link. Please copy and save the new link.",

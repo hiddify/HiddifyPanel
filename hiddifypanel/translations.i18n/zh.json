@@ -928,7 +928,7 @@
     },
     "tuic": {
       "description": "Delicately-TUICed 高性能代理位于 QUIC 协议之上。\n\nTUIC的目标是尽可能减少握手延迟",
-      "label": "TUIC"
+      "label": "⚫️ TUIC"
     },
     "tuic_enable": {
       "description": "它是一个基于UDP的协议，类似于QUIC",
@@ -939,7 +939,7 @@
       "label": "TUIC 端口"
     },
     "unique_id": {
-      "description": "config.unique_id.描述",
+      "description": "config.unique_id.description",
       "label": "config.unique_id.label"
     },
     "utls": {
@@ -948,12 +948,13 @@
     },
     "v2ray_enable": {
       "description": "V2ray不支持计费，不建议使用",
-      "label": "♈️启用V2Ray"
+      "label": "♈️ V2Ray"
     },
     "validation-error": "其中一个字段有错误。",
     "validation-success": "配置已成功更改。单击 %(link)s 应用配置。申请可能需要 2 分钟",
     "validation-success-no-reset": "✅ 配置已成功更改",
     "vless_enable": {
+      "description": "启用 VLess 协议",
       "label": "⚫️ VLess"
     },
     "vmess_enable": {
@@ -982,7 +983,44 @@
       "label": "🆚 其他 WARP 站点"
     },
     "wireguard": {
-      "description": "WireGuard 是一种轻量级的基于 UDP 的协议，以其简单、高效和强大的安全性而闻名。它提供快速设置、透明代码，并因其在各种操作系统中的易用性而广受欢迎"
+      "description": "WireGuard 是一种轻量级的基于 UDP 的协议，以其简单、高效和强大的安全性而闻名。它提供快速设置、透明代码，并因其在各种操作系统中的易用性而广受欢迎",
+      "label": "🐉 WireGuard"
+    },
+    "wireguard_enable": {
+      "description": "<p>WireGuard 是基于 UDP 的协议。（⚠️ 它在<a href=\"https://github.com/hiddify/hiddify-next\" target=\"_blank\">Hiddify Next</a>中运行）</p>",
+      "label": "启用 WireGuard"
+    },
+    "wireguard_ipv4": {
+      "description": "在 WireGuard 中启用 IPv4",
+      "label": " WireGuard 中的 IPv4"
+    },
+    "wireguard_ipv6": {
+      "description": "在 WireGuard 中启用 IPv6",
+      "label": "WireGuard 中的 IPv6"
+    },
+    "wireguard_noise_trick": {
+      "description": "这种方法会引入额外的噪音，以防止被 GFW 检测和阻止",
+      "label": "💥 WireGuard 噪音技巧"
+    },
+    "wireguard_port": {
+      "description": "定义 WireGuard 的端口 ",
+      "label": "↔️ WireGuard 端口"
+    },
+    "wireguard_private_key": {
+      "description": "为 WireGuard 指定私钥",
+      "label": "WireGuard 私钥"
+    },
+    "wireguard_public_key": {
+      "description": "为 WireGuard 指定一个公钥",
+      "label": "WireGuard 公钥"
+    },
+    "ws_enable": {
+      "description": "Websocket 通过 HTTP 创建一个隧道，可用于 CDN",
+      "label": "🔰 Websocket"
+    },
+    "xtls_enable": {
+      "description": "启用 XTLS 协议",
+      "label": "🟢XTLS"
     }
   },
   "copy": "复制",
@@ -997,8 +1035,12 @@
     "domain": "领域",
     "domain_fronting": {
       "description": "它用于在 SNI 中模拟另一个网站而不是您的网站。因此，GFW 无法过滤您的域名\n<a href='https://github.com/hiddify/hiddify-config/wiki/Guide-for-domain-fronting'>指南</a>。 ⚠️CloudFlare 不支持域前置。",
-      "label": "🔒 启用 TLS 域前置"
+      "label": "🔒 TLS 的域前端"
     },
+    "empty": {
+      "allowed_for_fake_only": "domain.empty.allowed_for_fake_only"
+    },
+    "intro": "1️⃣ 在此部分，您可以添加您的域。<inlang-LineFeed><br>\n2️⃣如果您想减少拥有脏IP的概率，您可以添加多个中继服务器<a href='https://github.com/hiddify/hiddify-config/discussions/129'>阅读更多</a>。<inlang-LineFeed><br>\n3️⃣如果您的面板中有多个 IPv4 或 IPv6，则必须将指向它们的域添加为中继。",
     "ip": "知识产权",
     "mode": "模式",
     "reality": {
@@ -1012,33 +1054,34 @@
   "grpc-proxy": {
     "description": "ℹ️ gRPC 是一个基于 H2 的协议。也许对你来说更快！"
   },
-  "in parent panel": "在家长面板中",
+  "in parent panel": "在中央面板",
   "install from google play": "<i class='fa-brands fa-google-play'></i> Google Play",
-  "ios": "iOS系统",
+  "ios": "iOS",
+  "items": "项目",
   "lang": {
-    "en": "🇺🇸 English 中文",
-    "fa": "🇮🇷 Persian فارسی 波斯语",
-    "pt": "🇵🇹 Portuguese پرتغالی 葡萄牙語",
-    "ru": "🇷🇺 俄语 Русский",
-    "zh": "🇨🇳 Chinese چینی 简体中文"
+    "en": "🇺🇸 英语 - English ",
+    "fa": "🇮🇷 波斯语 - فارسی",
+    "pt": "🇵🇹 葡萄牙語 - Português  ",
+    "ru": "🇷🇺 俄语 - Русский",
+    "zh": "🇨🇳 Chinese - 简体中文"
   },
   "lib": {
     "telegram": {
-      "erlang": "⛔️ 不工作 - Erlang：中等性能",
-      "go": "✴️ Go：高性能 - 无广告支持",
-      "python": "✅ Python：低性能"
+      "erlang": "✴️ Erlang：性能良好",
+      "go": "✅ Go：正常性能 - 不支持广告",
+      "python": "☑️ Python：性能低下"
     }
   },
-  "log": "📄 日志",
+  "log": "📄 Log",
   "login": {
     "secret": {
-      "description": "密码由服务提供商提供。",
-      "label": "密码"
+      "description": "要访问此页面，请输入您的密码（UUID）",
+      "label": "密码 (UUID)"
     }
   },
-  "macOS": "苹果系统",
+  "macOS": "macOS",
   "master": {
-    "page-title": "Hiddify 管理器"
+    "page-title": "HiddifyManager"
   },
   "monthly": "🗓️每月",
   "move_to_new_link": "该页面已移至新链接。请复制并保存新链接。",

@@ -928,11 +928,11 @@
     },
     "tuic": {
       "description": "O proxy de alto desempenho delicadamente TUICed está no topo do protocolo QUIC.\n\nO objetivo do TUIC é minimizar a latência do handshake o máximo possível",
-      "label": "TUIC"
+      "label": "⚫️ TUIC"
     },
     "tuic_enable": {
       "description": "É um protocolo baseado em UDP semelhante ao QUIC",
-      "label": "Ativar TUIC"
+      "label": "Habilita TUIC"
     },
     "tuic_port": {
       "description": "Use vírgula para separar portas como 63000,60000",
@@ -944,16 +944,17 @@
     },
     "utls": {
       "description": "Esta opção irá simular diferentes navegadores, portanto, GFW não pode detectar sua navegação",
-      "label": "ℹ️ uTLS"
+      "label": "❇️ uTLS"
     },
     "v2ray_enable": {
       "description": "V2ray não suporta contabilidade, e não é sugerido",
-      "label": "♈️ Habilitar V2Ray"
+      "label": "♈️ V2Ray"
     },
     "validation-error": "Há um erro em um dos campos.",
     "validation-success": "As configurações foram alteradas com sucesso. Clique em %(link)s para aplicar as configurações. Pode levar 2 minutos para aplicar",
     "validation-success-no-reset": "✅ As configurações foram alteradas com sucesso",
     "vless_enable": {
+      "description": "Habilitar protocolo VLess",
       "label": "⚫️ VLess"
     },
     "vmess_enable": {
@@ -982,7 +983,44 @@
       "label": "🆚 Sites WARP adicionais"
     },
     "wireguard": {
-      "description": "WireGuard é um protocolo leve baseado em UDP conhecido por sua simplicidade, eficiência e forte segurança. Oferece configuração rápida, código transparente e ganhou popularidade por sua facilidade de uso em vários sistemas operacionais."
+      "description": "WireGuard é um protocolo leve baseado em UDP conhecido por sua simplicidade, eficiência e forte segurança. Oferece configuração rápida, código transparente e ganhou popularidade por sua facilidade de uso em vários sistemas operacionais.",
+      "label": "🐉 WireGuard"
+    },
+    "wireguard_enable": {
+      "description": "<p>WireGuard é um protocolo baseado em UDP. (⚠️ Está funcionando no <a href=\"https://github.com/hiddify/hiddify-next\" target=\"_blank\">Hiddify a seguir</a> )</p>",
+      "label": "Habilita WireGuard"
+    },
+    "wireguard_ipv4": {
+      "description": "Habilita IPv4 no WireGuard",
+      "label": " IPv4 no WireGuard"
+    },
+    "wireguard_ipv6": {
+      "description": "Habilita IPv6 no WireGuard",
+      "label": "IPv6 no WireGuard"
+    },
+    "wireguard_noise_trick": {
+      "description": "Este método introduz ruído extra para evitar detecção e bloqueio pelo GFW",
+      "label": "💥 Truque de ruído WireGuard"
+    },
+    "wireguard_port": {
+      "description": "Define porta para WireGuard ",
+      "label": "↔️ Porta WireGuard"
+    },
+    "wireguard_private_key": {
+      "description": "Uma chave privada é especificada para WireGuard",
+      "label": "Chave privada WireGuard"
+    },
+    "wireguard_public_key": {
+      "description": "Uma chave pública é especificada para WireGuard",
+      "label": "Chave pública WireGuard"
+    },
+    "ws_enable": {
+      "description": "Websocket cria um túnel sobre HTTP que é útil para ser usado em CDN",
+      "label": "🔰 Websocket"
+    },
+    "xtls_enable": {
+      "description": "Ativa o protocolo XTLS",
+      "label": "🟢XTLS"
     }
   },
   "copy": "cópia de",
@@ -997,7 +1035,10 @@
     "domain": "Domínio",
     "domain_fronting": {
       "description": "É usado para simular outro site em vez do seu site no SNI. portanto, o GFW não pode filtrar seu domínio\n<a href='https://github.com/hiddify/hiddify-config/wiki/Guide-for-domain-fronting'>Guia</a>. ⚠️CloudFlare não suporta fronting de domínio.",
-      "label": "🔒 Habilitar fronting de domínio TLS"
+      "label": "🔒 Fronting de domínio de TLS"
+    },
+    "empty": {
+      "allowed_for_fake_only": "domain.empty.allowed_for_fake_only"
     },
     "intro": "1️⃣ Nesta seção, você pode adicionar seu domínio.\\n<br>\n2️⃣ Se você deseja diminuir a probabilidade de ter um IP sujo, pode adicionar Multiple Relay Server <a href='https://github.com/hiddify/hiddify-config/discussions/129'>Leia mais</a>.\\n<br>\n3️⃣ Se você tiver Múltiplos IPv4 ou IPv6 em seu Painel, deverá adicionar o domínio apontado para eles como Relay.\"",
     "ip": "IP",
@@ -1013,33 +1054,34 @@
   "grpc-proxy": {
     "description": "ℹ️ gRPC é um protocolo baseado em H2. Talvez seja mais rápido para você!"
   },
-  "in parent panel": "No Painel Principal",
-  "install from google play": "Google Play",
+  "in parent panel": "No Painel Central",
+  "install from google play": "<i class='fa-brands fa-google-play'></i>Google Play",
   "ios": "iOS",
+  "items": "Unid",
   "lang": {
-    "en": "🇺🇸 Inglês انگلیسی 英语",
-    "fa": "🇮🇷 Persian فارسی 波斯语",
-    "pt": "🇵🇹 Portugal پرتغالی 葡萄牙",
-    "ru": "🇷🇺 Russian روسی Русский",
-    "zh": "🇨🇳 Chinese چینی 简体中文"
+    "en": "🇺🇸 Inglês - English",
+    "fa": "🇮🇷 Persian - فارسی",
+    "pt": "🇵🇹 Português",
+    "ru": "🇷🇺 Russian - Русский",
+    "zh": "🇨🇳 Chinese - 简体中文"
   },
   "lib": {
     "telegram": {
-      "erlang": "⛔️ NÃO está funcionando - Erlang: desempenho médio",
+      "erlang": "✴️ Erlang: Bom desempenho",
       "go": "✅ Ir: alto desempenho - sem suporte de anúncios",
-      "python": "✅ Python: baixo desempenho"
+      "python": "☑️ Python: baixo desempenho"
     }
   },
-  "log": "📄 Registro",
+  "log": "📄 Log",
   "login": {
     "secret": {
-      "description": "O código secreto é fornecido pelo provedor de serviços.",
-      "label": "Codigo secreto"
+      "description": "Para obter acesso a esta página, digite seu código secreto (UUID)",
+      "label": "Código secreto (UUID)"
     }
   },
-  "macOS": "Mac OS",
+  "macOS": "macOS",
   "master": {
-    "page-title": "Ocultar Painel"
+    "page-title": "HiddifyManager"
   },
   "monthly": "🗓️ Mensal",
   "move_to_new_link": "A página foi movida para um novo link. Copie e salve o novo link.",

@@ -926,10 +926,39 @@
       "description": "Activer le protocole Trojan ",
       "label": "🟤 Trojan"
     },
+    "tuic": {
+      "description": "Le proxy haute performance délicatement TUICed est au-dessus du protocole QUIC.<inlang-LineFeed>\nL'objectif de TUIC est de minimiser autant que possible la latence de la poignée de main.",
+      "label": "⚫️ TUIC"
+    },
+    "tuic_enable": {
+      "description": "Il s'agit d'un protocole basé sur UDP similaire à QUIC",
+      "label": "Active TUIC"
+    },
+    "tuic_port": {
+      "description": "Utilisez une virgule pour séparer les ports comme ( 63000,60000 )",
+      "label": "Ports TUIC"
+    },
+    "unique_id": {
+      "description": "config.unique_id.description",
+      "label": "config.unique_id.label"
+    },
+    "utls": {
+      "description": "Cette option simulera différents navigateurs. Par conséquent, GFW ne pourra pas détecter votre navigation.",
+      "label": "❇️ uTLS"
+    },
+    "v2ray_enable": {
+      "description": "V2ray ne prend pas en charge la comptabilité et n'est pas suggéré",
+      "label": "♈️ V2Ray"
+    },
+    "validation-error": "Il y a une erreur dans l'un des champs.",
+    "validation-success": "Les configurations ont été modifiées avec succès. Cliquez sur %(link)s pour appliquer les configurations. L'application peut prendre 2 minutes",
+    "validation-success-no-reset": " ✅ Les configurations ont été modifiées avec succès",
     "vless_enable": {
+      "description": "Activer le protocole VLess",
       "label": "⚫️ VLess"
     },
     "vmess_enable": {
+      "description": "Protocole VMess actif",
       "label": "🟣 VMess"
     },
     "warp-https-domain-for-warp-site": "config.warp-https-domain-pour-warp-site",
@@ -952,6 +981,110 @@
     "warp_sites": {
       "description": "Ajoutez des sites supplémentaires pour passer par WARP (uniquement lorsque le mode Warp n'est pas Aucun)",
       "label": "🆚 Sites WARP supplémentaires"
+    },
+    "wireguard": {
+      "description": "WireGuard est un protocole léger basé sur UDP, connu pour sa simplicité, son efficacité et sa sécurité renforcée. Il offre une configuration rapide, un code transparent et a gagné en popularité grâce à sa facilité d'utilisation sur différents systèmes d'exploitation.",
+      "label": "🐉 WireGuard"
+    },
+    "wireguard_enable": {
+      "description": "<p>WireGuard est un protocole basé sur UDP. (⚠️ Cela fonctionne dans <a href=\"https://github.com/hiddify/hiddify-next\" target=\"_blank\">Hiddify Next</a> )</p>",
+      "label": "Active WireGuard"
+    },
+    "wireguard_ipv4": {
+      "description": "Active IPv4 dans WireGuard",
+      "label": " IPv4 dans WireGuard"
+    },
+    "wireguard_ipv6": {
+      "description": "Active IPv6 dans WireGuard",
+      "label": "IPv6 dans WireGuard"
+    },
+    "wireguard_noise_trick": {
+      "description": "Cette méthode introduit du bruit supplémentaire pour empêcher la détection et le blocage par le GFW",
+      "label": "💥 Astuce de bruit WireGuard"
+    },
+    "wireguard_port": {
+      "description": "Définit le port pour WireGuard ",
+      "label": "↔️ Port WireGuard"
+    },
+    "wireguard_private_key": {
+      "description": "Une clé privée est spécifiée à WireGuard",
+      "label": "Clé privée WireGuard"
+    },
+    "wireguard_public_key": {
+      "description": "Une clé publique est spécifiée à WireGuard",
+      "label": "Clé publique WireGuard"
+    },
+    "ws_enable": {
+      "description": "Websocket crée un tunnel sur HTTP utile pour être utilisé dans CDN",
+      "label": "🔰 Websocket"
+    },
+    "xtls_enable": {
+      "description": "Active le protocole XTLS",
+      "label": "🟢XTLS"
     }
-  }
+  },
+  "copy": "Copie",
+  "daily": "⏰ Quotidiennement",
+  "days": "Jours",
+  "desktop": "Desktop",
+  "direct": "➡️ Direct",
+  "domain": {
+    "cdn": "CDN",
+    "changed_in_domain_warning": "⚠️ Vos domaines ont changé. n'oubliez pas de copier les liens d'administration, sinon vous ne pourrez plus accéder au panneau",
+    "description": "Veuillez remplir ce champ soigneusement et correctement. Sinon, les proxys rencontreront des problèmes. Veuillez consulter <a href='https://github.com/hiddify/hiddify-config/wiki/راهنمای-تنظیم-دامنه-و-نهایی-کردن-نصب#آموزش-ساخت-زیردامنه'>l'aide</a> pour savoir comment créer un sous-domaine.",
+    "domain": "Domaine",
+    "domain_fronting": {
+      "description": "Il est utilisé pour simuler un autre site Web au lieu de votre site Web dans SNI. par conséquent, GFW ne peut pas filtrer votre domaine\n<a href='https://github.com/hiddify/hiddify-config/wiki/Guide-for-domain-fronting'>Guide</a> . ⚠️CloudFlare ne prend pas en charge le Domain Fronting.",
+      "label": "🔒 Frontage de domaine de TLS"
+    },
+    "empty": {
+      "allowed_for_fake_only": "domain.empty.allowed_for_fake_only"
+    },
+    "intro": "1️⃣ Dans cette section, vous pouvez ajouter votre domaine.<inlang-LineFeed><br>\n2️⃣ Si vous souhaitez réduire la probabilité d'avoir une adresse IP sale, vous pouvez ajouter plusieurs serveurs relais. <a href='https://github.com/hiddify/hiddify-config/discussions/129'>En savoir plus</a> .<inlang-LineFeed><br>\n3️⃣ Si vous avez plusieurs IPv4 ou IPv6 dans votre panel, vous devez ajouter le domaine pointé vers eux en tant que relais.",
+    "ip": "IP",
+    "mode": "Mode",
+    "reality": {
+      "asn_issue": "Le domaine sélectionné pour REALITY n'est pas dans le même ASN. Pour une meilleure utilisation du Protocole, il est préférable de trouver un Domaine dans le même ASN"
+    },
+    "show_domains_description": "Pour les utilisateurs qui visitent la zone utilisateur avec ce domaine, précisez qu'ils peuvent voir les proxys de quels domaines.<inlang-LineFeed><br>\nSuggestion : Pour un domaine avec une IP non filtrée et différent des autres, sélectionnez tous les autres domaines (sauf le domaine actuel). En conséquence, puisque l’utilisation de cette IP n’est pas destinée au proxy et qu’il s’agit d’un simple site Web, ce domaine et cette IP ne seront jamais bloqués et vos utilisateurs pourront facilement mettre à jour de nouveaux profils."
+  },
+  "download": "Téléchargement direct",
+  "fake": "🆎 Faux site",
+  "gRPC": "➿ gRPC",
+  "grpc-proxy": {
+    "description": "ℹ️ gRPC est un protocole basé sur H2. C'est peut-être plus rapide pour vous !"
+  },
+  "in parent panel": "Dans le panneau central",
+  "install from google play": "<i class='fa-brands fa-google-play'></i>jeu de Google",
+  "ios": "iOS",
+  "items": "articles",
+  "lang": {
+    "en": "🇺🇸 Anglais - English",
+    "fa": "🇮🇷 Persan - فارسی",
+    "pt": "🇵🇹 Portugais - Português ",
+    "ru": "🇷🇺 Russe - Русский",
+    "zh": "🇨🇳 Chinois - 简体中文"
+  },
+  "lib": {
+    "telegram": {
+      "erlang": "✴️ Erlang : Bonne performance",
+      "go": "✅ Go : Nornal Performance - Pas de support publicitaire",
+      "python": "☑️ Python : Faibles performances"
+    }
+  },
+  "log": "📄 Log",
+  "login": {
+    "secret": {
+      "description": "Pour accéder à cette page, veuillez entrer votre code secret (UUID)",
+      "label": "Code secret (UUID)"
+    }
+  },
+  "macOS": "macOS",
+  "master": {
+    "page-title": "HiddifyManager"
+  },
+  "monthly": "🗓️ Mensuel",
+  "move_to_new_link": "La page a été déplacée vers un nouveau lien. Veuillez copier et enregistrer le nouveau lien.",
+  "next": "Suivant",
+  "no_reset": "⭐️ Sans réinitialisation"
 }
