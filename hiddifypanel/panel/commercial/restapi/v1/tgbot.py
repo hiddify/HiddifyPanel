@@ -14,7 +14,7 @@ class ExceptionHandler(telebot.ExceptionHandler):
         logger.error(exception)
 
 
-bot = telebot.TeleBot("", parse_mode="HTML", threaded=False, exception_handler=ExceptionHandler())
+bot = telebot.TeleBot("1:2", parse_mode="HTML", threaded=False, exception_handler=ExceptionHandler())
 bot.username = ''
 
 
