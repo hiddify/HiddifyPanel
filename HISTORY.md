@@ -1,6 +1,38 @@
 # Changelog
 
 
+## v10.70.5 (2024-08-15)
+
+#### Fix
+
+* Telegram exception. 
+
+#### Other
+
+* Make null configs no ping. 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Update translations. 
+
+
+
 ## v10.70.4 (2024-08-02)
 
 #### Fix

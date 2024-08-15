@@ -1036,10 +1036,10 @@ msgid "app.hiddify-clash-desktop.title"
 msgstr "Hiddify Столкновение"
 
 msgid "app.hiddify.next.description"
-msgstr "Hiddify Следующее описание"
+msgstr "Описание HiddifyApp"
 
 msgid "app.hiddify.next.title"
-msgstr "Скрыть следующее"
+msgstr "HiddifyApp"
 
 msgid "app.hiddifyn.description"
 msgstr "Описание HiddifyN"
@@ -1054,10 +1054,10 @@ msgid "app.hiddifyng.title"
 msgstr "HiddifyNG"
 
 msgid "app.loon.description"
-msgstr "Описание гагары"
+msgstr "Описание LOON"
 
 msgid "app.loon.title"
-msgstr "гагара"
+msgstr "Loon"
 
 msgid "app.nekobox.description"
 msgstr " Nekobox — клиенты на базе Singbox. "
@@ -1069,19 +1069,19 @@ msgid "app.shadowrocket.description"
 msgstr "Описание Теневой Ракеты"
 
 msgid "app.shadowrocket.title"
-msgstr "Теневая ракета"
+msgstr "Shadowrocket"
 
 msgid "app.stash.description"
-msgstr "Описание тайника"
+msgstr "Описание Stash "
 
 msgid "app.stash.title"
-msgstr "Тайник"
+msgstr "Stash "
 
 msgid "app.streisand.description"
-msgstr "Описание Стрейзанд"
+msgstr "Описание Streisand"
 
 msgid "app.streisand.title"
-msgstr "Стрейзанд"
+msgstr "Streisand"
 
 msgid "app.v2rayng.description"
 msgstr "Описание V2RayNG"
@@ -1108,19 +1108,19 @@ msgid "cdn"
 msgstr "🔀 CDN (Cloudflare Proxy, ...)"
 
 msgid "cf-delete.failed"
-msgstr ""
+msgstr "cf-delete.failed"
 
 msgid "child has been removed!"
 msgstr "Дочерний элемент удален!"
 
 msgid "child.register-failed"
-msgstr ""
+msgstr "child.register-не удалось"
 
 msgid "child.register-success"
-msgstr ""
+msgstr "child.register-успех"
 
 msgid "child.sync-failed"
-msgstr ""
+msgstr "child.sync-не удалось"
 
 msgid "clickable copy"
 msgstr "Ссылка для социальных сетей"
@@ -1129,7 +1129,7 @@ msgid "close"
 msgstr "Закрыть"
 
 msgid "cloudflare.error"
-msgstr ""
+msgstr "Cloudflare.error"
 
 msgid "config.Domain_already_used"
 msgstr "Домен уже существует. Использовать другой домен"
@@ -1389,10 +1389,10 @@ msgid "config.hidden.label"
 msgstr "config.hidden.label"
 
 msgid "config.hiddifycli_enable.description"
-msgstr ""
+msgstr "config.hiddifycli_enable.description"
 
 msgid "config.hiddifycli_enable.label"
-msgstr ""
+msgstr "config.hiddifycli_enable.label"
 
 msgid "config.http.description"
 msgstr "Конфигурации HTTP можно установить в этом разделе"
@@ -1451,7 +1451,7 @@ msgid "config.hysteria_obfs_enable.description"
 msgstr "Включить Hysteria Obfuscation (Salamander)"
 
 msgid "config.hysteria_obfs_enable.label"
-msgstr "🎛 Включить Hysteria OBFS"
+msgstr "🎛 Hysteria OBFS"
 
 msgid "config.hysteria_port.description"
 msgstr "Hysteria UDP-порт например 5678"
@@ -1466,7 +1466,7 @@ msgid "config.hysteria_up_mbps.label"
 msgstr "⬆️ Hysteria Исходящая Загрузка (mbps)"
 
 msgid "config.invalid-pattern-for-warp-sites"
-msgstr ""
+msgstr "⚠️ Сайт, введенный в Варп, не соответствует указанному шаблону."
 
 msgid "config.invalid_uuid"
 msgstr ""
@@ -1488,7 +1488,7 @@ msgid "config.kcp_enable.description"
 msgstr "Это протокол на базе UDP."
 
 msgid "config.kcp_enable.label"
-msgstr "Включение KCP"
+msgstr "KCP"
 
 msgid "config.kcp_ports.description"
 msgstr ""
@@ -1511,10 +1511,10 @@ msgid "config.last_hash.label"
 msgstr "config.last_hash.label"
 
 msgid "config.last_priodic_usage_check.description"
-msgstr ""
+msgstr "config.last_priodic_usage_check.description"
 
 msgid "config.last_priodic_usage_check.label"
-msgstr ""
+msgstr "config.last_priodic_usage_check.label"
 
 msgid "config.license.description"
 msgstr ""
@@ -1525,10 +1525,10 @@ msgid "config.license.label"
 msgstr "License  Code"
 
 msgid "config.log_level.description"
-msgstr ""
+msgstr "config.log_level.description"
 
 msgid "config.log_level.label"
-msgstr ""
+msgstr "config.log_level.label"
 
 msgid "config.mux.description"
 msgstr "Настройки конфигурации MUX (Multiplex)"
@@ -1560,7 +1560,7 @@ msgstr ""
 " XRay"
 
 msgid "config.mux_enable.label"
-msgstr "Ⓜ️ Включить MUX (⚠️ Несовместимо с некоторыми клиентами)"
+msgstr "Ⓜ️ MUX (⚠️ Несовместимо с некоторыми клиентами)"
 
 msgid "config.mux_max_connections.description"
 msgstr ""
@@ -1587,13 +1587,17 @@ msgid "config.mux_min_streams.label"
 msgstr "↘️ Минимальное количество потоков MUX"
 
 msgid "config.mux_padding_enable.description"
-msgstr ""
+msgstr "Описание MUX Padding"
 
 msgid "config.mux_padding_enable.label"
-msgstr ""
+msgstr "⟹ MUX Padding"
 
 msgid "config.mux_protocol.description"
 msgstr ""
+"ℹ️Мультиплексный протокол. «sMux» используется по умолчанию<inlang-LineFeed><br>\n"
+"➖ sMux: мультиплексирование потоков<inlang-LineFeed><br>\n"
+"➖ YaMux: еще один мультиплексор<inlang-LineFeed><br>\n"
+"➖ h2Mux: мультиплексирование потоков через HTTP/2"
 
 msgid "config.mux_protocol.label"
 msgstr "♍️ Протокол MUX"
@@ -1604,7 +1608,7 @@ msgstr ""
 " не слишком высокая"
 
 msgid "config.netdata.label"
-msgstr "Сетевые данные"
+msgstr "Netdata"
 
 msgid "config.not_found.description"
 msgstr "Конфигурация не найдена"
@@ -1626,22 +1630,22 @@ msgid "config.package_mode.label"
 msgstr "🔄 Режим обновления пакетов"
 
 msgid "config.panel_mode.description"
-msgstr ""
+msgstr "config.panel_mode.description"
 
 msgid "config.panel_mode.label"
-msgstr ""
+msgstr "config.panel_mode.label"
 
 msgid "config.parent_admin_proxy_path.description"
-msgstr ""
+msgstr "config.parent_admin_proxy_path.description"
 
 msgid "config.parent_admin_proxy_path.label"
-msgstr ""
+msgstr "config.parent_admin_proxy_path.label"
 
 msgid "config.parent_domain.description"
-msgstr ""
+msgstr "config.parent_domain.description"
 
 msgid "config.parent_domain.label"
-msgstr ""
+msgstr "config.parent_domain.label"
 
 msgid "config.parent_panel.description"
 msgstr ""
@@ -1661,7 +1665,7 @@ msgid "config.path_httpupgrade.description"
 msgstr "должен быть случайным"
 
 msgid "config.path_httpupgrade.label"
-msgstr ""
+msgstr "ℹ️ Путь обновления HTTP"
 
 msgid "config.path_splithttp.description"
 msgstr "Эта опция определяет путь для Split HTTP."
@@ -1673,7 +1677,7 @@ msgid "config.path_ss.description"
 msgstr "Путь Shadowsocks в ссылках"
 
 msgid "config.path_ss.label"
-msgstr "Путь для Shadowsocks"
+msgstr "Путь Shadowsocks"
 
 msgid "config.path_tcp.description"
 msgstr "Для ссылок Proxy"
@@ -1685,7 +1689,7 @@ msgid "config.path_trojan.description"
 msgstr "Для ссылок Trojan"
 
 msgid "config.path_trojan.label"
-msgstr "ℹ️ Trojan Path"
+msgstr "ℹ️ Trojan путь"
 
 msgid "config.path_v2ray.description"
 msgstr "Установить путь к конфигурации V2Ray"
@@ -1726,21 +1730,23 @@ msgstr "ℹ️ Секретный путь прокси"
 
 msgid "config.proxy_path_admin.description"
 msgstr ""
+"Мы используем секретный путь прокси, чтобы скрыть наши прокси для "
+"правительств и ботов."
 
 msgid "config.proxy_path_admin.label"
-msgstr ""
+msgstr "🔐 Путь прокси для администраторов"
 
 msgid "config.proxy_path_client.description"
-msgstr ""
+msgstr "Секретный путь прокси скрывает прокси от правительств и ботов"
 
 msgid "config.proxy_path_client.label"
-msgstr ""
+msgstr "🔏 Путь прокси для клиентов"
 
 msgid "config.quic_enable.description"
-msgstr ""
+msgstr "Включить протокол QUIC"
 
 msgid "config.quic_enable.label"
-msgstr ""
+msgstr "🟡 QUIC"
 
 msgid "config.reality.description"
 msgstr "REALITY функция устранения TLS Fingerprint со стороны севрера"
@@ -1749,10 +1755,10 @@ msgid "config.reality.label"
 msgstr "Reality"
 
 msgid "config.reality_enable.description"
-msgstr ""
+msgstr "Включить протокол Reality"
 
 msgid "config.reality_enable.label"
-msgstr ""
+msgstr "🔴 Reality"
 
 msgid "config.reality_fallback_domain.description"
 msgstr ""
@@ -1764,9 +1770,12 @@ msgstr "🌍 Резервный домен Reality"
 
 msgid "config.reality_port.description"
 msgstr ""
+"Вы можете установить индивидуальный порт для вашего сервера Reality, чтобы "
+"снизить нагрузку на систему. (Разрешить прямое подключение к прокси должно "
+"быть да)"
 
 msgid "config.reality_port.label"
-msgstr ""
+msgstr "↔️ Порт Direct Reality"
 
 msgid "config.reality_private_key.description"
 msgstr "Не меняйте это"
@@ -1793,22 +1802,22 @@ msgid "config.reality_short_ids.label"
 msgstr "🆔 Short IDs"
 
 msgid "config.restls.description"
-msgstr ""
+msgstr "config.restls.description"
 
 msgid "config.restls.label"
 msgstr "RestTLS"
 
 msgid "config.restls1_2_domain.description"
-msgstr ""
+msgstr "config.restls1_2_domain.description"
 
 msgid "config.restls1_2_domain.label"
-msgstr ""
+msgstr "config.restls1_2_domain.label"
 
 msgid "config.restls1_3_domain.description"
-msgstr ""
+msgstr "config.restls1_3_domain.description"
 
 msgid "config.restls1_3_domain.label"
-msgstr ""
+msgstr "config.restls1_3_domain.label"
 
 msgid "config.shadowsocks.description"
 msgstr ""
@@ -1826,7 +1835,7 @@ msgstr ""
 "анализ пакетов)."
 
 msgid "config.shadowsocks2022_enable.label"
-msgstr "⭕️ Включить Shadowsocks 2022"
+msgstr "⭕️ Shadowsocks 2022"
 
 msgid "config.shadowsocks2022_method.description"
 msgstr "Этот метод также использвуется в ShadowTLS и SSFakeTLS"
@@ -1963,7 +1972,7 @@ msgstr ""
 "поддерживает accounting"
 
 msgid "config.ssr_enable.label"
-msgstr "Включение SSR"
+msgstr "SSR"
 
 msgid "config.ssr_fakedomain.description"
 msgstr ""
@@ -1975,59 +1984,64 @@ msgid "config.ssr_fakedomain.label"
 msgstr "Поддельный домен SSR"
 
 msgid "config.sub_full_clash_enable.description"
-msgstr ""
+msgstr "config.sub_full_clash_enable.description"
 
 msgid "config.sub_full_clash_enable.label"
-msgstr ""
+msgstr "config.sub_full_clash_enable.label"
 
 msgid "config.sub_full_clash_meta_enable.description"
-msgstr ""
+msgstr "config.sub_full_clash_meta_enable.description"
 
 msgid "config.sub_full_clash_meta_enable.label"
-msgstr ""
+msgstr "config.sub_full_clash_meta_enable.label"
 
 msgid "config.sub_full_links_b64_enable.description"
-msgstr ""
+msgstr "config.sub_full_links_b64_enable.description"
 
 msgid "config.sub_full_links_b64_enable.label"
-msgstr ""
+msgstr "config.sub_full_links_b64_enable.label"
 
 msgid "config.sub_full_links_enable.description"
-msgstr ""
+msgstr "config.sub_full_links_enable.description"
 
 msgid "config.sub_full_links_enable.label"
-msgstr ""
+msgstr "config.sub_full_links_enable.label"
 
 msgid "config.sub_full_singbox_enable.description"
-msgstr ""
+msgstr "config.sub_full_singbox_enable.description"
 
 msgid "config.sub_full_singbox_enable.label"
-msgstr ""
+msgstr "config.sub_full_singbox_enable.label"
 
 msgid "config.sub_full_xray_json_enable.description"
 msgstr ""
+"Полная ссылка XRay предоставляет комплексные возможности настройки "
+"параметров, специфичных для XRay. Сюда входит пользовательская фрагментация "
+"и мультиплексирование (мультиплексирование) в таких приложениях, как "
+"v2rayNG, которые поддерживают протоколы XRay для точного управления "
+"настройкой прокси-сервера XRay."
 
 msgid "config.sub_full_xray_json_enable.label"
-msgstr ""
+msgstr "⚙️ Ссылка на полную конфигурацию XRay"
 
 msgid "config.sub_singbox_ssh_enable.description"
-msgstr ""
+msgstr "config.sub_singbox_ssh_enable.description"
 
 msgid "config.sub_singbox_ssh_enable.label"
-msgstr ""
+msgstr "config.sub_singbox_ssh_enable.label"
 
 msgid "config.tcp_enable.description"
-msgstr "Включить протокол TCP"
+msgstr "Включает протокол TCP"
 
 msgid "config.tcp_enable.label"
-msgstr "Включить протокол TCP"
+msgstr "🟠 TCP"
 
 msgid "config.telegram.description"
 msgstr ""
 "Прокси-сервер, разработанный для Telegram для обхода фильтрации Telegram"
 
 msgid "config.telegram.label"
-msgstr "Конфигурации Телеграммы"
+msgstr "Конфигурации Telegram "
 
 msgid "config.telegram_adtag.description"
 msgstr ""
@@ -2077,7 +2091,7 @@ msgid "config.tls.description"
 msgstr "В этом разделе можно установить конфигурации TLS"
 
 msgid "config.tls.label"
-msgstr "Конфигурация TLS"
+msgstr "Настройки TLS"
 
 msgid "config.tls_fragment_enable.description"
 msgstr ""
@@ -2087,19 +2101,19 @@ msgstr ""
 "target=\"_blank\">(подробнее)</a></p>"
 
 msgid "config.tls_fragment_enable.label"
-msgstr "⏯ Включить фрагмент TLS"
+msgstr "⏯ TLS Fragment"
 
 msgid "config.tls_fragment_size.description"
 msgstr "Размер каждого пакета"
 
 msgid "config.tls_fragment_size.label"
-msgstr "🎚 Размер фрагмента TLS"
+msgstr "🎚 Размер TLS Fragment"
 
 msgid "config.tls_fragment_sleep.description"
 msgstr "Временная задержка между фрагментами"
 
 msgid "config.tls_fragment_sleep.label"
-msgstr "⏱ Спящий режим фрагмента TLS"
+msgstr "⏱ Спящий режим TLS Fragment "
 
 msgid "config.tls_mixed_case.description"
 msgstr "Включает фрагментацию смешанного регистра SNI по протоколу TLS"
@@ -2115,13 +2129,13 @@ msgstr ""
 "target=\"_blank\">(подробнее)</a></p>"
 
 msgid "config.tls_padding_enable.label"
-msgstr "♒️ Включить заполнение TLS"
+msgstr "♒️ TLS Padding"
 
 msgid "config.tls_padding_length.description"
-msgstr "Длина отступа для фрагментации TLS"
+msgstr "Длина отступа для TLS Padding"
 
 msgid "config.tls_padding_length.label"
-msgstr "📏 Заполнение TLS"
+msgstr "📏 TLS Padding"
 
 msgid "config.tls_ports.description"
 msgstr ""
@@ -2155,7 +2169,7 @@ msgid "config.trojan_enable.description"
 msgstr "Включить Trojan протокол"
 
 msgid "config.trojan_enable.label"
-msgstr "Включить Trojan протокол"
+msgstr "🟤 Trojan"
 
 msgid "config.tuic.description"
 msgstr ""
@@ -2164,13 +2178,13 @@ msgstr ""
 "Цель TUIC — максимально минимизировать задержку рукопожатия."
 
 msgid "config.tuic.label"
-msgstr "Конфигурация TUIC"
+msgstr "⚫️ TUIC"
 
 msgid "config.tuic_enable.description"
 msgstr "Это протокол на базе UDP, аналогичный QUIC"
 
 msgid "config.tuic_enable.label"
-msgstr "⚫️ Включить TUIC"
+msgstr "Включает TUIC"
 
 msgid "config.tuic_port.description"
 msgstr "Используйте запятую для разделения портов, например,( 63000,60000 )"
@@ -2179,10 +2193,10 @@ msgid "config.tuic_port.label"
 msgstr "Порты TUIС"
 
 msgid "config.unique_id.description"
-msgstr ""
+msgstr "config.unique_id.description"
 
 msgid "config.unique_id.label"
-msgstr ""
+msgstr "config.unique_id.label"
 
 msgid "config.utls.description"
 msgstr ""
@@ -2196,7 +2210,7 @@ msgid "config.v2ray_enable.description"
 msgstr "V2ray не поддерживает учет и не предлагается к использованию"
 
 msgid "config.v2ray_enable.label"
-msgstr "♈️ Включить V2Raу"
+msgstr "♈️ V2Ray"
 
 msgid "config.validation-error"
 msgstr "В одном из полей ошибка."
@@ -2213,7 +2227,7 @@ msgid "config.vless_enable.description"
 msgstr "Включить протокол VLess"
 
 msgid "config.vless_enable.label"
-msgstr "⚫️ Включить VLess"
+msgstr "⚫️ VLess"
 
 msgid "config.vmess_enable.description"
 msgstr ""
@@ -2221,10 +2235,10 @@ msgstr ""
 " систему.  Не рекомендуется"
 
 msgid "config.vmess_enable.label"
-msgstr "🟣 Включить VMess"
+msgstr "🟣 VMess"
 
 msgid "config.warp-https-domain-for-warp-site"
-msgstr ""
+msgstr "config.warp-https-домен-для-варп-сайта"
 
 msgid "config.warp.description"
 msgstr ""
@@ -2264,11 +2278,11 @@ msgstr "🔑 WARP Plus Key"
 
 msgid "config.warp_sites.description"
 msgstr ""
-"Добавление дополнительных сайтов для направления через Warp (только если "
+"Добавление дополнительных сайтов для направления через WARP (только если "
 "Warp включен)"
 
 msgid "config.warp_sites.label"
-msgstr "🆚 Дополнительные сайты Warp"
+msgstr "🆚 Дополнительные сайты WARP"
 
 msgid "config.wireguard.description"
 msgstr ""
@@ -2277,7 +2291,7 @@ msgstr ""
 "кроссплатформенность, быструю настройку и прозрачный код."
 
 msgid "config.wireguard.label"
-msgstr "WireGuard"
+msgstr "🐉 WireGuard"
 
 msgid "config.wireguard_enable.description"
 msgstr ""
@@ -2286,19 +2300,19 @@ msgstr ""
 "Next</a>)</p>"
 
 msgid "config.wireguard_enable.label"
-msgstr "🐉 Включить WireGuard"
+msgstr "Включает WireGuard"
 
 msgid "config.wireguard_ipv4.description"
-msgstr ""
+msgstr "Включает IPv4 в WireGuard"
 
 msgid "config.wireguard_ipv4.label"
-msgstr ""
+msgstr " IPv4 в WireGuard"
 
 msgid "config.wireguard_ipv6.description"
-msgstr ""
+msgstr "Включает IPv6 в WireGuard"
 
 msgid "config.wireguard_ipv6.label"
-msgstr ""
+msgstr "IPv6 в WireGuard"
 
 msgid "config.wireguard_noise_trick.description"
 msgstr ""
@@ -2306,25 +2320,25 @@ msgstr ""
 "обнаужения и блокировки цензором"
 
 msgid "config.wireguard_noise_trick.label"
-msgstr "💥 WireGuard Noise Trick"
+msgstr "💥 Шумовая уловка WireGuard"
 
 msgid "config.wireguard_port.description"
-msgstr "Порт WireGuard"
+msgstr "Определяет порт для WireGuard "
 
 msgid "config.wireguard_port.label"
 msgstr "↔️ Порт WireGuard"
 
 msgid "config.wireguard_private_key.description"
-msgstr ""
+msgstr "Для WireGuard указан закрытый ключ."
 
 msgid "config.wireguard_private_key.label"
-msgstr ""
+msgstr "Закрытый ключ WireGuard"
 
 msgid "config.wireguard_public_key.description"
-msgstr ""
+msgstr "Для WireGuard указан открытый ключ."
 
 msgid "config.wireguard_public_key.label"
-msgstr ""
+msgstr "Открытый ключ WireGuard"
 
 msgid "config.ws_enable.description"
 msgstr ""
@@ -2332,13 +2346,13 @@ msgstr ""
 "CDN"
 
 msgid "config.ws_enable.label"
-msgstr "🔰 Включить Websocket"
+msgstr "🔰 Websocket"
 
 msgid "config.xtls_enable.description"
-msgstr "Включить протокол TLS"
+msgstr "Включает протокол XTLS"
 
 msgid "config.xtls_enable.label"
-msgstr "🟢 Включить XTLS"
+msgstr "🟢XTLS"
 
 msgid "copy"
 msgstr "Копировать"
@@ -2381,13 +2395,16 @@ msgstr ""
 "<<a href='https://github.com/hibbity/hibbity-config/wiki/Guide-for-domain-fronting '>Руководство</a>. ⚠CloudFlare не поддерживает подключение к домену."
 
 msgid "domain.domain_fronting.label"
-msgstr "🔒 Включить подключение к домену TLS"
+msgstr "🔒 Фронтирование домена TLS"
 
 msgid "domain.empty.allowed_for_fake_only"
-msgstr ""
+msgstr "domain.empty.allowed_for_fake_only"
 
 msgid "domain.intro"
 msgstr ""
+"1️⃣ В этом разделе вы можете добавить свой Домен.<inlang-LineFeed><br>\n"
+"2. Если вы хотите уменьшить вероятность использования грязного IP-адреса, вы можете добавить сервер с несколькими ретрансляторами. <a href='https://github.com/hiddify/hiddify-config/discussions/129'>Подробнее</a> .<inlang-LineFeed><br>\n"
+"3. Если у вас в Panel несколько IPv4 или IPv6, вам необходимо добавить указанный на них домен в качестве ретранслятора."
 
 msgid "domain.ip"
 msgstr "IP"
@@ -2421,10 +2438,10 @@ msgstr ""
 " быстрее!"
 
 msgid "in parent panel"
-msgstr "Родительский контроль"
+msgstr "В центральной панели"
 
 msgid "install from google play"
-msgstr "<i class='fa-brands fa-google-play'></i> Google Plaн"
+msgstr "<i class='fa-brands fa-google-play'></i> Google Play"
 
 msgid "ios"
 msgstr "iOS"
@@ -2433,16 +2450,16 @@ msgid "items"
 msgstr "элементы"
 
 msgid "lang.en"
-msgstr "🇺🇸 English - Английский"
+msgstr "🇺🇸 Английский - English "
 
 msgid "lang.fa"
-msgstr "🇮🇷 Persian - فارسی"
+msgstr "🇮🇷 Персидский - فارسی"
 
 msgid "lang.pt"
-msgstr "🇵🇹 Portuguese - پرتغالی"
+msgstr "🇵🇹 Португальский - Portugal "
 
 msgid "lang.ru"
-msgstr "🇷🇺 Russian - Русский"
+msgstr "🇷🇺 Русский"
 
 msgid "lang.zh"
 msgstr "🇨🇳 Chinese - 简体中文"
@@ -2457,19 +2474,20 @@ msgid "lib.telegram.python"
 msgstr "☑️ Python: низкая производительность"
 
 msgid "log"
-msgstr "📄 Журнал событий"
+msgstr "📄 Log"
 
 msgid "login.secret.description"
-msgstr "Секретный код предоставляется поставщиком услуг."
+msgstr ""
+"Для получения доступа к этой странице введите свой секретный код (UUID)"
 
 msgid "login.secret.label"
-msgstr "Секретный код"
+msgstr "Секретный код (UUID)"
 
 msgid "macOS"
 msgstr "macOS"
 
 msgid "master.page-title"
-msgstr "Hiddify панель"
+msgstr "HiddifyManager"
 
 msgid "monthly"
 msgstr "🗓️ Ежемесячно"
@@ -2486,25 +2504,25 @@ msgid "no_reset"
 msgstr "⭐️ Без сброса"
 
 msgid "node.diff-version"
-msgstr ""
+msgstr "node.diff-version"
 
 msgid "node.mode.dscr"
-msgstr ""
+msgstr "Это поле определяет режим для узла."
 
 msgid "node.mode.label"
-msgstr "Режим узла"
+msgstr "Режим Node "
 
 msgid "node.name.dscr"
-msgstr ""
+msgstr "Это поле определяет имя для Node."
 
 msgid "node.name.label"
-msgstr "Имя узла"
+msgstr "Имя Node "
 
 msgid "node.uuid.dscr"
-msgstr ""
+msgstr "Это поле определяет UUID для узла."
 
 msgid "node.uuid.label"
-msgstr "UUID узла"
+msgstr "UUID Node "
 
 msgid "old_xtls_direct"
 msgstr "🔙 Старый прямой режим (для Torjan TCP, VLess XTLS)"
@@ -2524,22 +2542,26 @@ msgid "package size?"
 msgstr "Размер посылки?"
 
 msgid "parent.invalid-parent-url"
-msgstr ""
+msgstr "parent.invalid-parent-url"
 
 msgid "parent.sync-req-failed"
-msgstr ""
+msgstr "parent.sync-req-failed"
 
 msgid "previous"
 msgstr "Предыдущий"
 
 msgid "quicksetup.cdn_domain.description"
 msgstr ""
+"Настройка домена CDN не является обязательной. Используйте его только в том "
+"случае, если вы уже настроили CDN."
 
 msgid "quicksetup.cdn_domain.label"
-msgstr ""
+msgstr "CDN-домен"
 
 msgid "quicksetup.proxy_cat.description"
 msgstr ""
+"Последний шаг: выберите нужные прокси. Пожалуйста, выберите минимум, "
+"насколько это возможно."
 
 msgid "quicksetup.setlang.success"
 msgstr "Изменение языка прошло успешно."
@@ -2580,7 +2602,7 @@ msgid "test"
 msgstr "Тест"
 
 msgid "update"
-msgstr "обновлять"
+msgstr "Обновлять"
 
 msgid "user.UUID"
 msgstr "UUID"
@@ -2600,10 +2622,10 @@ msgid "user.home.all_configs"
 msgstr "Все конфигурации"
 
 msgid "user.home.allconfig.clash-configs"
-msgstr "Конфликтующие конфигурации"
+msgstr "Конфликтующие Clash "
 
 msgid "user.home.allconfig.hiddify-managers"
-msgstr "Все менеджеры конфигураций Hiddify"
+msgstr "Все настройки администраторов HiddifyManager"
 
 msgid "user.home.allconfig.link-configs"
 msgstr "Ссылка на подписку"
@@ -2819,7 +2841,7 @@ msgstr ""
 "<br />"
 
 msgid "user.home.title"
-msgstr "Hiddify"
+msgstr "HiddifyManager"
 
 msgid "user.home.tool.all-configs"
 msgstr "Все конфигурации"

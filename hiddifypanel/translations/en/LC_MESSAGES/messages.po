@@ -1033,10 +1033,10 @@ msgid "app.hiddify-clash-desktop.title"
 msgstr "Hiddify Clash"
 
 msgid "app.hiddify.next.description"
-msgstr "Hiddify Next Description"
+msgstr "Description HiddifyApp"
 
 msgid "app.hiddify.next.title"
-msgstr "Hiddify Next"
+msgstr "HiddifyApp"
 
 msgid "app.hiddifyn.description"
 msgstr "HiddifyN Description"
@@ -1437,7 +1437,7 @@ msgid "config.hysteria_obfs_enable.description"
 msgstr " Enables Hysteria Obfuscation (Salamander)"
 
 msgid "config.hysteria_obfs_enable.label"
-msgstr "🎛 Hysteria OBFS Enable"
+msgstr "🎛 Hysteria OBFS"
 
 msgid "config.hysteria_port.description"
 msgstr "Hysteria UDP Port for example 5678"
@@ -1570,7 +1570,7 @@ msgid "config.mux_min_streams.label"
 msgstr "↘️ MUX Min Streams"
 
 msgid "config.mux_padding_enable.description"
-msgstr "Enables MUX Padding"
+msgstr "MUX Padding description"
 
 msgid "config.mux_padding_enable.label"
 msgstr "⟹ MUX Padding"
@@ -1670,10 +1670,10 @@ msgid "config.path_tcp.label"
 msgstr "ℹ️ TCP Configuration Path"
 
 msgid "config.path_trojan.description"
-msgstr "For Trojan Links"
+msgstr "For TROJAN-Links"
 
 msgid "config.path_trojan.label"
-msgstr "ℹ️ Trojan Path"
+msgstr "ℹ️ TROJAN Path"
 
 msgid "config.path_v2ray.description"
 msgstr "Set V2Ray Configs Path"
@@ -1832,7 +1832,7 @@ msgid "config.shadowtls.description"
 msgstr ""
 "A Proxy to expose real tls handshake to the firewall.\n"
 "\n"
-"It works like Trojan but It does not require signing certificate. the firewall will see real tls handshake with valid certificate that you choose."
+"It works like TROJAN but It does not require signing certificate. the firewall will see real tls handshake with valid certificate that you choose."
 
 msgid "config.shadowtls.label"
 msgstr "ShadowTLS"
@@ -2007,7 +2007,7 @@ msgid "config.sub_singbox_ssh_enable.label"
 msgstr "config.sub_singbox_ssh_enable.label"
 
 msgid "config.tcp_enable.description"
-msgstr "Enable TCP Protocol"
+msgstr "Enables TCP Protocol"
 
 msgid "config.tcp_enable.label"
 msgstr "🟠 TCP"
@@ -2066,7 +2066,7 @@ msgid "config.tls.description"
 msgstr "TLS Configurations could be set in this section"
 
 msgid "config.tls.label"
-msgstr "TLS Configuration"
+msgstr "TLS Settings"
 
 msgid "config.tls_fragment_enable.description"
 msgstr ""
@@ -2140,7 +2140,7 @@ msgid "config.torrent_block.label"
 msgstr "Torrent Block Configuration"
 
 msgid "config.trojan_enable.description"
-msgstr "Enable Trojan Protocol"
+msgstr "Enables Trojan Protocol"
 
 msgid "config.trojan_enable.label"
 msgstr "🟤 Trojan"
@@ -2152,13 +2152,13 @@ msgstr ""
 "TUIC's goal is to minimize the handshake latency as much as possible"
 
 msgid "config.tuic.label"
-msgstr "TUIC"
+msgstr "⚫️ TUIC"
 
 msgid "config.tuic_enable.description"
 msgstr "It is a UDP based protocol similar to QUIC"
 
 msgid "config.tuic_enable.label"
-msgstr "⚫️ TUIC"
+msgstr "Enables TUIC"
 
 msgid "config.tuic_port.description"
 msgstr "Use comma to separate ports like ( 63000,60000 )"
@@ -2167,10 +2167,10 @@ msgid "config.tuic_port.label"
 msgstr "TUIC Ports"
 
 msgid "config.unique_id.description"
-msgstr "-"
+msgstr "config.unique_id.description"
 
 msgid "config.unique_id.label"
-msgstr "-"
+msgstr "config.unique_id.label"
 
 msgid "config.utls.description"
 msgstr ""
@@ -2223,11 +2223,11 @@ msgstr "WARP➕"
 
 msgid "config.warp_enable.description"
 msgstr ""
-"Warp helps you bypass Google, Spotify and Netflix restrictions by hiding "
+"WARP helps you bypass Google, Spotify and Netflix restrictions by hiding "
 "server IP "
 
 msgid "config.warp_enable.label"
-msgstr "WARP+"
+msgstr "Enables WARP+"
 
 msgid "config.warp_mode.description"
 msgstr ""
@@ -2236,7 +2236,7 @@ msgstr ""
 "☑️ Only Domestic and Blocked Sites: Only Domestic Sites and websites like Google, Spotify, Netflix, OpenAi, IPinfo.io use Warp IPs in outbound"
 
 msgid "config.warp_mode.label"
-msgstr "✴️ Warp+ Mode"
+msgstr "✴️ WARP+ Mode"
 
 msgid "config.warp_plus_code.description"
 msgstr ""
@@ -2250,10 +2250,10 @@ msgstr "🔑 Warp Plus Key"
 
 msgid "config.warp_sites.description"
 msgstr ""
-"Add additional sites to pass through Warp (only when warp mode is not None)"
+"Add additional sites to pass through WARP (only when warp mode is not None)"
 
 msgid "config.warp_sites.label"
-msgstr "🆚 Additional Warp Sites"
+msgstr "🆚 Additional WARP Sites"
 
 msgid "config.wireguard.description"
 msgstr ""
@@ -2263,7 +2263,7 @@ msgstr ""
 "systems"
 
 msgid "config.wireguard.label"
-msgstr "WireGuard"
+msgstr "🐉 WireGuard"
 
 msgid "config.wireguard_enable.description"
 msgstr ""
@@ -2272,19 +2272,19 @@ msgstr ""
 "Next</a>)</p>"
 
 msgid "config.wireguard_enable.label"
-msgstr "🐉 WireGuard"
+msgstr "Enables WireGuard"
 
 msgid "config.wireguard_ipv4.description"
-msgstr "-"
+msgstr "Enables IPv4 in WireGuard"
 
 msgid "config.wireguard_ipv4.label"
-msgstr "-"
+msgstr " IPv4 in WireGuard"
 
 msgid "config.wireguard_ipv6.description"
-msgstr "-"
+msgstr "Enables IPv6 in WireGuard"
 
 msgid "config.wireguard_ipv6.label"
-msgstr "-"
+msgstr "IPv6 in WireGuard"
 
 msgid "config.wireguard_noise_trick.description"
 msgstr ""
@@ -2295,22 +2295,22 @@ msgid "config.wireguard_noise_trick.label"
 msgstr "💥 WireGuard Noise Trick"
 
 msgid "config.wireguard_port.description"
-msgstr "WireGuard Port"
+msgstr "Defines Port for WireGuard "
 
 msgid "config.wireguard_port.label"
 msgstr "↔️ WireGuard Port"
 
 msgid "config.wireguard_private_key.description"
-msgstr "-"
+msgstr "A private key is specified to WireGuard"
 
 msgid "config.wireguard_private_key.label"
-msgstr "-"
+msgstr "WireGuard Private Key"
 
 msgid "config.wireguard_public_key.description"
-msgstr "-"
+msgstr "A public key is specified to WireGuard"
 
 msgid "config.wireguard_public_key.label"
-msgstr "-"
+msgstr "WireGuard Public Key"
 
 msgid "config.ws_enable.description"
 msgstr "Websocket creates a tunnel over HTTP that is useful to be used in CDN"
@@ -2319,7 +2319,7 @@ msgid "config.ws_enable.label"
 msgstr "🔰 Websocket"
 
 msgid "config.xtls_enable.description"
-msgstr "Enable XTLS Protocol"
+msgstr "Enables XTLS Protocol"
 
 msgid "config.xtls_enable.label"
 msgstr "🟢 XTLS"
@@ -2406,7 +2406,7 @@ msgid "grpc-proxy.description"
 msgstr "ℹ️ gRPC is a H2 based Protocol. Maybe it is faster for you!"
 
 msgid "in parent panel"
-msgstr "In Parent Panel"
+msgstr "In Central Panel"
 
 msgid "install from google play"
 msgstr "<i class='fa-brands fa-google-play'></i> Google Play"
@@ -2418,13 +2418,13 @@ msgid "items"
 msgstr "items"
 
 msgid "lang.en"
-msgstr "🇺🇸 English - انگلیسی"
+msgstr "🇺🇸 English"
 
 msgid "lang.fa"
 msgstr "🇮🇷 Persian - فارسی"
 
 msgid "lang.pt"
-msgstr "🇵🇹 Portuguese"
+msgstr "🇵🇹 Portuguese - Português "
 
 msgid "lang.ru"
 msgstr "🇷🇺 Russian - Русский"
@@ -2445,16 +2445,16 @@ msgid "log"
 msgstr "📄 Log"
 
 msgid "login.secret.description"
-msgstr "Secret code is given by the service provider."
+msgstr "For getting access to this page, please enter your secret code (UUID)"
 
 msgid "login.secret.label"
-msgstr "Secret Code"
+msgstr "Secret Code (UUID)"
 
 msgid "macOS"
 msgstr "macOS"
 
 msgid "master.page-title"
-msgstr "Hiddify Manager"
+msgstr "HiddifyManager"
 
 msgid "monthly"
 msgstr "🗓️ Monthly"
@@ -2473,19 +2473,19 @@ msgid "node.diff-version"
 msgstr "node.diff-version"
 
 msgid "node.mode.dscr"
-msgstr "node.mode.dscr"
+msgstr "This field defines mode for Node"
 
 msgid "node.mode.label"
 msgstr "Node Mode"
 
 msgid "node.name.dscr"
-msgstr "node.name.dscr"
+msgstr "This field defines name for Node"
 
 msgid "node.name.label"
 msgstr "Node Name"
 
 msgid "node.uuid.dscr"
-msgstr "node.uuid.dscr"
+msgstr "This field defines UUID for Node"
 
 msgid "node.uuid.label"
 msgstr "Node UUID"
@@ -2568,7 +2568,7 @@ msgid "test"
 msgstr "Test"
 
 msgid "update"
-msgstr "update"
+msgstr "Update"
 
 msgid "user.UUID"
 msgstr "UUID"
@@ -2590,7 +2590,7 @@ msgid "user.home.allconfig.clash-configs"
 msgstr "Clash Configs"
 
 msgid "user.home.allconfig.hiddify-managers"
-msgstr "All Config Hiddify Managers"
+msgstr "All Config of HiddifyManager Admins"
 
 msgid "user.home.allconfig.link-configs"
 msgstr "Subscription Link"
@@ -2776,7 +2776,7 @@ msgid "user.home.select_tool"
 msgstr "Please select the item."
 
 msgid "user.home.share-title"
-msgstr "Share to Social Media"
+msgstr "Share on Social Media"
 
 msgid "user.home.speedtest.download"
 msgstr "Download"
@@ -2806,7 +2806,7 @@ msgstr ""
 "<br />"
 
 msgid "user.home.title"
-msgstr "Hiddify"
+msgstr "HiddifyManager"
 
 msgid "user.home.tool.all-configs"
 msgstr "All Configs"
