@@ -225,7 +225,9 @@
   "You can restore your configs from previously downloaded configs": "ℹ️ در این قسمت می‌توانید تنظیمات قبلی خود را (که قبلا از قسمت پشتیبان گیری دانلود کرده‌اید.) بازگردانی نمایید.",
   "You have too much users! You can have only %(active)s active users and %(total)s users": "شما کاربران زیادی دارید! شما می توانید تنها %(active)s کاربر فعال و %(total)s کاربر داشته باشید",
   "You have used this domain in: ": "شما از این دامنه در بخش زیر استفاده کرده اید: ",
-  "You should visit this page without VPN. Your country=%(your_country)s\nexpected=%(expected_country)s": "شما باید بدون VPN از این صفحه بازدید کنید کشور شما =%(your_country)s\nانتظار می رود=%(expected_country)s",
+  "You should visit this page without VPN": {
+    " Your country=%(your_country)s\nexpected=%(expected_country)s": "شما باید بدون VPN از این صفحه بازدید کنید کشور شما =%(your_country)s\nانتظار می رود=%(expected_country)s"
+  },
   "Your hiddify instance information \nDomain: {} \nUsage limit: {} GB\nCurrent usage: {} GB\nExpires at: {} \nRemaining days: {} \n\n\n Happy using 🎉 🎉 🎉 \n": "اطلاعات اکانت هیدیفای شما\nدامنه : {} \nمقدار حجم مجاز : {} گیگابایت\nحجم مصرف شده : {} گیگابایت\nتاریخ انقضا : {} \nروزهای باقی ‌مانده : {} \n\n\nبا آرزوی موفقیت. 🎉 🎉 🎉 ",
   "[Admin only visible message:] You can change this message from settings": "[پیام اختصاصی ادمین]: قابل تنظیم از طریق تنظیمات",
   "actions": "عملیات",
@@ -982,7 +984,7 @@
     },
     "wireguard": {
       "description": "WireGuard یک پروتکل سبک و مبتنی بر UDP است که به دلیل سادگی، کارایی و امنیت قوی شناخته شده است. راه اندازی سریع و سورس کد شفاف را ارائه می دهد و به دلیل سهولت استفاده در سیستم عامل های مختلف محبوبیت پیدا کرده است",
-      "label": "🐉 وایرگارد"
+      "label": "وایرگارد"
     },
     "wireguard_enable": {
       "description": "<p>WireGuard پروتکل مبتنی بر UDP است. (⚠️ فقط در <a href=\"https://github.com/hiddify/hiddify-next\" target=\"_blank\">Hiddify Next</a> کار می کند)</p>",

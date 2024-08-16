@@ -225,7 +225,9 @@
   "You can restore your configs from previously downloaded configs": "ℹ️ Вы можете восстановить свои конфигурации из ранее скачанного файла резервной копии.",
   "You have too much users! You can have only %(active)s active users and %(total)s users": "У вас слишком много пользователей! У вас может быть только %(активных) активных пользователей и %(всего) пользователей.",
   "You have used this domain in: ": "Вы уже используете этот домен в:",
-  "You should visit this page without VPN. Your country=%(your_country)s\nexpected=%(expected_country)s": "Вы должны посетить эту страницу без VPN. Ваша страна=%(your_country)s\nожидаемый=%(expected_country)s",
+  "You should visit this page without VPN": {
+    " Your country=%(your_country)s\nexpected=%(expected_country)s": "Вы должны посетить эту страницу без VPN. Ваша страна=%(your_country)s\nожидаемый=%(expected_country)s"
+  },
   "Your hiddify instance information \nDomain: {} \nUsage limit: {} GB\nCurrent usage: {} GB\nExpires at: {} \nRemaining days: {} \n\n\n Happy using 🎉 🎉 🎉 \n": "Информация о вашем экземпляре Hiddify\nДомен: {}\nЛимит: {} ГБ\nИспользовано: {} ГБ\nСрок действия истекает: {}\nОставшиеся дни: {}\n\n\nУдачи! 🎉 🎉 🎉",
   "[Admin only visible message:] You can change this message from settings": "[Сообщение, видимое только администратору]: Вы можете изменить это сообщение в настройках",
   "actions": "Операции",
@@ -982,7 +984,7 @@
     },
     "wireguard": {
       "description": "WireGuard - это легковесный UDP-протокол, известный своей простотой, эффективностью и высокой безопасност. Он предлагает простоту, кроссплатформенность, быструю настройку и прозрачный код.",
-      "label": "🐉 WireGuard"
+      "label": "WireGuard"
     },
     "wireguard_enable": {
       "description": "<p>WireGuard - это UDP-протокол. (⚠️ Работает на <a href=\"https://github.com/hiddify/hiddify-next\" target=\"_blank\">Hiddify Next</a>)</p>",
