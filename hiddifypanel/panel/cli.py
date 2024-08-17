@@ -38,7 +38,7 @@ def backup():
 
     if hconfig(ConfigEnum.telegram_bot_token):
         from hiddifypanel.panel.commercial.telegrambot import bot, register_bot
-        if not bot.token:
+        if not bot.username:
             register_bot(True)
 
         with open(dst, 'rb') as document:
@@ -207,7 +207,7 @@ def init_app(app):
             return
 
         from hiddifypanel.panel.commercial.telegrambot import bot, register_bot
-        if not bot.token:
+        if not bot.username:
             register_bot(True)
         info = bot.get_me().to_dict()
         hook_data = bot.get_webhook_info()
