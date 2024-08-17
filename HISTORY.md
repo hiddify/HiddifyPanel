@@ -1,6 +1,14 @@
 # Changelog
 
 
+## v10.70.6 (2024-08-17)
+
+#### Fix
+
+* Telegram bot backup. 
+
+
+
 ## v10.70.5 (2024-08-15)
 
 #### Fix
