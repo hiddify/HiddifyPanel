@@ -222,6 +222,9 @@
   "You can restore your configs from previously downloaded configs": "ℹ️ ယခင်က ဒေါင်းလုဒ်လုပ်ထားသော အရန်ဖိုင်မှ သင့် configuration ကို ပြန်လည်ရယူနိုင်သည်။",
   "You have too much users! You can have only %(active)s active users and %(total)s users": "သင့်တွင် အသုံးပြုသူများ အလွန်များပါသည်။ သင့်တွင် အသုံးပြုသူ %(active)s ဦးနှင့် အသုံးပြုသူ %(total)s ဦးသာ ရှိနိုင်ပါသည်။",
   "You have used this domain in: ": "သင်သည် ဤဒိုမိန်းကို အသုံးပြုပြီးဖြစ်သည်- ",
+  "You should visit this page without VPN": {
+    " Your country=%(your_country)s\nexpected=%(expected_country)s": "သင့်နိုင်ငံ =%(your_country)s ကို VPN မပါဘဲ ဤစာမျက်နှာသို့ သင်သွားရောက်ကြည့်ရှုသင့်သည်။\nမျှော်မှန်း=%(expected_country)s"
+  },
   "Your hiddify instance information \nDomain: {} \nUsage limit: {} GB\nCurrent usage: {} GB\nExpires at: {} \nRemaining days: {} \n\n\n Happy using 🎉 🎉 🎉 \n": "သင်၏ Hiddify အသင့် အချက်အလက်\nဒိုမိန်း- {}\nအသုံးပြုမှု ကန့်သတ်ချက်- {} GB\nလက်ရှိအသုံးပြုမှု- {} GB\nသက်တမ်းကုန်ဆုံးချိန် - {}\nလက်ကျန်ရက်များ- {}\n\n\nကံကောင်းပါစေ။ 🎉 🎉 🎉",
   "[Admin only visible message:] You can change this message from settings": "[Admin Exclusive Message]- ဆက်တင်များမှတစ်ဆင့် စိတ်ကြိုက်ပြင်ဆင်နိုင်သည်။",
   "actions": "လုပ်ဆောင်မှုများ",
@@ -350,6 +353,8 @@
     "Invalid_brand_link": "မမှန်ကန်သော လင့်ခ်။ ၎င်းသည် ဤဖော်မတ်တွင် ရှိသင့်သည်- (https သို့မဟုတ် http://example.com)",
     "Invalid_domain": "အမှား။ မမှန်ကန်သော ဒိုမိန်း။ ဒိုမိန်းပုံစံသည် www.google.com ဖြစ်သည်။",
     "Invalid_it_should_be_a_number_only": "⚠️ နံပါတ်တစ်ခုသာဖြစ်သင့်သည်  ⚠️",
+    "Invalid_port": "မရေရာသော Port။ ၎င်းသည် ကော်မာ ခွဲထားသော ကိန်းပြည့် ဥပမာ 2052,2053 ဖြစ်သင့်သည်။",
+    "Invalid_proxy_path": "မရေရာသော ပရောက်စီလမ်းကြောင်း။ ၎င်းသည် ASCI စာကြောင်းဖြစ်သင့်သည် (az AZ 0-9)",
     "Invalid_telegram_bot_token": "တယ်လီဂရမ်ဘော့တိုကင် မမှန်ကန်ပါ။",
     "admin": {
       "description": "စီမံခန့်ခွဲသူအပိုင်းသည် စီမံခန့်ခွဲသူနှင့် ဆက်စပ်ဆက်တင်များကို ပြင်ဆင်သတ်မှတ်ခြင်းအတွက်ဖြစ်သည်။",
@@ -367,7 +372,12 @@
       "description": "ဤအပိုင်းတွင်၊ သင်အဆင့်မြင့်အသုံးပြုသူမဟုတ်ပါက ပြောင်းလဲ၍မရသောအဆင့်မြင့်ပြင်ဆင်မှုအချို့ရှိပါသည်။",
       "label": "အဆင့်မြင့် အပြင်အဆင်များ"
     },
+    "allow_invalid_sni": {
+      "description": "မရေရာသော SNI ကို သင်ခွင့်ပြုပါက၊ သင်သည် ပရောက်စီကို ဝင်ရောက်ရန် သင့်မူရင်း ဒိုမိန်းထက် မည်သည့် ဒိုမိန်းကိုမဆို သုံးနိုင်သည် (အကြံပြုမထား)",
+      "label": "🆗 မရေရာသော SNI ကို ခွင့်ပြုရန်"
+    },
     "auto_update": {
+      "description": "နေ့စဉ် နံနက် 3:00 နာရီတွင် အပ်ဒိတ်အသစ်ကို စစ်ဆေးပါမည်။ အပ်ဒိတ်အသစ်ရရှိပါက၊ ကျွန်ုပ်တို့သည် စနစ်အား အလိုအလျောက် မွမ်းမံပါမည်။",
       "label": "🔄 အလိုအလျောက် မွမ်းမံ"
     },
     "block_iran_sites": {
@@ -389,24 +399,34 @@
       "description": "အသုံးပြုသူစာမျက်နှာတွင်ပြသရန် စိတ်ကြိုက်ခေါင်းစဉ်ကို ထည့်သွင်းပါ။ (အသုံးပြုသူ၏ကြိုဆိုရေးစာသား မတိုင်ခင်)",
       "label": "👁‍🗨 အသုံးပြုသူ စာမျက်နှာ ခေါင်းစဉ်"
     },
+    "cdn_forced_host": {
+      "label": "🔂 အောက်ပါ အိုင်ပီများကို အသုံးပြုရန် Config ကို အတင်းအကျပ်လုပ်ပါ။"
+    },
     "cloudflare": {
       "label": "🔑 Cloudflare API"
     },
     "core_type": {
+      "description": "☢️ XRay သည် ပြီးပြည့်စုံသော Core တစ်ခုဖြစ်သည်။\n<br>\n📦 Singbox : SagerNet မှတီထွင်သည်။ အူတိုင်ကောင်းတစ်ခုလည်း ဖြစ်သည်။",
       "label": "🎛️ Core"
     },
     "country": {
+      "description": "၎င်းသည် နိုင်ငံတစ်ခုစီ၏ စစ်ထုတ်မှုအခြေအနေများနှင့်အညီ နိုင်ငံတစ်ခုစီအတွက် သင့်လျော်သောဆက်တင်များကို အသုံးပြုသည်။",
       "label": "🌍 နိုင်ငံ"
     },
     "create_easysetup_link": {
       "description": "config.create_easysetup_link.description",
       "label": "config.create_easysetup_link.label"
     },
+    "db_version": {
+      "description": "ဒေတာဘေ့စ်ဗားရှင်းဖော်ပြချက်",
+      "label": "ဒေတာဘေ့စ်ဗားရှင်း အညွှန်း"
+    },
     "dbvalues": {
       "description": "config.dbvalues.description",
       "label": "config.dbvalues.label"
     },
     "decoy_domain": {
+      "description": "ဆိုဒ်အတု- တစ်စုံတစ်ယောက်သည် သင့်ဒိုမိန်းသို့ တိုက်ရိုက်လည်ပတ်သည့်အခါ ဆိုဒ်တစ်ခုကို အတုယူသည်။<br>\n⚠️ Google၊ Yahoo၊ Wikipedia၊ PayPal စသည့် အကောင့်ဝင်ထားသော ငွေကြေး၊ အီရန်နှင့် နာမည်ကြီး ဆိုဒ်များ သို့မဟုတ် ဆိုဒ်များကို အသုံးမပြုပါနှင့်။<br>\n⛔ ဆိုဒ်ကို သေချာစစ်ဆေးပြီး ၎င်းသည် မှန်ကန်သောဆိုဒ်ဖြစ်ကြောင်း သေချာစေပါ၊ သို့မဟုတ်ပါက သင်သည် ဖြားယောင်းမှုသတိပေးချက်ကို ရရှိနိုင်ပါသည်။<br>\n⛔⛔ အနာဂတ်တွင် ပြဿနာမရှိစေရန် ဤဒိုမိန်းကို ထပ်မံစစ်ဆေးပါ။",
       "label": "📺 ဖြားယောင်းဆိုဒ်"
     },
     "dns_server": {
@@ -414,18 +434,23 @@
       "label": "🖥 DNS ဆာဗာ"
     },
     "domain_fronting": {
+      "description": "SNI တွင် သင့်ဝဘ်ဆိုဒ်အစား အခြားဝဘ်ဆိုဒ်ကို အတုယူရန် ၎င်းကို အသုံးပြုသည်။ ထို့ကြောင့်၊ GFW သည် သင့် ဒိုမိန်းကို စစ်ထုတ်၍မရပါ။\n<a href='https://github.com/hiddify/hiddify-config/wiki/%D8%A7%D8%B3%D8%AA%D9%81%D8%A7%D8%AF%D9%87-%D8%A7%D8%B2-%D8%AF%D8%A7%D9%85%DB%8C%D9%86-%D9%81%D8%B1%D8%A7%D9%86%D8%AA%DB%8C%D9%86%DA%AF'>လမ်းညွှန်</a> ။ ⚠️CloudFlare သည် Domain Fronting ကို မပံ့ပိုးပါ။",
       "label": "🔒 TLS ဒိုမိန်း Fronting"
     },
     "domain_fronting_domain": {
+      "description": "SNI တွင် သင့်ဝဘ်ဆိုဒ်အစား အခြားဝဘ်ဆိုဒ်ကို အတုယူရန် ၎င်းကို အသုံးပြုသည်။ ထို့ကြောင့်၊ GFW သည် သင့်ဒိုမိန်းကို စစ်ထုတ်၍မရပါ။",
       "label": "ℹ️ ဒိုမိန်း Fronting"
     },
     "domain_fronting_http_enable": {
+      "description": "HTTP Domain Fronting ကို ဖွင့်ခြင်းသည် သင့်ဒိုမိန်းကို လျင်မြန်စွာ ပိတ်ဆို့စေပါသည်။",
       "label": "HTTP ဒိုမိန်း Fronting"
     },
     "domain_fronting_tls_enable": {
+      "description": "CloudFlare တွင် TLS Domain Fronting ကို ပံ့ပိုးမထားပါ။ CDN သို့ ချိတ်ဆက်ရန် Port 443 ကို အသုံးပြုပါမည်။",
       "label": "🔒 TLS ဒိုမိန်း Fronting"
     },
     "firewall": {
+      "description": "Firewall ကိုဖွင့်ခြင်းဖြင့် အသုံးပြုထားသော Ports (အနည်းဆုံး 22,443,80 နှင့် SSH) ကိုဖွင့်ပြီး အခြား Port အားလုံးကို ပိတ်ပါမည်။",
       "label": "🛡️ ဖိုင်းယားဝေါ"
     },
     "first_setup": {
@@ -433,12 +458,15 @@
       "label": "config.first_setup.label"
     },
     "general": {
+      "description": "၎င်းသည် General System Configurations ဖြစ်သည်။",
       "label": "အထွေထွေ အပြင်အဆင်များ"
     },
     "grpc_enable": {
+      "description": "gRPC သည် ခေတ်မီ open source မြင့်မားသော စွမ်းဆောင်ရည် Remote Procedure Call (RPC) framework တစ်ခုဖြစ်သည်။ ပံ့ပိုးထားသော CDN များတွင် အသုံးပြုနိုင်သည်။",
       "label": "➿ gRPC"
     },
     "h2_enable": {
+      "description": "HTTP/2 ပရိုတိုကောလ်ကို ဖွင့်ရန်",
       "label": "🔵 h2"
     },
     "hidden": {
@@ -449,39 +477,65 @@
       "description": "config.hiddifycli_enable.description",
       "label": "config.hiddifycli_enable.label"
     },
+    "http": {
+      "description": "HTTP Configurations ကို ဤကဏ္ဍတွင် သတ်မှတ်နိုင်ပါသည်။",
+      "label": "HTTP အပြင်အဆင်များ"
+    },
     "http_ports": {
+      "description": "ကုဒ်မထားသော ချိတ်ဆက်မှုများအဖြစ် အသုံးပြုရန် Port များကို ညွှန်ပြသော ကော်မာ ခွဲထားသော ကိန်းပြည့်များ (Port 80 ကို မည်သည့်ကိစ္စတွင်မဆို အသုံးပြုပါမည်)<inlang-LineFeed>",
       "label": "🔎 HTTP Ports"
     },
     "http_proxy_enable": {
+      "description": "၎င်းကိုခွင့်ပြုခြင်းဖြင့်၊ သင်၏အသုံးပြုသူများသည် ကုဒ်ဝှက်ထားသော HTTP Port ဖြင့် စနစ်သို့ ချိတ်ဆက်နိုင်သည်။ (အကြံပြုမထားပါ)",
       "label": "☑️ HTTP ချိတ်ဆက်မှု ခွင့်ပြုရန်"
     },
     "httpupgrade_enable": {
       "label": "🆙 HTTPUpgrade နည်းလမ်း"
     },
+    "hysteria": {
+      "description": "Hysteria သည် ဆုံးရှုံးမှု၊ မတည်မငြိမ်သော ချိတ်ဆက်မှုများ (ဥပမာ- ဂြိုလ်တုကွန်ရက်များ၊ ပိတ်ဆို့နေသော အများသူငှာ Wi-Fi၊ တရုတ်နိုင်ငံမှ နိုင်ငံခြားဆာဗာများသို့ ချိတ်ဆက်ခြင်း) အတွက် အကောင်းဆုံးလုပ်ဆောင်ပေးထားသည့် ပရောက်စီနှင့် ထပ်လောင်းကိရိယာတစ်ခုဖြစ်သည်။",
+      "label": "Hysteria"
+    },
+    "hysteria_down_mbps": {
+      "description": "Hysteria အများဆုံးဒေါင်းလုဒ်အမြန်နှုန်း",
+      "label": "⬇️ Hysteria ဒေါင်းလုဒ် (mbps)"
+    },
+    "hysteria_enable": {
+      "description": "UDP အခြေပြု Hysteria ပရိုတိုကောလ် ကိုဖွင့်ရန်",
+      "label": "⚫️ Hysteria2"
+    },
     "hysteria_obfs_enable": {
+      "description": " Hysteria Obfuscation (Salamander) ကို ဖွင့်ရန်",
       "label": "🎛 Hysteria OBFS"
     },
     "hysteria_port": {
+      "description": "Hysteria UDP Port ဥပမာ 5678",
       "label": "🔍 Hysteria2 Port"
     },
     "hysteria_up_mbps": {
       "description": "Hysteria အများဆုံး အပ်လုပ် အမြန်နှုန်း",
       "label": "⬆️ Hysteria အပ်လုပ် (mbps)"
     },
+    "invalid-pattern-for-warp-sites": "⚠️ Warp အတွက် ထည့်သွင်းထားသော ဆိုဒ်သည် သတ်မှတ်ထားသောပုံစံနှင့် မကိုက်ညီပါ။",
+    "invalid_uuid": "မမှန်ကန်သော UUID လျှို့ဝှက်ချက်။ ဥပမာ- 6098ea35-8cb2-4a08-ba15-2be25bc49cb6",
     "is_parent": {
       "description": "config.is_parent.description",
       "label": "ပင်မ ပန်နယ်"
     },
     "kcp": {
+      "description": "KCP Configurations ကို ဤကဏ္ဍတွင် သတ်မှတ်နိုင်ပါသည်။",
       "label": "KCP"
     },
     "kcp_enable": {
+      "description": "၎င်းသည် UDP အခြေခံ ပရိုတိုကောလ် တစ်ခု ဖြစ်သည်။ ",
       "label": "KCP"
     },
     "kcp_ports": {
+      "description": "KCP ချိတ်ဆက်မှုအဖြစ် အသုံးပြုရန် Port များကို ညွှန်ပြသော ကော်မာ ခွဲထားသော ကိန်းပြည့်များ။",
       "label": "KCP Ports"
     },
     "lang": {
+      "description": "အသုံးပြုသူများဧရိယာအတွက် ဘာသာစကားကို ရွေးချယ်ပါ။",
       "label": "🗺️ အသုံးပြုသူ ဧရိယာ ဘာသာစကား"
     },
     "last_hash": {
@@ -501,31 +555,58 @@
       "label": "config.log_level.label"
     },
     "mux": {
+      "description": "MUX (Multiplex) ဖွဲ့စည်းမှုပုံစံများကို ဤကဏ္ဍတွင် သတ်မှတ်နိုင်သည်။",
       "label": "MUX Config"
     },
+    "mux_brutal_down_mbps": {
+      "description": "TCP-Brutal အများဆုံးဒေါင်းလုဒ်အမြန်နှုန်း",
+      "label": "⬇️ MUX Brutal ဒေါင်းလုဒ် (mbps)"
+    },
     "mux_brutal_enable": {
+      "description": "TCP-Brutal congestion control algorithm ကို ဖွင့်ရန်",
       "label": "☣️ MUX Brutal"
+    },
+    "mux_brutal_up_mbps": {
+      "description": "TCP-Brutal အများဆုံး အပ်လုဒ်အမြန်နှုန်း",
+      "label": "⬆️ MUX Brutal အပ်လုဒ် (mbps)"
     },
     "mux_enable": {
       "label": "Ⓜ️ MUX (⚠️ အချို့သော ကလိုင်းယင့်များနှင့် မကိုက်ညီပါ)"
     },
+    "mux_max_connections": {
+      "description": "အများဆုံးချိတ်ဆက်မှုများ။ Max Streams နှင့် ပဋိပက္ခဖြစ်နေသည်",
+      "label": "⛓ MUX အများဆုံး ချိတ်ဆက်မှုများ"
+    },
     "mux_max_streams": {
+      "description": "ချိတ်ဆက်မှုအသစ်တစ်ခုမဖွင့်မီ ချိတ်ဆက်မှုတစ်ခုတွင် အများဆုံး Multiplexed စီးကြောင်းများ",
       "label": "↗️ MUX Max Streams"
     },
     "mux_min_streams": {
+      "description": "ချိတ်ဆက်မှုအသစ်မဖွင့်မီ ချိတ်ဆက်မှုတစ်ခုရှိ အနိမ့်ဆုံး Multiplexed စီးကြောင်းများ",
       "label": "↘️ MUX Min Streams"
     },
     "mux_padding_enable": {
+      "description": "MUX Padding ဖော်ပြချက်",
       "label": "⟹ MUX Padding"
     },
     "mux_protocol": {
       "label": "♍️ MUX ပရိုတိုကောလ်"
     },
     "netdata": {
+      "description": "အရင်းအမြစ်များကိုပြသရန်။ သင့် ဆာဗာ၏ CPU ကိုအသုံးပြုသော်လည်း ၎င်းသည် အလွန်အကျွံမဟုတ်ပါ။",
       "label": "Netdata"
     },
+    "not_found": {
+      "description": "Config မတွေ့ပါ။",
+      "label": "Config မတွေ့ပါ။"
+    },
     "only_ipv4": {
+      "description": "IPv6 ကို Disable လုပ်ပါလိမ့်မည်",
       "label": "ℹ️ IPv4 သာလျှင်"
+    },
+    "package_mode": {
+      "description": "ဖြန့်ချိထားသော ပက်ကေ့ခ်ျ သို့မဟုတ် စမ်းသပ်ဆော့ဖ်ဝဲတစ်ခုကို သင်အလိုရှိမရှိ သတ်မှတ်ပါ။",
+      "label": "🔄 Package မွမ်းမံ မုဒ်"
     },
     "panel_mode": {
       "description": "config.panel_mode.description",
@@ -539,37 +620,60 @@
       "description": "config.parent_domain.description",
       "label": "config.parent_domain.label"
     },
+    "parent_panel": {
+      "description": "သုံးစွဲသူတစ်ဦးတည်းကိုသာ သတ်မှတ်ရန် Central Panel သို့ ချိတ်ဆက်နိုင်ပြီး ဆာဗာများအားလုံး၏ အသုံးပြုမှုကို စုစည်းထည့်သွင်းမည်ဖြစ်သည်။",
+      "label": "ပင်မပန်နယ် (များစွာသော ဆာဗာ)"
+    },
     "path_grpc": {
+      "description": "configs တွင် gRPC လမ်းကြောင်း",
       "label": "ℹ️ gRPC လမ်းကြောင်း"
     },
     "path_httpupgrade": {
-      "description": "ကျပန်းဖြစ်သင့်သည်"
+      "description": "ကျပန်းဖြစ်သင့်သည်",
+      "label": "ℹ️ HTTP အဆင့်မြှင့်တင်မှု လမ်းကြောင်း"
+    },
+    "path_splithttp": {
+      "description": "ဤရွေးချယ်မှုသည် Split HTTP အတွက် လမ်းကြောင်းကို သတ်မှတ်သည်။",
+      "label": "ℹ️ Split HTTP အတွက် လမ်းကြောင်း"
     },
     "path_ss": {
+      "description": "လင့်ခ်များရှိ Shadowsocks လမ်းကြောင်း",
       "label": "Shadowsocks လမ်းကြောင်း"
     },
     "path_tcp": {
-      "description": "ပရောက်စီလင့်ခ် အတွက်"
+      "description": "ပရောက်စီလင့်ခ် အတွက်",
+      "label": "ℹ️ TCP ဖွဲ့စည်းမှုလမ်းကြောင်း"
     },
     "path_trojan": {
+      "description": "TROJAN-Links အတွက်",
       "label": "ℹ️ TROJAN လမ်းကြောင်း"
     },
     "path_v2ray": {
+      "description": "V2Ray Configs လမ်းကြောင်းကို သတ်မှတ်ပါ။",
       "label": "V2Ray လမ်းကြောင်း"
     },
     "path_vless": {
+      "description": "VLess လမ်းကြောင်းအတွက်",
       "label": "ℹ️ VLess လမ်းကြောင်း"
     },
     "path_vmess": {
+      "description": "VMess လင့်ခ်အတွက်",
       "label": "ℹ️ VMess လမ်းကြောင်း"
     },
+    "path_ws": {
+      "description": "Websocket လမ်းကြောင်းကို သတ်မှတ်ပါ။",
+      "label": "ℹ️ Websocket တောင်းဆိုမှုများ၏ လမ်းကြောင်း"
+    },
     "proxies": {
+      "description": "သီးခြား ပရောက်စီဆက်တင်များကို သတ်မှတ်ပါ။",
       "label": "ပရောက်စီ အပြင်အဆင်များ"
     },
     "proxy_path": {
+      "description": "အစိုးရအတွက် ကျွန်ုပ်တို့၏ ပရောက်စီများကို ဖုံးကွယ်ရန် လျှို့ဝှက် ပရောက်စီလမ်းကြောင်းကို အသုံးပြုပါသည်။",
       "label": "ℹ️ လျှို့ဝှက် ပရောက်စီ လမ်းကြောင်း"
     },
     "proxy_path_admin": {
+      "description": "အစိုးရများနှင့် ဘော့တ်များအတွက် ကျွန်ုပ်တို့၏ ပရောက်စီများကို ဖုံးကွယ်ရန် လျှို့ဝှက် ပရောက်စီလမ်းကြောင်းကို အသုံးပြုပါသည်။",
       "label": "🔐 စီမံခန့်ခွဲသူများအတွက် ပရောက်စီ လမ်းကြောင်း"
     },
     "proxy_path_client": {
@@ -577,18 +681,23 @@
       "label": "🔏 သုံးစွဲသူများအတွက် ပရောက်စီလမ်းကြောင်း"
     },
     "quic_enable": {
+      "description": "QUIC ပရိုတိုကောလ်ကို ဖွင့်ရန်",
       "label": "🟡 QUIC"
     },
     "reality": {
+      "description": "REALITY သည် Server-Side TLS Fingerprint Feature ကို ဖယ်ရှားသည်",
       "label": "Reality"
     },
     "reality_enable": {
+      "description": "Reality ပရိုတိုကောလ်ကို ဖွင့်ရန်",
       "label": "🔴 Reality"
     },
     "reality_fallback_domain": {
+      "description": "GFW သည် ဆာဗာအမည်များရှိ ဝဘ်ဆိုဒ်များသို့ သွားရောက်သည့်အခါ ၎င်းသည် ဤ ဒိုမိန်းသို့ ပြန်လည်ညွှန်းပေးမည်ဖြစ်သည်။",
       "label": "🌍 Reality Fallback ဒိုမိန်း"
     },
     "reality_port": {
+      "description": "စနစ်၏ အကျုံးဝင်မှုကို လျှော့ချရန် သင်၏ reality ဆာဗာအတွက် စိတ်ကြိုက် Port တစ်ခုကို သင် သတ်မှတ်နိုင်သည်။ (ပရောက်စီများနှင့် တိုက်ရိုက်ချိတ်ဆက်မှုကို ခွင့်ပြုပါက ဟုတ်သင့်သည်)",
       "label": "↔️  တိုက်ရိုက် Reality Port"
     },
     "reality_private_key": {
@@ -600,6 +709,7 @@
       "label": "🔑 Public Key"
     },
     "reality_server_names": {
+      "description": "ဆာဗာအမည်များ အများအပြားကို ကော်မာခွဲထားသည့် ဖောမတ်တွင် သင်ထည့်နိုင်သည်။",
       "label": "🌎 Reality ဆာဗာအမည်များ"
     },
     "reality_short_ids": {
@@ -619,54 +729,82 @@
       "label": "config.restls1_3_domain.label"
     },
     "shadowsocks": {
+      "description": "Shadowsocks သည် firewall များကိုကျော်ဖြတ်ရန် ကူညီပေးသည့် အမြန်လိုဏ်ခေါင်း ပရောက်စီတစ်ခုဖြစ်သည်။",
       "label": "Shadowsocks"
     },
     "shadowsocks2022_enable": {
+      "description": "Shadowsocks 2022 သည် TCP နှင့် UDP အသွားအလာအတွက် လုံခြုံသော ပရောက်စီ ပရိုတိုကောလ် တစ်ခုဖြစ်သည်။ ပရောက်စီအသွားအလာကို ကျပန်းဘိုက်စီးကြောင်းမှ ခွဲခြား၍မရသောကြောင့် DPI (Deep Packet Inspection) ကို အားကိုးထားသည့် Firewall များနှင့် အင်တာနက်ဆင်ဆာများကို ရှောင်လွှဲနိုင်သည်။",
       "label": "⭕️ Shadowsocks 2022"
     },
     "shadowsocks2022_method": {
+      "description": "ဤနည်းလမ်းကို ShadowTLS နှင့် SSFakeTLS တို့တွင်လည်း အသုံးပြုသည်။",
       "label": "🔐 Shadowsocks Encrypytion နည်းလမ်း"
     },
     "shadowsocks2022_port": {
+      "description": "၎င်းသည် အခမဲ့ဖြစ်ရန် UDP နှင့် TCP နှစ်ခုစလုံး လိုအပ်သည်။",
       "label": "↔️ Shadowsocks 2022 Port"
     },
     "shadowtls": {
+      "description": "tls အစစ်အမှန်များကို firewall သို့ လက်ဆွဲနှုတ်ဆက်ရန် ပရောက်စီ။<inlang-LineFeed>\n၎င်းသည် TROJAN ကဲ့သို့အလုပ်လုပ်သော်လည်း၊ ၎င်းသည် လက်မှတ်ထိုးရန် မလိုအပ်ပါ။ Firewall သည် သင်ရွေးချယ်သော တရားဝင်လက်မှတ်ဖြင့် tls အစစ်အမှန် လက်ဆွဲနှုတ်ဆက်သည်ကို တွေ့ရလိမ့်မည်။",
       "label": "ShadowTLS"
     },
     "shadowtls_enable": {
+      "description": "ShadowTLS သည် ပရိုတိုကောအသစ်တစ်ခုဖြစ်သော်လည်း FakeTLS ကို အသုံးပြု၍ အစိုးရထံမှ အသွားအလာများကို ဖုံးကွယ်နိုင်သည်။",
       "label": "☑️ ShadowTLS"
     },
+    "shadowtls_fakedomain": {
+      "description": "သင့်ဒေတာစင်တာတွင် လူသိများသောဒိုမိန်းကို အသုံးပြုပါ။ ဥပမာအားဖြင့် သင်သည် azure data center တွင်ရှိနေပါက microsoft-update.com သည် ဥပမာကောင်းတစ်ခုဖြစ်သည်။",
+      "label": "🌍 ShadowTLS အတုဒိုမိန်း"
+    },
+    "shared_secret": {
+      "description": "အချို့သော ပရောက်စီများသည် လက်ရှိတွင် Accounting ကို မပံ့ပိုးနိုင်သောကြောင့် ၎င်းတို့အတွက် လျှို့ဝှက်ချက်ကို အသုံးပြုရမည်ဖြစ်ပါသည်။",
+      "label": "🔐 မျှဝေထားသော လျှို့ဝှက်ချက်"
+    },
+    "show_usage_in_sublink": {
+      "description": "ဤရွေးချယ်မှုသည် အသုံးပြုသူ၏လက်ကျန်ပမာဏကိုပြသသည့် အသုံးပြုသူ၏ခွဲလင့်ခ်တွင် Fake Config ကိုဖန်တီးပေးသည်။",
+      "label": "👁️‍🗨️ Sublink တွင် အသုံးပြုပုံကို ပြပါ။"
+    },
     "speed_test": {
+      "description": "သင့်အသုံးပြုသူများကို အမြန်နှုန်းစမ်းသပ်မှု ပြုလုပ်ခွင့်ပြုရန်။ ၎င်းသည် ၎င်းတို့အား လင့်ခ်အရည်အသွေးကို ခွဲခြားသတ်မှတ်ရန် ကူညီပေးသည်။",
       "label": "🚀 အမြန်နှုန်း စမ်းသပ်"
     },
     "splithttp_enable": {
+      "description": "ဤပရိုတိုကောသည် ချန်နယ်တစ်ခုချင်းစီတွင် အချက်အလက်များကို ပေးပို့လက်ခံသည်",
       "label": "🈁 Split HTTP"
     },
     "ssfaketls": {
+      "description": "Shadowsocks FakeTLS သည် tls packet တွင် ရက်စွဲကို ဖုံးအုပ်ထားသည့် ရိုးရှင်းသော ရှုပ်ထွေးစေသော ကိရိယာတစ်ခုဖြစ်သည်။",
       "label": "Shadowsocks FakeTLS"
     },
     "ssfaketls_enable": {
+      "description": "ရိုးရှင်းသော OBFS ပရိုတိုကောကို အကြံမပြုထားပါ",
       "label": "🆎 Shadowsocks FakeTLS (Simple OBFS)"
     },
     "ssfaketls_fakedomain": {
+      "description": "သင့်ဒေတာစင်တာတွင် လူသိများသောဒိုမိန်းကို အသုံးပြုပါ။ ဥပမာအားဖြင့် သင်သည် Azure ဒေတာစင်တာတွင် ရှိနေပါက၊ microsoft-update.com သည် ဥပမာကောင်းတစ်ခုဖြစ်သည်။",
       "label": "🌍 SS FakeTLS FakeDomain"
     },
     "ssh": {
       "label": "SSH ပရောက်စီ"
     },
     "ssh_server_enable": {
+      "description": "SSH ပရောက်စီသည် မူရင်း SSH ဆာဗာနှင့် လုံးဝကွဲပြားသည်။",
       "label": "✔️ SSH ပရောက်စီ"
     },
     "ssh_server_port": {
+      "description": "၎င်းသည် သင်၏ မူရင်း SSH ဆာဗာနှင့် လုံးဝကွဲပြားသည်။ ၎င်းသည် သီးသန့်အစီအစဉ်တစ်ခုဖြစ်သည်။",
       "label": "↔️ SSH ပရောက်စီ Port"
     },
     "ssh_server_redis_url": {
-      "description": "အသုံးမပြုထားပါ"
+      "description": "အသုံးမပြုထားပါ",
+      "label": "SSH အသုံးပြုသူ ဒေတာဘေ့စ် လိပ်စာ"
     },
     "ssr": {
+      "description": "ShadowsocksR သည် လုံခြုံရေးနှင့် တည်ငြိမ်မှုအရ သာလွန်သည်ဟု ဆိုထားသော မူလ Shadowsocks ပရောဂျက်၏ Fork တစ်ခုဖြစ်သည်။",
       "label": "SSR"
     },
     "ssr_enable": {
+      "description": "ShadowsocksR သည် လုံခြုံရေးနှင့် တည်ငြိမ်မှုအရ သာလွန်သည်ဟု ဆိုထားသော မူရင်း Shadowsocks ပရောဂျက်၏ Fork တစ်ခုဖြစ်သည်။ မစမ်းသပ်ထားပါ။ accounting ကို မပံ့ပိုးပါ။",
       "label": "SSR"
     },
     "ssr_fakedomain": {
