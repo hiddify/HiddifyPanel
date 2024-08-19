@@ -219,6 +219,7 @@
   "With selected": "ရွေးချယ်ထားခြင်းဖြင့်",
   "Xray": "☢️ XRay",
   "Yesterday Usage": "မနေ့",
+  "You can download a json formated of configurations by clicking <a href='%(link)s' class='btn btn-primary'>here</a>": "🔄 Hiddify Manager သည် ၆ နာရီတိုင်း အရန်သိမ်းဆည်းမှုကို အလိုအလျောက် ရယူသည်။ ဆာဗာရှိ အရန်ဖိုင်များ လမ်းကြောင်း- ⬇️\n<br>\n💿 /opt/hiddify-manager/hiddify-panel/backup/\n<br>\n<br>\n<br>\n⚠️ အောက်ပါ ခလုတ်ကို နှိပ်ခြင်းဖြင့် ဖွဲ့စည်းမှုပုံစံ၏ JSON ဖိုင်ကို ဒေါင်းလုဒ်လုပ်နိုင်ပါသည်။\n<br>\n<br>\n<a href='%(link)s' class='btn btn-primary'>အရန်သိမ်းဆည်းမှုဖိုင်ကို ဒေါင်းလုဒ်လုပ်ပါ။</a>",
   "You can restore your configs from previously downloaded configs": "ℹ️ ယခင်က ဒေါင်းလုဒ်လုပ်ထားသော အရန်ဖိုင်မှ သင့် configuration ကို ပြန်လည်ရယူနိုင်သည်။",
   "You have too much users! You can have only %(active)s active users and %(total)s users": "သင့်တွင် အသုံးပြုသူများ အလွန်များပါသည်။ သင့်တွင် အသုံးပြုသူ %(active)s ဦးနှင့် အသုံးပြုသူ %(total)s ဦးသာ ရှိနိုင်ပါသည်။",
   "You have used this domain in: ": "သင်သည် ဤဒိုမိန်းကို အသုံးပြုပြီးဖြစ်သည်- ",
@@ -267,6 +268,7 @@
       "title": "အမြန်တပ်ဆင်ခြင်း။"
     },
     "quicksetup_intro": "သင့်ဆာဗာ၏ IP များမှာ-\n<div >\nIPv4- %(ipv4)s<br> IPv6- %(ipv6)s\n</div>\nဤ အိုင်ပီများကို သင်၏ ဒိုမိန်း သို့မဟုတ် ဒိုမိန်းအခွဲတွင် သတ်မှတ်ပြီး အောက်ဖော်ပြပါ အကွက်တွင် သင်၏ ဒိုမိန်း သို့မဟုတ် ဒိုမိန်းအခွဲ ကို ထည့်ပါ။",
+    "save_panel_link": "သင့် ပန်နယ်အား အောက်ပါလင့်ခ်မှတစ်ဆင့်သာ ဝင်ရောက်ကြည့်ရှုနိုင်သည်ကို သတိပြုပါ။ ကျေးဇူးပြု၍ ဤလင့်ခ်ကို သိမ်းဆည်းပါ။\n<p><a href='%(adminlink)s' class='btn btn-secondary copy-link'><i class='fa-solid fa-copy'></i></a>\n<a href='%(adminlink)s' class='copy-link' style='word-break: break-all;'>%(adminlink)s</a></p> ",
     "waiting_for_update": "⚠️ အရာအားလုံးကို မွမ်းမံပြီးကြောင်း သေချာစေရန် ၅ မိနစ်ခန့် စောင့်ပါ။ ဤကာလအတွင်း၊ ကျေးဇူးပြု၍ သင်၏ ပရောက်စီ လင့်ခ်များကို ကူးယူပြီး သိမ်းဆည်းပါ။"
   },
   "adminuser": {
@@ -389,6 +391,7 @@
       "label": "အသုံးပြုသူစာမျက်နှာ စိတ်ကြိုက်ပြင်ဆင်"
     },
     "branding_freetext": {
+      "description": "Branding စာသား။ ဤအကွက်၏ စာသားကို အသုံးပြုသူ၏ စာမျက်နှာ၏ ပံ့ပိုးမှုကဏ္ဍတွင် ပြသမည်ဖြစ်သည်။ HTML tags များကို သုံးစွဲနိုင်သည်။\n<p><br /> <a href=\"https://htmleditor.online/full\" target=\"_blank\">HTML တည်းဖြတ်သူ</a></p>",
       "label": "📢 အထောက်အကူ အပိုင်း စာသား"
     },
     "branding_site": {
@@ -400,9 +403,11 @@
       "label": "👁‍🗨 အသုံးပြုသူ စာမျက်နှာ ခေါင်းစဉ်"
     },
     "cdn_forced_host": {
+      "description": "ဤအပိုင်းတွင် သင့်ဆာဗာအတွက် အသုံးပြုသူလင့်ခ်များပေါ်တွင် အစားထိုးရန် သတ်မှတ်ထားသော ဒိုမိန်းများ သို့မဟုတ် အိုင်ပီများကို သင်အသုံးပြုနိုင်ပါသည်။\n\n<a href='https://ircf.space/export.php'>ဤပုံစံကို</a> သင်အသုံးပြုပါက၊ အသုံးပြုသူ၏ အော်ပရေတာအတိုင်း သက်ဆိုင်ရာ အိုင်ပီကို ရွေးချယ်မည်ဖြစ်ပြီး အိုင်ပီ၏အကွာအဝေးကို ထည့်ပါက အိုင်ပီကို အဆိုပါအကွာအဝေးမှ ကျပန်းရွေးချယ်မည် ဖြစ်သည်။\nကိုယ်ပိုင် အိုင်ပီများကို သတ်မှတ်ရန် <a target='_blank' href='https://ip-format.hiddify.com'>ဤလင့်ခ်ကို</a> အသုံးပြုပါ။",
       "label": "🔂 အောက်ပါ အိုင်ပီများကို အသုံးပြုရန် Config ကို အတင်းအကျပ်လုပ်ပါ။"
     },
     "cloudflare": {
+      "description": "<a href='https://github.com/hiddify/hiddify-config/wiki/Get-Cloudflare-API' target='_blank'>ညွှန်ကြားချက်ကို</a> လိုက်နာပြီး Cloudflare API Key ကို ကူးထည့်ပါ။",
       "label": "🔑 Cloudflare API"
     },
     "core_type": {
@@ -808,6 +813,7 @@
       "label": "SSR"
     },
     "ssr_fakedomain": {
+      "description": "သင့်ဒေတာစင်တာတွင် လူသိများသောဒိုမိန်းကို အသုံးပြုပါ။ ဥပမာအားဖြင့် သင်သည် Azure ဒေတာစင်တာတွင် ရှိနေပါက၊ microsoft-update.com သည် ဥပမာကောင်းတစ်ခုဖြစ်သည်။",
       "label": "SSR ဒိုမိန်းတု"
     },
     "sub_full_clash_enable": {
@@ -830,56 +836,99 @@
       "description": "config.sub_full_singbox_enable.description",
       "label": "config.sub_full_singbox_enable.label"
     },
+    "sub_full_xray_json_enable": {
+      "label": "⚙️ XRay Config လင့်ခ်အပြည့်အစုံ "
+    },
     "sub_singbox_ssh_enable": {
       "description": "config.sub_singbox_ssh_enable.description",
       "label": "config.sub_singbox_ssh_enable.label"
     },
     "tcp_enable": {
+      "description": "TCP ပရိုတိုကောလ်ကို ဖွင့်ရန်",
       "label": "🟠 TCP"
     },
+    "telegram": {
+      "description": "တယ်လီဂရမ် စစ်ထုတ်ခြင်းကို ကျော်လွှားရန် တယ်လီဂရမ်အတွက် ဒီဇိုင်းထုတ်ထားသော ပရောက်စီ",
+      "label": "တယ်လီဂရမ်  Configs"
+    },
     "telegram_adtag": {
+      "description": "ကလိုင်းယင့်၏ချတ်စာရင်းတွင် ပံ့ပိုးကူညီထားသည့်ချန်နယ်ကို ပြသရန် ၎င်းကိုအသုံးပြုသည်။ ချန်နယ်တစ်ခုကြော်ငြာရန် @MTProxybot မှ တဂ်ရယူပါ။\nကုဒ် 0123456789ABCDEF0123456789ABCDEF ကို ထိုဘော့တွင် ရိုက်ထည့်ပါ။",
       "label": "📍 တယ်လီဂရမ် AD Tag"
     },
     "telegram_bot_token": {
+      "description": "တယ်လီဂရမ်ဘော့ အင်္ဂါရပ်ကို ထည့်သွင်းရန်။ <a href=\"https://t.me/BotFather\" target=\"_blank\">@BotFather</a> ဖြင့် ဘော့တစ်ခုကို ဖန်တီးပြီး ဤအကွက်တွင် API ကုဒ်ကို ရိုက်ထည့်ရန် လိုအပ်သည်။",
       "label": "🔐 တယ်လီဂရမ် ဘော့တိုကင်"
     },
     "telegram_enable": {
+      "description": "<p data-pm-slice=\"1 1 []\">တယ်လီဂရမ် MTProto ကို tls အသွားအလာအဖြစ် Encapsulate Telegram Proxy အတွက်အသုံးပြုသည်။<br> ⚠️ <span style=\"color:#d32f2f;\"><strong>ဤပရိုတိုကောသည် တိုက်ရိုက် ဒိုမိန်းလိုအပ်သည်။</strong></span></p>",
       "label": "✔️ တယ်လီဂရမ် MTProto"
     },
     "telegram_fakedomain": {
+      "description": "သင့်ဒေတာစင်တာတွင် လူသိများသောဒိုမိန်းကို အသုံးပြုပါ။ ဥပမာအားဖြင့်၊ သင်သည် Azure ဒေတာစင်တာတွင်ရှိနေပါက၊ microsoft-update.com သည် ဥပမာကောင်းတစ်ခုဖြစ်သည်။",
       "label": "📺 တယ်လီဂရမ် ဒိုမိန်းတု"
     },
+    "telegram_lib": {
+      "description": "မတူညီသော တယ်လီဂရမ် စာကြည့်တိုက်များအကြား သင်ပြောင်းနိုင်သည်။ ဆာဗာအားလုံးတွင် Python သာအလုပ်လုပ်သည်၊ အခြားပြဿနာများရှိနိုင်သည်ကို ကျေးဇူးပြု၍ သတိပြုပါ။ ၎င်းကိုပြောင်းပြီးနောက် ပရောက်စီကိုစမ်းသပ်ပါ။",
+      "label": "🔢 တယ်လီဂရမ် ပရောက်စီ စာကြည့်တိုက်"
+    },
     "tls": {
+      "description": "TLS Configurations ကို ဤကဏ္ဍတွင် သတ်မှတ်နိုင်ပါသည်။",
       "label": "TLS အပြင်အဆင်များ"
     },
     "tls_fragment_enable": {
+      "description": "<p>အချို့သောအခြေအနေများတွင်၊ ၎င်းသည် SNI အမည်ပျက်စာရင်းစနစ်ကို ကျော်လွှားနိုင်သည်။ <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-the-TLS-Trick-works-and-its-usage/\" target=\"_blank\">(ပိုမိုဖတ်ရှုရန်)</a></p>",
       "label": "⏯ TLS Fragment"
     },
+    "tls_fragment_size": {
+      "description": "Packet တစ်ခုစီ၏ အရွယ်အစား",
+      "label": "🎚 TLS Fragment အရွယ်အစား"
+    },
+    "tls_fragment_sleep": {
+      "description": "အပိုင်းအစများကြားတွင် အချိန်ကြန့်ကြာခြင်း",
+      "label": "⏱ TLS Fragment အိပ်စက်ခြင်း"
+    },
     "tls_mixed_case": {
+      "description": "TLS ရောနှောထားသော SNI Case Fragmentation ကို ဖွင့်ရန်",
       "label": "🔠 TLS Mixed SNI Case"
     },
     "tls_padding_enable": {
+      "description": "<p>TLS Fragmentation အတွက် Padding ကိုဖွင့်ပါ။ <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-the-TLS-Trick-works-and-its-usage/#tls-padding\" target=\"_blank\">(ပိုမို ဖတ်ရှုရန်)</a></p>",
       "label": "♒️ TLS Padding"
     },
     "tls_padding_length": {
+      "description": "TLS Fragmentation အတွက် Padding ၏ အရှည်",
       "label": "📏 TLS Padding"
     },
     "tls_ports": {
+      "description": "TLS ချိတ်ဆက်မှုအဖြစ် အသုံးပြုရန် Port များကို ညွှန်ပြသော ကော်မာခွဲထားသော ကိန်းပြည့်များ (Port 443 ကို မည်သည့်ကိစ္စတွင်မဆို အသုံးပြုပါမည်)\n",
       "label": "🔎 TLS Ports"
     },
     "tls_trick": {
+      "description": "TLS Fragmentation ဖွဲ့စည်းမှုပုံစံများကို ဤကဏ္ဍတွင် သတ်မှတ်နိုင်သည်။",
       "label": "TLS Trick"
     },
+    "too_advanced": {
+      "description": "ပရောက်စီလမ်းကြောင်းကို သတ်မှတ်ပါ။ အထူးသဖြင့် HTTP နှင့် VMess ကို အသုံးပြုနေလျှင် အရေးကြီးပါသည်။",
+      "label": "အလွန်အဆင့်မြင့်သော ဆက်တင်များ"
+    },
+    "torrent_block": {
+      "description": "တောရန့် ပိတ်ပင်မှု အပြင်အဆင်များကို ဤကဏ္ဍတွင် သတ်မှတ်နိုင်သည်။",
+      "label": "တောရန့် ပိတ်ပင်မှု အပြင်အဆင်များ"
+    },
     "trojan_enable": {
+      "description": "Trojan ပရိုတိုကောလ်ကို ဖွင့်ရန်",
       "label": "🟤 Trojan"
     },
     "tuic": {
+      "description": "Delicately-TUICed High-Performance ပရောက်စီသည် QUIC ပရိုတိုကော၏ထိပ်တွင် ရှိသည်။\n\nTUIC ၏ ရည်မှန်းချက်မှာ လက်ဆွဲနှုတ်ဆက်ချိန်ကို တတ်နိုင်သမျှ လျှော့ချရန်ဖြစ်သည်။",
       "label": "TUIC"
     },
     "tuic_enable": {
+      "description": "၎င်းသည် QUIC နှင့်ဆင်တူသော UDP အခြေခံပရိုတိုကောလ်တစ်ခုဖြစ်သည်။",
       "label": "⚫️ TUIC"
     },
     "tuic_port": {
+      "description": "(63000,60000) ကဲ့သို့သော port များကို ခွဲရန် ကော်မာကိုသုံးပါ",
       "label": "TUIC Ports"
     },
     "unique_id": {
@@ -887,67 +936,119 @@
       "label": "config.unique_id.label"
     },
     "utls": {
+      "description": "ဤရွေးချယ်မှုသည် မတူညီသောဘရောက်ဆာများကို အတုယူမည်ဖြစ်သောကြောင့်၊ GFW သည် သင်၏ရှာဖွေမှုကို မတွေ့နိုင်ပါ။",
       "label": "❇️ uTLS"
     },
     "v2ray_enable": {
+      "description": "V2ray သည် accountin ကို မပံ့ပိုးဘဲ အကြံပြုထားခြင်းမရှိပါ။",
       "label": "♈️ V2Ray "
     },
+    "validation-error": "အကွက်တစ်ခုတွင် အမှားအယွင်းတစ်ခုရှိသည်။",
+    "validation-success": "Configs ကို အောင်မြင်စွာ ပြောင်းလဲပြီးပါပြီ။ configs ကိုအသုံးပြုရန် %(link)s ကိုနှိပ်ပါ။ လျှောက်ထားရန် ၂ မိနစ် ကြာနိုင်သည်။",
+    "validation-success-no-reset": " ✅ Configs ကို အောင်မြင်စွာ ပြောင်းလဲပြီးပါပြီ။",
     "vless_enable": {
+      "description": "VLess ပရိုတိုကောလ်ကို ဖွင့်ရန်",
       "label": "⚫️ VLess"
     },
     "vmess_enable": {
+      "description": "အသက်ဝင်သော VMess ပရိုတိုကောလ်",
       "label": "🟣 VMess"
     },
     "warp-https-domain-for-warp-site": "config.warp-https-domain-for-warp-site",
     "warp": {
       "label": "WARP➕"
     },
+    "warp_enable": {
+      "description": "WARP သည် သင့်အား ဆာဗာ အိုင်ပီကိုဝှက်ထားခြင်းဖြင့် Google၊ Spotify နှင့် Netflix ကန့်သတ်ချက်များကို ကျော်လွှားရန် ကူညီပေးသည်။ ",
+      "label": "WARP+ ကို ဖွင့်ရန်"
+    },
     "warp_mode": {
+      "description": "✴️ အားလုံး : ဆိုဒ်အားလုံးသည် Outbound တွင် Warp IP များကို အသုံးပြုပါသည်။\n<br>\n☑️ ပြည်တွင်းနှင့် ပိတ်ဆို့ထားသောဆိုက်များသာ- Google၊ Spotify၊ Netflix၊ OpenAi၊ IPinfo.io ကဲ့သို့သော ပြည်တွင်းဆိုက်များနှင့် ဝဘ်ဆိုဒ်များကသာ Outbound တွင် Warp IP ကို အသုံးပြုသည်",
       "label": "✴️ WARP+ မုဒ်"
     },
     "warp_plus_code": {
+      "description": "🔝 browsing speed ကို တိုးစေသည်။ သော့ကိုရယူရန် <a href='https://1.1.1.1/'>1.1.1.1</a> သို့သွားပါ။\nအက်ပ်နှင့် Cloudflare မှ မူရင်းကီးကို ဝယ်ယူပါ။\n<br>\n⚠️ ဤကီးတွင် အမှားအယွင်းရှိပါက WARP ကို ပိတ်ထားစေမည်ဖြစ်သည်",
       "label": "🔑 Warp Plus ကီး"
     },
+    "warp_sites": {
+      "description": "WARP ကို ဖြတ်ကျော်ရန် နောက်ထပ်ဆိုဒ်များထည့်ပါ (warp မုဒ်မရှိသည့်အခါမှသာ)",
+      "label": "🆚 ထပ်ဆောင်း WARP ဆိုဒ်များ"
+    },
     "wireguard": {
+      "description": "WireGuard သည် ၎င်း၏ရိုးရှင်းမှု၊ ထိရောက်မှုနှင့် လုံခြုံရေးအတွက် လူသိများသော ပေါ့ပါးသော UDP အခြေခံ ပရိုတိုကောလ်ဖြစ်သည်။ ၎င်းသည် အမြန်တပ်ဆင်မှု၊ ဖောက်ထွင်းမြင်ရသည့်ကုဒ်ကို ပေးဆောင်ပြီး လည်ပတ်မှုစနစ်အမျိုးမျိုးတွင် ၎င်း၏အသုံးပြုရလွယ်ကူမှုအတွက် ရေပန်းစားခဲ့သည်။",
       "label": "WireGuard"
     },
     "wireguard_enable": {
+      "description": "<p>WireGuard သည် UDP အခြေခံ ပရိုတိုကောလ်ဖြစ်သည်။ (⚠️ ၎င်းသည် <a href=\"https://github.com/hiddify/hiddify-next\" target=\"_blank\">Hiddify Next</a> တွင် အလုပ်လုပ်သည်)</p>",
       "label": "🐉 WireGuard"
     },
+    "wireguard_ipv4": {
+      "description": "WireGuard တွင် IPv4 ကို ဖွင့်ရန်",
+      "label": " WireGuard ရှိ IPv4"
+    },
+    "wireguard_ipv6": {
+      "description": "WireGuard တွင် IPv6 ကို ဖွင့်ရန်",
+      "label": "WireGuard ရှိ IPv6"
+    },
     "wireguard_noise_trick": {
+      "description": "ဤနည်းလမ်းသည် GFW မှ ထောက်လှမ်းမှုနှင့် ပိတ်ဆို့ခြင်းကို ကာကွယ်ရန် အပိုဆူညံသံကို မိတ်ဆက်ပေးသည်။",
       "label": "💥 WireGuard Noise Trick"
     },
     "wireguard_port": {
+      "description": "WireGuard အတွက် Port ကို သတ်မှတ်ရန်",
       "label": "↔️ WireGuard Port"
     },
+    "wireguard_private_key": {
+      "description": "သီးသန့်သော့ကို WireGuard တွင် သတ်မှတ်ထားသည်။",
+      "label": "WireGuard သီးသန့်သော့"
+    },
+    "wireguard_public_key": {
+      "description": "အများသူငှာသော့ကို WireGuard တွင် သတ်မှတ်ရန်",
+      "label": "WireGuard အများသုံးကီး"
+    },
     "ws_enable": {
+      "description": "Websocket သည် CDN တွင် အသုံးပြုရန် အသုံးဝင်သော HTTP ပေါ်ရှိ ဥမင်လိုဏ်ခေါင်းတစ်ခုကို ဖန်တီးသည်။",
       "label": "🔰 Websocket"
     },
     "xtls_enable": {
+      "description": "XTLS ပရိုတိုကောလ်ကို ဖွင့်ရန်",
       "label": "🟢 XTLS"
     }
   },
   "copy": "ကူးယူ",
   "daily": "⏰ နေ့စဉ်",
   "days": "ရက်များ",
+  "desktop": "ဒက်စတော့",
   "direct": "➡️ တိုက်ရိုက်",
   "domain": {
     "cdn": "CDN",
+    "changed_in_domain_warning": "⚠️ သင့်ဒိုမိန်းများ  ပြောင်းလဲခဲ့သည်။ ကျေးဇူးပြု၍ စီမံခန့်ခွဲသူလင့်ခ်များကို ကူးယူရန် မမေ့ပါနှင့်၊ သို့မဟုတ်ပါက သင်သည် ပန်နယ်သို့ ဝင်ရောက်၍ မရနိုင်ပါ။",
+    "description": "ကျေးဇူးပြု၍ ဤအကွက်ကို သေသေချာချာ မှန်မှန်ကန်ကန်ဖြည့်ပါ။ မဟုတ်ပါက ပရောက်စီများသည် ပြဿနာများ ကြုံတွေ့ရလိမ့်မည်။ ဒိုမိန်းခွဲတစ်ခုကို ဖန်တီးနည်းကို လေ့လာရန် <a href='https://github.com/hiddify/hiddify-config/wiki/راهنمای-تنظیم-دامنه-و-نهایی-کردن-نصب#آموزش-ساخت-زیردامنه'>အကူအညီ</a> သို့ သွားရောက်ပါ။",
     "domain": "ဒိုမိန်း",
     "domain_fronting": {
+      "description": "SNI တွင် သင့်ဝဘ်ဆိုဒ်အစား အခြားဝဘ်ဆိုဒ်ကို အတုယူရန် ၎င်းကို အသုံးပြုသည်။ ထို့ကြောင့်၊ GFW သည် သင့် ဒိုမိန်းကို စစ်ထုတ်၍မရပါ။\n<a href='https://github.com/hiddify/hiddify-config/wiki/Guide-for-domain-fronting'>လမ်းညွှန်</a> ။ ⚠️CloudFlare သည် Domain Fronting ကို မပံ့ပိုးပါ။",
       "label": "🔒 TLS Domain Fronting"
     },
     "empty": {
       "allowed_for_fake_only": "domain.empty.allowed_for_fake_only"
     },
+    "intro": "1️⃣ ဤကဏ္ဍတွင်၊ သင်သည် သင်၏ ဒိုမိန်းကို ထည့်နိုင်သည်။\n<br>\n2️⃣ ညစ်ပတ်သော အိုင်ပီ ရှိခြင်းဖြစ်နိုင်ခြေကို လျှော့ချလိုပါက Multiple Relay Server ကို ထည့်နိုင်ပါသည်။ <a href='https://github.com/hiddify/hiddify-config/discussions/129'>ပိုမို ဖတ်ရှုရန်</a> \n<br>\n3️⃣ သင့် ပန်နယ်တွင် IPv4 သို့မဟုတ် IPv6 များစွာရှိလျှင် ၎င်းတို့အား Relay အဖြစ်ညွှန်ပြထားသော ဒိုမိန်းကို ထည့်ရပါမည်။",
     "ip": "အိုင်ပီ",
-    "mode": "မုဒ်"
+    "mode": "မုဒ်",
+    "reality": {
+      "asn_issue": "REALITY အတွက် ရွေးချယ်ထားသော ဒိုမိန်းသည် ASN တစ်ခုတည်းတွင် မရှိပါ။ ပရိုတိုကောလ်ကို ပိုမိုကောင်းမွန်စွာအသုံးပြုရန်၊ တူညီသော ASN တွင် ဒိုမိန်းတစ်ခုကို ရှာဖွေခြင်းသည် ပိုကောင်းပါသည်။"
+    }
   },
   "download": "တိုက်ရိုက်ဒေါင်းလုပ်",
   "fake": "🆎 ဆိုဒ်အတု",
   "gRPC": "➿ gRPC",
+  "grpc-proxy": {
+    "description": "ℹ️ gRPC သည် H2 အခြေခံ ပရိုတိုကောလ်တစ်ခုဖြစ်သည်။ သင့်အတွက် ပိုမြန်နိုင်သည်။"
+  },
+  "in parent panel": "Central Panel မှာ",
   "install from google play": "<i class='fa-brands fa-google-play'></i> Google Play",
   "ios": "အိုင်အိုအက်စ်",
+  "items": "ပစ္စည်းများ",
   "lang": {
     "en": "🇺🇸 အင်္ဂလိပ်",
     "fa": "🇮🇷 ပါရှန်း - فارسی",
@@ -955,9 +1056,17 @@
     "ru": "🇷🇺 ရုရှား - Русский",
     "zh": "🇨🇳 တရုတ် - 简体中文"
   },
+  "lib": {
+    "telegram": {
+      "erlang": "✴️ Erlang : ကောင်းမွန်သော စွမ်းဆောင်ရည်",
+      "go": "✅ Go : ပုံမှန်စွမ်းဆောင်ရည် - ကြော်ငြာပံ့ပိုးမှုမရှိပါ။",
+      "python": "☑️ Python : စွမ်းဆောင်ရည်နိမ့်"
+    }
+  },
   "log": "📄 မှတ်တမ်း",
   "login": {
     "secret": {
+      "description": "ဤစာမျက်နှာသို့ဝင်ရောက်ခွင့်ရရှိရန်အတွက်၊ ကျေးဇူးပြု၍ သင်၏လျှို့ဝှက်ကုဒ် (UUID) ထည့်ပါ",
       "label": "လျှို့ဝှက်ကုဒ် (UUID)"
     }
   },
@@ -966,21 +1075,29 @@
     "page-title": "HiddifyManager"
   },
   "monthly": "🗓️ လစဉ်",
+  "move_to_new_link": "စာမျက်နှာကို လင့်ခ်အသစ်သို့ ရွှေ့လိုက်ပါပြီ။ လင့်ခ်အသစ်ကို ကူးယူပြီး သိမ်းဆည်းပါ။",
   "next": "နောက်ထပ်",
   "no_reset": "⭐️ ရီဆက်မချဘဲ",
   "node": {
     "diff-version": "node.diff-version",
     "mode": {
+      "dscr": "ဤအကွက်သည် Node အတွက် မုဒ်ကို သတ်မှတ်သည်။",
       "label": "Node မုဒ်"
     },
     "name": {
+      "dscr": "ဤအကွက်သည် Node အတွက် အမည်ကို သတ်မှတ်သည်။",
       "label": "Node အမည်"
     },
     "uuid": {
+      "dscr": "ဤအကွက်သည် Node အတွက် UUID ကို သတ်မှတ်သည်။",
       "label": "Node UUID"
     }
   },
+  "old_xtls_direct": "🔙 Old Direct Mode (Trojan TCP၊ VLess XTLS အတွက်)",
   "open": "ဖွင့်ရန်",
+  "outdated_panel": "⚠️ Hiddify Manager ၏ ဤဗားရှင်းသည် ခေတ်မမီတော့ပါ။ ကျေးဇူးပြု၍ စီမံခန့်ခွဲသူ ဧရိယာမှတဆင့် မွမ်းမံပါ။",
+  "package days?": "package နေ့ရက်များ?",
+  "package size?": "အထုပ်အရွယ်အစား?",
   "parent": {
     "invalid-parent-url": "parent.invalid-parent-url",
     "sync-req-failed": "parent.sync-req-failed"
@@ -988,23 +1105,41 @@
   "previous": "ယခင်",
   "quicksetup": {
     "cdn_domain": {
+      "description": "CDN ဒိုမိန်းကို သတ်မှတ်ခြင်းသည် စိတ်ကြိုက်ရွေးချယ်နိုင်သည်။ CDN ကို config လုပ်ထားပြီးသားမှသာလျှင် ၎င်းကို အသုံးပြုပါ။",
       "label": "CDN ဒိုမိန်း"
+    },
+    "proxy_cat": {
+      "description": "နောက်ဆုံးအဆင့်- သင်အလိုရှိသော ပရောက်စီများကို ရွေးချယ်ပါ။ ကျေးဇူးပြု၍ တတ်နိုင်သမျှ အနည်းဆုံးရွေးချယ်ပါ။"
+    },
+    "setlang": {
+      "success": "ဘာသာစကားပြောင်းလဲခြင်း အောင်မြင်ခဲ့သည်။"
     }
   },
   "reality": "🔂 Reality",
+  "relay": "♾️ Relay (အလယ်အလတ် Node ကို အသုံးပြု၍ ချိတ်ဆက်ပါ)",
   "search": "ရှာဖွေ",
   "see the log in the bellow screen": "📑 အောက်ပါ မြင်ကွင်းတွင် မှတ်တမ်းကို ကြည့်",
+  "serverssh": {
+    "password-login": {
+      "warning": "Password Authentication ကို သင်၏ SSH တွင် ဖွင့်ထားသောကြောင့် သင့်ဆာဗာသည် အလွဲသုံးစားလုပ်မှုများကို ခံရနိုင်သည်။ သင့်ဆာဗာကို လုံခြုံစေရန်၊ ကျေးဇူးပြု၍ သော့အထောက်အထားစိစစ်ခြင်း ယန္တရားသို့ ပြောင်းပြီး စကားဝှက်အထောက်အထားစိစစ်ခြင်းကို ပိတ်ပါ။ <a href='https://github.com/hiddify/Hiddify-Manager/wiki/Disable-SSH-Password-Authentication'>ပိုမို ဖတ်ရှုရန်...</a>"
+    }
+  },
   "singbox: ssh": "SingBox: SSH",
   "ssh": "SSH",
+  "sub_link_only": "📳 စာရင်းသွင်းခြင်းလင့်ခ်အတွက်သာ (တိုက်ရိုက်၊ ထပ်လောင်း သို့မဟုတ် CDN ဖြစ်နိုင်သည်)",
   "telegram": "တယ်လီဂရမ်",
   "test": "စမ်းသပ်",
   "update": "မွမ်းမံ",
   "user": {
     "UUID": "UUID",
     "current_usage_GB": "လတ်တလော အသုံးပြုမှု (GB)",
+    "define_mode": "အသုံးပြုသူ၏ Package မုဒ်။ အသုံးပြုမှုကို လတိုင်း၊ အပတ်စဉ် စသည်ဖြင့် ပြန်လည်သတ်မှတ်သင့်ပါသည်။",
     "expiry_time": "ကုန်ဆုံး (ရက်များ)",
     "home": {
+      "all_configs": "Configs အားလုံး",
       "allconfig": {
+        "clash-configs": "Clash Configs",
+        "hiddify-managers": "HiddifyManager Admins ၏ Config အားလုံး",
         "link-configs": "စာရင်းသွင်းလင့်ခ်",
         "name": "အမည်နှင့် လင့်ခ်",
         "protocol": "ပရိုတိုကောလ်",
@@ -1024,10 +1159,13 @@
           "btn": "ဆိုဒ်အားလုံးအတွက် ပရောက်စီ ထည့်ရန်",
           "title": "ဆိုဒ်အားလုံးအတွက် ပရောက်စီ"
         },
+        "alternative_for_normal_clash": "Clash အတွက် အစားထိုးလင့်ခ်",
         "foreign_sites": {
           "btn": "နိုင်ငံခြားဆိုဒ်များအတွက် ထည့်ရန်",
+          "description": "နိုင်ငံခြားဆိုက်အားလုံးအတွက် (အပိတ်မခံသည့်တိုင်) ပရောက်စီကိုသုံးပါ။\n<div class='callout callout-warning'>\nဤမုဒ်သည် သန့်ရှင်းသော ဆိုက်အချို့ကို ဝင်ရောက်ရာတွင် အသုံးဝင်သည်။\n</div>",
           "title": "နိုင်ငံခြားဆိုဒ် ပရောက်စီ"
         },
+        "intro": "ယခု သင့်လိုအပ်ချက်များအပေါ် အခြေခံ၍ အောက်ပါလင့်ခ်များထဲမှ တစ်ခုကို နှိပ်ပါ။\n<br />",
         "link_for_normal_clash": "Clash ထည့်သွင်းရန်",
         "only_for_blocked_sites": {
           "btn": "ပိတ်ပင်ထားသော ဆိုဒ်များအတွက်သာလျှင် ထည့်သွင်းရန်",
@@ -1041,6 +1179,7 @@
         }
       },
       "qr-code": {
+        "description": "လင့်ခ်များကို ကူးယူ သို့မဟုတ် မျှဝေရန်၊ ၎င်း၏ QR Code ကို ပြသရန်အတွက် မီးခိုးရောင် <i class='fa-solid fa-qrcode'></i> အကွက်ကို နှိပ်ပါ။",
         "display": "ကျူအာကုဒ် ပြသရန်"
       },
       "select_os": "သင့်စက်လည်ပတ်ရေးစနစ်ကို ကျေးဇူးပြု၍ ရွေးချယ်ပါ။",
@@ -1053,7 +1192,8 @@
         "upload": "အက်ပ်လုပ်"
       },
       "telegram": {
-        "clickbtn": "တယ်လီဂရမ် ပရောက်စီ"
+        "clickbtn": "တယ်လီဂရမ် ပရောက်စီ",
+        "description": "အောက်ပါလင့်ခ်များထဲမှ တစ်ခုကို နှိပ်လိုက်ပါ၊ ထို့နောက် တယ်လီဂရမ်ထဲတွင် <b>Connect Proxy</b> ပါရှိသည့် ဝင်းဒိုးတစ်ခုကို သင်တွေ့မြင်နိုင်ပါသည်။ ယင်းကို နှိပ်လိုက်ပါက အလုပ်လုပ်မည်ဖြစ်သည်။<br />"
       },
       "title": "HiddifyManager",
       "tool": {
