@@ -88,9 +88,11 @@
   "How many days this package should be available?": "ဤပက်ကေ့ချ်တွင် ရက်မည်မျှ ပါဝင်သနည်း။",
   "How many?": "မည်မျှ။",
   "If monthly is enabled, the usage will be reset after 30 days from this date.": "လစဉ်အား ရွေးချယ်ထားပါက နံပါတ် ၃၀ သို့ ရောက်ရှိပါက အသုံးပြုသူ၏ အသုံးပြုမှုကို ရီဆက်ချမည် ဖြစ်သည် (အပတ်စဉ်နှင့် နေ့စဉ်တို့အတွက် ဤနံပါတ်မှာ ၇ နှင့် ၁ ဖြစ်သည်)",
+  "If the application do not open automatically, please click <a class='btn btn-primary copy-link'\n                    href='%(sub)s'>this universal link</a> to copy and paste it on\n                your application, or:": "အကယ်၍ အက်ပလီကေးရှင်းသည် အလိုအလျောက် မပွင့်ခဲ့ပါက ကျေးဇူးပြု၍ <a class='btn btn-primary copy-link'\n                    href='%(sub)s'>ဤဘုံသုံးလင့်ခ်</a> ကို နှိပ်၍ ကူးယူပြီး\n                သင့်အက်ပလီကေးရှင်းတွင် ထည့်ပါ။ သို့မဟုတ်:",
   "Import": "အက်ပ်သို့ တင်ပို့ရန်",
   "Import in": "တင်ပို့",
   "In 5 minutes": "၅ မိနစ်အတွင်း",
+  "In CDN mode, Domain IP=%(domain_ip)s should be different to your ip=%(server_ip)s": "CDN မုဒ်တွင်၊ ဒိုမိန်း IP=%(domain_ip)s များသည် သင်၏ ip=%(server_ip)s များနှင့် ကွဲပြားသင့်သည်",
   "Incorrect Password": "⚠️ စကားဝှက် မှားယွင်း",
   "Install": "ထည့်သွင်း",
   "Install Hiddify Application": "Hiddify မန်နေဂျာ ထည့်သွင်းခြင်း",
@@ -98,6 +100,9 @@
   "Invalid REALITY hostnames": "REALITY Hostnames များ မရေရာပါ",
   "Invalid admin link": "စီမံခန့်ခွဲသူ လင့်ခ် မရေရာ",
   "Iran": "🇮🇷 အီရန်",
+  "It seems that you are using default domain (%(domain)s) which is not recommended.": "သင်သည် အကြံပြုခြင်းမရှိသည့် မူရင်းဒိုမိန်း (%(domain)s) ကို အသုံးပြုနေပုံရသည်။ ကျေးဇူးပြု၍ ၎င်းကို ဒိုမိန်းကဏ္ဍမှ ပြောင်းပါ သို့မဟုတ် ဖယ်ရှားပါ။",
+  "It will override the root admin to the current user": "၎င်းသည် အရန်ဖိုင်၏ပိုင်ရှင်စီမံခန့်ခွဲသူကို လက်ရှိအသုံးပြုသူထံသို့ အစားထိုးမည်ဖြစ်သည်။",
+  "Join our Hiddify Telegram channel to get the latest updates on Hiddify.": "Hiddify ၏နောက်ဆုံးထွက်မွမ်းမံမှုများကိုရယူရန် ကျွန်ုပ်တို့၏ Hiddify Telegram ချန်နယ်သို့ ဝင်ရောက်ပါ။",
   "Last Online": "နောက်ဆုံး ချိတ်ဆက်မှု",
   "Link is changed!": "ℹ️ လင့်ခ် ပြောင်းလဲခဲ့သည်",
   "Linux": "လင်းနပ်စ်",
@@ -111,6 +116,9 @@
   "New": "အသစ်",
   "No children!": "ကလေးသူငယ် မရှိ",
   "Note": "📝 မှတ်စု",
+  "Offline more than 1 day": "အော့ဖ်လိုင်း ၁ ရက်ကျော်",
+  "Offline more than 1 hour": "အော့ဖ်လိုင်း ၁ နာရီကျော်",
+  "Offline more than 1 week": "အော့ဖ်လိုင်း ၁ ပတ်ကျော်",
   "Ok": "အိုကေ",
   "Online Users": "အွန်လိုင်း အသုံးပြုသူများ",
   "Only Blocked and Local websites": "☑️ ပိတ်ပင်၍ ဒေသတွင်း ဝဘ်ဆိုဒ်များသာလျှင်",
@@ -127,6 +135,7 @@
   "Parent Panel": "ပင်မ ပန်နယ်",
   "Please Wait": "ကျေးဇူးပြု၍ ခေတ္တစောင့်ပါ...",
   "Please click on %(install)s to save the user page.": "အသုံးပြုသူစာမျက်နှာအား သိမ်းဆည်းရန် %(install)s ကို နှိပ်ပါ။",
+  "Please connect your telegram account to the panel to be informed about latest news.": "နောက်ဆုံးရသတင်းများအကြောင်း အသိပေးရန်အတွက် သင်၏ တယ်လီဂရမ် အကောင့်ကို Panel သို့ ချိတ်ဆက်ပါ။",
   "Please connect your telegram accout to the panel to be informed about latest news.": "သင်၏စာရင်းသွင်းမှု၏နောက်ဆုံးအခြေအနေကိုသိရန် သင်၏ တယ်လီဂရမ် အကောင့်ကို ပန်နယ်သို့ ချိတ်ဆက်ပါ။",
   "Please create an issue on Github.": "Github တွင် ပြဿနာတစ်ခုအတွက် ကျေးဇူးပြု၍ ဖန်တီးပါ",
   "Please select at least one file.": "ကျေးဇူးပြု၍ အနည်းဆုံး ဖိုင်တစ်ခုကို ရွေးပါ။",
@@ -143,8 +152,15 @@
   "RAM": "RAM",
   "REALITY Fallback domain is not compaitble with server names!": "REALITY Fallback Domain သည် ဆာဗာအမည်များနှင့် မကိုက်ညီပါ။",
   "Release": "✅ Release",
+  "Remaining about %(relative)s, exactly %(days)s days": "လက်ကျန် %(relative)s, အတိအကျအားဖြင့် %(days)s ရက်",
+  "Remote nodes are not supported yet!": "အဝေးထိန်း ဆုံမှတ်များကို မပံ့ပိုးရသေးပါ။",
   "Rename File": "ဖိုင် အမည်ပြောင်း",
+  "Reset Filters": "စိစစ်မှုများကို ပြန်လည်သတ်မှတ်ပါ",
+  "Reset Proxies": "ပရောက်စီများကို ပြန်လည်သတ်မှတ်ပါ",
+  "Reset Usage Time:": "လမ်းကြောင်းအသုံးပြုမှု ပြန်လည်သတ်မှတ်ချိန်-",
   "Reset every month": "လစဉ်",
+  "Reset package days": "📆 Package ၏နေ့ရက်များကို ပြန်လည်သတ်မှတ်ပါ။",
+  "Reset package usage": "⏳ Package ၏အသုံးပြုမှုကို ပြန်လည်သတ်မှတ်ပါ။",
   "Restore": "♻️ ပြန်လည်ထိန်းသိမ်း",
   "Restore Domain": "🌏 ဒိုမိန်း ပြန်လည်ထိန်းသိမ်း",
   "Restore Domain description": "သင့်ဒိုမိန်းများအား ပြန်လည်ရယူရန် ဤအပြင်အဆင်ကို သုံးပါ။",
@@ -165,6 +181,9 @@
   "Send Message to User's Telegram": "📣 အသုံးပြုသူ၏ Telegram သို့ Message ပေးပို့ပါ။",
   "Sending": "ပို့နေသည်...",
   "Should be a valid domain": "ရေရာသော ဒိုမိန်းဖြစ်သင့်သည်။",
+  "Should be a valid uuid": "မှန်ကန်သော uuid ဖြစ်သင့်သည်။",
+  "Show Domains": "ဒိုမိန်းများ၏ Configs ကိုပြရန်",
+  "Simplifies the process of employing the link elsewhere.": "အခြားနေရာများတွင် လင့်ခ်ကို အသုံးချခြင်းလုပ်ငန်းစဉ်ကို ရိုးရှင်းစေသည်။",
   "SingBox": "📦 SingBox",
   "Sort by %(name)s": "%(name)s ဖြင့် စီစဉ်ရန်",
   "Start Date": "စတင်ရက်",
@@ -179,27 +198,40 @@
   "The message has been sent.": "စာပို့ပြီးပါပြီ။",
   "The message was not sent to": "မက်ဆေ့ချ် မပို့ပါ။",
   "The name shown in the configs for this domain.": "ဤ Domain အတွက် Configs တွင် ပြမည့် အမည်။",
+  "This can be used for giving your users a permanent non blockable links.": "သင့်အသုံးပြုသူများကို အမြဲတမ်းပိတ်ဆို့၍မရသော လင့်ခ်များပေးရန်အတွက် ၎င်းကို အသုံးပြုနိုင်သည်။",
   "This domain does not exist in the panel!": "ဤဒိုမိန်းသည် Panel တွင်မရှိပါ။",
   "Today Usage": "ယနေ့",
   "Too many Connected IPs": "ချိတ်ဆက်ထားသော အိုင်ပီ များပြားလွန်းသည်",
   "Total Usage": "ယနေ့ အသုံးပြုမှု",
   "Turn of VPN": "VPN ပိတ်ရန်",
+  "Unified link for all application.": "အပလီကေးရှင်းအားလုံးအတွက် တစ်ချက်နှိပ်ရုံဖြင့် သတ်မှတ်ခြင်းလင့်ခ် (အကြံပြုထားသည်)",
   "Upload File": "ဖိုင်တင်ပါ။",
   "Use HiddifyNext:": "HiddifyNext သုံးရန်:",
   "User activated!": "အသုံးပြုသူ သက်ဝင်နေပြီး",
   "User is inactive": "အသုံးပြုသူ သက်ဝင်မနေပါ။",
+  "V2rayNG": "မူကွဲ v2rayNG <button class='btn btn-sm btn-default' onclick='show_video('android-v2rayng')'><i class='fa-solid fa-question'></i> </button>\n<br />\n<br />",
   "View in Telegram": "တယ်လီဂရမ်တွင် ကြည့်ရန်",
   "Want to enjoy more with telegram?": "ℹ️ သင့်အကောင့်အား တယ်လီဂရမ်သို့ ချိတ်ဆက်ပါ",
   "Welcome %(user)s": "ကြိုဆိုပါတယ် %(user)s",
   "Why Going to Premium?": "ပရီမီယမ် သို့ ဘာကြောင့် မသွားသလဲ။",
   "Will Start in %(days)s days": "%(days)s ရက်တွင် စတင်လိမ့်မည်",
   "Windows": "ဝင်းဒိုးစ်",
+  "With selected": "ရွေးချယ်ထားခြင်းဖြင့်",
   "Xray": "☢️ XRay",
   "Yesterday Usage": "မနေ့",
+  "You can restore your configs from previously downloaded configs": "ℹ️ ယခင်က ဒေါင်းလုဒ်လုပ်ထားသော အရန်ဖိုင်မှ သင့် configuration ကို ပြန်လည်ရယူနိုင်သည်။",
+  "You have too much users! You can have only %(active)s active users and %(total)s users": "သင့်တွင် အသုံးပြုသူများ အလွန်များပါသည်။ သင့်တွင် အသုံးပြုသူ %(active)s ဦးနှင့် အသုံးပြုသူ %(total)s ဦးသာ ရှိနိုင်ပါသည်။",
+  "You have used this domain in: ": "သင်သည် ဤဒိုမိန်းကို အသုံးပြုပြီးဖြစ်သည်- ",
+  "Your hiddify instance information \nDomain: {} \nUsage limit: {} GB\nCurrent usage: {} GB\nExpires at: {} \nRemaining days: {} \n\n\n Happy using 🎉 🎉 🎉 \n": "သင်၏ Hiddify အသင့် အချက်အလက်\nဒိုမိန်း- {}\nအသုံးပြုမှု ကန့်သတ်ချက်- {} GB\nလက်ရှိအသုံးပြုမှု- {} GB\nသက်တမ်းကုန်ဆုံးချိန် - {}\nလက်ကျန်ရက်များ- {}\n\n\nကံကောင်းပါစေ။ 🎉 🎉 🎉",
+  "[Admin only visible message:] You can change this message from settings": "[Admin Exclusive Message]- ဆက်တင်များမှတစ်ဆင့် စိတ်ကြိုက်ပြင်ဆင်နိုင်သည်။",
   "actions": "လုပ်ဆောင်မှုများ",
   "admin link": "စီမံခန့်ခွဲသူ",
   "admin": {
+    "Actions:apply_configs": "Configs များ အတည်ပြု",
+    "action_done_sucess": "✅ လုပ်ဆောင်ချက် အောင်မြင်ပါသည်။ ယခု ဤစာမျက်နှာမှ ထွက်ခွာနိုင်ပါပြီ။",
     "actions": {
+      "apply_configs": "Configs များ အတည်ပြု",
+      "reinstall": "ပြန်လည်တပ်ဆင်ခြင်း",
       "reset": "စနစ်ကို ပြန်လည်စတင်ပါ။",
       "status": "အခြေအနေ",
       "title": "လုပ်ဆောင်မှုများ",
@@ -207,12 +239,16 @@
       "viewlogs": "မှတ်တမ်းများ ကြည့်ရန်"
     },
     "config": {
+      "apply_configs": "Configs များ အတည်ပြု",
       "title": "အပြင်အဆင်များ"
     },
+    "define_mode": "🥇🥈🥉 စီမံခန့်ခွဲမုဒ်ကို သတ်မှတ်ပါ။",
+    "incomplete_setup_warning": "သင်စနစ်အား အပြည့်အဝ မတပ်ဆင်ရသေးပုံရသည်။ စနစ်ထည့်သွင်းမှု အပြီးသတ်ရန် <a class='btn btn-success' href='%(quick_setup)s'>ဤနေရာကိုနှိပ်ပါ</a> ။",
     "menu": {
       "api": "API",
       "config": "အပြင်အဆင်များ",
       "domain": "ဒိုမိန်းများ",
+      "home": "ဒိုင်ခွက်",
       "proxy": "ပရောက်စီများ",
       "proxy_stats": "ပရောက်စီများ အခြေအနေ",
       "support": "အကူအညီ",
@@ -220,9 +256,18 @@
       "user": "အသုံးပြုသူများ"
     },
     "no_user_warning": "သင်မည်သည့်အသုံးပြုသူများကိုမျှ မဖန်တီးရသေးပုံရသည်။ မူရင်းအသုံးပြုသူလင့်ခ်- %(default_link)s",
+    "proxy": {
+      "detailed_config": "⚙️ အသေးစိတ် Configs- ဖွင့်ထားသည့် configs များကိုသာ ပြသထားသည်။",
+      "global_config": "⚙️ ကမ္ဘာလုံးဆိုင်ရာ ပြင်ဆင်မှုများ"
+    },
     "quicksetup": {
       "title": "အမြန်တပ်ဆင်ခြင်း။"
-    }
+    },
+    "quicksetup_intro": "သင့်ဆာဗာ၏ IP များမှာ-\n<div >\nIPv4- %(ipv4)s<br> IPv6- %(ipv6)s\n</div>\nဤ အိုင်ပီများကို သင်၏ ဒိုမိန်း သို့မဟုတ် ဒိုမိန်းအခွဲတွင် သတ်မှတ်ပြီး အောက်ဖော်ပြပါ အကွက်တွင် သင်၏ ဒိုမိန်း သို့မဟုတ် ဒိုမိန်းအခွဲ ကို ထည့်ပါ။",
+    "waiting_for_update": "⚠️ အရာအားလုံးကို မွမ်းမံပြီးကြောင်း သေချာစေရန် ၅ မိနစ်ခန့် စောင့်ပါ။ ဤကာလအတွင်း၊ ကျေးဇူးပြု၍ သင်၏ ပရောက်စီ လင့်ခ်များကို ကူးယူပြီး သိမ်းဆည်းပါ။"
+  },
+  "adminuser": {
+    "force_update_usage": "၆ မိနစ်တိုင်း အသုံးပြုမှုကို မွမ်းမံနေပါသည်။ ယခု မွမ်းမံမှု ပြုလုပ်ရန်အတွက် <a href=\"%(link)s\" class=\"btn btn-info\">ဤနေရာကိုနှိပ်ပါ။</a>"
   },
   "all": "အားလုံး",
   "android": "အန်းဒရွိုက်",
@@ -232,9 +277,11 @@
       "title": "FoXray"
     },
     "hiddify-clash-android": {
+      "description": "Hiddify Clash Android သည် ကျွန်ုပ်တို့၏ သုံးစွဲသူအက်ပ်များထဲမှ တစ်ခုဖြစ်ပြီး ထပ်မံမွမ်းမံခြင်းမပြုတော့ပါ။ ",
       "title": "Hiddify Clash"
     },
     "hiddify-clash-desktop": {
+      "description": "Hiddify Clash Desktop သည် ကျွန်ုပ်တို့၏ client အက်ပ်များထဲမှ တစ်ခုဖြစ်ပြီး ထပ်မံမွမ်းမံခြင်းမပြုတော့ပါ။ ",
       "title": "Hiddify Clash"
     },
     "hiddify": {
@@ -256,6 +303,7 @@
       "title": "Loon"
     },
     "nekobox": {
+      "description": " Nekobox သည် Sing-box ကိုအခြေခံထားသော client တစ်ခုဖြစ်သည်။ ",
       "title": "NekoBox"
     },
     "shadowrocket": {
@@ -285,6 +333,7 @@
   "cf-delete": {
     "failed": "cf-delete.failed"
   },
+  "child has been removed!": "ကလေးအား ဖယ်ရှားလိုက်ပါပြီ။",
   "child": {
     "register-failed": "child.register-failed",
     "register-success": "child.register-success",
@@ -296,20 +345,33 @@
     "error": "cloudflare.error"
   },
   "config": {
+    "Domain_already_used": "ဒိုမိန်း သည် ဒိုမိန်းကဏ္ဍတွင် ရှိနေပါသည်။ အခြား ဒိုမိန်း ကိုသုံးပါ။",
+    "Invalid_The_pattern_is_number-number": "⚠️ပုံစံသည် နံပါတ်-နံပါတ်  ဖြစ်ရမည်⚠️",
+    "Invalid_brand_link": "မမှန်ကန်သော လင့်ခ်။ ၎င်းသည် ဤဖော်မတ်တွင် ရှိသင့်သည်- (https သို့မဟုတ် http://example.com)",
+    "Invalid_domain": "အမှား။ မမှန်ကန်သော ဒိုမိန်း။ ဒိုမိန်းပုံစံသည် www.google.com ဖြစ်သည်။",
+    "Invalid_it_should_be_a_number_only": "⚠️ နံပါတ်တစ်ခုသာဖြစ်သင့်သည်  ⚠️",
+    "Invalid_telegram_bot_token": "တယ်လီဂရမ်ဘော့တိုကင် မမှန်ကန်ပါ။",
     "admin": {
+      "description": "စီမံခန့်ခွဲသူအပိုင်းသည် စီမံခန့်ခွဲသူနှင့် ဆက်စပ်ဆက်တင်များကို ပြင်ဆင်သတ်မှတ်ခြင်းအတွက်ဖြစ်သည်။",
       "label": "စီမံခန့်ခွဲသူ အပြင်အဆင်များ"
     },
     "admin_lang": {
       "description": "စီမံခန့်ခွဲသူ ဧရိယာအတွက် ဘာသာစကား ရွေးချယ်ရန်",
       "label": "🗺️ စီမံခန့်ခွဲသူ ပန်နယ် ဘာသာစကား"
     },
+    "admin_secret": {
+      "description": "စီမံခန့်ခွဲသူအကန့်ကို ဝင်ရောက်အသုံးပြုရန်အတွက် စီမံခန့်ခွဲသူလျှို့ဝှက်ချက်ကို အသုံးပြုပါမည်။",
+      "label": "စီမံခန့်ခွဲသူ လျှို့ဝှက်ချက်"
+    },
     "advanced": {
+      "description": "ဤအပိုင်းတွင်၊ သင်အဆင့်မြင့်အသုံးပြုသူမဟုတ်ပါက ပြောင်းလဲ၍မရသောအဆင့်မြင့်ပြင်ဆင်မှုအချို့ရှိပါသည်။",
       "label": "အဆင့်မြင့် အပြင်အဆင်များ"
     },
     "auto_update": {
       "label": "🔄 အလိုအလျောက် မွမ်းမံ"
     },
     "block_iran_sites": {
+      "description": "အစိုးရမှ ထောက်လှမ်းခြင်းမှ ကာကွယ်ရန် ပြည်တွင်းဆိုက်များကို ပိတ်ဆို့ပါ။",
       "label": "⛔️ ပြည်တွင်း ဆိုဒ်များ ပိတ်ပင်"
     },
     "branding": {
@@ -319,7 +381,12 @@
     "branding_freetext": {
       "label": "📢 အထောက်အကူ အပိုင်း စာသား"
     },
+    "branding_site": {
+      "description": "အသုံးပြုသူ၏စာမျက်နှာ၏ ပံ့ပိုးကူညီမှုကဏ္ဍတွင် ပြသမည့်လင့်ခ်။\nသင်၏ တယ်လီဂရမ်ချန်နယ် သို့မဟုတ် တယ်လီဂရမ် PV ကိုလည်း ဤနေရာတွင် ထည့်နိုင်သည်။",
+      "label": "🆔 ပံ့ပိုးမှုလင့်ခ် (အမှတ်တံဆိပ်ခေါင်းစဉ်နှင့် အသုံးပြုသူစာမျက်နှာ၏ ပံ့ပိုးမှုကဏ္ဍတွင်ပါရှိသည်)"
+    },
     "branding_title": {
+      "description": "အသုံးပြုသူစာမျက်နှာတွင်ပြသရန် စိတ်ကြိုက်ခေါင်းစဉ်ကို ထည့်သွင်းပါ။ (အသုံးပြုသူ၏ကြိုဆိုရေးစာသား မတိုင်ခင်)",
       "label": "👁‍🗨 အသုံးပြုသူ စာမျက်နှာ ခေါင်းစဉ်"
     },
     "cloudflare": {
