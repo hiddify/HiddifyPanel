@@ -1671,7 +1671,7 @@ msgid "config.path_splithttp.description"
 msgstr "Эта опция определяет путь для Split HTTP."
 
 msgid "config.path_splithttp.label"
-msgstr "Путь для Split HTTP"
+msgstr "ℹ️ Путь для Split HTTP"
 
 msgid "config.path_ss.description"
 msgstr "Путь Shadowsocks в ссылках"
@@ -2178,13 +2178,13 @@ msgstr ""
 "Цель TUIC — максимально минимизировать задержку рукопожатия."
 
 msgid "config.tuic.label"
-msgstr "⚫️ TUIC"
+msgstr "TUIC"
 
 msgid "config.tuic_enable.description"
 msgstr "Это протокол на базе UDP, аналогичный QUIC"
 
 msgid "config.tuic_enable.label"
-msgstr "Включает TUIC"
+msgstr "⚫️ TUIC"
 
 msgid "config.tuic_port.description"
 msgstr "Используйте запятую для разделения портов, например,( 63000,60000 )"
@@ -2291,7 +2291,7 @@ msgstr ""
 "кроссплатформенность, быструю настройку и прозрачный код."
 
 msgid "config.wireguard.label"
-msgstr "🐉 WireGuard"
+msgstr "WireGuard"
 
 msgid "config.wireguard_enable.description"
 msgstr ""
@@ -2300,7 +2300,7 @@ msgstr ""
 "Next</a>)</p>"
 
 msgid "config.wireguard_enable.label"
-msgstr "Включает WireGuard"
+msgstr "🐉 WireGuard"
 
 msgid "config.wireguard_ipv4.description"
 msgstr "Включает IPv4 в WireGuard"

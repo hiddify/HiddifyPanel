@@ -1,6 +1,36 @@
 # Changelog
 
 
+## v10.70.7 (2024-08-19)
+
+#### Other
+
+* Merge branch 'main' of github.com:hiddify/Hiddify-Panel. 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Update translations. 
+
+
+
 ## v10.70.6 (2024-08-17)
 
 #### Fix

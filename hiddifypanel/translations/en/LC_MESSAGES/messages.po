@@ -1002,7 +1002,7 @@ msgstr ""
 msgid "adminuser.force_update_usage"
 msgstr ""
 "Every 6 minutes the usage is being updated. For updating it now <a "
-"href=\"%(link)s\" class=\"btn btn-info\">press here</a>"
+"href=\"%(link)s\" class=\"btn btn-info\">Press Here</a>"
 
 msgid "all"
 msgstr "All"
@@ -1655,7 +1655,7 @@ msgid "config.path_splithttp.description"
 msgstr "This option defines the Path for Split HTTP"
 
 msgid "config.path_splithttp.label"
-msgstr "Path for Split HTTP"
+msgstr "ℹ️ Path for Split HTTP"
 
 msgid "config.path_ss.description"
 msgstr "Shadowsocks Path in the Links"
@@ -2152,13 +2152,13 @@ msgstr ""
 "TUIC's goal is to minimize the handshake latency as much as possible"
 
 msgid "config.tuic.label"
-msgstr "⚫️ TUIC"
+msgstr "TUIC"
 
 msgid "config.tuic_enable.description"
 msgstr "It is a UDP based protocol similar to QUIC"
 
 msgid "config.tuic_enable.label"
-msgstr "Enables TUIC"
+msgstr "⚫️ TUIC"
 
 msgid "config.tuic_port.description"
 msgstr "Use comma to separate ports like ( 63000,60000 )"
@@ -2263,7 +2263,7 @@ msgstr ""
 "systems"
 
 msgid "config.wireguard.label"
-msgstr "🐉 WireGuard"
+msgstr "WireGuard"
 
 msgid "config.wireguard_enable.description"
 msgstr ""
@@ -2272,7 +2272,7 @@ msgstr ""
 "Next</a>)</p>"
 
 msgid "config.wireguard_enable.label"
-msgstr "Enables WireGuard"
+msgstr "🐉 WireGuard"
 
 msgid "config.wireguard_ipv4.description"
 msgstr "Enables IPv4 in WireGuard"
