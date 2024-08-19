@@ -151,8 +151,123 @@
   "Send Message to User's Telegram": "📣 အသုံးပြုသူ၏ Telegram သို့ Message ပေးပို့ပါ။",
   "Sending": "ပို့နေသည်...",
   "config": {
+    "hysteria_obfs_enable": {
+      "label": "🎛 Hysteria OBFS"
+    },
+    "hysteria_port": {
+      "label": "🔍 Hysteria2 Port"
+    },
+    "hysteria_up_mbps": {
+      "description": "Hysteria အများဆုံး အပ်လုပ် အမြန်နှုန်း",
+      "label": "⬆️ Hysteria အပ်လုပ် (mbps)"
+    },
+    "is_parent": {
+      "description": "config.is_parent.description",
+      "label": "ပင်မ ပန်နယ်"
+    },
+    "kcp": {
+      "label": "KCP"
+    },
+    "kcp_enable": {
+      "label": "KCP"
+    },
+    "kcp_ports": {
+      "label": "KCP Ports"
+    },
+    "lang": {
+      "label": "🗺️ အသုံးပြုသူ ဧရိယာ ဘာသာစကား"
+    },
+    "last_hash": {
+      "description": "config.last_hash.description",
+      "label": "config.last_hash.label"
+    },
+    "last_priodic_usage_check": {
+      "description": "config.last_priodic_usage_check.description",
+      "label": "config.last_priodic_usage_check.label"
+    },
+    "license": {
+      "description": "ဤထုတ်ကုန်အား စီးပွားရေးအတွက် အသုံးပြုပါက လိုင်စင် ဝယ်ယူရမည်။",
+      "label": "လိုင်စင်ကုဒ်"
+    },
+    "log_level": {
+      "description": "config.log_level.description",
+      "label": "config.log_level.label"
+    },
+    "mux": {
+      "label": "MUX Config"
+    },
+    "mux_brutal_enable": {
+      "label": "☣️ MUX Brutal"
+    },
+    "mux_enable": {
+      "label": "Ⓜ️ MUX (⚠️ အချို့သော ကလိုင်းယင့်များနှင့် မကိုက်ညီပါ)"
+    },
+    "mux_max_streams": {
+      "label": "↗️ MUX Max Streams"
+    },
+    "mux_min_streams": {
+      "label": "↘️ MUX Min Streams"
+    },
+    "mux_padding_enable": {
+      "label": "⟹ MUX Padding"
+    },
+    "mux_protocol": {
+      "label": "♍️ MUX ပရိုတိုကောလ်"
+    },
+    "netdata": {
+      "label": "Netdata"
+    },
+    "only_ipv4": {
+      "label": "ℹ️ IPv4 သာလျှင်"
+    },
+    "panel_mode": {
+      "description": "config.panel_mode.description",
+      "label": "config.panel_mode.label"
+    },
+    "parent_admin_proxy_path": {
+      "description": "config.parent_admin_proxy_path.description",
+      "label": "config.parent_admin_proxy_path.label"
+    },
+    "parent_domain": {
+      "description": "config.parent_domain.description",
+      "label": "config.parent_domain.label"
+    },
+    "path_grpc": {
+      "label": "ℹ️ gRPC လမ်းကြောင်း"
+    },
+    "path_httpupgrade": {
+      "description": "ကျပန်းဖြစ်သင့်သည်"
+    },
+    "path_ss": {
+      "label": "Shadowsocks လမ်းကြောင်း"
+    },
+    "path_tcp": {
+      "description": "ပရောက်စီလင့်ခ် အတွက်"
+    },
+    "path_trojan": {
+      "label": "ℹ️ TROJAN လမ်းကြောင်း"
+    },
+    "path_v2ray": {
+      "label": "V2Ray လမ်းကြောင်း"
+    },
     "path_vless": {
       "label": "ℹ️ VLess လမ်းကြောင်း"
+    },
+    "path_vmess": {
+      "label": "ℹ️ VMess လမ်းကြောင်း"
+    },
+    "proxies": {
+      "label": "ပရောက်စီ အပြင်အဆင်များ"
+    },
+    "proxy_path": {
+      "label": "ℹ️ လျှို့ဝှက် ပရောက်စီ လမ်းကြောင်း"
+    },
+    "proxy_path_admin": {
+      "label": "🔐 စီမံခန့်ခွဲသူများအတွက် ပရောက်စီ လမ်းကြောင်း"
+    },
+    "proxy_path_client": {
+      "description": "လျှို့ဝှက်ပရောက်စီ လမ်းကြောင်းသည် ပရောက်စီများကို အစိုးရနှင့် ဘော့များထံမှ ဝှက်ပေးသည်",
+      "label": "🔏 သုံးစွဲသူများအတွက် ပရောက်စီလမ်းကြောင်း"
     },
     "quic_enable": {
       "label": "🟡 QUIC"
@@ -213,6 +328,192 @@
     },
     "shadowtls_enable": {
       "label": "☑️ ShadowTLS"
+    },
+    "speed_test": {
+      "label": "🚀 အမြန်နှုန်း စမ်းသပ်"
+    },
+    "splithttp_enable": {
+      "label": "🈁 Split HTTP"
+    },
+    "ssfaketls": {
+      "label": "Shadowsocks FakeTLS"
+    },
+    "ssfaketls_enable": {
+      "label": "🆎 Shadowsocks FakeTLS (Simple OBFS)"
+    },
+    "ssfaketls_fakedomain": {
+      "label": "🌍 SS FakeTLS FakeDomain"
+    },
+    "ssh": {
+      "label": "SSH ပရောက်စီ"
+    },
+    "ssh_server_enable": {
+      "label": "✔️ SSH ပရောက်စီ"
+    },
+    "ssh_server_port": {
+      "label": "↔️ SSH ပရောက်စီ Port"
+    },
+    "ssh_server_redis_url": {
+      "description": "အသုံးမပြုထားပါ"
+    },
+    "ssr": {
+      "label": "SSR"
+    },
+    "ssr_enable": {
+      "label": "SSR"
+    },
+    "ssr_fakedomain": {
+      "label": "SSR ဒိုမိန်းတု"
+    },
+    "sub_full_clash_enable": {
+      "description": "config.sub_full_clash_enable.description",
+      "label": "config.sub_full_clash_enable.label"
+    },
+    "sub_full_clash_meta_enable": {
+      "description": "config.sub_full_clash_meta_enable.description",
+      "label": "config.sub_full_clash_meta_enable.label"
+    },
+    "sub_full_links_b64_enable": {
+      "description": "config.sub_full_links_b64_enable.description",
+      "label": "config.sub_full_links_b64_enable.label"
+    },
+    "sub_full_links_enable": {
+      "description": "config.sub_full_links_enable.description",
+      "label": "config.sub_full_links_enable.label"
+    },
+    "sub_full_singbox_enable": {
+      "description": "config.sub_full_singbox_enable.description",
+      "label": "config.sub_full_singbox_enable.label"
+    },
+    "sub_singbox_ssh_enable": {
+      "description": "config.sub_singbox_ssh_enable.description",
+      "label": "config.sub_singbox_ssh_enable.label"
+    },
+    "tcp_enable": {
+      "label": "🟠 TCP"
+    },
+    "telegram_adtag": {
+      "label": "📍 တယ်လီဂရမ် AD Tag"
+    },
+    "telegram_bot_token": {
+      "label": "🔐 တယ်လီဂရမ် ဘော့တိုကင်"
+    },
+    "telegram_enable": {
+      "label": "✔️ တယ်လီဂရမ် MTProto"
+    },
+    "telegram_fakedomain": {
+      "label": "📺 တယ်လီဂရမ် ဒိုမိန်းတု"
+    },
+    "tls": {
+      "label": "TLS အပြင်အဆင်များ"
+    },
+    "tls_fragment_enable": {
+      "label": "⏯ TLS Fragment"
+    },
+    "tls_mixed_case": {
+      "label": "🔠 TLS Mixed SNI Case"
+    },
+    "tls_padding_enable": {
+      "label": "♒️ TLS Padding"
+    },
+    "tls_padding_length": {
+      "label": "📏 TLS Padding"
+    },
+    "tls_ports": {
+      "label": "🔎 TLS Ports"
+    },
+    "tls_trick": {
+      "label": "TLS Trick"
+    },
+    "trojan_enable": {
+      "label": "🟤 Trojan"
+    },
+    "tuic": {
+      "label": "TUIC"
+    },
+    "tuic_enable": {
+      "label": "⚫️ TUIC"
+    },
+    "tuic_port": {
+      "label": "TUIC Ports"
+    },
+    "unique_id": {
+      "description": "config.unique_id.description",
+      "label": "config.unique_id.label"
+    },
+    "utls": {
+      "label": "❇️ uTLS"
+    },
+    "v2ray_enable": {
+      "label": "♈️ V2Ray "
+    },
+    "vless_enable": {
+      "label": "⚫️ VLess"
+    },
+    "vmess_enable": {
+      "label": "🟣 VMess"
+    },
+    "warp-https-domain-for-warp-site": "config.warp-https-domain-for-warp-site",
+    "warp": {
+      "label": "WARP➕"
+    },
+    "warp_mode": {
+      "label": "✴️ WARP+ မုဒ်"
+    },
+    "warp_plus_code": {
+      "label": "🔑 Warp Plus ကီး"
+    },
+    "wireguard": {
+      "label": "WireGuard"
+    },
+    "wireguard_enable": {
+      "label": "🐉 WireGuard"
+    },
+    "wireguard_noise_trick": {
+      "label": "💥 WireGuard Noise Trick"
+    },
+    "wireguard_port": {
+      "label": "↔️ WireGuard Port"
+    },
+    "ws_enable": {
+      "label": "🔰 Websocket"
+    },
+    "xtls_enable": {
+      "label": "🟢 XTLS"
+    }
+  },
+  "copy": "ကူးယူ",
+  "daily": "⏰ နေ့စဉ်",
+  "days": "ရက်များ",
+  "direct": "➡️ တိုက်ရိုက်",
+  "domain": {
+    "cdn": "CDN",
+    "domain": "ဒိုမိန်း",
+    "domain_fronting": {
+      "label": "🔒 TLS Domain Fronting"
+    },
+    "empty": {
+      "allowed_for_fake_only": "domain.empty.allowed_for_fake_only"
+    },
+    "ip": "အိုင်ပီ",
+    "mode": "မုဒ်"
+  },
+  "download": "တိုက်ရိုက်ဒေါင်းလုပ်",
+  "fake": "🆎 ဆိုဒ်အတု",
+  "gRPC": "➿ gRPC",
+  "install from google play": "<i class='fa-brands fa-google-play'></i> Google Play",
+  "ios": "အိုင်အိုအက်စ်",
+  "lang": {
+    "en": "🇺🇸 အင်္ဂလိပ်",
+    "fa": "🇮🇷 ပါရှန်း - فارسی",
+    "pt": "🇵🇹 ပေါ်တူဂီ - Português ",
+    "ru": "🇷🇺 ရုရှား - Русский",
+    "zh": "🇨🇳 တရုတ် - 简体中文"
+  },
+  "log": "📄 မှတ်တမ်း",
+  "login": {
+    "secret": {
+      "label": "လျှို့ဝှက်ကုဒ် (UUID)"
     }
   },
   "macOS": "macOS",
@@ -236,6 +537,7 @@
   },
   "open": "ဖွင့်ရန်",
   "parent": {
+    "invalid-parent-url": "parent.invalid-parent-url",
     "sync-req-failed": "parent.sync-req-failed"
   },
   "previous": "ယခင်",
@@ -251,6 +553,7 @@
   "ssh": "SSH",
   "telegram": "တယ်လီဂရမ်",
   "test": "စမ်းသပ်",
+  "update": "မွမ်းမံ",
   "user": {
     "UUID": "UUID",
     "current_usage_GB": "လတ်တလော အသုံးပြုမှု (GB)",
@@ -261,10 +564,15 @@
         "name": "အမည်နှင့် လင့်ခ်",
         "protocol": "ပရိုတိုကောလ်",
         "security": "လုံခြုံရေး",
+        "transport": "ပို့ဆောင်",
         "type": "အမျိုးအစား"
       },
       "allconfigs": {
         "expect_vless": "VLess မှ လွဲ၍"
+      },
+      "branding": {
+        "linktitle": "အထောက်အကူ စာမျက်နှာ လင့်ခ်",
+        "title": "အထောက်အကူ"
       },
       "clash_configs": {
         "all_sites": {
