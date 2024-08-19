@@ -127,6 +127,8 @@
   "Parent Panel": "ပင်မ ပန်နယ်",
   "Please Wait": "ကျေးဇူးပြု၍ ခေတ္တစောင့်ပါ...",
   "Please click on %(install)s to save the user page.": "အသုံးပြုသူစာမျက်နှာအား သိမ်းဆည်းရန် %(install)s ကို နှိပ်ပါ။",
+  "Please connect your telegram accout to the panel to be informed about latest news.": "သင်၏စာရင်းသွင်းမှု၏နောက်ဆုံးအခြေအနေကိုသိရန် သင်၏ တယ်လီဂရမ် အကောင့်ကို ပန်နယ်သို့ ချိတ်ဆက်ပါ။",
+  "Please create an issue on Github.": "Github တွင် ပြဿနာတစ်ခုအတွက် ကျေးဇူးပြု၍ ဖန်တီးပါ",
   "Please select at least one file.": "ကျေးဇူးပြု၍ အနည်းဆုံး ဖိုင်တစ်ခုကို ရွေးပါ။",
   "Please select at least one record.": "ကျေးဇူးပြု၍ အနည်းဆုံး မှတ်တမ်းတစ်ခုကို ရွေးပါ။",
   "Please select at least one user": "ကျေးဇူးပြု၍ အနည်းဆုံး အသုံးပြုသူ တစ်ဦးကို ရွေးချယ်ပါ။",
@@ -134,23 +136,261 @@
   "Please type your message to send to the telegram:": "✏️ တယ်လီဂရမ် သို့ ပေးပို့ရန် ကျေးဇူးပြု၍ သင့်စာကို ရေးပါ။",
   "Please understand that parent panel is under test and the plan and the condition of use maybe change at anytime.": "Parent Panel သည် စမ်းသပ်နေဆဲဖြစ်ပြီး အစီအစဉ်နှင့် အသုံးပြုမှု အခြေအနေ အချိန်မရွေး ပြောင်းလဲနိုင်သည်ကို နားလည်ပါ။",
   "Please wait ": "ကျေးဇူးပြုပြီးခဏစောင့်ပါ ",
+  "Port is already used! in": "အောက်ပါတွင် Port သည် အသုံးပြုထားပြီး ဖြစ်သည်",
+  "ProxyPath is already used! use different proxy path": "ProxyPath သည် အသုံးပြုထားပြီးဖြစ်သည်။ မတူညီသော ပရောက်စီ လမ်းကြောင်းကို ရွေးပါ",
   "QR code": "🧾 ကျူအာ ကုဒ်",
   "QRCode": "<i class='fa-solid fa-qrcode'></i> ကျူအာ ကုဒ်",
   "RAM": "RAM",
+  "REALITY Fallback domain is not compaitble with server names!": "REALITY Fallback Domain သည် ဆာဗာအမည်များနှင့် မကိုက်ညီပါ။",
   "Release": "✅ Release",
   "Rename File": "ဖိုင် အမည်ပြောင်း",
   "Reset every month": "လစဉ်",
   "Restore": "♻️ ပြန်လည်ထိန်းသိမ်း",
   "Restore Domain": "🌏 ဒိုမိန်း ပြန်လည်ထိန်းသိမ်း",
+  "Restore Domain description": "သင့်ဒိုမိန်းများအား ပြန်လည်ရယူရန် ဤအပြင်အဆင်ကို သုံးပါ။",
+  "Restore File": "ဖိုင်ကို ပြန်ယူပါ။",
   "Restore File Description": "ဒေါင်းလုဒ်လုပ်ထားသော ပြန်လည်ရယူသည့်ဖိုင်ကို ရွေးပါ။",
+  "Restore Settings": "⚙️ ဆက်တင်များကို ပြန်ယူပါ။",
+  "Restore Settings description": "ဆက်တင်ဖော်ပြချက်အားလုံးကို ပြန်ယူပါ။",
+  "Restore Users": "👥 အသုံးပြုသူများကို ပြန်လည်ရယူပါ။",
+  "Restore Users description": "အသုံးပြုသူများအားလုံးကို ပြန်လည်ရယူရန် ဤရွေးချယ်မှုကို ရွေးချယ်ပါ။",
+  "Root": "ဇစ်မြစ်",
   "Russia": "ရုရှား",
   "Save": "သိမ်းဆည်း",
+  "Save & Add More": "သိမ်းဆည်းပြီး နောက်ထပ်ထည့်ပါ။",
+  "Save Link": "လင့်ခ်ကို သိမ်းဆည်းပါ။",
   "Select all records": "မှတ်တမ်းအားလုံးကို ရွေးပါ",
   "Select record": "မှတ်တမ်းကို ရွေးပါ။",
   "Seleted Users": "ရွေးချယ်ထားသော အသုံးပြုသူများ",
   "Send Message to User's Telegram": "📣 အသုံးပြုသူ၏ Telegram သို့ Message ပေးပို့ပါ။",
   "Sending": "ပို့နေသည်...",
+  "Should be a valid domain": "ရေရာသော ဒိုမိန်းဖြစ်သင့်သည်။",
+  "SingBox": "📦 SingBox",
+  "Sort by %(name)s": "%(name)s ဖြင့် စီစဉ်ရန်",
+  "Start Date": "စတင်ရက်",
+  "Started %(days)s days ago": "%(days)s ရက်အကြာက စတင်ခဲ့သည်",
+  "Started from %(relative)s": "%(relative)s မှ စတင်ခဲ့သည်",
+  "Status": "အခြေအနေ",
+  "Submit": "တင်သွင်းလုပ်ဆောင်",
+  "Success": "အောင်မြင်သည်",
+  "Success! Please wait around 5 minutes to make sure everything is updated.": "✔️ အောင်မြင်ပါသည်။ အားလုံးမွမ်းမံပြီးကြောင်းသေချာစေရန် ၅ မိနစ်ခန့်စောင့်ပါ။",
+  "Telegram Bot": "တယ်လီဂရမ် ဘော့",
+  "Temporary Short Link": "⏱️ ယာယီ အတိုချုံးလင့်ခ်",
+  "The message has been sent.": "စာပို့ပြီးပါပြီ။",
+  "The message was not sent to": "မက်ဆေ့ချ် မပို့ပါ။",
+  "The name shown in the configs for this domain.": "ဤ Domain အတွက် Configs တွင် ပြမည့် အမည်။",
+  "This domain does not exist in the panel!": "ဤဒိုမိန်းသည် Panel တွင်မရှိပါ။",
+  "Today Usage": "ယနေ့",
+  "Too many Connected IPs": "ချိတ်ဆက်ထားသော အိုင်ပီ များပြားလွန်းသည်",
+  "Total Usage": "ယနေ့ အသုံးပြုမှု",
+  "Turn of VPN": "VPN ပိတ်ရန်",
+  "Upload File": "ဖိုင်တင်ပါ။",
+  "Use HiddifyNext:": "HiddifyNext သုံးရန်:",
+  "User activated!": "အသုံးပြုသူ သက်ဝင်နေပြီး",
+  "User is inactive": "အသုံးပြုသူ သက်ဝင်မနေပါ။",
+  "View in Telegram": "တယ်လီဂရမ်တွင် ကြည့်ရန်",
+  "Want to enjoy more with telegram?": "ℹ️ သင့်အကောင့်အား တယ်လီဂရမ်သို့ ချိတ်ဆက်ပါ",
+  "Welcome %(user)s": "ကြိုဆိုပါတယ် %(user)s",
+  "Why Going to Premium?": "ပရီမီယမ် သို့ ဘာကြောင့် မသွားသလဲ။",
+  "Will Start in %(days)s days": "%(days)s ရက်တွင် စတင်လိမ့်မည်",
+  "Windows": "ဝင်းဒိုးစ်",
+  "Xray": "☢️ XRay",
+  "Yesterday Usage": "မနေ့",
+  "actions": "လုပ်ဆောင်မှုများ",
+  "admin link": "စီမံခန့်ခွဲသူ",
+  "admin": {
+    "actions": {
+      "reset": "စနစ်ကို ပြန်လည်စတင်ပါ။",
+      "status": "အခြေအနေ",
+      "title": "လုပ်ဆောင်မှုများ",
+      "update": "မွမ်းမံ",
+      "viewlogs": "မှတ်တမ်းများ ကြည့်ရန်"
+    },
+    "config": {
+      "title": "အပြင်အဆင်များ"
+    },
+    "menu": {
+      "api": "API",
+      "config": "အပြင်အဆင်များ",
+      "domain": "ဒိုမိန်းများ",
+      "proxy": "ပရောက်စီများ",
+      "proxy_stats": "ပရောက်စီများ အခြေအနေ",
+      "support": "အကူအညီ",
+      "telegram": "တယ်လီဂရမ်",
+      "user": "အသုံးပြုသူများ"
+    },
+    "no_user_warning": "သင်မည်သည့်အသုံးပြုသူများကိုမျှ မဖန်တီးရသေးပုံရသည်။ မူရင်းအသုံးပြုသူလင့်ခ်- %(default_link)s",
+    "quicksetup": {
+      "title": "အမြန်တပ်ဆင်ခြင်း။"
+    }
+  },
+  "all": "အားလုံး",
+  "android": "အန်းဒရွိုက်",
+  "app": {
+    "foxray": {
+      "description": "FoXray ဖော်ပြချက်",
+      "title": "FoXray"
+    },
+    "hiddify-clash-android": {
+      "title": "Hiddify Clash"
+    },
+    "hiddify-clash-desktop": {
+      "title": "Hiddify Clash"
+    },
+    "hiddify": {
+      "next": {
+        "description": "HiddifyApp ဖော်ပြချက်",
+        "title": "HiddifyApp"
+      }
+    },
+    "hiddifyn": {
+      "description": "HiddifyN ဖော်ပြချက်",
+      "title": "HiddifyN "
+    },
+    "hiddifyng": {
+      "description": "HiddifyNG ဖော်ပြချက်",
+      "title": "HiddifyNG"
+    },
+    "loon": {
+      "description": "Loon ဖော်ပြချက်",
+      "title": "Loon"
+    },
+    "nekobox": {
+      "title": "NekoBox"
+    },
+    "shadowrocket": {
+      "description": "Shadowrocket ဖော်ပြချက်",
+      "title": "Shadowrocket"
+    },
+    "stash": {
+      "description": "Stash ဖော်ပြချက်",
+      "title": "Stash"
+    },
+    "streisand": {
+      "description": "Streisand ဖော်ပြချက်",
+      "title": "Streisand"
+    },
+    "v2rayng": {
+      "description": "V2RayNG ဖော်ပြချက်",
+      "title": "V2RayNG"
+    }
+  },
+  "auto": "အလိုအလျောက်",
+  "auto_cdn_ip": "☑️ အလိုအလျောက် CDN အိုင်ပီ ရွေးချယ်သူ",
+  "bot": {
+    "admin_welcome": "ရေး 🎉 🎉 🎉 စီမံခန့်ခွဲဘော့ က ကြိုဆိုပါတယ်။ သင့်လုပ်ဆောင်ချက်ကို ရွေးချယ်ပါ",
+    "welcome": "ရေး 🎉 🎉 🎉 \nဟစ်ဒီဖိုင်း ဘော့ က ကြိုဆိုပါတယ်\nပန်နယ်ရှိ လင့်ခ်ကို နှိပ်၍ သော်လည်းကောင်း UID အသုံးပြုသူကို ထည့်သွင်းခြင်းဖြင့်သော်လည်းကောင်း စတင်ပါ။"
+  },
+  "cdn": "🔀 CDN (Cloudflare ပရောက်စီ, ...)",
+  "cf-delete": {
+    "failed": "cf-delete.failed"
+  },
+  "child": {
+    "register-failed": "child.register-failed",
+    "register-success": "child.register-success",
+    "sync-failed": "child.sync-failed"
+  },
+  "clickable copy": "လူမှုကွန်ယက်သို့ လင့်ခ်",
+  "close": "ပိတ်ရန်",
+  "cloudflare": {
+    "error": "cloudflare.error"
+  },
   "config": {
+    "admin": {
+      "label": "စီမံခန့်ခွဲသူ အပြင်အဆင်များ"
+    },
+    "admin_lang": {
+      "description": "စီမံခန့်ခွဲသူ ဧရိယာအတွက် ဘာသာစကား ရွေးချယ်ရန်",
+      "label": "🗺️ စီမံခန့်ခွဲသူ ပန်နယ် ဘာသာစကား"
+    },
+    "advanced": {
+      "label": "အဆင့်မြင့် အပြင်အဆင်များ"
+    },
+    "auto_update": {
+      "label": "🔄 အလိုအလျောက် မွမ်းမံ"
+    },
+    "block_iran_sites": {
+      "label": "⛔️ ပြည်တွင်း ဆိုဒ်များ ပိတ်ပင်"
+    },
+    "branding": {
+      "description": "အသုံးပြုသူ စာမျက်နှာအတွက် စိတ်ကြိုက် အပြင်အဆင်များ",
+      "label": "အသုံးပြုသူစာမျက်နှာ စိတ်ကြိုက်ပြင်ဆင်"
+    },
+    "branding_freetext": {
+      "label": "📢 အထောက်အကူ အပိုင်း စာသား"
+    },
+    "branding_title": {
+      "label": "👁‍🗨 အသုံးပြုသူ စာမျက်နှာ ခေါင်းစဉ်"
+    },
+    "cloudflare": {
+      "label": "🔑 Cloudflare API"
+    },
+    "core_type": {
+      "label": "🎛️ Core"
+    },
+    "country": {
+      "label": "🌍 နိုင်ငံ"
+    },
+    "create_easysetup_link": {
+      "description": "config.create_easysetup_link.description",
+      "label": "config.create_easysetup_link.label"
+    },
+    "dbvalues": {
+      "description": "config.dbvalues.description",
+      "label": "config.dbvalues.label"
+    },
+    "decoy_domain": {
+      "label": "📺 ဖြားယောင်းဆိုဒ်"
+    },
+    "dns_server": {
+      "description": "✳️ ပုံသေ 1.1.1.1 <br>\n🚧 မဲဝဲရ် ပိတ်ပင် 1.1.1.2 <br>\n🔞 အညှီအဟောက် ပိတ်ပင် 1.1.1.3",
+      "label": "🖥 DNS ဆာဗာ"
+    },
+    "domain_fronting": {
+      "label": "🔒 TLS ဒိုမိန်း Fronting"
+    },
+    "domain_fronting_domain": {
+      "label": "ℹ️ ဒိုမိန်း Fronting"
+    },
+    "domain_fronting_http_enable": {
+      "label": "HTTP ဒိုမိန်း Fronting"
+    },
+    "domain_fronting_tls_enable": {
+      "label": "🔒 TLS ဒိုမိန်း Fronting"
+    },
+    "firewall": {
+      "label": "🛡️ ဖိုင်းယားဝေါ"
+    },
+    "first_setup": {
+      "description": "config.first_setup.description",
+      "label": "config.first_setup.label"
+    },
+    "general": {
+      "label": "အထွေထွေ အပြင်အဆင်များ"
+    },
+    "grpc_enable": {
+      "label": "➿ gRPC"
+    },
+    "h2_enable": {
+      "label": "🔵 h2"
+    },
+    "hidden": {
+      "description": "config.hidden.description",
+      "label": "config.hidden.label"
+    },
+    "hiddifycli_enable": {
+      "description": "config.hiddifycli_enable.description",
+      "label": "config.hiddifycli_enable.label"
+    },
+    "http_ports": {
+      "label": "🔎 HTTP Ports"
+    },
+    "http_proxy_enable": {
+      "label": "☑️ HTTP ချိတ်ဆက်မှု ခွင့်ပြုရန်"
+    },
+    "httpupgrade_enable": {
+      "label": "🆙 HTTPUpgrade နည်းလမ်း"
+    },
     "hysteria_obfs_enable": {
       "label": "🎛 Hysteria OBFS"
     },
