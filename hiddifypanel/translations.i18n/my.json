@@ -1159,6 +1159,9 @@
       "allconfigs": {
         "expect_vless": "VLess မှ လွဲ၍"
       },
+      "android": {
+        "intro": "ကျေးဇူးပြု၍ Hiddify Android ကို %(dl_link)s %(play_link)s မှ ထည့်သွင်းပါ။ \n\n<!--\n<div class='callout callout-danger'>\n   <b>Update Hiddify Android to Version 0.14</b>\n</div>-->\n<details>\n<summary> အဘယ်ကြောင့် Hiddify Android</summary>\n<div class='callout callout-info'>\n\nHiddify Android သည် နောက်ထပ်ပရိုတိုကောများကို ပံ့ပိုးပေးသည့် Open Source Fork Of Clash ဖြစ်သည်။\n<br>\n၎င်း၏ ရင်းမြစ်ကုဒ်များသည်\n<a href='https://github.com/hiddify/HiddifyProxyAndroid'>GitHub</a> တွင်ရှိသည်။\n\n<br>\nထို့ကြောင့် ဘေးကင်းသည်။\n\n<details>\n<summary> အခြားရွေးချယ်စရာ- Normal Clash</summary>\n<div class='btn-group'>\n                <a href='https://play.google.com/store/apps/details?id=com.github.kr328.clash'\n                    class='btn btn-warning orig-link'>Google Play ရှိ Clash</a>\n            </div>\n            <div class='btn-group'>\n                <a href='/{{hconfigs[ConfigEnum.proxy_path]}}/gh/Kr328/ClashForAndroid/releases/download/v2.5.12/cfa-2.5.12-premium-universal-release.apk'\n                    class='btn btn-warning orig-link'>တိုက်ရိုက် ဒေါင်းလုပ်</a>\n            </div>\n\n            <div class='alert alert-danger'>\nClash သည် VLess ပရိုတိုကောကို မပံ့ပိုးပါ။ ထို့ကြောင့် ကျွန်ုပ်တို့သည် ၎င်းအတွက် အခြားလင့်ခ်တစ်ခုကို ပေါင်းထည့်ရန် လိုအပ်ပါသည်။\n</div>\n\n\n</details>\n</div>\n</details>"
+      },
       "branding": {
         "linktitle": "အထောက်အကူ စာမျက်နှာ လင့်ခ်",
         "title": "အထောက်အကူ"
@@ -1186,6 +1189,7 @@
       "doh": "DNS Over HTTPS",
       "ios": {
         "others": {
+          "intro": "အောက်ပါ Applications များထဲမှ တစ်ခုကို အရင်ဆုံး install လုပ်ပါ။\n\n<div class='btn-group'>\n\n<a href='https://apps.apple.com/us/app/foxray/id6448898396'\n        class='btn btn-primary orig-link'>FoXray</a>\n\n</div>\n\n<div class='btn-group'>\n\n\t<a href='https://apps.apple.com/us/app/fair-vpn/id1533873488'\n        class='btn btn-primary orig-link'>Fair VPN</a>\n</div>\n\n<br />\nထို့နောက် အောက်ပါ configuration ကိုအသုံးပြုပါ။\n<br />",
           "title": "FoXray နှင့် Fair VPN"
         },
         "stash": {
