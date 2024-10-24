@@ -49,6 +49,22 @@
             "download_detour": "bypass"
             }
             {%endif%}
+            {%if hconfig(ConfigEnum.country)=="ru"%}
+            {
+                "tag": "geosite-ru",
+                "type": "remote",
+                "format": "binary",
+                "url": "https:\/\/github.com\/SagerNet\/sing-geosite\/raw\/rule-set\/geosite-category-ru.srs",
+                "download_detour": "bypass" 
+            },
+            {
+            "tag": "geoip-ru",
+            "type": "remote",
+            "format": "binary",
+            "url": "https:\/\/github.com\/SagerNet\/sing-geoip\/raw\/rule-set\/geoip-ru.srs",
+            "download_detour": "bypass"
+            }
+            {%endif%}
             {# {
                 "tag": "geosite-category-ads-all",
                 "type": "remote",
