@@ -108,6 +108,7 @@ class AppAPI(MethodView):
                 apps_data = self.__get_all_apps_dto()
             case Platform.android:
                 hiddify_next_dto = self.__get_hiddify_next_app_dto()
+                singbox_dto = self.__get_singbox_app_dto()
                 hiddifyng_dto = self.__get_hiddifyng_app_dto()
                 v2rayng_dto = self.__get_v2rayng_app_dto()
                 hiddify_clash_android_dto = self.__get_hiddify_clash_android_app_dto()
@@ -119,6 +120,7 @@ class AppAPI(MethodView):
                 hiddifyn_dto = self.__get_hiddifyn_app_dto()
                 apps_data += ([hiddify_next_dto, hiddify_clash_dto, hiddifyn_dto])
             case Platform.ios:
+                singbox_dto = self.__get_singbox_app_dto()
                 stash_dto = self.__get_stash_app_dto()
                 shadowrocket_dto = self.__get_shadowrocket_app_dto()
                 foxray_dto = self.__get_foxray_app_dto()
@@ -130,6 +132,7 @@ class AppAPI(MethodView):
                 hiddify_clash_dto = self.__get_hiddify_clash_desktop_app_dto()
                 apps_data += ([hiddify_next_dto, hiddify_clash_dto,])
             case Platform.mac:
+                singbox_dto = self.__get_singbox_app_dto()
                 hiddify_clash_dto = self.__get_hiddify_clash_desktop_app_dto()
                 hiddify_next_dto = self.__get_hiddify_next_app_dto()
                 apps_data += ([hiddify_next_dto, hiddify_clash_dto])
@@ -162,11 +165,12 @@ class AppAPI(MethodView):
         loon_app_dto = self.__get_loon_app_dto()
         stash_app_dto = self.__get_stash_app_dto()
         hiddify_clash_app_dto = self.__get_hiddify_clash_desktop_app_dto()
+        singbox_app_dto = self.__get_singbox_app_dto()
         hiddify_next_app_dto = self.__get_hiddify_next_app_dto()
         return [
             hiddifyn_app_dto, v2rayng_app_dto, hiddifyng_app_dto, hiddify_android_app_dto,
             foxray_app_dto, shadowrocket_app_dto, streisand_app_dto,
-            loon_app_dto, stash_app_dto, hiddify_clash_app_dto, hiddify_next_app_dto
+            loon_app_dto, stash_app_dto, hiddify_clash_app_dto, singbox_app_dto, hiddify_next_app_dto
         ]
 
     def __get_app_icon_url(self, app_name):
@@ -174,6 +178,8 @@ class AppAPI(MethodView):
         url = ''
         if app_name == _('app.hiddify.next.title'):
             url = base + static_url_for(filename='apps-icon/hiddify_next.ico')
+        elif app_name == _('app.singbox.title'):
+            url = base + static_url_for(filename='apps-icon/singbox.ico')
         elif app_name == _('app.hiddifyn.title'):
             url = base + static_url_for(filename='apps-icon/hiddifyn.ico')
         elif app_name == _('app.v2rayng.title'):
@@ -365,6 +371,49 @@ class AppAPI(MethodView):
         else:
             get_link(platform)
 
+        return dto
+
+    def __get_singbox_app_dto(self):
+        dto = AppSchema()
+        dto.title = _('app.singbox.title')
+        dto.description = _('app.singbox.description')
+        dto.icon_url = self.__get_app_icon_url(_('app.singbox.title'))
+        dto.guide_url = ''
+        dto.deeplink = f'sing-box://import-remote-profile/?url={self.user_panel_url}'
+
+        # availabe installatoin types
+        installation_types = []
+        if self.platform == Platform.all:
+            installation_types = [AppInstallType.apk, AppInstallType.google_play, AppInstallType.dmg, AppInstallType.app_store]
+        else:
+            match self.platform:
+                case Platform.android:
+                    installation_types = [AppInstallType.apk, AppInstallType.google_play]
+                case Platform.mac:
+                    installation_types = [AppInstallType.dmg]
+                case Platform.ios:
+                    installation_types = [AppInstallType.app_store]
+
+        install_dtos = []
+        for install_type in installation_types:
+            install_dto = AppInstall()
+            ins_url = ''
+            match install_type:
+                case AppInstallType.apk:
+                    latest_url, version = get_latest_release_url(f'https://github.com/SagerNet/sing-box/')
+                    ins_url = latest_url.split('releases/')[0] + f'releases/download/{version}/SFA-{version}-universal.apk'
+                case AppInstallType.google_play:
+                    ins_url = 'https://play.google.com/store/apps/details?id=io.nekohasekai.sfa'
+                case AppInstallType.dmg:
+                    latest_url, version = get_latest_release_url(f'https://github.com/SagerNet/sing-box/')
+                    ins_url = latest_url.split('releases/')[0] + f'releases/download/{version}/SFM-{version}-universal.dmg'
+                case AppInstallType.app_store:
+                    ins_url = 'https://apps.apple.com/us/app/sing-box-vt/id6673731168'
+
+            install_dto = self.__get_app_install_dto(install_type, ins_url)
+            install_dtos.append(install_dto)
+
+        dto.install = install_dtos
         return dto
 
     def __get_hiddify_next_app_dto(self):
