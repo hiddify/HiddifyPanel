@@ -413,8 +413,16 @@ class AppAPI(MethodView):
                 case AppInstallType.google_play:
                     ins_url = 'https://play.google.com/store/apps/details?id=io.nekohasekai.sfa'
                 case AppInstallType.dmg:
-                    latest_url, version = get_latest_release_url(f'https://github.com/SagerNet/sing-box/')
+                    latest_url, version = get_latest_release_url(f'https://github.com/SagerNet/sing-box')
                     ins_url = latest_url.split('releases/')[0] + f'releases/download/{version}/SFM-{version}-universal.dmg'
+                    def remove_v_from_filename(url):
+                        parts = url.split('/')
+                        filename = parts[-1]
+                        new_filename = filename.replace('SFA-v', 'SFA-')
+                        parts[-1] = new_filename
+                        new_url = '/'.join(parts)
+                        return new_url
+                    ins_url = remove_v_from_filename(ins_url)
                 case AppInstallType.app_store:
                     ins_url = 'https://apps.apple.com/us/app/sing-box-vt/id6673731168'
 
