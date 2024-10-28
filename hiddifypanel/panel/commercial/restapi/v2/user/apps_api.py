@@ -400,8 +400,8 @@ class AppAPI(MethodView):
             ins_url = ''
             match install_type:
                 case AppInstallType.apk:
-                    latest_url, version = get_latest_release_url(f'https://github.com/SagerNet/sing-box/')
-                    github_ins_url = latest_url.split('releases/')[0] + f'releases/download/{version}/SFA-{version}-universal.apk'
+                    latest_url, version = get_latest_release_url(f'https://github.com/SagerNet/sing-box')
+                    ins_url = latest_url.split('releases/')[0] + f'releases/download/{version}/SFA-{version}-universal.apk'
                 case AppInstallType.google_play:
                     ins_url = 'https://play.google.com/store/apps/details?id=io.nekohasekai.sfa'
                 case AppInstallType.dmg:
