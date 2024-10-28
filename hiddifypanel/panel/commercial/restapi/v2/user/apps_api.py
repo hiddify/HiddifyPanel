@@ -113,7 +113,7 @@ class AppAPI(MethodView):
                 v2rayng_dto = self.__get_v2rayng_app_dto()
                 hiddify_clash_android_dto = self.__get_hiddify_clash_android_app_dto()
                 nekobox_dto = self.__get_nekobox_app_dto()
-                apps_data += ([hiddify_next_dto, singbox_dto, hiddifyng_dto, v2rayng_dto, hiddify_clash_android_dto, nekobox_dto])
+                apps_data += ([hiddify_next_dto, singbox_dto, v2rayng_dto, nekobox_dto, hiddifyng_dto, hiddify_clash_android_dto])
             case Platform.windows:
                 hiddify_next_dto = self.__get_hiddify_next_app_dto()
                 hiddify_clash_dto = self.__get_hiddify_clash_desktop_app_dto()
@@ -135,7 +135,7 @@ class AppAPI(MethodView):
                 singbox_dto = self.__get_singbox_app_dto()
                 hiddify_clash_dto = self.__get_hiddify_clash_desktop_app_dto()
                 hiddify_next_dto = self.__get_hiddify_next_app_dto()
-                apps_data += ([singbox_dto, hiddify_next_dto, hiddify_clash_dto])
+                apps_data += ([hiddify_next_dto, singbox_dto, hiddify_clash_dto])
 
         return apps_data
 
