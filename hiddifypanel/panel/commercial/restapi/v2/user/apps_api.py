@@ -418,7 +418,7 @@ class AppAPI(MethodView):
                     def remove_v_from_filename(url):
                         parts = url.split('/')
                         filename = parts[-1]
-                        new_filename = filename.replace('SFA-v', 'SFA-')
+                        new_filename = filename.replace('SFM-v', 'SFM-')
                         parts[-1] = new_filename
                         new_url = '/'.join(parts)
                         return new_url
