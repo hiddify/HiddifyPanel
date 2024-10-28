@@ -247,7 +247,7 @@ class AppAPI(MethodView):
 
         # make v2rayng latest version url download
         latest_url, version = get_latest_release_url(f'https://github.com/2dust/v2rayNG/')
-        github_ins_url = latest_url.split('releases/')[0] + f'releases/download/{version}/v2rayNG_{version}.apk'
+        github_ins_url = latest_url.split('releases/')[0] + f'releases/download/{version}/v2rayNG_{version}_universal.apk'
         google_play_ins_url = 'https://play.google.com/store/apps/details?id=com.v2ray.ang'
         dto.install = [self.__get_app_install_dto(AppInstallType.apk, github_ins_url), self.__get_app_install_dto(AppInstallType.google_play, google_play_ins_url)]
         return dto
@@ -401,7 +401,7 @@ class AppAPI(MethodView):
             match install_type:
                 case AppInstallType.apk:
                     latest_url, version = get_latest_release_url(f'https://github.com/SagerNet/sing-box/')
-                    ins_url = latest_url.split('releases/')[0] + f'releases/download/{version}/SFA-{version}-universal.apk'
+                    github_ins_url = latest_url.split('releases/')[0] + f'releases/download/{version}/SFA-{version}-universal.apk'
                 case AppInstallType.google_play:
                     ins_url = 'https://play.google.com/store/apps/details?id=io.nekohasekai.sfa'
                 case AppInstallType.dmg:
