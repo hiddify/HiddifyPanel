@@ -63,7 +63,7 @@ def to_link(proxy: dict) -> str | dict:
             streisand_ssh = hutils.encode.do_base_64(f'{proxy["uuid"]}:0:{proxy["private_key"]}::@{proxy["server"]}:{proxy["port"]}')
             baseurl += f'{streisand_ssh}#{name_link}'
         else:
-            hk = ",".join(proxy["host_key"])
+            hk = ",".join(proxy["host_keys"])
             pk = proxy["private_key"].replace('\n', '')
             baseurl += f'{proxy["uuid"]}@{proxy["server"]}:{proxy["port"]}/?file=ssh&pk={pk}&hk={hk}#{name_link}'
 

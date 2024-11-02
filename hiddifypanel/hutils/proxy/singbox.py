@@ -323,7 +323,7 @@ def add_ssh(all_base: list[dict], proxy: dict):
     base["user"] = proxy['uuid']
     base["private_key"] = proxy['private_key']  # .replace('\n', '\\n')
 
-    base["host_key"] = proxy.get('host_key', [])
+    base["host_keys"] = proxy.get('host_keys', [])
 
     socks_front = {
         "type": "socks",

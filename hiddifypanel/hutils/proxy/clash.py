@@ -57,7 +57,7 @@ def to_clash(proxy, meta_or_normal):
     if proxy["proto"] == "ssh":
         base["username"] = proxy["uuid"]
         base["private-key"] = proxy['private_key']
-        base["host-key"] = proxy.get('host_key', [])
+        base["host-key"] = proxy.get('host_keys', [])
         return base
     base["udp"] = True
     if proxy["proto"] == ProxyProto.wireguard:

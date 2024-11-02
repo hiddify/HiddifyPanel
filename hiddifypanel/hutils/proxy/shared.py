@@ -11,17 +11,8 @@ from hiddifypanel.models import Proxy, ProxyProto, ProxyL3, ProxyTransport, Prox
 from hiddifypanel import hutils
 
 
-def get_ssh_hostkeys(dojson=False) -> list[str] | str:
-    key_files = glob.glob(current_app.config['HIDDIFY_CONFIG_PATH'] + "/other/ssh/host_key/*_key.pub")
-    host_keys = []
-    for file_name in key_files:
-        with open(file_name, "r") as f:
-            host_key = f.read().strip()
-            host_key = host_key.split()
-            if len(host_key) > 2:
-                host_key = host_key[:2]  # strip the hostname part
-            host_key = " ".join(host_key)
-            host_keys.append(host_key)
+def get_ssh_hostkeys(hconfigs,dojson=False) -> list[str] | str:
+    host_keys = [hconfigs[ConfigEnum.ssh_host_dsa_pub],hconfigs[ConfigEnum.ssh_host_rsa_pub],hconfigs[ConfigEnum.ssh_host_ecdsa_pub], hconfigs[ConfigEnum.ssh_host_ed25519_pub]]
     if dojson:
         return json.dumps(host_keys)
     return host_keys
@@ -441,7 +432,7 @@ def make_proxy(hconfigs: dict, proxy: Proxy, domain_db: Domain, phttp=80, ptls=4
         return base
     if ProxyProto.ssh == proxy.proto:
         base['private_key'] = g.account.ed25519_private_key
-        base['host_key'] = hutils.proxy.get_ssh_hostkeys(False)
+        base['host_keys'] = hutils.proxy.get_ssh_hostkeys(hconfigs,False)
         # base['ssh_port'] = hconfig(ConfigEnum.ssh_server_port)
         return base
     return {'name': name, 'msg': 'not valid', 'type': 'error', 'proto': proxy.proto}
