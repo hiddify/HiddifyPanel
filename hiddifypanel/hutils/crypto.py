@@ -1,3 +1,4 @@
+import os
 import subprocess
 from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric import x25519, ed25519
@@ -46,3 +47,28 @@ def generate_x25519_keys():
     priv_str = base64.urlsafe_b64encode(priv_bytes).decode()[:-1]
 
     return {'private_key': priv_str, 'public_key': pub_str}
+
+
+
+def generate_ssh_host_keys():
+    key_types = ["dsa", "ecdsa", "ed25519", "rsa"]
+    keys_dict = {}
+
+    # Generate and read keys
+    for key_type in key_types:
+        key_file = f"ssh_host_{key_type}_key"
+
+        subprocess.run([
+            "ssh-keygen", "-t", key_type,
+            "-f", key_file,
+            "-N", "" 
+        ], check=True)
+
+        keys_dict[key_type]={}
+        with open(key_file, "r") as f:
+            keys_dict[key_type]['pk'] = f.read()
+        with open(f"{key_file}.pub", "r") as f:
+            keys_dict[key_type]['pub'] = f.read()
+
+        os.remove(key_file)
+        os.remove(f"{key_file}.pub")  # Remove the public key if not needed

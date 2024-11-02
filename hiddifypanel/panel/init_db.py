@@ -16,6 +16,23 @@ from sqlalchemy import func, text
 from loguru import logger
 MAX_DB_VERSION = 100
 
+def _v97(child_id):
+    keys=hutils.crypto.generate_ssh_host_keys()
+    set_hconfig(ConfigEnum.ssh_host_dsa_pk,keys['dsa']['pk'])
+    set_hconfig(ConfigEnum.ssh_host_dsa_pub,keys['dsa']['pub'])
+    set_hconfig(ConfigEnum.ssh_host_rsa_pk,keys['rsa']['pk'])
+    set_hconfig(ConfigEnum.ssh_host_rsa_pub,keys['rsa']['pub'])
+    set_hconfig(ConfigEnum.ssh_host_ed25519_pk,keys['ed25519']['pk'])
+    set_hconfig(ConfigEnum.ssh_host_ed25519_pub,keys['ed25519']['pub'])
+    set_hconfig(ConfigEnum.ssh_host_ecdsa_pk,keys['ecdsa']['pk'])
+    set_hconfig(ConfigEnum.ssh_host_ecdsa_pub,keys['ecdsa']['pub'])
+
+def _v97(child_id):
+    for a in AdminUser.query.all():
+        a.password=""
+    for a in User.query.all():
+        a.password=""
+    
 
 def _v96(child_id):
     result = (

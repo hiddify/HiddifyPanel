@@ -277,6 +277,19 @@ class ConfigEnum(metaclass=FastEnum):
     sub_full_clash_enable = _BoolConfigDscr(ConfigCategory.hidden)
     sub_full_clash_meta_enable = _BoolConfigDscr(ConfigCategory.hidden)
 
+
+    #ssh host keys
+    ssh_host_rsa_pk = _StrConfigDscr(ConfigCategory.hidden)
+    ssh_host_rsa_pub = _StrConfigDscr(ConfigCategory.hidden)
+    ssh_host_ed25519_pk = _StrConfigDscr(ConfigCategory.hidden)
+    ssh_host_ed25519_pub = _StrConfigDscr(ConfigCategory.hidden)
+    ssh_host_ecdsa_pk = _StrConfigDscr(ConfigCategory.hidden)
+    ssh_host_ecdsa_pub = _StrConfigDscr(ConfigCategory.hidden)
+    ssh_host_dsa_pk = _StrConfigDscr(ConfigCategory.hidden)
+    ssh_host_dsa_pub = _StrConfigDscr(ConfigCategory.hidden)
+    
+    
+
     hiddifycli_enable = _BoolConfigDscr(ConfigCategory.hidden, ApplyMode.reinstall)
 
     @classmethod
