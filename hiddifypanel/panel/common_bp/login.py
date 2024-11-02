@@ -11,6 +11,7 @@ from hiddifypanel.models import *
 
 from flask_wtf import FlaskForm
 import wtforms as wtf
+
 import re
 
 
@@ -22,7 +23,10 @@ class LoginForm(FlaskForm):
         'pattern': "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
         'message': _('config.invalid_uuid')
     })
-    submit = wtf.fields.SubmitField(_('Submit'))
+
+    password_textbox = wtf.fields.PasswordField(_(f'login.password.label'), default='',
+        description=_(f'login.password.description'), render_kw={    })
+    submit = wtf.fields.SubmitField(_('login.button'))
 
 
 class LoginView(FlaskView):
@@ -33,8 +37,9 @@ class LoginView(FlaskView):
         redirect_arg = request.args.get('redirect')
         username_arg = request.args.get('user') or ''
         if not current_account:
-
-            return render_template('login.html', form=LoginForm())
+            form=LoginForm()
+            form.secret_textbox.data=form.secret_textbox.data or username_arg
+            return render_template('login.html', form=form)
 
             # abort(401, "Unauthorized1")
 
@@ -52,9 +57,9 @@ class LoginView(FlaskView):
         form = LoginForm()
         if form.validate_on_submit():
             uuid = form.secret_textbox.data.strip()
-            if login_by_uuid(uuid, hutils.flask.is_admin_proxy_path()):
+            if login_by_uuid(uuid,form.password_textbox.data, hutils.flask.is_admin_proxy_path()):
                 return redirect(f'/{g.proxy_path}/')
-        hutils.flask.flash(_('config.validation-error'), 'danger')  # type: ignore
+        hutils.flask.flash(_('config.invalid_uuid'), 'danger')  # type: ignore
         return render_template('login.html', form=LoginForm())
 
     @ route("/l/<path:path>/")
@@ -68,7 +73,7 @@ class LoginView(FlaskView):
             redirect_arg = request.args.get('next')
 
         if not current_account or (not request.headers.get('Authorization')):
-            username = request.authorization.username if request.authorization else ''
+            username = request.authorization.username if request.authorization else g.uuid
 
             loginurl = hurl_for('common_bp.LoginView:index', next=redirect_arg, user=username)
             if g.user_agent['is_browser'] and request.headers.get('Authorization') or (current_account and len(username) > 0 and current_account.username != username):
@@ -128,7 +133,8 @@ class LoginView(FlaskView):
     @ route('/<secret_uuid>/manifest.webmanifest')
     def create_pwa_manifest(self):
         domain = request.host
-        name = (domain if hutils.flask.is_admin_panel_call() else g.account.name)
+        account=AdminUser.by_uuid(g.uuid)
+        name = (domain if hutils.flask.is_admin_panel_call() else account.name)
         return jsonify({
             "name": f"Hiddify {name}",
             "short_name": f"{name}"[:12],
@@ -136,7 +142,7 @@ class LoginView(FlaskView):
             "background_color": "#1a1b21",
             "display": "standalone",
             "scope": f"/",
-            "start_url": hiddify.get_account_panel_link(g.account, domain) + "?pwa=true",
+            "start_url": hiddify.get_account_panel_link(account, domain) + "?pwa=true",
             "description": "Hiddify, for a free Internet",
             "orientation": "any",
             "icons": [

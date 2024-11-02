@@ -142,14 +142,19 @@ def get_account_by_uuid(uuid, is_admin):
     return AdminUser.by_uuid(f'{uuid}') if is_admin else User.by_uuid(f'{uuid}')
 
 
-def login_by_uuid(uuid, is_admin: bool):
+def login_by_uuid(uuid,password:str, is_admin: bool)->bool:
     account = get_account_by_uuid(uuid, is_admin)
     if not account:
+        return False
+    if account.password!=password:
         return False
     return login_user(account, force=True)
 
 
 def auth_before_request():
+    if ".webmanifest" in request.path:
+        return
+
     # print("before_request")
     account = None
 
@@ -160,7 +165,7 @@ def auth_before_request():
         # print("uuid", g.uuid, is_admin_path)
         account = get_account_by_uuid(g.uuid, is_admin_path)
         # print(account)
-        if not account:
+        if not account or account.password!="":
             return logout_redirect()
         if is_admin_path:
             next_url = request.url
@@ -230,7 +235,7 @@ def redirect_to_login():
         json_abort(403, 'Unathorized')
     # if g.user_agent['is_browser']:
     # return redirect(hurl_for('common_bp.LoginView:basic_0', force=1, next=request.path))
-    return redirect(hurl_for('common_bp.LoginView:index', force=1, next=request.path))
+    return redirect(hurl_for('common_bp.LoginView:index', force=1, next=request.path.replace(f'{g.uuid}/',''),user=g.uuid))
 
     # else:
     #     abort(401, "Unauthorized")

@@ -40,7 +40,7 @@ class SubAdminsField(SelectField):
 class AdminstratorAdmin(AdminLTEModelView):
     column_hide_backrefs = False
     column_list = ["name", 'UserLinks', 'mode', 'can_add_admin', 'max_active_users', 'max_users', 'online_users', 'comment',]
-    form_columns = ["name", 'mode', 'can_add_admin', 'max_active_users', 'max_users', 'comment', "uuid"]
+    form_columns = ["name", 'mode', 'can_add_admin', 'max_active_users', 'max_users', 'comment', "uuid", "password"]
     list_template = 'model/admin_list.html'
     # column_editable_list = ['name']
     # edit_modal = True
@@ -59,6 +59,7 @@ class AdminstratorAdmin(AdminLTEModelView):
         "comment": _("Note"),
         'max_active_users': _("Max Active Users"),
         'max_users': _('Max Users'),
+        "password":_("user.password.title"),
         "online_users": _("Online Users"),
         'can_add_admin': _("Can add sub admin")
 
@@ -204,6 +205,7 @@ class AdminstratorAdmin(AdminLTEModelView):
         # else:
         #     model.parent_admin_id=1
         #     model.parent_admin=AdminUser.query.filter(AdminUser.id==1).first()
+        
         if model.id != 1 and model.parent_admin is None:
             model.parent_admin_id = g.account.id
             model.parent_admin = g.account
@@ -212,12 +214,17 @@ class AdminstratorAdmin(AdminLTEModelView):
             raise ValidationError("Sub-Admin can not have more power!!!!")
         if g.account.mode == AdminMode.agent and model.mode != AdminMode.agent:
             raise ValidationError("Sub-Admin can not have more power!!!!")
+        
+        if not model.password and not is_created:
+            model.password=AdminUser.by_id(model.id).password
+
 
     def on_model_delete(self, model):
         model.remove()
 
     def on_form_prefill(self, form, id=None):
-
+        
+        form.password.data=""
         if g.account.mode != AdminMode.super_admin:
             del form.mode
             del form.can_add_admin

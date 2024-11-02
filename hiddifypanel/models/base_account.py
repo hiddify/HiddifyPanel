@@ -41,6 +41,9 @@ class BaseAccount(db.Model, SerializerMixin, FlaskLoginUserMixin):  # type: igno
             'telegram_id': self.telegram_id,
             'lang': self.lang
         }
+    def update_password(self,new_password):
+        self.password=new_password
+        db.session.commit()
 
     @classmethod
     def by_id(cls, id: int):

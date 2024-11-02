@@ -10,7 +10,7 @@ from flask_wtf import FlaskForm
 from flask_bootstrap import SwitchField
 from hiddifypanel.panel import hiddify
 from flask_classful import FlaskView
-from wtforms.validators import ValidationError
+from wtforms.validators import ValidationError, Length, InputRequired
 # from gettext import gettext as _
 
 from hiddifypanel.models import Domain, DomainType, StrConfig, ConfigEnum, get_hconfigs
@@ -28,12 +28,14 @@ class QuickSetup(FlaskView):
         if next:
             step = step + 1
         form = {1: get_lang_form,
-                2: get_quick_setup_form,
-                3: get_proxy_form}
+                2: get_password_form,
+                3: get_quick_setup_form,
+                4: get_proxy_form}
 
         return form[step](empty=empty or next)
 
     def index(self):
+
         return render_template(
             'quick_setup.html',
             form=self.current_form(),
@@ -45,11 +47,12 @@ class QuickSetup(FlaskView):
     def post(self):
         if request.args.get('changepw') == "true":
             AdminUser.current_admin_or_owner().uuid = str(uuid.uuid4())
+            # AdminUser.current_admin_or_owner().password = hutils.random.get_random_password()
             db.session.commit()
 
         set_hconfig(ConfigEnum.first_setup, False)
         form = self.current_form()
-        if not form.validate_on_submit() or form.step.data not in ["1", "2", "3"]:
+        if not form.validate_on_submit() or form.step.data not in ["1", "2", "3","4"]:
             hutils.flask.flash(_('config.validation-error'), 'danger')
             return render_template(
                 'quick_setup.html', form=form,
@@ -84,15 +87,43 @@ def get_lang_form(empty=False):
 
             return render_template(
                 'quick_setup.html', form=view.current_form(next=True),
-                admin_link=admin_link(),
-                ipv4=hutils.network.get_ip_str(4),
-                ipv6=hutils.network.get_ip_str(6),
+                # admin_link=admin_link(),
+                # ipv4=hutils.network.get_ip_str(4),
+                # ipv6=hutils.network.get_ip_str(6),
                 show_domain_info=False)
 
     form = LangForm(None)if empty else LangForm()
     form.step.data = "1"
     return form
 
+
+def get_password_form(empty=False):
+    class PasswordForm(FlaskForm):
+        step = wtf.HiddenField(default="1")
+        admin_pass = wtf.PasswordField(
+            _("user.password.title"),
+            description=_("user.password.description"),
+            default="",validators=[
+                
+                InputRequired(message=_("user.password.validation-required")), 
+                Length(min=8, message=_("user.password.validation-lenght"))
+        
+            ])
+        password_submit = wtf.SubmitField(_('Submit'))
+
+        def post(self, view):
+            AdminUser.current_admin_or_owner().update_password(self.admin_pass.data)
+
+            return render_template(
+                'quick_setup.html', form=view.current_form(next=True),
+                admin_link=admin_link(),
+                ipv4=hutils.network.get_ip_str(4),
+                ipv6=hutils.network.get_ip_str(6),
+                show_domain_info=False)
+
+    form = PasswordForm(None)if empty else PasswordForm()
+    form.step.data = "2"
+    return form
 
 def get_proxy_form(empty=False):
     class ProxyForm(FlaskForm):
@@ -127,7 +158,7 @@ def get_proxy_form(empty=False):
         setattr(ProxyForm, f'{cf.key}', field)
     setattr(ProxyForm, "submit_global", wtf.fields.SubmitField(_('Submit')))
     form = ProxyForm(None) if empty else ProxyForm()
-    form.step.data = "3"
+    form.step.data = "4"
     return form
 
 
@@ -210,7 +241,7 @@ def get_quick_setup_form(empty=False):
                 show_domain_info=False)
 
     form = BasicConfigs(None) if empty else BasicConfigs()
-    form.step.data = "2"
+    form.step.data = "3"
     return form
 
 
