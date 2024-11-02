@@ -13,7 +13,7 @@ USERS_USAGE = "wg:users-usage"
 class WireguardApi(DriverABS):
     def get_redis_client(self):
         if not hasattr(self, 'redis_client'):
-            self.redis_client = redis.from_url('unix:///opt/hiddify-manager/other/redis/run.sock?db=1')
+            self.redis_client = redis.from_url(os.environ.get("REDIS_URI_SSH",""))
 
         return self.redis_client
 
