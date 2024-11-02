@@ -120,13 +120,14 @@ class AppAPI(MethodView):
                 hiddifyn_dto = self.__get_hiddifyn_app_dto()
                 apps_data += ([hiddify_next_dto, hiddify_clash_dto, hiddifyn_dto])
             case Platform.ios:
+                hiddify_next_dto = self.__get_hiddify_next_app_dto()
                 singbox_dto = self.__get_singbox_app_dto()
                 stash_dto = self.__get_stash_app_dto()
                 shadowrocket_dto = self.__get_shadowrocket_app_dto()
                 foxray_dto = self.__get_foxray_app_dto()
                 streisand_dto = self.__get_streisand_app_dto()
                 loon_dto = self.__get_loon_app_dto()
-                apps_data += ([singbox_dto, streisand_dto, stash_dto, shadowrocket_dto, foxray_dto, loon_dto])
+                apps_data += ([hiddify_next_dto, singbox_dto, streisand_dto, stash_dto, shadowrocket_dto, foxray_dto, loon_dto])
             case Platform.linux:
                 hiddify_next_dto = self.__get_hiddify_next_app_dto()
                 hiddify_clash_dto = self.__get_hiddify_clash_desktop_app_dto()
@@ -443,7 +444,7 @@ class AppAPI(MethodView):
         # availabe installatoin types
         installation_types = []
         if self.platform == Platform.all:
-            installation_types = [AppInstallType.apk, AppInstallType.google_play, AppInstallType.setup, AppInstallType.portable, AppInstallType.appimage, AppInstallType.dmg]
+            installation_types = [AppInstallType.apk, AppInstallType.google_play, AppInstallType.setup, AppInstallType.portable, AppInstallType.appimage, AppInstallType.dmg, AppInstallType.app_store]
         else:
             match self.platform:
                 case Platform.android:
@@ -454,6 +455,8 @@ class AppAPI(MethodView):
                     installation_types = [AppInstallType.appimage]
                 case Platform.mac:
                     installation_types = [AppInstallType.dmg]
+                case Platform.ios:
+                    installation_types = [AppInstallType.app_store]
 
         install_dtos = []
         for install_type in installation_types:
@@ -472,6 +475,8 @@ class AppAPI(MethodView):
                     ins_url = f'{self.hiddify_github_repo}/hiddify-next/releases/latest/download/Hiddify-Linux-x64.AppImage'
                 case AppInstallType.dmg:
                     ins_url = f'{self.hiddify_github_repo}/hiddify-next/releases/latest/download/Hiddify-MacOS.dmg'
+                case AppInstallType.app_store:
+                    ins_url = 'https://apps.apple.com/us/app/hiddify-proxy-vpn/id6596777532'
 
             install_dto = self.__get_app_install_dto(install_type, ins_url)
             install_dtos.append(install_dto)
