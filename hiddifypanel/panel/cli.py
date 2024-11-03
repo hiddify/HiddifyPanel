@@ -131,7 +131,9 @@ def init_app(app):
         hiddify.add_or_update_config(key=key, value=val)
 
         return "success"
-
+    @app.cli.command()
+    def reset_owner_password():
+        AdminUser.get_super_admin().update_password("")
     @ app.cli.command()
     @ click.option("--config", "-c")
     def import_config(config):
