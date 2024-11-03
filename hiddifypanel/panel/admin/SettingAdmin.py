@@ -137,6 +137,10 @@ class SettingAdmin(FlaskView):
                 form = get_config_form()
         else:
             hutils.flask.flash(_('config.validation-error'), 'danger')  # type: ignore
+            for field, errors in form.errors.items():
+                for error in errors:
+                    hutils.flask.flash(error, 'danger')  # type: ignore
+            
 
         return reset_action or render_template('config.html', form=form)
 
@@ -185,6 +189,8 @@ def get_config_form():
             continue
 
         class CategoryForm(FlaskForm):
+            class Meta:
+                csrf = False
             description_for_fieldset = wtf.TextAreaField("", description=_(f'config.{cat}.description'), render_kw={"class": "d-none"})
         for c2 in cat_configs:
             if not (c2 in configs_key):

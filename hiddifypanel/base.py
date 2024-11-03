@@ -48,6 +48,7 @@ def create_app(*args, cli=False, **config):
         app.wsgi_app = ProxyFix(
             app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1,
         )
+        app.secret_key="asdsad"
         app.servers = {
             'name': 'current',
             'url': '',
@@ -124,24 +125,24 @@ def create_app(*args, cli=False, **config):
 
     app.config.update(config)  # Override with passed config
     # app.config['WTF_CSRF_CHECK_DEFAULT'] = False
-    app.config['WTF_CSRF_ENABLED'] = False
+    # app.config['WTF_CSRF_ENABLED'] = False
     # app.config['BABEL_TRANSLATION_DIRECTORIES'] = '/workspace/Hiddify-Server/hiddify-panel/src/translations.i18n'
 
-    from flask_wtf.csrf import CSRFProtect
+    # from flask_wtf.csrf import CSRFProtect
 
-    csrf = CSRFProtect(app)
+    # csrf = CSRFProtect(app)
 
-    @app.before_request
-    def check_csrf():
-    # if "/admin/user/" in request.base_url:
-    #     return
-    # if "/admin/domain/" in request.base_url:
-    #     return
-    # if "/admin/actions/" in request.base_url:
-    #     return
-    # if "/api/" in request.base_url:
-    #     return
-        csrf.protect()
+    # @app.before_request
+    # def check_csrf():
+    # # if "/admin/user/" in request.base_url:
+    # #     return
+    # # if "/admin/domain/" in request.base_url:
+    # #     return
+    # # if "/admin/actions/" in request.base_url:
+    # #     return
+    # # if "/api/" in request.base_url:
+    # #     return
+    #     csrf.protect()
 
     hiddifypanel.panel.cli.init_app(app)
     return app
