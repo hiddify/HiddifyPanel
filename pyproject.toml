@@ -95,3 +95,14 @@ build-backend = "poetry.core.masonry.api"
 [tool.poetry.scripts]
 hiddifypanel = 'hiddifypanel.__main__:main'
 
+
+[[tool.poetry.source]]
+name = 'aliyun.mirrors' 
+url = 'https://mirrors.aliyun.com/pypi/simple/' 
+
+priority="supplemental"
+
+[[tool.poetry.source]]
+name = "pypi-public"
+url = "https://pypi.org/simple/"
+priority="primary"
