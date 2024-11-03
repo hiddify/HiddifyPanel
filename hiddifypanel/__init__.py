@@ -1,4 +1,7 @@
-from .VERSION import __version__, __release_date__
+from .VERSION import __version__, __release_time__,is_released_version
+
+from dotenv import load_dotenv
+load_dotenv("/opt/hiddify-manager/hiddify-panel/app.cfg")
 
 # from . import cache
 from . import Events

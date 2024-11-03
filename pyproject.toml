@@ -8,7 +8,7 @@ repository = "https://github.com/hiddify/hiddify-manager/"
 authors = ["hiddify" ]
 license =  "LICENSE.md" 
 keywords = ["proxy", "panel", "multi"]
-
+documentation = "https://hiddify.com/manager"
 
 [project.scripts]
 hiddifypanel = "hiddifypanel.__main__:main"

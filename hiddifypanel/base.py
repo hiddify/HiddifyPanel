@@ -131,8 +131,8 @@ def create_app(*args, cli=False, **config):
 
     csrf = CSRFProtect(app)
 
-    # @app.before_request
-    # def check_csrf():
+    @app.before_request
+    def check_csrf():
     # if "/admin/user/" in request.base_url:
     #     return
     # if "/admin/domain/" in request.base_url:
@@ -141,7 +141,7 @@ def create_app(*args, cli=False, **config):
     #     return
     # if "/api/" in request.base_url:
     #     return
-    # csrf.protect()
+        csrf.protect()
 
     hiddifypanel.panel.cli.init_app(app)
     return app
