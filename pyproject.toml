@@ -1,0 +1,107 @@
+[tool.poetry]
+name = "hiddifypanel"
+version = "10.70.0"  # Replace with dynamic version read if required
+description = "hiddifypanel multi proxy panel"
+readme = "README.md"
+homepage = "https://hiddify.com"
+repository = "https://github.com/hiddify/hiddify-manager/"
+authors = ["hiddify" ]
+license =  "LICENSE.md" 
+keywords = ["proxy", "panel", "multi"]
+
+
+[project.scripts]
+hiddifypanel = "hiddifypanel.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["hiddifypanel"]
+exclude = ["tests", ".github"]
+
+[tool.setuptools.package-data]
+"hiddifypanel" = [
+    "translations/*/LC_MESSAGES/*.mo",
+    "translations.i18n/*.json"
+]
+"" = ["hiddifypanel/translations/*/LC_MESSAGES/*.mo"]
+
+
+[tool.poetry.dependencies]
+python = "^3.10"
+apiflask = "2.1.1"
+babel = "2.14.0"
+bootstrap-flask = "2.3.3"
+cython = "3.0.10"
+flask-admin = "1.6.1"
+flask-adminlte3 = "1.0.9"
+flask-classful = "0.16.0"
+flask-cors = "4.0.0"
+flask-login = "0.6.3"
+flask-restful = "0.3.10"
+flask-sqlalchemy = "3.1.1"
+flask-session = "0.8.0"
+flask-wtf = "1.2.1"
+flask = "3.0.2"
+markupsafe = "2.1.5"
+pymysql = "1.1.0"
+pyyaml = "6.0.1"
+sqlalchemy-utils = "0.41.2"
+sqlalchemy-serializer = "1.4.12"
+sqlalchemy = "2.0.29"
+strenum = "0.4.15"
+wtforms = "3.1.2"
+werkzeug = "3.0.1"
+ansi2html = "1.9.1"
+async-timeout = "4.0.3"
+bjoern = "3.2.2"
+click = "8.1.7"
+cloudflare = "2.19.2"
+cryptography = "42.0.5"
+dynaconf = "3.2.5"
+fastenumplus = "1.4.0"
+flask-apispec = "0.11.4"
+flask-babel = "4.0.0"
+flask-simplelogin = "0.1.2"
+h2 = "4.1.0"
+json5 = "0.9.24"
+lastversion = "3.5.2"
+loguru = "0.7.2"
+maxminddb = "2.6.0"
+mysqlclient = "2.2.4"
+netifaces = "0.11.0"
+paramiko = "3.4.0"
+ping3 = "4.0.5"
+psutil = "5.9.8"
+python-dateutil = "2.9.0.post0"
+python-dotenv = "1.0.1"
+python-redis-cache = "3.1.0"
+python-slugify = "8.0.4"
+redis = "5.0.3"
+requests = "2.31.0"
+six = "1.16.0"
+pytelegrambotapi = "4.22.1"
+user-agents = "2.2.0"
+xtlsapi = "3.1.2"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.3"
+coverage = "^7.6.4"
+flake8 = "^7.1.1"
+black = "^24.10.0"
+isort = "^5.13.2"
+pytest-cov = "^6.0.0"
+codecov = "^2.1.13"
+mypy = "^1.13.0"
+gitchangelog = "^3.0.4"
+mkdocs = "^1.6.1"
+flask-debugtoolbar = "^0.16.0"
+flask-shell-ipython = "^0.5.3"
+ipdb = "^0.13.13"
+pytest-flask = "^1.3.0"
+python-dotenv = "^1.0.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+hiddifypanel = 'hiddifypanel.__main__:main'

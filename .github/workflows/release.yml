@@ -48,5 +48,6 @@ jobs:
         TWINE_USERNAME: __token__
         TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
       run: |
+        sed -i "/^is_released_version/c is_released_version=True" hiddifypanel/VERSION.py 
         python setup.py sdist bdist_wheel
         twine upload dist/*
