@@ -42,7 +42,7 @@ def create_app(*args, cli=False, **config):
     # app = Flask(__name__, static_url_path="/<proxy_path>/static/", instance_relative_config=True)
 
     if not cli:
-        from hiddifypanel.cache import redis_client
+        
         from hiddifypanel import auth
         app.config["PREFERRED_URL_SCHEME"] = "https"
         app.wsgi_app = ProxyFix(
@@ -68,18 +68,7 @@ def create_app(*args, cli=False, **config):
         # setup flask server-side session
         # app.config['APPLICATION_ROOT'] = './'
         # app.config['SESSION_COOKIE_DOMAIN'] = '/'
-        app.config['SESSION_TYPE'] = 'redis'
-        app.config['SESSION_REDIS'] = redis_client
-        app.config['SESSION_PERMANENT'] = True
-        app.config['PERMANENT_SESSION_LIFETIME'] = datetime.timedelta(days=10)
-        app.security_schemes = {  # equals to use config SECURITY_SCHEMES
-            'Hiddify-API-Key': {
-                'type': 'apiKey',
-                'in': 'header',
-                'name': 'Hiddify-API-Key',
-            }
-        }
-        Session(app)
+        
 
         app.jinja_env.line_statement_prefix = '%'
         from hiddifypanel import hutils
@@ -112,6 +101,19 @@ def create_app(*args, cli=False, **config):
     app.jinja_env.globals['get_locale'] = get_locale
     babel = Babel(app, locale_selector=get_locale)
     if not cli:
+        app.config['SESSION_TYPE'] = 'redis'
+        from hiddifypanel.cache import redis_client
+        app.config['SESSION_REDIS'] = redis_client
+        app.config['SESSION_PERMANENT'] = True
+        app.config['PERMANENT_SESSION_LIFETIME'] = datetime.timedelta(days=10)
+        app.security_schemes = {  # equals to use config SECURITY_SCHEMES
+            'Hiddify-API-Key': {
+                'type': 'apiKey',
+                'in': 'header',
+                'name': 'Hiddify-API-Key',
+            }
+        }
+        Session(app)
         hiddifypanel.panel.common.init_app(app)
         hiddifypanel.panel.common_bp.init_app(app)
 
@@ -125,9 +127,9 @@ def create_app(*args, cli=False, **config):
     app.config['WTF_CSRF_ENABLED'] = False
     # app.config['BABEL_TRANSLATION_DIRECTORIES'] = '/workspace/Hiddify-Server/hiddify-panel/src/translations.i18n'
 
-    # from flask_wtf.csrf import CSRFProtect
+    from flask_wtf.csrf import CSRFProtect
 
-    # csrf = CSRFProtect(app)
+    csrf = CSRFProtect(app)
 
     # @app.before_request
     # def check_csrf():

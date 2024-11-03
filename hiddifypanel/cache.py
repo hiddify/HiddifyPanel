@@ -3,8 +3,12 @@ from redis_cache import RedisCache, chunks, compact_dump
 import redis
 from pickle import dumps, loads
 from loguru import logger
+def get_env(key):
+    from dotenv import dotenv_values
+    for d,v in (dotenv_values("/opt/hiddify-manager/hiddify-panel/app.cfg") or {}).items():
+        if key==d:return v
 
-redis_client = redis.from_url(os.environ.get("REDIS_URI_MAIN",""))
+redis_client = redis.from_url(get_env("REDIS_URI_MAIN"))
 
 
 class CustomRedisCache(RedisCache):
