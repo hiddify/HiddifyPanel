@@ -136,7 +136,6 @@
   "Please Wait": "Please Wait...",
   "Please click on %(install)s to save the user page.": "Click %(install)s to save the User Page.",
   "Please connect your telegram account to the panel to be informed about latest news.": "Please connect your Telegram account to the panel to be informed about latest news",
-  "Please connect your telegram accout to the panel to be informed about latest news.": "Please connect your Telegram account to the panel to know the latest Status of your Subscription",
   "Please create an issue on Github.": "Please create an issue on Github",
   "Please select at least one file.": "Please select at least one file.",
   "Please select at least one record.": "Please select at least one record.",
@@ -225,9 +224,6 @@
   "You can restore your configs from previously downloaded configs": "ℹ️ You can restore your configs from previously downloaded backup file",
   "You have too much users! You can have only %(active)s active users and %(total)s users": "You have too much users! You can have only %(active)s active users and %(total)s users",
   "You have used this domain in: ": "You have already used this Domain in: ",
-  "You should visit this page without VPN": {
-    " Your country=%(your_country)s\nexpected=%(expected_country)s": "You should visit this page without VPN Your Country =%(your_country)s\nExpected=%(expected_country)s"
-  },
   "Your hiddify instance information \nDomain: {} \nUsage limit: {} GB\nCurrent usage: {} GB\nExpires at: {} \nRemaining days: {} \n\n\n Happy using 🎉 🎉 🎉 \n": "Your Hiddify instance information \nDomain: {} \nUsage Limit: {} GB\nCurrent Usage: {} GB\nExpires at: {} \nRemaining Days: {} \n\n\nGood Luck! 🎉 🎉 🎉 \n",
   "[Admin only visible message:] You can change this message from settings": "[Admin Exclusive Message]: Customizable via Settings",
   "actions": "Actions",
@@ -316,6 +312,10 @@
     "shadowrocket": {
       "description": "Shadowrocket Description",
       "title": "Shadowrocket"
+    },
+    "singbox": {
+      "description": "app.singbox.description",
+      "title": "Singbox"
     },
     "stash": {
       "description": "Stash Description",
@@ -798,6 +798,38 @@
       "description": "ℹ️ An SSH proxy, also known as an SSH tunnel or SSH port forwarding, is a secure method of creating a secure communication channel between two machines over an insecure network. We have a specific application which is completely different from SSH server and can not execute any commands",
       "label": "SSH Proxy"
     },
+    "ssh_host_dsa_pk": {
+      "description": "config.ssh_host_dsa_pk.description",
+      "label": "config.ssh_host_dsa_pk.label"
+    },
+    "ssh_host_dsa_pub": {
+      "description": "config.ssh_host_dsa_pub.description",
+      "label": "config.ssh_host_dsa_pub.label"
+    },
+    "ssh_host_ecdsa_pk": {
+      "description": "config.ssh_host_ecdsa_pk.description",
+      "label": "config.ssh_host_ecdsa_pk.label"
+    },
+    "ssh_host_ecdsa_pub": {
+      "description": "config.ssh_host_ecdsa_pub.description",
+      "label": "config.ssh_host_ecdsa_pub.label"
+    },
+    "ssh_host_ed25519_pk": {
+      "description": "config.ssh_host_ed25519_pk.description",
+      "label": "config.ssh_host_ed25519_pk.label"
+    },
+    "ssh_host_ed25519_pub": {
+      "description": "config.ssh_host_ed25519_pub.description",
+      "label": "config.ssh_host_ed25519_pub.label"
+    },
+    "ssh_host_rsa_pk": {
+      "description": "config.ssh_host_rsa_pk.description",
+      "label": "config.ssh_host_rsa_pk.label"
+    },
+    "ssh_host_rsa_pub": {
+      "description": "config.ssh_host_rsa_pub.description",
+      "label": "config.ssh_host_rsa_pub.label"
+    },
     "ssh_server_enable": {
       "description": "SSH Proxy is completely different than original SSH Server",
       "label": "✔️ SSH Proxy"
@@ -1074,6 +1106,11 @@
   },
   "log": "📄 Log",
   "login": {
+    "button": "Login",
+    "password": {
+      "description": "For extra security, you need to enter your password.",
+      "label": "Password"
+    },
     "secret": {
       "description": "For getting access to this page, please enter your secret code (UUID)",
       "label": "Secret Code (UUID)"
@@ -1240,8 +1277,17 @@
     },
     "last_reset_time": "Last Usage Date Reset",
     "name": "Name",
+    "password": {
+      "description": "The password will be used for extra secutiry. After entering the password, you can only login to the panel after entering your password.",
+      "title": "Password",
+      "validation-lenght": "user.password.validation-lenght",
+      "validation-required": "user.password.validation-required"
+    },
     "usage_limit_GB": "⌛️ Usage Limit (GB)",
     "user_links": "User Links"
+  },
+  "vpn": {
+    "notallowed": "You should visit this page without VPN Your Country =%(your_country)s\nExpected=%(expected_country)s"
   },
   "weekly": "📅 Weekly",
   "worker": "✴️ Cloudflare Worker"

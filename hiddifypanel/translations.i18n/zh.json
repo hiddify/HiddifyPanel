@@ -136,7 +136,6 @@
   "Please Wait": "请稍等...",
   "Please click on %(install)s to save the user page.": "单击 %(install)s 保存用户页面。",
   "Please connect your telegram account to the panel to be informed about latest news.": "请将您的 Telegram 帐户连接到面板以获取最新消息。",
-  "Please connect your telegram accout to the panel to be informed about latest news.": "请将您的 Telegram 帐户连接到面板以了解您的订阅的最新状态",
   "Please create an issue on Github.": "请在 Github 上创建问题",
   "Please select at least one file.": "请选择至少一个文件",
   "Please select at least one record.": "请选择至少一条记录",
@@ -225,9 +224,6 @@
   "You can restore your configs from previously downloaded configs": "ℹ️您可以从以前下载的备份文件恢复您的配置",
   "You have too much users! You can have only %(active)s active users and %(total)s users": "你的用户太多了！您只能拥有 %(active)s 个活跃用户和 %(total)s 个用户",
   "You have used this domain in: ": "您已在以下位置使用过该域名：",
-  "You should visit this page without VPN": {
-    " Your country=%(your_country)s\nexpected=%(expected_country)s": "您应该在没有 VPN 的情况下访问此页面 Your Country =%(your_country)s\n预期=%(expected_country)s"
-  },
   "Your hiddify instance information \nDomain: {} \nUsage limit: {} GB\nCurrent usage: {} GB\nExpires at: {} \nRemaining days: {} \n\n\n Happy using 🎉 🎉 🎉 \n": "您的 Hiddify 实例信息\n领域： {}\n使用限制：{} GB\n当前使用情况：{} GB\n到期时间：{}\n剩余天数：{}\n\n\n祝你好运！ 🎉🎉🎉",
   "[Admin only visible message:] You can change this message from settings": "[管理员专用消息]：可通过设置自定义。",
   "actions": "行动",
@@ -316,6 +312,10 @@
     "shadowrocket": {
       "description": "小火箭描述",
       "title": "Shadowrocket"
+    },
+    "singbox": {
+      "description": "",
+      "title": ""
     },
     "stash": {
       "description": "Stash描述",
@@ -798,6 +798,38 @@
       "description": "ℹ️ SSH 代理，也称为 SSH 隧道或 SSH 端口转发，是一种通过不安全网络在两台计算机之间创建安全通信通道的安全方法。我们有一个与 ssh 服务器完全不同的特定应用程序，无法执行任何命令",
       "label": "SSH 代理"
     },
+    "ssh_host_dsa_pk": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_dsa_pub": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_ecdsa_pk": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_ecdsa_pub": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_ed25519_pk": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_ed25519_pub": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_rsa_pk": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_rsa_pub": {
+      "description": "",
+      "label": ""
+    },
     "ssh_server_enable": {
       "description": "SSH Proxy 与原来的 SSH Server 完全不同",
       "label": "✔️ 启用 SSH 代理"
@@ -1074,6 +1106,11 @@
   },
   "log": "📄 Log",
   "login": {
+    "button": "",
+    "password": {
+      "description": "",
+      "label": ""
+    },
     "secret": {
       "description": "要访问此页面，请输入您的密码（UUID）",
       "label": "密码 (UUID)"
@@ -1240,8 +1277,17 @@
     },
     "last_reset_time": "最后使用日期重置",
     "name": "姓名",
+    "password": {
+      "description": "",
+      "title": "",
+      "validation-lenght": "",
+      "validation-required": ""
+    },
     "usage_limit_GB": "⌛️ 使用限制 (GB)",
     "user_links": "用户链接"
+  },
+  "vpn": {
+    "notallowed": "您应该在没有 VPN 的情况下访问此页面 Your Country =%(your_country)s\n预期=%(expected_country)s"
   },
   "weekly": "📅每周",
   "worker": "✴️ Cloudflare Worker"

@@ -533,13 +533,6 @@ msgstr ""
 "Пожалуйста, подключите свой аккаунт Telegram к панели, чтобы быть в курсе "
 "последних новостей"
 
-msgid ""
-"Please connect your telegram accout to the panel to be informed about latest"
-" news."
-msgstr ""
-"Пожалуйста, подключите свою учетную запись Telegram к панели, чтобы узнать "
-"статус вашей подписки"
-
 msgid "Please create an issue on Github."
 msgstr "Пожалуйста создайте проблему на Github."
 
@@ -616,7 +609,7 @@ msgid "Release"
 msgstr "✅ Релиз"
 
 msgid "Remaining about %(relative)s, exactly %(days)s days"
-msgstr "Осталось около %(относительно)s, ровно %(days)s дней"
+msgstr "Осталось около %(relative)s, ровно %(days)s дней"
 
 msgid "Remote nodes are not supported yet!"
 msgstr "Удаленные узлы пока не поддерживаются!"
@@ -724,7 +717,7 @@ msgid "Started %(days)s days ago"
 msgstr "Началось %(days)s дней назад"
 
 msgid "Started from %(relative)s"
-msgstr "Началось с %(относительного)s"
+msgstr "Началось с %(relative)s"
 
 msgid "Status"
 msgstr "Статус"
@@ -783,8 +776,8 @@ msgstr "Единая ссылка для всех приложений"
 msgid "Upload File"
 msgstr "Загрузить файл"
 
-msgid "Use Hiddify:"
-msgstr "Используйте Hiddify:"
+msgid "Use HiddifyNext:"
+msgstr "Используйте HiddifyNext:"
 
 msgid "User activated!"
 msgstr "Пользователь активирован"
@@ -860,13 +853,6 @@ msgstr ""
 
 msgid "You have used this domain in: "
 msgstr "Вы уже используете этот домен в:"
-
-msgid ""
-"You should visit this page without VPN. Your country=%(your_country)s\n"
-"expected=%(expected_country)s"
-msgstr ""
-"Вы должны посетить эту страницу без VPN. Ваша страна=%(your_country)s\n"
-"ожидаемый=%(expected_country)s"
 
 msgid ""
 "Your hiddify instance information \n"
@@ -1041,12 +1027,6 @@ msgstr "Описание HiddifyApp"
 msgid "app.hiddify.next.title"
 msgstr "HiddifyApp"
 
-msgid "app.singbox.title"
-msgstr "sing-box"
-
-msgid "app.singbox.description"
-msgstr "sing-box графический клиент"
-
 msgid "app.hiddifyn.description"
 msgstr "Описание HiddifyN"
 
@@ -1076,6 +1056,12 @@ msgstr "Описание Теневой Ракеты"
 
 msgid "app.shadowrocket.title"
 msgstr "Shadowrocket"
+
+msgid "app.singbox.description"
+msgstr ""
+
+msgid "app.singbox.title"
+msgstr ""
 
 msgid "app.stash.description"
 msgstr "Описание Stash "
@@ -1945,6 +1931,54 @@ msgstr ""
 msgid "config.ssh.label"
 msgstr "SSH Proxy"
 
+msgid "config.ssh_host_dsa_pk.description"
+msgstr ""
+
+msgid "config.ssh_host_dsa_pk.label"
+msgstr ""
+
+msgid "config.ssh_host_dsa_pub.description"
+msgstr ""
+
+msgid "config.ssh_host_dsa_pub.label"
+msgstr ""
+
+msgid "config.ssh_host_ecdsa_pk.description"
+msgstr ""
+
+msgid "config.ssh_host_ecdsa_pk.label"
+msgstr ""
+
+msgid "config.ssh_host_ecdsa_pub.description"
+msgstr ""
+
+msgid "config.ssh_host_ecdsa_pub.label"
+msgstr ""
+
+msgid "config.ssh_host_ed25519_pk.description"
+msgstr ""
+
+msgid "config.ssh_host_ed25519_pk.label"
+msgstr ""
+
+msgid "config.ssh_host_ed25519_pub.description"
+msgstr ""
+
+msgid "config.ssh_host_ed25519_pub.label"
+msgstr ""
+
+msgid "config.ssh_host_rsa_pk.description"
+msgstr ""
+
+msgid "config.ssh_host_rsa_pk.label"
+msgstr ""
+
+msgid "config.ssh_host_rsa_pub.description"
+msgstr ""
+
+msgid "config.ssh_host_rsa_pub.label"
+msgstr ""
+
 msgid "config.ssh_server_enable.description"
 msgstr "SSH Proxy полностью отличается от оригинального SSH Server"
 
@@ -2482,6 +2516,15 @@ msgstr "☑️ Python: низкая производительность"
 msgid "log"
 msgstr "📄 Log"
 
+msgid "login.button"
+msgstr ""
+
+msgid "login.password.description"
+msgstr ""
+
+msgid "login.password.label"
+msgstr ""
+
 msgid "login.secret.description"
 msgstr ""
 "Для получения доступа к этой странице введите свой секретный код (UUID)"
@@ -2929,11 +2972,28 @@ msgstr "Сброс даты последнего использования"
 msgid "user.name"
 msgstr "Имя"
 
+msgid "user.password.description"
+msgstr ""
+
+msgid "user.password.title"
+msgstr ""
+
+msgid "user.password.validation-lenght"
+msgstr ""
+
+msgid "user.password.validation-required"
+msgstr ""
+
 msgid "user.usage_limit_GB"
 msgstr "⌛️ Лимит (GB)"
 
 msgid "user.user_links"
 msgstr "Ссылки пользователей"
+
+msgid "vpn.notallowed"
+msgstr ""
+"Вы должны посетить эту страницу без VPN. Ваша страна=%(your_country)s\n"
+"ожидаемый=%(expected_country)s"
 
 msgid "weekly"
 msgstr "📅 Еженедельно"

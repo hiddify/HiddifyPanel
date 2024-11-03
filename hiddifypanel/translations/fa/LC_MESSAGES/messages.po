@@ -519,13 +519,6 @@ msgid ""
 "latest news."
 msgstr "لطفا اکانت تلگرام خود را به پنل متصل کنید تا از آخرین اخبار مطلع شوید"
 
-msgid ""
-"Please connect your telegram accout to the panel to be informed about latest"
-" news."
-msgstr ""
-"لطفا اکانت تلگرام خود را به پنل متصل کنید تا از آخرین وضعیت اشتراک خودتان "
-"مطلع شوید"
-
 msgid "Please create an issue on Github."
 msgstr "لطفاً یک مشکل در Github ایجاد کنید"
 
@@ -848,13 +841,6 @@ msgid "You have used this domain in: "
 msgstr "شما از این دامنه در بخش زیر استفاده کرده اید: "
 
 msgid ""
-"You should visit this page without VPN. Your country=%(your_country)s\n"
-"expected=%(expected_country)s"
-msgstr ""
-"شما باید بدون VPN از این صفحه بازدید کنید کشور شما =%(your_country)s\n"
-"انتظار می رود=%(expected_country)s"
-
-msgid ""
 "Your hiddify instance information \n"
 "Domain: {} \n"
 "Usage limit: {} GB\n"
@@ -1026,12 +1012,6 @@ msgstr "توضیحات HiddifyApp"
 msgid "app.hiddify.next.title"
 msgstr "هیدیفای‌اپ"
 
-msgid "app.singbox.title"
-msgstr "sing-box"
-
-msgid "app.singbox.description"
-msgstr "رابط کاربری گرافیکی sing-box"
-
 msgid "app.hiddifyn.description"
 msgstr "توضیحات HiddifyN"
 
@@ -1061,6 +1041,12 @@ msgstr "توضیحات Shadowrocket"
 
 msgid "app.shadowrocket.title"
 msgstr "Shadowrocket"
+
+msgid "app.singbox.description"
+msgstr ""
+
+msgid "app.singbox.title"
+msgstr ""
 
 msgid "app.stash.description"
 msgstr "توضیحات Stash"
@@ -1921,6 +1907,54 @@ msgstr ""
 msgid "config.ssh.label"
 msgstr "پروکسی SSH"
 
+msgid "config.ssh_host_dsa_pk.description"
+msgstr ""
+
+msgid "config.ssh_host_dsa_pk.label"
+msgstr ""
+
+msgid "config.ssh_host_dsa_pub.description"
+msgstr ""
+
+msgid "config.ssh_host_dsa_pub.label"
+msgstr ""
+
+msgid "config.ssh_host_ecdsa_pk.description"
+msgstr ""
+
+msgid "config.ssh_host_ecdsa_pk.label"
+msgstr ""
+
+msgid "config.ssh_host_ecdsa_pub.description"
+msgstr ""
+
+msgid "config.ssh_host_ecdsa_pub.label"
+msgstr ""
+
+msgid "config.ssh_host_ed25519_pk.description"
+msgstr ""
+
+msgid "config.ssh_host_ed25519_pk.label"
+msgstr ""
+
+msgid "config.ssh_host_ed25519_pub.description"
+msgstr ""
+
+msgid "config.ssh_host_ed25519_pub.label"
+msgstr ""
+
+msgid "config.ssh_host_rsa_pk.description"
+msgstr ""
+
+msgid "config.ssh_host_rsa_pk.label"
+msgstr ""
+
+msgid "config.ssh_host_rsa_pub.description"
+msgstr ""
+
+msgid "config.ssh_host_rsa_pub.label"
+msgstr ""
+
 msgid "config.ssh_server_enable.description"
 msgstr ""
 "این SSH پروکسی با SSH سرور اصلی کاملا متفاوت است و امکان اجرای دستورات را "
@@ -2451,6 +2485,15 @@ msgstr "☑️ پایتون : عملکرد ضعیف"
 msgid "log"
 msgstr "📄 لاگ"
 
+msgid "login.button"
+msgstr ""
+
+msgid "login.password.description"
+msgstr ""
+
+msgid "login.password.label"
+msgstr ""
+
 msgid "login.secret.description"
 msgstr "برای دسترسی به این صفحه، لطفا کد مخفی (UUID) خود را وارد کنید."
 
@@ -2899,11 +2942,28 @@ msgstr "آخرین زمان ریست شدن حجم (روز پیش)"
 msgid "user.name"
 msgstr "نام"
 
+msgid "user.password.description"
+msgstr ""
+
+msgid "user.password.title"
+msgstr ""
+
+msgid "user.password.validation-lenght"
+msgstr ""
+
+msgid "user.password.validation-required"
+msgstr ""
+
 msgid "user.usage_limit_GB"
 msgstr "⌛️ محدودیت حجم (گیگابایت)"
 
 msgid "user.user_links"
 msgstr "لینک‌های کاربر"
+
+msgid "vpn.notallowed"
+msgstr ""
+"شما باید بدون VPN از این صفحه بازدید کنید کشور شما =%(your_country)s\n"
+"انتظار می رود=%(expected_country)s"
 
 msgid "weekly"
 msgstr "📅 هفتگی"

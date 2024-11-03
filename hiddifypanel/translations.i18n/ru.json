@@ -136,7 +136,6 @@
   "Please Wait": "Пожалуйста, подождите...",
   "Please click on %(install)s to save the user page.": "Нажмите %(install)s, чтобы сохранить страницу пользователя",
   "Please connect your telegram account to the panel to be informed about latest news.": "Пожалуйста, подключите свой аккаунт Telegram к панели, чтобы быть в курсе последних новостей",
-  "Please connect your telegram accout to the panel to be informed about latest news.": "Пожалуйста, подключите свою учетную запись Telegram к панели, чтобы узнать статус вашей подписки",
   "Please create an issue on Github.": "Пожалуйста создайте проблему на Github.",
   "Please select at least one file.": "Выберите по крайней мере один файл.",
   "Please select at least one record.": "Выберите по крайней мере одну запись.",
@@ -153,7 +152,7 @@
   "RAM": "RAM",
   "REALITY Fallback domain is not compaitble with server names!": "REALITY Fallback Domain несовместим с именами серверов!",
   "Release": "✅ Релиз",
-  "Remaining about %(relative)s, exactly %(days)s days": "Осталось около %(относительно)s, ровно %(days)s дней",
+  "Remaining about %(relative)s, exactly %(days)s days": "Осталось около %(relative)s, ровно %(days)s дней",
   "Remote nodes are not supported yet!": "Удаленные узлы пока не поддерживаются!",
   "Rename File": "Переименовать файла",
   "Reset Filters": "Сброс Фильтров",
@@ -189,7 +188,7 @@
   "Sort by %(name)s": "Сортировать по %(name)s",
   "Start Date": "Дата начала",
   "Started %(days)s days ago": "Началось %(days)s дней назад",
-  "Started from %(relative)s": "Началось с %(относительного)s",
+  "Started from %(relative)s": "Началось с %(relative)s",
   "Status": "Статус",
   "Submit": "Подтвердить",
   "Success": "Успешно",
@@ -225,9 +224,6 @@
   "You can restore your configs from previously downloaded configs": "ℹ️ Вы можете восстановить свои конфигурации из ранее скачанного файла резервной копии.",
   "You have too much users! You can have only %(active)s active users and %(total)s users": "У вас слишком много пользователей! У вас может быть только %(активных) активных пользователей и %(всего) пользователей.",
   "You have used this domain in: ": "Вы уже используете этот домен в:",
-  "You should visit this page without VPN": {
-    " Your country=%(your_country)s\nexpected=%(expected_country)s": "Вы должны посетить эту страницу без VPN. Ваша страна=%(your_country)s\nожидаемый=%(expected_country)s"
-  },
   "Your hiddify instance information \nDomain: {} \nUsage limit: {} GB\nCurrent usage: {} GB\nExpires at: {} \nRemaining days: {} \n\n\n Happy using 🎉 🎉 🎉 \n": "Информация о вашем экземпляре Hiddify\nДомен: {}\nЛимит: {} ГБ\nИспользовано: {} ГБ\nСрок действия истекает: {}\nОставшиеся дни: {}\n\n\nУдачи! 🎉 🎉 🎉",
   "[Admin only visible message:] You can change this message from settings": "[Сообщение, видимое только администратору]: Вы можете изменить это сообщение в настройках",
   "actions": "Операции",
@@ -316,6 +312,10 @@
     "shadowrocket": {
       "description": "Описание Теневой Ракеты",
       "title": "Shadowrocket"
+    },
+    "singbox": {
+      "description": "",
+      "title": ""
     },
     "stash": {
       "description": "Описание Stash ",
@@ -798,6 +798,38 @@
       "description": "SSH Proxy, также известный как SSH tunnel или переадресация портов SSH, представляет собой метод создания безопасного канала связи между двумя компьютерами в незащищенной сети. У нас есть отдельное приложение, которое полностью отличается от стандартногно ssh-сервера и не может выполнять какие-либо команды.",
       "label": "SSH Proxy"
     },
+    "ssh_host_dsa_pk": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_dsa_pub": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_ecdsa_pk": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_ecdsa_pub": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_ed25519_pk": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_ed25519_pub": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_rsa_pk": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_rsa_pub": {
+      "description": "",
+      "label": ""
+    },
     "ssh_server_enable": {
       "description": "SSH Proxy полностью отличается от оригинального SSH Server",
       "label": "✔️ Включить SSH Poxy"
@@ -1074,6 +1106,11 @@
   },
   "log": "📄 Log",
   "login": {
+    "button": "",
+    "password": {
+      "description": "",
+      "label": ""
+    },
     "secret": {
       "description": "Для получения доступа к этой странице введите свой секретный код (UUID)",
       "label": "Секретный код (UUID)"
@@ -1240,8 +1277,17 @@
     },
     "last_reset_time": "Сброс даты последнего использования",
     "name": "Имя",
+    "password": {
+      "description": "",
+      "title": "",
+      "validation-lenght": "",
+      "validation-required": ""
+    },
     "usage_limit_GB": "⌛️ Лимит (GB)",
     "user_links": "Ссылки пользователей"
+  },
+  "vpn": {
+    "notallowed": "Вы должны посетить эту страницу без VPN. Ваша страна=%(your_country)s\nожидаемый=%(expected_country)s"
   },
   "weekly": "📅 Еженедельно",
   "worker": "✴️ Cloudflare Worker"

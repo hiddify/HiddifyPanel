@@ -494,13 +494,6 @@ msgstr ""
 "Conecte sua conta do Telegram ao painel para ser informado sobre as últimas "
 "novidades."
 
-msgid ""
-"Please connect your telegram accout to the panel to be informed about latest"
-" news."
-msgstr ""
-"Conecte sua conta do Telegram ao painel para saber o status mais recente da "
-"sua assinatura"
-
 msgid "Please create an issue on Github."
 msgstr "Por favor, crie um problema no Github"
 
@@ -822,13 +815,6 @@ msgid "You have used this domain in: "
 msgstr "Já utilizou este Domínio em:"
 
 msgid ""
-"You should visit this page without VPN. Your country=%(your_country)s\n"
-"expected=%(expected_country)s"
-msgstr ""
-"Você deve visitar esta página sem VPN Seu país =%(expected_country)s\n"
-"Esperado=%(expected_country)s"
-
-msgid ""
 "Your hiddify instance information \n"
 "Domain: {} \n"
 "Usage limit: {} GB\n"
@@ -1002,12 +988,6 @@ msgstr "HiddifyApp Descrição"
 msgid "app.hiddify.next.title"
 msgstr "HiddifyApp"
 
-msgid "app.singbox.title"
-msgstr "sing-box"
-
-msgid "app.singbox.description"
-msgstr "8cliente gráfico sing-box"
-
 msgid "app.hiddifyn.description"
 msgstr "Descrição do HiddifyN"
 
@@ -1037,6 +1017,12 @@ msgstr "Descrição do Foguete Sombrio"
 
 msgid "app.shadowrocket.title"
 msgstr "Shadowrocket"
+
+msgid "app.singbox.description"
+msgstr ""
+
+msgid "app.singbox.title"
+msgstr ""
 
 msgid "app.stash.description"
 msgstr "Descrição do Stash "
@@ -1894,6 +1880,54 @@ msgstr ""
 msgid "config.ssh.label"
 msgstr "Proxy SSH"
 
+msgid "config.ssh_host_dsa_pk.description"
+msgstr ""
+
+msgid "config.ssh_host_dsa_pk.label"
+msgstr ""
+
+msgid "config.ssh_host_dsa_pub.description"
+msgstr ""
+
+msgid "config.ssh_host_dsa_pub.label"
+msgstr ""
+
+msgid "config.ssh_host_ecdsa_pk.description"
+msgstr ""
+
+msgid "config.ssh_host_ecdsa_pk.label"
+msgstr ""
+
+msgid "config.ssh_host_ecdsa_pub.description"
+msgstr ""
+
+msgid "config.ssh_host_ecdsa_pub.label"
+msgstr ""
+
+msgid "config.ssh_host_ed25519_pk.description"
+msgstr ""
+
+msgid "config.ssh_host_ed25519_pk.label"
+msgstr ""
+
+msgid "config.ssh_host_ed25519_pub.description"
+msgstr ""
+
+msgid "config.ssh_host_ed25519_pub.label"
+msgstr ""
+
+msgid "config.ssh_host_rsa_pk.description"
+msgstr ""
+
+msgid "config.ssh_host_rsa_pk.label"
+msgstr ""
+
+msgid "config.ssh_host_rsa_pub.description"
+msgstr ""
+
+msgid "config.ssh_host_rsa_pub.label"
+msgstr ""
+
 msgid "config.ssh_server_enable.description"
 msgstr "O proxy SSH é completamente diferente do servidor ssh original."
 
@@ -2428,6 +2462,15 @@ msgstr "☑️ Python: baixo desempenho"
 msgid "log"
 msgstr "📄 Log"
 
+msgid "login.button"
+msgstr ""
+
+msgid "login.password.description"
+msgstr ""
+
+msgid "login.password.label"
+msgstr ""
+
 msgid "login.secret.description"
 msgstr "Para obter acesso a esta página, digite seu código secreto (UUID)"
 
@@ -2860,11 +2903,28 @@ msgstr "Redefinir para a última vez que ouve uso."
 msgid "user.name"
 msgstr "Nome"
 
+msgid "user.password.description"
+msgstr ""
+
+msgid "user.password.title"
+msgstr ""
+
+msgid "user.password.validation-lenght"
+msgstr ""
+
+msgid "user.password.validation-required"
+msgstr ""
+
 msgid "user.usage_limit_GB"
 msgstr "⌛️ Limite de uso (GB)"
 
 msgid "user.user_links"
 msgstr "Links de usuário"
+
+msgid "vpn.notallowed"
+msgstr ""
+"Você deve visitar esta página sem VPN Seu país =%(expected_country)s\n"
+"Esperado=%(expected_country)s"
 
 msgid "weekly"
 msgstr "📅 Semanal"

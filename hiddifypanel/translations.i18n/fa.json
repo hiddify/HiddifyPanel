@@ -136,7 +136,6 @@
   "Please Wait": "لطفا صبر کنید...",
   "Please click on %(install)s to save the user page.": "روی %(install)s کلیک کنید تا صفحه کاربر ذخیره شود.",
   "Please connect your telegram account to the panel to be informed about latest news.": "لطفا اکانت تلگرام خود را به پنل متصل کنید تا از آخرین اخبار مطلع شوید",
-  "Please connect your telegram accout to the panel to be informed about latest news.": "لطفا اکانت تلگرام خود را به پنل متصل کنید تا از آخرین وضعیت اشتراک خودتان مطلع شوید",
   "Please create an issue on Github.": "لطفاً یک مشکل در Github ایجاد کنید",
   "Please select at least one file.": "حداقل یک فایل انتخاب کنید",
   "Please select at least one record.": "حداقل یک پوشه انتخاب کنید",
@@ -225,9 +224,6 @@
   "You can restore your configs from previously downloaded configs": "ℹ️ در این قسمت می‌توانید تنظیمات قبلی خود را (که قبلا از قسمت پشتیبان گیری دانلود کرده‌اید.) بازگردانی نمایید.",
   "You have too much users! You can have only %(active)s active users and %(total)s users": "شما کاربران زیادی دارید! شما می توانید تنها %(active)s کاربر فعال و %(total)s کاربر داشته باشید",
   "You have used this domain in: ": "شما از این دامنه در بخش زیر استفاده کرده اید: ",
-  "You should visit this page without VPN": {
-    " Your country=%(your_country)s\nexpected=%(expected_country)s": "شما باید بدون VPN از این صفحه بازدید کنید کشور شما =%(your_country)s\nانتظار می رود=%(expected_country)s"
-  },
   "Your hiddify instance information \nDomain: {} \nUsage limit: {} GB\nCurrent usage: {} GB\nExpires at: {} \nRemaining days: {} \n\n\n Happy using 🎉 🎉 🎉 \n": "اطلاعات اکانت هیدیفای شما\nدامنه : {} \nمقدار حجم مجاز : {} گیگابایت\nحجم مصرف شده : {} گیگابایت\nتاریخ انقضا : {} \nروزهای باقی ‌مانده : {} \n\n\nبا آرزوی موفقیت. 🎉 🎉 🎉 ",
   "[Admin only visible message:] You can change this message from settings": "[پیام اختصاصی ادمین]: قابل تنظیم از طریق تنظیمات",
   "actions": "عملیات",
@@ -316,6 +312,10 @@
     "shadowrocket": {
       "description": "توضیحات Shadowrocket",
       "title": "Shadowrocket"
+    },
+    "singbox": {
+      "description": "",
+      "title": ""
     },
     "stash": {
       "description": "توضیحات Stash",
@@ -798,6 +798,38 @@
       "description": "پروکسی SSH که به عنوان تونل SSH یا ارسال پورت SSH نیز شناخته می شود، روشی امن برای ایجاد یک کانال ارتباطی امن بین دو ماشین در یک شبکه ناامن است. ما یک برنامه خاص داریم که کاملاً با سرور SSH متفاوت است. با این کانکشن کاربر نمی تواند هیچ دستوری را روی سرور اجرا کند",
       "label": "پروکسی SSH"
     },
+    "ssh_host_dsa_pk": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_dsa_pub": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_ecdsa_pk": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_ecdsa_pub": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_ed25519_pk": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_ed25519_pub": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_rsa_pk": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_rsa_pub": {
+      "description": "",
+      "label": ""
+    },
     "ssh_server_enable": {
       "description": "این SSH پروکسی با SSH سرور اصلی کاملا متفاوت است و امکان اجرای دستورات را ندارد",
       "label": "✔️ پروکسی SSH"
@@ -1074,6 +1106,11 @@
   },
   "log": "📄 لاگ",
   "login": {
+    "button": "",
+    "password": {
+      "description": "",
+      "label": ""
+    },
     "secret": {
       "description": "برای دسترسی به این صفحه، لطفا کد مخفی (UUID) خود را وارد کنید.",
       "label": "کد مخفی (UUID)"
@@ -1240,8 +1277,17 @@
     },
     "last_reset_time": "آخرین زمان ریست شدن حجم (روز پیش)",
     "name": "نام",
+    "password": {
+      "description": "",
+      "title": "",
+      "validation-lenght": "",
+      "validation-required": ""
+    },
     "usage_limit_GB": "⌛️ محدودیت حجم (گیگابایت)",
     "user_links": "لینک‌های کاربر"
+  },
+  "vpn": {
+    "notallowed": "شما باید بدون VPN از این صفحه بازدید کنید کشور شما =%(your_country)s\nانتظار می رود=%(expected_country)s"
   },
   "weekly": "📅 هفتگی",
   "worker": "✴️ ورکر کلودفلر"

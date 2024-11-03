@@ -136,7 +136,6 @@
   "Please Wait": "Por favor, aguarde...",
   "Please click on %(install)s to save the user page.": "Clique em %(install)s para salvar a página do usuário.",
   "Please connect your telegram account to the panel to be informed about latest news.": "Conecte sua conta do Telegram ao painel para ser informado sobre as últimas novidades.",
-  "Please connect your telegram accout to the panel to be informed about latest news.": "Conecte sua conta do Telegram ao painel para saber o status mais recente da sua assinatura",
   "Please create an issue on Github.": "Por favor, crie um problema no Github",
   "Please select at least one file.": "Por favor, selecione pelo menos um arquivo.",
   "Please select at least one record.": "Por favor, selecione pelo menos um registro.",
@@ -225,9 +224,6 @@
   "You can restore your configs from previously downloaded configs": "Você pode restaurar suas configurações do arquivo de backup baixado anteriormente",
   "You have too much users! You can have only %(active)s active users and %(total)s users": "Você tem muitos usuários! Você pode ter apenas %(active)s usuários ativos e %(total)s usuários",
   "You have used this domain in: ": "Já utilizou este Domínio em:",
-  "You should visit this page without VPN": {
-    " Your country=%(your_country)s\nexpected=%(expected_country)s": "Você deve visitar esta página sem VPN Seu país =%(expected_country)s\nEsperado=%(expected_country)s"
-  },
   "Your hiddify instance information \nDomain: {} \nUsage limit: {} GB\nCurrent usage: {} GB\nExpires at: {} \nRemaining days: {} \n\n\n Happy using 🎉 🎉 🎉 \n": "Suas informações de instância do Hiddify\nDomínio: {}\nLimite de uso: {} GB\nUso atual: {} GB\nExpira em: {}\nDias restantes: {}\n\n\nBoa sorte! 🎉 🎉 🎉",
   "[Admin only visible message:] You can change this message from settings": "[Mensagem visível apenas pelo administrador]: Você pode alterar esta mensagem nas configurações.",
   "actions": "Ações",
@@ -316,6 +312,10 @@
     "shadowrocket": {
       "description": "Descrição do Foguete Sombrio",
       "title": "Shadowrocket"
+    },
+    "singbox": {
+      "description": "",
+      "title": ""
     },
     "stash": {
       "description": "Descrição do Stash ",
@@ -798,6 +798,38 @@
       "description": "Um proxy SSH, também conhecido como túnel SSH ou encaminhamento de porta SSH, é um método seguro de criar um canal de comunicação seguro entre duas máquinas em uma rede insegura. Temos um aplicativo específico que é completamente diferente do servidor ssh e não pode executar nenhum comando",
       "label": "Proxy SSH"
     },
+    "ssh_host_dsa_pk": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_dsa_pub": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_ecdsa_pk": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_ecdsa_pub": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_ed25519_pk": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_ed25519_pub": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_rsa_pk": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_rsa_pub": {
+      "description": "",
+      "label": ""
+    },
     "ssh_server_enable": {
       "description": "O proxy SSH é completamente diferente do servidor ssh original.",
       "label": "✔️ Proxy SSH"
@@ -1074,6 +1106,11 @@
   },
   "log": "📄 Log",
   "login": {
+    "button": "",
+    "password": {
+      "description": "",
+      "label": ""
+    },
     "secret": {
       "description": "Para obter acesso a esta página, digite seu código secreto (UUID)",
       "label": "Código secreto (UUID)"
@@ -1240,8 +1277,17 @@
     },
     "last_reset_time": "Redefinir para a última vez que ouve uso.",
     "name": "Nome",
+    "password": {
+      "description": "",
+      "title": "",
+      "validation-lenght": "",
+      "validation-required": ""
+    },
     "usage_limit_GB": "⌛️ Limite de uso (GB)",
     "user_links": "Links de usuário"
+  },
+  "vpn": {
+    "notallowed": "Você deve visitar esta página sem VPN Seu país =%(expected_country)s\nEsperado=%(expected_country)s"
   },
   "weekly": "📅 Semanal",
   "worker": "✴️ Cloudflare Worker"
