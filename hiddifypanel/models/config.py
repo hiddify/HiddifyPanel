@@ -39,7 +39,7 @@ class StrConfig(db.Model, SerializerMixin):
     child_id = Column(Integer, ForeignKey('child.id'), primary_key=True, default=0)
     # category = db.Column(db.String(128), primary_key=True)
     key = Column(Enum(ConfigEnum), primary_key=True, default=ConfigEnum.admin_secret)
-    value = Column(String(2048))
+    value = Column(String(3072))
 
     def to_dict(self: "StrConfig"):
         return {

@@ -12,7 +12,12 @@ from hiddifypanel import hutils
 
 
 def get_ssh_hostkeys(hconfigs,dojson=False) -> list[str] | str:
-    host_keys = [hconfigs[ConfigEnum.ssh_host_dsa_pub],hconfigs[ConfigEnum.ssh_host_rsa_pub],hconfigs[ConfigEnum.ssh_host_ecdsa_pub], hconfigs[ConfigEnum.ssh_host_ed25519_pub]]
+    host_keys = [
+        # hconfigs[ConfigEnum.ssh_host_dsa_pub],
+        hconfigs[ConfigEnum.ssh_host_ed25519_pub],
+        hconfigs[ConfigEnum.ssh_host_ecdsa_pub], 
+        hconfigs[ConfigEnum.ssh_host_rsa_pub],
+    ]
     if dojson:
         return json.dumps(host_keys)
     return host_keys

@@ -72,3 +72,4 @@ def generate_ssh_host_keys():
 
         os.remove(key_file)
         os.remove(f"{key_file}.pub")  # Remove the public key if not needed
+    return keys_dict
