@@ -70,6 +70,7 @@ requests = "2.31.0"
 pytelegrambotapi = "4.22.1"
 user-agents = "2.2.0"
 xtlsapi = "3.1.2"
+mysqlclient = "^2.2.5"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.3"
