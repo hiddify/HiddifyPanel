@@ -43,9 +43,9 @@ def init_app(app: APIFlask):
         logger.exception(e)
         if isinstance(e, Exception):
             if hutils.flask.is_api_call(request.path):
-                return {
+                return jsonify({
                     'msg': str(e),
-                }, 500
+                }), 500
 
         if hasattr(e, 'code') and e.code == 404:
             return jsonify({
@@ -65,7 +65,7 @@ def init_app(app: APIFlask):
                             'version': hiddifypanel.__version__,
                             }), 500
 
-        trace = traceback.format_exc()
+        trace = traceback.format_exc(e)
 
         # Create github issue link
         issue_link = hutils.github_issue.generate_github_issue_link_for_500_error(e, trace)
