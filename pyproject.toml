@@ -47,13 +47,13 @@ sqlalchemy-utils = "0.41.2"
 sqlalchemy-serializer = "1.4.22"
 sqlalchemy = "2.0.29"
 strenum = "0.4.15"
-wtforms = "3.2.1"
+wtforms = "3.1.2"
 werkzeug = "3.1.2"
 ansi2html = "1.9.2"
 bjoern = "3.2.2"
 click = "8.1.7"
 cloudflare = "3.1.0"
-cryptography = "43.0.3"
+cryptography = "<42"
 fastenumplus = "1.4.0"
 flask-apispec = "0.11.4"
 flask-babel = "4.0.0"
@@ -72,6 +72,7 @@ pytelegrambotapi = "4.23.0"
 user-agents = "2.2.0"
 xtlsapi = "3.1.2"
 mysqlclient = "2.2.5"
+cachecontrol = {version = "<0.15.0", extras = ["filecache"]}
 
 
 [tool.poetry.group.dev.dependencies]
