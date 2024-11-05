@@ -38,7 +38,7 @@ class UserAdmin(AdminLTEModelView):
     }
     list_template = 'model/user_list.html'
 
-    form_columns = ["name", "comment", "usage_limit", "reset_usage", "package_days", "reset_days", "mode", "uuid", "enable",]
+    form_columns = ["name","comment", "usage_limit", "reset_usage", "package_days", "reset_days", "mode", "uuid", "enable"]
     # form_excluded_columns = ['current_usage', 'monthly', 'telegram_id', 'last_online', 'expiry_time', 'last_reset_time', 'current_usage_GB',
     #  'start_date', 'added_by', 'admin', 'details', 'max_ips', 'ed25519_private_key', 'ed25519_public_key', 'username', 'password']
     page_size = 50
@@ -48,7 +48,6 @@ class UserAdmin(AdminLTEModelView):
     # can_export = True
     # form_overrides = dict(monthly=SwitchField)
     form_overrides = {
-
         'start_date': custom_widgets.DaysLeftField,
         'mode': custom_widgets.EnumSelectField,
         'usage_limit': custom_widgets.UsageField
@@ -225,11 +224,13 @@ class UserAdmin(AdminLTEModelView):
 
     def on_form_prefill(self, form, id=None):
         # print("================",form._obj.start_date)
-        if id is None or form._obj is None or form._obj.start_date is None:
+        if id is None or form._obj is None or form._obj.start_date is None or form._obj.current_usage==0:
             msg = _("Package not started yet.")
             # form.reset['class']="d-none"
-            delattr(form, 'reset_days')
-            delattr(form, 'reset_usage')
+            if form._obj.start_date is None:
+                delattr(form, 'reset_days')
+            if form._obj.current_usage==0:
+                delattr(form, 'reset_usage')
             # delattr(form,'disable_user')
         else:
             remaining = form._obj.remaining_days  # remaining_days(form._obj)
