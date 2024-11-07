@@ -136,7 +136,6 @@
   "Please Wait": "S'il vous plaît, attendez...",
   "Please click on %(install)s to save the user page.": "Cliquez sur %(install)s pour enregistrer la page utilisateur.",
   "Please connect your telegram account to the panel to be informed about latest news.": "Veuillez connecter votre compte Telegram au panel pour être informé des dernières nouvelles",
-  "Please connect your telegram accout to the panel to be informed about latest news.": "Veuillez connecter votre compte Telegram au panneau pour connaître le dernier statut de votre abonnement",
   "Please create an issue on Github.": "Veuillez créer un problème sur Github",
   "Please select at least one file.": "Veuillez sélectionner au moins un fichier.",
   "Please select at least one record.": "Veuillez sélectionner au moins un enregistrement.",
@@ -225,9 +224,6 @@
   "You can restore your configs from previously downloaded configs": "ℹ️ Vous pouvez restaurer vos configurations à partir du fichier de sauvegarde précédemment téléchargé",
   "You have too much users! You can have only %(active)s active users and %(total)s users": "Vous avez trop d'utilisateurs ! Vous ne pouvez avoir que %(active)s utilisateurs actifs et %(total)s utilisateurs",
   "You have used this domain in: ": "Vous avez déjà utilisé ce domaine dans : ",
-  "You should visit this page without VPN": {
-    " Your country=%(your_country)s\nexpected=%(expected_country)s": "Vous devriez visiter cette page sans VPN Votre pays =%(votre_pays)s\nAttendu=%(expected_country)s"
-  },
   "Your hiddify instance information \nDomain: {} \nUsage limit: {} GB\nCurrent usage: {} GB\nExpires at: {} \nRemaining days: {} \n\n\n Happy using 🎉 🎉 🎉 \n": "Informations sur votre instance Hiddify\nDomaine: {}\nLimite d'utilisation : {} Go\nUtilisation actuelle : {} Go\nExpire à : {}\nJours restants: {}<inlang-LineFeed><inlang-LineFeed>\nBonne chance! 🎉 🎉 🎉<inlang-LineFeed>",
   "[Admin only visible message:] You can change this message from settings": "[Message exclusif à l'administrateur] : personnalisable via les paramètres",
   "actions": "Actions",
@@ -1244,5 +1240,9 @@
     "user_links": "Liens utilisateur"
   },
   "weekly": "📅 Hebdomadaire",
-  "worker": "✴️ Cloudflare Worker"
+  "worker": "✴️ Cloudflare Worker",
+  "Please connect your telegram accout to the panel to be informed about latest news.": "Veuillez connecter votre compte Telegram au panneau pour connaître le dernier statut de votre abonnement",
+  "You should visit this page without VPN": {
+    " Your country=%(your_country)s\nexpected=%(expected_country)s": "Vous devriez visiter cette page sans VPN Votre pays =%(votre_pays)s\nAttendu=%(expected_country)s"
+  }
 }

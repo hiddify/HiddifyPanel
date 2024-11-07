@@ -136,7 +136,6 @@
   "Please Wait": "ကျေးဇူးပြု၍ ခေတ္တစောင့်ပါ...",
   "Please click on %(install)s to save the user page.": "အသုံးပြုသူစာမျက်နှာအား သိမ်းဆည်းရန် %(install)s ကို နှိပ်ပါ။",
   "Please connect your telegram account to the panel to be informed about latest news.": "နောက်ဆုံးရသတင်းများအကြောင်း အသိပေးရန်အတွက် သင်၏ တယ်လီဂရမ် အကောင့်ကို Panel သို့ ချိတ်ဆက်ပါ။",
-  "Please connect your telegram accout to the panel to be informed about latest news.": "သင်၏စာရင်းသွင်းမှု၏နောက်ဆုံးအခြေအနေကိုသိရန် သင်၏ တယ်လီဂရမ် အကောင့်ကို ပန်နယ်သို့ ချိတ်ဆက်ပါ။",
   "Please create an issue on Github.": "Github တွင် ပြဿနာတစ်ခုအတွက် ကျေးဇူးပြု၍ ဖန်တီးပါ",
   "Please select at least one file.": "ကျေးဇူးပြု၍ အနည်းဆုံး ဖိုင်တစ်ခုကို ရွေးပါ။",
   "Please select at least one record.": "ကျေးဇူးပြု၍ အနည်းဆုံး မှတ်တမ်းတစ်ခုကို ရွေးပါ။",
@@ -225,9 +224,6 @@
   "You can restore your configs from previously downloaded configs": "ℹ️ ယခင်က ဒေါင်းလုဒ်လုပ်ထားသော အရန်ဖိုင်မှ သင့် configuration ကို ပြန်လည်ရယူနိုင်သည်။",
   "You have too much users! You can have only %(active)s active users and %(total)s users": "သင့်တွင် အသုံးပြုသူများ အလွန်များပါသည်။ သင့်တွင် အသုံးပြုသူ %(active)s ဦးနှင့် အသုံးပြုသူ %(total)s ဦးသာ ရှိနိုင်ပါသည်။",
   "You have used this domain in: ": "သင်သည် ဤဒိုမိန်းကို အသုံးပြုပြီးဖြစ်သည်- ",
-  "You should visit this page without VPN": {
-    " Your country=%(your_country)s\nexpected=%(expected_country)s": "သင့်နိုင်ငံ =%(your_country)s ကို VPN မပါဘဲ ဤစာမျက်နှာသို့ သင်သွားရောက်ကြည့်ရှုသင့်သည်။\nမျှော်မှန်း=%(expected_country)s"
-  },
   "Your hiddify instance information \nDomain: {} \nUsage limit: {} GB\nCurrent usage: {} GB\nExpires at: {} \nRemaining days: {} \n\n\n Happy using 🎉 🎉 🎉 \n": "သင်၏ Hiddify အသင့် အချက်အလက်\nဒိုမိန်း- {}\nအသုံးပြုမှု ကန့်သတ်ချက်- {} GB\nလက်ရှိအသုံးပြုမှု- {} GB\nသက်တမ်းကုန်ဆုံးချိန် - {}\nလက်ကျန်ရက်များ- {}\n\n\nကံကောင်းပါစေ။ 🎉 🎉 🎉",
   "[Admin only visible message:] You can change this message from settings": "[Admin Exclusive Message]- ဆက်တင်များမှတစ်ဆင့် စိတ်ကြိုက်ပြင်ဆင်နိုင်သည်။",
   "actions": "လုပ်ဆောင်မှုများ",
@@ -1244,5 +1240,9 @@
     "user_links": "အသုံးပြုသူ လင့်ခ်များ"
   },
   "weekly": "📅 အပတ်စဉ်",
-  "worker": "✴️ ကလောက်ဖဲ အလုပ်သမား"
+  "worker": "✴️ ကလောက်ဖဲ အလုပ်သမား",
+  "Please connect your telegram accout to the panel to be informed about latest news.": "သင်၏စာရင်းသွင်းမှု၏နောက်ဆုံးအခြေအနေကိုသိရန် သင်၏ တယ်လီဂရမ် အကောင့်ကို ပန်နယ်သို့ ချိတ်ဆက်ပါ။",
+  "You should visit this page without VPN": {
+    " Your country=%(your_country)s\nexpected=%(expected_country)s": "သင့်နိုင်ငံ =%(your_country)s ကို VPN မပါဘဲ ဤစာမျက်နှာသို့ သင်သွားရောက်ကြည့်ရှုသင့်သည်။\nမျှော်မှန်း=%(expected_country)s"
+  }
 }
