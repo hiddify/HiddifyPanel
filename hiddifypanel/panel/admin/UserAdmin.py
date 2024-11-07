@@ -27,7 +27,7 @@ from hiddifypanel import hutils
 class UserAdmin(AdminLTEModelView):
     column_default_sort = ('id', False)  # Sort by username in ascending order
 
-    column_sortable_list = ["is_active", "name", "current_usage", 'mode', "remaining_days", "comment", 'last_online', "uuid", 'remaining_days']
+    column_sortable_list = ["is_active", "name", "current_usage", 'mode', "remaining_days","max_ips", "comment", 'last_online', "uuid", 'remaining_days']
     column_searchable_list = ["uuid", "name"]
     column_list = ["is_active", "name", "UserLinks", "current_usage", "remaining_days", "comment", 'last_online', 'mode', 'admin', "uuid"]
     column_editable_list = ["comment", "name", "uuid"]
@@ -37,7 +37,7 @@ class UserAdmin(AdminLTEModelView):
         # 'disable_user': SwitchField(_("Disable User"))
     }
     list_template = 'model/user_list.html'
-
+# "max_ips",
     form_columns = ["name","comment", "usage_limit", "reset_usage", "package_days", "reset_days", "mode", "uuid", "enable"]
     # form_excluded_columns = ['current_usage', 'monthly', 'telegram_id', 'last_online', 'expiry_time', 'last_reset_time', 'current_usage_GB',
     #  'start_date', 'added_by', 'admin', 'details', 'max_ips', 'ed25519_private_key', 'ed25519_public_key', 'username', 'password']
@@ -70,7 +70,8 @@ class UserAdmin(AdminLTEModelView):
             'validators': [Regexp(r'^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$', message=__("Should be a valid uuid"))]
             #     'label': 'First Name',
             #     'validators': [required()]
-        }
+        },
+        
         # ,
         # 'expiry_time':{
         # "":'%Y-%m-%d'

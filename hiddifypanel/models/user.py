@@ -76,7 +76,7 @@ class User(BaseAccount, SerializerMixin):
     current_usage = db.Column(db.BigInteger, default=0, nullable=False)
     last_reset_time = db.Column(db.Date, default=datetime.date.today())
     added_by = db.Column(db.Integer, db.ForeignKey('admin_user.id'), default=1)
-    max_ips = db.Column(db.Integer, default=1000, nullable=False)
+    max_ips = db.Column(db.Integer, default=100, nullable=False)
     details = db.relationship('UserDetail', cascade="all,delete", backref='user', lazy='dynamic',)
     enable = db.Column(db.Boolean, default=True, nullable=False)
     ed25519_private_key = db.Column(db.String(500), default="")
