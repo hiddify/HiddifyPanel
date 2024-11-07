@@ -206,7 +206,7 @@
   "Turn of VPN": "فیلترشکن را خاموش کنید",
   "Unified link for all application.": "لینک یکسان برای همه برنامه‌ها",
   "Upload File": "آپلود فایل",
-  "Use HiddifyNext:": "استفاده از HiddifyNext:",
+  "Use HiddifyNext:": "استفاده از Hiddify:",
   "User activated!": "یوزر شما فعال شد",
   "User is inactive": "کاربر غیر فعال است",
   "V2rayNG": "نرم افزار جایگزین  v2rayNG  <button class='btn btn-sm btn-default' onclick='show_video('android-v2rayng')'><i class='fa-solid fa-question'></i> </button>\n<br />",
@@ -575,7 +575,7 @@
       "label": "⬆️ آپلود (mbps) MUX Brutal"
     },
     "mux_enable": {
-      "description": "<p style=\"direction:rtl\">Mux به نرم افزار سازگار نیاز دارد. Mux در Hiddify Next و Singbox و XRay سازگار نیستند.&nbsp;<a href=\"https://hiddify.com/fa/manager/basic-concepts-and-troubleshooting/How-MUX-works-and-its-usage/\" target=\"_blank\">(بیشتر بدانید)</a></p>",
+      "description": "<p style=\"direction:rtl\">Mux به نرم افزار سازگار نیاز دارد. Mux در Hiddify و Singbox و XRay سازگار نیستند.&nbsp;<a href=\"https://hiddify.com/fa/manager/basic-concepts-and-troubleshooting/How-MUX-works-and-its-usage/\" target=\"_blank\">(بیشتر بدانید)</a></p>",
       "label": "Ⓜ️ MUX (⚠️ ناسازگار با برخی نرم افزارها)"
     },
     "mux_max_connections": {
@@ -983,7 +983,7 @@
       "label": "وایرگارد"
     },
     "wireguard_enable": {
-      "description": "<p>WireGuard پروتکل مبتنی بر UDP است. (⚠️ فقط در <a href=\"https://github.com/hiddify/hiddify-next\" target=\"_blank\">Hiddify Next</a> کار می کند)</p>",
+      "description": "<p>WireGuard پروتکل مبتنی بر UDP است. (⚠️ فقط در <a href=\"https://github.com/hiddify/hiddify-app\" target=\"_blank\">Hiddify Next</a> کار می کند)</p>",
       "label": "🐉 وایرگارد"
     },
     "wireguard_ipv4": {

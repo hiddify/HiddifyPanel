@@ -206,7 +206,7 @@
   "Turn of VPN": "Turn Off VPN",
   "Unified link for all application.": "One-click setup link for all applications (recommended)",
   "Upload File": "Upload File",
-  "Use HiddifyNext:": "Use HiddifyNext:",
+  "Use HiddifyNext:": "Use Hiddify:",
   "User activated!": "User Activated",
   "User is inactive": "User Is Inactive",
   "V2rayNG": "Alternative v2rayNG <button class='btn btn-sm btn-default' onclick='show_video('android-v2rayng')'><i class='fa-solid fa-question'></i> </button>\n<br />\n<br />",
@@ -497,7 +497,7 @@
       "label": "☑️ Allow HTTP Connection"
     },
     "httpupgrade_enable": {
-      "description": "<p>HTTPUpgrade complete a HTTP 1.1 Upgrade request and response before using the connection directly. It is similar to WebSocket in the way it create an direction channel that can be forwarded by many reverse proxies and CDNs, without the need to deal with all the issue around WebSocket Protocol itself.<br />\n⚠️ <strong>Not Available in Xray based Clients. Only HiddifyNext, Singbox, and V2fly clients are supported.</strong>&nbsp;<a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/Basic-Concepts/#http-upgrade\" target=\"_blank\"><strong>(Read More)</strong></a></p>",
+      "description": "<p>HTTPUpgrade complete a HTTP 1.1 Upgrade request and response before using the connection directly. It is similar to WebSocket in the way it create an direction channel that can be forwarded by many reverse proxies and CDNs, without the need to deal with all the issue around WebSocket Protocol itself.<br />\n⚠️ <strong>Not Available in Xray based Clients. Only Hiddify, Singbox, and V2fly clients are supported.</strong>&nbsp;<a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/Basic-Concepts/#http-upgrade\" target=\"_blank\"><strong>(Read More)</strong></a></p>",
       "label": "🆙 HTTPUpgrade Method"
     },
     "hysteria": {
@@ -579,7 +579,7 @@
       "label": "⬆️ MUX Brutal Upload (mbps)"
     },
     "mux_enable": {
-      "description": "<p>Mux needs compatible clients. Mux in Hiddify Next and Singbox are not compatible with XRay.&nbsp;<a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-MUX-works-and-its-usage/\" target=\"_blank\">(Read More)</a></p>",
+      "description": "<p>Mux needs compatible clients. Mux in Hiddify and Singbox are not compatible with XRay.&nbsp;<a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-MUX-works-and-its-usage/\" target=\"_blank\">(Read More)</a></p>",
       "label": "Ⓜ️ MUX (⚠️ Incompatible With Some Clients)"
     },
     "mux_max_connections": {
@@ -1019,7 +1019,7 @@
       "label": "WireGuard"
     },
     "wireguard_enable": {
-      "description": "<p>WireGuard is UDP based protocol. (⚠️ It is Working In <a href=\"https://github.com/hiddify/hiddify-next\" target=\"_blank\">Hiddify Next</a>)</p>",
+      "description": "<p>WireGuard is UDP based protocol. (⚠️ It is Working In <a href=\"https://github.com/hiddify/hiddify-app\" target=\"_blank\">Hiddify Next</a>)</p>",
       "label": "🐉 WireGuard"
     },
     "wireguard_ipv4": {
