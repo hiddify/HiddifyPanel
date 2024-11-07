@@ -72,7 +72,7 @@ def get_lang_form(empty=False):
             default=hconfig(ConfigEnum.admin_lang))
         # lang=wtf.SelectField(_("config.lang.label"),choices=[("en",_("lang.en")),("fa",_("lang.fa"))],description=_("config.lang.description"),default=hconfig(ConfigEnum.lang))
         country = wtf.SelectField(
-            _("config.country.label"), choices=[("ir", _("Iran")), ("zh", _("China")), ("other", "Others")],
+            _("config.country.label"), choices=[("ir", _("Iran")), ("zh", _("China")), ("ru", _("Russia")),  ("other", "Others")],
             description=_("config.country.description"),
             default=hconfig(ConfigEnum.country))
         lang_submit = wtf.SubmitField(_('Submit'))
