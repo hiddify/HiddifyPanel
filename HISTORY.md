@@ -43,6 +43,8 @@
 
 #### Other
 
+* Update translations. 
+
 * Chore: update translations with Fink 🐦 
 
 * Chore: update translations with Fink 🐦 

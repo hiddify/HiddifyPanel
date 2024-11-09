@@ -111,7 +111,7 @@ endif
 	@gitchangelog > HISTORY.md
 	@git tag -d v$${TAG}
 	@make prepare
-	@git add hiddifypanel/VERSION hiddifypanel/VERSION.py HISTORY.md hiddifypanel/templates/fake.html
+	@git add hiddifypanel/VERSION hiddifypanel/VERSION.py HISTORY.md hiddifypanel/templates/fake.html pyproject.toml
 	@git add hiddifypanel/translations/* hiddifypanel/translations.i18n/*
 	@git commit -m "release: version $${TAG} 🚀"
 	@echo "creating git tag : $${TAG}"
