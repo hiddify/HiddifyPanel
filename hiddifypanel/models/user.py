@@ -347,6 +347,6 @@ class User(BaseAccount, SerializerMixin):
 def on_user_insert(mapper, connection, target):
     from hiddifypanel import hutils
     hutils.model.gen_username(target)
-    hutils.model.gen_password(target)
+    # hutils.model.gen_password(target)
     hutils.model.gen_ed25519_keys(target)
     hutils.model.gen_wg_keys(target)

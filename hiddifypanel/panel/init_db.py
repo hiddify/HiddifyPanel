@@ -257,12 +257,12 @@ def _v59():
     # set user model username and password
     for u in User.query.all():
         hutils.model.gen_username(u)
-        hutils.model.gen_password(u)
+        # hutils.model.gen_password(u)
 
     # set admin model username and password
     for a in AdminUser.query.all():
         hutils.model.gen_username(a)
-        hutils.model.gen_password(a)
+        # hutils.model.gen_password(a)
 
 
 def _v57():
