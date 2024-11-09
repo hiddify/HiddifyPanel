@@ -1,6 +1,171 @@
 # Changelog
 
 
+## (unreleased)
+
+#### New
+
+* Disable auto password generation. 
+
+* Add max ip api. 
+
+* Allow reset usage after reset days. 
+
+* Update translations. 
+
+* Fetch xray configs if use xray backend in hiddify next is enabled. 
+
+* Make dotenv loads from app.cfg. 
+
+* Add password auth in REDIS_URI. 
+
+* Add local host keys in sub link. 
+
+* Set ssh host keys from configs to be able to make backup. 
+
+* Add password for admins. 
+
+#### Changes
+
+* Update dependencies. 
+
+#### Fix
+
+* Exception view in api. 
+
+* Csrf issue in proxy. 
+
+* Missed package. 
+
+* Mysqlclient. 
+
+* Cache iisue. 
+
+#### Other
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Update dependencies. 
+
+* Update cloudflare api. 
+
+* Update. 
+
+* Remove unused packages. 
+
+* Update translations. 
+
+* Add reset owner password cli. 
+
+* Enabling CSRF for Panel. 
+
+* Switching to poetry. 
+
+* Save ssh host keys in the databse. 
+
+* Merge pull request #224 from legiz-ru/updateapplinks. 
+  _add hiddify ios client(Update apps_api.py)_
+
+* Add hiddify ios client(Update apps_api.py) 
+
+* Merge pull request #223 from legiz-ru/updateapplinks. 
+  _Add sing-box graphic client + fix v2rayng github url (Update apps_api_.py)_
+
+* Fix MacOS singbox DMG download apps_api.py. 
+
+* Change sorting app list apps_api.py. 
+
+* Fix direct macos dmg sing-box apps_api.py. 
+
+* Fix direct github download sing-box android apps_api.py. 
+
+* Fix direct android apk sing-box apps_api.py. 
+
+* Fix v2rayng and sing-box android direct link. 
+  _Update apps_api.py_
+
+* Apps_api.py correct apps_data += 
+
+* Merge pull request #1 from legiz-ru/updateapplinks2. 
+  _add sing-box apps_api_
+
+* Add sing-box apps_api. 
+
+* Add sing-box (en lang) 
+
+* Add sing-box (pt lang) 
+
+* Add sing-box (fa lang) 
+
+* Add sing-box (ru lang) 
+
+* Add sing-box. 
+
+* Add sing-box. 
+
+* Add singbox ico. 
+
+* Merge pull request #221 from ninjastrikers/main. 
+  _Adding Burmese (my) translations_
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Merge pull request #222 from legiz-ru/main. 
+  _Fix for RU sing-box config [Update base_singbox_config.json.j2]_
+
+* Update base_singbox_config.json.j2. 
+  _fixing sing-box json for bypass geosite-ru geoip-ru https://github.com/hiddify/Hiddify-Manager/issues/4545_
+
+* Update translations. 
+
+
+
 ## v10.70.7 (2024-08-19)
 
 #### Other

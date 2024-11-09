@@ -313,6 +313,10 @@
       "description": "توضیحات Shadowrocket",
       "title": "Shadowrocket"
     },
+    "singbox": {
+      "description": "",
+      "title": ""
+    },
     "stash": {
       "description": "توضیحات Stash",
       "title": "Stash"
@@ -794,6 +798,38 @@
       "description": "پروکسی SSH که به عنوان تونل SSH یا ارسال پورت SSH نیز شناخته می شود، روشی امن برای ایجاد یک کانال ارتباطی امن بین دو ماشین در یک شبکه ناامن است. ما یک برنامه خاص داریم که کاملاً با سرور SSH متفاوت است. با این کانکشن کاربر نمی تواند هیچ دستوری را روی سرور اجرا کند",
       "label": "پروکسی SSH"
     },
+    "ssh_host_dsa_pk": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_dsa_pub": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_ecdsa_pk": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_ecdsa_pub": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_ed25519_pk": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_ed25519_pub": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_rsa_pk": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_rsa_pub": {
+      "description": "",
+      "label": ""
+    },
     "ssh_server_enable": {
       "description": "این SSH پروکسی با SSH سرور اصلی کاملا متفاوت است و امکان اجرای دستورات را ندارد",
       "label": "✔️ پروکسی SSH"
@@ -1070,6 +1106,11 @@
   },
   "log": "📄 لاگ",
   "login": {
+    "button": "",
+    "password": {
+      "description": "",
+      "label": ""
+    },
     "secret": {
       "description": "برای دسترسی به این صفحه، لطفا کد مخفی (UUID) خود را وارد کنید.",
       "label": "کد مخفی (UUID)"
@@ -1236,6 +1277,12 @@
     },
     "last_reset_time": "آخرین زمان ریست شدن حجم (روز پیش)",
     "name": "نام",
+    "password": {
+      "description": "",
+      "title": "",
+      "validation-lenght": "",
+      "validation-required": ""
+    },
     "usage_limit_GB": "⌛️ محدودیت حجم (گیگابایت)",
     "user_links": "لینک‌های کاربر"
   },
