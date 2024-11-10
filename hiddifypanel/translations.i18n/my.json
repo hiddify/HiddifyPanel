@@ -101,7 +101,7 @@
   "Invalid admin link": "စီမံခန့်ခွဲသူ လင့်ခ် မရေရာ",
   "Iran": "🇮🇷 အီရန်",
   "It seems that you are using default domain (%(domain)s) which is not recommended.": "သင်သည် အကြံပြုခြင်းမရှိသည့် မူရင်းဒိုမိန်း (%(domain)s) ကို အသုံးပြုနေပုံရသည်။ ကျေးဇူးပြု၍ ၎င်းကို ဒိုမိန်းကဏ္ဍမှ ပြောင်းပါ သို့မဟုတ် ဖယ်ရှားပါ။",
-  "It will override the root admin to the current user": "၎င်းသည် အရန်ဖိုင်၏ပိုင်ရှင်စီမံခန့်ခွဲသူကို လက်ရှိအသုံးပြုသူထံသို့ အစားထိုးမည်ဖြစ်သည်။",
+  "It will override the root admin to the current user": "यह बैकअप फ़ाइल के मालिक प्रशासन को वर्तमान प्रशासन में ओवरराइड कर देगा।.",
   "Join our Hiddify Telegram channel to get the latest updates on Hiddify.": "Hiddify ၏နောက်ဆုံးထွက်မွမ်းမံမှုများကိုရယူရန် ကျွန်ုပ်တို့၏ Hiddify Telegram ချန်နယ်သို့ ဝင်ရောက်ပါ။",
   "Last Online": "နောက်ဆုံး ချိတ်ဆက်မှု",
   "Link is changed!": "ℹ️ လင့်ခ် ပြောင်းလဲခဲ့သည်",
@@ -543,7 +543,7 @@
       "label": "KCP Ports"
     },
     "lang": {
-      "description": "အသုံးပြုသူများဧရိယာအတွက် ဘာသာစကားကို ရွေးချယ်ပါ။",
+      "description": "အသုံးပြုသူဧရိယာရှိ သင့်အတွေ့အကြုံကို ပုဂ္ဂိုလ်ရေးသီးသန့်ပြုလုပ်ရန် အသုံးပြုသူမျက်နှာပြင်အတွက် ဘာသာစကားကို ရွေးချယ်ပါ။",
       "label": "🗺️ အသုံးပြုသူ ဧရိယာ ဘာသာစကား"
     },
     "last_hash": {
@@ -1254,10 +1254,13 @@
     "usage_limit_GB": "⌛️ အသုံးပြုမှု ကန်သတ်ချက် (GB)",
     "user_links": "အသုံးပြုသူ လင့်ခ်များ"
   },
+  "vpn": {
+    "notallowed": "သင်သည် VPN မပါဘဲ ဤစာမျက်နှာကို ဝင်ကြည့်သင့်သည်။ သင့်မျှော်လင့်ထားသည့် %(your_country)s = %(expected_country)s"
+  },
   "weekly": "📅 အပတ်စဉ်",
   "worker": "✴️ ကလောက်ဖဲ အလုပ်သမား",
   "Please connect your telegram accout to the panel to be informed about latest news.": "နောက်ဆုံးသတင်းများအကြောင်း အသိပေးရန်အတွက် သင်၏ Telegram အကောင့်ကို HiddifyManager သို့ ချိတ်ဆက်ပါ။",
   "You should visit this page without VPN": {
-    " Your country=%(your_country)s\nexpected=%(expected_country)s": "သင့်နိုင်ငံ =%(your_country)s ကို VPN မပါဘဲ ဤစာမျက်နှာသို့ သင်သွားရောက်ကြည့်ရှုသင့်သည်။\nမျှော်မှန်း=%(expected_country)s"
+    " Your country=%(your_country)s\nexpected=%(expected_country)s": "သင်သည် VPN မပါဘဲ ဤစာမျက်နှာကို ဝင်ကြည့်သင့်သည်။ သင့်မျှော်လင့်ထားသည့် %(your_country)s = %(expected_country)s"
   }
 }

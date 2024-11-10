@@ -101,7 +101,7 @@
   "Invalid admin link": "Lien d'administration invalide",
   "Iran": "l'Iran",
   "It seems that you are using default domain (%(domain)s) which is not recommended.": "Il semble que vous utilisiez le domaine par défaut (%(domain)s), ce qui n'est pas recommandé. Veuillez le modifier ou le supprimer de la section domaine.",
-  "It will override the root admin to the current user": "Il remplacera l'administrateur propriétaire du fichier de sauvegarde par l'utilisateur actuel",
+  "It will override the root admin to the current user": "Cela remplacera l'administrateur propriétaire du fichier de sauvegarde par l'administrateur actuel.",
   "Join our Hiddify Telegram channel to get the latest updates on Hiddify.": "Rejoignez notre chaîne Hiddify Telegram pour obtenir les dernières mises à jour sur Hiddify.",
   "Last Online": "Dernière connexion",
   "Link is changed!": "ℹ️ Le lien est modifié !",
@@ -213,7 +213,7 @@
   "V2rayNG intro": "Veuillez installer v2rayNG à partir de l'un de ces liens : %(dl_link)s %(play_link)s.\nCopiez ensuite le lien ci-dessous et collez-le dans v2rayNG selon le tutoriel vidéo <button class='btn btn-sm btn-default' onclick='show_video('android-v2rayng')'><i class='fa-solid fa-question'></i></button> .<inlang-LineFeed><br />",
   "View in Telegram": "Afficher dans Telegram",
   "Want to enjoy more with telegram?": "ℹ️ Connectez votre compte à Telegram",
-  "Welcome %(user)s": "Bienvenue %(utilisateur)s",
+  "Welcome %(user)s": "Bienvenue %(user)s",
   "Why Going to Premium?": "Pourquoi passer au Premium ?",
   "Will Start in %(days)s days": "Commencera dans %(days)s jours",
   "Windows": "les fenêtres",
@@ -543,7 +543,7 @@
       "label": "Ports KCP"
     },
     "lang": {
-      "description": "Choisir la langue pour la zone utilisateurs",
+      "description": "Sélectionnez la langue de l'interface utilisateur pour personnaliser votre expérience dans l'espace utilisateur.",
       "label": "🗺️ Langue de la zone utilisateur"
     },
     "last_hash": {
@@ -1254,10 +1254,13 @@
     "usage_limit_GB": "⌛️ Limite d'utilisation (Go)",
     "user_links": "Liens utilisateur"
   },
+  "vpn": {
+    "notallowed": "Vous devriez visiter cette page sans VPN. Votre %(your_country)s attendu = %(expected_country)s"
+  },
   "weekly": "📅 Hebdomadaire",
   "worker": "✴️ Cloudflare Worker",
   "Please connect your telegram accout to the panel to be informed about latest news.": "Veuillez connecter votre compte Telegram au HiddifyManager pour être informé des dernières nouveautés.",
   "You should visit this page without VPN": {
-    " Your country=%(your_country)s\nexpected=%(expected_country)s": "Vous devriez visiter cette page sans VPN. Votre %(your_country)s\nAttendu=%(expected_country)s"
+    " Your country=%(your_country)s\nexpected=%(expected_country)s": "Vous devriez visiter cette page sans VPN. Votre %(your_country)s attendu = %(expected_country)s"
   }
 }

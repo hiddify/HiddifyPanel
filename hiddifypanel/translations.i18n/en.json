@@ -101,7 +101,7 @@
   "Invalid admin link": "Invalid Admin Link",
   "Iran": "🇮🇷 Iran",
   "It seems that you are using default domain (%(domain)s) which is not recommended.": "It seems that you are using default domain (%(domain)s) which is not recommended. Please change or remove it from domain section.",
-  "It will override the root admin to the current user": "It will override the owner admin of the backup file to the current user",
+  "It will override the root admin to the current user": "It will override the owner admin of the backup file to the current admin.",
   "Join our Hiddify Telegram channel to get the latest updates on Hiddify.": "Join our Hiddify Telegram channel to get the latest updates on Hiddify.",
   "Last Online": "Last Connection",
   "Link is changed!": "ℹ️ Link is Changed!",
@@ -543,7 +543,7 @@
       "label": "KCP Ports"
     },
     "lang": {
-      "description": "Choose Language For Users Area",
+      "description": "Select the language for the user interface to personalize your experience in the user area.",
       "label": "🗺️ User Area Language"
     },
     "last_hash": {
@@ -1287,12 +1287,12 @@
     "user_links": "User Links"
   },
   "vpn": {
-    "notallowed": "You should visit this page without VPN Your Country =%(your_country)s\nExpected=%(expected_country)s"
+    "notallowed": "You should visit this page without VPN. Your expected %(your_country)s = %(expected_country)s"
   },
   "weekly": "📅 Weekly",
   "worker": "✴️ Cloudflare Worker",
   "Please connect your telegram accout to the panel to be informed about latest news.": "Please connect your Telegram account to the HiddifyManager to be informed about the latest news.",
   "You should visit this page without VPN": {
-    " Your country=%(your_country)s\nexpected=%(expected_country)s": "You should visit this page without VPN. Your expected %(your_country) = %(expected_country)"
+    " Your country=%(your_country)s\nexpected=%(expected_country)s": "You should visit this page without VPN. Your expected %(your_country)s = %(expected_country)s"
   }
 }
