@@ -43,6 +43,8 @@
 
 #### Other
 
+* Update translations. 
+
 * Merge branch 'main' of github.com:hiddify/Hiddify-Panel. 
 
 * Update translations. 
