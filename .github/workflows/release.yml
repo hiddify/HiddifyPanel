@@ -42,12 +42,12 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install setuptools wheel twine gitchangelog pystache  
+        pip install setuptools wheel twine gitchangelog pystache  poetry
     - name: Build and publish
       env:
         TWINE_USERNAME: __token__
         TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
       run: |
         sed -i "/^is_released_version/c is_released_version=True" hiddifypanel/VERSION.py 
-        python setup.py sdist bdist_wheel
+        poetry build
         twine upload dist/*
