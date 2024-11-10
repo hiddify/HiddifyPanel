@@ -314,8 +314,8 @@
       "title": "Shadowrocket"
     },
     "singbox": {
-      "description": "app.singbox.description",
-      "title": "Singbox"
+      "description": "Sing-box app is the official app for Sing-box protocol.",
+      "title": "Sing-box app"
     },
     "stash": {
       "description": "Stash Description",
@@ -1278,10 +1278,10 @@
     "last_reset_time": "Last Usage Date Reset",
     "name": "Name",
     "password": {
-      "description": "The password will be used for extra secutiry. After entering the password, you can only login to the panel after entering your password.",
+      "description": "The password will be used for extra secutiry. You can only login to the HiddifyManager after entering your password.",
       "title": "Password",
-      "validation-lenght": "user.password.validation-lenght",
-      "validation-required": "user.password.validation-required"
+      "validation-lenght": "Your password must be at least 8 characters long for enhanced security.",
+      "validation-required": "Password is required. Please enter your password to continue."
     },
     "usage_limit_GB": "⌛️ Usage Limit (GB)",
     "user_links": "User Links"
@@ -1290,5 +1290,9 @@
     "notallowed": "You should visit this page without VPN Your Country =%(your_country)s\nExpected=%(expected_country)s"
   },
   "weekly": "📅 Weekly",
-  "worker": "✴️ Cloudflare Worker"
+  "worker": "✴️ Cloudflare Worker",
+  "Please connect your telegram accout to the panel to be informed about latest news.": "Please connect your Telegram account to the HiddifyManager to be informed about the latest news.",
+  "You should visit this page without VPN": {
+    " Your country=%(your_country)s\nexpected=%(expected_country)s": "You should visit this page without VPN. Your expected %(your_country) = %(expected_country)"
+  }
 }

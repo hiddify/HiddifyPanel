@@ -313,6 +313,10 @@
       "description": "Shadowrocket descriptif",
       "title": "Shadowrocket"
     },
+    "singbox": {
+      "description": "L'application Sing-box est l'application officielle du protocole Sing-box.",
+      "title": "Application Sing-box"
+    },
     "stash": {
       "description": "Description de Stash ",
       "title": "Stash "
@@ -1070,6 +1074,11 @@
   },
   "log": "📄 Log",
   "login": {
+    "button": "Se connecter",
+    "password": {
+      "description": "Pour plus de sécurité, vous devez entrer votre mot de passe.",
+      "label": "Mot de passe"
+    },
     "secret": {
       "description": "Pour accéder à cette page, veuillez entrer votre code secret (UUID)",
       "label": "Code secret (UUID)"
@@ -1236,13 +1245,19 @@
     },
     "last_reset_time": "Réinitialisation de la date de dernière utilisation",
     "name": "Nom",
+    "password": {
+      "description": "Le mot de passe sera utilisé pour plus de sécurité. Vous ne pouvez vous connecter à HiddifyManager qu'après avoir saisi votre mot de passe.",
+      "title": "Mot de passe",
+      "validation-lenght": "Votre mot de passe doit comporter au moins 8 caractères pour plus de sécurité.",
+      "validation-required": "Un mot de passe est requis. Veuillez saisir votre mot de passe pour continuer."
+    },
     "usage_limit_GB": "⌛️ Limite d'utilisation (Go)",
     "user_links": "Liens utilisateur"
   },
   "weekly": "📅 Hebdomadaire",
   "worker": "✴️ Cloudflare Worker",
-  "Please connect your telegram accout to the panel to be informed about latest news.": "Veuillez connecter votre compte Telegram au panneau pour connaître le dernier statut de votre abonnement",
+  "Please connect your telegram accout to the panel to be informed about latest news.": "Veuillez connecter votre compte Telegram au HiddifyManager pour être informé des dernières nouveautés.",
   "You should visit this page without VPN": {
-    " Your country=%(your_country)s\nexpected=%(expected_country)s": "Vous devriez visiter cette page sans VPN Votre pays =%(votre_pays)s\nAttendu=%(expected_country)s"
+    " Your country=%(your_country)s\nexpected=%(expected_country)s": "Vous devriez visiter cette page sans VPN. Votre %(your_country)s\nAttendu=%(expected_country)s"
   }
 }

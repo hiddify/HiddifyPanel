@@ -314,8 +314,8 @@
       "title": "Shadowrocket"
     },
     "singbox": {
-      "description": "",
-      "title": ""
+      "description": "Sing-box 应用程序是 Sing-box 协议的官方应用程序。",
+      "title": "Sing-box 应用程序是"
     },
     "stash": {
       "description": "Stash描述",
@@ -798,38 +798,6 @@
       "description": "ℹ️ SSH 代理，也称为 SSH 隧道或 SSH 端口转发，是一种通过不安全网络在两台计算机之间创建安全通信通道的安全方法。我们有一个与 ssh 服务器完全不同的特定应用程序，无法执行任何命令",
       "label": "SSH 代理"
     },
-    "ssh_host_dsa_pk": {
-      "description": "",
-      "label": ""
-    },
-    "ssh_host_dsa_pub": {
-      "description": "",
-      "label": ""
-    },
-    "ssh_host_ecdsa_pk": {
-      "description": "",
-      "label": ""
-    },
-    "ssh_host_ecdsa_pub": {
-      "description": "",
-      "label": ""
-    },
-    "ssh_host_ed25519_pk": {
-      "description": "",
-      "label": ""
-    },
-    "ssh_host_ed25519_pub": {
-      "description": "",
-      "label": ""
-    },
-    "ssh_host_rsa_pk": {
-      "description": "",
-      "label": ""
-    },
-    "ssh_host_rsa_pub": {
-      "description": "",
-      "label": ""
-    },
     "ssh_server_enable": {
       "description": "SSH Proxy 与原来的 SSH Server 完全不同",
       "label": "✔️ 启用 SSH 代理"
@@ -1106,10 +1074,10 @@
   },
   "log": "📄 Log",
   "login": {
-    "button": "",
+    "button": "登录",
     "password": {
-      "description": "",
-      "label": ""
+      "description": "为了更加安全，您需要输入密码。",
+      "label": "密码"
     },
     "secret": {
       "description": "要访问此页面，请输入您的密码（UUID）",
@@ -1278,10 +1246,10 @@
     "last_reset_time": "最后使用日期重置",
     "name": "姓名",
     "password": {
-      "description": "",
-      "title": "",
-      "validation-lenght": "",
-      "validation-required": ""
+      "description": "密码将用于额外的安全保护。您只有输入密码后才能登录 HiddifyManager。",
+      "title": "密码",
+      "validation-lenght": "为了增强安全性，您的密码必须至少包含 8 个字符。",
+      "validation-required": "需要密码。请输入您的密码才能继续。"
     },
     "usage_limit_GB": "⌛️ 使用限制 (GB)",
     "user_links": "用户链接"
@@ -1290,5 +1258,6 @@
     "notallowed": "您应该在没有 VPN 的情况下访问此页面 Your Country =%(your_country)s\n预期=%(expected_country)s"
   },
   "weekly": "📅每周",
-  "worker": "✴️ Cloudflare Worker"
+  "worker": "✴️ Cloudflare Worker",
+  "Please connect your telegram accout to the panel to be informed about latest news.": "请将您的 Telegram 帐户连接到 HiddifyManager 以了解最新消息。"
 }

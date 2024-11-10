@@ -313,6 +313,10 @@
       "description": "Shadowrocket ဖော်ပြချက်",
       "title": "Shadowrocket"
     },
+    "singbox": {
+      "description": "Sing-box အက်ပ်သည် Sing-box ပရိုတိုကောအတွက် တရားဝင်အက်ပ်ဖြစ်သည်။",
+      "title": "Sing-box အက်ပ်"
+    },
     "stash": {
       "description": "Stash ဖော်ပြချက်",
       "title": "Stash"
@@ -1070,6 +1074,11 @@
   },
   "log": "📄 မှတ်တမ်း",
   "login": {
+    "button": "လော့ဂ်အင်",
+    "password": {
+      "description": "အပိုလုံခြုံရေးအတွက်၊ သင်သည် သင်၏စကားဝှက်ကို ရိုက်ထည့်ရန် လိုအပ်သည်။",
+      "label": "စကားဝှက်"
+    },
     "secret": {
       "description": "ဤစာမျက်နှာသို့ဝင်ရောက်ခွင့်ရရှိရန်အတွက်၊ ကျေးဇူးပြု၍ သင်၏လျှို့ဝှက်ကုဒ် (UUID) ထည့်ပါ",
       "label": "လျှို့ဝှက်ကုဒ် (UUID)"
@@ -1236,12 +1245,18 @@
     },
     "last_reset_time": "အသုံးပြုရက် နောက်ဆုံး ရီဆက်",
     "name": "အမည်",
+    "password": {
+      "description": "အပိုလုံခြုံရေးအတွက် စကားဝှက်ကို အသုံးပြုပါမည်။ သင့်စကားဝှက်ကိုဖြည့်သွင်းပြီးမှသာ HiddifyManager သို့ သင်ဝင်ရောက်နိုင်သည်။",
+      "title": "စကားဝှက်",
+      "validation-lenght": "လုံခြုံရေးတိုးမြှင့်ရန်အတွက် သင့်စကားဝှက်သည် အနည်းဆုံး အက္ခရာ 8 လုံးရှိရမည်။",
+      "validation-required": "စကားဝှက် လိုအပ်သည်။ ရှေ့ဆက်ရန် သင့်စကားဝှက်ကို ထည့်ပါ။"
+    },
     "usage_limit_GB": "⌛️ အသုံးပြုမှု ကန်သတ်ချက် (GB)",
     "user_links": "အသုံးပြုသူ လင့်ခ်များ"
   },
   "weekly": "📅 အပတ်စဉ်",
   "worker": "✴️ ကလောက်ဖဲ အလုပ်သမား",
-  "Please connect your telegram accout to the panel to be informed about latest news.": "သင်၏စာရင်းသွင်းမှု၏နောက်ဆုံးအခြေအနေကိုသိရန် သင်၏ တယ်လီဂရမ် အကောင့်ကို ပန်နယ်သို့ ချိတ်ဆက်ပါ။",
+  "Please connect your telegram accout to the panel to be informed about latest news.": "နောက်ဆုံးသတင်းများအကြောင်း အသိပေးရန်အတွက် သင်၏ Telegram အကောင့်ကို HiddifyManager သို့ ချိတ်ဆက်ပါ။",
   "You should visit this page without VPN": {
     " Your country=%(your_country)s\nexpected=%(expected_country)s": "သင့်နိုင်ငံ =%(your_country)s ကို VPN မပါဘဲ ဤစာမျက်နှာသို့ သင်သွားရောက်ကြည့်ရှုသင့်သည်။\nမျှော်မှန်း=%(expected_country)s"
   }
