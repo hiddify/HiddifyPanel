@@ -105,7 +105,7 @@ ifeq ($(TAG),)
 	@read -p "Version? (provide the next x.y.z semver) : " TAG
 endif
 	@echo "$${TAG}" > hiddifypanel/VERSION
-	@sed -i "/^version =/c version=$${TAG}" pyproject.toml
+	@sed -i "/^version =/c version = '$${TAG}'" pyproject.toml
 	@sed -i "/^__release_time__/c __release_time__= datetime.strptime('$$(date +%Y-%m-%dT%H:%M:%S)','%Y-%m-%dT%H:%M:%S')" hiddifypanel/VERSION.py
 	@git tag v$${TAG}
 	@gitchangelog > HISTORY.md

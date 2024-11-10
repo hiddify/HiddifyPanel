@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "hiddifypanel"
-version=10.80.0.dev1
+version='10.80.0.dev1'
 description = "hiddifypanel multi proxy panel"
 readme = "README.md"
 homepage = "https://hiddify.com"
@@ -102,7 +102,6 @@ hiddifypanel = 'hiddifypanel.__main__:main'
 [[tool.poetry.source]]
 name = 'aliyun.mirrors' 
 url = 'https://mirrors.aliyun.com/pypi/simple/' 
-
 priority="supplemental"
 
 [[tool.poetry.source]]
