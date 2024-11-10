@@ -798,38 +798,6 @@
       "description": "ℹ️ SSH 代理，也称为 SSH 隧道或 SSH 端口转发，是一种通过不安全网络在两台计算机之间创建安全通信通道的安全方法。我们有一个与 ssh 服务器完全不同的特定应用程序，无法执行任何命令",
       "label": "SSH 代理"
     },
-    "ssh_host_dsa_pk": {
-      "description": "",
-      "label": ""
-    },
-    "ssh_host_dsa_pub": {
-      "description": "",
-      "label": ""
-    },
-    "ssh_host_ecdsa_pk": {
-      "description": "",
-      "label": ""
-    },
-    "ssh_host_ecdsa_pub": {
-      "description": "",
-      "label": ""
-    },
-    "ssh_host_ed25519_pk": {
-      "description": "",
-      "label": ""
-    },
-    "ssh_host_ed25519_pub": {
-      "description": "",
-      "label": ""
-    },
-    "ssh_host_rsa_pk": {
-      "description": "",
-      "label": ""
-    },
-    "ssh_host_rsa_pub": {
-      "description": "",
-      "label": ""
-    },
     "ssh_server_enable": {
       "description": "SSH Proxy 与原来的 SSH Server 完全不同",
       "label": "✔️ 启用 SSH 代理"
