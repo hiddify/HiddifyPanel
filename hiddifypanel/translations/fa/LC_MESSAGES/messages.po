@@ -410,9 +410,7 @@ msgstr ""
 " آن را حذف یا تغییر دهید."
 
 msgid "It will override the root admin to the current user"
-msgstr ""
-"این گزینه باعث جایگزین شده ادمین هایی که در پنل نیستند را با ادمین فعلی یکی "
-"کند"
+msgstr "این گزینه ادمین‌ی که در فایل بکاپ هست را با ادمین فعلی جایگزین می‌کند"
 
 msgid ""
 "Join our Hiddify Telegram channel to get the latest updates on Hiddify."
@@ -1043,10 +1041,10 @@ msgid "app.shadowrocket.title"
 msgstr "Shadowrocket"
 
 msgid "app.singbox.description"
-msgstr ""
+msgstr "برنامه Sing-box برنامه رسمی برای پروتکل Sing-box است."
 
 msgid "app.singbox.title"
-msgstr ""
+msgstr "برنامه Sing-box"
 
 msgid "app.stash.description"
 msgstr "توضیحات Stash"
@@ -1470,7 +1468,8 @@ msgid "config.kcp_ports.label"
 msgstr "پورت‌های KCP"
 
 msgid "config.lang.description"
-msgstr "این گزینه زبان بخش کاربران را تغییر می‌دهد"
+msgstr ""
+"زبان رابط کاربری را برای شخصی سازی تجربه خود در ناحیه کاربری انتخاب کنید."
 
 msgid "config.lang.label"
 msgstr "🗺️ زبان محیط کاربران"
@@ -2440,13 +2439,13 @@ msgid "log"
 msgstr "📄 لاگ"
 
 msgid "login.button"
-msgstr ""
+msgstr "ورود"
 
 msgid "login.password.description"
-msgstr ""
+msgstr "برای امنیت بیشتر، باید رمز عبور خود را وارد کنید."
 
 msgid "login.password.label"
-msgstr ""
+msgstr "رمز عبور"
 
 msgid "login.secret.description"
 msgstr "برای دسترسی به این صفحه، لطفا کد مخفی (UUID) خود را وارد کنید."
@@ -2898,15 +2897,17 @@ msgstr "نام"
 
 msgid "user.password.description"
 msgstr ""
+"رمز عبور برای امنیت بیشتر استفاده خواهد شد. تنها پس از وارد کردن رمز عبور می"
+" توانید وارد هیدیفای‌منیجر شوید."
 
 msgid "user.password.title"
-msgstr ""
+msgstr "رمز عبور"
 
 msgid "user.password.validation-lenght"
-msgstr ""
+msgstr "برای امنیت بیشتر، رمز عبور شما باید حداقل ۸ کاراکتر داشته باشد."
 
 msgid "user.password.validation-required"
-msgstr ""
+msgstr "رمز عبور لازم است. لطفا برای ادامه رمز عبور خود را وارد کنید."
 
 msgid "user.usage_limit_GB"
 msgstr "⌛️ محدودیت حجم (گیگابایت)"
@@ -2916,8 +2917,9 @@ msgstr "لینک‌های کاربر"
 
 msgid "vpn.notallowed"
 msgstr ""
-"شما باید بدون VPN از این صفحه بازدید کنید کشور شما =%(your_country)s\n"
-"انتظار می رود=%(expected_country)s"
+"لطفاً بدون استفاده از VPN از این صفحه بازدید کنید. باید از کشور "
+"%(expected_country)s به آن دسترسی داشته باشید، اما در حال حاضر از "
+"%(your_country)s به آن دسترسی دارید."
 
 msgid "weekly"
 msgstr "📅 هفتگی"

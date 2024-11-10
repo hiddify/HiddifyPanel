@@ -425,7 +425,7 @@ msgstr ""
 
 msgid "It will override the root admin to the current user"
 msgstr ""
-"It will override the owner admin of the backup file to the current user"
+"It will override the owner admin of the backup file to the current admin."
 
 msgid ""
 "Join our Hiddify Telegram channel to get the latest updates on Hiddify."
@@ -1055,10 +1055,10 @@ msgid "app.shadowrocket.title"
 msgstr "Shadowrocket"
 
 msgid "app.singbox.description"
-msgstr "app.singbox.description"
+msgstr "Sing-box app is the official app for Sing-box protocol."
 
 msgid "app.singbox.title"
-msgstr "Singbox"
+msgstr "Sing-box app"
 
 msgid "app.stash.description"
 msgstr "Stash Description"
@@ -1478,7 +1478,9 @@ msgid "config.kcp_ports.label"
 msgstr "KCP Ports"
 
 msgid "config.lang.description"
-msgstr "Choose Language For Users Area"
+msgstr ""
+"Select the language for the user interface to personalize your experience in"
+" the user area."
 
 msgid "config.lang.label"
 msgstr "🗺️ User Area Language"
@@ -2894,17 +2896,18 @@ msgstr "Name"
 
 msgid "user.password.description"
 msgstr ""
-"The password will be used for extra secutiry. After entering the password, "
-"you can only login to the panel after entering your password."
+"The password will be used for extra secutiry. You can only login to the "
+"HiddifyManager after entering your password."
 
 msgid "user.password.title"
 msgstr "Password"
 
 msgid "user.password.validation-lenght"
-msgstr "user.password.validation-lenght"
+msgstr ""
+"Your password must be at least 8 characters long for enhanced security."
 
 msgid "user.password.validation-required"
-msgstr "user.password.validation-required"
+msgstr "Password is required. Please enter your password to continue."
 
 msgid "user.usage_limit_GB"
 msgstr "⌛️ Usage Limit (GB)"
@@ -2914,8 +2917,9 @@ msgstr "User Links"
 
 msgid "vpn.notallowed"
 msgstr ""
-"You should visit this page without VPN Your Country =%(your_country)s\n"
-"Expected=%(expected_country)s"
+"Please visit this page without using a VPN. You need to access it from the "
+"country %(expected_country)s, but you're currently accessing it from "
+"%(your_country)s."
 
 msgid "weekly"
 msgstr "📅 Weekly"

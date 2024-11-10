@@ -407,7 +407,7 @@ msgid ""
 msgstr "看来您正在使用默认域（％（domain）s），这是不推荐的。请从域部分更改或删除它。"
 
 msgid "It will override the root admin to the current user"
-msgstr "它将把备份文件的所有者admin覆盖为当前用户"
+msgstr "它会将备份文件的所有者管理员覆盖为当前管理员。"
 
 msgid ""
 "Join our Hiddify Telegram channel to get the latest updates on Hiddify."
@@ -1017,10 +1017,10 @@ msgid "app.shadowrocket.title"
 msgstr "Shadowrocket"
 
 msgid "app.singbox.description"
-msgstr ""
+msgstr "Sing-box 应用程序是 Sing-box 协议的官方应用程序。"
 
 msgid "app.singbox.title"
-msgstr ""
+msgstr "Sing-box 应用程序是"
 
 msgid "app.stash.description"
 msgstr "Stash描述"
@@ -1406,7 +1406,7 @@ msgid "config.kcp_ports.label"
 msgstr "KCP 港口"
 
 msgid "config.lang.description"
-msgstr "选择用户区域的语言"
+msgstr "选择用户界面的语言来个性化您在用户区域的体验。"
 
 msgid "config.lang.label"
 msgstr "🗺️ 用户区语言"
@@ -2283,13 +2283,13 @@ msgid "log"
 msgstr "📄 Log"
 
 msgid "login.button"
-msgstr ""
+msgstr "登录"
 
 msgid "login.password.description"
-msgstr ""
+msgstr "为了更加安全，您需要输入密码。"
 
 msgid "login.password.label"
-msgstr ""
+msgstr "密码"
 
 msgid "login.secret.description"
 msgstr "要访问此页面，请输入您的密码（UUID）"
@@ -2720,16 +2720,16 @@ msgid "user.name"
 msgstr "姓名"
 
 msgid "user.password.description"
-msgstr ""
+msgstr "密码将用于额外的安全保护。您只有输入密码后才能登录 HiddifyManager。"
 
 msgid "user.password.title"
-msgstr ""
+msgstr "密码"
 
 msgid "user.password.validation-lenght"
-msgstr ""
+msgstr "为了增强安全性，您的密码必须至少包含 8 个字符。"
 
 msgid "user.password.validation-required"
-msgstr ""
+msgstr "需要密码。请输入您的密码才能继续。"
 
 msgid "user.usage_limit_GB"
 msgstr "⌛️ 使用限制 (GB)"
@@ -2739,8 +2739,8 @@ msgstr "用户链接"
 
 msgid "vpn.notallowed"
 msgstr ""
-"您应该在没有 VPN 的情况下访问此页面 Your Country =%(your_country)s\n"
-"预期=%(expected_country)s"
+"请不要使用 VPN 访问此页面。您需要从国家/地区 %(expected_country)s 访问，但您当前正在从 %(your_country)s "
+"访问。"
 
 msgid "weekly"
 msgstr "📅每周"

@@ -382,8 +382,8 @@ msgstr ""
 
 msgid "It will override the root admin to the current user"
 msgstr ""
-"Ele substituirá o administrador proprietário do arquivo de backup pelo "
-"usuário atual"
+"Irá substituir o administrador proprietário do arquivo de backup pelo "
+"administrador atual."
 
 msgid ""
 "Join our Hiddify Telegram channel to get the latest updates on Hiddify."
@@ -1019,10 +1019,10 @@ msgid "app.shadowrocket.title"
 msgstr "Shadowrocket"
 
 msgid "app.singbox.description"
-msgstr ""
+msgstr "O aplicativo Sing-box é o aplicativo oficial do protocolo Sing-box."
 
 msgid "app.singbox.title"
-msgstr ""
+msgstr "Aplicativo Sing-box"
 
 msgid "app.stash.description"
 msgstr "Descrição do Stash "
@@ -1447,10 +1447,12 @@ msgid "config.kcp_ports.label"
 msgstr "Portas KCP"
 
 msgid "config.lang.description"
-msgstr "Escolha o idioma para a área de usuários"
+msgstr ""
+"Selecione o idioma da interface do usuário para personalizar sua experiência"
+" na área do usuário."
 
 msgid "config.lang.label"
-msgstr "Idioma da área do usuário"
+msgstr "🗺️ Idioma da área do usuário"
 
 msgid "config.last_hash.description"
 msgstr "config.last_hash.description"
@@ -2415,13 +2417,13 @@ msgid "log"
 msgstr "📄 Log"
 
 msgid "login.button"
-msgstr ""
+msgstr "Conecte-se"
 
 msgid "login.password.description"
-msgstr ""
+msgstr "Para maior segurança, você precisa digitar sua senha."
 
 msgid "login.password.label"
-msgstr ""
+msgstr "Senha"
 
 msgid "login.secret.description"
 msgstr "Para obter acesso a esta página, digite seu código secreto (UUID)"
@@ -2857,15 +2859,17 @@ msgstr "Nome"
 
 msgid "user.password.description"
 msgstr ""
+"A senha será usada para segurança extra. Você só pode fazer login no "
+"HiddifyManager após digitar sua senha."
 
 msgid "user.password.title"
-msgstr ""
+msgstr "Senha"
 
 msgid "user.password.validation-lenght"
-msgstr ""
+msgstr "Sua senha deve ter pelo menos 8 caracteres para maior segurança."
 
 msgid "user.password.validation-required"
-msgstr ""
+msgstr "A senha é necessária. Insira sua senha para continuar."
 
 msgid "user.usage_limit_GB"
 msgstr "⌛️ Limite de uso (GB)"
@@ -2875,8 +2879,9 @@ msgstr "Links de usuário"
 
 msgid "vpn.notallowed"
 msgstr ""
-"Você deve visitar esta página sem VPN Seu país =%(expected_country)s\n"
-"Esperado=%(expected_country)s"
+"Por favor, visite esta página sem usar uma VPN. Você precisa acessá-la do "
+"país %(expected_country)s, mas você está acessando-a atualmente de "
+"%(your_country)s."
 
 msgid "weekly"
 msgstr "📅 Semanal"

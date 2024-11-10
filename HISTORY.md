@@ -43,6 +43,18 @@
 
 #### Other
 
+* Merge branch 'main' of github.com:hiddify/Hiddify-Panel. 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Update translations. 
+
+* Update. 
+
 * Update translations. 
 
 * Chore: update translations with Fink 🐦 
