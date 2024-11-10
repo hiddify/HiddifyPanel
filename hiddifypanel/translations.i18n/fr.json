@@ -1255,12 +1255,12 @@
     "user_links": "Liens utilisateur"
   },
   "vpn": {
-    "notallowed": "Vous devriez visiter cette page sans VPN. Votre %(your_country)s attendu = %(expected_country)s"
+    "notallowed": "Veuillez visiter cette page sans utiliser de VPN. Vous devez y accéder depuis le pays %(expected_country)s, mais vous y accédez actuellement depuis %(your_country)s."
   },
   "weekly": "📅 Hebdomadaire",
   "worker": "✴️ Cloudflare Worker",
   "Please connect your telegram accout to the panel to be informed about latest news.": "Veuillez connecter votre compte Telegram au HiddifyManager pour être informé des dernières nouveautés.",
   "You should visit this page without VPN": {
-    " Your country=%(your_country)s\nexpected=%(expected_country)s": "Vous devriez visiter cette page sans VPN. Votre %(your_country)s attendu = %(expected_country)s"
+    " Your country=%(your_country)s\nexpected=%(expected_country)s": "Veuillez visiter cette page sans utiliser de VPN. Vous devez y accéder depuis le pays %(expected_country)s, mais vous y accédez actuellement depuis %(your_country)s."
   }
 }

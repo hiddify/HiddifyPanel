@@ -1255,12 +1255,12 @@
     "user_links": "用户链接"
   },
   "vpn": {
-    "notallowed": "您应该不使用 VPN 访问此页面。您的预期 %(your_country)s = %(expected_country)s"
+    "notallowed": "请不要使用 VPN 访问此页面。您需要从国家/地区 %(expected_country)s 访问，但您当前正在从 %(your_country)s 访问。"
   },
   "weekly": "📅每周",
   "worker": "✴️ Cloudflare Worker",
   "Please connect your telegram accout to the panel to be informed about latest news.": "请将您的 Telegram 帐户连接到 HiddifyManager 以了解最新消息。",
   "You should visit this page without VPN": {
-    " Your country=%(your_country)s\nexpected=%(expected_country)s": "您应该不使用 VPN 访问此页面。您的预期 %(your_country)s = %(expected_country)s"
+    " Your country=%(your_country)s\nexpected=%(expected_country)s": "请不要使用 VPN 访问此页面。您需要从国家/地区 %(expected_country)s 访问，但您当前正在从 %(your_country)s 访问。"
   }
 }
