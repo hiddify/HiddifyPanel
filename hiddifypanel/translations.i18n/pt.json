@@ -101,7 +101,7 @@
   "Invalid admin link": "Link de administrador inválido",
   "Iran": "🇮🇷 Irã",
   "It seems that you are using default domain (%(domain)s) which is not recommended.": "Parece que você está usando o domínio padrão (%(domain)s), o que não é recomendado. Por favor, altere ou remova-o da seção de domínio.",
-  "It will override the root admin to the current user": "Ele substituirá o administrador proprietário do arquivo de backup pelo usuário atual",
+  "It will override the root admin to the current user": "Irá substituir o administrador proprietário do arquivo de backup pelo administrador atual.",
   "Join our Hiddify Telegram channel to get the latest updates on Hiddify.": "Junte-se ao nosso canal Hiddify Telegram para obter as atualizações mais recentes sobre o Hiddify.",
   "Last Online": "Última vez online",
   "Link is changed!": "ℹ️ O link foi alterado!",
@@ -314,8 +314,8 @@
       "title": "Shadowrocket"
     },
     "singbox": {
-      "description": "",
-      "title": ""
+      "description": "O aplicativo Sing-box é o aplicativo oficial do protocolo Sing-box.",
+      "title": "Aplicativo Sing-box"
     },
     "stash": {
       "description": "Descrição do Stash ",
@@ -543,8 +543,8 @@
       "label": "Portas KCP"
     },
     "lang": {
-      "description": "Escolha o idioma para a área de usuários",
-      "label": "Idioma da área do usuário"
+      "description": "Selecione o idioma da interface do usuário para personalizar sua experiência na área do usuário.",
+      "label": "🗺️ Idioma da área do usuário"
     },
     "last_hash": {
       "description": "config.last_hash.description",
@@ -1074,10 +1074,10 @@
   },
   "log": "📄 Log",
   "login": {
-    "button": "",
+    "button": "Conecte-se",
     "password": {
-      "description": "",
-      "label": ""
+      "description": "Para maior segurança, você precisa digitar sua senha.",
+      "label": "Senha"
     },
     "secret": {
       "description": "Para obter acesso a esta página, digite seu código secreto (UUID)",
@@ -1246,17 +1246,21 @@
     "last_reset_time": "Redefinir para a última vez que ouve uso.",
     "name": "Nome",
     "password": {
-      "description": "",
-      "title": "",
-      "validation-lenght": "",
-      "validation-required": ""
+      "description": "A senha será usada para segurança extra. Você só pode fazer login no HiddifyManager após digitar sua senha.",
+      "title": "Senha",
+      "validation-lenght": "Sua senha deve ter pelo menos 8 caracteres para maior segurança.",
+      "validation-required": "A senha é necessária. Insira sua senha para continuar."
     },
     "usage_limit_GB": "⌛️ Limite de uso (GB)",
     "user_links": "Links de usuário"
   },
   "vpn": {
-    "notallowed": "Você deve visitar esta página sem VPN Seu país =%(expected_country)s\nEsperado=%(expected_country)s"
+    "notallowed": "Por favor, visite esta página sem usar uma VPN. Você precisa acessá-la do país %(expected_country)s, mas você está acessando-a atualmente de %(your_country)s."
   },
   "weekly": "📅 Semanal",
-  "worker": "✴️ Cloudflare Worker"
+  "worker": "✴️ Cloudflare Worker",
+  "Please connect your telegram accout to the panel to be informed about latest news.": "Conecte sua conta do Telegram ao HiddifyManager para ser informado sobre as últimas notícias.",
+  "You should visit this page without VPN": {
+    " Your country=%(your_country)s\nexpected=%(expected_country)s": "Por favor, visite esta página sem usar uma VPN. Você precisa acessá-la do país %(expected_country)s, mas você está acessando-a atualmente de %(your_country)s."
+  }
 }

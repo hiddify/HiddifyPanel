@@ -101,7 +101,7 @@
   "Invalid admin link": "管理员链接无效",
   "Iran": "🇮🇷伊朗",
   "It seems that you are using default domain (%(domain)s) which is not recommended.": "看来您正在使用默认域（％（domain）s），这是不推荐的。请从域部分更改或删除它。",
-  "It will override the root admin to the current user": "它将把备份文件的所有者admin覆盖为当前用户",
+  "It will override the root admin to the current user": "它会将备份文件的所有者管理员覆盖为当前管理员。",
   "Join our Hiddify Telegram channel to get the latest updates on Hiddify.": "加入我们的 Hiddify Telegram 频道，获取 Hiddify 的最新动态。",
   "Last Online": "最后一次连接",
   "Link is changed!": "ℹ️链接已更改！",
@@ -314,8 +314,8 @@
       "title": "Shadowrocket"
     },
     "singbox": {
-      "description": "",
-      "title": ""
+      "description": "Sing-box 应用程序是 Sing-box 协议的官方应用程序。",
+      "title": "Sing-box 应用程序是"
     },
     "stash": {
       "description": "Stash描述",
@@ -543,7 +543,7 @@
       "label": "KCP 港口"
     },
     "lang": {
-      "description": "选择用户区域的语言",
+      "description": "选择用户界面的语言来个性化您在用户区域的体验。",
       "label": "🗺️ 用户区语言"
     },
     "last_hash": {
@@ -1074,10 +1074,10 @@
   },
   "log": "📄 Log",
   "login": {
-    "button": "",
+    "button": "登录",
     "password": {
-      "description": "",
-      "label": ""
+      "description": "为了更加安全，您需要输入密码。",
+      "label": "密码"
     },
     "secret": {
       "description": "要访问此页面，请输入您的密码（UUID）",
@@ -1246,17 +1246,21 @@
     "last_reset_time": "最后使用日期重置",
     "name": "姓名",
     "password": {
-      "description": "",
-      "title": "",
-      "validation-lenght": "",
-      "validation-required": ""
+      "description": "密码将用于额外的安全保护。您只有输入密码后才能登录 HiddifyManager。",
+      "title": "密码",
+      "validation-lenght": "为了增强安全性，您的密码必须至少包含 8 个字符。",
+      "validation-required": "需要密码。请输入您的密码才能继续。"
     },
     "usage_limit_GB": "⌛️ 使用限制 (GB)",
     "user_links": "用户链接"
   },
   "vpn": {
-    "notallowed": "您应该在没有 VPN 的情况下访问此页面 Your Country =%(your_country)s\n预期=%(expected_country)s"
+    "notallowed": "请不要使用 VPN 访问此页面。您需要从国家/地区 %(expected_country)s 访问，但您当前正在从 %(your_country)s 访问。"
   },
   "weekly": "📅每周",
-  "worker": "✴️ Cloudflare Worker"
+  "worker": "✴️ Cloudflare Worker",
+  "Please connect your telegram accout to the panel to be informed about latest news.": "请将您的 Telegram 帐户连接到 HiddifyManager 以了解最新消息。",
+  "You should visit this page without VPN": {
+    " Your country=%(your_country)s\nexpected=%(expected_country)s": "请不要使用 VPN 访问此页面。您需要从国家/地区 %(expected_country)s 访问，但您当前正在从 %(your_country)s 访问。"
+  }
 }

@@ -101,7 +101,7 @@
   "Invalid admin link": "Invalid Admin Link",
   "Iran": "🇮🇷 Iran",
   "It seems that you are using default domain (%(domain)s) which is not recommended.": "It seems that you are using default domain (%(domain)s) which is not recommended. Please change or remove it from domain section.",
-  "It will override the root admin to the current user": "It will override the owner admin of the backup file to the current user",
+  "It will override the root admin to the current user": "It will override the owner admin of the backup file to the current admin.",
   "Join our Hiddify Telegram channel to get the latest updates on Hiddify.": "Join our Hiddify Telegram channel to get the latest updates on Hiddify.",
   "Last Online": "Last Connection",
   "Link is changed!": "ℹ️ Link is Changed!",
@@ -314,8 +314,8 @@
       "title": "Shadowrocket"
     },
     "singbox": {
-      "description": "app.singbox.description",
-      "title": "Singbox"
+      "description": "Sing-box app is the official app for Sing-box protocol.",
+      "title": "Sing-box app"
     },
     "stash": {
       "description": "Stash Description",
@@ -543,7 +543,7 @@
       "label": "KCP Ports"
     },
     "lang": {
-      "description": "Choose Language For Users Area",
+      "description": "Select the language for the user interface to personalize your experience in the user area.",
       "label": "🗺️ User Area Language"
     },
     "last_hash": {
@@ -1246,17 +1246,21 @@
     "last_reset_time": "Last Usage Date Reset",
     "name": "Name",
     "password": {
-      "description": "The password will be used for extra secutiry. After entering the password, you can only login to the panel after entering your password.",
+      "description": "The password will be used for extra secutiry. You can only login to the HiddifyManager after entering your password.",
       "title": "Password",
-      "validation-lenght": "user.password.validation-lenght",
-      "validation-required": "user.password.validation-required"
+      "validation-lenght": "Your password must be at least 8 characters long for enhanced security.",
+      "validation-required": "Password is required. Please enter your password to continue."
     },
     "usage_limit_GB": "⌛️ Usage Limit (GB)",
     "user_links": "User Links"
   },
   "vpn": {
-    "notallowed": "You should visit this page without VPN Your Country =%(your_country)s\nExpected=%(expected_country)s"
+    "notallowed": "Please visit this page without using a VPN. You need to access it from the country %(expected_country)s, but you're currently accessing it from %(your_country)s."
   },
   "weekly": "📅 Weekly",
-  "worker": "✴️ Cloudflare Worker"
+  "worker": "✴️ Cloudflare Worker",
+  "Please connect your telegram accout to the panel to be informed about latest news.": "Please connect your Telegram account to the HiddifyManager to be informed about the latest news.",
+  "You should visit this page without VPN": {
+    " Your country=%(your_country)s\nexpected=%(expected_country)s": "Please visit this page without using a VPN. You need to access it from the country %(expected_country)s, but you're currently accessing it from %(your_country)s."
+  }
 }

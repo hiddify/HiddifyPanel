@@ -101,7 +101,7 @@
   "Invalid admin link": "Lien d'administration invalide",
   "Iran": "l'Iran",
   "It seems that you are using default domain (%(domain)s) which is not recommended.": "Il semble que vous utilisiez le domaine par défaut (%(domain)s), ce qui n'est pas recommandé. Veuillez le modifier ou le supprimer de la section domaine.",
-  "It will override the root admin to the current user": "Il remplacera l'administrateur propriétaire du fichier de sauvegarde par l'utilisateur actuel",
+  "It will override the root admin to the current user": "Cela remplacera l'administrateur propriétaire du fichier de sauvegarde par l'administrateur actuel.",
   "Join our Hiddify Telegram channel to get the latest updates on Hiddify.": "Rejoignez notre chaîne Hiddify Telegram pour obtenir les dernières mises à jour sur Hiddify.",
   "Last Online": "Dernière connexion",
   "Link is changed!": "ℹ️ Le lien est modifié !",
@@ -213,7 +213,7 @@
   "V2rayNG intro": "Veuillez installer v2rayNG à partir de l'un de ces liens : %(dl_link)s %(play_link)s.\nCopiez ensuite le lien ci-dessous et collez-le dans v2rayNG selon le tutoriel vidéo <button class='btn btn-sm btn-default' onclick='show_video('android-v2rayng')'><i class='fa-solid fa-question'></i></button> .<inlang-LineFeed><br />",
   "View in Telegram": "Afficher dans Telegram",
   "Want to enjoy more with telegram?": "ℹ️ Connectez votre compte à Telegram",
-  "Welcome %(user)s": "Bienvenue %(utilisateur)s",
+  "Welcome %(user)s": "Bienvenue %(user)s",
   "Why Going to Premium?": "Pourquoi passer au Premium ?",
   "Will Start in %(days)s days": "Commencera dans %(days)s jours",
   "Windows": "les fenêtres",
@@ -312,6 +312,10 @@
     "shadowrocket": {
       "description": "Shadowrocket descriptif",
       "title": "Shadowrocket"
+    },
+    "singbox": {
+      "description": "L'application Sing-box est l'application officielle du protocole Sing-box.",
+      "title": "Application Sing-box"
     },
     "stash": {
       "description": "Description de Stash ",
@@ -539,7 +543,7 @@
       "label": "Ports KCP"
     },
     "lang": {
-      "description": "Choisir la langue pour la zone utilisateurs",
+      "description": "Sélectionnez la langue de l'interface utilisateur pour personnaliser votre expérience dans l'espace utilisateur.",
       "label": "🗺️ Langue de la zone utilisateur"
     },
     "last_hash": {
@@ -1070,6 +1074,11 @@
   },
   "log": "📄 Log",
   "login": {
+    "button": "Se connecter",
+    "password": {
+      "description": "Pour plus de sécurité, vous devez entrer votre mot de passe.",
+      "label": "Mot de passe"
+    },
     "secret": {
       "description": "Pour accéder à cette page, veuillez entrer votre code secret (UUID)",
       "label": "Code secret (UUID)"
@@ -1236,13 +1245,22 @@
     },
     "last_reset_time": "Réinitialisation de la date de dernière utilisation",
     "name": "Nom",
+    "password": {
+      "description": "Le mot de passe sera utilisé pour plus de sécurité. Vous ne pouvez vous connecter à HiddifyManager qu'après avoir saisi votre mot de passe.",
+      "title": "Mot de passe",
+      "validation-lenght": "Votre mot de passe doit comporter au moins 8 caractères pour plus de sécurité.",
+      "validation-required": "Un mot de passe est requis. Veuillez saisir votre mot de passe pour continuer."
+    },
     "usage_limit_GB": "⌛️ Limite d'utilisation (Go)",
     "user_links": "Liens utilisateur"
   },
+  "vpn": {
+    "notallowed": "Veuillez visiter cette page sans utiliser de VPN. Vous devez y accéder depuis le pays %(expected_country)s, mais vous y accédez actuellement depuis %(your_country)s."
+  },
   "weekly": "📅 Hebdomadaire",
   "worker": "✴️ Cloudflare Worker",
-  "Please connect your telegram accout to the panel to be informed about latest news.": "Veuillez connecter votre compte Telegram au panneau pour connaître le dernier statut de votre abonnement",
+  "Please connect your telegram accout to the panel to be informed about latest news.": "Veuillez connecter votre compte Telegram au HiddifyManager pour être informé des dernières nouveautés.",
   "You should visit this page without VPN": {
-    " Your country=%(your_country)s\nexpected=%(expected_country)s": "Vous devriez visiter cette page sans VPN Votre pays =%(votre_pays)s\nAttendu=%(expected_country)s"
+    " Your country=%(your_country)s\nexpected=%(expected_country)s": "Veuillez visiter cette page sans utiliser de VPN. Vous devez y accéder depuis le pays %(expected_country)s, mais vous y accédez actuellement depuis %(your_country)s."
   }
 }
