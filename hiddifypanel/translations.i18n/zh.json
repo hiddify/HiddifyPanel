@@ -31,7 +31,7 @@
   "Can add sub admin": "👥 可以添加子管理员",
   "Check again": "再检查一遍",
   "Childs": "孩子们",
-  "China": "🇨🇳中国",
+  "China": "🇨🇳 中国",
   "Click here to see the complete log": "单击此处查看完整日志",
   "Click to Import": "点击导入",
   "Click to Start Anti-Filter.": "<i class='fa-solid fa-play'></i> 点击以设置反过滤器",
@@ -510,7 +510,7 @@
     },
     "hysteria_enable": {
       "description": "启用基于 UDP 的 Hysteria 协议",
-      "label": "启用歇斯底里2"
+      "label": "⚫️ 启用 Hysteria2"
     },
     "hysteria_obfs_enable": {
       "description": " 启用 Hysteria 混淆（Salamander）",
@@ -711,11 +711,11 @@
       "label": "↔️ 直接 Reality 端口"
     },
     "reality_private_key": {
-      "description": "不要改变它",
+      "description": "不要修改它",
       "label": "🔑 私钥"
     },
     "reality_public_key": {
-      "description": "不要改变它",
+      "description": "不要修改它",
       "label": "🔑 公钥"
     },
     "reality_server_names": {
@@ -723,7 +723,7 @@
       "label": "🌎 现实服务器名称"
     },
     "reality_short_ids": {
-      "description": "不要改变它",
+      "description": "不要修改它",
       "label": "🆔 短 ID"
     },
     "restls": {
@@ -1244,7 +1244,7 @@
       }
     },
     "last_reset_time": "最后使用日期重置",
-    "name": "姓名",
+    "name": "Name",
     "password": {
       "description": "密码将用于额外的安全保护。您只有输入密码后才能登录 HiddifyManager。",
       "title": "密码",
