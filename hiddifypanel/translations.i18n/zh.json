@@ -265,19 +265,19 @@
     "quicksetup": {
       "title": "快速设置"
     },
-    "quicksetup_intro": "您的服务器的 IP 是：\n<div>\nIPv4：%(ipv4)s <br> IPv6：%(ipv6)s\n</div>\n在您的域或子域上设置这些 IP，然后在下面的框中输入您的域或子域。",
+    "quicksetup_intro": "您的服务器的 IP 是：\n<div>\nIPv4：%(ipv4)s <br> IPv6：%(ipv6)s\n</div>\n在您的域或子域上设置这些 IP，然后在下面的框中将其输入",
     "save_panel_link": "请注意，您的面板只能通过以下链接访问。请保存此链接。\n<p><a href='%(adminlink)s' class='btn btn-secondary copy-link'><i class='fa-solid fa-copy'></i></a>\n<a href='%(adminlink)s' class='copy-link' style='word-break: break-all;'>%(adminlink)s</a></p>",
     "waiting_for_update": "⚠️ 请等待大约 5 分钟以确保所有内容均已更新。在此期间，请复制并保存您的代理链接："
   },
   "adminuser": {
-    "force_update_usage": "每 6 分钟更新一次使用情况。如需立即更新，<a href=\"%(link)s\" class=\"btn btn-info\">请点击此处</a>"
+    "force_update_usage": "每 6 分钟更新一次使用情况，如需立即更新，<a href=\"%(link)s\" class=\"btn btn-info\">请点击此处</a>"
   },
   "all": "全部",
-  "android": "安卓",
+  "android": "Android",
   "app": {
     "foxray": {
-      "description": "福克斯射线描述",
-      "title": "福克斯X射线"
+      "description": "Foxray 描述",
+      "title": "FoXray"
     },
     "hiddify-clash-android": {
       "description": "Hiddify Clash Android 是我们的客户端应用程序之一，不再更新。 ",
@@ -310,7 +310,7 @@
       "title": "NekoBox"
     },
     "shadowrocket": {
-      "description": "小火箭描述",
+      "description": "Shadowrocket 描述",
       "title": "Shadowrocket"
     },
     "singbox": {
@@ -334,13 +334,13 @@
   "auto_cdn_ip": "☑️ 自动 CDN IP 选择器",
   "bot": {
     "admin_welcome": "欢迎使用管理机器人。选择你的行动",
-    "welcome": "万岁🎉🎉🎉\n欢迎使用 Hiddify 机器人\n首先单击面板上的链接或输入您的 UUID。"
+    "welcome": "太棒了🎉🎉🎉\n欢迎使用 Hiddify 机器人\n首先单击面板上的链接或输入您的 UUID"
   },
   "cdn": "🔀 CDN（Cloudflare 代理，...）",
   "cf-delete": {
     "failed": "cf-删除失败"
   },
-  "child has been removed!": "孩子已被移走！",
+  "child has been removed!": "子项已被移走！",
   "child": {
     "register-failed": "child.register-失败",
     "register-success": "child.register-success",
@@ -352,12 +352,12 @@
     "error": "cloudflare.error"
   },
   "config": {
-    "Domain_already_used": "域存在于域部分。使用另一个域",
-    "Invalid_The_pattern_is_number-number": "⚠️配置无效！模式是数字-数字",
+    "Domain_already_used": "该域名已存在于 \"域名\" 字段部分，请使用另一个域名",
+    "Invalid_The_pattern_is_number-number": "⚠️ 配置无效！模式是数字-数字",
     "Invalid_brand_link": "无效的链接。它应该采用以下格式：（https 或 http://example.com）",
     "Invalid_domain": "错误！无效域名。域名格式为 www.google.com",
-    "Invalid_it_should_be_a_number_only": "⚠️配置无效！它应该只是一个数字",
-    "Invalid_port": "端口无效。它应该是逗号分隔的整数，例如2052,2053",
+    "Invalid_it_should_be_a_number_only": "⚠️ 配置无效！它应该只是一个数字",
+    "Invalid_port": "端口无效。它应该是逗号分隔的整数，例如 2052,2053",
     "Invalid_proxy_path": "代理路径无效。它应该是 ASCI 字符串 (a-z A-Z 0-9)",
     "Invalid_telegram_bot_token": "Telegram 机器人令牌无效",
     "admin": {
@@ -373,11 +373,11 @@
       "label": "管理员密码"
     },
     "advanced": {
-      "description": "在这一部分中，有一些高级配置，除非您是高级用户，否则最好不要更改",
+      "description": "在这一部分，有一些高级配置最好不要更改，除非你是高级用户",
       "label": "高级设置"
     },
     "allow_invalid_sni": {
-      "description": "如果您允许无效的SNI，您可以使用任何域而不是原始域来访问代理（不推荐）",
+      "description": "如果您允许无效的 SNI，您可以使用任何域而不是原始域来访问代理（不推荐）",
       "label": "🆗 允许无效的 SNI"
     },
     "auto_update": {
@@ -393,7 +393,7 @@
       "label": "自定义用户页面"
     },
     "branding_freetext": {
-      "description": "品牌文字。此框的文本将显示在用户页面的支持部分。你可以使用 HTML 标签",
+      "description": "品牌文本。此框中的文本将显示在用户页面的支持部分。您可以使用 HTML 标签。\n<p><br /><a href=\"https://htmleditor.online/full\" target=\"_blank\">HTML 编辑器</a></p>",
       "label": "📢 支持部分文本"
     },
     "branding_site": {
@@ -414,11 +414,11 @@
     },
     "core_type": {
       "description": "☢️ XRay：是一个完整的核心\n<br>\n📦 Singbox：由 SagerNet 开发。也是一个不错的核心",
-      "label": "🎛️核心"
+      "label": "🎛️ 核心"
     },
     "country": {
       "description": "它根据每个国家/地区的过滤条件应用适当的设置",
-      "label": "🌍国家"
+      "label": "🌍 国家/地区"
     },
     "create_easysetup_link": {
       "description": "config.create_easysetup_link.description",
