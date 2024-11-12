@@ -798,6 +798,38 @@
       "description": "SSH Proxy, также известный как SSH tunnel или переадресация портов SSH, представляет собой метод создания безопасного канала связи между двумя компьютерами в незащищенной сети. У нас есть отдельное приложение, которое полностью отличается от стандартногно ssh-сервера и не может выполнять какие-либо команды.",
       "label": "SSH Proxy"
     },
+    "ssh_host_dsa_pk": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_dsa_pub": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_ecdsa_pk": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_ecdsa_pub": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_ed25519_pk": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_ed25519_pub": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_rsa_pk": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_rsa_pub": {
+      "description": "",
+      "label": ""
+    },
     "ssh_server_enable": {
       "description": "SSH Proxy полностью отличается от оригинального SSH Server",
       "label": "✔️ Включить SSH Poxy"

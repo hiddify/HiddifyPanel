@@ -798,6 +798,38 @@
       "description": "Um proxy SSH, também conhecido como túnel SSH ou encaminhamento de porta SSH, é um método seguro de criar um canal de comunicação seguro entre duas máquinas em uma rede insegura. Temos um aplicativo específico que é completamente diferente do servidor ssh e não pode executar nenhum comando",
       "label": "Proxy SSH"
     },
+    "ssh_host_dsa_pk": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_dsa_pub": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_ecdsa_pk": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_ecdsa_pub": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_ed25519_pk": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_ed25519_pub": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_rsa_pk": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_rsa_pub": {
+      "description": "",
+      "label": ""
+    },
     "ssh_server_enable": {
       "description": "O proxy SSH é completamente diferente do servidor ssh original.",
       "label": "✔️ Proxy SSH"
