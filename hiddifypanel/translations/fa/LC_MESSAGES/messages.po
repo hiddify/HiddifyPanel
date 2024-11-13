@@ -1524,11 +1524,11 @@ msgstr "⬆️ آپلود (mbps) MUX Brutal"
 
 msgid "config.mux_enable.description"
 msgstr ""
-"<p style=\"direction:rtl\">Mux به نرم افزار سازگار نیاز دارد. Mux در Hiddify"
-" و Singbox و XRay سازگار نیستند.&nbsp;<a "
-"href=\"https://hiddify.com/fa/manager/basic-concepts-and-"
-"troubleshooting/How-MUX-works-and-its-usage/\" target=\"_blank\">(بیشتر "
-"بدانید)</a></p>"
+"<p style=\"direction:rtl\">Mux به نرم افزار سازگار نیاز دارد. Mux در <p><a "
+"href=\"https://app.hiddify.com\" target=\"_blank\">Hiddify</a></p> و Singbox"
+" و XRay سازگار نیستند.&nbsp;<a href=\"https://hiddify.com/fa/manager/basic-"
+"concepts-and-troubleshooting/How-MUX-works-and-its-usage/\" "
+"target=\"_blank\">(بیشتر بدانید)</a></p>"
 
 msgid "config.mux_enable.label"
 msgstr "Ⓜ️ MUX (⚠️ ناسازگار با برخی نرم افزارها)"
@@ -1870,7 +1870,7 @@ msgstr "🚀 تست سرعت"
 msgid "config.splithttp_enable.description"
 msgstr ""
 "<p>این پروتکل اطلاعات را در کانال های جداگانه ارسال و دریافت می کند<br />\n"
-"⚠️<strong>&nbsp;این پروتکل در برنامه های با هسته SingBox پشتیبانی نمیشود. فقط در برنامه Hiddify و برنامه های با هسته XRay پشتیبانی میشود</strong></p>"
+"⚠️<strong>&nbsp;این پروتکل در برنامه های با هسته SingBox پشتیبانی نمیشود. فقط در برنامه <p><a href=\"https://app.hiddify.com\" target=\"_blank\">Hiddify</a></p> و برنامه های با هسته XRay پشتیبانی میشود</strong></p>"
 
 msgid "config.splithttp_enable.label"
 msgstr "🈁 Split HTTP"
@@ -1907,6 +1907,54 @@ msgstr ""
 
 msgid "config.ssh.label"
 msgstr "پروکسی SSH"
+
+msgid "config.ssh_host_dsa_pk.description"
+msgstr ""
+
+msgid "config.ssh_host_dsa_pk.label"
+msgstr ""
+
+msgid "config.ssh_host_dsa_pub.description"
+msgstr ""
+
+msgid "config.ssh_host_dsa_pub.label"
+msgstr ""
+
+msgid "config.ssh_host_ecdsa_pk.description"
+msgstr ""
+
+msgid "config.ssh_host_ecdsa_pk.label"
+msgstr ""
+
+msgid "config.ssh_host_ecdsa_pub.description"
+msgstr ""
+
+msgid "config.ssh_host_ecdsa_pub.label"
+msgstr ""
+
+msgid "config.ssh_host_ed25519_pk.description"
+msgstr ""
+
+msgid "config.ssh_host_ed25519_pk.label"
+msgstr ""
+
+msgid "config.ssh_host_ed25519_pub.description"
+msgstr ""
+
+msgid "config.ssh_host_ed25519_pub.label"
+msgstr ""
+
+msgid "config.ssh_host_rsa_pk.description"
+msgstr ""
+
+msgid "config.ssh_host_rsa_pk.label"
+msgstr ""
+
+msgid "config.ssh_host_rsa_pub.description"
+msgstr ""
+
+msgid "config.ssh_host_rsa_pub.label"
+msgstr ""
 
 msgid "config.ssh_server_enable.description"
 msgstr ""
@@ -2262,8 +2310,8 @@ msgstr "وایرگارد"
 msgid "config.wireguard_enable.description"
 msgstr ""
 "<p>WireGuard پروتکل مبتنی بر UDP است. (⚠️ فقط در <a "
-"href=\"https://github.com/hiddify/hiddify-app\" "
-"target=\"_blank\">Hiddify</a> کار می کند)</p>"
+"href=\"https://app.hiddify.com/\" target=\"_blank\">Hiddify</a> کار می "
+"کند)</p>"
 
 msgid "config.wireguard_enable.label"
 msgstr "🐉 وایرگارد"

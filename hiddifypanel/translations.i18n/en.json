@@ -497,7 +497,7 @@
       "label": "☑️ Allow HTTP Connection"
     },
     "httpupgrade_enable": {
-      "description": "<p>HTTPUpgrade complete a HTTP 1.1 Upgrade request and response before using the connection directly. It is similar to WebSocket in the way it create an direction channel that can be forwarded by many reverse proxies and CDNs, without the need to deal with all the issue around WebSocket Protocol itself.<br />\n⚠️ <strong>Not Available in Xray based Clients. Only Hiddify, Singbox, and V2fly clients are supported.</strong>&nbsp;<a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/Basic-Concepts/#http-upgrade\" target=\"_blank\"><strong>(Read More)</strong></a></p>",
+      "description": "<p>HTTPUpgrade complete a HTTP 1.1 Upgrade request and response before using the connection directly. It is similar to WebSocket in the way it create an direction channel that can be forwarded by many reverse proxies and CDNs, without the need to deal with all the issue around WebSocket Protocol itself.<br />\n⚠️ <strong>Not Available in Xray based Clients. Only <p><a href=\"https://app.hiddify.com\" target=\"_blank\">Hiddify</a></p>, Singbox, and V2fly clients are supported.</strong>&nbsp;<a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/Basic-Concepts/#http-upgrade\" target=\"_blank\"><strong>(Read More)</strong></a></p>",
       "label": "🆙 HTTPUpgrade Method"
     },
     "hysteria": {
@@ -579,7 +579,7 @@
       "label": "⬆️ MUX Brutal Upload (mbps)"
     },
     "mux_enable": {
-      "description": "<p>Mux needs compatible clients. Mux in Hiddify and Singbox are not compatible with XRay.&nbsp;<a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-MUX-works-and-its-usage/\" target=\"_blank\">(Read More)</a></p>",
+      "description": "<p>Mux needs compatible clients. Mux in <p><a href=\"https://app.hiddify.com\" target=\"_blank\">Hiddify</a></p> and Singbox are not compatible with XRay.&nbsp;<a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-MUX-works-and-its-usage/\" target=\"_blank\">(Read More)</a></p>",
       "label": "Ⓜ️ MUX (⚠️ Incompatible With Some Clients)"
     },
     "mux_max_connections": {
@@ -779,7 +779,7 @@
       "label": "🚀 Speed Test"
     },
     "splithttp_enable": {
-      "description": "<p>This Protocol send and receive information in individual channels.<br />\n⚠️ <strong>Not Support in SignBox based Clients. Only Hiddify App, and XRay base Clients are supported.</strong></p>",
+      "description": "<p>This Protocol send and receive information in individual channels.<br />\n⚠️ <strong>Not Supported in SignBox based Clients. Only <p><a href=\"https://app.hiddify.com\" target=\"_blank\">Hiddify</a></p> App, and XRay base Clients are supported.</strong></p>",
       "label": "🈁 Split HTTP"
     },
     "ssfaketls": {
@@ -797,6 +797,38 @@
     "ssh": {
       "description": "ℹ️ An SSH proxy, also known as an SSH tunnel or SSH port forwarding, is a secure method of creating a secure communication channel between two machines over an insecure network. We have a specific application which is completely different from SSH server and can not execute any commands",
       "label": "SSH Proxy"
+    },
+    "ssh_host_dsa_pk": {
+      "description": "config.ssh_host_dsa_pk.description",
+      "label": "config.ssh_host_dsa_pk.label"
+    },
+    "ssh_host_dsa_pub": {
+      "description": "config.ssh_host_dsa_pub.description",
+      "label": "config.ssh_host_dsa_pub.label"
+    },
+    "ssh_host_ecdsa_pk": {
+      "description": "config.ssh_host_ecdsa_pk.description",
+      "label": "config.ssh_host_ecdsa_pk.label"
+    },
+    "ssh_host_ecdsa_pub": {
+      "description": "config.ssh_host_ecdsa_pub.description",
+      "label": "config.ssh_host_ecdsa_pub.label"
+    },
+    "ssh_host_ed25519_pk": {
+      "description": "config.ssh_host_ed25519_pk.description",
+      "label": "config.ssh_host_ed25519_pk.label"
+    },
+    "ssh_host_ed25519_pub": {
+      "description": "config.ssh_host_ed25519_pub.description",
+      "label": "config.ssh_host_ed25519_pub.label"
+    },
+    "ssh_host_rsa_pk": {
+      "description": "config.ssh_host_rsa_pk.description",
+      "label": "config.ssh_host_rsa_pk.label"
+    },
+    "ssh_host_rsa_pub": {
+      "description": "config.ssh_host_rsa_pub.description",
+      "label": "config.ssh_host_rsa_pub.label"
     },
     "ssh_server_enable": {
       "description": "SSH Proxy is completely different than original SSH Server",
@@ -987,7 +1019,7 @@
       "label": "WireGuard"
     },
     "wireguard_enable": {
-      "description": "<p>WireGuard is UDP based protocol. (⚠️ It is Working In <a href=\"https://github.com/hiddify/hiddify-app\" target=\"_blank\">Hiddify</a>)</p>",
+      "description": "<p>WireGuard is UDP based protocol. (⚠️ It is Working In <a href=\"https://app.hiddify.com/\" target=\"_blank\">Hiddify</a>)</p>",
       "label": "🐉 WireGuard"
     },
     "wireguard_ipv4": {

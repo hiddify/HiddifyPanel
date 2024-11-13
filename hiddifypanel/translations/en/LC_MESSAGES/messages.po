@@ -1399,7 +1399,7 @@ msgstr "☑️ Allow HTTP Connection"
 msgid "config.httpupgrade_enable.description"
 msgstr ""
 "<p>HTTPUpgrade complete a HTTP 1.1 Upgrade request and response before using the connection directly. It is similar to WebSocket in the way it create an direction channel that can be forwarded by many reverse proxies and CDNs, without the need to deal with all the issue around WebSocket Protocol itself.<br />\n"
-"⚠️ <strong>Not Available in Xray based Clients. Only Hiddify, Singbox, and V2fly clients are supported.</strong>&nbsp;<a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/Basic-Concepts/#http-upgrade\" target=\"_blank\"><strong>(Read More)</strong></a></p>"
+"⚠️ <strong>Not Available in Xray based Clients. Only <p><a href=\"https://app.hiddify.com\" target=\"_blank\">Hiddify</a></p>, Singbox, and V2fly clients are supported.</strong>&nbsp;<a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/Basic-Concepts/#http-upgrade\" target=\"_blank\"><strong>(Read More)</strong></a></p>"
 
 msgid "config.httpupgrade_enable.label"
 msgstr "🆙 HTTPUpgrade Method"
@@ -1535,10 +1535,11 @@ msgstr "⬆️ MUX Brutal Upload (mbps)"
 
 msgid "config.mux_enable.description"
 msgstr ""
-"<p>Mux needs compatible clients. Mux in Hiddify and Singbox are not "
-"compatible with XRay.&nbsp;<a href=\"https://hiddify.com/manager/basic-"
-"concepts-and-troubleshooting/How-MUX-works-and-its-usage/\" "
-"target=\"_blank\">(Read More)</a></p>"
+"<p>Mux needs compatible clients. Mux in <p><a "
+"href=\"https://app.hiddify.com\" target=\"_blank\">Hiddify</a></p> and "
+"Singbox are not compatible with XRay.&nbsp;<a "
+"href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-"
+"MUX-works-and-its-usage/\" target=\"_blank\">(Read More)</a></p>"
 
 msgid "config.mux_enable.label"
 msgstr "Ⓜ️ MUX (⚠️ Incompatible With Some Clients)"
@@ -1874,7 +1875,7 @@ msgstr "🚀 Speed Test"
 msgid "config.splithttp_enable.description"
 msgstr ""
 "<p>This Protocol send and receive information in individual channels.<br />\n"
-"⚠️ <strong>Not Support in SignBox based Clients. Only Hiddify App, and XRay base Clients are supported.</strong></p>"
+"⚠️ <strong>Not Supported in SignBox based Clients. Only <p><a href=\"https://app.hiddify.com\" target=\"_blank\">Hiddify</a></p> App, and XRay base Clients are supported.</strong></p>"
 
 msgid "config.splithttp_enable.label"
 msgstr "🈁 Split HTTP"
@@ -1910,6 +1911,54 @@ msgstr ""
 
 msgid "config.ssh.label"
 msgstr "SSH Proxy"
+
+msgid "config.ssh_host_dsa_pk.description"
+msgstr "config.ssh_host_dsa_pk.description"
+
+msgid "config.ssh_host_dsa_pk.label"
+msgstr "config.ssh_host_dsa_pk.label"
+
+msgid "config.ssh_host_dsa_pub.description"
+msgstr "config.ssh_host_dsa_pub.description"
+
+msgid "config.ssh_host_dsa_pub.label"
+msgstr "config.ssh_host_dsa_pub.label"
+
+msgid "config.ssh_host_ecdsa_pk.description"
+msgstr "config.ssh_host_ecdsa_pk.description"
+
+msgid "config.ssh_host_ecdsa_pk.label"
+msgstr "config.ssh_host_ecdsa_pk.label"
+
+msgid "config.ssh_host_ecdsa_pub.description"
+msgstr "config.ssh_host_ecdsa_pub.description"
+
+msgid "config.ssh_host_ecdsa_pub.label"
+msgstr "config.ssh_host_ecdsa_pub.label"
+
+msgid "config.ssh_host_ed25519_pk.description"
+msgstr "config.ssh_host_ed25519_pk.description"
+
+msgid "config.ssh_host_ed25519_pk.label"
+msgstr "config.ssh_host_ed25519_pk.label"
+
+msgid "config.ssh_host_ed25519_pub.description"
+msgstr "config.ssh_host_ed25519_pub.description"
+
+msgid "config.ssh_host_ed25519_pub.label"
+msgstr "config.ssh_host_ed25519_pub.label"
+
+msgid "config.ssh_host_rsa_pk.description"
+msgstr "config.ssh_host_rsa_pk.description"
+
+msgid "config.ssh_host_rsa_pk.label"
+msgstr "config.ssh_host_rsa_pk.label"
+
+msgid "config.ssh_host_rsa_pub.description"
+msgstr "config.ssh_host_rsa_pub.description"
+
+msgid "config.ssh_host_rsa_pub.label"
+msgstr "config.ssh_host_rsa_pub.label"
 
 msgid "config.ssh_server_enable.description"
 msgstr "SSH Proxy is completely different than original SSH Server"
@@ -2264,8 +2313,7 @@ msgstr "WireGuard"
 msgid "config.wireguard_enable.description"
 msgstr ""
 "<p>WireGuard is UDP based protocol. (⚠️ It is Working In <a "
-"href=\"https://github.com/hiddify/hiddify-app\" "
-"target=\"_blank\">Hiddify</a>)</p>"
+"href=\"https://app.hiddify.com/\" target=\"_blank\">Hiddify</a>)</p>"
 
 msgid "config.wireguard_enable.label"
 msgstr "🐉 WireGuard"
