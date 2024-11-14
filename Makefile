@@ -154,3 +154,11 @@ switch-to-poetry: ## Switch to poetry package manager.
 
 stress_test:
 	echo "GET http://localhost:9000/x2hDG4gt32VDbuZsYY6iq/c9c0c597-f42c-44d8-96e1-81f91dbcf1d0/singbox/?asn=unknown" | vegeta attack -duration=5s | tee results.bin | vegeta report	
+
+
+
+protos:
+	python3 -m grpc.tools.protoc --pyi_out=./ -I ./ --python_out=./ --grpc_python_out=./  $$(find . -name "*.proto")
+
+	sed -i "s/_registered_method=True//g" $$(find . -name "*_pb2_grpc.py")
+

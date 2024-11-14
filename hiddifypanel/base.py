@@ -16,30 +16,16 @@ from apiflask import APIFlask
 from werkzeug.middleware.proxy_fix import ProxyFix
 from loguru import logger
 from hiddifypanel.panel.init_db import init_db
+from hiddifypanel.hutils import hlogger
+from sonora.wsgi import grpcWSGI
 
-
-def logger_dynamic_formatter(record) -> str:
-    fmt = '<green>{time:YYYY-MM-DD HH:mm:ss}</green> | <level>{level: <8}</level> | <cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - <level>{message}</level>'
-    if record['extra']:
-        fmt += ' | <level>{extra}</level>'
-    return fmt + '\n'
-
-
-def init_logger(app, cli):
-    # configure logger
-    logger.remove()
-    logger.add(sys.stderr if cli else sys.stdout, format=logger_dynamic_formatter, level=app.config['STDOUT_LOG_LEVEL'],
-               colorize=True, catch=True, enqueue=True, diagnose=False, backtrace=True)
-    logger.trace('Logger initiated :)')
-
-
-# TODO: refactor this function
 
 def create_app(*args, cli=False, **config):
 
     app = APIFlask(__name__, static_url_path="/<proxy_path>/static/", instance_relative_config=True, version='2.2.0', title="Hiddify API",
                    openapi_blueprint_url_prefix="/<proxy_path>/api", docs_ui='elements', json_errors=False, enable_openapi=not cli)
     # app = Flask(__name__, static_url_path="/<proxy_path>/static/", instance_relative_config=True)
+    # app.asgi_app = WsgiToAsgi(app)
 
     if not cli:
         
@@ -48,6 +34,8 @@ def create_app(*args, cli=False, **config):
         app.wsgi_app = ProxyFix(
             app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1,
         )
+        
+
         app.secret_key="asdsad"
         app.servers = {
             'name': 'current',
@@ -84,12 +72,11 @@ def create_app(*args, cli=False, **config):
             v = True if v.lower() == "true" else (False if v.lower() == "false" else v)
 
         app.config[c] = v
-    init_logger(app, cli)
+    hlogger.init_logger(app, cli)
     hiddifypanel.database.init_app(app)
     with app.app_context():
         init_db()
-        logger.add(app.config['HIDDIFY_CONFIG_PATH'] + "/log/system/panel.log", format=logger_dynamic_formatter, level=hconfig(ConfigEnum.log_level),
-                   colorize=True, catch=True, enqueue=True, diagnose=False, backtrace=True)
+        hlogger.set_level(app,hconfig(ConfigEnum.log_level))
 
     def get_locale():
         # Put your logic here. Application can store locale in
@@ -115,6 +102,7 @@ def create_app(*args, cli=False, **config):
             }
         }
         Session(app)
+        app.wsgi_app = grpcWSGI(app.wsgi_app)
         hiddifypanel.panel.common.init_app(app)
         hiddifypanel.panel.common_bp.init_app(app)
 
@@ -122,6 +110,10 @@ def create_app(*args, cli=False, **config):
         admin.init_app(app)
         user.init_app(app)
         commercial.init_app(app)
+        from .panel import node
+        node.init_app(app)
+        
+
 
     app.config.update(config)  # Override with passed config
     # app.config['WTF_CSRF_CHECK_DEFAULT'] = False
