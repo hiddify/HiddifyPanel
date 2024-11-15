@@ -5,7 +5,7 @@ from pickle import dumps, loads
 from loguru import logger
 
 redis_client = redis.from_url(os.environ["REDIS_URI_MAIN"])
-
+# print(os.environ["REDIS_URI_MAIN"])
 
 class CustomRedisCache(RedisCache):
     def __init__(self, redis_client, prefix="rc", serializer=compact_dump, deserializer=loads, key_serializer=None, support_cluster=True, exception_handler=None):

@@ -6,6 +6,9 @@ import os
 from sqlalchemy import Row, text, Sequence
 
 
+
+
+
 db: SQLAlchemy = SQLAlchemy()
 db.UUID = UUIDType  # type: ignore
 
@@ -13,6 +16,10 @@ db.UUID = UUIDType  # type: ignore
 def init_app(app):
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
     db.init_app(app)
+    with app.app_context():
+        from hiddifypanel.panel.init_db import init_db
+        init_db()
+        
 
 
 def db_execute(query: str, return_val: bool = False, commit: bool = False, **params: dict):

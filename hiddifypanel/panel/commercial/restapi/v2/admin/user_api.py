@@ -6,7 +6,8 @@ from hiddifypanel.auth import login_required
 from hiddifypanel.models import *
 from hiddifypanel.panel import hiddify
 from hiddifypanel.drivers import user_driver
-from hiddifypanel.panel import hiddify
+
+
 
 from . import has_permission
 from .schema import UserSchema, PostUserSchema, PatchUserSchema, SuccessfulSchema

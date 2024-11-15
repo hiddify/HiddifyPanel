@@ -11,16 +11,18 @@ from hiddifypanel import cache, hutils
 from loguru import logger
 to_gig_d = 1024**3
 
+from celery import shared_task
 
+@shared_task(ignore_result=False)
 def update_local_usage():
     lock_key = "lock-update-local-usage"
     if not cache.redis_client.set(lock_key, "locked", nx=True, ex=600):
         return {"msg": "last update task is not finished yet."}
     try:
-        res = user_driver.get_users_usage(reset=True)
-        # cache.redis_client.delete(lock_key)
+        res=update_local_usage_not_lock()
         cache.redis_client.set(lock_key, "locked", nx=False, ex=60)
-        return _add_users_usage(res, child_id=0)
+        
+        return res
     except Exception as e:
         cache.redis_client.set(lock_key, "locked", nx=False, ex=60)
         logger.exception("Exception in update usage")
@@ -28,6 +30,14 @@ def update_local_usage():
         return {"msg": f"Exception in update usage: {e}"}
 
     # return {"status": 'success', "comments":res}
+def update_local_usage_not_lock():
+    
+    try:
+        res = user_driver.get_users_usage(reset=True)
+        return _add_users_usage(res, child_id=0)
+    except Exception as e:
+        raise
+        
 
 
 def add_users_usage_uuid(uuids_bytes: Dict[str, Dict], child_id, sync=False):

@@ -77,6 +77,8 @@ sqlalchemy-serializer = "^1.4.22"
 sonora = "^0.2.3"
 protobuf = "^5.26.1"
 asgiref = "^3.8.1"
+celery = "^5.4.0"
+dynaconf = "^3.2.6"
 
 
 [tool.poetry.group.dev.dependencies]

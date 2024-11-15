@@ -1,3 +1,5 @@
+import asyncio
+import time
 from flask import current_app as app, request
 from flask import g
 from flask.views import MethodView
@@ -16,7 +18,9 @@ class UpdateUserUsageApi(MethodView):
 
     def get(self):
         """System: Update User Usage"""
-        return json.dumps(usage.update_local_usage(), indent=2)
+        # time.sleep(5)
+        
+        return json.dumps(usage.update_local_usage_not_lock(), indent=2)
 
 
 class AllConfigsApi(MethodView):
