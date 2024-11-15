@@ -13,6 +13,7 @@ from hiddifypanel.panel import hiddify, usage
 from hiddifypanel.database import db
 from hiddifypanel.panel.init_db import init_db
 
+from loguru import logger
 
 def drop_db():
     """Cleans database"""
@@ -29,7 +30,12 @@ def downgrade():
         os.rename("/opt/hiddify-manager/hiddify-panel/hiddifypanel.db.old", "/opt/hiddify-manager/hiddify-panel/hiddifypanel.db")
 
 
+from celery import shared_task
 def backup():
+    backup_task()
+
+@shared_task(ignore_result=False)
+def backup_task():
     dbdict = hiddify.dump_db_to_dict()
     os.makedirs('backup', exist_ok=True)
     dst = f'backup/{datetime.datetime.now().strftime("%Y_%m_%d__%H_%M_%S")}.json'
@@ -42,9 +48,12 @@ def backup():
             register_bot(True)
 
         with open(dst, 'rb') as document:
-            for admin in AdminUser.query.filter(AdminUser.mode == AdminMode.super_admin, AdminUser.telegram_id is not None).all():
+            for admin in AdminUser.query.filter(AdminUser.mode == AdminMode.super_admin, AdminUser.telegram_id is not None,AdminUser.telegram_id!=0).all():
                 caption = ("Backup \n" + admin_links())
-                bot.send_document(admin.telegram_id, document, visible_file_name=dst.replace("backup/", ""), caption=caption[:min(len(caption), 1000)])
+                try:
+                    bot.send_document(admin.telegram_id, document, visible_file_name=dst.replace("backup/", ""), caption=caption[:1000])
+                except Exception as e:
+                    logger.exception(e)
 
 
 def all_configs():
