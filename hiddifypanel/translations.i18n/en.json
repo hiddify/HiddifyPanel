@@ -331,12 +331,10 @@
     }
   },
   "auto": "Auto",
-  "auto_cdn_ip": "☑️ Automatic CDN IP Selector",
   "bot": {
     "admin_welcome": "Hooray 🎉 🎉 🎉 Welcome to admin bot. Choose your action",
     "welcome": "Hooray 🎉 🎉 🎉 \nWelcome to Hiddify bot\nStart by clicking the link on the Panel or entering your UUID user."
   },
-  "cdn": "🔀 CDN (Cloudflare Proxy, ...)",
   "cf-delete": {
     "failed": "cf-delete.failed"
   },
@@ -412,33 +410,17 @@
       "description": "Please follow <a href='https://github.com/hiddify/hiddify-config/wiki/Get-Cloudflare-API' target='_blank'>the instruction</a> and paste the Cloudflare API Key",
       "label": "🔑 Cloudflare API"
     },
-    "core_type": {
-      "description": "☢️ XRay : Is a Complete Core\n<br>\n📦 Singbox : Developed by SagerNet. It is also a good core",
-      "label": "🎛️ Core"
-    },
     "country": {
       "description": "It applies the appropriate settings for each country according to the filtering conditions of that country",
       "label": "🌍 Country"
-    },
-    "create_easysetup_link": {
-      "description": "config.create_easysetup_link.description",
-      "label": "config.create_easysetup_link.label"
     },
     "db_version": {
       "description": "Database Version Description",
       "label": "Database Version Label"
     },
-    "dbvalues": {
-      "description": "config.dbvalues.description",
-      "label": "config.dbvalues.label"
-    },
     "decoy_domain": {
       "description": "Fake Site: simulates a site when someone visits your domain directly.<br>\n⚠️ Do not use financial, Iranian and famous sites or sites with login such as Google, Yahoo, Wikipedia, PayPal.<br>\n⛔ Be sure to check the site and make sure that it is the right site, otherwise you may receive a phishing warning.<br>\n⛔⛔ Check this domain again so that there is no problem in the future",
       "label": "📺 Decoy Site"
-    },
-    "dns_server": {
-      "description": "✳️ Default 1.1.1.1 <br>\n🚧 Block Malware 1.1.1.2 <br>\n🔞 Block Porn 1.1.1.3\n",
-      "label": "🖥 DNS Server"
     },
     "domain_fronting": {
       "description": "It is used to simulate another website instead of your website in SNI. therefore, GFW can not filter your Domain\n<a href='https://github.com/hiddify/hiddify-config/wiki/%D8%A7%D8%B3%D8%AA%D9%81%D8%A7%D8%AF%D9%87-%D8%A7%D8%B2-%D8%AF%D8%A7%D9%85%DB%8C%D9%86-%D9%81%D8%B1%D8%A7%D9%86%D8%AA%DB%8C%D9%86%DA%AF'>Guide</a>. ⚠️CloudFlare does not support Domain Fronting.",
@@ -468,22 +450,6 @@
       "description": "It is General System Configurations",
       "label": "General Settings"
     },
-    "grpc_enable": {
-      "description": "gRPC is a modern open source high performance Remote Procedure Call (RPC) framework. It can be used in supported CDNs",
-      "label": "➿ gRPC"
-    },
-    "h2_enable": {
-      "description": "Enable HTTP/2 Protocol",
-      "label": "🔵 h2"
-    },
-    "hidden": {
-      "description": "config.hidden.description",
-      "label": "config.hidden.label"
-    },
-    "hiddifycli_enable": {
-      "description": "config.hiddifycli_enable.description",
-      "label": "config.hiddifycli_enable.label"
-    },
     "http": {
       "description": "HTTP Configurations could be set in this section",
       "label": "HTTP Configuration"
@@ -495,34 +461,6 @@
     "http_proxy_enable": {
       "description": "By allowing this, your users can connect to the system with Unencrypted HTTP Port. (Not Recommended)",
       "label": "☑️ Allow HTTP Connection"
-    },
-    "httpupgrade_enable": {
-      "description": "<p>HTTPUpgrade complete a HTTP 1.1 Upgrade request and response before using the connection directly. It is similar to WebSocket in the way it create an direction channel that can be forwarded by many reverse proxies and CDNs, without the need to deal with all the issue around WebSocket Protocol itself.<br />\n⚠️ <strong>Not Available in Xray based Clients. Only <p><a href=\"https://app.hiddify.com\" target=\"_blank\">Hiddify</a></p>, Singbox, and V2fly clients are supported.</strong>&nbsp;<a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/Basic-Concepts/#http-upgrade\" target=\"_blank\"><strong>(Read More)</strong></a></p>",
-      "label": "🆙 HTTPUpgrade Method"
-    },
-    "hysteria": {
-      "description": "Hysteria is a feature-packed proxy & relay tool optimized for lossy, unstable connections (e.g. satellite networks, congested public Wi-Fi, connecting to foreign servers from China)",
-      "label": "Hysteria"
-    },
-    "hysteria_down_mbps": {
-      "description": "Hysteria Maximum Download Speed",
-      "label": "⬇️ Hysteria Download (mbps)"
-    },
-    "hysteria_enable": {
-      "description": "To Enable UDP based Hysteria Protocol",
-      "label": "⚫️ Hysteria2"
-    },
-    "hysteria_obfs_enable": {
-      "description": " Enables Hysteria Obfuscation (Salamander)",
-      "label": "🎛 Hysteria OBFS"
-    },
-    "hysteria_port": {
-      "description": "Hysteria UDP Port for example 5678",
-      "label": "🔍 Hysteria2 Port"
-    },
-    "hysteria_up_mbps": {
-      "description": "Hysteria Maximum Upload Speed",
-      "label": "⬆️ Hysteria Upload (mbps)"
     },
     "invalid-pattern-for-warp-sites": "⚠️ The Site entered for the Warp does not match the specified template",
     "invalid_uuid": "Invalid UUID secret. example: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6\n\n",
@@ -550,57 +488,9 @@
       "description": "config.last_hash.description",
       "label": "config.last_hash.label"
     },
-    "last_priodic_usage_check": {
-      "description": "config.last_priodic_usage_check.description",
-      "label": "config.last_priodic_usage_check.label"
-    },
     "license": {
       "description": "For commercial use of this Product, you must Purchase its License",
       "label": "License  Code"
-    },
-    "log_level": {
-      "description": "config.log_level.description",
-      "label": "config.log_level.label"
-    },
-    "mux": {
-      "description": "MUX (Multiplex) configurations could be set in this section",
-      "label": "MUX Config"
-    },
-    "mux_brutal_down_mbps": {
-      "description": "TCP-Brutal Maximum Download Speed",
-      "label": "⬇️ MUX Brutal Download (mbps)"
-    },
-    "mux_brutal_enable": {
-      "description": "Enables TCP-Brutal congestion control algorithm",
-      "label": "☣️ MUX Brutal"
-    },
-    "mux_brutal_up_mbps": {
-      "description": "TCP-Brutal Maximum Upload Speed",
-      "label": "⬆️ MUX Brutal Upload (mbps)"
-    },
-    "mux_enable": {
-      "description": "<p>Mux needs compatible clients. Mux in <p><a href=\"https://app.hiddify.com\" target=\"_blank\">Hiddify</a></p> and Singbox are not compatible with XRay.&nbsp;<a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-MUX-works-and-its-usage/\" target=\"_blank\">(Read More)</a></p>",
-      "label": "Ⓜ️ MUX (⚠️ Incompatible With Some Clients)"
-    },
-    "mux_max_connections": {
-      "description": "Maximum Connections. Conflict with Max Streams",
-      "label": "⛓ MUX Max Connections"
-    },
-    "mux_max_streams": {
-      "description": "Maximum Multiplexed streams in a connection before opening a new connection",
-      "label": "↗️ MUX Max Streams"
-    },
-    "mux_min_streams": {
-      "description": "Minimum Multiplexed streams in a connection before opening a new connection",
-      "label": "↘️ MUX Min Streams"
-    },
-    "mux_padding_enable": {
-      "description": "MUX Padding description",
-      "label": "⟹ MUX Padding"
-    },
-    "mux_protocol": {
-      "description": "ℹ️ Multiplex Protocol. 'sMux' is used by default\n<br>\n➖ sMux: Stream Multiplexing\n<br>\n➖ YaMux: Yet Another Multiplexer\n<br>\n➖ h2Mux: Multiplexing Streams Over HTTP/2",
-      "label": "♍️ MUX Protocol"
     },
     "netdata": {
       "description": "For displaying resources. uses your Server's CPU but it is not too much.",
@@ -618,18 +508,6 @@
       "description": "Specify whether you want Released Package or Beta one",
       "label": "🔄 Package Update Mode"
     },
-    "panel_mode": {
-      "description": "config.panel_mode.description",
-      "label": "config.panel_mode.label"
-    },
-    "parent_admin_proxy_path": {
-      "description": "config.parent_admin_proxy_path.description",
-      "label": "config.parent_admin_proxy_path.label"
-    },
-    "parent_domain": {
-      "description": "config.parent_domain.description",
-      "label": "config.parent_domain.label"
-    },
     "parent_panel": {
       "description": "You can Connect to the Central Panel to define only one user and the usage of all Servers will be added cumulatively.",
       "label": "Parent Panel (Multi Server)"
@@ -637,14 +515,6 @@
     "path_grpc": {
       "description": "gRPC Path In Configs",
       "label": "ℹ️ gRPC Path"
-    },
-    "path_httpupgrade": {
-      "description": "should be random",
-      "label": "ℹ️ HTTP Upgrade Path"
-    },
-    "path_splithttp": {
-      "description": "This option defines the Path for Split HTTP",
-      "label": "ℹ️ Path for Split HTTP"
     },
     "path_ss": {
       "description": "Shadowsocks Path in the Links",
@@ -682,33 +552,13 @@
       "description": "We use secret proxy path to hide our proxies for the gouvernment",
       "label": "ℹ️ Secret Proxy Path"
     },
-    "proxy_path_admin": {
-      "description": "We use secret proxy path to hide our proxies for the governments and  bots",
-      "label": "🔐 Proxy Path for Admins"
-    },
-    "proxy_path_client": {
-      "description": "Secret proxy path hide the proxies from the governments and bots",
-      "label": "🔏 Proxy Path for Clients"
-    },
-    "quic_enable": {
-      "description": "Enable QUIC Protocol",
-      "label": "🟡 QUIC"
-    },
     "reality": {
       "description": "REALITY eliminate the Server-Side TLS Fingerprint Feature",
       "label": "Reality"
     },
-    "reality_enable": {
-      "description": "Enable Reality Protocol",
-      "label": "🔴 Reality"
-    },
     "reality_fallback_domain": {
       "description": "When the GFW visit the Websites in Server names, it will be redirect to this Domain.",
       "label": "🌍 Reality Fallback Domain"
-    },
-    "reality_port": {
-      "description": "You can set a customized port for your reality server to reduce the system's overhead. (Allow direct connection to proxies should be yes)",
-      "label": "↔️  Direct Reality Port"
     },
     "reality_private_key": {
       "description": "Do Not Change It",
@@ -738,22 +588,6 @@
       "description": "config.restls1_3_domain.description",
       "label": "config.restls1_3_domain.label"
     },
-    "shadowsocks": {
-      "description": "Shadowsocks is a fast tunnel proxy that helps you bypass firewalls",
-      "label": "Shadowsocks"
-    },
-    "shadowsocks2022_enable": {
-      "description": "Shadowsocks 2022 is a secure Proxy Protocol for TCP and UDP traffic. The proxy traffic is indistinguishable from a random byte stream, and therefore can circumvent firewalls and Internet censors that rely on DPI (Deep Packet Inspection)",
-      "label": "⭕️ Shadowsocks 2022"
-    },
-    "shadowsocks2022_method": {
-      "description": "This method also used in ShadowTLS and SSFakeTLS",
-      "label": "🔐 Shadowsocks Encrypytion Method"
-    },
-    "shadowsocks2022_port": {
-      "description": "It needs both UDP and TCP to be Free",
-      "label": "↔️ Shadowsocks 2022 Port"
-    },
     "shadowtls": {
       "description": "A Proxy to expose real tls handshake to the firewall.\n\nIt works like TROJAN but It does not require signing certificate. the firewall will see real tls handshake with valid certificate that you choose.",
       "label": "ShadowTLS"
@@ -778,10 +612,6 @@
       "description": "Allow your users to do Speed Test. It helps them to identify the link quality",
       "label": "🚀 Speed Test"
     },
-    "splithttp_enable": {
-      "description": "<p>This Protocol send and receive information in individual channels.<br />\n⚠️ <strong>Not Supported in SignBox based Clients. Only <p><a href=\"https://app.hiddify.com\" target=\"_blank\">Hiddify</a></p> App, and XRay base Clients are supported.</strong></p>",
-      "label": "🈁 Split HTTP"
-    },
     "ssfaketls": {
       "description": "Shadowsocks FakeTLS is a simple obfusacting tool that encapsulate the date In tls packet",
       "label": "Shadowsocks FakeTLS"
@@ -794,54 +624,6 @@
       "description": "Please use a well known domain in your data center. for example, If you are in Azure data center, microsoft-update.com Is a good example",
       "label": "🌍 SS FakeTLS FakeDomain"
     },
-    "ssh": {
-      "description": "ℹ️ An SSH proxy, also known as an SSH tunnel or SSH port forwarding, is a secure method of creating a secure communication channel between two machines over an insecure network. We have a specific application which is completely different from SSH server and can not execute any commands",
-      "label": "SSH Proxy"
-    },
-    "ssh_host_dsa_pk": {
-      "description": "config.ssh_host_dsa_pk.description",
-      "label": "config.ssh_host_dsa_pk.label"
-    },
-    "ssh_host_dsa_pub": {
-      "description": "config.ssh_host_dsa_pub.description",
-      "label": "config.ssh_host_dsa_pub.label"
-    },
-    "ssh_host_ecdsa_pk": {
-      "description": "config.ssh_host_ecdsa_pk.description",
-      "label": "config.ssh_host_ecdsa_pk.label"
-    },
-    "ssh_host_ecdsa_pub": {
-      "description": "config.ssh_host_ecdsa_pub.description",
-      "label": "config.ssh_host_ecdsa_pub.label"
-    },
-    "ssh_host_ed25519_pk": {
-      "description": "config.ssh_host_ed25519_pk.description",
-      "label": "config.ssh_host_ed25519_pk.label"
-    },
-    "ssh_host_ed25519_pub": {
-      "description": "config.ssh_host_ed25519_pub.description",
-      "label": "config.ssh_host_ed25519_pub.label"
-    },
-    "ssh_host_rsa_pk": {
-      "description": "config.ssh_host_rsa_pk.description",
-      "label": "config.ssh_host_rsa_pk.label"
-    },
-    "ssh_host_rsa_pub": {
-      "description": "config.ssh_host_rsa_pub.description",
-      "label": "config.ssh_host_rsa_pub.label"
-    },
-    "ssh_server_enable": {
-      "description": "SSH Proxy is completely different than original SSH Server",
-      "label": "✔️ SSH Proxy"
-    },
-    "ssh_server_port": {
-      "description": "This is completely different from your original SSH server. It is a dedicated program.",
-      "label": "↔️ SSH Proxy Port"
-    },
-    "ssh_server_redis_url": {
-      "description": "Not Used",
-      "label": "SSH user database address"
-    },
     "ssr": {
       "description": "ShadowsocksR is a fork of the original Shadowsocks project, claimed to be superior in terms of security and stability.",
       "label": "SSR"
@@ -853,38 +635,6 @@
     "ssr_fakedomain": {
       "description": "Please use a well known domain In your data center. for example, If you are In Azure data center, microsoft-update.com Is a good example",
       "label": "SSR FakeDomain"
-    },
-    "sub_full_clash_enable": {
-      "description": "config.sub_full_clash_enable.description",
-      "label": "config.sub_full_clash_enable.label"
-    },
-    "sub_full_clash_meta_enable": {
-      "description": "config.sub_full_clash_meta_enable.description",
-      "label": "config.sub_full_clash_meta_enable.label"
-    },
-    "sub_full_links_b64_enable": {
-      "description": "config.sub_full_links_b64_enable.description",
-      "label": "config.sub_full_links_b64_enable.label"
-    },
-    "sub_full_links_enable": {
-      "description": "config.sub_full_links_enable.description",
-      "label": "config.sub_full_links_enable.label"
-    },
-    "sub_full_singbox_enable": {
-      "description": "config.sub_full_singbox_enable.description",
-      "label": "config.sub_full_singbox_enable.label"
-    },
-    "sub_full_xray_json_enable": {
-      "description": "XRay full link provides comprehensive configuration options for XRay-specific settings. This includes custom fragmentation and multiplexing (mux) in applications such as v2rayNG that support XRay protocols for fine-tuned control over XRay proxy setup.",
-      "label": "⚙️ XRay Full Config Link"
-    },
-    "sub_singbox_ssh_enable": {
-      "description": "config.sub_singbox_ssh_enable.description",
-      "label": "config.sub_singbox_ssh_enable.label"
-    },
-    "tcp_enable": {
-      "description": "Enables TCP Protocol",
-      "label": "🟠 TCP"
     },
     "telegram": {
       "description": "A proxy designed for Telegram to bypass Telegram filtering",
@@ -914,37 +664,9 @@
       "description": "TLS Configurations could be set in this section",
       "label": "TLS Settings"
     },
-    "tls_fragment_enable": {
-      "description": "<p>Under some circumstances, it can bypass the SNI blacklist system. <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-the-TLS-Trick-works-and-its-usage/\" target=\"_blank\">(Read More)</a></p>",
-      "label": "⏯ TLS Fragment"
-    },
-    "tls_fragment_size": {
-      "description": "The Size of each Packet",
-      "label": "🎚 TLS Fragment Size"
-    },
-    "tls_fragment_sleep": {
-      "description": "The time delay between Fragments",
-      "label": "⏱ TLS Fragment Sleep"
-    },
-    "tls_mixed_case": {
-      "description": "Enables TLS Mixed SNI Case Fragmentation",
-      "label": "🔠 TLS Mixed SNI Case"
-    },
-    "tls_padding_enable": {
-      "description": "<p>Enables Padding for TLS Fragmentation. <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-the-TLS-Trick-works-and-its-usage/#tls-padding\" target=\"_blank\">(Read More)</a></p>",
-      "label": "♒️ TLS Padding"
-    },
-    "tls_padding_length": {
-      "description": "The length of the Padding for TLS Fragmentation",
-      "label": "📏 TLS Padding"
-    },
     "tls_ports": {
       "description": "Comma separated integers indicating the ports to use as TLS Connection  (Port 443 will be used in anycase)\n",
       "label": "🔎 TLS Ports"
-    },
-    "tls_trick": {
-      "description": "TLS Fragmentation configurations could be set in this section",
-      "label": "TLS Trick"
     },
     "too_advanced": {
       "description": "Specify The Proxy Path. It is important especially if you are using HTTP and VMess",
@@ -953,10 +675,6 @@
     "torrent_block": {
       "description": "Torrent Block Configurations could be set in this section.",
       "label": "Torrent Block Configuration"
-    },
-    "trojan_enable": {
-      "description": "Enables Trojan Protocol",
-      "label": "🟤 Trojan"
     },
     "tuic": {
       "description": "Delicately-TUICed High-Performance proxy is on top of the QUIC protocol. \n\nTUIC's goal is to minimize the handshake latency as much as possible",
@@ -985,10 +703,6 @@
     "validation-error": "There is an error in one of the fields.",
     "validation-success": "Configs have been changed successfully. Click %(link)s to apply the configs. It may take 2 minutes to apply",
     "validation-success-no-reset": " ✅ Configs have been changed successfully",
-    "vless_enable": {
-      "description": "Enable VLess Protocol",
-      "label": "⚫️ VLess"
-    },
     "vmess_enable": {
       "description": "Active VMess Protocol",
       "label": "🟣 VMess"
@@ -1009,57 +723,11 @@
     "warp_plus_code": {
       "description": "🔝 Increases browsing speed. To get the Key, go to the <a href='https://1.1.1.1/'> 1.1.1.1 </a>\napp and purchase the original KEY from Cloudflare\n<br>\n⚠️ If there is an error in this Key, the WARP will be disabled",
       "label": "🔑 Warp Plus Key"
-    },
-    "warp_sites": {
-      "description": "Add additional sites to pass through WARP (only when warp mode is not None)",
-      "label": "🆚 Additional WARP Sites"
-    },
-    "wireguard": {
-      "description": "WireGuard is a lightweight, UDP  based protocol known for its simplicity, efficiency, and strong security. It offers quick setup, transparent code, and has gained popularity for its ease of use across various operating systems",
-      "label": "WireGuard"
-    },
-    "wireguard_enable": {
-      "description": "<p>WireGuard is UDP based protocol. (⚠️ It is Working In <a href=\"https://app.hiddify.com/\" target=\"_blank\">Hiddify</a>)</p>",
-      "label": "🐉 WireGuard"
-    },
-    "wireguard_ipv4": {
-      "description": "Enables IPv4 in WireGuard",
-      "label": " IPv4 in WireGuard"
-    },
-    "wireguard_ipv6": {
-      "description": "Enables IPv6 in WireGuard",
-      "label": "IPv6 in WireGuard"
-    },
-    "wireguard_noise_trick": {
-      "description": "This method introduces extra noise to prevent detection and blocking by the GFW",
-      "label": "💥 WireGuard Noise Trick"
-    },
-    "wireguard_port": {
-      "description": "Defines Port for WireGuard ",
-      "label": "↔️ WireGuard Port"
-    },
-    "wireguard_private_key": {
-      "description": "A private key is specified to WireGuard",
-      "label": "WireGuard Private Key"
-    },
-    "wireguard_public_key": {
-      "description": "A public key is specified to WireGuard",
-      "label": "WireGuard Public Key"
-    },
-    "ws_enable": {
-      "description": "Websocket creates a tunnel over HTTP that is useful to be used in CDN",
-      "label": "🔰 Websocket"
-    },
-    "xtls_enable": {
-      "description": "Enables XTLS Protocol",
-      "label": "🟢 XTLS"
     }
   },
   "copy": "Copy",
-  "daily": "⏰ Daily",
   "days": "Days",
   "desktop": "Desktop",
-  "direct": "➡️ Direct",
   "domain": {
     "cdn": "CDN",
     "changed_in_domain_warning": "⚠️ Your Domains Changed. please do not forget to copy Admin links, otherwise you can not access to the panel anymore",
@@ -1081,7 +749,6 @@
     "show_domains_description": "For users visit the user area with this domain, Specify they can see the proxies of which domains.\n<br>\nSuggestion: For a domain with an unfiltered IP and different from the others, select all other domains (except the current domain). As a result, since the use of this IP is not for proxy and it is a simple website, this domain and IP will never be blocked and your users can easily update new profiles."
   },
   "download": "Direct Download",
-  "fake": "🆎 Fake Site",
   "gRPC": "➿ gRPC",
   "grpc-proxy": {
     "description": "ℹ️ gRPC is a H2 based Protocol. Maybe it is faster for you!"
@@ -1120,10 +787,8 @@
   "master": {
     "page-title": "HiddifyManager"
   },
-  "monthly": "🗓️ Monthly",
   "move_to_new_link": "The page has been moved to a new link. Please copy and save the new link.",
   "next": "Next",
-  "no_reset": "⭐️ Without Reset",
   "node": {
     "diff-version": "node.diff-version",
     "mode": {
@@ -1139,7 +804,6 @@
       "label": "Node UUID"
     }
   },
-  "old_xtls_direct": "🔙 Old Direct Mode (For Trojan TCP, VLess XTLS)",
   "open": "Open",
   "outdated_panel": "⚠️ This version of Hiddify Manager is outdated. please Update it from Admin area",
   "package days?": "package days?",
@@ -1161,8 +825,6 @@
       "success": "Changing the Language was Successful."
     }
   },
-  "reality": "🔂 Reality",
-  "relay": "♾️ Relay (Connect Using an Intermediate Node)",
   "search": "Search",
   "see the log in the bellow screen": "📑 See the log in the bellow screen",
   "serverssh": {
@@ -1172,7 +834,6 @@
   },
   "singbox: ssh": "SingBox: SSH",
   "ssh": "SSH",
-  "sub_link_only": "📳 Only for Subscription Link (can be Direct, Relay, or CDN)",
   "telegram": "Telegram",
   "test": "Test",
   "update": "Update",
@@ -1288,7 +949,5 @@
   },
   "vpn": {
     "notallowed": "Please visit this page without using a VPN. You need to access it from the country %(expected_country)s, but you're currently accessing it from %(your_country)s."
-  },
-  "weekly": "📅 Weekly",
-  "worker": "✴️ Cloudflare Worker"
+  }
 }

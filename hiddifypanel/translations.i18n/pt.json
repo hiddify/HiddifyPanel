@@ -331,12 +331,10 @@
     }
   },
   "auto": "Auto",
-  "auto_cdn_ip": "Seletor automático de CDN IP",
   "bot": {
     "admin_welcome": "Bem-vindo ao bot administrativo. Escolha sua ação",
     "welcome": "Viva 🎉 🎉 🎉\nBem-vindo ao bot Hiddify\nComece clicando no link no Painel ou inserindo seu UUID."
   },
-  "cdn": "CDN (Cloudflare Proxy, ...)",
   "cf-delete": {
     "failed": "cf-delete.falhou"
   },
@@ -412,33 +410,17 @@
       "description": "Por favor, siga <a href='https://github.com/hiddify/hiddify-config/wiki/Get-Cloudflare-API' target='_blank'>a instrução</a> e cole a chave de API Cloudflare",
       "label": "🔑 API Cloudflare"
     },
-    "core_type": {
-      "description": "☢️ XRay: é um núcleo completo\n<br>\n📦 Singbox: Desenvolvido por SagerNet. Também é um bom núcleo",
-      "label": "🎛️ Núcleo"
-    },
     "country": {
       "description": "Aplica as configurações apropriadas para cada país de acordo com as condições de filtragem desse país",
       "label": "🌍 País"
-    },
-    "create_easysetup_link": {
-      "description": "config.create_easysetup_link.descrição",
-      "label": "config.create_easysetup_link.label"
     },
     "db_version": {
       "description": "Descrição da versão do banco de dados",
       "label": "Rótulo da versão do banco de dados"
     },
-    "dbvalues": {
-      "description": "config.dbvalues.descrição",
-      "label": "config.dbvalues.label"
-    },
     "decoy_domain": {
       "description": "Site falso: simula um site quando alguém visita seu domínio.\nPor favor, não use sites iranianos, sites populares bem conhecidos como: Google, Yahoo, Wikipedia, etc.",
       "label": "🔀 Site Decoy"
-    },
-    "dns_server": {
-      "description": "✳️ Padrão 1.1.1.1 <br>\n🚧 Bloquear Malware 1.1.1.2 <br>\n🔞 Bloquear pornografia 1.1.1.3",
-      "label": "🖥 Servidor DNS"
     },
     "domain_fronting": {
       "description": "Ele é usado para simular outro site em vez do seu site no SNI. portanto, GTW não pode filtrar seu domínio\n<a href='https://github.com/hiddify/hiddify-config/wiki/%D8%A7%D8%B3%D8%AA%D9%81%D8%A7%D8%AF%D9%87- %D8%A7%D8%B2-%D8%AF%D8%A7%D9%85%DB%8C%D9%86-%D9%81%D8%B1%D8%A7%D9%86%D8%AA %DB%8C%D9%86%DA%AF'>Guia</a>.",
@@ -468,22 +450,6 @@
       "description": "É Configurações Gerais do Sistema",
       "label": "Configurações Gerais"
     },
-    "grpc_enable": {
-      "description": "gRPC é uma estrutura moderna de chamada de procedimento remoto (RPC) de código aberto e alto desempenho. Pode ser usado em CDNs suportados",
-      "label": "➿gRPC"
-    },
-    "h2_enable": {
-      "description": "Habilitar protocolo HTTP/2",
-      "label": "🔵h2"
-    },
-    "hidden": {
-      "description": "config.hidden.description",
-      "label": "config.hidden.label"
-    },
-    "hiddifycli_enable": {
-      "description": "config.hiddifycli_enable.descrição",
-      "label": "config.hiddifycli_enable.label"
-    },
     "http": {
       "description": "As configurações HTTP podem ser definidas nesta seção",
       "label": "Configuração HTTP"
@@ -495,34 +461,6 @@
     "http_proxy_enable": {
       "description": "Ao permitir isso, seus usuários podem se conectar ao sistema com a porta HTTP não criptografada. (Não recomendado)",
       "label": "☑️ Permitir conexão HTTP"
-    },
-    "httpupgrade_enable": {
-      "description": "<p>HTTPUpgrade conclui uma solicitação e resposta de atualização HTTP 1.1 antes de usar a conexão diretamente. É semelhante ao WebSocket na forma como cria um canal de direção que pode ser encaminhado por muitos proxies reversos e CDNs, sem a necessidade de lidar com todos os problemas relacionados ao próprio protocolo WebSocket.<br />\n⚠️ <strong>Não disponível em clientes baseados em Xray. Apenas clientes HiddifyNext, Singbox e V2fly são suportados.</strong> <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/Basic-Concepts/#http-upgrade\" target=\"_blank\"><strong>(Consulte Mais informação)</strong></a></p>",
-      "label": "🆙 Método HTTPUpgrade"
-    },
-    "hysteria": {
-      "description": "Hysteria é uma ferramenta de proxy e retransmissão repleta de recursos otimizada para conexões instáveis ​​e com perdas (por exemplo, redes de satélite, Wi-Fi público congestionado, conexão com servidores estrangeiros da China)",
-      "label": "Histeria"
-    },
-    "hysteria_down_mbps": {
-      "description": "Velocidade máxima de download da Hysteria",
-      "label": "⬇️ Download de Hysteria (mbps)"
-    },
-    "hysteria_enable": {
-      "description": "Para ativar o protocolo de Hysteriabaseado em udp",
-      "label": "Habilitar Histeria"
-    },
-    "hysteria_obfs_enable": {
-      "description": " Ativa a ofuscação da Hysteria(Salamandra)",
-      "label": "🎛 Hysteria OBFS"
-    },
-    "hysteria_port": {
-      "description": "Porta UDP de Hysteria, por exemplo 5678",
-      "label": "Porto de Histeria"
-    },
-    "hysteria_up_mbps": {
-      "description": "Velocidade máxima de upload de Hysteria ",
-      "label": "⬆️ Upload de Hysteria (mbps)"
     },
     "invalid-pattern-for-warp-sites": "⚠️ O Site inserido para o Warp não corresponde ao modelo especificado",
     "invalid_uuid": "Secret UUID inválido. exemplo: 6098ea35-8cb2-4a08-ba15-2be25bc49cb6",
@@ -550,57 +488,9 @@
       "description": "config.last_hash.description",
       "label": "config.last_hash.label"
     },
-    "last_priodic_usage_check": {
-      "description": "config.last_priodic_usage_check.description",
-      "label": "config.last_priodic_usage_check.label"
-    },
     "license": {
       "description": "Para uso comercial deste produto, você deve comprar sua licença",
       "label": "Código de licença"
-    },
-    "log_level": {
-      "description": "config.log_level.descrição",
-      "label": "config.log_level.label"
-    },
-    "mux": {
-      "description": "As configurações MUX (Multiplex) podem ser definidas nesta seção",
-      "label": "Configurações de MUX"
-    },
-    "mux_brutal_down_mbps": {
-      "description": "Velocidade máxima de download TCP-Brutal",
-      "label": "⬇️ Download brutal do MUX (mbps)"
-    },
-    "mux_brutal_enable": {
-      "description": "Ativa o algoritmo de controle de congestionamento TCP-Brutal",
-      "label": "☣️MUX Brutal"
-    },
-    "mux_brutal_up_mbps": {
-      "description": "Velocidade máxima de upload TCP-Brutal",
-      "label": "⬆️ Carregamento Brutal MUX (mbps)"
-    },
-    "mux_enable": {
-      "description": "<p>Mux precisa de clientes compatíveis. Mux no Hiddify Next e Singbox não são compatíveis com XRay. <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-MUX-works-and-its-usage/\" target=\"_blank\">(Consulte Mais informação)</a></p>",
-      "label": "Ⓜ️ MUX (⚠️ Incompatível com alguns clientes)"
-    },
-    "mux_max_connections": {
-      "description": "Máximo de conexões. Conflito com fluxos máximos",
-      "label": "⛓ Conexões MUX Max"
-    },
-    "mux_max_streams": {
-      "description": "Máximo de fluxos multiplexados em uma conexão antes de abrir uma nova conexão",
-      "label": "↗️ Transmissões máximas do MUX"
-    },
-    "mux_min_streams": {
-      "description": "Fluxos multiplexados mínimos em uma conexão antes de abrir uma nova conexão",
-      "label": "↘️ Transmissões mínimas de MUX"
-    },
-    "mux_padding_enable": {
-      "description": "Descrição do MUX Padding",
-      "label": "⟹ MUX Padding"
-    },
-    "mux_protocol": {
-      "description": "ℹ️ Protocolo Multiplex. 'sMux' é usado por padrão<inlang-LineFeed><br>\n➖ sMux: Multiplexação de fluxo<inlang-LineFeed><br>\n➖ YaMux: mais um multiplexador<inlang-LineFeed><br>\n➖ h2Mux: Multiplexação de fluxos em HTTP/2",
-      "label": "♍️ Protocolo MUX"
     },
     "netdata": {
       "description": "Para exibir recursos. usa a CPU do seu servidor, mas não é muito.",
@@ -618,18 +508,6 @@
       "description": "Especifique se você deseja um pacote lançado ou desenvolvido",
       "label": "🔄 Modo de atualização de pacotes"
     },
-    "panel_mode": {
-      "description": "config.panel_mode.descrição",
-      "label": "config.panel_mode.label"
-    },
-    "parent_admin_proxy_path": {
-      "description": "config.parent_admin_proxy_path.description",
-      "label": "config.parent_admin_proxy_path.label"
-    },
-    "parent_domain": {
-      "description": "config.parent_domain.description",
-      "label": "config.parent_domain.label"
-    },
     "parent_panel": {
       "description": "Você pode se conectar ao Painel Central para definir apenas um usuário e o uso de todos os servidores será adicionado cumulativamente.",
       "label": "Painel Pai (Multi-servidor)"
@@ -637,14 +515,6 @@
     "path_grpc": {
       "description": "Caminho gRPC nas configurações",
       "label": "ℹ️ caminho gRPC"
-    },
-    "path_httpupgrade": {
-      "description": "deveria ser aleatório",
-      "label": "ℹ️ Caminho de atualização HTTP"
-    },
-    "path_splithttp": {
-      "description": "Esta opção define o caminho para Split HTTP",
-      "label": "Caminho para Split HTTP"
     },
     "path_ss": {
       "description": "Caminho Shadowsocks nos Links",
@@ -682,33 +552,13 @@
       "description": "Usamos o caminho de proxy secreto para ocultar nossos proxies para o governo",
       "label": "ℹ️ Caminho do proxy secreto"
     },
-    "proxy_path_admin": {
-      "description": "Usamos um caminho de proxy secreto para ocultar nossos proxies para governos e bots",
-      "label": "🔐 Caminho de proxy para administradores"
-    },
-    "proxy_path_client": {
-      "description": "O caminho secreto do proxy esconde os proxies dos governos e bots",
-      "label": "🔏 Caminho de proxy para clientes"
-    },
-    "quic_enable": {
-      "description": "Habilitar protocolo QUIC",
-      "label": "🟡 QUIC"
-    },
     "reality": {
       "description": "REALITY elimina o recurso de impressão digital TLS do lado do servidor",
       "label": "Reality"
     },
-    "reality_enable": {
-      "description": "Habilitar protocolo de Reality",
-      "label": "🔴 Reality"
-    },
     "reality_fallback_domain": {
       "description": "Quando o GTW visitar os sites em nomes de servidor, ele será redirecionado para este domínio",
       "label": "🌍 Domínio alternativo"
-    },
-    "reality_port": {
-      "description": "Você pode definir uma porta personalizada para seu servidor de Reality para reduzir a sobrecarga do sistema. (Permitir conexão direta com proxies deve ser sim)",
-      "label": "↔️ Porto de Realidade Direta"
     },
     "reality_private_key": {
       "description": "Não mude isso",
@@ -738,22 +588,6 @@
       "description": "config.restls1_3_domain.description",
       "label": "config.restls1_3_domain.label"
     },
-    "shadowsocks": {
-      "description": "Shadowsocks é um proxy de túnel rápido que ajuda a contornar firewalls",
-      "label": "Shadowsocks"
-    },
-    "shadowsocks2022_enable": {
-      "description": "Shadowsocks 2022 é um protocolo proxy seguro para tráfego TCP e UDP. O tráfego proxy é indistinguível de um fluxo de bytes aleatórios e, portanto, pode contornar firewalls e censores da Internet que dependem de DPI (Deep Packet Inspection)",
-      "label": "⭕️ Shadowsocks 2022"
-    },
-    "shadowsocks2022_method": {
-      "description": "Este método também é usado em ShadowTLS e SSFakeTLS",
-      "label": "🔐 Método de criptografia Shadowsocks"
-    },
-    "shadowsocks2022_port": {
-      "description": "Ele precisa de UDP e TCP para ser livre",
-      "label": "↔️ Porto Shadowsocks 2022"
-    },
     "shadowtls": {
       "description": "Um Proxy para expor o handshake tls real ao firewall.\n\nFunciona como Trojan, mas não requer certificado de assinatura. o firewall verá o handshake tls real com o certificado válido que você escolher.",
       "label": "ShadowTLS"
@@ -778,10 +612,6 @@
       "description": "Permita que seus usuários façam o teste de velocidade. Isso os ajuda a identificar a qualidade do link",
       "label": "🚀 Teste de velocidade"
     },
-    "splithttp_enable": {
-      "description": "Este protocolo envia e recebe informações em canais individuais ",
-      "label": "🈁 Split HTTP"
-    },
     "ssfaketls": {
       "description": "Shadowsocks FakeTLS é uma ferramenta de ofuscação simples que encapsula a data In tls package",
       "label": "Shadowsocks FakeTLS"
@@ -794,54 +624,6 @@
       "description": "Use um domínio conhecido em seu data center. por exemplo, se você estiver no datacenter do Azure, microsoft-update.com é um bom exemplo",
       "label": "🌍 SS FakeTLS FakeDomain"
     },
-    "ssh": {
-      "description": "Um proxy SSH, também conhecido como túnel SSH ou encaminhamento de porta SSH, é um método seguro de criar um canal de comunicação seguro entre duas máquinas em uma rede insegura. Temos um aplicativo específico que é completamente diferente do servidor ssh e não pode executar nenhum comando",
-      "label": "Proxy SSH"
-    },
-    "ssh_host_dsa_pk": {
-      "description": "",
-      "label": ""
-    },
-    "ssh_host_dsa_pub": {
-      "description": "",
-      "label": ""
-    },
-    "ssh_host_ecdsa_pk": {
-      "description": "",
-      "label": ""
-    },
-    "ssh_host_ecdsa_pub": {
-      "description": "",
-      "label": ""
-    },
-    "ssh_host_ed25519_pk": {
-      "description": "",
-      "label": ""
-    },
-    "ssh_host_ed25519_pub": {
-      "description": "",
-      "label": ""
-    },
-    "ssh_host_rsa_pk": {
-      "description": "",
-      "label": ""
-    },
-    "ssh_host_rsa_pub": {
-      "description": "",
-      "label": ""
-    },
-    "ssh_server_enable": {
-      "description": "O proxy SSH é completamente diferente do servidor ssh original.",
-      "label": "✔️ Proxy SSH"
-    },
-    "ssh_server_port": {
-      "description": "Isso é completamente diferente do seu servidor ssh original. É um programa dedicado.",
-      "label": "↔️ Porta Proxy SSH"
-    },
-    "ssh_server_redis_url": {
-      "description": "Não usado",
-      "label": "Endereço do banco de dados do usuário SSH"
-    },
     "ssr": {
       "description": "ShadowsocksR é um fork do projeto Shadowsocks original, considerado superior em termos de segurança e estabilidade.",
       "label": "SSR"
@@ -853,38 +635,6 @@
     "ssr_fakedomain": {
       "description": "Por favor, use um domínio bem conhecido em seu data center. por exemplo, se você estiver no data center do Azure, microsoft-update.com é um bom exemplo",
       "label": "SSR FakeDomain"
-    },
-    "sub_full_clash_enable": {
-      "description": "config.sub_full_clash_enable.descrição",
-      "label": "config.sub_full_clash_enable.label"
-    },
-    "sub_full_clash_meta_enable": {
-      "description": "config.sub_full_clash_meta_enable.description",
-      "label": "config.sub_full_clash_meta_enable.label"
-    },
-    "sub_full_links_b64_enable": {
-      "description": "config.sub_full_links_b64_enable.description",
-      "label": "config.sub_full_links_b64_enable.label"
-    },
-    "sub_full_links_enable": {
-      "description": "config.sub_full_links_enable.description",
-      "label": "config.sub_full_links_enable.label"
-    },
-    "sub_full_singbox_enable": {
-      "description": "config.sub_full_singbox_enable.description",
-      "label": "config.sub_full_singbox_enable.label"
-    },
-    "sub_full_xray_json_enable": {
-      "description": "O link completo do XRay fornece opções de configuração abrangentes para configurações específicas do XRay. Isso inclui fragmentação e multiplexação personalizadas (mux) em aplicativos como v2rayNG que suportam protocolos XRay para controle ajustado sobre a configuração do proxy XRay.",
-      "label": "⚙️ Link de configuração completa do XRay"
-    },
-    "sub_singbox_ssh_enable": {
-      "description": "config.sub_singbox_ssh_enable.description",
-      "label": "config.sub_singbox_ssh_enable.label"
-    },
-    "tcp_enable": {
-      "description": "Ativa o protocolo TCP",
-      "label": "🟠 TCP"
     },
     "telegram": {
       "description": "Um proxy projetado para o Telegram ignorar a filtragem do Telegram",
@@ -914,37 +664,9 @@
       "description": "As configurações de TLS podem ser definidas nesta seção.",
       "label": "Configurações de TLS"
     },
-    "tls_fragment_enable": {
-      "description": "<p>Em algumas circunstâncias, pode contornar o sistema de lista negra do SNI. <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-the-TLS-Trick-works-and-its-usage/\" target=\"_blank\">(Consulte Mais informação)</a></p>",
-      "label": "⏯ TLS Fragment"
-    },
-    "tls_fragment_size": {
-      "description": "O tamanho de cada pacote",
-      "label": "🎚 Tamanho do TLS Fragment"
-    },
-    "tls_fragment_sleep": {
-      "description": "O atraso de tempo entre fragmentos",
-      "label": "⏱ Suspensão do TLS Fragment "
-    },
-    "tls_mixed_case": {
-      "description": "Permite fragmentação de caso SNI misto TLS",
-      "label": "🔠 Caso SNI Misto TLS"
-    },
-    "tls_padding_enable": {
-      "description": "<p>Habilita preenchimento para fragmentação TLS. <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-the-TLS-Trick-works-and-its-usage/#tls-padding\" target=\"_blank\">(Consulte Mais informação)</a></p>",
-      "label": "♒️ TLS Padding"
-    },
-    "tls_padding_length": {
-      "description": "O comprimento do Padding para fragmentação TLS",
-      "label": "📏 TLS Padding"
-    },
     "tls_ports": {
       "description": "Inteiros separados por vírgula indicando as portas a serem usadas como conexão TLS (a porta 443 será usada em qualquer caso)",
       "label": "🔎 Portas TLS"
-    },
-    "tls_trick": {
-      "description": "As configurações de fragmentação TLS podem ser definidas nesta seção",
-      "label": "Truque TLS"
     },
     "too_advanced": {
       "description": "Especifique o caminho do proxy. É importante especialmente se você estiver usando HTTP e VMess",
@@ -953,10 +675,6 @@
     "torrent_block": {
       "description": "As configurações do bloco de Torrent podem ser definidas nesta seção.",
       "label": "Configuração do Bloco de Torrent"
-    },
-    "trojan_enable": {
-      "description": "Ativa o protocolo Trojan",
-      "label": "🟤 Trojan"
     },
     "tuic": {
       "description": "O proxy de alto desempenho delicadamente TUICed está no topo do protocolo QUIC.\n\nO objetivo do TUIC é minimizar a latência do handshake o máximo possível",
@@ -985,10 +703,6 @@
     "validation-error": "Há um erro em um dos campos.",
     "validation-success": "As configurações foram alteradas com sucesso. Clique em %(link)s para aplicar as configurações. Pode levar 2 minutos para aplicar",
     "validation-success-no-reset": "✅ As configurações foram alteradas com sucesso",
-    "vless_enable": {
-      "description": "Habilitar protocolo VLess",
-      "label": "⚫️ VLess"
-    },
     "vmess_enable": {
       "description": "É relatado por várias pessoas que o VMess faz com que o sistema seja detectado pelo governo. Então não é recomendado",
       "label": "🟣 VMess"
@@ -1009,57 +723,11 @@
     "warp_plus_code": {
       "description": "Aumenta a velocidade de navegação. \nPara obter a chave, acesse <a href='https://t.me/hiddify_board'> aqui </a>\nenvie uma mensagem\n<br>\nCaso haja algum erro nesta Chave, o WARP será desabilitado.",
       "label": "🔑 Chave WARP Plus"
-    },
-    "warp_sites": {
-      "description": "Adicione sites adicionais para passar pelo WARP (somente quando o modo warp não for Nenhum)",
-      "label": "🆚 Sites WARP adicionais"
-    },
-    "wireguard": {
-      "description": "WireGuard é um protocolo leve baseado em UDP conhecido por sua simplicidade, eficiência e forte segurança. Oferece configuração rápida, código transparente e ganhou popularidade por sua facilidade de uso em vários sistemas operacionais.",
-      "label": "🐉 WireGuard"
-    },
-    "wireguard_enable": {
-      "description": "<p>WireGuard é um protocolo baseado em UDP. (⚠️ Está funcionando no <a href=\"https://github.com/hiddify/hiddify-next\" target=\"_blank\">Hiddify a seguir</a> )</p>",
-      "label": "Habilita WireGuard"
-    },
-    "wireguard_ipv4": {
-      "description": "Habilita IPv4 no WireGuard",
-      "label": " IPv4 no WireGuard"
-    },
-    "wireguard_ipv6": {
-      "description": "Habilita IPv6 no WireGuard",
-      "label": "IPv6 no WireGuard"
-    },
-    "wireguard_noise_trick": {
-      "description": "Este método introduz ruído extra para evitar detecção e bloqueio pelo GFW",
-      "label": "💥 Truque de ruído WireGuard"
-    },
-    "wireguard_port": {
-      "description": "Define porta para WireGuard ",
-      "label": "↔️ Porta WireGuard"
-    },
-    "wireguard_private_key": {
-      "description": "Uma chave privada é especificada para WireGuard",
-      "label": "Chave privada WireGuard"
-    },
-    "wireguard_public_key": {
-      "description": "Uma chave pública é especificada para WireGuard",
-      "label": "Chave pública WireGuard"
-    },
-    "ws_enable": {
-      "description": "Websocket cria um túnel sobre HTTP que é útil para ser usado em CDN",
-      "label": "🔰 Websocket"
-    },
-    "xtls_enable": {
-      "description": "Ativa o protocolo XTLS",
-      "label": "🟢XTLS"
     }
   },
   "copy": "cópia de",
-  "daily": "⏰ Diariamente",
   "days": "Dias",
   "desktop": "Área de Trabalho",
-  "direct": "➡️ Direto",
   "domain": {
     "cdn": "CDN",
     "changed_in_domain_warning": "⚠️ Seus domínios mudaram. por favor, não se esqueça de copiar os links do administrador, caso contrário, você não poderá mais acessar o painel",
@@ -1081,7 +749,6 @@
     "show_domains_description": "Para os usuários que visitam a área do usuário com este domínio, especifique que eles podem ver os proxies de quais domínios.\n<br>\nSugestão: Para um domínio com IP não filtrado e diferente dos demais, selecione todos os outros domínios (exceto o domínio atual). Como resultado, como o uso deste IP não é para proxy e é um site simples, este domínio e IP nunca serão bloqueados e seus usuários poderão facilmente atualizar novos perfis."
   },
   "download": "Download direto",
-  "fake": "🆎 Site falso",
   "gRPC": "➿ gRPC",
   "grpc-proxy": {
     "description": "ℹ️ gRPC é um protocolo baseado em H2. Talvez seja mais rápido para você!"
@@ -1120,10 +787,8 @@
   "master": {
     "page-title": "HiddifyManager"
   },
-  "monthly": "🗓️ Mensal",
   "move_to_new_link": "A página foi movida para um novo link. Copie e salve o novo link.",
   "next": "Próximo",
-  "no_reset": "⭐️ Sem reinicialização",
   "node": {
     "diff-version": "node.diff-version",
     "mode": {
@@ -1139,7 +804,6 @@
       "label": "UUID do Node "
     }
   },
-  "old_xtls_direct": "🔙 Modo direto antigo (para Trojan TCP, VLess XTLS)",
   "open": "Abrir",
   "outdated_panel": "Esta versão do painel Hiddify está desatualizada. Atualize-o na Área Administrativa.",
   "package days?": "dias de pacote?",
@@ -1161,8 +825,6 @@
       "success": "A alteração do idioma foi bem-sucedida."
     }
   },
-  "reality": "🔂 Reality",
-  "relay": "♾️ Relay (Conectar usando um nó intermediário)",
   "search": "Procurar",
   "see the log in the bellow screen": "📑 Veja o log na tela abaixo",
   "serverssh": {
@@ -1172,7 +834,6 @@
   },
   "singbox: ssh": "caixa de som: ssh",
   "ssh": "SSH",
-  "sub_link_only": "📳 Somente para Link de Assinatura (pode ser direto, relé ou CDN)",
   "telegram": "Telegram",
   "test": "Teste",
   "update": "Atualizar",
@@ -1288,7 +949,5 @@
   },
   "vpn": {
     "notallowed": "Por favor, visite esta página sem usar uma VPN. Você precisa acessá-la do país %(expected_country)s, mas você está acessando-a atualmente de %(your_country)s."
-  },
-  "weekly": "📅 Semanal",
-  "worker": "✴️ Cloudflare Worker"
+  }
 }

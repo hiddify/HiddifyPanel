@@ -1086,9 +1086,6 @@ msgstr "V2RayNG"
 msgid "auto"
 msgstr "Авто"
 
-msgid "auto_cdn_ip"
-msgstr "☑️ Автоматический выбор IP-адреса CDN"
-
 msgid "bot.admin_welcome"
 msgstr "Добро пожаловать в админ-бот. Выберите свое действие"
 
@@ -1097,9 +1094,6 @@ msgstr ""
 "Ура 🎉 🎉 🎉\n"
 "Добро пожаловать в Hiddify bot\n"
 "Для начала перейдите по ссылке на панели или введите свой UUID пользователя."
-
-msgid "cdn"
-msgstr "🔀 CDN (Cloudflare Proxy, ...)"
 
 msgid "cf-delete.failed"
 msgstr "cf-delete.failed"
@@ -1255,15 +1249,6 @@ msgstr ""
 msgid "config.cloudflare.label"
 msgstr "🔑 API Cloudflare"
 
-msgid "config.core_type.description"
-msgstr ""
-"☢️ XRay: хорошее ядро\n"
-"<br>\n"
-"📦 Singbox: разработан SagerNet. Это также хорошее ядро"
-
-msgid "config.core_type.label"
-msgstr "🎛️ Ядро"
-
 msgid "config.country.description"
 msgstr ""
 "Применяются соответствующие настройки для каждой страны в соответствии с "
@@ -1272,23 +1257,11 @@ msgstr ""
 msgid "config.country.label"
 msgstr "🌍 Страна"
 
-msgid "config.create_easysetup_link.description"
-msgstr "config.create_easysetup_link.description"
-
-msgid "config.create_easysetup_link.label"
-msgstr "config.create_easysetup_link.label"
-
 msgid "config.db_version.description"
 msgstr "Описание версии базы данных"
 
 msgid "config.db_version.label"
 msgstr "Label версии базы данных"
-
-msgid "config.dbvalues.description"
-msgstr "config.dbvalues.description"
-
-msgid "config.dbvalues.label"
-msgstr "config.dbvalues.label"
 
 msgid "config.decoy_domain.description"
 msgstr ""
@@ -1299,15 +1272,6 @@ msgstr ""
 
 msgid "config.decoy_domain.label"
 msgstr "📺 Сайт-приманка"
-
-msgid "config.dns_server.description"
-msgstr ""
-"✳️ По умолчанию 1.1.1.1 <br>\n"
-"🚧 Блокировать вредоносное ПО 1.1.1.2 <br>\n"
-"🔞 Блокировать порно 1.1.1.3"
-
-msgid "config.dns_server.label"
-msgstr "🖥 DNS-сервер"
 
 msgid "config.domain_fronting.description"
 msgstr ""
@@ -1361,33 +1325,6 @@ msgstr "Это общие настройки системы."
 msgid "config.general.label"
 msgstr "Общие настройки"
 
-msgid "config.grpc_enable.description"
-msgstr ""
-"gRPC — это современная высокопроизводительная платформа удаленного вызова "
-"процедур (RPC) с открытым исходным кодом. Его можно использовать в "
-"поддерживаемых CDN."
-
-msgid "config.grpc_enable.label"
-msgstr "➿ Включить gRPC"
-
-msgid "config.h2_enable.description"
-msgstr "Включить протокол HTTP/2"
-
-msgid "config.h2_enable.label"
-msgstr "🔵 h2"
-
-msgid "config.hidden.description"
-msgstr "config.hidden.description"
-
-msgid "config.hidden.label"
-msgstr "config.hidden.label"
-
-msgid "config.hiddifycli_enable.description"
-msgstr "config.hiddifycli_enable.description"
-
-msgid "config.hiddifycli_enable.label"
-msgstr "config.hiddifycli_enable.label"
-
 msgid "config.http.description"
 msgstr "Конфигурации HTTP можно установить в этом разделе"
 
@@ -1410,54 +1347,6 @@ msgstr ""
 
 msgid "config.http_proxy_enable.label"
 msgstr "☑️ Разрешить соединение по HTTP"
-
-msgid "config.httpupgrade_enable.description"
-msgstr ""
-"HTTPUpgrade завершает запрос и ответ на обновление HTTP 1.1, прежде чем использовать соединение напрямую. Он похож на WebSocket тем, что создает канал направления, который может пересылаться многими обратными прокси-серверами и CDN, без необходимости решать все проблемы, связанные с самим протоколом WebSocket.\n"
-"⚠️ Недоступно в клиентах на базе Xray. Поддерживаются только клиенты <p><a href=\"https://app.hiddify.com\" target=\"_blank\">Hiddify</a></p>, Singbox и V2fly."
-
-msgid "config.httpupgrade_enable.label"
-msgstr "🆙 Включить Метод HTTP Обновления"
-
-msgid "config.hysteria.description"
-msgstr ""
-"Hysteria — это многофункциональный инструмент прокси и ретрансляции, "
-"оптимизированный для нестабильных соединений с потерями (например, "
-"спутниковые сети, перегруженный общедоступный Wi-Fi, подключение к "
-"зарубежным серверам из Китая)"
-
-msgid "config.hysteria.label"
-msgstr "Hysteria"
-
-msgid "config.hysteria_down_mbps.description"
-msgstr "Hysteria Максимальная Скорость Входящей Загрузки"
-
-msgid "config.hysteria_down_mbps.label"
-msgstr "⬇️ Hysteria Входящая Загрузка (mbps)"
-
-msgid "config.hysteria_enable.description"
-msgstr "Включение протокола Hysteria на основе UDP"
-
-msgid "config.hysteria_enable.label"
-msgstr "⚪️ Включить Hysteria"
-
-msgid "config.hysteria_obfs_enable.description"
-msgstr "Включить Hysteria Obfuscation (Salamander)"
-
-msgid "config.hysteria_obfs_enable.label"
-msgstr "🎛 Hysteria OBFS"
-
-msgid "config.hysteria_port.description"
-msgstr "Hysteria UDP-порт например 5678"
-
-msgid "config.hysteria_port.label"
-msgstr "Hysteria Порт"
-
-msgid "config.hysteria_up_mbps.description"
-msgstr "Hysteria Максимальная Скорость Исходящей Загрузки"
-
-msgid "config.hysteria_up_mbps.label"
-msgstr "⬆️ Hysteria Исходящая Загрузка (mbps)"
 
 msgid "config.invalid-pattern-for-warp-sites"
 msgstr "⚠️ Сайт, введенный в Варп, не соответствует указанному шаблону."
@@ -1506,12 +1395,6 @@ msgstr "config.last_hash.description"
 msgid "config.last_hash.label"
 msgstr "config.last_hash.label"
 
-msgid "config.last_priodic_usage_check.description"
-msgstr "config.last_priodic_usage_check.description"
-
-msgid "config.last_priodic_usage_check.label"
-msgstr "config.last_priodic_usage_check.label"
-
 msgid "config.license.description"
 msgstr ""
 "Для коммерческого использования этого продукта вам необходимо приобрести его"
@@ -1519,85 +1402,6 @@ msgstr ""
 
 msgid "config.license.label"
 msgstr "License  Code"
-
-msgid "config.log_level.description"
-msgstr "config.log_level.description"
-
-msgid "config.log_level.label"
-msgstr "config.log_level.label"
-
-msgid "config.mux.description"
-msgstr "Настройки конфигурации MUX (Multiplex)"
-
-msgid "config.mux.label"
-msgstr "Настройки MUX"
-
-msgid "config.mux_brutal_down_mbps.description"
-msgstr "TCP-Brutal Максимальная Скорость Входящей Загрузки"
-
-msgid "config.mux_brutal_down_mbps.label"
-msgstr "⬇️ MUX Brutal Входящая Загрузка (mbps)"
-
-msgid "config.mux_brutal_enable.description"
-msgstr "Включить алгоритм управления перегрузкой TCP-Brutal"
-
-msgid "config.mux_brutal_enable.label"
-msgstr "☣️ MUX Brutal"
-
-msgid "config.mux_brutal_up_mbps.description"
-msgstr "TCP-Brutal Максимальная Скорость Исходящей Загрузки"
-
-msgid "config.mux_brutal_up_mbps.label"
-msgstr "⬆️  MUX Brutal Исходящая Загрузка (mbps)"
-
-msgid "config.mux_enable.description"
-msgstr ""
-"MUX требует совместимые клиенты. MUX в <p><a "
-"href=\"https://app.hiddify.com\" target=\"_blank\">Hiddify</a></p> и Singbox"
-" несовместимы с XRay"
-
-msgid "config.mux_enable.label"
-msgstr "Ⓜ️ MUX (⚠️ Несовместимо с некоторыми клиентами)"
-
-msgid "config.mux_max_connections.description"
-msgstr ""
-"Максимальное количество подключений. Конфликтует с максимальным количеством "
-"потоков"
-
-msgid "config.mux_max_connections.label"
-msgstr "⛓ Максимальное количество подключений MUX"
-
-msgid "config.mux_max_streams.description"
-msgstr ""
-"Максимальное количество мультиплексированных потоков в соединении перед "
-"открытием нового соединения"
-
-msgid "config.mux_max_streams.label"
-msgstr "↗️ Максимальное количество потоков MUX"
-
-msgid "config.mux_min_streams.description"
-msgstr ""
-"Минимальное количество мультиплексированных потоков в соединении перед "
-"открытием нового соединения"
-
-msgid "config.mux_min_streams.label"
-msgstr "↘️ Минимальное количество потоков MUX"
-
-msgid "config.mux_padding_enable.description"
-msgstr "Описание MUX Padding"
-
-msgid "config.mux_padding_enable.label"
-msgstr "⟹ MUX Padding"
-
-msgid "config.mux_protocol.description"
-msgstr ""
-"ℹ️Мультиплексный протокол. «sMux» используется по умолчанию<inlang-LineFeed><br>\n"
-"➖ sMux: мультиплексирование потоков<inlang-LineFeed><br>\n"
-"➖ YaMux: еще один мультиплексор<inlang-LineFeed><br>\n"
-"➖ h2Mux: мультиплексирование потоков через HTTP/2"
-
-msgid "config.mux_protocol.label"
-msgstr "♍️ Протокол MUX"
 
 msgid "config.netdata.description"
 msgstr ""
@@ -1626,24 +1430,6 @@ msgstr ""
 msgid "config.package_mode.label"
 msgstr "🔄 Режим обновления пакетов"
 
-msgid "config.panel_mode.description"
-msgstr "config.panel_mode.description"
-
-msgid "config.panel_mode.label"
-msgstr "config.panel_mode.label"
-
-msgid "config.parent_admin_proxy_path.description"
-msgstr "config.parent_admin_proxy_path.description"
-
-msgid "config.parent_admin_proxy_path.label"
-msgstr "config.parent_admin_proxy_path.label"
-
-msgid "config.parent_domain.description"
-msgstr "config.parent_domain.description"
-
-msgid "config.parent_domain.label"
-msgstr "config.parent_domain.label"
-
 msgid "config.parent_panel.description"
 msgstr ""
 "Вы можете подключиться к главной панели, чтобы добавить пользователя в одном"
@@ -1657,18 +1443,6 @@ msgstr "Путь gRPC в конфигурации"
 
 msgid "config.path_grpc.label"
 msgstr "ℹ️ Путь gRPC"
-
-msgid "config.path_httpupgrade.description"
-msgstr "должен быть случайным"
-
-msgid "config.path_httpupgrade.label"
-msgstr "ℹ️ Путь обновления HTTP"
-
-msgid "config.path_splithttp.description"
-msgstr "Эта опция определяет путь для Split HTTP."
-
-msgid "config.path_splithttp.label"
-msgstr "ℹ️ Путь для Split HTTP"
 
 msgid "config.path_ss.description"
 msgstr "Путь Shadowsocks в ссылках"
@@ -1725,37 +1499,11 @@ msgstr ""
 msgid "config.proxy_path.label"
 msgstr "ℹ️ Секретный путь прокси"
 
-msgid "config.proxy_path_admin.description"
-msgstr ""
-"Мы используем секретный путь прокси, чтобы скрыть наши прокси для "
-"правительств и ботов."
-
-msgid "config.proxy_path_admin.label"
-msgstr "🔐 Путь прокси для администраторов"
-
-msgid "config.proxy_path_client.description"
-msgstr "Секретный путь прокси скрывает прокси от правительств и ботов"
-
-msgid "config.proxy_path_client.label"
-msgstr "🔏 Путь прокси для клиентов"
-
-msgid "config.quic_enable.description"
-msgstr "Включить протокол QUIC"
-
-msgid "config.quic_enable.label"
-msgstr "🟡 QUIC"
-
 msgid "config.reality.description"
 msgstr "REALITY функция устранения TLS Fingerprint со стороны севрера"
 
 msgid "config.reality.label"
 msgstr "Reality"
-
-msgid "config.reality_enable.description"
-msgstr "Включить протокол Reality"
-
-msgid "config.reality_enable.label"
-msgstr "🔴 Reality"
 
 msgid "config.reality_fallback_domain.description"
 msgstr ""
@@ -1764,15 +1512,6 @@ msgstr ""
 
 msgid "config.reality_fallback_domain.label"
 msgstr "🌍 Резервный домен Reality"
-
-msgid "config.reality_port.description"
-msgstr ""
-"Вы можете установить индивидуальный порт для вашего сервера Reality, чтобы "
-"снизить нагрузку на систему. (Разрешить прямое подключение к прокси должно "
-"быть да)"
-
-msgid "config.reality_port.label"
-msgstr "↔️ Порт Direct Reality"
 
 msgid "config.reality_private_key.description"
 msgstr "Не меняйте это"
@@ -1815,36 +1554,6 @@ msgstr "config.restls1_3_domain.description"
 
 msgid "config.restls1_3_domain.label"
 msgstr "config.restls1_3_domain.label"
-
-msgid "config.shadowsocks.description"
-msgstr ""
-"Shadowsocks - это быстрый прокси-туннель, который помогает вам обходить "
-"фаерволы"
-
-msgid "config.shadowsocks.label"
-msgstr "Shadowsocks"
-
-msgid "config.shadowsocks2022_enable.description"
-msgstr ""
-"Shadowsocks 2022 - это защищенный протокол прокси для трафика TCP и UDP. "
-"Прокси-трафик неотличим от случайного потока байтов и, следовательно, может "
-"обходить фаерволы и интернет-цензоров, которые полагаются на DPI (глубокий "
-"анализ пакетов)."
-
-msgid "config.shadowsocks2022_enable.label"
-msgstr "⭕️ Shadowsocks 2022"
-
-msgid "config.shadowsocks2022_method.description"
-msgstr "Этот метод также использвуется в ShadowTLS и SSFakeTLS"
-
-msgid "config.shadowsocks2022_method.label"
-msgstr "🔐 Метод шифрования Shadowsocks"
-
-msgid "config.shadowsocks2022_port.description"
-msgstr "Требуются открытый порт как и TCP, так и UDP"
-
-msgid "config.shadowsocks2022_port.label"
-msgstr "↔️ Порт Shadowsocks 2022"
 
 msgid "config.shadowtls.description"
 msgstr ""
@@ -1896,14 +1605,6 @@ msgstr ""
 msgid "config.speed_test.label"
 msgstr "🚀 Тест скорости"
 
-msgid "config.splithttp_enable.description"
-msgstr ""
-"<p>Этот протокол отправляет и получает информацию по отдельным каналам<br />\n"
-"⚠️ <strong>Не поддерживается в клиентах на базе SignBox. Поддерживаются только приложения <p><a href=\"https://app.hiddify.com\" target=\"_blank\">Hiddify</a></p> и клиенты на базе XRay</strong></p>"
-
-msgid "config.splithttp_enable.label"
-msgstr "🈁 Split HTTP"
-
 msgid "config.ssfaketls.description"
 msgstr ""
 "Shadowsocks FakeTLS — это простой инструмент для запутывания, который "
@@ -1926,83 +1627,6 @@ msgstr ""
 
 msgid "config.ssfaketls_fakedomain.label"
 msgstr "🌍 SS FakeTLS FakeDomain"
-
-msgid "config.ssh.description"
-msgstr ""
-"SSH Proxy, также известный как SSH tunnel или переадресация портов SSH, "
-"представляет собой метод создания безопасного канала связи между двумя "
-"компьютерами в незащищенной сети. У нас есть отдельное приложение, которое "
-"полностью отличается от стандартногно ssh-сервера и не может выполнять "
-"какие-либо команды."
-
-msgid "config.ssh.label"
-msgstr "SSH Proxy"
-
-msgid "config.ssh_host_dsa_pk.description"
-msgstr ""
-
-msgid "config.ssh_host_dsa_pk.label"
-msgstr ""
-
-msgid "config.ssh_host_dsa_pub.description"
-msgstr ""
-
-msgid "config.ssh_host_dsa_pub.label"
-msgstr ""
-
-msgid "config.ssh_host_ecdsa_pk.description"
-msgstr ""
-
-msgid "config.ssh_host_ecdsa_pk.label"
-msgstr ""
-
-msgid "config.ssh_host_ecdsa_pub.description"
-msgstr ""
-
-msgid "config.ssh_host_ecdsa_pub.label"
-msgstr ""
-
-msgid "config.ssh_host_ed25519_pk.description"
-msgstr ""
-
-msgid "config.ssh_host_ed25519_pk.label"
-msgstr ""
-
-msgid "config.ssh_host_ed25519_pub.description"
-msgstr ""
-
-msgid "config.ssh_host_ed25519_pub.label"
-msgstr ""
-
-msgid "config.ssh_host_rsa_pk.description"
-msgstr ""
-
-msgid "config.ssh_host_rsa_pk.label"
-msgstr ""
-
-msgid "config.ssh_host_rsa_pub.description"
-msgstr ""
-
-msgid "config.ssh_host_rsa_pub.label"
-msgstr ""
-
-msgid "config.ssh_server_enable.description"
-msgstr "SSH Proxy полностью отличается от оригинального SSH Server"
-
-msgid "config.ssh_server_enable.label"
-msgstr "✔️ Включить SSH Poxy"
-
-msgid "config.ssh_server_port.description"
-msgstr "Это не ваш  SSH-сервер. Это отдельная программа"
-
-msgid "config.ssh_server_port.label"
-msgstr "↔️ SSHproxy-порт"
-
-msgid "config.ssh_server_redis_url.description"
-msgstr "Не используется"
-
-msgid "config.ssh_server_redis_url.label"
-msgstr "Адрес базы данных пользователей SSH"
 
 msgid "config.ssr.description"
 msgstr ""
@@ -2029,59 +1653,6 @@ msgstr ""
 
 msgid "config.ssr_fakedomain.label"
 msgstr "Поддельный домен SSR"
-
-msgid "config.sub_full_clash_enable.description"
-msgstr "config.sub_full_clash_enable.description"
-
-msgid "config.sub_full_clash_enable.label"
-msgstr "config.sub_full_clash_enable.label"
-
-msgid "config.sub_full_clash_meta_enable.description"
-msgstr "config.sub_full_clash_meta_enable.description"
-
-msgid "config.sub_full_clash_meta_enable.label"
-msgstr "config.sub_full_clash_meta_enable.label"
-
-msgid "config.sub_full_links_b64_enable.description"
-msgstr "config.sub_full_links_b64_enable.description"
-
-msgid "config.sub_full_links_b64_enable.label"
-msgstr "config.sub_full_links_b64_enable.label"
-
-msgid "config.sub_full_links_enable.description"
-msgstr "config.sub_full_links_enable.description"
-
-msgid "config.sub_full_links_enable.label"
-msgstr "config.sub_full_links_enable.label"
-
-msgid "config.sub_full_singbox_enable.description"
-msgstr "config.sub_full_singbox_enable.description"
-
-msgid "config.sub_full_singbox_enable.label"
-msgstr "config.sub_full_singbox_enable.label"
-
-msgid "config.sub_full_xray_json_enable.description"
-msgstr ""
-"Полная ссылка XRay предоставляет комплексные возможности настройки "
-"параметров, специфичных для XRay. Сюда входит пользовательская фрагментация "
-"и мультиплексирование (мультиплексирование) в таких приложениях, как "
-"v2rayNG, которые поддерживают протоколы XRay для точного управления "
-"настройкой прокси-сервера XRay."
-
-msgid "config.sub_full_xray_json_enable.label"
-msgstr "⚙️ Ссылка на полную конфигурацию XRay"
-
-msgid "config.sub_singbox_ssh_enable.description"
-msgstr "config.sub_singbox_ssh_enable.description"
-
-msgid "config.sub_singbox_ssh_enable.label"
-msgstr "config.sub_singbox_ssh_enable.label"
-
-msgid "config.tcp_enable.description"
-msgstr "Включает протокол TCP"
-
-msgid "config.tcp_enable.label"
-msgstr "🟠 TCP"
 
 msgid "config.telegram.description"
 msgstr ""
@@ -2140,50 +1711,6 @@ msgstr "В этом разделе можно установить конфиг�
 msgid "config.tls.label"
 msgstr "Настройки TLS"
 
-msgid "config.tls_fragment_enable.description"
-msgstr ""
-"<p>При некоторых обстоятельствах, это позволяет обойти систему черного "
-"списка SNI. <a href=\"https://hiddify.com/manager/basic-concepts-and-"
-"troubleshooting/How-the-TLS-Trick-works-and-its-usage/\" "
-"target=\"_blank\">(подробнее)</a></p>"
-
-msgid "config.tls_fragment_enable.label"
-msgstr "⏯ TLS Fragment"
-
-msgid "config.tls_fragment_size.description"
-msgstr "Размер каждого пакета"
-
-msgid "config.tls_fragment_size.label"
-msgstr "🎚 Размер TLS Fragment"
-
-msgid "config.tls_fragment_sleep.description"
-msgstr "Временная задержка между фрагментами"
-
-msgid "config.tls_fragment_sleep.label"
-msgstr "⏱ Спящий режим TLS Fragment "
-
-msgid "config.tls_mixed_case.description"
-msgstr "Включает фрагментацию смешанного регистра SNI по протоколу TLS"
-
-msgid "config.tls_mixed_case.label"
-msgstr "🔠 Включить смешанный случай SNI по протоколу TLS"
-
-msgid "config.tls_padding_enable.description"
-msgstr ""
-"<p>Включает заполнение для фрагментации TLS. <a "
-"href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-"
-"the-TLS-Trick-works-and-its-usage/#tls-padding\" "
-"target=\"_blank\">(подробнее)</a></p>"
-
-msgid "config.tls_padding_enable.label"
-msgstr "♒️ TLS Padding"
-
-msgid "config.tls_padding_length.description"
-msgstr "Длина отступа для TLS Padding"
-
-msgid "config.tls_padding_length.label"
-msgstr "📏 TLS Padding"
-
 msgid "config.tls_ports.description"
 msgstr ""
 "Целые числа, разделенные запятыми, указывающие порты для использования в "
@@ -2191,12 +1718,6 @@ msgstr ""
 
 msgid "config.tls_ports.label"
 msgstr "🔎 TLS-порты"
-
-msgid "config.tls_trick.description"
-msgstr "Конфигурации фрагментации TLS можно настроить в этом разделе"
-
-msgid "config.tls_trick.label"
-msgstr "TLS Trick"
 
 msgid "config.too_advanced.description"
 msgstr ""
@@ -2211,12 +1732,6 @@ msgstr "В этом разделе можно настроить блокиро�
 
 msgid "config.torrent_block.label"
 msgstr "Конфигурация блокировки Torrent"
-
-msgid "config.trojan_enable.description"
-msgstr "Включить Trojan протокол"
-
-msgid "config.trojan_enable.label"
-msgstr "🟤 Trojan"
 
 msgid "config.tuic.description"
 msgstr ""
@@ -2270,12 +1785,6 @@ msgstr ""
 msgid "config.validation-success-no-reset"
 msgstr "✅ Конфигурации успешно изменены"
 
-msgid "config.vless_enable.description"
-msgstr "Включить протокол VLess"
-
-msgid "config.vless_enable.label"
-msgstr "⚫️ VLess"
-
 msgid "config.vmess_enable.description"
 msgstr ""
 "Несколько человек сообщили, что VMess позволляет правительствам обнаруживать"
@@ -2323,97 +1832,14 @@ msgstr ""
 msgid "config.warp_plus_code.label"
 msgstr "🔑 WARP Plus Key"
 
-msgid "config.warp_sites.description"
-msgstr ""
-"Добавление дополнительных сайтов для направления через WARP (только если "
-"Warp включен)"
-
-msgid "config.warp_sites.label"
-msgstr "🆚 Дополнительные сайты WARP"
-
-msgid "config.wireguard.description"
-msgstr ""
-"WireGuard - это легковесный UDP-протокол, известный своей простотой, "
-"эффективностью и высокой безопасност. Он предлагает простоту, "
-"кроссплатформенность, быструю настройку и прозрачный код."
-
-msgid "config.wireguard.label"
-msgstr "WireGuard"
-
-msgid "config.wireguard_enable.description"
-msgstr ""
-"<p>WireGuard - это UDP-протокол. (⚠️ Работает на <a "
-"href=\"https://app.hiddify.com/\" target=\"_blank\">Hiddify</a>)</p>"
-
-msgid "config.wireguard_enable.label"
-msgstr "🐉 WireGuard"
-
-msgid "config.wireguard_ipv4.description"
-msgstr "Включает IPv4 в WireGuard"
-
-msgid "config.wireguard_ipv4.label"
-msgstr " IPv4 в WireGuard"
-
-msgid "config.wireguard_ipv6.description"
-msgstr "Включает IPv6 в WireGuard"
-
-msgid "config.wireguard_ipv6.label"
-msgstr "IPv6 в WireGuard"
-
-msgid "config.wireguard_noise_trick.description"
-msgstr ""
-"Noise Trick создает дополнительные мусорные данные для предотвращения "
-"обнаужения и блокировки цензором"
-
-msgid "config.wireguard_noise_trick.label"
-msgstr "💥 Шумовая уловка WireGuard"
-
-msgid "config.wireguard_port.description"
-msgstr "Определяет порт для WireGuard "
-
-msgid "config.wireguard_port.label"
-msgstr "↔️ Порт WireGuard"
-
-msgid "config.wireguard_private_key.description"
-msgstr "Для WireGuard указан закрытый ключ."
-
-msgid "config.wireguard_private_key.label"
-msgstr "Закрытый ключ WireGuard"
-
-msgid "config.wireguard_public_key.description"
-msgstr "Для WireGuard указан открытый ключ."
-
-msgid "config.wireguard_public_key.label"
-msgstr "Открытый ключ WireGuard"
-
-msgid "config.ws_enable.description"
-msgstr ""
-"Websocket создает туннель поверх HTTP, который будет полезно использовать в "
-"CDN"
-
-msgid "config.ws_enable.label"
-msgstr "🔰 Websocket"
-
-msgid "config.xtls_enable.description"
-msgstr "Включает протокол XTLS"
-
-msgid "config.xtls_enable.label"
-msgstr "🟢XTLS"
-
 msgid "copy"
 msgstr "Копировать"
-
-msgid "daily"
-msgstr "⏰ Ежедневно"
 
 msgid "days"
 msgstr "Дни"
 
 msgid "desktop"
 msgstr "ПК"
-
-msgid "direct"
-msgstr "➡️ На прямую"
 
 msgid "domain.cdn"
 msgstr "CDN"
@@ -2471,9 +1897,6 @@ msgstr ""
 
 msgid "download"
 msgstr "Direct Download"
-
-msgid "fake"
-msgstr "🆎 Поддельный сайт"
 
 msgid "gRPC"
 msgstr "➿ gRPC"
@@ -2544,9 +1967,6 @@ msgstr "macOS"
 msgid "master.page-title"
 msgstr "HiddifyManager"
 
-msgid "monthly"
-msgstr "🗓️ Ежемесячно"
-
 msgid "move_to_new_link"
 msgstr ""
 "Страница перемещена по новой ссылке. Пожалуйста, скопируйте и сохраните "
@@ -2554,9 +1974,6 @@ msgstr ""
 
 msgid "next"
 msgstr "Следующий"
-
-msgid "no_reset"
-msgstr "⭐️ Без сброса"
 
 msgid "node.diff-version"
 msgstr "node.diff-version"
@@ -2578,9 +1995,6 @@ msgstr "Это поле определяет UUID для узла."
 
 msgid "node.uuid.label"
 msgstr "UUID Node "
-
-msgid "old_xtls_direct"
-msgstr "🔙 Старый прямой режим (для Torjan TCP, VLess XTLS)"
 
 msgid "open"
 msgstr "Открыть"
@@ -2621,12 +2035,6 @@ msgstr ""
 msgid "quicksetup.setlang.success"
 msgstr "Изменение языка прошло успешно."
 
-msgid "reality"
-msgstr "🔂 Reality"
-
-msgid "relay"
-msgstr "♾️ Relay (подключение через промежуточный узел)"
-
 msgid "search"
 msgstr "Поиск"
 
@@ -2646,9 +2054,6 @@ msgstr "SingBox: SSH"
 
 msgid "ssh"
 msgstr "SSH"
-
-msgid "sub_link_only"
-msgstr "📳 Только для ссылки на подписку (может быть Direct, Relay или CDN)"
 
 msgid "telegram"
 msgstr "Telegram"
@@ -3004,9 +2409,3 @@ msgstr ""
 "Пожалуйста, посетите эту страницу без использования VPN. Вам нужно получить "
 "к ней доступ из страны %(expected_country)s, но в данный момент вы получаете"
 " к ней доступ из %(your_country)s."
-
-msgid "weekly"
-msgstr "📅 Еженедельно"
-
-msgid "worker"
-msgstr "✴️ Cloudflare Worker"
