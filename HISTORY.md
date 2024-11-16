@@ -33,6 +33,8 @@
 
 #### Fix
 
+* Bug. 
+
 * Backup to telegram issue. 
 
 * Exception view in api. 
@@ -46,6 +48,10 @@
 * Cache iisue. 
 
 #### Other
+
+* Remove. 
+
+* Remove bug. 
 
 * Refactor the code and add modules dynamicatonally for future extensions. 
 
