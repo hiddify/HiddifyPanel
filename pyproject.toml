@@ -79,6 +79,7 @@ protobuf = "^5.26.1"
 asgiref = "^3.8.1"
 celery = "^5.4.0"
 dynaconf = "^3.2.6"
+json5 = "^0.9.28"
 
 
 [tool.poetry.group.dev.dependencies]

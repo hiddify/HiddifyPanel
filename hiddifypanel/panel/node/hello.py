@@ -5,7 +5,6 @@ from hiddifypanel.models.config import hconfig
 from hiddifypanel.models.config_enum import ConfigEnum
 from . import test_pb2
 from . import test_pb2_grpc
-from quart import current_app
 
 class HelloServicer(test_pb2_grpc.HelloServicer):
     """Missing associated documentation comment in .proto file."""
