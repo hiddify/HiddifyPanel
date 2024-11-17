@@ -16,6 +16,7 @@ from hiddifypanel.panel import hiddify, custom_widgets
 from .adminlte import AdminLTEModelView
 from hiddifypanel import hutils
 
+from loguru import logger
 from flask import current_app
 # Define a custom field type for the related domains
 
@@ -159,7 +160,7 @@ class DomainAdmin(AdminLTEModelView):
         if model.domain == '' and model.mode != DomainType.fake:
             raise ValidationError(_("domain.empty.allowed_for_fake_only"))
 
-        self._validate_not_used_before(model)
+        self._validate_not_used_before(model,is_created)
         ipv4_list = hutils.network.get_ips(4)
         ipv6_list = hutils.network.get_ips(6)
         server_ips = [*ipv4_list, *ipv6_list]
@@ -173,7 +174,7 @@ class DomainAdmin(AdminLTEModelView):
 
         cloudflare_updated=self._update_cloudflare(model, ipv4_list,ipv6_list)
         
-        if cloudflare_updated or "*" in model.domain or model.domain == "":
+        if not (cloudflare_updated or "*" in model.domain or model.domain == ""):
             self._validate_domain_ips(model, server_ips)
 
         # Handle CDN IP settings
@@ -259,7 +260,7 @@ class DomainAdmin(AdminLTEModelView):
                 hutils.flask.flash(msg, 'warning')
 
 
-    def _validate_not_used_before(self, model):
+    def _validate_not_used_before(self, model,is_created):
         configs = get_hconfigs()
         for c in configs:
             if "domain" in c and c not in [ConfigEnum.decoy_domain, ConfigEnum.reality_fallback_domain] and c.category != 'hidden':
@@ -276,45 +277,40 @@ class DomainAdmin(AdminLTEModelView):
 
     def _validate_domain_ips(self, model, server_ips):
         """Validate domain IP resolution and matching"""
-        try:
-            # Skip validation for wildcard or empty domains
-            if model.domain.startswith('*') or not model.domain:
-                return True
-            
-            # Resolve domain IPs with timeout
-            try:
-                dips = hutils.network.get_domain_ips(model.domain, timeout=10)
-            except Exception as e:
-                logger.error(f"Error resolving domain {model.domain}: {str(e)}")
-                raise ValidationError(_("Domain cannot be resolved! Please check DNS settings"))
-            
-            # Validate resolution success
-            if not dips:
-                raise ValidationError(_("Domain cannot be resolved! Please check DNS settings"))
-            
-            # Check IP matching based on mode
-            domain_ip_matches_server = any(ip in dips for ip in server_ips)
-            server_ips_str = ', '.join(map(str, server_ips))
-            dips_str = ', '.join(map(str, dips))
         
-            if not domain_ip_matches_server and model.mode in [DomainType.direct]:
-                raise ValidationError(
-                    __("Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode",
-                       server_ip=server_ips_str, domain_ip=dips_str))
-                   
-            if domain_ip_matches_server and model.mode in [DomainType.cdn, DomainType.relay, DomainType.fake, DomainType.auto_cdn_ip]:
-                raise ValidationError(
-                    __("In CDN mode, Domain IP=%(domain_ip)s should be different to your ip=%(server_ip)s",
-                       server_ip=server_ips_str, domain_ip=dips_str))
-                   
+        # Skip validation for wildcard or empty domains
+        if model.domain.startswith('*') or not model.domain:
             return True
         
-        except ValidationError:
-            raise
+        # Resolve domain IPs with timeout
+        try:
+            dips = hutils.network.get_domain_ips(model.domain, timeout=10)
         except Exception as e:
-            logger.error(f"Error validating domain IPs: {str(e)}")
-            raise ValidationError(str(e))
-
+            logger.error(f"Error resolving domain {model.domain}: {str(e)}")
+            raise ValidationError(_("Domain cannot be resolved! Please check DNS settings"))
+        
+        # Validate resolution success
+        if not dips:
+            raise ValidationError(_("Domain cannot be resolved! Please check DNS settings"))
+        
+        # Check IP matching based on mode
+        domain_ip_matches_server = any(ip in dips for ip in server_ips)
+        server_ips_str = ', '.join(map(str, server_ips))
+        dips_str = ', '.join(map(str, dips))
+    
+        if not domain_ip_matches_server and model.mode in [DomainType.direct]:
+            raise ValidationError(
+                __("Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode",
+                    server_ip=server_ips_str, domain_ip=dips_str))
+                
+        if domain_ip_matches_server and model.mode in [DomainType.cdn, DomainType.relay, DomainType.fake, DomainType.auto_cdn_ip]:
+            raise ValidationError(
+                __("In CDN mode, Domain IP=%(domain_ip)s should be different to your ip=%(server_ip)s",
+                    server_ip=server_ips_str, domain_ip=dips_str))
+                
+        return True
+    
+        
     # def after_model_change(self,form, model, is_created):
     #     if model.show_domains.count==0:
     #         db.session.bulk_save_objects(ShowDomain(model.id,model.id))
