@@ -143,19 +143,18 @@ class AdminstratorAdmin(AdminLTEModelView):
         """)
 
     def _max_active_users_formatter(view, context, model, name):
-
-        actives = [u for u in model.recursive_users_query().all() if u.is_active]
-        u = len(actives)
+        """Optimized user count formatter using database queries"""
+        active_count = model.recursive_users_query().filter(User.is_active == True).count()
         if model.mode == AdminMode.super_admin:
-            return f"{u} / ∞"
+            return f"{active_count} / ∞"
         t = model.max_active_users
-        rate = round(u * 100 / (t + 0.000001))
-        state = "danger" if u >= t else ('warning' if rate > 80 else 'success')
-        color = "#ff7e7e" if u >= t else ('#ffc107' if rate > 80 else '#9ee150')
+        rate = round(active_count * 100 / (t + 0.000001))
+        color = "#ff7e7e" if active_count >= t else ('#ffc107' if rate > 80 else '#9ee150')
+        
         return Markup(f"""
         <div class="progress progress-lg position-relative" style="min-width: 100px;">
           <div class="progress-bar progress-bar-striped" role="progressbar" style="width: {rate}%;background-color: {color};" aria-valuenow="{rate}" aria-valuemin="0" aria-valuemax="100"></div>
-              <span class='badge position-absolute' style="left:auto;right:auto;width: 100%;font-size:1em">{u} {_('user.home.usage.from')} {t}</span>
+              <span class='badge position-absolute' style="left:auto;right:auto;width: 100%;font-size:1em">{active_count} {_('user.home.usage.from')} {t}</span>
 
         </div>
         """)
