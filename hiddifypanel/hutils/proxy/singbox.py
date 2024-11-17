@@ -47,7 +47,7 @@ def configs_as_json(domains: list[Domain], **kwargs) -> str:
 def is_xray_proxy(proxy: dict):
     if g.user_agent.get('is_hiddify_prefere_xray'):
         return True
-    if proxy['transport'] == ProxyTransport.splithttp:
+    if proxy['transport'] == ProxyTransport.xhttp:
         return True
     return False
 

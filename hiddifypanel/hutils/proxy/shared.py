@@ -134,8 +134,8 @@ def get_proxies(child_id: int = 0, only_enabled=False) -> list['Proxy']:
         proxies = [c for c in proxies if 'trojan' not in c.proto]
     if not hconfig(ConfigEnum.httpupgrade_enable, child_id):
         proxies = [c for c in proxies if ProxyTransport.httpupgrade not in c.transport]
-    if not hconfig(ConfigEnum.splithttp_enable, child_id):
-        proxies = [c for c in proxies if ProxyTransport.splithttp not in c.transport]
+    if not hconfig(ConfigEnum.xhttp_enable, child_id):
+        proxies = [c for c in proxies if ProxyTransport.xhttp not in c.transport]
     if not hconfig(ConfigEnum.ws_enable, child_id):
         proxies = [c for c in proxies if ProxyTransport.WS not in c.transport]
     # if not hconfig(ConfigEnum.xtls_enable, child_id):
@@ -189,7 +189,7 @@ def get_valid_proxies(domains: list[Domain]) -> list[dict]:
             noDomainProxies = False
             if proxy.proto in [ProxyProto.ssh, ProxyProto.wireguard]:
                 noDomainProxies = True
-            if proxy.proto in [ProxyProto.ss] and proxy.transport not in [ProxyTransport.grpc, ProxyTransport.h2, ProxyTransport.WS, ProxyTransport.httpupgrade, ProxyTransport.splithttp]:
+            if proxy.proto in [ProxyProto.ss] and proxy.transport not in [ProxyTransport.grpc, ProxyTransport.h2, ProxyTransport.WS, ProxyTransport.httpupgrade, ProxyTransport.xhttp]:
                 noDomainProxies = True
             options = []
             key = f'{proxy.proto}{proxy.transport}{proxy.cdn}{proxy.l3}'
@@ -413,9 +413,9 @@ def make_proxy(hconfigs: dict, proxy: Proxy, domain_db: Domain, phttp=80, ptls=4
         base['path'] = f'/{path[base["proto"]]}{hconfigs[ConfigEnum.path_httpupgrade]}'
         base["host"] = domain
         return base
-    if proxy.transport in [ProxyTransport.splithttp]:
-        base['transport'] = 'splithttp'
-        base['path'] = f'/{path[base["proto"]]}{hconfigs[ConfigEnum.path_splithttp]}'
+    if proxy.transport in [ProxyTransport.xhttp]:
+        base['transport'] = 'xhttp'
+        base['path'] = f'/{path[base["proto"]]}{hconfigs[ConfigEnum.path_xhttp]}'
         # if 0 and 'h2' in base['alpn'] or 'h3' in base['alpn']:
         #     base['path'] += "2"
         # else:

@@ -239,7 +239,7 @@ class ConfigEnum(metaclass=FastEnum):
     ws_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply_config)
     grpc_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply_config)
     httpupgrade_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply_config)
-    splithttp_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply_config)
+    xhttp_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply_config)
 
     vless_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply_config)
     trojan_enable = _BoolConfigDscr(ConfigCategory.proxies, ApplyMode.apply_config)
@@ -262,7 +262,7 @@ class ConfigEnum(metaclass=FastEnum):
     path_v2ray = _StrConfigDscr(ConfigCategory.hidden, ApplyMode.apply_config, hide_in_virtual_child=True)  # deprecated
     path_ss = _StrConfigDscr(ConfigCategory.hidden, ApplyMode.apply_config, hide_in_virtual_child=True)
 
-    path_splithttp = _StrConfigDscr(ConfigCategory.too_advanced, ApplyMode.apply_config, hide_in_virtual_child=True)
+    path_xhttp = _StrConfigDscr(ConfigCategory.too_advanced, ApplyMode.apply_config, hide_in_virtual_child=True)
     path_httpupgrade = _StrConfigDscr(ConfigCategory.too_advanced, ApplyMode.apply_config, hide_in_virtual_child=True)
     path_ws = _StrConfigDscr(ConfigCategory.too_advanced, ApplyMode.apply_config, hide_in_virtual_child=True)
     path_tcp = _StrConfigDscr(ConfigCategory.too_advanced, ApplyMode.apply_config, hide_in_virtual_child=True)

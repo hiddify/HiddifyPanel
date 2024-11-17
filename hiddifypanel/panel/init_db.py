@@ -77,7 +77,7 @@ def _v94(child_id):
 
 def _v93(child_id):
     set_hconfig(ConfigEnum.quic_enable, True)
-    set_hconfig(ConfigEnum.splithttp_enable, True)
+    set_hconfig(ConfigEnum.xhttp_enable, True)
 
 
 def _v92(child_id):
@@ -85,9 +85,9 @@ def _v92(child_id):
 
 
 def _v89(child_id):
-    set_hconfig(ConfigEnum.path_splithttp,
+    set_hconfig(ConfigEnum.path_xhttp,
                 hutils.random.get_random_string(7, 15))
-    set_hconfig(ConfigEnum.splithttp_enable, False)
+    set_hconfig(ConfigEnum.xhttp_enable, False)
     pass
 
 
@@ -218,7 +218,7 @@ def _v65():
     add_config_if_not_exist(ConfigEnum.mux_min_streams, '4')
     add_config_if_not_exist(ConfigEnum.mux_max_streams, '0')
     add_config_if_not_exist(ConfigEnum.mux_padding_enable, False)
-    add_config_if_not_exist(ConfigEnum.mux_brutal_enable, True)
+    add_config_if_not_exist(ConfigEnum.mux_brutal_enable, False)
     add_config_if_not_exist(ConfigEnum.mux_brutal_up_mbps, '100')
     add_config_if_not_exist(ConfigEnum.mux_brutal_down_mbps, '100')
 
@@ -571,9 +571,9 @@ def get_proxy_rows_v1():
         "httpupgrade direct vless",
         # "httpupgrade direct trojan",
         "httpupgrade direct vmess",
-        "splithttp direct vless",
-        "splithttp direct trojan",
-        "splithttp direct vmess",
+        "xhttp direct vless",
+        "xhttp direct trojan",
+        "xhttp direct vmess",
         "tcp direct vless",
         "tcp direct trojan",
         "tcp direct vmess",
@@ -591,9 +591,9 @@ def get_proxy_rows_v1():
         # "httpupgrade relay trojan",
         "httpupgrade relay vmess",
 
-        "splithttp relay vless",
-        "splithttp relay trojan",
-        "splithttp relay vmess",
+        "xhttp relay vless",
+        "xhttp relay trojan",
+        "xhttp relay vmess",
 
         "tcp relay vless",
         "tcp relay trojan",
@@ -615,9 +615,9 @@ def get_proxy_rows_v1():
         # "httpupgrade CDN trojan",
         "httpupgrade CDN vmess",
 
-        "splithttp CDN vless",
-        "splithttp CDN trojan",
-        "splithttp CDN vmess",
+        "xhttp CDN vless",
+        "xhttp CDN trojan",
+        "xhttp CDN vmess",
 
         "grpc CDN vless",
         "grpc CDN trojan",
@@ -663,7 +663,7 @@ def make_proxy_rows(cfgs):
     for l3 in [ProxyL3.h3_quic, "tls_h2", "tls", "http", "reality"]:
         for c in cfgs:
             transport, cdn, proto = c.split(" ")
-            if transport != ProxyTransport.splithttp and l3 == ProxyL3.h3_quic:
+            if transport != ProxyTransport.xhttp and l3 == ProxyL3.h3_quic:
                 continue
             if l3 in ["kcp", 'reality'] and cdn != "direct":
                 continue
@@ -750,8 +750,11 @@ def add_new_enum_values():
             continue
 
         # Add the new value to the enum column in the database
-        enumstr = ','.join([f"'{a}'" for a in [*existing_values, *old_values]])
-
+        # enumstr = ','.join([f"'{a}'" for a in [*existing_values, *old_values]])
+        enumstr = ','.join([f"'{a}'" for a in [*existing_values]])
+        expired_enumstr = ','.join([f"'{a}'" for a in [*old_values]])
+        db_execute(
+            f"delete from {table_name} where `{column_name}` in ({expired_enumstr});", commit=True)
         db_execute(
             f"ALTER TABLE {table_name} MODIFY COLUMN `{column_name}` ENUM({enumstr});", commit=True)
 

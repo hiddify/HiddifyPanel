@@ -33,7 +33,7 @@ def to_clash(proxy, meta_or_normal):
 
     if proxy['l3'] in ["kcp", ProxyL3.h3_quic]:
         return {'name': name, 'msg': f"clash does not support {proxy['l3']}", 'type': 'debug'}
-    if proxy['transport'] in [ProxyTransport.splithttp, ProxyTransport.httpupgrade]:
+    if proxy['transport'] in [ProxyTransport.xhttp, ProxyTransport.httpupgrade]:
         return {'name': name, 'msg': f"clash does not support {proxy['transport']}", 'type': 'debug'}
     # if proxy['proto'] in [Proxy.shado]:
 
@@ -44,7 +44,7 @@ def to_clash(proxy, meta_or_normal):
             return {'name': name, 'msg': f"clash does not support {proxy['proto']}", 'type': 'debug'}
         if proxy['proto'] in ["vless", 'tuic', 'hysteria2']:
             return {'name': name, 'msg': f"{proxy['proto']} not supported in clash", 'type': 'debug'}
-        if proxy['transport'] in ["shadowtls", "splithttp"]:
+        if proxy['transport'] in ["shadowtls", "xhttp"]:
             return {'name': name, 'msg': f"{proxy['transport']} not supported in clash", 'type': 'debug'}
     if proxy['l3'] == ProxyL3.tls_h2 and proxy['proto'] in [ProxyProto.vmess, ProxyProto.vless] and proxy['dbe'].cdn == ProxyCDN.direct:
         return {'name': name, 'msg': "bug tls_h2 vmess and vless in clash meta", 'type': 'warning'}

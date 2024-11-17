@@ -642,7 +642,7 @@
       "description": "ça devrait être aléatoire",
       "label": "ℹ️ Chemin de mise à niveau HTTP"
     },
-    "path_splithttp": {
+    "path_xhttp": {
       "description": "Cette option définit le chemin pour Split HTTP",
       "label": "Chemin pour le HTTP fractionné"
     },
@@ -778,7 +778,7 @@
       "description": "Autorisez vos utilisateurs à effectuer des tests de vitesse. Cela les aide à identifier la qualité du lien",
       "label": "🚀 Test de vitesse"
     },
-    "splithttp_enable": {
+    "xhttp_enable": {
       "description": "Ce protocole envoie et reçoit des informations dans des canaux individuels ",
       "label": "🈁 Split HTTP"
     },

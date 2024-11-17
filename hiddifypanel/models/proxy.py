@@ -20,7 +20,7 @@ class ProxyTransport(StrEnum):
     tcp = auto()
     ssh = auto()
     httpupgrade = auto()
-    splithttp = auto()
+    xhttp = auto()
     custom = auto()
     shadowsocks = auto()
 

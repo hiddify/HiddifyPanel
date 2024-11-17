@@ -262,9 +262,9 @@ def add_stream_settings(base: dict, proxy: dict):
     if proxy['transport'] == ProxyTransport.httpupgrade:
         ss['network'] = proxy['transport']
         add_httpupgrade_stream(ss, proxy)
-    if proxy['transport'] == ProxyTransport.splithttp:
+    if proxy['transport'] == ProxyTransport.xhttp:
         ss['network'] = proxy['transport']
-        add_splithttp_stream(ss, proxy)
+        add_xhttp_stream(ss, proxy)
     if proxy['transport'] == 'ws':
         ss['network'] = proxy['transport']
         add_ws_stream(ss, proxy)
@@ -338,8 +338,8 @@ def add_httpupgrade_stream(ss: dict, proxy: dict):
     }
 
 
-def add_splithttp_stream(ss: dict, proxy: dict):
-    ss['splithttpSettings'] = {
+def add_xhttp_stream(ss: dict, proxy: dict):
+    ss['xhttpSettings'] = {
         'path': proxy['path'],
         'host': proxy['host'],
         "headers": {

@@ -126,10 +126,10 @@ def to_link(proxy: dict) -> str | dict:
         baseurl += "&encryption=none"
     if proxy.get('fingerprint', 'none') != 'none':
         baseurl += "&fp=" + proxy['fingerprint']
-    if proxy.get('transport') in {ProxyTransport.splithttp}:
+    if proxy.get('transport') in {ProxyTransport.xhttp}:
         baseurl += "&core=xray"
     if proxy['l3'] != 'quic':
-        if proxy.get('l3') != ProxyL3.reality and (proxy.get('transport') in {ProxyTransport.tcp, ProxyTransport.httpupgrade, ProxyTransport.splithttp}) and proxy['proto'] in [ProxyProto.vless, ProxyProto.trojan]:
+        if proxy.get('l3') != ProxyL3.reality and (proxy.get('transport') in {ProxyTransport.tcp, ProxyTransport.httpupgrade, ProxyTransport.xhttp}) and proxy['proto'] in [ProxyProto.vless, ProxyProto.trojan]:
             baseurl += '&headerType=http'
         else:
             baseurl += '&headerType=None'
