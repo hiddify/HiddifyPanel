@@ -155,8 +155,101 @@ class DomainAdmin(AdminLTEModelView):
         # Sanitize domain input
         model.domain = (model.domain or '').lower().strip()
         
+        # Basic validation
         if model.domain == '' and model.mode != DomainType.fake:
             raise ValidationError(_("domain.empty.allowed_for_fake_only"))
+
+        self._validate_not_used_before(model)
+        ipv4_list = hutils.network.get_ips(4)
+        ipv6_list = hutils.network.get_ips(6)
+        server_ips = [*ipv4_list, *ipv6_list]
+
+        if not server_ips:
+            raise ValidationError(_("Couldn't find your ip addresses"))
+
+        # Validate domain based on mode
+        if "*" in model.domain and model.mode not in [DomainType.cdn, DomainType.auto_cdn_ip]:
+            raise ValidationError(_("Domain can not be resolved! there is a problem in your domain"))
+
+        cloudflare_updated=self._update_cloudflare(model, ipv4_list,ipv6_list)
+        
+        if cloudflare_updated or "*" in model.domain or model.domain == "":
+            self._validate_domain_ips(model, server_ips)
+
+        # Handle CDN IP settings
+        if model.mode == DomainType.direct and model.cdn_ip:
+            model.cdn_ip = ""
+            raise ValidationError(_("Specifying CDN IP is only valid for CDN mode"))
+            
+        if model.mode == DomainType.fake and not model.cdn_ip:
+            model.cdn_ip = str(server_ips[0])
+            
+        if model.cdn_ip:
+            try:
+                hutils.network.auto_ip_selector.get_clean_ip(str(model.cdn_ip))
+            except Exception:
+                raise ValidationError(_("Error in auto cdn format"))
+                    
+        # Update show domains
+        if len(model.show_domains) == Domain.query.count():
+            model.show_domains = []
+                
+        # Handle mode-specific settings
+        if model.mode == DomainType.old_xtls_direct and not hconfig(ConfigEnum.xtls_enable):
+            set_hconfig(ConfigEnum.xtls_enable, True)
+            hutils.proxy.get_proxies().invalidate_all()
+        elif model.mode == DomainType.reality:
+            self._validate_reality_settings(model)
+                
+            # Signal config update if needed
+        old_db_domain = Domain.by_domain(model.domain)
+        if is_created or not old_db_domain or old_db_domain.mode != model.mode:
+            # return hiddify.reinstall_action(complete_install=False, domain_changed=True)
+            hutils.flask.flash_config_success(restart_mode=ApplyMode.apply_config, domain_changed=True)
+
+            
+
+    def _update_cloudflare(self, model, ipv4_list,ipv6_list):
+        if hconfig(ConfigEnum.cloudflare) and model.mode not in [DomainType.fake, DomainType.relay, DomainType.reality]:
+            try:
+                proxied = model.mode in [DomainType.cdn, DomainType.auto_cdn_ip]
+                if ipv4_list:
+                    hutils.network.cf_api.add_or_update_dns_record(model.domain, str(ipv4_list[0]), "A", proxied=proxied)
+                if ipv6_list:
+                    hutils.network.cf_api.add_or_update_dns_record(model.domain, str(ipv6_list[0]), "AAAA", proxied=proxied)
+                return True
+            except Exception as e:
+                raise ValidationError(__("cloudflare.error") + f' {e}')
+        return False
+
+    def _validate_reality_settings(self, model):
+        if not hconfig(ConfigEnum.reality_enable):
+            set_hconfig(ConfigEnum.reality_enable, True)
+            hutils.proxy.get_proxies().invalidate_all()
+
+        model.servernames = (model.servernames or model.domain).lower()
+        for v in set([model.domain, model.servernames]):
+            for d in v.split(","):
+                if not d:
+                    continue
+                if not hutils.network.is_domain_reality_friendly(d):  # the minimum requirement for the REALITY protocol is to have tls1.3 and h2
+                    raise ValidationError(_("Domain is not REALITY friendly!") + f' {d}')
+
+                if not hutils.network.is_in_same_asn(d, server_ips[0]):
+                    dip = next(iter(hutils.network.get_domain_ips(model.domain)))
+                    server_asn = hutils.network.get_ip_asn(server_ips[0])
+                    domain_asn = hutils.network.get_ip_asn(dip)  # type: ignore
+                    msg = _("domain.reality.asn_issue") + \
+                        (f"<br> Server ASN={server_asn}<br>{d}_ASN={domain_asn}" if server_asn or domain_asn else "")
+                    hutils.flask.flash(msg, 'warning')
+
+        for d in model.servernames.split(","):
+            if not hutils.network.fallback_domain_compatible_with_servernames(model.domain, d):
+                msg = _("REALITY Fallback domain is not compaitble with server names!") + f' {d} != {model.domain}'
+                hutils.flask.flash(msg, 'warning')
+
+
+    def _validate_not_used_before(self, model):
         configs = get_hconfigs()
         for c in configs:
             if "domain" in c and c not in [ConfigEnum.decoy_domain, ConfigEnum.reality_fallback_domain] and c.category != 'hidden':
@@ -170,74 +263,6 @@ class DomainAdmin(AdminLTEModelView):
 
         if is_created and Domain.query.filter(Domain.domain == model.domain, Domain.child_id == model.child_id).count() > 1:
             raise ValidationError(_("You have used this domain in: "))
-
-        ipv4_list = hutils.network.get_ips(4)
-        ipv6_list = hutils.network.get_ips(6)
-
-        if not ipv4_list and not ipv6_list:
-            raise ValidationError(_("Couldn't find your ip addresses"))
-
-        if "*" in model.domain and model.mode not in [DomainType.cdn, DomainType.auto_cdn_ip]:
-            raise ValidationError(_("Domain can not be resolved! there is a problem in your domain"))
-
-        skip_check = "*" in model.domain or model.domain == ""
-        if hconfig(ConfigEnum.cloudflare) and model.mode not in [DomainType.fake, DomainType.relay, DomainType.reality]:
-            try:
-                proxied = model.mode in [DomainType.cdn, DomainType.auto_cdn_ip]
-                hutils.network.cf_api.add_or_update_dns_record(model.domain, str(ipv4_list[0]), "A", proxied=proxied)
-                if ipv6_list:
-                    hutils.network.cf_api.add_or_update_dns_record(model.domain, str(ipv6_list[0]), "AAAA", proxied=proxied)
-
-                skip_check = True
-            except Exception as e:
-                raise ValidationError(__("cloudflare.error") + f' {e}')
-        # elif model.mode==DomainType.auto_cdn_ip:
-        # if model.alias and not model.alias.replace("_", "").isalnum():
-        #     hutils.flask.flash(__("Using alias with special charachters may cause problem in some clients like FairVPN."), 'warning')
-            # raise ValidationError(_("You have to add your cloudflare api key to use this feature: "))
-
-        server_ips = [*ipv4_list, *ipv6_list]
-        self._validate_domain_ips(model, server_ips)
-
-        if model.mode == DomainType.old_xtls_direct:
-            if not hconfig(ConfigEnum.xtls_enable):
-                set_hconfig(ConfigEnum.xtls_enable, True)
-                hutils.proxy.get_proxies().invalidate_all()
-        elif model.mode == DomainType.reality:
-            if not hconfig(ConfigEnum.reality_enable):
-                set_hconfig(ConfigEnum.reality_enable, True)
-                hutils.proxy.get_proxies().invalidate_all()
-            model.servernames = (model.servernames or model.domain).lower()
-            for v in set([model.domain, model.servernames]):
-                for d in v.split(","):
-                    if not d:
-                        continue
-                    if not hutils.network.is_domain_reality_friendly(d):  # the minimum requirement for the REALITY protocol is to have tls1.3 and h2
-                        raise ValidationError(_("Domain is not REALITY friendly!") + f' {d}')
-
-                    if not hutils.network.is_in_same_asn(d, server_ips[0]):
-                        dip = next(iter(hutils.network.get_domain_ips(model.domain)))
-                        server_asn = hutils.network.get_ip_asn(server_ips[0])
-                        domain_asn = hutils.network.get_ip_asn(dip)  # type: ignore
-                        msg = _("domain.reality.asn_issue") + \
-                            (f"<br> Server ASN={server_asn}<br>{d}_ASN={domain_asn}" if server_asn or domain_asn else "")
-                        hutils.flask.flash(msg, 'warning')
-
-            for d in model.servernames.split(","):
-                if not hutils.network.fallback_domain_compatible_with_servernames(model.domain, d):
-                    msg = _("REALITY Fallback domain is not compaitble with server names!") + f' {d} != {model.domain}'
-                    hutils.flask.flash(msg, 'warning')
-
-        if (model.cdn_ip):
-            try:
-                hutils.network.auto_ip_selector.get_clean_ip(str(model.cdn_ip))
-            except BaseException:
-                raise ValidationError(_("Error in auto cdn format"))
-
-        old_db_domain = Domain.by_domain(model.domain)
-        if is_created or not old_db_domain or old_db_domain.mode != model.mode:
-            # return hiddify.reinstall_action(complete_install=False, domain_changed=True)
-            hutils.flask.flash_config_success(restart_mode=ApplyMode.apply_config, domain_changed=True)
 
     def _validate_domain_ips(self, model, server_ips):
         """Validate domain IP resolution and matching"""
