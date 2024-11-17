@@ -251,11 +251,11 @@ def validate_domain(form, field):
     if dip is None:
         raise ValidationError(_("Domain can not be resolved! there is a problem in your domain"))
 
-    myip = hutils.network.get_ip(4)
-    myip6 = hutils.network.get_ip(6)  # Fixed: Changed from get_ip(4) to get_ip(6)
-    if dip and myip != dip and (not myip6 or myip6 != dip):
+    myips = hutils.network.get_ips()
+      # Fixed: Changed from get_ip(4) to get_ip(6)
+    if dip not in myips:
         raise ValidationError(_("Domain (%(domain)s)-> IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode",
-                              server_ip=myip, domain_ip=dip, domain=domain))
+                              server_ip=myips, domain_ip=dip, domain=domain))
 
 
 def validate_domain_cdn(form, field):
@@ -266,10 +266,10 @@ def validate_domain_cdn(form, field):
     if dip is None:
         raise ValidationError(_("Domain can not be resolved! there is a problem in your domain"))
 
-    myip = hutils.network.get_ip(4)
-    if myip == dip:
+    myips = hutils.network.get_ips()
+    if dip in myips:
         raise ValidationError(_("In CDN mode, Domain IP=%(domain_ip)s should be different to your ip=%(server_ip)s",
-                              server_ip=myip, domain_ip=dip, domain=domain))
+                              server_ip=myips, domain_ip=dip, domain=domain))
 
 
 def admin_link():
