@@ -2,6 +2,7 @@ import telebot
 from flask import request
 from apiflask import abort
 from flask_restful import Resource
+import time
 
 from hiddifypanel.models import *
 from hiddifypanel import Events
@@ -11,7 +12,24 @@ logger = telebot.logger
 
 class ExceptionHandler(telebot.ExceptionHandler):
     def handle(self, exception):
-        logger.error(exception)
+        """Improved error handling for Telegram bot exceptions"""
+        error_msg = str(exception)
+        logger.error(f"Telegram bot error: {error_msg}")
+        
+        try:
+            # Attempt recovery based on error type
+            if "webhook" in error_msg.lower():
+                if hasattr(bot, 'remove_webhook'):
+                    bot.remove_webhook()
+                    logger.info("Removed webhook due to error")
+            elif "connection" in error_msg.lower():
+                # Wait and retry for connection issues
+                time.sleep(5)
+                return True  # Indicates retry
+        except Exception as e:
+            logger.error(f"Error during recovery attempt: {str(e)}")
+        
+        return False  # Don't retry for unknown errors
 
 
 bot = telebot.TeleBot("1:2", parse_mode="HTML", threaded=False, exception_handler=ExceptionHandler())
