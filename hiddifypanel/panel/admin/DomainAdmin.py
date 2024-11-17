@@ -152,7 +152,9 @@ class DomainAdmin(AdminLTEModelView):
 
     # TODO: refactor this function
     def on_model_change(self, form, model, is_created):
-        model.domain = (model.domain or '').lower()
+        # Sanitize domain input
+        model.domain = (model.domain or '').lower().strip()
+        
         if model.domain == '' and model.mode != DomainType.fake:
             raise ValidationError(_("domain.empty.allowed_for_fake_only"))
         configs = get_hconfigs()
@@ -194,50 +196,9 @@ class DomainAdmin(AdminLTEModelView):
         #     hutils.flask.flash(__("Using alias with special charachters may cause problem in some clients like FairVPN."), 'warning')
             # raise ValidationError(_("You have to add your cloudflare api key to use this feature: "))
 
-        dips = hutils.network.get_domain_ips(model.domain)
         server_ips = [*ipv4_list, *ipv6_list]
-        if model.sub_link_only:
-            if not dips:
-                raise ValidationError(_("Domain can not be resolved! there is a problem in your domain"))  # type: ignore
-        elif not skip_check:
-            if not dips:
-                raise ValidationError(_("Domain can not be resolved! there is a problem in your domain"))  # type: ignore
+        self._validate_domain_ips(model, server_ips)
 
-            domain_ip_is_same_as_panel = False
-
-            for mip in server_ips:
-                domain_ip_is_same_as_panel |= mip in dips
-            server_ips_str = ', '.join(list(map(str, server_ips)))
-            dips_str = ', '.join(list(map(str, dips)))
-
-            if model.mode == DomainType.direct and not domain_ip_is_same_as_panel:
-                # hutils.flask.flash(__(f"Domain IP={dip} is not matched with your ip={', '.join(list(map(str, ipv4_list)))} which is required in direct mode"),category='error')
-                raise ValidationError(
-                    __("Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode", server_ip=server_ips_str, domain_ip=dips_str))  # type: ignore
-
-            if domain_ip_is_same_as_panel and model.mode in [DomainType.cdn, DomainType.relay, DomainType.fake, DomainType.auto_cdn_ip]:
-                #     # hutils.flask.flash(__(f"In CDN mode, Domain IP={dip} should be different to your ip={', '.join(list(map(str, ipv4_list)))}"), 'warning')
-                raise ValidationError(__("In CDN mode, Domain IP=%(domain_ip)s should be different to your ip=%(server_ip)s",
-                                      server_ip=server_ips_str, domain_ip=dips_str))  # type: ignore
-
-            # if model.mode in [DomainType.ss_faketls, DomainType.telegram_faketls]:
-            #     if len(Domain.query.filter(Domain.mode==model.mode and Domain.id!=model.id).all())>0:
-            #         ValidationError(f"another {model.mode} is exist")
-
-        model.domain = model.domain.lower()
-        if model.mode == DomainType.direct and model.cdn_ip:
-            model.cdn_ip = ""
-            raise ValidationError(f"Specifying CDN IP is only valid for CDN mode")
-
-        if model.mode == DomainType.fake and not model.cdn_ip:
-            model.cdn_ip = str(server_ips[0])
-
-        # if model.mode==DomainType.fake and model.cdn_ip!=myip:
-        #     raise ValidationError(f"Specifying CDN IP is only valid for CDN mode")
-
-        # # Update the many-to-many relationship
-        if len(model.show_domains) == Domain.query.count():
-            model.show_domains = []
         if model.mode == DomainType.old_xtls_direct:
             if not hconfig(ConfigEnum.xtls_enable):
                 set_hconfig(ConfigEnum.xtls_enable, True)
@@ -255,7 +216,7 @@ class DomainAdmin(AdminLTEModelView):
                         raise ValidationError(_("Domain is not REALITY friendly!") + f' {d}')
 
                     if not hutils.network.is_in_same_asn(d, server_ips[0]):
-                        dip = next(iter(dips))
+                        dip = next(iter(hutils.network.get_domain_ips(model.domain)))
                         server_asn = hutils.network.get_ip_asn(server_ips[0])
                         domain_asn = hutils.network.get_ip_asn(dip)  # type: ignore
                         msg = _("domain.reality.asn_issue") + \
@@ -277,6 +238,43 @@ class DomainAdmin(AdminLTEModelView):
         if is_created or not old_db_domain or old_db_domain.mode != model.mode:
             # return hiddify.reinstall_action(complete_install=False, domain_changed=True)
             hutils.flask.flash_config_success(restart_mode=ApplyMode.apply_config, domain_changed=True)
+
+    def _validate_domain_ips(self, model, server_ips):
+        """Validate domain IP resolution and matching"""
+        try:
+            if model.domain.startswith('*') or not model.domain:
+                return True
+            
+            # Get domain IPs with timeout and retry
+            try:
+                dips = hutils.network.get_domain_ips(model.domain, timeout=10)
+            except Exception as e:
+                logger.error(f"Error resolving domain {model.domain}: {str(e)}")
+                raise ValidationError(_("Domain cannot be resolved! Please check DNS settings"))
+            if not dips:
+                raise ValidationError(_("Domain cannot be resolved! Please check DNS settings"))
+            
+            # Validate IP matching based on mode
+            domain_ip_matches_server = any(ip in dips for ip in server_ips)
+            server_ips_str = ', '.join(map(str, server_ips))
+            dips_str = ', '.join(map(str, dips))
+        
+            if model.mode == DomainType.direct:
+                if not domain_ip_matches_server:
+                    raise ValidationError(
+                        __("Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode",
+                           server_ip=server_ips_str, domain_ip=dips_str))
+                       
+            elif model.mode in [DomainType.cdn, DomainType.relay, DomainType.fake, DomainType.auto_cdn_ip]:
+                if domain_ip_matches_server:
+                    raise ValidationError(
+                        __("In CDN mode, Domain IP=%(domain_ip)s should be different to your ip=%(server_ip)s",
+                           server_ip=server_ips_str, domain_ip=dips_str))
+                       
+            return True
+        except Exception as e:
+            logger.error(f"Error validating domain IPs: {str(e)}")
+            raise ValidationError(str(e))
 
     # def after_model_change(self,form, model, is_created):
     #     if model.show_domains.count==0:
