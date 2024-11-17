@@ -192,10 +192,12 @@
     }
 
     function update_from_json(data) {
-        usage_history = data['usage_history']
-        onlines = usage_history['m5']['online']
-        total_users = usage_history['total']['users']
-        stats = data['stats']
+        // Use local variables instead of globals
+        const usage_history = data['usage_history'];
+        const onlines = usage_history['m5']['online'];
+        const total_users = usage_history['total']['users'];
+        const stats = data['stats'];
+        
         info_box("today", "fa-solid fa-calendar", "Today Usage",
             ((usage_history['today']['usage'] / Math.pow(1024, 3)).toFixed(1)) + " GB",
             usage_history['today']['online'] / Math.max(1, total_users) * 100,

@@ -121,9 +121,17 @@
                         $(document).Toasts('create', {
                             class: 'bg-danger',
                             position: "{{'topRight' if get_locale()=='fa' else 'topLeft'}}",
-                            title: status + " " + error,
-                            body: JSON.stringify(jqx)
-                        })
+                            title: $('<div>').text(status + " " + error).html(),
+                            body: $('<div>').text(JSON.stringify(jqx)).html(),
+                            autohide: true,
+                            delay: 5000
+                        });
+                        
+                        console.error('API Error:', {
+                            status: status,
+                            error: error,
+                            details: jqx
+                        });
                     },
                     success: function (data) {
                         // dialog.modal('hide');
