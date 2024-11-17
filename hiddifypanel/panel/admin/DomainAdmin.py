@@ -199,7 +199,7 @@ class DomainAdmin(AdminLTEModelView):
             set_hconfig(ConfigEnum.xtls_enable, True)
             hutils.proxy.get_proxies().invalidate_all()
         elif model.mode == DomainType.reality:
-            self._validate_reality_settings(model)
+            self._validate_reality_settings(model, server_ips)
                 
             # Signal config update if needed
         old_db_domain = Domain.by_domain(model.domain)
@@ -222,30 +222,40 @@ class DomainAdmin(AdminLTEModelView):
                 raise ValidationError(__("cloudflare.error") + f' {e}')
         return False
 
-    def _validate_reality_settings(self, model):
+    def _validate_reality_settings(self, model, server_ips):
+        """Validate REALITY protocol settings with proper error handling"""
         if not hconfig(ConfigEnum.reality_enable):
             set_hconfig(ConfigEnum.reality_enable, True)
             hutils.proxy.get_proxies().invalidate_all()
 
-        model.servernames = (model.servernames or model.domain).lower()
-        for v in set([model.domain, model.servernames]):
-            for d in v.split(","):
-                if not d:
-                    continue
-                if not hutils.network.is_domain_reality_friendly(d):  # the minimum requirement for the REALITY protocol is to have tls1.3 and h2
-                    raise ValidationError(_("Domain is not REALITY friendly!") + f' {d}')
+        model.servernames = (model.servernames or model.domain).lower().strip()
+        domains_to_check = set()
+        for v in [model.domain, model.servernames]:
+            domains_to_check.update(d.strip() for d in v.split(",") if d.strip())
 
+        for d in domains_to_check:
+            # Check REALITY compatibility
+            if not hutils.network.is_domain_reality_friendly(d):
+                raise ValidationError(_("Domain is not REALITY friendly!") + f' {d}')
+
+            try:
                 if not hutils.network.is_in_same_asn(d, server_ips[0]):
-                    dip = next(iter(hutils.network.get_domain_ips(model.domain)))
-                    server_asn = hutils.network.get_ip_asn(server_ips[0])
-                    domain_asn = hutils.network.get_ip_asn(dip)  # type: ignore
-                    msg = _("domain.reality.asn_issue") + \
-                        (f"<br> Server ASN={server_asn}<br>{d}_ASN={domain_asn}" if server_asn or domain_asn else "")
-                    hutils.flask.flash(msg, 'warning')
+                    domain_ips = hutils.network.get_domain_ips(d)
+                    if domain_ips:
+                        dip = next(iter(domain_ips))
+                        server_asn = hutils.network.get_ip_asn(server_ips[0])
+                        domain_asn = hutils.network.get_ip_asn(dip)
+                        msg = _("domain.reality.asn_issue")
+                        if server_asn or domain_asn:
+                            msg += f"<br> Server ASN={server_asn}<br>{d}_ASN={domain_asn}"
+                        hutils.flask.flash(msg, 'warning')
+            except Exception as e:
+                logger.warning(f"ASN check failed for domain {d}: {str(e)}")
 
+        # Check fallback compatibility
         for d in model.servernames.split(","):
-            if not hutils.network.fallback_domain_compatible_with_servernames(model.domain, d):
-                msg = _("REALITY Fallback domain is not compaitble with server names!") + f' {d} != {model.domain}'
+            if d.strip() and not hutils.network.fallback_domain_compatible_with_servernames(model.domain, d):
+                msg = _("REALITY Fallback domain is not compatible with server names!") + f' {d} != {model.domain}'
                 hutils.flask.flash(msg, 'warning')
 
 
