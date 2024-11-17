@@ -27,7 +27,7 @@ from hiddifypanel import hutils
 class UserAdmin(AdminLTEModelView):
     column_default_sort = ('id', False)  # Sort by username in ascending order
 
-    column_sortable_list = ["is_active", "name", "current_usage", 'mode', "remaining_days","max_ips", "comment", 'last_online', "uuid", 'remaining_days']
+    column_sortable_list = ["is_active", "name", "current_usage", 'mode', "remaining_days", "max_ips", "comment", 'last_online', "uuid"]
     column_searchable_list = ["uuid", "name"]
     column_list = ["is_active", "name", "UserLinks", "current_usage", "remaining_days", "comment", 'last_online', 'mode', 'admin', "uuid"]
     column_editable_list = ["comment", "name", "uuid"]
@@ -131,7 +131,7 @@ class UserAdmin(AdminLTEModelView):
         if model.is_active:
             link = '<i class="fa-solid fa-circle-check text-success"></i> '
         elif len(model.devices):
-            link = '<i class="fa-solid fa-users-slash text-danger" title="{_("Too many Connected IPs")}"></i>'
+            link = f'<i class="fa-solid fa-users-slash text-danger" title="{_("Too many Connected IPs")}"></i>'
         else:
             link = '<i class="fa-solid fa-circle-xmark text-danger"></i> '
 
@@ -161,8 +161,8 @@ class UserAdmin(AdminLTEModelView):
 
     def _usage_formatter(view, context, model, name):
         u = round(model.current_usage_GB, 3)
-        t = round(model.usage_limit_GB, 3)
-        rate = round(u * 100 / (t + 0.000001))
+        t = max(round(model.usage_limit_GB, 3), 0.001)  # Prevent division by zero
+        rate = min(round(u * 100 / t), 100)  # Cap at 100%
         state = "danger" if u >= t else ('warning' if rate > 80 else 'success')
         color = "#ff7e7e" if u >= t else ('#ffc107' if rate > 80 else '#9ee150')
         return Markup(f"""
@@ -225,38 +225,45 @@ class UserAdmin(AdminLTEModelView):
 
     def on_form_prefill(self, form, id=None):
         # print("================",form._obj.start_date)
-        if id is None or form._obj is None or form._obj.start_date is None or form._obj.current_usage==0:
+        if form._obj is None:
+            return
+
+        if id is None or form._obj.start_date is None or form._obj.current_usage==0:
             msg = _("Package not started yet.")
             # form.reset['class']="d-none"
-            if form._obj.start_date is None:
+        if form._obj.start_date is None:
+            if hasattr(form, 'reset_days'):
                 delattr(form, 'reset_days')
-            if form._obj.current_usage==0:
-                delattr(form, 'reset_usage')
-            # delattr(form,'disable_user')
         else:
-            remaining = form._obj.remaining_days  # remaining_days(form._obj)
+            remaining = form._obj.remaining_days
             relative_remaining = hutils.convert.format_timedelta(datetime.timedelta(days=remaining))
             msg = _("Remaining about %(relative)s, exactly %(days)s days", relative=relative_remaining, days=remaining)
             form.reset_days.label.text += f" ({msg})"
-            usr_usage = f" ({_('user.home.usage.title')} {round(form._obj.current_usage_GB,3)}GB)"
-            form.reset_usage.label.text += usr_usage
-            form.reset_usage.data = False
             form.reset_days.data = False
 
-            form.usage_limit.label.text += usr_usage
+        # Handle reset_usage field
+        if form._obj.current_usage == 0:
+            if hasattr(form, 'reset_usage'):
+                delattr(form, 'reset_usage')
+        else:
+            usr_usage = f" ({_('user.home.usage.title')} {round(form._obj.current_usage_GB,3)}GB)"
+            if hasattr(form, 'reset_usage'):
+                form.reset_usage.label.text += usr_usage
+                form.reset_usage.data = False
+            
+            if hasattr(form, 'usage_limit'):
+                form.usage_limit.label.text += usr_usage
 
-            # if form._obj.mode==UserMode.disable:
-            #     delattr(form,'disable_user')
-            # form.disable_user.data=form._obj.mode==UserMode.disable
-            if form._obj.start_date:
-                started = form._obj.start_date - datetime.date.today()
-                msg = _("Started from %(relative)s", relative=hutils.convert.format_timedelta(started))
-                form.package_days.label.text += f" ({msg})"
-                if started.days <= 0:
-                    exact_start = _("Started %(days)s days ago", days=-started.days)
-                else:
-                    exact_start = _("Will Start in %(days)s days", days=started.days)
-                form.package_days.description += f" ({exact_start})"
+        # Handle package days info
+        if form._obj.start_date and hasattr(form, 'package_days'):
+            started = form._obj.start_date - datetime.date.today()
+            msg = _("Started from %(relative)s", relative=hutils.convert.format_timedelta(started))
+            form.package_days.label.text += f" ({msg})"
+            if started.days <= 0:
+                exact_start = _("Started %(days)s days ago", days=-started.days)
+            else:
+                exact_start = _("Will Start in %(days)s days", days=started.days)
+            form.package_days.description += f" ({exact_start})"
 
     def get_edit_form(self):
         form = super().get_edit_form()
@@ -267,26 +274,44 @@ class UserAdmin(AdminLTEModelView):
         return form
 
     def on_model_change(self, form, model, is_created):
-        model.max_ips = max(3, model.max_ips or 10000)
+        # Validate max_ips
+        try:
+            model.max_ips = max(3, min(int(model.max_ips or 10000), 10000))
+        except (ValueError, TypeError):
+            model.max_ips = 1000
+            
+        # Show donation message
         if len(User.query.all()) % 4 == 0:
             hutils.flask.flash(('<div id="show-modal-donation"></div>'), ' d-none')
+            
+        # Validate UUID
         if not re.match("^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$", model.uuid):
             raise ValidationError('Invalid UUID e.g.,' + str(uuid.uuid4()))
+            
+        # Handle reset flags
         if hasattr(form, 'reset_usage') and form.reset_usage.data:
             model.current_usage_GB = 0
-        # if model.telegram_id and model.telegram_id != '0' and not re.match(r"^[1-9]\d*$", model.telegram_id):
-        #     raise ValidationError('Invalid Telegram ID')
-        # if form.disable_user.data:
-        #     model.mode=UserMode.disable
+            
         if hasattr(form, 'reset_days') and form.reset_days.data:
             model.start_date = None
-        model.package_days = min(model.package_days, 10000)
+            
+        # Validate package days
+        try:
+            model.package_days = min(int(model.package_days), 10000)
+        except (ValueError, TypeError):
+            model.package_days = 10000
+            
+        # Handle user ownership
         old_user = User.by_id(model.id)
         if not model.added_by or model.added_by == 1:
             model.added_by = g.account.id
+            
+        # Validate user limits
         if not g.account.can_have_more_users():
             raise ValidationError(_('You have too much users! You can have only %(active)s active users and %(total)s users',
                                   active=g.account.max_active_users, total=g.account.max_users))
+                                  
+        # Handle UUID changes
         if old_user and old_user.uuid != model.uuid:
             user_driver.remove_client(old_user)
 
