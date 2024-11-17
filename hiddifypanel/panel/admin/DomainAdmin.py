@@ -242,36 +242,40 @@ class DomainAdmin(AdminLTEModelView):
     def _validate_domain_ips(self, model, server_ips):
         """Validate domain IP resolution and matching"""
         try:
+            # Skip validation for wildcard or empty domains
             if model.domain.startswith('*') or not model.domain:
                 return True
             
-            # Get domain IPs with timeout and retry
+            # Resolve domain IPs with timeout
             try:
                 dips = hutils.network.get_domain_ips(model.domain, timeout=10)
             except Exception as e:
                 logger.error(f"Error resolving domain {model.domain}: {str(e)}")
                 raise ValidationError(_("Domain cannot be resolved! Please check DNS settings"))
+            
+            # Validate resolution success
             if not dips:
                 raise ValidationError(_("Domain cannot be resolved! Please check DNS settings"))
             
-            # Validate IP matching based on mode
+            # Check IP matching based on mode
             domain_ip_matches_server = any(ip in dips for ip in server_ips)
             server_ips_str = ', '.join(map(str, server_ips))
             dips_str = ', '.join(map(str, dips))
         
-            if model.mode == DomainType.direct:
-                if not domain_ip_matches_server:
-                    raise ValidationError(
-                        __("Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode",
-                           server_ip=server_ips_str, domain_ip=dips_str))
-                       
-            elif model.mode in [DomainType.cdn, DomainType.relay, DomainType.fake, DomainType.auto_cdn_ip]:
-                if domain_ip_matches_server:
-                    raise ValidationError(
-                        __("In CDN mode, Domain IP=%(domain_ip)s should be different to your ip=%(server_ip)s",
-                           server_ip=server_ips_str, domain_ip=dips_str))
-                       
+            if not domain_ip_matches_server and model.mode in [DomainType.direct]:
+                raise ValidationError(
+                    __("Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode",
+                       server_ip=server_ips_str, domain_ip=dips_str))
+                   
+            if domain_ip_matches_server and model.mode in [DomainType.cdn, DomainType.relay, DomainType.fake, DomainType.auto_cdn_ip]:
+                raise ValidationError(
+                    __("In CDN mode, Domain IP=%(domain_ip)s should be different to your ip=%(server_ip)s",
+                       server_ip=server_ips_str, domain_ip=dips_str))
+                   
             return True
+        
+        except ValidationError:
+            raise
         except Exception as e:
             logger.error(f"Error validating domain IPs: {str(e)}")
             raise ValidationError(str(e))
