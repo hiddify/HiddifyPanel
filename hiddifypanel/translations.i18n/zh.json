@@ -331,10 +331,12 @@
     }
   },
   "auto": "自动",
+  "auto_cdn_ip": "☑️ 自动 CDN IP 选择器",
   "bot": {
     "admin_welcome": "欢迎使用管理机器人。选择你的行动",
     "welcome": "万岁🎉🎉🎉\n欢迎使用 Hiddify 机器人\n首先单击面板上的链接或输入您的 UUID。"
   },
+  "cdn": "🔀 CDN（Cloudflare 代理，...）",
   "cf-delete": {
     "failed": "cf-删除失败"
   },
@@ -410,17 +412,33 @@
       "description": "请按照<a href='https://github.com/hiddify/hiddify-config/wiki/Get-Cloudflare-API' target='_blank'>说明</a>并粘贴 Cloudflare API 密钥",
       "label": "🔑 Cloudflare API"
     },
+    "core_type": {
+      "description": "☢️ XRay：是一个完整的核心\n<br>\n📦 Singbox：由 SagerNet 开发。也是一个不错的核心",
+      "label": "🎛️核心"
+    },
     "country": {
       "description": "它根据每个国家/地区的过滤条件应用适当的设置",
       "label": "🌍国家"
+    },
+    "create_easysetup_link": {
+      "description": "config.create_easysetup_link.description",
+      "label": "config.create_easysetup_link.label"
     },
     "db_version": {
       "description": "数据库版本说明",
       "label": "数据库版本标签"
     },
+    "dbvalues": {
+      "description": "config.dbvalues.description",
+      "label": "config.dbvalues.label"
+    },
     "decoy_domain": {
       "description": "假网站：当有人直接访问您的域时模拟网站。<br>\n⚠️ 不要使用金融、伊朗和著名网站或需要登录的网站，例如 Google、Yahoo、Wikipedia、PayPal。<br>\n⛔ 请务必检查该网站并确保它是正确的网站，否则您可能会收到网络钓鱼警告。<br>\n⛔⛔ 再次检查该域名，以免以后出现问题",
       "label": "📺 诱饵网站"
+    },
+    "dns_server": {
+      "description": "✳️默认1.1.1.1 <br>\n🚧 阻止恶意软件 1.1.1.2 <br>\n🔞 阻止色情 1.1.1.3",
+      "label": "🖥 DNS 服务器"
     },
     "domain_fronting": {
       "description": "它用于在 SNI 中模拟另一个网站而不是您的网站。因此，GFW 无法过滤您的域名\n<a href='https://github.com/hiddify/hiddify-config/wiki/%D8%A7%D8%B3%D8%AA%D9%81%D8%A7%D8%AF%D9%87- %D8%A7%D8%B2-%D8%AF%D8%A7%D9%85%DB%8C%D9%86-%D9%81%D8%B1%D8%A7%D9%86%D8%AA %DB%8C%D9%86%DA%AF'>指南</a>。 ⚠️CloudFlare 不支持域前置。",
@@ -450,6 +468,22 @@
       "description": "这是一般系统配置",
       "label": "常规设置"
     },
+    "grpc_enable": {
+      "description": "gRPC 是一个现代开源高性能远程过程调用 (RPC) 框架。它可以在支持的 CDN 中使用",
+      "label": "➿ gRPC"
+    },
+    "h2_enable": {
+      "description": "启用 HTTP/2 协议",
+      "label": "🔵 h2"
+    },
+    "hidden": {
+      "description": "配置.隐藏.描述",
+      "label": "配置.隐藏.标签"
+    },
+    "hiddifycli_enable": {
+      "description": "config.hiddifycli_enable.description",
+      "label": "config.hiddifycli_enable.label"
+    },
     "http": {
       "description": "HTTP 配置可以在此部分设置",
       "label": "HTTP 配置"
@@ -461,6 +495,34 @@
     "http_proxy_enable": {
       "description": "通过允许此操作，您的用户可以使用未加密的 HTTP 端口连接到系统。 （不建议）",
       "label": "☑️ 允许 HTTP 连接"
+    },
+    "httpupgrade_enable": {
+      "description": "<p>HTTPUpgrade 在直接使用连接之前完成 HTTP 1.1 升级请求和响应。它与 WebSocket 类似，它创建了一个方向通道，可以通过许多反向代理和 CDN 转发，而无需处理围绕 WebSocket 协议本身的所有问题。<br />\n⚠️<strong>不适用于基于 Xray 的客户端。仅支持 HiddifyNext、Singbox 和 V2fly 客户端。</strong> <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/Basic-Concepts/#http-upgrade\" target=\"_blank\"><strong>（阅读更多）</strong></a></p>",
+      "label": "🆙 HTTPUpgrade 方法"
+    },
+    "hysteria": {
+      "description": "Hysteria 是一款功能齐全的代理和中继工具，针对有损、不稳定的连接（例如卫星网络、拥挤的公共 Wi-Fi、从中国连接到国外服务器）进行了优化",
+      "label": "Hysteria"
+    },
+    "hysteria_down_mbps": {
+      "description": "Hysteria 最大下载速度",
+      "label": "⬇️ Hysteria 下载 (mbps)"
+    },
+    "hysteria_enable": {
+      "description": "启用基于 UDP 的 Hysteria 协议",
+      "label": "启用歇斯底里2"
+    },
+    "hysteria_obfs_enable": {
+      "description": " 启用 Hysteria 混淆（Salamander）",
+      "label": "🎛 Hysteria OBFS"
+    },
+    "hysteria_port": {
+      "description": "Hysteria UDP 端口，例如 5678",
+      "label": "🔍 Hysteria2 端口"
+    },
+    "hysteria_up_mbps": {
+      "description": "Hysteria 最大上传速度",
+      "label": "⬆️ Hysteria  上传 (mbps)"
     },
     "invalid-pattern-for-warp-sites": "⚠️ 输入的 Warp 站点与指定的模板不匹配",
     "invalid_uuid": "UUID 秘密无效。示例：6098ea35-8cb2-4a08-ba15-2be25bc49cb6",
@@ -488,9 +550,57 @@
       "description": "config.last_hash.描述",
       "label": "配置.last_hash.label"
     },
+    "last_priodic_usage_check": {
+      "description": "配置.last_priodic_usage_check.description",
+      "label": "config.last_priodic_usage_check.标签"
+    },
     "license": {
       "description": "要将本产品用于商业用途，您必须购买其许可证",
       "label": "许可证代码"
+    },
+    "log_level": {
+      "description": "config.log_level.description",
+      "label": "config.log_level.label"
+    },
+    "mux": {
+      "description": "可以在此部分设置 MUX（多路复用）配置",
+      "label": "MUX设置"
+    },
+    "mux_brutal_down_mbps": {
+      "description": "TCP-Brutal 最大下载速度",
+      "label": "⬇️ MUX Brutal 下载 (mbps)"
+    },
+    "mux_brutal_enable": {
+      "description": "启用 TCP-Brutal 拥塞控制算法",
+      "label": "☣️ MUX Brutal"
+    },
+    "mux_brutal_up_mbps": {
+      "description": "TCP-Brutal 最大上传速度",
+      "label": "⬆️ MUX Brutal 上传 (mbps)"
+    },
+    "mux_enable": {
+      "description": "<p>Mux 需要兼容的客户端。Hiddify Next 和 Singbox 中的 Mux 与 XRay 不兼容。 <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-MUX-works-and-its-usage/\" target=\"_blank\">（阅读更多）</a></p>",
+      "label": "Ⓜ️ MUX（⚠️ 与某些客户端不兼容）"
+    },
+    "mux_max_connections": {
+      "description": "最大连接数。与最大流数冲突",
+      "label": "⛓ MUX 最大连接数"
+    },
+    "mux_max_streams": {
+      "description": "打开新连接之前连接中的最大复用流数",
+      "label": "↗️ MUX 最大流"
+    },
+    "mux_min_streams": {
+      "description": "打开新连接之前连接中的最小多路复用流",
+      "label": "↘️ MUX 最小流"
+    },
+    "mux_padding_enable": {
+      "description": "MUX Padding 描述",
+      "label": "⟹ MUX Padding"
+    },
+    "mux_protocol": {
+      "description": "ℹ️ 多路复用协议。默认使用 'sMux'<inlang-LineFeed><br>\n➖ sMux: 流复用<inlang-LineFeed><br><inlang-LineFeed>➖ YaMux: 又一个多路复用器<inlang-LineFeed><br><inlang-LineFeed>➖ h2Mux: 通过 HTTP/2 多路复用流",
+      "label": "♍️ MUX 协议"
     },
     "netdata": {
       "description": "用于显示资源。使用您服务器的 CPU，但不会太多。",
@@ -508,6 +618,18 @@
       "description": "指定您想要发布的包还是开发的包",
       "label": "🔄 包更新模式"
     },
+    "panel_mode": {
+      "description": "config.panel_mode.description",
+      "label": "config.panel_mode.label"
+    },
+    "parent_admin_proxy_path": {
+      "description": "config.parent_admin_proxy_path.description",
+      "label": "config.parent_admin_proxy_path.label"
+    },
+    "parent_domain": {
+      "description": "config.parent_domain.description",
+      "label": "config.parent_domain.label"
+    },
     "parent_panel": {
       "description": "您可以连接到中央面板仅定义一个用户，所有服务器的使用情况将累积添加。",
       "label": "父面板（多服务器）"
@@ -515,6 +637,14 @@
     "path_grpc": {
       "description": "配置中的 gRPC 路径",
       "label": "ℹ️ gRPC 路径"
+    },
+    "path_httpupgrade": {
+      "description": "应该是随机的",
+      "label": "ℹ️ HTTP 升级路径"
+    },
+    "path_xhttp": {
+      "description": "此选项定义 Split HTTP 的路径",
+      "label": "Split HTTP 的路径"
     },
     "path_ss": {
       "description": "链接中的 Shadowsocks 路径",
@@ -552,13 +682,33 @@
       "description": "我们使用秘密代理路径来隐藏我们的政府代理",
       "label": "ℹ️ 秘密代理路径"
     },
+    "proxy_path_admin": {
+      "description": "我们使用秘密代理路径来向政府和机器人隐藏我们的代理",
+      "label": "🔐 管理员的代理路径"
+    },
+    "proxy_path_client": {
+      "description": "秘密代理路径隐藏了政府和机器人无法发现的代理",
+      "label": "🔏 客户端的代理路径"
+    },
+    "quic_enable": {
+      "description": "启用 QUIC 协议",
+      "label": "🟡 QUIC"
+    },
     "reality": {
       "description": "REALITY 消除了服务器端 TLS 指纹功能",
       "label": "Reality"
     },
+    "reality_enable": {
+      "description": "启用 Reality Protocol",
+      "label": "🔴 Reality"
+    },
     "reality_fallback_domain": {
       "description": "当 GFW 访问服务器名称中的网站时，将被重定向到该域。",
       "label": "🌍 现实后备域"
+    },
+    "reality_port": {
+      "description": "您可以为您的现实服务器设置自定义端口，以减少系统开销。（允许直接连接到代理应该是肯定的）",
+      "label": "↔️ 直接 Reality 端口"
     },
     "reality_private_key": {
       "description": "不要改变它",
@@ -588,6 +738,22 @@
       "description": "config.restls1_3_domain.description",
       "label": "config.restls1_3_domain.label"
     },
+    "shadowsocks": {
+      "description": "Shadowsocks 是一款快速隧道代理，可帮助你绕过防火墙",
+      "label": "Shadowsocks"
+    },
+    "shadowsocks2022_enable": {
+      "description": "Shadowsocks 2022 是一种用于 TCP 和 UDP 流量的安全代理协议。代理流量与随机字节流无法区分，因此可以绕过依赖 DPI（深度数据包检测）的防火墙和互联网审查程序",
+      "label": "⭕️ Shadowsocks 2022"
+    },
+    "shadowsocks2022_method": {
+      "description": "此方法也用于 ShadowTLS 和 SSFakeTLS",
+      "label": "🔐 Shadowsocks 加密方法"
+    },
+    "shadowsocks2022_port": {
+      "description": "需要 UDP 和 TCP 才能免费",
+      "label": "↔️ Shadowsocks 2022 端口"
+    },
     "shadowtls": {
       "description": "向防火墙公开真实的 tls 握手的代理。<inlang-LineFeed><inlang-LineFeed>它的工作原理类似于 Trojan，但不需要签名证书。防火墙将看到具有您选择的有效证书的真实 tls 握手。",
       "label": "ShadowTLS"
@@ -612,6 +778,10 @@
       "description": "允许您的用户进行速度测试。它可以帮助他们识别链接质量",
       "label": "🚀 速度测试"
     },
+    "xhttp_enable": {
+      "description": "该协议通过单独的渠道发送和接收信息 ",
+      "label": "🈁 Split HTTP"
+    },
     "ssfaketls": {
       "description": "Shadowsocks FakeTLS 是一个简单的混淆工具，将日期封装在 tls 数据包中",
       "label": "Shadowsocks FakeTLS"
@@ -624,6 +794,54 @@
       "description": "请使用您数据中心内的知名域名。例如，如果您位于 Azure 数据中心，microsoft-update.com 就是一个很好的例子",
       "label": "🌍 SS FakeTLS 假域名"
     },
+    "ssh": {
+      "description": "ℹ️ SSH 代理，也称为 SSH 隧道或 SSH 端口转发，是一种通过不安全网络在两台计算机之间创建安全通信通道的安全方法。我们有一个与 ssh 服务器完全不同的特定应用程序，无法执行任何命令",
+      "label": "SSH 代理"
+    },
+    "ssh_host_dsa_pk": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_dsa_pub": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_ecdsa_pk": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_ecdsa_pub": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_ed25519_pk": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_ed25519_pub": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_rsa_pk": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_host_rsa_pub": {
+      "description": "",
+      "label": ""
+    },
+    "ssh_server_enable": {
+      "description": "SSH Proxy 与原来的 SSH Server 完全不同",
+      "label": "✔️ 启用 SSH 代理"
+    },
+    "ssh_server_port": {
+      "description": "这与你原来的 SSH 服务器完全不同。这是一个专用程序。",
+      "label": "↔️ SSH 代理端口"
+    },
+    "ssh_server_redis_url": {
+      "description": "不曾用过",
+      "label": "SSH用户数据库地址"
+    },
     "ssr": {
       "description": "ShadowsocksR是原始Shadowsocks项目的一个分支，号称在安全性和稳定性方面更胜一筹。",
       "label": "SSR"
@@ -635,6 +853,38 @@
     "ssr_fakedomain": {
       "description": "请在您的数据中心使用众所周知的域。例如，如果您在 Azure 数据中心，microsoft-update.com 就是一个很好的例子",
       "label": "SSR 假域名"
+    },
+    "sub_full_clash_enable": {
+      "description": "config.sub_full_clash_enable.description",
+      "label": "config.sub_full_clash_enable.标签"
+    },
+    "sub_full_clash_meta_enable": {
+      "description": "config.sub_full_clash_meta_enable.description",
+      "label": "config.sub_full_clash_meta_enable.标签"
+    },
+    "sub_full_links_b64_enable": {
+      "description": "config.sub_full_links_b64_enable.description",
+      "label": "config.sub_full_links_b64_enable.标签"
+    },
+    "sub_full_links_enable": {
+      "description": "config.sub_full_links_enable.description",
+      "label": "config.sub_full_links_enable.label"
+    },
+    "sub_full_singbox_enable": {
+      "description": "config.sub_full_singbox_enable.description",
+      "label": "config.sub_full_singbox_enable.label"
+    },
+    "sub_full_xray_json_enable": {
+      "description": "XRay 全链路为 XRay 特定设置提供了全面的配置选项。这包括支持 XRay 协议的应用程序（例如 v2rayNG）中的自定义分段和多路复用 (mux)，以便对 XRay 代理设置进行精细控制。",
+      "label": "⚙️ XRay 完整配置链接"
+    },
+    "sub_singbox_ssh_enable": {
+      "description": "config.sub_singbox_ssh_enable.description",
+      "label": "config.sub_singbox_ssh_enable.label"
+    },
+    "tcp_enable": {
+      "description": "启用 TCP 协议",
+      "label": "🟠 TCP"
     },
     "telegram": {
       "description": "专为 Telegram 设计的代理，可绕过 Telegram 过滤",
@@ -664,9 +914,37 @@
       "description": "可以在此部分设置 TLS 配置。",
       "label": "TLS 设置"
     },
+    "tls_fragment_enable": {
+      "description": "<p>在某些情况下，它可以绕过 SNI 黑名单系统。 <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-the-TLS-Trick-works-and-its-usage/\" target=\"_blank\">（阅读更多）</a></p>",
+      "label": "⏯ TLS Fragment"
+    },
+    "tls_fragment_size": {
+      "description": "每个数据包的大小",
+      "label": "🎚 TLS Fragment 大小"
+    },
+    "tls_fragment_sleep": {
+      "description": "Fragment 之间的时间延迟",
+      "label": "⏱ TLS Fragment 休眠"
+    },
+    "tls_mixed_case": {
+      "description": "启用 TLS 混合 SNI 大小写碎片",
+      "label": "🔠 TLS 混合 SNI 大小写"
+    },
+    "tls_padding_enable": {
+      "description": "<p>启用 TLS 碎片填充。 <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-the-TLS-Trick-works-and-its-usage/#tls-padding\" target=\"_blank\">（阅读更多）</a></p>",
+      "label": "♒️ TLS Padding"
+    },
+    "tls_padding_length": {
+      "description": "TLS 碎片的 Padding 长度",
+      "label": "📏 TLS Padding"
+    },
     "tls_ports": {
       "description": "逗号分隔的整数，指示用作 TLS 连接的端口（在任何情况下都将使用端口 443）",
       "label": "🔎 TLS 端口"
+    },
+    "tls_trick": {
+      "description": "TLS 碎片配置可在此部分设置",
+      "label": "TLS 技巧"
     },
     "too_advanced": {
       "description": "指定代理路径。如果您使用 HTTP 和 VMess，这一点尤其重要",
@@ -675,6 +953,10 @@
     "torrent_block": {
       "description": "可以在此部分设置 Torrent 阻止配置。",
       "label": "Torrent 块配置"
+    },
+    "trojan_enable": {
+      "description": "启用 Trojan 协议",
+      "label": "🟤 Trojan"
     },
     "tuic": {
       "description": "Delicately-TUICed 高性能代理位于 QUIC 协议之上。\n\nTUIC的目标是尽可能减少握手延迟",
@@ -703,6 +985,10 @@
     "validation-error": "其中一个字段有错误。",
     "validation-success": "配置已成功更改。单击 %(link)s 应用配置。申请可能需要 2 分钟",
     "validation-success-no-reset": "✅ 配置已成功更改",
+    "vless_enable": {
+      "description": "启用 VLess 协议",
+      "label": "⚫️ VLess"
+    },
     "vmess_enable": {
       "description": "据多位人士透露，VMess 导致该系统被政府检测到。所以不推荐",
       "label": "🟣 VMess"
@@ -723,11 +1009,57 @@
     "warp_plus_code": {
       "description": "🔝 提高浏览速度。要获取密钥，请转到 <a href='https://1.1.1.1/'> 1.1.1.1 </a>\n应用程序并从 Cloudflare 购买原始 KEY\n<br>\n⚠️如果此Key有错误，WARP将被禁用。",
       "label": "🔑 Warp Plus 键"
+    },
+    "warp_sites": {
+      "description": "添加要通过 WARP 的其他站点（仅当 Warp 模式不为 None 时）",
+      "label": "🆚 其他 WARP 站点"
+    },
+    "wireguard": {
+      "description": "WireGuard 是一种轻量级的基于 UDP 的协议，以其简单、高效和强大的安全性而闻名。它提供快速设置、透明代码，并因其在各种操作系统中的易用性而广受欢迎",
+      "label": "🐉 WireGuard"
+    },
+    "wireguard_enable": {
+      "description": "<p>WireGuard 是基于 UDP 的协议。（⚠️ 它在<a href=\"https://github.com/hiddify/hiddify-next\" target=\"_blank\">Hiddify Next</a>中运行）</p>",
+      "label": "启用 WireGuard"
+    },
+    "wireguard_ipv4": {
+      "description": "在 WireGuard 中启用 IPv4",
+      "label": " WireGuard 中的 IPv4"
+    },
+    "wireguard_ipv6": {
+      "description": "在 WireGuard 中启用 IPv6",
+      "label": "WireGuard 中的 IPv6"
+    },
+    "wireguard_noise_trick": {
+      "description": "这种方法会引入额外的噪音，以防止被 GFW 检测和阻止",
+      "label": "💥 WireGuard 噪音技巧"
+    },
+    "wireguard_port": {
+      "description": "定义 WireGuard 的端口 ",
+      "label": "↔️ WireGuard 端口"
+    },
+    "wireguard_private_key": {
+      "description": "为 WireGuard 指定私钥",
+      "label": "WireGuard 私钥"
+    },
+    "wireguard_public_key": {
+      "description": "为 WireGuard 指定一个公钥",
+      "label": "WireGuard 公钥"
+    },
+    "ws_enable": {
+      "description": "Websocket 通过 HTTP 创建一个隧道，可用于 CDN",
+      "label": "🔰 Websocket"
+    },
+    "xtls_enable": {
+      "description": "启用 XTLS 协议",
+      "label": "🟢XTLS"
     }
   },
   "copy": "复制",
+  "daily": "⏰ 每日",
   "days": "天",
   "desktop": "桌面",
+  "direct": "➡️直接",
   "domain": {
     "cdn": "CDN",
     "changed_in_domain_warning": "⚠️ 您的域名已更改。请不要忘记复制管理链接，否则您将无法再访问面板",
@@ -749,6 +1081,7 @@
     "show_domains_description": "对于访问该域的用户区的用户，指定他们可以看到哪些域的代理。\n<br>\n建议：对于IP未过滤且与其他域不同的域，选择所有其他域（当前域除外）。因此，由于该 IP 的使用不是用于代理，并且它是一个简单的网站，因此该域名和 IP 永远不会被阻止，您的用户可以轻松更新新的配置文件。"
   },
   "download": "直接下载",
+  "fake": "🆎 假网站",
   "gRPC": "➿ gRPC",
   "grpc-proxy": {
     "description": "ℹ️ gRPC 是一个基于 H2 的协议。也许对你来说更快！"
@@ -787,8 +1120,10 @@
   "master": {
     "page-title": "HiddifyManager"
   },
+  "monthly": "🗓️每月",
   "move_to_new_link": "该页面已移至新链接。请复制并保存新链接。",
   "next": "下一个",
+  "no_reset": "⭐️无需重置",
   "node": {
     "diff-version": "node.diff-version",
     "mode": {
@@ -804,6 +1139,7 @@
       "label": "Node UUID"
     }
   },
+  "old_xtls_direct": "🔙旧直连模式（针对木马TCP、VLess XTLS）",
   "open": "打开",
   "outdated_panel": "⚠️ 此版本的 Hiddify Manager 已过时。请从管理区域更新",
   "package days?": "包天数？",
@@ -825,6 +1161,8 @@
       "success": "更改语言成功。"
     }
   },
+  "reality": "🔂 Reality",
+  "relay": "♾️ Relay （使用中间节点连接）",
   "search": "搜索",
   "see the log in the bellow screen": "📑 查看以下屏幕中的日志",
   "serverssh": {
@@ -834,6 +1172,7 @@
   },
   "singbox: ssh": "歌手盒：SSH",
   "ssh": "SSH",
+  "sub_link_only": "📳 仅适用于订阅链接（可以是 Direct、Relay 或 CDN）",
   "telegram": "Telegram",
   "test": "测试",
   "update": "更新",
@@ -949,5 +1288,7 @@
   },
   "vpn": {
     "notallowed": "请不要使用 VPN 访问此页面。您需要从国家/地区 %(expected_country)s 访问，但您当前正在从 %(your_country)s 访问。"
-  }
+  },
+  "weekly": "📅每周",
+  "worker": "✴️ Cloudflare Worker"
 }
