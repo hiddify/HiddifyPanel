@@ -70,7 +70,7 @@ def json_to_po(json_path, po_path):
 
 def update_json_from_po(json_path, po_path):
     po = polib.pofile(po_path)
-    translations = {}
+    translations = flatten(loadI18N(json_path))
     for entry in po:
         translations[entry.msgid] = entry.msgstr
 
