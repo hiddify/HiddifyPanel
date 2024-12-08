@@ -215,6 +215,9 @@ msgstr ""
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr "دامنه قابل دسترسی نیست! در دامنه شما مشکلی وجود دارد."
 
+msgid "Domain cannot be resolved! Please check DNS settings"
+msgstr ""
+
 msgid "Domain is not REALITY friendly!"
 msgstr "دامنه سازگار با REALITY نیست!"
 
@@ -589,6 +592,9 @@ msgstr "رم"
 msgid "REALITY Fallback domain is not compaitble with server names!"
 msgstr "دامنه بازگشتی REALITY با نام سرور سازگار نیست!"
 
+msgid "REALITY Fallback domain is not compatible with server names!"
+msgstr ""
+
 msgid "Release"
 msgstr "✅ پایدار"
 
@@ -693,6 +699,9 @@ msgstr "📦 SingBox"
 
 msgid "Sort by %(name)s"
 msgstr "مرتب سازی بر اساس %(name)s"
+
+msgid "Specifying CDN IP is only valid for CDN mode"
+msgstr ""
 
 msgid "Start Date"
 msgstr "زمان شروع"
@@ -1067,6 +1076,9 @@ msgstr "V2RayNG"
 msgid "auto"
 msgstr "خودکار"
 
+msgid "auto_cdn_ip"
+msgstr "☑️ انتخاب کننده آی‌پی CDN به صورت خودکار"
+
 msgid "bot.admin_welcome"
 msgstr "به ربات ادمین خوش آمدید. عملیات مورد نظر را انتخاب کنید."
 
@@ -1075,6 +1087,9 @@ msgstr ""
 "هورا !!! 🎉 🎉 🎉 \n"
 "به ربات هیدیفای خوش آمدید.\n"
 "برای شروع روی لینک مربوطه در پنل کلیک نموده یا UUID خود را وارد کنید."
+
+msgid "cdn"
+msgstr "🔀 سی‌دی‌ان (پروکسی کلودفلر و ...)"
 
 msgid "cf-delete.failed"
 msgstr "cf-delete.failed"
@@ -1223,6 +1238,15 @@ msgstr ""
 msgid "config.cloudflare.label"
 msgstr "🔑 کلید توسعه کلودفلر"
 
+msgid "config.core_type.description"
+msgstr ""
+"☢️ XRay : یک هسته کامل است\n"
+"<br>\n"
+"📦 Singbox : توسعه یافته توسط SagerNet. همچنین هسته خوبی است"
+
+msgid "config.core_type.label"
+msgstr "🎛️ هسته"
+
 msgid "config.country.description"
 msgstr ""
 "تنظیمات مناسب را برای هر کشور با توجه به شرایط فیلتر آن کشور اعمال می کند"
@@ -1230,11 +1254,23 @@ msgstr ""
 msgid "config.country.label"
 msgstr "🌍 کشور"
 
+msgid "config.create_easysetup_link.description"
+msgstr "-"
+
+msgid "config.create_easysetup_link.label"
+msgstr "-"
+
 msgid "config.db_version.description"
 msgstr "توضیحات ورژن دیتابیس"
 
 msgid "config.db_version.label"
 msgstr "ورژن دیتابیس"
+
+msgid "config.dbvalues.description"
+msgstr "-"
+
+msgid "config.dbvalues.label"
+msgstr "-"
 
 msgid "config.decoy_domain.description"
 msgstr ""
@@ -1245,6 +1281,15 @@ msgstr ""
 
 msgid "config.decoy_domain.label"
 msgstr "📺 آدرس سایت جعلی"
+
+msgid "config.dns_server.description"
+msgstr ""
+"✳️ پیش فرض 1.1.1.1 <br>\n"
+"🚧 مسدود کردن بدافزار 1.1.1.2 <br>\n"
+"🔞 مسدود کردن پورن 1.1.1.3"
+
+msgid "config.dns_server.label"
+msgstr "🖥 سرور DNS"
 
 msgid "config.domain_fronting.description"
 msgstr ""
@@ -1298,6 +1343,32 @@ msgstr "تنظیمات عمومی سیستم در این بخش قابل انج�
 msgid "config.general.label"
 msgstr "تنظیمات عمومی"
 
+msgid "config.grpc_enable.description"
+msgstr ""
+"gRPC یک چارچوب متن باز مدرن با کارایی بالا Remote Procedure Call (RPC) است. "
+"می توان از آن در CDN های پشتیبانی شده استفاده کرد"
+
+msgid "config.grpc_enable.label"
+msgstr "➿ gRPC"
+
+msgid "config.h2_enable.description"
+msgstr "فعال کردن پروتکل HTTP/2"
+
+msgid "config.h2_enable.label"
+msgstr "🔵 h2"
+
+msgid "config.hidden.description"
+msgstr "-"
+
+msgid "config.hidden.label"
+msgstr "-"
+
+msgid "config.hiddifycli_enable.description"
+msgstr "config.hiddifycli_enable.description"
+
+msgid "config.hiddifycli_enable.label"
+msgstr "config.hiddifycli_enable.label"
+
 msgid "config.http.description"
 msgstr "تنظیمات مربوط به اتصال HTTP"
 
@@ -1319,6 +1390,58 @@ msgstr ""
 
 msgid "config.http_proxy_enable.label"
 msgstr "☑️ اجازه اتصال HTTP"
+
+msgid "config.httpupgrade_enable.description"
+msgstr ""
+"<p style=\"direction:rtl\">HTTPUpgrade یک درخواست ارتقاء HTTP ۱.۱ است و پاسخ"
+" را قبل از استفاده مستقیم از اتصال تکمیل می کند. این شبیه به WebSocket است "
+"که یک کانال ایجاد می کند که می تواند توسط بسیاری از پروکسی های معکوس و CDN "
+"ها ارسال شود، بدون اینکه نیازی به رسیدگی به تمام مسائل پیرامون خود پروتکل "
+"WebSocket باشد.<br /><a href=\"https://hiddify.com/fa/manager/basic-"
+"concepts-and-troubleshooting/Basic-Concepts/#http-upgarde\" "
+"target=\"_blank\"><strong>(بیشتر بدانید)</strong></a></p>"
+
+msgid "config.httpupgrade_enable.label"
+msgstr "🆙 HTTPUpgrade"
+
+msgid "config.hysteria.description"
+msgstr ""
+"Hysteria یک ابزار پروکسی و رله پر از ویژگی است که برای اتصالات با اتلاف و "
+"ناپایدار بهینه شده است (مانند شبکه های ماهواره ای، Wi-Fi عمومی متراکم، اتصال"
+" به سرورهای خارجی از چین)"
+
+msgid "config.hysteria.label"
+msgstr "هیستریا"
+
+msgid "config.hysteria_down_mbps.description"
+msgstr "حداکثر سرعت دانلود هیستریا"
+
+msgid "config.hysteria_down_mbps.label"
+msgstr "⬇️ دانلود (mbps) Hysteria"
+
+msgid "config.hysteria_enable.description"
+msgstr "برای فعال کردن پروتکل هیستریا مبتنی بر UDP"
+
+msgid "config.hysteria_enable.label"
+msgstr "⚪️ هیستریا"
+
+msgid "config.hysteria_obfs_enable.description"
+msgstr "مبهم سازی هیستریا (Salamander) را فعال می کند"
+
+msgid "config.hysteria_obfs_enable.label"
+msgstr "🎛 Hysteria OBFS"
+
+msgid "config.hysteria_port.description"
+msgstr "پورت Hysteria UDP برای مثال 5678"
+
+msgid "config.hysteria_port.label"
+msgstr "پورت هیستریا"
+
+msgid "config.hysteria_up_mbps.description"
+msgstr "حداکثر سرعت آپلود هیستریا"
+
+msgid "config.hysteria_up_mbps.label"
+msgstr "⬆️ آپلود (mbps) Hysteria"
 
 msgid "config.invalid-pattern-for-warp-sites"
 msgstr "⚠️ سایت وارد شده برای وارپ با الگوی تعیین شده مطابقت ندارد"
@@ -1366,11 +1489,95 @@ msgstr "-"
 msgid "config.last_hash.label"
 msgstr "-"
 
+msgid "config.last_priodic_usage_check.description"
+msgstr "config.last_priodic_usage_check.description"
+
+msgid "config.last_priodic_usage_check.label"
+msgstr "config.last_priodic_usage_check.label"
+
 msgid "config.license.description"
 msgstr "برای استفاده تجاری از این محصول باید مجوز آن را خریداری کنید"
 
 msgid "config.license.label"
 msgstr "کد مجوز"
+
+msgid "config.log_level.description"
+msgstr "config.log_level.description"
+
+msgid "config.log_level.label"
+msgstr "config.log_level.label"
+
+msgid "config.mux.description"
+msgstr "تنظیمات MUX (Multiplex) را می توان در این بخش تنظیم کرد"
+
+msgid "config.mux.label"
+msgstr "تنظیمات MUX"
+
+msgid "config.mux_brutal_down_mbps.description"
+msgstr "حداکثر سرعت دانلود TCP-Brutal"
+
+msgid "config.mux_brutal_down_mbps.label"
+msgstr "⬇️ دانلود (mbps) MUX Brutal"
+
+msgid "config.mux_brutal_enable.description"
+msgstr "الگوریتم کنترل تراکم TCP-Brutal را فعال می کند"
+
+msgid "config.mux_brutal_enable.label"
+msgstr "☣️ MUX Brutal"
+
+msgid "config.mux_brutal_up_mbps.description"
+msgstr "حداکثر سرعت آپلود TCP-Brutal"
+
+msgid "config.mux_brutal_up_mbps.label"
+msgstr "⬆️ آپلود (mbps) MUX Brutal"
+
+msgid "config.mux_enable.description"
+msgstr ""
+"<p style=\"direction:rtl\">Mux به نرم افزار سازگار نیاز دارد. Mux در <p><a "
+"href=\"https://app.hiddify.com\" target=\"_blank\">Hiddify</a></p> و Singbox"
+" و XRay سازگار نیستند.&nbsp;<a href=\"https://hiddify.com/fa/manager/basic-"
+"concepts-and-troubleshooting/How-MUX-works-and-its-usage/\" "
+"target=\"_blank\">(بیشتر بدانید)</a></p>"
+
+msgid "config.mux_enable.label"
+msgstr "Ⓜ️ MUX (⚠️ ناسازگار با برخی نرم افزارها)"
+
+msgid "config.mux_max_connections.description"
+msgstr "حداکثر اتصالات درگیری با Max Streams"
+
+msgid "config.mux_max_connections.label"
+msgstr "⛓ اتصالات MUX Max"
+
+msgid "config.mux_max_streams.description"
+msgstr "حداکثر جریان های چندگانه در یک اتصال قبل از باز کردن یک اتصال جدید"
+
+msgid "config.mux_max_streams.label"
+msgstr "↗️ MUX Max Streams"
+
+msgid "config.mux_min_streams.description"
+msgstr "حداقل جریان های چندگانه در یک اتصال قبل از باز کردن یک اتصال جدید"
+
+msgid "config.mux_min_streams.label"
+msgstr "↘️ MUX Min Streams"
+
+msgid "config.mux_padding_enable.description"
+msgstr "توضیحات MUX Padding"
+
+msgid "config.mux_padding_enable.label"
+msgstr "⟹ MUX Padding"
+
+msgid "config.mux_protocol.description"
+msgstr ""
+"ℹ️ پروتکل Multiplex. 'sMux' به طور پیش فرض استفاده می شود\n"
+"<br>\n"
+"➖ sMux: مالتیپلکس کردن جریان\n"
+"<br>\n"
+"➖ YaMux: باز هم یک مولتی پلکسر دیگر\n"
+"<br>\n"
+"➖ h2Mux: جریان های چندگانه از طریق HTTP/2"
+
+msgid "config.mux_protocol.label"
+msgstr "♍️ پروتکل MUX"
 
 msgid "config.netdata.description"
 msgstr ""
@@ -1401,6 +1608,24 @@ msgstr ""
 msgid "config.package_mode.label"
 msgstr "🔄 حالت به روز رسانی"
 
+msgid "config.panel_mode.description"
+msgstr "config.panel_mode.description"
+
+msgid "config.panel_mode.label"
+msgstr "config.panel_mode.label"
+
+msgid "config.parent_admin_proxy_path.description"
+msgstr "config.parent_admin_proxy_path.description"
+
+msgid "config.parent_admin_proxy_path.label"
+msgstr "config.parent_admin_proxy_path.label"
+
+msgid "config.parent_domain.description"
+msgstr "config.parent_domain.description"
+
+msgid "config.parent_domain.label"
+msgstr "config.parent_domain.label"
+
 msgid "config.parent_panel.description"
 msgstr ""
 "می‌توانید به پنل مرکزی وصل شوید، تا فقط یک یوزر را تعریف کنید و میزان "
@@ -1414,6 +1639,12 @@ msgstr "مسیر gRPC در کانفیگ ها"
 
 msgid "config.path_grpc.label"
 msgstr "ℹ️ مسیر gRPC"
+
+msgid "config.path_httpupgrade.description"
+msgstr "باید تصادفی باشد"
+
+msgid "config.path_httpupgrade.label"
+msgstr "ℹ️ مسیر ارتقاء HTTP"
 
 msgid "config.path_ss.description"
 msgstr "مسیر شدوساکس در لینکها"
@@ -1457,6 +1688,12 @@ msgstr "مسیر Websocket را مشخص کنید"
 msgid "config.path_ws.label"
 msgstr "ℹ️ مسیر درخواست های Websocket"
 
+msgid "config.path_xhttp.description"
+msgstr "این گزینه مسیر را برای Split HTTP تعریف می کند"
+
+msgid "config.path_xhttp.label"
+msgstr "ℹ️ مسیر برای Split HTTP"
+
 msgid "config.proxies.description"
 msgstr "تنظیمات اختصاصی را مشخص کنید"
 
@@ -1471,11 +1708,37 @@ msgstr ""
 msgid "config.proxy_path.label"
 msgstr "ℹ️ مسیر مخفی پروکسی"
 
+msgid "config.proxy_path_admin.description"
+msgstr ""
+"ما از مسیر پراکسی مخفی برای مخفی کردن پروکسی های خود برای دولت ها و ربات ها "
+"استفاده می کنیم"
+
+msgid "config.proxy_path_admin.label"
+msgstr "مسیر پروکسی برای مدیران"
+
+msgid "config.proxy_path_client.description"
+msgstr "مسیر مخفی پروکسی پروکسی ها را از دولت ها و ربات ها پنهان می کند"
+
+msgid "config.proxy_path_client.label"
+msgstr "🔏 مسیر پروکسی برای کاربران"
+
+msgid "config.quic_enable.description"
+msgstr "فعال کردن پروتکل QUIC"
+
+msgid "config.quic_enable.label"
+msgstr "🟡 QUIC"
+
 msgid "config.reality.description"
 msgstr "REALITY قابلیت اثر انگشت TLS سمت سرور را حذف می کند"
 
 msgid "config.reality.label"
 msgstr "ریالیتی"
+
+msgid "config.reality_enable.description"
+msgstr "فعال کردن پروتکل Reality"
+
+msgid "config.reality_enable.label"
+msgstr "🔴 Reality"
 
 msgid "config.reality_fallback_domain.description"
 msgstr ""
@@ -1484,6 +1747,14 @@ msgstr ""
 
 msgid "config.reality_fallback_domain.label"
 msgstr "🌍 دامنه بازگشتی ریالیتی"
+
+msgid "config.reality_port.description"
+msgstr ""
+"شما می توانید یک پورت سفارشی برای سرور ریالیتی خود تنظیم کنید تا پردازش "
+"سیستم را کاهش دهید. (اجازه اتصال مستقیم به پروکسی ها باید بله باشد)"
+
+msgid "config.reality_port.label"
+msgstr "↔️  پورت ریالیتی"
 
 msgid "config.reality_private_key.description"
 msgstr "این کد را تغییر ندهید"
@@ -1526,6 +1797,35 @@ msgstr "config.restls1_3_domain.description"
 
 msgid "config.restls1_3_domain.label"
 msgstr "config.restls1_3_domain.label"
+
+msgid "config.shadowsocks.description"
+msgstr ""
+"Shadowsocks یک پروکسی تونل سریع است که به شما کمک می کند فایروال ها را دور "
+"بزنید"
+
+msgid "config.shadowsocks.label"
+msgstr "شادوساکس"
+
+msgid "config.shadowsocks2022_enable.description"
+msgstr ""
+"Shadowsocks 2022 یک پروتکل پروکسی امن برای ترافیک TCP و UDP است. ترافیک "
+"پراکسی از یک جریان بایت تصادفی قابل تشخیص نیست و بنابراین می تواند فایروال "
+"ها و سانسورهای اینترنتی را که به DPI (بازرسی عمیق بسته) متکی هستند، دور بزند"
+
+msgid "config.shadowsocks2022_enable.label"
+msgstr "⭕️ Shadowsocks 2022"
+
+msgid "config.shadowsocks2022_method.description"
+msgstr "این روش در ShadowTLS و SSFakeTLS نیز استفاده می شود"
+
+msgid "config.shadowsocks2022_method.label"
+msgstr "🔐 روش رمزگذاری Shadowsocks"
+
+msgid "config.shadowsocks2022_port.description"
+msgstr "برای وصل شدن باید پورت های TCP و UDP روی سرور باز باشند"
+
+msgid "config.shadowsocks2022_port.label"
+msgstr "↔️ پورت Shadowsocks 2022"
 
 msgid "config.shadowtls.description"
 msgstr ""
@@ -1599,6 +1899,86 @@ msgstr ""
 msgid "config.ssfaketls_fakedomain.label"
 msgstr "🌍 دامنه جعلی برای SS FakeTLS"
 
+msgid "config.ssh.description"
+msgstr ""
+"پروکسی SSH که به عنوان تونل SSH یا ارسال پورت SSH نیز شناخته می شود، روشی "
+"امن برای ایجاد یک کانال ارتباطی امن بین دو ماشین در یک شبکه ناامن است. ما یک"
+" برنامه خاص داریم که کاملاً با سرور SSH متفاوت است. با این کانکشن کاربر نمی "
+"تواند هیچ دستوری را روی سرور اجرا کند"
+
+msgid "config.ssh.label"
+msgstr "پروکسی SSH"
+
+msgid "config.ssh_host_dsa_pk.description"
+msgstr ""
+
+msgid "config.ssh_host_dsa_pk.label"
+msgstr ""
+
+msgid "config.ssh_host_dsa_pub.description"
+msgstr ""
+
+msgid "config.ssh_host_dsa_pub.label"
+msgstr ""
+
+msgid "config.ssh_host_ecdsa_pk.description"
+msgstr ""
+
+msgid "config.ssh_host_ecdsa_pk.label"
+msgstr ""
+
+msgid "config.ssh_host_ecdsa_pub.description"
+msgstr ""
+
+msgid "config.ssh_host_ecdsa_pub.label"
+msgstr ""
+
+msgid "config.ssh_host_ed25519_pk.description"
+msgstr ""
+
+msgid "config.ssh_host_ed25519_pk.label"
+msgstr ""
+
+msgid "config.ssh_host_ed25519_pub.description"
+msgstr ""
+
+msgid "config.ssh_host_ed25519_pub.label"
+msgstr ""
+
+msgid "config.ssh_host_rsa_pk.description"
+msgstr ""
+
+msgid "config.ssh_host_rsa_pk.label"
+msgstr ""
+
+msgid "config.ssh_host_rsa_pub.description"
+msgstr ""
+
+msgid "config.ssh_host_rsa_pub.label"
+msgstr ""
+
+msgid "config.ssh_server_enable.description"
+msgstr ""
+"این SSH پروکسی با SSH سرور اصلی کاملا متفاوت است و امکان اجرای دستورات را "
+"ندارد"
+
+msgid "config.ssh_server_enable.label"
+msgstr "✔️ پروکسی SSH"
+
+msgid "config.ssh_server_port.description"
+msgstr ""
+"این پورت کاملا با پورت سرور اصلی SSH شما متفاوت است. این یک برنامه اختصاصی "
+"است"
+
+msgid "config.ssh_server_port.label"
+msgstr "↔️ پورت پروکسی SSH"
+
+msgid "config.ssh_server_redis_url.description"
+msgstr "استفاده نشده"
+
+msgid "config.ssh_server_redis_url.label"
+msgstr "آدرس پایگاه داده کاربر SSH"
+
 msgid "config.ssr.description"
 msgstr ""
 "ShadowsocksR ورژنی از پروژه اصلی Shadowsocks است که ادعا می‌شود از نظر امنیت"
@@ -1622,6 +2002,58 @@ msgstr ""
 
 msgid "config.ssr_fakedomain.label"
 msgstr "دامنه جعلی برای SSR"
+
+msgid "config.sub_full_clash_enable.description"
+msgstr "config.sub_full_clash_enable.description"
+
+msgid "config.sub_full_clash_enable.label"
+msgstr "config.sub_full_clash_enable.label"
+
+msgid "config.sub_full_clash_meta_enable.description"
+msgstr "config.sub_full_clash_meta_enable.description"
+
+msgid "config.sub_full_clash_meta_enable.label"
+msgstr "config.sub_full_clash_meta_enable.label"
+
+msgid "config.sub_full_links_b64_enable.description"
+msgstr "config.sub_full_links_b64_enable.description"
+
+msgid "config.sub_full_links_b64_enable.label"
+msgstr "config.sub_full_links_b64_enable.label"
+
+msgid "config.sub_full_links_enable.description"
+msgstr "config.sub_full_links_enable.description"
+
+msgid "config.sub_full_links_enable.label"
+msgstr "config.sub_full_links_enable.label"
+
+msgid "config.sub_full_singbox_enable.description"
+msgstr "config.sub_full_singbox_enable.description"
+
+msgid "config.sub_full_singbox_enable.label"
+msgstr "config.sub_full_singbox_enable.label"
+
+msgid "config.sub_full_xray_json_enable.description"
+msgstr ""
+"لینک کامل XRay  گزینه های پیکربندی جامعی را برای تنظیمات خاص XRay فراهم می "
+"کند. این شامل تقسیم بندی سفارشی و چندگانه سازی (mux) در برنامه هایی مانند "
+"v2rayNG است که از پروتکل های XRay برای کنترل دقیق تنظیم پراکسی XRay پشتیبانی"
+" می کند."
+
+msgid "config.sub_full_xray_json_enable.label"
+msgstr "⚙️ لینک پیکربندی کامل XRay"
+
+msgid "config.sub_singbox_ssh_enable.description"
+msgstr "config.sub_singbox_ssh_enable.description"
+
+msgid "config.sub_singbox_ssh_enable.label"
+msgstr "config.sub_singbox_ssh_enable.label"
+
+msgid "config.tcp_enable.description"
+msgstr "پروتکل TCP را فعال می‌کند"
+
+msgid "config.tcp_enable.label"
+msgstr "🟠 TCP"
 
 msgid "config.telegram.description"
 msgstr ""
@@ -1680,6 +2112,50 @@ msgstr "تنظیمات مربوط به اتصال TLS"
 msgid "config.tls.label"
 msgstr "تنظیمات TLS"
 
+msgid "config.tls_fragment_enable.description"
+msgstr ""
+"<p style=\"direction:rtl\">تحت برخی شرایط، می تواند سیستم لیست سیاه SNI را "
+"دور بزند.&nbsp;<a href=\"https://hiddify.com/fa/manager/basic-concepts-and-"
+"troubleshooting/How-the-TLS-Trick-works-and-its-usage/\" "
+"target=\"_blank\">(بیشتر بدانید)</a></p>"
+
+msgid "config.tls_fragment_enable.label"
+msgstr "⏯ TLS Fragment"
+
+msgid "config.tls_fragment_size.description"
+msgstr "اندازه هر بسته"
+
+msgid "config.tls_fragment_size.label"
+msgstr "🎚 اندازه بسته TLS"
+
+msgid "config.tls_fragment_sleep.description"
+msgstr "تاخیر زمانی بین فرگمنت‌ها"
+
+msgid "config.tls_fragment_sleep.label"
+msgstr "⏱ TLS Fragment Sleep"
+
+msgid "config.tls_mixed_case.description"
+msgstr "TLS Mixed SNI Case Fragmentation را فعال می کند"
+
+msgid "config.tls_mixed_case.label"
+msgstr "🔠 TLS Mixed SNI Case"
+
+msgid "config.tls_padding_enable.description"
+msgstr ""
+"<p style=\"direction:rtl\">Padding تکه تکه شدن TLS را فعال می کند.&nbsp;<a "
+"href=\"https://hiddify.com/fa/manager/basic-concepts-and-"
+"troubleshooting/How-the-TLS-Trick-works-and-its-usage/#tls-padding\" "
+"target=\"_blank\">(بیشتر بدانید)</a></p>"
+
+msgid "config.tls_padding_enable.label"
+msgstr "♒️ TLS Padding"
+
+msgid "config.tls_padding_length.description"
+msgstr "طول Padding برای تکه تکه شدن TLS"
+
+msgid "config.tls_padding_length.label"
+msgstr "📏 TLS Padding"
+
 msgid "config.tls_ports.description"
 msgstr ""
 "پورت هایی که برای اتصال TLS استفاده میشوند. برای ورود چند پورت، آنها را با "
@@ -1687,6 +2163,12 @@ msgstr ""
 
 msgid "config.tls_ports.label"
 msgstr "🔍 پورت‌های TLS"
+
+msgid "config.tls_trick.description"
+msgstr "تنظیمات TLS Fragmentation را می توان در این بخش تنظیم کرد"
+
+msgid "config.tls_trick.label"
+msgstr "ترفند TLS"
 
 msgid "config.too_advanced.description"
 msgstr ""
@@ -1700,6 +2182,12 @@ msgstr "در این قسمت تنظیمات Torrent Block قابل انجام ا
 
 msgid "config.torrent_block.label"
 msgstr "تنظیمات Torrent Block"
+
+msgid "config.trojan_enable.description"
+msgstr "پروتکل Trojan  را فعال می کند"
+
+msgid "config.trojan_enable.label"
+msgstr "🟤 Trojan"
 
 msgid "config.tuic.description"
 msgstr ""
@@ -1752,6 +2240,12 @@ msgstr ""
 msgid "config.validation-success-no-reset"
 msgstr " ✅ تنظیمات با موفقیت تغییر کرد"
 
+msgid "config.vless_enable.description"
+msgstr "فعال کردن پروتکل VLess"
+
+msgid "config.vless_enable.label"
+msgstr "⚫️ VLess"
+
 msgid "config.vmess_enable.description"
 msgstr "فعال کردن پروتکل VMess"
 
@@ -1797,14 +2291,105 @@ msgstr ""
 msgid "config.warp_plus_code.label"
 msgstr "🔑 کلید لایسنس وارپ پلاس"
 
+msgid "config.warp_sites.description"
+msgstr ""
+"اضافه کردن سایت‌های اضافی برای عبور از WARP (فقط زمانی که حالت Warp غیر فعال"
+" نیست)"
+
+msgid "config.warp_sites.label"
+msgstr "🆚 سایت‌های اضافی برای WARP"
+
+msgid "config.wireguard.description"
+msgstr ""
+"WireGuard یک پروتکل سبک و مبتنی بر UDP است که به دلیل سادگی، کارایی و امنیت "
+"قوی شناخته شده است. راه اندازی سریع و سورس کد شفاف را ارائه می دهد و به دلیل"
+" سهولت استفاده در سیستم عامل های مختلف محبوبیت پیدا کرده است"
+
+msgid "config.wireguard.label"
+msgstr "وایرگارد"
+
+msgid "config.wireguard_enable.description"
+msgstr ""
+"<p>WireGuard پروتکل مبتنی بر UDP است. (⚠️ فقط در <a "
+"href=\"https://app.hiddify.com/\" target=\"_blank\">Hiddify</a> کار می "
+"کند)</p>"
+
+msgid "config.wireguard_enable.label"
+msgstr "🐉 وایرگارد"
+
+msgid "config.wireguard_ipv4.description"
+msgstr "IPv4 را در WireGuard فعال می کند"
+
+msgid "config.wireguard_ipv4.label"
+msgstr " IPv4 در WireGuard"
+
+msgid "config.wireguard_ipv6.description"
+msgstr "IPv6 را در WireGuard فعال می کند"
+
+msgid "config.wireguard_ipv6.label"
+msgstr "IPv6 در WireGuard"
+
+msgid "config.wireguard_noise_trick.description"
+msgstr ""
+"این روش نویز اضافی را برای جلوگیری از شناسایی و مسدود شدن توسط GFW ایجاد می "
+"کند"
+
+msgid "config.wireguard_noise_trick.label"
+msgstr "💥 ترفند نویز وایرگارد"
+
+msgid "config.wireguard_port.description"
+msgstr "پورت را برای WireGuard تعریف می کند "
+
+msgid "config.wireguard_port.label"
+msgstr "↔️ پورت وایرگارد"
+
+msgid "config.wireguard_private_key.description"
+msgstr "یک کلید خصوصی برای WireGuard مشخص شده است"
+
+msgid "config.wireguard_private_key.label"
+msgstr "کلید خصوصی WireGuard"
+
+msgid "config.wireguard_public_key.description"
+msgstr "یک کلید عمومی برای WireGuard مشخص شده است"
+
+msgid "config.wireguard_public_key.label"
+msgstr "کلید عمومی WireGuard"
+
+msgid "config.ws_enable.description"
+msgstr ""
+"Websocket یک تونل روی HTTP ایجاد می کند که برای استفاده در CDN مفید است"
+
+msgid "config.ws_enable.label"
+msgstr "🔰 Websocket"
+
+msgid "config.xhttp_enable.description"
+msgstr ""
+"<p>این پروتکل اطلاعات را در کانال های جداگانه ارسال و دریافت می کند<br />\n"
+"⚠️<strong>&nbsp;این پروتکل در برنامه های با هسته SingBox پشتیبانی نمیشود. فقط در برنامه <p><a href=\"https://app.hiddify.com\" target=\"_blank\">Hiddify</a></p> و برنامه های با هسته XRay پشتیبانی میشود</strong></p>"
+
+msgid "config.xhttp_enable.label"
+msgstr "🈁 Split HTTP"
+
+msgid "config.xtls_enable.description"
+msgstr "پروتکل XTLS را فعال می کند"
+
+msgid "config.xtls_enable.label"
+msgstr "🟢 XTLS"
+
 msgid "copy"
 msgstr "کپی"
+
+msgid "daily"
+msgstr "⏰ روزانه"
 
 msgid "days"
 msgstr "روز"
 
 msgid "desktop"
 msgstr "دسکتاپ"
+
+msgid "direct"
+msgstr "➡️ مستقیم (بدون واسطه)"
 
 msgid "domain.cdn"
 msgstr "سی‌دی‌ان"
@@ -1861,6 +2446,9 @@ msgstr ""
 
 msgid "download"
 msgstr "دانلود مستقیم"
+
+msgid "fake"
+msgstr "🆎 گمراه کننده (Fake)"
 
 msgid "gRPC"
 msgstr "➿ gRPC"
@@ -1928,11 +2516,17 @@ msgstr "مک"
 msgid "master.page-title"
 msgstr "هیدیفای‌منیجر"
 
+msgid "monthly"
+msgstr "🗓️ ماهانه"
+
 msgid "move_to_new_link"
 msgstr "صفحه به لینک جدید منتقل شد. لطفا لینک جدید را کپی و ذخیره کنید."
 
 msgid "next"
 msgstr "بعدی"
+
+msgid "no_reset"
+msgstr "⭐️ بدون ریست شدن"
 
 msgid "node.diff-version"
 msgstr "node.diff-version"
@@ -1954,6 +2548,9 @@ msgstr "این فیلد UUID را برای Node تعریف می کند"
 
 msgid "node.uuid.label"
 msgstr "UUID نود"
+
+msgid "old_xtls_direct"
+msgstr "🔙 حالت مستقیم قدیمی (برای تروجان TCP، VLess XTLS)"
 
 msgid "open"
 msgstr "باز کردن"
@@ -1993,6 +2590,12 @@ msgstr ""
 msgid "quicksetup.setlang.success"
 msgstr "تغییر زبان با موفقیت انجام شد"
 
+msgid "reality"
+msgstr "🔂 ریالیتی"
+
+msgid "relay"
+msgstr "♾️ سرور میانی (اتصال با استفاده از یک سرور میانی)"
+
 msgid "search"
 msgstr "جستجو"
 
@@ -2013,6 +2616,9 @@ msgstr "SingBox: SSH"
 
 msgid "ssh"
 msgstr "SSH"
+
+msgid "sub_link_only"
+msgstr "📳 فقط برای لینک ساب (می تواند مستقیم، رله یا CDN باشد)"
 
 msgid "telegram"
 msgstr "تلگرام"
@@ -2371,3 +2977,9 @@ msgstr ""
 "لطفاً بدون استفاده از VPN از این صفحه بازدید کنید. باید از کشور "
 "%(expected_country)s به آن دسترسی داشته باشید، اما در حال حاضر از "
 "%(your_country)s به آن دسترسی دارید."
+
+msgid "weekly"
+msgstr "📅 هفتگی"
+
+msgid "worker"
+msgstr "✴️ ورکر کلودفلر"

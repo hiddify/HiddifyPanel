@@ -57,6 +57,7 @@
   "Domain (%(domain)s)-> IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode": "دامنه (%(domain)s)-> IP=%(domain_ip)s با آی‌پی شما: ip=%(server_ip)s همخوانی ندارد. در حالت مستقیم (Direct Mode) این مورد الزامی است.",
   "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode": "دامنه IP=%(domain_ip)s با ip=%(server_ip)s شما مطابقت ندارد که در حالت مستقیم مورد نیاز است",
   "Domain can not be resolved! there is a problem in your domain": "دامنه قابل دسترسی نیست! در دامنه شما مشکلی وجود دارد.",
+  "Domain cannot be resolved! Please check DNS settings": "",
   "Domain is not REALITY friendly!": "دامنه سازگار با REALITY نیست!",
   "Domain?": "دامنه؟",
   "Donation": {
@@ -151,6 +152,7 @@
   "QRCode": "<i class='fa-solid fa-qrcode'></i> QR Code ",
   "RAM": "رم",
   "REALITY Fallback domain is not compaitble with server names!": "دامنه بازگشتی REALITY با نام سرور سازگار نیست!",
+  "REALITY Fallback domain is not compatible with server names!": "",
   "Release": "✅ پایدار",
   "Remaining about %(relative)s, exactly %(days)s days": "حدود %(relative)s و دقیقا %(days)s روز باقی مانده است",
   "Remote nodes are not supported yet!": "گره های راه دور هنوز پشتیبانی نمی شوند!",
@@ -186,6 +188,7 @@
   "Simplifies the process of employing the link elsewhere.": "برای راحتی انتقال این صفحه به ‌پلتفرم دیگر",
   "SingBox": "📦 SingBox",
   "Sort by %(name)s": "مرتب سازی بر اساس %(name)s",
+  "Specifying CDN IP is only valid for CDN mode": "",
   "Start Date": "زمان شروع",
   "Started %(days)s days ago": "از %(days)s روز پیش شروع شد",
   "Started from %(relative)s": "از %(relative)s شروع شد",
@@ -642,10 +645,6 @@
       "description": "باید تصادفی باشد",
       "label": "ℹ️ مسیر ارتقاء HTTP"
     },
-    "path_xhttp": {
-      "description": "این گزینه مسیر را برای Split HTTP تعریف می کند",
-      "label": "ℹ️ مسیر برای Split HTTP"
-    },
     "path_ss": {
       "description": "مسیر شدوساکس در لینکها",
       "label": "مسیر شدوساکس"
@@ -673,6 +672,10 @@
     "path_ws": {
       "description": "مسیر Websocket را مشخص کنید",
       "label": "ℹ️ مسیر درخواست های Websocket"
+    },
+    "path_xhttp": {
+      "description": "این گزینه مسیر را برای Split HTTP تعریف می کند",
+      "label": "ℹ️ مسیر برای Split HTTP"
     },
     "proxies": {
       "description": "تنظیمات اختصاصی را مشخص کنید",
@@ -777,10 +780,6 @@
     "speed_test": {
       "description": "با فعالسازی این گزینه به کاربران اجازه تست سرعت می‌دهید. این کار به آن‌ها کمک می‌کند تا کیفیت سرور و کانفیگ‌ها را بسنجند",
       "label": "🚀 تست سرعت"
-    },
-    "xhttp_enable": {
-      "description": "<p>این پروتکل اطلاعات را در کانال های جداگانه ارسال و دریافت می کند<br />\n⚠️<strong>&nbsp;این پروتکل در برنامه های با هسته SingBox پشتیبانی نمیشود. فقط در برنامه <p><a href=\"https://app.hiddify.com\" target=\"_blank\">Hiddify</a></p> و برنامه های با هسته XRay پشتیبانی میشود</strong></p>",
-      "label": "🈁 Split HTTP"
     },
     "ssfaketls": {
       "description": "شادوساکس FakeTLS یک روش مبهم سازی ساده هست که دیتا را در بسته  TLS کپسوله میکند تا فیلترچی فریب بخورد.",
@@ -1049,6 +1048,10 @@
     "ws_enable": {
       "description": "Websocket یک تونل روی HTTP ایجاد می کند که برای استفاده در CDN مفید است",
       "label": "🔰 Websocket"
+    },
+    "xhttp_enable": {
+      "description": "<p>این پروتکل اطلاعات را در کانال های جداگانه ارسال و دریافت می کند<br />\n⚠️<strong>&nbsp;این پروتکل در برنامه های با هسته SingBox پشتیبانی نمیشود. فقط در برنامه <p><a href=\"https://app.hiddify.com\" target=\"_blank\">Hiddify</a></p> و برنامه های با هسته XRay پشتیبانی میشود</strong></p>",
+      "label": "🈁 Split HTTP"
     },
     "xtls_enable": {
       "description": "پروتکل XTLS را فعال می کند",

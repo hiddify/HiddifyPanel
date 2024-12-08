@@ -57,6 +57,7 @@
   "Domain (%(domain)s)-> IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode": "Domain (%(domain)s)-> IP = %(domain_ip)s is not same as your IP = %(server_ip)s . this is required in Direct Mode",
   "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode": "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode",
   "Domain can not be resolved! there is a problem in your domain": "Domain can not be resolved! There is a problem in your domain. Please check your Domain configurations.",
+  "Domain cannot be resolved! Please check DNS settings": "Domain cannot be resolved! Please check DNS settings",
   "Domain is not REALITY friendly!": "Domain is Not REALITY Friendly!",
   "Domain?": "Domain?",
   "Donation": {
@@ -151,6 +152,7 @@
   "QRCode": "<i class='fa-solid fa-qrcode'></i> QRCode",
   "RAM": "RAM",
   "REALITY Fallback domain is not compaitble with server names!": "REALITY Fallback Domain is not compaitble with Server names!",
+  "REALITY Fallback domain is not compatible with server names!": "REALITY Fallback domain is not compatible with server names!",
   "Release": "✅ Release",
   "Remaining about %(relative)s, exactly %(days)s days": "Remaining about %(relative)s, exactly %(days)s days",
   "Remote nodes are not supported yet!": "Remote nodes are not supported yet!",
@@ -186,6 +188,7 @@
   "Simplifies the process of employing the link elsewhere.": "Simplifies the process of employing the link elsewhere",
   "SingBox": "📦 SingBox",
   "Sort by %(name)s": "Sort by %(name)s",
+  "Specifying CDN IP is only valid for CDN mode": "Specifying CDN IP is only valid for CDN mode",
   "Start Date": "Start Date",
   "Started %(days)s days ago": "Started %(days)s days ago",
   "Started from %(relative)s": "Started from %(relative)s",
@@ -642,10 +645,6 @@
       "description": "should be random",
       "label": "ℹ️ HTTP Upgrade Path"
     },
-    "path_xhttp": {
-      "description": "This option defines the Path for Split HTTP",
-      "label": "ℹ️ Path for Split HTTP"
-    },
     "path_ss": {
       "description": "Shadowsocks Path in the Links",
       "label": "Shadowsocks Path"
@@ -673,6 +672,10 @@
     "path_ws": {
       "description": "Specify the Websocket Path",
       "label": "ℹ️ Path of Websocket Requests"
+    },
+    "path_xhttp": {
+      "description": "This option defines the Path for Split HTTP",
+      "label": "ℹ️ Path for Split HTTP"
     },
     "proxies": {
       "description": "Define specific proxy settings",
@@ -777,10 +780,6 @@
     "speed_test": {
       "description": "Allow your users to do Speed Test. It helps them to identify the link quality",
       "label": "🚀 Speed Test"
-    },
-    "xhttp_enable": {
-      "description": "<p>This Protocol send and receive information in individual channels.<br />\n⚠️ <strong>Not Supported in SignBox based Clients. Only <p><a href=\"https://app.hiddify.com\" target=\"_blank\">Hiddify</a></p> App, and XRay base Clients are supported.</strong></p>",
-      "label": "🈁 Split HTTP"
     },
     "ssfaketls": {
       "description": "Shadowsocks FakeTLS is a simple obfusacting tool that encapsulate the date In tls packet",
@@ -1049,6 +1048,10 @@
     "ws_enable": {
       "description": "Websocket creates a tunnel over HTTP that is useful to be used in CDN",
       "label": "🔰 Websocket"
+    },
+    "xhttp_enable": {
+      "description": "<p>This Protocol send and receive information in individual channels.<br />\n⚠️ <strong>Not Supported in SignBox based Clients. Only <p><a href=\"https://app.hiddify.com\" target=\"_blank\">Hiddify</a></p> App, and XRay base Clients are supported.</strong></p>",
+      "label": "🈁 Split HTTP"
     },
     "xtls_enable": {
       "description": "Enables XTLS Protocol",

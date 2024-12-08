@@ -57,6 +57,7 @@
   "Domain (%(domain)s)-> IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode": "域 (%(domain)s)-> IP = %(domain_ip)s 与您的 IP = %(server_ip)s 不同。这在直接模式下是必需的",
   "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode": "域名IP=%(domain_ip)s is not matched with your ip=%(server_ip)s需要用于直连模式",
   "Domain can not be resolved! there is a problem in your domain": "域名无法解析！您的域有问题。请检查您的域配置。",
+  "Domain cannot be resolved! Please check DNS settings": "",
   "Domain is not REALITY friendly!": "域名对现实不友好！",
   "Domain?": "域名？",
   "Donation": {
@@ -151,6 +152,7 @@
   "QRCode": "<i class='fa-solid fa-qrcode'></i> QRCode",
   "RAM": "内存",
   "REALITY Fallback domain is not compaitble with server names!": "REALITY 后备域与服务器名称不兼容！",
+  "REALITY Fallback domain is not compatible with server names!": "",
   "Release": "✅ 发布",
   "Remaining about %(relative)s, exactly %(days)s days": "还剩下大约 %(relative)s，正好 %(days)s 天",
   "Remote nodes are not supported yet!": "尚不支持远程节点！",
@@ -186,6 +188,7 @@
   "Simplifies the process of employing the link elsewhere.": "简化了在其他地方使用链接的过程",
   "SingBox": "📦 歌盒",
   "Sort by %(name)s": "以%(name)s排序",
+  "Specifying CDN IP is only valid for CDN mode": "",
   "Start Date": "开始日期",
   "Started %(days)s days ago": "已于 %(days)s 天前开始",
   "Started from %(relative)s": "从 %(relative)s 开始",
@@ -642,10 +645,6 @@
       "description": "应该是随机的",
       "label": "ℹ️ HTTP 升级路径"
     },
-    "path_xhttp": {
-      "description": "此选项定义 Split HTTP 的路径",
-      "label": "Split HTTP 的路径"
-    },
     "path_ss": {
       "description": "链接中的 Shadowsocks 路径",
       "label": "Shadowsocks 路径"
@@ -673,6 +672,10 @@
     "path_ws": {
       "description": "指定Websocket路径",
       "label": "ℹ️ Websocket 请求路径"
+    },
+    "path_xhttp": {
+      "description": "此选项定义 Split HTTP 的路径",
+      "label": "Split HTTP 的路径"
     },
     "proxies": {
       "description": "定义特定的代理设置",
@@ -777,10 +780,6 @@
     "speed_test": {
       "description": "允许您的用户进行速度测试。它可以帮助他们识别链接质量",
       "label": "🚀 速度测试"
-    },
-    "xhttp_enable": {
-      "description": "该协议通过单独的渠道发送和接收信息 ",
-      "label": "🈁 Split HTTP"
     },
     "ssfaketls": {
       "description": "Shadowsocks FakeTLS 是一个简单的混淆工具，将日期封装在 tls 数据包中",
@@ -1049,6 +1048,10 @@
     "ws_enable": {
       "description": "Websocket 通过 HTTP 创建一个隧道，可用于 CDN",
       "label": "🔰 Websocket"
+    },
+    "xhttp_enable": {
+      "description": "该协议通过单独的渠道发送和接收信息 ",
+      "label": "🈁 Split HTTP"
     },
     "xtls_enable": {
       "description": "启用 XTLS 协议",

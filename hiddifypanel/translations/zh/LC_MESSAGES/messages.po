@@ -212,6 +212,9 @@ msgstr "域名IP=%(domain_ip)s is not matched with your ip=%(server_ip)s需要�
 msgid "Domain can not be resolved! there is a problem in your domain"
 msgstr "域名无法解析！您的域有问题。请检查您的域配置。"
 
+msgid "Domain cannot be resolved! Please check DNS settings"
+msgstr ""
+
 msgid "Domain is not REALITY friendly!"
 msgstr "域名对现实不友好！"
 
@@ -584,6 +587,9 @@ msgstr "内存"
 msgid "REALITY Fallback domain is not compaitble with server names!"
 msgstr "REALITY 后备域与服务器名称不兼容！"
 
+msgid "REALITY Fallback domain is not compatible with server names!"
+msgstr ""
+
 msgid "Release"
 msgstr "✅ 发布"
 
@@ -688,6 +694,9 @@ msgstr "📦 歌盒"
 
 msgid "Sort by %(name)s"
 msgstr "以%(name)s排序"
+
+msgid "Specifying CDN IP is only valid for CDN mode"
+msgstr ""
 
 msgid "Start Date"
 msgstr "开始日期"
@@ -1043,6 +1052,9 @@ msgstr "V2RayNG"
 msgid "auto"
 msgstr "自动"
 
+msgid "auto_cdn_ip"
+msgstr "☑️ 自动 CDN IP 选择器"
+
 msgid "bot.admin_welcome"
 msgstr "欢迎使用管理机器人。选择你的行动"
 
@@ -1051,6 +1063,9 @@ msgstr ""
 "万岁🎉🎉🎉\n"
 "欢迎使用 Hiddify 机器人\n"
 "首先单击面板上的链接或输入您的 UUID。"
+
+msgid "cdn"
+msgstr "🔀 CDN（Cloudflare 代理，...）"
 
 msgid "cf-delete.failed"
 msgstr "cf-删除失败"
@@ -1186,17 +1201,38 @@ msgstr ""
 msgid "config.cloudflare.label"
 msgstr "🔑 Cloudflare API"
 
+msgid "config.core_type.description"
+msgstr ""
+"☢️ XRay：是一个完整的核心\n"
+"<br>\n"
+"📦 Singbox：由 SagerNet 开发。也是一个不错的核心"
+
+msgid "config.core_type.label"
+msgstr "🎛️核心"
+
 msgid "config.country.description"
 msgstr "它根据每个国家/地区的过滤条件应用适当的设置"
 
 msgid "config.country.label"
 msgstr "🌍国家"
 
+msgid "config.create_easysetup_link.description"
+msgstr "config.create_easysetup_link.description"
+
+msgid "config.create_easysetup_link.label"
+msgstr "config.create_easysetup_link.label"
+
 msgid "config.db_version.description"
 msgstr "数据库版本说明"
 
 msgid "config.db_version.label"
 msgstr "数据库版本标签"
+
+msgid "config.dbvalues.description"
+msgstr "config.dbvalues.description"
+
+msgid "config.dbvalues.label"
+msgstr "config.dbvalues.label"
 
 msgid "config.decoy_domain.description"
 msgstr ""
@@ -1207,6 +1243,15 @@ msgstr ""
 
 msgid "config.decoy_domain.label"
 msgstr "📺 诱饵网站"
+
+msgid "config.dns_server.description"
+msgstr ""
+"✳️默认1.1.1.1 <br>\n"
+"🚧 阻止恶意软件 1.1.1.2 <br>\n"
+"🔞 阻止色情 1.1.1.3"
+
+msgid "config.dns_server.label"
+msgstr "🖥 DNS 服务器"
 
 msgid "config.domain_fronting.description"
 msgstr ""
@@ -1252,6 +1297,30 @@ msgstr "这是一般系统配置"
 msgid "config.general.label"
 msgstr "常规设置"
 
+msgid "config.grpc_enable.description"
+msgstr "gRPC 是一个现代开源高性能远程过程调用 (RPC) 框架。它可以在支持的 CDN 中使用"
+
+msgid "config.grpc_enable.label"
+msgstr "➿ gRPC"
+
+msgid "config.h2_enable.description"
+msgstr "启用 HTTP/2 协议"
+
+msgid "config.h2_enable.label"
+msgstr "🔵 h2"
+
+msgid "config.hidden.description"
+msgstr "配置.隐藏.描述"
+
+msgid "config.hidden.label"
+msgstr "配置.隐藏.标签"
+
+msgid "config.hiddifycli_enable.description"
+msgstr "config.hiddifycli_enable.description"
+
+msgid "config.hiddifycli_enable.label"
+msgstr "config.hiddifycli_enable.label"
+
 msgid "config.http.description"
 msgstr "HTTP 配置可以在此部分设置"
 
@@ -1269,6 +1338,51 @@ msgstr "通过允许此操作，您的用户可以使用未加密的 HTTP 端口
 
 msgid "config.http_proxy_enable.label"
 msgstr "☑️ 允许 HTTP 连接"
+
+msgid "config.httpupgrade_enable.description"
+msgstr ""
+"<p>HTTPUpgrade 在直接使用连接之前完成 HTTP 1.1 升级请求和响应。它与 WebSocket 类似，它创建了一个方向通道，可以通过许多反向代理和 CDN 转发，而无需处理围绕 WebSocket 协议本身的所有问题。<br />\n"
+"⚠️<strong>不适用于基于 Xray 的客户端。仅支持 HiddifyNext、Singbox 和 V2fly 客户端。</strong> <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/Basic-Concepts/#http-upgrade\" target=\"_blank\"><strong>（阅读更多）</strong></a></p>"
+
+msgid "config.httpupgrade_enable.label"
+msgstr "🆙 HTTPUpgrade 方法"
+
+msgid "config.hysteria.description"
+msgstr ""
+"Hysteria 是一款功能齐全的代理和中继工具，针对有损、不稳定的连接（例如卫星网络、拥挤的公共 Wi-Fi、从中国连接到国外服务器）进行了优化"
+
+msgid "config.hysteria.label"
+msgstr "Hysteria"
+
+msgid "config.hysteria_down_mbps.description"
+msgstr "Hysteria 最大下载速度"
+
+msgid "config.hysteria_down_mbps.label"
+msgstr "⬇️ Hysteria 下载 (mbps)"
+
+msgid "config.hysteria_enable.description"
+msgstr "启用基于 UDP 的 Hysteria 协议"
+
+msgid "config.hysteria_enable.label"
+msgstr "启用歇斯底里2"
+
+msgid "config.hysteria_obfs_enable.description"
+msgstr " 启用 Hysteria 混淆（Salamander）"
+
+msgid "config.hysteria_obfs_enable.label"
+msgstr "🎛 Hysteria OBFS"
+
+msgid "config.hysteria_port.description"
+msgstr "Hysteria UDP 端口，例如 5678"
+
+msgid "config.hysteria_port.label"
+msgstr "🔍 Hysteria2 端口"
+
+msgid "config.hysteria_up_mbps.description"
+msgstr "Hysteria 最大上传速度"
+
+msgid "config.hysteria_up_mbps.label"
+msgstr "⬆️ Hysteria  上传 (mbps)"
 
 msgid "config.invalid-pattern-for-warp-sites"
 msgstr "⚠️ 输入的 Warp 站点与指定的模板不匹配"
@@ -1312,11 +1426,88 @@ msgstr "config.last_hash.描述"
 msgid "config.last_hash.label"
 msgstr "配置.last_hash.label"
 
+msgid "config.last_priodic_usage_check.description"
+msgstr "配置.last_priodic_usage_check.description"
+
+msgid "config.last_priodic_usage_check.label"
+msgstr "config.last_priodic_usage_check.标签"
+
 msgid "config.license.description"
 msgstr "要将本产品用于商业用途，您必须购买其许可证"
 
 msgid "config.license.label"
 msgstr "许可证代码"
+
+msgid "config.log_level.description"
+msgstr "config.log_level.description"
+
+msgid "config.log_level.label"
+msgstr "config.log_level.label"
+
+msgid "config.mux.description"
+msgstr "可以在此部分设置 MUX（多路复用）配置"
+
+msgid "config.mux.label"
+msgstr "MUX设置"
+
+msgid "config.mux_brutal_down_mbps.description"
+msgstr "TCP-Brutal 最大下载速度"
+
+msgid "config.mux_brutal_down_mbps.label"
+msgstr "⬇️ MUX Brutal 下载 (mbps)"
+
+msgid "config.mux_brutal_enable.description"
+msgstr "启用 TCP-Brutal 拥塞控制算法"
+
+msgid "config.mux_brutal_enable.label"
+msgstr "☣️ MUX Brutal"
+
+msgid "config.mux_brutal_up_mbps.description"
+msgstr "TCP-Brutal 最大上传速度"
+
+msgid "config.mux_brutal_up_mbps.label"
+msgstr "⬆️ MUX Brutal 上传 (mbps)"
+
+msgid "config.mux_enable.description"
+msgstr ""
+"<p>Mux 需要兼容的客户端。Hiddify Next 和 Singbox 中的 Mux 与 XRay 不兼容。 <a "
+"href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-"
+"MUX-works-and-its-usage/\" target=\"_blank\">（阅读更多）</a></p>"
+
+msgid "config.mux_enable.label"
+msgstr "Ⓜ️ MUX（⚠️ 与某些客户端不兼容）"
+
+msgid "config.mux_max_connections.description"
+msgstr "最大连接数。与最大流数冲突"
+
+msgid "config.mux_max_connections.label"
+msgstr "⛓ MUX 最大连接数"
+
+msgid "config.mux_max_streams.description"
+msgstr "打开新连接之前连接中的最大复用流数"
+
+msgid "config.mux_max_streams.label"
+msgstr "↗️ MUX 最大流"
+
+msgid "config.mux_min_streams.description"
+msgstr "打开新连接之前连接中的最小多路复用流"
+
+msgid "config.mux_min_streams.label"
+msgstr "↘️ MUX 最小流"
+
+msgid "config.mux_padding_enable.description"
+msgstr "MUX Padding 描述"
+
+msgid "config.mux_padding_enable.label"
+msgstr "⟹ MUX Padding"
+
+msgid "config.mux_protocol.description"
+msgstr ""
+"ℹ️ 多路复用协议。默认使用 'sMux'<inlang-LineFeed><br>\n"
+"➖ sMux: 流复用<inlang-LineFeed><br><inlang-LineFeed>➖ YaMux: 又一个多路复用器<inlang-LineFeed><br><inlang-LineFeed>➖ h2Mux: 通过 HTTP/2 多路复用流"
+
+msgid "config.mux_protocol.label"
+msgstr "♍️ MUX 协议"
 
 msgid "config.netdata.description"
 msgstr "用于显示资源。使用您服务器的 CPU，但不会太多。"
@@ -1342,6 +1533,24 @@ msgstr "指定您想要发布的包还是开发的包"
 msgid "config.package_mode.label"
 msgstr "🔄 包更新模式"
 
+msgid "config.panel_mode.description"
+msgstr "config.panel_mode.description"
+
+msgid "config.panel_mode.label"
+msgstr "config.panel_mode.label"
+
+msgid "config.parent_admin_proxy_path.description"
+msgstr "config.parent_admin_proxy_path.description"
+
+msgid "config.parent_admin_proxy_path.label"
+msgstr "config.parent_admin_proxy_path.label"
+
+msgid "config.parent_domain.description"
+msgstr "config.parent_domain.description"
+
+msgid "config.parent_domain.label"
+msgstr "config.parent_domain.label"
+
 msgid "config.parent_panel.description"
 msgstr "您可以连接到中央面板仅定义一个用户，所有服务器的使用情况将累积添加。"
 
@@ -1353,6 +1562,12 @@ msgstr "配置中的 gRPC 路径"
 
 msgid "config.path_grpc.label"
 msgstr "ℹ️ gRPC 路径"
+
+msgid "config.path_httpupgrade.description"
+msgstr "应该是随机的"
+
+msgid "config.path_httpupgrade.label"
+msgstr "ℹ️ HTTP 升级路径"
 
 msgid "config.path_ss.description"
 msgstr "链接中的 Shadowsocks 路径"
@@ -1396,6 +1611,12 @@ msgstr "指定Websocket路径"
 msgid "config.path_ws.label"
 msgstr "ℹ️ Websocket 请求路径"
 
+msgid "config.path_xhttp.description"
+msgstr "此选项定义 Split HTTP 的路径"
+
+msgid "config.path_xhttp.label"
+msgstr "Split HTTP 的路径"
+
 msgid "config.proxies.description"
 msgstr "定义特定的代理设置"
 
@@ -1408,17 +1629,47 @@ msgstr "我们使用秘密代理路径来隐藏我们的政府代理"
 msgid "config.proxy_path.label"
 msgstr "ℹ️ 秘密代理路径"
 
+msgid "config.proxy_path_admin.description"
+msgstr "我们使用秘密代理路径来向政府和机器人隐藏我们的代理"
+
+msgid "config.proxy_path_admin.label"
+msgstr "🔐 管理员的代理路径"
+
+msgid "config.proxy_path_client.description"
+msgstr "秘密代理路径隐藏了政府和机器人无法发现的代理"
+
+msgid "config.proxy_path_client.label"
+msgstr "🔏 客户端的代理路径"
+
+msgid "config.quic_enable.description"
+msgstr "启用 QUIC 协议"
+
+msgid "config.quic_enable.label"
+msgstr "🟡 QUIC"
+
 msgid "config.reality.description"
 msgstr "REALITY 消除了服务器端 TLS 指纹功能"
 
 msgid "config.reality.label"
 msgstr "Reality"
 
+msgid "config.reality_enable.description"
+msgstr "启用 Reality Protocol"
+
+msgid "config.reality_enable.label"
+msgstr "🔴 Reality"
+
 msgid "config.reality_fallback_domain.description"
 msgstr "当 GFW 访问服务器名称中的网站时，将被重定向到该域。"
 
 msgid "config.reality_fallback_domain.label"
 msgstr "🌍 现实后备域"
+
+msgid "config.reality_port.description"
+msgstr "您可以为您的现实服务器设置自定义端口，以减少系统开销。（允许直接连接到代理应该是肯定的）"
+
+msgid "config.reality_port.label"
+msgstr "↔️ 直接 Reality 端口"
 
 msgid "config.reality_private_key.description"
 msgstr "不要改变它"
@@ -1461,6 +1712,32 @@ msgstr "config.restls1_3_domain.description"
 
 msgid "config.restls1_3_domain.label"
 msgstr "config.restls1_3_domain.label"
+
+msgid "config.shadowsocks.description"
+msgstr "Shadowsocks 是一款快速隧道代理，可帮助你绕过防火墙"
+
+msgid "config.shadowsocks.label"
+msgstr "Shadowsocks"
+
+msgid "config.shadowsocks2022_enable.description"
+msgstr ""
+"Shadowsocks 2022 是一种用于 TCP 和 UDP 流量的安全代理协议。代理流量与随机字节流无法区分，因此可以绕过依赖 "
+"DPI（深度数据包检测）的防火墙和互联网审查程序"
+
+msgid "config.shadowsocks2022_enable.label"
+msgstr "⭕️ Shadowsocks 2022"
+
+msgid "config.shadowsocks2022_method.description"
+msgstr "此方法也用于 ShadowTLS 和 SSFakeTLS"
+
+msgid "config.shadowsocks2022_method.label"
+msgstr "🔐 Shadowsocks 加密方法"
+
+msgid "config.shadowsocks2022_port.description"
+msgstr "需要 UDP 和 TCP 才能免费"
+
+msgid "config.shadowsocks2022_port.label"
+msgstr "↔️ Shadowsocks 2022 端口"
 
 msgid "config.shadowtls.description"
 msgstr ""
@@ -1518,6 +1795,80 @@ msgstr "请使用您数据中心内的知名域名。例如，如果您位于 Az
 msgid "config.ssfaketls_fakedomain.label"
 msgstr "🌍 SS FakeTLS 假域名"
 
+msgid "config.ssh.description"
+msgstr ""
+"ℹ️ SSH 代理，也称为 SSH 隧道或 SSH 端口转发，是一种通过不安全网络在两台计算机之间创建安全通信通道的安全方法。我们有一个与 ssh "
+"服务器完全不同的特定应用程序，无法执行任何命令"
+
+msgid "config.ssh.label"
+msgstr "SSH 代理"
+
+msgid "config.ssh_host_dsa_pk.description"
+msgstr ""
+
+msgid "config.ssh_host_dsa_pk.label"
+msgstr ""
+
+msgid "config.ssh_host_dsa_pub.description"
+msgstr ""
+
+msgid "config.ssh_host_dsa_pub.label"
+msgstr ""
+
+msgid "config.ssh_host_ecdsa_pk.description"
+msgstr ""
+
+msgid "config.ssh_host_ecdsa_pk.label"
+msgstr ""
+
+msgid "config.ssh_host_ecdsa_pub.description"
+msgstr ""
+
+msgid "config.ssh_host_ecdsa_pub.label"
+msgstr ""
+
+msgid "config.ssh_host_ed25519_pk.description"
+msgstr ""
+
+msgid "config.ssh_host_ed25519_pk.label"
+msgstr ""
+
+msgid "config.ssh_host_ed25519_pub.description"
+msgstr ""
+
+msgid "config.ssh_host_ed25519_pub.label"
+msgstr ""
+
+msgid "config.ssh_host_rsa_pk.description"
+msgstr ""
+
+msgid "config.ssh_host_rsa_pk.label"
+msgstr ""
+
+msgid "config.ssh_host_rsa_pub.description"
+msgstr ""
+
+msgid "config.ssh_host_rsa_pub.label"
+msgstr ""
+
+msgid "config.ssh_server_enable.description"
+msgstr "SSH Proxy 与原来的 SSH Server 完全不同"
+
+msgid "config.ssh_server_enable.label"
+msgstr "✔️ 启用 SSH 代理"
+
+msgid "config.ssh_server_port.description"
+msgstr "这与你原来的 SSH 服务器完全不同。这是一个专用程序。"
+
+msgid "config.ssh_server_port.label"
+msgstr "↔️ SSH 代理端口"
+
+msgid "config.ssh_server_redis_url.description"
+msgstr "不曾用过"
+
+msgid "config.ssh_server_redis_url.label"
+msgstr "SSH用户数据库地址"
+
 msgid "config.ssr.description"
 msgstr "ShadowsocksR是原始Shadowsocks项目的一个分支，号称在安全性和稳定性方面更胜一筹。"
 
@@ -1535,6 +1886,56 @@ msgstr "请在您的数据中心使用众所周知的域。例如，如果您在
 
 msgid "config.ssr_fakedomain.label"
 msgstr "SSR 假域名"
+
+msgid "config.sub_full_clash_enable.description"
+msgstr "config.sub_full_clash_enable.description"
+
+msgid "config.sub_full_clash_enable.label"
+msgstr "config.sub_full_clash_enable.标签"
+
+msgid "config.sub_full_clash_meta_enable.description"
+msgstr "config.sub_full_clash_meta_enable.description"
+
+msgid "config.sub_full_clash_meta_enable.label"
+msgstr "config.sub_full_clash_meta_enable.标签"
+
+msgid "config.sub_full_links_b64_enable.description"
+msgstr "config.sub_full_links_b64_enable.description"
+
+msgid "config.sub_full_links_b64_enable.label"
+msgstr "config.sub_full_links_b64_enable.标签"
+
+msgid "config.sub_full_links_enable.description"
+msgstr "config.sub_full_links_enable.description"
+
+msgid "config.sub_full_links_enable.label"
+msgstr "config.sub_full_links_enable.label"
+
+msgid "config.sub_full_singbox_enable.description"
+msgstr "config.sub_full_singbox_enable.description"
+
+msgid "config.sub_full_singbox_enable.label"
+msgstr "config.sub_full_singbox_enable.label"
+
+msgid "config.sub_full_xray_json_enable.description"
+msgstr ""
+"XRay 全链路为 XRay 特定设置提供了全面的配置选项。这包括支持 XRay 协议的应用程序（例如 v2rayNG）中的自定义分段和多路复用 "
+"(mux)，以便对 XRay 代理设置进行精细控制。"
+
+msgid "config.sub_full_xray_json_enable.label"
+msgstr "⚙️ XRay 完整配置链接"
+
+msgid "config.sub_singbox_ssh_enable.description"
+msgstr "config.sub_singbox_ssh_enable.description"
+
+msgid "config.sub_singbox_ssh_enable.label"
+msgstr "config.sub_singbox_ssh_enable.label"
+
+msgid "config.tcp_enable.description"
+msgstr "启用 TCP 协议"
+
+msgid "config.tcp_enable.label"
+msgstr "🟠 TCP"
 
 msgid "config.telegram.description"
 msgstr "专为 Telegram 设计的代理，可绕过 Telegram 过滤"
@@ -1581,11 +1982,59 @@ msgstr "可以在此部分设置 TLS 配置。"
 msgid "config.tls.label"
 msgstr "TLS 设置"
 
+msgid "config.tls_fragment_enable.description"
+msgstr ""
+"<p>在某些情况下，它可以绕过 SNI 黑名单系统。 <a href=\"https://hiddify.com/manager/basic-"
+"concepts-and-troubleshooting/How-the-TLS-Trick-works-and-its-usage/\" "
+"target=\"_blank\">（阅读更多）</a></p>"
+
+msgid "config.tls_fragment_enable.label"
+msgstr "⏯ TLS Fragment"
+
+msgid "config.tls_fragment_size.description"
+msgstr "每个数据包的大小"
+
+msgid "config.tls_fragment_size.label"
+msgstr "🎚 TLS Fragment 大小"
+
+msgid "config.tls_fragment_sleep.description"
+msgstr "Fragment 之间的时间延迟"
+
+msgid "config.tls_fragment_sleep.label"
+msgstr "⏱ TLS Fragment 休眠"
+
+msgid "config.tls_mixed_case.description"
+msgstr "启用 TLS 混合 SNI 大小写碎片"
+
+msgid "config.tls_mixed_case.label"
+msgstr "🔠 TLS 混合 SNI 大小写"
+
+msgid "config.tls_padding_enable.description"
+msgstr ""
+"<p>启用 TLS 碎片填充。 <a href=\"https://hiddify.com/manager/basic-concepts-and-"
+"troubleshooting/How-the-TLS-Trick-works-and-its-usage/#tls-padding\" "
+"target=\"_blank\">（阅读更多）</a></p>"
+
+msgid "config.tls_padding_enable.label"
+msgstr "♒️ TLS Padding"
+
+msgid "config.tls_padding_length.description"
+msgstr "TLS 碎片的 Padding 长度"
+
+msgid "config.tls_padding_length.label"
+msgstr "📏 TLS Padding"
+
 msgid "config.tls_ports.description"
 msgstr "逗号分隔的整数，指示用作 TLS 连接的端口（在任何情况下都将使用端口 443）"
 
 msgid "config.tls_ports.label"
 msgstr "🔎 TLS 端口"
+
+msgid "config.tls_trick.description"
+msgstr "TLS 碎片配置可在此部分设置"
+
+msgid "config.tls_trick.label"
+msgstr "TLS 技巧"
 
 msgid "config.too_advanced.description"
 msgstr "指定代理路径。如果您使用 HTTP 和 VMess，这一点尤其重要"
@@ -1598,6 +2047,12 @@ msgstr "可以在此部分设置 Torrent 阻止配置。"
 
 msgid "config.torrent_block.label"
 msgstr "Torrent 块配置"
+
+msgid "config.trojan_enable.description"
+msgstr "启用 Trojan 协议"
+
+msgid "config.trojan_enable.label"
+msgstr "🟤 Trojan"
 
 msgid "config.tuic.description"
 msgstr ""
@@ -1647,6 +2102,12 @@ msgstr "配置已成功更改。单击 %(link)s 应用配置。申请可能需�
 msgid "config.validation-success-no-reset"
 msgstr "✅ 配置已成功更改"
 
+msgid "config.vless_enable.description"
+msgstr "启用 VLess 协议"
+
+msgid "config.vless_enable.label"
+msgstr "⚫️ VLess"
+
 msgid "config.vmess_enable.description"
 msgstr "据多位人士透露，VMess 导致该系统被政府检测到。所以不推荐"
 
@@ -1690,14 +2151,96 @@ msgstr ""
 msgid "config.warp_plus_code.label"
 msgstr "🔑 Warp Plus 键"
 
+msgid "config.warp_sites.description"
+msgstr "添加要通过 WARP 的其他站点（仅当 Warp 模式不为 None 时）"
+
+msgid "config.warp_sites.label"
+msgstr "🆚 其他 WARP 站点"
+
+msgid "config.wireguard.description"
+msgstr ""
+"WireGuard 是一种轻量级的基于 UDP "
+"的协议，以其简单、高效和强大的安全性而闻名。它提供快速设置、透明代码，并因其在各种操作系统中的易用性而广受欢迎"
+
+msgid "config.wireguard.label"
+msgstr "🐉 WireGuard"
+
+msgid "config.wireguard_enable.description"
+msgstr ""
+"<p>WireGuard 是基于 UDP 的协议。（⚠️ 它在<a href=\"https://github.com/hiddify/hiddify-"
+"next\" target=\"_blank\">Hiddify Next</a>中运行）</p>"
+
+msgid "config.wireguard_enable.label"
+msgstr "启用 WireGuard"
+
+msgid "config.wireguard_ipv4.description"
+msgstr "在 WireGuard 中启用 IPv4"
+
+msgid "config.wireguard_ipv4.label"
+msgstr " WireGuard 中的 IPv4"
+
+msgid "config.wireguard_ipv6.description"
+msgstr "在 WireGuard 中启用 IPv6"
+
+msgid "config.wireguard_ipv6.label"
+msgstr "WireGuard 中的 IPv6"
+
+msgid "config.wireguard_noise_trick.description"
+msgstr "这种方法会引入额外的噪音，以防止被 GFW 检测和阻止"
+
+msgid "config.wireguard_noise_trick.label"
+msgstr "💥 WireGuard 噪音技巧"
+
+msgid "config.wireguard_port.description"
+msgstr "定义 WireGuard 的端口 "
+
+msgid "config.wireguard_port.label"
+msgstr "↔️ WireGuard 端口"
+
+msgid "config.wireguard_private_key.description"
+msgstr "为 WireGuard 指定私钥"
+
+msgid "config.wireguard_private_key.label"
+msgstr "WireGuard 私钥"
+
+msgid "config.wireguard_public_key.description"
+msgstr "为 WireGuard 指定一个公钥"
+
+msgid "config.wireguard_public_key.label"
+msgstr "WireGuard 公钥"
+
+msgid "config.ws_enable.description"
+msgstr "Websocket 通过 HTTP 创建一个隧道，可用于 CDN"
+
+msgid "config.ws_enable.label"
+msgstr "🔰 Websocket"
+
+msgid "config.xhttp_enable.description"
+msgstr "该协议通过单独的渠道发送和接收信息 "
+
+msgid "config.xhttp_enable.label"
+msgstr "🈁 Split HTTP"
+
+msgid "config.xtls_enable.description"
+msgstr "启用 XTLS 协议"
+
+msgid "config.xtls_enable.label"
+msgstr "🟢XTLS"
+
 msgid "copy"
 msgstr "复制"
+
+msgid "daily"
+msgstr "⏰ 每日"
 
 msgid "days"
 msgstr "天"
 
 msgid "desktop"
 msgstr "桌面"
+
+msgid "direct"
+msgstr "➡️直接"
 
 msgid "domain.cdn"
 msgstr "CDN"
@@ -1747,6 +2290,9 @@ msgstr ""
 
 msgid "download"
 msgstr "直接下载"
+
+msgid "fake"
+msgstr "🆎 假网站"
 
 msgid "gRPC"
 msgstr "➿ gRPC"
@@ -1814,11 +2360,17 @@ msgstr "macOS"
 msgid "master.page-title"
 msgstr "HiddifyManager"
 
+msgid "monthly"
+msgstr "🗓️每月"
+
 msgid "move_to_new_link"
 msgstr "该页面已移至新链接。请复制并保存新链接。"
 
 msgid "next"
 msgstr "下一个"
+
+msgid "no_reset"
+msgstr "⭐️无需重置"
 
 msgid "node.diff-version"
 msgstr "node.diff-version"
@@ -1840,6 +2392,9 @@ msgstr "该字段定义节点的 UUID"
 
 msgid "node.uuid.label"
 msgstr "Node UUID"
+
+msgid "old_xtls_direct"
+msgstr "🔙旧直连模式（针对木马TCP、VLess XTLS）"
 
 msgid "open"
 msgstr "打开"
@@ -1874,6 +2429,12 @@ msgstr "最后一步：请选择您想要的代理。请选择尽可能少的代
 msgid "quicksetup.setlang.success"
 msgstr "更改语言成功。"
 
+msgid "reality"
+msgstr "🔂 Reality"
+
+msgid "relay"
+msgstr "♾️ Relay （使用中间节点连接）"
+
 msgid "search"
 msgstr "搜索"
 
@@ -1892,6 +2453,9 @@ msgstr "歌手盒：SSH"
 
 msgid "ssh"
 msgstr "SSH"
+
+msgid "sub_link_only"
+msgstr "📳 仅适用于订阅链接（可以是 Direct、Relay 或 CDN）"
 
 msgid "telegram"
 msgstr "Telegram"
@@ -2234,3 +2798,9 @@ msgid "vpn.notallowed"
 msgstr ""
 "请不要使用 VPN 访问此页面。您需要从国家/地区 %(expected_country)s 访问，但您当前正在从 %(your_country)s "
 "访问。"
+
+msgid "weekly"
+msgstr "📅每周"
+
+msgid "worker"
+msgstr "✴️ Cloudflare Worker"

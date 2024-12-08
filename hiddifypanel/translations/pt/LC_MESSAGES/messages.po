@@ -213,6 +213,9 @@ msgstr ""
 "O domínio não pode ser resolvido! Há um problema em seu domínio. Verifique "
 "as configurações do seu Domínio."
 
+msgid "Domain cannot be resolved! Please check DNS settings"
+msgstr ""
+
 msgid "Domain is not REALITY friendly!"
 msgstr "O domínio não é compatível com Reality!"
 
@@ -565,6 +568,9 @@ msgstr "BATER"
 msgid "REALITY Fallback domain is not compaitble with server names!"
 msgstr "REALITY Fallback Domain não é compatível com nomes de servidores!"
 
+msgid "REALITY Fallback domain is not compatible with server names!"
+msgstr ""
+
 msgid "Release"
 msgstr "✅ Liberação"
 
@@ -669,6 +675,9 @@ msgstr "📦 SingBox"
 
 msgid "Sort by %(name)s"
 msgstr "Ordenar por %(name)s"
+
+msgid "Specifying CDN IP is only valid for CDN mode"
+msgstr ""
 
 msgid "Start Date"
 msgstr "Data de início"
@@ -1045,6 +1054,9 @@ msgstr "V2RayNG"
 msgid "auto"
 msgstr "Auto"
 
+msgid "auto_cdn_ip"
+msgstr "Seletor automático de CDN IP"
+
 msgid "bot.admin_welcome"
 msgstr "Bem-vindo ao bot administrativo. Escolha sua ação"
 
@@ -1053,6 +1065,9 @@ msgstr ""
 "Viva 🎉 🎉 🎉\n"
 "Bem-vindo ao bot Hiddify\n"
 "Comece clicando no link no Painel ou inserindo seu UUID."
+
+msgid "cdn"
+msgstr "CDN (Cloudflare Proxy, ...)"
 
 msgid "cf-delete.failed"
 msgstr "cf-delete.falhou"
@@ -1208,6 +1223,15 @@ msgstr ""
 msgid "config.cloudflare.label"
 msgstr "🔑 API Cloudflare"
 
+msgid "config.core_type.description"
+msgstr ""
+"☢️ XRay: é um núcleo completo\n"
+"<br>\n"
+"📦 Singbox: Desenvolvido por SagerNet. Também é um bom núcleo"
+
+msgid "config.core_type.label"
+msgstr "🎛️ Núcleo"
+
 msgid "config.country.description"
 msgstr ""
 "Aplica as configurações apropriadas para cada país de acordo com as "
@@ -1216,11 +1240,23 @@ msgstr ""
 msgid "config.country.label"
 msgstr "🌍 País"
 
+msgid "config.create_easysetup_link.description"
+msgstr "config.create_easysetup_link.descrição"
+
+msgid "config.create_easysetup_link.label"
+msgstr "config.create_easysetup_link.label"
+
 msgid "config.db_version.description"
 msgstr "Descrição da versão do banco de dados"
 
 msgid "config.db_version.label"
 msgstr "Rótulo da versão do banco de dados"
+
+msgid "config.dbvalues.description"
+msgstr "config.dbvalues.descrição"
+
+msgid "config.dbvalues.label"
+msgstr "config.dbvalues.label"
 
 msgid "config.decoy_domain.description"
 msgstr ""
@@ -1229,6 +1265,15 @@ msgstr ""
 
 msgid "config.decoy_domain.label"
 msgstr "🔀 Site Decoy"
+
+msgid "config.dns_server.description"
+msgstr ""
+"✳️ Padrão 1.1.1.1 <br>\n"
+"🚧 Bloquear Malware 1.1.1.2 <br>\n"
+"🔞 Bloquear pornografia 1.1.1.3"
+
+msgid "config.dns_server.label"
+msgstr "🖥 Servidor DNS"
 
 msgid "config.domain_fronting.description"
 msgstr ""
@@ -1282,6 +1327,32 @@ msgstr "É Configurações Gerais do Sistema"
 msgid "config.general.label"
 msgstr "Configurações Gerais"
 
+msgid "config.grpc_enable.description"
+msgstr ""
+"gRPC é uma estrutura moderna de chamada de procedimento remoto (RPC) de "
+"código aberto e alto desempenho. Pode ser usado em CDNs suportados"
+
+msgid "config.grpc_enable.label"
+msgstr "➿gRPC"
+
+msgid "config.h2_enable.description"
+msgstr "Habilitar protocolo HTTP/2"
+
+msgid "config.h2_enable.label"
+msgstr "🔵h2"
+
+msgid "config.hidden.description"
+msgstr "config.hidden.description"
+
+msgid "config.hidden.label"
+msgstr "config.hidden.label"
+
+msgid "config.hiddifycli_enable.description"
+msgstr "config.hiddifycli_enable.descrição"
+
+msgid "config.hiddifycli_enable.label"
+msgstr "config.hiddifycli_enable.label"
+
 msgid "config.http.description"
 msgstr "As configurações HTTP podem ser definidas nesta seção"
 
@@ -1303,6 +1374,54 @@ msgstr ""
 
 msgid "config.http_proxy_enable.label"
 msgstr "☑️ Permitir conexão HTTP"
+
+msgid "config.httpupgrade_enable.description"
+msgstr ""
+"<p>HTTPUpgrade conclui uma solicitação e resposta de atualização HTTP 1.1 antes de usar a conexão diretamente. É semelhante ao WebSocket na forma como cria um canal de direção que pode ser encaminhado por muitos proxies reversos e CDNs, sem a necessidade de lidar com todos os problemas relacionados ao próprio protocolo WebSocket.<br />\n"
+"⚠️ <strong>Não disponível em clientes baseados em Xray. Apenas clientes HiddifyNext, Singbox e V2fly são suportados.</strong> <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/Basic-Concepts/#http-upgrade\" target=\"_blank\"><strong>(Consulte Mais informação)</strong></a></p>"
+
+msgid "config.httpupgrade_enable.label"
+msgstr "🆙 Método HTTPUpgrade"
+
+msgid "config.hysteria.description"
+msgstr ""
+"Hysteria é uma ferramenta de proxy e retransmissão repleta de recursos "
+"otimizada para conexões instáveis ​​e com perdas (por exemplo, redes de "
+"satélite, Wi-Fi público congestionado, conexão com servidores estrangeiros "
+"da China)"
+
+msgid "config.hysteria.label"
+msgstr "Histeria"
+
+msgid "config.hysteria_down_mbps.description"
+msgstr "Velocidade máxima de download da Hysteria"
+
+msgid "config.hysteria_down_mbps.label"
+msgstr "⬇️ Download de Hysteria (mbps)"
+
+msgid "config.hysteria_enable.description"
+msgstr "Para ativar o protocolo de Hysteriabaseado em udp"
+
+msgid "config.hysteria_enable.label"
+msgstr "Habilitar Histeria"
+
+msgid "config.hysteria_obfs_enable.description"
+msgstr " Ativa a ofuscação da Hysteria(Salamandra)"
+
+msgid "config.hysteria_obfs_enable.label"
+msgstr "🎛 Hysteria OBFS"
+
+msgid "config.hysteria_port.description"
+msgstr "Porta UDP de Hysteria, por exemplo 5678"
+
+msgid "config.hysteria_port.label"
+msgstr "Porto de Histeria"
+
+msgid "config.hysteria_up_mbps.description"
+msgstr "Velocidade máxima de upload de Hysteria "
+
+msgid "config.hysteria_up_mbps.label"
+msgstr "⬆️ Upload de Hysteria (mbps)"
 
 msgid "config.invalid-pattern-for-warp-sites"
 msgstr "⚠️ O Site inserido para o Warp não corresponde ao modelo especificado"
@@ -1350,11 +1469,94 @@ msgstr "config.last_hash.description"
 msgid "config.last_hash.label"
 msgstr "config.last_hash.label"
 
+msgid "config.last_priodic_usage_check.description"
+msgstr "config.last_priodic_usage_check.description"
+
+msgid "config.last_priodic_usage_check.label"
+msgstr "config.last_priodic_usage_check.label"
+
 msgid "config.license.description"
 msgstr "Para uso comercial deste produto, você deve comprar sua licença"
 
 msgid "config.license.label"
 msgstr "Código de licença"
+
+msgid "config.log_level.description"
+msgstr "config.log_level.descrição"
+
+msgid "config.log_level.label"
+msgstr "config.log_level.label"
+
+msgid "config.mux.description"
+msgstr "As configurações MUX (Multiplex) podem ser definidas nesta seção"
+
+msgid "config.mux.label"
+msgstr "Configurações de MUX"
+
+msgid "config.mux_brutal_down_mbps.description"
+msgstr "Velocidade máxima de download TCP-Brutal"
+
+msgid "config.mux_brutal_down_mbps.label"
+msgstr "⬇️ Download brutal do MUX (mbps)"
+
+msgid "config.mux_brutal_enable.description"
+msgstr "Ativa o algoritmo de controle de congestionamento TCP-Brutal"
+
+msgid "config.mux_brutal_enable.label"
+msgstr "☣️MUX Brutal"
+
+msgid "config.mux_brutal_up_mbps.description"
+msgstr "Velocidade máxima de upload TCP-Brutal"
+
+msgid "config.mux_brutal_up_mbps.label"
+msgstr "⬆️ Carregamento Brutal MUX (mbps)"
+
+msgid "config.mux_enable.description"
+msgstr ""
+"<p>Mux precisa de clientes compatíveis. Mux no Hiddify Next e Singbox não "
+"são compatíveis com XRay. <a href=\"https://hiddify.com/manager/basic-"
+"concepts-and-troubleshooting/How-MUX-works-and-its-usage/\" "
+"target=\"_blank\">(Consulte Mais informação)</a></p>"
+
+msgid "config.mux_enable.label"
+msgstr "Ⓜ️ MUX (⚠️ Incompatível com alguns clientes)"
+
+msgid "config.mux_max_connections.description"
+msgstr "Máximo de conexões. Conflito com fluxos máximos"
+
+msgid "config.mux_max_connections.label"
+msgstr "⛓ Conexões MUX Max"
+
+msgid "config.mux_max_streams.description"
+msgstr ""
+"Máximo de fluxos multiplexados em uma conexão antes de abrir uma nova "
+"conexão"
+
+msgid "config.mux_max_streams.label"
+msgstr "↗️ Transmissões máximas do MUX"
+
+msgid "config.mux_min_streams.description"
+msgstr ""
+"Fluxos multiplexados mínimos em uma conexão antes de abrir uma nova conexão"
+
+msgid "config.mux_min_streams.label"
+msgstr "↘️ Transmissões mínimas de MUX"
+
+msgid "config.mux_padding_enable.description"
+msgstr "Descrição do MUX Padding"
+
+msgid "config.mux_padding_enable.label"
+msgstr "⟹ MUX Padding"
+
+msgid "config.mux_protocol.description"
+msgstr ""
+"ℹ️ Protocolo Multiplex. 'sMux' é usado por padrão<inlang-LineFeed><br>\n"
+"➖ sMux: Multiplexação de fluxo<inlang-LineFeed><br>\n"
+"➖ YaMux: mais um multiplexador<inlang-LineFeed><br>\n"
+"➖ h2Mux: Multiplexação de fluxos em HTTP/2"
+
+msgid "config.mux_protocol.label"
+msgstr "♍️ Protocolo MUX"
 
 msgid "config.netdata.description"
 msgstr "Para exibir recursos. usa a CPU do seu servidor, mas não é muito."
@@ -1380,6 +1582,24 @@ msgstr "Especifique se você deseja um pacote lançado ou desenvolvido"
 msgid "config.package_mode.label"
 msgstr "🔄 Modo de atualização de pacotes"
 
+msgid "config.panel_mode.description"
+msgstr "config.panel_mode.descrição"
+
+msgid "config.panel_mode.label"
+msgstr "config.panel_mode.label"
+
+msgid "config.parent_admin_proxy_path.description"
+msgstr "config.parent_admin_proxy_path.description"
+
+msgid "config.parent_admin_proxy_path.label"
+msgstr "config.parent_admin_proxy_path.label"
+
+msgid "config.parent_domain.description"
+msgstr "config.parent_domain.description"
+
+msgid "config.parent_domain.label"
+msgstr "config.parent_domain.label"
+
 msgid "config.parent_panel.description"
 msgstr ""
 "Você pode se conectar ao Painel Central para definir apenas um usuário e o "
@@ -1393,6 +1613,12 @@ msgstr "Caminho gRPC nas configurações"
 
 msgid "config.path_grpc.label"
 msgstr "ℹ️ caminho gRPC"
+
+msgid "config.path_httpupgrade.description"
+msgstr "deveria ser aleatório"
+
+msgid "config.path_httpupgrade.label"
+msgstr "ℹ️ Caminho de atualização HTTP"
 
 msgid "config.path_ss.description"
 msgstr "Caminho Shadowsocks nos Links"
@@ -1436,6 +1662,12 @@ msgstr "Especifique o caminho do Websocket"
 msgid "config.path_ws.label"
 msgstr "ℹ️ Caminho das solicitações do Websocket"
 
+msgid "config.path_xhttp.description"
+msgstr "Esta opção define o caminho para Split HTTP"
+
+msgid "config.path_xhttp.label"
+msgstr "Caminho para Split HTTP"
+
 msgid "config.proxies.description"
 msgstr "Definir configurações de proxy específicas"
 
@@ -1449,12 +1681,38 @@ msgstr ""
 msgid "config.proxy_path.label"
 msgstr "ℹ️ Caminho do proxy secreto"
 
+msgid "config.proxy_path_admin.description"
+msgstr ""
+"Usamos um caminho de proxy secreto para ocultar nossos proxies para governos"
+" e bots"
+
+msgid "config.proxy_path_admin.label"
+msgstr "🔐 Caminho de proxy para administradores"
+
+msgid "config.proxy_path_client.description"
+msgstr "O caminho secreto do proxy esconde os proxies dos governos e bots"
+
+msgid "config.proxy_path_client.label"
+msgstr "🔏 Caminho de proxy para clientes"
+
+msgid "config.quic_enable.description"
+msgstr "Habilitar protocolo QUIC"
+
+msgid "config.quic_enable.label"
+msgstr "🟡 QUIC"
+
 msgid "config.reality.description"
 msgstr ""
 "REALITY elimina o recurso de impressão digital TLS do lado do servidor"
 
 msgid "config.reality.label"
 msgstr "Reality"
+
+msgid "config.reality_enable.description"
+msgstr "Habilitar protocolo de Reality"
+
+msgid "config.reality_enable.label"
+msgstr "🔴 Reality"
 
 msgid "config.reality_fallback_domain.description"
 msgstr ""
@@ -1463,6 +1721,15 @@ msgstr ""
 
 msgid "config.reality_fallback_domain.label"
 msgstr "🌍 Domínio alternativo"
+
+msgid "config.reality_port.description"
+msgstr ""
+"Você pode definir uma porta personalizada para seu servidor de Reality para "
+"reduzir a sobrecarga do sistema. (Permitir conexão direta com proxies deve "
+"ser sim)"
+
+msgid "config.reality_port.label"
+msgstr "↔️ Porto de Realidade Direta"
 
 msgid "config.reality_private_key.description"
 msgstr "Não mude isso"
@@ -1507,6 +1774,35 @@ msgstr "config.restls1_3_domain.description"
 
 msgid "config.restls1_3_domain.label"
 msgstr "config.restls1_3_domain.label"
+
+msgid "config.shadowsocks.description"
+msgstr ""
+"Shadowsocks é um proxy de túnel rápido que ajuda a contornar firewalls"
+
+msgid "config.shadowsocks.label"
+msgstr "Shadowsocks"
+
+msgid "config.shadowsocks2022_enable.description"
+msgstr ""
+"Shadowsocks 2022 é um protocolo proxy seguro para tráfego TCP e UDP. O "
+"tráfego proxy é indistinguível de um fluxo de bytes aleatórios e, portanto, "
+"pode contornar firewalls e censores da Internet que dependem de DPI (Deep "
+"Packet Inspection)"
+
+msgid "config.shadowsocks2022_enable.label"
+msgstr "⭕️ Shadowsocks 2022"
+
+msgid "config.shadowsocks2022_method.description"
+msgstr "Este método também é usado em ShadowTLS e SSFakeTLS"
+
+msgid "config.shadowsocks2022_method.label"
+msgstr "🔐 Método de criptografia Shadowsocks"
+
+msgid "config.shadowsocks2022_port.description"
+msgstr "Ele precisa de UDP e TCP para ser livre"
+
+msgid "config.shadowsocks2022_port.label"
+msgstr "↔️ Porto Shadowsocks 2022"
 
 msgid "config.shadowtls.description"
 msgstr ""
@@ -1579,6 +1875,84 @@ msgstr ""
 msgid "config.ssfaketls_fakedomain.label"
 msgstr "🌍 SS FakeTLS FakeDomain"
 
+msgid "config.ssh.description"
+msgstr ""
+"Um proxy SSH, também conhecido como túnel SSH ou encaminhamento de porta "
+"SSH, é um método seguro de criar um canal de comunicação seguro entre duas "
+"máquinas em uma rede insegura. Temos um aplicativo específico que é "
+"completamente diferente do servidor ssh e não pode executar nenhum comando"
+
+msgid "config.ssh.label"
+msgstr "Proxy SSH"
+
+msgid "config.ssh_host_dsa_pk.description"
+msgstr ""
+
+msgid "config.ssh_host_dsa_pk.label"
+msgstr ""
+
+msgid "config.ssh_host_dsa_pub.description"
+msgstr ""
+
+msgid "config.ssh_host_dsa_pub.label"
+msgstr ""
+
+msgid "config.ssh_host_ecdsa_pk.description"
+msgstr ""
+
+msgid "config.ssh_host_ecdsa_pk.label"
+msgstr ""
+
+msgid "config.ssh_host_ecdsa_pub.description"
+msgstr ""
+
+msgid "config.ssh_host_ecdsa_pub.label"
+msgstr ""
+
+msgid "config.ssh_host_ed25519_pk.description"
+msgstr ""
+
+msgid "config.ssh_host_ed25519_pk.label"
+msgstr ""
+
+msgid "config.ssh_host_ed25519_pub.description"
+msgstr ""
+
+msgid "config.ssh_host_ed25519_pub.label"
+msgstr ""
+
+msgid "config.ssh_host_rsa_pk.description"
+msgstr ""
+
+msgid "config.ssh_host_rsa_pk.label"
+msgstr ""
+
+msgid "config.ssh_host_rsa_pub.description"
+msgstr ""
+
+msgid "config.ssh_host_rsa_pub.label"
+msgstr ""
+
+msgid "config.ssh_server_enable.description"
+msgstr "O proxy SSH é completamente diferente do servidor ssh original."
+
+msgid "config.ssh_server_enable.label"
+msgstr "✔️ Proxy SSH"
+
+msgid "config.ssh_server_port.description"
+msgstr ""
+"Isso é completamente diferente do seu servidor ssh original. É um programa "
+"dedicado."
+
+msgid "config.ssh_server_port.label"
+msgstr "↔️ Porta Proxy SSH"
+
+msgid "config.ssh_server_redis_url.description"
+msgstr "Não usado"
+
+msgid "config.ssh_server_redis_url.label"
+msgstr "Endereço do banco de dados do usuário SSH"
+
 msgid "config.ssr.description"
 msgstr ""
 "ShadowsocksR é um fork do projeto Shadowsocks original, considerado superior"
@@ -1603,6 +1977,58 @@ msgstr ""
 
 msgid "config.ssr_fakedomain.label"
 msgstr "SSR FakeDomain"
+
+msgid "config.sub_full_clash_enable.description"
+msgstr "config.sub_full_clash_enable.descrição"
+
+msgid "config.sub_full_clash_enable.label"
+msgstr "config.sub_full_clash_enable.label"
+
+msgid "config.sub_full_clash_meta_enable.description"
+msgstr "config.sub_full_clash_meta_enable.description"
+
+msgid "config.sub_full_clash_meta_enable.label"
+msgstr "config.sub_full_clash_meta_enable.label"
+
+msgid "config.sub_full_links_b64_enable.description"
+msgstr "config.sub_full_links_b64_enable.description"
+
+msgid "config.sub_full_links_b64_enable.label"
+msgstr "config.sub_full_links_b64_enable.label"
+
+msgid "config.sub_full_links_enable.description"
+msgstr "config.sub_full_links_enable.description"
+
+msgid "config.sub_full_links_enable.label"
+msgstr "config.sub_full_links_enable.label"
+
+msgid "config.sub_full_singbox_enable.description"
+msgstr "config.sub_full_singbox_enable.description"
+
+msgid "config.sub_full_singbox_enable.label"
+msgstr "config.sub_full_singbox_enable.label"
+
+msgid "config.sub_full_xray_json_enable.description"
+msgstr ""
+"O link completo do XRay fornece opções de configuração abrangentes para "
+"configurações específicas do XRay. Isso inclui fragmentação e multiplexação "
+"personalizadas (mux) em aplicativos como v2rayNG que suportam protocolos "
+"XRay para controle ajustado sobre a configuração do proxy XRay."
+
+msgid "config.sub_full_xray_json_enable.label"
+msgstr "⚙️ Link de configuração completa do XRay"
+
+msgid "config.sub_singbox_ssh_enable.description"
+msgstr "config.sub_singbox_ssh_enable.description"
+
+msgid "config.sub_singbox_ssh_enable.label"
+msgstr "config.sub_singbox_ssh_enable.label"
+
+msgid "config.tcp_enable.description"
+msgstr "Ativa o protocolo TCP"
+
+msgid "config.tcp_enable.label"
+msgstr "🟠 TCP"
 
 msgid "config.telegram.description"
 msgstr "Um proxy projetado para o Telegram ignorar a filtragem do Telegram"
@@ -1656,6 +2082,50 @@ msgstr "As configurações de TLS podem ser definidas nesta seção."
 msgid "config.tls.label"
 msgstr "Configurações de TLS"
 
+msgid "config.tls_fragment_enable.description"
+msgstr ""
+"<p>Em algumas circunstâncias, pode contornar o sistema de lista negra do "
+"SNI. <a href=\"https://hiddify.com/manager/basic-concepts-and-"
+"troubleshooting/How-the-TLS-Trick-works-and-its-usage/\" "
+"target=\"_blank\">(Consulte Mais informação)</a></p>"
+
+msgid "config.tls_fragment_enable.label"
+msgstr "⏯ TLS Fragment"
+
+msgid "config.tls_fragment_size.description"
+msgstr "O tamanho de cada pacote"
+
+msgid "config.tls_fragment_size.label"
+msgstr "🎚 Tamanho do TLS Fragment"
+
+msgid "config.tls_fragment_sleep.description"
+msgstr "O atraso de tempo entre fragmentos"
+
+msgid "config.tls_fragment_sleep.label"
+msgstr "⏱ Suspensão do TLS Fragment "
+
+msgid "config.tls_mixed_case.description"
+msgstr "Permite fragmentação de caso SNI misto TLS"
+
+msgid "config.tls_mixed_case.label"
+msgstr "🔠 Caso SNI Misto TLS"
+
+msgid "config.tls_padding_enable.description"
+msgstr ""
+"<p>Habilita preenchimento para fragmentação TLS. <a "
+"href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-"
+"the-TLS-Trick-works-and-its-usage/#tls-padding\" target=\"_blank\">(Consulte"
+" Mais informação)</a></p>"
+
+msgid "config.tls_padding_enable.label"
+msgstr "♒️ TLS Padding"
+
+msgid "config.tls_padding_length.description"
+msgstr "O comprimento do Padding para fragmentação TLS"
+
+msgid "config.tls_padding_length.label"
+msgstr "📏 TLS Padding"
+
 msgid "config.tls_ports.description"
 msgstr ""
 "Inteiros separados por vírgula indicando as portas a serem usadas como "
@@ -1663,6 +2133,12 @@ msgstr ""
 
 msgid "config.tls_ports.label"
 msgstr "🔎 Portas TLS"
+
+msgid "config.tls_trick.description"
+msgstr "As configurações de fragmentação TLS podem ser definidas nesta seção"
+
+msgid "config.tls_trick.label"
+msgstr "Truque TLS"
 
 msgid "config.too_advanced.description"
 msgstr ""
@@ -1677,6 +2153,12 @@ msgstr "As configurações do bloco de Torrent podem ser definidas nesta seção
 
 msgid "config.torrent_block.label"
 msgstr "Configuração do Bloco de Torrent"
+
+msgid "config.trojan_enable.description"
+msgstr "Ativa o protocolo Trojan"
+
+msgid "config.trojan_enable.label"
+msgstr "🟤 Trojan"
 
 msgid "config.tuic.description"
 msgstr ""
@@ -1729,6 +2211,12 @@ msgstr ""
 
 msgid "config.validation-success-no-reset"
 msgstr "✅ As configurações foram alteradas com sucesso"
+
+msgid "config.vless_enable.description"
+msgstr "Habilitar protocolo VLess"
+
+msgid "config.vless_enable.label"
+msgstr "⚫️ VLess"
 
 msgid "config.vmess_enable.description"
 msgstr ""
@@ -1783,14 +2271,102 @@ msgstr ""
 msgid "config.warp_plus_code.label"
 msgstr "🔑 Chave WARP Plus"
 
+msgid "config.warp_sites.description"
+msgstr ""
+"Adicione sites adicionais para passar pelo WARP (somente quando o modo warp "
+"não for Nenhum)"
+
+msgid "config.warp_sites.label"
+msgstr "🆚 Sites WARP adicionais"
+
+msgid "config.wireguard.description"
+msgstr ""
+"WireGuard é um protocolo leve baseado em UDP conhecido por sua simplicidade,"
+" eficiência e forte segurança. Oferece configuração rápida, código "
+"transparente e ganhou popularidade por sua facilidade de uso em vários "
+"sistemas operacionais."
+
+msgid "config.wireguard.label"
+msgstr "🐉 WireGuard"
+
+msgid "config.wireguard_enable.description"
+msgstr ""
+"<p>WireGuard é um protocolo baseado em UDP. (⚠️ Está funcionando no <a "
+"href=\"https://github.com/hiddify/hiddify-next\" target=\"_blank\">Hiddify a"
+" seguir</a> )</p>"
+
+msgid "config.wireguard_enable.label"
+msgstr "Habilita WireGuard"
+
+msgid "config.wireguard_ipv4.description"
+msgstr "Habilita IPv4 no WireGuard"
+
+msgid "config.wireguard_ipv4.label"
+msgstr " IPv4 no WireGuard"
+
+msgid "config.wireguard_ipv6.description"
+msgstr "Habilita IPv6 no WireGuard"
+
+msgid "config.wireguard_ipv6.label"
+msgstr "IPv6 no WireGuard"
+
+msgid "config.wireguard_noise_trick.description"
+msgstr ""
+"Este método introduz ruído extra para evitar detecção e bloqueio pelo GFW"
+
+msgid "config.wireguard_noise_trick.label"
+msgstr "💥 Truque de ruído WireGuard"
+
+msgid "config.wireguard_port.description"
+msgstr "Define porta para WireGuard "
+
+msgid "config.wireguard_port.label"
+msgstr "↔️ Porta WireGuard"
+
+msgid "config.wireguard_private_key.description"
+msgstr "Uma chave privada é especificada para WireGuard"
+
+msgid "config.wireguard_private_key.label"
+msgstr "Chave privada WireGuard"
+
+msgid "config.wireguard_public_key.description"
+msgstr "Uma chave pública é especificada para WireGuard"
+
+msgid "config.wireguard_public_key.label"
+msgstr "Chave pública WireGuard"
+
+msgid "config.ws_enable.description"
+msgstr "Websocket cria um túnel sobre HTTP que é útil para ser usado em CDN"
+
+msgid "config.ws_enable.label"
+msgstr "🔰 Websocket"
+
+msgid "config.xhttp_enable.description"
+msgstr "Este protocolo envia e recebe informações em canais individuais "
+
+msgid "config.xhttp_enable.label"
+msgstr "🈁 Split HTTP"
+
+msgid "config.xtls_enable.description"
+msgstr "Ativa o protocolo XTLS"
+
+msgid "config.xtls_enable.label"
+msgstr "🟢XTLS"
+
 msgid "copy"
 msgstr "cópia de"
+
+msgid "daily"
+msgstr "⏰ Diariamente"
 
 msgid "days"
 msgstr "Dias"
 
 msgid "desktop"
 msgstr "Área de Trabalho"
+
+msgid "direct"
+msgstr "➡️ Direto"
 
 msgid "domain.cdn"
 msgstr "CDN"
@@ -1847,6 +2423,9 @@ msgstr ""
 
 msgid "download"
 msgstr "Download direto"
+
+msgid "fake"
+msgstr "🆎 Site falso"
 
 msgid "gRPC"
 msgstr "➿ gRPC"
@@ -1915,11 +2494,17 @@ msgstr "macOS"
 msgid "master.page-title"
 msgstr "HiddifyManager"
 
+msgid "monthly"
+msgstr "🗓️ Mensal"
+
 msgid "move_to_new_link"
 msgstr "A página foi movida para um novo link. Copie e salve o novo link."
 
 msgid "next"
 msgstr "Próximo"
+
+msgid "no_reset"
+msgstr "⭐️ Sem reinicialização"
 
 msgid "node.diff-version"
 msgstr "node.diff-version"
@@ -1941,6 +2526,9 @@ msgstr "Este campo define UUID para Node"
 
 msgid "node.uuid.label"
 msgstr "UUID do Node "
+
+msgid "old_xtls_direct"
+msgstr "🔙 Modo direto antigo (para Trojan TCP, VLess XTLS)"
 
 msgid "open"
 msgstr "Abrir"
@@ -1980,6 +2568,12 @@ msgstr ""
 msgid "quicksetup.setlang.success"
 msgstr "A alteração do idioma foi bem-sucedida."
 
+msgid "reality"
+msgstr "🔂 Reality"
+
+msgid "relay"
+msgstr "♾️ Relay (Conectar usando um nó intermediário)"
+
 msgid "search"
 msgstr "Procurar"
 
@@ -1999,6 +2593,9 @@ msgstr "caixa de som: ssh"
 
 msgid "ssh"
 msgstr "SSH"
+
+msgid "sub_link_only"
+msgstr "📳 Somente para Link de Assinatura (pode ser direto, relé ou CDN)"
 
 msgid "telegram"
 msgstr "Telegram"
@@ -2342,3 +2939,9 @@ msgstr ""
 "Por favor, visite esta página sem usar uma VPN. Você precisa acessá-la do "
 "país %(expected_country)s, mas você está acessando-a atualmente de "
 "%(your_country)s."
+
+msgid "weekly"
+msgstr "📅 Semanal"
+
+msgid "worker"
+msgstr "✴️ Cloudflare Worker"
