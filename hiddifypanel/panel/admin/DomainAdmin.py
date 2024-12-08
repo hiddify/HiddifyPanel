@@ -281,7 +281,8 @@ class DomainAdmin(AdminLTEModelView):
         # Skip validation for wildcard or empty domains
         if model.domain.startswith('*') or not model.domain:
             return True
-        
+        if model.mode in [DomainType.fake, DomainType.reality, DomainType.relay]:
+            return True
         # Resolve domain IPs with timeout
         try:
             dips = hutils.network.get_domain_ips(model.domain, timeout=10)
