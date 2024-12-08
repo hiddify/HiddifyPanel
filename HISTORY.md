@@ -35,6 +35,12 @@
 
 #### Fix
 
+* Translation issue. 
+
+* Bug when a key is not needed. 
+
+* Fake domain bug. 
+
 * Typo. 
 
 * Excpetion. 
