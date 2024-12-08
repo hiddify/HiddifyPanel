@@ -153,7 +153,10 @@ def add_or_update_config(commit: bool = True, child_id: int | None = None, overr
     if child_id is None:
         child_id = Child.current().id
     c = config['key']
-    ckey = ConfigEnum(c)
+    try:
+        ckey = ConfigEnum(c)
+    except:
+        return
     if c == ConfigEnum.unique_id and not override_unique_id:
         return
 
