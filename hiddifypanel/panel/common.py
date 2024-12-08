@@ -65,7 +65,7 @@ def init_app(app: APIFlask):
                             'version': hiddifypanel.__version__,
                             }), 500
 
-        trace = traceback.format_exc(e)
+        trace = traceback.format_exc()
 
         # Create github issue link
         issue_link = hutils.github_issue.generate_github_issue_link_for_500_error(e, trace)
