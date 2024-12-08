@@ -86,27 +86,15 @@ class UserView(FlaskView):
                 continue
             wireguards.append(pinfo)
 
-            servers.add(pinfo['server'])
+            
 
         if not len(wireguards):
             abort(404)
-        wg = wireguards[0]
-        addrs = f"{wg['wg_ipv4']}/32"
-        if wg['wg_ipv6']:
-            addrs += f", {wg['wg_ipv6']}/128"
-        resp = f"""
-[Interface]
-PrivateKey = {wg['wg_pk']}
-Address = {addrs}
-DNS = 1.1.1.1
-MTU = 1390
-
-[Peer]
-PublicKey = {wg['wg_pub']}
-PresharedKey = {wg['wg_psk']}
-AllowedIPs = 0.0.0.0/1, 128.0.0.0/1, ::/1, 8000::/1
-Endpoint = {next(iter(servers))}:61339 #{servers}
-"""
+        resp =""
+        for wg in wireguards:
+            resp +=f"#========={wg["name"]}================\n"
+            resp+=hutils.proxy.wireguard.generate_wireguard_config(wg)
+            resp+="\n\n"
         return add_headers(resp, c)
 
         # return self.singbox_ssh_imp()
