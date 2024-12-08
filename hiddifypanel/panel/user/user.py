@@ -92,7 +92,7 @@ class UserView(FlaskView):
             abort(404)
         resp =""
         for wg in wireguards:
-            resp +=f"#========={wg["name"]}================\n"
+            resp +=f"#========={wg["extra_info"]} {wg["name"]}================\n"
             resp+=hutils.proxy.wireguard.generate_wireguard_config(wg)
             resp+="\n\n"
         return add_headers(resp, c)
