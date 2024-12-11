@@ -35,6 +35,8 @@
 
 #### Fix
 
+* Resolve bug. 
+
 * Translation issue. 
 
 * Bug when a key is not needed. 
