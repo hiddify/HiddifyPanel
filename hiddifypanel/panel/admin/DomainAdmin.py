@@ -174,8 +174,8 @@ class DomainAdmin(AdminLTEModelView):
 
         cloudflare_updated=self._update_cloudflare(model, ipv4_list,ipv6_list)
         
-        if not (cloudflare_updated or "*" in model.domain or model.domain == ""):
-            self._validate_domain_ips(model, server_ips)
+        
+        self._validate_domain_ips(model, server_ips)
 
         # Handle CDN IP settings
         if model.mode == DomainType.direct and model.cdn_ip:
@@ -279,13 +279,13 @@ class DomainAdmin(AdminLTEModelView):
         """Validate domain IP resolution and matching"""
         
         # Skip validation for wildcard or empty domains
-        if model.domain.startswith('*') or not model.domain:
+        if (model.domain.startswith('*') or not model.domain) and model.mode not in [DomainType.direct]:
             return True
         if model.mode in [DomainType.fake, DomainType.reality, DomainType.relay]:
             return True
         # Resolve domain IPs with timeout
         try:
-            dips = hutils.network.get_domain_ips(model.domain, timeout=10)
+            dips = hutils.network.get_domain_ips(model.domain)
         except Exception as e:
             logger.error(f"Error resolving domain {model.domain}: {str(e)}")
             raise ValidationError(_("Domain cannot be resolved! Please check DNS settings"))
