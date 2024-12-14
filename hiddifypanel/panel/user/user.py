@@ -21,6 +21,12 @@ class UserView(FlaskView):
     def index(self):
         return self.auto_sub()
 
+    @route('/ua')
+    def user_agent(self):
+        ua= str(g.user_agent)+"\n"+str(request.user_agent)
+        print(ua)
+        return ua
+
     def auto_sub(self):
         if g.user_agent['is_browser']:
             return self.new()

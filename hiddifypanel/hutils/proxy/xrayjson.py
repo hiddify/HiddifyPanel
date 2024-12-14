@@ -50,10 +50,11 @@ def configs_as_json(domains: list[Domain], user: User, expire_days: int, remarks
         unsupported_transport = {}
         if g.user_agent.get('is_v2rayng'):
             # TODO: ensure which protocols are not supported in v2rayng
-            unsupported_protos = {ProxyProto.wireguard, ProxyProto.hysteria, ProxyProto.hysteria2,
-                                  ProxyProto.tuic, ProxyProto.ss, ProxyProto.ssr, ProxyProto.ssh}
+            unsupported_protos = { ProxyProto.hysteria, ProxyProto.hysteria2,
+                                  ProxyProto.tuic, ProxyProto.ssr, ProxyProto.ssh}
             if not hutils.flask.is_client_version(hutils.flask.ClientVersion.v2ryang, 1, 8, 18):
                 unsupported_transport = {ProxyTransport.httpupgrade}
+                unsupported_protos.update({ProxyProto.wireguard})
 
         # multiple outbounds needs multiple whole base config not just one with multiple outbounds (at least for v2rayng)
         # https://github.com/2dust/v2rayNG/pull/2827#issue-2127534078
@@ -135,7 +136,9 @@ def add_wireguard_settings(base: dict, proxy: dict):
     base['settings']['mtu'] = 1380  # optional
     base['settings']['peers'] = [{
         'endpoint': f'{proxy["server"]}:{int(proxy["port"])}',
-        'publicKey': proxy["wg_server_pub"]
+        'publicKey': proxy["wg_server_pub"],
+        "preSharedKey": proxy['wg_psk']
+
         # 'allowedIPs':'', 'preSharedKey':'', 'keepAlive':'' # optionals
     }]
 
