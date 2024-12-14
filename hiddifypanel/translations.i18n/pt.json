@@ -645,6 +645,10 @@
       "description": "deveria ser aleatório",
       "label": "ℹ️ Caminho de atualização HTTP"
     },
+    "path_splithttp": {
+      "description": "",
+      "label": ""
+    },
     "path_ss": {
       "description": "Caminho Shadowsocks nos Links",
       "label": "Caminho Shadowsocks "
@@ -780,6 +784,10 @@
     "speed_test": {
       "description": "Permita que seus usuários façam o teste de velocidade. Isso os ajuda a identificar a qualidade do link",
       "label": "🚀 Teste de velocidade"
+    },
+    "splithttp_enable": {
+      "description": "",
+      "label": ""
     },
     "ssfaketls": {
       "description": "Shadowsocks FakeTLS é uma ferramenta de ofuscação simples que encapsula a data In tls package",

@@ -645,6 +645,10 @@
       "description": "应该是随机的",
       "label": "ℹ️ HTTP 升级路径"
     },
+    "path_splithttp": {
+      "description": "",
+      "label": ""
+    },
     "path_ss": {
       "description": "链接中的 Shadowsocks 路径",
       "label": "Shadowsocks 路径"
@@ -780,6 +784,10 @@
     "speed_test": {
       "description": "允许您的用户进行速度测试。它可以帮助他们识别链接质量",
       "label": "🚀 速度测试"
+    },
+    "splithttp_enable": {
+      "description": "",
+      "label": ""
     },
     "ssfaketls": {
       "description": "Shadowsocks FakeTLS 是一个简单的混淆工具，将日期封装在 tls 数据包中",
