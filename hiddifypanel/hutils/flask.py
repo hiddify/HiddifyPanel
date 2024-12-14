@@ -51,7 +51,7 @@ def hurl_for(endpoint, **values):
 def get_user_agent() -> dict:
     ua = __parse_user_agent(request.user_agent.string)
 
-    if ua.get('v', 1) < 8:
+    if ua.get('v', 1) < 9:
         __parse_user_agent.invalidate_all()  # type:ignore
         ua = __parse_user_agent(request.user_agent.string)
     return ua
@@ -66,13 +66,13 @@ def __parse_user_agent(ua: str) -> dict:
     # Example: SFA/1.7.0 (239; sing-box 1.7.0)
     # Example: HiddifyNext/0.13.6 (android) like ClashMeta v2ray sing-box
     if ua=="v2rayNG/1.8.23": #temporary fix for xray sub in hiddifynext
-        ua="HiddifyNextX/0.13.6 (android) like ClashMeta v2ray sing-box"
+        ua="HiddifyNextX/3.0.0 (android) like ClashMeta v2ray sing-box"
     uaa = user_agents.parse(ua)
 
     match = re.search(ua_version_pattern, ua)
     generic_version = list(map(int, match.group(1).split('.'))) if match else [0, 0, 0]
     res = {}
-    res['v'] = 8
+    res['v'] = 9
     res["is_bot"] = uaa.is_bot
     res["is_browser"] = re.match('^Mozilla', ua, re.IGNORECASE) and True
     res['os'] = uaa.os.family
