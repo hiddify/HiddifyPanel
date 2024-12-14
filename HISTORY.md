@@ -77,6 +77,12 @@
 
 #### Other
 
+* Update translations. 
+
+* Update. 
+
+* Update translations. 
+
 * Merge branch 'main' of github.com:hiddify/Hiddify-Panel. 
 
 * Merge pull request #1 from legiz-ru/ru_extended. 
