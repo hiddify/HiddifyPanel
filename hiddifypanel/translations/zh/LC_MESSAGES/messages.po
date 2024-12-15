@@ -1344,8 +1344,8 @@ msgstr "☑️ 允许 HTTP 连接"
 
 msgid "config.httpupgrade_enable.description"
 msgstr ""
-"<p>HTTPUpgrade 在直接使用连接之前完成 HTTP 1.1 升级请求和响应。它与 WebSocket 类似，它创建了一个方向通道，可以通过许多反向代理和 CDN 转发，而无需处理围绕 WebSocket 协议本身的所有问题。<br />\n"
-"⚠️<strong>不适用于基于 Xray 的客户端。仅支持 HiddifyNext、Singbox 和 V2fly 客户端。</strong> <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/Basic-Concepts/#http-upgrade\" target=\"_blank\"><strong>（阅读更多）</strong></a></p>"
+"HTTPUpgrade 在直接使用连接之前完成 HTTP 1.1 升级请求和响应。它与 WebSocket 类似，它创建了一个方向通道，可以通过许多反向代理和 CDN 转发，而无需处理围绕 WebSocket 协议本身的所有问题。<br />\n"
+"⚠️<strong>不适用于基于 Xray 的客户端。仅支持 HiddifyNext、Singbox 和 V2fly 客户端。</strong> <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/Basic-Concepts/#http-upgrade\" target=\"_blank\"><strong>（阅读更多）</strong></a>"
 
 msgid "config.httpupgrade_enable.label"
 msgstr "🆙 HTTPUpgrade 方法"
@@ -1473,9 +1473,9 @@ msgstr "⬆️ MUX Brutal 上传 (mbps)"
 
 msgid "config.mux_enable.description"
 msgstr ""
-"<p>Mux 需要兼容的客户端。Hiddify Next 和 Singbox 中的 Mux 与 XRay 不兼容。 <a "
+"Mux 需要兼容的客户端。Hiddify Next 和 Singbox 中的 Mux 与 XRay 不兼容。 <a "
 "href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-"
-"MUX-works-and-its-usage/\" target=\"_blank\">（阅读更多）</a></p>"
+"MUX-works-and-its-usage/\" target=\"_blank\">（阅读更多）</a>"
 
 msgid "config.mux_enable.label"
 msgstr "Ⓜ️ MUX（⚠️ 与某些客户端不兼容）"
@@ -1571,12 +1571,6 @@ msgstr "应该是随机的"
 
 msgid "config.path_httpupgrade.label"
 msgstr "ℹ️ HTTP 升级路径"
-
-msgid "config.path_splithttp.description"
-msgstr ""
-
-msgid "config.path_splithttp.label"
-msgstr ""
 
 msgid "config.path_ss.description"
 msgstr "链接中的 Shadowsocks 路径"
@@ -1786,12 +1780,6 @@ msgstr "允许您的用户进行速度测试。它可以帮助他们识别链接
 msgid "config.speed_test.label"
 msgstr "🚀 速度测试"
 
-msgid "config.splithttp_enable.description"
-msgstr ""
-
-msgid "config.splithttp_enable.label"
-msgstr ""
-
 msgid "config.ssfaketls.description"
 msgstr "Shadowsocks FakeTLS 是一个简单的混淆工具，将日期封装在 tls 数据包中"
 
@@ -1999,9 +1987,9 @@ msgstr "TLS 设置"
 
 msgid "config.tls_fragment_enable.description"
 msgstr ""
-"<p>在某些情况下，它可以绕过 SNI 黑名单系统。 <a href=\"https://hiddify.com/manager/basic-"
+"在某些情况下，它可以绕过 SNI 黑名单系统。 <a href=\"https://hiddify.com/manager/basic-"
 "concepts-and-troubleshooting/How-the-TLS-Trick-works-and-its-usage/\" "
-"target=\"_blank\">（阅读更多）</a></p>"
+"target=\"_blank\">（阅读更多）</a>"
 
 msgid "config.tls_fragment_enable.label"
 msgstr "⏯ TLS Fragment"
@@ -2026,9 +2014,9 @@ msgstr "🔠 TLS 混合 SNI 大小写"
 
 msgid "config.tls_padding_enable.description"
 msgstr ""
-"<p>启用 TLS 碎片填充。 <a href=\"https://hiddify.com/manager/basic-concepts-and-"
+"启用 TLS 碎片填充。 <a href=\"https://hiddify.com/manager/basic-concepts-and-"
 "troubleshooting/How-the-TLS-Trick-works-and-its-usage/#tls-padding\" "
-"target=\"_blank\">（阅读更多）</a></p>"
+"target=\"_blank\">（阅读更多）</a>"
 
 msgid "config.tls_padding_enable.label"
 msgstr "♒️ TLS Padding"
@@ -2182,8 +2170,8 @@ msgstr "🐉 WireGuard"
 
 msgid "config.wireguard_enable.description"
 msgstr ""
-"<p>WireGuard 是基于 UDP 的协议。（⚠️ 它在<a href=\"https://github.com/hiddify/hiddify-"
-"next\" target=\"_blank\">Hiddify Next</a>中运行）</p>"
+"WireGuard 是基于 UDP 的协议。（⚠️ 它在<a href=\"https://github.com/hiddify/hiddify-"
+"next\" target=\"_blank\">Hiddify Next</a>中运行）"
 
 msgid "config.wireguard_enable.label"
 msgstr "启用 WireGuard"

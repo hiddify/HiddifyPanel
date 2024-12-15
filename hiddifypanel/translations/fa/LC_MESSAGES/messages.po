@@ -1396,13 +1396,13 @@ msgstr "☑️ اجازه اتصال HTTP"
 
 msgid "config.httpupgrade_enable.description"
 msgstr ""
-"<p style=\"direction:rtl\">HTTPUpgrade یک درخواست ارتقاء HTTP ۱.۱ است و پاسخ"
-" را قبل از استفاده مستقیم از اتصال تکمیل می کند. این شبیه به WebSocket است "
-"که یک کانال ایجاد می کند که می تواند توسط بسیاری از پروکسی های معکوس و CDN "
-"ها ارسال شود، بدون اینکه نیازی به رسیدگی به تمام مسائل پیرامون خود پروتکل "
-"WebSocket باشد.<br /><a href=\"https://hiddify.com/fa/manager/basic-"
-"concepts-and-troubleshooting/Basic-Concepts/#http-upgarde\" "
-"target=\"_blank\"><strong>(بیشتر بدانید)</strong></a></p>"
+"HTTPUpgrade یک درخواست ارتقاء HTTP ۱.۱ است و پاسخ را قبل از استفاده مستقیم "
+"از اتصال تکمیل می کند. این شبیه به WebSocket است که یک کانال ایجاد می کند که"
+" می تواند توسط بسیاری از پروکسی های معکوس و CDN ها ارسال شود، بدون اینکه "
+"نیازی به رسیدگی به تمام مسائل پیرامون خود پروتکل WebSocket باشد.<br /><a "
+"href=\"https://hiddify.com/fa/manager/basic-concepts-and-"
+"troubleshooting/Basic-Concepts/#http-upgarde\" "
+"target=\"_blank\"><strong>(بیشتر بدانید)</strong></a>"
 
 msgid "config.httpupgrade_enable.label"
 msgstr "🆙 HTTPUpgrade"
@@ -1536,11 +1536,11 @@ msgstr "⬆️ آپلود (mbps) MUX Brutal"
 
 msgid "config.mux_enable.description"
 msgstr ""
-"<p style=\"direction:rtl\">Mux به نرم افزار سازگار نیاز دارد. Mux در <p><a "
-"href=\"https://app.hiddify.com\" target=\"_blank\">Hiddify</a></p> و Singbox"
-" و XRay سازگار نیستند.&nbsp;<a href=\"https://hiddify.com/fa/manager/basic-"
+"Mux به نرم افزار سازگار نیاز دارد. Mux در <a "
+"href=\"https://app.hiddify.com\" target=\"_blank\">Hiddify</a> و Singbox و "
+"XRay سازگار نیستند.&nbsp;<a href=\"https://hiddify.com/fa/manager/basic-"
 "concepts-and-troubleshooting/How-MUX-works-and-its-usage/\" "
-"target=\"_blank\">(بیشتر بدانید)</a></p>"
+"target=\"_blank\">(بیشتر بدانید)</a>"
 
 msgid "config.mux_enable.label"
 msgstr "Ⓜ️ MUX (⚠️ ناسازگار با برخی نرم افزارها)"
@@ -1648,12 +1648,6 @@ msgstr "باید تصادفی باشد"
 
 msgid "config.path_httpupgrade.label"
 msgstr "ℹ️ مسیر ارتقاء HTTP"
-
-msgid "config.path_splithttp.description"
-msgstr ""
-
-msgid "config.path_splithttp.label"
-msgstr ""
 
 msgid "config.path_ss.description"
 msgstr "مسیر شدوساکس در لینکها"
@@ -1885,12 +1879,6 @@ msgstr ""
 msgid "config.speed_test.label"
 msgstr "🚀 تست سرعت"
 
-msgid "config.splithttp_enable.description"
-msgstr ""
-
-msgid "config.splithttp_enable.label"
-msgstr ""
-
 msgid "config.ssfaketls.description"
 msgstr ""
 "شادوساکس FakeTLS یک روش مبهم سازی ساده هست که دیتا را در بسته  TLS کپسوله "
@@ -2088,18 +2076,18 @@ msgstr "📍 تگ تبلیغاتی تلگرام"
 
 msgid "config.telegram_bot_token.description"
 msgstr ""
-"<p>برای افزودن قابلیت ربات تلگرام نیاز است تا یک ربات با <a "
+"برای افزودن قابلیت ربات تلگرام نیاز است تا یک ربات با <a "
 "href=\"https://t.me/BotFather\" target=\"_blank\">BotFather@</a> بسازید و کد"
-" API را در این قسمت وارد کنید</p>"
+" API را در این قسمت وارد کنید"
 
 msgid "config.telegram_bot_token.label"
 msgstr "🔐 توکن ربات تلگرام"
 
 msgid "config.telegram_enable.description"
 msgstr ""
-"<p>برای کپسوله کردن پروکسی تلگرام در قالب ترافیک TLS استفاده می‌شود<br>⚠️ "
-"<span style=\"color:#d32f2f;\"><strong>این پروتکل نیاز به دامنه مستقیم "
-"دارد</strong></span></p>"
+"برای کپسوله کردن پروکسی تلگرام در قالب ترافیک TLS استفاده می‌شود<br>⚠️ <span"
+" style=\"color:#d32f2f;\"><strong>این پروتکل نیاز به دامنه مستقیم "
+"دارد</strong></span>"
 
 msgid "config.telegram_enable.label"
 msgstr "✔️ فعال کردن پروکسی تلگرام (MTProto)"
@@ -2129,10 +2117,10 @@ msgstr "تنظیمات TLS"
 
 msgid "config.tls_fragment_enable.description"
 msgstr ""
-"<p style=\"direction:rtl\">تحت برخی شرایط، می تواند سیستم لیست سیاه SNI را "
-"دور بزند.&nbsp;<a href=\"https://hiddify.com/fa/manager/basic-concepts-and-"
+"تحت برخی شرایط، می تواند سیستم لیست سیاه SNI را دور بزند.&nbsp;<a "
+"href=\"https://hiddify.com/fa/manager/basic-concepts-and-"
 "troubleshooting/How-the-TLS-Trick-works-and-its-usage/\" "
-"target=\"_blank\">(بیشتر بدانید)</a></p>"
+"target=\"_blank\">(بیشتر بدانید)</a>"
 
 msgid "config.tls_fragment_enable.label"
 msgstr "⏯ TLS Fragment"
@@ -2157,10 +2145,10 @@ msgstr "🔠 TLS Mixed SNI Case"
 
 msgid "config.tls_padding_enable.description"
 msgstr ""
-"<p style=\"direction:rtl\">Padding تکه تکه شدن TLS را فعال می کند.&nbsp;<a "
+"Padding تکه تکه شدن TLS را فعال می کند.&nbsp;<a "
 "href=\"https://hiddify.com/fa/manager/basic-concepts-and-"
 "troubleshooting/How-the-TLS-Trick-works-and-its-usage/#tls-padding\" "
-"target=\"_blank\">(بیشتر بدانید)</a></p>"
+"target=\"_blank\">(بیشتر بدانید)</a>"
 
 msgid "config.tls_padding_enable.label"
 msgstr "♒️ TLS Padding"
@@ -2325,9 +2313,8 @@ msgstr "وایرگارد"
 
 msgid "config.wireguard_enable.description"
 msgstr ""
-"<p>WireGuard پروتکل مبتنی بر UDP است. (⚠️ فقط در <a "
-"href=\"https://app.hiddify.com/\" target=\"_blank\">Hiddify</a> کار می "
-"کند)</p>"
+"WireGuard پروتکل مبتنی بر UDP است. (⚠️ فقط در <a "
+"href=\"https://app.hiddify.com/\" target=\"_blank\">Hiddify</a> کار می کند)"
 
 msgid "config.wireguard_enable.label"
 msgstr "🐉 وایرگارد"
@@ -2379,8 +2366,8 @@ msgstr "🔰 Websocket"
 
 msgid "config.xhttp_enable.description"
 msgstr ""
-"<p>این پروتکل اطلاعات را در کانال های جداگانه ارسال و دریافت می کند<br />\n"
-"⚠️<strong>&nbsp;این پروتکل در برنامه های با هسته SingBox پشتیبانی نمیشود. فقط در برنامه <p><a href=\"https://app.hiddify.com\" target=\"_blank\">Hiddify</a></p> و برنامه های با هسته XRay پشتیبانی میشود</strong></p>"
+"این پروتکل اطلاعات را در کانال های جداگانه ارسال و دریافت می کند<br />\n"
+"⚠️<strong>&nbsp;این پروتکل در برنامه های با هسته SingBox پشتیبانی نمیشود. فقط در برنامه <a href=\"https://app.hiddify.com\" target=\"_blank\">Hiddify</a> و برنامه های با هسته XRay پشتیبانی میشود</strong>"
 
 msgid "config.xhttp_enable.label"
 msgstr "🈁 Split HTTP"
