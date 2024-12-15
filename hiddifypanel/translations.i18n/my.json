@@ -497,7 +497,7 @@
       "label": "☑️ HTTP ချိတ်ဆက်မှု ခွင့်ပြုရန်"
     },
     "httpupgrade_enable": {
-      "description": "<p>HTTPUpgrade သည် ချိတ်ဆက်မှုကို တိုက်ရိုက်အသုံးမပြုမီ HTTP 1.1 အဆင့်မြှင့်တင်ရန် တောင်းဆိုချက်နှင့် တုံ့ပြန်မှုကို အပြီးသတ်ပါ။ WebSocket Protocol ကိုယ်တိုင်က ပြဿနာအားလုံးကို ကိုင်တွယ်ဖြေရှင်းစရာမလိုဘဲ၊ ပြောင်းပြန် ပရောက်စီ နှင့် CDN အများအပြားမှ တစ်ဆင့်ပြန်ပို့နိုင်သည့် ဦးတည်လမ်းကြောင်းတစ်ခုကို ဖန်တီးထားသည့် WebSocket နှင့် ဆင်တူသည်။<br />\n⚠️ <strong>Xray အခြေခံ client များတွင် မရရှိနိုင်ပါ။ HiddifyNext၊ Singbox နှင့် V2fly client များကိုသာ ပံ့ပိုးထားပါသည်။</strong> <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/Basic-Concepts/#http-upgrade\" target=\"_blank\"><strong>(ပိုမို ဖတ်ရှုရန်)</strong></a></p>",
+      "description": "HTTPUpgrade သည် ချိတ်ဆက်မှုကို တိုက်ရိုက်အသုံးမပြုမီ HTTP 1.1 အဆင့်မြှင့်တင်ရန် တောင်းဆိုချက်နှင့် တုံ့ပြန်မှုကို အပြီးသတ်ပါ။ WebSocket Protocol ကိုယ်တိုင်က ပြဿနာအားလုံးကို ကိုင်တွယ်ဖြေရှင်းစရာမလိုဘဲ၊ ပြောင်းပြန် ပရောက်စီ နှင့် CDN အများအပြားမှ တစ်ဆင့်ပြန်ပို့နိုင်သည့် ဦးတည်လမ်းကြောင်းတစ်ခုကို ဖန်တီးထားသည့် WebSocket နှင့် ဆင်တူသည်။<br />\n⚠️ <strong>Xray အခြေခံ client များတွင် မရရှိနိုင်ပါ။ HiddifyNext၊ Singbox နှင့် V2fly client များကိုသာ ပံ့ပိုးထားပါသည်။</strong> <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/Basic-Concepts/#http-upgrade\" target=\"_blank\"><strong>(ပိုမို ဖတ်ရှုရန်)</strong></a>",
       "label": "🆙 HTTPUpgrade နည်းလမ်း"
     },
     "hysteria": {
@@ -579,7 +579,7 @@
       "label": "⬆️ MUX Brutal အပ်လုဒ် (mbps)"
     },
     "mux_enable": {
-      "description": "<p>Mux သည် လိုက်ဖက်ညီသော client များ လိုအပ်သည်။ Hiddify Next နှင့် Singbox ရှိ Mux သည် XRay နှင့် တွဲဖက်၍မရပါ။ <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-MUX-works-and-its-usage/\" target=\"_blank\">(ပိုမို ဖတ်ရှုရန်)</a></p>",
+      "description": "Mux သည် လိုက်ဖက်ညီသော client များ လိုအပ်သည်။ Hiddify Next နှင့် Singbox ရှိ Mux သည် XRay နှင့် တွဲဖက်၍မရပါ။ <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-MUX-works-and-its-usage/\" target=\"_blank\">(ပိုမို ဖတ်ရှုရန်)</a>",
       "label": "Ⓜ️ MUX (⚠️ အချို့သော ကလိုင်းယင့်များနှင့် မကိုက်ညီပါ)"
     },
     "mux_max_connections": {
@@ -642,10 +642,6 @@
       "description": "ကျပန်းဖြစ်သင့်သည်",
       "label": "ℹ️ HTTP အဆင့်မြှင့်တင်မှု လမ်းကြောင်း"
     },
-    "path_xhttp": {
-      "description": "ဤရွေးချယ်မှုသည် Split HTTP အတွက် လမ်းကြောင်းကို သတ်မှတ်သည်။",
-      "label": "ℹ️ Split HTTP အတွက် လမ်းကြောင်း"
-    },
     "path_ss": {
       "description": "လင့်ခ်များရှိ Shadowsocks လမ်းကြောင်း",
       "label": "Shadowsocks လမ်းကြောင်း"
@@ -673,6 +669,10 @@
     "path_ws": {
       "description": "Websocket လမ်းကြောင်းကို သတ်မှတ်ပါ။",
       "label": "ℹ️ Websocket တောင်းဆိုမှုများ၏ လမ်းကြောင်း"
+    },
+    "path_xhttp": {
+      "description": "ဤရွေးချယ်မှုသည် Split HTTP အတွက် လမ်းကြောင်းကို သတ်မှတ်သည်။",
+      "label": "ℹ️ Split HTTP အတွက် လမ်းကြောင်း"
     },
     "proxies": {
       "description": "သီးခြား ပရောက်စီဆက်တင်များကို သတ်မှတ်ပါ။",
@@ -778,10 +778,6 @@
       "description": "သင့်အသုံးပြုသူများကို အမြန်နှုန်းစမ်းသပ်မှု ပြုလုပ်ခွင့်ပြုရန်။ ၎င်းသည် ၎င်းတို့အား လင့်ခ်အရည်အသွေးကို ခွဲခြားသတ်မှတ်ရန် ကူညီပေးသည်။",
       "label": "🚀 အမြန်နှုန်း စမ်းသပ်"
     },
-    "xhttp_enable": {
-      "description": "ဤပရိုတိုကောသည် ချန်နယ်တစ်ခုချင်းစီတွင် အချက်အလက်များကို ပေးပို့လက်ခံသည်",
-      "label": "🈁 Split HTTP"
-    },
     "ssfaketls": {
       "description": "Shadowsocks FakeTLS သည် tls packet တွင် ရက်စွဲကို ဖုံးအုပ်ထားသည့် ရိုးရှင်းသော ရှုပ်ထွေးစေသော ကိရိယာတစ်ခုဖြစ်သည်။",
       "label": "Shadowsocks FakeTLS"
@@ -867,7 +863,7 @@
       "label": "🔐 တယ်လီဂရမ် ဘော့တိုကင်"
     },
     "telegram_enable": {
-      "description": "<p data-pm-slice=\"1 1 []\">တယ်လီဂရမ် MTProto ကို tls အသွားအလာအဖြစ် Encapsulate Telegram Proxy အတွက်အသုံးပြုသည်။<br> ⚠️ <span style=\"color:#d32f2f;\"><strong>ဤပရိုတိုကောသည် တိုက်ရိုက် ဒိုမိန်းလိုအပ်သည်။</strong></span></p>",
+      "description": "တယ်လီဂရမ် MTProto ကို tls အသွားအလာအဖြစ် Encapsulate Telegram Proxy အတွက်အသုံးပြုသည်။<br> ⚠️ <span style=\"color:#d32f2f;\"><strong>ဤပရိုတိုကောသည် တိုက်ရိုက် ဒိုမိန်းလိုအပ်သည်။</strong></span>",
       "label": "✔️ တယ်လီဂရမ် MTProto"
     },
     "telegram_fakedomain": {
@@ -883,7 +879,7 @@
       "label": "TLS အပြင်အဆင်များ"
     },
     "tls_fragment_enable": {
-      "description": "<p>အချို့သောအခြေအနေများတွင်၊ ၎င်းသည် SNI အမည်ပျက်စာရင်းစနစ်ကို ကျော်လွှားနိုင်သည်။ <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-the-TLS-Trick-works-and-its-usage/\" target=\"_blank\">(ပိုမိုဖတ်ရှုရန်)</a></p>",
+      "description": "အချို့သောအခြေအနေများတွင်၊ ၎င်းသည် SNI အမည်ပျက်စာရင်းစနစ်ကို ကျော်လွှားနိုင်သည်။ <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-the-TLS-Trick-works-and-its-usage/\" target=\"_blank\">(ပိုမိုဖတ်ရှုရန်)</a>",
       "label": "⏯ TLS Fragment"
     },
     "tls_fragment_size": {
@@ -899,7 +895,7 @@
       "label": "🔠 TLS Mixed SNI Case"
     },
     "tls_padding_enable": {
-      "description": "<p>TLS Fragmentation အတွက် Padding ကိုဖွင့်ပါ။ <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-the-TLS-Trick-works-and-its-usage/#tls-padding\" target=\"_blank\">(ပိုမို ဖတ်ရှုရန်)</a></p>",
+      "description": "TLS Fragmentation အတွက် Padding ကိုဖွင့်ပါ။ <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-the-TLS-Trick-works-and-its-usage/#tls-padding\" target=\"_blank\">(ပိုမို ဖတ်ရှုရန်)</a>",
       "label": "♒️ TLS Padding"
     },
     "tls_padding_length": {
@@ -987,7 +983,7 @@
       "label": "WireGuard"
     },
     "wireguard_enable": {
-      "description": "<p>WireGuard သည် UDP အခြေခံ ပရိုတိုကောလ်ဖြစ်သည်။ (⚠️ ၎င်းသည် <a href=\"https://github.com/hiddify/hiddify-next\" target=\"_blank\">Hiddify Next</a> တွင် အလုပ်လုပ်သည်)</p>",
+      "description": "WireGuard သည် UDP အခြေခံ ပရိုတိုကောလ်ဖြစ်သည်။ (⚠️ ၎င်းသည် <a href=\"https://github.com/hiddify/hiddify-next\" target=\"_blank\">Hiddify Next</a> တွင် အလုပ်လုပ်သည်)",
       "label": "🐉 WireGuard"
     },
     "wireguard_ipv4": {
@@ -1017,6 +1013,10 @@
     "ws_enable": {
       "description": "Websocket သည် CDN တွင် အသုံးပြုရန် အသုံးဝင်သော HTTP ပေါ်ရှိ ဥမင်လိုဏ်ခေါင်းတစ်ခုကို ဖန်တီးသည်။",
       "label": "🔰 Websocket"
+    },
+    "xhttp_enable": {
+      "description": "ဤပရိုတိုကောသည် ချန်နယ်တစ်ခုချင်းစီတွင် အချက်အလက်များကို ပေးပို့လက်ခံသည်",
+      "label": "🈁 Split HTTP"
     },
     "xtls_enable": {
       "description": "XTLS ပရိုတိုကောလ်ကို ဖွင့်ရန်",

@@ -57,7 +57,6 @@
   "Domain (%(domain)s)-> IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode": "域 (%(domain)s)-> IP = %(domain_ip)s 与您的 IP = %(server_ip)s 不同。这在直接模式下是必需的",
   "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode": "域名IP=%(domain_ip)s is not matched with your ip=%(server_ip)s需要用于直连模式",
   "Domain can not be resolved! there is a problem in your domain": "域名无法解析！您的域有问题。请检查您的域配置。",
-  "Domain cannot be resolved! Please check DNS settings": "",
   "Domain is not REALITY friendly!": "域名对现实不友好！",
   "Domain?": "域名？",
   "Donation": {
@@ -152,7 +151,6 @@
   "QRCode": "<i class='fa-solid fa-qrcode'></i> QRCode",
   "RAM": "内存",
   "REALITY Fallback domain is not compaitble with server names!": "REALITY 后备域与服务器名称不兼容！",
-  "REALITY Fallback domain is not compatible with server names!": "",
   "Release": "✅ 发布",
   "Remaining about %(relative)s, exactly %(days)s days": "还剩下大约 %(relative)s，正好 %(days)s 天",
   "Remote nodes are not supported yet!": "尚不支持远程节点！",
@@ -188,7 +186,6 @@
   "Simplifies the process of employing the link elsewhere.": "简化了在其他地方使用链接的过程",
   "SingBox": "📦 歌盒",
   "Sort by %(name)s": "以%(name)s排序",
-  "Specifying CDN IP is only valid for CDN mode": "",
   "Start Date": "开始日期",
   "Started %(days)s days ago": "已于 %(days)s 天前开始",
   "Started from %(relative)s": "从 %(relative)s 开始",
@@ -327,9 +324,6 @@
     "streisand": {
       "description": "Streisand描述",
       "title": "Streisand"
-    },
-    "v2rayn": {
-      "title": ""
     },
     "v2rayng": {
       "description": "V2RayNG 说明",
@@ -503,7 +497,7 @@
       "label": "☑️ 允许 HTTP 连接"
     },
     "httpupgrade_enable": {
-      "description": "<p>HTTPUpgrade 在直接使用连接之前完成 HTTP 1.1 升级请求和响应。它与 WebSocket 类似，它创建了一个方向通道，可以通过许多反向代理和 CDN 转发，而无需处理围绕 WebSocket 协议本身的所有问题。<br />\n⚠️<strong>不适用于基于 Xray 的客户端。仅支持 HiddifyNext、Singbox 和 V2fly 客户端。</strong> <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/Basic-Concepts/#http-upgrade\" target=\"_blank\"><strong>（阅读更多）</strong></a></p>",
+      "description": "HTTPUpgrade 在直接使用连接之前完成 HTTP 1.1 升级请求和响应。它与 WebSocket 类似，它创建了一个方向通道，可以通过许多反向代理和 CDN 转发，而无需处理围绕 WebSocket 协议本身的所有问题。<br />\n⚠️<strong>不适用于基于 Xray 的客户端。仅支持 HiddifyNext、Singbox 和 V2fly 客户端。</strong> <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/Basic-Concepts/#http-upgrade\" target=\"_blank\"><strong>（阅读更多）</strong></a>",
       "label": "🆙 HTTPUpgrade 方法"
     },
     "hysteria": {
@@ -585,7 +579,7 @@
       "label": "⬆️ MUX Brutal 上传 (mbps)"
     },
     "mux_enable": {
-      "description": "<p>Mux 需要兼容的客户端。Hiddify Next 和 Singbox 中的 Mux 与 XRay 不兼容。 <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-MUX-works-and-its-usage/\" target=\"_blank\">（阅读更多）</a></p>",
+      "description": "Mux 需要兼容的客户端。Hiddify Next 和 Singbox 中的 Mux 与 XRay 不兼容。 <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-MUX-works-and-its-usage/\" target=\"_blank\">（阅读更多）</a>",
       "label": "Ⓜ️ MUX（⚠️ 与某些客户端不兼容）"
     },
     "mux_max_connections": {
@@ -647,10 +641,6 @@
     "path_httpupgrade": {
       "description": "应该是随机的",
       "label": "ℹ️ HTTP 升级路径"
-    },
-    "path_splithttp": {
-      "description": "",
-      "label": ""
     },
     "path_ss": {
       "description": "链接中的 Shadowsocks 路径",
@@ -788,10 +778,6 @@
       "description": "允许您的用户进行速度测试。它可以帮助他们识别链接质量",
       "label": "🚀 速度测试"
     },
-    "splithttp_enable": {
-      "description": "",
-      "label": ""
-    },
     "ssfaketls": {
       "description": "Shadowsocks FakeTLS 是一个简单的混淆工具，将日期封装在 tls 数据包中",
       "label": "Shadowsocks FakeTLS"
@@ -807,38 +793,6 @@
     "ssh": {
       "description": "ℹ️ SSH 代理，也称为 SSH 隧道或 SSH 端口转发，是一种通过不安全网络在两台计算机之间创建安全通信通道的安全方法。我们有一个与 ssh 服务器完全不同的特定应用程序，无法执行任何命令",
       "label": "SSH 代理"
-    },
-    "ssh_host_dsa_pk": {
-      "description": "",
-      "label": ""
-    },
-    "ssh_host_dsa_pub": {
-      "description": "",
-      "label": ""
-    },
-    "ssh_host_ecdsa_pk": {
-      "description": "",
-      "label": ""
-    },
-    "ssh_host_ecdsa_pub": {
-      "description": "",
-      "label": ""
-    },
-    "ssh_host_ed25519_pk": {
-      "description": "",
-      "label": ""
-    },
-    "ssh_host_ed25519_pub": {
-      "description": "",
-      "label": ""
-    },
-    "ssh_host_rsa_pk": {
-      "description": "",
-      "label": ""
-    },
-    "ssh_host_rsa_pub": {
-      "description": "",
-      "label": ""
     },
     "ssh_server_enable": {
       "description": "SSH Proxy 与原来的 SSH Server 完全不同",
@@ -925,7 +879,7 @@
       "label": "TLS 设置"
     },
     "tls_fragment_enable": {
-      "description": "<p>在某些情况下，它可以绕过 SNI 黑名单系统。 <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-the-TLS-Trick-works-and-its-usage/\" target=\"_blank\">（阅读更多）</a></p>",
+      "description": "在某些情况下，它可以绕过 SNI 黑名单系统。 <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-the-TLS-Trick-works-and-its-usage/\" target=\"_blank\">（阅读更多）</a>",
       "label": "⏯ TLS Fragment"
     },
     "tls_fragment_size": {
@@ -941,7 +895,7 @@
       "label": "🔠 TLS 混合 SNI 大小写"
     },
     "tls_padding_enable": {
-      "description": "<p>启用 TLS 碎片填充。 <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-the-TLS-Trick-works-and-its-usage/#tls-padding\" target=\"_blank\">（阅读更多）</a></p>",
+      "description": "启用 TLS 碎片填充。 <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-the-TLS-Trick-works-and-its-usage/#tls-padding\" target=\"_blank\">（阅读更多）</a>",
       "label": "♒️ TLS Padding"
     },
     "tls_padding_length": {
@@ -1029,7 +983,7 @@
       "label": "🐉 WireGuard"
     },
     "wireguard_enable": {
-      "description": "<p>WireGuard 是基于 UDP 的协议。（⚠️ 它在<a href=\"https://github.com/hiddify/hiddify-next\" target=\"_blank\">Hiddify Next</a>中运行）</p>",
+      "description": "WireGuard 是基于 UDP 的协议。（⚠️ 它在<a href=\"https://github.com/hiddify/hiddify-next\" target=\"_blank\">Hiddify Next</a>中运行）",
       "label": "启用 WireGuard"
     },
     "wireguard_ipv4": {

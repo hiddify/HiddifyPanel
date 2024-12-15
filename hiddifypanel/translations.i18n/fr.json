@@ -497,7 +497,7 @@
       "label": "☑️ Autoriser la connexion HTTP"
     },
     "httpupgrade_enable": {
-      "description": "<p>HTTPUpgrade effectue une demande et une réponse de mise à niveau HTTP 1.1 avant d'utiliser directement la connexion. Il est similaire à WebSocket dans la manière dont il crée un canal de direction qui peut être transmis par de nombreux proxys inverses et CDN, sans qu'il soit nécessaire de résoudre tous les problèmes liés au protocole WebSocket lui-même.<br />\n⚠️ <strong>Non disponible dans les clients basés sur Xray. Seuls les clients HiddifyNext, Singbox et V2fly sont pris en charge.</strong> <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/Basic-Concepts/#http-upgrade\" target=\"_blank\"><strong>(En savoir plus)</strong></a></p>",
+      "description": "HTTPUpgrade effectue une demande et une réponse de mise à niveau HTTP 1.1 avant d'utiliser directement la connexion. Il est similaire à WebSocket dans la manière dont il crée un canal de direction qui peut être transmis par de nombreux proxys inverses et CDN, sans qu'il soit nécessaire de résoudre tous les problèmes liés au protocole WebSocket lui-même.<br />\n⚠️ <strong>Non disponible dans les clients basés sur Xray. Seuls les clients HiddifyNext, Singbox et V2fly sont pris en charge.</strong> <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/Basic-Concepts/#http-upgrade\" target=\"_blank\"><strong>(En savoir plus)</strong></a>",
       "label": "🆙 Méthode HTTPUpgrade"
     },
     "hysteria": {
@@ -579,7 +579,7 @@
       "label": "⬆️ Téléchargement brutal MUX (mbps)"
     },
     "mux_enable": {
-      "description": "<p>Mux a besoin de clients compatibles. Mux dans Hiddify Next et Singbox ne sont pas compatibles avec XRay. <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-MUX-works-and-its-usage/\" target=\"_blank\">(En savoir plus)</a></p>",
+      "description": "Mux a besoin de clients compatibles. Mux dans Hiddify Next et Singbox ne sont pas compatibles avec XRay. <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-MUX-works-and-its-usage/\" target=\"_blank\">(En savoir plus)</a>",
       "label": "Ⓜ️ MUX (⚠️ Incompatible avec certains clients)"
     },
     "mux_max_connections": {
@@ -642,10 +642,6 @@
       "description": "ça devrait être aléatoire",
       "label": "ℹ️ Chemin de mise à niveau HTTP"
     },
-    "path_xhttp": {
-      "description": "Cette option définit le chemin pour Split HTTP",
-      "label": "Chemin pour le HTTP fractionné"
-    },
     "path_ss": {
       "description": "Chemin Shadowsocks dans les liens",
       "label": "Chemin Shadowsocks "
@@ -673,6 +669,10 @@
     "path_ws": {
       "description": "Spécifiez le chemin Websocket",
       "label": "ℹ️ Chemin des requêtes Websocket"
+    },
+    "path_xhttp": {
+      "description": "Cette option définit le chemin pour Split HTTP",
+      "label": "Chemin pour le HTTP fractionné"
     },
     "proxies": {
       "description": "Définir des paramètres de proxy spécifiques",
@@ -778,10 +778,6 @@
       "description": "Autorisez vos utilisateurs à effectuer des tests de vitesse. Cela les aide à identifier la qualité du lien",
       "label": "🚀 Test de vitesse"
     },
-    "xhttp_enable": {
-      "description": "Ce protocole envoie et reçoit des informations dans des canaux individuels ",
-      "label": "🈁 Split HTTP"
-    },
     "ssfaketls": {
       "description": "Shadowsocks FakeTLS est un simple outil d'obscurcissement qui encapsule la date dans un paquet tls.",
       "label": "Shadowsocks FakeTLS"
@@ -867,7 +863,7 @@
       "label": "🔐 Jeton de robot Telegram"
     },
     "telegram_enable": {
-      "description": "<p data-pm-slice=\"1 1 []\">Telegram MTProto est utilisé pour encapsuler le proxy Telegram en tant que trafic TLS.<br> ⚠️ <span style=\"color:#d32f2f;\"><strong>Ce protocole nécessite un Direct Domain</strong></span></p>",
+      "description": "Telegram MTProto est utilisé pour encapsuler le proxy Telegram en tant que trafic TLS.<br> ⚠️ <span style=\"color:#d32f2f;\"><strong>Ce protocole nécessite un Direct Domain</strong></span>",
       "label": "✔️ Telegram MTProto"
     },
     "telegram_fakedomain": {
@@ -883,7 +879,7 @@
       "label": "Paramètres TLS"
     },
     "tls_fragment_enable": {
-      "description": "<p>Dans certaines circonstances, il peut contourner le système de liste noire du SNI. <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-the-TLS-Trick-works-and-its-usage/\" target=\"_blank\">(En savoir plus)</a></p>",
+      "description": "Dans certaines circonstances, il peut contourner le système de liste noire du SNI. <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-the-TLS-Trick-works-and-its-usage/\" target=\"_blank\">(En savoir plus)</a>",
       "label": "⏯ TLS Fragment"
     },
     "tls_fragment_size": {
@@ -899,7 +895,7 @@
       "label": "🔠 Cas SNI mixte TLS"
     },
     "tls_padding_enable": {
-      "description": "<p>Active le remplissage pour la fragmentation TLS. <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-the-TLS-Trick-works-and-its-usage/#tls-padding\" target=\"_blank\">(En savoir plus)</a></p>",
+      "description": "Active le remplissage pour la fragmentation TLS. <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-the-TLS-Trick-works-and-its-usage/#tls-padding\" target=\"_blank\">(En savoir plus)</a>",
       "label": "♒️ TLS Padding"
     },
     "tls_padding_length": {
@@ -987,7 +983,7 @@
       "label": "🐉 WireGuard"
     },
     "wireguard_enable": {
-      "description": "<p>WireGuard est un protocole basé sur UDP. (⚠️ Cela fonctionne dans <a href=\"https://github.com/hiddify/hiddify-next\" target=\"_blank\">Hiddify Next</a> )</p>",
+      "description": "WireGuard est un protocole basé sur UDP. (⚠️ Cela fonctionne dans <a href=\"https://github.com/hiddify/hiddify-next\" target=\"_blank\">Hiddify Next</a> )",
       "label": "Active WireGuard"
     },
     "wireguard_ipv4": {
@@ -1017,6 +1013,10 @@
     "ws_enable": {
       "description": "Websocket crée un tunnel sur HTTP utile pour être utilisé dans CDN",
       "label": "🔰 Websocket"
+    },
+    "xhttp_enable": {
+      "description": "Ce protocole envoie et reçoit des informations dans des canaux individuels ",
+      "label": "🈁 Split HTTP"
     },
     "xtls_enable": {
       "description": "Active le protocole XTLS",

@@ -57,7 +57,6 @@
   "Domain (%(domain)s)-> IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode": "Domain (%(domain)s)-> IP = %(domain_ip)s não é igual ao seu IP = %(server_ip)s . isso é necessário no modo direto",
   "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode": " O IP do domínio = %(domain_ip)s não corresponde ao seu IP = %(server_ip)s, o que é necessário no modo direto",
   "Domain can not be resolved! there is a problem in your domain": "O domínio não pode ser resolvido! Há um problema em seu domínio. Verifique as configurações do seu Domínio.",
-  "Domain cannot be resolved! Please check DNS settings": "",
   "Domain is not REALITY friendly!": "O domínio não é compatível com Reality!",
   "Domain?": "Domínio?",
   "Donation": {
@@ -152,7 +151,6 @@
   "QRCode": "<i class='fa-solid fa-qrcode'></i> QRCode",
   "RAM": "BATER",
   "REALITY Fallback domain is not compaitble with server names!": "REALITY Fallback Domain não é compatível com nomes de servidores!",
-  "REALITY Fallback domain is not compatible with server names!": "",
   "Release": "✅ Liberação",
   "Remaining about %(relative)s, exactly %(days)s days": "Restam cerca de %(relative)s, exatamente %(days)s dias",
   "Remote nodes are not supported yet!": "Nós remotos ainda não são suportados!",
@@ -188,7 +186,6 @@
   "Simplifies the process of employing the link elsewhere.": "Simplifica o processo de utilização do link em outro lugar",
   "SingBox": "📦 SingBox",
   "Sort by %(name)s": "Ordenar por %(name)s",
-  "Specifying CDN IP is only valid for CDN mode": "",
   "Start Date": "Data de início",
   "Started %(days)s days ago": "Iniciado há %(days)s dias",
   "Started from %(relative)s": "Iniciado em %(relative)s",
@@ -327,9 +324,6 @@
     "streisand": {
       "description": "Descrição de Streisand",
       "title": "Streisand"
-    },
-    "v2rayn": {
-      "title": ""
     },
     "v2rayng": {
       "description": "Descrição do V2RayNG",
@@ -503,7 +497,7 @@
       "label": "☑️ Permitir conexão HTTP"
     },
     "httpupgrade_enable": {
-      "description": "<p>HTTPUpgrade conclui uma solicitação e resposta de atualização HTTP 1.1 antes de usar a conexão diretamente. É semelhante ao WebSocket na forma como cria um canal de direção que pode ser encaminhado por muitos proxies reversos e CDNs, sem a necessidade de lidar com todos os problemas relacionados ao próprio protocolo WebSocket.<br />\n⚠️ <strong>Não disponível em clientes baseados em Xray. Apenas clientes HiddifyNext, Singbox e V2fly são suportados.</strong> <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/Basic-Concepts/#http-upgrade\" target=\"_blank\"><strong>(Consulte Mais informação)</strong></a></p>",
+      "description": "HTTPUpgrade conclui uma solicitação e resposta de atualização HTTP 1.1 antes de usar a conexão diretamente. É semelhante ao WebSocket na forma como cria um canal de direção que pode ser encaminhado por muitos proxies reversos e CDNs, sem a necessidade de lidar com todos os problemas relacionados ao próprio protocolo WebSocket.<br />\n⚠️ <strong>Não disponível em clientes baseados em Xray. Apenas clientes HiddifyNext, Singbox e V2fly são suportados.</strong> <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/Basic-Concepts/#http-upgrade\" target=\"_blank\"><strong>(Consulte Mais informação)</strong></a>",
       "label": "🆙 Método HTTPUpgrade"
     },
     "hysteria": {
@@ -585,7 +579,7 @@
       "label": "⬆️ Carregamento Brutal MUX (mbps)"
     },
     "mux_enable": {
-      "description": "<p>Mux precisa de clientes compatíveis. Mux no Hiddify Next e Singbox não são compatíveis com XRay. <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-MUX-works-and-its-usage/\" target=\"_blank\">(Consulte Mais informação)</a></p>",
+      "description": "Mux precisa de clientes compatíveis. Mux no Hiddify Next e Singbox não são compatíveis com XRay. <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-MUX-works-and-its-usage/\" target=\"_blank\">(Consulte Mais informação)</a>",
       "label": "Ⓜ️ MUX (⚠️ Incompatível com alguns clientes)"
     },
     "mux_max_connections": {
@@ -647,10 +641,6 @@
     "path_httpupgrade": {
       "description": "deveria ser aleatório",
       "label": "ℹ️ Caminho de atualização HTTP"
-    },
-    "path_splithttp": {
-      "description": "",
-      "label": ""
     },
     "path_ss": {
       "description": "Caminho Shadowsocks nos Links",
@@ -788,10 +778,6 @@
       "description": "Permita que seus usuários façam o teste de velocidade. Isso os ajuda a identificar a qualidade do link",
       "label": "🚀 Teste de velocidade"
     },
-    "splithttp_enable": {
-      "description": "",
-      "label": ""
-    },
     "ssfaketls": {
       "description": "Shadowsocks FakeTLS é uma ferramenta de ofuscação simples que encapsula a data In tls package",
       "label": "Shadowsocks FakeTLS"
@@ -807,38 +793,6 @@
     "ssh": {
       "description": "Um proxy SSH, também conhecido como túnel SSH ou encaminhamento de porta SSH, é um método seguro de criar um canal de comunicação seguro entre duas máquinas em uma rede insegura. Temos um aplicativo específico que é completamente diferente do servidor ssh e não pode executar nenhum comando",
       "label": "Proxy SSH"
-    },
-    "ssh_host_dsa_pk": {
-      "description": "",
-      "label": ""
-    },
-    "ssh_host_dsa_pub": {
-      "description": "",
-      "label": ""
-    },
-    "ssh_host_ecdsa_pk": {
-      "description": "",
-      "label": ""
-    },
-    "ssh_host_ecdsa_pub": {
-      "description": "",
-      "label": ""
-    },
-    "ssh_host_ed25519_pk": {
-      "description": "",
-      "label": ""
-    },
-    "ssh_host_ed25519_pub": {
-      "description": "",
-      "label": ""
-    },
-    "ssh_host_rsa_pk": {
-      "description": "",
-      "label": ""
-    },
-    "ssh_host_rsa_pub": {
-      "description": "",
-      "label": ""
     },
     "ssh_server_enable": {
       "description": "O proxy SSH é completamente diferente do servidor ssh original.",
@@ -925,7 +879,7 @@
       "label": "Configurações de TLS"
     },
     "tls_fragment_enable": {
-      "description": "<p>Em algumas circunstâncias, pode contornar o sistema de lista negra do SNI. <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-the-TLS-Trick-works-and-its-usage/\" target=\"_blank\">(Consulte Mais informação)</a></p>",
+      "description": "Em algumas circunstâncias, pode contornar o sistema de lista negra do SNI. <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-the-TLS-Trick-works-and-its-usage/\" target=\"_blank\">(Consulte Mais informação)</a>",
       "label": "⏯ TLS Fragment"
     },
     "tls_fragment_size": {
@@ -941,7 +895,7 @@
       "label": "🔠 Caso SNI Misto TLS"
     },
     "tls_padding_enable": {
-      "description": "<p>Habilita preenchimento para fragmentação TLS. <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-the-TLS-Trick-works-and-its-usage/#tls-padding\" target=\"_blank\">(Consulte Mais informação)</a></p>",
+      "description": "Habilita preenchimento para fragmentação TLS. <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-the-TLS-Trick-works-and-its-usage/#tls-padding\" target=\"_blank\">(Consulte Mais informação)</a>",
       "label": "♒️ TLS Padding"
     },
     "tls_padding_length": {
@@ -1029,7 +983,7 @@
       "label": "🐉 WireGuard"
     },
     "wireguard_enable": {
-      "description": "<p>WireGuard é um protocolo baseado em UDP. (⚠️ Está funcionando no <a href=\"https://github.com/hiddify/hiddify-next\" target=\"_blank\">Hiddify a seguir</a> )</p>",
+      "description": "WireGuard é um protocolo baseado em UDP. (⚠️ Está funcionando no <a href=\"https://github.com/hiddify/hiddify-next\" target=\"_blank\">Hiddify a seguir</a> )",
       "label": "Habilita WireGuard"
     },
     "wireguard_ipv4": {
