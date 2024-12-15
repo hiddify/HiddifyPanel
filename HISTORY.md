@@ -1,6 +1,14 @@
 # Changelog
 
 
+## v10.80.7 (2024-12-15)
+
+#### Other
+
+* Update translations. 
+
+
+
 ## v10.80.6 (2024-12-15)
 
 #### Other
