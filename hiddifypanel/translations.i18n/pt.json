@@ -497,7 +497,7 @@
       "label": "☑️ Permitir conexão HTTP"
     },
     "httpupgrade_enable": {
-      "description": "<p>HTTPUpgrade conclui uma solicitação e resposta de atualização HTTP 1.1 antes de usar a conexão diretamente. É semelhante ao WebSocket na forma como cria um canal de direção que pode ser encaminhado por muitos proxies reversos e CDNs, sem a necessidade de lidar com todos os problemas relacionados ao próprio protocolo WebSocket.<br />\n⚠️ <strong>Não disponível em clientes baseados em Xray. Apenas clientes HiddifyNext, Singbox e V2fly são suportados.</strong> <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/Basic-Concepts/#http-upgrade\" target=\"_blank\"><strong>(Consulte Mais informação)</strong></a></p>",
+      "description": "HTTPUpgrade conclui uma solicitação e resposta de atualização HTTP 1.1 antes de usar a conexão diretamente. É semelhante ao WebSocket na forma como cria um canal de direção que pode ser encaminhado por muitos proxies reversos e CDNs, sem a necessidade de lidar com todos os problemas relacionados ao próprio protocolo WebSocket.<br />\n⚠️ <strong>Não disponível em clientes baseados em Xray. Apenas clientes HiddifyNext, Singbox e V2fly são suportados.</strong> <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/Basic-Concepts/#http-upgrade\" target=\"_blank\"><strong>(Consulte Mais informação)</strong></a>",
       "label": "🆙 Método HTTPUpgrade"
     },
     "hysteria": {
@@ -579,7 +579,7 @@
       "label": "⬆️ Carregamento Brutal MUX (mbps)"
     },
     "mux_enable": {
-      "description": "<p>Mux precisa de clientes compatíveis. Mux no Hiddify Next e Singbox não são compatíveis com XRay. <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-MUX-works-and-its-usage/\" target=\"_blank\">(Consulte Mais informação)</a></p>",
+      "description": "Mux precisa de clientes compatíveis. Mux no Hiddify Next e Singbox não são compatíveis com XRay. <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-MUX-works-and-its-usage/\" target=\"_blank\">(Consulte Mais informação)</a>",
       "label": "Ⓜ️ MUX (⚠️ Incompatível com alguns clientes)"
     },
     "mux_max_connections": {
@@ -879,7 +879,7 @@
       "label": "Configurações de TLS"
     },
     "tls_fragment_enable": {
-      "description": "<p>Em algumas circunstâncias, pode contornar o sistema de lista negra do SNI. <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-the-TLS-Trick-works-and-its-usage/\" target=\"_blank\">(Consulte Mais informação)</a></p>",
+      "description": "Em algumas circunstâncias, pode contornar o sistema de lista negra do SNI. <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-the-TLS-Trick-works-and-its-usage/\" target=\"_blank\">(Consulte Mais informação)</a>",
       "label": "⏯ TLS Fragment"
     },
     "tls_fragment_size": {
@@ -895,7 +895,7 @@
       "label": "🔠 Caso SNI Misto TLS"
     },
     "tls_padding_enable": {
-      "description": "<p>Habilita preenchimento para fragmentação TLS. <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-the-TLS-Trick-works-and-its-usage/#tls-padding\" target=\"_blank\">(Consulte Mais informação)</a></p>",
+      "description": "Habilita preenchimento para fragmentação TLS. <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-the-TLS-Trick-works-and-its-usage/#tls-padding\" target=\"_blank\">(Consulte Mais informação)</a>",
       "label": "♒️ TLS Padding"
     },
     "tls_padding_length": {
@@ -983,7 +983,7 @@
       "label": "🐉 WireGuard"
     },
     "wireguard_enable": {
-      "description": "<p>WireGuard é um protocolo baseado em UDP. (⚠️ Está funcionando no <a href=\"https://github.com/hiddify/hiddify-next\" target=\"_blank\">Hiddify a seguir</a> )</p>",
+      "description": "WireGuard é um protocolo baseado em UDP. (⚠️ Está funcionando no <a href=\"https://github.com/hiddify/hiddify-next\" target=\"_blank\">Hiddify a seguir</a> )",
       "label": "Habilita WireGuard"
     },
     "wireguard_ipv4": {

@@ -497,7 +497,7 @@
       "label": "☑️ 允许 HTTP 连接"
     },
     "httpupgrade_enable": {
-      "description": "<p>HTTPUpgrade 在直接使用连接之前完成 HTTP 1.1 升级请求和响应。它与 WebSocket 类似，它创建了一个方向通道，可以通过许多反向代理和 CDN 转发，而无需处理围绕 WebSocket 协议本身的所有问题。<br />\n⚠️<strong>不适用于基于 Xray 的客户端。仅支持 HiddifyNext、Singbox 和 V2fly 客户端。</strong> <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/Basic-Concepts/#http-upgrade\" target=\"_blank\"><strong>（阅读更多）</strong></a></p>",
+      "description": "HTTPUpgrade 在直接使用连接之前完成 HTTP 1.1 升级请求和响应。它与 WebSocket 类似，它创建了一个方向通道，可以通过许多反向代理和 CDN 转发，而无需处理围绕 WebSocket 协议本身的所有问题。<br />\n⚠️<strong>不适用于基于 Xray 的客户端。仅支持 HiddifyNext、Singbox 和 V2fly 客户端。</strong> <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/Basic-Concepts/#http-upgrade\" target=\"_blank\"><strong>（阅读更多）</strong></a>",
       "label": "🆙 HTTPUpgrade 方法"
     },
     "hysteria": {
@@ -579,7 +579,7 @@
       "label": "⬆️ MUX Brutal 上传 (mbps)"
     },
     "mux_enable": {
-      "description": "<p>Mux 需要兼容的客户端。Hiddify Next 和 Singbox 中的 Mux 与 XRay 不兼容。 <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-MUX-works-and-its-usage/\" target=\"_blank\">（阅读更多）</a></p>",
+      "description": "Mux 需要兼容的客户端。Hiddify Next 和 Singbox 中的 Mux 与 XRay 不兼容。 <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-MUX-works-and-its-usage/\" target=\"_blank\">（阅读更多）</a>",
       "label": "Ⓜ️ MUX（⚠️ 与某些客户端不兼容）"
     },
     "mux_max_connections": {
@@ -879,7 +879,7 @@
       "label": "TLS 设置"
     },
     "tls_fragment_enable": {
-      "description": "<p>在某些情况下，它可以绕过 SNI 黑名单系统。 <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-the-TLS-Trick-works-and-its-usage/\" target=\"_blank\">（阅读更多）</a></p>",
+      "description": "在某些情况下，它可以绕过 SNI 黑名单系统。 <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-the-TLS-Trick-works-and-its-usage/\" target=\"_blank\">（阅读更多）</a>",
       "label": "⏯ TLS Fragment"
     },
     "tls_fragment_size": {
@@ -895,7 +895,7 @@
       "label": "🔠 TLS 混合 SNI 大小写"
     },
     "tls_padding_enable": {
-      "description": "<p>启用 TLS 碎片填充。 <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-the-TLS-Trick-works-and-its-usage/#tls-padding\" target=\"_blank\">（阅读更多）</a></p>",
+      "description": "启用 TLS 碎片填充。 <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-the-TLS-Trick-works-and-its-usage/#tls-padding\" target=\"_blank\">（阅读更多）</a>",
       "label": "♒️ TLS Padding"
     },
     "tls_padding_length": {
@@ -983,7 +983,7 @@
       "label": "🐉 WireGuard"
     },
     "wireguard_enable": {
-      "description": "<p>WireGuard 是基于 UDP 的协议。（⚠️ 它在<a href=\"https://github.com/hiddify/hiddify-next\" target=\"_blank\">Hiddify Next</a>中运行）</p>",
+      "description": "WireGuard 是基于 UDP 的协议。（⚠️ 它在<a href=\"https://github.com/hiddify/hiddify-next\" target=\"_blank\">Hiddify Next</a>中运行）",
       "label": "启用 WireGuard"
     },
     "wireguard_ipv4": {
