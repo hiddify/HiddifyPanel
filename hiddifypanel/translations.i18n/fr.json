@@ -642,10 +642,6 @@
       "description": "ça devrait être aléatoire",
       "label": "ℹ️ Chemin de mise à niveau HTTP"
     },
-    "path_xhttp": {
-      "description": "Cette option définit le chemin pour Split HTTP",
-      "label": "Chemin pour le HTTP fractionné"
-    },
     "path_ss": {
       "description": "Chemin Shadowsocks dans les liens",
       "label": "Chemin Shadowsocks "
@@ -673,6 +669,10 @@
     "path_ws": {
       "description": "Spécifiez le chemin Websocket",
       "label": "ℹ️ Chemin des requêtes Websocket"
+    },
+    "path_xhttp": {
+      "description": "Cette option définit le chemin pour Split HTTP",
+      "label": "Chemin pour le HTTP fractionné"
     },
     "proxies": {
       "description": "Définir des paramètres de proxy spécifiques",
@@ -777,10 +777,6 @@
     "speed_test": {
       "description": "Autorisez vos utilisateurs à effectuer des tests de vitesse. Cela les aide à identifier la qualité du lien",
       "label": "🚀 Test de vitesse"
-    },
-    "xhttp_enable": {
-      "description": "Ce protocole envoie et reçoit des informations dans des canaux individuels ",
-      "label": "🈁 Split HTTP"
     },
     "ssfaketls": {
       "description": "Shadowsocks FakeTLS est un simple outil d'obscurcissement qui encapsule la date dans un paquet tls.",
@@ -1017,6 +1013,10 @@
     "ws_enable": {
       "description": "Websocket crée un tunnel sur HTTP utile pour être utilisé dans CDN",
       "label": "🔰 Websocket"
+    },
+    "xhttp_enable": {
+      "description": "Ce protocole envoie et reçoit des informations dans des canaux individuels ",
+      "label": "🈁 Split HTTP"
     },
     "xtls_enable": {
       "description": "Active le protocole XTLS",
