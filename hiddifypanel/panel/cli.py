@@ -39,8 +39,8 @@ def backup_task():
     dbdict = hiddify.dump_db_to_dict()
     os.makedirs('backup', exist_ok=True)
     dst = f'backup/{datetime.datetime.now().strftime("%Y_%m_%d__%H_%M_%S")}.json'
-    with open(dst, 'w') as fp:
-        json.dump(dbdict, fp, indent=4, sort_keys=True, default=str)
+    with open(dst, 'w', encoding='utf-8') as fp:
+        json.dump(dbdict, fp, indent=2, sort_keys=True, default=str)
 
     if hconfig(ConfigEnum.telegram_bot_token):
         from hiddifypanel.panel.commercial.telegrambot import bot, register_bot
