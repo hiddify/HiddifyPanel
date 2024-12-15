@@ -1,9 +1,15 @@
 # Changelog
 
 
-## v10.80.3 (2024-12-15)
+## v10.80.4 (2024-12-15)
+
+#### Fix
+
+* Telegram backup bug. 
 
 #### Other
+
+* Make utf8 backup. 
 
 * Update app list and remove hiddifyn hiddifyng and hiddifyclash. 
 
