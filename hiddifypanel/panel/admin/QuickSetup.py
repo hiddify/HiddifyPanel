@@ -67,7 +67,7 @@ def get_lang_form(empty=False):
     class LangForm(FlaskForm):
         step = wtf.HiddenField(default="1")
         admin_lang = wtf.SelectField(
-            _("config.admin_lang.label"), choices=[("en", _("lang.en")), ("fa", _("lang.fa")), ("pt", _("lang.pt")), ("zh", _("lang.zh")), ("ru", _("lang.ru"))],
+            _("config.admin_lang.label"), choices=[("en", _("lang.en")), ("fa", _("lang.fa")), ("pt", _("lang.pt")), ("zh", _("lang.zh")), ("ru", _("lang.ru")), ("my", _("lang.my"))],
             description=_("config.admin_lang.description"),
             default=hconfig(ConfigEnum.admin_lang))
         # lang=wtf.SelectField(_("config.lang.label"),choices=[("en",_("lang.en")),("fa",_("lang.fa"))],description=_("config.lang.description"),default=hconfig(ConfigEnum.lang))
