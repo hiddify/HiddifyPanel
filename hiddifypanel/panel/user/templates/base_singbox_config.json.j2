@@ -1,4 +1,5 @@
 {% set V1_7= g.user_agent['is_singbox'] and g.user_agent['singbox_version'][0]==1 and g.user_agent['singbox_version'][1]<8 %}
+{% set V1_9= g.user_agent['is_singbox'] and g.user_agent['singbox_version'][0]==1 and g.user_agent['singbox_version'][1]<10 %}
 {
     "outbounds": [
         {
@@ -218,12 +219,17 @@
             "tag": "dns-in",
             "type": "direct"
         },
+        
         {
             "type": "tun",
             "tag": "tun-in",
             "domain_strategy": "prefer_ipv4",
             "interface_name": "tun0",
+            {% if V1_9 %}
             "inet4_address": "172.19.0.1\/30",
+            {%else%}
+            "address": ["172.19.0.1\/30"],
+            {%endif%}
             "mtu": 9000,
             "auto_route": true,
             "strict_route": true,
