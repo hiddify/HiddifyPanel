@@ -39,21 +39,21 @@ def backup_task():
     dbdict = hiddify.dump_db_to_dict()
     os.makedirs('backup', exist_ok=True)
     dst = f'backup/{datetime.datetime.now().strftime("%Y_%m_%d__%H_%M_%S")}.json'
-    with open(dst, 'w') as fp:
-        json.dump(dbdict, fp, indent=4, sort_keys=True, default=str)
-
+    with open(dst, 'w', encoding='utf-8') as fp:
+        json.dump(dbdict, fp, indent=2, sort_keys=True, default=str)
+    print(dst)
     if hconfig(ConfigEnum.telegram_bot_token):
         from hiddifypanel.panel.commercial.telegrambot import bot, register_bot
         if not bot.username:
             register_bot(True)
-
-        with open(dst, 'rb') as document:
-            for admin in AdminUser.query.filter(AdminUser.mode == AdminMode.super_admin, AdminUser.telegram_id is not None,AdminUser.telegram_id!=0).all():
-                caption = ("Backup \n" + admin_links())
-                try:
-                    bot.send_document(admin.telegram_id, document, visible_file_name=dst.replace("backup/", ""), caption=caption[:1000])
-                except Exception as e:
-                    logger.exception(e)
+        
+        for admin in AdminUser.query.filter(AdminUser.mode == AdminMode.super_admin, AdminUser.telegram_id is not None,AdminUser.telegram_id!=0).all():
+            caption = ("Backup \n" + admin_links())
+            with open(dst, 'rb') as document:
+                    try:
+                        bot.send_document(admin.telegram_id, document, visible_file_name=dst.replace("backup/", ""), caption=caption[:1000])
+                    except Exception as e:
+                        logger.exception(e)
 
 
 def all_configs():

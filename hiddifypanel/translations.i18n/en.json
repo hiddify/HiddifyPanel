@@ -328,6 +328,9 @@
       "description": "Streisand Description",
       "title": "Streisand"
     },
+    "v2rayn": {
+      "title": "app.v2rayn.title"
+    },
     "v2rayng": {
       "description": "V2RayNG Description",
       "title": "V2RayNG"
@@ -500,7 +503,7 @@
       "label": "☑️ Allow HTTP Connection"
     },
     "httpupgrade_enable": {
-      "description": "<p>HTTPUpgrade complete a HTTP 1.1 Upgrade request and response before using the connection directly. It is similar to WebSocket in the way it create an direction channel that can be forwarded by many reverse proxies and CDNs, without the need to deal with all the issue around WebSocket Protocol itself.<br />\n⚠️ <strong>Not Available in Xray based Clients. Only <p><a href=\"https://app.hiddify.com\" target=\"_blank\">Hiddify</a></p>, Singbox, and V2fly clients are supported.</strong>&nbsp;<a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/Basic-Concepts/#http-upgrade\" target=\"_blank\"><strong>(Read More)</strong></a></p>",
+      "description": "HTTPUpgrade complete a HTTP 1.1 Upgrade request and response before using the connection directly. It is similar to WebSocket in the way it create an direction channel that can be forwarded by many reverse proxies and CDNs, without the need to deal with all the issue around WebSocket Protocol itself.<br />\n⚠️ <strong>Not Available in Xray based Clients. Only <a href=\"https://app.hiddify.com\" target=\"_blank\">Hiddify</a>, Singbox, and V2fly clients are supported.</strong>&nbsp;<a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/Basic-Concepts/#http-upgrade\" target=\"_blank\"><strong>(Read More)</strong></a>",
       "label": "🆙 HTTPUpgrade Method"
     },
     "hysteria": {
@@ -582,7 +585,7 @@
       "label": "⬆️ MUX Brutal Upload (mbps)"
     },
     "mux_enable": {
-      "description": "<p>Mux needs compatible clients. Mux in <p><a href=\"https://app.hiddify.com\" target=\"_blank\">Hiddify</a></p> and Singbox are not compatible with XRay.&nbsp;<a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-MUX-works-and-its-usage/\" target=\"_blank\">(Read More)</a></p>",
+      "description": "Mux needs compatible clients. Mux in <a href=\"https://app.hiddify.com\" target=\"_blank\">Hiddify</a> and Singbox are not compatible with XRay.&nbsp;<a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-MUX-works-and-its-usage/\" target=\"_blank\">(Read More)</a>",
       "label": "Ⓜ️ MUX (⚠️ Incompatible With Some Clients)"
     },
     "mux_max_connections": {
@@ -906,7 +909,7 @@
       "label": "🔐 Telegram Bot Token"
     },
     "telegram_enable": {
-      "description": "<p data-pm-slice=\"1 1 []\">Telegram MTProto is used for Encapsulate Telegram Proxy as a tls traffic<br>⚠️ <span style=\"color:#d32f2f;\"><strong>This protocol requires a Direct Domain</strong></span></p>",
+      "description": "Telegram MTProto is used for Encapsulate Telegram Proxy as a tls traffic<br>⚠️ <span style=\"color:#d32f2f;\"><strong>This protocol requires a Direct Domain</strong></span>",
       "label": "✔️ Telegram MTProto"
     },
     "telegram_fakedomain": {
@@ -922,7 +925,7 @@
       "label": "TLS Settings"
     },
     "tls_fragment_enable": {
-      "description": "<p>Under some circumstances, it can bypass the SNI blacklist system. <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-the-TLS-Trick-works-and-its-usage/\" target=\"_blank\">(Read More)</a></p>",
+      "description": "Under some circumstances, it can bypass the SNI blacklist system. <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-the-TLS-Trick-works-and-its-usage/\" target=\"_blank\">(Read More)</a>",
       "label": "⏯ TLS Fragment"
     },
     "tls_fragment_size": {
@@ -938,7 +941,7 @@
       "label": "🔠 TLS Mixed SNI Case"
     },
     "tls_padding_enable": {
-      "description": "<p>Enables Padding for TLS Fragmentation. <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-the-TLS-Trick-works-and-its-usage/#tls-padding\" target=\"_blank\">(Read More)</a></p>",
+      "description": "Enables Padding for TLS Fragmentation. <a href=\"https://hiddify.com/manager/basic-concepts-and-troubleshooting/How-the-TLS-Trick-works-and-its-usage/#tls-padding\" target=\"_blank\">(Read More)</a>",
       "label": "♒️ TLS Padding"
     },
     "tls_padding_length": {
@@ -1026,7 +1029,7 @@
       "label": "WireGuard"
     },
     "wireguard_enable": {
-      "description": "<p>WireGuard is UDP based protocol. (⚠️ It is Working In <a href=\"https://app.hiddify.com/\" target=\"_blank\">Hiddify</a>)</p>",
+      "description": "WireGuard is UDP based protocol. (⚠️ It is Working In <a href=\"https://app.hiddify.com/\" target=\"_blank\">Hiddify</a>)",
       "label": "🐉 WireGuard"
     },
     "wireguard_ipv4": {
@@ -1058,7 +1061,7 @@
       "label": "🔰 Websocket"
     },
     "xhttp_enable": {
-      "description": "<p>This Protocol send and receive information in individual channels.<br />\n⚠️ <strong>Not Supported in SignBox based Clients. Only <p><a href=\"https://app.hiddify.com\" target=\"_blank\">Hiddify</a></p> App, and XRay base Clients are supported.</strong></p>",
+      "description": "This Protocol send and receive information in individual channels.<br />\n⚠️ <strong>Not Supported in SignBox based Clients. Only <a href=\"https://app.hiddify.com\" target=\"_blank\">Hiddify</a> App, and XRay base Clients are supported.</strong>",
       "label": "🈁 Split HTTP"
     },
     "xtls_enable": {

@@ -1,6 +1,22 @@
 # Changelog
 
 
+## v10.80.4 (2024-12-15)
+
+#### Fix
+
+* Telegram backup bug. 
+
+#### Other
+
+* Make utf8 backup. 
+
+* Update app list and remove hiddifyn hiddifyng and hiddifyclash. 
+
+* Update to singbox 1.10 template. 
+
+
+
 ## v10.80.0 (2024-12-15)
 
 #### New

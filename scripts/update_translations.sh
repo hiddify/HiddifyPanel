@@ -6,12 +6,12 @@ activate_python_venv
 PATH=/config/.local/bin:$PATH
 
 python -c "
-import hiddifypanel;
-print(''.join([f'{{{{_(\"config.{c}.label\")}}}}\n{{{{_(\"config.{c}.description\")}}}}\n' for c in hiddifypanel.models.ConfigEnum]));print(''.join([f'{{{{_(\"config.{cat}.label\")}}}}{{{{_(\"config.{cat}.description\")}}}}\n' for cat in hiddifypanel.models.ConfigCategory]));
+from hiddifypanel import models;
+print(''.join([f'{{{{_(\"config.{c}.label\")}}}}\n{{{{_(\"config.{c}.description\")}}}}\n' for c in models.ConfigEnum]));print(''.join([f'{{{{_(\"config.{cat}.label\")}}}}{{{{_(\"config.{cat}.description\")}}}}\n' for cat in models.ConfigCategory]));
 def print_enum(en):
   print(''.join([f'{{{{_(\"{item}\")}}}}\n' for item in en]))
-print_enum(hiddifypanel.models.DomainType)
-print_enum(hiddifypanel.models.UserMode)
+print_enum(models.DomainType)
+print_enum(models.UserMode)
 " >../hiddifypanel/templates/fake.html
 
 
