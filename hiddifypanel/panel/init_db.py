@@ -17,6 +17,12 @@ from loguru import logger
 MAX_DB_VERSION = 100
 
 
+def _v98(child_id):
+    add_config_if_not_exist(ConfigEnum.path_xhttp,hutils.random.get_random_string(7, 15))
+    add_config_if_not_exist(ConfigEnum.xhttp_enable, False)
+    db.session.bulk_save_objects(get_proxy_rows_v1())
+    
+
 def _v97(child_id):
     keys = hutils.crypto.generate_ssh_host_keys()
     # set_hconfig(ConfigEnum.ssh_host_dsa_pk, keys['dsa']['pk'])
