@@ -681,8 +681,8 @@
       "label": "ℹ️ Path of Websocket Requests"
     },
     "path_xhttp": {
-      "description": "This option defines the Path for Split HTTP",
-      "label": "ℹ️ Path for Split HTTP"
+      "description": "This option defines the Path for XHTTP",
+      "label": "ℹ️ Path for XHTTP"
     },
     "proxies": {
       "description": "Define specific proxy settings",
@@ -1062,7 +1062,7 @@
     },
     "xhttp_enable": {
       "description": "This Protocol send and receive information in individual channels.<br />\n⚠️ <strong>Not Supported in SignBox based Clients. Only <a href=\"https://app.hiddify.com\" target=\"_blank\">Hiddify</a> App, and XRay base Clients are supported.</strong>",
-      "label": "🈁 Split HTTP"
+      "label": "🈁 XHTTP"
     },
     "xtls_enable": {
       "description": "Enables XTLS Protocol",

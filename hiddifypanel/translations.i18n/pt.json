@@ -57,7 +57,6 @@
   "Domain (%(domain)s)-> IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode": "Domain (%(domain)s)-> IP = %(domain_ip)s não é igual ao seu IP = %(server_ip)s . isso é necessário no modo direto",
   "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode": " O IP do domínio = %(domain_ip)s não corresponde ao seu IP = %(server_ip)s, o que é necessário no modo direto",
   "Domain can not be resolved! there is a problem in your domain": "O domínio não pode ser resolvido! Há um problema em seu domínio. Verifique as configurações do seu Domínio.",
-  "Domain cannot be resolved! Please check DNS settings": "",
   "Domain is not REALITY friendly!": "O domínio não é compatível com Reality!",
   "Domain?": "Domínio?",
   "Donation": {
@@ -152,7 +151,6 @@
   "QRCode": "<i class='fa-solid fa-qrcode'></i> QRCode",
   "RAM": "BATER",
   "REALITY Fallback domain is not compaitble with server names!": "REALITY Fallback Domain não é compatível com nomes de servidores!",
-  "REALITY Fallback domain is not compatible with server names!": "",
   "Release": "✅ Liberação",
   "Remaining about %(relative)s, exactly %(days)s days": "Restam cerca de %(relative)s, exatamente %(days)s dias",
   "Remote nodes are not supported yet!": "Nós remotos ainda não são suportados!",
@@ -188,7 +186,6 @@
   "Simplifies the process of employing the link elsewhere.": "Simplifica o processo de utilização do link em outro lugar",
   "SingBox": "📦 SingBox",
   "Sort by %(name)s": "Ordenar por %(name)s",
-  "Specifying CDN IP is only valid for CDN mode": "",
   "Start Date": "Data de início",
   "Started %(days)s days ago": "Iniciado há %(days)s dias",
   "Started from %(relative)s": "Iniciado em %(relative)s",
@@ -327,9 +324,6 @@
     "streisand": {
       "description": "Descrição de Streisand",
       "title": "Streisand"
-    },
-    "v2rayn": {
-      "title": ""
     },
     "v2rayng": {
       "description": "Descrição do V2RayNG",
@@ -799,38 +793,6 @@
     "ssh": {
       "description": "Um proxy SSH, também conhecido como túnel SSH ou encaminhamento de porta SSH, é um método seguro de criar um canal de comunicação seguro entre duas máquinas em uma rede insegura. Temos um aplicativo específico que é completamente diferente do servidor ssh e não pode executar nenhum comando",
       "label": "Proxy SSH"
-    },
-    "ssh_host_dsa_pk": {
-      "description": "",
-      "label": ""
-    },
-    "ssh_host_dsa_pub": {
-      "description": "",
-      "label": ""
-    },
-    "ssh_host_ecdsa_pk": {
-      "description": "",
-      "label": ""
-    },
-    "ssh_host_ecdsa_pub": {
-      "description": "",
-      "label": ""
-    },
-    "ssh_host_ed25519_pk": {
-      "description": "",
-      "label": ""
-    },
-    "ssh_host_ed25519_pub": {
-      "description": "",
-      "label": ""
-    },
-    "ssh_host_rsa_pk": {
-      "description": "",
-      "label": ""
-    },
-    "ssh_host_rsa_pub": {
-      "description": "",
-      "label": ""
     },
     "ssh_server_enable": {
       "description": "O proxy SSH é completamente diferente do servidor ssh original.",

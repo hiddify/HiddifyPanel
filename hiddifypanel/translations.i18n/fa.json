@@ -57,7 +57,6 @@
   "Domain (%(domain)s)-> IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode": "دامنه (%(domain)s)-> IP=%(domain_ip)s با آی‌پی شما: ip=%(server_ip)s همخوانی ندارد. در حالت مستقیم (Direct Mode) این مورد الزامی است.",
   "Domain IP=%(domain_ip)s is not matched with your ip=%(server_ip)s which is required in direct mode": "دامنه IP=%(domain_ip)s با ip=%(server_ip)s شما مطابقت ندارد که در حالت مستقیم مورد نیاز است",
   "Domain can not be resolved! there is a problem in your domain": "دامنه قابل دسترسی نیست! در دامنه شما مشکلی وجود دارد.",
-  "Domain cannot be resolved! Please check DNS settings": "",
   "Domain is not REALITY friendly!": "دامنه سازگار با REALITY نیست!",
   "Domain?": "دامنه؟",
   "Donation": {
@@ -152,7 +151,6 @@
   "QRCode": "<i class='fa-solid fa-qrcode'></i> QR Code ",
   "RAM": "رم",
   "REALITY Fallback domain is not compaitble with server names!": "دامنه بازگشتی REALITY با نام سرور سازگار نیست!",
-  "REALITY Fallback domain is not compatible with server names!": "",
   "Release": "✅ پایدار",
   "Remaining about %(relative)s, exactly %(days)s days": "حدود %(relative)s و دقیقا %(days)s روز باقی مانده است",
   "Remote nodes are not supported yet!": "گره های راه دور هنوز پشتیبانی نمی شوند!",
@@ -188,7 +186,6 @@
   "Simplifies the process of employing the link elsewhere.": "برای راحتی انتقال این صفحه به ‌پلتفرم دیگر",
   "SingBox": "📦 SingBox",
   "Sort by %(name)s": "مرتب سازی بر اساس %(name)s",
-  "Specifying CDN IP is only valid for CDN mode": "",
   "Start Date": "زمان شروع",
   "Started %(days)s days ago": "از %(days)s روز پیش شروع شد",
   "Started from %(relative)s": "از %(relative)s شروع شد",
@@ -327,9 +324,6 @@
     "streisand": {
       "description": "توضیحات Streisand",
       "title": "Streisand"
-    },
-    "v2rayn": {
-      "title": ""
     },
     "v2rayng": {
       "description": "توضیحات V2RayNG",
@@ -677,8 +671,8 @@
       "label": "ℹ️ مسیر درخواست های Websocket"
     },
     "path_xhttp": {
-      "description": "این گزینه مسیر را برای Split HTTP تعریف می کند",
-      "label": "ℹ️ مسیر برای Split HTTP"
+      "description": "این گزینه مسیر را برای XHTTP تعریف می کند",
+      "label": "ℹ️ مسیر برای XHTTP"
     },
     "proxies": {
       "description": "تنظیمات اختصاصی را مشخص کنید",
@@ -799,38 +793,6 @@
     "ssh": {
       "description": "پروکسی SSH که به عنوان تونل SSH یا ارسال پورت SSH نیز شناخته می شود، روشی امن برای ایجاد یک کانال ارتباطی امن بین دو ماشین در یک شبکه ناامن است. ما یک برنامه خاص داریم که کاملاً با سرور SSH متفاوت است. با این کانکشن کاربر نمی تواند هیچ دستوری را روی سرور اجرا کند",
       "label": "پروکسی SSH"
-    },
-    "ssh_host_dsa_pk": {
-      "description": "",
-      "label": ""
-    },
-    "ssh_host_dsa_pub": {
-      "description": "",
-      "label": ""
-    },
-    "ssh_host_ecdsa_pk": {
-      "description": "",
-      "label": ""
-    },
-    "ssh_host_ecdsa_pub": {
-      "description": "",
-      "label": ""
-    },
-    "ssh_host_ed25519_pk": {
-      "description": "",
-      "label": ""
-    },
-    "ssh_host_ed25519_pub": {
-      "description": "",
-      "label": ""
-    },
-    "ssh_host_rsa_pk": {
-      "description": "",
-      "label": ""
-    },
-    "ssh_host_rsa_pub": {
-      "description": "",
-      "label": ""
     },
     "ssh_server_enable": {
       "description": "این SSH پروکسی با SSH سرور اصلی کاملا متفاوت است و امکان اجرای دستورات را ندارد",
@@ -1054,7 +1016,7 @@
     },
     "xhttp_enable": {
       "description": "این پروتکل اطلاعات را در کانال های جداگانه ارسال و دریافت می کند<br />\n⚠️<strong>&nbsp;این پروتکل در برنامه های با هسته SingBox پشتیبانی نمیشود. فقط در برنامه <a href=\"https://app.hiddify.com\" target=\"_blank\">Hiddify</a> و برنامه های با هسته XRay پشتیبانی میشود</strong>",
-      "label": "🈁 Split HTTP"
+      "label": "🈁 XHTTP"
     },
     "xtls_enable": {
       "description": "پروتکل XTLS را فعال می کند",
