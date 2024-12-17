@@ -10,13 +10,13 @@ msgstr ""
 "            Settings"
 
 msgid "%(count)s records were successfully disabled."
-msgstr "%(count)s records were successfully disabled."
+msgstr "%(count)s Records were successfully disabled."
 
 msgid "%(count)s records were successfully enabled."
-msgstr "%(count)s records were successfully enabled."
+msgstr "%(count)s Records were successfully enabled."
 
 msgid "%(expire_days)s days"
-msgstr "%(expire_days)s days"
+msgstr "%(expire_days)s Days"
 
 msgid "%(placeholder)s"
 msgstr "%(placeholder)s"
@@ -1707,10 +1707,10 @@ msgid "config.path_ws.label"
 msgstr "ℹ️ Path of Websocket Requests"
 
 msgid "config.path_xhttp.description"
-msgstr "This option defines the Path for Split HTTP"
+msgstr "This option defines the Path for XHTTP"
 
 msgid "config.path_xhttp.label"
-msgstr "ℹ️ Path for Split HTTP"
+msgstr "ℹ️ Path for XHTTP"
 
 msgid "config.proxies.description"
 msgstr "Define specific proxy settings"
@@ -2383,7 +2383,7 @@ msgstr ""
 "⚠️ <strong>Not Supported in SignBox based Clients. Only <a href=\"https://app.hiddify.com\" target=\"_blank\">Hiddify</a> App, and XRay base Clients are supported.</strong>"
 
 msgid "config.xhttp_enable.label"
-msgstr "🈁 Split HTTP"
+msgstr "🈁 XHTTP"
 
 msgid "config.xtls_enable.description"
 msgstr "Enables XTLS Protocol"
@@ -2489,6 +2489,9 @@ msgstr "🇺🇸 English"
 
 msgid "lang.fa"
 msgstr "🇮🇷 Persian - فارسی"
+
+msgid "lang.my"
+msgstr "lang.my"
 
 msgid "lang.pt"
 msgstr "🇵🇹 Portuguese - Português "

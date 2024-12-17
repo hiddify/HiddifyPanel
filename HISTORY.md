@@ -1,6 +1,37 @@
 # Changelog
 
 
+## v10.80.8 (2024-12-17)
+
+#### New
+
+* Optimize cli. 
+
+#### Fix
+
+* Upgrade for xhttp. 
+
+#### Other
+
+* Merge pull request #3 from ninjastrikers/main. 
+  _Add Burmese to QuickSetup and Update Burmese translations_
+
+* Added lang.my in SettingAdmin.py. 
+
+* Adding lang.my in QuickSetup. 
+
+* Merge branch 'hiddify:main' into main. 
+
+* Update Burmese translation. 
+
+* Chore: update translations with Fink 🐦 
+
+* Chore: update translations with Fink 🐦 
+
+* Update translations. 
+
+
+
 ## v10.80.7 (2024-12-15)
 
 #### Other
