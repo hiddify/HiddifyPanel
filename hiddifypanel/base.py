@@ -14,10 +14,10 @@ from loguru import logger
 
 from dynaconf import FlaskDynaconf
 
-def create_app(*args, cli=False, **config):
-
+def create_app(*args, app_mode="normal", **config):
+    
     app = APIFlask(__name__, static_url_path="/<proxy_path>/static/", instance_relative_config=True, version='2.2.0', title="Hiddify API",
-                   openapi_blueprint_url_prefix="/<proxy_path>/api", docs_ui='elements', json_errors=False, enable_openapi=not cli)
+                   openapi_blueprint_url_prefix="/<proxy_path>/api", docs_ui='elements', json_errors=False, enable_openapi=app_mode=="normal")
     # app = Flask(__name__, static_url_path="/<proxy_path>/static/", instance_relative_config=True)
     # app.asgi_app = WsgiToAsgi(app)
     
@@ -29,14 +29,16 @@ def create_app(*args, cli=False, **config):
         app.config[c] = v
     dyn=FlaskDynaconf(app,settings_files=[os.environ.get("HIDDIFY_CFG_PATH", 'app.cfg')])
 
-    if cli:
+    if app_mode in ["cli","celery"]:
         app.config['EXTENSIONS']=[
             # "hiddifypanel.cache:init_app",
             "hiddifypanel.database:init_app",
             "hiddifypanel.panel.hlogger:init_cli",
-            "hiddifypanel.panel.cli:init_app",
-            "hiddifypanel.celery:init_app",
         ]
+        if app_mode=="celery":
+            app.config['EXTENSIONS'].append("hiddifypanel.celery:init_app")
+        else:
+            app.config['EXTENSIONS'].append("hiddifypanel.panel.cli:init_app")
     else:
         app.config['EXTENSIONS']=[
             # "hiddifypanel.cache:init_app",
@@ -67,7 +69,7 @@ def create_app_wsgi(*args, **kwargs):
     # https://github.com/pallets/flask/issues/4170
     cli = ("hiddifypanel" in sys.argv[0] ) or (sys.argv[1] in ["update-usage", "all-configs", "admin_links", "admin_path"])
 
-    app = create_app(cli=cli)
+    app = create_app(app_mode="cli" if cli else "normal")
     return app
 
 
@@ -78,5 +80,5 @@ def create_celery_app():
     #     # to be passed to create_app
     #     # https://github.com/pallets/flask/issues/4170
     # print(kwargs)
-    app = create_app(cli=True)
+    app = create_app(app_mode="celery")
     return app.extensions["celery"]
