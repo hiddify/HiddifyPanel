@@ -216,7 +216,7 @@ def get_config_form():
             elif c.key == ConfigEnum.lang or c.key == ConfigEnum.admin_lang:
                 field = wtf.SelectField(
                     _(f"config.{c.key}.label"),
-                    choices=[("en", _("lang.en")), ("fa", Markup(_("lang.fa"))), ("zh", _("lang.zh")), ("pt", _("lang.pt")), ("ru", _("lang.ru"))],
+                    choices=[("en", _("lang.en")), ("fa", Markup(_("lang.fa"))), ("zh", _("lang.zh")), ("pt", _("lang.pt")), ("ru", _("lang.ru")), ("my", _("lang.my"))],
                     description=_(f"config.{c.key}.description"),
                     default=hconfig(c.key))
             elif c.key == ConfigEnum.country:
