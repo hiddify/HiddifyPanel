@@ -14,10 +14,10 @@ from loguru import logger
 
 from dynaconf import FlaskDynaconf
 
-def create_app(*args, app_mode="normal", **config):
+def create_app(*args, app_mode="web", **config):
     
     app = APIFlask(__name__, static_url_path="/<proxy_path>/static/", instance_relative_config=True, version='2.2.0', title="Hiddify API",
-                   openapi_blueprint_url_prefix="/<proxy_path>/api", docs_ui='elements', json_errors=False, enable_openapi=app_mode=="normal")
+                   openapi_blueprint_url_prefix="/<proxy_path>/api", docs_ui='elements', json_errors=False, enable_openapi=app_mode=="web")
     # app = Flask(__name__, static_url_path="/<proxy_path>/static/", instance_relative_config=True)
     # app.asgi_app = WsgiToAsgi(app)
     
@@ -28,22 +28,19 @@ def create_app(*args, app_mode="normal", **config):
             v = True if v.lower() == "true" else (False if v.lower() == "false" else v)
         app.config[c] = v
     dyn=FlaskDynaconf(app,settings_files=[os.environ.get("HIDDIFY_CFG_PATH", 'app.cfg')])
-
-    if app_mode in ["cli","celery"]:
-        app.config['EXTENSIONS']=[
-            # "hiddifypanel.cache:init_app",
-            "hiddifypanel.database:init_app",
-            "hiddifypanel.panel.hlogger:init_cli",
-        ]
-        if app_mode=="celery":
-            app.config['EXTENSIONS'].append("hiddifypanel.celery:init_app")
-        else:
-            app.config['EXTENSIONS'].append("hiddifypanel.panel.cli:init_app")
+    
+    extensions=[
+        # "hiddifypanel.cache:init_app",
+        "hiddifypanel.database:init_app",
+        "hiddifypanel.panel.hlogger:init_cli",
+    ]
+    
+    if app_mode=="celery":
+        extensions.append("hiddifypanel.celery:init_app")
+    elif app_mode=="cli":
+        extensions.append("hiddifypanel.panel.cli:init_app")
     else:
-        app.config['EXTENSIONS']=[
-            # "hiddifypanel.cache:init_app",
-            "hiddifypanel.database:init_app",
-            "hiddifypanel.panel.hlogger:init_app",
+        extensions.extend([
             "hiddifypanel.base_setup:init_app",
             "hiddifypanel.panel.common:init_app",
             "hiddifypanel.panel.common_bp:init_app",
@@ -52,9 +49,9 @@ def create_app(*args, app_mode="normal", **config):
             "hiddifypanel.panel.commercial:init_app",
             "hiddifypanel.panel.node:init_app",
             "hiddifypanel.celery:init_app",
-        ]
+        ])
     
-
+    app.config['EXTENSIONS']=extensions
 
     app.config.update(config)  # Override with passed config
     
@@ -69,7 +66,7 @@ def create_app_wsgi(*args, **kwargs):
     # https://github.com/pallets/flask/issues/4170
     cli = ("hiddifypanel" in sys.argv[0] ) or (sys.argv[1] in ["update-usage", "all-configs", "admin_links", "admin_path"])
 
-    app = create_app(app_mode="cli" if cli else "normal")
+    app = create_app(app_mode="cli" if cli else "web")
     return app
 
 
