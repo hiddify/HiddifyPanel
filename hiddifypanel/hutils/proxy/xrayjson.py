@@ -37,7 +37,8 @@ def configs_as_json(domains: list[Domain], user: User, expire_days: int, remarks
 
     if not user.is_active:
         # region show status (active/disable)
-        tag = '✖ ' + (hutils.encode.url_encode('بسته شما به پایان رسید') if hconfig(ConfigEnum.lang) == 'fa' else 'Package Ended')
+        tag = '✖ ' + (hutils.encode.url_encode('بسته شما به پایان رسید')
+                      if hconfig(ConfigEnum.lang) == 'fa' else 'Package Ended')
         # add user status
         all_configs.append(
             null_config(tag)
@@ -50,7 +51,7 @@ def configs_as_json(domains: list[Domain], user: User, expire_days: int, remarks
         unsupported_transport = {}
         if g.user_agent.get('is_v2rayng'):
             # TODO: ensure which protocols are not supported in v2rayng
-            unsupported_protos = { ProxyProto.hysteria, ProxyProto.hysteria2,
+            unsupported_protos = {ProxyProto.hysteria, ProxyProto.hysteria2,
                                   ProxyProto.tuic, ProxyProto.ssr, ProxyProto.ssh}
             if not hutils.flask.is_client_version(hutils.flask.ClientVersion.v2ryang, 1, 8, 18):
                 unsupported_transport = {ProxyTransport.httpupgrade}
@@ -67,7 +68,8 @@ def configs_as_json(domains: list[Domain], user: User, expire_days: int, remarks
             outbound = to_xray(proxy)
             outbounds.append(outbound)
 
-        base_config = json.loads(render_template('base_xray_config.json.j2', remarks=remarks))
+        base_config = json.loads(render_template(
+            'base_xray_config.json.j2', remarks=remarks))
         if len(outbounds) > 1:
             for out in outbounds:
                 base = copy.deepcopy(base_config)
@@ -85,7 +87,8 @@ def configs_as_json(domains: list[Domain], user: User, expire_days: int, remarks
     if not all_configs:
         return ''
 
-    json_configs = json.dumps(all_configs, indent=2, cls=hutils.proxy.ProxyJsonEncoder)
+    json_configs = json.dumps(all_configs, indent=2,
+                              cls=hutils.proxy.ProxyJsonEncoder)
     return json_configs
 
 
@@ -100,6 +103,7 @@ def to_xray(proxy: dict) -> dict:
         #     # 'concurrency': -1
         # }
     }
+
     outbound['protocol'] = 'shadowsocks' if outbound['protocol'] == 'ss' else outbound['protocol']
     # add multiplex to outbound
     add_multiplex(outbound, proxy)
@@ -324,8 +328,10 @@ def add_ws_stream(ss: dict, proxy: dict):
 
 def add_grpc_stream(ss: dict, proxy: dict):
     ss['grpcSettings'] = {
-        'serviceName': proxy['path'],  # proxy['path'] is equal toproxy['grpc_service_name']
-        'idle_timeout': 115,  # by default, the health check is not enabled. may solve some "connection drop" issues
+        # proxy['path'] is equal toproxy['grpc_service_name']
+        'serviceName': proxy['path'],
+        # by default, the health check is not enabled. may solve some "connection drop" issues
+        'idle_timeout': 115,
         'health_check_timeout': 20,  # default is 20
         # 'initial_windows_size': 0,  # 0 means disabled. greater than 65535 means Dynamic Window mechanism will be disabled
         # 'permit_without_stream': False, # health check performed when there are no sub-connections
@@ -342,13 +348,23 @@ def add_httpupgrade_stream(ss: dict, proxy: dict):
 
 
 def add_xhttp_stream(ss: dict, proxy: dict):
-    ss['xhttpSettings'] = {
-        'path': proxy['path'],
-        'host': proxy['host'],
-        "headers": {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
+    if ss['transport'] == "xhttp" and not hutils.flask.is_client_version(hutils.flask.ClientVersion.hiddify_next, 3, 0, 0):
+        ss['transport'] = "splithttp"
+        ss['splithttpSettings'] = {
+            'path': proxy['path'],
+            'host': proxy['host'],
+            "headers": {
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
+            }
         }
-    }
+    else:
+        ss['xhttpSettings'] = {
+            'path': proxy['path'],
+            'host': proxy['host'],
+            "headers": {
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
+            }
+        }
 
 
 def add_kcp_stream(ss: dict, proxy: dict):
@@ -400,7 +416,8 @@ def add_tls_fragmentation_stream_settings(base: dict, proxy: dict):
             base['streamSettings']['sockopt'] = {
                 'dialerProxy': 'fragment',
                 'tcpKeepAliveIdle': 100,
-                'tcpNoDelay': True,  # recommended to be enabled with "tcpMptcp": true.
+                # recommended to be enabled with "tcpMptcp": true.
+                'tcpNoDelay': True,
                 "mark": 255
                 # 'tcpFastOpen': True, # the system default setting be used.
                 # 'tcpKeepAliveInterval': 0, # 0 means default GO lang settings, -1 means not enable
@@ -425,6 +442,7 @@ def add_multiplex(base: dict, proxy: dict):
 
 
 def null_config(tag: str) -> dict:
-    base_config = json.loads(render_template('base_xray_config.json.j2', remarks=tag))
+    base_config = json.loads(render_template(
+        'base_xray_config.json.j2', remarks=tag))
     base_config['outbounds'][0]["protocol"] = "blackhole"
     return base_config
