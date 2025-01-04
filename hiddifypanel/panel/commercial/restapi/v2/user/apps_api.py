@@ -111,15 +111,17 @@ class AppAPI(MethodView):
                 singbox_dto = self.__get_singbox_app_dto()
                 # hiddifyng_dto = self.__get_hiddifyng_app_dto()
                 v2rayng_dto = self.__get_v2rayng_app_dto()
+                cmfa_dto = self.__get_cmfa_app_dto()
                 # hiddify_clash_android_dto = self.__get_hiddify_clash_android_app_dto()
                 nekobox_dto = self.__get_nekobox_app_dto()
-                apps_data += ([hiddify_next_dto, singbox_dto, v2rayng_dto, nekobox_dto])
+                apps_data += ([hiddify_next_dto, singbox_dto, v2rayng_dto, cmfa_dto, nekobox_dto])
             case Platform.windows:
                 hiddify_next_dto = self.__get_hiddify_next_app_dto()
+                clash_verge_rev_dto = self.__get_clash_verge_rev_app_dto()
                 # hiddify_clash_dto = self.__get_hiddify_clash_desktop_app_dto()
                 # hiddifyn_dto = self.__get_hiddifyn_app_dto()
                 v2rayn_dto = self.__get_v2rayn_app_dto()
-                apps_data += ([hiddify_next_dto, v2rayn_dto])
+                apps_data += ([hiddify_next_dto, v2rayn_dto, clash_verge_rev_dto ])
             case Platform.ios:
                 hiddify_next_dto = self.__get_hiddify_next_app_dto()
                 singbox_dto = self.__get_singbox_app_dto()
@@ -131,13 +133,15 @@ class AppAPI(MethodView):
                 apps_data += ([hiddify_next_dto, singbox_dto, streisand_dto, stash_dto, shadowrocket_dto, foxray_dto, loon_dto])
             case Platform.linux:
                 hiddify_next_dto = self.__get_hiddify_next_app_dto()
+                clash_verge_rev_dto = self.__get_clash_verge_rev_app_dto()
                 # hiddify_clash_dto = self.__get_hiddify_clash_desktop_app_dto()
-                apps_data += ([hiddify_next_dto])
+                apps_data += ([hiddify_next_dto, clash_verge_rev_dto ])
             case Platform.mac:
                 hiddify_next_dto = self.__get_hiddify_next_app_dto()
                 singbox_dto = self.__get_singbox_app_dto()
+                clash_verge_rev_dto = self.__get_clash_verge_rev_app_dto()
                 # hiddify_clash_dto = self.__get_hiddify_clash_desktop_app_dto()
-                apps_data += ([hiddify_next_dto, singbox_dto])
+                apps_data += ([hiddify_next_dto, singbox_dto, clash_verge_rev_dto ])
 
         return apps_data
 
@@ -168,11 +172,13 @@ class AppAPI(MethodView):
         stash_app_dto = self.__get_stash_app_dto()
         # hiddify_clash_app_dto = self.__get_hiddify_clash_desktop_app_dto()
         singbox_app_dto = self.__get_singbox_app_dto()
+        cmfa_app_dto = self.__get_cmfa_app_dto()
+        clash_verge_rev_app_dto = self.__get_clash_verge_rev_app_dto()
         hiddify_next_app_dto = self.__get_hiddify_next_app_dto()
         return [
             v2rayn_app_dto, v2rayng_app_dto, 
             foxray_app_dto, shadowrocket_app_dto, streisand_app_dto,
-            loon_app_dto, stash_app_dto,  singbox_app_dto, hiddify_next_app_dto
+            loon_app_dto, stash_app_dto,  singbox_app_dto, cmfa_app_dto, clash_verge_rev_app_dto, hiddify_next_app_dto
         ]
 
     def __get_app_icon_url(self, app_name):
@@ -182,6 +188,10 @@ class AppAPI(MethodView):
             url = base + static_url_for(filename='apps-icon/hiddify_next.ico')
         elif app_name == _('app.singbox.title'):
             url = base + static_url_for(filename='apps-icon/singbox.ico')
+        elif app_name == _('app.cmfa.title'):
+            url = base + static_url_for(filename='apps-icon/cmfa.ico')
+        elif app_name == _('app.clash_verge_rev.title'):
+            url = base + static_url_for(filename='apps-icon/clash_verge_rev.ico')
         elif app_name == _('app.hiddifyn.title'):
             url = base + static_url_for(filename='apps-icon/hiddifyn.ico')
         elif app_name == _('app.v2rayng.title'):
@@ -356,7 +366,7 @@ class AppAPI(MethodView):
         dto.description = _('app.singbox.description')
         dto.icon_url = self.__get_app_icon_url(_('app.singbox.title'))
         dto.guide_url = ''
-        dto.deeplink = f'sing-box://import-remote-profile/?url={self.user_panel_url}'
+        dto.deeplink = f'sing-box://import-remote-profile/?url={self.user_panel_url}#{self.profile_title}'
 
         # availabe installatoin types
         installation_types = []
@@ -407,6 +417,66 @@ class AppAPI(MethodView):
             install_dtos.append(install_dto)
 
         dto.install = install_dtos
+        return dto
+
+    def __get_clash_verge_rev_app_dto(self):
+        dto = AppSchema()
+        dto.title = _('app.clash_verge_rev.title')
+        dto.description = _('app.clash_verge_rev.description')
+        dto.icon_url = self.__get_app_icon_url(_('app.clash_verge_rev.title'))
+        dto.guide_url = ''
+        dto.deeplink = f'clash://install-config/?url={self.user_panel_encoded_url}&name={self.profile_title}'
+
+        # availabe installatoin types
+        installation_types = []
+        if self.platform == Platform.all:
+            installation_types = [AppInstallType.setup, AppInstallType.appimage, AppInstallType.dmg]
+        else:
+            match self.platform:
+                case Platform.windows:
+                    installation_types = [AppInstallType.setup]
+                case Platform.linux:
+                    installation_types = [AppInstallType.appimage]
+                case Platform.mac:
+                    installation_types = [AppInstallType.dmg]
+
+        install_dtos = []
+        for install_type in installation_types:
+            install_dto = AppInstall()
+            ins_url = ''
+            match install_type:
+                case AppInstallType.appimage:
+                    ins_url = 'https://www.clashverge.dev/install.html#__tabbed_1_2'
+                case AppInstallType.setup:
+                    ins_url = 'https://www.clashverge.dev/install.html#__tabbed_1_1'
+                case AppInstallType.dmg:
+                    ins_url = 'https://www.clashverge.dev/install.html#__tabbed_1_3'
+
+            install_dto = self.__get_app_install_dto(install_type, ins_url)
+            install_dtos.append(install_dto)
+
+        dto.install = install_dtos
+        return dto
+
+    def __get_cmfa_app_dto(self):
+        dto = AppSchema()
+        dto.title = _('app.cmfa.title')
+        dto.description = _('app.cmfa.description')
+        dto.icon_url = self.__get_app_icon_url(_('app.cmfa.title'))
+        dto.guide_url = ''
+        dto.deeplink = f'clash://install-config/?url={self.user_panel_encoded_url}&name={self.profile_title}'
+
+        latest_url, version = get_latest_release_url(f'https://github.com/MetaCubeX/ClashMetaForAndroid')
+        ins_url = latest_url.split('releases/')[0] + f'releases/download/{version}/cmfa-{version}-meta-universal-release.apk'
+        def remove_v_from_filename(url):
+            parts = url.split('/')
+            filename = parts[-1]
+            new_filename = filename.replace('cmfa-v', 'cmfa-')
+            parts[-1] = new_filename
+            new_url = '/'.join(parts)
+            return new_url
+        ins_url = remove_v_from_filename(ins_url)
+        dto.install = [self.__get_app_install_dto(AppInstallType.apk, ins_url)]
         return dto
 
     def __get_hiddify_next_app_dto(self):
